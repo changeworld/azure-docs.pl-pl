@@ -10,14 +10,15 @@ ms.subservice: core
 ms.topic: conceptual
 ms.reviewer: trbye
 ms.date: 07/12/2019
-ms.openlocfilehash: 80508a31db8d86569c52df98697ceb62520059d2
-ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
+ms.openlocfilehash: a47ce44a325720fb1b6df919a0a324a4d3319d86
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/15/2019
-ms.locfileid: "71002754"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73489882"
 ---
 # <a name="enable-logging-in-azure-machine-learning"></a>Włącz rejestrowanie w Azure Machine Learning
+[!INCLUDE [applies-to-skus](../../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
 Zestaw Azure Machine Learning Python SDK umożliwia włączenie rejestrowania przy użyciu domyślnego pakietu rejestrowania języka Python, a także korzystanie z funkcji specyficznych dla zestawu SDK zarówno do rejestrowania lokalnego i rejestrowania w obszarze roboczym w portalu. Dzienniki udostępniają deweloperom informacje w czasie rzeczywistym dotyczące stanu aplikacji i mogą pomóc w diagnozowaniu błędów lub ostrzeżeń. W tym artykule przedstawiono różne sposoby włączania rejestrowania w następujących obszarach:
 
@@ -25,13 +26,13 @@ Zestaw Azure Machine Learning Python SDK umożliwia włączenie rejestrowania pr
 > * Modele szkoleniowe i cele obliczeniowe
 > * Tworzenie obrazu
 > * Wdrożone modele
-> * Ustawienia `logging` języka Python
+> * Ustawienia `logging` Python
 
-[Utwórz obszar roboczy Azure Machine Learning](how-to-manage-workspace.md). Aby uzyskać [](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py) więcej informacji na temat zestawu SDK, Skorzystaj z przewodnika.
+[Utwórz obszar roboczy Azure Machine Learning](how-to-manage-workspace.md). Aby uzyskać więcej informacji na temat zestawu SDK, Skorzystaj z [przewodnika](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py) .
 
 ## <a name="training-models-and-compute-target-logging"></a>Modele szkoleń i rejestrowanie obiektów docelowych obliczeń
 
-Istnieje wiele sposobów włączania rejestrowania podczas procesu szkolenia modelu, a pokazane przykłady pokazują typowe wzorce projektowe. Dane dotyczące uruchamiania można łatwo rejestrować do obszaru roboczego w chmurze przy użyciu `start_logging` funkcji `Experiment` klasy.
+Istnieje wiele sposobów włączania rejestrowania podczas procesu szkolenia modelu, a pokazane przykłady pokazują typowe wzorce projektowe. Dane dotyczące uruchamiania można łatwo rejestrować do obszaru roboczego w chmurze przy użyciu funkcji `start_logging` na klasie `Experiment`.
 
 ```python
 from azureml.core import Experiment
@@ -43,7 +44,7 @@ run.log("test-val", 10)
 
 Zobacz dokumentację referencyjną dla klasy [Run](https://docs.microsoft.com/python/api/azureml-core/azureml.core.run(class)?view=azure-ml-py) , aby uzyskać dodatkowe funkcje rejestrowania.
 
-Aby włączyć rejestrowanie lokalne stanu aplikacji podczas szkolenia, użyj `show_output` parametru. Włączenie pełnego rejestrowania pozwala zobaczyć szczegóły procesu szkolenia, a także informacje o zasobach zdalnych lub obiektach docelowych obliczeniowych. Użyj poniższego kodu, aby włączyć rejestrowanie podczas przekazywania eksperymentu.
+Aby włączyć rejestrowanie lokalne stanu aplikacji podczas szkolenia, użyj parametru `show_output`. Włączenie pełnego rejestrowania pozwala zobaczyć szczegóły procesu szkolenia, a także informacje o zasobach zdalnych lub obiektach docelowych obliczeniowych. Użyj poniższego kodu, aby włączyć rejestrowanie podczas przekazywania eksperymentu.
 
 ```python
 from azureml.core import Experiment
@@ -52,13 +53,13 @@ experiment = Experiment(ws, experiment_name)
 run = experiment.submit(config=run_config_object, show_output=True)
 ```
 
-Można również użyć tego samego parametru w `wait_for_completion` funkcji w uruchomionym przebiegu.
+Można również użyć tego samego parametru w funkcji `wait_for_completion` w uruchomionym przebiegu.
 
 ```python
 run.wait_for_completion(show_output=True)
 ```
 
-Zestaw SDK obsługuje również korzystanie z domyślnego pakietu rejestrowania języka Python w niektórych scenariuszach szkoleniowych. Poniższy przykład włącza poziom `INFO` rejestrowania `AutoMLConfig` w obiekcie.
+Zestaw SDK obsługuje również korzystanie z domyślnego pakietu rejestrowania języka Python w niektórych scenariuszach szkoleniowych. Poniższy przykład umożliwia włączenie poziomu rejestrowania `INFO` w obiekcie `AutoMLConfig`.
 
 ```python
 from azureml.train.automl import AutoMLConfig
@@ -73,7 +74,7 @@ automated_ml_config = AutoMLConfig(task='regression',
                                    primary_metric="spearman_correlation")
 ```
 
-Podczas tworzenia trwałego obiektu `show_output` docelowego obliczeń można także użyć parametru. Określ parametr w `wait_for_completion` funkcji, aby włączyć rejestrowanie podczas tworzenia elementu docelowego obliczeń.
+Podczas tworzenia trwałego elementu docelowego obliczeń można także użyć parametru `show_output`. Określ parametr w funkcji `wait_for_completion`, aby włączyć rejestrowanie podczas tworzenia elementu docelowego obliczeń.
 
 ```python
 from azureml.core.compute import ComputeTarget
@@ -85,7 +86,7 @@ compute.wait_for_completion(show_output=True)
 
 ## <a name="logging-during-image-creation"></a>Rejestrowanie podczas tworzenia obrazu
 
-Włączenie rejestrowania podczas tworzenia obrazu umożliwi wyświetlenie błędów podczas procesu kompilacji. `show_output` Ustaw parametr`wait_for_deployment()` w funkcji.
+Włączenie rejestrowania podczas tworzenia obrazu umożliwi wyświetlenie błędów podczas procesu kompilacji. Ustaw parametr `show_output` w funkcji `wait_for_deployment()`.
 
 ```python
 from azureml.core.webservice import Webservice
@@ -101,7 +102,7 @@ service.wait_for_deployment(show_output=True)
 
 ## <a name="logging-for-deployed-models"></a>Rejestrowanie wdrożonych modeli
 
-Aby pobrać dzienniki z wcześniej wdrożonej usługi sieci Web, Załaduj usługę i Użyj `get_logs()` funkcji. Dzienniki mogą zawierać szczegółowe informacje o błędach, które wystąpiły podczas wdrażania.
+Aby pobrać dzienniki z wcześniej wdrożonej usługi sieci Web, Załaduj usługę i użyj funkcji `get_logs()`. Dzienniki mogą zawierać szczegółowe informacje o błędach, które wystąpiły podczas wdrażania.
 
 ```python
 from azureml.core.webservice import Webservice
@@ -111,13 +112,13 @@ service = Webservice(name="service-name", workspace=ws)
 logs = service.get_logs()
 ```
 
-Możesz również rejestrować niestandardowe ślady stosu dla usługi sieci Web, włączając Application Insights, co umożliwia monitorowanie czasów żądania/odpowiedzi, częstotliwości niepowodzeń i wyjątków. Wywołaj `update()` funkcję w istniejącej usłudze sieci Web, aby włączyć Application Insights.
+Możesz również rejestrować niestandardowe ślady stosu dla usługi sieci Web, włączając Application Insights, co umożliwia monitorowanie czasów żądania/odpowiedzi, częstotliwości niepowodzeń i wyjątków. Wywołaj funkcję `update()` w istniejącej usłudze sieci Web, aby włączyć Application Insights.
 
 ```python
 service.update(enable_app_insights=True)
 ```
 
-Aby uzyskać więcej informacji na temat pracy z Application Insights w Azure Portal, zobacz [instrukcje](how-to-enable-app-insights.md) .
+Aby uzyskać więcej informacji na temat sposobu pracy z Application Insights w programie Azure Machine Learning Studio, zobacz [temat jak to](how-to-enable-app-insights.md) zrobić.
 
 ## <a name="python-native-logging-settings"></a>Natywne ustawienia rejestrowania języka Python
 

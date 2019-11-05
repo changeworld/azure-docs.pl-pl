@@ -8,20 +8,20 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: personalizer
 ms.topic: conceptual
-ms.date: 09/10/2019
+ms.date: 10/23/2019
 ms.author: diberry
-ms.openlocfilehash: bd57880b11f56b13b4225652071593d29dcc6280
-ms.sourcegitcommit: 12de9c927bc63868168056c39ccaa16d44cdc646
+ms.openlocfilehash: 9d7336fb933ee5e9781d15214fa3e59446aa5b6a
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72515226"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73490714"
 ---
 # <a name="analyze-your-learning-loop-with-an-offline-evaluation"></a>Analizuj pętlę szkoleniową przy użyciu oceny w trybie offline
 
 Dowiedz się, jak przeprowadzić ocenę w trybie offline i zrozumieć wyniki.
 
-Oceny w trybie offline umożliwiają mierzenie, jak skuteczny program Personalizuj jest porównywany z domyślnym zachowaniem aplikacji, Dowiedz się, jakie funkcje są najbardziej związane z personalizacją, i automatycznie Odkryj nowe ustawienia uczenia maszynowego.
+Oceny w trybie offline umożliwiają mierzenie, jak skuteczny program Personalizuj jest porównywany z domyślnym zachowaniem aplikacji, Dowiedz się, jakie funkcje są najbardziej związane z personalizacją i automatycznie odnajduj nowe wartości uczenia maszynowego.
 
 Przeczytaj o [ocenach w trybie offline](concepts-offline-evaluation.md) , aby dowiedzieć się więcej.
 
@@ -35,11 +35,11 @@ Przeczytaj o [ocenach w trybie offline](concepts-offline-evaluation.md) , aby do
 
 1. W [Azure Portal](https://azure.microsoft.com/free/)Znajdź zasób personalizacji.
 1. W Azure Portal przejdź do sekcji **oceny** i wybierz pozycję **Utwórz ocenę**.
-    ![In Azure Portal, przejdź do sekcji * * Evaluations * * i wybierz pozycję * * Utwórz ocenę * *. ](./media/offline-evaluation/create-new-offline-evaluation.png)
-1. Wybierz następujące ustawienia:
+    ![na Azure Portal, przejdź do sekcji * * oceny * * i wybierz pozycję * * Utwórz ocenę * *.](./media/offline-evaluation/create-new-offline-evaluation.png)
+1. Skonfiguruj następujące wartości:
 
     * Nazwa ewaluacyjna
-    * Data rozpoczęcia i zakończenia — są to daty w przeszłości, które określają zakres danych do użycia podczas obliczania. Te dane muszą być obecne w dziennikach, zgodnie z ustawieniami [przechowywania danych](how-to-settings.md) .
+    * Data rozpoczęcia i zakończenia — są to daty w przeszłości, które określają zakres danych do użycia podczas obliczania. Te dane muszą być obecne w dziennikach, jak określono w wartości [przechowywania danych](how-to-settings.md) .
     * Funkcja odnajdywania optymalizacji ma ustawioną **wartość tak**
 
     ![Wybieranie ustawień oceny w trybie offline](./media/offline-evaluation/create-an-evaluation-form.png)

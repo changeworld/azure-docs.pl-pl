@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 05/06/2019
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: 979fa8bed99a8244e9ebae9de4b615bfac4bd773
-ms.sourcegitcommit: c4700ac4ddbb0ecc2f10a6119a4631b13c6f946a
+ms.openlocfilehash: f041381534dfe59036ce1b9d91792f9e78d0dace
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/27/2019
-ms.locfileid: "72966468"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73523454"
 ---
 ## <a name="benefits-of-managed-disks"></a>Zalety dysków zarządzanych
 
@@ -57,7 +57,7 @@ Dyski zarządzane oferują dwa różne rodzaje szyfrowania. Pierwszy jest szyfro
 
 [Szyfrowanie po stronie serwera platformy Azure](../articles/storage/common/storage-service-encryption.md) zapewnia szyfrowanie w czasie spoczynku i zabezpiecza dane zgodnie z zobowiązaniami dotyczącymi bezpieczeństwa i zgodności w organizacji. Szyfrowanie po stronie serwera jest domyślnie włączone dla wszystkich dysków zarządzanych, migawek i obrazów we wszystkich regionach, w których są dostępne usługi Managed Disks. Aby uzyskać więcej informacji, odwiedź [stronę Managed disks często zadawanych pytań](../articles/virtual-machines/windows/faq-for-disks.md#managed-disks-and-storage-service-encryption) .
 
-### <a name="azure-disk-encryption"></a>Azure Disk Encryption
+### <a name="azure-disk-encryption"></a>Usługa Azure Disk Encryption
 
 Azure Disk Encryption pozwala na szyfrowanie dysków systemu operacyjnego i danych używanych przez maszynę wirtualną IaaS. To szyfrowanie obejmuje dyski zarządzane. W przypadku systemu Windows dyski są szyfrowane przy użyciu standardowej technologii szyfrowania funkcji BitLocker. W przypadku systemu Linux dyski są szyfrowane przy użyciu technologii DM-Crypt. Proces szyfrowania jest zintegrowany z usługą Azure Key Vault, aby umożliwić kontrolowanie kluczy szyfrowania dysków i zarządzanie nimi. Aby uzyskać więcej informacji, zobacz [Azure Disk Encryption dla maszyn wirtualnych IaaS](../articles/security/azure-security-disk-encryption-overview.md).
 
@@ -85,12 +85,12 @@ Każda maszyna wirtualna zawiera dysk tymczasowy, który nie jest dyskiem zarzą
 
 Migawka dysku zarządzanego jest tylko do odczytu pełna kopia dysku zarządzanego, która jest domyślnie przechowywana jako standardowy dysk zarządzany. Za pomocą migawek można tworzyć kopie zapasowe dysków zarządzanych w dowolnym momencie. Te migawki istnieją niezależnie od dysku źródłowego i mogą być używane do tworzenia nowych dysków zarządzanych. 
 
-Migawki są rozliczane na podstawie użytego rozmiaru. Na przykład, jeśli utworzysz migawkę dysku zarządzanego o pojemności 64 GiB i rzeczywistej używanej wielkości danych wynoszącej 10 GiB, ta migawka jest naliczana tylko za użyty rozmiar danych wynoszący 10 GiB. Używany rozmiar migawek można zobaczyć, przeglądając [raport użycia platformy Azure](https://docs.microsoft.com/en-us/azure/billing/billing-understand-your-bill). Na przykład jeśli używany rozmiar danych migawki to 10 GiB, raport użycia będzie zawierał 10 GiB/(31 dni x 24 godziny) = 0,013441 GiB jako ilość zużytą.
+Migawki są rozliczane na podstawie użytego rozmiaru. Na przykład, jeśli utworzysz migawkę dysku zarządzanego o pojemności 64 GiB i rzeczywistej używanej wielkości danych wynoszącej 10 GiB, ta migawka jest naliczana tylko za użyty rozmiar danych wynoszący 10 GiB. Używany rozmiar migawek można zobaczyć, przeglądając [raport użycia platformy Azure](https://docs.microsoft.com/en-us/azure/billing/billing-understand-your-bill). Na przykład jeśli używany rozmiar danych migawki to 10 GiB, Raport **dziennego** użycia będzie zawierał 10 GIB/(31 dni) = 0,3226 jako ilość zużytą.
 
-Aby dowiedzieć się więcej na temat tworzenia migawek z dyskami zarządzanymi, zobacz następujące zasoby:
+Aby dowiedzieć się więcej na temat tworzenia migawek dla dysków zarządzanych, zobacz następujące zasoby:
 
-* [Tworzenie kopii wirtualnego dysku twardego przechowywanego jako dysk zarządzany przy użyciu migawek w systemie Windows](../articles/virtual-machines/windows/snapshot-copy-managed-disk.md)
-* [Tworzenie kopii wirtualnego dysku twardego przechowywanej jako dysk zarządzany przy użyciu migawek w systemie Linux](../articles/virtual-machines/linux/snapshot-copy-managed-disk.md)
+* [Tworzenie migawki dysku zarządzanego w systemie Windows](../articles/virtual-machines/windows/snapshot-copy-managed-disk.md)
+* [Tworzenie migawki dysku zarządzanego w systemie Linux](../articles/virtual-machines/linux/snapshot-copy-managed-disk.md)
 
 ### <a name="images"></a>Obrazy
 

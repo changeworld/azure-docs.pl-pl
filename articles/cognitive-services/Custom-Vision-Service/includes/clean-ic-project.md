@@ -5,12 +5,12 @@ ms.subservice: custom-vision
 ms.topic: include
 ms.date: 03/21/2019
 ms.author: pafarley
-ms.openlocfilehash: 4d4c37a31a279fab9af0f3d84575641d10ff09ce
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.openlocfilehash: e478c005ade1320a7a45449c59a1fca49ba7f147
+ms.sourcegitcommit: 8a717170b04df64bd1ddd521e899ac7749627350
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67183556"
+ms.lasthandoff: 09/23/2019
+ms.locfileid: "73519094"
 ---
 ## <a name="clean-up-resources"></a>Oczyszczanie zasobów
 
@@ -18,4 +18,4 @@ Jeśli chcesz wdrożyć swój własny projekt klasyfikacji obrazów (lub zamiast
 
 W [witrynie internetowej Custom Vision](https://customvision.ai) przejdź do obszaru **Projects** (Projekty) i wybierz ikonę kosza w obszarze My New Project (Mój nowy projekt).
 
-![Zrzut ekranu panelu oznaczonego etykietą My New Project (Mój nowy projekt) z ikoną kosza](../media/csharp-tutorial/delete_project.png)
+![Zrzut ekranu przedstawiający panel zatytułowany mój nowy projekt z ikoną kosza](../media/csharp-tutorial/delete_project.png)

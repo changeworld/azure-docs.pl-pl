@@ -1,5 +1,5 @@
 ---
-title: 'Samouczek: Scala Maven Application for Spark with IntelliJ-Azure HDInsight'
+title: 'Samouczek: Scala Maven App for Spark & IntelliJ — Azure HDInsight'
 description: Samouczek — Tworzenie aplikacji Spark, która została zapisywana w Scala za pomocą platformy Apache Maven jako systemu kompilacji i istniejącej Archetype Maven dla Scala zapewnianej przez IntelliJ pomysł.
 author: hrasheed-msft
 ms.author: hrasheed
@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive,mvc
 ms.topic: tutorial
 ms.date: 06/26/2019
-ms.openlocfilehash: 667590120bba4676cbedf3d3bb2ff08e31656e1d
-ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
+ms.openlocfilehash: 156892a4785bf1644d29b82e98c3b2ae202c5a49
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "71147019"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73494704"
 ---
 # <a name="tutorial-create-a-scala-maven-application-for-apache-spark-in-hdinsight-using-intellij"></a>Samouczek: tworzenie aplikacji Scala Maven dla platformy Apache Spark w usłudze HDInsight przy użyciu środowiska IntelliJ
 
@@ -210,7 +210,7 @@ Aplikację można uruchomić w klastrze przy użyciu następujących metod:
 
 Jeśli nie chcesz nadal korzystać z tej aplikacji, Usuń klaster, który został utworzony, wykonując następujące czynności:
 
-1. Zaloguj się do [portalu Azure](https://portal.azure.com/).
+1. Zaloguj się w witrynie [Azure Portal](https://portal.azure.com/).
 
 1. W polu **Wyszukaj** w górnej części wpisz **HDInsight**.
 
@@ -218,9 +218,9 @@ Jeśli nie chcesz nadal korzystać z tej aplikacji, Usuń klaster, który zosta�
 
 1. Na liście wyświetlonych klastrów usługi HDInsight wybierz pozycję **...** obok klastra utworzonego w ramach tego samouczka.
 
-1. Wybierz pozycję **Usuń**. Wybierz pozycję **tak**.
+1. Wybierz pozycję **Usuń**. Wybierz pozycję **Tak**.
 
-![Usuwanie](./media/apache-spark-create-standalone-application/hdinsight-azure-portal-delete-cluster.png "klastra") usługi HDInsight w portalu Azure
+![Usuwanie klastra usługi HDInsight w witrynie Azure Portal](./media/apache-spark-create-standalone-application/hdinsight-azure-portal-delete-cluster.png "Usuwanie klastra usługi HDInsight")
 
 ## <a name="next-step"></a>Następny krok
 

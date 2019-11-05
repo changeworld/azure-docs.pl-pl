@@ -1,5 +1,5 @@
 ---
-title: 'Szybki start: Tworzenie nowej aplikacji w portalu LUIS'
+title: 'Szybki Start: Tworzenie nowej aplikacji w portalu LUIS'
 titleSuffix: Azure Cognitive Services
 description: W tym przewodniku szybki start utworzysz nową aplikację w portalu LUIS. Utwórz podstawowe elementy aplikacji, intencje i jednostki. Przetestuj aplikację, dostarczając przykładowej wypowiedź użytkownika w panelu test interaktywny, aby uzyskać przewidywany cel. Tworzenie aplikacji jest bezpłatne; nie wymaga subskrypcji platformy Azure.
 services: cognitive-services
@@ -10,14 +10,17 @@ ms.subservice: language-understanding
 ms.topic: quickstart
 ms.date: 09/04/2019
 ms.author: diberry
-ms.openlocfilehash: ff666437790a1e32dde83f9e3be90b4c62637181
-ms.sourcegitcommit: f176e5bb926476ec8f9e2a2829bda48d510fbed7
-ms.translationtype: MT
+ms.openlocfilehash: 6888c53122e649d6a0e91f8ece30101f051c08e8
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70307730"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73488782"
 ---
-# <a name="quickstart-create-a-new-app-in-the-luis-portal"></a>Szybki start: Tworzenie nowej aplikacji w portalu LUIS
+# <a name="quickstart-create-a-new-app-in-the-luis-portal"></a>Szybki Start: Tworzenie nowej aplikacji w portalu LUIS
+
+
+[!INCLUDE [Waiting for LUIS portal refresh](./includes/wait-v3-upgrade.md)]
 
 W tym przewodniku szybki start utworzysz nową aplikację w [portalu Luis](https://www.luis.ai). Najpierw utworzysz podstawowe elementy aplikacji, **intencje**i **jednostki**. Następnie przetestuj aplikację, dostarczając przykładowej wypowiedź użytkownika w panelu testów interakcyjnych, aby uzyskać przewidywany cel.
 
@@ -27,17 +30,17 @@ Tworzenie aplikacji jest bezpłatne i nie wymaga subskrypcji platformy Azure. Gd
 
 ## <a name="create-an-app"></a>Tworzenie aplikacji
 
-1. Wybierz pozycję **Utwórz nową aplikację** na podstawie paska narzędzi kontekstu.
+1. Wybierz pozycję **+ Utwórz** na pasku narzędzi kontekstu.
 
-   [![Utwórz nową aplikację w portalu LUIS](./media/get-started-portal-build-app/create-app-in-portal.png)](./media/get-started-portal-build-app/create-app-in-portal.png#lightbox)
+   [![utworzyć nową aplikację w portalu LUIS](./media/get-started-portal-build-app/create-app-in-portal.png)](./media/get-started-portal-build-app/create-app-in-portal.png#lightbox)
 
 1. W oknie podręcznym Skonfiguruj aplikację przy użyciu następujących ustawień, a następnie wybierz pozycję **gotowe**.
 
-   |Nazwa ustawienia| Value | Cel|
+   |Nazwa ustawienia| Wartość | Przeznaczenie|
    |--|--|--|
-   |Name|`myEnglishApp`|Unikatowa nazwa aplikacji LUIS<br>wymagane|
-   |Kultura|**Angielski**|Język wyrażenia długości od użytkowników, **en-us**<br>wymagane|
-   |Opis|`App made with LUIS Portal`|Opis aplikacji<br>opcjonalne|
+   |Nazwa|`myEnglishApp`|Unikatowa nazwa aplikacji LUIS<br>Wymagane|
+   |Kultura|**Angielski**|Język wyrażenia długości od użytkowników, **en-us**<br>Wymagane|
+   |Opis|`App made with LUIS Portal`|Opis aplikacji<br>Obowiązkowe|
    | | | |
 
    ![Wprowadź nowe ustawienia aplikacji](./media/get-started-portal-build-app/create-new-app-settings.png)
@@ -58,23 +61,23 @@ Dwie różne _intencje_ dotyczące aplikacji są wyrównane do następujących i
 
 Aby utworzyć intencje, wykonaj następujące czynności:
 
-1. Po utworzeniu aplikacji znajduje się na stronie **intencje** w sekcji **kompilacja** . Wybierz pozycję **Create new intent** (Utwórz nową intencję).
+1. Po utworzeniu aplikacji znajduje się na stronie **intencje** w sekcji **kompilacja** . Wybierz pozycję**Create new intent** (Utwórz nową intencję).
 
-   [![Przycisk Utwórz nowy cel](./media/get-started-portal-build-app/create-new-intent-button.png)](./media/get-started-portal-build-app/create-new-intent-button.png#lightbox)
+   [![wybierz przycisk Utwórz nowy cel](./media/get-started-portal-build-app/create-new-intent-button.png)](./media/get-started-portal-build-app/create-new-intent-button.png#lightbox)
 
-1. Wprowadź nazwę `FindForm`celu, a następnie wybierz pozycję **gotowe**.
+1. Wprowadź nazwę zamierzenia, `FindForm`a następnie wybierz pozycję **gotowe**.
 
    ![Wprowadź nazwę zamiaru FindForm](./media/get-started-portal-build-app/create-new-intent-dialog.png)
 
-## <a name="add-an-example-utterance"></a>Dodaj wypowiedź przykład
+## <a name="add-an-example-utterance"></a>Dodawanie przykładu wypowiedź
 
 Po utworzeniu zamiarów należy dodać przykład wyrażenia długości. Przykład wyrażenia długości jest tekstem, który użytkownik wprowadza w programie Chat bot lub innej aplikacji klienckiej. Umożliwiają one mapowanie zamiaru tekstu użytkownika na LUIS zamiar.
 
 Na potrzeby tego przykładowej `FindForm` aplikacji Przykładowa wyrażenia długości będzie zawierać numer formularza. Aplikacja kliencka wymaga, aby numer formularza spełniał żądanie użytkownika, więc należy go uwzględnić w wypowiedź.
 
-[![Wprowadź przykład wyrażenia długości dla zamiaru FindForm](./media/get-started-portal-build-app/add-example-utterance.png)](./media/get-started-portal-build-app/add-example-utterance.png#lightbox)
+[![wprowadzić przykład wyrażenia długości dla zamiaru FindForm](./media/get-started-portal-build-app/add-example-utterance.png)](./media/get-started-portal-build-app/add-example-utterance.png#lightbox)
 
-Dodaj do `FindForm` zamiaru 15-przykładową wyrażenia długości.
+Dodaj następujące 15 przykładowych wyrażenia długości do zamiaru `FindForm`.
 
 |#|Przykładowe wypowiedzi|
 |--|--|
@@ -112,7 +115,7 @@ Aby zwrócić numer formularza w odpowiedzi przewidywania środowiska uruchomien
 
 1. Na stronie **jednostki** wybierz pozycję **Utwórz nową jednostkę** .
 
-1. Wprowadź nazwę `Human Resources Form Number`, wybierz typ podmiotu **wyrażenia regularnego** , a następnie wprowadź wyrażenie `hrf-[0-9]{6}`regularne. Ten wpis jest zgodny ze znakami `hrf-`literału, i zezwala na dokładnie 6 cyfr.
+1. Wprowadź nazwę `Human Resources Form Number`, wybierz typ podmiotu **wyrażenia regularnego** , a następnie wprowadź wyrażenie regularne, `hrf-[0-9]{6}`. Ten wpis Dopasowuje znaki literału, `hrf-`i zezwala na dokładnie 6 cyfr.
 
    ![Wprowadź informacje o jednostce dla jednostki wyrażenia regularnego](./media/get-started-portal-build-app/create-regular-expression-entity.png)
 
@@ -146,7 +149,7 @@ W menu w prawym górnym rogu wybierz pozycję **uczenie** , aby zastosować zmia
 
    Jednostka jest oznaczona, gdzie pojawia się w przykładzie wyrażenia długości. Jeśli chcesz zobaczyć oryginalny tekst zamiast nazwy jednostki, przełącz **Widok jednostek** z paska narzędzi.
 
-   [![Wszystkie przykładowe wyrażenia długości oznaczone obiektami](./media/get-started-portal-build-app/all-example-utterances-marked-with-entities.png)](./media/get-started-portal-build-app/all-example-utterances-marked-with-entities.png#lightbox)
+   [![wszystkie przykładowe wyrażenia długości oznaczone obiektami](./media/get-started-portal-build-app/all-example-utterances-marked-with-entities.png)](./media/get-started-portal-build-app/all-example-utterances-marked-with-entities.png#lightbox)
 
 ## <a name="test-your-new-app-with-the-interactive-test-pane"></a>Testowanie nowej aplikacji za pomocą interaktywnego okienka testów
 
@@ -166,9 +169,9 @@ Użyj interaktywnego okienka **testowego** w portalu Luis, aby sprawdzić, czy j
 
 Po zakończeniu korzystania z tego przewodnika Szybki Start i przechodzenia do następnego przewodnika Szybki Start wybierz pozycję **Moje aplikacje** w górnym menu nawigacji. Następnie zaznacz pole wyboru po lewej stronie z listy i wybierz pozycję **Usuń** z paska narzędzi kontekstu powyżej listy.
 
-[![Usuń aplikację z listy Moje aplikacje](./media/get-started-portal-build-app/delete-app.png)](./media/get-started-portal-build-app/delete-app.png#lightbox)
+[![usunąć aplikacji z listy Moje aplikacje](./media/get-started-portal-build-app/delete-app.png)](./media/get-started-portal-build-app/delete-app.png#lightbox)
 
 ## <a name="next-steps"></a>Następne kroki
 
 > [!div class="nextstepaction"]
-> [2. Wdrażanie aplikacji](get-started-portal-deploy-app.md)
+> [2. Wdróż aplikację](get-started-portal-deploy-app.md)

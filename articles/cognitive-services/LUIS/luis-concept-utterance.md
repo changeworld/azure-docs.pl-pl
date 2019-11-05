@@ -9,14 +9,14 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
-ms.date: 05/07/2019
+ms.date: 10/15/2019
 ms.author: diberry
-ms.openlocfilehash: 3c3c54faa882a38fb6c55c9fc0476a569f25cb98
-ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
+ms.openlocfilehash: 8069b3b9c9a226e29a3eae3261948ee92291726d
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68638331"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73486623"
 ---
 # <a name="understand-what-good-utterances-are-for-your-luis-app"></a>Dowiedz się, co to jest dobry wyrażenia długości dla aplikacji LUIS
 
@@ -68,7 +68,7 @@ Każdy cel musi mieć przykład wyrażenia długości, co najmniej 15. Jeśli ma
 
 ## <a name="add-small-groups-of-15-utterances-for-each-authoring-iteration"></a>Dodaj małe grupy 15 wyrażenia długości dla każdej iteracji tworzenia
 
-W każdej iteracji modelu nie należy dodawać dużej liczby wyrażenia długości. Dodaj wyrażenia długości w ilościach 15. [](luis-how-to-train.md)Ponownie nauczenie, [opublikowanie](luis-how-to-publish-app.md)i przetestowanie. [](luis-interactive-test.md)  
+W każdej iteracji modelu nie należy dodawać dużej liczby wyrażenia długości. Dodaj wyrażenia długości w ilościach 15. Ponownie [nauczenie](luis-how-to-train.md), [opublikowanie](luis-how-to-publish-app.md)i [przetestowanie](luis-interactive-test.md) .  
 
 LUIS kompiluje wydajne modele z wyrażenia długości, które są starannie wybierane przez autora modelu LUIS. Dodanie zbyt wielu wyrażenia długości nie jest cenne, ponieważ wprowadza pomyłkę.  
 
@@ -90,7 +90,7 @@ Znaki diakrytyczne są znakami lub znakami w tekście, na przykład:
 
 Jeśli aplikacja zostanie przesunięta na, wyniki w okienku **testów** , testy wsadowe i zapytania dotyczące punktów końcowych zmienią się dla wszystkich wyrażenia długości za pomocą znaków diakrytycznych lub interpunkcji.
 
-Włącz normalizowanie wypowiedź dla znaków diakrytycznych lub interpunkcji do pliku aplikacji Luis JSON w `settings` parametrze.
+Włącz normalizację wypowiedź dla znaków diakrytycznych lub interpunkcji do pliku aplikacji LUIS JSON w parametrze `settings`.
 
 ```JSON
 "settings": [
@@ -101,28 +101,28 @@ Włącz normalizowanie wypowiedź dla znaków diakrytycznych lub interpunkcji do
 
 Normalizacja **interpunkcji** oznacza, że zanim modele są przeszkolone i zanim zapytania punktu końcowego zostaną przewidywalne, interpunkcja zostanie usunięta z wyrażenia długości. 
 
-Normalizacja znaków **diakrytycznych** zastępuje znaki znakami diakrytycznymi w wyrażenia długości z regularnymi znakami. Na przykład: `Je parle français` przyjmie `Je parle francais`. 
+Normalizacja znaków **diakrytycznych** zastępuje znaki znakami diakrytycznymi w wyrażenia długości z regularnymi znakami. Na przykład: `Je parle français` jest `Je parle francais`. 
 
 Normalizacja nie oznacza, że w przykładach wyrażenia długości lub przewidywania nie zobaczysz interpunkcji ani znaków diakrytycznych, tylko te, które zostaną zignorowane podczas uczenia się i przewidywania.
 
 
 ### <a name="punctuation-marks"></a>Znaki interpunkcyjne
 
-Znak interpunkcyjny jest tokenu oddzielnych w usługi LUIS. Wypowiedź, który zawiera kropkę na końcu, a wypowiedź, który nie zawiera kropki na końcu, to dwa oddzielne wyrażenia długości i mogą uzyskać dwa różne przewidywania. 
+Interpunkcja jest osobnym tokenem w LUIS. Wypowiedź, który zawiera kropkę na końcu, a wypowiedź, który nie zawiera kropki na końcu, to dwa oddzielne wyrażenia długości i mogą uzyskać dwa różne przewidywania. 
 
 Jeśli interpunkcja nie jest znormalizowana, LUIS nie ignoruje znaków interpunkcyjnych, domyślnie, ponieważ niektóre aplikacje klienckie mogą umieścić istotny wpływ na te znaki. Upewnij się, że przykład wyrażenia długości używać interpunkcji i bez znaków interpunkcyjnych, aby oba style zwracały te same wyniki względne. 
 
-Upewnij się, że model obsługuje znaki interpunkcyjne, albo w [wypowiedzi przykład](luis-concept-utterance.md) (istnienie i nie ma znaków interpunkcyjnych) lub w [wzorców](luis-concept-patterns.md) gdzie jest łatwiej Ignoruj znaków interpunkcyjnych przy użyciu specjalnej składni: `I am applying for the {Job} position[.]`
+Upewnij się, że model obsługuje interpunkcję w [przykład wyrażenia długości](luis-concept-utterance.md) (bez znaków interpunkcyjnych) lub w [wzorcach](luis-concept-patterns.md) , w których łatwiej jest zignorować interpunkcję z specjalną składnią: `I am applying for the {Job} position[.]`
 
-Jeśli interpunkcja nie ma określonego znaczenia w aplikacji klienckiej, [](#utterance-normalization) należy wziąć pod uwagę ignorowanie interpunkcji przez normalizowanie interpunkcji. 
+Jeśli interpunkcja nie ma określonego znaczenia w aplikacji klienckiej, należy wziąć pod uwagę [Ignorowanie interpunkcji](#utterance-normalization) przez normalizowanie interpunkcji. 
 
 ### <a name="ignoring-words-and-punctuation"></a>Ignorowanie wyrazów i interpunkcji
 
-Jeśli chcesz zignorować określone wyrazy lub interpunkcję w wzorcach, użyj [wzorca](luis-concept-patterns.md#pattern-syntax) z ignorowaną składnią nawiasów `[]`kwadratowych. 
+Jeśli chcesz zignorować określone wyrazy lub interpunkcję w wzorcach, użyj [wzorca](luis-concept-patterns.md#pattern-syntax) z _ignorowaną_ składnią nawiasów kwadratowych, `[]`. 
 
 ## <a name="training-utterances"></a>Szkolenia wyrażenia długości
 
-Szkolenie jest ogólnie niedeterministyczne: przewidywania wypowiedź może się nieco różnić w różnych wersjach lub aplikacjach. Można usunąć niedeterministyczne szkolenie przez zaktualizowanie interfejsu API [ustawień wersji](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/versions-update-application-version-settings) za pomocą `UseAllTrainingData` pary nazwa/wartość, aby używać wszystkich danych szkoleniowych.
+Szkolenie jest ogólnie niedeterministyczne: przewidywania wypowiedź może się nieco różnić w różnych wersjach lub aplikacjach. Można usunąć niedeterministyczne szkolenie przez zaktualizowanie interfejsu API [ustawień wersji](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/versions-update-application-version-settings) za pomocą pary nazwa `UseAllTrainingData`/wartość, aby używać wszystkich danych szkoleniowych.
 
 ## <a name="testing-utterances"></a>Testowanie wyrażenia długości 
 
@@ -135,6 +135,20 @@ Po przeszkoleniu, opublikowaniu i odebraniu zapytania dotyczącego [punktu końc
 ## <a name="best-practices"></a>Najlepsze praktyki
 
 Zapoznaj się z [najlepszymi rozwiązaniami](luis-concept-best-practices.md) i zastosuj je w ramach regularnego cyklu tworzenia.
+
+## <a name="label-for-word-meaning"></a>Etykieta wyrazu znaczenie
+
+Jeśli wybór wyrazu lub uzgodnienie wyrazu są takie same, ale nie oznacza to tego samego znaczenia, nie należy oznaczyć go jednostką. 
+
+Następujący wyrażenia długości, słowo `fair` to homograph. Nazwa jest taka sama, ale ma inne znaczenie:
+
+|Wypowiedź|
+|--|
+|Jakiego rodzaju targi są wykonywane w regionie Seattle w tym lato?|
+|Czy aktualna ocena jest atrakcyjna dla przeglądu w Seattle?|
+
+Jeśli chcesz, aby jednostka zdarzenia znalazła wszystkie dane zdarzeń, Oznacz słowo `fair` w pierwszej wypowiedź, ale nie w drugim.
+
 
 ## <a name="next-steps"></a>Następne kroki
 Zobacz [Dodawanie przykładu wyrażenia długości](luis-how-to-add-example-utterances.md) , aby uzyskać informacje na temat szkolenia aplikacji Luis, aby poznać wyrażenia długości użytkownika.

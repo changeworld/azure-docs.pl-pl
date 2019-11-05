@@ -1,7 +1,7 @@
 ---
 title: Wyeksportuj i usuń swoje dane
-titleSuffix: Azure Machine Learning Studio
-description: W ramach produktu — dane przechowywane w usłudze Azure Machine Learning Studio jest dostępna dla eksportowania i usuwania za pośrednictwem witryny Azure portal, a także za pośrednictwem uwierzytelnionych interfejsów API REST. Dane telemetryczne są dostępne za pośrednictwem portalu Azure ochrony prywatności. W tym artykule przedstawiono, jak.
+titleSuffix: Azure Machine Learning Studio (classic)
+description: Dane w produkcie przechowywane przez Azure Machine Learning Studio (klasyczne) są dostępne do eksportowania i usuwania za pomocą Azure Portal a także za pomocą uwierzytelnionych interfejsów API REST. Dostęp do danych telemetrycznych można uzyskać za pomocą portalu ochrony prywatności systemu Azure. W tym artykule pokazano, jak to zrobić.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: studio
@@ -10,68 +10,68 @@ author: xiaoharper
 ms.author: amlstudiodocs
 ms.custom: previous-author=heatherbshapiro, previous-ms.author=hshapiro
 ms.date: 05/25/2018
-ms.openlocfilehash: 827714fea9618724ef058e1f76dc099f692482bc
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: a0cc200f69be2362806886aae79ece52c833a43a
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60750118"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73492960"
 ---
-# <a name="export-and-delete-in-product-user-data-from-azure-machine-learning-studio"></a>Eksportowanie i usunąć dane użytkownika w produkcie z usługi Azure Machine Learning Studio
+# <a name="export-and-delete-in-product-user-data-from-azure-machine-learning-studio-classic"></a>Eksportuj i usuwaj dane użytkownika w ramach produktu z Azure Machine Learning Studio (klasyczne)
 
-Można usunąć lub Eksportuj dane w ramach produktu przechowywane przez usługi Azure Machine Learning Studio za pomocą witryny Azure portal, interfejsu Studio, środowiska PowerShell i uwierzytelniony interfejsów API REST. W tym artykule wyjaśniono sposób. 
+Można usuwać lub eksportować dane w produkcie przechowywane przez Azure Machine Learning Studio (klasyczne) przy użyciu Azure Portal, programu Studio (klasycznego) interfejsu, programu PowerShell i uwierzytelnionych interfejsów API REST. Ten artykuł zawiera informacje o tym, jak to zrobić. 
 
-Dane telemetryczne są dostępne za pośrednictwem portalu Azure prywatności. 
+Dostęp do danych telemetrycznych można uzyskać za pomocą portalu ochrony prywatności systemu Azure. 
 
 [!INCLUDE [GDPR-related guidance](../../../includes/gdpr-dsr-and-stp-note.md)]
 
 [!INCLUDE [GDPR-related guidance](../../../includes/gdpr-intro-sentence.md)]
 
-## <a name="what-kinds-of-user-data-does-studio-collect"></a>Jakiego rodzaju dane użytkownika są zbierane w Studio?
+## <a name="what-kinds-of-user-data-does-studio-classic-collect"></a>Jakie rodzaje danych użytkownika są zbierane dla programu Studio (klasyczne)?
 
-Dane użytkownika tej usługi składa się z informacji na temat użytkowników uprawnionych do dostępu do obszarów roboczych i rejestruje dane telemetryczne interakcji użytkowników z usługą.
+W przypadku tej usługi dane użytkownika składają się z informacji dotyczących użytkowników uprawnionych do uzyskiwania dostępu do obszarów roboczych i rekordów telemetrii interakcji użytkowników z usługą.
 
-Istnieją dwa rodzaje danych użytkownika w usłudze Machine Learning Studio:
-- **Dane konto osobiste:** Identyfikatory konta i adresy skojarzonych z kontem e-mail.
-- **Dane klienta:** Dane, który został przekazany do przeanalizowania.
+Istnieją dwa rodzaje danych użytkownika w Machine Learning Studio (klasyczny):
+- **Dane konta osobistego:** Identyfikatory kont i adresy e-mail skojarzone z kontem.
+- **Dane klienta:** Dane, które zostały przekazane do analizy.
 
-## <a name="studio-account-types-and-how-data-is-stored"></a>Typy kont Studio i sposobu przechowywania danych
+## <a name="studio-classic-account-types-and-how-data-is-stored"></a>Typy kont Studio (klasyczne) i sposób przechowywania danych
 
-Istnieją trzy rodzaje kont w usłudze Machine Learning Studio. Rodzaj konta określa sposób przechowywania danych i jak usunąć lub wyeksportować je.
+Istnieją trzy rodzaje kont w Machine Learning Studio (klasyczne). Rodzaj konta decyduje o sposobie przechowywania danych i sposobach ich usuwania lub eksportowania.
 
-- A **obszaru roboczego gościa** jest bezpłatna, anonimowe konta. Możesz zarejestrować się bez podawania poświadczeń, takich jak adres e-mail lub hasło.
+- **Obszar roboczy gościa** to bezpłatne, anonimowe konto. Zarejestruj się bez podawania poświadczeń, takich jak adres e-mail lub hasło.
     -  Dane są przeczyszczane po wygaśnięciu obszaru roboczego gościa.
-    - Użytkownicy-goście, można wyeksportować dane klientów za pośrednictwem pakietu interfejsu użytkownika, interfejsów API REST lub programu PowerShell.
-- A **obszaru roboczego warstwy bezpłatna** jest utworzenie bezpłatnego konta, zaloguj się z firmą Microsoft poświadczenia — adres e-mail i hasło konta.
-    - Można eksportować i usuwać dane osobiste i klienta, które podlegają żądań praw podmiotu danych.
-    - Możesz wyeksportować dane klientów za pośrednictwem pakietu interfejsu użytkownika, interfejsów API REST lub programu PowerShell.
-    - Bezpłatnie obszarów roboczych nie używa konta usługi Azure AD, dane telemetryczne można wyeksportować za pomocą portalu ochrony prywatności.
-    - Jeśli usuniesz obszar roboczy, możesz usunąć wszystkich danych osobowych klientów.
-- A **obszar roboczy warstwy standardowa** jest płatne konto, możesz uzyskać dostęp przy użyciu poświadczeń logowania.
-    - Można eksportować i usuwać dane osobiste i klienta, które podlegają żądania praw podmiotu danych.
-    - Dostęp do danych za pośrednictwem portalu Azure prywatności
-    - Możesz wyeksportować dane osobiste i klientów za pośrednictwem pakietu interfejsu użytkownika, interfejsów API REST lub programu PowerShell
-    - Można usunąć danych w witrynie Azure portal.
+    - Użytkownicy-Goście mogą eksportować dane klientów za pomocą interfejsu użytkownika, interfejsów API REST lub pakietu programu PowerShell.
+- **Bezpłatny obszar roboczy** to bezpłatne konto, za pomocą którego logujesz się przy użyciu poświadczeń konto Microsoft — adresu e-mail i hasła.
+    - Możesz eksportować i usuwać dane osobowe i klienta, które podlegają żądania praw podmiotu danych (DSR).
+    - Dane klientów można eksportować za pomocą interfejsu użytkownika, interfejsów API REST lub pakietu programu PowerShell.
+    - W przypadku bezpłatnych obszarów roboczych, które nie korzystają z kont usługi Azure AD, dane telemetryczne można eksportować za pomocą portalu ochrony prywatności.
+    - Po usunięciu obszaru roboczego można usunąć wszystkie osobiste dane klientów.
+- **Obszar roboczy w warstwie Standardowa** to płatne konto, do którego uzyskuje się dostęp przy użyciu poświadczeń logowania.
+    - Możesz eksportować i usuwać dane Personal i klienta, które podlegają żądaniami DSR.
+    - Dostęp do danych można uzyskać za pomocą portalu ochrony prywatności systemu Azure
+    - Dane Personal i Customer można eksportować za pomocą interfejsu użytkownika, interfejsów API REST lub pakietu programu PowerShell.
+    - Dane można usunąć w Azure Portal.
 
-## <a name="delete"></a>Usuwanie danych obszaru roboczego w programie Studio 
+## <a name="delete"></a>Usuwanie danych obszaru roboczego w programie Studio (klasyczne) 
 
-### <a name="delete-individual-assets"></a>Usuwać poszczególne zasoby
+### <a name="delete-individual-assets"></a>Usuwanie pojedynczych zasobów
 
-Użytkownicy mogą usuwać zasoby w obszarze roboczym, wybierając je, a następnie wybierając przycisk Usuń.
+Użytkownicy mogą usuwać zasoby w obszarze roboczym, zaznaczając je, a następnie wybierając przycisk Usuń.
 
-![Usuń zasoby w usłudze Machine Learning Studio](./media/export-delete-personal-data-dsr/delete-studio-asset.png)
+![Usuwanie zasobów w Machine Learning Studio (klasyczny)](./media/export-delete-personal-data-dsr/delete-studio-asset.png)
 
-### <a name="delete-an-entire-workspace"></a>Usuń całego obszaru roboczego
+### <a name="delete-an-entire-workspace"></a>Usuwanie całego obszaru roboczego
 
-Użytkownicy mogą również usuwać ich całego obszaru roboczego:
-- Płatne obszar roboczy: Usuń za pośrednictwem witryny Azure portal.
-- Bezpłatny obszar roboczy: Użyj przycisku usuwania w **ustawienia** okienka.
+Użytkownicy mogą również usunąć całe obszary robocze:
+- Płatny obszar roboczy: usuwanie przez Azure Portal.
+- Bezpłatny obszar roboczy: Użyj przycisku Usuń w okienku **Ustawienia** .
 
-![Usuń bezpłatny obszar roboczy w usłudze Machine Learning Studio](./media/export-delete-personal-data-dsr/delete-studio-data-workspace.png)
+![Usuń bezpłatny obszar roboczy w Machine Learning Studio (klasyczny)](./media/export-delete-personal-data-dsr/delete-studio-data-workspace.png)
  
-## <a name="export-studio-data-with-powershell"></a>Eksportowanie danych Studio za pomocą programu PowerShell
-Aby wyeksportować wszystkie informacje do formatu przenośnego z usługi Azure Machine Learning Studio za pomocą poleceń za pomocą programu PowerShell. Aby uzyskać informacje, zobacz [modułu programu PowerShell dla usługi Azure Machine Learning Studio](powershell-module.md) artykułu.
+## <a name="export-studio-classic-data-with-powershell"></a>Eksportowanie danych z programu Studio (klasycznego) przy użyciu środowiska PowerShell
+Użyj programu PowerShell, aby wyeksportować wszystkie informacje do formatu przenośnego z klasycznej wersji Azure Machine Learning Studio przy użyciu poleceń. Aby uzyskać więcej informacji, zobacz artykuł [dotyczący modułu programu PowerShell dla Azure Machine Learning Studio (klasyczny)](powershell-module.md) .
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
-Dokumentacja usług sieci web i zobowiązania plan rozliczeniowy, w temacie [odwołania API REST usługi Azure Machine Learning Studio](https://docs.microsoft.com/rest/api/machinelearning/). 
+Aby uzyskać dokumentację obejmującą usługi sieci Web i rozliczenia planu zobowiązań, zobacz [Azure Machine Learning Studio (klasyczny) Dokumentacja interfejsu API REST](https://docs.microsoft.com/rest/api/machinelearning/). 

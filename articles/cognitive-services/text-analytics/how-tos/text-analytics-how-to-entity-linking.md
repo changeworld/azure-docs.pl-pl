@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: article
-ms.date: 07/30/2019
+ms.date: 10/21/2019
 ms.author: aahi
-ms.openlocfilehash: 642b21624ce3ffc993d5f29a413845044d703fd7
-ms.sourcegitcommit: 909ca340773b7b6db87d3fb60d1978136d2a96b0
+ms.openlocfilehash: e51e5945df8b08ec81db0c85416b31b3ec788ffd
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/13/2019
-ms.locfileid: "70984267"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73488642"
 ---
 # <a name="how-to-use-named-entity-recognition-in-text-analytics"></a>Jak używać rozpoznawania jednostek nazwanych w analiza tekstu
 
@@ -23,51 +23,113 @@ ms.locfileid: "70984267"
 
 ## <a name="entity-linking-and-named-entity-recognition"></a>Łączenie jednostek i rozpoznawanie nazwanych jednostek
 
-Punkt końcowy analiza tekstu `entities` "obsługuje zarówno rozpoznawanie jednostek nazwanych (ner), jak i łączenie jednostek.
+Analiza tekstu "`entities` punkt końcowy obsługuje zarówno rozpoznawanie jednostek nazwanych (NER), jak i łączenie jednostek.
 
 ### <a name="entity-linking"></a>Łączenie jednostek
-Łączenie jednostek to możliwość identyfikacji i odróżnienia tożsamości jednostki znalezionej w tekście (na przykład określenie, czy element "Mars" jest używany jako globalnej, czy jako Rzymskie akty Boże War). Ten proces wymaga obecności bazy wiedzy, do której są połączone powiązane jednostki — jest używana jako baza wiedzy dla `entities` punktu końcowego analiza tekstu.
+Łączenie jednostek to możliwość identyfikacji i odróżnienia tożsamości jednostki znalezionej w tekście (na przykład określenie, czy element "Mars" jest używany jako globalnej, czy jako Rzymskie akty Boże War). Ten proces wymaga obecności bazy wiedzy, do której są połączone powiązane jednostki — jest używana jako baza wiedzy dla analiza tekstu punktu końcowego `entities`.
 
 ### <a name="named-entity-recognition-ner"></a>Rozpoznawanie jednostek nazwanych (NER)
-Funkcja rozpoznawania jednostek nazwanych (NER) to możliwość identyfikowania różnych jednostek w tekście i kategoryzowania ich w klasach wstępnie zdefiniowanych. Poniżej wymieniono obsługiwane klasy jednostek.
+Funkcja rozpoznawania jednostek nazwanych (NER) to możliwość identyfikowania różnych jednostek w tekście i kategoryzowania ich w wstępnie zdefiniowanych klasach lub typach. 
 
-W analiza tekstu w [wersji 2,1](https://westcentralus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v2-1/operations/5ac4251d5b4ccd1554da7634), zarówno konsolidacja jednostek, jak i nazwanego rozpoznawania jednostek (ner) są dostępne dla kilku języków. Aby uzyskać więcej informacji, zobacz artykuł [Obsługa języka](../language-support.md#sentiment-analysis-key-phrase-extraction-and-named-entity-recognition) .
+## <a name="named-entity-recognition-v3-public-preview"></a>Niestandardowa wersja próbna rozpoznawania jednostek v3
 
-### <a name="language-support"></a>Obsługa języków
+[Następna wersja rozpoznawania nazwanych jednostek](https://cognitiveusw2ppe.portal.azure-api.net/docs/services/TextAnalytics-v3-0-Preview-1/operations/56f30ceeeda5650db055a3c7/console) jest teraz dostępna w publicznej wersji zapoznawczej. Udostępnia ona aktualizacje zarówno do łączenia jednostek, jak i nazwanego rozpoznawania jednostek. 
 
-Używanie łączenia jednostek w różnych językach wymaga użycia odpowiedniej bazy wiedzy w każdym z języków. W przypadku łączenia jednostek w analiza tekstu oznacza to, że każdy język, który jest `entities` obsługiwany przez punkt końcowy, będzie łączyć się z odpowiednim korpus witryny Wikipedia w tym języku. Ponieważ rozmiar korpusy różni się między językami, oczekuje się, że odwołanie do funkcji łączenia jednostki również będzie się różnić.
+:::row:::
+    :::column span="":::
+        **Funkcja**
+    :::column-end:::
+    ::: column span="":::
+        **Opis** 
+    :::column-end:::
+:::row-end:::
+<!-- expanded types and subtypes row-->
+:::row:::
+    :::column span="":::
+        Rozwinięte typy i podtypy jednostek
+    :::column-end:::
+    :::column span="":::
+     Rozszerzona klasyfikacja i wykrywanie dla kilku typów jednostek nazwanych.
+    :::column-end:::
+:::row-end:::
+<!-- separate endpoints row-->
+:::row:::
+    :::column span="":::
+        Oddziel punkty końcowe żądania 
+    :::column-end:::
+    :::column span="":::
+        Oddziel punkty końcowe do wysyłania połączeń jednostek i żądań NER.
+    :::column-end:::
+:::row-end:::
+<!-- model-version row -->
+:::row:::
+    :::column span="":::
+        `model-version` parametr
+    :::column-end:::
+    :::column span="":::
+        Opcjonalny parametr służący do wybierania wersji modelu analiza tekstu. Obecnie tylko domyślny model jest dostępny do użycia.
+    :::column-end:::
+:::row-end:::
 
-## <a name="supported-types-for-named-entity-recognition"></a>Obsługiwane typy rozpoznawania jednostek nazwanych
+### <a name="entity-types"></a>Typy jednostek
 
-| Type  | SubType | Przykład |
+Rozpoznawanie jednostek nazwanych v3 zapewnia rozszerzone wykrywanie w wielu typach. Obecnie NER v3 może rozpoznać następujące kategorie jednostek. Aby uzyskać szczegółową listę obsługiwanych jednostek i języków, zobacz artykuł [typy jednostek nazwanych](../named-entity-types.md) .
+
+* Ogólne
+* Dane osobowe 
+
+### <a name="request-endpoints"></a>Punkty końcowe żądania
+
+Nazwanego rozpoznawania jednostek v3 używa oddzielnych punktów końcowych dla żądań NER i konsolidacji jednostek. Użyj poniższego formatu adresu URL na podstawie Twojego żądania:
+
+NER
+* Jednostki ogólne — `https://<your-custom-subdomain>.cognitiveservices.azure.com/text/analytics/v3.0-preview.1/entities/recognition/general`
+
+* Jednostki danych osobowych — `https://<your-custom-subdomain>.cognitiveservices.azure.com/text/analytics/v3.0-preview.1/entities/recognition/pii`
+
+Łączenie jednostek
+* `https://<your-custom-subdomain>.cognitiveservices.azure.com/text/analytics/v3.0-preview.1/entities/linking`
+
+### <a name="model-versioning"></a>Przechowywanie wersji modelu
+
+[!INCLUDE [v3-model-versioning](../includes/model-versioning.md)]
+
+## <a name="supported-types-for-named-entity-recognition-v2"></a>Obsługiwane typy dla nazwanego rozpoznawania jednostek v2
+
+> [!NOTE]
+> Następujące jednostki są obsługiwane przez funkcję rozpoznawania jednostek nazwanych (NER) w wersji 2. [Ner v3](#named-entity-recognition-v3-public-preview) jest dostępna w publicznej wersji zapoznawczej i znacząco rozszerza liczbę i głębokość jednostek rozpoznawanych w tekście.   
+
+| Typ  | Podtyp | Przykład |
 |:-----------   |:------------- |:---------|
-| Person (Osoba)        | NIE DOTYCZY\*         | "Jan", "bramy Bill"     |
-| Location      | NIE DOTYCZY\*         | „Redmond, Washington”, „Paris”  |
-| Organizacja  | NIE DOTYCZY\*         | „Microsoft”   |
-| Ilość      | Liczba        | „6”, „six”     |
-| Ilość      | Wartość procentowa    | „50%”, „fifty percent”|
-| Ilość      | Liczba porządkowa       | „2nd”, „second”     |
-| Ilość      | Wiek           | "90 dzień dawna", "30 lat starych"    |
-| Ilość      | Currency      | „$10,99”     |
-| Ilość      | Wymiar     | „10 miles”, „40 cm”     |
-| Ilość      | Temperatura   | „32 degrees”    |
-| DateTime      | NIE DOTYCZY\*         | „6:30PM February 4, 2012”      |
+| Person (Osoba)        | Nie dotyczy\*         | "Jan", "bramy Bill"     |
+| Lokalizacja      | Nie dotyczy\*         | „Redmond, Washington”, „Paris”  |
+| Organizacja  | Nie dotyczy\*         | „Microsoft”   |
+| Liczba      | Liczba        | „6”, „six”     |
+| Liczba      | Wartość procentowa    | „50%”, „fifty percent”|
+| Liczba      | Liczba porządkowa       | „2nd”, „second”     |
+| Liczba      | Wiek           | "90 dzień dawna", "30 lat starych"    |
+| Liczba      | Waluta      | „$10,99”     |
+| Liczba      | Wymiar     | „10 miles”, „40 cm”     |
+| Liczba      | Temperatura   | „32 degrees”    |
+| DateTime      | Nie dotyczy\*         | „6:30PM February 4, 2012”      |
 | DateTime      | Date          | „May 2nd, 2017”, „05/02/2017”   |
 | DateTime      | Time          | "8:00", "8:00"  |
 | DateTime      | Zakres dat     | „May 2nd to May 5th”    |
 | DateTime      | Zakres czasu     | „6pm to 7pm”     |
-| DateTime      | Duration      | „1 minute and 45 seconds”   |
+| DateTime      | Czas trwania      | „1 minute and 45 seconds”   |
 | DateTime      | Zestaw           | „every Tuesday”     |
-| URL           | NIE DOTYCZY\*         | "https:\//www.Bing.com"    |
-| Email         | NIE DOTYCZY\*         | "support@contoso.com" |
+| Adres URL           | Nie dotyczy\*         | "https:\//www.bing.com"    |
+| Email         | Nie dotyczy\*         | „support@contoso.com” |
 
-\*W zależności od danych wejściowych i wyodrębnionych niektóre jednostki mogą pominąć `SubType`.  Wszystkie obsługiwane typy jednostek są dostępne tylko w językach angielskim, chińskim, francuskim, niemieckim i hiszpańskim.
+\* w zależności od danych wejściowych i wyodrębnionych, niektóre jednostki mogą pominąć `SubType`.  Wszystkie obsługiwane typy jednostek są dostępne tylko w językach angielskim, chińskim, francuskim, niemieckim i hiszpańskim.
 
+### <a name="language-support"></a>Obsługa języków
 
+Używanie łączenia jednostek w różnych językach wymaga użycia odpowiedniej bazy wiedzy w każdym z języków. W przypadku łączenia jednostek w analiza tekstu oznacza to, że każdy język, który jest obsługiwany przez punkt końcowy `entities`, zostanie połączony z odpowiednim korpus witryny Wikipedia w tym języku. Ponieważ rozmiar korpusy różni się między językami, oczekuje się, że odwołanie do funkcji łączenia jednostki również będzie się różnić. Aby uzyskać więcej informacji, zobacz artykuł [Obsługa języka](../language-support.md#sentiment-analysis-key-phrase-extraction-and-named-entity-recognition) .
 
-## <a name="preparation"></a>Przygotowanie
+## <a name="preparation"></a>Przygotowywanie
 
-Musisz mieć dokumenty JSON w tym formacie: Identyfikator, tekst, język
+Musisz mieć dokumenty JSON w tym formacie: ID, text, language
 
 W przypadku obecnie obsługiwanych języków zapoznaj się z [tą listą](../text-analytics-supported-languages.md).
 
@@ -94,9 +156,9 @@ Dokument musi mieć mniej niż 5120 znaków, a kolekcja może zawierać maksymal
 
 Szczegółowe informacje na temat definicji żądania można znaleźć w artykule [Jak wywołać interfejs API analizy tekstu](text-analytics-how-to-call-api.md). Dla wygody poniżej ponownie podano odpowiednie kroki:
 
-+ Utwórz żądanie **POST**. Zapoznaj się z dokumentacją interfejsu API dla tego żądania: [Interfejs API jednostek](https://westcentralus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v2-1/operations/5ac4251d5b4ccd1554da7634)
++ Utwórz żądanie **POST**. Przejrzyj dokumentację interfejsu API dla tego żądania: [interfejs API jednostek](https://westcentralus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v2-1/operations/5ac4251d5b4ccd1554da7634)
 
-+ Ustaw punkt końcowy HTTP na potrzeby wyodrębniania fraz kluczowych przy użyciu zasobu analiza tekstu na platformie Azure lub [kontenera analiza tekstu](text-analytics-how-to-install-containers.md)wystąpienia. Musisz uwzględnić `/text/analytics/v2.1/entities`. Na przykład: `https://<your-custom-subdomain>.cognitiveservices.azure.com/text/analytics/v2.1/entities`.
++ Ustaw punkt końcowy HTTP na potrzeby wyodrębniania fraz kluczowych przy użyciu zasobu analiza tekstu na platformie Azure lub [kontenera analiza tekstu](text-analytics-how-to-install-containers.md)wystąpienia. Musisz dołączyć `/text/analytics/v2.1/entities`. Na przykład: `https://<your-custom-subdomain>.cognitiveservices.azure.com/text/analytics/v2.1/entities`.
 
 + Ustaw nagłówek żądania w taki sposób [, aby zawierał klucz dostępu](../../cognitive-services-apis-create-account.md#get-the-keys-for-your-resource) dla operacji analiza tekstu.
 
@@ -105,13 +167,13 @@ Szczegółowe informacje na temat definicji żądania można znaleźć w artykul
 > [!Tip]
 > Użyj programu [Postman](text-analytics-how-to-call-api.md) lub otwórz **konsolę testowania interfejsu API** w [dokumentacji](https://westcentralus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v2-1/operations/5ac4251d5b4ccd1554da7634), aby określić strukturę żądania i przesłać je do usługi za pomocą operacji POST.
 
-## <a name="step-2-post-the-request"></a>Krok 2. Wysłanie żądania
+## <a name="step-2-post-the-request"></a>Krok 2: Wysłanie żądania
 
 Analiza jest wykonywana po odebraniu żądania. Zapoznaj się z sekcją [limity danych](../overview.md#data-limits) w temacie Omówienie dotyczącej rozmiaru i liczby żądań wysyłanych na minutę i sekundę.
 
 Pamiętaj, że usługa jest bezstanowa. Żadne dane nie są przechowywane na koncie. Wyniki są zwracane natychmiast w odpowiedzi.
 
-## <a name="step-3-view-results"></a>Krok 3. Wyświetlanie wyników
+## <a name="step-3-view-results"></a>Krok 3: Wyświetlenie wyników
 
 Wszystkie żądania POST zwracają odpowiedź w formacie JSON z identyfikatorami i wykrytymi właściwościami.
 

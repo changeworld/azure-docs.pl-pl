@@ -1,7 +1,7 @@
 ---
 title: 'Wykonaj skrypt języka R: odwołanie do modułu'
-titleSuffix: Azure Machine Learning service
-description: Dowiedz się, jak uruchomić kod języka R przy użyciu modułu uruchamiania skryptu języka R w usłudze Azure Machine Learning.
+titleSuffix: Azure Machine Learning
+description: Dowiedz się, jak uruchomić kod języka R przy użyciu modułu uruchamiania skryptu języka R w Azure Machine Learning.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -9,25 +9,25 @@ ms.topic: reference
 author: xiaoharper
 ms.author: peterlu
 ms.date: 06/01/2019
-ms.openlocfilehash: 01d4e3a06b8c6a95374b9ee246864167e6d2ac85
-ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
+ms.openlocfilehash: f9aae1302f0d83c27d5d8f01745ddecbaeea9467
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "72693766"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73497881"
 ---
 # <a name="execute-r-script"></a>Wykonywanie skryptu języka R
 
-W tym artykule opisano, jak używać modułu **skryptu języka r** do uruchamiania kodu języka r w potoku interfejsu wizualizacji.
+W tym artykule opisano, jak używać modułu **skryptu języka r** do uruchamiania kodu języka r w potoku programu Azure Machine Learning Designer (wersja zapoznawcza).
 
 Za pomocą języka R można wykonywać zadania, które nie są obecnie obsługiwane przez istniejące moduły, takie jak: 
 - Tworzenie niestandardowych transformacji danych
 - Używanie własnych metryk do szacowania prognoz
-- Tworzenie modeli przy użyciu algorytmów, które nie są implementowane jako moduły autonomiczne w interfejsie wizualizacji
+- Tworzenie modeli przy użyciu algorytmów, które nie są zaimplementowane jako moduły autonomiczne w projektancie
 
 ## <a name="r-version-support"></a>Obsługa wersji języka R
 
-Interfejs wizualny usługi Azure Machine Learning używa dystrybucji CRAN (kompleksowa usługa R Archive Network). Obecnie używana wersja to CRAN 3.5.1.
+Program Azure Machine Learning Designer używa dystrybucji CRAN (kompleksowa sieć R archiwum) języka R. Obecnie używana wersja to CRAN 3.5.1.
 
 ## <a name="supported-r-packages"></a>Obsługiwane pakiety języka R
 
@@ -73,7 +73,7 @@ Moduł **wykonywania skryptu języka R** zawiera przykładowy kod, którego moż
 
 ![R-module](media/module/execute-r-script.png)
 
-Zestawy danych przechowywane w interfejsie wizualizacji są automatycznie konwertowane na ramkę z danymi języka R po załadowaniu tego modułu.
+Zestawy danych przechowywane w projektancie są automatycznie konwertowane na ramkę z danymi języka R po załadowaniu tego modułu.
 
 1.  Dodaj moduł **wykonywania skryptu języka R** do potoku.
 
@@ -116,10 +116,10 @@ azureml_main <- function(dataframe1, dataframe2){
  * Funkcja punktu wejścia może zawierać maksymalnie dwa argumenty wejściowe: `Param<dataframe1>` i `Param<dataframe2>`
  
    > [!NOTE]
-    > Dane przesłane do modułu **skryptu Execute języka R** są przywoływane jako `dataframe1` i `dataframe2`, które różnią się od Azure Machine Learning Studio (odwołanie w Studio jako `dataset1`, `dataset2`). Upewnij się, że dane wejściowe są poprawnie referneced w skrypcie.  
+    > Dane przesłane do modułu **wykonywania skryptu języka R** są przywoływane jako `dataframe1` i `dataframe2`, które różnią się od projektanta Azure Machine Learning (odwołanie projektanta jako `dataset1`, `dataset2`). Upewnij się, że dane wejściowe są poprawnie referneced w skrypcie.  
  
     > [!NOTE]
-    >  Istniejący kod R może potrzebować drobnych zmian do uruchomienia w potoku interfejsu wizualizacji. Na przykład dane wejściowe, które podano w formacie CSV, powinny być jawnie konwertowane na zestaw danych, zanim będzie można używać go w kodzie. Typy danych i kolumn używane w języku R również różnią się w zależności od typu danych i kolumn używanych w interfejsie wizualizacji.
+    >  Istniejący kod R może potrzebować drobnych zmian do uruchomienia w potoku projektanta. Na przykład dane wejściowe, które podano w formacie CSV, powinny być jawnie konwertowane na zestaw danych, zanim będzie można używać go w kodzie. Typy danych i kolumn używane w języku R również różnią się w zależności od typu danych i kolumn używanych w projektancie.
 
 1.  **Losowy inicjator**: wpisz wartość, która ma być używana w środowisku języka R jako wartość losowego inicjatora. Ten parametr jest równoznaczny z wywołaniem `set.seed(value)` w kodzie R.  
 
@@ -127,7 +127,7 @@ azureml_main <- function(dataframe1, dataframe2){
 
 ## <a name="results"></a>Wyniki
 
-Moduły **Execute skryptu języka R** mogą zwracać wiele danych wyjściowych, ale muszą one być podane jako ramki z danymi języka r. Ramki danych są automatycznie konwertowane na zestaw danych interfejsu wizualizacji w celu zapewnienia zgodności z innymi modułami.
+Moduły **Execute skryptu języka R** mogą zwracać wiele danych wyjściowych, ale muszą one być podane jako ramki z danymi języka r. Ramki danych są automatycznie konwertowane na zestawy DataSet w projektancie w celu zapewnienia zgodności z innymi modułami.
 
 Standardowe komunikaty i błędy w języku R są zwracane do dziennika modułu.
 
@@ -235,7 +235,7 @@ Można przekazać obiekty R między wystąpieniami modułu **wykonywania skryptu
     }
     ```
 
-    Jawna konwersja na typ Integer jest wykonywana, ponieważ funkcja serializacji wyprowadza dane w formacie R `Raw`, który nie jest obsługiwany przez interfejs graficzny.
+    Jawna konwersja na typ Integer jest wykonywana, ponieważ funkcja serializacji wyprowadza dane w formacie R `Raw`, który nie jest obsługiwany przez projektanta.
 
 1. Dodaj drugie wystąpienie modułu **wykonywania skryptu języka R** i połącz je z portem wyjściowym poprzedniego modułu.
 
@@ -402,4 +402,4 @@ Bieżąca lista wstępnie zainstalowanych pakietów języka R dostępnych do uż
 
 ## <a name="next-steps"></a>Następne kroki
 
-Zapoznaj się z [zestawem modułów dostępnych](module-reference.md) do Azure Machine Learning usługi. 
+Zapoznaj się z [zestawem modułów dostępnych](module-reference.md) do Azure Machine Learning. 

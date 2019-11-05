@@ -3,34 +3,36 @@ title: Automatyczne cele obliczeń zdalnych ML
 titleSuffix: Azure Machine Learning
 description: Dowiedz się, jak tworzyć modele przy użyciu automatycznego uczenia maszynowego na Azure Machine Learning zdalnym miejscu docelowym obliczeń przy użyciu Azure Machine Learning
 services: machine-learning
-author: nacharya1
-ms.author: nilesha
+author: cartacioS
+ms.author: sacartac
 ms.reviewer: sgilley
 ms.service: machine-learning
 ms.subservice: core
 ms.workload: data-services
 ms.topic: conceptual
-ms.date: 7/12/2019
-ms.openlocfilehash: 9eab21fe6b5269229de186a7553e11a147c1033e
-ms.sourcegitcommit: 0fab4c4f2940e4c7b2ac5a93fcc52d2d5f7ff367
+ms.date: 11/04/2019
+ms.openlocfilehash: 4276a713e62f96cc5340fc7be0e8391939d32342
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71034987"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73497317"
 ---
-# <a name="train-models-with-automated-machine-learning-in-the-cloud"></a>Szkolenie modeli za pomocą automatycznych machine learning w chmurze
+# <a name="train-models-with-automated-machine-learning-in-the-cloud"></a>Uczenie modeli przy użyciu zautomatyzowanej uczenia maszynowego w chmurze
 
-W usłudze Azure Machine Learning podstawie uczyć modele na różnego rodzaju zasobów obliczeniowych, którymi zarządzasz. Obiekt docelowy obliczeń może być komputerem lokalnym lub zasobem w chmurze.
+[!INCLUDE [aml-applies-to-basic-enterprise-sku](../../../includes/aml-applies-to-basic-enterprise-sku.md)]
+
+W Azure Machine Learning nauczysz model dla różnych typów zasobów obliczeniowych, którymi zarządzasz. Obiekt docelowy obliczeń może być komputerem lokalnym lub zasobem w chmurze.
 
 Eksperyment uczenia maszynowego można łatwo skalować w górę lub w poziomie, dodając dodatkowe cele obliczeniowe, takie jak Azure Machine Learning COMPUTE (AmlCompute). AmlCompute to zarządzana infrastruktura obliczeniowa, która umożliwia łatwe tworzenie obliczeń jednego lub wielowęzłowego.
 
 W tym artykule dowiesz się, jak skompilować model przy użyciu zautomatyzowanej ML z AmlCompute.
 
-## <a name="how-does-remote-differ-from-local"></a>Czym różni się zdalne z lokalnego?
+## <a name="how-does-remote-differ-from-local"></a>W jaki sposób zdalne różni się od lokalnego?
 
-Samouczek "[uczenie modelu klasyfikacji przy użyciu automatycznego uczenia maszynowego](tutorial-auto-train-models.md)" uczy się, w jaki sposób używać komputera lokalnego do uczenia modelu o zautomatyzowanej ml. Przepływ pracy podczas szkolenia lokalnie ma zastosowanie również do celów zdalnego, a także. Jednak za pomocą zdalnego mocy obliczeniowej, zautomatyzowane iteracjami eksperymentów uczenia Maszynowego są wykonywane asynchronicznie. Ta funkcja umożliwia anulowanie konkretnej iteracji, obejrzyj stan wykonania lub kontynuować pracę na innych komórek w notesie Jupyter. Aby przeprowadzić uczenie zdalne, należy najpierw utworzyć zdalne miejsce docelowe obliczeń, takie jak AmlCompute. Następnie skonfiguruj zasób zdalny i przesyłać tam kod.
+Samouczek "[uczenie modelu klasyfikacji przy użyciu automatycznego uczenia maszynowego](tutorial-auto-train-models.md)" uczy się, w jaki sposób używać komputera lokalnego do uczenia modelu o zautomatyzowanej ml. Przepływ pracy, gdy szkolenie lokalnie dotyczy również zdalnych obiektów docelowych. Jednak ze zdalnym przetwarzaniem, zautomatyzowane iteracje eksperymentów w ML są wykonywane asynchronicznie. Ta funkcja pozwala anulować określoną iterację, obserwować stan wykonania lub kontynuować pracę nad innymi komórkami w notesie Jupyter. Aby przeprowadzić uczenie zdalne, należy najpierw utworzyć zdalne miejsce docelowe obliczeń, takie jak AmlCompute. Następnie należy skonfigurować zasób zdalny i przesłać tam swój kod.
 
-W tym artykule przedstawiono dodatkowe kroki niezbędne do uruchomienia zautomatyzowanego eksperymentu ML na zdalnym miejscu docelowym AmlCompute. Obiekt workspace `ws`, w tym samouczku jest używana w całym kodzie, w tym miejscu.
+W tym artykule przedstawiono dodatkowe kroki niezbędne do uruchomienia zautomatyzowanego eksperymentu ML na zdalnym miejscu docelowym AmlCompute. Obiekt obszaru roboczego, `ws`, z samouczka jest używany w całym kodzie tutaj.
 
 ```python
 ws = Workspace.from_config()
@@ -38,7 +40,7 @@ ws = Workspace.from_config()
 
 ## <a name="create-resource"></a>Utwórz zasób
 
-Utwórz obiekt docelowy AmlCompute w obszarze roboczym`ws`(), jeśli jeszcze nie istnieje.
+Utwórz obiekt docelowy AmlCompute w obszarze roboczym (`ws`), jeśli jeszcze nie istnieje.
 
 **Szacowany czas**: Tworzenie elementu docelowego AmlCompute trwa około 5 minut.
 
@@ -60,17 +62,17 @@ compute_target.wait_for_completion(
     show_output=True, min_node_count=None, timeout_in_minutes=20)
 ```
 
-Teraz możesz używać `compute_target` obiektu jako zdalnego obliczeniowego elementu docelowego.
+Teraz można użyć obiektu `compute_target` jako elementu docelowego obliczeń zdalnych.
 
 Ograniczenia nazw klastrów obejmują:
-+ Musi zawierać mniej niż 64 znaki.
-+ Nie może zawierać żadnego z następujących znaków: `\` ~! @ # $ % ^ & * () = + _ [] {} \\ \\ |;: \' \\", < > /?. `
++ Musi być krótsza niż 64 znaków.
++ Nie może zawierać żadnego z następujących znaków: `\` ~! @ # $% ^ & * () = + _ [] {} \\\\ |; : \' \\", < >/?. `
 
 ## <a name="access-data-using-tabulardataset-function"></a>Dostęp do danych za pomocą funkcji TabularDataset
 
-Zdefiniowane wartości X i y `TabularDataset`jako s, które są przesyłane do zautomatyzowanej ml w AutoMLConfig. `from_delimited_files`Domyślnie ustawia `infer_column_types` wartość na true, co spowoduje automatyczne wywnioskowanie typu kolumny. 
+Zdefiniowane wartości X i y jako `TabularDataset`s, które są przesyłane do zautomatyzowanej ML w AutoMLConfig. `from_delimited_files` domyślnie ustawia `infer_column_types` na wartość true, co spowoduje automatyczne wywnioskowanie typu kolumny. 
 
-Jeśli chcesz ręcznie ustawić typy kolumn, możesz ustawić `set_column_types` argument, aby ręcznie ustawić typ każdej kolumny. W poniższym przykładzie kodu dane pochodzą z pakietu skryptu sklearn.
+Jeśli chcesz ręcznie ustawić typy kolumn, możesz ustawić argument `set_column_types`, aby ręcznie ustawić typ każdej kolumny. W poniższym przykładzie kodu dane pochodzą z pakietu skryptu sklearn.
 
 ```python
 # Create a project_folder if it doesn't exist
@@ -101,7 +103,7 @@ y = Dataset.Tabular.from_delimited_files(path=ds.path('digitsdata/y_train.csv'))
 
 ## <a name="create-run-configuration"></a>Utwórz konfigurację uruchamiania
 
-Aby udostępnić zależności dla skryptu get_data. PR, zdefiniuj `RunConfiguration` obiekt ze zdefiniowanym. `CondaDependencies` Użyj tego obiektu dla `run_configuration` parametru w. `AutoMLConfig`
+Aby udostępnić zależności dla skryptu get_data. PR, zdefiniuj obiekt `RunConfiguration` ze zdefiniowanymi `CondaDependencies`. Użyj tego obiektu dla parametru `run_configuration` w `AutoMLConfig`.
 
 ```python
 from azureml.core.runconfig import RunConfiguration
@@ -117,10 +119,10 @@ dependencies = CondaDependencies.create(
 run_config.environment.python.conda_dependencies = dependencies
 ```
 
-Zapoznaj [](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/remote-amlcompute/auto-ml-remote-amlcompute.ipynb) się z tym przykładowym notesem, aby uzyskać dodatkowy przykład tego wzorca projektowego.
+Zapoznaj się z tym [przykładowym notesem](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/remote-amlcompute/auto-ml-remote-amlcompute.ipynb) , aby uzyskać dodatkowy przykład tego wzorca projektowego.
 
 ## <a name="configure-experiment"></a>Konfigurowanie eksperymentu
-Określ ustawienia `AutoMLConfig`.  (Zobacz [pełną listę parametrów](how-to-configure-auto-train.md#configure-experiment) i ich możliwe wartości.)
+Określ ustawienia dla `AutoMLConfig`.  (Zobacz [pełną listę parametrów](how-to-configure-auto-train.md#configure-experiment) i ich wartości).
 
 ```python
 from azureml.train.automl import AutoMLConfig
@@ -149,9 +151,9 @@ automl_config = AutoMLConfig(task='classification',
                              )
 ```
 
-### <a name="enable-model-explanations"></a>Włącz objaśnienia dotyczące modelu
+### <a name="enable-model-explanations"></a>Włączanie wyjaśnień modelu
 
-Ustawianie opcjonalne `model_explainability` parametru w `AutoMLConfig` konstruktora. Ponadto obiektu dataframe weryfikacji muszą być przekazywane jako parametr `X_valid` korzystania z funkcji explainability modelu.
+Ustaw opcjonalny parametr `model_explainability` w konstruktorze `AutoMLConfig`. Ponadto, aby można było użyć funkcji sprawdzającej model, należy przesłać obiekt walidacji elementu danych jako parametr `X_valid`.
 
 ```python
 automl_config = AutoMLConfig(task='classification',
@@ -167,9 +169,9 @@ automl_config = AutoMLConfig(task='classification',
                              )
 ```
 
-## <a name="submit-training-experiment"></a>Przesyłanie eksperymentu szkolenia
+## <a name="submit-training-experiment"></a>Przesyłanie eksperymentu szkoleniowego
 
-Teraz przesłać konfiguracji do automatycznego wybierania algorytmów, parametry hyper i trenowanie modelu.
+Teraz Prześlij konfigurację, aby automatycznie wybierać algorytm, parametry funkcji Hyper-i szkolić model.
 
 ```python
 from azureml.core.experiment import Experiment
@@ -177,7 +179,7 @@ experiment = Experiment(ws, 'automl_remote')
 remote_run = experiment.submit(automl_config, show_output=True)
 ```
 
-Zostaną wyświetlone dane wyjściowe podobne do poniższego przykładu:
+Zobaczysz dane wyjściowe podobne do poniższego przykładu:
 
     Running on remote compute: mydsvmParent Run ID: AutoML_015ffe76-c331-406d-9bfd-0fd42d8ab7f6
     ***********************************************************************************************
@@ -211,7 +213,7 @@ Zostaną wyświetlone dane wyjściowe podobne do poniższego przykładu:
             19      Robust Scaler kNN                     0:02:32                  0.983     0.989
 
 
-## <a name="explore-results"></a>Zapoznaj się z wyników
+## <a name="explore-results"></a>Eksploruj wyniki
 
 Możesz użyć tego samego [widgetu Jupyter](https://docs.microsoft.com/python/api/azureml-widgets/azureml.widgets?view=azure-ml-py) , jak pokazano w [samouczku szkolenia](tutorial-auto-train-models.md#explore-the-results) , aby wyświetlić wykres i tabelę wyników.
 
@@ -220,12 +222,12 @@ from azureml.widgets import RunDetails
 RunDetails(remote_run).show()
 ```
 
-Oto obraz statyczny widżetu.  W notesie możesz kliknąć każdego wiersza w tabeli, aby wyświetlić właściwości wykonywania i danych wyjściowych dzienników, uruchamiania.   Można również Użyj listy rozwijanej powyżej wykresu, aby wyświetlić wykres wszystkie dostępne metryki dla każdej iteracji.
+Oto obraz statyczny widżetu.  W notesie można kliknąć dowolny wiersz w tabeli, aby wyświetlić właściwości uruchamiania i dzienniki wyjściowe dla tego przebiegu.   Możesz również użyć listy rozwijanej powyżej wykresu, aby wyświetlić Graf każdej dostępnej metryki dla każdej iteracji.
 
 ![tabela widżetu](./media/how-to-auto-train-remote/table.png)
 ![wykres widżetu](./media/how-to-auto-train-remote/plot.png)
 
-Widżet Wyświetla adres URL można użyć, aby zobaczyć i zapoznaj się z osobą szczegóły przebiegu.  
+Widżet wyświetla adres URL, którego można użyć do wyświetlania i eksplorowania szczegółowych informacji o uruchamianiu.  
 
 Jeśli nie jesteś w notesie Jupyter, możesz wyświetlić adres URL od samego uruchomienia:
 
@@ -237,26 +239,26 @@ Te same informacje są dostępne w obszarze roboczym.  Aby dowiedzieć się wię
 
 ### <a name="view-logs"></a>Wyświetlanie dzienników
 
-Znajdowanie dzienników na nauki, w obszarze `/tmp/azureml_run/{iterationid}/azureml-logs`.
+Znajdź dzienniki na DSVM w obszarze `/tmp/azureml_run/{iterationid}/azureml-logs`.
 
 ## <a name="explain"></a>Najlepsze wyjaśnienie modelu
 
-Pobieranie danych wyjaśnienie modelu pozwala wyświetlić szczegółowe informacje na temat modeli w celu zwiększenia przejrzystości w uruchomionej w zapleczu. W tym przykładzie możesz uruchomić wyjaśnienia modelu tylko najlepszy model dopasowania. Po uruchomieniu wszystkich modeli w potoku, będzie skutkować znaczną ilość czasu wykonywania. Zawiera informacje o wyjaśnienie modelu:
+Pobranie danych dotyczących wyjaśnień modelu umożliwia wyświetlenie szczegółowych informacji o modelach w celu zwiększenia przejrzystości w zakresie działania w zapleczu. W tym przykładzie należy uruchomić objaśnienia modelu tylko dla najlepiej dopasowanego modelu. Jeśli uruchomisz wszystkie modele w potoku, spowoduje to znaczny czas wykonania. Informacje o modelu obejmują:
 
-* shap_values: Informacje wyjaśniające, które zostały wygenerowane przez lib kształtu.
-* expected_values: Oczekiwana wartość modelu zastosowana do zestawu danych X_train.
-* overall_summary: Wartości ważności funkcji na poziomie modelu posortowane w kolejności malejącej.
-* overall_imp: Nazwy funkcji posortowane w takiej samej kolejności jak w programie overall_summary.
-* per_class_summary: Wartości ważności funkcji na poziomie klasy sortowane w kolejności malejącej. Dostępne tylko dla przypadku klasyfikacji.
-* per_class_imp: Nazwy funkcji posortowane w takiej samej kolejności jak w programie per_class_summary. Dostępne tylko dla przypadku klasyfikacji.
+* shap_values: informacje o wyjaśnieniu wygenerowane przez lib kształtu.
+* expected_values: oczekiwana wartość modelu zastosowana do zestawu danych X_train.
+* overall_summary: wartości znaczenia funkcji na poziomie modelu są sortowane w kolejności malejącej.
+* overall_imp: nazwy funkcji posortowane w tej samej kolejności jak w overall_summary.
+* per_class_summary: wartości ważności funkcji na poziomie klasy posortowane w kolejności malejącej. Dostępne tylko dla przypadku klasyfikacji.
+* per_class_imp: nazwy funkcji posortowane w tej samej kolejności jak w per_class_summary. Dostępne tylko dla przypadku klasyfikacji.
 
-Użyj poniższego kodu, które można wybierać najlepsze potoku swoje iteracje. `get_output` Metoda zwraca najlepszy przebieg i dopasowanego modelu dla ostatniego dopasowania wywołania.
+Użyj poniższego kodu, aby wybrać najlepszy potok z iteracji. Metoda `get_output` zwraca najlepszy przebieg i zamontowany model dla ostatniego dopasowania wywołania.
 
 ```python
 best_run, fitted_model = remote_run.get_output()
 ```
 
-Importuj `retrieve_model_explanation` funkcji i uruchamianie na najlepszy model.
+Zaimportuj funkcję `retrieve_model_explanation` i uruchom ją na najlepszym modelu.
 
 ```python
 from azureml.train.automl.automlexplainer import retrieve_model_explanation
@@ -265,7 +267,7 @@ shap_values, expected_values, overall_summary, overall_imp, per_class_summary, p
     retrieve_model_explanation(best_run)
 ```
 
-Drukowanie wyników dla `best_run` zmienne wyjaśnienie, którą chcesz wyświetlić.
+Drukuj wyniki dla `best_run`ych zmiennych wyjaśnień, które chcesz wyświetlić.
 
 ```python
 print(overall_summary)
@@ -274,13 +276,13 @@ print(per_class_summary)
 print(per_class_imp)
 ```
 
-Drukowanie `best_run` wyjaśnienie zmienne podsumowania wyników w następujących danych wyjściowych.
+Drukowanie zmiennych podsumowania objaśnień `best_run` powoduje następujące dane wyjściowe.
 
-![Dane wyjściowe konsoli explainability modelu](./media/how-to-auto-train-remote/expl-print.png)
+![Dane wyjściowe konsoli objaśniające model](./media/how-to-auto-train-remote/expl-print.png)
 
-Możesz również wizualizować ważność funkcji za pomocą interfejsu użytkownika widżetu, interfejsu użytkownika sieci Web na Azure Portal lub na [stronie docelowej obszaru roboczego (wersja zapoznawcza)](https://ml.azure.com). 
+Możesz również wizualizować ważność funkcji za pomocą interfejsu użytkownika widżetu lub w obszarze roboczym w programie [Azure Machine Learning Studio](https://ml.azure.com). 
 
-![Model explainability interfejsu użytkownika](./media/how-to-auto-train-remote/model-exp.png)
+![Interfejs użytkownika objaśniający model](./media/how-to-auto-train-remote/model-exp.png)
 
 ## <a name="example"></a>Przykład
 
@@ -290,4 +292,4 @@ W notesie [How-to-use-azureml/Automated-Machine-Learning/Remote-amlcompute/Auto-
 
 ## <a name="next-steps"></a>Następne kroki
 
-Dowiedz się, [jak skonfigurować ustawienia automatycznego szkolenia](how-to-configure-auto-train.md).
+Dowiedz się [, jak skonfigurować ustawienia automatycznego szkolenia](how-to-configure-auto-train.md).

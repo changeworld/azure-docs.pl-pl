@@ -14,12 +14,12 @@ ms.topic: article
 ms.date: 08/24/2018
 ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: b6f122abff1ac75bb1cb836f3389c96dfcdf60e0
-ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
+ms.openlocfilehash: 07dbbb956dcf6f1204bef2af3a28a0af3eeb5226
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70074120"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73470086"
 ---
 # <a name="security-in-azure-app-service"></a>Zabezpieczenia w Azure App Service
 
@@ -40,16 +40,20 @@ W poniższych sekcjach pokazano, jak zabezpieczyć aplikację App Service przed 
 
 ## <a name="https-and-certificates"></a>HTTPS i certyfikaty
 
-App Service umożliwia Zabezpieczanie aplikacji przy użyciu [protokołu HTTPS](https://wikipedia.org/wiki/HTTPS). Po utworzeniu aplikacji jej domyślna nazwa domeny (\<APP_NAME >. azurewebsites. NET) jest już dostępna przy użyciu protokołu HTTPS. Jeśli [skonfigurujesz domenę niestandardową dla aplikacji](app-service-web-tutorial-custom-domain.md), należy ją również [zabezpieczyć za pomocą certyfikatu niestandardowego](app-service-web-tutorial-custom-ssl.md) , aby przeglądarki klienta mogły nawiązać bezpieczne połączenia HTTPS z domeną niestandardową. Istnieją dwa sposoby, aby to zrobić:
+App Service umożliwia Zabezpieczanie aplikacji przy użyciu [protokołu HTTPS](https://wikipedia.org/wiki/HTTPS). Po utworzeniu aplikacji jej domyślna nazwa domeny (\<APP_NAME >. azurewebsites. NET) jest już dostępna przy użyciu protokołu HTTPS. Jeśli [skonfigurujesz domenę niestandardową dla aplikacji](app-service-web-tutorial-custom-domain.md), należy ją również [zabezpieczyć za pomocą certyfikatu SSL](configure-ssl-bindings.md) , aby przeglądarki klienta mogły nawiązać bezpieczne połączenia HTTPS z domeną niestandardową. Istnieje kilka typów certyfikatów obsługiwanych przez App Service:
 
-- **App Service certyfikat** — Tworzenie certyfikatu bezpośrednio na platformie Azure. Certyfikat jest zabezpieczony w [Azure Key Vault](/azure/key-vault/)i można go zaimportować do aplikacji App Service. Aby uzyskać więcej informacji, zobacz [kupowanie i Konfigurowanie certyfikatu SSL dla Azure App Service](web-sites-purchase-ssl-web-site.md).
-- **Certyfikat innej firmy** — Przekaż niestandardowy certyfikat SSL zakupionego od zaufanego urzędu certyfikacji i powiąż go z aplikacją App Service. App Service obsługuje zarówno certyfikaty z jedną domeną, jak i Certyfikaty wieloznaczne. Obsługuje również certyfikaty z podpisem własnym na potrzeby testowania. Aby uzyskać więcej informacji, zobacz [Powiązywanie istniejącego niestandardowego certyfikatu protokołu SSL z Azure App Service](app-service-web-tutorial-custom-ssl.md).
+- App Service w warstwie Bezpłatna certyfikat zarządzany
+- Certyfikat App Service
+- Certyfikat innej firmy
+- Certyfikat zaimportowany z Azure Key Vault
+
+Aby uzyskać więcej informacji, zobacz [Dodawanie certyfikatu SSL w Azure App Service](configure-ssl-certificate.md).
 
 ## <a name="insecure-protocols-http-tls-10-ftp"></a>Protokoły niezabezpieczone (HTTP, TLS 1,0, FTP)
 
-Aby zabezpieczyć aplikację przed wszystkimi nieszyfrowanymi połączeniami (HTTP), App Service zapewnia konfigurację jednego kliknięcia, aby wymusić protokół HTTPS. Niezabezpieczone żądania są wyłączone, zanim będą nawet dotrzeć do kodu aplikacji. Aby uzyskać więcej informacji, zobacz wymuszanie [protokołu HTTPS](app-service-web-tutorial-custom-ssl.md#enforce-https).
+Aby zabezpieczyć aplikację przed wszystkimi nieszyfrowanymi połączeniami (HTTP), App Service zapewnia konfigurację jednego kliknięcia, aby wymusić protokół HTTPS. Niezabezpieczone żądania są wyłączone, zanim będą nawet dotrzeć do kodu aplikacji. Aby uzyskać więcej informacji, zobacz [Wymuszanie protokołu HTTPS](configure-ssl-bindings.md#enforce-https).
 
-[Protokół TLS](https://wikipedia.org/wiki/Transport_Layer_Security) 1,0 nie jest już uznawany za bezpieczny przez standardy branżowe, takie jak [PCI DSS](https://wikipedia.org/wiki/Payment_Card_Industry_Data_Security_Standard). App Service pozwala wyłączyć nieaktualne protokoły, wymuszając [protokół TLS 1.1/1.2](app-service-web-tutorial-custom-ssl.md#enforce-tls-versions).
+[Protokół TLS](https://wikipedia.org/wiki/Transport_Layer_Security) 1,0 nie jest już uznawany za bezpieczny przez standardy branżowe, takie jak [PCI DSS](https://wikipedia.org/wiki/Payment_Card_Industry_Data_Security_Standard). App Service pozwala wyłączyć nieaktualne protokoły, [wymuszając protokół TLS 1.1/1.2](configure-ssl-bindings.md#enforce-tls-versions).
 
 App Service obsługuje zarówno protokół FTP, jak i FTPS do wdrażania plików. Należy jednak używać FTPS zamiast protokołu FTP, jeśli jest to możliwe. Jeśli jeden lub oba te protokoły nie są używane, należy [je wyłączyć](deploy-ftp.md#enforce-ftps).
 
@@ -57,7 +61,7 @@ App Service obsługuje zarówno protokół FTP, jak i FTPS do wdrażania plików
 
 Domyślnie aplikacja App Service akceptuje żądania ze wszystkich adresów IP z Internetu, ale można ograniczyć ten dostęp do małego podzbioru adresów IP. App Service w systemie Windows umożliwia zdefiniowanie listy adresów IP, które mogą uzyskiwać dostęp do aplikacji. Lista dozwolonych może obejmować pojedyncze adresy IP lub zakres adresów IP definiowanych przez maskę podsieci. Aby uzyskać więcej informacji, zobacz [Azure App Service ograniczeń statycznych adresów IP](app-service-ip-restrictions.md).
 
-Aby uzyskać App Service w systemie Windows, można również dynamicznie ograniczyć adresy IP, konfigurując _plik Web. config_. Aby uzyskać więcej informacji, zobacz [dynamiczne IP \<Security dynamicIpSecurity >](https://docs.microsoft.com/iis/configuration/system.webServer/security/dynamicIpSecurity/).
+Aby uzyskać App Service w systemie Windows, można również dynamicznie ograniczyć adresy IP, konfigurując _plik Web. config_. Aby uzyskać więcej informacji, zobacz [dynamiczne IP Security \<dynamicIpSecurity >](https://docs.microsoft.com/iis/configuration/system.webServer/security/dynamicIpSecurity/).
 
 ## <a name="client-authentication-and-authorization"></a>Uwierzytelnianie i autoryzacja klienta
 
@@ -86,7 +90,7 @@ W każdym z tych przypadków App Service zapewnia sposób nawiązywania bezpiecz
 
 Gdy aplikacja nawiązuje połączenie z zasobami platformy Azure, takimi jak [SQL Database](https://azure.microsoft.com/services/sql-database/) i [Azure Storage](/azure/storage/), połączenie pozostaje na platformie Azure i nie przekracza żadnych granic sieci. Jednak połączenie odbywa się za pomocą sieci udostępnionej na platformie Azure, więc zawsze upewnij się, że połączenie jest zaszyfrowane. 
 
-Jeśli aplikacja jest hostowana w [środowisku App Service](environment/intro.md), należy nawiązać [połączenie z obsługiwanymi usługami platformy Azure za pomocą Virtual Network punktów końcowych usługi](../virtual-network/virtual-network-service-endpoints-overview.md).
+Jeśli aplikacja jest hostowana w [środowisku App Service](environment/intro.md), należy [nawiązać połączenie z obsługiwanymi usługami platformy Azure za pomocą Virtual Network punktów końcowych usługi](../virtual-network/virtual-network-service-endpoints-overview.md).
 
 ### <a name="resources-inside-an-azure-virtual-network"></a>Zasoby wewnątrz Virtual Network platformy Azure
 
@@ -110,7 +114,7 @@ Alternatywnie możesz zintegrować swoją aplikację App Service z [Azure Key Va
 
 ## <a name="network-isolation"></a>Izolacja sieci
 
-Z wyjątkiem warstwy cenowej izolowanej wszystkie warstwy uruchamiają aplikacje w udostępnionej infrastrukturze sieci w App Service. Na przykład publiczne adresy IP i usługi równoważenia obciążenia frontonu są udostępniane innym dzierżawcom. Warstwa **izolowana** zapewnia pełną izolację sieci, uruchamiając aplikacje w dedykowanym [środowisku App Service](environment/intro.md). Środowisko App Service działa we własnym wystąpieniu [platformy Azure Virtual Network](/azure/virtual-network/). Umożliwia to: 
+Z wyjątkiem warstwy cenowej **izolowanej** wszystkie warstwy uruchamiają aplikacje w udostępnionej infrastrukturze sieci w App Service. Na przykład publiczne adresy IP i usługi równoważenia obciążenia frontonu są udostępniane innym dzierżawcom. Warstwa **izolowana** zapewnia pełną izolację sieci, uruchamiając aplikacje w dedykowanym [środowisku App Service](environment/intro.md). Środowisko App Service działa we własnym wystąpieniu [platformy Azure Virtual Network](/azure/virtual-network/). Umożliwia to: 
 
 - Obsługuj swoje aplikacje za pomocą dedykowanego publicznego punktu końcowego z dedykowanymi frontonami.
 - Obsłużyć wewnętrzną aplikację przy użyciu wewnętrznego modułu równoważenia obciążenia (ILB), który umożliwia dostęp tylko z poziomu usługi Azure Virtual Network. ILB ma adres IP z podsieci prywatnej, który zapewnia całkowitą izolację aplikacji z Internetu.

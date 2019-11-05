@@ -1,26 +1,26 @@
 ---
 title: 'Wykonaj skrypt języka Python: odwołanie do modułu'
-titleSuffix: Azure Machine Learning service
-description: Dowiedz się, jak uruchomić kod języka Python za pomocą modułu uruchamiania skryptów języka Python w usłudze Azure Machine Learning.
+titleSuffix: Azure Machine Learning
+description: Dowiedz się, jak uruchomić kod w języku Python przy użyciu modułu uruchamiania skryptów języka Python w Azure Machine Learning.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: reference
 author: xiaoharper
 ms.author: zhanxia
-ms.date: 05/02/2019
-ms.openlocfilehash: ac68239c12fb284dd3cb5179b5719f3d36acbd34
-ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
+ms.date: 10/22/2019
+ms.openlocfilehash: 1ba10bf682d900a45f345f2ebe2707ba1275e94e
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "72693792"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73497861"
 ---
 # <a name="execute-python-script-module"></a>Wykonaj moduł skryptu języka Python
 
-W tym artykule opisano moduł Visual Interface (wersja zapoznawcza) dla usługi Azure Machine Learning.
+W tym artykule opisano moduł w programie Azure Machine Learning Designer (wersja zapoznawcza).
 
-Użyj tego modułu, aby uruchomić kod języka Python. Aby uzyskać więcej informacji na temat architektury i zasad projektowania języka Python, zobacz [następujący artykuł.](https://docs.microsoft.com/azure/machine-learning/machine-learning-execute-python-scripts)
+Użyj tego modułu, aby uruchomić kod języka Python. Aby uzyskać więcej informacji na temat architektury i zasad projektowania języka Python, zobacz [następujący artykuł](https://docs.microsoft.com/azure/machine-learning/machine-learning-execute-python-scripts).
 
 W języku Python można wykonywać zadania, które nie są obecnie obsługiwane przez istniejące moduły, takie jak:
 
@@ -81,7 +81,7 @@ Moduł **wykonywania skryptu języka Python** zawiera przykładowy kod w języku
 
 1. Dodaj moduł **wykonywania skryptu języka Python** do potoku.
 
-2. Dodaj i Połącz **pozycję DataSet1** wszystkie zestawy danych z interfejsu, który ma być używany na potrzeby danych wejściowych. Odwołuje się do tego zestawu danych w skrypcie języka Python jako **DataFrame1**.
+2. Dodaj i Połącz **pozycję DataSet1** dowolnych zestawów danych z projektanta, który ma być używany na potrzeby danych wejściowych. Odwołuje się do tego zestawu danych w skrypcie języka Python jako **DataFrame1**.
 
     Użycie zestawu danych jest opcjonalne, jeśli chcesz wygenerować dane przy użyciu języka Python, lub użyj kodu Python, aby zaimportować dane bezpośrednio do modułu.
 
@@ -97,15 +97,15 @@ Moduł **wykonywania skryptu języka Python** zawiera przykładowy kod w języku
 
 5. W polu tekstowym **skrypt języka Python** wpisz lub wklej prawidłowy skrypt w języku Python.
 
-    Pole tekstowe **skrypt języka Python** jest wstępnie wypełnione kilkoma instrukcjami w komentarzach i przykładowym kodzie na potrzeby dostępu do danych i wyjścia. **Należy edytować lub zamienić ten kod.** Pamiętaj, aby przestrzegać Konwencji języka Python dotyczących wcięć i wielkości liter.
+    Pole tekstowe **skrypt języka Python** jest wstępnie wypełnione kilkoma instrukcjami w komentarzach i przykładowym kodzie na potrzeby dostępu do danych i wyjścia. Należy edytować lub zamienić ten kod. Pamiętaj, aby przestrzegać Konwencji języka Python dotyczących wcięć i wielkości liter.
 
     + Skrypt musi zawierać funkcję o nazwie `azureml_main` jako punkt wejścia dla tego modułu.
     + Funkcja punktu wejścia może zawierać maksymalnie dwa argumenty wejściowe: `Param<dataframe1>` i `Param<dataframe2>`
-    + Pliki spakowane połączone z trzecim portem wejściowym są rozpakowane i przechowywane w katalogu, `.\Script Bundle`, który jest również dodawany do `sys.path` języka Python. 
+    + Pliki spakowane połączone z trzecim portem wejściowym są rozpakowane i przechowywane w katalogu, `.\Script Bundle`, który jest również dodawany do `sys.path`języka Python. 
 
     W związku z tym, jeśli plik zip zawiera `mymodule.py`, zaimportuj go przy użyciu `import mymodule`.
 
-    + Dwa zestawy danych można zwrócić do interfejsu, który musi być sekwencją typu `pandas.DataFrame`. Możesz tworzyć inne dane wyjściowe w kodzie języka Python i zapisywać je bezpośrednio w usłudze Azure Storage.
+    + Do projektanta można zwrócić dwa zestawy danych, które muszą być sekwencją typu `pandas.DataFrame`. Możesz tworzyć inne dane wyjściowe w kodzie języka Python i zapisywać je bezpośrednio w usłudze Azure Storage.
 
 6. Uruchom potok lub wybierz moduł, a następnie kliknij pozycję **Uruchom wybrane** , aby uruchomić tylko skrypt języka Python.
 
@@ -124,4 +124,4 @@ Moduł zwraca dwa zestawy danych:
 
 ## <a name="next-steps"></a>Następne kroki
 
-Zapoznaj się z [zestawem modułów dostępnych](module-reference.md) do Azure Machine Learning usługi. 
+Zapoznaj się z [zestawem modułów dostępnych](module-reference.md) do Azure Machine Learning. 

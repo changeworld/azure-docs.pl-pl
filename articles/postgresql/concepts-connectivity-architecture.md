@@ -6,12 +6,12 @@ ms.author: manishku
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 05/23/2019
-ms.openlocfilehash: 92844f0fe3a851802836015a1340983eb4633ed2
-ms.sourcegitcommit: d3dced0ff3ba8e78d003060d9dafb56763184d69
+ms.openlocfilehash: 5288c3025e523e767082f4ab7cfbb08805a74eaf
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69900549"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73500084"
 ---
 # <a name="connectivity-architecture-in-azure-database-for-postgresql"></a>Architektura łączności w Azure Database for PostgreSQL
 W tym artykule opisano architekturę Azure Database for PostgreSQL łączności oraz sposób kierowania ruchu do wystąpienia bazy danych Azure Database for PostgreSQL z klientów zarówno w ramach platformy Azure, jak i poza nią.
@@ -50,10 +50,13 @@ W poniższej tabeli wymieniono podstawowe i pomocnicze adresy IP bramy Azure Dat
 | Japonia Zachodnia | 191.238.68.11 | 104.214.148.156 |
 | Korea Środkowa | 52.231.32.42 | |
 | Korea Południowa | 52.231.200.86 |  |
-| Środkowo-północne stany USA | 23.98.55.75 | 23.96.178.199 |
+| Północno-środkowe stany USA | 23.98.55.75 | 23.96.178.199 |
 | Europa Północna | 191.235.193.75 | 40.113.93.91 |
 | Środkowo-południowe stany USA | 23.98.162.75 | 13.66.62.124 |
 | Azja Południowo-Wschodnia | 23.100.117.95 | 104.43.15.0 |
+| Północna Republika Południowej Afryki | 102.133.152.0 | |
+| Północna Republika Południowej Afryki | 102.133.24.0 | |
+| Północne Zjednoczone Emiraty Arabskie | 65.52.248.0 | |
 | Południowe Zjednoczone Królestwo | 51.140.184.11 | |
 | Zachodnie Zjednoczone Królestwo | 51.141.8.11| |
 | Europa Zachodnia | 191.237.232.75 | 40.68.37.158 |
@@ -62,7 +65,7 @@ W poniższej tabeli wymieniono podstawowe i pomocnicze adresy IP bramy Azure Dat
 ||||
 
 > [!NOTE]
-> *Wschodnie stany USA 2* również mają adres `52.167.104.0`IP trzeciego rzędu.
+> *Wschodnie stany USA 2* również mają adres IP trzeciego rzędu `52.167.104.0`.
 
 ## <a name="next-steps"></a>Następne kroki
 

@@ -6,12 +6,12 @@ ms.author: dacoulte
 ms.date: 10/21/2019
 ms.topic: overview
 ms.service: resource-graph
-ms.openlocfilehash: 45853e3c8986cec58f27d785af31f174aff21b2e
-ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
+ms.openlocfilehash: c113719d304aa4ed9c13df1fe0264d22aacb5002
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/22/2019
-ms.locfileid: "72755889"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73499139"
 ---
 # <a name="overview-of-the-azure-resource-graph-service"></a>Omówienie usługi Azure Resource Graph
 
@@ -25,7 +25,7 @@ Azure Resource Graph to usługa na platformie Azure, która została zaprojektow
 W tej dokumentacji każda funkcja zostanie szczegółowo omówiona.
 
 > [!NOTE]
-> Wykres zasobów platformy Azure umożliwia Azure Portal pasku wyszukiwania, nowe środowisko przeglądania "wszystkie zasoby" i [historię zmian](../policy/how-to/determine-non-compliance.md#change-history-preview) Azure Policy 
+> Wykres zasobów platformy Azure umożliwia Azure Portal pasku wyszukiwania, nowe środowisko przeglądania "wszystkie zasoby" i [historię zmian](../policy/how-to/determine-non-compliance.md#change-history-preview) Azure Policy
 > _różnic wizualnych_. Jest ona przeznaczona do ułatwienia klientom zarządzania środowiskami w dużej skali.
 
 [!INCLUDE [service-provider-management-toolkit](../../../includes/azure-lighthouse-supported-service.md)]
@@ -92,7 +92,9 @@ Wykres zasobów obsługuje interfejs wiersza polecenia platformy Azure, Azure Po
 
 ## <a name="next-steps"></a>Następne kroki
 
+- Uruchom pierwsze zapytanie w [Azure Portal](first-query-portal.md).
 - Uruchom pierwsze zapytanie przy użyciu [interfejsu wiersza polecenia platformy Azure](first-query-azurecli.md).
 - Uruchom pierwsze zapytanie przy użyciu [Azure PowerShell](first-query-powershell.md).
+- Uzyskaj więcej informacji na temat [języka zapytań](./concepts/query-language.md).
 - Zacznij od [początkowych zapytań](./samples/starter.md).
 - Popraw swoją wiedzę dzięki [zaawansowanym zapytaniami](./samples/advanced.md).

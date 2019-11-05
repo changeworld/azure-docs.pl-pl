@@ -7,12 +7,12 @@ ms.service: storage
 ms.topic: conceptual
 ms.date: 03/26/2019
 ms.author: tamram
-ms.openlocfilehash: d1c7edc2973231607cade89df56906190c2abbcf
-ms.sourcegitcommit: 2d9a9079dd0a701b4bbe7289e8126a167cfcb450
+ms.openlocfilehash: 3ad82a1312ccce5029685d903a3c5e3caff50f8a
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/29/2019
-ms.locfileid: "71671145"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73495978"
 ---
 # <a name="upgrade-to-a-general-purpose-v2-storage-account"></a>Uaktualnianie do konta magazynu ogólnego przeznaczenia w wersji 2
 
@@ -23,18 +23,18 @@ Uaktualnianie do konta magazynu ogólnego przeznaczenia w wersji 2 z poziomu kon
 > [!IMPORTANT]
 > Uaktualnianie konta ogólnego przeznaczenia v1 lub BLOB Storage do ogólnego przeznaczenia w wersji 2 jest trwałe i nie można go cofnąć.
 
-## <a name="upgrade-using-the-azure-portal"></a>Uaktualnij przy użyciu Azure Portal
+# <a name="portaltabazure-portal"></a>[Portal](#tab/azure-portal)
 
 1. Zaloguj się w witrynie [Azure Portal](https://portal.azure.com).
 2. Przejdź do swojego konta magazynu.
 3. W sekcji **Ustawienia** kliknij pozycję **Konfiguracja**.
 4. W obszarze **Rodzaj konta** kliknij pozycję **Uaktualnij**.
 5. W obszarze **Potwierdź uaktualnianie** wpisz nazwę konta.
-6. Kliknij przycisk Uaktualnij w dolnej części bloku.
+6. Kliknij przycisk **Uaktualnij** w dolnej części bloku.
 
     ![Typ konta uaktualnienia](../blobs/media/storage-blob-account-upgrade/upgrade-to-gpv2-account.png)
 
-## <a name="upgrade-with-powershell"></a>Podnoszenie poziomu przy użyciu programu PowerShell
+# <a name="powershelltabazure-powershell"></a>[Program PowerShell](#tab/azure-powershell)
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
@@ -45,8 +45,7 @@ Następnie Wywołaj następujące polecenie, aby uaktualnić konto, podstawiają
 ```powershell
 Set-AzStorageAccount -ResourceGroupName <resource-group> -AccountName <storage-account> -UpgradeToStorageV2
 ```
-
-## <a name="upgrade-with-azure-cli"></a>Podnoszenie poziomu za pomocą interfejsu wiersza polecenia platformy Azure
+# <a name="azure-clitabazure-cli"></a>[Interfejs wiersza polecenia platformy Azure](#tab/azure-cli)
 
 Aby uaktualnić konto ogólnego przeznaczenia w wersji 1 do konta ogólnego przeznaczenia w wersji 2 przy użyciu interfejsu wiersza polecenia platformy Azure, najpierw zainstaluj najnowszą wersję interfejsu wiersza polecenia platformy Azure. Aby uzyskać więcej informacji na temat instalowania interfejsu wiersza polecenia, zobacz [Instalacja interfejsu wiersza polecenia platformy Azure 2.0](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest).
 
@@ -56,11 +55,13 @@ Następnie Wywołaj następujące polecenie, aby uaktualnić konto, podstawiają
 az storage account update -g <resource-group> -n <storage-account> --set kind=StorageV2
 ```
 
+---
+
 ## <a name="specify-an-access-tier-for-blob-data"></a>Określanie warstwy dostępu dla danych obiektów BLOB
 
 Konta ogólnego przeznaczenia w wersji 2 obsługują wszystkie usługi Azure Storage i obiekty danych, ale warstwy dostępu są dostępne tylko dla blokowych obiektów BLOB w magazynie obiektów BLOB. Podczas uaktualniania do konta magazynu ogólnego przeznaczenia w wersji 2 można określić warstwę dostępu dla danych obiektów BLOB.
 
-Warstwy dostępu umożliwiają wybranie najbardziej ekonomicznego magazynu w oparciu o przewidywane wzorce użycia. Blokowe obiekty blob mogą być przechowywane w warstwie gorąca, chłodna lub archiwalna. Aby uzyskać więcej informacji na temat warstw dostępu, zobacz [Azure BLOB Storage: Warstwy magazynowania gorąca, chłodna i archiwalna](../blobs/storage-blob-storage-tiers.md).
+Warstwy dostępu umożliwiają wybranie najbardziej ekonomicznego magazynu w oparciu o przewidywane wzorce użycia. Blokowe obiekty blob mogą być przechowywane w warstwie gorąca, chłodna lub archiwalna. Aby uzyskać więcej informacji na temat warstw dostępu, zobacz [Azure Blob Storage: warstwy magazynowania gorąca, chłodna i archiwalna](../blobs/storage-blob-storage-tiers.md).
 
 Domyślnie nowe konto magazynu jest tworzone w warstwie dostępu gorąca, a konto magazynu ogólnego przeznaczenia w wersji 1 zostanie uaktualnione do warstwy dostępu gorąca. Jeśli szukasz warstwy dostępu, która ma być używana na potrzeby uaktualniania po uaktualnieniu, weź pod uwagę swój scenariusz. Istnieją dwa typowe scenariusze dotyczące migracji do konta ogólnego przeznaczenia w wersji 2:
 
@@ -75,17 +76,17 @@ Uaktualnianie konta magazynu w wersji 1 do konta ogólnego przeznaczenia w wersj
 
 Wszystkie konta magazynu używają modelu cenowego dla magazynu obiektów blob opartego na warstwie każdego obiektu blob. W przypadku korzystania z konta magazynu mają zastosowanie następujące zagadnienia dotyczące rozliczeń:
 
-* **Koszty magazynu**: Oprócz ilości przechowywanych danych koszt przechowywania danych różni się w zależności od warstwy dostępu do magazynu. Koszt za gigabajt zmniejsza się w miarę, jak warstwa staje się chłodniejsza.
+* **Koszty magazynowania**: oprócz ilości przechowywanych danych koszt przechowywania danych różni się w zależności od warstwy dostępu do magazynu. Koszt za gigabajt zmniejsza się w miarę, jak warstwa staje się chłodniejsza.
 
-* **Koszty dostępu do danych**: Opłaty za dostęp do danych zwiększają się, ponieważ warstwa uzyskuje chłodnicę. W przypadku danych w warstwie dostępu do magazynu chłodna i archiwalna naliczana jest opłata za dostęp do danych za każdy gigabajt dla operacji odczytu.
+* **Koszty dostępu do danych**: opłaty za dostęp do danych wzrastają w miarę, jak warstwa staje się chłodniejsza. W przypadku danych w warstwie dostępu do magazynu chłodna i archiwalna naliczana jest opłata za dostęp do danych za każdy gigabajt dla operacji odczytu.
 
-* **Koszty transakcji**: Istnieje opłata za transakcję dla wszystkich warstw, które zwiększają się, gdy warstwa uzyskuje chłodnicę.
+* **Koszty transakcji**: w przypadku wszystkich warstw naliczana jest opłata za transakcję, która wzrasta w miarę, jak warstwa staje się chłodniejsza.
 
-* **Koszty transferu danych replikacji geograficznej**: Ta opłata dotyczy tylko kont ze skonfigurowaną replikacją geograficzną, w tym GRS i RA-GRS. Transfer danych w ramach replikacji geograficznej powoduje naliczanie opłaty za każdy gigabajt.
+* **Koszty transferu danych replikacji geograficznej**: ta opłata dotyczy tylko kont ze skonfigurowaną replikacją geograficzną, w tym GRS i RA-GRS. Transfer danych w ramach replikacji geograficznej powoduje naliczanie opłaty za każdy gigabajt.
 
-* **Koszty transferu danych wychodzących**: Wychodzące transfery danych (dane przesyłane z regionu platformy Azure) powodują naliczanie opłat za użycie przepustowości dla każdego gigabajta, spójne z kontami magazynu ogólnego przeznaczenia.
+* **Koszty transferu danych wychodzących**: wychodzące transfery danych (dane przesyłane z regionu platformy Azure) są rozliczane za użycie przepustowości dla każdego gigabajta, spójne z kontami magazynu ogólnego przeznaczenia.
 
-* **Zmiana warstwy dostępu do magazynu**: Zmiana warstwy dostępu do magazynu konta z chłodnej na gorącą spowoduje naliczenie opłaty równej odczytaniu wszystkich danych istniejących na koncie magazynu. Jednak zmiana warstwy dostępu do konta z gorąca na chłodna spowoduje naliczenie opłaty równej zapisywaniu wszystkich danych w warstwie chłodna (tylko konta GPv2).
+* **Zmiana warstwy dostępu do magazynu**: zmiana warstwy dostępu do magazynu konta z chłodna na gorąca spowoduje naliczenie opłaty równej odczytaniu wszystkich danych istniejących na koncie magazynu. Jednak zmiana warstwy dostępu do konta z gorąca na chłodna spowoduje naliczenie opłaty równej zapisywaniu wszystkich danych w warstwie chłodna (tylko konta GPv2).
 
 > [!NOTE]
 > Więcej informacji dotyczących modelu cenowego dla kont magazynu można znaleźć na stronie [Cennik usługi Azure Storage](https://azure.microsoft.com/pricing/details/storage/). Więcej informacji dotyczących opłat za transfer danych wychodzących można znaleźć na stronie [Szczegóły cennika transferów danych](https://azure.microsoft.com/pricing/details/data-transfers/).

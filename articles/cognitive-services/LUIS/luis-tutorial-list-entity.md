@@ -1,7 +1,7 @@
 ---
 title: Extact obiektów dopasowania tekstu — LUIS
 titleSuffix: Azure Cognitive Services
-description: Dowiedz się, jak dodać jednostkę listy, ułatwiające odmiany etykieta usługi LUIS wyrazu lub frazy.
+description: Dowiedz się, jak dodać jednostkę listy ułatwiającą LUIS odmian wyrazu lub frazy.
 services: cognitive-services
 author: diberry
 manager: nitinme
@@ -10,101 +10,103 @@ ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 09/05/2019
 ms.author: diberry
-ms.openlocfilehash: a722ce39a679fa13e1fe849c46b44f786ea5ee42
-ms.sourcegitcommit: 88ae4396fec7ea56011f896a7c7c79af867c90a1
+ms.openlocfilehash: f3c99856eaffc454754618a1eac34630b985a77e
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70390268"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73499478"
 ---
-# <a name="use-a-list-entity-to-increase-entity-detection"></a>Użyj jednostki listy w celu zwiększenia wykrywania jednostki 
-W tym artykule przedstawiono sposób użycia [jednostki listy](luis-concept-entity-types.md) do zwiększenia wykrywania jednostek. Lista jednostek jest konieczne etykietą, ponieważ są one dokładne dopasowanie warunków.  
+# <a name="use-a-list-entity-to-increase-entity-detection"></a>Użyj jednostki listy, aby zwiększyć wykrywanie jednostek 
+W tym artykule przedstawiono sposób użycia [jednostki listy](luis-concept-entity-types.md) do zwiększenia wykrywania jednostek. Jednostki listy nie muszą mieć etykiet, ponieważ są dokładnie zgodne z postanowieniami.  
+
+[!INCLUDE [Waiting for LUIS portal refresh](./includes/wait-v3-upgrade.md)]
 
 W tym artykule omówiono sposób wykonywania następujących zadań:
 
 > [!div class="checklist"]
 > * Tworzenie jednostki listy 
-> * Dodaj znormalizowane wartości i synonimy
-> * Sprawdź poprawność identyfikacji ulepszone jednostki
+> * Dodawanie znormalizowanych wartości i synonimów
+> * Weryfikacja ulepszonej identyfikacji jednostek
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
 > [!div class="checklist"]
-> * Najnowsze [środowiska Node.js](https://nodejs.org)
-> * [Aplikacją usługi LUIS HomeAutomation](luis-get-started-create-app.md). Jeśli nie masz aplikacji Home automatyzacji utworzone, Utwórz nową aplikację i dodać domenę wstępnie **HomeAutomation**. Przeszkol i opublikuj aplikację. 
-> * [AuthoringKey](luis-concept-keys.md#authoring-key), [EndpointKey](luis-concept-keys.md#endpoint-key) (jeśli jest wykonywane zapytanie wiele razy), identyfikator aplikacji, identyfikator wersji i [region](luis-reference-regions.md) dla aplikacji usługi LUIS.
+> * Najnowsza wersja środowiska [Node. js](https://nodejs.org)
+> * [Aplikacja HOMEAUTOMATION Luis](luis-get-started-create-app.md). Jeśli nie masz utworzonej aplikacji Automation Home, Utwórz nową aplikację i Dodaj prezbudowaną domenę **HomeAutomation**. Przeszkol i opublikuj aplikację. 
+> * [AuthoringKey](luis-concept-keys.md#authoring-key), [EndpointKey](luis-concept-keys.md#endpoint-key) (w przypadku wykonywania zapytań wiele razy), identyfikatora aplikacji, identyfikatora wersji i [regionu](luis-reference-regions.md) dla aplikacji Luis.
 
 > [!Tip]
-> Jeśli nie masz już subskrypcję, możesz zarejestrować [bezpłatne konto](https://azure.microsoft.com/free/).
+> Jeśli jeszcze nie masz subskrypcji, możesz zarejestrować się w celu uzyskania [bezpłatnego konta](https://azure.microsoft.com/free/).
 
 Cały kod w tym artykule jest dostępny w [repozytorium Azure-Samples](https://github.com/Azure-Samples/cognitive-services-language-understanding/tree/master/documentation-samples/tutorial-list-entity)w witrynie GitHub. 
 
-## <a name="use-homeautomation-app"></a>Użyj aplikacji HomeAutomation
-Daje aplikacji HomeAutomation kontroli urządzeń, takich jak światła, rozrywka systemów i środowisko kontroluje takich jak ogrzewania i chłodzenie. Te systemy mają kilka różnych nazw, które mogą obejmować nazwy, pseudonimy, akronimów i żargonu producenta. 
+## <a name="use-homeautomation-app"></a>Korzystanie z aplikacji HomeAutomation
+Aplikacja HomeAutomation zapewnia kontrolę nad urządzeniami, takimi jak światła, systemy rozrywki i mechanizmy kontroli środowiska, takie jak ogrzewanie i chłodzenie. Te systemy mają kilka różnych nazw, które mogą zawierać nazwy producentów, pseudonimy, akronimy i żargonu. 
 
-Co system, który ma wiele nazw w różnych kultur i danymi demograficznymi to termostat. Termostat można kontrolować systemu domu lub tworzenie ogrzewania i chłodzenie.
+Jeden system, który ma wiele nazw w różnych kulturach i demograficznych jest termostatem. Termostat może kontrolować systemy chłodzenia i ogrzewania dla domu lub budynku.
 
-Najlepiej następujące wypowiedzi powinna być rozwiązywana na wstępnie utworzone jednostki **HomeAutomation.Device**:
+W idealnym przypadku należy rozwiązać następujący wyrażenia długości do wstępnie skompilowanej jednostki **HomeAutomation. Device**:
 
-|#|Wypowiedź|jednostki identyfikowanej|wynik|
+|#|wypowiedź|zidentyfikowana jednostka|dały|
 |--|--|--|--|
-|1|Włącz ac|HomeAutomation.Device — "ac"|0.8748562|
-|2|wskazywać ciepła|HomeAutomation.Device — "cieplnej"|0.784990132|
-|3|ułatwiają chłodnej|||
+|1|Włącz AC|HomeAutomation. Device-"AC"|0,8748562|
+|2|Włącz ciepło|HomeAutomation. Device — "ciepło"|0,784990132|
+|3|Uczyń go zimnem|||
 
-Pierwsze dwa wypowiedzi są mapowane na różnych urządzeniach. Trzeci wypowiedź, "ułatwiają chłodnej", nie jest mapowany na urządzeniu, ale zamiast tego żądania wynik. Usługa LUIS nie wie, że termin "chłodnej" oznacza, że termostat jest żądane urządzenie. W idealnym przypadku LUIS powinna być rozpoznawana wszystkie te wypowiedzi na tym samym urządzeniu. 
+Dwie pierwsze mapy wyrażenia długości na różnych urządzeniach. Trzeci wypowiedź "uczyń go zimnem", nie jest mapowany na urządzenie, ale zamiast tego żąda wyniku. LUIS nie wie, że termin "chłodner" oznacza, że wymagane urządzenie jest termostatem. W idealnym przypadku LUIS powinna rozpoznać wszystkie te wyrażenia długości na tym samym urządzeniu. 
 
-## <a name="use-a-list-entity"></a>Użyj jednostki listy
-Jednostka HomeAutomation.Device to doskonałe rozwiązanie dla małych lub liczby urządzeń za pomocą niewielkie zmiany nazw. Budynek biurowy lub campus nazwy urządzenia rosnąć poza przydatność jednostki HomeAutomation.Device. 
+## <a name="use-a-list-entity"></a>Korzystanie z jednostki listy
+Jednostka HomeAutomation. Device jest doskonałym rozwiązaniem dla niewielkiej liczby urządzeń lub z kilkoma odmianami nazw. W przypadku tworzenia lub szkoły biurowej nazwy urządzeń rosną poza użyteczność jednostki HomeAutomation. urządzenia. 
 
-A **listy jednostek** jest dobrym wyborem dla tego scenariusza, ponieważ zestaw warunków dla urządzenia w budynku lub campus jest znanego zestawu, nawet jeśli jest to duży zestaw. Korzystając z obiektami listy, LUIS można odbierać dowolnej możliwej wartości w zestawie termostat i rozwiązać ten problem w dół do tylko jednego urządzenia "termostat". 
+**Jednostka listy** jest dobrym wyborem w tym scenariuszu, ponieważ zestaw warunków dla urządzenia w budynku lub kampus jest znanym zestawem, nawet jeśli jest to duży zestaw. Za pomocą jednostki listy LUIS może otrzymać dowolną wartość z zestawu dla termostatu i rozpoznać ją tylko do jednego urządzenia "termostat". 
 
 W tym artykule opisano tworzenie listy jednostek z termostatem. Alternatywne nazwy dla termostatu w tym artykule są następujące: 
 
-|alternatywne nazwy dla termostat|
+|alternatywne nazwy dla termostatu|
 |--|
-| ac |
-| konta|
-| -c|
-|heater|
-|gorąca|
+| Napięcie |
+| a/c|
+| a-c|
+|wydajności|
+|Ręczne|
 |hotter|
-|zimno|
-|chłodnej|
+|Chłodn|
+|zimner|
 
-Jeśli usługa LUIS musi określić nowe alternatywna często, a następnie [listy fraz](luis-concept-feature.md#how-to-use-phrase-lists) jest lepsza odpowiedź.
+Jeśli LUIS musi często określić nową alternatywę, wówczas [Lista fraz](luis-concept-feature.md#how-to-use-phrase-lists) jest lepszą odpowiedzią.
 
 ## <a name="create-a-list-entity"></a>Tworzenie jednostki listy
-Utwórz plik w technologii Node.js i skopiuj następujący kod do niego. Zmień wartości authoringKey "," appId "," versionId "i" region.
+Utwórz plik Node. js i skopiuj do niego następujący kod. Zmień wartości authoringKey, appId, versionId i region.
 
    [!code-javascript[Create DevicesList List Entity](~/samples-luis/documentation-samples/tutorial-list-entity/add-entity-list.js "Create DevicesList List Entity")]
 
-Aby zainstalować zależności rozwiązania NPM i uruchomić kod, aby utworzyć jednostkę listy, użyj następującego polecenia:
+Użyj poniższego polecenia, aby zainstalować zależności NPM i uruchomić kod w celu utworzenia jednostki listy:
 
 ```console
 npm install && node add-entity-list.js
 ```
 
-Dane wyjściowe przebiegu jest identyfikator obiektu listy:
+Dane wyjściowe przebiegu są IDENTYFIKATORem jednostki listy:
 
 ```console
 026e92b3-4834-484f-8608-6114a83b03a6
 ```
 
-## <a name="train-the-model"></a>Uczenie modelu
-Szkolenie usługi LUIS w kolejności, aby uzyskać nową listę, aby mieć wpływ na wyniki zapytania. Szkolenie jest proces dwuetapowy, szkolenia, jeżeli odbywa się szkolenie Trwa sprawdzanie stanu. Aplikację z wieloma modelami może potrwać kilka chwil do nauczenia. Poniższy kod szkolenie modeli aplikacji, a następnie czeka, aż szkolenia zakończy się pomyślnie. Kod używa strategię oczekiwania i ponawiania, aby uniknąć 429 "zbyt wiele żądań" błąd. 
+## <a name="train-the-model"></a>Trenowanie modelu
+Pouczenie LUIS, aby nowa lista miała wpływ na wyniki zapytania. Szkolenie to dwuczęściowy proces szkolenia, a następnie sprawdzanie stanu w przypadku jego wykonania. Nauczenie aplikacji z wieloma modelami może potrwać kilka minut. Poniższy kod pociąga za siebie, że aplikacja czeka na pomyślne szkolenie. Kod używa strategii oczekiwania i ponawiania próby, aby uniknąć błędu 429 "zbyt wiele żądań". 
 
-Utwórz plik w technologii Node.js i skopiuj następujący kod do niego. Zmień wartości authoringKey "," appId "," versionId "i" region.
+Utwórz plik Node. js i skopiuj do niego następujący kod. Zmień wartości authoringKey, appId, versionId i region.
 
    [!code-javascript[Train LUIS](~/samples-luis/documentation-samples/tutorial-list-entity/train.js "Train LUIS")]
 
-Aby uruchomić kod to w opracowywaniu aplikacji, użyj następującego polecenia:
+Użyj następującego polecenia, aby uruchomić kod w celu uczenia aplikacji:
 
 ```console
 node train.js
 ```
 
-Dane wyjściowe przebiegu jest jego stan każdej iteracji szkolenie modeli usługi LUIS. Wykonanie następujących wymagany tylko jeden wyboru szkolenia:
+Wyjście przebiegu jest stanem każdej iteracji szkolenia modeli LUIS. Następujące wykonanie wymaga tylko jednego sprawdzenia szkolenia:
 
 ```console
 1 trained = true
@@ -123,19 +125,19 @@ Dane wyjściowe przebiegu jest jego stan każdej iteracji szkolenie modeli usłu
 
 ```
 ## <a name="publish-the-model"></a>Publikowanie modelu
-Publikowanie, więc jednostka lista jest dostępna z punktu końcowego.
+Opublikuj, aby jednostka listy była dostępna w punkcie końcowym.
 
-Utwórz plik w technologii Node.js i skopiuj następujący kod do niego. Zmień wartości endpointKey, appId i region. Jeśli nie planujesz wywołanie tego pliku poza limit przydziału, możesz użyć swojej authoringKey.
+Utwórz plik Node. js i skopiuj do niego następujący kod. Zmień wartości endpointKey, appId i region. Możesz użyć authoringKey, jeśli nie planujesz wywołać tego pliku poza limitem przydziału.
 
    [!code-javascript[Publish LUIS](~/samples-luis/documentation-samples/tutorial-list-entity/publish.js "Publish LUIS")]
 
-Aby uruchomić kod do wykonywania zapytań w aplikacji, użyj następującego polecenia:
+Użyj następującego polecenia, aby uruchomić kod w celu wykonania zapytania dotyczącego aplikacji:
 
 ```console
 node publish.js
 ```
 
-Następujące dane wyjściowe obejmują adres url punktu końcowego dla dowolnego zapytania. Rzeczywiste wyniki JSON obejmuje appID rzeczywistych. 
+Poniższe dane wyjściowe zawierają adres URL punktu końcowego dla dowolnych zapytań. Rzeczywiste wyniki JSON będą zawierać rzeczywisty identyfikator appID. 
 
 ```json
 { 
@@ -149,20 +151,20 @@ Następujące dane wyjściowe obejmują adres url punktu końcowego dla dowolneg
 }
 ```
 
-## <a name="query-the-app"></a>Zapytanie aplikacji 
-Wyślij zapytanie do aplikacji z punktu końcowego, aby potwierdzić, czy obiektami listy pomaga LUIS określić typ urządzenia.
+## <a name="query-the-app"></a>Wysyłanie zapytań do aplikacji 
+Wykonaj zapytanie dotyczące aplikacji z punktu końcowego, aby upewnić się, że jednostka listy pomaga LUIS określić typ urządzenia.
 
-Utwórz plik w technologii Node.js i skopiuj następujący kod do niego. Zmień wartości endpointKey, appId i region. Jeśli nie planujesz wywołanie tego pliku poza limit przydziału, możesz użyć swojej authoringKey.
+Utwórz plik Node. js i skopiuj do niego następujący kod. Zmień wartości endpointKey, appId i region. Możesz użyć authoringKey, jeśli nie planujesz wywołać tego pliku poza limitem przydziału.
 
    [!code-javascript[Query LUIS](~/samples-luis/documentation-samples/tutorial-list-entity/query.js "Query LUIS")]
 
-Użyj następującego polecenia do uruchomienia kodu i wykonywania zapytań względem aplikacji:
+Użyj następującego polecenia, aby uruchomić kod i wykonać zapytanie dotyczące aplikacji:
 
 ```console
 node train.js
 ```
 
-Dane wyjściowe są wyniki zapytania. Ponieważ kod dodany **pełne** pary nazwa/wartość do ciągu zapytania, dane wyjściowe obejmują wszystkie intencje i ich wyniki:
+Dane wyjściowe są wynikami zapytania. Ponieważ kod dodał para **pełna** nazwa/wartość do ciągu zapytania, dane wyjściowe zawierają wszystkie intencje i ich wyniki:
 
 ```json
 {
@@ -208,16 +210,16 @@ Dane wyjściowe są wyniki zapytania. Ponieważ kod dodany **pełne** pary nazwa
 }
 ```
 
-Urządzenie z **termostat** jest identyfikowany za pomocą zorientowane na wynik zapytania "turn się ciepło". Ponieważ oryginalna jednostka HomeAutomation.Device jest nadal w aplikacji, zostaną wyświetlone wyniki także. 
+Określone urządzenie **termostatu** jest identyfikowane za pomocą zapytania zorientowanego na wynik "wyłączania ciepła". Ponieważ oryginalna jednostka HomeAutomation. Device jest nadal w aplikacji, można także zobaczyć jej wyniki. 
 
-Spróbuj dwóch wypowiedzi będzie również są zwracane jako termostat. 
+Wypróbuj dwa inne wyrażenia długościy, aby zobaczyć, że są one również zwracane jako termostat. 
 
-|#|Wypowiedź|jednostka|type|wartość|
+|#|wypowiedź|Podmiotów|type|wartość|
 |--|--|--|--|--|
-|1|Włącz ac| ac | DevicesList | Termostat|
-|2|wskazywać ciepła|ciepła| DevicesList |Termostat|
-|3|ułatwiają chłodnej|chłodnej|DevicesList|Termostat|
+|1|Włącz AC| Napięcie | DevicesList | Sterownika|
+|2|Włącz ciepło|odczytu| DevicesList |Sterownika|
+|3|Uczyń go zimnem|zimner|DevicesList|Sterownika|
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
-Można utworzyć innej jednostki listy, aby rozwinąć lokalizacji urządzenia do pomieszczenia, piętrach lub budynki. 
+Można utworzyć kolejną jednostkę listy, aby rozwinąć lokalizacje urządzeń do pokojów, podłóg lub budynków. 

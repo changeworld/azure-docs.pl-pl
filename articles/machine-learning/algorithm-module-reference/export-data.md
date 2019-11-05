@@ -1,82 +1,53 @@
 ---
 title: 'Eksportowanie danych: odwołanie do modułu'
-titleSuffix: Azure Machine Learning service
-description: Dowiedz się, jak używać modułu eksport danych w usłudze Azure Machine Learning, aby zapisywać wyniki, dane pośrednie i dane robocze z potoków do miejsc docelowych magazynu w chmurze poza Azure Machine Learning.
+titleSuffix: Azure Machine Learning
+description: Dowiedz się, jak używać modułu eksport danych w Azure Machine Learning, aby zapisywać wyniki, dane pośrednie i dane robocze z potoków do miejsc docelowych magazynu w chmurze poza Azure Machine Learning.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: reference
 author: xiaoharper
 ms.author: zhanxia
-ms.date: 05/02/2019
-ms.openlocfilehash: b7b4b9de1e91279243e35f1b71f1ef6d2244e9e0
-ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
+ms.date: 10/22/2019
+ms.openlocfilehash: 5badcbe2a76c41bdc1431abae617e35b7555eb88
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "72693715"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73497898"
 ---
 # <a name="export-data-module"></a>Eksportuj moduł danych
 
-W tym artykule opisano moduł Visual Interface (wersja zapoznawcza) dla usługi Azure Machine Learning.
+W tym artykule opisano moduł w programie Azure Machine Learning Designer (wersja zapoznawcza).
 
-Ten moduł służy do zapisywania wyników, danych pośrednich i danych roboczych z potoków do miejsc docelowych magazynu w chmurze spoza Azure Machine Learning.
+Ten moduł służy do zapisywania wyników, danych pośrednich i danych roboczych z potoków do miejsc docelowych magazynu w chmurze spoza Azure Machine Learning. 
 
-Ten moduł obsługuje Eksportowanie lub zapisywanie danych do następujących usług danych w chmurze:
+Ten moduł obsługuje eksportowanie danych do następujących usług danych w chmurze:
 
+- Kontener obiektów blob platformy Azure
+- Udział plików platformy Azure
+- Azure Data Lake
+- Azure Data Lake Gen2
 
-- **Eksportuj do BLOB Storage platformy Azure**: zapisuje dane do BLOB Service na platformie Azure. Dane w Blob service mogą być udostępniane publicznie lub zapisywane w zabezpieczonych magazynach danych aplikacji.
+Przed wyeksportowaniem danych najpierw należy najpierw zarejestrować magazyn danych w obszarze roboczym Azure Machine Learning. Aby uzyskać więcej informacji, zobacz [jak uzyskać dostęp do danych](../service/how-to-access-data.md).
 
-  
 ## <a name="how-to-configure-export-data"></a>Jak skonfigurować dane eksportu
 
-1. Dodaj moduł **eksportu danych** do potoku w interfejsie. Ten moduł można znaleźć w kategorii **dane wejściowe i wyjściowe** .
+1. Dodaj moduł **eksportu danych** do potoku w projektancie. Ten moduł można znaleźć w kategorii **dane wejściowe i wyjściowe** .
 
-2. Połącz **eksport danych** z modułem zawierającym dane, które chcesz wyeksportować.
+1. Połącz **eksport danych** z modułem zawierającym dane, które chcesz wyeksportować.
 
-3. Kliknij dwukrotnie pozycję **Eksportuj dane** , aby otworzyć okienko **Właściwości** .
+1. Wybierz pozycję **Eksportuj dane** , aby otworzyć okienko **Właściwości** .
 
-4. W polu **miejsce docelowe danych**wybierz typ magazynu w chmurze, w którym będziesz zapisywać dane. Po wprowadzeniu zmian w tej opcji wszystkie inne właściwości zostaną zresetowane. Pamiętaj, aby najpierw wybrać tę opcję.
+1. W obszarze **Magazyn**danych wybierz istniejący magazyn danych z listy rozwijanej. Możesz również utworzyć nowy magazyn danych. Zapoznaj się z tematem jak [uzyskać dostęp do danych](../service/how-to-access-data.md)
 
-5. Podaj nazwę konta i metodę uwierzytelniania wymagane w celu uzyskania dostępu do określonego konta magazynu.
-
-    **Eksport do platformy Azure Blob Storage** jest jedyną opcją w prywatnej wersji zapoznawczej. Poniżej przedstawiono sposób ustawiania modułu.
-    1. Usługa Azure Blob Service służy do przechowywania dużych ilości danych, w tym danych binarnych. Istnieją dwa typy obiektów BLOB Storage: publiczne obiekty blob i obiekty blob, które wymagają poświadczeń logowania.
-
-    2. W **polu Typ uwierzytelniania**wybierz pozycję **Public (SAS)** , Jeśli wiesz, że magazyn obsługuje dostęp za pośrednictwem adresu URL sygnatury dostępu współdzielonego.
-
-          Adres URL sygnatury dostępu współdzielonego jest specjalnym typem adresu URL, który można wygenerować za pomocą narzędzia Azure Storage, i jest dostępny tylko przez ograniczony czas.  Zawiera wszystkie informacje, które są niezbędne do uwierzytelniania i pobierania.
-
-        W polu **Identyfikator URI**wpisz lub wklej pełny identyfikator URI, który definiuje konto i publiczny obiekt BLOB.
-
-        W przypadku formatu pliku pliki CSV i TSV są obsługiwane.
-
-    3. W przypadku kont prywatnych wybierz pozycję **konto**, a następnie podaj nazwę konta i klucz konta, aby potok mógł zapisywać dane na koncie magazynu.
-
-         - **Nazwa konta**: wpisz lub wklej nazwę konta, w którym chcesz zapisać dane. Na przykład jeśli pełny adres URL konta magazynu jest `http://myshared.blob.core.windows.net`, wpisz `myshared`.
-
-        - **Klucz konta**: Wklej klucz dostępu do magazynu, który jest skojarzony z tym kontem.
-
-        -  **Ścieżka do kontenera, katalogu lub obiektu BLOB**: wpisz nazwę obiektu BLOB, w którym będą przechowywane eksportowane dane. Na przykład, aby zapisać wyniki potoku do nowego obiektu BLOB o nazwie **results01. csv** w **przewidywaniach** kontenera na koncie o nazwie **mymldata**, pełny adres URL dla obiektu BLOB zostałby `http://mymldata.blob.core.windows.net/predictions/results01.csv`.
-
-            W związku z tym w **ścieżce pola do kontenera, katalogu lub obiektu BLOB**należy określić nazwę kontenera i obiektu BLOB w następujący sposób: `predictions/results01.csv`
-
-        - Jeśli określisz nazwę obiektu BLOB, który jeszcze nie istnieje, platforma Azure utworzy obiekt BLOB.
-
-       -  Podczas zapisywania do istniejącego obiektu BLOB można określić, że bieżąca zawartość obiektu BLOB zostanie zastąpiona przez ustawienie właściwości, **tryb zapisu usługi Azure Blob Storage**. Domyślnie ta właściwość ma wartość **Error**, co oznacza, że błąd jest zgłaszany za każdym razem, gdy zostanie znaleziony istniejący plik BLOB o tej samej nazwie.
+1. Zdefiniuj ścieżkę w magazynie danych, w której mają zostać zapisane dane. 
 
 
-    4. W polu **Format pliku obiektu BLOB**wybierz format, w którym mają być przechowywane dane.
-
-        - **CSV**: domyślny format przechowywania wartości rozdzielanych przecinkami (CSV). Aby wyeksportować nagłówki kolumn razem z danymi, wybierz opcję, **Zapisz wiersz nagłówka obiektu BLOB**.  Aby uzyskać więcej informacji o formacie rozdzielanym przecinkami używanym w Azure Machine Learning, zobacz [konwertowanie do formatu CSV](./convert-to-csv.md).
-
-        - **TSV**: format wartości rozdzielanych tabulatorami (tsv) jest zgodny z wieloma narzędziami uczenia maszynowego. Aby wyeksportować nagłówki kolumn razem z danymi, wybierz opcję, **Zapisz wiersz nagłówka obiektu BLOB**.  
-
+1. W polu **Format pliku**wybierz format, w którym mają być przechowywane dane.
  
-    5. **Użyj zbuforowanych wyników**: zaznacz tę opcję, jeśli chcesz uniknąć ponownego zapisywania wyników w pliku BLOB przy każdym uruchomieniu potoku. Jeśli nie ma żadnych innych zmian parametrów modułu, potok zapisuje wyniki tylko przy pierwszym uruchomieniu modułu lub po wprowadzeniu zmian w danych.
-
-    6. Uruchamianie potoku.
+1. Uruchamianie potoku.
 
 ## <a name="next-steps"></a>Następne kroki
 
-Zapoznaj się z [zestawem modułów dostępnych](module-reference.md) do Azure Machine Learning usługi. 
+Zapoznaj się z [zestawem modułów dostępnych](module-reference.md) do Azure Machine Learning. 

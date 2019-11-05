@@ -9,18 +9,18 @@ ms.service: hdinsight
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
 ms.date: 10/04/2019
-ms.openlocfilehash: aa3e3b63bdfda7aa6d875055dee4c69b9840db25
-ms.sourcegitcommit: fa5ce8924930f56bcac17f6c2a359c1a5b9660c9
+ms.openlocfilehash: e07939bd5f0264df637fda439d96be213a8d28d1
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/31/2019
-ms.locfileid: "72167346"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73499212"
 ---
 # <a name="what-is-apache-hive-and-hiveql-on-azure-hdinsight"></a>Co to jest Apache Hive i HiveQL w usłudze Azure HDInsight?
 
 [Apache Hive](https://hive.apache.org/) to system magazynu danych dla Apache Hadoop. Funkcja Hive umożliwia tworzenie podsumowań danych, wykonywanie zapytań oraz analizowanie danych. Zapytania Hive są zapisywane w HiveQL, który jest językiem zapytań podobnym do bazy danych SQL.
 
-Program Hive umożliwia tworzenie struktury projektu na danych o dużej strukturze. Po zdefiniowaniu struktury można użyć HiveQL do wykonywania zapytań dotyczących danych bez znajomości języka Java lub MapReduce.
+Program Hive umożliwia tworzenie struktury projektu na dużą strukturę danych. Po zdefiniowaniu struktury można użyć HiveQL do wykonywania zapytań dotyczących danych bez znajomości języka Java lub MapReduce.
 
 Usługa HDInsight udostępnia kilka typów klastrów, które są dostrajane pod kątem określonych obciążeń. Następujące typy klastrów są najczęściej używane w przypadku zapytań Hive:
 
@@ -74,7 +74,7 @@ Aby uzyskać więcej informacji na temat formatów plików obsługiwanych przez 
 
 Istnieją dwa typy tabel, które można utworzyć przy użyciu programu Hive:
 
-* __Wewnętrzne__: dane są przechowywane w magazynie danych programu Hive. Magazyn danych znajduje się w lokalizacji `/hive/warehouse/` w domyślnym magazynie klastra.
+* __Wewnętrzne__: dane są przechowywane w magazynie danych programu Hive. Magazyn danych znajduje się w `/hive/warehouse/` na domyślnym magazynie klastra.
 
     Użyj tabel wewnętrznych, gdy są spełnione jeden z następujących warunków:
 
@@ -112,7 +112,7 @@ Gałąź Hive w usłudze HDInsight jest wstępnie załadowana z tabelą wewnętr
 
 ## <a id="job"></a>Przykładowe zapytanie Hive
 
-Następujące kolumny HiveQL instrukcje projektu do pliku `/example/data/sample.log`:
+Następujące kolumny projektu HiveQL instrukcji w pliku `/example/data/sample.log`:
 
 ```hiveql
 DROP TABLE log4jLogs;
@@ -137,7 +137,7 @@ W poprzednim przykładzie instrukcje HiveQL wykonują następujące czynności:
 
 * `CREATE EXTERNAL TABLE`: tworzy nową tabelę **zewnętrzną** w usłudze Hive. Tabele zewnętrzne przechowują wyłącznie definicję tabeli w programie Hive. Dane pozostaną w oryginalnej lokalizacji i w oryginalnym formacie.
 
-* `ROW FORMAT`: informuje Hive, jak dane są formatowane. W takim przypadku pola w każdym dzienniku są oddzielone spacją.
+* `ROW FORMAT`: informuje Hive o sposobie formatowania danych. W takim przypadku pola w każdym dzienniku są oddzielone spacją.
 
 * `STORED AS TEXTFILE LOCATION`: informuje gałąź, w której są przechowywane dane (katalog `example/data`) i jest przechowywana jako tekst. Dane mogą znajdować się w jednym pliku lub rozłożyć na wiele plików w katalogu.
 

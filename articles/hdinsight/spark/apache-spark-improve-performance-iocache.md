@@ -1,5 +1,5 @@
 ---
-title: Apache Spark obciążenie wydajności za pomocą pamięci podręcznej we/wy usługi Azure HDInsight (wersja zapoznawcza)
+title: Wydajność Apache Spark — pamięć podręczna we/wy usługi Azure HDInsight (wersja zapoznawcza)
 description: Informacje o pamięci podręcznej we/wy usługi Azure HDInsight i sposobach ich użycia w celu poprawy wydajności Apache Spark.
 author: hrasheed-msft
 ms.author: hrasheed
@@ -7,12 +7,12 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 10/29/2019
-ms.openlocfilehash: b60906df01f640877e90281812acf64082ffad01
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.openlocfilehash: 3ef2def6329dc31eb1b175133b4525f87de9181c
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73162837"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73494644"
 ---
 # <a name="improve-performance-of-apache-spark-workloads-using-azure-hdinsight-io-cache"></a>Poprawianie wydajności Apache Spark obciążeń przy użyciu pamięci podręcznej we/wy usługi Azure HDInsight
 
@@ -69,7 +69,7 @@ Po włączeniu pamięci podręcznej we/wy może wystąpić błąd miejsca na dys
 
 1. Wybierz pozycję **Zapisz** w prawym górnym rogu.
 
-1. Wybierz pozycję **Uruchom ponownie**  > **ponownie uruchom wszystkie**.
+1. Wybierz pozycję **Uruchom ponownie** > **ponownie uruchom wszystkie**.
 
     ![System Apache Ambari](./media/apache-spark-improve-performance-iocache/ambariui-restart-all-affected.png "Uruchom ponownie wszystkie uwzględnione")
 

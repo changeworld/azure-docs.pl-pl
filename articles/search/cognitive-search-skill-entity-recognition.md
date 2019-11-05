@@ -8,12 +8,12 @@ ms.author: luisca
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 08e9656e3b899cbb6d4de733696175e8f31b0e66
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.openlocfilehash: 559d8cb25624c1d8bebb2969fbeeb80bdcc020e6
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72792007"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73479753"
 ---
 #   <a name="entity-recognition-cognitive-skill"></a>Umiejętność rozpoznawania jednostek
 
@@ -39,9 +39,8 @@ W parametrach jest rozróżniana wielkość liter i są one opcjonalne.
 |--------------------|-------------|
 | categories    | Tablica kategorii, które mają zostać wyodrębnione.  Możliwe typy kategorii: `"Person"`, `"Location"`, `"Organization"`, `"Quantity"`, `"Datetime"`, `"URL"`, `"Email"`. Jeśli nie podano żadnej kategorii, zwracane są wszystkie typy.|
 |defaultLanguageCode |  Kod języka tekstu wejściowego. Obsługiwane są następujące języki: `de, en, es, fr, it`|
-|minimumPrecision | Przestrzeń. Zarezerwowane do użytku w przyszłości. |
-|includeTypelessEntities | Po ustawieniu na wartość true, jeśli tekst zawiera dobrze znaną jednostkę, ale nie można go przydzielić do jednej z obsługiwanych kategorii, zostanie zwrócony jako część `"entities"` złożonego pola danych wyjściowych. 
-Są to jednostki, które są dobrze znane, ale nie są klasyfikowane jako część obecnie obsługiwanych kategorii. Na przykład "system Windows 10" jest dobrze znaną jednostką (produkt), ale "produkty" nie należą do obecnie obsługiwanych kategorii. Wartość domyślna to `false` |
+|minimumPrecision | Wartość z zakresu od 0 do 1. Jeśli wynik pewności (w danych wyjściowych `namedEntities`) jest mniejszy niż ta wartość, jednostka nie jest zwracana. Wartość domyślna to 0. |
+|includeTypelessEntities | Ustaw wartość `true`, jeśli chcesz rozpoznawać dobrze znane jednostki, które nie pasują do bieżących kategorii. Rozpoznane jednostki są zwracane w polu `entities` złożone dane wyjściowe. Na przykład "system Windows 10" jest dobrze znaną jednostką (produkt), ale ponieważ "produkty" nie jest obsługiwaną kategorią, ta jednostka zostanie uwzględniona w polu dane wyjściowe jednostek. Wartość domyślna to `false` |
 
 
 ## <a name="skill-inputs"></a>Dane wejściowe kwalifikacji
@@ -65,7 +64,7 @@ Są to jednostki, które są dobrze znane, ale nie są klasyfikowane jako częś
 | Elementy DateTime  | Tablica ciągów, w których każdy ciąg reprezentuje datę i godzinę (jak pojawia się w tekście). |
 | adresy | Tablica ciągów, w których każdy ciąg reprezentuje adres URL |
 | Zamów | Tablica ciągów, w których każdy ciąg reprezentuje wiadomość e-mail |
-| namedEntities | Tablica typów złożonych, które zawierają następujące pola: <ul><li>category</li> <li>wartość (rzeczywista nazwa jednostki)</li><li>Przesunięcie (lokalizacja, w której została znaleziona).</li><li>pewność (nieużywany przez teraz. Zostanie ustawiona na wartość-1)</li></ul> |
+| namedEntities | Tablica typów złożonych, które zawierają następujące pola: <ul><li>category</li> <li>wartość (rzeczywista nazwa jednostki)</li><li>Przesunięcie (lokalizacja, w której została znaleziona).</li><li>zaufanie (wyższa wartość oznacza, że jest to prawdziwa jednostka)</li></ul> |
 | obiekty | Tablica typów złożonych, która zawiera bogate informacje o jednostkach wyodrębnionych z tekstu, z następującymi polami <ul><li> Nazwa (rzeczywista nazwa jednostki). Reprezentuje to "znormalizowany" formularz</li><li> wikipediaId</li><li>wikipediaLanguage</li><li>wikipediaUrl (łącze do strony Wikipedia dla jednostki)</li><li>bingId</li><li>Typ (kategoria rozpoznanej jednostki)</li><li>Podtyp (dostępny tylko dla niektórych kategorii, zapewnia bardziej szczegółowy widok typu jednostki)</li><li> dopasowania (złożona Kolekcja zawierająca)<ul><li>tekst (nieprzetworzony tekst dla jednostki)</li><li>Przesunięcie (lokalizacja, w której została znaleziona)</li><li>Długość (długość nieprzetworzonego tekstu jednostki)</li></ul></li></ul> |
 
 ##  <a name="sample-definition"></a>Definicja Przykładowa
@@ -76,6 +75,7 @@ Są to jednostki, które są dobrze znane, ale nie są klasyfikowane jako częś
     "categories": [ "Person", "Email"],
     "defaultLanguageCode": "en",
     "includeTypelessEntities": true,
+    "minimumPrecision": 0.5,
     "inputs": [
       {
         "name": "text",
@@ -131,7 +131,7 @@ Są to jednostki, które są dobrze znane, ale nie są klasyfikowane jako częś
             "category":"Person",
             "value": "John Smith",
             "offset": 35,
-            "confidence": -1
+            "confidence": 0.98
           }
         ],
         "entities":  
@@ -191,7 +191,7 @@ Są to jednostki, które są dobrze znane, ale nie są klasyfikowane jako częś
 ## <a name="error-cases"></a>Przypadki błędów
 Jeśli kod języka dla dokumentu nie jest obsługiwany, zwracany jest błąd i nie są wyodrębniane żadne jednostki.
 
-## <a name="see-also"></a>Zobacz także
+## <a name="see-also"></a>Zobacz też
 
 + [Wbudowane umiejętności](cognitive-search-predefined-skills.md)
 + [Jak zdefiniować zestawu umiejętności](cognitive-search-defining-skillset.md)

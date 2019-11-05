@@ -10,14 +10,14 @@ ms.subservice: custom-vision
 ms.topic: quickstart
 ms.date: 07/12/2019
 ms.author: anroth
-ms.openlocfilehash: 40f30ddece9881f565f45f4ef6c9d0e2ad85fe95
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 0ca849e75f01573bbb356105b281f03d267836e6
+ms.sourcegitcommit: fbea2708aab06c19524583f7fbdf35e73274f657
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68561126"
+ms.lasthandoff: 09/13/2019
+ms.locfileid: "73520458"
 ---
-# <a name="quickstart-how-to-build-an-object-detector-with-custom-vision"></a>Szybki start: Jak skompilować detektor obiektów przy użyciu Custom Vision
+# <a name="quickstart-how-to-build-an-object-detector-with-custom-vision"></a>Szybki Start: jak utworzyć detektor obiektów przy użyciu Custom Vision
 
 W tym przewodniku szybki start dowiesz się, jak utworzyć detektor obiektów za pomocą witryny sieci Web Custom Vision. Po skompilowaniu modelu wykrywania można użyć usługi Custom Vision do wykrywania obiektów.
 
@@ -29,7 +29,7 @@ Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpł
 
 ## <a name="create-custom-vision-resources-in-the-azure-portal"></a>Utwórz zasoby Custom Vision w Azure Portal
 
-Aby korzystać z Custom Vision Service, należy utworzyć Custom Vision szkolenia i zasoby przewidywania w Azure Portal. Wypełnij okno dialogowe na stronie [tworzenie Custom Vision](https://portal.azure.com/?microsoft_azure_marketplace_ItemHideKey=microsoft_azure_cognitiveservices_customvision#create/Microsoft.CognitiveServicesCustomVision) , aby utworzyć zasób szkoleniowy i predykcyjny. 
+[!INCLUDE [create-resources](includes/create-resources.md)]
 
 ## <a name="create-a-new-project"></a>Tworzenie nowego projektu
 
@@ -51,7 +51,7 @@ W przeglądarce internetowej przejdź do [strony sieci web Custom Vision](https:
 
 1. Następnie wybierz jedną z dostępnych domen. Każda domena optymalizuje detektor dla określonych typów obrazów, zgodnie z opisem w poniższej tabeli. Jeśli chcesz, będziesz mieć możliwość późniejszej zmiany domeny.
 
-    |Domain|Cel|
+    |Domain|Przeznaczenie|
     |---|---|
     |__Ogólne__| Optymalizacja pod kątem szerokiego zakresu zadań wykrywania obiektów. Jeśli żadna z pozostałych domen nie jest odpowiednia lub nie masz pewności, którą domenę wybrać, wybierz domenę generyczną. |
     |__Znaku__|Optymalizacja pod kątem znajdowania logo marki w obrazach.|
@@ -71,11 +71,11 @@ W tej sekcji zostaną przesłane i ręcznie oznakowane obrazy, aby ułatwić ucz
 
     ![Kontrolka Dodaj obrazy jest pokazywana w lewym górnym rogu i jako przycisk w dolnej części.](./media/get-started-build-detector/add-images.png)
 
-1. Przekazane obrazy będą widoczne **w sekcji** nieoznaczonej w interfejsie użytkownika. Następnym krokiem jest ręczne oznakowanie obiektów, które mają być rozpoznawane przez detektor. Kliknij pierwszy obraz, aby otworzyć okno dialogowe tagowania. 
+1. Przekazane obrazy będą widoczne **w sekcji nieoznaczonej w** interfejsie użytkownika. Następnym krokiem jest ręczne oznakowanie obiektów, które mają być rozpoznawane przez detektor. Kliknij pierwszy obraz, aby otworzyć okno dialogowe tagowania. 
 
     ![Przekazane obrazy, w sekcji bez znaczników](./media/get-started-build-detector/images-untagged.png)
 
-1. Kliknij i przeciągnij prostokąt wokół obiektu w obrazie. Następnie wprowadź nową nazwę tagu z **+** przyciskiem lub wybierz istniejący tag z listy rozwijanej. Bardzo ważne jest, aby oznaczyć każde wystąpienie obiektów, które mają być wykrywane, ponieważ detektor używa nieoznakowanego obszaru tła jako negatywnego przykładu w szkoleniu. Gdy skończysz tagowanie, kliknij strzałkę po prawej stronie, aby zapisać tagi i przejść do następnego obrazu.
+1. Kliknij i przeciągnij prostokąt wokół obiektu w obrazie. Następnie wprowadź nową nazwę tagu z przyciskiem **+** lub wybierz istniejący tag z listy rozwijanej. Bardzo ważne jest, aby oznaczyć każde wystąpienie obiektów, które mają być wykrywane, ponieważ detektor używa nieoznakowanego obszaru tła jako negatywnego przykładu w szkoleniu. Gdy skończysz tagowanie, kliknij strzałkę po prawej stronie, aby zapisać tagi i przejść do następnego obrazu.
 
     ![Tagowanie obiektu prostokątnym zaznaczeniem](./media/get-started-build-detector/image-tagging.png)
 
@@ -106,9 +106,9 @@ Po zakończeniu szkolenia model jest obliczany i wyświetlany. Usługa Custom Vi
 
 ## <a name="manage-training-iterations"></a>Zarządzanie iteracjami szkoleń
 
-Za każdym razem, gdy nauczysz detektor, tworzysz  nową iterację ze swoimi zaktualizowanymi metrykami wydajności. Wszystkie iteracje można wyświetlić w lewym okienku na karcie **wydajność** . W lewym okienku znajdziesz również przycisk **Usuń** , którego można użyć, aby usunąć iterację, jeśli jest ona przestarzała. Po usunięciu iteracji usuwane są wszystkie obrazy, które są w unikatowy sposób skojarzone.
+Za każdym razem, gdy nauczysz detektor, tworzysz nową _iterację_ ze swoimi zaktualizowanymi metrykami wydajności. Wszystkie iteracje można wyświetlić w lewym okienku na karcie **wydajność** . W lewym okienku znajdziesz również przycisk **Usuń** , którego można użyć, aby usunąć iterację, jeśli jest ona przestarzała. Po usunięciu iteracji usuwane są wszystkie obrazy, które są w unikatowy sposób skojarzone.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 W tym przewodniku szybki start przedstawiono sposób tworzenia i uczenia modelu czujnika obiektów przy użyciu witryny sieci Web Custom Vision. Następnie uzyskaj więcej informacji na temat procesu iteracyjnego ulepszania modelu.
 

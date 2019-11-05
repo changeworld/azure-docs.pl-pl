@@ -1,7 +1,7 @@
 ---
 title: 'Oceń model: odwołanie do modułu'
-titleSuffix: Azure Machine Learning service
-description: Dowiedz się, w jaki sposób używać modułu oceny modelu w usłudze Azure Machine Learning, aby mierzyć dokładność przeszkolonego modelu.
+titleSuffix: Azure Machine Learning
+description: Dowiedz się, jak używać modułu oceny modelu w Azure Machine Learning do mierzenia dokładności przeszkolonego modelu.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -9,16 +9,16 @@ ms.topic: reference
 author: xiaoharper
 ms.author: zhanxia
 ms.date: 05/06/2019
-ms.openlocfilehash: 0ad4ceedf9c1d65339c9e4aabebc0a47475ed568
-ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
+ms.openlocfilehash: ddc6a35d5959a2d1f85c151a6f229223db9ba566
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "72693805"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73497913"
 ---
 # <a name="evaluate-model-module"></a>Oceń moduł modelu
 
-W tym artykule opisano moduł Visual Interface (wersja zapoznawcza) dla usługi Azure Machine Learning.
+W tym artykule opisano moduł w programie Azure Machine Learning Designer (wersja zapoznawcza).
 
 Ten moduł służy do mierzenia dokładności nauczonego modelu. Dostarczasz zestaw danych zawierający wyniki wygenerowane na podstawie modelu, a moduł **oceny modelu** obliczy zestaw metryk oceny standardowej w branży.
   
@@ -69,7 +69,7 @@ Ta funkcja jest przydatna, ponieważ można łatwo porównać wyniki z dwóch r�
 Po uruchomieniu **oceny modelu**kliknij prawym przyciskiem myszy moduł i wybierz pozycję **wyniki oceny** , aby wyświetlić wyniki. Przekonaj się:
 
 + Zapisz wyniki jako zestaw danych, aby ułatwić analizę przy użyciu innych narzędzi
-+ Generowanie wizualizacji w interfejsie
++ Generowanie wizualizacji w projektancie
 
 W przypadku łączenia zestawów danych z obydwoma danymi wejściowymi **modelu szacowania**wyniki będą zawierać metryki dla zestawu danych lub obu modeli.
 Model lub dane dołączone do lewego portu są przedstawiane jako pierwsze w raporcie, a następnie metryki dla zestawu danych lub modelu dołączonego do właściwego portu.  
@@ -126,4 +126,4 @@ Metryki zwracane dla modeli regresji są ogólnie zaprojektowane w celu oszacowa
 
 ## <a name="next-steps"></a>Następne kroki
 
-Zapoznaj się z [zestawem modułów dostępnych](module-reference.md) do Azure Machine Learning usługi. 
+Zapoznaj się z [zestawem modułów dostępnych](module-reference.md) do Azure Machine Learning. 

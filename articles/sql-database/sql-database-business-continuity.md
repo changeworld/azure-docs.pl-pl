@@ -12,12 +12,12 @@ author: anosov1960
 ms.author: sashan
 ms.reviewer: mathoma, carlrab
 ms.date: 06/25/2019
-ms.openlocfilehash: 5cc033787e1045926ff4fece6826e41f430d48fd
-ms.sourcegitcommit: 86d49daccdab383331fc4072b2b761876b73510e
+ms.openlocfilehash: 69ff1a5681fbb0b434d7114b069610ed34d9e843
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70744466"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73492198"
 ---
 # <a name="overview-of-business-continuity-with-azure-sql-database"></a>Omówienie zagadnień dotyczących ciągłości działalności biznesowej zapewnianej przez usługę Azure SQL Database
 
@@ -53,7 +53,7 @@ SQL Database oferuje również kilka funkcji zachowania ciągłości biznesowej,
 
 ## <a name="recover-a-database-within-the-same-azure-region"></a>Odzyskiwanie bazy danych w tym samym regionie świadczenia usługi Azure
 
-Możesz użyć automatycznych kopii zapasowych bazy danych, aby przywrócić bazę danych do punktu w czasie w przeszłości. W ten sposób można odzyskać dane z uszkodzeń spowodowanych błędami ludzkimi. Przywracanie w czasie punkt umożliwia utworzenie nowej bazy danych na tym samym serwerze, która reprezentuje stan danych przed uszkodzeniem zdarzenia. W przypadku większości baz danych operacje przywracania trwają krócej niż 12 godzin. Odzyskanie bardzo dużej lub bardzo aktywnej bazy danych może trwać dłużej. Aby uzyskać więcej informacji na temat czasu odzyskiwania, zobacz temat [czas odzyskiwania bazy danych](sql-database-recovery-using-backups.md#recovery-time). 
+Możesz użyć automatycznych kopii zapasowych bazy danych, aby przywrócić bazę danych do punktu w czasie w przeszłości. W ten sposób można odzyskać dane z uszkodzeń spowodowanych błędami ludzkimi. Przywracanie do punktu w czasie umożliwia utworzenie nowej bazy danych na tym samym serwerze, która reprezentuje stan danych przed uszkodzeniem zdarzenia. W przypadku większości baz danych operacje przywracania trwają krócej niż 12 godzin. Odzyskanie bardzo dużej lub bardzo aktywnej bazy danych może trwać dłużej. Aby uzyskać więcej informacji na temat czasu odzyskiwania, zobacz temat [czas odzyskiwania bazy danych](sql-database-recovery-using-backups.md#recovery-time). 
 
 Jeśli maksymalny obsługiwany okres przechowywania kopii zapasowej dla operacji przywracania do punktu w czasie (kopie) nie jest wystarczający dla aplikacji, można ją przedłużyć, konfigurując zasady długoterminowego przechowywania (LTR) dla baz danych. Aby uzyskać więcej informacji, zobacz [długoterminowe przechowywanie kopii zapasowych](sql-database-long-term-retention.md).
 
@@ -85,10 +85,10 @@ Podczas opracowywania planu zapewniania ciągłości działalności biznesowej n
 
 Różne metody odzyskiwania oferują różne poziomy RPO i RTO. Można wybrać określoną metodę odzyskiwania lub użyć kombinacji metod w celu zapewnienia pełnego odzyskiwania aplikacji. Poniższa tabela zawiera porównanie celu punktu odzyskiwania i RTO każdej opcji odzyskiwania. Grupy autotrybu failover upraszczają wdrażanie i użycie replikacji geograficznej oraz dodaje dodatkowe możliwości zgodnie z opisem w poniższej tabeli.
 
-| Metoda odzyskiwania | RTO | RPO |
+| Metoda odzyskiwania | RTO | ODZYSKIWANIA |
 | --- | --- | --- | 
-| Przywracanie geograficzne z kopii zapasowych replikowanych geograficznie | 12 h | 1 godz. |
-| Grupy automatycznego trybu failover | 1 godz. | 5 s |
+| Przywracanie geograficzne z kopii zapasowych replikowanych geograficznie | 12 h | 1 h |
+| Grupy automatycznego trybu failover | 1 h | 5 s |
 | Ręczna praca awaryjna bazy danych | 30 s | 5 s |
 
 > [!NOTE]

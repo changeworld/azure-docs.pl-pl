@@ -12,14 +12,15 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 09/11/2019
 ms.custom: seodec18
-ms.openlocfilehash: c72de809dc5818cced95be2cbd6b47308bad4f22
-ms.sourcegitcommit: 38251963cf3b8c9373929e071b50fd9049942b37
-ms.translationtype: MT
+ms.openlocfilehash: 2d8bf44f5e5e7a3f8c328a47480599f9dd18b845
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/29/2019
-ms.locfileid: "73045204"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73489533"
 ---
 # <a name="monitor-azure-ml-experiment-runs-and-metrics"></a>Monitoruj uruchomienia eksperymentów i metryki usługi Azure ML
+[!INCLUDE [applies-to-skus](../../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
 Usprawnij proces tworzenia modelu, śledząc eksperymenty i monitorowane metryki. W tym artykule dowiesz się, jak dodać kod rejestrowania do skryptu szkoleniowego, przesłać przebieg eksperymentu, monitorować ten przebieg i sprawdzić wyniki w Azure Machine Learning.
 
@@ -261,7 +262,7 @@ print(run.get_portal_url())
    ![Widżet Jupyter Notes dla zautomatyzowanych Machine Learning](./media/how-to-track-experiments/azure-machine-learning-auto-ml-widget.png)
 
 
-Aby wyświetlić dalsze szczegóły potoku, kliknij potok, który chcesz zbadać w tabeli, a wykresy będą renderowane w wyskakującym okienku z Azure Portal.
+Aby wyświetlić dalsze szczegóły potoku, kliknij potok, który chcesz zbadać w tabeli, a wykresy będą renderowane w wyskakującym okienku z Azure Machine Learning Studio.
 
 ### <a name="get-log-results-upon-completion"></a>Pobieranie wyników dziennika po zakończeniu
 
@@ -273,22 +274,19 @@ Modelowanie szkoleń i monitorowania odbywa się w tle, dzięki czemu można uru
 Możesz wyświetlić metryki modelu przeszkolonego za pomocą ```run.get_metrics()```. Teraz można uzyskać wszystkie metryki, które zostały zarejestrowane w powyższym przykładzie, aby określić najlepszy model.
 
 <a name="view-the-experiment-in-the-web-portal"></a>
-## <a name="view-the-experiment-in-the-azure-portal-or-your-workspace-landing-page-previewhttpsmlazurecom"></a>Obejrzyj eksperyment w Azure Portal lub na [stronie docelowej obszaru roboczego (wersja zapoznawcza)](https://ml.azure.com)
+## <a name="view-the-experiment-in-your-workspace-in-azure-machine-learning-studiohttpsmlazurecom"></a>Wyświetlanie eksperymentu w obszarze roboczym w programie [Azure Machine Learning Studio](https://ml.azure.com)
 
-Po zakończeniu eksperymentu możesz przejść do rekordu uruchomienia eksperymentu. Dostęp do historii można uzyskać na dwa sposoby:
+Po zakończeniu eksperymentu możesz przejść do rekordu uruchomienia eksperymentu. Możesz uzyskać dostęp do historii z programu [Azure Machine Learning Studio](https://ml.azure.com).
 
-* Pobierz adres URL do uruchomienia bezpośrednio ```print(run.get_portal_url())```
-* Wyświetl szczegóły uruchomienia, przesyłając nazwę przebiegu (w tym przypadku ```run```). Dzięki temu można nawiązać połączenie z nazwą eksperymentu, IDENTYFIKATORem, typem, stanem, stroną szczegółów, linkiem do Azure Portal i linkiem do dokumentacji.
+Przejdź do karty eksperymenty i wybierz swój eksperyment. Nastąpi przełączenie do pulpitu nawigacyjnego uruchamiania eksperymentu, w którym można zobaczyć śledzone metryki i wykresy, które są rejestrowane dla każdego przebiegu. W tym przypadku rejestrujemy MSE i wartości alpha.
 
-Link do przebiegu powoduje bezpośrednie przeniesienie do strony Szczegóły uruchamiania w Azure Portal. W tym miejscu możesz zobaczyć wszystkie właściwości, śledzone metryki, obrazy i wykresy, które są rejestrowane w eksperymentie. W tym przypadku rejestrujemy MSE i wartości alpha.
+  ![Szczegóły uruchamiania w programie Azure Machine Learning Studio](./media/how-to-track-experiments/experiment-dashboard.png)
 
-  ![Wykonaj szczegóły w Azure Portal](./media/how-to-track-experiments/run-details-page.png)
-
-Możesz również wyświetlić wszystkie dane wyjściowe lub dzienniki dla przebiegu lub pobrać migawkę przesłanego eksperymentu, aby udostępnić folder eksperymentu innym osobom.
+Możesz przejść do określonego przebiegu w celu wyświetlenia jego danych wyjściowych lub dzienników lub pobrać migawkę podanego eksperymentu, aby umożliwić udostępnienie folderu eksperymentu innym osobom.
 
 ### <a name="viewing-charts-in-run-details"></a>Wyświetlanie wykresów w szczegółach uruchamiania
 
-Istnieją różne sposoby używania interfejsów API rejestrowania do rejestrowania różnych typów metryk podczas przebiegu i wyświetlania ich jako wykresów w Azure Portal. 
+Istnieją różne sposoby używania interfejsów API rejestrowania do rejestrowania różnych typów metryk podczas przebiegu i wyświetlania ich jako wykresów w programie Azure Machine Learning Studio.
 
 |Wartość rejestrowana|Przykładowy kod| Wyświetl w portalu|
 |----|----|----|

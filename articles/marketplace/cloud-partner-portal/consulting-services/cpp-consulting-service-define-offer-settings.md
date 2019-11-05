@@ -1,75 +1,75 @@
 ---
-title: Zdefiniuj ustawienia oferty dla oferty usługi konsultingowe | Portal Azure Marketplace
-description: Zdefiniować ustawienia oferty na platformie Azure lub Dynamics 365 doradcze usługi oferty w portalu Cloud Partner, w portalu Azure Marketplace.
+title: Zdefiniuj ustawienia oferty dla oferty usługi konsultingowej | Portal Azure Marketplace
+description: Zdefiniuj ustawienia oferty w ofercie usługi konsultingowej platformy Azure lub Dynamics 365 w portal Cloud Partner portalu Azure Marketplace.
 services: Azure, Marketplace, Cloud Partner Portal,
 author: qianw211
 ms.service: marketplace
 ms.topic: conceptual
 ms.date: 04/23/2019
 ms.author: pabutler
-ms.openlocfilehash: 601ad62bddd1373742b0cab5a388a55cfd52f4bc
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 8a89c1c548469b568a34521b240683af285c2342
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64942787"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73485181"
 ---
 # <a name="offer-settings-tab"></a>Karta ustawień oferty
 
-Na **nowa oferta** ekranu, pierwszym krokiem jest utworzenie tożsamości oferty. Tożsamość oferty składa się z trzech części: **Identyfikator oferty**, **Identyfikatora wydawcy**, i **nazwa**. Każdy z tych elementów zostało opisane w poniższych sekcjach.
+Na ekranie **Nowa oferta** pierwszy krok to utworzenie tożsamości oferty. Tożsamość oferty składa się z trzech części: **Identyfikator oferty**, **identyfikator wydawcy**i **Nazwa**. Każda z tych części została omówiona w poniższych sekcjach.
 
-![Utwórz nową ofertę usługi doradcze — oferuje karta Ustawienia](media/consultingoffer-settings-tab.png)
+![Tworzenie nowej oferty usługi konsultingowej — karta Ustawienia oferty](media/consultingoffer-settings-tab.png)
 
 
 ### <a name="offer-id"></a>Identyfikator oferty *
 
-Ten identyfikator jest unikatową nazwą, utworzonej po przesłaniu najpierw oferty. Musi ona zawierać tylko małe znaki alfanumeryczne, łączniki i podkreślenia. **Identyfikatora oferty Offer ID** jest widoczna w adresie URL i wpływa na wynikach wyszukiwarki. Na przykład *yourcompanyname_exampleservice*.
+Ten identyfikator jest unikatową nazwą utworzoną podczas pierwszego przesyłania oferty. Musi zawierać tylko małe znaki alfanumeryczne, łączniki i podkreślenia. **Identyfikator oferty** jest widoczny w adresie URL i ma wpływ na wyniki aparatu wyszukiwania. Przykładem jest *yourcompanyname_exampleservice*.
 
-Jak pokazano w przykładzie **identyfikatora oferty Offer ID** jest dołączany do Identyfikatora wydawcy do utworzenia unikatowego identyfikatora. Ten unikatowy identyfikator jest udostępniany jako łącze stałe, mogą być zapisane, która jest indeksowana przez aparaty wyszukiwania.
+Jak pokazano w przykładzie, **Identyfikator oferty** jest dołączany do identyfikatora wydawcy w celu utworzenia unikatowego identyfikatora. Ten unikatowy identyfikator jest udostępniany jako trwałe łącze, które może być zapisane i jest indeksowane przez aparaty wyszukiwania.
 
 >[!Note]
->Po oferta jest przeznaczona na żywo, nie można zaktualizować jego identyfikator.
+>Po zakończeniu oferty nie można zaktualizować jej identyfikatora.
 
 
-### <a name="publisher-id"></a>Wydawca identyfikator *
+### <a name="publisher-id"></a>IDENTYFIKATOR wydawcy *
 
-Ten identyfikator jest związane z Twoim kontem. Po zalogowaniu się przy użyciu konta organizacyjnego usługi **Identyfikatora wydawcy** pojawia się w menu rozwijanym.
+Ten identyfikator jest powiązany z Twoim kontem. Po zalogowaniu się przy użyciu konta organizacyjnego **identyfikator wydawcy** zostanie wyświetlony w menu rozwijanym.
 
 
-### <a name="name"></a>Nazwa *
+### <a name="name"></a>Nazwij
 
-Ten ciąg wyświetla się jako nazwa oferty w usłudze AppSource lub w witrynie Azure Marketplace. **Nazwa** pole jest ograniczona do 50 znaków. Recenzent może być konieczne edytowanie tytułu Dołącz czas trwania i oferować typu na nazwę swojej oferty.
+Ten ciąg jest wyświetlany jako nazwa oferty w witrynie AppSource lub w portalu Azure Marketplace. Pole **nazwy** jest ograniczone do 50 znaków. Osoba dokonująca przeglądu może potrzebować edycji tytułu w celu dołączenia typu czasu trwania i oferty do nazwy oferty.
 
-Poniższy przykład pokazuje, jak nazwa oferty jest składany. 
+Poniższy przykład pokazuje, jak jest składana nazwa oferty. 
 
-![Tworzenie nowej oferty usługi doradcze](media/cppsampleconsultingoffer.png)
+![Utwórz nową ofertę usługi konsultingowej](media/cppsampleconsultingoffer.png)
 
 Nazwa oferty składa się z czterech części:
 
--   **Czas trwania:** Zdefiniowane na **szczegóły Storefront** karta edytora. Czas trwania może być wyrażona w godzinach, dniach lub tygodniach.
--   **Typ usługi:** Zdefiniowane na **szczegóły Storefront** karta edytora. Typy usług `Assessment`, `Briefing`, `Implementation`, `Proof of concept`, i `Workshop`.
--   **Preposition:** Wstawione przez recenzenta.
--   **Nazwa:** Zdefiniowane na **oferują ustawienia** strony.
+-   **Czas trwania:** Zdefiniowane na karcie **szczegóły sklepu** w edytorze. Czas trwania może być wyrażony w godzinach, dniach lub tygodniach.
+-   **Typ usługi:** Zdefiniowane na karcie **szczegóły sklepu** w edytorze. Typy usług to `Assessment`, `Briefing`, `Implementation`, `Proof of concept`i `Workshop`.
+-   **Położenie w miejscu:** Wstawione przez recenzenta.
+-   **Nazwa:** Zdefiniowane na stronie **Ustawienia oferty** .
 
 >[!Note]
->**Nazwa** pole jest ograniczona do 50 znaków. Recenzent może być konieczne edytowanie tytułu Dołącz czas trwania i oferować typu na nazwę swojej oferty.
+>Pole **nazwy** jest ograniczone do 50 znaków. Osoba dokonująca przeglądu może potrzebować edycji tytułu w celu dołączenia typu czasu trwania i oferty do nazwy oferty.
 
-Poniższa lista zawiera kilka nazw dobrze nazwane oferty:
+Poniższa lista zawiera kilka dobrze nazwanych ofert:
 
--   Podstawy dla profesjonalnych usług: 1-godzinnego widoków
--   Platforma usług w chmurze migracji: 1-godzinnego widoków
--   Usługa PowerApps i Microsoft Flow: 1-dniowych warsztatów
--   Usługi Azure Machine Learning Services: 3-Wk PoC
--   Kostki, a następnie kliknij przycisk handlu detalicznego rozwiązania: 1-godzinnego widoków
--   Możesz używać własnych danych: Warsztaty 1 tydzień
--   Cloud Analytics: 3-dniowych warsztatów
--   Usługa Power BI szkolenia: 3-dniowych warsztatów
--   Rozwiązanie do zarządzania sprzedaży: Implementacja 1 tydzień
--   Szybki Start CRM: 1-dniowych warsztatów
--   Dynamics 365 for Sales: 2-dniowych oceny
+-   Podstawowe informacje dla usług profesjonalnych: 1-HR — krótkie
+-   Platforma Migracja do chmury: 1-HR
+-   PowerApps i Microsoft Flow: 1-dniowa warsztat
+-   Azure Machine Learning: tydz ZK
+-   Kostka i kliknięcie rozwiązania do sprzedaży detalicznej: 1-HR
+-   Przenoszenie własnych danych: 1 — tydz warsztatów
+-   Analiza w chmurze: 3-dniowa warsztat
+-   Uczenie Power BIowe: 3-dniowe warsztaty
+-   Rozwiązanie do zarządzania sprzedażą: implementacja 1-tygodniowa
+-   Samouczek szybkiego startu programu CRM: 1-dniowa warsztat
+-   Dynamics 365 for Sales: Ocena 2-dniowa
 
-Po wypełnieniu **oferują ustawienia** karta, Zapisz swoje zgłoszenie. Nazwa oferty pojawi się powyżej edytora i znaleźć go w **oferuje wszystkie**.
+Po wypełnieniu karty **Ustawienia oferty** Zapisz przesłane dane. Nazwa oferty jest teraz widoczna nad edytorem i można ją znaleźć we **wszystkich ofertach**.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
-Teraz możesz wprowadzić [storefront szczegóły i określić, czy mają być publikowane w witrynie Azure Marketplace lub w usłudze AppSource](./cpp-consulting-service-storefront-details.md).
+Teraz możesz wprowadzić [szczegóły witryny Marketplace i określić, czy publikować w witrynie Azure Portal, czy w witrynie AppSource](./cpp-consulting-service-storefront-details.md).

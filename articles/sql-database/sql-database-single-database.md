@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 04/08/2019
-ms.openlocfilehash: c5de4277915e71763f034596d372554e4f88e204
-ms.sourcegitcommit: 9fba13cdfce9d03d202ada4a764e574a51691dcd
+ms.openlocfilehash: 2f55ad795cc76d59581b25ca60a1c89e7db96b04
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/26/2019
-ms.locfileid: "71316659"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73496008"
 ---
 # <a name="what-is-a-single-database-in-azure-sql-database"></a>Co to jest pojedyncza baza danych w Azure SQL Database
 
@@ -29,7 +29,7 @@ Opcja wdrożenia pojedynczej bazy danych tworzy bazę danych w Azure SQL Databas
 
 ## <a name="dynamic-scalability"></a>Dynamiczna skalowalność
 
-Możesz utworzyć swoją pierwszą aplikację w małej, pojedynczej bazie danych przy niskich kosztach w warstwie obliczeniowej bez serwera (wersja zapoznawcza) lub w niewielkim rozmiarze obliczeniowym w warstwie obliczeniowej zainicjowanej. W dowolnym momencie możesz ręcznie lub programowo zmienić [warstwę obliczeniową lub usługę](sql-database-single-database-scale.md) , aby zaspokoić potrzeby rozwiązania. Wydajność można dostosować bez przestoju aplikacji i przerwy w świadczeniu usługi klientom. Dynamiczna skalowalność umożliwia bazie danych przezroczyste odpowiadanie na gwałtownie zmieniające się wymagania dotyczące zasobów oraz płacenie tylko za potrzebne zasoby i tylko gdy są używane.
+Możesz utworzyć swoją pierwszą aplikację w małej, pojedynczej bazie danych przy niskich kosztach w warstwie obliczeniowej bez serwera lub w niewielkim rozmiarze obliczeniowym w warstwie obliczeniowej zainicjowanej. W dowolnym momencie możesz ręcznie lub programowo zmienić [warstwę obliczeniową lub usługę](sql-database-single-database-scale.md) , aby zaspokoić potrzeby rozwiązania. Wydajność można dostosować bez przestoju aplikacji i przerwy w świadczeniu usługi klientom. Dynamiczna skalowalność umożliwia bazie danych przezroczyste odpowiadanie na gwałtownie zmieniające się wymagania dotyczące zasobów oraz płacenie tylko za potrzebne zasoby i tylko gdy są używane.
 
 ## <a name="single-databases-and-elastic-pools"></a>Pojedyncze bazy danych i elastyczne pule
 

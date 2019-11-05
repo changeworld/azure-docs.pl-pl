@@ -1,6 +1,6 @@
 ---
-title: Projektowanie wielodostępnej bazy danych za pomocą samouczka Azure Database for PostgreSQL — Citus (wersja zapoznawcza)
-description: W tym samouczku przedstawiono sposób tworzenia, wypełniania i wykonywania zapytań dotyczących tabel rozproszonych w Azure Database for PostgreSQL Citus (wersja zapoznawcza).
+title: Projektowanie wielodostępnej bazy danych za pomocą samouczka Azure Database for PostgreSQL – Citus)
+description: W tym samouczku przedstawiono sposób tworzenia, wypełniania i wykonywania zapytań dotyczących tabel rozproszonych w Azure Database for PostgreSQL funkcji Citus.
 author: jonels-msft
 ms.author: jonels
 ms.service: postgresql
@@ -9,16 +9,16 @@ ms.custom: mvc
 ms.devlang: azurecli
 ms.topic: tutorial
 ms.date: 05/14/2019
-ms.openlocfilehash: ba20a048faecc9e37a2bfbe750de0fbeba88d538
-ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
+ms.openlocfilehash: 130c3e9f5abb24ffcc4e0c4ad6b96af5fca62090
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "70163980"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73496534"
 ---
-# <a name="tutorial-design-a-multi-tenant-database-by-using-azure-database-for-postgresql--hyperscale-citus-preview"></a>Samouczek: Projektowanie bazy danych z wieloma dzierżawami przy użyciu Azure Database for PostgreSQL — Citus (wersja zapoznawcza)
+# <a name="tutorial-design-a-multi-tenant-database-by-using-azure-database-for-postgresql--hyperscale-citus"></a>Samouczek: Projektowanie bazy danych z wieloma dzierżawami przy użyciu Azure Database for PostgreSQL — Citus
 
-W tym samouczku użyjemy Azure Database for PostgreSQL-Citus (wersja zapoznawcza), aby dowiedzieć się, jak:
+W tym samouczku użyjemy Azure Database for PostgreSQL-Citus, aby dowiedzieć się, jak:
 
 > [!div class="checklist"]
 > * Tworzenie grupy serwerów hiperskali (Citus)
@@ -35,7 +35,7 @@ W tym samouczku użyjemy Azure Database for PostgreSQL-Citus (wersja zapoznawcza
 
 ## <a name="use-psql-utility-to-create-a-schema"></a>Tworzenie schematu za pomocą narzędzia PSQL
 
-Po nawiązaniu połączenia z Azure Database for PostgreSQLm-Citus (wersja zapoznawcza) przy użyciu PSQL można wykonać niektóre podstawowe zadania. Ten samouczek przeprowadzi Cię przez proces tworzenia aplikacji sieci Web, która umożliwia wydziałom śledzenie swoich kampanii.
+Po nawiązaniu połączenia z Azure Database for PostgreSQL-Citus z użyciem PSQL można wykonać niektóre podstawowe zadania. Ten samouczek przeprowadzi Cię przez proces tworzenia aplikacji sieci Web, która umożliwia wydziałom śledzenie swoich kampanii.
 
 Wiele firm może korzystać z aplikacji, więc utworzymy tabelę do przechowywania firm i innych dla nich kampanii. W konsoli PSQL Uruchom następujące polecenia:
 
@@ -130,7 +130,7 @@ Aplikacje z wieloma dzierżawcami mogą wymuszać unikatowość tylko dla dzier�
 
 Wdrożenie w celu przechowania tabeli wierszy w różnych węzłach w oparciu o wartość kolumny wyznaczonej przez użytkownika. Ta "kolumna dystrybucji" oznacza, do której dzierżawy należą wiersze.
 
-Ustawmy kolumnę dystrybucji na \_id firmy, identyfikator dzierżawy. W PSQL Uruchom następujące funkcje:
+Ustawmy kolumnę dystrybucji jako identyfikator\_firmy, identyfikator dzierżawy. W PSQL Uruchom następujące funkcje:
 
 ```sql
 SELECT create_distributed_table('companies',   'id');
@@ -211,7 +211,7 @@ Załaduj dane przy użyciu przykładowych danych. Należy pamiętać, aby urucho
 \copy geo_ips from 'geo_ips.csv' with csv
 ```
 
-Sprzęganie tabeli kliknięć z geograficzną \_ips jest wydajne we wszystkich węzłach.
+Dołączanie tabeli kliknięć przy użyciu geograficznie\_adresów IP jest wydajne we wszystkich węzłach.
 Oto sprzężenie, aby znaleźć lokalizacje wszystkich osób, które klikną w usłudze AD
 290. Spróbuj uruchomić zapytanie w PSQL.
 

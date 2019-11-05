@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/29/2019
 ms.author: memildin
-ms.openlocfilehash: 116f295365084e7570ed9afc493d9179ea2dfb5a
-ms.sourcegitcommit: 8a717170b04df64bd1ddd521e899ac7749627350
+ms.openlocfilehash: 0e7ef558ec75622b804aef96781b549f1a833e21
+ms.sourcegitcommit: 3f8017692169bd75483eefa96c225d45cd497f06
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/23/2019
-ms.locfileid: "71202142"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73518859"
 ---
 # <a name="compare-baselines-using-file-integrity-monitoring-fim"></a>Porównaj linie bazowe przy użyciu funkcji monitorowania integralności plików (FIM)
 
@@ -46,21 +46,21 @@ Domyślne ustawienia gałęzi rejestru programu FIM zapewniają wygodny sposób 
 Linie bazowe programu FIM zaczynają się od określenia cech znanego dobrego stanu dla systemu operacyjnego i aplikacji pomocniczej.  Na potrzeby tego przykładu będziemy skupić się na konfiguracjach zasad haseł dla systemu Windows Server 2008 i nowszych.
 
 
-|Nazwa zasad                 | Ustawienie rejestru|
+|Policy Name (Nazwa zasad)                 | Ustawienie rejestru|
 |---------------------------------------|-------------|
 |Kontroler domeny: Odrzuć zmiany hasła konta komputera| MACHINE\System\CurrentControlSet\Services \Netlogon\Parameters\RefusePasswordChange|
-|Członek domeny: Cyfrowe szyfrowanie lub podpisywanie bezpiecznych danych kanału (zawsze)|MACHINE\System\CurrentControlSet\Services \Netlogon\Parameters\RequireSignOrSeal|
+|Członek domeny: Szyfruj lub podpisuj cyfrowo dane bezpiecznego kanału (zawsze)|MACHINE\System\CurrentControlSet\Services \Netlogon\Parameters\RequireSignOrSeal|
 |Członek domeny: Szyfruj cyfrowo dane bezpiecznego kanału (jeśli to możliwe)|MACHINE\System\CurrentControlSet\Services \Netlogon\Parameters\SealSecureChannel|
-|Członek domeny: Cyfrowe podpisywanie danych bezpiecznego kanału (jeśli to możliwe)|MACHINE\System\CurrentControlSet\Services \Netlogon\Parameters\SignSecureChannel|
+|Członek domeny: podpisuj cyfrowo dane bezpiecznego kanału (jeśli to możliwe)|MACHINE\System\CurrentControlSet\Services \Netlogon\Parameters\SignSecureChannel|
 |Członek domeny: Wyłącz zmiany hasła konta komputera|MACHINE\System\CurrentControlSet\Services \Netlogon\Parameters\DisablePasswordChange|
-|Członek domeny: Maksymalny wiek hasła konta komputera|MACHINE\System\CurrentControlSet\Services \Netlogon\Parameters\MaximumPasswordAge|
-|Członek domeny: Wymagaj silnego klucza sesji (Windows 2000 lub nowszego)|MACHINE\System\CurrentControlSet\Services \Netlogon\Parameters\RequireStrongKey|
-|Zabezpieczenia sieci: Ogranicz uwierzytelnianie NTLM:  Uwierzytelnianie NTLM w tej domenie|MACHINE\System\CurrentControlSet\Services \Netlogon\Parameters\RestrictNTLMInDomain|
-|Zabezpieczenia sieci: Ogranicz uwierzytelnianie NTLM: Dodaj wyjątki serwera w tej domenie|MACHINE\System\CurrentControlSet\Services \Netlogon\Parameters\DCAllowedNTLMServers|
-|Zabezpieczenia sieci: Ogranicz uwierzytelnianie NTLM: Inspekcja uwierzytelniania NTLM w tej domenie|MACHINE\System\CurrentControlSet\Services \Netlogon\Parameters\AuditNTLMInDomain|
+|Członek domeny: maksymalny wiek hasła konta komputera|MACHINE\System\CurrentControlSet\Services \Netlogon\Parameters\MaximumPasswordAge|
+|Członek domeny: wymagaj silnego klucza sesji (Windows 2000 lub nowszego)|MACHINE\System\CurrentControlSet\Services \Netlogon\Parameters\RequireStrongKey|
+|Zabezpieczenia sieciowe: ograniczanie ruchu NTLM: uwierzytelnianie NTLM w tej domenie|MACHINE\System\CurrentControlSet\Services \Netlogon\Parameters\RestrictNTLMInDomain|
+|Zabezpieczenia sieciowe: ograniczanie ruchu NTLM: Dodaj wyjątki serwera w tej domenie|MACHINE\System\CurrentControlSet\Services \Netlogon\Parameters\DCAllowedNTLMServers|
+|Zabezpieczenia sieciowe: ograniczanie ruchu NTLM: Przeprowadź inspekcję uwierzytelniania NTLM w tej domenie|MACHINE\System\CurrentControlSet\Services \Netlogon\Parameters\AuditNTLMInDomain|
 
 > [!NOTE]
-> Aby dowiedzieć się więcej na temat ustawień rejestru obsługiwanych przez różne wersje systemu operacyjnego, zapoznaj się z [arkuszem kalkulacyjnym informacje o ustawieniach zasady grupy](https://www.microsoft.com/en-us/download/confirmation.aspx?id=25250).
+> Aby dowiedzieć się więcej na temat ustawień rejestru obsługiwanych przez różne wersje systemu operacyjnego, zapoznaj się z [arkuszem kalkulacyjnym informacje o ustawieniach zasady grupy](https://www.microsoft.com/download/confirmation.aspx?id=25250).
 
 *Aby skonfigurować FIM do monitorowania planów bazowych rejestru:*
 

@@ -10,14 +10,14 @@ ms.service: cloud-services
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: tbd
-ms.date: 10/7/2019
+ms.date: 11/1/2019
 ms.author: raiye
-ms.openlocfilehash: 1a3945569002ea0ec88a9e23a6f02e7833d7690a
-ms.sourcegitcommit: f9e81b39693206b824e40d7657d0466246aadd6e
+ms.openlocfilehash: fa6f3e77a49afc5b16d11cb0c7d434f967c7cd53
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/08/2019
-ms.locfileid: "72035152"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73500240"
 ---
 # <a name="azure-guest-os-releases-and-sdk-compatibility-matrix"></a>Wersje systemu operacyjnego gościa platformy Azure i macierz zgodności zestawu SDK
 Program udostępnia aktualne informacje o najnowszych wersjach systemu operacyjnego gościa platformy Azure dla Cloud Services. Te informacje ułatwiają zaplanowanie ścieżki uaktualnienia przed wyłączeniem systemu operacyjnego gościa. Jeśli skonfigurujesz role do korzystania z *automatycznych* aktualizacji systemu operacyjnego gościa zgodnie z opisem w [ustawieniach aktualizacji systemu operacyjnego gościa platformy Azure][Azure Guest OS Update Settings], nie trzeba przeczytywać tej strony.
@@ -41,6 +41,9 @@ Program udostępnia aktualne informacje o najnowszych wersjach systemu operacyjn
 Nie wiesz, jak zaktualizować system operacyjny gościa? Sprawdź [to][cloud updates] .
 
 ## <a name="news-updates"></a>Aktualizacje wiadomości
+
+###### <a name="november-1-2019"></a>**1 listopada 2019**
+System operacyjny gościa w październiku został opublikowany.
 
 ###### <a name="october-7-2019"></a>**7 października 2019**
 Wydano system operacyjny gościa w trybie gościnnym.
@@ -87,7 +90,7 @@ Wydano system operacyjny gościa w trybie gościnnym.
 ## <a name="releases"></a>Wydania
 
 ## <a name="family-6-releases"></a>Wydania z rodziny 6
-**System Windows Server 2019**
+**Windows Server 2019**
 
 .NET Framework zainstalowane: 3,5, 4.7.2
 
@@ -106,8 +109,9 @@ Wydano system operacyjny gościa w trybie gościnnym.
 
 | Ciąg konfiguracji | Data wydania | Data wyłączenia |
 | --- | --- | --- |
-| WA-GOŚĆ-OS-6.11 _201909-01 | 7 października 2019 |  Wpis 6,13  |  
-| WA-GOŚĆ-OS-6.10 _201908-01 | 4 sierpnia 2019 |  Wpis 6,12  |  
+| WA-GOŚĆ-OS-6,12 _201910-01 | 1 listopada 2019 | Wpis 6,14 |  
+| WA-GOŚĆ-OS-6.11 _201909-01 | 7 października 2019 | Wpis 6,13 |  
+|~~WA-GOŚĆ-OS-6.10 _201908-01~~| 4 sierpnia 2019 | 1 listopada 2019  |  
 |~~WA-GOŚĆ-OS-6,9 _201907-0~~|26 lipca 2019 | 7 października 2019 |
 |~~WA-GOŚĆ-OS-6,8 _201906-01~~|8 lipca 2019 |4 sierpnia 2019 |
 |~~WA-GOŚĆ-OS-6.7 _201905-01~~ |6 czerwca 2019 |26 lipca 2019 |
@@ -130,8 +134,9 @@ Wydano system operacyjny gościa w trybie gościnnym.
 
 | Ciąg konfiguracji | Data wydania | Data wyłączenia |
 | --- | --- | --- |
+| WA-GOŚĆ-OS-5.36 _201910-01 | 1 listopada 2019 | Wpis 5,38 |  
 | WA-GOŚĆ-OS-5.35 _201909-01 | 7 października 2019 | Wpis 5,37 |  
-| WA-GOŚĆ-OS-5.34 _201908-01  |  4 sierpnia 2019  |  Wpis 5,36 |  
+|~~WA-GOŚĆ-OS-5.34 _201908-01~~|  4 sierpnia 2019  |  Wpis 5,36 |  
 |~~WA-GOŚĆ-OS-5.33 _201907-01~~| 26 lipca 2019 | 7 października 2019 |  
 |~~WA-GOŚĆ-OS-5.32 _201906-01~~|8 lipca 2019 |4 sierpnia 2019 |
 |~~WA-GOŚĆ-OS-5.31 _201905-01~~ |6 czerwca 2019 |26 lipca 2019 |
@@ -151,8 +156,9 @@ Wydano system operacyjny gościa w trybie gościnnym.
 
 | Ciąg konfiguracji | Data wydania | Data wyłączenia |
 | --- | --- | --- |
+| WA-GOŚĆ-OS-4.71 _201910-01 | 1 listopada 2019 | Wpis 4,73 |  
 | WA-GOŚĆ-OS-4.70 _201909-01 | 7 października 2019 | Wpis 4,72 |  
-| WA-GOŚĆ-OS-4.69 _201908-01 | 4 sierpnia 2019 | Wpis 4,71 |  
+|~~WA-GOŚĆ-OS-4.69 _201908-01~~| 4 sierpnia 2019 | 1 listopada 2019 |  
 |~~WA-GOŚĆ-OS-4.68 _201907-01~~| 26 lipca 2019  | 7 października 2019 |
 |~~WA-GOŚĆ-OS-4.67 _201906-01~~| 8 lipca 2019 |4 sierpnia 2019 |
 |~~WA-GOŚĆ-OS-4.66 _201905-01~~ |6 czerwca 2019 |26 lipca 2019 |
@@ -172,8 +178,9 @@ Wydano system operacyjny gościa w trybie gościnnym.
 
 | Ciąg konfiguracji | Data wydania | Data wyłączenia |
 | --- | --- | --- |
+| WA-GOŚĆ-OS-3.78 _201910-01 | 1 listopada 2019 | Wpis 3,80 |  
 | WA-GOŚĆ-OS-3.77 _201909-01 | 7 października 2019 | Wpis 3,79 |  
-| WA-GOŚĆ-OS-3.76 _201908-01 |  4 sierpnia 2019  |  Wpis 3,78  |  
+|~~WA-GOŚĆ-OS-3.76 _201908-01~~|  4 sierpnia 2019  |  1 listopada 2019  |  
 |~~WA-GOŚĆ-OS-3,75 _201907-01~~| 26 lipca 2019 | 7 października 2019 |
 |~~WA-GOŚĆ-OS-3.74 _201906-01~~| 8 lipca 2019 |4 sierpnia 2019 |
 |~~WA-GOŚĆ-OS-3.73 _201905-01~~ |6 czerwca 2019 |26 lipca 2019 |
@@ -193,8 +200,9 @@ Wydano system operacyjny gościa w trybie gościnnym.
 
 | Ciąg konfiguracji | Data wydania | Data wyłączenia |
 | --- | --- | --- |
+| WA-GOŚĆ-OS-2.91 _201910-01 | 1 listopada 2019 | Wpis 2,93 |  
 | WA-GOŚĆ-OS-2.90 _201909-01 | 7 października 2019 | Wpis 2,92 |  
-| WA-GOŚĆ-OS-2.89 _201908-01 | 4 sierpnia 2019 | Wpis 2,91 |  
+|~~WA-GOŚĆ-OS-2.89 _201908-01~~| 4 sierpnia 2019 | 1 listopada 2019 |  
 |~~WA-GOŚĆ-OS-2,88 _201907-01~~| 26 lipca 2019 | 7 października 2019 |
 |~~WA-GOŚĆ-OS-2.87 _201906-01~~|8 lipca 2019 | 4 sierpnia 2019 |
 |~~WA-GOŚĆ-OS-2.86 _201905-01~~ |6 czerwca 2019 |26 lipca 2019 |

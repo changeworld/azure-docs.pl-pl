@@ -1,24 +1,24 @@
 ---
 title: 'Edytowanie metadanych: odwołanie do modułu'
-titleSuffix: Azure Machine Learning service
-description: Informacje dotyczące zmiany metadanych skojarzonych z kolumnami w zestawie danych przy użyciu modułu Edytuj metadane w usłudze Azure Machine Learning.
+titleSuffix: Azure Machine Learning
+description: Dowiedz się, jak używać modułu Edytowanie metadanych w Azure Machine Learning, aby zmienić metadane skojarzone z kolumnami w zestawie danych.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: reference
 author: xiaoharper
 ms.author: zhanxia
-ms.date: 05/02/2019
-ms.openlocfilehash: b6e28577fefe4892d719e211e16edafed1504e87
-ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
+ms.date: 10/22/2019
+ms.openlocfilehash: 2c8224edbe95c8185e390c2ce48cbb4263f97586
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "72693829"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73497954"
 ---
 # <a name="edit-metadata-module"></a>Edytuj moduł metadanych
 
-W tym artykule opisano moduł Visual Interface (wersja zapoznawcza) dla usługi Azure Machine Learning.
+W tym artykule opisano moduł dostępny w programie Azure Machine Learning Designer (wersja zapoznawcza).
 
 Użyj modułu Edytuj dane, aby zmienić metadane skojarzone z kolumnami w zestawie danych. Wartość i typ danych zestawu danych zmienią się po użyciu modułu Edytowanie metadanych.
 
@@ -98,4 +98,4 @@ Typowe zmiany metadanych mogą obejmować:
 
 ## <a name="next-steps"></a>Następne kroki
 
-Zapoznaj się z [zestawem modułów dostępnych](module-reference.md) dla usługi Azure Machine Learning.
+Zapoznaj się z [zestawem modułów dostępnych](module-reference.md) do Azure Machine Learning.

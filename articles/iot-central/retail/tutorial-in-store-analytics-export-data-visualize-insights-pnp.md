@@ -5,17 +5,17 @@ services: iot-central
 ms.service: iot-central
 ms.topic: tutorial
 ms.custom:
-- iot-storeAnalytics-conditionMonitor
+- iot-storeAnalytics-checkout
 - iot-p0-scenario
 ms.author: dobett
 author: dominicbetts
 ms.date: 10/22/2019
-ms.openlocfilehash: 057602e9a595f1cb76927810801bd87e4f124d31
-ms.sourcegitcommit: d47a30e54c5c9e65255f7ef3f7194a07931c27df
+ms.openlocfilehash: 913a87df47121c18fcd4f83aa8d5a24b4041ce19
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/29/2019
-ms.locfileid: "73026375"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73495127"
 ---
 # <a name="tutorial-export-data-from-azure-iot-central-and-visualize-insights-in-power-bi"></a>Samouczek: eksportowanie danych z platformy Azure IoT Central i wizualizacja szczegółowych informacji w programie Power BI
 
@@ -37,11 +37,11 @@ Do ukończenia tego samouczka niezbędne są następujące elementy:
 * Subskrypcja platformy Azure. Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpłatne konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 * Konto usługi Power BI. Jeśli nie masz konta Power BI, przed rozpoczęciem Zarejestruj się, aby uzyskać [bezpłatną Power BI Pro wersję próbną](https://app.powerbi.com/signupredirect?pbi_source=web) .
 
-## <a name="create-a-resource-group"></a>Utwórz grupę zasobów
+## <a name="create-a-resource-group"></a>Tworzenie grupy zasobów
 
 Przed utworzeniem centrum zdarzeń i aplikacji logiki należy utworzyć grupę zasobów, aby zarządzać nimi. Grupa zasobów powinna znajdować się w tej samej lokalizacji, w której znajduje się aplikacja **do analizy w sklepie — wyewidencjonowywanie** IoT Central. Aby utworzyć grupę zasobów:
 
-1. Zaloguj się do [portalu Azure](https://portal.azure.com).
+1. Zaloguj się w witrynie [Azure Portal](https://portal.azure.com).
 1. W okienku nawigacji po lewej stronie wybierz pozycję **grupy zasobów**. Następnie wybierz pozycję **Dodaj**.
 1. W polu **subskrypcja**wybierz nazwę subskrypcji platformy Azure, która została użyta do utworzenia aplikacji IoT Central.
 1. W polu Nazwa **grupy zasobów** wprowadź wartość _Retail-Store-Analysis_*.
@@ -109,7 +109,7 @@ Pulpit nawigacyjny Power BI będzie wyświetlał dane z aplikacji do monitorowan
 
     | Nazwa wartości  | Typ wartości |
     | ----------- | ---------- |
-    | Znacznik czasu   | Data i godzina   |
+    | Znacznik czasu   | DateTime   |
     | Wilgotność    | Liczba     |
     | Temperatura | Liczba     |
 
@@ -132,7 +132,7 @@ Wymagany jest również zestaw danych przesyłania strumieniowego dla telemetrii
 
     | Nazwa wartości     | Typ wartości |
     | -------------- | ---------- |
-    | Znacznik czasu      | Data i godzina   |
+    | Znacznik czasu      | DateTime   |
     | Długość kolejki 1 | Liczba     |
     | Długość kolejki 2 | Liczba     |
     | Czas mieszkania 1   | Liczba     |
@@ -475,9 +475,9 @@ Dodaj cztery kafelki kart, aby wyświetlić długość kolejki i czas mieszkania
 | ------- | ------- | ------- | ------- | ------- |
 | Zestaw danych | Czujnik zajętości | Czujnik zajętości | Czujnik zajętości | Czujnik zajętości |
 | Typ wizualizacji | Wykres kolumnowy grupowany | Wykres kolumnowy grupowany | Urządzeń | Urządzeń |
-| Osi    | Znacznik czasu | Znacznik czasu | ND | ND |
+| Osi    | Znacznik czasu | Znacznik czasu | Nie dotyczy | Nie dotyczy |
 | Wartość | Czas mieszkania 1 | Czas mieszkania 2 | Długość kolejki 1 | Długość kolejki 2 |
-| Przedział czasu | 60 minut | 60 minut |  ND | ND |
+| Przedział czasu | 60 minut | 60 minut |  Nie dotyczy | Nie dotyczy |
 | Tytuł | Czas mieszkania | Czas mieszkania | Długość kolejki | Długość kolejki |
 | Nazwy | Wyewidencjonowanie 1 | Wyewidencjonowanie 2 | Wyewidencjonowanie 1 | Wyewidencjonowanie 2 |
 

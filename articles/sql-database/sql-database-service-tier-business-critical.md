@@ -11,12 +11,12 @@ author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: sstein
 ms.date: 12/04/2018
-ms.openlocfilehash: 9e398fd7d370d30fac87035b27a218834b4fab22
-ms.sourcegitcommit: 3e7646d60e0f3d68e4eff246b3c17711fb41eeda
+ms.openlocfilehash: ef1f420e4c4dbd38ad703eb0573fae36af078edb
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70899716"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73496231"
 ---
 # <a name="business-critical-tier---azure-sql-database"></a>Warstwa Krytyczne dla działania firmy — Azure SQL Database
 
@@ -49,7 +49,7 @@ Krytyczne dla działania firmy warstwa usług została zaprojektowana dla aplika
 Najważniejsze przyczyny wyboru Krytyczne dla działania firmy warstwy usług zamiast warstwy Ogólnego przeznaczenia są następujące:
 -   Niskie wymagania dotyczące opóźnień we/wy — obciążenie wymagające szybkiej odpowiedzi z warstwy magazynowania (średnia 1-2 milisekund) powinno korzystać z warstwy Krytyczne dla działania firmy. 
 -   Częsta komunikacja między aplikacjami i bazami danych. Aplikacja, która nie może korzystać z buforowania warstwy aplikacji lub [żądania wsadowego](sql-database-use-batching-to-improve-performance.md) i musi wysyłać wiele zapytań SQL, które muszą być szybko przetwarzane, są dobrym kandydatami do warstwy krytyczne dla działania firmy.
--   Duża liczba aktualizacji — operacje INSERT, Update i DELETE modyfikują strony danych w pamięci (zanieczyszczoną stronę), które muszą zostać zapisane w plikach danych z `CHECKPOINT` operacją. Potencjalna awaria procesu aparatu bazy danych lub przełączenia w tryb failover bazy danych z dużą liczbą zanieczyszczonych stron może zwiększyć czas odzyskiwania w warstwie Ogólnego przeznaczenia. Użyj warstwy Krytyczne dla działania firmy, jeśli masz obciążenie, które powoduje wiele zmian w pamięci. 
+-   Duża liczba aktualizacji — operacje INSERT, Update i DELETE modyfikują strony danych w pamięci (zanieczyszczoną stronę), które muszą zostać zapisane w plikach danych z `CHECKPOINT` operacji. Potencjalna awaria procesu aparatu bazy danych lub przełączenia w tryb failover bazy danych z dużą liczbą zanieczyszczonych stron może zwiększyć czas odzyskiwania w warstwie Ogólnego przeznaczenia. Użyj warstwy Krytyczne dla działania firmy, jeśli masz obciążenie, które powoduje wiele zmian w pamięci. 
 -   Długotrwałe transakcje, które modyfikują dane. Transakcje, które są otwierane przez dłuższy czas, uniemożliwiają Obcinanie pliku dziennika, co może spowodować zwiększenie rozmiaru dziennika i liczby [wirtualnych plików dziennika (VLF)](https://docs.microsoft.com/sql/relational-databases/sql-server-transaction-log-architecture-and-management-guide#physical_arch). Duża liczba VLF może spowolnić odzyskiwanie bazy danych po przejściu do trybu failover.
 -   Obciążenie przy użyciu zapytań i raportów analitycznych, które można przekierować do bezpłatnej repliki tylko do odczytu.
 - Wyższa odporność i szybsze odzyskiwanie po awarii. W przypadku awarii systemu baza danych w wystąpieniu podstawowym zostanie wyłączona, a jedna z replik pomocniczych stanie się natychmiast nową podstawową bazą danych do odczytu i zapisu, która jest gotowa do przetwarzania zapytań. Aparat bazy danych nie musi analizować i ponawiać transakcji z pliku dziennika i ładować wszystkich danych w buforze pamięci.
@@ -59,7 +59,7 @@ Najważniejsze przyczyny wyboru Krytyczne dla działania firmy warstwy usług za
 
 ## <a name="next-steps"></a>Następne kroki
 
-- Znajdź charakterystykę zasobu (liczbę rdzeni, operacji we/wy, pamięci) warstwy Krytyczne dla działania firmy w [wystąpieniu zarządzanym](sql-database-managed-instance-resource-limits.md#service-tier-characteristics), pojedynczą bazę danych w [modelu rdzeń wirtualny](sql-database-vcore-resource-limits-single-databases.md#business-critical-service-tier-for-provisioned-compute) lub [modelu DTU](sql-database-dtu-resource-limits-single-databases.md#premium-service-tier)lub elastyczną pulę w [modelu rdzeń wirtualny](sql-database-vcore-resource-limits-elastic-pools.md#business-critical-service-tier-storage-sizes-and-compute-sizes) i [modelu DTU](sql-database-dtu-resource-limits-elastic-pools.md#premium-elastic-pool-limits).
+- Znajdź charakterystykę zasobu (liczbę rdzeni, operacji we/wy, pamięci) warstwy Krytyczne dla działania firmy w [wystąpieniu zarządzanym](sql-database-managed-instance-resource-limits.md#service-tier-characteristics), pojedynczą bazę danych w [modelu rdzeń wirtualny](sql-database-vcore-resource-limits-single-databases.md#business-critical---provisioned-compute---gen4) lub [modelu DTU](sql-database-dtu-resource-limits-single-databases.md#premium-service-tier)lub elastyczną pulę w [modelu rdzeń wirtualny](sql-database-vcore-resource-limits-elastic-pools.md#business-critical---provisioned-compute---gen4) i [modelu DTU](sql-database-dtu-resource-limits-elastic-pools.md#premium-elastic-pool-limits).
 - Dowiedz się więcej na temat warstw [ogólnego przeznaczenia](sql-database-service-tier-general-purpose.md) i [skalowania](sql-database-service-tier-hyperscale.md) .
 - Dowiedz się więcej na temat [Service Fabric](../service-fabric/service-fabric-overview.md).
-- Aby uzyskać więcej opcji dotyczących wysokiej dostępności i odzyskiwania po awarii [](sql-database-business-continuity.md), zobacz ciągłość działania.
+- Aby uzyskać więcej opcji dotyczących wysokiej dostępności i odzyskiwania po awarii, zobacz [ciągłość](sql-database-business-continuity.md)działania.

@@ -11,20 +11,20 @@ ms.subservice: qna-maker
 ms.topic: conceptual
 ms.date: 09/25/2019
 ms.author: diberry
-ms.openlocfilehash: dc99626e2341e180ba0ab191003cf3a6ba9b72e9
-ms.sourcegitcommit: 8bae7afb0011a98e82cbd76c50bc9f08be9ebe06
+ms.openlocfilehash: 06b16af941004f6506b43fb36b4d79297b403595
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/01/2019
-ms.locfileid: "71695144"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73486891"
 ---
-# <a name="use-follow-up-prompts-to-create-multiple-turns-of-a-conversation"></a>Użyj monitów monitujących, aby utworzyć wiele zamian w konwersacji
+# <a name="use-follow-up-prompts-to-create-multiple-turns-of-a-conversation"></a>Tworzenie wielu etapów konwersacji za pomocą dodatkowych monitów
 
 Użyj monitów uzupełniających i kontekstu, aby zarządzać wielokrotnymi _przełączami_, nazywanymi wieloma ruchami dla bot z jednego pytania do innego.
 
 Aby zobaczyć, jak działa wiele przełączania, Wyświetl następujące wideo demonstracyjne:
 
-[![Multi — włączaj konwersację w QnA Maker](../media/conversational-context/youtube-video.png)](https://aka.ms/multiturnexample)
+[![rozmowy wielokrotnej w QnA Maker](../media/conversational-context/youtube-video.png)](https://aka.ms/multiturnexample)
 
 ## <a name="what-is-a-multi-turn-conversation"></a>Co to jest konwersacja wieloletnia?
 
@@ -42,12 +42,10 @@ Na poprzedniej ilustracji użytkownik rozpoczął konwersację, wprowadzając **
 
 Gdy użytkownik wybierze opcję (#3), zostanie wyświetlona Następna lista opcji rafinacji (#4). Ta sekwencja będzie kontynuowana (#5), dopóki użytkownik nie ustali poprawnej, końcowej odpowiedzi (#6).
 
-> [!NOTE]
-> Na poprzedniej ilustracji zaznaczone jest pole wyboru **Włącz wiele** połączeń, aby upewnić się, że monity są wyświetlane. 
 
 ### <a name="use-multi-turn-in-a-bot"></a>Używanie wieloskładnikowego bot
 
-Aby zarządzać kontekstową konwersacją, Zmień aplikację kliencką, [dodając kod do bot](https://github.com/microsoft/BotBuilder-Samples/tree/master/experimental/qnamaker-prompting). Dodanie kodu umożliwia użytkownikom wyświetlanie wyświetleń.  
+Po opublikowaniu bazy wiedzy możesz wybrać przycisk **Utwórz bot** , aby wdrożyć QNA Maker Bot w usłudze Azure bot. Pojawią się na nich komunikaty, które zostały włączone dla bot.
 
 ## <a name="create-a-multi-turn-conversation-from-a-documents-structure"></a>Tworzenie wieloskładnikowej konwersacji z struktury dokumentu
 
@@ -55,27 +53,27 @@ Po utworzeniu bazy wiedzy w sekcji Wypełnij w **bazie** wiedzy zostanie wyświe
 
 ![Pole wyboru umożliwiające włączenie wyodrębniania wieloskładnikowego](../media/conversational-context/enable-multi-turn.png)
 
-Po wybraniu tej opcji konwersacja z obsługą wielodostępności może być implikowana na podstawie struktury dokumentu. Jeśli ta struktura istnieje, QnA Maker powoduje utworzenie monitu monitujące, który umożliwia parowanie pytań i odpowiedzi w ramach procesu importowania. 
+Po wybraniu tej opcji QnA Maker wyodrębnia hierarchię obecną w strukturze dokumentu. Hierarchia jest konwertowana w programie w celu wykonania monitów, a katalog główny hierarchii służy jako nadrzędny QnA. W niektórych dokumentach w katalogu głównym hierarchii nie ma zawartości, która może służyć jako odpowiedź, możesz podać "domyślny tekst odpowiedzi" jako zastępczy tekst odpowiedzi, aby wyodrębnić takie hierarchie.   
 
-Strukturę wielostopniową można wywnioskować tylko na podstawie adresów URL, plików PDF lub plików DOCX. Aby zapoznać się z przykładem struktury, Wyświetl obraz [ręcznego pliku PDF użytkownika powierzchniowego](https://github.com/Azure-Samples/cognitive-services-sample-data-files/blob/master/qna-maker/data-source-formats/product-manual.pdf). Ze względu na rozmiar tego pliku PDF zasób QnA Maker wymaga **warstwy cenowej wyszukiwania** **B** (15 indeksów) lub nowszej. 
+Strukturę wielostopniową można wywnioskować tylko na podstawie adresów URL, plików PDF lub plików DOCX. Aby zapoznać się z przykładem struktury, Wyświetl obraz [ręcznego pliku PDF użytkownika powierzchniowego](https://github.com/Azure-Samples/cognitive-services-sample-data-files/blob/master/qna-maker/data-source-formats/product-manual.pdf). 
 
 ![! [Przykład struktury w podręczniku użytkownika] (.. /media/conversational-context/import-file-with-conversational-structure.png)](../media/conversational-context/import-file-with-conversational-structure.png#lightbox)
 
-### <a name="determine-multi-turn-structure-from-format"></a>Określanie struktury z formatowaniem wielostopniowym
+### <a name="building-your-own-multi-turn-document"></a>Tworzenie własnego dokumentu wielostopniowego
 
-QnA Maker określa wiele przełączania struktury z:
+W przypadku tworzenia dokumentu z obsługą wielodostępności należy wziąć pod uwagę następujące wytyczne:
 
-* Rozmiar czcionki nagłówka — Jeśli używasz stylu, koloru lub innego mechanizmu do oznaczania struktury w dokumencie, QnA Maker nie Wyodrębnij wyświetlonych przez siebie wierszy. 
+* Użyj nagłówków i nagłówków podrzędnych do określenia hierarchii. Na przykład można H1 do określenia elementu Parent QnA i H2, aby zauważyć QnA, które należy wykonać jako monit. Użyj małego rozmiaru nagłówka, aby zauważyć dalszą hierarchię. Nie używaj stylu, koloru ani innego mechanizmu, aby oznaczać strukturę w dokumencie, QnA Maker nie Wyodrębnij wyświetlonych przez siebie wierszy. 
 
-Reguły nagłówków obejmują:
+* Nie należy kończyć nagłówka ze znakiem zapytania, `?`. 
 
-* Nie kończyj nagłówka ze znakiem zapytania, `?`. 
+* Możesz użyć przykładowego [dokumentu](https://github.com/Azure-Samples/cognitive-services-sample-data-files/blob/master/qna-maker/data-source-formats/multi-turn.docx) w celu utworzenia własnego dokumentu wieloskładnikowego.
 
-### <a name="add-file-with-multi-turn-prompts"></a>Dodaj plik z wielowierszowymi instrukcjami
+### <a name="adding-files-to-a-multi-turn-kb"></a>Dodawanie plików do wieloskładnikowej bazy wiedzy
 
-Po dodaniu dokumentu z obsługą wielodostępności QnA Maker określa monity o instrukcje ze struktury, aby utworzyć przepływ konwersacji. 
+Po dodaniu dokumentu hierarchicznego, QnA Maker określa monity o instrukcje ze struktury, aby utworzyć przepływ konwersacji. 
 
-1. W QnA Maker wybierz istniejącą bazę wiedzy, która została utworzona z opcją **Włącz wyodrębnianie wieloskładnikowe z adresów URL, plików PDF lub DOCX.** dostępny. 
+1. W QnA Maker wybierz istniejącą bazę wiedzy, która została utworzona z opcją **Włącz wyodrębnianie wieloskładnikowe z adresów URL, plików PDF lub DOCX.** Dostępny. 
 1. Przejdź do strony **Ustawienia** , wybierz plik lub adres URL do dodania. 
 1. **Zapisz i Wyszkol** bazę wiedzy.
 
@@ -85,13 +83,13 @@ Po dodaniu dokumentu z obsługą wielodostępności QnA Maker określa monity o 
 
 ## <a name="create-knowledge-base-with-multi-turn-prompts-with-the-create-api"></a>Tworzenie bazy wiedzy z instrukcjami wielodostępnymi za pomocą interfejsu API tworzenia
 
-Można utworzyć przypadek wiedzy z instrukcjami wieloletnimi przy użyciu [QNA Maker tworzenia interfejsu API](https://docs.microsoft.com/rest/api/cognitiveservices/qnamaker/knowledgebase/create). Monity są dodawane do tablicy `prompts` właściwości `context`. 
+Można utworzyć przypadek wiedzy z instrukcjami wieloletnimi przy użyciu [QNA Maker tworzenia interfejsu API](https://docs.microsoft.com/rest/api/cognitiveservices/qnamaker/knowledgebase/create). Monity są dodawane w tablicy `prompts` właściwości `context`. 
 
 ## <a name="show-questions-and-answers-with-context"></a>Pokaż pytania i odpowiedzi z kontekstem
 
 Zmniejsz liczbę wyświetlanych par pytań i odpowiedzi tylko do tych, które są kontekstowe konwersacje. 
 
-Wybierz pozycję **Wyświetl opcje**, a następnie wybierz pozycję **Pokaż kontekst (wersja zapoznawcza)** . Na liście są wyświetlane pary pytania i odpowiedzi, które zawierają monity monitujące. 
+Wybierz pozycję **Wyświetl opcje**, a następnie wybierz pozycję **Pokaż kontekst**. Na liście są wyświetlane pary pytania i odpowiedzi, które zawierają monity monitujące. 
 
 ![Filtrowanie par pytań i odpowiedzi według kontekstowych konwersacji](../media/conversational-context/filter-question-and-answers-by-context.png)
 
@@ -111,7 +109,7 @@ Dodawanie monitu monitujące do istniejącej pary pytań i odpowiedzi, która ni
 
 1. Aby połączyć istniejącą parę pytanie-odpowiedź jako monit, wybierz wiersz dla pary pytania i odpowiedzi. Aby uzyskać ręczną powierzchnię, Wyszukaj pozycję **Wyloguj** się, aby zmniejszyć listę.
 1. W wierszu dla **wylogowaniu**, w kolumnie **odpowiedź** wybierz pozycję **Dodaj monit**uzupełniający.
-1. W polach okna podręcznego **monitu (wersja ZApoznawcza)** wprowadź następujące wartości:
+1. W polach w oknie podręcznym **monitu krok po prawej stronie** wprowadź następujące wartości:
 
     |Pole|Wartość|
     |--|--|
@@ -355,11 +353,8 @@ Odpowiedź QnA Maker _GenerateAnswer_ JSON zawiera monity monitujące we właśc
 
 ## <a name="query-the-knowledge-base-with-the-qna-maker-id"></a>Zbadaj bazę wiedzy przy użyciu identyfikatora QnA Maker
 
-W odpowiedzi na pytanie początkowe zostanie zwrócona prośba o monit i skojarzona z nią `qnaId`. Teraz, gdy masz identyfikator, możesz przekazać ten komunikat w treści żądania monitowania. Jeśli treść żądania zawiera `qnaId`, a obiekt kontekstu (który zawiera poprzednie właściwości QnA Maker), wówczas GenerateAnswer zwróci dokładne pytanie według identyfikatora, zamiast używać algorytmu klasyfikacji, aby znaleźć odpowiedź według tekstu pytania. 
+Jeśli tworzysz aplikację niestandardową przy użyciu funkcji wieloskładnikowej. W odpowiedzi na pierwsze pytanie zostanie zwrócona prośba o monit i skojarzona z nią `qnaId`. Teraz, gdy masz identyfikator, możesz przekazać ten komunikat w treści żądania monitowania. Jeśli treść żądania zawiera `qnaId`i obiekt kontekstu (który zawiera poprzednie właściwości QnA Maker), wówczas GenerateAnswer zwróci dokładne pytanie według identyfikatora, zamiast używać algorytmu klasyfikacji, aby znaleźć odpowiedź według tekstu pytania. 
 
-## <a name="display-prompts-and-send-context-in-the-client-application"></a>Wyświetlaj wyświetlenie wierszy i wysyłanie kontekstu w aplikacji klienckiej 
-
-Dodano prośby w bazie wiedzy i przetestowano przepływ w okienku testów. Teraz musisz użyć tych wskazówek w aplikacji klienckiej. W przypadku programu bot Framework monity nie są automatycznie wyświetlane w aplikacjach klienckich. Możesz wyświetlić pytania jako sugerowane akcje lub przyciski jako część odpowiedzi na zapytanie użytkownika w aplikacjach klienckich, dołączając ten [przykład bot Framework](https://aka.ms/qnamakermultiturnsample) w kodzie. Aplikacja kliencka przechowuje bieżący identyfikator QnA Maker i kwerendę użytkownika i przekazuje je w [obiekcie kontekstu interfejsu API GenerateAnswer](#a-json-request-to-return-a-non-initial-answer-and-follow-up-prompts) dla następnej kwerendy użytkownika. 
 
 ## <a name="display-order-is-supported-in-the-update-api"></a>Kolejność wyświetlania jest obsługiwana w interfejsie API aktualizacji
 
@@ -367,7 +362,7 @@ Dodano prośby w bazie wiedzy i przetestowano przepływ w okienku testów. Teraz
 
 ## <a name="add-or-delete-multi-turn-prompts-with-the-update-api"></a>Dodawanie lub usuwanie wieloskładnikowych wierszy przy użyciu interfejsu API aktualizacji
 
-Możesz dodawać lub usuwać wieloosiowe polecenia przy użyciu [interfejsu API aktualizacji QNA Maker](https://docs.microsoft.com/rest/api/cognitiveservices/qnamaker/knowledgebase/update).  Monity są dodawane w tablicy `promptsToAdd` właściwości `context` i macierzy `promptsToDelete`. 
+Możesz dodawać lub usuwać wieloosiowe polecenia przy użyciu [interfejsu API aktualizacji QNA Maker](https://docs.microsoft.com/rest/api/cognitiveservices/qnamaker/knowledgebase/update).  Monity są dodawane w tablicy `promptsToAdd` `context` właściwości i tablicy `promptsToDelete`. 
 
 ## <a name="export-knowledge-base-for-version-control"></a>Eksportuj bazę wiedzy na potrzeby kontroli wersji
 

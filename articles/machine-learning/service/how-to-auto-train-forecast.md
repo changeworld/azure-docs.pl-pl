@@ -9,15 +9,16 @@ ms.service: machine-learning
 ms.subservice: core
 ms.reviewer: trbye
 ms.topic: conceptual
-ms.date: 06/20/2019
-ms.openlocfilehash: 3cec6ee9368b1d9d1f2c9a627108aaf41c6da3c3
-ms.sourcegitcommit: 8e271271cd8c1434b4254862ef96f52a5a9567fb
-ms.translationtype: MT
+ms.date: 11/04/2019
+ms.openlocfilehash: d9a879e92f78275f2366ccfc008068afbe208e5a
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72819854"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73497390"
 ---
 # <a name="auto-train-a-time-series-forecast-model"></a>Autouczenie modelu prognozowania szeregów czasowych
+[!INCLUDE [aml-applies-to-basic-enterprise-sku](../../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
 W tym artykule dowiesz się, jak szkolić model regresji prognozowania szeregów czasowych przy użyciu funkcji automatycznego uczenia maszynowego w Azure Machine Learning. Konfigurowanie modelu prognozowania jest podobne do konfigurowania modelu regresji standardowej przy użyciu automatycznego uczenia maszynowego, ale niektóre opcje konfiguracji i wstępne kroki przetwarzania istnieją do pracy z danymi szeregów czasowych. W poniższych przykładach pokazano, jak:
 
@@ -50,7 +51,7 @@ Modele uczenia głębokiego mają trzy capbailities wewnętrzne:
 1. Obsługują one wiele wejść i wyjść
 1. Mogą automatycznie wyodrębniać wzorce w danych wejściowych, które rozciągają się na długie sekwencje
 
-Dane o większej liczbie, modele uczenia głębokiego, takie jak Microsoft "ForecasTCN", mogą poprawić wyniki modelu wynikowego. 
+Dane o większej liczbie, modele uczenia głębokiego, takie jak Microsoft "ForecastTCN", mogą poprawić wyniki modelu wynikowego. 
 
 Natywne informacje o szeregach czasowych są również udostępniane jako część zautomatyzowanej ML. Prophet działa najlepiej z seriami czasowymi, które mają silne skutki sezonowe i kilka sezonów danych historycznych. Prophet jest dokładny & Szybka, niezawodna do wartości odstających, brakujących danych i znaczących zmian w szeregach czasowych. 
 
@@ -63,7 +64,7 @@ AutoRegressive Integrated (ARIMA) jest popularną metodą statystyczną dla prog
 
 ## <a name="preparing-data"></a>Przygotowywanie danych
 
-Najważniejszym różnicą między typem zadania regresja prognozowania a typem zadania regresji w ramach automatycznego uczenia maszynowego jest dołączenie funkcji w danych, która reprezentuje prawidłową serię czasową. Zwykła seria czasowa ma dobrze zdefiniowaną i spójną częstotliwość i ma wartość w każdym punkcie próbki w ciągłym przedziale czasu. Rozważmy następującą migawkę pliku `sample.csv`.
+Najważniejszym różnicą między typem zadania regresja prognozowania a typem zadania regresji w ramach automatycznego uczenia maszynowego jest dołączenie funkcji w danych, która reprezentuje prawidłową serię czasową. Zwykła seria czasowa ma dobrze zdefiniowaną i spójną częstotliwość i ma wartość w każdym punkcie próbki w ciągłym przedziale czasu. Rozważmy poniższą migawkę pliku `sample.csv`.
 
     day_datetime,store,sales_quantity,week_of_year
     9/3/2018,A,2000,36
@@ -112,13 +113,14 @@ W przypadku zadań prognozowania automatyczne Uczenie maszynowe korzysta z krok�
 
 Obiekt `AutoMLConfig` definiuje ustawienia i dane niezbędne do automatycznego zadania uczenia maszynowego. Podobnie jak w przypadku problemu z regresją, definiuje się standardowe parametry szkolenia, takie jak typ zadania, liczba iteracji, dane szkoleniowe i liczba operacji krzyżowych. W przypadku zadań prognozowania należy ustawić dodatkowe parametry, które mają wpływ na eksperyment. W poniższej tabeli opisano każdy parametr i jego użycie.
 
-| Param | Opis | Wymagane |
+| Param | Opis | Wymagany |
 |-------|-------|-------|
 |`time_column_name`|Służy do określania kolumny DateTime w danych wejściowych używanych do kompilowania szeregów czasowych i wywnioskowania jej częstotliwości.|✓|
 |`grain_column_names`|Nazwy definiujące poszczególne grupy serii w danych wejściowych. Jeśli ziarno nie jest zdefiniowane, zakłada się, że zestaw danych jest jedną serią czasową.||
 |`max_horizon`|Definiuje maksymalny żądany zakres prognozy w jednostkach częstotliwości szeregów czasowych. Jednostki są oparte na przedziale czasu na dane szkoleniowe, np. co miesiąc, co tydzień prognozy powinien przewidzieć.|✓|
 |`target_lags`|Liczba wierszy do rozłożeniu wartości docelowych na podstawie częstotliwości danych. Jest to reprezentowane jako lista lub jedna liczba całkowita. Zwłoki należy używać, gdy relacja między zmiennymi niezależnymi i zmienną zależną nie są zgodne ani nie są domyślnie skorelowane. Na przykład podczas próby prognozowania zapotrzebowania na produkt zapotrzebowanie w dowolnym miesiącu może zależeć od ceny określonych cen w ciągu 3 miesięcy. W tym przykładzie możesz chcieć zażądać negatywnego opóźnienia (popytu) przez 3 miesiące, aby model był szkoleniowy dla poprawnej relacji.||
 |`target_rolling_window_size`|*n* okresy historyczne używane do generowania prognozowanych wartości, < = rozmiar zestawu szkoleniowego. W przypadku pominięcia *n* to pełny rozmiar zestawu szkoleniowego. Określ ten parametr, jeśli chcesz wziąć pod uwagę tylko określoną ilość historii podczas uczenia modelu.||
+|`enable_dnn`|Włącz prognozowanie DNNs.||
 
 Aby uzyskać więcej informacji, zobacz [dokumentację referencyjną](https://docs.microsoft.com/python/api/azureml-train-automl/azureml.train.automl.automlconfig?view=azure-ml-py) .
 
@@ -140,7 +142,7 @@ time_series_settings = {
 
 Definiując `grain_column_names` w powyższym fragmencie kodu, AutoML utworzy dwie osobne grupy szeregów czasowych, znane także jako wiele szeregów czasowych. Jeśli nie zdefiniowano żadnego ziarna, AutoML założenie, że zestaw danych jest pojedynczą serią czasową. Aby dowiedzieć się więcej o pojedynczych seriach czasowych, zobacz [energy_demand_notebook](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/automated-machine-learning/forecasting-energy-demand).
 
-Teraz Utwórz obiekt standardowego `AutoMLConfig`, określając typ zadania `forecasting` i prześlij eksperyment. Po zakończeniu działania modelu Pobierz iterację najlepszego przebiegu.
+Teraz można utworzyć standardowy obiekt `AutoMLConfig`, określając typ zadania `forecasting` i przesłać eksperyment. Po zakończeniu działania modelu Pobierz iterację najlepszego przebiegu.
 
 ```python
 from azureml.core.workspace import Workspace
@@ -150,7 +152,8 @@ import logging
 
 automl_config = AutoMLConfig(task='forecasting',
                              primary_metric='normalized_root_mean_squared_error',
-                             iterations=10,
+                             experiment_timeout_minutes=15,
+                             enable_early_stopping=True,
                              training_data=train_data,
                              label_column_name=label,
                              n_cross_validations=5,
@@ -170,6 +173,17 @@ Aby zapoznać się ze szczegółowymi przykładami zaawansowanej konfiguracji pr
 * krzyżowe sprawdzanie poprawności źródła
 * Konfigurowalne spowolnienia
 * funkcje agregujące okna stopniowego
+
+### <a name="configure-a-dnn-enable-forecasting-experiment"></a>Konfigurowanie eksperymentu włączania prognozowania DNN
+
+> [!NOTE]
+> DNN obsługa prognozowania w programie zautomatyzowanym Machine Learning jest w wersji zapoznawczej.
+
+Aby można było korzystać z DNNs do prognozowania, należy ustawić parametr `enable_dnn` w AutoMLConfig na true. 
+
+Aby można było korzystać z DNNs, zalecamy użycie klastra obliczeniowego AML z jednostkami SKU procesora GPU i co najmniej 2 węzłów jako obiektu docelowego obliczeń. Aby uzyskać więcej informacji, zobacz [dokumentację obliczeń AML](https://docs.microsoft.com/en-us/azure/machine-learning/service/how-to-set-up-training-targets#amlcompute) . Aby uzyskać więcej informacji na temat rozmiarów maszyn wirtualnych, które zawierają procesory GPU, zobacz [rozmiary maszyny wirtualnej zoptymalizowane pod kątem procesora GPU](https://docs.microsoft.com/en-us/azure/virtual-machines/linux/sizes-gpu) .
+
+Aby zapewnić wystarczającą ilość czasu na ukończenie szkolenia DNN, zalecamy ustawienie limitu czasu eksperymentu na co najmniej kilka godzin.
 
 ### <a name="view-feature-engineering-summary"></a>Wyświetlanie podsumowania inżynierów funkcji
 
@@ -194,7 +208,7 @@ predict_labels = fitted_model.predict(test_data)
 actual_labels = test_labels.flatten()
 ```
 
-Alternatywnie można użyć funkcji `forecast()` zamiast `predict()`, która będzie zezwalała na specyfikacje, kiedy przewidywane powinny być uruchamiane. W poniższym przykładzie należy najpierw zastąpić wszystkie wartości w `y_pred` z `NaN`. Podstawą prognozy będzie na końcu danych szkoleniowych w tym przypadku, tak jak zwykle w przypadku korzystania z `predict()`. Jednak jeśli zamienisz tylko drugą połowę `y_pred` z `NaN`, funkcja spowodowałaby pozostawienie wartości liczbowych w pierwszej połowie niemodyfikowanej, ale prognozowanie wartości `NaN` w drugiej połowie. Funkcja zwraca zarówno wartości prognozowane, jak i wyrównane funkcje.
+Alternatywnie można użyć funkcji `forecast()` zamiast `predict()`, która będzie zezwalała na specyfikacje po rozpoczęciu prognoz. W poniższym przykładzie należy najpierw zastąpić wszystkie wartości w `y_pred` z `NaN`. Podstawą prognozy będzie na końcu danych szkoleniowych w tym przypadku, tak jak zwykle w przypadku korzystania z `predict()`. Jednak jeśli zamienisz tylko drugą połowę `y_pred` z `NaN`, funkcja spowodowałaby pozostawienie wartości liczbowych w pierwszej połowie niemodyfikowanej, ale prognozowanie wartości `NaN` w drugiej połowie. Funkcja zwraca zarówno wartości prognozowane, jak i wyrównane funkcje.
 
 Można również użyć parametru `forecast_destination` w funkcji `forecast()` do prognozowania wartości aż do określonej daty.
 

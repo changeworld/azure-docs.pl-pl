@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 09/09/2019
 ms.author: raynew
 ms.custom: MVC
-ms.openlocfilehash: 1b8bdde64ee003d93ad15df8f1d4d8b1e3a2b5f9
-ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
+ms.openlocfilehash: 32aa2c8f4c97f247bfcff5fc82a3f810b8005591
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/09/2019
-ms.locfileid: "70814346"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73488528"
 ---
 # <a name="prepare-azure-resources-for-disaster-recovery-of-on-premises-machines"></a>Przygotowywanie zasobów platformy Azure na potrzeby odzyskiwania po awarii maszyn lokalnych
 
@@ -30,7 +30,7 @@ Ten samouczek zawiera informacje na temat wykonywania następujących czynności
 > * Skonfiguruj sieć wirtualną platformy Azure. Gdy maszyny wirtualne platformy Azure są tworzone po przejściu w tryb failover, są one przyłączone do tej sieci.
 
 > [!NOTE]
-> Samouczki pokazują najprostszą ścieżkę wdrożenia dla scenariusza. Jeśli to możliwe, używają opcji domyślnych i nie przedstawiają wszystkich możliwych ustawień i ścieżek. Aby uzyskać szczegółowe instrukcje, zapoznaj się z artykułem w sekcji jak to zrobić w spisie treści Site Recovery.
+> Samouczki pokazują najprostszą ścieżkę wdrożenia dla scenariusza. Jeśli jest to możliwe, są używane opcje domyślne, i nie są przedstawione wszystkie ustawienia i ścieżki. Aby uzyskać szczegółowe instrukcje, zapoznaj się z artykułem w sekcji jak to zrobić w spisie treści Site Recovery.
 
 ## <a name="before-you-start"></a>Przed rozpoczęciem
 
@@ -49,21 +49,22 @@ Jeśli masz już utworzone bezpłatne konto platformy Azure, jesteś administrat
 - Zapisz na koncie usługi Azure Storage.
 - Zapisz na dysku zarządzanym platformy Azure.
 
-Aby można było wykonać te zadania, do konta musi być przypisana wbudowana rola Współautor maszyny wirtualnej. Ponadto na potrzeby zarządzania operacjami usługi Site Recovery w magazynie do konta powinna być przypisana wbudowana rola Współautor usługi Site Recovery.
+Aby można było wykonać te zadania, do konta musi być przypisana wbudowana rola Współautor maszyny wirtualnej. Ponadto, aby zarządzać operacjami Site Recovery w magazynie, należy przypisać do konta rolę wbudowaną Site Recovery współautor.
 
 
-## <a name="create-a-recovery-services-vault"></a>Tworzenie magazynu usługi Recovery Services
+## <a name="create-a-recovery-services-vault"></a>Tworzenie magazynu Usług odzyskiwania
 
-1. W Azure Portal kliknij pozycję **+ Utwórz zasób**i przeszukaj witrynę Marketplace pod kątem **odzyskiwania**.
-2. Kliknij pozycję **kopia zapasowa i Site Recovery**, a następnie na stronie kopia zapasowa i Site Recovery kliknij przycisk **Utwórz**. 
-1. W obszarze **Magazyn usługi Recovery Services** > **Nazwa** wprowadź przyjazną nazwę identyfikującą magazyn. Na potrzeby tej serii samouczków należy użyć nazwy **ContosoVMVault**.
-2. W obszarze **Grupa zasobów** wybierz istniejącą grupę zasobów lub utwórz nową. Na potrzeby tego samouczka używamy grupy **contosoRG**.
-3. W obszarze **Lokalizacja** wybierz region, w którym ma znajdować się magazyn. Użyj wartości **Europa Zachodnia**.
-4. Aby szybko uzyskać dostęp do magazynu z poziomu pulpitu nawigacyjnego, wybierz pozycję **Przypnij do pulpitu nawigacyjnego** > **Utwórz**.
+1. Z menu Azure Portal wybierz pozycję **Utwórz zasób**, a następnie przeszukaj witrynę Marketplace pod kątem **odzyskiwania**.
+2. Wybierz pozycję **kopia zapasowa i Site Recovery** z wyników wyszukiwania, a następnie na stronie kopia zapasowa i Site Recovery kliknij przycisk **Utwórz**. 
+3. Na stronie **Tworzenie magazynu Recovery Services** wybierz **subskrypcję**. Korzystamy z **subskrypcji firmy Contoso**.
+4. W obszarze **Grupa zasobów** wybierz istniejącą grupę zasobów lub utwórz nową. Na potrzeby tego samouczka używamy grupy **contosoRG**.
+5. W polu **Nazwa magazynu**wprowadź przyjazną nazwę identyfikującą magazyn. Na potrzeby tej serii samouczków należy użyć nazwy **ContosoVMVault**.
+6. W **obszarze region**wybierz region, w którym powinien się znajdować magazyn. Użyj wartości **Europa Zachodnia**.
+7. Wybierz pozycję **Przegląd + utwórz**.
 
    ![Tworzenie nowego magazynu](./media/tutorial-prepare-azure/new-vault-settings.png)
 
-   Nowy magazyn będzie wyświetlany w sekcji **Pulpit nawigacyjny** > **Wszystkie zasoby** oraz na stronie głównej **Magazyny usług Recovery Services**.
+   Nowy magazyn będzie teraz widoczny na **pulpicie nawigacyjnym** > **wszystkie zasoby**i na stronie **magazyny główne Recovery Services** .
 
 ## <a name="set-up-an-azure-network"></a>Konfiguracja sieci platformy Azure
 
@@ -72,16 +73,17 @@ Maszyny lokalne są replikowane do usługi Azure Managed Disks. W przypadku prze
 1. W witrynie [Azure Portal](https://portal.azure.com) wybierz pozycję **Utwórz zasób** > **Sieć** > **Sieć wirtualna**.
 2. Zachowaj **Menedżer zasobów** wybrane jako model wdrażania.
 3. W obszarze **Nazwa** wprowadź nazwę sieci. Nazwa musi być unikatowa w obrębie grupy zasobów platformy Azure. W tym samouczku użyto nazwy **ContosoASRnet**.
-4. Podaj grupę zasobów, w której zostanie utworzona sieć. Należy użyć istniejącej grupy zasobów **contosoRG**.
-5. W obszarze **zakres adresów**Wprowadź zakres sieci. Korzystamy z **10.1.0.0/24**, a nie do korzystania z podsieci.
-6. W obszarze **Subskrypcja** wybierz subskrypcję, w ramach której chcesz utworzyć sieć.
+4. W **obszarze przestrzeń adresowa**Wprowadź zakres adresów sieci wirtualnej w notacji CDR. Korzystamy z **10.1.0.0/24**.
+5. W obszarze **Subskrypcja** wybierz subskrypcję, w ramach której chcesz utworzyć sieć.
+6. Określ **grupę zasobów** , w której zostanie utworzona sieć. Należy użyć istniejącej grupy zasobów **contosoRG**.
 7. W obszarze **Lokalizacja**wybierz ten sam region, w którym został utworzony magazyn Recovery Services. W naszym samouczku jest **Europa Zachodnia**. Sieć musi znajdować się w tym samym regionie co magazyn.
-8. Należy pozostawić opcje domyślne podstawowej ochrony DDoS bez punktu końcowego usługi w sieci.
-9. Kliknij przycisk **Utwórz**.
+8. W obszarze **zakres adresów**Wprowadź zakres sieci. Korzystamy z **10.1.0.0/24**, a nie do korzystania z podsieci.
+9. Opuszczamy domyślne opcje podstawowej ochrony DDoS, bez punktu końcowego usługi ani zapory w sieci.
+9. Wybierz pozycję **Utwórz**.
 
    ![Tworzenie sieci wirtualnej](media/tutorial-prepare-azure/create-network.png)
 
-Utworzenie sieci wirtualnej zajmuje kilka sekund. Po utworzeniu sieć jest wyświetlana na pulpicie nawigacyjnym witryny Azure Portal.
+Utworzenie sieci wirtualnej zajmuje kilka sekund. Po jego utworzeniu zobaczysz go na pulpicie nawigacyjnym Azure Portal.
 
 
 

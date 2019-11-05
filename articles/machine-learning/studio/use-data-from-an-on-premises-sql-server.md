@@ -1,7 +1,7 @@
 ---
-title: Na lokalnym serwerze SQL Server
-titleSuffix: Azure Machine Learning Studio
-description: Użyj danych z lokalnej bazy danych programu SQL Server, przeprowadzanie zaawansowanych analiz za pomocą usługi Azure Machine Learning Studio.
+title: SQL Server lokalne
+titleSuffix: Azure Machine Learning Studio (classic)
+description: Użyj danych z lokalnej bazy danych SQL Server, aby przeprowadzić zaawansowaną analizę przy użyciu klasycznej wersji Azure Machine Learning Studio.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: studio
@@ -10,21 +10,21 @@ author: xiaoharper
 ms.author: amlstudiodocs
 ms.custom: seodec18
 ms.date: 03/13/2017
-ms.openlocfilehash: 9590728cec663b36c889dc26a6216c3d474244e4
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 78b50ac5f0c39a38815b01ab7510d17eda941425
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60735467"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73492540"
 ---
-# <a name="perform-analytics-with-azure-machine-learning-studio-using-an-on-premises-sql-server-database"></a>Przeprowadzanie analiz przy użyciu usługi Azure Machine Learning Studio korzystania z bazy danych programu SQL Server w środowisku lokalnym
+# <a name="perform-analytics-with-azure-machine-learning-studio-classic-using-an-on-premises-sql-server-database"></a>Wykonywanie analizy z Azure Machine Learning Studio (klasyczny) przy użyciu lokalnej bazy danych SQL Server
 
-Często w przypadku przedsiębiorstw, które działają z danymi lokalnymi chce wykorzystują skali i elastyczności chmury w celu ich usługi machine learning obciążeń. Ale nie chcesz przerwać bieżącego procesów biznesowych i przepływów pracy przez przeniesienie ich danych lokalnych do chmury. Usługa Azure Machine Learning Studio obsługuje teraz odczytywanie danych z bazy danych programu SQL Server w środowisku lokalnym i następnie szkolenia i oceniania modelu przy użyciu tych danych. Nie masz już ręcznie skopiować i synchronizowanie danych między chmurą a serwerem w środowisku lokalnym. Zamiast tego **importu danych** modułu w usłudze Azure Machine Learning Studio może teraz odczytywać bezpośrednio z lokalną bazą danych programu SQL Server do szkolenia i oceniania zadania.
+Często przedsiębiorstwa, które współpracują z danymi lokalnymi, mogą wykorzystać skalę i elastyczność chmury na potrzeby obciążeń uczenia maszynowego. Ale nie chcą zakłócać swoich bieżących procesów i przepływów pracy, przenosząc dane lokalne do chmury. Azure Machine Learning Studio (klasyczny) obsługuje teraz odczytywanie danych z lokalnej SQL Server bazy danych, a następnie uczenie i ocenianie modelu przy użyciu tych danych. Nie jest już konieczne ręczne kopiowanie i synchronizowanie danych między chmurą a serwerem lokalnym. Zamiast tego moduł **Importuj dane** w klasycznej wersji Azure Machine Learning Studio może teraz zostać odczytany bezpośrednio z lokalnej bazy danych SQL Server do zadań szkolenia i oceniania.
 
-Ten artykuł zawiera omówienie sposobu transferu danych przychodzących lokalnych danych programu SQL server do usługi Azure Machine Learning Studio. Przyjęto założenie, że znasz Studio koncepcje, takie jak obszary robocze, moduły, zestawy danych, eksperymenty *itp.* .
+Ten artykuł zawiera omówienie sposobu transferowania lokalnych danych programu SQL Server do klasycznej wersji Azure Machine Learning Studio. Przyjęto założenie, że znasz klasycznej wersji programu Studio, takich jak obszary robocze, moduły, zestawy danych, eksperymenty *itp.*
 
 > [!NOTE]
-> Ta funkcja nie jest dostępna dla bezpłatnych obszarów roboczych. Aby uzyskać więcej informacji na temat cen usługi Machine Learning i warstwy, zobacz [Azure Machine Learning — cennik](https://azure.microsoft.com/pricing/details/machine-learning/).
+> Ta funkcja jest niedostępna w przypadku bezpłatnych obszarów roboczych. Aby uzyskać więcej informacji o Machine Learning cenach i warstwach, zobacz [Azure Machine Learning cennika](https://azure.microsoft.com/pricing/details/machine-learning/).
 >
 >
 
@@ -32,116 +32,116 @@ Ten artykuł zawiera omówienie sposobu transferu danych przychodzących lokalny
 
 
 
-## <a name="install-the-data-factory-self-hosted-integration-runtime"></a>Zainstaluj Self-Hosted Integration Runtime usługi Data Factory
-Aby uzyskać dostęp do bazy danych lokalnego programu SQL Server w usłudze Azure Machine Learning Studio, musisz pobrać i zainstalować z produktem Integration Runtime usługi Data Factory, znana wcześniej jako brama zarządzania danymi. Po skonfigurowaniu połączenia w usłudze Machine Learning Studio, masz możliwość pobrania i zainstalowania Integration Runtime (IR), za pomocą **pobierania i bramy danych rejestru** okna dialogowego opisanego poniżej.
+## <a name="install-the-data-factory-self-hosted-integration-runtime"></a>Instalowanie Data Factory samoobsługowego Integration Runtime
+Aby uzyskać dostęp do lokalnej bazy danych SQL Server w klasycznej wersji Azure Machine Learning Studio, należy pobrać i zainstalować Data Factory samodzielnej Integration Runtime, wcześniej znanej jako brama Zarządzanie danymi. Po skonfigurowaniu połączenia w Machine Learning Studio (klasyczny) można pobrać i zainstalować Integration Runtime (IR) przy użyciu okna dialogowego **Pobierz i zarejestruj bramę danych** opisaną poniżej.
 
 
-Można też zainstalować środowisko IR wcześniej, pobierając i uruchamiając pakiet Instalatora MSI z [Microsoft Download Center](https://www.microsoft.com/download/details.aspx?id=39717). Plik MSI może służyć także do uaktualnienia istniejącego środowiska IR do najnowszej wersji przy użyciu wszystkich ustawień zachowane.
+Możesz również zainstalować środowisko IR wcześniej, pobierając i uruchamiając pakiet instalacyjny MSI z [Centrum pobierania Microsoft](https://www.microsoft.com/download/details.aspx?id=39717). Plik MSI może również służyć do uaktualniania istniejącego środowiska IR do najnowszej wersji z zachowaniem wszystkich ustawień.
 
-Data Factory środowiskiem Integration Runtime ma następujące wymagania wstępne:
+W Data Factory samoobsługowe Integration Runtime są spełnione następujące wymagania wstępne:
 
-* Integracja własne fabryki danych wymaga 64-bitowego systemu operacyjnego za pomocą programu .NET Framework 4.6.1 lub nowszej.
-* Obsługiwane wersje systemu operacyjnego Windows są systemu Windows 10, Windows Server 2012, Windows Server 2012 R2, Windows Server 2016. 
-* Zalecana konfiguracja maszyny IR jest co najmniej 2 GHz, 4 rdzenie Procesora, 8GB pamięci RAM i 80GB dysku.
-* Jeśli komputer hosta przechodzi w stan hibernacji, środowisko IR nie będzie odpowiadać na żądania danych. W związku z tym skonfigurować plan zasilania odpowiednich na komputerze przed zainstalowaniem IR. Jeśli komputer jest skonfigurowany do hibernacji, instalacja środowiska IR wyświetla komunikat.
-* Ponieważ działania kopiowania odbywa się na określonej częstotliwości, użycie zasobów (procesor CPU, pamięci) na maszynie również zgodna z szczytowe i czasach bezczynności tego samego wzorca. Wykorzystanie zasobów zależy również od intensywnie ilości danych przenoszonych. W przypadku wielu zadań kopiowania w toku, zauważysz użycia zasobów wzrosną godzinami szczytu. W trakcie z technicznego punktu widzenia wystarczające minimalnej konfiguracji wymienionych powyżej można mieć konfigurację więcej zasobów niż minimalna konfiguracja, w zależności od określonego obciążenia w przypadku przenoszenia danych.
+* Data Factory integracja samodzielna wymaga 64-bitowego systemu operacyjnego z .NET Framework 4.6.1 lub nowszym.
+* Obsługiwane wersje systemu operacyjnego Windows to Windows 10, Windows Server 2012, Windows Server 2012 R2, Windows Server 2016. 
+* Zalecaną konfiguracją maszyny IR jest co najmniej 2 GHz, 4-rdzeniowy procesor CPU, 8 GB pamięci RAM i dysk 80 GB.
+* Jeśli maszyna hosta przechodzi w stan hibernacji, środowisko IR nie będzie odpowiadać na żądania danych. W związku z tym należy skonfigurować odpowiedni plan zasilany na komputerze przed zainstalowaniem środowiska IR. Jeśli komputer jest skonfigurowany do hibernacji, w instalacji programu IR zostanie wyświetlony komunikat.
+* Ponieważ działanie kopiowania występuje z określoną częstotliwością, użycie zasobów (procesor, pamięć) na maszynie również jest zgodne z tym samym wzorcem i okresem bezczynności. Użycie zasobów również jest zależne od ilości przenoszonych danych. Gdy trwa wykonywanie wielu zadań kopiowania, zaobserwuj użycie zasobów w godzinach szczytu. Mimo że minimalna konfiguracja określona powyżej jest technicznie wystarczająca, może być konieczne zdefiniowanie większej ilości zasobów niż konfiguracja minimalna w zależności od obciążenia danych.
 
-Rozważ następujące opcje podczas konfigurowania i używania danych fabryki własne środowisko IR:
+Podczas konfigurowania i używania Data Factory samoobsługowego Integration Runtime należy wziąć pod uwagę następujące kwestie:
 
-* Można zainstalować tylko jedno wystąpienie środowiska IR na pojedynczym komputerze.
-* Za pomocą jednego środowiska IR do wielu źródeł danych w środowisku lokalnym.
-* Do tego samego źródła danych w środowisku lokalnym, możesz połączyć wiele środowisk IR na różnych komputerach.
-* Możesz skonfigurować IRs dla tylko jednego obszaru roboczego w danym momencie. Obecnie IRs nie można udostępnić w obszarach roboczych.
-* Można skonfigurować wiele IRs dla jednego obszaru roboczego. Na przykład można użyć środowiska IR, który jest połączony ze źródłami danych testowych podczas rozwoju i produkcji IR, gdy wszystko będzie gotowe do obsługi operacji.
-* Środowisko IR nie musi znajdować się na tym samym komputerze co źródło danych. Jednak dokonywanie aktualizacji na bliżej źródła danych skraca czas dla bramy do połączenia ze źródłem danych. Firma Microsoft zaleca instalowanie środowiska IR na komputerze, który jest inny niż ten, który jest hostem lokalnym źródłem danych, aby bramy i źródła danych nie konkurują o zasoby.
-* Jeśli masz już środowisko IR zainstalowana na danym komputerze obsługująca scenariusze usługi Power BI lub usługi Azure Data Factory, należy zainstalować oddzielne środowiska IR Azure Machine Learning Studio na innym komputerze.
+* Na jednym komputerze można zainstalować tylko jedno wystąpienie środowiska IR.
+* Możesz użyć jednego środowiska IR dla wielu lokalnych źródeł danych.
+* Można połączyć wiele urzędów skarbowych na różnych komputerach z tym samym lokalnym źródłem danych.
+* Urząd Skarbowy można skonfigurować tylko dla jednego obszaru roboczego. Obecnie urząd skarbowy nie może być współużytkowany przez obszary robocze.
+* Można skonfigurować wiele urzędów skarbowych dla jednego obszaru roboczego. Na przykład możesz chcieć użyć podczerwieni połączonej ze źródłami danych testowych podczas opracowywania i produkcyjnego środowiska IR, gdy wszystko jest gotowe do operacjonalizować.
+* Środowisko IR nie musi znajdować się na tym samym komputerze co źródło danych. Jednak bliżej źródła danych skraca czas, w którym Brama może połączyć się ze źródłem danych. Zalecamy zainstalowanie środowiska IR na komputerze innym niż ten, który obsługuje lokalne źródło danych, aby brama i źródło danych nie konkurują o zasoby.
+* Jeśli na komputerze zainstalowano już środowisko IR obsługujące Power BI lub Azure Data Factory scenariusze, zainstaluj oddzielne środowisko IR dla klasycznej wersji Azure Machine Learning Studio na innym komputerze.
 
   > [!NOTE]
-  > Nie można uruchomić produktu Integration Runtime usługi Data Factory i Power BI Gateway, w tym samym komputerze.
+  > Nie można uruchomić Data Factory samoobsługowego Integration Runtime i Power BI Gateway na tym samym komputerze.
   >
   >
-* Należy użyć Data Factory własne środowisko IR Azure Machine Learning Studio, nawet wtedy, gdy używasz usługi Azure ExpressRoute dla innych danych. Źródło danych należy traktować jako źródło danych w środowisku lokalnym, (która znajduje się za zaporą) nawet gdy korzystasz z usługi ExpressRoute. Data Factory własne środowisko IR umożliwia nawiązanie łączności między uczenia maszynowego i źródła danych.
+* Musisz użyć Data Factory samoobsługowego Integration Runtime dla klasycznej wersji Azure Machine Learning Studio, nawet jeśli używasz platformy Azure ExpressRoute do innych danych. Źródło danych powinno być traktowane jako lokalne źródło danych (znajdujące się za zaporą), nawet w przypadku korzystania z ExpressRoute. Użyj Data Factory samoobsługowego Integration Runtime do ustanowienia łączności między Machine Learning a źródłem danych.
 
-Szczegółowe informacje dotyczące wymagań wstępnych instalacji, kroków instalacji i wskazówki dotyczące rozwiązywania problemów można znaleźć w artykule [środowiska Integration Runtime w usłudze Data Factory](../../data-factory/concepts-integration-runtime.md).
+Szczegółowe informacje na temat wymagań wstępnych instalacji, kroki instalacji i wskazówki dotyczące rozwiązywania problemów znajdują się w artykule [Integration Runtime w Data Factory](../../data-factory/concepts-integration-runtime.md).
 
-## <a name="span-idusing-the-data-gateway-step-by-step-walk-classanchorspan-idtoc450838866-classanchorspanspaningress-data-from-your-on-premises-sql-server-database-into-azure-machine-learning"></a><span id="using-the-data-gateway-step-by-step-walk" class="anchor"><span id="_Toc450838866" class="anchor"></span></span>Danych przychodzących z lokalnej bazy danych programu SQL Server do usługi Azure Machine Learning
-W tym przewodniku zostanie Konfigurowanie Integration Runtime usługi Azure Data Factory w obszarze roboczym usługi Azure Machine Learning, skonfigurować go i następnie odczytywać dane z lokalnej bazy danych programu SQL Server.
+## <a name="span-idusing-the-data-gateway-step-by-step-walk-classanchorspan-id_toc450838866-classanchorspanspaningress-data-from-your-on-premises-sql-server-database-into-azure-machine-learning"></a><span id="using-the-data-gateway-step-by-step-walk" class="anchor"><span id="_Toc450838866" class="anchor"></span></span>Dane przychodzące z lokalnej bazy danych SQL Server do Azure Machine Learning
+W tym instruktażu skonfigurujesz Integration Runtime Azure Data Factory w obszarze roboczym Azure Machine Learning, skonfigurujesz ją, a następnie odczytasz dane z lokalnej bazy danych SQL Server.
 
 > [!TIP]
-> Przed rozpoczęciem należy wyłączyć blokowanie wyskakujących okienek w przeglądarce dla `studio.azureml.net`. Jeśli używasz przeglądarki Google Chrome, Pobierz i zainstaluj jedną z kilku dostępnych wtyczek w sklepie WebStore programu Google Chrome [kliknij raz rozszerzenia aplikacji](https://chrome.google.com/webstore/search/clickonce?_category=extensions).
+> Przed rozpoczęciem należy wyłączyć blokowanie wyskakujących okienek w przeglądarce dla `studio.azureml.net`. Jeśli używasz przeglądarki Google Chrome, Pobierz i Zainstaluj jedną z kilku wtyczek dostępnych w sklepie Google Chrome webstore [kliknij pozycję po rozszerzeniu aplikacji](https://chrome.google.com/webstore/search/clickonce?_category=extensions).
 >
 > [!NOTE]
-> Usługa Azure Data Factory własne środowisko IR była wcześniej znana jako brama zarządzania danymi. Samouczek krok po kroku będą nadal odwoływać się do niego jako brama.  
+> Azure Data Factory samoobsługowy Integration Runtime był wcześniej znany jako brama Zarządzanie danymi. Samouczek krok po kroku będzie nadal odwoływać się do niego jako brama.  
 
-### <a name="step-1-create-a-gateway"></a>Krok 1: Tworzenie bramy
-Pierwszym krokiem jest do tworzenia i konfigurowania bramy, dostęp do bazy danych SQL w środowisku lokalnym.
+### <a name="step-1-create-a-gateway"></a>Krok 1. Tworzenie bramy
+Pierwszym krokiem jest utworzenie i skonfigurowanie bramy w celu uzyskania dostępu do lokalnej bazy danych SQL.
 
-1. Zaloguj się do [Azure Machine Learning Studio](https://studio.azureml.net/Home/) i wybierz obszar roboczy, który chcesz pracować w.
-2. Kliknij przycisk **ustawienia** blok po lewej stronie, a następnie kliknij przycisk **bram DATA GATEWAYS** kartę u góry.
-3. Kliknij przycisk **nowej bramy DATA GATEWAY** w dolnej części ekranu.
+1. Zaloguj się do [Azure Machine Learning Studio (klasyczny)](https://studio.azureml.net/Home/) i wybierz obszar roboczy, w którym chcesz korzystać.
+2. Kliknij blok **Ustawienia** po lewej stronie, a następnie kliknij kartę **bramy danych** w górnej części ekranu.
+3. Kliknij pozycję **Nowa brama danych** w dolnej części ekranu.
 
     ![Nowa brama danych](./media/use-data-from-an-on-premises-sql-server/new-data-gateway-button.png)
-4. W **nowej bramy data gateway** okno dialogowe, wprowadź **nazwę bramy** i opcjonalnie Dodaj **opis**. Kliknij strzałkę w prawym dolnym rogu, aby przejść do następnego kroku konfiguracji.
+4. W oknie dialogowym **Nowa brama danych** wprowadź **nazwę bramy** i opcjonalnie Dodaj **Opis**. Kliknij strzałkę w prawym dolnym rogu, aby przejść do następnego kroku konfiguracji.
 
-    ![Wprowadź nazwę bramy i opis](./media/use-data-from-an-on-premises-sql-server/new-data-gateway-dialog-enter-name.png)
-5. W oknie Pobieranie i rejestrowanie danych bramy dialogowym klucz rejestracji bramy należy skopiować do Schowka.
+    ![Wprowadź nazwę i opis bramy](./media/use-data-from-an-on-premises-sql-server/new-data-gateway-dialog-enter-name.png)
+5. W oknie dialogowym Pobieranie i rejestrowanie bramy danych skopiuj klucz rejestracji bramy do Schowka.
 
-    ![Pobierz i zarejestruj bramę danych](./media/use-data-from-an-on-premises-sql-server/download-and-register-data-gateway.png)
-6. <span id="note-1" class="anchor"></span>Jeśli jeszcze nie zostały pobrane i zainstalowane brama zarządzania danymi firmy Microsoft, kliknij przycisk **bramy zarządzania danymi pobierania**. Spowoduje to przejście do witryny Microsoft Download Center, gdzie można wybrać wersję bramy, czego potrzebujesz, pobierz go i zainstaluj go. Szczegółowe informacje dotyczące wymagań wstępnych instalacji, kroków instalacji i wskazówki dotyczące rozwiązywania problemów można znaleźć w sekcjach początku tego artykułu [przenoszenie danych między źródłami lokalnymi i chmurą przy użyciu bramy zarządzania danymi](../../data-factory/tutorial-hybrid-copy-portal.md) .
-7. Po zainstalowaniu bramy spowoduje otwarcie Menedżera konfiguracji bramy zarządzania danych i **bramy rejestru** zostanie wyświetlone okno dialogowe. Wklej **klucz rejestracji bramy** skopiowane do Schowka i kliknij przycisk **zarejestrować**.
-8. Jeśli masz już zainstalowanej bramy, uruchom Menedżera konfiguracji bramy zarządzania danych. Kliknij przycisk **Zmień klucz**, Wklej **klucz rejestracji bramy** skopiowano do Schowka w poprzednim kroku i kliknij **OK**.
-9. Po zakończeniu instalacji, **bramy rejestru** zostanie wyświetlone okno dialogowe dla firmy Microsoft danych Menedżera konfiguracji bramy zarządzania. Wklej klucz rejestracji bramy, który został skopiowany do Schowka w poprzednim kroku, a następnie kliknij przycisk **zarejestrować**.
+    ![Pobieranie i rejestrowanie bramy danych](./media/use-data-from-an-on-premises-sql-server/download-and-register-data-gateway.png)
+6. <span id="note-1" class="anchor"></span>Jeśli nie pobrano jeszcze i nie zainstalowano bramy Zarządzanie danymi firmy Microsoft, kliknij pozycję **Pobierz bramę zarządzania danymi**. Spowoduje to przejście do centrum pobierania Microsoft, w którym można wybrać wymaganą wersję bramy, pobrać ją i zainstalować. Aby uzyskać szczegółowe informacje na temat wymagań wstępnych instalacji, czynności instalacyjnych i wskazówek dotyczących rozwiązywania problemów, należy [przenieść dane między źródłami lokalnymi i chmurą przy użyciu bramy zarządzanie danymi](../../data-factory/tutorial-hybrid-copy-portal.md).
+7. Po zainstalowaniu bramy zostanie otwarta Zarządzanie danymi Configuration Manager Gateway i zostanie wyświetlone okno dialogowe **Rejestrowanie bramy** . Wklej **klucz rejestracji bramy** skopiowany do schowka, a następnie kliknij pozycję **zarejestruj**.
+8. Jeśli masz już zainstalowaną bramę, uruchom Configuration Manager Zarządzanie danymi bramy. Kliknij przycisk **Zmień klucz**, wklej **klucz rejestracji bramy** skopiowany do Schowka w poprzednim kroku, a następnie kliknij przycisk **OK**.
+9. Po zakończeniu instalacji zostanie wyświetlone okno dialogowe **Rejestrowanie bramy** dla programu Microsoft Zarządzanie danymi Gateway Configuration Manager. Wklej klucz rejestracji bramy skopiowany do Schowka w poprzednim kroku, a następnie kliknij pozycję **zarejestruj**.
 
     ![Rejestrowanie bramy](./media/use-data-from-an-on-premises-sql-server/data-gateway-configuration-manager-register-gateway.png)
-10. Konfiguracja bramy jest ukończona, gdy następujące wartości są ustawione na **Home** kartę w Microsoft danych Menedżera konfiguracji bramy zarządzania:
+10. Konfiguracja bramy została ukończona, gdy na karcie **Narzędzia główne** w usłudze Microsoft Zarządzanie danymi Gateway Configuration Manager zostanie ustawiona następująca wartość:
 
-    * **Nazwa bramy** i **nazwa wystąpienia** są ustawione na nazwę bramy.
-    * **Rejestracja** ustawiono **zarejestrowanej**.
-    * **Stan** ustawiono **uruchomiono**.
-    * Pasek stanu u Wyświetla dolnej **połączyć usługę Cloud bramy zarządzania danymi** wraz z zielonym znacznikiem wyboru.
+    * Nazwa **bramy** i **Nazwa wystąpienia** są ustawione na nazwę bramy.
+    * **Rejestracja** jest ustawiona na **zarejestrowane**.
+    * **Stan** jest ustawiony na wartość **uruchomiony**.
+    * Na dolnej stronie pojawi się pasek stanu **połączony z usługą Zarządzanie danymi Gateway w chmurze** oraz zielony znacznik wyboru.
 
-      ![Menedżer bramy zarządzania danych](./media/use-data-from-an-on-premises-sql-server/data-gateway-configuration-manager-registered.png)
+      ![Zarządzanie danymi Menedżera bramy](./media/use-data-from-an-on-premises-sql-server/data-gateway-configuration-manager-registered.png)
 
-      Usługa Azure Machine Learning Studio również jest aktualizowany po pomyślnej rejestracji.
+      W przypadku pomyślnego zarejestrowania zostanie również zaktualizowana klasyczna wersja Azure Machine Learning Studio.
 
-    ![Rejestracja bramy zakończona powodzeniem](./media/use-data-from-an-on-premises-sql-server/gateway-registered.png)
-11. W **Pobierz i zarejestruj bramę danych** okno dialogowe, kliknij znacznik wyboru, aby ukończyć instalację. **Ustawienia** strony wyświetli stan bramy jako "Online". W okienku po prawej stronie znajdziesz, stan i inne przydatne informacje.
+    ![Rejestracja bramy powiodła się](./media/use-data-from-an-on-premises-sql-server/gateway-registered.png)
+11. W oknie dialogowym **Pobierz i zarejestruj bramę danych** kliknij znacznik wyboru, aby zakończyć instalację. Na stronie **Ustawienia** zostanie wyświetlony stan bramy "online". W okienku po prawej stronie znajdziesz informacje o stanie i innych użytecznych informacjach.
 
     ![Ustawienia bramy](./media/use-data-from-an-on-premises-sql-server/gateway-status.png)
-12. W programie Microsoft danych zarządzania Gateway Configuration Manager przejdź do **certyfikatu** kartę. Certyfikat określony na tej karcie jest używana do szyfrowania/odszyfrowywania poświadczeń dla magazynu danych w środowisku lokalnym, który określisz w portalu. Ten certyfikat jest certyfikatem domyślne. Firma Microsoft zaleca zmianę to na tworzenie kopii zapasowej w systemie zarządzania certyfikatów własny certyfikat. Kliknij przycisk **zmiany** zamiast tego użyć własnego certyfikatu.
+12. W Configuration Manager Microsoft Zarządzanie danymi Gateway przejdź do karty **certyfikat** . Certyfikat określony na tej karcie jest używany do szyfrowania/odszyfrowywania poświadczeń dla lokalnego magazynu danych określonego w portalu. Ten certyfikat jest certyfikatem domyślnym. Firma Microsoft zaleca zmianę tego certyfikatu na własny certyfikat, którego kopię zapasową można utworzyć w systemie zarządzania certyfikatami. Kliknij przycisk **Zmień** , aby zamiast tego użyć własnego certyfikatu.
 
-    ![Certyfikat bramy zmiany](./media/use-data-from-an-on-premises-sql-server/data-gateway-configuration-manager-certificate.png)
-13. (opcjonalnie) Jeśli chcesz włączyć pełne rejestrowanie w celu rozwiązania zgłoszonego problemach dotyczących bramy w programie Microsoft Data Menedżera konfiguracji bramy zarządzania Przełącz się do **diagnostyki** i sprawdź **włączyć pełne rejestrowanie na potrzeby rozwiązywania problemów** opcji. Rejestrowanie informacji można znaleźć w Podglądzie zdarzeń Windows w obszarze **Dzienniki aplikacji i usług**  - &gt; **bramy zarządzania danymi** węzła. Można również użyć **diagnostyki** kartę, aby przetestować połączenie z lokalnym źródłem danych za pomocą bramy.
+    ![Zmień certyfikat bramy](./media/use-data-from-an-on-premises-sql-server/data-gateway-configuration-manager-certificate.png)
+13. obowiązkowe Jeśli chcesz włączyć pełne rejestrowanie, aby rozwiązać problemy z bramą, w bramie Microsoft Zarządzanie danymi Gateway Configuration Manager Przełącz się na kartę **Diagnostyka** i zaznacz pole wyboru **Włącz pełne rejestrowanie w celu rozwiązywania problemów** opcja. Informacje dotyczące rejestrowania znajdują się w Podgląd zdarzeń systemu Windows w obszarze **Dzienniki aplikacji i usług** -&gt; **Zarządzanie danymi bramy** . Możesz również użyć karty **Diagnostyka** , aby przetestować połączenie z lokalnym źródłem danych przy użyciu bramy.
 
     ![Włącz pełne rejestrowanie](./media/use-data-from-an-on-premises-sql-server/data-gateway-configuration-manager-verbose-logging.png)
 
-Na tym kończy proces instalacji bramy w usłudze Azure Machine Learning Studio.
-Teraz możesz użyć danych w środowisku lokalnym.
+Spowoduje to zakończenie procesu instalacji bramy w klasycznej wersji programu Azure Machine Learning Studio.
+Teraz możesz przystąpić do korzystania z danych lokalnych.
 
-Można utworzyć i skonfigurować wiele bram w programie Studio dla każdego obszaru roboczego. Na przykład masz bramy, który chcesz połączyć ze źródłami danych testowych podczas tworzenia i inną bramę dla źródła danych produkcyjnych. Usługa Azure Machine Learning Studio zapewnia elastyczność, aby skonfigurować wiele bram zależności w środowisku firmowym. Obecnie nie można udostępniać bramy między obszarami roboczymi i na jednym komputerze można zainstalować tylko jedną bramę. Aby uzyskać więcej informacji, zobacz [przenoszenie danych między źródłami lokalnymi i chmurą przy użyciu bramy zarządzania danymi](../../data-factory/tutorial-hybrid-copy-portal.md).
+Można utworzyć i skonfigurować wiele bram w programie Studio (klasyczny) dla każdego obszaru roboczego. Na przykład możesz mieć bramę, którą chcesz połączyć ze źródłami danych testowych podczas opracowywania, i inną bramą dla produkcyjnych źródeł danych. Klasyczna wersja Azure Machine Learning Studio zapewnia elastyczność konfigurowania wielu bram w zależności od środowiska firmowego. Obecnie nie można udostępnić bramy między obszarami roboczymi, a na jednym komputerze można zainstalować tylko jedną bramę. Aby uzyskać więcej informacji, zobacz [przenoszenie danych między źródłami lokalnymi i chmurą przy użyciu bramy zarządzanie danymi](../../data-factory/tutorial-hybrid-copy-portal.md).
 
-### <a name="step-2-use-the-gateway-to-read-data-from-an-on-premises-data-source"></a>Krok 2: Odczytywanie danych z lokalnego źródła danych za pomocą bramy
-Po skonfigurowaniu bramy można dodać **importu danych** modułów na eksperyment, który danych wejściowych w dane z lokalnej bazy danych programu SQL Server.
+### <a name="step-2-use-the-gateway-to-read-data-from-an-on-premises-data-source"></a>Krok 2. Używanie bramy do odczytywania danych z lokalnego źródła danych
+Po skonfigurowaniu bramy można dodać do eksperymentu moduł **danych importu** , który wprowadza dane z lokalnej bazy danych SQL Server.
 
-1. W usłudze Machine Learning Studio, wybierz **EKSPERYMENTÓW** kliknij pozycję **+ nowy** w lewym dolnym rogu i wybierz **pusty eksperyment** (lub wybierz jedną z kilku przykładowych eksperymenty dostępne).
-2. Znajdowanie i przeciąganie **importu danych** modułu do obszaru roboczego eksperymentu.
-3. Kliknij przycisk **Zapisz jako** poniżej obszaru roboczego. Wprowadź "Azure Studio On-Premises SQL Server samouczek dotyczący uczenia maszynowego" Nazwa eksperymentu, wybierz obszar roboczy, a następnie kliknij przycisk **OK** znacznik wyboru.
+1. W Machine Learning Studio (klasyczny) wybierz kartę **eksperymenty** , kliknij pozycję **+ Nowy** w lewym dolnym rogu, a następnie wybierz pozycję **pusty eksperyment** (lub wybierz jedną z kilku dostępnych przykładowych eksperymentów).
+2. Znajdź i przeciągnij moduł **Import danych** do kanwy eksperymentu.
+3. Kliknij przycisk **Zapisz jako** poniżej kanwy. W polu Nazwa eksperymentu wpisz "Azure Machine Learning Studio (klasyczny) SQL Server, wybierz obszar roboczy, a następnie kliknij znacznik wyboru **OK** .
 
-   ![Zapisz eksperymentu z nową nazwą](./media/use-data-from-an-on-premises-sql-server/experiment-save-as.png)
-4. Kliknij przycisk **importu danych** modułu, aby ją zaznaczyć, następnie w **właściwości** w okienku po prawej stronie kanwy, wybierz opcję "On-Premises SQL Database" w **źródła danych** listy rozwijanej.
-5. Wybierz **bramy Data gateway** zainstalowany i zarejestrowany. Możesz skonfigurować inną bramę, wybierając pozycję "(Dodaj nową bramę danych...)".
+   ![Zapisz eksperyment z nową nazwą](./media/use-data-from-an-on-premises-sql-server/experiment-save-as.png)
+4. Kliknij moduł **Importuj dane** , aby go zaznaczyć, a następnie w okienku **Właściwości** z prawej strony kanwy wybierz pozycję "SQL Database lokalne" na liście rozwijanej **źródła danych** .
+5. Wybierz zainstalowaną i zarejestrowaną **bramę danych** . Można skonfigurować inną bramę, wybierając pozycję "(Dodaj nową bramę danych)".
 
-   ![Wybierz bramy danych dla modułu importu danych](./media/use-data-from-an-on-premises-sql-server/import-data-select-on-premises-data-source.png)
-6. Wprowadź SQL **nazwy serwera bazy danych** i **Nazwa bazy danych**, wraz z SQL **zapytanie bazy danych** chcesz wykonać.
-7. Kliknij przycisk **wprowadź wartości** w obszarze **nazwy użytkownika i hasła** i wprowadź swoje poświadczenia bazy danych. Można użyć zintegrowanego uwierzytelniania Windows lub uwierzytelniania programu SQL Server, w zależności od sposobu skonfigurowania na lokalnym serwerze SQL Server.
+   ![Wybieranie bramy danych dla modułu importowania danych](./media/use-data-from-an-on-premises-sql-server/import-data-select-on-premises-data-source.png)
+6. Wprowadź **nazwę serwera bazy danych** SQL i **nazwę bazy danych**wraz z **kwerendą bazy danych** SQL, która ma zostać wykonana.
+7. Kliknij pozycję **wprowadź wartości** w obszarze **Nazwa użytkownika i hasło** , a następnie wprowadź swoje poświadczenia bazy danych. W zależności od konfiguracji lokalnego SQL Server, można użyć uwierzytelniania zintegrowanego systemu Windows lub uwierzytelniania SQL Server.
 
    ![Wprowadź poświadczenia bazy danych](./media/use-data-from-an-on-premises-sql-server/database-credentials.png)
 
-   Komunikat "wymagane wartości" zmiany "zestaw wartości" z zielonym znacznikiem wyboru. Wystarczy raz wprowadź poświadczenia, chyba że zmiany informacji o bazie danych lub hasła. Usługa Azure Machine Learning Studio, używa certyfikatu, podane podczas instalacji bramy do szyfrowania poświadczeń w chmurze. Azure nigdy nie przechowuje poświadczeń lokalnych bez szyfrowania.
+   Komunikat "wymagane wartości" zmienia się na "ustawione wartości" z zielonym znacznikiem wyboru. Wystarczy wprowadzić poświadczenia tylko raz, chyba że zmienią się informacje lub hasło bazy danych. Klasyczna wersja Azure Machine Learning Studio używa certyfikatu podanego podczas instalacji bramy w celu szyfrowania poświadczeń w chmurze. Na platformie Azure nigdy nie są przechowywane poświadczenia lokalne bez szyfrowania.
 
-   ![Importowanie danych właściwości modułu](./media/use-data-from-an-on-premises-sql-server/import-data-properties-entered.png)
-8. Kliknij przycisk **Uruchom** do uruchamiania eksperymentu.
+   ![Właściwości modułu importowania danych](./media/use-data-from-an-on-premises-sql-server/import-data-properties-entered.png)
+8. Kliknij przycisk **Uruchom** , aby uruchomić eksperyment.
 
-Po zakończeniu eksperymentu można wizualizować dane zaimportowane z bazy danych, klikając pozycję port wyjściowy **importu danych** modułu i wybierając polecenie **Visualize**.
+Po zakończeniu eksperymentu można wizualizować dane zaimportowane z bazy danych, klikając port wyjściowy modułu **Importuj dane** i wybierając opcję **Wizualizuj**.
 
-Po zakończeniu tworzenia eksperymentu można wdrożyć i operacjonalizować model. Za pomocą usługi wykonywania wsadowego, dane z lokalnego serwera SQL bazy danych skonfigurowanych w **importu danych** moduł będzie odczytywać i używane do oceniania. Podczas oceniania lokalnych danych, można użyć usługę odpowiedzi na żądanie, firma Microsoft zaleca używanie [dodatek programu Excel](excel-add-in-for-web-services.md) zamiast tego. Obecnie usługa zapisywania do bazy danych programu SQL Server w środowisku lokalnym za pośrednictwem **Eksport danych** nie jest obsługiwane albo w eksperymenty lub opublikowane w sieci web usług.
+Po zakończeniu opracowywania eksperymentu możesz wdrożyć i operacjonalizować model. Przy użyciu usługi Batch Execution dane z lokalnej SQL Serverej bazy danych skonfigurowanej w module **Importuj dane** zostaną odczytane i wykorzystane do oceny. Mimo że można użyć usługi odpowiedzi na żądanie do oceniania danych lokalnych, firma Microsoft zaleca użycie [dodatku programu Excel](excel-add-in-for-web-services.md) . Obecnie zapisywanie w lokalnej bazie danych SQL Server za pomocą **eksportu danych** nie jest obsługiwane w doświadczeniach ani opublikowanych usługach sieci Web.

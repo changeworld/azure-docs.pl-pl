@@ -1,0 +1,418 @@
+---
+title: Konfigurowanie Data Manager łańcucha bloków — interfejs wiersza polecenia platformy Azure
+description: Jak utworzyć Data Manager łańcucha bloków i zarządzać nim przy użyciu interfejsu wiersza polecenia platformy Azure
+services: azure-blockchain
+author: PatAltimore
+ms.author: patricka
+ms.date: 11/04/2019
+ms.topic: article
+ms.service: azure-blockchain
+ms.reviewer: chroyal
+ms.openlocfilehash: 1e92ae36aee5e62cd05b40bbaa38a226943f0adb
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.translationtype: HT
+ms.contentlocale: pl-PL
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73518023"
+---
+# <a name="configure-blockchain-data-manager-using-azure-cli"></a>Konfigurowanie Data Manager łańcucha bloków przy użyciu interfejsu wiersza polecenia platformy Azure
+
+Skonfiguruj Data Manager łańcucha bloków dla usługi Azure łańcucha bloków, aby przechwytywać dane łańcucha bloków wysyłane do Azure Event Grid tematu.
+
+Aby skonfigurować wystąpienie Data Manager łańcucha bloków:
+
+* Tworzenie wystąpienia Menedżera łańcucha bloków
+* Utwórz dane wejściowe w węźle transakcji usługi Azure łańcucha bloków Service
+* Tworzenie danych wyjściowych w temacie Azure Event Grid
+* Dodawanie aplikacji łańcucha bloków
+* Uruchom wystąpienie
+
+## <a name="prerequisites"></a>Wymagania wstępne
+
+* Zainstaluj najnowszy [interfejs wiersza polecenia platformy Azure](https://docs.microsoft.com/cli/azure/install-azure-cli) i zaloguj się przy użyciu `az login`.
+* Kończenie [szybkiego startu: użyj Visual Studio Code, aby nawiązać połączenie z siecią Azure łańcucha bloków Service Consortium](connect-vscode.md)
+* Tworzenie [tematu Event Grid](../../event-grid/custom-event-quickstart-portal.md#create-a-custom-topic)
+* Informacje o [obsłudze zdarzeń w Azure Event Grid](../../event-grid/event-handlers.md)
+
+## <a name="launch-azure-cloud-shell"></a>Uruchamianie usługi Azure Cloud Shell
+
+Usługa Azure Cloud Shell to bezpłatna interaktywna powłoka, której możesz używać do wykonywania kroków opisanych w tym artykule. Udostępnia ona wstępnie zainstalowane i najczęściej używane narzędzia platformy Azure, które są skonfigurowane do użycia na koncie.
+
+Aby otworzyć usługę Cloud Shell, wybierz pozycję **Wypróbuj** w prawym górnym rogu bloku kodu. Możesz również uruchomić usługę Cloud Shell w oddzielnej karcie przeglądarki, przechodząc do strony [https://shell.azure.com/bash](https://shell.azure.com/bash). Wybierz przycisk **Kopiuj**, aby skopiować bloki kodu, wklej je do usługi Cloud Shell, a następnie naciśnij klawisz Enter, aby je uruchomić.
+
+Jeśli wolisz zainstalować interfejs wiersza polecenia i korzystać z niego lokalnie, ten przewodnik Szybki Start będzie wymagał interfejsu wiersza polecenia platformy Azure w wersji 2.0.51 lub nowszej. Uruchom polecenie `az --version`, aby dowiedzieć się, jaka wersja jest używana. Jeśli konieczne jest zainstalowanie lub uaktualnienie, zobacz [Instalowanie interfejsu wiersza polecenia platformy Azure](https://docs.microsoft.com/cli/azure/install-azure-cli).
+
+## <a name="create-a-resource-group"></a>Tworzenie grupy zasobów
+
+Utwórz grupę zasobów za pomocą polecenia [az group create](https://docs.microsoft.com/cli/azure/group). Grupa zasobów platformy Azure to logiczny kontener przeznaczony do wdrażania zasobów platformy Azure i zarządzania nimi. W poniższym przykładzie pokazano tworzenie grupy zasobów o nazwie *myResourceGroup* w lokalizacji *eastus*:
+
+```azurecli-interactive
+az group create --name myRG --location eastus
+```
+
+## <a name="create-instance"></a>Utwórz wystąpienie
+
+Wystąpienie Data Manager łańcucha bloków monitoruje węzeł transakcji usługi Azure łańcucha bloków. Wystąpienie przechwytuje wszystkie nieprzetworzone i nieprzetworzone dane transakcji z węzła transakcji.
+
+``` azurecli
+az resource create \
+                   --resource-group <Resource group> \
+                   --name <Blockchain Data Manager instance name> \
+                   --resource-type Microsoft.blockchain/watchers \
+                   --is-full-object \
+                   --properties <watcher resource properties>
+```
+
+| Parametr | Opis |
+|-----------|-------------|
+| resource-group | Nazwa grupy zasobów, w której ma zostać utworzone wystąpienie Data Manager łańcucha bloków. |
+| name | Nazwa wystąpienia Data Manager łańcucha bloków. |
+| Typ zasobu | Typ zasobu dla wystąpienia usługi łańcucha bloków Data Manager to **Microsoft. łańcucha bloków/WATCHS**. |
+| is-full-Object | Wskazuje, że właściwości zawierają opcje dla zasobu obserwatora. |
+| properties | Ciąg w formacie JSON zawierający właściwości dla zasobu obserwatora. Można przesłać jako ciąg lub plik.  |
+
+### <a name="create-instance-examples"></a>Tworzenie przykładów wystąpienia
+
+Przykład konfiguracji JSON tworzenia wystąpienia Menedżera łańcucha bloków w regionie **Wschodnie stany USA** .
+
+``` json
+{
+    "location": "eastus",
+    "properties": {
+    }
+}
+```
+
+| Element | Opis |
+|---------|-------------|
+| location | Region, w którym ma zostać utworzony zasób obserwatora |
+| properties | Właściwości do ustawienia podczas tworzenia zasobu obserwatora |
+
+Utwórz wystąpienie Data Manager łańcucha bloków o nazwie " *Watch* " przy użyciu ciągu JSON na potrzeby konfiguracji.
+
+``` azurecli-interactive
+az resource create \
+                    --resource-group myRG \
+                    --name mywatcher \
+                    --resource-type Microsoft.blockchain/watchers \
+                     --is-full-object \
+                     --properties '{"location":"eastus"}'
+```
+
+Utwórz wystąpienie Data Manager łańcucha bloków o nazwie " *Watch* " przy użyciu pliku konfiguracyjnego JSON.
+
+``` azurecli
+az resource create \
+                    --resource-group myRG \
+                    --name mywatcher \
+                    --resource-type Microsoft.blockchain/watchers \
+                    --is-full-object \
+                    --properties @watcher.json
+```
+
+## <a name="create-input"></a>Utwórz dane wejściowe
+
+Dane wejściowe nawiązują połączenie Data Manager łańcucha bloków z węzłem transakcji usługi Azure łańcucha bloków. Połączenie może utworzyć tylko użytkownicy z dostępem do węzła transakcji.
+
+``` azurecli
+az resource create \
+                   --resource-group <Resource group> \
+                   --name <Input name> \
+                   --namespace Microsoft.Blockchain \
+                   --resource-type inputs \
+                   --parent watchers/<Watcher name> \
+                   --is-full-object \
+                   --properties <input resource properties>
+```
+
+| Parametr | Opis |
+|-----------|-------------|
+| resource-group | Nazwa grupy zasobów, w której ma zostać utworzony zasób wejściowy. |
+| name | Nazwa danych wejściowych. |
+| przestrzeń nazw | Użyj przestrzeni nazw dostawcy **Microsoft. łańcucha bloków** . |
+| Typ zasobu | Typ zasobu dla danych wejściowych łańcucha bloków Data Manager to **dane**wejściowe. |
+| nadrzędny | Ścieżka do obserwatora, z którym jest skojarzone dane wejściowe. Na przykład **obserwatorzy/czujka**. |
+| is-full-Object | Wskazuje, że właściwości zawierają opcje dla zasobu wejściowego. |
+| properties | Ciąg w formacie JSON zawierający właściwości dla zasobu wejściowego. Można przesłać jako ciąg lub plik. |
+
+### <a name="input-examples"></a>Przykłady danych wejściowych
+
+Przykład konfiguracji JSON tworzenia zasobu wejściowego w regionie *Wschodnie stany USA* , który jest połączony z \<członkiem łańcucha bloków\>.
+
+``` json
+{
+    "location": "eastus",
+    "properties": {
+        "inputType": "Ethereum",
+        "dataSource": {
+            "resourceId": "/subscriptions/<Subscription ID>/resourceGroups/<Resource group>/providers/Microsoft.Blockchain/blockchainMembers/<Blockchain member>/transactionNodes/transaction-node"
+        }
+    }
+}
+```
+
+| Element | Opis |
+|---------|-------------|
+| location | Region, w którym ma zostać utworzony zasób wejściowy. |
+| Atrybutów InputType | Typ księgi elementu członkowskiego usługi Azure łańcucha bloków. Obecnie **Ethereum** jest obsługiwana. |
+| resourceId | Węzeł transakcji, do którego jest połączone dane wejściowe. Zastąp \<Identyfikator subskrypcji\>, \<grupę zasobów\>i \<element członkowski łańcucha bloków\> z wartościami dla zasobu węzła transakcji. Dane wejściowe nawiązują połączenie z domyślnym węzłem transakcji dla elementu członkowskiego usługi Azure łańcucha bloków. |
+
+Utwórz dane wejściowe o nazwie Moje *dane wejściowe* dla elementu *czujka* przy użyciu ciągu JSON na potrzeby konfiguracji.
+
+``` azurecli-interactive
+az resource create \
+                   --resource-group myRG \
+                   --name myInput \
+                   --namespace Microsoft.Blockchain \
+                   --resource-type inputs \
+                   --parent watchers/mywatcher \
+                   --is-full-object \
+                   --properties '{"location":"eastus", "properties":{"inputType":"Ethereum","dataSource":{"resourceId":"/subscriptions/<Subscription ID>/resourceGroups/<Resource group>/providers/Microsoft.Blockchain/BlockchainMembers/<Blockchain member>/transactionNodes/transaction-node"}}}'
+```
+
+Utwórz dane wejściowe o nazwie Moje *dane wejściowe* dla elementu *czujka* przy użyciu pliku konfiguracyjnego JSON.
+
+``` azurecli
+az resource create \
+                   --resource-group myRG \
+                   --name input \
+                   --namespace Microsoft.Blockchain \ --resource-type inputs \
+                   --parent watchers/mywatcher \
+                   --is-full-object \
+                   --properties @input.json
+```
+
+## <a name="create-output"></a>Utwórz dane wyjściowe
+
+Połączenie wychodzące wysyła dane łańcucha bloków do Azure Event Grid. Dane łańcucha bloków można wysyłać do jednego miejsca docelowego lub wysyłać dane łańcucha bloków do wielu miejsc docelowych. Łańcucha bloków Data Manager obsługuje wiele połączeń wychodzących tematu Event Grid dla danego wystąpienia Data Manager łańcucha bloków.
+
+``` azurecli
+az resource create \
+                   --resource-group <Resource group> \
+                   --name <Output name> \
+                   --namespace Microsoft.Blockchain \
+                   --resource-type outputs \
+                   --parent watchers/<Watcher name> \
+                   --is-full-object \
+                   --properties <output resource properties>
+```
+
+| Parametr | Opis |
+|-----------|-------------|
+| resource-group | Nazwa grupy zasobów, w której ma zostać utworzony zasób wyjściowy. |
+| name | Nazwa danych wyjściowych. |
+| przestrzeń nazw | Użyj przestrzeni nazw dostawcy **Microsoft. łańcucha bloków** . |
+| Typ zasobu | Typ zasobu dla danych wyjściowych łańcucha bloków **Data Manager to wyjście**. |
+| nadrzędny | Ścieżka do obserwatora, z którym jest skojarzone dane wyjściowe. Na przykład **obserwatorzy/czujka**. |
+| is-full-Object | Wskazuje, że właściwości zawierają opcje dla zasobu wyjściowego. |
+| properties | Ciąg w formacie JSON zawierający właściwości dla zasobu wyjściowego. Można przesłać jako ciąg lub plik. |
+
+### <a name="output-examples"></a>Przykłady danych wyjściowych
+
+Przykład konfiguracji JSON tworzenia zasobu wyjściowego w regionie *Wschodnie stany USA* , który jest połączony z tematem w usłudze Event Grid o nazwie \<\>temacie.
+
+``` json
+{
+    "location": "eastus",
+    "properties": {
+        "outputType": "EventGrid",
+        "dataSource": {
+            "resourceId": "/subscriptions/<Subscription ID>/resourceGroups/<Resource group>/providers/Microsoft.EventGrid/topics/<event grid topic>"
+        }
+    }
+}
+```
+
+| Element | Opis |
+|---------|-------------|
+| location | Region, w którym ma zostać utworzony zasób wyjściowy. |
+| OutputType | Typ danych wyjściowych. Obecnie **EventGrid** jest obsługiwana. |
+| resourceId | Zasób, do którego jest połączone dane wyjściowe. Zastąp \<Identyfikator subskrypcji\>, \<grupę zasobów\>i \<element członkowski łańcucha bloków\> z wartościami dla zasobu usługi Event Grid. |
+
+Utwórz dane wyjściowe o nazwie Moje *dane wyjściowe* dla elementu *czujka* , który nawiązuje połączenie z tematem usługi Event Grid przy użyciu ciągu konfiguracji JSON.
+
+``` azurecli-interactive
+az resource create \
+                   --resource-group myRG \
+                   --name myoutput \
+                   --namespace Microsoft.Blockchain \
+                   --resource-type outputs \
+                   --parent watchers/mywatcher \
+                   --is-full-object \
+                   --properties '{"location":"eastus","properties":{"outputType":"EventGrid","dataSource":{"resourceId":"/subscriptions/<Subscription ID>/resourceGroups/<Resource group>/providers/Microsoft.EventGrid/topics/<event grid topic>"}}}'
+```
+
+Utwórz dane wyjściowe o nazwie Moje *dane wyjściowe* dla elementu *czujka* , który nawiązuje połączenie z tematem usługi Event Grid przy użyciu pliku konfiguracyjnego JSON.
+
+``` azurecli
+az resource create \
+                   --resource-group myRG \
+                   --name myoutput \
+                   --namespace Microsoft.Blockchain \
+                   --resource-type outputs \
+                   --parent watchers/mywatcher \
+                   --is-full-object \
+                   --properties @output.json
+```
+
+## <a name="add-blockchain-application"></a>Dodawanie aplikacji łańcucha bloków
+
+Jeśli dodasz aplikację łańcucha bloków, łańcucha bloków Data Manager dekoduje zdarzenie i stan właściwości aplikacji. W przeciwnym razie wysyłane są tylko nieprzetworzone dane transakcji blokowych i nieprzetworzonych. Łańcucha bloków Data Manager również wykrywa adresy kontraktu po wdrożeniu kontraktu. Można dodać wiele aplikacji łańcucha bloków do wystąpienia Data Manager łańcucha bloków.
+
+``` azurecli
+az resource create \
+                   --resource-group <Resource group> \
+                   --name <Application name> \
+                   --namespace Microsoft.Blockchain \
+                   --resource-type artifacts \
+                   --parent watchers/<Watcher name> \
+                   --is-full-object \
+                   --properties <Application resource properties>
+```
+
+| Parametr | Opis |
+|-----------|-------------|
+| resource-group | Nazwa grupy zasobów, w której ma zostać utworzony zasób aplikacji. |
+| name | Nazwa aplikacji. |
+| przestrzeń nazw | Użyj przestrzeni nazw dostawcy **Microsoft. łańcucha bloków** . |
+| Typ zasobu | Typem zasobu dla aplikacji łańcucha bloków Data Manager jest **artefakty**. |
+| nadrzędny | Ścieżka do obserwatora, z którym jest skojarzona aplikacja. Na przykład **obserwatorzy/czujka**. |
+| is-full-Object | Wskazuje, że właściwości zawierają opcje dla zasobu aplikacji. |
+| properties | Ciąg w formacie JSON zawierający właściwości dla zasobu aplikacji. Można przesłać jako ciąg lub plik. |
+
+### <a name="blockchain-application-examples"></a>Przykłady aplikacji łańcucha bloków
+
+Przykład konfiguracji JSON tworzenia zasobu aplikacji w regionie *Wschodnie stany USA* , który monitoruje kontrakt inteligentny zdefiniowany przez ABI kontraktu i kod bajtowy.
+
+``` json
+{
+    "location": "eastus",
+    "properties": {
+        "artifactType": "EthereumSmartContract",
+        "content": {
+            "abiFileUrl": "<ABI URL>",
+            "bytecodeFileUrl": "<Bytecode URL>",
+            "queryTargetTypes": [
+                "ContractProperties",
+                "ContractEvents"
+            ]
+        }
+    }
+}
+```
+
+| Element | Opis |
+|---------|-------------|
+| location | Region, w którym ma zostać utworzony zasób aplikacji. |
+| artefakttype | Typ aplikacji. Obecnie **EthereumSmartContract** jest obsługiwana. |
+| abiFileUrl | Adres URL pliku JSON ABI kontraktu inteligentnego. Aby uzyskać więcej informacji na temat uzyskiwania ABIów kontraktu i tworzenia adresu URL, zobacz [pobieranie kontraktu ABI i kod bajtowy](data-manager-portal.md#get-contract-abi-and-bytecode) oraz [Tworzenie ABI i adresów URL kontraktu](data-manager-portal.md#create-contract-abi-and-bytecode-url). |
+| bytecodeFileUrl | Adres URL pliku JSON dla kontraktu inteligentnego. Aby uzyskać więcej informacji na temat uzyskiwania kodu wielobajtowego kontraktu inteligentnego i tworzenia adresu URL, zobacz [pobieranie kontraktu ABI i kod bajtowy](data-manager-portal.md#get-contract-abi-and-bytecode) oraz [Tworzenie kontraktu ABI i adresu URL kodu bajtowego](data-manager-portal.md#create-contract-abi-and-bytecode-url). |
+| queryTargetTypes | Typy opublikowanych komunikatów. Określanie **ContractProperties** publikuje *ContractPropertiesMsg* typ komunikatu. Określanie **ContractEvents** publikuje *DecodedContractEventsMsg* typ komunikatu. Uwaga: typy wiadomości *RawBlockAndTransactionMsg* i *RawTransactionContractCreationMsg* są zawsze publikowane. |
+
+Utwórz aplikację o nazwie Moja *aplikacja* dla elementu *czujka* , która monitoruje kontrakt inteligentny zdefiniowany przez ciąg JSON.
+
+``` azurecli-interactive
+az resource create \
+                   --resource-group myRG \
+                   --name myApplication \
+                   --namespace Microsoft.Blockchain \
+                   --resource-type artifacts \
+                   --parent watchers/mywatcher \
+                   --is-full-object \
+                   --properties '{"location":"eastus","properties":{"artifactType":"EthereumSmartContract","content":{"abiFileUrl":"<ABI URL>","bytecodeFileUrl":"<Bytecode URL>","queryTargetTypes":["ContractProperties","ContractEvents"]}}}'
+```
+
+Utwórz aplikację o nazwie Moja *aplikacja* dla elementu *czujka* , która obserwuje kontrakt inteligentny zdefiniowany przy użyciu pliku konfiguracyjnego JSON.
+
+``` azurecli
+az resource create \
+                   --resource-group myRG \
+                   --name myApplication \
+                   --namespace Microsoft.Blockchain \
+                   --resource-type artifacts \
+                   --parent watchers/mywatcher \
+                   --is-full-object \
+                   --properties @artifact.json
+```
+
+## <a name="start-instance"></a>Uruchom wystąpienie
+
+Po uruchomieniu wystąpienie programu łańcucha bloków Manager monitoruje zdarzenia łańcucha bloków ze zdefiniowanych danych wejściowych i wysyła dane do zdefiniowanych danych wyjściowych.
+
+``` azurecli
+az resource invoke-action \
+                          --action start \
+                          --ids /subscriptions/<Subscription ID>/resourceGroups/<Resource group>/providers/Microsoft.Blockchain/watchers/<Watcher name>
+```
+
+| Parametr | Opis |
+|-----------|-------------|
+| action | Uruchom obserwatora przy użyciu **menu Start** . |
+| identyfikatory | Identyfikator zasobu obserwatora. Zastąp \<Identyfikator subskrypcji\>, \<grupę zasobów\>i \<nazwę obserwatora\> wartościami dla zasobu obserwatora.|
+
+### <a name="start-instance-example"></a>Przykład uruchomienia wystąpienia
+
+Uruchom wystąpienie Data Manager łańcucha bloków o nazwie *czujka*.
+
+``` azurecli-interactive
+az resource invoke-action \
+                          --action start \
+                          --ids /subscriptions/<Subscription ID>/resourceGroups/<Resource group>/providers/Microsoft.Blockchain/watchers/mywatcher
+```
+
+## <a name="stop-instance"></a>Zatrzymaj wystąpienie
+
+Zatrzymaj wystąpienie Data Manager łańcucha bloków.
+
+``` azurecli
+az resource invoke-action \
+                          --action stop \
+                          --ids /subscriptions/<Subscription ID>/resourceGroups/<Resource group>/providers/Microsoft.Blockchain/watchers/<Watcher name>
+```
+
+| Parametr | Opis |
+|-----------|-------------|
+| action | Użyj **Zatrzymaj** , aby zatrzymać obserwatora. |
+| identyfikatory | Nazwa obserwatora. Zastąp \<Identyfikator subskrypcji\>, \<grupę zasobów\>i \<nazwę obserwatora\> wartościami dla zasobu obserwatora. |
+
+### <a name="stop-watcher-example"></a>Zatrzymywanie przykładu obserwatora
+
+Zatrzymaj wystąpienie o nazwie *czujka*.
+
+``` azurecli-interactive
+az resource invoke-action \
+                          --action stop \
+                          --ids /subscriptions/<Subscription ID>/resourceGroups/<Resource group>/providers/Microsoft.Blockchain/watchers/mywatcher
+```
+
+## <a name="delete-instance"></a>Usuń wystąpienie
+
+Usuń wystąpienie Data Manager łańcucha bloków.
+
+``` azurecli
+az resource delete \
+                   --resource-group <Resource group> \
+                   --name <Watcher name> \
+                   --resource-type Microsoft.Blockchain/watchers
+```
+
+| Parametr | Opis |
+|-----------|-------------|
+| resource-group | Nazwa grupy zasobów obserwatora do usunięcia. |
+| name | Nazwa obserwatora do usunięcia. |
+| Typ zasobu | Typ zasobu dla obserwatora Data Manager łańcucha bloków to **Microsoft. łańcucha bloków/WATCHS**. |
+
+### <a name="delete-instance-example"></a>Przykład usuwania wystąpienia
+
+Usuń wystąpienie o nazwie " *czujka* " w grupie zasobów *mojagz* .
+
+``` azurecli-interactive
+az resource delete \
+                   --resource-group myRG \
+                   --name mywatcher \
+                   --resource-type Microsoft.blockchain/watchers
+```
+
+## <a name="next-steps"></a>Następne kroki
+
+Dowiedz się więcej o [obsłudze zdarzeń w Azure Event Grid](../../event-grid/event-handlers.md).

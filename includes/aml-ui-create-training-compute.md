@@ -9,12 +9,12 @@ manager: cgronlund
 ms.custom: include file
 ms.topic: include
 ms.date: 10/09/2019
-ms.openlocfilehash: 3f969fb346ce341e694458dcc38bf193f012226b
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.openlocfilehash: f7cdfb8b9edbce5ef2b094cf6a603904d39a7404
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72792662"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73493641"
 ---
 Potok jest uruchamiany w miejscu docelowym obliczeń, który jest zasobem obliczeniowym dołączonym do obszaru roboczego. Po utworzeniu obiektu docelowego obliczeń można użyć go ponownie do przyszłych przebiegów.
 
@@ -25,7 +25,7 @@ Potok jest uruchamiany w miejscu docelowym obliczeń, który jest zasobem oblicz
     Jeśli masz już dostępny element docelowy obliczeń, możesz wybrać go do uruchomienia tego potoku.
 
     > [!NOTE]
-    > Interfejs wizualny może uruchamiać tylko eksperymenty dla środowisko obliczeniowe usługi Machine Learning obiektów docelowych. Inne elementy docelowe obliczeń nie będą wyświetlane.
+    > Projektant może uruchamiać tylko eksperymenty dla środowisko obliczeniowe usługi Machine Learning obiektów docelowych. Inne elementy docelowe obliczeń nie będą wyświetlane.
 
 1. Podaj nazwę zasobu obliczeniowego.
 

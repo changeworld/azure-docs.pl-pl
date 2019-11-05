@@ -1,7 +1,7 @@
 ---
-title: 'MLOps: Zarządzaj, wdrażaj i & Monitoruj modele ML'
+title: 'MLOps: Zarządzaj i wdrażaj, & Monitoruj modele ML'
 titleSuffix: Azure Machine Learning
-description: 'Dowiedz się, jak używać programu Azure Machine Learning for MLOps: wdrażanie i monitorowanie modeli oraz zarządzanie nimi w celu ciągłego ulepszania ich. Można wdrażać modele, które możesz skonfigurowanych pod kątem korzystania z usługi Azure Machine Learning na komputerze lokalnym lub z innych źródeł.'
+description: 'Dowiedz się, jak używać programu Azure Machine Learning for MLOps: wdrażanie i monitorowanie modeli oraz zarządzanie nimi w celu ciągłego ulepszania ich. Można wdrożyć modele przeszkolone Azure Machine Learning, na komputerze lokalnym lub z innych źródeł.'
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -9,16 +9,16 @@ ms.topic: conceptual
 ms.reviewer: jmartens
 author: jpe316
 ms.author: jordane
-ms.date: 06/24/2019
+ms.date: 10/25/2019
 ms.custom: seodec18
-ms.openlocfilehash: 98a3102d47504b40a6b62eb329b508468947ca79
-ms.sourcegitcommit: 0fab4c4f2940e4c7b2ac5a93fcc52d2d5f7ff367
+ms.openlocfilehash: 8741a9a362a10dfdb0150c9dc0dfddeed54594a7
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71035481"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73497438"
 ---
-# <a name="mlops-manage-deploy-and-monitor-models-with-azure-machine-learning"></a>MLOps: Zarządzanie, wdrażanie i monitorowanie modeli przy użyciu Azure Machine Learning
+# <a name="mlops-manage-deploy-and-monitor-models-with-azure-machine-learning"></a>MLOps: Zarządzaj i wdrażaj modele oraz monitoruj je za pomocą Azure Machine Learning
 
 W tym artykule dowiesz się, jak za pomocą Azure Machine Learning zarządzać cyklem życia modeli. Azure Machine Learning używa podejścia Machine Learning Operations (MLOps), które poprawia jakość i spójność rozwiązań uczenia maszynowego. 
 
@@ -47,7 +47,7 @@ Rejestracja modelu umożliwia przechowywanie i przechowywanie modeli w chmurze p
 > [!TIP]
 > Zarejestrowany model to logiczny kontener dla co najmniej jednego pliku, który składa się z modelu. Na przykład jeśli masz model, który jest przechowywany w wielu plikach, możesz zarejestrować je jako jeden model w obszarze roboczym Azure Machine Learning. Po zarejestrowaniu można pobrać lub wdrożyć zarejestrowany model i odebrać wszystkie zarejestrowane pliki.
  
-Zarejestrowane modele są identyfikowane przez nazwę i wersję. Zawsze należy zarejestrować model o takiej samej nazwie jak innego istniejącego rejestru zwiększa numer wersji. Możesz także podać dodatkowe metadane tagów podczas rejestracji, który może służyć podczas wyszukiwania dla modeli. Azure Machine Learning obsługuje dowolny model, który można załadować przy użyciu języka Python w wersji 3.5.2 lub nowszej.
+Zarejestrowane modele są identyfikowane przez nazwę i wersję. Za każdym razem, gdy rejestrujesz model o takiej samej nazwie jak istniejący, rejestr zwiększy wersję. Podczas rejestracji można także podać dodatkowe Tagi metadanych, które mogą być używane podczas wyszukiwania modeli. Azure Machine Learning obsługuje dowolny model, który można załadować przy użyciu języka Python w wersji 3.5.2 lub nowszej.
 
 > [!TIP]
 > Możesz również rejestrować modele przeszkolone poza Azure Machine Learning.
@@ -88,9 +88,9 @@ Te zasoby są spakowane w obrazie platformy Docker i wdrażane jako usługa siec
 
 Opcjonalnie można użyć następujących parametrów, aby dodatkowo dostroić wdrożenie:
 
-* Włącz procesor GPU: Służy do włączania obsługi procesora GPU w obrazie platformy Docker. Obraz musi być używany w usługach Microsoft Azure, takich jak Azure Container Instances, Azure Kubernetes Service, Azure Machine Learning COMPUTE lub Azure Virtual Machines.
-* Dodatkowe kroki pliku platformy Docker: Plik zawierający dodatkowe kroki platformy Docker do uruchomienia podczas tworzenia obrazu platformy Docker.
-* Obraz podstawowy: Obraz niestandardowy, który będzie używany jako obraz podstawowy. Jeśli nie używasz obrazu niestandardowego, obraz podstawowy jest dostarczany przez Azure Machine Learning.
+* Włącz procesor GPU: używany do włączania obsługi procesora GPU w obrazie platformy Docker. Obraz musi być używany w usługach Microsoft Azure, takich jak Azure Container Instances, Azure Kubernetes Service, Azure Machine Learning COMPUTE lub Azure Virtual Machines.
+* Dodatkowe kroki pliku platformy Docker: plik zawierający dodatkowe kroki platformy Docker do uruchomienia podczas tworzenia obrazu platformy Docker.
+* Obraz podstawowy: obraz niestandardowy, który będzie używany jako obraz podstawowy. Jeśli nie używasz obrazu niestandardowego, obraz podstawowy jest dostarczany przez Azure Machine Learning.
 
 Należy również podać konfigurację docelowej platformy wdrożenia. Na przykład typ rodziny maszyn wirtualnych, dostępna pamięć i liczba rdzeni podczas wdrażania w usłudze Azure Kubernetes Service.
 
@@ -115,7 +115,7 @@ Aby wdrożyć model jako usługę sieci Web, należy podać następujące elemen
 
 Aby uzyskać więcej informacji, zobacz [Wdrażanie modeli](how-to-deploy-and-where.md).
 
-#### <a name="iot-edge-devices"></a>Urządzenia usługi IoT Edge
+#### <a name="iot-edge-devices"></a>Urządzenia IoT Edge
 
 Można używać modeli z urządzeniami IoT za pomocą **modułów Azure IoT Edge**. Moduły IoT Edge są wdrażane na urządzeniu sprzętowym, co umożliwia wnioskowanie lub ocenianie modelu na urządzeniu.
 
@@ -157,7 +157,7 @@ Aby uzyskać więcej informacji na temat korzystania z Azure Pipelines z Azure M
 
 ## <a name="next-steps"></a>Następne kroki
 
-Dowiedz się więcej o tym [, jak i gdzie można wdrażać modele](how-to-deploy-and-where.md) przy użyciu Azure Machine Learning. Aby zapoznać się z przykładem wdrożenia [, zobacz Samouczek: Wdróż model klasyfikacji obrazów w Azure Container Instances](tutorial-deploy-models-with-aml.md).
+Dowiedz się więcej o tym [, jak i gdzie można wdrażać modele](how-to-deploy-and-where.md) przy użyciu Azure Machine Learning. Aby zapoznać się z przykładem wdrożenia, zobacz [Samouczek: Wdrażanie modelu klasyfikacji obrazów w Azure Container Instances](tutorial-deploy-models-with-aml.md).
 
 Dowiedz się, jak utworzyć [ciągłą integrację i wdrażanie modeli ml przy użyciu Azure Pipelines](/azure/devops/pipelines/targets/azure-machine-learning). 
 

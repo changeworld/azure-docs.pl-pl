@@ -11,12 +11,12 @@ author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: sstein, carlrab
 ms.date: 07/16/2019
-ms.openlocfilehash: 7ae3eb74b0d0c3f0bd6124362608e14555179697
-ms.sourcegitcommit: d4c9821b31f5a12ab4cc60036fde00e7d8dc4421
+ms.openlocfilehash: 7e341cf8a4ff2a18e44e36d73ad5dbc642582802
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/01/2019
-ms.locfileid: "71710149"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73496282"
 ---
 # <a name="sql-database-managed-instance-frequently-asked-questions-faq"></a>SQL Database często zadawane pytania dotyczące wystąpienia zarządzanego
 
@@ -58,7 +58,7 @@ Wystąpienie zarządzane musi mieć nazwę kończącą się na *Database.Windows
 
 Jeśli wszystkie tabele w bazie danych mają klucze podstawowe, można użyć replikacji transakcyjnej.
 
-Nie można przywrócić kopii zapasowych natywnych `COPY_ONLY` z wystąpienia zarządzanego do SQL Server, ponieważ wystąpienie zarządzane ma nowszą wersję bazy danych w porównaniu do SQL Server.
+Nie można przywrócić natywnych kopii zapasowych `COPY_ONLY` pobranych z wystąpienia zarządzanego do SQL Server, ponieważ wystąpienie zarządzane ma nowszą wersję bazy danych w porównaniu do SQL Server.
 
 ## <a name="how-can-i-migrate-my-instance-database-to-a-single-azure-sql-database"></a>Jak przeprowadzić migrację bazy danych wystąpienia do jednego Azure SQL Database?
 
@@ -179,7 +179,7 @@ Aby porównać wydajność między wystąpieniem zarządzanym i SQL Server, dobr
 Tak, nie musisz odszyfrowywać bazy danych, aby móc przywrócić ją do wystąpienia zarządzanego. Należy podać certyfikat/klucz używany jako funkcja ochrony klucza szyfrowania w systemie źródłowym do wystąpienia zarządzanego, aby można było odczytywać dane z zaszyfrowanego pliku kopii zapasowej. Istnieją dwa sposoby, aby to zrobić:
 
 - *Przekaż ochronę certyfikatu do wystąpienia zarządzanego*. Można to zrobić tylko przy użyciu programu PowerShell. [Przykładowy skrypt](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance-migrate-tde-certificate) opisuje cały proces.
-- *Przekaż funkcję ochrony klucza asymetrycznego do Azure Key Vault (AKV) i wskaż do niej wystąpienie zarządzane*. Takie podejście przypomina BYOK TDE użycie, który używa integracji AKV w celu przechowywania klucza szyfrowania. Jeśli nie chcesz używać klucza jako funkcji ochrony klucza szyfrowania i po prostu chcesz udostępnić klucz dla wystąpienia zarządzanego w celu przywrócenia zaszyfrowanych baz danych, postępuj zgodnie z instrukcjami dotyczącymi [KONFIGUROWANIA BYOK TDE](https://docs.microsoft.com/azure/sql-database/transparent-data-encryption-azure-sql#manage-transparent-data-encryption-in-the-azure-portal)i nie zaznaczaj pola wyboru *Oznacz wybrany klucz Domyślna funkcja ochrony TDE*.
+- *Przekaż funkcję ochrony klucza asymetrycznego do Azure Key Vault (AKV) i wskaż do niej wystąpienie zarządzane*. Takie podejście przypomina BYOK TDE użycie, który używa integracji AKV w celu przechowywania klucza szyfrowania. Jeśli nie chcesz używać klucza jako funkcji ochrony klucza szyfrowania i po prostu chcesz udostępnić klucz dla wystąpienia zarządzanego w celu przywrócenia zaszyfrowanych baz danych, postępuj zgodnie z instrukcjami dotyczącymi [KONFIGUROWANIA BYOK TDE](https://docs.microsoft.com/azure/sql-database/transparent-data-encryption-azure-sql#manage-transparent-data-encryption)i nie zaznaczaj pola wyboru *Oznacz wybrany klucz Domyślna funkcja ochrony TDE*.
 
 Po udostępnieniu funkcji ochrony szyfrowania wystąpieniem zarządzanemu można wykonać procedurę standardowego przywracania bazy danych.
 

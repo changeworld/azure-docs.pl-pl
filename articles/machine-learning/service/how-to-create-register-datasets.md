@@ -10,17 +10,19 @@ ms.author: sihhu
 author: MayMSFT
 manager: cgronlun
 ms.reviewer: nibaccam
-ms.date: 10/10/2019
-ms.openlocfilehash: f85b286de1318181ab660d51d5f434375f1fa46f
-ms.sourcegitcommit: c4700ac4ddbb0ecc2f10a6119a4631b13c6f946a
-ms.translationtype: MT
+ms.date: 11/04/2019
+ms.openlocfilehash: aabbac60acc53cfccc29fc3dbd06575e09840d83
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/27/2019
-ms.locfileid: "72965328"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73497139"
 ---
 # <a name="create-and-access-datasets-preview-in-azure-machine-learning"></a>Tworzenie zestawów danych i uzyskiwanie do nich dostępu (wersja zapoznawcza) w Azure Machine Learning
 
-W tym artykule opisano sposób tworzenia Azure Machine Learning zestawów danych (wersja zapoznawcza) oraz uzyskiwania dostępu do danych z eksperymentów lokalnych lub zdalnych.
+[!INCLUDE [aml-applies-to-basic-enterprise-sku](../../../includes/aml-applies-to-basic-enterprise-sku.md)]
+
+W tym artykule dowiesz się, jak utworzyć Azure Machine Learning zestawy danych (wersja zapoznawcza) i jak uzyskać dostęp do informacji z lokalnych lub zdalnych eksperymentów.
 
 Za pomocą Azure Machine Learning zestawów danych można:
 
@@ -63,7 +65,7 @@ Aby można było uzyskać dostęp do danych przez Azure Machine Learning, zestaw
 
 Aby utworzyć zestawy danych z [usługi Azure datastore](how-to-access-data.md) przy użyciu zestawu SDK języka Python:
 
-* Sprawdź, czy masz dostęp `contributor` lub `owner` do zarejestrowanego magazynu danych platformy Azure.
+* Sprawdź, czy masz `contributor` lub `owner` dostęp do zarejestrowanego magazynu danych platformy Azure.
 
 * Utwórz zestaw danych, odwołując się do ścieżki w magazynie danych.
 
@@ -80,7 +82,10 @@ workspace = Workspace.from_config()
 # retrieve an existing datastore in the workspace by name
 datastore = Datastore.get(workspace, datastore_name)
 ```
-#### <a name="create-tabulardatasets"></a>Utwórz TabularDatasets
+
+#### <a name="create-a-tabulardataset"></a>Utwórz TabularDataset
+
+TabularDatasets można utworzyć za pomocą zestawu SDK lub programu Azure Machine Learning Studio. Sygnaturę czasową można określić z kolumny w danych lub dane wzorca ścieżki są przechowywane w, aby umożliwić cechę szeregów czasowych, która umożliwia łatwe i wydajne filtrowanie według czasu.
 
 Użyj metody [`from_delimited_files()`](https://docs.microsoft.com/python/api/azureml-core/azureml.data.dataset_factory.tabulardatasetfactory?view=azure-ml-py#from-delimited-files-path--validate-true--include-path-false--infer-column-types-true--set-column-types-none--separator------header--promoteheadersbehavior-all-files-have-same-headers--3---partition-format-none-) na `TabularDatasetFactory` klasie, aby odczytać pliki w formacie CSV lub TSV i utworzyć niezarejestrowane TabularDataset. W przypadku odczytywania z wielu plików wyniki zostaną zagregowane w jednej reprezentacji tabelarycznej.
 
@@ -109,9 +114,9 @@ titanic_ds.take(3).to_pandas_dataframe()
 
 | |PassengerId|Ocalałe|Pclass|Nazwa|Biciu|Wiek|SibSp|Parch|Równ|Bezprzewodow|Kabin|Zaokrętowanie
 -|-----------|--------|------|----|---|---|-----|-----|------|----|-----|--------|
-0|1|Fałsz|3|Braund, Mr. Owen Harris|mężczyzna|22,0|1|0|A/5 21171|7,2500||S
-1|2|Prawda|1|Cumings, Pani. Jan Bradley (Florencji Briggs th...|kobieta|38,0|1|0|KOMPUTER 17599|71,2833|C85|C
-2|3|Prawda|3|Heikkinen, chybień. Laina|kobieta|26,0|0|0|STON/O2. 3101282|7,9250||S
+0|1|False|3|Braund, Mr. Owen Harris|mężczyzna|22,0|1|0|A/5 21171|7,2500||S
+1|2|True|1|Cumings, Pani. Jan Bradley (Florencji Briggs th...|kobieta|38,0|1|0|KOMPUTER 17599|71,2833|C85|C
+2|3|True|3|Heikkinen, chybień. Laina|kobieta|26,0|0|0|STON/O2. 3101282|7,9250||S
 
 Użyj metody [`from_sql_query()`](https://docs.microsoft.com/python/api/azureml-core/azureml.data.dataset_factory.tabulardatasetfactory?view=azure-ml-py#from-sql-query-query--validate-true--set-column-types-none-) w klasie `TabularDatasetFactory`, aby odczytać z Azure SQL Database.
 
@@ -145,7 +150,7 @@ data_slice = dataset.time_between(datetime(2019, 1, 1), datetime(2019, 2, 1))
 data_slice = dataset.time_recent(timedelta(weeks=1, days=1))
 ```
 
-#### <a name="create-filedatasets"></a>Utwórz FileDatasets
+#### <a name="create-a-filedataset"></a>Utwórz FileDataset
 
 Użyj metody [`from_files()`](https://docs.microsoft.com/python/api/azureml-core/azureml.data.dataset_factory.filedatasetfactory?view=azure-ml-py#from-files-path--validate-true-) na `FileDatasetFactory` klasie, aby załadować pliki w dowolnym formacie i utworzyć niezarejestrowane FileDataset.
 
@@ -166,30 +171,81 @@ web_paths = [
 mnist_ds = Dataset.File.from_files(path=web_paths)
 ```
 
-### <a name="using-the-workspace-landing-page"></a>Korzystanie ze strony docelowej obszaru roboczego
-
-Zaloguj się do [strony docelowej obszaru roboczego](https://ml.azure.com) , aby utworzyć zestaw danych za pośrednictwem środowiska sieci Web. Strona docelowa obszaru roboczego obsługuje tworzenie zarówno TabularDatasets, jak i FileDatasets.
-
-Poniższe animacje pokazują, jak utworzyć zestaw danych na stronie docelowej obszaru roboczego.
-
-Najpierw wybierz pozycję **zestawy danych** w sekcji **elementy zawartości** okienka po lewej stronie. Następnie wybierz pozycję **+ Utwórz zestaw danych** , aby wybrać źródło zestawu danych. może to być zarówno z plików lokalnych, magazynów danych, jak i publicznych adresów URL sieci Web. Wybierz **Typ zestawu danych**: * tabelaryczny lub plik. **Ustawienia i Podgląd** oraz formularze **schematów** są inteligentnie wypełniane na podstawie typu pliku. Wybierz pozycję **dalej** , aby je przejrzeć lub aby jeszcze bardziej skonfigurować zestaw danych przed utworzeniem. Wybierz pozycję **gotowe** , aby zakończyć tworzenie zestawu danych.
+#### <a name="on-the-web"></a>W sieci Web 
+Poniższe kroki i animacje pokazują, jak utworzyć zestaw danych w Azure Machine Learning Studio, https://ml.azure.com.
 
 ![Tworzenie zestawu danych przy użyciu interfejsu użytkownika](media/how-to-create-register-datasets/create-dataset-ui.gif)
+
+Aby utworzyć zestaw danych w programie Studio:
+1. Zaloguj się w https://ml.azure.com.
+1. Wybierz pozycję **zestawy danych** w sekcji **elementy zawartości** okienka po lewej stronie. 
+1. Wybierz pozycję **+ Utwórz zestaw danych** , aby wybrać źródło zestawu danych. może to być zarówno z plików lokalnych, magazynów danych, jak i publicznych adresów URL sieci Web.
+1. Wybierz **tabelaryczną** lub **plik** dla typu zestawu danych.
+1. Wybierz pozycję **dalej** , aby przejrzeć formularze **Ustawienia i Podgląd**, **schemat** i **Potwierdź szczegóły** . są one inteligentnie wypełniane na podstawie typu pliku. Za pomocą tych formularzy Sprawdź wybrane opcje i jeszcze bardziej Skonfiguruj zestaw danych przed utworzeniem.  
+1. Wybierz pozycję **Utwórz** , aby zakończyć tworzenie zestawu danych.
 
 ## <a name="register-datasets"></a>Rejestrowanie zestawów danych
 
 Aby ukończyć proces tworzenia, zarejestruj zestawy danych w obszarze roboczym.
 
-Użyj metody [`register()`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.dataset.dataset?view=azure-ml-py#register-workspace--name--description-none--tags-none--visible-true--exist-ok-false--update-if-exist-false-) , aby zarejestrować zestawy danych w obszarze roboczym, aby mogły być udostępniane innym osobom i ponownie używane w różnych eksperymentach.
+Użyj metody [`register()`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.dataset.dataset?view=azure-ml-py#register-workspace--name--description-none--tags-none--visible-true--exist-ok-false--update-if-exist-false-) , aby zarejestrować zestawy danych w obszarze roboczym, aby mogły być współużytkowane z innymi osobami i ponownie używane w różnych eksperymentach.
 
 ```Python
-titanic_ds = titanic_ds.register(workspace = workspace,
-                                 name = 'titanic_ds',
-                                 description = 'titanic training data')
+titanic_ds = titanic_ds.register(workspace=workspace,
+                                 name='titanic_ds',
+                                 description='titanic training data')
 ```
 
->[!Note]
-> Zestawy danych utworzone za pośrednictwem strony docelowej obszaru roboczego są automatycznie rejestrowane w obszarze roboczym.
+> [!Note]
+> Zestawy danych utworzone za pośrednictwem Azure Machine Learning Studio są automatycznie rejestrowane w obszarze roboczym.
+
+## <a name="create-datasets-with-azure-open-datasets"></a>Tworzenie zestawów danych za pomocą otwartych zestawów danych platformy Azure
+
+[Otwarte zestawy danych platformy Azure](https://azure.microsoft.com/services/open-datasets/) mają nadzorowane zestawy danych, których można użyć do dodawania funkcji specyficznych dla scenariusza do rozwiązań uczenia maszynowego w celu uzyskania dokładniejszych modeli. Zestawy danych obejmują dane z domeny publicznej na potrzeby pogodowych, spisu, świąt, bezpieczeństwa publicznego i lokalizacji, które ułatwiają uczenie modeli uczenia maszynowego i wzbogacanie rozwiązań predykcyjnych. Otwarte zestawy danych znajdują się w chmurze w Microsoft Azure i znajdują się zarówno w zestawie SDK, jak i w interfejsie użytkownika obszaru roboczego.
+
+### <a name="using-the-sdk"></a>Używanie zestawu SDK
+
+Aby utworzyć zestawy danych przy użyciu otwartych zestawów danych platformy Azure z zestawu SDK, upewnij się, że pakiet został zainstalowany z `pip install azureml-opendatasets`. Każdy zestaw danych dyskretnych jest reprezentowany przez własną klasę w zestawie SDK, a niektóre klasy są dostępne jako `TabularDataset`, `FileDataset`lub obie. Pełną listę klas można znaleźć w [dokumentacji referencyjnej](https://docs.microsoft.com/python/api/azureml-opendatasets/azureml.opendatasets?view=azure-ml-py) .
+
+Większość klas dziedziczy z i zwraca wystąpienie `TabularDataset`. Przykłady tych klas to `PublicHolidays`, `BostonSafety`i `UsPopulationZip`. Aby utworzyć `TabularDataset` z tych typów klas, należy użyć konstruktora bez argumentów. Po zarejestrowaniu zestawu danych utworzonego na podstawie otwartych zestawów danych żadne dane nie są natychmiast pobierane, ale dane będą dostępne później na żądanie (na przykład na potrzeby szkolenia) z centralnej lokalizacji magazynu. 
+
+```python
+from azureml.opendatasets import UsPopulationZip
+
+tabular_dataset = UsPopulationZip()
+tabular_dataset = tabular_dataset.register(workspace=workspace, name="pop data", description="US population data by zip code")
+```
+
+Niektóre klasy można pobrać jako `TabularDataset` lub `FileDataset`, co pozwala na manipulowanie i/lub pobranie plików bezpośrednio. Inne klasy mogą uzyskać tylko zestaw danych przy użyciu funkcji `get_tabular_dataset()` **lub** `get_file_dataset()`. Poniższy przykład kodu pokazuje kilka przykładów tych typów klas.
+
+```python
+from azureml.opendatasets import MNIST
+
+# MNIST class can return either TabularDataset or FileDataset
+tabular_dataset = MNIST.get_tabular_dataset()
+file_dataset = MNIST.get_file_dataset()
+
+from azureml.opendatasets import Diabetes
+
+# Diabetes class can return ONLY return TabularDataset and must be called from the static function
+diabetes_tabular = Diabetes.get_tabular_dataset()
+```
+
+### <a name="using-the-ui"></a>Korzystanie z interfejsu użytkownika
+
+Zestawy danych można także tworzyć z klas otwartych zestawów danych przy użyciu interfejsu użytkownika. W obszarze roboczym przejdź do karty **zestawy danych** w obszarze *zasoby*. Kliknij listę rozwijaną **Utwórz zestaw danych** , a następnie kliknij pozycję **z otwartego**zestawu.
+
+![Otwórz zestaw danych przy użyciu interfejsu użytkownika](media/how-to-create-register-datasets/open-datasets-1.png)
+
+Następnie wybierz zestaw danych, wybierając kafelek, opcjonalnie filtrując przy użyciu paska wyszukiwania. Następnie kliknij przycisk **Next** (Dalej).
+
+![Wybierz zestaw danych](media/how-to-create-register-datasets/open-datasets-2.png)
+
+Następnie wybierz nazwę, aby zarejestrować zestaw danych i opcjonalnie odfiltrować dane przy użyciu dostępnych filtrów. W tym przypadku zestaw danych dni wolnych jest filtrowany okres do jednego roku i kod kraju tylko do USA. Następnie kliknij pozycję **Utwórz**.
+
+![Ustaw parametry zestawu danych i Utwórz zestaw danych](media/how-to-create-register-datasets/open-datasets-3.png)
+
+Zestaw danych jest teraz tworzony i dostępny w obszarze roboczym w obszarze **zestawy danych**i może być używany w taki sam sposób jak w przypadku innych utworzonych zestawów danych.
 
 ## <a name="version-datasets"></a>Zestawy danych wersji
 

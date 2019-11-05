@@ -1,5 +1,5 @@
 ---
-title: Integrowanie Apache Spark i Apache Hive z łącznikiem magazynu Hive
+title: Apache Spark & Hive — łącznik magazynu Hive — Azure HDInsight
 description: Dowiedz się, jak zintegrować Apache Spark i Apache Hive z łącznikiem magazynu Hive w usłudze Azure HDInsight.
 author: nakhanha
 ms.author: nakhanha
@@ -7,12 +7,12 @@ ms.reviewer: hrasheed
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 10/08/2019
-ms.openlocfilehash: 440820b7772d8edeb43ce328b8393789d7ba2973
-ms.sourcegitcommit: b4665f444dcafccd74415fb6cc3d3b65746a1a31
+ms.openlocfilehash: 2448550cf35f92bc8d91bc6ad9d5b22cc90b5ae0
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/11/2019
-ms.locfileid: "72264298"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73494307"
 ---
 # <a name="integrate-apache-spark-and-apache-hive-with-the-hive-warehouse-connector"></a>Integrowanie Apache Spark i Apache Hive z łącznikiem magazynu Hive
 
@@ -46,7 +46,7 @@ Wykonaj następujące kroki, aby skonfigurować łącznik magazynu Hive między 
 
 ### <a name="modify-hosts-file"></a>Modyfikuj plik hosts
 
-Skopiuj informacje o węźle z pliku `/etc/hosts` w headnode0 klastra zapytań interaktywnych i Połącz informacje z plikiem `/etc/hosts` w headnode0 klastra Spark. Ten krok umożliwi klastrowi Spark rozpoznawanie adresów IP węzłów w klastrze zapytań interaktywnych. Wyświetl zawartość zaktualizowanego pliku z `cat /etc/hosts`. Końcowe dane wyjściowe powinny wyglądać podobnie do przedstawionego na poniższym zrzucie ekranu.
+Skopiuj informacje o węźle z pliku `/etc/hosts` w headnode0 klastra interakcyjnych zapytań i Połącz informacje z plikiem `/etc/hosts` w headnode0 klastra Spark. Ten krok umożliwi klastrowi Spark rozpoznawanie adresów IP węzłów w klastrze zapytań interaktywnych. Wyświetl zawartość zaktualizowanego pliku przy użyciu `cat /etc/hosts`. Końcowe dane wyjściowe powinny wyglądać podobnie do przedstawionego na poniższym zrzucie ekranu.
 
 ![plik hosts łącznika magazynu Hive](./media/apache-hive-warehouse-connector/hive-warehouse-connector-hosts-file.png)
 
@@ -54,21 +54,21 @@ Skopiuj informacje o węźle z pliku `/etc/hosts` w headnode0 klastra zapytań i
 
 #### <a name="from-your-interactive-query-cluster"></a>Z interaktywnego klastra zapytań
 
-1. Przejdź do strony głównej platformy Apache Ambari dla klastra przy użyciu `https://LLAPCLUSTERNAME.azurehdinsight.net`, gdzie `LLAPCLUSTERNAME` jest nazwą klastra interakcyjnych zapytań.
+1. Przejdź do strony głównej platformy Apache Ambari dla klastra przy użyciu `https://LLAPCLUSTERNAME.azurehdinsight.net`, gdzie `LLAPCLUSTERNAME` jest nazwą klastra zapytań interaktywnych.
 
-1. Przejdź do **gałęzi** > **configs** > **Advanced** > **Advanced Hive-site** > **Hive. dozorcy. kworum** i zanotuj wartość. Wartość może być podobna do: `zk0-iqgiro.rekufuk2y2cezcbowjkbwfnyvd.bx.internal.cloudapp.net:2181,zk1-iqgiro.rekufuk2y2cezcbowjkbwfnyvd.bx.internal.cloudapp.net:2181,zk4-iqgiro.rekufuk2y2cezcbowjkbwfnyvd.bx.internal.cloudapp.net:2181`.
+1. Przejdź do strony **hive** > **konfiguracjami** > **Advanced** > **Advanced Hive-site** > **Hive. dozorcy. kworum** i zanotuj wartość. Wartość może być podobna do: `zk0-iqgiro.rekufuk2y2cezcbowjkbwfnyvd.bx.internal.cloudapp.net:2181,zk1-iqgiro.rekufuk2y2cezcbowjkbwfnyvd.bx.internal.cloudapp.net:2181,zk4-iqgiro.rekufuk2y2cezcbowjkbwfnyvd.bx.internal.cloudapp.net:2181`.
 
-1. Przejdź do **gałęzi** > **configs** > **Advanced** > **Ogólne** > **Hive. metadanych** i zanotuj wartość. Wartość może być podobna do: `thrift://hn0-iqgiro.rekufuk2y2cezcbowjkbwfnyvd.bx.internal.cloudapp.net:9083,thrift://hn1-iqgiro.rekufuk2y2cezcbowjkbwfnyvd.bx.internal.cloudapp.net:9083`.
+1. Przejdź do **gałęzi** > **konfiguracjami** > **Advanced** > **General** > **Hive. metadanych. URI** i zanotuj wartość. Wartość może być podobna do: `thrift://hn0-iqgiro.rekufuk2y2cezcbowjkbwfnyvd.bx.internal.cloudapp.net:9083,thrift://hn1-iqgiro.rekufuk2y2cezcbowjkbwfnyvd.bx.internal.cloudapp.net:9083`.
 
 #### <a name="from-your-apache-spark-cluster"></a>Z klastra Apache Spark
 
 1. Przejdź do strony głównej platformy Apache Ambari dla klastra przy użyciu `https://SPARKCLUSTERNAME.azurehdinsight.net`, gdzie `SPARKCLUSTERNAME` jest nazwą klastra Apache Spark.
 
-1. Przejdź do **gałęzi** > **configs** > **Advanced** > **Advanced Hive-Interactive-site** > **Hive. llap. Demon. Service. hosts** i zanotuj wartość. Wartość może być podobna do: `@llap0`.
+1. Przejdź do usługi **hive** > **konfiguracjami** > **Advanced** > **Advanced Hive-Interactive-site** > **Hive. llap. Demon. Service. hosty** i zanotuj wartość. Wartość może być podobna do: `@llap0`.
 
 ### <a name="configure-spark-cluster-settings"></a>Skonfiguruj ustawienia klastra Spark
 
-W interfejsie użytkownika sieci Web platformy Spark Ambari przejdź do **Spark2** > **configs** > **Custom Spark2-Defaults**.
+W interfejsie użytkownika sieci Web platformy Spark Ambari przejdź do opcji **Spark2** > **configs** > **Custom Spark2-Defaults**.
 
 ![Konfiguracja oprogramowania Apache Ambari Spark2](./media/apache-hive-warehouse-connector/hive-warehouse-connector-spark2-ambari.png)
 
@@ -77,10 +77,10 @@ Wybierz pozycję **Dodaj właściwość...** w razie potrzeby Dodaj/zaktualizuj 
 | Klucz | Wartość |
 |----|----|
 |`spark.hadoop.hive.llap.daemon.service.hosts`|Wartość uzyskana wcześniej od programu **Hive. llap. Demon. Service. hosts**.|
-|`spark.sql.hive.hiveserver2.jdbc.url`|`jdbc:hive2://LLAPCLUSTERNAME.azurehdinsight.net:443/;user=admin;password=PWD;ssl=true;transportMode=http;httpPath=/hive2`. Ustaw wartość parametrów połączenia JDBC, która łączy się z serwera hiveserver2 w klastrze zapytań interaktywnych. Zastąp `LLAPCLUSTERNAME` nazwą klastra interakcyjnych zapytań. Zastąp `PWD` rzeczywistym hasłem.|
+|`spark.sql.hive.hiveserver2.jdbc.url`|`jdbc:hive2://LLAPCLUSTERNAME.azurehdinsight.net:443/;user=admin;password=PWD;ssl=true;transportMode=http;httpPath=/hive2`. Ustaw wartość parametrów połączenia JDBC, która łączy się z serwera hiveserver2 w klastrze zapytań interaktywnych. Zastąp `LLAPCLUSTERNAME` nazwą klastra zapytań interaktywnych. Zastąp `PWD` rzeczywistym hasłem.|
 |`spark.datasource.hive.warehouse.load.staging.dir`|`wasbs://STORAGE_CONTAINER_NAME@STORAGE_ACCOUNT_NAME.blob.core.windows.net/tmp`. Ustaw odpowiedni katalog przemieszczania zgodny z systemem plików HDFS. Jeśli istnieją dwa różne klastry, katalog przemieszczania powinien być folderem w katalogu przemieszczania konta magazynu klastra LLAP, dzięki czemu serwera hiveserver2 ma do niego dostęp.  Zastąp `STORAGE_ACCOUNT_NAME` nazwą konta magazynu używanego przez klaster i `STORAGE_CONTAINER_NAME` nazwą kontenera magazynu.|
 |`spark.datasource.hive.warehouse.metastoreUri`|Wartość uzyskana wcześniej od identyfikatora **URI Hive. metadanych**.|
-|`spark.security.credentials.hiveserver2.enabled`|`false` dla trybu wdrażania klienta PRZĘDZenia.|
+|`spark.security.credentials.hiveserver2.enabled`|`false` trybu wdrażania klienta PRZĘDZy.|
 |`spark.hadoop.hive.zookeeper.quorum`|Wartość uzyskana wcześniej od programu **Hive. dozorcy. kworum**.|
 
 Zapisz zmiany i ponownie uruchom składniki zgodnie z wymaganiami.
@@ -111,7 +111,7 @@ Aby rozpocząć sesję platformy Spark-Shell, wykonaj następujące czynności:
     --conf spark.security.credentials.hiveserver2.enabled=false
     ```
 
-    Zobaczysz komunikat powitalny i wiersz `scala>`, gdzie można wprowadzać polecenia.
+    Zobaczysz komunikat powitalny i monit `scala>`, gdzie można wprowadzać polecenia.
 
 1. Po uruchomieniu powłoki Spark można uruchomić wystąpienie łącznika magazynu usługi Hive przy użyciu następujących poleceń:
 
@@ -163,7 +163,7 @@ Platforma Spark nie obsługuje natywnego zapisywania w tabelach z zarządzanym K
     hive.createTable("sampletable_colorado").column("clientid","string").column("querytime","string").column("market","string").column("deviceplatform","string").column("devicemake","string").column("devicemodel","string").column("state","string").column("country","string").column("querydwelltime","double").column("sessionid","bigint").column("sessionpagevieworder","bigint").create()
     ```
 
-1. Odfiltruj tabelę `hivesampletable`, gdzie kolumna `state` jest równa `Colorado`. To zapytanie tabeli Hive jest zwracane jako ramka Dataframe. Następnie ramka danych jest zapisywana w tabeli programu Hive `sampletable_colorado` przy użyciu funkcji `write`.
+1. Odfiltruj tabelę `hivesampletable` gdzie kolumna `state` jest równa `Colorado`. To zapytanie tabeli Hive jest zwracane jako ramka Dataframe. Następnie ramka danych jest zapisywana w tabeli programu Hive `sampletable_colorado` przy użyciu funkcji `write`.
 
     ```scala
     hive.table("hivesampletable").filter("state = 'Colorado'").write.format(HiveWarehouseSession.HIVE_WAREHOUSE_CONNECTOR).option("table","sampletable_colorado").save()
@@ -208,7 +208,7 @@ Postępuj zgodnie z poniższymi instrukcjami, aby utworzyć przykład łącznika
     ```
 
     >[!Important]
-    > Opcje `metastoreUri` i `database` muszą być obecnie ustawiane ręcznie ze względu na znany problem w Apache Spark. Aby uzyskać więcej informacji o tym problemie, zobacz [Spark-25460](https://issues.apache.org/jira/browse/SPARK-25460).
+    > Opcje `metastoreUri` i `database` należy obecnie ustawić ręcznie ze względu na znany problem w Apache Spark. Aby uzyskać więcej informacji o tym problemie, zobacz [Spark-25460](https://issues.apache.org/jira/browse/SPARK-25460).
 
 1. Wróć do drugiej sesji SSH i wprowadź następujące wartości:
 
@@ -224,7 +224,7 @@ Postępuj zgodnie z poniższymi instrukcjami, aby utworzyć przykład łącznika
     hive.table("stream_table").show()
     ```
 
-Użyj **klawiszy CTRL + C** , aby zatrzymać netcat na drugiej sesji SSH. Użyj `:q`, aby wyjść z powłoki Spark podczas pierwszej sesji SSH.
+Użyj **klawiszy CTRL + C** , aby zatrzymać netcat na drugiej sesji SSH. Użyj `:q`, aby wyjść z powłoki Spark w pierwszej sesji SSH.
 
 ### <a name="securing-data-on-spark-esp-clusters"></a>Zabezpieczanie danych w klastrach Spark ESP
 
@@ -248,13 +248,13 @@ Użyj **klawiszy CTRL + C** , aby zatrzymać netcat na drugiej sesji SSH. Użyj 
 1. Zastosuj zasady maskowania kolumn, które wyświetlają tylko ostatnie cztery znaki kolumny.  
     1. Przejdź do interfejsu użytkownika administratora Ranger w `https://CLUSTERNAME.azurehdinsight.net/ranger/`.
     1. Kliknij usługę Hive dla klastra w obszarze **Hive**.
-        @no__t — 0ranger Service Manager @ no__t-1
+        ![Ranger Service Manager](./media/apache-hive-warehouse-connector/hive-warehouse-connector-ranger-service-manager.png)
     1. Kliknij kartę **maskowanie** , a następnie **Dodaj nowe zasady**
 
         ![Lista zasad Hive Ranger łącznika magazynu Hive](./media/apache-hive-warehouse-connector/hive-warehouse-connector-ranger-hive-policy-list.png)
 
-    a. Podaj żądaną nazwę zasad. Wybierz bazę danych **: default**, tabela programu Hive: **Demonstracja**, kolumna Hive: **name**, User: **rsadmin2**, typy dostępu: **SELECT**i **maska częściowa: Pokaż ostatnie 4** z menu **opcji wybierz maskowanie** . Kliknij pozycję **Add** (Dodaj).
-                ![create Policy @ no__t-1
+    a. Podaj żądaną nazwę zasad. Wybierz bazę danych **: default**, tabela programu Hive: **Demonstracja**, kolumna Hive: **name**, User: **rsadmin2**, typy dostępu: **SELECT**i **maska częściowa: Pokaż ostatnie 4** z menu **opcji wybierz maskowanie** . Kliknij pozycję **Dodaj**.
+                ![utworzyć zasad](./media/apache-hive-warehouse-connector/hive-warehouse-connector-ranger-create-policy.png)
 1. Ponownie Wyświetl zawartość tabeli. Po zastosowaniu zasad Ranger można zobaczyć tylko cztery ostatnie znaki w kolumnie.
 
     ![tabela demonstracyjna po zastosowaniu zasad Ranger](./media/apache-hive-warehouse-connector/hive-warehouse-connector-table-after-ranger-policy.png)

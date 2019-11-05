@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/29/2019
 ms.author: memildin
-ms.openlocfilehash: 32b7f1d699c0d620d70614c441a8c18520c1b2d5
-ms.sourcegitcommit: 8a717170b04df64bd1ddd521e899ac7749627350
+ms.openlocfilehash: 6a01ddbc733ce52c02e9abef2569adbfbd19c6a8
+ms.sourcegitcommit: 3f8017692169bd75483eefa96c225d45cd497f06
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/23/2019
-ms.locfileid: "71201046"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73520732"
 ---
 # <a name="security-recommendations-in-azure-security-center"></a>Zalecenia dotyczące zabezpieczeń w Centrum zabezpieczeń Azure 
 W tym temacie wyjaśniono, jak wyświetlać i zrozumieć zalecenia w Azure Security Center, aby pomóc w ochronie zasobów platformy Azure.
@@ -36,7 +36,7 @@ Security Center okresowe Analizowanie stanu zabezpieczeń zasobów platformy Azu
 Każde zalecenie oferuje następujące informacje:
 
 - Krótki opis tego, co jest zalecane.
-- Kroki korygowania, które należy wykonać w celu wdrożenia zalecenia. <!-- In some cases, one-click remediation is available. -->
+- Kroki korygowania, które należy wykonać w celu wdrożenia zalecenia. <!-- In some cases, Quick Fix remediation is available. -->
 - Które zasoby są wymagane do wykonania zalecanej akcji.
 - Istotny **wpływ na ocenę**, czyli ilość, która będzie obowiązywać w przypadku zaimplementowania tego zalecenia.
 
@@ -48,17 +48,17 @@ Security Center analizuje stan zabezpieczeń zasobów, aby identyfikować potenc
 
 1. Wybierz **kafelek rekomendacje** w obszarze **Przegląd**. Zostanie otwarta lista **rekomendacje** .
 
-      ![Wyświetl rekomendacje](./media/security-center-recommendations/view-recommendations.png)
+      ![Wyświetlanie zaleceń](./media/security-center-recommendations/view-recommendations.png)
 
     Możesz filtrować zalecenia. Aby filtrować zalecenia, wybierz pozycję **Filtruj** w bloku **zalecenia** . Zostanie otwarty blok **filtru** i zostanie wybrana wartość ważność i stan, które mają być wyświetlane.
 
-   * **ZALECENIA**: Zalecenie.
-   * **BEZPIECZNY WPŁYW OCENY**: Wynik wygenerowany przez Security Center przy użyciu zaleceń dotyczących zabezpieczeń oraz stosowanie zaawansowanych algorytmów w celu określenia, jak kluczowe są poszczególne zalecenia. Aby uzyskać więcej informacji, zobacz temat [bezpieczne Obliczanie wyniku](security-center-secure-score.md#secure-score-calculation).
-   * **ZASÓB**: Wyświetla listę zasobów, do których stosuje się to zalecenie.
-   * **PASKI STANU**:  Opisuje ważność danego zalecenia:
-       * **Wysoki (czerwony)** : Istnieje luka w zabezpieczeniach, która ma zrozumiały zasób (na przykład aplikację, maszynę wirtualną lub sieciową grupę zabezpieczeń) i wymaga uwagi.
-       * **Średni (pomarańczowy)** : Istnieje luka w zabezpieczeniach, która nie jest krytyczna lub wymagane jest wykonanie dodatkowych czynności w celu wyeliminowania tego stanu lub ukończenia procesu.
-       * **Niska (niebieska)** : Istnieje usterka, którą należy rozwiązać, ale nie wymaga natychmiastowej uwagi. (Domyślnie małe rekomendacje nie są wyświetlane, ale można filtrować według niskich zaleceń, jeśli chcesz je zobaczyć). 
+   * **Zalecenia**: zalecenie.
+   * **Bezpieczny wpływ na ocenę**: wynik wygenerowany przez Security Center przy użyciu zaleceń dotyczących zabezpieczeń oraz stosowanie zaawansowanych algorytmów w celu określenia, jak kluczowe jest każde zalecenie. Aby uzyskać więcej informacji, zobacz temat [bezpieczne Obliczanie wyniku](security-center-secure-score.md#secure-score-calculation).
+   * **Zasób**: zawiera listę zasobów, do których stosuje się to zalecenie.
+   * **Paski stanu**: opisuje ważność danego zalecenia:
+       * **Wysoka (czerwony)** : istnieje luka w zabezpieczeniach, która ma zrozumiały zasób (na przykład aplikację, maszynę wirtualną lub sieciową grupę zabezpieczeń) i wymaga uwagi.
+       * **Średni (pomarańczowy)** : istnieje luka w zabezpieczeniach, która nie jest krytyczna lub dodatkowe kroki są wymagane do eliminacji lub ukończenia procesu.
+       * **Niska (niebieska)** : istnieje luka w zabezpieczeniach, którą należy rozwiązać, ale nie wymaga natychmiastowej uwagi. (Domyślnie małe rekomendacje nie są wyświetlane, ale można filtrować według niskich zaleceń, jeśli chcesz je zobaczyć). 
        * **Dobra kondycja (zielony)** :
        * **Niedostępne (szare)** :
 

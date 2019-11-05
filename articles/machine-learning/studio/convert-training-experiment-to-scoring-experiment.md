@@ -1,7 +1,7 @@
 ---
-title: Przygotowanie modelu wdrożenia
-titleSuffix: Azure Machine Learning Studio
-description: Jak przygotować uczonego modelu do wdrożenia jako usługę sieci web przy użyciu konwertowanie eksperymentu szkolenia usługi Machine Learning Studio na eksperyment predykcyjny.
+title: Przygotuj model do wdrożenia
+titleSuffix: Azure Machine Learning Studio (classic)
+description: Jak przygotować przeszkolony model do wdrożenia jako usługę sieci Web, konwertując eksperyment Machine Learning Studio (klasyczny) do eksperymentu predykcyjnego.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: studio
@@ -9,111 +9,111 @@ ms.topic: conceptual
 author: xiaoharper
 ms.author: amlstudiodocs
 ms.date: 03/28/2017
-ms.openlocfilehash: 2a318edada5cdc4124e221fdc8c441ab323a9289
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: caaed83417ac1eaadc407fb12dc8bb360aae45ec
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60751974"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73493275"
 ---
-# <a name="how-to-prepare-your-model-for-deployment-in-azure-machine-learning-studio"></a>Jak przygotować modelu wdrożenia w usłudze Azure Machine Learning Studio
+# <a name="how-to-prepare-your-model-for-deployment-in-azure-machine-learning-studio-classic"></a>Jak przygotować model do wdrożenia w Azure Machine Learning Studio (klasyczny)
 
-Usługa Azure Machine Learning Studio zapewnia narzędzia potrzebne do opracowania modelu analizy predykcyjnej i operacjonalizacji go, wdrażając go jako usługę sieci web platformy Azure.
+Azure Machine Learning Studio (klasyczny) oferuje narzędzia potrzebne do opracowania modelu analizy predykcyjnej, a następnie operacjonalizować go przez wdrożenie go jako usługi sieci Web platformy Azure.
 
-Aby to zrobić, użyj Studio do tworzenia eksperymentu - o nazwie *eksperymentu szkolenia* — gdzie szkolenie, ocena i edytowanie modelu. Po zakończeniu, otrzymasz modelu gotowe do wdrożenia przez konwertowanie eksperymentu szkolenia do *eksperyment predykcyjny* skonfigurowanego na dane użytkownika wynik.
+W tym celu należy użyć klasycznej wersji programu Studio w celu *utworzenia eksperymentu* , który umożliwia wyuczenie, ocenę i edytowanie modelu. Gdy skończysz, uzyskasz gotowy do wdrożenia model, konwertując eksperyment szkoleniowy na *eksperyment predykcyjny* , który jest skonfigurowany do oceny danych użytkownika.
 
-Możesz zobaczyć przykład ten proces w [samouczek 1: Prognozowanie ryzyka kredytowego](tutorial-part1-credit-risk.md).
+Przykładowy proces można zobaczyć w [samouczku 1: przewidywanie ryzyka kredytowego](tutorial-part1-credit-risk.md).
 
-Ten artykuł przedstawia szczegółowo omówi sposób eksperymentu szkolenia są konwertowane na eksperyment predykcyjny i sposób wdrażania tego eksperyment predykcyjny. Dzięki zrozumieniu tymi szczegółowymi informacjami, nauczysz się, jak skonfigurować wdrożonego modelu się bardziej skuteczne.
+Ten artykuł zawiera szczegółowe informacje o tym, jak eksperyment szkoleniowy jest konwertowany na eksperyment predykcyjny i jak jest wdrażany eksperyment predykcyjny. Opisując te szczegóły, można dowiedzieć się, jak skonfigurować wdrożony model, aby zwiększyć jego efektywność.
 
 
 
-## <a name="overview"></a>Przegląd 
+## <a name="overview"></a>Omówienie 
 
-Konwertowanie eksperymentu szkolenia na eksperyment predykcyjny proces obejmuje trzy kroki:
+Proces konwersji eksperymentu szkoleniowego na eksperyment predykcyjny obejmuje trzy kroki:
 
-1. Zastąp algorytm modułów za pomocą uczonego modelu uczenia maszynowego.
-2. Przytnij eksperymentu do tych modułów, które są potrzebne do oceniania. Eksperyment obejmuje pewną liczbę modułów, które są niezbędne do szkolenia, ale nie są wymagane, gdy model jest uczony.
-3. Zdefiniuj sposób modelu będzie akceptować dane użytkownika usługi sieci web i jakie dane zostaną zwrócone.
+1. Zastąp moduły algorytmu uczenia maszynowego modelem szkolonym.
+2. Przytnij eksperyment tylko do modułów, które są konieczne do oceny. Eksperyment szkoleniowy obejmuje wiele modułów, które są niezbędne do uczenia się, ale nie są potrzebne, gdy model jest szkolony.
+3. Zdefiniuj, w jaki sposób model akceptuje dane od użytkownika usługi sieci Web i jakie dane zostaną zwrócone.
 
 > [!TIP]
-> Eksperymentu szkolenia dotąd istniała zaniepokojona szkolenia i oceniania modelu przy użyciu własnych danych. Jednak po wdrożeniu użytkownicy będą wysyłać nowe dane do modelu i zwróci wyniki przewidywań. Tak jak przekonwertować eksperymentu szkolenia w eksperyment predykcyjny w celu przygotowania do wdrożenia, należy pamiętać, jak model będzie używany przez inne osoby.
+> W doświadczeniu szkoleniowym Jesteś w trakcie szkoleń i oceniamy model przy użyciu własnych danych. Po wdrożeniu użytkownicy będą wysyłać nowe dane do modelu i zwracają wyniki prognozowania. Dlatego podczas konwertowania eksperymentu szkoleniowego na eksperyment predykcyjny, aby przygotować go do wdrożenia, należy pamiętać, jak model będzie używany przez inne osoby.
 > 
 > 
 
-## <a name="set-up-web-service-button"></a>Przycisk Ustaw usługę sieci Web
-Po uruchomieniu eksperymentu (kliknij **Uruchom** w dolnej części obszaru roboczego eksperymentu), kliknij przycisk **ustawić usługę sieci Web** przycisku (wybierz **predykcyjne usługi sieci Web** opcji). **Ustaw usługę sieci Web** wykonuje dla Ciebie konwertowanie eksperymentu szkolenia na eksperyment predykcyjny trzy kroki:
+## <a name="set-up-web-service-button"></a>Przycisk usługi sieci Web
+Po uruchomieniu eksperymentu (kliknij pozycję **Uruchom** u dołu kanwy eksperymentu) kliknij przycisk **Konfiguruj usługę sieci Web** (wybierz opcję **predykcyjnej usługi sieci Web** ). **Konfiguracja usługi sieci Web** wykonuje trzy kroki konwertowania eksperymentu szkoleniowego na eksperyment predykcyjny:
 
-1. Zapisuje uczonego modelu w **przeszkolone modele** części palety modułów (do lewej strony obszaru roboczego eksperymentu). Następnie zastępuje algorytmu uczenia maszynowego i [Train Model] [ train-model] modułów z zapisanych trenowanego modelu.
-2. Analizuje eksperymentu, a usuwa modułów, które wyraźnie były używane tylko na potrzeby szkolenia i nie są już potrzebne.
-3. Wstawia _sieci Web dane wejściowe usługi_ i _dane wyjściowe_ moduły do domyślne lokalizacje w eksperymencie (te moduły akceptują i zwracają dane użytkownika).
+1. Model ten jest zapisywany w sekcji **przeszkolonych modeli** w palecie modułów (po lewej stronie kanwy eksperymentu). Spowoduje to zamienienie algorytmu uczenia maszynowego i [przeszkolenie modułów modelu][train-model] z zapisanym przeszkolonym modelem.
+2. Analizuje eksperyment i usuwa moduły, które były jasno używane tylko do szkolenia i nie są już potrzebne.
+3. Wstawia moduły danych wejściowych i _wyjściowych_ _usługi sieci Web_ do domyślnych lokalizacji w Twoim eksperymentie (te moduły akceptują i zwracają dane użytkownika).
 
-Na przykład poniższego eksperymentu szkolenie modeli modelu drzewa decyzyjnego dwuklasowych przy użyciu przykładowych danych spisu:
+Na przykład następujące eksperymenty pociąga za pomocą dwuklasowego modelu drzewa decyzyjnego przy użyciu przykładowych danych spisu:
 
-![Eksperymentu szkolenia](./media/convert-training-experiment-to-scoring-experiment/figure1.png)
+![Eksperyment szkoleniowy](./media/convert-training-experiment-to-scoring-experiment/figure1.png)
 
-Moduły w tym eksperymencie wykonywać zasadniczo cztery różne funkcje:
+Moduły w tym eksperymentie wykonują zasadniczo cztery różne funkcje:
 
 ![Funkcje modułu](./media/convert-training-experiment-to-scoring-experiment/figure2.png)
 
-Podczas konwertowania tego eksperymentu szkolenia eksperyment predykcyjny niektóre moduły te nie są już potrzebne, lub teraz obsługiwać w innym celu:
+Podczas konwertowania tego eksperymentu szkoleniowego na eksperyment predykcyjny niektóre z tych modułów nie są już potrzebne lub są teraz w innym celu:
 
-* **Dane** — dane w tym przykładowym zestawie danych nie jest używana podczas oceniania — użytkownik usługi sieci web będzie dostarczać dane, które mają zostać ocenione. Jednak metadane z tego zestawu danych, takich jak typy danych są używane przez trenowanego modelu. Dlatego należy zachować zestawu danych w eksperyment predykcyjny, dzięki czemu umożliwia ona te metadane.
+* **Dane** — dane w tym przykładowym zestawie danych nie są używane podczas oceniania — użytkownik usługi sieci Web dostarczy dane do oceny. Jednak metadane z tego zestawu danych, takie jak typy danych, są używane przez szkolony model. Dlatego należy zachować zestaw danych w eksperymentie predykcyjnym, aby umożliwić mu dostarczenie tych metadanych.
 
-* **Przygotowywanie** — w zależności od danych użytkownika, które zostaną przesłane do oceniania, te moduły mogą lub nie może być konieczne przetwarzania przychodzących danych. **Ustawić usługę sieci Web** przycisku nie touch te — należy zdecydować, jaki chcesz je obsłużyć.
+* **Przygotowanie** — w zależności od danych użytkownika, które zostaną przesłane do oceniania, te moduły mogą lub nie muszą być wymagane do przetwarzania danych przychodzących. Przycisk **Konfiguruj usługę sieci Web** nie dotyka tych — musisz zdecydować, jak chcesz je obsłużyć.
   
-    Na przykład, w tym przykładzie przykładowego zestawu danych może mieć wartości Brak, więc [Clean Missing Data] [ clean-missing-data] moduł został dołączony do czynienia z nimi. Ponadto przykładowy zestaw danych zawiera kolumny, które nie są wymagane do nauczenia modelu. Dlatego [Select Columns in Dataset] [ select-columns] moduł został uwzględniony, aby wykluczyć te dodatkowe kolumny z przepływu danych. Jeśli wiesz, że dane, które zostaną przesłane do oceniania przez usługę sieci web nie będzie brakujące wartości, a następnie można usunąć [Clean Missing Data] [ clean-missing-data] modułu. Jednak ponieważ [Select Columns in Dataset] [ select-columns] modułu pomaga zdefiniować kolumny danych, która oczekuje trenowanego modelu, powinna być ten moduł.
+    Na przykład, w tym przykładzie przykładowy zestaw danych może mieć brakujące wartości, więc dołączono do nich [nieoczyszczony moduł danych][clean-missing-data] . Ponadto przykładowy zestaw danych zawiera kolumny, które nie są konieczne do uczenia modelu. W związku z tym dodano [kolumny SELECT w module DataSet][select-columns] , aby wykluczyć te dodatkowe kolumny z przepływu danych. Jeśli wiesz, że dane, które zostaną przesłane na potrzeby oceniania za pomocą usługi sieci Web, nie mają brakujących wartości, możesz usunąć [nieczysty moduł danych][clean-missing-data] . Jednak ponieważ moduł [Wybierz kolumny w zestawie danych][select-columns] ułatwia definiowanie kolumn danych oczekiwanych przez szkolony model, ten moduł musi pozostać.
 
-* **Szkolenie** — te moduły są używane do nauczenia modelu. Po kliknięciu **ustawić usługę sieci Web**, te moduły są zastępowane pojedynczy moduł, który zawiera model szkolenia. Ten nowy moduł jest zapisywany w **przeszkolone modele** części palety modułów.
+* **Uczenie** — te moduły są używane do uczenia modelu. Po kliknięciu przycisku **Konfiguruj usługę sieci Web**te moduły są zastępowane jednym modułem zawierającym przeszkolony model. Ten nowy moduł jest zapisywany w sekcji **przeszkolonych modeli** w palecie modułów.
 
-* **Wynik** — w tym przykładzie [podziału danych] [ split] moduł jest używany do dzielenia strumienia danych na dane testowe oraz dane szkoleniowe. W eksperyment predykcyjny, firma Microsoft nie uczony, więc [podziału danych] [ split] może zostać usunięty. Podobnie, drugi [Score Model] [ score-model] modułu i [Evaluate Model] [ evaluate-model] moduł są używane do porównywania wyników z danych testowych, więc te moduły nie są potrzebne w eksperyment predykcyjny. Pozostałe [Score Model] [ score-model] modułu, jednak nie jest konieczna zwracanie wyniku oceny za pośrednictwem usługi sieci web.
+* **Wynik** — w tym przykładzie moduł [Split Data][split] jest używany do dzielenia strumienia danych na dane testowe i dane szkoleniowe. W eksperymentie predykcyjnym nie jesteśmy już szkoleniami, więc można usunąć [dane podzielone][split] . Analogicznie, drugi moduł [modelu][score-model] oceny i moduł [oceny modelu][evaluate-model] są używane do porównywania wyników danych testowych, więc te moduły nie są konieczne w przypadku eksperymentu predykcyjnego. Moduł pozostały [model oceny][score-model] jest jednak wymagany do zwrócenia wyniku oceny przez usługę sieci Web.
 
-Oto jak wygląda nasz przykład po kliknięciu przycisku **ustawić usługę sieci Web**:
+Oto jak wygląda przykład po kliknięciu przycisku **Skonfiguruj usługę sieci Web**:
 
-![Przekonwertowana eksperyment predykcyjny](./media/convert-training-experiment-to-scoring-experiment/figure3.png)
+![Przekonwertowany eksperyment predykcyjny](./media/convert-training-experiment-to-scoring-experiment/figure3.png)
 
-Pracy wykonanej przez **ustawić usługę sieci Web** może być wystarczające, aby przygotować eksperymentu, który można wdrożyć jako usługę sieci web. Można jednak wykonania dodatkowych czynności dodatkowej specyficzne dla swojego eksperymentu.
+Działanie wykonywane przez **usługę sieci Web** może być wystarczające, aby przygotować eksperyment do wdrożenia jako usługę sieci Web. Jednak może być konieczne wykonanie pewnych dodatkowych czynności związanych z eksperymentem.
 
-### <a name="adjust-input-and-output-modules"></a>Dostosuj modułów wejściowych i wyjściowych
-W eksperymentu szkolenia używany zestaw danych szkoleniowych, a następnie została część przetwarzania, aby uzyskać dane w postaci i potrzebny Algorytm uczenia maszynowego. Jeśli dane oczekuje się za pośrednictwem usługi sieci web nie będzie potrzebował tego przetwarzania, można pominąć go: Połącz wyjście **danych wejściowych modułu usługi sieci Web** do innego modułu w eksperymencie. Dane użytkownika teraz pojawić się w modelu, w tym miejscu.
+### <a name="adjust-input-and-output-modules"></a>Dostosowywanie modułów wejściowych i wyjściowych
+W doświadczeniu szkoleniowym użyto zestawu danych szkoleniowych, a następnie przetworzysz dane w postaci, w której jest wymagany algorytm uczenia maszynowego. Jeśli dane, które mają zostać odebrane przez usługę sieci Web, nie będą potrzebne do tego przetwarzania, można je ominąć: Połącz dane wyjściowe **modułu danych wejściowych usługi sieci Web** z innym modułem w Twoim eksperymentie. Dane użytkownika zostaną teraz odebrane w modelu w tej lokalizacji.
 
-Na przykład domyślnie **ustawić usługę sieci Web** umieszcza **sieci Web dane wejściowe usługi** modułu w górnej części przepływu danych, jak pokazano na rysunku powyżej. Ale możemy ręcznie pozycji **sieci Web dane wejściowe usługi** ostatnie modułów danych przetwarzania:
+Na przykład **Usługa sieci Web** domyślnie umieszcza moduł **wejściowy usługi sieci Web** w górnej części przepływu danych, jak pokazano na rysunku powyżej. Można jednak ręcznie ustawić dane **wejściowe usługi sieci Web** za pomocą modułów przetwarzania danych:
 
-![Przenoszenie danych wejściowych usługi internetowej](./media/convert-training-experiment-to-scoring-experiment/figure4.png)
+![Przeniesienie danych wejściowych usługi sieci Web](./media/convert-training-experiment-to-scoring-experiment/figure4.png)
 
-Dane wejściowe, dostępne za pośrednictwem usługi sieci web będzie teraz przekazać bezpośrednio do modułu Score Model bez żadnych przetwarzania wstępnego.
+Dane wejściowe dostarczane za pomocą usługi sieci Web będą teraz przekazywane bezpośrednio do modułu modelu wynikowego bez konieczności przetwarzania wstępnego.
 
-Podobnie, domyślnie **ustawić usługę sieci Web** umieszcza modułu danych wyjściowych usługi sieci Web w dolnej części przepływu danych. W tym przykładzie Usługa sieci web zwróci użytkownikowi dane wyjściowe [Score Model] [ score-model] moduł, który obejmuje wektor kompletne dane wejściowe oraz wyniki oceny.
-Jednakże, jeśli chcesz użyć zwrócić coś innego, następnie można dodać dodatkowe moduły przed **sieci Web usługi danych wyjściowych** modułu. 
+Podobnie domyślnie **Konfiguracja usługi** sieci Web powoduje umieszczenie modułu wyjściowego usługi sieci Web u dołu przepływu danych. W tym przykładzie usługa sieci Web zwróci do użytkownika dane wyjściowe modułu [modelu wynikowego][score-model] , który zawiera kompletny wektor danych wejściowych i wyniki oceniania.
+Jeśli jednak wolisz zwrócić coś innego, możesz dodać kolejne moduły przed modułem **wyjściowym usługi sieci Web** . 
 
-Na przykład, aby zwrócić tylko oceniania wyników, a nie całej wektor dane wejściowe, należy dodać [Select Columns in Dataset] [ select-columns] modułu, aby wykluczyć wszystkie kolumny z wyjątkiem oceniania wyników. Następnie przenieś **sieci Web usługi danych wyjściowych** modułu z danymi wyjściowymi [Select Columns in Dataset] [ select-columns] modułu. Eksperyment wygląda następująco:
+Aby na przykład zwrócić tylko wyniki oceny, a nie cały wektor danych wejściowych, Dodaj do modułu DataSet ( [Wybieranie kolumn w zestawie danych][select-columns] ) wszystkie kolumny z wyjątkiem wyników oceniania. Następnie Przenieś moduł **wyjściowy usługi sieci Web** do danych wyjściowych modułu [SELECT Columns in DataSet][select-columns] . Eksperyment wygląda następująco:
 
-![Przenoszenie danych wyjściowych usługi sieci web](./media/convert-training-experiment-to-scoring-experiment/figure5.png)
+![Przeniesienie danych wyjściowych usługi sieci Web](./media/convert-training-experiment-to-scoring-experiment/figure5.png)
 
-### <a name="add-or-remove-additional-data-processing-modules"></a>Dodawanie lub usuwanie modułów dodatkowego przetwarzania danych
-Jeśli istnieje więcej modułów w eksperymencie, że wiesz, że nie będą potrzebne podczas oceniania, można usunąć je. Na przykład ponieważ przeszliśmy **sieci Web dane wejściowe usługi** modułu do punktu po modułów przetwarzania danych, możemy usunąć [Clean Missing Data] [ clean-missing-data] modułu na podstawie eksperyment predykcyjny.
+### <a name="add-or-remove-additional-data-processing-modules"></a>Dodawanie lub usuwanie dodatkowych modułów przetwarzania danych
+Jeśli eksperyment zawiera więcej modułów, które nie są potrzebne podczas oceniania, można je usunąć. Na przykład ze względu na to, że moduł danych **wejściowych usługi sieci Web** został przeniesiony do punktu po modułach przetwarzania danych, możemy usunąć [nieczysty moduł danych][clean-missing-data] z eksperymentu predykcyjnego.
 
 Nasz eksperyment predykcyjny wygląda teraz następująco:
 
-![Usuwanie dodatkowych modułów](./media/convert-training-experiment-to-scoring-experiment/figure6.png)
+![Usuwanie dodatkowego modułu](./media/convert-training-experiment-to-scoring-experiment/figure6.png)
 
 
 ### <a name="add-optional-web-service-parameters"></a>Dodaj opcjonalne parametry usługi sieci Web
-W niektórych przypadkach warto umożliwić użytkownikowi zmienić zachowanie modułów podczas uzyskiwania dostępu do usługi Usługa sieci web. *Parametry usługi w sieci Web* pozwalają w tym celu.
+W niektórych przypadkach może być konieczne zezwolenie użytkownikowi usługi sieci Web na zmianę zachowania modułów podczas uzyskiwania dostępu do usługi. *Parametry usługi sieci Web* umożliwiają wykonanie tej czynności.
 
-Typowym przykładem jest konfigurowanie [importu danych] [ import-data] modułu, dzięki czemu użytkownik wdrożonej usługi sieci web można określić inne źródło danych, podczas uzyskiwania dostępu do usługi sieci web. Lub konfigurowanie [Eksport danych] [ export-data] modułu, aby można określić inną lokalizację docelową.
+Typowym przykładem jest skonfigurowanie modułu [importowania danych][import-data] , dzięki czemu użytkownik wdrożonej usługi sieci Web może określić inne źródło danych podczas uzyskiwania dostępu do usługi sieci Web. Lub skonfiguruj moduł [eksportu danych][export-data] , aby można było określić inną lokalizację docelową.
 
-Można zdefiniować parametry usługi sieci Web i skojarzyć je z co najmniej jeden parametr modułu i czy są one wymagane lub opcjonalne. Użytkownik usługi sieci web zawiera wartości dla parametrów podczas uzyskiwania dostępu do usługi i akcje moduł są odpowiednio modyfikowane.
+Można definiować parametry usługi sieci Web i kojarzyć je z jednym lub wieloma parametrami modułu, a także określić, czy są one wymagane, czy opcjonalne. Użytkownik usługi sieci Web dostarcza wartości tych parametrów podczas uzyskiwania dostępu do usługi, a akcje modułu są odpowiednio modyfikowane.
 
-Aby uzyskać więcej informacji o parametry usługi sieci Web i sposobu ich używania, zobacz [przy użyciu parametry usługi sieci Web Azure Machine Learning][webserviceparameters].
+Więcej informacji o parametrach usługi sieci Web i sposobach ich użycia można znaleźć w temacie [Using Azure Machine Learning Web Service Parameters][webserviceparameters].
 
 [webserviceparameters]: web-service-parameters.md
 
 
-## <a name="deploy-the-predictive-experiment-as-a-web-service"></a>Wdrożyć eksperyment predykcyjny jako usługę sieci web
-Teraz, gdy został odpowiednio przygotowany eksperyment predykcyjny, możesz go wdrożyć jako usługę sieci web platformy Azure. Przy użyciu usługi sieci web, użytkownicy mogą wysyłać dane do modelu i model zwróci jego prognozy.
+## <a name="deploy-the-predictive-experiment-as-a-web-service"></a>Wdrożenie eksperymentu predykcyjnego jako usługi internetowej
+Teraz, gdy eksperyment predykcyjny został wystarczająco przygotowany, możesz go wdrożyć jako usługę sieci Web platformy Azure. Korzystając z usługi sieci Web, użytkownicy mogą wysyłać dane do modelu, a model zwróci swoje przewidywania.
 
-Aby uzyskać więcej informacji na temat procesu całego procesu wdrażania, zobacz [wdrażanie usługi sieci web Azure Machine Learning][deploy]
+Aby uzyskać więcej informacji na temat kompletnego procesu wdrażania, zobacz [wdrażanie usługi sieci web Azure Machine Learning][deploy]
 
 [deploy]: publish-a-machine-learning-web-service.md
 

@@ -9,12 +9,12 @@ ms.author: estfan
 ms.reviewer: klam, LADocs
 ms.topic: conceptual
 ms.date: 10/11/2019
-ms.openlocfilehash: b219eb50254ecd347f731d332c3236be028834ba
-ms.sourcegitcommit: 38251963cf3b8c9373929e071b50fd9049942b37
+ms.openlocfilehash: 2177ba8b3864e8d453a097b391a18ebbbb5baa11
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/29/2019
-ms.locfileid: "73045096"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73499920"
 ---
 # <a name="secure-access-and-data-in-azure-logic-apps"></a>Zabezpieczanie dostępu i danych w Azure Logic Apps
 
@@ -83,7 +83,7 @@ Jeśli adres URL punktu końcowego jest współużytkowany dla wyzwalacza oparte
 POST /subscriptions/<Azure-subscription-ID>/resourceGroups/<Azure-resource-group-name>/providers/Microsoft.Logic/workflows/<workflow-name>/triggers/<trigger-name>/listCallbackUrl?api-version=2016-06-01
 ```
 
-W treści Uwzględnij `NotAfter`property przy użyciu ciągu daty JSON. Ta właściwość zwraca adres URL wywołania zwrotnego, który jest prawidłowy tylko do `NotAfter` daty i godziny.
+W treści Uwzględnij Właściwość `NotAfter`przy użyciu ciągu daty JSON. Ta właściwość zwraca adres URL wywołania zwrotnego, który jest prawidłowy tylko do `NotAfter` datę i godzinę.
 
 <a name="primary-secondary-key"></a>
 
@@ -95,7 +95,7 @@ Podczas generowania lub wyświetlania adresów URL wywołania zwrotnego dla wyzw
 POST /subscriptions/<Azure-subscription-ID>/resourceGroups/<Azure-resource-group-name>/providers/Microsoft.Logic/workflows/<workflow-name>/triggers/<trigger-name>/listCallbackUrl?api-version=2016-06-01
 ```
 
-W treści należy uwzględnić Właściwość `KeyType` jako `Primary` lub `Secondary`. Ta właściwość zwraca adres URL, który jest podpisany przez określony klucz zabezpieczeń.
+W treści Uwzględnij Właściwość `KeyType` jako `Primary` lub `Secondary`. Ta właściwość zwraca adres URL, który jest podpisany przez określony klucz zabezpieczeń.
 
 <a name="restrict-inbound-ip"></a>
 
@@ -298,7 +298,7 @@ Wiele wyzwalaczy i akcji ma ustawienia umożliwiające ukrycie danych wejściowy
 
 #### <a name="secure-inputs-and-outputs-in-code-view"></a>Zabezpiecz dane wejściowe i wyjściowe w widoku kodu
 
-W podstawowym wyzwalaczu lub definicji akcji Dodaj lub zaktualizuj tablicę `runtimeConfiguration.secureData.properties` z co najmniej jedną z następujących wartości:
+W podstawowym wyzwalaczu lub definicji akcji Dodaj lub zaktualizuj tablicę `runtimeConfiguration.secureData.properties` przy użyciu jednej lub obu tych wartości:
 
 * `"inputs"`: zabezpiecza dane wejściowe w historii uruchamiania.
 * `"outputs"`: zabezpiecza dane wyjściowe w historii uruchamiania.
@@ -361,7 +361,7 @@ Poniżej przedstawiono kilka [kwestii, które](#obfuscation-considerations) nale
 
 W przypadku wdrażania w różnych środowiskach należy rozważyć parametryzacja wartości w definicji przepływu pracy, które różnią się w zależności od tych środowisk. Dzięki temu można uniknąć zakodowanych danych przy użyciu [szablonu Azure Resource Manager](../azure-resource-manager/template-deployment-overview.md) , aby wdrożyć aplikację logiki, chronić poufne dane przez zdefiniowanie zabezpieczonych parametrów i przekazać te dane jako osobny dane wejściowe za pomocą [parametrów szablonu](../azure-resource-manager/template-parameters.md) za pomocą [plik parametrów](../azure-resource-manager/resource-manager-parameter-files.md).
 
-Na przykład, jeśli uwierzytelniasz akcje HTTP za pomocą [Azure Active Directory](#azure-active-directory-oauth-authentication), możesz zdefiniować i zabezpieczyć parametry akceptujące identyfikator klienta i klucz tajny klienta, które są używane do uwierzytelniania. Aby zdefiniować te parametry w aplikacji logiki, użyj sekcji `parameters` w definicji przepływu pracy aplikacji logiki i szablonu Menedżer zasobów do wdrożenia. Aby ukryć wartości parametrów, które nie mają być wyświetlane podczas edytowania aplikacji logiki lub wyświetlania historii uruchamiania, zdefiniuj parametry przy użyciu `securestring` lub `secureobject` typu i użyj kodowania w razie potrzeby. Parametry, które mają ten typ nie są zwracane z definicją zasobu i nie są dostępne podczas wyświetlania zasobu po wdrożeniu. Aby uzyskać dostęp do tych wartości parametrów podczas wykonywania, należy użyć wyrażenia `@parameters('<parameter-name>')` w definicji przepływu pracy. To wyrażenie jest oceniane tylko w czasie wykonywania i jest opisane przez [Język definicji przepływu pracy](../logic-apps/logic-apps-workflow-definition-language.md).
+Na przykład, jeśli uwierzytelniasz akcje HTTP za pomocą [Azure Active Directory](#azure-active-directory-oauth-authentication), możesz zdefiniować i zabezpieczyć parametry akceptujące identyfikator klienta i klucz tajny klienta, które są używane do uwierzytelniania. Aby zdefiniować te parametry w aplikacji logiki, użyj sekcji `parameters` w definicji przepływu pracy aplikacji logiki i szablonu Menedżer zasobów do wdrożenia. Aby ukryć wartości parametrów, które nie mają być wyświetlane podczas edytowania aplikacji logiki lub wyświetlania historii uruchamiania, zdefiniuj parametry przy użyciu `securestring` lub `secureobject` typu i użyj kodowania w razie potrzeby. Parametry, które mają ten typ nie są zwracane z definicją zasobu i nie są dostępne podczas wyświetlania zasobu po wdrożeniu. Aby uzyskać dostęp do tych wartości parametrów podczas wykonywania, użyj wyrażenia `@parameters('<parameter-name>')` wewnątrz definicji przepływu pracy. To wyrażenie jest oceniane tylko w czasie wykonywania i jest opisane przez [Język definicji przepływu pracy](../logic-apps/logic-apps-workflow-definition-language.md).
 
 > [!NOTE]
 > Jeśli używasz parametru w nagłówku żądania lub treści, ten parametr może być widoczny podczas wyświetlania historii uruchamiania aplikacji logiki i wychodzącego żądania HTTP. Upewnij się, że ustawiono również zasady dostępu do zawartości. Można również użyć [zaciemniania](#obfuscate) , aby ukryć wejścia i wyjścia w historii uruchamiania. Nagłówki autoryzacji nigdy nie są widoczne za poorednictwem danych wejściowych lub wyjściowych. Dlatego jeśli w tym miejscu jest używany wpis tajny, ten klucz tajny nie jest możliwy do pobierania.
@@ -382,7 +382,7 @@ Na przykład, jeśli używasz wpisów tajnych, możesz definiować i używać za
 
 ### <a name="secure-parameters-in-workflow-definitions"></a>Zabezpieczanie parametrów w definicjach przepływu pracy
 
-Aby chronić poufne informacje w definicji przepływu pracy aplikacji logiki, użyj zabezpieczonych parametrów, aby te informacje nie były widoczne po zapisaniu aplikacji logiki. Załóżmy na przykład, że akcja HTTP wymaga uwierzytelniania podstawowego, które używa nazwy użytkownika i hasła. W definicji przepływu pracy sekcja `parameters` definiuje `basicAuthPasswordParam` i `basicAuthUsernameParam` parametrów przy użyciu typu `securestring`. Definicja akcji odwołuje się do tych parametrów w sekcji `authentication`.
+Aby chronić poufne informacje w definicji przepływu pracy aplikacji logiki, użyj zabezpieczonych parametrów, aby te informacje nie były widoczne po zapisaniu aplikacji logiki. Załóżmy na przykład, że akcja HTTP wymaga uwierzytelniania podstawowego, które używa nazwy użytkownika i hasła. W definicji przepływu pracy sekcja `parameters` definiuje parametry `basicAuthPasswordParam` i `basicAuthUsernameParam` przy użyciu typu `securestring`. Definicja akcji odwołuje się do tych parametrów w sekcji `authentication`.
 
 ```json
 "definition": {
@@ -428,9 +428,9 @@ Aby chronić poufne informacje w definicji przepływu pracy aplikacji logiki, u�
 
 ### <a name="secure-parameters-in-azure-resource-manager-templates"></a>Zabezpieczanie parametrów w szablonach Azure Resource Manager
 
-[Szablon Menedżer zasobów](../logic-apps/logic-apps-azure-resource-manager-templates-overview.md) dla aplikacji logiki zawiera wiele sekcji `parameters`. Aby chronić hasła, klucze, wpisy tajne i inne poufne informacje, zdefiniuj zabezpieczone parametry na poziomie szablonu i na poziomie definicji przepływu pracy przy użyciu typu `securestring` lub `secureobject`. Następnie można przechowywać te wartości w [Azure Key Vault](../key-vault/key-vault-overview.md) i używać [pliku parametrów](../azure-resource-manager/resource-manager-parameter-files.md) do odwoływania się do magazynu kluczy i wpisu tajnego. Następnie szablon pobiera te informacje we wdrożeniu. Aby uzyskać więcej informacji, zobacz [przekazywanie poufnych wartości we wdrożeniu przy użyciu Azure Key Vault](../azure-resource-manager/resource-manager-keyvault-parameter.md).
+[Szablon Menedżer zasobów](../logic-apps/logic-apps-azure-resource-manager-templates-overview.md) dla aplikacji logiki zawiera wiele sekcji `parameters`. Aby chronić hasła, klucze, wpisy tajne i inne informacje poufne, zdefiniuj zabezpieczone parametry na poziomie szablonu i na poziomie definicji przepływu pracy przy użyciu typu `securestring` lub `secureobject`. Następnie można przechowywać te wartości w [Azure Key Vault](../key-vault/key-vault-overview.md) i używać [pliku parametrów](../azure-resource-manager/resource-manager-parameter-files.md) do odwoływania się do magazynu kluczy i wpisu tajnego. Następnie szablon pobiera te informacje we wdrożeniu. Aby uzyskać więcej informacji, zobacz [przekazywanie poufnych wartości we wdrożeniu przy użyciu Azure Key Vault](../azure-resource-manager/resource-manager-keyvault-parameter.md).
 
-Poniżej znajduje się więcej informacji na temat tych `parameters` sekcji:
+Poniżej znajduje się więcej informacji o tych `parameters` sekcjach:
 
 * Na najwyższego poziomu szablonu sekcja `parameters` definiuje parametry dla wartości używanych przez szablon podczas *wdrażania*. Na przykład te wartości mogą zawierać parametry połączenia dla określonego środowiska wdrożenia. Następnie można przechowywać te wartości w osobnym [pliku parametrów](../azure-resource-manager/resource-manager-parameter-files.md), co ułatwia zmianę tych wartości.
 
@@ -438,7 +438,7 @@ Poniżej znajduje się więcej informacji na temat tych `parameters` sekcji:
 
 * W definicji przepływu pracy sekcja `parameters` definiuje parametry używane przez aplikację logiki w czasie wykonywania. Następnie można odwoływać się do tych parametrów w przepływie pracy aplikacji logiki przy użyciu wyrażeń definicji przepływu pracy, które są oceniane w czasie wykonywania.
 
-Ten przykładowy szablon, który ma wiele zabezpieczonych definicji parametrów używających typu `securestring`:
+Ten przykładowy szablon, który ma wiele zabezpieczonych definicji parametrów, które używają `securestring` typu:
 
 | Nazwa parametru | Opis |
 |----------------|-------------|
@@ -615,9 +615,9 @@ Punkty końcowe HTTP i HTTPS obsługują różne rodzaje uwierzytelniania. Na po
 
 Jeśli opcja [podstawowa](../active-directory-b2c/active-directory-b2c-custom-rest-api-netfw-secure-basic.md) jest dostępna, określ następujące wartości właściwości:
 
-| Właściwość (Projektant) | Właściwość (JSON) | Wymagane | Wartość | Opis |
+| Właściwość (Projektant) | Właściwość (JSON) | Wymagany | Wartość | Opis |
 |---------------------|-----------------|----------|-------|-------------|
-| **Uwierzytelnianie** | `type` | Tak | Basic | Typ uwierzytelniania do użycia |
+| **Uwierzytelnianie** | `type` | Tak | Podstawowa | Typ uwierzytelniania do użycia |
 | **Nazwa użytkownika** | `username` | Tak | <*nazwy użytkownika*>| Nazwa użytkownika służąca do uwierzytelniania dostępu do docelowego punktu końcowego usługi |
 | **Hasło** | `password` | Tak | <*hasło*> | Hasło do uwierzytelniania dostępu do docelowego punktu końcowego usługi |
 ||||||
@@ -646,7 +646,7 @@ W przypadku używania [zabezpieczonych parametrów](#secure-action-parameters) d
 
 Jeśli opcja [certyfikat klienta](../active-directory/authentication/active-directory-certificate-based-authentication-get-started.md) jest dostępna, określ następujące wartości właściwości:
 
-| Właściwość (Projektant) | Właściwość (JSON) | Wymagane | Wartość | Opis |
+| Właściwość (Projektant) | Właściwość (JSON) | Wymagany | Wartość | Opis |
 |---------------------|-----------------|----------|-------|-------------|
 | **Uwierzytelnianie** | `type` | Tak | **Certyfikat klienta** <br>lub <br>`ClientCertificate` | Typ uwierzytelniania, który ma być używany dla certyfikatów klienta SSL (SSL). Certyfikaty z podpisem własnym są obsługiwane, ale certyfikaty z podpisem własnym dla protokołu SSL nie są obsługiwane. |
 | **PFX** | `pfx` | Tak | <*zakodowany plik PFX* —> zawartości | Zawartość zakodowana algorytmem Base64 z pliku wymiany informacji osobistych (PFX) |
@@ -677,7 +677,7 @@ Aby uzyskać więcej informacji na temat zabezpieczania usług przy użyciu uwie
 * [Zabezpieczanie usług zaplecza przy użyciu uwierzytelniania certyfikatów klientów na platformie Azure API Management](../api-management/api-management-howto-mutual-certificates.md)
 * [Zabezpieczanie usługi RESTfuL przy użyciu certyfikatów klienta](../active-directory-b2c/active-directory-b2c-custom-rest-api-netfw-secure-cert.md)
 * [Poświadczenia certyfikatu na potrzeby uwierzytelniania aplikacji](../active-directory/develop/active-directory-certificate-credentials.md)
-* [Użyj certyfikatu protokołu SSL w kodzie aplikacji w Azure App Service](../app-service/app-service-web-ssl-cert-load.md)
+* [Użyj certyfikatu protokołu SSL w kodzie aplikacji w Azure App Service](../app-service/configure-ssl-certificate-in-code.md)
 
 <a name="azure-active-directory-oauth-authentication"></a>
 
@@ -685,17 +685,17 @@ Aby uzyskać więcej informacji na temat zabezpieczania usług przy użyciu uwie
 
 Jeśli dostępna jest opcja [Active Directory OAuth](../active-directory/develop/about-microsoft-identity-platform.md) , określ następujące wartości właściwości:
 
-| Właściwość (Projektant) | Właściwość (JSON) | Wymagane | Wartość | Opis |
+| Właściwość (Projektant) | Właściwość (JSON) | Wymagany | Wartość | Opis |
 |---------------------|-----------------|----------|-------|-------------|
 | **Uwierzytelnianie** | `type` | Tak | **Active Directory OAuth** <br>lub <br>`ActiveDirectoryOAuth` | Typ uwierzytelniania do użycia. Logic Apps jest obecnie zgodny z [protokołem OAuth 2,0](../active-directory/develop/v2-overview.md). |
-| **Dzierżaw** | `tenant` | Tak | <*Identyfikator dzierżawy* > | Identyfikator dzierżawy dla dzierżawy usługi Azure AD |
-| **Publiczn** | `audience` | Tak | < >*zasobów do autoryzacji* | Zasób, który ma być używany na potrzeby autoryzacji, na przykład `https://management.core.windows.net/` |
-| **Client ID (Identyfikator klienta)** | `clientId` | Tak | *Identyfikator klienta* < > | Identyfikator klienta aplikacji żądającej autoryzacji |
+| **Dzierżaw** | `tenant` | Tak | <*Identyfikator dzierżawy*> | Identyfikator dzierżawy dla dzierżawy usługi Azure AD |
+| **Publiczn** | `audience` | Tak | <> *zasobów do autoryzacji* | Zasób, który ma być używany na potrzeby autoryzacji, na przykład `https://management.core.windows.net/` |
+| **Client ID (Identyfikator klienta)** | `clientId` | Tak | *Identyfikator klienta* <> | Identyfikator klienta aplikacji żądającej autoryzacji |
 | **Typ poświadczeń** | `credentialType` | Tak | Certyfikat <br>lub <br>Wpis tajny | Typ poświadczeń, którego klient używa do żądania autoryzacji. Ta właściwość i wartość nie pojawiają się w podstawowej definicji aplikacji logiki, ale określają właściwości, które są wyświetlane dla wybranego typu poświadczenia. |
 | **Wpis tajny** | `secret` | Tak, ale tylko dla typu poświadczeń "wpis tajny" | <> *klucza tajnego klienta* | Wpis tajny klienta na potrzeby żądania autoryzacji |
 | **PFX** | `pfx` | Tak, ale tylko dla typu poświadczeń "certyfikat" | <*zakodowany plik PFX* —> zawartości | Zawartość zakodowana algorytmem Base64 z pliku wymiany informacji osobistych (PFX) |
 | **Hasło** | `password` | Tak, ale tylko dla typu poświadczeń "certyfikat" | <*hasło — dla pliku pfx*> | Hasło do uzyskiwania dostępu do pliku PFX |
-| **Uwierzytelniania** | `authority` | Nie | <*adres URL-urząd-wystawca tokenów* > | Adres URL urzędu dostarczającego token uwierzytelniania. Domyślnie ta wartość jest `https://login.windows.net`. <p>**Uwaga**: aby ta właściwość była widoczna w projektancie, na wyzwalaczu lub akcji Otwórz listę **Dodaj nowy parametr** , a następnie wybierz pozycję **Urząd**. |
+| **Uwierzytelniania** | `authority` | Nie | <*adres URL-urząd-wystawca tokenów*> | Adres URL urzędu dostarczającego token uwierzytelniania. Domyślnie ta wartość jest `https://login.windows.net`. <p>**Uwaga**: aby ta właściwość była widoczna w projektancie, na wyzwalaczu lub akcji Otwórz listę **Dodaj nowy parametr** , a następnie wybierz pozycję **Urząd**. |
 |||||
 
 W przypadku używania [zabezpieczonych parametrów](#secure-action-parameters) do obsługi i ochrony poufnych informacji, na przykład w [szablonie Azure Resource Manager do automatyzowania wdrożenia](../logic-apps/logic-apps-azure-resource-manager-templates-overview.md), można użyć wyrażeń, aby uzyskać dostęp do tych wartości parametrów w czasie wykonywania. Ta przykładowa definicja akcji HTTP określa `type` uwierzytelniania jako `ActiveDirectoryOAuth`, typ poświadczenia jako `Secret`i używa [funkcji Parameters ()](../logic-apps/workflow-definition-language-functions-reference.md#parameters) w celu uzyskania wartości parametrów:
@@ -739,7 +739,7 @@ Authorization: OAuth realm="Photos",
 
 W wyzwalaczu lub akcji, która obsługuje uwierzytelnianie surowe, określ następujące wartości właściwości:
 
-| Właściwość (Projektant) | Właściwość (JSON) | Wymagane | Wartość | Opis |
+| Właściwość (Projektant) | Właściwość (JSON) | Wymagany | Wartość | Opis |
 |---------------------|-----------------|----------|-------|-------------|
 | **Uwierzytelnianie** | `type` | Tak | surowców | Typ uwierzytelniania do użycia |
 | **Wartość** | `value` | Tak | <> *wartości nagłówka autoryzacji* | Wartość nagłówka autoryzacji do użycia na potrzeby uwierzytelniania |
@@ -770,11 +770,11 @@ Jeśli dostępna jest opcja [tożsamość zarządzana](../active-directory/manag
 
 1. Aby aplikacja logiki mogła korzystać z tożsamości przypisanej do systemu, wykonaj kroki opisane w temacie [uwierzytelnianie dostępu do zasobów platformy Azure przy użyciu tożsamości zarządzanych w Azure Logic Apps](../logic-apps/create-managed-service-identity.md). Te kroki umożliwiają włączenie zarządzanej tożsamości w aplikacji logiki oraz skonfigurowanie dostępu tej tożsamości do docelowego zasobu platformy Azure.
 
-1. Zanim funkcja platformy Azure będzie mogła korzystać z tożsamości przypisanej do systemu, należy najpierw [włączyć uwierzytelnianie dla usługi Azure Functions](../logic-apps/logic-apps-azure-functions.md#enable-authentication-for-azure-functions).
+2. Zanim funkcja platformy Azure będzie mogła korzystać z tożsamości przypisanej do systemu, należy najpierw [włączyć uwierzytelnianie dla usługi Azure Functions](../logic-apps/logic-apps-azure-functions.md#enable-authentication-for-azure-functions).
 
-1. W wyzwalaczu lub akcji, w której ma być używana tożsamość zarządzana, określ następujące wartości właściwości:
+3. W wyzwalaczu lub akcji, w której ma być używana tożsamość zarządzana, określ następujące wartości właściwości:
 
-   | Właściwość (Projektant) | Właściwość (JSON) | Wymagane | Wartość | Opis |
+   | Właściwość (Projektant) | Właściwość (JSON) | Wymagany | Wartość | Opis |
    |---------------------|-----------------|----------|-------|-------------|
    | **Uwierzytelnianie** | `type` | Tak | **Tożsamość zarządzana** <br>lub <br>`ManagedServiceIdentity` | Typ uwierzytelniania do użycia |
    | **Publiczn** | `audience` | Tak | <*docelowy identyfikator zasobu*> | Identyfikator zasobu dla zasobu docelowego, do którego chcesz uzyskać dostęp. <p>Na przykład `https://storage.azure.com/` powoduje, że tokeny dostępu są prawidłowe dla wszystkich kont magazynu. Można jednak określić adres URL usługi głównej, taki jak `https://fabrikamstorageaccount.blob.core.windows.net` dla określonego konta magazynu. <p>**Uwaga**: Ta właściwość może być ukryta w niektórych wyzwalaczach lub akcjach. Aby ta właściwość była widoczna, w wyzwalaczu lub akcji Otwórz listę **Dodaj nowy parametr** , a następnie wybierz pozycję **odbiorcy**. <p><p>**Ważne**: Upewnij się, że identyfikator zasobu docelowego dokładnie pasuje do wartości oczekiwanej przez usługę Azure AD, w tym wszystkich wymaganych końcowych ukośników. W związku z tym `https://storage.azure.com/` identyfikator zasobu dla wszystkich kont usługi Azure Blob Storage wymaga końcowej kreski ułamkowej. Jednak identyfikator zasobu dla określonego konta magazynu nie wymaga końcowej kreski ułamkowej. Aby znaleźć te identyfikatory zasobów, zobacz [usługi platformy Azure, które obsługują usługę Azure AD](../active-directory/managed-identities-azure-resources/services-support-managed-identities.md#azure-services-that-support-azure-ad-authentication). |

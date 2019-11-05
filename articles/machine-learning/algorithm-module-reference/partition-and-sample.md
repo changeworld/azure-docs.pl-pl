@@ -1,24 +1,24 @@
 ---
 title: 'Partycja i przykład: odwołanie do modułu'
-titleSuffix: Azure Machine Learning service
-description: Informacje na temat używania partycji i przykładowego modułu w usłudze Azure Machine Learning do wykonywania próbkowania w zestawie danych lub tworzenia partycji z zestawu danych.
+titleSuffix: Azure Machine Learning
+description: Dowiedz się, jak używać partycji i przykładowego modułu w Azure Machine Learning, aby wykonać próbkowanie na zestawie danych lub utworzyć partycje z zestawu danych.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: reference
 author: xiaoharper
 ms.author: zhanxia
-ms.date: 05/02/2019
-ms.openlocfilehash: fcbf9fae3306c43613ef0b67a79c9c0b53f6b923
-ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
+ms.date: 10/22/2019
+ms.openlocfilehash: 659dcae0bee0fe1015ba6225797c31bad438013f
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "72693755"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73497714"
 ---
 # <a name="partition-and-sample-module"></a>Partycja i Przykładowa moduł
 
-W tym artykule opisano moduł Visual Interface (wersja zapoznawcza) dla usługi Azure Machine Learning.
+W tym artykule opisano moduł w programie Azure Machine Learning Designer (wersja zapoznawcza).
 
 Ten moduł służy do wykonywania próbkowania w zestawie danych lub tworzenia partycji z zestawu danych.
 
@@ -122,7 +122,7 @@ Użyj tej opcji, jeśli chcesz podzielić zestaw danych na podzbiory danych. Ta 
 
     - **Podziel na partycje przy użyciu dostosowanych proporcji**: Użyj tej opcji, aby określić rozmiar każdej partycji jako listę rozdzieloną przecinkami.
 
-        Jeśli na przykład chcesz utworzyć trzy partycje z pierwszą partycją zawierającą 50% danych, a pozostałe dwie partycje zawierające 25% danych, kliknij **listę proporcji rozdzielonych przecinkami** , a następnie wpisz następujące numery: @no_ _t_1
+        Jeśli na przykład chcesz utworzyć trzy partycje z pierwszą partycją zawierającą 50% danych, a pozostałe dwie partycje zawierające 25% danych, kliknij **listę proporcji rozdzielonych przecinkami** , a następnie wpisz następujące numery: @no_ _t_1_`.5, .25, .25`
 
         Suma wszystkich rozmiarów partycji musi być dokładnie równa 1.
 
@@ -156,7 +156,7 @@ Ta opcja jest używana, jeśli zestaw danych został podzielony na wiele partycj
 
     Załóżmy na przykład, że wcześniej podzielone na partycje pacjente na cztery zgięcia przy użyciu wieku. Aby współpracować z każdym indywidualnym zgięciem, potrzebne są cztery kopie **partycji i przykładowego** modułu, a w każdym z nich wybiera się inne zgięcie, jak pokazano poniżej. Nie jest to poprawne użycie elementu **Assign do bezpośredniego składania** danych wyjściowych.  
 
-    [![Partition i przykład](./media/partition-and-sample/partition-and-sample.png)](./media/partition-and-sample/partition-and-sample-lg.png#lightbox)
+    [![partycja i przykład](./media/partition-and-sample/partition-and-sample.png)](./media/partition-and-sample/partition-and-sample-lg.png#lightbox)
 
 5. Uruchamianie potoku.
 
@@ -167,4 +167,4 @@ Ta opcja jest używana, jeśli zestaw danych został podzielony na wiele partycj
 
 ## <a name="next-steps"></a>Następne kroki
 
-Zapoznaj się z [zestawem modułów dostępnych](module-reference.md) do Azure Machine Learning usługi. 
+Zapoznaj się z [zestawem modułów dostępnych](module-reference.md) do Azure Machine Learning. 

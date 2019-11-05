@@ -1,5 +1,5 @@
 ---
-title: Używanie niestandardowych pakietów Maven z Jupyter w usłudze Spark w usłudze Azure HDInsight
+title: Używanie niestandardowych pakietów Maven z Jupyter w usłudze Spark — Azure HDInsight
 description: Instrukcje krok po kroku dotyczące konfigurowania notesów Jupyter dostępnych z klastrami usługi HDInsight Spark do używania niestandardowych pakietów Maven.
 author: hrasheed-msft
 ms.author: hrasheed
@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 01/09/2018
-ms.openlocfilehash: cd88c85c927c635269d814c20b15f574212e1a6d
-ms.sourcegitcommit: e1b6a40a9c9341b33df384aa607ae359e4ab0f53
+ms.openlocfilehash: 0cdd962e5d027b5576a0556ca5decb976af45ff1
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71337683"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73494544"
 ---
 # <a name="use-external-packages-with-jupyter-notebooks-in-apache-spark-clusters-on-hdinsight"></a>Korzystanie z zewnętrznych pakietów z notesami Jupyter w klastrach Apache Spark w usłudze HDInsight
 
@@ -50,12 +50,12 @@ Wymagane są następujące elementy:
 
 1. Zostanie utworzony i otwarty nowy notes o nazwie Untitled.pynb. Kliknij nazwę notesu u góry, a następnie wprowadź przyjazną nazwę.
    
-    ![Wprowadzanie nazwy notesu](./media/apache-spark-jupyter-notebook-use-external-packages/hdinsight-spark-name-notebook.png "Wprowadzanie nazwy notesu")
+    ![Podaj nazwę notesu](./media/apache-spark-jupyter-notebook-use-external-packages/hdinsight-spark-name-notebook.png "Wprowadzanie nazwy notesu")
 
-1. Użyjemy `%%configure` Magic, aby skonfigurować Notes do korzystania z pakietu zewnętrznego. W notesach korzystających z pakietów zewnętrznych upewnij się, że w pierwszej komórce kodu wywołamy magiczną wartość `%%configure`. Dzięki temu jądro jest skonfigurowane do korzystania z pakietu przed rozpoczęciem sesji.
+1. Użyjemy `%%configure` Magic, aby skonfigurować Notes do korzystania z pakietu zewnętrznego. W notesach korzystających z pakietów zewnętrznych upewnij się, że w pierwszej komórce kodu jest wywoływana magiczna `%%configure`. Dzięki temu jądro jest skonfigurowane do korzystania z pakietu przed rozpoczęciem sesji.
 
     >[!IMPORTANT]  
-    >Jeśli zapomnisz skonfigurować jądro w pierwszej komórce, możesz użyć `%%configure` z parametrem `-f`, ale zostanie ono ponownie uruchomione i zostanie utracony cały postęp.
+    >Jeśli zapomnisz skonfigurować jądro w pierwszej komórce, możesz użyć `%%configure` z parametrem `-f`, ale spowoduje to ponowne uruchomienie sesji i cały postęp zostanie utracony.
 
     | Wersja usługi HDInsight | Polecenie |
     |-------------------|---------|
@@ -66,15 +66,15 @@ Wymagane są następujące elementy:
    
     a. Znajdź pakiet w repozytorium Maven. W tym artykule używamy [platformy Spark-CSV](https://search.maven.org/#artifactdetails%7Ccom.databricks%7Cspark-csv_2.10%7C1.4.0%7Cjar).
    
-    b. W repozytorium Zbierz wartości dla **identyfikatora GroupID**, **ArtifactId**i **wersji**. Upewnij się, że zebrane wartości są zgodne z klastrem. W tym przypadku korzystamy z pakietu Scala 2,10 i platformy Spark 1.4.0, ale może być konieczne wybranie różnych wersji dla odpowiedniej wersji Scala lub Spark w klastrze. Wersję Scala można sprawdzić w klastrze, uruchamiając `scala.util.Properties.versionString` w jądrze platformy Spark Jupyter lub na stronie przesyłania na platformie Spark. Wersję platformy Spark w klastrze można sprawdzić, uruchamiając `sc.version` w notesach Jupyter.
+    b. W repozytorium Zbierz wartości dla **identyfikatora GroupID**, **ArtifactId**i **wersji**. Upewnij się, że zebrane wartości są zgodne z klastrem. W tym przypadku korzystamy z pakietu Scala 2,10 i platformy Spark 1.4.0, ale może być konieczne wybranie różnych wersji dla odpowiedniej wersji Scala lub Spark w klastrze. Wersję Scala można sprawdzić w klastrze, uruchamiając `scala.util.Properties.versionString` w jądrze platformy Spark Jupyter lub na stronie przesyłania na platformie Spark. Wersję platformy Spark można sprawdzić w klastrze, uruchamiając `sc.version` w notesach Jupyter.
    
     ![Korzystanie z zewnętrznych pakietów z notesem Jupyter](./media/apache-spark-jupyter-notebook-use-external-packages/use-external-packages-with-jupyter.png "Korzystanie z zewnętrznych pakietów z notesem Jupyter")
    
-    c. Połącz trzy wartości rozdzielone dwukropkiem ( **:** ).
+    d. Połącz trzy wartości rozdzielone dwukropkiem ( **:** ).
    
         com.databricks:spark-csv_2.10:1.4.0
 
-1. Uruchom komórkę kodu z magiczną `%%configure` Magic. Spowoduje to skonfigurowanie bazowej sesji usługi Livy do korzystania z dostarczonego pakietu. W kolejnych komórkach w notesie możesz teraz użyć pakietu, jak pokazano poniżej.
+1. Uruchom komórkę kodu przy użyciu Magic `%%configure`. Spowoduje to skonfigurowanie bazowej sesji usługi Livy do korzystania z dostarczonego pakietu. W kolejnych komórkach w notesie możesz teraz użyć pakietu, jak pokazano poniżej.
    
         val df = sqlContext.read.format("com.databricks.spark.csv").
         option("header", "true").
@@ -96,13 +96,13 @@ Wymagane są następujące elementy:
 
 ## <a name="seealso"></a>Zobacz też
 
-* [Podsumowanie Apache Spark w usłudze Azure HDInsight](apache-spark-overview.md)
+* [Przegląd: platforma Apache Spark w usłudze Azure HDInsight](apache-spark-overview.md)
 
 ### <a name="scenarios"></a>Scenariusze
 
-* [Apache Spark z usługą BI: Przeprowadzanie interaktywnej analizy danych przy użyciu platformy Spark w usłudze HDInsight przy użyciu narzędzi analizy biznesowej](apache-spark-use-bi-tools.md)
-* [Apache Spark z Machine Learning: Korzystanie z platformy Spark w usłudze HDInsight do analizowania temperatury kompilacji przy użyciu danych HVAC](apache-spark-ipython-notebook-machine-learning.md)
-* [Apache Spark z Machine Learning: Korzystanie z platformy Spark w usłudze HDInsight do przewidywania wyników inspekcji żywności](apache-spark-machine-learning-mllib-ipython.md)
+* [Apache Spark z usługą BI: wykonywanie interaktywnej analizy danych przy użyciu platformy Spark w usłudze HDInsight przy użyciu narzędzi analizy biznesowej](apache-spark-use-bi-tools.md)
+* [Apache Spark z Machine Learning: korzystanie z platformy Spark w usłudze HDInsight do analizowania temperatury kompilacji przy użyciu danych HVAC](apache-spark-ipython-notebook-machine-learning.md)
+* [Apache Spark z Machine Learning: korzystanie z platformy Spark w usłudze HDInsight do przewidywania wyników inspekcji żywności](apache-spark-machine-learning-mllib-ipython.md)
 * [Analiza dzienników witryny sieci Web przy użyciu Apache Spark w usłudze HDInsight](apache-spark-custom-library-website-log-analysis.md)
 
 ### <a name="create-and-run-applications"></a>Tworzenie i uruchamianie aplikacji
@@ -119,7 +119,7 @@ Wymagane są następujące elementy:
 * [Jądra dostępne dla notesu Jupyter w klastrze Apache Spark dla usługi HDInsight](apache-spark-jupyter-notebook-kernels.md)
 * [Instalacja oprogramowania Jupyter na komputerze i nawiązywanie połączenia z klastrem Spark w usłudze HDInsight](apache-spark-jupyter-notebook-install-locally.md)
 
-### <a name="manage-resources"></a>Zarządzaj zasobami
+### <a name="manage-resources"></a>Zarządzanie zasobami
 
 * [Zarządzanie zasobami klastra Apache Spark w usłudze Azure HDInsight](apache-spark-resource-manager.md)
 * [Śledzenie i debugowanie zadań uruchamianych w klastrze Apache Spark w usłudze HDInsight](apache-spark-job-debugging.md)

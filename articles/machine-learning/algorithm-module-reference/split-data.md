@@ -1,24 +1,24 @@
 ---
 title: 'Podziel dane: odwołanie do modułu'
-titleSuffix: Azure Machine Learning service
-description: Dowiedz się, jak używać modułu Split Data w Azure Machine Learning Service, aby podzielić zestaw danych na dwa różne zestawy.
+titleSuffix: Azure Machine Learning
+description: Dowiedz się, jak używać modułu Split Data w Azure Machine Learning, aby podzielić zestaw danych na dwa różne zestawy.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: reference
 author: xiaoharper
 ms.author: zhanxia
-ms.date: 05/02/2019
-ms.openlocfilehash: 3fa6b61b1b1761756339d6a7f05c74eb4a968777
-ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
+ms.date: 10/22/2019
+ms.openlocfilehash: 0f6ba3c608c90d8634309a1843dc803b98be3d6d
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "72692646"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73492636"
 ---
 # <a name="split-data-module"></a>Moduł Split Data
 
-W tym artykule opisano moduł Visual Interface (wersja zapoznawcza) dla usługi Azure Machine Learning.
+W tym artykule opisano moduł w programie Azure Machine Learning Designer (wersja zapoznawcza).
 
 Użyj tego modułu, aby podzielić zestaw danych na dwa różne zestawy.
 
@@ -30,7 +30,7 @@ Ten moduł jest szczególnie przydatny, gdy trzeba podzielić dane na zestawy sz
 > Przed wybraniem trybu dzielenia, Przeczytaj wszystkie opcje, aby określić typ potrzebnego podziału.
 > W przypadku zmiany trybu podziału można zresetować wszystkie inne opcje.
 
-1. Dodaj moduł **Split Data (podział danych** ) do potoku w interfejsie. Ten moduł można znaleźć w obszarze **Przekształcanie danych**w kategorii **przykład i Podziel** .
+1. Dodaj moduł **Split Data (podział danych** ) do potoku w projektancie. Ten moduł można znaleźć w obszarze **Przekształcanie danych**w kategorii **przykład i Podziel** .
 
 2. **Tryb dzielenia**: Wybierz jeden z następujących trybów, w zależności od typu danych i sposobu, w jaki chcesz go podzielić. Każdy tryb dzielenia ma inne opcje. Aby uzyskać szczegółowe instrukcje i przykłady, kliknij poniższe tematy. 
 
@@ -45,7 +45,8 @@ Ten moduł jest szczególnie przydatny, gdy trzeba podzielić dane na zestawy sz
     - **Podzielone wyrażenie względne**: Użyj tej opcji, jeśli chcesz zastosować warunek do kolumny liczb. Liczba może być polem daty/godziny, kolumną zawierającą kwoty wieku lub dolara, a nawet wartością procentową. Na przykład możesz chcieć podzielić zestaw danych w zależności od kosztu elementów, grupować osoby według zakresów wieku lub oddzielić dane według daty kalendarzowej.
 
 ### <a name="split-rows"></a>Podziel wiersze
-1.  Dodaj moduł [Split Data (podział danych](./split-data.md) ) do potoku w interfejsie i Połącz zestaw danych, który chcesz podzielić.
+
+1.  Dodaj moduł [Split Data (podział danych](./split-data.md) ) do potoku w projektancie, a następnie połącz zestaw danych, który chcesz podzielić.
   
 2.  W obszarze **tryb dzielenia**wybierz polecenie **Podziel wiersze**. 
 
@@ -114,4 +115,4 @@ Ten moduł jest szczególnie przydatny, gdy trzeba podzielić dane na zestawy sz
 
 ## <a name="next-steps"></a>Następne kroki
 
-Zapoznaj się z [zestawem modułów dostępnych](module-reference.md) do Azure Machine Learning usługi. 
+Zapoznaj się z [zestawem modułów dostępnych](module-reference.md) do Azure Machine Learning. 

@@ -1,24 +1,24 @@
 ---
 title: 'Regresja drzewa decyzyjnej: odwołanie do modułu'
-titleSuffix: Azure Machine Learning service
-description: Dowiedz się, w jaki sposób użyć modułu regresja drzewa decyzyjnego w usłudze Azure Machine Learning, aby utworzyć kompletną liczbę drzew regresji przy użyciu zwiększania.
+titleSuffix: Azure Machine Learning
+description: Dowiedz się, w jaki sposób użyć modułu regresja drzewa decyzyjnego w Azure Machine Learning, aby utworzyć zbiór drzew regresji przy użyciu podwyższania poziomu.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: reference
 author: xiaoharper
 ms.author: zhanxia
-ms.date: 05/02/2019
-ms.openlocfilehash: 4b8ff1c9f5b0f0b04448b950d3ba904ba76927c9
-ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
+ms.date: 10/22/2019
+ms.openlocfilehash: b04a44a82f793f39b24ffd94083ca8fd5e66cfb8
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "72693832"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73493889"
 ---
 # <a name="boosted-decision-tree-regression-module"></a>Moduł regresji drzewa decyzyjnego
 
-W tym artykule opisano moduł Visual Interface (wersja zapoznawcza) dla usługi Azure Machine Learning.
+W tym artykule opisano moduł w programie Azure Machine Learning Designer (wersja zapoznawcza).
 
 Ten moduł służy do tworzenia kompletu drzew regresji przy użyciu zwiększania. *Zwiększenie wydajności* oznacza, że każde drzewo jest zależne od wcześniejszych drzew. Algorytm uczy się, instalując resztę drzew, które je poprzedza. W tym celu zwiększenie dokładności w drzewie decyzyjnym pozwala zwiększyć dokładność z mniejszym ryzykiem.  
   
@@ -97,6 +97,8 @@ Po zakończeniu szkolenia:
 
 + Aby użyć modelu do oceniania, połącz go z [modelem oceny](./score-model.md), aby przewidzieć wartości dla nowych przykładów wejściowych.
 
++ Aby zapisać migawkę przeszkolonego modelu, kliknij prawym przyciskiem myszy **przeszkolony model** danych wyjściowych modułu szkoleniowego i wybierz polecenie **Zapisz jako**. Kopia przeszkolonego modelu, który jest zapisywany, nie jest aktualizowana w kolejnych uruchomieniach potoku.
+
 ## <a name="next-steps"></a>Następne kroki
 
-Zapoznaj się z [zestawem modułów dostępnych](module-reference.md) do Azure Machine Learning usługi. 
+Zapoznaj się z [zestawem modułów dostępnych](module-reference.md) do Azure Machine Learning. 

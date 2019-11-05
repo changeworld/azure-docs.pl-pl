@@ -7,14 +7,14 @@ ms.service: sql-database
 ms.subservice: service
 ms.devlang: ''
 ms.topic: conceptual
-ms.date: 05/15/2019
+ms.date: 11/04/2019
 ms.author: sstein
-ms.openlocfilehash: f1450399dc027a6977f4c99507e2e15b301272c4
-ms.sourcegitcommit: 961468fa0cfe650dc1bec87e032e648486f67651
+ms.openlocfilehash: 62ec5d4e85a6e72982b49872af59e7b579c4fd77
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/10/2019
-ms.locfileid: "72249383"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73496272"
 ---
 # <a name="sql-database-release-notes"></a>Informacje o wersji SQL Database
 
@@ -26,6 +26,7 @@ W tym artykule wymieniono SQL Database funkcje, które są obecnie dostępne w p
 
 | Funkcja | Szczegóły |
 | ---| --- |
+| Nowe generacja sprzętu serii Fsv2 i serii M| Aby uzyskać więcej informacji, zobacz [generacja sprzętu](sql-database-service-tiers-vcore.md#hardware-generations).|
 | [Prywatny link do platformy Azure](https://azure.microsoft.com/updates/private-link-now-available-in-preview/)| Łącze prywatne upraszcza architekturę sieci i zabezpiecza połączenie między punktami końcowymi na platformie Azure, zachowując dane w sieci platformy Azure i eliminując ekspozycję z Internetu. Łącze prywatne pozwala też tworzyć i renderować własne usługi na platformie Azure. |
 | Szybsze odzyskiwanie bazy danych przy użyciu pojedynczych baz danych i pul elastycznych | Aby uzyskać więcej informacji, zobacz [przyspieszone odzyskiwanie bazy danych](sql-database-accelerated-database-recovery.md).|
 |Przybliżona liczba unikatowych|Aby uzyskać więcej informacji, zobacz [Przybliżona liczba odrębna](https://docs.microsoft.com/sql/relational-databases/performance/intelligent-query-processing#approximate-query-processing).|
@@ -37,7 +38,6 @@ W tym artykule wymieniono SQL Database funkcje, które są obecnie dostępne w p
 |Opinie dotyczące przydzielenia pamięci (tryb wiersza) (w obszarze poziom zgodności 150)|Aby uzyskać więcej informacji, zobacz informacje o [przydzieleniu pamięci (tryb wiersza)](https://docs.microsoft.com/sql/relational-databases/performance/intelligent-query-processing#row-mode-memory-grant-feedback).|
 | Edytor zapytań w Azure Portal |Aby uzyskać więcej informacji, zobacz [Używanie edytora zapytań SQL Azure Portal do łączenia i wykonywania zapytań dotyczących danych](sql-database-connect-query-portal.md).|
 | Usługa R/Uczenie maszynowe z pojedynczymi bazami danych i pulami elastycznymi |Aby uzyskać więcej informacji, zobacz [Machine Learning Services w Azure SQL Database](https://docs.microsoft.com/sql/advanced-analytics/what-s-new-in-sql-server-machine-learning-services?view=sql-server-2017#machine-learning-services-in-azure-sql-database).|
-| Warstwa bezserwerowych usług obliczeniowych | Aby uzyskać więcej informacji, zobacz [SQL Database bezserwerowe (wersja zapoznawcza)](sql-database-serverless.md).|
 |Analiza SQL|Aby uzyskać więcej informacji, zobacz [Azure SQL Analytics](../azure-monitor/insights/azure-sql.md).|
 |Kompilacja odroczona do zmiennej tabeli (w obszarze poziom zgodności 150)|Aby uzyskać więcej informacji, zobacz [kompilacja zmiennej tabeli odroczonej](https://docs.microsoft.com/sql/relational-databases/performance/intelligent-query-processing#table-variable-deferred-compilation).|
 | &nbsp; |

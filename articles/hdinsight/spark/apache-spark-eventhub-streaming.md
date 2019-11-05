@@ -1,5 +1,5 @@
 ---
-title: 'Samouczek: przetwarzanie danych z usługi Azure Event Hubs przy użyciu Apache Spark w usłudze HDInsight'
+title: 'Samouczek: usługa Azure Event Hubs Data & Apache Spark — HDInsight'
 description: Samouczek — łączenie Apache Spark w usłudze Azure HDInsight z usługą Azure Event Hubs i przetwarzanie danych przesyłanych strumieniowo.
 author: hrasheed-msft
 ms.author: hrasheed
@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive,mvc
 ms.topic: tutorial
 ms.date: 10/17/2019
-ms.openlocfilehash: 33ec747edaeba60f1c1e5fdb29fd2af1cb29cf8d
-ms.sourcegitcommit: be8e2e0a3eb2ad49ed5b996461d4bff7cba8a837
+ms.openlocfilehash: 0b24d1b0215564fb9f6063d4a2d091bb7a9a1c3e
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72800074"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73494632"
 ---
 # <a name="tutorial-process-tweets-using-azure-event-hubs-and-apache-spark-in-hdinsight"></a>Samouczek: przetwarzanie tweetów przy użyciu usługi Azure Event Hubs i Apache Spark w usłudze HDInsight
 
@@ -48,7 +48,7 @@ Aby otrzymywać strumień tweetów, musisz utworzyć aplikację w usłudze Twitt
     |---|---|
     |Nazwa aplikacji|Podaj nazwę aplikacji. Wartość użyta w tym samouczku to **HDISparkStreamApp0423**. Ta nazwa musi być unikatową nazwą.|
     |Application description (Opis aplikacji)|Podaj krótki opis aplikacji. Wartość używana w tym samouczku to **prosta aplikacja przesyłania strumieniowego HDInsight Spark**.|
-    |Adres URL witryny sieci Web|Podaj witrynę sieci Web aplikacji. Nie musi być prawidłową witryną sieci Web.  Wartość użyta w tym samouczku to `http://www.contoso.com`.|
+    |Adres URL witryny sieci Web|Podaj witrynę sieci Web aplikacji. Nie musi być prawidłową witryną sieci Web.  Wartość użyta w tym samouczku jest `http://www.contoso.com`.|
     |Powiedz nam, jak zostanie użyta ta aplikacja|Tylko do celów testowych. Tworzenie aplikacji przesyłania strumieniowego Apache Spark w celu wysyłania tweetów do centrum zdarzeń platformy Azure.|
 
 1. Wybierz pozycję **Utwórz**.
@@ -70,7 +70,7 @@ Aby otrzymywać strumień tweetów, musisz utworzyć aplikację w usłudze Twitt
 
 To centrum zdarzeń służy do przechowywania tweetów.
 
-1. Zaloguj się do [portalu Azure](https://portal.azure.com).
+1. Zaloguj się w witrynie [Azure Portal](https://portal.azure.com).
 
 1. W menu po lewej stronie przejdź do **wszystkich usług** > **Internet rzeczy** > **Event Hubs**.  
 
@@ -83,7 +83,7 @@ To centrum zdarzeń służy do przechowywania tweetów.
     |Właściwość |Wartość |
     |---|---|
     |Nazwa|Wprowadź nazwę centrum zdarzeń.  Wartość użyta w tym samouczku to **myeventhubns20180403**.|
-    |Warstwa cenowa|Wybierz pozycję **Standardowy**.|
+    |Warstwa cenowa|Wybierz opcję **Standardowa**.|
     |Subskrypcja|Wybierz odpowiednią subskrypcję.|
     |Grupa zasobów|Wybierz istniejącą grupę zasobów z listy rozwijanej lub wybierz pozycję **Utwórz nową** , aby utworzyć nową grupę zasobów.|
     |Lokalizacja|Wybierz tę samą **lokalizację** co Klaster Apache Spark w usłudze HDInsight, aby zmniejszyć opóźnienia i koszty.|
@@ -137,7 +137,7 @@ Utwórz centrum zdarzeń po wdrożeniu Event Hubs przestrzeni nazw.  Z poziomu p
     {"conf":{"spark.jars.packages":"com.microsoft.azure:azure-eventhubs-spark_2.11:2.3.13,org.twitter4j:twitter4j-core:4.0.6"}}
     ```
 
-1. Edytuj Poniższy kod, zastępując `<Event hub name>`, `<Event hub namespace connection string>`, `<CONSUMER KEY>`, `<CONSUMER SECRET>`, `<ACCESS TOKEN>` i `<TOKEN SECRET>` z odpowiednimi wartościami. Uruchom edytowany kod, aby wysłać tweety do centrum zdarzeń:
+1. Edytuj Poniższy kod, zastępując `<Event hub name>`, `<Event hub namespace connection string>`, `<CONSUMER KEY>`, `<CONSUMER SECRET>`, `<ACCESS TOKEN>`i `<TOKEN SECRET>` z odpowiednimi wartościami. Uruchom edytowany kod, aby wysłać tweety do centrum zdarzeń:
 
     ```scala
     import java.util._
@@ -219,7 +219,7 @@ Utwórz inny Notes Jupyter i nadaj mu nazwę **ReadTweetsFromEventHub**.
     {"conf":{"spark.jars.packages":"com.microsoft.azure:azure-eventhubs-spark_2.11:2.3.13"}}
     ```
 
-2. Edytuj Poniższy kod, zastępując `<Event hub name>` i `<Event hub namespace connection string>` odpowiednimi wartościami. Uruchom edytowany kod, aby przeczytać tweety z centrum zdarzeń:
+2. Edytuj Poniższy kod, zastępując `<Event hub name>`i `<Event hub namespace connection string>` z odpowiednimi wartościami. Uruchom edytowany kod, aby przeczytać tweety z centrum zdarzeń:
 
     ```scala
     import org.apache.spark.eventhubs._

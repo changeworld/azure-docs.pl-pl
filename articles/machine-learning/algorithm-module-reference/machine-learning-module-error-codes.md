@@ -1,6 +1,6 @@
 ---
 title: Rozwiązywanie problemów z błędami modułu
-titleSuffix: Azure Machine Learning service
+titleSuffix: Azure Machine Learning
 description: Rozwiązywanie problemów z wyjątkami modułu w Azure Machine Learning Studio przy użyciu kodów błędów
 services: machine-learning
 ms.service: machine-learning
@@ -8,25 +8,25 @@ ms.subservice: core
 ms.topic: reference
 author: xiaoharper
 ms.author: zhanxia
-ms.date: 05/02/2019
-ms.openlocfilehash: a1a6817c08223b360c08804e0595f12f2947ea5f
-ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
+ms.date: 10/22/2019
+ms.openlocfilehash: b07b1fc14ac7ac72a30f75a098b4aab35f2de713
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "72693072"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73497729"
 ---
 # <a name="exceptions-and-error-codes-for-algorithm--module-reference"></a>Wyjątki i kody błędów dla algorytmu & odwołanie do modułu
 
-Dowiedz się więcej o komunikatach o błędach i kodach wyjątków, które mogą wystąpić przy użyciu modułów w Azure Machine Learning Studio. 
+Informacje o komunikatach o błędach i kodach wyjątków, które mogą wystąpić przy użyciu modułów w programie Azure Machine Learning Designer (wersja zapoznawcza). 
 
-Aby rozwiązać ten problem, poszukaj błędu w tym artykule, aby zapoznać się z typowymi przyczynami. Istnieją dwa sposoby uzyskania pełnego tekstu komunikatu o błędzie w programie Studio:  
+Aby rozwiązać ten problem, poszukaj błędu w tym artykule, aby zapoznać się z typowymi przyczynami. Istnieją dwa sposoby uzyskania pełnego tekstu komunikatu o błędzie w projektancie:  
  
 - Kliknij link, **Wyświetl dziennik danych wyjściowych**w okienku po prawej stronie i przewiń w dół. Szczegółowy komunikat o błędzie jest wyświetlany w ostatnich dwóch wierszach okna.  
   
 - Wybierz moduł, który zawiera błąd, a następnie kliknij czerwony znak X. Wyświetlany jest tylko odpowiedni tekst błędu.  
   
-Jeśli tekst komunikatu o błędzie nie jest pomocny, Wyślij do nas informacje o kontekście i wszelkich żądanych dodatkach lub zmianach. Możesz przesłać opinię na temat błędu lub odwiedzić [forum Azure Machine Learning Studio](https://aka.ms/aml-forum-studio) i ogłosić pytanie.  
+Jeśli tekst komunikatu o błędzie nie jest pomocny, Wyślij do nas informacje o kontekście i wszelkie wymagane dodatki lub zmiany przez przesłanie opinii.
 
 
 ## <a name="error-0001"></a>Błąd 0,001  
@@ -163,9 +163,9 @@ Jeśli tekst komunikatu o błędzie nie jest pomocny, Wyślij do nas informacje 
 ## <a name="error-0009"></a>0009 błędów  
  Wyjątek występuje, gdy nazwa konta usługi Azure Storage lub nazwa kontenera została określona nieprawidłowo.  
   
-Ten błąd występuje w Azure Machine Learning Studio po określeniu parametrów dla konta usługi Azure Storage, ale nie można rozpoznać nazwy ani hasła. Błędy na hasłach lub nazwach kont mogą mieć wiele przyczyn:
+Ten błąd występuje w projektancie Azure Machine Learning podczas określania parametrów dla konta usługi Azure Storage, ale nie można rozpoznać nazwy ani hasła. Błędy na hasłach lub nazwach kont mogą mieć wiele przyczyn:
  
- + Typ konta jest nieprawidłowy. Niektóre nowe typy kont nie są obsługiwane w przypadku Machine Learning Studio. Aby uzyskać szczegółowe informacje, zobacz [Importowanie danych](import-data.md) .
+ + Typ konta jest nieprawidłowy. Niektóre nowe typy kont nie są obsługiwane przez program Machine Learning Designer. Aby uzyskać szczegółowe informacje, zobacz [Importowanie danych](import-data.md) .
  + Wprowadzono niepoprawną nazwę konta
  + Konto już nie istnieje
  + Hasło do konta magazynu jest nieprawidłowe lub zostało zmienione
@@ -201,7 +201,7 @@ Jeśli podano pełną ścieżkę do obiektu BLOB, należy sprawdzić, czy ście�
 |Komunikaty o wyjątkach|  
 |------------------------|  
 |Kolumny z odpowiednim indeksem wejściowych zestawów danych mają różne nazwy.|  
-|Nazwy kolumn nie są takie same dla kolumn {0} (liczonych od zera) wejściowych zestawów danych (odpowiednio {1} i {2}).|  
+|Nazwy kolumn nie są takie same dla kolumn {0} (liczonych od zera) wejściowych zestawów danych (odpowiednio{1} i {2}).|  
   
 
 ## <a name="error-0011"></a>0011 błędów  
@@ -315,7 +315,7 @@ W przypadku kolumn, które mają być używane do grupowania lub kategoryzacji, 
 |------------------------|  
 |Kolumny z odpowiednim indeksem w wejściowych zestawach danych mają niezgodne typy.|  
 |Kolumny {0} i {1} są niezgodne.|  
-|Typy elementów kolumn są niezgodne z kolumnami {0} (liczonymi od zera) wejściowych zestawów danych (odpowiednio {1} i {2}).|  
+|Typy elementów kolumn są niezgodne z kolumnami {0} (liczonymi od zera) wejściowych zestawów danych (odpowiednio{1} i {2}).|  
   
 
 ## <a name="error-0017"></a>0017 błędów  
@@ -779,7 +779,7 @@ Kolejną przyczyną tego błędu może być próba użycia kolumny zawierającej
 |Komunikaty o wyjątkach|  
 |------------------------|  
 |Nie znaleziono żadnego dostępnego jawnej metody.|  
-|Nie można porównać wartości dla kolumny \\ "{0} \\" typu {1}. Nie znaleziono żadnego dostępnego jawnej metody.|  
+|Nie można porównać wartości dla kolumny \\"{0}\\" typu {1}. Nie znaleziono żadnego dostępnego jawnej metody.|  
 
 
 ## <a name="error-0044"></a>Błąd 0044  
@@ -806,7 +806,7 @@ Kolejną przyczyną tego błędu może być próba użycia kolumny zawierającej
 |Komunikaty o wyjątkach|  
 |------------------------|  
 |Nie można utworzyć kolumny z mieszanymi typami elementów.|  
-|Nie można utworzyć kolumny o IDENTYFIKATORze "{0}" typów elementów mieszanych: \ n\tType danych [{1}, {0}] jest {2} \n\tType danych [{3}, {0}] jest {4}.|  
+|Nie można utworzyć kolumny o IDENTYFIKATORze "{0}" typów elementów mieszanych: \ n\tType danych [{1}, {0}] jest {2}\n\tType danych [{3}, {0}] jest {4}.|  
   
 
 ## <a name="error-0046"></a>Błąd 0046  
@@ -1063,7 +1063,7 @@ Kolejną przyczyną tego błędu może być próba użycia kolumny zawierającej
   
 **Resolution:**
 
-1. In Azure Machine Learning Studio, right-click the module that has the error, and select **View Log**.
+1. In Azure Machine Learning designer, right-click the module that has the error, and select **View Log**.
 2. Examine the standard error log of the module, which contains the stack trace.
     + Lines beginning with [ModuleOutput] indicate output from R.
     + Messages from R marked as **warnings** typically do not cause the pipeline to fail.
@@ -1176,7 +1176,7 @@ Zapoznaj się z następującymi artykułami, aby uzyskać pomoc dotyczącą zapy
 |Komunikaty o wyjątkach|  
 |------------------------|  
 |Skrypt Hive jest nieprawidłowy.|  
-|@No__t_0 skryptu Hive jest niepoprawny.|  
+|{0} skryptu Hive jest niepoprawny.|  
   
 
 ## <a name="error-0069"></a>Błąd 0069  
@@ -1192,7 +1192,7 @@ Zapoznaj się z następującymi artykułami, aby uzyskać pomoc dotyczącą zapy
   
  Jeśli w wyjątku modułu jest raportowany komunikat generowany przez program SQL, należy wykonać akcję na podstawie zgłoszonego błędu. Na przykład komunikaty o błędach czasami zawierają określone wskazówki dotyczące przyczyny błędu:
 + *Nie ma takiej kolumny ani brakującej bazy danych*, co oznacza, że być może wpisano nieprawidłową nazwę kolumny. Jeśli masz pewność, że nazwa kolumny jest poprawna, spróbuj użyć nawiasów lub znaków cudzysłowu, aby ująć identyfikator kolumny.
-+ *Błąd logiki SQL w sąsiedztwie \<SQL \> słowa kluczowego*, wskazujący, że może wystąpić błąd składniowy przed określonym słowem kluczowym
++ *Błąd logiki SQL w sąsiedztwie \<słowo kluczowe sql\>* , wskazujący, że może wystąpić błąd składniowy przed określonym słowem kluczowym
 
   
 |Komunikaty o wyjątkach|  
@@ -1787,7 +1787,7 @@ Ogólnie przekształcenie bazujące na liczbie może być stosowane tylko do zes
 |Komunikaty o wyjątkach|  
 |------------------------|  
 |Nieobsługiwana domena SQL.|  
-|@No__t_0 domeny SQL nie jest obecnie obsługiwana w usłudze Azure ML|  
+|{0} domeny SQL nie jest obecnie obsługiwana w usłudze Azure ML|  
   
 
 ## <a name="error-0127"></a>Błąd 0127  
@@ -1852,8 +1852,8 @@ Ogólnie przekształcenie bazujące na liczbie może być stosowane tylko do zes
 |Komunikaty o wyjątkach|  
 |------------------------|  
 |Przekazywanie spakowanych zestawów danych nie powiodło się|  
-|@No__t_0 spakowanego zestawu danych nie powiodło się z następującym komunikatem: {1}|  
-|@No__t_0 spakowanego zestawu danych nie powiodło się z powodu {1} wyjątku z komunikatem: {2}|  
+|{0} spakowanego zestawu danych nie powiodło się z następującym komunikatem: {1}|  
+|{0} spakowanego zestawu danych nie powiodło się z powodu {1} wyjątku z komunikatem: {2}|  
   
 
 ## <a name="error-0132"></a>Błąd 0132  
@@ -1979,9 +1979,9 @@ Rozwiązanie:
 |------------------------|  
 |Konwersja nie jest dozwolona.|  
 |Nie można skonwertować: {0}.|  
-|Nie można skonwertować: {0}, w {1} wiersza.|  
-|Nie można skonwertować kolumny typu {0} do kolumny typu {1} w {2} wiersza.|  
-|Nie można skonwertować kolumny "{2}" typu {0} do kolumny typu {1} w {3} wiersza.|  
+|Nie można skonwertować: {0}, w {1}wiersza.|  
+|Nie można skonwertować kolumny typu {0} do kolumny typu {1} w {2}wiersza.|  
+|Nie można skonwertować kolumny "{2}" typu {0} do kolumny typu {1} w {3}wiersza.|  
 |Nie można skonwertować kolumny "{2}" typu {0} na kolumnę "{3}" typu {1} w wierszu {4}.| 
 
 ## <a name="error-0140"></a>Błąd 0140  
@@ -2041,12 +2041,12 @@ Rozwiązanie:
   
  Ten błąd w Azure Machine Learning występuje, gdy określisz Źródło pliku GitHub przy użyciu nieprawidłowego formatu adresu URL.  
   
-**Rozwiązanie:** Sprawdź, czy adres URL repozytorium GitHub jest prawidłowy i czy został zakończony przy użyciu \blob\ lub \tree \\.  
+**Rozwiązanie:** Sprawdź, czy adres URL repozytorium GitHub jest prawidłowy i czy został zakończony przy użyciu \blob\ lub \tree\\.  
   
 |Komunikaty o wyjątkach|  
 |------------------------|  
 |Nie można przeanalizować adresu URL usługi GitHub.|  
-|Nie można przeanalizować adresu URL usługi GitHub (oczekiwano elementu "\blob \\" lub "\tree \\" po nazwie repozytorium): {0}|  
+|Nie można przeanalizować adresu URL usługi GitHub (oczekiwano elementu "\blob\\" lub "\tree\\" po nazwie repozytorium): {0}|  
 
 ## <a name="error-0145"></a>Błąd 0145  
  Z jakiegoś powodu nie można utworzyć katalogu replikacji.  

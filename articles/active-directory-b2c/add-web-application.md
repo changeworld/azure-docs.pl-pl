@@ -1,6 +1,6 @@
 ---
-title: Dodawanie aplikacji sieci Web — Azure Active Directory B2C | Microsoft Docs
-description: Dowiedz się, jak dodać aplikację sieci Web do dzierżawy Active Directory B2C.
+title: Dodawanie aplikacji internetowego interfejsu API — Azure Active Directory B2C | Microsoft Docs
+description: Dowiedz się, jak dodać aplikację internetowego interfejsu API do dzierżawy Active Directory B2C.
 services: active-directory-b2c
 author: mmacy
 manager: celestedg
@@ -10,18 +10,22 @@ ms.custom: mvc
 ms.topic: conceptual
 ms.service: active-directory
 ms.subservice: B2C
-ms.openlocfilehash: 88ce3931d9f47b8c16251a45e54fa96b97f038e2
-ms.sourcegitcommit: 8bae7afb0011a98e82cbd76c50bc9f08be9ebe06
+ms.openlocfilehash: 0fd6af26390778491a127ce1bd0a58846b87f721
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/01/2019
-ms.locfileid: "71693288"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73474867"
 ---
 # <a name="add-a-web-api-application-to-your-azure-active-directory-b2c-tenant"></a>Dodawanie aplikacji internetowego interfejsu API do dzierżawy Azure Active Directory B2C
 
- Zarejestruj zasoby interfejsu API sieci Web w dzierżawie, aby umożliwić im akceptowanie i odpowiadanie na żądania przez aplikacje klienckie, które zawierają token dostępu. W tym artykule pokazano, jak zarejestrować aplikację w programie Azure Active Directory B2C (Azure AD B2C).
+ Zarejestruj zasoby interfejsu API sieci Web w dzierżawie, aby umożliwić im akceptowanie i odpowiadanie na żądania przez aplikacje klienckie, które zawierają token dostępu. W tym artykule przedstawiono sposób rejestrowania internetowego interfejsu API w programie Azure Active Directory B2C (Azure AD B2C).
 
-1. Zaloguj się do [portalu Azure](https://portal.azure.com).
+Aby zarejestrować aplikację w dzierżawie Azure AD B2C, możesz użyć bieżącego środowiska **aplikacji** lub naszego nowego interfejsu Unified **rejestracje aplikacji (wersja zapoznawcza)** . [Dowiedz się więcej na temat środowiska w wersji zapoznawczej](https://aka.ms/b2cappregintro).
+
+#### <a name="applicationstabapplications"></a>[Aplikacje](#tab/applications/)
+
+1. Zaloguj się w witrynie [Azure Portal](https://portal.azure.com).
 2. Upewnij się, że używasz katalogu zawierającego dzierżawcę Azure AD B2C. W górnym menu wybierz pozycję **katalog i subskrypcja** , a następnie wybierz katalog, w którym znajduje się Twoja dzierżawa.
 3. Wybierz pozycję **Wszystkie usługi** w lewym górnym rogu witryny Azure Portal, a następnie wyszukaj i wybierz usługę **Azure AD B2C**.
 4. Wybierz pozycję **Aplikacje**, a następnie wybierz polecenie **Dodaj**.
@@ -29,8 +33,28 @@ ms.locfileid: "71693288"
 6. Dla pozycji **Uwzględnij aplikację internetową/internetowy interfejs API** i **Zezwalaj na niejawny przepływ** wybierz wartość **Tak**.
 7. Dla pozycji **Adres URL odpowiedzi** wprowadź punkt końcowy, w którym usługa Azure AD B2C powinna zwracać wszelkie tokeny żądane przez Twoją aplikację. W aplikacji produkcyjnej można ustawić adres URL odpowiedzi na wartość taką jak `https://localhost:44332`. Dla celów testowych Ustaw adres URL odpowiedzi na `https://jwt.ms`.
 8. Dla pozycji **Identyfikator URI identyfikatora aplikacji** wprowadź identyfikator używany na potrzeby internetowego interfejsu API. Zostanie wygenerowany pełny identyfikator URI łącznie z domeną. Na przykład `https://contosotenant.onmicrosoft.com/api`.
-9. Kliknij przycisk **Utwórz**.
+9. Kliknij pozycję **Utwórz**.
 10. Na stronie właściwości zapisz identyfikator aplikacji, który będzie używany podczas konfigurowania aplikacji internetowej.
+
+#### <a name="app-registrations-previewtabapp-reg-preview"></a>[Rejestracje aplikacji (wersja zapoznawcza)](#tab/app-reg-preview/)
+
+1. Zaloguj się w witrynie [Azure Portal](https://portal.azure.com).
+1. Wybierz filtr **katalogów i subskrypcji** w górnym menu, a następnie wybierz katalog zawierający dzierżawę Azure AD B2C.
+1. W menu po lewej stronie wybierz pozycję **Azure AD B2C**. Lub wybierz pozycję **wszystkie usługi** i Wyszukaj i wybierz pozycję **Azure AD B2C**.
+1. Wybierz pozycję **rejestracje aplikacji (wersja zapoznawcza)** , a następnie wybierz pozycję **Nowa rejestracja**.
+1. Wprowadź **nazwę** aplikacji. Na przykład *webapi1*.
+1. W obszarze **Identyfikator URI przekierowania**wybierz pozycję **Sieć Web**, a następnie wprowadź punkt końcowy, w którym Azure AD B2C powinien zwrócić tokeny, których aplikacja żąda. W aplikacji produkcyjnej można ustawić identyfikator URI przekierowania, taki jak `https://localhost:5000`. Podczas programowania lub testowania można ustawić `https://jwt.ms`, aplikację sieci Web firmy Microsoft, która wyświetla zdekodowaną zawartość tokenu (zawartość tokenu nigdy nie opuszcza przeglądarki). Można w dowolnym momencie dodawać i modyfikować identyfikatory URI przekierowań w zarejestrowanych aplikacjach.
+1. Wybierz pozycję **Zarejestruj**.
+1. Zapisz **Identyfikator aplikacji (klienta)** do użycia w kodzie internetowego interfejsu API.
+
+Jeśli masz aplikację, która implementuje przepływ niejawnego przydzielenia, na przykład aplikację jednostronicową opartą na języku JavaScript, możesz włączyć przepływ, wykonując następujące czynności:
+
+1. W obszarze **Zarządzaj**wybierz pozycję **uwierzytelnianie**.
+1. Wybierz opcję **Wypróbuj nowe środowisko** (jeśli zostało wyświetlone).
+1. W obszarze **niejawne przyznanie**zaznacz pola wyboru **tokeny dostępu** i **tokeny identyfikatora** .
+1. Wybierz pozycję **Zapisz**.
+
+* * *
 
 ## <a name="configure-scopes"></a>Konfigurowanie zakresów
 
@@ -40,7 +64,7 @@ Zakresy umożliwiają zarządzanie dostępem do chronionych zasobów. Zakresy s�
 
 ## <a name="grant-permissions"></a>Udzielenie uprawnień
 
-Aby wywoływać chroniony internetowy interfejs API z aplikacji, należy udzielić aplikacji uprawnień do tego interfejsu. Na przykład w [samouczku: rejestrowanie aplikacji w Azure Active Directory B2C](tutorial-register-applications.md), aplikacja sieci Web jest tworzona w Azure AD B2C o nazwie *webapp1*. Za pomocą tej aplikacji można wywołać internetowy interfejs API.
+Aby wywoływać chroniony internetowy interfejs API z aplikacji, należy udzielić aplikacji uprawnień do tego interfejsu. Na przykład w [samouczku: rejestrowanie aplikacji w Azure Active Directory B2C](tutorial-register-applications.md), aplikacja sieci Web o nazwie *webapp1* jest zarejestrowana w Azure AD B2C. Za pomocą tej aplikacji można wywołać internetowy interfejs API.
 
 [!INCLUDE [active-directory-b2c-permissions-api](../../includes/active-directory-b2c-permissions-api.md)]
 

@@ -1,7 +1,7 @@
 ---
 title: 'K-oznacza klastrowanie: odwołanie do modułu'
-titleSuffix: Azure Machine Learning service
-description: Dowiedz się, jak wyszkolić modele klastrowania w usłudze Azure Machine Learning przy użyciu modułu K-oznaczania klastrowania.
+titleSuffix: Azure Machine Learning
+description: Dowiedz się, w jaki sposób używać modułu klastrowanie K-oznaczanie w Azure Machine Learning do uczenia modeli klastrowania.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -9,16 +9,16 @@ ms.topic: reference
 author: xiaoharper
 ms.author: zhanxia
 ms.date: 05/06/2019
-ms.openlocfilehash: bb39a57f565a542e5106b7ba14e58bc39041f53d
-ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
+ms.openlocfilehash: 4634519f55582a3184472d28acfd98fa849be86a
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "72693110"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73497766"
 ---
 # <a name="module-k-means-clustering"></a>Moduł: K-oznacza klastrowanie
 
-W tym artykule opisano, jak używać modułu *k-oznaczania klastrowania* w programie Azure Machine Learning Studio do tworzenia nauczenia k-średnich klastrów. 
+W tym artykule opisano, jak używać modułu *k-oznaczania klastrowania* w programie Azure Machine Learning Designer (wersja zapoznawcza) w celu utworzenia pośredniego modelu klastrowania. 
  
 K-oznacza to jeden z najprostszych i najlepszych znanych *nienadzorowanych* algorytmów uczenia. Można użyć algorytmu dla różnych zadań uczenia maszynowego, takich jak: 
 

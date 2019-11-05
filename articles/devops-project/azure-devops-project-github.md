@@ -16,12 +16,12 @@ ms.date: 06/27/2019
 author: mlearned
 ms.custom: mvc
 monikerRange: vsts
-ms.openlocfilehash: 4a48b5c413f6dfb58a1ba3f896ded49250cde306
-ms.sourcegitcommit: e0a1a9e4a5c92d57deb168580e8aa1306bd94723
+ms.openlocfilehash: 15ac201a078864717d8e0079801507cf5fc0fe3b
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/11/2019
-ms.locfileid: "72286311"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73481094"
 ---
 # <a name="tutorial-create-a-cicd-pipeline-for-your-existing-code-by-using-azure-devops-projects"></a>Samouczek: tworzenie potoku ciągłej integracji/ciągłego wdrażania dla istniejącego kodu za pomocą usługi Azure DevOps Projects
 
@@ -46,9 +46,13 @@ Wykonasz następujące zadania:
 
 Usługa Azure DevOps Projects tworzy potok ciągłej integracji/ciągłego wdrażania w usłudze Azure Pipelines. Możesz utworzyć nową organizację usługi Azure DevOps lub użyć istniejącej organizacji. Usługa Azure DevOps Projects tworzy również zasoby platformy Azure w wybranej przez użytkownika subskrypcji platformy Azure.
 
-1. Zaloguj się do [portalu Azure](https://portal.azure.com).
+1. Zaloguj się w witrynie [Azure Portal](https://portal.azure.com).
 
-2. W lewym okienku wybierz pozycję **+ Utwórz zasób** na lewym pasku nawigacyjnym, a następnie wyszukaj ciąg **DevOps projects**, a następnie wybierz pozycję **Utwórz**.
+2. Z menu Azure Portal wybierz pozycję **Utwórz zasób**.
+
+   ![Menu Azure Portal — tworzenie zasobu](_img/azure-devops-project-github/createaresource.png)
+
+3. Wybierz pozycję **DevOps > DevOps Project**.
 
    ![Pulpit nawigacyjny usługi DevOps Projects](_img/azure-devops-project-github/azuredashboard.png)
 
@@ -56,7 +60,7 @@ Usługa Azure DevOps Projects tworzy potok ciągłej integracji/ciągłego wdra�
 
 ## <a name="configure-access-to-your-github-repo-and-choose-a-framework"></a>Konfigurowanie dostępu do repozytorium GitHub i wybieranie platformy
 
-1. Wybierz pozycję **GitHub** lub zewnętrzne repozytorium kodu **git** . Na potrzeby tego samouczka wybierz pozycję **GitHub**. Może być wymagane uwierzytelnienie w usłudze GitHub po raz pierwszy, aby zezwolić na dostęp platformy Azure do repozytorium GitHub.
+1. Wybierz pozycję **GitHub** lub zewnętrzne repozytorium kodu **git** . Na potrzeby tego samouczka wybierz pozycję **GitHub**. Może być wymagane uwierzytelnienie za pomocą usługi GitHub po raz pierwszy, aby umożliwić systemowi Azure dostęp do repozytorium GitHub.
 
 2. Zakończ, wybierając **repozytorium** i **gałąź**, a następnie wybierz pozycję **dalej**.
 

@@ -9,20 +9,21 @@ ms.topic: conceptual
 ms.author: jordane
 author: jpe316
 ms.reviewer: larryfr
-ms.date: 07/08/2019
-ms.openlocfilehash: 27988edaf9d6fe70288352b0ba45945e32976d4d
-ms.sourcegitcommit: 0fab4c4f2940e4c7b2ac5a93fcc52d2d5f7ff367
+ms.date: 10/25/2019
+ms.openlocfilehash: 6590b6c3ecf1efc43822a4fefab79cdc7f624dcd
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71034649"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73496989"
 ---
 # <a name="deploy-a-model-to-azure-container-instances"></a>Wdróż model do Azure Container Instances
+[!INCLUDE [applies-to-skus](../../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
 Dowiedz się, jak za pomocą Azure Machine Learning wdrożyć model jako usługę sieci Web na Azure Container Instances (ACI). Użyj Azure Container Instances, jeśli spełniony jest jeden z następujących warunków:
 
-- Musisz szybko wdrażać i weryfikacja modelu. Nie ma potrzeby tworzenia kontenerów ACI przed czasem. Są one tworzone w ramach procesu wdrażania.
-- W przypadku testowania modelu, który jest w fazie projektowania. 
+- Należy szybko wdrożyć i zweryfikować model. Nie ma potrzeby tworzenia kontenerów ACI przed czasem. Są one tworzone w ramach procesu wdrażania.
+- Testujesz model, który jest w fazie projektowania. 
 
 Aby uzyskać informacje dotyczące przydziału i dostępności regionów dla usługi ACI, zobacz artykuł [dotyczący przydziałów i dostępności regionów dla Azure Container Instances](https://docs.microsoft.com/azure/container-instances/container-instances-quotas) artykułu.
 
@@ -36,13 +37,13 @@ Aby uzyskać informacje dotyczące przydziału i dostępności regionów dla us�
 
 - W fragmentach kodu w języku __Python__ w tym artykule założono, że ustawiono następujące zmienne:
 
-    * `ws`-Ustaw na obszar roboczy.
-    * `model`-Ustaw na zarejestrowany model.
-    * `inference_config`-Ustaw na konfigurację wnioskowania dla modelu.
+    * `ws` — Ustaw obszar roboczy.
+    * `model` — ustawiony na zarejestrowany model.
+    * `inference_config` — Ustaw konfigurację wnioskowania dla modelu.
 
     Aby uzyskać więcej informacji na temat ustawiania tych zmiennych, zobacz [jak i gdzie wdrażać modele](how-to-deploy-and-where.md).
 
-- W fragmentach __interfejsu wiersza polecenia__ w tym artykule przyjęto założenie `inferenceconfig.json` , że dokument został utworzony. Aby uzyskać więcej informacji na temat tworzenia tego dokumentu, zobacz [jak i gdzie wdrażać modele](how-to-deploy-and-where.md).
+- W fragmentach __interfejsu wiersza polecenia__ w tym artykule przyjęto założenie, że utworzono dokument `inferenceconfig.json`. Aby uzyskać więcej informacji na temat tworzenia tego dokumentu, zobacz [jak i gdzie wdrażać modele](how-to-deploy-and-where.md).
 
 ## <a name="deploy-to-aci"></a>Wdrażanie w usłudze ACI
 
@@ -68,7 +69,7 @@ Aby uzyskać więcej informacji na temat klas, metod i parametrów używanych w 
 
 ### <a name="using-the-cli"></a>Korzystanie z interfejsu wiersza polecenia
 
-Aby wdrożyć przy użyciu interfejsu wiersza polecenia, należy użyć poniższe polecenie. Zastąp `mymodel:1` wartość nazwą i wersją zarejestrowanego modelu. Zamień `myservice` na nazwę, która ma zostać przydana do tej usługi:
+Aby wdrożyć przy użyciu interfejsu wiersza polecenia, należy użyć poniższe polecenie. Zastąp `mymodel:1` nazwą i wersją zarejestrowanego modelu. Zastąp `myservice` nazwą, aby nadać tej usłudze:
 
 ```azurecli-interactive
 az ml model deploy -m mymodel:1 -n myservice -ic inferenceconfig.json -dc deploymentconfig.json
@@ -85,7 +86,7 @@ Zobacz [Wdrażanie modeli przy użyciu vs Code](how-to-vscode-tools.md#deploy-an
 > [!IMPORTANT]
 > Nie musisz tworzyć kontenera ACI w celu przetestowania z góry. Kontenery ACI są tworzone zgodnie z wymaganiami.
 
-## <a name="update-the-web-service"></a>Aktualizacja usługi sieci web
+## <a name="update-the-web-service"></a>Aktualizowanie usługi sieci Web
 
 [!INCLUDE [aml-update-web-service](../../../includes/machine-learning-update-web-service.md)]
 
@@ -93,7 +94,7 @@ Zobacz [Wdrażanie modeli przy użyciu vs Code](how-to-vscode-tools.md#deploy-an
 
 * [Jak wdrożyć model przy użyciu niestandardowego obrazu platformy Docker](how-to-deploy-custom-docker-image.md)
 * [Rozwiązywanie problemów z wdrażaniem](how-to-troubleshoot-deployment.md)
-* [Zabezpieczania usług sieci web Azure Machine Learning przy użyciu protokołu SSL](how-to-secure-web-service.md)
-* [Korzystanie z modelu uczenia Maszynowego, wdrożyć jako usługę sieci web](how-to-consume-web-service.md)
+* [Zabezpieczanie Azure Machine Learning usług sieci Web przy użyciu protokołu SSL](how-to-secure-web-service.md)
+* [Korzystanie z modelu ML wdrożonego jako usługa sieci Web](how-to-consume-web-service.md)
 * [Monitoruj modele Azure Machine Learning przy użyciu Application Insights](how-to-enable-app-insights.md)
 * [Zbieranie danych dla modeli w środowisku produkcyjnym](how-to-enable-data-collection.md)

@@ -5,17 +5,17 @@ services: vpn-gateway
 author: yushwang
 ms.service: vpn-gateway
 ms.topic: tutorial
-ms.date: 02/11/2019
+ms.date: 10/17/2019
 ms.author: yushwang
 ms.custom: mvc
-ms.openlocfilehash: b59d58eb2c387e5ba1f71748751110bf932837b9
-ms.sourcegitcommit: 1aefdf876c95bf6c07b12eb8c5fab98e92948000
+ms.openlocfilehash: 1f2cbe447508ca6939fcdb997a9536ea91a7953f
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/06/2019
-ms.locfileid: "66727122"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73495631"
 ---
-# <a name="tutorial-create-and-manage-s2s-vpn-connections-using-powershell"></a>Samouczek: Tworzenie połączeń S2S sieci VPN i zarządzanie nimi za pomocą programu PowerShell
+# <a name="tutorial-create-and-manage-s2s-vpn-connections-using-powershell"></a>Samouczek: tworzenie połączeń sieci VPN S2S i zarządzanie nimi przy użyciu programu PowerShell
 
 Połączenia S2S sieci VPN na platformie Azure zapewniają bezpieczną łączność między lokalizacjami klienta a platformą Azure. Ten samouczek przedstawia cykle życia połączeń IPsec S2S sieci VPN, takie jak tworzenie połączenia S2S sieci VPN i zarządzanie nim. Omawiane kwestie:
 
@@ -35,7 +35,7 @@ Na poniższym diagramie przedstawiono topologię wykorzystywaną w tym samouczku
 
 ## <a name="requirements"></a>Wymagania
 
-Ukończ pierwszy samouczek: [Tworzenie bramy sieci VPN przy użyciu programu Azure PowerShell](vpn-gateway-tutorial-create-gateway-powershell.md), aby utworzyć następujące zasoby:
+Wykonaj pierwszy samouczek: [Utwórz bramę sieci VPN z Azure PowerShell](vpn-gateway-tutorial-create-gateway-powershell.md) , aby utworzyć następujące zasoby:
 
 1. Grupa zasobów (TestRG1), sieć wirtualna (VNet1) i podsieć GatewaySubnet
 2. Brama sieci VPN (VNet1GW)
@@ -99,10 +99,10 @@ $lng1 = Get-AzLocalNetworkGateway   -Name $LNG1 -ResourceGroupName $RG1
 
 New-AzVirtualNetworkGatewayConnection -Name $Connection1 -ResourceGroupName $RG1 `
   -Location $Location1 -VirtualNetworkGateway1 $vng1 -LocalNetworkGateway2 $lng1 `
-  -ConnectionType IPsec -SharedKey "Azure@!b2C3"
+  -ConnectionType IPsec -SharedKey "Azure@!b2C3" -ConnectionProtocol IKEv2
 ```
 
-Dodaj opcjonalną właściwość „ **-EnableBGP $True**”, aby włączyć protokół BGP dla połączenia, jeśli używasz protokołu BGP. To ustawienie jest domyślnie wyłączone.
+Dodaj opcjonalną właściwość „ **-EnableBGP $True**”, aby włączyć protokół BGP dla połączenia, jeśli używasz protokołu BGP. To ustawienie jest domyślnie wyłączone. Parametr "-ConnectionProtocol" jest opcjonalny przy użyciu protokołu IKEv2 jako domyślnego. Połączenie z protokołami IKEv1 można utworzyć, określając **ConnectionProtocol IKEv1**.
 
 ## <a name="update-the-vpn-connection-pre-shared-key-bgp-and-ipsecike-policy"></a>Aktualizowanie klucza wstępnego, protokołu BGP i zasad IPsec/IKE połączenia VPN
 
@@ -120,7 +120,7 @@ Get-AzVirtualNetworkGatewayConnectionSharedKey `
   -Name $Connection1 -ResourceGroupName $RG1
 ```
 
-Dane wyjściowe będą "**Azure\@! b2C3**" zgodnie z powyższym przykładzie. Użyj poniższego polecenia, aby zmienić wartość klucza wstępnego na "**Azure\@! _b2 = C3**":
+Wynikiem tego przykładu będzie "**Azure\@! b2C3**". Użyj poniższego polecenia, aby zmienić wartość klucza wstępnego na "**Azure\@! _b2 = C3**":
 
 ```azurepowershell-interactive
 Set-AzVirtualNetworkGatewayConnectionSharedKey `
@@ -136,7 +136,7 @@ Brama sieci VPN platformy Azure obsługuje protokół dynamicznego routingu BGP.
 * Lokalny numer ASN bramy sieci lokalnej
 * Lokalny adres IP elementu równorzędnego protokołu BGP bramy sieci lokalnej
 
-Jeśli nie skonfigurowano właściwości protokołu BGP, następujące polecenia służą do dodawania tych właściwości do bramy sieci VPN i bramy sieci lokalnej: [Set-AzVirtualNetworkGateway](https://docs.microsoft.com/powershell/module/az.network/set-azvirtualnetworkgateway) i [Set-AzLocalNetworkGateway](https://docs.microsoft.com/powershell/module/az.network/set-azlocalnetworkgateway).
+Jeśli nie skonfigurowano właściwości protokołu BGP, następujące polecenia dodają te właściwości do bramy sieci VPN i bramy sieci lokalnej: [Set-AzVirtualNetworkGateway](https://docs.microsoft.com/powershell/module/az.network/set-azvirtualnetworkgateway) i [Set-AzLocalNetworkGateway](https://docs.microsoft.com/powershell/module/az.network/set-azlocalnetworkgateway).
 
 Aby skonfigurować właściwości protokołu BGP, skorzystaj z następującego przykładu:
 
@@ -232,7 +232,7 @@ Jeśli ta konfiguracja jest częścią wdrożenia prototypowego lub służącego
 Remove-AzResourceGroup -Name $RG1
 ```
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 W tym samouczku przedstawiono sposób tworzenia połączeń S2S sieci VPN i zarządzania nimi. Opisano m.in. następujące czynności:
 

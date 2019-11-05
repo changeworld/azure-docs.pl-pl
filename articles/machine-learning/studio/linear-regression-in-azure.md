@@ -1,7 +1,7 @@
 ---
 title: Migrowanie analizy z programu Excel
-titleSuffix: Azure Machine Learning Studio
-description: Porównanie modeli regresji liniowej w programie Excel i w Azure Machine Learning Studio
+titleSuffix: Azure Machine Learning Studio (classic)
+description: Porównanie modeli regresji liniowej w programie Excel i w Azure Machine Learning Studio (klasyczny)
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: studio
@@ -10,92 +10,92 @@ author: xiaoharper
 ms.author: amlstudiodocs
 ms.custom: previous-author=heatherbshapiro, previous-ms.author=hshapiro
 ms.date: 03/20/2017
-ms.openlocfilehash: 7db66f6f4efa5e48f2af9380115de8bcfb75cb86
-ms.sourcegitcommit: 0f54f1b067f588d50f787fbfac50854a3a64fff7
+ms.openlocfilehash: 533d58508f4788e90b0a3daa800e1149f5cba8b1
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/12/2019
-ms.locfileid: "67786684"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73492868"
 ---
-# <a name="migrate-analytics-from-excel-to-azure-machine-learning-studio"></a>Migrowanie analizy z programu Excel do Azure Machine Learning Studio
+# <a name="migrate-analytics-from-excel-to-azure-machine-learning-studio-classic"></a>Migrowanie analizy z programu Excel do Azure Machine Learning Studio (wersja klasyczna)
 
-> *Kate Baroni* i *Ben łodzi* są architektami rozwiązań przedsiębiorstwa w centrum danych firmy Microsoft w dziedzinie doskonałości. W tym artykule opisano sposób migrowania istniejącego pakietu analiz regresji do rozwiązania opartego na chmurze przy użyciu Azure Machine Learning Studio.
+> *Kate Baroni* i *Ben łodzi* są architektami rozwiązań przedsiębiorstwa w centrum danych firmy Microsoft w dziedzinie doskonałości. W tym artykule opisano sposób migrowania istniejącego pakietu analiz regresji do rozwiązania opartego na chmurze przy użyciu Azure Machine Learning Studio (klasycznego).
 
 ## <a name="goal"></a>Cel
 
 Nasz projekt został uruchomiony z uwzględnieniem dwóch celów: 
 
 1. Korzystanie z analizy predykcyjnej w celu poprawy dokładności prognoz miesięcznych przychodów w organizacji 
-2. Użyj Azure Machine Learning Studio, aby potwierdzić, zoptymalizować, zwiększyć szybkość i skalować nasze wyniki. 
+2. Korzystając z klasycznej wersji Azure Machine Learning Studio, można potwierdzić, zoptymalizować, zwiększyć szybkość i skalować nasze wyniki. 
 
-Podobnie jak w przypadku wielu firm, Nasza organizacja przechodzi przez miesięczny proces prognozowania przychodów. Nasz mały zespół analityków biznesowych został przetworzony przy użyciu Azure Machine Learning Studio, aby obsłużyć proces i poprawić dokładność prognozowania. Zespół poświęcał kilka miesięcy na zbieranie danych z wielu źródeł i uruchamianie atrybutów danych za pośrednictwem analizy statystycznej atrybuty kluczy, które są istotne dla prognoz sprzedaży usług. Następnym krokiem było rozpoczęcie tworzenia prototypów statystycznych modeli regresji na danych w programie Excel. W ciągu kilku tygodni mamy model regresji programu Excel, który przeprowadził bieżące pola i finanse procesy prognozowania. Stało się to wynik przewidywania linii bazowej. 
+Podobnie jak w przypadku wielu firm, Nasza organizacja przechodzi przez miesięczny proces prognozowania przychodów. Nasz mały zespół analityków biznesowych został przetworzony przy użyciu klasycznej wersji Azure Machine Learning Studio, aby obsłużyć proces i poprawić dokładność prognoz. Zespół poświęcał kilka miesięcy na zbieranie danych z wielu źródeł i uruchamianie atrybutów danych za pośrednictwem analizy statystycznej atrybuty kluczy, które są istotne dla prognoz sprzedaży usług. Następnym krokiem było rozpoczęcie tworzenia prototypów statystycznych modeli regresji na danych w programie Excel. W ciągu kilku tygodni mamy model regresji programu Excel, który przeprowadził bieżące pola i finanse procesy prognozowania. Stało się to wynik przewidywania linii bazowej. 
 
-Następnie wykonamy następny krok w celu przeprowadzenia analizy predykcyjnej w porównaniu do Studio, aby dowiedzieć się, jak program Studio może poprawić wydajność predykcyjną.
+Następnie wykonamy następny krok w celu przeprowadzenia analizy predykcyjnej w porównaniu do klasycznej wersji programu Studio, aby dowiedzieć się, jak klasyczna wersja programu Studio może poprawić wydajność predykcyjną.
 
 ## <a name="achieving-predictive-performance-parity"></a>Osiąganie nieprzewidywalnej wydajności
-Naszym pierwszym priorytetem było osiągnięcie parzystości między modelami regresji Studio i Excel. Uwzględniając te same dane i ten sam podział na dane szkoleniowe i testowe, chcemy uzyskać rozbicie wydajności predykcyjnej między programem Excel i Studio. Początkowo nie powiodło się. Model programu Excel przeprowadził model Studio. Wystąpił błąd spowodowany brakiem znajomości ustawienia podstawowego narzędzia w programie Studio. Po przeprowadzeniu synchronizacji z zespołem produktu Studio firma Microsoft zyskała lepszy wgląd w ustawienia podstawowe wymagane dla naszych zestawów danych i osiągnął parzystość między tymi dwoma modelami. 
+Naszym pierwszym priorytetem było osiągnięcie zgodności między klasycznymi wersjami modeli regresji Studio i Excel. Uwzględniając te same dane i ten sam podział na dane szkoleniowe i testowe, chcemy osiągnąć niezależność wydajności predykcyjnej między programem Excel i klasyczną wersją programu Studio. Początkowo nie powiodło się. Model programu Excel (model klasyczny). Niepowodzenie było spowodowane brakiem znajomości ustawienia podstawowego narzędzia w klasycznej wersji programu Studio. Po zsynchronizowaniu z klasyczną wersją zespołu produktu Studio firma Microsoft zyskała lepsze zrozumienie ustawienia podstawowego wymaganego dla naszych zestawów danych i osiągania parzystości między tymi dwoma modelami. 
 
 ### <a name="create-regression-model-in-excel"></a>Tworzenie modelu regresji w programie Excel
 Nasze regresje programu Excel używały standardowego modelu regresji liniowej znalezionego w programie Excel Analysis ToolPak. 
 
-Obliczono wartość bezwzględnego *% błędu* i użyto jej jako miary wydajności dla modelu. Przybycie do modelu roboczego przy użyciu programu Excel zajęło 3 miesiące. Firma Microsoft zdobywa znaczną naukę eksperymentu z Studio, która ostatecznie była korzystna w zrozumieniu wymagań.
+Obliczono wartość *bezwzględnego% błędu* i użyto jej jako miary wydajności dla modelu. Przybycie do modelu roboczego przy użyciu programu Excel zajęło 3 miesiące. Firma Microsoft zdobywa znaczną naukę w klasycznej wersji eksperymentu programu Studio, która ostatecznie była korzystna w zrozumieniu wymagań.
 
-### <a name="create-comparable-experiment-in-studio"></a>Tworzenie porównywalnego eksperymentu w programie Studio
-Następujące kroki służą do utworzenia naszego eksperymentu w programie Studio: 
+### <a name="create-comparable-experiment-in-studio-classic"></a>Tworzenie porównywalnego eksperymentu w programie Studio (klasyczny)
+Następujące kroki służą do utworzenia naszego eksperymentu w klasycznej wersji programu Studio: 
 
-1. Przekazano zestaw danych jako plik CSV do Studio (bardzo mały plik)
+1. Przekazano zestaw danych jako plik CSV do klasycznej wersji programu Studio (bardzo mały plik)
 2. Utworzono nowy eksperyment i użyto modułu [SELECT Columns in DataSet][select-columns] , aby wybrać te same funkcje danych, które są używane w programie Excel. 
 3. Użyto modułu [Split Data][split] (z trybem *wyrażenia względnego* ) w celu podzielenia danych na te same szkolenia, które zostały wykonane w programie Excel. 
 4. Eksperymentuj z modułem [regresja liniowa][linear-regression] (tylko opcje domyślne), udokumentowane i porównane wyniki z modelem regresji programu Excel
 
 ### <a name="review-initial-results"></a>Przejrzyj wyniki początkowe
-Na początku model programu Excel jasno przeprowadził model Studio: 
+W pierwszej kolejności model programu Excel jest jasno przeszukiwany model Studio (klasyczny): 
 
-|  | Excel | Studio |
+|  | Excel | Studio (wersja klasyczna) |
 | --- |:---:|:---:|
 | Wydajność | | |
-| <ul style="list-style-type: none;"><li>Dostosowany kwadrat R</li></ul> |0.96 |ND |
-| <ul style="list-style-type: none;"><li>Współczynnik <br />Określon</li></ul> |ND |0.78<br />(niska dokładność) |
-| Średni błąd bezwzględny |$9,5 M |$19.4 M |
-| Średni błąd bezwzględny (%) |6.03% |12.2% |
+| <ul style="list-style-type: none;"><li>Dostosowany kwadrat R</li></ul> |0,96 |Nie dotyczy |
+| <ul style="list-style-type: none;"><li>Współczynnik <br />Określon</li></ul> |Nie dotyczy |0,78<br />(niska dokładność) |
+| Średni błąd bezwzględny |$9,5 m |$19.4 m |
+| Średni błąd bezwzględny (%) |6,03% |12,2% |
 
 Po przeprowadzeniu naszego procesu i przeprowadzeniu przez deweloperów i analityków danych w zespole Machine Learning szybko podałeś przydatne porady. 
 
-* W przypadku korzystania z [][linear-regression] modułu regresja liniowa w programie Studio są dostępne dwie metody:
-  * Gradient online: Może być bardziej odpowiednie w przypadku problemów z dużą skalą
-  * Zwykłe najmniejsze kwadraty: Jest to metoda, której uważa się większość osób, gdy słyszą regresję liniową. W przypadku małych zestawów danych zwykłego wyboru mogą być bardziej optymalne.
+* W przypadku korzystania z modułu [regresja liniowa][linear-regression] w klasycznej wersji programu Studio są dostępne dwie metody:
+  * Gradient online: może być bardziej odpowiedni w przypadku problemów z dużą skalą
+  * Zwykłe najmniejsze kwadraty: jest to metoda, której uważa się większość osób, gdy słyszą regresję liniową. W przypadku małych zestawów danych zwykłego wyboru mogą być bardziej optymalne.
 * Rozważ dostosowanie parametru wagi rozważenia w celu zwiększenia wydajności. Domyślnie jest ustawiona 0,001, ale w przypadku naszego małego zestawu danych ustawimy go na 0,005, aby zwiększyć wydajność. 
 
 ### <a name="mystery-solved"></a>Odwieczna zagadka!
-Po zastosowaniu zaleceń osiągnięto taką samą wydajność bazową w programie Studio jak w programie Excel: 
+Po zastosowaniu zaleceń osiągnięto taką samą wydajność bazową w klasycznej wersji programu Studio jak z programem Excel: 
 
-|  | Excel | Studio (Initial) | Studio w/najmniejsze kwadraty |
+|  | Excel | Studio (wersja klasyczna) (wersja wstępna) | Studio (klasyczny) z/najmniej kwadraty |
 | --- |:---:|:---:|:---:|
 | Wartość oznaczona etykietą |Wartości rzeczywiste (liczbowe) |Ten |Ten |
 | Learner |Program Excel — analiza danych > — > regresji |Regresja liniowa. |Regresja liniowa |
-| Opcje dowiedzenia |ND |Domyślne |zwykłe najmniejsze kwadraty<br />L2 = 0,005 |
+| Opcje dowiedzenia |Nie dotyczy |Wartości domyślne |zwykłe najmniejsze kwadraty<br />L2 = 0,005 |
 | Zestaw danych |26 wierszy, 3 funkcje, 1 etykieta. Wszystkie wartości numeryczne. |Ten |Ten |
-| Podziału Szkolenie |Program Excel przeszkolony na pierwszych 18 wierszach, przetestowanych w ciągu ostatnich 8 wierszy. |Ten |Ten |
-| Podziału Testowanie |Formuła regresji programu Excel zastosowana do ostatnich 8 wierszy |Ten |Ten |
+| Podział: szkolenie |Program Excel przeszkolony na pierwszych 18 wierszach, przetestowanych w ciągu ostatnich 8 wierszy. |Ten |Ten |
+| Podziel: test |Formuła regresji programu Excel zastosowana do ostatnich 8 wierszy |Ten |Ten |
 | **Wydajność** | | | |
-| Dostosowany kwadrat R |0.96 |ND | |
-| Współczynnik wyznaczania |ND |0.78 |0.952049 |
-| Średni błąd bezwzględny |$9,5 M |$19.4 M |$9,5 M |
-| Średni błąd bezwzględny (%) |<span style="background-color: 00FF00;"> 6.03%</span> |12.2% |<span style="background-color: 00FF00;"> 6.03%</span> |
+| Dostosowany kwadrat R |0,96 |Nie dotyczy | |
+| Współczynnik wyznaczania |Nie dotyczy |0,78 |0,952049 |
+| Średni błąd bezwzględny |$9,5 m |$19.4 m |$9,5 m |
+| Średni błąd bezwzględny (%) |<span style="background-color: 00FF00;">6,03%</span> |12,2% |<span style="background-color: 00FF00;">6,03%</span> |
 
 Ponadto współczynniki programu Excel porównane z wagami funkcji w modelu przeszkolonym przez platformę Azure:
 
 |  | Współczynniki programu Excel | Wagi funkcji platformy Azure |
 | --- |:---:|:---:|
-| Przechwycenie/odchylenia |19470209.88 |19328500 |
-| Funkcja A |0.832653063 |0.834156 |
-| Funkcja B |11071967.08 |11007300 |
-| Funkcja C |25383318.09 |25140800 |
+| Przechwycenie/odchylenia |19470209,88 |19328500 |
+| Funkcja A |0,832653063 |0,834156 |
+| Funkcja B |11071967,08 |11007300 |
+| Funkcja C |25383318,09 |25140800 |
 
 ## <a name="next-steps"></a>Następne kroki
 Chcemy korzystać z usługi sieci Web Machine Learning w programie Excel. Nasi analityki biznesowe korzystają z programu Excel, a firma Microsoft potrzebuje sposobu wywoływania usługi sieci Web Machine Learning z wierszem danych programu Excel i zwrócić przewidywaną wartość do programu Excel. 
 
-Chcemy również zoptymalizować nasz model przy użyciu opcji i algorytmów dostępnych w programie Studio.
+Chcemy również zoptymalizować nasz model przy użyciu opcji i algorytmów dostępnych w klasycznej wersji programu Studio.
 
 ### <a name="integration-with-excel"></a>Integracja z programem Excel
 Nasze rozwiązanie miało operacjonalizować nasz model regresji Machine Learning przez utworzenie usługi sieci Web na podstawie nauczonego modelu. W ciągu kilku minut usługa sieci Web została utworzona i możemy ją wywołać bezpośrednio z programu Excel w celu zwrócenia wartości przewidywanego przychodu. 
@@ -109,32 +109,32 @@ Po otwarciu skoroszytu Skopiuj wstępnie zdefiniowane parametry do niebieskiej s
 ![Szablon skoroszytu programu Excel łączący się ze wdrożoną usługą sieci Web](./media/linear-regression-in-azure/machine-learning-linear-regression-in-azure-2.png)
 
 ### <a name="optimization-and-further-experiments"></a>Optymalizacja i dalsze eksperymenty
-Teraz, gdy mamy linię bazową z naszym modelem programu Excel, przeniesionomy ją, aby zoptymalizować model regresji liniowej Machine Learning. Wykorzystano [wybór funkcji oparty][filter-based-feature-selection] na filtrze modułów, aby ulepszyć wybór początkowych elementów danych i pomaga nam w osiągnięciu poprawy wydajności dla 4,6% błędu bezwzględnego. W przypadku przyszłych projektów będziemy używać tej funkcji, która może zaoszczędzić tygodnie w iteracji przez atrybuty danych, aby znaleźć odpowiedni zestaw funkcji do modelowania. 
+Teraz, gdy mamy linię bazową z naszym modelem programu Excel, przeniesionomy ją, aby zoptymalizować model regresji liniowej Machine Learning. Wykorzystano [wybór funkcji oparty na filtrze][filter-based-feature-selection] modułów, aby ulepszyć wybór początkowych elementów danych i pomaga nam w osiągnięciu poprawy wydajności dla 4,6% błędu bezwzględnego. W przypadku przyszłych projektów będziemy używać tej funkcji, która może zaoszczędzić tygodnie w iteracji przez atrybuty danych, aby znaleźć odpowiedni zestaw funkcji do modelowania. 
 
 Następnie planujemy dołączenie dodatkowych algorytmów, takich jak [bayesowskie][bayesian-linear-regression] lub [drzewa decyzyjne][boosted-decision-tree-regression] w naszym doświadczeniu w celu porównania wydajności. 
 
-Jeśli chcesz eksperymentować z regresją, dobry zestaw danych do wypróbowania jest przykładowym zestawem danych regresji wydajności energii, który ma wiele atrybutów liczbowych. Zestaw danych jest dostarczany jako część przykładowych zestawów danych w programie Studio. Możesz użyć różnych modułów szkoleniowych, aby przewidzieć obciążenie ogrzewania lub obciążenie chłodzenia. Wykres poniżej to porównanie wydajności różnej regresji w odniesieniu do zestawu danych efektywności energetycznej przewidywalnego dla zmiennej docelowej obciążenie chłodzenia: 
+Jeśli chcesz eksperymentować z regresją, dobry zestaw danych do wypróbowania jest przykładowym zestawem danych regresji wydajności energii, który ma wiele atrybutów liczbowych. Zestaw danych jest dostarczany jako część przykładowych zestawów danych w klasycznej wersji programu Studio. Możesz użyć różnych modułów szkoleniowych, aby przewidzieć obciążenie ogrzewania lub obciążenie chłodzenia. Wykres poniżej to porównanie wydajności różnej regresji w odniesieniu do zestawu danych efektywności energetycznej przewidywalnego dla zmiennej docelowej obciążenie chłodzenia: 
 
 | Modelowanie | Średni błąd bezwzględny | Średni błąd oznaczający pierwiastek | Względny błąd bezwzględny | Względny kwadratowy błąd | Współczynnik wyznaczania |
 | --- | --- | --- | --- | --- | --- |
-| Drzewo podwyższanych decyzji |0.930113 |1.4239 |0.106647 |0.021662 |0.978338 |
-| Regresja liniowa (z gradientem) |2.035693 |2.98006 |0.233414 |0.094881 |0.905119 |
-| Regresja sieci neuronowej |1.548195 |2.114617 |0.177517 |0.047774 |0.952226 |
-| Regresja liniowa (zwykła najmniejsza kwadraty) |1.428273 |1.984461 |0.163767 |0.042074 |0.957926 |
+| Drzewo podwyższanych decyzji |0,930113 |1,4239 |0,106647 |0,021662 |0,978338 |
+| Regresja liniowa (z gradientem) |2,035693 |2,98006 |0,233414 |0,094881 |0,905119 |
+| Regresja sieci neuronowej |1,548195 |2,114617 |0,177517 |0,047774 |0,952226 |
+| Regresja liniowa (zwykła najmniejsza kwadraty) |1,428273 |1,984461 |0,163767 |0,042074 |0,957926 |
 
 ## <a name="key-takeaways"></a>Wnioski Key
-Pouczymy się na to, że od uruchamiania eksperymentów z regresją i Studio programu Excel równolegle. Tworzenie modelu linii bazowej w programie Excel i porównywanie go z modelami przy użyciu Machine Learning [regresji liniowej][linear-regression] pomogła nam uczyć się Studio i wykryto okazje do usprawnienia wyboru danych i wydajności modelu. 
+Pouczymy się, że od uruchamiania regresji programu Excel i klasycznej wersji eksperymentów Studio równolegle. Tworzenie modelu linii bazowej w programie Excel i porównywanie go z modelami przy użyciu Machine Learning [regresji liniowej][linear-regression] pomogła nam uczyć się Studio (klasycznej) i wykrytych szans umożliwiających poprawę wyboru danych i wydajności modelu. 
 
-Stwierdzamy również, że zaleca się użycie [wyboru funkcji opartej][filter-based-feature-selection] na filtrach w celu przyspieszenia przyszłych projektów predykcyjnych. Stosując wybór funkcji dla danych, można utworzyć ulepszony model w programie Studio z lepszą ogólną wydajnością. 
+Stwierdzamy również, że zaleca się użycie [wyboru funkcji opartej na filtrach][filter-based-feature-selection] w celu przyspieszenia przyszłych projektów predykcyjnych. Stosując wybór funkcji dla danych, można utworzyć ulepszony model w klasycznej wersji programu Studio z lepszą ogólną wydajnością. 
 
-Możliwość przetransferowania prognoz analitycznych predykcyjnych z Studio do programu Excel systemically umożliwia znaczący wzrost możliwości pomyślnego podania wyników do szerokiego grona użytkowników. 
+Możliwość przetransferowania prognoz analitycznych predykcyjnych z klasycznej wersji programu Studio do programu Excel systemically umożliwia znaczący wzrost możliwości pomyślnego podania wyników do szerokiego grona użytkowników w biznesie. 
 
 ## <a name="resources"></a>Zasoby
 Oto kilka zasobów ułatwiających współpracę z regresją: 
 
-* Regresja w programie Excel. Jeśli nigdy nie usiłowano regresji w programie Excel, ten samouczek ułatwia:[https://www.excel-easy.com/examples/regression.html](https://www.excel-easy.com/examples/regression.html)
+* Regresja w programie Excel. Jeśli nigdy nie usiłowano regresji w programie Excel, ten samouczek ułatwia: [https://www.excel-easy.com/examples/regression.html](https://www.excel-easy.com/examples/regression.html)
 * Regresja a prognozowanie. Tyler szachy napisały artykuł dotyczący sposobu prognozowania szeregów czasowych w programie Excel, który zawiera dobry opis regresji liniowej. [https://www.itprotoday.com/sql-server/understanding-time-series-forecasting-concepts](https://www.itprotoday.com/sql-server/understanding-time-series-forecasting-concepts) 
-* Regresja liniowa w postaci zwykłego kwadratu: Wady, problemy i pułapek. Aby zapoznać się z wprowadzeniem i omówieniem regresji: [ https://www.clockbackward.com/2009/06/18/ordinary-least-squares-linear-regression-flaws-problems-and-pitfalls/](https://www.clockbackward.com/2009/06/18/ordinary-least-squares-linear-regression-flaws-problems-and-pitfalls/)
+* Normalne regresje liniowe: wady, problemy i pułapek. Aby zapoznać się z wprowadzeniem i omówieniem regresji: [https://www.clockbackward.com/2009/06/18/ordinary-least-squares-linear-regression-flaws-problems-and-pitfalls/](https://www.clockbackward.com/2009/06/18/ordinary-least-squares-linear-regression-flaws-problems-and-pitfalls/)
 
 <!-- Module References -->
 [bayesian-linear-regression]: https://msdn.microsoft.com/library/azure/ee12de50-2b34-4145-aec0-23e0485da308/

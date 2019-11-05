@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: martinco
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c34f59c3e9f679adf8ae410f648cb7de6dba6447
-ms.sourcegitcommit: 77bfc067c8cdc856f0ee4bfde9f84437c73a6141
+ms.openlocfilehash: daaced0aae595e839f2b2476562fc5caffb63640
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72430039"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73473935"
 ---
 #  <a name="adopting-azure-ad-conditional-access"></a>Przyjmowanie dostępu warunkowego usługi Azure AD
 
@@ -43,7 +43,7 @@ Odkryj, jak większość organizacji używa dostępu warunkowego usługi Azure A
 
 Aby dowiedzieć się więcej na temat środowiska klienta i partnera w przypadku dostępu warunkowego usługi Azure AD, odwiedź stronę z [niezwykłymi osobami korzystającymi z platformy Azure](https://azure.microsoft.com/case-studies/?service=active-directory).
 
-## <a name="announcements"></a>Ogłoszenia
+## <a name="announcements"></a>Anonse
 
 Usługa Azure AD otrzymuje ulepszenia na bieżąco. Aby zachować aktualne informacje o najnowszych zmianach, zobacz [co nowego w Azure Active Directory?](../fundamentals/whats-new.md)
 
@@ -104,10 +104,10 @@ Zapoznaj się z następującymi kursami dostępu warunkowego i więcej w witryni
 * O'Reilly — [Implementowanie rozwiązań platformy Azure — Second Edition.](https://www.oreilly.com/library/view/implementing-azure-solutions/9781789343045/b7ead3db-eb1c-4ace-897e-86ee25ea86be.xhtml)
    * "Rozpocznij i zacznij korzystać z usług platformy Azure i Dowiedz się, jak wdrożyć je w organizacji. Dostęp warunkowy usługi Azure AD został omówiony w rozdziale [wdrażanie i synchronizowanie Azure Active Directory](https://learning.oreilly.com/library/view/implementing-azure-solutions/9781789343045/02ca8bba-08cf-4691-a7d0-1b96e286e7ea.xhtml)".
 
-* Wiley [usługi infrastruktury Microsoft Azure](https://www.wiley.com/Mastering+Microsoft+Azure+Infrastructure+Services-p-9781119003298)
+* Wiley [Microsoft Azure Infrastructure for Architects: Projektowanie rozwiązań w chmurze](https://www.wiley.com/Microsoft+Azure+Infrastructure+Services+for+Architects%3A+Designing+Cloud+Solutions-p-9781119596547)
    * "Oto wszystko, czego potrzebujesz, aby zrozumieć, oszacować, wdrożyć i zachować środowiska, które używają Microsoft Azure".
 
-## <a name="white-papers"></a>Dokumentacja
+## <a name="white-papers"></a>Oficjalne dokumenty
 
 * Opublikowano 18 grudnia 2018, aby [utworzyć odporną strategię zarządzania kontrolą dostępu za pomocą Azure Active Directory](../authentication/concept-resilient-controls.md)
    * Ten dokument zawiera wskazówki dotyczące strategii, które organizacja może podjąć w celu zapewnienia odporności na zmniejszenie ryzyka związanego z blokadą w przypadku nieprzewidzianych przerw.

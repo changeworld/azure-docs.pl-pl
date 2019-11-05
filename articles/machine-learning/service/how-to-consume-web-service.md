@@ -11,14 +11,15 @@ author: aashishb
 ms.reviewer: larryfr
 ms.date: 08/15/2019
 ms.custom: seodec18
-ms.openlocfilehash: fda6c72504a75d600931185e224bb46db03e23ed
-ms.sourcegitcommit: 0576bcb894031eb9e7ddb919e241e2e3c42f291d
+ms.openlocfilehash: e9d262380a8e0769b1191673a7e00eed770f7ab2
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72374289"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73497081"
 ---
 # <a name="consume-an-azure-machine-learning-model-deployed-as-a-web-service"></a>Korzystanie z modelu Azure Machine Learning wdrożonego jako usługa sieci Web
+[!INCLUDE [applies-to-skus](../../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
 Wdrożenie modelu Azure Machine Learning jako usługi sieci Web powoduje utworzenie interfejsu API REST. Można wysyłać dane do tego interfejsu API i odbierać przewidywania zwrócone przez model. W tym dokumencie dowiesz się, jak tworzyć klientów dla usługi sieci Web za C#pomocą, go, Java i Python.
 
@@ -41,13 +42,13 @@ Ogólny przepływ pracy służący do tworzenia klienta korzystającego z usług
 Klasa [Azure. Core. WebService](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice(class)?view=azure-ml-py) zawiera informacje potrzebne do utworzenia klienta. Następujące właściwości `Webservice` są przydatne do tworzenia aplikacji klienckich:
 
 * `auth_enabled` — Jeśli uwierzytelnianie klucza jest włączone, `True`; w przeciwnym razie `False`.
-* `token_auth_enabled` — Jeśli jest włączone uwierzytelnianie tokenu, `True`; w przeciwnym razie `False`.
+* `token_auth_enabled` — Jeśli uwierzytelnianie tokenu jest włączone, `True`; w przeciwnym razie `False`.
 * `scoring_uri` — adres interfejsu API REST.
 * `swagger_uri` — adres specyfikacji OpenAPI. Ten identyfikator URI jest dostępny po włączeniu automatycznego generowania schematu. Aby uzyskać więcej informacji, zobacz [Wdrażanie modeli przy użyciu Azure Machine Learning](how-to-deploy-and-where.md#schema).
 
 Istnieją trzy sposoby pobierania tych informacji dla wdrożonych usług sieci Web:
 
-* Podczas wdrażania modelu jest zwracany obiekt `Webservice` z informacjami o usłudze:
+* Podczas wdrażania modelu obiekt `Webservice` jest zwracany z informacjami o usłudze:
 
     ```python
     service = Model.deploy(ws, "myservice", [model], inference_config, deployment_config)
@@ -64,7 +65,7 @@ Istnieją trzy sposoby pobierania tych informacji dla wdrożonych usług sieci W
     print(services[0].swagger_uri)
     ```
 
-* Jeśli znasz nazwę wdrożonej usługi, możesz utworzyć nowe wystąpienie `Webservice` i podać nazwę obszaru roboczego i usługi jako parametry. Nowy obiekt zawiera informacje o wdrożonej usłudze.
+* Jeśli znasz nazwę wdrożonej usługi, możesz utworzyć nowe wystąpienie `Webservice`i podać obszar roboczy i nazwę usługi jako parametry. Nowy obiekt zawiera informacje o wdrożonej usłudze.
 
     ```python
     service = Webservice(workspace=ws, name='myservice')
@@ -92,7 +93,7 @@ Po włączeniu uwierzytelniania dla wdrożenia automatycznie tworzone są klucze
 
 Aby kontrolować uwierzytelnianie, użyj parametru `auth_enabled` podczas tworzenia lub aktualizowania wdrożenia.
 
-Jeśli jest włączone uwierzytelnianie, można użyć metody `get_keys`, aby pobrać podstawowy i pomocniczy klucz uwierzytelniania:
+W przypadku włączenia uwierzytelniania można użyć metody `get_keys`, aby pobrać podstawowy i pomocniczy klucz uwierzytelniania:
 
 ```python
 primary, secondary = service.get_keys()
@@ -119,7 +120,7 @@ print(token)
 ```
 
 > [!IMPORTANT]
-> Musisz zażądać nowego tokenu po upływie czasu @no__t tokenu. 
+> Musisz zażądać nowego tokenu po upływie `refresh_by` tokenu. 
 
 ## <a name="request-data"></a>Dane żądania
 

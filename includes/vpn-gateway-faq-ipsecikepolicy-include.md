@@ -5,18 +5,18 @@ services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: include
-ms.date: 12/14/2018
+ms.date: 11/04/2019
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: 36b3fcfa90b5b1de9c9d3262da1f3e519cc99c19
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.openlocfilehash: 57e8905fd9722d5b8a8b0ab76dbcea5b91c6d30a
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67183054"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73495857"
 ---
 ### <a name="is-custom-ipsecike-policy-supported-on-all-azure-vpn-gateway-skus"></a>Czy niestandardowe zasady protokołu IPsec/IKE są obsługiwane na wszystkich jednostkach SKU bramy sieci VPN platformy Azure?
-Niestandardowe zasady protokołu IPsec/IKE są obsługiwane na bramach sieci VPN **VpnGw1, VpnGw2, VpnGw3, Standard** i **HighPerformance** na platformie Azure. **Podstawowa** jednostka SKU **nie** jest obsługiwana.
+Niestandardowe zasady protokołu IPsec/IKE są obsługiwane we **wszystkich jednostkach SKU platformy Azure z wyjątkiem podstawowej jednostki SKU**.
 
 ### <a name="how-many-policies-can-i-specify-on-a-connection"></a>Ile zasad można określić dla połączenia?
 Można określić tylko ***jedną*** kombinację zasad dla danego połączenia.
@@ -103,5 +103,5 @@ Tak. Tunel połączenia między sieciami wirtualnymi zawiera dwa zasoby połącz
 ### <a name="does-custom-ipsecike-policy-work-on-expressroute-connection"></a>Czy niestandardowe zasady protokołu IPsec/IKE działają dla połączenia ExpressRoute?
 Nie. Zasady protokołu IPsec/IKE działają tylko dla połączeń sieci VPN S2S i połączeń między sieciami wirtualnymi za pośrednictwem bram sieci VPN platformy Azure.
 
-### <a name="where-can-i-find-more-configuration-information-for-ipsec"></a>Gdzie mogę znaleźć więcej informacji o konfiguracji dla protokołu IPsec
-Zobacz [zasady konfigurowania protokołu IPsec/IKE dla połączeń S2S lub sieć wirtualna-sieć wirtualna](../articles/vpn-gateway/vpn-gateway-ipsecikepolicy-rm-powershell.md)
+### <a name="where-can-i-find-more-configuration-information-for-ipsec"></a>Gdzie można znaleźć więcej informacji o konfiguracji protokołu IPsec?
+Zobacz [Konfigurowanie zasad protokołu IPSec/IKE dla połączeń S2S lub VNET-to-VNET](../articles/vpn-gateway/vpn-gateway-ipsecikepolicy-rm-powershell.md)

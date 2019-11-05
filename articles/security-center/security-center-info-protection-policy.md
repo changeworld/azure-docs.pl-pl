@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 04/29/2019
 ms.author: memildin
-ms.openlocfilehash: edd415c330656d4cecc42a39d27598a88a1a8d2c
-ms.sourcegitcommit: 8a717170b04df64bd1ddd521e899ac7749627350
-ms.translationtype: MT
+ms.openlocfilehash: f9b161bbb692c1336083640250b93f9d87f1e0d9
+ms.sourcegitcommit: 3f8017692169bd75483eefa96c225d45cd497f06
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/23/2019
-ms.locfileid: "71202098"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73520807"
 ---
 # <a name="customize-the-sql-information-protection-policy-in-azure-security-center-preview"></a>Dostosowywanie zasad ochrony informacji SQL w Azure Security Center (wersja zapoznawcza)
  
@@ -31,7 +31,7 @@ Information Protection to zaawansowana funkcja zabezpieczeń do odnajdywania, kl
  
 [Program sql Information Protection](../sql-database/sql-database-data-discovery-and-classification.md) implementuje ten model dla magazynów danych SQL, które są obecnie obsługiwane przez Azure SQL Database. Funkcja SQL Information Protection automatycznie wykrywa i klasyfikuje potencjalnie wrażliwe dane, zapewnia mechanizm etykietowania do trwałego tagowania poufnych danych przy użyciu atrybutów klasyfikacji i udostępnia szczegółowy pulpit nawigacyjny pokazujący stan klasyfikacji bazy danych. Ponadto oblicza on czułość zestawu wyników zapytań SQL, tak aby zapytania, które wyodrębniają poufne dane, mogły być jawnie poddane inspekcji, a dane mogą być chronione. Aby uzyskać więcej informacji na temat Information Protection SQL, zobacz [Azure SQL Database odnajdywania i klasyfikowania danych](../sql-database/sql-database-data-discovery-and-classification.md).
  
-Mechanizm klasyfikacji opiera się na dwóch głównych konstrukcjach, które tworzą taksonomię klasyfikacji i **typy informacji**.
+Mechanizm klasyfikacji opiera się na dwóch głównych konstrukcjach, które tworzą taksonomię **klasyfikacji i** **typy informacji**.
 - **Etykiety** — główne atrybuty klasyfikacji używane do definiowania poziomu czułości danych przechowywanych w kolumnie. 
 - **Typy informacji** — zapewnia dodatkowy poziom szczegółowości dla typu danych przechowywanych w kolumnie.
  
@@ -83,8 +83,5 @@ Ten artykuł zawiera informacje na temat definiowania zasad Information Protecti
 
 Aby uzyskać więcej informacji na temat zasad zabezpieczeń i zabezpieczeń danych w Azure Security Center, zobacz następujące artykuły:
  
-- [Przegląd zasad zabezpieczeń](security-center-policies-overview.md): Zapoznaj się z omówieniem zasad zabezpieczeń w Security Center
-- [Ustawianie zasad zabezpieczeń w Azure Security Center](tutorial-security-policy.md): Dowiedz się, jak skonfigurować zasady zabezpieczeń dla subskrypcji i grup zasobów platformy Azure
-- [Azure Security Center zabezpieczenia danych](security-center-data-security.md): Informacje o tym, jak Security Center zarządza i zabezpiecza dane
-
-
+- [Ustawianie zasad zabezpieczeń w Azure Security Center](tutorial-security-policy.md): informacje na temat konfigurowania zasad zabezpieczeń dla subskrypcji i grup zasobów platformy Azure
+- [Azure Security Center zabezpieczenia danych](security-center-data-security.md): Dowiedz się, jak Security Center zarządza danymi i zabezpiecza je

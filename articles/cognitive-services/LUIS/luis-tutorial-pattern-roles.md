@@ -1,5 +1,5 @@
 ---
-title: 'Samouczek: Role wzorców — LUIS'
+title: 'Samouczek: role wzorców — LUIS'
 titleSuffix: Azure Cognitive Services
 description: Wzorce wyodrębniają dane z dobrze sformatowanego szablonu wyrażenia długości. Wypowiedź szablonowa wykorzystuje prostą jednostkę i rolę, aby wyodrębnić powiązane dane, na przykład lokalizację początkową i docelową.
 ms.custom: seodec18
@@ -9,19 +9,20 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: tutorial
-ms.date: 09/05/2019
+ms.date: 10/14/2019
 ms.author: diberry
-ms.openlocfilehash: 7b95dcf6a93c9abdeab9520f0a0fd80eb17dccff
-ms.sourcegitcommit: 88ae4396fec7ea56011f896a7c7c79af867c90a1
+ms.openlocfilehash: 13a1589a6cc6ed48f159f361ff69a5a3ba8f0f80
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70387639"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73499444"
 ---
 # <a name="tutorial-extract-contextually-related-patterns-using-roles"></a>Samouczek: Wyodrębnij wzorce powiązane z kontekstem przy użyciu ról
 
 W tym samouczku należy użyć wzorca, aby wyodrębnić dane z dobrze sformatowanej wypowiedzi szablonowej. Wypowiedź szablonu używa [prostej jednostki](luis-concept-entity-types.md#simple-entity) i [ról](luis-concept-roles.md) do wyodrębniania powiązanych danych, takich jak lokalizacja pochodzenia i lokalizacja docelowa.  Gdy korzystasz z wzorców, do celów intencji potrzebnych jest mniej wypowiedzi.
 
+[!INCLUDE [Waiting for LUIS portal refresh](./includes/wait-v3-upgrade.md)]
 
 **Ten samouczek zawiera informacje na temat wykonywania następujących czynności:**
 
@@ -47,7 +48,7 @@ Nazwisko nowego pracownika, Billy Patterson, nie jest jeszcze częścią jednost
 
 Nowy pracownik i jego rodzina muszę zostać przeniesieni z miasta, gdzie obecnie mieszkają, do miasta, w którym jest zlokalizowana fikcyjna firma. Ponieważ nowy pracownik może pochodzić z dowolnego miasta, trzeba odnaleźć lokalizacje. Lista ustawień, na przykład jednostka listy, nie jest tutaj dobrym rozwiązaniem, ponieważ wyodrębnione zostałyby tylko miasta uwzględnione na liście.
 
-Nazwy ról skojarzonych z miastem początkowym i docelowym muszą być unikatowe dla wszystkich jednostek. Jeśli chcesz upewnić się, że role są unikatowe, warto powiązać je z jednostką zawartości, korzystając ze strategii nazywania. Jednostka **NewEmployeeRelocation** jest prostą jednostką mającą dwie role: **NewEmployeeReloOrigin** i **NewEmployeeReloDestination**. „Relo” to skrót od słowa „relocation” (relokacja).
+Nazwy ról skojarzonych z miastem początkowym i docelowym muszą być unikatowe dla wszystkich jednostek. Jeśli chcesz upewnić się, że role są unikatowe, warto powiązać je z jednostką zawartości, korzystając ze strategii nazywania. Jednostka **NewEmployeeRelocation** to prosta jednostka z dwoma rolami: **NewEmployeeReloOrigin** i **NewEmployeeReloDestination**. „Relo” to skrót od słowa „relocation” (relokacja).
 
 Ponieważ przykładowa wypowiedź `Move new employee Robert Williams from Sacramento and San Francisco` obejmuje tylko jednostki korzystające z uczenia maszynowego, należy dostarczyć dostatecznie dużo wypowiedzi przykładowych do intencji, aby możliwe było wykrycie jednostek.  
 
@@ -91,7 +92,7 @@ Oznaczanie jednostek etykietami podczas wykonywania tych czynności może być �
 
 1. Wybierz pozycję **Intents** (Intencje) w obszarze nawigacji po lewej stronie.
 
-2. Wybierz pozycję **Create new intent** (Utwórz nową intencję). 
+2. Wybierz pozycję**Create new intent** (Utwórz nową intencję). 
 
 3. Wprowadź ciąg `NewEmployeeRelocationProcess` jako nazwę intencji w oknie dialogowym.
 
@@ -107,7 +108,7 @@ Oznaczanie jednostek etykietami podczas wykonywania tych czynności może być �
     |Move **J. Benson** from **Boston** to **Staines-upon-Thames** (Przenieś osobę o nazwisku J. Benson z miasta Boston do miasta Staines-upon-Thames)|J. Benson|Boston, Staines-upon-Thames|
     |Move **Travis „Trav” Hinton** from **Castelo Branco** to **Orlando** (Przenieś osobę o nazwisku Travis „Trav” Hinton z miasta Castelo Branco do miasta Orlando)|Travis „Trav” Hinton|Castelo Branco, Orlando|
     |Move **Trevor Nottington III** from **Aranda de Duero** to **Boise** (Przenieś osobę o nazwisku Trevor Nottington III z miasta Aranda de Duero do miasta Boise)|Trevor Nottington III|Aranda de Duero, Boise|
-    |Move **Dr. Greg Williams** from **Orlando** to **Ellicott City** (Przenieś osobę o nazwisku dr Greg Williams z miasta Orlando do miasta Ellicott City)|Dr. Greg Williams|Orlando, Ellicott City|
+    |Przenieś **Dr. Grega Williams** z **Orlando** do **Ellicott City**|Dr. Greg Williams|Orlando, Ellicott City|
     |Move **Robert „Bobby” Gregson** from **Kansas City** to **San Juan Capistrano** (Przenieś osobę o nazwisku Robert „Bobby” Gregson z miasta Kansas City do miasta San Juan Capistrano)|Robert „Bobby” Gregson|Kansas City, San Juan Capistrano|
     |Move **Patti Owens** from **Bellevue** to **Rockford** (Przenieś osobę o nazwisku Patti Owens z miasta Bellevue do miasta Rockford)|Patti Owens|Bellevue, Rockford|
     |Move **Janet Bartlet** from **Tuscan** to **Santa Fe** (Przenieś osobę o nazwisku Janet Bartlet z miasta Tuscan do miasta Santa Fe)|Janet Bartlet|Tuscan, Santa Fe|

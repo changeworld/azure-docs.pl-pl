@@ -1,0 +1,74 @@
+---
+title: Zabezpieczenia kontenera w Azure Security Center | Microsoft Docs
+description: Dowiedz się więcej o funkcjach zabezpieczeń kontenerów Azure Security Center.
+services: security-center
+documentationcenter: na
+author: memildin
+manager: rkarlin
+ms.service: security-center
+ms.devlang: na
+ms.topic: conceptual
+ms.tgt_pltfrm: na
+ms.workload: na
+ms.date: 11/04/2019
+ms.author: memildin
+ms.openlocfilehash: 41332a76c3c4e8228e6827e1553d73da3a85fc09
+ms.sourcegitcommit: 3f8017692169bd75483eefa96c225d45cd497f06
+ms.translationtype: MT
+ms.contentlocale: pl-PL
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73522140"
+---
+# <a name="container-security-in-security-center"></a>Zabezpieczenia kontenera w Security Center
+
+Azure Security Center jest rozwiązaniem natywnym platformy Azure na potrzeby zabezpieczeń kontenerów. Security Center jest również optymalnym jednym okienkiem doświadczenia w zakresie bezpieczeństwa obciążeń, maszyn wirtualnych, serwerów i kontenerów w chmurze.
+
+W tym artykule opisano, jak można usprawnić, monitorować i obsługiwać zabezpieczenia kontenerów oraz ich aplikacji. Dowiesz się, jak Security Center ułatwiają następujące podstawowe aspekty zabezpieczeń kontenera:
+
+* Zarządzanie lukami w zabezpieczeniach
+* Ograniczanie funkcjonalności środowiska kontenera
+* Ochrona środowiska uruchomieniowego
+
+[Karta Zabezpieczenia kontenera Azure Security Center ![](media/container-security/container-security-tab.png)](media/container-security/container-security-tab.png#lightbox)
+
+## <a name="vulnerability-management---scanning-container-images-preview"></a>Zarządzanie lukami w zabezpieczeniach — skanowanie obrazów kontenerów (wersja zapoznawcza)
+Aby monitorować Azure Container Registry, połącz go z Security Center. Po wypchnięciu nowego obrazu Security Center skanuje obraz przy użyciu skanera od wiodącego w branży skanowania dostawcy, Qualys.
+
+Po znalezieniu problemów — według Qualys lub Security Center — otrzymasz powiadomienie na pulpicie nawigacyjnym Security Center. W przypadku każdej luki w zabezpieczeniach Security Center zawiera zalecenia z możliwością wykonania akcji, a także klasyfikację ważności oraz wskazówki dotyczące sposobu korygowania problemu. Aby uzyskać szczegółowe informacje na temat zaleceń dotyczących Security Center, zobacz listę zaleceń dotyczących [ochrony maszyny wirtualnej](security-center-virtual-machine-protection.md##compute-and-app-recs).
+
+## <a name="environment-hardening"></a>Ograniczanie funkcjonalności środowiska
+
+### <a name="continuous-monitoring-of-your-docker-configuration"></a>Ciągłe monitorowanie konfiguracji platformy Docker
+Azure Security Center identyfikuje niezarządzane kontenery hostowane na maszynach wirtualnych z systemem Linux IaaS lub na innych maszynach systemu Linux z uruchomionymi kontenerami Docker Security Center stale ocenia konfiguracje tych kontenerów. Następnie porównuje je z [centrum danych testowych platformy Docker dla usługi Internet Security (CIS)](https://www.cisecurity.org/benchmark/docker/). 
+
+Security Center obejmuje cały zestaw reguł testu wydajnościowego usługi CIS Docker i generuje alert, jeśli kontenery nie spełniają żadnej z tych kontrolek. Po znalezieniu niepożądanych konfiguracji Security Center generuje zalecenia dotyczące zabezpieczeń. Na **stronie zalecenia** można przeglądać zalecenia i rozwiązywać problemy. Zobaczysz również zalecenia na karcie **kontenery** , w których są wyświetlane wszystkie maszyny wirtualne wdrożone przy użyciu platformy Docker. Podczas eksplorowania problemów z zabezpieczeniami na maszynie wirtualnej Security Center zawiera dodatkowe informacje na temat kontenerów na komputerze. Takie informacje obejmują wersję platformy Docker i liczbę obrazów uruchomionych na hoście. Aby uzyskać szczegółowe informacje na temat zaleceń, zobacz [tutaj](https://docs.microsoft.com/azure/security-center/security-center-virtual-machine-protection). 
+
+>[!NOTE]
+> Te testy porównawcze usług CIS nie będą uruchamiane w wystąpieniach zarządzanych przez AKS lub maszynach wirtualnych zarządzanych przez program.
+
+### <a name="continuous-monitoring-of-your-kubernetes-clusters-preview"></a>Ciągłe monitorowanie klastrów Kubernetes (wersja zapoznawcza)
+Security Center współpracuje z usługą Azure Kubernetes Service (AKS), zarządzaną usługą aranżacji kontenerów firmy Microsoft na potrzeby opracowywania i wdrażania aplikacji kontenerowych oraz zarządzania nimi.
+
+AKS zapewnia kontrolę zabezpieczeń i wgląd w zabezpieczenia stan klastrów. Security Center używa tych funkcji, aby:
+* Stale monitoruj konfigurację klastrów AKS
+* Generuj zalecenia dotyczące zabezpieczeń dostosowane do standardów branżowych
+
+Aby uzyskać szczegółowe informacje na temat zaleceń dotyczących Security Center, zobacz [Ochrona maszyn wirtualnych](security-center-virtual-machine-protection.md).
+
+## <a name="run-time-protection---real-time-threat-detection"></a>Ochrona w czasie wykonywania — wykrywanie zagrożeń w czasie rzeczywistym 
+
+Security Center zapewnia wykrywanie zagrożeń w czasie rzeczywistym w środowiskach kontenerów i generuje alerty dla podejrzanych działań. Te informacje pozwalają na szybkie rozwiązywanie problemów dotyczących zabezpieczeń i poprawę bezpieczeństwa kontenerów.
+
+Wykrywamy zagrożenia na poziomie klastra hosta i AKS. Aby uzyskać szczegółowe informacje, zobacz [Azure Container Service](https://docs.microsoft.com/azure/security-center/security-center-alerts-compute#azure-container-service-).
+
+
+## <a name="to-view-the-security-posture-of-your-container-related-resources"></a>Aby wyświetlić stan zabezpieczeń zasobów związanych z kontenerem
+1.  Otwórz stronę **& aplikacji obliczeniowych** Security Center.
+2.  Kliknij kartę **kontenery** . Zostanie wyświetlona stan klastrów AKS, rejestrów ACR oraz maszyn wirtualnych z uruchomioną platformą Docker.
+
+## <a name="next-steps"></a>Następne kroki
+
+Aby dowiedzieć się więcej na temat zabezpieczeń kontenerów w Azure Security Center, zobacz:
+* Szczegóły [integracji z usługą Azure Kubernetes Service](azure-kubernetes-service-integration.md)
+
+* Szczegóły [integracji z Azure Container Registry](azure-container-registry-integration.md)

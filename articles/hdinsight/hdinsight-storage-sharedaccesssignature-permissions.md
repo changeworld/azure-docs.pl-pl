@@ -8,12 +8,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 04/29/2019
 ms.author: hrasheed
-ms.openlocfilehash: 46cf7d3dd7efecff0280320c100af432367e25f2
-ms.sourcegitcommit: a19bee057c57cd2c2cd23126ac862bd8f89f50f5
+ms.openlocfilehash: 031498119eb4f9feb92046d7d7a86cfd77f8f368
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/23/2019
-ms.locfileid: "71180821"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73498116"
 ---
 # <a name="use-azure-storage-shared-access-signatures-to-restrict-access-to-data-in-hdinsight"></a>Używanie sygnatur dostępu współdzielonego usługi Azure Storage w celu ograniczenia dostępu do danych w usłudze HDInsight
 
@@ -41,7 +41,7 @@ Usługa HDInsight ma pełny dostęp do danych na kontach usługi Azure Storage s
 
 * W przypadku C#korzystania z programu Visual Studio musi być w wersji 2013 lub nowszej.
 
-* [Schemat identyfikatora URI](./hdinsight-hadoop-linux-information.md#URI-and-scheme) dla konta magazynu. Będzie to możliwe `wasb://` w przypadku usługi Azure `abfs://` Storage, Azure Data Lake Storage Gen2 `adl://` lub Azure Data Lake Storage Gen1. Jeśli w usłudze Azure Storage włączono opcję bezpiecznego transferu, identyfikator URI mógłby `wasbs://`być. Zobacz również [bezpieczny transfer](../storage/common/storage-require-secure-transfer.md).
+* [Schemat identyfikatora URI](./hdinsight-hadoop-linux-information.md#URI-and-scheme) dla konta magazynu. `wasb://` w usłudze Azure Storage `abfs://` dla Azure Data Lake Storage Gen2 lub `adl://` dla Azure Data Lake Storage Gen1. Jeśli w usłudze Azure Storage włączono opcję bezpiecznego transferu, identyfikator URI będzie `wasbs://`. Zobacz również [bezpieczny transfer](../storage/common/storage-require-secure-transfer.md).
 
 * Istniejący klaster usługi HDInsight, do którego ma zostać dodana sygnatura dostępu współdzielonego. W przeciwnym razie można użyć Azure PowerShell do utworzenia klastra i dodania sygnatury dostępu współdzielonego podczas tworzenia klastra.
 
@@ -50,15 +50,15 @@ Usługa HDInsight ma pełny dostęp do danych na kontach usługi Azure Storage s
   * Projekt programu Visual Studio, który umożliwia utworzenie kontenera magazynu, przechowywanych zasad i sygnatury dostępu współdzielonego w celu użycia z usługą HDInsight
   * Skrypt języka Python, który umożliwia utworzenie kontenera magazynu, przechowywanych zasad i sygnatury dostępu współdzielonego do użycia z usługą HDInsight
   * Skrypt programu PowerShell, który może utworzyć klaster usługi HDInsight i skonfigurować go do korzystania z sygnatury dostępu współdzielonego. Zaktualizowana wersja jest używana poniżej.
-  * Przykładowy plik:`hdinsight-dotnet-python-azure-storage-shared-access-signature-master\sampledata\sample.log`
+  * Przykładowy plik: `hdinsight-dotnet-python-azure-storage-shared-access-signature-master\sampledata\sample.log`
 
 ## <a name="shared-access-signatures"></a>Sygnatury dostępu współdzielonego
 
 Istnieją dwie formy sygnatur dostępu współdzielonego:
 
-* Ad hoc: W identyfikatorze URI SAS określono czas rozpoczęcia, czas wygaśnięcia i uprawnienia dla SYGNATURy dostępu współdzielonego.
+* Ad hoc: wszystkie ustawienia czas rozpoczęcia, czas wygaśnięcia i uprawnienia dla SYGNATURy dostępu współdzielonego są określone w identyfikatorze URI sygnatury dostępu współdzielonego.
 
-* Zasady dostępu przechowywanego: Przechowywane zasady dostępu są definiowane w kontenerze zasobów, takim jak kontener obiektów BLOB. Zasady mogą służyć do zarządzania ograniczeniami dla co najmniej jednego sygnatury dostępu współdzielonego. W przypadku kojarzenia sygnatury dostępu współdzielonego z przechowywanymi zasadami dostępnymi przez skojarzenie SAS dziedziczą ograniczenia — czas rozpoczęcia, czas wygaśnięcia i uprawnienia zdefiniowane dla przechowywanych zasad dostępu.
+* Przechowywane zasady dostępu: przechowywane zasady dostępu są definiowane w kontenerze zasobów, takim jak kontener obiektów BLOB. Zasady mogą służyć do zarządzania ograniczeniami dla co najmniej jednego sygnatury dostępu współdzielonego. W przypadku kojarzenia sygnatury dostępu współdzielonego z przechowywanymi zasadami dostępnymi przez skojarzenie SAS dziedziczą ograniczenia — czas rozpoczęcia, czas wygaśnięcia i uprawnienia zdefiniowane dla przechowywanych zasad dostępu.
 
 Różnica między dwoma formularzami jest istotna dla jednego scenariusza: odwołanie. Sygnatura dostępu współdzielonego to adres URL, dzięki czemu każdy, kto uzyskuje sygnaturę dostępu współdzielonego, może z niego korzystać, niezależnie od tego, kto zażądał od. Jeśli sygnatura dostępu współdzielonego zostanie publicznie opublikowana, może być używana przez każdego na świecie. Dystrybuowane SYGNATURy dostępu współdzielonego są ważne do jednego z czterech rzeczy:
 
@@ -88,9 +88,9 @@ Zapisz token sygnatury dostępu współdzielonego, który jest generowany na ko�
 ?sv=2018-03-28&sr=c&si=myPolicyPS&sig=NAxefF%2BrR2ubjZtyUtuAvLQgt%2FJIN5aHJMj6OsDwyy4%3D
 ```
 
-### <a name="using-powershell"></a>Korzystanie z programu PowerShell
+### <a name="using-powershell"></a>Używanie programu PowerShell
 
-Zamień `RESOURCEGROUP`, `STORAGEACCOUNT` i`STORAGECONTAINER` z odpowiednimi wartościami dla istniejącego kontenera magazynu. Zmień katalog na `hdinsight-dotnet-python-azure-storage-shared-access-signature-master` lub skoryguj `-File` parametr, aby zawierał ścieżkę bezwzględną dla `Set-AzStorageblobcontent`. Wprowadź następujące polecenie programu PowerShell:
+Zastąp `RESOURCEGROUP`, `STORAGEACCOUNT`i `STORAGECONTAINER` odpowiednimi wartościami dla istniejącego kontenera magazynu. Zmień katalog na `hdinsight-dotnet-python-azure-storage-shared-access-signature-master` lub skoryguj parametr `-File`, aby zawierał ścieżkę bezwzględną dla `Set-AzStorageblobcontent`. Wprowadź następujące polecenie programu PowerShell:
 
 ```PowerShell
 $resourceGroupName = "RESOURCEGROUP"
@@ -156,7 +156,7 @@ Set-AzStorageblobcontent `
 
 Użycie zmiennych w tej sekcji jest oparte na środowisku systemu Windows. Nieznaczne zmiany będą wymagały bash lub innych środowisk.
 
-1. Zamień `STORAGEACCOUNT` i`STORAGECONTAINER` z odpowiednimi wartościami dla istniejącego kontenera magazynu.
+1. Zastąp `STORAGEACCOUNT`i `STORAGECONTAINER` odpowiednimi wartościami dla istniejącego kontenera magazynu.
 
     ```azurecli
     # set variables
@@ -173,14 +173,14 @@ Użycie zmiennych w tej sekcji jest oparte na środowisku systemu Windows. Niezn
     az storage account keys list --account-name %AZURE_STORAGE_ACCOUNT% --query "[0].{PrimaryKey:value}" --output table
     ```
 
-2. Ustaw pobrany klucz podstawowy na zmienną do późniejszego użycia. Zamień `PRIMARYKEY` na pobraną wartość w poprzednim kroku, a następnie wprowadź poniższe polecenie:
+2. Ustaw pobrany klucz podstawowy na zmienną do późniejszego użycia. Zastąp `PRIMARYKEY` wartością pobraną w poprzednim kroku, a następnie wprowadź poniższe polecenie:
 
     ```azurecli
     #set variable for primary key
     set AZURE_STORAGE_KEY=PRIMARYKEY
     ```
 
-3. Zmień katalog na `hdinsight-dotnet-python-azure-storage-shared-access-signature-master` lub skoryguj `--file` parametr, aby zawierał ścieżkę bezwzględną dla `az storage blob upload`. Wykonaj pozostałe polecenia:
+3. Zmień katalog na `hdinsight-dotnet-python-azure-storage-shared-access-signature-master` lub skoryguj parametr `--file`, aby zawierał ścieżkę bezwzględną dla `az storage blob upload`. Wykonaj pozostałe polecenia:
 
     ```azurecli
     # Create stored access policy on the containing object
@@ -201,9 +201,9 @@ Użycie zmiennych w tej sekcji jest oparte na środowisku systemu Windows. Niezn
 
 ### <a name="using-python"></a>Korzystanie z języka Python
 
-Otwórz plik i Zastąp `storage_account_name`wartości `storage_account_key`, i `storage_container_name` z odpowiednimi wartościami dla istniejącego kontenera magazynu, a następnie uruchom skrypt. `SASToken.py`
+Otwórz plik `SASToken.py` i Zastąp `storage_account_name`, `storage_account_key`i `storage_container_name` odpowiednimi wartościami dla istniejącego kontenera magazynu, a następnie uruchom skrypt.
 
-Jeśli zostanie wyświetlony komunikat `pip install --upgrade azure-storage` `ImportError: No module named azure.storage`o błędzie, może być konieczne wykonanie tej operacji.
+Jeśli zostanie wyświetlony komunikat o błędzie `ImportError: No module named azure.storage`, może być konieczne wykonanie `pip install --upgrade azure-storage`.
 
 ### <a name="using-c"></a>Przy użyciu języka C#
 
@@ -213,13 +213,13 @@ Jeśli zostanie wyświetlony komunikat `pip install --upgrade azure-storage` `Im
 
 3. Wybierz pozycję **Ustawienia** i Dodaj wartości dla następujących wpisów:
 
-   * StorageConnectionString: Parametry połączenia dla konta magazynu, dla którego chcesz utworzyć zasady przechowywane i sygnaturę dostępu współdzielonego. W tym formacie powinna `DefaultEndpointsProtocol=https;AccountName=myaccount;AccountKey=mykey` być `myaccount` nazwa konta magazynu oraz `mykey` klucz konta magazynu.
+   * StorageConnectionString: parametry połączenia dla konta magazynu, dla którego chcesz utworzyć zasady przechowywane i sygnaturę dostępu współdzielonego. Format powinien być `DefaultEndpointsProtocol=https;AccountName=myaccount;AccountKey=mykey`, gdzie `myaccount` jest nazwą konta magazynu, a `mykey` jest kluczem dla konta magazynu.
 
-   * ContainerName Kontener na koncie magazynu, do którego ma zostać ograniczony dostęp.
+   * ContainerName: kontener na koncie magazynu, do którego chcesz ograniczyć dostęp.
 
-   * SASPolicyName: Nazwa, która ma zostać użyta do utworzenia zasad przechowywanych.
+   * SASPolicyName: nazwa, która ma być używana do tworzenia zasad przechowywanych.
 
-   * FileToUpload: Ścieżka do pliku, który jest przekazywany do kontenera.
+   * FileToUpload: ścieżka do pliku, który jest przekazywany do kontenera.
 
 4. Uruchom projekt. Zapisz token zasad sygnatury dostępu współdzielonego, nazwę konta magazynu i nazwę kontenera. Te wartości są używane podczas kojarzenia konta magazynu z klastrem usługi HDInsight.
 
@@ -231,7 +231,7 @@ Aby ograniczyć dostęp do kontenera za pomocą sygnatury dostępu współdzielo
 
 ### <a name="create-a-cluster-that-uses-the-sas"></a>Tworzenie klastra używającego sygnatury dostępu współdzielonego
 
-Zamień `CLUSTERNAME`, `RESOURCEGROUP`, ,`DEFAULTSTORAGEACCOUNT` ,i`TOKEN` z odpowiednimi wartościami. `STORAGECONTAINER` `STORAGEACCOUNT` Wprowadź polecenia programu PowerShell:
+Zastąp `CLUSTERNAME`, `RESOURCEGROUP`, `DEFAULTSTORAGEACCOUNT`, `STORAGECONTAINER`, `STORAGEACCOUNT`i `TOKEN` odpowiednimi wartościami. Wprowadź polecenia programu PowerShell:
 
 ```powershell
 
@@ -356,7 +356,7 @@ Wykonanie tego skryptu zajmuje trochę czasu, zwykle około 15 minut. Gdy skrypt
 
 Jeśli masz istniejący klaster, możesz dodać sygnaturę dostępu współdzielonego do konfiguracji **lokacji podstawowej** , wykonując następujące czynności:
 
-1. Otwórz interfejs użytkownika sieci Web Ambari dla klastra. Adres tej strony to `https://YOURCLUSTERNAME.azurehdinsight.net`. Po wyświetleniu monitu Uwierzytelnij się w klastrze przy użyciu nazwy administratora (administratora) i hasła użytego podczas tworzenia klastra.
+1. Otwórz interfejs użytkownika sieci Web Ambari dla klastra. Adres tej strony jest `https://YOURCLUSTERNAME.azurehdinsight.net`. Po wyświetleniu monitu Uwierzytelnij się w klastrze przy użyciu nazwy administratora (administratora) i hasła użytego podczas tworzenia klastra.
 
 2. Z lewej strony interfejsu użytkownika sieci Web Ambari wybierz pozycję **HDFS** , a następnie **Wybierz kartę konfiguracje** w środku strony.
 
@@ -364,10 +364,10 @@ Jeśli masz istniejący klaster, możesz dodać sygnaturę dostępu współdziel
 
 4. Rozwiń sekcję **niestandardowa lokacja podstawowa** , a następnie przewiń do końca i wybierz link **Dodaj właściwość...** . Użyj następujących wartości dla pól **klucza** i **wartości** :
 
-   * **Klucz**:`fs.azure.sas.CONTAINERNAME.STORAGEACCOUNTNAME.blob.core.windows.net`
+   * **Klucz**: `fs.azure.sas.CONTAINERNAME.STORAGEACCOUNTNAME.blob.core.windows.net`
    * **Wartość**: Sygnatura dostępu współdzielonego zwrócona przez jedną z metod wcześniej wykonanych.
 
-     Zamień `CONTAINERNAME` na nazwę kontenera, która była używana z C# aplikacją lub sygnaturą dostępu współdzielonego. Zamień `STORAGEACCOUNTNAME` na użytą nazwę konta magazynu.
+     Zastąp `CONTAINERNAME` nazwą kontenera używaną z aplikacją C# lub sygnaturą dostępu współdzielonego. Zastąp `STORAGEACCOUNTNAME` nazwą użytego konta magazynu.
 
 5. Kliknij przycisk **Dodaj** , aby zapisać ten klucz i wartość, a następnie kliknij przycisk **Zapisz** , aby zapisać zmiany konfiguracji. Po wyświetleniu monitu Dodaj opis zmiany (na przykład "Dodawanie dostępu do magazynu SAS"), a następnie kliknij przycisk **Zapisz**.
 
@@ -386,7 +386,7 @@ Jeśli masz istniejący klaster, możesz dodać sygnaturę dostępu współdziel
 
 Wykonaj następujące kroki, aby sprawdzić, czy można tylko odczytywać i wyświetlać elementy na koncie magazynu SAS.
 
-1. Nawiąż połączenie z klastrem. Zamień `CLUSTERNAME` na nazwę klastra, a następnie wprowadź następujące polecenie:
+1. Nawiąż połączenie z klastrem. Zastąp `CLUSTERNAME` nazwą klastra i wprowadź następujące polecenie:
 
     ```cmd
     ssh sshuser@CLUSTERNAME-ssh.azurehdinsight.net
@@ -398,11 +398,11 @@ Wykonaj następujące kroki, aby sprawdzić, czy można tylko odczytywać i wyś
     hdfs dfs -ls wasbs://SASCONTAINER@SASACCOUNTNAME.blob.core.windows.net/
     ```
 
-    Zamień `SASCONTAINER` na nazwę kontenera utworzonego dla konta magazynu sygnatury dostępu współdzielonego. Zamień `SASACCOUNTNAME` na nazwę konta magazynu używanego dla sygnatury dostępu współdzielonego.
+    Zastąp `SASCONTAINER` nazwą kontenera utworzonego dla konta magazynu sygnatury dostępu współdzielonego. Zastąp `SASACCOUNTNAME` nazwą konta magazynu używanego na potrzeby sygnatury dostępu współdzielonego.
 
     Lista zawiera plik przekazany podczas tworzenia kontenera i sygnatury dostępu współdzielonego.
 
-3. Użyj poniższego polecenia, aby sprawdzić, czy można odczytać zawartość pliku. `SASCONTAINER` Zamień i `SASACCOUNTNAME` tak jak w poprzednim kroku. Zamień `sample.log` na nazwę pliku wyświetlanego w poprzednim poleceniu:
+3. Użyj poniższego polecenia, aby sprawdzić, czy można odczytać zawartość pliku. Zastąp `SASCONTAINER` i `SASACCOUNTNAME` tak jak w poprzednim kroku. Zastąp `sample.log` nazwą pliku wyświetlanego w poprzednim poleceniu:
 
     ```bash
     hdfs dfs -text wasb://SASCONTAINER@SASACCOUNTNAME.blob.core.windows.net/sample.log

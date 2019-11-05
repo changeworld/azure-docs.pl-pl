@@ -1,24 +1,24 @@
 ---
-title: 'Wybierz kolumny w zestawie danych: Dokumentacja modułu'
-titleSuffix: Azure Machine Learning service
-description: Dowiedz się, jak użyć modułu SELECT Columns in DataSet w Azure Machine Learning Service, aby wybrać podzbiór kolumn do użycia w operacjach podrzędnych.
+title: 'Wybieranie kolumn w zestawie danych: odwołanie do modułu'
+titleSuffix: Azure Machine Learning
+description: Dowiedz się, jak użyć modułu SELECT Columns in DataSet w Azure Machine Learning, aby wybrać podzbiór kolumn do użycia w operacjach podrzędnych.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: reference
 author: xiaoharper
 ms.author: zhanxia
-ms.date: 05/02/2019
-ms.openlocfilehash: 097477fb9fc10d954954815c7f4b0fef8947a526
-ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
+ms.date: 10/22/2019
+ms.openlocfilehash: 3511c448298aa96c95dc970d1d192869c127eb0d
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70128491"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73497668"
 ---
 # <a name="select-columns-in-dataset-module"></a>Wybierz kolumny w module DataSet
 
-W tym artykule opisano moduł Visual Interface (wersja zapoznawcza) dla usługi Azure Machine Learning.
+W tym artykule opisano moduł w programie Azure Machine Learning Designer (wersja zapoznawcza).
 
 Użyj tego modułu, aby wybrać podzbiór kolumn do użycia w operacjach podrzędnych. Moduł nie usuwa fizycznie kolumn ze źródłowego zestawu danych; Zamiast tego tworzy podzestaw kolumn, podobnie jak w przypadku *widoku* bazy danych lub *projekcji*.
 
@@ -40,7 +40,7 @@ W module istnieje wiele opcji umożliwiających wybranie kolumn według nazwy:
 
     Jeśli masz połączony zestaw danych, który został już wypełniony, powinna zostać wyświetlona lista dostępnych kolumn. Jeśli żadna kolumna nie zostanie wyświetlona, może być konieczne uruchomienie modułów nadrzędnych w celu wyświetlenia listy kolumn.
 
-    Aby odfiltrować listę, wpisz w polu wyszukiwania. Na przykład, jeśli wpiszesz literę `w` w polu wyszukiwania, lista zostanie przefiltrowana w celu wyświetlenia nazw kolumn zawierających literę. `w`
+    Aby odfiltrować listę, wpisz w polu wyszukiwania. Na przykład, jeśli wpiszesz literę `w` w polu wyszukiwania, lista zostanie przefiltrowana w celu wyświetlenia nazw kolumn zawierających literę `w`.
 
     Wybierz kolumny, a następnie kliknij przycisk strzałki w prawo, aby przenieść wybrane kolumny do listy w okienku po prawej stronie.
 
@@ -73,13 +73,13 @@ Jeśli używasz opcji **with Rules** , możesz zastosować wiele warunków w wyb
 
 Opcja **BEGIN with** określa Twój punkt początkowy i jest ważna w przypadku interpretacji wyników. 
 
-+ W przypadku wybrania opcji **wszystkie kolumny** wszystkie kolumny zostaną dodane do listy. Następnie należy użyć opcji Wyklucz , aby *usunąć* kolumny, które spełniają określone warunki. 
++ W przypadku wybrania opcji **wszystkie kolumny** wszystkie kolumny zostaną dodane do listy. Następnie należy użyć opcji **Wyklucz** , aby *usunąć* kolumny, które spełniają określone warunki. 
 
     Na przykład możesz zacząć od wszystkich kolumn, a następnie usunąć kolumny według nazwy lub typu.
 
 + W przypadku wybrania opcji **brak kolumn** lista kolumn zaczyna się pusta. Następnie należy określić warunki, aby *dodać* kolumny do listy. 
 
-    W przypadku zastosowania wielu reguł każdy warunek jest **dodatkiem**. Załóżmy na przykład, że zaczynasz od brak kolumn, a następnie dodasz regułę w celu pobrania wszystkich kolumn liczbowych. W zestawie danych cen samochodów, które powoduje 16 kolumn. Następnie kliknij **+** znak, aby dodać nowy warunek, a następnie wybierz pozycję **Dołącz wszystkie funkcje**. Uzyskany zestaw danych zawiera wszystkie kolumny liczbowe oraz wszystkie kolumny funkcji, w tym niektóre kolumny funkcji ciągów.
+    W przypadku zastosowania wielu reguł każdy warunek jest **dodatkiem**. Załóżmy na przykład, że zaczynasz od brak kolumn, a następnie dodasz regułę w celu pobrania wszystkich kolumn liczbowych. W zestawie danych cen samochodów, które powoduje 16 kolumn. Następnie kliknij znak **+** , aby dodać nowy warunek, a następnie wybierz pozycję **Dołącz wszystkie funkcje**. Uzyskany zestaw danych zawiera wszystkie kolumny liczbowe oraz wszystkie kolumny funkcji, w tym niektóre kolumny funkcji ciągów.
 
 ### <a name="choose-by-column-index"></a>Wybierz według indeksu kolumny
 
@@ -87,7 +87,7 @@ Indeks kolumny odwołuje się do kolejności kolumny w oryginalnym zestawie dany
 
 + Kolumny są numerowane sekwencyjnie, począwszy od 1.  
 + Aby uzyskać zakres kolumn, użyj łącznika. 
-+ Specyfikacje typu Open-zakończony, `1-` takie `-3` jak lub, są niedozwolone.
++ Specyfikacje typu Open-zakończony, takie jak `1-` lub `-3`, są niedozwolone.
 + Zduplikowane wartości indeksu (lub nazwy kolumn) nie są dozwolone i mogą spowodować wystąpienie błędu.
 
 Na przykład, zakładając, że zestaw danych ma co najmniej osiem kolumn, można wkleić w jednym z poniższych przykładów, aby zwrócić wiele kolumn nieciągłych: 
@@ -112,4 +112,4 @@ Na przykład, w zestawie danych z kolumnami Kol1, Col2, Col3 i Col4, można odwr
 
 ## <a name="next-steps"></a>Następne kroki
 
-Zapoznaj się z [zestawem modułów dostępnych](module-reference.md) do Azure Machine Learning usługi. 
+Zapoznaj się z [zestawem modułów dostępnych](module-reference.md) do Azure Machine Learning. 

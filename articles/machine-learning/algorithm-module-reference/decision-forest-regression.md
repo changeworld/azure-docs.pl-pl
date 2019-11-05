@@ -1,30 +1,30 @@
 ---
 title: 'Regresja lasu decyzyjnego: odwołanie do modułu'
-titleSuffix: Azure Machine Learning service
-description: Dowiedz się, jak utworzyć model regresji na podstawie kompletu drzew decyzyjnych za pomocą modułu regresja lasu decyzyjnego w usłudze Azure Machine Learning.
+titleSuffix: Azure Machine Learning
+description: Dowiedz się, jak używać modułu regresji lasów w Azure Machine Learning, aby utworzyć model regresji na podstawie kompletu drzew decyzyjnych.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: reference
 author: xiaoharper
 ms.author: zhanxia
-ms.date: 05/02/2019
-ms.openlocfilehash: 7b89d08f4621ecde77a60510b05d96decff0cfde
-ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
+ms.date: 10/22/2019
+ms.openlocfilehash: d930a6d856c6608e7792ce8ef3204b39aba0028a
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "72693174"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73497970"
 ---
 # <a name="decision-forest-regression-module"></a>Moduł regresji lasu decyzyjnego
 
-W tym artykule opisano moduł Visual Interface (wersja zapoznawcza) dla usługi Azure Machine Learning.
+W tym artykule opisano moduł w programie Azure Machine Learning Designer (wersja zapoznawcza).
 
 Użyj tego modułu, aby utworzyć model regresji na podstawie kompletu drzew decyzyjnych.
 
-Po skonfigurowaniu modelu należy przeprowadzić uczenie modelu przy użyciu zestawu danych z etykietami i modułu [uczenie modelu](./train-model.md) .  Model przeszkolony może być następnie używany do prognozowania. 
+Po skonfigurowaniu modelu należy przeprowadzić uczenie modelu przy użyciu zestawu danych z etykietami i modułu [uczenie modelu](./train-model.md) . Model przeszkolony może być następnie używany do prognozowania. 
 
-## <a name="how-it-works"></a>Zasady działania
+## <a name="how-it-works"></a>Jak to działa
 
 Drzewa decyzyjne są modelami nieparametrycznymi, które wykonują sekwencję prostych testów dla każdego wystąpienia, przechodząc do struktury danych drzewa binarnego do momentu osiągnięcia węzła liścia (decyzja).
 
@@ -42,11 +42,11 @@ Aby uzyskać więcej informacji na temat teoretycznej struktury tego algorytmu i
 
 ## <a name="how-to-configure-decision-forest-regression-model"></a>Konfigurowanie modelu regresji lasu decyzyjnego
 
-1. Dodaj moduł **regresji lasu decyzji** do potoku. Moduł można znaleźć w interfejsie w obszarze **Machine Learning**, **zainicjuj model**i **regresja**.
+1. Dodaj moduł **regresji lasu decyzji** do potoku. Moduł można znaleźć w projektancie w obszarze **Machine Learning**, **zainicjuj model**i **regresję**.
 
 2. Otwórz właściwości modułu i dla **metody ponownej próbkowania**wybierz metodę użytą do utworzenia poszczególnych drzew.  Możesz wybrać jedną z opcji **Working** lub **replikacja**.
 
-    - **Working**: w workach jest również wywoływana *agregacja Bootstrap*. Każde drzewo w lesie z decyzją regresji wyprowadza rozkład gaussowskie w drodze przewidywania. Agregacją jest znalezienie gaussowskie, którego pierwsze dwa momenty są zgodne z chwilą mieszaniny gaussowskie podaną przez połączenie wszystkich gaussowskie zwracanych przez poszczególne drzewa.
+    - **Working**: w workach jest również wywoływana *agregacja Bootstrap*. Każde drzewo w lesie z decyzją regresji wyprowadza rozkład gaussowskie w drodze przewidywania. Agregacją jest znalezienie gaussowskie, którego pierwsze dwa momenty są zgodne z chwilą mieszaniny rozkładów gaussowskie przyznanych przez połączenie wszystkich dystrybucji zwracanych przez poszczególne drzewa.
 
          Aby uzyskać więcej informacji, zobacz wpis Wikipedia na potrzeby [agregowania Bootstrap](https://wikipedia.org/wiki/Bootstrap_aggregating).
 
@@ -96,4 +96,4 @@ Po zakończeniu szkolenia:
 
 ## <a name="next-steps"></a>Następne kroki
 
-Zapoznaj się z [zestawem modułów dostępnych](module-reference.md) do Azure Machine Learning usługi. 
+Zapoznaj się z [zestawem modułów dostępnych](module-reference.md) do Azure Machine Learning. 

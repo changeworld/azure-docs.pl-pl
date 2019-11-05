@@ -1,6 +1,6 @@
 ---
-title: Azure SQL Database ograniczenia zasobów opartych na jednostkach DTU | Microsoft Docs
-description: Ta strona zawiera opis niektórych typowych limitów zasobów opartych na protokole DTU dla pul elastycznych w Azure SQL Database.
+title: Azure SQL Database ograniczenia zasobów jednostek DTU | Microsoft Docs
+description: Ta strona zawiera opis niektórych typowych limitów zasobów jednostek DTU dla pul elastycznych w Azure SQL Database.
 services: sql-database
 ms.service: sql-database
 ms.subservice: elastic-pools
@@ -11,20 +11,20 @@ author: sachinpMSFT
 ms.author: sachinp
 ms.reviewer: carlrab
 ms.date: 03/14/2019
-ms.openlocfilehash: 2bd193c53ee85a1423dc63bf669021de954231c8
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 08e6c27b359e8fcf48caed6faf21c0aed8fad224
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68568820"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73521015"
 ---
-# <a name="resources-limits-for-elastic-pools-using-the-dtu-based-purchasing-model"></a>Limity zasobów dla pul elastycznych przy użyciu modelu zakupu opartego na jednostkach DTU
+# <a name="resources-limits-for-elastic-pools-using-the-dtu-purchasing-model"></a>Limity zasobów dla pul elastycznych przy użyciu modelu zakupu jednostek DTU
 
-Ten artykuł zawiera szczegółowe limity zasobów Azure SQL Database pul elastycznych i baz danych w puli przy użyciu modelu zakupu opartego na jednostkach DTU.
+Ten artykuł zawiera szczegółowe limity zasobów Azure SQL Database pul elastycznych i baz danych w puli przy użyciu modelu zakupu jednostek DTU.
 
-W przypadku limitów zasobów modelu zakupu opartego na jednostkach DTU dla pojedynczych baz danych Zobacz limity zasobów opartych na jednostkach [DTU — pojedyncze bazy danych](sql-database-vcore-resource-limits-elastic-pools.md). W przypadku limitów zasobów opartych na rdzeń wirtualny zobacz [limity zasobów opartych na rdzeń wirtualny — pojedyncze bazy danych](sql-database-vcore-resource-limits-single-databases.md) i [limity zasobów oparte na rdzeń wirtualny — pule elastyczne](sql-database-vcore-resource-limits-elastic-pools.md).
+Limity zasobów modelu zakupu jednostek DTU dla pojedynczych baz danych można znaleźć w temacie [limity zasobów jednostek DTU — pojedyncze bazy danych](sql-database-vcore-resource-limits-elastic-pools.md). Aby uzyskać limity zasobów rdzeń wirtualny, zobacz [limity zasobów rdzeń wirtualny — pojedyncze bazy danych](sql-database-vcore-resource-limits-single-databases.md) i [limity zasobów rdzeń wirtualny — pule elastyczne](sql-database-vcore-resource-limits-elastic-pools.md).
 
-## <a name="elastic-pool-storage-sizes-and-compute-sizes"></a>Pula elastyczna: Rozmiary magazynu i rozmiary obliczeń
+## <a name="elastic-pool-storage-sizes-and-compute-sizes"></a>Pula elastyczna: rozmiary magazynu i rozmiary obliczeń
 
 W przypadku pul elastycznych SQL Database w poniższych tabelach przedstawiono zasoby dostępne w każdej warstwie usług i rozmiarze obliczeniowym. Możesz ustawić warstwę usług, rozmiar obliczeń i ilość miejsca do magazynowania przy użyciu [Azure Portal](sql-database-elastic-pool-manage.md#azure-portal-manage-elastic-pools-and-pooled-databases), [programu PowerShell](sql-database-elastic-pool-manage.md#powershell-manage-elastic-pools-and-pooled-databases), interfejsu [wiersza polecenia platformy Azure](sql-database-elastic-pool-manage.md#azure-cli-manage-elastic-pools-and-pooled-databases)lub [interfejsu API REST](sql-database-elastic-pool-manage.md#rest-api-manage-elastic-pools-and-pooled-databases).
 
@@ -39,7 +39,7 @@ W przypadku pul elastycznych SQL Database w poniższych tabelach przedstawiono z
 |:---|---:|---:|---:| ---: | ---: | ---: | ---: | ---: |
 | Uwzględniony magazyn na pulę (GB) | 5 | 10 | 20 | 29 | 39 | 78 | 117 | 156 |
 | Maksymalna liczba opcji magazynu na pulę (GB) | 5 | 10 | 20 | 29 | 39 | 78 | 117 | 156 |
-| Maksymalna pojemność magazynu OLTP w pamięci na pulę (GB) | ND | ND | ND | ND | ND | ND | ND | ND |
+| Maksymalna pojemność magazynu OLTP w pamięci na pulę (GB) | Nie dotyczy | Nie dotyczy | Nie dotyczy | Nie dotyczy | Nie dotyczy | Nie dotyczy | Nie dotyczy | Nie dotyczy |
 | Maksymalna liczba baz danych na pulę | 100 | 200 | 500 | 500 | 500 | 500 | 500 | 500 |
 | Maksymalna liczba współbieżnych procesów roboczych (żądań) na pulę | 100 | 200 | 400 | 600 | 800 | 1600 | 2400 | 3200 |
 | Maksymalna liczba współbieżnych sesji na pulę | 30000 | 30000 | 30000 | 30000 |30000 | 30000 | 30000 | 30000 |
@@ -54,7 +54,7 @@ W przypadku pul elastycznych SQL Database w poniższych tabelach przedstawiono z
 |:---|---:|---:|---:| ---: | ---: | ---: |
 | Uwzględniony magazyn na pulę (GB) | 50 | 100 | 200 | 300 | 400 | 800 |
 | Maksymalna liczba opcji magazynu na pulę (GB) | 50, 250, 500 | 100, 250, 500, 750 | 200, 250, 500, 750, 1024 | 300, 500, 750, 1024, 1280 | 400, 500, 750, 1024, 1280, 1536 | 800, 1024, 1280, 1536, 1792, 2048 |
-| Maksymalna pojemność magazynu OLTP w pamięci na pulę (GB) | ND | ND | ND | ND | ND | ND |
+| Maksymalna pojemność magazynu OLTP w pamięci na pulę (GB) | Nie dotyczy | Nie dotyczy | Nie dotyczy | Nie dotyczy | Nie dotyczy | Nie dotyczy |
 | Maksymalna liczba baz danych na pulę | 100 | 200 | 500 | 500 | 500 | 500 |
 | Maksymalna liczba współbieżnych procesów roboczych (żądań) na pulę | 100 | 200 | 400 | 600 | 800 | 1600 |
 | Maksymalna liczba współbieżnych sesji na pulę | 30000 | 30000 | 30000 | 30000 | 30000 | 30000 |
@@ -69,7 +69,7 @@ W przypadku pul elastycznych SQL Database w poniższych tabelach przedstawiono z
 |:---|---:|---:|---:| ---: | ---: |
 | Uwzględniony magazyn na pulę (GB) | 1200 | 1600 | 2000 | 2500 | 3000 |
 | Maksymalna liczba opcji magazynu na pulę (GB) | 1200, 1280, 1536, 1792, 2048, 2304, 2560 | 1600, 1792, 2048, 2304, 2560, 2816, 3072 | 2000, 2048, 2304, 2560, 2816, 3072, 3328, 3584 | 2500, 2560, 2816, 3072, 3328, 3584, 3840, 4096 | 3000, 3072, 3328, 3584, 3840, 4096 |
-| Maksymalna pojemność magazynu OLTP w pamięci na pulę (GB) | ND | ND | ND | ND | ND |
+| Maksymalna pojemność magazynu OLTP w pamięci na pulę (GB) | Nie dotyczy | Nie dotyczy | Nie dotyczy | Nie dotyczy | Nie dotyczy |
 | Maksymalna liczba baz danych na pulę | 500 | 500 | 500 | 500 | 500 |
 | Maksymalna liczba współbieżnych procesów roboczych (żądań) na pulę | 2400 | 3200 | 4000 | 5000 | 6000 |
 | Maksymalna liczba współbieżnych sesji na pulę | 30000 | 30000 | 30000 | 30000 | 30000 |
@@ -109,12 +109,12 @@ W przypadku pul elastycznych SQL Database w poniższych tabelach przedstawiono z
 |||||||
 
 > [!IMPORTANT]
-> Więcej niż 1 TB magazynu w warstwie Premium jest obecnie dostępne we wszystkich regionach poza następującymi: Chiny Wschodnie, Chiny Północne, Niemcy Środkowe, Niemcy Północno-Wschodnie, Zachodnio-środkowe stany USA, regiony US DoD i Instytucje rządowe dla środkowych stanów USA. W tych regionach maksymalna wielkość magazynu w warstwie Premium jest ograniczona do 1 TB.  Aby uzyskać więcej informacji, zobacz [bieżące ograniczenia poziomów P11–P15](sql-database-single-database-scale.md#p11-and-p15-constraints-when-max-size-greater-than-1-tb).
+> Więcej niż 1 TB magazynu w warstwie Premium jest obecnie dostępne we wszystkich regionach z wyjątkiem: Chiny Wschodnie, Chiny Północne, Niemcy środkowe, Niemcy północno-zachodnie stany USA, regiony US DoD oraz centralne stany USA. W tych regionach maksymalna wielkość magazynu w warstwie Premium jest ograniczona do 1 TB.  Aby uzyskać więcej informacji, zobacz [bieżące ograniczenia poziomów P11–P15](sql-database-single-database-scale.md#p11-and-p15-constraints-when-max-size-greater-than-1-tb).
 
 Jeśli używane są wszystkie jednostki DTU puli elastycznej, każda baza danych w puli otrzymuje taką samą ilość zasobów do przetwarzania zapytań. Usługa SQL Database zapewnia sprawiedliwe udostępnianie zasobów między bazami danych przez zapewnienie równych okresów czasu obliczeń. Sprawiedliwe udostępnianie zasobów puli elastycznej jest wykonywane oprócz zapewniania dowolnej ilości zasobów w przeciwnym razie gwarantowanej dla każdej bazy danych, gdy minimalna liczba jednostek DTU na bazę danych jest ustawiona na wartość różną od zera.
 
 > [!NOTE]
-> Aby `tempdb` uzyskać limity, zobacz [limity tempdb](https://docs.microsoft.com/sql/relational-databases/databases/tempdb-database?view=sql-server-2017#tempdb-database-in-sql-database).
+> Aby uzyskać `tempdb` limitów, zobacz [limity tempdb](https://docs.microsoft.com/sql/relational-databases/databases/tempdb-database?view=sql-server-2017#tempdb-database-in-sql-database).
 
 ### <a name="database-properties-for-pooled-databases"></a>Właściwości bazy danych w puli
 
@@ -127,11 +127,11 @@ W poniższej tabeli opisano właściwości dla baz danych w puli.
 | Maksymalny rozmiar magazynu na bazę danych |Maksymalny rozmiar bazy danych ustawiony przez użytkownika dla bazy danych w puli. Jednak bazy danych w puli korzystają z przydzielony magazyn pul. Nawet jeśli łączny maksymalny rozmiar magazynu *na bazę danych* jest ustawiony na wartość większą niż całkowita ilość dostępnego *miejsca do*magazynowania w puli, całkowite miejsce używane przez wszystkie bazy danych nie będzie mogło przekroczyć limitu dostępnej puli. Maksymalny rozmiar bazy danych odnosi się do maksymalnego rozmiaru plików danych i nie obejmuje przestrzeni używanej przez pliki dziennika. |
 |||
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
-- Aby uzyskać limity zasobów rdzeń wirtualny dla pojedynczej bazy danych, zobacz [limity zasobów dla pojedynczych baz danych przy użyciu modelu zakupu opartego na rdzeń wirtualny](sql-database-vcore-resource-limits-single-databases.md)
-- W przypadku limitów zasobów jednostek DTU dla pojedynczej bazy danych zobacz [limity zasobów dla pojedynczych baz danych przy użyciu modelu zakupu opartego na](sql-database-dtu-resource-limits-single-databases.md) JEDNOSTKAch DTU
-- Aby uzyskać limity zasobów rdzeń wirtualny dla pul elastycznych, zobacz [limity zasobów dla pul elastycznych przy użyciu modelu zakupu opartego na rdzeń wirtualny](sql-database-vcore-resource-limits-elastic-pools.md)
+- Aby uzyskać limity zasobów rdzeń wirtualny dla pojedynczej bazy danych, zobacz [limity zasobów dla pojedynczych baz danych przy użyciu modelu zakupu rdzeń wirtualny](sql-database-vcore-resource-limits-single-databases.md)
+- W przypadku limitów zasobów jednostek DTU dla pojedynczej bazy danych zobacz [limity zasobów dla pojedynczych baz danych przy użyciu modelu zakupu jednostek DTU](sql-database-dtu-resource-limits-single-databases.md) .
+- Aby uzyskać limity zasobów rdzeń wirtualny dla pul elastycznych, zobacz [limity zasobów dla pul elastycznych przy użyciu modelu zakupu rdzeń wirtualny](sql-database-vcore-resource-limits-elastic-pools.md)
 - W przypadku limitów zasobów dla wystąpień zarządzanych zobacz [limity zasobów wystąpienia zarządzanego](sql-database-managed-instance-resource-limits.md).
 - Aby uzyskać informacje na temat ogólnych limitów platformy Azure, zobacz [limity subskrypcji i usług platformy Azure, przydziały i ograniczenia](../azure-subscription-service-limits.md).
 - Aby uzyskać informacje na temat limitów zasobów na serwerze bazy danych, zobacz [Omówienie limitów zasobów na serwerze SQL Database](sql-database-resource-limits-database-server.md) , aby uzyskać informacje na temat limitów na poziomie serwera i subskrypcji.

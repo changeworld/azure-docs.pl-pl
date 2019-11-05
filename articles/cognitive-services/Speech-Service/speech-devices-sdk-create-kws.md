@@ -1,7 +1,7 @@
 ---
-title: Tworzenie niestandardowej usługi Wake Word-mowę
+title: Tworzenie niestandardowego słowa kluczowego — usługa mowy
 titleSuffix: Azure Cognitive Services
-description: Urządzenie jest zawsze nasłuchiwanie słowo aktywujące (lub frazy). Po użytkownik odpowie słowo aktywujące, urządzenie wysyła wszystkie kolejne audio w chmurze, dopóki użytkownik zatrzymuje mówić. Dostosowywanie usługi słowo aktywujące jest efektywnym sposobem rozróżnienia urządzenia i zwiększanie znakowanie.
+description: Urządzenie zawsze nasłuchuje słowa kluczowego (lub frazy). Gdy użytkownik wyświetla słowo kluczowe, urządzenie wysyła wszystkie kolejne audio do chmury, dopóki użytkownik nie przestanie mówić. Dostosowanie słowa kluczowego jest skutecznym sposobem na odróżnienie urządzenia i wzmocnienie oznakowania.
 services: cognitive-services
 author: erhopf
 manager: nitinme
@@ -10,62 +10,60 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 07/05/2019
 ms.author: erhopf
-ms.openlocfilehash: 2bc1a6cbbf1e0d790326849a41b0788e332daa31
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: bf9afb66163532b4095e0d30b1167010320abbf8
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68553107"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73490932"
 ---
-# <a name="create-a-custom-wake-word-by-using-the-speech-service"></a>Utwórz niestandardowe słowo aktywujące przy użyciu usługi mowy
+# <a name="create-a-custom-keyword-by-using-the-speech-service"></a>Tworzenie niestandardowego słowa kluczowego przy użyciu usługi mowy
 
-Urządzenie jest zawsze nasłuchiwanie słowo aktywujące (lub frazy). Na przykład "Hey Cortana" to słowo aktywujące Asystenta Cortany. Po użytkownik odpowie słowo aktywujące, urządzenie wysyła wszystkie kolejne audio w chmurze, dopóki użytkownik zatrzymuje mówić. Dostosowywanie usługi słowo aktywujące jest efektywnym sposobem rozróżnienia urządzenia i zwiększanie znakowanie.
+Urządzenie zawsze nasłuchuje słowa kluczowego (lub frazy). Na przykład "Hey Cortana" to słowo kluczowe dla Asystenta Cortany. Gdy użytkownik wyświetla słowo kluczowe, urządzenie wysyła wszystkie kolejne audio do chmury, dopóki użytkownik nie przestanie mówić. Dostosowanie słowa kluczowego jest skutecznym sposobem na odróżnienie urządzenia i wzmocnienie oznakowania.
 
-W tym artykule dowiesz się, jak utworzyć niestandardowe słowo aktywujące dla Twojego urządzenia.
+W tym artykule dowiesz się, jak utworzyć niestandardowe słowo kluczowe dla urządzenia.
 
-## <a name="choose-an-effective-wake-word"></a>Wybierz obowiązujące słowo aktywujące
+## <a name="choose-an-effective-keyword"></a>Wybierz efektywne słowo kluczowe
 
-W przypadku wybrania słowa wznawiania, należy wziąć pod uwagę następujące wytyczne:
+Podczas wybierania słowa kluczowego należy wziąć pod uwagę następujące wytyczne:
 
-* Twoje słowo aktywujące powinny być słowa angielskiego lub frazy. Powinno zająć maksymalnie dwóch sekund powiedzieć.
+* Słowo kluczowe powinno być słowem w języku angielskim lub frazą. Nie może upłynąć dłużej niż dwa sekundy.
 
-* Najlepiej słów sylab 4 do 7. Na przykład "Hey, komputer" jest dobrym aktywujące. Po prostu "Hej," jest niska.
+* Słowa z 4 do 7 sylab działają najlepiej. Na przykład "Hej, Computer" jest dobrym słowem kluczowym. Tylko "Hej" jest słabo.
 
-* Wyrazy wznawiania należy stosować typowych reguł Wymowa w języku angielskim.
+* Słowa kluczowe powinny być zgodne z typowymi regułami wymowy w języku angielskim
 
-* Unikatowy lub nawet gotowych słowa występującego typowych reguł Wymowa angielskie może zmniejszyć liczbę fałszywych alarmów. Na przykład "computerama" może być dobrym aktywujące.
+* Unikatowy lub nawet utworzony wyraz, który jest zgodny z typowymi regułami wymowy w języku angielskim, może obniżyć liczbę fałszywie dodatnich. Na przykład "computerama" może być dobrym słowem kluczowym.
 
-* Nie należy wybierać wspólnego programu word. Na przykład "jedzenie" i "Przejdź" to słowa, które ludzie mówią, często w zwykłych konwersacji. Mogą one false wyzwalaczy dla Twojego urządzenia.
+* Nie wybieraj wspólnego wyrazu. Na przykład "Eat" i "go" są słowami, które ludzie często mówią w zwykłych konwersacjach. Mogą to być fałszywe wyzwalacze dla Twojego urządzenia.
 
-* Należy unikać używania aktywujące, która może zawierać alternatywne wymowy. Użytkownicy musi znać "prawo" Wymowa można pobrać swoje urządzenie. Na przykład "509" mogą występować w "pięć 9, zero" "pięć AHA dziewięć," lub "pięć sto i dziewięć." "R.E.I." mogą występować w "r-e-i" lub "ray." Może być wymawiane "Live", "/līv/" lub "/liv/".
+* Unikaj używania słowa kluczowego, które może mieć alternatywne wymowy. Użytkownicy będą musieli znać wymowę "Right", aby uzyskać odpowiedzi na swoje urządzenia. Na przykład "509" może być wymawiane "5 0 9", "5 0 9" lub "509". "R.E.I." może być wymawiany "r-e-i" lub "ray". "Na żywo" może być wymawiane "/līv/" lub "/Liv/".
 
-* Nie należy używać znaków specjalnych, symbole i cyfry. Na przykład "Go #" i "20 + koty" nie jest dobry wznawiania słów. Jednak "Przejdź do sharp" lub "dwadzieścia plus koty" może działać. Można nadal stosować symbole w znakowanie i używać marketingowych i dokumentacji wzmocnienie Wymowa odpowiednie.
+* Nie należy używać znaków specjalnych, symboli ani cyfr. Na przykład "go #" i "20 + koty" nie będzie dobrym słowami kluczowymi. Jednak może się zdarzyć, że "nie tylko" lub "dwadzieścia i koty". Można nadal używać symboli w znakowaniu i korzystać z marketingu i dokumentacji, aby wzmocnić odpowiednią wymowę.
 
 > [!NOTE]
-> Wyrazem chronionym znakiem towarowym jako swojej słowo aktywujące, należy się upewnić, że posiadasz znaku towarowego lub czy masz pozwolenie od właściciela tych znaków towarowych, można użyć słowa. Microsoft nie ponosi odpowiedzialność za kwestie prawne, które mogą wystąpić z użyciem regionu wybranego słowo aktywujące.
+> Jeśli wybierzesz słowo znakowe jako słowo kluczowe, upewnij się, że jesteś właścicielem tego znaku towarowego lub że masz uprawnienia od właściciela znaku towarowego do korzystania z tego słowa. Firma Microsoft nie ponosi odpowiedzialności za wszelkie problemy prawne, które mogą wystąpić przy wyborze słowa kluczowego.
 
-## <a name="create-your-wake-word"></a>Utwórz swoje słowo aktywujące
+## <a name="create-your-keyword"></a>Utwórz słowo kluczowe
 
-Aby można było użyć niestandardowego programu do wznawiania pracy z urządzeniem, musisz utworzyć słowo wznawiania za pomocą usługi Microsoft Custom Wake Word Generation. Po udostępnieniu wyrazu wznawiania Usługa tworzy plik, który jest wdrażany w twoim zestawie deweloperskim, aby umożliwić programowi Word wznowienie na urządzeniu.
+Aby można było użyć niestandardowego słowa kluczowego z urządzeniem, musisz utworzyć słowo kluczowe przy użyciu usługi generowania słów kluczowych firmy Microsoft. Po podaniu słowa kluczowego Usługa tworzy plik, który jest wdrażany w twoim zestawie deweloperskim, aby włączyć słowo kluczowe na urządzeniu.
 
-1. Przejdź do [portalu Custom Speech Service](https://aka.ms/sdsdk-speechportal) i **Zaloguj się** lub jeśli nie masz subskrypcji mowy, wybierz pozycję [**Utwórz subskrypcję**](https://go.microsoft.com/fwlink/?linkid=2086754)
+1. Przejdź do programu [Speech Studio](https://aka.ms/sdsdk-speechportal) i **Zaloguj się** lub, jeśli nie masz jeszcze subskrypcji mowy, wybierz pozycję [**Utwórz subskrypcję**](https://go.microsoft.com/fwlink/?linkid=2086754).
 
-    ![Portal Custom Speech Service](media/speech-devices-sdk/wake-word-4.png)
+1. Na stronie [niestandardowe słowo kluczowe](https://aka.ms/sdsdk-wakewordportal) wpisz słowo kluczowe, a następnie kliknij przycisk **Dodaj słowo kluczowe**. Mamy pewne [wskazówki](#choose-an-effective-keyword) ułatwiające wybór efektywnego słowa kluczowego. Pomoc techniczna jest obecnie ograniczona do języka en-US.
 
-1. Na [niestandardowej stronie wybudzenia programu Word](https://aka.ms/sdsdk-wakewordportal) w wybranym przez siebie edytorze wznawiania kliknij przycisk **Dodaj program Wake Word**. Mamy pewne [wskazówki](#choose-an-effective-wake-word) ułatwiające wybór efektywnego słowa kluczowego. Obecnie obsługujemy tylko język en-US.
+    ![Wprowadź słowo kluczowe](media/speech-devices-sdk/custom-kws-portal-enter-keyword.png)
 
-    ![Wprowadź swoje słowo aktywujące](media/speech-devices-sdk/wake-word-5.png)
+1. Portal utworzy teraz wymowy kandydatów dla słowa kluczowego. Nasłuchiwanie poszczególnych kandydatów przez kliknięcie przycisku Odtwórz i usunięcie kontroli obok wszelkich wymowy, które są nieprawidłowe. Gdy zaznaczone są tylko dobre wymowy, wybierz pozycję **Prześlij** , aby rozpocząć generowanie słowa kluczowego. Jeśli chcesz zmienić słowo kluczowe, najpierw usuń istniejące, klikając przycisk Usuń, który pojawia się po prawej stronie wiersza, gdy przesuwa się nad nim.
 
-1. Zostaną utworzone trzy alternatywne wymowy dla programu Wake Word. Możesz wybrać wszystkie wymowy. Następnie wybierz pozycję **Prześlij** , aby wygenerować program Wake Word. Jeśli chcesz zmienić słowo wznawiania, Usuń istniejące pierwsze, po umieszczeniu wskaźnika myszy w wierszu wymowy zostanie wyświetlona ikona usuwania.
+    ![Przejrzyj słowo kluczowe](media/speech-devices-sdk/custom-kws-portal-review-keyword.png)
 
-    ![Przejrzyj słowo Wake](media/speech-devices-sdk/wake-word-6.png)
+1. Generowanie modelu może potrwać do jednej minuty. Następnie zostanie wyświetlony monit o pobranie pliku.
 
-1. Generowanie modelu może potrwać do jednej minuty. Zostanie wyświetlony monit o pobranie pliku.
+    ![Pobierz słowo kluczowe](media/speech-devices-sdk/custom-kws-portal-download-keyword.png)
 
-    ![Pobierz program Wake Word](media/speech-devices-sdk/wake-word-7.png)
-
-1. Zapisz plik zip na komputer. Ten plik będzie potrzebny do wdrożenia niestandardowego programu wznawiania w programie Development Kit.
+1. Zapisz plik zip na komputerze. Ten plik będzie potrzebny do wdrożenia niestandardowego słowa kluczowego w programie Development Kit.
 
 ## <a name="next-steps"></a>Następne kroki
 
-Przetestuj niestandardowe słowo wznawiania za pomocą [zestawu Speech Devices SDK szybkiego startu](https://aka.ms/sdsdk-quickstart).
+Przetestuj niestandardowe słowo kluczowe przy użyciu [zestawu Speech Devices SDK szybkiego startu](https://aka.ms/sdsdk-quickstart).

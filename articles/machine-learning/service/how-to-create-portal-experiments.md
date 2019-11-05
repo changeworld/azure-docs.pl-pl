@@ -1,7 +1,7 @@
 ---
 title: Używanie interfejsu zautomatyzowanej sieci platformy Azure do uczenia & wdrażania modeli
 titleSuffix: Azure Machine Learning
-description: Twórz i wdrażaj automatyczne eksperymenty uczenia maszynowego na stronie docelowej obszaru roboczego Azure Machine Learning (wersja zapoznawcza).
+description: Twórz i wdrażaj automatyczne eksperymenty uczenia maszynowego w programie Azure Machine Learning Studio oraz zarządzaj nimi.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -10,17 +10,18 @@ ms.author: nibaccam
 author: tsikiksr
 manager: cgronlun
 ms.reviewer: nibaccam
-ms.date: 09/09/2019
-ms.openlocfilehash: 2de24d36d78ebf5edf6ef65471e85b53d954486e
-ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
-ms.translationtype: MT
+ms.date: 11/04/2019
+ms.openlocfilehash: 05bae18d35eafc47eddc7c1450eb06af5bbe5562
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72900739"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73497175"
 ---
-# <a name="create-explore-and-deploy-automated-machine-learning-experiments-with-azure-machine-learnings-workspace-landing-page-preview"></a>Twórz, eksploruj i wdrażaj automatyczne eksperymenty uczenia maszynowego za pomocą strony docelowej obszaru roboczego Azure Machine Learning (wersja zapoznawcza)
+# <a name="create-explore-and-deploy-automated-machine-learning-experiments-with-azure-machine-learning-studio"></a>Twórz, eksploruj i wdrażaj zautomatyzowane eksperymenty uczenia maszynowego za pomocą programu Azure Machine Learning Studio
+[!INCLUDE [applies-to-skus](../../../includes/aml-applies-to-enterprise-sku.md)]
 
- W tym artykule dowiesz się, jak tworzyć, eksplorować i wdrażać zautomatyzowane eksperymenty uczenia maszynowego na stronie docelowej obszaru roboczego Azure Machine Learning bez pojedynczego wiersza kodu. Funkcja automatycznego uczenia maszynowego automatyzuje proces wybierania najlepszego algorytmu dla określonych danych, dzięki czemu można szybko generować model uczenia maszynowego. [Dowiedz się więcej o automatycznym uczeniu maszynowym](concept-automated-ml.md).
+ W tym artykule dowiesz się, jak tworzyć, eksplorować i wdrażać zautomatyzowane eksperymenty uczenia maszynowego w programie Azure Machine Learning Studio bez pojedynczego wiersza kodu. Funkcja automatycznego uczenia maszynowego automatyzuje proces wybierania najlepszego algorytmu dla określonych danych, dzięki czemu można szybko generować model uczenia maszynowego. [Dowiedz się więcej o automatycznym uczeniu maszynowym](concept-automated-ml.md).
 
  Jeśli wolisz skorzystać z większej ilości kodu, możesz również [skonfigurować automatyczne eksperymenty uczenia maszynowego w języku Python](how-to-configure-auto-train.md) za pomocą [zestawu SDK Azure Machine Learning](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py).
 
@@ -28,55 +29,38 @@ ms.locfileid: "72900739"
 
 * Subskrypcja platformy Azure. Jeśli nie masz subskrypcji Azure, przed rozpoczęciem utwórz bezpłatne konto. Wypróbuj [bezpłatną lub płatną wersję Azure Machine Learning](https://aka.ms/AMLFree) dzisiaj.
 
-* Obszar roboczy usługi Azure Machine Learning. Zobacz [Tworzenie obszaru roboczego Azure Machine Learning](how-to-manage-workspace.md).
+* Obszar roboczy Azure Machine Learning z typem **wersji Enterprise Edition**. Zobacz [Tworzenie obszaru roboczego Azure Machine Learning](how-to-manage-workspace.md).  Aby uaktualnić istniejący obszar roboczy do wersji Enterprise, zobacz [uaktualnianie do wersji Enterprise Edition](how-to-manage-workspace.md#upgrade).
 
 ## <a name="get-started"></a>Rozpocznij
 
-1. Zaloguj się do [strony docelowej obszaru roboczego](https://ml.azure.com/workspaceportal/). 
+1. Zaloguj się do [Azure Machine Learning Studio](https://ml.azure.com). 
 
 1. Wybierz swoją subskrypcję i obszar roboczy. 
 
 1. Przejdź do okienka po lewej stronie. Wybierz pozycję **zautomatyzowany ml** w sekcji **autor** .
 
-[![Azure Portal okienku nawigacji](media/how-to-create-portal-experiments/nav-pane.png)](media/how-to-create-portal-experiments/nav-pane-expanded.png)
+[okienko nawigacji ![Azure Machine Learning Studio](media/how-to-create-portal-experiments/nav-pane.png)](media/how-to-create-portal-experiments/nav-pane-expanded.png)
 
- Jeśli po raz pierwszy przeprowadzasz eksperymenty, zobaczysz ekran **wprowadzenie** . 
+ Jeśli po raz pierwszy przeprowadzisz eksperymenty, zobaczysz pustą listę i linki do dokumentacji. 
 
-W przeciwnym razie zobaczysz pulpit nawigacyjny **automatycznego uczenia maszynowego** z omówieniem wszystkich zautomatyzowanych eksperymentów dotyczących uczenia maszynowego, łącznie z tymi utworzonymi za pomocą zestawu SDK. Tutaj można filtrować i eksplorować uruchomienia według daty, nazwy eksperymentu i stanu uruchomienia.
+W przeciwnym razie zostanie wyświetlona lista ostatnich zautomatyzowanych eksperymentów dotyczących uczenia maszynowego, w tym tych utworzonych za pomocą zestawu SDK. 
 
 ## <a name="create-and-run-experiment"></a>Tworzenie i uruchamianie eksperymentu
 
-1. Wybierz pozycję **Utwórz eksperyment** i wypełnij formularz.
+1. Wybierz pozycję **+ Utwórz eksperyment** i wypełnij formularz.
 
-1. Wprowadź unikatową nazwę eksperymentu.
-
-1. Wybierz obliczenia dla zadania profilowania i szkolenia danych. Lista istniejących obliczeń jest dostępna na liście rozwijanej. Aby utworzyć nowe obliczenie, postępuj zgodnie z instrukcjami podanymi w sekcji Krok 4.
-
-1. Wybierz pozycję **Utwórz nowe obliczenie** , aby skonfigurować kontekst obliczeniowy dla tego eksperymentu.
-
-    Pole|Opis
-    ---|---
-    Nazwa obliczeniowa| Wprowadź unikatową nazwę identyfikującą kontekst obliczeniowy.
-    Rozmiar maszyny wirtualnej| Wybierz rozmiar maszyny wirtualnej dla obliczenia.
-    Minimalna/Maksymalna liczba węzłów (w ustawieniach zaawansowanych)| Aby profilować dane, musisz określić co najmniej jeden węzeł. Wprowadź maksymalną liczbę węzłów dla obliczeń. Wartość domyślna to 6 węzłów na potrzeby obliczeń AML.
-    
-    Wybierz pozycję **Utwórz**. Tworzenie nowego obliczenia może potrwać kilka minut.
-
-    >[!NOTE]
-    > Nazwa obliczeniowa wskazuje, czy w przypadku obliczeń, które zostały wybrane/utworzone, *włączono profilowanie*. (Szczegółowe informacje znajdują się w sekcji [Profilowanie danych](#profile) ).
-
-1. Wybierz zestaw danych z kontenera magazynu lub utwórz go, przekazując plik z komputera lokalnego do kontenera. Publiczna wersja zapoznawcza obsługuje tylko lokalne operacje przekazywania plików i konta usługi Azure Blob Storage.
+1. Wybierz zestaw danych z kontenera magazynu lub Utwórz nowy zestaw danych. Zestawy danych mogą być tworzone na podstawie plików lokalnych, adresów URL sieci Web, magazynów danych lub otwartych zestawów danych platformy Azure. 
 
     >[!Important]
     > Wymagania dotyczące danych szkoleniowych:
     >* Dane muszą być w formie tabelarycznej.
     >* Wartość, która ma zostać przewidywalna (kolumna docelowa), musi być obecna w danych.
 
-    1. Aby utworzyć nowy zestaw danych z pliku w lokalnym obliczeniu, wybierz pozycję **Przeglądaj** , a następnie wybierz plik. 
+    1. Aby utworzyć nowy zestaw danych z pliku na komputerze lokalnym, wybierz pozycję **Przeglądaj** , a następnie wybierz plik. 
 
     1. Nadaj zestawowi danych unikatową nazwę i podaj opcjonalny opis. 
 
-    1. Wybierz pozycję **dalej** , aby przekazać ją do domyślnego kontenera magazynu, który jest automatycznie tworzony w obszarze roboczym, lub wybierz kontener magazynu, który ma być używany do eksperymentu. 
+    1. Wybierz pozycję **dalej**, aby przekazać ją do domyślnego kontenera magazynu, który jest automatycznie tworzony w obszarze roboczym, lub wybierz kontener magazynu, który ma być używany do eksperymentu. 
 
     1. Przejrzyj **Ustawienia i Podgląd** w formularzu pod kątem dokładności. Formularz jest inteligentnie wypełniany na podstawie typu pliku. 
 
@@ -94,25 +78,51 @@ W przeciwnym razie zobaczysz pulpit nawigacyjny **automatycznego uczenia maszyno
             
         Wybierz pozycję **Dalej.**
 
-1. Wybierz typ zadania szkolenia: Klasyfikacja, regresja lub prognozowanie.
+    1. Formularz **Potwierdź szczegóły** to podsumowanie informacji poprzednio wypełnionych w **podstawowych informacjach** i ustawieniach oraz w formularzach **wersji zapoznawczej** . Istnieje również możliwość profilowania zestawu danych przy użyciu obliczeń z włączoną obsługą profilowania. Dowiedz się więcej na temat [profilowania danych](#profile).
+
+        Wybierz opcję **Dalej**.
+1. Wybierz nowo utworzony zestaw danych, gdy zostanie wyświetlony. Możliwe jest również wyświetlanie podglądu zestawu danych i przykładowych statystyk. 
+
+1. W formularzu **Konfigurowanie przebiegu** wprowadź unikatową nazwę eksperymentu.
 
 1. Wybierz kolumnę docelową; jest to kolumna, dla której chcesz przeprowadzić prognozę.
 
-1. W przypadku prognozowania:
-    1. Wybierz kolumnę czasu: Ta kolumna zawiera dane czasu, które mają być używane.
+1. Wybierz obliczenia dla zadania profilowania i szkolenia danych. Lista istniejących obliczeń jest dostępna na liście rozwijanej. Aby utworzyć nowe obliczenie, postępuj zgodnie z instrukcjami podanymi w kroku 7.
 
-    1. Wybierz horyzont prognoz: wskaż, ile jednostek czasu (min/godzina/dni/tygodnie/miesiące/lata) będzie można przewidzieć na przyszłość. Dalszy model jest wymagany do przewidywania w przyszłości, tym mniej dokładne stanie się. [Dowiedz się więcej o prognozowaniu i prognozowaniu horyzontu](how-to-auto-train-forecast.md).
+1. Wybierz pozycję **Utwórz nowe obliczenie** , aby skonfigurować kontekst obliczeniowy dla tego eksperymentu.
 
-1. Obowiązkowe Ustawienia zaawansowane: dodatkowe ustawienia, których można użyć w celu lepszego kontrolowania zadania szkoleniowego. W przeciwnym razie wartości domyślne są stosowane na podstawie wyboru eksperymentu i danych. 
+    Pole|Opis
+    ---|---
+    Nazwa obliczeniowa| Wprowadź unikatową nazwę identyfikującą kontekst obliczeniowy.
+    Rozmiar maszyny wirtualnej| Wybierz rozmiar maszyny wirtualnej dla obliczenia.
+    Minimalna/Maksymalna liczba węzłów (w ustawieniach zaawansowanych)| Aby profilować dane, musisz określić co najmniej jeden węzeł. Wprowadź maksymalną liczbę węzłów dla obliczeń. Wartość domyślna to 6 węzłów na potrzeby obliczeń AML.
+    
+    Wybierz pozycję **Utwórz**. Tworzenie nowego obliczenia może potrwać kilka minut.
 
-    Ustawienia zaawansowane|Opis
+    >[!NOTE]
+    > Nazwa obliczeniowa wskazuje, czy w przypadku obliczeń, które zostały wybrane/utworzone, *włączono profilowanie*. (Szczegółowe informacje znajdują się w sekcji [Profilowanie danych](#profile) ).
+
+    Wybierz opcję **Dalej**.
+
+1. W formularzu **Typ zadania i ustawienia** wybierz typ zadania: Klasyfikacja, regresja lub prognozowanie. 
+
+    1. W przypadku klasyfikacji można również włączyć uczenie głębokie, które jest używane dla featurizations tekstu.
+
+    1. W przypadku prognozowania:
+        1. Wybierz kolumnę czasu: Ta kolumna zawiera dane czasu, które mają być używane.
+
+        1. Wybierz horyzont prognoz: wskaż, ile jednostek czasu (min/godzina/dni/tygodnie/miesiące/lata) będzie można przewidzieć na przyszłość. Dalszy model jest wymagany do przewidywania w przyszłości, tym mniej dokładne stanie się. [Dowiedz się więcej o prognozowaniu i prognozowaniu horyzontu](how-to-auto-train-forecast.md).
+
+1. Obowiązkowe Konfiguracje dodawania: dodatkowe ustawienia, których można użyć w celu lepszego kontrolowania zadania szkoleniowego. W przeciwnym razie wartości domyślne są stosowane na podstawie wyboru eksperymentu i danych. 
+
+    Dodatkowe konfiguracje|Opis
     ------|------
     Metryka podstawowa| Główna Metryka używana do oceniania modelu. [Dowiedz się więcej o metrykach modelu](how-to-configure-auto-train.md#explore-model-metrics).
-    Kryteria wyjścia| Po spełnieniu któregokolwiek z tych kryteriów zadanie szkolenia zostanie zatrzymane. <br> *Czas zadania szkoleniowego (w minutach)* : jak długo zezwolić na uruchomienie zadania szkoleniowego.  <br> *Maksymalna liczba iteracji*: Maksymalna liczba potoków (iteracji) do przetestowania w zadaniu szkoleniowym. Zadanie nie zostanie uruchomione więcej niż określona liczba iteracji. <br> *Próg wyniku metryki*: minimalny wynik metryki dla wszystkich potoków. Dzięki temu w przypadku zdefiniowania metryki docelowej, która ma zostać osiągnięta, nie poświęcasz więcej czasu na zadanie szkoleniowe niż to konieczne.
-    Przetwarzania wstępnego| Wybierz, aby włączyć lub wyłączyć przetwarzanie wstępne wykonywane przez automatyczne Uczenie maszynowe. Przetwarzanie wstępne obejmuje automatyczne czyszczenie danych, przygotowanie i transformację do generowania funkcji syntetycznych. [Dowiedz się więcej na temat przetwarzania wstępnego](#preprocess).
-    Walidacja| Wybierz jedną z opcji krzyżowego sprawdzania poprawności, która ma zostać użyta w zadaniu szkoleniowym. [Dowiedz się więcej na temat krzyżowego sprawdzania poprawności](how-to-configure-auto-train.md).
-    Współbieżność| Wybierz limity wielordzeniowe, które mają być używane podczas korzystania z obliczeń wielordzeniowych.
+    Automatyczne cechowania| Wybierz, aby włączyć lub wyłączyć przetwarzanie wstępne wykonywane przez automatyczne Uczenie maszynowe. Przetwarzanie wstępne obejmuje automatyczne czyszczenie danych, przygotowanie i transformację do generowania funkcji syntetycznych. [Dowiedz się więcej na temat przetwarzania wstępnego](#preprocess).
     Zablokowany algorytm| Wybierz algorytmy, które mają zostać wykluczone z zadania szkoleniowego.
+    Kryterium zakończenia| Po spełnieniu któregokolwiek z tych kryteriów zadanie szkolenia zostanie zatrzymane. <br> *Czas zadania szkoleniowego (godz.)* : jak długo zezwolić na uruchomienie zadania szkoleniowego. <br> *Próg wyniku metryki*: minimalny wynik metryki dla wszystkich potoków. Dzięki temu w przypadku zdefiniowania metryki docelowej, która ma zostać osiągnięta, nie poświęcasz więcej czasu na zadanie szkoleniowe niż to konieczne.
+    Walidacja| Wybierz jedną z opcji krzyżowego sprawdzania poprawności, która ma zostać użyta w zadaniu szkoleniowym. [Dowiedz się więcej na temat krzyżowego sprawdzania poprawności](how-to-configure-auto-train.md).
+    Współbieżność| *Maksymalna liczba współbieżnych iteracji*: maksymalną liczbę potoków (iteracji) do przetestowania w zadaniu szkoleniowym. Zadanie nie zostanie uruchomione więcej niż określona liczba iteracji. <br> *Maksymalna liczba rdzeni na iterację*: Wybierz limity wielordzeniowe, które mają być używane podczas korzystania z obliczeń wielordzeniowych.
 
 <a name="profile"></a>
 
@@ -131,7 +141,7 @@ Dystrybucja typów| Liczba wartości w wierszu dla typów w kolumnie. Wartości 
 Typ|Wywnioskowany typ kolumny. Możliwe wartości to: ciągi, wartości logiczne, daty i miejsca dziesiętne.
 Min.| Minimalna wartość kolumny. Puste wpisy są wyświetlane dla funkcji, których typ nie ma własnej kolejności (np. wartości logicznych).
 Maks.| Maksymalna wartość kolumny. 
-Liczba| Łączna liczba brakujących i nieobecnych wpisów w kolumnie.
+Licznik| Łączna liczba brakujących i nieobecnych wpisów w kolumnie.
 Liczba niebrakujących| Liczba wpisów w kolumnie, których nie ma. Puste ciągi i błędy są traktowane jako wartości, więc nie będą wchodzić w skład "niebrakującej liczby".
 Quantiles| Przybliżone wartości dla każdego quantileu, aby zapewnić rozkład danych.
 Średnia| Średnia arytmetyczna kolumny lub jej średnia.
@@ -160,21 +170,24 @@ Podczas konfigurowania eksperymentów można włączyć ustawienie zaawansowane 
 
 ## <a name="run-experiment-and-view-results"></a>Uruchamianie eksperymentu i wyświetlanie wyników
 
-Wybierz pozycję **Rozpocznij** , aby uruchomić eksperyment. Proces przygotowywania eksperymentu trwa kilka minut.
+Wybierz pozycję **Rozpocznij** , aby uruchomić eksperyment. Proces przygotowywania eksperymentu może potrwać do 10 minut. Zadania szkoleniowe mogą zająć więcej niż 2-3 minut więcej czasu dla każdego potoku.
 
 ### <a name="view-experiment-details"></a>Wyświetl szczegóły eksperymentu
 
-Po zakończeniu fazy przygotowania eksperymentu zobaczysz ekran Szczegóły uruchamiania, aby wypełnić. Ten ekran zawiera pełną listę utworzonych modeli. Domyślnie model, który ocenia najwyższy poziom w oparciu o wybraną metrykę, znajduje się w górnej części listy. Gdy zadanie szkoleniowe próbuje więcej modeli, są dodawane do listy iteracji i wykresu. Użyj wykresu iteracji, aby szybko porównać metryki dla modeli produkowanych do tej pory.
+>[!NOTE]
+> Należy okresowo wybierać pozycję **Odśwież** , aby wyświetlić stan uruchomienia. 
 
-Zadania szkoleniowe mogą potrwać trochę czasu dla każdego potoku.
+Zostanie otwarty ekran Szczegóły **uruchamiania** na karcie **szczegóły** . Na tym ekranie przedstawiono podsumowanie przebiegu eksperymentu, w tym **stan uruchomienia**. 
 
-[Pulpit nawigacyjny szczegółów uruchamiania![](media/how-to-create-portal-experiments/run-details.png)](media/how-to-create-portal-experiments/run-details-expanded.png#lightbox)
+Karta **modele** zawiera listę modeli utworzonych uporządkowaną według wyniku pomiaru. Domyślnie model, który ocenia najwyższy poziom w oparciu o wybraną metrykę, znajduje się w górnej części listy. Gdy zadanie szkoleniowe próbuje więcej modeli, zostaną dodane do listy. Użyj tego, aby szybko porównać metryki dla modeli produkowanych do tej pory.
+
+[Pulpit nawigacyjny szczegółów uruchamiania ![](media/how-to-create-portal-experiments/run-details.png)](media/how-to-create-portal-experiments/run-details-expanded.png#lightbox)
 
 ### <a name="view-training-run-details"></a>Wyświetl szczegóły przebiegu szkoleniowego
 
-Przejdź do szczegółów dowolnych modeli wyjściowych, aby zobaczyć szczegóły przebiegu szkoleniowego, takie jak metryki wydajności i wykresy dystrybucji. [Dowiedz się więcej na temat wykresów](how-to-understand-automated-ml.md).
+Przejdź do szczegółów dowolnego z zakończonych modeli, aby zobaczyć szczegóły przebiegu szkoleniowego, takie jak uruchamianie metryk na karcie **Szczegóły modelu** lub na wykresach wydajności na karcie **wizualizacje** . [Dowiedz się więcej na temat wykresów](how-to-understand-automated-ml.md).
 
-[Szczegóły iteracji![](media/how-to-create-portal-experiments/iteration-details.png)](media/how-to-create-portal-experiments/iteration-details-expanded.png)
+[Szczegóły iteracji ![](media/how-to-create-portal-experiments/iteration-details.png)](media/how-to-create-portal-experiments/iteration-details-expanded.png)
 
 ## <a name="deploy-your-model"></a>Wdrażanie modelu
 
@@ -184,9 +197,9 @@ Automatyczna ML pomaga wdrożyć model bez pisania kodu:
 
 1. Istnieje kilka opcji wdrażania. 
 
-    + Opcja 1: Aby wdrożyć najlepszy model (zgodnie ze zdefiniowanymi kryteriami metryki), wybierz pozycję Wdróż najlepszy model na stronie szczegółów uruchamiania.
+    + Opcja 1: Aby wdrożyć najlepszy model (zgodnie ze zdefiniowanymi kryteriami metryki), wybierz pozycję Wdróż najlepszy model na karcie Szczegóły.
 
-    + Opcja 2: Aby wdrożyć określoną iterację modelu z tego eksperymentu, przejdź do szczegółów modelu, aby otworzyć stronę szczegółów uruchamiania, a następnie wybierz pozycję Wdróż model.
+    + Opcja 2: Aby wdrożyć określoną iterację modelu z tego eksperymentu, przejdź do szczegółów modelu, aby otworzyć kartę Szczegóły modelu i wybierz pozycję Wdróż model.
 
 1. Wypełnij okienko **Wdróż model** .
 
@@ -194,16 +207,12 @@ Automatyczna ML pomaga wdrożyć model bez pisania kodu:
     ----|----
     Nazwa wdrożenia| Wprowadź unikatową nazwę wdrożenia.
     Opis wdrożenia| Wprowadź opis, aby lepiej zidentyfikować to wdrożenie.
-    Skrypt oceniania| Automatycznie Generuj lub Przekaż własny plik oceniania. [Dowiedz się więcej o skrypcie oceniania](how-to-deploy-and-where.md#script)
+    Skrypt oceniania| Automatycznie Generuj lub Przekaż własny plik oceniania. [Dowiedz się więcej o skrypcie oceniania](how-to-deploy-and-where.md#script).
     Skrypt środowiska| Automatycznie Generuj lub Przekaż własny plik środowiska.
     >[!Important]
     > Nazwy plików muszą mieć długość 32 znaków i muszą zaczynać się i kończyć znakiem alfanumerycznym. Może zawierać łączniki, podkreślenia, kropki i znaki alfanumeryczne między. Spacje są niedozwolone.
 
 1. Wybierz pozycję **Wdróż**. Wdrożenie może potrwać około 20 minut.
-
-    Po pomyślnym zakończeniu wdrażania zostanie wyświetlony następujący komunikat.
-
-    ![Wdrażanie ukończone](media/tutorial-1st-experiment-automated-ml/deploy-complete-status.png) 
 
 Teraz masz działającą usługę sieci Web do generowania prognoz! Możesz przetestować przewidywania, wykonując zapytania dotyczące usługi, korzystając z [Power BI wbudowanej Azure Machine Learning obsługi](how-to-consume-web-service.md#consume-the-service-from-power-bi).
 

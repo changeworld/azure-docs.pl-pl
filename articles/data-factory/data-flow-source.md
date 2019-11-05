@@ -6,16 +6,14 @@ ms.author: makromer
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 09/06/2019
-ms.openlocfilehash: c7d18ab6e9018511915e9b77ea02ac60b1277c12
-ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
+ms.openlocfilehash: fb11b785cecbd021c0b894754e31d226edfe72f2
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "72596497"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73519305"
 ---
 # <a name="source-transformation-for-mapping-data-flow"></a>Przekształcanie źródła na potrzeby mapowania przepływu danych 
-
-
 
 Transformacja źródła konfiguruje źródło danych dla przepływu danych. Podczas projektowania przepływów danych pierwszy krok zawsze skonfiguruje transformację źródłową. Aby dodać źródło, kliknij pole **Dodaj źródło** na kanwie przepływu danych.
 
@@ -27,11 +25,12 @@ Każda transformacja źródła jest skojarzona z dokładnie jednym Data Factory 
 
 Mapowanie przepływu danych odbywa się zgodnie z podejściem wyodrębniania, ładowania, przekształcania (ELT) i współdziała z *tymczasowymi* zestawami danych, które są wszystkie na platformie Azure. Obecnie następujące zestawy danych mogą być używane w transformacji źródłowej:
     
-* Azure Blob Storage
-* Azure Data Lake Storage 1. generacji
-* Usługa Azure Data Lake Storage 2. generacji
+* Azure Blob Storage (JSON, Avro, text, parquet)
+* Azure Data Lake Storage Gen1 (JSON, Avro, text, parquet)
+* Azure Data Lake Storage Gen2 (JSON, Avro, text, parquet)
 * Azure SQL Data Warehouse
 * Azure SQL Database
+* Azure CosmosDB
 
 Azure Data Factory ma dostęp do ponad 80 łączników natywnych. Aby dołączyć dane z innych źródeł w przepływie danych, Użyj działania kopiowania w celu załadowania tych danych do jednego z obsługiwanych obszarów tymczasowych.
 
@@ -73,7 +72,7 @@ Z kontenera źródłowego wybierz serię plików, które pasują do wzorca. W ze
 Przykłady symboli wieloznacznych:
 
 * ```*``` reprezentuje dowolny zestaw znaków
-* ```**``` reprezentuje cykliczne zagnieżdżanie katalogów
+* ```**``` reprezentuje zagnieżdżanie katalogów cyklicznych
 * ```?``` zastępuje jeden znak
 * ```[]``` dopasowuje jeden z więcej znaków w nawiasach
 
@@ -130,7 +129,7 @@ Jeśli źródło jest w SQL Database lub SQL Data Warehouse, na karcie **Opcje �
 
 **Dane wejściowe:** Wybierz, czy chcesz wskazać źródło w tabeli (równoważnej ```Select * from <table-name>```), czy wprowadzić niestandardowe zapytanie SQL.
 
-**Zapytanie**: w przypadku wybrania zapytania w polu wejściowym wprowadź zapytanie SQL dla źródła. To ustawienie przesłania każdą tabelę, która została wybrana w zestawie danych. Klauzule **order by** nie są obsługiwane w tym miejscu, ale można ustawić pełną instrukcję SELECT FROM. Można również użyć funkcji tabeli zdefiniowanej przez użytkownika. **SELECT * FROM udfGetData ()** to format UDF w języku SQL, który zwraca tabelę. To zapytanie spowoduje utworzenie tabeli źródłowej, której można użyć w przepływie danych.
+**Zapytanie**: w przypadku wybrania zapytania w polu wejściowym wprowadź zapytanie SQL dla źródła. To ustawienie przesłania każdą tabelę, która została wybrana w zestawie danych. Klauzule **order by** nie są obsługiwane w tym miejscu, ale można ustawić pełną instrukcję SELECT FROM. Można również użyć funkcji tabeli zdefiniowanej przez użytkownika. **SELECT * FROM udfGetData ()** to format UDF w języku SQL, który zwraca tabelę. To zapytanie spowoduje utworzenie tabeli źródłowej, której można użyć w przepływie danych. Używanie zapytań jest również doskonałym sposobem zredukowania liczby wierszy do testowania lub wyszukiwania. Przykład: ```Select * from MyTable where customerId > 1000 and customerId < 2000```
 
 **Rozmiar wsadu**: wprowadź rozmiar partii, aby podzielić duże ilości danych na odczyt.
 
@@ -152,6 +151,19 @@ Podobnie jak w przypadku schematów w zestawach danych, projekcja w źródle def
 Jeśli plik tekstowy nie ma zdefiniowanego schematu, wybierz pozycję **Wykryj typ danych** , aby Data Factory próbkować i wywnioskować typy danych. Wybierz opcję **Definiuj domyślny format** , aby automatycznie wykrywać domyślne formaty danych. 
 
 Typy danych kolumny można modyfikować w transformacjach kolumn pochodnych w dół i w dół. Użyj przekształcenia SELECT, aby zmodyfikować nazwy kolumn.
+
+### <a name="import-schema"></a>Importuj schemat
+
+Zestawy danych, takie jak Avro i CosmosDB, które obsługują złożone struktury, nie wymagają, aby definicje schematu istniały w zestawie danych. W związku z tym będzie można kliknąć przycisk "Importuj schemat" na karcie projekcji dla tych typów źródeł.
+
+## <a name="cosmosdb-specific-settings"></a>Ustawienia CosmosDB
+
+W przypadku używania CosmosDB jako typu źródła istnieje kilka opcji, które należy wziąć pod uwagę:
+
+* Uwzględnij kolumny systemowe: w przypadku zaznaczenia tej opcji ```id```, ```_ts```i inne kolumny systemowe zostaną uwzględnione w metadanych przepływu danych z CosmosDB. Podczas aktualizowania kolekcji należy uwzględnić to, aby można było uzyskać istniejący identyfikator wiersza.
+* Rozmiar strony: liczba dokumentów na stronę wyników zapytania. Wartość domyślna to "-1", która używa strony dynamicznej usługi do 1000.
+* Przepływność: Ustaw opcjonalną wartość dla liczby jednostek ru, która ma zostać zastosowana do kolekcji CosmosDB dla każdego wykonywania tego przepływu danych podczas operacji odczytu. Wartość minimalna to 400.
+* Preferowane regiony: możesz wybrać preferowane regiony odczytu dla tego procesu.
 
 ## <a name="optimize-the-source-transformation"></a>Optymalizuj transformację źródłową
 
