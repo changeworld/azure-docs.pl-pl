@@ -7,12 +7,12 @@ ms.service: billing
 ms.topic: conceptual
 ms.date: 08/29/2019
 ms.author: banders
-ms.openlocfilehash: b2c3fd9b59b371330e37dceb52b2e89b3db6c48e
-ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
+ms.openlocfilehash: 02a4ccc1bd7c18c36a7203f7d81cce8923ecf59a
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72390155"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73499236"
 ---
 # <a name="what-are-azure-reservations"></a>Co to jest Azure Reservations?
 
@@ -125,7 +125,7 @@ Rabat na rezerwację dotyczy tylko zasobów skojarzonych z subskrypcją Enterpri
 
 ## <a name="when-the-reservation-term-expires"></a>Gdy okres rezerwacji wygaśnie
 
-Na koniec okresu rezerwacji rabat rozliczenia wygasa. Opłaty za maszyny wirtualne, bazy danych SQL, Azure Cosmos DB lub inne zasoby są naliczane według ceny płatności zgodnie z rzeczywistym użyciem. Rezerwacje platformy Azure nie są automatycznie odnawiane. Aby kontynuować korzystanie z rabatu rozliczeniowego, trzeba kupić nową rezerwację dla kwalifikujących się usług i oprogramowania.
+Na koniec okresu rezerwacji rabat rozliczenia wygasa i od tego momentu zasoby są rozliczane według cen przy płatności zgodnie z rzeczywistym użyciem. Domyślnie rezerwacje nie są ustawiane na automatyczne odnawianie. Automatyczne odnawianie rezerwacji możesz włączyć, wybierając opcję w ustawieniach odnawiania. W przypadku automatycznego odnawiania zastępcza rezerwacja będzie kupowana po wygaśnięciu istniejącej rezerwacji. Domyślnie zastępcza rezerwacja ma te same atrybuty co wygasająca rezerwacja. Opcjonalnie można zmienić częstotliwość rozliczeń, okres lub ilość w ustawieniach odnawiania. Każdy użytkownik mający dostęp na poziomie właściciela do rezerwacji i subskrypcji używanej do rozliczeń może skonfigurować odnawianie.  
 
 ## <a name="discount-applies-to-different-sizes"></a>Rabat ma zastosowanie do różnych rozmiarów
 
