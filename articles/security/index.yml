@@ -14,12 +14,12 @@ metadata:
   ms.author: terrylan
   manager: rkarlin
   ms.date: 08/29/2019
-  ms.openlocfilehash: 6ae54a18ebb5358c7fde1a854238984ea7ec2c57
-  ms.sourcegitcommit: 87efc325493b1cae546e4cc4b89d9a5e3df94d31
+  ms.openlocfilehash: c3f75decc72cbc314309b8cfb0bd81d9c0be2774
+  ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
   ms.translationtype: HT
   ms.contentlocale: pl-PL
-  ms.lasthandoff: 10/29/2019
-  ms.locfileid: "73053701"
+  ms.lasthandoff: 11/06/2019
+  ms.locfileid: "73686310"
 highlightedContent:
   items:
   - title: Wprowadzenie do zabezpieczeń platformy Azure
@@ -175,9 +175,6 @@ conceptualContent:
     - url: ./fundamentals/management-monitoring-overview.md
       itemType: overview
       text: Omówienie zarządzania i monitorowania
-    - url: ./fundamentals/azure-log-integration-overview.md
-      itemType: overview
-      text: Wprowadzenie do usługi Azure Log Integration
     footerLink:
       url: https://docs.microsoft.com/search/?search=security+audit+log&scope=azure&category=Documentation
       text: Wyszukaj więcej
@@ -230,9 +227,6 @@ conceptualContent:
       text: Lista kontrolna zabezpieczeń
   - title: Zarządzanie i zgodność
     links:
-    - url: ./blueprints/au-protected-iaaswa-overview.md
-      itemType: tutorial
-      text: Rozwiązania dotyczące zgodności
     - url: ../governance/policy/overview.md
       itemType: overview
       text: Usługa Azure Policy
