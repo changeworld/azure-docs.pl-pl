@@ -9,7 +9,7 @@
     - name: Tworzenie testu analizatora internetowego przy użyciu portalu
       href: internet-analyzer-create-test-portal.md
     - name: Tworzenie testu analizatora internetowego przy użyciu interfejsu wiersza polecenia
-      herf: internet-analyzer-cli.md
+      href: internet-analyzer-cli.md
 - name: Przewodniki z instrukcjami
   items:
     - name: Osadzanie klienta

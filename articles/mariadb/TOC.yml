@@ -43,6 +43,8 @@
       items:
         - name: Warstwy cenowe
           href: concepts-pricing-tiers.md
+        - name: Opłacanie wydajności rezerwowej z góry
+          href: concept-reserved-pricing.md
         - name: Limity
           href: concepts-limits.md
     - name: Bezpieczeństwo i dostęp do danych

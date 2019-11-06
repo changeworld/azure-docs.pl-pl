@@ -200,8 +200,6 @@
           href: vpn-gateway-howto-setup-alerts-virtual-network-gateway-log.md
     - name: Konfigurowanie przechwytywania pakietów
       href: packet-capture.md
-    - name: Konfigurowanie niestandardowych selektorów ruchu
-      href: custom-traffic-selectors.md
     - name: Rozwiązywanie problemów
       href: vpn-gateway-troubleshoot.md
       items:

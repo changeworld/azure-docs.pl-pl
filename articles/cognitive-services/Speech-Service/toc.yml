@@ -6,6 +6,8 @@
   items:
     - name: Czym jest usługa rozpoznawania mowy?
       href: overview.md
+    - name: Obsługa języków i regionów
+      href: language-support.md
 - name: Zamiana mowy na tekst
   expanded: false
   items:
@@ -38,7 +40,7 @@
         - name: Używanie skompresowanych formatów dźwiękowych danych wejściowych
           href: how-to-use-codec-compressed-audio-input-streams.md
         - name: Używanie rozpoznawania mowy w kontenerach platformy Docker
-          href: speech-container-howto.md
+          href: speech-container-howto.md?tabs=stt
     - name: Dokumentacja
       items:
         - name: Interfejsy API zestawu SDK usługi Mowa
@@ -87,7 +89,7 @@
         - name: Syntetyzowanie mowy przy użyciu interfejsu API długich form audio
           href: long-audio-api.md
         - name: Używanie syntezy mowy w kontenerach platformy Docker
-          href: speech-container-howto.md
+          href: speech-container-howto.md?tabs=tts
     - name: Dokumentacja
       items:
         - name: Zestaw SDK rozpoznawania mowy

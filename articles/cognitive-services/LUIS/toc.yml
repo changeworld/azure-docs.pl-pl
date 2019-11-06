@@ -42,7 +42,7 @@
     - name: Kompilowanie aplikacji
       items:
         - name: Ustalanie intencji użytkownika
-          href: luis-quickstart-intents-only.md
+          href: tutorial-intents-only.md
         - name: Identyfikowanie typowych danych użytkownika za pomocą wstępnie utworzonych modeli
           href: luis-tutorial-prebuilt-intents-entities.md
         - name: Uzyskiwanie tonacji z wypowiedzi użytkowników
@@ -116,6 +116,7 @@
           displayName: roles
         - name: Funkcje
           href: luis-concept-feature.md
+          displayName: 'descriptor, phrase list'
     - name: Współczynnik przewidywania
       href: luis-concept-prediction-score.md
     - name: Najlepsze praktyki

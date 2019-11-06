@@ -69,14 +69,6 @@
           href: application-gateway-ssl-policy-overview.md
         - name: Korzystanie z magazynu kluczy
           href: key-vault-certs.md
-    - name: Zapora aplikacji internetowej
-      items:
-        - name: Zapora aplikacji internetowej
-          href: waf-overview.md
-        - name: Konfiguracja zapory aplikacji internetowej
-          href: application-gateway-waf-configuration.md
-        - name: Reguły niestandardowe
-          href: custom-waf-rules-overview.md
     - name: Ruch przychodzący usługi AKS
       href: ingress-controller-overview.md
     - name: Monitorowanie kondycji
@@ -245,8 +237,6 @@
           href: how-to-troubleshoot-application-gateway-session-affinity-issues.md
         - name: Błędy „Zła brama” (502)
           href: application-gateway-troubleshooting-502.md
-        - name: Zapora aplikacji internetowej
-          href: web-application-firewall-troubleshoot.md
         - name: Ruch przychodzący usługi AKS
           href: ingress-controller-troubleshoot.md
         - name: Kondycja zasobów

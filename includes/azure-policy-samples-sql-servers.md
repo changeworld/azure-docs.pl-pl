@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 09/18/2018
 ms.author: dacoulte
 ms.custom: include file
-ms.openlocfilehash: c8453a2ec00a2fca107f85a23a8af1e6313a70b6
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.openlocfilehash: dabadf3a4175947f09ba20b0e644f1d2b485ee38
+ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67183392"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73591182"
 ---
 ### <a name="sql-servers"></a>Serwery SQL Server
 
@@ -23,4 +23,3 @@ ms.locfileid: "67183392"
 | [Audit Server level threat detection setting](../articles/governance/policy/samples/audit-sql-server-threat-detection-setting.md) (Przeprowadzanie inspekcji ustawień wykrywania zagrożeń na poziomie serwera) | Przeprowadza inspekcję zasad alertu zabezpieczeń bazy danych SQL, dla których nie ustawiono określonego stanu. Należy określić wartość, która wskazuje, czy wykrywanie zagrożeń ma być włączone czy wyłączone.  |
 | [Audit SQL Server audit settings](../articles/governance/policy/samples/sql-server-audit.md) (Przeprowadzanie inspekcji ustawień inspekcji programu SQL Server) | Przeprowadza inspekcję programu SQL Server w zależności od tego, czy włączono ustawienia inspekcji. |
 | [Audit SQL Server Level Audit Setting](../articles/governance/policy/samples/audit-sql-server-audit-setting.md) (Przeprowadzanie inspekcji ustawień inspekcji na poziomie programu SQL Server) | Sprawdza, czy ustawienia inspekcji programu SQL Server nie są zgodne z określonym ustawieniem. Należy określić wartość, która wskazuje, czy ustawienia inspekcji mają być włączone czy wyłączone. |
-| [Require SQL Server Version 12.0](../articles/governance/policy/samples/require-sql-12.md) (Wymaganie programu SQL Server w wersji 12.0) | Wymaga używania wersji 12.0 programu SQL Server.  |
