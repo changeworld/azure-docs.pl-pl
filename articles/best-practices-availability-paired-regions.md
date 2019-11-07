@@ -7,12 +7,12 @@ ms.service: multiple
 ms.topic: article
 ms.date: 07/01/2019
 ms.author: raynew
-ms.openlocfilehash: 90111325677e1bdd12a03081ad7513a34f68fd40
-ms.sourcegitcommit: 38251963cf3b8c9373929e071b50fd9049942b37
+ms.openlocfilehash: b71048412f5715fd1b8ef3edf742716916672bd5
+ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/29/2019
-ms.locfileid: "73044142"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73718746"
 ---
 # <a name="business-continuity-and-disaster-recovery-bcdr-azure-paired-regions"></a>Ciągłość działania i odzyskiwanie po awarii (BCDR): wielosparowane regiony platformy Azure
 
@@ -31,7 +31,7 @@ Rysunek 1 — pary regionalne platformy Azure
 | Azja |Azja Wschodnia |Azja Południowo-Wschodnia |
 | Australia |Australia Wschodnia |Australia Południowo-Wschodnia |
 | Australia |Australia Środkowa |Australia Środkowa 2 |
-| Brazylia |Brazylia Południowa |Południowo-środkowe stany USA |
+| Brazylia |Brazylia Południowa |Środkowo-południowe stany USA |
 | Kanada |Kanada Środkowa |Kanada Wschodnia |
 | Chiny |Chiny Północne |Chiny Wschodnie|
 | Chiny |Chiny Północne 2 |Chiny Wschodnie 2|
@@ -41,18 +41,18 @@ Rysunek 1 — pary regionalne platformy Azure
 | Indie |Indie Środkowe |Indie Południowe |
 | Indie |Indie Zachodnie |Indie Południowe |
 | Japonia |Japonia Wschodnia |Japonia Zachodnia |
-| Korea Południowa |Korea Środkowa |Korea Południowa |
+| Korea |Korea Środkowa |Korea Południowa |
 | Ameryka Północna |Wschodnie stany USA |Zachodnie stany USA |
 | Ameryka Północna |Wschodnie stany USA 2 |Środkowe stany USA |
-| Ameryka Północna |Północno-środkowe stany USA |Południowo-środkowe stany USA |
-| Ameryka Północna |Zachodnie stany USA 2 |Zachodnio-środkowe stany USA 
+| Ameryka Północna |Środkowo-północne stany USA |Środkowo-południowe stany USA |
+| Ameryka Północna |Zachodnie stany USA 2 |Środkowo-zachodnie stany USA 
 | Republika Południowej Afryki | Północna Republika Południowej Afryki | Północna Republika Południowej Afryki
 | Zjednoczone Królestwo |Zachodnie Zjednoczone Królestwo |Południowe Zjednoczone Królestwo |
 | Zjednoczone Emiraty Arabskie | Północne Zjednoczone Emiraty Arabskie | Środkowe Zjednoczone Emiraty Arabskie
-| Departament Obrony Stanów Zjednoczonych |US DoD (region wschodni) |US DoD (region środkowy) |
-| Rząd USA |US Gov Arizona |US Gov Teksas |
-| Rząd USA |US Gov Iowa |US Gov Wirginia |
-| Rząd USA |US Gov Wirginia |US Gov Teksas |
+| Departament Obrony Stanów Zjednoczonych |US DoD — wschodnie stany |US DoD — środkowe stany |
+| Rząd USA |Administracja USA — Arizona |Administracja USA — Teksas |
+| Rząd USA |US Gov Iowa |Administracja USA — Wirginia |
+| Rząd USA |Administracja USA — Wirginia |Administracja USA — Teksas |
 
 Tabela 1 — mapowanie par regionalnych platformy Azure
 
@@ -75,7 +75,7 @@ Rysunek 2 — hipotetyczna para regionalna platformy Azure
 ## <a name="cross-region-activities"></a>Działania obejmujące wiele regionów
 Jak określono na rysunku 2.
 
-![IaaS](./media/best-practices-availability-paired-regions/1Green.png) **Azure COMPUTE (IaaS)** — w celu zapewnienia dostępności zasobów w innym regionie w trakcie awarii należy zainicjować obsługę administracyjną dodatkowych zasobów obliczeniowych. Aby uzyskać więcej informacji, zobacz [Wskazówki techniczne dotyczące odporności na platformie Azure](resiliency/resiliency-technical-guidance.md).
+![IaaS](./media/best-practices-availability-paired-regions/1Green.png) **Azure COMPUTE (IaaS)** — w celu zapewnienia dostępności zasobów w innym regionie w trakcie awarii należy zainicjować obsługę administracyjną dodatkowych zasobów obliczeniowych. Aby uzyskać więcej informacji, zobacz [Wskazówki techniczne dotyczące odporności na platformie Azure](https://github.com/uglide/azure-content/blob/master/articles/resiliency/resiliency-technical-guidance.md).
 
 ![Storage](./media/best-practices-availability-paired-regions/2Green.png) **Azure Storage** — Jeśli używasz dysków zarządzanych, Dowiedz się więcej o [kopiach zapasowych między regionami](https://docs.microsoft.com/azure/architecture/resiliency/recovery-loss-azure-region#virtual-machines) i Azure Backup oraz [replikowanie maszyn wirtualnych](https://docs.microsoft.com/azure/site-recovery/azure-to-azure-tutorial-enable-replication) z jednego regionu do innego za pomocą Azure Site Recovery. Jeśli używasz kont magazynu, to magazyn Geograficznie nadmiarowy (GRS) jest konfigurowany domyślnie podczas tworzenia konta usługi Azure Storage. W przypadku GRS dane są automatycznie replikowane trzy razy w regionie podstawowym, a trzy razy w sparowanym regionie. Aby uzyskać więcej informacji, zobacz [Opcje nadmiarowości usługi Azure Storage](storage/common/storage-redundancy.md).
 

@@ -1,5 +1,5 @@
 ---
-title: 'Samouczek: korzystanie z interfejsu API REST w celu utworzenia potoku usługi Azure Data Factory | Microsoft Docs'
+title: 'Samouczek: Tworzenie potoku Azure Data Factory przy użyciu interfejsu API REST '
 description: W tym samouczku opisano korzystanie z interfejsu API REST w celu utworzenia potoku usługi Azure Data Factory z działaniem kopiowania, aby skopiować dane z magazynu obiektów blob Azure do bazy danych Azure SQL Database.
 services: data-factory
 documentationcenter: ''
@@ -13,22 +13,22 @@ ms.topic: tutorial
 ms.date: 01/22/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 1f9cead45066fb7bf4a96332710fdd8f3cd5a094
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.openlocfilehash: 860b2f20b4ffda0a1a588ed5d5893ad2c0521a43
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73146203"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73682829"
 ---
 # <a name="tutorial-use-rest-api-to-create-an-azure-data-factory-pipeline-to-copy-data"></a>Samouczek: korzystanie z interfejsu API REST w celu utworzenia potoku usługi Azure Data Factory do kopiowania danych 
 > [!div class="op_single_selector"]
 > * [Przegląd i wymagania wstępne](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)
 > * [Kreator kopiowania](data-factory-copy-data-wizard-tutorial.md)
-> * [Visual Studio](data-factory-copy-activity-tutorial-using-visual-studio.md)
+> * [Program Visual Studio](data-factory-copy-activity-tutorial-using-visual-studio.md)
 > * [Program PowerShell](data-factory-copy-activity-tutorial-using-powershell.md)
 > * [Szablon usługi Azure Resource Manager](data-factory-copy-activity-tutorial-using-azure-resource-manager-template.md)
 > * [Interfejs API REST](data-factory-copy-activity-tutorial-using-rest-api.md)
-> * [Interfejs API programu .NET](data-factory-copy-activity-tutorial-using-dotnet-api.md)
+> * [Interfejs API .NET](data-factory-copy-activity-tutorial-using-dotnet-api.md)
 > 
 > 
 
@@ -283,7 +283,7 @@ Pamiętaj o następujących kwestiach:
 - Dane wejściowe dla działania mają ustawienie **AzureBlobInput**, a dane wyjściowe — **AzureSqlOutput**. 
 - W sekcji **typeProperties** parametr **BlobSource** został określony jako typ źródłowy, a parametr **SqlSink** został określony jako typ ujścia. Aby uzyskać pełną listę magazynów danych obsługiwanych przez działanie kopiowania jako źródła i ujścia, zobacz informacje dotyczące [obsługiwanych magazynów danych](data-factory-data-movement-activities.md#supported-data-stores-and-formats). Aby dowiedzieć się, jak używać określonego obsługiwanego magazynu danych jako źródła/ujścia, kliknij link w tabeli.  
  
-Zastąp wartość właściwości **start** bieżącym dniem, a wartość właściwości **end** następnym dniem. Możesz określić tylko część daty i pominąć część godziny parametru data/godzina. Na przykład „2017-02-03” jest odpowiednikiem „2017-02-03T00:00:00Z”.
+Zastąp wartość właściwości **start** datą bieżącą, a wartość **end** datą jutrzejszą. Możesz określić tylko część daty i pominąć część godziny parametru data/godzina. Na przykład „2017-02-03” jest odpowiednikiem „2017-02-03T00:00:00Z”.
  
 Zarówno data/godzina rozpoczęcia, jak i data/godzina zakończenia muszą być w [formacie ISO](https://en.wikipedia.org/wiki/ISO_8601). Przykładowo: 2016-10-14T16:32:41Z. Czas **end** jest opcjonalny, ale w tym samouczku zostanie użyty. 
  
@@ -522,7 +522,7 @@ Dla każdego wycinka do tabeli emp w bazie danych Azure SQL Database zostają sk
 ## <a name="summary"></a>Podsumowanie
 W tym samouczku opisano tworzenie fabryki danych Azure za pomocą interfejsu API REST w celu kopiowania danych z obiektu blob Azure do bazy danych Azure SQL Database. Główne kroki opisane w tym samouczku:  
 
-1. Tworzenie **fabryki danych** Azure.
+1. Utworzyć **fabrykę danych** Azure.
 2. Tworzenie **połączonych usług**:
    1. Połączona usługa Azure Storage, która ma nawiązać połączenie z kontem usługi Azure Storage, na którym przechowywane są dane wejściowe.     
    2. Połączona usługa Azure SQL, która ma nawiązać połączenie z bazą danych Azure SQL Database, w której przechowywane są dane wyjściowe. 

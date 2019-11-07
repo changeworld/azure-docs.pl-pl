@@ -1,22 +1,22 @@
 ---
-title: 'Samouczek: Kompilowanie aplikacji internetowej Node.js przy użyciu zestawu SDK dla języka JavaScript na potrzeby zarządzania danymi interfejsu API SQL usługi Azure Cosmos DB'
+title: 'Samouczek: tworzenie aplikacji internetowej Node.js przy użyciu zestawu SDK dla języka JavaScript na potrzeby zarządzania danymi interfejsu API SQL usługi Azure Cosmos DB'
 description: W tym samouczku środowiska Node.js przedstawiono, jak przy użyciu usługi Microsoft Azure Cosmos DB przechowywać dane i uzyskiwać do nich dostęp z poziomu aplikacji internetowej Node.js Express hostowanej w funkcji Web Apps usługi Microsoft Azure App Service.
 author: SnehaGunda
 ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
 ms.devlang: nodejs
 ms.topic: tutorial
-ms.date: 08/06/2019
+ms.date: 11/05/2019
 ms.author: sngun
 Customer intent: As a developer, I want to build a Node.js web application to access and manage SQL API account resources in Azure Cosmos DB, so that customers can better use the service.
-ms.openlocfilehash: 0f410e06e1f5b9ae3b5319c4ff63f9632a2159dc
-ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
+ms.openlocfilehash: 8390520320566907e8aaef709a085a71e8c8e4d6
+ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68989454"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73720824"
 ---
-# <a name="tutorial-build-a-nodejs-web-app-using-the-javascript-sdk-to-manage-a-sql-api-account-in-azure-cosmos-db"></a>Samouczek: Kompilowanie aplikacji internetowej Node.js przy użyciu zestawu SDK dla języka JavaScript na potrzeby zarządzania kontem interfejsu API SQL w usłudze Azure Cosmos DB 
+# <a name="tutorial-build-a-nodejs-web-app-using-the-javascript-sdk-to-manage-a-sql-api-account-in-azure-cosmos-db"></a>Samouczek: Tworzenie aplikacji sieci Web Node. js przy użyciu zestawu SDK języka JavaScript do zarządzania kontem interfejsu API SQL w programie Azure Cosmos DB 
 
 > [!div class="op_single_selector"]
 > * [.NET](sql-api-dotnet-application.md)
@@ -93,7 +93,7 @@ Teraz nauczysz się, jak utworzyć podstawowy projekt aplikacji Hello World w ś
 
 Plik **package.json** jest jednym z plików utworzonych w folderze głównym projektu. Ten plik zawiera listę dodatkowych modułów, które są wymagane dla aplikacji Node.js. Podczas wdrażania tej aplikacji na platformie Azure ten plik służy do określania, które moduły mają być zainstalowane na platformie Azure w celu obsługi tej aplikacji. Zainstaluj jeszcze 2 pakiety na potrzeby tego samouczka.
 
-1. Zainstaluj moduł Azure/Cosmos za pośrednictwem usługi npm.  **\@** 
+1. Zainstaluj moduł **\@Azure/Cosmos** za pośrednictwem usługi npm. 
 
    ```bash
    npm install @azure/cosmos

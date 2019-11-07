@@ -1,22 +1,22 @@
 ---
-title: Wysyłanie i odbieranie zdarzeń przy użyciu języka Python — Event Hubs platformy Azure
-description: W tym instruktażu przedstawiono sposób tworzenia i uruchamiania skryptów języka Python, które wysyłają zdarzenia do i odbierają zdarzenia z usługi Azure Event Hubs.
+title: 'Szybki Start: wysyłanie i odbieranie zdarzeń przy użyciu języka Python — Event Hubs platformy Azure'
+description: 'Szybki Start: w tym przewodniku pokazano, jak tworzyć i uruchamiać skrypty języka Python, które wysyłają zdarzenia do i odbierają zdarzenia z usługi Azure Event Hubs.'
 services: event-hubs
 author: ShubhaVijayasarathy
 manager: femila
 ms.service: event-hubs
 ms.workload: core
-ms.topic: article
-ms.date: 10/11/2019
+ms.topic: quickstart
+ms.date: 11/05/2019
 ms.author: shvija
-ms.openlocfilehash: 330a7f5dc325c707b5be7ce9f9b3242a1d4c9547
-ms.sourcegitcommit: 77bfc067c8cdc856f0ee4bfde9f84437c73a6141
+ms.openlocfilehash: 9b6c3fb03f696f4142721284a14001eb51153a77
+ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72428886"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73720550"
 ---
-# <a name="send-and-receive-events-with-event-hubs-using-python"></a>Wysyłanie i odbieranie zdarzeń za pomocą Event Hubs przy użyciu języka Python
+# <a name="quickstart-send-and-receive-events-with-event-hubs-using-python"></a>Szybki Start: wysyłanie i odbieranie zdarzeń za pomocą Event Hubs przy użyciu języka Python
 
 Azure Event Hubs to usługa do przesyłania strumieniowego danych Big Data i usługi pozyskiwania zdarzeń, które mogą odbierać i przetwarzać miliony zdarzeń na sekundę. Event Hubs może przetwarzać i przechowywać zdarzenia, dane lub Telemetria z rozproszonych oprogramowania i urządzeń. Dane wysłane do centrum zdarzeń mogą zostać przekształcone i zmagazynowane przy użyciu dowolnego dostawcy analityki czasu rzeczywistego lub adapterów przetwarzania wsadowego/magazynowania. Aby uzyskać więcej informacji na temat Event Hubs, zobacz [azure Event Hubs](event-hubs-about.md) i [funkcje i terminologia na platformie Azure Event Hubs](event-hubs-features.md).
 
@@ -32,7 +32,7 @@ Do wykonania kroków tego przewodnika Szybki start niezbędne jest spełnienie n
 - Subskrypcja platformy Azure. Jeśli nie masz subskrypcji, przed rozpoczęciem [utwórz bezpłatne konto](https://azure.microsoft.com/free/).
 - Aktywna przestrzeń nazw Event Hubs i centrum zdarzeń utworzone zgodnie z instrukcjami podanymi w [przewodniku szybki start: tworzenie centrum zdarzeń przy użyciu Azure Portal](event-hubs-create.md). Zanotuj nazwy przestrzeni nazw i centrów zdarzeń do użycia w dalszej części tego przewodnika. 
 - Nazwa klucza dostępu współdzielonego i wartość klucza podstawowego dla przestrzeni nazw Event Hubs. Pobierz nazwę i wartość klucza dostępu, postępując zgodnie z instrukcjami podanymi w polu [pobieranie parametrów połączenia](event-hubs-get-connection-string.md#get-connection-string-from-the-portal). Domyślna nazwa klucza dostępu to **RootManageSharedAccessKey**. Skopiuj nazwę klucza i wartość klucza podstawowego do użycia w dalszej części tego instruktażu. 
-- Środowisko Python 3,4 lub nowsze z zainstalowaną i zaktualizowaną `pip`.
+- Program Python 3,4 lub nowszy z zainstalowanym i zaktualizowanym `pip`.
 - Pakiet języka Python dla Event Hubs. Aby zainstalować pakiet, Uruchom to polecenie w wierszu polecenia zawierającym Język Python w ścieżce: 
   
   ```cmd
@@ -40,7 +40,7 @@ Do wykonania kroków tego przewodnika Szybki start niezbędne jest spełnienie n
   ```
   
   > [!NOTE]
-  > Kod w tym przewodniku szybki start używa bieżącego stabilnej wersji 1.3.1 zestawu SDK Event Hubs. Przykładowy kod korzystający z wersji zapoznawczej zestawu SDK znajduje się w temacie [https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/eventhub/azure-eventhubs/examples](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/eventhub/azure-eventhubs/examples).
+  > Kod w tym przewodniku szybki start używa bieżącego stabilnej wersji 1.3.1 zestawu SDK Event Hubs. Przykładowy kod, który używa wersji zapoznawczej zestawu SDK, znajduje się w temacie [https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/eventhub/azure-eventhubs/examples](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/eventhub/azure-eventhubs/examples).
 
 ## <a name="send-events"></a>Wysyłanie zdarzeń
 
@@ -48,7 +48,7 @@ Aby utworzyć aplikację w języku Python, która wysyła zdarzenia do centrum z
 
 1. Otwórz swój ulubiony Edytor Python, taki jak [Visual Studio Code](https://code.visualstudio.com/)
 2. Utwórz nowy plik o nazwie *send.py*. Ten skrypt wysyła zdarzenia 100 do centrum zdarzeń.
-3. Wklej następujący kod do *send.py*, zastępując Event Hubs \<namespace >, \<eventhub >, \<AccessKeyName > i \<primary wartości klucza > z wartościami: 
+3. Wklej następujący kod do *send.py*, zastępując Event Hubs \<przestrzeni nazw > \<eventhub >, \<AccessKeyName > i \<wartość klucza podstawowego > z wartościami: 
    
    ```python
    import sys
@@ -111,7 +111,7 @@ Gratulacje! Wysłano komunikaty do centrum zdarzeń.
 Aby utworzyć aplikację w języku Python, która odbiera zdarzenia z centrum zdarzeń:
 
 1. W edytorze języka Python Utwórz plik o nazwie *recv.py*.
-2. Wklej następujący kod do *recv.py*, zastępując Event Hubs \<namespace >, \<eventhub >, \<AccessKeyName > i \<primary wartości klucza > z wartościami: 
+2. Wklej następujący kod do *recv.py*, zastępując Event Hubs \<przestrzeni nazw > \<eventhub >, \<AccessKeyName > i \<wartość klucza podstawowego > z wartościami: 
    
    ```python
    import os

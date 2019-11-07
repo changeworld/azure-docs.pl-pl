@@ -1,6 +1,6 @@
 ---
 title: Samouczek — Konfigurowanie klastra w usłudze Azure HDInsight przy użyciu rozwiązania ansible
-description: Dowiedz się, jak utworzyć usługę Azure HDInsight i zmienić jej rozmiar przy użyciu programu rozwiązania ansible
+description: Dowiedz się, jak skonfigurować, zmienić rozmiar i usunąć klaster usługi Azure HDInsight przy użyciu usługi rozwiązania ansible
 keywords: rozwiązania ansible, Azure, DevOps, bash, element PlayBook, Apache Hadoop, HDInsight
 ms.topic: tutorial
 ms.service: ansible
@@ -8,12 +8,12 @@ author: tomarchermsft
 manager: jeconnoc
 ms.author: tarcher
 ms.date: 04/30/2019
-ms.openlocfilehash: ad17e6ff4cbf5b583e3a4be410847c1349c9edce
-ms.sourcegitcommit: 824e3d971490b0272e06f2b8b3fe98bbf7bfcb7f
+ms.openlocfilehash: ce4723a9dbe952f0112b7e24c3e361fd2f414374
+ms.sourcegitcommit: b2fb32ae73b12cf2d180e6e4ffffa13a31aa4c6f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/10/2019
-ms.locfileid: "72241948"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73614419"
 ---
 # <a name="tutorial-configure-a-cluster-in-azure-hdinsight-using-ansible"></a>Samouczek: Konfigurowanie klastra w usłudze Azure HDInsight przy użyciu rozwiązania ansible
 
@@ -144,7 +144,7 @@ Tworzenie wystąpienia może potrwać kilka minut.
 
 Po utworzeniu klastra jedynym ustawieniem, które można zmienić, jest liczba węzłów procesu roboczego. 
 
-Kod element PlayBook w tej sekcji zwiększa liczbę węzłów procesu roboczego przez aktualizację `target_instance_count` w ramach `workernode`.
+Kod element PlayBook w tej sekcji zwiększa liczbę węzłów procesu roboczego przez aktualizację `target_instance_count` w `workernode`.
 
 ```yml
 - name: Resize cluster
@@ -353,9 +353,9 @@ Istnieją dwa sposoby uzyskania kompletnej przykładowej element PlayBook:
 W tej sekcji należy uruchomić element PlayBook w celu przetestowania różnych funkcji przedstawionych w tym artykule.
 
 Przed uruchomieniem element PlayBook wprowadź następujące zmiany:
-- W sekcji `vars` Zastąp symbol zastępczy `{{ resource_group_name }}` nazwą grupy zasobów.
+- W sekcji `vars` Zamień symbol zastępczy `{{ resource_group_name }}` na nazwę grupy zasobów.
 
-Uruchom element PlayBook za pomocą polecenia `ansible-playbook`:
+Uruchom element PlayBook przy użyciu polecenia `ansible-playbook`:
 
 ```bash
 ansible-playbook hdinsight.yml
@@ -379,7 +379,7 @@ Zapisz następujący kod jako `cleanup.yml`:
         state: absent
 ```
 
-Uruchom element PlayBook za pomocą polecenia `ansible-playbook`:
+Uruchom element PlayBook przy użyciu polecenia `ansible-playbook`:
 
 ```bash
 ansible-playbook cleanup.yml

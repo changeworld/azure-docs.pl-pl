@@ -1,5 +1,5 @@
 ---
-title: Tworzenie pierwszej fabryki danych (szablon usługi Resource Manager) | Microsoft Docs
+title: Tworzenie pierwszej fabryki danych (szablon Menedżer zasobów)
 description: W tym samouczku przedstawiono tworzenie przykładowego potoku usługi Azure Data Factory przy użyciu szablonu usługi Azure Resource Manager.
 services: data-factory
 documentationcenter: ''
@@ -11,31 +11,31 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: tutorial
 ms.date: 01/22/2018
-ms.openlocfilehash: c4ff0f28f4f0058d388e3b2f9c753737fb6ee0d4
-ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
+ms.openlocfilehash: bc433fbd6117a6aded28e19d2f8b48d594ff5ad6
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70140499"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73683037"
 ---
 # <a name="tutorial-build-your-first-azure-data-factory-using-azure-resource-manager-template"></a>Samouczek: tworzenie pierwszej fabryki danych Azure przy użyciu szablonu usługi Azure Resource Manager
 > [!div class="op_single_selector"]
 > * [Przegląd i wymagania wstępne](data-factory-build-your-first-pipeline.md)
-> * [Visual Studio](data-factory-build-your-first-pipeline-using-vs.md)
-> * [PowerShell](data-factory-build-your-first-pipeline-using-powershell.md)
+> * [Program Visual Studio](data-factory-build-your-first-pipeline-using-vs.md)
+> * [Program PowerShell](data-factory-build-your-first-pipeline-using-powershell.md)
 > * [Szablon usługi Resource Manager](data-factory-build-your-first-pipeline-using-arm.md)
-> * [REST API](data-factory-build-your-first-pipeline-using-rest-api.md)
+> * [Interfejs API REST](data-factory-build-your-first-pipeline-using-rest-api.md)
 > 
  
 > [!NOTE]
-> Ten artykuł dotyczy wersji 1 usługi Data Factory. Jeśli korzystasz z bieżącej wersji usługi Data Factory, zobacz [Szybki start: tworzenie fabryki danych w usłudze Azure Data Factory](../quickstart-create-data-factory-dot-net.md).
+> Ten artykuł dotyczy wersji 1 usługi Data Factory. Jeśli używasz bieżącej wersji usługi Data Factory, zobacz [Szybki start: tworzenie fabryki danych przy użyciu usługi Azure Data Factory](../quickstart-create-data-factory-dot-net.md).
 
 W tym artykule opisano użycie szablonu usługi Azure Resource Manager do tworzenia pierwszej fabryki danych Azure. Aby wykonać instrukcje z tego samouczka przy użyciu innych narzędzi/zestawów SDK, wybierz jedną z opcji z listy rozwijanej.
 
-Potok w tym samouczku zawiera jedno działanie: **działanie technologii Hive w usłudze HDInsight**. To działanie uruchamia skrypt Hive w klastrze Azure HDInsight, który przekształca dane wejściowe, aby wygenerować dane wyjściowe. Uruchamianie potoku zaplanowano raz w miesiącu między określonym czasem rozpoczęcia i zakończenia. 
+Potok w tym samouczku zawiera jedno działanie: **działanie Hive usługi HDInsight**. To działanie uruchamia skrypt Hive w klastrze Azure HDInsight, który przekształca dane wejściowe, aby wygenerować dane wyjściowe. Uruchamianie potoku zaplanowano raz w miesiącu między określonym czasem rozpoczęcia i zakończenia. 
 
 > [!NOTE]
-> Potok danych przedstawiony w tym samouczku przekształca dane wejściowe w celu wygenerowania danych wyjściowych. Aby zapoznać się z samouczkiem dotyczącym kopiowania danych przy użyciu usługi Azure Data Factory, zobacz [Tutorial: Copy data from Blob Storage to SQL Database](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) (Samouczek: kopiowanie danych z usługi Blob Storage do usługi SQL Database).
+> Potok danych przedstawiony w tym samouczku przekształca dane wejściowe w celu wygenerowania danych wyjściowych. Aby zapoznać się z samouczkiem dotyczącym kopiowania danych przy użyciu usługi Azure Data Factory, zobacz [Tutorial: Copy data from Blob Storage to SQL Database](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) (Samouczek: Kopiowanie danych z usługi Blob Storage do usługi SQL Database).
 > 
 > Potok w tym samouczku zawiera tylko jedno działanie typu: HDInsightHive. Potok może obejmować więcej niż jedno działanie. Dwa działania można połączyć w łańcuch (uruchomić jedno działanie po drugim), ustawiając wyjściowy zestaw danych jednego działania jako zestaw wejściowy drugiego. Więcej informacji znajduje się w artykule dotyczącym [planowania i wykonywania w usłudze Data Factory](data-factory-scheduling-and-execution.md#multiple-activities-in-a-pipeline). 
 
@@ -261,7 +261,7 @@ Utwórz plik JSON o nazwie **ADFTutorialARM.json** w folderze **C:\ADFGetStarted
 ```
 
 > [!NOTE]
-> Inny przykład szablonu usługi Resource Manager do tworzenia fabryki danych Azure znajduje się w temacie [Tutorial: Create a pipeline with Copy Activity using an Azure Resource Manager template (Samouczek: tworzenie potoku za pomocą działania kopiowania przy użyciu szablonu usługi Azure Resource Manager)](data-factory-copy-activity-tutorial-using-azure-resource-manager-template.md).  
+> Temat [Samouczek: Tworzenie potoku za pomocą działania kopiowania przy użyciu szablonu usługi Azure Resource Manager](data-factory-copy-activity-tutorial-using-azure-resource-manager-template.md) zawiera kolejny przykład szablonu usługi Resource Manager umożliwiającego utworzenie fabryki danych platformy Azure.  
 > 
 > 
 

@@ -1,5 +1,5 @@
 ---
-title: Samouczek usługi Azure Security Center — Reagowanie na zdarzenia związane z zabezpieczeniami | Microsoft Docs
+title: Samouczek odpowiedzi na zdarzenia — Azure Security Center
 description: Samouczek usługi Azure Security Center — Reagowanie na zdarzenia związane z zabezpieczeniami
 services: security-center
 documentationcenter: na
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/30/2018
 ms.author: memildin
-ms.openlocfilehash: 11c2543de2b5456d253e7e905065eea14810877a
-ms.sourcegitcommit: 8a717170b04df64bd1ddd521e899ac7749627350
+ms.openlocfilehash: cd3f99fe82c9a8e5e760aa3be3bed1ad5d9bd5e9
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/23/2019
-ms.locfileid: "71200611"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73663637"
 ---
 # <a name="tutorial-respond-to-security-incidents"></a>Samouczek: Reagowanie na zdarzenia związane z zabezpieczeniami
 Usługa Security Center w sposób ciągły analizuje obciążenia chmury hybrydowej i ostrzega o złośliwych działaniach, używając zaawansowanych funkcji analitycznych oraz funkcji analizy zagrożeń. Ponadto można integrować alerty z innymi produktami i usługami zabezpieczeń w usłudze Security Center oraz tworzyć niestandardowe alerty bazujące na własnych wskaźnikach lub źródłach analiz. Po wygenerowaniu alertu potrzebne jest sprawne działanie w celu zbadania i skorygowania jego przyczyny. Niniejszy samouczek zawiera informacje na temat wykonywania następujących czynności:
@@ -66,7 +66,7 @@ Usługa Security Center zapewnia spójny widok wszystkich alertów zabezpieczeń
 
 1. W menu głównym usługi Security Center w sekcji **WYKRYWANIE** wybierz pozycję **Alerty zabezpieczeń**:
 
-   ![Alerty zabezpieczeń](./media/tutorial-security-incident/tutorial-security-incident-fig1.png)  
+   ![Alerty zabezpieczeń](./media/tutorial-security-incident/tutorial-security-incident-fig1.png)
 
 2. Na liście alertów kliknij zdarzenie zabezpieczeń będące kolekcją alertów, aby dowiedzieć się więcej na temat tego zdarzenia. Zostanie otwarte okno **Wykryto zdarzenie zabezpieczeń**.
 

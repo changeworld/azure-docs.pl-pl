@@ -1,5 +1,5 @@
 ---
-title: Aprowizowanie środowiska Azure-SSIS Integration Runtime za pomocą programu PowerShell | Microsoft Docs
+title: Udostępnianie Azure-SSIS Integration Runtime przy użyciu programu PowerShell
 description: Dowiedz się, jak aprowizować środowisko Azure-SSIS Integration Runtime w usłudze Azure Data Factory za pomocą programu PowerShell w celu wdrażania i uruchamiania pakietów SSIS na platformie Azure.
 services: data-factory
 documentationcenter: ''
@@ -13,16 +13,16 @@ author: swinarko
 ms.author: sawinark
 ms.reviewer: douglasl
 manager: craigg
-ms.openlocfilehash: 7a4ae2198653ea8adab136caef0f812019efd998
-ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
+ms.openlocfilehash: 594cdd848a3712d2164616e38f7b75a01a21b7f6
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72326108"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73683585"
 ---
 # <a name="provision-the-azure-ssis-integration-runtime-in-azure-data-factory-with-powershell"></a>Aprowizowanie środowiska Azure-SSIS Integration Runtime w usłudze Azure Data Factory za pomocą programu PowerShell
 
-Ten samouczek zawiera kroki umożliwiające zainicjowanie obsługi Integration Runtime (IR) na platformie SQL Server Integration Services Azure w Azure Data Factory (ADF). Azure-SSIS IR obsługuje uruchamianie pakietów wdrożonych w katalogu usług SSIS (SSISDB) hostowanych przez Azure SQL Database Server/wystąpienie zarządzane (model wdrażania projektu) i te wdrożone w systemach plików/udziałach plików/Azure Files (model wdrażania pakietu). Po zainicjowaniu Azure-SSIS IR można używać znanych narzędzi, takich jak SQL Server narzędzia do obsługi danych (SSDT)/SQL Server Management Studio (SSMS) i narzędzi wiersza polecenia, takich jak `dtinstall` @ no__t-1 @ no__t-2 @ no__t-3 @ no__t-4, aby wdrożyć i uruchomić pakiety na platformie Azure. W tym samouczku wykonasz następujące czynności:
+Ten samouczek zawiera kroki umożliwiające zainicjowanie obsługi Integration Runtime (IR) na platformie SQL Server Integration Services Azure w Azure Data Factory (ADF). Azure-SSIS IR obsługuje uruchamianie pakietów wdrożonych w katalogu usług SSIS (SSISDB) hostowanych przez Azure SQL Database Server/wystąpienie zarządzane (model wdrażania projektu) i te wdrożone w systemach plików/udziałach plików/Azure Files (model wdrażania pakietu). Po zainicjowaniu Azure-SSIS IR można korzystać ze znanych narzędzi, takich jak SQL Server/SQL Management Studio Server Tools (SSDT), a także narzędzi wiersza polecenia, takich jak `dtinstall`/`dtutil`/`dtexec`, aby wdrażać i uruchamiać pakiety w programie Azure. W tym samouczku wykonasz następujące czynności:
 
 > [!NOTE]
 > W tym artykule zainicjowano Azure-SSIS IR przy użyciu Azure PowerShell. Aby użyć aplikacji Azure Portal/ADF do aprowizacji Azure-SSIS IR, zobacz [Samouczek: Inicjowanie obsługi Azure-SSIS IR](tutorial-create-azure-ssis-runtime-portal.md). 
@@ -147,7 +147,7 @@ New-AzSqlServerFirewallRule -ResourceGroupName $ResourceGroupName `
 New-AzSqlServerFirewallRule -ResourceGroupName $ResourceGroupName -ServerName $SSISDBServerName -AllowAllAzureIPs
 ```
 
-## <a name="create-a-resource-group"></a>Utwórz grupę zasobów
+## <a name="create-a-resource-group"></a>Tworzenie grupy zasobów
 
 Utwórz [grupę zasobów platformy Azure](../azure-resource-manager/resource-group-overview.md) za pomocą polecenia [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup) . Grupa zasobów to logiczny kontener przeznaczony do wdrażania zasobów platformy Azure i zarządzania nimi w formie grupy.
 
@@ -369,7 +369,7 @@ W poniższych artykułach można znaleźć szczegółowe informacje o monitorowa
 
 ## <a name="deploy-ssis-packages"></a>Wdrażanie pakietów usług SSIS
 
-Jeśli używasz SSISDB, możesz wdrożyć w nim pakiety i uruchamiać je na Azure-SSIS IR przy użyciu narzędzi SSDT/SSMS, które łączą się z serwerem bazy danych za pośrednictwem swojego punktu końcowego serwera. W przypadku Azure SQL Database serwera/wystąpienia zarządzanego z publicznym punktem końcowym format punktu końcowego serwera jest odpowiednio `<server name>.database.windows.net` @ no__t-1 @ no__t-2. Jeśli nie korzystasz z programu SSISDB, możesz wdrożyć pakiety w systemach plików/udziałach plików/Azure Files i uruchamiać je na Azure-SSIS IR przy użyciu `dtinstall` @ no__t-1 @ no__t-2 @ no__t-3 @ no__t-4 narzędzi wiersza polecenia. Aby uzyskać więcej informacji, zobacz [wdrażanie pakietów SSIS](/sql/integration-services/packages/deploy-integration-services-ssis-projects-and-packages#deploy-packages-to-integration-services-server). W obu przypadkach wdrożone pakiety można również uruchomić na Azure-SSIS IR przy użyciu działania wykonywania pakietu SSIS w potokach ADF, zobacz [wywołania wykonywania pakietu SSIS jako pierwszej klasy działania ADF](https://docs.microsoft.com/azure/data-factory/how-to-invoke-ssis-package-ssis-activity).
+Jeśli używasz SSISDB, możesz wdrożyć w nim pakiety i uruchamiać je na Azure-SSIS IR przy użyciu narzędzi SSDT/SSMS, które łączą się z serwerem bazy danych za pośrednictwem swojego punktu końcowego serwera. W przypadku Azure SQL Database serwera/wystąpienia zarządzanego z publicznym punktem końcowym format punktu końcowego serwera jest odpowiednio `<server name>.database.windows.net`/`<server name>.public.<dns prefix>.database.windows.net,3342`. Jeśli nie korzystasz z programu SSISDB, możesz wdrożyć pakiety w systemach plików/udziałach plików/Azure Files i uruchamiać je na Azure-SSIS IR przy użyciu `dtinstall`/`dtutil`/`dtexec` narzędzi wiersza polecenia. Aby uzyskać więcej informacji, zobacz [wdrażanie pakietów SSIS](/sql/integration-services/packages/deploy-integration-services-ssis-projects-and-packages#deploy-packages-to-integration-services-server). W obu przypadkach wdrożone pakiety można również uruchomić na Azure-SSIS IR przy użyciu działania wykonywania pakietu SSIS w potokach ADF, zobacz [wywołania wykonywania pakietu SSIS jako pierwszej klasy działania ADF](https://docs.microsoft.com/azure/data-factory/how-to-invoke-ssis-package-ssis-activity).
 
 Zobacz również następujące artykuły z dokumentacji usług SSIS: 
 

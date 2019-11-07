@@ -8,12 +8,12 @@ ms.service: azure-migrate
 ms.topic: conceptual
 ms.date: 10/16/2019
 ms.author: raynew
-ms.openlocfilehash: 18032250bc5c321d638ad46204738f49f1a0c744
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 90b1250009e6efdb2f8cb9351fe270c8324cc77a
+ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73480142"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73715467"
 ---
 # <a name="azure-migrate-support-matrix"></a>Macierz obsługi Azure Migrate
 
@@ -34,20 +34,30 @@ W tabeli zestawiono obsługiwane scenariusze odnajdywania, oceny i migracji.
 **Wdrożenie** | **Szczegóły** 
 --- | --- 
 **Odnajdywanie specyficzne dla aplikacji** | Możesz wykrywać aplikacje, role i funkcje działające na maszynach wirtualnych VMware. Obecnie ta funkcja jest ograniczona tylko do odnajdowania. Ocena jest obecnie na poziomie komputera. Nie oferujemy jeszcze oceny aplikacji, roli lub funkcji. 
-**Ocena lokalna** | Oceniaj obciążenia lokalne i dane uruchomione na maszynach wirtualnych VMware i maszynach wirtualnych funkcji Hyper-V. Oceń przy użyciu Azure Migrate oceny i Microsoft Data Migration Assistant (DMA), a także narzędzi innych firm, które obejmują Cloudamize, telenajmu i platforma turbonomic Server.
-**Migracja lokalna na platformę Azure** | Migrowanie obciążeń i danych działających na serwerach fizycznych, maszynach wirtualnych VMware, maszynach wirtualnych funkcji Hyper-V, serwerach fizycznych i maszynach wirtualnych opartych na chmurze na platformie Azure. Migruj przy użyciu narzędzia do oceny i Azure Database Migration Service Azure Migrate Server (DMS) oraz narzędzi innych firm, które zawierają Carbonite i CorentTech.
+**Ocena lokalna** | Oceniaj obciążenia lokalne i dane uruchomione na maszynach wirtualnych VMware, maszynach wirtualnych funkcji Hyper-V i serwerach fizycznych. Oceń przy użyciu Azure Migrate oceny i Microsoft Data Migration Assistant (DMA), a także inne narzędzia i oferty niezależnych dostawców oprogramowania.
+**Migracja lokalna na platformę Azure** | Migrowanie obciążeń i danych działających na serwerach fizycznych, maszynach wirtualnych VMware, maszynach wirtualnych funkcji Hyper-V, serwerach fizycznych i maszynach wirtualnych opartych na chmurze na platformie Azure. Migruj przy użyciu Azure Migrate oceny i Azure Database Migration Service (DMS), a także innych narzędzi i ofert niezależnych dostawców oprogramowania.
 
-Pomoc dotycząca określonego narzędzia jest podsumowana w następujący sposób.
 
-**Narzędzie** | **Ocena/migracja** | **Szczegóły**
+## <a name="supported-tools"></a>Obsługiwane narzędzia
+
+W tabeli przedstawiono obsługę określonego narzędzia.
+
+**Narzędzie** | **Szacowaniu** | **Migrate (Migracja)** 
 --- | --- | ---
-Azure Migrate oceny serwera | Ocena | Wypróbuj ocenę serwera dla [funkcji Hyper-V](tutorial-prepare-hyper-v.md) i programu [VMware](tutorial-prepare-vmware.md).
-Cloudamize | Ocena | [Dowiedz się więcej](https://www.cloudamize.com/platform#tab-0).
-CorentTech | Ocena | [Dowiedz się więcej](https://www.corenttech.com/).
-Turbonomic | Ocena | [Dowiedz się więcej](https://turbonomic.com/solutions/technologies/azure-cloud/).
-Migracja serwera Azure Migrate | Migracja | Wypróbuj migrację serwera dla [funkcji Hyper-V](tutorial-migrate-hyper-v.md) i programu [VMware](tutorial-migrate-vmware.md).
-Carbonite | Migracja | [Dowiedz się więcej](https://www.carbonite.com/data-protection-resources/resource/Datasheet/carbonite-migrate-for-microsoft-azure).
-CorentTech | Migracja | [Dowiedz się więcej](https://www.corenttech.com/).
+Azure Migrate oceny serwera | Oceniaj [maszyny wirtualne programu VMware](tutorial-prepare-vmware.md), [maszyny wirtualne funkcji Hyper-V](tutorial-prepare-hyper-v.md)i [serwery fizyczne](tutorial-prepare-physical.md). |  Niedostępne (NA)
+Migracja serwera Azure Migrate | Nie dotyczy | Migrowanie [maszyn wirtualnych VMware](tutorial-migrate-vmware.md), [maszyn wirtualnych funkcji Hyper-V](tutorial-migrate-hyper-v.md)i [serwerów fizycznych](tutorial-migrate-physical-virtual-machines.md).
+[Carbonite](https://www.carbonite.com/data-protection-resources/resource/Datasheet/carbonite-migrate-for-microsoft-azure) | Nie dotyczy | Migrowanie maszyn wirtualnych VMware, maszyn wirtualnych funkcji Hyper-V, serwerów fizycznych, obciążeń chmury publicznej. 
+[Cloudamize](https://www.cloudamize.com/platform#tab-0)| Oceniaj maszyny wirtualne VMware, maszyny wirtualne funkcji Hyper-V, serwery fizyczne, obciążenia chmury publicznej. | Nie dotyczy
+[Technologia najmu](https://go.microsoft.com/fwlink/?linkid=2084928) | Ocenianie i migrowanie maszyn wirtualnych VMware, maszyn wirtualnych funkcji Hyper-V, serwerów fizycznych, obciążeń chmury publicznej. |  Migrowanie maszyn wirtualnych VMware, maszyn wirtualnych funkcji Hyper-V, serwerów fizycznych, obciążeń chmury publicznej.
+[Urządzenie 42](https://go.microsoft.com/fwlink/?linkid=2097158) | Oceniaj maszyny wirtualne VMware, maszyny wirtualne funkcji Hyper-V, serwery fizyczne, obciążenia chmury publicznej.| Nie dotyczy
+[DMA](https://docs.microsoft.com/sql/dma/dma-overview?view=sql-server-2017) | Oceniaj lokalne bazy danych SQL Server. | Nie dotyczy
+[DMS](https://docs.microsoft.com/azure/dms/dms-overview) | Migrowanie SQL Server, Oracle, MySQL, PostgreSQL, MongoDB. | Nie dotyczy
+[Lakeside](https://go.microsoft.com/fwlink/?linkid=2104908) | Ocenianie infrastruktury pulpitu wirtualnego (VDI) | Nie dotyczy
+[Przeniesienie](https://go.microsoft.com/fwlink/?linkid=2109528) | Oceniaj maszyny wirtualne VMWare, maszyny wirtualne funkcji Hyper-V, maszyny wirtualne Xen, maszyny fizyczne, stacje robocze (w tym infrastruktury VDI), obciążenia chmury publicznej | Nie dotyczy
+[Stojaki](https://go.microsoft.com/fwlink/?linkid=2102735) | Nie dotyczy | Migrowanie maszyn wirtualnych VMWare, maszyn wirtualnych funkcji Hyper-V, maszyn wirtualnych Xen, maszyn wirtualnych KVM, komputerów fizycznych, obciążeń chmury publicznej 
+[Platforma turbonomic](https://go.microsoft.com/fwlink/?linkid=2094295)  | Oceniaj maszyny wirtualne VMware, maszyny wirtualne funkcji Hyper-V, serwery fizyczne, obciążenia chmury publicznej. | Nie dotyczy
+[UnifyCloud](https://go.microsoft.com/fwlink/?linkid=2097195) | Oceniaj maszyny wirtualne VMware, maszyny wirtualne funkcji Hyper-V, serwery fizyczne, obciążenia chmury publicznej i bazy danych SQL Server. | Nie dotyczy
+[Webapp Asystent migracji](https://appmigration.microsoft.com/) | Ocenianie aplikacji sieci Web | Migrowanie aplikacji sieci Web.
 
 
 ## <a name="azure-migrate-projects"></a>Projekty Azure Migrate
@@ -76,7 +86,7 @@ Europa | Europa Północna lub Europa Zachodnia
 Francja | Francja Środkowa
 Indie | Indie Środkowe lub Indie Południowe
 Japonia |  Japonia Wschodnia lub Japonia Zachodnia
-Korea Południowa | Korea środkowa lub Korea Południowa
+Korea | Korea środkowa lub Korea Południowa
 Wielka Brytania | Południowe Zjednoczone Królestwo lub Zachodnie Zjednoczone Królestwo
 Stany Zjednoczone | Środkowe stany USA lub zachodnie stany USA 2
 

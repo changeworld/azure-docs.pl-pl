@@ -10,12 +10,12 @@ ms.custom: mvc
 ms.topic: tutorial
 ms.service: active-directory
 ms.subservice: B2C
-ms.openlocfilehash: bb33f7f2ec917e9ae168a013a8775ec4f551848d
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 0cd2eff7e3fafc1a6f3418a1f86629cfb1584e89
+ms.sourcegitcommit: 359930a9387dd3d15d39abd97ad2b8cb69b8c18b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73475019"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73641752"
 ---
 # <a name="tutorial-grant-access-to-an-aspnet-web-api-using-azure-active-directory-b2c"></a>Samouczek: udzielanie dostępu do interfejsu API sieci Web ASP.NET przy użyciu Azure Active Directory B2C
 
@@ -39,7 +39,7 @@ Wykonaj kroki i wymagania wstępne w [samouczku: Włączanie uwierzytelniania w 
 
 Należy zarejestrować zasoby internetowego interfejsu API w dzierżawie, zanim będzie on mógł akceptować i odpowiadać na żądania chronionych zasobów wysyłane przez aplikacje klienckie przedstawiające token dostępu.
 
-Aby zarejestrować aplikację w dzierżawie Azure AD B2C, możesz użyć bieżącego środowiska **aplikacji** lub naszego nowego interfejsu Unified **rejestracje aplikacji (wersja zapoznawcza)** . [Dowiedz się więcej na temat środowiska w wersji zapoznawczej](https://aka.ms/b2cappregintro).
+Aby zarejestrować aplikację w dzierżawie Azure AD B2C, możesz użyć bieżącego środowiska **aplikacji** lub naszego nowego interfejsu Unified **rejestracje aplikacji (wersja zapoznawcza)** . [Dowiedz się więcej na temat nowego środowiska](https://aka.ms/b2cappregintro).
 
 #### <a name="applicationstabapplications"></a>[Aplikacje](#tab/applications/)
 

@@ -1,22 +1,22 @@
 ---
-title: Przykład programu PowerShell — Tworzenie wystąpienia zarządzanego w Azure SQL Database | Microsoft Docs
+title: Przykład szablonu — Tworzenie wystąpienia zarządzanego w Azure SQL Database
 description: Azure PowerShell przykładowy skrypt do tworzenia wystąpienia zarządzanego w programie Azure SQL Database
 services: sql-database
 ms.service: sql-database
 ms.subservice: managed-instance
-ms.custom: ''
+ms.custom: seo-dt-2019
 ms.devlang: PowerShell
 ms.topic: sample
 author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: sstein
 ms.date: 03/12/2019
-ms.openlocfilehash: 5a60e8efad41c94deeedd545e6e0c1c96ff04e25
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: be6aa73fe72568e9762e5b7249bedc2e8c7d3bf7
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68569733"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73691441"
 ---
 # <a name="use-powershell-with-azure-resource-manager-template-to-create-a-managed-instance-in-azure-sql-database"></a>Użyj programu PowerShell z szablonem Azure Resource Manager, aby utworzyć wystąpienie zarządzane w programie Azure SQL Database
 

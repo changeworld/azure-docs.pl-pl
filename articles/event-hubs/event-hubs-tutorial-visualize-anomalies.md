@@ -1,6 +1,6 @@
 ---
-title: Wizualizowanie anomalii dotyczących danych w zdarzeniach w czasie rzeczywistym w usłudze Azure Event Hubs | Microsoft Docs
-description: Samouczek — wizualizowanie anomalii dotyczących danych w zdarzeniach w czasie rzeczywistym wysyłanych do usługi Microsoft Azure Event Hubs
+title: 'Samouczek: wizualizacja anomalii danych w zdarzeniach w czasie rzeczywistym — Event Hubs platformy Azure'
+description: 'Samouczek: Wizualizuj anomalie danych w zdarzeniach w czasie rzeczywistym wysyłanych do Microsoft Azure Event Hubs'
 services: event-hubs
 author: ShubhaVijayasarathy
 manager: timlt
@@ -8,17 +8,17 @@ ms.author: shvija
 ms.topic: tutorial
 ms.service: event-hubs
 ms.custom: seodec18
-ms.date: 02/26/2019
-ms.openlocfilehash: d6786e4e3382c7c4d7a6a6a28c3cd3621df221c1
-ms.sourcegitcommit: e7d4881105ef17e6f10e8e11043a31262cfcf3b7
+ms.date: 11/05/2019
+ms.openlocfilehash: 0cfff0196ebc20b9b01bc966b3590470d349e86e
+ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/29/2019
-ms.locfileid: "64867140"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73717995"
 ---
-# <a name="tutorial-visualize-data-anomalies-in-real-time-events-sent-to-azure-event-hubs"></a>Samouczek: Wizualizowanie anomalii dotyczących danych w zdarzeniach w czasie rzeczywistym wysyłanych do usługi Azure Event Hubs
+# <a name="tutorial-visualize-data-anomalies-in-real-time-events-sent-to-azure-event-hubs"></a>Samouczek: wizualizowanie anomalii dotyczących danych w zdarzeniach w czasie rzeczywistym wysyłanych do usługi Azure Event Hubs
 
-Dzięki usłudze Azure Event Hubs można za pomocą usługi Azure Stream Analytics sprawdzić dane przychodzące i wyodrębnić anomalie, które następnie można wizualizować w usłudze Power BI. Załóżmy, że mamy tysiące urządzeń, wysyłających nieustannie dane w czasie rzeczywistym do centrum zdarzeń, co daje w efekcie miliony zdarzeń na sekundę. Jak sprawdzić takie ilości danych pod kątem anomalii lub błędów w danych? Na przykład co zrobić, gdy urządzenia wysyłają transakcje kart kredytowych i zachodzi potrzeba przechwytywania w dowolnym miejscu mieć wiele transakcji w wielu krajach/regionach, w ciągu 5-sekundowego interwału? Może się to zdarzyć w przypadku kradzieży kart kredytowych, a następnie użycia ich do realizowania zakupów na całym świecie w tym samym czasie. 
+Dzięki usłudze Azure Event Hubs można za pomocą usługi Azure Stream Analytics sprawdzić dane przychodzące i wyodrębnić anomalie, które następnie można wizualizować w usłudze Power BI. Załóżmy, że mamy tysiące urządzeń, wysyłających nieustannie dane w czasie rzeczywistym do centrum zdarzeń, co daje w efekcie miliony zdarzeń na sekundę. Jak sprawdzić takie ilości danych pod kątem anomalii lub błędów w danych? Na przykład, co w przypadku, gdy urządzenia wysyłają transakcję karty kredytowej, i musisz przechwycić w dowolnym miejscu, w którym masz wiele transakcji w wielu krajach/regionach, w ciągu 5-sekundowego interwału? Może się to zdarzyć w przypadku kradzieży kart kredytowych, a następnie użycia ich do realizowania zakupów na całym świecie w tym samym czasie. 
 
 W tym samouczku przeprowadzamy symulację takiej sytuacji. Możesz uruchomić aplikację, która tworzy i wysyła transakcje kart kredytowych do centrum zdarzeń. Później odczytać strumień danych w czasie rzeczywistym za pomocą usługi Azure Stream Analytics, która oddzieli prawidłowe transakcje od transakcji nieprawidłowych, a następnie użyć usługi Power BI, aby wizualnie zidentyfikować transakcje, które zostaną oznaczone jako nieprawidłowe.
 
@@ -176,13 +176,13 @@ Teraz możesz przesyłać strumieniowo dane do centrum zdarzeń. Aby użyć tych
 
 2. Wprowadź następujące informacje dotyczące zadania:
 
-   **Nazwa zadania**: Użyj nazwy **contosoEHjob**. To pole określa nazwę zadania i musi być ona globalnie unikatowa.
+   **Nazwa zadania**: użyj nazwy **contosoEHjob**. To pole określa nazwę zadania i musi być ona globalnie unikatowa.
 
-   **Subskrypcja**: Wybierz subskrypcję.
+   **Subskrypcja**: wybierz swoją subskrypcję.
 
-   **Grupa zasobów**: Użyj tej samej grupy zasobów, która jest używana przez centrum zdarzeń (**ContosoResourcesEH**).
+   **Grupa zasobów**: użyj tej samej grupy zasobów, które są używane przez centrum zdarzeń (**ContosoResourcesEH**).
 
-   **Lokalizacja**: Użyj lokalizacji stosowanej już w skrypcie konfiguracji (**Zachodnie stany USA**).
+   **Lokalizacja**: użyj lokalizacji stosowanej już w skrypcie konfiguracji (**Zachodnie stany USA**).
 
    ![Zrzut ekranu pokazujący sposób tworzenia nowego zadania usługi Azure Stream Analytics.](./media/event-hubs-tutorial-visualize-anomalies/stream-analytics-add-job.png)
 
@@ -201,17 +201,17 @@ Danymi wejściowymi dla zadania usługi Stream Analytics są transakcje kart kre
 
 2. W okienku **Dane wejściowe** kliknij pozycję **Dodaj wejście strumienia** i wybierz pozycję Event Hubs. Na wyświetlonym ekranie wypełnij następujące pola:
 
-   **Alias danych wejściowych**: Użyj wartości **contosoinputs**. To pole zawiera nazwę strumienia wejściowego używanego podczas definiowania zapytań dla danych.
+   **Alias danych wejściowych**: użyj **contosoinputs**. To pole zawiera nazwę strumienia wejściowego używanego podczas definiowania zapytań dla danych.
 
-   **Subskrypcja**: Wybierz subskrypcję.
+   **Subskrypcja**: wybierz swoją subskrypcję.
 
-   **Przestrzeń nazw usługi Event Hubs**: Wybierz swoją przestrzeń nazw centrum zdarzeń ($**eventHubNamespace**). 
+   **Przestrzeń nazw usługi Event Hubs**: wybierz swoją przestrzeń nazw centrum zdarzeń ($**eventHubNamespace**). 
 
-   **Nazwa centrum zdarzeń**: Kliknij pozycję **Użyj istniejącej** i wybierz swoje centrum zdarzeń ($**eventHubName**).
+   **Nazwa centrum zdarzeń**: kliknij pozycję **Użyj istniejącej** i wybierz swoje centrum zdarzeń ($**eventHubName**).
 
-   **Nazwa zasad usługi Event Hubs**: Wybierz pozycję **RootManageSharedAccessKey**.
+   **Nazwa zasad usługi Event Hubs**: wybierz **RootManageSharedAccessKey**.
 
-   **Grupa konsumentów usługi Event Hubs**: Pozostaw to pole puste, aby użyć domyślnej grupy odbiorców.
+   **Grupa konsumentów usługi Event Hubs**: pozostaw to pole puste, aby użyć domyślnej grupy odbiorców.
 
    Zaakceptuj wartości domyślne w pozostałych polach.
 
@@ -225,11 +225,11 @@ Danymi wejściowymi dla zadania usługi Stream Analytics są transakcje kart kre
 
 2. W okienku **Dane wyjściowe** kliknij pozycję **Dodaj**, a następnie wybierz pozycję **Power BI**. Na wyświetlonym ekranie wypełnij następujące pola:
 
-   **Alias danych wyjściowych**: Użyj wartości **contosooutputs**. To pole zawiera unikatowy alias dla danych wyjściowych. 
+   **Alias danych wyjściowych**: użyj **contosooutputs**. To pole zawiera unikatowy alias dla danych wyjściowych. 
 
-   **Nazwa zestawu danych**: Użyj wartości **contosoehdataset**. To pole zawiera nazwę zestawu danych do użycia w usłudze Power BI. 
+   **Nazwa zestawu danych**: użyj **contosoehdataset**. To pole zawiera nazwę zestawu danych do użycia w usłudze Power BI. 
 
-   **Nazwa tabeli**: Użyj wartości **contosoehtable**. To pole zawiera nazwę tabeli do użycia w usłudze Power BI. 
+   **Nazwa tabeli**: użyj **contosoehtable**. To pole zawiera nazwę tabeli do użycia w usłudze Power BI. 
 
    Zaakceptuj wartości domyślne w pozostałych polach.
 
@@ -371,7 +371,7 @@ Aby usunąć grupę zasobów, użyj polecenia [Remove-AzResourceGroup](/powershe
 Remove-AzResourceGroup -Name $resourceGroup
 ```
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 W niniejszym samouczku zawarto informacje na temat wykonywania następujących czynności:
 > [!div class="checklist"]

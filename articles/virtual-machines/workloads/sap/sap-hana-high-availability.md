@@ -10,14 +10,14 @@ ms.service: virtual-machines-linux
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 03/15/2019
+ms.date: 11/06/2019
 ms.author: sedusch
-ms.openlocfilehash: 5632ccf6c9b9cb67d169c5b60f1adefd85b576b8
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.openlocfilehash: ffa2f937a14aa14750480d1c45498fb4c49fcc30
+ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72791658"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73721501"
 ---
 # <a name="high-availability-of-sap-hana-on-azure-vms-on-suse-linux-enterprise-server"></a>Wysoka dostępność SAP HANA na maszynach wirtualnych platformy Azure na SUSE Linux Enterprise Server
 
@@ -77,7 +77,7 @@ Przeczytaj najpierw następujące informacje i dokumenty SAP:
   * Konfigurowanie SAP HANAej infrastruktury zoptymalizowanej pod kątem wydajności SR (SLES for SAP Applications 12 SP1). Przewodnik zawiera wszystkie informacje wymagane do skonfigurowania replikacji systemu SAP HANA na potrzeby programowania lokalnego. Użyj tego przewodnika jako linii bazowej.
   * Konfigurowanie SAP HANAej infrastruktury zoptymalizowanej pod kątem kosztu SR (SLES for SAP, 12 SP1)
 
-## <a name="overview"></a>Przegląd
+## <a name="overview"></a>Omówienie
 
 Aby zapewnić wysoką dostępność, SAP HANA jest instalowany na dwóch maszynach wirtualnych. Dane są replikowane przy użyciu replikacji systemu HANA.
 
@@ -124,7 +124,7 @@ Aby wdrożyć szablon, wykonaj następujące kroki:
 1. Utwórz sieć wirtualną.
 1. Utwórz zestaw dostępności.
    - Ustaw maksymalną domenę aktualizacji.
-1. Utwórz moduł równoważenia obciążenia (wewnętrzny).
+1. Utwórz moduł równoważenia obciążenia (wewnętrzny). Zalecamy użycie [standardowej usługi równoważenia obciążenia](https://docs.microsoft.com/azure/load-balancer/load-balancer-standard-overview).
    - Wybierz sieć wirtualną utworzoną w kroku 2.
 1. Utwórz maszynę wirtualną 1.
    - Użyj obrazu SLES4SAP w galerii platformy Azure, który jest obsługiwany dla SAP HANA w wybranym typie maszyny wirtualnej.
@@ -133,64 +133,104 @@ Aby wdrożyć szablon, wykonaj następujące kroki:
    - Użyj obrazu SLES4SAP w galerii platformy Azure, który jest obsługiwany dla SAP HANA w wybranym typie maszyny wirtualnej.
    - Wybierz zestaw dostępności utworzony w kroku 3. 
 1. Dodaj dyski danych.
-1. Skonfiguruj moduł równoważenia obciążenia. Najpierw Utwórz pulę adresów IP frontonu:
+1. W przypadku korzystania z usługi równoważenia obciążenia w warstwie Standardowa wykonaj następujące czynności konfiguracyjne:
+   1. Najpierw Utwórz pulę adresów IP frontonu:
+   
+      1. Otwórz moduł równoważenia obciążenia, wybierz pozycję **Pula adresów IP frontonu**, a następnie wybierz pozycję **Dodaj**.
+      1. Wprowadź nazwę nowej puli adresów IP frontonu (na przykład **Hana-fronton**).
+      1. Ustaw **przypisanie** na **static** i wprowadź adres IP (na przykład **10.0.0.13**).
+      1. Kliknij przycisk **OK**.
+      1. Po utworzeniu nowej puli adresów IP frontonu Zanotuj adres IP puli.
+   
+   1. Następnie Utwórz pulę zaplecza:
+   
+      1. Otwórz moduł równoważenia obciążenia, wybierz pozycję **Pule zaplecza**, a następnie wybierz pozycję **Dodaj**.
+      1. Wprowadź nazwę nowej puli zaplecza (na przykład **Hana-zaplecze**).
+      1. Wybierz **Virtual Network**.
+      1. Wybierz pozycję **Dodaj maszynę wirtualną**.
+      1. Wybierz pozycję * * maszyna wirtualna * *.
+      1. Wybierz Maszyny wirtualne klastra SAP HANA i ich adresy IP.
+      1. Wybierz pozycję **Dodaj**.
+   
+   1. Następnie utwórz sondę kondycji:
+   
+      1. Otwórz moduł równoważenia obciążenia, wybierz pozycję **sondy kondycji**, a następnie wybierz pozycję **Dodaj**.
+      1. Wprowadź nazwę nowej sondy kondycji (na przykład **Hana-HP**).
+      1. Wybierz pozycję **TCP** jako protokół i port 625**03**. Pozostaw wartość **interwału** ustawioną na 5, a wartość **progowa złej kondycji** równa 2.
+      1. Kliknij przycisk **OK**.
+   
+   1. Następnie utwórz reguły równoważenia obciążenia:
+   
+      1. Otwórz moduł równoważenia obciążenia, wybierz pozycję **reguły równoważenia obciążenia**i wybierz pozycję **Dodaj**.
+      1. Wprowadź nazwę nowej reguły modułu równoważenia obciążenia (na przykład **Hana-lb**).
+      1. Wybierz adres IP frontonu, pulę zaplecza i sondę kondycji utworzoną wcześniej (na przykład **Hana-fronton**, **Hana — zaplecze** i **Hana-HP**).
+      1. Wybierz pozycję **porty ha**.
+      1. Zwiększ **limit czasu bezczynności** do 30 minut.
+      1. Upewnij się, że **włączono zmiennoprzecinkowy adres IP**.
+      1. Kliknij przycisk **OK**.
 
-   1. Otwórz moduł równoważenia obciążenia, wybierz pozycję **Pula adresów IP frontonu**, a następnie wybierz pozycję **Dodaj**.
-   1. Wprowadź nazwę nowej puli adresów IP frontonu (na przykład **Hana-fronton**).
-   1. Ustaw **przypisanie** na **static** i wprowadź adres IP (na przykład **10.0.0.13**).
-   1. Kliknij przycisk **OK**.
-   1. Po utworzeniu nowej puli adresów IP frontonu Zanotuj adres IP puli.
+   > [!Note]
+   > Gdy maszyny wirtualne bez publicznych adresów IP są umieszczane w puli zaplecza wewnętrznego (bez publicznego adresu IP) standardowego modułu równoważenia obciążenia platformy Azure, nie będzie wychodzące połączenie z Internetem, chyba że zostanie przeprowadzona dodatkowa konfiguracja zezwalająca na kierowanie do publicznych punktów końcowych. Aby uzyskać szczegółowe informacje na temat sposobu osiągnięcia łączności wychodzącej, zobacz [publiczna łączność z punktem końcowym dla Virtual Machines przy użyciu usługi Azure usługa Load Balancer w warstwie Standardowa w scenariuszach wysokiej dostępności SAP](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-standard-load-balancer-outbound-connections).  
 
-1. Następnie Utwórz pulę zaplecza:
+1. Alternatywnie, jeśli scenariusz podyktuje przy użyciu podstawowego modułu równoważenia obciążenia, wykonaj następujące czynności konfiguracyjne:
+   1. Najpierw Utwórz pulę adresów IP frontonu:
+   
+      1. Otwórz moduł równoważenia obciążenia, wybierz pozycję **Pula adresów IP frontonu**, a następnie wybierz pozycję **Dodaj**.
+      1. Wprowadź nazwę nowej puli adresów IP frontonu (na przykład **Hana-fronton**).
+      1. Ustaw **przypisanie** na **static** i wprowadź adres IP (na przykład **10.0.0.13**).
+      1. Kliknij przycisk **OK**.
+      1. Po utworzeniu nowej puli adresów IP frontonu Zanotuj adres IP puli.
+   
+   1. Następnie Utwórz pulę zaplecza:
+   
+      1. Otwórz moduł równoważenia obciążenia, wybierz pozycję **Pule zaplecza**, a następnie wybierz pozycję **Dodaj**.
+      1. Wprowadź nazwę nowej puli zaplecza (na przykład **Hana-zaplecze**).
+      1. Wybierz pozycję **Dodaj maszynę wirtualną**.
+      1. Wybierz zestaw dostępności utworzony w kroku 3.
+      1. Wybierz Maszyny wirtualne klastra SAP HANA.
+      1. Kliknij przycisk **OK**.
+   
+   1. Następnie utwórz sondę kondycji:
+   
+      1. Otwórz moduł równoważenia obciążenia, wybierz pozycję **sondy kondycji**, a następnie wybierz pozycję **Dodaj**.
+      1. Wprowadź nazwę nowej sondy kondycji (na przykład **Hana-HP**).
+      1. Wybierz pozycję **TCP** jako protokół i port 625**03**. Pozostaw wartość **interwału** ustawioną na 5, a wartość **progowa złej kondycji** równa 2.
+      1. Kliknij przycisk **OK**.
+   
+   1. W przypadku SAP HANA 1,0 Utwórz reguły równoważenia obciążenia:
+   
+      1. Otwórz moduł równoważenia obciążenia, wybierz pozycję **reguły równoważenia obciążenia**i wybierz pozycję **Dodaj**.
+      1. Wprowadź nazwę nowej reguły modułu równoważenia obciążenia (na przykład Hana-lb-3**03**15).
+      1. Wybierz adres IP frontonu, pulę zaplecza i sondę kondycji utworzoną wcześniej (na przykład **Hana-fronton**).
+      1. Pozostaw **Protokół** ustawiony na **TCP**i wprowadź port 3**03**15.
+      1. Zwiększ **limit czasu bezczynności** do 30 minut.
+      1. Upewnij się, że **włączono zmiennoprzecinkowy adres IP**.
+      1. Kliknij przycisk **OK**.
+      1. Powtórz te kroki dla portu 3**03**17.
+   
+   1. W przypadku SAP HANA 2,0 Utwórz reguły równoważenia obciążenia dla systemowej bazy danych:
+   
+      1. Otwórz moduł równoważenia obciążenia, wybierz pozycję **reguły równoważenia obciążenia**i wybierz pozycję **Dodaj**.
+      1. Wprowadź nazwę nowej reguły modułu równoważenia obciążenia (na przykład Hana-lb-3**03**13).
+      1. Wybierz adres IP frontonu, pulę zaplecza i sondę kondycji utworzoną wcześniej (na przykład **Hana-fronton**).
+      1. Pozostaw **Protokół** ustawiony na **TCP**i wprowadź port 3**03**13.
+      1. Zwiększ **limit czasu bezczynności** do 30 minut.
+      1. Upewnij się, że **włączono zmiennoprzecinkowy adres IP**.
+      1. Kliknij przycisk **OK**.
+      1. Powtórz te kroki dla portu 3**03**14.
+   
+   1. W przypadku SAP HANA 2,0 najpierw utwórz reguły równoważenia obciążenia dla bazy danych dzierżawcy:
+   
+      1. Otwórz moduł równoważenia obciążenia, wybierz pozycję **reguły równoważenia obciążenia**i wybierz pozycję **Dodaj**.
+      1. Wprowadź nazwę nowej reguły modułu równoważenia obciążenia (na przykład Hana-lb-3**03**40).
+      1. Wybierz adres IP frontonu, pulę zaplecza i sondę kondycji utworzoną wcześniej (na przykład **Hana-fronton**).
+      1. Pozostaw **Protokół** ustawiony na **TCP**i wprowadź port 3**03**40.
+      1. Zwiększ **limit czasu bezczynności** do 30 minut.
+      1. Upewnij się, że **włączono zmiennoprzecinkowy adres IP**.
+      1. Kliknij przycisk **OK**.
+      1. Powtórz te kroki dla portów 3**03**41 i 3**03**42.
 
-   1. Otwórz moduł równoważenia obciążenia, wybierz pozycję **Pule zaplecza**, a następnie wybierz pozycję **Dodaj**.
-   1. Wprowadź nazwę nowej puli zaplecza (na przykład **Hana-zaplecze**).
-   1. Wybierz pozycję **Dodaj maszynę wirtualną**.
-   1. Wybierz zestaw dostępności utworzony w kroku 3.
-   1. Wybierz Maszyny wirtualne klastra SAP HANA.
-   1. Kliknij przycisk **OK**.
-
-1. Następnie utwórz sondę kondycji:
-
-   1. Otwórz moduł równoważenia obciążenia, wybierz pozycję **sondy kondycji**, a następnie wybierz pozycję **Dodaj**.
-   1. Wprowadź nazwę nowej sondy kondycji (na przykład **Hana-HP**).
-   1. Wybierz pozycję **TCP** jako protokół i port 625**03**. Pozostaw wartość **interwału** ustawioną na 5, a wartość **progowa złej kondycji** równa 2.
-   1. Kliknij przycisk **OK**.
-
-1. W przypadku SAP HANA 1,0 Utwórz reguły równoważenia obciążenia:
-
-   1. Otwórz moduł równoważenia obciążenia, wybierz pozycję **reguły równoważenia obciążenia**i wybierz pozycję **Dodaj**.
-   1. Wprowadź nazwę nowej reguły modułu równoważenia obciążenia (na przykład Hana-lb-3**03**15).
-   1. Wybierz adres IP frontonu, pulę zaplecza i sondę kondycji utworzoną wcześniej (na przykład **Hana-fronton**).
-   1. Pozostaw **Protokół** ustawiony na **TCP**i wprowadź port 3**03**15.
-   1. Zwiększ **limit czasu bezczynności** do 30 minut.
-   1. Upewnij się, że **włączono zmiennoprzecinkowy adres IP**.
-   1. Kliknij przycisk **OK**.
-   1. Powtórz te kroki dla portu 3**03**17.
-
-1. W przypadku SAP HANA 2,0 Utwórz reguły równoważenia obciążenia dla systemowej bazy danych:
-
-   1. Otwórz moduł równoważenia obciążenia, wybierz pozycję **reguły równoważenia obciążenia**i wybierz pozycję **Dodaj**.
-   1. Wprowadź nazwę nowej reguły modułu równoważenia obciążenia (na przykład Hana-lb-3**03**13).
-   1. Wybierz adres IP frontonu, pulę zaplecza i sondę kondycji utworzoną wcześniej (na przykład **Hana-fronton**).
-   1. Pozostaw **Protokół** ustawiony na **TCP**i wprowadź port 3**03**13.
-   1. Zwiększ **limit czasu bezczynności** do 30 minut.
-   1. Upewnij się, że **włączono zmiennoprzecinkowy adres IP**.
-   1. Kliknij przycisk **OK**.
-   1. Powtórz te kroki dla portu 3**03**14.
-
-1. W przypadku SAP HANA 2,0 najpierw utwórz reguły równoważenia obciążenia dla bazy danych dzierżawcy:
-
-   1. Otwórz moduł równoważenia obciążenia, wybierz pozycję **reguły równoważenia obciążenia**i wybierz pozycję **Dodaj**.
-   1. Wprowadź nazwę nowej reguły modułu równoważenia obciążenia (na przykład Hana-lb-3**03**40).
-   1. Wybierz adres IP frontonu, pulę zaplecza i sondę kondycji utworzoną wcześniej (na przykład **Hana-fronton**).
-   1. Pozostaw **Protokół** ustawiony na **TCP**i wprowadź port 3**03**40.
-   1. Zwiększ **limit czasu bezczynności** do 30 minut.
-   1. Upewnij się, że **włączono zmiennoprzecinkowy adres IP**.
-   1. Kliknij przycisk **OK**.
-   1. Powtórz te kroki dla portów 3**03**41 i 3**03**42.
-
-Aby uzyskać więcej informacji na temat wymaganych portów dla SAP HANA, zapoznaj się z rozdziałem [połączenia z bazami danych dzierżawy](https://help.sap.com/viewer/78209c1d3a9b41cd8624338e42a12bf6/latest/en-US/7a9343c9f2a2436faa3cfdb5ca00c052.html) w Przewodniku obsługi [bazy danych dzierżaw SAP HANA](https://help.sap.com/viewer/78209c1d3a9b41cd8624338e42a12bf6) lub [Uwaga 2388694][2388694].
+   Aby uzyskać więcej informacji na temat wymaganych portów dla SAP HANA, zapoznaj się z rozdziałem [połączenia z bazami danych dzierżawy](https://help.sap.com/viewer/78209c1d3a9b41cd8624338e42a12bf6/latest/en-US/7a9343c9f2a2436faa3cfdb5ca00c052.html) w Przewodniku obsługi [bazy danych dzierżaw SAP HANA](https://help.sap.com/viewer/78209c1d3a9b41cd8624338e42a12bf6) lub [Uwaga 2388694][2388694].
 
 > [!IMPORTANT]
 > Nie należy włączać sygnatur czasowych protokołu TCP na maszynach wirtualnych platformy Azure umieszczonych za Azure Load Balancer. Włączenie sygnatur czasowych protokołu TCP spowoduje niepowodzenie sond kondycji. Ustaw parametr **net. IPv4. TCP _timestamps** na **0**. Aby uzyskać szczegółowe informacje, zobacz [sondy kondycji Load Balancer](https://docs.microsoft.com/azure/load-balancer/load-balancer-custom-probe-overview).

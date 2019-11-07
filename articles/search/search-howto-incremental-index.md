@@ -1,7 +1,7 @@
 ---
-title: Skonfiguruj przyrostowe indeksowanie ulepszonych funkcji śledzenia zmian na podstawie zawartości
+title: Konfigurowanie indeksowania przyrostowego (wersja zapoznawcza) ulepszonych funkcji śledzenia zmian na podstawie zawartości
 titleSuffix: Azure Cognitive Search
-description: Włącz śledzenie zmian i Zachowaj stan wzbogaconej zawartości dla kontrolowanego przetwarzania w zestawu umiejętności poznawczym.
+description: Włącz śledzenie zmian i Zachowaj stan wzbogaconej zawartości dla kontrolowanego przetwarzania w zestawu umiejętności poznawczym. Ta funkcja jest obecnie w publicznej wersji zapoznawczej.
 author: vkurpad
 manager: eladz
 ms.author: vikurpad
@@ -9,24 +9,21 @@ ms.service: cognitive-search
 ms.devlang: rest-api
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: ac082d6ecb6624dc0d5bc0ab927ff8b91ebdabce
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 74631ee3167c65e59fbd05f53fe5327d1b532dba
+ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73512186"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73719938"
 ---
 # <a name="how-to-set-up-incremental-indexing-of-enriched-documents-in-azure-cognitive-search"></a>Jak skonfigurować przyrostowe indeksowanie ulepszonych dokumentów na platformie Azure Wyszukiwanie poznawcze
+
+> [!IMPORTANT] 
+> Indeksowanie przyrostowe jest obecnie w publicznej wersji zapoznawczej. Ta wersja zapoznawcza nie jest objęta umową dotyczącą poziomu usług i nie zalecamy korzystania z niej w przypadku obciążeń produkcyjnych. Aby uzyskać więcej informacji, zobacz [Uzupełniające warunki korzystania z wersji zapoznawczych platformy Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/). [Interfejs API REST w wersji 2019-05-06 — wersja zapoznawcza](search-api-preview.md) zawiera tę funkcję. W tej chwili nie ma obsługi portalu lub zestawu SDK platformy .NET.
 
 W tym artykule opisano sposób dodawania stanu i buforowania do dokumentów wzbogaconych za pośrednictwem potoku wzbogacenia Wyszukiwanie poznawcze platformy Azure, dzięki czemu można przyrostowo indeksować dokumenty z dowolnego obsługiwanego źródła danych. Domyślnie zestawu umiejętności jest bezstanowy i zmiana dowolnej części jej składu wymaga pełnego ponownego uruchomienia indeksatora. Dzięki funkcji indeksowania przyrostowego indeksator może określić, które części potoku uległy zmianie, ponownie używając istniejących wzbogaceń dla niezmienionych części i skorygować wzbogacanie dla kroków, które się zmieniają. Zawartość pamięci podręcznej jest umieszczana w usłudze Azure Storage.
 
 Jeśli nie masz doświadczenia w konfigurowaniu indeksatorów, Zacznij od [omówienia indeksatora](search-indexer-overview.md) , a następnie przejdź do [umiejętności](cognitive-search-working-with-skillsets.md) , aby dowiedzieć się więcej na temat potoków wzbogacania. Aby uzyskać więcej informacji na temat kluczowych pojęć, zobacz [indeksowanie przyrostowe](cognitive-search-incremental-indexing-conceptual.md).
-
-Indeksowanie przyrostowe jest konfigurowane przy użyciu [interfejsu API REST usługi Search w wersji = 2019-05 -06-Preview](https://docs.microsoft.com/rest/api/searchservice/Indexer-operations).
-
-> [!NOTE]
-> Ta funkcja nie jest jeszcze dostępna w portalu i musi być używana programowo.
->
 
 ## <a name="modify-an-existing-indexer"></a>Modyfikowanie istniejącego indeksatora
 

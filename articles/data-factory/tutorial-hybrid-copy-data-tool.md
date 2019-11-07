@@ -1,5 +1,5 @@
 ---
-title: Kopiowanie danych lokalnych za pomocą narzędzia do kopiowania danych platformy Azure | Microsoft Docs
+title: Kopiowanie danych lokalnych za pomocą narzędzia Kopiowanie danych platformy Azure
 description: Utwórz fabrykę danych platformy Azure, a następnie za pomocą narzędzia do kopiowania danych skopiuj dane z lokalnej bazy danych programu SQL Server do usługi Azure Blob Storage.
 services: data-factory
 documentationcenter: ''
@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: tutorial
 ms.date: 04/09/2018
 ms.author: abnarain
-ms.openlocfilehash: cbefc274e4ebb65f61769a7931dbed305acffe2f
-ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
+ms.openlocfilehash: 3b9c9371d947b0193f93b8084fbaaf66e3253997
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69617492"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73683549"
 ---
 # <a name="copy-data-from-an-on-premises-sql-server-database-to-azure-blob-storage-by-using-the-copy-data-tool"></a>Kopiowanie danych z lokalnej bazy danych programu SQL Server do usługi Azure Blob Storage za pomocą narzędzia do kopiowania danych
 > [!div class="op_single_selector" title1="Wybierz używaną wersję usługi Data Factory:"]
@@ -107,7 +107,7 @@ W tej sekcji utworzysz kontener obiektów blob o nazwie **adftutorial** w usłud
 
 ## <a name="create-a-data-factory"></a>Tworzenie fabryki danych
 
-1. W menu po lewej stronie wybierz pozycję **+ Utwórz** > **Data Factory** **analizy** > zasobów. 
+1. W menu po lewej stronie wybierz pozycję **+ Utwórz zasób** > **Analytics** > **Data Factory**. 
   
    ![Tworzenie nowej fabryki danych](./media/doc-common-process/new-azure-data-factory-menu.png)
 
@@ -140,7 +140,7 @@ W tej sekcji utworzysz kontener obiektów blob o nazwie **adftutorial** w usłud
    ![Strona Wprowadzenie](./media/doc-common-process/get-started-page.png)
 
 1. Na stronie **Właściwości** narzędzia do kopiowania danych wprowadź w polu **Nazwa zadania** wartość **CopyFromOnPremSqlToAzureBlobPipeline**. Następnie wybierz przycisk **Dalej**. Narzędzie do kopiowania danych tworzy potok o nazwie określonej w tym polu. 
-  ![Nazwa zadania](./media/tutorial-hybrid-copy-data-tool/properties-page.png)
+  Nazwa zadania ![](./media/tutorial-hybrid-copy-data-tool/properties-page.png)
 
 1. Na stronie **Źródłowy magazyn danych** kliknij pozycję **Utwórz nowe połączenie**. 
 
@@ -150,7 +150,7 @@ W tej sekcji utworzysz kontener obiektów blob o nazwie **adftutorial** w usłud
 1. W oknie dialogowym **Nowa połączona usługa (SQL Server)** w polu **Nazwa**wprowadź **SqlServerLinkedService**. Wybierz pozycję **+Nowy** w polu **Połącz za pośrednictwem środowiska Integration Runtime**. Należy utworzyć środowisko Integration Runtime (Self-hosted), pobrać je na komputer i zarejestrować w usłudze Data Factory. Środowisko Integration Runtime (Self-hosted) kopiuje dane między środowiskiem lokalnym a chmurą.
 
 
-1. W oknie dialogowym **konfiguracja Integration Runtime** wybierz pozycję samodzielny. Następnie wybierz przycisk **Dalej**. 
+1. W oknie dialogowym **konfiguracja Integration Runtime** wybierz pozycję **samodzielny**. Następnie wybierz przycisk **Dalej**. 
 
    ![Tworzenie środowiska Integration Runtime](./media/tutorial-hybrid-copy-data-tool/create-integration-runtime-dialog0.png)
 
@@ -169,7 +169,7 @@ W tej sekcji utworzysz kontener obiektów blob o nazwie **adftutorial** w usłud
 
     b. W polu **Nazwa serwera** wprowadź nazwę lokalnego wystąpienia programu SQL Server.
 
-    c. Wprowadź nazwę swojej lokalnej bazy danych w polu **Nazwa bazy danych**.
+    d. Wprowadź nazwę swojej lokalnej bazy danych w polu **Nazwa bazy danych**.
 
     d. Wybierz odpowiedni typ uwierzytelniania w polu **Typ uwierzytelniania**.
 
@@ -198,7 +198,7 @@ W tej sekcji utworzysz kontener obiektów blob o nazwie **adftutorial** w usłud
 
    b. W obszarze **Połącz za pośrednictwem środowiska Integration Runtime** wybierz pozycję **TutorialIntegrationRuntime**.
 
-   c. W polu **Nazwa konta magazynu** wybierz z listy rozwijanej swoje konto magazynu. 
+   d. W polu **Nazwa konta magazynu** wybierz z listy rozwijanej swoje konto magazynu. 
 
    d. Wybierz pozycję **Finish** (Zakończ).
 

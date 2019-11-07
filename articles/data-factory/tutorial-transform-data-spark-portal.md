@@ -1,5 +1,5 @@
 ---
-title: Przekształcanie danych przy użyciu platformy Spark w usłudze Azure Data Factory | Microsoft Docs
+title: 'Przekształcanie danych przy użyciu platformy Spark w Azure Data Factory '
 description: Ten samouczek zawiera instrukcje krok po kroku dotyczące przekształcania danych za pomocą działania platformy Spark w usłudze Azure Data Factory.
 services: data-factory
 documentationcenter: ''
@@ -11,12 +11,12 @@ ms.date: 01/10/2018
 author: nabhishek
 ms.author: abnarain
 manager: craigg
-ms.openlocfilehash: d13e0b95d57e3063292319961d5e1138f994076e
-ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
+ms.openlocfilehash: b0df6264eb38cbbacd5f624b634eea5f742adbc7
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/09/2019
-ms.locfileid: "70812279"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73683323"
 ---
 # <a name="transform-data-in-the-cloud-by-using-a-spark-activity-in-azure-data-factory"></a>Przekształcanie danych w chmurze za pomocą działania platformy Spark w usłudze Azure Data Factory
 W tym samouczku utworzysz potok usługi Azure Data Factory za pomocą witryny Azure Portal. Ten potok przekształca dane przy użyciu działania Spark i połączonej usługi Azure HDInsight dostępnej na żądanie. 
@@ -26,7 +26,7 @@ Ten samouczek obejmuje następujące procedury:
 > [!div class="checklist"]
 > * Tworzenie fabryki danych. 
 > * Tworzenie potoku używającego działania platformy Spark.
-> * Wyzwalanie uruchomienia potoku.
+> * Wyzwalanie uruchomienia potoku
 > * Monitorowanie uruchomienia potoku.
 
 Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpłatne konto](https://azure.microsoft.com/free/).
@@ -104,7 +104,7 @@ Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpł
 1. W obszarze **Wersja** wybierz pozycję **V2**.
 1. W obszarze **Lokalizacja** wybierz lokalizację fabryki danych. 
 
-   Aby uzyskać listę regionów platformy Azure, w których obecnie jest dostępna usługa Data Factory, wybierz dane regiony na poniższej stronie, a następnie rozwiń węzeł **Analiza**, aby zlokalizować pozycję **Data Factory**: [Dostępność produktów według regionów](https://azure.microsoft.com/global-infrastructure/services/). Magazyny danych (na przykład Azure Storage lub Azure SQL Database) i jednostki obliczeniowe (takie jak HDInsight) używane przez usługę Data Factory mogą znajdować się w innych regionach.
+   Aby uzyskać listę regionów platformy Azure, w których obecnie jest dostępna usługa Data Factory, wybierz dane regiony na poniższej stronie, a następnie rozwiń węzeł **Analiza**, aby zlokalizować pozycję **Data Factory**: [Produkty dostępne według regionu](https://azure.microsoft.com/global-infrastructure/services/). Magazyny danych (na przykład Azure Storage lub Azure SQL Database) i jednostki obliczeniowe (takie jak HDInsight) używane przez usługę Data Factory mogą znajdować się w innych regionach.
 
 1. Wybierz pozycję **Utwórz**.
 
@@ -147,7 +147,7 @@ W tej sekcji zredagujesz dwie połączone usługi:
    
    b. Upewnij się, że w polu **Typ** wybrano wartość **HDInsight na żądanie**.
    
-   c. W przypadku **połączonej usługi Azure Storage**wybierz pozycję **AzureBlobStorage1**. Ta połączona usługa została utworzona wcześniej. Jeśli użyto innej nazwy, podaj w tym miejscu prawidłową nazwę. 
+   d. W przypadku **połączonej usługi Azure Storage**wybierz pozycję **AzureBlobStorage1**. Ta połączona usługa została utworzona wcześniej. Jeśli użyto innej nazwy, podaj w tym miejscu prawidłową nazwę. 
    
    d. W polu **Typ klastra** wybierz wartość **spark**.
    
@@ -212,7 +212,7 @@ Na pasku narzędzi wybierz pozycję **Dodaj wyzwalacz** , a następnie wybierz p
 
 ## <a name="monitor-the-pipeline-run"></a>Monitorowanie działania potoku
 
-1. Przejdź do karty **Monitorowanie**. Sprawdź, czy widzisz uruchomienie potoku. Utworzenie klastra Spark trwa około 20 minut. 
+1. Przejdź do karty **monitorowanie** . Upewnij się, że zobaczysz uruchomienie potoku. Utworzenie klastra Spark trwa około 20 minut. 
    
 1. Okresowo wybieraj pozycję **Odśwież**, aby sprawdzić stan uruchomienia potoku. 
 
@@ -247,7 +247,7 @@ Potok w tym przykładzie przekształca dane przy użyciu działania Spark i poł
 > [!div class="checklist"]
 > * Tworzenie fabryki danych. 
 > * Tworzenie potoku używającego działania platformy Spark.
-> * Wyzwalanie uruchomienia potoku.
+> * Wyzwalanie uruchomienia potoku
 > * Monitorowanie uruchomienia potoku.
 
 Aby dowiedzieć się, jak przekształcać dane, uruchamiając skrypt programu Hive w klastrze usługi Azure HDInsight, który znajduje się w sieci wirtualnej, przejdź do następnego samouczka: 

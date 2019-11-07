@@ -1,7 +1,7 @@
 ---
 title: Eksportowanie lub usuwanie danych — Custom Vision Service
 titleSuffix: Azure Cognitive Services
-description: Dowiedz się, jak eksportować lub usuwać dane w Custom Vision Service.
+description: Zachowasz pełną kontrolę nad danymi. W tym artykule wyjaśniono, jak można wyświetlać, eksportować i usuwać dane w Custom Vision Service.
 services: cognitive-services
 author: PatrickFarley
 manager: nitinme
@@ -10,12 +10,12 @@ ms.subservice: custom-vision
 ms.topic: conceptual
 ms.date: 03/21/2019
 ms.author: pafarley
-ms.openlocfilehash: b885f359d9416fbc5f778b094610260342a75f65
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 82d9f4508db376ebbe69ef772c15fb732391a31d
+ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68564224"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73718970"
 ---
 # <a name="export-or-delete-user-data-in-custom-vision"></a>Eksportowanie lub usuwanie danych użytkownika w Custom Vision
 
@@ -25,13 +25,13 @@ Custom Vision zbiera dane użytkowników w celu obsługi usługi, ale klienci ma
 
 Aby dowiedzieć się, jak eksportować i usuwać dane użytkowników w Custom Vision, zobacz poniższą tabelę.
 
-| Data | Operacja eksportowania | Operacja usuwania |
+| Dane | Operacja eksportowania | Operacja usuwania |
 | ---- | ---------------- | ---------------- |
 | Informacje o koncie (klucze subskrypcji) | [GetAccountInfo](https://go.microsoft.com/fwlink/?linkid=865446) | Usuń przy użyciu Azure Portal (subskrypcje platformy Azure). Lub przy użyciu przycisku "Usuń konto" na stronie ustawień CustomVision.ai (subskrypcje kont Microsoft) | 
 | Szczegóły iteracji | [Getiteracji](https://go.microsoft.com/fwlink/?linkid=865446) | [DeleteIteration](https://go.microsoft.com/fwlink/?linkid=865446) |
 | Szczegóły wydajności iteracji | [GetIterationPerformance](https://go.microsoft.com/fwlink/?linkid=865446) | [DeleteIteration](https://go.microsoft.com/fwlink/?linkid=865446) | 
 | Lista iteracji | [Getiteracjis](https://go.microsoft.com/fwlink/?linkid=865446) | [DeleteIteration](https://go.microsoft.com/fwlink/?linkid=865446) |
-| Projekty i szczegóły projektu | [Getproject](https://go.microsoft.com/fwlink/?linkid=865446) i [](https://go.microsoft.com/fwlink/?linkid=865446) getprojects | [DeleteProject](https://go.microsoft.com/fwlink/?linkid=865446) | 
+| Projekty i szczegóły projektu | [Getproject](https://go.microsoft.com/fwlink/?linkid=865446) i [getprojects](https://go.microsoft.com/fwlink/?linkid=865446) | [DeleteProject](https://go.microsoft.com/fwlink/?linkid=865446) | 
 | Tagi obrazu | [GetTag](https://go.microsoft.com/fwlink/?linkid=865446) i [getTags](https://go.microsoft.com/fwlink/?linkid=865446) | [DeleteTag](https://go.microsoft.com/fwlink/?linkid=865446) | 
 | Obrazy | [GetTaggedImages](https://go.microsoft.com/fwlink/?linkid=865446) (zapewnia identyfikator URI do pobrania obrazu) i [GetUntaggedImages](https://go.microsoft.com/fwlink/?linkid=865446) (zapewnia identyfikator URI do pobrania obrazu) | [DeleteImages](https://go.microsoft.com/fwlink/?linkid=865446) | 
 | Eksportowane modele | [GetExports](https://go.microsoft.com/fwlink/?linkid=865446) | Usunięte po usunięciu konta |

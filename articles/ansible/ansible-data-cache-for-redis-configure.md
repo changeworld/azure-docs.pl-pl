@@ -1,6 +1,6 @@
 ---
 title: Samouczek — Konfigurowanie pamięci podręcznych w usłudze Azure cache for Redis za pomocą rozwiązania ansible
-description: Dowiedz się, jak używać rozwiązania ansible do tworzenia, skalowania i ponownego uruchamiania pamięci podręcznej platformy Azure dla Redis
+description: Dowiedz się, jak używać rozwiązania ansible do tworzenia, skalowania, ponownego uruchamiania i dodawania reguły zapory do usługi Azure cache dla Redis
 keywords: rozwiązania ansible, Azure, DevOps, bash, element PlayBook, cache, Redis
 ms.topic: tutorial
 ms.service: ansible
@@ -8,12 +8,12 @@ author: tomarchermsft
 manager: jeconnoc
 ms.author: tarcher
 ms.date: 04/30/2019
-ms.openlocfilehash: 92592dffb3a9094ae74328e8819cafc9469c2ac7
-ms.sourcegitcommit: 824e3d971490b0272e06f2b8b3fe98bbf7bfcb7f
+ms.openlocfilehash: 95b42bc9539c36a533eb528c3c26ade89e99290b
+ms.sourcegitcommit: b2fb32ae73b12cf2d180e6e4ffffa13a31aa4c6f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/10/2019
-ms.locfileid: "72241792"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73614366"
 ---
 # <a name="tutorial-configure-caches-in-azure-cache-for-redis-using-ansible"></a>Samouczek: Konfigurowanie pamięci podręcznych w usłudze Azure cache for Redis za pomocą rozwiązania ansible
 
@@ -242,9 +242,9 @@ Istnieją dwa sposoby uzyskania kompletnej przykładowej element PlayBook:
 
 W tej sekcji należy uruchomić element PlayBook w celu przetestowania różnych funkcji przedstawionych w tym artykule.
 
-W sekcji `vars` Zastąp symbol zastępczy `{{ resource_group_name }}` nazwą grupy zasobów.
+W sekcji `vars` Zamień symbol zastępczy `{{ resource_group_name }}` na nazwę grupy zasobów.
 
-Uruchom element PlayBook za pomocą polecenia `ansible-playbook`:
+Uruchom element PlayBook przy użyciu polecenia `ansible-playbook`:
 
 ```bash
 ansible-playbook rediscache.yml
@@ -341,9 +341,9 @@ Zapisz następujący kod jako `cleanup.yml`:
         state: absent
 ```
 
-W sekcji `vars` Zastąp symbol zastępczy `{{ resource_group_name }}` nazwą grupy zasobów.
+W sekcji `vars` Zamień symbol zastępczy `{{ resource_group_name }}` na nazwę grupy zasobów.
 
-Uruchom element PlayBook za pomocą polecenia `ansible-playbook`:
+Uruchom element PlayBook przy użyciu polecenia `ansible-playbook`:
 
 ```bash
 ansible-playbook cleanup.yml

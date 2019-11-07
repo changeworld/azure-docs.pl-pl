@@ -10,14 +10,14 @@ ms.service: media-services
 ms.workload: ''
 ms.topic: tutorial
 ms.custom: mvc
-ms.date: 10/21/2019
+ms.date: 11/05/2019
 ms.author: juliako
-ms.openlocfilehash: 3f065f77c6843b135554e61f5887655114571b08
-ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
+ms.openlocfilehash: 128513c3af5ce6c0853b63d86959e4c3c35de93c
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/22/2019
-ms.locfileid: "72750247"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73685109"
 ---
 # <a name="tutorial-encode-a-remote-file-based-on-url-and-stream-the-video---rest"></a>Samouczek: kodowanie pliku zdalnego na podstawie adresu URL i strumieniowego wideo — REST
 
@@ -25,13 +25,13 @@ Usługa Azure Media Services umożliwia kodowanie plików multimedialnych do for
 
 Ten samouczek zawiera instrukcje pozwalające zakodować plik na podstawie adresu URL i przesłać strumieniowo zawartość wideo za pośrednictwem usługi Azure Media Services, korzystając z usługi REST. 
 
-![Odtwórz wideo](./media/stream-files-tutorial-with-api/final-video.png)
+![Odtwarzanie wideo](./media/stream-files-tutorial-with-api/final-video.png)
 
 Ten samouczek przedstawia sposób wykonania następujących czynności:    
 
 > [!div class="checklist"]
 > * Tworzenie konta usługi Media Services
-> * Uzyskiwanie dostępu do interfejsu API usługi Media Services
+> * Dostęp do interfejsu API usługi Media Services
 > * Pobieranie plików Postman
 > * Konfigurowanie programu Postman
 > * Wysyłanie żądań przy użyciu programu Postman
@@ -215,7 +215,7 @@ Możesz użyć wbudowanych elementów EncoderNamedPreset lub użyć niestandardo
 
 Obiekt [Job](https://docs.microsoft.com/rest/api/media/jobs) to rzeczywiste żądanie skierowane do usługi Media Services i mające na celu zastosowanie utworzonego obiektu **Transform** do określonej wejściowej zawartości wideo lub dźwiękowej. Obiekt **Job** określa informacje takie jak lokalizacja wejściowego pliku wideo oraz danych wyjściowych.
 
-W tym przykładzie dane wejściowe zadania są oparte na adresie URL HTTPS ("https: \//nimbuscdn-nimbuspm.streaming.mediaservices.windows.net/2b533311-b215-4409-80af-529c3e853622/").
+W tym przykładzie dane wejściowe zadania są oparte na adresie URL HTTPS ("https:\//nimbuscdn-nimbuspm.streaming.mediaservices.windows.net/2b533311-b215-4409-80af-529c3e853622/").
 
 1. W lewym oknie aplikacji Poster wybierz pozycję "kodowanie i analiza".
 2. Następnie wybierz opcję „Utwórz lub aktualizuj zadanie”.
@@ -248,7 +248,7 @@ W tym przykładzie dane wejściowe zadania są oparte na adresie URL HTTPS ("htt
         }
         ```
 
-Ukończenie zadania zajmuje trochę czasu, a Ty chcesz otrzymać powiadomienie o tym fakcie. Aby wyświetlić postęp zadania, zaleca się użycie usługi Event Grid. Zaprojektowano ją pod kątem wysokiej dostępności, stałego poziomu wydajności i dynamicznej skalowalności. Dzięki usłudze Event Grid Twoje aplikacje mogą nasłuchiwać zdarzeń i reagować na zdarzenia w praktycznie wszystkich usługach platformy Azure, a także źródłach niestandardowych. Prosta, reaktywna obsługa zdarzeń oparta na protokole HTTP pomaga w tworzeniu wydajnych rozwiązań za pośrednictwem inteligentnego filtrowania i routingu zdarzeń.  Zobacz [Kierowanie zdarzeń do niestandardowego internetowego punktu końcowego](job-state-events-cli-how-to.md).
+Ukończenie zadania zajmuje trochę czasu, a Ty chcesz otrzymać powiadomienie o tym fakcie. Aby wyświetlić postęp zadania, zaleca się użycie usługi Event Grid. Zaprojektowano ją pod kątem wysokiej dostępności, stałego poziomu wydajności i dynamicznej skalowalności. Dzięki usłudze Event Grid Twoje aplikacje mogą nasłuchiwać zdarzeń pochodzących z praktycznie wszystkich usług platformy Azure i ze źródeł niestandardowych oraz reagować na nie. Prosta, reaktywna obsługa zdarzeń oparta na protokole HTTP pomaga w tworzeniu wydajnych rozwiązań za pośrednictwem inteligentnego filtrowania i routingu zdarzeń.  Zobacz [Kierowanie zdarzeń do niestandardowego internetowego punktu końcowego](job-state-events-cli-how-to.md).
 
 **Zadanie** zwykle przechodzi przez następujące stany: **Scheduled (Zaplanowane)** , **Queued (W kolejce)** , **Processing (Przetwarzane)** , **Finished (Zakończone)** (stan końcowy). Jeśli zadanie napotka błąd, może być w stanie **Error (Błąd)** . Jeśli zadanie jest w trakcie anulowania, może być w stanie **Canceling (Anulowanie)** , a po zakończeniu tej operacji w stanie **Canceled (Anulowane)** .
 
@@ -258,34 +258,36 @@ Zobacz [Kody błędów](https://docs.microsoft.com/rest/api/media/jobs/get#jober
 
 ### <a name="create-a-streaming-locator"></a>Tworzenie lokalizatora przesyłania strumieniowego
 
-Po zakończeniu kodowania następnym krokiem jest udostępnienie wideo w **zasobie** wyjściowym klientom na potrzeby odtwarzania. Działanie to można wykonać w dwóch krokach: najpierw należy utworzyć [lokalizator przesyłania strumieniowego](https://docs.microsoft.com/rest/api/media/streaminglocators), a następnie utworzyć adresy URL przesyłania strumieniowego, których mogą używać klienci. 
+Po zakończeniu kodowania następnym krokiem jest udostępnienie wideo w **zasobie** wyjściowym klientom na potrzeby odtwarzania. Działanie to można wykonać w dwóch krokach: najpierw należy utworzyć obiekt [StreamingLocator](https://docs.microsoft.com/rest/api/media/streaminglocators), a następnie utworzyć adresy URL przesyłania strumieniowego, których mogą używać klienci. 
 
-Proces tworzenia **lokalizatora przesyłania strumieniowego** jest nazywany publikowaniem. Domyślnie **lokalizator przesyłania strumieniowego** jest ważny natychmiast po wykonaniu wywołań interfejsu API i aż do jego usunięcia, chyba że skonfigurujesz opcjonalne czasy rozpoczęcia i zakończenia. 
+Proces tworzenia lokalizatora przesyłania strumieniowego jest nazywany publikowaniem. Domyślnie lokalizator przesyłania strumieniowego jest ważny natychmiast po wykonaniu wywołania interfejsu API i obowiązuje do momentu jego usunięcia, chyba że zostanie skonfigurowany opcjonalny czas rozpoczęcia i zakończenia. 
 
-Podczas tworzenia [lokalizatora przesyłania strumieniowego](https://docs.microsoft.com/rest/api/media/streaminglocators)należy określić żądany **StreamingPolicyName**. W tym przykładzie będziesz przesyłać strumieniowo zawartość w postaci nieoczyszczonej (lub nieszyfrowanej), więc zostanie użyta wstępnie zdefiniowana zasada "Predefined_ClearStreamingOnly".
+Podczas tworzenia obiektu [StreamingLocator](https://docs.microsoft.com/rest/api/media/streaminglocators) musisz określić żądany element **StreamingPolicyName**. W tym przykładzie będziesz przesyłać strumieniowo zawartość w postaci nieoczyszczonej (lub nieszyfrowanej), więc zostanie użyta wstępnie zdefiniowana zasada "Predefined_ClearStreamingOnly".
 
 > [!IMPORTANT]
 > W przypadku korzystania z niestandardowego elementu [StreamingPolicy](https://docs.microsoft.com/rest/api/media/streamingpolicies) należy zaprojektować ograniczony zestaw takich zasad dla konta usługi Media Service i używać ich ponownie dla obiektów StreamingLocator zawsze, gdy są potrzebne takie same opcje szyfrowania i protokoły. 
 
-Konto usługi Media Service jest objęte limitem przydziału dotyczącym liczby pozycji **zasad przesyłania strumieniowego**. Nie należy tworzyć nowych **zasad przesyłania strumieniowego** dla każdego **lokalizatora przesyłania strumieniowego**.
+Konto usługi Media Service jest objęte limitem przydziału dotyczącym liczby pozycji **zasad przesyłania strumieniowego**. Nie należy tworzyć nowych **zasad przesyłania strumieniowego** dla każdego lokalizatora przesyłania strumieniowego.
 
-1. W lewym oknie aplikacji Poster wybierz pozycję "zasady przesyłania strumieniowego".
-2. Następnie wybierz pozycję „Utwórz lokalizatora przesyłania strumieniowego”.
+1. W lewym oknie aplikacji Poster wybierz pozycję "przesyłanie strumieniowe zasad i lokalizatorów".
+2. Następnie wybierz pozycję "Utwórz lokalizator przesyłania strumieniowego (Wyczyść)".
 3. Kliknij pozycję **Wyślij**.
 
     * Zostanie wysłana następująca operacja **PUT**.
 
         ```
-        https://management.azure.com/subscriptions/:subscriptionId/resourceGroups/:resourceGroupName/providers/Microsoft.Media/mediaServices/:accountName/streamingPolicies/:streamingPolicyName?api-version={{api-version}}
+        https://management.azure.com/subscriptions/:subscriptionId/resourceGroups/:resourceGroupName/providers/Microsoft.Media/mediaServices/:accountName/streamingLocators/:streamingLocatorName?api-version={{api-version}}
         ```
     * Operacja ma następującą treść:
 
         ```json
         {
-            "properties":{
-            "assetName": "{{assetName}}",
-            "streamingPolicyName": "{{streamingPolicyName}}"
-            }
+          "properties": {
+            "streamingPolicyName": "Predefined_ClearStreamingOnly",
+            "assetName": "testAsset1",
+            "contentKeys": [],
+            "filters": []
+         }
         }
         ```
 

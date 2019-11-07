@@ -1,18 +1,18 @@
 ---
-title: Samouczek — dodawanie przykładowego modelu do serwera usług Azure Analysis Services | Microsoft Docs
+title: Samouczek — Dodawanie przykładowego modelu — Azure Analysis Services | Microsoft Docs
 description: W tej lekcji samouczka nauczysz się, jak dodać przykładowy model w usługach Azure Analysis Services.
 author: minewiskan
 ms.service: azure-analysis-services
 ms.topic: tutorial
-ms.date: 10/16/2019
+ms.date: 10/30/2019
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: c6679e8075afd2f25e4baf73c79c35907ded4e2b
-ms.sourcegitcommit: 12de9c927bc63868168056c39ccaa16d44cdc646
+ms.openlocfilehash: f76ec20da73c778d024feea9df113de9e4aa0fe9
+ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72512873"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73573083"
 ---
 # <a name="tutorial-add-a-sample-model-from-the-portal"></a>Samouczek: Dodawanie przykładowego modelu z portalu
 
@@ -43,7 +43,7 @@ Zaloguj się do [portalu](https://portal.azure.com/).
 
     ![Tworzenie przykładowego modelu](./media/analysis-services-create-sample-model/aas-create-sample-new-model.png)
 
-2. W obszarze **Nowy model**  > **Wybierz źródło danych**, sprawdź, czy wybrano **przykładowe dane** , a następnie kliknij przycisk **Dodaj**.
+2. W obszarze **Nowy model** > **Wybierz źródło danych**, sprawdź, czy wybrano **przykładowe dane** , a następnie kliknij przycisk **Dodaj**.
 
     ![Wybieranie przykładowych danych](./media/analysis-services-create-sample-model/aas-create-sample-data.png)
 
@@ -62,7 +62,7 @@ W poniższych krokach opisano sposób usuwania modelu z serwera za pomocą progr
 
 2. W polu **Połącz z serwerem** wklej nazwę serwera, a następnie w polu **Uwierzytelnianie** wybierz pozycję **Active Directory — Uniwersalne z obsługą uwierzytelniania wieloskładnikowego**, wprowadź nazwę użytkownika, a następnie kliknij pozycję **Połącz**.
 
-    ![Zaloguj](./media/analysis-services-create-sample-model/aas-create-sample-cleanup-signin.png)
+    ![Logowanie](./media/analysis-services-create-sample-model/aas-create-sample-cleanup-signin.png)
 
 3. W **Eksploratorze obiektów** kliknij prawym przyciskiem myszy przykładową bazę danych `adventureworks`, a następnie kliknij pozycję **Usuń**.
 

@@ -1,21 +1,21 @@
 ---
-title: 'Samouczek NoSQL: Zestaw Java SDK interfejsu API SQL dla usługi Azure Cosmos DB'
+title: 'Samouczek NoSQL: zestaw Java SDK interfejsu SQL API dla usługi Azure Cosmos DB'
 description: Samouczek NoSQL, który pokazuje tworzenie bazy danych w trybie online i aplikacji konsolowej Java przy użyciu interfejsu API SQL dla usługi Azure Cosmos DB. Usługa Azure SQL jest bazą danych NoSQL dla formatu JSON.
 author: SnehaGunda
 ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
 ms.devlang: java
 ms.topic: tutorial
-ms.date: 12/22/2018
+ms.date: 11/05/2019
 ms.author: sngun
-ms.openlocfilehash: 269b2bd1c1457b9e70ea4ada758aacb2f2ae96f3
-ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
+ms.openlocfilehash: a046f97dccdcc4a9cb9fe180447c1ff9a316f0df
+ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69614641"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73720801"
 ---
-# <a name="nosql-tutorial-build-a-sql-api-java-console-application"></a>Samouczek NoSQL: Tworzenie aplikacji konsolowej w języku Java dla interfejsu API SQL
+# <a name="nosql-tutorial-build-a-sql-api-java-console-application"></a>Samouczek NoSQL: tworzenie aplikacji konsolowej w języku Java dla interfejsu API SQL
 
 > [!div class="op_single_selector"]
 > * [.NET](sql-api-get-started.md)
@@ -135,7 +135,7 @@ Dokument można utworzyć za pomocą metody [createDocument](/java/api/com.micro
 
 ![Diagram pokazujący hierarchiczną relację między kontem, bazą danych w trybie online, kolekcją i dokumentami używanymi przez samouczek NoSQL do tworzenia aplikacji konsolowej Java](./media/sql-api-get-started/nosql-tutorial-account-database.png)
 
-## <a id="Query"></a>Krok 7. Wykonywanie zapytania względem zasobów usługi Azure Cosmos DB
+## <a id="Query"></a>Krok 7. Wykonanie zapytania względem zasobów usługi Azure Cosmos DB
 Usługa Azure Cosmos DB obsługuje zaawansowane [zapytania](how-to-sql-query.md) względem dokumentów JSON przechowywanych w każdej kolekcji.  Następujący przykładowy kod przedstawia sposób wykonania zapytania względem dokumentów w usłudze Azure Cosmos DB przy użyciu składni SQL za pomocą metody [queryDocuments](/java/api/com.microsoft.azure.documentdb.documentclient.querydocuments).
 
     FeedResponse<Document> queryResults = this.client.queryDocuments(
@@ -169,7 +169,7 @@ Usunięcie utworzonej bazy danych usunie bazę danych i wszystkie zasoby podrzę
 
     this.client.deleteDatabase("/dbs/familydb", null);
 
-## <a id="Run"></a>Krok 11. Uruchamianie całej aplikacji konsolowej Java.
+## <a id="Run"></a>Krok 11. Uruchamianie całej aplikacji konsolowej Java!
 Aby uruchomić aplikację z poziomu konsoli, przejdź do folderu projektu i przeprowadź kompilację za pomocą narzędzia Maven:
     
     mvn package

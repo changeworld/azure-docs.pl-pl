@@ -1,5 +1,5 @@
 ---
-title: Przyrostowe kopiowanie danych przy użyciu rozwiązania Change Tracking i usługi Azure Data Factory | Microsoft Docs
+title: 'Przyrostowe kopiowanie danych przy użyciu Change Tracking i Azure Data Factory '
 description: 'W tym samouczku utworzysz potok usługi Azure Data Factory służący do przyrostowego kopiowania danych różnicowych z wielu tabel w lokalnej bazie danych SQL Server do bazy danych Azure SQL Database. '
 services: data-factory
 documentationcenter: ''
@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: tutorial
 ms.date: 01/12/2018
 ms.author: yexu
-ms.openlocfilehash: 6a71c83a190bd7e88edd5008edef670b32905add
-ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
+ms.openlocfilehash: c754b5755cbab3720ca0ffebc891ce76ce7aebc5
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70140806"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73683518"
 ---
 # <a name="incrementally-load-data-from-azure-sql-database-to-azure-blob-storage-using-change-tracking-information"></a>Przyrostowe ładowanie danych z bazy danych Azure SQL Database do magazynu Azure Blob Storage z użyciem informacji o śledzeniu zmian 
 W tym samouczku utworzysz fabrykę usługi Azure Data Factory z potokiem służącym do ładowania danych przyrostowych na podstawie informacji o **śledzeniu zmian** w źródłowej bazie danych Azure SQL Database do magazynu Azure Blob Storage.  
@@ -142,7 +142,7 @@ Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpł
     END    
     ```
 
-### <a name="azure-powershell"></a>Azure PowerShell
+### <a name="azure-powershell"></a>Program Azure PowerShell
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
@@ -172,7 +172,7 @@ Zainstaluj najnowsze moduły programu Azure PowerShell, wykonując instrukcje po
 4. Wybierz wartość **V2 (wersja zapoznawcza)** dla **wersji**.
 5. Na liście **lokalizacja** wybierz lokalizację fabryki danych. Na liście rozwijanej są wyświetlane tylko obsługiwane lokalizacje. Magazyny danych (Azure Storage, Azure SQL Database itp.) i jednostki obliczeniowe (HDInsight itp.) używane przez fabrykę danych mogą mieścić się w innych regionach.
 6. Wybierz opcję **Przypnij do pulpitu nawigacyjnego**.     
-7. Kliknij przycisk **Utwórz**.      
+7. Kliknij pozycję **Utwórz**.      
 8. Na pulpicie nawigacyjnym jest widoczny następujący kafelek ze stanem: **Wdrażanie fabryki danych**. 
 
     ![kafelek Wdrażanie fabryki danych](media/tutorial-incremental-copy-change-tracking-feature-portal/deploying-data-factory.png)
@@ -187,7 +187,7 @@ Zainstaluj najnowsze moduły programu Azure PowerShell, wykonując instrukcje po
 ## <a name="create-linked-services"></a>Tworzenie połączonych usług
 Połączone usługi tworzy się w fabryce danych w celu połączenia magazynów danych i usług obliczeniowych z fabryką danych. W tej sekcji utworzysz usługi połączone ze swoim kontem usługi Azure Storage i bazą danych Azure SQL Database. 
 
-### <a name="create-azure-storage-linked-service"></a>Tworzenie połączonej usługi Azure Storage.
+### <a name="create-azure-storage-linked-service"></a>Utwórz połączoną usługę Azure Storage.
 W tym kroku opisano łączenie konta usługi Azure Storage z fabryką danych.
 
 1. Kliknij kolejno pozycje **Połączenia** i **+ Nowy**.
@@ -200,7 +200,7 @@ W tym kroku opisano łączenie konta usługi Azure Storage z fabryką danych.
 
     1. Wprowadź wartość **AzureStorageLinkedService** w polu **Nazwa**. 
     2. W polu **Nazwa konta magazynu** wybierz konto usługi Azure Storage. 
-    3. Kliknij polecenie **Zapisz**. 
+    3. Kliknij pozycję **Zapisz**. 
     
    ![Ustawienia konta usługi Azure Storage](./media/tutorial-incremental-copy-change-tracking-feature-portal/azure-storage-linked-service-settings.png)
 
@@ -222,8 +222,8 @@ W tym kroku opisano sposób łączenia bazy danych Azure SQL Database z fabryką
     
        ![Ustawienia połączonej usługi Azure SQL Database](./media/tutorial-incremental-copy-change-tracking-feature-portal/azure-sql-database-linked-service-settings.png)
 
-## <a name="create-datasets"></a>Tworzenie zestawów danych
-W tym kroku utworzysz zestawy danych reprezentujące źródło danych, docelową lokalizację danych. i lokalizację, w której będzie przechowywana wartość parametru SYS_CHANGE_VERSION.
+## <a name="create-datasets"></a>Utwórz zestawy danych
+W tym kroku utworzysz zestawy danych reprezentujące źródło danych, docelową lokalizację danych i lokalizację, w której będzie przechowywana wartość parametru SYS_CHANGE_VERSION.
 
 ### <a name="create-a-dataset-to-represent-source-data"></a>Tworzenie zestawu danych reprezentującego źródło danych 
 W tym kroku utworzysz zestaw danych reprezentujący źródło danych. 
@@ -260,7 +260,7 @@ W tym kroku utworzysz zestaw danych reprezentujący dane skopiowane z magazynu d
 
     1. Wybierz pozycję **AzureStorageLinkedService** w polu **Połączona usługa**.
     2. Wprowadź ciąg **adftutorial/incchgtracking** w części **folder** ścieżki **filePath**.
-    3. **Wprowadź\@concat ("Incremental-", Pipeline (). RunId, ". txt")** dla części **pliku** **FilePath**.  
+    3. Wprowadź **\@concat ("Incremental-", Pipeline (). RunId, ". txt")** dla części **pliku** **FilePath**.  
 
        ![Zestaw danych będący ujściem — połączenie](./media/tutorial-incremental-copy-change-tracking-feature-portal/sink-dataset-connection.png)
 
@@ -355,7 +355,7 @@ SET [Age] = '10', [name]='update' where [PersonID] = 1
 ## <a name="create-a-pipeline-for-the-delta-copy"></a>Tworzenie potoku na potrzeby kopii przyrostowej
 W tym kroku utworzysz potok z następującymi działaniami, który będzie okresowo uruchamiany. Za pomocą **działań wyszukiwania** zostanie pobrana stara i nowa wartość parametru SYS_CHANGE_VERSION z bazy danych Azure SQL Database, która zostanie następnie przekazana do działania kopiowania. Za pomocą **działania kopiowania** zostaną skopiowane wstawione, zaktualizowane lub usunięte dane między dwiema wartościami parametru SYS_CHANGE_VERSION z bazy danych Azure SQL Database do magazynu Azure Blob Storage. Za pomocą **działania procedury składowanej** zostanie zaktualizowana wartość parametru SYS_CHANGE_VERSION na potrzeby następnego uruchomienia potoku.
 
-1. W interfejsie użytkownika usługi Data Factory, przejdź na kartę **Edycja**. Kliknij pozycję **+ (plus)** w lewym okienku, a następnie kliknij pozycję **Potok**. 
+1. W interfejsie użytkownika Data Factory przejdź do karty **Edycja** . kliknij pozycję **+ (plus)** w lewym okienku, a następnie kliknij pozycję **potok**. 
 
     ![Menu Nowy potok](./media/tutorial-incremental-copy-change-tracking-feature-portal/new-pipeline-menu-2.png)
 2. Zostanie wyświetlona nowa karta służąca do konfigurowania potoku. Potok powinien być też widoczny w widoku drzewa. W oknie **Właściwości** zmień nazwę potoku na **IncrementalCopyPipeline**.
@@ -413,10 +413,10 @@ W tym kroku utworzysz potok z następującymi działaniami, który będzie okres
     2. Wybierz pozycję **Importuj parametr**. 
     3. W sekcji **Parametry procedury składowanej** określ następujące wartości parametrów: 
 
-        | Name | Typ | Value | 
+        | Nazwa | Typ | Wartość | 
         | ---- | ---- | ----- | 
         | CurrentTrackingVersion | Int64 | @{activity('LookupCurrentChangeTrackingVersionActivity').output.firstRow.CurrentChangeTrackingVersion} | 
-        | TableName | String | @{activity('LookupLastChangeTrackingVersionActivity').output.firstRow.TableName} | 
+        | TableName | Ciąg | @{activity('LookupLastChangeTrackingVersionActivity').output.firstRow.TableName} | 
     
         ![Działanie Stored Procedure (Procedura składowana) — parametry](./media/tutorial-incremental-copy-change-tracking-feature-portal/stored-procedure-parameters.png)
 14. **Połącz działanie Copy (Kopiowanie) z działaniem Stored Procedure (Procedura składowana)** . Przeciągnij i upuść **zielony** przycisk dołączony do działania Copy (Kopiowanie) w obszarze działania Stored Procedure (Procedura składowana). 
@@ -455,7 +455,7 @@ Ten plik powinien zawierać tylko dane przyrostowe z bazy danych Azure SQL Datab
 1,update,10,2,U
 6,new,50,1,I
 ```
-Pierwsze trzy kolumny to zmienione dane z tabeli data_source_table. Ostatnie dwie kolumny to metadane z tabeli systemowej śledzenia zmian. Czwarta kolumna to wartość parametru SYS_CHANGE_VERSION dla każdego zmienionego wiersza. Piąta kolumna to wartość operacji:  U — aktualizacja, I — wstawienie.  Aby uzyskać szczegółowe informacje o śledzeniu zmian, zobacz [CHANGETABLE](/sql/relational-databases/system-functions/changetable-transact-sql). 
+Pierwsze trzy kolumny to zmienione dane z tabeli data_source_table. Ostatnie dwie kolumny to metadane z tabeli systemowej śledzenia zmian. Czwarta kolumna to wartość parametru SYS_CHANGE_VERSION dla każdego zmienionego wiersza. Piąta kolumna to wartość operacji: U — aktualizacja, I — wstawienie.  Aby uzyskać szczegółowe informacje o śledzeniu zmian, zobacz [CHANGETABLE](/sql/relational-databases/system-functions/changetable-transact-sql). 
 
 ```
 ==================================================================

@@ -1,5 +1,5 @@
 ---
-title: 'Samouczek: projektowanie pierwszej relacyjnej bazy danych w Azure SQL Database przy użyciu programu SSMS | Microsoft Docs'
+title: 'Samouczek: projektowanie pierwszej relacyjnej bazy danych w Azure SQL Database przy użyciu programu SSMS '
 description: Dowiedz się, jak zaprojektować swoją pierwszą relacyjną bazę danych jako pojedynczą bazę danych w usłudze Azure SQL Database przy użyciu programu SQL Server Management Studio.
 services: sql-database
 ms.service: sql-database
@@ -9,12 +9,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: v-masebo
 ms.date: 07/29/2019
-ms.openlocfilehash: 18e7e75b259475b9e360dc3441ed83ccb577e557
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 1ea8bcd353311d0e6f666a0086f8f2f3b24b55d2
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73492031"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73690742"
 ---
 # <a name="tutorial-design-a-relational-database-in-a-single-database-within-azure-sql-database-using-ssms"></a>Samouczek: projektowanie relacyjnej bazy danych w pojedynczej bazie danych w ramach Azure SQL Database przy użyciu programu SSMS
 

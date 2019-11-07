@@ -1,6 +1,6 @@
 ---
-title: Przykłady integracji usług Azure Service Bus i Event Grid | Microsoft Docs
-description: Ten artykuł zawiera przykłady integracji komunikatów usługi Service Bus z usługą Event Grid.
+title: 'Samouczek: przykłady dotyczące Event Grid integracji Azure Service Bus'
+description: 'Samouczek: w tym artykule przedstawiono przykłady Service Bus obsługi komunikatów i Event Grid integracji.'
 services: service-bus-messaging
 documentationcenter: .net
 author: spelluru
@@ -12,16 +12,16 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: multiple
 ms.topic: tutorial
-ms.date: 05/14/2019
+ms.date: 11/05/2019
 ms.author: spelluru
-ms.openlocfilehash: f31e014cf242675577bedd29a3a79332ede32bf5
-ms.sourcegitcommit: 770b060438122f090ab90d81e3ff2f023455213b
+ms.openlocfilehash: d3f523bbc0236536734f21870474492a61532ada
+ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/17/2019
-ms.locfileid: "68304234"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73719024"
 ---
-# <a name="respond-to-azure-service-bus-events-received-via-azure-event-grid-by-using-azure-functions-and-azure-logic-apps"></a>Odpowiadanie na zdarzenia Azure Service Bus odbierane za pośrednictwem Azure Event Grid przy użyciu Azure Functions i Azure Logic Apps
+# <a name="tutorial-respond-to-azure-service-bus-events-received-via-azure-event-grid-by-using-azure-functions-and-azure-logic-apps"></a>Samouczek: reagowanie na zdarzenia Azure Service Bus odbierane za pośrednictwem Azure Event Grid przy użyciu Azure Functions i Azure Logic Apps
 W tym samouczku dowiesz się, jak odpowiedzieć na zdarzenia Azure Service Bus, które są odbierane za pośrednictwem Azure Event Grid przy użyciu Azure Functions i Azure Logic Apps. Wykonaj następujące czynności:
  
 - Utwórz testową funkcję platformy Azure w celu debugowania i wyświetlania początkowego przepływu zdarzeń z Event Grid.
@@ -35,7 +35,7 @@ Po utworzeniu Service Bus, Event Grid, Azure Functions i Logic Apps artefakty na
 3. Sprawdź, czy funkcja lub aplikacja logiki, która subskrybuje zdarzenie, odebrała zdarzenie. 
 
 ## <a name="create-a-service-bus-namespace"></a>Tworzenie przestrzeni nazw usługi Service Bus
-Postępuj zgodnie z instrukcjami podanymi w tym samouczku: [Szybki start: Użyj Azure Portal, aby utworzyć temat Service Bus i subskrypcje w temacie](service-bus-quickstart-topics-subscriptions-portal.md) , aby wykonać następujące zadania:
+Postępuj zgodnie z instrukcjami w tym samouczku: [Szybki Start: użyj Azure Portal, aby utworzyć temat Service Bus i subskrypcje w temacie](service-bus-quickstart-topics-subscriptions-portal.md) , aby wykonać następujące zadania:
 
 - Utwórz przestrzeń nazw Service Bus w **warstwie Premium** . 
 - Pobierz parametry połączenia. 
@@ -65,7 +65,7 @@ Przed rozpoczęciem pracy w całym scenariuszu należy skonfigurować co najmnie
 Następnie wykonaj następujące czynności: 
 
 
-# <a name="azure-functions-v2tabv2"></a>[Azure Functions V2](#tab/v2)
+# <a name="azure-functions-v2tabv2"></a>[Azure Functions v2](#tab/v2)
 
 1. Rozwiń pozycję **funkcje** w widoku drzewa, a następnie wybierz funkcję. Zastąp kod dla funkcji następującym kodem: 
 
@@ -280,7 +280,7 @@ Połącz aplikację logiki z Azure Service Bus i Azure Event Grid, wykonując na
     3. W obszarze **nazwa zasobu**wybierz przestrzeń nazw Service Bus. 
     4. Wybierz pozycję **Dodaj nowy parametr**, a następnie wybierz pozycję **Filtr sufiksów**. 
     5. W polu **Filtr sufiksu**wprowadź nazwę drugiej subskrypcji tematu Service Bus. 
-        ![Projektant Logic Apps — Konfigurowanie zdarzenia](./media/service-bus-to-event-grid-integration-example/logic-app-configure-event.png)
+        ![Logic Apps Designer — Konfigurowanie](./media/service-bus-to-event-grid-integration-example/logic-app-configure-event.png) zdarzeń
 6. Wybierz pozycję **+ nowy krok** w projektancie, a następnie wykonaj następujące czynności:
     1. Wyszukaj **Service Bus**.
     2. Na liście wybierz pozycję **Service Bus** . 
@@ -291,7 +291,7 @@ Połącz aplikację logiki z Azure Service Bus i Azure Event Grid, wykonując na
     5. Wprowadź **nazwę połączenia**. Na przykład: **Pobierz komunikaty z subskrypcji tematu**i wybierz Service Bus przestrzeni nazw. 
 
         ![Projektant Logic Apps — wybierz Service Bus przestrzeń nazw](./media/service-bus-to-event-grid-integration-example/logic-apps-select-namespace.png) 
-    6. Wybierz **RootManageSharedAccessKey**.
+    6. Wybierz pozycję **RootManageSharedAccessKey**.
 
         ![Projektant Logic Apps — wybierz klucz dostępu współdzielonego](./media/service-bus-to-event-grid-integration-example/logic-app-shared-access-key.png) 
     7. Wybierz pozycję **Utwórz**. 
@@ -303,7 +303,7 @@ Połącz aplikację logiki z Azure Service Bus i Azure Event Grid, wykonując na
     2. Wybierz pozycję **Zakończ wiadomość w subskrypcji tematu** z listy akcji. 
     3. Wybierz **temat**Service Bus.
     4. Wybierz drugą **subskrypcję** w temacie.
-    5. W **polu token blokady wiadomości**wybierz opcję Zablokuj **token** z **zawartości dynamicznej**. 
+    5. W **polu token blokady wiadomości**wybierz opcję **Zablokuj token** z **zawartości dynamicznej**. 
 
         ![Projektant Logic Apps — wybierz Service Bus temat i subskrypcję](./media/service-bus-to-event-grid-integration-example/logic-app-complete-message.png)
 8. Wybierz pozycję **Zapisz** na pasku narzędzi w projektancie Logic Apps, aby zapisać aplikację logiki. 

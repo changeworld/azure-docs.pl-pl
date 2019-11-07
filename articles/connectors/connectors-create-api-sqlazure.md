@@ -10,13 +10,13 @@ ms.reviewer: klam; LADocs
 manager: carmonm
 ms.topic: conceptual
 tags: connectors
-ms.date: 10/14/2019
-ms.openlocfilehash: 880ae4b661d247889815fc5b9ad08a759fe0aa5b
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.date: 11/06/2019
+ms.openlocfilehash: ed30ba305ec990256625052cb92f1b7524c826e2
+ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73161637"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73720954"
 ---
 # <a name="automate-workflows-for-sql-server-or-azure-sql-database-by-using-azure-logic-apps"></a>Automatyzowanie przepływów pracy dla SQL Server lub Azure SQL Database przy użyciu Azure Logic Apps
 
@@ -45,6 +45,9 @@ Jeśli dopiero zaczynasz tworzyć aplikacje logiki, zapoznaj [się z tematem Azu
     `Server=tcp:{your-server-name}.database.windows.net,1433;Initial Catalog={your-database-name};Persist Security Info=False;User ID={your-user-name};Password={your-password};MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;`
 
 * Aby można było połączyć Aplikacje logiki z systemami lokalnymi, takimi jak SQL Server, należy [skonfigurować lokalną bramę danych](../logic-apps/logic-apps-gateway-install.md). Dzięki temu można wybrać bramę podczas tworzenia połączenia SQL dla aplikacji logiki.
+
+  > [!IMPORTANT]
+  > Aby można było korzystać z uwierzytelniania systemu Windows za pomocą tego łącznika, należy użyć lokalnej bramy danych. Ten łącznik nie obsługuje uwierzytelniania systemu Windows dla aplikacji logiki w [środowisku usługi integracji (ISE)](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md).
 
 * Aplikacja logiki, do której jest potrzebny dostęp do bazy danych SQL. Aby uruchomić aplikację logiki przy użyciu wyzwalacza SQL, musisz mieć [pustą aplikację logiki](../logic-apps/quickstart-create-first-logic-app-workflow.md).
 

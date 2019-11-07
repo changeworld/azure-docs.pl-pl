@@ -1,5 +1,5 @@
 ---
-title: Tworzenie centrum zdarzeń przy użyciu programu PowerShell — Azure Event Hubs | Microsoft Docs
+title: 'Szybki Start: tworzenie centrum zdarzeń przy użyciu programu PowerShell — Event Hubs platformy Azure'
 description: Ten przewodnik Szybki start przedstawia tworzenie centrum zdarzeń za pomocą programu Azure PowerShell oraz wysyłanie i odbieranie zdarzeń za pomocą zestawu .NET Standard SDK.
 services: event-hubs
 author: ShubhaVijayasarathy
@@ -9,16 +9,16 @@ ms.service: event-hubs
 ms.devlang: na
 ms.topic: quickstart
 ms.custom: seodec18
-ms.date: 12/06/2018
+ms.date: 11/05/2019
 ms.author: shvija
-ms.openlocfilehash: b3847f798fde8702d6d95450c68fbfbca4c97f9d
-ms.sourcegitcommit: 6ea7f0a6e9add35547c77eef26f34d2504796565
+ms.openlocfilehash: 2a88fe340037c31a71cb34181682095f31400c36
+ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/14/2019
-ms.locfileid: "65604456"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73720596"
 ---
-# <a name="quickstart-create-an-event-hub-using-azure-powershell"></a>Szybki start: Tworzenie centrum zdarzeń za pomocą programu Azure PowerShell
+# <a name="quickstart-create-an-event-hub-using-azure-powershell"></a>Szybki start: tworzenie centrum zdarzeń za pomocą programu Azure PowerShell
 
 Azure Event Hubs to platforma do pozyskiwania i strumieniowego przesyłania danych, która umożliwia odbieranie i przetwarzanie milionów zdarzeń na sekundę. Usługa Event Hubs pozwala przetwarzać i przechowywać zdarzenia, dane lub dane telemetryczne generowane przez rozproszone oprogramowanie i urządzenia. Dane wysłane do centrum zdarzeń mogą zostać przekształcone i zmagazynowane przy użyciu dowolnego dostawcy analityki czasu rzeczywistego lub adapterów przetwarzania wsadowego/magazynowania. Aby zapoznać się ze szczegółowym omówieniem usługi Event Hubs, zobacz [Omówienie usługi Event Hubs](event-hubs-about.md) i [Funkcje usługi Event Hubs](event-hubs-features.md).
 
@@ -31,7 +31,7 @@ W tym przewodniku Szybki start utworzysz centrum zdarzeń za pomocą programu Az
 Aby ukończyć kroki tego samouczka, upewnij się, że dysponujesz następującymi elementami:
 
 - Subskrypcja platformy Azure. Jeśli nie masz subskrypcji, przed rozpoczęciem [utwórz bezpłatne konto][].
-- [Visual Studio 2019](https://www.visualstudio.com/vs).
+- [Program Visual Studio 2019](https://www.visualstudio.com/vs).
 - [Zestaw .NET Standard SDK](https://www.microsoft.com/net/download/windows) w wersji 2.0 lub nowszej.
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
@@ -69,7 +69,7 @@ Gratulacje! Za pomocą programu Azure PowerShell utworzono przestrzeń nazw usł
 
 ## <a name="next-steps"></a>Następne kroki
 
-W ramach tego artykułu utworzono przestrzeń nazw usługi Event Hubs oraz użyto aplikacji przykładowych do wysyłania zdarzeń do centrum zdarzeń i odbierania ich z niego. Aby uzyskać instrukcje krok po kroku wysyłania zdarzeń do (lub) odbieranie zdarzeń z Centrum zdarzeń, zobacz **wysyłania i odbierania zdarzeń** samouczków: 
+W ramach tego artykułu utworzono przestrzeń nazw usługi Event Hubs oraz użyto aplikacji przykładowych do wysyłania zdarzeń do centrum zdarzeń i odbierania ich z niego. Aby uzyskać instrukcje krok po kroku dotyczące wysyłania zdarzeń do (lub) odbierania zdarzeń z centrum zdarzeń, zobacz samouczki **wysyłania i odbierania zdarzeń** : 
 
 - [.NET Core](event-hubs-dotnet-standard-getstarted-send.md)
 - [.NET Framework](event-hubs-dotnet-framework-getstarted-send.md)
@@ -77,7 +77,7 @@ W ramach tego artykułu utworzono przestrzeń nazw usługi Event Hubs oraz użyt
 - [Python](event-hubs-python-get-started-send.md)
 - [Node.js](event-hubs-node-get-started-send.md)
 - [Go](event-hubs-go-get-started-send.md)
-- [C (tylko Wyślij)](event-hubs-c-getstarted-send.md)
+- [C (tylko wysyłanie)](event-hubs-c-getstarted-send.md)
 - [Apache Storm (tylko reecive)](event-hubs-storm-getstarted-receive.md)
 
 

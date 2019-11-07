@@ -1,5 +1,5 @@
 ---
-title: Kopiowanie danych z programu SQL Server do usługi Blob Storage przy użyciu usługi Azure Data Factory | Microsoft Docs
+title: Kopiowanie danych z SQL Server do usługi BLOB Storage przy użyciu Azure Data Factory
 description: Dowiedz się, jak skopiować dane z lokalnego magazynu danych do chmury platformy Azure przy użyciu własnego środowiska Integration Runtime w usłudze Azure Data Factory.
 services: data-factory
 documentationcenter: ''
@@ -11,14 +11,14 @@ ms.workload: data-services
 ms.topic: tutorial
 ms.date: 01/22/2018
 ms.author: abnarain
-ms.openlocfilehash: 1d779c44faabc30ddfa624e7b2d8e5d5de8b6cc7
-ms.sourcegitcommit: c79aa93d87d4db04ecc4e3eb68a75b349448cd17
+ms.openlocfilehash: d2f59e7e8e86100a2a667634c0e99e6c1d5976da
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71091931"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73683491"
 ---
-# <a name="tutorial-copy-data-from-an-on-premises-sql-server-database-to-azure-blob-storage"></a>Samouczek: Kopiowanie danych z lokalnej bazy danych programu SQL Server do usługi Azure Blob Storage
+# <a name="tutorial-copy-data-from-an-on-premises-sql-server-database-to-azure-blob-storage"></a>Samouczek: kopiowanie danych z lokalnej bazy danych programu SQL Server do usługi Azure Blob Storage
 W tym samouczku użyjesz programu Azure PowerShell, aby utworzyć potok usługi Data Factory, który kopiuje dane z lokalnej bazy danych programu SQL Server do usługi Azure Blob Storage. Utworzysz własne środowisko Integration Runtime (Self-hosted), służące do przenoszenia danych między lokalnym magazynem danych i magazynem danych w chmurze. 
 
 > [!NOTE]
@@ -32,7 +32,7 @@ Ten samouczek obejmuje wykonanie następujących kroków:
 > * Tworzenie połączonych zestawów programu SQL Server i usługi Azure Storage. 
 > * Tworzenie zestawów danych programu SQL Server i usługi Azure Blob.
 > * Tworzenie potoku z działaniem kopiowania do przenoszenia danych.
-> * Uruchamianie potoku.
+> * Uruchamianie przebiegu potoku.
 > * Monitorowanie uruchomienia potoku.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
@@ -176,7 +176,7 @@ Zainstaluj najnowszą wersję programu Azure PowerShell, jeśli nie masz jej jes
 >    The specified data factory name 'ADFv2TutorialDataFactory' is already in use. Data factory names must be globally unique.
 >    ```
 > * Aby utworzyć wystąpienia usługi Data Factory, konto użytkownika używane do logowania się na platformie Azure musi mieć przypisaną rolę *współautora* lub *właściciela* albo być *administratorem* subskrypcji platformy Azure.
-> * Aby uzyskać listę regionów platformy Azure, w których obecnie jest dostępna usługa Data Factory, wybierz dane regiony na poniższej stronie, a następnie rozwiń węzeł **Analiza**, aby zlokalizować pozycję **Data Factory**: [Dostępność produktów według regionów](https://azure.microsoft.com/global-infrastructure/services/). Magazyny danych (Azure Storage, Azure SQL Database itd.) i jednostki obliczeniowe (Azure HDInsight itd.) używane przez fabrykę danych mogą mieścić się w innych regionach.
+> * Aby uzyskać listę regionów platformy Azure, w których obecnie jest dostępna usługa Data Factory, wybierz dane regiony na poniższej stronie, a następnie rozwiń węzeł **Analiza**, aby zlokalizować pozycję **Data Factory**: [Produkty dostępne według regionu](https://azure.microsoft.com/global-infrastructure/services/). Magazyny danych (Azure Storage, Azure SQL Database itd.) i jednostki obliczeniowe (Azure HDInsight itd.) używane przez fabrykę danych mogą mieścić się w innych regionach.
 > 
 > 
 
@@ -299,7 +299,7 @@ W tej sekcji utworzysz własne środowisko Integration Runtime i skojarzysz je z
     g. Wprowadź hasło powiązane z tą nazwą użytkownika.
 
     h. Wybierz przycisk **Testuj**, aby upewnić się, że środowisko Integration Runtime może połączyć się z wystąpieniem programu SQL Server.  
-    ![Łączność powiodła się](media/tutorial-hybrid-copy-powershell/config-manager-diagnostics-tab.png) 
+    ![połączenie powiodło się](media/tutorial-hybrid-copy-powershell/config-manager-diagnostics-tab.png) 
   
     Jeśli połączenie zostanie pomyślnie nawiązane, zostanie wyświetlona ikona zielonego znacznika wyboru. W przeciwnym razie zostanie wyświetlony komunikat o błędzie skojarzony z określonym błędem. Rozwiąż wszelkie problemy i upewnij się, że środowisko Integration Runtime może połączyć się z wystąpieniem programu SQL Server.
 
@@ -428,7 +428,7 @@ W tym kroku połączysz lokalne wystąpienie programu SQL Server z fabryką dany
    ```
 
 
-## <a name="create-datasets"></a>Tworzenie zestawów danych
+## <a name="create-datasets"></a>Utwórz zestawy danych
 W tym kroku utworzysz zestawy danych wejściowych i wyjściowych. Reprezentują one dane wejściowe i wyjściowe operacji kopiowania, która kopiuje dane z lokalnej bazy danych programu SQL Server do usługi Azure Blob Storage.
 
 ### <a name="create-a-dataset-for-the-source-sql-server-database"></a>Tworzenie zestawu danych źródłowej bazy danych programu SQL Server
@@ -708,7 +708,7 @@ Potok automatycznie tworzy folder wyjściowy o nazwie *fromonprem* w kontenerze 
 
 1. W witrynie Azure Portal w oknie kontenera **adftutorial** kliknij przycisk **Odśwież**, aby wyświetlić folder wyjściowy.
 1. Wybierz pozycję `fromonprem` na liście folderów. 
-1. Upewnij się, że jest wyświetlany plik o nazwie `dbo.emp.txt`.
+1. Upewnij się jest wyświetlany plik o nazwie `dbo.emp.txt`.
 
     ![Plik wyjściowy](media/tutorial-hybrid-copy-powershell/fromonprem-file.png)
 
@@ -722,7 +722,7 @@ Potok w tym przykładzie kopiuje dane z jednej lokalizacji do innej lokalizacji 
 > * Tworzenie połączonych zestawów programu SQL Server i usługi Azure Storage. 
 > * Tworzenie zestawów danych programu SQL Server i usługi Azure Blob.
 > * Tworzenie potoku z działaniem kopiowania do przenoszenia danych.
-> * Uruchamianie potoku.
+> * Uruchamianie przebiegu potoku.
 > * Monitorowanie uruchomienia potoku.
 
 Lista magazynów danych obsługiwanych przez usługę Data Factory znajduje się w artykule dotyczącym [obsługiwanych magazynów danych](copy-activity-overview.md#supported-data-stores-and-formats).

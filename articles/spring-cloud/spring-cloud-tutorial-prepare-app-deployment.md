@@ -1,20 +1,17 @@
 ---
 title: Przygotowywanie aplikacji sprężynowej do wdrożenia w chmurze Azure wiosennej | Microsoft Docs
 description: W tym przewodniku szybki start przygotowano aplikację ze sprężyną Java do wdrożenia.
-services: spring-cloud
-author: v-vasuke
-manager: jeconnoc
-editor: ''
+author: jpconnock
 ms.service: spring-cloud
-ms.topic: quickstart
+ms.topic: tutorial
 ms.date: 10/06/2019
-ms.author: v-vasuke
-ms.openlocfilehash: 98d9f3f656cff84cec8d223ed535255157155bd2
-ms.sourcegitcommit: d773b5743cb54b8cbcfa5c5e4d21d5b45a58b081
+ms.author: jeconnoc
+ms.openlocfilehash: 6c3048fd27c3d3d4fdba0841fb4ab21bd10e15fe
+ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/08/2019
-ms.locfileid: "72039007"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73721254"
 ---
 # <a name="tutorial-prepare-a-java-spring-application-for-deployment-in-azure-spring-cloud"></a>Samouczek: przygotowanie aplikacji ze sprężyną Java do wdrożenia w chmurze Azure wiosennej
 
@@ -35,7 +32,7 @@ Wersja sprężyny rozruchowej | Wersja chmury wiosennej
 2.0. x | Finchley. RELEASE
 2.1. x | Greenwich. RELEASE
 
-Sprawdź, czy plik `pom.xml` ma zależności chmurowego rozruchowego i sprężynowego na podstawie używanej wersji.
+Sprawdź, czy plik `pom.xml` ma zależności chmurowego rozruchowego i sprężynowego zależnie od używanej wersji.
 
 ### <a name="version-20"></a>Wersja 2,0:
 
@@ -93,27 +90,27 @@ W poniższej tabeli przedstawiono prawidłowe wersje aplikacji w chmurze z rozru
 
 Wersja sprężyny rozruchowej | Wersja chmury wiosennej | Wersja chmury wiosennej platformy Azure
 ---|---|---
-2.0. x | Finchley. RELEASE | 2.0.0 — MIGAWKA
-2.1. x | Greenwich. RELEASE | 2.1.0 — MIGAWKA
+2.0. x | Finchley. RELEASE | 2.0. x
+2.1. x | Greenwich. RELEASE | 2.1. x
 
-Dołącz ten fragment kodu do `pom.xml` z poprawną wersją chmury Azure wiosną w "Dependency":
+Dołącz jeden z fragmentów kodu poniżej w `pom.xml`.  Wybierz fragment kodu, którego wersja pasuje do własnych.
 
+### <a name="version-20x"></a>Wersja 2.0. x:
 ```xml
-    <repositories>
-        <repository>
-            <id>nexus-snapshots</id>
-            <url>https://oss.sonatype.org/content/repositories/snapshots/</url>
-            <snapshots>
-                <enabled>true</enabled>
-            </snapshots>
-        </repository>
-    </repositories>
-    
-    <dependency>
+<dependency>
         <groupId>com.microsoft.azure</groupId>
         <artifactId>spring-cloud-starter-azure-spring-cloud-client</artifactId>
-        <version>2.1.0-SNAPSHOT</version>
-    </dependency>
+        <version>2.0.0</version>
+</dependency>
+```
+
+### <a name="version-21x"></a>Wersja 2.1. x:
+```xml
+<dependency>
+        <groupId>com.microsoft.azure</groupId>
+        <artifactId>spring-cloud-starter-azure-spring-cloud-client</artifactId>
+        <version>2.1.0</version>
+</dependency>
 ```
 
 ## <a name="other-required-dependencies"></a>Inne wymagane zależności
@@ -160,7 +157,7 @@ Uwzględnij `spring-boot-starter-actuator` w sekcji zależności pliku pliku pom
 
 ### <a name="distributed-tracing"></a>Śledzenie rozproszone
 
-Uwzględnij `spring-cloud-starter-sleuth` i `spring-cloud-starter-zipkin` w sekcji zależności pliku pliku pom. XML jak poniżej. Ponadto musisz włączyć wystąpienie usługi Azure App Insights, aby współpracowało z wystąpieniem usług w chmurze sieci Azure ze sprężyną. Przeczytaj więcej na temat sposobu włączania usługi App Insights w usłudze Azure wiosny Cloud [tutaj](spring-cloud-tutorial-distributed-tracing.md)
+Dołącz `spring-cloud-starter-sleuth` i `spring-cloud-starter-zipkin` w sekcji zależności pliku pliku pom. XML jak poniżej. Ponadto musisz włączyć wystąpienie usługi Azure App Insights, aby współpracowało z wystąpieniem usług w chmurze sieci Azure ze sprężyną. Przeczytaj więcej na temat sposobu włączania usługi App Insights w usłudze Azure wiosny Cloud [tutaj](spring-cloud-tutorial-distributed-tracing.md)
 
 ```xml
 <dependency>

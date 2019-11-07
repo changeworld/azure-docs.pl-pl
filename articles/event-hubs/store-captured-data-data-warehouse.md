@@ -1,22 +1,22 @@
 ---
-title: Przeprowadzanie migracji danych zdarzenia do usługi SQL Data Warehouse — Azure Event Hubs | Microsoft Docs
-description: W tym samouczku pokazano, w jaki sposób zapisać dane z centrum zdarzeń w magazynie danych SQL, korzystając z funkcji platformy Azure wyzwalanej przez usługę Event Grid.
+title: 'Samouczek: Migrowanie danych zdarzenia do SQL Data Warehouse platformy Azure Event Hubs'
+description: 'Samouczek: w tym samouczku pokazano, jak przechwytywać dane z centrum zdarzeń w usłudze SQL Data Warehouse przy użyciu funkcji platformy Azure wyzwalanej przez usługę Event Grid.'
 services: event-hubs
 author: ShubhaVijayasarathy
 manager: ''
 ms.author: shvija
 ms.custom: seodec18
-ms.date: 12/06/2018
+ms.date: 11/05/2019
 ms.topic: tutorial
 ms.service: event-hubs
-ms.openlocfilehash: 90a17839afdddb4d6ad8abfa57963b4c76b100ed
-ms.sourcegitcommit: 6ea7f0a6e9add35547c77eef26f34d2504796565
+ms.openlocfilehash: 92c414afbb8121eb03353c79dfe3a51e0cfa7ec0
+ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/14/2019
-ms.locfileid: "65604296"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73718885"
 ---
-# <a name="migrate-captured-event-hubs-data-to-a-sql-data-warehouse-using-event-grid-and-azure-functions"></a>Migrowanie przechwyconych danych usługi Event Hubs do usługi SQL Data Warehouse przy użyciu usług Event Grid i Azure Functions
+# <a name="tutorial-migrate-captured-event-hubs-data-to-a-sql-data-warehouse-using-event-grid-and-azure-functions"></a>Samouczek: Migrowanie przechwyconych danych Event Hubs do SQL Data Warehouse przy użyciu Event Grid i Azure Functions
 
 Funkcja [Capture](https://docs.microsoft.com/azure/event-hubs/event-hubs-capture-overview) usługi Event Hubs to najprostszy sposób, aby automatycznie dostarczać przesyłane strumieniowo dane z usługi Event Hubs do usługi Azure Blob Storage lub Azure Data Lake Store. Następnie można przetwarzać te dane i dostarczać je do dowolnie wybranego magazynu docelowego, na przykład usługi SQL Data Warehouse lub Cosmos DB. W tym samouczku dowiesz się, w jaki sposób zapisać dane z centrum zdarzeń w magazynie danych SQL, korzystając z funkcji platformy Azure wyzwalanej przez usługę [Event Grid](https://docs.microsoft.com/azure/event-grid/overview).
 
@@ -39,7 +39,7 @@ W tym samouczku wykonasz następujące czynności:
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-- [Visual studio 2019](https://www.visualstudio.com/vs/). Podczas instalacji zainstaluj następujące pakiety robocze: programowanie aplikacji klasycznych dla platformy .NET, programowanie na platformie Azure, tworzenie aplikacji na platformie ASP.NET i aplikacji internetowych, programowanie na platformie Node.js i programowanie w języku Python.
+- [Program Visual studio 2019](https://www.visualstudio.com/vs/). Podczas instalacji zainstaluj następujące pakiety robocze: programowanie aplikacji klasycznych dla platformy .NET, programowanie na platformie Azure, tworzenie aplikacji na platformie ASP.NET i aplikacji internetowych, programowanie na platformie Node.js i programowanie w języku Python.
 - Pobierz [dane przykładowe Git](https://github.com/Azure/azure-event-hubs/tree/master/samples/e2e/EventHubsCaptureEventGridDemo). Przykładowe rozwiązanie zawiera następujące składniki:
     - *WindTurbineDataGenerator* — prosty wydawca, który wysyła przykładowe dane turbiny wiatrowej do centrum zdarzeń, w którym włączono funkcję Capture.
     - *FunctionDWDumper* — funkcja platformy Azure, która odbiera powiadomienia usługi Event Grid, gdy plik Avro zostanie zapisany w obiekcie blob w usłudze Azure Storage. Odbiera ścieżkę identyfikatora URI obiektu blob, odczytuje jego zawartość i wypycha dane do usługi SQL Data Warehouse.
@@ -80,7 +80,7 @@ az group deployment create \
   --parameters eventHubNamespaceName=<event-hub-namespace> eventHubName=hubdatamigration sqlServerName=<sql-server-name> sqlServerUserName=<user-name> sqlServerPassword=<password> sqlServerDatabaseName=<database-name> storageName=<unique-storage-name> functionAppName=<app-name>
 ```
 
-#### <a name="azure-powershell"></a>Azure PowerShell
+#### <a name="azure-powershell"></a>Program Azure PowerShell
 Aby wdrożyć szablon przy użyciu programu PowerShell, użyj następujących poleceń:
 
 ```powershell
@@ -106,13 +106,13 @@ WITH (CLUSTERED COLUMNSTORE INDEX, DISTRIBUTION = ROUND_ROBIN);
 
 ## <a name="publish-code-to-the-functions-app"></a>Publikowanie kodu do aplikacji usługi Functions
 
-1. Otwórz rozwiązanie *EventHubsCaptureEventGridDemo.sln* w programie Visual Studio 2019 r.
+1. Otwórz rozwiązanie *EventHubsCaptureEventGridDemo. sln* w programie Visual Studio 2019.
 
 1. W Eksploratorze rozwiązań kliknij prawym przyciskiem myszy pozycję *FunctionEGDWDumper* i wybierz polecenie **Opublikuj**.
 
    ![Publikowanie aplikacji funkcji](./media/store-captured-data-data-warehouse/publish-function-app.png)
 
-1. Wybierz pozycję **Aplikacja funkcji platformy Azure**, a następnie pozycję **Wybierz istniejące**. Wybierz **publikowania**.
+1. Wybierz pozycję **Aplikacja funkcji platformy Azure**, a następnie pozycję **Wybierz istniejące**. Wybierz pozycję **Publikuj**.
 
    ![Docelowa aplikacja funkcji](./media/store-captured-data-data-warehouse/pick-target.png)
 
@@ -139,7 +139,7 @@ Po opublikowaniu funkcji możesz przystąpić do subskrybowania zdarzenia Captur
 
 1. Wybierz pozycję **Dodaj subskrypcję siatki zdarzeń**.
 
-   ![Dodaj subskrypcję](./media/store-captured-data-data-warehouse/add-event-grid-subscription.png)
+   ![Dodawanie subskrypcji](./media/store-captured-data-data-warehouse/add-event-grid-subscription.png)
 
 1. Nadaj nazwę subskrypcji siatki zdarzeń. Jako typu zdarzenia użyj wartości **Przestrzenie nazw usługi Event Hubs**. Podaj wartości, aby wybrać swoje wystąpienie przestrzeni nazw usługi Event Hubs. W polu punktu końcowego subskrybenta pozostaw podaną wartość. Wybierz pozycję **Utwórz**.
 
@@ -174,7 +174,7 @@ Konfiguracja centrum zdarzeń, magazynu danych SQL, aplikacji funkcji platformy 
 ## <a name="verify-captured-data-in-data-warehouse"></a>Weryfikowanie zapisanych danych w magazynie danych
 Po kilku minutach wyślij zapytanie do tabeli w magazynie danych SQL. Zauważysz, że dane generowane przez aplikację WindTurbineDataGenerator zostały przesłane strumieniowo do centrum Event Hub, zapisane w kontenerze usługi Azure Storage, a następnie przeniesione do tabeli usługi SQL Data Warehouse za pomocą funkcji platformy Azure.  
 
-## <a name="next-steps"></a>Kolejne kroki 
+## <a name="next-steps"></a>Następne kroki 
 Aby uzyskać praktyczne informacje, możesz użyć zaawansowanych narzędzi do wizualizacji danych w magazynie danych.
 
 W tym artykule przedstawiono sposób korzystania z usługi [Power BI z usługą SQL Data Warehouse](https://docs.microsoft.com/azure/sql-data-warehouse/sql-data-warehouse-integrate-power-bi)

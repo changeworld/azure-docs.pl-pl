@@ -6,12 +6,12 @@ ms.author: dacoulte
 ms.date: 10/01/2019
 ms.topic: sample
 ms.service: blueprints
-ms.openlocfilehash: 64af398ec4829a0336294b33fef102392b9a4099
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.openlocfilehash: 6549cf030772d805b063510b9931968027639511
+ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73163874"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73583138"
 ---
 # <a name="recommendation-mapping-of-the-cis-microsoft-azure-foundations-benchmark-blueprint-sample"></a>Rekomendacja zaleceń przykładowego planu testów usługi CIS Microsoft Azure
 
@@ -356,13 +356,13 @@ Ten plan przypisuje definicję [Azure Policy](../../../policy/overview.md) , kt�
 
 ## <a name="next-steps"></a>Następne kroki
 
-Po przejrzeniu mapowania kontroli w ramach planu porównawczego usługi CIS Microsoft Azure Zapoznaj się z poniższym artykułem, aby dowiedzieć się więcej na temat planu, lub odwiedź Azure Policy w Azure Portal, aby przypisać inicjatywę:
+Po przejrzeniu mapowania kontroli w ramach planu porównawczego usługi CIS Microsoft Azure Zapoznaj się z następującymi artykułami, aby dowiedzieć się więcej na temat planu, lub odwiedź Azure Policy w Azure Portal, aby przypisać inicjatywę:
 
 > [!div class="nextstepaction"]
-> [Plan porównawczy usług CIS Microsoft Azure — omówienie](./index.md)
-> [Azure Portal](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyMenuBlade/Definitions)
+> [Plan usługi cis Microsoft Azure — omówienie](./index.md)
+> usługi [CIS Microsoft Azure fundacje testów porównawczych — wdrażanie kroków](./deploy.md)
 
-Dodatkowe artykuły o planach i sposobach ich użycia:
+Dodatkowe artykuły na temat strategii i sposobu ich używania:
 
 - Uzyskaj informacje na temat [cyklu życia strategii](../../concepts/lifecycle.md).
 - Dowiedz się, jak używać [parametrów statycznych i dynamicznych](../../concepts/parameters.md).

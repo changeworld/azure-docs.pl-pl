@@ -7,13 +7,13 @@ manager: bertvanhoof
 ms.service: digital-twins
 services: digital-twins
 ms.topic: conceptual
-ms.date: 09/17/2019
-ms.openlocfilehash: 1186fec8d50d7e986d1c613cd96f741c34ca181a
-ms.sourcegitcommit: 0576bcb894031eb9e7ddb919e241e2e3c42f291d
+ms.date: 11/05/2019
+ms.openlocfilehash: 65e9e6235fd974a7731fa5e86322793f1b680ad9
+ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72372614"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73721316"
 ---
 # <a name="understand-digital-twins-object-models-and-spatial-intelligence-graph"></a>Zrozumienie modeli obiektów Digital bliźniaczych reprezentacji i grafu analizy przestrzennej
 
@@ -23,7 +23,7 @@ Modele obiektów Digital bliźniaczych reprezentacji opisują koncepcje, kategor
 
 Korzystając z modeli obiektów Digital bliźniaczych reprezentacji i Ontology na miejscu, można wypełnić _Wykres przestrzenny_. Wykresy przestrzenne to wirtualne reprezentacje wielu relacji między spacjami, urządzeniami i osobami, które są istotne dla rozwiązania IoT. Ten diagram przedstawia przykład wykresu przestrzennego, który używa inteligentnego kompilowania Ontology.
 
-[Kompilowanie wykresu przestrzennego @no__t 1Digital bliźniaczych reprezentacji](media/concepts/digital-twins-spatial-graph-building.png)](media/concepts/digital-twins-spatial-graph-building.png#lightbox)
+[![Kompilowanie wykresu przestrzennego Digital bliźniaczych reprezentacji](media/concepts/digital-twins-spatial-graph-building.png)](media/concepts/digital-twins-spatial-graph-building.png#lightbox)
 
 Wykres przestrzenny zawiera razem miejsca, urządzenia, czujniki i użytkowników. Każda z nich jest połączona w sposób, który modeluje świecie rzeczywistym. W tym przykładzie miejsce 43 ma cztery piętra, każdy z wielu różnych obszarów. Użytkownicy są powiązani ze swoimi stacjami roboczymi i mają dostęp do fragmentów grafu. Administrator ma uprawnienia do wprowadzania zmian w grafie przestrzennym, podczas gdy odwiedzający ma uprawnienia do wyświetlania tylko niektórych danych kompilacji.
 
@@ -31,19 +31,19 @@ Wykres przestrzenny zawiera razem miejsca, urządzenia, czujniki i użytkownikó
 
 Modele obiektów Digital bliźniaczych reprezentacji obsługują następujące główne kategorie obiektów:
 
-- **Spacje** są lokalizacjami wirtualnymi lub fizycznymi, na przykład `Tenant`, `Customer`, `Region` i `Venue`.
+- **Spacje** są lokalizacjami wirtualnymi lub fizycznymi, na przykład `Tenant`, `Customer`, `Region`i `Venue`.
 - **Urządzenia** są wirtualnymi lub fizycznymi elementami sprzętu, na przykład `AwesomeCompany Device` i `Raspberry Pi 3`.
 - **Czujniki** są obiektami, które wykrywają zdarzenia, na przykład `AwesomeCompany Temperature Sensor` i `AwesomeCompany Presence Sensor`.
 - **Użytkownicy** identyfikują użytkowników i ich cechy.
 
 Inne kategorie obiektów to:
 
-- **Zasoby** są dołączane do obszaru i zazwyczaj reprezentują zasoby platformy Azure, które mają być używane przez obiekty w grafie przestrzennym, na przykład `IoTHub`.
-- Obiekty **BLOB** są dołączone do obiektów (takich jak spacje, urządzenia, czujniki i użytkownicy). Są one używane jako pliki z typem MIME i metadanymi, na przykład `maps`, `pictures` i `manuals`.
+- **Zasoby** są dołączane do obszaru i zazwyczaj reprezentują zasoby platformy Azure, które mają być używane przez obiekty na wykresie przestrzennym, na przykład `IoTHub`.
+- Obiekty **BLOB** są dołączone do obiektów (takich jak spacje, urządzenia, czujniki i użytkownicy). Są one używane jako pliki z typem MIME i metadanymi, na przykład `maps`, `pictures`i `manuals`.
 - **Rozszerzone typy** to rozszerzalne wyliczenia, które rozszerzają jednostki o określonych cechach, na przykład `SpaceType` i `SpaceSubtype`.
-- **Ontologie** reprezentuje zestaw rozszerzonych typów, na przykład `Default`, `Building`, `BACnet` i `EnergyGrid`.
+- **Ontologie** reprezentuje zestaw rozszerzonych typów, na przykład `Default`, `Building`, `BACnet`i `EnergyGrid`.
 - **Klucze właściwości i wartości** to niestandardowe właściwości spacji, urządzeń, czujników i użytkowników. Mogą one być używane razem z wbudowaną charakterystyką, na przykład `DeltaProcessingRefreshTime` jako klucz i `10` jako wartość.
-- **Role** są zestawami uprawnień przypisanych do użytkowników i urządzeń w grafie przestrzennym, na przykład `Space Administrator`, `User Administrator` i `Device Administrator`.
+- **Role** są zestawami uprawnień przypisanych do użytkowników i urządzeń w grafie przestrzennym, na przykład `Space Administrator`, `User Administrator`i `Device Administrator`.
 - **Przypisania ról** są skojarzeniami między rolą a obiektem w grafie przestrzennym. Na przykład użytkownikowi lub jednostce usługi można udzielić uprawnienia do zarządzania przestrzenią w grafie przestrzennym.
 - **Magazyny kluczy zabezpieczeń** zapewniają klucze zabezpieczeń dla wszystkich urządzeń w hierarchii pod danym obiektem obszaru, aby umożliwić bezpieczne komunikowanie się urządzenia z bliźniaczych reprezentacji cyfrowym.
 - **Funkcje zdefiniowane przez użytkownika** (UDF) umożliwiają dostosowywalne przetwarzanie danych telemetrycznych czujnika w ramach wykresu przestrzennego. Na przykład UDF może:
@@ -52,7 +52,7 @@ Inne kategorie obiektów to:
   - Dołącz metadane do obszaru.
   - Wysyłaj powiadomienia po spełnieniu wstępnie zdefiniowanych warunków. Obecnie UDF można napisać w języku JavaScript.
 - **Dopasowania** są obiektami, które określają, które UDF są wykonywane dla danego komunikatu telemetrii.
-- **Punkty końcowe** to lokalizacje, w których można kierować komunikaty telemetryczne i cyfrowe zdarzenia bliźniaczych reprezentacji, na przykład `Event Hub`, `Service Bus` i `Event Grid`.
+- **Punkty końcowe** to lokalizacje, w których można kierować komunikaty telemetryczne i cyfrowe zdarzenia bliźniaczych reprezentacji, na przykład `Event Hub`, `Service Bus`i `Event Grid`.
 
 ## <a name="spatial-intelligence-graph"></a>Wykres analizy przestrzennej
 
@@ -85,7 +85,7 @@ https://YOUR_INSTANCE_NAME.YOUR_LOCATION.azuresmartspaces.net/management/swagger
 
  Pełny format adresu URL zostanie wyświetlony na tym obrazie.
 
-[@no__t — interfejs API zarządzania portalu 1Digital bliźniaczych reprezentacji](media/concepts/digital-twins-spatial-graph-management-api-url.png)](media/concepts/digital-twins-spatial-graph-management-api-url.png#lightbox)
+[![interfejsu API zarządzania portalu Digital bliźniaczych reprezentacji](media/concepts/digital-twins-spatial-graph-management-api-url.png)](media/concepts/digital-twins-spatial-graph-management-api-url.png#lightbox)
 
 Aby uzyskać więcej informacji na temat korzystania z wykresów analizy przestrzennej, odwiedź stronę usługi Azure Digital bliźniaczych reprezentacji Management Apis zobaczyć Preview.
 

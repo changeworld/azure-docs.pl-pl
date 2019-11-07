@@ -1,26 +1,24 @@
 ---
 title: Szyfrowanie — w spoczynku przy użyciu kluczy zarządzanych przez klienta w Azure Key Vault (wersja zapoznawcza)
 titleSuffix: Azure Cognitive Search
-description: Uzupełniaj szyfrowanie po stronie serwera za pośrednictwem indeksów i map synonimów w usłudze Azure Wyszukiwanie poznawcze za pomocą kluczy tworzonych i zarządzanych w Azure Key Vault.
+description: Uzupełniaj szyfrowanie po stronie serwera za pośrednictwem indeksów i map synonimów w usłudze Azure Wyszukiwanie poznawcze za pomocą kluczy tworzonych i zarządzanych w Azure Key Vault. Ta funkcja jest obecnie w publicznej wersji zapoznawczej.
 manager: nitinme
 author: NatiNimni
 ms.author: natinimn
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 05/02/2019
-ms.openlocfilehash: 94c9d94edb9a9ca3f6117bd43ab9cefe1dad52a3
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.openlocfilehash: 1521abfa327c69648b38f02d1d6313baa369f304
+ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72794352"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73721751"
 ---
 # <a name="content-encryption-of-azure-cognitive-search-using-customer-managed-keys-in-azure-key-vault"></a>Szyfrowanie zawartości platformy Azure Wyszukiwanie poznawcze przy użyciu kluczy zarządzanych przez klienta w programie Azure Key Vault
 
-> [!Note]
-> Szyfrowanie za pomocą kluczy zarządzanych przez klienta jest w wersji zapoznawczej i nie jest przeznaczone do użycia w środowisku produkcyjnym. [Interfejs API REST w wersji 2019-05-06 — wersja zapoznawcza](search-api-preview.md) zawiera tę funkcję. Można również użyć zestawu .NET SDK w wersji 8,0-Preview.
->
-> Ta funkcja jest niedostępna w przypadku bezpłatnych usług. Musisz użyć usługi wyszukiwania do rozliczenia, która została utworzona w dniu lub po 2019-01-01. W tej chwili nie ma pomocy technicznej dla portalu.
+> [!IMPORTANT] 
+> Obsługa szyfrowania na poziomie spoczynku jest obecnie dostępna w publicznej wersji zapoznawczej. Funkcje wersji zapoznawczej są dostępne bez umowy dotyczącej poziomu usług i nie są zalecane w przypadku obciążeń produkcyjnych. Aby uzyskać więcej informacji, zobacz [Uzupełniające warunki korzystania z wersji zapoznawczych platformy Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/). [Interfejs API REST w wersji 2019-05-06 — wersja zapoznawcza](search-api-preview.md) i [zestaw SDK .net w wersji 8,0 — Podgląd](search-dotnet-sdk-migration-version-9.md) udostępnia tę funkcję. Obecnie nie ma obsługi portalu.
 
 Domyślnie usługa Azure Wyszukiwanie poznawcze szyfruje zawartość użytkownika w spoczynku z [kluczami zarządzanymi przez usługę](https://docs.microsoft.com/azure/security/fundamentals/encryption-atrest#data-encryption-models). Można uzupełnić domyślne szyfrowanie za pomocą dodatkowej warstwy szyfrowania przy użyciu kluczy tworzonych i zarządzanych w Azure Key Vault. Ten artykuł przeprowadzi Cię przez kroki.
 

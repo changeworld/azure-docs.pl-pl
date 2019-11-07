@@ -13,12 +13,12 @@ ms.author: ajburnle
 ms.reviewer: piotrci
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 016fbc8808c11f861dd4388ea5fb062c840187ea
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 1a1f4addf9bb1fff34d99867fb3730a9197c9c05
+ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68561981"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73721225"
 ---
 # <a name="sign-up-for-azure-active-directory-premium-editions"></a>Rejestrowanie w usłudze Azure Active Directory w wersji Premium
 Istnieje możliwość zakupienia usługi Azure Active Directory (Azure AD) w wersji Premium i skojarzenia jej z Twoją subskrypcją platformy Azure. Jeśli chcesz utworzyć nową subskrypcję platformy Azure, musisz również uaktywnić plan licencjonowania i dostęp do usługi Azure AD.
@@ -37,7 +37,7 @@ Zanim zarejestrujesz się w usłudze Active Directory — wersja Premium 1 lub P
 Zarejestrowanie się przy użyciu subskrypcji platformy Azure zawierającej wcześniej zakupione i aktywowane licencje usługi Azure AD powoduje automatyczne aktywowanie licencji w tym samym katalogu. W przeciwnym razie musisz aktywować plan licencjonowania i dostęp do usługi Azure AD. Aby uzyskać więcej informacji na temat aktywowania planu licencjonowania, zobacz [Aktywowanie nowego planu licencjonowania](#activate-your-new-license-plan). Aby uzyskać więcej informacji na temat aktywowania dostępu do usługi Azure AD, zobacz [Aktywowanie dostępu do usługi Azure AD](#activate-your-azure-ad-access). 
 
 ## <a name="sign-up-using-your-existing-azure-or-office-365-subscription"></a>Rejestrowanie się przy użyciu istniejącej subskrypcji platformy Azure lub usługi Office 365
-Jako subskrybent platformy Azure lub usługi Office 365 możesz zakupić usługę Azure Active Directory — wersje Premium w trybie online. Aby uzyskać szczegółowy opis kroków, zobacz [How to Purchase Azure Active Directory Premium - Existing Customers](https://channel9.msdn.com/Series/Azure-Active-Directory-Videos-Demos/How-to-Purchase-Azure-Active-Directory-Premium-Existing-Customer) (Jak kupić usługę Azure Active Directory — wersja Premium: istniejący klienci) lub [How to Purchase Azure Active Directory Premium - New Customers](https://channel9.msdn.com/Series/Azure-Active-Directory-Videos-Demos/How-to-Purchase-Azure-Active-Directory-Premium-New-Customers) (Jak kupić usługę Azure Active Directory — wersja Premium: nowi klienci).
+Jako subskrybent platformy Azure lub usługi Office 365 możesz zakupić usługę Azure Active Directory — wersje Premium w trybie online. Aby uzyskać szczegółowe instrukcje, zobacz [Jak kupić Azure Active Directory — wersja Premium nowych klientów](https://channel9.msdn.com/Series/Azure-Active-Directory-Videos-Demos/How-to-Purchase-Azure-Active-Directory-Premium-New-Customers).
 
 ## <a name="sign-up-using-your-enterprise-mobility--security-licensing-plan"></a>Rejestrowanie się przy użyciu planu licencjonowania pakietu Enterprise Mobility + Security
 Enterprise Mobility + Security to pakiet składający się z usług Azure AD Premium, Azure Information Protection i Microsoft Intune. Jeśli już masz licencję pakietu EMS, możesz rozpocząć pracę z usługą Azure AD przy użyciu jednej z następujących opcji licencjonowania:

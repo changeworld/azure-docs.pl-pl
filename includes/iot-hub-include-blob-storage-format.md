@@ -8,18 +8,18 @@ ms.topic: include
 ms.date: 03/15/2019
 ms.author: robinsh
 ms.custom: include file
-ms.openlocfilehash: c779147e464a592d45da8a9a2d8e812320dc23e8
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.openlocfilehash: 27a254b664e2035cc66109f7a473a3e9ef4d730e
+ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67183854"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73612133"
 ---
 <!-- This is the note explaining about the avro and json formats when routing to blob storage. -->
 > [!NOTE]
-> Mogą być zapisywane dane do usługi blob storage w jednym [Apache Avro](https://avro.apache.org/) formacie, który jest domyślna, czyli JSON (wersja zapoznawcza). 
+> Dane można zapisywać do magazynu obiektów BLOB w formacie [Apache Avro](https://avro.apache.org/) , który jest wartością domyślną lub JSON (wersja zapoznawcza). 
 >    
-> Funkcja do zakodowania w formacie JSON jest w wersji zapoznawczej we wszystkich regionach, w Centrum IoT Hub jest dostępna, z wyjątkiem wschodnie stany USA, zachodnie stany USA i Europa Zachodnia. Format kodowania można ustawić tylko w momencie konfigurowany jest punkt końcowy magazynu obiektów blob. Nie można zmienić format dla punktu końcowego, który już został skonfigurowany. Korzystając z formatu JSON, kodowanie, należy ustawić obiekt contentType na format JSON i contentEncoding na UTF-8 we właściwościach komunikatu systemu. 
+> Możliwość kodowania formatu JSON jest w wersji zapoznawczej we wszystkich regionach, w których IoT Hub jest dostępna, z wyjątkiem Wschodnie stany USA, zachodnie stany USA i Europa Zachodnia. Format kodowania można ustawić tylko w czasie, gdy jest skonfigurowany punkt końcowy magazynu obiektów BLOB. Nie można zmienić formatu dla punktu końcowego, który został już skonfigurowany. W przypadku korzystania z kodowania JSON należy ustawić wartość ContentType na JSON i contentEncoding na UTF-8 we właściwościach systemu komunikatów. 
 >
-> Aby uzyskać szczegółowe informacje o korzystaniu z punktu końcowego magazynu obiektów blob, zobacz [wskazówki dotyczące routingu w usłudze blob storage](../articles/iot-hub/iot-hub-devguide-messages-d2c.md#azure-blob-storage).
+> Aby uzyskać bardziej szczegółowe informacje na temat korzystania z punktu końcowego magazynu obiektów blob, zobacz [wskazówki dotyczące routingu do magazynu](../articles/iot-hub/iot-hub-devguide-messages-d2c.md#azure-storage).
 >

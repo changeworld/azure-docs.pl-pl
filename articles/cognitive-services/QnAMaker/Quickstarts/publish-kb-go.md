@@ -1,7 +1,7 @@
 ---
 title: 'Szybki Start: Publikowanie bazy wiedzy, REST i QnA Maker'
 titleSuffix: Azure Cognitive Services
-description: Ten przewodnik Szybki start oparty na protokole REST języka Go przeprowadzi Cię przez proces publikowania bazy wiedzy, który polega na wypchnięciu najnowszej wersji przetestowanej bazy wiedzy do dedykowanego indeksu usługi Azure Search reprezentującego opublikowaną bazę wiedzy. Zostanie również utworzony punkt końcowy, który można wywoływać w aplikacji lub czatbocie.
+description: Ten przewodnik Szybki Start oparty na interfejsie REST umożliwia opublikowanie bazy wiedzy i utworzenie punktu końcowego, który można wywołać w aplikacji lub rozmowie bot.
 services: cognitive-services
 author: diberry
 manager: nitinme
@@ -11,12 +11,12 @@ ms.subservice: qna-maker
 ms.topic: quickstart
 ms.date: 10/02/2019
 ms.author: diberry
-ms.openlocfilehash: 20e48d0c16281d6b1399d46f5ca9a7781cbaeea7
-ms.sourcegitcommit: 15e3bfbde9d0d7ad00b5d186867ec933c60cebe6
+ms.openlocfilehash: e6a38392b6f83479db9036eab944dc498382f5c4
+ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/03/2019
-ms.locfileid: "71840209"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73720978"
 ---
 # <a name="quickstart-publish-a-knowledge-base-in-qna-maker-using-go"></a>Szybki start: publikowanie bazy wiedzy w usłudze QnA Maker przy użyciu języka Go
 

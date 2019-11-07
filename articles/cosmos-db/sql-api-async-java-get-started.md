@@ -1,22 +1,22 @@
 ---
-title: 'Samouczek: Tworzenie aplikacji Java przy użyciu zestawu Async Java SDK na potrzeby zarządzania kontem interfejsu API SQL w usłudze Azure Cosmos DB'
+title: 'Samouczek: Tworzenie aplikacji Java za pomocą asynchronicznego zestawu Java SDK do zarządzania kontem interfejsu API SQL w Azure Cosmos DB'
 description: W tym samouczku pokazano, jak przechowywać dane oraz uzyskiwać do nich dostęp na koncie interfejsu API SQL w usłudze Azure Cosmos DB za pomocą aplikacji asynchronicznego języka Java.
 author: SnehaGunda
 ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
 ms.devlang: java
 ms.topic: tutorial
-ms.date: 12/15/2018
+ms.date: 11/05/2019
 ms.author: sngun
 Customer intent: As a developer, I want to build a Java application with the Async Java SDK to access and manage Azure Cosmos DB resources so that customers can utilize the global distribution, elastic scaling, multi-master, and other capabilities offered by Azure Cosmos DB.
-ms.openlocfilehash: 2a6f12bfe7aa3de028039d00c259a606d028a0e5
-ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
+ms.openlocfilehash: 972328ec5052f5089994efbb940ff00c889ae78f
+ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69614596"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73720870"
 ---
-# <a name="tutorial-build-a-java-app-with-the-async-java-sdk-to-manage-data-stored-in-a-sql-api-account"></a>Samouczek: Tworzenie aplikacji Java przy użyciu zestawu Async Java SDK na potrzeby zarządzania danymi przechowywanymi na koncie interfejsu API SQL
+# <a name="tutorial-build-a-java-app-with-the-async-java-sdk-to-manage-data-stored-in-a-sql-api-account"></a>Samouczek: Tworzenie aplikacji w języku Java za pomocą asynchronicznego zestawu Java SDK do zarządzania danymi przechowywanymi na koncie interfejsu API SQL
 
 > [!div class="op_single_selector"]
 > * [.NET](sql-api-get-started.md)
@@ -114,7 +114,7 @@ client = new AsyncDocumentClient.Builder()
 
 ## <a id="CreateDatabase"></a>Tworzenie bazy danych
 
-Utwórz bazę danych usługi Azure Cosmos za pomocą `createDatabaseIfNotExists()` metody klasy DocumentClient. Baza danych jest kontenerem logicznym magazynu dokumentów JSON podzielonym na partycje w kolekcjach.
+Utwórz bazę danych usługi Azure Cosmos za pomocą metody `createDatabaseIfNotExists()` klasy DocumentClient. Baza danych jest kontenerem logicznym magazynu dokumentów JSON podzielonym na partycje w kolekcjach.
 
 ```java
 private void createDatabaseIfNotExists() throws Exception 

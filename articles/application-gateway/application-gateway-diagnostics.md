@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 10/09/2019
 ms.author: victorh
-ms.openlocfilehash: 7b9cbd4e84f60b42e8eb6cb250a9b25f398fd4a0
-ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
+ms.openlocfilehash: 9e1fe0e5bae462715a8cb2950cca100f0f409325
+ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73176453"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73718729"
 ---
 # <a name="back-end-health-and-diagnostic-logs-for-application-gateway"></a>Zapasowe dzienniki kondycji i diagnostyczne dla Application Gateway
 
@@ -112,11 +112,11 @@ Masz trzy opcje przechowywania dzienników:
 
 Rejestrowanie aktywności jest automatycznie włączone dla wszystkich zasobów usługi Resource Manager. Aby rozpocząć zbieranie danych dostępnych w tych dziennikach, należy włączyć funkcję rejestrowania dostępu i wydajności. Aby włączyć rejestrowanie, wykonaj następujące czynności:
 
-1. Zanotuj identyfikator zasobu konta magazynu, w ramach którego są przechowywane dane dzienników. Ta wartość ma postać:/subscriptions/\<subscriptionId \>/resourceGroups/\<resource nazwa grupy \>/providers/Microsoft.Storage/storageAccounts/\<storage nazwa konta \>. Użyć możesz dowolnego konta magazynu w ramach subskrypcji. Te informacje możesz znaleźć w witrynie Azure Portal.
+1. Zanotuj identyfikator zasobu konta magazynu, w ramach którego są przechowywane dane dzienników. Ta wartość ma postać:/subscriptions/\<subskrypcji\>/resourceGroups/\<nazwa grupy zasobów\>/providers/Microsoft.Storage/storageAccounts/\<nazwa konta magazynu\>. Użyć możesz dowolnego konta magazynu w ramach subskrypcji. Te informacje możesz znaleźć w witrynie Azure Portal.
 
     ![Portal: Identyfikator zasobu dla konta magazynu](./media/application-gateway-diagnostics/diagnostics1.png)
 
-2. Zanotuj identyfikator zasobu bramy aplikacji, dla którego jest włączone rejestrowanie. Ta wartość ma postać:/subscriptions/\<subscriptionId \>/resourceGroups/\<resource nazwa grupy \>/providers/Microsoft.Network/applicationGateways/\<application bramy \>. Te informacje możesz znaleźć w portalu.
+2. Zanotuj identyfikator zasobu bramy aplikacji, dla którego jest włączone rejestrowanie. Ta wartość ma postać:/subscriptions/\<subskrypcji\>/resourceGroups/\<nazwa grupy zasobów\>/providers/Microsoft.Network/applicationGateways/\<nazwa bramy aplikacji\>. Te informacje możesz znaleźć w portalu.
 
     ![Portal: Identyfikator zasobu dla usługi Application Gateway](./media/application-gateway-diagnostics/diagnostics2.png)
 
@@ -213,7 +213,7 @@ W przypadku Application Gateway i WAF v2 dzienniki zawierają nieco więcej info
 |httpVersion     | Wersja protokołu HTTP żądania.        |
 |Hmaster     | Rozmiar odebranego pakietu w bajtach.        |
 |Hmaster| Rozmiar wysłanego pakietu, w bajtach.|
-|timeTaken| Czas (w milisekundach), przez jaki trwa przetwarzanie żądania i jego odpowiedź do wysłania. Ta wartość jest obliczana jako interwał od momentu, gdy Application Gateway otrzymuje pierwszy bajt żądania HTTP do momentu zakończenia operacji wysyłania odpowiedzi. Należy pamiętać, że pole czas wykonania zazwyczaj obejmuje czas, w którym żądania i pakiety odpowiedzi są przesyłane przez sieć. |
+|timeTaken| Czas (w **sekundach**) trwania żądania do przetworzenia i odpowiedź do wysłania. Ta wartość jest obliczana jako interwał od momentu, gdy Application Gateway otrzymuje pierwszy bajt żądania HTTP do momentu zakończenia operacji wysyłania odpowiedzi. Należy pamiętać, że pole czas wykonania zazwyczaj obejmuje czas, w którym żądania i pakiety odpowiedzi są przesyłane przez sieć. |
 |sslEnabled| Czy komunikacja z pulami zaplecza korzysta z protokołu SSL. Prawidłowe wartości są włączone i wyłączone.|
 |sslCipher| Mechanizm szyfrowania używany do komunikacji SSL (jeśli jest włączony protokół SSL).|
 |sslProtocol| Używany protokół SSL/TLS (jeśli jest włączony protokół SSL).|
@@ -263,7 +263,7 @@ Dziennik wydajności jest generowany tylko wtedy, gdy włączono go na każdym w
 |requestCount     | Liczba obsłużonych żądań.        |
 |Opóźnienie | Średnie opóźnienie (w milisekundach) żądań z wystąpienia do zaplecza, który obsługuje żądania. |
 |failedRequestCount| Liczba żądań zakończonych niepowodzeniem.|
-|kazany| Średnia przepływność od ostatniego dziennika, mierzona w bajtach na sekundę.|
+|Przepływność| Średnia przepływność od ostatniego dziennika, mierzona w bajtach na sekundę.|
 
 ```json
 {

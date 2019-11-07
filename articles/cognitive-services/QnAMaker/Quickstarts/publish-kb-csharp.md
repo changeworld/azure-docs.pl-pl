@@ -1,7 +1,7 @@
 ---
 title: 'Szybki Start: Publikowanie bazy wiedzy, REST C# i QNA Maker'
 titleSuffix: Azure Cognitive Services
-description: Ten przewodnik Szybki start oparty na protokole REST języka C# przeprowadzi Cię przez proces publikowania bazy wiedzy, który polega na wypchnięciu najnowszej wersji przetestowanej bazy wiedzy do dedykowanego indeksu usługi Azure Search reprezentującego opublikowaną bazę wiedzy. Zostanie również utworzony punkt końcowy, który można wywoływać w aplikacji lub czatbocie.
+description: Ten C# Przewodnik Szybki Start oparty na architekturze REST umożliwia opublikowanie bazy wiedzy i utworzenie punktu końcowego, który można wywołać w aplikacji lub rozmowie bot.
 services: cognitive-services
 author: diberry
 manager: nitinme
@@ -11,12 +11,12 @@ ms.subservice: qna-maker
 ms.topic: quickstart
 ms.date: 10/01/2019
 ms.author: diberry
-ms.openlocfilehash: 2b2c2ed43a229d929353767b229f8331b49a0e46
-ms.sourcegitcommit: 4f3f502447ca8ea9b932b8b7402ce557f21ebe5a
+ms.openlocfilehash: 8bb1b87e5df92605192a60c49a11f1995449d255
+ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71802899"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73721167"
 ---
 # <a name="quickstart-publish-a-knowledge-base-in-qna-maker-using-c"></a>Szybki start: publikowanie bazy wiedzy w usłudze QnA Maker przy użyciu języka C#
 
@@ -41,7 +41,7 @@ Ten przewodnik Szybki start wywołuje interfejsy API usługi QnA Maker:
 ## <a name="create-knowledge-base-project"></a>Tworzenie projektu bazy wiedzy
 
 1. Otwórz program Visual Studio 2019 Community Edition.
-1. Utwórz nowy projekt **aplikacja konsoli (.NET Core)** i nazwij projekt `QnaMakerQuickstart`. Zaakceptuj wartości domyślne pozostałych ustawień.
+1. Utwórz nowy projekt **aplikacja konsoli (.NET Core)** i nadaj nazwę projektowi `QnaMakerQuickstart`. Zaakceptuj wartości domyślne pozostałych ustawień.
 
 ## <a name="add-required-dependencies"></a>Dodawanie wymaganych zależności
 

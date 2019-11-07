@@ -12,14 +12,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
 ms.custom: mvc
-ms.date: 10/12/2019
+ms.date: 10/31/2019
 ms.author: spelluru
-ms.openlocfilehash: 5bf8aea05855d81e88face1dd507f0006cc19cab
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
-ms.translationtype: HT
+ms.openlocfilehash: a5f8c8c00a9f63558043167c5cf8269f9e139d54
+ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 11/04/2019
-ms.locfileid: "73483900"
+ms.locfileid: "73584969"
 ---
 # <a name="tutorial-set-up-a-classroom-lab"></a>Samouczek: konfigurowanie laboratorium na potrzeby zajęć 
 W tym samouczku skonfigurujesz laboratorium na potrzeby zajęć z maszynami wirtualnymi używanymi przez uczniów podczas zajęć.  
@@ -92,6 +92,11 @@ Właściciel laboratorium może dodawać innych użytkowników do roli **Twórca
     2. Aby jednocześnie uruchomić wszystkie maszyny wirtualne, wybierz pozycję **Rozpocznij wszystko** na pasku narzędzi. 
     3. Aby uruchomić konkretną maszynę wirtualną, wybierz strzałkę w dół w obszarze **stan**, a następnie wybierz polecenie **Uruchom**. Możesz również uruchomić maszynę wirtualną, wybierając maszynę wirtualną w pierwszej kolumnie, a następnie wybierając pozycję **Rozpocznij** na pasku narzędzi.
 
+    Aby uzyskać więcej informacji na temat tworzenia szablonów i zarządzania nimi oraz konfigurowania maszyn wirtualnych uczniów i zarządzania nimi, zobacz następujące artykuły: 
+    
+    - [Tworzenie szablonów laboratorium klas i zarządzanie nimi](how-to-create-manage-template.md)
+    - [Skonfiguruj pulę maszyn wirtualnych i zarządzaj nią](how-to-set-virtual-machine-passwords.md)
+
 ## <a name="add-users-to-the-lab"></a>Dodawanie użytkowników do laboratorium
 
 1. W menu po lewej stronie wybierz pozycję **Użytkownicy**. Domyślnie włączona jest opcja **Ogranicz dostęp**. Gdy to ustawienie jest włączone, a użytkownik nie znajduje się na liście użytkowników, nie może zarejestrować się w laboratorium nawet przy użyciu linku rejestracji. Tylko użytkownicy na liście mogą zarejestrować się w laboratorium przy użyciu przesłanego linku rejestracji. Podczas tej procedury dodasz użytkowników do listy. Możesz też wyłączyć opcję **Ogranicz dostęp**, co umożliwi użytkownikom zarejestrowanie się w laboratorium, pod warunkiem, że mają link rejestracji. 
@@ -105,29 +110,40 @@ Właściciel laboratorium może dodawać innych użytkowników do roli **Twórca
 
     ![Lista użytkowników](../media/how-to-configure-student-usage/users-list-new.png)
 
+    Nazwy użytkowników na liście zostaną wyświetlone po ich zarejestrowaniu do laboratorium. 
+    
 ## <a name="set-a-schedule-for-the-lab"></a>Ustaw harmonogram dla laboratorium
 Utwórz zaplanowane zdarzenie dla laboratorium, aby maszyny wirtualne w laboratorium były automatycznie uruchamiane/zatrzymywane w określonych godzinach. Określony wcześniej limit przydziału użytkownika to dodatkowy czas przypisany do każdego użytkownika poza zaplanowanym czasem. 
 
 1. Przejdź do strony **harmonogramy** , a następnie wybierz pozycję **Dodaj wydarzenie zaplanowane** na pasku narzędzi. 
 
     ![Przycisk dodawania harmonogramu na stronie harmonogramów](../media/how-to-create-schedules/add-schedule-button.png)
-2. Potwierdź, że jako **Typ zdarzenia**wybrano **Standard** . Wybierz pozycję **Rozpocznij tylko** , aby określić tylko godzinę rozpoczęcia dla maszyn wirtualnych. Wybierz pozycję **Zatrzymaj tylko** , aby określić tylko czas zatrzymania dla maszyn wirtualnych. 
-3. W sekcji **Repeat (powtarzanie** ) wybierz bieżący harmonogram. 
-
-    ![Przycisk dodawania harmonogramu na stronie harmonogramów](../media/how-to-create-schedules/select-current-schedule.png)
-4. Wybranie harmonogramu spowoduje otwarcie okna dialogowego **powtarzanie** . W tym oknie dialogowym wykonaj następujące czynności:
-    1. Upewnij się, że dla **każdego tygodnia** jest ustawiona wartość pole **powtarzanie** . 
-    3. Określ **datę rozpoczęcia**.
+2. Na stronie **Dodawanie zaplanowanego zdarzenia** wykonaj następujące czynności:
+    1. Upewnij się, że w polu **Standardowy** wybrano **Typ zdarzenia**.  
+    2. Określ **datę początkową** klasy. 
     4. Określ **godzinę rozpoczęcia** uruchamiania maszyn wirtualnych.
     5. Określ **czas zatrzymania** , w którym maszyny wirtualne mają zostać zamknięte. 
     6. Określ **strefę czasową** dla określonego czasu rozpoczęcia i zakończenia. 
-    2. Wybierz dni, w których harmonogram ma obowiązywać. W poniższym przykładzie wybrano poniedziałek-czwartek. 
+3. Na tej samej stronie **Dodawanie zaplanowanego zdarzenia** wybierz bieżący harmonogram w sekcji **powtarzanie** .  
+
+    ![Przycisk dodawania harmonogramu na stronie harmonogramów](../media/how-to-create-schedules/select-current-schedule.png)
+5. W oknie dialogowym **powtarzanie** wykonaj następujące czynności:
+    1. Upewnij się, że dla **każdego tygodnia** jest ustawiona wartość pole **powtarzanie** . 
+    2. Wybierz dni, w których harmonogram ma obowiązywać. W poniższym przykładzie wybrano poniedziałek-piątek. 
+    3. Wybierz **datę zakończenia** harmonogramu.
     8. Wybierz pozycję **Zapisz**. 
 
-5. Teraz na stronie **Dodawanie zaplanowanego zdarzenia** dla **notatek (opcjonalnie)** wprowadź dowolny opis lub uwagi dotyczące harmonogramu. 
-6. Na stronie **Dodawanie zaplanowanego zdarzenia** wybierz pozycję **Zapisz**. 
+        ![Ustaw harmonogram powtarzania](../media/how-to-create-schedules/set-repeat-schedule.png)
+
+3. Teraz na stronie **Dodawanie zaplanowanego zdarzenia** dla **notatek (opcjonalnie)** wprowadź dowolny opis lub uwagi dotyczące harmonogramu. 
+4. Na stronie **Dodawanie zaplanowanego zdarzenia** wybierz pozycję **Zapisz**. 
 
     ![Harmonogram tygodniowy](../media/how-to-create-schedules/add-schedule-page-weekly.png)
+5. Przejdź do daty rozpoczęcia w kalendarzu, aby sprawdzić, czy harmonogram został ustawiony.
+    
+    ![Zaplanuj w kalendarzu](../media/how-to-create-schedules/schedule-calendar.png)
+
+    Aby uzyskać więcej informacji na temat tworzenia harmonogramów dla klasy i zarządzania nimi, zobacz [Tworzenie harmonogramu dla laboratoriów zajęć i zarządzanie nim](how-to-create-schedules.md).
 
 ## <a name="send-invitation-emails-to-students"></a>Wyślij wiadomości e-mail z zaproszeniem do uczniów
 
@@ -139,6 +155,8 @@ Utwórz zaplanowane zdarzenie dla laboratorium, aby maszyny wirtualne w laborato
 
     ![Wyślij link rejestracji za pośrednictwem poczty e-mail](../media/tutorial-setup-classroom-lab/send-email.png)
 4. Stan **zaproszenia** zostanie wyświetlony na liście **Użytkownicy** . Stan powinien zostać zmieniony na **wysłanie** , a następnie do **wysłania &lt;Data&gt;** . 
+
+    Aby uzyskać więcej informacji na temat dodawania uczniów do klasy i zarządzania ich użyciem laboratorium, zobacz [jak skonfigurować użycie ucznia](how-to-configure-student-usage.md).
 
 ## <a name="next-steps"></a>Następne kroki
 W tym samouczku utworzono i skonfigurowano laboratorium na potrzeby zajęć. Aby dowiedzieć się, jak uczeń może uzyskać dostęp do maszyny wirtualnej w laboratorium przy użyciu linku rejestracyjnego, przejdź do następnego samouczka:

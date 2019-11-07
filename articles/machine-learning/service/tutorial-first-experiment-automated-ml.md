@@ -10,12 +10,12 @@ ms.author: tzvikei
 author: tsikiksr
 ms.reviewer: nibaccam
 ms.date: 11/04/2019
-ms.openlocfilehash: 98ebc8d9408d937730643056f65c3d8011c1fdc4
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
-ms.translationtype: HT
+ms.openlocfilehash: ecad41097786a40f7c605a686f085136856c950a
+ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 11/04/2019
-ms.locfileid: "73493470"
+ms.locfileid: "73581576"
 ---
 # <a name="tutorial-create-your-first-classification-model-with-automated-machine-learning"></a>Samouczek: Tworzenie pierwszego modelu klasyfikacji przy użyciu automatycznej uczenia maszynowego
 [!INCLUDE [applies-to-skus](../../../includes/aml-applies-to-enterprise-sku.md)]
@@ -171,18 +171,21 @@ W tym kontekście eksperymentu **VotingEnsemble** jest uznawany za najlepszy mod
 
 1. Wybierz przycisk **Wdróż najlepszy model** w lewym dolnym rogu.
 
-1. Wypełnij okienko **Wdróż najlepszy model** w następujący sposób:
+1. Wypełnij okienko **Wdróż model** w następujący sposób:
 
     Pole| Wartość
     ----|----
     Nazwa wdrożenia| My-automl-Deploy
     Opis wdrożenia| Moje pierwsze zautomatyzowane wdrożenie eksperymentu w usłudze Machine Learning
-    Skrypt oceniania| Automatyczne generowanie
-    Skrypt środowiska| Automatyczne generowanie
+    Typ obliczenia | Wybierz wystąpienie obliczeniowe platformy Azure (ACI)
+    Włączanie uwierzytelniania| Wyłącza. 
+    Korzystanie z wdrożeń niestandardowych| Wyłącza. Zezwala na Autogenerowanie domyślnego pliku sterownika (skrypt oceniania) i pliku środowiska. 
     
+    W tym przykładzie używamy ustawień domyślnych, które są dostępne w menu *Zaawansowane* . 
+
 1. Wybierz pozycję **Wdróż**.  
 
-    W okienku **zalecany model** zostanie wyświetlony komunikat o powodzeniu wdrożenia w obszarze **Wdróż stan** po zakończeniu wdrażania. Należy okresowo wybierać pozycję **Odśwież** , aby sprawdzić stan wdrożenia.
+    Zielony komunikat o powodzeniu pojawia się u góry ekranu **uruchamiania** , a w okienku **zalecany model** zostanie wyświetlony komunikat o stanie w obszarze **Wdróż stan**. Należy okresowo wybierać pozycję **Odśwież** , aby sprawdzić stan wdrożenia.
     
 Teraz masz działającą usługę sieci Web do generowania prognoz. 
 

@@ -1,6 +1,6 @@
 ---
-title: Używanie usługi Azure Event Grid do automatyzowania zmiany rozmiaru przekazanych obrazów| Microsoft Docs
-description: Usługa Azure Event Grid może być wyzwalana przy przekazywaniu obiektów blob do usługi Azure Storage. W ten sposób można wysyłać obrazy przekazane do usługi Azure Storage do innych usług, takich jak Azure Functions, zmieniać ich rozmiar i wprowadzać inne ulepszenia.
+title: 'Samouczek: automatyczne zmienianie rozmiarów przekazanych obrazów przy użyciu Azure Event Grid'
+description: 'Samouczek: Azure Event Grid mogą wyzwalać operacje przekazywania obiektów BLOB w usłudze Azure Storage. W ten sposób można wysyłać obrazy przekazane do usługi Azure Storage do innych usług, takich jak Azure Functions, zmieniać ich rozmiar i wprowadzać inne ulepszenia.'
 services: event-grid, functions
 author: spelluru
 manager: jpconnoc
@@ -9,17 +9,17 @@ ms.service: event-grid
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 01/29/2019
+ms.date: 11/05/2019
 ms.author: spelluru
 ms.custom: mvc
-ms.openlocfilehash: c09e2cd812dd34976218ff71036734466943e8cd
-ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
+ms.openlocfilehash: 4359ce859e3fbe270785c3cf4bbc673e71d19799
+ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "69623873"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73718219"
 ---
-# <a name="tutorial-automate-resizing-uploaded-images-using-event-grid"></a>Samouczek: Automatyzowanie zmiany rozmiaru przekazanych obrazów za pomocą usługi Event Grid
+# <a name="tutorial-automate-resizing-uploaded-images-using-event-grid"></a>Samouczek: Automatyzowanie zmiany rozmiarów załadowanych obrazów przy użyciu Event Grid
 
 [Azure Event Grid](overview.md) to usługa do obsługi zdarzeń dla chmury. Usługa Event Grid pozwala tworzyć subskrypcje zdarzeń zgłaszanych przez usługi platformy Azure lub zasoby innych firm.  
 
@@ -54,7 +54,7 @@ Ten samouczek zawiera informacje na temat wykonywania następujących czynności
 
 W celu ukończenia tego samouczka:
 
-Musisz wcześniej ukończyć poprzedni samouczek na temat usługi Blob Storage: [Przekazywanie danych obrazu w chmurze za pomocą usługi Azure Storage][previous-tutorial].
+Należy wykonać poprzedni samouczek dotyczący usługi BLOB Storage: [przekazywanie danych obrazu w chmurze z usługą Azure Storage][previous-tutorial].
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
@@ -266,13 +266,13 @@ Zwróć uwagę, że gdy przekazany obraz zniknie, jego kopia jest wyświetlana n
 
 # <a name="nodejs-v2-sdktabnodejs"></a>[Zestaw Node.js V2 SDK](#tab/nodejs)
 
-Kliknij pozycję **Choose File** (Wybierz plik), aby wybrać plik, a następnie kliknij przycisk **Upload Image** (Przekaż obraz). Po pomyślnym zakończeniu przekazywania w przeglądarce pojawi się strona z informacją o powodzeniu operacji. Kliknij link, aby powrócić do strony głównej. Kopia przekazanego obrazu jest wyświetlana w obszarze **Generated thumbnails** (Wygenerowane miniatury). Jeśli obraz nie jest widoczny, spróbuj ponownie załadować stronę. Rozmiar obrazu został zmieniony przez funkcję, obraz został dodany do kontenera *thumbnails* i pobrany przez klienta internetowego.
+Kliknij pozycję **Choose File** (Wybierz plik), aby wybrać plik, a następnie kliknij przycisk **Upload Image** (Przekaż obraz). Po pomyślnym zakończeniu przekazywania w przeglądarce pojawi się strona z informacją o powodzeniu operacji. Kliknij link, aby powrócić do strony głównej. Kopia przekazanego obrazu jest wyświetlana w obszarze **Generated thumbnails** (Wygenerowane miniatury). (Jeśli obraz nie pojawia się na początku, spróbuj załadować ponownie stronę). Rozmiar tego obrazu został zmieniony przez funkcję, dodano do kontenera *miniatur* i pobrane przez klienta sieci Web.
 
 ![Opublikowana aplikacja internetowa w przeglądarce](./media/resize-images-on-storage-blob-upload-event/upload-app-nodejs-thumb.png)
 
 # <a name="nodejs-v10-sdktabnodejsv10"></a>[Zestaw Node.js V10 SDK](#tab/nodejsv10)
 
-Kliknij pozycję **Choose File** (Wybierz plik), aby wybrać plik, a następnie kliknij przycisk **Upload Image** (Przekaż obraz). Po pomyślnym zakończeniu przekazywania w przeglądarce pojawi się strona z informacją o powodzeniu operacji. Kliknij link, aby powrócić do strony głównej. Kopia przekazanego obrazu jest wyświetlana w obszarze **Generated thumbnails** (Wygenerowane miniatury). Jeśli obraz nie jest widoczny, spróbuj ponownie załadować stronę. Rozmiar obrazu został zmieniony przez funkcję, obraz został dodany do kontenera *thumbnails* i pobrany przez klienta internetowego.
+Kliknij pozycję **Choose File** (Wybierz plik), aby wybrać plik, a następnie kliknij przycisk **Upload Image** (Przekaż obraz). Po pomyślnym zakończeniu przekazywania w przeglądarce pojawi się strona z informacją o powodzeniu operacji. Kliknij link, aby powrócić do strony głównej. Kopia przekazanego obrazu jest wyświetlana w obszarze **Generated thumbnails** (Wygenerowane miniatury). (Jeśli obraz nie pojawia się na początku, spróbuj załadować ponownie stronę). Rozmiar tego obrazu został zmieniony przez funkcję, dodano do kontenera *miniatur* i pobrane przez klienta sieci Web.
 
 ![Opublikowana aplikacja internetowa w przeglądarce](./media/resize-images-on-storage-blob-upload-event/upload-app-nodejs-thumb.png)
 

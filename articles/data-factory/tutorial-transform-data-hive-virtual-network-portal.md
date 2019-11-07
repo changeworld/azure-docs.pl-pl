@@ -1,5 +1,5 @@
 ---
-title: Przekształcanie danych za pomocą programu Hive w usłudze Azure Virtual Network | Microsoft Docs
+title: 'Przekształcanie danych przy użyciu programu Hive na platformie Azure Virtual Network '
 description: Ten samouczek zawiera instrukcje krok po kroku przekształcania danych przy użyciu działania programu Hive w usłudze Azure Data Factory.
 services: data-factory
 documentationcenter: ''
@@ -11,12 +11,12 @@ ms.date: 01/04/2018
 author: nabhishek
 ms.author: abnarain
 manager: craigg
-ms.openlocfilehash: b6e57500da0ca863f0c5810f625d6a4b0c56d1bf
-ms.sourcegitcommit: 9a699d7408023d3736961745c753ca3cec708f23
+ms.openlocfilehash: 73a43bdb859d39bd0cb8e3d4a3ed3f114fb2c156
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68277474"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73683432"
 ---
 # <a name="transform-data-in-azure-virtual-network-using-hive-activity-in-azure-data-factory"></a>Przekształcanie danych w usłudze Azure Virtual Network przy użyciu działania programu Hive w usłudze Azure Data Factory
 W tym samouczku witryna Azure Portal umożliwia tworzenie potoku usługi Data Factory przekształcającego dane przy użyciu działania programu Hive w klastrze usługi HDInsight, który znajduje się w usłudze Azure Virtual Network (VNet). Ten samouczek obejmuje następujące procedury:
@@ -26,7 +26,7 @@ W tym samouczku witryna Azure Portal umożliwia tworzenie potoku usługi Data Fa
 > * Tworzenie własnego środowiska Integration Runtime
 > * Tworzenie połączonych usług Azure Storage i Azure HDInsight
 > * Tworzenie potoku przy użycia działania Hive
-> * Wyzwalanie uruchomienia potoku.
+> * Wyzwalanie uruchomienia potoku
 > * Monitorowanie działania potoku 
 > * Sprawdzanie danych wyjściowych
 
@@ -40,7 +40,7 @@ Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpł
 - **Azure Virtual Network.** Jeśli nie masz sieci wirtualnej platformy Azure, utwórz ją, wykonując [te instrukcje](../virtual-network/quick-create-portal.md). W tym przykładzie usługa HDInsight znajduje się w usłudze Azure Virtual Network. Oto przykładowa konfiguracja usługi Azure Virtual Network. 
 
     ![Tworzenie sieci wirtualnej](media/tutorial-transform-data-using-hive-in-vnet-portal/create-virtual-network.png)
-- **Klaster usługi HDInsight.** Utwórz klaster usługi HDInsight i przyłącz go do sieci wirtualnej utworzonej w poprzednim kroku, postępując zgodnie z opisem podanym w artykule: [Extend Azure HDInsight using an Azure Virtual Network (Rozszerzanie usługi Azure HDInsight za pomocą usługi Azure Virtual Network)](../hdinsight/hdinsight-extend-hadoop-virtual-network.md). Oto przykładowa konfiguracja usługi HDInsight w sieci wirtualnej. 
+- **Klaster usługi HDInsight.** Utwórz klaster usługi HDInsight i przyłącz go do sieci wirtualnej utworzonej w poprzednim kroku, postępując zgodnie z opisem podanym w tym artykule: [Extend Azure HDInsight using an Azure Virtual Network (Rozszerzenie usługi Azure HDInsight za pomocą usługi Azure Virtual Network)](../hdinsight/hdinsight-extend-hadoop-virtual-network.md). Oto przykładowa konfiguracja usługi HDInsight w sieci wirtualnej. 
 
     ![Usługa HDInsight w sieci wirtualnej](media/tutorial-transform-data-using-hive-in-vnet-portal/hdinsight-virtual-network-settings.png)
 - Zainstalowanie programu **Azure PowerShell**. Wykonaj instrukcje podane w temacie [Instalowanie i konfigurowanie programu Azure PowerShell](/powershell/azure/install-Az-ps).
@@ -74,7 +74,7 @@ Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpł
 1. Zaloguj się do witryny [Azure Portal](https://portal.azure.com/).    
 2. Kliknij przycisk **Nowy** w lewym menu, kliknij pozycję **Dane + analiza**, a następnie kliknij pozycję **Data Factory**. 
    
-   ![Nowy-> Fabryka danych](./media/tutorial-transform-data-using-hive-in-vnet-portal/new-data-factory-menu.png)
+   ![Nowy->Fabryka danych](./media/tutorial-transform-data-using-hive-in-vnet-portal/new-data-factory-menu.png)
 3. Na stronie **Nowa fabryka danych** wprowadź jako **nazwę** wartość **ADFTutorialHiveFactory**. 
       
      ![Strona Nowa fabryka danych](./media/tutorial-transform-data-using-hive-in-vnet-portal/new-azure-data-factory.png)
@@ -92,7 +92,7 @@ Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpł
 4. Wybierz opcję **V2** w obszarze **Wersja**.
 5. Na liście **lokalizacja** wybierz lokalizację fabryki danych. Na liście są wyświetlane tylko lokalizacje obsługiwane na potrzeby tworzenia fabryk danych.
 6. Wybierz opcję **Przypnij do pulpitu nawigacyjnego**.     
-7. Kliknij przycisk **Utwórz**.
+7. Kliknij pozycję **Utwórz**.
 8. Na pulpicie nawigacyjnym jest widoczny następujący kafelek ze stanem: **Wdrażanie fabryki danych**. 
 
      ![kafelek Wdrażanie fabryki danych](media/tutorial-transform-data-using-hive-in-vnet-portal/deploying-data-factory.png)
@@ -166,7 +166,7 @@ W tej sekcji zredagujesz i wdrożysz dwie połączone usługi:
     2. Wybierz pozycję **MySelfHostedIR** w polu **Połącz za pośrednictwem środowiska Integration Runtime**.
     3. W polu **Nazwa konta magazynu** wybierz konto usługi Azure Storage. 
     4. Aby przetestować połączenie z kontem magazynu, kliknij pozycję **Testuj połączenie**.
-    5. Kliknij polecenie **Zapisz**.
+    5. Kliknij pozycję **Zapisz**.
    
         ![Określanie konta usługi Azure Blob Storage](./media/tutorial-transform-data-using-hive-in-vnet-portal/specify-azure-storage-account.png)
 
@@ -258,7 +258,7 @@ Pamiętaj o następujących kwestiach:
 
     ![Plik wyjściowy](./media/tutorial-transform-data-using-hive-in-vnet-portal/output-file.png)
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 W ramach tego samouczka wykonano następujące procedury: 
 
 > [!div class="checklist"]
@@ -266,7 +266,7 @@ W ramach tego samouczka wykonano następujące procedury:
 > * Tworzenie własnego środowiska Integration Runtime
 > * Tworzenie połączonych usług Azure Storage i Azure HDInsight
 > * Tworzenie potoku przy użycia działania Hive
-> * Wyzwalanie uruchomienia potoku.
+> * Wyzwalanie uruchomienia potoku
 > * Monitorowanie działania potoku 
 > * Sprawdzanie danych wyjściowych
 

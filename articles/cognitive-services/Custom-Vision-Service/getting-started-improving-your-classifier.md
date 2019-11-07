@@ -1,7 +1,7 @@
 ---
 title: Ulepszanie klasyfikatora — Custom Vision Service
 titleSuffix: Azure Cognitive Services
-description: Dowiedz się, jak poprawić jakość klasyfikatora.
+description: W tym artykule dowiesz się, jak ilość, jakość i różnorodność danych mogą poprawić jakość klasyfikatora w usłudze Custom Vision.
 services: cognitive-services
 author: PatrickFarley
 manager: nitinme
@@ -10,12 +10,12 @@ ms.subservice: custom-vision
 ms.topic: conceptual
 ms.date: 03/21/2019
 ms.author: pafarley
-ms.openlocfilehash: d71c750185589fd488df70b63fd48e9e674ee3dc
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: c2858d5f9bca662cbbcd48b2345a7dc2c7ae48b2
+ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68561052"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73718546"
 ---
 # <a name="how-to-improve-your-classifier"></a>Jak ulepszyć klasyfikatora
 
@@ -53,11 +53,11 @@ Upewnij się, że używasz obrazów reprezentatywnych dla elementów, które zos
 
 Aby rozwiązać ten problem, należy dołączyć różne obrazy, aby upewnić się, że klasyfikator będzie mógł również uogólnić. Poniżej przedstawiono kilka sposobów, w których można ustawić więcej różnorodnych szkoleń:
 
-* __Tle__ Dostarczaj obrazy obiektu przed różnymi tłem. Fotografie w kontekście naturalnym są lepsze niż zdjęcia przed neutralnym tłem, ponieważ zawierają więcej informacji dotyczących klasyfikatora.
+* __Tło:__ Dostarczaj obrazy obiektu przed różnymi tłem. Fotografie w kontekście naturalnym są lepsze niż zdjęcia przed neutralnym tłem, ponieważ zawierają więcej informacji dotyczących klasyfikatora.
 
     ![Obraz przykładów w tle](./media/getting-started-improving-your-classifier/background.png)
 
-* __Oświetlenia__ Dostarczaj obrazy z różnymi oświetleniem (czyli z użyciem technologii Flash, wysokiego narażenia itd.), zwłaszcza jeśli obrazy używane do przewidywania mają różne oświetlenie. Warto również używać obrazów z różnymi nasyceniami, odcieniami i jasnością.
+* __Oświetlenie:__ Dostarczaj obrazy z różnymi oświetleniem (czyli z użyciem technologii Flash, wysokiego narażenia itd.), zwłaszcza jeśli obrazy używane do przewidywania mają różne oświetlenie. Warto również używać obrazów z różnymi nasyceniami, odcieniami i jasnością.
 
     ![Obraz przedstawiający próbki oświetlenia](./media/getting-started-improving-your-classifier/lighting.png)
 
@@ -65,11 +65,11 @@ Aby rozwiązać ten problem, należy dołączyć różne obrazy, aby upewnić si
 
     ![Obraz przedstawiający rozmiar próbek](./media/getting-started-improving-your-classifier/size.png)
 
-* __Kąt kamery:__ Dostarczaj obrazy z różnymi kątami aparatu. Alternatywnie, jeśli wszystkie zdjęcia muszą zostać pobrane przy użyciu stałych kamer (takich jak aparaty nadzoru), należy przypisać inną etykietę do każdego regularnego obiektu, aby uniknąć zamontowania&mdash;interpretowania niepowiązanych obiektów (takich jak lampposts). jako kluczowa funkcja.
+* __Kąt kamery:__ Dostarczaj obrazy z różnymi kątami aparatu. Alternatywnie, jeśli wszystkie zdjęcia muszą zostać pobrane przy użyciu stałych kamer (takich jak aparaty nadzoru), należy przypisać inną etykietę do każdego regularnego obiektu, aby uniknąć zamontowania&mdash;interpretowania niepowiązanych obiektów (takich jak lampposts) jako kluczowa funkcja.
 
     ![Obraz przykładów kątowych](./media/getting-started-improving-your-classifier/angle.png)
 
-* __Stylów__ Dostarczaj obrazy o różnych stylach tej samej klasy (na przykład różne odmiany tego samego owocu). Jeśli jednak masz obiekty z istotnie różnymi stylami (np. myszą Mickey a myszą w czasie rzeczywistym), zalecamy etykietowanie ich jako oddzielnych klas w celu lepszego reprezentowania ich odrębnych funkcji.
+* __Styl:__ Dostarczaj obrazy o różnych stylach tej samej klasy (na przykład różne odmiany tego samego owocu). Jeśli jednak masz obiekty z istotnie różnymi stylami (np. myszą Mickey a myszą w czasie rzeczywistym), zalecamy etykietowanie ich jako oddzielnych klas w celu lepszego reprezentowania ich odrębnych funkcji.
 
     ![Obraz przykładów stylu](./media/getting-started-improving-your-classifier/style.png)
 
@@ -100,7 +100,7 @@ W przypadku użycia lub przetestowania klasyfikatora obrazu przez przesłanie ob
 
 ## <a name="visually-inspect-predictions"></a>Wizualne badanie prognoz
 
-Aby sprawdzić przewidywania obrazu, przejdź do karty __obrazy szkoleniowe__ , wybierz poprzednią iterację szkoleniową  w menu rozwijanym iteracja i sprawdź co najmniej jeden tag w sekcji **Tagi** . Widok powinien teraz wyświetlać czerwone pole wokół każdego obrazu, dla którego model nie mógł prawidłowo przewidzieć danego tagu.
+Aby sprawdzić przewidywania obrazu, przejdź do karty __obrazy szkoleniowe__ , wybierz poprzednią iterację szkoleniową w menu rozwijanym **iteracja** i sprawdź co najmniej jeden tag w sekcji **Tagi** . Widok powinien teraz wyświetlać czerwone pole wokół każdego obrazu, dla którego model nie mógł prawidłowo przewidzieć danego tagu.
 
 ![Obraz historii iteracji](./media/getting-started-improving-your-classifier/iteration.png)
 

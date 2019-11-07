@@ -7,12 +7,12 @@ ms.service: vpn-gateway
 ms.topic: conceptual
 ms.date: 10/08/2019
 ms.author: cherylmc
-ms.openlocfilehash: f4241b2ace2d7c86e1ed9036ca6d1da4a59eb61f
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 704dcd6335766a6058de4e520b8dcbca0d304c9d
+ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73517529"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73721476"
 ---
 # <a name="configure-a-vpn-client-for-p2s-vpn-connections-azure-ad-authentication-preview"></a>Konfigurowanie klienta VPN dla połączeń sieci VPN P2S: uwierzytelnianie usługi Azure AD (wersja zapoznawcza)
 
@@ -20,7 +20,7 @@ Ten artykuł pomaga skonfigurować klienta sieci VPN do łączenia się z sieci�
 
 ## <a name="profile"></a>Praca z profilami klientów
 
-Aby nawiązać połączenie, należy skonfigurować profil klienta sieci VPN na każdym komputerze, który chce nawiązać połączenie z siecią wirtualną. Można utworzyć profil klienta na komputerze, wyeksportować go, a następnie zaimportować do dodatkowych komputerów.
+Aby nawiązać połączenie, należy [pobrać](https://www.microsoft.com/p/azure-vpn-client-preview/9np355qt2sqb?rtc=1&activetab=pivot:overviewtab) klienta sieci VPN platformy Azure i skonfigurować profil klienta sieci VPN na każdym komputerze, który chce nawiązać połączenie z siecią wirtualną. Można utworzyć profil klienta na komputerze, wyeksportować go, a następnie zaimportować do dodatkowych komputerów.
 
 ### <a name="cert"></a>Aby utworzyć profil klienta oparty na certyfikacie
 
@@ -30,7 +30,7 @@ Podczas pracy z profilem opartym na certyfikatach upewnij się, że odpowiednie 
 
 ### <a name="radius"></a>Aby utworzyć profil klienta usługi RADIUS
 
-  ![Promienie](./media/openvpn-azure-ad-client/create/create-radius1.jpg)
+  ![promienie](./media/openvpn-azure-ad-client/create/create-radius1.jpg)
 
 ### <a name="export"></a>Aby wyeksportować i rozpowszechnić profil klienta
 

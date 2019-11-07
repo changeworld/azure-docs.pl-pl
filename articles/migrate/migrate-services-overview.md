@@ -4,30 +4,30 @@ description: Ten artykuł zawiera omówienie usługi Azure Migrate.
 author: rayne-wiselman
 ms.service: azure-migrate
 ms.topic: overview
-ms.date: 10/22/2019
+ms.date: 11/05/2019
 ms.author: raynew
 ms.custom: mvc
-ms.openlocfilehash: def0832898170e0a278c403349eab1bd89050a57
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: eadfc4e302f4445e8e0d5105aeac4361328cb259
+ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73498750"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73715457"
 ---
 # <a name="about-azure-migrate"></a>Informacje o usłudze Azure Migrate
 
 Ten artykuł zawiera krótkie omówienie Azure Migrate.
 
-Azure Migrate ułatwia Migrowanie ze swojego miejsca lokalnego na platformę Azure. Azure Migrate udostępnia scentralizowany centrum do śledzenia odnajdywania, oceny i migracji lokalnej infrastruktury, aplikacji i danych na platformę Azure. Centrum udostępnia narzędzia i usługi platformy Azure do oceny i migracji, a także oferty niezależnych dostawców oprogramowania (ISV) innych firm. Azure Migrate zapewnia:
+Azure Migrate ułatwia Migrowanie przedsiębiorstwa z zasobów lokalnych na platformę Azure. Azure Migrate udostępnia scentralizowany centrum do śledzenia odnajdywania, oceny i migracji lokalnej infrastruktury, aplikacji i danych na platformę Azure.  Azure Migrate zapewnia:
 
 - **Ujednolicona platforma migracji**: pojedynczy Portal do uruchamiania, uruchamiania i śledzenia podróży migracji do platformy Azure.
-- **Zakres narzędzi**: narzędzia natywne i integracja z innymi usługami platformy Azure, a także z narzędziami niezależnych dostawców oprogramowania. Wybierz odpowiednie narzędzia do oceny i migracji, zgodnie z wymaganiami organizacji.
-- **Obciążenia**: Azure Migrate oferuje narzędzia do oceny i migracji dla:
-    - **Serwery**: Użyj narzędzi firmy Microsoft lub niezależnych dostawców oprogramowania do oceny i migracji serwerów do maszyn wirtualnych platformy Azure.
+- **Zakres narzędzi**: centrum udostępnia ocenę i migrację narzędzi Azure Migrate Tools oraz integruje się z innymi usługami platformy Azure, a także innymi narzędziami i ofertami niezależnych dostawców oprogramowania (ISV).
+- **Obciążenia**: Azure Migrate zapewnia ocenę i migrację dla:
+    - **Serwery**: Użyj oceny serwera Azure Migrate, migracji serwera Azure Migrate i innych narzędzi, aby ocenić i przeprowadzić migrację serwerów do maszyn wirtualnych platformy Azure.
     - **Bazy danych**: narzędzia firmy Microsoft i niezależnego dostawcy oprogramowania do oceny i migracji lokalnych baz danych do usługi Azure SQL DB lub wystąpienia zarządzanego Azure SQL.
     - **Aplikacje sieci Web**: Użyj asystenta Azure App Service, aby ocenić i zmigrować lokalne aplikacje sieci web do Azure App Service.
     - **Pulpity wirtualne**: Użyj narzędzi ISV do oceny i migracji lokalnej infrastruktury pulpitów wirtualnych (VDI) do pulpitu wirtualnego systemu Windows na platformie Azure.
-    - **Dane**: korzystaj z Azure Data Box rodziny produktów, aby szybko i ekonomicznie migrować dane na platformę Azure.
+    - **Dane**: korzystaj z Azure Data Box rodziny produktów, aby szybko i ekonomicznie migrować duże ilości danych na platformę Azure.
 
 ## <a name="azure-migrate-versions"></a>Wersje Azure Migrate
 
@@ -36,29 +36,47 @@ Obecnie istnieją dwie wersje usługi Azure Migrate:
 - **Bieżąca wersja**: Użyj tej wersji do tworzenia projektów Azure Migrate, odnajdywania maszyn lokalnych i organizowania ocen i migracji. [Dowiedz się więcej](whats-new.md) na temat Nowości w tej wersji.
 - **Poprzednia wersja**: Jeśli była używana Poprzednia wersja Azure Migrate (obsługiwana jest tylko Ocena lokalnych maszyn wirtualnych programu VMware), należy teraz używać bieżącej wersji. Nie można już tworzyć projektów Azure Migrate przy użyciu poprzedniej wersji, a firma Microsoft zaleca, aby nie wykonywać nowych odnajdywania. Aby uzyskać dostęp do istniejących projektów, w Azure Portal > **wszystkie usługi**, Wyszukaj **Azure Migrate**. Na pulpicie nawigacyjnym Azure Migrate istnieje powiadomienie i link umożliwiający dostęp do starych projektów Azure Migrate.
 
+
+
 ## <a name="isv-integration"></a>Integracja z niezależnego dostawcy oprogramowania
 
-Oprócz natywnych narzędzi firmy Microsoft Azure Migrate integruje się z innymi ofertami niezależnych dostawców oprogramowania. 
+Oprócz natywnych narzędzi platformy Azure Azure Migrate integruje się z innymi ofertami niezależnych dostawców oprogramowania. 
 
 **NIEZALEŻNEGO dostawcy oprogramowania** | **Funkcja**
 --- | ---
-[Cloudamize](https://www.cloudamize.com/platform) | Ocena
+[Carbonite](https://www.carbonite.com/globalassets/files/datasheets/carb-migrate4azure-microsoft-ds.pdf) | Migrate (Migracja)
+[Cloudamize](https://www.cloudamize.com/platform) | Ocena 
+[Technologia najmu](https://www.corenttech.com/AzureMigrate/) | Ocenianie i migrowanie
 [Urządzenie 42](https://docs.device42.com/) | Ocena
+[Lakeside](https://go.microsoft.com/fwlink/?linkid=2104908) | Ocena
+[Stojaki](https://go.microsoft.com/fwlink/?linkid=2102735) | Migrate (Migracja)
 [Platforma turbonomic](https://learn.turbonomic.com/azure-migrate-portal-free-trial) | Ocena
 [UnifyCloud](https://www.cloudatlasinc.com/cloudrecon/) | Ocena
-[Technologia najmu](https://www.corenttech.com/AzureMigrate/) | Ocenianie i migrowanie
-[Carbonite](https://www.carbonite.com/globalassets/files/datasheets/carb-migrate4azure-microsoft-ds.pdf) | Migrate (Migracja)
-[Lakeside](https://go.microsoft.com/fwlink/?linkid=2104908) | Ocena
+
+## <a name="tool-integration"></a>Integracja narzędzi
+
+Tabela zawiera podsumowanie innych narzędzi, które są zintegrowane w Azure Migrate.
+
+**Narzędzie** | **Szczegóły**
+--- | ---
+Azure Migrate: Ocena serwera | Ocenianie serwerów
+Azure Migrate: Migracja serwera | Migrowanie serwerów
+Asystent migracji bazy danych (DMA) | Ocenianie baz danych
+Database Migration Service (DMS) | Migrowanie baz danych
+Movere | Ocenianie serwerów
+Asystent migracji aplikacji sieci Web | Ocenianie i Migrowanie aplikacji sieci Web
 
 
 
-### <a name="selecting-an-isv-tool"></a>Wybieranie narzędzia niezależnego dostawcy oprogramowania
+### <a name="selecting-a-tool"></a>Wybieranie narzędzia
 
-Należy zidentyfikować potrzebne narzędzie i dodać je do projektu Azure Migrate.
+Zidentyfikuj potrzebne narzędzie i Dodaj je do projektu Azure Migrate.
 
-- Po dodaniu narzędzia niezależnego dostawcy oprogramowania Zacznij od uzyskania licencji lub rejestracji w celu skorzystania z bezpłatnej wersji próbnej zgodnie z zasadami niezależnych dostawców oprogramowania. Licencjonowanie narzędzi niezależnych dostawców oprogramowania jest zgodne z modelem licencjonowania niezależnego dostawcy oprogramowania.
-- W każdym narzędziu jest dostępna opcja nawiązywania połączenia z Azure Migrate. Postępuj zgodnie z instrukcjami i dokumentacją narzędzia, aby połączyć narzędzie z Azure Migrate. L
-- Możesz centralnie śledzić swoją drogę migracji z poziomu projektu Azure Migrate, w ramach narzędzi platformy Azure i niezależnych dostawców oprogramowania.
+- W przypadku dodawania narzędzia niezależnego dostawcy oprogramowania lub przenoszenia:
+    - Zacznij od uzyskania licencji lub zarejestrowania się w celu skorzystania z bezpłatnej wersji próbnej zgodnie z zasadami dotyczącymi narzędzi. Licencjonowanie dla narzędzi jest zgodne z modelem niezależnego dostawcy oprogramowania lub narzędzia.
+    - W każdym narzędziu jest dostępna opcja nawiązywania połączenia z Azure Migrate. Postępuj zgodnie z instrukcjami i dokumentacją narzędzia, aby połączyć narzędzie z Azure Migrate.
+- Możesz centralnie śledzić swoją drogę migracji z poziomu projektu Azure Migrate, na platformie Azure i w innych narzędziach.
+
 
 
 ## <a name="azure-migrate-server-assessment-tool"></a>Azure Migrate narzędzia do oceny serwera
@@ -83,15 +101,23 @@ Ocena serwera korzysta z uproszczonego urządzenia wdrażanego lokalnie i rejest
 Azure Migrate: Narzędzie do migracji serwera ułatwia Migrowanie lokalnych maszyn wirtualnych programu VMware, maszyn wirtualnych funkcji Hyper-V, serwerów fizycznych, innych maszyn wirtualnych i maszyn wirtualnych w chmurze publicznej na platformie Azure. Po dokonaniu oceny lub bez oceny można migrować maszyny.
 
 
-## <a name="database-assessment"></a>Ocena bazy danych
+## <a name="database-migration-assistant"></a>Asystent migracji bazy danych
 
 Azure Migrate integruje się z usługą Microsoft Data Migration Assistant (DMA) do oceny lokalnych baz danych SQL Server na potrzeby migracji do usługi Azure SQL DB, wystąpienia zarządzanego usługi Azure SQL lub maszyn wirtualnych platformy Azure z systemem SQL Server. DMA zawiera informacje o potencjalnych problemach z blokowaniem migracji. Identyfikuje Nieobsługiwane funkcje, a także nowe funkcje, z których można skorzystać po migracji, i pomaga identyfikować właściwą ścieżkę do migracji bazy danych. [Dowiedz się więcej](https://docs.microsoft.com/sql/dma/dma-overview?view=sql-server-2017).
 
-## <a name="database-migration"></a>Migracja bazy danych
+## <a name="database-migration-service"></a>Usługa migracji bazy danych
 
 Azure Migrate integruje się z Azure Database Migration Service (DMS) w celu migrowania lokalnych baz danych na platformę Azure. Usługa DMS służy do migrowania lokalnych baz danych do maszyn wirtualnych platformy Azure z uruchomionymi usługami SQL, Azure SQL DB i Azure SQL. [Dowiedz się więcej](https://docs.microsoft.com/azure/dms/dms-overview).
 
-## <a name="web-app-migration"></a>Migracja aplikacji sieci Web
+## <a name="movere"></a>Movere
+
+ 
+Środowisko przenoszenia jest platformą SaaS, która zwiększa analizę biznesową przez dokładne prezentowanie całego środowiska IT w jednym dniu. Gdy organizacje rosną, zmieniają i optymalizują cyfrowo, rozwiązanie zapewnia przedsiębiorstwom pewność, że muszą mieć wgląd i kontrolę nad swoimi środowiskami niezależnie od platformy, aplikacji lub lokalizacji geograficznej. Produkt przenoszenia został [uzyskany](https:/azure.microsoft.com/blog/microsoft-acquires-movere-to-help-customers-unlock-cloud-innovation-with-seamless-migration-tools) przez firmę Microsoft i nie jest już sprzedawany jako oferta samodzielna.  Program do przenoszenia jest dostępny w ramach oceny rozwiązań firmy Microsoft i programów ekonomii chmur. [Dowiedz się więcej](https://www.movere.io) o obszarze przenoszenia. Jeśli masz pytania, prześlij je do: movereq@microsoft.com lub skontaktuj się z przedstawicielem firmy Microsoft.
+
+Zachęcamy również do Azure Migrate, naszej wbudowanej usługi migracji. Azure Migrate udostępnia centralne centrum upraszczające migrację do chmury. Funkcja centrum oferuje kompleksową obsługę różnych obciążeń, w tym serwerów fizycznych i wirtualnych, baz danych i aplikacji. Kompleksowa widoczność ułatwia śledzenie postępu w zakresie odnajdywania, oceny i migracji. W przypadku narzędzi platformy Azure i partnera niezależnego dostawcy oprogramowania Azure Migrate również zawiera szeroką gamę funkcji, w tym odnajdywanie serwerów wirtualnych i fizycznych, oparte na wydajności właściwe ustalanie rozmiarów, planowanie kosztów, oceny oparte na imporcie i aplikacja bez wykorzystania agentów analiza zależności. Jeśli szukasz pomocy eksperta, firma Microsoft ma wykwalifikowany [dostawca usług zarządzanych przez ekspertów platformy Azure](https://azure.microsoft.com/partners) , który poprowadzi Cię przez proces podróży. Zapoznaj się z [witryną sieci web Azure Migrate](https://azure.microsoft.com/services/azure-migrate/). 
+ 
+
+## <a name="web-app-migration-assistant"></a>Asystent migracji aplikacji sieci Web
 
 Azure Migrate integruje się z Asystent migracji Azure App Service. Z poziomu Centrum Azure Migrate można oceniać i migrować lokalne aplikacje sieci Web na platformę Azure przy użyciu Asystenta w następujący sposób:
 
@@ -99,6 +125,8 @@ Azure Migrate integruje się z Asystent migracji Azure App Service. Z poziomu Ce
 - **Migrowanie aplikacji sieci Web**: Migruj aplikacje sieci Web platformy .NET i php na platformę Azure przy użyciu Asystent migracji Azure App Service.
 
 [Dowiedz się więcej](https://appmigration.microsoft.com/) o Asystencie.
+
+
 
 ## <a name="offline-data-migration"></a>Migracja danych w trybie offline
 

@@ -1,20 +1,20 @@
 ---
-title: Samouczek — Aktualizowanie asortymentu magazynu sklepu sieciowego przy użyciu kanałów publikowania/subskrypcji i filtrów tematów za pomocą interfejsu wiersza polecenia Azure | Microsoft Docs
-description: W tym samouczku przedstawiono, jak wysyłać i odbierać komunikaty z tematu i subskrypcji oraz jak dodawać reguły filtru i używać ich za pomocą interfejsu wiersza polecenia Azure
+title: 'Samouczek: aktualizowanie asortymentu zapasów detalicznych za pomocą kanałów publikowania/subskrybowania i filtrów tematów za pomocą interfejsu wiersza polecenia platformy Azure'
+description: 'Samouczek: w tym samouczku dowiesz się, jak wysyłać i odbierać komunikaty z tematu i subskrypcji oraz jak dodawać reguły filtrów i używać ich przy użyciu interfejsu wiersza polecenia platformy Azure'
 services: service-bus-messaging
 author: spelluru
 manager: timlt
 ms.author: spelluru
-ms.date: 09/22/2018
+ms.date: 11/05/2019
 ms.topic: tutorial
 ms.service: service-bus-messaging
 ms.custom: mvc
-ms.openlocfilehash: e55c8c6a579489c8ed5a13ccb93f0e72c286ab13
-ms.sourcegitcommit: cfbc8db6a3e3744062a533803e664ccee19f6d63
+ms.openlocfilehash: 0bd0d8eb8abe6f320f73e35b1e3b08e1d8dc1de3
+ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/21/2019
-ms.locfileid: "65991941"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73718913"
 ---
 # <a name="tutorial-update-inventory-using-cli-and-topicssubscriptions"></a>Samouczek: aktualizowanie magazynu przy użyciu interfejsu wiersza polecenia oraz tematów/subskrypcji
 
@@ -50,7 +50,7 @@ Jeśli zdecydujesz się zainstalować interfejs wiersza polecenia i korzystać z
 
 Każda [subskrypcja tematu](service-bus-messaging-overview.md#topics) może otrzymywać kopie wszystkich komunikatów. Tematy są w pełni protokołowane i semantycznie zgodne z kolejkami usługi Service Bus. Tematy usługi Service Bus obsługują najróżniejsze reguły wyboru z warunkami filtru, z użyciem opcjonalnych akcji, które ustawiają lub modyfikują właściwości komunikatów. Za każdym razem, gdy reguła pasuje, generuje komunikat. Aby dowiedzieć się więcej o regułach, filtrach i akcjach, kliknij ten [link](topic-filters.md).
 
-## <a name="sign-in-to-azure"></a>Logowanie do platformy Azure
+## <a name="sign-in-to-azure"></a>Zaloguj się w usłudze Azure
 
 Po zainstalowaniu interfejsu wiersza polecenia otwórz wiersz polecenia i uruchom następujące polecenia, aby zalogować się na platformie Azure. Te kroki nie są konieczne, jeśli używasz usługi Cloud Shell:
 
@@ -126,13 +126,13 @@ Po uruchomieniu ostatniego polecenia skopiuj i wklej parametry połączenia oraz
 
 ## <a name="create-filter-rules-on-subscriptions"></a>Tworzenie reguł filtrowania dla subskrypcji
 
-Po aprowizowaniu przestrzeni nazw i tematu/subskrypcji i jeśli posiadasz niezbędne poświadczenia, możesz utworzyć reguły filtrowania w subskrypcji, a następnie wysyłać i odbierać komunikaty. Kod można analizować w [tym folderze przykładów usługi GitHub](https://github.com/Azure/azure-service-bus/tree/master/samples/Java/azure-servicebus/TopicFilters).
+Po aprowizowaniu przestrzeni nazw i tematu/subskrypcji i jeśli posiadasz niezbędne poświadczenia, możesz utworzyć reguły filtrowania w subskrypcji, a następnie wysyłać i odbierać komunikaty. Kod można zbadać w [tym folderze przykładów usługi GitHub](https://github.com/Azure/azure-service-bus/tree/master/samples/Java/azure-servicebus/TopicFilters).
 
 ## <a name="send-and-receive-messages"></a>Wysyłanie i odbieranie komunikatów
 
 1. Upewnij się, że usługa Cloud Shell jest uruchomiona i wyświetla wiersz polecenia Bash.
 
-2. Sklonuj [repozytorium GitHub usługi Service Bus](https://github.com/Azure/azure-service-bus/), wydając następujące polecenie:
+2. Sklonuj [repozytorium GitHub usługi Service Bus](https://github.com/Azure/azure-service-bus/), wpisując następujące polecenie:
 
    ```shell
    git clone https://github.com/Azure/azure-service-bus.git
@@ -145,7 +145,7 @@ Po aprowizowaniu przestrzeni nazw i tematu/subskrypcji i jeśli posiadasz niezb�
    ```shell
    mvn clean package -DskipTests
    ```
-4. Aby uruchomić program, wydaj następujące polecenie. Pamiętaj, aby zastąpić symbole zastępcze parametrami połączenia oraz nazwą tematu uzyskaną w poprzednim kroku:
+4. Aby uruchomić program, wpisz następujące polecenie. Pamiętaj, aby zastąpić symbole zastępcze parametrami połączenia oraz nazwą tematu uzyskaną w poprzednim kroku:
 
    ```shell
    java -jar .\target\tutorial-topics-subscriptions-filters-1.0.0-jar-with-dependencies.jar -c "myConnectionString" -t "myTopicName"
@@ -326,9 +326,9 @@ public CompletableFuture<Void> receiveAllMessageFromSubscription(String subscrip
 ```
 
 > [!NOTE]
-> Możesz zarządzać zasobami usługi Service Bus przy użyciu [Eksploratora usługi Service Bus](https://github.com/paolosalvatori/ServiceBusExplorer/). Eksplorator usługi Service Bus pozwala użytkownikom na łączenie do przestrzeni nazw usługi Service Bus i administrować jednostek obsługi komunikatów w łatwy sposób. To narzędzie zawiera zaawansowane funkcje, takie jak funkcja Importuj/Eksportuj lub możliwość testowania tematu, kolejek, subskrypcji, usługi przekazywania, usługi notification hubs i centrów zdarzeń. 
+> Za pomocą [eksploratora Service Bus](https://github.com/paolosalvatori/ServiceBusExplorer/)można zarządzać zasobami Service Bus. Eksplorator Service Bus umożliwia użytkownikom łączenie się z przestrzenią nazw Service Bus i administrowanie jednostkami obsługi komunikatów w prosty sposób. Narzędzie zapewnia zaawansowane funkcje, takie jak funkcja importowania/eksportowania lub możliwość testowania tematów, kolejek, subskrypcji, usług przekazywania, centrów powiadomień i centrów zdarzeń. 
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 W tym samouczku zainicjowano zasoby przy użyciu interfejsu wiersza polecenia Azure, a następnie wysłano i odebrano komunikaty z tematu usługi Service Bus i jego subskrypcji. W tym samouczku omówiono:
 

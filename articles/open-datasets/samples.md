@@ -1,5 +1,5 @@
 ---
-title: Przykładowe notesy Jupyter korzystające z otwartego zestawu danych NOAA
+title: Przykładowe notesy Jupyter korzystające z danych NOAA
 titleSuffix: Azure Open Datasets
 description: Użyj przykładowych notesów Jupyter dla platformy Azure Otwórz zestawy danych, aby dowiedzieć się, jak ładować otwarte zestawy danych i używać ich do wzbogacania dane demonstracyjne. Techniki obejmują użycie platformy Spark i Pandas do przetwarzania danych.
 ms.service: open-datasets
@@ -7,12 +7,12 @@ ms.topic: sample
 author: cjgronlund
 ms.author: cgronlun
 ms.date: 11/04/2019
-ms.openlocfilehash: 2ccdb7adcae40d22a36fbfb47fba6e4c87b3349a
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
-ms.translationtype: HT
+ms.openlocfilehash: 8b96a35db91a282be1fb5e4c6143e6bd0a0203f2
+ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73496568"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73606141"
 ---
 # <a name="example-jupyter-notebooks-show-how-to-enrich-data-with-open-datasets"></a>Przykładowe notesy Jupyter pokazują, jak wzbogacać dane za pomocą otwartych zestawów danych 
 Przykład Jupyter notesów dla usługi Azure Open DataSets pokazują, jak ładować otwarte zestawy danych i używać ich do wzbogacania dane demonstracyjne. Techniki obejmują używanie Apache Spark i Pandas do przetwarzania danych.
@@ -40,6 +40,6 @@ Przykład Jupyter notesów dla usługi Azure Open DataSets pokazują, jak ładow
 
 ## <a name="next-steps"></a>Następne kroki
 
-* [Samouczek: Modelowanie regresji z automatycznym uczeniem maszynowym i otwartym zestawem danych](tutorial-opendatasets-automl.md)
+* [Samouczek: Modelowanie regresji z automatycznym uczeniem maszynowym i otwartym zestawem danych](/azure/machine-learning/service/tutorial-auto-train-models?context=azure/open-datasets/context/open-datasets-context)
 * [Zestaw SDK języka Python dla otwartych zestawów danych](/python/api/azureml-opendatasets/azureml.opendatasets?view=azure-ml-py)
 * [Otwórz wykaz zestawów danych platformy Azure](https://azure.microsoft.com/services/open-datasets/catalog/)

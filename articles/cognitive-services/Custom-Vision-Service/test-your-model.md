@@ -1,7 +1,7 @@
 ---
 title: Testowanie i ponowne uczenie modelu — Custom Vision Service
 titleSuffix: Azure Cognitive Services
-description: Dowiedz się, jak przetestować obraz, a następnie użyć go do ponownego nauczenia modelu.
+description: W tym artykule pokazano, jak przetestować obraz, a następnie użyć go do ponownego nauczenia modelu w usłudze Custom Vision.
 services: cognitive-services
 author: anrothMSFT
 manager: nitinme
@@ -10,12 +10,12 @@ ms.subservice: custom-vision
 ms.topic: conceptual
 ms.date: 03/21/2019
 ms.author: anroth
-ms.openlocfilehash: 3f78f0b992581a44b030387f1bd0e37664df4cfd
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: c6ed8869f6d33609381a42fd22d728e9e5542802
+ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68560910"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73721201"
 ---
 # <a name="test-and-retrain-a-model-with-custom-vision-service"></a>Testowanie i ponowne uczenie modelu z Custom Vision Service
 
@@ -57,6 +57,6 @@ Aby użyć obrazu przesłanego wcześniej do szkolenia, wykonaj następujące cz
 
 3. Użyj przycisku __uczenie__ , aby ponownie przeprowadzić szkolenie klasyfikatora.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 [Ulepszanie klasyfikatora](getting-started-improving-your-classifier.md)

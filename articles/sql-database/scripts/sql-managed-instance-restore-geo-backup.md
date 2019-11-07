@@ -1,5 +1,5 @@
 ---
-title: Przykład programu PowerShell przywracanie geograficznej kopii zapasowej Azure SQL Database | Microsoft Docs
+title: Przykład programu PowerShell przywracanie geograficznej kopii zapasowej Azure SQL Database
 description: Azure PowerShell przykładowy skrypt do przywrócenia bazy danych wystąpienia zarządzanego Azure SQL z geograficznie nadmiarowej kopii zapasowej.
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: sstein
 ms.date: 07/03/2019
-ms.openlocfilehash: b6ad93d3b711726edd6891e5f6da2c8eef99d531
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 9de8819e82db12cb5625a449e4ea5bf2f028a44d
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68569714"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73691416"
 ---
 # <a name="use-powershell-to-restore-a-managed-instance-database-to-another-geo-region"></a>Przywracanie bazy danych wystąpienia zarządzanego w innym regionie geograficznym przy użyciu programu PowerShell
 
@@ -78,7 +78,7 @@ W tym skrypcie użyto następujących poleceń. Każde polecenie w tabeli stanow
 | [Restore-AzSqlInstanceDatabase](/powershell/module/az.sql/Restore-AzSqlInstanceDatabase) | Tworzy bazę danych w wystąpieniu zarządzanym z kopii zapasowej. |
 | [Remove-AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup) | Usuwa grupę zasobów wraz ze wszystkimi zagnieżdżonymi zasobami. |
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 Aby uzyskać więcej informacji na temat programu PowerShell, zobacz [dokumentację Azure PowerShell](/powershell/azure/overview).
 

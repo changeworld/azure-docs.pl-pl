@@ -1,5 +1,5 @@
 ---
-title: Tworzenie puli hostów pulpitów wirtualnych systemu Windows przy użyciu portalu Azure Marketplace — Azure
+title: Pula hostów usług pulpitu wirtualnego systemu Windows Azure Marketplace — Azure
 description: Jak utworzyć pulę hostów pulpitu wirtualnego systemu Windows przy użyciu witryny Azure Marketplace.
 services: virtual-desktop
 author: Heidilohr
@@ -7,12 +7,12 @@ ms.service: virtual-desktop
 ms.topic: tutorial
 ms.date: 08/30/2019
 ms.author: helohr
-ms.openlocfilehash: 76cb2e0378cc7a005232304174c1de887adfe387
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
-ms.translationtype: HT
+ms.openlocfilehash: e5be2490ebf756c030e6a53b226f91c49c7bccaf
+ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73482227"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73605581"
 ---
 # <a name="tutorial-create-a-host-pool-by-using-the-azure-marketplace"></a>Samouczek: Tworzenie puli hostów przy użyciu witryny Azure Marketplace
 
@@ -73,7 +73,9 @@ W bloku **Konfiguruj maszyny wirtualne** :
 W bloku **ustawienia maszyny wirtualnej** :
 
 >[!NOTE]
-> W przypadku dołączania maszyn wirtualnych do środowiska Azure Active Directory Domain Services (Azure AD DS) Upewnij się, że użytkownik przyłączania do domeny jest również członkiem [grupy Administratorzy kontrolera domeny usługi AAD](../active-directory-domain-services/tutorial-create-instance-advanced.md#configure-an-administrative-group).
+> W przypadku dołączania maszyn wirtualnych do środowiska Azure Active Directory Domain Services (Azure AD DS) Upewnij się, że użytkownik przyłączania do domeny jest członkiem [grupy Administratorzy kontrolera domeny usługi AAD](../active-directory-domain-services/tutorial-create-instance-advanced.md#configure-an-administrative-group).
+>
+> Konto musi być również częścią domeny zarządzanej usługi Azure AD DS lub dzierżawy usługi Azure AD z zewnętrznych katalogów skojarzonych z dzierżawą usługi Azure AD w trakcie procesu przyłączania do domeny. 
 
 1. W polu **Źródło obrazu**wybierz źródło i wprowadź odpowiednie informacje na temat sposobu ich znalezienia i sposobu ich przechowywania. W przypadku wybrania opcji nie używaj dysków zarządzanych wybierz konto magazynu zawierające plik VHD.
 2. Wprowadź główną nazwę użytkownika i hasło konta domeny, które będzie przyłączać maszyny wirtualne do domeny Active Directory. Ta sama nazwa użytkownika i hasło zostaną utworzone na maszynach wirtualnych jako konto lokalne. Możesz zresetować te konta lokalne później.

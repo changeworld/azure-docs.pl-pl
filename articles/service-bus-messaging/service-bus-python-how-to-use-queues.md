@@ -1,6 +1,6 @@
 ---
-title: 'Samouczek: korzystanie z kolejek Azure Service Bus w języku Python'
-description: Dowiedz się, jak używać kolejek Azure Service Bus w języku Python.
+title: 'Szybki Start: korzystanie z kolejek Azure Service Bus w języku Python'
+description: 'Szybki Start: informacje na temat korzystania z kolejek Azure Service Bus z poziomu języka Python.'
 services: service-bus-messaging
 documentationcenter: python
 author: axisc
@@ -11,18 +11,18 @@ ms.service: service-bus-messaging
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: python
-ms.topic: article
-ms.date: 04/10/2019
+ms.topic: quickstart
+ms.date: 11/05/2019
 ms.author: aschhab
 ms.custom: seo-python-october2019
-ms.openlocfilehash: 69ae02ea7c0c04312dd4e64125c80384172c6528
-ms.sourcegitcommit: 77bfc067c8cdc856f0ee4bfde9f84437c73a6141
+ms.openlocfilehash: 4319299eabb57451e3a25a69196a63094f66ab9b
+ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72438116"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73721626"
 ---
-# <a name="tutorial-use-azure-service-bus-queues-with-python"></a>Samouczek: korzystanie z kolejek Azure Service Bus w języku Python
+# <a name="quickstart-use-azure-service-bus-queues-with-python"></a>Szybki Start: korzystanie z kolejek Azure Service Bus w języku Python
 
 [!INCLUDE [service-bus-selector-queues](../../includes/service-bus-selector-queues.md)]
 
@@ -68,9 +68,9 @@ sb_client.create_queue("taskqueue", max_size_in_megabytes=5120,
 Aby uzyskać więcej informacji, zobacz [Azure Service Bus Dokumentacja języka Python](/python/api/overview/azure/servicebus?view=azure-python).
 
 ## <a name="send-messages-to-a-queue"></a>Wysyłanie komunikatów do kolejki
-Aby wysłać komunikat do kolejki Service Bus, aplikacja wywołuje metodę `send` w obiekcie `ServiceBusClient`.
+Aby wysłać komunikat do kolejki Service Bus, aplikacja wywołuje metodę `send` na obiekcie `ServiceBusClient`.
 
-W poniższym przykładzie pokazano, jak wysłać wiadomość testową do kolejki o nazwie `taskqueue` przy użyciu `send_queue_message`:
+Poniższy przykład pokazuje, jak wysłać wiadomość testową do kolejki o nazwie `taskqueue` przy użyciu `send_queue_message`:
 
 ```python
 from azure.servicebus import QueueClient, Message
@@ -89,7 +89,7 @@ Kolejki usługi Service Bus obsługują maksymalny rozmiar komunikatu 256 KB w [
 Aby uzyskać więcej informacji, zobacz [Azure Service Bus Dokumentacja języka Python](/python/api/overview/azure/servicebus?view=azure-python).
 
 ## <a name="receive-messages-from-a-queue"></a>Odbieranie komunikatów z kolejki
-Komunikaty są odbierane z kolejki przy użyciu metody `get_receiver` w obiekcie `ServiceBusService`:
+Komunikaty są odbierane z kolejki przy użyciu metody `get_receiver` na obiekcie `ServiceBusService`:
 
 ```python
 from azure.servicebus import QueueClient, Message
@@ -109,7 +109,7 @@ with queue_client.get_receiver() as queue_receiver:
 Aby uzyskać więcej informacji, zobacz [Azure Service Bus Dokumentacja języka Python](/python/api/overview/azure/servicebus?view=azure-python).
 
 
-Komunikaty są usuwane z kolejki, ponieważ są odczytywane, gdy parametr `peek_lock` ma wartość **Fałsz**. Można odczytać (wgląd) i zablokować komunikat bez usuwania go z kolejki, ustawiając parametr `peek_lock` na **true**.
+Komunikaty są usuwane z kolejki, ponieważ są odczytywane, gdy parametr `peek_lock` ma **wartość FAŁSZ**. Można odczytać (wgląd) i zablokować komunikat bez usuwania go z kolejki, ustawiając parametr `peek_lock` na **true**.
 
 Zachowanie odczytu i usunięcia komunikatu w ramach operacji odbierania jest najprostszym modelem i najlepiej sprawdza się w scenariuszach, w których aplikacja może tolerować nieprzetwarzanie komunikatu w przypadku awarii. Aby to zrozumieć, rozważmy scenariusz, w którym konsument wystawia żądanie odbioru, a następnie ulega awarii przed jego przetworzeniem. Ponieważ Service Bus oznaczył komunikat jako używany, a następnie aplikacja zostanie ponownie uruchomiona i rozpocznie korzystanie z komunikatów, zostanie pominięta wiadomość, która była używana przed awarią.
 

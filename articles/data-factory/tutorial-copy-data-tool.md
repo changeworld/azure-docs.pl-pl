@@ -1,5 +1,5 @@
 ---
-title: Kopiowanie danych przy użyciu narzędzia do kopiowania danych platformy Azure | Microsoft Docs
+title: Kopiowanie danych za pomocą narzędzia Kopiowanie danych platformy Azure
 description: Utwórz fabrykę danych platformy Azure, a następnie za pomocą narzędzia do kopiowania danych skopiuj dane z usługi Azure Blob Storage do usługi SQL Database.
 services: data-factory
 documentationcenter: ''
@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: tutorial
 ms.date: 09/11/2018
 ms.author: jingwang
-ms.openlocfilehash: a99f319c25613f811b48923c734b77b135b677bc
-ms.sourcegitcommit: 3073581d81253558f89ef560ffdf71db7e0b592b
+ms.openlocfilehash: 4646d7429dc4b3286f6af8861eaf7f1e6e27a760
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68827944"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73683608"
 ---
 # <a name="copy-data-from-azure-blob-storage-to-a-sql-database-by-using-the-copy-data-tool"></a>Kopiowanie danych z usługi Azure Blob Storage do usługi SQL Database przy użyciu narzędzia do kopiowania danych
 > [!div class="op_single_selector" title1="Wybierz używaną wersję usługi Data Factory:"]
@@ -36,9 +36,9 @@ Ten samouczek obejmuje wykonanie następujących kroków:
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-* **Subskrypcja platformy Azure**: Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpłatne konto](https://azure.microsoft.com/free/).
-* **Konto usługi Azure Storage**: Użyj magazynu obiektów blob jako _źródłowego_ magazynu danych. Jeśli nie masz konta usługi Azure Storage, zobacz instrukcje podane w temacie [Tworzenie konta magazynu](../storage/common/storage-quickstart-create-account.md).
-* **Azure SQL Database**: Użyj bazy danych SQL jako magazynu danych _ujścia_. Jeśli nie masz usługi SQL Database, zobacz instrukcje w temacie [Tworzenie bazy danych SQL](../sql-database/sql-database-get-started-portal.md).
+* **Subskrypcja platformy Azure**: jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpłatne konto](https://azure.microsoft.com/free/).
+* **Konto usługi Azure Storage**: użyj usługi Blob Storage jako _źródłowego_ magazynu danych. Jeśli nie masz konta usługi Azure Storage, zobacz instrukcje podane w temacie [Tworzenie konta magazynu](../storage/common/storage-quickstart-create-account.md).
+* **Azure SQL Database**: jako magazynu danych będącego _ujściem_ użyj bazy danych SQL. Jeśli nie masz usługi SQL Database, zobacz instrukcje w temacie [Tworzenie bazy danych SQL](../sql-database/sql-database-get-started-portal.md).
 
 ### <a name="create-a-blob-and-a-sql-table"></a>Tworzenie obiektu blob i tabeli SQL
 
@@ -75,7 +75,7 @@ Przygotuj usługi Blob Storage i SQL Database pod kątem tego samouczka, wykonuj
 
 ## <a name="create-a-data-factory"></a>Tworzenie fabryki danych
 
-1. Z menu po lewej stronie wybierz pozycję Utwórz**Data Factory** **analizy** >  **zasobów** > :
+1. W menu po lewej stronie wybierz pozycję **Utwórz zasób** > **Analytics** > **Data Factory**:
     
     ![Tworzenie nowej fabryki danych](./media/doc-common-process/new-azure-data-factory-menu.png)
 1. Na stronie **Nowa fabryka danych** w polu **Nazwa** wprowadź wartość **ADFTutorialDataFactory**.
@@ -116,7 +116,7 @@ Przygotuj usługi Blob Storage i SQL Database pod kątem tego samouczka, wykonuj
 
     b. Wybierz pozycję **Azure Blob Storage** z galerii, a następnie wybierz pozycję **Kontynuuj**.
 
-    c. Na stronie **Nowa połączona usługa** wybierz konto magazynu z listy **Nazwa konta magazynu**, a następnie wybierz przycisk **Zakończ**.
+    d. Na stronie **Nowa połączona usługa** wybierz konto magazynu z listy **Nazwa konta magazynu**, a następnie wybierz przycisk **Zakończ**.
 
     d. Wybierz nowo utworzoną połączoną usługę jako źródło, a następnie kliknij pozycję **Dalej**.
 
@@ -137,7 +137,7 @@ Przygotuj usługi Blob Storage i SQL Database pod kątem tego samouczka, wykonuj
 
     b. Wybierz **Azure SQL Database** z galerii, a następnie wybierz pozycję **Kontynuuj**.
 
-    c. Na stronie **Nowa połączona usługa** wybierz nazwę serwera i nazwę bazy danych z listy rozwijanej, wprowadź nazwę użytkownika i hasło, a następnie wybierz przycisk **Zakończ**.
+    d. Na stronie **Nowa połączona usługa** wybierz nazwę serwera i nazwę bazy danych z listy rozwijanej, wprowadź nazwę użytkownika i hasło, a następnie wybierz przycisk **Zakończ**.
 
     ![Konfigurowanie bazy danych Azure SQL](./media/tutorial-copy-data-tool/config-azure-sql-db.png)
 

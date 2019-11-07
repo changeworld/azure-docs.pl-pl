@@ -1,37 +1,42 @@
 ---
-title: Nawiązywanie połączenia z magazynem wiedzy przy użyciu Power BI
+title: Nawiązywanie połączenia z usługą Knowledge Store (wersja zapoznawcza) za pomocą Power BI
 titleSuffix: Azure Cognitive Search
-description: Połącz magazyn wiedzy platformy Azure Wyszukiwanie poznawcze z Power BI do analizy i eksploracji.
+description: Połącz usługę Azure Wyszukiwanie poznawcze Knowledge Store (wersja zapoznawcza) z Power BI do analizy i eksploracji.
 author: lisaleib
 manager: nitinme
 ms.author: v-lilei
 ms.service: cognitive-search
 ms.topic: tutorial
 ms.date: 11/04/2019
-ms.openlocfilehash: 03f28cb40708b7ec77a0a342b5ec1b6faeaa8e3b
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
-ms.translationtype: HT
+ms.openlocfilehash: 7b12f0f14003389d36e2df5bcffe7828c135cf2b
+ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73485160"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73715494"
 ---
 # <a name="connect-a-knowledge-store-with-power-bi"></a>Łączenie ze sklepem wiedzy Power BI
 
-> [!Note]
-> Magazyn wiedzy jest w wersji zapoznawczej i nie powinien być używany w środowisku produkcyjnym. Ta funkcja jest dostępna w portalu i [interfejsie API REST usługi Search w wersji 2019-05-06 — wersja zapoznawcza](search-api-preview.md) . W tej chwili nie ma obsługi zestawu SDK platformy .NET.
->
+> [!IMPORTANT] 
+> Magazyn wiedzy jest obecnie w publicznej wersji zapoznawczej. Funkcje wersji zapoznawczej są dostępne bez umowy dotyczącej poziomu usług i nie są zalecane w przypadku obciążeń produkcyjnych. Aby uzyskać więcej informacji, zobacz [Uzupełniające warunki korzystania z wersji zapoznawczych platformy Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/). [Interfejs API REST w wersji 2019-05-06 — wersja zapoznawcza](search-api-preview.md) zapewnia funkcje w wersji zapoznawczej. Dostępna jest obecnie ograniczona obsługa portalu i nie ma obsługi zestawu SDK platformy .NET.
 
 W tym artykule dowiesz się, jak nawiązać połączenie z magazynem wiedzy i poznać go przy użyciu Power Query w aplikacji Power BI Desktop. Możesz szybko zacząć korzystać z szablonów lub utworzyć niestandardowy pulpit nawigacyjny od podstaw.
 
-## <a name="prerequisites"></a>Wymagania wstępne
++ Wykonaj kroki opisane w temacie [Tworzenie sklepu z bazami danych w Azure Portal](knowledge-store-create-portal.md) lub [Utwórz magazyn wiedzy Azure wyszukiwanie poznawcze przy użyciu opcji REST](knowledge-store-create-rest.md) , aby utworzyć przykładowy magazyn wiedzy użyty w tym instruktażu. Potrzebna będzie również nazwa konta usługi Azure Storage, które zostało użyte do utworzenia magazynu wiedzy, wraz z jego kluczem dostępu z poziomu Azure Portal.
 
 + [Zainstaluj Power BI Desktop](https://powerbi.microsoft.com/downloads/)
 
-+ Będziesz potrzebować sklepu z bazami wiedzy z projekcją w usłudze Azure Table Storage. Potrzebna będzie również nazwa konta usługi Azure Storage użytego do utworzenia sklepu merytorycznego wraz z jego kluczem dostępu z Azure Portal.
+## <a name="sample-power-bi-template---azure-portal-only"></a>Przykładowy szablon Power BI Azure Portal tylko
 
-Jeśli chcesz współpracować z przykładowym magazynem wiedzy, postępuj zgodnie z instrukcjami, aby [utworzyć magazyn wiedzy](knowledge-store-create-portal.md).
+Jeśli [Twój sklep merytoryczny został utworzony przy użyciu Azure Portal](knowledge-store-create-portal.md), możesz użyć [przykładowego szablonu Power BI platformy Azure wyszukiwanie poznawcze](https://github.com/Azure-Samples/cognitive-search-templates) , aby wyświetlić wizualizacje Power BI i eksperymentować z nich. Ten szablon jest również dostępny do pobrania po przekroczeniu kreatora **importu danych** .
 
-## <a name="create-a-custom-report"></a>Tworzenie raportu niestandardowego
+Przykładowy szablon automatycznie wykona czynności konfiguracyjne opisane w dalszej części tego artykułu. Jeśli jednak korzystasz z interfejsu API REST w celu utworzenia sklepu z bazami danych, Pomiń szablon i Skorzystaj z pozostałych sekcji w tym artykule, aby połączyć sklep z usługą Power BI. Zacznij od [połączenia z Power BI](#connect-with-power-bi).
+
+Przykładowy szablon zawiera kilka wizualizacji, takich jak WordCloud i Nawigator sieci. W przypadku niektórych wizualizacji w szablonie, takich jak Mapa lokalizacji i Podgląd grafu obiektów, nie będą wyświetlane dane dla przykładowego magazynu wiedzy utworzonego w [artykule Tworzenie magazynu wiedzy w Azure Portal](knowledge-store-create-portal.md). Wynika to z faktu, że zostały użyte tylko podzbiór wzbogaceń AI dostępnych w kreatorze **importu danych** .
+
+![Przykładowy szablon Power BI Wyszukiwanie poznawcze platformy Azure](media/knowledge-store-connect-power-bi/powerbi-sample-template-portal-only.png "Przykładowy szablon Power BI")
+
+## <a name="connect-with-power-bi"></a>Łączenie z usługą Power BI
 
 1. Rozpocznij Power BI Desktop a następnie kliknij pozycję **Pobierz dane**.
 

@@ -1,18 +1,18 @@
 ---
-title: Samouczek — konfigurowanie ról administratora i użytkowników usług Azure Analysis Services | Microsoft Docs
-description: Dowiedz się, jak skonfigurować role usług Azure Analysis Services.
+title: Samouczek — Konfigurowanie ról Azure Analysis Services | Microsoft Docs
+description: Dowiedz się, jak skonfigurować Azure Analysis Services administratorów i ról użytkowników przy użyciu Azure Portal lub SQL Server Management Studio.
 author: minewiskan
 ms.service: azure-analysis-services
 ms.topic: tutorial
-ms.date: 01/09/2019
+ms.date: 10/30/2019
 ms.author: owend
 ms.reviewer: owend
-ms.openlocfilehash: b70d1502985a1ffc0ebdf6fcb487cda3992d1c19
-ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
+ms.openlocfilehash: 3abcfe61f365c3c96dfb6b8eb2ca6cc9e5d3797e
+ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/13/2019
-ms.locfileid: "72294432"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73572369"
 ---
 # <a name="tutorial-configure-server-administrator-and-user-roles"></a>Samouczek: konfigurowanie ról administratora i użytkowników serwera
 
@@ -52,7 +52,7 @@ W pozostałych zadaniach użyjesz programu SSMS, aby połączyć się z serwerem
 
 1. W programie SSMS wybierz pozycję **Eksplorator obiektów**, a następnie kliknij pozycję **Połącz** > **Analysis Services**.
 
-    ![Łączenie](./media/analysis-services-tutorial-roles/aas-ssms-connect.png)
+    ![Połączenie](./media/analysis-services-tutorial-roles/aas-ssms-connect.png)
 
 2. W oknie dialogowym **Połączenie z serwerem** w polu **Nazwa serwera** skopiuj i wklej nazwę serwera skopiowaną z portalu. W polu **Uwierzytelnianie** wybierz pozycję **Active Directory — Uniwersalne z obsługą uwierzytelniania wieloskładnikowego**, a następnie wprowadź nazwę konta użytkownika i naciśnij przycisk **Połącz**.
    

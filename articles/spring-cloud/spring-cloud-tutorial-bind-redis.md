@@ -1,20 +1,17 @@
 ---
 title: Jak powiązać usługę Azure cache for Redis z aplikacją w chmurze z usługą Azure wiosną | Microsoft Docs
 description: Dowiedz się, jak powiązać usługę Azure cache for Redis z aplikacją w chmurze platformy Azure
-services: spring-cloud
-author: v-vasuke
-manager: gwallace
-editor: ''
+author: jpconnock
 ms.service: spring-cloud
-ms.topic: quickstart
-ms.date: 10/06/2019
-ms.author: v-vasuke
-ms.openlocfilehash: d8fa31207baecc80674fb11b492927800676b8a2
-ms.sourcegitcommit: d773b5743cb54b8cbcfa5c5e4d21d5b45a58b081
+ms.topic: tutorial
+ms.date: 10/31/2019
+ms.author: jeconnoc
+ms.openlocfilehash: a901e4194909df85f53799d5937515e42ea87a69
+ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/08/2019
-ms.locfileid: "72038944"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73607570"
 ---
 # <a name="tutorial-bind-azure-services-to-your-azure-spring-cloud-application-azure-cache-for-redis"></a>Samouczek: powiązywanie usług platformy Azure z Twoją aplikacją w chmurze Azure wiosną: Azure cache for Redis
 
@@ -26,18 +23,11 @@ Chmura sprężynowa platformy Azure umożliwia automatyczne powiązanie wybranyc
 * Pamięć podręczna platformy Azure dla wystąpienia usługi Redis
 * Rozszerzenie chmury Azure wiosny dla interfejsu wiersza polecenia platformy Azure
 
-W razie potrzeby zainstaluj rozszerzenie Cloud wiosny Azure dla interfejsu wiersza polecenia platformy Azure przy użyciu następującego polecenia:
-
-```azurecli
-az extension add -y --source https://azureclitemp.blob.core.windows.net/spring-cloud/spring_cloud-0.1.0-py2.py3-none-any.whl
-```
-
->[!TIP]
-> Usługa Azure Cloud Shell to bezpłatna interaktywna powłoka, której możesz używać do wykonywania kroków opisanych w tym artykule.  Zawiera ona popularne narzędzia platformy Azure preinstalowane, w tym najnowsze wersje usług git, JDK, Maven i interfejsu wiersza polecenia platformy Azure. Jeśli logujesz się do subskrypcji platformy Azure, uruchom [Azure Cloud Shell](https://shell.azure.com) z Shell.Azure.com.  Więcej informacji na temat Azure Cloud Shell można znaleźć w [dokumentacji](../cloud-shell/overview.md) .
+Jeśli nie masz wdrożonego wystąpienia chmury Azure wiosennej, wykonaj kroki opisane w tym [przewodniku szybki start](spring-cloud-quickstart-launch-app-portal.md) , aby wdrożyć swoją pierwszą aplikację w chmurze.
 
 ## <a name="bind-azure-cache-for-redis"></a>Powiązywanie pamięci podręcznej platformy Azure dla Redis
 
-1. Dodaj następującą zależność w @no__t projektu — 0
+1. Dodaj następującą zależność do `pom.xml` projektu
 
     ```xml
     <dependency>

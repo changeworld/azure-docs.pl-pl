@@ -3,6 +3,7 @@ title: Tworzenie aplikacji do analizy w sklepie na platformie Azure IoT Central 
 description: W tym samouczku pokazano, jak utworzyć aplikację detaliczną analizy w sklepie w IoT Central. Utworzysz go, dołączysz i dodasz urządzenia czujnika.
 services: iot-central
 ms.service: iot-central
+ms.subservice: iot-central-retail
 ms.topic: tutorial
 ms.custom:
 - iot-storeAnalytics-checkout
@@ -10,12 +11,12 @@ ms.custom:
 ms.author: timlt
 author: timlt
 ms.date: 10/03/2019
-ms.openlocfilehash: 0d586aaab4fc87bb671e67152cf66e9fb1447504
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: a662201823808c9e2e34e9210096cb081e1b9430
+ms.sourcegitcommit: b2fb32ae73b12cf2d180e6e4ffffa13a31aa4c6f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73495173"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73615306"
 ---
 # <a name="tutorial-create-an-in-store-analytics-application-in-azure-iot-central"></a>Samouczek: Tworzenie aplikacji do analizy w sklepie na platformie Azure IoT Central
 

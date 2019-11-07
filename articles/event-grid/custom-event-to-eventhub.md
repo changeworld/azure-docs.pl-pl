@@ -1,22 +1,22 @@
 ---
-title: Wysyłanie zdarzeń niestandardowych do centrum zdarzeń — Event Grid, interfejs wiersza polecenia platformy Azure
-description: Za pomocą usługi Azure Event Grid i interfejsu wiersza polecenia platformy Azure można opublikować temat i zasubskrybować dane zdarzenie. Centrum zdarzeń jest używane dla punktu końcowego.
+title: 'Szybki Start: wysyłanie zdarzeń niestandardowych do Event Hubs-Event Grid, interfejs wiersza polecenia platformy Azure'
+description: 'Szybki Start: używanie Azure Event Grid i interfejsu wiersza polecenia platformy Azure do publikowania tematu i subskrybowania tego zdarzenia. Centrum zdarzeń jest używane dla punktu końcowego.'
 services: event-grid
 keywords: ''
 author: spelluru
 ms.author: spelluru
-ms.date: 10/09/2018
+ms.date: 11/05/2019
 ms.topic: quickstart
 ms.service: event-grid
 ms.custom: seodec18
-ms.openlocfilehash: fd087c2afe50870289b008906b28605fdd558311
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 832c4e453befc9e54051c968e0c364d22afd2bc2
+ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60562412"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73721409"
 ---
-# <a name="quickstart-route-custom-events-to-azure-event-hubs-with-azure-cli-and-event-grid"></a>Szybki start: Kierowanie zdarzeń niestandardowych do usługi Azure Event Hubs za pomocą interfejsu wiersza polecenia platformy Azure i usługi Event Grid
+# <a name="quickstart-route-custom-events-to-azure-event-hubs-with-azure-cli-and-event-grid"></a>Szybki Start: kierowanie zdarzeń niestandardowych do usługi Azure Event Hubs przy użyciu interfejsu wiersza polecenia platformy Azure i Event Grid
 
 Azure Event Grid to usługa obsługi zdarzeń dla chmury. Usługa Azure Event Hubs jest jedną z obsługiwanych procedur obsługi zdarzeń. W tym artykule omówiono tworzenie tematu niestandardowego, subskrybowanie go i wyzwalanie zdarzenia w celu wyświetlenia wyniku za pomocą interfejsu wiersza polecenia platformy Azure. Zdarzenia są wysyłane do centrum zdarzeń.
 
@@ -59,7 +59,7 @@ az eventhubs eventhub create --name $hubname --namespace-name $namespace --resou
 
 ## <a name="subscribe-to-a-custom-topic"></a>Subskrybowanie tematu niestandardowego
 
-Subskrybowanie tematu usługi Event Grid informuje usługę Event Grid o tym, które zdarzenia chcesz śledzić. Poniższy przykład ilustruje subskrybowanie utworzonego tematu niestandardowego i przekazywanie identyfikatora zasobu do centrum zdarzeń dla punktu końcowego. Punkt końcowy ma następujący format:
+Zasubskrybujesz temat usługi Event Grid, aby poinformować Event Grid, które zdarzenia mają być śledzone. Poniższy przykład subskrybuje utworzony temat niestandardowy i przekazuje identyfikator zasobu centrum zdarzeń dla punktu końcowego. Punkt końcowy ma następujący format:
 
 `/subscriptions/<subscription-id>/resourceGroups/<resource-group-name>/providers/Microsoft.EventHub/namespaces/<namespace-name>/eventhubs/<hub-name>`
 
@@ -87,7 +87,7 @@ endpoint=$(az eventgrid topic show --name $topicname -g gridResourceGroup --quer
 key=$(az eventgrid topic key list --name $topicname -g gridResourceGroup --query "key1" --output tsv)
 ```
 
-Dla uproszczenia czynności opisanych w tym artykule do tematu niestandardowego zostaną wysłane przykładowe dane zdarzenia. Zwykle dane zdarzenia są wysyłane przez aplikację lub usługę platformy Azure. CURL to narzędzie, które wysyła żądania HTTP. W tym artykule do wysłania zdarzenia do tematu niestandardowego jest używane narzędzie CURL.  W poniższym przykładzie są wysyłane trzy zdarzenia do tematu usługi Event Grid:
+Dla uproszczenia czynności opisanych w tym artykule do tematu niestandardowego zostaną wysłane przykładowe dane zdarzenia. Zwykle dane zdarzenia są wysyłane przez aplikację lub usługę platformy Azure. CURL to narzędzie, które wysyła żądania HTTP. W tym artykule do wysłania zdarzenia do tematu niestandardowego jest używane narzędzie CURL.  W poniższym przykładzie wysyłane są trzy zdarzenia do tematu usługi Event Grid:
 
 ```azurecli-interactive
 for i in 1 2 3
@@ -114,7 +114,7 @@ Jeśli zamierzasz kontynuować pracę z tym zdarzeniem, nie usuwaj zasobów utwo
 az group delete --name gridResourceGroup
 ```
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 Wiesz już, jak tworzyć tematy i subskrypcje zdarzeń. Dowiedz się więcej na temat tego, co może Ci ułatwić usługa Event Grid:
 

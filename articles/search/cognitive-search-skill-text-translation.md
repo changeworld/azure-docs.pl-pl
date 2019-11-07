@@ -1,21 +1,24 @@
 ---
-title: Umiejętność tłumaczenia tekstu
+title: Umiejętność tłumaczenia tekstu (wersja zapoznawcza)
 titleSuffix: Azure Cognitive Search
-description: Oblicza tekst i dla każdego rekordu zwraca tekst przetłumaczony na określony język docelowy w potoku wzbogacenia AI na platformie Azure Wyszukiwanie poznawcze.
+description: Oblicza tekst i dla każdego rekordu zwraca tekst przetłumaczony na określony język docelowy w potoku wzbogacenia AI na platformie Azure Wyszukiwanie poznawcze. Ta umiejętność jest obecnie dostępna w publicznej wersji zapoznawczej.
 manager: nitinme
 author: careyjmac
 ms.author: chalton
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: c2405fe67b39e016e64efb1b36cc551a00a338fc
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.openlocfilehash: 7c42c9033fac057c12426726a96ae6079f3080da
+ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72791857"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73715401"
 ---
 #   <a name="text-translation-cognitive-skill"></a>Umiejętność tłumaczenia tekstu
+
+> [!IMPORTANT] 
+> Ta umiejętność jest obecnie dostępna w publicznej wersji zapoznawczej. Funkcje wersji zapoznawczej są dostępne bez umowy dotyczącej poziomu usług i nie są zalecane w przypadku obciążeń produkcyjnych. Aby uzyskać więcej informacji, zobacz [Uzupełniające warunki korzystania z wersji zapoznawczych platformy Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/). [Interfejs API REST w wersji 2019-05-06 — wersja zapoznawcza](search-api-preview.md) zapewnia funkcje w wersji zapoznawczej. Dostępna jest obecnie ograniczona obsługa portalu i nie ma obsługi zestawu SDK platformy .NET.
 
 Umiejętność **tłumaczenia tekstu** oblicza tekst i dla każdego rekordu zwraca tekst przetłumaczony na określony język docelowy. Ta umiejętność używa [interfejs API tłumaczenia tekstu w usłudze translator v 3.0](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-translate) dostępnych w Cognitive Services.
 
@@ -148,7 +151,7 @@ Jeśli podano nieobsługiwany kod języka dla języka "from" lub "do", zostanie 
 Jeśli tekst jest pusty, zostanie wygenerowane ostrzeżenie.
 Jeśli tekst jest większy niż 50 000 znaków, zostaną przetłumaczone tylko pierwsze 50 000 znaków i zostanie wygenerowane ostrzeżenie.
 
-## <a name="see-also"></a>Zobacz także
+## <a name="see-also"></a>Zobacz też
 
 + [Wbudowane umiejętności](cognitive-search-predefined-skills.md)
 + [Jak zdefiniować zestawu umiejętności](cognitive-search-defining-skillset.md)

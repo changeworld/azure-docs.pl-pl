@@ -1,5 +1,5 @@
 ---
-title: Tworzenie potoku fabryki danych za pomocą witryny Azure Portal | Microsoft Docs
+title: Użyj Azure Portal, aby utworzyć potok fabryki danych
 description: Ten samouczek zawiera instrukcje krok po kroku dotyczące tworzenia fabryki danych z potokiem za pomocą witryny Azure Portal. Potok wykorzystuje działanie kopiowania do skopiowania danych z usługi Azure Blob Storage do bazy danych SQL.
 services: data-factory
 documentationcenter: ''
@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: tutorial
 ms.date: 06/21/2018
 ms.author: jingwang
-ms.openlocfilehash: 9a2ad8070c0406446f53c1bcaa6d341cdca0bb2a
-ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
+ms.openlocfilehash: ba348cdd478b1d66d7b7286ba0a54adfd98137e2
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70140729"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73683623"
 ---
 # <a name="copy-data-from-azure-blob-storage-to-a-sql-database-by-using-azure-data-factory"></a>Kopiowanie danych z usługi Azure Blob Storage do bazy danych SQL za pomocą usługi Azure Data Factory
 W tym samouczku utworzysz fabrykę danych przy użyciu interfejsu użytkownika usługi Azure Data Factory. Potok w tej fabryce danych kopiuje dane z usługi Azure Blob Storage do bazy danych SQL. Wzorzec konfiguracji w tym samouczku ma zastosowanie do kopiowania danych z magazynu opartego na plikach do relacyjnego magazynu danych. Aby zapoznać się z listą magazynów danych obsługiwanych jako źródła i ujścia, zobacz tabelę zawierającą [obsługiwane magazyny danych](copy-activity-overview.md#supported-data-stores-and-formats).
@@ -76,7 +76,7 @@ Teraz przygotuj swój magazyn obiektów blob i bazę danych SQL na potrzeby tego
 W tym kroku utworzysz fabrykę danych i uruchomisz interfejs użytkownika usługi Data Factory, aby utworzyć potok w fabryce danych. 
 
 1. Otwórz przeglądarkę **Microsoft Edge** lub **Google Chrome**. Obecnie interfejs użytkownika usługi Data Factory jest obsługiwany tylko przez przeglądarki internetowe Microsoft Edge i Google Chrome.
-2. Z menu po lewej stronie wybierz pozycję Utwórz**Data Factory** **analizy** >  **zasobów** > : 
+2. W menu po lewej stronie wybierz pozycję **Utwórz zasób** > **Analytics** > **Data Factory**: 
   
    ![Wybór usługi Data Factory w okienku „Nowy”](./media/doc-common-process/new-azure-data-factory-menu.png)
 
@@ -116,11 +116,11 @@ W tym samouczku zaczniesz od utworzenia potoku. Następnie utworzysz usługi po�
 
 1. W oknie Narzędzie **działania** rozwiń kategorię **przenoszenie i przekształcanie** , a następnie przeciągnij i upuść działanie **Kopiowanie danych** z okna narzędzia do powierzchni projektanta potoku. Wprowadź wartość **CopyFromBlobToSql** w polu **Nazwa**.
 
-    ![Kopiowanie działania](./media/tutorial-copy-data-portal/drag-drop-copy-activity.png)
+    ![Działanie kopiowania](./media/tutorial-copy-data-portal/drag-drop-copy-activity.png)
 
 ### <a name="configure-source"></a>Konfigurowanie źródła
 
-1. Przejdź do karty **Źródło**. Wybierz pozycję **+ Nowy**, aby utworzyć źródłowy zestaw danych. 
+1. Przejdź do karty **Źródło** . Wybierz pozycję **+ Nowy** , aby utworzyć źródłowy zestaw danych. 
 
 1. W oknie dialogowym **Nowy zestaw danych** wybierz pozycję **Azure Blob Storage**, a następnie wybierz pozycję **Kontynuuj**. Dane źródłowe znajdują się w magazynie obiektów blob, musisz więc wybrać usługę **Azure Blob Storage** dla źródłowego zestawu danych. 
 
@@ -154,7 +154,7 @@ W tym samouczku zaczniesz od utworzenia potoku. Następnie utworzysz usługi po�
 
     b. W polu **Nazwa serwera** wybierz swoje wystąpienie programu SQL Server.
 
-    c. W polu **Nazwa bazy danych** wybierz swoją usługę SQL Database.
+    d. W polu **Nazwa bazy danych** wybierz swoją usługę SQL Database.
 
     d. W polu **Nazwa użytkownika** wprowadź nazwę użytkownika.
 
@@ -210,7 +210,7 @@ W tym kroku utworzysz wyzwalacz harmonogramu potoku. Wyzwalacz uruchamia potok z
 
 1. Przejdź do potoku, kliknij pozycję **Dodaj wyzwalacz** na pasku narzędzi, a następnie wybierz pozycję **Nowy/Edytuj**. 
 
-1. W oknie dialogowym **Dodawanie wyzwalaczy** wybierz pozycję **+ Nowy** dla **opcji wybierz** obszar wyzwalacza.
+1. W oknie dialogowym **Dodawanie wyzwalaczy** wybierz pozycję **+ Nowy** dla **opcji wybierz obszar wyzwalacza** .
 
 1. W oknie **Nowy wyzwalacz** wykonaj następujące czynności: 
 
@@ -218,7 +218,7 @@ W tym kroku utworzysz wyzwalacz harmonogramu potoku. Wyzwalacz uruchamia potok z
 
     b. W obszarze **Koniec** wybierz pozycję **W dniu**.
 
-    c. W obszarze **Dzień zakończenia** wybierz listę rozwijaną.
+    d. W obszarze **Dzień zakończenia** wybierz listę rozwijaną.
 
     d. Wybierz opcję **Bieżący dzień**. Domyślnie dzień zakończenia jest ustawiony na następny dzień.
 
@@ -226,7 +226,7 @@ W tym kroku utworzysz wyzwalacz harmonogramu potoku. Wyzwalacz uruchamia potok z
 
     f. Wybierz przycisk **Zastosuj**. 
 
-    g. Dla opcji aktywowana wybierz pozycję **tak**. 
+    g. Dla opcji **aktywowana** wybierz pozycję **tak**. 
 
     h. Wybierz opcję **Dalej**.
 

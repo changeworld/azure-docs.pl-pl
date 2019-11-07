@@ -4,19 +4,19 @@ description: Opisuje sposób tworzenia projektu Azure Migrate i dodawania narzę
 author: rayne-wiselman
 ms.service: azure-migrate
 ms.topic: article
-ms.date: 07/09/2019
+ms.date: 11/06/2019
 ms.author: raynew
-ms.openlocfilehash: bd119956ced79b73b0376fe4530c9eafaf870238
-ms.sourcegitcommit: f3f4ec75b74124c2b4e827c29b49ae6b94adbbb7
+ms.openlocfilehash: a4e66175b20552e632702cb2ba46d0ae6c0956d4
+ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/12/2019
-ms.locfileid: "70934176"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73720245"
 ---
 # <a name="add-an-assessmentmigration-tool-for-the-first-time"></a>Dodawanie narzędzia oceny/migracji po raz pierwszy
 
 W tym artykule opisano sposób dodawania narzędzia do oceny lub migracji do projektu [Azure Migrate](migrate-overview.md) po raz pierwszy.  
-Azure Migrate udostępnia centralne centrum do śledzenia odnajdywania, oceny i migracji lokalnych aplikacji i obciążeń oraz maszyn wirtualnych chmur prywatnych/publicznych na platformie Azure. Centrum udostępnia Azure Migrate narzędzia do oceny i migracji, a także [oferty](migrate-services-overview.md#isv-integration) innych firm, niezależnych dostawców oprogramowania (ISV). 
+Azure Migrate udostępnia centralne centrum do śledzenia odnajdywania, oceny i migracji lokalnych aplikacji i obciążeń oraz maszyn wirtualnych chmur prywatnych/publicznych na platformie Azure. Centrum udostępnia Azure Migrate narzędzia do oceny i migracji, a także inne narzędzia i [oferty](migrate-services-overview.md#isv-integration) niezależnych dostawców oprogramowania (ISV). 
 
 ## <a name="create-a-project-and-add-a-tool"></a>Tworzenie projektu i Dodawanie narzędzia
 
@@ -48,7 +48,7 @@ Skonfiguruj nowy projekt Azure Migrate w ramach subskrypcji platformy Azure i Do
     Azja   | Azja Południowo-Wschodnia lub Azja Wschodnia
     Europa | Europa Północna lub Europa Zachodnia
     Japonia  | Japonia Wschodnia lub Japonia Zachodnia
-    Zjednoczone Królestwo | Południowe Zjednoczone Królestwo lub Zachodnie Zjednoczone Królestwo
+    Wielka Brytania | Południowe Zjednoczone Królestwo lub Zachodnie Zjednoczone Królestwo
     Stany Zjednoczone | Środkowe stany USA lub zachodnie stany USA 2
     Kanada | Kanada Środkowa
     Indie  | Indie Środkowe lub Indie Południowe
@@ -66,8 +66,8 @@ Skonfiguruj nowy projekt Azure Migrate w ramach subskrypcji platformy Azure i Do
     > [!NOTE]
     > Podczas tworzenia projektu należy dodać co najmniej jedno narzędzie do oceny lub migracji.
 
-5. W **narzędziu Wybierz ocenę**Dodaj narzędzie do oceny. Jeśli nie potrzebujesz narzędzia do oceny, wybierz pozycję **Pomiń Dodawanie narzędzia do oceny teraz** >  **.** 
-2. W obszarze **Wybieranie narzędzia migracji**Dodaj narzędzie do migracji zgodnie z wymaganiami. Jeśli nie**potrzebujesz teraz narzędzia**migracji, wybierz pozycję **Pomiń Dodawanie narzędzia do migracji teraz** > .
+5. W **narzędziu Wybierz ocenę**Dodaj narzędzie do oceny. Jeśli nie potrzebujesz narzędzia do oceny, wybierz pozycję **Pomiń Dodawanie narzędzia do oceny teraz** > **dalej**. 
+2. W obszarze **Wybieranie narzędzia migracji**Dodaj narzędzie do migracji zgodnie z wymaganiami. Jeśli nie potrzebujesz teraz narzędzia migracji, wybierz pozycję **Pomiń Dodawanie narzędzia do migracji dla teraz** > **dalej**.
 3. W oknie **Recenzja + Dodawanie narzędzi**przejrzyj ustawienia, a następnie kliknij pozycję **Dodaj narzędzia**.
 
 Po utworzeniu projektu można wybrać dodatkowe narzędzia do oceny i migracji serwerów oraz obciążeń, baz danych i aplikacji sieci Web.

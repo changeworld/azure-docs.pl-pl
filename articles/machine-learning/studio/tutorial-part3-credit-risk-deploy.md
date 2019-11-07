@@ -1,6 +1,6 @@
 ---
 title: 'Samouczek 3: Wdrażanie modelu ryzyka kredytowego'
-titleSuffix: Azure Machine Learning Studio (classic)
+titleSuffix: ML Studio (classic) Azure
 description: Szczegółowy Samouczek przedstawiający sposób tworzenia rozwiązania do analizy predykcyjnej w celu oceny ryzyka kredytowego w klasycznej wersji Azure Machine Learning Studio. Niniejszy samouczek jest trzecią częścią trzyczęściowej serii. Przedstawia on sposób wdrażania modelu w postaci usługi internetowej.
 keywords: ryzyko kredytowe, rozwiązanie analizy predykcyjnej, ocena ryzyka, wdrażanie, usługa internetowa
 author: sdgilley
@@ -10,12 +10,12 @@ ms.service: machine-learning
 ms.subservice: studio
 ms.topic: tutorial
 ms.date: 02/11/2019
-ms.openlocfilehash: 34b0e783b3655aba52cc3d40957b63dd3b0e03b9
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 0f4ee6cfebcb5edb38b1cc7a11b070dab5d2098c
+ms.sourcegitcommit: 6c2c97445f5d44c5b5974a5beb51a8733b0c2be7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73492531"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73619013"
 ---
 # <a name="tutorial-3-deploy-credit-risk-model---azure-machine-learning-studio-classic"></a>Samouczek 3: Wdrażanie modelu ryzyka kredytowego — Azure Machine Learning Studio (klasyczny)
 
@@ -34,7 +34,7 @@ W [drugiej części samouczka](tutorial-part2-credit-risk-train.md) modele zosta
 W tej części samouczka zostaną wykonane następujące czynności:
 
 > [!div class="checklist"]
-> * Przygotowywanie do wdrażania
+> * Przygotowanie do wdrożenia
 > * Wdrażanie usługi sieci Web
 > * Testowanie usługi internetowej
 > * Zarządzanie usługą internetową
@@ -44,7 +44,7 @@ W tej części samouczka zostaną wykonane następujące czynności:
 
 Ukończona [druga część samouczka](tutorial-part2-credit-risk-train.md).
 
-## <a name="prepare-for-deployment"></a>Przygotowywanie do wdrażania
+## <a name="prepare-for-deployment"></a>Przygotowanie do wdrożenia
 Aby zapewnić innym osobom możliwość użycia modelu predykcyjnego, który został opracowany w ramach tego samouczka, możesz go wdrożyć jako usługę internetową na platformie Azure.
 
 Do tej pory były przeprowadzane eksperymenty z trenowaniem naszego modelu. Ale wdrożona usługa nie będzie już trenowana — będzie generowała nowe przewidywania, generując wyniki dla danych wejściowych użytkownika na podstawie naszego modelu. Zamierzamy więc przeprowadzić pewne przygotowania, aby przekonwertować ten eksperyment z eksperymentu ***szkoleniowego*** w eksperyment ***predykcyjny***. 
@@ -244,7 +244,7 @@ Aby uzyskać więcej informacji na temat korzystania z szablonów aplikacji inte
 W tym samouczku zostały wykonane następujące kroki:
 
 > [!div class="checklist"]
-> * Przygotowywanie do wdrażania
+> * Przygotowanie do wdrożenia
 > * Wdrażanie usługi sieci Web
 > * Testowanie usługi internetowej
 > * Zarządzanie usługą internetową

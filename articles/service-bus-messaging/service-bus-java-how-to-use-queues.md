@@ -1,6 +1,6 @@
 ---
-title: Korzystanie z kolejek Azure Service Bus przy użyciu języka Java
-description: Dowiedz się, jak używać kolejek usługi Service Bus na platformie Azure. Przykłady kodu zapisywane w języku Java.
+title: 'Szybki Start: korzystanie z kolejek Azure Service Bus przy użyciu języka Java'
+description: 'Szybki Start: Dowiedz się, jak używać kolejek Service Bus na platformie Azure. Przykłady kodu zapisywane w języku Java.'
 services: service-bus-messaging
 documentationcenter: java
 author: axisc
@@ -11,18 +11,19 @@ ms.service: service-bus-messaging
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: Java
-ms.topic: article
-ms.date: 04/10/2019
+ms.topic: quickstart
+ms.date: 11/05/2019
 ms.author: aschhab
 ms.custom: seo-java-july2019, seo-java-august2019, seo-java-september2019
-ms.openlocfilehash: 19cfd2c5dd4229e4687fcb1a3286509c9b768d7a
-ms.sourcegitcommit: 116bc6a75e501b7bba85e750b336f2af4ad29f5a
+ms.openlocfilehash: bb51f30a69294cd78d0664a5bdae70c969da1972
+ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/20/2019
-ms.locfileid: "71155496"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73721705"
 ---
-# <a name="use-azure-service-bus-queues-with-java-to-send-and-receive-messages"></a>Wysyłanie i odbieranie komunikatów za pomocą kolejek Azure Service Bus przy użyciu języka Java
+# <a name="quickstart-use-azure-service-bus-queues-with-java-to-send-and-receive-messages"></a>Szybki Start: korzystanie z kolejek Azure Service Bus w języku Java do wysyłania i odbierania wiadomości
+
 [!INCLUDE [service-bus-selector-queues](../../includes/service-bus-selector-queues.md)]
 W ramach tego samouczka nauczysz się tworzyć aplikacje Java do wysyłania komunikatów do i odbierania komunikatów z kolejki Azure Service Bus. 
 
@@ -44,7 +45,7 @@ Przed skompilowaniem tego przykładu upewnij się, że zainstalowano [zestaw Azu
 
 ![Dodaj biblioteki Microsoft Azure dla języka Java do projektu przezaćmienia](./media/service-bus-java-how-to-use-queues/eclipse-azure-libraries-java.png)
 
-Dodaj następujące `import` instrukcje na początku pliku Java:
+Dodaj następujące instrukcje `import` na początku pliku Java:
 
 ```java
 // Include the following imports to use Service Bus APIs
@@ -125,7 +126,7 @@ Ponieważ Service Bus oznaczył komunikat jako używany, wtedy, gdy aplikacja zo
 
 W trybie **PeekLock** , odbieranie staje się operacją dwuetapową, co umożliwia obsługę aplikacji, które nie mogą tolerować brakujących komunikatów. Gdy usługa Service Bus odbiera żądanie, znajduje następny komunikat do wykorzystania, blokuje go w celu uniemożliwienia innym klientom odebrania go i zwraca go do aplikacji. Gdy aplikacja zakończy przetwarzanie komunikatu (lub zapisuje ją w sposób niezawodny w przyszłości), kończy drugi etap procesu odbierania, wywołując polecenie **delete** dla odebranego komunikatu. Gdy Service Bus widzi wywołanie **usuwania** , oznacza komunikat jako używany i usunąć go z kolejki.
 
-W poniższym przykładzie pokazano, jak można odbierać i przetwarzać komunikaty przy użyciu trybu **PeekLock** (a nie trybu domyślnego). Poniższy przykład zawiera pętlę nieskończoną i przetwarza komunikaty w miarę ich nadejścia `TestQueue`do:
+W poniższym przykładzie pokazano, jak można odbierać i przetwarzać komunikaty przy użyciu trybu **PeekLock** (a nie trybu domyślnego). Poniższy przykład zawiera pętlę nieskończoną i przetwarza komunikaty w miarę ich nadejścia do `TestQueue`:
 
 ```java
     public void run() throws Exception {
@@ -182,7 +183,7 @@ Usługa Service Bus zapewnia funkcję ułatwiającą bezpieczne odzyskiwanie w r
 
 Istnieje również limit czasu skojarzony z komunikatem zablokowanym w kolejce i jeśli aplikacja nie może przetworzyć komunikatu przed upływem limitu czasu blokady (na przykład jeśli awaria aplikacji), Service Bus odblokować komunikat automatycznie i spowoduje, że dostępne do ponownego odebrania.
 
-W przypadku awarii aplikacji po przetworzeniu komunikatu, ale przed wystawieniem żądania **deleteMessage** , komunikat zostanie ponownie dostarczony do aplikacji po jej ponownym uruchomieniu. Jest to często nazywane *przetwarzaniem co najmniej raz*, co oznacza, że każdy komunikat jest przetwarzany co najmniej raz, ale w pewnych sytuacjach ten sam komunikat może być dostarczony ponownie. Jeśli scenariusz nie toleruje dwukrotnego przetwarzania, deweloperzy aplikacji powinni dodać dodatkową logikę do swojej aplikacji w celu obsługi dwukrotnego dostarczania komunikatów. Jest to często osiągane przy użyciu metody getmessageid komunikatu, która pozostaje stała między kolejnymi próbami dostarczenia.
+W przypadku awarii aplikacji po przetworzeniu komunikatu, ale przed wystawieniem żądania **deleteMessage** , komunikat zostanie ponownie dostarczony do aplikacji po jej ponownym uruchomieniu. Jest to często nazywane *przetwarzaniem co najmniej raz*, co oznacza, że każdy komunikat jest przetwarzany co najmniej raz, ale w pewnych sytuacjach ten sam komunikat może być dostarczony ponownie. Jeśli scenariusz nie toleruje dwukrotnego przetwarzania, deweloperzy aplikacji powinni dodać dodatkową logikę do swojej aplikacji w celu obsługi dwukrotnego dostarczania komunikatów. Jest to często osiągane przy użyciu metody **getmessageid** komunikatu, która pozostaje stała między kolejnymi próbami dostarczenia.
 
 > [!NOTE]
 > Za pomocą [eksploratora Service Bus](https://github.com/paolosalvatori/ServiceBusExplorer/)można zarządzać zasobami Service Bus. Eksplorator Service Bus umożliwia użytkownikom łączenie się z przestrzenią nazw Service Bus i administrowanie jednostkami obsługi komunikatów w prosty sposób. Narzędzie zapewnia zaawansowane funkcje, takie jak funkcja importowania/eksportowania lub możliwość testowania tematów, kolejek, subskrypcji, usług przekazywania, centrów powiadomień i centrów zdarzeń. 

@@ -1,22 +1,22 @@
 ---
-title: Wysłanie zdarzeń niestandardowych do internetowego punktu końcowego — Event Grid, Azure Portal
-description: Za pomocą usługi Azure Event Grid i witryny Azure Portal można opublikować temat niestandardowy i zasubskrybować zdarzenia dla tego tematu. Zdarzenia są obsługiwane przez aplikację internetową.
+title: 'Szybki Start: wysyłanie zdarzeń niestandardowych do punktu końcowego sieci Web — Event Grid, Azure Portal'
+description: 'Szybki Start: używanie Azure Event Grid i Azure Portal do publikowania tematu niestandardowego oraz subskrybowanie zdarzeń dla tego tematu. Zdarzenia są obsługiwane przez aplikację internetową.'
 services: event-grid
 keywords: ''
 author: spelluru
 ms.author: spelluru
-ms.date: 03/27/2019
+ms.date: 11/05/2019
 ms.topic: quickstart
 ms.service: event-grid
 ms.custom: seodec18
-ms.openlocfilehash: afb53ed013af6cd1db2f6ff3d25c350aa2b4f1e8
-ms.sourcegitcommit: 36e9cbd767b3f12d3524fadc2b50b281458122dc
+ms.openlocfilehash: 398e63ec9a8b9e1b16d8ffcee538351fc6572de9
+ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "69638568"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73720791"
 ---
-# <a name="quickstart-route-custom-events-to-web-endpoint-with-the-azure-portal-and-event-grid"></a>Szybki start: Kierowanie zdarzeń niestandardowych do internetowego punktu końcowego za pomocą witryny Azure Portal i usługi Event Grid
+# <a name="quickstart-route-custom-events-to-web-endpoint-with-the-azure-portal-and-event-grid"></a>Szybki Start: kierowanie zdarzeń niestandardowych do punktu końcowego sieci Web przy użyciu Azure Portal i Event Grid
 
 Azure Event Grid to usługa obsługi zdarzeń dla chmury. W tym artykule omówiono użycie witryny Azure Portal w celu utworzenia tematu niestandardowego, zasubskrybowania go i wyzwolenia zdarzenia pozwalającego na wyświetlenie wyniku. Zazwyczaj użytkownik wysyła zdarzenia do punktu końcowego, w którym następuje przetwarzanie danych zdarzenia i są wykonywane akcje. Jednak aby uprościć ten artykuł, zdarzenia zostaną wysłane do aplikacji internetowej, która zbiera i wyświetla komunikaty.
 
@@ -104,12 +104,12 @@ W pierwszym przykładzie użyto interfejsu wiersza polecenia platformy Azure. Po
 1. W Azure Portal wybierz pozycję **Cloud Shell**. W lewym górnym rogu okna Cloud Shell wybierz pozycję **bash** . 
 
     ![Cloud Shell — bash](./media/custom-event-quickstart-portal/cloud-shell-bash.png)
-1. Uruchom następujące polecenie, aby uzyskać **punkt końcowy** dla tematu: Po skopiowaniu i wklejeniu polecenia zaktualizuj **nazwę tematu** i **nazwę grupy zasobów** przed uruchomieniem polecenia. 
+1. Uruchom następujące polecenie, aby uzyskać **punkt końcowy** dla tematu: po skopiowaniu i wklejeniu polecenia zaktualizuj **nazwę tematu** i **nazwę grupy zasobów** przed uruchomieniem polecenia. 
 
     ```azurecli
     endpoint=$(az eventgrid topic show --name <topic name> -g <resource group name> --query "endpoint" --output tsv)
     ```
-2. Uruchom następujące polecenie, aby uzyskać **klucz** dla tematu niestandardowego: Po skopiowaniu i wklejeniu polecenia zaktualizuj **nazwę tematu** i nazwę **grupy zasobów** przed uruchomieniem polecenia. 
+2. Uruchom następujące polecenie, aby uzyskać **klucz** tematu niestandardowego: po skopiowaniu i wklejeniu polecenia zaktualizuj **nazwę tematu** i nazwę **grupy zasobów** przed uruchomieniem polecenia. 
 
     ```azurecli
     key=$(az eventgrid topic key list --name <topic name> -g <resource group name> --query "key1" --output tsv)
@@ -125,7 +125,7 @@ W pierwszym przykładzie użyto interfejsu wiersza polecenia platformy Azure. Po
     curl -X POST -H "aeg-sas-key: $key" -d "$event" $endpoint
     ```
 
-### <a name="azure-powershell"></a>Azure PowerShell
+### <a name="azure-powershell"></a>Program Azure PowerShell
 Drugi przykład obejmuje wykonanie podobnych kroków przy użyciu programu PowerShell.
 
 1. W Azure Portal wybierz pozycję **Cloud Shell** (Alternatywnie przejdź do https://shell.azure.com/). W lewym górnym rogu okna Cloud Shell wybierz pozycję **PowerShell** . Zapoznaj się z przykładowym obrazem okna **Cloud Shell** w sekcji interfejsu wiersza polecenia platformy Azure.

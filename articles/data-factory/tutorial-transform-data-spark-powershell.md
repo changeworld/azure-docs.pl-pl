@@ -1,5 +1,5 @@
 ---
-title: Przekształcanie danych przy użyciu platformy Spark w usłudze Azure Data Factory | Microsoft Docs
+title: 'Przekształcanie danych przy użyciu platformy Spark w Azure Data Factory '
 description: Ten samouczek zawiera instrukcje krok po kroku przekształcania danych za pomocą platformy Spark w usłudze Azure Data Factory.
 services: data-factory
 documentationcenter: ''
@@ -11,12 +11,12 @@ ms.date: 01/22/2018
 author: nabhishek
 ms.author: abnarain
 manager: craigg
-ms.openlocfilehash: 7c7b2b75bdf8aa2be0ea9dd2b60453c2480fc1d2
-ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
+ms.openlocfilehash: 06ec56e9e86069bd23a032aa289ea7391db04538
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/09/2019
-ms.locfileid: "70813436"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73683298"
 ---
 # <a name="transform-data-in-the-cloud-by-using-spark-activity-in-azure-data-factory"></a>Przekształcanie danych w chmurze za pomocą działania platformy Spark w usłudze Azure Data Factory
 W tym samouczku użyjesz programu Azure PowerShell do utworzenia potoku fabryki danych, który przekształca dane przy użyciu działania platformy Spark i połączonej usługi HDInsight na żądanie. Ten samouczek obejmuje następujące procedury:
@@ -25,7 +25,7 @@ W tym samouczku użyjesz programu Azure PowerShell do utworzenia potoku fabryki 
 > * Tworzenie fabryki danych. 
 > * Tworzenie i wdrażanie połączonych usług
 > * Redagowanie i wdrażanie potoku. 
-> * Uruchamianie potoku.
+> * Uruchamianie przebiegu potoku.
 > * Monitorowanie uruchomienia potoku.
 
 Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpłatne](https://azure.microsoft.com/free/) konto.
@@ -192,7 +192,7 @@ W plikach w formacie JSON zostały zredagowane połączona usługa i definicje p
     $resourceGroupName = "ADFTutorialResourceGroup" 
     ```
 
-    **Nazwa fabryki danych. Musi ona być unikatowa w skali globalnej** 
+    **Nazwa Data Factory. Musi być globalnie unikatowa** 
     ```powershell
     $dataFactoryName = "MyDataFactory09102017"
     ```
@@ -201,7 +201,7 @@ W plikach w formacie JSON zostały zredagowane połączona usługa i definicje p
     ```powershell
     $pipelineName = "MySparkOnDemandPipeline" # Name of the pipeline
     ```
-2. Uruchom program **PowerShell**. Nie zamykaj programu Azure PowerShell aż do końca tego samouczka Szybki start. Jeśli go zamkniesz i otworzysz ponownie, musisz uruchomić te polecenia jeszcze raz. Aby uzyskać listę regionów platformy Azure, w których obecnie jest dostępna usługa Data Factory, wybierz dane regiony na poniższej stronie, a następnie rozwiń węzeł **Analiza**, aby zlokalizować pozycję **Data Factory**: [Dostępność produktów według regionów](https://azure.microsoft.com/global-infrastructure/services/). Magazyny danych (Azure Storage, Azure SQL Database itp.) i jednostki obliczeniowe (HDInsight itp.) używane przez fabrykę danych mogą mieścić się w innych regionach.
+2. Uruchom program **PowerShell**. Nie zamykaj programu Azure PowerShell aż do końca tego samouczka Szybki start. Jeśli go zamkniesz i otworzysz ponownie, musisz uruchomić te polecenia jeszcze raz. Aby uzyskać listę regionów platformy Azure, w których obecnie jest dostępna usługa Data Factory, wybierz dane regiony na poniższej stronie, a następnie rozwiń węzeł **Analiza**, aby zlokalizować pozycję **Data Factory**: [Produkty dostępne według regionu](https://azure.microsoft.com/global-infrastructure/services/). Magazyny danych (Azure Storage, Azure SQL Database itp.) i jednostki obliczeniowe (HDInsight itp.) używane przez fabrykę danych mogą mieścić się w innych regionach.
 
     Uruchom poniższe polecenie i wprowadź nazwę użytkownika oraz hasło, których używasz do logowania się w witrynie Azure Portal:
         
@@ -250,9 +250,9 @@ W plikach w formacie JSON zostały zredagowane połączona usługa i definicje p
     Set-AzDataFactoryV2Pipeline -DataFactoryName $dataFactoryName -ResourceGroupName $resourceGroupName -Name $pipelineName -File "MySparkOnDemandPipeline.json"
     ```
     
-## <a name="start-and-monitor-a-pipeline-run"></a>Uruchamianie i monitorowanie działania potoku  
+## <a name="start-and-monitor-a-pipeline-run"></a>Uruchamianie i monitorowanie przebiegu potoku  
 
-1. Uruchom potok. Umożliwia to również przechwycenie identyfikatora uruchomienia potoku w celu monitorowania w przyszłości.
+1. Uruchamianie przebiegu potoku. Umożliwia to również przechwycenie identyfikatora uruchomienia potoku w celu monitorowania w przyszłości.
 
     ```powershell
     $runId = Invoke-AzDataFactoryV2Pipeline -DataFactoryName $dataFactoryName -ResourceGroupName $resourceGroupName -PipelineName $pipelineName  
@@ -339,7 +339,7 @@ Potok w tym przykładzie kopiuje dane z jednej lokalizacji do innej lokalizacji 
 > * Tworzenie fabryki danych. 
 > * Tworzenie i wdrażanie połączonych usług
 > * Redagowanie i wdrażanie potoku. 
-> * Uruchamianie potoku.
+> * Uruchamianie przebiegu potoku.
 > * Monitorowanie uruchomienia potoku.
 
 Przejdź do następnego samouczka, aby dowiedzieć się, jak przekształcać dane, uruchamiając skrypt programu Hive w klastrze usługi Azure HDInsight, który znajduje się w sieci wirtualnej. 

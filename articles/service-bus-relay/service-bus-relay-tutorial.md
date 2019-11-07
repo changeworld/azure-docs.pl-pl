@@ -1,6 +1,6 @@
 ---
-title: Uwidocznij lokalną usługę WCF REST na kliencie zewnętrznym przy użyciu usługi Azure WCF Relay | Microsoft Docs
-description: Utwórz klienta i aplikację usługi przy użyciu WCF Relay.
+title: 'Samouczek: Uwidacznianie lokalnej usługi WCF REST na zewnętrznym kliencie przy użyciu usługi Azure WCF Relay'
+description: 'Samouczek: Tworzenie aplikacji klienta i usługi przy użyciu WCF Relay.'
 services: service-bus-relay
 documentationcenter: na
 author: spelluru
@@ -9,19 +9,19 @@ editor: ''
 ms.assetid: 53dfd236-97f1-4778-b376-be91aa14b842
 ms.service: service-bus-relay
 ms.devlang: na
-ms.topic: article
+ms.topic: tutorial
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 09/12/2019
+ms.date: 11/05/2019
 ms.author: spelluru
-ms.openlocfilehash: 4707e56a09c257c9e03e6db070083c81ffde07b6
-ms.sourcegitcommit: 7df70220062f1f09738f113f860fad7ab5736e88
+ms.openlocfilehash: e2dd0448dfed55450a6319936f49831e5d6d77f3
+ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/24/2019
-ms.locfileid: "71212902"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73718843"
 ---
-# <a name="expose-an-on-premises-wcf-rest-service-to-external-client-by-using-azure-wcf-relay"></a>Uwidacznianie lokalnej usługi WCF REST na kliencie zewnętrznym przy użyciu usługi Azure WCF Relay
+# <a name="tutorial-expose-an-on-premises-wcf-rest-service-to-external-client-by-using-azure-wcf-relay"></a>Samouczek: Uwidacznianie lokalnej usługi WCF REST na zewnętrznym kliencie przy użyciu usługi Azure WCF Relay
 
 W tym samouczku opisano sposób tworzenia WCF Relay aplikacji klienckiej i usługi przy użyciu Azure Relay. Aby zapoznać się z podobnym samouczkiem korzystającym z [Service Bus Messaging](../service-bus-messaging/service-bus-messaging-overview.md), zobacz [Rozpoczynanie pracy z kolejkami Service Bus](../service-bus-messaging/service-bus-dotnet-get-started-with-queues.md).
 
@@ -68,15 +68,15 @@ Kontrakt usługi określa operacje obsługiwane przez usługę. Operacje to meto
 1. W obszarze **Utwórz nowy projekt**wybierz pozycję **aplikacja konsoli (.NET Framework)** C# , a następnie wybierz pozycję **dalej**.
 1. Nadaj projektowi nazwę *EchoService* i wybierz pozycję **Utwórz**.
 
-   ![Tworzenie aplikacji konsoli][2]
+   ![Tworzenie aplikacji konsolowej][2]
 
 1. W **Eksplorator rozwiązań**kliknij prawym przyciskiem myszy projekt i wybierz polecenie **Zarządzaj pakietami NuGet**. W **Menedżerze pakietów NuGet**wybierz pozycję **Przeglądaj**, a następnie wyszukaj i wybierz pozycję **windowsazure. ServiceBus**. Wybierz pozycję **Zainstaluj**i zaakceptuj warunki użytkowania.
 
     ![Pakiet Service Bus][3]
 
-   Ten pakiet automatycznie dodaje odwołania do bibliotek Service Bus i programu WCF `System.ServiceModel`. [System.ServiceModel](/dotnet/api/system.servicemodel) jest przestrzenią nazw umożliwiającą programowy dostęp do podstawowych funkcji platformy WCF. Usługa Service Bus używa wielu obiektów i atrybutów usługi WCF do definiowania kontraktów usług.
+   Ten pakiet automatycznie dodaje odwołania do bibliotek Service Bus i `System.ServiceModel`WCF. [System.ServiceModel](/dotnet/api/system.servicemodel) jest przestrzenią nazw umożliwiającą programowy dostęp do podstawowych funkcji platformy WCF. Usługa Service Bus używa wielu obiektów i atrybutów usługi WCF do definiowania kontraktów usług.
 
-1. Dodaj następujące `using` instrukcje w górnej części *program.cs*:
+1. Dodaj następujące instrukcje `using` w górnej części *program.cs*:
 
     ```csharp
     using System.ServiceModel;
@@ -86,10 +86,10 @@ Kontrakt usługi określa operacje obsługiwane przez usługę. Operacje to meto
 1. Zmień nazwę przestrzeni nazw z domyślnej nazwy `EchoService` na `Microsoft.ServiceBus.Samples`.
 
    > [!IMPORTANT]
-   > W tym samouczku C# jest `Microsoft.ServiceBus.Samples` używana przestrzeń nazw, która jest przestrzenią nazw typu zarządzanego na podstawie kontraktu, który jest używany w pliku konfiguracji w sekcji [Konfigurowanie klienta WCF](#configure-the-wcf-client) . Podczas kompilowania tego przykładu można określić dowolną przestrzeń nazw. Jednak samouczek nie będzie działał, chyba że zmodyfikujesz odpowiednio przestrzenie nazw kontraktu i usługi w pliku konfiguracji aplikacji. Przestrzeń nazw określona w pliku *App. config* musi być taka sama jak przestrzeń nazw określona w C# plikach.
+   > W tym samouczku C# jest używana `Microsoft.ServiceBus.Samples` przestrzeni nazw, która jest przestrzenią nazw typu zarządzanego na podstawie kontraktu, który jest używany w pliku konfiguracji w sekcji [Konfigurowanie klienta WCF](#configure-the-wcf-client) . Podczas kompilowania tego przykładu można określić dowolną przestrzeń nazw. Jednak samouczek nie będzie działał, chyba że zmodyfikujesz odpowiednio przestrzenie nazw kontraktu i usługi w pliku konfiguracji aplikacji. Przestrzeń nazw określona w pliku *App. config* musi być taka sama jak przestrzeń nazw określona w C# plikach.
    >
 
-1. Bezpośrednio po `Microsoft.ServiceBus.Samples` deklaracji przestrzeni nazw, ale w przestrzeni nazw, Zdefiniuj nowy interfejs o nazwie `IEchoContract` i Zastosuj `ServiceContractAttribute` atrybut `https://samples.microsoft.com/ServiceModel/Relay/`do interfejsu z wartością przestrzeni nazw. Wklej następujący kod po deklaracji przestrzeni nazw:
+1. Bezpośrednio po deklaracji przestrzeni nazw `Microsoft.ServiceBus.Samples`, ale w przestrzeni nazw Zdefiniuj nowy interfejs o nazwie `IEchoContract` i zastosuj atrybut `ServiceContractAttribute` do interfejsu z wartością przestrzeni nazw `https://samples.microsoft.com/ServiceModel/Relay/`. Wklej następujący kod po deklaracji przestrzeni nazw:
 
     ```csharp
     [ServiceContract(Name = "IEchoContract", Namespace = "https://samples.microsoft.com/ServiceModel/Relay/")]
@@ -104,7 +104,7 @@ Kontrakt usługi określa operacje obsługiwane przez usługę. Operacje to meto
    > Zazwyczaj przestrzeń nazw kontraktu usługi zawiera schemat nazewnictwa uwzględniający informacje o wersji. Uwzględnienie informacji o wersji w przestrzeni nazw kontraktu usługi umożliwia usługom izolowanie istotnych zmian przez zdefiniowanie nowego kontraktu usługi z nową przestrzenią nazw i ujawnienie go w nowym punkcie końcowym. W ten sposób klienci mogą nadal używać starego kontraktu usługi bez konieczności jego aktualizowania. Informacje o wersji mogą zawierać datę lub numer kompilacji. Aby uzyskać więcej informacji, zobacz [Service Versioning](/dotnet/framework/wcf/service-versioning) (Obsługa wersji usług). W tym samouczku schemat nazewnictwa przestrzeni nazw kontraktu usługi nie zawiera informacji o wersji.
    >
 
-1. W interfejsie Zadeklaruj metodę dla pojedynczej operacji uwidacznianej `IEchoContract` przez kontrakt w interfejsie i Zastosuj `OperationContractAttribute` atrybut do metody, którą chcesz uwidocznić w ramach kontraktu WCF Relay publicznego, w następujący sposób: `IEchoContract`
+1. W interfejsie `IEchoContract` Zadeklaruj metodę dla pojedynczej operacji, którą `IEchoContract` kontrakt ujawnia w interfejsie i zastosuj atrybut `OperationContractAttribute` do metody, którą chcesz uwidocznić w ramach kontraktu Public WCF Relay, w następujący sposób: :
 
     ```csharp
     [OperationContract]
@@ -119,7 +119,7 @@ Kontrakt usługi określa operacje obsługiwane przez usługę. Operacje to meto
 
     Kanał jest obiektem platformy WCF, za pomocą którego host i klient przekazują do siebie informacje. Później napiszesz kod w kanale w celu ECHA informacji między obiema aplikacjami.
 
-1. Wybierz pozycję **Kompiluj** > **kompilację rozwiązania** lub wybierz kombinację klawiszy Ctrl + Shift + B, aby potwierdzić dokładność pracy wykonanej do tej pory.
+1. Wybierz opcję **kompiluj** > **Kompiluj rozwiązanie** lub naciśnij klawisze CTRL + SHIFT + B, aby potwierdzić dokładność pracy wykonanej do tej pory.
 
 ### <a name="example-of-a-wcf-contract"></a>Przykład kontraktu WCF
 
@@ -153,7 +153,7 @@ Teraz, gdy interfejs został utworzony, możesz go zaimplementować.
 
 ## <a name="implement-the-wcf-contract"></a>Implementowanie kontraktu WCF
 
-Tworzenie usługi Azure Relay wymaga, aby najpierw utworzyć kontrakt przy użyciu interfejsu. Aby uzyskać więcej informacji na temat tworzenia interfejsu, zobacz poprzednią sekcję. Kolejna procedura implementuje interfejs. To zadanie obejmuje utworzenie klasy o nazwie `EchoService` implementującej interfejs zdefiniowany `IEchoContract` przez użytkownika. Po zaimplementowaniu interfejsu należy skonfigurować interfejs przy użyciu pliku konfiguracji *App. config* . Plik konfiguracji zawiera niezbędne informacje dotyczące aplikacji. Te informacje obejmują nazwę usługi, nazwę kontraktu i typ protokołu, który jest używany do komunikacji z usługą przekaźnika. Kod używany do wykonywania tych zadań podano w przykładzie, który następuje po procedurze. Aby uzyskać bardziej ogólną dyskusję na temat implementowania kontraktu usługi, zobacz [implementowanie kontraktów usług](/dotnet/framework/wcf/implementing-service-contracts).
+Tworzenie usługi Azure Relay wymaga, aby najpierw utworzyć kontrakt przy użyciu interfejsu. Aby uzyskać więcej informacji na temat tworzenia interfejsu, zobacz poprzednią sekcję. Kolejna procedura implementuje interfejs. To zadanie obejmuje utworzenie klasy o nazwie `EchoService` implementującej interfejs `IEchoContract` zdefiniowany przez użytkownika. Po zaimplementowaniu interfejsu należy skonfigurować interfejs przy użyciu pliku konfiguracji *App. config* . Plik konfiguracji zawiera niezbędne informacje dotyczące aplikacji. Te informacje obejmują nazwę usługi, nazwę kontraktu i typ protokołu, który jest używany do komunikacji z usługą przekaźnika. Kod używany do wykonywania tych zadań podano w przykładzie, który następuje po procedurze. Aby uzyskać bardziej ogólną dyskusję na temat implementowania kontraktu usługi, zobacz [implementowanie kontraktów usług](/dotnet/framework/wcf/implementing-service-contracts).
 
 1. Utwórz nową klasę o nazwie `EchoService` bezpośrednio po definicji interfejsu `IEchoContract`. Klasa `EchoService` implementuje interfejs `IEchoContract`.
 
@@ -184,7 +184,7 @@ Tworzenie usługi Azure Relay wymaga, aby najpierw utworzyć kontrakt przy użyc
     }
     ```
 
-1. Wybierz opcję **Kompiluj** > **kompilację rozwiązania** lub wybierz kombinację klawiszy Ctrl + Shift + B.
+1. Wybierz opcję **kompiluj** > **Kompiluj rozwiązanie** lub naciśnij klawisze CTRL + SHIFT + B.
 
 ### <a name="define-the-configuration-for-the-service-host"></a>Zdefiniuj konfigurację dla hosta usługi
 
@@ -220,7 +220,7 @@ Plik konfiguracji jest podobny do pliku konfiguracji WCF. Zawiera nazwę usługi
 
     Punkt końcowy określa, gdzie klient będzie szukać aplikacji hosta. W dalszej części tego samouczka zostanie użyty ten krok w celu utworzenia identyfikatora URI, który w pełni uwidacznia hosta za pośrednictwem Azure Relay. Powiązanie deklaruje, że protokół TCP jest używany do komunikowania się z usługą przekaźnika.
 
-1. Wybierz pozycję **Kompiluj** > **kompilację rozwiązania** lub wybierz kombinację klawiszy Ctrl + Shift + B, aby potwierdzić dokładność pracy wykonanej do tej pory.
+1. Wybierz opcję **kompiluj** > **Kompiluj rozwiązanie** lub naciśnij klawisze CTRL + SHIFT + B, aby potwierdzić dokładność pracy wykonanej do tej pory.
 
 ### <a name="example-of-implementation-of-a-service-contract"></a>Przykład wdrożenia kontraktu usługi
 
@@ -286,7 +286,7 @@ W tym kroku opisano sposób uruchamiania usługi Azure Relay.
 
 ### <a name="create-a-base-address-for-the-service"></a>Utwórz adres podstawowy dla usługi
 
-Po kodzie dodanym w poprzedniej sekcji Utwórz `Uri` wystąpienie dla adresu podstawowego usługi. Ten identyfikator URI określa schemat magistrali usług, przestrzeń nazw i ścieżkę interfejsu usługi.
+Po kodzie dodanym w poprzedniej sekcji Utwórz wystąpienie `Uri` dla adresu podstawowego usługi. Ten identyfikator URI określa schemat magistrali usług, przestrzeń nazw i ścieżkę interfejsu usługi.
 
 ```csharp
 Uri address = ServiceBusEnvironment.CreateServiceUri("sb", serviceNamespace, "EchoService");
@@ -298,13 +298,13 @@ W tym samouczku użyto identyfikatora URI `sb://putServiceNamespaceHere.windows.
 
 ### <a name="create-and-configure-the-service-host"></a>Utwórz i skonfiguruj hosta usługi
 
-1. Nadal pracujesz `Main()`w programie, ustaw tryb łączności `AutoDetect`na.
+1. Nadal Pracujesz w `Main()`, ustaw tryb łączności na `AutoDetect`.
 
     ```csharp
     ServiceBusEnvironment.SystemConnectivity.Mode = ConnectivityMode.AutoDetect;
     ```
 
-    Tryb łączności opisuje protokół, którego usługa używa do komunikacji z usługą przekazywania; HTTP lub TCP. Przy użyciu ustawienia `AutoDetect`domyślnego usługa próbuje nawiązać połączenie z Azure Relay za pośrednictwem protokołu TCP, jeśli jest dostępne, oraz protokołu HTTP, jeśli protokół TCP jest niedostępny. Ten wynik różni się od protokołu, który jest określany przez usługę do komunikacji z klientem. Ten protokół jest ustalany na podstawie używanego powiązania. Na przykład usługa może używać powiązania [BasicHttpRelayBinding](/dotnet/api/microsoft.servicebus.basichttprelaybinding) , które określa, że punkt końcowy komunikuje się z klientami za pośrednictwem protokołu HTTP. Ta sama usługa mogłaby `ConnectivityMode.AutoDetect` określić, że usługa komunikuje się z Azure Relay za pośrednictwem protokołu TCP.
+    Tryb łączności opisuje protokół, którego usługa używa do komunikacji z usługą przekazywania; HTTP lub TCP. Korzystając z ustawienia domyślnego `AutoDetect`, usługa próbuje nawiązać połączenie z Azure Relay za pośrednictwem protokołu TCP, jeśli jest dostępny, i protokołu HTTP, jeśli protokół TCP jest niedostępny. Ten wynik różni się od protokołu, który jest określany przez usługę do komunikacji z klientem. Ten protokół jest ustalany na podstawie używanego powiązania. Na przykład usługa może używać powiązania [BasicHttpRelayBinding](/dotnet/api/microsoft.servicebus.basichttprelaybinding) , które określa, że punkt końcowy komunikuje się z klientami za pośrednictwem protokołu HTTP. Ta sama usługa może określać `ConnectivityMode.AutoDetect`, aby usługa mogła komunikować się z Azure Relay za pośrednictwem protokołu TCP.
 
 1. Utwórz hosta usługi przy użyciu identyfikatora URI utworzonego wcześniej w tej sekcji.
 
@@ -312,7 +312,7 @@ W tym samouczku użyto identyfikatora URI `sb://putServiceNamespaceHere.windows.
     ServiceHost host = new ServiceHost(typeof(EchoService), address);
     ```
 
-    Host usługi jest obiektem platformy WCF tworzącym wystąpienie usługi. W tym miejscu możesz przekazać typ usługi, którą chcesz utworzyć, `EchoService` typ, a także adres, pod którym ma zostać ujawniona usługa.
+    Host usługi jest obiektem platformy WCF tworzącym wystąpienie usługi. W tym miejscu możesz przekazać typ usługi, którą chcesz utworzyć, typ `EchoService`, a także adres, pod którym ma zostać ujawniona usługa.
 
 1. W górnej części pliku *program.cs* Dodaj odwołania do elementu [System. ServiceModel. Description](/dotnet/api/system.servicemodel.description) i [Microsoft. ServiceBus. Description](/dotnet/api/microsoft.servicebus.description).
 
@@ -327,7 +327,7 @@ W tym samouczku użyto identyfikatora URI `sb://putServiceNamespaceHere.windows.
     IEndpointBehavior serviceRegistrySettings = new ServiceRegistrySettings(DiscoveryType.Public);
     ```
 
-    Ten krok informuje usługę przekaźnikową, że aplikacja może zostać znaleziona publicznie przez sprawdzenie źródła danych Atom dla projektu. W przypadku ustawienia `DiscoveryType` `private`opcji klient może nadal uzyskać dostęp do usługi. Jednak usługa nie będzie wyświetlana podczas wyszukiwania w `Relay` przestrzeni nazw. Zamiast tego klient musiałby wcześniej znać ścieżkę punktu końcowego.
+    Ten krok informuje usługę przekaźnikową, że aplikacja może zostać znaleziona publicznie przez sprawdzenie źródła danych Atom dla projektu. Jeśli ustawisz `DiscoveryType` na `private`, klient nadal może uzyskać dostęp do usługi. Jednak usługa nie będzie wyświetlana podczas wyszukiwania `Relay` przestrzeni nazw. Zamiast tego klient musiałby wcześniej znać ścieżkę punktu końcowego.
 
 1. Zastosuj poświadczenia usługi do punktów końcowych usługi zdefiniowanych w pliku *App. config* :
 
@@ -343,7 +343,7 @@ W tym samouczku użyto identyfikatora URI `sb://putServiceNamespaceHere.windows.
 
 ### <a name="open-the-service-host"></a>Otwieranie hosta usługi
 
-1. W programie `Main()`Dodaj następujący wiersz, aby otworzyć usługę.
+1. Nadal w `Main()`Dodaj następujący wiersz, aby otworzyć usługę.
 
     ```csharp
     host.Open();
@@ -462,13 +462,13 @@ Następnym zadaniem jest utworzenie aplikacji klienckiej i zdefiniowanie kontrak
 
       ![Zainstaluj pakiet usługi Service Bus][4]
 
-1. Dodaj instrukcję dla przestrzeni nazw [System. ServiceModel](/dotnet/api/system.servicemodel) w pliku *program.cs.* `using`
+1. Dodaj instrukcję `using` dla przestrzeni nazw [System. ServiceModel](/dotnet/api/system.servicemodel) w pliku *program.cs* .
 
     ```csharp
     using System.ServiceModel;
     ```
 
-1. Dodaj definicję kontraktu usługi do przestrzeni nazw jak pokazano w poniższym przykładzie. Ta definicja jest taka sama jak definicja użyta w projekcie **usługi** . Dodaj ten kod w górnej części `Microsoft.ServiceBus.Samples` przestrzeni nazw.
+1. Dodaj definicję kontraktu usługi do przestrzeni nazw jak pokazano w poniższym przykładzie. Ta definicja jest taka sama jak definicja użyta w projekcie **usługi** . Dodaj ten kod w górnej części przestrzeni nazw `Microsoft.ServiceBus.Samples`.
 
     ```csharp
     [ServiceContract(Name = "IEchoContract", Namespace = "https://samples.microsoft.com/ServiceModel/Relay/")]
@@ -520,7 +520,7 @@ W tym kroku utworzysz plik *App. config* dla podstawowej aplikacji klienckiej, k
 
 1. W **Eksplorator rozwiązań**w projekcie **EchoClient** kliknij dwukrotnie plik **App. config** , aby otworzyć go w edytorze programu Visual Studio.
 1. W elemencie `<appSettings>` zastąp symbole zastępcze nazwą przestrzeni nazw usługi i kluczem sygnatury dostępu współdzielonego skopiowanym we wcześniejszym kroku.
-1. `system.serviceModel` W elemencie`<client>` Dodaj element.
+1. W elemencie `system.serviceModel` Dodaj element `<client>`.
 
     ```xml
     <?xmlversion="1.0"encoding="utf-8"?>
@@ -735,7 +735,7 @@ namespace Microsoft.ServiceBus.Samples
 
 1. Wybierz kombinację klawiszy Ctrl + Shift + B, aby skompilować rozwiązanie. Ta akcja kompiluje zarówno projekt klienta, jak i projekt usługi, który został utworzony w poprzednich krokach.
 1. Przed uruchomieniem aplikacji klienckiej musisz upewnić się, że aplikacja usługi jest uruchomiona. W **Eksplorator rozwiązań**kliknij prawym przyciskiem myszy rozwiązanie **EchoService** , a następnie wybierz polecenie **Właściwości**.
-1. Na **stronie właściwości**,**projekt uruchomieniowy** **wspólne właściwości** > , a następnie wybierz **wiele projektów startowych**. Upewnij się, że pozycja **EchoService** jest wyświetlana na początku listy.
+1. Na **stronie właściwości**, **wspólne właściwości** > **projekt startowy**, a następnie wybierz **wiele projektów startowych**. Upewnij się, że pozycja **EchoService** jest wyświetlana na początku listy.
 1. Ustaw w polu **Akcja** zarówno dla projektu **EchoService**, jak i projektu **EchoClient** ustawienie **Uruchom**.
 
     ![Strony właściwości projektu][5]

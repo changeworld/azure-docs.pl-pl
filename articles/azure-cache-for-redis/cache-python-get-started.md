@@ -1,6 +1,6 @@
 ---
 title: 'Szybki Start: Tworzenie aplikacji w języku Python korzystającej z usługi Azure cache for Redis'
-description: W tym przewodniku Szybki start dowiesz się, jak utworzyć aplikację Python korzystającą z usługi Azure Cache for Redis
+description: W tym przewodniku szybki start dowiesz się, jak utworzyć aplikację w języku Python korzystającą z usługi Azure cache for Redis.
 services: cache
 documentationcenter: ''
 author: yegu-ms
@@ -12,17 +12,17 @@ ms.devlang: python
 ms.topic: quickstart
 ms.tgt_pltfrm: cache
 ms.workload: tbd
-ms.date: 05/11/2018
+ms.date: 11/05/2019
 ms.author: yegu
 ms.custom:
 - mvc
 - seo-python-october2019
-ms.openlocfilehash: 5367896c931bf7c5f52b0874d49ede2fc78614ab
-ms.sourcegitcommit: 77bfc067c8cdc856f0ee4bfde9f84437c73a6141
+ms.openlocfilehash: 8cb5a47e884400f09111c6e40b387deea4fb158e
+ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72435528"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73720349"
 ---
 # <a name="quickstart-create-a-python-app-that-uses-azure-cache-for-redis"></a>Szybki Start: Tworzenie aplikacji w języku Python korzystającej z usługi Azure cache for Redis
 
@@ -33,31 +33,26 @@ W tym artykule opisano obsługę usługi Azure cache for Redis w aplikacji w ję
 - Subskrypcja platformy Azure — [Utwórz ją bezpłatnie](https://azure.microsoft.com/free/)
 - [Python 2 lub 3](https://www.python.org/downloads/)
 
-## <a name="create-an-azure-cache-for-redis-on-azure"></a>Tworzenie usługi Azure Cache for Redis na platformie Azure
+## <a name="create-an-azure-cache-for-redis-instance"></a>Tworzenie wystąpienia pamięci podręcznej Azure Cache for Redis
 [!INCLUDE [redis-cache-create](../../includes/redis-cache-create.md)]
 
 [!INCLUDE [redis-cache-create](../../includes/redis-cache-access-keys.md)]
 
 ## <a name="install-redis-py"></a>Instalowanie klienta redis-py
 
-[Redis-py](https://github.com/andymccurdy/redis-py) to interfejs języka Python dla usługi Azure Cache for Redis. Użyj dostępnego w języku Python narzędzia do obsługi pakietów *pip*, aby zainstalować pakiet redis-py. 
+[Redis-py](https://github.com/andymccurdy/redis-py) to interfejs języka Python dla usługi Azure Cache for Redis. Użyj narzędzia pakiety Python, *PIP*, aby zainstalować pakiet *Redis-PR* z wiersza polecenia. 
 
-W poniższym przykładzie użyto *PIP3* for python3 do zainstalowania pakietu Redis-PR w systemie Windows 10 przy użyciu wiersza polecenia dla deweloperów programu Visual Studio 2019 z podniesionymi uprawnieniami administratora.
-
-```python
-    pip3 install redis
-```
+W poniższym przykładzie użyto *PIP3* for Python 3 do zainstalowania *Redis-PR* w systemie Windows 10 z poziomu wiersza polecenia administratora.
 
 ![Zainstaluj interfejs Python Redis-PR w usłudze Azure cache dla Redis](./media/cache-python-get-started/cache-python-install-redis-py.png)
 
-
 ## <a name="read-and-write-to-the-cache"></a>Odczytywanie i zapisywanie w pamięci podręcznej
 
-Uruchom środowisko Python i przetestuj korzystanie z pamięci podręcznej z poziomu wiersza polecenia. Zastąp `<Your Host Name>` i `<Your Access Key>` wartościami odpowiednimi dla używanej pamięci podręcznej Azure Cache for Redis. 
+Uruchom Język Python z wiersza polecenia i przetestuj pamięć podręczną przy użyciu następującego kodu. Zastąp `<Your Host Name>` i `<Your Access Key>` wartościami z wystąpienia usługi Azure cache for Redis. Nazwa hosta ma postać *\<nazw DNS >. Redis. cache. Windows. NET*.
 
 ```python
 >>> import redis
->>> r = redis.StrictRedis(host='<Your Host Name>.redis.cache.windows.net',
+>>> r = redis.StrictRedis(host='<Your Host Name>',
         port=6380, db=0, password='<Your Access Key>', ssl=True)
 >>> r.set('foo', 'bar')
 True
@@ -66,18 +61,16 @@ b'bar'
 ```
 
 > [!IMPORTANT]
-> W przypadku wersji Redis jest 3,0 lub wyższa, wymuszana jest kontrola certyfikatu SSL. ssl_ca_certs musi być jawnie ustawiona podczas nawiązywania połączenia z Redis. W przypadku RH Linux ssl_ca_certs można znaleźć w module certyfikatu "/etc/pki/tls/certs/CA-Bundle.CRT".
+> W przypadku usługi Azure cache for Redis w wersji 3,0 lub nowszej jest wymuszana Kontrola certyfikatu SSL. ssl_ca_certs musi być jawnie ustawiona podczas nawiązywania połączenia z usługą Azure cache for Redis. W przypadku RedHat Linux ssl_ca_certs znajdują się w module certyfikatu */etc/pki/tls/certs/CA-Bundle.CRT* .
 
-## <a name="create-a-python-script"></a>Tworzenie skryptu w języku Python
+## <a name="create-a-python-sample-app"></a>Tworzenie przykładowej aplikacji w języku Python
 
-Utwórz nowy plik tekstowy skryptu o nazwie *PythonApplication1.py*.
-
-Dodaj następujący skrypt do pliku *PythonApplication1.py* i zapisz go. Ten skrypt przetestuje dostęp do pamięci podręcznej. Zastąp `<Your Host Name>` i `<Your Access Key>` wartościami odpowiednimi dla używanej pamięci podręcznej Azure Cache for Redis. 
+Utwórz nowy plik tekstowy, Dodaj następujący skrypt i Zapisz plik jako *PythonApplication1.py*. Zastąp `<Your Host Name>` i `<Your Access Key>` wartościami z wystąpienia usługi Azure cache for Redis. Nazwa hosta ma postać *\<nazw DNS >. Redis. cache. Windows. NET*.
 
 ```python
 import redis
 
-myHostname = "<Your Host Name>.redis.cache.windows.net"
+myHostname = "<Your Host Name>"
 myPassword = "<Your Access Key>"
 
 r = redis.StrictRedis(host=myHostname, port=6380,
@@ -98,36 +91,28 @@ for c in result:
     print("id : " + c['id'] + ", addr : " + c['addr'])
 ```
 
-Uruchom skrypt języka Python.
+Uruchom *PythonApplication1.py* za pomocą języka Python. Powinny być widoczne wyniki podobne do następującego przykładu:
 
-![Uruchom skrypt języka Python, aby przetestować dostęp do pamięci podręcznej w usłudze Azure cache for Redis](./media/cache-python-get-started/cache-python-completed.png)
-
+![Uruchom skrypt języka Python, aby przetestować dostęp do pamięci podręcznej](./media/cache-python-get-started/cache-python-completed.png)
 
 ## <a name="clean-up-resources"></a>Oczyszczanie zasobów
 
-Jeśli zamierzasz przejść do innego samouczka, możesz zachować zasoby utworzone w tym przewodniku Szybki start i użyć ich ponownie.
-
-W przeciwnym razie po zakończeniu pracy z przykładową aplikacją poradnika Szybki start możesz usunąć zasoby platformy Azure utworzone w tym poradniku Szybki start, aby uniknąć naliczania opłat. 
+Jeśli zakończysz pracę z grupą zasobów i zasobami platformy Azure utworzoną w tym przewodniku Szybki Start, możesz je usunąć, aby uniknąć naliczania opłat.
 
 > [!IMPORTANT]
-> Usunięcie grupy zasobów jest nieodwracalne i grupa zasobów oraz wszystkie zawarte w niej zasoby zostaną trwale usunięte. Uważaj, aby nie usunąć przypadkowo niewłaściwych zasobów lub grupy zasobów. Jeśli zasoby do hostowania tego przykładu zostały utworzone wewnątrz istniejącej grupy zasobów zawierającej zasoby, które chcesz zachować, możesz usunąć każdy zasób oddzielnie z odpowiadającego mu bloku zamiast usuwać całą grupę zasobów.
->
+> Usuwanie grupy zasobów jest nieodwracalne, a grupa zasobów i wszystkie znajdujące się w niej zasoby są trwale usuwane. Jeśli utworzono wystąpienie usługi Azure cache for Redis w istniejącej grupie zasobów, która ma zostać zachowana, można usunąć tylko pamięć podręczną, wybierając pozycję **Usuń** na stronie **Przegląd** pamięci podręcznej. 
 
-Zaloguj się do witryny [Azure Portal](https://portal.azure.com) i wybierz pozycję **Grupy zasobów**.
+Aby usunąć grupę zasobów i jej Redis Cache dla wystąpienia platformy Azure:
 
-W polu tekstowym **Filtruj według nazwy...** wprowadź nazwę grupy zasobów. Instrukcje w tym artykule używają grupy zasobów o nazwie *TestResources*. W grupie zasobów na liście wynik wybierz pozycję **...** , a następnie **Usuń grupę zasobów**.
-
-![Usuń swoją grupę zasobów szybkiego startu dla usługi Azure cache for Redis](./media/cache-web-app-howto/delete-your-resource-group-for-azure-cache-for-redis.png)
-
-Zobaczysz prośbę o potwierdzenie usunięcia grupy zasobów. Aby potwierdzić, wprowadź nazwę grupy zasobów, a następnie wybierz pozycję **Usuń**.
-
-Po krótkim czasie grupa zasobów i wszystkie zawarte w niej zasoby zostaną usunięte.
+1. W [Azure Portal](https://portal.azure.com)Wyszukaj i wybierz pozycję **grupy zasobów**.
+1. W polu tekstowym **Filtruj według nazwy** wprowadź nazwę grupy zasobów zawierającej wystąpienie pamięci podręcznej, a następnie wybierz ją z wyników wyszukiwania. 
+1. Na stronie grupy zasobów wybierz pozycję **Usuń grupę zasobów**.
+1. Wpisz nazwę grupy zasobów, a następnie wybierz pozycję **Usuń**.
+   
+   ![Usuwanie grupy zasobów dla usługi Azure cache for Redis](./media/cache-python-get-started/delete-your-resource-group-for-azure-cache-for-redis.png)
 
 ## <a name="next-steps"></a>Następne kroki
 
 > [!div class="nextstepaction"]
 > [Tworzenie prostej aplikacji internetowej platformy ASP.NET, która korzysta z usługi Azure Cache for Redis.](./cache-web-app-howto.md)
 
-<!--Image references-->
-[1]: ./media/cache-python-get-started/redis-cache-new-cache-menu.png
-[2]: ./media/cache-python-get-started/redis-cache-cache-create.png

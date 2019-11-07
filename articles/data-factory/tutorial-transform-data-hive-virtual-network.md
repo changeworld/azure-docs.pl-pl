@@ -1,5 +1,5 @@
 ---
-title: Przekształcanie danych za pomocą programu Hive w usłudze Azure Virtual Network | Microsoft Docs
+title: 'Przekształcanie danych przy użyciu programu Hive na platformie Azure Virtual Network '
 description: Ten samouczek zawiera instrukcje krok po kroku przekształcania danych przy użyciu działania programu Hive w usłudze Azure Data Factory.
 services: data-factory
 documentationcenter: ''
@@ -11,12 +11,12 @@ ms.date: 01/22/2018
 author: nabhishek
 ms.author: abnarain
 manager: craigg
-ms.openlocfilehash: 667835605cfaf4fced10b07f05028bcfa11f64da
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 263eb243ea45963757c50aa031cc17e318d70d98
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60336142"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73683312"
 ---
 # <a name="transform-data-in-azure-virtual-network-using-hive-activity-in-azure-data-factory"></a>Przekształcanie danych w usłudze Azure Virtual Network przy użyciu działania programu Hive w usłudze Azure Data Factory
 W tym samouczku program Azure PowerShell umożliwia tworzenie potoku fabryki danych, który przekształca dane przy użyciu działania programu Hive w klastrze usługi HDInsight, który znajduje się w usłudze Azure Virtual Network (VNet). Ten samouczek obejmuje następujące procedury:
@@ -26,7 +26,7 @@ W tym samouczku program Azure PowerShell umożliwia tworzenie potoku fabryki dan
 > * Redagowanie i konfigurowanie własnego środowiska Integration Runtime
 > * Tworzenie i wdrażanie połączonych usług
 > * Redagowanie i wdrażanie potoku zawierającego działanie programu Hive
-> * Uruchamianie potoku
+> * Uruchamianie przebiegu potoku.
 > * Monitorowanie działania potoku 
 > * Sprawdzanie danych wyjściowych 
 
@@ -40,7 +40,7 @@ Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpł
 - **Azure Virtual Network.** Jeśli nie masz sieci wirtualnej platformy Azure, utwórz ją, wykonując [te instrukcje](../virtual-network/quick-create-portal.md). W tym przykładzie usługa HDInsight znajduje się w usłudze Azure Virtual Network. Oto przykładowa konfiguracja usługi Azure Virtual Network. 
 
     ![Tworzenie sieci wirtualnej](media/tutorial-transform-data-using-hive-in-vnet/create-virtual-network.png)
-- **Klaster usługi HDInsight.** Utwórz klaster usługi HDInsight i przyłącz go do sieci wirtualnej utworzonej w poprzednim kroku, postępując zgodnie z opisem podanym w artykule: [Extend Azure HDInsight using an Azure Virtual Network (Rozszerzanie usługi Azure HDInsight za pomocą usługi Azure Virtual Network)](../hdinsight/hdinsight-extend-hadoop-virtual-network.md). Oto przykładowa konfiguracja usługi HDInsight w sieci wirtualnej. 
+- **Klaster usługi HDInsight.** Utwórz klaster usługi HDInsight i przyłącz go do sieci wirtualnej utworzonej w poprzednim kroku, postępując zgodnie z opisem podanym w tym artykule: [Extend Azure HDInsight using an Azure Virtual Network (Rozszerzenie usługi Azure HDInsight za pomocą usługi Azure Virtual Network)](../hdinsight/hdinsight-extend-hadoop-virtual-network.md). Oto przykładowa konfiguracja usługi HDInsight w sieci wirtualnej. 
 
     ![Usługa HDInsight w sieci wirtualnej](media/tutorial-transform-data-using-hive-in-vnet/hdinsight-in-vnet-configuration.png)
 - Zainstalowanie programu **Azure PowerShell**. Wykonaj instrukcje podane w temacie [Instalowanie i konfigurowanie programu Azure PowerShell](/powershell/azure/install-Az-ps).
@@ -91,7 +91,7 @@ Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpł
     ```powershell
     $selfHostedIntegrationRuntimeName = "MySelfHostedIR09142017" 
     ```
-2. Uruchom program **PowerShell**. Nie zamykaj programu Azure PowerShell aż do końca tego samouczka Szybki start. Jeśli go zamkniesz i otworzysz ponownie, musisz uruchomić te polecenia jeszcze raz. Aby uzyskać listę regionów platformy Azure, w których obecnie jest dostępna usługa Data Factory, wybierz dane regiony na poniższej stronie, a następnie rozwiń węzeł **Analiza**, aby zlokalizować pozycję **Data Factory**: [Dostępność produktów według regionów](https://azure.microsoft.com/global-infrastructure/services/). Magazyny danych (Azure Storage, Azure SQL Database itp.) i jednostki obliczeniowe (HDInsight itp.) używane przez fabrykę danych mogą mieścić się w innych regionach.
+2. Uruchom program **PowerShell**. Nie zamykaj programu Azure PowerShell aż do końca tego samouczka Szybki start. Jeśli go zamkniesz i otworzysz ponownie, musisz uruchomić te polecenia jeszcze raz. Aby uzyskać listę regionów platformy Azure, w których obecnie jest dostępna usługa Data Factory, wybierz dane regiony na poniższej stronie, a następnie rozwiń węzeł **Analiza**, aby zlokalizować pozycję **Data Factory**: [Produkty dostępne według regionu](https://azure.microsoft.com/global-infrastructure/services/). Magazyny danych (Azure Storage, Azure SQL Database itp.) i jednostki obliczeniowe (HDInsight itp.) używane przez fabrykę danych mogą mieścić się w innych regionach.
 
     Uruchom poniższe polecenie i wprowadź nazwę użytkownika oraz hasło, których używasz do logowania się w witrynie Azure Portal:
         
@@ -154,7 +154,7 @@ W tej sekcji utworzysz środowisko Integration Runtime (Self-hosted) i skojarzys
 
    ![Rejestrowanie środowiska Integration Runtime](media/tutorial-transform-data-using-hive-in-vnet/register-integration-runtime.png)
 
-   Gdy własne środowisko Integration Runtime zostanie pomyślnie zarejestrowane, zostanie wyświetlony następujący komunikat: ![Pomyślnie zarejestrowano](media/tutorial-transform-data-using-hive-in-vnet/registered-successfully.png)
+   Gdy środowisko Integration Runtime (Self-hosted) zostanie pomyślnie zarejestrowane, zostanie wyświetlony następujący komunikat: ![Pomyślnie zarejestrowane](media/tutorial-transform-data-using-hive-in-vnet/registered-successfully.png)
 
    Gdy węzeł zostanie połączony z usługą w chmurze, zostanie wyświetlona następująca strona: ![Węzeł jest połączony](media/tutorial-transform-data-using-hive-in-vnet/node-is-connected.png)
 
@@ -222,7 +222,7 @@ Zaktualizuj wartości następujących właściwości w definicji połączonej us
 
 - **userName**. Nazwa użytkownika logowania do klastra określona podczas tworzenia klastra. 
 - **password**. Hasło użytkownika.
-- **clusterUri**. Podaj adres URL klastra usługi HDInsight w następującym formacie: `https://<clustername>.azurehdinsight.net`.  W tym artykule przyjęto założenie, że masz dostęp do klastra za pośrednictwem Internetu. Na przykład możesz połączyć się z klastrem pod adresem `https://clustername.azurehdinsight.net`. Ten adres używa publicznej bramy, która jest niedostępna w przypadku używania sieciowych grup zabezpieczeń lub tras zdefiniowanych przez użytkownika (UDR) do ograniczania dostępu z Internetu. Aby fabryka danych mogła przekazywać zadania do klastrów usługi HDInsight w usłudze Azure Virtual Network, należy skonfigurować usługę Azure Virtual Network w taki sposób, aby adres URL mógł zostać rozpoznany jako prywatny adres IP bramy używanej przez usługę HDInsight.
+- **clusterUri**. Określ adres URL klastra usługi HDInsight w następującym formacie: `https://<clustername>.azurehdinsight.net`.  W tym artykule przyjęto założenie, że masz dostęp do klastra za pośrednictwem Internetu. Na przykład możesz połączyć się z klastrem pod adresem `https://clustername.azurehdinsight.net`. Ten adres używa publicznej bramy, która jest niedostępna w przypadku używania sieciowych grup zabezpieczeń lub tras zdefiniowanych przez użytkownika (UDR) do ograniczania dostępu z Internetu. Aby fabryka danych mogła przekazywać zadania do klastrów usługi HDInsight w usłudze Azure Virtual Network, należy skonfigurować usługę Azure Virtual Network w taki sposób, aby adres URL mógł zostać rozpoznany jako prywatny adres IP bramy używanej przez usługę HDInsight.
 
   1. W witrynie Azure Portal otwórz sieć wirtualną, w której znajduje się usługa HDInsight. Otwórz interfejs sieciowy mający nazwę zaczynającą się od `nic-gateway-0`. Zanotuj jego prywatny adres IP. Na przykład 10.6.0.15. 
   2. Jeśli usługa Azure Virtual Network ma serwer usługi DNS, zaktualizuj rekord usługi DNS tak, aby adres URL klastra usługi HDInsight `https://<clustername>.azurehdinsight.net` można było rozpoznać jako `10.6.0.15`. Jest to zalecane podejście. Jeśli w usłudze Azure Virtual Network nie masz serwera DNS, możesz tymczasowo obejść to, edytując plik hosts (C:\Windows\System32\drivers\etc) wszystkich maszyn wirtualnych, które są zarejestrowane jako węzły środowiska Integration Runtime (Self-hosted) przez dodanie wpisu podobnego do tego: 
@@ -292,7 +292,7 @@ Set-AzDataFactoryV2Pipeline -DataFactoryName $dataFactoryName -ResourceGroupName
 
 ## <a name="start-the-pipeline"></a>Uruchamianie potoku 
 
-1. Uruchamianie działania potoku. Umożliwia to również przechwycenie identyfikatora uruchomienia potoku w celu monitorowania w przyszłości.
+1. Uruchamianie przebiegu potoku. Umożliwia to również przechwycenie identyfikatora uruchomienia potoku w celu monitorowania w przyszłości.
 
     ```powershell
     $runId = Invoke-AzDataFactoryV2Pipeline -DataFactoryName $dataFactoryName -ResourceGroupName $resourceGroupName -PipelineName $pipelineName
@@ -401,7 +401,7 @@ W ramach tego samouczka wykonano następujące procedury:
 > * Redagowanie i konfigurowanie własnego środowiska Integration Runtime
 > * Tworzenie i wdrażanie połączonych usług
 > * Redagowanie i wdrażanie potoku zawierającego działanie programu Hive
-> * Uruchamianie potoku
+> * Uruchamianie przebiegu potoku.
 > * Monitorowanie działania potoku 
 > * Sprawdzanie danych wyjściowych 
 

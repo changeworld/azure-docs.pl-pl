@@ -1,6 +1,6 @@
 ---
 title: Samouczek — Konfigurowanie tabel tras platformy Azure przy użyciu rozwiązania ansible
-description: Dowiedz się, jak tworzyć, zmieniać i usuwać tabele tras platformy Azure przy użyciu rozwiązania ansible
+description: Dowiedz się, jak tworzyć i usuwać tabele tras platformy Azure oraz zarządzać nimi za pomocą rozwiązania ansible. Dowiedz się również, jak tworzyć i usuwać trasy.
 keywords: ansible, azure, devops, bash, playbook, networking, route, route table
 ms.topic: tutorial
 ms.service: ansible
@@ -8,12 +8,12 @@ author: tomarchermsft
 manager: jeconnoc
 ms.author: tarcher
 ms.date: 04/30/2019
-ms.openlocfilehash: 14753af58a179ddf4011cb29c7ed08faab62875c
-ms.sourcegitcommit: 824e3d971490b0272e06f2b8b3fe98bbf7bfcb7f
+ms.openlocfilehash: 0ffc00606eac4cf57cdf19072986373f5602aafa
+ms.sourcegitcommit: b2fb32ae73b12cf2d180e6e4ffffa13a31aa4c6f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/10/2019
-ms.locfileid: "72241780"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73614337"
 ---
 # <a name="tutorial-configure-azure-route-tables-using-ansible"></a>Samouczek: Konfigurowanie tabel tras platformy Azure przy użyciu rozwiązania ansible
 
@@ -50,7 +50,7 @@ Zapisz następujący podręcznik jako `route_table_create.yml`:
         resource_group: "{{ resource_group }}"
 ```
 
-Uruchom element PlayBook za pomocą polecenia `ansible-playbook`:
+Uruchom element PlayBook przy użyciu polecenia `ansible-playbook`:
 
 ```bash
 ansible-playbook route_table_create.yml
@@ -107,7 +107,7 @@ Zapisz następujący podręcznik jako `route_table_associate.yml`:
         route_table: "{ route_table_name }"
 ```
 
-Uruchom element PlayBook za pomocą polecenia `ansible-playbook`:
+Uruchom element PlayBook przy użyciu polecenia `ansible-playbook`:
 
 ```bash
 ansible-playbook route_table_associate.yml
@@ -117,7 +117,7 @@ ansible-playbook route_table_associate.yml
 
 Kod element PlayBook w tej sekcji tworzy skojarzenie tabeli tras z podsieci.
 
-Przy skojarzeniu tabeli tras z podsieci ustaw wartość `route_table` dla podsieci na `None`. 
+W przypadku usuwania skojarzenia tabeli tras z podsieci Ustaw `route_table` podsieci do `None`. 
 
 Zapisz następujący podręcznik jako `route_table_dissociate.yml`:
 
@@ -136,7 +136,7 @@ Zapisz następujący podręcznik jako `route_table_dissociate.yml`:
         address_prefix_cidr: "10.1.0.0/24"
 ```
 
-Uruchom element PlayBook za pomocą polecenia `ansible-playbook`:
+Uruchom element PlayBook przy użyciu polecenia `ansible-playbook`:
 
 ```bash
 ansible-playbook route_table_dissociate.yml
@@ -169,7 +169,7 @@ Przed uruchomieniem element PlayBook zapoznaj się z następującymi uwagami:
 * `virtual_network_gateway` jest zdefiniowany jako `next_hop_type`. Aby uzyskać więcej informacji na temat sposobu wybierania tras przez platformę Azure, zobacz [Omówienie routingu](/azure/virtual-network/virtual-networks-udr-overview).
 * `address_prefix` jest zdefiniowany jako `10.1.0.0/16`. Nie można zduplikować prefiksu w tabeli tras.
 
-Uruchom element PlayBook za pomocą polecenia `ansible-playbook`:
+Uruchom element PlayBook przy użyciu polecenia `ansible-playbook`:
 
 ```bash
 ansible-playbook route_create.yml
@@ -196,7 +196,7 @@ Zapisz następujący podręcznik jako `route_delete.yml`:
         state: absent
 ```
 
-Uruchom element PlayBook za pomocą polecenia `ansible-playbook`:
+Uruchom element PlayBook przy użyciu polecenia `ansible-playbook`:
 
 ```bash
 ansible-playbook route_delete.yml
@@ -204,7 +204,7 @@ ansible-playbook route_delete.yml
 
 ## <a name="get-route-table-information"></a>Pobierz informacje o tabeli tras
 
-Kod element PlayBook w tej sekcji używa modułu rozwiązania ansible `azure_rm_routetable_facts` do pobierania informacji o tabeli tras.
+Kod element PlayBook w tej sekcji używa `azure_rm_routetable_facts` modułu rozwiązania ansible do pobierania informacji o tabeli tras.
 
 Zapisz następujący podręcznik jako `route_table_facts.yml`:
 
@@ -224,7 +224,7 @@ Zapisz następujący podręcznik jako `route_table_facts.yml`:
          var: query.route_tables[0]
 ```
 
-Uruchom element PlayBook za pomocą polecenia `ansible-playbook`:
+Uruchom element PlayBook przy użyciu polecenia `ansible-playbook`:
 
 ```bash
 ansible-playbook route_table_facts.yml
@@ -253,7 +253,7 @@ Zapisz następujący podręcznik jako `route_table_delete.yml`:
         state: absent
 ```
 
-Uruchom element PlayBook za pomocą polecenia `ansible-playbook`:
+Uruchom element PlayBook przy użyciu polecenia `ansible-playbook`:
 
 ```bash
 ansible-playbook route_table_delete.yml

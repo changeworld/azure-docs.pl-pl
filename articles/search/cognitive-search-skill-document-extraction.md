@@ -1,21 +1,24 @@
 ---
-title: Umiejętność wyszukiwania poznawczego dokumentów
+title: Umiejętność wyszukiwania poznawczego dokumentu (wersja zapoznawcza)
 titleSuffix: Azure Cognitive Search
-description: Wyodrębnia zawartość z pliku w ramach potoku wzbogacania.
+description: Wyodrębnia zawartość z pliku w ramach potoku wzbogacania. Ta umiejętność jest obecnie dostępna w publicznej wersji zapoznawczej.
 manager: nitinme
 author: careyjmac
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.author: chalton
-ms.openlocfilehash: 8656896fe1a113ab143c43b4d1973e4196c5f087
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: e4274f1cb2eacaf78ab83bfb9d637d044d2290bd
+ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73512199"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73720130"
 ---
 # <a name="document-extraction-cognitive-skill"></a>Umiejętność wyodrębniania dokumentów
+
+> [!IMPORTANT] 
+> Ta umiejętność jest obecnie dostępna w publicznej wersji zapoznawczej. Funkcje wersji zapoznawczej są dostępne bez umowy dotyczącej poziomu usług i nie są zalecane w przypadku obciążeń produkcyjnych. Aby uzyskać więcej informacji, zobacz [Uzupełniające warunki korzystania z wersji zapoznawczych platformy Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/). [Interfejs API REST w wersji 2019-05-06 — wersja zapoznawcza](search-api-preview.md) zapewnia funkcje w wersji zapoznawczej. Obecnie nie ma obsługi portalu lub zestawu SDK platformy .NET.
 
 Umiejętność **wyodrębniania dokumentu** wyodrębnia zawartość z pliku w ramach potoku wzbogacania. Dzięki temu można wykorzystać krok wyodrębniania dokumentu, który zwykle występuje przed wykonaniem zestawu umiejętności z plikami, które mogą być generowane przez inne umiejętności.
 
@@ -63,7 +66,7 @@ Ten obiekt odwołania do pliku może być wygenerowany jeden z trzech sposobów:
 
  - Ustawianie parametru `allowSkillsetToReadFileData` w definicji indeksatora na wartość "true".  Spowoduje to utworzenie ścieżki `/document/file_data`, która jest obiektem reprezentującym oryginalne dane pliku pobrane ze źródła danych obiektu BLOB. Ten parametr ma zastosowanie tylko do danych w magazynie obiektów BLOB.
 
- - Ustawianie parametru `imageAction` w definicji indeksatora na wartość inną niż `none`.  Spowoduje to utworzenie tablicy obrazów `/document/normalized_images`, które są zgodne z wymaganą Konwencją dla danych wejściowych do tej umiejętności, jeśli są one przesyłane pojedynczo (tj. `/document/normalized_images/*`).
+ - Ustawianie parametru `imageAction` w definicji indeksatora na wartość inną niż `none`.  Powoduje to utworzenie tablicy obrazów, które są zgodne z wymaganą Konwencją dla danych wejściowych do tej umiejętności, jeśli są one przesyłane indywidualnie (tj. `/document/normalized_images/*`).
 
  - Posiadanie niestandardowej kwalifikacji zwraca obiekt JSON zdefiniowany dokładnie tak jak powyżej.  Parametr `$type` musi mieć ustawioną wartość dokładnie `file`, a parametr `data` musi być podstawowym 64 zakodowanym bajtem danych tablicy zawartości pliku.
 

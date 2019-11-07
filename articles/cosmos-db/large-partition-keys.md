@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 09/28/2019
 ms.author: mjbrown
-ms.openlocfilehash: be639a67f70ab40f8d7dcc0f3793cbbd4a2ec4a3
-ms.sourcegitcommit: 77bfc067c8cdc856f0ee4bfde9f84437c73a6141
+ms.openlocfilehash: e2ea934140322a13f07a90f4246bacd3f9dbe6c9
+ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72436813"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73721095"
 ---
 # <a name="create-containers-with-large-partition-key"></a>Tworzenie kontenerów z dużym kluczem partycji
 
@@ -72,6 +72,7 @@ Klucze dużych partycji są obsługiwane z następującymi minimalnymi wersjami 
 |Synchronizacja Java     |   2.4.0      |
 |Asynchroniczne środowisko Java   |  2.5.0        |
 | Interfejs API REST | wersja wyższa niż `2017-05-03` przy użyciu nagłówka żądania `x-ms-version`.|
+| Szablon usługi Resource Manager | Wersja 2 przy użyciu właściwości `"version":2` w obiekcie `partitionKey`. |
 
 Obecnie nie można używać kontenerów z dużym kluczem partycji w ramach Power BI i Azure Logic Apps. Z tych aplikacji można korzystać z kontenerów bez dużego klucza partycji.
 

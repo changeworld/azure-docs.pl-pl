@@ -1,131 +1,127 @@
 ---
 title: Wdróż usługę Azure serwer proxy aplikacji usługi Azure AD dla Azure AD Domain Services | Microsoft Docs
-description: Korzystanie z usługi Azure serwer proxy aplikacji usługi Azure AD w Azure Active Directory Domain Services domenach zarządzanych
+description: Dowiedz się, jak zapewnić bezpieczny dostęp do wewnętrznych aplikacji dla pracowników zdalnych przez wdrażanie i Konfigurowanie serwer proxy aplikacji usługi Azure Active Directory w Azure Active Directory Domain Servicesej domenie zarządzanej
 services: active-directory-ds
-documentationcenter: ''
 author: iainfoulds
 manager: daveba
-editor: curtand
 ms.assetid: 938a5fbc-2dd1-4759-bcce-628a6e19ab9d
 ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
-ms.date: 05/14/2019
+ms.date: 11/6/2019
 ms.author: iainfou
-ms.openlocfilehash: 80c3b2120a617e5c4c0f8de252b9436753fea011
-ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
+ms.openlocfilehash: c0fcb8c2c5f9afa7fabe2ffa63a715ec24aa4a26
+ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/22/2019
-ms.locfileid: "72754399"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73720507"
 ---
-# <a name="deploy-azure-ad-application-proxy-on-an-azure-ad-domain-services-managed-domain"></a>Wdrażanie usługi Azure serwer proxy aplikacji usługi Azure AD w domenie zarządzanej Azure AD Domain Services
-Serwer proxy aplikacji Azure Active Directory (AD) pomaga zapewnić obsługę zdalnych procesów roboczych przez publikowanie aplikacji lokalnych w celu uzyskania dostępu przez Internet. Dzięki Azure AD Domain Services możesz teraz podnieśać i przeshift starsze aplikacje działające lokalnie do usług infrastruktury platformy Azure. Następnie można opublikować te aplikacje za pomocą serwer proxy aplikacji usługi Azure AD platformy Azure, aby zapewnić bezpieczny dostęp zdalny użytkownikom w organizacji.
+# <a name="deploy-azure-ad-application-proxy-for-secure-access-to-internal-applications-in-an-azure-ad-domain-services-managed-domain"></a>Wdrażanie serwer proxy aplikacji usługi Azure AD platformy Azure w celu bezpiecznego dostępu do wewnętrznych aplikacji w domenie zarządzanej Azure AD Domain Services
 
-Jeśli dopiero zaczynasz korzystać z usługi Azure serwer proxy aplikacji usługi Azure AD, Dowiedz się więcej o tej funkcji w następującym artykule: [jak zapewnić bezpieczny dostęp zdalny do aplikacji lokalnych](../active-directory/manage-apps/application-proxy.md).
+Za pomocą Azure AD Domain Services (AD DS platformy Azure) można przekształcać starsze aplikacje działające lokalnie na platformę Azure. Serwer proxy aplikacji Azure Active Directory (AD) ułatwia obsługę zdalnych procesów roboczych przez bezpieczne publikowanie tych wewnętrznych aplikacji w domenie zarządzanej AD DS platformy Azure, dzięki czemu można uzyskać do nich dostęp za pośrednictwem Internetu.
+
+Jeśli dopiero zaczynasz korzystać z usługi Azure serwer proxy aplikacji usługi Azure AD i chcesz dowiedzieć się więcej, zobacz [jak zapewnić bezpieczny dostęp zdalny do aplikacji wewnętrznych](../active-directory/manage-apps/application-proxy.md).
+
+W tym artykule opisano sposób tworzenia i konfigurowania łącznika usługi Azure serwer proxy aplikacji usługi Azure AD w celu zapewnienia bezpiecznego dostępu do aplikacji w domenie zarządzanej AD DS platformy Azure.
 
 [!INCLUDE [active-directory-ds-prerequisites.md](../../includes/active-directory-ds-prerequisites.md)]
 
 ## <a name="before-you-begin"></a>Przed rozpoczęciem
-Aby wykonać zadania wymienione w tym artykule, potrzebne są:
 
-1. Prawidłowa **subskrypcja platformy Azure**.
-2. **Katalog usługi Azure AD** — zsynchronizowany z katalogiem lokalnym lub katalogiem w chmurze.
-3. Do korzystania z usługi Azure serwer proxy aplikacji usługi Azure AD jest wymagana **licencja Azure AD — wersja Premium** .
-4. Należy włączyć **Azure AD Domain Services** dla katalogu usługi Azure AD. Jeśli nie zostało to zrobione, postępuj zgodnie ze wszystkimi zadaniami opisanymi w [przewodniku wprowadzenie](tutorial-create-instance.md).
+Aby wykonać ten artykuł, potrzebne są następujące zasoby i uprawnienia:
 
-<br>
+* Aktywna subskrypcja platformy Azure.
+    * Jeśli nie masz subskrypcji platformy Azure, [Utwórz konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
+* Dzierżawa usługi Azure Active Directory skojarzona z subskrypcją, zsynchronizowana z katalogiem lokalnym lub katalogiem w chmurze.
+    * W razie konieczności [Utwórz dzierżawę Azure Active Directory][create-azure-ad-tenant] lub [skojarz subskrypcję platformy Azure z Twoim kontem][associate-azure-ad-tenant].
+    * Do korzystania z usługi Azure serwer proxy aplikacji usługi Azure AD jest wymagana **licencja Azure AD — wersja Premium** .
+* Azure Active Directory Domain Services zarządzana domena włączona i skonfigurowana w dzierżawie usługi Azure AD.
+    * W razie konieczności [Utwórz i skonfiguruj wystąpienie Azure Active Directory Domain Services][create-azure-ad-ds-instance].
 
-## <a name="task-1---enable-azure-ad-application-proxy-for-your-azure-ad-directory"></a>Zadanie 1 — Włączanie usługi Azure serwer proxy aplikacji usługi Azure AD dla katalogu usługi Azure AD
-Wykonaj następujące kroki, aby włączyć serwer proxy aplikacji usługi Azure AD platformy Azure dla katalogu usługi Azure AD.
+## <a name="create-a-domain-joined-windows-vm"></a>Tworzenie maszyny wirtualnej z systemem Windows przyłączoną do domeny
 
-1. Zaloguj się do witryny [Azure Portal](https://portal.azure.com) jako administrator.
+Aby skierować ruch do aplikacji uruchomionych w środowisku, należy zainstalować składnik łącznika usługi Azure serwer proxy aplikacji usługi Azure AD. Ten łącznik usługi Azure serwer proxy aplikacji usługi Azure AD musi być zainstalowany na maszynach wirtualnych z systemem Windows Server (VM) przyłączonych do domeny zarządzanej AD DS platformy Azure. W przypadku niektórych aplikacji można wdrożyć wiele serwerów z zainstalowanym łącznikiem. Ta opcja wdrażania zapewnia większą dostępność i pomaga w obsłudze cięższych obciążeń uwierzytelniania.
 
-2. Kliknij **Azure Active Directory** , aby wyświetlić przegląd katalogu. Kliknij pozycję **aplikacje dla przedsiębiorstw**.
+Maszyna wirtualna, na której działa łącznik usługi Azure serwer proxy aplikacji usługi Azure AD, musi należeć do tej samej lub równorzędnej sieci wirtualnej, w której włączono usługę Azure AD DS. Maszyny wirtualne, które będą hostować aplikacje publikowane przy użyciu serwera proxy aplikacji, również muszą zostać wdrożone w tej samej sieci wirtualnej platformy Azure.
 
-3. Kliknij pozycję **serwer proxy aplikacji**.
+Aby utworzyć maszynę wirtualną dla łącznika usługi Azure serwer proxy aplikacji usługi Azure AD, wykonaj następujące czynności:
 
-4. Aby pobrać łącznik, kliknij przycisk **Łącznik** .
+1. [Utwórz niestandardową jednostkę organizacyjną](create-ou.md). Można delegować uprawnienia do zarządzania tą niestandardową jednostką organizacyjną użytkownikom w domenie zarządzanej AD DS platformy Azure. Maszyny wirtualne dla usługi Azure serwer proxy aplikacji usługi Azure AD i uruchamiania aplikacji muszą być częścią niestandardowej jednostki organizacyjnej, a nie z domyślną jednostką organizacyjną *domeny usługi AAD* .
+1. [Przyłączanie do domeny do maszyn wirtualnych][create-join-windows-vm], zarówno tych, na których działa łącznik usługi Azure serwer proxy aplikacji usługi Azure AD, jak i tych, które uruchamiają aplikacje, do domeny zarządzanej platformy Azure AD DS. Utwórz te konta komputerów w niestandardowej jednostce organizacyjnej w poprzednim kroku.
 
-5. Na stronie pobierania zaakceptuj postanowienia licencyjne i umowę o ochronie prywatności, a następnie kliknij przycisk **Pobierz** .
+## <a name="download-the-azure-ad-application-proxy-connector"></a>Pobierz łącznik usługi Azure serwer proxy aplikacji usługi Azure AD
 
-    ![Potwierdź pobieranie](./media/app-proxy/app-proxy-enabled-confirm-download.png)
+Wykonaj następujące kroki, aby pobrać łącznik usługi Azure serwer proxy aplikacji usługi Azure AD. Pobrany plik instalacyjny jest kopiowany do maszyny wirtualnej serwera proxy aplikacji w następnej sekcji.
 
+1. Zaloguj się do [Azure Portal](https://portal.azure.com) przy użyciu konta użytkownika, które ma uprawnienia *administratora przedsiębiorstwa* w usłudze Azure AD.
+1. Wyszukaj i wybierz **Azure Active Directory** w górnej części portalu, a następnie wybierz pozycję **aplikacje dla przedsiębiorstw**.
+1. Z menu po lewej stronie wybierz pozycję **serwer proxy aplikacji** . Aby utworzyć pierwszy łącznik i włączyć serwer proxy aplikacji, wybierz link, aby **pobrać łącznik**.
+1. Na stronie pobierania zaakceptuj postanowienia licencyjne i umowę o ochronie prywatności, a następnie wybierz pozycję **zaakceptuj postanowienia & Pobierz**.
 
-## <a name="task-2---provision-domain-joined-windows-servers-to-deploy-the-azure-ad-application-proxy-connector"></a>Zadanie 2 — Inicjowanie obsługi administracyjnej serwerów z systemem Windows przyłączonych do domeny w celu wdrożenia łącznika usługi Azure serwer proxy aplikacji usługi Azure AD
-Potrzebne są przyłączone do domeny maszyny wirtualne z systemem Windows Server, na których można zainstalować łącznik usługi Azure serwer proxy aplikacji usługi Azure AD. W przypadku niektórych aplikacji można zainicjować obsługę administracyjną wielu serwerów, na których jest zainstalowany łącznik. Ta opcja wdrażania zapewnia większą dostępność i pomaga w obsłudze cięższych obciążeń uwierzytelniania.
+    ![Pobierz łącznik serwera proxy aplikacja usługi Azure AD](./media/app-proxy/download-app-proxy-connector.png)
 
-Udostępnianie serwerów łączników w tej samej sieci wirtualnej (lub połączonej/równorzędnej sieci wirtualnej), w której włączono domenę zarządzaną Azure AD Domain Services. Podobnie serwery obsługujące aplikacje publikowane za pośrednictwem serwera proxy aplikacji muszą być zainstalowane w tej samej sieci wirtualnej platformy Azure.
+## <a name="install-and-register-the-azure-ad-application-proxy-connector"></a>Instalowanie i rejestrowanie łącznika usługi Azure serwer proxy aplikacji usługi Azure AD
 
-Aby udostępnić serwery łączników, wykonaj czynności opisane w artykule zatytułowanym [Dołącz maszynę wirtualną z systemem Windows do domeny zarządzanej](active-directory-ds-admin-guide-join-windows-vm.md).
+Za pomocą maszyny wirtualnej gotowej do użycia jako łącznik usługi Azure serwer proxy aplikacji usługi Azure AD teraz skopiuj i uruchom plik instalacyjny pobrany z Azure Portal.
 
+1. Skopiuj plik instalacyjny programu Azure serwer proxy aplikacji usługi Azure AD Connector na maszynę wirtualną.
+1. Uruchom plik instalacyjny, taki jak *plik aadapplicationproxyconnectorinstaller. exe*. Zaakceptuj postanowienia licencyjne dotyczące oprogramowania.
+1. Podczas instalacji zostanie wyświetlony monit o zarejestrowanie łącznika przy użyciu serwera proxy aplikacji w katalogu usługi Azure AD.
+   * Podaj poświadczenia dla administratora globalnego w katalogu usługi Azure AD. Poświadczenia administratora globalnego usługi Azure AD mogą różnić się od poświadczeń platformy Azure w portalu
 
-## <a name="task-3---install-and-register-the-azure-ad-application-proxy-connector"></a>Zadanie 3 — Instalowanie i rejestrowanie łącznika usługi Azure serwer proxy aplikacji usługi Azure AD
-Wcześniej zainicjowano już maszynę wirtualną z systemem Windows Server i przyłączono ją do domeny zarządzanej. To zadanie służy do instalowania łącznika usługi Azure serwer proxy aplikacji usługi Azure AD na tej maszynie wirtualnej.
+        > [!NOTE]
+        > Konto administratora globalnego użyte do zarejestrowania łącznika musi należeć do tego samego katalogu, w którym jest włączona usługa serwera proxy aplikacji.
+        >
+        > Jeśli na przykład domena usługi Azure AD to *contoso.com*, Administrator globalny powinien mieć `admin@contoso.com` lub inny prawidłowy alias w tej domenie.
 
-1. Skopiuj pakiet instalacyjny łącznika do maszyny wirtualnej, na której jest instalowany łącznik serwera proxy aplikacji sieci Web usługi Azure AD.
+   * Jeśli konfiguracja zwiększonych zabezpieczeń programu Internet Explorer jest włączona dla maszyny wirtualnej, na której jest instalowany łącznik, ekran rejestracji może zostać zablokowany. Aby zezwolić na dostęp, postępuj zgodnie z instrukcjami w komunikacie o błędzie lub wyłącz zaawansowane zabezpieczenia programu Internet Explorer podczas procesu instalacji.
+   * Jeśli rejestracja łącznika nie powiedzie się, zobacz [Rozwiązywanie problemów z serwerem proxy aplikacji](../active-directory/manage-apps/application-proxy-troubleshoot.md).
+1. Po zakończeniu instalacji należy wyświetlić uwagę dla środowisk z serwerem proxy wychodzącego. Aby skonfigurować łącznik usługi Azure serwer proxy aplikacji usługi Azure AD do pracy przez wychodzący serwer proxy, uruchom dostarczony skrypt, taki jak `C:\Program Files\Microsoft AAD App Proxy connector\ConfigureOutBoundProxy.ps1`.
+1. Na stronie serwer proxy aplikacji w Azure Portal nowy łącznik zostanie wyświetlony ze stanem *aktywne*, jak pokazano w następującym przykładzie:
 
-2. Uruchom **plik aadapplicationproxyconnectorinstaller. exe** na maszynie wirtualnej. Zaakceptuj postanowienia licencyjne dotyczące oprogramowania.
-
-    ![Zaakceptuj warunki instalacji](./media/app-proxy/app-proxy-install-connector-terms.png)
-3. Podczas instalacji zostanie wyświetlony monit o zarejestrowanie łącznika przy użyciu serwera proxy aplikacji w katalogu usługi Azure AD.
-   * Podaj **poświadczenia administratora aplikacji usługi Azure AD**. Dzierżawa administratora aplikacji może się różnić od poświadczeń Microsoft Azure.
-   * Konto administratora użyte do zarejestrowania łącznika musi należeć do tego samego katalogu, w którym włączono usługę serwera proxy aplikacji. Na przykład jeśli domena dzierżawy to contoso.com, administrator powinien mieć admin@contoso.com lub dowolny inny prawidłowy alias w tej domenie.
-   * Jeśli konfiguracja zwiększonych zabezpieczeń programu Internet Explorer jest włączona dla serwera, na którym jest instalowany łącznik, ekran rejestracji może zostać zablokowany. Aby zezwolić na dostęp, postępuj zgodnie z instrukcjami wyświetlanymi w komunikacie o błędzie. Upewnij się, że pozycja Konfiguracja zwiększonych zabezpieczeń programu Internet Explorer jest wyłączona.
-   * Jeśli rejestracja łącznika nie powiedzie się, zobacz [Troubleshoot Application Proxy](../active-directory/manage-apps/application-proxy-troubleshoot.md) (Rozwiązywanie problemów z serwerem proxy aplikacji).
-
-     ![Łącznik został zainstalowany](./media/app-proxy/app-proxy-connector-installed.png)
-4. Aby upewnić się, że łącznik działa prawidłowo, uruchom narzędzie do rozwiązywania problemów z łącznikiem serwer proxy aplikacji usługi Azure AD platformy Azure. Po uruchomieniu narzędzia do rozwiązywania problemów powinien zostać wyświetlony raport o powodzeniu.
-
-    ![Powodzenie narzędzia do rozwiązywania problemów](./media/app-proxy/app-proxy-connector-troubleshooter.png)
-5. Nowo zainstalowany łącznik powinien być widoczny na liście na stronie serwer proxy aplikacji w katalogu usługi Azure AD.
-
-    ![W Azure Portal zainstalowany łącznik jest wyświetlany jako dostępny](./media/app-proxy/app-proxy-connector-page.png)
+    ![Nowy łącznik usługi Azure serwer proxy aplikacji usługi Azure AD wyświetlany jako aktywny w Azure Portal](./media/app-proxy/connected-app-proxy.png)
 
 > [!NOTE]
-> Można zainstalować łączniki na wielu serwerach w celu zagwarantowania wysokiej dostępności aplikacji publikowanych za pomocą serwer proxy aplikacji usługi Azure AD platformy Azure. Wykonaj te same kroki, aby zainstalować łącznik na innych serwerach przyłączonych do domeny zarządzanej.
+> Aby zapewnić wysoką dostępność aplikacji uwierzytelnianych za pośrednictwem usługi Azure serwer proxy aplikacji usługi Azure AD, można zainstalować łączniki na wielu maszynach wirtualnych. Powtórz te same kroki opisane w poprzedniej sekcji, aby zainstalować łącznik na innych serwerach przyłączonych do domeny zarządzanej AD DS platformy Azure.
+
+## <a name="enable-resource-based-kerberos-constrained-delegation"></a>Włączanie ograniczonego delegowania protokołu Kerberos opartego na zasobach
+
+Jeśli chcesz używać funkcji logowania jednokrotnego w aplikacjach przy użyciu zintegrowanego uwierzytelniania systemu Windows (IWA), przyznaj łączniki platformy Azure serwer proxy aplikacji usługi Azure AD uprawnienia do personifikacji użytkowników oraz wysyłania i odbierania tokenów w ich imieniu. Aby przyznać te uprawnienia, należy skonfigurować ograniczone delegowanie protokołu Kerberos (KCD) dla łącznika, aby uzyskać dostęp do zasobów w domenie zarządzanej platformy Azure AD DS. Ponieważ nie masz uprawnień administratora domeny w domenie zarządzanej AD DS platformy Azure, nie można skonfigurować tradycyjnego poziomu konta KCD w domenie zarządzanej. Zamiast tego należy użyć KCD opartego na zasobach.
+
+Aby uzyskać więcej informacji, zobacz [Konfigurowanie ograniczonego delegowania protokołu Kerberos (KCD) w Azure Active Directory Domain Services](deploy-kcd.md).
+
+> [!NOTE]
+> Musisz się zalogować na konto użytkownika, które jest członkiem grupy *administratorzy kontrolera domeny usługi Azure AD* w dzierżawie usługi Azure AD, aby uruchomić następujące polecenia cmdlet programu PowerShell.
 >
->
+> Konta komputerów dla maszyny wirtualnej i maszyn wirtualnych łącznika serwera proxy aplikacji muszą znajdować się w niestandardowej jednostce organizacyjnej, w której masz uprawnienia do konfigurowania KCD opartego na zasobach. Nie można skonfigurować KCD opartego na zasobach dla konta komputera w wbudowanym kontenerze *komputery DC w usłudze AAD* .
+
+Użyj elementu [Get-ADComputer][Get-ADComputer] , aby pobrać ustawienia dla komputera, na którym zainstalowano łącznik usługi Azure serwer proxy aplikacji usługi Azure AD. Z poziomu maszyny wirtualnej zarządzania przyłączonym do domeny i zalogowanego jako konto użytkownika, które jest członkiem grupy *administratorzy kontrolera domeny usługi Azure AD* , uruchom następujące polecenia cmdlet.
+
+Poniższy przykład pobiera informacje o koncie komputera o nazwie *appproxy.contoso.com*. Podaj własną nazwę komputera dla maszyny wirtualnej serwer proxy aplikacji usługi Azure AD platformy Azure, która została skonfigurowana w poprzednich krokach.
+
+```powershell
+$ImpersonatingAccount = Get-ADComputer -Identity appproxy.contoso.com
+```
+
+Dla każdego serwera aplikacji, na którym są uruchomione aplikacje związane z platformą Azure serwer proxy aplikacji usługi Azure AD Użyj polecenia cmdlet [Set-ADComputer][Set-ADComputer] programu PowerShell, aby skonfigurować KCD oparte na zasobach. W poniższym przykładzie łącznik usługi Azure serwer proxy aplikacji usługi Azure AD ma przyznane uprawnienia do korzystania z komputera *AppServer.contoso.com* :
+
+```powershell
+Set-ADComputer appserver.contoso.com -PrincipalsAllowedToDelegateToAccount $ImpersonatingAccount
+```
+
+W przypadku wdrażania wielu łączników serwer proxy aplikacji usługi Azure AD platformy Azure należy skonfigurować KCD oparte na zasobach dla każdego wystąpienia łącznika.
 
 ## <a name="next-steps"></a>Następne kroki
-Skonfigurowano serwer proxy aplikacji usługi Azure AD platformy Azure i zintegrowano ją z domeną zarządzaną Azure AD Domain Services.
 
-* **Migrowanie aplikacji do usługi Azure Virtual Machines:** Można podłączać i przełączać aplikacje z serwerów lokalnych do maszyn wirtualnych platformy Azure dołączonych do domeny zarządzanej. Dzięki temu możesz pozbyć się kosztów związanych z infrastrukturą uruchomionych serwerów lokalnie.
+Korzystając z usługi Azure serwer proxy aplikacji usługi Azure AD zintegrowanej z usługą Azure AD DS, Opublikuj aplikacje dla użytkowników w celu uzyskania dostępu. Aby uzyskać więcej informacji, zobacz [publikowanie aplikacji przy użyciu usługi Azure serwer proxy aplikacji usługi Azure AD](../active-directory/manage-apps/application-proxy-publish-azure-portal.md).
 
-* **Publikowanie aplikacji przy użyciu usługi Azure serwer proxy aplikacji usługi Azure AD:** Publikowanie aplikacji uruchomionych na maszynach wirtualnych platformy Azure przy użyciu usługi Azure serwer proxy aplikacji usługi Azure AD. Aby uzyskać więcej informacji, zobacz [publikowanie aplikacji przy użyciu usługi Azure serwer proxy aplikacji usługi Azure AD](../active-directory/manage-apps/application-proxy-publish-azure-portal.md)
-
-
-## <a name="deployment-note---publish-iwa-integrated-windows-authentication-applications-using-azure-ad-application-proxy"></a>Uwagi dotyczące wdrażania — publikowanie aplikacji IWA (zintegrowane uwierzytelnianie systemu Windows) przy użyciu usługi Azure serwer proxy aplikacji usługi Azure AD
-Włącz logowanie jednokrotne do aplikacji przy użyciu zintegrowanego uwierzytelniania systemu Windows (IWA) przez przyznanie łączników serwera proxy aplikacji uprawnienia do personifikacji użytkowników oraz wysyłania i odbierania tokenów w ich imieniu. Skonfiguruj ograniczone delegowanie protokołu Kerberos (KCD) dla łącznika, aby przyznać wymagane uprawnienia dostępu do zasobów w domenie zarządzanej. Użyj mechanizmu KCD opartego na zasobach w domenach zarządzanych, aby zwiększyć bezpieczeństwo.
-
-
-### <a name="enable-resource-based-kerberos-constrained-delegation-for-the-azure-ad-application-proxy-connector"></a>Włączanie ograniczonego delegowania protokołu Kerberos na podstawie zasobów dla łącznika usługi Azure serwer proxy aplikacji usługi Azure AD
-Łącznik serwera proxy aplikacji platformy Azure powinien zostać skonfigurowany do ograniczonego delegowania protokołu Kerberos (KCD), dzięki czemu może personifikować użytkowników w domenie zarządzanej. W domenie zarządzanej Azure AD Domain Services nie masz uprawnień administratora domeny. W związku z tym **tradycyjne KCD na poziomie konta nie można skonfigurować w domenie zarządzanej**.
-
-Użyj KCD opartego na zasobach zgodnie z opisem w tym [artykule](deploy-kcd.md).
-
-> [!NOTE]
-> Aby administrować domeną zarządzaną za pomocą poleceń cmdlet programu PowerShell, musisz być członkiem grupy administratorów domeny usługi AAD.
->
->
-
-Użyj polecenia cmdlet programu PowerShell Get-ADComputer, aby pobrać ustawienia dla komputera, na którym zainstalowano łącznik usługi Azure serwer proxy aplikacji usługi Azure AD.
-```powershell
-$ConnectorComputerAccount = Get-ADComputer -Identity contoso-proxy.contoso.com
-```
-
-Następnie użyj polecenia cmdlet Set-ADComputer w celu skonfigurowania KCD opartego na zasobach dla serwera zasobów.
-```powershell
-Set-ADComputer contoso-resource.contoso.com -PrincipalsAllowedToDelegateToAccount $ConnectorComputerAccount
-```
-
-Jeśli wdrożono wiele łączników serwera proxy aplikacji w domenie zarządzanej, należy skonfigurować KCD oparte na zasobach dla każdego takiego wystąpienia łącznika.
-
-
-## <a name="related-content"></a>Powiązana zawartość
-* [Przewodnik po Wprowadzenie Azure AD Domain Services](tutorial-create-instance.md)
-* [Konfigurowanie ograniczonego delegowania protokołu Kerberos w domenie zarządzanej](deploy-kcd.md)
-* [Omówienie ograniczonego delegowania protokołu Kerberos](https://technet.microsoft.com/library/jj553400.aspx)
+<!-- INTERNAL LINKS -->
+[create-azure-ad-tenant]: ../active-directory/fundamentals/sign-up-organization.md
+[associate-azure-ad-tenant]: ../active-directory/fundamentals/active-directory-how-subscriptions-associated-directory.md
+[create-azure-ad-ds-instance]: tutorial-create-instance.md
+[create-join-windows-vm]: join-windows-vm.md
+[azure-bastion]: ../bastion/bastion-create-host-portal.md
+[Get-ADComputer]: /powershell/module/addsadministration/get-adcomputer
+[Set-ADComputer]: /powershell/module/addsadministration/set-adcomputer

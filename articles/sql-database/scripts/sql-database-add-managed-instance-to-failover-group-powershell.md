@@ -1,5 +1,5 @@
 ---
-title: Przykład programu PowerShell — Grupa trybu failover — Azure SQL Database wystąpienie zarządzane | Microsoft Docs
+title: Przykład programu PowerShell — Grupa trybu failover — Azure SQL Database wystąpienie zarządzane
 description: Azure PowerShell przykładowy skrypt do utworzenia Azure SQL Database wystąpienia zarządzanego, dodania go do grupy trybu failover i przetestowania trybu failover.
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: MashaMSFT
 ms.author: mathoma
 ms.reviewer: carlrab
 ms.date: 07/16/2019
-ms.openlocfilehash: f753dbce66c8db9c4098e716725f0a63fc68d4f7
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: e50877f6f3194885b139683fe865144384716b48
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72956292"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73691763"
 ---
 # <a name="use-powershell-to-add-an-azure-sql-database-managed-instance-to-a-failover-group"></a>Dodawanie Azure SQL Database wystąpienia zarządzanego do grupy trybu failover przy użyciu programu PowerShell 
 

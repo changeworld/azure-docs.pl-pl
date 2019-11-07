@@ -1,5 +1,5 @@
 ---
-title: Przykładowe skrypty programu Azure PowerShell dla usługi SQL Database | Microsoft Docs
+title: Przykłady skryptów Azure PowerShell dla SQL Database
 description: Przykładowe skrypty programu Azure PowerShell umożliwiające tworzenie serwerów, elastycznych pul, baz danych i zapór usługi Azure SQL Database oraz zarządzanie nimi.
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 03/25/2019
-ms.openlocfilehash: 27b4a6f5614b79b2e9d8f3730441d702f2d7cc77
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: 17b3d23f90f77a3db68644e76edf340284daa801
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72933277"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73687638"
 ---
 # <a name="azure-powershell-samples-for-azure-sql-database"></a>Przykłady programu Azure PowerShell dla usługi Azure SQL Database
 
@@ -79,6 +79,6 @@ Dowiedz się więcej o [interfejsie API programu Azure PowerShell wystąpienia z
 
 ---
 
-## <a name="additional-resources"></a>Zasoby dodatkowe
+## <a name="additional-resources"></a>Dodatkowe zasoby
 
 Przykłady wymienione na tej stronie używają [Azure SQL Database poleceń cmdlet](/powershell/module/az.sql/) do tworzenia zasobów usługi Azure SQL i zarządzania nimi. Dodatkowe polecenia cmdlet służące do uruchamiania zapytań i wykonywania wielu zadań bazy danych znajdują się w module [SqlServer](/powershell/module/sqlserver/) . Aby uzyskać więcej informacji, zobacz [SQL Server PowerShell](/sql/powershell/sql-server-powershell/).

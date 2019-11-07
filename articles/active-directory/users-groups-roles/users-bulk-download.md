@@ -13,12 +13,12 @@ ms.workload: identity
 ms.custom: it-pro
 ms.reviewer: jeffsta
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: fd0829afca05058892d3a0ceeb50c9955d792dc3
-ms.sourcegitcommit: 12de9c927bc63868168056c39ccaa16d44cdc646
+ms.openlocfilehash: d106e803fdef4f054b7e4717ba59a43359d1d68a
+ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72517063"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73720291"
 ---
 # <a name="download-a-list-of-users-preview-in-azure-active-directory-portal"></a>Pobieranie listy użytkowników (wersja zapoznawcza) w portalu Azure Active Directory
 
@@ -31,8 +31,9 @@ Aby pobrać listę użytkowników z centrum administracyjnego usługi Azure AD, 
 ## <a name="to-download-a-list-of-users"></a>Aby pobrać listę użytkowników
 
 1. [Zaloguj się do swojej organizacji usługi Azure AD](https://aad.portal.azure.com) przy użyciu konta administratora użytkownika w organizacji.
-1. W usłudze Azure AD wybierz pozycję **użytkownicy** > **Pobierz użytkowników**.
-1. Na stronie **pobieranie użytkowników** wybierz pozycję **Rozpocznij** , aby wyświetlić plik CSV z listą właściwości profilu użytkownika. W przypadku wystąpienia błędów można pobrać i wyświetlić plik wyników na stronie wyników operacji zbiorczej. Plik zawiera przyczynę każdego błędu.
+2. Przejdź do Azure Active Directory > użytkowników. Następnie wybierz użytkowników, którzy mają zostać dołączeni do pobierania, zaznaczając pole w lewej kolumnie obok każdego użytkownika. Uwaga: w tej chwili nie ma możliwości wybrania opcji Wszyscy użytkownicy do eksportowania. Każdy z nich musi być wybrany indywidualnie.
+3. W usłudze Azure AD wybierz pozycję **użytkownicy** > **Pobierz użytkowników**.
+4. Na stronie **pobieranie użytkowników** wybierz pozycję **Rozpocznij** , aby wyświetlić plik CSV z listą właściwości profilu użytkownika. W przypadku wystąpienia błędów można pobrać i wyświetlić plik wyników na stronie wyników operacji zbiorczej. Plik zawiera przyczynę każdego błędu.
 
    ![Wybierz, gdzie chcesz wyświetlić listę użytkowników, których chcesz pobrać](./media/users-bulk-download/bulk-download.png)
 
@@ -44,21 +45,21 @@ Aby pobrać listę użytkowników z centrum administracyjnego usługi Azure AD, 
    - displayName
    - surname
    - mail (poczta)
-   - GivenName
+   - givenName
    - Obiektu
    - userType
    - Stanowiska
    - department
    - Menedżera
-   - AccountEnabled
+   - accountEnabled
    - usageLocation
    - streetAddress
    - state
-   - Trzeciego
+   - trzeciego
    - physicalDeliveryOfficeName
    - city
    - Pocztowy
-   - TelephoneNumber
+   - telephoneNumber
    - urządzenie
    - authenticationPhoneNumber
    - authenticationAlternativePhoneNumber

@@ -1,20 +1,17 @@
 ---
 title: Jak powiązać Azure Database for MySQL ze swoją aplikacją w chmurze Azure wiosną | Microsoft Docs
 description: W tym artykule opisano sposób powiązania usługi Azure MySQL z Twoją aplikacją w chmurze Azure wiosennej
-services: spring-cloud
-author: v-vasuke
-manager: gwallace
-editor: ''
+author: jpconnock
 ms.service: spring-cloud
-ms.topic: quickstart
-ms.date: 10/07/2019
-ms.author: v-vasuke
-ms.openlocfilehash: e2add139f5cfd8299ec809793dd822b051d0f542
-ms.sourcegitcommit: d773b5743cb54b8cbcfa5c5e4d21d5b45a58b081
+ms.topic: tutorial
+ms.date: 11/04/2019
+ms.author: jeconnoc
+ms.openlocfilehash: b6de5bb3b25c111d1b7775ea9570a4ae2cf45042
+ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/08/2019
-ms.locfileid: "72039021"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73607587"
 ---
 # <a name="tutorial-bind-azure-services-to-your-azure-spring-cloud-application-azure-database-for-mysql"></a>Samouczek: powiązywanie usług platformy Azure z Twoją aplikacją w chmurze Azure wiosną: Azure Database for MySQL
 
@@ -26,20 +23,13 @@ Chmura sprężynowa platformy Azure umożliwia automatyczne powiązanie wybranyc
 * Konto Azure Database for MySQL
 * Interfejs wiersza polecenia platformy Azure
 
-W razie potrzeby zainstaluj rozszerzenie Cloud wiosny Azure dla interfejsu wiersza polecenia platformy Azure przy użyciu następującego polecenia:
-
-```azurecli
-az extension add -y --source https://azureclitemp.blob.core.windows.net/spring-cloud/spring_cloud-0.1.0-py2.py3-none-any.whl
-```
-
->[!TIP]
-> Usługa Azure Cloud Shell to bezpłatna interaktywna powłoka, której możesz używać do wykonywania kroków opisanych w tym artykule.  Zawiera ona popularne narzędzia platformy Azure preinstalowane, w tym najnowsze wersje usług git, JDK, Maven i interfejsu wiersza polecenia platformy Azure. Jeśli logujesz się do subskrypcji platformy Azure, uruchom [Azure Cloud Shell](https://shell.azure.com) z Shell.Azure.com.  Więcej informacji na temat Azure Cloud Shell można znaleźć w [dokumentacji](../cloud-shell/overview.md) .
+Jeśli nie masz wdrożonego wystąpienia chmury Azure wiosennej, wykonaj kroki opisane w tym [przewodniku szybki start](spring-cloud-quickstart-launch-app-portal.md) , aby wdrożyć swoją pierwszą aplikację w chmurze.
 
 ## <a name="bind-azure-database-for-mysql"></a>Azure Database for MySQL powiązania
 
 1. Zanotuj nazwę użytkownika i hasło administratora konta usługi Azure MySQL. Nawiąż połączenie z serwerem i Utwórz bazę danych o nazwie `testdb` z klienta programu MySQL. Utwórz nowe konto inne niż administracyjne.
 
-1. Dodaj następującą zależność w @no__t projektu — 0
+1. Dodaj następującą zależność do `pom.xml` projektu
 
     ```xml
     <dependency>
@@ -51,7 +41,7 @@ az extension add -y --source https://azureclitemp.blob.core.windows.net/spring-c
 
 1. Zaktualizuj bieżące wdrożenie przy użyciu `az spring-cloud app update` lub Utwórz nowe wdrożenie dla tej zmiany przy użyciu `az spring-cloud app deployment create`.  Te polecenia spowodują aktualizację lub utworzenie aplikacji z nową zależnością.
 
-1. Przejdź do strony usługi w chmurze ze sprężyną Azure w Azure Portal. Znajdź **pulpit nawigacyjny aplikacji** i wybierz aplikację, która ma zostać powiązana z usługą Azure MySQL.  Ta sama aplikacja została zaktualizowana lub wdrożona w poprzednim kroku. Następnie wybierz pozycję `Service binding` i wybierz przycisk `Create service binding`. Wypełnij formularz, pamiętając o wybraniu **typu powiązania** `Azure MySQL`, tej samej nazwie bazy danych, która była używana wcześniej, oraz tej samej nazwy użytkownika i hasła zanotowanym w pierwszym kroku.
+1. Przejdź do strony usługi w chmurze ze sprężyną Azure w Azure Portal. Znajdź **pulpit nawigacyjny aplikacji** i wybierz aplikację, która ma zostać powiązana z usługą Azure MySQL.  Ta sama aplikacja została zaktualizowana lub wdrożona w poprzednim kroku. Następnie wybierz pozycję `Service binding` i wybierz przycisk `Create service binding`. Wypełnij formularz, upewnij się, że wybrano opcję **Typ powiązania** `Azure MySQL`, tę samą nazwę bazy danych, która była używana wcześniej, i tę samą nazwa użytkownika i hasło zanotowane w pierwszym kroku.
 
 1. Uruchom ponownie aplikację, a to powiązanie powinno teraz funkcjonować.
 

@@ -9,12 +9,12 @@ ms.custom: mvc
 ms.service: iot-pnp
 services: iot-pnp
 manager: philmea
-ms.openlocfilehash: 524bc3b2650ad7b435cba6b6b9d4084ffa5cf96c
-ms.sourcegitcommit: f3f4ec75b74124c2b4e827c29b49ae6b94adbbb7
+ms.openlocfilehash: e4dd5215812f0fd1a43afe0923601417bc8e6916
+ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/12/2019
-ms.locfileid: "70932678"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73569640"
 ---
 # <a name="build-an-iot-plug-and-play-preview-device-thats-ready-for-certification"></a>Utwórz urządzenie usługi IoT Plug and Play w wersji zapoznawczej, które jest gotowe do certyfikacji
 
@@ -35,7 +35,7 @@ Do ukończenia tego samouczka niezbędne są następujące elementy:
 - [Visual Studio Code](https://code.visualstudio.com/download)
 - [Narzędzia Azure IoT Tools for vs Code](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-tools) Extension Pack
 
-Potrzebne jest również urządzenie Plug and Play IoT tworzone w ramach [przewodnika Szybki Start: Użyj modelu możliwości urządzenia, aby utworzyć urządzenie](quickstart-create-pnp-device.md).
+Potrzebne jest również urządzenie IoT Plug and Play utworzone w ramach [szybkiego startu: Użyj modelu możliwości urządzenia, aby utworzyć urządzenie](quickstart-create-pnp-device.md).
 
 ## <a name="store-a-capability-model-and-interfaces"></a>Przechowywanie modelu możliwości i interfejsów
 
@@ -58,9 +58,9 @@ Aby przekazać proces certyfikacji, należy uwzględnić i zaimplementować inte
 ```
 
 > [!NOTE]
-> Po zakończeniu [przewodnika Szybki Start: Użyj modelu możliwości urządzenia, aby utworzyć urządzenie](quickstart-create-pnp-device.md), a interfejs **informacji o urządzeniu** został już uwzględniony w modelu.
+> Jeśli ukończono [Przewodnik Szybki Start: korzystanie z modelu możliwości urządzenia do utworzenia urządzenia](quickstart-create-pnp-device.md), interfejs **informacji o urządzeniu** został już uwzględniony w modelu.
 
-Aby dołączyć Interfejs **informacji o urządzeniu** do modelu urządzenia, Dodaj identyfikator interfejsu do `implements` właściwości modelu możliwości:
+Aby dołączyć Interfejs **informacji o urządzeniu** do modelu urządzenia, Dodaj identyfikator interfejsu do właściwości `implements` modelu możliwości:
 
 ```json
 {
@@ -111,26 +111,17 @@ Aby przeprowadzić certyfikację urządzenia, należy włączyć obsługę admin
 
 1. Wybierz **ANSI C** jako język.
 
-1. Wybierz **projekt CMAKE** jako typ projektu.
-
 1. Wybierz pozycję **za pośrednictwem usługi DPS (usługa Device Provisioning) klucz symetryczny** jako metodę połączenia.
+
+1. Wybierz **projekt CMAKE w systemie Windows** lub **CMAKE projekt w systemie Linux** jako szablon projektu w zależności od systemu operacyjnego urządzenia.
 
 1. VS Code otwiera nowe okno z wygenerowanymi plikami zastępczymi kodu urządzenia.
 
-1. Otwórz `main.c`, Wypełnij **dpsIdScope**, **sasKey**i **Identyfikator rejestracji** , które zostały przygotowane. Te informacje można uzyskać w portalu certyfikacji. Aby uzyskać więcej informacji, zobacz [łączenie i testowanie urządzenia IoT Plug and Play](tutorial-certification-test.md#connect-and-discover-interfaces).
+1. Po skompilowaniu kodu wprowadź poświadczenia usługi DPS (**zakres identyfikatorów**usługi DPS, **klucz symetryczny usługi DPS**, **Identyfikator urządzenia**) jako parametry aplikacji. Aby uzyskać poświadczenia z portalu certyfikacji, zobacz [łączenie i testowanie urządzenia Plug and Play IoT](tutorial-certification-test.md#connect-and-discover-interfaces).
 
-    ```c
-    // TODO: Specify DPS scope ID if you intend on using DPS / IoT Central.
-    static const char *dpsIdScope = "[DPS Id Scope]";
-    
-    // TODO: Specify symmetric keys if you intend on using DPS / IoT Central and symmetric key based auth.
-    static const char *sasKey = "[DPS symmetric key]";
-    
-    // TODO: specify your device registration ID
-    static const char *registrationId = "[device registration Id]";
+    ```cmd/sh
+    .\your_pnp_app.exe [DPS ID Scope] [DPS symmetric key] [device ID]
     ```
-
-1. Zapisz plik.
 
 ### <a name="implement-standard-interfaces"></a>Implementuj interfejsy standardowe
 

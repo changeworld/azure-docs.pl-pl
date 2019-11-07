@@ -1,5 +1,5 @@
 ---
-title: Rozgałęzianie w potoku usługi Azure Data Factory | Microsoft Docs
+title: 'Rozgałęzianie w potoku Azure Data Factory '
 description: W tym artykule przedstawiono sposób sterowania przepływem danych w usłudze Azure Data Factory przez rozgałęzianie działań i tworzenie łańcuchów działań.
 services: data-factory
 documentationcenter: ''
@@ -11,12 +11,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: tutorial
 ms.date: 01/11/2018
-ms.openlocfilehash: d8e4c17307b35295f37f1f84db912d04ca625b6a
-ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
+ms.openlocfilehash: aada9d02c624785750c3064b7ca31a863d4080c1
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70140908"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73683816"
 ---
 # <a name="branching-and-chaining-activities-in-a-data-factory-pipeline"></a>Rozgałęzianie działań i tworzenie łańcuchów działań w potoku usługi Data Factory
 W tym samouczku pokazano, jak utworzyć potok usługi Data Factory przedstawiający niektóre funkcje przepływu sterowania. Ten potok tworzy prostą kopię z kontenera w usłudze Azure Blob Storage w innym kontenerze na tym samym koncie magazynu. Jeśli działanie kopiowania zakończy się powodzeniem, potok wysyła szczegóły zakończonej pomyślnie operacji kopiowania (takie jak ilość zapisanych danych) w wiadomości e-mail z informacją o powodzeniu. W przypadku niepowodzenia działania kopiowania potok wysyła szczegóły błędu kopiowania (np. komunikat o błędzie) w wiadomości e-mail z informacją o niepowodzeniu. W samouczku pokazano, jak przekazać parametry.
@@ -147,7 +147,7 @@ https://prodxxx.eastus.logic.azure.com:443/workflows/000000/triggers/manual/path
 4. Wybierz opcję **V2** w obszarze **Wersja**.
 5. Na liście **lokalizacja** wybierz lokalizację fabryki danych. Na liście rozwijanej są wyświetlane tylko obsługiwane lokalizacje. Magazyny danych (Azure Storage, Azure SQL Database itp.) i jednostki obliczeniowe (HDInsight itp.) używane przez fabrykę danych mogą mieścić się w innych regionach.
 6. Wybierz opcję **Przypnij do pulpitu nawigacyjnego**.     
-7. Kliknij przycisk **Utwórz**.      
+7. Kliknij pozycję **Utwórz**.      
 8. Na pulpicie nawigacyjnym jest widoczny następujący kafelek ze stanem: **Wdrażanie fabryki danych**. 
 
     ![kafelek Wdrażanie fabryki danych](media/tutorial-control-flow-portal/deploying-data-factory.png)
@@ -194,7 +194,7 @@ W tym kroku jest tworzony potok z jednym działaniem kopiowania i dwoma działan
 
     1. Wprowadź wartość **AzureStorageLinkedService** w polu **Nazwa**.
     2. Wybierz swoje konto usługi Azure Storage w polu **Nazwa konta magazynu**.
-    3. Kliknij polecenie **Zapisz**.
+    3. Kliknij pozycję **Zapisz**.
 
    ![Nowa połączona usługa Azure Storage](./media/tutorial-control-flow-portal/new-azure-storage-linked-service.png)
 12. Wprowadź wartość `@pipeline().parameters.sourceBlobContainer` jako folder oraz `emp.txt` jako nazwę pliku. Parametr potoku sourceBlobContainer umożliwia ustawienie ścieżki folderu dla zestawu danych. 

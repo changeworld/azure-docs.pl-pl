@@ -1,5 +1,5 @@
 ---
-title: Przykład programu PowerShell — Grupa trybu failover — Azure SQL Database Pula elastyczna | Microsoft Docs
+title: Przykład programu PowerShell — Grupa trybu failover — Azure SQL Database Pula elastyczna
 description: Azure PowerShell przykładowy skrypt do utworzenia Azure SQL Database puli elastycznej, Dodaj ją do grupy trybu failover i przetestuj tryb failover.
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: MashaMSFT
 ms.author: mathoma
 ms.reviewer: carlrab
 ms.date: 07/16/2019
-ms.openlocfilehash: 098752397bbd51bb271230dfa9d95683ad9141dd
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: a8c9b7dbddba59408808e1c33de045ad0b7ffd7a
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72956285"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73691790"
 ---
 # <a name="use-powershell-to-add-an-azure-sql-database-elastic-pool-to-a-failover-group"></a>Dodawanie Azure SQL Database elastycznej puli do grupy trybu failover przy użyciu programu PowerShell 
 

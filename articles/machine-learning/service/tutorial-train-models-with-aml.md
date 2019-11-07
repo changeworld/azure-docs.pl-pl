@@ -10,12 +10,12 @@ author: sdgilley
 ms.author: sgilley
 ms.date: 11/04/2019
 ms.custom: seodec18
-ms.openlocfilehash: dd215e754b7e72c9ac424a53015955332068558e
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
-ms.translationtype: HT
+ms.openlocfilehash: 4d16c07bf42c99b905868cb956d82e8723da61d6
+ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 11/04/2019
-ms.locfileid: "73493560"
+ms.locfileid: "73581540"
 ---
 # <a name="tutorial-train-image-classification-models-with-mnist-data-and-scikit-learn-using-azure-machine-learning"></a>Samouczek: uczenie modeli klasyfikacji obrazów przy użyciu MNIST ręcznie danych i scikit — uczenie się przy użyciu Azure Machine Learning
 [!INCLUDE [applies-to-skus](../../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -44,7 +44,7 @@ Jeśli nie masz subskrypcji Azure, przed rozpoczęciem utwórz bezpłatne konto.
 * Ukończ [Samouczek: wprowadzenie do tworzenia pierwszej z pierwszych prób](tutorial-1st-experiment-sdk-setup.md) w:
     * Tworzenie obszaru roboczego
     * Sklonuj Notes samouczków do folderu w obszarze roboczym.
-    * Tworzenie wystąpienia obliczeniowego opartego na chmurze.
+    * Tworzenie maszyny wirtualnej z notesem w chmurze.
 
 * W folderze sklonowanych **samouczków** Otwórz Notes **IMG-klasyfikacyjn-part1-Training. ipynb** . 
 

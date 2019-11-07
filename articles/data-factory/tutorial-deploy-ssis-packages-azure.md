@@ -1,5 +1,5 @@
 ---
-title: Inicjowanie obsługi platformy Azure-SSIS Integration Runtime | Microsoft Docs
+title: Inicjowanie obsługi platformy Azure-SSIS Integration Runtime
 description: Dowiedz się, jak aprowizować środowisko Azure SSIS Integration Runtime w usłudze Azure Data Factory w celu wdrażania i uruchamiania pakietów SSIS na platformie Azure.
 services: data-factory
 documentationcenter: ''
@@ -13,12 +13,12 @@ author: swinarko
 ms.author: sawinark
 ms.reviewer: douglasl
 manager: craigg
-ms.openlocfilehash: 62b11fbf19c803d54c699d3a59454677ac3423f1
-ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
+ms.openlocfilehash: 14871aa790bd94dbd23dea30c8a229eac7945c75
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72326078"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73683566"
 ---
 # <a name="provision-the-azure-ssis-integration-runtime-in-azure-data-factory"></a>Inicjowanie obsługi platformy Azure-SSIS Integration Runtime w Azure Data Factory
 
@@ -27,7 +27,7 @@ Ten samouczek zawiera instrukcje dotyczące korzystania z Azure Portal w celu ap
 - Uruchamianie pakietów wdrożonych w wykazie usług SSIS (SSISDB) hostowanych przez serwer Azure SQL Database lub wystąpienie zarządzane (model wdrażania projektu).
 - Uruchomione pakiety wdrożone w systemach plików, udziałach plików lub Azure Files (model wdrażania pakietu). 
 
-Po zainicjowaniu Azure-SSIS IR można używać dobrze znanych narzędzi do wdrażania i uruchamiania pakietów na platformie Azure. Te narzędzia obejmują SQL Server narzędzia danych, SQL Server Management Studio i narzędzia wiersza polecenia, takie jak `dtinstall`, `dtutil` i `dtexec`.
+Po zainicjowaniu Azure-SSIS IR można używać dobrze znanych narzędzi do wdrażania i uruchamiania pakietów na platformie Azure. Te narzędzia obejmują SQL Server narzędzia danych, SQL Server Management Studio i narzędzia wiersza polecenia, takie jak `dtinstall`, `dtutil`i `dtexec`.
 
 Aby uzyskać informacje koncepcyjne dotyczące środowisk Azure SSIS IR, zobacz [Omówienie środowiska Azure-SSIS Integration Runtime](concepts-integration-runtime.md#azure-ssis-integration-runtime).
 
@@ -181,11 +181,11 @@ Po utworzeniu fabryki danych Otwórz jej stronę przeglądu w Azure Portal. Wybi
 
 Jeśli używasz SSISDB, możesz wdrożyć w nim pakiety i uruchamiać je na Azure-SSIS IR przy użyciu narzędzi danych SQL Server lub narzędzi SQL Server Management Studio. Narzędzia te łączą się z serwerem bazy danych za pośrednictwem swojego punktu końcowego serwera: 
 
-- W przypadku serwera Azure SQL Database z prywatnym punktem końcowym format punktu końcowego serwera to `<server name>.database.windows.net`.
-- W przypadku wystąpienia zarządzanego z prywatnym punktem końcowym format punktu końcowego serwera to `<server name>.<dns prefix>.database.windows.net`.
-- W przypadku wystąpienia zarządzanego z publicznym punktem końcowym format punktu końcowego serwera to `<server name>.public.<dns prefix>.database.windows.net,3342`. 
+- W przypadku serwera Azure SQL Database z prywatnym punktem końcowym format punktu końcowego serwera jest `<server name>.database.windows.net`.
+- W przypadku wystąpienia zarządzanego z prywatnym punktem końcowym format punktu końcowego serwera jest `<server name>.<dns prefix>.database.windows.net`.
+- W przypadku wystąpienia zarządzanego z publicznym punktem końcowym format punktu końcowego serwera jest `<server name>.public.<dns prefix>.database.windows.net,3342`. 
 
-Jeśli nie korzystasz z programu SSISDB, możesz wdrożyć pakiety w systemach plików, udziałach plików lub Azure Files. Następnie można uruchomić je na Azure-SSIS IR przy użyciu narzędzi wiersza polecenia `dtinstall`, `dtutil` i `dtexec`. Aby uzyskać więcej informacji, zobacz [wdrażanie pakietów SSIS](/sql/integration-services/packages/deploy-integration-services-ssis-projects-and-packages#deploy-packages-to-integration-services-server). 
+Jeśli nie korzystasz z programu SSISDB, możesz wdrożyć pakiety w systemach plików, udziałach plików lub Azure Files. Następnie można uruchomić je na Azure-SSIS IR przy użyciu narzędzi wiersza polecenia `dtinstall`, `dtutil`i `dtexec`. Aby uzyskać więcej informacji, zobacz [wdrażanie pakietów SSIS](/sql/integration-services/packages/deploy-integration-services-ssis-projects-and-packages#deploy-packages-to-integration-services-server). 
 
 W obu przypadkach wdrożone pakiety można również uruchomić na Azure-SSIS IR przy użyciu działania wykonaj pakiet SSIS w potokach Data Factory. Aby uzyskać więcej informacji, zobacz [wywołania wykonywania pakietu SSIS jako działania pierwszej klasy Data Factory](https://docs.microsoft.com/azure/data-factory/how-to-invoke-ssis-package-ssis-activity).
 

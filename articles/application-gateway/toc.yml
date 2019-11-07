@@ -17,8 +17,6 @@
       href: quick-create-cli.md
 - name: Samouczki
   items:
-    - name: Włączanie zapory aplikacji internetowych
-      href: application-gateway-web-application-firewall-portal.md
     - name: Zabezpieczanie przy użyciu protokołu SSL
       href: create-ssl-portal.md
     - name: Hostowanie wielu witryn
@@ -127,12 +125,6 @@
           items:
             - name: Konfigurowanie zasad protokołu SSL
               href: application-gateway-configure-ssl-policy-powershell.md
-    - name: Konfigurowanie zapory aplikacji internetowej
-      items:
-        - name: Azure PowerShell
-          href: tutorial-restrict-web-traffic-powershell.md
-        - name: Interfejs wiersza polecenia platformy Azure
-          href: tutorial-restrict-web-traffic-cli.md
     - name: Ruch przychodzący usługi AKS
       items:
         - name: Konfigurowanie przy użyciu istniejącej bramy usługi Application Gateway

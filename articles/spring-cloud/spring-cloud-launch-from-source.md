@@ -6,12 +6,12 @@ ms.service: spring-cloud
 ms.topic: quickstart
 ms.date: 10/30/2019
 ms.author: jeconnoc
-ms.openlocfilehash: 524fa18dfd4c47e699ba6b9d5d7a98bbbaaf5c72
-ms.sourcegitcommit: 359930a9387dd3d15d39abd97ad2b8cb69b8c18b
-ms.translationtype: HT
+ms.openlocfilehash: 7ca80966ccab83991246f0ed7ea35cf2c9524b1d
+ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73646770"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73721277"
 ---
 # <a name="launch-your-spring-cloud-application-from-source-code"></a>Uruchamianie aplikacji w chmurze wiosny z poziomu kodu źródłowego
 
@@ -31,7 +31,7 @@ Postępując zgodnie z tym przewodnikiem Szybki Start, dowiesz się, jak:
 ## <a name="prerequisites"></a>Wymagania wstępne
 
 >[!Note]
-> Chmura Wiosenna platformy Azure jest obecnie oferowana jako publiczna wersja zapoznawcza. Oferty publicznej wersji zapoznawczej umożliwiają klientom eksperymentowanie z nowymi funkcjami przed ich oficjalną wersją.  Funkcje i usługi publicznej wersji zapoznawczej nie są przeznaczone do użytku produkcyjnego.  Aby uzyskać więcej informacji na temat pomocy technicznej w przypadku wersji zapoznawczych, Zapisz [support Request](https://docs.microsoft.com/azure/azure-supportability/how-to-create-azure-support-request).
+> Chmura Wiosenna platformy Azure jest obecnie oferowana jako publiczna wersja zapoznawcza. Oferty publicznej wersji zapoznawczej umożliwiają klientom eksperymentowanie z nowymi funkcjami przed ich oficjalną wersją.  Funkcje i usługi publicznej wersji zapoznawczej nie są przeznaczone do użytku produkcyjnego.  Aby uzyskać więcej informacji na temat pomocy technicznej w przypadku wersji zapoznawczych, zapoznaj się z naszymi [często zadawanymi pytaniami](https://azure.microsoft.com/support/faq/) lub zapoznaj się z [support requestą](https://docs.microsoft.com/azure/azure-supportability/how-to-create-azure-support-request)
 
 Przed rozpoczęciem upewnij się, że Twoja subskrypcja platformy Azure ma wymagane zależności:
 

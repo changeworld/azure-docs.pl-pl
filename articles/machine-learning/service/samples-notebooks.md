@@ -11,12 +11,12 @@ ms.author: sgilley
 ms.reviewer: sgilley
 ms.date: 11/04/2019
 ms.custom: seodec18
-ms.openlocfilehash: 145ab994bbd2ac2445947968ccdeadbb730eb76a
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
-ms.translationtype: HT
+ms.openlocfilehash: 16066ceeb7196bb181d144cc9529d6db627ed828
+ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 11/04/2019
-ms.locfileid: "73476099"
+ms.locfileid: "73582516"
 ---
 # <a name="explore-azure-machine-learning-with-jupyter-notebooks"></a>Eksplorowanie Azure Machine Learning z notesami Jupyter
 
@@ -24,7 +24,7 @@ ms.locfileid: "73476099"
 
 W tym artykule pokazano, jak uzyskać dostęp do repozytorium z następujących środowisk:
 
-- [Wystąpienie obliczeniowe Azure Machine Learning](#notebookvm)
+- [Maszyna wirtualna w Azure Machine Learning notesu](#notebookvm)
 - [Przenoszenie własnego serwera notesu](#byo)
 - [Data Science Virtual Machine](#dsvm)
 
@@ -32,7 +32,7 @@ W tym artykule pokazano, jak uzyskać dostęp do repozytorium z następujących 
 > Po sklonowaniu repozytorium znajdziesz notesy samouczków w folderze **samouczków** i w notesach specyficznych dla funkcji w folderze **How to-use-Azure** .
 
 <a name="notebookvm"></a>
-## <a name="get-samples-on-azure-machine-learning-compute-instance"></a>Pobierz przykłady z wystąpienia obliczeniowego Azure Machine Learning
+## <a name="get-samples-on-azure-machine-learning-notebook-vm"></a>Pobierz przykłady na Azure Machine Learning notesu maszyn wirtualnych
 
 Najprostszym sposobem na rozpoczęcie pracy z przykładami jest ukończenie tego [samouczka: Konfigurowanie środowiska i obszaru roboczego](tutorial-1st-experiment-sdk-setup.md). Po zakończeniu będziesz mieć dedykowany serwer notesu wstępnie załadowany z zestawem SDK i przykładowym repozytorium. Nie trzeba pobierać ani zainstalacji.
 

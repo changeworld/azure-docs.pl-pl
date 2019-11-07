@@ -7,13 +7,13 @@ ms.author: jzim
 manager: jeconnoc
 ms.topic: tutorial
 ms.service: container-service
-ms.date: 05/14/2019
-ms.openlocfilehash: 01319de8fd72875ca35bb7a869a6eaedee62f2a7
-ms.sourcegitcommit: e0a1a9e4a5c92d57deb168580e8aa1306bd94723
+ms.date: 11/04/2019
+ms.openlocfilehash: 4a09a0fe4aa1f04e665aeb71ebece17a8b368090
+ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/11/2019
-ms.locfileid: "72285518"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73582388"
 ---
 # <a name="tutorial-create-an-azure-red-hat-openshift-cluster"></a>Samouczek: Tworzenie klastra usługi Azure Red Hat OpenShift
 
@@ -34,8 +34,6 @@ Ta seria samouczków zawiera informacje na temat wykonywania następujących czy
 
 > [!IMPORTANT]
 > Ten samouczek wymaga wersji 2.0.65 interfejsu wiersza polecenia platformy Azure.
->    
-> Przed rozpoczęciem korzystania z usługi Azure Red Hat OpenShift należy zakupić co najmniej 4 zastrzeżone aplikacje usługi Azure Red Hat OpenShift, zgodnie z opisem w temacie [Konfigurowanie środowiska deweloperskiego usługi Azure Red Hat OpenShift](howto-setup-environment.md#purchase-azure-red-hat-openshift-application-nodes-reserved-instances).
 
 Przed rozpoczęciem tego samouczka:
 
@@ -73,7 +71,7 @@ Wybierz lokalizację, w której ma zostać utworzony klaster. Aby zapoznać się
 LOCATION=<location>
 ```
 
-Ustaw `APPID` do wartości zapisanej w kroku 5 [Utwórz rejestrację aplikacji usługi Azure AD](howto-aad-app-configuration.md#create-an-azure-ad-app-registration).  
+Ustaw `APPID` wartość zapisaną w kroku 5 [Tworzenie rejestracji aplikacji usługi Azure AD](howto-aad-app-configuration.md#create-an-azure-ad-app-registration).  
 
 ```bash
 APPID=<app ID value>
@@ -85,13 +83,13 @@ Dla opcji "GROUPID" Ustaw wartość zapisaną w kroku 10 [tworzenia grupy zabezp
 GROUPID=<group ID value>
 ```
 
-Ustaw `SECRET` do wartości zapisanej w kroku 8 [Utwórz klucz tajny klienta](howto-aad-app-configuration.md#create-a-client-secret).  
+Ustaw `SECRET` wartość zapisaną w kroku 8 [tworzenia klucza tajnego klienta](howto-aad-app-configuration.md#create-a-client-secret).  
 
 ```bash
 SECRET=<secret value>
 ```
 
-Ustaw wartość `TENANT` jako identyfikator dzierżawy zapisany w kroku 7 [Tworzenie nowej dzierżawy](howto-create-tenant.md#create-a-new-azure-ad-tenant)  
+Ustaw `TENANT` wartość identyfikatora dzierżawy zapisanej w kroku 7 [Tworzenie nowej dzierżawy](howto-create-tenant.md#create-a-new-azure-ad-tenant)  
 
 ```bash
 TENANT=<tenant ID>
@@ -145,7 +143,7 @@ az openshift create --resource-group $CLUSTER_NAME --name $CLUSTER_NAME -l $LOCA
 > [!NOTE]
 > Jeśli wystąpi błąd, że nazwa hosta jest niedostępna, może to być spowodowane faktem, że nazwa klastra nie jest unikatowa. Spróbuj usunąć pierwotną rejestrację aplikacji i wykonać kroki z inną nazwą klastra w temacie [Tworzenie nowej aplikacji Rejestracja](howto-aad-app-configuration.md#create-an-azure-ad-app-registration), pomijając krok tworzenia nowego użytkownika i grupy zabezpieczeń.
 
-Po kilku minutach zostanie wykonane `az openshift create`.
+Po kilku minutach `az openshift create` zostanie ukończona.
 
 ### <a name="get-the-sign-in-url-for-your-cluster"></a>Pobieranie adresu URL logowania dla klastra
 
@@ -157,7 +155,7 @@ az openshift show -n $CLUSTER_NAME -g $CLUSTER_NAME
 
 Poszukaj `publicHostName` w danych wyjściowych, na przykład: `"publicHostname": "openshift.xxxxxxxxxxxxxxxxxxxx.eastus.azmosa.io"`
 
-Adres URL logowania dla klastra będzie `https://`, po którym następuje wartość `publicHostName`.  Na przykład: `https://openshift.xxxxxxxxxxxxxxxxxxxx.eastus.azmosa.io`.  Ten identyfikator URI zostanie użyty w następnym kroku jako część identyfikatora URI przekierowania rejestracji aplikacji.
+Adres URL logowania dla klastra będzie `https://` po którym następuje wartość `publicHostName`.  Na przykład: `https://openshift.xxxxxxxxxxxxxxxxxxxx.eastus.azmosa.io`.  Ten identyfikator URI zostanie użyty w następnym kroku jako część identyfikatora URI przekierowania rejestracji aplikacji.
 
 ## <a name="step-3-update-your-app-registration-redirect-uri"></a>Krok 3. aktualizowanie identyfikatora URI przekierowania rejestracji aplikacji
 

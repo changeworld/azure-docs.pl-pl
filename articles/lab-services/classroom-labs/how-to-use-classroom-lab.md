@@ -14,12 +14,12 @@ ms.topic: tutorial
 ms.custom: mvc
 ms.date: 09/19/2019
 ms.author: spelluru
-ms.openlocfilehash: 10813600621293e9f559129230193f81ea0c505a
-ms.sourcegitcommit: a7a9d7f366adab2cfca13c8d9cbcf5b40d57e63a
+ms.openlocfilehash: 2ac9e8b8d0635eceb7d4f85ad867b102f7d064f5
+ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/20/2019
-ms.locfileid: "71161531"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73585161"
 ---
 # <a name="how-to-access-a-classroom-lab-in-azure-lab-services"></a>Jak uzyskać dostęp do laboratorium w usłudze Azure Lab Services
 W tym artykule opisano sposób rejestracji w laboratorium zajęć, wyświetlania wszystkich laboratoriów, do których można uzyskać dostęp, uruchamiania/zatrzymywania maszyny wirtualnej w laboratorium oraz nawiązywania połączenia z maszyną wirtualną. 
@@ -63,13 +63,13 @@ W tym artykule opisano sposób rejestracji w laboratorium zajęć, wyświetlania
 ## <a name="connect-to-a-vm-using-rdp-on-a-mac"></a>Nawiązywanie połączenia z maszyną wirtualną przy użyciu protokołu RDP na komputerze Mac
 W tej sekcji pokazano, jak student może połączyć się z maszyną wirtualną z komputera Mac przy użyciu protokołu RDP.
 
-### <a name="step-1-install-microsoft-remote-desktop-on-a-mac"></a>Krok 1: Instalowanie Pulpit zdalny Microsoft na komputerze Mac
+### <a name="step-1-install-microsoft-remote-desktop-on-a-mac"></a>Krok 1. Instalowanie Pulpit zdalny Microsoft na komputerze Mac
 1. Otwórz sklep App Store na komputerze Mac, a następnie wyszukaj **pulpit zdalny Microsoft**.
 
     ![Pulpit zdalny Microsoft](../media/how-to-use-classroom-lab/install-ms-remote-desktop.png)
 1. Zainstaluj najnowszą wersję programu Pulpit zdalny Microsoft. 
 
-### <a name="step-2-access-the-vm-from-your-mac-using-rdp"></a>Krok 2: Uzyskiwanie dostępu do maszyny wirtualnej z komputera Mac przy użyciu protokołu RDP
+### <a name="step-2-access-the-vm-from-your-mac-using-rdp"></a>Krok 2. Uzyskiwanie dostępu do maszyny wirtualnej z komputera Mac przy użyciu protokołu RDP
 1. Otwórz plik **RDP** pobrany na komputerze z zainstalowanym **pulpit zdalny Microsoft** . Należy rozpocząć łączenie się z maszyną wirtualną. 
 
     ![Łączenie z maszyną wirtualną](../media/how-to-use-classroom-lab/connect-linux-vm.png)
@@ -107,7 +107,7 @@ Po zarejestrowaniu się w laboratoriach możesz wyświetlić wszystkie laborator
 2. Zaloguj się w usłudze przy użyciu konta użytkownika, którego użyto do zarejestrowania się do laboratorium. 
 3. Upewnij się, że są wyświetlone wszystkie laboratoria, do których masz dostęp. 
 
-    ![Wyświetlanie wszystkich laboratoriów](../media/how-to-use-classroom-lab/all-labs.png)
+    ![Wyświetlanie wszystkich laboratoriów](../media/how-to-manage-classroom-labs/all-labs.png)
 
 
 ## <a name="next-steps"></a>Następne kroki

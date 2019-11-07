@@ -10,12 +10,12 @@ author: trevorbye
 ms.author: trbye
 ms.reviewer: trbye
 ms.date: 11/04/2019
-ms.openlocfilehash: a7bd735a808532ed0e61cf42dca2d7a797092487
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
-ms.translationtype: HT
+ms.openlocfilehash: 23441fb64293647698921c17c06731ab413b7699
+ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 11/04/2019
-ms.locfileid: "73493698"
+ms.locfileid: "73582453"
 ---
 # <a name="tutorial-use-automated-machine-learning-to-predict-taxi-fares"></a>Samouczek: Używanie automatycznego uczenia maszynowego do przewidywania opłat za taksówkę
 [!INCLUDE [applies-to-skus](../../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -1062,7 +1062,7 @@ Tradycyjny proces opracowywania modelu uczenia maszynowego intensywnie korzysta 
 
 Nie wykonuj tej sekcji, jeśli planujesz Uruchamianie innych samouczków Azure Machine Learning.
 
-### <a name="stop-the-compute-instance"></a>Zatrzymaj wystąpienie obliczeniowe
+### <a name="stop-the-notebook-vm"></a>Zatrzymaj maszynę wirtualną notesu
 
 [!INCLUDE [aml-stop-server](../../../includes/aml-stop-server.md)]
 

@@ -13,12 +13,12 @@ ms.date: 10/25/2019
 ms.author: cephalin
 ms.reviewer: yutlin
 ms.custom: seodec18
-ms.openlocfilehash: 683ea55bdc9eb878f7bcbe832d5364d50a6b23e2
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
-ms.translationtype: HT
+ms.openlocfilehash: 12b8d6dff571c074d1f1422f75e33a8b12761bd9
+ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 11/04/2019
-ms.locfileid: "73501183"
+ms.locfileid: "73572150"
 ---
 # <a name="add-an-ssl-certificate-in-azure-app-service"></a>Dodawanie certyfikatu SSL w Azure App Service
 
@@ -65,6 +65,7 @@ Aby zabezpieczyć domenę niestandardową w ramach powiązania SSL, certyfikat m
 
 Bezpłatny App Service certyfikat zarządzany to rozwiązanie, które umożliwia Zabezpieczanie niestandardowej nazwy DNS w programie App Service. Jest to w pełni funkcjonalny certyfikat SSL, który jest zarządzany przez App Service i odnawiany automatycznie. Bezpłatny certyfikat obejmuje następujące ograniczenia:
 
+- Nie obsługuje certyfikatów symboli wieloznacznych.
 - Nie obsługuje domen niedozwolonych.
 - Nie jest możliwy do eksportu.
 
@@ -192,7 +193,7 @@ Skorzystaj z poniższej tabeli, aby wybrać certyfikat.
 | Ustawienie | Opis |
 |-|-|
 | Subskrypcja | Subskrypcja, do której należy Key Vault. |
-| Key Vault | Magazyn z certyfikatem, który ma zostać zaimportowany. |
+| Usługa Key Vault | Magazyn z certyfikatem, który ma zostać zaimportowany. |
 | Certyfikat | Wybierz z listy PKCS12 certyfikatów w magazynie. Wszystkie certyfikaty PKCS12 w magazynie są wyświetlane z odciskiem palca, ale nie wszystkie są obsługiwane w App Service. |
 
 Po zakończeniu operacji zobaczysz certyfikat na liście **Certyfikaty klucza prywatnego** . Jeśli importowanie nie powiedzie się z powodu błędu, certyfikat nie spełnia [wymagań dotyczących App Service](#private-certificate-requirements).
@@ -281,7 +282,7 @@ Kliknij pozycję **Przekaż**.
 
 ![Przekaż certyfikat publiczny w App Service](./media/configure-ssl-certificate/upload-public-cert.png)
 
-Po przekazaniu certyfikatu Skopiuj odcisk palca certyfikatu i sprawdź, czy [certyfikat jest dostępny](configure-ssl-certificate-in-code.md#load-the-certificate).
+Po przekazaniu certyfikatu Skopiuj odcisk palca certyfikatu i sprawdź, czy [certyfikat jest dostępny](configure-ssl-certificate-in-code.md#make-the-certificate-accessible).
 
 ## <a name="manage-app-service-certificates"></a>Zarządzanie certyfikatami App Service
 

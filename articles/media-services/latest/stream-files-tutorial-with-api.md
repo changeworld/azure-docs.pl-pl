@@ -1,6 +1,7 @@
 ---
-title: Przekazywanie, kodowanie i przesyłanie strumieniowe przy użyciu usługi Azure Media Services v3 | Dokumentacja firmy Microsoft
-description: Wykonaj kroki tego samouczka, aby przekazać plik i kodowanie wideo i przesyłanie strumieniowe zawartości za pomocą usługi Media Services v3.
+title: Przekazywanie, kodowanie i przesyłanie strumieniowe z Media Services v3
+titleSuffix: Azure Media Services
+description: Samouczek pokazujący, jak przekazać plik, zakodować wideo i przesyłać strumieniowo zawartość z Azure Media Services v3.
 services: media-services
 documentationcenter: ''
 author: Juliako
@@ -12,42 +13,42 @@ ms.topic: tutorial
 ms.custom: mvc
 ms.date: 03/22/2019
 ms.author: juliako
-ms.openlocfilehash: 5b359b81de694c47151c95254b80f847db828aed
-ms.sourcegitcommit: cf438e4b4e351b64fd0320bf17cc02489e61406a
+ms.openlocfilehash: f8ff3dc71727abf9e276cccc951c4d1143f4200d
+ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/08/2019
-ms.locfileid: "67653933"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73583100"
 ---
-# <a name="tutorial-upload-encode-and-stream-videos"></a>Samouczek: Przekazywanie, kodowanie i przesyłanie strumieniowe klipów wideo
+# <a name="tutorial-upload-encode-and-stream-videos-with-media-services-v3"></a>Samouczek: przekazywanie, kodowanie i przesyłanie strumieniowe filmów wideo z Media Services v3
 
 > [!NOTE]
-> Mimo że w tym samouczku użyto [zestawu .NET SDK](https://docs.microsoft.com/dotnet/api/microsoft.azure.management.media.models.liveevent?view=azure-dotnet) przykłady ogólne kroki są takie same dla [interfejsu API REST](https://docs.microsoft.com/rest/api/media/liveevents), [interfejsu wiersza polecenia](https://docs.microsoft.com/cli/azure/ams/live-event?view=azure-cli-latest), lub inne obsługiwane [zestawów SDK](media-services-apis-overview.md#sdks) .
+> Mimo że w tym samouczku są używane przykłady [zestawu SDK dla platformy .NET](https://docs.microsoft.com/dotnet/api/microsoft.azure.management.media.models.liveevent?view=azure-dotnet) , ogólne kroki są takie same dla [interfejsu API REST](https://docs.microsoft.com/rest/api/media/liveevents), [CLI](https://docs.microsoft.com/cli/azure/ams/live-event?view=azure-cli-latest)lub innych obsługiwanych [zestawów SDK](media-services-apis-overview.md#sdks).
 
-Usługa Azure Media Services umożliwia kodowanie plików multimedialnych do formatów, które można odtworzyć w różnych przeglądarkach i na różnych urządzeniach. Na przykład może zaistnieć potrzeba strumieniowego odtwarzania treści w formatach HLS lub MPEG DASH firmy Apple. Przed odtwarzaniem strumieniowym należy zakodować wysokiej jakości plik multimediów cyfrowych. Aby uzyskać wskazówki dotyczące kodowania, zobacz temat [Encoding concept](encoding-concept.md) (Koncepcja kodowania). W tym samouczku opisano przekazanie lokalnego pliku wideo oraz jego kodowanie. Kodowana jest również zawartość, która jest udostępniana za pośrednictwem adresu URL protokołu HTTPS. Aby uzyskać więcej informacji, zobacz temat [Create a job input from an HTTP(s) URL](job-input-from-http-how-to.md) (Tworzenie danych wejściowych zadania przy użyciu adresu URL protokołów HTTP).
+Azure Media Services umożliwia Kodowanie plików multimedialnych do formatów, które są odtwarzane w różnych przeglądarkach i urządzeniach. Na przykład może zaistnieć potrzeba strumieniowego odtwarzania treści w formatach HLS lub MPEG DASH firmy Apple. Przed odtwarzaniem strumieniowym należy zakodować wysokiej jakości plik multimediów cyfrowych. Aby uzyskać pomoc dotyczącą kodowania, zobacz [koncepcji kodowania](encoding-concept.md). W tym samouczku opisano przekazanie lokalnego pliku wideo oraz jego kodowanie. Możesz również kodować zawartość, która jest dostępna za pośrednictwem adresu URL HTTPS. Aby uzyskać więcej informacji, zobacz temat [Create a job input from an HTTP(s) URL](job-input-from-http-how-to.md) (Tworzenie danych wejściowych zadania przy użyciu adresu URL protokołów HTTP).
 
-![Odtwarzanie wideo](./media/stream-files-tutorial-with-api/final-video.png)
+![Odtwórz wideo za pomocą Azure Media Player](./media/stream-files-tutorial-with-api/final-video.png)
 
-Ten samouczek przedstawia sposób wykonania następujących czynności:    
+Ten samouczek przedstawia sposób wykonania następujących czynności:
 
 > [!div class="checklist"]
-> * Pobieranie przykładowej aplikacji opisanej w temacie
-> * Sprawdzanie kodu operacji przekazywania, kodowania i odtwarzania strumieniowego
-> * Uruchamianie aplikacji
-> * Testowanie adresu URL przesyłania strumieniowego
-> * Oczyszczanie zasobów
+> * Pobierz przykładową aplikację opisaną w temacie.
+> * Przejrzyj kod, który przekazuje, koduje i przesyła strumieniowo.
+> * Uruchom aplikację.
+> * Przetestuj adres URL przesyłania strumieniowego.
+> * Oczyszczenie zasobów.
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-- Jeśli nie masz zainstalowanego programu Visual Studio, możesz pobrać program [Visual Studio Community 2017](https://www.visualstudio.com/thank-you-downloading-visual-studio/?sku=Community&rel=15).
+- Jeśli nie masz zainstalowanego programu Visual Studio, możesz uzyskać [program Visual Studio Community 2017](https://www.visualstudio.com/thank-you-downloading-visual-studio/?sku=Community&rel=15).
 - [Utwórz konto usługi Media Services](create-account-cli-how-to.md).<br/>Koniecznie zapamiętaj wartości, które zostały użyte jako nazwa grupy zasobów i nazwa konta usługi Media Services.
-- Postępuj zgodnie z instrukcjami zawartymi w temacie [Access Azure Media Services API with the Azure CLI](access-api-cli-how-to.md) (Uzyskiwanie dostępu do interfejsu API usług Azure Media Services za pomocą interfejsu wiersza polecenia platformy Azure) i zapisz poświadczenia. Będą one potrzebne w celu uzyskania dostępu do interfejsu API.
+- Postępuj zgodnie z instrukcjami zawartymi w temacie [Access Azure Media Services API with the Azure CLI](access-api-cli-how-to.md) (Uzyskiwanie dostępu do interfejsu API usług Azure Media Services za pomocą interfejsu wiersza polecenia platformy Azure) i zapisz poświadczenia. Musisz użyć ich do uzyskania dostępu do interfejsu API.
 
-## <a name="download-and-configure-the-sample"></a>Pobieranie i konfigurowanie przykładu
+## <a name="download-and-set-up-the-sample"></a>Pobieranie i Konfigurowanie przykładu
 
-Sklonuj repozytorium GitHub zawierające przykład przesyłania strumieniowego platformy .NET na swoją maszynę za pomocą następującego polecenia:  
+Sklonuj repozytorium GitHub, które ma przykład platformy .NET przesyłania strumieniowego do maszyny przy użyciu następującego polecenia:  
 
  ```bash
  git clone https://github.com/Azure-Samples/media-services-v3-dotnet-tutorials.git
@@ -55,7 +56,7 @@ Sklonuj repozytorium GitHub zawierające przykład przesyłania strumieniowego p
 
 Przykład znajduje się w folderze [UploadEncodeAndStreamFiles](https://github.com/Azure-Samples/media-services-v3-dotnet-tutorials/tree/master/AMSV3Tutorials/UploadEncodeAndStreamFiles).
 
-Otwórz plik [appsettings.json](https://github.com/Azure-Samples/media-services-v3-dotnet-tutorials/blob/master/AMSV3Tutorials/UploadEncodeAndStreamFiles/appsettings.json) z pobranego projektu. Zastąp wartości przy użyciu poświadczeń uzyskanych w sekcji z opisem [uzyskiwania dostępu do interfejsów API](access-api-cli-how-to.md).
+Otwórz plik [appSettings. JSON](https://github.com/Azure-Samples/media-services-v3-dotnet-tutorials/blob/master/AMSV3Tutorials/UploadEncodeAndStreamFiles/appsettings.json) w pobranym projekcie. Zastąp wartości przy użyciu poświadczeń uzyskanych w sekcji z opisem [uzyskiwania dostępu do interfejsów API](access-api-cli-how-to.md).
 
 ## <a name="examine-the-code-that-uploads-encodes-and-streams"></a>Sprawdzanie kodu operacji przekazywania, kodowania i odtwarzania strumieniowego
 
@@ -63,35 +64,35 @@ W tej sekcji są analizowane funkcje zdefiniowane w pliku [Program.cs](https://g
 
 W przykładzie są wykonywane następujące akcje:
 
-1. Tworzenie nowego **przekształcenia** (najpierw następuje sprawdzenie, czy podane przekształcenie istnieje). 
-2. Tworzenie **zasobu** danych wyjściowych, który zostanie użyty jako dane wyjściowe **zadania** kodowania.
-3. Tworzenie **zasobu** danych wejściowych oraz przekazanie do niego wybranego lokalnego pliku wideo. Zasób jest używany jako dane wejściowe zadania. 
+1. Tworzenie nowego **przekształcenia** (najpierw następuje sprawdzenie, czy podane przekształcenie istnieje).
+2. Tworzy element **zawartości** wyjściowej, który jest używany jako dane wyjściowe **zadania**kodowania.
+3. Tworzenie **zasobu** danych wejściowych oraz przekazanie do niego wybranego lokalnego pliku wideo. Zasób jest używany jako dane wejściowe zadania.
 4. Przesyłanie zadania kodowania przy użyciu utworzonych danych wejściowych i wyjściowych.
 5. Sprawdza stan zadania.
 6. Tworzy **lokalizator przesyłania strumieniowego**.
 7. Utworzenie adresów URL przesyłania strumieniowego.
 
-### <a name="a-idstartusingdotnet-start-using-media-services-apis-with-net-sdk"></a><a id="start_using_dotnet" />Rozpoczynanie korzystania z interfejsów API usługi Media Services przy użyciu zestawu .NET SDK
+### <a name="a-idstart_using_dotnet-start-using-media-services-apis-with-net-sdk"></a><a id="start_using_dotnet" />Rozpoczynanie korzystania z interfejsów API usługi Media Services przy użyciu zestawu .NET SDK
 
-Aby rozpocząć korzystanie z interfejsów API usługi Media Services na platformie .NET, należy utworzyć obiekt **AzureMediaServicesClient**. Aby utworzyć obiekt, należy podać poświadczenia wymagane do nawiązania połączenia z platformą Azure przez klienta przy użyciu usługi Azure AD. W kodzie sklonowanym na początku tego artykułu funkcja **GetCredentialsAsync** tworzy obiekt ServiceClientCredentials na podstawie poświadczeń podanych w lokalnym pliku konfiguracji. 
+Aby rozpocząć korzystanie z interfejsów API usługi Media Services na platformie .NET, należy utworzyć obiekt **AzureMediaServicesClient**. Aby utworzyć obiekt, należy podać poświadczenia wymagane przez klienta do nawiązania połączenia z platformą Azure przy użyciu usługi Azure AD. W kodzie sklonowanym na początku tego artykułu funkcja **GetCredentialsAsync** tworzy obiekt ServiceClientCredentials na podstawie poświadczeń podanych w lokalnym pliku konfiguracji.
 
 [!code-csharp[Main](../../../media-services-v3-dotnet-tutorials/AMSV3Tutorials/UploadEncodeAndStreamFiles/Program.cs#CreateMediaServicesClient)]
 
-### <a name="create-an-input-asset-and-upload-a-local-file-into-it"></a>Tworzenie zasobu wejściowego i przekazywanie do niego pliku lokalnego 
+### <a name="create-an-input-asset-and-upload-a-local-file-into-it"></a>Tworzenie zasobu wejściowego i przekazywanie do niego pliku lokalnego
 
-Funkcja **CreateInputAsset** tworzy nowy [zasób](https://docs.microsoft.com/rest/api/media/assets) wejściowy i przekazuje do niego określony lokalny plik wideo. Ten **zasób** służy jako dane wejściowe zadania kodowania. W usłudze Media Services w wersji 3 danymi wejściowymi **zadania** może być **zasób** lub zawartość udostępniona dla konta usługi Media Services za pośrednictwem adresów URL protokołu HTTPS. Jeśli chcesz dowiedzieć się, jak kodować, korzystając z adresu URL protokołu HTTPS jako wejścia, zobacz [ten](job-input-from-http-how-to.md) artykuł.  
+Funkcja **CreateInputAsset** tworzy nowy [zasób](https://docs.microsoft.com/rest/api/media/assets) wejściowy i przekazuje do niego określony lokalny plik wideo. Ten element **zawartości** jest używany jako dane wejściowe zadania kodowania. W Media Services v3 dane wejściowe **zadania** mogą być **zasobem** lub zawartością udostępnianą dla konta Media Services za pośrednictwem adresów URL https. Aby dowiedzieć się, jak kodować przy użyciu adresu URL HTTPS, zobacz [ten](job-input-from-http-how-to.md) artykuł.
 
 W usłudze Media Services 3 do przekazywania plików służą interfejsy API usługi Azure Storage. Przedstawia to poniższy fragment kodu dla platformy .NET.
 
 Poniższa funkcja wykonuje następujące akcje:
 
-* Tworzenie **zasobu** 
-* Pobranie zapisywalnego [adresu URL sygnatury dostępu współdzielonego](https://docs.microsoft.com/azure/storage/common/storage-dotnet-shared-access-signature-part-1) do [kontenera zasobu w magazynie](https://docs.microsoft.com/azure/storage/blobs/storage-quickstart-blobs-dotnet#upload-blobs-to-a-container)
-* Przekazanie pliku do kontenera w magazynie przy użyciu adresu URL sygnatury dostępu współdzielonego
+* Tworzy element **zawartości**.
+* Pobiera zapisywalny [adres URL sygnatury dostępu współdzielonego](https://docs.microsoft.com/azure/storage/common/storage-dotnet-shared-access-signature-part-1) do [kontenera zasobów w magazynie](https://docs.microsoft.com/azure/storage/blobs/storage-quickstart-blobs-dotnet#upload-blobs-to-a-container).
+* Przekazuje plik do kontenera w magazynie przy użyciu adresu URL sygnatury dostępu współdzielonego.
 
 [!code-csharp[Main](../../../media-services-v3-dotnet-tutorials/AMSV3Tutorials/UploadEncodeAndStreamFiles/Program.cs#CreateInputAsset)]
 
-### <a name="create-an-output-asset-to-store-the-result-of-a-job"></a>Tworzenie zasobu wyjściowego na potrzeby przechowywania wyników zadania 
+### <a name="create-an-output-asset-to-store-the-result-of-a-job"></a>Tworzenie zasobu wyjściowego na potrzeby przechowywania wyników zadania
 
 [Zasób](https://docs.microsoft.com/rest/api/media/assets) wyjściowy przechowuje wynik zadania kodowania. Projekt definiuje funkcję **DownloadResults**, która pobiera wyniki z zasobu wyjściowego do folderu wyjściowego, umożliwiając zapoznanie się z nimi.
 
@@ -99,7 +100,7 @@ Poniższa funkcja wykonuje następujące akcje:
 
 ### <a name="create-a-transform-and-a-job-that-encodes-the-uploaded-file"></a>Tworzenie przekształcenia i zadania kodującego przekazany plik
 
-W przypadku kodowania lub przetwarzania zawartości w usłudze Media Services typowym wzorcem postępowania jest skonfigurowanie ustawień kodowania jako przepisu. Następnie przesyła się **zadanie** w celu zastosowania tego przepisu do wideo. Przesłanie nowego zadania dla każdego nowego wideo powoduje zastosowanie tego przepisu do wszystkich wideo w bibliotece. Przepis w usłudze Media Services nazywa się **przekształceniem**. Aby uzyskać więcej informacji, zobacz [Przekształcenia i zadania](transform-concept.md). Przykład opisany w tym samouczku definiuje przepis, który umożliwia kodowanie wideo w celu jego przesyłania strumieniowego do różnych urządzeń z systemami iOS i Android. 
+Podczas kodowania lub przetwarzania zawartości w Media Services jest to typowy wzorzec służący do konfigurowania ustawień kodowania jako przepisu. Następnie przesyła się **zadanie** w celu zastosowania tego przepisu do wideo. Przesyłając nowe zadania dla każdego nowego filmu wideo, stosujesz ten przepis do wszystkich filmów wideo w bibliotece. Przepis w Media Services jest nazywany **przekształceniem**. Aby uzyskać więcej informacji, zobacz [Przekształcenia i zadania](transform-concept.md). Przykład opisany w tym samouczku definiuje przepis, który umożliwia kodowanie wideo w celu jego przesyłania strumieniowego do różnych urządzeń z systemami iOS i Android.
 
 #### <a name="transform"></a>Przekształcanie
 
@@ -107,7 +108,7 @@ Podczas tworzenia nowego wystąpienia obiektu [Transform](https://docs.microsoft
 
 Możesz użyć wbudowanych elementów EncoderNamedPreset lub użyć niestandardowych ustawień wstępnych. Aby uzyskać więcej informacji, zobacz temat [How to customize encoder presets](customize-encoder-presets-how-to.md) (Dostosowywanie ustawień wstępnych kodera).
 
-Podczas tworzenia obiektu [Transform](https://docs.microsoft.com/rest/api/media/transforms) należy najpierw sprawdzić, czy taki obiekt już istnieje, używając metody **Get**, tak jak przedstawiono w poniższym kodzie.  W przypadku usługi Media Services 3 metody **Get** wywołane dla obiektów zwracają **wartość null**, jeśli obiekt nie istnieje (sprawdzana jest nazwa bez uwzględniania wielkości liter).
+Podczas tworzenia obiektu [Transform](https://docs.microsoft.com/rest/api/media/transforms) należy najpierw sprawdzić, czy taki obiekt już istnieje, używając metody **Get**, tak jak przedstawiono w poniższym kodzie. W przypadku usługi Media Services 3 metody **Get** wywołane dla obiektów zwracają **wartość null**, jeśli obiekt nie istnieje (sprawdzana jest nazwa bez uwzględniania wielkości liter).
 
 [!code-csharp[Main](../../../media-services-v3-dotnet-tutorials/AMSV3Tutorials/UploadEncodeAndStreamFiles/Program.cs#EnsureTransformExists)]
 
@@ -115,17 +116,17 @@ Podczas tworzenia obiektu [Transform](https://docs.microsoft.com/rest/api/media/
 
 Jak wspomniano powyżej, obiekt [Transform](https://docs.microsoft.com/rest/api/media/transforms) jest przepisem, a obiekt [Job](https://docs.microsoft.com/rest/api/media/jobs) to rzeczywiste żądanie skierowane do usługi Media Services i mające na celu zastosowanie obiektu **Transform** do określonej wejściowej zawartości wideo lub dźwiękowej. Obiekt **Job** określa informacje takie jak lokalizacja wejściowego pliku wideo oraz danych wyjściowych.
 
-W tym przykładzie wejściowy plik wideo został przekazany z maszyny lokalnej. Jeśli chcesz dowiedzieć się, jak kodować, korzystając z adresu URL protokołu HTTPS jako wejścia, zobacz [ten](job-input-from-http-how-to.md) artykuł.
+W tym przykładzie wejściowy plik wideo został przekazany z maszyny lokalnej. Jeśli chcesz dowiedzieć się, jak kodować przy użyciu adresu URL HTTPS, zobacz [ten](job-input-from-http-how-to.md) artykuł.
 
 [!code-csharp[Main](../../../media-services-v3-dotnet-tutorials/AMSV3Tutorials/UploadEncodeAndStreamFiles/Program.cs#SubmitJob)]
 
 ### <a name="wait-for-the-job-to-complete"></a>Oczekiwanie na zakończenie zadania
 
-Ukończenie zadania zajmuje trochę czasu, a Ty chcesz otrzymać powiadomienie o tym fakcie. Poniższy przykładowy kod przedstawia sposób sondowania usługi pod kątem stanu [zadania](https://docs.microsoft.com/rest/api/media/jobs). Sondowanie nie jest najlepszym rozwiązaniem w przypadku zastosowań produkcyjnych ze względu na możliwe opóźnienia. Jeśli sondowanie będzie nadużywane w ramach konta, może zostać ograniczone. Deweloperzy zamiast niego powinni używać usługi Event Grid.
+Ukończenie zadania zajmuje trochę czasu, a Ty chcesz otrzymać powiadomienie o tym fakcie. Poniższy przykładowy kod przedstawia sposób sondowania usługi pod kątem stanu [zadania](https://docs.microsoft.com/rest/api/media/jobs). Sondowanie nie jest zalecanym najlepszym rozwiązaniem w przypadku aplikacji produkcyjnych ze względu na potencjalne opóźnienia. Jeśli sondowanie będzie nadużywane w ramach konta, może zostać ograniczone. Deweloperzy zamiast niego powinni używać usługi Event Grid.
 
 Usługę Event Grid zaprojektowano pod kątem wysokiej dostępności, stałego poziomu wydajności i dynamicznej skalowalności. Dzięki usłudze Event Grid Twoje aplikacje mogą nasłuchiwać zdarzeń pochodzących z praktycznie wszystkich usług platformy Azure i ze źródeł niestandardowych oraz reagować na nie. Prosta, reaktywna obsługa zdarzeń oparta na protokole HTTP pomaga w tworzeniu wydajnych rozwiązań za pośrednictwem inteligentnego filtrowania i routingu zdarzeń.  Zobacz [Kierowanie zdarzeń do niestandardowego internetowego punktu końcowego](job-state-events-cli-how-to.md).
 
-**Zadanie** zwykle przechodzi przez następujące stany: **Scheduled** (Zaplanowane), **Queued** (W kolejce), **Processing** (Przetwarzane), **Finished** (Zakończone — jest to stan końcowy). Jeśli zadanie napotka błąd, może być w stanie **Error (Błąd)** . Jeśli zadanie jest w trakcie anulowania, może być w stanie **Canceling (Anulowanie)** , a po zakończeniu tej operacji w stanie **Canceled (Anulowane)** .
+**Zadanie** zwykle przechodzi przez następujące stany: **Scheduled (Zaplanowane)** , **Queued (W kolejce)** , **Processing (Przetwarzane)** , **Finished (Zakończone)** (stan końcowy). Jeśli zadanie napotka błąd, może być w stanie **Error (Błąd)** . Jeśli zadanie jest w trakcie jego anulowania, po zakończeniu zostanie **anulowane** i **usunięte** .
 
 [!code-csharp[Main](../../../media-services-v3-dotnet-tutorials/AMSV3Tutorials/UploadEncodeAndStreamFiles/Program.cs#WaitForJobToFinish)]
 
@@ -135,16 +136,16 @@ Zobacz [Kody błędów](https://docs.microsoft.com/rest/api/media/jobs/get#jober
 
 ### <a name="get-a-streaming-locator"></a>Pobieranie lokalizatora przesyłania strumieniowego
 
-Po zakończeniu kodowania następnym krokiem jest udostępnienie klientom w zasobie wyjściowym pliku wideo, który można odtwarzać. Działanie to można wykonać w dwóch krokach: najpierw należy utworzyć [lokalizator przesyłania strumieniowego](https://docs.microsoft.com/rest/api/media/streaminglocators), a następnie utworzyć adresy URL przesyłania strumieniowego, których mogą używać klienci. 
+Po zakończeniu kodowania następnym krokiem jest udostępnienie klientom w zasobie wyjściowym pliku wideo, który można odtwarzać. Można to zrobić w dwóch krokach: najpierw utworzyć [lokalizator przesyłania strumieniowego](https://docs.microsoft.com/rest/api/media/streaminglocators), a drugi — utworzyć adresy URL przesyłania strumieniowego, które mogą być używane przez klientów.
 
-Proces tworzenia **lokalizatora przesyłania strumieniowego** jest nazywany publikowaniem. Domyślnie **lokalizator przesyłania strumieniowego** jest ważny natychmiast po wykonaniu wywołań interfejsu API i aż do jego usunięcia, chyba że skonfigurujesz opcjonalne czasy rozpoczęcia i zakończenia. 
+Proces tworzenia **lokalizatora przesyłania strumieniowego** jest nazywany publikowaniem. Domyślnie **lokalizator przesyłania strumieniowego** jest ważny natychmiast po wykonaniu wywołania interfejsu API i obowiązuje do momentu jego usunięcia, chyba że zostanie skonfigurowany opcjonalny czas rozpoczęcia i zakończenia.
 
-Podczas tworzenia obiektu [StreamingLocator](https://docs.microsoft.com/rest/api/media/streaminglocators) musisz określić żądany element **StreamingPolicyName**. W tym przykładzie zawartość będzie przesyłana strumieniowo w postaci jawnej (bez szyfrowania), dzięki czemu można użyć wstępnie zdefiniowanych zasad przesyłania strumieniowego bez szyfrowania (**PredefinedStreamingPolicy.ClearStreamingOnly**).
+Podczas tworzenia [StreamingLocator](https://docs.microsoft.com/rest/api/media/streaminglocators)należy określić żądany **StreamingPolicyName**. W tym przykładzie nastąpi przesyłanie strumieniowe w postaci nieoczyszczonej (lub nieszyfrowanej zawartości), co spowoduje użycie wstępnie zdefiniowanych zasad wyznaczania strumienia (**PredefinedStreamingPolicy. ClearStreamingOnly**).
 
 > [!IMPORTANT]
 > W przypadku korzystania z niestandardowych [zasad przesyłania strumieniowego](https://docs.microsoft.com/rest/api/media/streamingpolicies) należy zaprojektować ograniczony zestaw takich zasad dla konta usługi Media Service i używać ich ponownie dla obiektów StreamingLocator zawsze, gdy są potrzebne takie same opcje szyfrowania i protokoły. Konto usługi Media Service jest objęte limitem przydziału dotyczącym liczby pozycji zasad przesyłania strumieniowego. Nie należy tworzyć nowych zasad przesyłania strumieniowego dla każdego lokalizatora przesyłania strumieniowego.
 
-W poniższym kodzie przyjęto, że funkcja jest wywoływana za pomocą unikatowego elementu locatorName.
+Poniższy kod założono, że wywołujesz funkcję z unikatowym identyfikatorem lokalizatora.
 
 [!code-csharp[Main](../../../media-services-v3-dotnet-tutorials/AMSV3Tutorials/UploadEncodeAndStreamFiles/Program.cs#CreateStreamingLocator)]
 
@@ -161,31 +162,31 @@ Teraz, po utworzeniu [lokalizatora przesyłania strumieniowego](https://docs.mic
 
 ### <a name="clean-up-resources-in-your-media-services-account"></a>Oczyszczanie zasobów na koncie usługi Media Services
 
-Zazwyczaj należy wyczyścić wszystko z wyjątkiem obiektów, których zamierzasz użyć ponownie (zazwyczaj są to obiekty Transform, obiekty StreamingLocator są utrwalane itd.). Jeśli Twoje konto ma być czyste po przeprowadzeniu eksperymentów, należy usunąć zasoby, których ponowne użycie nie jest planowane.  Na przykład następujący kod usuwa zadania.
+Ogólnie rzecz biorąc, należy wyczyścić wszystko z wyjątkiem obiektów, które są planowane do ponownego użycia (zazwyczaj spowoduje to ponowne użycie przekształceń i StreamingLocators itp.). Jeśli chcesz, aby Twoje konto było czyste po eksperymentie, Usuń zasoby, których nie planujesz ponownie używać. Na przykład poniższy kod usuwa zadania:
 
 [!code-csharp[Main](../../../media-services-v3-dotnet-tutorials/AMSV3Tutorials/UploadEncodeAndStreamFiles/Program.cs#CleanUp)]
 
 ## <a name="run-the-sample-app"></a>Uruchamianie przykładowej aplikacji
 
-1. Naciśnij klawisze Ctrl+F5, aby uruchomić aplikację *EncodeAndStreamFiles*.
+1. Naciśnij klawisze CTRL + F5, aby uruchomić aplikację *EncodeAndStreamFiles* .
 2. Skopiuj jeden z adresów URL przesyłania strumieniowego z konsoli.
 
 Ten przykład umożliwia wyświetlenie adresów URL, których można użyć do odtworzenia wideo za pomocą różnych protokołów:
 
-![Output](./media/stream-files-tutorial-with-api/output.png)
+![Przykładowe dane wyjściowe pokazujące adresy URL wideo przesyłania strumieniowego Media Services](./media/stream-files-tutorial-with-api/output.png)
 
 ## <a name="test-the-streaming-url"></a>Testowanie adresu URL przesyłania strumieniowego
 
-W tym artykule strumień jest testowany za pomocą odtwarzacza Azure Media Player. 
+W tym artykule strumień jest testowany za pomocą odtwarzacza Azure Media Player.
 
 > [!NOTE]
 > Jeśli odtwarzacz jest hostowany w witrynie korzystającej z protokołu HTTPS, zmień adres URL tak, aby zawierał ciąg „https”.
 
 1. Otwórz przeglądarkę i przejdź pod adres [https://aka.ms/azuremediaplayer/](https://aka.ms/azuremediaplayer/).
-2. W polu **Adres URL** wklej jedną z wartości adresu URL przesyłania strumieniowego otrzymanych po uruchomieniu aplikacji. 
-3. Naciśnij pozycję **Aktualizuj odtwarzacz**.
+2. W polu **adres URL** , wklej jeden z wartości adresu URL przesyłania strumieniowego uzyskanych podczas uruchamiania aplikacji.
+3. Wybierz pozycję **Aktualizuj odtwarzacz**.
 
-Usługi Azure Media Player można użyć do testowania, ale nie należy jej używać w środowisku produkcyjnym. 
+Azure Media Player może służyć do testowania, ale nie powinien być używany w środowisku produkcyjnym.
 
 ## <a name="clean-up-resources"></a>Oczyszczanie zasobów
 
@@ -199,13 +200,13 @@ az group delete --name amsResourceGroup
 
 ## <a name="multithreading"></a>Wielowątkowość
 
-Zestawy SDK usługi Azure Media Services 3 nie są bezpieczne wątkowo. Podczas opracowywania aplikacji wielowątkowej należy wygenerować nowy obiekt AzureMediaServicesClient dla każdego wątku i użyć go.
+Zestawy SDK Azure Media Services V3 nie są bezpieczne wątkowo. Podczas tworzenia aplikacji wielowątkowej należy wygenerować i użyć nowego obiektu AzureMediaServicesClient na wątek.
 
-## <a name="ask-questions-give-feedback-get-updates"></a>Zadawaj pytania, Prześlij opinię i pobieranie aktualizacji
+## <a name="ask-questions-give-feedback-get-updates"></a>Zadawaj pytania, Przekaż opinię, uzyskaj aktualizacje
 
-Zapoznaj się z [społeczności usługi Azure Media Services](media-services-community.md) artykuł, aby wyświetlić różne sposoby zadawaj pytania, Prześlij opinię i pobrać aktualizacje o usłudze Media Services.
+Zapoznaj się z artykułem [community Azure Media Services](media-services-community.md) , aby zobaczyć różne sposoby zadawania pytań, przekazać Opinie i uzyskać aktualizacje dotyczące Media Services.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 Teraz, kiedy już wiesz, jak przekazywać, kodować i przesyłać strumieniowo wideo, zobacz następujący artykuł: 
 

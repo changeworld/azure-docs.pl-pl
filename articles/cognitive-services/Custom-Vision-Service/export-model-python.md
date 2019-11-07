@@ -1,7 +1,7 @@
 ---
 title: 'Samouczek: uruchamianie modelu TensorFlow w języku Python — Custom Vision Service'
 titleSuffix: Azure Cognitive Services
-description: Uruchom model TensorFlow w języku Python.
+description: Uruchom model TensorFlow w języku Python. Ten artykuł dotyczy tylko modeli wyeksportowanych z projektów klasyfikacji obrazów w usłudze Custom Vision.
 services: cognitive-services
 author: areddish
 manager: nitinme
@@ -10,12 +10,12 @@ ms.subservice: custom-vision
 ms.topic: tutorial
 ms.date: 07/03/2019
 ms.author: areddish
-ms.openlocfilehash: 43fbf7b13c75b9bdbaa810905ed9a25e8faa664f
-ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
+ms.openlocfilehash: 00d3b1dce9bacc01c8319c678ab27a3d4cc8da88
+ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72898362"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73718425"
 ---
 # <a name="tutorial-run-tensorflow-model-in-python"></a>Samouczek: uruchamianie modelu TensorFlow w języku Python
 
@@ -26,10 +26,10 @@ W tym przewodniku Szybki start opisano, jak po [wyeksportowaniu modelu TensorFlo
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-Aby korzystać z tego samouczka, wykonaj następujące czynności:
+Aby korzystać z tego samouczka, należy wykonać następujące czynności:
 
-- Zainstaluj język Python 2.7+ lub Python 3.5+.
-- Zainstaluj program pip.
+- Zainstalować język Python 2.7+ lub Python 3.5+.
+- Zainstalować program pip.
 
 Następnie należy zainstalować następujące pakiety:
 

@@ -1,7 +1,7 @@
 ---
-title: Indeksowanie obiektów BLOB CSV za pomocą indeksatora usługi Azure Wyszukiwanie poznawcze BLOB
+title: Indeksowanie obiektów BLOB CSV przy użyciu trybu analizowania delimitedText (wersja zapoznawcza)
 titleSuffix: Azure Cognitive Search
-description: Przeszukiwanie obiektów BLOB CSV w usłudze Azure Blob Storage na potrzeby wyszukiwania pełnotekstowego przy użyciu indeksu Wyszukiwanie poznawcze platformy Azure. Indeksatory automatyzują pozyskiwanie danych dla wybranych źródeł danych, takich jak Azure Blob Storage.
+description: Wyodrębnij i zaimportuj plik CSV z usługi Azure Blob Storage za pomocą trybu analizy delimitedText, który jest obecnie w publicznej wersji zapoznawczej.
 manager: nitinme
 author: mgottein
 ms.author: magottei
@@ -9,18 +9,17 @@ ms.devlang: rest-api
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 18d0eb704deba80bf83b5cae0a598f47181700f7
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.openlocfilehash: 4edeb8d535504c305319aad35637bb1b09f65984
+ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72793777"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73719237"
 ---
-# <a name="how-to-index-csv-blobs-using-a-blob-indexer-in-azure-cognitive-search"></a>Jak indeksować obiekty blob w formacie CSV za pomocą indeksatora obiektów BLOB na platformie Azure Wyszukiwanie poznawcze 
+# <a name="how-to-index-csv-blobs-using-delimitedtext-parsing-mode-and-blob-indexers-in-azure-cognitive-search"></a>Jak indeksować obiekty blob w formacie CSV przy użyciu trybu analizowania delimitedText i indeksatorów obiektów BLOB na platformie Azure Wyszukiwanie poznawcze 
 
-> [!Note]
-> Tryb analizy delimitedText jest w wersji zapoznawczej i nie jest przeznaczony do użycia w środowisku produkcyjnym. [Interfejs API REST w wersji 2019-05-06 — wersja zapoznawcza](search-api-preview.md) zawiera tę funkcję. W tej chwili nie ma obsługi zestawu SDK platformy .NET.
->
+> [!IMPORTANT] 
+> Tryb analizy delimitedText jest obecnie w publicznej wersji zapoznawczej. Funkcje wersji zapoznawczej są dostępne bez umowy dotyczącej poziomu usług i nie są zalecane w przypadku obciążeń produkcyjnych. Aby uzyskać więcej informacji, zobacz [Uzupełniające warunki korzystania z wersji zapoznawczych platformy Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/). [Interfejs API REST w wersji 2019-05-06 — wersja zapoznawcza](search-api-preview.md) zawiera tę funkcję. Obecnie nie ma obsługi portalu lub zestawu SDK platformy .NET.
 
 Domyślnie [indeksator usługi Azure wyszukiwanie poznawcze BLOB](search-howto-indexing-azure-blob-storage.md) analizuje rozdzielony tekst obiektów BLOB jako pojedynczy fragment tekstu. Jednak z obiektami BLOB zawierającymi dane CSV często warto traktować każdy wiersz w obiekcie BLOB jako oddzielny dokument. Na przykład, uwzględniając następujący rozdzielony tekst, możesz chcieć przeanalizować go w dwóch dokumentach, z których każdy zawiera pola "ID", "datePublished" i "Tags": 
 
@@ -28,7 +27,7 @@ Domyślnie [indeksator usługi Azure wyszukiwanie poznawcze BLOB](search-howto-i
     1, 2016-01-12, "azure-search,azure,cloud" 
     2, 2016-07-07, "cloud,mobile" 
 
-W tym artykule dowiesz się, jak analizować obiekty blob w formacie CSV za pomocą usługi Azure Wyszukiwanie poznawcze BLOB indexerby ustawienie trybu analizy `delimitedText`. 
+W tym artykule dowiesz się, jak analizować obiekty blob w formacie CSV za pomocą indeksatora usługi Azure Wyszukiwanie poznawcze BLOB, ustawiając tryb analizy `delimitedText`. 
 
 > [!NOTE]
 > Postępuj zgodnie z zaleceniami dotyczącymi konfiguracji indeksatora w [indeksie jeden-do-wielu](search-howto-index-one-to-many-blobs.md) , aby wyprowadzić wiele dokumentów wyszukiwania z jednego obiektu blob platformy Azure.

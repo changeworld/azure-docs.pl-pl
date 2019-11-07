@@ -6,16 +6,16 @@ ms.author: dacoulte
 ms.date: 11/04/2019
 ms.topic: tutorial
 ms.service: azure-policy
-ms.openlocfilehash: 79219b9405f76e7044a4d403b37ba2f1545dfbea
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 780dbf02fbdb0a607f29c710da9a6320a8626f7b
+ms.sourcegitcommit: 359930a9387dd3d15d39abd97ad2b8cb69b8c18b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73501890"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73643758"
 ---
 # <a name="tutorial-manage-tag-governance-with-azure-policy"></a>Samouczek: Zarządzanie zarządzaniem tagów przy użyciu Azure Policy
 
-[Tagi](../../../azure-resource-manager/resource-group-using-tags.md) są kluczową częścią organizowania zasobów platformy Azure w taksonomię. Po zastosowaniu [najlepszych rozwiązań w zakresie zarządzania tagami](/azure/architecture/cloud-adoption/ready/considerations/name-and-tag#metadata-tags)Tagi mogą być podstawą stosowania zasad firmowych z Azure Policy lub [śledzeniem kosztów z Cost Management](../../../cost-management/cost-mgt-best-practices.md#organize-and-tag-your-resources).
+[Tagi](../../../azure-resource-manager/resource-group-using-tags.md) są kluczową częścią organizowania zasobów platformy Azure w taksonomię. Po zastosowaniu [najlepszych rozwiązań w zakresie zarządzania tagami](/azure/cloud-adoption-framework/ready/azure-best-practices/naming-and-tagging#naming-and-tagging-resources)Tagi mogą być podstawą stosowania zasad firmowych z Azure Policy lub [śledzeniem kosztów z Cost Management](../../../cost-management/cost-mgt-best-practices.md#organize-and-tag-your-resources).
 Niezależnie od tego, jak i dlaczego używasz tagów, ważne jest, aby można je szybko dodawać, zmieniać i usuwać z zasobów platformy Azure.
 
 Efekt [modyfikacji](../concepts/effects.md#modify) Azure Policy został zaprojektowany w celu ułatwienia zarządzania tagami niezależnie od tego, jaki etap nadzoru zasobów należy do Ciebie. **Modyfikuj** ułatwia:

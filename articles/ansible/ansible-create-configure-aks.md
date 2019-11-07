@@ -7,13 +7,13 @@ ms.service: ansible
 author: tomarchermsft
 manager: jeconnoc
 ms.author: tarcher
-ms.date: 04/30/2019
-ms.openlocfilehash: 9b70a9c364768322a3eae6ef5b92c87b6839c540
-ms.sourcegitcommit: 824e3d971490b0272e06f2b8b3fe98bbf7bfcb7f
+ms.date: 11/04/2019
+ms.openlocfilehash: b0839cf418cd30f62623e046960c32d41537609a
+ms.sourcegitcommit: b2fb32ae73b12cf2d180e6e4ffffa13a31aa4c6f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/10/2019
-ms.locfileid: "72242085"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73614377"
 ---
 # <a name="tutorial-configure-azure-kubernetes-service-aks-clusters-in-azure-using-ansible"></a>Samouczek: Konfigurowanie klastrów usługi Azure Kubernetes Service (AKS) na platformie Azure przy użyciu rozwiązania ansible
 
@@ -54,7 +54,8 @@ Zapisz następujący podręcznik jako `azure_create_aks.yml`:
     ssh_key: "your_ssh_key"
     client_id: "your_client_id"
     client_secret: "your_client_secret"
-  tasks:
+    aks_version: aks_version
+tasks:
   - name: Create resource group
     azure_rm_resourcegroup:
       name: "{{ resource_group }}"
@@ -65,6 +66,7 @@ Zapisz następujący podręcznik jako `azure_create_aks.yml`:
       location: "{{ location }}"
       resource_group: "{{ resource_group }}"
       dns_prefix: "{{ aks_name }}"
+      kubernetes_version: "{{aks_version}}"
       linux_profile:
         admin_username: "{{ username }}"
         ssh_key: "{{ ssh_key }}"
@@ -84,8 +86,9 @@ Przed uruchomieniem element PlayBook zapoznaj się z następującymi uwagami:
 - Pierwsza sekcja w `tasks` definiuje grupę zasobów o nazwie `myResourceGroup` w lokalizacji `eastus`.
 - Druga sekcja w `tasks` definiuje klaster AKS o nazwie `myAKSCluster` w grupie zasobów `myResourceGroup`.
 - Dla symbolu zastępczego `your_ssh_key` wprowadź swój klucz publiczny RSA w formacie jednowierszowym — rozpoczynając od „ssh-rsa” (bez cudzysłowu).
+- Dla `aks_version` symbolu zastępczego Użyj polecenia [AZ AKS Get-Versions](/cli/azure/aks?view=azure-cli-latest#az-aks-get-versions) .
 
-Uruchom element PlayBook za pomocą polecenia `ansible-playbook`:
+Uruchom element PlayBook przy użyciu polecenia `ansible-playbook`:
 
 ```bash
 ansible-playbook azure_create_aks.yml
@@ -111,7 +114,7 @@ localhost                  : ok=3    changed=2    unreachable=0    failed=0
 
 ## <a name="scale-aks-nodes"></a>Skalowanie węzłów usługi AKS
 
-Przykładowy podręcznik w poprzedniej sekcji definiuje dwa węzły. Można dostosować liczbę węzłów, modyfikując wartość `count` w bloku `agent_pool_profiles`.
+Przykładowy podręcznik w poprzedniej sekcji definiuje dwa węzły. Możesz dostosować liczbę węzłów, modyfikując wartość `count` w bloku `agent_pool_profiles`.
 
 Zapisz następujący podręcznik jako `azure_configure_aks.yml`:
 
@@ -150,7 +153,7 @@ Przed uruchomieniem element PlayBook zapoznaj się z następującymi uwagami:
 
 - Dla symbolu zastępczego `your_ssh_key` wprowadź swój klucz publiczny RSA w formacie jednowierszowym — rozpoczynając od „ssh-rsa” (bez cudzysłowu).
 
-Uruchom element PlayBook za pomocą polecenia `ansible-playbook`:
+Uruchom element PlayBook przy użyciu polecenia `ansible-playbook`:
 
 ```bash
 ansible-playbook azure_configure_aks.yml
@@ -193,7 +196,7 @@ Zapisz następujący podręcznik jako `azure_delete_aks.yml`:
       state: absent
   ```
 
-Uruchom element PlayBook za pomocą polecenia `ansible-playbook`:
+Uruchom element PlayBook przy użyciu polecenia `ansible-playbook`:
 
 ```bash
 ansible-playbook azure_delete_aks.yml

@@ -1,6 +1,6 @@
 ---
-title: Korzystanie z Azure Service Bus tematów i subskrypcji w języku Java
-description: Używaj tematów Service Bus i subskrypcji na platformie Azure.
+title: 'Szybki Start: korzystanie z Azure Service Bus tematów i subskrypcji w języku Java'
+description: 'Szybki Start: korzystanie z Service Bus tematów i subskrypcji na platformie Azure.'
 services: service-bus-messaging
 documentationcenter: java
 author: axisc
@@ -11,18 +11,18 @@ ms.service: service-bus-messaging
 ms.workload: tbd
 ms.tgt_pltfrm: na
 ms.devlang: Java
-ms.topic: article
-ms.date: 04/15/2019
+ms.topic: quickstart
+ms.date: 11/05/2019
 ms.author: aschhab
 ms.custom: seo-java-july2019, seo-java-august2019, seo-java-september2019
-ms.openlocfilehash: affd62bd7cae0103b7d2510022fc12a66d26c865
-ms.sourcegitcommit: 116bc6a75e501b7bba85e750b336f2af4ad29f5a
+ms.openlocfilehash: 8a721d929ff89fd644c78296ae54cee757bf9610
+ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/20/2019
-ms.locfileid: "71155581"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73720006"
 ---
-# <a name="use-service-bus-topics-and-subscriptions-with-java"></a>Korzystanie z Service Bus tematów i subskrypcji w języku Java
+# <a name="quickstart-use-service-bus-topics-and-subscriptions-with-java"></a>Szybki Start: korzystanie z Service Bus tematów i subskrypcji w języku Java
 
 [!INCLUDE [service-bus-selector-topics](../../includes/service-bus-selector-topics.md)]
 
@@ -31,7 +31,7 @@ W tym przewodniku szybki start napiszesz kod w języku Java służący do wysył
 ## <a name="prerequisites"></a>Wymagania wstępne
 
 1. Subskrypcja platformy Azure. Do ukończenia tego samouczka jest potrzebne konto platformy Azure. Możesz aktywować korzyści dla [subskrybentów programu Visual Studio lub MSDN](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/?WT.mc_id=A85619ABF) lub utworzyć [bezpłatne konto](https://azure.microsoft.com/free/?WT.mc_id=A85619ABF).
-2. Wykonaj kroki opisane w [przewodniku szybki start: Użyj Azure Portal, aby utworzyć temat Service Bus i subskrypcje w temacie](service-bus-quickstart-topics-subscriptions-portal.md) , aby wykonać następujące zadania:
+2. Wykonaj kroki opisane w [przewodniku szybki start: użyj Azure Portal, aby utworzyć temat Service Bus i subskrypcje w temacie](service-bus-quickstart-topics-subscriptions-portal.md) , aby wykonać następujące zadania:
     1. Utwórz **przestrzeń nazw**Service Bus.
     2. Pobierz **Parametry połączenia**.
     3. Utwórz **temat** w przestrzeni nazw.
@@ -46,10 +46,10 @@ Przed skompilowaniem tego przykładu upewnij się, że zainstalowano [zestaw Azu
 Należy również dodać następujący JARs do ścieżki kompilacji Java:
 
 - gson-2.6.2. jar
-- commons-cli-1.4.jar
-- proton-j-0.21.0.jar
+- Commons-CLI-1.4. jar
+- Proton-j-0.21.0. jar
 
-Dodaj klasę przy użyciu metody **Main** , a następnie Dodaj następujące `import` instrukcje w górnej części pliku Java:
+Dodaj klasę przy użyciu metody **Main** , a następnie Dodaj następujące instrukcje `import` w górnej części pliku Java:
 
 ```java
 import com.google.gson.reflect.TypeToken;
@@ -69,8 +69,8 @@ import org.apache.commons.cli.DefaultParser;
 Zaktualizuj metodę **Main** , aby utworzyć obiekt **TopicClient** i wywołać metodę pomocnika, która asynchronicznie wysyła przykładowe komunikaty do tematu Service Bus.
 
 > [!NOTE] 
-> - Zamień `<NameOfServiceBusNamespace>` na nazwę przestrzeni nazw Service Bus. 
-> - Zamień `<AccessKey>` na klucz dostępu do przestrzeni nazw.
+> - Zastąp `<NameOfServiceBusNamespace>` nazwą Service Bus przestrzeni nazw. 
+> - Zastąp `<AccessKey>` kluczem dostępu do przestrzeni nazw.
 
 ```java
 public class MyServiceBusTopicClient {

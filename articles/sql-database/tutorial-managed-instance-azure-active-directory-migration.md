@@ -1,5 +1,5 @@
 ---
-title: Migrowanie SQL Server lokalnych użytkowników i grup systemu Windows do Azure SQL Database wystąpienia zarządzanego przy użyciu składni języka T-SQL | Microsoft Docs
+title: Migrowanie SQL Server lokalnych użytkowników i grup systemu Windows do Azure SQL Database wystąpienia zarządzanego przy użyciu składni języka T-SQL
 description: Informacje na temat migrowania SQL Server lokalnych użytkowników i grup systemu Windows do wystąpienia zarządzanego
 services: sql-database
 ms.service: sql-database
@@ -9,12 +9,12 @@ author: GitHubMirek
 ms.author: mireks
 ms.reviewer: vanto
 ms.date: 10/30/2019
-ms.openlocfilehash: b27c9991fd86334c87806772cbd641dd72aad1f6
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.openlocfilehash: 079d684b56625b8327a94a1bfef222cb93572bd3
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73163975"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73686748"
 ---
 # <a name="tutorial-migrate-sql-server-on-premises-windows-users-and-groups-to-azure-sql-database-managed-instance-using-t-sql-ddl-syntax"></a>Samouczek: Migrowanie SQL Server lokalnych użytkowników i grup systemu Windows do Azure SQL Database wystąpienia zarządzanego przy użyciu składni języka T-SQL
 
@@ -214,9 +214,12 @@ Skorzystaj z naszego [przewodnika Szybki Start: Przywracanie bazy danych do wyst
 
 ## <a name="part-4-migrate-users-to-managed-instance"></a>Część 4: Migrowanie użytkowników do wystąpienia zarządzanego
 
+> [!NOTE]
+> Usługa Azure AD administrator dla funkcji wystąpienia zarządzanego została zmieniona po jej utworzeniu. Aby uzyskać więcej informacji, zobacz [nowe funkcje administratora usługi Azure AD dla programu mi](sql-database-aad-authentication-configure.md#new-azure-ad-admin-functionality-for-mi).
+
 Wykonaj polecenie ALTER USER, aby zakończyć proces migracji na wystąpieniu zarządzanym.
 
-1. Zaloguj się do wystąpienia zarządzanego przy użyciu konta administratora SQL dla wystąpienia zarządzanego. Następnie utwórz dane logowania usługi Azure AD w zarządzanym wystąpieniu przy użyciu następującej składni. Aby uzyskać więcej informacji, zobacz [Samouczek: zabezpieczenia wystąpienia zarządzanego w Azure SQL Database przy użyciu podmiotów zabezpieczeń serwera usługi Azure AD (Logins)](sql-database-managed-instance-aad-security-tutorial.md).
+1. Zaloguj się do wystąpienia zarządzanego przy użyciu konta administratora usługi Azure AD dla wystąpienia zarządzanego. Następnie utwórz dane logowania usługi Azure AD w zarządzanym wystąpieniu przy użyciu następującej składni. Aby uzyskać więcej informacji, zobacz [Samouczek: zabezpieczenia wystąpienia zarządzanego w Azure SQL Database przy użyciu podmiotów zabezpieczeń serwera usługi Azure AD (Logins)](sql-database-managed-instance-aad-security-tutorial.md).
 
     ```sql
     use master 

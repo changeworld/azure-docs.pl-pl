@@ -1,6 +1,6 @@
 ---
-title: Jak używać kolejek Service Bus przy użyciu języka PHP | Microsoft Docs
-description: Dowiedz się, jak używać kolejek usługi Service Bus na platformie Azure. Przykłady kodu zapisywane w języku PHP.
+title: 'Szybki Start: jak używać kolejek Service Bus przy użyciu języka PHP'
+description: 'Szybki Start: Dowiedz się, jak używać kolejek Service Bus na platformie Azure. Przykłady kodu zapisywane w języku PHP.'
 services: service-bus-messaging
 documentationcenter: php
 author: axisc
@@ -11,17 +11,17 @@ ms.service: service-bus-messaging
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: PHP
-ms.topic: article
-ms.date: 04/10/2019
+ms.topic: quickstart
+ms.date: 11/05/2019
 ms.author: aschhab
-ms.openlocfilehash: d958202ee42b1edec5e1b65c120536c656823ecf
-ms.sourcegitcommit: b03516d245c90bca8ffac59eb1db522a098fb5e4
+ms.openlocfilehash: d576c269f4178c7543327c6b75f46f5487d7a205
+ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/19/2019
-ms.locfileid: "71147234"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73719190"
 ---
-# <a name="how-to-use-service-bus-queues-with-php"></a>Jak używać kolejek Service Bus przy użyciu języka PHP
+# <a name="quickstart-how-to-use-service-bus-queues-with-php"></a>Szybki Start: jak używać kolejek Service Bus przy użyciu języka PHP
 [!INCLUDE [service-bus-selector-queues](../../includes/service-bus-selector-queues.md)]
 
 W ramach tego samouczka nauczysz się tworzyć aplikacje PHP do wysyłania komunikatów do i odbierania komunikatów z kolejki Service Bus. 
@@ -54,7 +54,7 @@ Aby skorzystać z interfejsów API Service Bus Queue, wykonaj następujące czyn
 1. Odwołuje się do pliku automatycznej ładowarki przy użyciu instrukcji [require_once][require_once] .
 2. Odwołuje się do dowolnych klas, które mogą być używane.
 
-Poniższy przykład pokazuje, jak dołączyć plik automatycznej ładowarki i odwołać `ServicesBuilder` się do klasy.
+Poniższy przykład pokazuje, jak uwzględnić plik automatycznej ładowarki i odwołać się do klasy `ServicesBuilder`.
 
 > [!NOTE]
 > W tym przykładzie (i innych przykładach w tym artykule) założono, że zainstalowano biblioteki klienckie PHP dla systemu Azure przez układacz. Jeśli biblioteki zostały zainstalowane ręcznie lub jako pakiet php, należy odwołać się do pliku automatycznej ładowarki **windowsazure. php** .
@@ -66,7 +66,7 @@ require_once 'vendor/autoload.php';
 use WindowsAzure\Common\ServicesBuilder;
 ```
 
-W poniższych `require_once` przykładach instrukcja będzie zawsze wyświetlana, ale przywoływane są tylko klasy niezbędne do wykonania tego przykładu.
+W poniższych przykładach instrukcja `require_once` będzie zawsze wyświetlana, ale przywoływane są tylko klasy niezbędne do wykonania tego przykładu.
 
 ## <a name="set-up-a-service-bus-connection"></a>Skonfiguruj połączenie Service Bus
 Aby utworzyć wystąpienie klienta Service Bus, należy najpierw dysponować prawidłowymi parametrami połączenia w tym formacie:
@@ -75,14 +75,14 @@ Aby utworzyć wystąpienie klienta Service Bus, należy najpierw dysponować pra
 Endpoint=[yourEndpoint];SharedAccessKeyName=RootManageSharedAccessKey;SharedAccessKey=[Primary Key]
 ```
 
-Gdzie `Endpoint` jest zazwyczaj format `[yourNamespace].servicebus.windows.net`.
+Gdzie `Endpoint` jest zazwyczaj formatem `[yourNamespace].servicebus.windows.net`.
 
-Aby utworzyć dowolnego klienta usługi platformy Azure, należy użyć `ServicesBuilder` klasy. Możesz:
+Aby utworzyć dowolnego klienta usługi platformy Azure, należy użyć klasy `ServicesBuilder`. Możesz:
 
 * Przekaż parametry połączenia bezpośrednio do niego.
 * Użyj **CloudConfigurationManager (CCM)** , aby sprawdzić wiele zewnętrznych źródeł parametrów połączenia:
   * Domyślnie jest on dostarczany z obsługą jednego zewnętrznego źródła — zmienne środowiskowe
-  * Możesz dodać nowe źródła, rozszerzając `ConnectionStringSource` klasę
+  * Możesz dodać nowe źródła, rozszerzając klasę `ConnectionStringSource`
 
 W przedstawionych tutaj przykładach parametry połączenia są przekazywane bezpośrednio.
 
@@ -97,9 +97,9 @@ $serviceBusRestProxy = ServicesBuilder::getInstance()->createServiceBusService($
 ```
 
 ## <a name="create-a-queue"></a>Tworzenie kolejki
-Operacje zarządzania dla kolejek Service Busych można wykonywać za `ServiceBusRestProxy` pośrednictwem klasy. Obiekt jest konstruowany `ServicesBuilder::createServiceBusService` za pośrednictwem metody fabryki z odpowiednimi parametrami połączenia, które hermetyzują uprawnienia tokenu do zarządzania nim. `ServiceBusRestProxy`
+Operacje zarządzania dla kolejek Service Busych można wykonywać za pośrednictwem klasy `ServiceBusRestProxy`. Obiekt `ServiceBusRestProxy` jest konstruowany za pośrednictwem metody fabryki `ServicesBuilder::createServiceBusService` z odpowiednimi parametrami połączenia, które hermetyzują uprawnienia tokenu do zarządzania nim.
 
-Poniższy przykład pokazuje `ServiceBusRestProxy` , jak utworzyć wystąpienie obiektu i wywołać `ServiceBusRestProxy->createQueue` , aby utworzyć kolejkę `myqueue` o nazwie `MySBNamespace` w przestrzeni nazw usługi:
+Poniższy przykład pokazuje, jak utworzyć wystąpienie `ServiceBusRestProxy` i wywołać `ServiceBusRestProxy->createQueue`, aby utworzyć kolejkę o nazwie `myqueue` w przestrzeni nazw usługi `MySBNamespace`:
 
 ```php
 require_once 'vendor/autoload.php';
@@ -128,12 +128,12 @@ catch(ServiceException $e){
 ```
 
 > [!NOTE]
-> Możesz użyć `listQueues` metody dla `ServiceBusRestProxy` obiektów, aby sprawdzić, czy kolejka o określonej nazwie już istnieje w przestrzeni nazw.
+> Można użyć metody `listQueues` na obiektach `ServiceBusRestProxy`, aby sprawdzić, czy kolejka o określonej nazwie już istnieje w przestrzeni nazw.
 > 
 > 
 
 ## <a name="send-messages-to-a-queue"></a>Wysyłanie komunikatów do kolejki
-Aby wysłać komunikat do kolejki Service Bus, aplikacja wywołuje `ServiceBusRestProxy->sendQueueMessage` metodę. Poniższy kod pokazuje, jak wysłać komunikat do `myqueue` kolejki utworzonej wcześniej `MySBNamespace` w przestrzeni nazw usługi.
+Aby wysłać komunikat do kolejki Service Bus, aplikacja wywołuje metodę `ServiceBusRestProxy->sendQueueMessage`. Poniższy kod pokazuje, jak wysłać komunikat do kolejki `myqueue` utworzonej wcześniej w przestrzeni nazw usługi `MySBNamespace`.
 
 ```php
 require_once 'vendor/autoload.php';
@@ -169,11 +169,11 @@ Kolejki usługi Service Bus obsługują maksymalny rozmiar komunikatu 256 KB w [
 
 ## <a name="receive-messages-from-a-queue"></a>Odbieranie komunikatów z kolejki
 
-Najlepszym sposobem odbierania komunikatów z kolejki jest użycie `ServiceBusRestProxy->receiveQueueMessage` metody. Komunikaty mogą być odbierane w dwóch różnych trybach: [*ReceiveAndDelete*](/dotnet/api/microsoft.servicebus.messaging.receivemode) i [*PeekLock*](/dotnet/api/microsoft.servicebus.messaging.receivemode#Microsoft_ServiceBus_Messaging_ReceiveMode_PeekLock). Ustawienie domyślne to **PeekLock**.
+Najlepszym sposobem odbierania komunikatów z kolejki jest użycie metody `ServiceBusRestProxy->receiveQueueMessage`. Komunikaty mogą być odbierane w dwóch różnych trybach: [*ReceiveAndDelete*](/dotnet/api/microsoft.servicebus.messaging.receivemode) i [*PeekLock*](/dotnet/api/microsoft.servicebus.messaging.receivemode#Microsoft_ServiceBus_Messaging_ReceiveMode_PeekLock). Ustawienie domyślne to **PeekLock**.
 
 W przypadku korzystania z trybu [ReceiveAndDelete](/dotnet/api/microsoft.servicebus.messaging.receivemode) odbieranie jest operacją pojedynczego zrzutu. oznacza to, że gdy Service Bus odbiera żądanie odczytu komunikatu w kolejce, oznacza komunikat jako używany i zwraca go do aplikacji. Tryb [ReceiveAndDelete](/dotnet/api/microsoft.servicebus.messaging.receivemode) jest najprostszym modelem i działa najlepiej w scenariuszach, w których aplikacja może tolerować nieprzetworzenie komunikatu w razie awarii. Aby to zrozumieć, rozważmy scenariusz, w którym konsument wystawia żądanie odbioru, a następnie ulega awarii przed jego przetworzeniem. Ponieważ Service Bus oznaczył komunikat jako używany, a następnie aplikacja zostanie ponownie uruchomiona i rozpocznie korzystanie z komunikatów, zostanie pominięta wiadomość, która była używana przed awarią.
 
-W domyślnym trybie [PeekLock](/dotnet/api/microsoft.servicebus.messaging.receivemode#Microsoft_ServiceBus_Messaging_ReceiveMode_PeekLock) otrzymywanie komunikatu staje się operacją dwuetapową, co umożliwia obsługę aplikacji, które nie mogą tolerować brakujących komunikatów. Gdy Service Bus odbiera żądanie, znajdzie następny komunikat do użycia, zablokuje go, aby uniemożliwić innym konsumentom odbieranie go, a następnie zwraca go do aplikacji. Gdy aplikacja zakończy przetwarzanie komunikatu (lub zapisuje ją w sposób niezawodny w przyszłości), kończy drugi etap procesu odbierania, przekazując odebrany komunikat do `ServiceBusRestProxy->deleteMessage`. Gdy Service Bus widzi `deleteMessage` wywołanie, oznaczy komunikat jako używany i usuń go z kolejki.
+W domyślnym trybie [PeekLock](/dotnet/api/microsoft.servicebus.messaging.receivemode#Microsoft_ServiceBus_Messaging_ReceiveMode_PeekLock) otrzymywanie komunikatu staje się operacją dwuetapową, co umożliwia obsługę aplikacji, które nie mogą tolerować brakujących komunikatów. Gdy Service Bus odbiera żądanie, znajdzie następny komunikat do użycia, zablokuje go, aby uniemożliwić innym konsumentom odbieranie go, a następnie zwraca go do aplikacji. Gdy aplikacja zakończy przetwarzanie komunikatu (lub zapisuje ją w sposób niezawodny w przyszłości), kończy drugi etap procesu odbierania, przekazując odebrany komunikat do `ServiceBusRestProxy->deleteMessage`. Gdy Service Bus widzi wywołanie `deleteMessage`, oznaczy komunikat jako używany i usuń go z kolejki.
 
 Poniższy przykład pokazuje, jak odbierać i przetwarzać komunikat przy użyciu trybu [PeekLock](/dotnet/api/microsoft.servicebus.messaging.receivemode#Microsoft_ServiceBus_Messaging_ReceiveMode_PeekLock) (tryb domyślny).
 
@@ -217,11 +217,11 @@ catch(ServiceException $e){
 
 ## <a name="how-to-handle-application-crashes-and-unreadable-messages"></a>Sposób obsługi awarii aplikacji i komunikatów niemożliwych do odczytania
 
-Usługa Service Bus zapewnia funkcję ułatwiającą bezpieczne odzyskiwanie w razie błędów w aplikacji lub trudności z przetwarzaniem komunikatu. Jeśli aplikacja odbiornika nie może przetworzyć komunikatu z jakiegoś powodu, może wywołać `unlockMessage` metodę dla odebranego komunikatu (zamiast `deleteMessage` metody). Spowoduje to Service Bus odblokowanie komunikatu w kolejce i udostępnienie go do odebrania przez tę samą aplikację wykorzystującą lub przez inną aplikację, która korzysta z aplikacji.
+Usługa Service Bus zapewnia funkcję ułatwiającą bezpieczne odzyskiwanie w razie błędów w aplikacji lub trudności z przetwarzaniem komunikatu. Jeśli aplikacja odbiornika nie może przetworzyć komunikatu z jakiegoś powodu, może wywołać metodę `unlockMessage` dla odebranego komunikatu (zamiast metody `deleteMessage`). Spowoduje to Service Bus odblokowanie komunikatu w kolejce i udostępnienie go do odebrania przez tę samą aplikację wykorzystującą lub przez inną aplikację, która korzysta z aplikacji.
 
 Istnieje również limit czasu skojarzony z komunikatem zablokowanym w kolejce i jeśli aplikacja nie może przetworzyć komunikatu przed upływem limitu czasu blokady (na przykład jeśli aplikacja ulega awarii), Service Bus automatycznie zamknie komunikat i ustawi go dostępne do ponownego odebrania.
 
-W przypadku awarii aplikacji po przetworzeniu komunikatu, ale przed `deleteMessage` wystawieniem żądania, komunikat zostanie ponownie dostarczony do aplikacji po jej ponownym uruchomieniu. Jest to często nazywane *co najmniej jednym* przetwarzaniem; oznacza to, że każdy komunikat jest przetwarzany co najmniej raz, ale w pewnych sytuacjach może zostać ponownie dostarczony ten sam komunikat. Jeśli w scenariuszu nie można tolerować zduplikowanego przetwarzania, zaleca się dodanie dodatkowej logiki do aplikacji w celu obsługi dostarczania duplikatów komunikatów. Jest to często osiągane przy `getMessageId` użyciu metody komunikatu, która pozostaje stała między kolejnymi próbami dostarczenia.
+W przypadku awarii aplikacji po przetworzeniu komunikatu, ale przed wystawieniem żądania `deleteMessage`, komunikat zostanie ponownie dostarczony do aplikacji po jej ponownym uruchomieniu. Jest to często nazywane *co najmniej jednym* przetwarzaniem; oznacza to, że każdy komunikat jest przetwarzany co najmniej raz, ale w pewnych sytuacjach może zostać ponownie dostarczony ten sam komunikat. Jeśli w scenariuszu nie można tolerować zduplikowanego przetwarzania, zaleca się dodanie dodatkowej logiki do aplikacji w celu obsługi dostarczania duplikatów komunikatów. Jest to często osiągane przy użyciu metody `getMessageId` komunikatu, która pozostaje stała między kolejnymi próbami dostarczenia.
 
 > [!NOTE]
 > Za pomocą [eksploratora Service Bus](https://github.com/paolosalvatori/ServiceBusExplorer/)można zarządzać zasobami Service Bus. Eksplorator Service Bus umożliwia użytkownikom łączenie się z przestrzenią nazw Service Bus i administrowanie jednostkami obsługi komunikatów w prosty sposób. Narzędzie zapewnia zaawansowane funkcje, takie jak funkcja importowania/eksportowania lub możliwość testowania tematów, kolejek, subskrypcji, usług przekazywania, centrów powiadomień i centrów zdarzeń. 

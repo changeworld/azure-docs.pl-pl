@@ -1,22 +1,22 @@
 ---
-title: Wysyłanie zdarzeń magazynu obiektów blob do internetowego punktu końcowego — portal | Microsoft Docs
-description: Tworzenie konta usługi Blob Storage i subskrybowanie jego zdarzeń przy użyciu usługi Azure Event Grid i witryny Azure Portal. Wyślij zdarzenia do elementu webhook.
+title: 'Szybki Start: wysyłanie zdarzeń magazynu obiektów BLOB do punktu końcowego sieci Web — Portal'
+description: 'Szybki Start: używanie Azure Event Grid i Azure Portal do tworzenia konta usługi BLOB Storage i subskrybowania jego zdarzeń. Wyślij zdarzenia do elementu webhook.'
 services: event-grid
 keywords: ''
 author: spelluru
 ms.author: spelluru
-ms.date: 07/11/2019
+ms.date: 11/05/2019
 ms.topic: quickstart
 ms.service: event-grid
 ms.custom: seodec18
-ms.openlocfilehash: a11e04a92375f5b52849257124344673301739e5
-ms.sourcegitcommit: 64798b4f722623ea2bb53b374fb95e8d2b679318
+ms.openlocfilehash: 9ecffc25461a909d47329d536d1c19724b3c22ac
+ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/11/2019
-ms.locfileid: "67839149"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73718074"
 ---
-# <a name="quickstart-route-blob-storage-events-to-web-endpoint-with-the-azure-portal"></a>Szybki start: kierowanie zdarzeń magazynu obiektów blob do internetowego punktu końcowego za pomocą witryny Azure Portal
+# <a name="quickstart-route-blob-storage-events-to-web-endpoint-with-the-azure-portal"></a>Szybki Start: kierowanie zdarzeń magazynu obiektów BLOB do punktu końcowego sieci Web za pomocą Azure Portal
 
 Azure Event Grid to usługa obsługi zdarzeń dla chmury. W tym artykule użyjesz witryny Azure Portal do utworzenia konta usługi Blob Storage, subskrybowania zdarzeń dla tego magazynu obiektów blob oraz wyzwalania zdarzenia w celu wyświetlenia wyników. Zazwyczaj użytkownik wysyła zdarzenia do punktu końcowego, w którym następuje przetwarzanie danych zdarzenia i są wykonywane akcje. Jednak aby uprościć ten artykuł, zdarzenia zostaną wysłane do aplikacji internetowej, która zbiera i wyświetla komunikaty.
 
@@ -38,7 +38,7 @@ Po zakończeniu przekonasz się, że dane zdarzenia zostały wysłane do aplikac
 
    ![Wybieranie magazynu](./media/blob-event-quickstart-portal/create-storage.png)
 
-1. Aby zasubskrybować zdarzenia, należy utworzyć konto usługi Storage ogólnego przeznaczenia w wersji 2 lub konto usługi Blob Storage. Aby uzyskać więcej informacji, zobacz [Tworzenie konta magazynu](../storage/common/storage-quickstart-create-account.md).
+1. Aby zasubskrybować zdarzenia, należy utworzyć konto usługi Storage ogólnego przeznaczenia w wersji 2 lub konto usługi Blob Storage. Aby uzyskać więcej informacji, zobacz temat [Tworzenie konta](../storage/common/storage-quickstart-create-account.md).
 
    ![Kroki początkowe](./media/blob-event-quickstart-portal/provide-blob-values.png)
 
@@ -102,7 +102,7 @@ Zdarzenie magazynu Blob Storage jest wyzwalane przez przekazanie pliku. Plik nie
 
 1. Przejdź do pliku testowego i przekaż go.
 
-1. Zdarzenie zostało wyzwolone, a usługa Event Grid wysłała komunikat do punktu końcowego skonfigurowanego podczas subskrybowania. Komunikat jest w formacie JSON i zawiera tablicę z jednego lub wielu zdarzeń. W poniższym przykładzie komunikat JSON zawiera tablicę, za pomocą jednego zdarzenia. Wyświetl aplikację internetową i zwróć uwagę, że otrzymano zdarzenie utworzone przez obiekt blob. 
+1. Zdarzenie zostało wyzwolone, a usługa Event Grid wysłała komunikat do punktu końcowego skonfigurowanego podczas subskrybowania. Komunikat jest w formacie JSON i zawiera tablicę z co najmniej jednym zdarzeniem. W poniższym przykładzie komunikat JSON zawiera tablicę z jednym zdarzeniem. Wyświetl aplikację internetową i zwróć uwagę, że otrzymano zdarzenie utworzone przez obiekt blob. 
 
    ```json
    [{

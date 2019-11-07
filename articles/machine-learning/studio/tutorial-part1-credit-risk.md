@@ -1,6 +1,6 @@
 ---
 title: 'Samouczek 1: przewidywanie ryzyka kredytowego'
-titleSuffix: Azure Machine Learning Studio (classic)
+titleSuffix: ML Studio (classic) Azure
 description: Szczegółowy Samouczek przedstawiający sposób tworzenia rozwiązania do analizy predykcyjnej w celu oceny ryzyka kredytowego w klasycznej wersji Azure Machine Learning Studio. Ten samouczek jest pierwszą częścią trzyczęściowej serii.  Pokazano w nim, jak utworzyć obszar roboczy, przekazać dane i utworzyć eksperyment.
 keywords: ryzyko kredytowe, rozwiązanie analizy predykcyjnej, ocena ryzyka
 author: sdgilley
@@ -10,12 +10,12 @@ ms.service: machine-learning
 ms.subservice: studio
 ms.topic: tutorial
 ms.date: 02/11/2019
-ms.openlocfilehash: b861fbca1f8b4fd6b313e770b1636674767e406a
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 78092bd4ad4da896cd2fd36768f181764335ee85
+ms.sourcegitcommit: 6c2c97445f5d44c5b5974a5beb51a8733b0c2be7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73492624"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73619176"
 ---
 # <a name="tutorial-1-predict-credit-risk---azure-machine-learning-studio-classic"></a>Samouczek 1: przewidywanie ryzyka kredytowego — Azure Machine Learning Studio (klasyczny)
 

@@ -4,15 +4,15 @@ description: Dowiedz się, jak dołączyć klienta do zarządzania zasobami dele
 author: JnHs
 ms.author: jenhayes
 ms.service: lighthouse
-ms.date: 10/29/2019
+ms.date: 11/6/2019
 ms.topic: overview
 manager: carmonm
-ms.openlocfilehash: a96093c71658f53e372cbccb72b96da3ae4e593b
-ms.sourcegitcommit: b2fb32ae73b12cf2d180e6e4ffffa13a31aa4c6f
-ms.translationtype: HT
+ms.openlocfilehash: 259a0b1b278588ef2237622d61a89fe02e5c004c
+ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73615483"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73721396"
 ---
 # <a name="onboard-a-customer-to-azure-delegated-resource-management"></a>Dołączanie klienta do zarządzania zasobami delegowanymi na platformie Azure
 
@@ -123,7 +123,7 @@ Aby dołączyć klienta, musisz utworzyć szablon [Azure Resource Manager](https
 
 Aby dołączać subskrypcję klienta, należy użyć odpowiedniego szablonu Azure Resource Manager dostarczanego w naszym [repozytorium przykładów](https://github.com/Azure/Azure-Lighthouse-samples/)oraz odpowiedniego pliku parametrów, który można zmodyfikować, aby dopasować konfigurację i zdefiniować autoryzacje. Poszczególne szablony są udostępniane w zależności od tego, czy dołączysz całą subskrypcję, grupę zasobów lub wiele grup zasobów w ramach subskrypcji. Udostępniamy również szablon, który może być używany dla klientów, którzy kupili ofertę usługi zarządzanej opublikowaną w portalu Azure Marketplace, jeśli wolisz dołączyć swoje subskrypcje w ten sposób.
 
-|**Aby dołączyć to**  |**Użyj tego szablonu Azure Resource Manager**  |**I zmodyfikuj ten plik parametrów** |
+|Aby dołączyć to  |Użyj tego szablonu Azure Resource Manager  |I zmodyfikuj ten plik parametrów |
 |---------|---------|---------|
 |Subskrypcja   |[delegatedResourceManagement.json](https://github.com/Azure/Azure-Lighthouse-samples/blob/master/Azure-Delegated-Resource-Management/templates/delegated-resource-management/delegatedResourceManagement.json)  |[delegatedResourceManagement.parameters.json](https://github.com/Azure/Azure-Lighthouse-samples/blob/master/Azure-Delegated-Resource-Management/templates/delegated-resource-management/delegatedResourceManagement.parameters.json)    |
 |Grupa zasobów   |[rgDelegatedResourceManagement.json](https://github.com/Azure/Azure-Lighthouse-samples/blob/master/Azure-Delegated-Resource-Management/templates/rg-delegated-resource-management/rgDelegatedResourceManagement.json)  |[rgDelegatedResourceManagement.parameters.json](https://github.com/Azure/Azure-Lighthouse-samples/blob/master/Azure-Delegated-Resource-Management/templates/rg-delegated-resource-management/rgDelegatedResourceManagement.parameters.json)    |
@@ -187,15 +187,18 @@ W poniższym przykładzie przedstawiono plik **delegatedResourceManagement. Para
     }
 }
 ```
-Ostatnia autoryzacja w powyższym przykładzie dodaje **principalId** z rolą administratora dostępu użytkownika (18d7d88d-d35e-4fb5-a5c3-7773c20a72d9). Podczas przypisywania tej roli należy uwzględnić Właściwość **delegatedRoleDefinitionIds** i jedną lub więcej ról wbudowanych. Użytkownik utworzony w ramach tej autoryzacji będzie mógł przypisać te wbudowane role do [zarządzanych tożsamości](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview). Należy pamiętać, że żadne inne uprawnienia zwykle skojarzone z rolą administratora dostępu użytkowników będą stosowane dla tego użytkownika.
+Ostatnia autoryzacja w powyższym przykładzie dodaje **principalId** z rolą administratora dostępu użytkownika (18d7d88d-d35e-4fb5-a5c3-7773c20a72d9). Podczas przypisywania tej roli należy uwzględnić Właściwość **delegatedRoleDefinitionIds** i jedną lub więcej ról wbudowanych. Użytkownik utworzony w ramach tej autoryzacji będzie mógł przypisać te wbudowane role do [zarządzanych tożsamości](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview), które są wymagane w celu [wdrożenia zasad, które można skorygować](deploy-policy-remediation.md). Dla tego użytkownika nie są stosowane żadne inne uprawnienia zwykle skojarzone z rolą administratora dostępu użytkownika.
 
 ## <a name="deploy-the-azure-resource-manager-templates"></a>Wdrażanie szablonów Azure Resource Manager
 
-Po zaktualizowaniu pliku parametrów klient musi wdrożyć szablon zarządzania zasobami w ramach dzierżawy klienta jako wdrożenie na poziomie subskrypcji. Dla każdej subskrypcji, która ma zostać dołączona do zarządzania zasobami delegowanymi przez platformę Azure (lub dla każdej subskrypcji zawierającej grupy zasobów, które chcesz dołączyć), wymagane jest oddzielne wdrożenie.
+Po zaktualizowaniu pliku parametrów klient musi wdrożyć szablon Azure Resource Manager w dzierżawie klienta jako wdrożenie na poziomie subskrypcji. Dla każdej subskrypcji, która ma zostać dołączona do zarządzania zasobami delegowanymi przez platformę Azure (lub dla każdej subskrypcji zawierającej grupy zasobów, które chcesz dołączyć), wymagane jest oddzielne wdrożenie.
+
+Ponieważ jest to wdrożenie na poziomie subskrypcji, nie można go zainicjować w Azure Portal. Wdrożenie może odbywać się przy użyciu programu PowerShell lub interfejsu wiersza polecenia platformy Azure, jak pokazano poniżej.
 
 > [!IMPORTANT]
 > Wdrożenie musi zostać wykonane przez konto niebędące Gośćmi w dzierżawie klienta, które ma [wbudowaną rolę właściciela](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#owner) subskrypcji (lub która zawiera grupy zasobów, które są dołączane). Aby wyświetlić wszystkich użytkowników, którzy mogą delegować subskrypcję, użytkownik w dzierżawie może wybrać subskrypcję w Azure Portal, otworzyć funkcję **Kontrola dostępu (IAM)** i [wyświetlić wszystkich użytkowników z rolą właściciela](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-portal#view-roles-and-permissions).
 
+### <a name="powershell"></a>PowerShell
 
 ```azurepowershell-interactive
 # Log in first with Connect-AzAccount if you're not using Cloud Shell
@@ -246,6 +249,9 @@ W dzierżawie dostawcy usług:
 1. Przejdź do [strony moi klienci](view-manage-customers.md).
 2. Wybierz pozycję **klienci**.
 3. Upewnij się, że można zobaczyć subskrypcje o nazwie oferty podanej w szablonie Menedżer zasobów.
+
+> [!IMPORTANT]
+> Aby można było wyświetlić delegowaną subskrypcję w [swoich klientach](view-manage-customers.md), użytkownicy w dzierżawie dostawcy usługi muszą mieć przydaną rolę [czytelnika](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#reader) (lub inną wbudowaną rolę, która obejmuje dostęp do czytnika), gdy subskrypcja została dołączona na platformę Azure delegowane zarządzanie zasobami.
 
 W dzierżawie klienta:
 

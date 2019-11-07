@@ -1,20 +1,20 @@
 ---
-title: Tworzenie notesu w Azure Cosmos DB, aby analizować i wizualizować dane
-description: Dowiedz się, jak używać wbudowanych notesów Jupyter do importowania danych do Azure Cosmos DB, analizowania danych i wizualizacji wyników.
+title: 'Samouczek: Tworzenie notesu w Azure Cosmos DB, aby analizować i wizualizować dane'
+description: 'Samouczek: informacje na temat używania wbudowanych notesów Jupyter do importowania danych do Azure Cosmos DB, analizowania danych i wizualizacji wyników.'
 author: deborahc
 ms.topic: tutorial
 ms.service: cosmos-db
-ms.date: 09/25/2019
+ms.date: 11/05/2019
 ms.author: dech
 ms.reviewer: sngun
-ms.openlocfilehash: 679887ca6e9ad7713480899d1b40fddf9923c4c0
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: 45dd4e8dcfd74cdb5d96b935e239b9f4b5094a7c
+ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72931502"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73720928"
 ---
-# <a name="create-a-notebook-in-azure-cosmos-db-to-analyze-and-visualize-the-data"></a>Tworzenie notesu w Azure Cosmos DB, aby analizować i wizualizować dane
+# <a name="tutorial-create-a-notebook-in-azure-cosmos-db-to-analyze-and-visualize-the-data"></a>Samouczek: Tworzenie notesu w Azure Cosmos DB, aby analizować i wizualizować dane
 
 W tym artykule opisano, jak używać wbudowanych notesów Jupyter do importowania przykładowych danych detalicznych do Azure Cosmos DB. Zobaczysz, jak używać poleceń SQL i Azure Cosmos DB Magic do uruchamiania zapytań, analizowania danych i wizualizacji wyników.
 

@@ -1,7 +1,7 @@
 ---
 title: Obsługiwane źródła danych — QnA Maker
 titleSuffix: Azure Cognitive Services
-description: QnA Maker automatycznie wyodrębnia pary pytań i odpowiedzi z zawartości z częściową strukturą, takiej jak często zadawane pytania, podręczniki produktów, wskazówki, dokumenty pomocy technicznej i zasady przechowywane jako strony sieci Web, pliki PDF lub pliki DOC programu MS Word. Zawartość można również dodać do bazy wiedzy z strukturalnych plików zawartości QnA.
+description: QnA Maker automatycznie wyodrębnia pary odpowiedzi pytań przechowywanych jako strony sieci Web, pliki PDF lub pliki DOC programu MS Word lub strukturalne pliki zawartości QnA.
 services: cognitive-services
 author: diberry
 manager: nitinme
@@ -10,12 +10,12 @@ ms.subservice: qna-maker
 ms.topic: conceptual
 ms.date: 09/25/2019
 ms.author: diberry
-ms.openlocfilehash: 39746032fd012de8e0868c3bc7f810cd8e780b68
-ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
+ms.openlocfilehash: a1fcc1bec5db3ad64dc045cf5e1a449fce808132
+ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73176363"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73721205"
 ---
 # <a name="data-sources-for-qna-maker-content"></a>Źródła danych dla QnA Maker zawartości
 
@@ -171,7 +171,7 @@ Po zaimportowaniu pliku para pytań i odpowiedzi znajduje się w bazie wiedzy, j
 
 Importowanie bazy wiedzy zastępuje zawartość istniejącej bazy wiedzy. Import wymaga pliku ze strukturą. tsv, który zawiera informacje o źródle danych. Te informacje pomagają w QnA Maker zgrupować pary odpowiedzi i atrybutów do określonego źródła danych.
 
-| Pytanie  | Odpowiedź  | Źródło| Metadane (1 klucz: 1 wartość) |          
+| Pytanie  | Odpowiedź  | Element źródłowy| Metadane (1 klucz: 1 wartość) |          
 |-----------|---------|----|---------------------|
 | Question1 | Answer1 | Url1 | <code>Key1:Value1 &#124; Key2:Value2</code> |
 | Question2 | Answer2 | Dobra|    `Key:Value`       |
@@ -239,6 +239,6 @@ Kontrola wersji danych jest dostępna za pomocą [funkcji importowania/eksportow
 > [!div class="nextstepaction"]
 > [Konfigurowanie usługi QnA Maker](../How-To/set-up-qnamaker-service-azure.md)
 
-## <a name="see-also"></a>Zobacz także 
+## <a name="see-also"></a>Zobacz też 
 
 [Omówienie usługi QnA Maker](../Overview/overview.md)

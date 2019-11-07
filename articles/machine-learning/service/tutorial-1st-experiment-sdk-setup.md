@@ -10,12 +10,12 @@ author: trevorbye
 ms.author: trbye
 ms.reviewer: trbye
 ms.date: 09/25/2019
-ms.openlocfilehash: 891615ea301348b83124823b10403964d394c224
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
-ms.translationtype: HT
+ms.openlocfilehash: 59844c5989abb03bbe5134c83c9653290c17d0a9
+ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 11/04/2019
-ms.locfileid: "73476056"
+ms.locfileid: "73582497"
 ---
 # <a name="tutorial-get-started-creating-your-first-ml-experiment-with-the-python-sdk"></a>Samouczek: wprowadzenie do tworzenia pierwszego eksperymentu z użyciem zestawu SDK języka Python
 [!INCLUDE [applies-to-skus](../../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -27,7 +27,7 @@ W tym samouczku zostaną wykonane następujące czynności:
 > [!div class="checklist"]
 > * Utwórz [obszar roboczy usługi Azure Machine Learning](concept-workspace.md) do użycia w następnym samouczku.
 > * Sklonuj Notes samouczków do folderu w obszarze roboczym.
-> * Tworzenie wystąpienia obliczeniowego opartego na chmurze z zainstalowanym i wstępnie skonfigurowanym zestawem SDK języka Python Azure Machine Learning.
+> * Utwórz chmurową maszynę wirtualną w chmurze z zainstalowanym i wstępnie skonfigurowanym zestawem SDK języka Python Azure Machine Learning.
 
 
 Jeśli nie masz subskrypcji Azure, przed rozpoczęciem utwórz bezpłatne konto. Wypróbuj [bezpłatną lub płatną wersję Azure Machine Learning](https://aka.ms/AMLFree) dzisiaj.
@@ -79,7 +79,7 @@ Należy wykonać następujące czynności w celu skonfigurowania i uruchomienia 
     
 1. Wybierz plik **samouczek — pierwszy eksperyment-zestaw SDK-uczenie. ipynb** w folderze **samouczków** .
 
-1. Na górnym pasku wybierz wystąpienie obliczeniowe, które ma zostać użyte do uruchomienia notesu. Te maszyny wirtualne są wstępnie skonfigurowane z [wszystko, czego potrzebujesz do uruchamiania Azure Machine Learning](concept-compute-instance.md#contents). Można wybrać maszynę wirtualną utworzoną przez dowolnego użytkownika obszaru roboczego. 
+1. Na górnym pasku wybierz maszynę wirtualną notesu do użycia w celu uruchomienia notesu. Te maszyny wirtualne są wstępnie skonfigurowane z wszystko, czego potrzebujesz do uruchamiania Azure Machine Learning. Można wybrać maszynę wirtualną utworzoną przez dowolnego użytkownika obszaru roboczego. 
 
 1. Jeśli nie zostaną znalezione żadne maszyny wirtualne, wybierz pozycję **+ Dodaj obliczenia** , aby utworzyć maszynę wirtualną.
 
@@ -89,9 +89,6 @@ Należy wykonać następujące czynności w celu skonfigurowania i uruchomienia 
 
 1. Gdy maszyna wirtualna będzie dostępna, zostanie wyświetlona na górnym pasku narzędzi.  Można teraz uruchomić Notes przy użyciu opcji **Uruchom wszystko** na pasku narzędzi lub naciskając **klawisze SHIFT + ENTER** w komórkach kodu notesu.
 
-> [!NOTE]
-> Wystąpienia obliczeniowe są dostępne tylko dla obszarów roboczych z regionem **Północno-środkowe stany USA** lub **Południowe Zjednoczone Królestwo**.
->Jeśli obszar roboczy znajduje się w innym regionie, możesz w zamian utworzyć [maszynę wirtualną w notesie](concept-compute-instance.md#notebookvm) i korzystać z niej.  Do uruchomienia notesu można użyć maszyny wirtualnej lub wystąpienia obliczeniowego.
 
 ## <a name="next-steps"></a>Następne kroki
 

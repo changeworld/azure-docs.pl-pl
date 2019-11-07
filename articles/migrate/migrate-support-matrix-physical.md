@@ -7,16 +7,19 @@ ms.service: azure-migrate
 ms.topic: conceptual
 ms.date: 10/23/2019
 ms.author: raynew
-ms.openlocfilehash: 56e49ab60733c9c0a813ca6e46712bcd8052a2ef
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 902e89305aa24e8cbb6d2dd84d6a61c710d11637
+ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73518153"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73715370"
 ---
 # <a name="support-matrix-for-physical-server-assessment-and-migration"></a>Macierz obsługi na potrzeby oceny i migracji serwera fizycznego
 
 Za pomocą [usługi Azure Migrate](migrate-overview.md) można oceniać i migrować maszyny do chmury Microsoft Azure. Ten artykuł podsumowuje ustawienia i ograniczenia dotyczące obsługi oceniania i migrowania lokalnych serwerów fizycznych.
+
+> [!NOTE]
+> Jeśli w tym miejscu wymieniono funkcje, które nie są jeszcze widoczne w portalu Azure Migrate, zaczekaj na. Pojawią się one w ciągu następnego tygodnia lub.
 
 
 ## <a name="physical-server-scenarios"></a>Scenariusze dotyczące serwera fizycznego
@@ -48,7 +51,7 @@ W tabeli zestawiono obsługiwane scenariusze dla serwerów fizycznych.
   Francja | Francja Środkowa
   Indie | Indie Środkowe lub Indie Południowe
   Japonia |  Japonia Wschodnia lub Japonia Zachodnia
-  Korea Południowa | Korea środkowa lub Korea Południowa
+  Korea | Korea środkowa lub Korea Południowa
   Wielka Brytania | Południowe Zjednoczone Królestwo lub Zachodnie Zjednoczone Królestwo
   Stany Zjednoczone | Środkowe stany USA lub zachodnie stany USA 2
 

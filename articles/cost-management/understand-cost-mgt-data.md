@@ -5,17 +5,17 @@ services: cost-management
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 10/23/2019
+ms.date: 11/06/2019
 ms.topic: conceptual
 ms.service: cost-management
 manager: micflan
 ms.custom: ''
-ms.openlocfilehash: 0b93f898924d73636c31826b6b63a228f75fc8ba
-ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
+ms.openlocfilehash: 681ccc768b1fa3d5a968847d11987fbd83898b59
+ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72900168"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73721369"
 ---
 # <a name="understand-cost-management-data"></a>Omówienie danych usługi Cost Management
 
@@ -30,11 +30,11 @@ Poniższe informacje przedstawiają obecnie obsługiwane [oferty Microsoft Azure
 | **Kategoria**  | **Nazwa oferty** | **Identyfikator limitu przydziału** | **Numer oferty** | **Dane dostępne z** |
 | --- | --- | --- | --- | --- |
 | **Azure Government** | Azure Government Enterprise                                                         | EnterpriseAgreement_2014-09-01 | MS-AZR-USGOV-0017P | 2014 maja<sup>1</sup> |
-| **Umowa Enterprise (EA)** | Tworzenie i testowanie (przedsiębiorstwo)                                                        | MSDNDevTest_2014-09-01 | MS-AZR-0148P | 2014 maja<sup>1</sup> |
+| **Umowa Enterprise (EA)** | Enterprise — tworzenie i testowanie                                                        | MSDNDevTest_2014-09-01 | MS-AZR-0148P | 2014 maja<sup>1</sup> |
 | **Umowa Enterprise (EA)** | [Microsoft Azure Enterprise](https://azure.microsoft.com/offers/enterprise-agreement-support-upgrade) | EnterpriseAgreement_2014-09-01 | MS-AZR-0017P | 2014 maja<sup>1</sup> |
-| **Umowa klienta firmy Microsoft** | [Plan Microsoft Azure](https://azure.microsoft.com/offers/ms-azr-0017g) | EnterpriseAgreement_2014-09-01 | ND | Marzec 2019<sup>3</sup> |
-| **Umowa klienta firmy Microsoft** | [Plan Microsoft Azure dla tworzenia i testowania](https://azure.microsoft.com/offers/ms-azr-0148g) | MSDNDevTest_2014-09-01 | ND | Marzec 2019<sup>3</sup> |
-| **Umowa klienta firmy Microsoft obsługiwana przez partnerów** | Plan platformy Microsoft Azure | CSP_2015-05-01, CSP_MG_2017-12-01 i CSPDEVTEST_2018-05-01<br><br>Identyfikator przydziału jest ponownie używany dla umowy klienta firmy Microsoft i starszych subskrypcji CSP. Obecnie obsługiwane są tylko subskrypcje umów dla klientów firmy Microsoft. | ND | Październik 2019 |
+| **Umowa klienta firmy Microsoft** | [Plan Microsoft Azure](https://azure.microsoft.com/offers/ms-azr-0017g) | EnterpriseAgreement_2014-09-01 | Nie dotyczy | Marzec 2019<sup>3</sup> |
+| **Umowa klienta firmy Microsoft** | [Plan Microsoft Azure dla tworzenia i testowania](https://azure.microsoft.com/offers/ms-azr-0148g) | MSDNDevTest_2014-09-01 | Nie dotyczy | Marzec 2019<sup>3</sup> |
+| **Umowa klienta firmy Microsoft obsługiwana przez partnerów** | Plan platformy Microsoft Azure | CSP_2015-05-01, CSP_MG_2017-12-01 i CSPDEVTEST_2018-05-01<br><br>Identyfikator przydziału jest ponownie używany dla umowy klienta firmy Microsoft i starszych subskrypcji CSP. Obecnie obsługiwane są tylko subskrypcje umów dla klientów firmy Microsoft. | Nie dotyczy | Październik 2019 r. |
 | **Microsoft Developer Network (MSDN)** | [Platformy MSDN](https://azure.microsoft.com/offers/ms-azr-0062p)<sup>4</sup> | MSDN_2014-09-01 | MS-AZR-0062P | 2 października, 2018<sup>2</sup> |
 | **Płatność zgodnie z rzeczywistym użyciem** | [Płatność zgodnie z rzeczywistym użyciem](https://azure.microsoft.com/offers/ms-azr-0003p)                  | PayAsYouGo_2014-09-01 | MS-AZR-0003P | 2 października, 2018<sup>2</sup> |
 | **Płatność zgodnie z rzeczywistym użyciem** | [Płatność zgodnie z rzeczywistym użyciem — tworzenie i testowanie](https://azure.microsoft.com/offers/ms-azr-0023p)         | MSDNDevTest_2014-09-01 | MS-AZR-0023P | 2 października, 2018<sup>2</sup> |
@@ -42,11 +42,11 @@ Poniższe informacje przedstawiają obecnie obsługiwane [oferty Microsoft Azure
 | **Płatność zgodnie z rzeczywistym użyciem** | [Bezpłatna wersja próbna](https://azure.microsoft.com/offers/ms-azr-0044p)<sup>4</sup>         | FreeTrial_2014-09-01 | MS-AZR-0044P | 2 października, 2018<sup>2</sup> |
 | **Płatność zgodnie z rzeczywistym użyciem** | [Platforma Azure w ramach programu Open](https://azure.microsoft.com/offers/ms-azr-0111p)<sup>4</sup>      | AzureInOpen_2014-09-01 | MS-AZR-0111P | 2 października, 2018<sup>2</sup> |
 | **Płatność zgodnie z rzeczywistym użyciem** | Azure — dostęp próbny<sup>4</sup>                                                            | AzurePass_2014-09-01 | MS-AZR-0120P, MS-AZR-0122P-MS-AZR-0125P, MS-AZR-0128P-MS-AZR-0130P | 2 października, 2018<sup>2</sup> |
-| **Visual Studio** | [Visual Studio Enterprise – MPN](https://azure.microsoft.com/offers/ms-azr-0029p)<sup>4</sup>     | MPN_2014-09-01 | MS-AZR-0029P | 2 października, 2018<sup>2</sup> |
-| **Visual Studio** | [Visual Studio Professional](https://azure.microsoft.com/offers/ms-azr-0059p)<sup>4</sup>         | MSDN_2014-09-01 | MS-AZR-0059P | 2 października, 2018<sup>2</sup> |
-| **Visual Studio** | [Visual Studio Test Professional](https://azure.microsoft.com/offers/ms-azr-0060p)<sup>4</sup>    | MSDNDevTest_2014-09-01 | MS-AZR-0060P | 2 października, 2018<sup>2</sup> |
-| **Visual Studio** | [Visual Studio Enterprise](https://azure.microsoft.com/offers/ms-azr-0063p)<sup>4</sup>           | MSDN_2014-09-01 | MS-AZR-0063P | 2 października, 2018<sup>2</sup> |
-| **Visual Studio** | [Visual Studio Enterprise: BizSpark](https://azure.microsoft.com/offers/ms-azr-0064p)<sup>4</sup> | MSDN_2014-09-01 | MS-AZR-0064P | 2 października, 2018<sup>2</sup> |
+| **Program Visual Studio** | [Visual Studio Enterprise – MPN](https://azure.microsoft.com/offers/ms-azr-0029p)<sup>4</sup>     | MPN_2014-09-01 | MS-AZR-0029P | 2 października, 2018<sup>2</sup> |
+| **Program Visual Studio** | [Visual Studio Professional](https://azure.microsoft.com/offers/ms-azr-0059p)<sup>4</sup>         | MSDN_2014-09-01 | MS-AZR-0059P | 2 października, 2018<sup>2</sup> |
+| **Program Visual Studio** | [Visual Studio Test Professional](https://azure.microsoft.com/offers/ms-azr-0060p)<sup>4</sup>    | MSDNDevTest_2014-09-01 | MS-AZR-0060P | 2 października, 2018<sup>2</sup> |
+| **Program Visual Studio** | [Visual Studio Enterprise](https://azure.microsoft.com/offers/ms-azr-0063p)<sup>4</sup>           | MSDN_2014-09-01 | MS-AZR-0063P | 2 października, 2018<sup>2</sup> |
+| **Program Visual Studio** | [Visual Studio Enterprise: BizSpark](https://azure.microsoft.com/offers/ms-azr-0064p)<sup>4</sup> | MSDN_2014-09-01 | MS-AZR-0064P | 2 października, 2018<sup>2</sup> |
 
 _<sup>**1**</sup> w przypadku danych przed 2014 maja odwiedź witrynę [Azure Enterprise Portal](https://ea.azure.com)._
 
@@ -127,6 +127,79 @@ Subskrypcje z płatnością zgodnie z rzeczywistym użyciem — Jeśli miesiąc 
 
 Niezależnie od tego, czy używasz [Cost Management interfejsów API](index.yml), Power BI czy Azure Portal do pobierania danych, należy oczekiwać, że opłaty za bieżący okres rozliczeniowy zostaną naliczone proporcjonalnie do momentu zamknięcia faktury.
 
+## <a name="cost-management-data-fields"></a>Cost Management pól danych
+
+Następujące pola danych znajdują się w plikach szczegółów użycia i interfejsów API Cost Management. W przypadku następujących pogrubionych pól partnerzy mogą używać funkcji filtrowania i grupowania przez funkcje w analizie kosztów, aby analizować koszty według wielu pól. Pola pogrubione dotyczą tylko umów klienta firmy Microsoft obsługiwanych przez partnerów.
+
+| **Nazwa pola** | **Opis** |
+| --- | --- |
+| invoiceId | Identyfikator faktury wyświetlany na fakturze dla określonej transakcji. |
+| previousInvoiceID | Odwołanie do oryginalnej faktury ma zwrot (koszt ujemny). Wypełniane tylko wtedy, gdy istnieje zwrot. |
+| billingAccountName | Nazwa konta rozliczeniowego reprezentującego partnera. Naliczane są wszystkie koszty dla klientów, którzy zostali dołączeni do umowy klienta firmy Microsoft i klientów dostawcy usług kryptograficznych, którzy mieli uprawnienia do zakupów takich jak SaaS, Azure Marketplace i rezerwacje. |
+| billingAccountID | Identyfikator konta rozliczeniowego reprezentujący partnera. |
+| billingProfileID | Identyfikator profilu rozliczeń, który grupuje koszty między faktury w ramach pojedynczej waluty rozliczeniowej dla klientów, którzy zostali dołączeni do umowy klienta firmy Microsoft i klientów z dostawcami usług kryptograficznych, którzy dokonywali zakupów, takich jak SaaS, Azure Marketplace i dokonując. |
+| billingProfileName | Nazwa profilu rozliczeń, który grupuje koszty między faktury w ramach pojedynczej waluty rozliczeniowej dla klientów, którzy zostali dołączeni do umowy klienta firmy Microsoft i klientów korzystających z usług dostawcy CSP, którzy dokonywali zakupów, takich jak SaaS, Azure Marketplace i dokonując. |
+| invoiceSectionName | Nazwa projektu, który jest rozliczany na podstawie faktury. Nie dotyczy umów klienta firmy Microsoft dołączonych przez partnerów. |
+| invoiceSectionID | Identyfikator projektu, który jest rozliczany na podstawie faktury. Nie dotyczy umów klienta firmy Microsoft dołączonych przez partnerów. |
+| **CustomerTenantID** | Identyfikator dzierżawy Azure Active Directory subskrypcji klienta&#39;. |
+| **CustomerName** | Nazwa dzierżawy usługi Azure Active Directory dla subskrypcji klienta&#39;s. |
+| **CustomerTenantDomainName** | Nazwa domeny dla dzierżawy Azure Active Directory subskrypcji klienta&#39;. |
+| **PartnerTenantID** | Identyfikator dzierżawy Azure Active Directory&#39;partnera. |
+| **PartnerName** | Nazwa partnera Azure Active Directory dzierżawy. |
+| **ResellerMPNID** | MPNID dla odsprzedawcy skojarzonego z subskrypcją. |
+| costCenter | Centrum kosztów skojarzone z subskrypcją. |
+| billingPeriodStartDate | Data rozpoczęcia okresu rozliczeniowego, jak pokazano na fakturze. |
+| billingPeriodEndDate | Data końcowa okresu rozliczeniowego, jak pokazano na fakturze. |
+| servicePeriodStartDate | Data rozpoczęcia okresu oceny, gdy użycie usługi zostało ocenione pod kątem opłat. Ceny usług platformy Azure są określane na okres oceniania. |
+| servicePeriodEndDate | Data zakończenia okresu, w którym oceniono użycie usługi pod kątem opłat. Ceny usług platformy Azure są ustalane na podstawie okresu rankingu. |
+| date | W przypadku danych dotyczących zużycia na platformie Azure pokazuje datę użycia jako sklasyfikowaną. W przypadku wystąpienia zarezerwowanego jest wyświetlana data zakupu. W przypadku naliczania opłat cyklicznych i jednorazowych opłat, takich jak Marketplace i pomoc techniczna, jest wyświetlana data zakupu. |
+| Produktu | Identyfikator produktu, który ma naliczone opłaty według zużycia lub zakupu. Jest to połączenie klucza productID i identyfikatora skuId, jak pokazano w centrum partnerskim. |
+| product | Nazwa produktu, który ma naliczone opłaty według zużycia lub zakupu, jak pokazano na fakturze. |
+| serviceFamily | Pokazuje rodzinę usług zakupionych lub naliczanych produktów. Na przykład Storage lub COMPUTE. |
+| productOrderID | Identyfikator elementu zawartości lub nazwy planu platformy Azure, do którego należy subskrypcja. Na przykład usługa Azure plan. |
+| productOrderName | Nazwa planu platformy Azure, do którego należy subskrypcja. Na przykład usługa Azure plan. |
+| consumedService | Użycie usługi (starsza taksonomia) w ramach szczegółowych informacji o użyciu starszych wersji EA. |
+| meterID | Mierzony identyfikator dla zmierzonego zużycia. |
+| meterName | Określa nazwę miernika do zmierzonego zużycia. |
+| meterCategory | Określa usługę najwyższego poziomu do użycia. |
+| meterSubCategory | Definiuje typ lub podkategorię usługi platformy Azure, która może wpływać na stawkę. |
+| meterRegion | Określa lokalizację centrum danych pewnych usług, które są wyceniane na podstawie lokalizacji centrum danych. |
+| subscription ID | Unikatowy identyfikator wygenerowany przez firmę Microsoft dla subskrypcji platformy Azure. |
+| subscriptionName | Nazwa subskrypcji platformy Azure. |
+| Termin | Przedstawia okres ważności oferty. Na przykład wystąpienia zarezerwowane pokazują 12 miesięcy rocznego warunku wystąpienia zarezerwowanego. W przypadku jednorazowych zakupów lub cyklicznych zakupów termin wyświetla jeden miesiąc dla SaaS, Azure Marketplace i pomocy technicznej. Nie dotyczy użycia platformy Azure. |
+| PublisherType (firstParty, thirdPartyReseller, thirdPartyAgency) | Typ wydawcy, który identyfikuje wydawcę jako pierwszej strony, odsprzedawcę lub inną osobę. |
+| PartNumber | Numer części nieużywanych wystąpień zarezerwowanych i usług Azure Marketplace. |
+| publisherName | Nazwa wydawcy usługi, w tym wydawcy firmy Microsoft lub innych firm. |
+| reservationId | Identyfikator zakupu wystąpienia zarezerwowanego. |
+| reservationName | Nazwa wystąpienia zarezerwowanego. |
+| reservationOrderId | Identyfikator IDZamówienia dla wystąpienia zarezerwowanego. |
+| frequency | Częstotliwość płatności dla wystąpienia zarezerwowanego. |
+| resourceGroup | Nazwa grupy zasobów platformy Azure używanej do zarządzania zasobami cyklu życia. |
+| Identyfikator instanceID (lub) ResourceID | Identyfikator wystąpienia zasobu. |
+| resourceLocation | Nazwa lokalizacji zasobu. |
+| Lokalizacja | Znormalizowana lokalizacja zasobu. |
+| effectivePrice | Obowiązująca cena jednostkowa usługi w walucie cenowej. Unikatowy dla produktu, rodziny usług, miernika i oferty. Używany z cenami w arkuszu cen dla konta rozliczeniowego. W przypadku cen warstwowych lub uwzględnionych ilości zostanie wyświetlona połączona cena zużycia. |
+| Liczba | Zmierzona ilość zakupione lub zużyte. Ilość licznika użyta w okresie rozliczeniowym. |
+| unitOfMeasure | Identyfikuje jednostkę, w której jest naliczana opłata za usługę. Na przykład GB i godziny. |
+| pricingCurrency | Waluta określająca cenę jednostkową. |
+| billingCurrency | Waluta definiująca koszt naliczany |
+| chargeType | Określa typ opłaty reprezentowanej przez koszt Azure Cost Management, na przykład zakup i zwrot. |
+| costinBillingCurrency | Koszt rozszerzony lub zmieszany koszt przed opodatkowaniem w walucie rozliczeniowej. |
+| costinPricingCurrency | Koszt rozszerzony lub zmieszany koszt przed opodatkowaniem w walucie cenowej w celu skorelowania cen. |
+| **costinUSD** | Szacowany koszt koszt rozszerzony lub mieszany przed opodatkowaniem w USD. |
+| **paygCostInBillingCurrency** | Pokazuje koszty w przypadku cen detalicznych. W walucie rozliczeniowej są wyświetlane ceny płatności zgodnie z rzeczywistym użyciem. Dostępne tylko w zakresach RBAC. |
+| **paygCostInUSD** | Pokazuje koszty w przypadku cen detalicznych. W USD są wyświetlane ceny z opcją płatność zgodnie z rzeczywistym użyciem. Dostępne tylko w zakresach RBAC. |
+| exchangeRate | Kurs wymiany używany do konwersji z waluty cenowej na walutę rozliczeń. |
+| exchangeRateDate | Data dla kursu&#39;wymiany używanego do konwersji z waluty cenowej na walutę rozliczeń. |
+| isAzureCreditEligible | Wskazuje, czy koszt jest uprawniony do płatności za środki na korzystanie z platformy Azure. |
+| serviceInfo1 | Starsze pole, które przechwytuje opcjonalne metadane specyficzne dla usługi. |
+| serviceInfo2 | Starsze pole, które przechwytuje opcjonalne metadane specyficzne dla usługi. |
+| additionalInfo | Metadane dotyczące konkretnej usługi. Na przykład typ obrazu dla maszyny wirtualnej. |
+| tagów | Tag przypisany do miernika. Grupowanie rekordów rozliczeń przy użyciu tagów. Można na przykład użyć tagów do dystrybucji kosztów według działu, który używa miernika. |
+| **partnerEarnedCreditRate** | Kwota rabatu stosowana w przypadku, gdy Partner uzyskał kredyt (PEC) w oparciu o dostęp do linku administratora partnera. |
+| **partnerEarnedCreditApplied** | Wskazuje, czy jest stosowany kredyt uzyskany przez partnera. |
+
+
 ## <a name="usage-data-update-frequency-varies"></a>Częstotliwość aktualizacji danych użycia jest różna
 
 Dostępność poniesionych danych użycia w Cost Management zależy od kilku czynników, w tym:
@@ -147,6 +220,6 @@ Dane historyczne dla ofert opartych na kredytach i płatnych z góry mogą nie b
 - MSDN (MS-AZR-0062P)
 - Visual Studio (MS-AZR-0029P, MS-AZR-0059P, MS-AZR-0060P, MS-AZR-0063P, MS-AZR-0064P)
 
-## <a name="see-also"></a>Zobacz także
+## <a name="see-also"></a>Zobacz też
 
 - Jeśli nie zostało to jeszcze zrobione z pierwszego przewodnika Szybki Start dla Cost Management, zapoznaj się z tematem [Rozpocznij analizowanie kosztów](quick-acm-cost-analysis.md).

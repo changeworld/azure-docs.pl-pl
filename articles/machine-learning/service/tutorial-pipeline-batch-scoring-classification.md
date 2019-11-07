@@ -10,12 +10,12 @@ author: trevorbye
 ms.author: trbye
 ms.reviewer: trbye
 ms.date: 11/04/2019
-ms.openlocfilehash: f693a80726c9185bbd75d5fb99eb7e5f3ccad987
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
-ms.translationtype: HT
+ms.openlocfilehash: d5a8ada7be99cfbd541b9ac58db2eba094536fc0
+ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 11/04/2019
-ms.locfileid: "73493504"
+ms.locfileid: "73580520"
 ---
 # <a name="build--use-an-azure-machine-learning-pipeline-for-batch-scoring"></a>Kompilowanie & używanie potoku Azure Machine Learning na potrzeby oceniania partii
 
@@ -522,7 +522,7 @@ RunDetails(published_pipeline_run).show()
 
 Nie Dokończ tej sekcji, jeśli planujesz uruchamiać inne samouczki Azure Machine Learning.
 
-### <a name="stop-the-compute-instance"></a>Zatrzymaj wystąpienie obliczeniowe
+### <a name="stop-the-notebook-vm"></a>Zatrzymaj maszynę wirtualną notesu
 
 [!INCLUDE [aml-stop-server](../../../includes/aml-stop-server.md)]
 

@@ -1,25 +1,24 @@
 ---
-title: Utwórz magazyn wiedzy w Azure Portal
+title: Utwórz magazyn wiedzy (wersja zapoznawcza) w Azure Portal
 titleSuffix: Azure Cognitive Search
-description: Za pomocą Kreatora importu danych można utworzyć magazyn wiedzy używany do utrwalania wzbogaconej zawartości. Nawiąż połączenie z magazynem wiedzy na potrzeby analizy z innych aplikacji lub Wyślij ulepszoną zawartość do procesów podrzędnych.
+description: Za pomocą Kreatora importu danych można utworzyć magazyn wiedzy używany do utrwalania wzbogaconej zawartości. Nawiąż połączenie z magazynem wiedzy na potrzeby analizy z innych aplikacji lub Wyślij ulepszoną zawartość do procesów podrzędnych. Ta funkcja jest obecnie w publicznej wersji zapoznawczej.
 author: lisaleib
 manager: nitinme
 ms.author: v-lilei
 ms.service: cognitive-search
 ms.topic: quickstart
 ms.date: 11/04/2019
-ms.openlocfilehash: 689b5aa0cd8a5fb310925b2c52baeec6860af0d5
-ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
-ms.translationtype: HT
+ms.openlocfilehash: 56053a942604a6f1cb935e6bddcae85ffc5a9e54
+ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73607081"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73720110"
 ---
 # <a name="quickstart-create-an-azure-cognitive-search-knowledge-store-in-the-azure-portal"></a>Szybki Start: Tworzenie sklepu z bazami danych Azure Wyszukiwanie poznawcze w Azure Portal
 
-> [!Note]
-> Magazyn wiedzy jest w wersji zapoznawczej i nie powinien być używany w środowisku produkcyjnym. Ta funkcja jest dostępna zarówno w przypadku Azure Portal, jak i [interfejsu API REST usługi Search w wersji 2019-05-06 — wersja zapoznawcza](search-api-preview.md) . W tej chwili nie ma obsługi zestawu SDK platformy .NET.
->
+> [!IMPORTANT] 
+> Magazyn wiedzy jest obecnie w publicznej wersji zapoznawczej. Funkcje wersji zapoznawczej są dostępne bez umowy dotyczącej poziomu usług i nie są zalecane w przypadku obciążeń produkcyjnych. Aby uzyskać więcej informacji, zobacz [Uzupełniające warunki korzystania z wersji zapoznawczych platformy Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/). 
 
 Sklep z bazami informacji to funkcja platformy Azure Wyszukiwanie poznawcze, która utrzymuje dane wyjściowe potoku umiejętności poznawcze dla kolejnych analiz lub przetwarzania podrzędnego. 
 

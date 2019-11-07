@@ -1,5 +1,5 @@
 ---
-title: Przykładowy skrypt interfejsu wiersza polecenia — przenoszenie bazy danych Azure SQL Database — elastyczna pula SQL | Microsoft Docs
+title: Przykład interfejsu wiersza polecenia — przenoszenie bazy danych Azure SQL Database — elastyczna Pula SQL
 description: Przykładowy skrypt interfejsu wiersza polecenia platformy Azure do przenoszenia bazy danych SQL Database do elastycznej puli SQL
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: carlrab
 ms.date: 06/25/2019
-ms.openlocfilehash: 166643231e9f98cc3b8205bf0e9a8bb949ffbc3b
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: d974685040d2a5759ca7719e82be02a7ec8950c5
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68569875"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73691595"
 ---
 # <a name="use-cli-to-move-an-azure-sql-database-in-a-sql-elastic-pool"></a>Korzystanie z interfejsu wiersza polecenia do przenoszenia bazy danych Azure SQL Database do elastycznej puli SQL
 

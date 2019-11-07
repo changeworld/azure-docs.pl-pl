@@ -1,25 +1,24 @@
 ---
 title: Wprowadzenie do indeksowania przyrostowego (wersja zapoznawcza)
 titleSuffix: Azure Cognitive Search
-description: Skonfiguruj potok wzbogacenia dysku AI, aby zwiększyć spójność danych w celu obsługi wszelkich aktualizacji umiejętności, umiejętności, indeksatorów lub źródeł danych.
+description: Skonfiguruj potok wzbogacenia dysku AI, aby zwiększyć spójność danych w celu obsługi wszelkich aktualizacji umiejętności, umiejętności, indeksatorów lub źródeł danych. Ta funkcja jest obecnie dostępna w publicznej wersji zapoznawczej
 manager: nitinme
 author: Vkurpad
 ms.author: vikurpad
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: ea3bcfc25040f09b6871d85412ac64061ec2f9e8
-ms.sourcegitcommit: 3f8017692169bd75483eefa96c225d45cd497f06
+ms.openlocfilehash: 94ce056185ff6a804521bf583ac4f6ffaa513fb0
+ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73549110"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73715417"
 ---
 # <a name="what-is-incremental-indexing-in-azure-cognitive-search"></a>Co to jest indeksowanie przyrostowe w usłudze Azure Wyszukiwanie poznawcze?
 
-> [!Note]
-> Indeksowanie przyrostowe jest w wersji zapoznawczej i nie jest przeznaczone do użycia w środowisku produkcyjnym. [Interfejs API REST w wersji 2019-05-06 — wersja zapoznawcza](search-api-preview.md) zawiera tę funkcję. W tej chwili nie ma obsługi portalu lub zestawu SDK platformy .NET.
->
+> [!IMPORTANT] 
+> Indeksowanie przyrostowe jest obecnie w publicznej wersji zapoznawczej. Ta wersja zapoznawcza nie jest objęta umową dotyczącą poziomu usług i nie zalecamy korzystania z niej w przypadku obciążeń produkcyjnych. Aby uzyskać więcej informacji, zobacz [Uzupełniające warunki korzystania z wersji zapoznawczych platformy Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/). [Interfejs API REST w wersji 2019-05-06 — wersja zapoznawcza](search-api-preview.md) zawiera tę funkcję. W tej chwili nie ma obsługi portalu lub zestawu SDK platformy .NET.
 
 Indeksowanie przyrostowe to nowa funkcja platformy Azure Wyszukiwanie poznawcze, która dodaje pamięć podręczną i stan do wzbogaconej zawartości w zestawu umiejętności poznawczym, co zapewnia kontrolę nad przetwarzaniem i ponownym przetwarzaniem poszczególnych kroków w potoku wzbogacania. Nie tylko gwarantuje to, że inwestycje pieniężne są przetwarzane, ale również zapewnia bardziej wydajny system. Gdy struktury i zawartość są buforowane, indeksator może ustalić, które umiejętności uległy zmianie, i uruchamiać tylko te, które zostały zmodyfikowane, a także wszelkie podrzędne umiejętności zależne. 
 

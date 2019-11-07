@@ -1,28 +1,28 @@
 ---
-title: Wysłanie zdarzeń niestandardowych do internetowego punktu końcowego — Event Grid, PowerShell
-description: Za pomocą usługi Azure Event Grid i programu PowerShell można opublikować temat niestandardowy i zasubskrybować zdarzenia dla tego tematu. Zdarzenia są obsługiwane przez aplikację internetową.
+title: 'Szybki Start: wysyłanie zdarzeń niestandardowych do punktu końcowego sieci Web — Event Grid, PowerShell'
+description: 'Szybki Start: używanie Azure Event Grid i programu PowerShell do publikowania tematu niestandardowego oraz subskrybowanie zdarzeń dla tego tematu. Zdarzenia są obsługiwane przez aplikację internetową.'
 services: event-grid
 keywords: ''
 author: spelluru
 ms.author: spelluru
-ms.date: 12/07/2018
+ms.date: 11/05/2019
 ms.topic: quickstart
 ms.service: event-grid
 ms.custom: seodec18
-ms.openlocfilehash: fa703defdda17a69aec99d3fbe479e9867781d68
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: bc92e0cf579bc008fdb09c9cbb576d8cac0191cb
+ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "66156023"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73721435"
 ---
-# <a name="quickstart-route-custom-events-to-web-endpoint-with-powershell-and-event-grid"></a>Szybki start: Kierowanie zdarzeń niestandardowych do internetowego punktu końcowego za pomocą programu PowerShell i usługi Event Grid
+# <a name="quickstart-route-custom-events-to-web-endpoint-with-powershell-and-event-grid"></a>Szybki Start: kierowanie zdarzeń niestandardowych do punktu końcowego sieci Web za pomocą programu PowerShell i Event Grid
 
 Azure Event Grid to usługa obsługi zdarzeń dla chmury. W tym artykule omówiono tworzenie tematu niestandardowego, subskrybowanie go i wyzwalanie zdarzenia w celu wyświetlenia wyniku za pomocą programu Azure PowerShell. Zazwyczaj użytkownik wysyła zdarzenia do punktu końcowego, w którym następuje przetwarzanie danych zdarzenia i są wykonywane akcje. Jednak aby uprościć ten artykuł, zdarzenia zostaną wysłane do aplikacji internetowej, która zbiera i wyświetla komunikaty.
 
 Po zakończeniu przekonasz się, że dane zdarzenia zostały wysłane do aplikacji internetowej.
 
-![Wyświetl wyniki](./media/custom-event-quickstart-powershell/view-result.png)
+![Wyświetlanie wyników](./media/custom-event-quickstart-powershell/view-result.png)
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
@@ -163,7 +163,7 @@ Jeśli zamierzasz kontynuować pracę z tym zdarzeniem lub aplikacją podglądu 
 Remove-AzResourceGroup -Name gridResourceGroup
 ```
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 Wiesz już, jak tworzyć tematy i subskrypcje zdarzeń. Dowiedz się więcej na temat tego, co może Ci ułatwić usługa Event Grid:
 

@@ -2,18 +2,18 @@
 title: Utwórz indeks wyszukiwania w Azure Portal
 titleSuffix: Azure Cognitive Search
 description: Za pomocą Kreatora importu danych można tworzyć i ładować pierwszy indeks wyszukiwania w usłudze Azure Wyszukiwanie poznawcze oraz wykonywać na nich zapytania.
-author: lobrien
+author: HeidiSteen
 manager: nitinme
-ms.author: laobri
+ms.author: heidist
 ms.service: cognitive-search
 ms.topic: quickstart
 ms.date: 11/04/2019
-ms.openlocfilehash: 502177519c0e66baa7ae9c1de18a7b41bceb054a
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.openlocfilehash: 366986f989fdd8d76b1707451c2a7cca2aa554cf
+ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72791251"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73719975"
 ---
 # <a name="quickstart-create-an-azure-cognitive-search-index-in-the-azure-portal"></a>Szybki Start: Tworzenie indeksu Wyszukiwanie poznawcze platformy Azure w Azure Portal
 > [!div class="op_single_selector"]

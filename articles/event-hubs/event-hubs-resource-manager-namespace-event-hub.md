@@ -1,6 +1,6 @@
 ---
-title: Tworzenie Centrum zdarzeń za pomocą grupy odbiorców — usługa Azure Event Hubs | Dokumentacja firmy Microsoft
-description: Tworzenie przestrzeni nazw usługi Event Hubs z Centrum zdarzeń i grupy odbiorców za pomocą szablonów usługi Azure Resource Manager
+title: 'Szybki Start: tworzenie centrum zdarzeń z grupą konsumentów — Azure Event Hubs'
+description: 'Szybki Start: tworzenie przestrzeni nazw Event Hubs z centrum zdarzeń i grupą odbiorców przy użyciu szablonów Azure Resource Manager'
 services: event-hubs
 documentationcenter: .net
 author: ShubhaVijayasarathy
@@ -9,37 +9,37 @@ editor: ''
 ms.assetid: 28bb4591-1fd7-444f-a327-4e67e8878798
 ms.service: event-hubs
 ms.devlang: tbd
-ms.topic: article
+ms.topic: quickstart
 ms.tgt_pltfrm: dotnet
 ms.workload: na
-ms.date: 07/02/2019
+ms.date: 11/05/2019
 ms.author: shvija
-ms.openlocfilehash: 29e494b23176f9e936816a371a09e1c4ffeceae0
-ms.sourcegitcommit: 084630bb22ae4cf037794923a1ef602d84831c57
+ms.openlocfilehash: b262f5f4122256a55c005002c4323205a5b564f0
+ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/03/2019
-ms.locfileid: "67537997"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73717665"
 ---
-# <a name="quickstart-create-an-event-hub-by-using-an-azure-resource-manager-template"></a>Szybki start: Tworzenie Centrum zdarzeń za pomocą szablonu usługi Azure Resource Manager
+# <a name="quickstart-create-an-event-hub-by-using-an-azure-resource-manager-template"></a>Szybki Start: tworzenie centrum zdarzeń przy użyciu szablonu Azure Resource Manager
 
 Azure Event Hubs to platforma do pozyskiwania i strumieniowego przesyłania danych, która umożliwia odbieranie i przetwarzanie milionów zdarzeń na sekundę. Usługa Event Hubs pozwala przetwarzać i przechowywać zdarzenia, dane lub dane telemetryczne generowane przez rozproszone oprogramowanie i urządzenia. Dane wysłane do centrum zdarzeń mogą zostać przekształcone i zmagazynowane przy użyciu dowolnego dostawcy analityki czasu rzeczywistego lub adapterów przetwarzania wsadowego/magazynowania. Aby zapoznać się ze szczegółowym omówieniem usługi Event Hubs, zobacz [Omówienie usługi Event Hubs](event-hubs-about.md) i [Funkcje usługi Event Hubs](event-hubs-features.md).
 
-W tym przewodniku Szybki Start utworzysz Centrum zdarzeń za pomocą [szablonu usługi Azure Resource Manager](../azure-resource-manager/resource-group-overview.md). Wdrażanie szablonu usługi Azure Resource Manager w celu utworzenia przestrzeni nazw typu [usługi Event Hubs](event-hubs-what-is-event-hubs.md), z jednym Centrum zdarzeń. W tym artykule opisano, jak zdefiniować zasoby, które są wdrażane i jak zdefiniować parametry, które są określone, gdy wdrożenie jest wykonywane. Można użyć tego szablonu na potrzeby własnych wdrożeń lub dostosować go do konkretnych potrzeb. Aby uzyskać informacje dotyczące tworzenia szablonów, zobacz [tworzenia usługi Azure Resource Manager][Authoring Azure Resource Manager templates]. Aby zapoznać się z właściwościami i składnią języka JSON, których należy użyć w szablonie, zobacz [Typy zasobów Microsoft.EventHub](/azure/templates/microsoft.eventhub/allversions).
+W tym przewodniku szybki start utworzysz centrum zdarzeń przy użyciu [szablonu Azure Resource Manager](../azure-resource-manager/resource-group-overview.md). Wdrażasz szablon Azure Resource Manager, aby utworzyć przestrzeń nazw typu [Event Hubs](event-hubs-what-is-event-hubs.md)z jednym centrum zdarzeń. W tym artykule przedstawiono sposób definiowania zasobów wdrożonych i sposobu definiowania parametrów, które są określone podczas wdrażania. Można użyć tego szablonu na potrzeby własnych wdrożeń lub dostosować go do konkretnych potrzeb. Aby uzyskać informacje na temat tworzenia szablonów, zobacz [Tworzenie szablonów Azure Resource Manager][Authoring Azure Resource Manager templates]. Aby zapoznać się z właściwościami i składnią języka JSON, których należy użyć w szablonie, zobacz [Typy zasobów Microsoft.EventHub](/azure/templates/microsoft.eventhub/allversions).
 
 Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem [utwórz bezpłatne konto](https://azure.microsoft.com/free/).
 
 ## <a name="create-an-event-hub"></a>Tworzenie centrum zdarzeń
 
-W tym przewodniku Szybki Start użyjesz [istniejący szablon szybkiego startu](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-eventhubs-create-namespace-and-eventhub/azuredeploy.json):
+W tym przewodniku Szybki Start jest używany [istniejący szablon szybkiego startu](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-eventhubs-create-namespace-and-eventhub/azuredeploy.json):
 
 [!code-json[create-azure-event-hub-namespace](~/quickstart-templates/101-eventhubs-create-namespace-and-eventhub/azuredeploy.json)]
 
-Aby uzyskać więcej przykładów szablonu, zobacz [szablony szybkiego startu platformy Azure](https://azure.microsoft.com/resources/templates/?term=eventhub&pageNumber=1&sort=Popular).
+Aby znaleźć więcej przykładów szablonów, zobacz [Szablony szybkiego startu platformy Azure](https://azure.microsoft.com/resources/templates/?term=eventhub&pageNumber=1&sort=Popular).
 
 Aby wdrożyć szablon:
 
-1. Wybierz **wypróbuj** z następujący blok kodu i postępuj zgodnie z instrukcjami, aby zarejestrować się w usłudze Azure Cloud shell.
+1. Wybierz opcję **Wypróbuj** z następującego bloku kodu, a następnie postępuj zgodnie z instrukcjami, aby zalogować się do usługi Azure Cloud Shell.
 
    ```azurepowershell-interactive
    $projectName = Read-Host -Prompt "Enter a project name that is used for generating resource names"
@@ -53,14 +53,14 @@ Aby wdrożyć szablon:
    Write-Host "Press [ENTER] to continue ..."
    ```
 
-   Może potrwać kilka minut, aby utworzyć Centrum zdarzeń.
+   Utworzenie centrum zdarzeń trwa kilka chwil.
 
 1. Wybierz przycisk **Kopiuj**, aby skopiować skrypt programu PowerShell.
-1. Kliknij prawym przyciskiem myszy konsoli shell, a następnie wybierz **Wklej**.
+1. Kliknij prawym przyciskiem myszy konsolę powłoki, a następnie wybierz polecenie **Wklej**.
 
 ## <a name="verify-the-deployment"></a>Weryfikowanie wdrożenia
 
-Aby zweryfikować wdrożenie, możesz otworzyć grupy zasobów z [witryny Azure portal](https://portal.azure.com), lub użyj następującego skryptu programu Azure PowerShell.  Jeśli w usłudze Cloud shell jest wciąż otwarty, nie trzeba uruchomienia/kopiowania pierwszego wiersza (Read-Host).
+Aby zweryfikować wdrożenie, możesz otworzyć grupę zasobów z poziomu [Azure Portal](https://portal.azure.com)lub użyć następującego skryptu Azure PowerShell.  Jeśli usługa Cloud Shell jest nadal otwarta, nie musisz kopiować/uruchamiać pierwszego wiersza (odczyt-Host).
 
 ```azurepowershell-interactive
 $projectName = Read-Host -Prompt "Enter the same project name that you used in the last procedure"
@@ -74,7 +74,7 @@ Write-Host "Press [ENTER] to continue ..."
 
 ## <a name="clean-up-resources"></a>Oczyszczanie zasobów
 
-Gdy zasoby platformy Azure nie będą już potrzebne, wyczyść wdrożone zasoby, usuwając grupę zasobów. Jeśli w usłudze Cloud shell jest wciąż otwarty, nie trzeba uruchomienia/kopiowania pierwszego wiersza (Read-Host).
+Gdy zasoby platformy Azure nie będą już potrzebne, wyczyść wdrożone zasoby, usuwając grupę zasobów. Jeśli usługa Cloud Shell jest nadal otwarta, nie musisz kopiować/uruchamiać pierwszego wiersza (odczyt-Host).
 
 ```azurepowershell-interactive
 $projectName = Read-Host -Prompt "Enter the same project name that you used in the last procedure"
@@ -85,9 +85,9 @@ Remove-AzResourceGroup -ResourceGroupName $resourceGroupName
 Write-Host "Press [ENTER] to continue ..."
 ```
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
-W tym artykule utworzono przestrzeń nazw usługi Event Hubs i Centrum zdarzeń w przestrzeni nazw. Aby uzyskać instrukcje krok po kroku wysyłania zdarzeń do (lub) odbieranie zdarzeń z Centrum zdarzeń, zobacz **wysyłania i odbierania zdarzeń** samouczków:
+W tym artykule opisano tworzenie Event Hubs przestrzeni nazw oraz centrum zdarzeń w przestrzeni nazw. Aby uzyskać instrukcje krok po kroku dotyczące wysyłania zdarzeń do (lub) odbierania zdarzeń z centrum zdarzeń, zobacz samouczki **wysyłania i odbierania zdarzeń** :
 
 - [.NET Core](event-hubs-dotnet-standard-getstarted-send.md)
 - [.NET Framework](event-hubs-dotnet-framework-getstarted-send.md)
@@ -95,7 +95,7 @@ W tym artykule utworzono przestrzeń nazw usługi Event Hubs i Centrum zdarzeń 
 - [Python](event-hubs-python-get-started-send.md)
 - [Node.js](event-hubs-node-get-started-send.md)
 - [Go](event-hubs-go-get-started-send.md)
-- [C (tylko Wyślij)](event-hubs-c-getstarted-send.md)
+- [C (tylko wysyłanie)](event-hubs-c-getstarted-send.md)
 - [Apache Storm (tylko reecive)](event-hubs-storm-getstarted-receive.md)
 
 

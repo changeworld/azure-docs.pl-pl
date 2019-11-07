@@ -1,19 +1,19 @@
 ---
-title: Tworzenie pamięci podręcznej platformy Azure HPC (wersja zapoznawcza)
+title: Tworzenie pamięci podręcznej platformy Azure HPC
 description: Jak utworzyć wystąpienie pamięci podręcznej platformy Azure HPC
 author: ekpgh
 ms.service: hpc-cache
 ms.topic: tutorial
-ms.date: 10/01/2019
+ms.date: 10/30/2019
 ms.author: rohogue
-ms.openlocfilehash: 7052b88a24ff5353656a71a7bfb044922ae1415c
-ms.sourcegitcommit: d4c9821b31f5a12ab4cc60036fde00e7d8dc4421
+ms.openlocfilehash: 1b9d2d3c46aab2096dd9208e0bea7f7776c0e429
+ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/01/2019
-ms.locfileid: "71709979"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73582703"
 ---
-# <a name="create-an-azure-hpc-cache-preview"></a>Tworzenie pamięci podręcznej platformy Azure HPC (wersja zapoznawcza)
+# <a name="create-an-azure-hpc-cache"></a>Tworzenie pamięci podręcznej platformy Azure HPC
 
 Użyj Azure Portal, aby utworzyć pamięć podręczną.
 
@@ -23,7 +23,7 @@ Użyj Azure Portal, aby utworzyć pamięć podręczną.
 
 ![zrzut ekranu strony szczegółów projektu w Azure Portal](media/hpc-cache-create-basics.png)
 
-W obszarze **szczegóły projektu**wybierz subskrypcję i grupę zasobów, w której będzie hostowana pamięć podręczna. Upewnij się, że subskrypcja znajduje się na liście [dostęp do wersji zapoznawczej](hpc-cache-prereqs.md#azure-subscription) .
+W obszarze **szczegóły projektu**wybierz subskrypcję i grupę zasobów, w której będzie hostowana pamięć podręczna. Upewnij się, że subskrypcja znajduje się na liście [dostęp](hpc-cache-prereqs.md#azure-subscription) .
 
 W obszarze **Szczegóły usługi**Ustaw nazwę pamięci podręcznej i inne atrybuty:
 

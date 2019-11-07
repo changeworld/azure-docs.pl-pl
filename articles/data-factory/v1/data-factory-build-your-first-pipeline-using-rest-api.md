@@ -1,5 +1,5 @@
 ---
-title: Tworzenie pierwszej fabryki danych (REST) | Microsoft Docs
+title: Tworzenie pierwszej fabryki danych (REST)
 description: W tym samouczku przedstawiono instrukcje tworzenia przykładowego potoku usługi Azure Data Factory przy użyciu interfejsu API REST usługi Data Factory.
 services: data-factory
 documentationcenter: ''
@@ -11,17 +11,17 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: tutorial
 ms.date: 11/01/2017
-ms.openlocfilehash: da62b07b03aea94749f1d0a332d52790a06635ce
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.openlocfilehash: 7644bac01784ea795f24b967223b0eb37354ca87
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73162549"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73682976"
 ---
 # <a name="tutorial-build-your-first-azure-data-factory-using-data-factory-rest-api"></a>Samouczek: Tworzenie pierwszej fabryki danych Azure przy użyciu interfejsu API REST usługi Fabryka danych
 > [!div class="op_single_selector"]
 > * [Przegląd i wymagania wstępne](data-factory-build-your-first-pipeline.md)
-> * [Visual Studio](data-factory-build-your-first-pipeline-using-vs.md)
+> * [Program Visual Studio](data-factory-build-your-first-pipeline-using-vs.md)
 > * [Program PowerShell](data-factory-build-your-first-pipeline-using-powershell.md)
 > * [Szablon usługi Resource Manager](data-factory-build-your-first-pipeline-using-arm.md)
 > * [Interfejs API REST](data-factory-build-your-first-pipeline-using-rest-api.md)
@@ -476,7 +476,7 @@ Monitorowanie wycinków i rozwiązywanie problemów jest również możliwe za p
 ## <a name="summary"></a>Podsumowanie
 W tym samouczku opisano tworzenie fabryki danych Azure do przetwarzania danych przez uruchomienie skryptu programu Hive w klastrze platformy Hadoop w usłudze HDInsight. Użyto Edytora fabryki danych w witrynie Azure Portal, aby:
 
-1. Tworzenie **fabryki danych** Azure.
+1. Utworzyć **fabrykę danych** Azure.
 2. Utworzyć dwie **połączone usługi**:
    1. Połączoną usługę **Azure Storage** w celu połączenia magazynu obiektów blob Azure, w którym przechowywane są pliki wejściowe/wyjściowe, z fabryką danych.
    2. Połączoną usługę **Azure HDInsight** na żądanie w celu połączenia klastra platformy Hadoop w usłudze HDInsight na żądanie z fabryką danych. Usługa Fabryka danych Azure tworzy klaster just in time platformy Hadoop w usłudze HDInsight, aby przetwarzać dane wejściowe i generować dane wyjściowe.

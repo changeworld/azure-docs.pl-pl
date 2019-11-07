@@ -1,43 +1,43 @@
 ---
-title: Tworzenie i udostępnianie zapytania w Azure Portal
+title: Tworzenie i udostępnianie zapytania w witrynie Azure Portal
 description: W tym samouczku dowiesz się, jak utworzyć zapytanie grafu zasobów i udostępnić je innym osobom w Azure Portal.
 author: DCtheGeek
 ms.author: dacoulte
 ms.date: 10/23/2019
 ms.topic: tutorial
 ms.service: resource-graph
-ms.openlocfilehash: 10f93f34923fb2399a4b2053167576ba004ae467
-ms.sourcegitcommit: 8e271271cd8c1434b4254862ef96f52a5a9567fb
+ms.openlocfilehash: e49cff5a9b9b2c8841b6cc685d4778688c214d26
+ms.sourcegitcommit: 6c2c97445f5d44c5b5974a5beb51a8733b0c2be7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72821683"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73622483"
 ---
-# <a name="tutorial-create-and-share-an-azure-resource-graph-query-in-azure-portal"></a>Samouczek: Tworzenie i udostępnianie kwerendy wykresu zasobów platformy Azure w Azure Portal
+# <a name="tutorial-create-and-share-an-azure-resource-graph-query-in-the-azure-portal"></a>Samouczek: Tworzenie i udostępnianie kwerendy wykresu zasobów platformy Azure w Azure Portal
 
-Eksplorator usługi Azure Resource Graph umożliwia zapisywanie zapytań grafu zasobów bezpośrednio w Azure Portal. Istnieją dwa typy zapytań, _prywatne_ i _udostępnione_. Zapytanie _prywatne_ jest zapisywane w ustawieniach Azure Portal, ale _udostępnione_ zapytanie jest zasobem Menedżer zasobów, którym można zarządzać za pomocą kontroli dostępu opartej na rolach (RBAC) i chronionych blokadami zasobów.
+Eksplorator usługi Azure Resource Graph umożliwia zapisywanie zapytań grafu zasobów bezpośrednio w Azure Portal. Istnieją dwa typy zapytań: _Private_ i _Shared_. Zapytanie prywatne zostanie zapisane w ustawieniach Azure Portal. Zapytanie udostępnione jest zasobem Menedżer zasobów, którym można zarządzać za pomocą kontroli dostępu opartej na rolach (RBAC) i chronionych przy użyciu blokad zasobów.
 
-Zapisywanie zapytań w Azure Portal pozwala zaoszczędzić czas poświęcony na wyszukiwanie ulubionych lub często używanych zapytań. Podczas udostępniania zapytań, zespół może być spójny i powtarzalny. W tym samouczku wykonasz następujące czynności:
+Zapisując zapytania w Azure Portal, można zaoszczędzić czas, w którym można szukać ulubionych lub często używanych zapytań. Po udostępnieniu zapytań można ułatwić zespołowi zrealizowanie celów spójności i wydajności poprzez powtarzanie.
+
+W tym samouczku wykonasz następujące zadania:
 
 > [!div class="checklist"]
-> - Tworzenie i usuwanie zapytania _prywatnego_
-> - Utwórz zapytanie _udostępnione_
-> - Odnajdź _udostępnione_ zapytania
-> - Usuń _udostępnione_ zapytanie
+> - Tworzenie i usuwanie zapytania prywatnego
+> - Utwórz zapytanie udostępnione
+> - Odnajdź udostępnione zapytania
+> - Usuń udostępnione zapytanie
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-Do wykonania kroków tego samouczka potrzebna jest subskrypcja platformy Azure. Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpłatne konto](https://azure.microsoft.com/free/).
+Do wykonania kroków tego samouczka potrzebna jest subskrypcja platformy Azure. Jeśli nie masz subskrypcji, przed rozpoczęciem utwórz [bezpłatne konto](https://azure.microsoft.com/free/).
 
 ## <a name="create-and-delete-a-private-query"></a>Tworzenie i usuwanie zapytania prywatnego
 
-Zapytania _prywatne_ są dostępne tylko dla konta, które je utworzyło. Ponieważ są one zapisywane w ustawieniach Azure Portal konta, można je tworzyć, używać i usuwać z wewnątrz Azure Portal. Zapytanie _prywatne_ nie jest zasobem Menedżer zasobów. Utwórz nowe zapytanie _prywatne_ , wykonując następujące czynności:
+Zapytania prywatne są dostępne i widoczne tylko dla konta, które je tworzy. Ponieważ są one zapisywane w ustawieniach Azure Portal konta, mogą być tworzone, używane i usuwane tylko z wewnątrz Azure Portal. Zapytanie prywatne nie jest zasobem Menedżer zasobów. Aby utworzyć nowe zapytanie prywatne, wykonaj następujące kroki:
 
-1. W menu portalu wybierz pozycję "wszystkie usługi" lub użyj pola wyszukiwania platformy Azure w górnej części wszystkich stron.
-   Wyszukaj i wybierz pozycję "Eksplorator grafów zasobów".
+1. W menu portalu wybierz pozycję **wszystkie usługi** lub użyj pola wyszukiwania Azure w górnej części wszystkich stron. Wyszukaj, a następnie wybierz pozycję **Eksplorator grafów zasobów**.
 
-1. Na karcie "kwerenda 1" na stronie Eksplorator zasobów platformy Azure wprowadź następujące zapytanie. Aby uzyskać informacje dotyczące tego zapytania, zobacz [przykłady — liczba maszyn wirtualnych według typu systemu operacyjnego](../samples/starter.md#count-virtual-machines-by-os-type).
-   Wybierz pozycję **Uruchom zapytanie** , aby zobaczyć wyniki zapytania w dolnym okienku.
+1. Na karcie **zapytanie 1** na stronie Eksplorator zasobów platformy Azure wprowadź następujące zapytanie:
 
    ```kusto
    Resources
@@ -45,79 +45,94 @@ Zapytania _prywatne_ są dostępne tylko dla konta, które je utworzyło. Poniew
    | summarize count() by tostring(properties.storageProfile.osDisk.osType)
    ```
 
-1. Wybierz pozycję **Zapisz** lub **Zapisz jako**, wprowadź _nazwę_ jako "Liczba maszyn wirtualnych według systemu operacyjnego", pozostaw _Typ_ jako "zapytanie prywatne", a następnie wybierz pozycję **Zapisz** w dolnej części okienka _Zapisz zapytanie_ . Tytuł karty zmieni się z "Query 1" na "Liczba maszyn wirtualnych według systemu operacyjnego".
+   Wybierz pozycję **Uruchom zapytanie** , aby wyświetlić wyniki zapytania w dolnym okienku.
 
-1. Przejdź do Eksploratora grafu zasobów platformy Azure w Azure Portal, a następnie wróć do niego. Zapisane zapytanie nie jest już wyświetlane, a karta "Query 1" została zwrócona.
+   Aby uzyskać więcej informacji na temat tego zapytania, zobacz [przykłady — liczba maszyn wirtualnych według typu systemu operacyjnego](../samples/starter.md#count-virtual-machines-by-os-type).
 
-1. Wybierz pozycję **Otwórz zapytanie**. Sprawdź, czy _Typ_ to "zapytanie prywatne". Zapisane "Liczba maszyn wirtualnych według systemu operacyjnego" teraz pojawiają się na liście _Nazwa zapytania_ . Wybierz łącze tytuł zapisanego zapytania i zostanie załadowane do nowej karty z tą nazwą zapytania.
 
-   > [!NOTE]
-   > Gdy zapisane zapytanie jest otwarte, a na karcie zostanie wyświetlona jego _Nazwa_, przycisk **Zapisz** aktualizuje go przy użyciu wszelkich wprowadzonych zmian. Aby utworzyć nowe zapisane zapytanie, użyj polecenia **Zapisz jako** i postępuj zgodnie z instrukcjami, tak jakby były to nowe zapisane zapytanie.
+1. Wybierz **pozycję Zapisz** lub **Zapisz jako**, **Wprowadź liczbę maszyn wirtualnych według systemu operacyjnego** jako nazwę, pozostaw jako **kwerendę prywatną**, a następnie wybierz pozycję **Zapisz** w dolnej części okienka **Zapisz zapytanie** . Tytuł karty zostanie zmieniony z **zapytania 1** na **liczbę maszyn wirtualnych według systemu operacyjnego**.
 
-1. Aby usunąć zapisane zapytanie, wybierz pozycję **Otwórz zapytanie** ponownie i sprawdź, czy jest to _Typ_ "zapytanie prywatne". W wierszu zapisywanych zapytań "Liczba maszyn wirtualnych według systemu operacyjnego" Wybierz ikonę kosza. W oknie dialogowym potwierdzenia wybierz pozycję **tak** , aby zakończyć usuwanie zapytania. Następnie zamknij okienko _Otwórz zapytanie_ .
+1. Przejdź do Eksploratora grafów zasobów platformy Azure w Azure Portal, a następnie wróć do niego. Zwróć uwagę, że zapisane zapytanie nie jest już wyświetlane, a karta **zapytanie 1** zwróci wartość.
+
+1. Wybierz pozycję **Otwórz zapytanie**. Upewnij się, że typ jest **kwerendą prywatną**. Zapisane nazwy **maszyn wirtualnych według systemu operacyjnego** zostaną wyświetlone na liście **Nazwa zapytania** . Po wybraniu linku tytułu zapisanego zapytania zostanie ono załadowane do nowej karty zawierającej nazwę tego zapytania.
+
+   > [!NOTE] 
+   >Gdy zapisane zapytanie jest otwarte, a na karcie zostanie wyświetlona jego nazwa, wybranie przycisku **Zapisz** aktualizuje go o wszelkie wprowadzone zmiany. Aby utworzyć nowe zapisane zapytanie z tego otwartego zapytania, wybierz pozycję **Zapisz jako** i postępuj zgodnie z tym, jeśli zapisano zupełnie nowe zapytanie.
+
+1. Aby usunąć zapisane zapytanie, wybierz pozycję **Otwórz zapytanie** ponownie i sprawdź, czy pole **Typ** jest ustawione na **zapytanie prywatne**. W wierszu zapisanego zapytania `Count VMs by OS` wybierz pozycję **Usuń** (ikona kosza). W oknie dialogowym potwierdzenia wybierz pozycję **tak** , aby zakończyć usuwanie zapytania.
+   Następnie zamknij okienko **Otwórz zapytanie** .
 
 ## <a name="create-a-shared-query"></a>Utwórz zapytanie udostępnione
 
-W przeciwieństwie do zapytania _prywatnego_ , _udostępnione_ zapytanie jest zasobem Menedżer zasobów. Oznacza to, że zapytanie jest zapisywane w grupie zasobów, może być zarządzane i kontrolowane za pomocą RBAC, a nawet być chronione przy użyciu blokad zasobów. Jako zasób, każdy z odpowiednimi uprawnieniami może go zobaczyć i używać. Utwórz nowe zapytanie _udostępnione_ , wykonując następujące czynności:
+W przeciwieństwie do zapytania prywatnego, udostępnione zapytanie jest zasobem Menedżer zasobów. Oznacza to, że zapytanie jest zapisywane w grupie zasobów, może być zarządzane i kontrolowane za pomocą RBAC, a nawet może być chronione przy użyciu blokad zasobów. Jako zasób, każdy, kto ma odpowiednie uprawnienia, może go zobaczyć i używać.
+Aby utworzyć nowe zapytanie udostępnione, wykonaj następujące kroki:
 
-1. W menu portalu wybierz pozycję "wszystkie usługi" lub użyj pola wyszukiwania platformy Azure w górnej części wszystkich stron.
-   Wyszukaj i wybierz pozycję "Eksplorator grafów zasobów".
+1. W menu portalu wybierz pozycję **wszystkie usługi**lub użyj pola wyszukiwania Azure w górnej części wszystkich stron, aby wyszukać i wybrać pozycję **Eksplorator grafów zasobów**.
 
-1. Na karcie "kwerenda 1" na stronie Eksplorator zasobów platformy Azure wprowadź następujące zapytanie. Aby uzyskać informacje dotyczące tego zapytania, zobacz [przykłady — liczba maszyn wirtualnych według typu systemu operacyjnego](../samples/starter.md#count-virtual-machines-by-os-type).
-   Wybierz pozycję **Uruchom zapytanie** , aby wyświetlić wyniki zapytania w dolnym okienku.
+1. Na karcie **zapytanie 1** na stronie Eksplorator zasobów platformy Azure wprowadź następujące zapytanie:
 
    ```kusto
    Resources
    | where type =~ 'Microsoft.Compute/virtualMachines'
    | summarize count() by tostring(properties.storageProfile.osDisk.osType)
    ```
+    
+   Wybierz pozycję **Uruchom zapytanie** , aby wyświetlić wyniki zapytania w dolnym okienku.
+
+   Aby uzyskać więcej informacji na temat tego zapytania, zobacz [przykłady — liczba maszyn wirtualnych według typu systemu operacyjnego](../samples/starter.md#count-virtual-machines-by-os-type).
 
 1. Wybierz pozycję **Zapisz** lub **Zapisz jako**.
 
+   
    ![Zapisz nowe zapytanie przy użyciu przycisku Zapisz](../media/create-share-query/save-shared-query-buttons.png)
 
-1. W okienku _Zapisz zapytanie_ wprowadź _nazwę_ jako "Liczba maszyn wirtualnych według systemu operacyjnego", Zmień _Typ_ na "udostępnione zapytanie", ustaw _Opis_ na "Liczba maszyn wirtualnych według typu systemu operacyjnego" i wybierz _subskrypcję_ , w której utworzono zasób zapytania. Pozostaw zaznaczone pole wyboru "Publikuj w usłudze Resource-Graph-regrafs", a w _lokalizacji grupy zasobów_ ustaw wartość "(USA) zachodnie stany USA". Następnie wybierz pozycję **Zapisz** w dolnej części okienka _Zapisz zapytanie_ . Tytuł karty zmieni się z "Query 1" na "Liczba maszyn wirtualnych według systemu operacyjnego". Używana jest Grupa zasobów po raz pierwszy "Zażądaj grafu", co powoduje utworzenie grupy zasobów.
+1. W okienku **Zapisz zapytanie** wprowadź wartość w polu **Liczba maszyn wirtualnych według systemu operacyjnego** .
 
+1. Zmień typ na **zapytanie udostępnione**, Ustaw opis na **Liczba maszyn wirtualnych według typu systemu operacyjnego**i ustaw **subskrypcję** , aby określić miejsce utworzenia zasobu zapytania.
+
+1. Pozostaw zaznaczone pole wyboru **Publikuj do zasobów-Graph-zapytania** , a w **pozycji Grupa zasobów** ustaw wartość **(Stany Zjednoczone) zachodnie stany USA**.
+
+1. Wybierz pozycję **Zapisz** w dolnej części okienka **Zapisz zapytanie** . Tytuł karty zostanie zmieniony z **zapytania 1** na **liczbę maszyn wirtualnych według systemu operacyjnego**. Przy pierwszym użyciu grupy zasobów **zapytania z wykresem zasobów** czas zapisywania trwa dłużej niż oczekiwano, gdy grupa zasobów zostanie utworzona.
+   
    ![Zapisz nowe zapytanie jako zapytanie udostępnione](../media/create-share-query/save-shared-query-window.png)
 
-   > [!NOTE]
-   > W razie potrzeby usuń zaznaczenie, aby podać nazwę istniejącej grupy zasobów, w której ma zostać zapisane zapytanie udostępnione. Użycie domyślnej nazwy grupy zasobów dla zapytań sprawia, że zapytania _udostępnione_ są łatwiejsze do odnajdywania. Bardziej oczywiste jest również przeznaczenie tej grupy zasobów. Jednak wybranie istniejącej grupy zasobów może zostać wykonane ze względów bezpieczeństwa w oparciu o istniejące uprawnienia.
+   > [!NOTE] 
+   > Możesz wyczyścić pole wyboru **Publikuj do zasobów-Graph-** querys, jeśli chcesz podać nazwę istniejącej grupy zasobów, w której ma zostać zapisane zapytanie udostępnione. Użycie domyślnej nazwy grupy zasobów dla zapytań sprawia, że zapytania udostępnione są łatwiejsze do odnajdywania. Umożliwia również dokładniejsze przeznaczenie tej grupy zasobów. Można jednak wybrać istniejącą grupę zasobów ze względów bezpieczeństwa na podstawie istniejących uprawnień.
 
-1. Przejdź do Eksploratora grafu zasobów platformy Azure w Azure Portal, a następnie wróć do niego. Zapisane zapytanie nie jest już wyświetlane, a karta "Query 1" została zwrócona.
+1. Przejdź do Eksploratora grafów zasobów platformy Azure w Azure Portal, a następnie wróć do niego. Zwróć uwagę, że zapisane zapytanie nie jest już wyświetlane, a karta **zapytanie 1** zwróci wartość.
 
-1. Wybierz pozycję **Otwórz zapytanie**. Sprawdź, czy _Typ_ to "udostępnione zapytanie" i czy kombinacja _subskrypcji_ i _grupy zasobów_ jest zgodna z miejscem, w którym zapisano zapytanie. Zapisane "Liczba maszyn wirtualnych według systemu operacyjnego" teraz pojawiają się na liście _Nazwa zapytania_ . Wybierz łącze tytuł zapisanego zapytania i zostanie załadowane do nowej karty z tą nazwą zapytania. Jako zapytanie _udostępnione_ wyświetla ikonę na karcie obok tytułu oznaczającego go jako udostępniony.
+1. Wybierz pozycję **Otwórz zapytanie**. Sprawdź, czy typ jest ustawiony na **zapytanie udostępnione** i czy kombinacja **subskrypcji** i **grupy zasobów** jest zgodna z miejscem, w którym zapisano zapytanie. Liczba zapisanych **maszyn wirtualnych według elementu systemu operacyjnego** zostanie teraz wyświetlona na liście **Nazwa zapytania** . Wybierz łącze tytuł zapisanego zapytania, aby załadować je do nowej karty zawierającej nazwę tego zapytania. Jako zapytanie udostępnione wyświetla ikonę na karcie obok tytułu, oznaczając ją jako udostępnioną.
 
    ![Pokaż udostępnione zapytanie z ikoną](../media/create-share-query/show-saved-shared-query.png)
 
-   > [!NOTE]
-   > Gdy zapisane zapytanie jest otwarte, a na karcie zostanie wyświetlona jego _Nazwa_, przycisk **Zapisz** aktualizuje go przy użyciu wszelkich wprowadzonych zmian. Aby utworzyć nowe zapisane zapytanie, użyj polecenia **Zapisz jako** i postępuj zgodnie z instrukcjami, tak jakby były to nowe zapisane zapytanie.
+   > [!NOTE] 
+   > Gdy zapisane zapytanie jest otwarte, a karta wyświetla jego nazwę, przycisk **Zapisz** aktualizuje go przy użyciu wszelkich wprowadzonych zmian. Aby utworzyć nowe zapisane zapytanie, wybierz pozycję **Zapisz jako** i postępuj zgodnie z tym, jeśli zapisano zupełnie nowe zapytanie.
 
 ## <a name="discover-shared-queries"></a>Odnajdź udostępnione zapytania
 
-Ponieważ _udostępnione_ zapytanie jest zasobem Menedżer zasobów, można je znaleźć na kilka sposobów:
+Ponieważ udostępnione zapytanie jest zasobem Menedżer zasobów, można je znaleźć na kilka sposobów:
 
-- W Eksploratorze grafu zasobów wybierz pozycję **Otwórz zapytanie** i ustaw _Typ_ na "udostępnione zapytanie"
-- Strona portalu kwerendy grafu zasobów
-- Grupa zasobów, w której została zapisana
-- Z zapytaniem do grafu zasobów
+- W Eksploratorze grafu zasobów wybierz pozycję **Otwórz zapytanie** i ustaw typ **zapytania udostępnione**.
+- Na stronie portalu kwerendy grafu zasobów.
+- Z grupy zasobów, w której zapisano udostępnione zapytanie.
+- Za pomocą zapytania do grafu zasobów.
 
 ### <a name="view-resource-graph-queries"></a>Wyświetl zapytania grafu zasobów
 
-W Azure Portal na stronie kwerendy grafu zasobów są wyświetlane zapytania _udostępnione_ , do których zalogowane konto ma dostęp. Ta strona umożliwia filtrowanie według nazwy, subskrypcji, grupy zasobów i innych właściwości zapytania grafu zasobów. Zapytania dotyczące grafów zasobów można także oznaczyć, wyeksportować i usunąć przy użyciu tego interfejsu.
+W Azure Portal na stronie kwerendy grafu zasobów są wyświetlane udostępnione zapytania, do których mają dostęp zalogowane konto. Ta strona umożliwia filtrowanie według nazwy, subskrypcji, grupy zasobów i innych właściwości zapytania grafu zasobów. Za pomocą tego interfejsu można także Tagi, eksportować i usuwać zapytania dotyczące wykresów zasobów.
 
-Wybranie jednego z zapytań spowoduje otwarcie strony zapytania wykresu zasobów. Podobnie jak w przypadku innych zasobów Menedżer zasobów, ta strona oferuje Interaktywny przegląd wraz z dziennikiem aktywności, kontrolą dostępu i tagami. Blokadę zasobu można również zastosować bezpośrednio z tej strony.
+Wybranie jednego z zapytań spowoduje otwarcie strony zapytania wykresu zasobów. Podobnie jak w przypadku innych zasobów Menedżer zasobów, ta strona oferuje Interaktywny przegląd wraz z dziennikiem aktywności, kontrolą dostępu i tagami. Możesz również zastosować blokadę zasobu bezpośrednio z tej strony.
 
-Uzyskaj dostęp do strony zapytania grafu zasobów z menu Portal, wybierając pozycję "wszystkie usługi" lub korzystając z pola wyszukiwania platformy Azure w górnej części wszystkich stron. Wyszukaj i wybierz pozycję "Eksplorator grafów zasobów".
+Uzyskaj dostęp do strony zapytania grafu zasobów z menu Portal, wybierając pozycję **wszystkie usługi** lub korzystając z pola wyszukiwania platformy Azure w górnej części wszystkich stron. Wyszukaj i wybierz pozycję **Eksplorator grafów zasobów**.
 
 ### <a name="list-resource-groups-resources"></a>Wyświetlanie listy zasobów grup zasobów
 
 Zapytanie grafu zasobów jest wyświetlane wraz z innymi zasobami, które są częścią grupy zasobów.
-Wybranie zapytania grafu zasobów spowoduje otwarcie strony dla tego zapytania. Opcje wielokropka lub kliknij prawym przyciskiem myszy działają tak samo, jak na stronie kwerendy wykresu zasobów.
+Wybranie zapytania grafu zasobów spowoduje otwarcie strony dla tego zapytania. Opcje menu wielokropka i skrótu (wyzwalane przez kliknięcie prawym przyciskiem myszy) działają tak samo jak na stronie kwerendy grafu zasobów.
 
 ### <a name="query-resource-graph"></a>Zapytanie grafu zasobów
 
-Jako zasób Menedżer zasobów kwerendy grafu zasobów można znaleźć za pomocą zapytania do grafu zasobów.
-Poniższe ograniczenia zapytania wykresu zasobów według typu `Microsoft.ResourceGraph/queries`, a następnie używają `project` do wyświetlania tylko nazwy, czasu modyfikacji i samego zapytania:
+Zapytania dotyczące wykresów zasobów można znaleźć za pomocą zapytania do grafu zasobów. Poniższe ograniczenia zapytania wykresu zasobów według typu `Microsoft.ResourceGraph/queries`, a następnie używają `project` do wyświetlania tylko nazwy, czasu modyfikacji i samego zapytania:
 
 ```kusto
 Resources
@@ -127,23 +142,23 @@ Resources
 
 ## <a name="delete-a-shared-query"></a>Usuń udostępnione zapytanie
 
-Jeśli zapytanie _udostępnione_ nie jest już potrzebne, usuń je. Usunięcie zapytania _udostępnionego_ spowoduje usunięcie rzeczywistego zasobu Menedżer zasobów. Wszystkie pulpity nawigacyjne, na których wykres wyników został przypięty, teraz wyświetlają komunikat o błędzie. Gdy zostanie wyświetlony komunikat o błędzie, użyj przycisku **Usuń z pulpitu nawigacyjnego** , aby wyczyścić pulpit nawigacyjny.
+Jeśli zapytanie udostępnione nie jest już potrzebne, usuń je. Usuwając zapytanie udostępnione, można usunąć odpowiedni zasób Menedżer zasobów. Wszystkie pulpity nawigacyjne, do których wykres wyników został przypięty, teraz wyświetlają komunikat o błędzie. Gdy zostanie wyświetlony komunikat o błędzie, użyj przycisku **Usuń z pulpitu nawigacyjnego** , aby wyczyścić pulpit nawigacyjny.
 
-Zapytanie _udostępnione_ można usunąć z następujących interfejsów:
+Zapytanie udostępnione można usunąć za pomocą następujących interfejsów:
 - Strona zapytania grafu zasobów
 - Strona kwerendy wykresu zasobów
-- Eksplorator wykresu zasobów — Otwórz stronę zapytania
+- Strona **otwieranie zapytania** w Eksploratorze grafu zasobów
 - Strona grupy zasobów
 
 ## <a name="clean-up-resources"></a>Oczyszczanie zasobów
 
-Po zakończeniu pracy z tym samouczkiem Usuń utworzone zapytania _prywatne_ i _udostępnione_ , jeśli nie będą już potrzebne.
+Po zakończeniu pracy z tym samouczkiem Usuń utworzone zapytania prywatne i udostępnione, jeśli nie będą już potrzebne.
 
 ## <a name="next-steps"></a>Następne kroki
 
-- Uruchom pierwsze zapytanie przy użyciu [Azure Portal](../first-query-portal.md)
-- Uzyskaj więcej informacji na temat [języka zapytań](../concepts/query-language.md)
-- Dowiedz się, jak [eksplorować zasoby](../concepts/explore-resources.md)
-- Zobacz przykłady [zapytań dla początkujących](../samples/starter.md)
-- Zobacz przykłady [zapytań zaawansowanych](../samples/advanced.md)
-- Podziel się opinią na platformie [UserVoice](https://feedback.azure.com/forums/915958-azure-governance)
+- Uruchom pierwsze zapytanie przy użyciu [Azure Portal](../first-query-portal.md).
+- Uzyskaj więcej informacji na temat [języka zapytań](../concepts/query-language.md).
+- Dowiedz się więcej o sposobach [eksplorowania zasobów](../concepts/explore-resources.md).
+- Zobacz przykłady [początkowych zapytań](../samples/starter.md).
+- Zobacz przykłady [zaawansowanych zapytań](../samples/advanced.md).
+- Prześlij opinię na temat usługi [UserVoice](https://feedback.azure.com/forums/915958-azure-governance).

@@ -1,7 +1,7 @@
 ---
 title: Przenoszenie projektu z ograniczoną wersją próbną na platformę Azure
 titleSuffix: Azure Cognitive Services
-description: Dowiedz się, jak przenieść projekt ograniczonej wersji próbnej na platformę Azure.
+description: Czy masz ograniczony projekt wersji próbnej w Custom Vision? W tym artykule pokazano, jak przenieść go na platformę Azure za pomocą skryptu migracji.
 services: cognitive-services
 author: anrothMSFT
 manager: nitinme
@@ -10,18 +10,18 @@ ms.subservice: custom-vision
 ms.topic: conceptual
 ms.date: 02/19/2019
 ms.author: anroth
-ms.openlocfilehash: 22c3767dfac1e377890f1e01517d18263e694854
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 5c583270428a459f500ae0e220592805fd1bf454
+ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68560931"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73718893"
 ---
 # <a name="how-to-move-your-limited-trial-project-to-azure"></a>Jak przenieść projekt ograniczonej wersji próbnej na platformę Azure
 
 Ponieważ Custom Vision Service przejdziemy na platformę Azure, zostanie zakończona obsługa ograniczonych projektów w wersji próbnej poza platformą Azure. W tym dokumencie przedstawiono sposób używania interfejsów API Custom Vision do kopiowania ograniczonego projektu wersji próbnej do zasobu platformy Azure.
 
-Obsługa wyświetlania ograniczonych projektów próbnych w [witrynie internetowej Custom Vision](https://customvision.ai) zakończyła się 25 marca 2019. W tym dokumencie opisano, jak używać interfejsów API Custom Vision ze skryptem w języku [Python](https://github.com/Azure-Samples/custom-vision-move-project) w usłudze GitHub w celu duplikowania projektu do zasobów platformy Azure.
+Obsługa wyświetlania ograniczonych projektów próbnych w [witrynie internetowej Custom Vision](https://customvision.ai) zakończyła się 25 marca 2019. W tym dokumencie opisano, jak używać interfejsów API Custom Vision ze [skryptem](https://github.com/Azure-Samples/custom-vision-move-project) w języku Python w usłudze GitHub w celu duplikowania projektu do zasobów platformy Azure.
 
 Aby uzyskać więcej informacji, w tym kluczowe terminy w procesie wycofania z ograniczeniami wersji próbnej, zapoznaj się z [informacjami o wersji](https://docs.microsoft.com/azure/cognitive-services/custom-vision-service/release-notes#february-25-2019) lub pocztą e-mail wysłaną do właścicieli ograniczonej wersji próbnej.
 
@@ -54,7 +54,7 @@ Postępuj zgodnie z [przykładowymi instrukcjami dotyczącymi kodu](https://gith
 
 Domyślnie wszystkie ograniczone projekty w wersji próbnej są hostowane w regionie Południowo-środkowe stany USA platformy Azure.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 Projekt został przeniesiony do zasobu platformy Azure. Musisz zaktualizować swoje szkolenia i klucze przewidywania w aplikacjach, które zostały przez Ciebie zapisaniu.
 

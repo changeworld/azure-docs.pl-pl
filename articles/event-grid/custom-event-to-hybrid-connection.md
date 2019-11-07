@@ -1,24 +1,24 @@
 ---
-title: Wysyłanie zdarzeń niestandardowych do połączenia hybrydowego — Event Grid
-description: Za pomocą usługi Azure Event Grid i interfejsu wiersza polecenia platformy Azure można opublikować temat i zasubskrybować dane zdarzenie. Dla punktu końcowego jest używane Połączenie hybrydowe.
+title: 'Samouczek: wysyłanie zdarzeń niestandardowych do połączenia hybrydowego — Event Grid'
+description: 'Samouczek: publikowanie tematu za pomocą Azure Event Grid i interfejsu wiersza polecenia platformy Azure oraz subskrybowanie tego zdarzenia. Połączenie hybrydowe jest używane dla punktu końcowego.'
 services: event-grid
 keywords: ''
 author: spelluru
 ms.author: spelluru
-ms.date: 10/22/2019
+ms.date: 11/05/2019
 ms.topic: tutorial
 ms.service: event-grid
 ms.custom: seodec18
-ms.openlocfilehash: 7e1493903cdb51191c942762895644ee12c49f10
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.openlocfilehash: 2773d06fdfc606faaab88340fc2ef9685bba21f9
+ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72790257"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73720705"
 ---
 # <a name="tutorial-route-custom-events-to-azure-relay-hybrid-connections-with-azure-cli-and-event-grid"></a>Samouczek: kierowanie zdarzeń niestandardowych do Azure Relay Połączenia hybrydowe za pomocą interfejsu wiersza polecenia platformy Azure i Event Grid
 
-Azure Event Grid to usługa obsługi zdarzeń dla chmury. Połączenia hybrydowe usługi Azure Relay to jeden z obsługiwanych typów procedur obsługi zdarzeń. Połączeń hybrydowych można używać jako procedur obsługi zdarzeń, jeśli zachodzi potrzeba przetwarzania zdarzeń z aplikacji, które nie mają publicznego punktu końcowego. Te aplikacje mogą znajdować się w sieci korporacyjnej firmy. W tym artykule omówiono tworzenie tematu niestandardowego, subskrybowanie go i wyzwalanie zdarzenia w celu wyświetlenia wyniku za pomocą interfejsu wiersza polecenia platformy Azure. Zdarzenia wysyła się do połączenia hybrydowego.
+Azure Event Grid to usługa obsługi zdarzeń dla chmury. Połączenia hybrydowe usługi Azure Relay to jedne z obsługiwanych procedur obsługi zdarzeń. Połączeń hybrydowych można używać jako procedur obsługi zdarzeń, jeśli zachodzi potrzeba przetwarzania zdarzeń z aplikacji, które nie mają publicznego punktu końcowego. Te aplikacje mogą znajdować się w sieci korporacyjnej firmy. W tym artykule omówiono tworzenie tematu niestandardowego, subskrybowanie go i wyzwalanie zdarzenia w celu wyświetlenia wyniku za pomocą interfejsu wiersza polecenia platformy Azure. Zdarzenia wysyła się do połączenia hybrydowego.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
@@ -29,7 +29,7 @@ W tym artykule przyjęto założenie, że masz już dostęp do połączenia hybr
 > [!NOTE]
 > Jeśli używasz interfejsu wiersza polecenia platformy Azure na komputerze lokalnym, powinien on być w wersji co najmniej 2.0.56. Aby uzyskać instrukcje na temat instalowania najnowszej wersji interfejsu wiersza polecenia platformy Azure, zobacz [Instalowanie interfejsu wiersza polecenia platformy Azure](/cli/azure/install-azure-cli).
 
-## <a name="create-a-resource-group"></a>Utwórz grupę zasobów
+## <a name="create-a-resource-group"></a>Tworzenie grupy zasobów
 
 Tematy usługi Event Grid to zasoby platformy Azure i muszą być umieszczone w grupie zasobów platformy Azure. Grupa zasobów to kolekcja logiczna przeznaczona do wdrażania zasobów platformy Azure i zarządzania nimi.
 

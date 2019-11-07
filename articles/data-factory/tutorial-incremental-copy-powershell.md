@@ -1,5 +1,5 @@
 ---
-title: Przyrostowe kopiowanie tabeli przy użyciu usługi Azure Data Factory | Microsoft Docs
+title: 'Przyrostowe Kopiowanie tabeli przy użyciu Azure Data Factory '
 description: W tym samouczku utworzysz potok usługi Azure Data Factory, który przyrostowo kopiuje dane z bazy danych Azure SQL Database do magazynu Azure Blob Storage.
 services: data-factory
 documentationcenter: ''
@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: tutorial
 ms.date: 01/22/2018
 ms.author: yexu
-ms.openlocfilehash: 604b859bc144331550db9b71e6b216e35fd2d88a
-ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
+ms.openlocfilehash: bb1ddbddfb2e06f394ac2f57b10e18893879b51b
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70140607"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73683351"
 ---
 # <a name="incrementally-load-data-from-an-azure-sql-database-to-azure-blob-storage"></a>Przyrostowe ładowanie danych z bazy danych Azure SQL Database do magazynu Azure Blob Storage
 W tym samouczku utworzysz fabrykę danych Azure Data Factory z potokiem, który ładuje dane różnicowe z tabeli w bazie danych Azure SQL Database do magazynu Azure Blob Storage. 
@@ -189,14 +189,14 @@ Pamiętaj o następujących kwestiach:
     ```
 
 * Aby utworzyć wystąpienia usługi Data Factory, konto użytkownika używane do logowania się na platformie Azure musi być członkiem roli współautora lub właściciela albo administratorem subskrypcji platformy Azure.
-* Aby uzyskać listę regionów platformy Azure, w których obecnie jest dostępna usługa Data Factory, wybierz dane regiony na poniższej stronie, a następnie rozwiń węzeł **Analiza**, aby zlokalizować pozycję **Data Factory**: [Dostępność produktów według regionów](https://azure.microsoft.com/global-infrastructure/services/). Magazyny danych (usługa Storage, SQL Database itp.) i jednostki obliczeniowe (Azure HDInsight itp.) używane przez fabrykę danych mogą mieścić się w innych regionach.
+* Aby uzyskać listę regionów platformy Azure, w których obecnie jest dostępna usługa Data Factory, wybierz dane regiony na poniższej stronie, a następnie rozwiń węzeł **Analiza**, aby zlokalizować pozycję **Data Factory**: [Produkty dostępne według regionu](https://azure.microsoft.com/global-infrastructure/services/). Magazyny danych (usługa Storage, SQL Database itp.) i jednostki obliczeniowe (Azure HDInsight itp.) używane przez fabrykę danych mogą mieścić się w innych regionach.
 
 
 ## <a name="create-linked-services"></a>Tworzenie połączonych usług
 Połączone usługi tworzy się w fabryce danych w celu połączenia magazynów danych i usług obliczeniowych z fabryką danych. W tej sekcji utworzysz usługi połączone ze swoim kontem magazynu i bazą danych SQL. 
 
 ### <a name="create-a-storage-linked-service"></a>Tworzenie połączonej usługi Storage
-1. W folderze C:\ADF utwórz plik JSON o nazwie AzureStorageLinkedService.json z następującą zawartością. Jeśli folder ADF jeszcze nie istnieje, utwórz go. Przed zapisaniem pliku zastąp wartości `<accountName>` i `<accountKey>` nazwą i kluczem konta magazynu.
+1. W folderze C:\ADF utwórz plik JSON o nazwie AzureStorageLinkedService.json z następującą zawartością. (Utwórz folder ADF, jeśli jeszcze nie istnieje). Przed zapisaniem pliku Zastąp `<accountName>` i `<accountKey>` nazwą i kluczem konta magazynu.
 
     ```json
     {
@@ -230,7 +230,7 @@ Połączone usługi tworzy się w fabryce danych w celu połączenia magazynów 
     ```
 
 ### <a name="create-a-sql-database-linked-service"></a>Tworzenie połączonej usługi bazy danych SQL
-1. W folderze C:\ADF utwórz plik JSON o nazwie AzureSQLDatabaseLinkedService.json z następującą zawartością. Jeśli folder ADF jeszcze nie istnieje, utwórz go. Przed zapisaniem pliku zamień parametry &lt;server&gt;, &lt;database&gt;, &lt;user id&gt; i &lt;password&gt; na nazwę swojego serwera, nazwę bazy danych, identyfikator użytkownika i hasło. 
+1. W folderze C:\ADF utwórz plik JSON o nazwie AzureSQLDatabaseLinkedService.json z następującą zawartością. (Utwórz folder ADF, jeśli jeszcze nie istnieje). Przed zapisaniem pliku Zastąp &lt;Server&gt;, &lt;Database&gt;, &lt;identyfikatorem użytkownika&gt;i &lt;hasło&gt; z nazwą serwera, bazy danych, IDENTYFIKATORem użytkownika i hasłem. 
 
     ```json
     {
@@ -264,7 +264,7 @@ Połączone usługi tworzy się w fabryce danych w celu połączenia magazynów 
     ProvisioningState :
     ```
 
-## <a name="create-datasets"></a>Tworzenie zestawów danych
+## <a name="create-datasets"></a>Utwórz zestawy danych
 W tym kroku utworzysz zestawy danych reprezentujące dane źródłowe i ujścia. 
 
 ### <a name="create-a-source-dataset"></a>Tworzenie zestawu danych źródłowych

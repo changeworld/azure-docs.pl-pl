@@ -1,5 +1,5 @@
 ---
-title: 'Samouczek: tworzenie potoku przy użyciu Kreatora kopiowania | Microsoft Docs'
+title: 'Samouczek: tworzenie potoku przy użyciu Kreatora kopiowania '
 description: Ten samouczek zawiera instrukcje dotyczące tworzenia potoku usługi Azure Data Factory za pomocą działania kopiowania przy użyciu Kreatora kopiowania obsługiwanego w usłudze Data Factory
 services: data-factory
 documentationcenter: ''
@@ -12,22 +12,22 @@ ms.topic: tutorial
 ms.date: 01/22/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: fa5e7735d122dcf06b9b9692abb23441752082fa
-ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
+ms.openlocfilehash: 3afe58baa083ccbfe075476f9a7a8b36c30ca9c8
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70140369"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73682817"
 ---
-# <a name="tutorial-create-a-pipeline-with-copy-activity-using-data-factory-copy-wizard"></a>Samouczek: tworzenie potoku za pomocą działania kopiowania przy użyciu Kreatora kopiowania usługi Data Factory
+# <a name="tutorial-create-a-pipeline-with-copy-activity-using-data-factory-copy-wizard"></a>Samouczek: tworzenie potoku za pomocą działania kopiowania przy użyciu Kreatora kopiowania usługi Fabryka danych
 > [!div class="op_single_selector"]
 > * [Przegląd i wymagania wstępne](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)
 > * [Kreator kopiowania](data-factory-copy-data-wizard-tutorial.md)
-> * [Visual Studio](data-factory-copy-activity-tutorial-using-visual-studio.md)
-> * [PowerShell](data-factory-copy-activity-tutorial-using-powershell.md)
+> * [Program Visual Studio](data-factory-copy-activity-tutorial-using-visual-studio.md)
+> * [Program PowerShell](data-factory-copy-activity-tutorial-using-powershell.md)
 > * [Szablon usługi Azure Resource Manager](data-factory-copy-activity-tutorial-using-azure-resource-manager-template.md)
 > * [Interfejs API REST](data-factory-copy-activity-tutorial-using-rest-api.md)
-> * [Interfejs API programu .NET](data-factory-copy-activity-tutorial-using-dotnet-api.md)
+> * [Interfejs API .NET](data-factory-copy-activity-tutorial-using-dotnet-api.md)
 
 > [!NOTE]
 > Ten artykuł dotyczy wersji 1 usługi Data Factory. Jeśli korzystasz z bieżącej wersji usługi Data Factory, zobacz [samouczek dotyczący działania kopiowania](../quickstart-create-data-factory-dot-net.md). 
@@ -48,7 +48,7 @@ W tym kroku opisano tworzenie fabryki danych Azure o nazwie **ADFTutorialDataFac
 1. Zaloguj się do witryny [Azure Portal](https://portal.azure.com).
 2. Kliknij polecenie **Utwórz zasób** w lewym górnym rogu, kliknij pozycję **Dane + analiza**, a następnie **Fabryka danych**. 
    
-   ![Nowy-> Fabryka danych](./media/data-factory-copy-data-wizard-tutorial/new-data-factory-menu.png)
+   ![Nowy->Fabryka danych](./media/data-factory-copy-data-wizard-tutorial/new-data-factory-menu.png)
 2. W bloku **Nowa fabryka danych**:
    
    1. Wprowadź wartość **ADFTutorialDataFactory** dla opcji **Nazwa**.
@@ -61,10 +61,10 @@ W tym kroku opisano tworzenie fabryki danych Azure o nazwie **ADFTutorialDataFac
       - Wybierz pozycję **Użyj istniejącej**, aby wybrać istniejącą grupę zasobów.
       - Wybierz pozycję **Utwórz nowy**, aby wprowadzić nazwę grupy zasobów.
           
-        W niektórych krokach w tym samouczku zakłada się, że dla grupy zasobów używasz nazwy: **ADFTutorialResourceGroup**. Informacje na temat grup zasobów znajdują się w artykule [Using resource groups to manage your Azure resources](../../azure-resource-manager/resource-group-overview.md) (Używanie grup zasobów do zarządzania zasobami platformy Azure).
+        W niektórych krokach w tym samouczku zakłada się, że nazwa grupy zasobów to **ADFTutorialResourceGroup**. Informacje na temat grup zasobów znajdują się w artykule [Using resource groups to manage your Azure resources](../../azure-resource-manager/resource-group-overview.md) (Używanie grup zasobów do zarządzania zasobami platformy Azure).
    4. Wybierz **lokalizację** fabryki danych.
    5. Zaznacz pole wyboru **Przypnij do pulpitu nawigacyjnego** u dołu bloku.  
-   6. Kliknij przycisk **Utwórz**.
+   6. Kliknij pozycję **Utwórz**.
       
        ![Blok Nowa fabryka danych](media/data-factory-copy-data-wizard-tutorial/new-data-factory-blade.png)            
 3. Po zakończeniu tworzenia zostanie wyświetlony blok **Fabryka danych**, jak pokazano na poniższej ilustracji:

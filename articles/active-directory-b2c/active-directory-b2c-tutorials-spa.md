@@ -10,12 +10,12 @@ ms.custom: mvc, seo-javascript-september2019
 ms.topic: tutorial
 ms.service: active-directory
 ms.subservice: B2C
-ms.openlocfilehash: f6a417e33ac9c60c978d8638539a1e5a0772a034
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
-ms.translationtype: HT
+ms.openlocfilehash: f9e4f25c5750ae5c48130140f49f986e20adc745
+ms.sourcegitcommit: 359930a9387dd3d15d39abd97ad2b8cb69b8c18b
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73475070"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73641769"
 ---
 # <a name="tutorial-enable-authentication-in-a-single-page-application-using-azure-active-directory-b2c-azure-ad-b2c"></a>Samouczek: Włączanie uwierzytelniania w aplikacji jednostronicowej przy użyciu Azure Active Directory B2C (Azure AD B2C)
 
@@ -48,7 +48,7 @@ Ponadto w lokalnym środowisku programistycznym są potrzebne następujące elem
 
 W drugim samouczku, który został ukończony w ramach wymagań wstępnych, zarejestrowano aplikację sieci Web w Azure AD B2C. Aby umożliwić komunikację z przykładową aplikacją w samouczku, musisz dodać do aplikacji w usłudze Azure AD B2C identyfikator URI przekierowania.
 
-Aby zaktualizować aplikację, możesz użyć środowiska bieżące **aplikacje** lub naszego nowego systemu ujednoliconej **rejestracje aplikacji (wersja zapoznawcza)** . [Dowiedz się więcej na temat środowiska w wersji zapoznawczej](http://aka.ms/b2cappregintro).
+Aby zaktualizować aplikację, możesz użyć środowiska bieżące **aplikacje** lub naszego nowego systemu ujednoliconej **rejestracje aplikacji (wersja zapoznawcza)** . [Dowiedz się więcej na temat nowego środowiska](https://aka.ms/b2cappregintro).
 
 #### <a name="applicationstabapplications"></a>[Aplikacje](#tab/applications/)
 

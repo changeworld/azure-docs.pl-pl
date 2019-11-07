@@ -1,6 +1,6 @@
 ---
-title: Jak używać tematów Azure Service Bus i subskrypcji za pomocą środowiska Node. js | Microsoft Docs
-description: Dowiedz się, jak używać tematów i subskrypcji Service Bus na platformie Azure z poziomu aplikacji node. js.
+title: 'Szybki Start: jak używać tematów Azure Service Bus i subskrypcji za pomocą środowiska Node. js'
+description: 'Szybki Start: informacje na temat używania Service Bus tematów i subskrypcji na platformie Azure z poziomu aplikacji node. js.'
 services: service-bus-messaging
 documentationcenter: nodejs
 author: axisc
@@ -11,17 +11,17 @@ ms.service: service-bus-messaging
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: nodejs
-ms.topic: article
-ms.date: 04/15/2019
+ms.topic: quickstart
+ms.date: 11/05/2019
 ms.author: aschhab
-ms.openlocfilehash: f927274e1e866a9cba72330280316cc5ee7d8047
-ms.sourcegitcommit: 42748f80351b336b7a5b6335786096da49febf6a
+ms.openlocfilehash: fa6f40eba02ffe171dc521f952e0d00fc35fc7e6
+ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/09/2019
-ms.locfileid: "72178052"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73721666"
 ---
-# <a name="how-to-use-service-bus-topics-and-subscriptions-with-nodejs-and-the-azureservice-bus-package"></a>Jak używać tematów Service Bus i subskrypcji za pomocą środowiska Node. js i pakietu Azure/Service-Bus
+# <a name="quickstart-how-to-use-service-bus-topics-and-subscriptions-with-nodejs-and-the-azureservice-bus-package"></a>Szybki Start: jak używać tematów Service Bus i subskrypcji z pakietem Node. js i usługą Azure/Service-Bus
 > [!div class="op_multi_selector" title1="Język programowania" title2="Uaktualniający środowiska Node. js"]
 > - [(Node. js | Azure-SB)](service-bus-nodejs-how-to-use-topics-subscriptions.md)
 > - [(Node. js | @azure/service-bus)](service-bus-nodejs-how-to-use-topics-subscriptions-new-package.md)
@@ -37,7 +37,7 @@ W ramach tego samouczka nauczysz się pisać program Node. js w celu wysyłania 
 > - Nowy pakiet [@azure/service-bus](https://www.npmjs.com/package/@azure/service-bus) nie obsługuje jeszcze tworzenia topcis i subskrypcji. Użyj pakietu [@azure/arm-servicebus](https://www.npmjs.com/package/@azure/arm-servicebus) , jeśli chcesz programowo je utworzyć.
 
 ### <a name="use-node-package-manager-npm-to-install-the-package"></a>Instalowanie menedżera NPM (Node Package Manager)
-Aby zainstalować pakiet npm dla Service Bus, Otwórz wiersz polecenia, który ma `npm` w swojej ścieżce, Zmień katalog na folder, w którym chcesz uzyskać przykłady, a następnie Uruchom to polecenie.
+Aby zainstalować pakiet npm dla Service Bus, Otwórz wiersz polecenia, który ma `npm` w jego ścieżce, Zmień katalog na folder, w którym chcesz uzyskać przykłady, a następnie Uruchom to polecenie.
 
 ```bash
 npm install @azure/service-bus
@@ -89,7 +89,7 @@ Korzystanie z tematu Service Bus rozpoczyna się od tworzenia wystąpienia klasy
 
 Gratulacje! Właśnie wysłano komunikaty do kolejki Service Bus.
 
-Komunikaty mają pewne właściwości standardowe, takie jak `label` i `messageId`, które można ustawić podczas wysyłania. Aby ustawić właściwości niestandardowe, użyj `userProperties`, który jest obiektem JSON, który może przechowywać pary klucz-wartość danych niestandardowych.
+Komunikaty mają pewne właściwości standardowe, takie jak `label` i `messageId`, które można ustawić podczas wysyłania. Jeśli chcesz ustawić właściwości niestandardowe, użyj `userProperties`, który jest obiektem JSON, który może przechowywać pary klucz-wartość danych niestandardowych.
 
 Tematy usługi Service Bus obsługują maksymalny rozmiar komunikatu 256 KB w [warstwie Standardowa](service-bus-premium-messaging.md) i 1 MB w [warstwie Premium](service-bus-premium-messaging.md). Nie ma żadnego limitu liczby komunikatów przechowywanych w temacie, ale istnieje limit całkowitego rozmiaru komunikatów przechowywanych w temacie. Rozmiar tematu jest definiowany w czasie tworzenia, z górnym limitem 5 GB. Aby uzyskać więcej informacji na temat przydziałów, zobacz [Service Bus przydziały](service-bus-quotas.md).
 
@@ -132,12 +132,12 @@ Korzystanie z subskrypcji Service Bus rozpoczyna się od utworzenia wystąpienia
 
 Gratulacje! Właśnie odebrano komunikaty z subskrypcji Service Busej.
 
-Metoda [getreceive](https://docs.microsoft.com/javascript/api/%40azure/service-bus/subscriptionclient#createreceiver-receivemode-) przyjmuje `ReceiveMode`, który jest wyliczeniem z wartościami [ReceiveAndDelete](message-transfers-locks-settlement.md#settling-receive-operations) i [PeekLock](message-transfers-locks-settlement.md#settling-receive-operations). Należy pamiętać o [rozliczeniu komunikatów](message-transfers-locks-settlement.md#settling-receive-operations) , jeśli używasz trybu `PeekLock` przy użyciu dowolnych z `complete()`, `abandon()`, `defer()` lub `deadletter()` metod w komunikacie.
+Metoda [getreceive](https://docs.microsoft.com/javascript/api/%40azure/service-bus/subscriptionclient#createreceiver-receivemode-) przyjmuje `ReceiveMode`, który jest wyliczeniem z wartościami [ReceiveAndDelete](message-transfers-locks-settlement.md#settling-receive-operations) i [PeekLock](message-transfers-locks-settlement.md#settling-receive-operations). Należy pamiętać o [rozliczeniu komunikatów](message-transfers-locks-settlement.md#settling-receive-operations) , jeśli używasz trybu `PeekLock` przy użyciu dowolnej metody `complete()`, `abandon()`, `defer()`lub `deadletter()` w komunikacie.
 
 ## <a name="subscription-filters-and-actions"></a>Filtry i akcje subskrypcji
 Service Bus obsługuje [filtry i akcje dotyczące subskrypcji](topic-filters.md), co umożliwia filtrowanie komunikatów przychodzących do subskrypcji i edytowanie ich właściwości.
 
-Po wystąpieniu `SubscriptionClient` można użyć poniższych metod w celu uzyskania, dodania i usunięcia reguł w ramach subskrypcji, aby kontrolować filtry i akcje.
+Po wystąpieniu `SubscriptionClient` można użyć poniższych metod w celu uzyskania, dodania i usunięcia reguł subskrypcji w celu sterowania filtrami i akcjami.
 
 - GetRules
 - AddRule

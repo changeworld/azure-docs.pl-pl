@@ -1,6 +1,6 @@
 ---
-title: Odbieraj zdarzenia za pomocą Apache Storm — Event Hubs platformy Azure | Microsoft Docs
-description: Ten artykuł zawiera informacje dotyczące odbierania zdarzeń z platformy Azure Event Hubs przy użyciu Apache Storm.
+title: 'Szybki Start: otrzymywanie zdarzeń przy użyciu Apache Storm — Azure Event Hubs'
+description: 'Szybki Start: Ten artykuł zawiera informacje na temat odbierania zdarzeń z platformy Azure Event Hubs przy użyciu Apache Storm.'
 services: event-hubs
 documentationcenter: ''
 author: ShubhaVijayasarathy
@@ -11,18 +11,18 @@ ms.service: event-hubs
 ms.workload: na
 ms.tgt_pltfrm: java
 ms.devlang: multiple
-ms.topic: article
+ms.topic: quickstart
 ms.custom: seodec18
-ms.date: 12/06/2018
+ms.date: 11/05/2019
 ms.author: shvija
-ms.openlocfilehash: eaa461dd0c4ef6bd9ed0ae4379a710ee100929d2
-ms.sourcegitcommit: be8e2e0a3eb2ad49ed5b996461d4bff7cba8a837
+ms.openlocfilehash: 90293da07d3a7ef1c32e5f82d35198d4ffa536b1
+ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72800195"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73717612"
 ---
-# <a name="receive-events-from-event-hubs-using-apache-storm"></a>Odbieraj zdarzenia z Event Hubs przy użyciu Apache Storm
+# <a name="quickstart-receive-events-from-event-hubs-using-apache-storm"></a>Szybki Start: otrzymywanie zdarzeń z Event Hubs przy użyciu Apache Storm
 
 [Apache Storm](https://storm.incubator.apache.org) to rozproszony system obliczeniowy w czasie rzeczywistym, który upraszcza niezawodne przetwarzanie strumieni niezwiązanych z danymi. W tej sekcji pokazano, jak za pomocą usługi Azure Event Hubs burzy elementu Spout do odbierania zdarzeń z Event Hubs. Za pomocą Apache Storm można podzielić zdarzenia na wiele procesów hostowanych w różnych węzłach. Integracja Event Hubs z burzą pozwala uprościć użycie zdarzeń przez niewidocznym do użycia punkt kontrolny w trakcie jego postępu przy użyciu instalacji dozorcy burzy, zarządzanie trwałymi punktami kontrolnymi i równoległymi odbiorami z Event Hubs.
 

@@ -4,15 +4,15 @@ description: Ten artykuł zawiera omówienie usługi Azure Migrate.
 author: rayne-wiselman
 ms.service: azure-migrate
 ms.topic: overview
-ms.date: 10/22/2019
+ms.date: 11/06/2019
 ms.author: raynew
 ms.custom: mvc
-ms.openlocfilehash: 1ecd15b36b677e65eadbe4e979925723c9eedd51
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: af9305aafc3a77df9d7c4cffa65f6c61c53ad8a4
+ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73498427"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73715396"
 ---
 # <a name="whats-new-in-azure-migrate"></a>Co nowego w Azure Migrate
 
@@ -22,7 +22,12 @@ ms.locfileid: "73498427"
 
 ## <a name="update-november-2019"></a>Aktualizacja (listopad 2019)
 
+
+
 Dodano kilka nowych funkcji do Azure Migrate:
+
+> [!NOTE]
+> Jeśli nie widzisz jeszcze niektórych z tych funkcji w portalu Azure Migrate, zaczekaj. Pojawią się one w ciągu następnego tygodnia lub.
 
 - **Ocena serwera fizycznego**. Teraz jest obsługiwana Ocena lokalnych serwerów fizycznych, oprócz migracji serwera fizycznego, która jest już obsługiwana.
 - **Ocena na podstawie importu**. Teraz obsługiwana jest ocena maszyn przy użyciu metadanych i danych wydajności dostępnych w pliku CSV.
@@ -30,6 +35,13 @@ Dodano kilka nowych funkcji do Azure Migrate:
 - **Wizualizacja zależności bez agenta**: nie trzeba już jawnie instalować agentów w celu wizualizacji zależności. Teraz obsługiwane są zarówno Agent, jak i oparte na agentach.
 - **Pulpit wirtualny**: Użyj narzędzi niezależnych dostawców oprogramowania, aby ocenić i zmigrować lokalną infrastrukturę pulpitu wirtualnego (VDI) do pulpitu wirtualnego systemu Windows na platformie Azure.
 - **Aplikacja internetowa**: Asystent migracji Azure App Service używany do oceniania i migracji aplikacji sieci Web, jest teraz zintegrowana z Azure Migrate.
+
+Dodano nowe narzędzia do oceny i migracji do Azure Migrate:
+
+- **Stojak**: zapewnianie migracji do chmury.
+- Produkt **przenoszenia**: Ocena oferty.
+
+[Dowiedz się więcej](migrate-services-overview.md) o korzystaniu z narzędzi i ofert niezależnych dostawców oprogramowania na potrzeby oceny i migracji w programie Azure Migrate.
 
 ## <a name="release-version-july-2019"></a>Wydanie wersji (lipiec 2019)
 

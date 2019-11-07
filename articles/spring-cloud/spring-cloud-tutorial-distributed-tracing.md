@@ -1,20 +1,17 @@
 ---
 title: 'Samouczek: używanie rozproszonego śledzenia z chmurą Azure wiosennej | Microsoft Docs'
 description: Dowiedz się, jak używać śledzenia rozproszonego chmury wiosennej za pomocą usługi Azure Application Insights
-services: spring-cloud
-author: v-vasuke
-manager: gwallace
-editor: ''
+author: jpconnock
 ms.service: spring-cloud
-ms.topic: quickstart
+ms.topic: tutorial
 ms.date: 10/06/2019
-ms.author: v-vasuke
-ms.openlocfilehash: 95aae47bddffd102c5d6d6dac67f22e6777cc3e7
-ms.sourcegitcommit: d773b5743cb54b8cbcfa5c5e4d21d5b45a58b081
+ms.author: jeconnoc
+ms.openlocfilehash: a9d2100103cdd5858d0d58cf6ef77a6ccac3745f
+ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/08/2019
-ms.locfileid: "72038937"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73607548"
 ---
 # <a name="tutorial-using-distributed-tracing-with-azure-spring-cloud"></a>Samouczek: używanie rozproszonego śledzenia w chmurze Azure wiosennej
 
@@ -67,7 +64,7 @@ Możesz pominąć następny krok, jeśli korzystasz z naszego [przewodnika po pr
 * Skompiluj i Wdróż ponownie dla usługi w chmurze Azure wiosny, aby odzwierciedlić te zmiany. 
 
 ## <a name="modify-the-sample-rate"></a>Modyfikuj częstotliwość próbkowania
-Możesz zmienić częstotliwość zbierania danych telemetrycznych, modyfikując częstotliwość próbkowania. Na przykład, jeśli chcesz próbkować połowę często, przejdź do pliku `application.properties` i zmień następujący wiersz:
+Możesz zmienić częstotliwość zbierania danych telemetrycznych, modyfikując częstotliwość próbkowania. Na przykład, jeśli chcesz próbkować połowę jak często, przejdź do pliku `application.properties` i zmień następujący wiersz:
 
 ```xml
 spring.sleuth.sampler.probability=0.5
@@ -88,7 +85,7 @@ Jeśli masz już skompilowaną i wdrożoną aplikację, możesz zmodyfikować cz
 
 Wróć do strony śledzenie rozproszone i wybierz pozycję **Wyświetl mapę aplikacji**. Przejrzyj wizualną reprezentację ustawień aplikacji i monitorowania. Aby dowiedzieć się, jak używać mapy aplikacji, zobacz [ten artykuł](https://docs.microsoft.com/azure/azure-monitor/app/app-map).
 
-## <a name="search"></a>Search
+## <a name="search"></a>Wyszukiwanie
 
 Użyj funkcji Search, aby wykonać zapytanie dotyczące innych określonych elementów telemetrii. Na stronie **śledzenie rozproszone** wybierz pozycję **Wyszukaj**. Aby uzyskać więcej informacji na temat korzystania z funkcji wyszukiwania, zobacz [ten artykuł](https://docs.microsoft.com/azure/azure-monitor/app/diagnostic-search).
 

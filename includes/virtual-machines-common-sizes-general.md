@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 08/08/2019
 ms.author: azcspmt;jonbeck;cynthn;joelpell
 ms.custom: include file
-ms.openlocfilehash: 9462d9c807f8300d65e8e5a3e997ebc858342a97
-ms.sourcegitcommit: 12de9c927bc63868168056c39ccaa16d44cdc646
+ms.openlocfilehash: 3bccae7c0e45f21609a5a67d20811240648570d4
+ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72514468"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73719154"
 ---
 Rozmiary maszyn wirtualnych ogólnego przeznaczenia zapewniają zrównoważony współczynnik procesora CPU do pamięci. Idealne na potrzeby testowania i programowania, małych i średnich baz danych oraz serwerów sieci Web o niewielkim i średnim ruchu. Ten artykuł zawiera informacje na temat liczby procesorów wirtualnych vCPU, dysków danych i kart sieciowych, a także przepływności magazynu dla rozmiarów w tym grupowaniu.
 
@@ -29,7 +29,7 @@ Rozmiary maszyn wirtualnych ogólnego przeznaczenia zapewniają zrównoważony w
 
   Przykładowe przypadki użycia serii D obejmują aplikacje klasy korporacyjnej, relacyjne bazy danych, buforowanie w pamięci i analizy.
 
-- Serii da i Dasv3 są nowe rozmiary wykorzystujące procesor AMD 2.35 GHz EPYC<sup>TM</sup> 7452V w konfiguracji wielowątkowej z maksymalnie 256 GB pamięci podręcznej L3 o pojemności 8 GB w tej pamięci podręcznej L3 do każdego 8 rdzeni, które zwiększają opcje klienta na potrzeby wykonywania ich ogólnego obciążenia przeznaczenie. Seria da i Dasv3 mają takie same konfiguracje pamięci i dysków jak seria D & Dsv3.
+- Seria Dav4 i Dasv4 to nowe rozmiary wykorzystujące procesor<sup>AMD 7452 z</sup> obsługą wielu wątków w konfiguracji wielowątkowej z maksymalnie 256 GB pamięci podręcznej L3 o pojemności 8 GB pamięci podręcznej L3 do każdego 8 rdzeni, które zwiększają możliwości klienta obciążenia przeznaczenie. Serie Dav4 i Dasv4 mają takie same konfiguracje pamięci i dysków jak seria D & Dsv3.
   
 ## <a name="b-series"></a>Seria B
 
@@ -42,7 +42,7 @@ Maszyny wirtualne z serii B są idealne dla obciążeń, które nie wymagają pe
 Przykładowe przypadki użycia obejmują serwery deweloperskie i testowe, serwery sieci Web o niewielkim ruchu, małe bazy danych, mikrousługi, serwery do sprawdzania koncepcji, serwery kompilacji.
 
 
-| Rozmiar             | vCPU  | Pamięć: GiB | Magazyn tymczasowy (SSD): GiB | Podstawowa wydajność procesora CPU maszyny wirtualnej | Maksymalna wydajność procesora dla maszyny wirtualnej | Kredyty początkowe | Środki na kredyt/godzinę | Maksymalna liczba kredytów w banku | Maksymalna liczba dysków danych | Maksymalna przepływność magazynu w pamięci podręcznej i tymczasowej: IOPS/MB/s | Maksymalna przepływność niebuforowanych dysków: liczba operacji we/wy na sekundę / MB/s | Maksymalna liczba kart interfejsów sieciowych |          
+| Rozmiar             | Procesor wirtualny  | Pamięć: GiB | Magazyn tymczasowy (SSD): GiB | Podstawowa wydajność procesora CPU maszyny wirtualnej | Maksymalna wydajność procesora dla maszyny wirtualnej | Kredyty początkowe | Środki na kredyt/godzinę | Maksymalna liczba kredytów w banku | Maks. liczba dysków danych | Maksymalna przepływność magazynu w pamięci podręcznej i tymczasowej: IOPS/MB/s | Maksymalna przepływność niebuforowanych dysków: liczba operacji we/wy na sekundę / MB/s | Maksymalna liczba kart sieciowych |          
 |---------------|-------------|----------------|----------------------------|-----------------------|--------------------|--------------------|--------------------|----------------|----------------------------------------|-------------------------------------------|-------------------------------------------|----------|
 | Standard_B1ls<sup>1</sup>  | 1           | 0,5              | 4                          | 5%                   | 100%                   | 30                   | 3                  | 72            | 2                                      | 200/10                                  | 160/10                                  | 2  |
 | Standard_B1s  | 1           | 1              | 4                          | 10%                   | 100%                   | 30                   | 6                  | 144            | 2                        | 400/10                                  | 320/10                                  | 2  |
@@ -65,10 +65,10 @@ Premium Storage: obsługiwane
 
 Buforowanie Premium Storage: obsługiwane
 
-Rozmiary serii Dsv3 są uruchamiane na procesorach Intel® Xeon® 8171M 2.1 GHz (Skylake), Intel® Xeon® E5-2673 v4 2,3 GHz (Broadwell) lub procesora Intel® Xeon® E5-2673 v3 2,4 GHz (Haswell) z technologią Intel Turbo — rozwiązanie 2,0 i korzystanie z magazynu Premium Storage. Rozmiary serii Dsv3 oferują kombinację procesora wirtualnego, pamięci i magazynu tymczasowego spełniającą potrzeby większości obciążeń produkcyjnych.
+Rozmiary serii Dsv3 są uruchamiane na procesorach Intel® Xeon® 8171M 2.1 GHz (Skylake), Intel® Xeon® E5-2673 v4 2,3 GHz (Broadwell) lub procesora Intel® Xeon® E5-2673 v3 2,4 GHz (Haswell) z technologią Intel Turbo — rozwiązanie 2,0 i korzystanie z magazynu Premium Storage. Rozmiary serii Dsv3 oferują kombinację procesora wirtualnego vCPU, pamięci i magazynu tymczasowego spełniającą potrzeby większości obciążeń produkcyjnych.
 
 
-| Rozmiar             | vCPU | Pamięć: GiB | Magazyn tymczasowy (SSD): GiB | Maksymalna liczba dysków danych | Maksymalna przepływność magazynu buforowanego i tymczasowego: liczba operacji we/wy na sekundę / MB/s (rozmiar pamięci podręcznej w GiB) | Maksymalna przepływność niebuforowanych dysków: liczba operacji we/wy na sekundę / MB/s | Maksymalna liczba kart sieciowych/oczekiwana przepustowość sieci (MB/s) |
+| Rozmiar             | Procesor wirtualny | Pamięć: GiB | Magazyn tymczasowy (SSD): GiB | Maks. liczba dysków danych | Maksymalna przepływność magazynu buforowanego i tymczasowego: liczba operacji we/wy na sekundę / MB/s (rozmiar pamięci podręcznej w GiB) | Maksymalna przepływność niebuforowanych dysków: liczba operacji we/wy na sekundę / MB/s | Maksymalna liczba kart sieciowych/oczekiwana przepustowość sieci (MB/s) |
 |------------------|--------|-------------|----------------|----------------|-----------------------------------------------------------------------|-------------------------------------------|------------------------------------------------|
 | Standardowa_D2s_v3  | 2      | 8           | 16             | 4              | 4000/32 (50)                                                       | 3200/48                                | 2 / 1000                                   |
 | Standardowa_D4s_v3  | 4      | 16          | 32             | 8              | 8000/64 (100)                                                      | 6400/96                                | 2 / 2000                                   |
@@ -80,25 +80,28 @@ Rozmiary serii Dsv3 są uruchamiane na procesorach Intel® Xeon® 8171M 2.1 GHz 
 
 <sup>1</sup> funkcja maszyny wirtualnej z serii Dsv3 Intel® technologia wielowątkowości funkcji Hyper-Threading
 
-## <a name="dasv3-series-preview"></a>Dasv3 — seria (wersja zapoznawcza)
+## <a name="dasv4-series"></a>Seria Dasv4
+
+ACU: 230-260
 
 Premium Storage: obsługiwane
 
 Buforowanie Premium Storage: obsługiwane
 
-Rozmiary serii Dasv3 są oparte na procesorze 2.35 GHz AMD EPYC<sup>TM</sup> 7452, który może osiągnąć podwyższenie poziomu Fmax — 3.35 GHz i korzystać z magazynu Premium Storage. Rozmiary serii Dasv3 oferują kombinację vCPU, pamięci i magazynu tymczasowego dla większości obciążeń produkcyjnych.
+Rozmiary serii Dasv4 są oparte na procesorze 2.35 GHz AMD EPYC<sup>TM</sup> 7452, który może osiągnąć podwyższaną maksymalną częstotliwość 3.35 GHz i korzystać z dysku SSD Premium. Rozmiary serii Dasv4 oferują kombinację vCPU, pamięci i magazynu tymczasowego dla większości obciążeń produkcyjnych.
 
-[Kliknij tutaj, aby utworzyć konto w wersji zapoznawczej](http://aka.ms/azureamdpreview).
+| Rozmiar | Procesor wirtualny | Pamięć: GiB | Magazyn tymczasowy (SSD): GiB | Maks. liczba dysków danych | Maksymalna przepływność magazynu buforowanego i tymczasowego: liczba operacji we/wy na sekundę / MB/s (rozmiar pamięci podręcznej w GiB) | Maksymalna przepływność niebuforowanych dysków: liczba operacji we/wy na sekundę / MB/s | Maksymalna liczba kart sieciowych/oczekiwana przepustowość sieci (MB/s) |
+|-----|-----|-----|-----|-----|-----|-----|-----|
+| Standard_D2as_v4|2|8|16|4|4000/32 (50)|3200/48|2 / 1000 |
+| Standard_D4as_v4|4|16|32|8|8000/64 (100)|6400/96|2 / 2000 |
+| Standard_D8as_v4|8|32|64|16|16000/128 (200)|12800/192|4 / 4000 |
+| Standard_D16as_v4|16|64|128|32|32000/255 (400)|25600/384|8 / 8000 |
+| Standard_D32as_v4|32|128|256|32|64000/510 (800)|51200/768|8 / 16 000 |
+| Standard_D48as_v4 <sup>**</sup>|48|192|384|32| | | 
+| Standard_D64as_v4 <sup>**</sup>|64|256|512|32| | | 
+| Standard_D96as_v4 <sup>**</sup>|96|384|768|32| | | 
 
-| Rozmiar | vCPU | Pamięć: GiB | Magazyn tymczasowy (SSD): GiB |
-|---|---|---|---|
-| Standard_D2as_v3  | 2  | 8   | 16  |
-| Standard_D4as_v3  | 4  | 16  | 32  |
-| Standard_D8as_v3  | 8  | 32  | 64  |
-| Standard_D16as_v3 | 16 | 64  | 128 |
-| Standard_D32as_v3 | 32 | 128 | 256 |
-| Standard_D48as_v3 | 48 | 192 | 384 |
-| Standard_D64as_v3 | 64 | 256 | 512 |
+<sup>**</sup> Te rozmiary są w wersji zapoznawczej.  Jeśli interesuje Cię wypróbowanie większych rozmiarów, zarejestruj się w [https://aka.ms/AzureAMDLargeVMPreview](https://aka.ms/AzureAMDLargeVMPreview).
 
 ## <a name="dv3-series-sup1sup"></a>Dv3 — seria <sup>1</sup>
 
@@ -113,7 +116,7 @@ Rozmiary serii Dv3 są uruchamiane w procesorze Intel® Xeon® 8171M 2.1 GHz (Sk
 Opłaty za magazyn dysków danych są naliczane oddzielnie od opłat za maszyny wirtualne. Aby korzystać z dysków magazynu Premium Storage, użyj rozmiarów Dsv3. Liczniki cen i rozliczeń dla rozmiarów Dsv3 są takie same jak dla serii Dv3. 
 
 
-| Rozmiar            | vCPU | Pamięć: GiB | Magazyn tymczasowy (SSD): GiB | Maksymalna liczba dysków danych | Maksymalna przepływność magazynu tymczasowego: operacje we/wy na sek. / odczyt MB/s / zapis MB/s | Maksymalna liczba kart sieciowych / przepustowość sieci |
+| Rozmiar            | Procesor wirtualny | Pamięć: GiB | Magazyn tymczasowy (SSD): GiB | Maks. liczba dysków danych | Maksymalna przepływność magazynu tymczasowego: operacje we/wy na sek. / odczyt MB/s / zapis MB/s | Maksymalna liczba kart sieciowych / przepustowość sieci |
 |-----------------|-----------|-------------|----------------|----------------|----------------------------------------------------------|------------------------------|
 | Standardowa_D2_v3  | 2         | 8           | 50             | 4              | 3000/46/23                                               | 2 / 1000                    |
 | Standardowa_D4_v3  | 4         | 16          | 100            | 8              | 6000/93/46                                               | 2 / 2000                    |
@@ -125,25 +128,28 @@ Opłaty za magazyn dysków danych są naliczane oddzielnie od opłat za maszyny 
 
 <sup>1</sup> funkcja maszyny wirtualnej z serii Dv3 Intel® technologia wielowątkowości funkcji Hyper-Threading
 
-## <a name="dav3-series-preview"></a>Dav3 — seria (wersja zapoznawcza)
+## <a name="dav4-series"></a>Seria Dav4
+
+ACU: 230-260
 
 Premium Storage: nieobsługiwane
 
 Buforowanie Premium Storage: nieobsługiwane
 
-Rozmiary serii Dav3 są oparte na procesorze 2.35 GHz AMD EPYC<sup>TM</sup> 7452, który może osiągnąć Fmax — o częstotliwości 3.35 GHz. Rozmiary serii Dav3 oferują kombinację vCPU, pamięci i magazynu tymczasowego dla większości obciążeń produkcyjnych. Opłaty za magazyn dysków danych są naliczane oddzielnie od opłat za maszyny wirtualne. Aby korzystać z dysków magazynu Premium Storage, użyj rozmiarów Dasv3. Liczniki cen i rozliczeń dla rozmiarów Dasv3 są takie same jak dla serii Dav3.
+Rozmiary serii Dav4 są oparte na procesorze 2.35 GHz AMD EPYC<sup>TM</sup> 7452, który umożliwia zwiększenie maksymalnej częstotliwości 3.35 GHz. Rozmiary serii Dav4 oferują kombinację vCPU, pamięci i magazynu tymczasowego dla większości obciążeń produkcyjnych. Opłaty za magazyn dysków danych są naliczane oddzielnie od opłat za maszyny wirtualne. Aby korzystać z dysku SSD Premium, użyj rozmiarów Dasv4. Liczniki cen i rozliczeń dla rozmiarów Dasv4 są takie same jak dla serii Dav4.
 
-[Kliknij tutaj, aby utworzyć konto w wersji zapoznawczej](http://aka.ms/azureamdpreview).
+| Rozmiar | Procesor wirtualny | Pamięć: GiB | Magazyn tymczasowy (SSD): GiB | Maks. liczba dysków danych | Maksymalna przepływność magazynu tymczasowego: operacje we/wy na sek. / odczyt MB/s / zapis MB/s | Maksymalna liczba kart sieciowych/oczekiwana przepustowość sieci (MB/s) |
+|-----|-----|-----|-----|-----|-----|-----|
+| Standard_D2a_v4 |  2  | 8  | 50  | 4  | 3000 / 46 / 23   | 2 / 1000 |
+| Standard_D4a_v4 |  4  | 16 | 100 | 8  | 6000 / 93 / 46   | 2 / 2000 |
+| Standard_D8a_v4 |  8  | 32 | 200 | 16 | 12000 / 187 / 93 | 4 / 4000 |
+| Standard_D16a_v4|  16 | 64 | 400 |32  | 24000 / 375 / 187 |8 / 8000 |
+| Standard_D32a_v4|  32 | 128| 800 | 32 | 48000 / 750 / 375 |8 / 16 000 |
+| Standard_D48a_v4 <sup>**</sup> | 48 | 192| 1200 | 32 | | |
+| Standard_D64a_v4 <sup>**</sup> | 64 | 256 | 1600 | 32 | | |
+| Standard_D96a_v4 <sup>**</sup> | 96 | 384 | 2400 | 32 | | |
 
-| Rozmiar | vCPU | Pamięć: GiB | Magazyn tymczasowy (SSD): GiB |
-|---|---|---|---|
-| Standard_D2a_v3  | 2  | 8   | 50   |
-| Standard_D4a_v3  | 4  | 16  | 100  |
-| Standard_D8a_v3  | 8  | 32  | 200  |
-| Standard_D16a_v3 | 16 | 64  | 400  |
-| Standard_D32a_v3 | 32 | 128 | 800  |
-| Standard_D48a_v3 | 48 | 192 | 1200 |
-| Standard_D64a_v3 | 64 | 256 | 1600 |
+<sup>**</sup> Te rozmiary są w wersji zapoznawczej.  Jeśli interesuje Cię wypróbowanie większych rozmiarów, zarejestruj się w [https://aka.ms/AzureAMDLargeVMPreview](https://aka.ms/AzureAMDLargeVMPreview).
 
 ## <a name="dsv2-series"></a>Seria DSv2
 
@@ -155,7 +161,7 @@ Buforowanie Premium Storage: obsługiwane
 
 Rozmiary serii DSv2 są uruchamiane na procesorach Intel® Xeon® 8171M 2.1 GHz (Skylake) lub Intel® Xeon® E5-2673 v4 2,3 GHz (Broadwell) lub Intel® Xeon® E5-2673 v3 2,4 GHz (Haswell) z technologią Intel Turbo — rozwiązanie 2,0 i korzystanie z magazynu Premium Storage.
 
-| Rozmiar | vCPU | Pamięć: GiB | Magazyn tymczasowy (SSD): GiB | Maksymalna liczba dysków danych | Maksymalna przepływność magazynu buforowanego i tymczasowego: liczba operacji we/wy na sekundę / MB/s (rozmiar pamięci podręcznej w GiB) | Maksymalna przepływność niebuforowanych dysków: liczba operacji we/wy na sekundę / MB/s | Maksymalna liczba kart sieciowych/oczekiwana przepustowość sieci (MB/s) |
+| Rozmiar | Procesor wirtualny | Pamięć: GiB | Magazyn tymczasowy (SSD): GiB | Maks. liczba dysków danych | Maksymalna przepływność magazynu buforowanego i tymczasowego: liczba operacji we/wy na sekundę / MB/s (rozmiar pamięci podręcznej w GiB) | Maksymalna przepływność niebuforowanych dysków: liczba operacji we/wy na sekundę / MB/s | Maksymalna liczba kart sieciowych/oczekiwana przepustowość sieci (MB/s) |
 | --- | --- | --- | --- | --- | --- | --- | --- |
 | Standardowa_DS1_v2 |1 |3,5 |7 |4 |4000/32 (43) |3200/48 |2 / 750 |
 | Standardowa_DS2_v2 |2 |7 |14 |8 |8000/64 (86) |6400/96 |2 / 1500 |
@@ -173,7 +179,7 @@ Buforowanie Premium Storage: nieobsługiwane
 
 Rozmiary serii DSv2 są uruchamiane na procesorach Intel® Xeon® 8171M 2.1 GHz (Skylake) lub Intel® Xeon® E5-2673 v4 2,3 GHz (Broadwell) lub Intel® Xeon® E5-2673 v3 2,4 GHz (Haswell) procesorów z technologią Intel Turbo — rozwiązanie 2,0.
 
-| Rozmiar           | vCPU | Pamięć: GiB | Magazyn tymczasowy (SSD): GiB | Maksymalna przepływność magazynu tymczasowego: operacje we/wy na sek. / odczyt MB/s / zapis MB/s | Maksymalna liczba dysków danych | Przepływność: operacje we/wy | Maksymalna liczba kart sieciowych/oczekiwana przepustowość sieci (MB/s) |
+| Rozmiar           | Procesor wirtualny | Pamięć: GiB | Magazyn tymczasowy (SSD): GiB | Maksymalna przepływność magazynu tymczasowego: operacje we/wy na sek. / odczyt MB/s / zapis MB/s | Maks. liczba dysków danych | Przepływność: operacje we/wy | Maksymalna liczba kart sieciowych/oczekiwana przepustowość sieci (MB/s) |
 |----------------|------|-------------|------------------------|------------------------------------------------------------|----------------|------------------|----------------------------------------------|
 | Standardowa_D1_v2 | 1    | 3,5         | 50                     | 3000 / 46 / 23                                             | 4              | 4 x 500            | 2 / 750                                      |
 | Standardowa_D2_v2 | 2    | 7           | 100                    | 6000 / 93 / 46                                             | 8              | 8 x 500            | 2 / 1500                                     |
@@ -191,7 +197,7 @@ Buforowanie Premium Storage: nieobsługiwane
 
 Rozmiary serii DSv2 są uruchamiane na procesorach Intel® Xeon® 8171M 2.1 GHz (Skylake) lub Intel® Xeon® E5-2673 v4 2,3 GHz (Broadwell) lub Intel® Xeon® E5-2673 v3 2,4 GHz (Haswell) z technologią Intel Turbo — rozwiązanie 2,0 i korzystanie z magazynu Premium Storage.
 
-| Rozmiar            | vCPU | Pamięć: GiB | Magazyn tymczasowy (SSD): GiB | Maksymalna przepływność magazynu tymczasowego: operacje we/wy na sek. / odczyt MB/s / zapis MB/s | Maksymalna liczba dysków danych / przepływność: liczba operacji we/wy na sekundę | Maksymalna liczba kart sieciowych/oczekiwana przepustowość sieci (MB/s) | 
+| Rozmiar            | Procesor wirtualny | Pamięć: GiB | Magazyn tymczasowy (SSD): GiB | Maksymalna przepływność magazynu tymczasowego: operacje we/wy na sek. / odczyt MB/s / zapis MB/s | Maksymalna liczba dysków danych / przepływność: liczba operacji we/wy na sekundę | Maksymalna liczba kart sieciowych/oczekiwana przepustowość sieci (MB/s) | 
 |-----------------|-----------|-------------|----------------|----------------------------------------------------------|-----------------------------------|------------------------------|
 | Standardowa_A1_v2  | 1         | 2           | 10             | 1000 / 20 / 10                                           | 2 / 2 x 500               | 2 / 250                 |
 | Standardowa_A2_v2  | 2         | 4           | 20             | 2000 / 40 / 20                                           | 4 / 4 x 500               | 2 / 500                 |
@@ -209,7 +215,7 @@ Buforowanie Premium Storage: obsługiwane
 
 
 
-| Rozmiar          | vCPU | Pamięć: GiB | Magazyn tymczasowy (SSD): GiB | Maksymalna liczba dysków danych | Maksymalna przepływność magazynu buforowanego i tymczasowego: liczba operacji we/wy na sekundę / MB/s (rozmiar pamięci podręcznej w GiB) | Maksymalna przepływność niebuforowanych dysków: liczba operacji we/wy na sekundę / MB/s | Maksymalna liczba kart sieciowych/oczekiwana przepustowość sieci (MB/s) |
+| Rozmiar          | Procesor wirtualny | Pamięć: GiB | Magazyn tymczasowy (SSD): GiB | Maks. liczba dysków danych | Maksymalna przepływność magazynu buforowanego i tymczasowego: liczba operacji we/wy na sekundę / MB/s (rozmiar pamięci podręcznej w GiB) | Maksymalna przepływność niebuforowanych dysków: liczba operacji we/wy na sekundę / MB/s | Maksymalna liczba kart sieciowych/oczekiwana przepustowość sieci (MB/s) |
 |---------------|------|-------------|------------------------|----------------|-------------------------------------------------------------------------|-------------------------------------------|----------------------------------------------|
 | Standard_DC2s | 2    | 8           | 100                    | 2              | 4000/32 (43)                                                          | 3200/48                                  | 2 / 1500                                     |
 | Standard_DC4s | 4    | 16          | 200                    | 4              | 8000/64 (86)                                                          | 6400/96                                  | 2 / 3000                                     |

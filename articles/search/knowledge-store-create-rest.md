@@ -1,21 +1,24 @@
 ---
-title: Tworzenie sklepu z bazami danych przy użyciu usługi REST
+title: Tworzenie sklepu merytorycznego (wersja zapoznawcza) przy użyciu usługi REST
 titleSuffix: Azure Cognitive Search
-description: Użyj interfejsu API REST i programu Poster, aby utworzyć magazyn wiedzy platformy Azure Wyszukiwanie poznawcze na potrzeby utrwalania wzbogacania z potoku wzbogacania AI.
-author: lobrien
+description: Użyj interfejsu API REST i programu Poster, aby utworzyć magazyn wiedzy platformy Azure Wyszukiwanie poznawcze na potrzeby utrwalania wzbogacania z potoku wzbogacania AI. Ta funkcja jest obecnie w publicznej wersji zapoznawczej.
+author: HeidiSteen
 manager: nitinme
-ms.author: laobri
+ms.author: heidist
 ms.service: cognitive-search
 ms.topic: tutorial
 ms.date: 11/04/2019
-ms.openlocfilehash: 24b97374b032640afafde775e90f6db735d63c46
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.openlocfilehash: 107dcfa9ea312774e679c301ea934255c7b836c0
+ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72790029"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73720069"
 ---
 # <a name="create-an-azure-cognitive-search-knowledge-store-by-using-rest"></a>Tworzenie sklepu z bazami danych platformy Azure Wyszukiwanie poznawcze przy użyciu usługi REST
+
+> [!IMPORTANT] 
+> Magazyn wiedzy jest obecnie w publicznej wersji zapoznawczej. Funkcje wersji zapoznawczej są dostępne bez umowy dotyczącej poziomu usług i nie są zalecane w przypadku obciążeń produkcyjnych. Aby uzyskać więcej informacji, zobacz [Uzupełniające warunki korzystania z wersji zapoznawczych platformy Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/). [Interfejs API REST w wersji 2019-05-06 — wersja zapoznawcza](search-api-preview.md) zapewnia funkcje w wersji zapoznawczej. Dostępna jest obecnie ograniczona obsługa portalu i nie ma obsługi zestawu SDK platformy .NET.
 
 Funkcja magazynu wiedzy na platformie Azure Wyszukiwanie poznawcze utrzymuje dane wyjściowe potoku wzbogacania AI do późniejszej analizy lub innego przetwarzania podrzędnego. Potok wzbogacony AI akceptuje pliki obrazów lub pliki tekstowe bez struktury, indeksuje je za pomocą usługi Azure Wyszukiwanie poznawcze, stosuje wzbogacenia AI z platformy Azure Cognitive Services (takie jak analiza obrazu i przetwarzanie języka naturalnego), a następnie zapisuje wyniki w Magazyn wiedzy w usłudze Azure Storage. Aby eksplorować informacje o sklepie z bazami danych, można użyć narzędzi takich jak Power BI lub Eksplorator usługi Storage w Azure Portal.
 
@@ -60,16 +63,16 @@ Zainstaluj i skonfiguruj program ogłaszający.
 ### <a name="download-and-install-postman"></a>Pobierz i zainstaluj program Poster
 
 1. Pobierz [kod źródłowy kolekcji Poster](https://github.com/Azure-Samples/azure-search-postman-samples/blob/master/knowledge-store/KnowledgeStore.postman_collection.json).
-1. Wybierz pozycję **plik** > **Import** , aby zaimportować kod źródłowy do programu Poster.
+1. Wybierz pozycję **plik** > **Importuj** , aby zaimportować kod źródłowy do programu Poster.
 1. Wybierz kartę **kolekcje** , a następnie wybierz przycisk **...** (wielokropek).
 1. Wybierz pozycję **Edit** (Edytuj). 
    
    ![Aplikacja do publikowania po wyświetleniu nawigacji](media/knowledge-store-create-rest/postman-edit-menu.png "Przejdź do menu Edycja w programie Poster")
 1. W oknie dialogowym **Edycja** wybierz kartę **zmienne** . 
 
-Na karcie **zmienne** można dodawać wartości, które zaswapki są księgowane w każdym momencie napotkania określonej zmiennej wewnątrz podwójnych nawiasów klamrowych. Na przykład, program Poster zastępuje symbol `{{admin-key}}` bieżącą wartością ustawioną dla `admin-key`. Program ogłaszający tworzy podstawienie w adresach URL, nagłówkach, treści żądania i tak dalej. 
+Na karcie **zmienne** można dodawać wartości, które zaswapki są księgowane w każdym momencie napotkania określonej zmiennej wewnątrz podwójnych nawiasów klamrowych. Na przykład, program ogłaszający zastępuje symbol `{{admin-key}}` wartością bieżącą ustawioną dla `admin-key`. Program ogłaszający tworzy podstawienie w adresach URL, nagłówkach, treści żądania i tak dalej. 
 
-Aby uzyskać wartość `admin-key`, przejdź do usługi Azure Wyszukiwanie poznawcze i wybierz kartę **klucze** . Zmień `search-service-name` i `storage-account-name` na wartości wybrane w obszarze [Tworzenie usług](#create-services). Ustaw wartość `storage-connection-string` przy użyciu wartości na karcie **klucze dostępu** konta magazynu. Można pozostawić wartości domyślne dla innych wartości.
+Aby uzyskać wartość `admin-key`, przejdź do usługi Azure Wyszukiwanie poznawcze i wybierz kartę **klucze** . Zmień `search-service-name` i `storage-account-name` na wartości wybrane w obszarze [Tworzenie usług](#create-services). Ustaw `storage-connection-string` przy użyciu wartości na karcie **klucze dostępu** konta magazynu. Można pozostawić wartości domyślne dla innych wartości.
 
 ![Karta zmiennych aplikacji po wprowadzeniu](media/knowledge-store-create-rest/postman-variables-window.png "Okno zmiennych autora")
 
@@ -96,17 +99,17 @@ Podczas tworzenia sklepu z bazami danych należy wydać cztery żądania HTTP:
 - **Umieść żądanie utworzenia zestawu umiejętności**: zestawu umiejętności określa wzbogacenia, które są stosowane do danych i struktury sklepu wiedzy.
 - **Umieść żądanie utworzenia indeksatora**: uruchomienie indeksatora odczytuje dane, stosuje zestawu umiejętności i przechowuje wyniki. Należy uruchomić to żądanie jako ostatnie.
 
-[Kod źródłowy](https://github.com/Azure-Samples/azure-search-postman-samples/blob/master/knowledge-store/KnowledgeStore.postman_collection.json) zawiera kolekcję programu Poster, która ma cztery żądania. Aby wystawić żądania, w programie Poster wybierz kartę dla żądania. Następnie Dodaj nagłówki żądania `api-key` i `Content-Type`. Ustaw wartość `api-key` na `{{admin-key}}`. Ustaw wartość `Content-type` na `application/json`. 
+[Kod źródłowy](https://github.com/Azure-Samples/azure-search-postman-samples/blob/master/knowledge-store/KnowledgeStore.postman_collection.json) zawiera kolekcję programu Poster, która ma cztery żądania. Aby wystawić żądania, w programie Poster wybierz kartę dla żądania. Następnie Dodaj `api-key` i `Content-Type` nagłówki żądania. Ustaw wartość `api-key` na `{{admin-key}}`. Ustaw wartość `Content-type` na `application/json`. 
 
 ![Zrzut ekranu przedstawiający interfejs autora dla nagłówków](media/knowledge-store-create-rest/postman-headers-ui.png)
 
 > [!Note]
-> Należy ustawić nagłówki `api-key` i `Content-type` we wszystkich żądaniach. Jeśli program Poster rozpoznaje zmienną, zmienna pojawia się w kolorze pomarańczowym, podobnie jak w przypadku `{{admin-key}}` na poprzednim zrzucie ekranu. Jeśli zmienna jest błędna, pojawia się na czerwono.
+> Należy ustawić nagłówki `api-key` i `Content-type` we wszystkich żądaniach. Jeśli program Poster rozpoznaje zmienną, zmienna pojawia się w kolorze pomarańczowym, tak jak w przypadku `{{admin-key}}` na poprzednim zrzucie ekranu. Jeśli zmienna jest błędna, pojawia się na czerwono.
 >
 
 ## <a name="create-an-azure-cognitive-search-index"></a>Tworzenie indeksu usługi Azure Wyszukiwanie poznawcze
 
-Utwórz indeks Wyszukiwanie poznawcze platformy Azure, aby reprezentować dane, które interesują się wyszukiwaniem, filtrowaniem i stosowaniem ulepszeń. Utwórz indeks, wydając żądanie PUT, aby `https://{{search-service-name}}.search.windows.net/indexes/{{index-name}}?api-version={{api-version}}`. Program pocztowy zastępuje symbole, które są ujęte w podwójne nawiasy klamrowe (takie jak `{{search-service-name}}`, `{{index-name}}` i `{{api-version}}`) wartościami ustawionymi w [konfiguracji](#configure-postman)programu. Jeśli używasz innego narzędzia do wystawiania poleceń REST, musisz samodzielnie zastąpić te zmienne.
+Utwórz indeks Wyszukiwanie poznawcze platformy Azure, aby reprezentować dane, które interesują się wyszukiwaniem, filtrowaniem i stosowaniem ulepszeń. Utwórz indeks, wydając żądanie PUT do `https://{{search-service-name}}.search.windows.net/indexes/{{index-name}}?api-version={{api-version}}`. Program pocztowy zastępuje symbole, które są ujęte w podwójne nawiasy klamrowe (takie jak `{{search-service-name}}`, `{{index-name}}`i `{{api-version}}`) z wartościami ustawionymi w [konfiguracji programu Poster](#configure-postman). Jeśli używasz innego narzędzia do wystawiania poleceń REST, musisz samodzielnie zastąpić te zmienne.
 
 Ustaw strukturę indeksu Wyszukiwanie poznawcze platformy Azure w treści żądania. Po ustawieniu nagłówków `api-key` i `Content-type` w programie Poster przejdź do okienka **Body** żądania. Powinien zostać wyświetlony poniższy kod JSON. Jeśli nie, wybierz pozycję **Raw** > **JSON (Application/JSON)** , a następnie wklej następujący kod jako treść:
 
@@ -145,11 +148,11 @@ Ustaw strukturę indeksu Wyszukiwanie poznawcze platformy Azure w treści żąda
 
 Ta definicja indeksu jest kombinacją danych, które chcesz przedstawić użytkownikowi (nazwa hotelu, zawartość do przeglądu, Data), metadane wyszukiwania i dane ulepszeń AI (tonacji, frazy kluczowe i język).
 
-Wybierz pozycję **Wyślij** , aby wydać żądanie Put. Powinien zostać wyświetlony stan `201 - Created`. Jeśli zobaczysz inny stan, w okienku **treść** Wyszukaj odpowiedź JSON, która zawiera komunikat o błędzie. 
+Wybierz pozycję **Wyślij** , aby wydać żądanie Put. Powinien zostać wyświetlony `201 - Created`stanu. Jeśli zobaczysz inny stan, w okienku **treść** Wyszukaj odpowiedź JSON, która zawiera komunikat o błędzie. 
 
 ## <a name="create-the-datasource"></a>Tworzenie źródła danych
 
-Następnie połącz usługę Azure Wyszukiwanie poznawcze z danymi hotelu zapisanymi w [sklepie](#store-the-data). Aby utworzyć źródło danych, Wyślij żądanie POST do `https://{{search-service-name}}.search.windows.net/datasources?api-version={{api-version}}`. Należy ustawić `api-key` i `Content-Type` nagłówków zgodnie z wcześniejszym opisem. 
+Następnie połącz usługę Azure Wyszukiwanie poznawcze z danymi hotelu zapisanymi w [sklepie](#store-the-data). Aby utworzyć źródło danych, Wyślij żądanie POST do `https://{{search-service-name}}.search.windows.net/datasources?api-version={{api-version}}`. Należy ustawić `api-key` i `Content-Type` nagłówki zgodnie z wcześniejszym opisem. 
 
 W programie Poster przejdź do żądania **Create DataSource** , a następnie do okienka **Body (treść** ). Powinien zostać wyświetlony następujący kod:
 
@@ -167,9 +170,9 @@ Wybierz pozycję **Wyślij** , aby wydać żądanie post.
 
 ## <a name="create-the-skillset"></a>Tworzenie zestawu umiejętności 
 
-Następnym krokiem jest określenie zestawu umiejętności, który określa ulepszenia do zastosowania oraz magazyn wiedzy, w którym będą przechowywane wyniki. W programie Poster wybierz kartę **Tworzenie zestawu umiejętności** . To żądanie wysyła do `https://{{search-service-name}}.search.windows.net/skillsets/{{skillset-name}}?api-version={{api-version}}`. Ustaw nagłówki `api-key` i `Content-type` tak jak wcześniej. 
+Następnym krokiem jest określenie zestawu umiejętności, który określa ulepszenia do zastosowania oraz magazyn wiedzy, w którym będą przechowywane wyniki. W programie Poster wybierz kartę **Tworzenie zestawu umiejętności** . To żądanie wysyła do `https://{{search-service-name}}.search.windows.net/skillsets/{{skillset-name}}?api-version={{api-version}}`. Ustaw `api-key` i `Content-type` nagłówki tak jak wcześniej. 
 
-Istnieją dwa duże obiekty najwyższego poziomu: `skills` i `knowledgeStore`. Każdy obiekt w obiekcie `skills` jest usługą wzbogacania. Każda usługa wzbogacania ma `inputs` i `outputs`. @No__t_0 ma `targetName` danych wyjściowych `Language`. Wartość tego węzła jest używana przez większość innych umiejętności jako dane wejściowe. Źródło jest `document/Language`. Możliwość używania danych wyjściowych z jednego węzła jako dane wejściowe do innego jest jeszcze bardziej oczywista w `ShaperSkill`, która określa, jak dane są przesyłane do tabel w sklepie z bazami danych.
+Istnieją dwa duże obiekty najwyższego poziomu: `skills` i `knowledgeStore`. Każdy obiekt w obiekcie `skills` jest usługą wzbogacania. Każda usługa wzbogacania ma `inputs` i `outputs`. `LanguageDetectionSkill` ma `targetName` danych wyjściowych `Language`. Wartość tego węzła jest używana przez większość innych umiejętności jako dane wejściowe. Źródło jest `document/Language`. Możliwość używania danych wyjściowych z jednego węzła jako dane wejściowe do innego jest jeszcze bardziej oczywista w `ShaperSkill`, która określa, w jaki sposób dane są przepływane do tabel magazynu wiedzy.
 
 Obiekt `knowledge_store` nawiązuje połączenie z kontem magazynu za pośrednictwem zmiennej `{{storage-connection-string}}` Poster. `knowledge_store` zawiera zestaw mapowań między rozszerzonym dokumentem i tabelami oraz kolumnami w sklepie z bazami danych. 
 
@@ -305,9 +308,9 @@ Aby wygenerować zestawu umiejętności, wybierz przycisk **Wyślij** w ogłosze
 
 Ostatnim krokiem jest utworzenie indeksatora. Indeksator odczytuje dane i aktywuje zestawu umiejętności. W obszarze Ogłoś wybierz żądanie **utworzenia indeksatora** , a następnie przejrzyj treść. Definicja indeksatora odwołuje się do kilku innych już utworzonych zasobów: źródła danych, indeksu i zestawu umiejętności. 
 
-Obiekt `parameters/configuration` kontroluje sposób pozyskiwania danych przez indeksator. W takim przypadku dane wejściowe znajdują się w jednym dokumencie zawierającym wiersz nagłówka i wartości rozdzielane przecinkami. Klucz dokumentu jest unikatowym identyfikatorem dla dokumentu. Przed kodowaniem klucz dokumentu jest adresem URL dokumentu źródłowego. Na koniec zestawu umiejętności wartości wyjściowe, takie jak kod języka, tonacji i kluczowe frazy, są mapowane na ich lokalizacje w dokumencie. Chociaż istnieje jedna wartość dla `Language`, `Sentiment` jest stosowana do każdego elementu w tablicy `pages`. `Keyphrases` to tablica, która również jest stosowana do każdego elementu w tablicy `pages`.
+Obiekt `parameters/configuration` kontroluje sposób pozyskiwania danych przez indeksator. W takim przypadku dane wejściowe znajdują się w jednym dokumencie zawierającym wiersz nagłówka i wartości rozdzielane przecinkami. Klucz dokumentu jest unikatowym identyfikatorem dla dokumentu. Przed kodowaniem klucz dokumentu jest adresem URL dokumentu źródłowego. Na koniec zestawu umiejętności wartości wyjściowe, takie jak kod języka, tonacji i kluczowe frazy, są mapowane na ich lokalizacje w dokumencie. Chociaż istnieje jedna wartość `Language`, `Sentiment` jest stosowana do każdego elementu w tablicy `pages`. `Keyphrases` jest tablicą, która również jest stosowana do każdego elementu w tablicy `pages`.
 
-Po ustawieniu nagłówków `api-key` i `Content-type` i upewnieniu się, że treść żądania jest podobna do poniższego kodu źródłowego, wybierz pozycję **Wyślij** w programie Poster. Po wysłaniu żądania PUT do `https://{{search-service-name}}.search.windows.net/indexers/{{indexer-name}}?api-version={{api-version}}`. Usługa Azure Wyszukiwanie poznawcze tworzy i uruchamia indeksator. 
+Po ustawieniu `api-key` i `Content-type` nagłówki i potwierdzić, że treść żądania jest podobna do poniższego kodu źródłowego, wybierz pozycję **Wyślij** w programie Poster. Po wysłaniu żądania PUT do `https://{{search-service-name}}.search.windows.net/indexers/{{indexer-name}}?api-version={{api-version}}`. Usługa Azure Wyszukiwanie poznawcze tworzy i uruchamia indeksator. 
 
 ```json
 {

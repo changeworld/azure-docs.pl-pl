@@ -1,20 +1,20 @@
 ---
-title: Tworzenie aplikacji mobilnych za pomocą platformy Xamarin i usługi Azure Cosmos DB
-description: Samouczek umożliwiający utworzenie aplikacji Xamarin iOS, Android lub Forms przy użyciu usługi Azure Cosmos DB. Azure Cosmos DB to szybka, działająca w skali globalnej, chmurowa baza danych dla aplikacji mobilnych.
+title: 'Samouczek: Tworzenie aplikacji mobilnych za pomocą platformy Xamarin i Azure Cosmos DB'
+description: 'Samouczek: samouczek służący do tworzenia aplikacji platformy Xamarin dla systemu iOS, Android lub formularzy przy użyciu Azure Cosmos DB. Azure Cosmos DB to szybka, działająca w skali globalnej, chmurowa baza danych dla aplikacji mobilnych.'
 author: SnehaGunda
 ms.service: cosmos-db
 ms.devlang: dotnet
 ms.topic: tutorial
-ms.date: 11/15/2018
+ms.date: 11/05/2019
 ms.author: sngun
-ms.openlocfilehash: 4a9c0fe09bee553f53c90c9833922746aad35d14
-ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
+ms.openlocfilehash: 40f7de4b4feb2b312705238abd30402edb635ea9
+ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69615083"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73720888"
 ---
-# <a name="build-mobile-applications-with-xamarin-and-azure-cosmos-db"></a>Tworzenie aplikacji mobilnych za pomocą platformy Xamarin i usługi Azure Cosmos DB
+# <a name="tutorial-build-mobile-applications-with-xamarin-and-azure-cosmos-db"></a>Samouczek: Tworzenie aplikacji mobilnych za pomocą platformy Xamarin i Azure Cosmos DB
 
 > [!div class="op_single_selector"]
 > * [.NET](sql-api-dotnet-application.md)
@@ -44,8 +44,8 @@ Usługa Azure Cosmos DB oferuje następujące kluczowe możliwości dla dewelope
 ## <a name="azure-cosmos-db-and-xamarin-tutorial"></a>Samouczek dotyczący usługi Azure Cosmos DB i platformy Xamarin
 W poniższym samouczku pokazano sposób tworzenia aplikacji mobilnych za pomocą platformy Xamarin i usługi Azure Cosmos DB. Pełny kod źródłowy samouczka możesz znaleźć w witrynie [platformy Xamarin i usługi Azure Cosmos DB w serwisie GitHub](https://github.com/Azure/azure-documentdb-dotnet/tree/master/samples/xamarin).
 
-### <a name="get-started"></a>Wprowadzenie
-Rozpoczęcie pracy z usługą Azure Cosmos DB jest łatwe. Przejdź do witryny Azure Portal i utwórz nowe konto usługi Azure Cosmos DB. Kliknij kartę **Szybki start**. Pobierz przykładową listę zadań do wykonania narzędzia Xamarin Forms, która jest już połączona z Twoim kontem usługi Azure Cosmos DB. 
+### <a name="get-started"></a>Rozpoczęcie pracy
+Rozpoczęcie pracy z usługą Azure Cosmos DB jest łatwe. Przejdź do witryny Azure Portal i utwórz nowe konto usługi Azure Cosmos DB. Kliknij kartę **Szybki Start** . Pobierz przykładową listę do wykonania formularzy Xamarin, która jest już połączona z kontem Azure Cosmos DB. 
 
 ![Azure Cosmos DB — Szybki start dla aplikacji mobilnych](media/mobile-apps-with-xamarin/cosmos-db-quickstart.png)
 

@@ -1,5 +1,5 @@
 ---
-title: Kopiowanie danych z usługi Azure Blob Storage do bazy danych SQL Database | Microsoft Docs
+title: 'Skopiuj dane z usługi Azure Blob Storage do SQL Database '
 description: Ten samouczek zawiera instrukcje krok po kroku dotyczące kopiowania danych z usługi Azure Blob Storage do bazy danych Azure SQL Database.
 services: data-factory
 documentationcenter: ''
@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: tutorial
 ms.date: 02/20/2019
 ms.author: jingwang
-ms.openlocfilehash: 49b5b03356790bd45b2ad29897a57b746af1abe1
-ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
+ms.openlocfilehash: 96b1e5a9633ee141fd4aa369468a8866d87f27f2
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70140684"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73683650"
 ---
 # <a name="copy-data-from-azure-blob-to-azure-sql-database-using-azure-data-factory"></a>Kopiowanie danych z obiektu blob platformy Azure do bazy danych Azure SQL Database przy użyciu usługi Azure Data Factory
 
@@ -29,7 +29,7 @@ Ten samouczek obejmuje następujące procedury:
 > * Tworzenie połączonych usług Azure Storage i Azure SQL Database.
 > * Tworzenie zestawów danych obiektu Blob platformy Azure i bazy danych Azure SQL Database.
 > * Tworzenie potoku zawierającego działanie kopiowania.
-> * Uruchamianie potoku.
+> * Uruchamianie przebiegu potoku.
 > * Monitorowanie uruchomień potoku i działań.
 
 W tym samouczku jest używany zestaw SDK platformy .NET. Aby uzyskać informacje o innych mechanizmach interakcji z usługą Azure Data Factory, przejdź do próbek w obszarze „Samouczki Szybki start”.
@@ -119,7 +119,7 @@ Za pomocą programu Visual Studio 2015/2017 utwórz aplikację konsolową .NET C
     ```
 
     
-2. Dodaj do metody **Main** następujący kod, który określa zmienne. Zastąp symbole zastępcze własnymi wartościami. Aby uzyskać listę regionów platformy Azure, w których obecnie jest dostępna usługa Data Factory, wybierz dane regiony na poniższej stronie, a następnie rozwiń węzeł **Analiza**, aby zlokalizować pozycję **Data Factory**: [Dostępność produktów według regionów](https://azure.microsoft.com/global-infrastructure/services/). Magazyny danych (Azure Storage, Azure SQL Database itp.) i jednostki obliczeniowe (HDInsight itp.) używane przez fabrykę danych mogą mieścić się w innych regionach.
+2. Dodaj do metody **Main** następujący kod, który określa zmienne. Zastąp symbole zastępcze własnymi wartościami. Aby uzyskać listę regionów platformy Azure, w których obecnie jest dostępna usługa Data Factory, wybierz dane regiony na poniższej stronie, a następnie rozwiń węzeł **Analiza**, aby zlokalizować pozycję **Data Factory**: [Produkty dostępne według regionu](https://azure.microsoft.com/global-infrastructure/services/). Magazyny danych (Azure Storage, Azure SQL Database itp.) i jednostki obliczeniowe (HDInsight itp.) używane przez fabrykę danych mogą mieścić się w innych regionach.
 
     ```csharp
     // Set variables
@@ -222,7 +222,7 @@ client.LinkedServices.CreateOrUpdate(resourceGroup, dataFactoryName, sqlDbLinked
 Console.WriteLine(SafeJsonConvert.SerializeObject(sqlDbLinkedService, client.SerializationSettings));
 ```
 
-## <a name="create-datasets"></a>Tworzenie zestawów danych
+## <a name="create-datasets"></a>Utwórz zestawy danych
 
 W tej sekcji utworzysz zestaw danych źródła i ujścia. 
 
@@ -232,8 +232,8 @@ Dodaj do metody **Main** poniższy kod, który tworzy **zestaw danych obiektu bl
 
 Należy zdefiniować zestaw danych reprezentujący źródło danych w obiekcie blob platformy Azure. Ten zestaw danych obiektu blob odwołuje się do połączonej usługi Azure Storage utworzonej w poprzednim kroku i zawiera opis następujących elementów:
 
-- Lokalizacja obiektu blob do skopiowania: **FolderPath** i **FileName**.
-- Format obiektów blob wskazujący, jak przeanalizować zawartość: **TextFormat** i jego ustawienia (na przykład ogranicznik kolumny).
+- Lokalizacja źródłowa obiektu blob do skopiowania: **FolderPath** i **FileName**.
+- Format obiektów Blob wskazujący, jak przeanalizować zawartość: **TextFormat** i jego ustawienia (na przykład ogranicznik kolumny).
 - Struktura danych, taka jak nazwy kolumn i typy danych, które w tym przypadku są mapowane na tabelę SQL ujścia.
 
 ```csharp
@@ -522,7 +522,7 @@ Potok w tym przykładzie kopiuje dane z jednej lokalizacji do innej lokalizacji 
 > * Tworzenie połączonych usług Azure Storage i Azure SQL Database.
 > * Tworzenie zestawów danych obiektu Blob platformy Azure i bazy danych Azure SQL Database.
 > * Tworzenie potoku zawierającego działanie kopiowania.
-> * Uruchamianie potoku.
+> * Uruchamianie przebiegu potoku.
 > * Monitorowanie uruchomień potoku i działań.
 
 

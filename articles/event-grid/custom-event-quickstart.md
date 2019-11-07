@@ -1,23 +1,23 @@
 ---
 title: 'Szybki Start: wysyłanie zdarzeń niestandardowych za pomocą Event Grid i interfejsu wiersza polecenia platformy Azure'
-description: Za pomocą usługi Azure Event Grid i wiersza polecenia platformy Azure można opublikować temat niestandardowy i zasubskrybować zdarzenia dla tego tematu. Zdarzenia są obsługiwane przez aplikację internetową.
+description: Przewodnik Szybki Start służy Azure Event Grid i interfejsu wiersza polecenia platformy Azure do publikowania tematu niestandardowego oraz subskrybowania zdarzeń dla tego tematu. Zdarzenia są obsługiwane przez aplikację internetową.
 services: event-grid
 keywords: ''
 author: spelluru
 ms.author: spelluru
-ms.date: 12/07/2018
+ms.date: 11/05/2019
 ms.topic: quickstart
 ms.service: event-grid
 ms.custom:
 - seodec18
 - seo-javascript-september2019
 - seo-python-october2019
-ms.openlocfilehash: 30ffcd9bdb8170777c245d95b0c07198a34c5464
-ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
+ms.openlocfilehash: cc9af86833fc74d0927a1cfb5c1084f39418605a
+ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72556066"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73720686"
 ---
 # <a name="quickstart-route-custom-events-to-web-endpoint-with-azure-cli-and-event-grid"></a>Szybki Start: kierowanie zdarzeń niestandardowych do punktu końcowego sieci Web przy użyciu interfejsu wiersza polecenia platformy Azure i Event Grid
 
@@ -37,7 +37,7 @@ Jeśli zdecydujesz się zainstalować interfejs wiersza polecenia i korzystać z
 
 Jeśli nie korzystasz z usługi Cloud Shell, musisz się najpierw zalogować za pomocą polecenia `az login`.
 
-## <a name="create-a-resource-group"></a>Utwórz grupę zasobów
+## <a name="create-a-resource-group"></a>Tworzenie grupy zasobów
 
 Tematy usługi Event Grid to zasoby platformy Azure i muszą być umieszczone w grupie zasobów platformy Azure. Grupa zasobów to kolekcja logiczna przeznaczona do wdrażania zasobów platformy Azure i zarządzania nimi.
 

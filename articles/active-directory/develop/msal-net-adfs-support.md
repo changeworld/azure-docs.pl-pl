@@ -18,15 +18,15 @@ ms.author: twhitney
 ms.reviewer: saeeda
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 273a8b06b3bd3bf299b47a1cc52fd4660353cec3
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: d947645b45641b2604e20f18765fd0428a1336ec
+ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73473746"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73721065"
 ---
 # <a name="active-directory-federation-services-support-in-msalnet"></a>Obsługa Active Directory Federation Services w MSAL.NET
-Active Directory Federation Services (AD FS) w systemie Windows Server umożliwia dodawanie uwierzytelniania i autoryzacji na podstawie OpenID Connect Connect i OAuth 2,0 na potrzeby aplikacji, które tworzysz. Aplikacje te mogą następnie uwierzytelniać użytkowników bezpośrednio przed AD FS. Aby uzyskać więcej informacji, Przeczytaj [AD FS scenariusze dla deweloperów](/windows-server/identity/ad-fs/overview/ad-fs-openid-connect-oauth-flows-scenarios).
+Active Directory Federation Services (AD FS) w systemie Windows Server umożliwia dodawanie uwierzytelniania i autoryzacji na podstawie OpenID Connect Connect i OAuth 2,0 na potrzeby aplikacji, które tworzysz. Aplikacje te mogą następnie uwierzytelniać użytkowników bezpośrednio przed AD FS. Aby uzyskać więcej informacji, Przeczytaj [AD FS scenariusze dla deweloperów](https://docs.microsoft.com/en-us/windows-server/identity/ad-fs/overview/ad-fs-openid-connect-oauth-flows-scenarios).
 
 Biblioteka Microsoft Authentication Library for .NET (MSAL.NET) obsługuje dwa scenariusze uwierzytelniania na AD FS:
 

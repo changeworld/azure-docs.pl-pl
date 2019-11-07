@@ -1,7 +1,7 @@
 ---
 title: Wykrywanie marki — przetwarzanie obrazów
 titleSuffix: Azure Cognitive Services
-description: Pojęcia związane z wykrywaniem marki/logo przy użyciu interfejs API przetwarzania obrazów.
+description: W tym artykule omówiono wyspecjalizowany tryb wykrywania obiektów; Wykrywanie marki i/lub logo przy użyciu interfejs API przetwarzania obrazów.
 services: cognitive-services
 author: PatrickFarley
 manager: nitinme
@@ -10,12 +10,12 @@ ms.subservice: computer-vision
 ms.topic: conceptual
 ms.date: 08/08/2019
 ms.author: pafarley
-ms.openlocfilehash: c3a80cbdd166f77681665ee3675c1a71ce3a9bd6
-ms.sourcegitcommit: fbea2708aab06c19524583f7fbdf35e73274f657
+ms.openlocfilehash: 117beca1284f28c75c1ac772425423f732b8a236
+ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/13/2019
-ms.locfileid: "70967090"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73718631"
 ---
 # <a name="detect-popular-brands-in-images"></a>Wykrywanie popularnych marek w obrazach
 
@@ -74,7 +74,7 @@ W niektórych przypadkach detektor marki spowoduje pobranie zarówno obrazu logo
 
 ## <a name="use-the-api"></a>Używanie interfejsu API
 
-Funkcja wykrywania marki jest częścią usługi [Analizowanie obrazu](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fa) interfejsu API. Ten interfejs API można wywołać za pomocą natywnego zestawu SDK lub wywołań REST. Uwzględnij `Brands` w parametrze zapytania **visualFeatures** . Po otrzymaniu pełnej odpowiedzi JSON należy po prostu przeanalizować ciąg dla zawartości `"brands"` sekcji.
+Funkcja wykrywania marki jest częścią usługi [Analizowanie obrazu](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fa) interfejsu API. Ten interfejs API można wywołać za pomocą natywnego zestawu SDK lub wywołań REST. Uwzględnij `Brands` w parametrze zapytania **visualFeatures** . Po otrzymaniu pełnej odpowiedzi JSON należy po prostu przeanalizować ciąg dla zawartości sekcji `"brands"`.
 
-* [Szybki start: Zestaw SDK przetwarzanie obrazów .NET](./quickstarts-sdk/csharp-sdk.md)
-* [Szybki start: Analizowanie obrazu (interfejs API REST)](./quickstarts/csharp-analyze.md)
+* [Szybki Start: przetwarzanie obrazów zestawu .NET SDK](./quickstarts-sdk/csharp-sdk.md)
+* [Szybki Start: analizowanie obrazu (interfejs API REST)](./quickstarts/csharp-analyze.md)

@@ -1,5 +1,5 @@
 ---
-title: Zbiorcze kopiowanie danych przy użyciu usługi Azure Data Factory | Microsoft Docs
+title: 'Kopiuj dane zbiorczo przy użyciu Azure Data Factory '
 description: Dowiedz się, jak używać usługi Azure Data Factory i działania kopiowania do zbiorczego kopiowania danych ze źródłowego magazynu danych do docelowego magazynu danych.
 services: data-factory
 documentationcenter: ''
@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: tutorial
 ms.date: 06/22/2018
 ms.author: jingwang
-ms.openlocfilehash: d7f97eec4e0dc6e88d89e845e086b9e5242caa7b
-ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
+ms.openlocfilehash: 9feb9be5e76f91ab55ec1b3e60eb79ab5e246f4f
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69616432"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73683735"
 ---
 # <a name="copy-multiple-tables-in-bulk-by-using-azure-data-factory"></a>Zbiorcze kopiowanie wielu tabel przy użyciu usługi Azure Data Factory
 W tym samouczku przedstawiono **kopiowanie wielu tabel z bazy danych Azure SQL Database do usługi Azure SQL Data Warehouse**. Tego samego wzorca można użyć także w innych scenariuszach kopiowania. Na przykład kopiowanie tabel z programu SQL Server/Oracle do usługi Azure SQL Database/Data Warehouse/Azure Blob, kopiowanie różnych ścieżek z obiektów blob do tabeli bazy danych Azure SQL Database.
@@ -32,7 +32,7 @@ Na poziomie ogólnym ten samouczek obejmuje następujące kroki:
 > * Tworzenie połączonych usług Azure SQL Database, Azure SQL Data Warehouse i Azure Storage.
 > * Tworzenie zestawów danych Azure SQL Database i Azure SQL Data Warehouse.
 > * Tworzenie potoku w celu wyszukania tabel do skopiowania i innego potoku w celu wykonania samej operacji kopiowania. 
-> * Uruchamianie działania potoku.
+> * Uruchamianie przebiegu potoku.
 > * Monitorowanie uruchomień potoku i działań.
 
 W tym samouczku jest używana witryna Azure Portal. Aby dowiedzieć się więcej o zastosowaniu innych narzędzi/zestawów SDK do tworzenia fabryki danych, zapoznaj się z przewodnikami [Szybki start](quickstart-create-data-factory-dot-net.md). 
@@ -72,7 +72,7 @@ Aby sprawdzić i włączyć to ustawienie, przejdź do usługi Azure SQL Server 
 
 ## <a name="create-a-data-factory"></a>Tworzenie fabryki danych
 1. Uruchom przeglądarkę internetową **Microsoft Edge** lub **Google Chrome**. Obecnie interfejs użytkownika usługi Data Factory jest obsługiwany tylko przez przeglądarki internetowe Microsoft Edge i Google Chrome.
-1. Z menu po lewej stronie wybierz pozycję Utwórz **Data Factory** **analizy** > **zasobów** > : ![Data Factory wybór w okienku "nowy"](./media/doc-common-process/new-azure-data-factory-menu.png)
+1. W menu po lewej stronie wybierz pozycję **Utwórz zasób** > **Analytics** > **Data Factory**: ![Data Factory zaznaczenie w okienku "nowe"](./media/doc-common-process/new-azure-data-factory-menu.png)
 
 1. Na stronie **Nowa fabryka danych** wprowadź **ADFTutorialBulkCopyDF** w polu **Nazwa**. 
  
@@ -87,8 +87,8 @@ Aby sprawdzić i włączyć to ustawienie, przejdź do usługi Azure SQL Server 
          
      Informacje na temat grup zasobów znajdują się w artykule [Using resource groups to manage your Azure resources](../azure-resource-manager/resource-group-overview.md) (Używanie grup zasobów do zarządzania zasobami platformy Azure).  
 1. Wybierz opcję **V2** w obszarze **Wersja**.
-1. Na liście **lokalizacja** wybierz lokalizację fabryki danych. Aby uzyskać listę regionów platformy Azure, w których obecnie jest dostępna usługa Data Factory, wybierz dane regiony na poniższej stronie, a następnie rozwiń węzeł **Analiza**, aby zlokalizować pozycję **Data Factory**: [Dostępność produktów według regionów](https://azure.microsoft.com/global-infrastructure/services/). Magazyny danych (Azure Storage, Azure SQL Database itp.) i jednostki obliczeniowe (HDInsight itp.) używane przez fabrykę danych mogą mieścić się w innych regionach.
-1. Kliknij przycisk **Utwórz**.
+1. Na liście **lokalizacja** wybierz lokalizację fabryki danych. Aby uzyskać listę regionów platformy Azure, w których obecnie jest dostępna usługa Data Factory, wybierz dane regiony na poniższej stronie, a następnie rozwiń węzeł **Analiza**, aby zlokalizować pozycję **Data Factory**: [Produkty dostępne według regionu](https://azure.microsoft.com/global-infrastructure/services/). Magazyny danych (Azure Storage, Azure SQL Database itp.) i jednostki obliczeniowe (HDInsight itp.) używane przez fabrykę danych mogą mieścić się w innych regionach.
+1. Kliknij pozycję **Utwórz**.
 1. Po zakończeniu tworzenia zostanie wyświetlona strona **Fabryka danych**.
    
 1. Kliknij kafelek **Tworzenie i monitorowanie**, aby w osobnej karcie uruchomić aplikację interfejsu użytkownika usługi Data Factory.
@@ -114,7 +114,7 @@ W tym kroku utworzysz połączoną usługę służącą do łączenia bazy danyc
     
     b. W polu **Nazwa serwera** wybierz swój serwer usługi Azure SQL.
     
-    c. W polu **Nazwa bazy danych** wybierz swoją bazę danych Azure SQL Database. 
+    d. W polu **Nazwa bazy danych** wybierz swoją bazę danych Azure SQL Database. 
     
     d. Wprowadź **nazwę użytkownika**, aby nawiązać połączenie z bazą danych Azure SQL Database. 
     
@@ -135,7 +135,7 @@ W tym kroku utworzysz połączoną usługę służącą do łączenia bazy danyc
      
     b. W polu **Nazwa serwera** wybierz swój serwer usługi Azure SQL.
      
-    c. W polu **Nazwa bazy danych** wybierz swoją bazę danych Azure SQL Database. 
+    d. W polu **Nazwa bazy danych** wybierz swoją bazę danych Azure SQL Database. 
      
     d. Wprowadź **nazwę użytkownika**, aby nawiązać połączenie z bazą danych Azure SQL Database. 
      
@@ -156,10 +156,10 @@ W tym samouczku magazyn obiektów blob platformy Azure służy jako obszar przej
     
     b. Wybierz swoje **konto usługi Azure Storage** w polu **Nazwa konta magazynu**.
     
-    c. Kliknij pozycję **Kontynuuj**.
+    d. Kliknij pozycję **Kontynuuj**.
 
 
-## <a name="create-datasets"></a>Tworzenie zestawów danych
+## <a name="create-datasets"></a>Utwórz zestawy danych
 W tym samouczku utworzysz zestawy danych będące źródłem i ujściem, określające lokalizację przechowywania danych. 
 
 Wejściowy zestaw danych **AzureSqlDatabaseDataset** odwołuje się do elementu **AzureSqlDatabaseLinkedService**. Połączona usługa określa parametry połączenia w celu nawiązania połączenia z bazą danych. Zestaw danych określa nazwę bazy danych i tabelę, która zawiera dane źródłowe. 
@@ -189,12 +189,12 @@ W tym samouczku źródłowe i docelowe tabele SQL nie są ustalone w definicjach
 
     a. W obszarze **Tabela** wybierz opcję **Edytuj**, kliknij w polu wprowadzania nazwy tabeli, a następnie kliknij link **Dodaj zawartość dynamiczną** poniżej. 
 
-    b. Na stronie **Dodaj zawartość dynamiczną** kliknij pozycję **DWTAbleName** w obszarze **Parametry**, która spowoduje automatyczne wypełnienie pola `@dataset().DWTableName`tekstowego wyrażenie Top, a następnie kliknij przycisk **Zakończ**. Właściwość **tableName** zestawu danych jest ustawiana na wartość przekazywaną jako argument parametru **DWTableName**. Działanie ForEach iteruje w obrębie listy tabel i przekazuje je po jednej do działania Copy (Kopiowanie). 
+    b. Na stronie **Dodaj zawartość dynamiczną** kliknij pozycję **DWTAbleName** w obszarze **Parametry**, co spowoduje automatyczne wypełnienie `@dataset().DWTableName`pola tekstowego wyrażenie Top, a następnie kliknij przycisk **Zakończ**. Właściwość **tableName** zestawu danych jest ustawiana na wartość przekazywaną jako argument parametru **DWTableName**. Działanie ForEach iteruje w obrębie listy tabel i przekazuje je po jednej do działania Copy (Kopiowanie). 
 
     ![Konstruktor parametrów zestawu danych](./media/tutorial-bulk-copy-portal/dataset-parameter-builder.png)
  
 ## <a name="create-pipelines"></a>Tworzenie potoków
-W tym samouczku utworzysz dwa potoki: **IterateAndCopySQLTables** i **GetTableListAndTriggerCopyData**. 
+W tym samouczku tworzysz dwa potoki: **IterateAndCopySQLTables** i **GetTableListAndTriggerCopyData**. 
 
 Potok **GetTableListAndTriggerCopyData** wykonuje dwie czynności:
 
@@ -216,7 +216,7 @@ Potok **IterateAndCopySQLTables** pobiera listę tabel jako parametr. Dla każde
     
     b. Wprowadź ciąg **tableList** jako **nazwę** parametru.
     
-    c. Wybierz wartość **Array** w polu **Typ**.
+    d. Wybierz wartość **Array** w polu **Typ**.
 
 1. W przyborniku **Działania** rozwiń pozycję **Iteracja i warunki**, a następnie przeciągnij i upuść działanie **ForEach** do powierzchni projektu potoku. Możesz również wyszukać działania w przyborniku **Działania**. 
 
@@ -224,7 +224,7 @@ Potok **IterateAndCopySQLTables** pobiera listę tabel jako parametr. Dla każde
 
     b. Przejdź do karty **Ustawienia** , kliknij pole wejściowe dla **pozycji elementy**, a następnie kliknij link **Dodaj zawartość dynamiczną** poniżej. 
 
-    c. Na stronie **Dodaj zawartość dynamiczną** Zwiń sekcje **systemowe** i **funkcje** , kliknij **ciąg tablelist jako** w obszarze **Parametry**, co spowoduje automatyczne wypełnienie pola tekstowego pierwsze wyrażenie jako `@pipeline().parameter.tableList`. Następnie kliknij przycisk **Zakończ**. 
+    d. Na stronie **Dodaj zawartość dynamiczną** Zwiń sekcje **systemowe** i **funkcje** , kliknij **ciąg tablelist jako** w obszarze **Parametry**, co spowoduje automatyczne wypełnienie pola tekstowego pierwsze wyrażenie jako `@pipeline().parameter.tableList`. Następnie kliknij przycisk **Zakończ**. 
 
     ![Konstruktor parametru ForEach](./media/tutorial-bulk-copy-portal/for-each-parameter-builder.png)
     
@@ -248,7 +248,7 @@ Potok **IterateAndCopySQLTables** pobiera listę tabel jako parametr. Dla każde
 1. Przejdź do karty **Ujście** i wykonaj następujące czynności: 
 
     1. Wybierz pozycję **AzureSqlDWDataset** w polu **Zestaw danych będący ujściem**.
-    1. Kliknij pole wejściowe dla wartości parametru DWTableName-> wybierz pozycję **Dodaj zawartość dynamiczną** poniżej, wprowadź `[@{item().TABLE_SCHEMA}].[@{item().TABLE_NAME}]` wyrażenie jako skrypt,-> wybierz pozycję **Zakończ**.
+    1. Kliknij pole wejściowe dla wartości parametru DWTableName-> wybierz pozycję **Dodaj zawartość dynamiczną** poniżej, wprowadź wyrażenie `[@{item().TABLE_SCHEMA}].[@{item().TABLE_NAME}]` jako skrypt, > wybierz pozycję **Zakończ**.
     1. Zaznacz pole wyboru **Zezwalaj na użycie bazy**. 
     1. Usuń zaznaczenie opcji **Użyj wartości domyślnej typu**. 
     1. Kliknij pole wprowadzania **Skrypt wstępnego kopiowania** -> wybierz pozycję **Dodaj zawartość dynamiczną** poniżej -> wprowadź poniższe wyrażenie jako skrypt -> wybierz przycisk **Zakończ**. 
@@ -316,7 +316,7 @@ Przejdź do **GetTableListAndTriggerCopyData**potoku, kliknij pozycję **Dodaj w
 
 ## <a name="monitor-the-pipeline-run"></a>Monitorowanie działania potoku
 
-1. Przejdź do karty **Monitorowanie**. Klikaj pozycję **Odśwież** do momentu wyświetlenia uruchomień obydwu potoków w rozwiązaniu. Kontynuuj odświeżanie listy do momentu wyświetlenia stanu **Powodzenie**. 
+1. Przejdź do karty **monitorowanie** . kliknij pozycję **Odśwież** , aby zobaczyć przebiegi dla potoków w rozwiązaniu. Kontynuuj odświeżanie listy do momentu wyświetlenia stanu **Powodzenie**. 
 
 1. Aby wyświetlić uruchomienia działań skojarzone z potokiem **GetTableListAndTriggerCopyData** , kliknij pierwszy link w linku akcje dla tego potoku. Powinny zostać wyświetlone dwa uruchomienia działania dla tego uruchomienia potoku. 
 
@@ -387,7 +387,7 @@ W ramach tego samouczka wykonano następujące procedury:
 > * Tworzenie połączonych usług Azure SQL Database, Azure SQL Data Warehouse i Azure Storage.
 > * Tworzenie zestawów danych Azure SQL Database i Azure SQL Data Warehouse.
 > * Tworzenie potoku w celu wyszukania tabel do skopiowania i innego potoku w celu wykonania samej operacji kopiowania. 
-> * Uruchamianie działania potoku.
+> * Uruchamianie przebiegu potoku.
 > * Monitorowanie uruchomień potoku i działań.
 
 Przejdź do poniższego samouczka, aby dowiedzieć się, jak przyrostowo kopiować dane z lokalizacji źródłowej do docelowej:

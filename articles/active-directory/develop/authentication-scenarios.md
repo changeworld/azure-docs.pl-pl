@@ -18,12 +18,12 @@ ms.author: ryanwi
 ms.reviewer: jmprieur, saeeda, sureshja, hirsin
 ms.custom: aaddev, identityplatformtop40, scenarios:getting-started
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b3d87ab57a5cf3bcd768a28f7867dac37371570b
-ms.sourcegitcommit: fa5ce8924930f56bcac17f6c2a359c1a5b9660c9
+ms.openlocfilehash: 1ab2180c54f07ff5009e2c57d8522f2eb0b81aad
+ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/31/2019
-ms.locfileid: "73200348"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73718370"
 ---
 # <a name="authentication-basics"></a>Podstawowe informacje o uwierzytelnianiu
 
@@ -53,7 +53,7 @@ Usługa Azure AD udostępnia również Azure Active Directory B2C, dzięki czemu
 
 ### <a name="security-tokens"></a>Tokeny zabezpieczające
 
-Tokeny zabezpieczające zawierają informacje o użytkownikach i aplikacjach. Usługa Azure AD korzysta z tokenów opartych na notacji JSon (JWTs) zawierających oświadczenia. Twierdzenie zawiera potwierdzenie dotyczące jednej jednostki. Aplikacje mogą używać oświadczeń dla różnych zadań, takich jak:
+Tokeny zabezpieczające zawierają informacje o użytkownikach i aplikacjach. Usługa Azure AD korzysta z tokenów opartych na notacji JSON (JWTs) zawierających oświadczenia. Twierdzenie zawiera potwierdzenie dotyczące jednej jednostki. Aplikacje mogą używać oświadczeń dla różnych zadań, takich jak:
 
 * Sprawdzanie poprawności tokenu
 * Identyfikowanie dzierżawy katalogu podmiotu
@@ -83,7 +83,7 @@ Aplikacje mogą logować się samodzielnie lub delegować użytkowników do dost
 Aby dostawca tożsamości mógł wiedzieć, że użytkownik ma dostęp do określonej aplikacji, zarówno użytkownik, jak i aplikacja muszą być zarejestrowane przy użyciu dostawcy tożsamości. Po zarejestrowaniu aplikacji w usłudze Azure AD udostępniamy konfigurację tożsamości dla aplikacji, która umożliwia integrację z usługą Azure AD. Zarejestrowanie aplikacji umożliwia również:
 
 - Dostosuj znakowanie aplikacji w oknie dialogowym logowania. Jest to ważne, ponieważ jest to pierwsze środowisko użytkownika z Twoją aplikacją.
-- Zdecyduj, czy chcesz zezwolić użytkownikom na logowanie się tylko wtedy, gdy należą do organizacji. Jest to jedna aplikacja dzierżawy. Lub zezwól użytkownikom na logowanie się przy użyciu dowolnego konta służbowego. Jest to aplikacja wielodostępna. Możesz również zezwolić na osobiste konta Microsoft lub konto społecznościowe z połączeń, Google i tak dalej.
+- Zdecyduj, czy chcesz zezwolić użytkownikom na logowanie się tylko wtedy, gdy należą do organizacji. Jest to jedna aplikacja dzierżawy. Lub zezwól użytkownikom na logowanie się przy użyciu dowolnego konta służbowego. Jest to aplikacja wielodostępna. Możesz również zezwolić na osobiste konta Microsoft lub konto społecznościowe w serwisie LinkedIn, Google i tak dalej.
 - uprawnienia zakresu żądania. Na przykład można zażądać zakresu "User. Read", który przyznaje uprawnienia do odczytu profilu zalogowanego użytkownika.
 - Zdefiniuj zakresy, które definiują dostęp do internetowego interfejsu API. Zwykle, gdy aplikacja chce uzyskać dostęp do interfejsu API, będzie musiała zażądać uprawnień do zdefiniowanych zakresów.
 - Udostępnij wpis tajny w usłudze Azure AD, który udowadnia tożsamość aplikacji w usłudze Azure AD.  Ma to zastosowanie w przypadku, gdy aplikacja jest poufną aplikacją kliencką. Poufna aplikacja kliencka to aplikacja, która umożliwia bezpieczne przechowywanie poświadczeń. Wymagają one zaufanego serwera wewnętrznej bazy danych do przechowywania poświadczeń.
@@ -98,8 +98,9 @@ Platforma tożsamości firmy Microsoft:
 * Przechowuje wszystkie dane wymagane do obsługi uwierzytelniania w czasie wykonywania.
 * Program przechowuje wszystkie dane dotyczące podejmowania decyzji o zasobach, do których aplikacja może potrzebować, i w jakich okolicznościach należy spełnić dane żądanie.
 * Oferuje infrastrukturę do implementowania aprowizacji aplikacji w ramach dzierżawy dewelopera aplikacji oraz do innych dzierżaw usługi Azure AD.
+* Obsługuje wyrażanie zgody użytkownika podczas żądania tokenu i ułatwia dynamiczne Inicjowanie obsługi aplikacji między dzierżawcami
 
-Obsługuj zgodę użytkownika podczas żądania tokenu i Ułatwiaj dynamiczne Inicjowanie obsługi aplikacji między dzierżawcami. jest to proces polegający na tym, że właściciel zasobu udziela autoryzacji do aplikacji klienckiej w celu uzyskania dostępu do chronionych zasobów, w obszarze określonych uprawnień na imienie właściciela zasobu. Platforma tożsamości firmy Microsoft:
+Wyrażanie zgody polega na tym, że właściciel zasobu udziela autoryzacji dla aplikacji klienckiej w celu uzyskiwania dostępu do chronionych zasobów w ramach określonych uprawnień w imieniu właściciela zasobu. Platforma tożsamości firmy Microsoft:
 
 * Umożliwia użytkownikom i administratorom dynamiczne wyrażanie zgody lub odmawianie zgody dla aplikacji na uzyskiwanie przez nią dostępu do zasobów w ich imieniu.
 * Umożliwia administratorom ostateczne zdecydowanie, jakie działania mogą podejmować aplikacje, którzy użytkownicy mogą używać określonych aplikacji i w jaki sposób uzyskiwany jest dostęp do zasobów katalogu.
@@ -142,7 +143,7 @@ Poniższy diagram sekwencji podsumowuje tę interakcję:
 
 Deweloperzy aplikacji sieci Web mogą wskazać, czy wszystkie lub tylko niektóre strony wymagają uwierzytelniania. Na przykład w ASP.NET/ASP.NET rdzeń można to zrobić, dodając atrybut `[Authorize]` do akcji kontrolera. 
 
-Ten atrybut powoduje, że ASP.NET sprawdza obecność pliku cookie sesji zawierającego tożsamość użytkownika. Jeśli plik cookie nie istnieje, ASP.NET przekierowuje uwierzytelnianie do określonego dostawcy tożsamości. Jeśli dostawca tożsamości to usługa Azure AD, aplikacja internetowa przekierowuje uwierzytelnianie do https://login.microsoftonline.com, który wyświetla okno dialogowe logowania.
+Ten atrybut powoduje, że ASP.NET sprawdza obecność pliku cookie sesji zawierającego tożsamość użytkownika. Jeśli plik cookie nie istnieje, ASP.NET przekierowuje uwierzytelnianie do określonego dostawcy tożsamości. Jeśli dostawca tożsamości to usługa Azure AD, aplikacja sieci Web przekierowuje uwierzytelnianie do https://login.microsoftonline.com, co spowoduje wyświetlenie okna dialogowego logowania.
 
 ### <a name="how-a-web-app-delegates-sign-in-to-azure-ad-and-obtains-a-token"></a>Jak aplikacja sieci Web deleguje logowanie do usługi Azure AD i uzyskuje token
 

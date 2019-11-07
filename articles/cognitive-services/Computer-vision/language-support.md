@@ -1,7 +1,7 @@
 ---
 title: Obsługa języka — przetwarzanie obrazów
 titleSuffix: Azure Cognitive Services
-description: Lista języków naturalnych obsługiwana przez funkcje przetwarzanie obrazów.
+description: Ten artykuł zawiera listę języków naturalnych obsługiwanych przez funkcje przetwarzanie obrazów. OCR, Rozpoznawanie tekstu i odczytywanie.
 services: cognitive-services
 author: PatrickFarley
 manager: nitinme
@@ -10,12 +10,12 @@ ms.subservice: computer-vision
 ms.topic: conceptual
 ms.date: 04/17/2019
 ms.author: pafarley
-ms.openlocfilehash: 516d21bc69bbc20f924a3bdf39eda7245fc08a28
-ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
+ms.openlocfilehash: a834c68119340d796f87971912a07fc0524a6d21
+ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68882963"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73718611"
 ---
 # <a name="language-support-for-computer-vision"></a>Obsługa języka dla przetwarzanie obrazów
 
@@ -25,7 +25,7 @@ Niektóre funkcje przetwarzanie obrazów obsługują wiele języków; wszystkie 
 
 Przetwarzanie obrazów może rozpoznawać tekst w wielu językach. Interfejs API [OCR](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fc) obsługuje wiele języków, podczas gdy interfejs API [odczytu](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/2afb498089f74080d7ef85eb) i interfejs API [rozpoznawanie tekstu](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/587f2c6a154055056008f200) obsługują tylko język angielski. Aby uzyskać więcej informacji na temat tej funkcji oraz zalety poszczególnych interfejsów API, zobacz [rozpoznawanie wydrukowanych i pisanych tekstu](concept-recognizing-text.md) .
 
-OCR automatycznie wykrywa język materiału wejściowego, dlatego nie trzeba określać kodu języka w wywołaniu interfejsu API. Jednak kody języków są zawsze zwracane jako wartość `"language"` węzła w odpowiedzi JSON.
+OCR automatycznie wykrywa język materiału wejściowego, dlatego nie trzeba określać kodu języka w wywołaniu interfejsu API. Jednak kody języków są zawsze zwracane jako wartość węzła `"language"` w odpowiedzi JSON.
 
 |Język| Kod języka | INTERFEJS API OCR |
 |:-----|:----:|:-----:|
@@ -35,7 +35,7 @@ OCR automatycznie wykrywa język materiału wejściowego, dlatego nie trzeba okr
 |Czeski | `cs` |✔ |
 |Duński | `da` |✔ |
 |Holenderski | `nl` |✔ |
-|Angielski | `en` |✔ |
+|Polski | `en` |✔ |
 |Fiński | `fi` |✔ |
 |Francuski | `fr` |✔ |
 |Niemiecki | `de` |✔ |
@@ -58,12 +58,12 @@ OCR automatycznie wykrywa język materiału wejściowego, dlatego nie trzeba okr
 
 ## <a name="image-analysis"></a>Analiza obrazu
 
-Niektóre akcje interfejsu API [analizy obrazu](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fa) mogą zwracać wyniki w innych językach, określone za pomocą `language` parametru zapytania. Inne akcje zwracają wyniki w języku angielskim niezależnie od tego, jaki język jest określony, a inne zgłaszają wyjątek dla nieobsługiwanych języków. Akcje są określone za pomocą `visualFeatures` parametrów `details` i. Zapoznaj się z [omówieniem](home.md) listy wszystkich akcji, które można wykonać za pomocą analizy obrazów.
+Niektóre akcje interfejsu API [analizy obrazu](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fa) mogą zwracać wyniki w innych językach, określone za pomocą `language` parametru zapytania. Inne akcje zwracają wyniki w języku angielskim niezależnie od tego, jaki język jest określony, a inne zgłaszają wyjątek dla nieobsługiwanych języków. Akcje są określone za pomocą parametrów zapytania `visualFeatures` i `details`; Zapoznaj się z [omówieniem](home.md) , aby zapoznać się z listą wszystkich akcji, które można wykonać za pomocą analizy obrazu.
 
-|Język | Kod języka | Categories | `Tags` | Opis | Dorośli | Marki | Kolor | Twarze | Typ obrazu | Obiekty | Celebryci | Charakterystycznych elementów krajobrazu |
+|Język | Kod języka | Kategorie | Tagi | Opis | Dla dorosłych | Marki | Kolor | Twarze | Typ obrazu | Obiekty | Celebryci | Charakterystycznych elementów krajobrazu |
 |:---|:---:|:----:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|
 |Chiński | `zh`    | ✔ | ✔| ✔|-|-|-|-|-|❌|✔|✔|
-|Angielski | `en`   | ✔ | ✔| ✔|✔|✔|✔|✔|✔|✔|✔|✔|
+|Polski | `en`   | ✔ | ✔| ✔|✔|✔|✔|✔|✔|✔|✔|✔|
 |Japoński | `ja`   | ✔ | ✔| ✔|-|-|-|-|-|❌|✔|✔|
 |Portugalski | `pt` | ✔ | ✔| ✔|-|-|-|-|-|❌|✔|✔|
 |Hiszpański | `es`    | ✔ | ✔| ✔|-|-|-|-|-|❌|✔|✔|

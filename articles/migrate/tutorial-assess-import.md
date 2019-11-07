@@ -7,14 +7,17 @@ ms.service: azure-migrate
 ms.topic: tutorial
 ms.date: 10/23/2019
 ms.author: raynew
-ms.openlocfilehash: 86d61dbd75363f68ee4651bfb36f940810909c00
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 856f7f7735435579ac14918ee8026f27b222773e
+ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73501848"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73715514"
 ---
 # <a name="assess-servers-using-imported-data"></a>Ocenianie serwerów za pomocą zaimportowanych danych
+
+> [!NOTE]
+> Jeśli ta funkcja nie jest jeszcze widoczna w portalu Azure Migrate, zaczekaj. Zostanie ona wyświetlona w ciągu następnego tygodnia lub.
 
 W tym artykule wyjaśniono, jak oceniać serwery lokalne za pomocą [Azure Migrate: Ocena serwera](migrate-services-overview.md#azure-migrate-server-assessment-tool), importując metadane serwera przy użyciu woluminu CSV. W przypadku tej metody oceny nie trzeba konfigurować urządzenia Azure Migrate w celu utworzenia oceny. Jest to przydatne, jeśli: 
 

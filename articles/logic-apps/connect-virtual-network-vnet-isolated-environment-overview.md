@@ -8,13 +8,13 @@ author: ecfan
 ms.author: estfan
 ms.reviewer: klam, LADocs
 ms.topic: article
-ms.date: 07/26/2019
-ms.openlocfilehash: 5d42b9fc2dfd7cbee230b65f7d9844c9e7332147
-ms.sourcegitcommit: d37991ce965b3ee3c4c7f685871f8bae5b56adfa
+ms.date: 11/06/2019
+ms.openlocfilehash: adb89c04a83bbfbd5bddd5c23b0fa88019a88991
+ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "72680500"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73721387"
 ---
 # <a name="access-to-azure-virtual-network-resources-from-azure-logic-apps-by-using-integration-service-environments-ises"></a>Dostęp do zasobów platformy Azure Virtual Network z Azure Logic Apps przy użyciu środowisk usługi integracji (ISEs)
 
@@ -28,7 +28,7 @@ Po utworzeniu ISE, gdy przejdziesz do tworzenia aplikacji logiki lub konta integ
 
 Aplikacja logiki może teraz bezpośrednio uzyskiwać dostęp do systemów, które znajdują się wewnątrz lub są połączone z siecią wirtualną przy użyciu dowolnego z następujących elementów:
 
-* Łącznik **ISE**z etykietą dla tego systemu, taki jak SQL Server
+* Łącznik **ISE**z etykietą dla tego systemu
 * Wbudowany wyzwalacz lub akcja z oznaczeniem **rdzenia**, na przykład wyzwalacz http lub Akcja
 * Łącznik niestandardowy
 
@@ -51,7 +51,7 @@ Usługa Logic Apps w ISE zapewnia te same środowiska użytkownika i podobne fun
 * Blob Storage, File Storage i Table Storage platformy Azure
 * Azure Queues, Azure Service Bus, Azure Event Hubs i IBM MQ
 * FTP i SFTP — SSH
-* SQL Server, SQL Data Warehouse, Azure Cosmos DB
+* SQL Server, Azure SQL Data Warehouse, Azure Cosmos DB
 * AS2, X12 i EDIFACT
 
 Różnica między łącznikami ISE i innymi niż ISE znajduje się w lokalizacjach, w których uruchamiane są wyzwalacze i akcje:
@@ -92,6 +92,7 @@ Stawki cenowe znajdują się w temacie [Logic Apps cenniku](https://azure.micros
 Po utworzeniu ISE można użyć wewnętrznych lub zewnętrznych punktów końcowych dostępu. Te punkty końcowe określają, czy wyzwalacze żądań lub elementów webhook w usłudze Logic Apps w ISE mogą odbierać wywołania spoza sieci wirtualnej. Te punkty końcowe wpływają również na dostęp do danych wejściowych i wyjściowych w historii uruchamiania aplikacji logiki.
 
 * **Wewnętrzne**: prywatne punkty końcowe, które umożliwiają wywoływanie aplikacji LOGIKI w ISE oraz dostęp do danych wejściowych i wyjściowych w historii uruchamiania tylko *z wewnątrz sieci wirtualnej*
+
 * **Zewnętrzne**: publiczne punkty końcowe, które umożliwiają wywoływanie aplikacji LOGIKI w ISE oraz dostęp do danych wejściowych i wyjść w historii uruchamiania *spoza sieci wirtualnej*
 
 > [!IMPORTANT]
@@ -103,15 +104,20 @@ Po utworzeniu ISE można użyć wewnętrznych lub zewnętrznych punktów końcow
 
 W przypadku systemów lokalnych, które są połączone z siecią wirtualną platformy Azure, należy wprowadzić ISE do tej sieci, aby aplikacje logiki mogły bezpośrednio uzyskać dostęp do tych systemów przy użyciu dowolnego z następujących elementów:
 
-* Łącznik ISE-Version dla tego systemu, na przykład SQL Server
 * Akcja HTTP
+
+* Łącznik ISE z etykietą dla tego systemu
+
+  > [!IMPORTANT]
+  > Aby korzystać z uwierzytelniania systemu Windows za pomocą łącznika SQL Server, należy użyć [lokalnej bramy danych](../logic-apps/logic-apps-gateway-install.md). Łącznik SQL Server nie obsługuje uwierzytelniania systemu Windows dla aplikacji logiki w ISE.
+
 * Łącznik niestandardowy
 
   * Jeśli masz łączniki niestandardowe wymagające lokalnej bramy danych i utworzono te łączniki poza ISE, Aplikacje logiki w ISE mogą również używać tych łączników.
   
   * Łączniki niestandardowe utworzone w ISE nie współpracują z lokalną bramą danych. Jednak te łączniki mogą bezpośrednio uzyskać dostęp do lokalnych źródeł danych, które są połączone z siecią wirtualną hostującym ISE. W związku z tym aplikacje logiki w ISE najprawdopodobniej nie potrzebują bramy danych podczas komunikowania się z tymi zasobami.
 
-W przypadku systemów lokalnych, które nie są połączone z siecią wirtualną ani nie mają łączników ISE-Version, należy najpierw [skonfigurować lokalną bramę danych](../logic-apps/logic-apps-gateway-install.md) , aby umożliwić aplikacjom logiki łączenie się z tymi systemami.
+W przypadku systemów lokalnych, które nie są połączone z siecią wirtualną ani nie mają łączników ISE-labled, należy najpierw [skonfigurować lokalną bramę danych](../logic-apps/logic-apps-gateway-install.md) , zanim Aplikacje logiki będą mogły łączyć się z tymi systemami.
 
 <a name="create-integration-account-environment"></a>
 

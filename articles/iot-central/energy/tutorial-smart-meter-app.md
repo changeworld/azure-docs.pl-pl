@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.service: iot-central
 services: iot-central
 manager: abjork
-ms.openlocfilehash: 06b4fe3b716f2252f064a5b36fcde7dd7198db2d
-ms.sourcegitcommit: d47a30e54c5c9e65255f7ef3f7194a07931c27df
+ms.openlocfilehash: c7bb35e7de6400a0fad13845a3faa38ad21b6de7
+ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/29/2019
-ms.locfileid: "73026735"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73581256"
 ---
 # <a name="tutorial-create-and-walk-through-the-smart-meter-monitoring-app-template"></a>Samouczek: Tworzenie i przechodzenie przez szablon aplikacji do monitorowania mierników inteligentnych 
 
@@ -33,7 +33,7 @@ Jeśli nie masz subskrypcji, [Utwórz konto bezpłatnej wersji próbnej](https:/
 - Brak
 - Zalecana jest subskrypcja platformy Azure, ale nie jest wymagana do wypróbowania
 
-## <a name="create-a-smart-meter-monitoring-app"></a>Tworzenie aplikacji do monitorowania mierników inteligentnych 
+## <a name="create-a-smart-meter-monitoring-app"></a>Tworzenie aplikacji do monitorowania inteligentnych liczników 
 
 Tę aplikację można utworzyć w trzech prostych krokach:
 
@@ -41,8 +41,8 @@ Tę aplikację można utworzyć w trzech prostych krokach:
 
 2. Wybierz kartę **energia** , a następnie kliknij pozycję **Utwórz aplikację** na kafelku aplikacji **inteligentnego monitorowania miernika** .
 
-    [!div class="mx-imgBorder"]
-    ![](media/tutorial-iot-central-smart-meter/smart-meter-build.png) aplikacji kompilacji
+    > [!div class="mx-imgBorder"]
+    > ![](media/tutorial-iot-central-smart-meter/smart-meter-build.png) aplikacji kompilacji
     
 
 3. **Utworzenie aplikacji** spowoduje otwarcie formularza **nowej aplikacji** . Wypełnij żądane szczegóły, jak pokazano na poniższej ilustracji:
@@ -72,25 +72,25 @@ Adatum to fikcyjna firma energetyczna, która monitoruje i zarządza inteligentn
 * Śledź całkowite zużycie energii na potrzeby planowania i rozliczeń
 * Operacje związane z poleceniami i kontrolami, takie jak ponowne łączenie licznika i aktualizacja wersji oprogramowania układowego. W szablonie przyciski poleceń pokazują możliwe funkcje i nie wysyłają prawdziwych poleceń. 
 
-[!div class="mx-imgBorder"]
-![pulpitu nawigacyjnego monitorowania mierników inteligentnych](media/tutorial-iot-central-smart-meter/smart-meter-dashboard.png)
+> [!div class="mx-imgBorder"]
+> ![pulpitu nawigacyjnego monitorowania mierników inteligentnych](media/tutorial-iot-central-smart-meter/smart-meter-dashboard.png)
 
 ### <a name="devices"></a>Urządzenia
 Aplikacja jest dostarczana z przykładowym urządzeniem miernika inteligentnego. Aby wyświetlić szczegóły urządzenia, kliknij kartę **urządzenia** .
 
-[!div class="mx-imgBorder"]
-![urządzeń mierników inteligentnych](media/tutorial-iot-central-smart-meter/smart-meter-devices.png)
+> [!div class="mx-imgBorder"]
+> ![urządzeń mierników inteligentnych](media/tutorial-iot-central-smart-meter/smart-meter-devices.png)
 
 Kliknij link przykładowe urządzenie **SM0123456789** , aby wyświetlić szczegóły urządzenia. Możesz zaktualizować właściwości z możliwością zapisu urządzenia na stronie **Właściwości aktualizacji** i wizualizować zaktualizowane wartości na pulpicie nawigacyjnym.
 
-[!div class="mx-imgBorder"]
-Właściwości inteligentnego miernika ![](media/tutorial-iot-central-smart-meter/smart-meter-device-properties.png)
+> [!div class="mx-imgBorder"]
+> Właściwości inteligentnego miernika ![](media/tutorial-iot-central-smart-meter/smart-meter-device-properties.png)
 
 ### <a name="device-template"></a>Szablon urządzenia
 Kliknij kartę **Szablony urządzeń** , aby wyświetlić model urządzenia miernika inteligentnego. Model zawiera wstępnie zdefiniowane interfejsy dla danych, właściwości, poleceń i widoków.
 
-[!div class="mx-imgBorder"]
-![szablonów urządzeń inteligentnych mierników](media/tutorial-iot-central-smart-meter/smart-meter-device-template.png)
+> [!div class="mx-imgBorder"]
+> ![szablonów urządzeń inteligentnych mierników](media/tutorial-iot-central-smart-meter/smart-meter-device-template.png)
 
 
 ## <a name="clean-up-resources"></a>Oczyszczanie zasobów

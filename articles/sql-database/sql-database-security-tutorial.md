@@ -1,5 +1,5 @@
 ---
-title: Zabezpieczanie pojedynczej bazy danych lub bazy danych w puli w usłudze Azure SQL Database | Microsoft Docs
+title: Zabezpieczanie jednej lub puli baz danych w Azure SQL Database
 description: Samouczek, który uczy się o technikach i funkcjach w celu zabezpieczania pojedynczej lub puli baz danych w Azure SQL Database.
 services: sql-database
 ms.service: sql-database
@@ -10,14 +10,14 @@ ms.author: vanto
 ms.reviewer: carlrab
 ms.date: 09/03/2019
 ms.custom: seoapril2019
-ms.openlocfilehash: ba648a2bf563b775c39f11ab8d5c4069c4bf740f
-ms.sourcegitcommit: 2aefdf92db8950ff02c94d8b0535bf4096021b11
+ms.openlocfilehash: 44fd49c391f4c6cddf24e3fddd7fa85a0d5ea4f2
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/03/2019
-ms.locfileid: "70231191"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73687416"
 ---
-# <a name="tutorial-secure-a-single-or-pooled-database"></a>Samouczek: Zabezpieczanie pojedynczej bazy danych lub bazy danych w puli
+# <a name="tutorial-secure-a-single-or-pooled-database"></a>Samouczek: Zabezpieczanie jednej lub puli baz danych
 
 Ten samouczek zawiera informacje na temat wykonywania następujących czynności:
 
@@ -117,7 +117,7 @@ Upewnij się, że używasz odpowiedniej domeny zarządzanej usługi Azure Active
 
 Aby ustawić administratora usługi Azure AD:
 
-1. W witrynie Azure Portal na stronie **SQL Server** wybierz pozycję **Administrator usługi Active Directory**. Następnie wybierz pozycję **Ustaw administratora**.
+1. W Azure Portal na stronie **SQL Server** wybierz pozycję **administrator Active Directory**. Następnie wybierz pozycję **Ustaw administratora**.
 
     ![wybierz usługę active directory](./media/sql-database-security-tutorial/admin-settings.png)  
 

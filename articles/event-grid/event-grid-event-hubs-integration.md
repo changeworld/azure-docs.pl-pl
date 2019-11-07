@@ -1,24 +1,24 @@
 ---
-title: Wysyłanie danych usługi Event Hubs do magazynu danych — Event Grid
-description: Informacje na temat migrowania danych do usługi SQL Data Warehouse przy użyciu usług Azure Event Grid i Event Hubs. Do pobierania pliku przechwytywania służy funkcja platformy Azure.
+title: 'Samouczek: wysyłanie danych Event Hubs do magazynu danych — Event Grid'
+description: 'Samouczek: zawiera opis sposobu używania Azure Event Grid i Event Hubs do migrowania danych do SQL Data Warehouse. Do pobierania pliku przechwytywania służy funkcja platformy Azure.'
 services: event-grid
 author: spelluru
 manager: timlt
 ms.service: event-grid
 ms.topic: tutorial
-ms.date: 01/13/2019
+ms.date: 11/05/2019
 ms.author: spelluru
-ms.openlocfilehash: 1ae7a18660d2a7324bc5897d6b3952da42b6c4b2
-ms.sourcegitcommit: 6ea7f0a6e9add35547c77eef26f34d2504796565
+ms.openlocfilehash: 6f5bd129b175210cd5b9415a65b8db06d904e24d
+ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/14/2019
-ms.locfileid: "65603446"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73718181"
 ---
-# <a name="tutorial-stream-big-data-into-a-data-warehouse"></a>Samouczek: Przesyłanie strumieniowe danych Big Data do magazynu danych
+# <a name="tutorial-stream-big-data-into-a-data-warehouse"></a>Samouczek: przesyłanie strumieniowe danych Big Data do magazynu danych
 Usługa Azure [Event Grid](overview.md) jest inteligentną usługą routingu zdarzeń, która umożliwia reagowanie na powiadomienia (zdarzenia) z aplikacji i usług. Może na przykład spowodować, że funkcja platformy Azure będzie przetwarzać dane centrum zdarzeń, które zostały przechwycone przez usługę Azure Blob Storage lub usługę Azure Data Lake Storage, a także przeprowadzać migrację danych do innych repozytoriów danych. W tym [przykładzie integracji usług Event Hubs i Event Grid](https://github.com/Azure/azure-event-hubs/tree/master/samples/e2e/EventHubsCaptureEventGridDemo) pokazano, jak bezproblemowo przeprowadzić migrację przechwyconych danych usługi Event Hubs z magazynu obiektów blob do usługi SQL Data Warehouse przy użyciu usług Event Hubs i Event Grid.
 
-![Przegląd aplikacji](media/event-grid-event-hubs-integration/overview.png)
+![Omówienie aplikacji](media/event-grid-event-hubs-integration/overview.png)
 
 Ten diagram przedstawia przepływ pracy rozwiązania, które tworzysz w ramach tego samouczka: 
 
@@ -45,7 +45,7 @@ W tym artykule wykonasz następujące kroki:
 Do ukończenia tego samouczka niezbędne są następujące elementy:
 
 * Subskrypcja platformy Azure. Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpłatne konto](https://azure.microsoft.com/free/).
-* [Program Visual studio 2019](https://www.visualstudio.com/vs/) przy użyciu obciążenia pod kątem: programowanie aplikacji klasycznych dla platformy .NET, programowanie na platformie Azure, platformy ASP.NET i tworzenie aplikacji internetowych, tworzenia aplikacji Node.js i programowania w języku Python.
+* [Program Visual studio 2019](https://www.visualstudio.com/vs/) z obciążeniami dla: Programowanie aplikacji klasycznych platformy .NET, programowanie platformy Azure, programowanie ASP.NET i sieci Web, programowanie w języku Node. js i programowanie w języku Python.
 * Pobierz na komputer [przykładowy projekt EventHubsCaptureEventGridDemo](https://github.com/Azure/azure-event-hubs/tree/master/samples/e2e/EventHubsCaptureEventGridDemo).
 
 ## <a name="deploy-the-infrastructure"></a>Wdrażanie infrastruktury
@@ -292,7 +292,7 @@ Usługa Event Grid dystrybuuje dane zdarzenia do subskrybentów. Poniższy przyk
 ```
 
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 * Aby poznać różnice miedzy usługami obsługi komunikatów na platformie Azure, zobacz [Wybieranie między usługami platformy Azure dostarczającymi komunikaty](compare-messaging-services.md).
 * Aby zapoznać się z wprowadzeniem do usługi Event Grid, zobacz [Wprowadzenie do usługi Azure Event Grid](overview.md).

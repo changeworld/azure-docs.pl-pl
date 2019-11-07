@@ -1,5 +1,5 @@
 ---
-title: Przyrostowe kopiowanie tabeli przy użyciu usługi Azure Data Factory | Microsoft Docs
+title: 'Przyrostowe Kopiowanie tabeli przy użyciu Azure Data Factory '
 description: W tym samouczku utworzysz potok usługi Azure Data Factory, który przyrostowo kopiuje dane z bazy danych Azure SQL Database do magazynu Azure Blob Storage.
 services: data-factory
 documentationcenter: ''
@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: tutorial
 ms.date: 01/11/2018
 ms.author: yexu
-ms.openlocfilehash: 3626e68c8cedfdd2d22f47cd92d6e7c4b8b5d180
-ms.sourcegitcommit: b8578b14c8629c4e4dea4c2e90164e42393e8064
+ms.openlocfilehash: a446574f0a6b2b18959f1a3c3e9a02a0a97e9f6b
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/09/2019
-ms.locfileid: "70806399"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73683378"
 ---
 # <a name="incrementally-load-data-from-an-azure-sql-database-to-azure-blob-storage"></a>Przyrostowe ładowanie danych z bazy danych Azure SQL Database do magazynu Azure Blob Storage
 W tym samouczku utworzysz fabrykę danych Azure Data Factory z potokiem, który ładuje dane różnicowe z tabeli w bazie danych Azure SQL Database do magazynu Azure Blob Storage. 
@@ -149,7 +149,7 @@ END
 ## <a name="create-a-data-factory"></a>Tworzenie fabryki danych
 
 1. Uruchom przeglądarkę internetową **Microsoft Edge** lub **Google Chrome**. Obecnie interfejs użytkownika usługi Data Factory jest obsługiwany tylko przez przeglądarki internetowe Microsoft Edge i Google Chrome.
-2. Z menu po lewej stronie wybierz pozycję Utwórz**Data Factory** **analizy** >  **zasobów** > : 
+2. W menu po lewej stronie wybierz pozycję **Utwórz zasób** > **Analytics** > **Data Factory**: 
    
    ![Wybór usługi Data Factory w okienku „Nowy”](./media/doc-common-process/new-azure-data-factory-menu.png)
 
@@ -167,7 +167,7 @@ END
         Informacje na temat grup zasobów znajdują się w artykule [Using resource groups to manage your Azure resources](../azure-resource-manager/resource-group-overview.md) (Używanie grup zasobów do zarządzania zasobami platformy Azure).  
 6. Wybierz opcję **V2** w obszarze **Wersja**.
 7. Na liście **lokalizacja** wybierz lokalizację fabryki danych. Na liście rozwijanej są wyświetlane tylko obsługiwane lokalizacje. Magazyny danych (Azure Storage, Azure SQL Database itp.) i jednostki obliczeniowe (HDInsight itp.) używane przez fabrykę danych mogą mieścić się w innych regionach.
-8. Kliknij przycisk **Utwórz**.      
+8. Kliknij pozycję **Utwórz**.      
 9. Po zakończeniu tworzenia zostanie wyświetlona strona **Fabryka danych**, jak pokazano na poniższej ilustracji.
    
    ![Strona główna fabryki danych](./media/doc-common-process/data-factory-home-page.png)
@@ -195,7 +195,7 @@ W tym samouczku utworzysz potok z dwoma działaniami Lookup, jednym działaniem 
     1. Wprowadź wartość **AzureSqlDatabaseLinkedService** w polu **Nazwa**. 
     2. W polu **Nazwa serwera** wybierz swój serwer usługi Azure SQL.
     3. Wybierz **nazwę bazy danych** z listy rozwijanej. 
-    4. Wprowadź**hasło**do **nazwy** & użytkownika. 
+    4. Wprowadź **nazwę użytkownika** & **hasło**. 
     5. Aby przetestować połączenie z bazą danych Azure SQL Database, kliknij przycisk **Testuj połączenie**.
     6. Kliknij przycisk **Zakończ**.
     7. Upewnij się, że wybrano **AzureSqlDatabaseLinkedService** dla **połączonej usługi**.
@@ -269,10 +269,10 @@ W tym samouczku utworzysz potok z dwoma działaniami Lookup, jednym działaniem 
     1. W polu **Nazwa procedury składowanej** wybierz wartość **usp_write_watermark**. 
     2. Aby określić wartości parametrów procedury składowanej, kliknij pozycję **Importuj parametr**, a następnie wprowadź następujące wartości parametrów: 
 
-        | Name | Typ | Value | 
+        | Nazwa | Typ | Wartość | 
         | ---- | ---- | ----- | 
         | LastModifiedtime | DateTime | @{activity('LookupNewWaterMarkActivity').output.firstRow.NewWatermarkvalue} |
-        | TableName | String | @{activity('LookupOldWaterMarkActivity').output.firstRow.TableName} |
+        | TableName | Ciąg | @{activity('LookupOldWaterMarkActivity').output.firstRow.TableName} |
 
     ![Działanie procedury składowanej — ustawienia procedury składowanej](./media/tutorial-incremental-copy-portal/sproc-activity-stored-procedure-settings.png)
 27. Aby zweryfikować ustawienia potoku, kliknij pozycję **Weryfikuj** na pasku narzędzi. Potwierdź, że weryfikacja nie zwróciła błędów. Aby zamknąć okno **Raport weryfikacji potoku**, kliknij pozycję >>.   
@@ -345,7 +345,7 @@ PersonID | Name | LastModifytime
 
 
 ## <a name="trigger-another-pipeline-run"></a>Wyzwalanie kolejnego uruchomienia potoku
-1. Przejdź do karty **Edycja**. Jeśli potok nie jest otwarty w projektancie, kliknij go w widoku drzewa. 
+1. Przejdź do karty **Edycja** . Kliknij potok w widoku drzewa, jeśli nie jest on otwarty w projektancie. 
 
 2. Na pasku narzędzi kliknij pozycję **Dodaj wyzwalacz** , a następnie kliknij pozycję **Wyzwól teraz**. 
 

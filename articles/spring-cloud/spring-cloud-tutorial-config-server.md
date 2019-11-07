@@ -1,19 +1,17 @@
 ---
 title: Skonfiguruj serwer konfiguracji w chmurze Azure wiosennej | Microsoft Docs
 description: W tym samouczku dowiesz się, jak skonfigurować serwer sieci w chmurze wiosny dla chmury wiosennej platformy Azure na Azure Portal
-services: spring-cloud
 ms.service: spring-cloud
 ms.topic: tutorial
-ms.reviewer: jeconnoc
-ms.author: v-vasuke
-author: v-vasuke
+ms.author: jeconnoc
+author: jpconnock
 ms.date: 10/18/2019
-ms.openlocfilehash: 3a091c22f49ec31029a1808c10e675a4d0960fb4
-ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
+ms.openlocfilehash: 6cf7b4a52ba3a7dbda5fa3fa558c4b68d09f4eb2
+ms.sourcegitcommit: 359930a9387dd3d15d39abd97ad2b8cb69b8c18b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73177917"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73646724"
 ---
 # <a name="tutorial-set-up-a-spring-cloud-config-server-for-your-service"></a>Samouczek: Konfigurowanie serwera sieci w chmurze wiosny dla usługi
 
@@ -49,12 +47,12 @@ Ponadto niektóre konfigurowalne właściwości są dostępne tylko dla niektór
 
 W przypadku korzystania z repozytorium publicznego właściwości konfigurowalne będą bardziej ograniczone.
 
-Poniżej wymieniono wszystkie konfigurowalne właściwości używane do konfigurowania repozytorium publicznego `Git`.
+Poniżej wymieniono wszystkie konfigurowalne właściwości używane do konfigurowania publicznego repozytorium `Git`.
 
 > [!NOTE]
 > Używanie łącznika ("-") do oddzielenia słów jest jedyną konwencją nazewnictwa, która jest obecnie obsługiwana. Na przykład można użyć `default-label`, ale nie `defaultLabel`.
 
-| Właściwość        | Wymagane | Funkcja                                                      |
+| Właściwość        | Wymagany | Funkcja                                                      |
 | :-------------- | -------- | ------------------------------------------------------------ |
 | `uri`           | `yes`    | `uri` repozytorium `Git` używany jako zaplecze serwera konfiguracji, należy uruchomić z `http://`, `https://`, `git@`lub `ssh://`. |
 | `default-label` | `no`     | Domyślna etykieta repozytorium `Git` powinna być `branch name`, `tag name`lub `commit-id` repozytorium. |
@@ -64,18 +62,18 @@ Poniżej wymieniono wszystkie konfigurowalne właściwości używane do konfigur
 
 ### <a name="private-repository-with-ssh-authentication"></a>Prywatne repozytorium z uwierzytelnianiem SSH
 
-Poniżej wymieniono wszystkie konfigurowalne właściwości używane do konfigurowania repozytorium prywatnego `Git` z `Ssh`.
+Poniżej wymieniono wszystkie konfigurowalne właściwości używane do konfigurowania prywatnego repozytorium `Git` z `Ssh`.
 
 > [!NOTE]
 > Używanie łącznika ("-") do oddzielenia słów jest jedyną konwencją nazewnictwa, która jest obecnie obsługiwana. Na przykład można użyć `default-label`, ale nie `defaultLabel`.
 
-| Właściwość                   | Wymagane | Funkcja                                                      |
+| Właściwość                   | Wymagany | Funkcja                                                      |
 | :------------------------- | -------- | ------------------------------------------------------------ |
 | `uri`                      | `yes`    | `uri` repozytorium `Git` używany jako zaplecze serwera konfiguracji, należy uruchomić z `http://`, `https://`, `git@`lub `ssh://`. |
 | `default-label`            | `no`     | Domyślna etykieta repozytorium `Git` powinna być `branch name`, `tag name`lub `commit-id` repozytorium. |
 | `search-paths`             | `no`     | Tablica ciągów służąca do przeszukiwania podkatalogów repozytorium `Git`. |
 | `private-key`              | `no`     | `Ssh` klucz prywatny, aby uzyskać dostęp do repozytorium `Git`, __wymagane__ , gdy `uri` rozpoczyna się od `git@` lub `ssh://`. |
-| `host-key`                 | `no`     | Klucz hosta serwera repozytorium Git nie powinien zawierać prefiksu algorytmu, który został objęty `host-key-algorithm`. |
+| `host-key`                 | `no`     | Klucz hosta serwera repozytorium Git nie powinien zawierać prefiksu algorytmu, który jest objęty `host-key-algorithm`. |
 | `host-key-algorithm`       | `no`     | Algorytm klucza hosta powinien mieć wartość `ssh-dss`, `ssh-rsa`, `ecdsa-sha2-nistp256`, `ecdsa-sha2-nistp384`lub `ecdsa-sha2-nistp521`. Wymagane tylko wtedy, gdy istnieje `host-key`. |
 | `strict-host-key-checking` | `no`     | Wskazuje, czy serwer konfiguracji nie zostanie uruchomiony podczas korzystania z prywatnego `host-key`. Powinna być `true` (wartość domyślna) lub `false`. |
 
@@ -88,7 +86,7 @@ Poniżej wymieniono wszystkie konfigurowalne właściwości używane do konfigur
 > [!NOTE]
 > Używanie łącznika ("-") do oddzielenia słów jest jedyną konwencją nazewnictwa, która jest obecnie obsługiwana. Na przykład użyj `default-label` nie `defaultLabel`.
 
-| Właściwość        | Wymagane | Funkcja                                                      |
+| Właściwość        | Wymagany | Funkcja                                                      |
 | :-------------- | -------- | ------------------------------------------------------------ |
 | `uri`           | `yes`    | `uri` repozytorium `Git` używany jako zaplecze serwera konfiguracji, należy uruchomić z `http://`, `https://`, `git@`lub `ssh://`. |
 | `default-label` | `no`     | Domyślna etykieta repozytorium `Git` powinna być `branch name`, `tag name`lub `commit-id` repozytorium. |
@@ -97,7 +95,7 @@ Poniżej wymieniono wszystkie konfigurowalne właściwości używane do konfigur
 | `password`      | `no`     | Hasło używane do uzyskiwania dostępu do serwera repozytorium `Git`, __wymagane__ , gdy serwer repozytorium `Git` obsługuje `Http Basic Authentication`. |
 
 > [!NOTE]
-> Niektóre serwery repozytorium `Git`, takie jak GitHub, obsługują certyfikat "Personal-token" lub "token dostępu" jako hasło dla `HTTP Basic Authentication`. Tutaj możesz użyć tego rodzaju tokenu jako hasła, a token "Personal" lub "Access-token" nie wygaśnie. Jednak w przypadku serwerów repozytorium git, takich jak BitBucket i Azure DevOps, token wygaśnie w ciągu jednej lub dwóch godzin, co oznacza, że ta opcja nie będzie zdolna do użycia z chmurą Azure wiosną.
+> Niektóre `Git` serwery repozytorium, takie jak GitHub, obsługują certyfikat "Personal-token" lub "token dostępu" jako hasło dla `HTTP Basic Authentication`. Tutaj możesz użyć tego rodzaju tokenu jako hasła, a token "Personal" lub "Access-token" nie wygaśnie. Jednak w przypadku serwerów repozytorium git, takich jak BitBucket i Azure DevOps, token wygaśnie w ciągu jednej lub dwóch godzin, co oznacza, że ta opcja nie będzie zdolna do użycia z chmurą Azure wiosną.
 
 ### <a name="git-repositories-with-pattern"></a>Repozytoria Git ze wzorcem
 
@@ -106,18 +104,18 @@ Poniżej znajdują się wszystkie konfigurowalne właściwości używane do konf
 > [!NOTE]
 > Używanie łącznika ("-") do oddzielenia słów jest jedyną konwencją nazewnictwa, która jest obecnie obsługiwana. Na przykład użyj `default-label` nie `defaultLabel`.
 
-| Właściwość                           | Wymagane         | Funkcja                                                      |
+| Właściwość                           | Wymagany         | Funkcja                                                      |
 | :--------------------------------- | ---------------- | ------------------------------------------------------------ |
 | `repos`                            | `no`             | Mapa składająca się z ustawień repozytorium `Git` o podaną nazwę. |
-| `repos."uri"`                      | `yes` w `repos` | `uri` repozytorium `Git` używany jako zaplecze serwera konfiguracji, należy uruchomić z `http://`, `https://`, `git@`lub `ssh://`. |
-| `repos."name"`                     | `yes` w `repos` | Nazwa identyfikująca jedno repozytorium `Git`, __wymagane__ tylko wtedy, gdy `repos` istnieje. Na przykład powyżej, `team-A`, `team-B`. |
+| `repos."uri"`                      | `yes` na `repos` | `uri` repozytorium `Git` używany jako zaplecze serwera konfiguracji, należy uruchomić z `http://`, `https://`, `git@`lub `ssh://`. |
+| `repos."name"`                     | `yes` na `repos` | Nazwa identyfikująca jedno repozytorium `Git`, __wymagane__ tylko wtedy, gdy `repos` istnieje. Na przykład z powyżej, `team-A`, `team-B`. |
 | `repos."pattern"`                  | `no`             | Tablica ciągów używanych do dopasowania nazwy aplikacji. Dla każdego wzorca Użyj formatu `{application}/{profile}` z symbolami wieloznacznymi. |
 | `repos."default-label"`            | `no`             | Domyślna etykieta repozytorium `Git` powinna być `branch name`, `tag name`lub `commit-id` repozytorium. |
-| `repos."search-paths` "             | `no`             | Tablica ciągów służąca do przeszukiwania podkatalogów repozytorium `Git`. |
+| `repos."search-paths`"             | `no`             | Tablica ciągów służąca do przeszukiwania podkatalogów repozytorium `Git`. |
 | `repos."username"`                 | `no`             | `username` używany do uzyskiwania dostępu do serwera repozytorium `Git`, __wymagany__ , gdy serwer repozytorium `Git` obsługuje `Http Basic Authentication`. |
 | `repos."password"`                 | `no`             | Hasło używane do uzyskiwania dostępu do serwera repozytorium `Git`, __wymagane__ , gdy serwer repozytorium `Git` obsługuje `Http Basic Authentication`. |
 | `repos."private-key"`              | `no`             | `Ssh` klucz prywatny do uzyskiwania dostępu do repozytorium `Git`, __wymagany__ , gdy `uri` rozpoczyna się od `git@` lub `ssh://`. |
-| `repos."host-key"`                 | `no`             | Klucz hosta serwera repozytorium Git nie powinien zawierać prefiksu algorytmu, który został objęty `host-key-algorithm`. |
+| `repos."host-key"`                 | `no`             | Klucz hosta serwera repozytorium Git nie powinien zawierać prefiksu algorytmu, który jest objęty `host-key-algorithm`. |
 | `repos."host-key-algorithm"`       | `no`             | Algorytm klucza hosta powinien mieć wartość `ssh-dss`, `ssh-rsa`, `ecdsa-sha2-nistp256`, `ecdsa-sha2-nistp384`lub `ecdsa-sha2-nistp521`. __Wymagane__ tylko wtedy, gdy istnieje `host-key`. |
 | `repos."strict-host-key-checking"` | `no`             | Wskazuje, czy serwer konfiguracji nie zostanie uruchomiony podczas korzystania z prywatnego `host-key`. Powinna być `true` (wartość domyślna) lub `false`. |
 
@@ -137,7 +135,7 @@ Teraz, gdy masz zapisane pliki konfiguracji w repozytorium, musisz połączyć z
 
 #### <a name="default-repository"></a>Repozytorium domyślne
 
-* Repozytorium publiczne: w sekcji **repozytorium domyślne** wklej identyfikator URI repozytorium w sekcji **Identyfikator URI** i upewnij się, że ustawienie **uwierzytelniania** jest **publiczne**. Następnie kliknij przycisk **Zastosuj** , aby zakończyć. 
+* Repozytorium publiczne: w sekcji **repozytorium domyślne** wklej identyfikator URI repozytorium w sekcji **URI** .  Ustaw **etykietę** na `config`. Upewnij się, że ustawienie **uwierzytelnianie** jest **publiczne**, a następnie wybierz pozycję **Zastosuj** do końca. 
 
 * Repozytorium prywatne: chmura sprężynowa platformy Azure obsługuje podstawowe uwierzytelnianie oparte na hasłach i tokenach.
 

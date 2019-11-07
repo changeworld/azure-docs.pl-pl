@@ -8,12 +8,12 @@ ms.topic: overview
 author: j-martens
 ms.author: jmartens
 ms.date: 10/29/2019
-ms.openlocfilehash: dae708a417a1bf8ca4b118f218e353a28e5675c1
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
-ms.translationtype: HT
+ms.openlocfilehash: 721f730aa78be39b91f7d8368655dbbd5878903b
+ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73684952"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73716678"
 ---
 # <a name="how-azure-machine-learning-differs-from-ml-studio-classic"></a>Różnice Azure Machine Learning od ML Studio (klasyczne)
 
@@ -40,22 +40,21 @@ Oto krótkie porównanie.
 ||Projektant jest w wersji zapoznawczej, Azure Machine Learning jest GA|Ogólnie dostępna (GA) | 
 |Interfejs przeciągnij i upuść| Tak | Tak|
 |Doświadczenia| Skalowanie za pomocą elementu docelowego obliczeń|Skala (limit danych szkoleniowych 10 GB) | 
-|Moduły dla interfejsu|  Wiele popularnych modułów|Ilość |
+|Moduły dla interfejsu| [Wiele popularnych modułów](algorithm-module-reference/module-reference.md) | Ilość |
 |Szkoleniowe cele obliczeniowe| AML COMPUTE (procesor GPU/procesor CPU)|Własnościowy obiekt docelowy obliczeń, tylko procesor CPU|
 |Inferencing cele obliczeń| Usługa Azure Kubernetes na potrzeby wnioskowania w czasie rzeczywistym <br/>AML obliczeniowe na potrzeby wnioskowania partii|Własny format usługi sieci Web, niedostosowywalny | 
-|Potok ML| Tworzenie potoku <br/> Opublikowany potok <br/> Punkt końcowy potoku <br/> [Dowiedz się więcej o potoku ML](service/concept-ml-pipelines.md)|Brak obsługi | 
+|Potok ML| Tworzenie potoku <br/> Opublikowany potok <br/> Punkt końcowy potoku <br/> [Dowiedz się więcej o potoku ML](service/concept-ml-pipelines.md)|Nieobsługiwane | 
 |Operacje na ML| Konfigurowalne wdrożenia, model i wersja potoku|Podstawowe Zarządzanie modelami i wdrażanie | 
 |Modelowanie| Standardowy format, różne zależy od zadania szkoleniowego|Własny, nieprzenośny format.| 
 |Zautomatyzowane szkolenia modeli|Jeszcze nie w projektancie, ale możliwe za pomocą interfejsu i zestawów SDK.| Nie | 
 
-## <a name="get-started-with-azure-machine-learning-designer"></a>Wprowadzenie do narzędzia Azure Machine Learning Designer
+## <a name="get-started-with-azure-machine-learning"></a>Rozpocznij pracę z usługą Azure Machine Learning
 
 Następujące zasoby mogą pomóc Ci rozpocząć pracę z usługą Azure Machine Learning
 
 - Przeczytaj [omówienie Azure Machine Learning](service/tutorial-first-experiment-automated-ml.md) 
 
 - [Utwórz swój pierwszy potok projektanta](service/tutorial-designer-automobile-price-train-score.md) , aby przewidzieć ceny dla samochodów.
-
 
 ![Przykład projektanta Azure Machine Learning](service/media/concept-ml-pipelines/designer-drag-and-drop.gif)
 

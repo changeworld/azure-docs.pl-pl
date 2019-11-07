@@ -6,19 +6,19 @@ ms.service: automation
 ms.subservice: process-automation
 author: bobbytreed
 ms.author: robreed
-ms.date: 05/21/2019
+ms.date: 11/06/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 15036b33e637953de7dc12100468d3dd8570f775
-ms.sourcegitcommit: 0576bcb894031eb9e7ddb919e241e2e3c42f291d
+ms.openlocfilehash: d7a43ee2ed8719df2c38d00c9a50811c6d5ea70d
+ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72376094"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73718685"
 ---
 # <a name="startstop-vms-during-off-hours-solution-in-azure-automation"></a>Start/Stop VMs during off-hours rozwiązanie w Azure Automation
 
-Start/Stop VMs during off-hours rozwiązanie uruchamia i wstrzymuje maszyny wirtualne platformy Azure w harmonogramach zdefiniowanych przez użytkownika, udostępnia wgląd w dzienniki Azure Monitor i wysyła opcjonalne wiadomości e-mail przy użyciu [grup akcji](../azure-monitor/platform/action-groups.md). Obsługuje ona zarówno Azure Resource Manager, jak i klasycznych maszyn wirtualnych w większości scenariuszy. Aby można było używać tego rozwiązania z klasycznymi maszynami wirtualnymi, musisz mieć klasyczne konto Uruchom jako, które nie jest domyślnie tworzone. Aby uzyskać instrukcje dotyczące tworzenia klasycznego konta Uruchom jako, zobacz [klasyczne konta Uruchom jako](automation-create-standalone-account.md#classic-run-as-accounts).
+Start/Stop VMs during off-hours rozwiązanie umożliwia uruchamianie i zatrzymywanie maszyn wirtualnych platformy Azure w ramach harmonogramów zdefiniowanych przez użytkownika, uzyskiwanie szczegółowych informacji za pośrednictwem dzienników Azure Monitor i wysyłanie opcjonalnych wiadomości e-mail przy użyciu [grup akcji](../azure-monitor/platform/action-groups.md). Obsługuje ona zarówno Azure Resource Manager, jak i klasycznych maszyn wirtualnych w większości scenariuszy. Aby można było używać tego rozwiązania z klasycznymi maszynami wirtualnymi, musisz mieć klasyczne konto Uruchom jako, które nie jest domyślnie tworzone. Aby uzyskać instrukcje dotyczące tworzenia klasycznego konta Uruchom jako, zobacz [klasyczne konta Uruchom jako](automation-create-standalone-account.md#classic-run-as-accounts).
 
 > [!NOTE]
 > Rozwiązanie Start/Stop VMs during off-hours zostało przetestowane z modułami platformy Azure, które zostały zaimportowane do konta usługi Automation podczas wdrażania rozwiązania. Rozwiązanie nie działa obecnie z nowszymi wersjami modułu platformy Azure. Ma to wpływ tylko na konto usługi Automation używane do uruchamiania rozwiązania Start/Stop VMs during off-hours. Nadal można używać nowszych wersji modułu platformy Azure na innych kontach usługi Automation, zgodnie z opisem w artykule [jak zaktualizować moduły Azure PowerShell w Azure Automation](automation-update-azure-modules.md)
@@ -29,13 +29,13 @@ To rozwiązanie zapewnia zdecentralizowaną opcję automatyzacji o niskich koszt
 - Zaplanuj uruchamianie i zatrzymywanie maszyn wirtualnych w porządku rosnącym przy użyciu tagów platformy Azure (nieobsługiwanych w przypadku klasycznych maszyn wirtualnych).
 - Zatrzymaj zatrzymywanie maszyn wirtualnych na podstawie niskiego użycia procesora CPU.
 
-Poniżej przedstawiono ograniczenia dotyczące bieżącego rozwiązania:
+Istnieją następujące ograniczenia dotyczące bieżącego rozwiązania:
 
 - To rozwiązanie służy do zarządzania maszynami wirtualnymi w dowolnym regionie, ale mogą być używane tylko w tej samej subskrypcji co konto Azure Automation.
 - To rozwiązanie jest dostępne na platformie Azure i AzureGov do dowolnego regionu, który obsługuje obszar roboczy Log Analytics, konto Azure Automation i alerty. Regiony AzureGov obecnie nie obsługują funkcji poczty e-mail.
 
 > [!NOTE]
-> Jeśli korzystasz z rozwiązania dla klasycznych maszyn wirtualnych, wszystkie maszyny wirtualne będą przetwarzane sekwencyjnie dla każdej usługi w chmurze. Maszyny wirtualne są nadal przetwarzane równolegle w różnych usługach w chmurze.
+> Jeśli korzystasz z rozwiązania dla klasycznych maszyn wirtualnych, wszystkie maszyny wirtualne będą przetwarzane sekwencyjnie dla każdej usługi w chmurze. Maszyny wirtualne są nadal przetwarzane równolegle w różnych usługach w chmurze. Jeśli masz więcej niż 20 maszyn wirtualnych na usługę w chmurze, zalecamy utworzenie wielu harmonogramów z nadrzędnym elementem Runbook **ScheduledStartStop_Parent** i określenie 20 maszyn wirtualnych na harmonogram. We właściwościach harmonogramu Określ jako listę rozdzieloną przecinkami nazwy maszyn wirtualnych w parametrze **VMList** . W przeciwnym razie, jeśli zadanie automatyzacji dla tego rozwiązania działa dłużej niż trzy godziny, zostanie ono tymczasowo zwolnione lub zatrzymane według ograniczonego limitu [udostępniania](automation-runbook-execution.md#fair-share) .
 >
 > Subskrypcje dostawcy rozwiązań w chmurze platformy Azure (CSP) obsługują tylko model Azure Resource Manager, usługi nieAzure Resource Managerowe nie są dostępne w programie. Po uruchomieniu rozwiązania uruchamiania/zatrzymywania może wystąpić błąd, ponieważ zawiera polecenia cmdlet służące do zarządzania klasycznymi zasobami. Aby dowiedzieć się więcej na temat dostawcy usług kryptograficznych, zobacz [dostępne usługi w subskrypcjach programu CSP](https://docs.microsoft.com/azure/cloud-solution-provider/overview/azure-csp-available-services#comments). W przypadku korzystania z subskrypcji dostawcy CSP należy zmodyfikować zmienną [**External_EnableClassicVMs**](#variables) na **false** po wdrożeniu.
 
@@ -45,15 +45,15 @@ Poniżej przedstawiono ograniczenia dotyczące bieżącego rozwiązania:
 
 Elementy Runbook dla tego rozwiązania działają przy użyciu [konta Uruchom jako platformy Azure](automation-create-runas-account.md). Konto Uruchom jako jest preferowaną metodą uwierzytelniania, ponieważ używa uwierzytelniania certyfikatu zamiast hasła, które może wygasnąć lub zmienić.
 
-Zalecane jest użycie oddzielnego konta usługi Automation dla rozwiązania do uruchamiania/zatrzymywania maszyn wirtualnych. Dzieje się tak, ponieważ wersje modułów platformy Azure są często uaktualniane i ich parametry mogą ulec zmianie. Rozwiązanie uruchamiania/zatrzymywania maszyny wirtualnej nie jest uaktualniane na tym samym erze, więc może nie współpracować z nowszymi wersjami poleceń cmdlet, których używa. Zaleca się przetestowanie aktualizacji modułu na koncie automatyzacji testów przed ich zaimportowaniem na konto automatyzacji produkcji.
+Zalecamy użycie oddzielnego konta usługi Automation dla rozwiązania do uruchamiania/zatrzymywania maszyny wirtualnej. Dzieje się tak, ponieważ wersje modułów platformy Azure są często uaktualniane i ich parametry mogą ulec zmianie. Rozwiązanie uruchamiania/zatrzymywania maszyny wirtualnej nie jest uaktualniane na tym samym erze, więc może nie współpracować z nowszymi wersjami poleceń cmdlet, których używa. Zalecamy także testowanie aktualizacji modułu na koncie automatyzacji testów przed ich zaimportowaniem do kont automatyzacji produkcji.
 
 ### <a name="permissions-needed-to-deploy"></a>Uprawnienia do wdrożenia
 
 Istnieją pewne uprawnienia, które użytkownik musi wykonać, aby wdrożyć maszyny wirtualne uruchamiania/zatrzymywania poza godziną. Te uprawnienia są różne w przypadku używania wstępnie utworzonego konta usługi Automation i obszaru roboczego Log Analytics lub tworzenia nowych podczas wdrażania. Jeśli jesteś współautorem subskrypcji i administratorem globalnym w dzierżawie Azure Active Directory, nie musisz konfigurować następujących uprawnień. Jeśli nie masz tych praw lub musisz skonfigurować rolę niestandardową, zapoznaj się z uprawnieniami wymaganymi poniżej.
 
-#### <a name="pre-existing-automation-account-and-log-analytics-account"></a>Istniejące konto usługi Automation i konto Log Analytics
+#### <a name="pre-existing-automation-account-and-log-analytics-workspace"></a>Wcześniej istniejące konto usługi Automation i obszar roboczy Log Analytics
 
-Aby wdrożyć rozwiązanie do uruchamiania/zatrzymywania maszyn wirtualnych poza godzinami na koncie usługi Automation i Log Analytics wdrożenie przez użytkownika rozwiązania wymaga następujących uprawnień do **grupy zasobów**. Aby dowiedzieć się więcej na temat ról, zobacz [role niestandardowe dla zasobów platformy Azure](../role-based-access-control/custom-roles.md).
+Aby wdrożyć rozwiązanie do uruchamiania/zatrzymywania maszyn wirtualnych poza godzinami na istniejącym koncie usługi Automation i Log Analytics obszarze roboczym, wdrożenie rozwiązania wymaga następujących uprawnień do **grupy zasobów**. Aby dowiedzieć się więcej na temat ról, zobacz [role niestandardowe dla zasobów platformy Azure](../role-based-access-control/custom-roles.md).
 
 | Uprawnienie | Zakres|
 | --- | --- |
@@ -78,10 +78,10 @@ Aby wdrożyć rozwiązanie do uruchamiania/zatrzymywania maszyn wirtualnych poza
 
 #### <a name="new-automation-account-and-a-new-log-analytics-workspace"></a>Nowe konto usługi Automation i nowy obszar roboczy Log Analytics
 
-Aby wdrożyć rozwiązanie do uruchamiania/zatrzymywania maszyn wirtualnych poza godzinami na nowym koncie usługi Automation i Log Analytics obszarze roboczym, wdrożenie przez użytkownika rozwiązania wymaga uprawnień zdefiniowanych w poprzedniej sekcji, a także następujących uprawnień:
+Aby wdrożyć rozwiązanie do uruchamiania/zatrzymywania maszyn wirtualnych poza godzinami na nowym koncie usługi Automation i Log Analytics obszarze roboczym, użytkownik wdrażający rozwiązanie musi mieć uprawnienia zdefiniowane w poprzedniej sekcji, a także następujące uprawnienia:
 
-- Współadministrator w ramach subskrypcji — jest to potrzebne tylko do utworzenia klasycznego konta Uruchom jako, jeśli zamierzasz zarządzać klasycznymi maszynami wirtualnymi. [Klasyczne konta Uruchom jako](automation-create-standalone-account.md#classic-run-as-accounts) nie są już domyślnie tworzone.
-- Należy do roli **Deweloper aplikacji** [Azure Active Directory](../active-directory/users-groups-roles/directory-assign-admin-roles.md) . Aby uzyskać więcej informacji na temat konfigurowania kont Uruchom jako, zobacz [uprawnienia do konfigurowania kont Uruchom jako](manage-runas-account.md#permissions).
+- Współadministrator w ramach subskrypcji — należy tylko utworzyć klasyczne konto Uruchom jako, jeśli zamierzasz zarządzać klasycznymi maszynami wirtualnymi. [Klasyczne konta Uruchom jako](automation-create-standalone-account.md#classic-run-as-accounts) nie są już domyślnie tworzone.
+- Członek roli **Deweloper aplikacji** [Azure Active Directory](../active-directory/users-groups-roles/directory-assign-admin-roles.md) . Aby uzyskać więcej informacji na temat konfigurowania kont Uruchom jako, zobacz [uprawnienia do konfigurowania kont Uruchom jako](manage-runas-account.md#permissions).
 - Współautorem subskrypcji lub następujących uprawnień.
 
 | Uprawnienie |Zakres|
@@ -318,7 +318,7 @@ Automatyzacja tworzy dwa typy rekordów w obszarze roboczym Log Analytics: dzien
 |SourceSystem | Określa system źródłowy dla przesłanych danych. W przypadku usługi Automation wartością jest OpsManager|
 |StreamType | Określa typ zdarzenia. Możliwe wartości:<br>— Pełne<br>— Dane wyjściowe<br>— Błąd<br>— Ostrzeżenie|
 |SubscriptionId | Określa identyfikator subskrypcji zadania.
-|Czas | Data i godzina dla wykonania zadania elementu Runbook.|
+|Time | Data i godzina dla wykonania zadania elementu Runbook.|
 
 ### <a name="job-streams"></a>Strumienie zadania
 
@@ -337,7 +337,7 @@ Automatyzacja tworzy dwa typy rekordów w obszarze roboczym Log Analytics: dzien
 |RunbookName | Nazwa elementu Runbook.|
 |SourceSystem | Określa system źródłowy dla przesłanych danych. W przypadku usługi Automation wartością jest OpsManager.|
 |StreamType | Typ strumienia zadania. Możliwe wartości:<br>— Postęp<br>— Dane wyjściowe<br>— Ostrzeżenie<br>— Błąd<br>— Debugowanie<br>— Pełne|
-|Czas | Data i godzina dla wykonania zadania elementu Runbook.|
+|Time | Data i godzina dla wykonania zadania elementu Runbook.|
 
 Gdy wykonujesz każde wyszukiwanie w dzienniku, które zwraca rekordy kategorii **JobLogs** lub **JobStreams**, możesz wybrać widok **JobLogs** lub **JobStreams** , który wyświetla zestaw kafelków podsumowujących aktualizacje zwrócone przez wyszukiwanie.
 
@@ -422,7 +422,7 @@ Aby usunąć rozwiązanie, wykonaj następujące czynności:
 1. Na koncie usługi Automation w obszarze **powiązane zasoby**wybierz pozycję **połączony obszar roboczy**.
 1. Wybierz pozycję **Przejdź do obszaru roboczego**.
 1. W obszarze **Ogólne**wybierz pozycję **rozwiązania**. 
-1. Na stronie **rozwiązania** wybierz pozycję **Start-Stop-VM [obszar roboczy]** rozwiązania. Na stronie **VMManagementSolution [obszar roboczy]** z menu wybierz pozycję **Usuń**.<br><br> @no__t — rozwiązanie do zarządzania MASZYNami wirtualnymi 0Delete @ no__t-1
+1. Na stronie **rozwiązania** wybierz pozycję **Start-Stop-VM [obszar roboczy]** rozwiązania. Na stronie **VMManagementSolution [obszar roboczy]** z menu wybierz pozycję **Usuń**.<br><br> ![usunąć rozwiązania do zarządzania MASZYNami wirtualnymi](media/automation-solution-vm-management/vm-management-solution-delete.png)
 1. W oknie **Usuń rozwiązanie** Potwierdź, że chcesz usunąć rozwiązanie.
 1. Gdy informacje są weryfikowane i rozwiązanie zostało usunięte, możesz śledzić postęp w obszarze **powiadomienia** z menu. Po zakończeniu procesu usuwania rozwiązania nastąpi powrót do strony **rozwiązania** .
 

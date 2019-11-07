@@ -1,6 +1,6 @@
 ---
-title: Odczytywanie przechwyconych danych z aplikacji w języku Python — Event Hubs platformy Azure | Microsoft Docs
-description: Skrypty używające zestawu Azure Python SDK do zademonstrowania funkcji przechwytywania Event Hubs.
+title: 'Szybki Start: odczytywanie przechwyconych danych z aplikacji w języku Python — Event Hubs platformy Azure'
+description: 'Szybki Start: skrypty używające zestawu Azure Python SDK do zademonstrowania funkcji przechwytywania Event Hubs.'
 services: event-hubs
 documentationcenter: ''
 author: ShubhaVijayasarathy
@@ -11,18 +11,18 @@ ms.service: event-hubs
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: quickstart
 ms.custom: seodec18
-ms.date: 10/10/2019
+ms.date: 11/05/2019
 ms.author: shvija
-ms.openlocfilehash: 354964e1b66b55dcccd9b5674f011f8c5a38a1c5
-ms.sourcegitcommit: 77bfc067c8cdc856f0ee4bfde9f84437c73a6141
+ms.openlocfilehash: ade4aa79b2de005bfecd7a5882f06cb491ea4e6d
+ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72428959"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73717842"
 ---
-# <a name="event-hubs-capture-walkthrough-python"></a>Przewodnik przechwytywania Event Hubs: Python
+# <a name="quickstart-event-hubs-capture-walkthrough-python"></a>Przewodnik Szybki Start: Event Hubs Przechwytywanie: Python
 
 Przechwytywanie jest funkcją usługi Azure Event Hubs. Możesz użyć funkcji przechwytywania, aby automatycznie dostarczać dane przesyłane strumieniowo do centrum zdarzeń na wybranym przez siebie koncie usługi Azure Blob Storage. Ta funkcja ułatwia przetwarzanie wsadowe danych przesyłanych strumieniowo w czasie rzeczywistym. W tym artykule opisano sposób korzystania z funkcji przechwytywania Event Hubs w języku Python. Aby uzyskać więcej informacji na temat funkcji przechwytywania Event Hubs, zobacz [przechwytywanie zdarzeń za pomocą usługi Azure Event Hubs][Overview of Event Hubs Capture].
 
@@ -38,7 +38,7 @@ W tym instruktażu zawarto następujące instrukcje:
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-- Środowisko Python 3,4 lub nowsze z zainstalowaną i zaktualizowaną `pip`.
+- Program Python 3,4 lub nowszy z zainstalowanym i zaktualizowanym `pip`.
   
 - Subskrypcja platformy Azure. Jeśli nie masz subskrypcji, przed rozpoczęciem [utwórz bezpłatne konto](https://azure.microsoft.com/free/).
   
@@ -54,7 +54,7 @@ W tym instruktażu zawarto następujące instrukcje:
 
 Utwórz konto magazynu i kontener, które mają być używane do przechwytywania. 
 
-1. Zaloguj się do [portalu Azure][Azure portal].
+1. Zaloguj się w witrynie [Azure Portal][Azure portal].
 2. W lewym okienku nawigacji wybierz pozycję **konta magazynu**, a następnie na ekranie **konta magazynu** wybierz pozycję **Dodaj**.
 3. Na ekranie Tworzenie konta magazynu wybierz subskrypcję i grupę zasobów, a następnie podaj nazwę konta magazynu. Pozostałe wybory można pozostawić domyślnie. Wybierz pozycję **Przegląd + Utwórz**, przejrzyj ustawienia, a następnie wybierz pozycję **Utwórz**. 
    
@@ -78,7 +78,7 @@ Ten skrypt wysyła zdarzenia 200 do centrum zdarzeń. Zdarzenia to proste odczyt
 
 1. Otwórz swój ulubiony Edytor Python, taki jak [Visual Studio Code][Visual Studio Code].
 2. Utwórz nowy plik o nazwie *Sender.py*. 
-3. Wklej poniższy kod do *Sender.py*. Zastąp własne wartości Event Hubs @no__t 0namespace >, \<AccessKeyName >, @no__t 2primary wartości klucza > i @no__t 3eventhub >.
+3. Wklej poniższy kod do *Sender.py*. Zastąp własne wartości Event Hubs \<przestrzeni nazw > \<AccessKeyName >, \<wartość klucza podstawowego > i \<eventhub >.
    
    ```python
    import uuid
@@ -106,7 +106,7 @@ Ten skrypt wysyła zdarzenia 200 do centrum zdarzeń. Zdarzenia to proste odczyt
 Ten skrypt odczytuje przechwycone pliki i tworzy plik dla każdego urządzenia, aby zapisać dane tylko dla tego urządzenia.
 
 1. W edytorze języka Python Utwórz nowy plik o nazwie *capturereader.py*. 
-2. Wklej poniższy kod do *capturereader.py*. Zastąp zapisane wartości \<storageaccount >, > klucz dostępu do konta @no__t oraz @no__t 2storagecontainer >.
+2. Wklej poniższy kod do *capturereader.py*. Zastąp zapisane wartości \<storageaccount >, \<klucz dostępu do konta magazynu > i \<storagecontainer >.
    
    ```python
    import os

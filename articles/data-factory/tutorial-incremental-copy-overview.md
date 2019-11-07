@@ -1,5 +1,5 @@
 ---
-title: Przyrostowe kopiowanie danych przy użyciu usługi Azure Data Factory | Microsoft Docs
+title: 'Przyrostowe kopiowanie danych przy użyciu Azure Data Factory '
 description: W tych samouczkach przedstawiono sposób przyrostowego kopiowania danych ze źródłowego magazynu danych do docelowego magazynu danych. W pierwszym z nich opisane jest kopiowanie danych z jednej tabeli.
 services: data-factory
 documentationcenter: ''
@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: tutorial
 ms.date: 01/22/2018
 ms.author: yexu
-ms.openlocfilehash: 51a6721c8bbac86e9c96ee392de3199b0456860f
-ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
+ms.openlocfilehash: 9cbe9dfea116df30f49b89e2e59886f2f112487c
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72901356"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73683360"
 ---
 # <a name="incrementally-load-data-from-a-source-data-store-to-a-destination-data-store"></a>Przyrostowe ładowanie danych ze źródłowego do docelowego magazynu danych
 

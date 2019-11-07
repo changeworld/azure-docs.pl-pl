@@ -9,52 +9,50 @@ ms.service: machine-learning
 ms.subservice: core
 ms.topic: tutorial
 ms.date: 11/04/2019
-ms.openlocfilehash: 69fba508eac4b778dcd72371fd1471625ecb8c1a
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: b5fa1557999ae851bccafbf8ee7c41f0b3614614
+ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73501603"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73715920"
 ---
 # <a name="tutorial-deploy-a-machine-learning-model-with-the-designer-preview"></a>Samouczek: Wdrażanie modelu uczenia maszynowego za pomocą narzędzia Projektant (wersja zapoznawcza)
 [!INCLUDE [applies-to-skus](../../../includes/aml-applies-to-enterprise-sku.md)]
 
-Aby umożliwić innym użytkownikom korzystanie z modelu predykcyjnego opracowanego w pierwszej części tego [samouczka](tutorial-designer-automobile-price-train-score.md), możesz wdrożyć go jako punkt końcowy w czasie rzeczywistym. W części 1 został przeszkolony model. Teraz można generować nowe prognozy na podstawie danych wejściowych użytkownika. W tej części samouczka:
+Można wdrożyć model predykcyjny opracowany w pierwszej części [samouczka](tutorial-designer-automobile-price-train-score.md) , aby dać innym osobom szansę korzystania z niego. W części 1 został przeszkolony model. Teraz można generować nowe prognozy na podstawie danych wejściowych użytkownika. W tej części samouczka zostaną wykonane następujące czynności:
 
 > [!div class="checklist"]
-> * Wdrażanie punktu końcowego w czasie rzeczywistym
+> * Tworzenie potoku w czasie rzeczywistym
 > * Tworzenie klastra inferencing
+> * Wdrażanie punktu końcowego w czasie rzeczywistym
 > * Testowanie punktu końcowego w czasie rzeczywistym
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
 Wykonaj [jedną z części samouczka](tutorial-designer-automobile-price-train-score.md) , aby dowiedzieć się, jak szkolić i oceny model uczenia maszynowego w projektancie.
 
-## <a name="deploy-a-real-time-endpoint"></a>Wdrażanie punktu końcowego w czasie rzeczywistym
+## <a name="create-a-real-time-inference-pipeline"></a>Tworzenie potoku w czasie rzeczywistym
 
-Aby można było wdrożyć potok, należy:
-
-1. Przekonwertuj potok szkoleniowy na potok wnioskowania w czasie rzeczywistym, który usuwa moduły szkoleniowe i dodaje dane wejściowe i wyjściowe dla żądań inferencing.
-1. Wdróż potok wnioskowania.
+Aby można było wdrożyć potok, należy najpierw skonwertować potok szkoleniowy do potoku w czasie rzeczywistym. Ten proces usuwa moduły szkoleniowe i dodaje dane wejściowe i wyjściowe dla żądań inferencing.
 
 ### <a name="create-a-real-time-inference-pipeline"></a>Tworzenie potoku w czasie rzeczywistym
 
-1. W górnej części kanwy potoku wybierz pozycję **Utwórz potok wnioskowania** > **potoku w czasie rzeczywistym**
-
-    Po wybraniu opcji **Utwórz potok wnioskowania**kilka rzeczy zostanie wykonanych:
-    
-    * Szkolony model jest przechowywany jako moduł **DataSet** w palecie modułów. Można go znaleźć w obszarze **Moje zestawy danych**.
-    * Moduły, takie jak **uczenie modelu** i **dane podzielone**, które zostały użyte do szkolenia, są usuwane.
-    * Zapisany model przeszkolony zostanie dodany z powrotem do potoku.
-    * Dodawane są moduły danych **wejściowych** i **usług** sieci Web. Te moduły identyfikują, gdzie dane użytkownika zostaną wprowadzone do modelu, a dane są zwracane.
-
-    > [!Note]
-    > **Potok szkoleń** jest zapisywany na nowej karcie w górnej części kanwy potoku. Można go również znaleźć jako opublikowany potok w projektancie.
-    >
+1. Nad kanwą potoku wybierz pozycję **Utwórz potok wnioskowania** > **potoku w czasie rzeczywistym**
 
     Potok powinien teraz wyglądać następująco:  
 
    ![Zrzut ekranu przedstawiający oczekiwaną konfigurację potoku po przygotowaniu go do wdrożenia](./media/ui-tutorial-automobile-price-deploy/real-time-inference-pipeline.png)
+
+    Po wybraniu opcji **Utwórz potok wnioskowania**kilka rzeczy zostanie wykonanych:
+    
+    * Szkolony model jest przechowywany jako moduł **DataSet** w palecie modułów. Można go znaleźć w obszarze **Moje zestawy danych**.
+    * Moduły szkoleniowe, takie jak **model uczenia** i **dane podzielone** , są usuwane.
+    * Zapisany model przeszkolony zostanie dodany z powrotem do potoku.
+    * Dodawane są moduły danych **wejściowych** i **usług** sieci Web. Te moduły pokazują, gdzie dane użytkownika zostaną wprowadzone do modelu i miejsce, w którym dane są zwracane.
+
+    > [!Note]
+    > **Potok szkoleń** jest zapisywany na nowej karcie w górnej części kanwy potoku. Można go również znaleźć jako opublikowany potok w projektancie.
+    >
 
 1. Wybierz pozycję **Uruchom** i Użyj tego samego elementu docelowego obliczeń i eksperymentu użytego w części 1.
 
@@ -64,11 +62,11 @@ Aby można było wdrożyć potok, należy:
 
 1. Wybierz pozycję **Wdróż**.
 
-### <a name="create-an-inferencing-cluster"></a>Tworzenie klastra inferencing
+## <a name="create-an-inferencing-cluster"></a>Tworzenie klastra inferencing
 
-W wyświetlonym oknie dialogowym możesz wybrać z istniejących klastrów usługi Azure Kubernetes Service (AKS) w obszarze roboczym, aby wdrożyć model. Jeśli nie masz klastra AKS, wykonaj następujące kroki, aby go utworzyć.
+W wyświetlonym oknie dialogowym możesz wybrać dowolny z istniejących klastrów usługi Azure Kubernetes Service (AKS) w programie, aby wdrożyć model do programu. Jeśli nie masz klastra AKS, wykonaj następujące kroki, aby go utworzyć.
 
-1. W oknie dialogowym wybierz pozycję **obliczenia** , aby przejść do strony **obliczenia** .
+1. W wyświetlonym oknie dialogowym wybierz pozycję **obliczenia** , aby przejść do strony **obliczenia** .
 
 1. Na Wstążce Nawigacja wybierz pozycję **klastry wnioskowania** >  **+ Nowy**.
 
@@ -86,7 +84,7 @@ W wyświetlonym oknie dialogowym możesz wybrać z istniejących klastrów usłu
     > Utworzenie nowej usługi AKS trwa około 15 minut. Stan aprowizacji można sprawdzić na stronie **klastrów wnioskowania**
     >
 
-### <a name="deploy-the-real-time-endpoint"></a>Wdrażanie punktu końcowego w czasie rzeczywistym
+## <a name="deploy-the-real-time-endpoint"></a>Wdrażanie punktu końcowego w czasie rzeczywistym
 
 Po zakończeniu aprowizacji usługi AKS Wróć do potoku inferencing w czasie rzeczywistym, aby zakończyć wdrażanie.
 
@@ -104,7 +102,7 @@ Po zakończeniu aprowizacji usługi AKS Wróć do potoku inferencing w czasie rz
 
 ## <a name="test-the-real-time-endpoint"></a>Testowanie punktu końcowego w czasie rzeczywistym
 
-Punkt końcowy w czasie rzeczywistym można przetestować, przechodząc do strony **punkty końcowe** w okienku nawigacji obszaru roboczego po lewej stronie.
+Po zakończeniu wdrażania można testować punkt końcowy w czasie rzeczywistym, przechodząc do strony **punkty końcowe** .
 
 1. Na stronie **punkty końcowe** Wybierz wdrożony punkt końcowy.
 
@@ -112,9 +110,9 @@ Punkt końcowy w czasie rzeczywistym można przetestować, przechodząc do stron
 
 1. Wybierz pozycję **Testuj**.
 
-1. Dane wejściowe testowania lub użyj autowypełnianych danych przykładowych, a następnie wybierz **test**.
+1. Możesz ręcznie wprowadzić dane testowe lub użyć autowypełnianych danych przykładowych i wybrać opcję **Testuj**.
 
-    Żądanie testowe zostanie przesłane do punktu końcowego, a wyniki są wyświetlane na stronie. Mimo że dla danych wejściowych jest generowana wartość ceny, nie jest ona używana do generowania wartości przewidywania.
+    Portal przesyła żądanie testowe do punktu końcowego i wyświetla wyniki. Mimo że dla danych wejściowych jest generowana wartość ceny, nie jest ona używana do generowania wartości przewidywania.
 
     ![Zrzut ekranu przedstawiający sposób testowania punktu końcowego w czasie rzeczywistym z etykietą z oceną dla wyróżnionej ceny](./media/ui-tutorial-automobile-price-deploy/test-endpoint.png)
 

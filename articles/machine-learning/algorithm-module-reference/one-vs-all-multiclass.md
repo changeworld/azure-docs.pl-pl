@@ -9,46 +9,46 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 10/16/2019
-ms.openlocfilehash: 9ded83dc5b8b8b98af66c8858214e8f82a4aa166
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 5c59f2865e7ebf768cdd8b80e59d69359f8607c6
+ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73518166"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73717184"
 ---
 # <a name="one-vs-all-multiclass"></a>moduł wieloklasowy "jeden przeciw wszystkim"
 
-W tym artykule opisano, jak używać modułu **moduł wieloklasowy "jeden przeciw wszystkim"** platformy Azure Machine Learning Designer (wersja zapoznawcza) w celu utworzenia modelu klasyfikacji, który może przewidzieć wiele klas przy użyciu podejścia "one a. All".
+W tym artykule opisano sposób korzystania z modułu moduł wieloklasowy "jeden przeciw wszystkim" w programie Azure Machine Learning Designer (wersja zapoznawcza). Celem jest utworzenie modelu klasyfikacji, który może przewidzieć wiele klas, przy użyciu podejścia *jednokierunkowego* .
 
 Ten moduł jest przydatny do tworzenia modeli predykcyjnych trzy lub więcej wyników, gdy wynik zależy od zmiennych predykcyjnych ciągłych lub kategorii. Ta metoda umożliwia także używanie binarnych metod klasyfikacji dla problemów wymagających wielu klas wyjściowych.
 
-### <a name="more-about-one-vs-all-models"></a>Więcej informacji o modelach jeden-a-wszystkie
+### <a name="more-about-one-versus-all-models"></a>Więcej informacji o modelach jeden-do-wszystkie
 
-Chociaż niektóre algorytmy klasyfikacji umożliwiają użycie więcej niż dwóch klas przez zaprojektowanie, inne ograniczają możliwe wyniki do jednej z dwóch wartości (binarny lub dwuklasowy model). Jednak nawet binarne algorytmy klasyfikacji można dostosować do wieloklasowych zadań klasyfikacji przy użyciu różnych strategii. 
+Niektóre algorytmy klasyfikacji umożliwiają użycie więcej niż dwóch klas według konstrukcji. Inne ograniczają możliwe wyniki do jednej z dwóch wartości (binarny lub dwuklasowy model). Jednak nawet binarne algorytmy klasyfikacji można dostosować do wieloklasowych zadań klasyfikacji za pomocą różnych strategii. 
 
-Ten moduł implementuje *metodę "a. All*", w której jest tworzony model binarny dla każdej klasy danych wyjściowych. Każdy z tych modeli binarnych dla poszczególnych klas jest oceniany względem jego uzupełnienia (wszystkie inne klasy w modelu), tak jakby był to binarny problem klasyfikacji. Funkcja przewidywania jest następnie wykonywana przez uruchomienie tych klasyfikatorów binarnych i wybranie przewidywania z najwyższym wynikiem ufności.  
+Ten moduł implementuje metodę "one-a-All", w której jest tworzony model binarny dla każdej klasy danych wyjściowych. Moduł ocenia każdy z tych modeli binarnych dla poszczególnych klas przed jego uzupełnieniem (wszystkie inne klasy w modelu), tak jakby był to binarny problem z klasyfikacją. Następnie moduł wykonuje prognozowanie, uruchamiając te klasyfikatory binarne i wybierając prognozę z najwyższym wynikiem ufności.  
 
-W zasadzie tworzony jest kompletność poszczególnych modeli, a następnie wyniki są scalane, aby utworzyć pojedynczy model, który przewiduje wszystkie klasy. W związku z tym każdy klasyfikator binarny może być używany jako podstawa dla modelu typu jeden-vs-ALL.  
+W zasadzie moduł tworzy kompletność poszczególnych modeli, a następnie scala wyniki, aby utworzyć jeden model, który przewiduje wszystkie klasy. Dowolny klasyfikator binarny może być używany jako podstawa dla modelu typu jeden-do-wszystkich.  
 
- Załóżmy na przykład, że skonfigurowano model [maszyny wektorowej obsługujący dwie klasy](two-class-support-vector-machine.md) i zapewnia to, że jako dane wejściowe do modułu **moduł wieloklasowy "jeden przeciw wszystkim"** . Moduł utworzy modele maszyn wektorowych z obsługą dwóch klas dla wszystkich elementów członkowskich klasy wyjściowej, a następnie zastosuje metodę "one-a-All", aby połączyć wyniki dla wszystkich klas.  
+Załóżmy na przykład, że skonfigurowano model [maszyny wektorowej obsługujący dwie klasy](two-class-support-vector-machine.md) i zapewnia to, że jako dane wejściowe do modułu moduł wieloklasowy "jeden przeciw wszystkim". Moduł utworzy modele maszyn wektorowych obsługujące dwie klasy dla wszystkich elementów członkowskich klasy wyjściowej. Następnie zastosuj metodę "jeden do wszystkiego", aby połączyć wyniki dla wszystkich klas.  
 
-## <a name="how-to-configure-the-one-vs-all-classifier"></a>Jak skonfigurować klasyfikator jeden-i-All  
+## <a name="how-to-configure-the-one-vs-all-multiclass-classifier"></a>Jak skonfigurować klasyfikator moduł wieloklasowy "jeden przeciw wszystkim"  
 
-Ten moduł tworzy kompletną liczbę binarnych modeli klasyfikacji do analizowania wielu klas. W związku z tym, aby użyć tego modułu, należy najpierw skonfigurować i szkolić **binarny model klasyfikacji** . 
+Ten moduł tworzy kompletną liczbę binarnych modeli klasyfikacji do analizowania wielu klas. Aby użyć tego modułu, należy najpierw skonfigurować i szkolić *binarny model klasyfikacji* . 
 
-Następnie można połączyć model binarny z modułem **moduł wieloklasowy "jeden przeciw wszystkim"** i przeszkolić kompletność modeli przy użyciu [modelu uczenia](train-model.md) z zestawem danych szkolenia z etykietą.
+Model binarny jest połączony z modułem moduł wieloklasowy "jeden przeciw wszystkim". Następnie należy wyszkolić zestaw modeli przy użyciu [modelu uczenia](train-model.md) z zestawu danych szkolenia z etykietą.
 
-Podczas łączenia modeli, chociaż zestaw danych szkoleniowych może mieć wiele wartości klas, **moduł wieloklasowy "jeden przeciw wszystkim"** tworzy wiele binarnych modeli klasyfikacji, optymalizuje algorytm dla każdej klasy, a następnie scala modele.
+W przypadku łączenia modeli moduł wieloklasowy "jeden przeciw wszystkim" tworzy wiele binarnych modeli klasyfikacji, optymalizuje algorytm dla każdej klasy, a następnie scala modele. Moduł wykonuje te zadania mimo tego, że zestaw danych szkoleniowych może mieć wiele wartości klas.
 
-1. Dodaj **moduł wieloklasowy "jeden przeciw wszystkim"** do potoku w projektancie. Ten moduł można znaleźć w obszarze Machine Learning-Initialize w kategorii **Klasyfikacja** .
+1. Dodaj moduł moduł wieloklasowy "jeden przeciw wszystkim" do potoku w projektancie. Ten moduł można znaleźć w obszarze **Machine Learning-Initialize**w kategorii **Klasyfikacja** .
 
-    Klasyfikator **moduł wieloklasowy "jeden przeciw wszystkim"** nie ma samodzielnie skonfigurowanych parametrów. Wszelkie dostosowania należy wykonać w modelu klasyfikacji binarnej, który jest dostarczany jako dane wejściowe.
+   Klasyfikator moduł wieloklasowy "jeden przeciw wszystkim" nie ma samodzielnie skonfigurowanych parametrów. Wszelkie dostosowania należy wykonać w modelu klasyfikacji binarnej, który jest dostarczany jako dane wejściowe.
 
 2. Dodaj binarny model klasyfikacji do potoku i skonfiguruj ten model. Można na przykład użyć [dwuklasowej maszyny wektorowej](two-class-support-vector-machine.md) lub [dwuklasowego drzewa decyzyjnego](two-class-boosted-decision-tree.md).
 
-3. Dodaj moduł [uczenie modelu](train-model.md) do potoku i Połącz niepociąg klasyfikatora, który jest danymi wyjściowymi **moduł wieloklasowy "jeden przeciw wszystkim"** .
+3. Dodaj moduł [uczenie modelu](train-model.md) do potoku. Połącz niepociąg klasyfikatora, który jest danymi wyjściowymi moduł wieloklasowy "jeden przeciw wszystkim".
 
-4. Na innym wejściu [modelu uczenia](train-model.md)Połącz zestaw danych szkolenia z etykietą, który ma wiele wartości klas.
+4. Na innym wejściu [modelu uczenia](train-model.md)Połącz zestaw danych szkoleń z etykietą, który ma wiele wartości klas.
 
 5. Uruchamianie potoku.
 
@@ -56,9 +56,9 @@ Podczas łączenia modeli, chociaż zestaw danych szkoleniowych może mieć wiel
 
 Po zakończeniu szkolenia możesz użyć modelu, aby utworzyć prognozy wieloklasowe.
 
-Alternatywnie, można przekazać [niesprawdzony klasyfikator do modelu krzyżowego](cross-validate-model.md) sprawdzania poprawności, aby przeprowadzić walidację krzyżową względem zestawu danych walidacji z etykietami.
+Alternatywnie, można przekazać [niesprawdzony klasyfikator do modelu krzyżowego](cross-validate-model.md) walidacji w celu krzyżowego sprawdzania poprawności względem zestawu danych walidacji z etykietami.
 
 
 ## <a name="next-steps"></a>Następne kroki
 
-Zapoznaj się z [zestawem modułów dostępnych](module-reference.md) do Azure Machine Learning usługi. 
+Zapoznaj się z [zestawem modułów dostępnych](module-reference.md) dla usługi Azure Machine Learning. 

@@ -5,17 +5,17 @@ services: cost-management
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 10/07/2019
+ms.date: 11/06/2019
 ms.topic: conceptual
 ms.service: cost-management
 manager: adwise
 ms.custom: seodec18
-ms.openlocfilehash: 8d8f796fa7db9cab5bcac88a293dd1b98707a571
-ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
+ms.openlocfilehash: 8c3c0574389fc9808af3cd70c928ede82d375076
+ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/08/2019
-ms.locfileid: "72025778"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73720712"
 ---
 # <a name="tutorial-create-and-manage-azure-budgets"></a>Samouczek: Tworzenie budżetów platformy Azure i zarządzanie nimi
 
@@ -62,7 +62,7 @@ Aby utworzyć lub wyświetlić budżet, otwórz żądany zakres w Azure Portal a
 
 Po utworzeniu budżetów pokazuje prosty Widok bieżących wydatków.
 
-Kliknij pozycję **Add** (Dodaj).
+Kliknij pozycję **Dodaj**.
 
 ![Przykład przedstawiający już utworzoną listę budżetów](./media/tutorial-acm-create-budgets/budgets01.png)
 
@@ -78,7 +78,7 @@ W oparciu o pola wybrane w budżecie do tej pory wykres jest widoczny, aby ułat
 
 ![Przykład przedstawiający tworzenie budżetu z danymi kosztu miesięcznego ](./media/tutorial-acm-create-budgets/monthly-budget01.png)
 
-Po skonfigurowaniu kwoty budżetu kliknij przycisk **dalej** , aby skonfigurować alerty budżetu. Budżety wymagają co najmniej jednego progu kosztu (% budżetu) i odpowiadającego mu adresu e-mail. Opcjonalnie możesz uwzględnić maksymalnie pięć progów i pięć adresów e-mail w ramach jednego budżetu. Po spełnieniu progu budżetowego powiadomienia e-mail są zwykle odbierane w czasie krótszym niż 20 godzin. Aby uzyskać więcej informacji na temat powiadomień, zobacz [Korzystanie z alertów dotyczących kosztów](cost-mgt-alerts-monitor-usage-spending.md). W poniższym przykładzie zostanie wygenerowany alert e-mail, gdy zostanie osiągnięty limit 90% budżetu.
+Po skonfigurowaniu kwoty budżetu kliknij przycisk **dalej** , aby skonfigurować alerty budżetu. Budżety wymagają co najmniej jednego progu kosztu (% budżetu) i odpowiadającego mu adresu e-mail. Opcjonalnie możesz uwzględnić maksymalnie pięć progów i pięć adresów e-mail w ramach jednego budżetu. Po spełnieniu progu budżetowego powiadomienia e-mail są zwykle odbierane w czasie krótszym niż 20 godzin. Aby uzyskać więcej informacji na temat powiadomień, zobacz [Korzystanie z alertów dotyczących kosztów](cost-mgt-alerts-monitor-usage-spending.md). W poniższym przykładzie zostanie wygenerowany alert e-mail, gdy zostanie osiągnięty limit 90% budżetu. W przypadku tworzenia budżetu za pomocą interfejsu API budżetów można także przypisać role do osób, które będą otrzymywać alerty. Przypisywanie ról do osób nie jest obsługiwane w Azure Portal. Aby uzyskać więcej informacji o interfejsie API budżetów platformy Azure, zobacz temat [budżety interfejsu API](/rest/api/consumption/budgets).
 
 ![Przykład pokazujący warunki alertu](./media/tutorial-acm-create-budgets/monthly-budget-alert.png)
 
@@ -86,7 +86,7 @@ Po utworzeniu budżetu jest on pokazywany w analizie kosztów. Wyświetlanie bud
 
 ![Przykład budżetu i wydatków przedstawionych w analizie kosztów](./media/tutorial-acm-create-budgets/cost-analysis.png)
 
-W poprzednim przykładzie utworzono budżet dla subskrypcji. Można jednak również utworzyć budżet dla grupy zasobów. Jeśli chcesz utworzyć budżet dla grupy zasobów, przejdź do **Cost Management i Rozliczeń** &gt; **subskrypcje** &gt; Wybierz subskrypcję > **grupy zasobów** > wybierz grupę zasobów > **budżety** > a następnie **Dodaj** budżet.
+W poprzednim przykładzie utworzono budżet dla subskrypcji. Można jednak również utworzyć budżet dla grupy zasobów. Jeśli chcesz utworzyć budżet dla grupy zasobów, przejdź do **Cost Management i Rozliczeń** &gt; **subskrypcje** &gt; wybierz subskrypcję > **grupy zasobów** > Wybierz grupę zasobów > **budżety** > a następnie **Dodaj** budżet.
 
 ## <a name="trigger-an-action-group"></a>Wyzwalanie grupy akcji
 
@@ -111,6 +111,8 @@ Skonfiguruj budżet tak, aby korzystał z grupy akcji po spełnieniu pojedynczeg
 W poniższym przykładzie przedstawiono wartości progowe budżetu ustawione na 50%, 75% i 100%. Każdy z nich jest skonfigurowany do wyzwalania określonych akcji w ramach wyznaczonych grup akcji.
 
 ![Przykład pokazujący warunki alertów skonfigurowane z różnymi grupami akcji i typem akcji](./media/tutorial-acm-create-budgets/manage-action-groups04.png)
+
+Integracja budżetu z grupami akcji działa tylko dla grup akcji, dla których jest wyłączony wspólny schemat alertów. Aby uzyskać więcej informacji na temat wyłączania schematu, zobacz [Jak mogę włączyć wspólny schemat alertów?](../azure-monitor/platform/alerts-common-schema.md#how-do-i-enable-the-common-alert-schema)
 
 ## <a name="next-steps"></a>Następne kroki
 

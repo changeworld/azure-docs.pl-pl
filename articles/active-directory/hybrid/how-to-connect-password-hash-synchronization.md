@@ -15,12 +15,12 @@ ms.author: billmath
 search.appverid:
 - MET150
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: fcc704e7027903a1ede14c787a64c35d6b5fd9c0
-ms.sourcegitcommit: 0576bcb894031eb9e7ddb919e241e2e3c42f291d
+ms.openlocfilehash: 1d8caafe312c123a9d572e9a5f4c5cf64a05f7ea
+ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72373457"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73721043"
 ---
 # <a name="implement-password-hash-synchronization-with-azure-ad-connect-sync"></a>Implementowanie synchronizacji skrótów haseł z synchronizacją Azure AD Connect
 Ten artykuł zawiera informacje potrzebne do synchronizacji haseł użytkowników z wystąpienia lokalnego Active Directory do wystąpienia Azure Active Directory opartego na chmurze (Azure AD).
@@ -32,7 +32,7 @@ Aby zsynchronizować hasło, Azure AD Connect Sync wyodrębnia skrót hasła z l
 
 Rzeczywisty przepływ danych procesu synchronizacji skrótów haseł jest podobny do synchronizacji danych użytkownika. Hasła są jednak synchronizowane częściej niż okno synchronizacja katalogu standardowego dla innych atrybutów. Proces synchronizacji skrótów haseł jest uruchamiany co 2 minuty. Nie można zmodyfikować częstotliwości tego procesu. Synchronizacja hasła powoduje zastąpienie istniejącego hasła w chmurze.
 
-Po pierwszym włączeniu funkcji synchronizacji skrótów haseł wykonywana jest początkowa synchronizacja haseł wszystkich użytkowników należących do zakresu. Nie można jawnie zdefiniować podzbioru haseł użytkowników, które mają zostać zsynchronizowane.
+Po pierwszym włączeniu funkcji synchronizacji skrótów haseł wykonywana jest początkowa synchronizacja haseł wszystkich użytkowników należących do zakresu. Nie można jawnie zdefiniować podzbioru haseł użytkowników, które mają zostać zsynchronizowane. Jeśli jednak istnieje wiele łączników, można wyłączyć synchronizację skrótów haseł dla niektórych łączników, ale nie inne za pomocą polecenia cmdlet [Set-ADSyncAADPasswordSyncConfiguration](https://docs.microsoft.com/en-us/azure/active-directory-domain-services/active-directory-ds-getting-started-password-sync-synced-tenant) .
 
 Po zmianie hasła lokalnego zaktualizowane hasło jest synchronizowane najczęściej, w ciągu kilku minut.
 Funkcja synchronizacji skrótów haseł automatycznie ponawia próbę synchronizacji nie powiodła się. Jeśli wystąpi błąd podczas próby zsynchronizowania hasła, w Podglądzie zdarzeń zostanie zarejestrowany błąd.
@@ -110,7 +110,7 @@ Domyślne zasady haseł usługi Azure AD wymagają od użytkowników zmiany hase
 
 Usługa Azure AD obsługuje oddzielne zasady wygasania haseł dla zarejestrowanej domeny.
 
-Zastrzeżenie: Jeśli istnieją zsynchronizowane konta, które muszą mieć niewygasające hasła w usłudze Azure AD, musisz jawnie dodać wartość `DisablePasswordExpiration` do atrybutu PasswordPolicies obiektu użytkownika w usłudze Azure AD.  Można to zrobić, uruchamiając następujące polecenie.
+Zastrzeżenie: Jeśli istnieją zsynchronizowane konta, które muszą mieć niewygasające hasła w usłudze Azure AD, musisz jawnie dodać wartość `DisablePasswordExpiration` do atrybutu PasswordPolicies obiektu user w usłudze Azure AD.  Można to zrobić, uruchamiając następujące polecenie.
 
 `Set-AzureADUser -ObjectID <User Object ID> -PasswordPolicies "DisablePasswordExpiration"`
 
@@ -123,7 +123,7 @@ Typowo, aby wymusić zmianę hasła przez użytkownika podczas pierwszego logowa
   
 Funkcja hasła tymczasowego pomaga zapewnić, że przeniesienie własności poświadczenia odbywa się przy pierwszym użyciu, aby zminimalizować czas, w którym więcej niż jedna osoba ma wiedzę na temat tego poświadczenia.
 
-Aby obsługiwać tymczasowe hasła w usłudze Azure AD dla synchronizowanych użytkowników, można włączyć funkcję *ForcePasswordResetOnLogonFeature* , uruchamiając następujące polecenie na serwerze Azure AD Connect, zastępując <AAD Connector Name> nazwą łącznika specyficznego dla Twoje środowisko:
+Aby obsługiwać tymczasowe hasła w usłudze Azure AD dla synchronizowanych użytkowników, można włączyć funkcję *ForcePasswordResetOnLogonFeature* , uruchamiając następujące polecenie na serwerze Azure AD Connect, zastępując <AAD Connector Name> nazwą łącznika specyficzną dla Twoje środowisko:
 
 `Set-ADSyncAADCompanyFeature -ConnectorName "<AAD Connector name>" -ForcePasswordResetOnLogonFeature $true`
 
