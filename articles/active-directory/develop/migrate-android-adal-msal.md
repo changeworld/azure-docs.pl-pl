@@ -16,12 +16,12 @@ ms.author: twhitney
 ms.reviewer: shoatman
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d06c84e6afcabb19c985d242679d6db8616a62e2
-ms.sourcegitcommit: 5f0f1accf4b03629fcb5a371d9355a99d54c5a7e
+ms.openlocfilehash: be8129de8b1c12965810bd5d9b5dfd1093e18d1c
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/30/2019
-ms.locfileid: "71679765"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73667887"
 ---
 # <a name="adal-to-msal-migration-guide-for-android"></a>Przewodnik migracji biblioteki ADAL do MSAL dla systemu Android
 
@@ -29,45 +29,42 @@ W tym artykule przedstawiono zmiany, które należy wykonać w celu przeprowadze
 
 ## <a name="difference-highlights"></a>Różnice między wyróżnieniami
 
-Biblioteka ADAL współpracuje z punktem końcowym Azure Active Directory v 1.0. Biblioteka Microsoft Authentication Library (MSAL) współpracuje z platformą tożsamości firmy Microsoft, która była znana wcześniej jako punkt końcowy Azure Active Directory v 2.0.
+Biblioteka ADAL współpracuje z punktem końcowym Azure Active Directory v 1.0. Biblioteka Microsoft Authentication Library (MSAL) współpracuje z platformą tożsamości firmy Microsoft — znana wcześniej jako punkt końcowy Azure Active Directory v 2.0. Platforma tożsamości firmy Microsoft różni się od Azure Active Directory v 1.0:
 
-Platforma tożsamości firmy Microsoft różni się od Azure Active Directory v 1.0:
-
-- Obsługuje obie:
+Uguje
   - Tożsamość organizacji (Azure Active Directory)
-  - Tożsamości nieorganizacyjne, takie jak Outlook.com, Xbox Live i tak dalej.
-  - (Tylko B2C) Logowanie federacyjne w usługach Google, Facebook, Twitter i Amazon.
+  - Tożsamości nieorganizacyjne, takie jak Outlook.com, Xbox Live i tak dalej
+  - (Tylko B2C) Logowanie federacyjne w usługach Google, Facebook, Twitter i Amazon
 
 - Są zgodne ze standardami:
   - OAuth 2.0
   - OpenID Connect Connect (OIDC)
 
-Publiczny interfejs API MSAL odzwierciedla istotne zmiany w użyteczności, w tym:
+Publiczny interfejs API MSAL wprowadza ważne zmiany, w tym:
 
 - Nowy model do uzyskiwania dostępu do tokenów:
-  - Biblioteka ADAL zapewnia dostęp do tokenów za pośrednictwem `AuthenticationContext`, który reprezentuje serwer. MSAL zapewnia dostęp do tokenów za pośrednictwem `PublicClientApplication`, który reprezentuje klienta. Deweloperzy klientów nie muszą tworzyć nowych wystąpień `PublicClientApplication` dla wszystkich urzędów, których potrzebują do współpracy. Wymagana jest tylko jedna konfiguracja `PublicClientApplication`.
+  - Biblioteka ADAL zapewnia dostęp do tokenów za pośrednictwem `AuthenticationContext`, który reprezentuje serwer. MSAL zapewnia dostęp do tokenów za pośrednictwem `PublicClientApplication`, który reprezentuje klienta. Deweloperzy klientów nie muszą tworzyć nowych wystąpień `PublicClientApplication` dla każdego urzędu, do którego potrzebują. Wymagana jest tylko jedna konfiguracja `PublicClientApplication`.
   - Obsługa żądania tokenów dostępu przy użyciu zakresów oprócz identyfikatorów zasobów.
-  - Obsługa przyrostowej zgody. Deweloperzy mogą żądać zakresów, w tym tych, które nie są uwzględnione podczas rejestracji aplikacji.
-  - Weryfikacja urzędu-> znanych urzędów
-      * Urzędy nie są już weryfikowane w czasie wykonywania; Zamiast tego deweloper deklaruje listę "znanych urzędów" podczas opracowywania.
+  - Obsługa przyrostowej zgody. Deweloperzy mogą żądać zakresów, ponieważ użytkownik uzyskuje dostęp do większej i większej funkcjonalności w aplikacji, łącznie z tymi, które nie są uwzględnione podczas rejestracji aplikacji.
+  - Urzędy nie są już weryfikowane w czasie wykonywania. Zamiast tego deweloper deklaruje listę "znanych urzędów" podczas opracowywania.
 - Zmiany interfejsu API tokenu:
-  - W bibliotece ADAL `AcquireToken` najpierw próbuje wykonać żądanie dyskretne i niepowodzenie, czy jest to żądanie interaktywne. Takie zachowanie spowodowało, że niektórzy deweloperzy korzystają tylko z `AcquireToken`, co czasami w przypadku, gdy interakcja użytkownika wystąpił w nieoczekiwanym czasie. MSAL wymaga, aby deweloperzy mogli zamierzać, kiedy użytkownik otrzyma monit o interfejs użytkownika.
+  - W bibliotece ADAL `AcquireToken()` najpierw powoduje żądanie dyskretne. Niepowodzenie oznacza, że wykonuje interaktywne żądanie. Takie zachowanie spowodowało, że niektórzy deweloperzy opierają się tylko na `AcquireToken`, co spowodowało nieoczekiwane wyświetlenie monitu o poświadczenia w czasie. MSAL wymaga, aby deweloperzy mogli zamierzać, kiedy użytkownik otrzyma monit o interfejs użytkownika.
     - `AcquireTokenSilent` zawsze powoduje, że żądanie dyskretne kończy się powodzeniem lub niepowodzeniem.
-    - `AcquireToken` zawsze powoduje interaktywny (monit o użytkownika z INTERFEJSem użytkownika).
-- MSAL obsługuje interakcję interfejsu użytkownika przy użyciu przeglądarki domyślnej lub osadzonego widoku sieci Web:
+    - `AcquireToken` zawsze powoduje żądanie, które monituje użytkownika za pośrednictwem interfejsu użytkownika.
+- MSAL obsługuje logowanie z poziomu domyślnej przeglądarki lub osadzonego widoku sieci Web:
   - Domyślnie używana jest domyślna przeglądarka na urządzeniu. Pozwala to MSAL na używanie stanu uwierzytelniania (plików cookie), które mogą już być obecne dla jednego lub więcej zalogowanych kont. Jeśli stan uwierzytelniania nie jest obecny, uwierzytelnianie w trakcie autoryzacji za pomocą usługi MSAL powoduje utworzenie stanu uwierzytelniania (plików cookie) w celu skorzystania z zalet innych aplikacji sieci Web, które będą używane w tej samej przeglądarce.
 - Nowy model wyjątku:
-  - Wyjątki są wyraźniejsze dla typu wyjątku, który wystąpił i jakie musi wykonać Deweloper, aby rozwiązać ten problem
+  - Wyjątki dokładniej definiują typ błędu, który wystąpił i jakie musi wykonać Deweloper, aby rozwiązać ten problem.
 - MSAL obsługuje obiekty parametrów dla wywołań `AcquireToken` i `AcquireTokenSilent`.
 - MSAL obsługuje konfigurację deklaratywną dla:
-  - Identyfikator klienta, identyfikator URI przekierowania
+  - Identyfikator klienta, identyfikator URI przekierowania.
   - Osadzona przeglądarka vs
   - wykazu
   - Ustawienia protokołu HTTP, takie jak Odczyt i limit czasu połączenia
 
 ## <a name="your-app-registration-and-migration-to-msal"></a>Rejestracja i migracja aplikacji do MSAL
 
-Do istniejącej rejestracji aplikacji nie są wymagane żadne zmiany w celu korzystania z MSAL. Jeśli chcesz korzystać ze zbyt przyrostowej lub progresywnej zgody, może być konieczne przejrzenie rejestracji w celu zidentyfikowania określonych zakresów, które mają być przeżądane przyrostowo. Więcej informacji na temat zakresów i przyrostowej zgody znajduje się poniżej.
+Nie musisz zmieniać istniejącej rejestracji aplikacji, aby używać MSAL. Jeśli chcesz korzystać ze zbyt przyrostowej lub progresywnej zgody, może być konieczne przejrzenie rejestracji w celu zidentyfikowania określonych zakresów, które mają być przeżądane przyrostowo. Więcej informacji na temat zakresów i przyrostowej zgody znajduje się poniżej.
 
 W przypadku rejestracji aplikacji w portalu zostanie wyświetlona karta **uprawnienia interfejsu API** . Zawiera listę interfejsów API i uprawnień (zakresów), dla których aplikacja jest obecnie skonfigurowana do żądania dostępu do programu. Pokazuje także listę nazw zakresów skojarzonych z poszczególnymi uprawnieniami interfejsu API.
 
@@ -89,26 +86,26 @@ Administratorzy organizacji mogą wyrazić zgodę na uprawnienia aplikacji w imi
 
 ### <a name="authenticate-and-request-authorization-for-all-permissions-on-first-use"></a>Uwierzytelniaj i Żądaj autoryzacji wszystkich uprawnień przy pierwszym użyciu
 
-Jeśli obecnie korzystasz z biblioteki ADAL i nie musisz używać wyrażania zgody, najprostszym sposobem, aby rozpocząć korzystanie z MSAL, jest przejęcie żądania `acquireToken` przy użyciu nowego obiektu `AcquireTokenParameter` i ustawienie wartości identyfikatora zasobu.
+Jeśli obecnie korzystasz z biblioteki ADAL i nie musisz używać wyrażania zgody, najprostszym sposobem na rozpoczęcie korzystania z MSAL jest `acquireToken` żądanie przy użyciu nowego obiektu `AcquireTokenParameter` i ustawienie wartości identyfikatora zasobu.
 
 > [!CAUTION]
-> Nie można ustawić zarówno zakresów, jak i identyfikatora zasobu. Próba ustawienia obu tych wartości spowoduje, że `IllegalArgumentException`.
+> Nie można ustawić zarówno zakresów, jak i identyfikatora zasobu. Próba ustawienia obu tych wartości spowoduje `IllegalArgumentException`.
 
  Spowoduje to użycie tego samego zachowania w wersji v1. Podczas pierwszej interakcji zażądano wszystkich uprawnień w rejestracji aplikacji od użytkownika.
 
 ### <a name="authenticate-and-request-permissions-only-as-needed"></a>Uwierzytelnianie i żądanie uprawnień tylko w razie konieczności
 
-Aby skorzystać z postanowień dotyczących przyrostowej zgody, należy utworzyć listę uprawnień (zakresów), z których korzysta aplikacja, w ramach rejestracji aplikacji, a następnie zorganizować je na dwie listy w oparciu o:
+Aby wypróbować użycie przyrostowej zgody, należy utworzyć listę uprawnień (zakresów) używanych przez aplikację w ramach rejestracji aplikacji i zorganizować je na dwie listy w oparciu o:
 
 - Zakresy, które chcesz zażądać podczas pierwszej interakcji użytkownika z aplikacją podczas logowania.
 - Uprawnienia, które są skojarzone z ważną funkcją aplikacji, należy również wyjaśnić użytkownikowi.
 
-Po przeniesieniu zakresów należy zorganizować poszczególne listy według zasobów (API), dla których chcesz zażądać tokenu. A także inne zakresy, które użytkownik chce autoryzować w tym samym czasie.
+Po przydzieleniu zakresów Organizuj poszczególne listy według zasobów (API), dla których chcesz zażądać tokenu. A także inne zakresy, które użytkownik chce autoryzować w tym samym czasie.
 
 Obiekt Parameters służący do żądania MSAL obsługuje:
 
 - `Scope`: Lista zakresów, dla których chcesz zażądać autoryzacji i otrzymać token dostępu.
-- `ExtraScopesToConsent`: dodatkowa lista zakresów, dla których chcesz zażądać autoryzacji, podczas żądania tokenu dostępu dla innego zasobu. Ta lista zakresów pozwala zminimalizować liczbę przypadków, w których należy zażądać autoryzacji użytkownika. Co oznacza mniejszą autoryzację użytkownika lub prośbę o zgodę.
+- `ExtraScopesToConsent`: dodatkowa lista zakresów, dla których chcesz zażądać autoryzacji w trakcie żądania tokenu dostępu dla innego zasobu. Ta lista zakresów pozwala zminimalizować liczbę przypadków, w których należy zażądać autoryzacji użytkownika. Co oznacza mniejszą autoryzację użytkownika lub prośbę o zgodę.
 
 ## <a name="migrate-from-authenticationcontext-to-publicclientapplications"></a>Migrowanie z AuthenticationContext do PublicClientApplications
 
@@ -118,7 +115,7 @@ Jeśli używasz MSAL, tworzysz wystąpienie `PublicClientApplication`. Ten obiek
 
 Można deklaratywnie skonfigurować ten obiekt w formacie JSON, który jest udostępniany jako plik lub magazyn jako zasób w ramach APK.
 
-Chociaż ten obiekt nie jest pojedynczy, wewnętrznie używa udostępnionych `Executors` dla żądań interaktywnych i dyskretnych.
+Chociaż ten obiekt nie jest pojedynczy, wewnętrznie używa udostępnionych `Executors` w przypadku żądań interaktywnych i dyskretnych.
 
 ### <a name="business-to-business"></a>Działalność biznesowa dla firm
 
@@ -131,11 +128,11 @@ MSAL nie ma flagi umożliwiającej włączenie lub wyłączenie walidacji urzęd
 > [!TIP]
 > Jeśli jesteś użytkownikiem platformy Azure Business-Consumer (B2C), oznacza to, że nie trzeba już wyłączać weryfikacji urzędu. Zamiast tego należy uwzględnić wszystkie obsługiwane zasady Azure AD B2C jako urzędy w konfiguracji MSAL.
 
-Jeśli spróbujesz użyć urzędu, który nie jest znany przez firmę Microsoft i nie jest uwzględniony w konfiguracji, uzyskasz `UnknownAuthorityException`.
+Jeśli spróbujesz użyć urzędu, który nie jest znany przez firmę Microsoft i nie jest uwzględniony w konfiguracji, zostanie wyświetlony `UnknownAuthorityException`.
 
 ### <a name="logging"></a>Rejestrowanie
-Teraz można deklaratywnie skonfigurować rejestrowanie w ramach konfiguracji, jak poniżej
- 
+Teraz można deklaratywnie skonfigurować rejestrowanie w ramach konfiguracji, w tym:
+
  ```
  "logging": {
     "pii_enabled": false,
@@ -146,7 +143,7 @@ Teraz można deklaratywnie skonfigurować rejestrowanie w ramach konfiguracji, j
 
 ## <a name="migrate-from-userinfo-to-account"></a>Migrowanie z UserInfo do konta
 
-W bibliotece ADAL `AuthenticationResult` udostępnia obiekt `UserInfo` służący do pobierania informacji o uwierzytelnianym koncie. Termin "użytkownik", który jest przeznaczony dla agentów ludzkich lub programowych, został zastosowany w taki sposób, że sprawia, że niektóre aplikacje obsługują jednego użytkownika (bez względu na to, czy Agent ludzki lub programowy) ma wiele kont.
+W bibliotece ADAL `AuthenticationResult` zapewnia `UserInfo` obiekt służący do pobierania informacji o uwierzytelnianym koncie. Termin "użytkownik", który jest przeznaczony dla agentów ludzkich lub programowych, został zastosowany w taki sposób, że sprawia, że niektóre aplikacje obsługują jednego użytkownika (bez względu na to, czy Agent ludzki lub programowy) ma wiele kont.
 
 Weź pod uwagę konto bankowe. Może istnieć więcej niż jedno konto w więcej niż jednej instytucji finansowej. Po otwarciu konta użytkownik (użytkownik) jest wystawiony poświadczenia, takie jak karta ATM & numer PIN, który jest używany do uzyskiwania dostępu do salda, płatności rozliczanych itd. dla każdego konta. Tych poświadczeń można używać tylko w instytucji finansowej, która je wystawiła.
 
@@ -158,11 +155,11 @@ Sam działa dla Contoso.com, ale zarządza maszynami wirtualnymi platformy Azure
 
 Dodanie konta Contoso.com użytkownika sam jako elementu członkowskiego Fabrikam.com spowoduje utworzenie nowego rekordu w Azure Active Directory fabrikam. com dla sam. Rekord sam w Azure Active Directory jest znany jako obiekt użytkownika. W takim przypadku ten obiekt użytkownika będzie wskazywał z powrotem do obiektu użytkownika sam w Contoso.com. Obiekt użytkownika Fabrikam firmy sam jest lokalną reprezentacją sam i służy do przechowywania informacji o koncie skojarzonym z sam w kontekście Fabrikam.com. W Contoso.com, tytuł sam jest wyższym konsultantem DevOps. W Fabrikam, tytuł sam jest zleceniobiorcą — Virtual Machines. W Contoso.com, sam nie jest odpowiedzialny ani autoryzowany do zarządzania maszynami wirtualnymi. W Fabrikam.com jest to jedyna funkcja zadania. Jeszcze sam ma tylko jeden zestaw poświadczeń do śledzenia, które są poświadczeniami wydanymi przez Contoso.com.
 
-Po pomyślnym wywołaniu `acquireToken` zobaczysz odwołanie do obiektu `IAccount`, którego można użyć w późniejszych żądaniach `acquireTokenSilent`.
+Po pomyślnym wywołaniu `acquireToken` zostanie wyświetlone odwołanie do obiektu `IAccount`, którego można użyć w późniejszych `acquireTokenSilent` żądaniach.
 
 ### <a name="imultitenantaccount"></a>IMultiTenantAccount
 
-Jeśli masz aplikację, która uzyskuje dostęp do oświadczeń dotyczących konta z poszczególnych dzierżawców, w których konto jest reprezentowane, możesz rzutować `IAccount` obiektów na `IMultiTenantAccount`. Ten interfejs udostępnia mapę `ITenantProfiles`, poddaną przez identyfikator dzierżawy, która umożliwia dostęp do oświadczeń należących do konta w każdej dzierżawie, od której zażądano tokenu, względem bieżącego konta.
+Jeśli masz aplikację, która uzyskuje dostęp do oświadczeń dotyczących konta z poszczególnych dzierżawców, w których konto jest reprezentowane, możesz rzutować `IAccount` obiektów na `IMultiTenantAccount`. Ten interfejs udostępnia mapę `ITenantProfiles`, która została poddana IDENTYFIKATORem dzierżawy, która umożliwia dostęp do oświadczeń należących do konta w każdej dzierżawie, od której zażądano tokenu, względem bieżącego konta.
 
 Oświadczenia w katalogu głównym `IAccount` i `IMultiTenantAccount` zawsze zawierają oświadczenia z dzierżawy głównej. Jeśli nie zgłoszono jeszcze żądania tokenu w ramach dzierżawy głównej, ta kolekcja będzie pusta.
 
@@ -241,7 +238,7 @@ public interface SilentAuthenticationCallback {
 
 ## <a name="migrate-to-the-new-exceptions"></a>Migrowanie do nowych wyjątków
 
-W bibliotece ADAL istnieje jeden typ wyjątku, `AuthenticationException`, który obejmuje metodę pobierania wartości wyliczenia `ADALError`.
+W bibliotece ADAL istnieje jeden typ wyjątku, `AuthenticationException`, który obejmuje metodę pobierania `ADALError` wartości wyliczenia.
 W programie MSAL istnieje hierarchia wyjątków, a każda z nich ma swój własny zestaw skojarzonych określonych kodów błędów.
 
 Lista wyjątków MSAL

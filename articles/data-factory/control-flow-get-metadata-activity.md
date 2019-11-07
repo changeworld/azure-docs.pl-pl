@@ -1,5 +1,5 @@
 ---
-title: Działanie pobierania metadanych w Azure Data Factory | Microsoft Docs
+title: Działanie pobierania metadanych w Azure Data Factory
 description: Dowiedz się, jak używać działania Get Metadata w potoku Data Factory.
 services: data-factory
 documentationcenter: ''
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 08/12/2019
 ms.author: jingwang
-ms.openlocfilehash: 081d7219407decac5dd36a06f289436aa0da627b
-ms.sourcegitcommit: 388c8f24434cc96c990f3819d2f38f46ee72c4d8
+ms.openlocfilehash: e891f6675920e7bb90d2a6d007676cdd65f19917
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/27/2019
-ms.locfileid: "70061535"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73679887"
 ---
 # <a name="get-metadata-activity-in-azure-data-factory"></a>Działanie pobierania metadanych w Azure Data Factory
 
@@ -43,24 +43,24 @@ Działanie Get Metadata Pobiera zestaw danych jako dane wejściowe i zwraca info
 
 **Magazyn plików**
 
-| Łącznik/metadane | itemName<br>(plik/folder) | itemType<br>(plik/folder) | size<br>rozszerzeniem | utworzone<br>(plik/folder) | lastModified<br>(plik/folder) |childItems<br>system32\drivers\etc |contentMD5<br>rozszerzeniem | structure<br/>rozszerzeniem | Kolumn<br>rozszerzeniem | istniejący<br>(plik/folder) |
+| Łącznik/metadane | ItemName<br>(plik/folder) | ItemType<br>(plik/folder) | zmienia<br>rozszerzeniem | utworzony<br>(plik/folder) | lastModified<br>(plik/folder) |childItems<br>system32\drivers\etc |contentMD5<br>rozszerzeniem | XML<br/>rozszerzeniem | Kolumn<br>rozszerzeniem | Istniejący<br>(plik/folder) |
 |:--- |:--- |:--- |:--- |:--- |:--- |:--- |:--- |:--- |:--- |:--- |
 | [Amazon S3](connector-amazon-simple-storage-service.md) | √/√ | √/√ | √ | x/x | √/√ * | √ | x | √ | √ | √/√ * |
-| [Google Cloud Storage](connector-google-cloud-storage.md) | √/√ | √/√ | √ | x/x | √/√ * | √ | x | √ | √ | √/√ * |
+| [Magazyn w chmurze Google](connector-google-cloud-storage.md) | √/√ | √/√ | √ | x/x | √/√ * | √ | x | √ | √ | √/√ * |
 | [Azure Blob Storage](connector-azure-blob-storage.md) | √/√ | √/√ | √ | x/x | √/√ * | √ | √ | √ | √ | √/√ |
 | [Usługa Azure Data Lake Storage 1. generacji](connector-azure-data-lake-store.md) | √/√ | √/√ | √ | x/x | √/√ | √ | x | √ | √ | √/√ |
 | [Azure Data Lake Storage Gen2](connector-azure-data-lake-storage.md) | √/√ | √/√ | √ | x/x | √/√ | √ | x | √ | √ | √/√ |
-| [Usługa pliki Azure](connector-azure-file-storage.md) | √/√ | √/√ | √ | √/√ | √/√ | √ | x | √ | √ | √/√ |
+| [Azure Files](connector-azure-file-storage.md) | √/√ | √/√ | √ | √/√ | √/√ | √ | x | √ | √ | √/√ |
 | [System plików](connector-file-system.md) | √/√ | √/√ | √ | √/√ | √/√ | √ | x | √ | √ | √/√ |
 | [SFTP](connector-sftp.md) | √/√ | √/√ | √ | x/x | √/√ | √ | x | √ | √ | √/√ |
 | [FTP](connector-ftp.md) | √/√ | √/√ | √ | x/x | √/√ | √ | x | √ | √ | √/√ |
 
-- W przypadku usługi Amazon S3 i Google Cloud `lastModified` Storage ma zastosowanie do zasobnika i klucza, ale nie do folderu wirtualnego i `exists` ma zastosowanie do zasobnika i klucza, ale nie do prefiksu lub folderu wirtualnego.
-- W przypadku usługi Azure Blob `lastModified` Storage ma zastosowanie do kontenera i obiektu BLOB, ale nie do folderu wirtualnego.
+- W przypadku usługi Amazon S3 i Google Cloud Storage `lastModified` ma zastosowanie do zasobnika i klucza, ale nie do folderu wirtualnego, a `exists` ma zastosowanie do zasobnika i klucza, ale nie do folderu wirtualnego.
+- W przypadku usługi Azure Blob Storage `lastModified` ma zastosowanie do kontenera i obiektu BLOB, ale nie do folderu wirtualnego.
 
 **Relacyjna baza danych**
 
-| Łącznik/metadane | structure | Kolumn | istniejący |
+| Łącznik/metadane | XML | Kolumn | Istniejący |
 |:--- |:--- |:--- |:--- |
 | [Azure SQL Database](connector-azure-sql-database.md) | √ | √ | √ |
 | [Wystąpienie zarządzane usługi Azure SQL Database](connector-azure-sql-database-managed-instance.md) | √ | √ | √ |
@@ -73,22 +73,22 @@ Aby pobrać odpowiednie informacje, możesz określić następujące typy metada
 
 | Typ metadanych | Opis |
 |:--- |:--- |
-| itemName | Nazwa pliku lub folderu. |
-| itemType | Typ pliku lub folderu. Zwrócona wartość `File` to `Folder`or. |
-| size | Rozmiar pliku w bajtach. Dotyczy tylko plików. |
-| utworzone | Utworzono datę i godzinę dla pliku lub folderu. |
+| ItemName | Nazwa pliku lub folderu. |
+| ItemType | Typ pliku lub folderu. Zwrócona wartość to `File` lub `Folder`. |
+| zmienia | Rozmiar pliku w bajtach. Dotyczy tylko plików. |
+| utworzony | Utworzono datę i godzinę dla pliku lub folderu. |
 | lastModified | Data i godzina ostatniej modyfikacji pliku lub folderu. |
 | childItems | Lista podfolderów i plików w danym folderze. Dotyczy tylko folderów. Zwracana wartość to lista nazw i typów każdego elementu podrzędnego. |
 | contentMD5 | MD5 pliku. Dotyczy tylko plików. |
-| structure | Struktura danych w tabeli pliku lub relacyjnej bazy danych. Zwracana wartość to lista nazw kolumn i typów kolumn. |
+| XML | Struktura danych w tabeli pliku lub relacyjnej bazy danych. Zwracana wartość to lista nazw kolumn i typów kolumn. |
 | Kolumn | Liczba kolumn w pliku lub tabeli relacyjnej. |
-| istniejący| Czy istnieje plik, folder lub tabela. Należy pamiętać, `exists` że jeśli program jest określony na liście Pobierz metadane, działanie nie powiedzie się, nawet jeśli plik, folder lub tabela nie istnieją. Zamiast tego `exists: false` , jest zwracany w danych wyjściowych. |
+| Istniejący| Czy istnieje plik, folder lub tabela. Należy pamiętać, że jeśli `exists` określono na liście pól Pobierz metadane, działanie nie powiedzie się, nawet jeśli plik, folder lub tabela nie istnieją. Zamiast tego `exists: false` jest zwracany w danych wyjściowych. |
 
 >[!TIP]
->Aby sprawdzić, czy istnieje plik, folder lub tabela, należy określić `exists` na liście pól Pobieranie metadanych. Następnie można sprawdzić `exists: true/false` wynik w danych wyjściowych działania. Jeśli `exists` nie zostanie określony na liście pól, działanie Pobierz metadane zakończy się niepowodzeniem, jeśli nie zostanie znaleziony obiekt.
+>Jeśli chcesz sprawdzić, czy istnieje plik, folder lub tabela, określ `exists` na liście pól działanie pobierania metadanych. Następnie można sprawdzić wynik `exists: true/false` w danych wyjściowych działania. Jeśli `exists` nie zostanie określony na liście pól, działanie Pobierz metadane zakończy się niepowodzeniem, jeśli nie zostanie znaleziony obiekt.
 
 >[!NOTE]
->Podczas pobierania metadanych z magazynów plików i konfigurowania `modifiedDatetimeStart` lub `modifiedDatetimeEnd`, `childItems` w danych wyjściowych będzie uwzględniać tylko pliki w danej ścieżce, które mają czas ostatniej modyfikacji w określonym zakresie. W programie nie będą uwzględniane elementy w podfolderach.
+>Podczas pobierania metadanych z magazynów plików i konfigurowania `modifiedDatetimeStart` lub `modifiedDatetimeEnd`, `childItems` w danych wyjściowych będzie zawierać tylko pliki w danej ścieżce, które mają czas ostatniej modyfikacji w określonym zakresie. W programie nie będą uwzględniane elementy w podfolderach.
 
 ## <a name="syntax"></a>Składnia
 
@@ -134,10 +134,10 @@ Aby pobrać odpowiednie informacje, możesz określić następujące typy metada
 
 Obecnie działanie Get Metadata może zwracać następujące typy informacji o metadanych:
 
-Właściwość | Opis | Wymagane
+Właściwość | Opis | Wymagany
 -------- | ----------- | --------
 fieldList | Typy wymaganych informacji metadanych. Aby uzyskać szczegółowe informacje na temat obsługiwanych metadanych, zobacz sekcję [Opcje metadanych](#metadata-options) w tym artykule. | Tak 
-zestawu | Zestaw danych referencyjnych, którego metadane mają być pobierane przez działanie pobierania metadanych. Zapoznaj się z sekcją [możliwości](#capabilities) , aby uzyskać informacje na temat obsługiwanych łączników. Zapoznaj się z tematami dotyczącymi szczegółowych informacji o składni zestawu danych. | Tak
+Zestawu | Zestaw danych referencyjnych, którego metadane mają być pobierane przez działanie pobierania metadanych. Zapoznaj się z sekcją [możliwości](#capabilities) , aby uzyskać informacje na temat obsługiwanych łączników. Zapoznaj się z tematami dotyczącymi szczegółowych informacji o składni zestawu danych. | Tak
 formatSettings | Zastosuj przy użyciu zestawu danych typu format. | Nie
 storeSettings | Zastosuj przy użyciu zestawu danych typu format. | Nie
 

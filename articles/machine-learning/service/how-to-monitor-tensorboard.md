@@ -9,12 +9,12 @@ ms.topic: conceptual
 author: maxluk
 ms.author: maxluk
 ms.date: 06/28/2019
-ms.openlocfilehash: a45548d3698d28a0189be4f46c26e418da8c91ef
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
-ms.translationtype: HT
+ms.openlocfilehash: 272dbbbc335574456feebfb85e4c5eafd544f8d6
+ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 11/04/2019
-ms.locfileid: "73489637"
+ms.locfileid: "73574290"
 ---
 # <a name="visualize-experiment-runs-and-metrics-with-tensorboard-and-azure-machine-learning"></a>Wizualizuj przebiegi eksperymentu i metryki za pomocą TensorBoard i Azure Machine Learning
 [!INCLUDE [applies-to-skus](../../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -28,13 +28,16 @@ Sposób uruchamiania programu TensorBoard z Azure Machine Learning eksperymenty 
 
 + W przypadku eksperymentów, które nie umożliwiają natywnego wyprowadzania plików TensorBoard, takich jak Scikit-nauka lub Azure Machine Learning eksperymenty, należy użyć [metody `export_to_tensorboard()`](#export) do eksportowania historii uruchamiania jako TensorBoard dzienników i uruchamiania TensorBoard z tego miejsca. 
 
+> [!TIP]
+> Informacje przedstawione w tym dokumencie są przeznaczone głównie dla analityków danych i deweloperów, którzy chcą monitorować proces szkolenia modelu. Jeśli jesteś administratorem zainteresowani monitorowaniem użycia zasobów i zdarzeń z usługi Azure Machine Learning, takich jak przydziały, ukończone przebiegi szkoleniowe lub wdrożone wdrożenia modelu, zobacz [Azure Machine Learning monitorowania](monitor-azure-machine-learning.md).
+
 ## <a name="prerequisites"></a>Wymagania wstępne
 
 * Aby uruchomić TensorBoard i wyświetlić historie uruchamiania eksperymentów, eksperymenty muszą mieć wcześniej włączone rejestrowanie, aby śledzić metryki i wydajność.  
 
-* Kod w tym sposobie można uruchomić w dowolnym z następujących środowisk: 
+* Kod w tym dokumencie można uruchomić w dowolnym z następujących środowisk: 
 
-    * Wystąpienie obliczeniowe Azure Machine Learning — nie jest wymagane pobieranie ani instalacja
+    * Maszyna wirtualna w Azure Machine Learning Notes — nie jest wymagane pobieranie ani instalacja
 
         * Ukończ [Samouczek: Zainstaluj środowisko i obszar roboczy](tutorial-1st-experiment-sdk-setup.md) , aby utworzyć dedykowany serwer notesu wstępnie załadowany z zestawem SDK i przykładowym repozytorium.
 
@@ -216,7 +219,7 @@ data = {
 
 ### <a name="run-experiment-and-log-metrics"></a>Uruchom eksperymenty i Rejestruj metryki
 
-W przypadku tego kodu firma Microsoft szkoli model regresji liniowej i metryki klucza dziennika, współczynnik alfa, `alpha` i średni błąd kwadratowy, `mse`, w historii uruchamiania.
+W przypadku tego kodu firma Microsoft szkoli model regresji liniowej i metryki klucza dziennika, współczynnik alfa, `alpha`i średni błąd kwadratowy, `mse`, w historii uruchamiania.
 
 ```Python
 from tqdm import tqdm

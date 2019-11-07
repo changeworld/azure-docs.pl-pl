@@ -1,195 +1,94 @@
 ---
-title: Wizualizuj dane z Eksploratora danych Azure przy użyciu narzędzia Grafana
-description: W tym instruktażu dowiesz się, jak skonfigurować Eksplorator danych platformy Azure jako źródło danych dla platformy Grafana, a następnie wizualizować dane z klastra próbki.
+title: Wizualizuj dane z usługi Azure Eksplorator danych przy użyciu Grafana
+description: W tym instruktażu dowiesz się, jak skonfigurować Eksplorator danych platformy Azure jako źródło danych dla Grafana, a następnie wizualizować dane z przykładowego klastra.
 author: orspod
 ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 6/30/2019
-ms.openlocfilehash: 0f148a97b25afb9135223ff92afb898d4734c586
-ms.sourcegitcommit: 084630bb22ae4cf037794923a1ef602d84831c57
+ms.openlocfilehash: f1eb9fb0d81d1e9cdf3dd8628a6d7ad1f0ccce92
+ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/03/2019
-ms.locfileid: "67537791"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73582033"
 ---
-# <a name="visualize-data-from-azure-data-explorer-in-grafana"></a>Wizualizuj dane z Eksploratora danych platformy Azure w narzędzia Grafana
+# <a name="visualize-data-from-azure-data-explorer-in-grafana"></a>Wizualizuj dane z usługi Azure Eksplorator danych w Grafana
 
-Grafana to platforma analityczna, która pozwala na zapytania i wizualizowanie danych, a następnie tworzyć i udostępniać pulpity nawigacyjne oparte na wizualizacji. Grafana zapewnia ono Eksploratora danych usługi Azure *wtyczki*, co umożliwia nawiązywanie połączenia i wizualizuj dane z Eksploratora danych usługi Azure. W tym artykule dowiesz się, jak skonfigurować Eksplorator danych platformy Azure jako źródło danych dla platformy Grafana, a następnie wizualizować dane z klastra próbki.
+Grafana to platforma analityczna, która umożliwia wykonywanie zapytań i wizualizacji danych, a następnie Tworzenie i udostępnianie pulpitów nawigacyjnych na podstawie wizualizacji. Grafana zapewnia *wtyczkę*Eksplorator danych platformy Azure, która umożliwia nawiązywanie połączeń z usługą Azure Eksplorator danych i wizualizowanie danych. W tym artykule dowiesz się, jak skonfigurować Eksplorator danych platformy Azure jako źródło danych dla Grafana, a następnie wizualizować dane z przykładowego klastra.
 
-Korzystając z poniższego wideo, nauczysz się przy użyciu narzędzia Grafana firmy Eksploratora danych usługi Azure plugin, konfigurowanie Eksplorator danych platformy Azure jako źródło danych dla platformy Grafana, a następnie wizualizować dane. 
+Korzystając z poniższego filmu wideo, możesz dowiedzieć się, jak korzystać z wtyczki Eksplorator danych platformy Azure Grafana, skonfigurować platformę Azure Eksplorator danych jako źródło danych dla Grafana, a następnie wizualizować dane. 
 
 > [!VIDEO https://www.youtube.com/embed/fSR_qCIFZSA]
 
-Alternatywnie możesz [Konfigurowanie źródła danych](#configure-the-data-source) i [wizualizowanie danych](#visualize-data) jak wyjaśniono w poniższym artykule.
+Alternatywnie możesz [skonfigurować źródło danych](#configure-the-data-source) i [wizualizować dane](#visualize-data) zgodnie z opisem w artykule poniżej.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-Potrzebne są następujące polecenie, aby ukończyć ten sposób:
+Aby dokończyć następujące czynności:
 
-* [Grafana wersji 5.3.0 lub nowszej](https://docs.grafana.org/installation/) systemu operacyjnego
+* [Grafana wersja 5.3.0 lub nowszą](https://docs.grafana.org/installation/) dla danego systemu operacyjnego
 
-* [Wtyczki Eksploratora danych usługi Azure](https://grafana.com/plugins/grafana-azure-data-explorer-datasource/installation) dla narzędzia Grafana
+* [Wtyczka Eksplorator danych platformy Azure dla usługi](https://grafana.com/plugins/grafana-azure-data-explorer-datasource/installation) Grafana
 
-* Klastra, który zawiera StormEvents przykładowych danych. Aby uzyskać więcej informacji, zobacz [Szybki Start: Tworzenie klastra Eksplorator danych platformy Azure i bazy danych](create-cluster-database-portal.md) i [pozyskiwanie danych przykładowych do Eksploratora danych usługi Azure](ingest-sample-data.md).
+* Klaster zawierający przykładowe dane StormEvents. Aby uzyskać więcej informacji, zobacz [Szybki Start: Tworzenie klastra Eksplorator danych platformy Azure i bazy danych](create-cluster-database-portal.md) oraz pozyskiwanie [przykładowych danych do usługi Azure Eksplorator danych](ingest-sample-data.md).
 
     [!INCLUDE [data-explorer-storm-events](../../includes/data-explorer-storm-events.md)]
 
-## <a name="configure-the-data-source"></a>Konfigurowanie źródła danych
-
-Możesz wykonać następujące kroki, aby skonfigurować Eksplorator danych platformy Azure jako źródło danych dla narzędzia Grafana. Omówimy następujące kroki, które bardziej szczegółowo w tej sekcji:
-
-1. Tworzenie usługi Azure Active Directory (Azure AD) jednostki usługi. Nazwa główna usługi jest używana przez narzędzia Grafana dostęp do usługi Azure Eksploratora danych.
-
-1. Dodaj nazwę główną usługi Azure AD do *osoby przeglądające* roli w bazie danych Azure Eksploratora danych.
-
-1. Określ właściwości połączenia narzędzia Grafana na podstawie informacji z jednostki usługi Azure AD, a następnie przetestuj połączenie.
-
-### <a name="create-a-service-principal"></a>Tworzenie nazwy głównej usługi
-
-Można utworzyć jednostki w usłudze [witryny Azure portal](#azure-portal) lub za pomocą [wiersza polecenia platformy Azure](#azure-cli) środowisko wiersza polecenia. Niezależnie od tego, która metoda użyjesz, po utworzeniu, którego pobieranie wartości do czterech właściwości połączenia, których można używać w kolejnych krokach.
-
-#### <a name="azure-portal"></a>Azure Portal
-
-1. Aby utworzyć jednostkę usługi, postępuj zgodnie z instrukcjami [dokumentacja witryny Azure portal](/azure/active-directory/develop/howto-create-service-principal-portal).
-
-    1. W [przypisywanie aplikacji do roli](/azure/active-directory/develop/howto-create-service-principal-portal#assign-the-application-to-a-role) sekcji, należy przypisać rolę rodzaj **czytnika** do klastra, Eksplorator danych usługi Azure.
-
-    1. W [pobieranie wartości do logowania](/azure/active-directory/develop/howto-create-service-principal-portal#get-values-for-signing-in) sekcji, skopiuj wartości właściwości trzy omówione w krokach: **Identyfikator katalogu** (identyfikator dzierżawy), **identyfikator aplikacji**, i **hasło**.
-
-1. W witrynie Azure portal wybierz **subskrypcje** następnie skopiuj identyfikator subskrypcji, w którym utworzono nazwę główną usługi.
-
-    ![Identyfikator subskrypcji — portal](media/grafana/subscription-id-portal.png)
-
-#### <a name="azure-cli"></a>Interfejs wiersza polecenia platformy Azure
-
-1. Tworzenie jednostki usługi. Ustaw odpowiedni zakres i Typ roli `reader`.
-
-    ```azurecli
-    az ad sp create-for-rbac --name "https://{UrlToYourGrafana}:{PortNumber}" --role "reader" \
-                             --scopes /subscriptions/{SubID}/resourceGroups/{ResourceGroupName}
-    ```
-
-    Aby uzyskać więcej informacji, zobacz [Tworzenie jednostki usługi platformy Azure przy użyciu wiersza polecenia platformy Azure](/cli/azure/create-an-azure-service-principal-azure-cli).
-
-1. Polecenie zwraca zestaw podobne do następujących wyników. Skopiuj wartości z trzech właściwości: **appID**, **hasło**, i **dzierżawy**.
-
-    ```json
-    {
-      "appId": "XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX",
-      "displayName": "{UrlToYourGrafana}:{PortNumber}",
-      "name": "https://{UrlToYourGrafana}:{PortNumber}",
-      "password": "XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX",
-      "tenant": "XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX"
-    }
-    ```
-
-1. Zostanie wyświetlona lista subskrypcji.
-
-    ```azurecli
-    az account list --output table
-    ```
-
-    Skopiuj identyfikator odpowiednią subskrypcję.
-
-    ![Identyfikator subskrypcji — interfejs wiersza polecenia](media/grafana/subscription-id-cli.png)
-
-### <a name="add-the-service-principal-to-the-viewers-role"></a>Dodaj nazwę główną usługi do roli osoby przeglądające
-
-Teraz, gdy masz nazwę główną usługi, możesz dodać go do *osoby przeglądające* roli w bazie danych Azure Eksploratora danych. Można wykonać tego zadania w obszarze **uprawnienia** w witrynie Azure portal lub w obszarze **zapytania** za pomocą polecenia zarządzania.
-
-#### <a name="azure-portal---permissions"></a>Witryna Azure portal — uprawnienia
-
-1. W witrynie Azure portal przejdź do klastra, Eksplorator danych usługi Azure.
-
-1. W **Przegląd** sekcji, wybierz bazę danych z przykładowymi danymi StormEvents.
-
-    ![Wybierz bazę danych](media/grafana/select-database.png)
-
-1. Wybierz **uprawnienia** następnie **Dodaj**.
-
-    ![Uprawnienia bazy danych](media/grafana/database-permissions.png)
-
-1. W obszarze **Dodaj uprawnienia bazy danych**, wybierz opcję **podglądu** następnie rola **wybierz jednostki**.
-
-    ![Dodaj uprawnienia bazy danych](media/grafana/add-permission.png)
-
-1. Wyszukaj utworzonej jednostki usługi, (w przykładzie pokazano podmiot zabezpieczeń **mb grafana**). Wybierz jednostki, a następnie **wybierz**.
-
-    ![Zarządzanie uprawnieniami w witrynie Azure portal](media/grafana/new-principals.png)
-
-1. Wybierz pozycję **Zapisz**.
-
-    ![Zarządzanie uprawnieniami w witrynie Azure portal](media/grafana/save-permission.png)
-
-#### <a name="management-command---query"></a>Polecenia zarządzania — zapytania
-
-1. W witrynie Azure portal przejdź do klastra usługi Azure Eksploratora danych i wybierz **zapytania**.
-
-    ![Zapytanie](media/grafana/query.png)
-
-1. Uruchom następujące polecenie w oknie zapytania. Użyj Identyfikatora aplikacji i identyfikator dzierżawy z witryny Azure portal lub interfejsu wiersza polecenia.
-
-    ```kusto
-    .add database {TestDatabase} viewers ('aadapp={ApplicationID};{TenantID}')
-    ```
-
-    Polecenie zwraca zestaw podobne do następujących wyników. W tym przykładzie pierwszy wiersz jest wierszem dla istniejącego użytkownika w bazie danych, a drugi wiersz jest dla jednostki usługi, który właśnie został dodany.
-
-    ![Zestaw wyników](media/grafana/result-set.png)
+[!INCLUDE [data-explorer-configure-data-source](../../includes/data-explorer-configure-data-source.md)]
 
 ### <a name="specify-properties-and-test-the-connection"></a>Określ właściwości i przetestuj połączenie
 
-Przy użyciu jednostki usługi, przypisany do *osoby przeglądające* roli, możesz teraz określić właściwości w ramach wystąpienia platformy Grafana i przetestować połączenie do Eksploratora danych platformy Azure.
+Przy użyciu jednostki usługi przypisanej do roli *osoby przeglądające* możesz teraz określić właściwości w wystąpieniu Grafana i przetestować połączenie z usługą Azure Eksplorator danych.
 
-1. W Grafana, w menu po lewej stronie wybierz ikonę koła zębatego następnie **źródeł danych**.
+1. W Grafana, w menu po lewej stronie wybierz ikonę koła zębatego, a następnie pozycję **źródła danych**.
 
     ![Źródła danych](media/grafana/data-sources.png)
 
-1. Wybierz **Dodaj źródło danych**.
+1. Wybierz pozycję **Dodaj źródło danych**.
 
-1. Na **źródeł danych / nowy** strony, wprowadź nazwę dla źródła danych, a następnie wybierz typ **Datasource Eksploratora danych usługi Azure**.
+1. Na stronie **źródła danych/Nowa** wprowadź nazwę źródła danych, a następnie wybierz typ **Azure Eksplorator danych DataSource**.
 
-    ![Nazwa połączenia i typ](media/grafana/connection-name-type.png)
+    ![Nazwa i typ połączenia](media/grafana/connection-name-type.png)
 
-1. Wprowadź nazwę klastra, w https://{ClusterName formularza}. {Region}. kusto.windows.net. Wprowadź inne wartości z witryny Azure portal lub interfejsu wiersza polecenia. Zobacz tabelę poniżej poniższej ilustracji dla mapowania.
+1. Wprowadź nazwę klastra w postaci https://{ClusterName}. {Region}. Kusto. Windows. NET. Wprowadź inne wartości z Azure Portal lub interfejsu wiersza polecenia. Zapoznaj się z tabelą poniżej poniższej ilustracji.
 
     ![Connection properties (Właściwości połączenia)](media/grafana/connection-properties.png)
 
-    | Grafana UI | Azure Portal | Interfejs wiersza polecenia platformy Azure |
+    | Interfejs użytkownika Grafana | Azure Portal | Interfejs wiersza polecenia platformy Azure |
     | --- | --- | --- |
     | Identyfikator subskrypcji | IDENTYFIKATOR SUBSKRYPCJI | SubscriptionId |
-    | Identyfikator dzierżawy | Identyfikator katalogu | tenant |
+    | Identyfikator dzierżawy | Identyfikator katalogu | dzierżaw |
     | Identyfikator klienta | Identyfikator aplikacji | appId |
-    | Klucz tajny klienta | Hasło | password |
+    | Klucz tajny klienta | Hasło | hasło |
     | | | |
 
-1. Wybierz **Zapisz i przetestuj**.
+1. Wybierz pozycję **zapisz & test**.
 
-    Jeśli test wypadnie pomyślnie, przejdź do następnej sekcji. Jeśli napotkasz jakiekolwiek problemy, sprawdź wartości, które określiłeś w Grafana i przejrzyj poprzednie kroki.
+    Jeśli test zakończy się pomyślnie, przejdź do następnej sekcji. Jeśli napotkasz jakiekolwiek problemy, sprawdź wartości określone w Grafana i Przejrzyj poprzednie kroki.
 
 ## <a name="visualize-data"></a>Wizualizowanie danych
 
-Po zakończeniu konfigurowania Eksplorator danych platformy Azure jako źródło danych dla narzędzia Grafana, nadszedł czas na wizualizacji danych. Przedstawimy przykład podstawowy, ale można zrobić dużo więcej. Zalecamy przyjrzenie [Pisanie zapytań w Eksploratorze danych platformy Azure](write-queries.md) przykłady innych zapytań w celu uruchomienia zestawu danych przykładowych.
+Po skonfigurowaniu usługi Azure Eksplorator danych jako źródła danych dla Grafana czas na wizualizację danych. Pokażemy tutaj podstawowy przykład, ale istnieje dużo więcej możliwości. Zaleca się, aby podczas wykonywania [zapytań dotyczących zapisu na platformie Azure Eksplorator danych](write-queries.md) na przykład inne zapytania, które zostaną uruchomione względem przykładowego zestawu danych.
 
-1. W Grafana, w menu po lewej stronie wybierz ikonę znaku plus następnie **pulpit nawigacyjny**.
+1. W Grafana, w menu po lewej stronie wybierz ikonę znaku plus, a następnie pozycję **pulpit nawigacyjny**.
 
-    ![Tworzenie pulpitu nawigacyjnego](media/grafana/create-dashboard.png)
+    ![Utwórz pulpit nawigacyjny](media/grafana/create-dashboard.png)
 
-1. W obszarze **Dodaj** zaznacz **wykresu**.
+1. Na karcie **Dodaj** wybierz pozycję **Graph**.
 
     ![Dodaj wykres](media/grafana/add-graph.png)
 
-1. Na panelu wykresu wybierz **tytuł panelu** następnie **Edytuj**.
+1. W panelu Graf wybierz pozycję **Tytuł panelu** , a następnie **Edytuj**.
 
-    ![Edytuj panelu](media/grafana/edit-panel.png)
+    ![Panel Edytuj](media/grafana/edit-panel.png)
 
-1. W dolnej części panelu wybierz **źródła danych** następnie wybierz źródło danych, który został skonfigurowany.
+1. W dolnej części panelu wybierz pozycję **Źródło danych** , a następnie wybierz skonfigurowane źródło danych.
 
     ![Wybieranie źródła danych](media/grafana/select-data-source.png)
 
-1. W okienku zapytania, skopiuj następujące zapytanie, a następnie wybierz pozycję **Uruchom**. Zapytanie przedziałów liczbę zdarzeń wg dnia dla zestawu danych przykładowych.
+1. W okienku zapytania Skopiuj poniższe zapytanie, a następnie wybierz pozycję **Uruchom**. Zapytanie przedziałuje liczbę zdarzeń dziennie dla przykładowego zestawu danych.
 
     ```kusto
     StormEvents
@@ -198,22 +97,22 @@ Po zakończeniu konfigurowania Eksplorator danych platformy Azure jako źródło
 
     ![Uruchamianie zapytania](media/grafana/run-query.png)
 
-1. Wykres nie pokazuje żadnych wyników, ponieważ jej obejmuje domyślnie dane z ostatnich sześciu godzin. W górnym menu wybierz **ostatnie 6 godzin**.
+1. Wykres nie pokazuje żadnych wyników, ponieważ jest domyślnie objęty zakresem danych z ostatnich sześciu godzin. W górnym menu wybierz pozycję **ostatnie 6 godzin**.
 
-    ![Ostatnie 6 godzin](media/grafana/last-six-hours.png)
+    ![Ostatnie sześć godzin](media/grafana/last-six-hours.png)
 
-1. Określ zakres niestandardowych, który obejmuje 2007 roku zawarte w naszym zestawie danych przykładowych StormEvents. Wybierz przycisk **Zastosuj**.
+1. Określ zakres niestandardowy obejmujący 2007, rok uwzględniony w zestawie danych przykładowych StormEvents. Wybierz przycisk **Zastosuj**.
 
     ![Niestandardowy zakres dat](media/grafana/custom-date-range.png)
 
-    Teraz wykres przedstawia dane z 2007 zasobnikach dzienny.
+    Teraz wykres pokazuje dane z 2007, przedzielonych na dobę.
 
-    ![Zakończono wykresu](media/grafana/finished-graph.png)
+    ![Ukończony wykres](media/grafana/finished-graph.png)
 
-1. W górnym menu, wybierz opcję Zapisz ikony: ![Ikona zapisywania](media/grafana/save-icon.png).
+1. W górnym menu wybierz ikonę Zapisz: ![Ikona zapisywania](media/grafana/save-icon.png).
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 * [Pisanie zapytań dla usługi Azure Data Explorer](write-queries.md)
 
-* [Samouczek: Wizualizuj dane z Eksploratora danych usługi Azure w usłudze Power BI](visualize-power-bi.md)
+* [Samouczek: Wizualizacja danych z platformy Azure Eksplorator danych w Power BI](visualize-power-bi.md)

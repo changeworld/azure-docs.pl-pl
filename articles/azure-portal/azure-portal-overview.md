@@ -2,29 +2,41 @@
 title: Omówienie witryny Azure Portal | Microsoft Docs
 description: Dowiedz się, jak nawigować w Azure Portal i używać jej do zarządzania usługami
 services: azure-portal
-keywords: ''
+keywords: portal
 author: kfollis
 ms.author: kfollis
-ms.date: 05/24/2019
+ms.date: 11/01/2019
 ms.topic: conceptual
 ms.service: azure-portal
 manager: mtillman
-ms.openlocfilehash: 6e176a8b16129cd35fc011e14fcb36038f7c0144
-ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
+ms.openlocfilehash: 90bbea1068bb237501daf5e0dfac865ca6b9a12a
+ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/15/2019
-ms.locfileid: "71000341"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73579444"
 ---
 # <a name="azure-portal-overview"></a>Azure Portal — omówienie
 
 W tym artykule wprowadzono Azure Portal, identyfikują elementy strony portalu i ułatwiają zapoznanie się z możliwościami zarządzania Azure Portal.
 
-## <a name="what-is-the-azure-portal"></a>Co to jest Azure Portal?
+## <a name="what-is-the-azure-portal"></a>Co to jest witryna Azure Portal?
 
-Azure Portal jest ujednoliconą, opartą na sieci Web konsolą, która zapewnia alternatywę dla narzędzi wiersza polecenia. Za pomocą Azure Portal możesz zarządzać subskrypcją platformy Azure przy użyciu graficznego interfejsu użytkownika. Możesz tworzyć, zarządzać i monitorować wszystko z prostych aplikacji sieci Web w złożonych wdrożeniach w chmurze, tworzyć niestandardowe pulpity nawigacyjne na potrzeby uporządkowanego widoku zasobów i konfigurować opcje ułatwień dostępu w celu uzyskania najlepszego środowiska.
+Witryna Azure Portal to ujednolicona, oparta na sieci Web konsola, która stanowi alternatywę dla narzędzi wiersza polecenia. Za pomocą Azure Portal możesz zarządzać subskrypcją platformy Azure przy użyciu graficznego interfejsu użytkownika. Możesz tworzyć i monitorować wszystkie elementy z prostych aplikacji sieci Web oraz zarządzać nimi, aby uzyskać złożone wdrożenia w chmurze. Tworzenie niestandardowych pulpitów nawigacyjnych dla zorganizowanego widoku zasobów. Skonfiguruj opcje ułatwień dostępu w celu zapewnienia optymalnego środowiska.
 
-Azure Portal jest zaprojektowana pod kątem odporności i ciągłej dostępności. Jest ona dostępna w każdym centrum danych platformy Azure, dzięki czemu jest to odporne na awarie poszczególnych centrów danych, a także pozwala uniknąć spowolnienia pracy w sieci w pobliżu użytkowników. Azure Portal są stale aktualizowane i nie wymagają przestojów w przypadku działań konserwacyjnych.
+Azure Portal jest zaprojektowana pod kątem odporności i ciągłej dostępności. Jest ona dostępna w każdym centrum danych platformy Azure. Ta konfiguracja sprawia, że Azure Portal odporne na awarie poszczególnych centrów danych i pozwala uniknąć spowolnienia działania sieci przez zamknięcie użytkowników. Azure Portal są stale aktualizowane i nie wymagają przestojów w przypadku działań konserwacyjnych.
+
+## <a name="azure-portal-menu"></a>Menu Azure Portal
+
+Możesz wybrać tryb domyślny dla menu portalu. Może być zadokowane lub może działać jako panel wysuwany.
+
+Gdy menu portalu jest w trybie wysuwania, jest ono ukryte, dopóki nie będzie potrzebne. Wybierz ikonę menu, aby otworzyć lub zamknąć menu.
+
+![Menu Azure Portal w trybie wysuwania](./media/azure-portal-overview/azure-portal-overview-portal-menu-flyout.png)
+
+W przypadku wybrania opcji Tryb zadokowany dla menu Portal będzie on zawsze widoczny. Możesz zwinąć menu, aby zwiększyć miejsce pracy.
+
+![Menu Azure Portal w trybie zadokowanym](./media/azure-portal-overview/azure-portal-overview-portal-menu-expandcollapse.png)
 
 ## <a name="azure-home"></a>Strona główna platformy Azure
 
@@ -32,33 +44,39 @@ Jako nowy subskrybent usług platformy Azure pierwszy element widoczny po [zalog
 
 ![Zrzut ekranu przedstawiający selektor widoku domyślnego](./media/azure-portal-overview/azure-portal-default-view.png)
 
+Zarówno menu Azure Portal, jak i domyślny widok platformy Azure można zmienić w **ustawieniach portalu**. Jeśli zmienisz wybór, zmiana zostanie natychmiast zastosowana.
+
+![Zrzut ekranu przedstawiający selektor widoku domyślnego](./media/azure-portal-overview/azure-portal-overview-portal-settings-menu-home.png)
+
 ## <a name="azure-dashboard"></a>Pulpit nawigacyjny platformy Azure
 
-Pulpity nawigacyjne zapewniają skoncentrowany widok zasobów w ramach subskrypcji, które najlepiej odpowiadają. Udostępniono domyślny pulpit nawigacyjny, aby rozpocząć pracę. Możesz dostosować ten pulpit nawigacyjny, aby wykorzystać najczęściej używane zasoby w jednym widoku. Wszelkie zmiany wprowadzone w widoku domyślnym mają wpływ tylko na Twoje doświadczenie. Można jednak utworzyć dodatkowe pulpity nawigacyjne do własnych potrzeb lub opublikować dostosowane pulpity nawigacyjne i udostępnić je innym użytkownikom w organizacji. Aby uzyskać więcej informacji, zobacz [Tworzenie i udostępnianie pulpitów nawigacyjnych w Azure Portal](../azure-portal/azure-portal-dashboards.md).
+Pulpity nawigacyjne zapewniają skoncentrowany widok zasobów w ramach subskrypcji, które najlepiej odpowiadają. Udostępniono domyślny pulpit nawigacyjny, aby rozpocząć pracę. Możesz dostosować ten pulpit nawigacyjny, aby zapewnić często używane zasoby w jednym widoku. Wszelkie zmiany wprowadzone w widoku domyślnym mają wpływ tylko na Twoje doświadczenie. Można jednak utworzyć dodatkowe pulpity nawigacyjne do własnych potrzeb lub opublikować dostosowane pulpity nawigacyjne i udostępnić je innym użytkownikom w organizacji. Aby uzyskać więcej informacji, zobacz [Tworzenie i udostępnianie pulpitów nawigacyjnych w Azure Portal](../azure-portal/azure-portal-dashboards.md).
 
 ## <a name="getting-around-the-portal"></a>Więcej informacji na temat portalu
 
 Pomocne jest zrozumienie podstawowego układu portalu i sposobu korzystania z niego. W tym miejscu wprowadzimy składniki interfejsu użytkownika i część terminologii, której używamy w celu uzyskania instrukcji. Aby zapoznać się z bardziej szczegółowym przewodnikiem dotyczącym portalu, zobacz Lekcja kursu [nawigowanie po portalu](https://docs.microsoft.com/learn/modules/tour-azure-portal/3-navigate-the-portal).
 
-Azure Portal pasek boczny i nagłówek strony to globalne elementy, które zawsze są obecne. Te funkcje trwałe są "powłoką" dla interfejsu użytkownika skojarzonego z każdą pojedynczą usługą lub funkcją, a nagłówek zapewnia dostęp do kontrolek globalnych. Strona konfiguracji (czasami określana jako "blok") dla zasobu może być również w lewym okienku ułatwiającym przechodzenie między funkcjami.
+Menu Azure Portal i nagłówek strony to globalne elementy, które zawsze są obecne. Te funkcje trwałe są "powłoką" dla interfejsu użytkownika skojarzonego z każdą pojedynczą usługą lub funkcją, a nagłówek zapewnia dostęp do kontrolek globalnych. Strona konfiguracji (czasami określana jako "blok") dla zasobu może również mieć menu zasobów ułatwiające przechodzenie między funkcjami.
 
 Na rysunku poniżej przedstawiono podstawowe elementy Azure Portal, z których każdy jest opisany w poniższej tabeli.
 
-![Zrzut ekranu przedstawiający widok portalu pełnoekranowego i klucz do elementów interfejsu użytkownika](./media/azure-portal-overview/azure-portal-fullscreen-map.png)
+![Zrzut ekranu przedstawiający widok portalu pełnoekranowego i klucz do elementów interfejsu użytkownika](./media/azure-portal-overview/azure-portal-overview-portal-callouts.png)
+
+![Zrzut ekranu przedstawiający menu rozwijane portalu](./media/azure-portal-overview/azure-portal-overview-portal-menu-callouts.png)
 
 |Klucz|Opis
 |:---:|---|
 |1|Nagłówek strony. Pojawia się u góry każdej strony portalu i zawiera elementy globalne.|
 |2| Wyszukiwanie globalne. Pasek wyszukiwania umożliwia szybkie znalezienie określonego zasobu, usługi lub dokumentacji.|
-|3|Kontrolki globalne. Podobnie jak w przypadku wszystkich elementów globalnych, te funkcje są zachowywane w portalu i obejmują: Cloud Shell, filtr subskrypcji, powiadomienia, ustawienia portalu, pomoc i obsługa techniczna oraz Wyślij nam opinię.|
+|3|Kontrolki globalne. Podobnie jak w przypadku wszystkich elementów globalnych, te funkcje są zachowywane w portalu i obejmują: Cloud Shell, filtr subskrypcji, powiadomienia, ustawienia portalu, pomoc i obsługa techniczna oraz wysyłać do nas opinie.|
 |4|Twoje konto. Wyświetl informacje o Twoim koncie, przełącz katalogi, Wyloguj się lub Zaloguj się przy użyciu innego konta.|
-|5|—. Pasek boczny jest elementem globalnym, który ułatwia nawigowanie między usługami. Pasek boczny może być zwinięty, aby zwiększyć fokus okienka roboczego.|
-|6|Formant główny służący do tworzenia nowego zasobu w bieżącej subskrypcji. Wyszukaj lub Przeglądaj witrynę Azure Marketplace dla typu zasobu, który chcesz utworzyć.|
-|7|Lista ulubionych. Dodaj lub Usuń Ulubione ze strony **wszystkie usługi** .|
-|8|Okienko po lewej stronie. Wiele usług obejmuje menu po lewej stronie, które ułatwia zarządzanie usługą.|
-|9|Pasek poleceń. Formanty na pasku poleceń są kontekstowe dla bieżącego fokusu.|
-|10|Stron. Linki do stron nadrzędnych umożliwiają przeniesienie poziomu w przepływie pracy.|
-|11|Okienko robocze.  Wyświetla szczegóły zasobu, który jest aktualnie fokusem.|
+|5|Menu portalu. Menu Portal jest elementem globalnym, który ułatwia nawigowanie między usługami. Czasami określany jako pasek boczny, Tryb menu portalu można zmienić w **ustawieniach portalu**.|
+|6|Menu zasób. Wiele usług obejmuje menu zasobów ułatwiające zarządzanie usługą. Ten element może zostać wyświetlony jako lewe okienko.|
+|7|Pasek poleceń. Formanty na pasku poleceń są kontekstowe dla bieżącego fokusu.|
+|8|Okienko robocze.  Wyświetla szczegóły zasobu, który jest aktualnie fokusem.|
+|9|Stron. Linki do stron nadrzędnych umożliwiają przeniesienie poziomu w przepływie pracy.|
+|10|Formant główny służący do tworzenia nowego zasobu w bieżącej subskrypcji. Rozwiń lub Otwórz menu portalu, aby znaleźć i **utworzyć zasób**. Wyszukaj lub Przeglądaj witrynę Azure Marketplace dla typu zasobu, który chcesz utworzyć.|
+|11|Lista ulubionych. Zobacz [Dodawanie, usuwanie i sortowanie ulubionych,](../azure-portal/azure-portal-add-remove-sort-favorites.md) aby dowiedzieć się, jak dostosować listę.|
 
 ## <a name="get-started-with-services"></a>Wprowadzenie do usług
 
@@ -79,5 +97,5 @@ Obejrzyj ten film wideo, aby zapoznać się z pokazem korzystania z wyszukiwania
 ## <a name="next-steps"></a>Następne kroki
 
 * Dowiedz się więcej o tym, gdzie uruchamiać Azure Portal w [obsługiwanych przeglądarkach i urządzeniach](../azure-portal/azure-portal-supported-browsers-devices.md)
-
 * Pozostawanie połączone z [aplikacja mobilna platformy Azure](https://azure.microsoft.com/features/azure-portal/mobile-app/)
+* Dołączanie i Konfigurowanie środowiska chmury przy użyciu [centrum szybkiego startu platformy Azure](../azure-portal/azure-portal-quickstart-center.md)

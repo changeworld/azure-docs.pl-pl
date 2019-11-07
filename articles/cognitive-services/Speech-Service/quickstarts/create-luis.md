@@ -1,21 +1,21 @@
 ---
 title: 'Szybki Start: Tworzenie klucza LUIS'
 titleSuffix: Azure Cognitive Services
-description: W tym samouczku dowiesz się, jak szybko utworzyć aplikację LUIS.
+description: W tym przewodniku szybki start dowiesz się, jak utworzyć aplikację LUIS i uzyskać klucz.
 services: cognitive-services
 author: wolfma61
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: tutorial
-ms.date: 08/28/2019
+ms.date: 11/04/2019
 ms.author: wolfma
-ms.openlocfilehash: 95becb2574a45536610aef87f8045b3dad5a5003
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 2ee2b25958feac2387779d9e60734a6600b60a2e
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73504081"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73682071"
 ---
 # <a name="quickstart-getting-a-luis-endpoint-key"></a>Szybki Start: Pobieranie klucza punktu końcowego LUIS
 
@@ -54,7 +54,7 @@ Na stronie **Ustawienia kluczy i punktu końcowego** :
    * W obszarze **Nazwa subskrypcji**wybierz subskrypcję platformy Azure zawierającą zasób Luis, którego chcesz użyć.
    * W obszarze **klucz**wybierz zasób Luis, który ma być używany z aplikacją.
 
-   Za chwilę w tabeli w dolnej części strony zostanie wyświetlona nowa subskrypcja. 
+   Za chwilę w tabeli w dolnej części strony zostanie wyświetlona nowa subskrypcja.
 
 1. Wybierz ikonę obok klawisza, aby skopiować go do Schowka. (Możesz użyć dowolnego klucza).
 

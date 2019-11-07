@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 10/26/2019
+ms.date: 11/04/2019
 ms.author: erhopf
-ms.openlocfilehash: 8e3a76abe840a70ba7410855cde1d82ec96c28eb
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
-ms.translationtype: HT
+ms.openlocfilehash: 6ec98d1f7956ef1460909f62384a931400b596c4
+ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 11/04/2019
-ms.locfileid: "73506957"
+ms.locfileid: "73579625"
 ---
 # <a name="audio-content-creation"></a>Tworzenie zawartości audio
 
@@ -29,7 +29,7 @@ Na tym diagramie przedstawiono kroki, które należy wykonać, aby dostroić i w
 
 ![](media/audio-content-creation/audio-content-creation-diagram.jpg)
 
-1. Pierwszym krokiem jest [utworzenie konta platformy Azure, zarejestrowanie zasobu mowy i uzyskanie klucza subskrypcji](#create-a-speech-resource). Gdy masz klucz subskrypcji, możesz go użyć do wywołania usługi mowy i uzyskania dostępu do [tworzenia zawartości audio](https://aka.ms/audiocontentcreation).
+1. Pierwszym krokiem jest [utworzenie konta platformy Azure, zarejestrowanie zasobu mowy i uzyskanie klucza subskrypcji](#create-a-speech-resource). Po utworzeniu klucza subskrypcji można użyć go do wywołania usługi mowy i uzyskania dostępu do [tworzenia zawartości audio](https://aka.ms/audiocontentcreation).
 2. [Utwórz plik dostrajania audio](#create-an-audio-tuning-file) przy użyciu zwykłego tekstu lub SSML.
 3. Wybierz głos i język, który chcesz dostosować. Tworzenie zawartości audio obejmuje wszystkie [głosy zamiany tekstu na mowę firmy Microsoft](language-support.md#text-to-speech). Możesz użyć standardowego, neuronowych lub własnego niestandardowego głosu.
    >[!NOTE]
@@ -43,7 +43,7 @@ Na tym diagramie przedstawiono kroki, które należy wykonać, aby dostroić i w
 
 Wykonaj następujące kroki, aby utworzyć zasób mowy i połączyć go z usługą Speech Studio.
 
-1. Postępuj zgodnie z tymi instrukcjami, aby [zarejestrować się w celu utworzenia konta platformy Azure i utworzyć zasób mowy](https://docs.microsoft.com/azure/cognitive-services/speech-service/get-started#create-a-speech-resource-in-azure). Upewnij się, że warstwa cenowa jest ustawiona na **S0**. Jeśli używasz jednego z głosów neuronowych, upewnij się, że zasób jest tworzony w [obsługiwanym regionie](regions.md#standard-and-neural-voices).
+1. Postępuj zgodnie z tymi instrukcjami, aby [zarejestrować się w celu utworzenia konta platformy Azure](https://docs.microsoft.com/azure/cognitive-services/speech-service/get-started#new-azure-account) i [utworzyć zasób mowy](https://docs.microsoft.com/azure/cognitive-services/speech-service/get-started#create-a-speech-resource-in-azure). Upewnij się, że warstwa cenowa jest ustawiona na **S0**. Jeśli używasz jednego z głosów neuronowych, upewnij się, że zasób jest tworzony w [obsługiwanym regionie](regions.md#standard-and-neural-voices).
 2. Zaloguj się do [tworzenia zawartości audio](https://aka.ms/audiocontentcreation).
 3. Wybierz istniejący projekt lub kliknij pozycję **Utwórz nowy**.
 4. Subskrypcję można zmienić w dowolnym momencie za pomocą opcji **Ustawienia** , która znajduje się w górnym obszarze nawigacji.

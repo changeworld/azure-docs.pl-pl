@@ -1,5 +1,5 @@
 ---
-title: Transformacja sprzężenia w Azure Data Factory mapowaniu przepływu danych | Microsoft Docs
+title: Transformacja sprzężenia w przepływie danych mapowania Azure Data Factory
 description: Łączenie danych z dwóch źródeł danych przy użyciu transformacji sprzężenia w przepływie danych mapowania Azure Data Factory
 author: kromerm
 ms.author: makromer
@@ -7,12 +7,12 @@ ms.reviewer: daperlov
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 10/17/2019
-ms.openlocfilehash: 78de9f2bedfc36add567053e1de47e8893bfaf3c
-ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
+ms.openlocfilehash: 4680804017a9b08248bb41ff999c6ba6371e99c8
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/18/2019
-ms.locfileid: "72597004"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73675912"
 ---
 # <a name="join-transformation-in-mapping-data-flow"></a>Przekształcenie łączenia w przepływie danych mapowania
 
@@ -32,7 +32,7 @@ Lewe sprzężenie zewnętrzne zwraca wszystkie wiersze z lewego strumienia i dop
 
 ### <a name="right-outer"></a>Prawe zewnętrzne
 
-Lewe sprzężenie zewnętrzne zwraca wszystkie wiersze z odpowiedniego strumienia i dopasowane rekordy z lewego strumienia. Jeśli wiersz z odpowiedniego strumienia nie ma dopasowania, kolumny wyjściowe z odpowiedniego strumienia mają ustawioną wartość NULL. Dane wyjściowe będą wierszami zwracanymi przez sprzężenie wewnętrzne oraz niedopasowane wiersze z odpowiedniego strumienia.
+Prawe sprzężenie zewnętrzne zwraca wszystkie wiersze z odpowiedniego strumienia i dopasowane rekordy z lewego strumienia. Jeśli wiersz z odpowiedniego strumienia nie ma dopasowania, kolumny wyjściowe z lewego strumienia są ustawione na wartość NULL. Dane wyjściowe będą wierszami zwracanymi przez sprzężenie wewnętrzne oraz niedopasowane wiersze z odpowiedniego strumienia.
 
 ### <a name="full-outer"></a>Pełny zewnętrzny
 
@@ -42,7 +42,7 @@ Pełne sprzężenie zewnętrzne wyprowadza wszystkie kolumny i wiersze z obu str
 
 Sprzężenie krzyżowe wyprowadza iloczyn między dwoma strumieniami w oparciu o warunek. Jeśli używasz warunku, który nie jest równy, Określ wyrażenie niestandardowe jako warunek sprzężenia krzyżowego. Strumień wyjściowy będzie zawierać wszystkie wiersze, które spełniają warunek sprzężenia. Aby utworzyć produkt kartezjańskiego, który wyprowadza każdą kombinację wierszy, określ `true()` jako warunek sprzężenia.
 
-## <a name="configuration"></a>Konfigurowanie
+## <a name="configuration"></a>Konfiguracja
 
 1. Wybierz strumień danych, z którym chcesz się połączyć, na liście rozwijanej **odpowiedniego strumienia** .
 1. Wybierz **Typ sprzężenia**
@@ -83,7 +83,7 @@ Podczas testowania transformacji sprzężenia z podglądem danych w trybie debug
 
 ### <a name="inner-join-example"></a>Przykład sprzężenia wewnętrznego
 
-Poniższy przykład to transformacja sprzężenia o nazwie `JoinMatchedData`, która pobiera lewe `TripData` strumienia i właściwe `TripFare` przesyłania strumieniowego.  Warunek sprzężenia jest `hack_license == { hack_license} && TripData@medallion == TripFare@medallion && vendor_id == { vendor_id} && pickup_datetime == { pickup_datetime}` wyrażenia, które zwraca wartość true, jeśli kolumny `hack_license`, `medallion`, `vendor_id` i `pickup_datetime` w każdym dopasowaniu strumienia. @No__t_0 jest `'inner'`. Włączamy emisję tylko w lewym strumieniu, więc `broadcast` ma `'left'` wartości.
+Poniższy przykład to transformacja sprzężenia o nazwie `JoinMatchedData`, która pobiera lewe `TripData` strumienia i właściwe `TripFare`przesyłania strumieniowego.  Warunek sprzężenia jest `hack_license == { hack_license} && TripData@medallion == TripFare@medallion && vendor_id == { vendor_id} && pickup_datetime == { pickup_datetime}` wyrażenia, które zwraca wartość true, jeśli kolumny `hack_license`, `medallion`, `vendor_id`i `pickup_datetime` w każdym dopasowaniu strumienia. `joinType` jest `'inner'`. Włączamy emisję tylko w lewym strumieniu, więc `broadcast` ma `'left'`wartości.
 
 W Data Factory środowisku użytkownika Ta transformacja wygląda jak na poniższym obrazie:
 
@@ -105,7 +105,7 @@ TripData, TripFare
 
 ### <a name="cross-join-example"></a>Przykład sprzężenia krzyżowego
 
-Poniższy przykład to transformacja sprzężenia o nazwie `CartesianProduct`, która pobiera lewe `TripData` strumienia i właściwe `TripFare` przesyłania strumieniowego. Ta transformacja zajmuje dwa strumienie i zwraca kartezjańskiegoy produkt ich wierszy. Warunek sprzężenia jest `true()`, ponieważ wyprowadza pełny produkt kartezjańskiego. @No__t_0 w `cross`. Włączamy emisję tylko w lewym strumieniu, więc `broadcast` ma `'left'` wartości.
+Poniższy przykład to transformacja sprzężenia o nazwie `CartesianProduct`, która pobiera lewe `TripData` strumienia i właściwe `TripFare`przesyłania strumieniowego. Ta transformacja zajmuje dwa strumienie i zwraca kartezjańskiegoy produkt ich wierszy. Warunek sprzężenia jest `true()`, ponieważ wyprowadza pełny produkt kartezjańskiego. `joinType` w `cross`. Włączamy emisję tylko w lewym strumieniu, więc `broadcast` ma `'left'`wartości.
 
 W Data Factory środowisku użytkownika Ta transformacja wygląda jak na poniższym obrazie:
 

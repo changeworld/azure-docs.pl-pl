@@ -10,18 +10,18 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 11/05/2019
 ms.author: travisw
-ms.openlocfilehash: e41a037e657a8d2b484a3fcb62eb3bc03f53682d
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
-ms.translationtype: HT
+ms.openlocfilehash: 62210bf480d09ce2a256a44b7554ac53aa06eb0c
+ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 11/04/2019
-ms.locfileid: "73507089"
+ms.locfileid: "73579700"
 ---
 # <a name="custom-commands-preview"></a>Polecenia niestandardowe (wersja zapoznawcza)
 
 [Asystenci głosowani](voice-assistants.md) nasłuchują użytkowników i podejmują działania w odpowiedzi, często mówiąc z powrotem. Używają [zamiany mowy na tekst](speech-to-text.md) , aby transkrypcja mowę użytkownika, a następnie podejmować działania dotyczące interpretacji języka naturalnego tekstu. Ta akcja często obejmuje głosowanie danych wyjściowych wygenerowanego przez asystenta z funkcją [zamiany tekstu na mowę](text-to-speech.md). Urządzenia łączą się z asystentami przy użyciu obiektu `DialogServiceConnector` zestawu mowy SDK.
 
-**Polecenia niestandardowe (wersja zapoznawcza)** to usprawnione rozwiązanie do tworzenia asystenta głosowego. Zapewnia ujednolicone środowisko tworzenia, automatyczny model hostingu i stosunkowo niższą złożoność, a także inne opcje tworzenia asystenta, takie jak [Direct line Speech](direct-line-speech.md). Upraszcza to jednak zmniejszenie elastyczności. W związku z tym polecenia niestandardowe (wersja zapoznawcza) najlepiej nadają się do wykonywania zadań lub scenariuszy kontroli poleceń.
+**Polecenia niestandardowe (wersja zapoznawcza)** to usprawnione rozwiązanie do tworzenia asystenta głosowego. Zapewnia ujednolicone środowisko tworzenia, automatyczny model hostingu i stosunkowo niższą złożoność, a także inne opcje tworzenia asystenta, takie jak [Direct line Speech](direct-line-speech.md). Upraszcza to jednak zmniejszenie elastyczności. W związku z tym polecenia niestandardowe (wersja zapoznawcza) najlepiej nadają się do wykonywania zadań lub scenariuszy kontroli poleceń. Jest to szczególnie dobrze dopasowane do Internet rzeczy (IoT) i urządzeń bezobsługowych.
 
 W przypadku złożonej interakcji z konwersacjami i integracji z innymi rozwiązaniami, takimi jak [rozwiązanie dla Asystenta wirtualnego i szablon przedsiębiorstwa](https://docs.microsoft.com/azure/bot-service/bot-builder-enterprise-template-overview) , zaleca się korzystanie z bezpośredniej mowy wiersza.
 

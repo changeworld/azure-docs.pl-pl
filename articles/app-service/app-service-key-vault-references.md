@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 10/09/2019
 ms.author: mahender
 ms.custom: seodec18
-ms.openlocfilehash: 49bf7984efe74edd2a19909509e0c6b9564fc2e9
-ms.sourcegitcommit: f272ba8ecdbc126d22a596863d49e55bc7b22d37
+ms.openlocfilehash: e42fa7f48b5e6475604570a95f2ffc034b43b8f7
+ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/11/2019
-ms.locfileid: "72274420"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73604613"
 ---
 # <a name="use-key-vault-references-for-app-service-and-azure-functions"></a>Użyj Key Vault odwołań dla App Service i Azure Functions
 
@@ -36,7 +36,7 @@ Aby można było odczytać wpisy tajne z Key Vault, należy utworzyć magazyn i 
    > [!NOTE] 
    > Odwołania Key Vault obecnie obsługują tylko tożsamości zarządzane przypisane do systemu. Nie można używać tożsamości przypisanych do użytkownika.
 
-1. Utwórz [zasady dostępu w Key Vault](../key-vault/key-vault-secure-your-key-vault.md#key-vault-access-policies) dla utworzonej wcześniej tożsamości aplikacji. Włącz uprawnienie "Pobieranie" klucza tajnego dla tych zasad. Nie należy konfigurować ustawień "autoryzowane aplikacje" ani `applicationId`, ponieważ nie są one zgodne z tożsamością zarządzaną.
+1. Utwórz [zasady dostępu w Key Vault](../key-vault/key-vault-secure-your-key-vault.md#key-vault-access-policies) dla utworzonej wcześniej tożsamości aplikacji. Włącz uprawnienie "Pobieranie" klucza tajnego dla tych zasad. Nie należy konfigurować ustawień "autoryzowane aplikacje" ani `applicationId`, ponieważ nie są one zgodne z zarządzaną tożsamością.
 
     > [!NOTE]
     > Odwołania Key Vault nie są obecnie dostępne do rozpoznawania wpisów tajnych przechowywanych w magazynie kluczy z [ograniczeniami sieci](../key-vault/key-vault-overview-vnet-service-endpoints.md).
@@ -51,13 +51,15 @@ Odwołanie Key Vault ma postać `@Microsoft.KeyVault({referenceString})`, gdzie 
 > | SecretUri =_SecretUri_                                                       | **SecretUri** powinien być pełnym identyfikatorem URI płaszczyzny danych klucza tajnego w Key Vault, w tym wersji, np., https://myvault.vault.azure.net/secrets/mysecret/ec96f02080254f109c51a1f14cdb1931  |
 > | Magazynname =_magazynname_; Secretname =_secretname_; Wersjawpisutajnego =_wersjawpisutajnego_ | Nazwa **magazynu** powinna być nazwą zasobu Key Vault. **Wpis tajny** musi być nazwą docelowego wpisu tajnego. **Wersjawpisutajnego** powinna być wersją klucza tajnego do użycia. |
 
-> [!NOTE] 
-> Wersje są obecnie wymagane. W przypadku rotacji kluczy tajnych należy zaktualizować wersję w konfiguracji aplikacji.
-
-Na przykład kompletne odwołanie będzie wyglądać następująco:
+Na przykład kompletne odwołanie z wersją będzie wyglądać następująco:
 
 ```
 @Microsoft.KeyVault(SecretUri=https://myvault.vault.azure.net/secrets/mysecret/ec96f02080254f109c51a1f14cdb1931)
+```
+Kompletne odwołanie bez wersji będzie wyglądać następująco:
+
+```
+@Microsoft.KeyVault(SecretUri=https://<MYKEYVAULT>.vault.azure.net/secrets/eShopStorageAccountCS/)
 ```
 
 Alternatywne
@@ -184,7 +186,7 @@ Przykład psuedo-Template dla aplikacji funkcji może wyglądać następująco:
 ```
 
 > [!NOTE] 
-> W tym przykładzie wdrożenie kontroli źródła zależy od ustawień aplikacji. Jest to zwykle niebezpieczne zachowanie, ponieważ aktualizacja ustawienia aplikacji zachowuje się asynchronicznie. Jednak ze względu na to, że zostało dołączone ustawienie aplikacji `WEBSITE_ENABLE_SYNC_UPDATE_SITE`, aktualizacja jest synchroniczna. Oznacza to, że wdrożenie kontroli źródła rozpocznie się dopiero po całkowitym zaktualizowaniu ustawień aplikacji.
+> W tym przykładzie wdrożenie kontroli źródła zależy od ustawień aplikacji. Jest to zwykle niebezpieczne zachowanie, ponieważ aktualizacja ustawienia aplikacji zachowuje się asynchronicznie. Ponieważ jednak zostały dołączone `WEBSITE_ENABLE_SYNC_UPDATE_SITE` ustawienie aplikacji, aktualizacja jest synchroniczna. Oznacza to, że wdrożenie kontroli źródła rozpocznie się dopiero po całkowitym zaktualizowaniu ustawień aplikacji.
 
 ## <a name="troubleshooting-key-vault-references"></a>Rozwiązywanie problemów dotyczących Key Vault
 

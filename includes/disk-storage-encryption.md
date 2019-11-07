@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 10/24/2019
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: 762d6991eb8c45abc7de4f331f1b9335d68c0143
-ms.sourcegitcommit: 92d42c04e0585a353668067910b1a6afaf07c709
+ms.openlocfilehash: 0659e57f5a5b223c199becf492b27c7a70cbdc63
+ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/28/2019
-ms.locfileid: "73034533"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73612131"
 ---
 Usługa Azure Managed disks automatycznie szyfruje dane domyślnie, gdy są utrwalane w chmurze. Szyfrowanie po stronie serwera chroni dane i pomaga sprostać zobowiązaniom dotyczącym bezpieczeństwa i zgodności w organizacji. Dane w usłudze Azure Managed disks są szyfrowane w sposób niewidoczny dla użytkownika przy użyciu 256-bitowego [szyfrowania AES](https://en.wikipedia.org/wiki/Advanced_Encryption_Standard), jednego z najsilniejszych szyfrów blokowych i jest zgodny ze standardem FIPS 140-2.   
 
@@ -157,6 +157,7 @@ New-AzResourceGroupDeployment -ResourceGroupName $rgName `
 $vm = Get-AzVM -Name $vmName -ResourceGroupName $rgName 
 $disk = Get-AzDisk -DiskName $diskName -ResourceGroupName $rgName
 $vm = Add-AzVMDataDisk -VM $vm -Name $diskName -CreateOption Attach -ManagedDiskId $disk.Id -Lun 1
+Update-AzVM -ResourceGroupName $rgName -VM $vm
 ```
 
 

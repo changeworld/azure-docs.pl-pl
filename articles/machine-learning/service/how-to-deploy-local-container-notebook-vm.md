@@ -1,7 +1,7 @@
 ---
-title: Jak wdrażać modele w wystąpieniach obliczeniowych
+title: Jak wdrażać modele na maszynach wirtualnych notesu
 titleSuffix: Azure Machine Learning
-description: Dowiedz się, jak wdrażać modele Azure Machine Learning jako usługę sieci Web przy użyciu wystąpień obliczeniowych.
+description: Dowiedz się, jak wdrażać modele Azure Machine Learning jako usługę sieci Web przy użyciu maszyn wirtualnych notesu.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -10,38 +10,34 @@ ms.author: mnark
 author: MrudulaN
 ms.reviewer: larryfr
 ms.date: 10/25/2019
-ms.openlocfilehash: bb187826250b3edc9ac3d9e36a243d75819a45b3
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
-ms.translationtype: HT
+ms.openlocfilehash: d4e37b02b3d7a21546a04c8948fbbfb7262bfa6a
+ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 11/04/2019
-ms.locfileid: "73496886"
+ms.locfileid: "73584770"
 ---
-# <a name="deploy-a-model-to-azure-machine-learning-compute-instances"></a>Wdrażanie modelu w celu Azure Machine Learning wystąpień obliczeniowych
+# <a name="deploy-a-model-to-azure-machine-learning-notebook-vms"></a>Wdrażanie modelu na potrzeby Azure Machine Learning maszyn wirtualnych notesu
 
 [!INCLUDE [applies-to-skus](../../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
-> [!NOTE]
-> Wystąpienia obliczeniowe są dostępne tylko dla obszarów roboczych z regionem **Północno-środkowe stany USA** lub **Południowe Zjednoczone Królestwo**.
->Jeśli obszar roboczy znajduje się w innym regionie, możesz w zamian utworzyć [maszynę wirtualną w notesie](concept-compute-instance.md#notebookvm) i korzystać z niej.  Model można wdrożyć w wystąpieniu obliczeniowym lub na maszynie wirtualnej notesu, wykonując kroki opisane w tym artykule.
-
-Dowiedz się, jak za pomocą Azure Machine Learning wdrożyć model jako usługę sieci Web w wystąpieniu Azure Machine Learning COMPUTE. Użyj wystąpień obliczeniowych, jeśli spełniony jest jeden z następujących warunków:
+Dowiedz się, jak za pomocą Azure Machine Learning wdrożyć model jako usługę sieci Web na maszynie wirtualnej Azure Machine Learning notesu. Użyj maszyn wirtualnych z notesem, jeśli spełniony jest jeden z następujących warunków:
 
 - Należy szybko wdrożyć i zweryfikować model.
 - Testujesz model, który jest w fazie projektowania.
 
 > [!TIP]
-> Wdrożenie modelu z Jupyter Notebook w wystąpieniu obliczeniowym w usłudze sieci Web na tej samej maszynie wirtualnej jest _wdrożeniem lokalnym_. W takim przypadku komputer "Local" jest wystąpieniem obliczeniowym. Aby uzyskać więcej informacji na temat wdrożeń, zobacz [Wdrażanie modeli przy użyciu Azure Machine Learning](how-to-deploy-and-where.md).
+> Wdrożenie modelu na podstawie Jupyter Notebook na maszynie wirtualnej w notesie do usługi sieci Web na tej samej maszynie wirtualnej jest _wdrażaniem lokalnym_. W takim przypadku komputer "lokalny" jest maszyną wirtualną notesu. Aby uzyskać więcej informacji na temat wdrożeń, zobacz [Wdrażanie modeli przy użyciu Azure Machine Learning](how-to-deploy-and-where.md).
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-- Obszar roboczy Azure Machine Learning z uruchomionym wystąpieniem obliczeniowym. Aby uzyskać więcej informacji, zobacz temat [Instalowanie środowiska i obszaru roboczego](tutorial-1st-experiment-sdk-setup.md).
+- Obszar roboczy Azure Machine Learning z uruchomioną maszyną wirtualną z notesem. Aby uzyskać więcej informacji, zobacz temat [Instalowanie środowiska i obszaru roboczego](tutorial-1st-experiment-sdk-setup.md).
 
-## <a name="deploy-to-the-compute-instances"></a>Wdrażanie w wystąpieniach obliczeniowych
+## <a name="deploy-to-the-notebook-vms"></a>Wdrażanie na maszynach wirtualnych notesu
 
-Przykładowy Notes, który pokazuje lokalne wdrożenia, jest uwzględniony w wystąpieniu obliczeniowym. Wykonaj następujące kroki, aby załadować Notes i wdrożyć model jako usługę sieci Web na maszynie wirtualnej:
+Przykładowy Notes demonstrujący lokalne wdrożenia znajduje się na maszynie wirtualnej notesu. Wykonaj następujące kroki, aby załadować Notes i wdrożyć model jako usługę sieci Web na maszynie wirtualnej:
 
-1. W programie [Azure Machine Learning Studio](https://ml.azure.com)wybierz Azure Machine Learning wystąpienia obliczeniowe.
+1. W programie [Azure Machine Learning Studio](https://ml.azure.com)wybierz maszyny wirtualne Azure Machine Learning notesu.
 
 1. Otwórz podkatalog `samples-*`, a następnie otwórz `how-to-use-azureml/deploy-to-local/register-model-deploy-local.ipynb`. Po otwarciu Uruchom Notes.
 
@@ -51,13 +47,7 @@ Przykładowy Notes, który pokazuje lokalne wdrożenia, jest uwzględniony w wys
 
     ![Zrzut ekranu z uruchomionym portem usługi lokalnej](media/how-to-deploy-local-container-notebookvm/deploy-local-service-port.png)
 
-1. Aby przetestować usługę z wystąpienia obliczeniowego, użyj adresu URL `https://localhost:<local_service.port>`. Aby przetestować klienta zdalnego, uzyskaj publiczny adres URL usługi uruchomionej w wystąpieniu obliczeniowym. Publiczny adres URL można określić przy użyciu następującej formuły: 
-    * Maszyna wirtualna Notes: `https://<vm_name>-<local_service_port>.<azure_region_of_workspace>.notebooks.azureml.net/score`. 
-    * Wystąpienie obliczeniowe: `https://<vm_name>-<local_service_port>.<azure_region_of_workspace>.instances.azureml.net/score`. 
-    
-    Na przykład: 
-    * Maszyna wirtualna Notes: `https://vm-name-6789.northcentralus.notebooks.azureml.net/score` 
-    * Wystąpienie obliczeniowe: `https://vm-name-6789.northcentralus.instances.azureml.net/score`
+1. Aby przetestować usługę z poziomu maszyny wirtualnej notesu, użyj adresu URL `https://localhost:<local_service.port>`. Aby przetestować klienta zdalnego, uzyskaj publiczny adres URL usługi działającej na maszynie wirtualnej notesu. Publiczny adres URL można określić przy użyciu następującej formuły: `https://<notebookvm_name>-<local_service_port>.<azure_region_of_notebook>.notebooks.azureml.net/score`. Na przykład `https://mynotebookvm-6789.eastus2.notebooks.azureml.net/score`.
 
 ## <a name="test-the-service"></a>Testowanie usługi
 

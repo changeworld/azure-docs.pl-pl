@@ -1,5 +1,5 @@
 ---
-title: Ochrona danych i usług magazynu platformy Azure w Azure Security Center | Microsoft Docs
+title: Zalecenia dotyczące magazynu & danych — Azure Security Center
 description: Ten dokument zawiera zalecenia dotyczące Azure Security Center, które pomagają chronić dane oraz usługę Azure SQL i zachować zgodność z zasadami zabezpieczeń.
 services: security-center
 documentationcenter: na
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/19/2019
 ms.author: memildin
-ms.openlocfilehash: 80611fe0c37af7dfd27b561186f3e967ad3159b4
-ms.sourcegitcommit: 8a717170b04df64bd1ddd521e899ac7749627350
+ms.openlocfilehash: 21da7c49b158345894ee7fdc164d205bcefe1640
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/23/2019
-ms.locfileid: "71201037"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73663892"
 ---
 # <a name="protect-azure-data-and-storage-services-in-azure-security-center"></a>Ochrona usług Azure Data and Storage w Azure Security Center
 W tym temacie pokazano, jak wyświetlać i implementować zalecenia dotyczące zabezpieczeń danych i zasobów magazynu. Azure Security Center te zalecenia podczas analizowania stanu zabezpieczeń zasobów platformy Azure.
@@ -27,16 +27,16 @@ W tym temacie pokazano, jak wyświetlać i implementować zalecenia dotyczące z
 
 1. W sekcji **higiena zabezpieczeń zasobów** kliknij pozycję **zasoby danych i magazyn**.
 
-   ![Zasoby magazynu danych &](./media/security-center-monitoring/click-data.png)
+    ![Zasoby magazynu danych &](./media/security-center-monitoring/click-data.png)
 
     Zostanie otwarta strona **zabezpieczenia danych** z zaleceniami dotyczącymi zasobów danych.
 
-     ![Zasoby danych](./media/security-center-monitoring/sql-overview.png)
+    ![Zasoby danych](./media/security-center-monitoring/sql-overview.png)
 
-Na tej stronie można:
+    Na tej stronie można:
 
-* Kliknij kartę **Przegląd** , aby wyświetlić listę wszystkich zaleceń dotyczących zasobów danych do skorygowania. 
-* Kliknij każdą kartę i przejrzyj zalecenia według typu zasobu.
+    * Kliknij kartę **Przegląd** , aby wyświetlić listę wszystkich zaleceń dotyczących zasobów danych do skorygowania. 
+    * Kliknij każdą kartę i przejrzyj zalecenia według typu zasobu.
 
     > [!NOTE]
     > Aby uzyskać więcej informacji na temat szyfrowania magazynu, zobacz [szyfrowanie usługi Azure Storage dla danych przechowywanych w stanie spoczynku](../storage/common/storage-service-encryption.md).
@@ -50,7 +50,7 @@ Na tej stronie można:
 
 2. Kliknij zalecenie. Zostanie otwarta strona rekomendacja i zostanie wyświetlona **procedura korygowania** służąca do zaimplementowania zalecenia.
 
-   ![Instrukcje rozwiązania problemu](./media/security-center-monitoring/remediate1.png)
+   ![Kroki zaradcze](./media/security-center-monitoring/remediate1.png)
 
 3. Kliknij przycisk **podejmij akcję**. Zostanie wyświetlona strona Ustawienia zasobów.
 
@@ -66,14 +66,14 @@ Na tej stronie można:
 |Redis|20|Należy włączyć tylko bezpieczne połączenia z Redis Cache|Włącz tylko połączenia za pośrednictwem protokołu SSL do usługi Azure cache for Redis. Użycie bezpiecznych połączeń zapewnia uwierzytelnianie między serwerem a usługą i chroni dane przesyłane przed atakami z warstwy sieci, takimi jak ataki typu man-in-the-Middle, podsłuchiwanie i przejmowanie sesji.|
 |SQL|15|Należy włączyć Transparent Data Encryption baz danych SQL|Włącz przezroczyste szyfrowanie danych, aby chronić dane w czasie spoczynku i spełnić wymagania dotyczące zgodności.|
 |SQL|15|Inspekcja programu SQL Server powinna być włączona|Włącz inspekcję dla serwerów SQL platformy Azure. (Tylko usługa Azure SQL. Nie zawiera kodu SQL uruchomionego na maszynach wirtualnych.|
-|Data Lake Analytics|5|Dzienniki diagnostyczne w Data Lake Analytics powinny być włączone|Włączanie dzienników i zachowują je nawet przez rok. Dzięki temu można ponownie utworzyć dzienników aktywności na potrzeby analizy, gdy wystąpi zdarzenie naruszenia zabezpieczeń lub złamania zabezpieczeń sieci. |
-|Data Lake — magazyn|5|Dzienniki diagnostyczne w Azure Data Lake Store powinny być włączone|Włączanie dzienników i zachowują je nawet przez rok. Dzięki temu można ponownie utworzyć dzienników aktywności na potrzeby analizy, gdy wystąpi zdarzenie naruszenia zabezpieczeń lub złamania zabezpieczeń sieci. |
+|Data Lake Analytics|5|Dzienniki diagnostyczne w Data Lake Analytics powinny być włączone|Włącz dzienniki i zachowaj je na rok. Pozwala to na ponowne utworzenie śladów aktywności w celach dochodzeniowych w przypadku wystąpienia zdarzenia związanego z bezpieczeństwem lub zabezpieczenia sieci. |
+|Data Lake — magazyn|5|Dzienniki diagnostyczne w Azure Data Lake Store powinny być włączone|Włącz dzienniki i zachowaj je na rok. Pozwala to na ponowne utworzenie śladów aktywności w celach dochodzeniowych w przypadku wystąpienia zdarzenia związanego z bezpieczeństwem lub zabezpieczenia sieci. |
 |SQL|30|Luki w zabezpieczeniach baz danych SQL należy skorygować|Ocena luk w zabezpieczeniach SQL skanuje bazę danych pod kątem luk w zabezpieczeniach i ujawnia wszelkie odchylenia od najlepszych rozwiązań, takich jak niepotrzebne konfiguracje, nadmierne uprawnienia i niechronione dane poufne. Rozpoznanie znalezionych luk w zabezpieczeniach może znacznie ulepszyć schemacie zabezpieczeń bazy danych.|
 |SQL|20|Inicjowanie obsługi administracyjnej administratora usługi Azure AD dla programu SQL Server|Aby włączyć uwierzytelnianie usługi Azure AD, Udostępnij administratorowi usługi Azure AD dla programu SQL Server. Uwierzytelnianie usługi Azure AD umożliwia uproszczone zarządzanie uprawnieniami oraz scentralizowane zarządzanie tożsamościami użytkowników baz danych i innych usług firmy Microsoft.|
 |Konto magazynu|15|Dostęp do kont magazynu z konfiguracją zapory i sieci wirtualnej należy ograniczyć|Inspekcja nieograniczonego dostępu do sieci w ustawieniach zapory konta magazynu. Zamiast tego należy skonfigurować reguły sieciowe, tak aby tylko aplikacje z dozwolonych sieci mogły uzyskiwać dostęp do konta magazynu. Aby zezwolić na połączenia z określonych klientów internetowych lub lokalnych, można udzielić dostępu do ruchu z określonych sieci wirtualnych platformy Azure lub do publicznych zakresów adresów IP w sieci Internet.|
 |Konto magazynu|1|Konta magazynu należy migrować do nowych zasobów Azure Resource Manager|Użyj nowego Azure Resource Manager V2 dla kont magazynu w celu zapewnienia ulepszeń zabezpieczeń, takich jak: silniejsza kontrola dostępu (RBAC), lepsza Inspekcja, wdrażanie i zarządzanie oparte na Menedżer zasobówach, dostęp do zarządzanych tożsamości, dostęp do magazynu kluczy dla wpisy tajne i uwierzytelnianie oparte na usłudze Azure AD oraz obsługa tagów i grup zasobów w celu łatwiejszego zarządzania zabezpieczeniami.|
 
-## <a name="see-also"></a>Zobacz także
+## <a name="see-also"></a>Zobacz też
 Aby dowiedzieć się więcej o zaleceniach dotyczących innych typów zasobów platformy Azure, zobacz następujące tematy:
 
 * [Ochrona maszyn i aplikacji w usłudze Azure Security Center](security-center-virtual-machine-protection.md)

@@ -10,12 +10,12 @@ ms.subservice: core
 ms.reviewer: trbye
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: d9a879e92f78275f2366ccfc008068afbe208e5a
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
-ms.translationtype: HT
+ms.openlocfilehash: 276e741a9462c19a3cba9ad1f9ac44e2da7ef1d3
+ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 11/04/2019
-ms.locfileid: "73497390"
+ms.locfileid: "73580704"
 ---
 # <a name="auto-train-a-time-series-forecast-model"></a>Autouczenie modelu prognozowania szeregów czasowych
 [!INCLUDE [aml-applies-to-basic-enterprise-sku](../../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -181,7 +181,7 @@ Aby zapoznać się ze szczegółowymi przykładami zaawansowanej konfiguracji pr
 
 Aby można było korzystać z DNNs do prognozowania, należy ustawić parametr `enable_dnn` w AutoMLConfig na true. 
 
-Aby można było korzystać z DNNs, zalecamy użycie klastra obliczeniowego AML z jednostkami SKU procesora GPU i co najmniej 2 węzłów jako obiektu docelowego obliczeń. Aby uzyskać więcej informacji, zobacz [dokumentację obliczeń AML](https://docs.microsoft.com/en-us/azure/machine-learning/service/how-to-set-up-training-targets#amlcompute) . Aby uzyskać więcej informacji na temat rozmiarów maszyn wirtualnych, które zawierają procesory GPU, zobacz [rozmiary maszyny wirtualnej zoptymalizowane pod kątem procesora GPU](https://docs.microsoft.com/en-us/azure/virtual-machines/linux/sizes-gpu) .
+Aby można było korzystać z DNNs, zalecamy użycie klastra obliczeniowego AML z jednostkami SKU procesora GPU i co najmniej 2 węzłów jako obiektu docelowego obliczeń. Aby uzyskać więcej informacji, zobacz [dokumentację obliczeń AML](how-to-set-up-training-targets.md#amlcompute) . Aby uzyskać więcej informacji na temat rozmiarów maszyn wirtualnych, które zawierają procesory GPU, zobacz [rozmiary maszyny wirtualnej zoptymalizowane pod kątem procesora GPU](https://docs.microsoft.com/azure/virtual-machines/linux/sizes-gpu) .
 
 Aby zapewnić wystarczającą ilość czasu na ukończenie szkolenia DNN, zalecamy ustawienie limitu czasu eksperymentu na co najmniej kilka godzin.
 

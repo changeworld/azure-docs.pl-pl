@@ -1,5 +1,5 @@
 ---
-title: Planowanie i wykonywanie przy użyciu Data Factory | Microsoft Docs
+title: Planowanie i wykonywanie przy użyciu Data Factory
 description: Poznaj aspekty planowania i wykonywania Azure Data Factory modelu aplikacji.
 services: data-factory
 documentationcenter: ''
@@ -11,12 +11,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/10/2018
-ms.openlocfilehash: 6ea8a03f45a3655c5761e0011876c6232b5bf36b
-ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
+ms.openlocfilehash: 15a2d6ae5d8b80468ffcdd00d60b1f36843ed677
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70135303"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73666129"
 ---
 # <a name="data-factory-scheduling-and-execution"></a>Data Factory planowanie i wykonywanie
 > [!NOTE]
@@ -59,7 +59,7 @@ Właściwość **Scheduler** dla działania jest opcjonalna. Jeśli określisz t
 ## <a name="specify-schedule-for-a-dataset"></a>Określ harmonogram dla zestawu danych
 Działanie w potoku Data Factory może pobrać zero lub więcej wejściowych **zestawów** danych i utworzyć co najmniej jeden wyjściowy zestaw danych. Dla działania można określić erze, w którym dane wejściowe są dostępne lub dane wyjściowe są generowane przy użyciu sekcji **dostępność** w definicjach zestawu danych. 
 
-**Częstotliwość** w sekcji **dostępność** określa jednostkę czasu. Dozwolone wartości dla częstotliwości to: Minuta, godzina, dzień, tydzień i miesiąc. Właściwość **Interval** w sekcji Availability określa mnożnik dla częstotliwości. Na przykład: Jeśli częstotliwość jest ustawiona na dzień, a interwał jest ustawiony na 1 dla wyjściowego zestawu danych, dane wyjściowe są tworzone codziennie. Jeśli określisz częstotliwość jako minutowa, zalecamy ustawienie interwału na wartość nie mniejszą niż 15. 
+**Częstotliwość** w sekcji **dostępność** określa jednostkę czasu. Dozwolone wartości dla częstotliwości to: minuta, godzina, dzień, tydzień i miesiąc. Właściwość **Interval** w sekcji Availability określa mnożnik dla częstotliwości. Na przykład: Jeśli częstotliwość jest ustawiona na dzień, a interwał jest ustawiony na 1 dla wyjściowego zestawu danych, dane wyjściowe są tworzone codziennie. Jeśli określisz częstotliwość jako minutowa, zalecamy ustawienie interwału na wartość nie mniejszą niż 15. 
 
 W poniższym przykładzie dane wejściowe są dostępne co godzinę, a dane wyjściowe są generowane co godzinę (`"frequency": "Hour", "interval": 1`). 
 
@@ -170,9 +170,9 @@ Każda jednostka danych zużywana lub generowana przez uruchomienie działania j
 
 Na diagramie przedstawiono wyjściowe wycinki danych dla wejściowego i wyjściowego zestawu danych. Diagram przedstawia trzy wycinki wejściowe, które są gotowe do przetworzenia. Działanie AM 10-11 jest w toku, generując wycinek danych wyjściowych 10-11. 
 
-Możesz uzyskać dostęp do interwału czasu skojarzonego z bieżącym wycinkem w kodzie JSON zestawu danych przy użyciu zmiennych: [Parametru slicestart](data-factory-functions-variables.md#data-factory-system-variables) i [SliceEnd](data-factory-functions-variables.md#data-factory-system-variables). Podobnie można uzyskać dostęp do interwału czasu skojarzonego z oknem działania przy użyciu WindowStart i WindowEnd. Harmonogram działania musi być zgodny z harmonogramem wyjściowego zestawu danych dla działania. W związku z tym wartości parametru slicestart i SliceEnd są takie same jak wartości WindowStart i WindowEnd. Aby uzyskać więcej informacji na temat tych zmiennych, zobacz [Data Factory funkcje i artykuły zmienne systemowe](data-factory-functions-variables.md#data-factory-system-variables) .  
+Możesz uzyskać dostęp do interwału czasu skojarzonego z bieżącym wycinkem w pliku JSON zestawu danych, używając zmiennych: [parametru slicestart](data-factory-functions-variables.md#data-factory-system-variables) i [SliceEnd](data-factory-functions-variables.md#data-factory-system-variables). Podobnie można uzyskać dostęp do interwału czasu skojarzonego z oknem działania przy użyciu WindowStart i WindowEnd. Harmonogram działania musi być zgodny z harmonogramem wyjściowego zestawu danych dla działania. W związku z tym wartości parametru slicestart i SliceEnd są takie same jak wartości WindowStart i WindowEnd. Aby uzyskać więcej informacji na temat tych zmiennych, zobacz [Data Factory funkcje i artykuły zmienne systemowe](data-factory-functions-variables.md#data-factory-system-variables) .  
 
-Możesz użyć tych zmiennych do różnych celów w formacie JSON działania. Można na przykład użyć ich do wybrania danych z wejściowych i wyjściowych zestawów danych reprezentujących dane szeregów czasowych (na przykład: od 8 do 9 AM). W tym przykładzie używa się także **WindowStart** i **WindowEnd** , aby wybrać odpowiednie dane dla działania uruchomienia i skopiować je do obiektu BLOB przy użyciu odpowiedniego **folderPath**. **FolderPath** jest sparametryzowane do oddzielnego folderu dla każdej godziny.  
+Możesz użyć tych zmiennych do różnych celów w formacie JSON działania. Można na przykład użyć ich do wybrania danych z wejściowych i wyjściowych zestawów danych reprezentujących dane szeregów czasowych (na przykład: 8 AM do 9 AM). W tym przykładzie używa się także **WindowStart** i **WindowEnd** , aby wybrać odpowiednie dane dla działania uruchomienia i skopiować je do obiektu BLOB przy użyciu odpowiedniego **folderPath**. **FolderPath** jest sparametryzowane do oddzielnego folderu dla każdej godziny.  
 
 W poprzednim przykładzie harmonogram określony dla wejściowych i wyjściowych zestawów danych jest taki sam (co godzinę). Jeśli wejściowy zestaw danych dla działania jest dostępny z inną częstotliwością, powiedz co 15 minut, działanie, które generuje ten wyjściowy zestaw danych, jest nadal uruchamiane raz na godzinę, ponieważ wyjściowy zestaw danych wskazuje na dysk harmonogramu działania. Aby uzyskać więcej informacji, zobacz [zestawy danych modelu z różnymi częstotliwościami](#model-datasets-with-different-frequencies).
 
@@ -182,16 +182,16 @@ Zaobserwowano użycie właściwości częstotliwości i interwału w sekcji dost
 ### <a name="dataset-availability"></a>Dostępność zestawu danych 
 W poniższej tabeli opisano właściwości, których można użyć w sekcji **dostępność** :
 
-| Właściwość | Opis | Wymagane | Domyślny |
+| Właściwość | Opis | Wymagany | Domyślne |
 | --- | --- | --- | --- |
-| frequency |Określa jednostkę czasu dla produkcji wycinków zestawu danych.<br/><br/><b>Obsługiwana częstotliwość</b>: Minuta, godzina, dzień, tydzień, miesiąc |Tak |Nie dotyczy |
-| przedział |Określa mnożnik dla częstotliwości<br/><br/>"Interwał x częstotliwości" określa, jak często wycinek jest generowany.<br/><br/>Jeśli potrzebujesz zestawu danych, który ma być pofragmentowany co godzinę, ustawisz <b>częstotliwość</b> na <b>godzinę</b>, a <b>Interwał</b> na <b>1</b>.<br/><br/><b>Uwaga</b>: Jeśli określisz częstotliwość jako minutę, zalecamy ustawienie interwału na wartość nie mniejszą niż 15. |Tak |Nie dotyczy |
-| style |Określa, czy wycinek ma być tworzony na początku, czy na końcu interwału.<ul><li>StartOfInterval</li><li>EndOfInterval</li></ul><br/><br/>Jeśli częstotliwość jest ustawiona na wartość miesiąc, a w polu styl ustawiono wartość EndOfInterval, wycinek zostanie utworzony w ostatnim dniu miesiąca. Jeśli styl jest ustawiony na StartOfInterval, wycinek jest generowany pierwszego dnia miesiąca.<br/><br/>Jeśli częstotliwość jest ustawiona na dzień, a styl ustawiono na EndOfInterval, wycinek jest tworzony w ciągu ostatniej godziny dnia.<br/><br/>Jeśli częstotliwość jest ustawiona na wartość Godzina i styl ustawiono na EndOfInterval, wycinek zostanie utworzony na końcu godziny. Na przykład dla wycinka dla 1 PM — 2 PM, wycinek jest generowany na 2 PM. |Nie |EndOfInterval |
-| anchorDateTime |Definiuje położenie bezwzględne w czasie używanym przez harmonogram do obliczania granic wycinków zestawu danych. <br/><br/><b>Uwaga</b>: Jeśli AnchorDateTime ma części danych, które są bardziej szczegółowe niż częstotliwość, są ignorowane części bardziej szczegółowe. <br/><br/>Na przykład jeśli <b>Interwał</b> jest godzinny <b></b> (częstotliwość: godzina i interwał: 1), a <b>AnchorDateTime</b> zawiera <b>minuty i sekundy</b>, a następnie części <b>minut i sekund</b> AnchorDateTime są ignorowane. |Nie |01/01/0001 |
+| frequency |Określa jednostkę czasu dla produkcji wycinków zestawu danych.<br/><br/><b>Obsługiwana częstotliwość</b>: minuta, godzina, dzień, tydzień, miesiąc |Tak |Nie dotyczy |
+| interval |Określa mnożnik dla częstotliwości<br/><br/>"Interwał x częstotliwości" określa, jak często wycinek jest generowany.<br/><br/>Jeśli potrzebujesz zestawu danych, który ma być pofragmentowany co godzinę, ustawisz <b>częstotliwość</b> na <b>godzinę</b>, a <b>Interwał</b> na <b>1</b>.<br/><br/><b>Uwaga</b>: Jeśli określisz częstotliwość jako minutę, zalecamy ustawienie interwału na wartość nie mniejszą niż 15. |Tak |Nie dotyczy |
+| Stylów |Określa, czy wycinek ma być tworzony na początku, czy na końcu interwału.<ul><li>StartOfInterval</li><li>EndOfInterval</li></ul><br/><br/>Jeśli częstotliwość jest ustawiona na wartość miesiąc, a w polu styl ustawiono wartość EndOfInterval, wycinek zostanie utworzony w ostatnim dniu miesiąca. Jeśli styl jest ustawiony na StartOfInterval, wycinek jest generowany pierwszego dnia miesiąca.<br/><br/>Jeśli częstotliwość jest ustawiona na dzień, a styl ustawiono na EndOfInterval, wycinek jest tworzony w ciągu ostatniej godziny dnia.<br/><br/>Jeśli częstotliwość jest ustawiona na wartość Godzina i styl ustawiono na EndOfInterval, wycinek zostanie utworzony na końcu godziny. Na przykład dla wycinka dla 1 PM — 2 PM, wycinek jest generowany na 2 PM. |Nie |EndOfInterval |
+| anchorDateTime |Definiuje położenie bezwzględne w czasie używanym przez harmonogram do obliczania granic wycinków zestawu danych. <br/><br/><b>Uwaga</b>: Jeśli AnchorDateTime ma części daty, które są bardziej szczegółowe niż częstotliwość, są ignorowane części bardziej szczegółowe. <br/><br/>Jeśli na przykład <b>Interwał</b> ma wartość <b>co godzinę</b> (częstotliwość: godzina i interwał: 1), a <b>AnchorDateTime</b> zawiera <b>minuty i sekundy</b>, wówczas części <b>minut i sekund</b> AnchorDateTime są ignorowane. |Nie |01/01/0001 |
 | offset |Przedział czasu, przez który początek i koniec wszystkich wycinków zestawu danych są przesunięte. <br/><br/><b>Uwaga</b>: Jeśli określono zarówno anchorDateTime, jak i przesunięcie, wynik jest połączonym przesunięciem. |Nie |Nie dotyczy |
 
 ### <a name="offset-example"></a>przykład przesunięcia
-Domyślnie dzienne wycinki`"frequency": "Day", "interval": 1`() zaczynają się od 12 czasu UTC (północy). Jeśli chcesz, aby godzina rozpoczęcia była 6 czasem UTC, Ustaw przesunięcie, tak jak pokazano w poniższym fragmencie kodu: 
+Domyślnie dzienne wycinki (`"frequency": "Day", "interval": 1`) zaczynają się od 12 czasu UTC (północy). Jeśli chcesz, aby godzina rozpoczęcia była 6 czasem UTC, Ustaw przesunięcie, tak jak pokazano w poniższym fragmencie kodu: 
 
 ```json
 "availability":
@@ -214,7 +214,7 @@ W poniższym przykładzie zestaw danych jest generowany co 23 godziny. Pierwszy 
 ```
 
 ### <a name="offsetstyle-example"></a>Przykład przesunięcia/stylu
-Następujący zestaw danych jest miesięcznym zestawem danych i jest tworzony z 3. każdy miesiąc o 8:00`3.08:00:00`am ():
+Następujący zestaw danych jest miesięcznym zestawem danych i jest tworzony z 3. każdy miesiąc o 8:00 AM (`3.08:00:00`):
 
 ```json
 "availability": {
@@ -226,11 +226,11 @@ Następujący zestaw danych jest miesięcznym zestawem danych i jest tworzony z 
 ```
 
 ### <a name="dataset-policy"></a>Zasady zestawu danych
-Zestaw danych może mieć zdefiniowane zasady sprawdzania poprawności, które określają, jak dane generowane przez wykonywanie wycinków mogą zostać sprawdzone, zanim będzie gotowe do użycia. W takich przypadkach po zakończeniu wykonywania wycinka stan wycinka danych wyjściowych zostanie zmieniony w celu **oczekiwania** na podstan walidacji. Po zweryfikowaniu wycinków stan wycinka zmieni się na **gotowe**. Jeśli wycinek danych został utworzony, ale nie przeszedł walidacji, uruchomienia działań dla wycinków podrzędnych, które są zależne od tego wycinka, nie są przetwarzane. [Potoki Monitoruj i zarządzaj nimi](data-factory-monitor-manage-pipelines.md) obejmują różne stany wycinków danych w Data Factory.
+Zestaw danych może mieć zdefiniowane zasady sprawdzania poprawności, które określają, jak dane generowane przez wykonywanie wycinków mogą zostać sprawdzone, zanim będzie gotowe do użycia. W takich przypadkach po zakończeniu wykonywania wycinka stan wycinka danych wyjściowych zostanie zmieniony w celu **oczekiwania** na podstan **walidacji**. Po zweryfikowaniu wycinków stan wycinka zmieni się na **gotowe**. Jeśli wycinek danych został utworzony, ale nie przeszedł walidacji, uruchomienia działań dla wycinków podrzędnych, które są zależne od tego wycinka, nie są przetwarzane. [Potoki Monitoruj i zarządzaj nimi](data-factory-monitor-manage-pipelines.md) obejmują różne stany wycinków danych w Data Factory.
 
 Sekcja **zasady** w definicji zestawu danych definiuje kryteria lub warunek, który musi spełniać wycinki zestawu danych. W poniższej tabeli opisano właściwości, których można użyć w sekcji **zasad** :
 
-| Nazwa zasad | Opis | Zastosowane do | Wymagane | Domyślny |
+| Policy Name (Nazwa zasad) | Opis | Zastosowane do | Wymagany | Domyślne |
 | --- | --- | --- | --- | --- |
 | minimumSizeMB | Sprawdza, czy dane w **obiekcie blob platformy Azure** spełniają minimalne wymagania dotyczące rozmiaru (w megabajtach). |Obiekt bob Azure |Nie |Nie dotyczy |
 | minimumRows | Sprawdza, czy dane w **bazie danych SQL Azure** lub w **tabeli platformy Azure** zawierają minimalną liczbę wierszy. |<ul><li>Azure SQL Database</li><li>Tabela platformy Azure</li></ul> |Nie |Nie dotyczy |
@@ -266,17 +266,17 @@ Aby uzyskać więcej informacji o tych właściwościach i przykładach, zobacz 
 ## <a name="activity-policies"></a>Zasady dotyczące działań
 Zasady mają wpływ na zachowanie działania w czasie wykonywania, w odróżnieniu od tego, czy wycinek tabeli jest przetwarzany. Poniższa tabela zawiera szczegółowe informacje.
 
-| Właściwość | Dozwolone wartości | Default Value | Opis |
+| Właściwość | Dozwolone wartości | Wartość domyślna | Opis |
 | --- | --- | --- | --- |
-| concurrency |Integer <br/><br/>Wartość maksymalna: 10 |1 |Liczba współbieżnych wykonań działania.<br/><br/>Określa liczbę równoległych wykonań działań, które mogą być wykonywane na różnych wycinkach. Na przykład, jeśli działanie wymaga przechodzenia przez duży zestaw dostępnych danych, dzięki czemu większa wartość współbieżności przyspiesza przetwarzanie danych. |
+| Współbieżności |Liczba całkowita <br/><br/>Wartość maksymalna: 10 |1 |Liczba współbieżnych wykonań działania.<br/><br/>Określa liczbę równoległych wykonań działań, które mogą być wykonywane na różnych wycinkach. Na przykład, jeśli działanie wymaga przechodzenia przez duży zestaw dostępnych danych, dzięki czemu większa wartość współbieżności przyspiesza przetwarzanie danych. |
 | executionPriorityOrder |NewestFirst<br/><br/>OldestFirst |OldestFirst |Określa kolejność wycinkiów danych, które są przetwarzane.<br/><br/>Na przykład, jeśli masz 2 wycinków (jedno zdarza się o 16:00, a drugi w 17:00), i oba są oczekujące na wykonanie. Jeśli ustawisz executionPriorityOrder jako NewestFirst, najpierw zostanie przetworzony wycink o wartości 5 PM. Podobnie, jeśli ustawisz executionPriorityORder jako OldestFIrst, zostanie przetworzony wycinek o godzinie 4 PM. |
-| ponów |Integer<br/><br/>Maksymalna wartość może być równa 10 |0 |Liczba ponownych prób przed przetworzeniem danych dla wycinka jest oznaczona jako niepowodzenie. Wykonanie działania dla wycinka danych zostanie ponowione z określoną liczbą ponownych prób. Ponowienie próby jest wykonywane najszybciej, jak to możliwe po awarii. |
-| limit czasu |TimeSpan |00:00:00 |Limit czasu dla działania. Przykład: 00:10:00 (wskazuje limit czasu 10 min)<br/><br/>Jeśli wartość nie jest określona lub jest równa 0, limit czasu jest nieskończony.<br/><br/>Jeśli czas przetwarzania danych na wycinku przekracza wartość limitu czasu, zostanie anulowany, a system próbuje ponowić próbę przetwarzania. Liczba ponownych prób zależy od właściwości retry. Gdy wystąpi limit czasu, stan jest ustawiany na TimedOut. |
-| opóźnienie |TimeSpan |00:00:00 |Określ opóźnienie przed rozpoczęciem przetwarzania danych wycinka.<br/><br/>Wykonywanie działań dla wycinka danych jest uruchamiane po upływie oczekiwanego czasu wykonania.<br/><br/>Przykład: 00:10:00 (oznacza opóźnienie 10 minut) |
-| longRetry |Integer<br/><br/>Wartość maksymalna: 10 |1 |Liczba długotrwałych ponownych prób przed wykonaniem wycinka nie powiodła się.<br/><br/>longRetry próbuje longRetryInterval. Dlatego jeśli musisz określić godzinę między ponownymi próbami, użyj longRetry. Jeśli określono zarówno ponowną próbę, jak i longRetry, każda próba longRetry obejmuje ponowną próbę i maksymalną liczbę prób ponawiania prób * longRetry.<br/><br/>Na przykład jeśli w zasadach działania istnieją następujące ustawienia:<br/>Spróbuj ponownie wykonać 3<br/>longRetry: 2<br/>longRetryInterval: 01:00:00<br/><br/>Załóżmy, że istnieje tylko jeden wycinek do wykonania (stan oczekuje), a wykonywanie działania kończy się za każdym razem. Początkowo będą podejmowane trzy kolejne próby wykonania. Po każdej próbie będzie można ponowić próbę. Po wykonaniu pierwszych 3 prób zostanie wyświetlony stan wycinka LongRetry.<br/><br/>Po godzinie (czyli longRetryInteval wartość) może istnieć kolejny zestaw trzech kolejnych prób wykonania. Po tym stanie wycinka zostanie zakończona niepowodzeniem i nie będzie podejmowanych dalszych prób. W związku z tym wykonano ogólne 6 prób.<br/><br/>Jeśli jakiekolwiek wykonanie zakończy się pomyślnie, stan wycinka będzie gotowy i nie będą podejmowane żadne dalsze próby.<br/><br/>longRetry mogą być używane w sytuacjach, gdy dane zależne docierają do niedeterministycznych czasów lub w ogólnym środowisku, w którym odbywa się przetwarzanie danych. W takich przypadkach ponawianie próby jedna po drugiej może nie pomóc i wykonać to po upływie przedziału czasu w żądanych danych wyjściowych.<br/><br/>Uwaga: nie ustawiaj wysokich wartości dla longRetry lub longRetryInterval. Zazwyczaj wyższe wartości oznaczają inne problemy systemowe. |
-| longRetryInterval |TimeSpan |00:00:00 |Opóźnienie między długimi próbami ponowienia |
+| retry |Liczba całkowita<br/><br/>Maksymalna wartość może być równa 10 |0 |Liczba ponownych prób przed przetworzeniem danych dla wycinka jest oznaczona jako niepowodzenie. Wykonanie działania dla wycinka danych zostanie ponowione z określoną liczbą ponownych prób. Ponowienie próby jest wykonywane najszybciej, jak to możliwe po awarii. |
+| timeout |Czasu |00:00:00 |Limit czasu dla działania. Przykład: 00:10:00 (implikuje limit czasu 10 min)<br/><br/>Jeśli wartość nie jest określona lub jest równa 0, limit czasu jest nieskończony.<br/><br/>Jeśli czas przetwarzania danych na wycinku przekracza wartość limitu czasu, zostanie anulowany, a system próbuje ponowić próbę przetwarzania. Liczba ponownych prób zależy od właściwości retry. Gdy wystąpi limit czasu, stan jest ustawiany na TimedOut. |
+| opóźnienie |Czasu |00:00:00 |Określ opóźnienie przed rozpoczęciem przetwarzania danych wycinka.<br/><br/>Wykonywanie działań dla wycinka danych jest uruchamiane po upływie oczekiwanego czasu wykonania.<br/><br/>Przykład: 00:10:00 (oznacza opóźnienie 10 min) |
+| longRetry |Liczba całkowita<br/><br/>Wartość maksymalna: 10 |1 |Liczba długotrwałych ponownych prób przed wykonaniem wycinka nie powiodła się.<br/><br/>longRetry próbuje longRetryInterval. Dlatego jeśli musisz określić godzinę między ponownymi próbami, użyj longRetry. Jeśli określono zarówno ponowną próbę, jak i longRetry, każda próba longRetry obejmuje ponowną próbę i maksymalną liczbę prób ponawiania prób * longRetry.<br/><br/>Na przykład jeśli w zasadach działania istnieją następujące ustawienia:<br/>Ponów próbę: 3<br/>longRetry: 2<br/>longRetryInterval: 01:00:00<br/><br/>Załóżmy, że istnieje tylko jeden wycinek do wykonania (stan oczekuje), a wykonywanie działania kończy się za każdym razem. Początkowo będą podejmowane trzy kolejne próby wykonania. Po każdej próbie będzie można ponowić próbę. Po wykonaniu pierwszych 3 prób zostanie wyświetlony stan wycinka LongRetry.<br/><br/>Po godzinie (czyli longRetryInteval wartość) może istnieć kolejny zestaw trzech kolejnych prób wykonania. Po tym stanie wycinka zostanie zakończona niepowodzeniem i nie będzie podejmowanych dalszych prób. W związku z tym wykonano ogólne 6 prób.<br/><br/>Jeśli jakiekolwiek wykonanie zakończy się pomyślnie, stan wycinka będzie gotowy i nie będą podejmowane żadne dalsze próby.<br/><br/>longRetry mogą być używane w sytuacjach, gdy dane zależne docierają do niedeterministycznych czasów lub w ogólnym środowisku, w którym odbywa się przetwarzanie danych. W takich przypadkach ponawianie próby jedna po drugiej może nie pomóc i wykonać to po upływie przedziału czasu w żądanych danych wyjściowych.<br/><br/>Uwaga: nie ustawiaj wysokich wartości dla longRetry lub longRetryInterval. Zazwyczaj wyższe wartości oznaczają inne problemy systemowe. |
+| longRetryInterval |Czasu |00:00:00 |Opóźnienie między długimi próbami ponowienia |
 
-Aby uzyskać więcej informacji, [](data-factory-create-pipelines.md) Zobacz artykuł potoki. 
+Aby uzyskać więcej informacji, zobacz artykuł [potoki](data-factory-create-pipelines.md) . 
 
 ## <a name="parallel-processing-of-data-slices"></a>Równoległe przetwarzanie wycinków danych
 Możesz ustawić datę początkową potoku w przeszłości. Gdy to zrobisz, Data Factory automatycznie oblicza (cofa) wszystkie wycinki danych w przeszłości i zacznie je przetwarzać. Na przykład: Jeśli utworzysz potok z datą rozpoczęcia 2017-04-01, a bieżąca data to 2017-04-10. Jeśli erze wyjściowego zestawu danych jest codziennie, Data Factory rozpoczyna przetwarzanie wszystkich wycinków od 2017-04-01 do 2017-04-09, ponieważ Data rozpoczęcia przypada w przeszłości. Wycinek z 2017-04-10 nie został jeszcze przetworzony, ponieważ wartość właściwości style w sekcji dostępność jest domyślnie EndOfInterval. Najstarszy wycink jest przetwarzany jako pierwszy, ponieważ domyślna wartość executionPriorityOrder to OldestFirst. Aby uzyskać opis właściwości style, zobacz sekcję [dostępność zestawu danych](#dataset-availability) . Opis sekcji executionPriorityOrder można znaleźć w sekcji [zasady dotyczące działań](#activity-policies) . 
@@ -330,7 +330,7 @@ Oto jak można modelować ten scenariusz przy użyciu Data Factory:
 
 **Wejściowy zestaw danych**
 
-Pliki wejściowe godzinowe są porzucane w folderze dla danego dnia. Dostępność danych wejściowych jest ustawiona na **godzinę** (częstotliwość: Godzina, interwał: 1).
+Pliki wejściowe godzinowe są porzucane w folderze dla danego dnia. Dostępność danych wejściowych jest ustawiona na **godzinę** (częstotliwość: godzina, interwał: 1).
 
 ```json
 {
@@ -359,7 +359,7 @@ Pliki wejściowe godzinowe są porzucane w folderze dla danego dnia. Dostępnoś
 ```
 **Wyjściowy zestaw danych**
 
-Jeden plik wyjściowy jest tworzony codziennie w folderze dnia. Dostępność danych wyjściowych jest ustawiana na **dzień** (częstotliwość: Dzień i interwał: 1).
+Jeden plik wyjściowy jest tworzony codziennie w folderze dnia. Dostępność danych wyjściowych jest ustawiana na **dzień** (częstotliwość: dzień i interwał: 1).
 
 ```json
 {
@@ -443,14 +443,14 @@ Na poniższym diagramie przedstawiono scenariusz z punktu widzenia zależności 
 
 Wycinek danych wyjściowych dla każdego dnia zależy od 24-godzinnych wycinków z wejściowego zestawu danych. Data Factory oblicza te zależności automatycznie, wprowadzając wycinki danych wejściowych, które znajdują się w tym samym okresie, co wycinek wyjściowy. Jeśli którykolwiek z 24 wycinków wejściowych nie jest dostępny, Data Factory czeka na przygotowanie wycinka danych wejściowych przed rozpoczęciem codziennego uruchomienia działania.
 
-### <a name="sample-2-specify-dependency-with-expressions-and-data-factory-functions"></a>Przykład 2: Określanie zależności przy użyciu wyrażeń i funkcji Data Factory
+### <a name="sample-2-specify-dependency-with-expressions-and-data-factory-functions"></a>Przykład 2: Określanie zależności za pomocą wyrażeń i funkcji Data Factory
 Rozważmy inny scenariusz. Załóżmy, że masz działanie Hive, które przetwarza dwa wejściowe zestawy danych. Jeden z nich ma nowe dane codziennie, ale jeden z nich otrzymuje nowe dane co tydzień. Załóżmy, że chcesz wykonać sprzężenie między dwoma danymi wejściowymi i utworzyć dane wyjściowe codziennie.
 
 Prostym podejściem, w którym Data Factory są automatycznie rysowane odpowiednie wycinków danych wejściowych do przetworzenia przez wyrównanie do przedziału czasu wycinka danych wyjściowych, nie działa.
 
 Należy określić, że dla każdego uruchomienia działania Data Factory powinien używać wycinka danych w ostatnim tygodniu dla tygodniowego zestawu danych wejściowych. Użyj funkcji Azure Data Factory, jak pokazano w poniższym fragmencie kodu, aby zaimplementować to zachowanie.
 
-**Input1: Obiekt blob platformy Azure**
+**Input1: obiekt blob platformy Azure**
 
 Pierwsze dane wejściowe to obiekt blob platformy Azure, który jest aktualizowany codziennie.
 
@@ -480,7 +480,7 @@ Pierwsze dane wejściowe to obiekt blob platformy Azure, który jest aktualizowa
 }
 ```
 
-**Input2: Obiekt blob platformy Azure**
+**Input2: obiekt blob platformy Azure**
 
 Input2 to obiekt blob platformy Azure aktualizowany co tydzień.
 
@@ -510,9 +510,9 @@ Input2 to obiekt blob platformy Azure aktualizowany co tydzień.
 }
 ```
 
-**Rozdzielczości Obiekt blob platformy Azure**
+**Dane wyjściowe: obiekt blob platformy Azure**
 
-Jeden plik wyjściowy jest tworzony codziennie w folderze dla tego dnia. Wartość ustawienia dostępność danych wyjściowych to **dzień** (częstotliwość: Dzień, interwał: 1).
+Jeden plik wyjściowy jest tworzony codziennie w folderze dla tego dnia. Ustawienie dostępność danych wyjściowych to **dzień** (częstotliwość: dzień, interwał: 1).
 
 ```json
 {
@@ -604,11 +604,11 @@ Istnieje możliwość uruchomienia wielu operacji kopiowania jeden po drugim w s
 
 Plik copyactivity1
 
-Dane wejściowe: Zestawu. Dane wyjściowe: Dataset2.
+Dane wejściowe: zestaw danych. Wynik: Dataset2.
 
 CopyActivity2
 
-Dane wejściowe: Dataset2.  Dane wyjściowe: Dataset3.
+Dane wejściowe: Dataset2.  Wynik: Dataset3.
 
 CopyActivity2 będzie działać tylko wtedy, gdy plik copyactivity1 została pomyślnie uruchomiona i Dataset2 jest dostępna.
 
@@ -699,11 +699,11 @@ W przykładzie CopyActivity2 może mieć inne dane wejściowe, takie jak Dataset
 
 Plik copyactivity1
 
-Dane wejściowe: Pozycję DataSet1. Dane wyjściowe: Dataset2.
+Dane wejściowe: pozycję DataSet1. Wynik: Dataset2.
 
 CopyActivity2
 
-Danych wejściowych Dataset3, Dataset2. Dane wyjściowe: Dataset4.
+Dane wejściowe: Dataset3, Dataset2. Wynik: Dataset4.
 
 ```json
 {

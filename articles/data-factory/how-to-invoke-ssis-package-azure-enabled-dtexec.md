@@ -1,5 +1,5 @@
 ---
-title: Wykonywanie pakietów SQL Server Integration Services (SSIS) za pomocą narzędzia dtexec z obsługą platformy Azure | Microsoft Docs
+title: Wykonywanie pakietów SQL Server Integration Services (SSIS) za pomocą narzędzia dtexec z obsługą platformy Azure
 description: Dowiedz się, jak wykonywać pakiety SQL Server Integration Services (SSIS) za pomocą narzędzia dtexec z włączoną obsługą platformy Azure.
 services: data-factory
 documentationcenter: ''
@@ -12,12 +12,12 @@ author: swinarko
 ms.author: sawinark
 ms.reviewer: douglasl
 manager: craigg
-ms.openlocfilehash: 472792351b8b7ab96e055bacd64141840ce7a630
-ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
+ms.openlocfilehash: 9ab308d0e2145a0d0b40e8b37c8c5be07b55dac6
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/18/2019
-ms.locfileid: "72596943"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73673554"
 ---
 # <a name="run-sql-server-integration-services-packages-with-the-azure-enabled-dtexec-utility"></a>Uruchamianie pakietów SQL Server Integration Services za pomocą narzędzia dtexec z obsługą platformy Azure
 W tym artykule opisano narzędzie wiersza polecenia dtexec (AzureDTExec) z obsługą platformy Azure. Służy do uruchamiania pakietów SQL Server Integration Services (SSIS) na Azure-SSIS Integration Runtime (IR) w Azure Data Factory.
@@ -34,7 +34,7 @@ AzureDTExec można skonfigurować za pomocą programu SSMS, aby użyć aplikacji
 Aby użyć AzureDTExec, Pobierz i zainstaluj najnowszą wersję programu SSMS, która jest w wersji 18,3 lub nowszej. Pobierz ją z [tej witryny sieci Web](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms?view=sql-server-2017).
 
 ## <a name="configure-the-azuredtexec-utility"></a>Konfigurowanie narzędzia AzureDTExec
-Zainstalowanie programu SSMS na komputerze lokalnym spowoduje również zainstalowanie AzureDTExec. Aby skonfigurować ustawienia, uruchom program SSMS z opcją **Uruchom jako administrator** . Następnie wybierz pozycję **narzędzia**  > **Migruj do platformy Azure**  > **Skonfiguruj dtexec z obsługą platformy Azure**.
+Zainstalowanie programu SSMS na komputerze lokalnym spowoduje również zainstalowanie AzureDTExec. Aby skonfigurować ustawienia, uruchom program SSMS z opcją **Uruchom jako administrator** . Następnie wybierz pozycję **narzędzia** > **Migruj do platformy Azure** > **Skonfiguruj dtexec z obsługą platformy Azure**.
 
 ![Konfigurowanie menu dtexec z obsługą platformy Azure](media/how-to-invoke-ssis-package-azure-enabled-dtexec/ssms-azure-enabled-dtexec-menu.png)
 
@@ -86,7 +86,7 @@ Wywołanie AzureDTExec oferuje podobne opcje jako wywołanie dtexec. Aby uzyska�
 - **/Conf [igFile]** : Określa plik konfiguracji, z którego mają zostać wyodrębnione wartości. Korzystając z tej opcji, można ustawić konfigurację wykonawczą dla pakietu, która różni się od określonej w czasie projektowania. Można przechowywać różne ustawienia w pliku konfiguracji XML, a następnie ładować je przed wykonaniem pakietu. Aby uzyskać więcej informacji, zobacz [konfiguracje pakietów usług SSIS](https://docs.microsoft.com/sql/integration-services/packages/package-configurations?view=sql-server-2017). Aby określić wartość dla tej opcji, użyj ścieżki UNC do pliku konfiguracji w systemie plików, udziale plików lub Azure Files z rozszerzeniem dtsConfig. Jeśli określona ścieżka UNC zawiera spację, należy umieścić znaki cudzysłowu wokół całej ścieżki.
 - **/Conn [zenia]** : określa parametry połączenia dla istniejących menedżerów połączeń w pakiecie. Za pomocą tej opcji można ustawić parametry połączenia w czasie wykonywania dla istniejących menedżerów połączeń w pakiecie, które różnią się od określonych w czasie projektowania. Określ wartość dla tej opcji w następujący sposób: `connection_manager_name_or_id;connection_string [[;connection_manager_name_or_id;connection_string]...]`.
 - **/Set**: zastępuje konfigurację parametru, zmiennej, właściwości, kontenera, dostawcy dziennika, modułu wyliczającego foreach lub połączenia w pakiecie. Tę opcję można określić wiele razy. Określ wartość dla tej opcji w następujący sposób: `property_path;value`. Na przykład `\package.variables[counter].Value;1` przesłania wartość zmiennej `counter` jako 1. Możesz użyć kreatora **konfiguracji pakietu** , aby znaleźć, skopiować i wkleić wartość `property_path` dla elementów w pakiecie, których wartość ma zostać przesłonięta. Aby uzyskać więcej informacji, zobacz [Kreator konfiguracji pakietu](https://docs.microsoft.com/sql/integration-services/package-configuration-wizard-ui-reference?view=sql-server-2014).
-- **/De [Crypt]** : ustawia hasło odszyfrowywania dla pakietu, który jest skonfigurowany przy użyciu poziomu ochrony **EncryptAllWithPassword** /**EncryptSensitiveWithPassword** .
+- **/De [Crypt]** : ustawia hasło odszyfrowywania dla pakietu, który jest skonfigurowany przy użyciu poziomu ochrony **EncryptAllWithPassword**/**EncryptSensitiveWithPassword** .
 
 > [!NOTE]
 > Wywoływanie AzureDTExec z nowymi wartościami dla jego opcji generuje nowy potok z wyjątkiem opcji **/de [kryptu]** .

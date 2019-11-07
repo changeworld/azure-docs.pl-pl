@@ -1,47 +1,47 @@
 ---
-title: Usługi Application Insights do Rozwiązywanie problemów dotyczących zasad niestandardowych w usłudze Azure Active Directory B2C | Dokumentacja firmy Microsoft
-description: jak skonfigurować usługę Application Insights do śledzenia realizacji zasady niestandardowe.
+title: Rozwiązywanie problemów z zasadami niestandardowymi za pomocą Application Insights-Azure Active Directory B2C
+description: Jak skonfigurować Application Insights do śledzenia wykonywania zasad niestandardowych.
 services: active-directory-b2c
 author: mmacy
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 08/04/2017
+ms.date: 11/04/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: df5d710792d8c47e491f5b06d88f4050e8eb4a01
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: b8bf26791ca6489c12e4f9538d56ae0f0f66cc8c
+ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66508070"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73602036"
 ---
-# <a name="azure-active-directory-b2c-collecting-logs"></a>Azure Active Directory B2C: Zbieranie dzienników
+# <a name="collect-azure-active-directory-b2c-logs-with-application-insights"></a>Zbieranie dzienników Azure Active Directory B2C z Application Insights
 
-Ten artykuł zawiera instrukcje do zbierania dzienników z usługi Azure AD B2C, dzięki czemu można diagnozować problemy z zasadami dotyczącymi zasobów niestandardowych.
+W tym artykule przedstawiono procedurę zbierania dzienników z programu Active Directory B2C (Azure AD B2C), dzięki czemu można zdiagnozować problemy z zasadami niestandardowymi. Application Insights zapewnia sposób diagnozowania wyjątków i wizualizacji problemów z wydajnością aplikacji. Azure AD B2C zawiera funkcję wysyłania danych do Application Insights.
 
->[!NOTE]
->Obecnie dzienniki szczegółowe działania opisane w tym miejscu są przeznaczone **tylko** ułatwiające tworzenie niestandardowych zasad. Nie należy używać trybu projektowania w środowisku produkcyjnym.  Dzienniki zbierać wszystkie oświadczenia wysyłane do i z dostawcami tożsamości, podczas programowania.  Jeśli używane w środowisku produkcyjnym, deweloper przyjmuje odpowiedzialność za dane osobowe (prywatnie osobowe) zebrane w dzienniku usługi App Insights, w której jest właścicielem.  Te dzienniki są zbierane tylko, gdy zasady jest umieszczany na **trybu opracowywania**.
+Szczegółowe dzienniki działań opisane tutaj należy włączyć **tylko** podczas opracowywania zasad niestandardowych.
 
+> [!WARNING]
+> Nie włączaj trybu deweloperskiego w środowisku produkcyjnym. Dzienniki zbierają wszystkie oświadczenia wysyłane do i od dostawców tożsamości. Deweloper przyjmuje odpowiedzialność za wszelkie dane osobowe zbierane w dziennikach Application Insights. Te szczegółowe dzienniki są zbierane tylko wtedy, gdy zasady są umieszczane w **trybie dewelopera**.
 
-## <a name="use-application-insights"></a>Korzystanie z usługi Application Insights
+## <a name="set-up-application-insights"></a>Skonfiguruj Application Insights
 
-Usługa Azure AD B2C obsługuje funkcję wysyłania danych do usługi Application Insights.  Usługa Application Insights umożliwia wizualizowanie problemy z wydajnością aplikacji i diagnozowanie wyjątków.
+Jeśli jeszcze tego nie masz, Utwórz wystąpienie Application Insights w subskrypcji.
 
-### <a name="setup-application-insights"></a>Konfigurowanie usługi Application Insights
+1. Zaloguj się w witrynie [Azure Portal](https://portal.azure.com).
+1. Wybierz filtr **katalogów i subskrypcji** w górnym menu, a następnie wybierz katalog, który zawiera subskrypcję platformy Azure (nie katalog Azure AD B2C).
+1. Wybierz pozycję **Utwórz zasób** w menu nawigacji po lewej stronie.
+1. Wyszukaj i wybierz pozycję **Application Insights**, a następnie wybierz pozycję **Utwórz**.
+1. Wypełnij formularz, wybierz pozycję **Przegląd + Utwórz**, a następnie wybierz pozycję **Utwórz**.
+1. Po zakończeniu wdrożenia wybierz pozycję **Przejdź do zasobu**.
+1. W menu **Konfiguruj** w Application Insights wybierz pozycję **Właściwości**.
+1. Zapisz **klucz Instrumentacji** do użycia w późniejszym kroku.
 
-1. Przejdź do witryny [Azure Portal](https://portal.azure.com). Upewnij się, że w ramach dzierżawy z subskrypcją platformy Azure (nie w dzierżawie usługi Azure AD B2C).
-1. Kliknij przycisk **+ nowy** w menu nawigacji po lewej stronie.
-1. Wyszukaj i wybierz pozycję **usługi Application Insights**, następnie kliknij przycisk **Utwórz**.
-1. Wypełnij formularz, a następnie kliknij przycisk **Utwórz**. Wybierz **ogólne** dla **typ aplikacji**.
-1. Po utworzeniu zasobu otwórz zasób usługi Application Insights.
-1. Znajdź **właściwości** w menu po lewej stronie i kliknij go.
-1. Kopiuj **klucz Instrumentacji** i zapisać go do następnej sekcji.
+## <a name="configure-the-custom-policy"></a>Konfigurowanie zasad niestandardowych
 
-### <a name="set-up-the-custom-policy"></a>Konfigurowanie zasad niestandardowych
-
-1. Otwórz plik RP (na przykład SignUpOrSignin.xml).
+1. Otwórz plik jednostki uzależnionej (RP), na przykład *SignUpOrSignin. XML*.
 1. Dodaj następujące atrybuty do `<TrustFrameworkPolicy>` elementu:
 
    ```XML
@@ -49,26 +49,27 @@ Usługa Azure AD B2C obsługuje funkcję wysyłania danych do usługi Applicatio
    UserJourneyRecorderEndpoint="urn:journeyrecorder:applicationinsights"
    ```
 
-1. Jeśli nie istnieje już, Dodaj węzeł podrzędny `<UserJourneyBehaviors>` do `<RelyingParty>` węzła. Znajdować się natychmiast po `<DefaultUserJourney ReferenceId="UserJourney Id from your extensions policy, or equivalent (for example:SignUpOrSigninWithAAD" />`
-2. Dodaj następujący węzeł jako element podrzędny elementu `<UserJourneyBehaviors>` elementu. Upewnij się zastąpić `{Your Application Insights Key}` z **klucz Instrumentacji** uzyskany z usługi Application Insights w poprzedniej sekcji.
+1. Jeśli jeszcze nie istnieje, Dodaj `<UserJourneyBehaviors>` węzeł podrzędny do węzła `<RelyingParty>`. Musi ona znajdować się bezpośrednio po `<DefaultUserJourney ReferenceId="UserJourney Id" from your extensions policy, or equivalent (for example:SignUpOrSigninWithAAD" />`.
+1. Dodaj następujący węzeł jako element podrzędny elementu `<UserJourneyBehaviors>`. Pamiętaj, aby zastąpić `{Your Application Insights Key}` **kluczem instrumentacji** Application Insights zarejestrowanym wcześniej.
 
-   ```XML
-   <JourneyInsights TelemetryEngine="ApplicationInsights" InstrumentationKey="{Your Application Insights Key}" DeveloperMode="true" ClientEnabled="false" ServerEnabled="true" TelemetryVersion="1.0.0" />
-   ```
+    ```XML
+    <JourneyInsights TelemetryEngine="ApplicationInsights" InstrumentationKey="{Your Application Insights Key}" DeveloperMode="true" ClientEnabled="false" ServerEnabled="true" TelemetryVersion="1.0.0" />
+    ```
 
-   * `DeveloperMode="true"` informuje dotycząca usługi Application Insights, aby przyspieszyć dane telemetryczne za pośrednictwem potoku przetwarzania dobre do tworzenia aplikacji, ale ograniczone w dużej ilości danych.
-   * `ClientEnabled="true"` wysyła skryptu po stronie klienta dotycząca usługi Application Insights do śledzenia błędów po stronie klienta i widoku strony (nie jest wymagane).
-   * `ServerEnabled="true"` wysyła istniejących JSON UserJourneyRecorder jako zdarzenie niestandardowe do usługi Application Insights.
-   Przykład:
+    * `DeveloperMode="true"` informuje ApplicationInsights o przyspieszeniu telemetrii przez potok przetwarzania. Dobre dla rozwoju, ale ograniczone do dużych woluminów.
+    * `ClientEnabled="true"` wysyła skrypt po stronie klienta ApplicationInsights na potrzeby śledzenia widoku strony i błędów po stronie klienta. Można je wyświetlić w tabeli **browserTimings** w portalu Application Insights. Ustawienie `ClientEnabled= "true"`powoduje dodanie Application Insights do skryptu strony, a następnie uzyskanie chronometrażu obciążeń stron i wywołań AJAX, liczników, szczegółów wyjątków przeglądarki i błędów AJAX oraz liczby użytkowników i sesji. To pole jest **opcjonalne**i domyślnie jest ustawione na `false`.
+    * `ServerEnabled="true"` wysyła istniejący kod JSON UserJourneyRecorder jako zdarzenie niestandardowe do Application Insights.
 
-   ```XML
-   <TrustFrameworkPolicy
-    ...
-    TenantId="fabrikamb2c.onmicrosoft.com"
-    PolicyId="SignUpOrSignInWithAAD"
-    DeploymentMode="Development"
-    UserJourneyRecorderEndpoint="urn:journeyrecorder:applicationinsights"
-   >
+    Na przykład:
+
+    ```XML
+    <TrustFrameworkPolicy
+      ...
+      TenantId="fabrikamb2c.onmicrosoft.com"
+      PolicyId="SignUpOrSignInWithAAD"
+      DeploymentMode="Development"
+      UserJourneyRecorderEndpoint="urn:journeyrecorder:applicationinsights"
+    >
     ...
     <RelyingParty>
       <DefaultUserJourney ReferenceId="UserJourney ID from your extensions policy, or equivalent (for example: SignUpOrSigninWithAzureAD)" />
@@ -76,42 +77,36 @@ Usługa Azure AD B2C obsługuje funkcję wysyłania danych do usługi Applicatio
         <JourneyInsights TelemetryEngine="ApplicationInsights" InstrumentationKey="{Your Application Insights Key}" DeveloperMode="true" ClientEnabled="false" ServerEnabled="true" TelemetryVersion="1.0.0" />
       </UserJourneyBehaviors>
       ...
-   </TrustFrameworkPolicy>
-   ```
+    </TrustFrameworkPolicy>
+    ```
 
-3. Przekazywanie zasad.
+1. Przekaż zasady.
 
-### <a name="see-the-logs-in-application-insights"></a>Przeglądanie dzienników w usłudze Application Insights
+## <a name="see-the-logs-in-application-insights"></a>Zapoznaj się z dziennikami w Application Insights
 
->[!NOTE]
-> Brak krótki opóźnienie (mniej niż pięć minut), zanim zobaczysz nowe dzienniki w usłudze Application Insights.
+Istnieje krótkie opóźnienie, zazwyczaj mniej niż pięć minut, zanim będzie można zobaczyć nowe dzienniki w Application Insights.
 
-1. Otwórz zasób usługi Application Insights, który został utworzony w [witryny Azure portal](https://portal.azure.com).
-1. W **Przegląd** menu, kliknij pozycję **analizy**.
-1. Otwórz nową kartę w usłudze Application Insights.
-1. Poniżej przedstawiono listę zapytań, których można użyć, aby wyświetlić dzienniki
+1. Otwórz zasób Application Insights, który został utworzony w [Azure Portal](https://portal.azure.com).
+1. W menu **Przegląd** wybierz pozycję **Analiza**.
+1. Otwórz nową kartę w Application Insights.
+
+Poniżej znajduje się lista zapytań, których można użyć, aby wyświetlić dzienniki:
 
 | Zapytanie | Opis |
 |---------------------|--------------------|
-ślady | Zobacz wszystkie dzienniki generowane przez usługę Azure AD B2C |
-ślady \| której sygnatura czasowa > ago(1d) | Zobacz wszystkie dzienniki generowane przez usługę Azure AD B2C w ciągu ostatniego dnia
+`traces` | Zobacz wszystkie dzienniki wygenerowane przez Azure AD B2C |
+`traces | where timestamp > ago(1d)` | Zobacz wszystkie dzienniki wygenerowane przez Azure AD B2C w ciągu ostatniego dnia
 
-Wpisy może być długi.  Eksportuj do pliku CSV, aby uzyskać bliższe spojrzenie.
+Wpisy mogą być długie. Eksportuj do pliku CSV w celu bliższego wyglądu.
 
-Dowiedz się więcej o narzędziu Analytics [tutaj](https://docs.microsoft.com/azure/application-insights/app-insights-analytics).
-
->[!NOTE]
->Społeczność opracowała podglądu podróż użytkownika, aby pomóc deweloperom w tożsamości.  Nie jest obsługiwane przez firmę Microsoft i udostępniane wyłącznie jako-to.  Odczytuje z wystąpienia usługi Application Insights i udostępnia widok dobrze użytkownika podróż zdarzenia.  Możesz uzyskać kod źródłowy i wdrożyć ją w własnego rozwiązania.
-
-Wersji przeglądarki, która odczytuje zdarzenia z usługi Application Insights znajduje się [tutaj](https://github.com/Azure-Samples/active-directory-b2c-advanced-policies/tree/master/wingtipgamesb2c/src/WingTipUserJourneyPlayerWebApplication)
-
->[!NOTE]
->Obecnie dzienniki szczegółowe działania opisane w tym miejscu są przeznaczone **tylko** ułatwiające tworzenie niestandardowych zasad. Nie należy używać trybu projektowania w środowisku produkcyjnym.  Dzienniki zbierać wszystkie oświadczenia wysyłane do i z dostawcami tożsamości, podczas programowania.  Jeśli używane w środowisku produkcyjnym, deweloper przyjmuje odpowiedzialność za dane osobowe (prywatnie osobowe) zebrane w dzienniku usługi App Insights, w której jest właścicielem.  Te dzienniki są zbierane tylko, gdy zasady jest umieszczany na **trybu opracowywania**.
-
-[Repozytorium GitHub na potrzeby nieobsługiwanych Przykłady zasad niestandardowych oraz pokrewnych narzędzi](https://github.com/Azure-Samples/active-directory-b2c-advanced-policies)
-
-
+Aby uzyskać więcej informacji na temat wykonywania zapytań, zobacz [Omówienie zapytań dzienników w Azure monitor](../azure-monitor/log-query/log-query-overview.md).
 
 ## <a name="next-steps"></a>Następne kroki
 
-Eksplorowanie danych w usłudze Application Insights, aby lepiej zrozumieć, jak napotyka struktura środowiska tożsamości podstawowej B2C działa w celu dostarczenia swojej tożsamości.
+Społeczność opracowała przeglądarkę podróży użytkowników w celu ułatwienia deweloperom tożsamości. Odczytuje dane z wystąpienia Application Insights i udostępnia widok dobrze skonstruowany zdarzeń podróży użytkownika. Kod źródłowy zostanie uzyskany i wdrożony we własnym rozwiązaniu.
+
+Gracz podróży użytkownika nie jest obsługiwany przez firmę Microsoft i jest udostępniany w sposób niezgodny z oczekiwaniami.
+
+Wersja przeglądarki, która odczytuje zdarzenia z Application Insights w witrynie GitHub, można znaleźć tutaj:
+
+[Azure-Samples/Active-Directory-B2C-Advanced-policies](https://github.com/Azure-Samples/active-directory-b2c-advanced-policies/tree/master/wingtipgamesb2c/src/WingTipUserJourneyPlayerWebApplication)

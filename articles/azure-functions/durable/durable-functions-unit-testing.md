@@ -5,18 +5,21 @@ author: ggailey777
 manager: gwallace
 ms.service: azure-functions
 ms.topic: conceptual
-ms.date: 12/11/2018
+ms.date: 11/03/2019
 ms.author: glenga
-ms.openlocfilehash: 0080365853e7a9c74d3ba0e5efb06ce5a3af2a21
-ms.sourcegitcommit: 5d6c8231eba03b78277328619b027d6852d57520
+ms.openlocfilehash: 95c6afcb2f7e864da4b9b43235326a17bed785fa
+ms.sourcegitcommit: b2fb32ae73b12cf2d180e6e4ffffa13a31aa4c6f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68967104"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73614534"
 ---
 # <a name="durable-functions-unit-testing"></a>Testowanie jednostkowe Durable Functions
 
 Testowanie jednostkowe jest ważną częścią nowoczesnych rozwiązań do tworzenia oprogramowania. Testy jednostkowe weryfikują zachowanie logiki biznesowej i chronią przed wprowadzaniem niezauważalnych zmian w przyszłości. Durable Functions można łatwo zwiększyć złożoność, aby zapewnić testy jednostkowe, aby uniknąć istotnych zmian. W poniższych sekcjach wyjaśniono, jak przeprowadzić test jednostkowy trzech typów funkcji — klienta aranżacji, programu Orchestrator i funkcji działania.
+
+> [!NOTE]
+> Ten artykuł zawiera wskazówki dotyczące testowania jednostkowego dla aplikacji Durable Functions przeznaczonych dla Durable Functions 1. x. Nie została jeszcze zaktualizowana w celu uwzględnienia zmian wprowadzonych w Durable Functions 2. x. Aby uzyskać więcej informacji o różnicach między wersjami, zobacz artykuł dotyczący [wersji Durable Functions](durable-functions-versions.md) .
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
@@ -24,7 +27,7 @@ Przykłady w tym artykule wymagają znajomości następujących pojęć i strukt
 
 * Testy jednostkowe
 
-* Durable Functions
+* Trwałe funkcje
 
 * [xUnit](https://xunit.github.io/) — struktura testowania
 
@@ -32,17 +35,17 @@ Przykłady w tym artykule wymagają znajomości następujących pojęć i strukt
 
 ## <a name="base-classes-for-mocking"></a>Klasy bazowe do imitacji
 
-Imitacja jest obsługiwana przez trzy klasy abstrakcyjne w Durable Functions:
+Symulacja jest obsługiwana przez trzy klasy abstrakcyjne w Durable Functions 1. x:
 
-* [DurableOrchestrationClientBase](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationClientBase.html)
+* `DurableOrchestrationClientBase`
 
-* [DurableOrchestrationContextBase](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationContextBase.html)
+* `DurableOrchestrationContextBase`
 
-* [DurableActivityContextBase](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableActivityContextBase.html)
+* `DurableActivityContextBase`
 
-Te klasy są klasami podstawowymi dla [DurableOrchestrationClient](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationClient.html), [DurableOrchestrationContext](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationContext.html)i [DurableActivityContext](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableActivityContext.html) , które definiują klienta aranżacji, program Orchestrator i metody działania. Makiety spowodują ustawienie oczekiwanego zachowania dla metod klasy bazowej, aby test jednostkowy mógł zweryfikować logikę biznesową. Istnieje dwuetapowy przepływ pracy służący do testowania jednostek logiki biznesowej w kliencie aranżacji i w programie Orchestrator:
+Te klasy są klasami podstawowymi dla `DurableOrchestrationClient`, `DurableOrchestrationContext`i `DurableActivityContext`, które definiują klienta aranżacji, program Orchestrator i metody działania. Makiety spowodują ustawienie oczekiwanego zachowania dla metod klasy bazowej, aby test jednostkowy mógł zweryfikować logikę biznesową. Istnieje dwuetapowy przepływ pracy służący do testowania jednostek logiki biznesowej w kliencie aranżacji i w programie Orchestrator:
 
-1. Przy definiowaniu podpisów klienta i programu Orchestrator należy używać klas bazowych zamiast konkretnych implementacji.
+1. Użyj klas bazowych zamiast konkretnej implementacji podczas definiowania sygnatury funkcji klienta aranżacji i programu Orchestrator.
 2. W testach jednostkowych Zanotuj zachowanie klas podstawowych i sprawdź logikę biznesową.
 
 Więcej szczegółów znajduje się w poniższych sekcjach dotyczących funkcji testowych, które korzystają z powiązania klienta aranżacji i powiązania wyzwalacza programu Orchestrator.
@@ -53,9 +56,9 @@ W tej sekcji test jednostkowy będzie sprawdzał logikę następującej funkcji 
 
 [!code-csharp[Main](~/samples-durable-functions/samples/precompiled/HttpStart.cs)]
 
-Zadanie testów jednostkowych będzie służyć do weryfikowania wartości `Retry-After` nagłówka podanego w ładunku odpowiedzi. Dlatego test jednostkowy zanotuje niektóre metody [DurableOrchestrationClientBase](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationClientBase.html) , aby zapewnić przewidywalne zachowanie.
+Zadanie testów jednostkowych będzie weryfikować wartość nagłówka `Retry-After` dostarczonego w ładunku odpowiedzi. Dlatego test jednostkowy zanotuje niektóre metody `DurableOrchestrationClientBase`, aby zapewnić przewidywalne zachowanie.
 
-Najpierw musi być wymagana makieta klasy bazowej, [DurableOrchestrationClientBase](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationClientBase.html). Makieta może być nową klasą, która implementuje [DurableOrchestrationClientBase](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationClientBase.html). Jednak użycie struktury imitacji, takiej jak [MOQ](https://github.com/moq/moq4) upraszcza proces:
+Najpierw jest wymagana makieta klasy bazowej, `DurableOrchestrationClientBase`. Makieta może być nową klasą, która implementuje `DurableOrchestrationClientBase`. Jednak użycie struktury imitacji, takiej jak [MOQ](https://github.com/moq/moq4) upraszcza proces:
 
 ```csharp
     // Mock DurableOrchestrationClientBase
@@ -71,7 +74,7 @@ Następnie `StartNewAsync` Metoda jest wbudowana w celu zwrócenia dobrze znaneg
         ReturnsAsync(instanceId);
 ```
 
-Następnie `CreateCheckStatusResponse` jest makieta, aby zawsze zwracała pustą odpowiedź HTTP 200.
+Kolejne `CreateCheckStatusResponse` są makietą, aby zawsze zwracała pustą odpowiedź HTTP 200.
 
 ```csharp
     // Mock CreateCheckStatusResponse method
@@ -88,15 +91,14 @@ Następnie `CreateCheckStatusResponse` jest makieta, aby zawsze zwracała pustą
         });
 ```
 
-`ILogger`jest również makietą:
+`ILogger` jest również makieta:
 
 ```csharp
     // Mock ILogger
     var loggerMock = new Mock<ILogger>();
-
 ```  
 
-`Run` Teraz Metoda jest wywoływana z testu jednostkowego:
+Teraz Metoda `Run` jest wywoływana z testu jednostkowego:
 
 ```csharp
     // Call Orchestration trigger function
@@ -129,7 +131,7 @@ Po połączeniu wszystkich kroków test jednostkowy będzie miał następujący 
 
 Funkcje programu Orchestrator są jeszcze bardziej interesujące w przypadku testów jednostkowych, ponieważ zazwyczaj mają znacznie większą logikę biznesową.
 
-W tej sekcji testy jednostkowe będą sprawdzać poprawność `E1_HelloSequence` danych wyjściowych funkcji programu Orchestrator:
+W tej sekcji testy jednostkowe będą sprawdzać poprawność danych wyjściowych funkcji programu `E1_HelloSequence` Orchestrator:
 
 [!code-csharp[Main](~/samples-durable-functions/samples/precompiled/HelloSequence.cs)]
 
@@ -147,7 +149,7 @@ Następnie wywołania metody działania zostaną zamakietne:
     durableOrchestrationContextMock.Setup(x => x.CallActivityAsync<string>("E1_SayHello", "London")).ReturnsAsync("Hello London!");
 ```
 
-Następny test jednostkowy wywoła `HelloSequence.Run` metodę:
+Następny test jednostkowy wywoła metodę `HelloSequence.Run`:
 
 ```csharp
     var result = await HelloSequence.Run(durableOrchestrationContextMock.Object);
@@ -170,11 +172,11 @@ Po połączeniu wszystkich kroków test jednostkowy będzie miał następujący 
 
 Funkcje działania mogą być testowane jednostkowo w taki sam sposób jak w przypadku funkcji nietrwałych.
 
-W tej sekcji test jednostkowy sprawdzi zachowanie `E1_SayHello` funkcji działania:
+W tej sekcji test jednostkowy sprawdzi zachowanie funkcji działania `E1_SayHello`:
 
 [!code-csharp[Main](~/samples-durable-functions/samples/precompiled/HelloSequence.cs)]
 
-A testy jednostkowe sprawdzają format danych wyjściowych. Testy jednostkowe mogą używać typów parametrów bezpośrednio lub do makietowania klasy [DurableActivityContextBase](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableActivityContextBase.html) :
+A testy jednostkowe sprawdzają format danych wyjściowych. Testy jednostkowe mogą używać typów parametrów bezpośrednio lub do makietowania klasy `DurableActivityContextBase`:
 
 [!code-csharp[Main](~/samples-durable-functions/samples/VSSample.Tests/HelloSequenceActivityTests.cs)]
 

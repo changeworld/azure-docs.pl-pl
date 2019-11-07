@@ -1,18 +1,18 @@
 ---
 title: Automatyzowanie Azure Analysis Services zadań przy użyciu jednostek usługi | Microsoft Docs
-description: Dowiedz się, jak utworzyć jednostki usługi do automatyzowania zadań Azure Analysis Services.
+description: Dowiedz się, jak utworzyć jednostkę usługi do automatyzowania Azure Analysis Services zadań administracyjnych.
 author: minewiskan
 ms.service: azure-analysis-services
 ms.topic: conceptual
-ms.date: 10/29/2019
+ms.date: 10/30/2019
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: a590590faa422d47306e697a7c90bb635ea8c6e9
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.openlocfilehash: 5078fcc1ba5c581aca475025b286d0319d6024a6
+ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73146361"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73572603"
 ---
 # <a name="automation-with-service-principals"></a>Automatyzacja przy użyciu jednostek usługi
 
@@ -48,7 +48,7 @@ Identyfikator appID i hasło i certyfikat jednostki usługi mogą być używane 
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-#### <a name="a-nameazmodule-using-azanalysisservices-module"></a><a name="azmodule" />Using AZ. AnalysisServices module
+#### <a name="a-nameazmodule-using-azanalysisservices-module"></a><a name="azmodule" />przy użyciu polecenia AZ. AnalysisServices
 
 W przypadku używania jednostki usługi do operacji zarządzania zasobami z modułem [AZ. AnalysisServices](/powershell/module/az.analysisservices) należy użyć polecenia cmdlet `Connect-AzAccount`. 
 
@@ -92,7 +92,7 @@ Invoke-ProcessTable -Server "asazure://westcentralus.asazure.windows.net/myserve
 
 ### <a name="amo-and-adomd"></a>AMO i ADOMD 
 
-Podczas nawiązywania połączenia z aplikacjami klienckimi i aplikacjami sieci Web, [bibliotekami klienckimi biblioteki AMO i ADOMD](analysis-services-data-providers.md) w wersji 15.0.2 i wyższych pakietów instalowalnych z usług NuGet w parametrach połączenia przy użyciu następującej składni: `app:AppID` i hasła lub @no__ t-2. 
+Podczas nawiązywania połączenia z aplikacjami klienckimi i aplikacjami sieci Web, [bibliotekami klienckimi biblioteki AMO i ADOMD](analysis-services-data-providers.md) w wersji 15.0.2 i wyższych instalowalnych pakietów z usług NuGet w parametrach połączenia przy użyciu następującej składni: `app:AppID` i hasła lub @no_ _t_2_ .`cert:thumbprint` 
 
 W poniższym przykładzie `appID` i `password` są używane do wykonywania operacji odświeżania bazy danych modelu:
 

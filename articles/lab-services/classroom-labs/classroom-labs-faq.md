@@ -11,22 +11,22 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/20/2019
+ms.date: 11/05/2019
 ms.author: spelluru
-ms.openlocfilehash: 411037dd97350d877aff4e2d094c3408f168f9fd
-ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
+ms.openlocfilehash: 91c5c1480669829bad7f8d89ce360bb806d6c997
+ms.sourcegitcommit: 359930a9387dd3d15d39abd97ad2b8cb69b8c18b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "69648575"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73646849"
 ---
-# <a name="classroom-labs-in-azure-lab-services---frequently-asked-questions-faq"></a>Pracowni Labs w Azure Lab Services — często zadawane pytania
+# <a name="classroom-labs-in-azure-lab-services--frequently-asked-questions-faq"></a>Pracowni Labs w Azure Lab Services — często zadawane pytania
 Uzyskaj odpowiedzi na kilka typowych pytań dotyczących laboratoriów stacjonarnych w Azure Lab Services. 
 
 ## <a name="quotas"></a>Przydziały
 
 ### <a name="is-the-quota-per-user-or-per-week-or-per-entire-duration-of-the-lab"></a>Czy przydziały na użytkownika, czy na tydzień czy na cały czas trwania laboratorium? 
-Przydział ustawiony dla laboratorium jest przeznaczony dla każdego ucznia na cały czas trwania laboratorium. Zaplanowana [godzina działania maszyn wirtualnych](how-to-create-schedules.md) nie jest uwzględniana w stosunku do przydziału przydzielonego dla użytkownika. Limit przydziału jest przeznaczony dla czasu poza godzinami harmonogramu, które student spędza na maszynach wirtualnych.  Aby uzyskać więcej informacji na temat przydziałów, zobacz [Ustawianie przydziałów dla użytkowników](how-to-configure-student-usage.md#set-quotas-for-users).
+Przydział ustawiony dla laboratorium jest przeznaczony dla każdego ucznia na cały czas trwania laboratorium. [Zaplanowana godzina działania maszyn wirtualnych](how-to-create-schedules.md) nie jest uwzględniana w stosunku do przydziału przydzielonego dla użytkownika. Limit przydziału jest przeznaczony dla czasu poza godzinami harmonogramu, które student spędza na maszynach wirtualnych.  Aby uzyskać więcej informacji na temat przydziałów, zobacz [Ustawianie przydziałów dla użytkowników](how-to-configure-student-usage.md#set-quotas-for-users).
 
 ## <a name="schedules"></a>Harmonogramy
 
@@ -40,7 +40,14 @@ Pracownice klasy mogą tworzyć maszyny wirtualne laboratorium w zakresie adres�
 
 Na przykład jeśli masz blok/19-10.0.0.0/19, ten zakres adresów uwzględnia 8192 adresy IP i 16 laboratoriów (8192/512 = 16 laboratoriów). W takim przypadku tworzenie laboratorium kończy się niepowodzeniem na siedemnastu tworzenia laboratorium.
 
-## <a name="blog-post"></a>Wpis na blogu
+### <a name="what-port-ranges-should-i-open-on-my-organizations-firewall-setting-to-connect-to-lab-virtual-machines-via-rdpssh"></a>Jakie zakresy portów należy otworzyć w ustawieniach zapory organizacji, aby połączyć się z maszynami wirtualnymi laboratorium za pośrednictwem protokołu RDP/SSH?
+
+Porty to: 49152 – 65535. W laboratoriach stacjonarnych znajduje się za modułem równoważenia obciążenia, więc wszystkie maszyny wirtualne w laboratorium mają jeden adres IP, a każda maszyna wirtualna w laboratorium ma unikatowy port. Numery portów i publiczny adres IP mogą być zmieniane za każdym razem, gdy laboratorium jest ponownie publikowane.
+
+### <a name="what-public-ip-address-range-should-i-open-on-my-organizations-firewall-settings-to-connect-to-lab-virtual-machines-via-rdpssh"></a>Jaki zakres publicznych adresów IP należy otworzyć w ustawieniach zapory organizacji w celu połączenia z maszynami wirtualnymi laboratorium za pośrednictwem protokołu RDP/SSH?
+Zobacz [zakresy adresów IP i Tagi usług platformy Azure — chmura publiczna](https://www.microsoft.com/download/details.aspx?id=56519), która udostępnia publiczny zakres adresów IP dla centrów danych na platformie Azure. Możesz otworzyć adresy IP dla regionów, w których znajdują się konta w laboratorium.
+
+## <a name="blog-post"></a>Wpis w blogu
 Zasubskrybuj [blog Azure Lab Services](https://azure.microsoft.com/blog/tag/azure-lab-services/).
 
 ## <a name="update-notifications"></a>Powiadomienia o aktualizacjach
@@ -51,6 +58,6 @@ Zasubskrybuj [Aktualizacje usług Lab Services](https://azure.microsoft.com/upda
 Jeśli pytania nie ma na liście, daj nam znać, aby pomóc Ci znaleźć odpowiedź.
 
 - Opublikuj pytanie na końcu tego często zadawanych pytań. 
-- Aby dotrzeć do szerszego grona użytkowników, Opublikuj pytanie na [forum Azure Lab Services-Stack Overflow](https://stackoverflow.com/questions/tagged/azure-lab-services). 
-- W przypadku żądań funkcji Prześlij swoje wnioski i pomysły do [Azure Lab Services głosu użytkownika](https://feedback.azure.com/forums/320373-lab-services?category_id=352774).
+- Aby dotrzeć do szerszego grona użytkowników, Opublikuj pytanie na [Azure Lab Services — Stack Overflow forum](https://stackoverflow.com/questions/tagged/azure-lab-services). 
+- W przypadku żądań funkcji Prześlij swoje żądania i pomysły dotyczące [Azure Lab Services — User Voice](https://feedback.azure.com/forums/320373-lab-services?category_id=352774).
 

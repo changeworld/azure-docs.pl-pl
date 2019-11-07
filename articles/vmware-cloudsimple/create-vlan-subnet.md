@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 0f8e605db3d647b5907c8c6741e4e2200bf14c4f
-ms.sourcegitcommit: a4b5d31b113f520fcd43624dd57be677d10fc1c0
+ms.openlocfilehash: 56e0f720221f8de531087e8b8d0476688feb2547
+ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70772369"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73601480"
 ---
 # <a name="create-and-manage-vlanssubnets-for-your-private-clouds"></a>Tworzenie sieci VLAN i podsieci dla chmur prywatnych oraz zarządzanie nimi
 
@@ -31,9 +31,13 @@ Otwórz kartę sieci VLAN/podsieci na stronie sieć, aby utworzyć sieci VLAN/po
 5. Wprowadź identyfikator sieci VLAN.
 6. Wprowadź nazwę podsieci.
 7. Aby włączyć routing w sieci VLAN (podsieć), określ zakres CIDR podsieci. Upewnij się, że zakres CIDR nie nakłada się na żadną z podsieci lokalnych, podsieci platformy Azure ani podsieci bramy.
-8. Kliknij przycisk **Submit** (Prześlij).
+8. Kliknij przycisk **Prześlij**.
 
     ![Utwórz sieć VLAN/podsieć](media/create-new-vlan-subnet-details.png)
+
+
+> [!IMPORTANT]
+> Istnieje limit przydziału 30 sieci VLAN na chmurę prywatną. Limity te można zwiększyć, [kontaktując się z pomocą techniczną](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest).
 
 ## <a name="use-vlan-information-to-set-up-a-distributed-port-group-in-vsphere"></a>Korzystanie z informacji o sieci VLAN do konfigurowania rozproszonej grupy portów w vSphere
 

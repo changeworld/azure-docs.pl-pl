@@ -1,35 +1,38 @@
 ---
-title: Omówienie kont użytkowników w Azure Active Directory B2C | Microsoft Docs
-description: Dowiedz się więcej o kontach użytkowników w Azure Active Directory B2C.
+title: Omówienie kont użytkowników w Azure Active Directory B2C
+description: Dowiedz się więcej o typach kont użytkowników, które mogą być używane w Azure Active Directory B2C.
 services: active-directory-b2c
 author: mmacy
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 11/30/2018
+ms.date: 11/05/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 0ef4bca3a2b08271b3623a346df6613b5ad16995
-ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
+ms.openlocfilehash: a627b0eebc3aa4a19b0670f899d3032d8df58da4
+ms.sourcegitcommit: 6c2c97445f5d44c5b5974a5beb51a8733b0c2be7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71063137"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73620455"
 ---
 # <a name="overview-of-user-accounts-in-azure-active-directory-b2c"></a>Omówienie kont użytkowników w Azure Active Directory B2C
 
-W Azure Active Directory B2C (Azure AD B2C) można używać różnych typów kont. Azure Active Directory, Azure Active Directory B2B i Azure Active Directory B2C udziału w typach kont użytkowników, które mogą być używane.
+W Azure Active Directory B2C (Azure AD B2C) istnieje kilka typów kont, które można utworzyć. Azure Active Directory, Active Directory B2B i Active Directory B2C udziału w typach kont użytkowników, które mogą być używane.
 
 Dostępne są następujące typy kont:
 
 - **Konto** służbowe — konto służbowe może uzyskać dostęp do zasobów w dzierżawie, a rola administratora może zarządzać dzierżawcami.
 - **Konto gościa** — konto gościa może mieć tylko konto Microsoft lub Azure Active Directory użytkownika, którego można użyć w celu uzyskania dostępu do aplikacji lub zarządzania dzierżawcami.
-- **Konto** klienta — konto konsumenta jest tworzone przez przechodzenie przez przepływ użytkownika w ramach aplikacji Azure AD B2C lub za pomocą usługi Azure AD interfejs API programu Graph i jest używane przez użytkowników aplikacji, które są zarejestrowane w Azure AD B2C.
+- **Konto klienta** — konto konsumenta jest używane przez użytkownika aplikacji, które zostały zarejestrowane w Azure AD B2C. Konta konsumentów mogą być tworzone przez:
+  - Użytkownik przechodzący przez przepływ użytkownika podczas rejestrowania w aplikacji Azure AD B2C
+  - Korzystanie z usługi Azure AD interfejs API programu Graph
+  - Korzystanie z witryny Azure Portal
 
-## <a name="work-account"></a>konto służbowe
+## <a name="work-account"></a>Konto służbowe
 
-Konto służbowe jest tworzone w taki sam sposób dla wszystkich dzierżawców w oparciu o usługę Azure AD. Aby utworzyć konto służbowe, możesz użyć informacji z [przewodnika Szybki Start: Dodawanie nowych użytkowników do usługi Azure Active Directory](../active-directory/fundamentals/add-users-azure-active-directory.md). Konto służbowe jest tworzone przy użyciu wybranego **nowego użytkownika** w Azure Portal.
+Konto służbowe jest tworzone w taki sam sposób dla wszystkich dzierżawców w oparciu o usługę Azure AD. Aby utworzyć konto służbowe, możesz użyć informacji z [przewodnika Szybki Start: Dodawanie nowych użytkowników do Azure Active Directory](../active-directory/fundamentals/add-users-azure-active-directory.md). Konto służbowe jest tworzone przy użyciu wybranego **nowego użytkownika** w Azure Portal.
 
 Po dodaniu nowego konta służbowego należy wziąć pod uwagę następujące ustawienia konfiguracji:
 
@@ -63,7 +66,7 @@ Poniższe informacje służą do resetowania hasła użytkownika:
 - [Azure Portal](../active-directory/fundamentals/active-directory-users-reset-password-azure-portal.md)
 - [Microsoft Graph](https://docs.microsoft.com/graph/api/user-update?view=graph-rest-1.0)
 
-## <a name="guest-user"></a>Użytkownik-gość
+## <a name="guest-user"></a>Użytkownik-Gość
 
 Użytkowników zewnętrznych można zaprosić do Twojej dzierżawy jako użytkownik-Gość. Typowym scenariuszem zapraszania użytkownika-gościa do dzierżawy usługi Azure AD B2C jest udostępnianie obowiązków administracyjnych. Aby zapoznać się z przykładem korzystania z konta gościa, zobacz [właściwości Azure Active Directory użytkownika współpracy B2B](../active-directory/b2b/user-properties.md).
 
@@ -73,7 +76,7 @@ Możesz również użyć [interfejsu API Microsoft Graph](https://docs.microsoft
 
 ## <a name="consumer-user"></a>Użytkownik odbiorcy
 
-Użytkownik będący odbiorcą może zalogować się do aplikacji zabezpieczonych przez Azure AD B2C, ale nie może uzyskać dostępu do zasobów platformy Azure, takich jak Azure Portal.  Użytkownik odbiorcy może korzystać z konta lokalnego lub kont federacyjnych, takich jak Facebook lub Twitter. Konto użytkownika jest tworzone przy użyciu usługi [rejestrowania lub logowania](../active-directory-b2c/active-directory-b2c-reference-policies.md).
+Użytkownik będący odbiorcą może zalogować się do aplikacji zabezpieczonych przez Azure AD B2C, ale nie może uzyskać dostępu do zasobów platformy Azure, takich jak Azure Portal. Użytkownik odbiorcy może korzystać z konta lokalnego lub kont federacyjnych, takich jak Facebook lub Twitter. Konto użytkownika jest tworzone przy użyciu usługi [rejestracji w](../active-directory-b2c/active-directory-b2c-reference-policies.md)usłudze Azure AD interfejs API programu Graph lub przy użyciu Azure Portal...
 
 Można określić dane, które są zbierane podczas tworzenia konta użytkownika odbiorcy przy użyciu niestandardowych atrybutów użytkownika. Aby uzyskać więcej informacji, zobacz [Definiowanie atrybutów niestandardowych w Azure Active Directory B2C](../active-directory-b2c/active-directory-b2c-reference-custom-attr.md).
 

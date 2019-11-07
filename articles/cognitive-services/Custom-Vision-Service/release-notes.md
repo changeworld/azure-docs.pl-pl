@@ -1,6 +1,7 @@
 ---
 title: Informacje o wersji — Custom Vision Service
 titleSuffix: Azure Cognitive Services
+description: Pobierz najnowsze informacje o nowych wersjach z zespołu Custom Vision.
 services: cognitive-services
 author: anrothMSFT
 manager: nitinme
@@ -9,12 +10,12 @@ ms.subservice: custom-vision
 ms.topic: conceptual
 ms.date: 04/03/2019
 ms.author: anroth
-ms.openlocfilehash: 79f3f2a5545b8cdcee86e52f35bd22a31e93d387
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: b9606c63ec7b53fb0b69918c21bdd9206f34c555
+ms.sourcegitcommit: 359930a9387dd3d15d39abd97ad2b8cb69b8c18b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68564085"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73647575"
 ---
 # <a name="custom-vision-service-release-notes"></a>Informacje o wersji Custom Vision Service
 
@@ -31,7 +32,7 @@ ms.locfileid: "68564085"
 - Dodano eksport wykrywania obiektów dla zestawu Vision AI dev Kit.
 - Dostosowania interfejsu użytkownika, łącznie z wyszukiwaniem projektu.
 
-## <a name="april-3-2019"></a>3 kwietnia 2019
+## <a name="april-3-2019"></a>3 kwietnia 2019 r.
 
 - Zwiększono limit liczby pól ograniczenia na obraz do 200. 
 - Poprawek, łącznie z istotną aktualizacją wydajności dla modeli wyeksportowanych do TensorFlow. 
@@ -53,9 +54,9 @@ ms.locfileid: "68564085"
 
 ## <a name="january-22-2019"></a>22 stycznia 2019
 
-- Dodano obsługę nowych regionów świadczenia usługi Azure: Zachodnie stany USA 2, Wschodnie stany USA, Wschodnie stany USA 2, Europa Zachodnia, Europa Północna, Azja Południowo-Wschodnia, Australia Wschodnia, Indie Środkowe, Południowe Zjednoczone Królestwo, Japonia Wschodnia i Północno-środkowe stany USA. Pomoc techniczna jest kontynuowana dla Południowo-środkowe stany USA.
+- Dodano wsparcie dla nowych regionów świadczenia usługi Azure: zachodnie stany USA 2, Wschodnie stany USA, Wschodnie stany USA 2, Europa Zachodnia, Europa Północna, Azja Południowo-Wschodnia, Japonia Wschodnia, Indie Środkowe, Południowe Zjednoczone Królestwo, Japonia Wschodnia i Północno-środkowe stany USA. Pomoc techniczna jest kontynuowana dla Południowo-środkowe stany USA.
 
-## <a name="december-12-2018"></a>12 grudnia 2018
+## <a name="december-12-2018"></a>12 grudnia 2018 r.
 
 - Obsługa eksportowania modeli wykrywania obiektów (wprowadzono kompaktową domenę wykrywania obiektów).
 - Rozwiązano szereg problemów z ułatwieniami dostępu dla ulepszonego czytnika ekranu i obsługi nawigacji klawiaturowej.
@@ -63,7 +64,7 @@ ms.locfileid: "68564085"
 - Zaktualizowano model podstawowy dla domeny wykrywania obiektów w celu lepszego wykrywania obiektów jakości.
 - Poprawki błędów.
 
-## <a name="november-6-2018"></a>6 listopada 2018 r.
+## <a name="november-6-2018"></a>6 listopada 2018
 
 - Dodano obsługę domeny logo podczas wykrywania obiektu.
 
@@ -74,7 +75,7 @@ ms.locfileid: "68564085"
 - Dodano eksport do ONNX 1,2, aby obsługiwał system Windows 2018 z aktualizacją Update systemu Windows ML.
 Poprawki błędów, w tym eksport ONNX z użyciem znaków specjalnych.
 
-## <a name="august-14-2018"></a>14 sierpnia 2018 r.
+## <a name="august-14-2018"></a>14 sierpnia 2018
 
 - Dodano widżet "wprowadzenie", aby customvision.ai lokację w celu obsługi użytkowników w ramach szkolenia projektu.
 - Dalsze ulepszenia potoku uczenia maszynowego, aby korzystać z projektów wieloetykietowych (nowej warstwy strat).
@@ -107,7 +108,7 @@ Poprawki błędów, w tym eksport ONNX z użyciem znaków specjalnych.
 
 ## <a name="december-19-2017"></a>19 grudnia 2017 r.
 
-- Dodano eksportowanie do systemu Android (TensorFlow) poza wcześniej wydanym eksportowaniem do systemu iOS (CoreML). Dzięki temu można uruchomić eksportowanie przeszkolonego modelu kompaktowego offline w aplikacji.
+- Eksport do systemu Android (TensorFlow) dodany, oprócz wcześniej wydanego eksportu do systemu iOS (CoreML). Pozwala to na eksportowanie przeszkolonego modelu kompaktowego do uruchomienia w trybie offline w aplikacji.
 - Dodano „kompaktowe” domeny Retail i Landmark umożliwiające eksportowanie modeli do tych domen.
 - Wydano wersję [1.2 interfejsu API szkolenia](https://southcentralus.dev.cognitive.microsoft.com/docs/services/f2d62aa3b93843d79e948fe87fa89554/operations/5a3044ee08fa5e06b890f11f) oraz [1.1 interfejsu API przewidywania](https://southcentralus.dev.cognitive.microsoft.com/docs/services/57982f59b5964e36841e22dfbfe78fc1/operations/5a3044f608fa5e06b890f164). Zaktualizowane interfejsy API obsługują eksportowanie modeli, nową operację przewidywania, która nie zapisuje obrazów w katalogu „Prognozy”, a także wprowadzono operacje wsadowe w interfejsie API szkolenia.
 - Ulepszenia środowiska użytkownika, w tym możliwość wyświetlania domen, które zostały użyte do szkolenia iteracji.

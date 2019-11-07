@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 798f95281740213ac23892eb3b54ff780ca18395
-ms.sourcegitcommit: a4b5d31b113f520fcd43624dd57be677d10fc1c0
+ms.openlocfilehash: 411b4bb74c21a445f4001c949e1c7811af212453
+ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70772340"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73606455"
 ---
 # <a name="set-up-firewall-tables-and-rules-for-private-clouds"></a>Konfigurowanie tabel i reguł zapory dla chmur prywatnych
 
@@ -33,6 +33,9 @@ Tabele zapory i skojarzone reguły pozwalają określić ograniczenia dotyczące
 4. Wprowadź nazwę tabeli.
 5. Zostanie wyświetlona domyślna reguła dla tabeli. Kliknij pozycję **Utwórz nową regułę** , aby utworzyć dodatkową regułę. Aby uzyskać szczegółowe informacje, zobacz poniższą procedurę.
 6. Kliknij przycisk **gotowe** , aby zapisać tabelę zapory.
+
+> [!IMPORTANT]
+> Można utworzyć maksymalnie dwie tabele zapory na chmurę prywatną.
 
 ## <a name="firewall-rules"></a>Reguły zapory
 
@@ -62,12 +65,15 @@ Reguły zapory określają sposób traktowania poszczególnych typów ruchu prze
 
 3. Kliknij przycisk **gotowe** , aby zapisać regułę i dodać ją do listy reguł dla tabeli zapory.
 
+> [!IMPORTANT]
+> Każda tabela zapory może mieć do 10 reguł ruchu przychodzącego i 20 reguł wychodzących. Limity te można zwiększyć, [kontaktując się z pomocą techniczną](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest).
+
 ## <a name="attach-vlanssubnets"></a>Dołącz sieci VLAN/podsieci
 
 Po zdefiniowaniu tabeli zapory można określić podsieci, które podlegają regułom w tabeli.
 
-1. Na stronie**tabele zapory** **sieciowej** > wybierz tabelę zapory.
+1. Na stronie **tabele zapory** > **sieci** wybierz tabelę zapory.
 2. Otwórz kartę **podłączone sieci VLAN/podsieć** .
 3. Kliknij przycisk **Dołącz do sieci VLAN/podsieci**.
 4. Wybierz chmurę prywatną i sieć VLAN. Wyświetlana jest nazwa skojarzonej podsieci i blok CIDR.
-5. Kliknij przycisk **Submit** (Prześlij).
+5. Kliknij przycisk **Prześlij**.

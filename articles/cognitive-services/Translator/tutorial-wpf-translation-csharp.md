@@ -1,7 +1,7 @@
 ---
-title: 'Samouczek: tworzenie aplikacji do tłumaczenia przy użyciu platformy WPF i języka C# — interfejs API tłumaczenia tekstu w usłudze Translator'
+title: 'Samouczek: Tworzenie aplikacji do translacji przy użyciu C# WPF, interfejs API tłumaczenia tekstu w usłudze translator'
 titleSuffix: Azure Cognitive Services
-description: W tym samouczku utworzysz aplikację platformy Windows Presentation Foundation (WPF), która korzysta z interfejsu API usług Cognitive Services na potrzeby tłumaczenia tekstu, wykrywania języka i sprawdzania pisowni, przy użyciu klucza pojedynczej subskrypcji. W tym ćwiczeniu dowiesz się, jak korzystać z funkcji interfejsu API tłumaczenia tekstu w usłudze Translator i interfejsu API sprawdzania pisowni Bing.
+description: W tym samouczku utworzysz aplikację WPF do przeprowadzenia tłumaczenia tekstu, wykrywania języka i sprawdzania pisowni przy użyciu jednego klucza subskrypcji.
 services: cognitive-services
 author: swmachan
 manager: nitinme
@@ -10,14 +10,14 @@ ms.subservice: translator-text
 ms.topic: tutorial
 ms.date: 06/04/2019
 ms.author: swmachan
-ms.openlocfilehash: 286b75166e6216513afc46e5779b8a2f969aeaf6
-ms.sourcegitcommit: 65131f6188a02efe1704d92f0fd473b21c760d08
+ms.openlocfilehash: 6f8196c276b4f8ef5c8a49f6f83f59f9f505a6be
+ms.sourcegitcommit: 359930a9387dd3d15d39abd97ad2b8cb69b8c18b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/10/2019
-ms.locfileid: "70858910"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73647703"
 ---
-# <a name="tutorial-create-a-translation-app-with-wpf"></a>Samouczek: tworzenie aplikacji do tłumaczenia przy użyciu platformy WPF
+# <a name="tutorial-create-a-translation-app-with-wpf"></a>Samouczek: Tworzenie aplikacji do translacji przy użyciu WPF
 
 W tym samouczku utworzysz aplikację platformy [Windows Presentation Foundation (WPF)](https://docs.microsoft.com/visualstudio/designers/getting-started-with-wpf?view=vs-2019), która korzysta z usług Azure Cognitive Services na potrzeby tłumaczenia tekstu, wykrywania języka i sprawdzania pisowni, przy użyciu klucza pojedynczej subskrypcji. W szczególności aplikacja będzie wywoływać interfejsy API tłumaczenia tekstu w usłudze Translator i [sprawdzania pisowni Bing](https://azure.microsoft.com/services/cognitive-services/spell-check/).
 
@@ -37,11 +37,11 @@ Ten samouczek zawiera informacje na temat wykonywania następujących czynności
 
 Ta lista zawiera usługi Cognitive Services używane w tym samouczku. Użyj linku, aby przejrzeć dokumentację interfejsu API dla każdej funkcji.
 
-| Usługa | Cecha | Opis |
+| Usługa | Funkcja | Opis |
 |---------|---------|-------------|
-| Tłumaczenie tekstu w usłudze Translator | [Pobieranie języków](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-languages) | Pobierz pełną listę obsługiwanych języków na potrzeby tłumaczenia tekstu. |
-| Tłumaczenie tekstu w usłudze Translator | [Tłumaczenie](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-translate) | Przetłumacz tekst na ponad 60 języków. |
-| Tłumaczenie tekstu w usłudze Translator | [Wykrywanie](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-detect) | Wykryj język tekstu wejściowego. Obejmuje współczynnik ufności dla wykrywania. |
+| Tekst usługi Translator | [Pobieranie języków](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-languages) | Pobierz pełną listę obsługiwanych języków na potrzeby tłumaczenia tekstu. |
+| Tekst usługi Translator | [Tłumaczenie](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-translate) | Przetłumacz tekst na ponad 60 języków. |
+| Tekst usługi Translator | [Wykrywanie](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-detect) | Wykryj język tekstu wejściowego. Obejmuje współczynnik ufności dla wykrywania. |
 | Sprawdzanie pisowni Bing | [Sprawdzanie pisowni](https://docs.microsoft.com/rest/api/cognitiveservices/bing-spell-check-api-v7-reference) | Popraw błędy pisowni w celu zwiększenia dokładności tłumaczenia. |
 
 ## <a name="prerequisites"></a>Wymagania wstępne
@@ -61,11 +61,11 @@ Pierwszą rzeczą, jaką należy wykonać, jest skonfigurowanie projektu w progr
 
 1. Otwórz program Visual Studio. Wybierz pozycję **Utwórz nowy projekt**.
 1. W obszarze **Utwórz nowy projekt**Znajdź i wybierz pozycję **aplikacja WPF (.NET Framework)** . Możesz wybrać opcję C# z **języka** , aby zawęzić opcje.
-1. Wybierz pozycję **dalej**, a następnie nadaj nazwę `MSTranslatorTextDemo`projektowi.
+1. Wybierz pozycję **dalej**, a następnie nadaj nazwę projektowi `MSTranslatorTextDemo`.
 1. Ustaw wersję struktury na **.NET Framework 4.7.2** lub nowszą, a następnie wybierz pozycję **Utwórz**.
-   ![Wprowadź nazwę i wersję struktury w programie Visual Studio](media/name-wpf-project-visual-studio.png)
+   ![wprowadź nazwę i wersję struktury w programie Visual Studio](media/name-wpf-project-visual-studio.png)
 
-Projekt został utworzony. Zauważysz, że otwarte są dwie karty: `MainWindow.xaml` i `MainWindow.xaml.cs`. W tym samouczku będziemy dodawać kod do tych dwóch plików. Zmodyfikujemy `MainWindow.xaml` interfejs użytkownika aplikacji. Będziemy modyfikować `MainWindow.xaml.cs` dla naszych wywołań tłumaczenie tekstu w usłudze translator i sprawdzanie pisowni Bing.
+Projekt został utworzony. Zauważysz, że otwarte są dwie karty: `MainWindow.xaml` i `MainWindow.xaml.cs`. W tym samouczku będziemy dodawać kod do tych dwóch plików. Zmodyfikujemy `MainWindow.xaml` dla interfejsu użytkownika aplikacji. Zmodyfikujemy `MainWindow.xaml.cs` dla naszych wywołań tłumaczenie tekstu w usłudze Translator i sprawdzanie pisowni Bing.
    ![Przeglądanie środowiska](media/blank-wpf-project.png)
 
 W następnej sekcji dodamy do naszego projektu zestawy i pakiet NuGet w celu uzyskania dodatkowych funkcji, takich jak analiza JSON.
@@ -85,11 +85,11 @@ Dodajmy do naszego projektu zestawy na potrzeby serializacji i deserializacji ob
    * [System.Runtime.Serialization](https://docs.microsoft.com/dotnet/api/system.runtime.serialization)
    * [System.Web](https://docs.microsoft.com/dotnet/api/system.web)
    * System.Web.Extensions
-   * [System.Windows](https://docs.microsoft.com/dotnet/api/system.windows)
+   * [System. Windows](https://docs.microsoft.com/dotnet/api/system.windows)
 1. Po dodaniu tych odwołań do projektu możesz kliknąć przycisk **OK**, aby zamknąć **Menedżera odwołań**.
 
 > [!NOTE]
-> Jeśli chcesz dowiedzieć się więcej na temat odwołań do zestawów, zobacz [Instrukcje: dodawanie lub usuwanie odwołań za pomocą Menedżera odwołań](https://docs.microsoft.com/visualstudio/ide/how-to-add-or-remove-references-by-using-the-reference-manager?view=vs-2019).
+> Jeśli chcesz dowiedzieć się więcej o odwołaniach do zestawów, zobacz [How to: Dodawanie lub usuwanie odwołania za pomocą Menedżera odwołań](https://docs.microsoft.com/visualstudio/ide/how-to-add-or-remove-references-by-using-the-reference-manager?view=vs-2019).
 
 ### <a name="install-newtonsoftjson"></a>Instalowanie pakietu Newtonsoft.Json
 
@@ -114,7 +114,7 @@ Zobaczmy, co będziemy tworzyć.
 
 Interfejs użytkownika obejmuje następujące składniki:
 
-| Name | Typ | Opis |
+| Nazwa | Typ | Opis |
 |------|------|-------------|
 | `FromLanguageComboBox` | ComboBox | Wyświetla listę języków tłumaczenia tekstu obsługiwanych przez usługę Microsoft Translator. Użytkownik wybiera źródłowy język tłumaczenia. |
 | `ToLanguageComboBox` | ComboBox | Wyświetla tę samą listę języków co kontrolka `FromComboBox`, ale służy do wybierania docelowego języka tłumaczenia. |
@@ -250,7 +250,7 @@ Cały nasz projekt jest hermetyzowany w klasie `MainWindow : Window`. Zacznijmy 
 
 W tym bloku kodu zadeklarowaliśmy dwie zmienne składowe, które zawierają informacje o dostępnych językach na potrzeby tłumaczenia:
 
-| Zmienna | Type | Opis |
+| Zmienna | Typ | Opis |
 |----------|------|-------------|
 |`languageCodes` | Tablica ciągów |Buforuje kody języków. Usługa Translator identyfikuje języki za pomocą krótkich kodów, takich jak `en` dla języka angielskiego. |
 |`languageCodesAndTitles` | Posortowany słownik | Mapuje „przyjazne” nazwy w interfejsie użytkownika z powrotem na krótkie kody używane w interfejsie API. Jest posortowana alfabetycznie, bez uwzględniania wielkości liter. |
@@ -328,7 +328,7 @@ Odpowiedź w formacie JSON jest analizowana i konwertowana do słownika. Następ
 
 ## <a name="populate-language-drop-down-menus"></a>Wypełnianie menu rozwijanych języków
 
-Interfejs użytkownika jest zdefiniowany w kodzie XAML, dzięki czemu skonfigurowanie go nie wymaga wielu operacji oprócz wywołania funkcji `InitializeComponent()`. Jedną z tych czynności należy dodać do menu rozwijanego **tłumaczenie z** i **Przetłumacz do** . `PopulateLanguageMenus()` Metoda dodaje nazwy.
+Interfejs użytkownika jest zdefiniowany w kodzie XAML, dzięki czemu skonfigurowanie go nie wymaga wielu operacji oprócz wywołania funkcji `InitializeComponent()`. Jedną z tych czynności należy dodać do menu rozwijanego **tłumaczenie z** i **Przetłumacz do** . Metoda `PopulateLanguageMenus()` dodaje nazwy.
 
 1. W programie Visual Studio otwórz kartę `MainWindow.xaml.cs`.
 2. Dodaj następujący kod do projektu poniżej metody `GetLanguagesForTranslate()`:

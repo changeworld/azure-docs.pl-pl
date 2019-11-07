@@ -1,5 +1,5 @@
 ---
-title: Publiczne zestawy danych dla usługi Azure Analytics | Microsoft Docs
+title: Publiczne zestawy danych dla usługi Azure Analytics
 description: Dowiedz się więcej o publicznych zestawach danych, których można użyć do prototypowania i testowania usług i rozwiązań usługi Azure Analytics.
 services: sql-database
 ms.service: sql-database
@@ -11,25 +11,25 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 10/01/2018
-ms.openlocfilehash: a16f6d6b0bf8600270fdf4e00cfa379ee4422fd0
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: dc8b2a00882abc2e88b357d5778eaf96ec71b1bd
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68566992"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73687575"
 ---
 # <a name="public-data-sets-for-testing-and-prototyping"></a>Publiczne zestawy danych do testowania i tworzenia prototypów
 
 Przejrzyj listę publicznych zestawów danych dla danych, których można użyć do prototypowania i testowania usług i rozwiązań magazynu oraz analiz.
 
-## <a name="us-government-and-agency-data"></a>Federalna Dane instytucji rządowych i agencji
+## <a name="us-government-and-agency-data"></a>Dane rządowe Stanów Zjednoczonych i agencji
 
 | Źródło danych | Informacje o danych | Informacje o plikach |
 |---|---|---|
 | [Dane rządowe Stanów Zjednoczonych](https://www.census.gov/data.html) | Ponad 190 000 zbiorów danych obejmujących rolnictwo, klimatyczne, konsumenta, ekosystemy, edukację, energię, finanse, zdrowie, lokalne władze administracyjne, produkcję, morski, ocean, bezpieczeństwo publiczne i naukę oraz badania w Stanach Zjednoczonych | Pliki różnych rozmiarów w różnych formatach, w tym HTML, XML, CSV, JSON, Excel i wiele innych. Można filtrować dostępne zestawy danych według formatu pliku. |
 | [Dane spisu USA](https://www.census.gov/data.html) | Dane statystyczne dotyczące populacji w Stanach Zjednoczonych | Zestawy danych są w różnych formatach. |
 | [Dane analizy naziemnej z NASA](https://earthdata.nasa.gov/) | Ponad 32 000 zbierania danych obejmujących rolnictwo, atmosfera, biosfery, klimatu, cryosphere, wymiary ludzkie, sfera, Powierzchnia gruntów, oceany, interakcje Sun i inne. | Zestawy danych są w różnych formatach. |
-| [Opóźnienia lotu i inne dane transportu](https://www.transtats.bts.gov/OT_Delay/OT_DelayCause1.asp) | "Stany Zjednoczone Biuro (BTS) działu transportu (transport) — statystyka transportu — śledzi wydajność lotów domowych prowadzonych przez dużych przewoźników lotniczych. Wyświetlane są podsumowanie informacji o liczbie przelotów, opóźnionych, anulowanych i przekierowane loty... w tabelach podsumowujących ogłoszonych w tej witrynie sieci Web ". | Pliki są w formacie CSV. |
+| [Opóźnienia lotu i inne dane transportu](https://www.transtats.bts.gov/OT_Delay/OT_DelayCause1.asp) | "Wydział statystyk transportu w Stanach Zjednoczonych (BTS) jest śledzenie wydajności lotów domowych prowadzonych przez dużych przewoźników lotniczych. Wyświetlane są podsumowanie informacji o liczbie przelotów, opóźnionych, anulowanych i przekierowane loty... w tabelach podsumowujących ogłoszonych w tej witrynie sieci Web ". | Pliki są w formacie CSV. |
 | [Ruch Fatalities — system raportowania analizy krytycznej dla Stanów Zjednoczonych (FARS)](https://www.nhtsa.gov/FARS) | "FARS jest spisem krajowym dostarczającym NHTSA, Kongres i amerykańskie dane roczne dotyczące krytycznych urazów poniesionych w przypadku awarii ruchu pojazdów mechanicznych". | "Utwórz własne dane krytyczne w trybie online przy użyciu systemu zapytań FARS. Lub Pobierz wszystkie dane FARS z 1975 do prezentacji z witryny FTP ". |
 | [Toksyczne dane chemiczne — Prognoza toksyczności EPA (ToxCast™)](https://www.epa.gov/chemical-research/toxicity-forecaster-toxcasttm-data) | "Większość aktualizacji EPA, publicznie dostępnych danych toksyczności o wysokiej przepływności na tysiącach chemikaliów. Te dane są generowane za pomocą nakładu pracy badawczej w ToxCast EPA ". | Zestawy danych są dostępne w różnych formatach, w tym w arkuszach kalkulacyjnych, pakietach R i plikach baz danych MySQL. |
 | [Toksyczne dane chemiczne — NIH Tox21 Data Challenge 2014](https://tripod.nih.gov/tox21/challenge/) | "Żądanie Tox21 danych 2014 zostało zaprojektowane, aby pomóc analitykom w zrozumieniu potencjału chemikaliów i związków, które są testowane przez toksykologia w ramach inicjatywy dwudziestego wieku, aby przerwać ścieżki biologiczne w sposób, który może spowodować toksyczne efekty". | Zestawy danych są dostępne w formatach UŚMIECHów i SDF. Dane zapewniają "informacje o działaniach i struktury chemiczne w kolekcji Tox21 ~ 10 000 związki (Tox21 10 tys.)". |

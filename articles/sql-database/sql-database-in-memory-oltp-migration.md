@@ -1,5 +1,5 @@
 ---
-title: Przetwarzanie OLTP w pamięci zwiększa wydajność programu SQL transakcja | Microsoft Docs
+title: Przetwarzanie OLTP w pamięci zwiększa wydajność programu SQL transakcja
 description: Wdrażaj OLTP w pamięci, aby zwiększyć wydajność transakcyjną w istniejącej bazie danych SQL.
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: MightyPen
 ms.date: 11/07/2018
-ms.openlocfilehash: e869b2bba3bd64b58d9063e9445889ef709efdc3
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 82b24b51a103d31bf20bbb7a9fc304095be523d5
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68567937"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73689841"
 ---
 # <a name="use-in-memory-oltp-to-improve-your-application-performance-in-sql-database"></a>Użycie OLTP w pamięci w celu poprawy wydajności aplikacji w SQL Database
 
@@ -28,7 +28,7 @@ ms.locfileid: "68567937"
 
 Wykonaj następujące kroki, aby wdrożyć OLTP w pamięci w istniejącej bazie danych.
 
-## <a name="step-1-ensure-you-are-using-a-premium-and-business-critical-tier-database"></a>Krok 1: Upewnij się, że korzystasz z bazy danych w warstwie Premium i Krytyczne dla działania firmy
+## <a name="step-1-ensure-you-are-using-a-premium-and-business-critical-tier-database"></a>Krok 1. upewnienie się, że korzystasz z bazy danych w warstwie Premium i Krytyczne dla działania firmy
 
 Przetwarzanie OLTP w pamięci jest obsługiwane tylko w bazach danych w warstwach Premium i Krytyczne dla działania firmy. W pamięci jest obsługiwana, jeśli zwrócony wynik wynosi 1 (nie 0):
 
@@ -40,17 +40,17 @@ SELECT DatabasePropertyEx(Db_Name(), 'IsXTPSupported');
 
 
 
-## <a name="step-2-identify-objects-to-migrate-to-in-memory-oltp"></a>Krok 2: Identyfikowanie obiektów do migracji do przetwarzania OLTP w pamięci
+## <a name="step-2-identify-objects-to-migrate-to-in-memory-oltp"></a>Krok 2. identyfikowanie obiektów do migracji do przetwarzania OLTP w pamięci
 Program SSMS zawiera raport z **omówieniem analizy wydajności transakcji** , który można uruchomić względem bazy danych z aktywnym obciążeniem. Raport identyfikuje tabele i procedury składowane, które są kandydatami do migracji do przetwarzania OLTP w pamięci.
 
 W programie SSMS w celu wygenerowania raportu:
 
 * W **Eksplorator obiektów**kliknij prawym przyciskiem myszy węzeł bazy danych.
-* Kliknij kolejno pozycje **raporty** > **standardowe raporty** > **Analiza wydajności — Omówienie**.
+* Kliknij kolejno pozycje **raporty** > **Raporty standardowe** > **Analiza wydajności transakcji — Omówienie**.
 
 Aby uzyskać więcej informacji, zobacz [Określanie, czy tabela lub procedura składowana powinna być przypisana do OLTP w pamięci](https://msdn.microsoft.com/library/dn205133.aspx).
 
-## <a name="step-3-create-a-comparable-test-database"></a>Krok 3: Tworzenie porównywalnej bazy danych testowych
+## <a name="step-3-create-a-comparable-test-database"></a>Krok 3. Tworzenie porównywalnej bazy danych testowych
 Załóżmy, że raport wskazuje, że baza danych ma tabelę, która mogłaby skorzystać z konwersji na tabelę zoptymalizowaną pod kątem pamięci. Zalecamy, aby najpierw przeprowadzić test w celu potwierdzenia wskazywania przez testowanie.
 
 Potrzebna jest testowa kopia produkcyjnej bazy danych. Testowa baza danych powinna znajdować się na tym samym poziomie warstwy usług, co w produkcyjnej bazie danych.
@@ -66,7 +66,7 @@ Aby ułatwić testowanie, Dostosuj bazę danych testowych w następujący sposó
         MEMORY_OPTIMIZED_ELEVATE_TO_SNAPSHOT = ON;
    ```
 
-## <a name="step-4-migrate-tables"></a>Krok 4: Migrowanie tabel
+## <a name="step-4-migrate-tables"></a>Krok 4. Migrowanie tabel
 Należy utworzyć i wypełnić kopię zoptymalizowaną pod kątem pamięci tabeli, która ma zostać przetestowana. Można go utworzyć przy użyciu jednej z:
 
 * Kreator przydatnej optymalizacji pamięci w programie SSMS.
@@ -93,7 +93,7 @@ Aby użyć tej opcji migracji:
 2. Uzyskaj kompletny skrypt T-SQL dla tabeli i jej indeksów.
    
    * W programie SSMS kliknij prawym przyciskiem myszy węzeł tabeli.
-   * Kliknij pozycję **tabela skryptów,**  > **Aby** > utworzyć**nowe okno zapytania**.
+   * Kliknij pozycję **tabela skryptów jako** > **utwórz, aby** > **nowe okno zapytania**.
 3. W oknie Skrypt Dodaj wyrażenie WITH (MEMORY_OPTIMIZED = ON) do instrukcji CREATE TABLE.
 4. Jeśli istnieje indeks KLASTROWANY, zmień go na nieklastrowany.
 5. Zmień nazwę istniejącej tabeli przy użyciu SP_RENAME.
@@ -146,11 +146,11 @@ Kroki migracji są następujące:
 2. Napisz ponownie nagłówek, aby dopasować poprzedni szablon.
 3. Należy upewnić się, czy kod T-SQL procedury składowanej korzysta z funkcji, które nie są obsługiwane przez procedury składowane skompilowane w sposób macierzysty. Zaimplementuj obejścia w razie potrzeby.
    
-   * Aby uzyskać szczegółowe informacje, zobacz [problemy z migracją dla procedur składowanych skompilowanych w](https://msdn.microsoft.com/library/dn296678.aspx)sposób macierzysty.
+   * Aby uzyskać szczegółowe informacje, zobacz [problemy z migracją dla procedur składowanych skompilowanych w sposób macierzysty](https://msdn.microsoft.com/library/dn296678.aspx).
 4. Zmień nazwę starej procedury składowanej przy użyciu SP_RENAME. Lub po prostu upuść go.
 5. Uruchom edytowaną procedurę tworzenia skryptu T-SQL.
 
-## <a name="step-6-run-your-workload-in-test"></a>Krok 6: Uruchamianie obciążenia w teście
+## <a name="step-6-run-your-workload-in-test"></a>Krok 6. Uruchamianie obciążenia w teście
 Uruchom obciążenie w testowej bazie danych, która jest podobna do obciążenia działającego w produkcyjnej bazie danych. Powinno to ujawnić wzrost wydajności osiągnięty przez użycie funkcji w pamięci dla tabel i procedur składowanych.
 
 Główne atrybuty obciążenia są następujące:
@@ -162,13 +162,13 @@ W celu dopasowania i uruchomienia obciążenia testowego należy rozważyć uży
 
 Aby zminimalizować opóźnienie sieci, należy uruchomić test w tym samym regionie geograficznym platformy Azure, w którym znajduje się baza danych.
 
-## <a name="step-7-post-implementation-monitoring"></a>Krok 7: Monitorowanie po implementacji
+## <a name="step-7-post-implementation-monitoring"></a>Krok 7. monitorowanie po implementacji
 Rozważ monitorowanie efektów wydajności implementacji w pamięci w środowisku produkcyjnym:
 
 * [Monitoruj magazyn w pamięci](sql-database-in-memory-oltp-monitoring.md).
 * [Monitorowanie usługi Azure SQL Database przy użyciu dynamicznych widoków zarządzania](sql-database-monitoring-with-dmvs.md)
 
-## <a name="related-links"></a>Linki pokrewne
+## <a name="related-links"></a>Powiązane linki
 * [Przetwarzanie OLTP w pamięci (Optymalizacja w pamięci)](https://msdn.microsoft.com/library/dn133186.aspx)
 * [Wprowadzenie do procedur składowanych skompilowanych w sposób macierzysty](https://msdn.microsoft.com/library/dn133184.aspx)
 * [Klasyfikator optymalizacji pamięci](https://msdn.microsoft.com/library/dn284308.aspx)

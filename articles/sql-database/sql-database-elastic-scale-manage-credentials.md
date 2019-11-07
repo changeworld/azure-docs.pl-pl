@@ -1,5 +1,5 @@
 ---
-title: Zarządzanie poświadczeniami w bibliotece klienta Elastic Database | Microsoft Docs
+title: Zarządzanie poświadczeniami w bibliotece klienta Elastic Database
 description: Jak ustawić prawidłowy poziom poświadczeń, administrator tylko do odczytu dla aplikacji Elastic Database
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 01/03/2019
-ms.openlocfilehash: d89e83092775828016c2c47a96164319f5474c1e
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 8856b827ad2c6719cdc6e8c387be1b63b3f44b22
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68568418"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73690212"
 ---
 # <a name="credentials-used-to-access-the-elastic-database-client-library"></a>Poświadczenia używane do uzyskiwania dostępu do biblioteki klienta Elastic Database
 
@@ -30,7 +30,7 @@ Zobacz również [Zarządzanie bazami danych i nazwami logowania w Azure SQL Dat
 
 ## <a name="about-management-credentials"></a>Informacje o poświadczeniach zarządzania
 
-Poświadczenia zarządzania służą do tworzenia obiektu **ShardMapManager** ([Java](/java/api/com.microsoft.azure.elasticdb.shard.mapmanager.shardmapmanager), [.NET](https://docs.microsoft.com/dotnet/api/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardmapmanager)) dla aplikacji, które manipulują mapami fragmentu. (Na przykład zobacz [Dodawanie fragmentu przy użyciu narzędzi Elastic Database](sql-database-elastic-scale-add-a-shard.md) i [routingu zależnego od danych](sql-database-elastic-scale-data-dependent-routing.md)). Użytkownik biblioteki klienta elastycznej skali tworzy SQL użytkowników i kont logowania SQL i upewnia się, że każdy otrzymuje uprawnienia odczytu/zapisu w bazie danych globalnych niezależnego fragmentu mapy i wszystkie również niezależnego fragmentu bazy danych. Te poświadczenia są używane do obsługi globalnej mapy fragmentu i lokalnych map fragmentu, gdy są wykonywane zmiany w mapie fragmentu. Na przykład Użyj poświadczeń zarządzania, aby utworzyć obiekt Menedżera mapy fragmentu (za pomocą **GetSqlShardMapManager** ([Java](/java/api/com.microsoft.azure.elasticdb.shard.mapmanager.shardmapmanagerfactory.getsqlshardmapmanager), [.NET](https://docs.microsoft.com/dotnet/api/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardmapmanagerfactory.getsqlshardmapmanager)):
+Poświadczenia zarządzania służą do tworzenia obiektu **ShardMapManager** ([Java](/java/api/com.microsoft.azure.elasticdb.shard.mapmanager.shardmapmanager), [.NET](https://docs.microsoft.com/dotnet/api/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardmapmanager)) dla aplikacji, które manipulują mapami fragmentu. (Na przykład zobacz [Dodawanie fragmentu przy użyciu narzędzi Elastic Database](sql-database-elastic-scale-add-a-shard.md) i [routingu zależnego od danych](sql-database-elastic-scale-data-dependent-routing.md)). Użytkownik biblioteki klienta skalowania elastycznego tworzy użytkowników SQL i logowania SQL i sprawdza, czy każdy z nich ma przyznane uprawnienia do odczytu i zapisu w globalnej bazie danych map fragmentu i wszystkie bazy danych fragmentu. Te poświadczenia są używane do obsługi globalnej mapy fragmentu i lokalnych map fragmentu, gdy są wykonywane zmiany w mapie fragmentu. Na przykład Użyj poświadczeń zarządzania, aby utworzyć obiekt Menedżera mapy fragmentu (za pomocą **GetSqlShardMapManager** ([Java](/java/api/com.microsoft.azure.elasticdb.shard.mapmanager.shardmapmanagerfactory.getsqlshardmapmanager), [.NET](https://docs.microsoft.com/dotnet/api/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardmapmanagerfactory.getsqlshardmapmanager)):
 
 ```java
 // Obtain a shard map manager.
@@ -43,7 +43,7 @@ Zmienna **smmAdminConnectionString** jest parametrami połączenia, które zawie
 "Server=<yourserver>.database.windows.net;Database=<yourdatabase>;User ID=<yourmgmtusername>;Password=<yourmgmtpassword>;Trusted_Connection=False;Encrypt=True;Connection Timeout=30;”
 ```
 
-Nie używaj wartości w postaci "username@server" — zamiast tego użyj wartości "username".  Wynika to z faktu, że poświadczenia muszą działać zarówno w przypadku bazy danych Menedżera map fragmentu, jak i poszczególnych fragmentów, które mogą znajdować się na różnych serwerach.
+Nie używaj wartości w postaci "username@server" — zamiast tego wystarczy użyć wartości "username".  Wynika to z faktu, że poświadczenia muszą działać zarówno w przypadku bazy danych Menedżera map fragmentu, jak i poszczególnych fragmentów, które mogą znajdować się na różnych serwerach.
 
 ## <a name="access-credentials"></a>Poświadczenia dostępu
 
@@ -72,7 +72,7 @@ W tym przykładzie **smmUserConnectionString** przechowuje parametry połączeni
 
 Podobnie jak w przypadku poświadczeń administratora, nie należy używać wartości w postaci "username@server". Zamiast tego wystarczy użyć "username".  Należy również zauważyć, że parametry połączenia nie zawierają nazwy serwera i bazy danych. Wynika to z faktu, że wywołanie **OpenConnectionForKey** automatycznie kieruje połączenie do poprawnej fragmentu na podstawie klucza. W związku z tym nazwa bazy danych i nazwa serwera nie są podane.
 
-## <a name="see-also"></a>Zobacz także
+## <a name="see-also"></a>Zobacz też
 
 [Zarządzanie bazami danych i nazwami logowania w usłudze Azure SQL Database](sql-database-manage-logins.md)
 

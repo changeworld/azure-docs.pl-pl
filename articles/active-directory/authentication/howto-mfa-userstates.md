@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3ee1d282506b537ed29592ca9008c88a53220d7d
-ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
+ms.openlocfilehash: 8a2d22c4a7a8b95f5a200518a3c46fc33f55c66a
+ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72554837"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73569859"
 ---
 # <a name="how-to-require-two-step-verification-for-a-user"></a>Jak wymagać weryfikacji dwuetapowej dla użytkownika
 
@@ -56,20 +56,20 @@ Wszyscy użytkownicy zaczynają *wyłączać*. Po zarejestrowaniu użytkowników
 Wykonaj następujące kroki, aby uzyskać dostęp do strony, na której można wyświetlać Stany użytkowników i zarządzać nimi:
 
 1. Zaloguj się do witryny [Azure Portal](https://portal.azure.com) jako administrator.
-2. Przejdź do **Azure Active Directory**  > **użytkowników i grup**  > **wszystkich użytkowników**.
+2. Przejdź do **Azure Active Directory** > **użytkowników i grup** > **wszystkich użytkowników**.
 3. Wybierz **Multi-Factor Authentication**.
-   ![Select Multi-Factor Authentication ](./media/howto-mfa-userstates/selectmfa.png)
+   ![wybierz Multi-Factor Authentication](./media/howto-mfa-userstates/selectmfa.png)
 4. Zostanie wyświetlona nowa strona wyświetlająca Stany użytkownika.
-   ![multi — stan użytkownika uwierzytelniania — zrzut ekranu ](./media/howto-mfa-userstates/userstate1.png)
+   ![stanu użytkownika usługi uwierzytelniania wieloskładnikowego — zrzut ekranu](./media/howto-mfa-userstates/userstate1.png)
 
 ### <a name="change-the-status-for-a-user"></a>Zmiana stanu użytkownika
 
 1. Wykonaj powyższe kroki, aby przejść do strony **Użytkownicy** usługi Azure Multi-Factor Authentication.
 2. Znajdź użytkownika, który ma zostać włączony dla usługi Azure MFA. Może być konieczna zmiana widoku w górnej części strony.
-   ![Select użytkownikowi na zmianę stanu z karty użytkownicy ](./media/howto-mfa-userstates/enable1.png)
+   ![wybierz użytkownika, aby zmienić stan dla na karcie Użytkownicy](./media/howto-mfa-userstates/enable1.png)
 3. Zaznacz pole obok nazwy.
 4. Po prawej stronie w obszarze **szybkie kroki**wybierz pozycję **Włącz** lub **Wyłącz**.
-   ![Enable wybranego użytkownika, klikając pozycję Włącz w menu szybkie kroki ](./media/howto-mfa-userstates/user1.png)
+   ![włączyć wybranego użytkownika, klikając pozycję Włącz w menu szybkie kroki](./media/howto-mfa-userstates/user1.png)
 
    > [!TIP]
    > *Włączone* użytkownicy są automatycznie przełączane w celu *wymuszenia* rejestracji w usłudze Azure MFA. Nie zmieniaj ręcznie stanu użytkownika na *wymuszone*.
@@ -78,7 +78,7 @@ Wykonaj następujące kroki, aby uzyskać dostęp do strony, na której można w
 
 Po włączeniu użytkowników Powiadom ich pocztą e-mail. Poinformuj ich o konieczności zarejestrowania się podczas następnego logowania. Ponadto, jeśli w organizacji są używane aplikacje nie korzystające z przeglądarki, które nie obsługują nowoczesnego uwierzytelniania, muszą one tworzyć hasła aplikacji. Możesz również dołączyć link do [podręcznika użytkownika końcowego usługi Azure MFA](../user-help/multi-factor-authentication-end-user.md) , aby ułatwić Ci rozpoczęcie pracy.
 
-### <a name="use-powershell"></a>Używanie programu PowerShell
+### <a name="use-powershell"></a>Korzystanie z programu PowerShell
 
 Aby zmienić stan użytkownika przy użyciu [programu Azure AD PowerShell](/powershell/azure/overview), Zmień `$st.State`. Istnieją trzy możliwe stany:
 
@@ -173,6 +173,9 @@ function Set-MfaState {
 # Disable MFA for all users
 Get-MsolUser -All | Set-MfaState -State Disabled
 ```
+
+> [!NOTE]
+> Ostatnio zmieniono zachowanie i skrypt programu PowerShell powyżej. Wcześniej skrypt zapisany z metod MFA, wyłączył uwierzytelnianie MFA i przywrócił metody. Nie jest to już konieczne, ponieważ domyślne zachowanie funkcji Disable nie czyści metod.
 
 ## <a name="next-steps"></a>Następne kroki
 

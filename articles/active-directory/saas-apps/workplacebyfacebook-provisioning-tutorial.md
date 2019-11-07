@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 01/26/2018
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f040ff4c8e59f764676aa6fdd9460ec94641684a
-ms.sourcegitcommit: 7c5a2a3068e5330b77f3c6738d6de1e03d3c3b7d
+ms.openlocfilehash: 7ee091d1c8f0f477354f6bb422d041278ec5668e
+ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70881797"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73574266"
 ---
 # <a name="tutorial-configure-workplace-by-facebook-for-automatic-user-provisioning"></a>Samouczek: Konfigurowanie miejsca pracy przez serwis Facebook w celu automatycznego aprowizacji użytkowników
 
@@ -34,9 +34,9 @@ Do skonfigurowania integracji usługi Azure AD z aplikacją Workplace by Faceboo
 - Miejsce pracy w ramach subskrypcji z włączoną obsługą logowania jednokrotnego w serwisie Facebook
 
 > [!NOTE]
-> Aby przetestować kroki opisane w tym samouczku, zaleca się używania środowiska produkcyjnego.
+> Nie zalecamy używania środowiska produkcyjnego do testowania czynności opisanych w tym samouczku.
 
-Aby przetestować kroki opisane w tym samouczku, należy wykonać te zalecenia:
+Aby przetestować czynności opisane w tym samouczku, należy postępować zgodnie z następującymi zaleceniami:
 
 - Nie używaj środowiska produkcyjnego, chyba że jest to konieczne.
 - Jeśli nie masz środowiska próbnego usługi Azure AD, możesz skorzystać z miesięcznej wersji próbnej [tutaj](https://azure.microsoft.com/pricing/free-trial/).
@@ -68,7 +68,7 @@ Celem tej sekcji jest zaprojektowanie sposobu włączania obsługi kont użytkow
 
 Usługa Azure AD obsługuje automatyczne synchronizowanie szczegółowych informacji o koncie przypisanych użytkowników do miejsca pracy przez serwis Facebook. Ta automatyczna synchronizacja umożliwia miejsce pracy przez serwis Facebook w celu uzyskania danych potrzebnych do autoryzowania dostępu do użytkowników przed podjęciem próby zalogowania się po raz pierwszy. W przypadku odwołania dostępu do usługi Azure AD użytkownicy z miejsca pracy w serwisie Facebook są również nieudostępniani.
 
-1. W [Azure Portal](https://portal.azure.com)przejdź do sekcji **Azure Active Directory** > aplikacje dla**wszystkich aplikacji** w**przedsiębiorstwie** > .
+1. W [Azure Portal](https://portal.azure.com)przejdź do sekcji **Azure Active Directory** > aplikacje dla **przedsiębiorstw** > **wszystkie aplikacje** .
 
 2. Jeśli masz już skonfigurowany obszar roboczy w serwisie Facebook do logowania jednokrotnego, Wyszukaj swoje wystąpienie miejsca pracy przez serwis Facebook przy użyciu pola wyszukiwania. W przeciwnym razie wybierz pozycję **Dodaj** i Wyszukaj **miejsce pracy przez serwis Facebook** w galerii aplikacji. Wybierz pozycję miejsce pracy według serwisu Facebook z wyników wyszukiwania, a następnie dodaj ją do listy aplikacji.
 
@@ -76,9 +76,9 @@ Usługa Azure AD obsługuje automatyczne synchronizowanie szczegółowych inform
 
 4. Ustaw **tryb aprowizacji** na **automatyczny**. 
 
-    ![aprowizowanie](./media/workplacebyfacebook-provisioning-tutorial/provisioning.png)
+    ![Aprowizacji](./media/workplacebyfacebook-provisioning-tutorial/provisioning.png)
 
-5. W sekcji **poświadczenia administratora** wprowadź token dostępu z miejsca pracy przez administratora serwisu Facebook i ustaw wartość adresu URL dzierżawy na `https://www.facebook.com/scim/v1/` . Zobacz te [instrukcje](https://developers.facebook.com/docs/workplace/integrations/custom-integrations/apps) dotyczące tworzenia tokenu dostępu do miejsca pracy. 
+5. W sekcji **poświadczenia administratora** wprowadź token dostępu z miejsca pracy przez administratora serwisu Facebook i ustaw wartość adresu URL dzierżawy na `https://www.facebook.com/scim/v1/`. Zobacz te [instrukcje](https://developers.facebook.com/docs/workplace/integrations/custom-integrations/apps) dotyczące tworzenia tokenu dostępu do miejsca pracy. 
 
 6. W Azure Portal kliknij pozycję **Testuj połączenie** , aby upewnić się, że usługa Azure AD może nawiązać połączenie z miejscem pracy przez aplikację w serwisie Facebook. Jeśli połączenie nie powiedzie się, upewnij się, że miejsce pracy przez konto w serwisie Facebook ma uprawnienia administratora zespołu.
 
@@ -94,12 +94,12 @@ Usługa Azure AD obsługuje automatyczne synchronizowanie szczegółowych inform
 
 12. Kliknij przycisk **Zapisz.**
 
-Aby uzyskać więcej informacji na temat konfigurowania automatycznej aprowizacji, zobacz[https://developers.facebook.com/docs/facebook-at-work/provisioning/cloud-providers](https://developers.facebook.com/docs/facebook-at-work/provisioning/cloud-providers)
+Aby uzyskać więcej informacji na temat konfigurowania automatycznej aprowizacji, zobacz [https://developers.facebook.com/docs/facebook-at-work/provisioning/cloud-providers](https://developers.facebook.com/docs/facebook-at-work/provisioning/cloud-providers)
 
 Możesz teraz utworzyć konto testowe. Poczekaj aż do 20 minut, aby sprawdzić, czy konto zostało zsynchronizowane z miejscem pracy w serwisie Facebook.
 
 > [!NOTE]
-> Pracujemy ściśle z miejscem pracy przez zespół w serwisie Facebook, aby upewnić się, że aplikacja usługi Azure AD została zatwierdzona i spełnia nowe wytyczne.   
+> Pracujemy ściśle z miejscem pracy przez zespół w serwisie Facebook, aby upewnić się, że aplikacja usługi Azure AD została zatwierdzona i spełnia nowe wytyczne. Termin "miejsce pracy w serwisie Facebook" jest 16 grudnia i oczekujemy, że zostanie on zrealizowany. W tym czasie nie jest oczekiwana żadna liczba klientów. 28-luty-2020 klienci będą musieli przejść do nowej integracji. Wyślemy tutaj ogłoszenie zaraz po udostępnieniu ścieżki migracji.    
 
 ## <a name="additional-resources"></a>Dodatkowe zasoby
 

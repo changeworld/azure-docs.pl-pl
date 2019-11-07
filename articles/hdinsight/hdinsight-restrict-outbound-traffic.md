@@ -1,21 +1,20 @@
 ---
 title: Konfigurowanie ograniczenia ruchu wychodzącego w sieci — Azure HDInsight
 description: Dowiedz się, jak skonfigurować ograniczenie ruchu sieciowego ruchu wychodzącego dla klastrów usługi Azure HDInsight.
-services: hdinsight
-ms.service: hdinsight
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
+ms.service: hdinsight
 ms.topic: conceptual
-ms.date: 05/30/2019
-ms.openlocfilehash: df691102b565824d6cb6a86f19e6fce3822d8ba8
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
-ms.translationtype: HT
+ms.date: 10/23/2019
+ms.openlocfilehash: 8f6959eb6f9d17a368e7df7b95ecc511d0396f87
+ms.sourcegitcommit: 6c2c97445f5d44c5b5974a5beb51a8733b0c2be7
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73498131"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73621449"
 ---
-# <a name="configure-outbound-network-traffic-for-azure-hdinsight-clusters-using-firewall-preview"></a>Konfigurowanie wychodzącego ruchu sieciowego dla klastrów usługi Azure HDInsight przy użyciu zapory (wersja zapoznawcza)
+# <a name="configure-outbound-network-traffic-for-azure-hdinsight-clusters-using-firewall"></a>Konfigurowanie wychodzącego ruchu sieciowego dla klastrów usługi Azure HDInsight przy użyciu zapory
 
 W tym artykule przedstawiono procedurę zabezpieczania ruchu wychodzącego z klastra usługi HDInsight przy użyciu zapory platformy Azure. W poniższych krokach przyjęto założenie, że konfigurujesz zaporę platformy Azure dla istniejącego klastra. Jeśli wdrażasz nowy klaster i za zaporą, najpierw utwórz klaster usługi HDInsight i podsieć, a następnie wykonaj kroki opisane w tym przewodniku.
 
@@ -32,86 +31,110 @@ Rozwiązanie służące do zabezpieczania adresów wychodzących polega na użyc
 ## <a name="configuring-azure-firewall-with-hdinsight"></a>Konfigurowanie zapory platformy Azure z usługą HDInsight
 
 Podsumowanie kroków służących do blokowania ruchu wychodzącego z istniejącej usługi HDInsight przy użyciu zapory platformy Azure:
+
 1. Utwórz zaporę.
 1. Dodawanie reguł aplikacji do zapory
 1. Dodaj reguły sieci do zapory.
 1. Utwórz tabelę routingu.
 
+### <a name="create-new-subnet"></a>Utwórz nową podsieć
+
+Utwórz podsieć o nazwie **AzureFirewallSubnet** w sieci wirtualnej, w której znajduje się klaster.
+
 ### <a name="create-a-new-firewall-for-your-cluster"></a>Tworzenie nowej zapory dla klastra
 
-1. Utwórz podsieć o nazwie **AzureFirewallSubnet** w sieci wirtualnej, w której znajduje się klaster. 
-1. Utwórz nową zaporę **test-FW01** , wykonując kroki opisane w [samouczku: wdrażanie i Konfigurowanie zapory platformy Azure przy użyciu Azure Portal](../firewall/tutorial-firewall-deploy-portal.md#deploy-the-firewall).
+Utwórz zaporę o nazwie **test-FW01** , wykonując kroki opisane w sekcji **wdrażanie zapory** w [samouczku: wdrażanie i Konfigurowanie zapory platformy Azure przy użyciu Azure Portal](../firewall/tutorial-firewall-deploy-portal.md#deploy-the-firewall).
 
 ### <a name="configure-the-firewall-with-application-rules"></a>Konfigurowanie zapory przy użyciu reguł aplikacji
 
 Utwórz kolekcję reguł aplikacji, która umożliwia klastrowi wysyłanie i odbieranie ważnej komunikacji.
 
-Wybierz nową zaporę **test-FW01** z Azure Portal. Kliknij pozycję **reguły** w obszarze **Ustawienia** > **kolekcje reguł aplikacji** > **Dodawanie kolekcji reguł aplikacji**.
+1. Wybierz nową zaporę **test-FW01** z Azure Portal.
 
-![Title: Dodawanie kolekcji reguł aplikacji](./media/hdinsight-restrict-outbound-traffic/hdinsight-restrict-outbound-traffic-add-app-rule-collection.png)
+1. Przejdź do **ustawień** > **reguł** > **kolekcji reguł aplikacji** >  **+ Dodaj kolekcję reguł aplikacji**.
 
-Na ekranie **Dodawanie kolekcji reguł aplikacji** wykonaj następujące czynności:
+    ![Title: Dodawanie kolekcji reguł aplikacji](./media/hdinsight-restrict-outbound-traffic/hdinsight-restrict-outbound-traffic-add-app-rule-collection.png)
 
-1. Wprowadź **nazwę**, **priorytet**i kliknij pozycję **Zezwól** z menu rozwijanego **Akcja** , a następnie wprowadź następujące reguły w **sekcji Tagi FQDN** :
+1. Na ekranie **Dodawanie kolekcji reguł aplikacji** podaj następujące informacje:
 
-   | **Nazwa** | **Adres źródłowy** | **Tag FQDN** | **Uwagi** |
-   | --- | --- | --- | --- |
-   | Rule_1 | * | HDInsight i WindowsUpdate | Wymagane dla usług HDI Services |
+    **Górna sekcja**
 
-1. Dodaj następujące reguły do **docelowej sekcji FQDN** :
+    | Właściwość|  Wartość|
+    |---|---|
+    |Nazwa| FwAppRule|
+    |Priorytet|200|
+    |Akcja|Zezwalaj|
 
-   | **Nazwa** | **Adres źródłowy** | **Protokół: Port** | **Docelowe nazwy FQDN** | **Uwagi** |
-   | --- | --- | --- | --- | --- |
-   | Rule_2 | * | https: 443 | login.windows.net | Zezwala na działanie logowania systemu Windows |
-   | Rule_3 | * | https: 443 | login.microsoftonline.com | Zezwala na działanie logowania systemu Windows |
-   | Rule_4 | * | https: 443, http: 80 | < storage_account_name. blob. Core. Windows. net > | Jeśli klaster jest objęty WASB, Dodaj regułę do WASB. Aby korzystać tylko z połączeń HTTPS, upewnij się, że na koncie magazynu jest włączone [żądanie bezpiecznego transferu](https://docs.microsoft.com/azure/storage/common/storage-require-secure-transfer) . |
+    **Sekcja tagów nazwy FQDN**
 
-1. Kliknij pozycję **Dodaj**.
+    | Nazwa | Adres źródłowy | Tag FQDN | Uwagi |
+    | --- | --- | --- | --- |
+    | Rule_1 | * | WindowsUpdate i HDInsight | Wymagane dla usług HDI Services |
+
+    **Sekcja docelowych nazw FQDN**
+
+    | Nazwa | Adresy źródłowe | Protokół: Port | Docelowe nazwy FQDN | Uwagi |
+    | --- | --- | --- | --- | --- |
+    | Rule_2 | * | https: 443 | login.windows.net | Zezwala na działanie logowania systemu Windows |
+    | Rule_3 | * | https: 443 | login.microsoftonline.com | Zezwala na działanie logowania systemu Windows |
+    | Rule_4 | * | https: 443, http: 80 | storage_account_name. blob. Core. Windows. NET | Zastąp `storage_account_name` nazwą rzeczywistego konta magazynu. Jeśli klaster jest objęty WASB, Dodaj regułę do WASB. Aby korzystać tylko z połączeń HTTPS, upewnij się, że na koncie magazynu jest włączone polecenie ["wymagany bezpieczny transfer"](https://docs.microsoft.com/azure/storage/common/storage-require-secure-transfer) . |
 
    ![Title: Wprowadź szczegóły kolekcji reguł aplikacji](./media/hdinsight-restrict-outbound-traffic/hdinsight-restrict-outbound-traffic-add-app-rule-collection-details.png)
+
+1. Wybierz pozycję **Dodaj**.
 
 ### <a name="configure-the-firewall-with-network-rules"></a>Konfigurowanie zapory przy użyciu reguł sieci
 
 Utwórz reguły sieciowe w celu poprawnego skonfigurowania klastra usługi HDInsight.
 
-1. Wybierz nową zaporę **test-FW01** z Azure Portal.
-1. Kliknij pozycję **reguły** w obszarze **Ustawienia** > **zbieranie reguł sieci** > **Dodawanie kolekcji reguł sieci**.
-1. Na ekranie **Dodawanie kolekcji reguł sieci** wprowadź **nazwę**i **Priorytet**, a następnie kliknij pozycję **Zezwól** z menu rozwijanego **Akcja** .
-1. Utwórz następujące reguły w sekcji **adresy IP** :
+1. Kontynuując poprzedni krok, przejdź do **kolekcji reguł sieci** >  **+ Dodaj kolekcję reguł sieci**.
 
-   | **Nazwa** | **Protokół** | **Adres źródłowy** | **Adres docelowy** | **Port docelowy** | **Uwagi** |
-   | --- | --- | --- | --- | --- | --- |
-   | Rule_1 | UDP | * | * | `123` | Czas usługi |
-   | Rule_2 | Dowolne | * | DC_IP_Address_1, DC_IP_Address_2 | `*` | Jeśli używasz pakiet Enterprise Security (ESP), a następnie Dodaj regułę sieciową w sekcji adresy IP, która umożliwia komunikację z usługą AAD-DS dla klastrów ESP. Adresy IP kontrolerów domeny można znaleźć w sekcji AAD-DS w portalu | 
-   | Rule_3 | TCP | * | Adres IP konta Data Lake Storage | `*` | Jeśli używasz Azure Data Lake Storage, możesz dodać regułę sieciową w sekcji adresy IP, aby rozwiązać problem SNI z ADLS Gen1 i Gen2. Ta opcja spowoduje kierowanie ruchu do zapory, co może spowodować zwiększenie kosztów ładowania dużych ilości danych, ale ruch zostanie zarejestrowany i przemonitorowany w dziennikach zapory. Określ adres IP dla konta Data Lake Storage. Możesz użyć polecenia programu PowerShell, takiego jak `[System.Net.DNS]::GetHostAddresses("STORAGEACCOUNTNAME.blob.core.windows.net")`, aby rozpoznać nazwę FQDN jako adres IP.|
-   | Rule_4 | TCP | * | * | `12000` | Obowiązkowe Jeśli używasz Log Analytics, Utwórz regułę sieci w sekcji adresy IP, aby włączyć komunikację z obszarem roboczym Log Analytics. |
+1. Na ekranie **Dodawanie kolekcji reguł sieci** podaj następujące informacje:
 
-1. Utwórz następujące reguły w sekcji **Tagi usługi** :
+    **Górna sekcja**
 
-   | **Nazwa** | **Protokół** | **Adres źródłowy** | **Tagi usług** | **Port docelowy** | **Uwagi** |
-   | --- | --- | --- | --- | --- | --- |
-   | Rule_7 | TCP | * | SQL | `1433` | Konfigurowanie reguły sieci w sekcji Tagi usług dla programu SQL, która umożliwia rejestrowanie i inspekcję ruchu SQL, chyba że skonfigurowano punkty końcowe usługi dla SQL Server w podsieci HDInsight, co spowoduje ominięcie zapory. |
+    | Właściwość|  Wartość|
+    |---|---|
+    |Nazwa| FwNetRule|
+    |Priorytet|200|
+    |Akcja|Zezwalaj|
 
-1. Kliknij przycisk **Dodaj** , aby ukończyć tworzenie kolekcji reguł sieci.
+    **Sekcja adresów IP**
+
+    | Nazwa | Protokół | Adresy źródłowe | Adresy docelowe | Porty docelowe | Uwagi |
+    | --- | --- | --- | --- | --- | --- |
+    | Rule_1 | UDP | * | * | 123 | Czas usługi |
+    | Rule_2 | Dowolne | * | DC_IP_Address_1, DC_IP_Address_2 | * | Jeśli używasz pakiet Enterprise Security (ESP), a następnie Dodaj regułę sieciową w sekcji adresy IP, która umożliwia komunikację z usługą AAD-DS dla klastrów ESP. Adresy IP kontrolerów domeny można znaleźć w sekcji AAD-DS w portalu |
+    | Rule_3 | TCP | * | Adres IP konta Data Lake Storage | * | Jeśli używasz Azure Data Lake Storage, możesz dodać regułę sieciową w sekcji adresy IP, aby rozwiązać problem SNI z ADLS Gen1 i Gen2. Ta opcja spowoduje kierowanie ruchu do zapory, co może spowodować zwiększenie kosztów ładowania dużych ilości danych, ale ruch będzie rejestrowany i monitorowany w dziennikach zapory. Określ adres IP dla konta Data Lake Storage. Możesz użyć polecenia programu PowerShell, takiego jak `[System.Net.DNS]::GetHostAddresses("STORAGEACCOUNTNAME.blob.core.windows.net")`, aby rozpoznać nazwę FQDN jako adres IP.|
+    | Rule_4 | TCP | * | * | 12000 | Obowiązkowe Jeśli używasz Log Analytics, Utwórz regułę sieci w sekcji adresy IP, aby włączyć komunikację z obszarem roboczym Log Analytics. |
+
+    **Sekcja tagów usługi**
+
+    | Nazwa | Protokół | Adresy źródłowe | Tagi usług | Porty docelowe | Uwagi |
+    | --- | --- | --- | --- | --- | --- |
+    | Rule_7 | TCP | * | SQL | 1433 | Konfigurowanie reguły sieci w sekcji Tagi usług dla programu SQL, która umożliwia rejestrowanie i inspekcję ruchu SQL, chyba że skonfigurowano punkty końcowe usługi dla SQL Server w podsieci HDInsight, co spowoduje ominięcie zapory. |
 
    ![Title: wprowadzanie kolekcji reguł aplikacji](./media/hdinsight-restrict-outbound-traffic/hdinsight-restrict-outbound-traffic-add-network-rule-collection.png)
+
+1. Wybierz pozycję **Dodaj**.
 
 ### <a name="create-and-configure-a-route-table"></a>Tworzenie i Konfigurowanie tabeli tras
 
 Utwórz tabelę tras z następującymi wpisami:
 
-1. Sześć adresów z [tej listy wymaganych adresów IP zarządzania usługą HDInsight](../hdinsight/hdinsight-management-ip-addresses.md) z następnym przeskokiem **Internetu**:
-    1. Cztery adresy IP dla wszystkich klastrów we wszystkich regionach
-    1. Dwa adresy IP specyficzne dla regionu, w którym jest tworzony klaster
-1. Jedna trasa wirtualnego urządzenia dla adresu IP 0.0.0.0/0 z następnym przeskokiem jako prywatny adres IP zapory platformy Azure.
+* Wszystkie adresy IP z [usług kondycji i zarządzania: wszystkie regiony](../hdinsight/hdinsight-management-ip-addresses.md#health-and-management-services-all-regions) z typem następnego przeskoku **Internet**.
 
-Na przykład aby skonfigurować tabelę tras dla klastra utworzonego w regionie US "środkowe stany USA", wykonaj następujące czynności:
+* Dwa adresy IP dla regionu, w którym jest tworzony klaster z [usług kondycji i zarządzania: określone regiony](../hdinsight/hdinsight-management-ip-addresses.md#health-and-management-services-specific-regions) z typem następnego przeskoku **Internet**.
 
-1. Zaloguj się do Portalu Azure.
-1. Wybierz test zapory platformy Azure **— FW01**. Skopiuj **prywatny adres IP** wymieniony na stronie **Przegląd** . Na potrzeby tego przykładu będziemy używać **przykładowego adresu 10.1.1.4**
-1. Utwórz nową tabelę tras.
-1. Kliknij pozycję **trasy** w obszarze **Ustawienia**.
-1. Kliknij przycisk **Dodaj** , aby utworzyć trasy dla adresów IP w poniższej tabeli.
+* Jedna trasa wirtualnego urządzenia dla adresu IP 0.0.0.0/0 z następnym przeskokiem jako prywatny adres IP zapory platformy Azure.
+
+Aby na przykład skonfigurować tabelę tras dla klastra utworzonego w regionie US USA, należy wykonać następujące czynności:
+
+1. Wybierz test zapory platformy Azure **— FW01**. Skopiuj **prywatny adres IP** wymieniony na stronie **Przegląd** . W tym przykładzie użyjemy **przykładowego adresu 10.0.2.4**.
+
+1. Następnie przejdź do **wszystkich usług** > **Sieć** > **tabele tras** i **Utwórz tabelę tras**.
+
+1. W nowej trasie przejdź do **ustawień** > **trasy** >  **+ Dodaj**. Dodaj następujące trasy:
 
 | Nazwa trasy | Prefiks adresu | Typ następnego skoku | Adres następnego skoku |
 |---|---|---|---|
@@ -119,14 +142,18 @@ Na przykład aby skonfigurować tabelę tras dla klastra utworzonego w regionie 
 | 23.99.5.239 | 23.99.5.239/32 | Internet | Nie dotyczy |
 | 168.61.48.131 | 168.61.48.131/32 | Internet | Nie dotyczy |
 | 138.91.141.162 | 138.91.141.162/32 | Internet | Nie dotyczy |
-| 13.67.223.215 | 13.67.223.215/32 | Internet | Nie dotyczy |
-| 40.86.83.253 | 40.86.83.253/32 | Internet | Nie dotyczy |
-| 0.0.0.0 | 0.0.0.0/0 | Urządzenie wirtualne | 10.1.1.4 |
+| 13.82.225.233 | 13.82.225.233/32 | Internet | Nie dotyczy |
+| 40.71.175.99 | 40.71.175.99/32 | Internet | Nie dotyczy |
+| 0.0.0.0 | 0.0.0.0/0 | Urządzenie wirtualne | 10.0.2.4 |
 
 Ukończ konfigurację tabeli tras:
 
-1. Przypisz utworzoną przez siebie tabelę tras do podsieci usługi HDInsight, klikając pozycję **podsieci** w obszarze **Ustawienia** , a następnie pozycję **Skojarz**.
-1. Na ekranie **Skojarz podsieć** wybierz sieć wirtualną, w której został utworzony klaster, oraz **podsieć usługi HDInsight** użytą dla klastra usługi HDInsight.
+1. Przypisz utworzoną tabelę tras do podsieci usługi HDInsight, wybierając pozycję **podsieci** w obszarze **Ustawienia**.
+
+1. Wybierz pozycję **+ Skojarz**.
+
+1. Na ekranie **Skojarz podsieć** wybierz sieć wirtualną, w której został utworzony klaster, oraz **podsieć** używaną dla klastra usługi HDInsight.
+
 1. Kliknij przycisk **OK**.
 
 ## <a name="edge-node-or-custom-application-traffic"></a>Ruch graniczny węzła lub aplikacji niestandardowej
@@ -145,25 +172,26 @@ Zapora platformy Azure może wysyłać dzienniki do kilku różnych systemów ma
 
 Po zakończeniu konfiguracji rejestrowania, Jeśli rejestrujesz dane do Log Analytics, można wyświetlić zablokowany ruch z użyciem zapytania, takiego jak następujące:
 
-```
+```Kusto
 AzureDiagnostics | where msg_s contains "Deny" | where TimeGenerated >= ago(1h)
 ```
 
 Integrowanie zapory platformy Azure z dziennikami Azure Monitor jest przydatne podczas pierwszego uruchamiania aplikacji, gdy nie są znane wszystkie zależności aplikacji. Więcej informacji na temat dzienników Azure Monitor można znaleźć [w temacie Analizowanie danych dzienników w Azure monitor](../azure-monitor/log-query/log-query-overview.md)
 
-Aby dowiedzieć się więcej o granicach skalowania zapory platformy Azure i zwiększania żądań, zobacz [ten](https://docs.microsoft.com/en-us/azure/azure-subscription-service-limits#azure-firewall-limits) dokument lub zapoznaj się z [często zadawanymi pytaniami](https://docs.microsoft.com/en-us/azure/firewall/firewall-faq). 
+Aby dowiedzieć się więcej o granicach skalowania zapory platformy Azure i zwiększania żądań, zobacz [ten](../azure-subscription-service-limits.md#azure-firewall-limits) dokument lub zapoznaj się z [często zadawanymi pytaniami](../firewall/firewall-faq.md).
 
 ## <a name="access-to-the-cluster"></a>Dostęp do klastra
-Po pomyślnym skonfigurowaniu zapory można użyć wewnętrznego punktu końcowego (`https://<clustername>-int.azurehdinsight.net`), aby uzyskać dostęp do Ambari z wewnątrz sieci wirtualnej. 
 
-Aby korzystać z publicznego punktu końcowego (`https://<clustername>.azurehdinsight.net`) lub punktu końcowego SSH (`<clustername>-ssh.azurehdinsight.net`), upewnij się, że masz odpowiednie trasy w tabeli tras i reguły sieciowej grupy zabezpieczeń, aby uniknąć opisanego [tutaj](https://docs.microsoft.com/azure/firewall/integrate-lb)problemu z routingiem assymetric. W tym przypadku należy zezwolić na adres IP klienta w regułach sieciowej grupy zabezpieczeń dla ruchu przychodzącego, a także dodać go do tabeli tras zdefiniowanych przez użytkownika z następnym przeskokiem ustawionym jako `internet`. Jeśli to ustawienie nie zostanie prawidłowo skonfigurowane, zostanie wyświetlony komunikat o błędzie limitu czasu.
+Po pomyślnym skonfigurowaniu zapory można użyć wewnętrznego punktu końcowego (`https://CLUSTERNAME-int.azurehdinsight.net`), aby uzyskać dostęp do Ambari z wewnątrz sieci wirtualnej.
+
+Aby korzystać z publicznego punktu końcowego (`https://CLUSTERNAME.azurehdinsight.net`) lub punktu końcowego SSH (`CLUSTERNAME-ssh.azurehdinsight.net`), upewnij się, że masz odpowiednie trasy w tabeli tras i reguły sieciowej grupy zabezpieczeń, aby uniknąć problemu z routingiem asymetrycznym w [tym miejscu](../firewall/integrate-lb.md). W tym przypadku należy zezwolić na adres IP klienta w regułach sieciowej grupy zabezpieczeń dla ruchu przychodzącego, a także dodać go do tabeli tras zdefiniowanych przez użytkownika z następnym przeskokiem ustawionym jako `internet`. Jeśli ten program nie zostanie prawidłowo skonfigurowany, zobaczysz błąd limitu czasu.
 
 ## <a name="configure-another-network-virtual-appliance"></a>Konfigurowanie innego sieciowego urządzenia wirtualnego
 
->[!Important]
+> [!Important]
 > Poniższe informacje są wymagane **tylko** wtedy, gdy chcesz skonfigurować wirtualne urządzenie sieciowe (urządzenie WUS) inne niż Zapora platformy Azure.
 
-Poprzednie instrukcje ułatwiają skonfigurowanie zapory platformy Azure pod kątem ograniczenia ruchu wychodzącego z klastra usługi HDInsight. Zapora platformy Azure jest automatycznie konfigurowana w taki sposób, aby zezwalała na ruch dla wielu typowych scenariuszy. Jeśli chcesz użyć innego sieciowego urządzenia wirtualnego, musisz ręcznie skonfigurować szereg dodatkowych funkcji. Należy pamiętać o następujących kwestiach dotyczących konfigurowania wirtualnego urządzenia sieciowego:
+Poprzednie instrukcje ułatwiają skonfigurowanie zapory platformy Azure pod kątem ograniczenia ruchu wychodzącego z klastra usługi HDInsight. Zapora platformy Azure jest automatycznie konfigurowana w taki sposób, aby zezwalała na ruch dla wielu typowych scenariuszy. Jeśli chcesz użyć innego sieciowego urządzenia wirtualnego, musisz ręcznie skonfigurować szereg dodatkowych funkcji. Podczas konfigurowania wirtualnego urządzenia sieciowego należy pamiętać o następujących kwestiach:
 
 * Usługi obsługujące punkt końcowy usługi należy skonfigurować za pomocą punktów końcowych usługi.
 * Zależności adresów IP są związane z ruchem innym niż HTTP/S (ruchem TCP i UDP).
@@ -191,7 +219,7 @@ Poprzednie instrukcje ułatwiają skonfigurowanie zapory platformy Azure pod ką
 
 #### <a name="fqdn-httphttps-dependencies"></a>Zależności HTTP/HTTPS w nazwie FQDN
 
->[!Important]
+> [!Important]
 > Poniższa lista zawiera tylko kilka najważniejszych nazw FQDN. Aby skonfigurować urządzenie WUS [w tym pliku](https://github.com/Azure-Samples/hdinsight-fqdn-lists/blob/master/HDInsightFQDNTags.json), można uzyskać pełną listę nazw FQDN.
 
 | **Punktu końcowego**                                                          |
@@ -209,9 +237,9 @@ Poprzednie instrukcje ułatwiają skonfigurowanie zapory platformy Azure pod ką
 | download.mono-project.com:80                                          |
 | packages.treasuredata.com:80                                          |
 | security.ubuntu.com:80                                                |
-| azure.archive.ubuntu.com:80                                                |
-| ocsp.msocsp.com:80                                                |
-| ocsp.digicert.com:80                                                |
+| azure.archive.ubuntu.com:80                                           |
+| ocsp.msocsp.com:80                                                    |
+| ocsp.digicert.com:80                                                  |
 
 ## <a name="next-steps"></a>Następne kroki
 

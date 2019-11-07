@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.author: dapine
-ms.openlocfilehash: 647edcab5ec2925016e8a099ae43b6133037f8de
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
-ms.translationtype: HT
+ms.openlocfilehash: efb2fd8fd6b77a27130b834c2b192c1e88eec97c
+ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 11/04/2019
-ms.locfileid: "73491123"
+ms.locfileid: "73578397"
 ---
 # <a name="install-and-run-speech-service-containers"></a>Instalowanie i uruchamianie kontenerów usługi mowy
 
@@ -167,19 +167,7 @@ Następujący tag jest przykładem formatu:
 2.0.0-amd64-en-us-preview
 ```
 
-Poniższa tabela zawiera listę obsługiwanych ustawień regionalnych dla **zamiany mowy na tekst** w 2.0.0 wersji kontenera:
-
-| Ustawienia regionalne języka | Tagi |
-|--|--|
-| Chiński | `zh-CN` |
-| Polski | `en-US`<br>`en-GB`<br>`en-AU`<br>`en-IN` |
-| Francuski | `fr-CA`<br>`fr-FR` |
-| Niemiecki | `de-DE` |
-| Włoski | `it-IT` |
-| Japoński | `ja-JP` |
-| Koreański | `ko-KR` |
-| Portugalski | `pt-BR` |
-| Hiszpański | `es-ES`<br>`es-MX` |
+W przypadku wszystkich obsługiwanych ustawień regionalnych w wersji 2.0.0 kontenera **zamiany mowy na tekst** , dzierżawa znajduje się w kolumnie **Obsługa kontenerów** w tabeli [Obsługa języka mowy do tekstu](language-support.md#speech-to-text) .
 
 # <a name="custom-speech-to-texttabcstt"></a>[Custom Speech do tekstu](#tab/cstt)
 
@@ -221,24 +209,7 @@ Następujący tag jest przykładem formatu:
 1.3.0-amd64-en-us-jessarus-preview
 ```
 
-Poniższa tabela zawiera listę obsługiwanych ustawień regionalnych dla **zamiany tekstu na mowę** w wersji 1.3.0 kontenera:
-
-| Ustawienia regionalne języka | Tagi | Obsługiwane głosy |
-|--|--|--|
-| Chiński | `zh-CN` | huihuirus<br>kangkang-apollo<br>yaoyao-apollo |
-| Polski | `en-AU` | catherine<br>hayleyrus |
-| Polski | `en-GB` | George — Apollo<br>hazelrus<br>Susan — Apollo |
-| Polski | `en-IN` | heera-apollo<br>priyarus<br>ravi-apollo<br> |
-| Polski | `en-US` | jessarus<br>benjaminrus<br>jessa24krus<br>zirarus<br>guy24krus |
-| Francuski | `fr-CA` | caroline<br>harmonierus |
-| Francuski | `fr-FR` | hortenserus<br>julie-apollo<br>Paul-Apollo |
-| Niemiecki | `de-DE` | hedda<br>heddarus<br>Stefan-Apollo |
-| Włoski | `it-IT` | cosimo-apollo<br>luciarus |
-| Japoński | `ja-JP` | ayumi-apollo<br>harukarus<br>ichiro-apollo |
-| Koreański | `ko-KR` | heamirus |
-| Portugalski | `pt-BR` | Daniel — Apollo<br>heloisarus |
-| Hiszpański | `es-ES` | elenarus<br>Laura — Apollo<br>pablo-apollo<br> |
-| Hiszpański | `es-MX` | hildarus<br>raul-apollo |
+W przypadku wszystkich obsługiwanych ustawień regionalnych i odpowiadających im głosów w wersji 1.3.0 kontenera **zamiany tekstu na mowę** można znaleźć w kolumnie **Obsługa kontenera** w tabeli [obsługi języka standardowego głosu](language-support.md#standard-voices) .
 
 > [!IMPORTANT]
 > Podczas konstruowania standardowego wpisu http zamiany *tekstu na mowę* , komunikat [SSML (Speech synteza Markup Language)](speech-synthesis-markup.md) wymaga elementu `voice` z atrybutem `name`. Wartość jest odpowiednimi ustawieniami regionalnymi kontenera i głosem, znanym również jako ["krótka nazwa"](language-support.md#standard-voices). Na przykład tag `latest` ma nazwę głosu `en-US-JessaRUS`.

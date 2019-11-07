@@ -1,5 +1,5 @@
 ---
-title: Pule wystąpień Azure SQL Database (wersja zapoznawcza) | Microsoft Docs
+title: Pule wystąpień Azure SQL Database (wersja zapoznawcza)
 description: W tym artykule opisano pule wystąpień Azure SQL Database (wersja zapoznawcza).
 services: sql-database
 ms.service: sql-database
@@ -11,18 +11,18 @@ author: bonova
 ms.author: bonova
 ms.reviewer: sstein, carlrab
 ms.date: 09/05/2019
-ms.openlocfilehash: 34e779f04f59b23733c6fbfa3450931fccb442b1
-ms.sourcegitcommit: 32242bf7144c98a7d357712e75b1aefcf93a40cc
+ms.openlocfilehash: 7d8c316d5c78cfe09bcf134b5a5c513e1c007d74
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70294258"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73689773"
 ---
 # <a name="what-are-sql-database-instance-pools-preview"></a>Co to są pule wystąpień SQL Database (wersja zapoznawcza)?
 
 Pule wystąpień są nowym zasobem w Azure SQL Database, który zapewnia wygodny i ekonomiczny sposób migrowania mniejszych wystąpień SQL do chmury na dużą skalę.
 
-Pule wystąpień umożliwiają wstępne Inicjowanie obsługi zasobów obliczeniowych zgodnie z całkowitymi wymaganiami dotyczącymi migracji. Następnie można wdrożyć kilka pojedynczych wystąpień zarządzanych do wstępnie zainicjowanego poziomu obliczeń. Na przykład w przypadku wstępnego udostępnienia usługi 8 rdzeni wirtualnych można wdrożyć dwa 2 rdzeń wirtualny i jedno 4 wystąpienia rdzeń wirtualny, a następnie przeprowadzić migrację baz danych do tych wystąpień. Przed udostępnieniem pul wystąpień mniejsze i mniejsze obciążenia intensywnie korzystające z mocy obliczeniowej będą często musiały zostać skonsolidowane w większym zarządzanym wystąpieniu podczas migracji do chmury. Konieczność migrowania grup baz danych do dużego wystąpienia zwykle wymaga starannego planowania pojemności i zarządzania zasobami, dodatkowych zagadnień związanych z zabezpieczeniami oraz pewnej dodatkowej konsolidacji danych na poziomie wystąpienia.
+Pule wystąpień umożliwiają wstępną aprowizację zasobów obliczeniowych zgodnie z całkowitymi wymaganiami migracji. Następnie możesz wdrożyć kilka osobnych wystąpień zarządzanych — do osiągnięcia wstępnie aprowizowanego poziomu obliczeń. Na przykład w przypadku wstępnego udostępnienia usługi 8 rdzeni wirtualnych można wdrożyć dwa 2 rdzeń wirtualny i jedno 4 wystąpienia rdzeń wirtualny, a następnie przeprowadzić migrację baz danych do tych wystąpień. Przed udostępnieniem pul wystąpień mniejsze i mniejsze obciążenia intensywnie korzystające z mocy obliczeniowej będą często musiały zostać skonsolidowane w większym zarządzanym wystąpieniu podczas migracji do chmury. Konieczność migrowania grup baz danych do dużego wystąpienia zwykle wymaga starannego planowania pojemności i zarządzania zasobami, dodatkowych zagadnień związanych z zabezpieczeniami oraz pewnej dodatkowej konsolidacji danych na poziomie wystąpienia.
 
 Ponadto pule wystąpień obsługują natywną integrację sieci wirtualnej, dzięki czemu można wdrożyć wiele pul wystąpień i wiele pojedynczych wystąpień w tej samej podsieci.
 
@@ -31,7 +31,7 @@ Ponadto pule wystąpień obsługują natywną integrację sieci wirtualnej, dzi�
 
 Pule wystąpień zapewniają następujące korzyści:
 
-1. Możliwość hostowania 2 rdzeń wirtualny wystąpień. *Tylko dla wystąpień w pulach wystąpień. \**
+1. Możliwość hostowania 2 rdzeń wirtualny wystąpień. *\*tylko dla wystąpień w pulach wystąpień*.
 2. Czas wdrożenia przewidywalny i szybki (do 5 minut).
 3. Minimalna alokacja adresów IP.
 
@@ -71,7 +71,7 @@ Każda pula wystąpień tworzy oddzielny klaster wirtualny poniżej. Wystąpieni
 
 ## <a name="instance-pools-resource-limitations"></a>Ograniczenia zasobów pul wystąpień
 
-Istnieją pewne ograniczenia zasobów dotyczące pul wystąpień i wystąpień wewnątrz pul:
+Istnieje kilka ograniczeń zasobów dotyczących pul wystąpień i wystąpień wewnątrz pul:
 
 - Pule wystąpień są dostępne tylko na sprzęcie 5 rdzeń.
 - Wystąpienia w puli mają dedykowany procesor CPU i pamięć RAM, więc zagregowana liczba rdzeni wirtualnych we wszystkich wystąpieniach musi być mniejsza lub równa liczbie rdzeni wirtualnych przydzielonych do puli.
@@ -112,7 +112,7 @@ Opcjonalne funkcje lub funkcje, które wymagają wybrania określonych wartości
 
 Chociaż wystąpienia zarządzane w ramach pul mają dedykowany rdzeń wirtualny i pamięć RAM, współużytkują dysk lokalny (na potrzeby użycia bazy danych tempdb) i zasoby sieciowe. Prawdopodobnie nie jest to możliwe, ale można napotkać efekt *sąsiedniego szumu* , jeśli wiele wystąpień w puli ma duże zużycie zasobów w tym samym czasie. W przypadku zaobserwowania tego zachowania należy rozważyć wdrożenie tych wystąpień do większej puli lub jako pojedyncze wystąpienia.
 
-## <a name="security-considerations"></a>Zagadnienia dotyczące bezpieczeństwa
+## <a name="security-considerations"></a>Zagadnienia związane z zabezpieczeniami
 
 Ponieważ wystąpienia wdrożone w puli współużytkują tę samą maszynę wirtualną, warto rozważyć wyłączenie funkcji, które wprowadzają wyższe zagrożenia bezpieczeństwa lub w celu uzyskania prawidłowej kontroli uprawnień dostępu do tych funkcji. Na przykład integracja środowiska CLR, natywne wykonywanie kopii zapasowych i przywracanie, poczta e-mail bazy danych itp.
 
@@ -137,7 +137,7 @@ Cena rdzeń wirtualny puli jest naliczana niezależnie od liczby wystąpień wdr
 W przypadku cen obliczeniowych (mierzonych w rdzeni wirtualnych) dostępne są dwie opcje cenowe:
 
   1. *Uwzględniona licencja*: Zastosuj istniejące licencje SQL Server z programem Software Assurance.
-  2. *Korzyść użycia hybrydowego platformy Azure*: Obniżona cena obejmująca Korzyść użycia hybrydowego platformy Azure SQL Server. Klienci mogą zrezygnować z tej ceny przy użyciu istniejących licencji SQL Server z programem Software Assurance. Aby uzyskać uprawnienia i inne szczegóły, zobacz [korzyść użycia hybrydowego platformy Azure](https://azure.microsoft.com/pricing/hybrid-benefit/).
+  2. *Korzyść użycia hybrydowego platformy Azure*: obniżona cena obejmująca Korzyść użycia hybrydowego platformy Azure do SQL Server. Klienci mogą zrezygnować z tej ceny przy użyciu istniejących licencji SQL Server z programem Software Assurance. Aby uzyskać uprawnienia i inne szczegóły, zobacz [korzyść użycia hybrydowego platformy Azure](https://azure.microsoft.com/pricing/hybrid-benefit/).
 
 Dla poszczególnych wystąpień w puli nie można ustawić różnych opcji cenowych. Wszystkie wystąpienia w puli nadrzędnej muszą mieć licencję uwzględnioną w cenie lub Korzyść użycia hybrydowego platformy Azure cenę. Model licencji dla puli można zmienić po utworzeniu puli.
 

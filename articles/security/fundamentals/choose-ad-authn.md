@@ -2,25 +2,25 @@
 title: Wybierz właściwą metodę uwierzytelniania dla swojego rozwiązania tożsamości hybrydowej usługi Azure AD | Microsoft Docs
 description: Ten przewodnik pomaga CEOs, dyrektorzy działu informatyki, CISOs, starszym architektom tożsamości, architektom w przedsiębiorstwach i bezpieczeństwie oraz podejmującym decyzje IT odpowiedzialne za wybór metody uwierzytelniania dla swojego rozwiązania do obsługi tożsamości hybrydowej usługi Azure AD w średnich i dużych organizacjach.
 keywords: ''
-author: martincoetzer
-ms.author: martinco
+author: TerryLanfear
+ms.author: terrylan
 ms.date: 10/30/2019
 ms.topic: article
 ms.service: security
 ms.subservice: security-fundamentals
 ms.workload: identity
-ms.openlocfilehash: 524e923f005e2631e42f1d6b89b13cafdd646c2a
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.openlocfilehash: 564175141a8076d2ac4324b0dccf02cc250a613c
+ms.sourcegitcommit: 6c2c97445f5d44c5b5974a5beb51a8733b0c2be7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73159710"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73621177"
 ---
-# <a name="choose-the-right-authentication-method-for-your-azure-active-directory-hybrid-identity-solution"></a>Wybierz właściwą metodę uwierzytelniania dla Azure Active Directory rozwiązanie do tworzenia tożsamości hybrydowej 
+# <a name="choose-the-right-authentication-method-for-your-azure-active-directory-hybrid-identity-solution"></a>Wybierz właściwą metodę uwierzytelniania dla Azure Active Directory rozwiązanie do tworzenia tożsamości hybrydowej
 
 Wybór odpowiedniej metody uwierzytelniania to pierwszy problem dotyczący organizacji, które chcą przenieść aplikacje do chmury. Nie podejmuj tej decyzji jasno, z następujących powodów:
 
-1. Jest to pierwsza decyzja dla organizacji, która chce przejść do chmury. 
+1. Jest to pierwsza decyzja dla organizacji, która chce przejść do chmury.
 
 2. Metoda uwierzytelniania jest krytycznym składnikiem obecności organizacji w chmurze. Kontroluje dostęp do wszystkich danych i zasobów w chmurze.
 
@@ -36,21 +36,21 @@ Organizacje, które nie mają istniejącej lokalnej usługi katalogowej, nie są
 ## <a name="authentication-methods"></a>Metody uwierzytelniania
 Gdy rozwiązanie do tworzenia tożsamości hybrydowej usługi Azure AD jest nową płaszczyzną kontroli, uwierzytelnianie jest podstawą dostępu do chmury. Wybór odpowiedniej metody uwierzytelniania jest kluczową pierwszą decyzją dotyczącą konfigurowania rozwiązania do tworzenia tożsamości hybrydowej usługi Azure AD. Zaimplementuj metodę uwierzytelniania skonfigurowaną za pomocą Azure AD Connect, która również udostępnia użytkownikom w chmurze.
 
-Aby wybrać metodę uwierzytelniania, należy wziąć pod uwagę czas, istniejącą infrastrukturę, złożoność i koszt implementacji własnego wyboru. Te czynniki są różne dla każdej organizacji i mogą ulec zmianie w czasie. 
+Aby wybrać metodę uwierzytelniania, należy wziąć pod uwagę czas, istniejącą infrastrukturę, złożoność i koszt implementacji własnego wyboru. Te czynniki są różne dla każdej organizacji i mogą ulec zmianie w czasie.
 
 >[!VIDEO https://www.youtube.com/embed/YtW2cmVqSEw]
 
 Usługa Azure AD obsługuje następujące metody uwierzytelniania dla hybrydowych rozwiązań do obsługi tożsamości.
 
 ### <a name="cloud-authentication"></a>Uwierzytelnianie w chmurze
-Po wybraniu tej metody uwierzytelniania usługa Azure AD obsługuje proces logowania użytkowników. W połączeniu z bezproblemowym logowaniem jednokrotnym użytkownicy mogą logować się do aplikacji w chmurze bez konieczności ponownego wprowadzania poświadczeń. Przy użyciu uwierzytelniania w chmurze możesz wybrać jedną z dwóch opcji: 
+Po wybraniu tej metody uwierzytelniania usługa Azure AD obsługuje proces logowania użytkowników. W połączeniu z bezproblemowym logowaniem jednokrotnym użytkownicy mogą logować się do aplikacji w chmurze bez konieczności ponownego wprowadzania poświadczeń. Przy użyciu uwierzytelniania w chmurze możesz wybrać jedną z dwóch opcji:
 
 **Synchronizacja skrótów haseł w usłudze Azure AD**. Najprostszy sposób na włączenie uwierzytelniania dla obiektów katalogu lokalnego w usłudze Azure AD. Użytkownicy mogą używać tej samej nazwy użytkownika i hasła, z których korzystają lokalnie bez konieczności wdrażania dodatkowej infrastruktury. Niektóre funkcje Premium usługi Azure AD, takie jak Ochrona tożsamości i [Azure AD Domain Services](../../active-directory-domain-services/active-directory-ds-getting-started-password-sync.md), wymagają synchronizacji skrótów haseł, niezależnie od wybranej metody uwierzytelniania.
 
-> [!NOTE] 
-> Hasła nigdy nie są przechowywane w postaci zwykłego tekstu ani szyfrowane przy użyciu algorytmu odwracalnego w usłudze Azure AD. Aby uzyskać więcej informacji na temat rzeczywistego procesu synchronizacji skrótów haseł, zobacz [Implementacja synchronizacji skrótów haseł z synchronizacją Azure AD Connect](../../active-directory/hybrid/how-to-connect-password-hash-synchronization.md). 
+> [!NOTE]
+> Hasła nigdy nie są przechowywane w postaci zwykłego tekstu ani szyfrowane przy użyciu algorytmu odwracalnego w usłudze Azure AD. Aby uzyskać więcej informacji na temat rzeczywistego procesu synchronizacji skrótów haseł, zobacz [Implementacja synchronizacji skrótów haseł z synchronizacją Azure AD Connect](../../active-directory/hybrid/how-to-connect-password-hash-synchronization.md).
 
-**Uwierzytelnianie przekazywane przez usługę Azure AD**. Zapewnia prostą weryfikację hasła dla usług uwierzytelniania usługi Azure AD przy użyciu agenta oprogramowania działającego na co najmniej jednym serwerze lokalnym. Serwery weryfikują użytkowników bezpośrednio przy użyciu Active Directory lokalnych, co gwarantuje, że sprawdzanie poprawności hasła nie odbywa się w chmurze. 
+**Uwierzytelnianie przekazywane przez usługę Azure AD**. Zapewnia prostą weryfikację hasła dla usług uwierzytelniania usługi Azure AD przy użyciu agenta oprogramowania działającego na co najmniej jednym serwerze lokalnym. Serwery weryfikują użytkowników bezpośrednio przy użyciu Active Directory lokalnych, co gwarantuje, że sprawdzanie poprawności hasła nie odbywa się w chmurze.
 
 W przypadku firm mających wymóg bezpieczeństwa aby natychmiast wymusić lokalne Stany konta użytkownika, zasady haseł i godziny logowania mogą korzystać z tej metody uwierzytelniania. Aby uzyskać więcej informacji o rzeczywistym procesie uwierzytelniania przekazywanego, zobacz [Logowanie użytkownika przy użyciu uwierzytelniania przekazywanego przez usługę Azure AD](../../active-directory/hybrid/how-to-connect-pta.md).
 
@@ -106,21 +106,21 @@ Zapoznaj się z artykułem [implementowanie synchronizacji skrótów haseł](../
 
 ### <a name="cloud-authentication-pass-through-authentication"></a>Uwierzytelnianie w chmurze: uwierzytelnianie przekazywane  
 
-* **Nakład pracy**. W przypadku uwierzytelniania przekazywanego potrzebna jest co najmniej jedna firma (zalecamy trzy) lekkie agenci zainstalowani na istniejących serwerach. Tacy agenci muszą mieć dostęp do Active Directory Domain Services lokalnych, w tym lokalnych kontrolerów domeny usługi AD. Potrzebują dostępu wychodzącego do Internetu i dostępu do kontrolerów domeny. Z tego powodu nie jest obsługiwane wdrażanie agentów w sieci obwodowej. 
+* **Nakład pracy**. W przypadku uwierzytelniania przekazywanego potrzebna jest co najmniej jedna firma (zalecamy trzy) lekkie agenci zainstalowani na istniejących serwerach. Tacy agenci muszą mieć dostęp do Active Directory Domain Services lokalnych, w tym lokalnych kontrolerów domeny usługi AD. Potrzebują dostępu wychodzącego do Internetu i dostępu do kontrolerów domeny. Z tego powodu nie jest obsługiwane wdrażanie agentów w sieci obwodowej.
 
     Uwierzytelnianie przekazywane wymaga nieograniczonego dostępu sieciowego do kontrolerów domeny. Cały ruch sieciowy jest szyfrowany i ograniczony do żądań uwierzytelniania. Aby uzyskać więcej informacji na temat tego procesu, zapoznaj się z tematem [szczegółowe Security głębokie](../../active-directory/hybrid/how-to-connect-pta-security-deep-dive.md) uwierzytelnianie przekazywane.
 
 * **Środowisko użytkownika**. Aby ulepszyć środowisko logowania użytkowników, wdróż bezproblemową rejestrację jednokrotną przy użyciu uwierzytelniania przekazywanego. Bezproblemowe logowanie jednokrotne eliminuje zbędne monity po zalogowaniu się użytkowników.
 
-* **Scenariusze zaawansowane**. Uwierzytelnianie przekazywane wymusza lokalne zasady kont w momencie logowania się. Na przykład dostęp jest odrzucany, gdy stan konta użytkownika lokalnego jest wyłączony, zablokowany lub [hasło wygasłe](../../active-directory/hybrid/how-to-connect-pta-faq.md#what-happens-if-my-users-password-has-expired-and-they-try-to-sign-in-by-using-pass-through-authentication) lub wykracza poza godziny, gdy użytkownik może się zalogować. 
+* **Scenariusze zaawansowane**. Uwierzytelnianie przekazywane wymusza lokalne zasady kont w momencie logowania się. Na przykład dostęp jest odrzucany, gdy stan konta użytkownika lokalnego jest wyłączony, zablokowany lub [hasło wygasłe](../../active-directory/hybrid/how-to-connect-pta-faq.md#what-happens-if-my-users-password-has-expired-and-they-try-to-sign-in-by-using-pass-through-authentication) lub wykracza poza godziny, gdy użytkownik może się zalogować.
 
     Organizacje, które wymagają uwierzytelniania wieloskładnikowego z uwierzytelnianiem przekazującym, muszą używać niestandardowych kontrolek usługi Azure Multi-Factor Authentication (MFA) lub [dostępu warunkowego](../../active-directory/conditional-access/controls.md#custom-controls-preview). Organizacje te nie mogą korzystać z metody uwierzytelniania wieloskładnikowego innej firmy ani lokalnej, która opiera się na Federacji. Funkcje zaawansowane wymagają, aby synchronizacja skrótów haseł była wdrażana niezależnie od tego, czy wybrano opcję uwierzytelnianie przekazywane. Przykładem jest raport dotyczący przecieków poświadczeń programu Identity Protection.
 
-* **Ciągłość**działania. Zalecamy wdrożenie dwóch dodatkowych agentów uwierzytelniania Pass-through. Te dodatki są uzupełnieniem pierwszego agenta na serwerze Azure AD Connect. To dodatkowe wdrożenie zapewnia wysoką dostępność żądań uwierzytelniania. Po wdrożeniu trzech agentów jeden Agent może nadal kończyć się niepowodzeniem, gdy inny agent nie działa do konserwacji. 
+* **Ciągłość**działania. Zalecamy wdrożenie dwóch dodatkowych agentów uwierzytelniania Pass-through. Te dodatki są uzupełnieniem pierwszego agenta na serwerze Azure AD Connect. To dodatkowe wdrożenie zapewnia wysoką dostępność żądań uwierzytelniania. Po wdrożeniu trzech agentów jeden Agent może nadal kończyć się niepowodzeniem, gdy inny agent nie działa do konserwacji.
 
     Oprócz uwierzytelniania przekazywanego istnieje inna korzyść w zakresie wdrażania synchronizacji skrótów haseł. Działa jako metoda uwierzytelniania kopii zapasowej, gdy podstawowa metoda uwierzytelniania nie jest już dostępna.
 
-* **Zagadnienia**. Możesz użyć synchronizacji skrótów haseł jako metody uwierzytelniania za pomocą kopii zapasowej na potrzeby uwierzytelniania przekazywanego, gdy agenci nie mogą zweryfikować poświadczeń użytkownika z powodu znacznego błędu lokalnego. Przełączenie w tryb failover w celu synchronizacji skrótów haseł nie odbywa się automatycznie i należy użyć Azure AD Connect do ręcznego przełączania metody logowania. 
+* **Zagadnienia**. Możesz użyć synchronizacji skrótów haseł jako metody uwierzytelniania za pomocą kopii zapasowej na potrzeby uwierzytelniania przekazywanego, gdy agenci nie mogą zweryfikować poświadczeń użytkownika z powodu znacznego błędu lokalnego. Przełączenie w tryb failover w celu synchronizacji skrótów haseł nie odbywa się automatycznie i należy użyć Azure AD Connect do ręcznego przełączania metody logowania.
 
     Aby poznać inne zagadnienia dotyczące uwierzytelniania przekazywanego, w tym alternatywnej obsługi identyfikatorów, zobacz [często zadawane pytania](../../active-directory/hybrid/how-to-connect-pta-faq.md).
 
@@ -128,7 +128,7 @@ Zapoznaj się z artykułem [implementacja uwierzytelniania przekazywanego](../..
 
 ### <a name="federated-authentication"></a>Uwierzytelnianie federacyjne
 
-* **Nakład pracy**. Federacyjny system uwierzytelniania opiera się na zewnętrznym zaufanym systemie do uwierzytelniania użytkowników. Niektóre firmy chcą ponownie wykorzystać swoje istniejące inwestycje systemu federacyjnego przy użyciu rozwiązania do tworzenia tożsamości hybrydowej usługi Azure AD. Konserwacja systemu federacyjnego i zarządzanie nim wykracza poza kontrolę usługi Azure AD. Jest to możliwe w organizacji przy użyciu systemu federacyjnego, aby upewnić się, że jest on bezpiecznie wdrożony i może obsłużyć obciążenie uwierzytelniania. 
+* **Nakład pracy**. Federacyjny system uwierzytelniania opiera się na zewnętrznym zaufanym systemie do uwierzytelniania użytkowników. Niektóre firmy chcą ponownie wykorzystać swoje istniejące inwestycje systemu federacyjnego przy użyciu rozwiązania do tworzenia tożsamości hybrydowej usługi Azure AD. Konserwacja systemu federacyjnego i zarządzanie nim wykracza poza kontrolę usługi Azure AD. Jest to możliwe w organizacji przy użyciu systemu federacyjnego, aby upewnić się, że jest on bezpiecznie wdrożony i może obsłużyć obciążenie uwierzytelniania.
 
 * **Środowisko użytkownika**. Środowisko użytkownika związane z uwierzytelnianiem federacyjnym zależy od implementacji funkcji, topologii i konfiguracji farmy federacyjnej. Niektóre organizacje potrzebują tej elastyczności, aby dostosować i skonfigurować dostęp do farmy federacyjnej zgodnie z wymaganiami bezpieczeństwa. Można na przykład skonfigurować zalogowanych wewnętrznie użytkowników i urządzenia do automatycznego logowania użytkowników bez monitowania o poświadczenia. Ta konfiguracja działa, ponieważ zarejestrowali się już na swoich urządzeniach. W razie potrzeby niektóre zaawansowane funkcje zabezpieczeń sprawiają, że proces logowania użytkowników jest trudniejszy.
 
@@ -149,7 +149,7 @@ W przypadku domeny nonroutable, która nie może zostać zweryfikowana w usłudz
 
 Zapoznaj się z tematem [wdrażanie serwerów federacyjnych](https://docs.microsoft.com/windows-server/identity/ad-fs/deployment/deploying-federation-servers) na potrzeby kroków wdrożenia.
 
-> [!NOTE] 
+> [!NOTE]
 > Podczas wdrażania rozwiązania do obsługi tożsamości hybrydowej usługi Azure AD należy zaimplementować jedną z obsługiwanych topologii Azure AD Connect. Więcej informacji na temat obsługiwanych i nieobsługiwanych konfiguracji znajduje się w [topologii dla Azure AD Connect](../../active-directory/hybrid/plan-connect-topologies.md).
 
 ## <a name="architecture-diagrams"></a>Diagramy architektury
@@ -172,7 +172,7 @@ Na poniższym diagramie przedstawiono składniki architektury wysokiego poziomu 
 
 |Badan|Synchronizacja skrótów haseł + bezproblemowe logowanie jednokrotne|Uwierzytelnianie przekazywane i bezproblemowe logowanie jednokrotne|Federacja z usługami AD FS|
 |:-----|:-----|:-----|:-----|
-|Gdzie jest wykonywane uwierzytelnianie?|W chmurze|W chmurze po bezpiecznej weryfikacji hasła przy użyciu lokalnego agenta uwierzytelniania|Lokalne|
+|Gdzie jest wykonywane uwierzytelnianie?|W chmurze|W chmurze po bezpiecznej weryfikacji hasła przy użyciu lokalnego agenta uwierzytelniania|Lokalnie|
 |Jakie są wymagania dotyczące serwera lokalnego poza systemem aprowizacji: Azure AD Connect?|Brak|Jeden serwer dla każdego dodatkowego agenta uwierzytelniania|Co najmniej dwa serwery AD FS<br><br>Dwa lub więcej serwerów WAP w sieci obwodowej/strefy DMZ|
 |Jakie są wymagania dotyczące lokalnego Internetu i sieci poza systemem aprowizacji?|Brak|[Wychodzący dostęp do Internetu](../../active-directory/hybrid/how-to-connect-pta-quick-start.md) z serwerów z uruchomionymi agentami uwierzytelniania|[Przychodzący dostęp do Internetu](https://docs.microsoft.com/windows-server/identity/ad-fs/overview/ad-fs-requirements) do serwerów WAP na obrzeżu<br><br>Dostęp do sieci przychodzącej do serwerów AD FS z serwerów WAP na obrzeżu<br><br>Równoważenie obciążenia sieciowego|
 |Czy istnieje wymagania dotyczące certyfikatu SSL?|Nie|Nie|Tak|
@@ -187,7 +187,7 @@ Na poniższym diagramie przedstawiono składniki architektury wysokiego poziomu 
 |Czy można dostosować logo, obraz i opis na stronach logowania?|[Tak, z Azure AD — wersja Premium](../../active-directory/fundamentals/customize-branding.md)|[Tak, z Azure AD — wersja Premium](../../active-directory/fundamentals/customize-branding.md)|[Tak](../../active-directory/hybrid/how-to-connect-fed-management.md)|
 |Jakie zaawansowane scenariusze są obsługiwane?|[Blokada hasła inteligentnego](../../active-directory/authentication/concept-sspr-howitworks.md)<br><br>[Raporty dotyczące przecieków poświadczeń z Azure AD — wersja Premium P2](../../active-directory/reports-monitoring/concept-risk-events.md)|[Blokada hasła inteligentnego](../../active-directory/authentication/howto-password-smart-lockout.md)|System uwierzytelniania z wieloma opóźnieniami w wielu lokacjach<br><br>[Blokada AD FS ekstranetu](https://docs.microsoft.com/windows-server/identity/ad-fs/operations/configure-ad-fs-extranet-soft-lockout-protection)<br><br>[Integracja z systemami tożsamości innych firm](../../active-directory/hybrid/how-to-connect-fed-compatibility.md)|
 
-> [!NOTE] 
+> [!NOTE]
 > Kontrolki niestandardowe w dostępie warunkowym usługi Azure AD nie obsługują obecnie rejestracji urządzeń.
 
 ## <a name="recommendations"></a>Polecane elementy
@@ -195,7 +195,7 @@ System tożsamości zapewnia użytkownikom dostęp do aplikacji w chmurze i apli
 
 Użyj lub Włącz synchronizację skrótów haseł dla wybranej metody uwierzytelniania, z następujących powodów:
 
-1. **Wysoka dostępność i odzyskiwanie po awarii**. Uwierzytelnianie przekazywane i federacyjne polegają na infrastrukturze lokalnej. W przypadku uwierzytelniania przekazywanego lokalna wartość obejmuje sprzęt serwera i sieci, które są wymagane przez agentów uwierzytelniania przekazywanego. W przypadku federacji wartość lokalna jest jeszcze większa. Wymaga serwerów w sieci obwodowej do żądań uwierzytelniania serwera proxy i wewnętrznych serwerów federacyjnych. 
+1. **Wysoka dostępność i odzyskiwanie po awarii**. Uwierzytelnianie przekazywane i federacyjne polegają na infrastrukturze lokalnej. W przypadku uwierzytelniania przekazywanego lokalna wartość obejmuje sprzęt serwera i sieci, które są wymagane przez agentów uwierzytelniania przekazywanego. W przypadku federacji wartość lokalna jest jeszcze większa. Wymaga serwerów w sieci obwodowej do żądań uwierzytelniania serwera proxy i wewnętrznych serwerów federacyjnych.
 
     Aby uniknąć pojedynczych punktów awarii, należy wdrożyć nadmiarowe serwery. Następnie żądania uwierzytelniania będą zawsze serwisowane w przypadku niepowodzenia jakiegokolwiek składnika. Zarówno uwierzytelnianie przekazywane, jak i Federacja mogą polegać na kontrolerach domeny w celu reagowania na żądania uwierzytelniania, co może również zakończyć się niepowodzeniem. Wiele z tych składników wymaga konserwacji w dobrej kondycji. Przestoje są bardziej podobne, gdy konserwacja nie jest zaplanowana i niepoprawnie zaimplementowana. Należy unikać przestojów dzięki synchronizacji skrótów haseł, ponieważ Microsoft Azure AD usługa uwierzytelniania w chmurze jest skalowana globalnie i jest zawsze dostępna.
 
@@ -209,7 +209,7 @@ Użyj lub Włącz synchronizację skrótów haseł dla wybranej metody uwierzyte
 
 ## <a name="conclusion"></a>Podsumowanie
 
-W tym artykule opisano różne opcje uwierzytelniania, które organizacje mogą konfigurować i wdrażać w celu zapewnienia obsługi dostępu do aplikacji w chmurze. Aby sprostać różnym wymaganiom biznesowym, zabezpieczeniom i technicznym, organizacje mogą wybierać między synchronizacją skrótów haseł, uwierzytelnianiem przekazywanym i Federacją. 
+W tym artykule opisano różne opcje uwierzytelniania, które organizacje mogą konfigurować i wdrażać w celu zapewnienia obsługi dostępu do aplikacji w chmurze. Aby sprostać różnym wymaganiom biznesowym, zabezpieczeniom i technicznym, organizacje mogą wybierać między synchronizacją skrótów haseł, uwierzytelnianiem przekazywanym i Federacją.
 
 Należy wziąć pod uwagę każdą metodę uwierzytelniania. Czy warto zastanowić się nad wdrożeniem rozwiązania oraz doświadczeniem użytkownika w procesie logowania, aby rozwiązać wymagania biznesowe? Oceń, czy organizacja wymaga zaawansowanych scenariuszy i funkcji ciągłości działania każdej metody uwierzytelniania. Na koniec Oceń zagadnienia związane z każdą metodą uwierzytelniania. Czy dowolne z nich uniemożliwia zaimplementowanie wyboru?
 

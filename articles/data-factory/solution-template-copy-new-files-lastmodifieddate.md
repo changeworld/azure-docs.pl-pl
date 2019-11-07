@@ -1,5 +1,5 @@
 ---
-title: Kopiuj nowe i zmienione pliki przez LastModifiedDate z Azure Data Factory | Microsoft Docs
+title: Kopiuj nowe i zmienione pliki przez LastModifiedDate z Azure Data Factory
 description: Dowiedz się, jak używać szablonu rozwiązania do kopiowania nowych i zmienionych plików przez LastModifiedDate przy użyciu Azure Data Factory.
 services: data-factory
 documentationcenter: ''
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 3/8/2019
-ms.openlocfilehash: a2a8f0478d1ae4fb19cb911b02572145ff59839b
-ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
+ms.openlocfilehash: aaa7114113d5f0330d2dc7d656b0d91963931512
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/08/2019
-ms.locfileid: "72030079"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73684237"
 ---
 # <a name="copy-new-and-changed-files-by-lastmodifieddate-with-azure-data-factory"></a>Kopiuj nowe i zmienione pliki przez LastModifiedDate z Azure Data Factory
 
@@ -88,8 +88,8 @@ Szablon definiuje cztery parametry:
 11. Zapisz wartość **parametrów uruchamiania wyzwalacza** w następujący sposób, a następnie wybierz pozycję **Zakończ**.
     - **FolderPath_Source** =  **/Source/** .  Możesz zastąpić folder w źródłowym magazynie danych.
     - **FolderPath_Destination** =  **/Destination/** .  Możesz zamienić folder na docelowy magazyn danych.
-    - **LastModified_From** =   **\@trigger (). Output. windowStartTime**.  Jest to zmienna systemowa z wyzwalacza określająca czas ostatniego uruchomienia potoku.
-    - **LastModified_To** =  **\@trigger (). Output. windowEndTime**.  Jest to zmienna systemowa z wyzwalacza określająca czas, w którym potok jest wyzwalany w tym czasie.
+    - **LastModified_From** =   **\@wyzwalacza (). Output. windowStartTime**.  Jest to zmienna systemowa z wyzwalacza określająca czas ostatniego uruchomienia potoku.
+    - **LastModified_To** =  **\@wyzwalacza (). Output. windowEndTime**.  Jest to zmienna systemowa z wyzwalacza określająca czas, w którym potok jest wyzwalany w tym czasie.
     
     ![Parametry wejściowe](media/solution-template-copy-new-files-lastmodifieddate/copy-new-files-lastmodifieddate11.png)
     

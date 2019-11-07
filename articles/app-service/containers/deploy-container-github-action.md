@@ -3,28 +3,26 @@ title: Wdrażanie kontenera z poziomu potoku ciągłej integracji/ciągłego wdr
 description: Dowiedz się, jak wdrożyć kontener do App Service przy użyciu akcji usługi GitHub
 services: app-service
 documentationcenter: ''
-author: jasonfreeberg
-writer: ''
-manager: ''
-editor: ''
-ms.assetid: ''
+author: cephalin
+manager: gwallace
 ms.service: app-service
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/09/2019
+ms.date: 10/25/2019
 ms.author: jafreebe
-ms.openlocfilehash: 2341eba2c24c06d654c9d2eeda96788d168fe27c
-ms.sourcegitcommit: ec2b75b1fc667c4e893686dbd8e119e7c757333a
+ms.reviewer: ushan
+ms.openlocfilehash: 7fbd7b571f5590ff35d52062cc621069a47b619c
+ms.sourcegitcommit: 6c2c97445f5d44c5b5974a5beb51a8733b0c2be7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72809814"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73620228"
 ---
-# <a name="github-actions-for-deploying-to-web-app-for-containers"></a>Akcje usługi GitHub dotyczące wdrażania w usłudze Web App for Containers
+# <a name="deploy-a-custom-container-to-app-service-using-github-actions"></a>Wdrażanie niestandardowego kontenera do App Service przy użyciu akcji GitHub
 
-Dzięki [akcjom GitHub](https://help.github.com/en/articles/about-github-actions) można tworzyć zautomatyzowane przepływy pracy tworzenia oprogramowania. Za pomocą Azure App Service działań w witrynie GitHub można zautomatyzować przepływ pracy w celu wdrożenia [usługi Azure Web Apps dla kontenerów](https://azure.microsoft.com/services/app-service/containers/) za pomocą akcji GitHub.
+Dzięki [akcjom GitHub](https://help.github.com/en/articles/about-github-actions) można tworzyć zautomatyzowane przepływy pracy tworzenia oprogramowania. Za pomocą [akcji Azure App Service dla kontenerów](https://github.com/Azure/webapps-container-deploy)można zautomatyzować przepływ pracy w celu wdrożenia aplikacji jako [kontenerów niestandardowych do App Service](https://azure.microsoft.com/services/app-service/containers/) przy użyciu akcji usługi GitHub.
 
 > [!IMPORTANT]
 > Akcje usługi GitHub są obecnie dostępne w wersji beta. Musisz najpierw [utworzyć konto, aby dołączyć do wersji zapoznawczej](https://github.com/features/actions) przy użyciu konta usługi GitHub.
@@ -32,29 +30,40 @@ Dzięki [akcjom GitHub](https://help.github.com/en/articles/about-github-actions
 
 Przepływ pracy jest definiowany przez plik YAML (. yml) w ścieżce `/.github/workflows/` w repozytorium. Ta definicja zawiera różne kroki i parametry wchodzące w skład przepływu pracy.
 
-W przypadku przepływu pracy kontenera aplikacji sieci Web platformy Azure plik ma trzy sekcje:
+W przypadku przepływu pracy kontenera Azure App Service plik ma trzy sekcje:
 
 |Sekcja  |Zadania  |
 |---------|---------|
-|**Uwierzytelnianie** | 1. Zdefiniuj nazwę główną usługi <br /> 2. Utwórz wpis tajny usługi GitHub |
-|**Utworzenia** | 1. Skonfiguruj środowisko <br /> 2. Tworzenie obrazu kontenera |
-|**Wdrażanie** | 1. Wdróż obraz kontenera |
+|**Uwierzytelnianie** | 1. Zdefiniuj nazwę główną usługi. <br /> 2. Utwórz wpis tajny usługi GitHub. |
+|**Utworzenia** | 1. Skonfiguruj środowisko. <br /> 2. Skompiluj obraz kontenera. |
+|**Wdrażanie** | 1. Wdróż obraz kontenera. |
 
-## <a name="create-a-service-principal"></a>Tworzenie jednostki usługi
+## <a name="create-a-service-principal"></a>Tworzenie nazwy głównej usługi
 
 [Nazwę główną usługi](https://docs.microsoft.com/azure/active-directory/develop/app-objects-and-service-principals#service-principal-object) można utworzyć przy użyciu polecenia [AZ AD Sp Create-for-RBAC](https://docs.microsoft.com/cli/azure/ad/sp?view=azure-cli-latest#az-ad-sp-create-for-rbac) w [interfejsie użytkownika platformy Azure](https://docs.microsoft.com/cli/azure/). Można uruchomić to polecenie przy użyciu [Azure Cloud Shell](https://shell.azure.com/) w Azure Portal lub wybierając przycisk **Wypróbuj** .
 
 ```azurecli-interactive
-az ad sp create-for-rbac --name "myApp" --role contributor --scopes /subscriptions/<SUBSCRIPTION_ID>/resourceGroups/<RESOURCE_GROUP>/providers/Microsoft.Web/sites/<APP_NAME> --sdk-auth
+az ad sp create-for-rbac --name "myApp" --role contributor \
+                            --scopes /subscriptions/{subscription-id}/resourceGroups/{resource-group} \
+                            --sdk-auth
+                            
+  # Replace {subscription-id}, {resource-group} with the subscription, resource group details of the WebApp
 ```
 
-W tym przykładzie Zastąp symbole zastępcze w zasobie IDENTYFIKATORem subskrypcji, grupą zasobów i nazwą aplikacji sieci Web. Dane wyjściowe to poświadczenia przypisania roli, które zapewniają dostęp do aplikacji sieci Web. Skopiuj ten obiekt JSON, którego możesz użyć do uwierzytelniania z usługi GitHub.
+Dane wyjściowe są obiektem JSON z poświadczeniami przypisywania roli, które zapewniają dostęp do aplikacji App Service podobnej do poniższego. Skopiuj ten obiekt JSON w celu uwierzytelnienia z usługi GitHub.
 
-> [!NOTE]
-> Nie trzeba tworzyć jednostki usługi, jeśli zdecydujesz się na użycie profilu publikowania na potrzeby uwierzytelniania.
+ ```azurecli 
+  {
+    "clientId": "<GUID>",
+    "clientSecret": "<GUID>",
+    "subscriptionId": "<GUID>",
+    "tenantId": "<GUID>",
+    (...)
+  }
+```
 
 > [!IMPORTANT]
-> Zawsze dobrym sposobem jest przyznanie minimalnego dostępu. Dlatego zakres w poprzednim przykładzie jest ograniczony do określonej aplikacji sieci Web, a nie całej grupy zasobów.
+> Zawsze dobrym sposobem jest przyznanie minimalnego dostępu. Można ograniczyć zakres w powyższym poleceniach AZ CLI do konkretnej aplikacji App Service i Azure Container Registry, do której są wypychane obrazy kontenerów.
 
 ## <a name="configure-the-github-secret"></a>Konfigurowanie wpisu tajnego usługi GitHub
 
@@ -80,7 +89,7 @@ Poniższy przykład używa poświadczeń na poziomie użytkownika, np. nazwy gł
     - REGISTRY_USERNAME
     - REGISTRY_PASSWORD
 
-5. Zostaną wyświetlone wpisy tajne, jak pokazano poniżej.
+5. Zobaczysz wpisy tajne, jak pokazano poniżej.
 
     ![klucze tajne kontenera](../media/app-service-github-actions/app-service-secrets-container.png)
 
@@ -102,7 +111,7 @@ jobs:
       uses: actions/checkout@master
     
     - name: 'Login via Azure CLI'
-      uses: azure/actions/login@v1
+      uses: azure/login@v1
       with:
         creds: ${{ secrets.AZURE_CREDENTIALS }}
     
@@ -117,19 +126,19 @@ jobs:
         docker push contoso.azurecr.io/nodejssampleapp:${{ github.sha }}
 ```
 
-## <a name="deploy-to-web-app-container"></a>Wdróż w kontenerze aplikacji sieci Web
+## <a name="deploy-to-an-app-service-container"></a>Wdrażanie do kontenera App Service
 
-Aby wdrożyć obraz do kontenera aplikacji sieci Web, należy użyć akcji `Azure/appservice-actions/webapp@master`. Ta akcja ma 5 parametrów:
+Aby wdrożyć obraz do niestandardowego kontenera w App Service, użyj akcji `azure/webapps-container-deploy@v1`. Ta akcja ma pięć parametrów:
 
 | **Konstruktora**  | **Wyjaśnienie**  |
 |---------|---------|
-| **Nazwa aplikacji** | Potrzeb Nazwa aplikacji sieci Web platformy Azure | 
+| **Nazwa aplikacji** | Potrzeb Nazwa aplikacji App Service | 
 | **Nazwa gniazda** | Obowiązkowe Wprowadź istniejące miejsce poza miejscem produkcyjnym |
-| **rastrow** | Potrzeb Określ w pełni kwalifikowaną nazwę obrazu kontenera. Na przykład "myregistry.azurecr.io/nginx:latest" lub "Python: 3.7.2-Alpine/". W przypadku scenariusza z wieloma kontenerami można podać wiele nazw obrazów kontenerów (rozdzielonych w wielu wierszach) |
-| **plik konfiguracji** | Obowiązkowe Ścieżka pliku z systemem Docker — tworzenie. Powinna być w pełni kwalifikowana ścieżka lub odnosząca się do domyślnego katalogu roboczego. Wymagane dla scenariusza z obsługą kontenera |
-| **Container — polecenie** | Obowiązkowe Wprowadź polecenie Start up. Na przykład uruchomienie dotnet lub NazwaPliku filename. dll |
+| **rastrow** | Potrzeb Określ w pełni kwalifikowaną nazwę obrazu kontenera. Na przykład "myregistry.azurecr.io/nginx:latest" lub "Python: 3.7.2-Alpine/". W przypadku aplikacji z wieloma kontenerami można podać wiele nazw obrazów kontenerów (rozdzielonych w wielu wierszach) |
+| **plik konfiguracji** | Obowiązkowe Ścieżka pliku z systemem Docker — tworzenie. Powinna być w pełni kwalifikowana ścieżka lub odnosząca się do domyślnego katalogu roboczego. Wymagane dla aplikacji wielokontenerowych. |
+| **Container — polecenie** | Obowiązkowe Wprowadź polecenie uruchamiania. Na przykład uruchomienie dotnet lub NazwaPliku filename. dll |
 
-Poniżej znajduje się przykładowy przepływ pracy do kompilowania i wdrażania aplikacji sieci Web w języku Node. js do kontenera aplikacji sieci Web platformy Azure.
+Poniżej znajduje się przykładowy przepływ pracy do kompilowania i wdrażania aplikacji node. js do niestandardowego kontenera w App Service.
 
 ```yaml
 on: [push]
@@ -145,7 +154,7 @@ jobs:
       uses: actions/checkout@master
     
     - name: 'Login via Azure CLI'
-      uses: azure/actions/login@v1
+      uses: azure/login@v1
       with:
         creds: ${{ secrets.AZURE_CREDENTIALS }}
     
@@ -173,7 +182,7 @@ jobs:
 
 Zestaw akcji można znaleźć w różnych repozytoriach w usłudze GitHub, z których każda zawiera dokumentację i przykłady ułatwiające korzystanie z usługi GitHub w przypadku ciągłej integracji/ciągłego wdrażania oraz wdrażanie aplikacji na platformie Azure.
 
-- [Logowanie do platformy Azure](https://github.com/Azure/actions)
+- [Logowanie do platformy Azure](https://github.com/Azure/login)
 
 - [Azure WebApp](https://github.com/Azure/webapps-deploy)
 
@@ -185,4 +194,6 @@ Zestaw akcji można znaleźć w różnych repozytoriach w usłudze GitHub, z kt�
 
 - [K8s wdrażanie](https://github.com/Azure/k8s-deploy)
 
-- [Początkowe przepływy pracy](https://github.com/actions/starter-workflows)
+- [Początkowe przepływy pracy CI](https://github.com/actions/starter-workflows)
+
+- [Początkowe przepływy pracy do wdrożenia na platformie Azure](https://github.com/Azure/actions-workflow-samples)

@@ -8,13 +8,13 @@ ms.subservice: core
 ms.topic: conceptual
 ms.author: larryfr
 author: Blackmist
-ms.date: 08/30/2019
-ms.openlocfilehash: 8606ac2578c45062182517b5e67d669a09b8e5c0
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.date: 11/05/2019
+ms.openlocfilehash: c7eb18cf2f8868001c1937b03a63c6013e9cbea8
+ms.sourcegitcommit: 6c2c97445f5d44c5b5974a5beb51a8733b0c2be7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73489715"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73619885"
 ---
 # <a name="create-a-workspace-for-azure-machine-learning-with-azure-cli"></a>Tworzenie obszaru roboczego dla Azure Machine Learning przy użyciu interfejsu wiersza polecenia platformy Azure
 [!INCLUDE [applies-to-skus](../../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -99,6 +99,9 @@ Aby uzyskać więcej informacji na temat pracy z grupami zasobów, zobacz [AZ Gr
 ### <a name="automatically-create-required-resources"></a>Automatycznie twórz wymagane zasoby
 
 Aby utworzyć nowy obszar roboczy, w którym __usługi są tworzone automatycznie__, użyj następującego polecenia:
+
+> [!TIP]
+> Polecenia w tej sekcji tworzą obszar roboczy wersja podstawowa. Aby utworzyć obszar roboczy przedsiębiorstwa, użyj przełącznika `--sku enterprise` za pomocą polecenia `az ml workspace create`. Aby uzyskać więcej informacji na temat wersji Azure Machine Learning, zobacz [co to jest Azure Machine Learning](overview-what-is-azure-ml.md#sku).
 
 ```azurecli-interactive
 az ml workspace create -w <workspace-name> -g <resource-group-name>

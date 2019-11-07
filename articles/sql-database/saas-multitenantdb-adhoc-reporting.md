@@ -1,5 +1,5 @@
 ---
-title: Uruchamianie zapytań dotyczących raportów ad hoc w wielu bazach danych Azure SQL | Microsoft Docs
+title: Uruchamianie zapytań dotyczących raportów ad hoc w wielu bazach danych Azure SQL
 description: Wykonaj zapytania dotyczące raportów ad hoc w wielu bazach danych SQL w przykładowej aplikacji wielodostępnej.
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: AyoOlubeko
 ms.author: craigg
 ms.reviewer: sstein
 ms.date: 10/30/2018
-ms.openlocfilehash: 0a6b45db3c8b4071b591ca2b5fc604b986598c0c
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 3d345e222dac98a63400dd2661ce92674f2534f6
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68570355"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73692083"
 ---
 # <a name="run-ad-hoc-analytics-queries-across-multiple-azure-sql-databases"></a>Uruchamianie zapytań analizy ad hoc w wielu bazach danych Azure SQL
 
@@ -31,7 +31,7 @@ Ten samouczek zawiera informacje na temat wykonywania następujących czynności
 > * Jak uruchamiać zapytania rozproszone we wszystkich bazach danych dzierżaw
 
 
-Do wykonania zadań opisanych w tym samouczku niezbędne jest spełnienie następujących wymagań wstępnych:
+Do wykonania kroków tego samouczka niezbędne jest spełnienie następujących wymagań wstępnych:
 
 * Wdrożono Wingtip biletów SaaS aplikację bazy danych z wieloma dzierżawcami. Aby wdrożyć program w mniej niż pięć minut, zobacz [wdrażanie i eksplorowanie aplikacji bazy danych z obsługą wielu dzierżawców Wingtip SaaS](saas-multitenantdb-get-started-deploy.md)
 * Zainstalowany jest program Azure PowerShell. Aby uzyskać szczegółowe informacje, zobacz [Rozpoczynanie pracy z programem Azure PowerShell](https://docs.microsoft.com/powershell/azure/get-started-azureps)
@@ -48,17 +48,17 @@ Uzyskiwanie dostępu do tych danych w jednej wielodostępnej bazie danych jest �
 
 Dzięki rozproszeniu zapytań w bazach danych dzierżaw, elastyczne zapytanie zapewnia natychmiastowy wgląd w dane produkcyjne na żywo. Niemniej jednak, ponieważ elastyczne zapytanie pobiera dane z potencjalnie wielu baz danych, opóźnienie zapytania może być większe niż w przypadku równoważnych zapytań przesyłanych do jednej wielodostępnej bazy danych. Pamiętaj, aby zaprojektować zapytania, aby zminimalizować dane, które są zwracane. Elastyczne zapytanie jest często najlepiej dostosowane do wykonywania zapytań dotyczących niewielkich ilości danych w czasie rzeczywistym, zamiast tworzyć często używane lub złożone zapytania lub raporty analityczne. Jeśli zapytania nie działają prawidłowo, należy zapoznać się z [planem wykonywania](https://docs.microsoft.com/sql/relational-databases/performance/display-an-actual-execution-plan) , aby sprawdzić, jaka część zapytania została przekazana do zdalnej bazy danych. I Oceń, ile danych jest zwracanych. Zapytania wymagające złożonego przetwarzania analitycznego mogą być lepiej obsługiwane przez zapisanie wyodrębnionych danych dzierżawy do bazy danych zoptymalizowanej pod kątem zapytań analitycznych. SQL Database i SQL Data Warehouse mogą obsługiwać taką bazę danych analitycznych.
 
-Ten wzorzec dla analizy jest wyjaśniony w samouczku dotyczącym [analizy dzierżawców](saas-multitenantdb-tenant-analytics.md).
+Ten wzorzec dla analizy jest wyjaśniony w [samouczku dotyczącym analizy dzierżawców](saas-multitenantdb-tenant-analytics.md).
 
 ## <a name="get-the-wingtip-tickets-saas-multi-tenant-database-application-source-code-and-scripts"></a>Pobierz Wingtip bilety SaaS kodu źródłowego i skryptów aplikacji bazy danych z wieloma dzierżawcami
 
-Wingtip bilety SaaS wielodostępnych skryptów bazy danych i kodu źródłowego aplikacji są dostępne w repozytorium GitHub [WingtipTicketsSaaS-MultitenantDB](https://github.com/microsoft/WingtipTicketsSaaS-MultiTenantDB) . Zapoznaj się [](saas-tenancy-wingtip-app-guidance-tips.md) z ogólnymi wskazówkami dotyczącymi kroków pobierania i odblokowywania Wingtip biletów SaaS.
+Wingtip bilety SaaS wielodostępnych skryptów bazy danych i kodu źródłowego aplikacji są dostępne w repozytorium GitHub [WingtipTicketsSaaS-MultitenantDB](https://github.com/microsoft/WingtipTicketsSaaS-MultiTenantDB) . Zapoznaj się z [ogólnymi wskazówkami](saas-tenancy-wingtip-app-guidance-tips.md) dotyczącymi kroków pobierania i odblokowywania Wingtip biletów SaaS.
 
 ## <a name="create-ticket-sales-data"></a>Tworzenie danych sprzedaży biletów
 
 Aby uruchamiać zapytania dla bardziej interesującego zestawu danych, Utwórz dane sprzedaży biletów, uruchamiając Generator biletów.
 
-1. W *ISE programu PowerShell*Otwórz pozycję... \\\\ Learning modules Operational Analytics\\AdHoc raportowanie demo-AdhocReporting. ps1 i ustaw następujące wartości: \\
+1. W *ISE programu PowerShell*Otwórz moduły...\\uczenie\\analizy operacyjnej\\raportowanie ad hoc\\skryptu *demo-AdhocReporting. ps1* i ustaw następujące wartości:
    * **$DemoScenario** = 1, **bilety zakupu dla zdarzeń we wszystkich miejsc**.
 2. Naciśnij klawisz **F5** , aby uruchomić skrypt i wygenerować sprzedaż biletów. Po uruchomieniu skryptu wykonaj kroki opisane w tym samouczku. W sekcji *Uruchom zapytania rozproszone ad hoc* są wysyłane zapytania o dane biletów, więc poczekaj na ukończenie generatora biletów.
 
@@ -72,7 +72,7 @@ Aby osiągnąć ten wzorzec, wszystkie tabele dzierżaw zawierają kolumnę *Ven
 
 W tym ćwiczeniu zostanie wdrożona baza danych *adhocreporting* . Jest to główna baza danych zawierająca Schemat używany do wykonywania zapytań we wszystkich bazach danych dzierżaw. Baza danych jest wdrażana na istniejącym serwerze wykazu, który jest serwerem używanym dla wszystkich baz danych związanych z zarządzaniem w przykładowej aplikacji.
 
-1. Otwórz... \\\\\\Learning modules Operational Analytics AdHoc Reporting*demo-AdhocReporting. ps1* w programie *PowerShell ISE* i ustaw następujące wartości: \\
+1. Otwórz...\\moduły uczenia\\analizą operacyjną\\raportowanie ad hoc\\*demo-AdhocReporting. ps1* w programie *PowerShell ISE* i ustaw następujące wartości:
    * **$DemoScenario** = 2, **Wdróż bazę danych analizy ad hoc**.
 
 2. Naciśnij klawisz **F5** , aby uruchomić skrypt i utworzyć bazę danych *adhocreporting* .
@@ -91,7 +91,7 @@ W tym ćwiczeniu do bazy danych raportowania ad hoc jest dodawany schemat (zewn�
 
     ![tworzenie poświadczenia](media/saas-multitenantdb-adhoc-reporting/create-credential.png)
 
-   Korzystając z bazy danych katalogu jako zewnętrznego źródła danych, zapytania są dystrybuowane do wszystkich baz danych zarejestrowanych w wykazie podczas uruchamiania zapytania. Ponieważ nazwy serwerów są różne dla każdego wdrożenia, ten skrypt inicjujący Pobiera lokalizację bazy danych wykazu przez pobranie bieżącego serwera (@@servername), w którym skrypt jest wykonywany.
+   Korzystając z bazy danych katalogu jako zewnętrznego źródła danych, zapytania są dystrybuowane do wszystkich baz danych zarejestrowanych w wykazie podczas uruchamiania zapytania. Ponieważ nazwy serwerów są różne dla każdego wdrożenia, ten skrypt inicjujący Pobiera lokalizację bazy danych wykazu przez pobranie bieżącego serwera (@@servername), na którym skrypt jest wykonywany.
 
     ![Utwórz zewnętrzne źródło danych](media/saas-multitenantdb-adhoc-reporting/create-external-data-source.png)
 
@@ -115,7 +115,7 @@ Teraz, gdy baza danych *adhocreporting* została skonfigurowana, należy uruchom
 
 Podczas sprawdzania planu wykonywania Umieść wskaźnik myszy nad ikonami planu, aby uzyskać szczegółowe informacje. 
 
-1. W programie *SSMS*Otwórz pozycję... \\\\Learning modules Operational Analytics\\AdHoc Reporting demo-AdhocReportingQueries. SQL. \\
+1. W programie *SSMS*Otwórz pozycję...\\moduły uczenia\\analizy operacyjnej\\raportowanie ad hoc\\*demo-AdhocReportingQueries. SQL*.
 2. Upewnij się, że nawiązano połączenie z bazą danych **adhocreporting** .
 3. Wybierz menu **zapytania** , a następnie kliknij pozycję **Dołącz rzeczywisty plan wykonania**
 4. Zaznacz, *które miejsca są obecnie zarejestrowane?* zapytanie i naciśnij klawisz **F5**.
@@ -141,7 +141,7 @@ Podczas sprawdzania planu wykonywania Umieść wskaźnik myszy nad ikonami planu
    ![query](media/saas-multitenantdb-adhoc-reporting/query3-plan.png)
 
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 W tym samouczku zawarto informacje na temat wykonywania następujących czynności:
 

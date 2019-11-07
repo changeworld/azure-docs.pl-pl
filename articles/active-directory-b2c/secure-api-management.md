@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 08/31/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 531f6d86d57be550d0a1147e131d93ae6e298406
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
-ms.translationtype: HT
+ms.openlocfilehash: 942c565c885d59a14d64e7ec06beee0354e7c4ca
+ms.sourcegitcommit: 359930a9387dd3d15d39abd97ad2b8cb69b8c18b
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73474745"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73641621"
 ---
 # <a name="secure-an-azure-api-management-api-with-azure-ad-b2c"></a>Zabezpieczanie interfejsu API usługi Azure API Management przy użyciu Azure AD B2C
 
@@ -35,7 +35,7 @@ Przed wykonaniem kroków opisanych w tym artykule potrzebne są następujące za
 
 W przypadku zabezpieczania interfejsu API w usłudze Azure API Management przy użyciu Azure AD B2C potrzebne są kilka wartości dla [zasad przychodzących](../api-management/api-management-howto-policies.md) tworzonych w APIM. Najpierw Zapisz identyfikator aplikacji utworzonej wcześniej w dzierżawie Azure AD B2C. Jeśli używasz aplikacji utworzonej w ramach wymagań wstępnych, użyj identyfikatora aplikacji dla *webbapp1*.
 
-Aby uzyskać identyfikator aplikacji, możesz użyć aktualnego środowiska **aplikacji** lub naszego nowego systemu ujednoliconego **rejestracje aplikacji (wersja zapoznawcza)** . [Dowiedz się więcej na temat środowiska w wersji zapoznawczej](http://aka.ms/b2cappregintro).
+Aby uzyskać identyfikator aplikacji, możesz użyć aktualnego środowiska **aplikacji** lub naszego nowego systemu ujednoliconego **rejestracje aplikacji (wersja zapoznawcza)** . [Dowiedz się więcej na temat nowego środowiska](https://aka.ms/b2cappregintro).
 
 #### <a name="applicationstabapplications"></a>[Aplikacje](#tab/applications/)
 

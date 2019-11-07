@@ -1,17 +1,17 @@
 ---
 title: Odświeżanie modeli Azure Analysis Services przy użyciu Azure Automation | Microsoft Docs
-description: Dowiedz się, jak kod odświeża model przy użyciu Azure Automation.
+description: W tym artykule opisano sposób odświeżenia modelu kodu dla Azure Analysis Services przy użyciu Azure Automation.
 author: chrislound
 ms.service: analysis-services
 ms.topic: conceptual
-ms.date: 04/26/2019
+ms.date: 10/30/2019
 ms.author: chlound
-ms.openlocfilehash: ed1634ef1009149dc2937174b20248eab9cd335f
-ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
+ms.openlocfilehash: a79123d57f80474e1871ef68f9a92ea9417089ac
+ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/13/2019
-ms.locfileid: "72294784"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73572352"
 ---
 # <a name="refresh-with-azure-automation"></a>Odświeżanie za pomocą usługi Azure Automation
 
@@ -21,7 +21,7 @@ W przykładzie w tym artykule są wykorzystywane [moduły programu PowerShell Sq
 
 Przykładowy element Runbook programu PowerShell, który demonstruje odświeżenie modelu w dalszej części tego artykułu.  
 
-## <a name="authentication"></a>Uwierzytelnianie
+## <a name="authentication"></a>Authentication
 
 Wszystkie wywołania muszą zostać uwierzytelnione z prawidłowym tokenem Azure Active Directory (OAuth 2).  W przykładzie w tym artykule zostanie użyta nazwa główna usługi (SPN) do uwierzytelniania w Azure Analysis Services.
 
@@ -105,7 +105,7 @@ Można to skonfigurować w następujący sposób:
 
     ![Konfigurowanie harmonogramu](./media/analysis-services-refresh-azure-automation/15.png)
 
-3. Kliknij przycisk **Utwórz**.
+3. Kliknij pozycję **Utwórz**.
 
 4. Wypełnij parametry harmonogramu. Zostaną one użyte przy każdym wyzwoleniu elementu Runbook. Parametr **WEBHOOKDATA** powinien pozostać pusty, gdy jest uruchamiany zgodnie z harmonogramem.
 
@@ -147,7 +147,7 @@ Aby korzystać z elementu Runbook przy użyciu Azure Data Factory, należy najpi
 |Właściwość  |Wartość  |
 |---------|---------|
 |**AnalysisServicesDatabase**     |Nazwa bazy danych Azure Analysis Services <br/> Przykład: AdventureWorksDB         |
-|**AnalysisServicesServer**     |Nazwa serwera Azure Analysis Services. <br/> Przykład: https: \//zachodni. asazure. Windows. NET/Server/serwer//model/AdventureWorks/         |
+|**AnalysisServicesServer**     |Nazwa serwera Azure Analysis Services. <br/> Przykład: https:\//westus.asazure.windows.net/servers/myserver/models/AdventureWorks/         |
 |**DatabaseRefreshType**     |Typ odświeżania do wykonania. <br/> Przykład: pełne         |
 
 Przykładowa treść JSON:

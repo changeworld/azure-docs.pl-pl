@@ -1,5 +1,5 @@
 ---
-title: Filtrowanie działania w Azure Data Factory | Microsoft Docs
+title: Działanie filtrowania w Azure Data Factory
 description: Działanie filtru filtruje dane wejściowe.
 services: data-factory
 documentationcenter: ''
@@ -11,12 +11,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 05/04/2018
-ms.openlocfilehash: c0f5d3264d953498af61c6e8d36dadee7dd61931
-ms.sourcegitcommit: 083aa7cc8fc958fc75365462aed542f1b5409623
+ms.openlocfilehash: 5794a2c754e2082fdf45ad689bdb89ea494541c2
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70915512"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73679856"
 ---
 # <a name="filter-activity-in-azure-data-factory"></a>Działanie filtrowania w Azure Data Factory
 Możesz użyć działania filtru w potoku, aby zastosować wyrażenie filtru do tablicy wejściowej. 
@@ -36,16 +36,16 @@ Możesz użyć działania filtru w potoku, aby zastosować wyrażenie filtru do 
 
 ## <a name="type-properties"></a>Właściwości typu
 
-Właściwość | Opis | Dozwolone wartości | Wymagane
+Właściwość | Opis | Dozwolone wartości | Wymagany
 -------- | ----------- | -------------- | --------
-name | `Filter` Nazwa działania. | String | Tak
-type | Musi być ustawiona na wartość **Filter**. | String | Tak
-condition | Warunek, który ma być używany do filtrowania danych wejściowych. | Wyrażenie | Tak
-items | Tablica wejściowa, w której ma zostać zastosowany filtr. | Wyrażenie | Tak
+name | Nazwa działania `Filter`. | Ciąg | Tak
+type | Musi być ustawiona na wartość **Filter**. | Ciąg | Tak
+Rozgrzewa | Warunek, który ma być używany do filtrowania danych wejściowych. | Wyrażenie | Tak
+produktów | Tablica wejściowa, w której ma zostać zastosowany filtr. | Wyrażenie | Tak
 
 ## <a name="example"></a>Przykład
 
-W tym przykładzie potok ma dwie działania: **Filtrowanie** i **foreach**. Działanie filtru jest skonfigurowane do filtrowania tablicy wejściowej dla elementów o wartości większej niż 3. Działanie ForEach następnie wykonuje iterację nad filtrowanymi wartościami i ustawia zmienną **test** na bieżącą wartość.
+W tym przykładzie potok ma dwie działania: **Filter** i **foreach**. Działanie filtru jest skonfigurowane do filtrowania tablicy wejściowej dla elementów o wartości większej niż 3. Działanie ForEach następnie wykonuje iterację nad filtrowanymi wartościami i ustawia zmienną **test** na bieżącą wartość.
 
 ```json
 {

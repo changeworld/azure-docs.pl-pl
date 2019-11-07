@@ -9,16 +9,18 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: quickstart
-ms.date: 10/23/2019
+ms.date: 11/04/2019
 ms.author: diberry
-ms.openlocfilehash: 4acf6e4df978ffee6e0f8320bafbb64994aa0639
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
-ms.translationtype: HT
+ms.openlocfilehash: 22a37dbd0b76710a14183aec1795639614207d16
+ms.sourcegitcommit: b2fb32ae73b12cf2d180e6e4ffffa13a31aa4c6f
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73495278"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73613724"
 ---
 # <a name="quickstart-use-prebuilt-home-automation-app"></a>Szybki start: używanie wstępnie utworzonej aplikacji Home Automation
+
+[!INCLUDE [Uses preview portal](./includes/uses-portal-preview.md)]
 
 W tym przewodniku Szybki start utworzysz aplikację usługi LUIS, która używa wstępnie utworzonej domeny `HomeAutomation` na potrzeby włączania i wyłączania świateł i urządzeń. Ta wstępnie utworzona domena zapewnia intencje, jednostki i przykładowe wypowiedzi. Po zakończeniu samouczka punkt końcowy usługi LUIS będzie działał w chmurze.
 
@@ -28,6 +30,8 @@ Na potrzeby tego artykułu musisz dysponować bezpłatnym kontem usługi LUIS ut
 
 [!INCLUDE [Sign in to LUIS](./includes/sign-in-process.md)]
 
+[!INCLUDE [Select authoring resource](./includes/select-authoring-resource.md)]
+
 ## <a name="create-a-new-app"></a>Tworzenie nowej aplikacji
 Tworzenie aplikacji i zarządzanie nimi jest możliwe w obszarze **My Apps** (Moje aplikacje). 
 
@@ -35,7 +39,7 @@ Tworzenie aplikacji i zarządzanie nimi jest możliwe w obszarze **My Apps** (Mo
 
     ![W portalu LUIS na liście Moje aplikacje wybierz pozycję "+ Utwórz".](./media/create-app-in-portal.png)
 
-1. W oknie dialogowym Nadaj nazwę aplikacji `Home Automation` a następnie wybierz pozycję **gotowe**. LUIS tworzy aplikację.
+1. W oknie dialogowym Nadaj nazwę aplikacji `Home Automation` a następnie wybierz pozycję **gotowe**. LUIS tworzy aplikację. Opis jest opcjonalny i nie jest używany do tworzenia ani przewidywania. Zasób predykcyjny jest również opcjonalny podczas tworzenia aplikacji LUIS. Po opublikowaniu aplikacji w środowisku produkcyjnym należy przypisać zasób predykcyjny, aby aplikacja mogła obsługiwać wiele żądań.  
 
     ![W oknie dialogowym Nazwij aplikację "Automatyzacja domu"](./media/create-new-app-details.png)
 
@@ -65,7 +69,7 @@ Wybierz intencję **HomeAutomation.TurnOff**. Możesz zobaczyć, że intencja za
 
 ## <a name="train-the-luis-app"></a>Uczenie aplikacji LUIS
 
-[!INCLUDE [LUIS How to Train steps](../../../includes/cognitive-services-luis-tutorial-how-to-train.md)]
+[!INCLUDE [LUIS How to Train steps](includes/howto-train.md)]
 
 ## <a name="test-your-app"></a>Testowanie aplikacji
 Po przeprowadzeniu uczenia aplikacji możesz ją przetestować. Wybierz pozycję **Testuj**. Wpisz wypowiedź testu, taki jak `Turn off the lights`, do interaktywnego okienka testów, a następnie naciśnij klawisz ENTER. 
@@ -114,7 +118,25 @@ Ponownie wybierz opcję **Test** (Testuj), aby zwinąć okienko testowania.
             "topIntent": "HomeAutomation.TurnOff",
             "intents": {
                 "HomeAutomation.TurnOff": {
-                    "score": 0.967174649
+                    "score": 0.984315455
+                },
+                "HomeAutomation.QueryState": {
+                    "score": 0.009912962
+                },
+                "HomeAutomation.TurnDown": {
+                    "score": 0.00626645749
+                },
+                "HomeAutomation.TurnUp": {
+                    "score": 0.00572059769
+                },
+                "HomeAutomation.SetDevice": {
+                    "score": 0.00379381469
+                },
+                "HomeAutomation.TurnOn": {
+                    "score": 0.00366983772
+                },
+                "None": {
+                    "score": 0.000623856
                 }
             },
             "entities": {
@@ -138,7 +160,7 @@ Ponownie wybierz opcję **Test** (Testuj), aby zwinąć okienko testowania.
                             "text": "living room",
                             "startIndex": 13,
                             "length": 11,
-                            "score": 0.9494325,
+                            "score": 0.907323956,
                             "modelTypeId": 1,
                             "modelType": "Entity Extractor",
                             "recognitionSources": [

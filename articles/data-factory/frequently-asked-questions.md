@@ -1,5 +1,5 @@
 ---
-title: 'Azure Data Factory: często zadawane pytania | Microsoft Docs'
+title: 'Azure Data Factory: często zadawane pytania '
 description: Uzyskaj odpowiedzi na często zadawane pytania dotyczące Azure Data Factory.
 services: data-factory
 documentationcenter: ''
@@ -9,20 +9,20 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 06/27/2018
-ms.openlocfilehash: 7ebcf865ad23e75b2aa9070fe14fc3ee8f1397c7
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 2da12bbc760ff06ad0737ed9d48e12ea81260655
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73481144"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73674730"
 ---
 # <a name="azure-data-factory-faq"></a>Azure Data Factory często zadawane pytania
 Ten artykuł zawiera odpowiedzi na często zadawane pytania dotyczące Azure Data Factory.  
 
 ## <a name="what-is-azure-data-factory"></a>Czym jest usługa Azure Data Factory? 
-Data Factory to w pełni zarządzana usługa integracji danych oparta na chmurze, która automatyzuje przenoszenie i transformację danych. Podobnie jak w przypadku fabryki, która uruchamia sprzęt w celu przekształcenia surowców na gotowe towary, Azure Data Factory organizować istniejące usługi, które zbierają dane pierwotne i przekształcają je w gotowe do użycia informacje. 
+Data Factory to w pełni zarządzana, oparta na chmurze usługa ETL z integracją danych, która automatyzuje przenoszenie i transformację danych. Podobnie jak w przypadku fabryki, która uruchamia sprzęt w celu przekształcenia surowców na gotowe towary, Azure Data Factory organizować istniejące usługi, które zbierają dane pierwotne i przekształcają je w gotowe do użycia informacje. 
 
-Za pomocą Azure Data Factory można tworzyć oparte na danych przepływy pracy do przenoszenia danych między lokalnymi i magazynami danych w chmurze. Możesz przetwarzać i przekształcać dane przy użyciu usług obliczeniowych, takich jak Azure HDInsight, Azure Data Lake Analytics i SQL Server Integration Services (SSIS) Integration Runtime. 
+Za pomocą Azure Data Factory można tworzyć oparte na danych przepływy pracy do przenoszenia danych między lokalnymi i magazynami danych w chmurze. Można przetwarzać i przekształcać dane za pomocą przepływów danych. Moduł ADF obsługuje również zewnętrzne aparaty obliczeniowe dla przekształceń ręcznych za pomocą usług obliczeniowych, takich jak Azure HDInsight, Azure Databricks i SQL Server Integration Services (SSIS) Integration Runtime. 
 
 Dzięki Data Factory można wykonać przetwarzanie danych w usłudze w chmurze opartej na platformie Azure lub we własnym własnym środowisku obliczeniowym, takim jak SSIS, SQL Server lub Oracle. Po utworzeniu potoku, który wykonuje wymaganą akcję, można zaplanować okresowe uruchamianie (co godzinę, codziennie lub co tydzień, na przykład), planowanie okna czasu lub wyzwolić potok z wystąpienia zdarzenia. Aby uzyskać więcej informacji, zobacz [Wprowadzenie do usługi Azure Data Factory](introduction.md).
 
@@ -108,6 +108,9 @@ Subskrypcja platformy Azure może zawierać jedno lub więcej wystąpień usług
 
 ### <a name="pipelines"></a>Potoki
 Fabryka danych może obejmować jeden lub wiele potoków. Potok jest logicznym grupą działań do wykonania jednostką pracy. które umożliwiają wykonanie zadania. Na przykład potok może zawierać grupę działań, które pobierają dane z obiektu blob platformy Azure, a następnie uruchamiają zapytanie programu Hive w klastrze usługi HDInsight w celu partycjonowania danych. Korzyść polega na tym, że można użyć potoku do zarządzania działaniami jako zestawem, zamiast konieczności oddzielnego zarządzania poszczególnymi działaniami. Można połączyć działania w potoku w celu ich sekwencyjnego działania lub można obsługiwać je niezależnie, równolegle.
+
+### <a name="data-flows"></a>Przepływy danych
+Przepływy danych to obiekty, które można skompilować wizualnie w Data Factory, które przekształcają dane na dużą skalę w usługach Spark zaplecza. Nie trzeba zrozumieć programowania ani wewnętrznych platform Spark. Po prostu Zaprojektuj cel przekształcenia danych przy użyciu grafów (map) lub arkuszy kalkulacyjnych (przetwarzanie).
 
 ### <a name="activities"></a>Działania
 Działania reprezentują krok przetwarzania w potoku. Można na przykład użyć działania kopiowania do skopiowania danych z jednego magazynu danych do innego. Podobnie można użyć działania programu Hive, które uruchamia zapytanie programu Hive w klastrze usługi Azure HDInsight, aby przekształcić lub przeanalizować dane. Usługa Data Factory obsługuje trzy typy działań: działania przenoszenia danych, działania przekształcania danych i działania sterowania.
@@ -209,7 +212,7 @@ Przepływ danych przetwarzanie jest obecnie obsługiwany w fabrykach danych utwo
 * Azja Południowo-Wschodnia
 * Środkowo-południowe stany USA
 * Południowe Zjednoczone Królestwo
-* Zachodnio-środkowe stany USA
+* Środkowo-zachodnie stany USA
 * Europa Zachodnia
 * Zachodnie stany USA
 * Zachodnie stany USA 2

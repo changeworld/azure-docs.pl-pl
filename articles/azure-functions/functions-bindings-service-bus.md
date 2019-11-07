@@ -11,12 +11,12 @@ ms.service: azure-functions
 ms.topic: reference
 ms.date: 04/01/2017
 ms.author: cshoe
-ms.openlocfilehash: b261594076857b841ba288dfaba8b5b8e9250065
-ms.sourcegitcommit: 92d42c04e0585a353668067910b1a6afaf07c709
+ms.openlocfilehash: 64c99c6e7e33be5856e67db0500bf48123cdcf09
+ms.sourcegitcommit: b2fb32ae73b12cf2d180e6e4ffffa13a31aa4c6f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/28/2019
-ms.locfileid: "72987929"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73614478"
 ---
 # <a name="azure-service-bus-bindings-for-azure-functions"></a>Azure Service Bus powiązania Azure Functions
 
@@ -32,7 +32,7 @@ Powiązania Service Bus są dostępne w pakiecie NuGet [Microsoft. Azure. WebJob
 
 ## <a name="packages---functions-2x"></a>Pakiety — funkcje 2. x
 
-Powiązania Service Bus są dostępne w pakiecie NuGet [Microsoft. Azure. WebJobs. Extensions. ServiceBus](https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.ServiceBus) w wersji 3. x. Kod źródłowy pakietu znajduje się w repozytorium [Azure-WebJobs-SDK](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs.Extensions.ServiceBus/) GitHub.
+Powiązania Service Bus są dostępne w pakiecie NuGet [Microsoft. Azure. WebJobs. Extensions. ServiceBus](https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.ServiceBus) w wersji 3. x. Kod źródłowy pakietu znajduje się w repozytorium [Azure-Functions-ServiceBus-Extension](https://github.com/Azure/azure-functions-servicebus-extension) GitHub.
 
 > [!NOTE]
 > Wersja 2. x nie tworzy tematu ani subskrypcji skonfigurowanej w wystąpieniu `ServiceBusTrigger`. Wersja 2. x jest oparta na [Microsoft. Azure. ServiceBus](https://www.nuget.org/packages/Microsoft.Azure.ServiceBus) i nie obsługuje zarządzania kolejki.
@@ -325,9 +325,9 @@ W poniższej tabeli objaśniono właściwości konfiguracji powiązań ustawiane
 
 |Function. JSON — Właściwość | Właściwość atrybutu |Opis|
 |---------|---------|----------------------|
-|**type** | nd. | Musi być ustawiona na wartość "serviceBusTrigger". Ta właściwość jest ustawiana automatycznie podczas tworzenia wyzwalacza w Azure Portal.|
-|**direction** | nd. | Musi być ustawiona na wartość "in". Ta właściwość jest ustawiana automatycznie podczas tworzenia wyzwalacza w Azure Portal. |
-|**Nazwij** | nd. | Nazwa zmiennej, która reprezentuje komunikat kolejki lub tematu w kodzie funkcji. Ustaw wartość "$return", aby odwołać się do zwracanej wartości funkcji. |
+|**type** | Nie dotyczy | Musi być ustawiona na wartość "serviceBusTrigger". Ta właściwość jest ustawiana automatycznie podczas tworzenia wyzwalacza w Azure Portal.|
+|**direction** | Nie dotyczy | Musi być ustawiona na wartość "in". Ta właściwość jest ustawiana automatycznie podczas tworzenia wyzwalacza w Azure Portal. |
+|**Nazwij** | Nie dotyczy | Nazwa zmiennej, która reprezentuje komunikat kolejki lub tematu w kodzie funkcji. Ustaw wartość "$return", aby odwołać się do zwracanej wartości funkcji. |
 |**Zmienną QueueName**|**Zmienną QueueName**|Nazwa kolejki do monitorowania.  Ustawiaj tylko w przypadku monitorowania kolejki, a nie dla tematu.
 |**temat**|**Temat**|Nazwa tematu do monitorowania. Ustawiaj tylko w przypadku monitorowania tematu, a nie dla kolejki.|
 |**subscriptionName**|**SubscriptionName**|Nazwa subskrypcji do monitorowania. Ustawiaj tylko w przypadku monitorowania tematu, a nie dla kolejki.|
@@ -398,8 +398,8 @@ Plik [host. JSON](functions-host-json.md#servicebus) zawiera ustawienia sterują
 
 |Właściwość  |Domyślne | Opis |
 |---------|---------|---------|
-|maxConcurrentCalls|16|Maksymalna liczba jednoczesnych wywołań wywołania zwrotnego, które powinna zostać zainicjowana przez pompę komunikatów. Domyślnie środowisko uruchomieniowe funkcji przetwarza wiele komunikatów jednocześnie. Aby skierować środowisko uruchomieniowe do przetworzenia tylko jednej kolejki lub komunikatu tematu jednocześnie, ustaw wartość `maxConcurrentCalls` na 1. |
-|prefetchCount|nd.|Domyślny PrefetchCount, który będzie używany przez bazowe MessageReceiver.|
+|maxConcurrentCalls|16|Maksymalna liczba jednoczesnych wywołań wywołania zwrotnego, które powinna zostać zainicjowana przez pompę komunikatów. Domyślnie środowisko uruchomieniowe funkcji przetwarza wiele komunikatów jednocześnie. Aby skierować środowisko uruchomieniowe do przetwarzania tylko pojedynczej kolejki lub komunikatu tematu, ustaw `maxConcurrentCalls` na 1. |
+|prefetchCount|Nie dotyczy|Domyślny PrefetchCount, który będzie używany przez bazowe MessageReceiver.|
 |maxAutoRenewDuration|00:05:00|Maksymalny czas, w którym Blokada wiadomości zostanie odnowiona automatycznie.|
 
 ## <a name="output"></a>Dane wyjściowe
@@ -473,12 +473,12 @@ public static void Run(TimerInfo myTimer, ILogger log, out string outputSbQueue)
 Kod C# skryptu, który tworzy wiele komunikatów:
 
 ```cs
-public static void Run(TimerInfo myTimer, ILogger log, ICollector<string> outputSbQueue)
+public static async Task Run(TimerInfo myTimer, ILogger log, IAsyncCollector<string> outputSbQueue)
 {
     string message = $"Service Bus queue messages created at: {DateTime.Now}";
     log.LogInformation(message); 
-    outputSbQueue.Add("1 " + message);
-    outputSbQueue.Add("2 " + message);
+    await outputSbQueue.AddAsync("1 " + message);
+    await outputSbQueue.AddAsync("2 " + message);
 }
 ```
 
@@ -692,9 +692,9 @@ W poniższej tabeli objaśniono właściwości konfiguracji powiązań ustawiane
 
 |Function. JSON — Właściwość | Właściwość atrybutu |Opis|
 |---------|---------|----------------------|
-|**type** | nd. | Musi być ustawiona na wartość "serviceBus". Ta właściwość jest ustawiana automatycznie podczas tworzenia wyzwalacza w Azure Portal.|
-|**direction** | nd. | Musi być ustawiona na wartość "out". Ta właściwość jest ustawiana automatycznie podczas tworzenia wyzwalacza w Azure Portal. |
-|**Nazwij** | nd. | Nazwa zmiennej, która reprezentuje kolejkę lub temat w kodzie funkcji. Ustaw wartość "$return", aby odwołać się do zwracanej wartości funkcji. |
+|**type** | Nie dotyczy | Musi być ustawiona na wartość "serviceBus". Ta właściwość jest ustawiana automatycznie podczas tworzenia wyzwalacza w Azure Portal.|
+|**direction** | Nie dotyczy | Musi być ustawiona na wartość "out". Ta właściwość jest ustawiana automatycznie podczas tworzenia wyzwalacza w Azure Portal. |
+|**Nazwij** | Nie dotyczy | Nazwa zmiennej, która reprezentuje kolejkę lub temat w kodzie funkcji. Ustaw wartość "$return", aby odwołać się do zwracanej wartości funkcji. |
 |**Zmienną QueueName**|**Zmienną QueueName**|Nazwa kolejki.  Ustawiaj tylko w przypadku wysyłania komunikatów w kolejce, a nie dla tematu.
 |**temat**|**Temat**|Nazwa tematu do monitorowania. Ustawiaj tylko w przypadku wysyłania komunikatów tematu, a nie dla kolejki.|
 |**połączenia**|**Połączenie**|Nazwa ustawienia aplikacji, która zawiera Service Bus parametry połączenia do użycia dla tego powiązania. Jeśli nazwa ustawienia aplikacji zaczyna się od "AzureWebJobs", można określić tylko resztę nazwy. Na przykład jeśli ustawisz `connection` na "MyServiceBus", środowisko uruchomieniowe funkcji szuka ustawienia aplikacji o nazwie "AzureWebJobsMyServiceBus". W przypadku pozostawienia `connection` pustego środowisko uruchomieniowe funkcji używa domyślnych parametrów połączenia Service Bus w ustawieniu aplikacji o nazwie "AzureWebJobsServiceBus".<br><br>Aby uzyskać parametry połączenia, wykonaj kroki opisane w sekcji [pobieranie poświadczeń zarządzania](../service-bus-messaging/service-bus-quickstart-portal.md#get-the-connection-string). Parametry połączenia muszą należeć do Service Bus przestrzeni nazw, a nie ograniczone do określonej kolejki lub tematu.|
@@ -727,7 +727,7 @@ Aby wysłać komunikat do kolejki z obsługą sesji wC# języku innym niż języ
 
 ## <a name="exceptions-and-return-codes"></a>Wyjątki i kody powrotu
 
-| Łączenie | Informacje ogólne |
+| Łączenie | Dokumentacja |
 |---|---|
 | Service Bus | [Service Bus kody błędów](https://docs.microsoft.com/azure/service-bus-messaging/service-bus-messaging-exceptions) |
 | Service Bus | [Limity Service Bus](https://docs.microsoft.com/azure/service-bus-messaging/service-bus-quotas) |
@@ -761,8 +761,8 @@ W tej sekcji opisano globalne ustawienia konfiguracji dostępne dla tego powiąz
 |---------|---------|---------|
 |maxAutoRenewDuration|00:05:00|Maksymalny czas, w którym Blokada wiadomości zostanie odnowiona automatycznie.|
 |Wskazówk|true|Czy wyzwalacz powinien natychmiast oznaczyć jako zakończone (Autouzupełnianie), czy poczekać na zakończenie przetwarzania.|
-|maxConcurrentCalls|16|Maksymalna liczba jednoczesnych wywołań wywołania zwrotnego, które powinna zostać zainicjowana przez pompę komunikatów. Domyślnie środowisko uruchomieniowe funkcji przetwarza wiele komunikatów jednocześnie. Aby skierować środowisko uruchomieniowe do przetworzenia tylko jednej kolejki lub komunikatu tematu jednocześnie, ustaw wartość `maxConcurrentCalls` na 1. |
-|prefetchCount|nd.|Domyślny PrefetchCount, który będzie używany przez bazowe MessageReceiver.|
+|maxConcurrentCalls|16|Maksymalna liczba jednoczesnych wywołań wywołania zwrotnego, które powinna zostać zainicjowana przez pompę komunikatów. Domyślnie środowisko uruchomieniowe funkcji przetwarza wiele komunikatów jednocześnie. Aby skierować środowisko uruchomieniowe do przetwarzania tylko pojedynczej kolejki lub komunikatu tematu, ustaw `maxConcurrentCalls` na 1. |
+|prefetchCount|Nie dotyczy|Domyślny PrefetchCount, który będzie używany przez bazowe MessageReceiver.|
 
 
 ## <a name="next-steps"></a>Następne kroki

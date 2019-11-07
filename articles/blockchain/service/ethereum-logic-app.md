@@ -6,16 +6,16 @@ keywords: ''
 author: PatAltimore
 ms.author: patricka
 ms.date: 10/14/2019
-ms.topic: tutorial
+ms.topic: article
 ms.service: azure-blockchain
 ms.reviewer: chrisseg
 manager: femila
-ms.openlocfilehash: cff1085d14f2f849134b0b6f602e272fbb5bc561
-ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
+ms.openlocfilehash: bb23d6b9b42e1c51646765255870a14a1b5d39f7
+ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72329274"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73579936"
 ---
 # <a name="use-the-ethereum-blockchain-connector-with-azure-logic-apps"></a>Używanie łącznika Ethereum łańcucha bloków z Azure Logic Apps
 
@@ -138,7 +138,7 @@ Na przykład następujące kroki generują aplikację logiki mikrousług opartą
 
     ![Logic Apps okienku projektanta z adresem URL POST protokołu HTTP](./media/ethereum-logic-app/post-url.png)
 
-1. Użyj Zwinięciea, aby utworzyć żądanie HTTP POST. Zastąp tekst zastępczy *\<HTTP post URL @ no__t-2* adresem URL z poprzedniego kroku.
+1. Użyj Zwinięciea, aby utworzyć żądanie HTTP POST. Zastąp tekst zastępczy *\<http post url\>* adresem URL z poprzedniego kroku.
 
     ``` bash
     curl -d "{}" -H "Content-Type: application/json" -X POST "<HTTP POST URL>"
@@ -182,7 +182,7 @@ Adres punktu końcowego RPC usługi Azure łańcucha bloków Service jest wymaga
 
 **Aby użyć Azure Portal:**
 
-1. Zaloguj się do [portalu Azure](https://portal.azure.com).
+1. Zaloguj się w witrynie [Azure Portal](https://portal.azure.com).
 1. Przejdź do elementu członkowskiego usługi Azure łańcucha bloków. Wybierz pozycję **węzły transakcji** i domyślne łącze węzła transakcji.
 
     ![Strona węzłów transakcji z wyborem (domyślny węzeł)](./media/ethereum-logic-app/transaction-nodes.png)
@@ -267,7 +267,7 @@ Jeśli używasz zestawu Development Kit lub Truffle do skompilowania swojego int
 
 **Aby użyć kompilatora do wypełniania:**
 
-Użyj polecenia `solc --bin <smart contract>.sol`, aby wygenerować kod bajtowy kontraktu.
+Użyj `solc --bin <smart contract>.sol` polecenia, aby wygenerować kod bajtowy kontraktu.
 
 ## <a name="get-the-contract-address"></a>Pobierz adres kontraktu
 

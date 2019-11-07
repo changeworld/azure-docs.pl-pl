@@ -1,18 +1,18 @@
 ---
-title: Biblioteki klienckie wymagane do łączenia się z Azure Analysis Services | Microsoft Docs
+title: Azure Analysis Services biblioteki klienckie | Microsoft Docs
 description: Zawiera opis bibliotek klienckich wymaganych przez aplikacje klienckie i narzędzia do łączenia Azure Analysis Services
 author: minewiskan
 ms.service: azure-analysis-services
 ms.topic: conceptual
-ms.date: 10/16/2019
+ms.date: 10/30/2019
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 8ce5083d444aa05b59677fb46e7aa80200835412
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.openlocfilehash: f78ac8686f23c47995cab9686c2ca3f6cf88fa6b
+ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73147077"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73573057"
 ---
 # <a name="client-libraries-for-connecting-to-azure-analysis-services"></a>Biblioteki klienckie do łączenia się z Azure Analysis Services
 
@@ -20,7 +20,7 @@ Biblioteki klienckie są niezbędne dla aplikacji i narzędzi klienckich do łą
 
 ## <a name="download-the-latest-client-libraries-windows-installer"></a>Pobierz najnowsze biblioteki klienckie (Instalator Windows)  
 
-|Pobierz  |Wersja produktu  | 
+|Do pobrania  |Wersja produktu  | 
 |---------|---------|
 |[MSOLAP (amd64)](https://go.microsoft.com/fwlink/?linkid=829576)    |    15.1.5.15    |
 |[MSOLAP (x86)](https://go.microsoft.com/fwlink/?linkid=829575)     |     15.1.5.15       |
@@ -54,7 +54,7 @@ Biblioteki klienckie dla połączeń klientów różnią się od dostawców dany
   
  Analysis Services OLE DB Provider jest instalowana automatycznie przez większość narzędzi i aplikacji klienckich używanych do uzyskiwania dostępu do Analysis Services baz danych. Należy ją zainstalować na komputerach używanych do uzyskiwania dostępu do danych Analysis Services.  
   
- Dostawcy OLE DB są często określeni w parametrach połączenia. Analysis Services parametry połączenia używają innej nomenklatury do odwoływania się do dostawcy OLE DB: MSOLAP. \<version >. dll.
+ Dostawcy OLE DB są często określeni w parametrach połączenia. Analysis Services parametry połączenia używają innej nomenklatury do odwoływania się do dostawcy OLE DB: MSOLAP.\<wersja >. dll.
 
 ### <a name="amo"></a>AMO  
 
@@ -91,5 +91,5 @@ Biblioteki klienckie dla połączeń klientów różnią się od dostawców dany
 
 
 ## <a name="next-steps"></a>Następne kroki
-[Łączenie z programem Excel](analysis-services-connect-excel.md)    
+[Łączenie z  em programu Excel](analysis-services-connect-excel.md)  
 [Łączenie z usługą Power BI](analysis-services-connect-pbi.md)

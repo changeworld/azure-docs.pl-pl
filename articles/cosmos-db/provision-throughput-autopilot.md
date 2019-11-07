@@ -1,19 +1,19 @@
 ---
-title: Utwórz kontenery usługi Azure Cosmos i bazy danych o przepływności w trybie autopilotażu.
+title: Utwórz kontenery usługi Azure Cosmos i bazy danych w trybie autopilotażu.
 description: Poznaj korzyści, przypadki użycia i sposób aprowizacji baz danych i kontenerów usługi Azure Cosmos w trybie autopilotażu.
 author: kirillg
 ms.author: kirillg
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 598dc6394e8be8b3372f4ed61a522454830a22d6
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 3e2d9b892ad42563b481a0b1fe6a468daefad672
+ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73512277"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73606423"
 ---
-# <a name="create-azure-cosmos-containers-and-databases-with-provisioned-throughput-in-autopilot-mode-preview"></a>Utwórz kontenery usługi Azure Cosmos i bazy danych z zainicjowaną przepływność w trybie autopilotażu (wersja zapoznawcza)
+# <a name="create-azure-cosmos-containers-and-databases-in-autopilot-mode-preview"></a>Tworzenie kontenerów i baz danych usługi Azure Cosmos w trybie autopilotażu (wersja zapoznawcza)
 
 Azure Cosmos DB pozwala na inicjowanie obsługi przepływności w kontenerach w trybie ręcznym lub autopilotażowym. W tym artykule opisano zalety i przypadki użycia trybu autopilotażu.
 
@@ -24,7 +24,9 @@ Oprócz ręcznego inicjowania obsługi przepływności można teraz skonfigurowa
 
 Nie trzeba już ręcznie zarządzać zainicjowaną przepływność lub obsłużyć problemów z ograniczaniem szybkości. Kontenery usługi Azure Cosmos skonfigurowane w trybie autopilotażu mogą być natychmiast skalowane w odpowiedzi na obciążenie, bez wywierania wpływu na dostępność, opóźnienia, przepływność lub wydajność obciążeń globalnie. W przypadku wysokiego użycia kontenery usługi Azure Cosmos skonfigurowane w trybie autopilotażu można skalować w górę lub w dół bez wywierania wpływu na bieżące operacje.
 
-Podczas konfigurowania kontenerów i baz danych w trybie autopilotażu należy określić maksymalną przepływność, `Tmax` nie można jej przekroczyć. Kontenery mogą następnie szybko skalować w oparciu o potrzeby związane z obciążeniem w zakresie `0.1*Tmax < T < Tmax`. Innymi słowy, kontenery i bazy danych są skalowane szybko w zależności od potrzeb związanych z obciążeniem, od do 10% skonfigurowanej wartości przepływności, aż do określonej maksymalnej skonfigurowanej wartości. W dowolnym momencie można zmienić ustawienie maksymalnej przepływności (Tmax) dla bazy danych lub kontenera w systemie.
+Podczas konfigurowania kontenerów i baz danych w trybie autopilotażu należy określić maksymalną przepływność, `Tmax` nie można jej przekroczyć. Kontenery mogą następnie szybko skalować w oparciu o potrzeby związane z obciążeniem w zakresie `0.1*Tmax < T < Tmax`. Innymi słowy, kontenery i bazy danych są skalowane szybko w zależności od potrzeb związanych z obciążeniem, od najmniej do 10% maksymalnej skonfigurowanej przepływności oraz do skonfigurowanej maksymalnej wartości przepływności. W dowolnym momencie można zmienić ustawienie maksymalnej przepływności (Tmax) dla bazy danych lub kontenera w systemie.
+
+W trakcie korzystania z wersji zapoznawczej autopilotażu dla określonej maksymalnej przepływności w kontenerze lub w bazie danych system umożliwia działanie w ramach obliczonego limitu magazynu. W przypadku przekroczenia limitu magazynowania maksymalna przepływność jest automatycznie dostosowywana do wyższej wartości. W przypadku korzystania z przepływności poziomu bazy danych z trybem autopilotażu liczba kontenerów dozwolona w ramach bazy danych jest obliczana jako: (0,001 * maksymalna przepływność). Na przykład jeśli zainicjujesz 20 000 autopilotaż RU/s, baza danych może mieć 20 kontenerów.
 
 ## <a name="benefits-of-autopilot-mode"></a>Zalety trybu pilotażowego
 
@@ -60,11 +62,21 @@ Rozwiązania dotyczące poprzednich problemów nie tylko wymagają dużego czasu
 
 |  | Kontenery skonfigurowane w trybie ręcznym  | Kontenery skonfigurowane w trybie autopilotażu |
 |---------|---------|---------|
-| **Elastyczna przepływność** | Inicjowane ręcznie | Aktywne i aktywne skalowanie na podstawie wzorców użycia obciążeń. |
-| **Szybkość ograniczania żądań/operacji (429)**  | Może się tak zdarzyć, jeśli zużycie przekracza przypuszczalną pojemność. | Nie nastąpi.  |
+| **Elastyczna przepływność** | Inicjowane ręcznie | Automatycznie i chwilowo skalowane na podstawie wzorców użycia obciążeń. |
+| **Szybkość ograniczania żądań/operacji (429)**  | Może się tak zdarzyć, jeśli zużycie przekracza przypuszczalną pojemność. | Nie nastąpi, jeśli używana przepływność mieści się w maksymalnej przepływności wybranej z trybem autopilotażu.   |
 | **Planowanie wydajności** |  Należy wykonać planowanie początkowej pojemności i zapewnić wymaganą przepływność. |    Nie musisz martwić się o planowanie pojemności. System automatycznie zajmuje się planowaniem pojemności i zarządzaniem pojemnością. |
 | **Cennik** | Ręcznie aprowizacji RU/s na godzinę. | W przypadku kont z jednym regionem zapisu płacisz za przepływność używaną co godzinę przy użyciu częstotliwości autopilotażowej RU/s na godzinę. <br/><br/>W przypadku kont z wieloma regionami zapisu nie ma dodatkowej opłaty za autopilotaż. Opłata jest naliczana za przepływność użyta co godzinę przy użyciu tego samego kursu wieloskładnikowego RU/s na godzinę. |
 | **Najlepiej dopasowane do typów obciążeń** |  Przewidywalne i stabilne obciążenia|   Nieprzewidywalne obciążenia i zmienne  |
+
+## <a name="enable-autopilot-from-azure-portal"></a>Włącz autopilotaż z Azure Portal
+
+Możesz wypróbować autopilotaż na kontach usługi Azure Cosmos, włączając w Azure Portal. Wykonaj następujące kroki, aby włączyć opcję autopilotaż:
+
+1. Zaloguj się do [Azure Portal.](https://portal.azure.com)
+
+2. Przejdź do konta usługi Azure Cosmos i Otwórz kartę **nowe funkcje** . Wybierz pozycję **autopilotaż** i **zarejestruj** , jak pokazano na poniższym zrzucie ekranu:
+
+![Tworzenie kontenera w trybie autopilotażu](./media/provision-throughput-autopilot/enable-autopilot-azure-portal.png)
 
 ## <a name="create-a-database-or-a-container-with-autopilot-mode"></a>Tworzenie bazy danych lub kontenera z trybem autopilotażu
 
@@ -74,13 +86,13 @@ Można skonfigurować autopilotaż dla baz danych lub kontenerów podczas ich tw
 
 1. Przejdź do konta usługi Azure Cosmos i Otwórz kartę **Eksplorator danych** .
 
-1. Wybierz pozycję **Nowa baza danych**, a następnie wprowadź nazwę bazy danych. Dla opcji **autopilotaż** wybierz opcję **włączone** i Określ maksymalną przepływność, której baza danych nie może przekroczyć, przy użyciu opcji autopilotażu.
+1. Wybierz pozycję **nowy kontener**, wprowadź nazwę kontenera, klucz partycji. Wybierz opcję **autopilotaż** i wybierz maksymalną przepływność, której nie może przekroczyć czas użycia opcji autopilotażu.
 
-   ![Tworzenie bazy danych w trybie autopilotażu](./media/provision-throughput-autopilot/create-database-autopilot-mode.png)
+   ![Tworzenie kontenera w trybie autopilotażu](./media/provision-throughput-autopilot/create-container-autopilot-mode.png)
 
 1. Kliknij przycisk **OK**
 
-W przypadku podobnych kroków można również utworzyć kontener z zainicjowaną przepływność w trybie autopilotażu.
+W przypadku podobnych kroków można również utworzyć bazę danych z zainicjowaną przepływność w trybie autopilotażu.
 
 ## <a name="next-steps"></a>Następne kroki
 

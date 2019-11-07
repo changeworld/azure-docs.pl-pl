@@ -2,7 +2,6 @@
   href: index.yml
 - name: Architektura i projekt
   href: overview.md
-  expanded: false
   items:
     - name: Wspólna odpowiedzialność w chmurze
       href: shared-responsibility.md
@@ -23,6 +22,7 @@
       href: 'https://docs.microsoft.com/azure/architecture/reference-architectures/dmz/secure-vnet-hybrid?toc=/azure/security/toc.json&bc=/azure/security/breadcrumb/toc.json'
     - name: Możliwości techniczne zabezpieczeń
       href: technical-capabilities.md
+  expanded: false
 - name: Bezpieczeństwo i szyfrowanie danych
   href: encryption-overview.md
   items:
@@ -128,19 +128,6 @@
         - name: Zabezpieczenia zarządzania zdalnego
           href: management.md
         - name: Integracja dzienników platformy Azure
-          items:
-            - name: Wprowadzenie
-              href: azure-log-integration-overview.md
-            - name: Rozpoczęcie pracy
-              href: azure-log-integration-get-started.md
-            - name: Integrowanie dzienników inspekcji usługi Azure AD
-              displayName: active directory
-              href: azure-log-integration-ad.md
-            - name: Integrowanie dzienników z usługi Key Vault
-              displayName: keyvault
-              href: azure-log-integration-keyvault-eventhub.md
-            - name: Często zadawane pytania
-              href: azure-log-integration-faq.md
     - name: Bezpieczeństwo działania
       href: operational-overview.md
       items:

@@ -1,6 +1,6 @@
 ---
 title: Zarządzanie usługami sieci Web przy użyciu API Management
-titleSuffix: Azure Machine Learning Studio (classic)
+titleSuffix: ML Studio (classic) Azure
 description: Przewodnik przedstawiający sposób zarządzania usługami sieci Web Azure przy użyciu API Management. Zarządzanie punktami końcowymi interfejsu API REST przez definiowanie dostępu użytkowników, ograniczanie użycia i monitorowanie pulpitu nawigacyjnego.
 services: machine-learning
 ms.service: machine-learning
@@ -10,12 +10,12 @@ author: xiaoharper
 ms.author: amlstudiodocs
 ms.custom: seodec18
 ms.date: 11/03/2017
-ms.openlocfilehash: 60f890912874cfda993ae45f84fa3d1c04503d00
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 227a7205788194cc507dcd9dab7e5cad57abc7f9
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73489257"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73671570"
 ---
 # <a name="manage-azure-machine-learning-studio-classic-web-services-using-api-management"></a>Zarządzanie usługami sieci Web Azure Machine Learning Studio (klasycznymi) za pomocą API Management
 ## <a name="overview"></a>Omówienie
@@ -29,7 +29,7 @@ Aby ukończyć ten przewodnik, musisz wykonać następujące czynności:
 
 * Konto platformy Azure.
 * Konto Azure.
-* Obszar roboczy, usługa i api_key dla eksperymentu usługi Azure wdrożonego jako usługa sieci Web. Aby uzyskać szczegółowe informacje na temat sposobu tworzenia eksperymentu dotyczącego platformy Azure, zobacz [Przewodnik Szybki Start](create-experiment.md)dotyczący programu Studio. Aby uzyskać informacje na temat sposobu wdrażania eksperymentu programu Studio (klasycznego) jako usługi sieci Web, zobacz sekcję dotyczącą [wdrożenia programu Studio](publish-a-machine-learning-web-service.md) , aby uzyskać szczegółowe informacje na temat sposobu wdrażania eksperymentu platformy Azure jako usługi sieci Web. Alternatywnie dodatek A zawiera instrukcje dotyczące sposobu tworzenia i testowania prostego eksperymentu dotyczącego usługi Azure i wdrażania go jako usługa sieci Web.
+* Obszar roboczy, usługa i api_key dla eksperymentu usługi Azure wdrożonego jako usługa sieci Web. Aby uzyskać szczegółowe informacje na temat sposobu tworzenia eksperymentu dotyczącego platformy Azure, zobacz [Przewodnik Szybki Start](create-experiment.md)dotyczący programu Studio. Aby uzyskać informacje na temat sposobu wdrażania eksperymentu programu Studio (klasycznego) jako usługi sieci Web, zobacz sekcję dotyczącą [wdrożenia programu Studio](deploy-a-machine-learning-web-service.md) , aby uzyskać szczegółowe informacje na temat sposobu wdrażania eksperymentu platformy Azure jako usługi sieci Web. Alternatywnie dodatek A zawiera instrukcje dotyczące sposobu tworzenia i testowania prostego eksperymentu dotyczącego usługi Azure i wdrażania go jako usługa sieci Web.
 
 ## <a name="create-an-api-management-instance"></a>Tworzenie wystąpienia usługi API Management
 

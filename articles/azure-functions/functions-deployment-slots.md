@@ -1,8 +1,6 @@
 ---
 title: Azure Functions miejsc wdrożenia
 description: Dowiedz się, jak tworzyć i używać miejsc wdrożenia przy użyciu Azure Functions
-services: functions
-documentationcenter: na
 author: craigshoemaker
 manager: gwallace
 keywords: usługa Azure Functions, funkcje
@@ -10,12 +8,12 @@ ms.service: azure-functions
 ms.topic: reference
 ms.date: 08/12/2019
 ms.author: cshoe
-ms.openlocfilehash: 50337745b008cdd38dd860a0329e44ee712e7acd
-ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
+ms.openlocfilehash: 23a4870332266ce180c2e94aeb0b5ca24073878b
+ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "70085661"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73576321"
 ---
 # <a name="azure-functions-deployment-slots"></a>Azure Functions miejsc wdrożenia
 
@@ -27,7 +25,7 @@ Poniżej przedstawiono sposób, w jaki funkcje mają wpływ na zamienienie gniaz
 - Jeśli funkcja jest uruchomiona w trakcie wymiany, wykonywanie jest kontynuowane, a kolejne wyzwalacze są kierowane do zamienionego wystąpienia aplikacji.
 
 > [!NOTE]
-> Gniazda nie są dostępne dla planu zużycia systemu Linux.
+> Gniazda nie są obecnie dostępne dla planu zużycia systemu Linux.
 
 ## <a name="why-use-slots"></a>Dlaczego warto korzystać z gniazd?
 
@@ -82,7 +80,7 @@ Wykonaj następujące kroki, aby utworzyć ustawienie wdrożenia:
 
 ![Ustawienie miejsca wdrożenia](./media/functions-deployment-slots/azure-functions-deployment-slots-deployment-setting.png)
 
-## <a name="deployment"></a>Wdrażanie
+## <a name="deployment"></a>Wdrożenie
 
 Gniazda są puste podczas tworzenia gniazda. Możesz użyć dowolnej z [obsługiwanych technologii wdrażania](./functions-deployment-technologies.md) , aby wdrożyć aplikację w gnieździe.
 
@@ -111,8 +109,8 @@ Możesz zamienić gniazda za pośrednictwem [interfejsu wiersza polecenia](https
 
 1. Przejdź do aplikacji funkcji
 1. Kliknij nazwę miejsca źródłowego, które chcesz zamienić
-1. Na karcie *Omówienie* kliknij przycisk **wymiany** ![Swap Azure Functions miejsce wdrożenia ](./media/functions-deployment-slots/azure-functions-deployment-slots-swap.png)
-1. Sprawdź ustawienia konfiguracji wymiany i kliknij pozycję **zamień** ![Swap Azure Functions miejsce wdrożenia ](./media/functions-deployment-slots/azure-functions-deployment-slots-swap-config.png)
+1. Na karcie *Omówienie* kliknij przycisk **swap** ![zamień Azure Functions miejsce wdrożenia](./media/functions-deployment-slots/azure-functions-deployment-slots-swap.png)
+1. Sprawdź ustawienia konfiguracji wymiany i kliknij pozycję **zamień** ![Zamień Azure Functions miejsce wdrożenia](./media/functions-deployment-slots/azure-functions-deployment-slots-swap-config.png)
 
 Operacja może chwilę potrwać, gdy trwa wykonywanie operacji zamiany.
 
@@ -182,10 +180,10 @@ Istnieją dwa poziomy wsparcia dla miejsc wdrożenia:
 | System operacyjny/plan hostingu           | Poziom pomocy technicznej     |
 | ------------------------- | -------------------- |
 | Użycie systemu Windows       | Ogólna dostępność |
-| Windows Premium (wersja zapoznawcza) | Wersja zapoznawcza              |
+| Windows Premium           | Ogólna dostępność  |
 | Dedykowane systemu Windows         | Ogólna dostępność |
 | Użycie systemu Linux         | Nieobsługiwane          |
-| Linux Premium (wersja zapoznawcza)   | Wersja zapoznawcza              |
+| System Linux Premium             | Ogólna dostępność  |
 | System Linux — dedykowany           | Ogólna dostępność |
 
 ## <a name="next-steps"></a>Następne kroki

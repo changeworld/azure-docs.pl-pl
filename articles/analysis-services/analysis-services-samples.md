@@ -1,18 +1,18 @@
 ---
 title: Przykłady kodu, projektu i bazy danych Azure Analysis Services | Microsoft Docs
-description: Dowiedz się więcej o przykładach kodu, projektu i bazy danych dla Azure Analysis Services.
+description: W tym artykule opisano zasoby, aby poznać przykłady kodu, projektu i bazy danych Azure Analysis Services.
 author: minewiskan
 ms.service: azure-analysis-services
 ms.topic: conceptual
-ms.date: 10/29/2019
+ms.date: 10/30/2019
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 17ce7de58afcf9ef2090371b897ff1bbbef824e3
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.openlocfilehash: 743061c1e32d9ca86e90733dbfd66575d2085dbc
+ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73146299"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73572304"
 ---
 # <a name="azure-analysis-services-samples"></a>Przykłady Azure Analysis Services
 
@@ -43,5 +43,5 @@ Jeśli masz serwer Analysis Services w Azure Portal, możesz szybko i łatwo utw
 
 ## <a name="next-steps"></a>Następne kroki
 
-[Samouczek firmy Adventure Works](https://docs.microsoft.com/analysis-services/tutorial-tabular-1400/as-adventure-works-tutorial)   
+[Samouczek Adventure Works](https://docs.microsoft.com/analysis-services/tutorial-tabular-1400/as-adventure-works-tutorial)   
 [Lokalna Brama danych platformy Azure](analysis-services-gateway.md)  

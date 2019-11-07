@@ -1,18 +1,18 @@
 ---
 title: Monitorowanie metryk serwera Azure Analysis Services | Microsoft Docs
-description: Dowiedz się, jak monitorować metryki serwera Analysis Services w Azure Portal.
+description: Dowiedz się, jak Analysis Services używać platformy Azure Eksplorator metryk, bezpłatnego narzędzia w portalu, aby ułatwić monitorowanie wydajności i kondycji serwerów.
 author: minewiskan
 ms.service: azure-analysis-services
 ms.topic: conceptual
-ms.date: 10/29/2019
+ms.date: 10/30/2019
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 57bcffad2634ea556cc0dd53763011f921acc5e0
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.openlocfilehash: 9e6eab38e0f7bd55fa671aa8c1e99693eeb54c84
+ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73146801"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73572732"
 ---
 # <a name="monitor-server-metrics"></a>Monitorowanie metryk serwera
 
@@ -39,14 +39,14 @@ Użyj tej tabeli, aby określić, które metryki najlepiej sprawdzają się w sc
 
 |Metryka|Nazwa wyświetlana metryki|Jednostka|Typ agregacji|Opis|
 |---|---|---|---|---|
-|CommandPoolJobQueueLength|Długość kolejki zadań puli poleceń|Liczba|Średnia|Liczba zadań w kolejce puli wątków poleceń.|
-|Wartości CurrentConnections|Połączenie: bieżące połączenia|Liczba|Średnia|Bieżąca liczba ustanowionych połączeń klientów.|
-|CurrentUserSessions|Bieżące sesje użytkowników|Liczba|Średnia|Bieżąca liczba ustanowionych sesji użytkowników.|
+|CommandPoolJobQueueLength|Długość kolejki zadań puli poleceń|Licznik|Średnia|Liczba zadań w kolejce puli wątków poleceń.|
+|Wartości CurrentConnections|Połączenie: bieżące połączenia|Licznik|Średnia|Bieżąca liczba ustanowionych połączeń klientów.|
+|CurrentUserSessions|Bieżące sesje użytkowników|Licznik|Średnia|Bieżąca liczba ustanowionych sesji użytkowników.|
 |mashup_engine_memory_metric|Pamięć aparatu M|Szybkość|Średnia|Użycie pamięci przez procesy aparatu mashupów|
-|mashup_engine_qpu_metric|M QPU aparatu|Liczba|Średnia|QPU użycie przez procesy aparatu mashupów|
-|memory_metric|Pamięć|Szybkość|Średnia|Rozmiar. Zakres 0-25 GB dla S1, 0-50 GB dla S2 i 0-100 GB dla S4|
+|mashup_engine_qpu_metric|M QPU aparatu|Licznik|Średnia|QPU użycie przez procesy aparatu mashupów|
+|memory_metric|Memory (Pamięć)|Szybkość|Średnia|Rozmiar. Zakres 0-25 GB dla S1, 0-50 GB dla S2 i 0-100 GB dla S4|
 |memory_thrashing_metric|Migotanie pamięci|Procent|Średnia|Średnia pamięć migotanie.|
-|CleanerCurrentPrice|Pamięć: bieżąca cena oczyszczarki|Liczba|Średnia|Bieżąca cena pamięci, $/Byte/Time, znormalizowana do 1000.|
+|CleanerCurrentPrice|Pamięć: bieżąca cena oczyszczarki|Licznik|Średnia|Bieżąca cena pamięci, $/Byte/Time, znormalizowana do 1000.|
 |CleanerMemoryNonshrinkable|Pamięć: pamięć oczyszczarki niemożliwa do zmniejszenia|Szybkość|Średnia|Ilość pamięci (w bajtach), która nie podlega wyprzeczyszczaniu przez oczyszczarkę w tle.|
 |CleanerMemoryShrinkable|Pamięć: zmniejszanie ilości pamięci czyszczącej|Szybkość|Średnia|Ilość pamięci, w bajtach, podlegająca przeczyszczaniu przez oczyszczarkę w tle.|
 |MemoryLimitHard|Pamięć: sztywny limit pamięci|Szybkość|Średnia|Limit pamięci twardej z pliku konfiguracji.|
@@ -59,35 +59,35 @@ Użyj tej tabeli, aby określić, które metryki najlepiej sprawdzają się w sc
 |mashup_engine_private_bytes_metric|Liczba prywatnych bajtów aparatu M |Szybkość|Średnia|Łączna ilość pamięci w procesach kontenera programu mashup pamięć została przydzielona, bez uwzględnienia pamięci współdzielonej z innymi procesami.|
 |mashup_engine_virtual_bytes_metric|Liczba bajtów wirtualnych aparatu M |Szybkość|Średnia|Bieżący rozmiar wirtualnej przestrzeni adresowej, z której korzystają procesy kontenera mashupu.|
 |Przydział|Pamięć: limit przydziału|Szybkość|Średnia|Bieżący limit pamięci (w bajtach). Przydział pamięci jest również nazywany przydziałem pamięci lub rezerwacją pamięci.|
-|QuotaBlocked|Pamięć: zablokowany limit przydziału|Liczba|Średnia|Bieżąca liczba żądań przydziałów blokowanych do momentu zwolnienia innych limitów przydziału pamięci.|
+|QuotaBlocked|Pamięć: zablokowany limit przydziału|Licznik|Średnia|Bieżąca liczba żądań przydziałów blokowanych do momentu zwolnienia innych limitów przydziału pamięci.|
 |VertiPaqNonpaged|Pamięć: VertiPaq niestronicowana|Szybkość|Średnia|Bajty pamięci zablokowane w zestawie roboczym do użycia przez aparat w pamięci.|
 |VertiPaqPaged|Pamięć: stronicowana na stronie VertiPaq|Szybkość|Średnia|Bajty stronicowanej pamięci w użyciu dla danych w pamięci.|
-|ProcessingPoolJobQueueLength|Długość kolejki zadań puli przetwarzania|Liczba|Średnia|Liczba zadań innych niż zadania we/wy w kolejce puli wątków przetwarzania.|
+|ProcessingPoolJobQueueLength|Długość kolejki zadań puli przetwarzania|Licznik|Średnia|Liczba zadań innych niż zadania we/wy w kolejce puli wątków przetwarzania.|
 |RowsConvertedPerSec|Przetwarzanie: przekonwertowane wiersze na sekundę|CountPerSecond|Średnia|Szybkość wierszy przekonwertowanych podczas przetwarzania.|
 |RowsReadPerSec|Przetwarzanie: odczytane wiersze na sekundę|CountPerSecond|Średnia|Współczynnik wierszy odczytanych ze wszystkich relacyjnych baz danych.|
 |RowsWrittenPerSec|Przetwarzanie: liczba wierszy na sekundę|CountPerSecond|Średnia|Częstotliwość wierszy zapisywana podczas przetwarzania.|
-|qpu_metric|QPU|Liczba|Średnia|QPU. Zakres 0-100 dla S1, 0-200 dla S2 i 0-400 dla S4|
-|QueryPoolBusyThreads|Wątki zajęte w puli zapytań|Liczba|Średnia|Liczba zajętych wątków w puli wątków zapytań.|
+|qpu_metric|QPU|Licznik|Średnia|QPU. Zakres 0-100 dla S1, 0-200 dla S2 i 0-400 dla S4|
+|QueryPoolBusyThreads|Wątki zajęte w puli zapytań|Licznik|Średnia|Liczba zajętych wątków w puli wątków zapytań.|
 |SuccessfullConnectionsPerSec|Udane połączenia na sekundę|CountPerSecond|Średnia|Szybkość pomyślnych połączeń.|
-|CommandPoolBusyThreads|Wątki: zajęte wątki w puli poleceń|Liczba|Średnia|Liczba zajętych wątków w puli wątków poleceń.|
-|CommandPoolIdleThreads|Wątki: bezczynne wątki w puli poleceń|Liczba|Średnia|Liczba bezczynnych wątków w puli wątków poleceń.|
-|LongParsingBusyThreads|Wątki: zajęte wątki o długotrwałej analizie|Liczba|Średnia|Liczba zajętych wątków w puli wątków o długotrwałej analizie.|
-|LongParsingIdleThreads|Wątki: długotrwałe wątki bezczynne analizy|Liczba|Średnia|Liczba bezczynnych wątków w puli wątków o długotrwałej analizie.|
-|LongParsingJobQueueLength|Wątki: Długość kolejki zadań o długotrwałej analizie|Liczba|Średnia|Liczba zadań w kolejce puli wątków o długotrwałej analizie.|
-|ProcessingPoolIOJobQueueLength|Wątki: Długość kolejki zadań we/wy puli przetwarzania|Liczba|Średnia|Liczba zadań we/wy w kolejce puli wątków przetwarzania.|
-|ProcessingPoolBusyIOJobThreads|Wątki: wątki zadań we/wy puli przetwarzania|Liczba|Średnia|Liczba wątków uruchamiających zadania we/wy w puli wątków przetwarzania.|
-|ProcessingPoolBusyNonIOThreads|Wątki: zajęte wątki innych niż we/wy puli przetwarzania|Liczba|Średnia|Liczba wątków uruchamiających zadania inne niż we/wy w puli wątków przetwarzania.|
-|ProcessingPoolIdleIOJobThreads|Wątki: wątki zadań we/wy puli przetwarzania|Liczba|Średnia|Liczba bezczynnych wątków dla zadań we/wy w puli wątków przetwarzania.|
-|ProcessingPoolIdleNonIOThreads|Wątki: bezczynne wątki inne niż we/wy puli przetwarzania|Liczba|Średnia|Liczba bezczynnych wątków w puli wątków przetwarzania dedykowanych dla zadań innych niż zadania we/wy.|
-|QueryPoolIdleThreads|Wątki: bezczynne wątki puli zapytań|Liczba|Średnia|Liczba bezczynnych wątków dla zadań we/wy w puli wątków przetwarzania.|
-|QueryPoolJobQueueLength|Wątki: Długość kolejki zadań puli zapytań|Liczba|Średnia|Liczba zadań w kolejce puli wątków zapytań.|
-|ShortParsingBusyThreads|Wątki: zajęte wątki z krótkim analizowaniem|Liczba|Średnia|Liczba zajętych wątków w puli wątków o krótkiej analizie.|
-|ShortParsingIdleThreads|Wątki: bezczynne wątki z krótkim analizowaniem|Liczba|Średnia|Liczba bezczynnych wątków w puli wątków o krótkiej analizie.|
-|ShortParsingJobQueueLength|Wątki: Długość kolejki zadań o krótkiej analizie|Liczba|Średnia|Liczba zadań w kolejce puli wątków o krótkiej analizie.|
-|TotalConnectionFailures|Łączna liczba błędów połączenia|Liczba|Średnia|Łączna liczba nieudanych prób połączenia.|
-|TotalConnectionRequests|Łączna liczba żądań połączenia|Liczba|Średnia|Łączna liczba żądań połączenia. |
+|CommandPoolBusyThreads|Wątki: zajęte wątki w puli poleceń|Licznik|Średnia|Liczba zajętych wątków w puli wątków poleceń.|
+|CommandPoolIdleThreads|Wątki: bezczynne wątki w puli poleceń|Licznik|Średnia|Liczba bezczynnych wątków w puli wątków poleceń.|
+|LongParsingBusyThreads|Wątki: zajęte wątki o długotrwałej analizie|Licznik|Średnia|Liczba zajętych wątków w puli wątków o długotrwałej analizie.|
+|LongParsingIdleThreads|Wątki: długotrwałe wątki bezczynne analizy|Licznik|Średnia|Liczba bezczynnych wątków w puli wątków o długotrwałej analizie.|
+|LongParsingJobQueueLength|Wątki: Długość kolejki zadań o długotrwałej analizie|Licznik|Średnia|Liczba zadań w kolejce puli wątków o długotrwałej analizie.|
+|ProcessingPoolIOJobQueueLength|Wątki: Długość kolejki zadań we/wy puli przetwarzania|Licznik|Średnia|Liczba zadań we/wy w kolejce puli wątków przetwarzania.|
+|ProcessingPoolBusyIOJobThreads|Wątki: wątki zadań we/wy puli przetwarzania|Licznik|Średnia|Liczba wątków uruchamiających zadania we/wy w puli wątków przetwarzania.|
+|ProcessingPoolBusyNonIOThreads|Wątki: zajęte wątki innych niż we/wy puli przetwarzania|Licznik|Średnia|Liczba wątków uruchamiających zadania inne niż we/wy w puli wątków przetwarzania.|
+|ProcessingPoolIdleIOJobThreads|Wątki: wątki zadań we/wy puli przetwarzania|Licznik|Średnia|Liczba bezczynnych wątków dla zadań we/wy w puli wątków przetwarzania.|
+|ProcessingPoolIdleNonIOThreads|Wątki: bezczynne wątki inne niż we/wy puli przetwarzania|Licznik|Średnia|Liczba bezczynnych wątków w puli wątków przetwarzania dedykowanych dla zadań innych niż zadania we/wy.|
+|QueryPoolIdleThreads|Wątki: bezczynne wątki puli zapytań|Licznik|Średnia|Liczba bezczynnych wątków dla zadań we/wy w puli wątków przetwarzania.|
+|QueryPoolJobQueueLength|Wątki: Długość kolejki zadań puli zapytań|Licznik|Średnia|Liczba zadań w kolejce puli wątków zapytań.|
+|ShortParsingBusyThreads|Wątki: zajęte wątki z krótkim analizowaniem|Licznik|Średnia|Liczba zajętych wątków w puli wątków o krótkiej analizie.|
+|ShortParsingIdleThreads|Wątki: bezczynne wątki z krótkim analizowaniem|Licznik|Średnia|Liczba bezczynnych wątków w puli wątków o krótkiej analizie.|
+|ShortParsingJobQueueLength|Wątki: Długość kolejki zadań o krótkiej analizie|Licznik|Średnia|Liczba zadań w kolejce puli wątków o krótkiej analizie.|
+|TotalConnectionFailures|Łączna liczba błędów połączenia|Licznik|Średnia|Łączna liczba nieudanych prób połączenia.|
+|TotalConnectionRequests|Łączna liczba żądań połączenia|Licznik|Średnia|Łączna liczba żądań połączenia. |
 
 ## <a name="next-steps"></a>Następne kroki
-[Przegląd Azure Monitor](../azure-monitor/overview.md)      
+[Azure monitor przegląd](../azure-monitor/overview.md)      
 [Wprowadzenie do usługi Azure Eksplorator metryk](../azure-monitor/platform/metrics-getting-started.md)      
 [Metryki w interfejsie API REST Azure Monitor](/rest/api/monitor/metrics)

@@ -1,5 +1,5 @@
 ---
-title: Uwierzytelnianie Azure Active Directory — Azure SQL | Microsoft Docs
+title: Uwierzytelnianie Azure Active Directory — Azure SQL
 description: Dowiedz się, jak używać Azure Active Directory do uwierzytelniania za pomocą SQL Database, wystąpienia zarządzanego i SQL Data Warehouse
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: GithubMirek
 ms.author: mireks
 ms.reviewer: vanto, carlrab
 ms.date: 02/20/2019
-ms.openlocfilehash: 848cfc96a7da4e69ff77d16a42226a983153ac63
-ms.sourcegitcommit: d3dced0ff3ba8e78d003060d9dafb56763184d69
+ms.openlocfilehash: 4516f75d80345312a6ca3b6dac3e5156d7e239e8
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69897000"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73691370"
 ---
 # <a name="use-azure-active-directory-authentication-for-authentication-with-sql"></a>Używanie uwierzytelniania Azure Active Directory na potrzeby uwierzytelniania przy użyciu programu SQL Server
 
@@ -44,7 +44,7 @@ W przypadku uwierzytelniania usługi Azure AD można centralnie zarządzać toż
 Czynności konfiguracyjne obejmują następujące procedury w celu skonfigurowania i użycia uwierzytelniania Azure Active Directory.
 
 1. Utwórz i wypełnij usługę Azure AD.
-2. Opcjonalnie: Skojarz lub Zmień usługę Active Directory, która jest obecnie skojarzona z subskrypcją platformy Azure.
+2. Opcjonalne: Skojarz lub Zmień usługę Active Directory, która jest aktualnie skojarzona z subskrypcją platformy Azure.
 3. Utwórz Azure Active Directory administratora dla serwera Azure SQL Database, wystąpienia zarządzanego lub [Azure SQL Data Warehouse](https://azure.microsoft.com/services/sql-data-warehouse/).
 4. Skonfiguruj komputery klienckie.
 5. Utwórz użytkowników zawartej bazy danych w bazie danych zamapowanej na tożsamości usługi Azure AD.
@@ -71,7 +71,7 @@ W przypadku korzystania z uwierzytelniania usługi Azure AD istnieją dwa konta 
 
 ## <a name="permissions"></a>Uprawnienia
 
-Aby utworzyć nowych użytkowników, musisz mieć `ALTER ANY USER` odpowiednie uprawnienia w bazie danych programu. `ALTER ANY USER` Uprawnienie można przyznać każdemu użytkownikowi bazy danych. Uprawnienie jest również przechowywane przez konta administratora serwera oraz użytkowników bazy danych `CONTROL ON DATABASE` z uprawnieniami lub `ALTER ON DATABASE` dla `db_owner` tej bazy danych oraz przez członków roli bazy danych. `ALTER ANY USER`
+Aby utworzyć nowych użytkowników, musisz mieć uprawnienie `ALTER ANY USER` w bazie danych programu. Uprawnienie `ALTER ANY USER` można przyznać każdemu użytkownikowi bazy danych. Uprawnienia `ALTER ANY USER` są również przechowywane przez konta administratora serwera i użytkowników bazy danych z uprawnieniami `CONTROL ON DATABASE` lub `ALTER ON DATABASE` dla tej bazy danych oraz przez członków `db_owner` roli bazy danych.
 
 Aby utworzyć użytkownika zawartej bazy danych w Azure SQL Database, wystąpieniu zarządzanym lub SQL Data Warehouse, musisz nawiązać połączenie z bazą danych lub wystąpieniem przy użyciu tożsamości usługi Azure AD. Aby utworzyć pierwszego zawartego użytkownika bazy danych, musisz nawiązać połączenie z bazą danych przy użyciu administratora usługi Azure AD (który jest właścicielem bazy danych). Jest to zademonstrowane w temacie [Konfigurowanie uwierzytelniania Azure Active Directory i zarządzanie nim za pomocą SQL Database lub SQL Data Warehouse](sql-database-aad-authentication-configure.md). Każde uwierzytelnianie usługi Azure AD jest możliwe tylko wtedy, gdy administrator usługi Azure AD został utworzony dla serwera Azure SQL Database lub SQL Data Warehouse. Jeśli administrator Azure Active Directory został usunięty z serwera, istniejące Azure Active Directory użytkownicy utworzeni wcześniej w programie SQL Server nie mogą już łączyć się z bazą danych przy użyciu poświadczeń Azure Active Directory.
 
@@ -79,16 +79,16 @@ Aby utworzyć użytkownika zawartej bazy danych w Azure SQL Database, wystąpien
 
 - W programie Azure SQL Server lub SQL Data Warehouse mogą być obsługiwane następujące elementy członkowskie usługi Azure AD:
 
-  - Natywni Członkowie: Członek utworzony w usłudze Azure AD w domenie zarządzanej lub w domenie klienta. Aby uzyskać więcej informacji, zobacz [Dodawanie własnej nazwy domeny do usługi Azure AD](../active-directory/active-directory-domains-add-azure-portal.md).
-  - Członkowie domeny federacyjnej: Członek utworzony w usłudze Azure AD z domeną federacyjną. Aby uzyskać więcej informacji, zobacz [Microsoft Azure teraz obsługuje Federacji z systemem Windows Server Active Directory](https://azure.microsoft.com/blog/20../../windows-azure-now-supports-federation-with-windows-server-active-directory/).
+  - Natywni Członkowie: członek utworzony w usłudze Azure AD w domenie zarządzanej lub w domenie klienta. Aby uzyskać więcej informacji, zobacz [Dodawanie własnej nazwy domeny do usługi Azure AD](../active-directory/active-directory-domains-add-azure-portal.md).
+  - Członkowie domeny federacyjnej: członek utworzony w usłudze Azure AD z domeną federacyjną. Aby uzyskać więcej informacji, zobacz [Microsoft Azure teraz obsługuje Federacji z systemem Windows Server Active Directory](https://azure.microsoft.com/blog/20../../windows-azure-now-supports-federation-with-windows-server-active-directory/).
   - Zaimportowani członkowie z innej usługi Azure AD są członkami domeny natywnej lub federacyjnej.
   - Grupy Active Directory utworzone jako grupy zabezpieczeń.
 
-- Użytkownicy usługi Azure AD będący częścią grupy, która `db_owner` ma rolę serwera, nie mogą używać składni **[poświadczeń "CREATE DATABASE scoped](/sql/t-sql/statements/create-database-scoped-credential-transact-sql)** " w odniesieniu do Azure SQL Database i Azure SQL Data Warehouse. Zostanie wyświetlony następujący błąd:
+- Użytkownicy usługi Azure AD będący częścią grupy, która ma rolę serwera `db_owner`, nie mogą używać składni **[poświadczeń "CREATE DATABASE scoped](/sql/t-sql/statements/create-database-scoped-credential-transact-sql)** " w odniesieniu do Azure SQL Database i Azure SQL Data Warehouse. Zostanie wyświetlony następujący błąd:
 
     `SQL Error [2760] [S0001]: The specified schema name 'user@mydomain.com' either does not exist or you do not have permission to use it.`
 
-    Przyznaj roli bezpośrednio użytkownikowi usługi Azure AD, aby wyeliminować problem z **poświadczeniami tworzenia zakresu bazy danych.** `db_owner`
+    Przyznaj `db_owner` rolę bezpośrednio do użytkownika usługi Azure AD w celu ograniczenia problemu dotyczącego **tworzenia poświadczeń z określonym zakresem bazy danych** .
 
 - Te funkcje systemowe zwracają wartości NULL, jeśli są wykonywane w ramach podmiotów zabezpieczeń usługi Azure AD:
 
@@ -102,7 +102,7 @@ Aby utworzyć użytkownika zawartej bazy danych w Azure SQL Database, wystąpien
 
 - Nazwy główne i użytkownicy serwera usługi Azure AD są obsługiwane jako funkcja w wersji zapoznawczej dla [wystąpień zarządzanych](sql-database-managed-instance.md).
 - Ustawienie podmiotów zabezpieczeń serwera usługi Azure AD (nazw logowania) mapowanych na grupę usługi Azure AD jako właściciel bazy danych nie jest obsługiwane w [wystąpieniach zarządzanych](sql-database-managed-instance.md).
-    - Rozszerzenie to oznacza, że gdy grupa zostanie dodana jako część `dbcreator` roli serwera, użytkownicy z tej grupy mogą łączyć się z wystąpieniem zarządzanym i tworzyć nowe bazy danych, ale nie będą mogli uzyskać dostępu do bazy danych. Wynika to z faktu, że nowy właściciel bazy danych jest skojarzeniem zabezpieczeń, a nie użytkownikiem usługi Azure AD. Ten problem nie jest manifestem, jeśli pojedynczy użytkownik zostanie dodany do `dbcreator` roli serwera.
+    - Rozszerzenie to polega na tym, że po dodaniu grupy jako części roli serwera `dbcreator` użytkownicy z tej grupy mogą łączyć się z wystąpieniem zarządzanym i tworzyć nowe bazy danych, ale nie będą mogli uzyskać dostępu do bazy danych. Wynika to z faktu, że nowy właściciel bazy danych jest skojarzeniem zabezpieczeń, a nie użytkownikiem usługi Azure AD. Ten problem nie jest manifestem, jeśli pojedynczy użytkownik zostanie dodany do roli serwera `dbcreator`.
 - Zarządzanie agentami SQL i wykonywanie zadań jest obsługiwane dla podmiotów zabezpieczeń serwera usługi Azure AD.
 - Operacje tworzenia kopii zapasowej oraz przywracania bazy danych mogą być wykonywane przy użyciu jednostek usługi (identyfikatorów logowania) serwera Azure AD.
 - Obsługiwane są inspekcje wszystkich instrukcji związanych z podmiotami zabezpieczeń serwera usługi Azure AD i zdarzeniami uwierzytelniania.
@@ -121,7 +121,7 @@ Azure Active Directory Authentication obsługuje następujące metody łączenia
 - Azure Active Directory Universal with MFA
 - Korzystanie z uwierzytelniania za pomocą tokenu aplikacji
 
-Następujące metody uwierzytelniania są obsługiwane dla podmiotów zabezpieczeń serwera usługi Azure AD (w**publicznej wersji**zapoznawczej):
+Następujące metody uwierzytelniania są obsługiwane dla podmiotów zabezpieczeń serwera usługi Azure AD (w**publicznej wersji zapoznawczej**):
 
 - Azure Active Directory hasło
 - Azure Active Directory zintegrowany
@@ -132,7 +132,7 @@ Następujące metody uwierzytelniania są obsługiwane dla podmiotów zabezpiecz
 
 - W celu zwiększenia możliwości zarządzania zalecamy udostępnienie dedykowanej grupy usługi Azure AD jako administrator.   
 - W dowolnym momencie można skonfigurować tylko jednego administratora usługi Azure AD (użytkownika lub grupę) dla serwera Azure SQL Database lub Azure SQL Data Warehouse.
-  - Dodanie podmiotów zabezpieczeń serwera usługi Azure AD dla wystąpień zarządzanych (**publiczna wersja**zapoznawcza) pozwala na utworzenie wielu podmiotów nazw (Logins) serwera usługi Azure AD, które można dodać do `sysadmin` roli.
+  - Dodanie podmiotów zabezpieczeń serwera usługi Azure AD dla wystąpień zarządzanych (**publiczna wersja zapoznawcza**) umożliwia tworzenie wielu podmiotów nazw (Logins) serwera usługi Azure AD, które można dodać do roli `sysadmin`.
 - Tylko administrator usługi Azure AD dla SQL Server może początkowo połączyć się z serwerem Azure SQL Database, wystąpieniem zarządzanym lub Azure SQL Data Warehouse przy użyciu konta Azure Active Directory. Administrator Active Directory może skonfigurować kolejnych użytkowników bazy danych usługi Azure AD.   
 - Zalecamy ustawienie limitu czasu połączenia na 30 sekund.   
 - SQL Server 2016 Management Studio i SQL Server Data Tools for Visual Studio 2015 (wersja 14.0.60311.1 kwietnia 2016 lub nowszy) obsługuje Azure Active Directory uwierzytelnianie. (Uwierzytelnianie usługi Azure AD jest obsługiwane przez **.NET Framework dostawca danych dla programu SqlServer**; co najmniej w wersji .NET Framework 4,6). W związku z tym najnowsze wersje tych narzędzi i aplikacji warstwy danych (DAC i. BACPAC) może korzystać z uwierzytelniania usługi Azure AD.   

@@ -1,20 +1,20 @@
 ---
 title: Azure Analysis Services kopii zapasowej i przywracania bazy danych | Microsoft Docs
-description: Opisuje sposób tworzenia kopii zapasowej i przywracania bazy danych Azure Analysis Services.
+description: W tym artykule opisano sposób tworzenia kopii zapasowych i przywracania metadanych modelu oraz danych z bazy danych Azure Analysis Services.
 author: minewiskan
 ms.service: azure-analysis-services
 ms.topic: conceptual
-ms.date: 07/29/2019
+ms.date: 10/30/2019
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: fde545f3764f5910d00da5a8ce7f0e8c1772c7ea
-ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
+ms.openlocfilehash: 3f63ecf560a14248fed6dea53c30a27acdf9a938
+ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/13/2019
-ms.locfileid: "72295417"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73573444"
 ---
-# <a name="backup-and-restore"></a>Tworzenie i przywracanie kopii zapasowych
+# <a name="backup-and-restore"></a>Tworzenie kopii zapasowej i przywracanie
 
 Tworzenie kopii zapasowych baz danych modeli tabelarycznych w Azure Analysis Services jest znacznie takie samo jak dla Analysis Services lokalnych. Podstawowa różnica polega na tym, że pliki kopii zapasowej są przechowywane. Pliki kopii zapasowej muszą być zapisane w kontenerze na [koncie usługi Azure Storage](../storage/common/storage-create-storage-account.md). Możesz użyć już istniejącego konta magazynu i kontenera lub można je utworzyć podczas konfigurowania ustawień magazynu dla serwera.
 
@@ -37,7 +37,7 @@ Przed utworzeniem kopii zapasowej należy skonfigurować ustawienia magazynu dla
 
 2.  Kliknij pozycję **włączone**, a następnie kliknij pozycję **ustawienia magazynu**.
 
-    ![Włączenie](./media/analysis-services-backup/aas-backup-enable.png)
+    ![Włączanie](./media/analysis-services-backup/aas-backup-enable.png)
 
 3. Wybierz konto magazynu lub Utwórz nowe.
 
@@ -49,13 +49,13 @@ Przed utworzeniem kopii zapasowej należy skonfigurować ustawienia magazynu dla
 
     ![Zapisz ustawienia kopii zapasowej](./media/analysis-services-backup/aas-backup-save.png)
 
-## <a name="backup"></a>Backup
+## <a name="backup"></a>Tworzenie kopii zapasowych
 
 ### <a name="to-backup-by-using-ssms"></a>Aby utworzyć kopię zapasową przy użyciu programu SSMS
 
 1. W programie SSMS kliknij prawym przyciskiem myszy bazę danych > **utworzyć kopię zapasową**.
 
-2. W**pliku**kopii **zapasowej bazy danych** >  kliknij przycisk **Przeglądaj**.
+2. W obszarze **kopia zapasowa bazy danych** > **kopii zapasowej**, kliknij przycisk **Przeglądaj**.
 
 3. W oknie dialogowym **Zapisz plik jako** Sprawdź ścieżkę folderu, a następnie wpisz nazwę pliku kopii zapasowej. 
 

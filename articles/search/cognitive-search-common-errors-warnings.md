@@ -8,12 +8,12 @@ ms.author: abmotley
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 540e72a4472fce626822f0b22bfac11a23aea205
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
-ms.translationtype: HT
+ms.openlocfilehash: 6ed04c875140f3ecd14eff31829e931efbe84ea2
+ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73466771"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73606646"
 ---
 # <a name="common-errors-and-warnings-of-the-ai-enrichment-pipeline-in-azure-cognitive-search"></a>Typowe błędy i ostrzeżenia dotyczące potoku wzbogacenia AI na platformie Azure Wyszukiwanie poznawcze
 
@@ -224,7 +224,12 @@ Możliwość wznowienia nieukończonego zadania indeksowania jest predykatem wed
 
 Możliwe jest przesłonięcie tego zachowania, co umożliwia stopniowe postęp i pomijanie tego ostrzeżenia przy użyciu właściwości konfiguracja `assumeOrderByHighWatermarkColumn`.
 
-[Więcej informacji na temat Cosmos DB postępu przyrostowego i zapytań niestandardowych.](https://go.microsoft.com/fwlink/?linkid=2099593)
+Aby uzyskać więcej informacji, zobacz [przyrostowy postęp i zapytania niestandardowe](search-howto-index-cosmosdb.md#IncrementalProgress).
+
+### <a name="truncated-extracted-text-to-x-characters"></a>Skrócony wyodrębniony tekst do X znaków
+Indeksatory ograniczają ilość tekstu, który można wyodrębnić z dowolnego dokumentu. Ten limit zależy od warstwy cenowej: 32 000 znaków dla warstwy Bezpłatna, 64 000 dla podstawowych i 4 000 000 dla warstw standardowa, standardowa S2 i Standardowa S3. Tekst, który został obcięty, nie będzie indeksowany. Aby uniknąć tego ostrzeżenia, spróbuj rozdzielić dokumenty z dużymi ilościami tekstu na kilka mniejszych dokumentów. 
+
+Aby uzyskać więcej informacji, zobacz [limity indeksatora](search-limits-quotas-capacity.md#indexer-limits).
 
 ### <a name="could-not-map-output-field-x-to-search-index"></a>Nie można zmapować pola wyjściowego "X" na indeks wyszukiwania
 Mapowania pól wyjściowych, które odwołują się do nieistniejących/niepustych danych, będą generować ostrzeżenia dla każdego dokumentu i powodować puste pole indeksu. Aby obejść ten problem, należy dokładnie sprawdzić ścieżki źródłowe mapowania pól wyjściowych dla możliwych liter lub ustawić wartość domyślną przy użyciu [umiejętności warunkowej](cognitive-search-skill-conditional.md#sample-skill-definition-2-set-a-default-value-for-a-value-that-doesnt-exist).

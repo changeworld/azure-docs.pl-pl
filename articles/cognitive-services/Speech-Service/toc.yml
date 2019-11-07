@@ -65,6 +65,10 @@
               href: rest-speech-to-text.md
             - name: Interfejsy API REST transkrypcji wsadowej
               href: batch-transcription.md
+    - name: Zasoby
+      items:
+        - name: Często zadawane pytania dotyczące zamiany mowy na tekst
+          href: faq-stt.md
 - name: Zamiana tekstu na mowę
   exanded: false
   items:
@@ -112,6 +116,10 @@
           items:
             - name: Interfejs API REST zamiany tekstu na mowę
               href: rest-text-to-speech.md
+    - name: Zasoby
+      items:
+        - name: Często zadawane pytania dotyczące zamiany tekstu na mowę
+          href: faq-text-to-speech.md
 - name: Rozpoznawanie intencji
   exanded: false
   items:
@@ -182,6 +190,10 @@
               href: 'https://aka.ms/csspeech/pythonref'
             - name: Informacje o wersji
               href: releasenotes.md
+    - name: Zasoby
+      items:
+        - name: Często zadawane pytania dotyczące tłumaczenia mowy
+          href: 'https://www.microsoft.com/translator/faq.aspx'
 - name: Transkrypcja konwersacji
   expanded: false
   items:
@@ -254,7 +266,7 @@
       items:
         - name: Dodawanie obsługi głosu do bota przy użyciu zestawu SDK usługi Mowa
           href: tutorial-voice-enable-your-bot-speech-sdk.md
-    - name: Dokumentacja
+    - name: Zasoby
       items:
         - name: Często zadawane pytania dotyczące asystentów głosowych
           href: faq-voice-assistants.md
@@ -368,6 +380,8 @@
           href: scenario-availability.md
     - name: Przewodniki Szybki start
       items:
+        - name: Tworzenie projektu
+          href: quickstarts/create-project.md
         - name: 'Konfigurowanie zestawu SDK usługi Mowa przy użyciu języka C#'
           href: quickstarts/setup-platform.md?pivots=programming-language-csharp
         - name: Konfigurowanie zestawu SDK usługi Mowa przy użyciu języka C++

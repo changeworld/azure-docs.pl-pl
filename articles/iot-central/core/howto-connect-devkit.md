@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: philmea
-ms.openlocfilehash: 24ce6de63d06402e24abdeb33996a3853175ce91
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: 4e04ae7d9594ac064c9f3707c797fb2709a79cb6
+ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72954411"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73582980"
 ---
 # <a name="connect-an-mxchip-iot-devkit-device-to-your-azure-iot-central-application"></a>Łączenie urządzenia zestawu deweloperskiego IoT DevKit z aplikacją usługi Azure IoT Central
 
@@ -119,7 +119,7 @@ Przetrząsnąć urządzenie, aby wysłać zgłoszoną właściwość. Urządzeni
 
 Można wyświetlić miary danych telemetrycznych i raportowane wartości właściwości oraz skonfigurować ustawienia na platformie Azure IoT Central:
 
-1. Użyj **Device Explorer** , aby przejść do strony **pomiarów** dla dodanego urządzenia zestawu deweloperskiego:
+1. Użyj **urządzeń** , aby przejść do strony **pomiarów** dla dodanego urządzenia zestawu deweloperskiego:
 
     ![Przejdź do rzeczywistego urządzenia](media/howto-connect-devkit/realdevicenew.png)
 
@@ -212,9 +212,9 @@ Aplikacja utworzona na podstawie przykładowego szablonu aplikacji Devkits zawie
 #### <a name="states"></a>Stany 
 | Nazwa          | Nazwa wyświetlana   | TYPOW | Ostrzeżenie | STANOWIĄ | 
 | ------------- | -------------- | ------ | ------- | ------ | 
-| DeviceState   | Stan urządzenia   | Zielony  | Pomarańczowy  | Czerwony    | 
+| DeviceState   | Stan urządzenia   | Zielony  | Orange  | Czerwony    | 
 
-#### <a name="events"></a>Wydarzenia 
+#### <a name="events"></a>Zdarzenia 
 | Nazwa             | Nazwa wyświetlana      | 
 | ---------------- | ----------------- | 
 | ButtonBPressed   | Naciśnięto przycisk B  | 
@@ -241,14 +241,14 @@ Przełącz ustawienia
 | --------------- | ------------ | ---------- | --------- |
 | Właściwość urządzenia | Numer struktury   | dieNumber  | numer    |
 | Właściwość urządzenia | Lokalizacja urządzenia   | location  | location    |
-| Tekst            | Wyprodukowane w     | wytworzono   | ND       |
+| Tekst            | Wyprodukowane w     | wytworzono   | Nie dotyczy       |
 
 ### <a name="commands"></a>Polecenia
 
 | Nazwa wyświetlana | Nazwa pola | Typ zwracany | Nazwa wyświetlana pola wejściowego | Nazwa pola wejściowego | Typ pola wejściowego |
 | ------------ | ---------- | ----------- | ------------------------ | ---------------- | ---------------- |
 | ECHA         | echo       | tekst        | wartość do wyświetlenia         | displayedValue   | tekst             |
-| Licz    | licz  | numer      | Liczba od               | countFrom        | numer           |
+| Licz    | Licz  | numer      | Liczba od               | countFrom        | numer           |
 
 ## <a name="next-steps"></a>Następne kroki
 

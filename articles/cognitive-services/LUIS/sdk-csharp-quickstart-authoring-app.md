@@ -1,7 +1,7 @@
 ---
-title: 'Szybki start: Language Understanding (LUIS) Tworzenie biblioteki klienta dla platformy .NET'
+title: 'Szybki Start: Language Understanding (LUIS) Tworzenie biblioteki klienta dla platformy .NET'
 titleSuffix: Azure Cognitive Services
-description: Rozpocznij pracę z biblioteką klienta Language Understanding (LUIS) dla platformy .NET. Wykonaj następujące kroki, aby zainstalować pakiet i wypróbować przykładowy kod dla podstawowych zadań.  Language Understanding (LUIS) umożliwia stosowanie niestandardowych analiz uczenia maszynowego do konwersacji użytkownika, tekstu języka naturalnego w celu przewidywania ogólnego znaczenia i ściągania odpowiednich szczegółowych informacji.
+description: Rozpocznij pracę z biblioteką kliencką LUIS dla platformy .NET. Wykonaj następujące kroki, aby zainstalować pakiet i wypróbować przykładowy kod dla podstawowych zadań.
 services: cognitive-services
 author: diberry
 manager: nitinme
@@ -10,14 +10,14 @@ ms.subservice: language-understanding
 ms.topic: quickstart
 ms.date: 08/30/2019
 ms.author: diberry
-ms.openlocfilehash: d7668f49df1caca6b4261424b0d2c025a640d572
-ms.sourcegitcommit: 267a9f62af9795698e1958a038feb7ff79e77909
+ms.openlocfilehash: 6af076f585e7fc9afe870acada744ead2d2e9118
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70258782"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73672088"
 ---
-# <a name="quickstart-language-understanding-luis-authoring-client-library-for-net"></a>Szybki start: Language Understanding (LUIS) Tworzenie biblioteki klienta dla platformy .NET
+# <a name="quickstart-language-understanding-luis-authoring-client-library-for-net"></a>Szybki Start: Language Understanding (LUIS) Tworzenie biblioteki klienta dla platformy .NET
 
 Rozpocznij pracę z biblioteką klienta tworzenia Language Understanding (LUIS) dla platformy .NET. Wykonaj następujące kroki, aby zainstalować pakiet i wypróbować przykładowy kod dla podstawowych zadań.  Language Understanding (LUIS) umożliwia stosowanie niestandardowych analiz uczenia maszynowego do konwersacji użytkownika, tekstu języka naturalnego w celu przewidywania ogólnego znaczenia i ściągania odpowiednich szczegółowych informacji. 
 
@@ -28,7 +28,7 @@ Użyj biblioteki klienta tworzenia Language Understanding (LUIS) dla platformy .
 * Dodaj funkcje, takie jak lista fraz
 * Uczenie i publikowanie aplikacji
 
-[Dokumentacja](https://docs.microsoft.com/dotnet/api/overview/azure/cognitiveservices/client/languageunderstanding?view=azure-dotnet)[ C# ](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/blob/master/documentation-samples/quickstarts/LUIS/LUIS.cs)  |  [](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/cognitiveservices/Language.LUIS.Authoring) | [](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Language.LUIS.Authoring/) referencyjna biblioteki kodu źródłowego pakietu autorskiego (NuGet) | 
+[Dokumentacja referencyjna](https://docs.microsoft.com/dotnet/api/overview/azure/cognitiveservices/client/languageunderstanding?view=azure-dotnet) | [kod źródłowy biblioteki](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/cognitiveservices/Language.LUIS.Authoring) | [pakietu autorskiego (NuGet)](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Language.LUIS.Authoring/) | [ C# przykłady](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/blob/master/documentation-samples/quickstarts/LUIS/LUIS.cs)
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
@@ -45,7 +45,7 @@ Pobierz [klucz początkowy](luis-how-to-azure-subscription.md#starter-key)i [Utw
 
 Utwórz nową aplikację platformy .NET Core w preferowanym edytorze lub środowisku IDE. 
 
-1. W oknie konsoli (na przykład cmd, PowerShell lub bash) Użyj polecenia dotnet `new` , aby utworzyć nową aplikację konsolową o nazwie. `language-understanding-quickstart` To polecenie tworzy prosty projekt "Hello world" C# z pojedynczym plikiem źródłowym: `Program.cs`. 
+1. W oknie konsoli (na przykład cmd, PowerShell lub bash) Użyj polecenia dotnet `new`, aby utworzyć nową aplikację konsolową o nazwie `language-understanding-quickstart`. To polecenie tworzy prosty projekt "Hello world" C# z pojedynczym plikiem źródłowym: `Program.cs`. 
 
     ```console
     dotnet new console -n language-understanding-quickstart
@@ -109,7 +109,7 @@ Te fragmenty kodu pokazują, jak wykonać następujące czynności za pomocą bi
 
 ## <a name="add-the-dependencies"></a>Dodawanie zależności
 
-W katalogu projektu Otwórz plik **program.cs** w preferowanym edytorze lub w środowisku IDE. Zastąp istniejący `using` kod następującymi `using` dyrektywami:
+W katalogu projektu Otwórz plik **program.cs** w preferowanym edytorze lub w środowisku IDE. Zastąp istniejący kod `using` następującymi dyrektywami `using`:
 
 [!code-csharp[Using statements](~/cognitive-services-dotnet-sdk-samples/documentation-samples/quickstarts/LUIS/LUIS.cs?name=Dependencies)]
 
@@ -119,9 +119,9 @@ W katalogu projektu Otwórz plik **program.cs** w preferowanym edytorze lub w ś
 
 1. Utwórz zmienne do przechowywania regionu i punktu końcowego tworzenia. Region klucza tworzenia zależy od tego, gdzie tworzysz. [Trzy regiony tworzenia](luis-reference-regions.md) :
 
-    * Australijski`australiaeast`
-    * Terenie`westeurope`
-    * Stany Zjednoczone i inne regiony `westus` — (domyślnie)
+    * Australia-`australiaeast`
+    * Europa — `westeurope`
+    * Stany Zjednoczone i inne regiony — `westus` (wartość domyślna)
     
     [!code-csharp[Authorization to resource key](~/cognitive-services-dotnet-sdk-samples/documentation-samples/quickstarts/LUIS/LUIS.cs?name=Variables)]
 
@@ -129,7 +129,7 @@ W katalogu projektu Otwórz plik **program.cs** w preferowanym edytorze lub w ś
 
     [!code-csharp[Create LUIS client object](~/cognitive-services-dotnet-sdk-samples/documentation-samples/quickstarts/LUIS/LUIS.cs?name=AuthoringCreateClient)]
 
-## <a name="create-a-luis-app"></a>Tworzenie aplikacji usługi LUIS
+## <a name="create-a-luis-app"></a>Tworzenie aplikacji LUIS
 
 1. Utwórz aplikację LUIS, aby zawierała model przetwarzania języka naturalnego (NLP), w którym znajdują się intencje, jednostki i przykład wyrażenia długości. 
 
@@ -150,11 +150,11 @@ Utwórz [ModelCreateObject](https://docs.microsoft.com/dotnet/api/microsoft.azur
 
 Jednostki, które nie są wymagane, są dostępne w większości aplikacji. Jednostka wyodrębnia informacje z wypowiedź użytkownika, niezbędne do fullfil zamiaru użytkownika. Istnieje kilka typów [wstępnie skompilowanych](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.language.luis.authoring.modelextensions.addprebuiltasync?view=azure-dotnet) i niestandardowych jednostek, z których każdy ma własne modele obiektów transformacji danych (DTO).  Typowe wstępnie skompilowane jednostki do dodania do aplikacji obejmują [Number](luis-reference-prebuilt-number.md), [datetimeV2](luis-reference-prebuilt-datetimev2.md), [geographyV2](luis-reference-prebuilt-geographyv2.md), [porządkową](luis-reference-prebuilt-ordinal.md). 
 
-Ta metoda **addentities** utworzyła `Location` prostą jednostkę z `Class` dwiema rolami, prostą jednostką `Flight` , jednostką złożoną i dodaje kilka wstępnie utworzonych jednostek.
+Ta **Metoda** addentitys utworzyła `Location` prostą, która ma dwie role, `Class` jednostki prostej, `Flight` jednostki złożonej i dodaje kilka wstępnie utworzonych jednostek.
 
 Ważne jest, aby wiedzieć, że jednostki nie są oznaczone zamiarem. Mogą one i zwykle dotyczyć wielu intencji. Tylko przykład wyrażenia długości użytkownika jest oznaczony dla określonego, pojedynczego zamiaru.
 
-Metody tworzenia dla jednostek są częścią klasy [modelu](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.language.luis.authoring.modelextensions?view=azure-dotnet) . Każdy typ jednostki ma własny model obiektów transformacji danych (DTO), zwykle zawierający wyraz `model` w przestrzeni nazw [modeli](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.language.luis.authoring.models?view=azure-dotnet) . 
+Metody tworzenia dla jednostek są częścią klasy [modelu](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.language.luis.authoring.modelextensions?view=azure-dotnet) . Każdy typ jednostki ma własny model obiektów transformacji danych (DTO), zwykle zawierający słowo `model` w przestrzeni nazw [modeli](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.language.luis.authoring.models?view=azure-dotnet) . 
 
 [!code-csharp[Create entities](~/cognitive-services-dotnet-sdk-samples/documentation-samples/quickstarts/LUIS/LUIS.cs?name=AuthoringAddEntities)]
 
@@ -188,7 +188,7 @@ Opublikuj aplikację LUIS przy użyciu metody [PublishAsync](https://docs.micros
 
 ## <a name="run-the-application"></a>Uruchamianie aplikacji
 
-Uruchom aplikację za pomocą polecenia dotnet `run` z katalogu aplikacji.
+Uruchom aplikację z poleceniem dotnet `run` z katalogu aplikacji.
 
 ```console
 dotnet run

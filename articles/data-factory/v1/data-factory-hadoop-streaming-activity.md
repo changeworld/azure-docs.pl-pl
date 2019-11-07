@@ -1,5 +1,5 @@
 ---
-title: Przekształcanie danych za pomocą działania Hadoop Streaming — Azure | Microsoft Docs
+title: Przekształcanie danych za pomocą działania Hadoop Streaming — Azure
 description: Dowiedz się, jak używać działania przesyłania strumieniowego Hadoop w usłudze Azure Data Factory w celu przekształcania danych przez uruchamianie programów przesyłania strumieniowego Hadoop na żądanie/własny klaster usługi HDInsight.
 services: data-factory
 documentationcenter: ''
@@ -12,12 +12,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/10/2018
-ms.openlocfilehash: fd9512f4ede8d9b8b1a8fd69b7120303fe6a0ad5
-ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
+ms.openlocfilehash: c56961b28750f3ba6450c26c897c1ef6c54b3ed8
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70139547"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73667499"
 ---
 # <a name="transform-data-using-hadoop-streaming-activity-in-azure-data-factory"></a>Przekształcanie danych przy użyciu działania usługi Hadoop streaming w Azure Data Factory
 > [!div class="op_single_selector" title1="Działania transformacji"]
@@ -38,10 +38,10 @@ ms.locfileid: "70139547"
 
 Za pomocą działania HDInsightStreamingActivity można wywołać zadanie przesyłania strumieniowego Hadoop z potoku Azure Data Factory. Poniższy fragment kodu JSON przedstawia składnię używania HDInsightStreamingActivity w pliku JSON potoku. 
 
-Działanie przesyłania strumieniowego usługi HDInsight w [potoku](data-factory-create-pipelines.md) Data Factory wykonuje programy przesyłania strumieniowego Hadoop [](data-factory-compute-linked-services.md#azure-hdinsight-on-demand-linked-service) we [własnym lub lokalnym klastrze usługi](data-factory-compute-linked-services.md#azure-hdinsight-linked-service) HDInsight opartym na systemie Windows/Linux. W tym artykule przedstawiono artykuł [działania przekształcania danych](data-factory-data-transformation-activities.md) , który zawiera ogólne omówienie transformacji danych i obsługiwanych działań transformacji.
+Działanie przesyłania strumieniowego usługi HDInsight w [potoku](data-factory-create-pipelines.md) Data Factory wykonuje programy przesyłania strumieniowego Hadoop we [własnym lub lokalnym klastrze usługi](data-factory-compute-linked-services.md#azure-hdinsight-linked-service) HDInsight opartym na systemie Windows/Linux. [](data-factory-compute-linked-services.md#azure-hdinsight-on-demand-linked-service) W tym artykule przedstawiono artykuł [działania przekształcania danych](data-factory-data-transformation-activities.md) , który zawiera ogólne omówienie transformacji danych i obsługiwanych działań transformacji.
 
 > [!NOTE] 
-> Jeśli jesteś nowym do Azure Data Factory, przeczytaj artykuł [wprowadzenie do Azure Data Factory](data-factory-introduction.md) i wykonaj samouczek: [Utwórz pierwszy potok danych](data-factory-build-your-first-pipeline.md) przed przeczytaniem tego artykułu. 
+> Jeśli dopiero zaczynasz Azure Data Factory, przeczytaj artykuł [wprowadzenie do Azure Data Factory](data-factory-introduction.md) i wykonaj samouczek: [Kompiluj pierwszy potok danych](data-factory-build-your-first-pipeline.md) przed przeczytaniem tego artykułu. 
 
 ## <a name="json-sample"></a>Przykład JSON
 Klaster usługi HDInsight jest automatycznie wypełniany przy użyciu przykładowych programów (z. exe i Cat. exe) oraz danych (DaVinci. txt). Domyślnie nazwa kontenera, który jest używany przez klaster usługi HDInsight, jest nazwą klastra. Na przykład jeśli nazwa klastra to myhdicluster, nazwa skojarzonego kontenera obiektów BLOB byłaby myhdicluster. 
@@ -106,7 +106,7 @@ Pamiętaj o następujących kwestiach:
 10. Właściwość **GetDebugInfo —** jest elementem opcjonalnym. Jeśli jest ustawiona na niepowodzenie, dzienniki są pobierane tylko w przypadku niepowodzenia. Gdy ustawienie ma wartość zawsze, dzienniki są zawsze pobierane niezależnie od stanu wykonania.
 
 > [!NOTE]
-> Jak pokazano w przykładzie, należy określić wyjściowy zestaw danych dla działania Hadoop przesyłania strumieniowego dla właściwości Outputs. Ten zestaw danych jest tylko fikcyjnym zestawem danych, który jest wymagany do przekierowania harmonogramu potoku. Nie trzeba określać żadnego wejściowego zestawu danych dla działania dla właściwości **dane wejściowe** .  
+> Jak pokazano w przykładzie, należy określić wyjściowy zestaw danych dla działania Hadoop przesyłania strumieniowego **dla właściwości** Outputs. Ten zestaw danych jest tylko fikcyjnym zestawem danych, który jest wymagany do przekierowania harmonogramu potoku. Nie trzeba określać żadnego wejściowego zestawu danych dla działania dla właściwości **dane wejściowe** .  
 > 
 > 
 

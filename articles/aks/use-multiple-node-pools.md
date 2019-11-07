@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 08/9/2019
 ms.author: mlearned
-ms.openlocfilehash: 8a78c854e9c842915700d4a20c1a57e4f1594a2e
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
-ms.translationtype: HT
+ms.openlocfilehash: 3495d62c7447ba50d9ffe48e68b15dbe36867ac9
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73472447"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73662594"
 ---
 # <a name="create-and-manage-multiple-node-pools-for-a-cluster-in-azure-kubernetes-service-aks"></a>Tworzenie i zarządzanie wieloma pulami węzłów dla klastra w usłudze Azure Kubernetes Service (AKS)
 
@@ -33,19 +33,20 @@ Następujące ograniczenia są stosowane podczas tworzenia klastrów AKS i zarz�
 
 * Nie można usunąć domyślnej puli węzłów (pierwszy).
 * Nie można użyć dodatku routingu aplikacji protokołu HTTP.
+* Klaster AKS musi używać usługi równoważenia obciążenia standardowej jednostki SKU do korzystania z wielu pul węzłów, ale ta funkcja nie jest obsługiwana w przypadku podstawowych modułów równoważenia obciążenia SKU.
+* Klaster AKS musi używać zestawów skalowania maszyn wirtualnych dla węzłów.
 * Nie można dodać ani usunąć pul węzłów przy użyciu istniejącego szablonu Menedżer zasobów, tak jak w przypadku większości operacji. Zamiast tego należy [użyć oddzielnego szablonu Menedżer zasobów](#manage-node-pools-using-a-resource-manager-template) , aby wprowadzić zmiany pul węzłów w klastrze AKS.
 * Nazwa puli węzłów musi rozpoczynać się od małej litery i może zawierać tylko znaki alfanumeryczne. W przypadku pul węzłów systemu Linux długość musi należeć do zakresu od 1 do 12 znaków, długość musi mieć od 1 do 6 znaków.
 * Klaster AKS może mieć maksymalnie osiem pul węzłów.
 * Klaster AKS może mieć maksymalnie 400 węzłów w ramach tych ośmiu pul węzłów.
 * Wszystkie pule węzłów muszą znajdować się w tej samej podsieci.
-* Klaster AKS musi używać zestawów skalowania maszyn wirtualnych dla węzłów.
 
 ## <a name="create-an-aks-cluster"></a>Tworzenie klastra AKS
 
 Aby rozpocząć, Utwórz klaster AKS z pulą jednego węzła. W poniższym przykładzie za pomocą polecenia [AZ Group Create][az-group-create] można utworzyć grupę zasobów o nazwie Moja *zasobów* w regionie *wschodnim* . Klaster AKS o nazwie *myAKSCluster* jest tworzony przy użyciu polecenia [AZ AKS Create][az-aks-create] . A *--Kubernetes-Version* of *1.13.10* służy do pokazywania sposobu aktualizowania puli węzłów w następnym kroku. Można określić dowolną [obsługiwaną wersję Kubernetes][supported-versions].
 
 > [!NOTE]
-> Jednostka SKU usługi Load balanacer w warstwie *podstawowa* nie jest obsługiwana w przypadku używania wielu pul węzłów. Domyślnie klastry AKS są tworzone przy użyciu *standardowej* jednostki SKU loadbalacer.
+> Jednostka SKU usługi Load balanacer w warstwie *podstawowa* nie jest obsługiwana w przypadku używania wielu pul węzłów. Domyślnie klastry AKS są tworzone z użyciem jednostki SKU modułu *równoważenia obciążenia z poziomu interfejsu* wiersza polecenia platformy Azure i Azure Portal.
 
 ```azurecli-interactive
 # Create a resource group in East US
@@ -547,20 +548,7 @@ Węzły AKS nie wymagają swoich własnych publicznych adresów IP do komunikacj
 az feature register --name NodePublicIPPreview --namespace Microsoft.ContainerService
 ```
 
-Po pomyślnej rejestracji Wdróż szablon Azure Resource Manager, postępując zgodnie z tymi samymi instrukcjami, jak [powyżej](#manage-node-pools-using-a-resource-manager-template) , i dodając następującą właściwość wartość logiczna "enableNodePublicIP" w agentPoolProfiles. Ustaw tę wartość na `true` tak, jakby domyślnie została ustawiona jako `false`, jeśli nie zostanie określona. Jest to właściwość "Create-Time", która wymaga minimalnej wersji interfejsu API 2019-06-01. Można to zastosować do pul węzłów systemu Linux i Windows.
-
-```
-"agentPoolProfiles":[  
-    {  
-      "maxPods": 30,
-      "osDiskSizeGB": 0,
-      "agentCount": 3,
-      "agentVmSize": "Standard_DS2_v2",
-      "osType": "Linux",
-      "vnetSubnetId": "[parameters('vnetSubnetId')]",
-      "enableNodePublicIP":true
-    }
-```
+Po pomyślnej rejestracji Wdróż szablon Azure Resource Manager zgodnie z takimi samymi instrukcjami jak [powyżej](#manage-node-pools-using-a-resource-manager-template) , a następnie Dodaj właściwość wartość logiczna `enableNodePublicIP` do agentPoolProfiles. Ustaw wartość tak, aby `true` domyślnie ustawiona jako `false`, jeśli nie została określona. Jest to właściwość "Create-Time", która wymaga minimalnej wersji interfejsu API 2019-06-01. Można to zastosować do pul węzłów systemu Linux i Windows.
 
 ## <a name="clean-up-resources"></a>Oczyszczanie zasobów
 

@@ -1,6 +1,6 @@
 ---
-title: Konfigurowanie wydajności środowiska Azure-SSIS Integration Runtime | Dokumentacja firmy Microsoft
-description: Dowiedz się, jak skonfigurować właściwości środowiska Azure-SSIS Integration Runtime, dla wysoko wydajnych
+title: Konfigurowanie wydajności dla Azure-SSIS Integration Runtime
+description: Dowiedz się, jak skonfigurować właściwości Azure-SSIS Integration Runtime w celu uzyskania wysokiej wydajności
 services: data-factory
 ms.date: 01/10/2018
 ms.topic: conceptual
@@ -10,23 +10,23 @@ author: swinarko
 ms.author: sawinark
 ms.reviewer: ''
 manager: craigg
-ms.openlocfilehash: 42c69653a002446552da998320a43730dfdaadf5
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 518da092f690108111ca4456eaca66e4f3153c54
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65232527"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73681435"
 ---
-# <a name="configure-the-azure-ssis-integration-runtime-for-high-performance"></a>Konfigurowanie środowiska Azure-SSIS Integration Runtime, dla wysoko wydajnych
+# <a name="configure-the-azure-ssis-integration-runtime-for-high-performance"></a>Konfigurowanie Azure-SSIS Integration Runtime na potrzeby wysokiej wydajności
 
-W tym artykule opisano sposób konfigurowania środowiska Azure-SSIS Integration Runtime (IR) zapewniające wysoką wydajność. Azure-SSIS IR umożliwia wdrażanie i uruchamianie pakietów usług SQL Server Integration Services (SSIS) na platformie Azure. Aby uzyskać więcej informacji na temat środowiska Azure-SSIS IR, zobacz [środowiska Integration runtime](concepts-integration-runtime.md#azure-ssis-integration-runtime) artykułu. Aby uzyskać informacje o wdrażanie i uruchamianie pakietów SSIS na platformie Azure, zobacz [Lift- and -shift obciążeń programu SQL Server Integration Services chmurze](/sql/integration-services/lift-shift/ssis-azure-lift-shift-ssis-packages-overview).
+W tym artykule opisano sposób konfigurowania Azure-SSIS Integration Runtime (IR) w celu uzyskania wysokiej wydajności. Azure-SSIS IR umożliwia wdrażanie i uruchamianie pakietów SQL Server Integration Services (SSIS) na platformie Azure. Aby uzyskać więcej informacji na temat Azure-SSIS IR, zobacz artykuł [Integration Runtime](concepts-integration-runtime.md#azure-ssis-integration-runtime) . Aby uzyskać informacje na temat wdrażania i uruchamiania pakietów usług SSIS na platformie Azure, zobacz [Podnieś i przenieś SQL Server Integration Services obciążeń do chmury](/sql/integration-services/lift-shift/ssis-azure-lift-shift-ssis-packages-overview).
 
 > [!IMPORTANT]
-> Ten artykuł zawiera wyniki dotyczące wydajności i uwagi z testów wewnętrznych wykonywane przez członków zespołu rozwoju usług SSIS. Wyniki mogą się różnić. Samodzielnie przeprowadzić testy przed finalize ustawień konfiguracji, które mają wpływ na wydajność i koszt.
+> Ten artykuł zawiera wyniki wydajności i obserwacje z testów wewnętrznych wykonanych przez członków zespołu programistycznego usług SSIS. Wyniki mogą się różnić. Wykonaj własne testy przed zakończeniem ustawień konfiguracji, które mają wpływ na koszt i wydajność.
 
-## <a name="properties-to-configure"></a>Właściwości, aby skonfigurować
+## <a name="properties-to-configure"></a>Właściwości do skonfigurowania
 
-Następujące części skryptu konfiguracji zawiera właściwości, które można skonfigurować podczas tworzenia środowiska Azure-SSIS Integration Runtime. Aby uzyskać kompletny skrypt programu PowerShell i opis, zobacz [pakiety wdrażania programu SQL Server Integration Services na platformę Azure](tutorial-deploy-ssis-packages-azure-powershell.md).
+W poniższej części skryptu konfiguracji przedstawiono właściwości, które można skonfigurować podczas tworzenia Azure-SSIS Integration Runtime. Aby uzyskać kompletny skrypt programu PowerShell i opis, zobacz [wdrażanie pakietów SQL Server Integration Services na platformie Azure](tutorial-deploy-ssis-packages-azure-powershell.md).
 
 ```powershell
 # If your input contains a PSH special character, e.g. "$", precede it with the escape character "`" like "`$"
@@ -66,10 +66,10 @@ $SSISDBPricingTier = "[Basic|S0|S1|S2|S3|S4|S6|S7|S9|S12|P1|P2|P4|P6|P11|P15|…
 ```
 
 ## <a name="azuressislocation"></a>AzureSSISLocation
-**AzureSSISLocation** znajdują się węzeł procesu roboczego środowiska integration runtime. Węzeł procesu roboczego obsługuje stałe połączenie z bazą danych wykazu usług SSIS (SSISDB) na bazę danych Azure SQL database. Ustaw **AzureSSISLocation** w tej samej lokalizacji co serwer bazy danych SQL, który jest hostem bazy danych SSISDB, co pozwoli środowiska integration runtime do pracy w jak najbardziej wydajny.
+**AzureSSISLocation** jest lokalizacją dla węzła procesu roboczego Integration Runtime. Węzeł procesu roboczego utrzymuje stałe połączenie z bazą danych wykazu usług SSIS (SSISDB) w usłudze Azure SQL Database. Ustaw **AzureSSISLocation** w tej samej lokalizacji co serwer SQL Database, który hostuje SSISDB, co umożliwia wydajne działanie środowiska Integration Runtime.
 
 ## <a name="azuressisnodesize"></a>AzureSSISNodeSize
-Usługa Data Factory, Azure-SSIS IR, w tym obsługuje następujące opcje:
+Data Factory, w tym Azure-SSIS IR, obsługuje następujące opcje:
 -   Standardowa\_A4\_v2
 -   Standardowa\_A8\_v2
 -   Standardowa\_D1\_v2
@@ -89,36 +89,36 @@ Usługa Data Factory, Azure-SSIS IR, w tym obsługuje następujące opcje:
 -   Standardowa\_E32\_v3
 -   Standardowa\_E64\_v3
 
-W nieoficjalny wewnętrznych testowania przez zespół inżynierów SSIS, seria D wydaje się być bardziej odpowiednie dla wykonanie pakietu SSIS niż seria A.
+W nieoficjalnym teście prowadzonym przez zespół inżynierów usług SSIS seria D wydaje się bardziej odpowiednia dla wykonywania pakietów SSIS niż w przypadku serii.
 
--   Współczynnik wydajności/cena serii D jest wyższa niż seria A i współczynnik wydajności/cena serii v3 jest wyższa niż seria v2.
--   Przepływność dla serii D jest wyższa niż seria A w tej samej cenie i Przepływność dla serii v3 jest wyższy niż seria v2 w tej samej cenie.
--   Węzły serii v2 Azure-SSIS IR nie są odpowiednie dla ustawień niestandardowych, aby zamiast tego użyj wersji 3 węzły serii. Jeśli już używasz wersji 2 węzły serii, Przełącz do użycia w wersji 3 węzły serii tak szybko, jak to możliwe.
--   Seria E jest zoptymalizowane pod kątem pamięci rozmiary maszyn wirtualnych, które zapewnia wyższy stosunek pamięci do procesorów niż w przypadku innych maszyn. Jeśli pakiet wymaga dużej ilości pamięci, należy rozważyć, wybierając maszyny Wirtualnej serii E.
+-   Stosunek wydajności/ceny serii D jest wyższy niż seria, a stosunek wydajności/ceny dla serii v3 jest wyższy niż seria v2.
+-   Przepływność dla serii D jest wyższa niż seria w tej samej cenie, a przepływność dla serii v3 jest wyższa niż seria v2 w tej samej cenie.
+-   Węzły serii v2 Azure-SSIS IR nie są odpowiednie dla konfiguracji niestandardowej, dlatego należy zamiast tego użyć węzłów serii v3. Jeśli korzystasz już z węzłów serii w wersji 2, przejdź do korzystania z węzłów serii v3 najszybciej, jak to możliwe.
+-   Seria E ma rozmiary maszyn wirtualnych zoptymalizowanych pod kątem pamięci, które zapewniają większy stosunek pamięci do procesora CPU niż inne maszyny. Jeśli pakiet wymaga dużej ilości pamięci, można rozważyć wybranie maszyny wirtualnej serii E.
 
-### <a name="configure-for-execution-speed"></a>Konfigurowanie dla szybkości wykonywania
-Jeśli masz wiele pakietów do uruchomienia i chcesz, aby pakiety do szybkiego uruchamiania, skorzystaj z informacji w poniższej tabeli, aby wybrać odpowiednie dla danego scenariusza typ maszyny wirtualnej.
+### <a name="configure-for-execution-speed"></a>Skonfiguruj na potrzeby szybkości wykonywania
+Jeśli nie masz wielu pakietów do uruchomienia i chcesz szybko uruchamiać pakiety, użyj informacji z poniższej tabeli, aby wybrać typ maszyny wirtualnej odpowiedni dla danego scenariusza.
 
-Wykonanie pojedynczy pakiet, w węźle pojedynczego procesu roboczego reprezentują te dane. Ten pakiet ładuje 3 miliony rekordów o nazwie pierwszej i ostatniej kolumny z magazynu obiektów Blob platformy Azure, generuje kolumny Imię i nazwisko i zapisuje rekordy, które mają pełną nazwę w więcej niż 20 znaków w usłudze Azure Blob Storage.
+Te dane przedstawiają wykonywanie pojedynczego pakietu na jednym węźle procesu roboczego. Pakiet ładuje 3 000 000 rekordów z imionami i kolumnami nazwiska z usługi Azure Blob Storage, generuje kolumnę pełna nazwa i zapisuje rekordy, które mają pełną nazwę o długości przekraczającej 20 znaków na platformie Azure Blob Storage.
 
-![Szybkość wykonywania pakietów SSIS Integration Runtime](media/configure-azure-ssis-integration-runtime-performance/ssisir-execution-speedV2.png)
+![Szybkość wykonywania pakietu SSIS Integration Runtime](media/configure-azure-ssis-integration-runtime-performance/ssisir-execution-speedV2.png)
 
-### <a name="configure-for-overall-throughput"></a>Konfigurowanie dla ogólną przepływność
+### <a name="configure-for-overall-throughput"></a>Konfigurowanie na potrzeby ogólnej przepływności
 
-Jeśli masz wiele pakietów do uruchomienia, a najbardziej interesujących Cię ogólną przepływność, skorzystaj z informacji w poniższej tabeli, aby wybrać odpowiednie dla danego scenariusza typ maszyny wirtualnej.
+Jeśli masz wiele pakietów do uruchomienia i masz największe znaczenie dla ogólnej przepływności, użyj informacji z poniższej tabeli, aby wybrać typ maszyny wirtualnej odpowiedni dla danego scenariusza.
 
-![Środowiska SSIS Integration Runtime, ogólną przepustowość](media/configure-azure-ssis-integration-runtime-performance/ssisir-overall-throughputV2.png)
+![W Integration Runtime SSIS maksymalna przepływność](media/configure-azure-ssis-integration-runtime-performance/ssisir-overall-throughputV2.png)
 
 ## <a name="azuressisnodenumber"></a>AzureSSISNodeNumber
 
-**AzureSSISNodeNumber** dostosowuje skalowalność produktu integration runtime. Przepływność środowiska integration runtime jest proporcjonalna do **AzureSSISNodeNumber**. Ustaw **AzureSSISNodeNumber** małej wartości na początku, monitorowanie przepływności środowiska integration runtime, a następnie dostosować wartości dla danego scenariusza. Aby ponownie skonfigurować liczby węzłów procesu roboczego, zobacz [Zarządzanie środowiska Azure-SSIS integration runtime](manage-azure-ssis-integration-runtime.md).
+**AzureSSISNodeNumber** dostosowuje skalowalność środowiska Integration Runtime. Przepływność środowiska Integration Runtime jest proporcjonalna do **AzureSSISNodeNumber**. W pierwszej kolejności ustaw **AzureSSISNodeNumber** na małą wartość, Monitoruj przepływność środowiska Integration Runtime, a następnie Dostosuj wartość dla danego scenariusza. Aby ponownie skonfigurować liczbę węzłów procesu roboczego, zobacz [Zarządzanie środowiskiem Azure-SSIS Integration Runtime](manage-azure-ssis-integration-runtime.md).
 
 ## <a name="azuressismaxparallelexecutionspernode"></a>AzureSSISMaxParallelExecutionsPerNode
 
-Jeśli już korzystasz z węzłem procesu roboczego wydajne uruchamianie pakietów, zwiększając **AzureSSISMaxParallelExecutionsPerNode** może zwiększyć ogólną przepływność środowiska integration Runtime. Maszyna wirtualna Standard_D1_v2 węzłów 1 – 4 równoległych wykonań na węzeł są obsługiwane. Dla wszystkich innych typów węzłów 1 max(2 x number of cores, 8) równoległych wykonań na węzeł są obsługiwane. Jeśli chcesz **AzureSSISMaxParallelExecutionsPerNode** przekracza maksymalną wartość obsługiwane, możesz otworzyć bilet pomocy technicznej i firma Microsoft może zwiększyć maksymalną wartość dla Ciebie i po nim, należy zaktualizować przy użyciu programu Azure Powershell  **AzureSSISMaxParallelExecutionsPerNode**.
-Można oszacować odpowiednią wartość na podstawie jej kosztu pakietu i konfiguracje dla węzłów procesu roboczego. Aby uzyskać więcej informacji, zobacz [rozmiarów maszyn wirtualnych ogólnego przeznaczenia](../virtual-machines/windows/sizes-general.md).
+Gdy używasz już zaawansowanego węzła procesu roboczego do uruchamiania pakietów, zwiększenie **AzureSSISMaxParallelExecutionsPerNode** może zwiększyć ogólną przepływność środowiska Integration Runtime. W przypadku węzłów Standard_D1_v2 obsługiwane są 1-4 wykonania równoległe na węzeł. Dla wszystkich innych typów węzłów, obsługiwane są maksymalnie 1-maksymalne (2 x liczba rdzeni, 8) wykonywanie równoległe na węzeł. Jeśli chcesz, aby **AzureSSISMaxParallelExecutionsPerNode** ponad maksymalną obsługiwaną przez nas wartość, możesz otworzyć bilet pomocy technicznej i możemy zwiększyć maksymalną wartość dla Ciebie, a następnie użyć programu Azure PowerShell do aktualizacji **AzureSSISMaxParallelExecutionsPerNode** .
+Można oszacować odpowiednią wartość w oparciu o koszt pakietu oraz następujące konfiguracje dla węzłów procesu roboczego. Aby uzyskać więcej informacji, zobacz [rozmiary maszyn wirtualnych ogólnego przeznaczenia](../virtual-machines/windows/sizes-general.md).
 
-| Rozmiar             | Procesor wirtualny | Pamięć: GiB | Magazyn tymczasowy (SSD): GiB | Maksymalna przepływność magazynu tymczasowego: Operacje We/Wy / odczyt MB/s / Zapis MB/s | Maksymalna liczba dysków danych / przepływność: Operacje wejścia/wyjścia | Maksymalna liczba kart sieciowych/oczekiwana wydajność sieci (Mb/s) |
+| Rozmiar             | Procesor wirtualny | Pamięć: GiB | Magazyn tymczasowy (SSD): GiB | Maksymalna przepływność magazynu tymczasowego: operacje we/wy na sek. / odczyt MB/s / zapis MB/s | Maksymalna liczba dysków danych / przepływność: liczba operacji we/wy na sekundę | Maksymalna liczba kart sieciowych/oczekiwana wydajność sieci (Mb/s) |
 |------------------|------|-------------|------------------------|------------------------------------------------------------|-----------------------------------|------------------------------------------------|
 | Standardowa\_D1\_v2 | 1    | 3,5         | 50                     | 3000 / 46 / 23                                             | 2 / 2 x 500                         | 2 / 750                                        |
 | Standardowa\_D2\_v2 | 2    | 7           | 100                    | 6000 / 93 / 46                                             | 4 / 4 x 500                         | 2 / 1500                                       |
@@ -126,39 +126,39 @@ Można oszacować odpowiednią wartość na podstawie jej kosztu pakietu i konfi
 | Standardowa\_D4\_v2 | 8    | 28          | 400                    | 24000 / 375 / 187                                          | 16 / 16 x 500                       | 8 / 6000                                       |
 | Standardowa\_A4\_v2 | 4    | 8           | 40                     | 4000 / 80 / 40                                             | 8 / 8 x 500                         | 4 / 1000                                       |
 | Standardowa\_A8\_v2 | 8    | 16          | 80                     | 8000 / 160 / 80                                            | 16 / 16 x 500                       | 8 / 2000                                       |
-| Standardowa\_D2\_v3 | 2    | 8           | 50                     | 3000 / 46 / 23                                             | 4 / 6 x 500                         | 2 / 1000                                       |
-| Standardowa\_D4\_v3 | 4    | 16          | 100                    | 6000 / 93 / 46                                             | 8 / 12 x 500                        | 2 / 2000                                       |
-| Standardowa\_D8\_v3 | 8    | 32          | 200                    | 12000 / 187 / 93                                           | 16 / 24 x 500                       | 4 / 4000                                       |
-| Standardowa\_D16\_v3| 16   | 64          | 400                    | 24000 / 375 / 187                                          | 32 / 48 x 500                        | 8 / 8000                                       |
-| Standardowa\_D32\_v3| 32   | 128         | 800                    | 48000 / 750 / 375                                          | 32 / 96 x 500                       | 8 / 16 000                                      |
-| Standardowa\_D64\_v3| 64   | 256         | 1600                   | 96000 / 1000 / 500                                         | 32 / 192 x 500                      | 8 / 30000                                      |
-| Standardowa\_E2\_v3 | 2    | 16          | 50                     | 3000 / 46 / 23                                             | 4 / 6 x 500                         | 2 / 1000                                       |
-| Standardowa\_E4\_v3 | 4    | 32          | 100                    | 6000 / 93 / 46                                             | 8 / 12 x 500                        | 2 / 2000                                       |
-| Standardowa\_E8\_v3 | 8    | 64          | 200                    | 12000 / 187 / 93                                           | 16 / 24 x 500                       | 4 / 4000                                       |
-| Standardowa\_E16\_v3| 16   | 128         | 400                    | 24000 / 375 / 187                                          | 32 / 48 x 500                       | 8 / 8000                                       |
-| Standardowa\_E32\_v3| 32   | 256         | 800                    | 48000 / 750 / 375                                          | 32 / 96 x 500                       | 8 / 16 000                                      |
-| Standardowa\_E64\_v3| 64   | 432         | 1600                   | 96000 / 1000 / 500                                         | 32 / 192 x 500                      | 8 / 30000                                      |
+| Standardowa\_D2\_v3 | 2    | 8           | 50                     | 3000 / 46 / 23                                             | 4/6x500                         | 2 / 1000                                       |
+| Standardowa\_D4\_v3 | 4    | 16          | 100                    | 6000 / 93 / 46                                             | 8/12x500                        | 2 / 2000                                       |
+| Standardowa\_D8\_v3 | 8    | 32          | 200                    | 12000 / 187 / 93                                           | 16/24x500                       | 4 / 4000                                       |
+| Standardowa\_D16\_v3| 16   | 64          | 400                    | 24000 / 375 / 187                                          | 32/48x500                        | 8 / 8000                                       |
+| Standardowa\_D32\_v3| 32   | 128         | 800                    | 48000 / 750 / 375                                          | 32/96x500                       | 8 / 16 000                                      |
+| Standardowa\_D64\_v3| 64   | 256         | 1600                   | 96000/1000/500                                         | 32/192x500                      | 8 / 30000                                      |
+| Standardowa\_E2\_v3 | 2    | 16          | 50                     | 3000 / 46 / 23                                             | 4/6x500                         | 2 / 1000                                       |
+| Standardowa\_E4\_v3 | 4    | 32          | 100                    | 6000 / 93 / 46                                             | 8/12x500                        | 2 / 2000                                       |
+| Standardowa\_E8\_v3 | 8    | 64          | 200                    | 12000 / 187 / 93                                           | 16/24x500                       | 4 / 4000                                       |
+| Standardowa\_E16\_v3| 16   | 128         | 400                    | 24000 / 375 / 187                                          | 32/48x500                       | 8 / 8000                                       |
+| Standardowa\_E32\_v3| 32   | 256         | 800                    | 48000 / 750 / 375                                          | 32/96x500                       | 8 / 16 000                                      |
+| Standardowa\_E64\_v3| 64   | 432         | 1600                   | 96000/1000/500                                         | 32/192x500                      | 8 / 30000                                      |
 
-Poniżej przedstawiono wskazówki dotyczące ustawiania odpowiednie wartości dla **AzureSSISMaxParallelExecutionsPerNode** właściwości: 
+Poniżej przedstawiono wskazówki dotyczące ustawiania prawidłowej wartości właściwości **AzureSSISMaxParallelExecutionsPerNode** : 
 
-1. Ustaw ją na małej wartości na początku.
-2. Stopniowe zwiększanie on małą ilością do sprawdzenia, czy została udoskonalona ogólną przepływność.
-3. Zatrzymaj, zwiększenie wartości, gdy ogólną przepływność osiągnie wartość maksymalna.
+1. Najpierw ustaw na małą wartość.
+2. Zwiększ go o niewielką ilość, aby sprawdzić, czy ogólna przepływność jest ulepszona.
+3. Zatrzymaj zwiększenie wartości, gdy ogólna przepływność osiągnie wartość maksymalną.
 
 ## <a name="ssisdbpricingtier"></a>SSISDBPricingTier
 
-**SSISDBPricingTier** jest warstwę cenową dla bazy danych wykazu usług SSIS (SSISDB) na bazę danych Azure SQL database. To ustawienie wpływa na maksymalną liczbę procesów roboczych w wystąpienie środowiska IR, szybkość wykonywania pakietów w kolejce oraz szybkość załadować dziennika wykonywania.
+**SSISDBPricingTier** to warstwa cenowa bazy danych wykazu usług SSIS (SSISDB) w usłudze Azure SQL Database. To ustawienie ma wpływ na maksymalną liczbę procesów roboczych w wystąpieniu środowiska IR, szybkość do kolejki wykonania pakietu oraz szybkość ładowania dziennika wykonania.
 
--   Jeśli nie dba o szybkość wykonywania pakietów kolejki i załaduj dziennik wykonywania, można wybierać najniższej warstwy cenowej bazy danych. Usługa Azure SQL Database dzięki cenom podstawowych obsługuje 8 procesów roboczych w wystąpienie infrastruktury integration runtime.
+-   Jeśli nie masz opieki nad szybkością wykonywania pakietów w kolejce i załadowaniu dziennika wykonywania, możesz wybrać najniższą warstwę cenową bazy danych. Azure SQL Database z cenami podstawowymi obsługuje 8 procesów roboczych w wystąpieniu środowiska Integration Runtime.
 
--   Wybierz bazę danych bardziej wydajne niż wersja podstawowa, czy liczba procesów roboczych jest więcej niż 8, liczba rdzeni wynosi więcej niż 50. W przeciwnym razie bazy danych staje się wąskim gardłem wystąpienia środowiska uruchomieniowego integracji i ogólną wydajność jest obniżona.
+-   Wybierz bardziej wydajną bazę danych niż podstawowa, jeśli liczba procesów roboczych jest większa niż 8, lub liczba rdzeni jest większa niż 50. W przeciwnym razie baza danych stanowi wąskie gardła wystąpienia środowiska Integration Runtime i ogólna wydajność ma negatywny wpływ.
 
--   Wybierz bardziej wydajne bazy danych, np. s3, jeśli poziom rejestrowania jest ustawiony na pełne. Zgodnie z naszym nieoficjalny testów wewnętrznych, warstwy cenowej s3 może obsługiwać wykonanie pakietu SSIS przy użyciu 2 węzłów, 128 liczby równolegle i na poziomie pełne rejestrowanie.
+-   Wybierz bardziej wydajną bazę danych, na przykład S3, jeśli poziom rejestrowania jest ustawiony na pełne. Zgodnie z naszymi nieoficjalnymi testami, warstwa cenowa S3 może obsługiwać wykonywanie pakietów SSIS z 2 węzłami, 128 liczbą równoległą i pełnym poziomem rejestrowania.
 
-Można również dostosować bazy danych na podstawie warstwy cenowej [jednostek transakcji bazy danych](../sql-database/sql-database-what-is-a-dtu.md) (DTU) informacje o użyciu w witrynie Azure portal.
+Warstwę cenową bazy danych można również dostosować na podstawie informacji o użyciu [jednostek transakcji bazy danych](../sql-database/sql-database-what-is-a-dtu.md) (DTU) dostępnych na Azure Portal.
 
 ## <a name="design-for-high-performance"></a>Projektowanie pod kątem wysokiej wydajności
-Projektowanie pakietu usług SSIS na platformie Azure różni się od projektowania pakietu do wykonania w środowisku lokalnym. Zamiast łączenie wielu niezależnych zadań, w tym samym pakiecie podzielone na kilka pakietów, aby uzyskać bardziej wydajne wykonywanie w programie Azure-SSIS IR. Wykonanie pakietu dla każdego pakietu, należy utworzyć tak, aby nie musieli czekać na siebie, aby zakończyć. Ta metoda korzysta ze skalowania środowiska Azure-SSIS integration runtime i zwiększa ogólną przepustowość.
+Projektowanie pakietu usług SSIS do uruchamiania na platformie Azure różni się od projektowania pakietu do wykonania lokalnego. Zamiast łączyć wiele niezależnych zadań w tym samym pakiecie, rozdziel je na kilka pakietów, aby zwiększyć efektywność wykonywania w Azure-SSIS IR. Utwórz wykonanie pakietu dla każdego pakietu, aby nie musiały czekać na zakończenie każdego z nich. To podejście korzysta ze skalowalności środowiska Azure-SSIS Integration Runtime i zwiększa ogólną przepływność.
 
-## <a name="next-steps"></a>Kolejne kroki
-Dowiedz się więcej o usłudze Azure-SSIS Integration Runtime. Zobacz [Azure-SSIS Integration Runtime](concepts-integration-runtime.md#azure-ssis-integration-runtime).
+## <a name="next-steps"></a>Następne kroki
+Dowiedz się więcej na temat Azure-SSIS Integration Runtime. Zobacz [Azure-SSIS Integration Runtime](concepts-integration-runtime.md#azure-ssis-integration-runtime).

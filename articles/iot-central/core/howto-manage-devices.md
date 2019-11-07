@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: peterpr
-ms.openlocfilehash: c3d07c95592c1c43a070afbbf5091693ce0a6611
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: adcaa29ed894f2d61871f467369bcdd05f8cc593
+ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72950355"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73601587"
 ---
 # <a name="manage-devices-in-your-azure-iot-central-application"></a>Zarządzanie urządzeniami w aplikacji IoT Central platformy Azure
 
@@ -21,7 +21,7 @@ ms.locfileid: "72950355"
 
 W tym artykule opisano, jak za pomocą operatora zarządzać urządzeniami w aplikacji IoT Central platformy Azure. Jako operator można:
 
-- Korzystając ze strony **Device Explorer** , można wyświetlać, dodawać i usuwać urządzenia połączone z aplikacją IoT Central platformy Azure.
+- Strona **urządzenia** służy do wyświetlania, dodawania i usuwania urządzeń podłączonych do aplikacji IoT Central platformy Azure.
 - Przechowywanie aktualnych danych spisu urządzeń.
 - Zadbaj o aktualność metadanych urządzenia, zmieniając wartości przechowywane we właściwościach urządzenia.
 - Kontroluj zachowanie urządzeń, aktualizując ustawienia na określonym urządzeniu ze strony **Ustawienia** .
@@ -30,11 +30,11 @@ W tym artykule opisano, jak za pomocą operatora zarządzać urządzeniami w apl
 
 Aby wyświetlić pojedyncze urządzenie:
 
-1. Wybierz **Device Explorer** w lewym okienku. W tym miejscu zostanie wyświetlona lista [szablonów urządzeń](howto-set-up-template.md).
+1. Wybierz pozycję **urządzenia** w okienku po lewej stronie. W tym miejscu zostanie wyświetlona lista [szablonów urządzeń](howto-set-up-template.md).
 
 1. Wybierz szablon urządzenia na liście **Szablony** .
 
-1. W okienku po prawej stronie **Device Explorer** zostanie wyświetlona lista urządzeń utworzonych na podstawie tego szablonu urządzenia. Wybierz pojedyncze urządzenie, aby wyświetlić stronę szczegółów urządzenia dla tego urządzenia:
+1. W okienku po prawej stronie **urządzenia** zostanie wyświetlona lista urządzeń utworzonych na podstawie tego szablonu. Wybierz pojedyncze urządzenie, aby wyświetlić stronę szczegółów urządzenia dla tego urządzenia:
 
     ![Strona szczegółów urządzenia](./media/howto-manage-devices/devicelist.png)
 
@@ -42,7 +42,7 @@ Aby wyświetlić pojedyncze urządzenie:
 
 Aby dodać urządzenie do aplikacji usługi Azure IoT Central:
 
-1. Wybierz **Device Explorer** w lewym okienku.
+1. Wybierz pozycję **urządzenia** w okienku po lewej stronie.
 
 1. Wybierz szablon urządzenia, z którego chcesz utworzyć urządzenie.
 
@@ -59,7 +59,7 @@ Aby połączyć dużą liczbę urządzeń z aplikacją, można zbiorczo importow
 
 Aby przeprowadzić zbiorczą rejestrację urządzeń w aplikacji:
 
-1. Wybierz **Device Explorer** w lewym okienku.
+1. Wybierz pozycję **urządzenia** w okienku po lewej stronie.
 
 1. Na panelu po lewej stronie wybierz szablon urządzenia, dla którego chcesz utworzyć zbiorczo urządzenia.
 
@@ -84,7 +84,7 @@ Jeśli operacja importowania urządzenia nie powiedzie się, na siatce urządze�
 
 W przypadku rejestrowania urządzeń przez uruchomienie importu w obszarze **nieskojarzone urządzenia**zostaną utworzone urządzenia bez skojarzenia szablonu urządzenia. Urządzenia muszą być skojarzone z szablonem, aby eksplorować dane oraz inne szczegóły dotyczące urządzenia. Wykonaj następujące kroki, aby skojarzyć urządzenia z szablonem:
 
-1. Wybierz **Device Explorer** w lewym okienku.
+1. Wybierz pozycję **urządzenia** w okienku po lewej stronie.
 
 1. Na panelu po lewej stronie wybierz pozycję **nieskojarzone urządzenia**:
 
@@ -109,13 +109,13 @@ Aby podłączyć rzeczywiste urządzenie do IoT Central, potrzebne są jego para
 
 Aby wyeksportować zbiorczo urządzenia z aplikacji:
 
-1. Wybierz **Device Explorer** w lewym okienku.
+1. Wybierz pozycję **urządzenia** w okienku po lewej stronie.
 
 1. Na panelu po lewej stronie wybierz szablon urządzenia, z którego mają zostać wyeksportowane urządzenia.
 
 1. Wybierz urządzenia, które chcesz wyeksportować, a następnie wybierz akcję **Eksportuj** .
 
-    ![Eksportuj](./media/howto-manage-devices/export1a.png)
+    ![Eksportowanie](./media/howto-manage-devices/export1a.png)
 
 1. Rozpocznie się proces eksportowania. Stan można śledzić w górnej części siatki.
 
@@ -140,7 +140,7 @@ Aby uzyskać więcej informacji na temat parametrów połączenia i połączeń 
 
 Aby usunąć urządzenie prawdziwe lub symulowane z aplikacji IoT Central platformy Azure:
 
-1. Wybierz **Device Explorer** w lewym okienku.
+1. Wybierz pozycję **urządzenia** w okienku po lewej stronie.
 
 1. Wybierz szablon urządzenia, które chcesz usunąć.
 
@@ -152,7 +152,7 @@ Aby usunąć urządzenie prawdziwe lub symulowane z aplikacji IoT Central platfo
 
 Ustawienia sterują zachowaniem urządzenia. Innymi słowy, umożliwiają one dostarczenie danych wejściowych na urządzeniu. Ustawienia urządzenia można wyświetlać i aktualizować na stronie **szczegóły urządzenia** .
 
-1. Wybierz **Device Explorer** w lewym okienku.
+1. Wybierz pozycję **urządzenia** w okienku po lewej stronie.
 
 1. Wybierz szablon urządzenia urządzenia, którego ustawienia chcesz zmienić.
 
@@ -166,7 +166,7 @@ Ustawienia sterują zachowaniem urządzenia. Innymi słowy, umożliwiają one do
 
 Właściwości to metadane urządzenia skojarzone z urządzeniem, takie jak miasto i numer seryjny. Właściwości można wyświetlać i aktualizować na stronie **szczegółów urządzenia** .
 
-1. Wybierz **Device Explorer** w lewym okienku.
+1. Wybierz pozycję **urządzenia** w okienku po lewej stronie.
 
 1. Wybierz szablon urządzenia, którego właściwości chcesz zmienić.
 

@@ -1,5 +1,5 @@
 ---
-title: Azure SQL Database i SQL Data Warehouse odnajdywania danych & klasyfikacji | Microsoft Docs
+title: Klasyfikacja & Azure SQL Database i SQL Data Warehouse odnajdywania danych
 description: Klasyfikacja & Azure SQL Database i odnajdywania danych
 services: sql-database
 ms.service: sql-database
@@ -11,16 +11,16 @@ author: barmichal
 ms.author: mibar
 ms.reviewer: vanto
 ms.date: 08/22/2019
-ms.openlocfilehash: b85793223e23aa3d668d6f86494da3ee78c43e91
-ms.sourcegitcommit: a819209a7c293078ff5377dee266fa76fd20902c
+ms.openlocfilehash: 9bcb8ce69a65892109702f0f0a409310945b6781
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/16/2019
-ms.locfileid: "71009994"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73690769"
 ---
 # <a name="azure-sql-database-and-sql-data-warehouse-data-discovery--classification"></a>Klasyfikacja & Azure SQL Database i SQL Data Warehouse odnajdywania danych
 
-Funkcja odnajdywania danych & zapewnia zaawansowane funkcje wbudowane w Azure SQL Database do **odnajdywania**, **klasyfikowania** & i **etykietowania** **ochrony** poufnych danych w bazach danych.
+Klasyfikacja & odnajdywania danych oferuje zaawansowane możliwości wbudowane w Azure SQL Database do **odnajdywania**, **klasyfikowania**i **etykietowania** & **ochrony** poufnych danych w bazach danych.
 
 Odnajdywanie i klasyfikowanie najbardziej poufnych danych (biznes, finanse, opieka, dane osobowe) i tak dalej.) może odgrywać rolę przestawną w schemacieie ochrony informacji organizacji. Może to być infrastruktura dla:
 
@@ -119,7 +119,7 @@ Po zdefiniowaniu zasad dla dzierżawy możesz kontynuować klasyfikację poszcze
 
 8. Aby dokończyć swoją klasyfikację i trwale oznaczyć (tag) kolumnami bazy danych nowymi metadanymi klasyfikacji, kliknij przycisk **Zapisz** w górnym menu okna.
 
-   ![Zapisanie](./media/sql-data-discovery-and-classification/10_data_classification_save.png)
+   ![Zapisz](./media/sql-data-discovery-and-classification/10_data_classification_save.png)
 
 ## <a id="subheading-3"></a>Inspekcja dostępu do poufnych danych
 
@@ -134,8 +134,8 @@ Przy użyciu języka T-SQL można dodawać/usuwać klasyfikacje kolumn, a także
 > [!NOTE]
 > W przypadku zarządzania etykietami przy użyciu języka T-SQL nie istnieje weryfikacja, czy etykiety dodawane do kolumny istnieją w zasadach usługi Information Protection (zestaw etykiet, które są wyświetlane w zaleceniach portalu). W związku z tym można sprawdzić poprawność tego procesu.
 
-- Dodaj/zaktualizuj klasyfikację jednej lub kilku kolumn: [DODAJ KLASYFIKACJĘ CZUŁOŚCI](https://docs.microsoft.com/sql/t-sql/statements/add-sensitivity-classification-transact-sql)
-- Usuń klasyfikację z jednej lub kilku kolumn: [KLASYFIKACJA USUWANIA CZUŁOŚCI](https://docs.microsoft.com/sql/t-sql/statements/drop-sensitivity-classification-transact-sql)
+- Dodawanie/aktualizowanie klasyfikacji jednej lub wielu kolumn: [Dodawanie klasyfikacji czułości](https://docs.microsoft.com/sql/t-sql/statements/add-sensitivity-classification-transact-sql)
+- Usuń klasyfikację z jednej lub kilku kolumn: [Klasyfikacja czułości](https://docs.microsoft.com/sql/t-sql/statements/drop-sensitivity-classification-transact-sql)
 - Wyświetl wszystkie klasyfikacje w bazie danych: [sys. sensitivity_classifications](https://docs.microsoft.com/sql/relational-databases/system-catalog-views/sys-sensitivity-classifications-transact-sql)
 
 ### <a name="manage-classifications-using-rest-apis"></a>Zarządzanie klasyfikacjami przy użyciu interfejsów API REST
@@ -144,8 +144,8 @@ Za pomocą interfejsów API REST można także programowo zarządzać klasyfikac
 
 - [Utwórz lub zaktualizuj](https://docs.microsoft.com/rest/api/sql/sensitivitylabels/createorupdate) — tworzy lub aktualizuje etykietę czułości danej kolumny.
 - [Usuń](https://docs.microsoft.com/rest/api/sql/sensitivitylabels/delete) — usuwa etykietę czułości danej kolumny.
-- [Wyłącz zalecenie](https://docs.microsoft.com/en-us/rest/api/sql/sensitivitylabels/disablerecommendation) — wyłącza zalecenia dotyczące czułości w danej kolumnie
-- [Włącz rekomendacje](https://docs.microsoft.com/en-us/rest/api/sql/sensitivitylabels/enablerecommendation) — włącza zalecenia dotyczące czułości w danej kolumnie (zalecenia są domyślnie włączone dla wszystkich kolumn)
+- [Wyłącz zalecenie](https://docs.microsoft.com/rest/api/sql/sensitivitylabels/disablerecommendation) — wyłącza zalecenia dotyczące czułości w danej kolumnie
+- [Włącz rekomendacje](https://docs.microsoft.com/rest/api/sql/sensitivitylabels/enablerecommendation) — włącza zalecenia dotyczące czułości w danej kolumnie (zalecenia są domyślnie włączone dla wszystkich kolumn)
 - [Get](https://docs.microsoft.com/rest/api/sql/sensitivitylabels/get) -pobiera etykietę czułości danej kolumny
 - [Lista bieżąca według bazy danych](https://docs.microsoft.com/rest/api/sql/sensitivitylabels/listcurrentbydatabase) — pobiera bieżące etykiety czułości danej bazy danych
 
@@ -171,7 +171,7 @@ Program PowerShell umożliwia pobieranie wszystkich zalecanych kolumn w bazie da
 
 ## <a name="permissions"></a>Uprawnienia
 
-Następujące wbudowane `Owner`role mogą odczytywać klasyfikację danych usługi Azure SQL Database:, `Reader`, `Contributor` `SQL Security Manager` i `User Access Administrator`.
+Następujące wbudowane role mogą odczytywać klasyfikację danych usługi Azure SQL Database: `Owner`, `Reader`, `Contributor`, `SQL Security Manager` i `User Access Administrator`.
 
 Następujące wbudowane role mogą modyfikować klasyfikację danych usługi Azure SQL Database: `Owner`, `Contributor`, `SQL Security Manager`.
 

@@ -8,12 +8,12 @@ author: reyang
 ms.author: reyang
 ms.date: 10/11/2019
 ms.reviewer: mbullwin
-ms.openlocfilehash: 0d848027d6c754df371b4d87cf01c5b2fdbc8c02
-ms.sourcegitcommit: 8e271271cd8c1434b4254862ef96f52a5a9567fb
+ms.openlocfilehash: 7fb436ef8d915898bc8f36dd10766e71f63e4a59
+ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72820739"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73575573"
 ---
 # <a name="set-up-azure-monitor-for-your-python-application-preview"></a>Konfigurowanie Azure Monitor aplikacji języka Python (wersja zapoznawcza)
 
@@ -24,11 +24,9 @@ Azure Monitor obsługuje śledzenie rozproszone, zbieranie metryk i rejestrowani
 - Subskrypcja platformy Azure. Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpłatne konto](https://azure.microsoft.com/free/).
 - Instalacja języka Python. W tym artykule jest stosowany [3.7.0 języka Python](https://www.python.org/downloads/), chociaż starsze wersje będą prawdopodobnie działały z drobnymi zmianami.
 
-
-
 ## <a name="sign-in-to-the-azure-portal"></a>Logowanie się do witryny Azure Portal
 
-Zaloguj się do [portalu Azure](https://portal.azure.com/).
+Zaloguj się w witrynie [Azure Portal](https://portal.azure.com/).
 
 ## <a name="create-an-application-insights-resource-in-azure-monitor"></a>Tworzenie zasobu Application Insights w Azure Monitor
 
@@ -55,6 +53,8 @@ Zainstaluj OpenCensus Azure Monitor eksportu:
 ```console
 python -m pip install opencensus-ext-azure
 ```
+
+Aby uzyskać pełną listę pakietów i integracji, zobacz [OpenCensus Packages](https://docs.microsoft.com/azure/azure-monitor/app/nuget#common-packages-for-python-using-opencensus).
 
 > [!NOTE]
 > W `python -m pip install opencensus-ext-azure` polecenie założono, że masz `PATH` zmienną środowiskową ustawioną dla instalacji języka Python. Jeśli ta zmienna nie została skonfigurowana, należy podać pełną ścieżkę do katalogu, w którym znajduje się plik wykonywalny języka Python. Wynikiem jest następujące polecenie: `C:\Users\Administrator\AppData\Local\Programs\Python\Python37-32\python.exe -m pip install opencensus-ext-azure`.
@@ -127,6 +127,10 @@ Zestaw SDK używa trzech Azure Monitor eksportujących do wysyłania różnych t
     ```
 
 4. Teraz po uruchomieniu skryptu języka Python nadal powinien zostać wyświetlony monit o wprowadzenie wartości, ale tylko wartość jest drukowana w powłoce. Utworzony `SpanData` zostanie wysłany do Azure Monitor. Emitowane dane zakresu można znaleźć w obszarze `dependencies`.
+
+5. Aby uzyskać informacje na temat próbkowania w OpenCensus, spójrz na [próbkowanie w OpenCensus](https://docs.microsoft.com/azure/azure-monitor/app/sampling#configuring-fixed-rate-sampling-in-opencensus-python).
+
+6. Aby uzyskać szczegółowe informacje na temat korelacji telemetrii w danych śledzenia, zapoznaj się z tematem [korelacji telemetrii](https://docs.microsoft.com/azure/azure-monitor/app/correlation#telemetry-correlation-in-opencensus-python)OpenCensus.
 
 ### <a name="metrics"></a>Metryki
 
@@ -292,6 +296,8 @@ Zestaw SDK używa trzech Azure Monitor eksportujących do wysyłania różnych t
 
 4. Eksporter wyśle dane dziennika do Azure Monitor. Dane można znaleźć w obszarze `traces`.
 
+5. Aby uzyskać szczegółowe informacje na temat wzbogacania dzienników przy użyciu danych kontekstu śledzenia, zobacz [integracja dzienników](https://docs.microsoft.com/azure/azure-monitor/app/correlation#logs-correlation)OpenCensus języka Python.
+
 ## <a name="start-monitoring-in-the-azure-portal"></a>Rozpoczynanie monitorowania w witrynie Azure Portal
 
 1. Możesz teraz ponownie otworzyć Application Insights okienku **Przegląd** w Azure Portal, aby wyświetlić szczegółowe informacje o aktualnie uruchomionej aplikacji. Wybierz **Live Metrics Stream**.
@@ -324,8 +330,8 @@ Dane telemetryczne, które zostały wysłane z aplikacji, można wyświetlić za
 
 Na liście w obszarze **aktywne**:
 
-- W przypadku danych telemetrycznych wysyłanych za pomocą eksportu śledzenia Azure Monitor w obszarze `requests` są wyświetlane żądania przychodzące. W obszarze `dependencies` są wyświetlane żądania wychodzące lub w procesie.
-- W przypadku danych telemetrycznych wysyłanych za pomocą eksportu metryk Azure Monitor w obszarze `customMetrics` są wyświetlane metryki.
+- W przypadku danych telemetrycznych wysyłanych za pomocą eksportu śledzenia Azure Monitor w obszarze `requests`są wyświetlane żądania przychodzące. W obszarze `dependencies`są wyświetlane żądania wychodzące lub w procesie.
+- W przypadku danych telemetrycznych wysyłanych za pomocą eksportu metryk Azure Monitor w obszarze `customMetrics`są wyświetlane metryki.
 - W przypadku danych telemetrycznych wysyłanych z wyeksportowanymi dziennikami Azure Monitor dzienniki są wyświetlane w obszarze `traces`. Wyjątki są wyświetlane w obszarze `exceptions`.
 
 Aby uzyskać szczegółowe informacje na temat korzystania z zapytań i dzienników, zobacz [dzienniki w Azure monitor](https://docs.microsoft.com/azure/azure-monitor/platform/data-platform-logs).

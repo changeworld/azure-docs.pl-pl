@@ -1,5 +1,5 @@
 ---
-title: Aktywność przepływu danych w Azure Data Factory | Microsoft Docs
+title: Aktywność przepływu danych w Azure Data Factory
 description: Jak wykonywać przepływy danych z wnętrza potoku usługi Fabryka danych.
 services: data-factory
 documentationcenter: ''
@@ -10,12 +10,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.author: makromer
 ms.date: 10/07/2019
-ms.openlocfilehash: cbfa1acac34187263f8c4203e41bbe61d7e4c745
-ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
+ms.openlocfilehash: 5623907346ee3882ad53a27695336ba4bc449db8
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/08/2019
-ms.locfileid: "72030512"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73679942"
 ---
 # <a name="data-flow-activity-in-azure-data-factory"></a>Aktywność przepływu danych w Azure Data Factory
 
@@ -49,14 +49,14 @@ Użyj działania przepływu danych do przekształcania i przenoszenia danych za 
 
 ## <a name="type-properties"></a>Właściwości typu
 
-Właściwość | Opis | Dozwolone wartości | Wymagane
+Właściwość | Opis | Dozwolone wartości | Wymagany
 -------- | ----------- | -------------- | --------
 przepływu danych | Odwołanie do przepływu danych, który jest wykonywany | DataFlowReference | Tak
 integrationRuntime | Środowisko obliczeniowe, w którym działa przepływ danych | IntegrationRuntimeReference | Tak
 przemieszczanie. linkedService | Jeśli używasz źródła lub ujścia usługi SQL DW, konto magazynu używane na potrzeby przemieszczania podstawowego | LinkedServiceReference | Tylko wtedy, gdy przepływ danych odczytuje lub zapisuje dane do magazynu SQL
 przemieszczanie. folderPath | Jeśli używasz źródła lub ujścia usługi SQL DW, ścieżka folderu w ramach konta usługi BLOB Storage używanego do przemieszczania podstawowego | Ciąg | Tylko wtedy, gdy przepływ danych odczytuje lub zapisuje dane do magazynu SQL
 
-(media/data-flow/activity-data-flow.png "Przepływ danych") wykonywania ![przepływu danych]
+![Wykonaj przepływ danych](media/data-flow/activity-data-flow.png "Wykonaj przepływ danych")
 
 ### <a name="data-flow-integration-runtime"></a>Środowisko Integration Runtime
 
@@ -79,19 +79,19 @@ Jeśli używasz Azure SQL Data Warehouse jako ujścia lub źródło, musisz wybr
 
 Jeśli przepływ danych używa sparametryzowane zestawy danych, ustaw wartości parametrów na karcie **Ustawienia** .
 
-(media/data-flow/params.png "Parametry") parametrów ![przepływu danych]
+![Parametry przepływu danych wykonywania](media/data-flow/params.png "Parametry")
 
 ### <a name="parameterized-data-flows"></a>Sparametryzowane przepływy danych
 
 Jeśli przepływ danych jest sparametryzowane, ustaw wartości dynamiczne parametrów przepływu danych na karcie **Parametry** . Do przypisywania wartości parametrów dynamicznych lub literalnych można użyć języka wyrażeń potoku ADF (tylko dla typów ciągów) lub języka wyrażeń przepływu danych. Aby uzyskać więcej informacji, zobacz [parametry przepływu danych](parameters-data-flow.md).
 
-Przykład przykładowego parametru ![przepływu danych](media/data-flow/parameter-example.png "")
+![Przykład parametru przepływu danych](media/data-flow/parameter-example.png "Przykład parametru")
 
 ## <a name="pipeline-debug-of-data-flow-activity"></a>Debugowanie potoku działania przepływu danych
 
 Aby wykonać uruchomienie potoku debugowania z działaniem przepływu danych, należy przełączyć tryb debugowania przepływu danych za pomocą suwaka **debugowania przepływu** danych na górnym pasku. Tryb debugowania umożliwia uruchomienie przepływu danych na aktywnym klastrze Spark. Aby uzyskać więcej informacji, zobacz [tryb debugowania](concepts-data-flow-debug-mode.md).
 
-Przycisk ![debugowania przycisku](media/data-flow/debugbutton.png "Debuguj")
+![Przycisk Debuguj](media/data-flow/debugbutton.png "Przycisk Debuguj")
 
 Potok debugowania działa w odniesieniu do aktywnego klastra debugowania, a nie środowiska Integration Runtime określonego w ustawieniach działania przepływu danych. Podczas uruchamiania trybu debugowania można wybrać środowisko obliczeniowe debugowania.
 

@@ -1,7 +1,7 @@
 ---
 title: Simple — typ jednostki — LUIS
 titleSuffix: Azure Cognitive Services
-description: Prosta jednostka to ogólna jednostka, która opisuje pojedyncze koncepcje i jest poznania z kontekstu wykorzystanego przez maszynę. Ponieważ proste jednostki są zazwyczaj nazwami, takimi jak nazwy firmowe, nazwy produktów lub inne kategorie nazw, Dodaj listę fraz przy użyciu prostej jednostki, aby zwiększyć sygnał użytych nazw.
+description: Prosta Jednostka opisuje pojedyncze koncepcje z kontekstu uczenia maszynowego. Dodaj listę fraz przy użyciu prostej jednostki w celu poprawienia wyników.
 services: cognitive-services
 author: diberry
 manager: nitinme
@@ -10,14 +10,14 @@ ms.subservice: language-understanding
 ms.topic: reference
 ms.date: 09/29/2019
 ms.author: diberry
-ms.openlocfilehash: 2eb3ff847f9bfc162adfb281d2ac1fad6f8c5093
-ms.sourcegitcommit: 8bae7afb0011a98e82cbd76c50bc9f08be9ebe06
+ms.openlocfilehash: 27eb4d827c1488b0d051505e62286fd66d6a286b
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/01/2019
-ms.locfileid: "71695127"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73671516"
 ---
-# <a name="simple-entity"></a>Jednostka prosta 
+# <a name="simple-entity"></a>Prosta jednostka 
 
 Prosta jednostka to ogólna jednostka, która opisuje pojedyncze koncepcje i jest poznania z kontekstu wykorzystanego przez maszynę. Ponieważ proste jednostki są zazwyczaj nazwami, takimi jak nazwy firmowe, nazwy produktów lub inne kategorie nazw, Dodaj [listę fraz](luis-concept-feature.md) przy użyciu prostej jednostki, aby zwiększyć sygnał użytych nazw. 
 
@@ -51,7 +51,7 @@ Dane zwrócone z punktu końcowego zawierają nazwę jednostki, odnaleziony teks
 
 #### <a name="v3-prediction-endpoint-responsetabv3"></a>[Odpowiedź punktu końcowego przewidywania v3](#tab/V3)
 
-Jest to kod JSON, jeśli w ciągu zapytania jest ustawiony `verbose=false`:
+Jest to kod JSON, jeśli `verbose=false` jest ustawiony w ciągu zapytania:
 
 ```json
 "entities": {

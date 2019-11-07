@@ -6,16 +6,16 @@ keywords: ''
 author: PatAltimore
 ms.author: patricka
 ms.date: 10/14/2019
-ms.topic: article
+ms.topic: conceptual
 ms.service: azure-blockchain
 ms.reviewer: zeyadr
 manager: femila
-ms.openlocfilehash: 04ea4a4ebecec958ba9d9a72711e101adb3690ab
-ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
+ms.openlocfilehash: ddb3f02662c0c71ebc90e1a740b4068d6fbcded4
+ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72329294"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73577511"
 ---
 # <a name="azure-blockchain-service-consortium"></a>Azure łańcucha bloków Service Consortium
 
@@ -37,7 +37,7 @@ Za pomocą zarządzania konsorcjum w usłudze Azure łańcucha bloków można za
 
 Uczestnicy konsorcjum mogą być osobami lub organizacjami i mogą mieć przypisaną rolę użytkownika lub administratora. Poniższa tabela zawiera listę różnic wysokiego poziomu między obiema rolami:
 
-| Działanie | Rola użytkownika | Rola administratora
+| Akcja | Rola użytkownika | Rola administratora
 |--------|:----:|:------------:|
 | Utwórz nowy element członkowski | Tak | Tak |
 | Zaproś nowych członków | Nie | Tak |

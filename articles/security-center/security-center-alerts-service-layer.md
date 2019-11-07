@@ -1,5 +1,5 @@
 ---
-title: Wykrywanie zagrożeń dla warstwy usług platformy Azure w Azure Security Center | Microsoft Docs
+title: Wykrywanie zagrożeń warstwy usług platformy Azure — Azure Security Center
 description: W tym temacie przedstawiono alerty warstwy usług platformy Azure dostępne w Azure Security Center.
 services: security-center
 documentationcenter: na
@@ -10,12 +10,12 @@ ms.service: security-center
 ms.topic: conceptual
 ms.date: 08/25/2019
 ms.author: memildin
-ms.openlocfilehash: 9a600b6b45dbef49f600a5e9e913c9d1839eff93
-ms.sourcegitcommit: 8a717170b04df64bd1ddd521e899ac7749627350
+ms.openlocfilehash: b82eab9d20966ddd0678c9213bf25a14b5313f58
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/23/2019
-ms.locfileid: "71202449"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73686458"
 ---
 # <a name="threat-detection-for-the-azure-service-layer-in-azure-security-center"></a>Wykrywanie zagrożeń dla warstwy usług platformy Azure w Azure Security Center
 
@@ -66,7 +66,7 @@ Security Center oferuje dodatkową warstwę ochrony przy użyciu zdarzeń Azure 
 |**Podejrzana sesja zarządzania przy użyciu nieaktywnego konta**|Analiza dzienników aktywności subskrypcji wykryła podejrzane zachowanie. Podmiot zabezpieczeń, który nie jest używany przez długi czas, wykonuje teraz akcje, które mogą zapewnić ochronę trwałości dla osoby atakującej.|
 |**Podejrzana sesja zarządzania przy użyciu programu PowerShell**|Analiza dzienników aktywności subskrypcji wykryła podejrzane zachowanie. Podmiot zabezpieczeń, który regularnie nie używa programu PowerShell do zarządzania środowiskiem subskrypcji, korzysta obecnie z programu PowerShell i wykonuje akcje, które mogą zapewnić ochronę trwałości dla osoby atakującej.|
 |**Korzystanie z zaawansowanych technik trwałości platformy Azure**|Analiza dzienników aktywności subskrypcji wykryła podejrzane zachowanie. Role niestandardowe otrzymały jednostki tożsamości legitimized. Może to spowodować, że osoba atakująca uzyska utrwalenie w środowisku klienta platformy Azure.|
-|**Aktywność z rzadko występującego kraju**|Wystąpiło działanie z lokalizacji, która nie była ostatnio lub kiedykolwiek odwiedzana przez dowolnego użytkownika w organizacji.<br/>Wykrywanie uwzględnia ostatnie lokalizacje działań do określenia lokalizacji nowych i rzadkie. Aparatu wykrywania anomalii są przechowywane informacje o powyższych lokalizacjach, które posługują się użytkownicy w organizacji. 
+|**Działanie z nieczęstego kraju**|Wystąpiło działanie z lokalizacji, która nie była ostatnio lub kiedykolwiek odwiedzana przez dowolnego użytkownika w organizacji.<br/>Ten wykrycie traktuje przeszłe lokalizacje działań w celu określenia nowych i rzadko używanych lokalizacji. Aparat wykrywania anomalii przechowuje informacje o poprzednich lokalizacjach używanych przez użytkowników w organizacji. 
 |**Aktywność z anonimowych adresów IP**|Wykryto aktywność użytkowników z adresu IP, który został zidentyfikowany jako anonimowy adres IP serwera proxy. <br/>Te serwery proxy są używane przez osoby, które chcą ukryć adres IP urządzenia i mogą być używane do złośliwego celu. Ta funkcja wykrywania używa algorytmu uczenia maszynowego, który zmniejsza liczbę fałszywych dodatnich, takich jak źle otagowane adresy IP, które są szeroko używane przez użytkowników w organizacji.|
 |**Wykryto niemożliwa podróż**|Wystąpiły dwa działania użytkownika (w jednej lub wielu sesjach) pochodzące z lokalizacji geograficznie odległej. Dzieje się tak w przedziale czasowym krótszym niż czas, przez który użytkownik mógł podróżować z pierwszej lokalizacji do drugiej. Oznacza to, że inny użytkownik korzysta z tych samych poświadczeń. <br/>Ta funkcja wykrywania używa algorytmu uczenia maszynowego, który ignoruje oczywistych fałszywych zwracanych wyników, takich jak sieci VPN i lokalizacje regularnie używane przez innych użytkowników w organizacji. Wykrycie ma początkowy okres uczenia wynoszący siedem dni, podczas którego nauczy się wzorca aktywności nowego użytkownika.|
 

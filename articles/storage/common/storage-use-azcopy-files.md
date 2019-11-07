@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 10/16/2019
 ms.author: normesta
 ms.subservice: common
-ms.openlocfilehash: b141677e60705dc4176630ee7fd195ae03bba842
-ms.sourcegitcommit: 8e271271cd8c1434b4254862ef96f52a5a9567fb
+ms.openlocfilehash: 225fcd475d488cedb8bd210fe2fa9371849314ac
+ms.sourcegitcommit: b2fb32ae73b12cf2d180e6e4ffffa13a31aa4c6f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72816940"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73615520"
 ---
 # <a name="transfer-data-with-azcopy-and-file-storage"></a>Transferowanie danych za pomocą AzCopy i magazynu plików 
 
@@ -47,7 +47,7 @@ Ta sekcja zawiera następujące przykłady:
 > * Przekaż określony plik
 
 > [!NOTE]
-> AzCopy nie oblicza automatycznie ani nie zapisuje kodu skrótu MD5 pliku. Jeśli chcesz, aby AzCopy to zrobić, Dodaj flagę `--put-md5` do poszczególnych poleceń kopiowania. Dzięki temu, gdy plik zostanie pobrany, AzCopy oblicza skrót MD5 dla pobranych danych i sprawdza, czy skrót MD5 przechowywany we właściwości `Content-md5` pliku jest zgodny z obliczonym skrótem.
+> AzCopy nie oblicza automatycznie ani nie zapisuje kodu skrótu MD5 pliku. Jeśli chcesz, aby AzCopy to zrobić, Dodaj flagę `--put-md5` do każdego polecenia copy. Dzięki temu, gdy plik zostanie pobrany, AzCopy oblicza skrót MD5 dla pobranych danych i sprawdza, czy skrót MD5 przechowywany we właściwości `Content-md5` pliku jest zgodny z obliczonym skrótem.
 
 Aby uzyskać szczegółowe dokumenty referencyjne, zobacz [AzCopy Copy](storage-ref-azcopy-copy.md).
 
@@ -61,7 +61,7 @@ Aby uzyskać szczegółowe dokumenty referencyjne, zobacz [AzCopy Copy](storage-
 | **Obowiązuje** | `azcopy copy '<local-file-path>' 'https://<storage-account-name>.file.core.windows.net/<file-share-name>/<file-name>?<SAS-token>'` |
 | **Przykład** | `azcopy copy 'C:\myDirectory\myTextFile.txt' 'https://mystorageaccount.file.core.windows.net/myfileshare/myTextFile.txt?sv=2018-03-28&ss=bjqt&srs=sco&sp=rjklhjup&se=2019-05-10T04:37:48Z&st=2019-05-09T20:37:48Z&spr=https&sig=%2FSOVEFfsKDqRry4bk3qz1vAQFwY5DDzp2%2B%2F3Eykf%2FJLs%3D'` |
 
-Możesz również przekazać plik za pomocą symbolu wieloznacznego (*) w dowolnym miejscu w ścieżce lub nazwie pliku. Na przykład: `'C:\myDirectory\*.txt'` lub `C:\my*\*.txt`.
+Możesz również przekazać plik za pomocą symbolu wieloznacznego (*) w dowolnym miejscu w ścieżce lub nazwie pliku. Na przykład: `'C:\myDirectory\*.txt'`lub `C:\my*\*.txt`.
 
 ### <a name="upload-a-directory"></a>Przekaż katalog
 
@@ -90,7 +90,7 @@ Zawartość katalogu można przekazać bez kopiowania samego katalogu zawierają
 | **Przykład** | `azcopy copy 'C:\myDirectory\*' 'https://mystorageaccount.file.core.windows.net/myfileshare/myFileShareDirectory?sv=2018-03-28&ss=bjqt&srs=sco&sp=rjklhjup&se=2019-05-10T04:37:48Z&st=2019-05-09T20:37:48Z&spr=https&sig=%2FSOVEFfsKDqRry4bk3qz1vAQFwY5DDzp2%2B%2F3Eykf%2FJLs%3D"` |
 
 > [!NOTE]
-> Dołącz flagę `--recursive` w celu przekazywania plików we wszystkich podkatalogach.
+> Dołącz flagę `--recursive` do przekazywania plików we wszystkich podkatalogach.
 
 ### <a name="upload-specific-files"></a>Przekazywanie określonych plików
 
@@ -153,8 +153,9 @@ Aby uzyskać szczegółowe dokumenty referencyjne, zobacz [AzCopy Copy](storage-
 
 |    |     |
 |--------|-----------|
-| **Obowiązuje** | `azcopy copy 'https://<storage-account-name>.file.core.windows.net/<file-share-name>/<directory-path>?<SAS-token>' '<local-directory-path>' --recursive` |
-| **Przykład** | `azcopy copy 'https://mystorageaccount.file.core.windows.net/myfileshare/myFileShareDirectory?sv=2018-03-28&ss=bjqt&srs=sco&sp=rjklhjup&se=2019-05-10T04:37:48Z&st=2019-05-09T20:37:48Z&spr=https&sig=%2FSOVEFfsKDqRry4bk3qz1vAQFwY5DDzp2%2B%2F3Eykf%2FJLs%3D' 'C:\myDirectory'  --recursive` |
+| **Obowiązuje** | "AzCopy Copy" https://< Storage-account-name >. File. Core. Windows. NET/< plik-Share-Name >/< ścieżka katalogu >? < sygnatura dostępu współdzielonego > " 
+"< ścieżka katalogu lokalnego >"--rekursywnie " |
+| **Przykład** | `azcopy copy "https://mystorageaccount.file.core.windows.net/myfileshare/myFileShareDirectory?sv=2018-03-28&ss=bjqt&srs=sco&sp=rjklhjup&se=2019-05-10T04:37:48Z&st=2019-05-09T20:37:48Z&spr=https&sig=%2FSOVEFfsKDqRry4bk3qz1vAQFwY5DDzp2%2B%2F3Eykf%2FJLs%3D" "C:\myDirectory"  --recursive` |
 
 Ten przykład powoduje, że katalog o nazwie `C:\myDirectory\myFileShareDirectory` zawiera wszystkie pobrane pliki.
 
@@ -254,9 +255,9 @@ Zawartość udziału plików można zsynchronizować z innym udziałem plików. 
 > [!NOTE]
 > Obecnie ten scenariusz jest obsługiwany tylko w przypadku kont, które nie mają hierarchicznej przestrzeni nazw. Bieżąca wersja programu AzCopy nie jest synchronizowana między Azure Files i Blob Storage.
 
-Polecenie [Sync](storage-ref-azcopy-sync.md) porównuje nazwy plików i ostatnio modyfikowane sygnatury czasowe. Ustaw opcjonalną flagę `--delete-destination` na wartość `true` lub `prompt`, aby usunąć pliki w katalogu docelowym, jeśli te pliki nie znajdują się już w katalogu źródłowym.
+Polecenie [Sync](storage-ref-azcopy-sync.md) porównuje nazwy plików i ostatnio modyfikowane sygnatury czasowe. Ustaw opcjonalną flagę `--delete-destination` na wartość `true` lub `prompt`, aby usunąć pliki w katalogu docelowym, jeśli te pliki nie istnieją już w katalogu źródłowym.
 
-Jeśli ustawisz flagę `--delete-destination` do `true` AzCopy usuwa pliki bez wyświetlania monitu. Jeśli chcesz, aby monit pojawił się zanim AzCopy usunie plik, Ustaw flagę `--delete-destination` na `prompt`.
+Jeśli ustawisz flagę `--delete-destination` na `true` AzCopy usuwa pliki bez podawania monitu. Jeśli chcesz, aby monit pojawił się przed AzCopy usunięciem pliku, Ustaw flagę `--delete-destination` na `prompt`.
 
 Aby uzyskać szczegółowe dokumenty referencyjne, zobacz [AzCopy Sync](storage-ref-azcopy-sync.md).
 

@@ -1,18 +1,18 @@
 ---
-title: Dodaj nazwę główną usługi do roli administratora serwera Azure Analysis Services | Microsoft Docs
-description: Dowiedz się, jak dodać nazwę główną usługi Automation do roli administratora serwera
+title: Dodaj nazwę główną usługi do roli administratora Azure Analysis Services | Microsoft Docs
+description: Dowiedz się, jak dodać nazwę główną usługi Automation do roli administratora serwera Azure Analysis Services
 author: minewiskan
 ms.service: azure-analysis-services
 ms.topic: conceptual
 ms.date: 10/29/2019
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: c141bcea030f5afcc3cb33adba32f4a96c335eec
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.openlocfilehash: 0a3a86283c8ec9876fbec049a2a1a110eb1a80f3
+ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73147402"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73573615"
 ---
 # <a name="add-a-service-principal-to-the-server-administrator-role"></a>Dodawanie jednostki usługi do roli administratora serwera 
 
@@ -30,7 +30,7 @@ Aby wykonać to zadanie, musisz mieć uprawnienia [administratora serwera](analy
 ## <a name="add-service-principal-to-server-administrators-role"></a>Dodawanie nazwy głównej usługi do roli Administratorzy serwera
 
 1. W programie SSMS Połącz się z platformą Azure jako serwerem.
-2. We **właściwościach serwera** > **zabezpieczenia**kliknij przycisk **Dodaj**.
+2. W obszarze **Właściwości serwera** > **zabezpieczenia**kliknij przycisk **Dodaj**.
 3. W obszarze **Wybierz użytkownika lub grupę**Wyszukaj zarejestrowaną aplikację według nazwy, wybierz pozycję, a następnie kliknij przycisk **Dodaj**.
 
     ![Wyszukaj konto jednostki usługi](./media/analysis-services-addservprinc-admins/aas-add-sp-ssms-picker.png)

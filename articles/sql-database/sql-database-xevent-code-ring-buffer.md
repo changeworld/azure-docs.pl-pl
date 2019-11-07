@@ -1,5 +1,5 @@
 ---
-title: Kod buforu pierścienia systemu XEvent dla SQL Database | Microsoft Docs
+title: Kod buforu pierścienia systemu XEvent dla SQL Database
 description: Zawiera przykładowy kod języka Transact-SQL, który jest łatwy i szybki dzięki użyciu obiektu docelowego buforu pierścieniowego w Azure SQL Database.
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: MightyPen
 ms.author: genemi
 ms.reviewer: jrasnik
 ms.date: 12/19/2018
-ms.openlocfilehash: f1ec9cd3a4256597ade409fb3e04d44171277554
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 8fd04cac394f05a9db18e84117a8647c1a17ba30
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68566168"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73686815"
 ---
 # <a name="ring-buffer-target-code-for-extended-events-in-sql-database"></a>Kod docelowy buforu pierścieniowego dla zdarzeń rozszerzonych w SQL Database
 
@@ -56,8 +56,8 @@ W tym temacie przedstawiono przykładowy kod języka Transact-SQL, który:
 
 W przypadku bardzo drobnej modyfikacji Poniższy przykład kodu buforu pierścieniowego można uruchomić na Azure SQL Database lub Microsoft SQL Server. Różnica polega na obecności węzła "_DATABASE" w nazwie niektórych dynamicznych widoków zarządzania (widoków DMV) użytego w klauzuli FROM w kroku 5. Na przykład:
 
-* sys.dm_xe<strong>_database</strong>_session_targets
-* sys.dm_xe_session_targets
+* sys. DM _xe<strong>_DATABASE</strong>_session_targets
+* sys. DM _xe_session_targets
 
 &nbsp;
 
@@ -222,7 +222,7 @@ Aby wyświetlić wyniki, należy kliknąć komórkę w nagłówku kolumny **targ
 
 Następnie w okienku wyników została kliknięta komórka w nagłówku kolumny **target_data_XML**. W tym celu kliknij pozycję utworzono inną kartę pliku w programie SSMS. exe, w której zawartość komórki wynikowej była wyświetlana jako XML.
 
-Dane wyjściowe są wyświetlane w następującym bloku. Wygląda na to, że jest on długi, ale jest tylko dwa  **\<elementy > zdarzeń** .
+Dane wyjściowe są wyświetlane w następującym bloku. Wygląda na to, że jest on długi, ale jest tylko dwa **\<> zdarzeń** .
 
 &nbsp;
 
@@ -347,7 +347,7 @@ Podstawowy temat dla rozszerzonych zdarzeń na Azure SQL Database to:
 
 Inne tematy przykładowe kodu dla zdarzeń rozszerzonych są dostępne na następujących łączach. Należy jednak regularnie sprawdzać dowolną próbkę, aby zobaczyć, czy Przykładowe elementy docelowe Microsoft SQL Server, a nie Azure SQL Database. Następnie możesz zdecydować, czy niewielkie zmiany są potrzebne do uruchomienia przykładu.
 
-* Przykład kodu dla Azure SQL Database: [Kod docelowy pliku zdarzeń dla zdarzeń rozszerzonych w SQL Database](sql-database-xevent-code-event-file.md)
+* Przykład kodu dla Azure SQL Database: [kod docelowy pliku zdarzeń dla zdarzeń rozszerzonych w SQL Database](sql-database-xevent-code-event-file.md)
 
 <!--
 ('lock_acquired' event.)

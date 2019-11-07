@@ -5,39 +5,40 @@ services: expressroute
 author: rambk
 ms.service: expressroute
 ms.topic: article
-ms.date: 09/26/2017
+ms.date: 10/31/2019
 ms.author: rambala
 ms.custom: seodec18
-ms.openlocfilehash: 026900e3dcbf7c20750bb8e17e44ba64897c9a30
-ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
+ms.openlocfilehash: c5001e884047fc6078faf3a8de0e45b7e30e1038
+ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "71123443"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73580288"
 ---
 # <a name="verifying-expressroute-connectivity"></a>Weryfikowanie połączenia usługi ExpressRoute
-Ten artykuł ułatwia sprawdzanie i rozwiązywanie problemów z łącznością ExpressRoute. ExpressRoute, która rozszerza sieć lokalną do chmury firmy Microsoft przez połączenie prywatne, które jest obsługiwane przez dostawcę połączeń, obejmuje następujące trzy odrębne strefy sieciowe:
+Ten artykuł ułatwia sprawdzanie i rozwiązywanie problemów z łącznością ExpressRoute. ExpressRoute rozszerza sieć lokalną do chmury firmy Microsoft przez połączenie prywatne, które jest powszechnie obsługiwane przez dostawcę połączenia. ExpressRoute łączności tradycyjnie obejmuje trzy oddzielne strefy sieciowe w następujący sposób:
 
 -   Sieć klienta
 -   Sieć dostawcy
 -   Centrum danych firmy Microsoft
 
-Celem tego dokumentu jest ułatwienie użytkownikowi zidentyfikowania, gdzie występuje problem z łącznością i w której strefie, a tym samym, aby uzyskać pomoc od odpowiedniego zespołu w celu rozwiązania problemu. Jeśli pomoc techniczna firmy Microsoft jest wymagana do rozwiązania problemu, należy otworzyć bilet pomocy technicznej w [Pomoc techniczna firmy Microsoft][Support].
+> [!NOTE]
+> W modelu łączności bezpośredniej ExpressRoute (oferowany z przepustowością 10/100 GB/s) cusomters może bezpośrednio łączyć się z portem routerów Microsoft Enterprise Edge (MSEE). W związku z tym w modelu łączności bezpośredniej istnieją tylko strefy klienta i sieci firmy Microsoft.
+>
+
+
+Celem tego dokumentu jest ułatwienie użytkownikowi zidentyfikowania, czy występuje problem z łącznością. W związku z tym, aby pomóc w uzyskaniu pomocy technicznej od odpowiedniego zespołu w celu rozwiązania problemu. Jeśli pomoc techniczna firmy Microsoft jest wymagana do rozwiązania problemu, należy otworzyć bilet pomocy technicznej w [Pomoc techniczna firmy Microsoft][Support].
 
 > [!IMPORTANT]
 > Ten dokument ma pomóc w diagnozowaniu i rozwiązywaniu prostych problemów. Nie jest to zamiennik dla pomocy technicznej firmy Microsoft. Otwórz bilet pomocy technicznej z [Pomoc techniczna firmy Microsoft][Support] , jeśli nie możesz rozwiązać problemu przy użyciu podanych wskazówek.
 >
 >
 
-[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
-
-## <a name="overview"></a>Przegląd
+## <a name="overview"></a>Omówienie
 Na poniższym diagramie przedstawiono logiczne połączenie sieci klienta z siecią firmy Microsoft przy użyciu ExpressRoute.
 [![1]][1]
 
-Na powyższym diagramie liczba wskazuje kluczowe punkty sieciowe. Punkty sieciowe są często przywoływane w tym artykule przez ich numer skojarzony.
-
-W zależności od modelu łączności usługi ExpressRoute (w przypadku lokalizacji w chmurze, połączenia Ethernet typu punkt-punkt lub dowolnego typu dowolnego) (IPVPN) punkty sieciowe 3 i 4 mogą być przełącznikami (urządzenia warstwy 2). Najważniejsze przedstawiane punkty sieci są następujące:
+Na powyższym diagramie liczba wskazuje kluczowe punkty sieciowe. Te punkty sieciowe są przywoływane w tym artykule o ile ich skojarzona liczba. W zależności od modelu łączności ExpressRoute — połączenie z programem Exchange w chmurze, punkt-punkt połączenia Ethernet lub dowolne z nich (IPVPN) — punkty sieciowe 3 i 4 mogą być przełącznikami (urządzeniami warstwy 2) lub routerami (urządzeniami warstwy 3). W modelu łączności bezpośredniej nie ma punktów sieciowych 3 i 4; Zamiast tego (2) są bezpośrednio połączone z MSEE za pośrednictwem ciemnego włókna. Najważniejsze przedstawiane punkty sieci są następujące:
 
 1.  Urządzenie obliczeniowe klienta (na przykład serwer lub komputer)
 2.  CE: routery brzegowe klienta 
@@ -47,34 +48,38 @@ W zależności od modelu łączności usługi ExpressRoute (w przypadku lokaliza
 6.  Brama Virtual Network (VNet)
 7.  Urządzenie obliczeniowe w sieci wirtualnej platformy Azure
 
-Jeśli używane są modele łączności między lokalizacjami w chmurze lub połączenia Ethernet typu punkt-punkt, router graniczny klienta (2) ustanowi komunikację równorzędną BGP z MSEE (5). Punkty sieciowe 3 i 4 nadal istnieją, ale są nieco widoczne jako urządzenia warstwy 2.
+Jeśli używane są wspólne lokalizacje usługi Exchange w chmurze, sieci Ethernet typu punkt-punkt lub bezpośrednie modele połączeń, usługa rejestracji urządzeń (2) ustanawia komunikację równorzędną BGP z MSEE (5). 
 
-Jeśli używany jest model łączności any-to-Any (IPVPN), PEs (MSEEd) (4) ustanowi komunikację równorzędną BGP z MSEE (5). Trasy byłyby następnie propagowane do sieci klienta za pośrednictwem sieci dostawcy usług IPVPN.
+Jeśli używany jest model łączności "dowolny do dowolnego" (IPVPN), PE-MSEE (4) ustanawianie komunikacji równorzędnej BGP z MSEE (5). PE-MSEE Propaguj trasy otrzymane od firmy Microsoft z powrotem do sieci klienta za pośrednictwem sieci dostawcy usług IPVPN.
 
 > [!NOTE]
->Aby zapewnić wysoką dostępność ExpressRoute, firma Microsoft wymaga nadmiarowej pary sesji BGP między MSEE (5) i PE-MSEE (4). Zaleca się również nadmiarową parę ścieżek sieciowych między sieciami klienta i PE-CE. Jednak w przypadku modelu połączeń "dowolny do dowolnego" (IPVPN) jedno urządzenie CE (2) może być połączone z co najmniej jednym elementem PEs (3).
+>Aby zapewnić wysoką dostępność, firma Microsoft ustanawia w pełni nadmiarowe połączenie równoległe między parami MSEE (5) i PE-MSEE (4). W pełni nadmiarowa równoległa ścieżka sieciowa jest również zachęcana do pary sieci klienta i PE-CE. Aby uzyskać więcej informacji na temat wysokiej dostępności, zobacz artykuł [projektowanie pod kątem wysokiej dostępności za pomocą ExpressRoute][HA]
 >
 >
 
-Aby sprawdzić obwód obwodu ExpressRoute, podano następujące czynności (z punktem sieci wskazanym przez skojarzoną liczbę):
-1. [Weryfikacja aprowizacji i stanu obwodu (5)](#validate-circuit-provisioning-and-state)
-2. [Sprawdź, czy skonfigurowano co najmniej jedną komunikację równorzędną ExpressRoute (5)](#validate-peering-configuration)
-3. [Weryfikowanie protokołu ARP między firmą Microsoft i dostawcą usług (link do zakresu od 4 do 5)](#validate-arp-between-microsoft-and-the-service-provider)
-4. [Weryfikowanie protokołu BGP i tras w MSEE (BGP z przedziału od 4 do 5 i od 5 do 6, jeśli sieć wirtualna jest połączona)](#validate-bgp-and-routes-on-the-msee)
-5. [Sprawdź statystyki ruchu (ruch przechodzący przez 5)](#check-the-traffic-statistics)
+Poniżej przedstawiono kroki logiczne, w których można rozwiązywać problemy z ExpressRoute obwodu:
 
-W przyszłości zostaną dodane kolejne operacje sprawdzania poprawności i sprawdzenia. Wróć do miesiąca.
+* [Weryfikacja aprowizacji i stanu obwodu](#verify-circuit-provisioning-and-state)
+  
+* [Weryfikuj konfigurację komunikacji równorzędnej](#validate-peering-configuration)
+  
+* [Weryfikowanie protokołu ARP](#validate-arp)
+  
+* [Weryfikowanie protokołu BGP i tras na MSEE](#validate-bgp-and-routes-on-the-msee)
+  
+* [Potwierdzenie przepływu ruchu](#confirm-the-traffic-flow)
 
-## <a name="validate-circuit-provisioning-and-state"></a>Weryfikacja aprowizacji i stanu obwodu
-Bez względu na model łączności, obwód usługi ExpressRoute musi zostać utworzony i w związku z tym został wygenerowany klucz usług dla aprowizacji obwodów. Zainicjowanie obwodu ExpressRoute ustanawia nadmiarowe połączenia warstwy 2 między PE-MSEE (4) i MSEE (5). Aby uzyskać więcej informacji na temat tworzenia, modyfikowania, inicjowania obsługi i weryfikowania obwodu usługi ExpressRoute, zobacz artykuł [Tworzenie i modyfikowanie obwodu usługi ExpressRoute][CreateCircuit].
+
+## <a name="verify-circuit-provisioning-and-state"></a>Weryfikacja aprowizacji i stanu obwodu
+Zainicjowanie obwodu usługi ExpressRoute ustanawia nadmiarowe połączenia warstwy 2 między usługami ce/PE-MSEE (2)/(4) i MSEE (5). Aby uzyskać więcej informacji na temat tworzenia, modyfikowania, inicjowania obsługi i weryfikowania obwodu usługi ExpressRoute, zobacz artykuł [Tworzenie i modyfikowanie obwodu usługi ExpressRoute][CreateCircuit].
 
 >[!TIP]
->Klucz usługi jednoznacznie identyfikuje obwód ExpressRoute. Ten klucz jest wymagany w przypadku większości poleceń programu PowerShell opisanych w tym dokumencie. Ponadto, jeśli chcesz uzyskać pomoc od firmy Microsoft lub partnera ExpressRoute, aby rozwiązać problem związany z ExpressRoute, Podaj klucz usługi, aby łatwo zidentyfikować obwód.
+>Klucz usługi jednoznacznie identyfikuje obwód ExpressRoute. Jeśli potrzebujesz pomocy od firmy Microsoft lub od partnera ExpressRoute, aby rozwiązać problem z ExpressRoute, Podaj klucz usługi, aby łatwo zidentyfikować obwód.
 >
 >
 
 ### <a name="verification-via-the-azure-portal"></a>Weryfikacja za pomocą Azure Portal
-W Azure Portal można sprawdzić stan obwodu ExpressRoute, wybierając pozycję ![2][2] w menu po lewej stronie, a następnie wybierając obwód ExpressRoute. Wybranie obwodu ExpressRoute na liście w obszarze "wszystkie zasoby" spowoduje otwarcie bloku obwodu ExpressRoute. W sekcji ![3][3] w bloku ExpressRoute podstawowe informacje są wyświetlane jak pokazano na poniższym zrzucie ekranu:
+W Azure Portal Otwórz blok obwodu ExpressRoute. W sekcji ![3][3] w bloku ExpressRoute podstawowe informacje są wyświetlane jak pokazano na poniższym zrzucie ekranu:
 
 ![4][4]    
 
@@ -83,7 +88,7 @@ W ExpressRoute Essentials *stan obwodu* wskazuje stan obwodu po stronie firmy Mi
 Aby obwód usługi ExpressRoute był uruchomiony, musi być *włączony* *stan obwodu* , a *stan dostawcy* musi być *zainicjowany*.
 
 > [!NOTE]
-> Jeśli *stan obwodu* nie jest włączony, skontaktuj się z [Pomoc techniczna firmy Microsoft][Support]. Jeśli *stan dostawcy* nie jest obsługiwany, skontaktuj się z dostawcą usług.
+> Po skonfigurowaniu obwodu ExpressRoute, jeśli *stan obwodu* wykreśla się w stanie niewłączonym, skontaktuj się z [Pomoc techniczna firmy Microsoft][Support]. Z drugiej strony, jeśli *stan dostawcy* jest wykreślony w stanie nieaprowizacji, skontaktuj się z dostawcą usług.
 >
 >
 
@@ -93,9 +98,9 @@ Aby wyświetlić listę wszystkich obwodów usługi ExpressRoute w grupie zasob�
     Get-AzExpressRouteCircuit -ResourceGroupName "Test-ER-RG"
 
 >[!TIP]
->Nazwę grupy zasobów można uzyskać za pomocą platformy Azure. Zapoznaj się z poprzednią podsekcją tego dokumentu i zwróć uwagę na to, że nazwa grupy zasobów jest wymieniona na przykładowym zrzucie ekranu.
+>Jeśli szukasz nazwy grupy zasobów, możesz ją uzyskać, wyświetlając listę wszystkich grup zasobów w subskrypcji przy użyciu polecenia *Get-AzResourceGroup*
 >
->
+
 
 Aby wybrać konkretny obwód ExpressRoute w grupie zasobów, użyj następującego polecenia:
 
@@ -132,58 +137,33 @@ Aby potwierdzić, czy obwód ExpressRoute działa, należy zwrócić szczególn�
     ServiceProviderProvisioningState : Provisioned
 
 > [!NOTE]
-> Jeśli *CircuitProvisioningState* nie jest włączona, skontaktuj się z [Pomoc techniczna firmy Microsoft][Support]. Jeśli *ServiceProviderProvisioningState* nie jest inicjowany, skontaktuj się z dostawcą usług.
->
->
-
-### <a name="verification-via-powershell-classic"></a>Weryfikacja za pomocą programu PowerShell (wersja klasyczna)
-Aby wyświetlić listę wszystkich obwodów usługi ExpressRoute w ramach subskrypcji, użyj następującego polecenia:
-
-    Get-AzureDedicatedCircuit
-
-Aby wybrać określony obwód ExpressRoute, użyj następującego polecenia:
-
-    Get-AzureDedicatedCircuit -ServiceKey **************************************
-
-Przykładowa odpowiedź:
-
-    andwidth                         : 100
-    BillingType                      : UnlimitedData
-    CircuitName                      : Test-ER-Ckt
-    Location                         : westus2
-    ServiceKey                       : **************************************
-    ServiceProviderName              : ****
-    ServiceProviderProvisioningState : Provisioned
-    Sku                              : Standard
-    Status                           : Enabled
-
-Aby potwierdzić, czy obwód ExpressRoute działa, należy zwrócić szczególną uwagę na następujące pola: ServiceProviderProvisioningState: stan aprowizacji: włączone
-
-> [!NOTE]
-> Jeśli *stan* nie jest włączony, skontaktuj się z [Pomoc techniczna firmy Microsoft][Support]. Jeśli *ServiceProviderProvisioningState* nie jest inicjowany, skontaktuj się z dostawcą usług.
+> Po skonfigurowaniu obwodu ExpressRoute, jeśli *stan obwodu* wykreśla się w stanie niewłączonym, skontaktuj się z [Pomoc techniczna firmy Microsoft][Support]. Z drugiej strony, jeśli *stan dostawcy* jest wykreślony w stanie nieaprowizacji, skontaktuj się z dostawcą usług.
 >
 >
 
 ## <a name="validate-peering-configuration"></a>Weryfikuj konfigurację komunikacji równorzędnej
-Po zakończeniu aprowizacji obwodu usługi ExpressRoute przez dostawcę usług można utworzyć konfigurację routingu za pośrednictwem obwodu ExpressRoute między MSEE-żądań ściągnięcia (4) i MSEE (5). Każdy obwód usługi ExpressRoute może mieć włączone jeden, dwa lub trzy konteksty routingu: prywatna Komunikacja równorzędna Azure (ruch do prywatnych sieci wirtualnych na platformie Azure), publiczna Komunikacja równorzędna Azure (ruch do publicznych adresów IP na platformie Azure) i Komunikacja równorzędna firmy Microsoft (ruch do pakietu Office 365). Aby uzyskać więcej informacji na temat tworzenia i modyfikowania konfiguracji routingu, zobacz artykuł [Tworzenie i modyfikowanie routingu dla obwodu usługi ExpressRoute][CreatePeering].
+Po zakończeniu aprowizacji obwodu usługi ExpressRoute przez dostawcę usług można utworzyć wiele konfiguracji routingu opartych na eBGP w ramach obwodu ExpressRoute między usługą rejestracji certyfikatów (1)/(4) i MSEE (5). Każdy obwód usługi ExpressRoute może mieć: prywatna Komunikacja równorzędna Azure (ruch do prywatnych sieci wirtualnych na platformie Azure) i/lub Komunikacja równorzędna firmy Microsoft (ruch do publicznych punktów końcowych PaaS i SaaS). Aby uzyskać więcej informacji na temat tworzenia i modyfikowania konfiguracji routingu, zobacz artykuł [Tworzenie i modyfikowanie routingu dla obwodu usługi ExpressRoute][CreatePeering].
 
 ### <a name="verification-via-the-azure-portal"></a>Weryfikacja za pomocą Azure Portal
 
 > [!NOTE]
-> Jeśli dostawca usług udostępnia warstwę 3, a Komunikacja równorzędna jest pusta w portalu, Odśwież konfigurację obwodu za pomocą przycisku Odśwież w portalu. Ta operacja spowoduje zastosowanie odpowiedniej konfiguracji routingu w obwodzie. 
->
+> W modelu łączności IPVPN dostawcy usług obsługują obowiązek konfigurowania komunikacji równorzędnej (usługi warstwy 3). W takim modelu, po skonfigurowaniu komunikacji równorzędnej przez dostawcę usług i jeśli Komunikacja równorzędna jest pusta w portalu, spróbuj odświeżyć konfigurację obwodu za pomocą przycisku Odśwież w portalu. Ta operacja spowoduje ściągnięcie bieżącej konfiguracji routingu z obwodu. 
 >
 
-W Azure Portal można sprawdzić stan obwodu ExpressRoute, wybierając pozycję ![2][2] w menu po lewej stronie, a następnie wybierając obwód ExpressRoute. Wybranie obwodu ExpressRoute na liście w obszarze "wszystkie zasoby" spowoduje otwarcie bloku obwodu ExpressRoute. W sekcji ![3][3] w bloku ExpressRoute Essentials zostanie wyświetlona, jak pokazano na poniższym zrzucie ekranu:
+W Azure Portal stan komunikacji równorzędnej obwodu ExpressRoute można sprawdzić pod blokiem obwodu ExpressRoute. W sekcji ![3][3] bloku ExpressRoute Komunikacja równorzędna będzie wyświetlana jak pokazano na poniższym zrzucie ekranu:
 
 ![5][5]
 
-W powyższym przykładzie, jak zanotowano kontekst routingu prywatnej komunikacji równorzędnej platformy Azure, a kontekst routingu komunikacji równorzędnej platformy Azure nie jest włączony. Pomyślnie włączono kontekst komunikacji równorzędnej, który ma również podstawowe i pomocnicze punkty typu punkt-punkt (wymagane w przypadku protokołu BGP) na liście. Podsieci/30 są używane dla adresu IP interfejsu MSEE i PE-MSEE. 
+W powyższym przykładzie, jako że zanotowano zainicjowanie prywatnej komunikacji równorzędnej platformy Azure, nie zainicjowano obsługi komunikacji równorzędnej usług Azure Public i Microsoft. Pomyślnie zainicjowany kontekst komunikacji równorzędnej również będzie zawierał podstawową i pomocniczą podsieć punkt-punkt. Podsieci/30 są używane dla adresu IP interfejsu MSEE i CE/PE-MSEE. W przypadku obsługi komunikacji równorzędnej ta lista wskazuje również, kto ostatnio zmodyfikował konfigurację. 
 
 > [!NOTE]
-> Jeśli Komunikacja równorzędna nie jest włączona, sprawdź, czy przypisane podsieci podstawowej i pomocniczej są zgodne z konfiguracją w środowisku PE-MSEE. Jeśli tak nie jest, aby zmienić konfigurację na routerach MSEE, zapoznaj się z tematem [Tworzenie i modyfikowanie routingu dla obwodu usługi ExpressRoute][CreatePeering]
+> Jeśli Włączanie komunikacji równorzędnej nie powiedzie się, sprawdź, czy przypisane podsieci podstawowej i pomocniczej są zgodne z konfiguracją w powiązanym elemencie CE/PE-MSEE. Sprawdź również, czy poprawne *VlanId*, *AzureASN*i *PeerASN* są używane w MSEE, i czy te wartości są mapowane na te, które są używane w połączonym ce/PE-MSEE. Jeśli zostanie wybrane Mieszanie MD5, klucz współużytkowany powinien być taki sam w parze MSEE i PE-MSEE/CE. Wcześniej skonfigurowany klucz współużytkowany nie zostanie wyświetlony ze względów bezpieczeństwa. Należy zmienić dowolną konfigurację na routerze MSEE, zapoznaj się z tematem [Tworzenie i modyfikowanie routingu dla obwodu usługi ExpressRoute][CreatePeering].  
 >
+
+> [!NOTE]
+> W przypadku podsieci/30 przypisanej do interfejsu firma Microsoft wybierze drugi używany adres IP podsieci dla interfejsu MSEE. W związku z tym upewnij się, że pierwszy używany adres IP podsieci został przypisany do komunikacji równorzędnej CE/PE-MSEE.
 >
+
 
 ### <a name="verification-via-powershell"></a>Weryfikacja za pomocą programu PowerShell
 Aby uzyskać szczegółowe informacje o konfiguracji prywatnej komunikacji równorzędnej Azure, użyj następujących poleceń:
@@ -198,17 +178,17 @@ Przykładowa odpowiedź dla pomyślnie skonfigurowanej prywatnej komunikacji ró
     Etag                       : W/"################################"
     PeeringType                : AzurePrivatePeering
     AzureASN                   : 12076
-    PeerASN                    : ####
+    PeerASN                    : 123##
     PrimaryPeerAddressPrefix   : 172.16.0.0/30
     SecondaryPeerAddressPrefix : 172.16.0.4/30
     PrimaryAzurePort           : 
     SecondaryAzurePort         : 
     SharedKey                  : 
-    VlanId                     : 300
+    VlanId                     : 200
     MicrosoftPeeringConfig     : null
     ProvisioningState          : Succeeded
 
- Pomyślnie włączono kontekst komunikacji równorzędnej będzie zawierał prefiksy adresów podstawowych i pomocniczych. Podsieci/30 są używane dla adresu IP interfejsu MSEE i PE-MSEE.
+ Pomyślnie włączono kontekst komunikacji równorzędnej będzie zawierał prefiksy adresów podstawowych i pomocniczych. Podsieci/30 są używane dla adresu IP interfejsu MSEE i CE/PE-MSEE.
 
 Aby uzyskać szczegółowe informacje o konfiguracji publicznej komunikacji równorzędnej platformy Azure, użyj następujących poleceń:
 
@@ -231,134 +211,68 @@ Jeśli Komunikacja równorzędna nie zostanie skonfigurowana, zostanie wyświetl
 
 
 > [!NOTE]
-> Jeśli Komunikacja równorzędna nie jest włączona, sprawdź, czy przypisana podstawowa i pomocnicza podsieć jest zgodna z konfiguracją w połączonym środowisku PE-MSEE. Sprawdź również, czy poprawne *VlanId*, *AzureASN*i *PeerASN* są używane w MSEE, i czy te wartości są mapowane na te, które są używane w połączonym środowisku PE-MSEE. Jeśli zostanie wybrane Mieszanie MD5, klucz współużytkowany powinien być taki sam w parze MSEE i PE-MSEE. Aby zmienić konfigurację na routerach MSEE, zapoznaj się z tematem [Tworzenie i modyfikowanie routingu dla obwodu usługi ExpressRoute][CreatePeering].  
->
->
-
-### <a name="verification-via-powershell-classic"></a>Weryfikacja za pomocą programu PowerShell (wersja klasyczna)
-Aby uzyskać szczegółowe informacje o konfiguracji prywatnej komunikacji równorzędnej platformy Azure, użyj następującego polecenia:
-
-    Get-AzureBGPPeering -AccessType Private -ServiceKey "*********************************"
-
-Przykładowa odpowiedź dla pomyślnie skonfigurowanej prywatnej komunikacji równorzędnej to:
-
-    AdvertisedPublicPrefixes       : 
-    AdvertisedPublicPrefixesState  : Configured
-    AzureAsn                       : 12076
-    CustomerAutonomousSystemNumber : 
-    PeerAsn                        : ####
-    PrimaryAzurePort               : 
-    PrimaryPeerSubnet              : 10.0.0.0/30
-    RoutingRegistryName            : 
-    SecondaryAzurePort             : 
-    SecondaryPeerSubnet            : 10.0.0.4/30
-    State                          : Enabled
-    VlanId                         : 100
-
-Pomyślnie włączony kontekst komunikacji równorzędnej będzie zawierał podstawową i pomocniczą podsieć równorzędną. Podsieci/30 są używane dla adresu IP interfejsu MSEE i PE-MSEE.
-
-Aby uzyskać szczegółowe informacje o konfiguracji publicznej komunikacji równorzędnej platformy Azure, użyj następujących poleceń:
-
-    Get-AzureBGPPeering -AccessType Public -ServiceKey "*********************************"
-
-Aby uzyskać szczegółowe informacje dotyczące konfiguracji komunikacji równorzędnej firmy Microsoft, użyj następujących poleceń:
-
-    Get-AzureBGPPeering -AccessType Microsoft -ServiceKey "*********************************"
-
-> [!IMPORTANT]
-> Jeśli Komunikacja równorzędna warstwy 3 została ustawiona przez dostawcę usługi, ustawienie komunikacji równorzędnej ExpressRoute za pośrednictwem portalu lub programu PowerShell powoduje zastąpienie ustawień dostawcy usług. Resetowanie ustawień komunikacji równorzędnej po stronie dostawcy wymaga obsługi dostawcy usług. Należy modyfikować tylko komunikację równorzędną ExpressRoute, jeśli jest pewność, że dostawca usług udostępnia tylko usługi warstwy 2.
+> Jeśli Włączanie komunikacji równorzędnej nie powiedzie się, sprawdź, czy przypisane podsieci podstawowej i pomocniczej są zgodne z konfiguracją w powiązanym elemencie CE/PE-MSEE. Sprawdź również, czy poprawne *VlanId*, *AzureASN*i *PeerASN* są używane w MSEE, i czy te wartości są mapowane na te, które są używane w połączonym ce/PE-MSEE. Jeśli zostanie wybrane Mieszanie MD5, klucz współużytkowany powinien być taki sam w parze MSEE i PE-MSEE/CE. Wcześniej skonfigurowany klucz współużytkowany nie zostanie wyświetlony ze względów bezpieczeństwa. Należy zmienić dowolną konfigurację na routerze MSEE, zapoznaj się z tematem [Tworzenie i modyfikowanie routingu dla obwodu usługi ExpressRoute][CreatePeering].  
 >
 >
 
 > [!NOTE]
-> Jeśli Komunikacja równorzędna nie jest włączona, sprawdź, czy jej podstawowa i pomocnicza podsieć równorzędna są przypisane do konfiguracji w połączonym środowisku PE-MSEE. Sprawdź również, czy poprawne *VlanId*, *AzureAsn*i *PeerAsn* są używane w MSEE, i czy te wartości są mapowane na te, które są używane w połączonym środowisku PE-MSEE. Aby zmienić konfigurację na routerach MSEE, zapoznaj się z tematem [Tworzenie i modyfikowanie routingu dla obwodu usługi ExpressRoute][CreatePeering].
->
->
-
-## <a name="validate-arp-between-microsoft-and-the-service-provider"></a>Weryfikowanie protokołu ARP między firmą Microsoft a dostawcą usług
-W tej sekcji są wykorzystywane polecenia programu PowerShell (klasyczne). Jeśli używasz poleceń Azure Resource Manager programu PowerShell, upewnij się, że masz dostęp administratora/współadministratora do subskrypcji. Rozwiązywanie problemów przy użyciu poleceń Azure Resource Manager można znaleźć [w tabeli pobieranie ARP w dokumencie Menedżer zasobów model wdrażania][ARP] .
-
-> [!NOTE]
->Aby uzyskać protokół ARP, można użyć poleceń Azure Portal i Azure Resource Manager programu PowerShell. W przypadku napotkania błędów przy użyciu poleceń Azure Resource Manager PowerShell, klasyczne polecenia programu PowerShell powinny funkcjonować w ramach klasycznych poleceń programu PowerShell, a także współpracują z Azure Resource Manager obwodów ExpressRoute.
->
+> W przypadku podsieci/30 przypisanej do interfejsu firma Microsoft wybierze drugi używany adres IP podsieci dla interfejsu MSEE. W związku z tym upewnij się, że pierwszy używany adres IP podsieci został przypisany do komunikacji równorzędnej CE/PE-MSEE.
 >
 
-Aby uzyskać tabelę ARP z podstawowego routera MSEE dla prywatnej komunikacji równorzędnej, użyj następującego polecenia:
+## <a name="validate-arp"></a>Weryfikowanie protokołu ARP
 
-    Get-AzureDedicatedCircuitPeeringArpInfo -AccessType Private -Path Primary -ServiceKey "*********************************"
+Tabela ARP zawiera mapowanie adresów IP i adresów MAC dla określonej komunikacji równorzędnej. Tabela ARP dla komunikacji równorzędnej obwodu usługi ExpressRoute zawiera następujące informacje dotyczące poszczególnych interfejsów (podstawowych i pomocniczych):
+* Mapowanie adresu IP lokalnego interfejsu routera na adres MAC
+* Mapowanie adresu IP interfejsu ExpressRoute router na adres MAC
+* Wiek tabel mapowania ARP może pomóc w sprawdzeniu konfiguracji warstwy 2 i rozwiązywaniu problemów z podstawowymi problemami z łącznością warstwy 2.
 
-Przykładowa odpowiedź dla polecenia w scenariuszu zakończonym powodzeniem:
 
-    ARP Info:
+Zobacz [Pobieranie tabel ARP w dokumencie Menedżer zasobów model wdrażania][ARP] , aby wyświetlić tabelę ARP komunikacji równorzędnej ExpressRoute oraz jak korzystać z informacji w celu rozwiązywania problemów z łącznością warstwy 2.
 
-                 Age           Interface           IpAddress          MacAddress
-                 113             On-Prem       10.0.0.1           e8ed.f335.4ca9
-                   0           Microsoft       10.0.0.2           7c0e.ce85.4fc9
-
-Podobnie można sprawdzić tabelę ARP z MSEE w *głównej* ścieżce*pomocniczej* /, dla *prywatnych* /*publicznych* / komunikacji równorzędnej*firmy Microsoft* .
-
-Poniższy przykład pokazuje, że odpowiedź polecenia dla komunikacji równorzędnej nie istnieje.
-
-    ARP Info:
-       
-> [!NOTE]
-> Jeśli tabela ARP nie zawiera adresów IP interfejsów mapowanych na adresy MAC, zapoznaj się z następującymi informacjami:
->1. Jeśli pierwszy adres IP podsieci/30 przypisany dla linku między MSEE-PR i MSEE jest używany w interfejsie MSEE-PR. Platforma Azure zawsze używa drugiego adresu IP dla MSEE.
->2. Sprawdź, czy Tagi sieci VLAN klienta (C-tag) i Service (S-tag) pasują zarówno do pary MSEE-PR i MSEE.
->
->
 
 ## <a name="validate-bgp-and-routes-on-the-msee"></a>Weryfikowanie protokołu BGP i tras na MSEE
-W tej sekcji są wykorzystywane polecenia programu PowerShell (klasyczne). Jeśli używasz poleceń Azure Resource Manager programu PowerShell, upewnij się, że masz dostęp administratora/współadministratora do subskrypcji.
 
-> [!NOTE]
->Aby uzyskać informacje dotyczące protokołu BGP, można użyć poleceń Azure Portal i Azure Resource Manager programu PowerShell. W przypadku napotkania błędów przy użyciu poleceń Azure Resource Manager PowerShell, klasyczne polecenia programu PowerShell powinny funkcjonować w ramach klasycznych poleceń programu PowerShell, a także współpracują z Azure Resource Manager obwodów ExpressRoute.
->
->
+Aby uzyskać tabelę routingu z MSEE na ścieżce *podstawowej* kontekstu routingu *prywatnego* , użyj następującego polecenia:
 
-Aby uzyskać podsumowanie tabeli routingu (sąsiada BGP) dla danego kontekstu routingu, użyj następującego polecenia:
-
-    Get-AzureDedicatedCircuitPeeringRouteTableSummary -AccessType Private -Path Primary -ServiceKey "*********************************"
+    Get-AzExpressRouteCircuitRouteTable -DevicePath Primary -ExpressRouteCircuitName ******* -PeeringType AzurePrivatePeering -ResourceGroupName ****
 
 Przykład odpowiedzi:
 
-    Route Table Summary:
+    Network : 10.1.0.0/16
+    NextHop : 10.17.17.141
+    LocPrf  : 
+    Weight  : 0
+    Path    : 65515
 
-            Neighbor                   V                  AS              UpDown         StatePfxRcd
-            10.0.0.1                   4                ####                8w4d                  50
+    Network : 10.1.0.0/16
+    NextHop : 10.17.17.140*
+    LocPrf  : 
+    Weight  : 0
+    Path    : 65515
 
-Jak pokazano w poprzednim przykładzie, polecenie jest przydatne do określenia, jak długo został ustanowiony kontekst routingu. Wskazuje również liczbę prefiksów tras anonsowanych przez router komunikacji równorzędnej.
+    Network : 10.2.20.0/25
+    NextHop : 172.16.0.1
+    LocPrf  : 
+    Weight  : 0
+    Path    : 123##
+
 
 > [!NOTE]
-> Jeśli stan jest aktywny lub bezczynny, sprawdź, czy przypisane podsieci podstawowej i pomocniczej elementu równorzędnego są zgodne z konfiguracją w połączonym środowisku PE-MSEE. Sprawdź również, czy poprawne *VlanId*, *AzureAsn*i *PeerAsn* są używane w MSEE, i czy te wartości są mapowane na te, które są używane w połączonym środowisku PE-MSEE. Jeśli zostanie wybrane Mieszanie MD5, klucz współużytkowany powinien być taki sam w parze MSEE i PE-MSEE. Aby zmienić konfigurację na routerach MSEE, zapoznaj się z tematem [Tworzenie i modyfikowanie routingu dla obwodu usługi ExpressRoute][CreatePeering].
+> Jeśli stan komunikacji równorzędnej eBGP między MSEE i CE/PE-MSEE jest aktywny lub bezczynny, sprawdź, czy przypisana podstawowa i pomocnicza podsieć równorzędna jest zgodna z konfiguracją w połączonym CE/PE-MSEE. Sprawdź również, czy poprawne *VlanId*, *AzureAsn*i *PeerAsn* są używane w MSEE i czy te wartości są mapowane na te, które są używane w połączonym środowisku PE-MSEE/CE. Jeśli zostanie wybrane Mieszanie MD5, klucz współużytkowany powinien być taki sam w parze MSEE i CE/PE-MSEE. Należy zmienić dowolną konfigurację na routerze MSEE, zapoznaj się z tematem [Tworzenie i modyfikowanie routingu dla obwodu usługi ExpressRoute][CreatePeering].
 >
->
+
 
 > [!NOTE]
-> Jeśli niektóre lokalizacje docelowe nie są dostępne dla określonej komunikacji równorzędnej, należy sprawdzić tabelę tras MSEE należącej do określonego kontekstu komunikacji równorzędnej. Jeśli w tabeli routingu występuje pasujący prefiks (może to być parametr "Jand"), sprawdź, czy na ścieżce znajdują się zapory/sieciowej grupy zabezpieczeń/listy ACL i czy zezwalają one na ruch.
+> Jeśli niektóre lokalizacje docelowe nie są dostępne w przypadku komunikacji równorzędnej, sprawdź tabelę tras MSEE dla odpowiedniego kontekstu komunikacji równorzędnej. Jeśli w tabeli routingu znajduje się pasujący prefiks (może być adresem IP "Jand"), sprawdź, czy na ścieżce, która blokuje ruch, znajdują się zapory/sieciowej grupy zabezpieczeń/listy ACL.
 >
->
 
-Aby uzyskać pełną tabelę routingu z MSEE na ścieżce *podstawowej* dla danego kontekstu routingu *prywatnego* , użyj następującego polecenia:
 
-    Get-AzureDedicatedCircuitPeeringRouteTableInfo -AccessType Private -Path Primary -ServiceKey "*********************************"
+Poniższy przykład przedstawia odpowiedź polecenia dla komunikacji równorzędnej, która nie istnieje:
 
-Przykładowy wynik pomyślnego polecenia to:
+    Get-AzExpressRouteCircuitRouteTable : The BGP Peering AzurePublicPeering with Service Key ********************* is not found.
+    StatusCode: 400
 
-    Route Table Info:
-
-             Network             NextHop              LocPrf              Weight                Path
-         10.1.0.0/16            10.0.0.1                                       0    #### ##### #####     
-         10.2.0.0/16            10.0.0.1                                       0    #### ##### #####
-    ...
-
-Podobnie można sprawdzić tabelę routingu z MSEE w *podstawowej* ścieżce*pomocniczej* /, dla *prywatnego* /*publicznego* / kontekście komunikacji równorzędnej*firmy Microsoft* .
-
-Poniższy przykład pokazuje odpowiedź polecenia dla komunikacji równorzędnej nie istnieje:
-
-    Route Table Info:
-
-## <a name="check-the-traffic-statistics"></a>Sprawdź statystyki ruchu
+## <a name="confirm-the-traffic-flow"></a>Potwierdzenie przepływu ruchu
 Aby uzyskać dane statystyczne dotyczące połączonej ścieżki podstawowej i pomocniczej — liczba bajtów w kontekście komunikacji równorzędnej, użyj następującego polecenia:
 
     Get-AzureDedicatedCircuitStats -ServiceKey 97f85950-01dd-4d30-a73c-bf683b3a6e5c -AccessType Private
@@ -371,12 +285,8 @@ Przykładowe dane wyjściowe polecenia to:
 
 Przykładowe dane wyjściowe polecenia dla nieistniejącej komunikacji równorzędnej to:
 
-    Get-AzureDedicatedCircuitStats : ResourceNotFound: Can not find any subinterface for peering type 'Public' for circuit '97f85950-01dd-4d30-a73c-bf683b3a6e5c' .
-    At line:1 char:1
-    + Get-AzureDedicatedCircuitStats -ServiceKey 97f85950-01dd-4d30-a73c-bf ...
-    + ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-        + CategoryInfo          : CloseError: (:) [Get-AzureDedicatedCircuitStats], CloudException
-        + FullyQualifiedErrorId : Microsoft.WindowsAzure.Commands.ExpressRoute.GetAzureDedicatedCircuitPeeringStatsCommand
+    Get-AzExpressRouteCircuitRouteTable : The BGP Peering AzurePublicPeering with Service Key ********************* is not found.
+    StatusCode: 400
 
 ## <a name="next-steps"></a>Następne kroki
 Aby uzyskać więcej informacji i uzyskać pomoc, Skorzystaj z następujących linków:
@@ -397,7 +307,8 @@ Aby uzyskać więcej informacji i uzyskać pomoc, Skorzystaj z następujących l
 [CreateCircuit]: https://docs.microsoft.com/azure/expressroute/expressroute-howto-circuit-portal-resource-manager 
 [CreatePeering]: https://docs.microsoft.com/azure/expressroute/expressroute-howto-routing-portal-resource-manager
 [ARP]: https://docs.microsoft.com/azure/expressroute/expressroute-troubleshooting-arp-resource-manager
-
+[HA]: https://docs.microsoft.com/azure/expressroute/designing-for-high-availability-with-expressroute
+[DR-Pvt]: https://docs.microsoft.com/azure/expressroute/designing-for-disaster-recovery-with-expressroute-privatepeering
 
 
 

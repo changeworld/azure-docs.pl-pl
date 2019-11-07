@@ -1,5 +1,5 @@
 ---
-title: Działanie ForEach w Azure Data Factory | Microsoft Docs
+title: Działanie ForEach w Azure Data Factory
 description: Dla każdego działania definiuje powtarzający się przepływ sterowania w potoku. Służy do iterowania kolekcji i wykonywania określonych działań.
 services: data-factory
 documentationcenter: ''
@@ -11,18 +11,18 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/23/2019
-ms.openlocfilehash: 319f4e722184ce840d43b8f23e61711851a6d4a0
-ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
+ms.openlocfilehash: b8f95f22553a3b4639b1aba6576ce844116ae20b
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70142478"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73679875"
 ---
 # <a name="foreach-activity-in-azure-data-factory"></a>Działanie ForEach w Azure Data Factory
 Działanie ForEach definiuje powtarzający się przepływ sterowania w potoku. To działanie służy do wykonywania iteracji po kolekcji i wykonuje określone działania w pętli. Implementacja pętli tego działania przypomina strukturę pętli Foreach w językach programowania.
 
 ## <a name="syntax"></a>Składnia
-Właściwości są opisane w dalszej części tego artykułu. Właściwość Items jest kolekcją, a każdy element w kolekcji jest określany za pomocą instrukcji `@item()` , jak pokazano w następującej składni:  
+Właściwości są opisane w dalszej części tego artykułu. Właściwość Items jest kolekcją, a każdy element w kolekcji jest określany za pomocą `@item()`, jak pokazano w następującej składni:  
 
 ```json
 {  
@@ -68,23 +68,23 @@ Właściwości są opisane w dalszej części tego artykułu. Właściwość Ite
 
 ## <a name="type-properties"></a>Właściwości typu
 
-Właściwość | Opis | Dozwolone wartości | Wymagane
+Właściwość | Opis | Dozwolone wartości | Wymagany
 -------- | ----------- | -------------- | --------
-name | Nazwa działania for-each. | String | Tak
-type | Musi być ustawiona na wartość **foreach** | String | Tak
-isSequential | Określa, czy pętla powinna być wykonywana sekwencyjnie, czy równolegle.  Maksymalnie 20 iteracji pętli można wykonać jednocześnie równolegle). Na przykład jeśli masz działanie ForEach iteracji dla działania kopiowania z 10 różnymi źródłami i ujściami zestawów danych z parametrem issekwencyjnym ustawionym na wartość false, wszystkie kopie są wykonywane jednocześnie. Wartość domyślna to false. <br/><br/> Jeśli wartość "issekwencyjne" ma wartość FAŁSZ, upewnij się, że istnieje poprawna konfiguracja do uruchamiania wielu plików wykonywalnych. W przeciwnym razie ta właściwość powinna być stosowana z zachowaniem ostrożności, aby uniknąć ponoszenia konfliktów zapisu. Aby uzyskać więcej informacji, zobacz sekcję [wykonywanie równoległe](#parallel-execution) . | Boolean | Nie. Wartość domyślna to false.
+name | Nazwa działania for-each. | Ciąg | Tak
+type | Musi być ustawiona na wartość **foreach** | Ciąg | Tak
+issekwencyjne | Określa, czy pętla powinna być wykonywana sekwencyjnie, czy równolegle.  Maksymalnie 20 iteracji pętli można wykonać jednocześnie równolegle). Na przykład jeśli masz działanie ForEach iteracji dla działania kopiowania z 10 różnymi źródłami i ujściami zestawów danych z parametrem **Issekwencyjnym** ustawionym na wartość false, wszystkie kopie są wykonywane jednocześnie. Wartość domyślna to false. <br/><br/> Jeśli wartość "issekwencyjne" ma wartość FAŁSZ, upewnij się, że istnieje poprawna konfiguracja do uruchamiania wielu plików wykonywalnych. W przeciwnym razie ta właściwość powinna być stosowana z zachowaniem ostrożności, aby uniknąć ponoszenia konfliktów zapisu. Aby uzyskać więcej informacji, zobacz sekcję [wykonywanie równoległe](#parallel-execution) . | Wartość logiczna | Nie. Wartość domyślna to false.
 batchCount | Liczba partii do użycia w celu kontrolowania liczby równoległych wykonań (gdy właściwość issekwencyjne ma wartość false). | Integer (maksimum 50) | Nie. Wartość domyślna to 20.
-Elementy | Wyrażenie zwracające tablicę JSON do iteracji. | Wyrażenie (które zwraca tablicę JSON) | Tak
+Items | Wyrażenie zwracające tablicę JSON do iteracji. | Wyrażenie (które zwraca tablicę JSON) | Tak
 Działania | Działania do wykonania. | Lista działań | Tak
 
 ## <a name="parallel-execution"></a>Wykonywanie równoległe
-Jeśli parametr issekwencyjny ma wartość false, działanie iteruje równolegle z maksymalnie 20 współbieżnych iteracji. Tego ustawienia należy używać ostrożnie. Jeśli współbieżne iteracje są zapisywane w tym samym folderze, ale do różnych plików, to podejście jest bardziej precyzyjne. Jeśli współbieżne iteracje są zapisywane jednocześnie do dokładnie tego samego pliku, to podejście najprawdopodobniej powoduje wystąpienie błędu. 
+Jeśli parametr **Issekwencyjny** ma wartość false, działanie iteruje równolegle z maksymalnie 20 współbieżnych iteracji. Tego ustawienia należy używać ostrożnie. Jeśli współbieżne iteracje są zapisywane w tym samym folderze, ale do różnych plików, to podejście jest bardziej precyzyjne. Jeśli współbieżne iteracje są zapisywane jednocześnie do dokładnie tego samego pliku, to podejście najprawdopodobniej powoduje wystąpienie błędu. 
 
 ## <a name="iteration-expression-language"></a>Język wyrażeń iteracji
-W działaniu ForEach Podaj tablicę do iteracji dla **elementów**właściwości. Służy `@item()` do iterowania pojedynczego wyliczenia w działaniu foreach. Na przykład jeśli **element** jest tablicą: [1, 2, 3], `@item()` zwraca 1 w pierwszej iteracji, 2 w drugiej iteracji i 3 w trzeciej iteracji.
+W działaniu ForEach Podaj tablicę do iteracji dla **elementów**właściwości. Użyj `@item()`, aby wykonać iterację pojedynczego wyliczenia w działaniu ForEach. Na przykład jeśli **element** jest tablicą: [1, 2, 3], `@item()` zwraca 1 w pierwszej iteracji, 2 w drugiej iteracji i 3 w trzeciej iteracji.
 
 ## <a name="iterating-over-a-single-activity"></a>Iteracja w ramach pojedynczego działania
-**Scenariusz** Skopiuj z tego samego pliku źródłowego w obiekcie blob platformy Azure do wielu plików docelowych w obiekcie blob platformy Azure.
+**Scenariusz:** Skopiuj z tego samego pliku źródłowego w obiekcie blob platformy Azure do wielu plików docelowych w obiekcie blob platformy Azure.
 
 ### <a name="pipeline-definition"></a>Definicja potoku
 
@@ -236,7 +236,7 @@ Istnieje możliwość iteracji wielu działań (na przykład: kopiowania i dzia�
 ```
 
 ### <a name="example"></a>Przykład
-**Scenariusz** Wykonuje iterację w InnerPipeline w działaniu ForEach z działaniem Execute Pipeline. Wewnętrzne potoki jest kopiowane z definicją schematu sparametryzowane.
+**Scenariusz:** Wykonuje iterację w InnerPipeline w działaniu ForEach z działaniem Execute Pipeline. Wewnętrzne potoki jest kopiowane z definicją schematu sparametryzowane.
 
 #### <a name="master-pipeline-definition"></a>Definicja potoku głównego
 
@@ -475,7 +475,7 @@ Istnieje możliwość iteracji wielu działań (na przykład: kopiowania i dzia�
 
 Aby agregować dane wyjściowe działania __foreach__ , użyj _zmiennych_ i _Dołącz_ działanie zmienne.
 
-Najpierw Zadeklaruj `array` _zmienną_ w potoku. Następnie Wywołaj działanie _Dołącz zmienną_ wewnątrz każdej pętli __foreach__ . Następnie można pobrać agregację z tablicy.
+Najpierw Zadeklaruj _zmienną_ `array` w potoku. Następnie Wywołaj działanie _Dołącz zmienną_ wewnątrz każdej pętli __foreach__ . Następnie można pobrać agregację z tablicy.
 
 ## <a name="limitations-and-workarounds"></a>Ograniczenia i obejścia
 
@@ -484,7 +484,7 @@ Poniżej przedstawiono niektóre ograniczenia działania ForEach i sugerowane ob
 | Ograniczenia | Obejście |
 |---|---|
 | Nie można zagnieżdżać pętli ForEach wewnątrz innej pętli ForEach (lub pętli "until"). | Zaprojektuj potok dwupoziomowy, w którym zewnętrzny potok z zewnętrzną pętlą ForEach powtarza się za pośrednictwem wewnętrznego potoku z zagnieżdżoną pętlą. |
-| Działanie foreach ma maksymalnie `batchCount` 50 do przetwarzania równoległego i maksymalnie 100 000 elementów. | Zaprojektuj potok dwupoziomowy, w którym zewnętrzny potok z działaniem ForEach iteruje za pośrednictwem wewnętrznego potoku. |
+| Działanie ForEach ma maksymalną `batchCount` 50 do przetwarzania równoległego i maksymalnie 100 000 elementów. | Zaprojektuj potok dwupoziomowy, w którym zewnętrzny potok z działaniem ForEach iteruje za pośrednictwem wewnętrznego potoku. |
 | | |
 
 ## <a name="next-steps"></a>Następne kroki

@@ -1,6 +1,6 @@
 ---
-title: Przenoszenie danych z programu Teradata przy użyciu usługi Azure Data Factory | Dokumentacja firmy Microsoft
-description: Dowiedz się więcej o Teradata łącznika usługi Data Factory, która umożliwia przenoszenie danych z bazy danych programu Teradata
+title: Przenoszenie danych z programu Teradata przy użyciu Azure Data Factory
+description: Informacje na temat łącznika programu Teradata dla usługi Data Factory, która umożliwia przenoszenie danych z bazy danych programu Teradata
 services: data-factory
 documentationcenter: ''
 author: linda33wj
@@ -13,96 +13,96 @@ ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 8e7fcff6fa4dcea1af15efa2cb4ed3a743c9c402
-ms.sourcegitcommit: 64798b4f722623ea2bb53b374fb95e8d2b679318
+ms.openlocfilehash: 645dcde949c8f5a6b48a5c02892d4cb2c6c5be0e
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/11/2019
-ms.locfileid: "67836129"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73666091"
 ---
-# <a name="move-data-from-teradata-using-azure-data-factory"></a>Przenoszenie danych z programu Teradata przy użyciu usługi Azure Data Factory
-> [!div class="op_single_selector" title1="Wybierz wersję usługi Data Factory, którego używasz:"]
+# <a name="move-data-from-teradata-using-azure-data-factory"></a>Przenoszenie danych z programu Teradata przy użyciu Azure Data Factory
+> [!div class="op_single_selector" title1="Wybierz używaną wersję usługi Data Factory:"]
 > * [Wersja 1](data-factory-onprem-teradata-connector.md)
 > * [Wersja 2 (bieżąca wersja)](../connector-teradata.md)
 
 > [!NOTE]
-> Ten artykuł dotyczy wersji 1 usługi Data Factory. Jeśli używasz bieżącą wersję usługi Data Factory, zobacz [Teradata łącznika w wersji 2](../connector-teradata.md).
+> Ten artykuł dotyczy wersji 1 usługi Data Factory. Jeśli używasz bieżącej wersji usługi Data Factory, zobacz [łącznik programu Teradata w wersji 2](../connector-teradata.md).
 
-W tym artykule wyjaśniono, jak użyć działania kopiowania w usłudze Azure Data Factory, aby przenieść dane z lokalnej bazy danych programu Teradata. Opiera się na [działania przenoszenia danych](data-factory-data-movement-activities.md) artykułu, który przedstawia ogólne omówienie przenoszenie danych za pomocą działania kopiowania.
+W tym artykule wyjaśniono, jak za pomocą działania kopiowania w Azure Data Factory przenieść dane z lokalnej bazy danych programu Teradata. Jest on używany w artykule dotyczącym [przenoszenia danych](data-factory-data-movement-activities.md) , który przedstawia ogólne omówienie przenoszenia danych za pomocą działania kopiowania.
 
-Możesz skopiować dane z magazynu danych programu Teradata w środowisku lokalnym, do dowolnego obsługiwanego magazynu danych ujścia. Aby uzyskać listę magazynów danych obsługiwanych jako ujścia działania kopiowania, zobacz [obsługiwane magazyny danych](data-factory-data-movement-activities.md#supported-data-stores-and-formats) tabeli. Data factory obsługuje obecnie tylko przenosi dane z magazynu danych programu Teradata do innych magazynów danych, ale nie przenosi dane z innych magazynów danych do magazynu danych programu Teradata.
+Dane z lokalnego magazynu danych programu Teradata można skopiować do dowolnego obsługiwanego magazynu danych ujścia. Listę magazynów danych obsługiwanych jako ujścia przez działanie kopiowania można znaleźć w tabeli [obsługiwane magazyny danych](data-factory-data-movement-activities.md#supported-data-stores-and-formats) . Fabryka danych obsługuje obecnie tylko przeniesienie danych z magazynu danych programu Teradata do innych magazynów danych, ale nie do przeniesienia danych z innych magazynów danych do magazynu danych programu Teradata.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
-Usługa Data factory obsługuje łączenie z lokalnymi źródłami Teradata za pośrednictwem bramy zarządzania danymi. Zobacz [przenoszenia danych między lokalizacjami lokalnymi i chmurą](data-factory-move-data-between-onprem-and-cloud.md) artykuł, aby dowiedzieć się więcej na temat bramy zarządzania danymi i instrukcje krok po kroku dotyczące konfigurowania bramy.
+Fabryka danych obsługuje łączenie z lokalnymi źródłami programu Teradata za pośrednictwem bramy Zarządzanie danymi. Zobacz temat [przeniesienie danych między lokalizacjami lokalnymi i artykułem w chmurze](data-factory-move-data-between-onprem-and-cloud.md) , aby dowiedzieć się więcej na temat bramy zarządzanie danymi i instrukcje krok po kroku dotyczące konfigurowania bramy.
 
-Brama jest wymagana, nawet wtedy, gdy Teradata znajduje się w maszynie Wirtualnej IaaS platformy Azure. Można zainstalować bramy w tej samej maszyny Wirtualnej IaaS jako magazyn danych lub w innej maszyny Wirtualnej, tak długo, jak bramy można połączyć z bazą danych.
+Brama jest wymagana, nawet jeśli usługa Teradata jest hostowana na maszynie wirtualnej Azure IaaS. Możesz zainstalować bramę na tej samej maszynie wirtualnej IaaS, w której znajduje się magazyn danych lub na innej maszynie wirtualnej, o ile Brama może połączyć się z bazą danych.
 
 > [!NOTE]
-> Zobacz [problemów bramy](data-factory-data-management-gateway.md#troubleshooting-gateway-issues) porady dotyczące rozwiązywania problemów z bramy połączenia/problemy związane z usługą.
+> Zobacz [Rozwiązywanie problemów z bramą](data-factory-data-management-gateway.md#troubleshooting-gateway-issues) , aby uzyskać porady dotyczące rozwiązywania problemów związanych z połączeniem/bramą.
 
-## <a name="supported-versions-and-installation"></a>Obsługiwane wersje i instalacji
-Bramy zarządzania danymi do łączenia z bazą danych programu Teradata, musisz zainstalować [.NET Data Provider for Teradata](https://go.microsoft.com/fwlink/?LinkId=278886) wersji 14 lub nowszej na tym samym systemie co brama zarządzania danymi. Teradata wersja 12 i nowszej jest obsługiwana.
+## <a name="supported-versions-and-installation"></a>Obsługiwane wersje i instalacja
+Aby można było nawiązać połączenie z bazą danych programu Teradata przy użyciu bramy Zarządzanie danymi, należy zainstalować program [.net dostawca danych dla programu Teradata](https://go.microsoft.com/fwlink/?LinkId=278886) w wersji 14 lub nowszej w tym samym systemie, w którym znajduje się Brama zarządzanie danymi. Obsługiwana jest wersja 12 lub nowsza programu Teradata.
 
 ## <a name="getting-started"></a>Wprowadzenie
-Utworzysz potok z działaniem kopiowania, które przenosi dane z lokalnego magazynu danych Cassandra przy użyciu różnych narzędzi/interfejsów API.
+Można utworzyć potok za pomocą działania kopiowania, które przenosi dane z lokalnego magazynu danych Cassandra przy użyciu różnych narzędzi/interfejsów API.
 
-- Najprostszym sposobem utworzenia potoku jest użycie **kreatora kopiowania**. Zobacz [samouczka: Tworzenie potoku przy użyciu Kreatora kopiowania](data-factory-copy-data-wizard-tutorial.md) szybki przewodnik dotyczący tworzenia potoku za pomocą Kreatora kopiowania danych.
-- Aby utworzyć potok umożliwia także następujących narzędzi: **Program Visual Studio**, **programu Azure PowerShell**, **szablonu usługi Azure Resource Manager**, **interfejsu API platformy .NET**, i **interfejsu API REST**. Zobacz [samouczka działania kopiowania](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) instrukcje krok po kroku utworzyć potok z działaniem kopiowania.
+- Najprostszym sposobem utworzenia potoku jest użycie **Kreatora kopiowania**. Zobacz [Samouczek: Tworzenie potoku za pomocą Kreatora kopiowania](data-factory-copy-data-wizard-tutorial.md) na potrzeby szybkiego instruktażu dotyczącego tworzenia potoku przy użyciu Kreatora kopiowania danych.
+- Do utworzenia potoku można także użyć następujących narzędzi: **Visual Studio**, **Azure PowerShell**, **szablon Azure Resource Manager**, interfejs API **platformy .NET**i **interfejs API REST**. Aby uzyskać instrukcje krok po kroku dotyczące tworzenia potoku za pomocą działania kopiowania, zobacz [Samouczek dotyczący działania kopiowania](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) .
 
-Czy używasz narzędzi lub interfejsów API, należy wykonać poniższe kroki, aby utworzyć potok, który przenosi dane z magazynu danych źródłowych do magazynu danych ujścia:
+Niezależnie od tego, czy używasz narzędzi, czy interfejsów API, wykonaj następujące kroki, aby utworzyć potok służący do przenoszenia danych ze źródłowego magazynu danych do magazynu danych ujścia:
 
-1. Tworzenie **połączonych usług** połączyć dane wejściowe i wyjściowe przechowywane z fabryką danych.
-2. Tworzenie **zestawów danych** do reprezentowania dane wejściowe i wyjściowe operacji kopiowania.
-3. Tworzenie **potoku** za pomocą działania kopiowania, która przyjmuje jako dane wejściowe zestawu danych i zestaw danych jako dane wyjściowe.
+1. Utwórz **połączone usługi** , aby połączyć magazyny danych wejściowych i wyjściowych z fabryką danych.
+2. Utwórz **zestawy** danych, aby reprezentować dane wejściowe i wyjściowe dla operacji kopiowania.
+3. Utwórz **potok** z działaniem kopiowania, które pobiera zestaw danych jako dane wejściowe i zestaw danych jako dane wyjściowe.
 
-Korzystając z kreatora, definicje JSON dotyczące tych jednostek usługi Data Factory (połączone usługi, zestawy danych i potok) są tworzone automatycznie dla Ciebie. Korzystając z narzędzi/interfejsów API (z wyjątkiem interfejsu API platformy .NET), należy zdefiniować te jednostki usługi Data Factory przy użyciu formatu JSON.  Przykładowe definicje JSON dotyczące jednostek usługi Data Factory, które są używane do kopiowania danych z lokalnego magazynu danych programu Teradata, możesz znaleźć [przykład kodu JSON: Kopiowanie danych z programu Teradata do usługi Azure Blob](#json-example-copy-data-from-teradata-to-azure-blob) dalszej części tego artykułu.
+Gdy używasz Kreatora, definicje JSON dla tych Data Factory jednostek (połączone usługi, zestawy danych i potok) są automatycznie tworzone. Korzystając z narzędzi/interfejsów API (z wyjątkiem interfejsu API .NET), należy zdefiniować te Data Factory jednostki przy użyciu formatu JSON.  Aby uzyskać przykład z definicjami JSON dla Data Factory jednostek, które są używane do kopiowania danych z lokalnego magazynu danych programu Teradata, zobacz [przykład JSON: Kopiuj dane z programu Teradata do usługi Azure Blob](#json-example-copy-data-from-teradata-to-azure-blob) w tym artykule.
 
-Poniższe sekcje zawierają szczegółowe informacje o właściwościach JSON, które są używane do definiowania jednostek usługi fabryka danych określonego w magazynie danych programu Teradata:
+Poniższe sekcje zawierają szczegółowe informacje na temat właściwości JSON, które są używane do definiowania jednostek Data Factory specyficznych dla magazynu danych programu Teradata:
 
-## <a name="linked-service-properties"></a>Właściwości usługi połączonej
-Poniższa tabela zawiera opis dla elementów JSON, które są specyficzne dla programu Teradata połączonej usługi.
+## <a name="linked-service-properties"></a>Właściwości połączonej usługi
+Poniższa tabela zawiera opis elementów JSON specyficznych dla połączonej usługi programu Teradata.
 
-| Właściwość | Opis | Wymagane |
+| Właściwość | Opis | Wymagany |
 | --- | --- | --- |
-| type |Właściwość type musi być równa: **OnPremisesTeradata** |Tak |
-| server |Nazwa serwera programu Teradata. |Tak |
-| authenticationType |Typ uwierzytelniania używany do łączenia z bazą danych programu Teradata. Możliwe wartości to: Anonimowe, podstawowe i Windows. |Yes |
-| username |Określ nazwę użytkownika, jeśli używasz uwierzytelniania podstawowe lub Windows. |Nie |
-| password |Określ hasło dla konta użytkownika, która została określona jako nazwy użytkownika. |Nie |
-| gatewayName |Nazwa bramy, do którego usługa Data Factory powinna używać do łączenia z bazą danych Teradata w środowisku lokalnym. |Tak |
+| type |Właściwość Type musi mieć wartość: **OnPremisesTeradata** |Tak |
+| serwer |Nazwa serwera programu Teradata. |Tak |
+| authenticationType |Typ uwierzytelniania używany do nawiązywania połączenia z bazą danych programu Teradata. Możliwe wartości to: Anonymous, Basic i Windows. |Tak |
+| nazwa użytkownika |Określ nazwę użytkownika, jeśli używasz uwierzytelniania podstawowego lub systemu Windows. |Nie |
+| hasło |Określ hasło dla konta użytkownika określonego dla nazwy użytkownika. |Nie |
+| gatewayName |Nazwa bramy, która ma być używana przez usługę Data Factory do łączenia się z lokalną bazą danych programu Teradata. |Tak |
 
 ## <a name="dataset-properties"></a>Właściwości zestawu danych
-Aby uzyskać pełną listę sekcje & właściwości dostępne Definiowanie zestawów danych, zobacz [tworzenie zestawów danych](data-factory-create-datasets.md) artykułu. Sekcje, takie jak struktury, dostępność i zasady zestawem danych JSON są podobne dla wszystkich typów na zestaw danych (Azure SQL, obiektów blob platformy Azure, usługa Azure table itp.).
+Aby uzyskać pełną listę sekcji & właściwości dostępne do definiowania zestawów danych, zobacz artykuł [Tworzenie zestawów danych](data-factory-create-datasets.md) . Sekcje, takie jak struktura, dostępność i zasady JSON zestawu danych są podobne dla wszystkich typów zestawu danych (Azure SQL, Azure Blob, Azure Table itp.).
 
-**TypeProperties** sekcji różni się dla każdego typu zestawu danych i zawiera informacje o lokalizacji danych w magazynie danych. Obecnie nie istnieją żadne właściwości typu obsługiwanych dla zestawu danych programu Teradata.
+Sekcja **typeProperties** jest inna dla każdego typu zestawu danych i zawiera informacje dotyczące lokalizacji danych w magazynie danych. Obecnie nie istnieją właściwości typu obsługiwane dla zestawu danych programu Teradata.
 
 ## <a name="copy-activity-properties"></a>Właściwości działania kopiowania
-Aby uzyskać pełną listę sekcje & właściwości dostępne do definiowania działań, zobacz [tworzenie potoków](data-factory-create-pipelines.md) artykułu. Właściwości, takie jak nazwa, opis, dane wejściowe i wyjściowe tabel i zasady są dostępne dla wszystkich typów działań.
+Aby uzyskać pełną listę sekcji & właściwości dostępne do definiowania działań, zobacz artykuł [Tworzenie potoków](data-factory-create-pipelines.md) . Właściwości, takie jak nazwa, opis, tabele wejściowe i wyjściowe, oraz zasady są dostępne dla wszystkich typów działań.
 
-Natomiast właściwości, które są dostępne w sekcji typeProperties działania zależą od każdego typu działania. Działanie kopiowania ich różnią się w zależności od typów źródła i ujścia.
+Natomiast właściwości dostępne w sekcji typeProperties działania różnią się w zależności od typu działania. W przypadku działania kopiowania różnią się w zależności od typów źródeł i ujścia.
 
-Jeśli źródło jest typu **RelationalSource** (w tym Teradata), następujące właściwości są dostępne w **typeProperties** sekcji:
+Gdy źródłem jest typ **RelationalSource** (w tym program Teradata), w sekcji **typeProperties** dostępne są następujące właściwości:
 
-| Właściwość | Opis | Dozwolone wartości | Wymagane |
+| Właściwość | Opis | Dozwolone wartości | Wymagany |
 | --- | --- | --- | --- |
-| query |Użyj zapytania niestandardowe można odczytać danych. |Ciąg zapytania SQL. Na przykład: Wybierz * z MyTable. |Tak |
+| query |Użyj zapytania niestandardowego do odczytywania danych. |Ciąg zapytania SQL. Na przykład: select * from MyTable. |Tak |
 
-### <a name="json-example-copy-data-from-teradata-to-azure-blob"></a>Przykład kodu JSON: Kopiowanie danych z programu Teradata do obiektów Blob platformy Azure
-W poniższym przykładzie przedstawiono przykładowe definicji JSON, które umożliwiają tworzenie potoku za pomocą [programu Visual Studio](data-factory-copy-activity-tutorial-using-visual-studio.md) lub [programu Azure PowerShell](data-factory-copy-activity-tutorial-using-powershell.md). Pokazują, jak skopiować dane z programu Teradata w usłudze Azure Blob Storage. Jednakże, można skopiować danych do dowolnego ujścia, o których wspomniano [tutaj](data-factory-data-movement-activities.md#supported-data-stores-and-formats) za pomocą działania kopiowania w usłudze Azure Data Factory.
+### <a name="json-example-copy-data-from-teradata-to-azure-blob"></a>Przykład JSON: kopiowanie danych z programu Teradata do obiektu blob platformy Azure
+W poniższym przykładzie przedstawiono przykładowe definicje JSON, których można użyć do utworzenia potoku przy użyciu [programu Visual Studio](data-factory-copy-activity-tutorial-using-visual-studio.md) lub [Azure PowerShell](data-factory-copy-activity-tutorial-using-powershell.md). Pokazują one sposób kopiowania danych z programu Teradata do usługi Azure Blob Storage. Dane można jednak kopiować do dowolnego ujścia w [tym miejscu](data-factory-data-movement-activities.md#supported-data-stores-and-formats) za pomocą działania kopiowania w Azure Data Factory.
 
-Przykład obejmuje następujących jednostek fabryki danych:
+Przykład zawiera następujące jednostki fabryki danych:
 
-1. Połączonej usługi typu [OnPremisesTeradata](#linked-service-properties).
-2. Połączonej usługi typu [AzureStorage](data-factory-azure-blob-connector.md#linked-service-properties).
-3. Dane wejściowe [dataset](data-factory-create-datasets.md) typu [RelationalTable](#dataset-properties).
-4. Dane wyjściowe [dataset](data-factory-create-datasets.md) typu [AzureBlob](data-factory-azure-blob-connector.md#dataset-properties).
-5. [Potoku](data-factory-create-pipelines.md) za pomocą działania kopiowania, która używa [RelationalSource](#copy-activity-properties) i [BlobSink](data-factory-azure-blob-connector.md#copy-activity-properties).
+1. Połączona usługa typu [OnPremisesTeradata](#linked-service-properties).
+2. Połączona usługa typu [AzureStorage](data-factory-azure-blob-connector.md#linked-service-properties).
+3. Wejściowy [zestaw danych](data-factory-create-datasets.md) typu [relacyjnego](#dataset-properties).
+4. Wyjściowy [zestaw danych](data-factory-create-datasets.md) typu [AzureBlob](data-factory-azure-blob-connector.md#dataset-properties).
+5. [Potok](data-factory-create-pipelines.md) z działaniem kopiowania korzystającym z [RelationalSource](#copy-activity-properties) i [wartość blobsink](data-factory-azure-blob-connector.md#copy-activity-properties).
 
-Przykład kopiuje dane z wyniku kwerendy w bazie danych programu Teradata do obiektu blob na godzinę. Właściwości JSON używanych w tych przykładach są opisane w sekcjach poniżej przykładów.
+Przykład kopiuje dane z wyniku zapytania w bazie danych programu Teradata do obiektu BLOB co godzinę. Właściwości JSON używane w tych przykładach są opisane w sekcjach poniżej przykładów.
 
-Pierwszym krokiem konfiguracji bramy zarządzania danymi. Instrukcje znajdują się w [przenoszenia danych między lokalizacjami lokalnymi i chmurą](data-factory-move-data-between-onprem-and-cloud.md) artykułu.
+Pierwszym krokiem jest skonfigurowanie bramy zarządzania danymi. Instrukcje dotyczą [przemieszczania danych między lokalizacjami lokalnymi i artykułami w chmurze](data-factory-move-data-between-onprem-and-cloud.md) .
 
-**Teradata połączoną usługę:**
+**Połączona usługa programu Teradata:**
 
 ```json
 {
@@ -120,7 +120,7 @@ Pierwszym krokiem konfiguracji bramy zarządzania danymi. Instrukcje znajdują s
 }
 ```
 
-**Połączona usługa Azure Blob storage:**
+**Połączona usługa Azure Blob Storage:**
 
 ```json
 {
@@ -134,11 +134,11 @@ Pierwszym krokiem konfiguracji bramy zarządzania danymi. Instrukcje znajdują s
 }
 ```
 
-**Wejściowy zestaw danych Teradata:**
+**Wejściowy zestaw danych programu Teradata:**
 
-Przykład przyjęto założenie, utworzono tabelę "MyTable" w Teradata i zawiera kolumnę o nazwie "timestamp" w danych szeregów czasowych.
+W przykładzie przyjęto założenie, że utworzono tabelę "MyTable" w programie Teradata i zawiera ona kolumnę o nazwie "timestamp" dla danych szeregów czasowych.
 
-Ustawienie "external": true usługi Data Factory informuje, że w tabeli zewnętrznej dla fabryki danych i nie jest generowany przez działanie w usłudze data factory.
+Ustawienie "External": true informuje usługę Data Factory, że tabela jest zewnętrzna z fabryką danych i nie jest generowana przez działanie w fabryce danych.
 
 ```json
 {
@@ -165,9 +165,9 @@ Ustawienie "external": true usługi Data Factory informuje, że w tabeli zewnęt
 }
 ```
 
-**Usługa Azure Blob wyjściowy zestaw danych:**
+**Wyjściowy zestaw danych obiektów blob platformy Azure:**
 
-Dane są zapisywane do nowego obiektu blob, co godzinę (frequency: godzina, interwał: 1). Ścieżka folderu dla obiektu blob jest dynamicznie obliczana na podstawie czasu rozpoczęcia wycinek, który jest przetwarzany. Ścieżka folderu używa rok, miesiąc, dzień i części godzin od zaplanowanej godziny rozpoczęcia.
+Dane są zapisywane w nowym obiekcie blob co godzinę (częstotliwość: godzina, interwał: 1). Ścieżka folderu dla obiektu BLOB jest obliczana dynamicznie na podstawie czasu rozpoczęcia przetwarzanego wycinka. Ścieżka folderu używa części roku, miesiąca, dnia i godziny rozpoczęcia.
 
 ```json
 {
@@ -225,9 +225,9 @@ Dane są zapisywane do nowego obiektu blob, co godzinę (frequency: godzina, int
     }
 }
 ```
-**Potok za pomocą działania kopiowania:**
+**Potok z działaniem kopiowania:**
 
-Potoku zawierającego działanie kopiowania jest skonfigurowany do korzystania z danych wejściowych i wyjściowych zestawów danych, która jest zaplanowane do uruchomienia co godzinę. W definicji JSON potok **źródła** ustawiono typ **RelationalSource** i **ujścia** ustawiono typ **BlobSink**. Zapytanie SQL, określony dla **zapytania** właściwość wybiera dane w ciągu ostatniej godziny do skopiowania.
+Potok zawiera działanie kopiowania, które jest skonfigurowane do używania wejściowych i wyjściowych zestawów danych i jest zaplanowane do uruchomienia co godzinę. W definicji JSON potoku typ **źródła** ma wartość **RelationalSource** , a typ **ujścia** to **wartość blobsink**. Zapytanie SQL określone dla właściwości **zapytania** wybiera dane w ciągu ostatniej godziny do skopiowania.
 
 ```json
 {
@@ -275,61 +275,61 @@ Potoku zawierającego działanie kopiowania jest skonfigurowany do korzystania z
     }
 }
 ```
-## <a name="type-mapping-for-teradata"></a>Mapowania typów dla programu Teradata
-Jak wspomniano w [działania przenoszenia danych](data-factory-data-movement-activities.md) artykułu, działanie kopiowania wykonuje operację automatyczne konwersje z typów źródła do ujścia typów przy użyciu następujących podejść krok 2:
+## <a name="type-mapping-for-teradata"></a>Mapowanie typu dla programu Teradata
+Jak wspomniano w artykule [działania związane z przenoszeniem danych](data-factory-data-movement-activities.md) , działanie kopiowania wykonuje konwersje typu automatycznego z typów źródłowych na typy obiektów ujścia o następujących dwuetapowych podejściach:
 
-1. Konwersji z typów natywnych źródła na typ architektury .NET
-2. Przekonwertowanie z platformy .NET na typ ujścia natywne
+1. Konwertuj z natywnych typów źródła na typ .NET
+2. Konwertuj z typu .NET na natywny typ ujścia
 
-Podczas przenoszenia danych Teradata, następujące mapowania są używane z Teradata typu na typ architektury .NET.
+Podczas przesuwania danych do programu Teradata następujące mapowania są używane z typu Teradata do typu .NET.
 
-| Typ bazy danych programu Teradata | Typ .NET framework |
+| Typ bazy danych programu Teradata | Typ .NET Framework |
 | --- | --- |
-| Char |String |
-| Clob |Ciąg |
-| Graphic |Ciąg |
+| delikatn |Ciąg |
+| Obiektów CLOB |Ciąg |
+| Zdjęć |Ciąg |
 | VarChar |Ciąg |
-| VarGraphic |String |
-| Blob |Byte[] |
-| Byte |Byte[] |
-| VarByte |Byte[] |
+| VarGraphic |Ciąg |
+| Obiekt blob |Byte [] |
+| Bajc |Byte [] |
+| VarByte |Byte [] |
 | BigInt |Int64 |
 | ByteInt |Int16 |
-| Decimal |Decimal |
+| Dokładności |Dokładności |
 | Double |Double |
-| Liczba całkowita |Int32 |
-| Number |Double |
+| Liczba całkowita |Elementem |
+| Liczba |Double |
 | SmallInt |Int16 |
-| Date |Datetime |
-| Time |TimeSpan |
-| Time With Time Zone |Ciąg |
-| Timestamp |Datetime |
-| Timestamp With Time Zone |DateTimeOffset |
-| Interval Day |TimeSpan |
-| Interval Day To Hour |TimeSpan |
-| Interval Day To Minute |TimeSpan |
-| Interval Day To Second |TimeSpan |
-| Interval Hour |TimeSpan |
-| Interval Hour To Minute |TimeSpan |
-| Interval Hour To Second |TimeSpan |
-| Interval Minute |TimeSpan |
-| Interval Minute To Second |TimeSpan |
-| Interval Second |TimeSpan |
-| Interval Year |String |
-| Interval Year To Month |String |
-| Interval Month |Ciąg |
-| Period(Date) |Ciąg |
-| Period(Time) |String |
-| Period(Time With Time Zone) |String |
-| Period(Timestamp) |Ciąg |
-| Period(Timestamp With Time Zone) |String |
-| Xml |Ciąg |
+| Date |DateTime |
+| Time |Czasu |
+| Czas ze strefą czasową |Ciąg |
+| Znacznik czasu |DateTime |
+| Sygnatura czasowa ze strefą czasową |DateTimeOffset |
+| Dzień interwału |Czasu |
+| Interwał od dnia do godziny |Czasu |
+| Interwał od dnia do minuty |Czasu |
+| Interwał od dnia do sekundy |Czasu |
+| Interwał czasu |Czasu |
+| Interwał od godziny do minuty |Czasu |
+| Interwał od godziny do sekundy |Czasu |
+| Interwał minut |Czasu |
+| Interwał od minuty do sekundy |Czasu |
+| Interwał drugi |Czasu |
+| Rok interwału |Ciąg |
+| Interwał od roku do miesiąca |Ciąg |
+| Miesiąc interwału |Ciąg |
+| Okres (Data) |Ciąg |
+| Czas (Time) |Ciąg |
+| Okres (czas ze strefą czasową) |Ciąg |
+| Kropka (Sygnatura czasowa) |Ciąg |
+| Okres (Sygnatura czasowa ze strefą czasową) |Ciąg |
+| dokument |Ciąg |
 
-## <a name="map-source-to-sink-columns"></a>Mapy źródła do ujścia kolumn
-Aby uzyskać informacje dotyczące mapowania kolumn w zestaw danych źródłowych do kolumn w zestawie danych ujścia, zobacz [mapowanie kolumny zestawu danych w usłudze Azure Data Factory](data-factory-map-columns.md).
+## <a name="map-source-to-sink-columns"></a>Mapowanie źródła do kolumn ujścia
+Aby dowiedzieć się więcej na temat mapowania kolumn w źródłowym zestawie danych na kolumny w datadataset, zobacz [Mapowanie kolumn zestawu danych w Azure Data Factory](data-factory-map-columns.md).
 
-## <a name="repeatable-read-from-relational-sources"></a>Odczyt powtarzalny ze źródeł relacyjnych
-Podczas kopiowania danych z relacyjnej bazie danych są przechowywane, Zachowaj powtarzalności należy pamiętać, aby uniknąć niezamierzonego wyników. W usłudze Azure Data Factory możesz ponownie uruchomić wycinek ręcznie. Można również skonfigurować zasady ponawiania dla zestawu danych, dzięki czemu wycinek będzie uruchamiana ponownie, gdy wystąpi błąd. Gdy wycinek będzie uruchamiana ponownie w obu przypadkach, należy się upewnić, że te same dane jest do odczytu niezależnie od tego, ile razy wycinek jest uruchamiany. Zobacz [Repeatable odczytywać źródła relacyjnego](data-factory-repeatable-copy.md#repeatable-read-from-relational-sources).
+## <a name="repeatable-read-from-relational-sources"></a>Powtarzanie odczytu ze źródeł relacyjnych
+Podczas kopiowania danych z magazynów danych relacyjnych należy mieć na uwadze powtarzalność, aby uniknąć niezamierzonych wyników. W Azure Data Factory można ręcznie uruchomić ponownie wycinka. Możesz również skonfigurować zasady ponawiania dla zestawu danych, aby wycinek był uruchamiany ponownie w przypadku wystąpienia błędu. Gdy wycinek jest uruchamiany ponownie w dowolny sposób, należy się upewnić, że te same dane są odczytywane niezależnie od tego, ile razy jest uruchomiony plasterek. Zobacz [powtarzanie odczytu ze źródeł relacyjnych](data-factory-repeatable-copy.md#repeatable-read-from-relational-sources).
 
 ## <a name="performance-and-tuning"></a>Wydajność i dostrajanie
-Zobacz [wydajności działania kopiowania & przewodnika dostrajania](data-factory-copy-activity-performance.md) Aby dowiedzieć się więcej o kluczowych czynników tego obniżenie wydajności przenoszenia danych (działanie kopiowania) w usłudze Azure Data Factory i różne sposoby, aby zoptymalizować ją.
+Zobacz [Przewodnik dostrajania wydajności & działania kopiowania](data-factory-copy-activity-performance.md) , aby poznać kluczowe czynniki wpływające na wydajność przenoszenia danych (działanie kopiowania) w Azure Data Factory i różne sposoby jego optymalizacji.

@@ -1,5 +1,5 @@
 ---
-title: 'Przykład projektanta #5: Klasyfikacja do prognozowania zmian i pragnienie + do sprzedaży'
+title: 'Projektant: klasyfikowanie, prognozowanie zmian'
 titleSuffix: Azure Machine Learning
 description: Ten Projektant przykładowego potoku (wersja zapoznawcza) przedstawia prognozowanie zmian w klasyfikatorach binarnych, czyli typowe zadanie zarządzania relacjami z klientami (CRM).
 services: machine-learning
@@ -10,12 +10,12 @@ author: xiaoharper
 ms.author: zhanxia
 ms.reviewer: sgilley
 ms.date: 11/04/2019
-ms.openlocfilehash: 52fcebb201fbdeebd7b75d9735fd81c3a647c337
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: a09060e16b877df4412b785edbb60930cb4122bc
+ms.sourcegitcommit: 359930a9387dd3d15d39abd97ad2b8cb69b8c18b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73516242"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73647170"
 ---
 # <a name="sample-5---classification-predict-churn"></a>Przykład 5 — Klasyfikacja: przewidywalność zmian
 [!INCLUDE [applies-to-skus](../../../includes/aml-applies-to-enterprise-sku.md)]

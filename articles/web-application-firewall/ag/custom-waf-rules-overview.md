@@ -7,12 +7,12 @@ author: vhorne
 ms.service: web-application-firewall
 ms.date: 10/04/2019
 ms.author: victorh
-ms.openlocfilehash: 844e24466e9a9b46be3212690767a408e75f234d
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
-ms.translationtype: HT
+ms.openlocfilehash: 0ac37378797c59d79af5d026200b68154836c5ac
+ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 11/04/2019
-ms.locfileid: "73516619"
+ms.locfileid: "73585392"
 ---
 # <a name="custom-rules-for-web-application-firewall-v2-on-azure-application-gateway"></a>Reguły niestandardowe dla zapory aplikacji sieci Web V2 na platformie Azure Application Gateway
 
@@ -162,6 +162,11 @@ Lista wartości do dopasowania, które mogą być uważane za "jako" *lub*"Ed". 
 - Log — umożliwia zapis reguły w dzienniku, ale umożliwia wykonywanie pozostałych reguł na potrzeby oceny. Kolejne reguły niestandardowe są oceniane w kolejności priorytetu, po którym następuje reguła zarządzana.
 
 ## <a name="geomatch-custom-rules-preview"></a>Reguły niestandardowe geodopasowania (wersja zapoznawcza)
+
+Reguły niestandardowe umożliwiają tworzenie dostosowanych reguł zgodnie z dokładnymi potrzebami aplikacji i zasadami zabezpieczeń. Teraz można ograniczyć dostęp do aplikacji sieci Web według kraju/regionu, który jest dostępny w publicznej wersji zapoznawczej. Podobnie jak w przypadku wszystkich reguł niestandardowych, ta logika może zostać złożona z innymi regułami, aby odpowiadały potrzebom aplikacji. 
+
+   > [!NOTE]
+   > Reguły niestandardowe geodopasowania są dostępne w regionach Południowo-środkowe stany USA i Europa Północna. Aby uzyskać dostęp do nich w portalu, użyj [tego linku](https://aka.ms/AppGWWAFGeoMatch) do momentu, gdy będzie on aktywny dla wszystkich użytkowników. 
 
 Jeśli używasz operatora geodopasowania, selektory mogą być jednym z następujących kodów krajów dwucyfrowych. 
 
@@ -323,7 +328,7 @@ Jeśli używasz operatora geodopasowania, selektory mogą być jednym z następu
 | SV | Salwador|
 | SY | Arabska Republika Syryjska|
 | SZ | Suazi|
-| TC | Turks i Caicos|
+| TC | Wyspy Turks i Caicos|
 | TG | Togo|
 | TH | Tajlandia|
 | TN | Tunezja|

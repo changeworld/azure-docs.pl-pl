@@ -1,18 +1,18 @@
 ---
 title: Zainstaluj lokalną bramę danych dla Azure Analysis Services | Microsoft Docs
-description: Dowiedz się, jak zainstalować i skonfigurować lokalną bramę danych.
+description: Dowiedz się, jak zainstalować i skonfigurować lokalną bramę danych w celu nawiązania połączenia z lokalnymi źródłami danych z serwera Azure Analysis Services.
 author: minewiskan
 ms.service: azure-analysis-services
 ms.topic: conceptual
-ms.date: 10/28/2019
+ms.date: 10/30/2019
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 99b5a0ff9cc0fd7fdc3b8a0e453ed287c45e1c60
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.openlocfilehash: 37658ea6b94d6369d282c49f79947a1f183b61c7
+ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73147124"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73572855"
 ---
 # <a name="install-and-configure-an-on-premises-data-gateway"></a>Instalowanie i konfigurowanie bramy danych lokalnych
 
@@ -56,7 +56,7 @@ Aby dowiedzieć się więcej o bramie i sposobie jej użycia przez Azure Analysi
 
 2. Wybierz pozycję **lokalna Brama danych**.
 
-   ![Wybierz](media/analysis-services-gateway-install/aas-gateway-installer-select.png)
+   ![Wybierz pozycję](media/analysis-services-gateway-install/aas-gateway-installer-select.png)
 
 2. Wybierz lokalizację, zaakceptuj warunki, a następnie kliknij przycisk **Instaluj**.
 
@@ -75,14 +75,14 @@ Aby utworzyć zasób bramy na platformie Azure, musisz zarejestrować lokalne wy
 
 1.  Wybierz pozycję **zarejestruj nową bramę na tym komputerze**.
 
-    ![Zarejestruj](media/analysis-services-gateway-install/aas-gateway-register-new.png)
+    ![Zarejestruj subskrypcję](media/analysis-services-gateway-install/aas-gateway-register-new.png)
 
 2. Wpisz nazwę i klucz odzyskiwania dla bramy. Domyślnie brama używa domyślnego regionu subskrypcji. Jeśli musisz wybrać inny region, wybierz pozycję **Zmień region**.
 
     > [!IMPORTANT]
     > Zapisz klucz odzyskiwania w bezpiecznym miejscu. Klucz odzyskiwania jest wymagany w celu przejęcia, przeprowadzenia migracji lub przywrócenia bramy. 
 
-   ![Zarejestruj](media/analysis-services-gateway-install/aas-gateway-register-name.png)
+   ![Zarejestruj subskrypcję](media/analysis-services-gateway-install/aas-gateway-register-name.png)
 
 
 ## <a name="create-resource"></a>Tworzenie zasobu bramy platformy Azure
@@ -127,7 +127,7 @@ Po zainstalowaniu i zarejestrowaniu bramy musisz utworzyć zasób bramy w ramach
 
     ![Pomyślne połączenie serwera z bramą](media/analysis-services-gateway-install/aas-gateway-connect-success.png)
 
-To już wszystko. Jeśli konieczne jest otwarcie portów lub Rozwiązywanie problemów, należy sprawdzić, czy [lokalna Brama danych](analysis-services-gateway.md)jest Wyewidencjonuj.
+Gotowe. Jeśli konieczne jest otwarcie portów lub Rozwiązywanie problemów, należy sprawdzić, czy [lokalna Brama danych](analysis-services-gateway.md)jest Wyewidencjonuj.
 
 ## <a name="next-steps"></a>Następne kroki
 

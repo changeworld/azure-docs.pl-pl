@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 11/05/2019
 ms.author: travisw
-ms.openlocfilehash: 7ad3f932e9a10723d6cc1bae2fc4854c932d4c64
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
-ms.translationtype: HT
+ms.openlocfilehash: eccf2a7a1b9c7ea7a21cd5d0cf0f60728284c05d
+ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 11/04/2019
-ms.locfileid: "73507078"
+ms.locfileid: "73579666"
 ---
 # <a name="voice-assistants-frequently-asked-questions"></a>Asystenci głosowa: często zadawane pytania
 
@@ -29,7 +29,7 @@ Odp **.:** Podobnie jak Cortana, asystent głosowy to rozwiązanie, które nasł
 
 **P: czy należy używać poleceń niestandardowych (wersja zapoznawcza) czy bezpośredniej linii mowy? Jaka jest różnica?**
 
-Odp. **:** [polecenia niestandardowe (wersja zapoznawcza)](custom-commands.md) to zestaw narzędzi, które ułatwiają tworzenie i obsługę asystenta, który jest dobrze dostosowany do scenariuszy ukończenia zadań. [Bezpośredni wiersz mowy](direct-line-speech.md) zapewnia bogatsze i bardziej zaawansowane funkcje, które mogą umożliwić niezawodne scenariusze konwersacji. Zobacz [porównanie rozwiązań asystenta](voice-assistants.md#comparing-assistant-solutions) , aby uzyskać więcej informacji.
+Odp. **:** [polecenia niestandardowe (wersja zapoznawcza)](custom-commands.md) to zestaw narzędzi, które ułatwiają tworzenie i obsługę asystenta, który jest dobrze dostosowany do scenariuszy ukończenia zadań. [Bezpośredni wiersz mowy](direct-line-speech.md) zapewnia bogatsze i bardziej zaawansowane funkcje, które mogą umożliwić niezawodne scenariusze konwersacji. Zobacz [porównanie rozwiązań asystenta](voice-assistants.md#choosing-an-assistant-solution) , aby uzyskać więcej informacji.
 
 **P: Jak mogę zacząć?**
 
@@ -40,6 +40,17 @@ Odp **.:** Najlepszym sposobem, aby zacząć od tworzenia niestandardowych polec
 * [Łączenie bot z kanałem mowy w linii bezpośredniej](https://docs.microsoft.com/azure/bot-service/bot-service-channel-connect-directlinespeech)
 
 ## <a name="debugging"></a>Debugowanie
+
+**P: gdzie jest mój wpis tajny kanału?**
+
+Odp **.:** W przypadku korzystania z wersji zapoznawczej bezpośredniego rozpoznawania mowy lub odczytywania powiązanej dokumentacji może być konieczne znalezienie klucza tajnego na stronie rejestracji kanału mowy w linii bezpośredniej. Metoda fabryki `DialogServiceConfig` v 1.7 `FromBotSecret` w zestawie mowy SDK oczekuje również tej wartości.
+
+Najnowsza wersja funkcji bezpośredniej obsługi liniowej nie pozwala na nawiązywanie kontaktu z bot z urządzenia. Na stronie Rejestracja kanału lista rozwijana na górze kojarzy swoją rejestrację kanału mowy z linią głosową z zasobem mowy. Po skojarzeniu zestaw SDK mowy v 1.8 zawiera metodę `BotFrameworkConfig::FromSubscription` Factory, która skonfiguruje `DialogServiceConnector`, aby skontaktować się z botą skojarzoną z Twoją subskrypcją.
+
+Jeśli nadal trwa Migrowanie aplikacji klienckiej z wersji 1.7 do wersji 1.8, `DialogServiceConfig::FromBotSecret` może nadal współpracować z niepustą wartością o wartości innej niż null dla swojego parametru tajnego kanału, np. poprzedniego użytego klucza tajnego. Zostanie ona po prostu zignorowana w przypadku korzystania z subskrypcji mowy skojarzonej z nowszą rejestracją kanału. Należy pamiętać, że wartość nie *może* mieć wartości null i nie jest pusta, ponieważ są one sprawdzane na urządzeniu przed zastosowaniem skojarzenia po stronie usługi.
+
+
+Aby uzyskać bardziej szczegółowy przewodnik, zapoznaj się z [sekcją samouczka](tutorial-voice-enable-your-bot-speech-sdk.md#register-the-direct-line-speech-channel) , która przeprowadzi Cię przez proces rejestracji kanału.
 
 **P: otrzymuję błąd 401 podczas nawiązywania połączenia i nic nie działa. Wiem, że klucz subskrypcji mowy jest prawidłowy. Co się dzieje?**
 

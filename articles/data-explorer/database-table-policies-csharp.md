@@ -1,48 +1,48 @@
 ---
-title: Tworzenie zasad przy użyciu zestawu Azure C# Eksplorator danych SDK
-description: W tym artykule dowiesz się, jak tworzyć zasady przy użyciu języka c#.
+title: Tworzenie zasad przy użyciu zestawu Azure Eksplorator danych C# SDK
+description: W tym artykule przedstawiono sposób tworzenia zasad przy użyciu programu C#.
 author: lucygoldbergmicrosoft
 ms.author: lugoldbe
 ms.reviewer: orspodek
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 09/24/2019
-ms.openlocfilehash: fa2dd4993dbf70bcbc6ea97726f8cd7254123429
-ms.sourcegitcommit: 9f330c3393a283faedaf9aa75b9fcfc06118b124
+ms.openlocfilehash: 8a5ea692bfdec7f676a80cc670f686af66152e6f
+ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/07/2019
-ms.locfileid: "71997230"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73606606"
 ---
-# <a name="create-database-and-table-policies-for-azure-data-explorer-using-c"></a>Tworzenie zasad bazy danych i tabeli dla usługi Azure Eksplorator danych przy użyciuC#
+# <a name="create-database-and-table-policies-for-azure-data-explorer-by-using-c"></a>Tworzenie zasad bazy danych i tabel dla usługi Azure Eksplorator danych przy użyciuC#
 
 > [!div class="op_single_selector"]
 > * [C#](database-table-policies-csharp.md)
 > * [Python](database-table-policies-python.md)
 >
 
-Azure Eksplorator danych to szybka i wysoce skalowalna usługa eksploracji danych dla danych dzienników i telemetrii. W tym artykule opisano tworzenie zasad bazy danych i tabel dla usługi Azure Eksplorator danych C#przy użyciu programu.
+Azure Data Explorer to szybka i wysoce skalowalna usługa eksploracji danych na potrzeby danych dziennika i telemetrycznych. W tym artykule opisano tworzenie zasad bazy danych i tabel dla usługi Azure Eksplorator danych przy użyciu C#programu.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-* Jeśli nie masz zainstalowanego programu Visual Studio 2019, możesz pobrać i korzystać **bezpłatnie** z programu [Visual Studio 2019 Community Edition](https://www.visualstudio.com/downloads/). Upewnij się, że włączasz **Programowanie na platformie Azure** podczas instalacji programu Visual Studio.
+* Program Visual Studio 2019. Jeśli nie masz programu Visual Studio 2019, możesz pobrać i użyć *bezpłatnej* [społeczności programu Visual Studio 2019](https://www.visualstudio.com/downloads/). Pamiętaj o wybraniu opcji **Programowanie na platformie Azure** podczas instalacji programu Visual Studio.
 
-* Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem Utwórz [bezpłatne konto platformy Azure](https://azure.microsoft.com/free/) .
+* Subskrypcja platformy Azure. Jeśli chcesz, możesz utworzyć [bezpłatne konto platformy Azure](https://azure.microsoft.com/free/) przed rozpoczęciem.
 
-* [Klaster testowy i baza danych](create-cluster-database-csharp.md)
+* [Klaster testowy i baza danych](create-cluster-database-csharp.md).
 
-* [Tabela testowa](net-standard-ingest-data.md#create-a-table-on-your-test-cluster)
+* [Tabela testowa](net-standard-ingest-data.md#create-a-table-on-your-test-cluster).
 
 ## <a name="install-c-nuget"></a>Zainstaluj C# pakiet NuGet
 
 * Zainstaluj [pakiet NuGet platformy Azure Eksplorator danych (Kusto)](https://www.nuget.org/packages/Microsoft.Azure.Management.Kusto/).
 
-* Zainstaluj [pakiet NuGet Microsoft. Azure. Kusto. Data. Standard](https://www.nuget.org/packages/Microsoft.Azure.Kusto.Data.NETStandard/) (opcjonalnie, aby zmienić zasady tabeli).
+* Zainstaluj [pakiet NuGet Microsoft. Azure. Kusto. Data. Standard](https://www.nuget.org/packages/Microsoft.Azure.Kusto.Data.NETStandard/). (Opcjonalnie, aby zmienić zasady tabeli).
 
-* Zainstaluj [pakiet NuGet Microsoft. IdentityModel. clients. ActiveDirectory](https://www.nuget.org/packages/Microsoft.IdentityModel.Clients.ActiveDirectory/) na potrzeby uwierzytelniania.
+* Zainstaluj [pakiet NuGet Microsoft. IdentityModel. clients. ActiveDirectory](https://www.nuget.org/packages/Microsoft.IdentityModel.Clients.ActiveDirectory/), aby uzyskać uwierzytelnianie.
 
-## <a name="authentication"></a>Uwierzytelnianie
-Aby uruchomić przykłady z tego artykułu, potrzebujemy aplikacji usługi Azure AD i nazwy głównej usługi, która może uzyskać dostęp do zasobów. Możesz użyć tej samej aplikacji usługi Azure AD do uwierzytelniania z [klastra testowego i bazy danych](create-cluster-database-csharp.md#authentication). Jeśli chcesz użyć innej aplikacji usługi Azure AD, zobacz [Tworzenie aplikacji usługi Azure AD](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal) w celu utworzenia bezpłatnej aplikacji usługi Azure AD i Dodawanie przypisania roli do zakresu subskrypcji. Przedstawiono w nim również, jak uzyskać `Directory (tenant) ID`, `Application ID` i `Client Secret`. Może być konieczne dodanie nowej aplikacji usługi Azure AD jako podmiotu zabezpieczeń w bazie danych, zobacz [Zarządzanie uprawnieniami usługi azure Eksplorator danych Database](https://docs.microsoft.com/azure/data-explorer/manage-database-permissions).   
+## <a name="authentication"></a>Authentication
+Aby uruchomić przykłady z tego artykułu, potrzebna jest aplikacja Azure Active Directory (Azure AD) i nazwa główna usługi, która może uzyskiwać dostęp do zasobów. Możesz użyć tej samej aplikacji usługi Azure AD do uwierzytelniania z [klastra testowego i bazy danych](create-cluster-database-csharp.md#authentication). Jeśli chcesz użyć innej aplikacji usługi Azure AD, zobacz [Tworzenie aplikacji usługi Azure AD](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal) w celu utworzenia bezpłatnej aplikacji usługi Azure AD i Dodawanie przypisania roli do zakresu subskrypcji. W tym artykule pokazano również, jak uzyskać `Directory (tenant) ID`, `Application ID`i `Client secret`. Może być konieczne dodanie nowej aplikacji usługi Azure AD jako podmiotu zabezpieczeń w bazie danych. Aby uzyskać więcej informacji, zobacz [Zarządzanie uprawnieniami usługi Azure Eksplorator danych Database](https://docs.microsoft.com/azure/data-explorer/manage-database-permissions).
 
 ## <a name="alter-database-retention-policy"></a>Zmień zasady przechowywania bazy danych
 Ustawia zasady przechowywania z 10-dniowym okresem usuwania nietrwałego.
@@ -50,7 +50,7 @@ Ustawia zasady przechowywania z 10-dniowym okresem usuwania nietrwałego.
 ```csharp
 var tenantId = "xxxxxxxx-xxxxx-xxxx-xxxx-xxxxxxxxx";//Directory (tenant) ID
 var clientId = "xxxxxxxx-xxxxx-xxxx-xxxx-xxxxxxxxx";//Application ID
-var clientSecret = "xxxxxxxxxxxxxx";//Client Secret
+var clientSecret = "xxxxxxxxxxxxxx";//Client secret
 var subscriptionId = "xxxxxxxx-xxxxx-xxxx-xxxx-xxxxxxxxx";
 var authenticationContext = new AuthenticationContext($"https://login.windows.net/{tenantId}");
 var credential = new ClientCredential(clientId, clientSecret);
@@ -64,19 +64,19 @@ var kustoManagementClient = new KustoManagementClient(credentials)
 };
 
 var resourceGroupName = "testrg";
-//The cluster and database that are created as part of the Prerequisites
+//The cluster and database that are created as part of the prerequisites
 var clusterName = "mykustocluster";
 var databaseName = "mykustodatabase";
 await kustoManagementClient.Databases.UpdateAsync(resourceGroupName, clusterName, databaseName, new DatabaseUpdate(softDeletePeriod: TimeSpan.FromDays(10)));
 ```
 
 ## <a name="alter-database-cache-policy"></a>Zmień zasady pamięci podręcznej bazy danych
-Ustawia zasady pamięci podręcznej dla bazy danych, w której będą znajdować się dane z ostatnich pięciu dni w klastrze.
+Ustawia zasady pamięci podręcznej dla bazy danych. Dane z ostatnich pięciu dni będą znajdować się na dysku SSD klastra.
 
 ```csharp
 var tenantId = "xxxxxxxx-xxxxx-xxxx-xxxx-xxxxxxxxx";//Directory (tenant) ID
 var clientId = "xxxxxxxx-xxxxx-xxxx-xxxx-xxxxxxxxx";//Application ID
-var clientSecret = "xxxxxxxxxxxxxx";//Client Secret
+var clientSecret = "xxxxxxxxxxxxxx";//Client secret
 var subscriptionId = "xxxxxxxx-xxxxx-xxxx-xxxx-xxxxxxxxx";
 var authenticationContext = new AuthenticationContext($"https://login.windows.net/{tenantId}");
 var credential = new ClientCredential(clientId, clientSecret);
@@ -90,21 +90,21 @@ var kustoManagementClient = new KustoManagementClient(credentials)
 };
 
 var resourceGroupName = "testrg";
-//The cluster and database that are created as part of the Prerequisites
+//The cluster and database that are created as part of the prerequisites
 var clusterName = "mykustocluster";
 var databaseName = "mykustodatabase";
 await kustoManagementClient.Databases.UpdateAsync(resourceGroupName, clusterName, databaseName, new DatabaseUpdate(hotCachePeriod: TimeSpan.FromDays(5)));
 ```
 
 ## <a name="alter-table-cache-policy"></a>Zmień zasady pamięci podręcznej tabel
-Ustawia zasady pamięci podręcznej dla tabeli, w której będą znajdować się dane z ostatnich pięciu dni.
+Ustawia zasady pamięci podręcznej dla tabeli. Dane z ostatnich pięciu dni będą znajdować się na dysku SSD klastra.
 
 ```csharp
 var kustoUri = "https://<ClusterName>.<Region>.kusto.windows.net:443/";
 var databaseName = "<DatabaseName>";
 var tenantId = "xxxxxxxx-xxxxx-xxxx-xxxx-xxxxxxxxx";//Directory (tenant) ID
 var clientId = "xxxxxxxx-xxxxx-xxxx-xxxx-xxxxxxxxx";//Application ID
-var clientSecret = "xxxxxxxxxxxxxx";//Client Secret
+var clientSecret = "xxxxxxxxxxxxxx";//Client secret
 var tableName = "<TableName>"
 
 var kustoConnectionStringBuilder =
@@ -128,8 +128,8 @@ using (var kustoClient = KustoClientFactory.CreateCslAdminProvider(kustoConnecti
 }
 ```
 
-## <a name="add-a-new-principal-for-database"></a>Dodawanie nowego podmiotu zabezpieczeń dla bazy danych
-Dodaj nową aplikację usługi Azure AD jako podmiot zabezpieczeń dla bazy danych
+## <a name="add-a-new-principal-for-the-database"></a>Dodawanie nowego podmiotu zabezpieczeń dla bazy danych
+Dodaje nową aplikację usługi Azure AD jako podmiot zabezpieczeń dla bazy danych.
 
 ```csharp
 var tenantId = "xxxxxxxx-xxxxx-xxxx-xxxx-xxxxxxxxx";//Directory (tenant) ID
@@ -149,7 +149,7 @@ var kustoManagementClient = new KustoManagementClient(credentials)
 };
 
 var resourceGroupName = "testrg";
-//The cluster and database that are created as part of the Prerequisites
+//The cluster and database that are created as part of the prerequisites
 var clusterName = "mykustocluster";
 var databaseName = "mykustodatabase";
 await kustoManagementClient.Databases.AddPrincipalsAsync(resourceGroupName, clusterName, databaseName,

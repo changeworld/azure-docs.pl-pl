@@ -13,15 +13,15 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 02/16/2017
 ms.author: genli
-ms.openlocfilehash: faa15e9cf6288bcd4014cbc03dcf9d82a2047bde
-ms.sourcegitcommit: c79aa93d87d4db04ecc4e3eb68a75b349448cd17
+ms.openlocfilehash: 1b91a39e1297d8952da67a4f8d3b8568cefe04ce
+ms.sourcegitcommit: 6c2c97445f5d44c5b5974a5beb51a8733b0c2be7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71088375"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73620559"
 ---
 # <a name="troubleshoot-a-linux-vm-by-attaching-the-os-disk-to-a-recovery-vm-with-the-azure-cli"></a>Rozwiązywanie problemów z maszyną wirtualną z systemem Linux przez dołączenie dysku systemu operacyjnego do maszyny wirtualnej odzyskiwania przy użyciu interfejsu wiersza polecenia Azure
-Jeśli maszyna wirtualna z systemem Linux napotyka błąd rozruchu lub dysku, może być konieczne wykonanie kroków rozwiązywania problemów na wirtualnym dysku twardym. Typowym przykładem może być nieprawidłowy wpis w `/etc/fstab` programie, który uniemożliwia pomyślne uruchomienie maszyny wirtualnej. W tym artykule szczegółowo opisano sposób łączenia wirtualnego dysku twardego z inną maszyną wirtualną z systemem Linux przy użyciu interfejsu wiersza polecenia platformy Azure w celu usunięcia błędów, a następnie ponownego utworzenia oryginalnej maszyny wirtualnej. 
+Jeśli maszyna wirtualna z systemem Linux napotyka błąd rozruchu lub dysku, może być konieczne wykonanie kroków rozwiązywania problemów na wirtualnym dysku twardym. Typowym przykładem może być nieprawidłowy wpis w `/etc/fstab`, który uniemożliwia pomyślne uruchomienie maszyny wirtualnej. W tym artykule szczegółowo opisano sposób łączenia wirtualnego dysku twardego z inną maszyną wirtualną z systemem Linux przy użyciu interfejsu wiersza polecenia platformy Azure w celu usunięcia błędów, a następnie ponownego utworzenia oryginalnej maszyny wirtualnej. 
 
 ## <a name="recovery-process-overview"></a>Omówienie procesu odzyskiwania
 Proces rozwiązywania problemów jest następujący:
@@ -44,17 +44,17 @@ W poniższych przykładach Zastąp nazwy parametrów własnymi wartościami, tak
 ## <a name="determine-boot-issues"></a>Określanie problemów z rozruchem
 Sprawdź dane wyjściowe seryjnej, aby określić, dlaczego nie można prawidłowo uruchomić maszyny wirtualnej. Typowym przykładem jest nieprawidłowy wpis w `/etc/fstab`lub źródłowy wirtualny dysk twardy, który jest usuwany lub przenoszony.
 
-Pobierz dzienniki rozruchowe za pomocą [AZ VM Boot-Diagnostics Get-Boot-Log](/cli/azure/vm/boot-diagnostics). Poniższy przykład pobiera dane wyjściowe seryjne z maszyny wirtualnej o `myVM` nazwie w grupie zasobów o `myResourceGroup`nazwie:
+Pobierz dzienniki rozruchowe za pomocą [AZ VM Boot-Diagnostics Get-Boot-Log](/cli/azure/vm/boot-diagnostics). Poniższy przykład pobiera dane wyjściowe seryjne z maszyny wirtualnej o nazwie `myVM` w grupie zasobów o nazwie `myResourceGroup`:
 
 ```azurecli
 az vm boot-diagnostics get-boot-log --resource-group myResourceGroup --name myVM
 ```
 
-Przejrzyj dane wyjściowe seryjnej, aby określić dlaczego rozruch maszyny wirtualnej kończy się niepowodzeniem. Jeśli dane wyjściowe seryjnej nie zapewniają żadnych wskazań, może być konieczne przejrzenie plików dziennika `/var/log` w programie po powiązaniu wirtualnego dysku twardego z maszyną wirtualną rozwiązywania problemów.
+Przejrzyj dane wyjściowe seryjnej, aby określić dlaczego rozruch maszyny wirtualnej kończy się niepowodzeniem. Jeśli dane wyjściowe seryjnej nie zapewniają żadnych wskazań, może być konieczne przejrzenie plików dziennika w `/var/log` po nawiązaniu wirtualnego dysku twardego z maszyną wirtualną rozwiązywania problemów.
 
 ## <a name="stop-the-vm"></a>Zatrzymywanie maszyny wirtualnej
 
-Poniższy przykład powoduje zatrzymanie maszyny wirtualnej o `myVM` nazwie z grupy zasobów o `myResourceGroup`nazwie:
+Poniższy przykład powoduje zatrzymanie maszyny wirtualnej o nazwie `myVM` z grupy zasobów o nazwie `myResourceGroup`:
 
 ```azurecli
 az vm stop --resource-group MyResourceGroup --name MyVm
@@ -72,7 +72,7 @@ az snapshot create --resource-group myResourceGroupDisk --source "$osdiskid" --n
 ```
 ## <a name="create-a-disk-from-the-snapshot"></a>Utwórz dysk na podstawie migawki
 
-Ten skrypt tworzy dysk zarządzany o nazwie `myOSDisk` z migawki o nazwie. `mySnapshot`  
+Ten skrypt tworzy dysk zarządzany o nazwie `myOSDisk` z migawki o nazwie `mySnapshot`.  
 
 ```azurecli
 #Provide the name of your resource group
@@ -105,14 +105,14 @@ az disk create --resource-group $resourceGroup --name $osDisk --sku $storageType
 
 ```
 
-Jeśli grupa zasobów i migawka źródłowa nie znajdują się w tym samym regionie, podczas uruchamiania `az disk create`zostanie wyświetlony komunikat o błędzie "nie można odnaleźć zasobu". W takim przypadku należy określić `--location <region>` , aby utworzyć dysk w tym samym regionie co migawka źródłowa.
+Jeśli grupa zasobów i migawka źródłowa nie znajdują się w tym samym regionie, podczas uruchamiania `az disk create`zostanie wyświetlony komunikat o błędzie "nie można odnaleźć zasobu". W takim przypadku należy określić `--location <region>`, aby utworzyć dysk w tym samym regionie co migawka źródłowa.
 
 Teraz masz kopię oryginalnego dysku systemu operacyjnego. Nowy dysk można zainstalować na innej maszynie wirtualnej z systemem Windows w celu rozwiązywania problemów.
 
 ## <a name="attach-the-new-virtual-hard-disk-to-another-vm"></a>Dołącz nowy wirtualny dysk twardy do innej maszyny wirtualnej
 W następnych kilku krokach do rozwiązywania problemów służy inna maszyna wirtualna. Podłącz dysk do tej maszyny wirtualnej rozwiązywania problemów, aby przeglądać i edytować zawartość tego dysku. Ten proces umożliwia poprawienie wszystkich błędów konfiguracji lub przejrzenie dodatkowych plików dziennika aplikacji lub systemu.
 
-Ten skrypt dołącza dysk `myNewOSDisk` do maszyny wirtualnej: `MyTroubleshootVM`
+Ten skrypt dołącza `myNewOSDisk` dysku do `MyTroubleshootVM`maszyny wirtualnej:
 
 ```azurecli
 # Get ID of the OS disk that you just created.
@@ -124,9 +124,9 @@ az vm disk attach --disk $diskId --resource-group MyResourceGroup --size-gb 128 
 ## <a name="mount-the-attached-data-disk"></a>Instalowanie dołączonego dysku z danymi
 
 > [!NOTE]
-> W poniższych przykładach szczegółowo opisano kroki wymagane na maszynie wirtualnej Ubuntu. Jeśli używasz innego dystrybucji systemu Linux, takiego jak Red Hat Enterprise Linux lub SUSE, lokalizacje i `mount` polecenia w pliku dziennika mogą być nieco inne. Zapoznaj się z dokumentacją dotyczącą określonych dystrybucji, aby uzyskać odpowiednie zmiany w poleceniach.
+> W poniższych przykładach szczegółowo opisano kroki wymagane na maszynie wirtualnej Ubuntu. Jeśli używasz innego dystrybucji systemu Linux, takiego jak Red Hat Enterprise Linux lub SUSE, lokalizacje plików dziennika i polecenia `mount` mogą być nieco inne. Zapoznaj się z dokumentacją dotyczącą określonych dystrybucji, aby uzyskać odpowiednie zmiany w poleceniach.
 
-1. Użyj odpowiednich poświadczeń protokołu SSH do rozwiązywania problemów z maszyną wirtualną. Jeśli ten dysk jest pierwszym dyskiem danych dołączonym do maszyny wirtualnej rozwiązywania problemów, prawdopodobnie dysk jest `/dev/sdc`podłączony do programu. Użyj `dmseg` , aby wyświetlić dołączone dyski:
+1. Użyj odpowiednich poświadczeń protokołu SSH do rozwiązywania problemów z maszyną wirtualną. Jeśli ten dysk jest pierwszym dyskiem danych dołączonym do maszyny wirtualnej rozwiązywania problemów, dysk jest prawdopodobnie podłączony do `/dev/sdc`. Użyj `dmesg`, aby wyświetlić dołączone dyski:
 
     ```bash
     dmesg | grep SCSI
@@ -142,7 +142,7 @@ az vm disk attach --disk $diskId --resource-group MyResourceGroup --size-gb 128 
     [ 1828.162306] sd 5:0:0:0: [sdc] Attached SCSI disk
     ```
 
-    W poprzednim przykładzie dysk systemu operacyjnego jest na `/dev/sda` dysku, a dysk tymczasowy podany dla każdej maszyny wirtualnej `/dev/sdb`ma wartość. Jeśli masz wiele dysków danych, powinny one znajdować się `/dev/sdd`w `/dev/sde`, i tak dalej.
+    W poprzednim przykładzie dysk systemu operacyjnego jest w `/dev/sda`, a dysk tymczasowy podany dla każdej maszyny wirtualnej jest w `/dev/sdb`. Jeśli masz wiele dysków danych, powinny one znajdować się w `/dev/sdd`, `/dev/sde`i tak dalej.
 
 2. Utwórz katalog, aby zainstalować istniejący wirtualny dysk twardy. Poniższy przykład tworzy katalog o nazwie `troubleshootingdisk`:
 
@@ -157,7 +157,7 @@ az vm disk attach --disk $diskId --resource-group MyResourceGroup --size-gb 128 
     ```
 
     > [!NOTE]
-    > Najlepszym rozwiązaniem jest zainstalowanie dysków z danymi na maszynach wirtualnych na platformie Azure przy użyciu uniwersalnego identyfikatora UUID dla wirtualnego dysku twardego. W przypadku tego krótkiego scenariusza rozwiązywania problemów zainstalowanie wirtualnego dysku twardego przy użyciu identyfikatora UUID nie jest konieczne. Jednak w normalnych warunkach Edycja `/etc/fstab` w celu zainstalowania wirtualnych dysków twardych przy użyciu nazwy urządzenia zamiast identyfikatora UUID może spowodować niepowodzenie rozruchu maszyny wirtualnej.
+    > Najlepszym rozwiązaniem jest zainstalowanie dysków z danymi na maszynach wirtualnych na platformie Azure przy użyciu uniwersalnego identyfikatora UUID dla wirtualnego dysku twardego. W przypadku tego krótkiego scenariusza rozwiązywania problemów zainstalowanie wirtualnego dysku twardego przy użyciu identyfikatora UUID nie jest konieczne. Jednak w normalnych warunkach edytowanie `/etc/fstab` instalacji wirtualnych dysków twardych przy użyciu nazwy urządzenia zamiast identyfikatora UUID może spowodować niepowodzenie rozruchu maszyny wirtualnej.
 
 
 ## <a name="fix-issues-on-the-new-os-disk"></a>Rozwiązywanie problemów z nowym dyskiem systemu operacyjnego
@@ -189,7 +189,7 @@ Po rozwiązaniu problemów należy odinstalować i odłączyć istniejący wirtu
 
 Do wymiany dysków systemu operacyjnego można użyć interfejsu wiersza polecenia platformy Azure. Nie trzeba usuwać ani tworzyć ponownie maszyny wirtualnej.
 
-Ten przykład powoduje zatrzymanie maszyny wirtualnej `myVM` o nazwie i przypisanie dysku `myNewOSDisk` o nazwie jako nowego dysku systemu operacyjnego.
+Ten przykład powoduje zatrzymanie maszyny wirtualnej o nazwie `myVM` i przypisanie dysku o nazwie `myNewOSDisk` jako nowego dysku systemu operacyjnego.
 
 ```azurecli
 # Stop the affected VM

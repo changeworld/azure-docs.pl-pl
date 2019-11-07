@@ -6,13 +6,13 @@ ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
-ms.date: 04/22/2019
-ms.openlocfilehash: f80486758152c002762bbddd6ae97a2ce9468ccf
-ms.sourcegitcommit: 3486e2d4eb02d06475f26fbdc321e8f5090a7fac
+ms.date: 11/05/2019
+ms.openlocfilehash: e344035f05e192de1779a60fc99a7e0144566654
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/31/2019
-ms.locfileid: "73241516"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73682183"
 ---
 # <a name="script-action-to-install-external-python-packages-for-jupyter-notebooks-in-apache-spark-on-hdinsight"></a>Akcja skryptu służąca do instalowania zewnętrznych pakietów języka Python dla notesów Jupyter w Apache Spark w usłudze HDInsight
 
@@ -30,28 +30,27 @@ Aby uzyskać pełną listę dostępnych pakietów, można wyszukać w [indeksie 
 W tym artykule dowiesz się, jak zainstalować pakiet [TensorFlow](https://www.tensorflow.org/) przy użyciu akcji skryptu w klastrze i użyć go za pośrednictwem notesu Jupyter.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
-Wymagane są następujące elementy:
 
-* Subskrypcja platformy Azure. Zobacz artykuł [Uzyskiwanie bezpłatnej wersji próbnej platformy Azure](https://azure.microsoft.com/documentation/videos/get-azure-free-trial-for-testing-hadoop-in-hdinsight/).
+* Subskrypcja platformy Azure. Zobacz temat [Uzyskiwanie bezpłatnej wersji próbnej platformy Azure](https://azure.microsoft.com/documentation/videos/get-azure-free-trial-for-testing-hadoop-in-hdinsight/).
+
 * Klaster Apache Spark w usłudze HDInsight. Aby uzyskać instrukcje, zobacz [Tworzenie klastra platformy Apache Spark w usłudze Azure HDInsight](apache-spark-jupyter-spark-sql.md).
 
    > [!NOTE]  
    > Jeśli nie masz jeszcze klastra Spark w usłudze HDInsight w systemie Linux, możesz uruchamiać akcje skryptu podczas tworzenia klastra. Zapoznaj się z dokumentacją dotyczącą [korzystania z niestandardowych akcji skryptu](https://docs.microsoft.com/azure/hdinsight/hdinsight-hadoop-customize-cluster-linux).
-   
+
 ## <a name="support-for-open-source-software-used-on-hdinsight-clusters"></a>Obsługa oprogramowania Open Source używanego w klastrach usługi HDInsight
 
-Usługa Microsoft Azure HDInsight używa ekosystemu technologii typu "open source" utworzonych wokół Apache Hadoop. Microsoft Azure zapewnia ogólny poziom wsparcia dla technologii typu open source. Aby uzyskać więcej informacji, zobacz sekcję **zakres pomocy technicznej** w [witrynie sieci Web pomocy technicznej dotyczącej platformy Azure](https://azure.microsoft.com/support/faq/). Usługa HDInsight zapewnia dodatkowy poziom wsparcia dla wbudowanych składników programu.
+Usługa Microsoft Azure HDInsight używa ekosystemu technologii typu "open source" utworzonych wokół Apache Hadoop. Microsoft Azure zapewnia ogólny poziom wsparcia dla technologii typu open source. Aby uzyskać więcej informacji, zobacz [witrynę sieci Web pomocy technicznej dla systemu Azure](https://azure.microsoft.com/support/faq/). Usługa HDInsight zapewnia dodatkowy poziom wsparcia dla wbudowanych składników programu.
 
 Istnieją dwa typy składników typu "open source", które są dostępne w usłudze HDInsight:
 
 * **Składniki wbudowane** — te składniki są wstępnie zainstalowane w klastrach usługi HDInsight i zapewniają podstawowe funkcje klastra. Na przykład Apache Hadoopj ResourceManager, Apache Hive języka zapytań (HiveQL) i biblioteki Mahout należy do tej kategorii. Pełna lista składników klastra jest dostępna w temacie [co nowego w wersjach Apache Hadoop klastra dostarczonych przez usługi HDInsight](https://docs.microsoft.com/azure/hdinsight/hdinsight-component-versioning).
 * **Składniki niestandardowe** — użytkownik, który jest użytkownikiem klastra, może instalować lub używać w obciążeniu dowolny składnik dostępny w społeczności lub utworzony przez użytkownika.
 
-> [!IMPORTANT]   
+> [!IMPORTANT]
 > Składniki dostarczane z klastrem usługi HDInsight są w pełni obsługiwane. Pomoc techniczna firmy Microsoft pomaga wyizolować i rozwiązać problemy związane z tymi składnikami.
 >
 > Składniki niestandardowe otrzymują komercyjnie uzasadnioną pomoc techniczną, która ułatwia dalsze Rozwiązywanie problemu. Pomoc techniczna firmy Microsoft może być w stanie rozwiązać ten problem lub zażądać dostępnych kanałów dla technologii open source, w których znajduje się Szczegółowa wiedza dotycząca tej technologii. Na przykład istnieje wiele witryn społeczności, które mogą być używane, takich jak: [forum MSDN dla usługi HDInsight](https://social.msdn.microsoft.com/Forums/azure/home?forum=hdinsight), [https://stackoverflow.com](https://stackoverflow.com). Również projekty Apache mają witryny projektu na [https://apache.org](https://apache.org), na przykład: [Hadoop](https://hadoop.apache.org/).
-
 
 ## <a name="use-external-packages-with-jupyter-notebooks"></a>Korzystanie z zewnętrznych pakietów z notesami Jupyter
 
@@ -62,7 +61,6 @@ Istnieją dwa typy składników typu "open source", które są dostępne w usłu
 3. Wybierz pozycję **+ Prześlij nowy**.
 
 4. Wprowadź następujące wartości w oknie **Akcja przesyłania skryptu** :  
-
 
     |Parametr | Wartość |
     |---|---|
@@ -75,7 +73,7 @@ Istnieją dwa typy składników typu "open source", które są dostępne w usłu
 
     ```bash
     #!/usr/bin/env bash
-    /usr/bin/anaconda/bin/conda install --yes tensorflow
+    /usr/bin/anaconda/bin/conda install -c conda-forge tensorflow
     ```
 
 5. Wybierz pozycję **Utwórz**.  Zapoznaj się z dokumentacją dotyczącą [korzystania z niestandardowych akcji skryptu](../hdinsight-hadoop-customize-cluster-linux.md).
@@ -103,19 +101,23 @@ Istnieją dwa typy składników typu "open source", które są dostępne w usłu
 > W klastrze są zainstalowane dwie instalacje języka Python. Platforma Spark będzie używać instalacji języka Python Anaconda znajdującej się w `/usr/bin/anaconda/bin` i domyślnie będzie środowiskiem Python 2,7. Aby użyć języka Python 3. x i zainstalować pakiety w jądrze PySpark3, użyj ścieżki do pliku wykonywalnego `conda` dla tego środowiska i użyj parametru `-n` do określenia środowiska. Na przykład polecenie `/usr/bin/anaconda/envs/py35/bin/conda install -c conda-forge ggplot -n py35`instaluje pakiet `ggplot` do środowiska Python 3,5 przy użyciu kanału `conda-forge`.
 
 ## <a name="seealso"></a>Zobacz też
+
 * [Przegląd: platforma Apache Spark w usłudze Azure HDInsight](apache-spark-overview.md)
 
 ### <a name="scenarios"></a>Scenariusze
+
 * [Apache Spark z usługą BI: wykonywanie interaktywnej analizy danych przy użyciu platformy Spark w usłudze HDInsight przy użyciu narzędzi analizy biznesowej](apache-spark-use-bi-tools.md)
 * [Apache Spark z Machine Learning: korzystanie z platformy Spark w usłudze HDInsight do analizowania temperatury kompilacji przy użyciu danych HVAC](apache-spark-ipython-notebook-machine-learning.md)
 * [Apache Spark z Machine Learning: korzystanie z platformy Spark w usłudze HDInsight do przewidywania wyników inspekcji żywności](apache-spark-machine-learning-mllib-ipython.md)
 * [Analiza dzienników witryny sieci Web przy użyciu Apache Spark w usłudze HDInsight](apache-spark-custom-library-website-log-analysis.md)
 
 ### <a name="create-and-run-applications"></a>Tworzenie i uruchamianie aplikacji
+
 * [Tworzenie autonomicznych aplikacji przy użyciu języka Scala](apache-spark-create-standalone-application.md)
 * [Zdalne uruchamianie zadań w klastrze Apache Spark przy użyciu programu Apache Livy](apache-spark-livy-rest-interface.md)
 
 ### <a name="tools-and-extensions"></a>Narzędzia i rozszerzenia
+
 * [Korzystanie z zewnętrznych pakietów z notesami Jupyter w klastrach Apache Spark w usłudze HDInsight](apache-spark-jupyter-notebook-use-external-packages.md)
 * [Tworzenie i przesyłanie aplikacji Spark Scala przy użyciu dodatku HDInsight Tools Plugin for IntelliJ IDEA](apache-spark-intellij-tool-plugin.md)
 * [Użyj wtyczki narzędzi HDInsight do IntelliJ pomysł, aby debugować aplikacje Apache Spark zdalnie](apache-spark-intellij-tool-plugin-debug-jobs-remotely.md)
@@ -124,5 +126,6 @@ Istnieją dwa typy składników typu "open source", które są dostępne w usłu
 * [Instalacja oprogramowania Jupyter na komputerze i nawiązywanie połączenia z klastrem Spark w usłudze HDInsight](apache-spark-jupyter-notebook-install-locally.md)
 
 ### <a name="manage-resources"></a>Zarządzanie zasobami
+
 * [Zarządzanie zasobami klastra Apache Spark w usłudze Azure HDInsight](apache-spark-resource-manager.md)
 * [Śledzenie i debugowanie zadań uruchamianych w klastrze Apache Spark w usłudze HDInsight](apache-spark-job-debugging.md)

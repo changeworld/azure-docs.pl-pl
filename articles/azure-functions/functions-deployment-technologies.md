@@ -1,21 +1,19 @@
 ---
 title: Technologie wdrażania w Azure Functions | Microsoft Docs
 description: Poznaj różne sposoby wdrażania kodu do Azure Functions.
-services: functions
-documentationcenter: .net
 author: ColbyTresness
-manager: dariac
+manager: gwallace
 ms.service: azure-functions
 ms.custom: vs-azure
 ms.topic: conceptual
 ms.date: 04/25/2019
 ms.author: cotresne
-ms.openlocfilehash: 4d32a652219d48a2cc101259ea6b76fbfa910821
-ms.sourcegitcommit: 9a4296c56beca63430fcc8f92e453b2ab068cc62
+ms.openlocfilehash: ce8287626b390d6eac4a3461d928c24f515f4023
+ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/20/2019
-ms.locfileid: "72674959"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73576122"
 ---
 # <a name="deployment-technologies-in-azure-functions"></a>Technologie wdrażania w Azure Functions
 
@@ -31,7 +29,7 @@ Azure Functions obsługuje Międzyplatformowe programowanie lokalne i hosting w 
 
 Każdy plan ma inne zachowania. Nie wszystkie technologie wdrażania są dostępne dla każdej wersji Azure Functions. Na poniższym wykresie przedstawiono, które technologie wdrażania są obsługiwane dla każdej kombinacji systemu operacyjnego i planu hostingu:
 
-| Technologia wdrażania | Użycie systemu Windows | Windows Premium (wersja zapoznawcza) | Dedykowane systemu Windows  | Użycie systemu Linux | Linux Premium (wersja zapoznawcza) | System Linux — dedykowany |
+| Technologia wdrażania | Użycie systemu Windows | Windows Premium | Dedykowane systemu Windows  | Użycie systemu Linux | System Linux Premium | System Linux — dedykowany |
 |-----------------------|:-------------------:|:-------------------------:|:------------------:|:---------------------------:|:-------------:|:---------------:|
 | Zewnętrzny adres URL pakietu<sup>1</sup> |✔|✔|✔|✔|✔|✔|
 | Wdróż plik zip |✔|✔|✔|✔|✔|✔|
@@ -86,7 +84,7 @@ Gdy aplikacje są kompilowane zdalnie w systemie Linux, są one [uruchamiane z p
 
 Aplikacje funkcji systemu Linux działające w ramach planu zużycia nie mają witryny SCM/kudu, która ogranicza opcje wdrażania. Jednak aplikacje funkcji w systemie Linux działające w ramach planu zużycia obsługują kompilacje zdalne.
 
-##### <a name="dedicated-and-premium-preview-plans"></a>Plany dedykowane i Premium (wersja zapoznawcza)
+##### <a name="dedicated-and-premium-plans"></a>Plany dedykowane i Premium
 
 Aplikacje funkcji działające w systemie Linux w ramach [dedykowanego planu (App Service)](functions-scale.md#app-service-plan) i [planu Premium](functions-scale.md#premium-plan) mają również ograniczoną witrynę SCM/kudu.
 
@@ -179,17 +177,17 @@ W edytorze opartym na portalu można bezpośrednio edytować pliki znajdujące s
 >
 >* [Visual Studio Code](functions-create-first-function-vs-code.md)
 >* [Azure Functions Core Tools (wiersz polecenia)](functions-run-local.md)
->* [Visual Studio](functions-create-your-first-function-visual-studio.md)
+>* [Program Visual Studio](functions-create-your-first-function-visual-studio.md)
 
 W poniższej tabeli przedstawiono systemy operacyjne i języki obsługujące edycję portalu:
 
-| | Użycie systemu Windows | Windows Premium (wersja zapoznawcza) | Dedykowane systemu Windows | Użycie systemu Linux | Linux Premium (wersja zapoznawcza)| System Linux — dedykowany |
-|-|:-----------------: |:-------------------------:|:-----------------:|:---------------------------:|:---------------:|:---------------:|
+| | Użycie systemu Windows | Windows Premium | Dedykowane systemu Windows | Użycie systemu Linux | System Linux Premium | System Linux — dedykowany |
+|-|:-----------------: |:----------------:|:-----------------:|:-----------------:|:-------------:|:---------------:|
 | C# | | | | | |
-| C#Napisy |✔|✔|✔| |✔<sup> \*</sup> |✔<sup> \*</sup>|
+| C#Napisy |✔|✔|✔| |✔<sup>\*</sup> |✔<sup>\*</sup>|
 | F# | | | | | | |
 | Java | | | | | | |
-| JavaScript (Node.js) |✔|✔|✔| |✔<sup> \*</sup>|✔<sup> \*</sup>|
+| JavaScript (Node.js) |✔|✔|✔| |✔<sup>\*</sup>|✔<sup>\*</sup>|
 | Python (wersja zapoznawcza) | | | | | | |
 | PowerShell (wersja zapoznawcza) |✔|✔|✔| | | |
 | TypeScript (Node. js) | | | | | | |

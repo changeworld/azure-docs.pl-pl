@@ -1,5 +1,5 @@
 ---
-title: Wdrażanie maszyny wirtualnej z systemem Windows 7 na pulpicie wirtualnym systemu Windows — Azure
+title: Wdrażanie pulpitu wirtualnego systemu Windows w systemie Windows 7 — Azure
 description: Jak skonfigurować i wdrożyć maszynę wirtualną z systemem Windows 7 na pulpicie wirtualnym systemu Windows.
 services: virtual-desktop
 author: Heidilohr
@@ -7,12 +7,12 @@ ms.service: virtual-desktop
 ms.topic: conceptual
 ms.date: 10/03/2019
 ms.author: helohr
-ms.openlocfilehash: 3a6fb67ce531ed8cc028d2d0a8dfc3022544efe0
-ms.sourcegitcommit: 4f7dce56b6e3e3c901ce91115e0c8b7aab26fb72
+ms.openlocfilehash: 90b871c2b75f7ed40c290231ef822258c6b4e6d4
+ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/04/2019
-ms.locfileid: "71947568"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73606867"
 ---
 # <a name="deploy-a-windows-7-virtual-machine-on-windows-virtual-desktop"></a>Wdrażanie maszyny wirtualnej z systemem Windows 7 w usłudze Windows Virtual Desktop
 
@@ -35,7 +35,7 @@ Aby skonfigurować MASZYNę wirtualną z systemem Windows 7 na pulpicie wirtualn
 5. Przejdź do Windows Update na maszynie wirtualnej.
 6. Zainstaluj wszystkie aktualizacje systemu Windows w ważnej kategorii.
 7. Zainstaluj wszystkie aktualizacje systemu Windows w opcjonalnej kategorii (z wyjątkiem pakietów językowych). Spowoduje to zainstalowanie Remote Desktop Protocol 8,0 Update ([KB2592687](https://www.microsoft.com/download/details.aspx?id=35393)), które należy wykonać w celu wykonania tych instrukcji.
-8. Otwórz Edytor lokalnych zasad grupy i przejdź do **konfiguracji komputera** > **Szablony administracyjne** > **składniki systemu Windows** > **usługi pulpitu zdalnego** > **pulpit zdalny Host sesji** **środowisko sesji zdalnej** > .
+8. Otwórz Edytor lokalnych zasad grupy i przejdź do **konfiguracji komputera** > **Szablony administracyjne** > **składniki systemu Windows** > **usługi pulpitu zdalnego > pulpit zdalny** **Host sesji**  > **środowisko sesji zdalnej**.
 9. Włącz zasady Remote Desktop Protocol 8,0.
 10. Uruchom ponownie maszynę wirtualną, uruchamiając następujące polecenie:
     

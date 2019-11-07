@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 10/16/2017
 ms.author: glenga
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: ad7bdfd3abc4d3b4b672f5471ea826d4cef0f3fc
-ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
+ms.openlocfilehash: 87071b8e1102067110baae70c424aa74a5e0702c
+ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/18/2019
-ms.locfileid: "72596881"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73570822"
 ---
 # <a name="optimize-the-performance-and-reliability-of-azure-functions"></a>Optymalizacja wydajności i niezawodności Azure Functions
 
@@ -37,7 +37,7 @@ Jeśli to możliwe, Refaktoryzacja duże funkcje do mniejszych zestawów funkcji
 
 [Durable Functions](durable/durable-functions-overview.md) i [Azure Logic Apps](../logic-apps/logic-apps-overview.md) są kompilowane do zarządzania przejściami stanu i komunikacją między wieloma funkcjami.
 
-Jeśli nie korzystasz z Durable Functions lub Logic Apps do integracji z wieloma funkcjami, najlepszym rozwiązaniem jest użycie kolejek usługi Storage do komunikacji między funkcjami.  Głównym powodem jest to, że kolejki magazynu są tańsze i łatwiejsze do aprowizacji. 
+Jeśli nie korzystasz z Durable Functions lub Logic Apps do integracji z wieloma funkcjami, najlepszym rozwiązaniem jest użycie kolejek usługi Storage w celu komunikacji między funkcjami. Głównym powodem jest to, że kolejki magazynu są tańsze i łatwiejsze do aprowizacji niż inne opcje magazynu. 
 
 Rozmiar poszczególnych komunikatów w kolejce magazynu jest ograniczony do 64 KB. Jeśli konieczne jest przekazanie większych komunikatów między funkcjami, kolejka Azure Service Bus może służyć do obsługi rozmiaru wiadomości do 256 KB w warstwie Standardowa i do 1 MB w warstwie Premium.
 
@@ -50,7 +50,7 @@ Centra zdarzeń są przydatne do obsługi komunikacji dużej ilości.
 
 Funkcje powinny być bezstanowe i idempotentne, jeśli jest to możliwe. Skojarz wszystkie wymagane informacje o stanie z danymi. Na przykład przetworzone zamówienie prawdopodobnie ma skojarzony element członkowski `state`. Funkcja może przetwarzać zamówienie na podstawie tego stanu, gdy sama funkcja pozostaje bez zmian. 
 
-Funkcje idempotentne są szczególnie zalecane z wyzwalaczami czasomierza. Na przykład, jeśli masz coś, co bezwzględnie musi być uruchamiane raz dziennie, napisz je tak, aby można je było uruchomić w dowolnym momencie dnia z tymi samymi wynikami. Funkcja może wyjść, gdy nie ma pracy przez konkretny dzień. Ponadto jeśli poprzednie uruchomienie nie powiodło się, następne uruchomienie powinno zostać wznowione w miejscu, w którym zostało pozostawione.
+Funkcje idempotentne są szczególnie zalecane z wyzwalaczami czasomierza. Na przykład, jeśli masz coś, co bezwzględnie musi być uruchamiane raz dziennie, napisz je tak, aby można je było uruchamiać w dowolnym momencie dnia z takimi samymi wynikami. Funkcja może wyjść, gdy nie ma pracy przez konkretny dzień. Ponadto jeśli poprzednie uruchomienie nie powiodło się, następne uruchomienie powinno zostać wznowione w miejscu, w którym zostało pozostawione.
 
 
 ### <a name="write-defensive-functions"></a>Zapisz funkcje obronne
@@ -62,7 +62,7 @@ Załóżmy, że funkcja może napotkać wyjątek w dowolnym momencie. Zaprojektu
  
 W zależności od tego, jak skomplikowany jest system, może być: działania usług podrzędnych zachowuje się nieprawidłowo, awaria sieci lub osiągnięto limity przydziału itd. Wszystkie te funkcje mogą mieć wpływ na funkcję w dowolnym momencie. Musisz zaprojektować swoje funkcje, aby można je było przygotować.
 
-Jak reaguje kod, jeśli wystąpi błąd po wstawieniu 5 000 elementów do kolejki w celu przetworzenia? Śledź elementy w zestawie, który został ukończony. W przeciwnym razie można je ponownie wstawić później. Może to mieć poważny wpływ na przepływ pracy. 
+Jak reaguje kod, jeśli wystąpi błąd po wstawieniu 5 000 elementów do kolejki w celu przetworzenia? Śledź elementy w zestawie, który został ukończony. W przeciwnym razie można je ponownie wstawić później. Takie podwójne wstawianie może mieć poważny wpływ na przepływ pracy, więc [idempotentne funkcje](functions-idempotent.md). 
 
 Jeśli element kolejki został już przetworzony, zezwól funkcji na wartość No-op.
 
@@ -74,7 +74,7 @@ Istnieje wiele czynników, które mają wpływ na sposób skalowania aplikacji f
 
 ### <a name="share-and-manage-connections"></a>Udostępnianie połączeń i zarządzanie nimi
 
-Zawsze używaj połączeń z zasobami zewnętrznymi, gdy jest to możliwe.  Zobacz [jak zarządzać połączeniami w Azure Functions](./manage-connections.md).
+Używaj ponownie połączeń z zasobami zewnętrznymi, gdy jest to możliwe.  Zobacz [jak zarządzać połączeniami w Azure Functions](./manage-connections.md).
 
 ### <a name="dont-mix-test-and-production-code-in-the-same-function-app"></a>Nie mieszaj kodu testowego i produkcyjnego w tej samej aplikacji funkcji
 
@@ -82,37 +82,29 @@ Działa w ramach zasobów funkcji udział aplikacji. Na przykład pamięć jest 
 
 Należy zachować ostrożność w aplikacjach funkcji produkcyjnych. Pamięć jest średnia dla każdej funkcji w aplikacji.
 
-Jeśli masz przywoływany zestaw współużytkowany w wielu funkcjach platformy .NET, umieść go w wspólnym folderze udostępnionym. Odwołuje się do zestawu za pomocą instrukcji podobnej do poniższego C# przykładu, jeśli używasz skryptów (. CSX): 
+Jeśli masz przywoływany zestaw współużytkowany w wielu funkcjach platformy .NET, umieść go w wspólnym folderze udostępnionym. W przeciwnym razie można przypadkowo wdrożyć wiele wersji tego samego pliku binarnego, które zachowują się inaczej między funkcjami.
 
-    #r "..\Shared\MyAssembly.dll". 
-
-W przeciwnym razie można łatwo przypadkowo wdrożyć wiele wersji testowych tego samego pliku binarnego, które zachowują się inaczej między funkcjami.
-
-Nie używaj pełnego rejestrowania w kodzie produkcyjnym. Ma negatywny wpływ na wydajność.
+Nie używaj pełnego rejestrowania w kodzie produkcyjnym, który ma negatywny wpływ na wydajność.
 
 ### <a name="use-async-code-but-avoid-blocking-calls"></a>Użyj kodu asynchronicznego, ale unikaj blokowania wywołań
 
-Programowanie asynchroniczne jest zalecanym najlepszym rozwiązaniem. Jednak zawsze należy unikać odwoływania się do właściwości `Result` lub wywołania metody `Wait` w wystąpieniu `Task`. Takie podejście może prowadzić do wyczerpania wątków.
+Programowanie asynchroniczne jest zalecanym najlepszym rozwiązaniem. Jednak zawsze należy unikać odwoływania się do właściwości `Result` lub wywoływania metody `Wait` w wystąpieniu `Task`. Takie podejście może prowadzić do wyczerpania wątków.
 
 [!INCLUDE [HTTP client best practices](../../includes/functions-http-client-best-practices.md)]
 
 ### <a name="receive-messages-in-batch-whenever-possible"></a>W miarę możliwości odbieraj komunikaty w usłudze Batch
 
-Niektóre wyzwalacze, takie jak centrum zdarzeń, umożliwiają otrzymywanie wsadowych komunikatów na pojedynczym wywołaniu.  Przetwarzanie wsadowe komunikatów ma znacznie lepszą wydajność.  Maksymalny rozmiar wsadu można skonfigurować w pliku `host.json`, zgodnie z opisem w [dokumentacji dotyczącej pliku host. JSON.](functions-host-json.md)
+Niektóre wyzwalacze, takie jak centrum zdarzeń, umożliwiają otrzymywanie wsadowych komunikatów na pojedynczym wywołaniu.  Przetwarzanie wsadowe komunikatów ma znacznie lepszą wydajność.  Maksymalny rozmiar wsadu można skonfigurować w pliku `host.json`, jak to opisano w [dokumentacji dotyczącej pliku host. JSON.](functions-host-json.md)
 
-W C# przypadku funkcji można zmienić typ na tablicę o jednoznacznie określonym typie.  Na przykład zamiast `EventData sensorEvent` można `EventData[] sensorEvent` podpis metody.  W przypadku innych języków należy jawnie ustawić właściwość Kardynalność w `function.json` na `many`, aby włączyć przetwarzanie wsadowe [jak pokazano poniżej](https://github.com/Azure/azure-webjobs-sdk-templates/blob/df94e19484fea88fc2c68d9f032c9d18d860d5b5/Functions.Templates/Templates/EventHubTrigger-JavaScript/function.json#L10).
+W C# przypadku funkcji można zmienić typ na tablicę o jednoznacznie określonym typie.  Na przykład zamiast `EventData sensorEvent` można `EventData[] sensorEvent`podpis metody.  W przypadku innych języków należy jawnie ustawić właściwość Kardynalność w `function.json`, aby `many` w celu włączenia przetwarzania wsadowego [, jak pokazano poniżej](https://github.com/Azure/azure-webjobs-sdk-templates/blob/df94e19484fea88fc2c68d9f032c9d18d860d5b5/Functions.Templates/Templates/EventHubTrigger-JavaScript/function.json#L10).
 
 ### <a name="configure-host-behaviors-to-better-handle-concurrency"></a>Konfigurowanie zachowań hosta w celu lepszego obsłużenia współbieżności
 
-Plik `host.json` w aplikacji funkcji umożliwia skonfigurowanie zachowań środowiska uruchomieniowego hosta i wyzwalacza.  Oprócz zachowań wsadowych można zarządzać współbieżnością dla wielu wyzwalaczy.  Często dostosowanie wartości w tych opcjach może pomóc każdej skali wystąpienia odpowiednio do potrzeb wywołanych funkcji.
+Plik `host.json` w aplikacji funkcji umożliwia konfigurację środowiska uruchomieniowego hosta i zachowań wyzwalacza.  Oprócz zachowań wsadowych można zarządzać współbieżnością dla wielu wyzwalaczy. Często dostosowanie wartości w tych opcjach może pomóc każdej skali wystąpienia odpowiednio do potrzeb wywołanych funkcji.
 
-Ustawienia w pliku hosts są stosowane dla wszystkich funkcji w aplikacji w ramach *jednego wystąpienia* funkcji. Jeśli na przykład aplikacja funkcji ma 2 funkcje HTTP i współbieżne żądania mają ustawioną wartość 25, żądanie do wyzwalacza HTTP będzie wliczane do współużytkowanych 25 współbieżnych żądań.  Jeśli ta aplikacja funkcji jest skalowana do 10 wystąpień, 2 funkcje byłyby efektywnie zezwalały na 250 współbieżnych żądań (10 wystąpień * 25 współbieżnych żądań na wystąpienie).
+Ustawienia w pliku host. JSON dotyczą wszystkich funkcji w aplikacji w ramach *jednego wystąpienia* funkcji. Jeśli na przykład aplikacja funkcji ma dwie funkcje HTTP i [`maxConcurrentRequests`](functions-bindings-http-webhook.md#hostjson-settings) żądania ustawione na wartość 25, żądanie do wyzwalacza protokołu HTTP będzie wliczane do współużytkowanych 25 współbieżnych żądań.  Gdy aplikacja funkcji jest skalowana do 10 wystąpień, te dwie funkcje skutecznie zezwalają na 250 współbieżnych żądań (10 wystąpień * 25 współbieżnych żądań na wystąpienie). 
 
-**Opcje hosta współbieżności HTTP**
-
-[!INCLUDE [functions-host-json-http](../../includes/functions-host-json-http.md)]
-
-Inne opcje konfiguracji hosta znajdują się [w dokumencie konfiguracji hosta](functions-host-json.md).
+Inne opcje konfiguracji hosta znajdują się w [artykule Konfiguracja pliku host. JSON](functions-host-json.md).
 
 ## <a name="next-steps"></a>Następne kroki
 

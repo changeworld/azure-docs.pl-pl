@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 08/31/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 8ec61a04d6bb7289f12becf8baebae5e47150897
-ms.sourcegitcommit: 4f3f502447ca8ea9b932b8b7402ce557f21ebe5a
+ms.openlocfilehash: c8e4027bd8892ff3bf5c598573b7736aea42953f
+ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71802095"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73602571"
 ---
 # <a name="azure-active-directory-b2c-user-migration"></a>Azure Active Directory B2C: migracja użytkownika
 
@@ -113,11 +113,11 @@ Add-AzureADDirectoryRoleMember -ObjectId $role.ObjectId -RefObjectId $roleMember
 Get-AzureADDirectoryRoleMember -ObjectId $role.ObjectId
 ```
 
-Zmień wartość `$AppId` z **identyfikatorem aplikacji**usługi Azure AD.
+Zmień wartość `$AppId` za pomocą **identyfikatora aplikacji**usługi Azure AD.
 
 ## <a name="step-2-pre-migration-application-sample"></a>Krok 2. przykład aplikacji przed migracją
 
-Przykład kodu sprzed migracji znajduje się w repozytorium GitHub `azure-ad-b2c/user-migration` z obsługą społeczności:
+Przykład kodu sprzed migracji znajduje się w repozytorium `azure-ad-b2c/user-migration` GitHub obsługiwanego przez społeczność:
 
 [Azure-AD-B2C/User-Migration/premigration][UserMigrationSample-code] (GitHub)
 
@@ -125,13 +125,13 @@ Przykład kodu sprzed migracji znajduje się w repozytorium GitHub `azure-ad-b2c
 
 Przykładowa aplikacja używa pliku JSON, który zawiera fikcyjne dane użytkownika. Po pomyślnym uruchomieniu przykładu można zmienić kod w taki sposób, aby korzystał z danych z własnej bazy danych. Można też wyeksportować profil użytkownika do pliku JSON, a następnie skonfigurować aplikację do korzystania z tego pliku.
 
-Aby edytować plik JSON, Otwórz rozwiązanie `AADB2C.UserMigration.sln` programu Visual Studio. W projekcie `AADB2C.UserMigration` Otwórz plik `UsersData.json`.
+Aby edytować plik JSON, Otwórz rozwiązanie `AADB2C.UserMigration.sln` Visual Studio. W projekcie `AADB2C.UserMigration` Otwórz plik `UsersData.json`.
 
 ![Część pliku UsersData. JSON przedstawiająca bloki JSON dwóch użytkowników](media/active-directory-b2c-user-migration/pre-migration-data-file.png)
 
 Jak widać, plik zawiera listę jednostek użytkownika. Każda jednostka użytkownika ma następujące właściwości:
 
-- e-mail
+- email
 - displayName
 - firstName
 - lastName
@@ -162,7 +162,7 @@ W projekcie `AADB2C.UserMigration` Otwórz plik *App. config* . Zastąp następu
 
 Kliknij prawym przyciskiem myszy rozwiązanie `AADB2C.UserMigration`, a następnie Skompiluj ponownie przykład. Jeśli się powiedzie, powinieneś mieć teraz plik wykonywalny `UserMigration.exe` znajdujący się w `AADB2C.UserMigration\bin\Debug\net461`. Aby uruchomić proces migracji, użyj jednego z następujących parametrów wiersza polecenia:
 
-- Aby **migrować użytkowników przy użyciu hasła**, użyj `UserMigration.exe 1` polecenia.
+- Aby **migrować użytkowników przy użyciu hasła**, użyj polecenia `UserMigration.exe 1`.
 
 - Aby **migrować użytkowników przy użyciu hasła losowego**, użyj polecenia `UserMigration.exe 2`. Ta operacja powoduje także utworzenie jednostki tabeli platformy Azure. Później można skonfigurować zasady, aby wywoływać usługę interfejsu API REST. Usługa używa tabeli platformy Azure do śledzenia procesu migracji i zarządzania nim.
 
@@ -177,12 +177,12 @@ Aby sprawdzić poprawność migracji, użyj jednej z następujących dwóch meto
    1. Otwórz **Azure AD B2C**a następnie wybierz pozycję **Użytkownicy**.
    1. W polu wyszukiwania wpisz nazwę wyświetlaną użytkownika, a następnie Wyświetl profil użytkownika.
 
-- Aby pobrać użytkownika przy użyciu adresu e-mail logowania, Użyj tej przykładowej aplikacji:
+- Aby pobrać użytkownika przy użyciu adresu e-mail logowania, użyj przykładowej aplikacji:
 
    1. Uruchom następujące polecenie:
 
       ```Console
-          UserMigration.exe 3 {email address}
+          UserMigration.exe 3 {email address} > UserProfile.json
       ```
 
       > [!TIP]
@@ -236,7 +236,7 @@ Ten opcjonalny krok wymaga zastosowania zasad niestandardowych Azure AD B2C, zgo
 
 W tej sekcji zmienisz zasady, aby sprawdzić stan migracji użytkownika podczas logowania. Jeśli użytkownik nie zmienił hasła, należy zwrócić komunikat o błędzie HTTP 409, który prosi użytkownika o wybranie **zapomnianego hasła?**
 
-Aby śledzić zmianę hasła, należy użyć tabeli platformy Azure. Po uruchomieniu procesu sprzed migracji przy użyciu parametru wiersza polecenia `2` utworzysz jednostkę użytkownika w tabeli platformy Azure. Usługa wykonuje następujące czynności:
+Aby śledzić zmianę hasła, należy użyć tabeli platformy Azure. Po uruchomieniu procesu sprzed migracji z parametrem wiersza polecenia `2`można utworzyć jednostkę użytkownika w tabeli platformy Azure. Usługa wykonuje następujące czynności:
 
 - Podczas logowania zasady Azure AD B2C wywoła usługę RESTful migracji, wysyłając wiadomość e-mail jako dane wejściowe. Usługa wyszukuje adres e-mail w tabeli platformy Azure. Jeśli adres istnieje, usługa zgłasza komunikat o błędzie: *należy zmienić hasło*.
 
@@ -265,7 +265,7 @@ W Eksplorator rozwiązań kliknij prawym przyciskiem myszy `AADB2C.UserMigration
 
 1. W Eksplorator rozwiązań rozwiń węzeł "elementy rozwiązania" i Otwórz plik zasad *TrustFrameworkExtensions. XML* .
 1. Zmień pola `TenantId`, `PublicPolicyUri` i `<TenantId>` z `yourtenant.onmicrosoft.com` na nazwę dzierżawy.
-1. W elemencie `<TechnicalProfile Id="login-NonInteractive">` Zastąp wszystkie wystąpienia `ProxyIdentityExperienceFrameworkAppId` i `IdentityExperienceFrameworkAppId` identyfikatorami aplikacji skonfigurowanymi w temacie [wprowadzenie do zasad niestandardowych][B2C-GetStartedCustom].
+1. W obszarze `<TechnicalProfile Id="login-NonInteractive">` Zastąp wszystkie wystąpienia `ProxyIdentityExperienceFrameworkAppId` i `IdentityExperienceFrameworkAppId` identyfikatorami aplikacji skonfigurowanymi w temacie [wprowadzenie do zasad niestandardowych][B2C-GetStartedCustom].
 1. W węźle `<ClaimsProviders>` znajdź następujący fragment kodu XML. Zmień wartość `ServiceUrl`, aby wskazywała adres URL Azure App Service.
 
     ```XML
@@ -304,9 +304,9 @@ W Eksplorator rozwiązań kliknij prawym przyciskiem myszy `AADB2C.UserMigration
     </ClaimsProvider>
     ```
 
-Poprzedni profil techniczny definiuje jedno zgłoszenie wejściowe: `signInName` (Wyślij jako adres e-mail). W przypadku logowania, to jest wysyłane do punktu końcowego RESTful.
+Poprzedni profil techniczny definiuje jedno z argumentów wejściowych: `signInName` (Wyślij jako adres e-mail). W przypadku logowania, to jest wysyłane do punktu końcowego RESTful.
 
-Po zdefiniowaniu profilu technicznego dla interfejsu API RESTful poinformuj zasady Azure AD B2C, aby wywoływać profil techniczny. Fragment kodu XML zastępuje `SelfAsserted-LocalAccountSignin-Email`, który jest zdefiniowany w zasadach podstawowych. Fragment kodu XML dodaje również `ValidationTechnicalProfile` z ReferenceId wskazujący Twój profil techniczny `LocalAccountUserMigration`.
+Po zdefiniowaniu profilu technicznego dla interfejsu API RESTful poinformuj zasady Azure AD B2C, aby wywoływać profil techniczny. Fragment kodu XML zastępuje `SelfAsserted-LocalAccountSignin-Email`, który jest zdefiniowany w zasadach podstawowych. Fragment kodu XML dodaje również `ValidationTechnicalProfile`z ReferenceId wskazujący `LocalAccountUserMigration`profilu technicznego.
 
 ### <a name="step-44-upload-the-policy-to-your-tenant"></a>Krok 4,4: przekazywanie zasad do dzierżawy
 

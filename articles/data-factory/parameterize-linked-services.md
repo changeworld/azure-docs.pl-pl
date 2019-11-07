@@ -1,5 +1,5 @@
 ---
-title: Sparametryzuj połączone usługi w Azure Data Factory | Microsoft Docs
+title: Sparametryzuj połączone usługi w Azure Data Factory
 description: Dowiedz się, jak Sparametryzuj połączone usługi w Azure Data Factory i przekazywać wartości dynamiczne w czasie wykonywania.
 services: data-factory
 documentationcenter: ''
@@ -11,12 +11,12 @@ ms.date: 12/18/2018
 author: djpmsft
 ms.author: daperlov
 manager: craigg
-ms.openlocfilehash: 285b7c182fc218a590b7a3980e43175c76555106
-ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
+ms.openlocfilehash: 46ea65c09ec9567bb03a524470a3550c9cdfd00e
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70140952"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73684561"
 ---
 # <a name="parameterize-linked-services-in-azure-data-factory"></a>Sparametryzuj połączone usługi w Azure Data Factory
 

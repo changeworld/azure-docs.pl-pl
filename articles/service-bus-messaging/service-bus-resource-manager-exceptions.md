@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/26/2019
 ms.author: aschhab
-ms.openlocfilehash: 9a2d25aba03156d6d14fe5ef9aa58b3748033b85
-ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
+ms.openlocfilehash: 25b0c14fb94cba611dfa9fa9bece1b728f39a905
+ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/13/2019
-ms.locfileid: "72296385"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73585206"
 ---
 # <a name="service-bus-resource-manager-exceptions"></a>Wyjątki Menedżer zasobów Service Bus
 
@@ -72,3 +72,20 @@ Ta klasa błędów wskazuje, że nie znaleziono zasobu.
 | Nie znaleziono | brak | Nie znaleziono. Operacja nie istnieje. | Operacja, którą próbujesz wykonać, nie istnieje. | Sprawdź operację i spróbuj ponownie. |
 | Nie znaleziono | brak | Żądanie przychodzące nie zostało rozpoznane jako żądanie przełączenia zasad przestrzeni nazw. | Treść żądania przychodzącego ma wartość null, dlatego nie można jej wykonać jako żądania Put. | Sprawdź treść żądania, aby upewnić się, że nie jest ona pusta. | 
 | Nie znaleziono | brak | Nie można odnaleźć jednostki obsługi komunikatów *"Nazwa jednostki"* . | Nie można odnaleźć jednostki, w której próbujesz wykonać operację. | Sprawdź, czy jednostka istnieje, a następnie spróbuj ponownie wykonać operację. |
+
+## <a name="error-code-internal-server-error"></a>Kod błędu: wewnętrzny błąd serwera
+
+Ta klasa błędów wskazuje, że wystąpił wewnętrzny błąd serwera
+
+| Kod błędu | Kod podkodu błędu | Komunikat o błędzie | Opis | Zalecenie |
+| ---------- | ------------- | ------------- | ----------- | -------------- |
+| Wewnętrzny błąd serwera | 50000 | Podkod = 50 000. Wewnętrzny błąd serwera| Może się zdarzyć z różnych powodów. Niektóre objawy to- <ul> <li> Żądanie klienta/treść jest uszkodzona i prowadzi do błędu. </li> <li> Upłynął limit czasu żądania klienta z powodu problemów z przetwarzaniem w usłudze. </li> </ul> | Aby rozwiązać ten problem <ul> <li> Upewnij się, że parametry żądań nie mają wartości null ani nie są źle sformułowane. </li> <li> Ponów żądanie. </li> </ul> |
+
+## <a name="error-code-unauthorized"></a>Kod błędu: Brak autoryzacji
+
+Ta klasa błędów wskazuje Brak autoryzacji do uruchomienia polecenia.
+
+| Kod błędu | Kod podkodu błędu | Komunikat o błędzie | Opis | Zalecenie |
+| ---------- | ------------- | ------------- | ----------- | -------------- |
+| Brak autoryzacji | brak | Nieprawidłowa operacja dla pomocniczej przestrzeni nazw. Pomocnicza przestrzeń nazw jest tylko do odczytu. | Operacja została wykonana względem pomocniczej przestrzeni nazw, która jest konfiguracją jako przestrzeń nazw tylko do odczytu. | Spróbuj ponownie wykonać polecenie względem głównej przestrzeni nazw. Dowiedz się więcej o [pomocniczej przestrzeni nazw](service-bus-geo-dr.md) |
+| Brak autoryzacji | brak | MissingToken: nie znaleziono nagłówka autoryzacji. | Ten błąd występuje, gdy autoryzacja ma wartości null lub są nieprawidłowe. | Upewnij się, że wartość tokenu wymieniona w nagłówku autoryzacji jest poprawna, a nie wartością null. |

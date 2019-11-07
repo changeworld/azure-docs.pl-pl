@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.custom: mvc
-ms.openlocfilehash: 8a6bc8b71f5f8edda76faa1a8d1b20417dfba1d1
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
-ms.translationtype: HT
+ms.openlocfilehash: 84af496a92bd3c7b30062e965335782f7661aa4a
+ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 11/04/2019
-ms.locfileid: "73478664"
+ms.locfileid: "73575650"
 ---
 # <a name="authentication-with-azure-maps"></a>Uwierzytelnianie w usłudze Azure Maps
 
@@ -49,7 +49,7 @@ Azure Maps generuje *unikatowy identyfikator (identyfikator klienta)* dla każde
 | Azure Government    | https://login.microsoftonline.us |
 
 
-Aby uzyskać więcej informacji na temat sposobu konfigurowania usługi Azure AD i tokenów żądań dla Azure Maps, zobacz [Zarządzanie uwierzytelnianiem w programie Azure Maps](https://review.docs.microsoft.com/azure/azure-maps/how-to-manage-authentication).
+Aby uzyskać więcej informacji na temat sposobu konfigurowania usługi Azure AD i tokenów żądań dla Azure Maps, zobacz [Zarządzanie uwierzytelnianiem w programie Azure Maps](https://docs.microsoft.com/azure/azure-maps/how-to-manage-authentication).
 
 Aby uzyskać ogólne informacje na temat żądania tokenów z usługi Azure AD, zobacz [co to jest uwierzytelnianie?](https://docs.microsoft.com/azure/active-directory/develop/authentication-scenarios).
 
@@ -92,6 +92,6 @@ Aby uzyskać informacje na temat wyświetlania ustawień RBAC, zobacz [How to co
 
 ## <a name="next-steps"></a>Następne kroki
 
-* Aby dowiedzieć się więcej o uwierzytelnianiu aplikacji za pomocą usługi Azure AD i Azure Maps, zobacz [Zarządzanie uwierzytelnianiem w programie Azure Maps](https://review.docs.microsoft.com/azure/azure-maps/how-to-manage-authentication).
+* Aby dowiedzieć się więcej o uwierzytelnianiu aplikacji za pomocą usługi Azure AD i Azure Maps, zobacz [Zarządzanie uwierzytelnianiem w programie Azure Maps](https://docs.microsoft.com/azure/azure-maps/how-to-manage-authentication).
 
 * Aby dowiedzieć się więcej na temat uwierzytelniania kontrolka mapy Azure Maps i usługi Azure AD, zobacz [Korzystanie z kontrolka mapy Azure Maps](https://aka.ms/amaadmc).

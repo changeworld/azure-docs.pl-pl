@@ -1,6 +1,6 @@
 ---
-title: Kopiowanie danych z usługi ServiceNow przy użyciu usługi Azure Data Factory | Dokumentacja firmy Microsoft
-description: Dowiedz się, jak skopiować dane z usługi ServiceNow do magazynów danych ujścia obsługiwane za pomocą działania kopiowania w potoku usługi Azure Data Factory.
+title: Kopiowanie danych z usługi ServiceNow za pomocą Azure Data Factory
+description: Informacje o kopiowaniu danych z programu usługi ServiceNow do obsługiwanych magazynów danych ujścia przy użyciu działania kopiowania w potoku Azure Data Factory.
 services: data-factory
 documentationcenter: ''
 author: linda33wj
@@ -12,50 +12,50 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 08/01/2019
 ms.author: jingwang
-ms.openlocfilehash: a76baf65b2dc7d0cdb444b79e697930188417748
-ms.sourcegitcommit: c79aa93d87d4db04ecc4e3eb68a75b349448cd17
+ms.openlocfilehash: 933b12f852fcbcc20e50f3c89d597bbe6b84bd8e
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71089491"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73680209"
 ---
-# <a name="copy-data-from-servicenow-using-azure-data-factory"></a>Kopiowanie danych z usługi ServiceNow przy użyciu usługi Azure Data Factory
+# <a name="copy-data-from-servicenow-using-azure-data-factory"></a>Kopiowanie danych z usługi ServiceNow za pomocą Azure Data Factory
 
-W tym artykule opisano sposób używania działania kopiowania w usłudze Azure Data Factory do kopiowania danych z usługi ServiceNow. Opiera się na [omówienie działania kopiowania](copy-activity-overview.md) artykułu, który przedstawia ogólne omówienie działania kopiowania.
+W tym artykule opisano sposób używania działania kopiowania w Azure Data Factory do kopiowania danych z usługi ServiceNow. Jest ona oparta na [przeglądzie działania kopiowania](copy-activity-overview.md) , która przedstawia ogólne omówienie działania kopiowania.
 
-## <a name="supported-capabilities"></a>Obsługiwane funkcje
+## <a name="supported-capabilities"></a>Obsługiwane możliwości
 
 Ten łącznik usługi ServiceNow jest obsługiwany dla następujących działań:
 
 - [Działanie kopiowania](copy-activity-overview.md) z [obsługiwaną macierzą źródłową/ujścia](copy-activity-overview.md)
 - [Działanie Lookup](control-flow-lookup-activity.md)
 
-Możesz skopiować dane z usługi ServiceNow, do dowolnego obsługiwanego magazynu danych ujścia. Aby uzyskać listę magazynów danych, obsługiwane przez działanie kopiowania jako źródła/ujścia, zobacz [obsługiwane magazyny danych](copy-activity-overview.md#supported-data-stores-and-formats) tabeli.
+Dane z usługi ServiceNow można skopiować do dowolnego obsługiwanego magazynu danych ujścia. Listę magazynów danych obsługiwanych jako źródła/ujścia przez działanie kopiowania można znaleźć w tabeli [obsługiwane magazyny danych](copy-activity-overview.md#supported-data-stores-and-formats) .
 
-Usługa Azure Data Factory udostępnia wbudowanego sterownika, aby umożliwić łączność, dlatego nie trzeba ręcznie zainstalować dowolnego sterownika, za pomocą tego łącznika.
+Azure Data Factory udostępnia wbudowany sterownik umożliwiający połączenie, dlatego nie trzeba ręcznie instalować żadnego sterownika przy użyciu tego łącznika.
 
 ## <a name="getting-started"></a>Wprowadzenie
 
 [!INCLUDE [data-factory-v2-connector-get-started](../../includes/data-factory-v2-connector-get-started.md)]
 
-Poniższe sekcje zawierają szczegółowe informacje dotyczące właściwości, które są używane do definiowania jednostek usługi fabryka danych określonej do łącznika usługi ServiceNow.
+Poniższe sekcje zawierają szczegółowe informacje o właściwościach, które są używane do definiowania jednostek Data Factory specyficznych dla łącznika usługi ServiceNow.
 
-## <a name="linked-service-properties"></a>Właściwości usługi połączonej
+## <a name="linked-service-properties"></a>Właściwości połączonej usługi
 
-Następujące właściwości są obsługiwane dla usługi ServiceNow, połączone usługi:
+Dla połączonej usługi usługi ServiceNow są obsługiwane następujące właściwości:
 
-| Właściwość | Opis | Wymagane |
+| Właściwość | Opis | Wymagany |
 |:--- |:--- |:--- |
-| type | Właściwość Type musi mieć ustawioną wartość: **ServiceNow** | Tak |
-| endpoint | Punkt końcowy serwera usługi ServiceNow (`http://<instance>.service-now.com`).  | Yes |
+| type | Właściwość Type musi mieć wartość: **usługi ServiceNow** | Tak |
+| endpoint | Punkt końcowy serwera usługi ServiceNow (`http://<instance>.service-now.com`).  | Tak |
 | authenticationType | Typ uwierzytelniania do użycia. <br/>Dozwolone wartości to: **Basic**, **OAuth2** | Tak |
-| username | Nazwa użytkownika używana do łączenia się z serwerem usługi ServiceNow dla uwierzytelniania Basic i protokołu OAuth2.  | Yes |
-| password | Hasło odpowiadający nazwie użytkownika dla uwierzytelniania Basic i protokołu OAuth2. Oznacz to pole jako SecureString, aby bezpiecznie przechowywać w usłudze Data Factory lub [odwołanie wpisu tajnego przechowywanych w usłudze Azure Key Vault](store-credentials-in-key-vault.md). | Yes |
-| clientId | Identyfikator klienta do uwierzytelniania protokołu OAuth2.  | Nie |
-| clientSecret | Klucz tajny klienta do uwierzytelniania protokołu OAuth2. Oznacz to pole jako SecureString, aby bezpiecznie przechowywać w usłudze Data Factory lub [odwołanie wpisu tajnego przechowywanych w usłudze Azure Key Vault](store-credentials-in-key-vault.md). | Nie |
+| nazwa użytkownika | Nazwa użytkownika używana do nawiązywania połączenia z serwerem usługi ServiceNow na potrzeby uwierzytelniania podstawowego i OAuth2.  | Tak |
+| hasło | Hasło odpowiadające nazwie użytkownika uwierzytelniania podstawowego i OAuth2. Oznacz to pole jako element SecureString, aby bezpiecznie przechowywać go w Data Factory, lub [odwoływać się do wpisu tajnego przechowywanego w Azure Key Vault](store-credentials-in-key-vault.md). | Tak |
+| clientId | Identyfikator klienta na potrzeby uwierzytelniania OAuth2.  | Nie |
+| clientSecret | Wpis tajny klienta na potrzeby uwierzytelniania OAuth2. Oznacz to pole jako element SecureString, aby bezpiecznie przechowywać go w Data Factory, lub [odwoływać się do wpisu tajnego przechowywanego w Azure Key Vault](store-credentials-in-key-vault.md). | Nie |
 | useEncryptedEndpoints | Określa, czy punkty końcowe źródła danych są szyfrowane przy użyciu protokołu HTTPS. Wartość domyślna to true.  | Nie |
-| useHostVerification | Określa, czy wymagają zgodności nazwy hosta w certyfikacie serwera, aby dopasować nazwę hosta serwera podczas nawiązywania połączenia za pośrednictwem protokołu SSL. Wartość domyślna to true.  | Nie |
-| usePeerVerification | Określa, czy do zweryfikowania tożsamości serwera, podczas nawiązywania połączenia za pośrednictwem protokołu SSL. Wartość domyślna to true.  | Nie |
+| useHostVerification | Określa, czy nazwa hosta ma być wymagana w certyfikacie serwera, aby odpowiadała nazwie hosta serwera podczas nawiązywania połączenia za pośrednictwem protokołu SSL. Wartość domyślna to true.  | Nie |
+| usePeerVerification | Określa, czy należy zweryfikować tożsamość serwera podczas nawiązywania połączenia za pośrednictwem protokołu SSL. Wartość domyślna to true.  | Nie |
 
 **Przykład:**
 
@@ -79,11 +79,11 @@ Następujące właściwości są obsługiwane dla usługi ServiceNow, połączon
 
 ## <a name="dataset-properties"></a>Właściwości zestawu danych
 
-Aby uzyskać pełną listę sekcje i właściwości dostępne Definiowanie zestawów danych, zobacz [zestawów danych](concepts-datasets-linked-services.md) artykułu. Ta sekcja zawiera listę właściwości obsługiwanych przez zestaw danych usługi ServiceNow.
+Aby uzyskać pełną listę sekcji i właściwości dostępnych do definiowania zestawów danych, zobacz artykuł [zestawy danych](concepts-datasets-linked-services.md) . Ta sekcja zawiera listę właściwości obsługiwanych przez zestaw danych usługi ServiceNow.
 
-Aby skopiować dane z usługi ServiceNow, należy ustawić właściwość typu zestawu danych na **ServiceNowObject**. Obsługiwane są następujące właściwości:
+Aby skopiować dane z usługi ServiceNow, ustaw właściwość Type zestawu danych na **ServiceNowObject**. Obsługiwane są następujące właściwości:
 
-| Właściwość | Opis | Wymagane |
+| Właściwość | Opis | Wymagany |
 |:--- |:--- |:--- |
 | type | Właściwość Type zestawu danych musi być ustawiona na wartość: **ServiceNowObject** | Tak |
 | tableName | Nazwa tabeli. | Nie (Jeśli określono parametr "query" w źródle działania) |
@@ -107,24 +107,24 @@ Aby skopiować dane z usługi ServiceNow, należy ustawić właściwość typu z
 
 ## <a name="copy-activity-properties"></a>Właściwości działania kopiowania
 
-Aby uzyskać pełną listę sekcje i właściwości dostępne do definiowania działań zobacz [potoki](concepts-pipelines-activities.md) artykułu. Ta sekcja zawiera listę właściwości obsługiwanych przez źródło usługi ServiceNow.
+Aby uzyskać pełną listę sekcji i właściwości dostępnych do definiowania działań, zobacz artykuł [potoki](concepts-pipelines-activities.md) . Ta sekcja zawiera listę właściwości obsługiwanych przez źródło usługi ServiceNow.
 
 ### <a name="servicenow-as-source"></a>Usługi ServiceNow jako źródło
 
-Aby skopiować dane z usługi ServiceNow, należy ustawić typ źródła w działaniu kopiowania, aby **ServiceNowSource**. Następujące właściwości są obsługiwane w działaniu kopiowania **źródła** sekcji:
+Aby skopiować dane z usługi ServiceNow, ustaw typ źródła w działaniu Copy na **ServiceNowSource**. W sekcji **Źródło** działania kopiowania są obsługiwane następujące właściwości:
 
-| Właściwość | Opis | Wymagane |
+| Właściwość | Opis | Wymagany |
 |:--- |:--- |:--- |
-| type | Właściwość Type źródła działania Copy musi mieć ustawioną wartość: **ServiceNowSource** | Tak |
-| query | Umożliwia odczytywanie danych niestandardowe zapytania SQL. Na przykład: `"SELECT * FROM Actual.alm_asset"`. | Nie (Jeśli określono parametr "tableName" w zestawie danych) |
+| type | Właściwość Type źródła działania Copy musi być ustawiona na wartość: **ServiceNowSource** | Tak |
+| query | Użyj niestandardowego zapytania SQL, aby odczytać dane. Na przykład: `"SELECT * FROM Actual.alm_asset"`. | Nie (Jeśli określono "TableName" w zestawie danych) |
 
-Należy pamiętać, że podczas określania schematu i kolumn dla usługi ServiceNow w zapytaniu i **dotyczą [porady dotyczące wydajności](#performance-tips) na domniemanie wydajności kopiowania**.
+Należy pamiętać o następujących kwestiach podczas określania schematu i kolumny dla usługi ServiceNow w kwerendzie i **zapoznaj się z [poradami dotyczącymi wydajności](#performance-tips) kopiowania**.
 
-- **Schemat:** Określ schemat, jak `Actual` lub `Display` kwerendę usługi ServiceNow, które można przyjrzeć się go jako parametr `sysparm_display_value` PRAWDA lub FAŁSZ, gdy wywołanie [interfejsów API restful usługi ServiceNow](https://developer.servicenow.com/app.do#!/rest_api_doc?v=jakarta&id=r_AggregateAPI-GET). 
-- **Kolumna:** nazwa kolumny do rzeczywistej wartości w obszarze `Actual` schemat jest `[column name]_value`, natomiast w przypadku wartości wyświetlanej w obszarze `Display` schemat jest `[column name]_display_value`. Uwaga nazwa kolumny musi mapowania do schematu, używany w zapytaniu.
+- **Schemat:** Określ schemat jako `Actual` lub `Display` w zapytaniu usługi ServiceNow, które można sprawdzić jako parametr `sysparm_display_value` jako true lub false podczas wywoływania [interfejsów API usługi ServiceNow RESTful](https://developer.servicenow.com/app.do#!/rest_api_doc?v=jakarta&id=r_AggregateAPI-GET). 
+- **Kolumna:** nazwa kolumny dla wartości rzeczywistej w obszarze `Actual` schematu jest `[column name]_value`, a dla wartości wyświetlanej w obszarze `Display` schematu jest `[column name]_display_value`. Zwróć uwagę na to, że nazwa kolumny musi być mapowana na schemat używany w zapytaniu.
 
 **Przykładowe zapytanie:** 
-`SELECT col_value FROM Actual.alm_asset` ORAZ 
+`SELECT col_value FROM Actual.alm_asset` lub 
 `SELECT col_display_value FROM Display.alm_asset`
 
 **Przykład:**
@@ -160,15 +160,15 @@ Należy pamiętać, że podczas określania schematu i kolumn dla usługi Servic
 ```
 ## <a name="performance-tips"></a>Porady dotyczące wydajności
 
-### <a name="schema-to-use"></a>Schematu do użycia
+### <a name="schema-to-use"></a>Schemat do użycia
 
-Usługi ServiceNow 2 z różnymi schematami, jeden to **"Rzeczywiste"** zwraca dane rzeczywiste, druga **"Wyświetlanie"** zwraca wartości wyświetlania danych. 
+Usługi ServiceNow ma 2 różne schematy, jedna to **"rzeczywista"** , która zwraca rzeczywiste dane, druga to **"Display"** , która zwraca wartości wyświetlania danych. 
 
-Jeśli masz filtr w zapytaniu, należy użyć schemat "Rzeczywiste", który ma lepsze skopiuj wydajności. Podczas wykonywania zapytań względem schematu "Rzeczywiste", ServiceNow natywnie obsługuje filtru podczas pobierania danych, aby zwracać tylko filtrowanym zestawie wyników, podczas wykonywania zapytań względem schematu "Display", ADF pobrać wszystkich danych i Zastosuj filtr wewnętrznie.
+Jeśli w zapytaniu znajduje się filtr, użyj "rzeczywistego" schematu, który zapewnia lepszą wydajność kopiowania. Podczas wykonywania zapytania względem schematu "rzeczywisty" usługi ServiceNow natywnie obsługuje filtr podczas pobierania danych, aby zwracał tylko przefiltrowany zestaw wyników, podczas gdy zapytanie o schemat "Display", ADF pobiera wszystkie dane i stosuje filtr wewnętrznie.
 
 ### <a name="index"></a>Indeks
 
-Indeks tabeli ServiceNow może pomóc poprawić wydajność zapytań, zobacz [Tworzenie indeksu tabeli](https://docs.servicenow.com/bundle/geneva-servicenow-platform/page/administer/table_administration/task/t_CreateCustomIndex.html).
+Indeks tabeli usługi ServiceNow może pomóc w zwiększeniu wydajności zapytania, zapoznaj się z tematem [Tworzenie indeksu tabeli](https://docs.servicenow.com/bundle/geneva-servicenow-platform/page/administer/table_administration/task/t_CreateCustomIndex.html).
 
 ## <a name="lookup-activity-properties"></a>Właściwości działania Lookup
 
@@ -176,4 +176,4 @@ Aby dowiedzieć się więcej o właściwościach, sprawdź [działanie Lookup (w
 
 
 ## <a name="next-steps"></a>Następne kroki
-Aby uzyskać listę magazynów danych obsługiwanych jako źródła i ujścia działania kopiowania w usłudze Azure Data Factory, zobacz [obsługiwane magazyny danych](copy-activity-overview.md#supported-data-stores-and-formats).
+Listę magazynów danych obsługiwanych jako źródła i ujścia przez działanie kopiowania w Azure Data Factory można znaleźć w temacie [obsługiwane magazyny danych](copy-activity-overview.md#supported-data-stores-and-formats).

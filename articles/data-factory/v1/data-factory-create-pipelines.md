@@ -1,5 +1,5 @@
 ---
-title: Tworzenie/planowanie potoków, działania łańcucha w Data Factory | Microsoft Docs
+title: Tworzenie/planowanie potoków, działania łańcucha w Data Factory
 description: Dowiedz się, jak utworzyć potok danych w Azure Data Factory, aby przenosić i przekształcać dane. Utwórz przepływ pracy oparty na danych, aby utworzyć gotowy do korzystania z informacji.
 services: data-factory
 documentationcenter: ''
@@ -11,12 +11,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/10/2018
-ms.openlocfilehash: 54d9c875ca0117304dbd686f9a8fa6060b275994
-ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
+ms.openlocfilehash: f93bea240ee3f139c9be84199d116f9f3f231261
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70140057"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73682739"
 ---
 # <a name="pipelines-and-activities-in-azure-data-factory"></a>Potoki i działania w Azure Data Factory
 > [!div class="op_single_selector" title1="Wybierz używaną wersję usługi Data Factory:"]
@@ -29,7 +29,7 @@ ms.locfileid: "70140057"
 Ten artykuł ułatwia zapoznanie się z potokami i działaniami w usłudze Azure Data Factory oraz z konstruowaniem za ich pomocą pełnych przepływów pracy dla scenariuszy przenoszenia i przetwarzania danych.
 
 > [!NOTE]
-> W tym artykule przyjęto założenie, że wprowadzono [wprowadzenie do Azure Data Factory](data-factory-introduction.md). Jeśli nie masz praktycznego doświadczenia w tworzeniu fabryk danych, przechodzenie przez samouczek do przekształcania [danych](data-factory-build-your-first-pipeline.md) i/lub [samouczek przenoszenia danych](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) pomoże Ci lepiej zrozumieć ten artykuł.
+> W tym artykule przyjęto założenie, że wprowadzono [wprowadzenie do Azure Data Factory](data-factory-introduction.md). Jeśli nie masz praktycznego doświadczenia w tworzeniu fabryk danych, przechodzenie przez [samouczek do przekształcania danych](data-factory-build-your-first-pipeline.md) i/lub [samouczek przenoszenia danych](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) pomoże Ci lepiej zrozumieć ten artykuł.
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
@@ -92,17 +92,17 @@ Przyjrzyjmy się bliżej definicji potoku w formacie JSON. Ogólna struktura pot
 }
 ```
 
-| Tag | Opis | Wymagane |
+| Tag | Opis | Wymagany |
 | --- | --- | --- |
-| name |Nazwa potoku. Określ nazwę, która reprezentuje akcję wykonywaną przez potok. <br/><ul><li>Maksymalna liczba znaków: 260</li><li>Musi zaczynać się cyfrą lub znakiem podkreślenia (\_)</li><li>Następujące znaki nie są dozwolone: ".", "+", "?", "/", "<", ">", "\*", "%", "&", ":", "\\"</li></ul> |Tak |
+| name |Nazwa potoku. Określ nazwę, która reprezentuje akcję wykonywaną przez potok. <br/><ul><li>Maksymalna liczba znaków: 260</li><li>Musi zaczynać się cyfrą lub podkreśleniem (\_)</li><li>Następujące znaki nie są dozwolone: ".", "+", "?", "/", "<", ">", "\*", "%", "&", ":", "\\"</li></ul> |Tak |
 | description | Wprowadź tekst opisujący przeznaczenie potoku. |Tak |
-| działania | W sekcji **activities** można zdefiniować jedno lub więcej działań. Zobacz następną sekcję, aby uzyskać szczegółowe informacje o elemencie JSON. | Tak |
-| start | Data i godzina rozpoczęcia potoku. Musi być w [formacie ISO](https://en.wikipedia.org/wiki/ISO_8601). Na przykład: `2016-10-14T16:32:41Z`. <br/><br/>Można określić czas lokalny, na przykład czas EST. Oto przykład: `2016-02-27T06:00:00-05:00`", czyli 6.<br/><br/>Właściwości Start i End wspólnie określają aktywny okres dla potoku. Wycinki wyjściowe są tworzone tylko w tym aktywnym okresie. |Nie<br/><br/>W przypadku określenia wartości właściwości End należy określić wartość właściwości Start.<br/><br/>Aby można było utworzyć potok, oba czasy rozpoczęcia i zakończenia mogą być puste. Należy określić obie wartości, aby ustawić aktywny okres uruchomienia potoku. Jeśli nie określisz godzin początkowych i końcowych podczas tworzenia potoku, możesz je ustawić przy użyciu polecenia cmdlet Set-AzDataFactoryPipelineActivePeriod. |
-| end | Data i godzina zakończenia potoku. Jeśli ta wartość jest określona, musi być w formacie ISO. Na przykład: `2016-10-14T17:32:41Z` <br/><br/>Można określić czas lokalny, na przykład czas EST. Oto przykład: `2016-02-27T06:00:00-05:00`, czyli 6.<br/><br/>Aby uruchomić potok w nieskończoność, określ 9999-09-09 jako wartość właściwości end. <br/><br/> Potok jest aktywny tylko między jego czasem rozpoczęcia i czasem zakończenia. Nie jest wykonywane przed czasem rozpoczęcia lub po zakończeniu. Jeśli potok jest wstrzymany, nie jest wykonywany niezależnie od jego czasu rozpoczęcia i zakończenia. Do uruchomienia potoku nie należy wstrzymywać. Zapoznaj się z tematem [Planowanie i wykonywanie](data-factory-scheduling-and-execution.md) , aby zrozumieć, jak planowanie i wykonywanie działa w Azure Data Factory. |Nie <br/><br/>W przypadku określenia wartości właściwości Start należy określić wartość właściwości end.<br/><br/>Zobacz uwagi dotyczące właściwości **Start** . |
+| activities | W sekcji **activities** można zdefiniować jedno lub więcej działań. Zobacz następną sekcję, aby uzyskać szczegółowe informacje o elemencie JSON. | Tak |
+| rozpoczynanie | Data i godzina rozpoczęcia potoku. Musi być w [formacie ISO](https://en.wikipedia.org/wiki/ISO_8601). Na przykład: `2016-10-14T16:32:41Z`. <br/><br/>Można określić czas lokalny, na przykład czas EST. Oto przykład: `2016-02-27T06:00:00-05:00`", czyli 6.<br/><br/>Właściwości Start i End wspólnie określają aktywny okres dla potoku. Wycinki wyjściowe są tworzone tylko w tym aktywnym okresie. |Nie<br/><br/>W przypadku określenia wartości właściwości End należy określić wartość właściwości Start.<br/><br/>Aby można było utworzyć potok, oba czasy rozpoczęcia i zakończenia mogą być puste. Należy określić obie wartości, aby ustawić aktywny okres uruchomienia potoku. Jeśli nie określisz godzin początkowych i końcowych podczas tworzenia potoku, możesz je ustawić przy użyciu polecenia cmdlet Set-AzDataFactoryPipelineActivePeriod. |
+| punktów | Data i godzina zakończenia potoku. Jeśli ta wartość jest określona, musi być w formacie ISO. Na przykład: `2016-10-14T17:32:41Z` <br/><br/>Można określić czas lokalny, na przykład czas EST. Oto przykład: `2016-02-27T06:00:00-05:00`, czyli 6.<br/><br/>Aby uruchomić potok w nieskończoność, określ 9999-09-09 jako wartość właściwości end. <br/><br/> Potok jest aktywny tylko między jego czasem rozpoczęcia i czasem zakończenia. Nie jest wykonywane przed czasem rozpoczęcia lub po zakończeniu. Jeśli potok jest wstrzymany, nie jest wykonywany niezależnie od jego czasu rozpoczęcia i zakończenia. Do uruchomienia potoku nie należy wstrzymywać. Zapoznaj się z tematem [Planowanie i wykonywanie](data-factory-scheduling-and-execution.md) , aby zrozumieć, jak planowanie i wykonywanie działa w Azure Data Factory. |Nie <br/><br/>W przypadku określenia wartości właściwości Start należy określić wartość właściwości end.<br/><br/>Zobacz uwagi dotyczące właściwości **Start** . |
 | isPaused | W przypadku ustawienia wartości true potok nie zostanie uruchomiony. Jest w stanie wstrzymania. Wartość domyślna = false. Ta właściwość służy do włączania lub wyłączania potoku. |Nie |
 | potokmode | Metoda planowania przebiegów dla potoku. Dozwolone wartości to: zaplanowane (wartość domyślna), jednorazowej.<br/><br/>Wartość "zaplanowany" wskazuje, że potok jest uruchamiany w określonym przedziale czasu, zgodnie z jego aktywnym okresem (godzina rozpoczęcia i zakończenia). Element "jednorazowej" wskazuje, że potok jest uruchamiany tylko raz. Nie można obecnie modyfikować/aktualizować potoków jednorazowej utworzonych po utworzeniu. Zobacz [potok jednorazowej](#onetime-pipeline) , aby uzyskać szczegółowe informacje na temat ustawienia jednorazowej. |Nie |
-| expirationTime | Czas trwania okresu, w którym [potok jednorazowy](#onetime-pipeline) jest prawidłowy i powinien pozostać zainicjowany. Jeśli nie ma żadnych aktywnych, zakończonych niepowodzeniem lub oczekujących uruchomień, potok jest automatycznie usuwany po osiągnięciu czasu wygaśnięcia. Wartość domyślna:`"expirationTime": "3.00:00:00"`|Nie |
-| datasets |Lista zestawów danych, które mają być używane przez działania zdefiniowane w potoku. Ta właściwość może służyć do definiowania zestawów danych, które są specyficzne dla tego potoku i nie są zdefiniowane w ramach fabryki Data Factory. Zestawy danych zdefiniowane w tym potoku mogą być używane tylko przez ten potok i nie mogą być udostępniane. Aby uzyskać szczegółowe informacje, zobacz [zestawy danych](data-factory-create-datasets.md#scoped-datasets) z zakresem. |Nie |
+| expirationTime | Czas trwania okresu, w którym [potok jednorazowy](#onetime-pipeline) jest prawidłowy i powinien pozostać zainicjowany. Jeśli nie ma żadnych aktywnych, zakończonych niepowodzeniem lub oczekujących uruchomień, potok jest automatycznie usuwany po osiągnięciu czasu wygaśnięcia. Wartość domyślna: `"expirationTime": "3.00:00:00"`|Nie |
+| zestawów danych |Lista zestawów danych, które mają być używane przez działania zdefiniowane w potoku. Ta właściwość może służyć do definiowania zestawów danych, które są specyficzne dla tego potoku i nie są zdefiniowane w ramach fabryki Data Factory. Zestawy danych zdefiniowane w tym potoku mogą być używane tylko przez ten potok i nie mogą być udostępniane. Aby uzyskać szczegółowe informacje, zobacz [zestawy danych z zakresem](data-factory-create-datasets.md#scoped-datasets) . |Nie |
 
 ## <a name="activity-json"></a>Format JSON działania
 W sekcji **activities** można zdefiniować jedno lub więcej działań. Każde działanie ma następującą strukturę najwyższego poziomu:
@@ -130,30 +130,30 @@ W sekcji **activities** można zdefiniować jedno lub więcej działań. Każde 
 
 Poniższa tabela zawiera opis właściwości w definicji JSON działania:
 
-| Tag | Opis | Wymagane |
+| Tag | Opis | Wymagany |
 | --- | --- | --- |
-| name | Nazwa działania. Określ nazwę, która reprezentuje akcję wykonywaną przez działanie. <br/><ul><li>Maksymalna liczba znaków: 260</li><li>Musi zaczynać się cyfrą lub znakiem podkreślenia (\_)</li><li>Następujące znaki nie są dozwolone: ".", "+", "?", "/", "<", ">", "*", "%", "&", ":",\\""</li></ul> |Tak |
+| name | Nazwa działania. Określ nazwę, która reprezentuje akcję wykonywaną przez działanie. <br/><ul><li>Maksymalna liczba znaków: 260</li><li>Musi zaczynać się cyfrą lub podkreśleniem (\_)</li><li>Następujące znaki nie są dozwolone: ".", "+", "?", "/", "<", ">", "*", "%", "&", ":", "\\"</li></ul> |Tak |
 | description | Tekst opisujący przeznaczenie działania |Tak |
-| type | Typ działania. Zapoznaj się z sekcjami [działania przenoszenia danych](#data-movement-activities) i [działania przekształcania danych](#data-transformation-activities) dla różnych typów działań. |Yes |
-| inputs |Tabele wejściowe używane przez działanie<br/><br/>`// one input table`<br/>`"inputs":  [ { "name": "inputtable1"  } ],`<br/><br/>`// two input tables` <br/>`"inputs":  [ { "name": "inputtable1"  }, { "name": "inputtable2"  } ],` |Yes |
-| outputs |Tabele wyjściowe używane przez działanie.<br/><br/>`// one output table`<br/>`"outputs":  [ { "name": "outputtable1" } ],`<br/><br/>`//two output tables`<br/>`"outputs":  [ { "name": "outputtable1" }, { "name": "outputtable2" }  ],` |Tak |
+| type | Typ działania. Zapoznaj się z sekcjami [działania przenoszenia danych](#data-movement-activities) i [działania przekształcania danych](#data-transformation-activities) dla różnych typów działań. |Tak |
+| danych wejściowych |Tabele wejściowe używane przez działanie<br/><br/>`// one input table`<br/>`"inputs":  [ { "name": "inputtable1"  } ],`<br/><br/>`// two input tables` <br/>`"inputs":  [ { "name": "inputtable1"  }, { "name": "inputtable2"  } ],` |Tak |
+| wydajności |Tabele wyjściowe używane przez działanie.<br/><br/>`// one output table`<br/>`"outputs":  [ { "name": "outputtable1" } ],`<br/><br/>`//two output tables`<br/>`"outputs":  [ { "name": "outputtable1" }, { "name": "outputtable2" }  ],` |Tak |
 | linkedServiceName |Nazwa połączonej usługi używana na potrzeby działania. <br/><br/>Działanie może wymagać określenia połączonej usługi, która stanowi łącze do wymaganego środowiska obliczeniowego. |Tak dla działania usługi HDInsight i działania oceniania partii Azure Machine Learning <br/><br/>Nie dla wszystkich innych |
 | typeProperties |Właściwości w sekcji **typeProperties** zależą od typu działania. Aby wyświetlić właściwości typu dla działania, kliknij linki do działań w poprzedniej sekcji. | Nie |
-| zasady |Zasady, które mają wpływ na zachowanie działania w czasie wykonania. Jeśli nie jest określona, używane są zasady domyślne. |Nie |
-| scheduler | Właściwość "Scheduler" służy do definiowania żądanego planowania dla działania. Jego właściwości własne są takie same jak te we [właściwości Availability w zestawie danych](data-factory-create-datasets.md#dataset-availability). |Nie |
+| policy |Zasady, które mają wpływ na zachowanie działania w czasie wykonania. Jeśli nie jest określona, używane są zasady domyślne. |Nie |
+| pracę | Właściwość "Scheduler" służy do definiowania żądanego planowania dla działania. Jego właściwości własne są takie same jak te we [właściwości Availability w zestawie danych](data-factory-create-datasets.md#dataset-availability). |Nie |
 
 ### <a name="policies"></a>Zasady
 Zasady mają wpływ na zachowanie działania w czasie wykonywania, w odróżnieniu od tego, czy wycinek tabeli jest przetwarzany. Poniższa tabela zawiera szczegółowe informacje.
 
-| Właściwość | Dozwolone wartości | Default Value | Opis |
+| Właściwość | Dozwolone wartości | Wartość domyślna | Opis |
 | --- | --- | --- | --- |
-| concurrency |Integer <br/><br/>Wartość maksymalna: 10 |1 |Liczba współbieżnych wykonań działania.<br/><br/>Określa liczbę równoległych wykonań działań, które mogą być wykonywane na różnych wycinkach. Na przykład, jeśli działanie wymaga przechodzenia przez duży zestaw dostępnych danych, dzięki czemu większa wartość współbieżności przyspiesza przetwarzanie danych. |
+| Współbieżności |Liczba całkowita <br/><br/>Wartość maksymalna: 10 |1 |Liczba współbieżnych wykonań działania.<br/><br/>Określa liczbę równoległych wykonań działań, które mogą być wykonywane na różnych wycinkach. Na przykład, jeśli działanie wymaga przechodzenia przez duży zestaw dostępnych danych, dzięki czemu większa wartość współbieżności przyspiesza przetwarzanie danych. |
 | executionPriorityOrder |NewestFirst<br/><br/>OldestFirst |OldestFirst |Określa kolejność wycinkiów danych, które są przetwarzane.<br/><br/>Na przykład, jeśli masz 2 wycinków (jedno zdarza się o 16:00, a drugi w 17:00), i oba są oczekujące na wykonanie. Jeśli ustawisz executionPriorityOrder jako NewestFirst, najpierw zostanie przetworzony wycink o wartości 5 PM. Podobnie, jeśli ustawisz executionPriorityORder jako OldestFIrst, zostanie przetworzony wycinek o godzinie 4 PM. |
-| ponów |Integer<br/><br/>Maksymalna wartość może być równa 10 |0 |Liczba ponownych prób przed przetworzeniem danych dla wycinka jest oznaczona jako niepowodzenie. Wykonanie działania dla wycinka danych zostanie ponowione z określoną liczbą ponownych prób. Ponowienie próby jest wykonywane najszybciej, jak to możliwe po awarii. |
-| limit czasu |TimeSpan |00:00:00 |Limit czasu dla działania. Przykład: 00:10:00 (wskazuje limit czasu 10 min)<br/><br/>Jeśli wartość nie jest określona lub jest równa 0, limit czasu jest nieskończony.<br/><br/>Jeśli czas przetwarzania danych na wycinku przekracza wartość limitu czasu, zostanie anulowany, a system próbuje ponowić próbę przetwarzania. Liczba ponownych prób zależy od właściwości retry. Gdy wystąpi limit czasu, stan jest ustawiany na TimedOut. |
-| opóźnienie |TimeSpan |00:00:00 |Określ opóźnienie przed rozpoczęciem przetwarzania danych wycinka.<br/><br/>Wykonywanie działań dla wycinka danych jest uruchamiane po upływie oczekiwanego czasu wykonania.<br/><br/>Przykład: 00:10:00 (oznacza opóźnienie 10 minut) |
-| longRetry |Integer<br/><br/>Wartość maksymalna: 10 |1 |Liczba długotrwałych ponownych prób przed wykonaniem wycinka nie powiodła się.<br/><br/>longRetry próbuje longRetryInterval. Dlatego jeśli musisz określić godzinę między ponownymi próbami, użyj longRetry. Jeśli określono zarówno ponowną próbę, jak i longRetry, każda próba longRetry obejmuje ponowną próbę i maksymalną liczbę prób ponawiania prób * longRetry.<br/><br/>Na przykład jeśli w zasadach działania istnieją następujące ustawienia:<br/>Spróbuj ponownie wykonać 3<br/>longRetry: 2<br/>longRetryInterval: 01:00:00<br/><br/>Załóżmy, że istnieje tylko jeden wycinek do wykonania (stan oczekuje), a wykonywanie działania kończy się za każdym razem. Początkowo będą podejmowane trzy kolejne próby wykonania. Po każdej próbie będzie można ponowić próbę. Po wykonaniu pierwszych 3 prób zostanie wyświetlony stan wycinka LongRetry.<br/><br/>Po godzinie (czyli longRetryInteval wartość) może istnieć kolejny zestaw trzech kolejnych prób wykonania. Po tym stanie wycinka zostanie zakończona niepowodzeniem i nie będzie podejmowanych dalszych prób. W związku z tym wykonano ogólne 6 prób.<br/><br/>Jeśli jakiekolwiek wykonanie zakończy się pomyślnie, stan wycinka będzie gotowy i nie będą podejmowane żadne dalsze próby.<br/><br/>longRetry mogą być używane w sytuacjach, gdy dane zależne docierają do niedeterministycznych czasów lub w ogólnym środowisku, w którym odbywa się przetwarzanie danych. W takich przypadkach ponawianie próby jedna po drugiej może nie pomóc i wykonać to po upływie przedziału czasu w żądanych danych wyjściowych.<br/><br/>Uwaga: nie ustawiaj wysokich wartości dla longRetry lub longRetryInterval. Zazwyczaj wyższe wartości oznaczają inne problemy systemowe. |
-| longRetryInterval |TimeSpan |00:00:00 |Opóźnienie między długimi próbami ponowienia |
+| retry |Liczba całkowita<br/><br/>Maksymalna wartość może być równa 10 |0 |Liczba ponownych prób przed przetworzeniem danych dla wycinka jest oznaczona jako niepowodzenie. Wykonanie działania dla wycinka danych zostanie ponowione z określoną liczbą ponownych prób. Ponowienie próby jest wykonywane najszybciej, jak to możliwe po awarii. |
+| timeout |Czasu |00:00:00 |Limit czasu dla działania. Przykład: 00:10:00 (implikuje limit czasu 10 min)<br/><br/>Jeśli wartość nie jest określona lub jest równa 0, limit czasu jest nieskończony.<br/><br/>Jeśli czas przetwarzania danych na wycinku przekracza wartość limitu czasu, zostanie anulowany, a system próbuje ponowić próbę przetwarzania. Liczba ponownych prób zależy od właściwości retry. Gdy wystąpi limit czasu, stan jest ustawiany na TimedOut. |
+| opóźnienie |Czasu |00:00:00 |Określ opóźnienie przed rozpoczęciem przetwarzania danych wycinka.<br/><br/>Wykonywanie działań dla wycinka danych jest uruchamiane po upływie oczekiwanego czasu wykonania.<br/><br/>Przykład: 00:10:00 (oznacza opóźnienie 10 min) |
+| longRetry |Liczba całkowita<br/><br/>Wartość maksymalna: 10 |1 |Liczba długotrwałych ponownych prób przed wykonaniem wycinka nie powiodła się.<br/><br/>longRetry próbuje longRetryInterval. Dlatego jeśli musisz określić godzinę między ponownymi próbami, użyj longRetry. Jeśli określono zarówno ponowną próbę, jak i longRetry, każda próba longRetry obejmuje ponowną próbę i maksymalną liczbę prób ponawiania prób * longRetry.<br/><br/>Na przykład jeśli w zasadach działania istnieją następujące ustawienia:<br/>Ponów próbę: 3<br/>longRetry: 2<br/>longRetryInterval: 01:00:00<br/><br/>Załóżmy, że istnieje tylko jeden wycinek do wykonania (stan oczekuje), a wykonywanie działania kończy się za każdym razem. Początkowo będą podejmowane trzy kolejne próby wykonania. Po każdej próbie będzie można ponowić próbę. Po wykonaniu pierwszych 3 prób zostanie wyświetlony stan wycinka LongRetry.<br/><br/>Po godzinie (czyli longRetryInteval wartość) może istnieć kolejny zestaw trzech kolejnych prób wykonania. Po tym stanie wycinka zostanie zakończona niepowodzeniem i nie będzie podejmowanych dalszych prób. W związku z tym wykonano ogólne 6 prób.<br/><br/>Jeśli jakiekolwiek wykonanie zakończy się pomyślnie, stan wycinka będzie gotowy i nie będą podejmowane żadne dalsze próby.<br/><br/>longRetry mogą być używane w sytuacjach, gdy dane zależne docierają do niedeterministycznych czasów lub w ogólnym środowisku, w którym odbywa się przetwarzanie danych. W takich przypadkach ponawianie próby jedna po drugiej może nie pomóc i wykonać to po upływie przedziału czasu w żądanych danych wyjściowych.<br/><br/>Uwaga: nie ustawiaj wysokich wartości dla longRetry lub longRetryInterval. Zazwyczaj wyższe wartości oznaczają inne problemy systemowe. |
+| longRetryInterval |Czasu |00:00:00 |Opóźnienie między długimi próbami ponowienia |
 
 ## <a name="sample-copy-pipeline"></a>Przykładowy potok kopiowania
 W poniższym przykładowym potoku występuje jedno działanie typu **Copy** w sekcji **activities**. W tym przykładzie [działanie copy](data-factory-data-movement-activities.md) kopiuje dane z usługi Azure Blob Storage do bazy danych Azure SQL Database.
@@ -207,7 +207,7 @@ Pamiętaj o następujących kwestiach:
 * Dane wejściowe dla działania mają ustawienie **InputDataset**, a dane wyjściowe — **OutputDataset**. Definiowanie zestawów danych w formacie JSON opisano w artykule [Zestawy danych](data-factory-create-datasets.md).
 * W sekcji **typeProperties** parametr **BlobSource** został określony jako typ źródłowy, a parametr **SqlSink** został określony jako typ ujścia. W sekcji [działania dotyczące przenoszenia danych](#data-movement-activities) kliknij magazyn danych, którego chcesz użyć jako źródła lub ujścia, aby dowiedzieć się więcej na temat przenoszenia danych do/z tego magazynu danych.
 
-Aby uzyskać kompletny przewodnik tworzenia tego potoku, zobacz [samouczek: Copy data from Blob Storage to SQL Database](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) (Samouczek: kopiowanie danych z usługi Blob Storage do usługi SQL Database).
+Aby uzyskać kompletny przewodnik tworzenia tego potoku, zobacz [Samouczek: kopiowanie danych z BLOB Storage do SQL Database](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md).
 
 ## <a name="sample-transformation-pipeline"></a>Przykładowy potok przekształcania
 W poniższym przykładowym potoku występuje jedno działanie typu **HDInsightHive** w sekcji **activities**. W tym przykładzie [działanie HDInsight Hive](data-factory-hive-activity.md) przekształca dane z usługi Azure Blob Storage przez uruchomienie pliku skryptu Hive na klastrze usługi Azure HDInsight Hadoop.
@@ -261,11 +261,11 @@ Pamiętaj o następujących kwestiach:
 
 * W sekcji działań jest tylko jedno działanie, którego parametr **type** został ustawiony na wartość **HDInsightHive**.
 * Plik skryptu programu Hive **partitionweblogs.hql** jest przechowywany na koncie usługi Azure Storage (określonym za pomocą elementu scriptLinkedService o nazwie **AzureStorageLinkedService**) oraz w folderze **script** w kontenerze **adfgetstarted**.
-* Sekcja służy do określania ustawień środowiska uruchomieniowego, które są przesyłane do skryptu programu Hive jako wartości konfiguracyjne programu `${hiveconf:partitionedtable}`Hive `${hiveconf:inputtable}`(np.). `defines`
+* Sekcja `defines` służy do określania ustawień środowiska uruchomieniowego, które są przesyłane do skryptu programu Hive jako wartości konfiguracji programu Hive (np. `${hiveconf:inputtable}`, `${hiveconf:partitionedtable}`).
 
 Sekcja **typeProperties** jest inna dla każdego działania przekształcania. Aby uzyskać informacje na temat właściwości typu obsługiwanych dla działania przekształcania, kliknij działanie przekształcania w tabeli [działania przekształcania danych](#data-transformation-activities) .
 
-Aby uzyskać kompletny przewodnik tworzenia tego potoku, zobacz [samouczek: Kompiluj pierwszy potok, aby przetwarzać dane przy](data-factory-build-your-first-pipeline.md)użyciu klastra Hadoop.
+Aby uzyskać kompletny przewodnik tworzenia tego potoku, zobacz [Samouczek: Tworzenie pierwszego potoku w celu przetwarzania danych przy użyciu klastra Hadoop](data-factory-build-your-first-pipeline.md).
 
 ## <a name="multiple-activities-in-a-pipeline"></a>Wiele działań w potoku
 Poprzednie dwa przykładowe potoki zawierają tylko po jednym działaniu. Potok może obejmować więcej niż jedno działanie.
@@ -276,7 +276,7 @@ Dwa działania można połączyć przez posiadanie wyjściowego zestawu danych j
 
 ![Łączenie działań w tym samym potoku](./media/data-factory-create-pipelines/chaining-one-pipeline.png)
 
-W tym przykładzie potok ma dwie działania: Zakończeniu i Activity2. Zakończeniu Pobiera pozycję DataSet1 jako dane wejściowe i generuje Dataset2 danych wyjściowych. Działanie przyjmuje Dataset2 jako dane wejściowe i tworzy Dataset3 wyjściowy. Ponieważ dane wyjściowe elementu zakończeniu (Dataset2) to dane wejściowe Activity2, Activity2 działa tylko po pomyślnym zakończeniu działania i wygeneruje wycinka Dataset2. Jeśli zakończeniu nie powiedzie się z jakiegoś powodu i nie produkuje wycinka Dataset2, działanie 2 nie zostanie uruchomione dla tego wycinka (na przykład: od 9 do 10 AM).
+W tym przykładzie potok ma dwie działania: zakończeniu i Activity2. Zakończeniu Pobiera pozycję DataSet1 jako dane wejściowe i generuje Dataset2 danych wyjściowych. Działanie przyjmuje Dataset2 jako dane wejściowe i tworzy Dataset3 wyjściowy. Ponieważ dane wyjściowe elementu zakończeniu (Dataset2) to dane wejściowe Activity2, Activity2 działa tylko po pomyślnym zakończeniu działania i wygeneruje wycinka Dataset2. Jeśli zakończeniu nie powiedzie się z jakiegoś powodu i nie produkuje wycinka Dataset2, działanie 2 nie zostanie uruchomione dla tego wycinka (na przykład: 9 AM do 10 AM).
 
 Można również tworzyć łańcuch działań, które znajdują się w różnych potokach.
 
@@ -290,7 +290,7 @@ Potoki można tworzyć przy użyciu jednego z tych narzędzi lub zestawów SDK.
 
 - Kreator kopiowania
 - Visual Studio
-- Azure PowerShell
+- Program Azure PowerShell
 - Szablon usługi Azure Resource Manager
 - Interfejs API REST
 - Interfejs API .NET
@@ -306,7 +306,7 @@ Po utworzeniu/wdrożeniu potoku możesz zarządzać potokami i monitorować je z
 - [Monitorowanie potoków i zarządzanie nimi za pomocą aplikacji monitorowanie i zarządzanie](data-factory-monitor-manage-app.md)
 
 ## <a name="onetime-pipeline"></a>Potok jednorazowej
-Można utworzyć i zaplanować okresowe uruchamianie potoku (na przykład: co godzinę lub codziennie) w czasie rozpoczęcia i zakończenia określonych w definicji potoku. Szczegóły można znaleźć w temacie Planowanie działań. Możesz również utworzyć potok, który jest uruchamiany tylko raz. W tym celu należy ustawić właściwość **pipelinemode** w definicji potoku na **jednorazowej** , jak pokazano w poniższym przykładzie JSON. Wartość domyślna tej właściwości jest zaplanowana.
+Można utworzyć i zaplanować okresowe uruchamianie potoku (na przykład: co godzinę lub codziennie) w czasie rozpoczęcia i zakończenia określonych w definicji potoku. Szczegóły można znaleźć w temacie Planowanie działań. Możesz również utworzyć potok, który jest uruchamiany tylko raz. W tym celu należy ustawić właściwość **pipelinemode** w definicji potoku na **jednorazowej** , jak pokazano w poniższym przykładzie JSON. Wartość domyślna tej właściwości jest **zaplanowana**.
 
 ```json
 {
@@ -344,7 +344,7 @@ Można utworzyć i zaplanować okresowe uruchamianie potoku (na przykład: co go
 }
 ```
 
-Należy pamiętać o następujących kwestiach:
+Pamiętaj o następujących kwestiach:
 
 * Nie określono czasu **rozpoczęcia** i **zakończenia** potoku.
 * Określono **dostępność** zestawów danych wejściowych i wyjściowych (**częstotliwość** i **interwał**), mimo że Data Factory nie używa wartości.

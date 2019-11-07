@@ -1,5 +1,5 @@
 ---
-title: Program PowerShell dla punktów końcowych sieci wirtualnych i reguły dla jednej i puli baz danych w usłudze Azure SQL | Microsoft Docs
+title: 'Program PowerShell dla punktów końcowych sieci wirtualnych i reguły dla jednej i puli baz danych w usłudze Azure SQL '
 description: Udostępnia skrypty programu PowerShell do tworzenia punktów końcowych usługi wirtualnych i zarządzania nimi dla Azure SQL Database i SQL Data Warehouse.
 services: sql-database
 ms.service: sql-database
@@ -11,14 +11,14 @@ author: rohitnayakmsft
 ms.author: rohitna
 ms.reviewer: genemi, vanto
 ms.date: 03/12/2019
-ms.openlocfilehash: 326eec68ed3ca1d42552b89fe4519d24c62cf12a
-ms.sourcegitcommit: bc3a153d79b7e398581d3bcfadbb7403551aa536
+ms.openlocfilehash: 0f3c44d705cb3d8b6ff2d855686394d9e9f1575e
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68841375"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73686853"
 ---
-# <a name="powershell--create-a-virtual-service-endpoint-and-vnet-rule-for-sql"></a>Program PowerShell:  Tworzenie wirtualnego punktu końcowego usługi i reguły sieci wirtualnej dla bazy danych SQL
+# <a name="powershell--create-a-virtual-service-endpoint-and-vnet-rule-for-sql"></a>PowerShell: Tworzenie punktu końcowego usługi wirtualnej i reguły sieci wirtualnej dla serwera SQL
 
 *Reguły sieci wirtualnej* to jedna funkcja zabezpieczeń zapory, która kontroluje, czy serwer bazy danych dla pojedynczych baz danych i elastycznej puli na platformie Azure [SQL Database](sql-database-technical-overview.md) lub dla baz danych w [SQL Data Warehouse](../sql-data-warehouse/sql-data-warehouse-overview-what-is.md) akceptuje komunikację są wysyłane z określonych podsieci w sieciach wirtualnych.
 
@@ -30,7 +30,7 @@ W tym artykule przedstawiono i wyjaśniono skrypt programu PowerShell, który wy
 1. Tworzy *punkt końcowy usługi wirtualnej* Microsoft Azure w podsieci.
 2. Dodaje punkt końcowy do zapory serwera Azure SQL Database, aby utworzyć *regułę sieci wirtualnej*.
 
-Twoje motywacje do tworzenia reguł są wyjaśnione w: [Punkty końcowe usługi wirtualnej dla Azure SQL Database][sql-db-vnet-service-endpoint-rule-overview-735r].
+Twoje motywacje do tworzenia reguł są wyjaśnione w: [punkty końcowe usługi wirtualnej dla Azure SQL Database][sql-db-vnet-service-endpoint-rule-overview-735r].
 
 > [!TIP]
 > Jeśli wystarczy ocenić lub dodać *nazwę typu* punktu końcowego usługi wirtualnej dla SQL Database do podsieci, możesz przejść do naszego bardziej [bezpośredniego skryptu programu PowerShell](#a-verify-subnet-is-endpoint-ps-100).
@@ -45,11 +45,11 @@ W tym artykule wyróżnia się polecenie cmdlet **New-AzSqlServerVirtualNetworkR
 
 Na poniższej liście przedstawiono sekwencję innych *najważniejszych* poleceń cmdlet, które należy wykonać, aby przygotować się do wywołania polecenia **New-AzSqlServerVirtualNetworkRule**. W tym artykule te wywołania występują w [skrypcie 3 "reguła sieci wirtualnej"](#a-script-30):
 
-1. [New-AzVirtualNetworkSubnetConfig](https://docs.microsoft.com/powershell/module/az.network/new-azvirtualnetworksubnetconfig): Tworzy obiekt podsieci.
-2. [New-AzVirtualNetwork](https://docs.microsoft.com/powershell/module/az.network/new-azvirtualnetwork): Tworzy sieć wirtualną, nadając jej podsieć.
-3. [Set-AzVirtualNetworkSubnetConfig](https://docs.microsoft.com/powershell/module/az.network/Set-azVirtualNetworkSubnetConfig): Przypisuje wirtualny punkt końcowy usługi do podsieci.
-4. [Set-AzVirtualNetwork](https://docs.microsoft.com/powershell/module/az.network/Set-azVirtualNetwork): Utrzymuje aktualizacje dokonane w sieci wirtualnej.
-5. [New-AzSqlServerVirtualNetworkRule](https://docs.microsoft.com/powershell/module/az.sql/new-azsqlservervirtualnetworkrule): Gdy podsieć jest punktem końcowym, program dodaje podsieć jako regułę sieci wirtualnej do listy kontroli dostępu serwera Azure SQL Database.
+1. [New-AzVirtualNetworkSubnetConfig](https://docs.microsoft.com/powershell/module/az.network/new-azvirtualnetworksubnetconfig): tworzy obiekt podsieci.
+2. Polecenie [New-AzVirtualNetwork](https://docs.microsoft.com/powershell/module/az.network/new-azvirtualnetwork): tworzy sieć wirtualną, podając ją w podsieci.
+3. [Set-AzVirtualNetworkSubnetConfig](https://docs.microsoft.com/powershell/module/az.network/Set-azVirtualNetworkSubnetConfig): przypisuje wirtualny punkt końcowy usługi do podsieci.
+4. [Set-AzVirtualNetwork](https://docs.microsoft.com/powershell/module/az.network/Set-azVirtualNetwork): utrzymuje aktualizacje dokonane w sieci wirtualnej.
+5. Polecenie [New-AzSqlServerVirtualNetworkRule](https://docs.microsoft.com/powershell/module/az.sql/new-azsqlservervirtualnetworkrule): gdy podsieć jest punktem końcowym, program dodaje podsieć jako regułę sieci wirtualnej do listy kontroli dostępu serwera Azure SQL Database.
    - To polecenie cmdlet oferuje parametr **-IgnoreMissingVNetServiceEndpoint**, zaczynając od modułu Azure RM PowerShell w wersji 5.1.1.
 
 ## <a name="prerequisites-for-running-powershell"></a>Wymagania wstępne dotyczące uruchamiania programu PowerShell
@@ -66,7 +66,7 @@ Nasz Demonstracja skrypt programu PowerShell jest podzielony na sekwencję mniej
 
 <a name="a-script-10" />
 
-### <a name="script-1-variables"></a>Skrypt 1: Zmienne
+### <a name="script-1-variables"></a>Skrypt 1: zmienne
 
 Ten pierwszy skrypt programu PowerShell przypisuje wartości do zmiennych. Kolejne skrypty zależą od tych zmiennych.
 
@@ -115,7 +115,7 @@ Write-Host 'Completed script 1, the "Variables".';
 
 <a name="a-script-20" />
 
-### <a name="script-2-prerequisites"></a>Skrypt 2: Wymagania wstępne
+### <a name="script-2-prerequisites"></a>Skrypt 2: wymagania wstępne
 
 Ten skrypt przygotowuje się do następnego skryptu, gdzie akcja punktu końcowego to. Ten skrypt tworzy następujące elementy wymienione na liście, ale tylko wtedy, gdy jeszcze nie istnieją. Możesz pominąć skrypt 2, jeśli masz pewność, że te elementy już istnieją:
 
@@ -292,7 +292,7 @@ Write-Host 'Completed script 3, the "Virtual-Network-Rule".';
 
 <a name="a-script-40" />
 
-## <a name="script-4-clean-up"></a>Skrypt 4: Czyszczenie
+## <a name="script-4-clean-up"></a>Skrypt 4: oczyszczanie
 
 Ten końcowy skrypt usuwa zasoby, które zostały utworzone przez poprzednie skrypty dla demonstracji. Jednak skrypt prosi o potwierdzenie przed usunięciem następujących danych:
 

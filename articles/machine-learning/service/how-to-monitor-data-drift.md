@@ -10,12 +10,12 @@ ms.reviewer: jmartens
 ms.author: copeters
 author: cody-dkdc
 ms.date: 11/04/2019
-ms.openlocfilehash: 536f3ab506dcbe2b8997f2c1870f25244b6c070f
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
-ms.translationtype: HT
+ms.openlocfilehash: eddfddc994482bcb6e60604703e7f306fee9c32b
+ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 11/04/2019
-ms.locfileid: "73489672"
+ms.locfileid: "73574361"
 ---
 # <a name="detect-data-drift-preview-on-models-deployed-to-azure-kubernetes-service-aks"></a>Wykrywaj dryfowanie danych (wersja zapoznawcza) dla modeli wdrożonych w usłudze Azure Kubernetes Service (AKS)
 [!INCLUDE [applies-to-skus](../../../includes/aml-applies-to-enterprise-sku.md)]
@@ -161,14 +161,13 @@ datadrift.disable_schedule()
 
 Konfigurację detektora dryfowania danych można zobaczyć w obszarze **modele** na karcie **szczegóły** w obszarze roboczym w programie [Azure Machine Learning Studio](https://ml.azure.com).
 
-![Dryfowanie danych Azure Machine Learning Studio](media/how-to-monitor-data-drift/drift-config.png)
+[![Azure Machine Learning Studio — dryfowanie danych](media/how-to-monitor-data-drift/drift-config.png)](media/how-to-monitor-data-drift/drift-config-expanded.png)
 
 ## <a name="view-results-in-your-azure-machine-learning-studio"></a>Wyświetl wyniki w Azure Machine Learning Studio
 
 Aby wyświetlić wyniki w obszarze roboczym w programie [Azure Machine Learning Studio](https://ml.azure.com), przejdź do strony model. Na karcie Szczegóły w modelu jest wyświetlana konfiguracja dryfowania danych. Karta **dryfowanie danych** jest teraz dostępna Wizualizacja metryk dryfowania danych. 
 
 [![Azure Machine Learning Studio — dryfowanie danych](media/how-to-monitor-data-drift/drift-ui.png)](media/how-to-monitor-data-drift/drift-ui-expanded.png)
-
 
 ## <a name="receiving-drift-alerts"></a>Otrzymywanie alertów o dryfach
 

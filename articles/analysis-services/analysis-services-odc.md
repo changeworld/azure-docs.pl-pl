@@ -1,18 +1,18 @@
 ---
-title: Utwórz plik odc, aby nawiązać połączenie z serwerem Azure Analysis Services | Microsoft Docs
+title: Nawiązywanie połączenia z Azure Analysis Services przy użyciu pliku odc | Microsoft Docs
 description: Dowiedz się, jak utworzyć plik połączenia danych pakietu Office w celu nawiązania połączenia i pobrania danych z serwera Analysis Services na platformie Azure.
 author: minewiskan
 ms.service: azure-analysis-services
 ms.topic: conceptual
-ms.date: 10/28/2019
+ms.date: 10/30/2019
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 5aa9645ec3138ed661305e1019b3e6dadfe4d212
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.openlocfilehash: a4e2dc09c54b39d58b0193e7ac9f585236886722
+ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73146685"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73572685"
 ---
 # <a name="create-an-office-data-connection-file"></a>Tworzenie pliku połączenia danych pakietu Office
 
@@ -21,13 +21,13 @@ Informacje przedstawione w tym artykule opisują sposób tworzenia pliku połąc
 
 1. Skopiuj przykładowy plik połączenia poniżej i wklej go do edytora tekstu. 
 
-2. W `odc:ConnectionString` Zmień następujące właściwości:
+2. W `odc:ConnectionString`Zmień następujące właściwości:
 
-    *   W `Data Source=asazure://<region>.asazure.windows.net/<servername>;` Zmień `<region>` do regionu serwera Analysis Services i `<servername>` na nazwę serwera.
+    *   W `Data Source=asazure://<region>.asazure.windows.net/<servername>;` zmienić `<region>` do regionu serwera Analysis Services i `<servername>` na nazwę serwera.
 
-    *   W `Initial Catalog=<database>;` Zmień `<database>` na nazwę bazy danych.
+    *   W `Initial Catalog=<database>;` zmienić `<database>` na nazwę bazy danych.
 
-3. W `<odc:CommandText>Model</odc:CommandText>` Zmień `Model` na nazwę modelu lub perspektywy. 
+3. W `<odc:CommandText>Model</odc:CommandText>` zmienić `Model` na nazwę modelu lub perspektywy. 
 
 4. Zapisz plik z rozszerzeniem `.odc` w folderze C:\Users\\*username*\Documents\My Data Sources.
 

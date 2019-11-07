@@ -1,6 +1,6 @@
 ---
 title: Jak wybrać algorytmy
-titleSuffix: Azure Machine Learning Studio (classic)
+titleSuffix: ML Studio (classic) Azure
 description: Jak wybierać algorytmy Azure Machine Learning Studio (klasyczne) dla nadzorowanych i nienadzorowanych uczenia się w ramach obsługi klastrów, klasyfikacji lub regresji.
 services: machine-learning
 ms.service: machine-learning
@@ -10,12 +10,12 @@ author: xiaoharper
 ms.author: amlstudiodocs
 ms.custom: previous-ms.author=pakalra, previous-author=pakalra
 ms.date: 03/04/2019
-ms.openlocfilehash: 02e72286e824de49be4fbfddcdc5d0e68625f5ca
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: e8d296f8752e06e6e47c349be9c900b9d0489ec5
+ms.sourcegitcommit: 6c2c97445f5d44c5b5974a5beb51a8733b0c2be7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73493524"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73619759"
 ---
 # <a name="how-to-choose-algorithms-for-azure-machine-learning-studio-classic"></a>Jak wybrać algorytmy dla Azure Machine Learning Studio (klasyczne)
 

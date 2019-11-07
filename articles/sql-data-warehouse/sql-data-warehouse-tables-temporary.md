@@ -1,6 +1,6 @@
 ---
-title: Tabele tymczasowe w SQL Data Warehouse | Microsoft Docs
-description: Podstawowe wskazówki dotyczące używania tabel tymczasowych i wyróżniania zasad tabel tymczasowych na poziomie sesji.
+title: Tabele tymczasowe
+description: Podstawowe wskazówki dotyczące używania tabel tymczasowych w Azure SQL Data Warehouse, z uwzględnieniem zasad tabel tymczasowych na poziomie sesji.
 services: sql-data-warehouse
 author: XiaoyuMSFT
 manager: craigg
@@ -10,12 +10,13 @@ ms.subservice: development
 ms.date: 04/01/2019
 ms.author: xiaoyul
 ms.reviewer: igorstan
-ms.openlocfilehash: e43e52e56ec7abbf5d8eb879defef54bd7d50658
-ms.sourcegitcommit: 75a56915dce1c538dc7a921beb4a5305e79d3c7a
+ms.custom: seo-lt-2019
+ms.openlocfilehash: 23a5825a32c602f70aff1d9f577ce13d3e9f2260
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/24/2019
-ms.locfileid: "68479827"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73685437"
 ---
 # <a name="temporary-tables-in-sql-data-warehouse"></a>Tabele tymczasowe w SQL Data Warehouse
 Ten artykuł zawiera podstawowe wskazówki dotyczące używania tabel tymczasowych i wyróżniania zasad tabel tymczasowych na poziomie sesji. Korzystając z informacji podanych w tym artykule, można modularyzacji swój kod, ulepszając i ułatwiając konserwację kodu.
@@ -44,7 +45,7 @@ WITH
 )
 ```
 
-Tabele tymczasowe można także tworzyć przy `CTAS` użyciu dokładnie takiej samej metody:
+Tabele tymczasowe można również utworzyć za pomocą `CTAS` przy użyciu dokładnie tego samego podejścia:
 
 ```sql
 CREATE TABLE #stats_ddl
@@ -85,12 +86,12 @@ GROUP BY
 ``` 
 
 > [!NOTE]
-> `CTAS`jest zaawansowanym poleceniem i ma dodatkową zaletę, która jest wydajna podczas korzystania z przestrzeni dzienników transakcji. 
+> `CTAS` jest zaawansowanym poleceniem i ma zaawansowaną zaletę użycia przestrzeni dzienników transakcji. 
 > 
 > 
 
 ## <a name="dropping-temporary-tables"></a>Usuwanie tabel tymczasowych
-Po utworzeniu nowej sesji nie powinny istnieć tabele tymczasowe.  Jednakże w przypadku wywołania tej samej procedury składowanej, która tworzy tymczasową o tej samej nazwie, aby upewnić się, `CREATE TABLE` że instrukcje zostały wykonane pomyślnie, `DROP` można użyć prostej kontroli przed rozpoczęciem z użyciem, jak w poniższym przykładzie:
+Po utworzeniu nowej sesji nie powinny istnieć tabele tymczasowe.  Jednakże w przypadku wywołania tej samej procedury składowanej, która tworzy tymczasową o tej samej nazwie, aby upewnić się, że instrukcje `CREATE TABLE` powiodło się po pomyślnym uruchomieniu prostej kontroli przed wystąpieniem `DROP` można użyć, jak w poniższym przykładzie:
 
 ```sql
 IF OBJECT_ID('tempdb..#stats_ddl') IS NOT NULL
@@ -99,7 +100,7 @@ BEGIN
 END
 ```
 
-Aby zapewnić spójność kodowania, dobrym sposobem jest użycie tego wzorca dla tabel i tabel tymczasowych.  Dobrym pomysłem `DROP TABLE` jest również usunięcie tabel tymczasowych po zakończeniu pracy z nimi w kodzie.  W opracowywaniu procedury składowanej, często widzisz polecenia upuszczania powiązane razem na końcu procedury, aby upewnić się, że te obiekty zostały oczyszczone.
+Aby zapewnić spójność kodowania, dobrym sposobem jest użycie tego wzorca dla tabel i tabel tymczasowych.  Dobrym pomysłem jest również używanie `DROP TABLE` do usuwania tabel tymczasowych po zakończeniu pracy z nimi w kodzie.  W opracowywaniu procedury składowanej, często widzisz polecenia upuszczania powiązane razem na końcu procedury, aby upewnić się, że te obiekty zostały oczyszczone.
 
 ```sql
 DROP TABLE #stats_ddl
@@ -180,7 +181,7 @@ FROM    t1
 GO
 ```
 
-Na tym etapie jedyną akcją, która miała miejsce, jest utworzenie procedury składowanej, która generuje tabelę tymczasową #stats_ddl, przy użyciu instrukcji języka DDL.  Ta procedura składowana opuszcza #stats_ddl, jeśli już istnieje, aby upewnić się, że nie kończy się niepowodzeniem w przypadku uruchomienia więcej niż raz w ramach sesji.  Jednakże, ponieważ nie `DROP TABLE` ma na końcu procedury składowanej, gdy procedura składowana zostanie ukończona, opuszcza utworzoną tabelę, aby można ją było odczytać poza procedurą składowaną.  W SQL Data Warehouse, w przeciwieństwie do innych baz danych SQL Server, można użyć tabeli tymczasowej poza procedurą, która ją utworzyła.  SQL Data Warehouse tabel tymczasowych można używać w **dowolnym miejscu** w ramach sesji. Może to prowadzić do bardziej modularnego i możliwego do zarządzania kodu, jak w poniższym przykładzie:
+Na tym etapie jedyną akcją, która miała miejsce, jest utworzenie procedury składowanej, która generuje tabelę tymczasową #stats_ddl, przy użyciu instrukcji języka DDL.  Ta procedura składowana opuszcza #stats_ddl, jeśli już istnieje, aby upewnić się, że nie kończy się niepowodzeniem w przypadku uruchomienia więcej niż raz w ramach sesji.  Jednak ponieważ nie ma `DROP TABLE` na końcu procedury składowanej, po zakończeniu procedury składowanej opuści ona utworzoną tabelę, aby można ją było odczytać poza procedurą składowaną.  W SQL Data Warehouse, w przeciwieństwie do innych baz danych SQL Server, można użyć tabeli tymczasowej poza procedurą, która ją utworzyła.  SQL Data Warehouse tabel tymczasowych można używać w **dowolnym miejscu** w ramach sesji. Może to prowadzić do bardziej modularnego i możliwego do zarządzania kodu, jak w poniższym przykładzie:
 
 ```sql
 EXEC [dbo].[prc_sqldw_update_stats] @update_type = 1, @sample_pct = NULL;
@@ -204,6 +205,6 @@ DROP TABLE #stats_ddl;
 ## <a name="temporary-table-limitations"></a>Ograniczenia tabeli tymczasowej
 SQL Data Warehouse powoduje nałożenie kilku ograniczeń podczas implementowania tabel tymczasowych.  Obecnie obsługiwane są tylko tabele tymczasowe w zakresie sesji.  Globalne tabele tymczasowe nie są obsługiwane.  Ponadto nie można tworzyć widoków w tabelach tymczasowych.  Tabele tymczasowe można tworzyć tylko za pomocą rozkładu mieszania lub działania okrężnego.  Replikowana tymczasowa dystrybucja tabel nie jest obsługiwana. 
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 Aby dowiedzieć się więcej na temat tworzenia tabel, zobacz [Omówienie tabeli](sql-data-warehouse-tables-overview.md).
 

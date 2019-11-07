@@ -1,5 +1,5 @@
 ---
-title: Konfigurowanie odzyskiwania po awarii dla wielowarstwowej aplikacji SharePoint przy użyciu Azure Site Recovery | Microsoft Docs
+title: Odzyskiwanie po awarii dla wielowarstwowej aplikacji SharePoint przy użyciu Azure Site Recovery
 description: W tym artykule opisano sposób konfigurowania odzyskiwania po awarii dla wielowarstwowej aplikacji SharePoint przy użyciu możliwości Azure Site Recovery.
 author: sujayt
 manager: rochakm
@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 6/27/2019
 ms.author: sutalasi
-ms.openlocfilehash: e9b688d54049c21da3276a20e27dcc9ad3d4ceca
-ms.sourcegitcommit: 2aefdf92db8950ff02c94d8b0535bf4096021b11
+ms.openlocfilehash: cc72cb4134e6492478805421e448df26a8dc4554
+ms.sourcegitcommit: 6c2c97445f5d44c5b5974a5beb51a8733b0c2be7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/03/2019
-ms.locfileid: "70231472"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73622411"
 ---
 # <a name="set-up-disaster-recovery-for-a-multi-tier-sharepoint-application-for-disaster-recovery-using-azure-site-recovery"></a>Konfigurowanie odzyskiwania po awarii dla wielowarstwowej aplikacji SharePoint na potrzeby odzyskiwania po awarii przy użyciu Azure Site Recovery
 
@@ -42,8 +42,8 @@ Przed rozpoczęciem upewnij się, że rozumiesz następujące kwestie:
 2. [Projektowanie sieci odzyskiwania](site-recovery-network-design.md)
 3. [Testowanie pracy w trybie failover na platformie Azure](site-recovery-test-failover-to-azure.md)
 4. [Przełączenie w tryb failover na platformie Azure](site-recovery-failover.md)
-5. Jak replikować [kontroler domeny](site-recovery-active-directory.md)
-6. Jak replikować [SQL Server](site-recovery-sql.md)
+5. Jak [replikować kontroler domeny](site-recovery-active-directory.md)
+6. Jak [replikować SQL Server](site-recovery-sql.md)
 
 ## <a name="sharepoint-architecture"></a>Architektura programu SharePoint
 
@@ -102,7 +102,7 @@ Postępuj zgodnie z [poniższymi wskazówkami](site-recovery-vmware-to-azure.md)
 W przypadku witryn mających dostęp do Internetu [Utwórz profil Traffic Manager typu "Priority"](../traffic-manager/traffic-manager-create-profile.md) w subskrypcji platformy Azure. A następnie skonfiguruj profil DNS i Traffic Manager w następujący sposób.
 
 
-| **Where** | **Element źródłowy** | **Obiekt docelowy**|
+| **Miejscu** | **Element źródłowy** | **Obiekt docelowy**|
 | --- | --- | --- |
 | Publiczna usługa DNS | Publiczna usługa DNS dla witryn programu SharePoint <br/><br/> Np.: sharepoint.contoso.com | Traffic Manager <br/><br/> contososharepoint.trafficmanager.net |
 | Lokalna usługa DNS | sharepointonprem.contoso.com | Publiczny adres IP w farmie lokalnej |

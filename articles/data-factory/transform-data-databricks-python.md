@@ -1,5 +1,5 @@
 ---
-title: Przekształcanie danych za pomocą języka Python — platforma Azure | Microsoft Docs
+title: Przekształcanie danych za pomocą języka Python — platforma Azure
 description: Dowiedz się, jak przetwarzać lub przekształcać dane, uruchamiając w języku Python.
 services: data-factory
 documentationcenter: ''
@@ -12,16 +12,16 @@ author: djpmsft
 ms.author: daperlov
 ms.reviewer: maghan
 manager: craigg
-ms.openlocfilehash: 02c4644c4440c3a00a21ef22674bcc0d00902ac2
-ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
+ms.openlocfilehash: 47654e8183dab120376f94df63d7664ead5dd580
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70140791"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73683936"
 ---
 # <a name="transform-data-by-running-a-python-activity-in-azure-databricks"></a>Przekształcanie danych przez uruchomienie działania języka Python w Azure Databricks
 
-Działanie języka Python Azure Databricks w [potoku Data Factory](concepts-pipelines-activities.md) uruchamia plik w języku Python w klastrze Azure Databricks. W tym artykule przedstawiono artykuł [działania](transform-data.md) przekształcania danych, który zawiera ogólne omówienie transformacji danych i obsługiwanych działań transformacji. Azure Databricks to zarządzana platforma do uruchamiania Apache Spark.
+Działanie języka Python Azure Databricks w [potoku Data Factory](concepts-pipelines-activities.md) uruchamia plik w języku Python w klastrze Azure Databricks. W tym artykule opisano [działania przekształcania danych](transform-data.md) artykuł, który przedstawia ogólne omówienie transformacji danych i obsługiwanych działań transformacji. Azure Databricks to zarządzana platforma do uruchamiania Apache Spark.
 
 Poniższy klip wideo zawiera jedenastominutowe wprowadzenie i demonstrację tej funkcji:
 
@@ -62,19 +62,19 @@ Poniżej znajduje się przykładowa definicja JSON działania w języku Python:
 
 W poniższej tabeli opisano właściwości JSON używane w definicji JSON:
 
-|Właściwość|Opis|Wymagane|
+|Właściwość|Opis|Wymagany|
 |---|---|---|
 |name|Nazwa działania w potoku.|Tak|
 |description|Tekst opisujący działanie działania.|Nie|
 |type|Dla działania języka Python dla elementów datakostks typem działania jest DatabricksSparkPython.|Tak|
-|linkedServiceName|Nazwa połączonej usługi datakostki, w której działa działanie języka Python. Aby dowiedzieć się więcej o tej połączonej usłudze, zobacz artykuł dotyczący [połączonych usług](compute-linked-services.md) obliczeniowych.|Tak|
+|linkedServiceName|Nazwa połączonej usługi datakostki, w której działa działanie języka Python. Aby dowiedzieć się więcej na temat tej połączonej usługi, zobacz artykuł informacje o [obliczeniu usługi połączonej](compute-linked-services.md) .|Tak|
 |pythonFile|Identyfikator URI pliku języka Python, który ma zostać wykonany. Obsługiwane są tylko ścieżki DBFS.|Tak|
 |parameters|Parametry wiersza polecenia, które zostaną przesłane do pliku języka Python. To jest tablica ciągów.|Nie|
 |bibliotece|Lista bibliotek do zainstalowania w klastrze, w którym będą wykonywane zadania. Może to być tablica < String, Object >|Nie|
 
 ## <a name="supported-libraries-for-databricks-activities"></a>Biblioteki obsługiwane dla działań datakostek
 
-W powyższej definicji działań datacegły należy określić następujące typy biblioteki: *jar*, *egg*, *Maven*, *PyPi*, *Cran*.
+W powyższej definicji działań datacegły należy określić następujące typy biblioteki: *jar*, *jaja*, *Maven*, *PyPi*, *Cran*.
 
 ```json
 {
@@ -116,7 +116,7 @@ Aby uzyskać więcej szczegółowych informacji, zapoznaj się z [dokumentacją]
 
 Aby uzyskać ścieżkę dBfs biblioteki dodanej przy użyciu interfejsu użytkownika, można użyć elementu [CLI (instalacja)](https://docs.azuredatabricks.net/user-guide/dev-tools/databricks-cli.html#install-the-cli). 
 
-Zazwyczaj biblioteki jar są przechowywane w obszarze dBfs:/FileStore/Jars przy użyciu interfejsu użytkownika. Wszystkie te listę można wyświetlić za pomocą interfejsu wiersza polecenia: datakosteks *FS LS dBfs:/FileStore/Jars* 
+Zazwyczaj biblioteki jar są przechowywane w obszarze dBfs:/FileStore/Jars przy użyciu interfejsu użytkownika. Wszystkie te listę można wyświetlić za pomocą interfejsu wiersza polecenia: *datakosteks FS LS dBfs:/FileStore/Jars* 
 
 
 

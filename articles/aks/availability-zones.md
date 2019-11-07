@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 06/24/2019
 ms.author: mlearned
-ms.openlocfilehash: eb48afb15e1314dcf670ba04afd9609876dc9539
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
-ms.translationtype: HT
+ms.openlocfilehash: 3790511bf3f71cdeb01853e4051a013719502d9f
+ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73472828"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73605089"
 ---
 # <a name="create-an-azure-kubernetes-service-aks-cluster-that-uses-availability-zones"></a>Utwórz klaster usługi Azure Kubernetes Service (AKS), który używa Strefy dostępności
 
@@ -72,9 +72,9 @@ W przypadku awarii strefy węzły można ponownie zrównoważyć ręcznie lub pr
 
 ## <a name="create-an-aks-cluster-across-availability-zones"></a>Tworzenie klastra AKS w różnych strefach dostępności
 
-Podczas tworzenia klastra przy użyciu polecenia [AZ AKS Create][az-aks-create] , parametr `--zones` definiuje, które węzły agentów zostaną wdrożone w programie. Składniki płaszczyzny kontroli AKS dla klastra są również rozproszone w różnych strefach w najwyższej dostępnej konfiguracji podczas tworzenia klastra określającego parametr `--zones`.
+Podczas tworzenia klastra przy użyciu polecenia [AZ AKS Create][az-aks-create] , parametr `--zones` definiuje, które węzły agentów zostaną wdrożone w programie. Składniki płaszczyzny kontroli AKS dla klastra są również rozmieszczone w różnych strefach w najwyższej dostępnej konfiguracji podczas definiowania parametru `--zones` podczas tworzenia klastra.
 
-Jeśli nie zdefiniowano żadnych stref dla domyślnej puli agentów podczas tworzenia klastra AKS, składniki płaszczyzny kontroli AKS dla klastra nie będą używać stref dostępności. Można dodać dodatkowe pule węzłów za pomocą polecenia [AZ AKS nodepool Add][az-aks-nodepool-add] i określić `--zones` dla tych nowych węzłów agenta, jednak składniki płaszczyzny kontroli pozostają bez świadomości strefy dostępności. Po wdrożeniu nie można zmienić świadomości strefy dla puli węzłów ani składników płaszczyzny kontroli AKS.
+Jeśli nie zdefiniowano żadnych stref dla domyślnej puli agentów podczas tworzenia klastra AKS, składniki płaszczyzny kontroli AKS dla klastra nie będą używać stref dostępności. Można dodać dodatkowe pule węzłów za pomocą polecenia [AZ AKS nodepool Add][az-aks-nodepool-add] i określić `--zones` dla tych nowych węzłów, jednak składniki płaszczyzny kontroli pozostają bez świadomości strefy dostępności. Po wdrożeniu nie można zmienić świadomości strefy dla puli węzłów ani składników płaszczyzny kontroli AKS.
 
 Poniższy przykład tworzy klaster AKS o nazwie *myAKSCluster* w grupie zasobów o nazwie Moja *resourceName*. Łącznie *3* węzły są tworzone — jeden Agent w strefie *1*, jeden w *2*, a następnie jeden w *3*. Składniki płaszczyzny kontroli AKS są również dystrybuowane między strefami w najwyższej dostępnej konfiguracji, ponieważ są one definiowane jako część procesu tworzenia klastra.
 

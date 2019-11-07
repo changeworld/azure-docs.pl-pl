@@ -1,5 +1,5 @@
 ---
-title: Data Factory — dziennik zmian interfejsu API platformy .NET | Microsoft Docs
+title: Data Factory — dziennik zmian interfejsu API platformy .NET
 description: Opisuje istotne zmiany, Dodatki funkcji, poprawki błędów itp. w określonej wersji interfejsu API platformy .NET dla Azure Data Factory.
 services: data-factory
 documentationcenter: ''
@@ -12,12 +12,12 @@ ms.workload: data-services
 ms.topic: conceptual
 robots: noindex
 ms.date: 01/22/2018
-ms.openlocfilehash: 35f0145526aa596691fde26e92695f64f5ac35e0
-ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
+ms.openlocfilehash: e1902db6bc3a127262f5e37f36e82b07ab15c7c9
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70140520"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73683193"
 ---
 # <a name="azure-data-factory---net-api-change-log"></a>Azure Data Factory — dziennik zmian interfejsu API platformy .NET
 > [!NOTE]
@@ -41,7 +41,7 @@ Dodatki do funkcji:
 ## <a name="version-4100"></a>4\.10.0 wersja
 * Następujące opcjonalne właściwości zostały dodane do formatu TextFormat:
   * [SkipLineCount](https://msdn.microsoft.com/library/azure/microsoft.azure.management.datafactories.models.textformat.skiplinecount.aspx)
-  * [FirstRowAsHeader](https://msdn.microsoft.com/library/azure/microsoft.azure.management.datafactories.models.textformat.firstrowasheader.aspx)
+  * [Użycia](https://msdn.microsoft.com/library/azure/microsoft.azure.management.datafactories.models.textformat.firstrowasheader.aspx)
   * [TreatEmptyAsNull](https://msdn.microsoft.com/library/azure/microsoft.azure.management.datafactories.models.textformat.treatemptyasnull.aspx)
 * Dodano następujące typy połączonych usług:
   * [OnPremisesCassandraLinkedService](https://msdn.microsoft.com/library/azure/microsoft.azure.management.datafactories.models.onpremisescassandralinkedservice.aspx)
@@ -101,7 +101,7 @@ Dodatki do funkcji:
 * Dodano następujące typy zestawów danych:
   * [ODataResourceDataset](https://msdn.microsoft.com/library/microsoft.azure.management.datafactories.models.odataresourcedataset.aspx), [WebTableDataset](https://msdn.microsoft.com/library/microsoft.azure.management.datafactories.models.webtabledataset.aspx)
 * Dodano następujące typy źródeł kopiowania:     
-  * [WebSource](https://msdn.microsoft.com/library/microsoft.azure.management.datafactories.models.websource.aspx)
+  * [Websource](https://msdn.microsoft.com/library/microsoft.azure.management.datafactories.models.websource.aspx)
 
 ## <a name="version-440"></a>4\.4.0 wersja
 ### <a name="feature-additions"></a>Dodatki funkcji

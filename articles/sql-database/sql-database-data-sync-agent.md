@@ -1,5 +1,5 @@
 ---
-title: Agent synchronizacji danych dla platformy Azure SQL Data Sync | Microsoft Docs
+title: Agent synchronizacji danych dla platformy Azure SQL Data Sync
 description: Dowiedz się, jak zainstalować i uruchomić agenta synchronizacji danych dla platformy Azure SQL Data Sync w celu synchronizowania danych z lokalnymi bazami danych SQL Server
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: allenwux
 ms.author: xiwu
 ms.reviewer: carlrab
 ms.date: 12/20/2018
-ms.openlocfilehash: 13a59a9b536a25897d7c545b6fb466c1192cb545
-ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
+ms.openlocfilehash: 097c8547093a13f73f1ae5facdc0f7e6c75c071d
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73177716"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73690784"
 ---
 # <a name="data-sync-agent-for-azure-sql-data-sync"></a>Agent synchronizacji danych dla platformy Azure SQL Data Sync
 
@@ -225,7 +225,7 @@ W wierszu polecenia można uruchomić następujące polecenia agenta synchroniza
 
 ### <a name="ping-the-service"></a>Wyślij polecenie ping do usługi
 
-#### <a name="usage"></a>Użycie
+#### <a name="usage"></a>Sposób użycia
 
 ```cmd
 SqlDataSyncAgentCommand.exe -action pingsyncservice
@@ -239,7 +239,7 @@ SqlDataSyncAgentCommand.exe -action "pingsyncservice"
 
 ### <a name="display-registered-databases"></a>Wyświetlanie zarejestrowanych baz danych
 
-#### <a name="usage"></a>Użycie
+#### <a name="usage"></a>Sposób użycia
 
 ```cmd
 SqlDataSyncAgentCommand.exe -action displayregistereddatabases
@@ -253,7 +253,7 @@ SqlDataSyncAgentCommand.exe -action "displayregistereddatabases"
 
 ### <a name="submit-the-agent-key"></a>Prześlij klucz agenta
 
-#### <a name="usage"></a>Użycie
+#### <a name="usage"></a>Sposób użycia
 
 ```cmd
 Usage: SqlDataSyncAgentCommand.exe -action submitagentkey -agentkey [agent key]  -username [user name] -password [password]
@@ -267,7 +267,7 @@ SqlDataSyncAgentCommand.exe -action submitagentkey -agentkey [agent key generate
 
 ### <a name="register-a-database"></a>Rejestrowanie bazy danych
 
-#### <a name="usage"></a>Użycie
+#### <a name="usage"></a>Sposób użycia
 
 ```cmd
 SqlDataSyncAgentCommand.exe -action registerdatabase -servername [on-premisesdatabase server name] -databasename [on-premisesdatabase name]  -username [domain\\username] -password [password] -authentication [sql or windows] -encryption [true or false]
@@ -286,7 +286,7 @@ SqlDataSyncAgentCommand.exe -action "registerdatabase" -serverName localhost -da
 
 Korzystając z tego polecenia, można wyrejestrować bazę danych w całości. Jeśli baza danych uczestniczy w innych grupach synchronizacji, ta operacja przerywa pozostałe grupy synchronizacji.
 
-#### <a name="usage"></a>Użycie
+#### <a name="usage"></a>Sposób użycia
 
 ```cmd
 SqlDataSyncAgentCommand.exe -action unregisterdatabase -servername [on-premisesdatabase server name] -databasename [on-premisesdatabase name]
@@ -300,7 +300,7 @@ SqlDataSyncAgentCommand.exe -action "unregisterdatabase" -serverName localhost -
 
 ### <a name="update-credentials"></a>Aktualizowanie poświadczeń
 
-#### <a name="usage"></a>Użycie
+#### <a name="usage"></a>Sposób użycia
 
 ```cmd
 SqlDataSyncAgentCommand.exe -action updatecredential -servername [on-premisesdatabase server name] -databasename [on-premisesdatabase name]  -username [domain\\username] -password [password] -authentication [sql or windows] -encryption [true or false]

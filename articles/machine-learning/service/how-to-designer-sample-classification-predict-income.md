@@ -1,5 +1,5 @@
 ---
-title: 'Przykład projektanta #3: Klasyfikacja do prognozowania ryzyka kredytowego'
+title: 'Projektant: klasyfikowanie, przewidywanie przychodu'
 titleSuffix: Azure Machine Learning
 description: Dowiedz się, jak utworzyć klasyfikator uczenia maszynowego bez pisania pojedynczego wiersza kodu przy użyciu narzędzia Projektant (wersja zapoznawcza).
 services: machine-learning
@@ -10,12 +10,12 @@ author: xiaoharper
 ms.author: zhanxia
 ms.reviewer: peterlu
 ms.date: 11/04/2019
-ms.openlocfilehash: 2709c2e0da154a8530175144070ad560c8921b85
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 383cbc11955598505730a4613c50536afac75f95
+ms.sourcegitcommit: 359930a9387dd3d15d39abd97ad2b8cb69b8c18b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73515540"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73647965"
 ---
 # <a name="sample-3---classification-with-feature-selection-income-prediction"></a>Przykład 3 — Klasyfikacja z wyborem funkcji: prognozowanie dochodu
 [!INCLUDE [applies-to-skus](../../../includes/aml-applies-to-enterprise-sku.md)]

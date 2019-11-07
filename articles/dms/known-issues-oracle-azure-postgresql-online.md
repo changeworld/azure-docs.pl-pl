@@ -10,13 +10,13 @@ ms.service: dms
 ms.workload: data-services
 ms.custom: mvc
 ms.topic: article
-ms.date: 10/03/2019
-ms.openlocfilehash: cc7e510d9a6db93edc211799eda8df79116236a7
-ms.sourcegitcommit: 87efc325493b1cae546e4cc4b89d9a5e3df94d31
+ms.date: 11/05/2019
+ms.openlocfilehash: ecd2750926fd04c84d2d6b48f5fde06363dd15df
+ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/29/2019
-ms.locfileid: "73053652"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73606755"
 ---
 # <a name="known-issuesmigration-limitations-with-online-migrations-from-oracle-to-azure-db-for-postgresql-single-server"></a>Znane problemy/ograniczenia migracji z migracją online z programu Oracle do usługi Azure DB dla PostgreSQL — pojedynczy serwer
 
@@ -26,7 +26,7 @@ Znane problemy i ograniczenia związane z migracją w trybie online z programu O
 
 Azure Database Migration Service obsługuje łączenie z:
 
-- Oracle w wersji 10g, 11c i 12c.
+- Oracle w wersji 10g, 11g i 12c.
 - Oracle Enterprise, standard, Express i Personal Edition.
 
 Azure Database Migration Service nie obsługuje łączenia z wielodostępnymi bazami danych kontenerów (CDBs).

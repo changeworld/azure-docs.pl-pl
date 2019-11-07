@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: librown, aakapo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 66102a92ce279b594d61c8b2d484c89a8532057a
-ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
+ms.openlocfilehash: 50af82e79e7ba8b979ab28a1b3f608ec7e41bfb2
+ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73171999"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73603446"
 ---
 # <a name="enable-passwordless-security-key-sign-in-preview"></a>Włącz logowanie za hasłem klucza zabezpieczeń (wersja zapoznawcza)
 
@@ -50,7 +50,7 @@ Funkcje rejestracji dla metod uwierzytelniania bezhaseł polegają na połączon
 
 ### <a name="enable-fido2-security-key-method"></a>Włącz metodę klucza zabezpieczeń FIDO2
 
-1. Zaloguj się do [portalu Azure](https://portal.azure.com).
+1. Zaloguj się w witrynie [Azure Portal](https://portal.azure.com).
 1. Przejdź do **Azure Active Directory** > **zabezpieczenia** > **metody uwierzytelniania** > **zasad metod uwierzytelniania (wersja zapoznawcza)** .
 1. W obszarze **klucz zabezpieczeń metody FIDO2**wybierz następujące opcje:
    1. **Włącz** — tak lub nie
@@ -95,7 +95,7 @@ W publicznej wersji zapoznawczej nie jest dostępna obsługa administracyjna i d
 
 ### <a name="upn-changes"></a>Zmiany nazw UPN
 
-Pracujemy nad obsługą funkcji, która umożliwia zmianę nazwy UPN na przyłączonych do mnie hybrydowych urządzeniach usługi Azure AD i przyłączonych do usługi Azure AD. W przypadku zmiany nazwy UPN użytkownika nie można już modyfikować kluczy zabezpieczeń FIDO2, aby uwzględnić zmianę. Rozwiązanie polega na zresetowaniu urządzenia i ponownym zarejestrowaniu użytkownika.
+W przypadku zmiany nazwy UPN użytkownika nie można już modyfikować kluczy zabezpieczeń FIDO2, aby uwzględnić zmianę. Rozwiązanie to zresetowanie urządzenia i użytkownik musi ponownie zarejestrować klucze zabezpieczeń FIDO2.
 
 ## <a name="next-steps"></a>Następne kroki
 

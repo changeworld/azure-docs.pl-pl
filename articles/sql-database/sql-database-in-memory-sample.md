@@ -1,5 +1,5 @@
 ---
-title: Azure SQL Database przykład w pamięci | Microsoft Docs
+title: Azure SQL Database przykład w pamięci
 description: Wypróbuj Azure SQL Database technologii w pamięci za pomocą przykładu OLTP i magazynu kolumn.
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: ''
 ms.date: 12/18/2018
-ms.openlocfilehash: e3e819fc90e8900219ebc7809adb293369084a72
-ms.sourcegitcommit: 7c2dba9bd9ef700b1ea4799260f0ad7ee919ff3b
+ms.openlocfilehash: 8526236afdb0a312879cb3c1635a7fd85985278f
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71828209"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73689821"
 ---
 # <a name="in-memory-sample"></a>Przykład w pamięci
 
@@ -87,7 +87,7 @@ Wynik **0** oznacza, że w pamięci nie jest obsługiwane, a **1** oznacza, że 
 - Demonstracja. DemoSalesOrderDetailSeed
 
 
-Tabele zoptymalizowane pod kątem pamięci można sprawdzić za pomocą **Eksplorator obiektów** w programie SSMS. Kliknij prawym przyciskiem myszy pozycję **tabele** > **Filtr** > **Ustawienia filtru** > **jest zoptymalizowana pod kątem pamięci**. Wartość jest równa 1.
+Tabele zoptymalizowane pod kątem pamięci można sprawdzić za pomocą **Eksplorator obiektów** w programie SSMS. Kliknij prawym przyciskiem myszy pozycję **tabele** > **Ustawienia filtru** ** > filtru > ** **jest zoptymalizowana pod kątem pamięci**. Wartość jest równa 1.
 
 
 Lub można wykonywać zapytania dotyczące widoków wykazu, takich jak:
@@ -201,7 +201,7 @@ whereas for SQL 2016+
 ### <a name="run-the-_inmem-stress-workload-first"></a>Najpierw uruchom obciążenie obciążeniowe *_inmem*
 
 
-Możesz użyć okna *wiersza polecenia RML cmd* , aby uruchomić nasz wiersz poleceń ostress. exe. Parametry wiersza polecenia bezpośrednio `ostress` do:
+Możesz użyć okna *wiersza polecenia RML cmd* , aby uruchomić nasz wiersz poleceń ostress. exe. Parametry wiersza polecenia bezpośrednio `ostress`:
 
 - Uruchom połączenia 100 współbieżnie (-N100).
 - Każde połączenie uruchamia skrypt T-SQL 50 razy (-R50).
@@ -223,7 +223,7 @@ Aby uruchomić poprzedni wiersz polecenia ostress. exe:
 
 2. Skopiuj tekst poprzedniego wiersza polecenia ostress. exe do Schowka.
 
-3. Zastąp wartość `<placeholders>` dla parametrów-S-U-P-d z prawidłowymi wartościami rzeczywistymi.
+3. Zastąp `<placeholders>` parametrami-S-U-P-d z prawidłowymi wartościami rzeczywistymi.
 
 4. Uruchom edytowany wiersz polecenia w oknie RML cmd.
 
@@ -231,7 +231,7 @@ Aby uruchomić poprzedni wiersz polecenia ostress. exe:
 #### <a name="result-is-a-duration"></a>Wynik to czas trwania
 
 
-Po zakończeniu `ostress.exe` czas trwania przebiegu jest pisywany jako ostatni wiersz danych wyjściowych w oknie cmd RML. Na przykład krótszy przebieg testu został zaostatni o 1,5 minut:
+Po zakończeniu `ostress.exe` czas wykonywania jest pisywany jako ostatni wiersz danych wyjściowych w oknie cmd RML. Na przykład krótszy przebieg testu został zaostatni o 1,5 minut:
 
 `11/12/15 00:35:00.873 [0x000030A8] OSTRESS exiting normally, elapsed time: 00:01:31.867`
 
@@ -256,7 +256,7 @@ Po uzyskaniu wyniku z przebiegu *_inmem* wykonaj następujące kroki, aby urucho
 
 #### <a name="expected-comparison-results"></a>Oczekiwane wyniki porównania
 
-Nasze testy w pamięci pokazują, że wydajność ulepszona przez **dziewięć razy** dla tego obciążenia uproszczony z uruchomioną `ostress` na maszynie wirtualnej platformy Azure w tym samym regionie świadczenia usługi Azure, w której znajduje się baza danych.
+Nasze testy w pamięci pokazują, że wydajność ulepszona przez **dziewięć razy** dla tego obciążenia uproszczony, z `ostress` uruchomionymi na maszynie wirtualnej platformy Azure w tym samym regionie świadczenia usługi Azure, w której znajduje się baza danych.
 
 <a id="install_analytics_manuallink" name="install_analytics_manuallink"></a>
 
@@ -309,7 +309,7 @@ Istnieje [kilka typów zapytań T-SQL, które można uruchomić,](https://raw.gi
 - `FROM FactResellerSalesXL_CCI a`
 
 
-Klastrowany indeks magazynu kolumn znajduje się w tabeli FactResellerSalesXL @ no__t-0CCI.
+Klastrowany indeks magazynu kolumn znajduje się w tabeli FactResellerSalesXL\_WIK.
 
 Poniższy fragment skryptu T-SQL drukuje statystyki dla operacji we/wy oraz czas dla kwerendy każdej tabeli.
 
@@ -417,4 +417,4 @@ W bazie danych z warstwą cenową P2 można oczekiwać około dziewięciu razy w
 
 - [SQL Server Management Studio (SSMS)](https://msdn.microsoft.com/library/mt238290.aspx)
 
-- [Narzędzia danych SQL Server (SSDT)](https://msdn.microsoft.com/library/mt204009.aspx)
+- [SQL Server Data Tools (SSDT)](https://msdn.microsoft.com/library/mt204009.aspx)

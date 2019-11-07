@@ -8,12 +8,12 @@ ms.service: azure-databricks
 ms.workload: big-data
 ms.topic: conceptual
 ms.date: 03/13/2019
-ms.openlocfilehash: 06ab1783a6e0f4884ab46d3f00a26c47f28d02b0
-ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
+ms.openlocfilehash: 410b945f1a9a8d659f55668e272e2d9d08482bde
+ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/18/2019
-ms.locfileid: "72596897"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73601765"
 ---
 # <a name="regional-disaster-recovery-for-azure-databricks-clusters"></a>Regionalne odzyskiwanie po awarii dla klastrów Azure Databricks
 
@@ -47,7 +47,7 @@ Aby utworzyć własną regionalną topologię odzyskiwania po awarii, wykonaj na
 
    W tym artykule przedstawiono kilka przykładów kodu, które używają interfejsu wiersza polecenia w przypadku większości zautomatyzowanych kroków, ponieważ jest to łatwa w obsłudze otoka dla interfejsu API REST Azure Databricks.
 
-   Przed przeprowadzeniem jakichkolwiek kroków migracji należy zainstalować na komputerze stacjonarnym lub maszynie wirtualnej, w której planujesz wykonać prace. Aby uzyskać więcej informacji, zobacz [Installing datakostks — interfejs wiersza polecenia](https://docs.azuredatabricks.net/user-guide/dev-tools/databricks-cli.html)
+   Przed przeprowadzeniem jakichkolwiek kroków migracji należy zainstalować na komputerze stacjonarnym lub maszynie wirtualnej, w której planujesz wykonać prace. Aby uzyskać więcej informacji, zobacz [Installing datakostks — interfejs wiersza polecenia](/azure/databricks/dev-tools/databricks-cli)
 
    ```bash
    pip install databricks-cli
@@ -225,7 +225,7 @@ Aby utworzyć własną regionalną topologię odzyskiwania po awarii, wykonaj na
 
    Konfiguracja zadania wymaga ustawień dla nowego lub istniejącego klastra. W przypadku korzystania z istniejącego klastra skrypt/Code poniżej podejmie próbę zastąpienia starego identyfikatora klastra nowym IDENTYFIKATORem klastra.
 
-   Skopiuj i Zapisz Poniższy skrypt w języku Python do pliku. Zastąp wartość `old_cluster_id` i `new_cluster_id` z danymi wyjściowymi z migracji klastra wykonaną w poprzednim kroku. Uruchom ją w wierszu polecenia datakosteks-CLI, na przykład `python scriptname.py`.
+   Skopiuj i Zapisz Poniższy skrypt w języku Python do pliku. Zastąp wartość `old_cluster_id` i `new_cluster_id`z danymi wyjściowymi z migracji klastra wykonaną w poprzednim kroku. Uruchom ją w wierszu polecenia datakosteks-CLI, na przykład `python scriptname.py`.
 
    ```python
    from subprocess import call, check_output
@@ -286,7 +286,7 @@ Aby utworzyć własną regionalną topologię odzyskiwania po awarii, wykonaj na
 
 8. **Migrowanie instalacji usługi Azure Blob Storage i Azure Data Lake Storage**
 
-   Ręcznie zainstaluj ponownie wszystkie punkty instalacji [usługi Azure Blob Storage](https://docs.azuredatabricks.net/spark/latest/data-sources/azure/azure-storage.html) i [Azure Data Lake Storage (Gen 2)](https://docs.azuredatabricks.net/spark/latest/data-sources/azure/azure-datalake-gen2.html) przy użyciu rozwiązań opartych na notesie. Zasoby magazynu zostaną zainstalowane w podstawowym obszarze roboczym i muszą zostać powtórzone w pomocniczym obszarze roboczym. Nie istnieje zewnętrzny interfejs API dla instalacji.
+   Ręcznie zainstaluj ponownie wszystkie punkty instalacji [usługi Azure Blob Storage](/azure/databricks/data/data-sources/azure/azure-storage.html) i [Azure Data Lake Storage (Gen 2)](/azure/databricks/data/data-sources/azure/azure-datalake-gen2.html) przy użyciu rozwiązań opartych na notesie. Zasoby magazynu zostaną zainstalowane w podstawowym obszarze roboczym i muszą zostać powtórzone w pomocniczym obszarze roboczym. Nie istnieje zewnętrzny interfejs API dla instalacji.
 
 9. **Migruj skrypty inicjowania klastra**
 
@@ -302,7 +302,7 @@ Aby utworzyć własną regionalną topologię odzyskiwania po awarii, wykonaj na
 
 10. **Ręcznie skonfiguruj i ponownie Zastosuj kontrolę dostępu.**
 
-    Jeśli istniejący podstawowy obszar roboczy jest skonfigurowany do korzystania z warstwy Premium (SKU), prawdopodobnie korzystasz również z [funkcji Access Control](https://docs.azuredatabricks.net/administration-guide/admin-settings/index.html#manage-access-control).
+    Jeśli istniejący podstawowy obszar roboczy jest skonfigurowany do korzystania z warstwy Premium (SKU), prawdopodobnie korzystasz również z [funkcji Access Control](/azure/databricks/administration-guide/access-control/index).
 
     W przypadku korzystania z funkcji Access Control ręcznie ponownie zastosować kontrolę dostępu do zasobów (notesy, klastry, zadania, tabele).
 
@@ -312,4 +312,4 @@ Jeśli używasz innych usług platformy Azure, pamiętaj o tym również zaimple
 
 ## <a name="next-steps"></a>Następne kroki
 
-Aby uzyskać więcej informacji, zobacz [dokumentację Azure Databricks](https://docs.azuredatabricks.net/user-guide/index.html).
+Aby uzyskać więcej informacji, zobacz [dokumentację Azure Databricks](index.yml).

@@ -11,14 +11,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/12/2019
+ms.date: 10/31/2019
 ms.author: spelluru
-ms.openlocfilehash: f0fc1e143ce7d271d5faaa8dda0eb40cdfc9e006
-ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
+ms.openlocfilehash: fd3396a98359aef966cd8bb2f984e556fc6abcc7
+ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72332728"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73584863"
 ---
 # <a name="create-and-manage-a-classroom-template-in-azure-lab-services"></a>Tworzenie szablonu klasy i zarządzanie nim w Azure Lab Services
 Szablon w laboratorium to podstawowy obraz maszyny wirtualnej, który służy do tworzenia maszyn wirtualnych wszystkich użytkowników. Możesz skonfigurować maszynę wirtualną szablonu dokładnie tak jak chcesz dla użytkowników laboratorium. Możesz podać nazwę i opis szablonu, które będą widoczne dla użytkowników laboratorium. Następnie należy opublikować szablon w celu udostępnienia dla użytkowników laboratorium wystąpień z szablonową maszyną wirtualną. Gdy opublikujesz szablon, usługa Azure Lab Services utworzy maszyny wirtualne w laboratorium przy użyciu tego szablonu. Liczba maszyn wirtualnych utworzonych w ramach tego procesu jest taka sama jak maksymalna liczba użytkowników, którzy mogą korzystać z laboratorium. Tę liczbę można ustawić w zasadach użytkowania laboratorium. Wszystkie maszyny wirtualne mają taką samą konfigurację jak szablon.
@@ -40,12 +40,10 @@ Wykonaj następujące kroki, aby ustawić tytuł i opis po raz pierwszy, i zaktu
 Aby zaktualizować maszynę wirtualną szablonu, wykonaj następujące czynności.  
 
 1. Na stronie **szablon** wybierz pozycję **Dostosuj szablon** na pasku narzędzi. 
-
-    ![Przycisk Dostosuj szablon](../media/how-to-create-manage-template/customize-template-button.png)
 2. W oknie dialogowym **Dostosowywanie szablonu** wybierz pozycję **Kontynuuj**. Po rozpoczęciu szablonu i wprowadzeniu zmian nie będzie on już miał tego samego ustawienia co maszyny wirtualne ostatnio opublikowane dla użytkowników. Zmiany szablonów nie zostaną odzwierciedlone na istniejących maszynach wirtualnych użytkowników do momentu ponownego opublikowania.
 
     ![Dostosuj okno dialogowe](../media/how-to-create-manage-template/customize-template-dialog.png)
-1. Wybierz przycisk **Połącz z szablonem** na pasku narzędzi, aby połączyć się z SZABLONową maszyną wirtualną, a następnie postępuj zgodnie z instrukcjami. Jeśli jest to maszyna z systemem Windows, zostanie wyświetlona opcja pobrania pliku RDP. 
+1. Zaczekaj na uruchomienie szablonu VM, a następnie wybierz pozycję **Połącz z szablonem** na pasku narzędzi, aby połączyć się z SZABLONową maszyną wirtualną, a następnie postępuj zgodnie z instrukcjami. Jeśli jest to maszyna z systemem Windows, zostanie wyświetlona opcja pobrania pliku RDP. 
 
     ![Łączenie z maszyną wirtualną szablonu](../media/how-to-create-manage-template/connect-template-vm.png)
 1. Zainstaluj wszelkie oprogramowanie wymagane, aby uczniowie mogli ukończyć laboratorium (na przykład program Visual Studio, Eksplorator usługi Azure Storage itp.). 

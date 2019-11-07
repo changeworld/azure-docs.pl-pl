@@ -9,12 +9,12 @@ ms.workload: big-data
 ms.topic: conceptual
 ms.date: 05/29/2018
 ms.author: mamccrea
-ms.openlocfilehash: b327403b29f26f6c1f43f9dfe7aabd5c3c7e0a68
-ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
+ms.openlocfilehash: efb0d3222bfd98b15502163979425d47fa459e07
+ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/13/2019
-ms.locfileid: "72299914"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73605717"
 ---
 # <a name="use-databricks-cli-from-azure-cloud-shell"></a>Używanie interfejsu wiersza polecenia Databricks z poziomu usługi Azure Cloud Shell
 
@@ -24,7 +24,7 @@ Dowiedz się, jak używać interfejsu wiersza polecenia datakosteks w Azure Clou
 
 * Azure Databricks obszar roboczy i klaster. Aby uzyskać instrukcje, zobacz [wprowadzenie do Azure Databricks](quickstart-create-databricks-workspace-portal.md). 
 
-* Konfigurowanie osobistego tokenu dostępu w kostkach. Aby uzyskać instrukcje, zobacz [zarządzanie tokenami](https://docs.azuredatabricks.net/api/latest/authentication.html#token-management).
+* Konfigurowanie osobistego tokenu dostępu w kostkach. Aby uzyskać instrukcje, zobacz [zarządzanie tokenami](/azure/databricks/dev-tools/api/latest/authentication).
 
 ## <a name="use-the-azure-cloud-shell"></a>Użyj Azure Cloud Shell
 
@@ -32,11 +32,11 @@ Dowiedz się, jak używać interfejsu wiersza polecenia datakosteks w Azure Clou
  
 2. W prawym górnym rogu kliknij ikonę **Cloud Shell** .
 
-   ![Uruchom Cloud Shell](./media/databricks-cli-from-azure-cloud-shell/launch-azure-cloud-shell.png "uruchamiania Azure Cloud Shell")
+   ![Cloud Shell uruchamiania](./media/databricks-cli-from-azure-cloud-shell/launch-azure-cloud-shell.png "Uruchamianie usługi Azure Cloud Shell")
 
 3. Upewnij się, że wybrano **bash** dla środowiska Cloud Shell. Można wybrać opcję z listy rozwijanej, jak pokazano na poniższym zrzucie ekranu.
 
-   ![Wybierz pozycję bash dla środowiska Cloud Shell](./media/databricks-cli-from-azure-cloud-shell/select-bash-for-shell.png "Wybierz pozycję bash") 
+   ![Wybierz bash dla środowiska Cloud Shell](./media/databricks-cli-from-azure-cloud-shell/select-bash-for-shell.png "Wybierz bash") 
 
 4. Utwórz środowisko wirtualne, w którym można zainstalować interfejs wiersza polecenia datakosteks. W poniższym fragmencie kodu utworzysz środowisko wirtualne o nazwie `databrickscli`.
 
@@ -73,13 +73,13 @@ Można również użyć następującego polecenia, aby uzyskać dostęp do syste
     databricks fs ls
 
 
-Aby uzyskać pełne informacje na temat poleceń, zobacz [interfejs wiersza polecenia datakosteks](https://docs.azuredatabricks.net/user-guide/dev-tools/databricks-cli.html).
+Aby uzyskać pełne informacje na temat poleceń, zobacz [interfejs wiersza polecenia datakosteks](/azure/databricks/dev-tools/databricks-cli).
 
 
 ## <a name="next-steps"></a>Następne kroki
 
 * Aby uzyskać więcej informacji na temat interfejsu wiersza polecenia platformy Azure, zobacz [Omówienie interfejsu wiersza polecenia platformy Azure](../cloud-shell/overview.md)
 * Aby wyświetlić listę poleceń interfejsu wiersza polecenia platformy Azure, zobacz [informacje dotyczące interfejsu wiersza polecenia platformy Azure](https://docs.microsoft.com/cli/azure/reference-index?view=azure-cli-latest)
-* Aby wyświetlić listę poleceń dla interfejsu wiersza polecenia dla elementów datakostks, zobacz [CLI — interfejs wiersza](https://docs.azuredatabricks.net/user-guide/dev-tools/databricks-cli.html) polecenia
+* Aby wyświetlić listę poleceń dla interfejsu wiersza polecenia dla elementów datakostks, zobacz [CLI — interfejs wiersza](/azure/databricks/dev-tools/databricks-cli) polecenia
 
 

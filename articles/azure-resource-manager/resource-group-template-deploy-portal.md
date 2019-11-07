@@ -6,12 +6,12 @@ ms.service: azure-resource-manager
 ms.topic: conceptual
 ms.date: 06/27/2019
 ms.author: tomfitz
-ms.openlocfilehash: 249afcaad85d9031e0972d4fcfc185b5ff890f65
-ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
+ms.openlocfilehash: 197bd14c425d80a814f370a2050c085b1eef143d
+ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72390345"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73579019"
 ---
 # <a name="deploy-resources-with-resource-manager-templates-and-azure-portal"></a>Deploy resources with Resource Manager templates and Azure portal (Wdrażanie zasobów za pomocą szablonów usługi Resource Manager i witryny Azure Portal)
 
@@ -26,7 +26,7 @@ Ponadto można również wdrożyć szablon Azure Resource Manager, aby utworzyć
 
 W tym artykule przedstawiono obie metody.
 
-## <a name="create-a-resource-group"></a>Utwórz grupę zasobów
+## <a name="create-a-resource-group"></a>Tworzenie grupy zasobów
 
 1. Aby utworzyć nową grupę zasobów, wybierz pozycję **grupy zasobów** z [Azure Portal](https://portal.azure.com).
 
@@ -89,7 +89,7 @@ Jeśli chcesz wykonać wdrożenie, ale nie używasz żadnego z szablonów w port
 1. Zobaczysz kilka opcji tworzenia szablonu:
 
     - **Kompiluj własny szablon w edytorze**: Utwórz szablon przy użyciu edytora szablonów portalu.  Edytor może dodać schemat szablonu zasobu.
-    - **Common templates**: Istnieją cztery popularne szablony służące do tworzenia maszyny wirtualnej z systemem Linux, maszyny wirtualnej systemu Windows, aplikacji sieci Web i bazy danych SQL Azure.
+    - **Szablony wspólne**: Istnieją cztery popularne szablony służące do tworzenia maszyny wirtualnej z systemem Linux, maszyny wirtualnej systemu Windows, aplikacji sieci Web i bazy danych SQL Azure.
     - **Załaduj szablon szybkiego startu usługi GitHub**: Użyj istniejących [szablonów szybkiego startu](https://azure.microsoft.com/resources/templates/).
 
    ![Opcje widoku](./media/resource-group-template-deploy-portal/see-options.png)

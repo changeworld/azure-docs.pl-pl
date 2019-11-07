@@ -1,5 +1,5 @@
 ---
-title: Monitorowanie potoków i zarządzanie nimi przy użyciu Azure Portal i programu PowerShell | Microsoft Docs
+title: Monitorowanie potoków i zarządzanie nimi przy użyciu Azure Portal i programu PowerShell
 description: Dowiedz się, jak używać Azure Portal i Azure PowerShell do monitorowania fabryk danych platformy Azure i utworzonych potoków oraz zarządzania nimi.
 services: data-factory
 documentationcenter: ''
@@ -11,12 +11,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 04/30/2018
-ms.openlocfilehash: 8e8215d9737087cf1a5632dc8514c12988ff999f
-ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
+ms.openlocfilehash: 44aadecfa80524345932c03abb51e8ebd040a902
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70139657"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73666979"
 ---
 # <a name="monitor-and-manage-azure-data-factory-pipelines-by-using-the-azure-portal-and-powershell"></a>Monitorowanie potoków Azure Data Factory i zarządzanie nimi przy użyciu Azure Portal i programu PowerShell
 > [!div class="op_single_selector"]
@@ -87,7 +87,7 @@ Wycinki zestawu danych w fabryce danych mogą mieć jeden z następujących stan
 
 <table>
 <tr>
-    <th align="left">State</th><th align="left">Podstan</th><th align="left">Opis</th>
+    <th align="left">Stan</th><th align="left">Podstanu</th><th align="left">Opis</th>
 </tr>
 <tr>
     <td rowspan="8">Oczekiwanie</td><td>ScheduleTime</td><td>Czas, który nie jest przeznaczony dla wycinka do uruchomienia.</td>
@@ -108,14 +108,14 @@ Wycinki zestawu danych w fabryce danych mogą mieć jeden z następujących stan
 <td>Ponawianie próby</td><td>Trwa ponawianie wykonywania działania.</td>
 </tr>
 <tr>
-<td>Weryfikacja</td><td>Sprawdzanie poprawności nie zostało jeszcze rozpoczęte.</td>
+<td>Walidacja</td><td>Sprawdzanie poprawności nie zostało jeszcze rozpoczęte.</td>
 </tr>
 <tr>
 <td>ValidationRetry</td><td>Trwa oczekiwanie na ponowną próbę weryfikacji.</td>
 </tr>
 <tr>
 <tr>
-<td rowspan="2">W toku</td><td>Sprawdzanie poprawności</td><td>Walidacja jest w toku.</td>
+<td rowspan="2">Toku</td><td>Ponownego</td><td>Walidacja jest w toku.</td>
 </tr>
 <td>-</td>
 <td>Wycinek jest przetwarzany.</td>
@@ -127,15 +127,15 @@ Wycinki zestawu danych w fabryce danych mogą mieć jeden z następujących stan
 <td>Anulowane</td><td>Wycinek został anulowany przez akcję użytkownika.</td>
 </tr>
 <tr>
-<td>Weryfikacja</td><td>Walidacja nie powiodła się.</td>
+<td>Walidacja</td><td>Walidacja nie powiodła się.</td>
 </tr>
 <tr>
 <td>-</td><td>Nie można wygenerować i/lub zweryfikować wycinka.</td>
 </tr>
-<td>Gotowe</td><td>-</td><td>Wycinek jest gotowy do użycia.</td>
+<td>Gotowy</td><td>-</td><td>Wycinek jest gotowy do użycia.</td>
 </tr>
 <tr>
-<td>Pominięte</td><td>Brak</td><td>Wycinek nie jest przetwarzany.</td>
+<td>Pominięto</td><td>Brak</td><td>Wycinek nie jest przetwarzany.</td>
 </tr>
 <tr>
 <td>Brak</td><td>-</td><td>Wycinek używany do istnienia z innym stanem, ale został zresetowany.</td>
@@ -161,11 +161,11 @@ Po wdrożeniu fabryki danych, gdy potoki mają prawidłowy aktywny okres, wycink
 
 ![Diagram stanu](./media/data-factory-monitor-manage-pipelines/state-diagram.png)
 
-Przepływ przejścia stanu zestawu danych w usłudze Fabryka danych jest następujący: Oczekiwanie na > w toku/w toku (sprawdzanie poprawności) — > Gotowe/niepowodzenie.
+Przepływ przejścia stanu zestawu danych w usłudze Fabryka danych jest następujący: oczekiwanie na > w toku/w toku (sprawdzanie poprawności) — > Gotowe/niepowodzenie.
 
-Wycinek zaczyna się w stanie **oczekiwania** , czekając na spełnienie warunków wstępnych przed wykonaniem. Następnie działanie zostanie uruchomione, a plasterek przechodzi w stan **w toku** . Wykonanie działania może zakończyć się powodzeniem lub niepowodzeniem. Wycinek jest oznaczony jako **gotowe** lub, na podstawie wyniku wykonania.
+Wycinek zaczyna się w stanie **oczekiwania** , czekając na spełnienie warunków wstępnych przed wykonaniem. Następnie działanie zostanie uruchomione, a plasterek przechodzi w stan **w toku** . Wykonanie działania może zakończyć się powodzeniem lub niepowodzeniem. Wycinek jest oznaczony jako **gotowy** lub **Niepowodzenie**w oparciu o wynik wykonania.
 
-Można zresetować wycinka tak, aby wrócić do poprzedniej strony z **gotowe** lub **niepowodzenie** stan **oczekiwania** stanu. Możesz również oznaczyć stan wycinka do pominięcia, co uniemożliwia wykonanie działania i nie przetwarza wycinka.
+Możesz zresetować wycinek, aby wrócić do stanu **gotowości** lub stanu **niepowodzenia** na stan **oczekiwania** . Możesz również oznaczyć stan wycinka do **pominięcia**, co uniemożliwia wykonanie działania i nie przetwarza wycinka.
 
 ## <a name="pause-and-resume-pipelines"></a>Wstrzymywanie i wznawianie potoków
 Potokami można zarządzać przy użyciu Azure PowerShell. Można na przykład wstrzymywać i wznawiać potoki, uruchamiając polecenia cmdlet Azure PowerShell. 
@@ -205,7 +205,7 @@ Azure Data Factory oferuje bogate możliwości debugowania i rozwiązywania prob
 Jeśli uruchomienie działania nie powiedzie się w potoku, zestaw danych, który jest generowany przez potok, jest w stanie błędu z powodu błędu. Błędy w Azure Data Factory można debugować i rozwiązywać przy użyciu poniższych metod.
 
 #### <a name="use-the-azure-portal-to-debug-an-error"></a>Użyj Azure Portal do debugowania błędu
-1. Na **tabeli** bloku, kliknij przycisk wycinek problem, który ma **stan** ustawioną.
+1. W bloku **tabela** kliknij wycinek problemu, którego **stan** ma wartość **Niepowodzenie**.
 
    ![Blok tabeli z wycinkem problemu](./media/data-factory-monitor-manage-pipelines/table-blade-with-error.png)
 2. W bloku **wycinka danych** kliknij uruchomienie działania, które nie powiodło się.
@@ -217,7 +217,7 @@ Jeśli uruchomienie działania nie powiedzie się w potoku, zestaw danych, któr
 
 #### <a name="use-powershell-to-debug-an-error"></a>Debugowanie błędu przy użyciu programu PowerShell
 1. Uruchom program **PowerShell**.
-2. Uruchom polecenie **Get-AzDataFactorySlice** , aby wyświetlić wycinki i ich Stany. Powinny pojawić się wycinek ze statusem.        
+2. Uruchom polecenie **Get-AzDataFactorySlice** , aby wyświetlić wycinki i ich Stany. Powinien zostać wyświetlony wycink o stanie **Niepowodzenie**.        
 
     ```powershell   
     Get-AzDataFactorySlice [-ResourceGroupName] <String> [-DataFactoryName] <String> [-DatasetName] <String> [-StartDateTime] <DateTime> [[-EndDateTime] <DateTime> ] [-Profile <AzureProfile> ] [ <CommonParameters>]

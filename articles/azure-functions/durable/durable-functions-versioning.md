@@ -7,14 +7,14 @@ manager: jeconnoc
 keywords: ''
 ms.service: azure-functions
 ms.topic: conceptual
-ms.date: 10/22/2019
+ms.date: 11/03/2019
 ms.author: azfuncdf
-ms.openlocfilehash: 0bac6f9105d505bdfc1492b6966c2352771e73b0
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.openlocfilehash: 4b4e82acbd3037c70b87731c0661605041090435
+ms.sourcegitcommit: b2fb32ae73b12cf2d180e6e4ffffa13a31aa4c6f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72791291"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73614509"
 ---
 # <a name="versioning-in-durable-functions-azure-functions"></a>Przechowywanie wersji w Durable Functions (Azure Functions)
 
@@ -32,7 +32,7 @@ Załóżmy na przykład, że mamy następującą funkcję programu Orchestrator.
 
 ```csharp
 [FunctionName("FooBar")]
-public static Task Run([OrchestrationTrigger] DurableOrchestrationContext context)
+public static Task Run([OrchestrationTrigger] IDurableOrchestrationContext context)
 {
     bool result = await context.CallActivityAsync<bool>("Foo");
     await context.CallActivityAsync("Bar", result);
@@ -43,16 +43,19 @@ Ta funkcja uproszczony pobiera wyniki **foo** i przekazuje je do **paska**. Zał
 
 ```csharp
 [FunctionName("FooBar")]
-public static Task Run([OrchestrationTrigger] DurableOrchestrationContext context)
+public static Task Run([OrchestrationTrigger] IDurableOrchestrationContext context)
 {
     int result = await context.CallActivityAsync<int>("Foo");
     await context.CallActivityAsync("Bar", result);
 }
 ```
 
-Ta zmiana działa prawidłowo dla wszystkich nowych wystąpień funkcji programu Orchestrator, ale przerywa wszystkie wystąpienia w locie. Rozważmy na przykład przypadek, w którym wystąpienie aranżacji wywołuje **foo**, pobiera wartość logiczną, a następnie punkty kontrolne. Jeśli w tym momencie zostanie wdrożona zmiana podpisu, wystąpienie z punktem kontrolnym zakończy się niepowodzeniem natychmiast po jego wznowieniu i ododtwarzania wywołania do `context.CallActivityAsync<int>("Foo")`. Wynika to z faktu, że wynik w tabeli historii jest `bool`, ale nowy kod próbuje zdeserializować go do `int`.
+> [!NOTE]
+> Poprzednie C# przykłady Target Durable Functions 2. x. W przypadku Durable Functions 1. x należy użyć `DurableOrchestrationContext` zamiast `IDurableOrchestrationContext`. Aby uzyskać więcej informacji o różnicach między wersjami, zobacz artykuł dotyczący [wersji Durable Functions](durable-functions-versions.md) .
 
-Jest to tylko jeden z wielu różnych sposobów, w których zmiana podpisu może przerwać istniejące wystąpienia. Ogólnie rzecz biorąc, jeśli program Orchestrator musi zmienić sposób wywoływania funkcji, zmiana będzie prawdopodobnie powodować problemy.
+Ta zmiana działa prawidłowo dla wszystkich nowych wystąpień funkcji programu Orchestrator, ale przerywa wszystkie wystąpienia w locie. Rozważmy na przykład przypadek, w którym wystąpienie aranżacji wywołuje funkcję o nazwie `Foo`, pobiera wartość logiczną, a następnie punkty kontrolne. Jeśli w tym momencie zostanie wdrożona zmiana podpisu, wystąpienie z punktem kontrolnym zakończy się niepowodzeniem natychmiast po jego wznowieniu i ododtwarzania wywołania do `context.CallActivityAsync<int>("Foo")`. Ten błąd występuje, ponieważ wynik w tabeli historii jest `bool`, ale nowy kod próbuje zdeserializować go do `int`.
+
+Ten przykład jest tylko jednym z wielu różnych sposobów, w których zmiana podpisu może przerwać istniejące wystąpienia. Ogólnie rzecz biorąc, jeśli program Orchestrator musi zmienić sposób wywoływania funkcji, zmiana będzie prawdopodobnie powodować problemy.
 
 ### <a name="changing-orchestrator-logic"></a>Zmiana logiki programu Orchestrator
 
@@ -62,7 +65,7 @@ Weź pod uwagę następujące funkcje programu Orchestrator:
 
 ```csharp
 [FunctionName("FooBar")]
-public static Task Run([OrchestrationTrigger] DurableOrchestrationContext context)
+public static Task Run([OrchestrationTrigger] IDurableOrchestrationContext context)
 {
     bool result = await context.CallActivityAsync<bool>("Foo");
     await context.CallActivityAsync("Bar", result);
@@ -73,7 +76,7 @@ Teraz Załóżmy, że chcemy pozornie nieszkodliwe zmienić, aby dodać kolejne 
 
 ```csharp
 [FunctionName("FooBar")]
-public static Task Run([OrchestrationTrigger] DurableOrchestrationContext context)
+public static Task Run([OrchestrationTrigger] IDurableOrchestrationContext context)
 {
     bool result = await context.CallActivityAsync<bool>("Foo");
     if (result)
@@ -85,7 +88,10 @@ public static Task Run([OrchestrationTrigger] DurableOrchestrationContext contex
 }
 ```
 
-Ta zmiana powoduje dodanie nowego wywołania funkcji do **SendNotification** między **foo** a **paskiem**. Brak zmian sygnatur. Problem występuje, gdy istniejące wystąpienie zostanie wznowione z wywołania do **paska**. Podczas powtarzania, jeśli oryginalne wywołanie metody **foo** zwróciło `true`, to ponowne uruchomienie programu Orchestrator wywoła wywołanie do **SendNotification** , które nie znajduje się w jego historii wykonywania. W związku z tym trwała struktura zadań kończy się niepowodzeniem z `NonDeterministicOrchestrationException`, ponieważ napotkała wywołanie **SendNotification** , gdy oczekiwano na wyświetlenie wywołania do **paska**. Ten sam typ problemu może wystąpić podczas dodawania wszelkich wywołań do "trwałych" interfejsów API, w tym `CreateTimer`, `WaitForExternalEvent`itp.
+> [!NOTE]
+> Poprzednie C# przykłady Target Durable Functions 2. x. W przypadku Durable Functions 1. x należy użyć `DurableOrchestrationContext` zamiast `IDurableOrchestrationContext`. Aby uzyskać więcej informacji o różnicach między wersjami, zobacz artykuł dotyczący [wersji Durable Functions](durable-functions-versions.md) .
+
+Ta zmiana powoduje dodanie nowego wywołania funkcji do **SendNotification** między **foo** a **paskiem**. Brak zmian sygnatur. Problem występuje, gdy istniejące wystąpienie zostanie wznowione z wywołania do **paska**. Podczas powtarzania, jeśli oryginalne wywołanie metody **foo** zwróciło `true`, to ponowne uruchomienie programu Orchestrator wywoła wywołanie do **SendNotification**, które nie znajduje się w jego historii wykonywania. W związku z tym trwała struktura zadań kończy się niepowodzeniem z `NonDeterministicOrchestrationException`, ponieważ napotkała wywołanie **SendNotification** , gdy oczekiwano na wyświetlenie wywołania do **paska**. Ten sam typ problemu może wystąpić podczas dodawania wszelkich wywołań do "trwałych" interfejsów API, w tym `CreateTimer`, `WaitForExternalEvent`itp.
 
 ## <a name="mitigation-strategies"></a>Strategie ograniczenia
 
@@ -99,11 +105,11 @@ Poniżej przedstawiono niektóre strategie postępowania z wyzwaniami dotyczący
 
 Najprostszym sposobem obsługi istotnej zmiany jest umożliwienie awarii wystąpienia aranżacji w locie. Nowe wystąpienia pomyślnie uruchomiły zmieniony kod.
 
-To, czy jest to problem, zależy od ważności wystąpień w locie. Jeśli pracujesz w aktywnym programowaniu i nie Zadbaj o wystąpienia w locie, może to być wystarczające. Należy jednak zająć się wyjątkami i błędami w potoku diagnostyki. Aby uniknąć tych problemów, należy wziąć pod uwagę inne opcje przechowywania wersji.
+Czy ten rodzaj awarii jest problemem, zależy od ważności wystąpień w locie. Jeśli pracujesz w aktywnym programowaniu i nie Zadbaj o wystąpienia w locie, może to być wystarczające. Należy jednak zająć się wyjątkami i błędami w potoku diagnostyki. Aby uniknąć tych problemów, należy wziąć pod uwagę inne opcje przechowywania wersji.
 
 ### <a name="stop-all-in-flight-instances"></a>Zatrzymaj wszystkie wystąpienia w locie
 
-Innym rozwiązaniem jest zatrzymanie wszystkich wystąpień w locie. Można to zrobić przez wyczyszczenie zawartości kolejek wewnętrznej **kontroli** i kolejek elementów **roboczych** . Wystąpienia staną się nieograniczona, gdy są, ale nie będą zasłaniać danych telemetrycznych i komunikatów o błędach. Jest to idealne rozwiązanie w szybkim tworzeniu prototypów.
+Innym rozwiązaniem jest zatrzymanie wszystkich wystąpień w locie. Zatrzymanie wszystkich wystąpień może odbywać się przez wyczyszczenie zawartości kolejek wewnętrznej **kontroli** i kolejek elementów **roboczych** . Wystąpienia będą w nieskończoność zablokowane, gdzie się znajdują, ale nie będą zasłaniać dzienników i komunikatów o błędach. To podejście jest idealne do szybkiego tworzenia prototypów.
 
 > [!WARNING]
 > Szczegóły tych kolejek mogą ulec zmianie z upływem czasu, dlatego nie należy polegać na tej metodzie w przypadku obciążeń produkcyjnych.
@@ -114,7 +120,7 @@ Najbardziej nieudaną próbą zapewnienia, że krytyczne zmiany są wdrażane be
 
 * Wdróż wszystkie aktualizacje jako całkowicie nowe funkcje, pozostawiając istniejące funkcje jako-is. Może to być trudne, ponieważ obiekty wywołujące nowe wersje funkcji muszą zostać zaktualizowane, a także zgodnie z tymi samymi wskazówkami.
 * Wdróż wszystkie aktualizacje jako nową aplikację funkcji przy użyciu innego konta magazynu.
-* Wdróż nową kopię aplikacji funkcji przy użyciu tego samego konta magazynu, ale ze zaktualizowaną nazwą `taskHub`. Jest to zalecana technika.
+* Wdróż nową kopię aplikacji funkcji przy użyciu tego samego konta magazynu, ale ze zaktualizowaną nazwą `taskHub`. Zalecaną techniką są wdrożenia równoległe.
 
 ### <a name="how-to-change-task-hub-name"></a>Jak zmienić nazwę centrum zadań
 
@@ -130,7 +136,7 @@ Centrum zadań można skonfigurować w pliku *host. JSON* w następujący sposó
 }
 ```
 
-#### <a name="functions-2x"></a>Functions w wersji 2.x
+#### <a name="functions-20"></a>Funkcje 2,0
 
 ```json
 {

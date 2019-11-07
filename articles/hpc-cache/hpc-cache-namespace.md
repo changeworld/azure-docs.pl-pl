@@ -1,21 +1,21 @@
 ---
-title: Tworzenie pamięci podręcznej platformy Azure HPC (wersja zapoznawcza)
+title: Tworzenie pamięci podręcznej platformy Azure HPC
 description: Jak utworzyć wystąpienie pamięci podręcznej platformy Azure HPC
 author: ekpgh
 ms.service: hpc-cache
 ms.topic: conceptual
-ms.date: 09/24/2019
+ms.date: 10/30/2019
 ms.author: rohogue
-ms.openlocfilehash: fa6408d33504c6ac73eacec079e9c08acd4cece2
-ms.sourcegitcommit: 1c2659ab26619658799442a6e7604f3c66307a89
+ms.openlocfilehash: aaa939051a1aeafdb0650119772fc7214506aa8d
+ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/10/2019
-ms.locfileid: "72255271"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73582181"
 ---
 # <a name="plan-the-aggregated-namespace"></a>Planowanie zagregowanej przestrzeni nazw
 
-Pamięć podręczna Azure HPC (wersja zapoznawcza) umożliwia klientom dostęp do różnych systemów magazynowania za pomocą wirtualnej przestrzeni nazw, która ukrywa szczegóły systemu magazynu zaplecza.
+Pamięć podręczna Azure HPC umożliwia klientom dostęp do różnych systemów magazynowania za pomocą wirtualnej przestrzeni nazw, która ukrywa szczegóły systemu magazynu zaplecza.
 
 Podczas dodawania miejsca docelowego magazynu należy ustawić ścieżkę pliku dostępną dla klienta. Komputery klienckie instalują tę ścieżkę pliku i mogą wprowadzać żądania odczytu plików do pamięci podręcznej, zamiast bezpośrednio instalować system przechowywania.
 
@@ -57,7 +57,7 @@ Ponieważ ścieżki źródłowe NFS są podkatalogami tego samego eksportu, nale
 | *Adres IP lub nazwa hosta* | /goldline/templates  | acme2017/sku798   | /templates/sku798 |
 | *Adres IP lub nazwa hosta* | /goldline/templates  | acme2017/sku980   | /templates/sku980 |
 
-Aplikacja kliencka może zainstalować pamięć podręczną i łatwo uzyskać dostęp do zagregowanych ścieżek plików przestrzeni nazw ``/source``, ``/templates/sku798`` i ``/templates/sku980``.
+Aplikacja kliencka może zainstalować pamięć podręczną i łatwo uzyskać dostęp do zagregowanych ścieżek plików przestrzeni nazw ``/source``, ``/templates/sku798``i ``/templates/sku980``.
 
 ## <a name="next-steps"></a>Następne kroki
 

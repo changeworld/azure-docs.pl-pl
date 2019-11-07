@@ -11,12 +11,12 @@ ms.reviewer: larryfr
 ms.topic: conceptual
 ms.date: 10/25/2019
 ms.custom: seodec18
-ms.openlocfilehash: eae1ac9c4e4b5a5a8927aa45e898c6f1c47a052d
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
-ms.translationtype: HT
+ms.openlocfilehash: 19045b54b97fdb69f9fdab3d17066faa5dbcc435
+ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 11/04/2019
-ms.locfileid: "73497282"
+ms.locfileid: "73580718"
 ---
 # <a name="configure-a-development-environment-for-azure-machine-learning"></a>Skonfiguruj środowisko programistyczne dla Azure Machine Learning
 [!INCLUDE [applies-to-skus](../../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -27,10 +27,10 @@ W poniższej tabeli przedstawiono wszystkie środowiska deweloperskie omówione 
 
 | Środowisko | Formaty | Wady |
 | --- | --- | --- |
-| [Wystąpienie obliczeniowe Azure Machine Learning oparte na chmurze](#compute-instance) | Najprostszym sposobem na rozpoczęcie pracy. Cały zestaw SDK jest już zainstalowany na maszynie wirtualnej obszaru roboczego, a samouczki notesu są wstępnie sklonowane i gotowe do uruchomienia. | Brak kontroli nad środowiskiem deweloperskim i zależnościami. Dodatkowe koszty związane z maszyną wirtualną z systemem Linux (maszyna wirtualna może zostać zatrzymana, gdy nie jest używana, aby uniknąć opłat). Zobacz [szczegółowe informacje o cenach](https://azure.microsoft.com/pricing/details/virtual-machines/linux/). |
+| [Oparta na chmurze maszyna wirtualna Azure Machine Learning notesu](#notebookvm) | Najprostszym sposobem na rozpoczęcie pracy. Cały zestaw SDK jest już zainstalowany na maszynie wirtualnej obszaru roboczego, a samouczki notesu są wstępnie sklonowane i gotowe do uruchomienia. | Brak kontroli nad środowiskiem deweloperskim i zależnościami. Dodatkowe koszty związane z maszyną wirtualną z systemem Linux (maszyna wirtualna może zostać zatrzymana, gdy nie jest używana, aby uniknąć opłat). Zobacz [szczegółowe informacje o cenach](https://azure.microsoft.com/pricing/details/virtual-machines/linux/). |
 | [Środowisko lokalne](#local) | Pełna kontrola nad środowiskiem deweloperskim i zależnościami. Uruchamiaj przy użyciu dowolnego narzędzia kompilacji, środowiska lub IDE. | Rozpoczęcie pracy trwa dłużej. Wymagane pakiety SDK muszą być zainstalowane, a także należy zainstalować środowisko, jeśli jeszcze go nie masz. |
 | [Azure Databricks](#aml-databricks) | Idealne rozwiązanie do uruchamiania przepływów pracy uczenia maszynowego dużej skali na skalowalnej platformie Apache Spark. | Zbyt obszerne eksperymentalne Uczenie maszynowe, a także na mniejsze eksperymenty i przepływy pracy. Dodatkowe koszty poniesione przez Azure Databricks. Zobacz [szczegółowe informacje o cenach](https://azure.microsoft.com/pricing/details/databricks/). |
-| [Data Science Virtual Machine (DSVM)](#dsvm) | Podobnie jak w przypadku wystąpienia obliczeniowego opartego na chmurze (Python i zestawu SDK są wstępnie zainstalowane), ale przy użyciu dodatkowych popularnych narzędzi do nauki o danych i uczenia maszynowego. Łatwe skalowanie i łączenie z innymi niestandardowymi narzędziami i przepływami pracy. | Wolniejsze środowisko uruchamiania w porównaniu do wystąpienia obliczeniowego opartego na chmurze. |
+| [Data Science Virtual Machine (DSVM)](#dsvm) | Podobnie jak w przypadku maszyn wirtualnych opartych na chmurze (Python i SDK są wstępnie zainstalowane), ale przy użyciu dodatkowych popularnych narzędzi do nauki o danych i uczenia maszynowego. Łatwe skalowanie i łączenie z innymi niestandardowymi narzędziami i przepływami pracy. | Wolniejsze środowisko uruchamiania w porównaniu z maszyną wirtualną w notesie opartym na chmurze. |
 
 
 Ten artykuł zawiera również dodatkowe wskazówki dotyczące użycia następujących narzędzi:
@@ -41,7 +41,7 @@ Ten artykuł zawiera również dodatkowe wskazówki dotyczące użycia następuj
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-Obszar roboczy usługi Azure Machine Learning. Aby utworzyć obszar roboczy, zobacz [Tworzenie obszaru roboczego Azure Machine Learning](how-to-manage-workspace.md). Obszar roboczy to wszystko, co jest potrzebne, aby rozpocząć pracę z własnym [serwerem notesu opartym na chmurze](#compute-instance), [DSVM](#dsvm)lub [Azure Databricks](#aml-databricks).
+Obszar roboczy usługi Azure Machine Learning. Aby utworzyć obszar roboczy, zobacz [Tworzenie obszaru roboczego Azure Machine Learning](how-to-manage-workspace.md). Obszar roboczy to wszystko, co jest potrzebne, aby rozpocząć pracę z własnym [serwerem notesu opartym na chmurze](#notebookvm), [DSVM](#dsvm)lub [Azure Databricks](#aml-databricks).
 
 Aby zainstalować środowisko zestawu SDK dla [komputera lokalnego](#local), [Jupyter Notebook serwerze](#jupyter) lub [Visual Studio Code](#vscode) , potrzebne są również następujące elementy:
 
@@ -54,20 +54,16 @@ Aby zainstalować środowisko zestawu SDK dla [komputera lokalnego](#local), [Ju
 
 - W systemie Windows wymagany jest wiersz polecenia lub monit Anaconda (instalowany przez Anaconda i Miniconda).
 
-## <a id="compute-instance"></a>Własne wystąpienie obliczeniowe oparte na chmurze
+## <a id="notebookvm"></a>Twoja maszyna wirtualna notesu w chmurze
 
-[Wystąpienie obliczeniowe](concept-compute-instance.md) Azure Machine Learning to bezpieczna, oparta na chmurze stacja robocza platformy Azure, która zapewnia analitykom danych za pomocą serwera Jupyter notesu, JupyterLab i w pełni przygotowanego środowiska ml.
+Maszyna wirtualna w Azure Machine Learning notesie jest bezpieczną, opartą na chmurze stacją roboczą platformy Azure, która zapewnia analitykom danych za pomocą serwera Jupyter notesu, JupyterLab i w pełni przygotowanego środowiska ML.
 
-> [!NOTE]
-> Wystąpienia obliczeniowe są dostępne tylko dla obszarów roboczych z regionem **Północno-środkowe stany USA** lub **Południowe Zjednoczone Królestwo**.
->Jeśli obszar roboczy znajduje się w innym regionie, możesz w zamian utworzyć [maszynę wirtualną w notesie](concept-compute-instance.md#notebookvm) i korzystać z niej.
+Maszyna wirtualna notesu to:
 
 Nie ma nic do zainstalowania lub skonfigurowania wystąpienia obliczeniowego.  Utwórz ją w dowolnym momencie w obszarze roboczym Azure Machine Learning. Podaj tylko nazwę i określ typ maszyny wirtualnej platformy Azure. Wypróbuj teraz ten [Samouczek: Konfigurowanie środowiska i obszaru roboczego](tutorial-1st-experiment-sdk-setup.md).
 
 
-Dowiedz się więcej o [wystąpieniach obliczeniowych](concept-compute-instance.md).
-
-Aby zatrzymać naliczanie opłat za obliczenia, [Zatrzymaj wystąpienie obliczeniowe](tutorial-1st-experiment-sdk-train.md#clean-up-resources).
+Aby zatrzymać naliczanie opłat za obliczenia, [Zatrzymaj maszynę wirtualną notesu](tutorial-1st-experiment-sdk-train.md#clean-up-resources).
 
 ## <a id="dsvm"></a>Data Science Virtual Machine
 

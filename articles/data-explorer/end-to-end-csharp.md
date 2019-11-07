@@ -1,27 +1,29 @@
 ---
-title: Kompleksowe pozyskiwanie obiektów BLOB na platformie Azure Eksplorator danych przy użyciuC#
-description: W tym artykule dowiesz się, jak pozyskiwanie obiektów BLOB na platformie Azure Eksplorator danych przy użyciu C#kompleksowego przykładu.
+title: Kompleksowe pozyskiwanie obiektów BLOB na platformie Azure Eksplorator danych za pomocąC#
+description: W tym artykule dowiesz się, jak pozyskiwanie obiektów BLOB na platformie Azure Eksplorator danych z kompleksowym przykładem, który C#używa programu.
 author: lucygoldbergmicrosoft
 ms.author: lugoldbe
 ms.reviewer: orspodek
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 10/23/2019
-ms.openlocfilehash: 7d737319c9ddc8040a7cae6f7a9991c625cc4fcd
-ms.sourcegitcommit: ec2b75b1fc667c4e893686dbd8e119e7c757333a
+ms.openlocfilehash: e22621083a44555cb3eda615c610f673cd841ec1
+ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72809574"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73581847"
 ---
-# <a name="end-to-end-blob-ingestion-into-azure-data-explorer-using-c"></a>Kompleksowe pozyskiwanie obiektów BLOB na platformie Azure Eksplorator danych przy użyciuC#
+# <a name="end-to-end-blob-ingestion-into-azure-data-explorer-through-c"></a>Kompleksowe pozyskiwanie obiektów BLOB na platformie Azure Eksplorator danych za pomocąC#
 
 > [!div class="op_single_selector"]
 > * [C#](end-to-end-csharp.md)
 > * [Python](end-to-end-python.md)
 >
 
-Azure Eksplorator danych to szybka i skalowalna usługa eksploracji danych dla danych dzienników i telemetrii. Ten artykuł zawiera kompletny przykład dotyczący sposobu pozyskiwania danych z Blob Storage na platformie Azure Eksplorator danych. Dowiesz się, jak programowo utworzyć grupę zasobów, konto magazynu i kontener, centrum zdarzeń oraz klaster Eksplorator danych platformy Azure i bazę danych. Dowiesz się również, jak programowo skonfigurować usługę Azure Eksplorator danych w celu pozyskiwania danych z nowego konta magazynu.
+Azure Eksplorator danych to szybka i skalowalna usługa eksploracji danych dla danych dzienników i telemetrii. Ten artykuł zawiera kompleksowy przykład sposobu pozyskiwania danych z usługi Azure Blob Storage do usługi Azure Eksplorator danych. 
+
+Dowiesz się, jak programowo utworzyć grupę zasobów, konto magazynu i kontener, centrum zdarzeń oraz klaster Eksplorator danych platformy Azure i bazę danych. Dowiesz się również, jak programowo skonfigurować usługę Azure Eksplorator danych w celu pozyskiwania danych z nowego konta magazynu.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
@@ -29,11 +31,11 @@ Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpł
 
 ## <a name="install-c-nuget"></a>Zainstaluj C# pakiet NuGet
 
-* Zainstaluj [pakiet Microsoft. Azure. Management. Kusto](https://www.nuget.org/packages/Microsoft.Azure.Management.Kusto/).
+* Zainstaluj [Microsoft. Azure. Management. Kusto](https://www.nuget.org/packages/Microsoft.Azure.Management.Kusto/).
 * Zainstaluj [pakiet Microsoft. Azure. Management. ResourceManager](https://www.nuget.org/packages/Microsoft.Azure.Management.ResourceManager).
-* Zainstaluj [pakiet Microsoft. Azure. Management. EventGrid](https://www.nuget.org/packages/Microsoft.Azure.Management.EventGrid/).
-* Zainstaluj [pakiet Microsoft. Azure. Storage. blob](https://www.nuget.org/packages/Microsoft.Azure.Storage.Blob/).
-* Zainstaluj [pakiet Microsoft. Rest. ClientRuntime. Azure. Authentication](https://www.nuget.org/packages/Microsoft.Rest.ClientRuntime.Azure.Authentication) na potrzeby uwierzytelniania.
+* Zainstaluj [Microsoft. Azure. Management. EventGrid](https://www.nuget.org/packages/Microsoft.Azure.Management.EventGrid/).
+* Zainstaluj [Microsoft. Azure. Storage. blob](https://www.nuget.org/packages/Microsoft.Azure.Storage.Blob/).
+* Zainstaluj [Microsoft. Rest. ClientRuntime. Azure. Authentication](https://www.nuget.org/packages/Microsoft.Rest.ClientRuntime.Azure.Authentication) na potrzeby uwierzytelniania.
 
 [!INCLUDE [data-explorer-authentication](../../includes/data-explorer-authentication.md)]
 
@@ -41,16 +43,18 @@ Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpł
 
 ## <a name="code-example"></a>Przykładowy kod 
 
-Poniższy przykład kodu oferuje proces krok po kroku, który prowadzi do pozyskiwania danych na platformie Azure Eksplorator danych. Najpierw należy utworzyć grupę zasobów oraz zasoby platformy Azure, takie jak konto magazynu i kontener, centrum zdarzeń oraz klaster Eksplorator danych platformy Azure i baza danych. Następnie utworzysz Event Grid subskrypcję i mapowanie tabel i kolumn w bazie danych Azure Eksplorator danych. Na koniec Utwórz połączenie danych w celu skonfigurowania usługi Azure Eksplorator danych w celu pozyskiwania danych z nowego konta magazynu. 
+Poniższy przykład kodu udostępnia proces krok po kroku, który powoduje pozyskiwanie danych na platformie Azure Eksplorator danych. 
+
+Najpierw należy utworzyć grupę zasobów. Możesz również tworzyć zasoby platformy Azure, takie jak konto magazynu i kontener, centrum zdarzeń oraz klaster Eksplorator danych platformy Azure i baza danych. Następnie utworzysz subskrypcję Azure Event Grid wraz z mapowaniem tabeli i kolumn w bazie danych Azure Eksplorator danych. Na koniec Utwórz połączenie danych w celu skonfigurowania usługi Azure Eksplorator danych w celu pozyskiwania danych z nowego konta magazynu. 
 
 ```csharp
 var tenantId = "xxxxxxxx-xxxxx-xxxx-xxxx-xxxxxxxxx";//Directory (tenant) ID
 var clientId = "xxxxxxxx-xxxxx-xxxx-xxxx-xxxxxxxxx";//Application ID
-var clientSecret = "xxxxxxxxxxxxxx";//Client Secret
+var clientSecret = "xxxxxxxxxxxxxx";//Client secret
 var subscriptionId = "xxxxxxxx-xxxxx-xxxx-xxxx-xxxxxxxxx";
 string location = "West Europe";
 string locationSmallCase = "westeurope";
-string azureResourceTemplatePath = @"xxxxxxxxx\template.json";//path to the Azure Resource Manager template json from the previous section
+string azureResourceTemplatePath = @"xxxxxxxxx\template.json";//Path to the Azure Resource Manager template JSON from the previous section
 
 string deploymentName = "e2eexample";
 string resourceGroupName = deploymentName + "resourcegroup";
@@ -147,14 +151,14 @@ await kustoManagementClient.DataConnections.CreateOrUpdateAsync(resourceGroupNam
 ```
 | **Ustawienie** | **Opis pola** |
 |---|---|---|
-| tenantId | Identyfikator dzierżawy. Znany również jako identyfikator katalogu.|
+| tenantId | Identyfikator dzierżawy. Jest on również znany jako identyfikator katalogu.|
 | subscriptionId | Identyfikator subskrypcji używany do tworzenia zasobów.|
 | clientId | Identyfikator klienta aplikacji, który może uzyskiwać dostęp do zasobów w dzierżawie.|
 | clientSecret | Wpis tajny klienta aplikacji, który może uzyskiwać dostęp do zasobów w dzierżawie. |
 
 ## <a name="test-the-code-example"></a>Testowanie przykładu kodu
 
-1. Przekaż plik do konta magazynu
+1. Przekaż plik do konta magazynu.
 
     ```csharp
     string storageConnectionString = "DefaultEndpointsProtocol=https;AccountName=xxxxxxxxxxxxxx;AccountKey=xxxxxxxxxxxxxx;EndpointSuffix=core.windows.net";
@@ -170,7 +174,7 @@ await kustoManagementClient.DataConnections.CreateOrUpdateAsync(resourceGroupNam
     |---|---|---|
     | storageConnectionString | Parametry połączenia z programowo utworzonym kontem magazynu.|
 
-2. Uruchamianie zapytania testowego na platformie Azure Eksplorator danych
+2. Uruchom kwerendę testową w usłudze Azure Eksplorator danych.
 
     ```csharp
     var kustoUri = $"https://{kustoClusterName}.{locationSmallCase}.kusto.windows.net";
@@ -205,7 +209,7 @@ await resourceManagementClient.ResourceGroups.DeleteAsync(resourceGroupName);
 
 ## <a name="next-steps"></a>Następne kroki
 
-*  [Utwórz klaster Eksplorator danych i bazę danych platformy Azure](create-cluster-database-csharp.md) , aby dowiedzieć się więcej o innych sposobach tworzenia klastra i bazy danych.
-* [Usługa Azure Eksplorator danych](ingest-data-overview.md) pozyskiwanie danych, aby dowiedzieć się więcej o metodach pozyskiwania.
-* [Szybki Start: wykonywanie zapytań dotyczących danych na platformie Azure Eksplorator danych](web-query-data.md) Interfejs użytkownika sieci Web.
+*  Aby dowiedzieć się więcej o innych sposobach tworzenia klastra i bazy danych, zobacz [Tworzenie klastra Eksplorator danych i bazy danych platformy Azure](create-cluster-database-csharp.md).
+* Aby dowiedzieć się więcej o metodach pozyskiwania, zobacz [Azure Eksplorator danych Data](ingest-data-overview.md)pozyskiwania danych.
+* Aby dowiedzieć się więcej o aplikacji sieci Web, zobacz [Szybki Start: wykonywanie zapytań dotyczących danych w interfejsie użytkownika sieci Web usługi Azure Eksplorator danych](web-query-data.md).
 * [Zapisuj zapytania](write-queries.md) w języku zapytań Kusto.

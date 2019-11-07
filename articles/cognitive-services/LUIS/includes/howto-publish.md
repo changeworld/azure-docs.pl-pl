@@ -8,14 +8,14 @@ ms.custom: include file
 ms.service: cognitive-services
 ms.subservice: luis
 ms.topic: include
-ms.date: 10/23/2019
+ms.date: 11/05/2019
 ms.author: diberry
-ms.openlocfilehash: f833ded4467da1f129b1ea7f858ae8bdd9c2048e
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: b65bf177d98d5b0bcbaf9e9eaf06707b43ed7032
+ms.sourcegitcommit: 359930a9387dd3d15d39abd97ad2b8cb69b8c18b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73495297"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73647447"
 ---
 Aby uzyskać przewidywania usługi LUIS w czatbocie lub innej aplikacji klienckiej, należy opublikować aplikację w punkcie końcowym. 
 
@@ -31,4 +31,4 @@ Aby uzyskać przewidywania usługi LUIS w czatbocie lub innej aplikacji kliencki
 
     ![Publikowanie w punkcie końcowym w usłudze LUIS](../media/howto-publish/publish-endpoint-success.png)
 
-4. Wybierz link **endpoints** (punkty końcowe) na zielonym pasku stanu, aby przejść do strony **Keys and endpoints** (Klucze i punkty końcowe). Adresy URL punktów końcowych są wyświetlane u dołu.
+4. Wybierz link **dostęp do adresów URL punktu końcowego** w obszarze powiadomień, aby przejść do strony **zasobów platformy Azure** . Adresy URL punktów końcowych są wyświetlane jako **przykładowe zapytanie**.

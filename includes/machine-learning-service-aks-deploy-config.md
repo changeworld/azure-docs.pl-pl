@@ -2,14 +2,14 @@
 author: larryfr
 ms.service: machine-learning
 ms.topic: include
-ms.date: 07/26/2019
+ms.date: 10/06/2019
 ms.author: larryfr
-ms.openlocfilehash: b8913836baffdad200c198afa11475d617fe5d50
-ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
+ms.openlocfilehash: 0463dbd67f27f6664ab246ad56af9c6fb95c52ee
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68729358"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73682094"
 ---
 Wpisy w `deploymentconfig.json` dokumencie są mapowane na parametry [AksWebservice. deploy_configuration](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice.aks.aksservicedeploymentconfiguration?view=azure-ml-py). W poniższej tabeli opisano mapowanie między jednostkami w dokumencie JSON a parametrami metody:
 
@@ -17,18 +17,18 @@ Wpisy w `deploymentconfig.json` dokumencie są mapowane na parametry [AksWebserv
 | ----- | ----- | ----- |
 | `computeType` | Nie dotyczy | Docelowy zasób obliczeniowy. Dla AKS wartość musi być `aks`. |
 | `autoScaler` | Nie dotyczy | Zawiera elementy konfiguracji skalowania automatycznego. Zobacz tabelę skalowania automatycznego. |
-| &emsp;&emsp;`autoscaleEnabled` | `autoscale_enabled` | Określa, czy włączyć skalowanie automatyczne dla usługi sieci Web. `numReplicas` Jeśli = ;wprzeciwnym razie ,`False`. `0` `True` |
+| &emsp;&emsp;`autoscaleEnabled` | `autoscale_enabled` | Określa, czy włączyć skalowanie automatyczne dla usługi sieci Web. Jeśli `numReplicas` = `0`, `True`; w przeciwnym razie `False`. |
 | &emsp;&emsp;`minReplicas` | `autoscale_min_replicas` | Minimalna liczba kontenerów, które mają być używane podczas automatycznego skalowania tej usługi sieci Web. Wartość domyślna `1`. |
 | &emsp;&emsp;`maxReplicas` | `autoscale_max_replicas` | Maksymalna liczba kontenerów, które mają być używane podczas automatycznego skalowania tej usługi sieci Web. Wartość domyślna `10`. |
 | &emsp;&emsp;`refreshPeriodInSeconds` | `autoscale_refresh_seconds` | Jak często automatyczne skalowanie próbuje skalować tę usługę sieci Web. Wartość domyślna `1`. |
 | &emsp;&emsp;`targetUtilization` | `autoscale_target_utilization` | Użycie docelowe (w procentach z 100), które ma być podejmowane przez Autoskalowanie dla tej usługi sieci Web. Wartość domyślna `70`. |
 | `dataCollection` | Nie dotyczy | Zawiera elementy konfiguracji do zbierania danych. |
 | &emsp;&emsp;`storageEnabled` | `collect_model_data` | Określa, czy włączyć zbieranie danych modelu dla usługi sieci Web. Wartość domyślna `False`. |
-| `authEnabled` | `auth_enabled` | Określa, czy należy włączyć uwierzytelnianie klucza dla usługi sieci Web. Oba `tokenAuthEnabled` `True`i `authEnabled` nie mogą być. Wartość domyślna `True`. |
-| `tokenAuthEnabled` | `token_auth_enabled` | Określa, czy włączyć uwierzytelnianie tokenu dla usługi sieci Web. Oba `tokenAuthEnabled` `True`i `authEnabled` nie mogą być. Wartość domyślna `False`. |
+| `authEnabled` | `auth_enabled` | Określa, czy należy włączyć uwierzytelnianie klucza dla usługi sieci Web. Nie można `True`obu `tokenAuthEnabled` i `authEnabled`. Wartość domyślna `True`. |
+| `tokenAuthEnabled` | `token_auth_enabled` | Określa, czy włączyć uwierzytelnianie tokenu dla usługi sieci Web. Nie można `True`obu `tokenAuthEnabled` i `authEnabled`. Wartość domyślna `False`. |
 | `containerResourceRequirements` | Nie dotyczy | Kontener dla jednostek procesora i pamięci. |
-| &emsp;&emsp;`cpu` | `cpu_cores` | Liczba rdzeni procesora CPU do przydzielenia dla tej usługi sieci Web. Wartości domyślne`0.1` |
-| &emsp;&emsp;`memoryInGB` | `memory_gb` | Ilość pamięci (w GB) do przydzielenia dla tej usługi sieci Web. Wartooć`0.5` |
+| &emsp;&emsp;`cpu` | `cpu_cores` | Liczba rdzeni procesora CPU do przydzielenia dla tej usługi sieci Web. Wartości domyślne, `0.1` |
+| &emsp;&emsp;`memoryInGB` | `memory_gb` | Ilość pamięci (w GB) do przydzielenia dla tej usługi sieci Web. Domyślne, `0.5` |
 | `appInsightsEnabled` | `enable_app_insights` | Określa, czy należy włączyć rejestrowanie Application Insights dla usługi sieci Web. Wartość domyślna `False`. |
 | `scoringTimeoutMs` | `scoring_timeout_ms` | Limit czasu wymuszania dla wywołań oceniania do usługi sieci Web. Wartość domyślna `60000`. |
 | `maxConcurrentRequestsPerContainer` | `replica_max_concurrent_requests` | Maksymalna liczba współbieżnych żądań na węzeł dla tej usługi sieci Web. Wartość domyślna `1`. |

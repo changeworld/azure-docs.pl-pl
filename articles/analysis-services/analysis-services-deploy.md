@@ -1,18 +1,18 @@
 ---
-title: Wdrażanie do Azure Analysis Services przy użyciu programu Visual Studio | Microsoft Docs
+title: Wdrażanie modelu do Azure Analysis Services przy użyciu programu Visual Studio | Microsoft Docs
 description: Dowiedz się, jak wdrożyć model tabelaryczny na serwerze Azure Analysis Services przy użyciu programu Visual Studio.
 author: minewiskan
 ms.service: azure-analysis-services
 ms.topic: conceptual
-ms.date: 10/29/2019
+ms.date: 10/30/2019
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 60681739854515078a521a4ff795e52aa7d74183
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.openlocfilehash: 71b3b7815d2a4b0b4de3afdca9db93156f505445
+ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73146953"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73572875"
 ---
 # <a name="deploy-a-model-from-visual-studio"></a>Wdrażanie modelu z programu Visual Studio
 

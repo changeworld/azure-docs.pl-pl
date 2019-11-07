@@ -1,113 +1,113 @@
 ---
-title: Konfigurowanie odzyskiwania po awarii dla wielowarstwowej wdrożenia systemu Dynamics AX przy użyciu usługi Azure Site Recovery | Dokumentacja firmy Microsoft
-description: W tym artykule opisano sposób konfigurowania odzyskiwania po awarii dla systemu Dynamics AX przy użyciu usługi Azure Site Recovery
+title: Odzyskiwanie po awarii dla wielowarstwowego wdrożenia programu Dynamics AX z Azure Site Recovery | Microsoft Docs
+description: W tym artykule opisano sposób konfigurowania odzyskiwania po awarii dla systemu Dynamics AX przy użyciu Azure Site Recovery
 author: asgang
 manager: rochakm
 ms.service: site-recovery
 ms.topic: article
 ms.date: 11/27/2018
 ms.author: asgang
-ms.openlocfilehash: b97bf56c23dfa96acf7cb5af5ac28b4270de117d
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 5b8aaff3a3418177f92c3b54fb3bb3e99f93810e
+ms.sourcegitcommit: 6c2c97445f5d44c5b5974a5beb51a8733b0c2be7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61281485"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73620756"
 ---
 # <a name="set-up-disaster-recovery-for-a-multitier-dynamics-ax-application"></a>Konfigurowanie odzyskiwania po awarii dla wielowarstwowej aplikacji Dynamics AX   
 
 
 
 
- Dynamics AX jest jednym z najbardziej popularnych rozwiązań ERP umożliwia przedsiębiorstwom standaryzowania procesów w lokalizacjach, zarządzanie zasobami i upraszcza proces zapewniania zgodności. Ponieważ aplikacja ma kluczowe znaczenie dla organizacji, na wypadek awarii, aplikacja powinna być działa w minimalny czas.
+ Dynamics AX to jedno z najpopularniejszych rozwiązań ERP używanych przez przedsiębiorstwa do standaryzacji procesów, zarządzania zasobami i uproszczenia zgodności. Ponieważ aplikacja ma krytyczne znaczenie dla organizacji, w przypadku awarii aplikacja powinna działać w minimalnym czasie.
 
-Już dziś Dynamics AX nie zapewnia awariami out-of--box możliwości odzyskiwania. Dynamics AX składa się z wielu składników serwera, np. serwera aplikacji Windows, usługi Azure Active Directory, Azure SQL Database, serwera SharePoint i usług Reporting Services. Do zarządzania awaryjnego odzyskiwania dla każdego z tych składników ręcznie jest nie tylko kosztowna, ale również podatne.
+Obecnie w systemie Dynamics AX nie są dostępne żadne wbudowane możliwości odzyskiwania po awarii. System Dynamics AX składa się z wielu składników serwera, takich jak serwer obiektów aplikacji systemu Windows, Azure Active Directory, Azure SQL Database, SharePoint Server i Reporting Services. W celu ręcznego zarządzania odzyskiwaniem po awarii każdego z tych składników jest to nie tylko kosztowne, ale również podatne na błędy.
 
-W tym artykule wyjaśniono, jak utworzyć rozwiązanie odzyskiwania po awarii dla aplikacji systemu Dynamics AX przy użyciu [usługi Azure Site Recovery](site-recovery-overview.md). Obejmuje ona również testu planowane lub nieplanowane przejścia w tryb failover przy użyciu planu odzyskiwania jednego kliknięcia, obsługiwane konfiguracje i wymagania wstępne.
+W tym artykule wyjaśniono, jak można utworzyć rozwiązanie odzyskiwania po awarii dla aplikacji systemu Dynamics AX przy użyciu [Azure Site Recovery](site-recovery-overview.md). Obejmuje on również planowane/nieplanowane testy trybu failover za pomocą jednego kliknięcia planu odzyskiwania, obsługiwane konfiguracje i wymagania wstępne.
 
 
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-Implementowanie odzyskiwania po awarii dla aplikacji systemu Dynamics AX przy użyciu usługi Site Recovery wymaga następujących wymagań wstępnych:
+Implementacja odzyskiwania po awarii dla aplikacji Dynamics AX przy użyciu Site Recovery wymaga następujących wymagań wstępnych:
 
-• Skonfiguruj lokalne wdrożenie systemu Dynamics AX.
+• Skonfigurowanie lokalnego wdrożenia systemu Dynamics AX.
 
-• Utwórz magazyn usługi Site Recovery w subskrypcji platformy Azure.
+• Utwórz magazyn Site Recovery w ramach subskrypcji platformy Azure.
 
-• Jeśli platforma Azure to lokacji odzyskiwania, uruchom narzędzie oceny gotowości maszyn wirtualnych platformy Azure na maszynach wirtualnych. Muszą być zgodne z usługami Azure Virtual Machines i Site Recovery.
+• Jeśli platforma Azure jest witryną odzyskiwania, uruchom narzędzie do oceny gotowości maszyn wirtualnych platformy Azure na maszynach wirtualnych. Muszą one być zgodne z usługami Virtual Machines i Site Recovery platformy Azure.
 
 ## <a name="site-recovery-support"></a>Obsługa usługi Site Recovery
 
-Na potrzeby tworzenia ten artykuł, użyliśmy maszyn wirtualnych VMware z systemu Dynamics AX 2012 R3 na Windows Server 2012 R2 Enterprise. Ponieważ replikacja usługi site recovery jest niezależny od aplikacji, oczekujemy, że zalecenia podane tutaj, aby pomieścić w następujących scenariuszach.
+Na potrzeby tworzenia tego artykułu korzystamy z maszyn wirtualnych VMware z systemem Dynamics AX 2012 R3 w systemie Windows Server 2012 R2 Enterprise. Ponieważ replikacja usługi Site Recovery to niezależny od aplikacji, oczekuje się, że zalecenia podane w tym miejscu są przechowywane w następujących scenariuszach.
 
-### <a name="source-and-target"></a>Źródłowe i docelowe
+### <a name="source-and-target"></a>Źródło i cel
 
-**Scenariusz** | **Lokacja dodatkowa** | **Platforma Azure**
+**Scenariusz** | **Do lokacji dodatkowej** | **Platforma Azure**
 --- | --- | ---
-**Funkcja Hyper-V** | Tak | Yes
+**Funkcja Hyper-V** | Tak | Tak
 **VMware** | Tak | Tak
-**Serwer fizyczny** | Yes | Tak
+**Serwer fizyczny** | Tak | Tak
 
-## <a name="enable-disaster-recovery-of-the-dynamics-ax-application-by-using-site-recovery"></a>Włącz odzyskiwanie po awarii aplikacji Dynamics AX przy użyciu usługi Site Recovery
-### <a name="protect-your-dynamics-ax-application"></a>Ochrona aplikacji Dynamics AX
-Aby umożliwić aplikacji pełną replikację i odzyskiwanie, muszą być chronione każdego składnika systemu Dynamics AX.
+## <a name="enable-disaster-recovery-of-the-dynamics-ax-application-by-using-site-recovery"></a>Włączanie odzyskiwania po awarii aplikacji Dynamics AX przy użyciu Site Recovery
+### <a name="protect-your-dynamics-ax-application"></a>Ochrona aplikacji systemu Dynamics AX
+Aby włączyć pełną replikację i odzyskiwanie aplikacji, każdy składnik programu Dynamics AX musi być chroniony.
 
-### <a name="1-set-up-active-directory-and-dns-replication"></a>1. Konfigurowanie replikacji usługi Active Directory i DNS
+### <a name="1-set-up-active-directory-and-dns-replication"></a>1. Skonfiguruj Active Directory i replikację DNS
 
-Usługi Active Directory jest wymagany w lokacji odzyskiwania po awarii dla aplikacji systemu Dynamics AX do funkcji. Zaleca się następujące dwie opcje oparte na złożoność przez klienta w środowisku lokalnym.
+Aby aplikacja systemu Dynamics AX działała, Active Directory jest wymagana w lokacji odzyskiwania po awarii. Zalecamy stosowanie następujących dwóch opcji w zależności od złożoności środowiska lokalnego klienta.
 
 **Opcja 1**
 
-Klient ma małej liczby aplikacji i jednego kontrolera domeny dla całej lokacji lokalnej i planuje razem przechodzą w całej lokacji. Zalecamy użycie replikacji usługi Site Recovery można replikować maszyny kontrolera domeny do lokacji dodatkowej (dotyczy tylko dla scenariuszy lokacja lokacja i lokacja na platformie Azure).
+Klient ma niewielką liczbę aplikacji i jeden kontroler domeny dla całej lokacji lokalnej i planuje przełączenie w tryb failover całej lokacji. Zalecamy używanie replikacji Site Recoveryj do replikowania maszyny kontrolera domeny do lokacji dodatkowej (dotyczy to zarówno scenariuszy typu lokacja-lokacja, jak i między lokacjami do platformy Azure).
 
 **Opcja 2**
 
-Klient ma dużą liczbę aplikacji i jest uruchomiona w lesie usługi Active Directory i planów do trybu failover kilka aplikacji w danym momencie. Firma Microsoft zaleca skonfigurowanie dodatkowego kontrolera domeny w lokacji odzyskiwania po awarii (lokacji dodatkowej lub na platformie Azure).
+Klient ma dużą liczbę aplikacji i jest uruchomiony Las Active Directory i planuje awaryjne przełączenie kilku aplikacji jednocześnie. Zalecamy skonfigurowanie dodatkowego kontrolera domeny w lokacji odzyskiwania po awarii (lokacji dodatkowej lub na platformie Azure).
 
- Aby uzyskać więcej informacji, zobacz [udostępnić kontrolera domeny w lokacji odzyskiwania po awarii](site-recovery-active-directory.md). W pozostałej części tego dokumentu przyjęto założenie, że kontroler domeny jest dostępny w lokacji odzyskiwania po awarii.
+ Aby uzyskać więcej informacji, zobacz [udostępnianie kontrolera domeny w lokacji odzyskiwania po awarii](site-recovery-active-directory.md). W pozostałej części tego dokumentu przyjęto założenie, że kontroler domeny jest dostępny w lokacji odzyskiwania po awarii.
 
-### <a name="2-set-up-sql-server-replication"></a>2. Konfigurowanie replikacji programu SQL Server
-Techniczne wskazówki dotyczące to zalecana opcja ochrony z warstwy programu SQL, zobacz [Replikowanie aplikacji za pomocą programu SQL Server i usługi Azure Site Recovery](site-recovery-sql.md).
+### <a name="2-set-up-sql-server-replication"></a>2. Skonfiguruj SQL Server replikację
+Aby uzyskać wskazówki techniczne dotyczące zalecanej opcji ochrony warstwy SQL, zobacz [replikowanie aplikacji przy użyciu SQL Server i Azure Site Recovery](site-recovery-sql.md).
 
-### <a name="3-enable-protection-for-the-dynamics-ax-client-and-application-object-server-vms"></a>3. Włącz ochronę dla klienta systemu Dynamics AX i maszyn wirtualnych serwera obiektu aplikacji
-Skonfigurowanie odpowiednich Site Recovery na tego, czy maszyny wirtualne są wdrażane na podstawie [funkcji Hyper-V](site-recovery-hyper-v-site-to-azure.md) lub [VMware](site-recovery-vmware-to-azure.md).
+### <a name="3-enable-protection-for-the-dynamics-ax-client-and-application-object-server-vms"></a>3. Włącz ochronę dla maszyn wirtualnych klienta i serwera obiektów aplikacji programu Dynamics AX
+Wykonaj odpowiednie Site Recovery konfiguracji w zależności od tego, czy maszyny wirtualne są wdrażane w [funkcji Hyper-V](site-recovery-hyper-v-site-to-azure.md) , czy w [oprogramowaniu VMware](site-recovery-vmware-to-azure.md).
 
 > [!TIP]
-> Firma Microsoft zaleca, aby skonfigurować częstotliwość spójnych awaryjnie do 15 minut.
+> Zalecamy skonfigurowanie częstotliwości bezawarii na 15 minut.
 >
 
-Następującej migawki pokazuje stan ochrony maszyn wirtualnych Dynamics składnika w scenariuszu VMware ochrony witryny na platformie Azure.
+Poniższa migawka przedstawia stan ochrony maszyn wirtualnych składnika Dynamics w ramach scenariusza ochrony między platformami programu VMware.
 
 ![Chronione elementy](./media/site-recovery-dynamics-ax/protecteditems.png)
 
 ### <a name="4-configure-networking"></a>4. Konfigurowanie sieci
-**Konfigurowanie zasobów obliczeniowych maszyn wirtualnych i ustawień sieciowych**
+**Konfigurowanie ustawień obliczeniowych i sieciowych maszyny wirtualnej**
 
-Klient Dynamics AX i maszyn wirtualnych serwera obiektu aplikacji skonfigurować ustawienia sieciowe w usłudze Site Recovery, tak aby sieci maszyn wirtualnych Pobierz dołączone do sieć odzyskiwania po awarii w prawo, po włączeniu trybu failover. Upewnij się, że sieć odzyskiwania po awarii dla tych warstwach routingowi warstwę SQL.
+W przypadku maszyn wirtualnych klienta i serwera obiektów aplikacji programu Dynamics AX Skonfiguruj ustawienia sieciowe w Site Recovery tak, aby sieci maszyn wirtualnych były dołączone do odpowiedniej sieci odzyskiwania po awarii po przejściu do trybu failover. Upewnij się, że sieć odzyskiwania po awarii dla tych warstw obsługuje routing do warstwy SQL.
 
-Możesz wybrać maszynę Wirtualną w zreplikowanych elementów, aby skonfigurować ustawienia sieciowe, jak pokazano na następującej migawki:
+Możesz wybrać maszynę wirtualną w replikowanych elementach, aby skonfigurować ustawienia sieci, jak pokazano na poniższej migawce:
 
-* W przypadku serwerów serwera aplikacji wybierz zestaw poprawnej dostępności.
+* W przypadku serwerów obiektów aplikacji wybierz odpowiedni zestaw dostępności.
 
-* Jeśli używasz statycznych adresów IP, określ adres IP, który chcesz, aby maszyna wirtualna może zająć **docelowy adres IP** pola tekstowego.
+* Jeśli używasz statycznego adresu IP, określ adres IP, który ma być pobierany przez maszynę wirtualną w polu tekstowym **docelowy adres IP** .
 
     ![Ustawienia sieci](./media/site-recovery-dynamics-ax/vmpropertiesaos1.png)
 
 
-### <a name="5-create-a-recovery-plan"></a>5. Tworzenie planu odzyskiwania
+### <a name="5-create-a-recovery-plan"></a>5. Utwórz plan odzyskiwania
 
-W usłudze Site Recovery w celu zautomatyzowania procesu trybu failover, można utworzyć planu odzyskiwania. Dodawanie warstwy aplikacji i warstwy sieci web w ramach planu odzyskiwania. Uporządkuj je w różnych grupach, tak aby frontonu zamknięty przed warstwy aplikacji.
+Możesz utworzyć plan odzyskiwania w Site Recovery, aby zautomatyzować proces trybu failover. Dodaj warstwę aplikacji i warstwę sieci Web w planie odzyskiwania. Zamów je w różnych grupach, tak aby fronton został zamknięty przed warstwą aplikacji.
 
-1. Wybierz magazyn usługi Site Recovery w ramach subskrypcji, a następnie wybierz pozycję **plany odzyskiwania** kafelka.
+1. Wybierz magazyn Site Recovery w ramach subskrypcji, a następnie wybierz kafelek **plany odzyskiwania** .
 
-2. Wybierz **+ planu odzyskiwania**i określ nazwę.
+2. Wybierz pozycję **+ plan odzyskiwania**i określ nazwę.
 
-3. Wybierz **źródła** i **docelowej**. Element docelowy może być platformy Azure lub lokacji dodatkowej. Jeśli wybierzesz platformy Azure, należy określić w modelu wdrażania.
+3. Wybierz **Źródło** i **cel**. Celem może być platforma Azure lub lokacja dodatkowa. W przypadku wybrania platformy Azure należy określić model wdrażania.
 
     ![Tworzenie planu odzyskiwania](./media/site-recovery-dynamics-ax/recoveryplancreation1.png)
 
-4. Wybierz pozycję serwera aplikacji i klienta maszyn wirtualnych do planu odzyskiwania, a następnie wybierz ✓.
+4. Wybierz serwer obiektów aplikacji i maszyny wirtualne klienta dla planu odzyskiwania, a następnie wybierz ✓.
 
     ![Wybierz elementy](./media/site-recovery-dynamics-ax/selectvms.png)
 
@@ -115,73 +115,73 @@ W usłudze Site Recovery w celu zautomatyzowania procesu trybu failover, można 
 
     ![Szczegóły planu odzyskiwania](./media/site-recovery-dynamics-ax/recoveryplan.png)
 
-Plan odzyskiwania dla aplikacji systemu Dynamics AX można dostosować, dodając następujące kroki. Poprzednią migawkę przedstawia plan odzyskiwania ukończone po dodaniu wszystkich kroków.
+Możesz dostosować plan odzyskiwania dla aplikacji Dynamics AX, dodając następujące kroki. W poprzedniej migawce przedstawiono cały plan odzyskiwania po dodaniu wszystkich kroków.
 
 
-* **Kroki pracy awaryjnej programu SQL Server**: Aby uzyskać informacji na temat określonych kroków odzyskiwania do programu SQL server, zobacz [replikacji aplikacji za pomocą programu SQL Server i usługi Azure Site Recovery](site-recovery-sql.md).
+* **SQL Server kroki trybu failover**: Aby uzyskać informacje na temat kroków odzyskiwania specyficznych dla programu SQL Server, zobacz temat [replikacja aplikacji z SQL Server i Azure Site Recovery](site-recovery-sql.md).
 
-* **Grupy trybu failover 1**: Pracy awaryjnej maszyn wirtualnych serwera obiektu aplikacji.
-Upewnij się, że wybrany punkt odzyskiwania jest możliwie najdokładniej bazą PIT, ale nie przed jej.
+* **Grupa trybu failover 1**: praca awaryjna maszyn wirtualnych serwera obiektów aplikacji.
+Upewnij się, że wybrany punkt odzyskiwania jest możliwie zbliżony do bazy danych PIT, ale nie z wyprzedzeniem.
 
-* **skrypt**: Dodaj usługę równoważenia obciążenia (tylko E-A).
-Dodaj skrypt (za pośrednictwem usługi Azure Automation) po grupie maszyn wirtualnych serwera obiektu aplikacji funkcjonuje dodać moduł równoważenia obciążenia do niej. Można użyć skryptu do wykonania tego zadania. Aby uzyskać więcej informacji, zobacz [sposób dodawania równoważenia obciążenia na potrzeby odzyskiwania po awarii aplikacji wielowarstwowej](https://azure.microsoft.com/blog/cloud-migration-and-disaster-recovery-of-load-balanced-multi-tier-applications-using-azure-site-recovery/).
+* **Skrypt**: Dodaj moduł równoważenia obciążenia (tylko E-A).
+Dodaj skrypt (za pośrednictwem Azure Automation) po dodaniu grupy maszyn do serwera obiektów aplikacji, aby dodać do niej moduł równoważenia obciążenia. Do wykonania tego zadania można użyć skryptu. Aby uzyskać więcej informacji, zobacz [jak dodać moduł równoważenia obciążenia na potrzeby odzyskiwania po awarii aplikacji wielowarstwowej](https://azure.microsoft.com/blog/cloud-migration-and-disaster-recovery-of-load-balanced-multi-tier-applications-using-azure-site-recovery/).
 
-* **Grupy trybu failover 2**: Tryb failover klienta systemu Dynamics AX maszyn wirtualnych. Tryb failover maszyn wirtualnych warstwy internetowej jako część planu odzyskiwania.
+* **Grupa trybu failover 2**: praca awaryjna maszyn wirtualnych programu Dynamics AX. Przełączenie w tryb failover maszyn wirtualnych warstwy sieci Web w ramach planu odzyskiwania.
 
 
-### <a name="perform-a-test-failover"></a>Wykonaj test trybu failover
+### <a name="perform-a-test-failover"></a>Wykonaj test pracy w trybie failover
 
-Aby uzyskać więcej informacji specyficznych dla usługi Active Directory podczas testowania trybu failover zobacz Przewodnik po "Rozwiązania odzyskiwania po awarii usługi Active Directory".
+Aby uzyskać więcej informacji dotyczących Active Directory podczas testowego przełączania do trybu failover, zobacz Przewodnik uzupełniający "Active Directory odzyskiwania po awarii".
 
-Aby uzyskać więcej informacji specyficznych dla programu SQL server podczas testowania trybu failover, zobacz [Replikowanie aplikacji za pomocą programu SQL Server i usługi Azure Site Recovery](site-recovery-sql.md).
+Aby uzyskać więcej informacji dotyczących programu SQL Server podczas testowego przełączania do trybu failover, zobacz [replikowanie aplikacji z SQL Server i Azure Site Recovery](site-recovery-sql.md).
 
-1. Przejdź do witryny Azure portal i wybierz magazyn usługi Site Recovery.
+1. Przejdź do Azure Portal i wybierz swój magazyn Site Recovery.
 
-2. Wybierz plan odzyskiwania, utworzony dla systemu Dynamics AX.
+2. Wybierz plan odzyskiwania utworzony dla programu Dynamics AX.
 
 3. Wybierz pozycję **Test pracy w trybie failover**.
 
-4. Wybierz sieć wirtualną, aby rozpocząć proces testu trybu failover.
+4. Wybierz sieć wirtualną, aby uruchomić proces testowego przełączania do trybu failover.
 
-5. Po skonfigurowaniu dodatkowej środowiska można wykonywać swoje operacji sprawdzania poprawności.
+5. Po utworzeniu środowiska pomocniczego można wykonać odpowiednie walidacje.
 
-6. Po zakończeniu walidacji wybierz **ukończenia operacji sprawdzania poprawności** i testowe środowisko trybu failover jest czyszczona.
+6. Po zakończeniu walidacji wybierz opcję **walidacje ukończone** i wyczyszczenie testowego środowiska pracy w trybie failover.
 
-Aby uzyskać więcej informacji na temat wykonywania testu trybu failover, zobacz [testowanie trybu failover na platformie Azure w usłudze Site Recovery](site-recovery-test-failover-to-azure.md).
+Aby uzyskać więcej informacji na temat przeprowadzania testowej pracy w trybie failover, zobacz [test pracy w trybie failover na platformie Azure w Site Recovery](site-recovery-test-failover-to-azure.md).
 
-### <a name="perform-a-failover"></a>Przejścia w tryb failover
+### <a name="perform-a-failover"></a>Przełączenie w tryb failover
 
-1. Przejdź do witryny Azure portal i wybierz magazyn usługi Site Recovery.
+1. Przejdź do Azure Portal i wybierz swój magazyn Site Recovery.
 
-2. Wybierz plan odzyskiwania, utworzony dla systemu Dynamics AX.
+2. Wybierz plan odzyskiwania utworzony dla programu Dynamics AX.
 
-3. Wybierz **trybu Failover**i wybierz **trybu Failover**.
+3. Wybierz pozycję **tryb failover**, a następnie wybierz pozycję **tryb failover**.
 
-4. Wybieranie sieci docelowej, a następnie wybierz pozycję **✓** można uruchomić procesu pracy awaryjnej.
+4. Wybierz sieć docelową, a następnie wybierz pozycję **✓** , aby uruchomić proces przełączania do trybu failover.
 
-Aby uzyskać więcej informacji na temat przełączeniem w tryb failover, zobacz [trybu Failover w usłudze Site Recovery](site-recovery-failover.md).
+Aby uzyskać więcej informacji na temat przełączenia w tryb failover, zobacz [tryb failover w Site Recovery](site-recovery-failover.md).
 
 ### <a name="perform-a-failback"></a>Wykonywanie powrotu po awarii
 
-Kwestie związane z określonym programem SQL Server podczas powrotu po awarii, zobacz [Replikowanie aplikacji za pomocą programu SQL Server i usługi Azure Site Recovery](site-recovery-sql.md).
+Aby uzyskać informacje specyficzne dla SQL Server podczas powrotu po awarii, zobacz [replikowanie aplikacji z SQL Server i Azure Site Recovery](site-recovery-sql.md).
 
-1. Przejdź do witryny Azure portal i wybierz magazyn usługi Site Recovery.
+1. Przejdź do Azure Portal i wybierz swój magazyn Site Recovery.
 
-2. Wybierz plan odzyskiwania, utworzony dla systemu Dynamics AX.
+2. Wybierz plan odzyskiwania utworzony dla programu Dynamics AX.
 
-3. Wybierz **trybu Failover**i wybierz **trybu Failover**.
+3. Wybierz pozycję **tryb failover**, a następnie wybierz pozycję **tryb failover**.
 
-4. Wybierz **zmianę kierunku**.
+4. Wybierz pozycję **Zmień kierunek**.
 
-5. Wybierz odpowiednie opcje: synchronizacja danych i tworzenie maszyny Wirtualnej.
+5. Wybierz odpowiednie opcje: synchronizacja danych i Tworzenie maszyny wirtualnej.
 
-6. Wybierz **✓** można uruchomić procesu powrotu po awarii.
+6. Wybierz pozycję **✓** , aby rozpocząć proces powrotu po awarii.
 
 
-Aby uzyskać więcej informacji na ten powrotu po awarii, zobacz [maszyny wirtualne VMware podczas powrotu po awarii z platformy Azure do lokalnych](site-recovery-failback-azure-to-vmware.md).
+Aby uzyskać więcej informacji na temat powrotu po awarii, zobacz [maszyny wirtualne VMware powrotu po awarii z platformy Azure do lokacji lokalnej](site-recovery-failback-azure-to-vmware.md).
 
 ## <a name="summary"></a>Podsumowanie
-Przy użyciu usługi Site Recovery, można utworzyć plan odzyskiwania po awarii na automatyczne zakończenie aplikacji Dynamics AX. W przypadku przerwania działania można zainicjować trybu failover w ciągu kilku sekund z dowolnego miejsca i rozpocząć pracę aplikacji w kilka minut.
+Za pomocą Site Recovery można utworzyć kompletny zautomatyzowany plan odzyskiwania po awarii dla aplikacji Dynamics AX. W przypadku przerwy w działaniu, w ciągu kilku sekund można zainicjować pracę w trybie failover z dowolnego miejsca i rozpocząć pracę aplikacji w ciągu kilku minut.
 
-## <a name="next-steps"></a>Kolejne kroki
-Aby dowiedzieć się więcej o ochronie obciążeń przedsiębiorstwa z usługą Site Recovery, zobacz [jakie obciążenia mogę chronić?](site-recovery-workload.md).
+## <a name="next-steps"></a>Następne kroki
+Aby dowiedzieć się więcej o ochronie obciążeń przedsiębiorstwa za pomocą Site Recovery, zobacz [jakie obciążenia można chronić?](site-recovery-workload.md)

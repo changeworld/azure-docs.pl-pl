@@ -1,20 +1,17 @@
 ---
 title: Jak korzystać z magazynu trwałego w chmurze Azure wiosennej | Microsoft Docs
 description: Jak korzystać z magazynu trwałego w chmurze Azure wiosennej
-services: spring-cloud
-author: v-vasuke
-manager: gwallace
-editor: ''
+author: jpconnock
 ms.service: spring-cloud
-ms.topic: quickstart
+ms.topic: conceptual
 ms.date: 10/07/2019
 ms.author: jeconnoc
-ms.openlocfilehash: f14da7d8e64c58a54a9da4d851ac22fd710ea8ca
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.openlocfilehash: d70e7ff747b80b661e848f1c208f0d1c2c928248
+ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73163752"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73607770"
 ---
 # <a name="how-to-use-persistent-storage-in-azure-spring-cloud"></a>Jak korzystać z magazynu trwałego w chmurze Azure wiosennej
 
@@ -23,7 +20,7 @@ Chmura sprężynowa platformy Azure oferuje dwa typy magazynów dla aplikacji: t
 > [!WARNING]
 > Ponowne uruchomienie wystąpienia aplikacji spowoduje trwałe usunięcie skojarzonego magazynu tymczasowego.
 
-Magazyn trwały jest kontenerem udziałów plików zarządzanym przez platformę Azure przydzieloną na aplikację. Dane przechowywane w magazynie trwałym są współużytkowane przez wszystkie wystąpienia aplikacji. Wystąpienie usługi w chmurze Azure wiosennej może mieć maksymalnie 10 aplikacji z włączonym dyskiem trwałym. Każda aplikacja otrzymuje 50 GB magazynu trwałego. Domyślna ścieżka instalacji dla trwałego magazynu to `/persistent`.
+Magazyn trwały jest kontenerem udziałów plików zarządzanym przez platformę Azure przydzieloną na aplikację. Dane przechowywane w magazynie trwałym są współużytkowane przez wszystkie wystąpienia aplikacji. Wystąpienie usługi w chmurze Azure wiosennej może mieć maksymalnie 10 aplikacji z włączonym dyskiem trwałym. Każda aplikacja otrzymuje 50 GB magazynu trwałego. Domyślną ścieżką instalacji dla trwałego magazynu jest `/persistent`.
 
 > [!WARNING]
 > *Wyłączenie* trwałego magazynu spowoduje cofnięcie przydziału magazynu dla tej aplikacji.  Wszystkie dane na tym koncie magazynu zostaną utracone. 
@@ -53,6 +50,12 @@ Magazyn trwały jest kontenerem udziałów plików zarządzanym przez platformę
 Gdy magazyn trwały jest włączony, jego rozmiar i ścieżka są wyświetlane na tej stronie.
 
 ## <a name="use-the-azure-cli-to-modify-persistent-storage"></a>Modyfikowanie trwałego magazynu za pomocą interfejsu wiersza polecenia platformy Azure
+
+W razie potrzeby zainstaluj rozszerzenie chmury wiosennej dla interfejsu wiersza polecenia platformy Azure:
+
+```azurecli
+az extension add --name spring-cloud
+```
 
 Utwórz aplikację z włączonym dyskiem trwałym:
  

@@ -1,19 +1,19 @@
 ---
-title: Azure HPC cache — Podgląd danych pozyskiwanie — skrypt kopiowania równoległego
+title: Azure HPC — skrypt do kopiowania danych w pamięci podręcznej
 description: Jak używać skryptu kopiowania równoległego do przenoszenia danych do docelowego magazynu obiektów BLOB w pamięci podręcznej Azure HPC
 author: ekpgh
 ms.service: hpc-cache
 ms.topic: conceptual
-ms.date: 08/30/2019
+ms.date: 10/30/2019
 ms.author: rohogue
-ms.openlocfilehash: 4899f946cb358693c969def3fa740af64675d934
-ms.sourcegitcommit: 1c2659ab26619658799442a6e7604f3c66307a89
+ms.openlocfilehash: 0bb74dcd683145fbae22cf0b6d2827ad9e16de0e
+ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/10/2019
-ms.locfileid: "72254513"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73582690"
 ---
-# <a name="azure-hpc-cache-preview-data-ingest---parallel-copy-script-method"></a>Azure HPC cache (wersja zapoznawcza) — Metoda skryptu kopiowania równoległego
+# <a name="azure-hpc-cache-data-ingest---parallel-copy-script-method"></a>Pobieranie danych z pamięci podręcznej platformy Azure HPC — Metoda skryptu kopiowania równoległego
 
 Ten artykuł zawiera instrukcje dotyczące tworzenia skryptu ``parallelcp`` i używania go do przenoszenia danych do kontenera magazynu obiektów BLOB do użycia z pamięcią podręczną platformy Azure HPC.
 
@@ -21,7 +21,7 @@ Aby dowiedzieć się więcej na temat przenoszenia danych do magazynu obiektów 
 
 ## <a name="create-the-parallelcp-script"></a>Tworzenie skryptu parallelcp
 
-Poniższy skrypt doda plik wykonywalny `parallelcp`. (Ten skrypt jest przeznaczony dla Ubuntu; w przypadku korzystania z innej dystrybucji należy zainstalować ``parallel`` osobno).
+Poniższy skrypt doda `parallelcp`pliku wykonywalnego. (Ten skrypt jest przeznaczony dla Ubuntu; w przypadku korzystania z innej dystrybucji należy zainstalować ``parallel`` oddzielnie).
 
 ```bash
 sudo touch /usr/bin/parallelcp && sudo chmod 755 /usr/bin/parallelcp && sudo sh -c "/bin/cat >/usr/bin/parallelcp" <<EOM 
@@ -79,7 +79,7 @@ W tym przykładzie użyto skryptu kopiowania równoległego do kompilowania ``gl
 
 Pliki źródłowe są buforowane w punkcie instalacji pamięci podręcznej platformy Azure HPC, a pliki obiektów są przechowywane na lokalnym dysku twardym.
 
-Ten przykład używa skryptu kopiowania równoległego z opcją ``-j`` i ``make`` w celu uzyskania przetwarzanie równoległe.
+Ten przykład używa skryptu kopiowania równoległego z opcją ``-j`` i ``make`` do uzyskania przetwarzanie równoległe.
 
 ```bash
 sudo apt-get update

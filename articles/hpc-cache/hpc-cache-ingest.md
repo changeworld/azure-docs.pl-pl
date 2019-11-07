@@ -1,17 +1,17 @@
 ---
-title: Przenoszenie danych do kontenera chmury usługi Azure HPC cache (wersja zapoznawcza)
+title: Przenoszenie danych do kontenera w chmurze pamięci podręcznej platformy Azure HPC
 description: Jak wypełnić usługę Azure Blob Storage do użycia z pamięcią podręczną platformy Azure HPC
 author: ekpgh
 ms.service: hpc-cache
 ms.topic: conceptual
-ms.date: 10/07/2019
+ms.date: 10/30/2019
 ms.author: rohogue
-ms.openlocfilehash: 6c505e6918071b61a4152b0b421ed7cee3282206
-ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
+ms.openlocfilehash: a206b63b03bcb3bb17e201487f0e00bcb3926151
+ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/08/2019
-ms.locfileid: "72024509"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73582239"
 ---
 # <a name="move-data-to-azure-blob-storage"></a>Przenoszenie danych do usługi Azure Blob Storage
 
@@ -79,9 +79,9 @@ Strategie dotyczące równoległego pozyskiwania danych z użyciem pamięci podr
 
 * Kopiowanie ręczne — można ręcznie utworzyć kopię wielowątkową na kliencie, uruchamiając więcej niż jedno polecenie kopiowania w tle względem wstępnie zdefiniowanych zestawów plików lub ścieżek. Aby uzyskać szczegółowe informacje, przeczytaj metodę pozyskiwania [danych w pamięci podręcznej Azure HPC — ręczna kopia](hpc-cache-ingest-manual.md) .
 
-* Częściowe automatyczne kopiowanie przy użyciu ``msrsync`` @ no__t-1 @ no__t-2 to narzędzie otoki, które uruchamia wiele procesów równoległych ``rsync``. Aby uzyskać szczegółowe informacje, Przeczytaj [metodę Azure HPC cache Data pozyskiwania — msrsync](hpc-cache-ingest-msrsync.md).
+* Częściowe automatyczne kopiowanie przy użyciu ``msrsync`` - ``msrsync`` jest narzędziem otoki, które uruchamia wiele procesów ``rsync`` równoległych. Aby uzyskać szczegółowe informacje, Przeczytaj [metodę Azure HPC cache Data pozyskiwania — msrsync](hpc-cache-ingest-msrsync.md).
 
-* Kopiowanie skryptowe za pomocą ``parallelcp`` — Dowiedz się, jak utworzyć i uruchomić skrypt równoległej kopii w [usłudze Azure HPC cache Data pozyskiwania skryptu kopiowania danych](hpc-cache-ingest-parallelcp.md).
+* Kopiowanie skryptowe za pomocą ``parallelcp`` — Dowiedz się, jak utworzyć i uruchomić skrypt równoległy kopiowania w ramach [metody skryptu pozyskiwania danych w pamięci podręcznej Azure HPC](hpc-cache-ingest-parallelcp.md).
 
 ## <a name="next-steps"></a>Następne kroki
 

@@ -1,18 +1,18 @@
 ---
-title: Uwierzytelnianie i uprawnienia użytkownika w Azure Analysis Services | Microsoft Docs
-description: Informacje o uwierzytelnianiu i uprawnieniach użytkowników w programie Azure Analysis Services.
+title: Azure Analysis Services uwierzytelnianie i uprawnienia użytkowników | Microsoft Docs
+description: W tym artykule opisano, jak Azure Analysis Services używa Azure Active Directory (Azure AD) do zarządzania tożsamościami i uwierzytelniania użytkowników.
 author: minewiskan
 ms.service: azure-analysis-services
 ms.topic: conceptual
-ms.date: 10/29/2019
+ms.date: 10/30/2019
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: a48292b7600d8b9e400bf1e2d61aec313ce29f4b
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.openlocfilehash: 4a054c3c042e18f1679acd75e5ba5ad74f66edff
+ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73146877"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73572764"
 ---
 # <a name="authentication-and-user-permissions"></a>Uwierzytelnianie i uprawnienia użytkownika
 
@@ -22,7 +22,7 @@ Azure Analysis Services obsługuje funkcję [współpracy B2B usługi Azure AD](
 
 ![Architektura uwierzytelniania Azure Analysis Services](./media/analysis-services-manage-users/aas-manage-users-arch.png)
 
-## <a name="authentication"></a>Uwierzytelnianie
+## <a name="authentication"></a>Authentication
 
 Wszystkie aplikacje i narzędzia klienckie używają co najmniej jednej z Analysis Services [bibliotek klienckich](analysis-services-data-providers.md) (AMO, MSOLAP, ADOMD) w celu nawiązania połączenia z serwerem. 
 

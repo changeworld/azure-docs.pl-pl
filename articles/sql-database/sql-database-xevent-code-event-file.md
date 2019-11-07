@@ -1,5 +1,5 @@
 ---
-title: Kod pliku zdarzeń systemu XEvent dla SQL Database | Microsoft Docs
+title: Kod pliku zdarzeń systemu XEvent dla SQL Database
 description: Udostępnia program PowerShell i język Transact-SQL dla dwufazowego przykładu kodu, który pokazuje docelowy plik zdarzeń w zdarzeniu rozszerzonym na Azure SQL Database. Usługa Azure Storage to wymagana część tego scenariusza.
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: MightyPen
 ms.author: genemi
 ms.reviewer: jrasnik
 ms.date: 03/12/2019
-ms.openlocfilehash: f0994f92444da338b18447eb1b248c74df9aa2d2
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: ea5c90433a4d2928e5fb88df149631c80df9dacf
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68566113"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73686821"
 ---
 # <a name="event-file-target-code-for-extended-events-in-sql-database"></a>Kod docelowy pliku zdarzeń dla zdarzeń rozszerzonych w SQL Database
 
@@ -53,7 +53,7 @@ Ten temat przedstawia dwufazowy przykład kodu:
   
   * Moduły udostępniają polecenia, takie jak- **New-AzStorageAccount**.
 
-## <a name="phase-1-powershell-code-for-azure-storage-container"></a>Faza 1: Kod programu PowerShell dla kontenera usługi Azure Storage
+## <a name="phase-1-powershell-code-for-azure-storage-container"></a>Faza 1: kod programu PowerShell dla kontenera usługi Azure Storage
 
 Ten program PowerShell to faza 1 przykładu kodu dwuetapowego.
 
@@ -233,7 +233,7 @@ Now shift to the Transact-SQL portion of the two-part code sample!';
 
 Zwróć uwagę na kilka nazwanych wartości, które skrypt programu PowerShell drukuje po zakończeniu. Należy edytować te wartości w skrypcie Transact-SQL, który następuje po fazie 2.
 
-## <a name="phase-2-transact-sql-code-that-uses-azure-storage-container"></a>Faza 2: Kod języka Transact-SQL, który używa kontenera usługi Azure Storage
+## <a name="phase-2-transact-sql-code-that-uses-azure-storage-container"></a>Faza 2: kod języka Transact-SQL, który używa kontenera usługi Azure Storage
 
 * W fazie 1 tego przykładu kodu uruchomiono skrypt programu PowerShell w celu utworzenia kontenera usługi Azure Storage.
 * Dalej w fazie 2 następujący skrypt języka Transact-SQL musi używać kontenera.
@@ -461,11 +461,11 @@ GO
 ```
 
 
-## <a name="output"></a>Output
+## <a name="output"></a>Dane wyjściowe
 
-Po zakończeniu działania skryptu Transact-SQL kliknij komórkę w nagłówku kolumny **event_data_XML** . Zostanie wyświetlony jeden  **\<element > zdarzenia** , który zawiera jedną instrukcję Update.
+Po zakończeniu działania skryptu Transact-SQL kliknij komórkę w nagłówku kolumny **event_data_XML** . Zostanie wyświetlony jeden element **> zdarzenia\<** , który zawiera jedną instrukcję Update.
 
-Oto jeden  **\<element > zdarzenia** , który został wygenerowany podczas testowania:
+Poniżej przedstawiono jeden **\<zdarzenia >** , który został wygenerowany podczas testowania:
 
 
 ```xml
@@ -510,7 +510,7 @@ SELECT 'AFTER__Updates', EmployeeKudosCount, * FROM gmTabEmployee;
 
 Poprzedni skrypt Transact-SQL użył następującej funkcji systemowej, aby odczytać event_file:
 
-* [sys.fn_xe_file_target_read_file (Transact-SQL)](https://msdn.microsoft.com/library/cc280743.aspx)
+* [sys. fn_xe_file_target_read_file (Transact-SQL)](https://msdn.microsoft.com/library/cc280743.aspx)
 
 Objaśnienie zaawansowanych opcji wyświetlania danych z zdarzeń rozszerzonych jest dostępne pod adresem:
 

@@ -5,31 +5,27 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: B2B
 ms.topic: conceptual
-ms.date: 10/14/2019
+ms.date: 11/1/2019
 ms.author: mimart
 author: msmimart
 manager: celestedg
 ms.reviewer: mal
 ms.custom: it-pro, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4b26679542753d5fb429c33e4220c23a3937c5cb
-ms.sourcegitcommit: 77bfc067c8cdc856f0ee4bfde9f84437c73a6141
+ms.openlocfilehash: 68acf32660fe36ddd4c2982b818ce21adde7ddab
+ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72430443"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73603595"
 ---
-# <a name="add-google-as-an-identity-provider-for-b2b-guest-users-preview"></a>Dodaj firmę Google jako dostawcę tożsamości dla użytkowników gościa B2B (wersja zapoznawcza)
+# <a name="add-google-as-an-identity-provider-for-b2b-guest-users"></a>Dodaj firmę Google jako dostawcę tożsamości dla użytkowników gościa B2B
 
-|     |
-| --- |
-| Google Federation jest publiczną funkcją w wersji zapoznawczej Azure Active Directory. Aby uzyskać więcej informacji na temat wersji zapoznawczych, zobacz temat [Dodatkowe warunki użytkowania dotyczące wersji zapoznawczych platformy Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).|
-|     |
+Konfigurując Federacji w usłudze Google, możesz zezwolić zaproszonym użytkownikom na logowanie się do udostępnionych aplikacji i zasobów przy użyciu własnych kont usługi Gmail, bez konieczności tworzenia kont Microsoft (kont MSA). 
 
-Konfigurując Federacji za pomocą usługi Google, możesz zezwolić zaproszonym użytkownikom na logowanie się do udostępnionych aplikacji i zasobów przy użyciu własnych kont usługi Gmail, bez konieczności tworzenia kont Microsoft (kont MSA) lub Azure AD. Firma Google Federation została zaprojektowana specjalnie dla użytkowników usługi Gmail. Aby sfederować z domenami usługi G Suite, zamiast tego należy użyć [funkcji Federacji bezpośredniej](direct-federation.md) .
 > [!NOTE]
-> Użytkownicy usługi Google Guest muszą się zalogować przy użyciu linku zawierającego kontekst dzierżawy (na przykład `https://myapps.microsoft.com/?tenantid=<tenant id>` lub `https://portal.azure.com/<tenant id>` lub w przypadku zweryfikowanej domeny `https://myapps.microsoft.com/<verified domain>.onmicrosoft.com`). Bezpośrednie linki do aplikacji i zasobów działają również tak długo, jak w przypadku kontekstu dzierżawy. Użytkownicy-Goście nie mogą obecnie zalogować się za pomocą punktów końcowych, które nie mają kontekstu dzierżawy. Na przykład użycie `https://myapps.microsoft.com`, `https://portal.azure.com` lub wspólnych punktów końcowych zespołów spowoduje wystąpienie błędu.
- 
+> Firma Google Federation została zaprojektowana specjalnie dla użytkowników usługi Gmail. Aby sfederować z domenami usługi G Suite, użyj [funkcji Federacji bezpośredniej](direct-federation.md).
+
 ## <a name="what-is-the-experience-for-the-google-user"></a>Co to jest środowisko użytkownika Google?
 Po wysłaniu zaproszenia do użytkownika usługi Google Gmail użytkownik-Gość powinien uzyskać dostęp do udostępnionych aplikacji lub zasobów przy użyciu linku zawierającego kontekst dzierżawy. Ich środowisko pracy różni się w zależności od tego, czy są już zalogowane w usłudze Google:
   - Jeśli użytkownik-Gość nie jest zalogowany do usługi Google, zostanie wyświetlony monit o zalogowanie do usługi Google.
@@ -39,14 +35,27 @@ Jeśli użytkownik-Gość widzi błąd "nagłówek jest zbyt długi", może wypr
 
 ![Zrzut ekranu przedstawiający stronę logowania Google](media/google-federation/google-sign-in.png)
 
+## <a name="limitations"></a>Ograniczenia
+
+Zespoły w pełni obsługują użytkowników gościa Google na wszystkich urządzeniach. Użytkownicy usługi Google mogą logować się do zespołów z wspólnego punktu końcowego, takiego jak `https://teams.microsoft.com`.
+
+Wspólne punkty końcowe aplikacji mogą nie obsługiwać użytkowników usługi Google. Użytkownicy usługi Google Guest muszą się zalogować przy użyciu linku zawierającego informacje o dzierżawie. Poniżej przedstawiono przykłady:
+  * `https://myapps.microsoft.com/?tenantid=<your tenant id>`
+  * `https://portal.azure.com/<your tenant id>`
+  * `https://myapps.microsoft.com/<your verified domain>.onmicrosoft.com`
+
+   Jeśli użytkownicy usługi Google Guest próbują użyć linku, takiego jak `https://myapps.microsoft.com` lub `https://portal.azure.com`, spowoduje to wyświetlenie błędu.
+
+Możesz również udzielić użytkownikom usługi Google gość bezpośredniego linku do aplikacji lub zasobu, o ile ten link zawiera informacje o dzierżawie, na przykład `https://myapps.microsoft.com/signin/Twitter/<application ID?tenantId=<your tenant ID>`. 
+
 ## <a name="step-1-configure-a-google-developer-project"></a>Krok 1. Konfigurowanie projektu dla deweloperów Google
 Najpierw utwórz nowy projekt w konsoli firmy Google Developers w celu uzyskania identyfikatora klienta i klucza tajnego klienta, który można później dodać do usługi Azure AD. 
-1. Przejdź do interfejsów API firmy Google pod adresem https://console.developers.google.com i zaloguj się przy użyciu konta Google. Zalecamy używanie udostępnionego konta Google zespołu.
+1. Przejdź do interfejsów API usługi Google w https://console.developers.google.comi zaloguj się przy użyciu konta Google. Zalecamy używanie udostępnionego konta Google zespołu.
 2. Utwórz nowy projekt: na pulpicie nawigacyjnym wybierz pozycję **Utwórz projekt**, a następnie wybierz pozycję **Utwórz**. Na stronie Nowy projekt wprowadź **nazwę projektu**, a następnie wybierz pozycję **Utwórz**.
    
    ![Zrzut ekranu przedstawiający nową stronę projektu dla usługi Google](media/google-federation/google-new-project.png)
 
-3. Upewnij się, że nowy projekt został wybrany w menu Projekt. Następnie otwórz menu w lewym górnym rogu i wybierz pozycję **interfejsy api & Services** > **poświadczenia**.
+3. Upewnij się, że nowy projekt został wybrany w menu Projekt. Następnie otwórz menu w lewym górnym rogu i wybierz pozycję **interfejsy api & usługi** > **poświadczenia**.
 
    ![Zrzut ekranu przedstawiający opcję poświadczeń usługi Google API](media/google-federation/google-api.png)
  
@@ -66,10 +75,10 @@ Najpierw utwórz nowy projekt w konsoli firmy Google Developers w celu uzyskania
 
 8. W obszarze **Typ aplikacji**wybierz pozycję **aplikacja sieci Web**, a następnie w obszarze **autoryzowane identyfikatory URI przekierowania**wprowadź następujące identyfikatory URI:
    - `https://login.microsoftonline.com` 
-   - `https://login.microsoftonline.com/te/<directory id>/oauth2/authresp` <br>(gdzie `<directory id>` to identyfikator katalogu)
+   - `https://login.microsoftonline.com/te/<directory id>/oauth2/authresp` <br>(gdzie `<directory id>` jest IDENTYFIKATORem katalogu)
    
      > [!NOTE]
-     > Aby znaleźć identyfikator katalogu, przejdź do https://portal.azure.com, a w obszarze **Azure Active Directory**wybierz pozycję **Właściwości** i skopiuj **Identyfikator katalogu**.
+     > Aby znaleźć identyfikator katalogu, przejdź do https://portal.azure.comi w obszarze **Azure Active Directory**wybierz pozycję **Właściwości** i skopiuj **Identyfikator katalogu**.
 
    ![Zrzut ekranu przedstawiający sekcję autoryzowane identyfikatory URI przekierowania](media/google-federation/google-create-oauth-client-id.png)
 

@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 10/16/2019
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 766dacb69a3f1857197684f552d05a1376e94509
-ms.sourcegitcommit: 12de9c927bc63868168056c39ccaa16d44cdc646
+ms.openlocfilehash: 267a63eba90c74b79078a7c04c1d2d8929cf2a44
+ms.sourcegitcommit: b2fb32ae73b12cf2d180e6e4ffffa13a31aa4c6f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72514867"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73615774"
 ---
 # <a name="azure-files-scalability-and-performance-targets"></a>Azure Files cele skalowalności i wydajności
 
@@ -78,7 +78,7 @@ Aby ułatwić Planowanie wdrożenia dla każdego z etapów, poniżej przedstawio
 | Konfiguracja systemu |  |
 |-|-|
 | Procesor CPU | 64 rdzeni wirtualnych z 64 MiB L3 pamięci podręcznej |
-| Pamięć | 128 GiB |
+| Memory (Pamięć) | 128 GiB |
 | Dysk | Dyski SAS z macierzą RAID 10 z zapasową pamięcią podręczną |
 | Sieć | Sieć 1 GB/s |
 | Obciążenie | Ogólnego przeznaczenia serwera plików|
@@ -98,7 +98,7 @@ Aby ułatwić Planowanie wdrożenia dla każdego z etapów, poniżej przedstawio
 | Liczba zsynchronizowanych obiektów| 125 000 obiektów (~ 1% zmian) |
 | Rozmiar zestawu danych| 50 GiB |
 | Średni rozmiar pliku | ~ 500 KiB |
-| Przepływność przekazywania | 30 obiektów na sekundę |
+| Przepływność przekazywania | 20 obiektów na sekundę |
 | Przepływność pełnego pobierania * | 60 obiektów na sekundę |
 
 \* Jeśli włączono obsługę warstw w chmurze, prawdopodobnie zobaczysz lepszą wydajność, ponieważ pobierane są tylko niektóre z danych plików. Azure File Sync pobiera tylko dane plików z pamięci podręcznej, gdy zostaną zmienione na dowolnym z punktów końcowych. W przypadku wszystkich warstwowych lub nowo utworzonych plików Agent nie pobiera danych plików, a zamiast tego synchronizuje przestrzeń nazw ze wszystkimi punktami końcowymi serwera. Agent obsługuje również częściowe pobieranie plików warstwowych, które są dostępne dla użytkownika. 
@@ -111,7 +111,7 @@ Ogólnie rzecz biorąc, należy pamiętać o kilku kwestiach:
 - Przepływność obiektu jest około skalowana proporcjonalnie do liczby grup synchronizacji na serwerze. Dzielenie danych na wiele grup synchronizacji na serwerze daje lepszą przepływność, co jest również ograniczone przez serwer i sieć.
 - Przepływność obiektu jest odwrotnie proporcjonalna do przepływności MiB na sekundę. W przypadku mniejszych plików można zwiększyć przepływność w zakresie liczby obiektów przetworzonych na sekundę, ale mniejszą przepływność MiB na sekundę. Z kolei w przypadku większych plików można uzyskać mniej obiektów przetworzonych na sekundę, ale wyższą przepływność MiB na sekundę. Przepływność MiB na sekundę jest ograniczona przez elementy docelowe skalowania Azure Files.
 
-## <a name="see-also"></a>Zobacz także
+## <a name="see-also"></a>Zobacz też
 
 - [Planowanie wdrożenia usługi Azure Files](storage-files-planning.md)
 - [Planowanie wdrażania usługi Azure File Sync](storage-sync-files-planning.md)

@@ -1,5 +1,5 @@
 ---
-title: Jak zaplanować Azure-SSIS Integration Runtime | Microsoft Docs
+title: Jak zaplanować Azure-SSIS Integration Runtime
 description: W tym artykule opisano sposób planowania uruchamiania i zatrzymywania Azure-SSIS Integration Runtime przy użyciu Azure Data Factory.
 services: data-factory
 documentationcenter: ''
@@ -13,12 +13,12 @@ author: swinarko
 ms.author: sawinark
 ms.reviewer: douglasl
 manager: craigg
-ms.openlocfilehash: b1f963eb804adc0f40749957e9052f2deba08ef6
-ms.sourcegitcommit: 6013bacd83a4ac8a464de34ab3d1c976077425c7
+ms.openlocfilehash: 0f0ceb9d7ee428571c2d472dd9ed9442f404a090
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/30/2019
-ms.locfileid: "71687106"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73673796"
 ---
 # <a name="how-to-start-and-stop-azure-ssis-integration-runtime-on-a-schedule"></a>Jak uruchomić i zatrzymać Azure-SSIS Integration Runtime zgodnie z harmonogramem
 W tym artykule opisano sposób planowania uruchamiania i zatrzymywania Azure-SSIS Integration Runtime (IR) przy użyciu funkcji Azure Data Factory (ADF). Azure-SSIS IR to zasób obliczeniowy ADF przeznaczony do wykonywania pakietów SQL Server Integration Services (SSIS). Z uruchomionym Azure-SSIS IR jest związany koszt. W związku z tym zazwyczaj chcesz uruchomić swój IR tylko wtedy, gdy musisz wykonać pakiety usług SSIS na platformie Azure i zatrzymać środowisko IR, gdy nie jest już potrzebne. Do [ręcznego uruchamiania lub zatrzymywania środowiska IR](manage-azure-ssis-integration-runtime.md)można użyć interfejsu użytkownika ADF/app lub Azure PowerShell.
@@ -48,7 +48,7 @@ Jeśli utworzysz trzeci wyzwalacz, który ma być uruchamiany codziennie o pół
 1. Zaloguj się w [portalu Azure](https://portal.azure.com/).    
 2. Kliknij przycisk **Nowy** w lewym menu, kliknij pozycję **Dane + analiza**, a następnie kliknij pozycję **Data Factory**. 
    
-   ![Nowy-> Fabryka danych](./media/tutorial-create-azure-ssis-runtime-portal/new-data-factory-menu.png)
+   ![Nowy->Fabryka danych](./media/tutorial-create-azure-ssis-runtime-portal/new-data-factory-menu.png)
    
 3. Na stronie **Nowa fabryka danych** wprowadź **wartość myazuressisdatafactory** w polu **Nazwa**. 
       
@@ -69,7 +69,7 @@ Jeśli utworzysz trzeci wyzwalacz, który ma być uruchamiany codziennie o pół
 6. W obszarze **wersja**wybierz pozycję **v2** .
 7. W polu **Lokalizacja**wybierz jedną z lokalizacji obsługiwanych do tworzenia APD z listy rozwijanej.
 8. Wybierz opcję **Przypnij do pulpitu nawigacyjnego**.     
-9. Kliknij przycisk **Utwórz**.
+9. Kliknij pozycję **Utwórz**.
 10. Na pulpicie nawigacyjnym platformy Azure zostanie wyświetlony następujący kafelek ze stanem: **wdrażanie Data Factory**. 
 
     ![kafelek Wdrażanie fabryki danych](media/tutorial-create-azure-ssis-runtime-portal/deploying-data-factory.png)
@@ -88,7 +88,7 @@ Jeśli utworzysz trzeci wyzwalacz, który ma być uruchamiany codziennie o pół
    
 2. W przyborniku **działania** rozwiń menu **ogólne** i przeciągnij & upuść działanie **sieci Web** na powierzchnię projektanta potoku. Na karcie **Ogólne** okna właściwości działania Zmień nazwę działania na **startMyIR**. Przejdź do karty **Ustawienia** i wykonaj następujące czynności.
 
-    1. W polu **adres URL**wprowadź następujący adres URL dla interfejsu API REST, który rozpoczyna się Azure-SSIS IR, zastępując `{subscriptionId}`, `{resourceGroupName}`, `{factoryName}` i `{integrationRuntimeName}` wartościami rzeczywistymi dla środowiska ir: `https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataFactory/factories/{factoryName}/integrationRuntimes/{integrationRuntimeName}/start?api-version=2018-06-01` Alternatywnie, możesz również skopiować & wkleić identyfikator zasobu IR ze swojego Strona monitorowania w interfejsie użytkownika/aplikacji funkcji ADF w celu zastąpienia następującej części powyższego adresu URL: `/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataFactory/factories/{factoryName}/integrationRuntimes/{integrationRuntimeName}`
+    1. W polu **adres URL**wprowadź następujący adres URL dla interfejsu API REST, który rozpoczyna się Azure-SSIS IR, zastępując `{subscriptionId}`, `{resourceGroupName}`, `{factoryName}`i `{integrationRuntimeName}` wartościami rzeczywistymi dla środowiska ir: `https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataFactory/factories/{factoryName}/integrationRuntimes/{integrationRuntimeName}/start?api-version=2018-06-01` Alternatywnie, możesz również skopiować & wkleić identyfikator zasobu IR ze swojego Strona monitorowania w interfejsie użytkownika/aplikacji funkcji ADF w celu zastąpienia następującej części powyższego adresu URL: `/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataFactory/factories/{factoryName}/integrationRuntimes/{integrationRuntimeName}`
     
        ![Identyfikator zasobu IR podczerwieni dla APD](./media/how-to-schedule-azure-ssis-integration-runtime/adf-ssis-ir-resource-id.png)
   
@@ -101,7 +101,7 @@ Jeśli utworzysz trzeci wyzwalacz, który ma być uruchamiany codziennie o pół
   
 3. Sklonuj pierwszy potok, aby utworzyć drugi, zmieniając nazwę działania na **stopMyIR** i zastępując następujące właściwości.
 
-    1. W polu **adres URL**wprowadź następujący adres URL dla interfejsu API REST, który zatrzyma Azure-SSIS IR, zastępując `{subscriptionId}`, `{resourceGroupName}`, `{factoryName}` i `{integrationRuntimeName}` wartościami rzeczywistymi: `https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataFactory/factories/{factoryName}/integrationRuntimes/{integrationRuntimeName}/stop?api-version=2018-06-01`
+    1. W polu **adres URL**wprowadź następujący adres URL dla interfejsu API REST, który przestaje Azure-SSIS IR, zastępując `{subscriptionId}`, `{resourceGroupName}`, `{factoryName}`i `{integrationRuntimeName}` wartościami rzeczywistymi: `https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataFactory/factories/{factoryName}/integrationRuntimes/{integrationRuntimeName}/stop?api-version=2018-06-01`
     
     2. W obszarze **treść**wprowadź `{"message":"Stop my IR"}`. 
 
@@ -114,7 +114,7 @@ Jeśli utworzysz trzeci wyzwalacz, który ma być uruchamiany codziennie o pół
     1. W obszarze **rola**wybierz pozycję **współautor**. 
     2. W obszarze **Przypisywanie dostępu do**wybierz pozycję **użytkownik, Grupa lub nazwa główna usługi Azure AD**. 
     3. W obszarze **Wybierz**Wyszukaj nazwę ADF i wybierz ją. 
-    4. Kliknij przycisk **Save** (Zapisz).
+    4. Kliknij pozycję **Zapisz**.
     
    ![Przypisanie roli tożsamości zarządzanego przez funkcję ADF](./media/how-to-schedule-azure-ssis-integration-runtime/adf-managed-identity-role-assignment.png)
 
@@ -130,12 +130,12 @@ Jeśli utworzysz trzeci wyzwalacz, który ma być uruchamiany codziennie o pół
     
 2. Aby przetestować trzeci potok, uruchom SQL Server Management Studio (SSMS). W oknie **łączenie z serwerem** wykonaj następujące czynności. 
 
-    1. W obszarze **Nazwa serwera**wprowadź **&lt;your Azure SQL Database Server Name&gt;.database.windows.net**.
+    1. W obszarze **Nazwa serwera**wprowadź **&lt;nazwę serwera Azure SQL Database&gt;. Database.Windows.NET**.
     2. Wybierz **opcje > >** .
     3. W obszarze **Połącz z bazą danych**wybierz pozycję **SSISDB**.
     4. Wybierz przycisk **Połącz**. 
     5. Rozwiń węzeł **katalogi usług Integration Services** -> **SSISDB** — > **projekty** >go folderu — > **pakiety**> w programie SSIS. 
-    6. Kliknij prawym przyciskiem myszy określony pakiet usług SSIS do uruchomienia i wybierz pozycję **raporty** -> **Raporty standardowe** -> **wykonania**. 
+    6. Kliknij prawym przyciskiem myszy określony pakiet usług SSIS do uruchomienia i wybierz pozycję **raporty** -> **Raporty standardowe** -> **wszystkie wykonania**. 
     7. Sprawdź, czy uruchomiono. 
 
    ![Sprawdź przebieg pakietu SSIS](./media/how-to-schedule-azure-ssis-integration-runtime/verify-ssis-package-run.png)

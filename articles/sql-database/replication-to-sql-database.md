@@ -1,5 +1,5 @@
 ---
-title: Replikacja do Azure SQL Database | Microsoft Docs "
+title: Replikacja do Azure SQL Database "
 description: Informacje o korzystaniu z SQL Server replikacji z Azure SQL Database pojedynczymi bazami danych i bazami danych w pulach elastycznych
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: allenwux
 ms.author: xiwu
 ms.reviewer: mathoma
 ms.date: 01/25/2019
-ms.openlocfilehash: eab8f4809742b69e92cb835801493722d28afe49
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: ae564a98b77b1ac564fa9aae152b27c491187d0c
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68570481"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73692225"
 ---
 # <a name="replication-to-sql-database-single-and-pooled-databases"></a>Replikacja do SQL Database jednej i puli baz danych
 
@@ -38,7 +38,7 @@ Replikację SQL Server można skonfigurować na pojedynczej i w puli bazach dany
 - SQL Server 2014 (12. x) CU3 SP1
 - SQL Server 2014 (12. x) RTM CU10
 - SQL Server 2012 (11. x) SP2 CU8 lub SP3
-- Próba skonfigurowania replikacji przy użyciu starszej wersji może spowodować wystąpienie błędu MSSQL_REPL20084 (proces nie mógł nawiązać połączenia z subskrybentem) i MSSQL_REPL40532 (nie można otworzyć \<nazwy serwera > żądanej przez login. Logowanie nie powiodło się.  
+- Próba skonfigurowania replikacji przy użyciu starszej wersji może spowodować wystąpienie błędu MSSQL_REPL20084 (proces nie może połączyć się z subskrybentem) i MSSQL_REPL40532 (nie można otworzyć serwera \<nazwy > żądanym przez nazwę logowania. Logowanie nie powiodło się.  
 - Aby korzystać ze wszystkich funkcji Azure SQL Database, musisz używać najnowszych wersji narzędzi [SQL Server Management Studio](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms) i [SQL Server Data Tools](https://docs.microsoft.com/sql/ssdt/download-sql-server-data-tools-ssdt).  
   
 ## <a name="remarks"></a>Uwagi
@@ -51,12 +51,12 @@ Replikację SQL Server można skonfigurować na pojedynczej i w puli bazach dany
 - Jedna publikacja na SQL Server może obsługiwać zarówno Azure SQL Database, jak i SQL Server (lokalnie i SQL Server w ramach maszyn wirtualnych platformy Azure).  
 - Zarządzanie replikacją, monitorowanie i rozwiązywanie problemów należy wykonać z SQL Server lokalnych.  
 - Obsługiwane są tylko subskrypcje wypychane do Azure SQL Database.  
-- Obsługiwane `@subscriber_type = 0` tylko w programie **sp_addsubscription** dla SQL Database.  
+- Tylko `@subscriber_type = 0` jest obsługiwane w **sp_addsubscription** dla SQL Database.  
 - Azure SQL Database nie obsługuje dwukierunkowej, natychmiastowej lub aktualizowalnej replikacji równorzędnej.
 
 ## <a name="replication-architecture"></a>Architektura replikacji  
 
-![replication-to-sql-database](./media/replication-to-sql-database/replication-to-sql-database.png)  
+![replikacja do bazy danych SQL](./media/replication-to-sql-database/replication-to-sql-database.png)  
 
 ## <a name="scenarios"></a>Scenariusze  
 
@@ -113,6 +113,6 @@ Utwórz publikację i subskrypcję wypychaną. Aby uzyskać więcej informacji, 
 - [Replikacja transakcyjna](sql-database-managed-instance-transactional-replication.md)
 - [Tworzenie publikacji](https://docs.microsoft.com/sql/relational-databases/replication/publish/create-a-publication)
 - [Tworzenie subskrypcji wypychanej](https://docs.microsoft.com/sql/relational-databases/replication/create-a-push-subscription/)
-- [Typy replikacji](https://docs.microsoft.com/sql/relational-databases/replication/types-of-replication)
+- [Types of Replication (Typy replikacji)](https://docs.microsoft.com/sql/relational-databases/replication/types-of-replication)
 - [Monitorowanie (replikacja)](https://docs.microsoft.com/sql/relational-databases/replication/monitor/monitoring-replication)
 - [Inicjowanie subskrypcji](https://docs.microsoft.com/sql/relational-databases/replication/initialize-a-subscription)  

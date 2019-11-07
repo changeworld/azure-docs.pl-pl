@@ -1,5 +1,5 @@
 ---
-title: Używanie certyfikatu SSL w kodzie aplikacji — Azure App Service | Microsoft Docs
+title: Używanie certyfikatu SSL w kodzie-Azure App Service | Microsoft Docs
 description: Dowiedz się, jak używać certyfikatów klienta do łączenia się z zasobami zdalnymi, które ich wymagają.
 services: app-service
 documentationcenter: ''
@@ -10,22 +10,22 @@ ms.service: app-service
 ms.workload: web
 ms.tgt_pltfrm: na
 ms.topic: article
-ms.date: 10/16/2019
+ms.date: 11/04/2019
 ms.author: cephalin
 ms.reviewer: yutlin
 ms.custom: seodec18
-ms.openlocfilehash: 1f042f72f82d2198472fe81670c697c0c4b28321
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
-ms.translationtype: HT
+ms.openlocfilehash: 93dfe784d45cd9cd93d22c5e8c3275c563f7f88b
+ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 11/04/2019
-ms.locfileid: "73513694"
+ms.locfileid: "73572076"
 ---
-# <a name="use-an-ssl-certificate-in-your-application-code-in-azure-app-service"></a>Użyj certyfikatu protokołu SSL w kodzie aplikacji w Azure App Service
+# <a name="use-an-ssl-certificate-in-your-code-in-azure-app-service"></a>Używanie certyfikatu protokołu SSL w kodzie w Azure App Service
 
-Kod aplikacji App Service może pełnić rolę klienta i uzyskać dostęp do usługi zewnętrznej wymagającej uwierzytelniania przy użyciu certyfikatu. W tym przewodniku opisano sposób używania certyfikatów publicznych lub prywatnych w kodzie aplikacji.
+W kodzie aplikacji można uzyskać dostęp do [publicznych lub prywatnych certyfikatów, które są dodawane do App Service](configure-ssl-certificate.md). Kod aplikacji może pełnić rolę klienta i uzyskać dostęp do usługi zewnętrznej wymagającej uwierzytelniania przy użyciu certyfikatu lub może być konieczne wykonanie zadań kryptograficznych. W tym przewodniku opisano sposób używania certyfikatów publicznych lub prywatnych w kodzie aplikacji.
 
-Takie podejście do korzystania z certyfikatów w kodzie korzysta z funkcji SSL w App Service, co wymaga, aby aplikacja była w warstwie **podstawowa** lub wyższa. Alternatywnie możesz [dołączyć plik certyfikatu do repozytorium aplikacji](#load-certificate-from-file), ale nie jest to zalecane rozwiązanie dla certyfikatów prywatnych.
+Takie podejście do korzystania z certyfikatów w kodzie korzysta z funkcji SSL w App Service, co wymaga, aby aplikacja była w warstwie **podstawowa** lub wyższa. Jeśli Twoja aplikacja znajduje się w warstwie **bezpłatna** lub **współdzielona** , możesz [dołączyć plik certyfikatu do repozytorium aplikacji](#load-certificate-from-file).
 
 Gdy zezwolisz App Service na zarządzanie certyfikatami SSL, możesz osobno zarządzać certyfikatami i kodem aplikacji oraz chronić poufne dane.
 
@@ -46,9 +46,9 @@ Znajdź certyfikat, którego chcesz użyć, i Skopiuj odcisk palca.
 
 ![Skopiuj odcisk palca certyfikatu](./media/configure-ssl-certificate/create-free-cert-finished.png)
 
-## <a name="load-the-certificate"></a>Załaduj certyfikat
+## <a name="make-the-certificate-accessible"></a>Udostępnianie certyfikatu
 
-Aby użyć certyfikatu w kodzie aplikacji, Dodaj jego odcisk palca do ustawienia aplikacji `WEBSITE_LOAD_CERTIFICATES`, uruchamiając następujące polecenie w <a target="_blank" href="https://shell.azure.com" >Cloud Shell</a>:
+Aby uzyskać dostęp do certyfikatu w kodzie aplikacji, Dodaj jego odcisk palca do ustawienia aplikacji `WEBSITE_LOAD_CERTIFICATES`, uruchamiając następujące polecenie w <a target="_blank" href="https://shell.azure.com" >Cloud Shell</a>:
 
 ```azurecli-interactive
 az webapp config appsettings set --name <app-name> --resource-group <resource-group-name> --settings WEBSITE_LOAD_CERTIFICATES=<comma-separated-certificate-thumbprints>
@@ -56,15 +56,14 @@ az webapp config appsettings set --name <app-name> --resource-group <resource-gr
 
 Aby udostępnić wszystkie certyfikaty, ustaw wartość na `*`.
 
-> [!NOTE]
-> To ustawienie powoduje umieszczenie określonych certyfikatów w [bieżącym magazynie User\My](/windows-hardware/drivers/install/local-machine-and-current-user-certificate-stores) w przypadku większości warstw cenowych, ale w warstwie **izolowanej** (tj. aplikacja działa w [App Service Environment](environment/intro.md)) umieszcza certyfikaty w [lokalnym Machine\My](/windows-hardware/drivers/install/local-machine-and-current-user-certificate-stores) zachować.
->
+## <a name="load-certificate-in-windows-apps"></a>Ładowanie certyfikatu w aplikacjach systemu Windows
 
-Skonfigurowane certyfikaty są teraz gotowe do użycia przez Twój kod.
+Ustawienie aplikacji `WEBSITE_LOAD_CERTIFICATES` powoduje, że określone certyfikaty są dostępne dla aplikacji hostowanej w systemie Windows w magazynie certyfikatów systemu Windows, a lokalizacja zależy od [warstwy cenowej](overview-hosting-plans.md):
 
-## <a name="load-the-certificate-in-code"></a>Załaduj certyfikat w kodzie
+- Warstwa **izolowana** — [Machine\My lokalny](/windows-hardware/drivers/install/local-machine-and-current-user-certificate-stores). 
+- Wszystkie inne warstwy — w [bieżącym User\My](/windows-hardware/drivers/install/local-machine-and-current-user-certificate-stores).
 
-Po uzyskaniu dostępu do certyfikatu można uzyskać do niego C# dostęp w kodzie za pomocą odcisku palca certyfikatu. Poniższy kod ładuje certyfikat z odciskiem palca `E661583E8FABEF4C0BEF694CBC41C28FB81CD870`.
+W C# kodzie uzyskuje się dostęp do certyfikatu za pomocą odcisku palca certyfikatu. Poniższy kod ładuje certyfikat z odciskiem palca `E661583E8FABEF4C0BEF694CBC41C28FB81CD870`.
 
 ```csharp
 using System;
@@ -89,30 +88,74 @@ certStore.Close();
 ...
 ```
 
-<a name="file"></a>
-## <a name="load-certificate-from-file"></a>Załaduj certyfikat z pliku
+W kodzie Java można uzyskać dostęp do certyfikatu z magazynu "Windows-MY" przy użyciu pola Nazwa pospolita podmiotu (zobacz [certyfikat klucza publicznego](https://en.wikipedia.org/wiki/Public_key_certificate)). Poniższy kod przedstawia sposób ładowania certyfikatu klucza prywatnego:
 
-Jeśli zachodzi potrzeba załadowania pliku certyfikatu z katalogu aplikacji, lepszym rozwiązaniem jest przekazanie go przy użyciu [FTPS](deploy-ftp.md) zamiast [git](deploy-local-git.md), na przykład. Należy zachować poufne dane, takie jak certyfikat prywatny, z kontroli źródła.
+```java
+import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.RequestMapping;
+import java.security.KeyStore;
+import java.security.cert.Certificate;
+import java.security.PrivateKey;
 
-Mimo że ładujesz plik bezpośrednio w kodzie .NET, biblioteka nadal weryfikuje, czy bieżący profil użytkownika jest załadowany. Aby załadować bieżący profil użytkownika, należy ustawić `WEBSITE_LOAD_USER_PROFILE` ustawienia aplikacji za pomocą następującego polecenia w <a target="_blank" href="https://shell.azure.com" >Cloud Shell</a>.
+...
+KeyStore ks = KeyStore.getInstance("Windows-MY");
+ks.load(null, null); 
+Certificate cert = ks.getCertificate("<subject-cn>");
+PrivateKey privKey = (PrivateKey) ks.getKey("<subject-cn>", ("<password>").toCharArray());
 
-```azurecli-interactive
-az webapp config appsettings set --name <app-name> --resource-group <resource-group-name> --settings WEBSITE_LOAD_USER_PROFILE=1
+// Use the certificate and key
+...
 ```
 
-Po ustawieniu tego ustawienia Poniższy C# przykład ładuje certyfikat o nazwie `mycert.pfx` z katalogu `certs` repozytorium aplikacji.
+W przypadku języków, które nie obsługują programu lub nie oferują wystarczającej obsługi dla magazynu certyfikatów systemu Windows, zobacz [ładowanie certyfikatu z pliku](#load-certificate-from-file).
+
+## <a name="load-certificate-in-linux-apps"></a>Ładowanie certyfikatu w aplikacjach systemu Linux
+
+Ustawienia aplikacji `WEBSITE_LOAD_CERTIFICATES` umożliwiają dostęp do określonych certyfikatów dla aplikacji hostowanych w systemie Linux (w tym niestandardowych aplikacji kontenerów) jako plików. Pliki znajdują się w następujących katalogach:
+
+- Certyfikaty prywatne — `/var/ssl/private` (pliki `.p12`)
+- Certyfikaty publiczne — `/var/ssl/certs` (pliki `.der`)
+
+Nazwa pliku certyfikatu jest odciskiem palca certyfikatu. Poniższy C# kod przedstawia sposób ładowania certyfikatu publicznego w aplikacji systemu Linux.
 
 ```csharp
 using System;
 using System.Security.Cryptography.X509Certificates;
 
 ...
-// Replace the parameter with "~/<relative-path-to-cert-file>".
-string certPath = Server.MapPath("~/certs/mycert.pfx");
+var bytes = System.IO.File.ReadAllBytes("/var/ssl/certs/<thumbprint>.der");
+var cert = new X509Certificate2(bytes);
 
-X509Certificate2 cert = GetCertificate(certPath, signatureBlob.Thumbprint);
-...
+// Use the loaded certificate
 ```
+
+Aby dowiedzieć się, jak załadować certyfikat SSL z pliku w Node. js, PHP, Python, Java lub Ruby, zapoznaj się z dokumentacją odpowiedniego języka lub platformy sieci Web.
+
+## <a name="load-certificate-from-file"></a>Załaduj certyfikat z pliku
+
+Jeśli zachodzi potrzeba załadowania pliku certyfikatu, który zostanie przekazany ręcznie, lepiej jest przekazać certyfikat przy użyciu [FTPS](deploy-ftp.md) zamiast [git](deploy-local-git.md), na przykład. Należy zachować poufne dane, takie jak certyfikat prywatny, z kontroli źródła.
+
+> [!NOTE]
+> ASP.NET i ASP.NET Core w systemie Windows muszą uzyskać dostęp do magazynu certyfikatów nawet w przypadku ładowania certyfikatu z pliku. Aby załadować plik certyfikatu w aplikacji systemu Windows .NET, Załaduj bieżący profil użytkownika przy użyciu następującego polecenia w <a target="_blank" href="https://shell.azure.com" >Cloud Shell</a>:
+>
+> ```azurecli-interactive
+> az webapp config appsettings set --name <app-name> --resource-group <resource-group-name> --settings WEBSITE_LOAD_USER_PROFILE=1
+> ```
+
+Poniższy C# przykład ładuje certyfikat publiczny ze ścieżki względnej w aplikacji:
+
+```csharp
+using System;
+using System.Security.Cryptography.X509Certificates;
+
+...
+var bytes = System.IO.File.ReadAllBytes("~/<relative-path-to-cert-file>");
+var cert = new X509Certificate2(bytes);
+
+// Use the loaded certificate
+```
+
+Aby dowiedzieć się, jak załadować certyfikat SSL z pliku w Node. js, PHP, Python, Java lub Ruby, zapoznaj się z dokumentacją odpowiedniego języka lub platformy sieci Web.
 
 ## <a name="more-resources"></a>Więcej zasobów
 

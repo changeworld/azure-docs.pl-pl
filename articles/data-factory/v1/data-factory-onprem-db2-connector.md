@@ -1,6 +1,6 @@
 ---
-title: Przenoszenie danych z bazy danych DB2 przy użyciu usługi Azure Data Factory | Dokumentacja firmy Microsoft
-description: Dowiedz się, jak przenieść dane z lokalnej bazy danych DB2 za pomocą działania kopiowania w fabryce danych Azure
+title: Przenoszenie danych z programu DB2 przy użyciu Azure Data Factory
+description: Dowiedz się, jak przenieść dane z lokalnej bazy danych DB2 przy użyciu działania kopiowania Azure Data Factory
 services: data-factory
 documentationcenter: ''
 author: linda33wj
@@ -13,120 +13,120 @@ ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: e473858ed02afce89313c0bfeffd95c785120d40
-ms.sourcegitcommit: 64798b4f722623ea2bb53b374fb95e8d2b679318
+ms.openlocfilehash: 0d066e66e4b9600eb5734ef2f3c6031dbc44f17a
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/11/2019
-ms.locfileid: "67839033"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73666602"
 ---
-# <a name="move-data-from-db2-by-using-azure-data-factory-copy-activity"></a>Przenoszenie danych z bazy danych DB2 za pomocą działania kopiowania w fabryce danych Azure
-> [!div class="op_single_selector" title1="Wybierz wersję usługi Data Factory, którego używasz:"]
+# <a name="move-data-from-db2-by-using-azure-data-factory-copy-activity"></a>Przenoszenie danych z programu DB2 przy użyciu działania kopiowania Azure Data Factory
+> [!div class="op_single_selector" title1="Wybierz używaną wersję usługi Data Factory:"]
 > * [Wersja 1](data-factory-onprem-db2-connector.md)
 > * [Wersja 2 (bieżąca wersja)](../connector-db2.md)
 
 > [!NOTE]
-> Ten artykuł dotyczy wersji 1 usługi Data Factory. Jeśli używasz bieżącą wersję usługi Data Factory, zobacz [łącznik DB2 w wersji 2](../connector-db2.md).
+> Ten artykuł dotyczy wersji 1 usługi Data Factory. Jeśli używasz bieżącej wersji usługi Data Factory, zobacz [łącznik programu DB2 w wersji 2](../connector-db2.md).
 
 
-W tym artykule opisano, jak można użyć działania kopiowania w usłudze Azure Data Factory Aby skopiować dane z lokalnej bazy danych DB2 w magazynie danych. Można skopiować danych do dowolnego magazynu, który jest wymieniony jako obsługiwany obiekt sink w [działania przenoszenia danych usługi Data Factory](data-factory-data-movement-activities.md#supported-data-stores-and-formats) artykułu. Ten temat opiera się na usługi Data Factory artykuł przedstawia omówienie przenoszenie danych za pomocą działania kopiowania, która zawiera listę kombinacji magazynu obsługiwanych danych. 
+W tym artykule opisano, jak za pomocą działania kopiowania w Azure Data Factory skopiować dane z lokalnej bazy danych programu DB2 do magazynu danych. Dane można kopiować do dowolnego magazynu, który jest wymieniony jako obsługiwany, w artykule [Data Factory działania związane z przenoszeniem danych](data-factory-data-movement-activities.md#supported-data-stores-and-formats) . Ten temat jest oparty na Data Factory artykule, który przedstawia przegląd przenoszenia danych za pomocą działania kopiowania i zawiera listę obsługiwanych kombinacji magazynu danych. 
 
-Usługa Data Factory obsługuje obecnie tylko przenosi dane z bazy danych programu DB2 do [obsługiwanego magazynu danych ujścia](data-factory-data-movement-activities.md#supported-data-stores-and-formats). Przenoszenie danych z innych danych są przechowywane do bazy danych DB2, baza danych nie jest obsługiwana.
+Data Factory obecnie obsługuje tylko przeniesienie danych z bazy danych DB2 do [obsługiwanego magazynu danych ujścia](data-factory-data-movement-activities.md#supported-data-stores-and-formats). Przeniesienie danych z innych magazynów danych do bazy danych DB2 nie jest obsługiwane.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
-Usługa Data Factory obsługuje łączenie z bazą danych DB2 w środowisku lokalnym za pomocą [bramy zarządzania danymi](data-factory-data-management-gateway.md). Aby uzyskać instrukcje krok po kroku do skonfigurowania bramy potoku danych do przenoszenia danych, zobacz [przenoszenie danych ze środowiska lokalnego do chmury](data-factory-move-data-between-onprem-and-cloud.md) artykułu.
+Data Factory obsługuje łączenie z lokalną bazą danych DB2 przy użyciu [bramy zarządzania danymi](data-factory-data-management-gateway.md). Instrukcje krok po kroku dotyczące konfigurowania potoku danych bramy do przenoszenia danych znajdują się w artykule [przenoszenie danych z lokalizacji lokalnej do chmury](data-factory-move-data-between-onprem-and-cloud.md) .
 
-Brama jest wymagana, nawet wtedy, gdy programu DB2 znajduje się na maszynie Wirtualnej IaaS platformy Azure. Bramę można zainstalować na tych samych maszyn wirtualnych IaaS do przechowywania danych. Jeżeli brama może połączyć się z bazą danych, można zainstalować bramy na innej maszynie Wirtualnej.
+Brama jest wymagana, nawet jeśli DB2 jest hostowana na maszynie wirtualnej IaaS platformy Azure. Możesz zainstalować bramę na tej samej maszynie wirtualnej IaaS, w której znajduje się magazyn danych. Jeśli Brama może nawiązać połączenie z bazą danych, możesz zainstalować bramę na innej maszynie wirtualnej.
 
-Brama zarządzania danymi udostępnia wbudowanego sterownika bazy danych DB2, więc nie trzeba ręcznie zainstalować sterownik, aby skopiować dane z bazy danych DB2.
+Brama zarządzania danymi zawiera wbudowany sterownik programu DB2, dlatego nie trzeba ręcznie instalować sterownika, aby skopiować dane z bazy danych DB2.
 
 > [!NOTE]
-> Aby uzyskać porady na temat rozwiązywania problemów, połączenia i problemy z bramy, zobacz [problemów bramy](data-factory-data-management-gateway.md#troubleshooting-gateway-issues) artykułu.
+> Porady dotyczące rozwiązywania problemów z połączeniem i bramą znajdują się w artykule [Rozwiązywanie problemów z bramą](data-factory-data-management-gateway.md#troubleshooting-gateway-issues) .
 
 
 ## <a name="supported-versions"></a>Obsługiwane wersje
-Łącznik DB2 fabryka danych obsługuje następujące platformy programu IBM DB2 i wersji przy użyciu Menedżera dostępu programu SQL Distributed architektury bazy danych relacyjnych (DRDA) w wersjach 9, 10 i 11:
+Łącznik Data Factory DB2 obsługuje następujące platformy i wersje programu IBM DB2 z dystrybuowaną architekturą relacyjnej bazy danych (DRDA), wersjami 9, 10 i 11:
 
-* IBM DB2 w przypadku wersji 11.1 z/OS
-* IBM DB2 w przypadku wersji 10.1 z/OS
-* IBM DB2 i (AS400) w wersji 7.2
-* IBM DB2 i (AS400) w wersji 7.1
+* IBM DB2 dla systemu z/OS w wersji 11,1
+* IBM DB2 dla systemu z/OS w wersji 10,1
+* IBM DB2 for i (systemu AS400) w wersji 7,2
+* IBM DB2 for i (systemu AS400) w wersji 7,1
 * IBM DB2 dla systemów Linux, UNIX i Windows (LUW) w wersji 11
-* IBM DB2 for LUW wersji 10.5
-* IBM DB2 for LUW wersji 10.1
+* IBM DB2 for LUW, wersja 10,5
+* IBM DB2 for LUW, wersja 10,1
 
 > [!TIP]
-> Jeśli zostanie wyświetlony komunikat o błędzie "nie znaleziono pakietu odpowiadającego żądaniu wykonania instrukcji SQL. SQLSTATE 51002 SQLCODE =-805, = "przyczyną jest potrzebny pakiet nie został utworzony dla zwykłego użytkownika w systemie operacyjnym. Aby rozwiązać ten problem, wykonaj te instrukcje dla danego typu serwera bazy danych DB2:
-> - Bazy danych DB2 for i (AS400): Umożliwia użytkownikowi zasilania, utwórz kolekcję dla zwykłego użytkownika przed uruchomieniem działania kopiowania. Aby utworzyć kolekcję, użyj polecenia: `create collection <username>`
-> - Bazy danych DB2 z/OS lub LUW: Użyj konta z wysokim poziomie uprawnień — użytkownika zaawansowanego lub administratora, który ma urzędy pakietu BIND, BINDADD, przydział wykonania do publicznego uprawnienia i — raz uruchomić kopię. Potrzebny pakiet jest tworzony automatycznie podczas kopiowania. Możesz później, przejdź do zwykłego użytkownika dla uruchomień kolejnych kopii.
+> Jeśli zostanie wyświetlony komunikat o błędzie "nie znaleziono pakietu odpowiadającego żądaniu wykonania instrukcji SQL. SQLSTATE = 51002 SQLCODE =-805 "powód jest niezbędny pakiet dla normalnego użytkownika w systemie operacyjnym. Aby rozwiązać ten problem, wykonaj następujące instrukcje dotyczące typu serwera bazy danych DB2:
+> - DB2 for i (systemu AS400): Pozwól użytkownikowi zaawansowanemu utworzyć kolekcję dla normalnego użytkownika przed uruchomieniem działania kopiowania. Aby utworzyć kolekcję, użyj polecenia: `create collection <username>`
+> - DB2 dla systemu z/OS lub LUW: Użyj konta o wysokim poziomie uprawnień — użytkownik zaawansowany lub administrator, który ma urzędy i powiązania pakietów, BINDADD, PRZYZNAj uprawnienia wykonywanie do publicznych uprawnień — aby uruchomić kopię raz. Wymagany pakiet jest automatycznie tworzony podczas kopiowania. Później można wrócić do normalnego użytkownika w przypadku kolejnych przebiegów kopiowania.
 
 ## <a name="getting-started"></a>Wprowadzenie
-Utworzysz potok z działaniem kopiowania do przenoszenia danych z magazynu danych programu DB2 lokalnie przy użyciu różnych narzędzi i interfejsów API: 
+Można utworzyć potok z działaniem kopiowania, aby przenieść dane z lokalnego magazynu danych DB2 przy użyciu różnych narzędzi i interfejsów API: 
 
-- Najprostszym sposobem utworzenia potoku jest używanie kreatora kopiowania usługi Azure Data Factory. Szybki przewodnik dotyczący tworzenia potoku za pomocą Kreatora kopiowania, zobacz [samouczka: Tworzenie potoku za pomocą Kreatora kopiowania](data-factory-copy-data-wizard-tutorial.md). 
-- Umożliwia także narzędzia do tworzenia potoku, w tym Visual Studio, programu Azure PowerShell, szablonu usługi Azure Resource Manager, interfejsu API platformy .NET i interfejsu API REST. Aby uzyskać instrukcje krok po kroku utworzysz potok z działaniem kopiowania, zobacz [samouczka działania kopiowania](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md). 
+- Najprostszym sposobem tworzenia potoku jest użycie Kreatora kopiowania Azure Data Factory. Aby uzyskać szybki Przewodnik dotyczący tworzenia potoku przy użyciu Kreatora kopiowania, zobacz [Samouczek: Tworzenie potoku przy użyciu Kreatora kopiowania](data-factory-copy-data-wizard-tutorial.md). 
+- Możesz również użyć narzędzi do tworzenia potoku, w tym programu Visual Studio, Azure PowerShell, szablonu Azure Resource Manager, interfejsu API platformy .NET i interfejsu API REST. Aby uzyskać instrukcje krok po kroku dotyczące tworzenia potoku za pomocą działania kopiowania, zobacz [Samouczek dotyczący działania kopiowania](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md). 
 
-Czy używasz narzędzi lub interfejsów API, należy wykonać poniższe kroki, aby utworzyć potok, który przenosi dane z magazynu danych źródłowych do magazynu danych ujścia:
+Niezależnie od tego, czy używasz narzędzi, czy interfejsów API, wykonaj następujące kroki, aby utworzyć potok służący do przenoszenia danych ze źródłowego magazynu danych do magazynu danych ujścia:
 
-1. Utwórz połączone usługi, aby połączyć dane wejściowe i wyjściowe magazynów danych z fabryką danych.
-2. Utwórz zestawy danych reprezentujące dane wejściowe i wyjściowe operacji kopiowania. 
-3. Tworzenie potoku za pomocą działania kopiowania, która przyjmuje jako dane wejściowe zestawu danych i zestaw danych jako dane wyjściowe. 
+1. Utwórz połączone usługi, aby połączyć magazyny danych wejściowych i wyjściowych z fabryką danych.
+2. Utwórz zestawy danych, aby reprezentować dane wejściowe i wyjściowe dla operacji kopiowania. 
+3. Utwórz potok z działaniem kopiowania, które pobiera zestaw danych jako dane wejściowe i zestaw danych jako dane wyjściowe. 
 
-Korzystając z Kreatora kopiowania, definicji JSON usługi fabryka danych, połączonej usługi, zestawy danych i potoku jednostki są tworzone automatycznie dla Ciebie. Korzystając z narzędzi lub interfejsów API (z wyjątkiem interfejsu API platformy .NET), zdefiniujesz jednostki usługi Data Factory przy użyciu formatu JSON. Przykład kodu JSON: Kopiuj dane z bazy danych DB2 do usługi Azure Blob storage zawiera definicji JSON dla jednostek fabryki danych, które są używane w celu skopiowania danych z lokalnego magazynu danych programu DB2.
+W przypadku używania Kreatora kopiowania definicje JSON dla Data Factory połączonych usług, zestawów danych i jednostek potoku są tworzone automatycznie. Korzystając z narzędzi lub interfejsów API (z wyjątkiem interfejsu API platformy .NET), należy zdefiniować jednostki Data Factory przy użyciu formatu JSON. Przykład JSON: kopiowanie danych z programu DB2 do usługi Azure Blob Storage pokazuje definicje JSON dla Data Factory jednostek, które są używane do kopiowania danych z lokalnego magazynu danych programu DB2.
 
-Poniższe sekcje zawierają szczegółowe informacje o właściwościach JSON, które są używane do definiowania jednostek usługi Data Factory, które są specyficzne dla magazynu danych programu DB2.
+Poniższe sekcje zawierają szczegółowe informacje o właściwościach JSON, które są używane do definiowania jednostek Data Factory, które są specyficzne dla magazynu danych programu DB2.
 
-## <a name="db2-linked-service-properties"></a>Właściwości usługi połączonej bazy danych DB2
-W poniższej tabeli wymieniono właściwości kodu JSON, które są specyficzne dla usługi połączonej bazy danych DB2.
+## <a name="db2-linked-service-properties"></a>Właściwości połączonej usługi DB2
+W poniższej tabeli wymieniono właściwości JSON, które są specyficzne dla połączonej usługi bazy danych DB2.
 
-| Właściwość | Opis | Wymagane |
+| Właściwość | Opis | Wymagany |
 | --- | --- | --- |
-| **type** |Ta właściwość musi być równa **OnPremisesDb2**. |Yes |
-| **server** |Nazwa serwera bazy danych DB2. |Tak |
+| **type** |Ta właściwość musi być ustawiona na **OnPremisesDb2**. |Tak |
+| **Server** |Nazwa serwera bazy danych DB2. |Tak |
 | **database** |Nazwa bazy danych DB2. |Tak |
-| **schema** |Nazwa schematu w bazie danych DB2. Ta właściwość jest rozróżniana wielkość liter. |Nie |
-| **authenticationType** |Typ uwierzytelniania, który służy do łączenia z bazą danych DB2. Możliwe wartości to: Anonimowe, podstawowe i Windows. |Yes |
-| **Nazwa użytkownika** |Nazwa konta użytkownika, jeśli używasz uwierzytelniania podstawowe lub Windows. |Nie |
-| **Hasło** |Hasło dla konta użytkownika. |Nie |
-| **gatewayName** |Nazwa bramy, do którego usługa Data Factory powinna używać do łączenia z bazą danych DB2 w środowisku lokalnym. |Yes |
+| **schematy** |Nazwa schematu w bazie danych programu DB2. Ta właściwość jest uwzględniana wielkość liter. |Nie |
+| **authenticationType** |Typ uwierzytelniania używany do łączenia się z bazą danych programu DB2. Możliwe wartości to: Anonymous, Basic i Windows. |Tak |
+| **uż** |Nazwa konta użytkownika w przypadku korzystania z uwierzytelniania podstawowego lub systemu Windows. |Nie |
+| **hasło** |Hasło konta użytkownika. |Nie |
+| **gatewayName** |Nazwa bramy, która ma być używana przez usługę Data Factory do łączenia się z lokalną bazą danych DB2. |Tak |
 
 ## <a name="dataset-properties"></a>Właściwości zestawu danych
-Aby uzyskać listę sekcje i właściwości, które są dostępne do definiowania zestawów danych, zobacz [tworzenie zestawów danych](data-factory-create-datasets.md) artykułu. Sekcje, takie jak **struktury**, **dostępności**i **zasad** dla zestawu danych JSON, są podobne dla wszystkich typów na zestaw danych (Azure SQL, usłudze Azure Blob storage, Azure Table storage i tak dalej).
+Aby zapoznać się z listą sekcji i właściwości, które są dostępne do definiowania zestawów danych, zobacz artykuł [Tworzenie zestawów danych](data-factory-create-datasets.md) . Sekcje, takie jak **Struktura**, **dostępność**i **zasady** dla JSON zestawu danych, są podobne dla wszystkich typów zestawu danych (Azure SQL, Azure Blob Storage, Azure Table Storage itd.).
 
-**TypeProperties** sekcji różni się dla każdego typu zestawu danych i zawiera informacje o lokalizacji danych w magazynie danych. **TypeProperties** sekcji dla zestawu danych typu **RelationalTable**, który zawiera zestaw danych DB2, ma następującą właściwość:
+Sekcja **typeProperties** jest inna dla każdego typu zestawu danych i zawiera informacje dotyczące lokalizacji danych w magazynie danych. Sekcja **typeProperties** dla zestawu danych typu **relacyjnego**, który zawiera zestaw danych DB2, ma następującą właściwość:
 
-| Właściwość | Opis | Wymagane |
+| Właściwość | Opis | Wymagany |
 | --- | --- | --- |
-| **tableName** |Nazwa tabeli w wystąpieniu bazy danych DB2, które połączona usługa przywołuje. Ta właściwość jest rozróżniana wielkość liter. |Nie (Jeśli **zapytania** właściwości działania kopiowania typu **RelationalSource** zostanie określona) |
+| **tableName** |Nazwa tabeli w wystąpieniu bazy danych DB2, do której odwołuje się połączona usługa. Ta właściwość jest uwzględniana wielkość liter. |Nie (Jeśli określono Właściwość **zapytania** działania Copy typu **RelationalSource** ) |
 
 ## <a name="copy-activity-properties"></a>Właściwości działania kopiowania
-Aby uzyskać listę sekcje i właściwości, które są dostępne do definiowania działania kopiowania, zobacz [tworzenie potoków](data-factory-create-pipelines.md) artykułu. Skopiuj właściwości działań, takich jak **nazwa**, **opis**, **dane wejściowe** tabeli, **generuje** tabeli i **zasad**, są dostępne dla wszystkich typów działań. Właściwości, które są dostępne w **typeProperties** różnią się w sekcji działania dla każdego typu działania. Właściwości różnią się w zależności od typów danych źródła i ujścia dla działania kopiowania.
+Aby zapoznać się z listą sekcji i właściwości, które są dostępne do definiowania działań związanych z kopiowaniem, zobacz artykuł [Tworzenie potoków](data-factory-create-pipelines.md) . Właściwości działania kopiowania, takie jak **Nazwa**, **Opis**, tabela **danych wejściowych** , tabela **wyników** i **zasady**, są dostępne dla wszystkich typów działań. Właściwości, które są dostępne w sekcji **typeProperties** działania, różnią się w zależności od typu działania. W przypadku działania kopiowania właściwości różnią się w zależności od typów źródeł danych i ujścia.
 
-Działanie kopiowania, gdy źródłem jest typu **RelationalSource** (w tym bazy danych DB2), następujące właściwości są dostępne w **typeProperties** sekcji:
+W przypadku działania kopiowania, gdy źródłem jest typ **RelationalSource** (w tym DB2), w sekcji **typeProperties** dostępne są następujące właściwości:
 
-| Właściwość | Opis | Dozwolone wartości | Wymagane |
+| Właściwość | Opis | Dozwolone wartości | Wymagany |
 | --- | --- | --- | --- |
-| **Zapytanie** |Użyj niestandardowego zapytania, aby odczytywać dane. |Ciąg zapytania SQL. Na przykład: `"query": "select * from "MySchema"."MyTable""` |Nie (Jeśli **tableName** określono właściwości zestawu danych) |
+| **dotyczących** |Użyj zapytania niestandardowego, aby odczytać dane. |Ciąg zapytania SQL. Na przykład: `"query": "select * from "MySchema"."MyTable""` |Nie (Jeśli określono Właściwość **TableName** zestawu danych) |
 
 > [!NOTE]
-> Nazwy schematu i tabeli jest rozróżniana wielkość liter. W instrukcji zapytania, ujmij nazwy właściwości przy użyciu "" (podwójne cudzysłowy).
+> W nazwach schematu i tabeli jest rozróżniana wielkość liter. W instrukcji kwerendy należy ująć nazwy właściwości przy użyciu "" (podwójne cudzysłowy).
 
-## <a name="json-example-copy-data-from-db2-to-azure-blob-storage"></a>Przykład kodu JSON: Kopiowanie danych z bazy danych DB2 w usłudze Azure Blob storage
-W poniższym przykładzie przedstawiono przykładowe definicji JSON, które umożliwiają tworzenie potoku za pomocą [programu Visual Studio](data-factory-copy-activity-tutorial-using-visual-studio.md), lub [programu Azure PowerShell](data-factory-copy-activity-tutorial-using-powershell.md). W przykładzie pokazano, jak skopiować dane z bazy danych DB2 do magazynu obiektów Blob. Jednakże, można skopiować danych do [typ ujścia magazynu wszelkie obsługiwane dane](data-factory-data-movement-activities.md#supported-data-stores-and-formats) za pomocą działania kopiowania w fabryce danych Azure.
+## <a name="json-example-copy-data-from-db2-to-azure-blob-storage"></a>Przykład JSON: kopiowanie danych z programu DB2 do magazynu obiektów blob platformy Azure
+Ten przykład zawiera przykładowe definicje JSON, których można użyć do utworzenia potoku przy użyciu programu [Visual Studio](data-factory-copy-activity-tutorial-using-visual-studio.md)lub [Azure PowerShell](data-factory-copy-activity-tutorial-using-powershell.md). W przykładzie pokazano, jak skopiować dane z bazy danych programu DB2 do magazynu obiektów BLOB. Dane można jednak kopiować do [dowolnego obsługiwanego typu ujścia magazynu danych](data-factory-data-movement-activities.md#supported-data-stores-and-formats) za pomocą działania kopiowania Azure Data Factory.
 
-Przykład obejmuje następujących jednostek usługi Data Factory:
+Przykład zawiera następujące jednostki Data Factory:
 
-- Bazy danych DB2 połączonej usługi typu [OnPremisesDb2](data-factory-onprem-db2-connector.md)
-- Usługi Azure Blob storage połączonej usługi typu [AzureStorage](data-factory-azure-blob-connector.md#linked-service-properties)
-- Dane wejściowe [dataset](data-factory-create-datasets.md) typu [RelationalTable](data-factory-onprem-db2-connector.md#dataset-properties)
-- Dane wyjściowe [dataset](data-factory-create-datasets.md) typu [obiektu blob platformy Azure](data-factory-azure-blob-connector.md#dataset-properties)
-- A [potoku](data-factory-create-pipelines.md) za pomocą działania kopiowania, która używa [RelationalSource](data-factory-onprem-db2-connector.md#copy-activity-properties) i [BlobSink](data-factory-azure-blob-connector.md#copy-activity-properties) właściwości
+- Połączona usługa DB2 typu [OnPremisesDb2](data-factory-onprem-db2-connector.md)
+- Połączona usługa magazynu obiektów blob platformy Azure typu [AzureStorage](data-factory-azure-blob-connector.md#linked-service-properties)
+- Wejściowy [zestaw danych](data-factory-create-datasets.md) typu [relacyjnego](data-factory-onprem-db2-connector.md#dataset-properties)
+- Wyjściowy [zestaw danych](data-factory-create-datasets.md) typu [AzureBlob](data-factory-azure-blob-connector.md#dataset-properties)
+- [Potok](data-factory-create-pipelines.md) z działaniem kopiowania, który używa właściwości [RelationalSource](data-factory-onprem-db2-connector.md#copy-activity-properties) i [wartość blobsink](data-factory-azure-blob-connector.md#copy-activity-properties)
 
-Przykład kopiuje dane z wyniku kwerendy w bazie danych DB2 do obiektu blob platformy Azure co godzinę. Właściwości kodu JSON, które są używane w przykładzie są opisane w sekcjach definicji jednostki.
+Przykład kopiuje dane z wyniku zapytania w bazie danych programu DB2 do obiektu blob platformy Azure co godzinę. Właściwości JSON, które są używane w przykładzie, są opisane w sekcjach, które są zgodne z definicjami jednostek.
 
-Pierwszym krokiem należy zainstalować i skonfigurować bramę data gateway. Instrukcje znajdują się w [przenoszenia danych między lokalizacjami lokalnymi i chmurą](data-factory-move-data-between-onprem-and-cloud.md) artykułu.
+Pierwszym krokiem jest zainstalowanie i skonfigurowanie bramy Data Gateway. Instrukcje dotyczą [przemieszczania danych między lokalizacjami lokalnymi i artykułami w chmurze](data-factory-move-data-between-onprem-and-cloud.md) .
 
-**Usługi połączonej bazy danych DB2**
+**Połączona usługa DB2**
 
 ```json
 {
@@ -146,7 +146,7 @@ Pierwszym krokiem należy zainstalować i skonfigurować bramę data gateway. In
 }
 ```
 
-**Obiekt Blob połączona usługa Azure storage**
+**Połączona usługa Azure Blob Storage**
 
 ```json
 {
@@ -160,11 +160,11 @@ Pierwszym krokiem należy zainstalować i skonfigurować bramę data gateway. In
 }
 ```
 
-**Wejściowy zestaw danych DB2**
+**Zestaw danych wejściowych DB2**
 
-Przykład przyjęto założenie, że utworzono tabelę w bazie danych DB2 o nazwie "MyTable", który ma kolumnę z etykietą "timestamp" w danych szeregów czasowych.
+W przykładzie przyjęto założenie, że utworzono tabelę w bazie danych DB2 o nazwie "MyTable", która ma kolumnę z etykietą "timestamp" (dane szeregów czasowych).
 
-**Zewnętrznych** właściwość jest ustawiona na wartość "true". To ustawienie informuje usługa Data Factory, że ten zestaw danych jest zewnętrzne w usłudze data factory i nie jest generowany przez działanie w usłudze data factory. Należy zauważyć, że **typu** właściwość jest ustawiona na **RelationalTable**.
+Właściwość **zewnętrzna** jest ustawiona na wartość "true". To ustawienie informuje usługę Data Factory, że ten zestaw danych jest zewnętrzny względem fabryki danych i nie jest wytwarzany przez działanie w fabryce danych. Zauważ, że właściwość **Type** jest ustawiona na wartość **relacyjny**.
 
 
 ```json
@@ -192,7 +192,7 @@ Przykład przyjęto założenie, że utworzono tabelę w bazie danych DB2 o nazw
 
 **Wyjściowy zestaw danych obiektów blob platformy Azure**
 
-Dane są zapisywane do nowego obiektu blob co godzinę, ustawiając **częstotliwość** właściwość "Hour" i **interwał** właściwości na wartość 1. **FolderPath** właściwości dla obiektu blob jest dynamicznie obliczana na podstawie czasu rozpoczęcia wycinek, który jest przetwarzany. Ścieżka folderu używa rok, miesiąc, dzień i godzinę części czas rozpoczęcia.
+Dane są zapisywane w nowym obiekcie blob co godzinę przez ustawienie właściwości **częstotliwość** na wartość "godzina" i Właściwość **Interwał** na 1. Właściwość **folderPath** obiektu BLOB jest obliczana dynamicznie na podstawie czasu rozpoczęcia przetwarzanego wycinka. Ścieżka folderu używa części roku, miesiąca, dnia i godziny rozpoczęcia.
 
 ```json
 {
@@ -252,7 +252,7 @@ Dane są zapisywane do nowego obiektu blob co godzinę, ustawiając **częstotli
 
 **Potok dla działania kopiowania**
 
-Potoku zawierającego działanie kopiowania skonfigurowany do używania określonych danych wejściowych i wyjściowych zestawów danych, które jest zaplanowane do uruchomienia na godzinę. W definicji JSON potok **źródła** ustawiono typ **RelationalSource** i **ujścia** ustawiono typ **BlobSink**. Zapytanie SQL, określony dla **zapytania** właściwość wybiera dane z tabeli "Orders".
+Potok zawiera działanie kopiowania, które jest skonfigurowane do korzystania z określonych zestawów danych wejściowych i wyjściowych oraz zaplanowane do uruchomienia co godzinę. W definicji JSON dla potoku, typ **źródła** ma wartość **RelationalSource** , a typ **ujścia** to **wartość blobsink**. Zapytanie SQL określone dla właściwości **zapytania** wybiera dane z tabeli "Orders" (zamówienia).
 
 ```json
 {
@@ -299,61 +299,61 @@ Potoku zawierającego działanie kopiowania skonfigurowany do używania określo
 ```
 
 ## <a name="type-mapping-for-db2"></a>Mapowanie typu dla bazy danych DB2
-Jak wspomniano w [działania przenoszenia danych](data-factory-data-movement-activities.md) artykułu, działanie kopiowania wykonuje automatyczne konwersje z typu źródła do ujścia typu przy użyciu następujących podejście dwuetapowe:
+Jak wspomniano w artykule [działania związane z przenoszeniem danych](data-factory-data-movement-activities.md) , działanie kopiowania wykonuje konwersje typu automatycznego z typu źródłowego na typ ujścia przy użyciu następującego podejścia dwuetapowego:
 
-1. Konwersji z typu natywnego źródłowego na typ architektury .NET
-2. Przekonwertowanie z .NET do typu natywnego obiektu sink
+1. Konwertuj z natywnego typu źródła na typ .NET
+2. Konwertuj z typu .NET na natywny typ ujścia
 
-Następujące mapowania są używane podczas działania kopiowania konwertuje dane z bazy danych DB2 typ architektury .NET:
+Następujące mapowania są używane, gdy działanie kopiowania konwertuje dane z typu DB2 na typ .NET:
 
-| Typ bazy danych DB2 | Typ .NET framework |
+| Typ bazy danych DB2 | Typ .NET Framework |
 | --- | --- |
 | SmallInt |Int16 |
-| Liczba całkowita |Int32 |
+| Liczba całkowita |Elementem |
 | BigInt |Int64 |
-| Real |Single |
+| Real |Pojedyncze |
 | Double |Double |
 | Float |Double |
-| Dziesiętna |Decimal |
-| DecimalFloat |Decimal |
-| Numeric |Decimal |
-| Date |Datetime |
-| Time |TimeSpan |
-| Timestamp |Datetime |
-| Xml |Byte[] |
-| Char |String |
-| VarChar |String |
-| LongVarChar |String |
-| DB2DynArray |String |
-| Binary |Byte[] |
-| VarBinary |Byte[] |
-| LongVarBinary |Byte[] |
-| Graphic |String |
-| VarGraphic |String |
+| Dokładności |Dokładności |
+| DecimalFloat |Dokładności |
+| przypada |Dokładności |
+| Date |DateTime |
+| Time |Czasu |
+| Znacznik czasu |DateTime |
+| dokument |Byte [] |
+| delikatn |Ciąg |
+| VarChar |Ciąg |
+| LongVarChar |Ciąg |
+| DB2DynArray |Ciąg |
+| Binarny |Byte [] |
+| Liczby |Byte [] |
+| LongVarBinary |Byte [] |
+| Zdjęć |Ciąg |
+| VarGraphic |Ciąg |
 | LongVarGraphic |Ciąg |
-| Clob |String |
-| Blob |Byte[] |
+| Obiektów CLOB |Ciąg |
+| Obiekt blob |Byte [] |
 | DbClob |Ciąg |
 | SmallInt |Int16 |
-| Liczba całkowita |Int32 |
+| Liczba całkowita |Elementem |
 | BigInt |Int64 |
-| Real |Single |
+| Real |Pojedyncze |
 | Double |Double |
 | Float |Double |
-| Dziesiętna |Decimal |
-| DecimalFloat |Decimal |
-| Numeric |Decimal |
-| Date |Datetime |
-| Time |TimeSpan |
-| Timestamp |Datetime |
-| Xml |Byte[] |
-| Char |String |
+| Dokładności |Dokładności |
+| DecimalFloat |Dokładności |
+| przypada |Dokładności |
+| Date |DateTime |
+| Time |Czasu |
+| Znacznik czasu |DateTime |
+| dokument |Byte [] |
+| delikatn |Ciąg |
 
-## <a name="map-source-to-sink-columns"></a>Mapy źródła do ujścia kolumn
-Aby dowiedzieć się, jak mapowania kolumn w zestawie danych źródłowych do kolumn w zestawie danych ujścia, zobacz [mapowanie kolumny zestawu danych w usłudze Azure Data Factory](data-factory-map-columns.md).
+## <a name="map-source-to-sink-columns"></a>Mapowanie źródła do kolumn ujścia
+Aby dowiedzieć się, jak mapować kolumny w źródłowym zestawie danych na kolumny w zestawie danych ujścia, zobacz [Mapowanie kolumn zestawu danych w Azure Data Factory](data-factory-map-columns.md).
 
-## <a name="repeatable-reads-from-relational-sources"></a>Powtarzalnego odczytu z źródeł relacyjnych
-Podczas kopiowania danych z relacyjnego magazynu danych, Zachowaj powtarzalności należy pamiętać, aby uniknąć niezamierzonego wyników. W usłudze Azure Data Factory możesz ponownie uruchomić wycinek ręcznie. Można również skonfigurować ponownych prób **zasad** właściwości zestawu danych ponownie uruchomić wycinek, gdy wystąpi awaria. Upewnij się, że niezależnie od tego, ile razy ponownego uruchomienia wycinka i niezależnie od tego, jak ponownie uruchomić wycinek jest do odczytu tych samych danych. Aby uzyskać więcej informacji, zobacz [Repeatable odczytuje dane ze źródeł relacyjnych](data-factory-repeatable-copy.md#repeatable-read-from-relational-sources).
+## <a name="repeatable-reads-from-relational-sources"></a>Powtarzalne odczyty ze źródeł relacyjnych
+Podczas kopiowania danych z magazynu danych relacyjnych należy pamiętać o powtarzaniu, aby uniknąć niezamierzonych wyników. W Azure Data Factory można ręcznie uruchomić ponownie wycinka. Możesz również skonfigurować właściwość **zasady** ponawiania dla zestawu danych, aby ponownie uruchomić wycinek w przypadku wystąpienia błędu. Upewnij się, że te same dane są odczytywane niezależnie od tego, ile razy zostanie uruchomiony wycink, bez względu na sposób ponownego uruchomienia wycinka. Aby uzyskać więcej informacji, zobacz [powtarzalne odczyty ze źródeł relacyjnych](data-factory-repeatable-copy.md#repeatable-read-from-relational-sources).
 
 ## <a name="performance-and-tuning"></a>Wydajności i dostosowywanie
-Więcej informacji na temat kluczowych czynników wpływających na wydajność działania kopiowania i sposobów na optymalizację wydajności [wydajności i działania kopiowania przewodnika dostrajania](data-factory-copy-activity-performance.md).
+Poznaj kluczowe czynniki wpływające na wydajność działania kopiowania i sposoby optymalizacji wydajności w przewodniku dotyczącym [wydajności i dostrajania działania kopiowania](data-factory-copy-activity-performance.md).

@@ -4,14 +4,14 @@ description: Użyj szablonów Azure Resource Manager, aby utworzyć i skonfiguro
 author: markjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 10/28/2019
+ms.date: 10/31/2019
 ms.author: mjbrown
-ms.openlocfilehash: 7861196daf3b04430200096a0d42bdcc6e6d5cf9
-ms.sourcegitcommit: 87efc325493b1cae546e4cc4b89d9a5e3df94d31
+ms.openlocfilehash: ecdfe89e899e0d416784ae32a0d66b335c09e2b6
+ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/29/2019
-ms.locfileid: "73053217"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73582806"
 ---
 # <a name="azure-resource-manager-templates-for-azure-cosmos-db"></a>Szablony Azure Resource Manager dla Azure Cosmos DB
 
@@ -21,12 +21,10 @@ W poniższych tabelach uwzględniono linki do Azure Resource Manager szablonów 
 
 |**Szablon**|**Opis**|
 |---|---|
-|[Tworzenie konta, bazy danych, kontenera usługi Azure Cosmos](manage-sql-with-resource-manager.md#create-resource) | Ten szablon służy do tworzenia konta interfejsu API SQL (rdzeń) w dwóch regionach z włączoną obsługą wielu wzorców. Konto usługi Azure Cosmos będzie miało dwa kontenery, które współużytkują przepływność na poziomie bazy danych. |
+|[Tworzenie konta, bazy danych, kontenera usługi Azure Cosmos](manage-sql-with-resource-manager.md#create-resource) | Ten szablon służy do tworzenia konta interfejsu API programu SQL (rdzeń) w dwóch regionach z dwoma kontenerami z przepływem danych udostępnionej usługi Database i kontenerem o dedykowanej przepływności. Przepływność można zaktualizować przez ponowne przesłanie szablonu ze zaktualizowaną wartością właściwości przepływności. |
 |[Utwórz konto usługi Azure Cosmos, bazę danych i kontener przy użyciu procedury składowanej, wyzwalacza i UDF](manage-sql-with-resource-manager.md#create-sproc) | Ten szablon służy do tworzenia konta interfejsu API SQL (rdzeń) w dwóch regionach z procedurą składowaną, wyzwalaczem i formatem UDF dla kontenera. |
-|[Aktualizowanie przepływności (RU/s) dla bazy danych](manage-sql-with-resource-manager.md#database-ru-update) | Ten szablon służy do aktualizowania przepływności dla bazy danych w ramach konta interfejsu API programu SQL (Core). |
-|[Aktualizacja przepływności (RU/s) dla kontenera](manage-sql-with-resource-manager.md#container-ru-update) | Ten szablon służy do aktualizowania przepływności dla kontenera w ramach konta interfejsu API SQL (rdzeń). |
 
-## <a name="mongodb-api"></a>Interfejs API bazy danych MongoDB
+## <a name="mongodb-api"></a>Interfejs API usługi MongoDB
 
 |**Szablon**|**Opis**|
 |---| ---|

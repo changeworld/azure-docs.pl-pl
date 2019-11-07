@@ -7,16 +7,19 @@ author: vhorne
 ms.service: web-application-firewall
 ms.date: 10/26/2019
 ms.author: victorh
-ms.openlocfilehash: a7622489008a8fabef8aee3ffb2ffc4f33b48296
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
-ms.translationtype: HT
+ms.openlocfilehash: 31a5ad92942b40e42b66e404df2d09cd8158f7a2
+ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73516671"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73606484"
 ---
 # <a name="create-web-application-firewall-policies-for-application-gateway"></a>Tworzenie zasad zapory aplikacji sieci Web dla Application Gateway
 
 Skojarzenie zasad WAF z odbiornikami umożliwia ochronę wielu lokacji za jednym WAF, aby były chronione przez różne zasady. Na przykład jeśli w WAF znajduje się pięć witryn, można mieć pięć oddzielnych zasad WAF (jeden dla każdego odbiornika), aby dostosować wykluczenia, reguły niestandardowe i zarządzane zestaw reguł dla jednej lokacji bez wpływu na pozostałe cztery. Jeśli do wszystkich lokacji mają być stosowane pojedyncze zasady, można po prostu skojarzyć zasady z Application Gateway zamiast poszczególnych odbiorników, aby zastosować je globalnie. Zasady mogą być również stosowane do reguły routingu opartej na ścieżce. 
+
+   > [!NOTE]
+   > Zasady WAF dla poszczególnych witryn są dostępne w regionach Południowo-środkowe stany USA i Europa Północna. Aby uzyskać dostęp do nich w portalu, użyj [tego linku](https://aka.ms/AppgwwafWithAllFeatureFlags) do momentu, gdy będzie on aktywny dla wszystkich użytkowników.  
 
 Możesz wprowadzić dowolną liczbę zasad. Po utworzeniu zasad, muszą one być skojarzone z Application Gateway, aby można je było uwzględnić, ale mogą być skojarzone z dowolną kombinacją bram aplikacji i odbiorników. 
 

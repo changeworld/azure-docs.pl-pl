@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 03/27/2019
 ms.author: glenga
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: ce91d53bec3c74a8a55d46fd53bc3cf0ccd7e28a
-ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
+ms.openlocfilehash: bf713029f26ac7ec0b6c043fb887fa5190083888
+ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72550641"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73576057"
 ---
 # <a name="azure-functions-scale-and-hosting"></a>Azure Functions skalowanie i hosting
 
@@ -45,10 +45,10 @@ Obsługa funkcji znajduje się w następujących dwóch kategoriach:
 
 Poniższa tabela przedstawia bieżący poziom wsparcia dla trzech planów hostingu w przypadku uruchamiania w systemie Windows lub Linux:
 
-| | Plan Zużycie | Plan w warstwie Premium | Plan dedykowany |
+| | Plan Zużycie | Plan Premium | Plan dedykowany |
 |-|:----------------:|:------------:|:----------------:|
-| Windows | Ogólna dostępność | wersja zapoznawcza | Ogólna dostępność |
-| Linux | Ogólna dostępność | wersja zapoznawcza | Ogólna dostępność |
+| Windows | Ogólna dostępność | Ogólna dostępność | Ogólna dostępność |
+| Linux | Ogólna dostępność | Ogólna dostępność | Ogólna dostępność |
 
 ## <a name="consumption-plan"></a>Plan Zużycie
 
@@ -65,7 +65,7 @@ Aplikacje funkcji w tym samym regionie mogą być przypisane do tego samego plan
 
 Aby dowiedzieć się więcej na temat szacowania kosztów podczas pracy w planie zużycia, zobacz [Opis kosztów planu zużycia](functions-consumption-costs.md).
 
-## <a name="premium-plan"></a>Plan Premium (wersja zapoznawcza)
+## <a name="premium-plan"></a>Plan Premium
 
 W przypadku korzystania z planu Premium wystąpienia hosta Azure Functions są dodawane i usuwane na podstawie liczby zdarzeń przychodzących, podobnie jak w przypadku planu zużycia.  Plan Premium obsługuje następujące funkcje:
 

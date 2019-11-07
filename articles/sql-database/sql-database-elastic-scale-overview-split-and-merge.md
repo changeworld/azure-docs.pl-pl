@@ -1,5 +1,5 @@
 ---
-title: Przeniesienie danych między skalowanymi bazami danych w chmurze | Microsoft Docs
+title: Przenoszenie danych między skalowanymi bazami danych w chmurze
 description: Wyjaśnia, jak manipulować fragmentów i przenosić dane za pośrednictwem samodzielnej usługi przy użyciu interfejsów API Elastic Database.
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 03/12/2019
-ms.openlocfilehash: 841794dcbb41249ea25f615524150df4bd257b45
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 9b2203b7fb9e168b251eda16a9505ae2004b0460
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68568387"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73690191"
 ---
 # <a name="moving-data-between-scaled-out-cloud-databases"></a>Przenoszenie danych między skalowanymi bazami danych w chmurze
 
@@ -28,7 +28,7 @@ Narzędzie do dzielenia i scalania działa jako usługa sieci Web platformy Azur
 
 ## <a name="download"></a>Do pobrania
 
-[Microsoft.Azure.SqlDatabase.ElasticScale.Service.SplitMerge](https://www.nuget.org/packages/Microsoft.Azure.SqlDatabase.ElasticScale.Service.SplitMerge/)
+[Microsoft. Azure. SQLDatabase. ElasticScale. Service. SplitMerge](https://www.nuget.org/packages/Microsoft.Azure.SqlDatabase.ElasticScale.Service.SplitMerge/)
 
 ## <a name="documentation"></a>Dokumentacja
 
@@ -98,7 +98,7 @@ Narzędzie do dzielenia i scalania działa jako usługa sieci Web platformy Azur
 
     Inne tabele mogą być obecne na źródłowym lub docelowym operacji dzielenia i scalania. Usługa Split-Merge nie uwzględnia tych tabel w przypadku operacji przenoszenia lub kopiowania danych. Należy jednak zauważyć, że mogą one zakłócać te operacje w przypadku ograniczeń.
 
-    Informacje dotyczące tabel Reference i podzielonej na fragmenty są udostępniane przez `SchemaInfo` interfejsy API na mapie fragmentu. Poniższy przykład ilustruje użycie tych interfejsów API w danym obiekcie Menedżera mapy fragmentu:
+    Informacje dotyczące tabel Reference i podzielonej na fragmenty są udostępniane przez interfejsy API `SchemaInfo` na mapie fragmentu. Poniższy przykład ilustruje użycie tych interfejsów API w danym obiekcie Menedżera mapy fragmentu:
 
     ```csharp
     // Create the schema annotations
@@ -115,7 +115,7 @@ Narzędzie do dzielenia i scalania działa jako usługa sieci Web platformy Azur
     smm.GetSchemaInfoCollection().Add(Configuration.ShardMapName, schemaInfo);
     ```
 
-    Tabele "region" i "kraj" są zdefiniowane jako tabele referencyjne i zostaną skopiowane za pomocą operacji Split/Merge/Move. z kolei "Customer" i "Orders" są zdefiniowane jako tabele podzielonej na fragmenty. `C_CUSTKEY`i `O_CUSTKEY` stanowią klucz fragmentowania.
+    Tabele "region" i "kraj" są zdefiniowane jako tabele referencyjne i zostaną skopiowane za pomocą operacji Split/Merge/Move. z kolei "Customer" i "Orders" są zdefiniowane jako tabele podzielonej na fragmenty. `C_CUSTKEY` i `O_CUSTKEY` stanowią klucz fragmentowania.
 
 - **Integralność referencyjna**
 
@@ -211,7 +211,7 @@ Usługa Split-Merge oferuje tabelę **stanem żądania** w bazie danych magazynu
 
 ### <a name="azure-diagnostics"></a>Diagnostyka Azure
 
-Usługa Split-Merge używa Diagnostyka Azure w oparciu o zestaw Azure SDK 2,5 na potrzeby monitorowania i diagnostyki. Możesz kontrolować konfigurację diagnostyki, jak wyjaśniono tutaj: [Włączanie diagnostyki w usłudze Azure Cloud Services i Virtual Machines](../cloud-services/cloud-services-dotnet-diagnostics.md). Pakiet pobierania obejmuje dwie konfiguracje diagnostyczne — jedną dla roli sieci Web i jedną dla roli proces roboczy. Zawiera definicje służące do rejestrowania liczników wydajności, dzienników usług IIS, dzienników zdarzeń systemu Windows i dzienników zdarzeń aplikacji dzielących scalanie.
+Usługa Split-Merge używa Diagnostyka Azure w oparciu o zestaw Azure SDK 2,5 na potrzeby monitorowania i diagnostyki. Możesz kontrolować konfigurację diagnostyki, jak wyjaśniono tutaj: [Włączanie diagnostyki na platformie Azure Cloud Services i Virtual Machines](../cloud-services/cloud-services-dotnet-diagnostics.md). Pakiet pobierania obejmuje dwie konfiguracje diagnostyczne — jedną dla roli sieci Web i jedną dla roli proces roboczy. Zawiera definicje służące do rejestrowania liczników wydajności, dzienników usług IIS, dzienników zdarzeń systemu Windows i dzienników zdarzeń aplikacji dzielących scalanie.
 
 ## <a name="deploy-diagnostics"></a>Wdróż diagnostykę
 
@@ -233,17 +233,17 @@ Aby włączyć monitorowanie i diagnostykę przy użyciu konfiguracji diagnostyk
     Set-AzureServiceDiagnosticsExtension -StorageContext $storageContext -DiagnosticsConfigurationPath $config_path -ServiceName $service_name -Slot Production -Role "SplitMergeWorker"
 ```
 
-Więcej informacji na temat sposobu konfigurowania i wdrażania ustawień diagnostycznych można znaleźć tutaj: [Włączanie diagnostyki w usłudze Azure Cloud Services i Virtual Machines](../cloud-services/cloud-services-dotnet-diagnostics.md).
+Więcej informacji na temat sposobu konfigurowania i wdrażania ustawień diagnostycznych można znaleźć tutaj: [Włączanie diagnostyki na platformie Azure Cloud Services i Virtual Machines](../cloud-services/cloud-services-dotnet-diagnostics.md).
 
 ## <a name="retrieve-diagnostics"></a>Pobierz diagnostykę
 
-Możesz łatwo uzyskać dostęp do danych diagnostycznych z programu Visual Studio Eksplorator serwera w części Azure drzewa Eksplorator serwera. Otwórz wystąpienie programu Visual Studio, a następnie na pasku menu kliknij pozycję Widok, a Eksplorator serwera. Kliknij ikonę platformy Azure, aby nawiązać połączenie z subskrypcją platformy Azure. Następnie przejdź do usługi Azure-> Storage- `<your storage account>` >-> Tabele — > WADLogsTable. Aby uzyskać więcej informacji, zobacz [Eksplorator serwera](https://msdn.microsoft.com/library/x603htbk.aspx).
+Możesz łatwo uzyskać dostęp do danych diagnostycznych z programu Visual Studio Eksplorator serwera w części Azure drzewa Eksplorator serwera. Otwórz wystąpienie programu Visual Studio, a następnie na pasku menu kliknij pozycję Widok, a Eksplorator serwera. Kliknij ikonę platformy Azure, aby nawiązać połączenie z subskrypcją platformy Azure. Następnie przejdź do usługi Azure-> Storage — > `<your storage account>`-> Tabele-> WADLogsTable. Aby uzyskać więcej informacji, zobacz [Eksplorator serwera](https://msdn.microsoft.com/library/x603htbk.aspx).
 
 ![WADLogsTable][2]
 
 WADLogsTable wyróżniony na powyższym rysunku zawiera szczegółowe zdarzenia z dziennika aplikacji usługi Split-Merge. Należy pamiętać, że domyślna konfiguracja pobranego pakietu jest ukierunkowana na wdrożenie produkcyjne. W związku z tym Interwał pobierania dzienników i liczników z wystąpień usługi jest duży (5 minut). W celu testowania i opracowywania Obniż interwał przez dostosowanie ustawień diagnostycznych sieci Web lub roli procesu roboczego do Twoich potrzeb. Kliknij prawym przyciskiem myszy rolę w Eksplorator serwera programu Visual Studio (patrz powyżej), a następnie dostosuj okres transferu w oknie dialogowym dla ustawień konfiguracji diagnostyki:
 
-![Konfigurowanie][3]
+![Konfiguracja][3]
 
 ## <a name="performance"></a>Wydajność
 

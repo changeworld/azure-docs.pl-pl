@@ -1,20 +1,17 @@
 ---
 title: Przewodnik rozwiązywania problemów z chmurą wiosenną platformy Azure | Microsoft Docs
 description: Przewodnik rozwiązywania problemów z chmurą wiosenną platformy Azure
-services: spring-cloud
-author: v-vasuke
-manager: gwallace
-editor: ''
+author: jpconnock
 ms.service: spring-cloud
-ms.topic: quickstart
-ms.date: 10/07/2019
-ms.author: v-vasuke
-ms.openlocfilehash: 546c97421fdb3a581a22e34f6110986a1a0732b6
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.topic: troubleshooting
+ms.date: 11/04/2019
+ms.author: jeconnoc
+ms.openlocfilehash: 9603f4a687b55f45be2875ccaa7b801c0c5589c9
+ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72929144"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73607627"
 ---
 # <a name="troubleshooting-guide-for-common-problems"></a>Przewodnik rozwiązywania problemów z typowymi problemami
 
@@ -31,7 +28,7 @@ Wyszukiwanie następującego błędu w dziennikach wskazuje jeden z dwóch możl
 `org.springframework.context.ApplicationContextException: Unable to start web server`
 
 * Brakuje jednego z ziaren lub jednej z jego zależności.
-* Brakuje jednej z właściwości ziarna lub jest ona nieprawidłowa. W takim przypadku prawdopodobnie zobaczysz `java.lang.IllegalArgumentException`.
+* Brakuje jednej z właściwości ziarna lub jest ona nieprawidłowa. W takim przypadku prawdopodobnie pojawi się `java.lang.IllegalArgumentException`.
 
 Powiązania usługi mogą również spowodować błędy uruchomienia aplikacji. Użyj słów kluczowych związanych z powiązanymi usługami do odpytania dzienników.  Na przykład załóżmy, że aplikacja ma powiązanie z wystąpieniem MySQL ustawionym na czas system lokalny. Jeśli uruchomienie aplikacji nie powiedzie się, w dzienniku może wystąpić następujący błąd:
 
@@ -53,7 +50,7 @@ Podczas debugowania awarii aplikacji Zacznij od sprawdzenia stanu uruchomienia i
 
   - `AppMemoryMax` (_JVM. Memory. Max_): Maksymalna ilość pamięci dostępnej dla aplikacji. Jeśli jest zdefiniowany, może być niezdefiniowany lub zmieniony w miarę upływu czasu. Ilość użytej i zatwierdzonej pamięci będzie zawsze mniejsza lub równa wartości maksymalnej, jeśli jest zdefiniowana. Jednak alokacja pamięci może zakończyć się niepowodzeniem z wyjątkiem `OutOfMemoryError` w przypadku próby zwiększenia użytej pamięci w taki sposób, że pamięć użyta będzie większa niż pamięć zatwierdzona, nawet jeśli pamięć użyta będzie mniejsza niż pamięć maksymalna lub jej równa. W takiej sytuacji spróbuj zwiększyć maksymalny rozmiar sterty za pomocą parametru `-Xmx`.
 
-  - `AppMemoryUsed` (_JVM. Memory. użyty_): ilość pamięci w bajtach, która jest obecnie używana przez aplikację. W przypadku aplikacji Java z normalnym obciążeniem ta seria pomiarowa będzie mieć wygląd „zębów piły” — użycie pamięci równomiernie rośnie i spada o niewielkie wartości, a następnie znacznie spada, po czym ten wzorzec powtarza się. Wynika to z faktu, że wyrzucanie elementów bezużytecznych wewnątrz maszyny wirtualnej Java, gdzie akcje kolekcji reprezentują opady na "sawteeth".
+  - `AppMemoryUsed` (_JVM. Memory._ Application): ilość pamięci w bajtach, która jest obecnie używana przez aplikację. W przypadku aplikacji Java z normalnym obciążeniem ta seria pomiarowa będzie mieć wygląd „zębów piły” — użycie pamięci równomiernie rośnie i spada o niewielkie wartości, a następnie znacznie spada, po czym ten wzorzec powtarza się. Wynika to z faktu, że wyrzucanie elementów bezużytecznych wewnątrz maszyny wirtualnej Java, gdzie akcje kolekcji reprezentują opady na "sawteeth".
     Ta Metryka jest ważna w przypadku identyfikowania problemów z pamięcią, takich jak: * rozłożenie pamięci na początku * przepięcia alokacji pamięci dla określonej ścieżki logicznej * stopniowe przecieki pamięci
 
   Aby uzyskać więcej informacji, zobacz [metryki](spring-cloud-concept-metrics.md).
@@ -70,7 +67,7 @@ Aby potwierdzić, którą sytuację ma,
 
 1. Przejdź do pozycji _Metryki_ i wybierz pozycję `Service CPU Usage Percentage` lub `Service Memory Used`
 2. Dodaj filtr `App=`, aby określić, która aplikacja ma być monitorowana
-3. Podziel metryki na `Instance`.
+3. Podziel metryki według `Instance`.
 
 Jeśli wszystkie wystąpienia mają duży procesor CPU/pamięć, należy przeprowadzić skalowanie w poziomie aplikacji lub skalowanie procesora CPU/pamięci. Aby uzyskać więcej informacji, zobacz [skalowanie aplikacji](spring-cloud-tutorial-scale-manual.md)
 
@@ -105,9 +102,9 @@ Jednak w przypadku próby aprowizacji wystąpienia usługi w _chmurze Azure wios
 * Grupa zasobów dla wystąpienia została już utworzona.
 * Nazwa zasobu jest zgodna z regułą nazewnictwa. (Może zawierać tylko małe litery, cyfry i łączniki. Pierwszy znak musi być literą. Ostatni znak musi być literą lub cyfrą. Wartość musi mieć długość od 2 do 32 znaków.)
 
-Jeśli spróbujesz udostępnić wystąpienie usługi w _chmurze Azure wiosny_ za pośrednictwem szablonu Menedżer zasobów, odwiedź stronę https://docs.microsoft.com/azure/azure-resource-manager/resource-group-authoring-templates, aby sprawdzić składnię szablonu.
+Jeśli spróbujesz udostępnić wystąpienie usługi w _chmurze Azure wiosny_ za pośrednictwem szablonu Menedżer zasobów, odwiedź https://docs.microsoft.com/azure/azure-resource-manager/resource-group-authoring-templates, aby sprawdzić składnię szablonu.
 
-Nazwa wystąpienia usługi w _chmurze Azure sprężynowego_ zostanie użyta do żądania nazwy domeny podrzędnej w obszarze `azureapps.io`, więc Inicjowanie obsługi zakończy się niepowodzeniem w przypadku konfliktu nazw z istniejącym elementem. Więcej szczegółów można znaleźć w dziennikach aktywności.
+Nazwa wystąpienia usługi w _chmurze Azure sprężynowego_ zostanie użyta do żądania nazwy domeny podrzędnej w obszarze `azureapps.io`, więc Inicjowanie obsługi zakończy się niepowodzeniem, jeśli wystąpi konflikt nazw z istniejącą. Więcej szczegółów można znaleźć w dziennikach aktywności.
 
 ### <a name="i-cannot-deploy-a-jar-package"></a>Nie mogę wdrożyć pakietu JAR
 
@@ -156,7 +153,7 @@ Zmienne środowiskowe informują platformę chmurową Azure ze sprężyną, dzi�
 
 1. Przejdź do tego adresu URL: `https://<your application test endpoint>/actuator/health`.  
     - Odpowiedź podobna do `{"status":"UP"}` wskazuje, że punkt końcowy został włączony.
-    - Jeśli odpowiedź jest ujemna, Uwzględnij w `POM.xml` następujący zależność:
+    - Jeśli odpowiedź jest ujemna, Uwzględnij w `POM.xml`następujący zależność:
 
         ```xml
             <dependency>
@@ -194,7 +191,7 @@ Znajdź węzeł podrzędny o nazwie `systemEnvironment`.  Ten węzeł zawiera zm
 
 Przejdź do pozycji _Zarządzanie aplikacjami_ _, aby_upewnić się, że aplikacja jest _uruchomiona i działa_ .
 
-Jeśli są wyświetlane metryki z _JVM_ , ale nie metryki z _Tomcat_, sprawdź, czy w pakiecie aplikacji jest włączona zależność `spring-boot-actuator` i czy rozruch został pomyślnie uruchomiony.
+Jeśli są wyświetlane metryki z _JVM_ , ale nie metryki z _Tomcat_, sprawdź, czy w pakiecie aplikacji jest włączona zależność`spring-boot-actuator` i czy rozruch został pomyślnie uruchomiony.
 
 ```xml
 <dependency>

@@ -1,5 +1,5 @@
 ---
-title: Azure SQL Database bezserwerowe | Microsoft Docs
+title: Bezserwerowa usługa Azure SQL Database
 description: W tym artykule opisano nową warstwę obliczeniową bez serwera i porównuje ją z istniejącą zainicjowaną warstwą obliczeniową
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: moslake
 ms.author: moslake
 ms.reviewer: sstein, carlrab
 ms.date: 11/04/2019
-ms.openlocfilehash: e8629baa3487795349844229b26d80321c1316ee
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: fcd79182e046d94f9e67acecebd5cf6a45f2706f
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73496249"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73687385"
 ---
 # <a name="azure-sql-database-serverless"></a>Bezserwerowa usługa Azure SQL Database
 
@@ -126,7 +126,7 @@ Autowznawianie jest wyzwalane, jeśli w dowolnym momencie spełniony jest który
 
 |Funkcja|Wyzwalacz autowznawiania|
 |---|---|
-|Uwierzytelnianie i autoryzacja|Zaloguj się|
+|Uwierzytelnianie i autoryzacja|Login|
 |Wykrywanie zagrożeń|Włączanie/wyłączanie ustawień wykrywania zagrożeń na poziomie bazy danych lub serwera.<br>Modyfikowanie ustawień wykrywania zagrożeń na poziomie bazy danych lub serwera.|
 |Odnajdowanie i klasyfikacja danych|Dodawanie, modyfikowanie, usuwanie lub wyświetlanie etykiet czułości|
 |Inspekcja|Wyświetlanie rekordów inspekcji.<br>Aktualizowanie lub przeglądanie zasad inspekcji.|
@@ -155,7 +155,7 @@ Tworzenie nowej bazy danych lub przeniesienie istniejącej bazy danych do warstw
 
 1. Określ nazwę celu usługi. Cel usługi określa warstwę usług, generowanie sprzętu i maksymalną rdzeni wirtualnych. W poniższej tabeli przedstawiono opcje celu usługi:
 
-   |Nazwa celu usługi|Warstwa usługi|Generowanie sprzętu|Maksymalna rdzeni wirtualnych|
+   |Nazwa celu usługi|Warstwa usług|Generowanie sprzętu|Maksymalna rdzeni wirtualnych|
    |---|---|---|---|
    |GP_S_Gen5_1|Ogólnego przeznaczenia|5\. generacji|1|
    |GP_S_Gen5_2|Ogólnego przeznaczenia|5\. generacji|2|
@@ -174,8 +174,6 @@ Tworzenie nowej bazy danych lub przeniesienie istniejącej bazy danych do warstw
    |Min rdzeni wirtualnych|Zależy od maksymalnej skonfigurowanej usługi rdzeni wirtualnych — zobacz [limity zasobów](sql-database-vcore-resource-limits-single-databases.md#general-purpose---serverless-compute---gen5).|0,5 rdzeni wirtualnych|
    |Opóźnienie AutoPause|Minimum: 60 minut (1 godzina)<br>Maksimum: 10080 minut (7 dni)<br>Przyrosty: 60 minut<br>Wyłącz autowstrzymywanie:-1|60 minut|
 
-> [!NOTE]
-> Używanie języka T-SQL do przenoszenia istniejącej bazy danych do bezserwerowej lub zmiany jej rozmiaru nie jest obecnie obsługiwane, ale można ją wykonać za pośrednictwem Azure Portal lub PowerShell.
 
 ### <a name="create-new-database-in-serverless-compute-tier"></a>Utwórz nową bazę danych w warstwie obliczeniowej bezserwerowej 
 
@@ -200,6 +198,17 @@ New-AzSqlDatabase `
   -AutoPauseDelayInMinutes 720
 ```
 
+#### <a name="use-transact-sql-t-sql"></a>Korzystanie z języka Transact-SQL (T-SQL)
+
+Poniższy przykład tworzy nową bazę danych w warstwie obliczeniowej bezserwerowej.
+
+```sql
+CREATE DATABASE testdb
+( EDITION = 'GeneralPurpose', SERVICE_OBJECTIVE = 'GP_S_Gen5_1' ) ;
+```
+
+Aby uzyskać szczegółowe informacje, zobacz [CREATE DATABASE](/sql/t-sql/statements/create-database-transact-sql?view=azuresqldb-current).  
+
 ### <a name="move-database-from-provisioned-compute-tier-into-serverless-compute-tier"></a>Przenoszenie bazy danych ze wstępnie zainicjowanej warstwy obliczeniowej do warstwy obliczeń bezserwerowych
 
 #### <a name="use-powershell"></a>Korzystanie z programu PowerShell
@@ -218,6 +227,17 @@ Set-AzSqlDatabase `
   -MaxVcore 4 `
   -AutoPauseDelayInMinutes 1440
 ```
+
+#### <a name="use-transact-sql-t-sql"></a>Korzystanie z języka Transact-SQL (T-SQL)
+
+Poniższy przykład przenosi bazę danych z zainicjowanej warstwy obliczeniowej do warstwy obliczeń bezserwerowych. 
+
+```sql
+ALTER DATABASE testdb 
+MODIFY ( SERVICE_OBJECTIVE = 'GP_S_Gen5_1') ;
+```
+
+Aby uzyskać szczegółowe informacje, zobacz [ALTER DATABASE](/sql/t-sql/statements/alter-database-transact-sql?view=azuresqldb-current).
 
 ### <a name="move-database-from-serverless-compute-tier-into-provisioned-compute-tier"></a>Przenoszenie bazy danych z warstwy obliczeń bezserwerowej do alokowanej warstwy obliczeniowej
 
@@ -323,6 +343,10 @@ Dokładniejszy rachunek obliczeń w tym przykładzie jest obliczany w następuj�
 |Łącznie rdzeń wirtualny s rozliczane w ciągu 24 godzin||||50400 rdzeń wirtualny sekund|
 
 Załóżmy, że cena jednostkowa obliczeń to $0.000073/rdzeń wirtualny/s.  Następnie obliczenia naliczane za ten 24-godzinny okres jest iloczynem ceny jednostkowej obliczeń i rdzeń wirtualny s rozliczane: $0.000073/rdzeń wirtualny/sekundę * 50400 rdzeń wirtualny sekund = $3,68
+
+### <a name="azure-hybrid-benefit-and-reserved-capacity"></a>Korzyść użycia hybrydowego platformy Azure i zarezerwowana pojemność
+
+Korzyść użycia hybrydowego platformy Azure (AHB) i rabaty zarezerwowane pojemności nie mają zastosowania do warstwy obliczeń bezserwerowych.
 
 ## <a name="available-regions"></a>Dostępne regiony
 

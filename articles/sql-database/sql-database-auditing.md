@@ -1,5 +1,5 @@
 ---
-title: Wprowadzenie do inspekcji usługi Azure SQL Database | Microsoft Docs
+title: Wprowadzenie do inspekcji usługi Azure SQL Database
 description: Funkcja inspekcji usługi Azure SQL Database umożliwia śledzenie zdarzeń bazy danych w dzienniku inspekcji.
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: barmichal
 ms.author: mibar
 ms.reviewer: vanto
 ms.date: 08/22/2019
-ms.openlocfilehash: 1171a3b6d38fe04a4213513e934be258d79a1aa0
-ms.sourcegitcommit: 38251963cf3b8c9373929e071b50fd9049942b37
+ms.openlocfilehash: 9a154e677a7308553bbef16837efae39006d3dae
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/29/2019
-ms.locfileid: "73045187"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73691200"
 ---
 # <a name="get-started-with-sql-database-auditing"></a>Rozpoczynanie pracy z inspekcją bazy danych SQL
 
@@ -110,7 +110,7 @@ W poniższej sekcji opisano konfigurację inspekcji przy użyciu Azure Portal.
 
     ![Centrum zdarzeń](./media/sql-database-auditing-get-started/auditing_select_event_hub.png)
 
-9. Kliknij przycisk **Save** (Zapisz).
+9. Kliknij pozycję **Zapisz**.
 10. Jeśli chcesz dostosować zdarzenia poddane inspekcji, możesz to zrobić za pomocą [poleceń cmdlet programu PowerShell](#subheading-7) lub [interfejsu API REST](#subheading-9).
 11. Po skonfigurowaniu ustawień inspekcji można włączyć nową funkcję wykrywania zagrożeń i skonfigurować wiadomości e-mail w celu otrzymywania alertów zabezpieczeń. W przypadku korzystania z wykrywania zagrożeń otrzymywane są aktywne alerty dotyczące nietypowych działań bazy danych, które mogą wskazywać na potencjalne zagrożenia bezpieczeństwa. Aby uzyskać więcej informacji, zobacz [wprowadzenie do wykrywania zagrożeń](sql-database-threat-detection-get-started.md).
 

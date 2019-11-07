@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: troubleshooting
 ms.date: 08/13/2018
 ms.author: saudas
-ms.openlocfilehash: 2c25069ce5231a1f89027dea69579231f0fe4bcd
-ms.sourcegitcommit: 12de9c927bc63868168056c39ccaa16d44cdc646
+ms.openlocfilehash: 270dbb24d851645ff7a7f0bcf5f78bfb95bcd095
+ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72517082"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73604726"
 ---
 # <a name="aks-troubleshooting"></a>Rozwiązywanie problemów z AKS
 
@@ -34,9 +34,9 @@ Ustawienie maksymalny rozmiar poszczególnych węzłów domyślnie 110 w przypad
 
 ## <a name="im-getting-an-insufficientsubnetsize-error-while-deploying-an-aks-cluster-with-advanced-networking-what-should-i-do"></a>Otrzymuję błąd insufficientSubnetSize podczas wdrażania klastra AKS przy użyciu zaawansowanej sieci. Co mamy zrobić?
 
-Jeśli używana jest usługa Azure CNI (Advanced Network), AKS przydzieli adres IP na podstawie skonfigurowanego węzła "Max-". Liczba węzłów w klastrze AKS może być w dowolnym miejscu od 1 do 110. W oparciu o skonfigurowaną maksymalną liczbę zasobników na węzeł rozmiar podsieci powinien być większy niż "iloczyn liczby węzłów i maks. pod na węzeł". Poniższe podstawowe równanie zawiera opis:
+Jeśli używana jest usługa Azure CNI (Advanced Network), AKS przydziela adresy IP na podstawie skonfigurowanego węzła "Max-Binding". W oparciu o skonfigurowaną maksymalną liczbę zasobników na węzeł rozmiar podsieci musi być większy niż iloczyn liczby węzłów i maksymalne ustawienie pod na węzeł. Poniższe równanie zawiera opis:
 
-Rozmiar podsieci > liczbę węzłów w klastrze (biorąc pod uwagę przyszłe wymagania dotyczące skalowania) * Maksymalna liczba zasobników na węzeł.
+Rozmiar podsieci > liczbę węzłów w klastrze (biorąc pod uwagę przyszłe wymagania dotyczące skalowania) * Maksymalna liczba zasobników na zestaw węzłów.
 
 Aby uzyskać więcej informacji, zobacz [Planowanie adresów IP w klastrze](configure-azure-cni.md#plan-ip-addressing-for-your-cluster).
 
@@ -61,11 +61,11 @@ Przyczyną ostrzeżeń na pulpicie nawigacyjnym jest to, że klaster jest teraz 
 
 Najprostszym sposobem uzyskania dostępu do usługi poza klastrem jest uruchomienie `kubectl proxy`, które serwery proxy żądania wysyłane do portu localhost 8001 do serwera interfejsu API Kubernetes. Z tego miejsca serwer interfejsu API może być serwerem proxy usługi: `http://localhost:8001/api/v1/namespaces/kube-system/services/kubernetes-dashboard/proxy/#!/node?namespace=default`.
 
-Jeśli nie widzisz pulpitu nawigacyjnego Kubernetes, sprawdź, czy `kube-proxy` pod działaniem w przestrzeni nazw `kube-system`. Jeśli nie jest w stanie uruchomionym, Usuń element pod, a zostanie uruchomiony ponownie.
+Jeśli pulpit nawigacyjny Kubernetes nie jest widoczny, sprawdź, czy `kube-proxy` pod działaniem w przestrzeni nazw `kube-system`. Jeśli nie jest w stanie uruchomionym, Usuń element pod, a zostanie uruchomiony ponownie.
 
 ## <a name="i-cant-get-logs-by-using-kubectl-logs-or-i-cant-connect-to-the-api-server-im-getting-error-from-server-error-dialing-backend-dial-tcp-what-should-i-do"></a>Nie mogę pobrać dzienników przy użyciu dzienników polecenia kubectl lub nie mogę nawiązać połączenia z serwerem interfejsu API. Otrzymuję komunikat "błąd z serwera: błąd podczas wybierania numeru zaplecza: wybierz TCP...". Co mamy zrobić?
 
-Upewnij się, że domyślna grupa zabezpieczeń sieci nie jest modyfikowana i że dla połączenia z serwerem interfejsu API jest otwarty zarówno port 22, jak i 9000. Sprawdź, czy `tunnelfront` pod jest uruchomiona w przestrzeni nazw *polecenia-system* przy użyciu polecenia `kubectl get pods --namespace kube-system`. Jeśli tak nie jest, Wymuś usunięcie elementu pod i zostanie on ponownie uruchomiony.
+Upewnij się, że domyślna grupa zabezpieczeń sieci nie jest modyfikowana i że dla połączenia z serwerem interfejsu API jest otwarty zarówno port 22, jak i 9000. Sprawdź, czy `tunnelfront` pod jest uruchomiony w przestrzeni nazw *polecenia-system* przy użyciu polecenia `kubectl get pods --namespace kube-system`. Jeśli tak nie jest, Wymuś usunięcie elementu pod i zostanie on ponownie uruchomiony.
 
 ## <a name="im-trying-to-upgrade-or-scale-and-am-getting-a-message-changing-property-imagereference-is-not-allowed-error-how-do-i-fix-this-problem"></a>Próbuję uaktualnić lub skalować i uzyskać "komunikat: zmiana właściwości" elementu imagereference "jest niedozwolona. Jak mogę rozwiązać ten problem?
 
@@ -77,7 +77,7 @@ Ten błąd może być spowodowany modyfikacją tagów w węzłach agenta wewnąt
 
 Ten błąd występuje, gdy klastry wchodzą w stan niepowodzenia z wielu powodów. Postępuj zgodnie z poniższymi instrukcjami, aby rozwiązać stan awarii klastra przed ponowną próbą wykonania poprzedniej operacji zakończonej niepowodzeniem:
 
-1. Dopóki klaster nie będzie w stanie `failed`, operacje `upgrade` i `scale` nie powiedzie się. Typowe problemy główne i rozwiązania obejmują:
+1. Dopóki klaster nie będzie `failed` stanie, operacje `upgrade` i `scale` nie powiedzie się. Typowe problemy główne i rozwiązania obejmują:
     * Skalowanie z **niewystarczającym limitem przydziału obliczeń (CRP)** . Aby rozwiązać ten problem, należy najpierw skalować klaster z powrotem do stanu stabilnego celu w ramach limitu przydziału. Następnie wykonaj następujące [kroki, aby zażądać zwiększenia przydziału obliczeń](../azure-supportability/resource-manager-core-quotas-request.md) przed ponowną próbą skalowania w górę poza początkowymi limitami przydziału.
     * Skalowanie klastra przy użyciu zaawansowanej sieci i **niewystarczającej liczby zasobów podsieci (sieci)** . Aby rozwiązać ten problem, należy najpierw skalować klaster z powrotem do stanu stabilnego celu w ramach limitu przydziału. Następnie wykonaj [następujące kroki, aby zażądać zwiększenia przydziału zasobów](../azure-resource-manager/resource-manager-quota-errors.md#solution) przed ponowną próbą skalowania w górę poza początkowymi limitami przydziału.
 2. Po usunięciu podstawowej przyczyny niepowodzenia uaktualnienia klaster powinien działać w stanie sukces. Po zweryfikowaniu stanu, ponów próbę wykonania oryginalnej operacji.
@@ -144,7 +144,7 @@ Wykonaj następujące obejścia tego problemu:
 
 ## <a name="im-receiving-errors-after-restricting-my-egress-traffic"></a>Otrzymuję błędy po ograniczeniu ruchu wychodzącego
 
-W przypadku ograniczania ruchu wychodzącego z klastra AKS są [wymagane i opcjonalne zalecane](limit-egress-traffic.md) porty wyjściowe/reguły sieci oraz nazwy FQDN/aplikacji dla AKS. Jeśli ustawienia są w konflikcie z dowolną z tych reguł, uruchomienie pewnych poleceń `kubectl` może nie być możliwe. Podczas tworzenia klastra AKS mogą pojawić się także błędy.
+W przypadku ograniczania ruchu wychodzącego z klastra AKS są [wymagane i opcjonalne zalecane](limit-egress-traffic.md) porty wyjściowe/reguły sieci oraz nazwy FQDN/aplikacji dla AKS. Jeśli ustawienia są w konflikcie z dowolną z tych reguł, uruchomienie niektórych poleceń `kubectl` może być niemożliwe. Podczas tworzenia klastra AKS mogą pojawić się także błędy.
 
 Sprawdź, czy ustawienia nie powodują konfliktu z żadnym z wymaganych lub opcjonalnymi zalecanymi portami wychodzącymi/regułami sieciowymi oraz nazwą FQDN/reguł aplikacji.
 
@@ -192,7 +192,7 @@ Ten problem został rozwiązany w następujących wersjach programu Kubernetes:
 | -- | :--: |
 | 1,10 | 1.10.2 lub nowszy |
 | 1,11 | 1.11.0 lub nowszy |
-| 1,12 i nowsze | ND |
+| 1,12 i nowsze | Nie dotyczy |
 
 ### <a name="failure-when-setting-uid-and-gid-in-mountoptions-for-azure-disk"></a>Niepowodzenie podczas ustawiania identyfikatorów UID i GID w mountOptions dla dysku platformy Azure
 
@@ -266,7 +266,7 @@ Ten problem został rozwiązany w następujących wersjach programu Kubernetes:
 | 1,11 | 1.11.5 lub nowszy |
 | 1,12 | 1.12.3 lub nowszy |
 | 1,13 | 1.13.0 lub nowszy |
-| 1,14 i nowsze | ND |
+| 1,14 i nowsze | Nie dotyczy |
 
 Jeśli używasz wersji programu Kubernetes, która nie ma rozwiązania tego problemu, możesz wyeliminować problem, czekając kilka minut i ponawiając próbę.
 
@@ -287,7 +287,7 @@ Ten problem został rozwiązany w następujących wersjach programu Kubernetes:
 | 1,11 | 1.11.6 lub nowszy |
 | 1,12 | 1.12.4 lub nowszy |
 | 1,13 | 1.13.0 lub nowszy |
-| 1,14 i nowsze | ND |
+| 1,14 i nowsze | Nie dotyczy |
 
 Jeśli używasz wersji programu Kubernetes, która nie ma rozwiązania tego problemu, możesz wyeliminować problem, wykonując następujące czynności:
 
@@ -308,7 +308,7 @@ Ten problem został rozwiązany w następujących wersjach programu Kubernetes:
 | 1,11 | 1.11.9 lub nowszy |
 | 1,12 | 1.12.7 lub nowszy |
 | 1,13 | 1.13.4 lub nowszy |
-| 1,14 i nowsze | ND |
+| 1,14 i nowsze | Nie dotyczy |
 
 Jeśli używasz wersji programu Kubernetes, która nie ma rozwiązania tego problemu, możesz wyeliminować problem, ręcznie odłączając dysk.
 
@@ -323,7 +323,7 @@ Ten problem został rozwiązany w następujących wersjach programu Kubernetes:
 | 1,12 | 1.12.9 lub nowszy |
 | 1,13 | 1.13.6 lub nowszy |
 | 1,14 | 1.14.2 lub nowszy |
-| 1,15 i nowsze | ND |
+| 1,15 i nowsze | Nie dotyczy |
 
 Jeśli używasz wersji programu Kubernetes, która nie ma rozwiązania tego problemu, a maszyna wirtualna węzła ma przestarzałą listę dysków, możesz rozwiązać ten problem, odłączając wszystkie nieistniejące dyski z maszyny wirtualnej jako pojedynczą operację zbiorczą. **Pojedyncze odłączenie nieistniejących dysków może zakończyć się niepowodzeniem.**
 
@@ -343,7 +343,7 @@ Ten problem został rozwiązany w następujących wersjach programu Kubernetes:
 | 1,12 | 1.12.10 lub nowszy |
 | 1,13 | 1.13.8 lub nowszy |
 | 1,14 | 1.14.4 lub nowszy |
-| 1,15 i nowsze | ND |
+| 1,15 i nowsze | Nie dotyczy |
 
 Jeśli używasz wersji programu Kubernetes, która nie ma rozwiązania tego problemu, a maszyna wirtualna w węźle jest w stanie awarii, możesz rozwiązać problem, ręcznie aktualizując stan maszyny wirtualnej przy użyciu jednego z poniższych elementów:
 
@@ -460,7 +460,7 @@ Ten problem został rozwiązany w następujących wersjach programu Kubernetes:
 | -- | :--: |
 | 1,12 | 1.12.6 lub nowszy |
 | 1,13 | 1.13.4 lub nowszy |
-| 1,14 i nowsze | ND |
+| 1,14 i nowsze | Nie dotyczy |
 
 ### <a name="azure-files-mount-fails-due-to-storage-account-key-changed"></a>Azure Files instalacji nie powiodła się z powodu zmiany klucza konta magazynu
 

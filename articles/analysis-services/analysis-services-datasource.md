@@ -1,18 +1,18 @@
 ---
 title: Źródła danych obsługiwane w Azure Analysis Services | Microsoft Docs
-description: Opisuje źródła danych obsługiwane przez modele danych w Azure Analysis Services.
+description: Opisuje źródła danych i łączniki obsługiwane w przypadku tabelarycznych 1200 i wyższych modeli danych w Azure Analysis Services.
 author: minewiskan
 ms.service: azure-analysis-services
 ms.topic: conceptual
 ms.date: 10/16/2019
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: cc47ff50aa7bb6dce58ed83f75f69fb600ad040b
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.openlocfilehash: 5539d290ea182e24a50a103a762f011202ebf33a
+ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73146944"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73572957"
 ---
 # <a name="data-sources-supported-in-azure-analysis-services"></a>Źródła danych obsługiwane w Azure Analysis Services
 
@@ -49,7 +49,7 @@ Nawiązywanie połączenia z lokalnymi źródłami danych z programu i platformy
 
 |Źródło danych | Dostawca w pamięci | Dostawca zapytania bezpośredniego |
 |  --- | --- | --- |
-| Oprogramowanie SQL Server |SQL Server Native Client 11,0, dostawca OLE DB firmy Microsoft dla SQL Server .NET Framework Dostawca danych dla SQL Server | .NET Framework Dostawca danych SQL Server |
+| SQL Server |SQL Server Native Client 11,0, dostawca OLE DB firmy Microsoft dla SQL Server .NET Framework Dostawca danych dla SQL Server | .NET Framework Dostawca danych SQL Server |
 | Magazyn danych SQL Server |SQL Server Native Client 11,0, dostawca OLE DB firmy Microsoft dla SQL Server .NET Framework Dostawca danych dla SQL Server | .NET Framework Dostawca danych SQL Server |
 | Oracle | OLE DB Provider for Oracle, Oracle Dostawca danych dla platformy .NET |Oracle Dostawca danych dla platformy .NET |
 | Teradata |Dostawca OLE DB dla programu Teradata, Dostawca danych programu Teradata dla platformy .NET |Dostawca danych programu Teradata dla platformy .NET |
@@ -61,7 +61,7 @@ Nawiązywanie połączenia z lokalnymi źródłami danych z programu i platformy
 |---------|
 |Baza danych programu Access     |  
 |Active Directory<sup>[1](#tab1400b)</sup>     |  
-|Usługi analityczne     |  
+|Analysis Services     |  
 |System platformy analizy     |  
 |Plik CSV  |
 |Dynamics CRM<sup>[1](#tab1400b)</sup>     |  
@@ -99,7 +99,7 @@ W przypadku migrowania lokalnego modelu SQL Server Analysis Services tabelaryczn
 
 1. W programie Visual Studio > **Eksploratorze modeli tabelarycznych** > **źródła danych**, kliknij prawym przyciskiem myszy połączenie ze źródłem danych, a następnie kliknij polecenie **Edytuj źródło danych**.
 2. W obszarze **Edytuj połączenie**kliknij pozycję **Zaawansowane** , aby otworzyć okno właściwości zaawansowana.
-3. W obszarze **Ustaw zaawansowane właściwości** > **dostawcy**wybierz odpowiedniego dostawcę.
+3. W obszarze **Ustaw właściwości zaawansowane** > **dostawców**, a następnie wybierz odpowiedniego dostawcę.
 
 ## <a name="impersonation"></a>Chodzi
 W niektórych przypadkach może być konieczne określenie innego konta personifikacji. Konto personifikacji można określić w programie Visual Studio lub SSMS.
@@ -118,6 +118,6 @@ W przypadku źródeł danych w chmurze:
 Dla modeli tabelarycznych na poziomie zgodności 1400 i wyższym Azure SQL Database, Azure SQL Data Warehouse, Dynamics 365 i lista programu SharePoint obsługują poświadczenia uwierzytelniania OAuth. Azure Analysis Services zarządza odświeżanie tokenów dla źródeł danych OAuth w celu uniknięcia przekroczeń limitu czasu dla długotrwałych operacji odświeżania. Aby wygenerować prawidłowe tokeny, Ustaw poświadczenia za pomocą programu SSMS.
 
 ## <a name="next-steps"></a>Następne kroki
-[Brama lokalna](analysis-services-gateway.md)   
+  [bramy lokalnej](analysis-services-gateway.md)  
 [Zarządzanie serwerem](analysis-services-manage.md)   
 

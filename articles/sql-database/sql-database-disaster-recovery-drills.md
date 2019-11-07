@@ -1,5 +1,5 @@
 ---
-title: SQL Database przechodzenia do odzyskiwania po awarii | Microsoft Docs
+title: SQL Database przechodzenia do odzyskiwania po awarii
 description: Poznaj wskazówki i najlepsze rozwiązania dotyczące korzystania z Azure SQL Database w celu przeprowadzenia próbnego odzyskiwania po awarii.
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: anosov1960
 ms.author: sashan
 ms.reviewer: mathoma, carlrab
 ms.date: 12/18/2018
-ms.openlocfilehash: 2923ae8b9b25932ae214cfa45780dffb8780dd39
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: bf337b1312abc59048649aabe3e4f895d07a8d51
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68568850"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73690623"
 ---
 # <a name="performing-disaster-recovery-drill"></a>Przechodzenie do szczegółów odzyskiwania po awarii
 
@@ -25,10 +25,10 @@ Zalecane jest, aby sprawdzanie gotowości aplikacji dla przepływu pracy odzyski
 Przeprowadzenie drążenia odzyskiwania po awarii składa się z:
 
 * Symulowanie awarii warstwy danych
-* Odzyskiwanie
+* Odzyskiwania
 * Weryfikuj odzyskiwanie po odzyskiwaniu integralności aplikacji
 
-W zależności od sposobu, w jaki zaprojektowano [swoją aplikację pod kątem ciągłości](sql-database-business-continuity.md)działania, przepływ pracy do wykonania drążenia może się różnić. W tym artykule opisano najlepsze rozwiązania dotyczące przeprowadzania przechodzenia do szczegółów odzyskiwania po awarii w kontekście Azure SQL Database.
+W zależności od sposobu, w jaki [zaprojektowano swoją aplikację pod kątem ciągłości](sql-database-business-continuity.md)działania, przepływ pracy do wykonania drążenia może się różnić. W tym artykule opisano najlepsze rozwiązania dotyczące przeprowadzania przechodzenia do szczegółów odzyskiwania po awarii w kontekście Azure SQL Database.
 
 ## <a name="geo-restore"></a>Przywracanie geograficzne
 
@@ -43,7 +43,7 @@ Aby symulować awarię, można zmienić nazwę źródłowej bazy danych. Ta zmia
 * Wykonaj operację przywracania geograficznego bazy danych na innym serwerze, zgodnie z opisem w [tym miejscu](sql-database-disaster-recovery.md).
 * Zmień konfigurację aplikacji, aby połączyć się z odzyskaną bazą danych, a następnie postępuj zgodnie z przewodnikiem [Konfigurowanie bazy danych po odzyskaniu](sql-database-disaster-recovery.md) .
 
-### <a name="validation"></a>Weryfikacja
+### <a name="validation"></a>Walidacja
 
 Ukończ przechodzenie do szczegółów, sprawdzając, czy odzyskiwanie po stronie integralnej aplikacji (w tym parametry połączenia, logowania, podstawowe testy funkcjonalności lub inne funkcje walidacji w standardowych procedurach signoffs aplikacji).
 
@@ -58,16 +58,16 @@ Aby symulować awarię, można wyłączyć aplikację sieci Web lub maszynę wir
 ### <a name="recovery"></a>Odzyskiwanie
 
 * Upewnij się, że konfiguracja aplikacji w regionie DR wskazuje poprzednią pomocniczą, która jest w pełni dostępną nową podstawową.
-* Zainicjuj zaplanowaną [pracę w trybie failover](scripts/sql-database-setup-geodr-and-failover-database-powershell.md) grupy trybu failover z serwera pomocniczego.
+* Zainicjuj [zaplanowaną pracę w trybie failover](scripts/sql-database-setup-geodr-and-failover-database-powershell.md) grupy trybu failover z serwera pomocniczego.
 * Aby ukończyć odzyskiwanie, postępuj zgodnie z przewodnikiem [Konfigurowanie bazy danych po odzyskaniu](sql-database-disaster-recovery.md) .
 
-### <a name="validation"></a>Weryfikacja
+### <a name="validation"></a>Walidacja
 
 Wykonaj drążenie, sprawdzając odzyskiwanie po stronie odzyskiwania integralności aplikacji (w tym łączność, podstawowe testowanie funkcji lub inne walidacje wymagane przez signoffs drążenia).
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 * Aby dowiedzieć się więcej o scenariuszach ciągłości biznesowej, zobacz [scenariusze ciągłości](sql-database-business-continuity.md).
 * Aby dowiedzieć się więcej o Azure SQL Database zautomatyzowanych kopii zapasowych, zobacz [SQL Database zautomatyzowane kopie zapasowe](sql-database-automated-backups.md)
 * Aby dowiedzieć się więcej o korzystaniu z automatycznych kopii zapasowych na potrzeby odzyskiwania, zobacz [przywracanie bazy danych z kopii zapasowych inicjowanych przez usługę](sql-database-recovery-using-backups.md).
-* Aby dowiedzieć się więcej na temat szybszych opcji odzyskiwania, zobacz [aktywnej replikacji](sql-database-active-geo-replication.md) geograficznej i [grup Autotryb failover](sql-database-auto-failover-group.md).
+* Aby dowiedzieć się więcej na temat szybszych opcji odzyskiwania, zobacz [aktywnej replikacji geograficznej](sql-database-active-geo-replication.md) i [grup Autotryb failover](sql-database-auto-failover-group.md).

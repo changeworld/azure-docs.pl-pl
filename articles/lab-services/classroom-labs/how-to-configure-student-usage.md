@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/12/2019
 ms.author: spelluru
-ms.openlocfilehash: 691907d1c221283f99ba59f0937cfbaf673f427a
-ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
+ms.openlocfilehash: 0ab8d8688c7856eeae7d75527620c2b77ae78029
+ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72324342"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73584147"
 ---
 # <a name="add-and-manage-lab-users"></a>Dodawanie użytkowników laboratorium i zarządzanie nimi
 W tym artykule opisano sposób dodawania użytkowników do laboratorium, uzyskiwania ich zarejestrowanych w laboratorium, kontrolowania liczby godzin, w których mogą korzystać z maszyny wirtualnej, i nie tylko. 
@@ -36,6 +36,9 @@ W tym artykule opisano sposób dodawania użytkowników do laboratorium, uzyskiw
 4. Wybierz pozycję **Zapisz**. Na liście zostaną wyświetlone adresy e-mail użytkowników oraz ich stan rejestracji. 
 
     ![Lista użytkowników](../media/how-to-configure-student-usage/users-list-new.png)
+
+    > [!NOTE]
+    > Nazwy użytkowników na liście zostaną wyświetlone po ich zarejestrowaniu do laboratorium. Nazwa wyświetlana na liście jest zbudowana przy użyciu imion i nazwiska użytkownika w Azure Active Directory. 
 
 ### <a name="add-users-by-uploading-a-csv-file"></a>Dodawanie użytkowników przez przekazanie pliku CSV
 Możesz również dodać użytkowników, przekazując plik CSV z adresami e-mail użytkowników.
@@ -60,15 +63,16 @@ Aby wysłać link rejestracji do uczniów, użyj jednej z poniższych metod. Pie
 W przypadku włączenia **ograniczenia dostępu** dla laboratorium tylko użytkownicy z listy użytkowników mogą korzystać z linku rejestracji w celu zarejestrowania się w laboratorium. Ta opcja jest domyślnie włączona. 
 
 ### <a name="invite-all-users"></a>Zapraszanie wszystkich użytkowników
+1. Przejdź do widoku **Użytkownicy** , jeśli nie masz już na stronie, a następnie wybierz pozycję **Zaproś wszystkie** na pasku narzędzi. 
 
-1. Przejdź do strony **Użytkownicy** w laboratorium. 
-2. Wybierz pozycję **Zaproś wszystkie** z paska narzędzi. 
-3. Wprowadź **komunikat** dla użytkowników. Jest to opcjonalny krok.
-4. Następnie wybierz pozycję **Wyślij**.
+    ![Wybierz uczniów](../media/tutorial-setup-classroom-lab/invite-all-button.png)
 
-    ![Zapraszanie wszystkich użytkowników](../media/how-to-configure-student-usage/invite-all.png)
+1. Na stronie **wysyłanie zaproszenia** pocztą e-mail wprowadź opcjonalną wiadomość, a następnie wybierz pozycję **Wyślij**. Wiadomość e-mail automatycznie zawiera link rejestracji. Możesz uzyskać ten link rejestracji, wybierając pozycję **... (wielokropek)** na pasku narzędzi i w **łączu rejestracji**. 
 
-    Stan tej operacji zostanie wyświetlony w kolumnie **zaproszenie** na liście **Użytkownicy** . Wiadomość e-mail z zaproszeniem będzie zawierać link rejestracji, którego użytkownicy mogą użyć do zarejestrowania się w laboratorium. 
+    ![Wyślij link rejestracji za pośrednictwem poczty e-mail](../media/tutorial-setup-classroom-lab/send-email.png)
+4. Stan **zaproszenia** zostanie wyświetlony na liście **Użytkownicy** . Stan powinien zostać zmieniony na **wysłanie** , a następnie do **wysłania \<Data >** . 
+
+    Aby uzyskać więcej informacji na temat dodawania uczniów do klasy i zarządzania ich użyciem laboratorium, zobacz [jak skonfigurować użycie ucznia](how-to-configure-student-usage.md).
 
 ### <a name="invite-selected-users"></a>Zaproś wybranych użytkowników
 
@@ -80,9 +84,9 @@ W przypadku włączenia **ograniczenia dostępu** dla laboratorium tylko użytko
 
     ![Wyślij wiadomość e-mail do wybranych użytkowników](../media/how-to-configure-student-usage/send-invitation-to-selected-users.png)
 
-    Stan tej operacji zostanie wyświetlony w kolumnie **zaproszenie** na liście **Użytkownicy** . Wiadomość e-mail z zaproszeniem będzie zawierać link rejestracji, którego użytkownicy mogą użyć do zarejestrowania się w laboratorium.
+    Stan tej operacji zostanie wyświetlony w kolumnie **zaproszenie** na liście **Użytkownicy** . Wiadomość e-mail z zaproszeniem zawiera link rejestracji, którego użytkownicy mogą użyć do zarejestrowania się w laboratorium.
 
-1. Jeśli jeszcze nie jesteś na tej stronie, przełącz się do widoku **Użytkownicy**. 
+1. Przejdź do widoku **Użytkownicy** , jeśli nie jesteś już na stronie. 
 
 ## <a name="get-registration-link"></a>Pobierz łącze rejestracji
 Możesz również uzyskać link rejestracji z portalu i wysłać go przy użyciu własnej aplikacji klienckiej poczty e-mail. 
@@ -107,11 +111,11 @@ Wybierz pozycję **Użytkownicy** w menu po lewej stronie, aby wyświetlić list
 Można ustawić przydziały dla poszczególnych użytkowników, wykonując następujące czynności: 
 
 1. Wybierz pozycję **Użytkownicy** w menu po lewej stronie, jeśli strona nie jest już aktywna. 
-2. Wybierz pozycję **przydział na użytkownika: &lt;number @ no__t-2 godz** . na pasku narzędzi. 
+2. Wybierz pozycję **przydział na użytkownika: numer \<> godziny** na pasku narzędzi. 
 3. Na stronie **przydziały na użytkownika** Określ liczbę godzin, które chcesz nadać każdemu użytkownikowi (studentowi) poza zaplanowanym czasem klasy, a następnie wybierz pozycję **Zapisz**.
 
     ![Przydział na użytkownika](../media/how-to-configure-student-usage/quota-per-user.png)    
-5. Na pasku narzędzi są teraz widoczne zmienione wartości: **limit przydziału na użytkownika: &lt;number godzin @ no__t-2**. 
+5. Na pasku narzędzi są teraz widoczne zmienione wartości: **limit przydziału na użytkownika: \<liczba godzin >** . 
 
     ![Przydział na użytkownika — po](../media/how-to-configure-student-usage/quot-per-user-after.png)
 
@@ -119,7 +123,9 @@ Można ustawić przydziały dla poszczególnych użytkowników, wykonując nast�
     > [Zaplanowany czas działania maszyn wirtualnych](how-to-create-schedules.md) nie jest uwzględniany w stosunku do przydziału przydzielonego dla użytkownika. Limit przydziału jest przeznaczony dla czasu poza godzinami harmonogramu, które student spędza na maszynach wirtualnych. 
 
 ## <a name="set-additional-quota-for-a-specific-user"></a>Ustawianie dodatkowego przydziału dla określonego użytkownika
-Dla użytkownika można ustawić oddzielny przydział. Aby to zrobić, wykonaj następujące kroki:
+Możesz określić dodatkowy przydział dla użytkownika. Ten limit przydziału jest poza wspólnym zestawem przydziału ustawionym dla wszystkich użytkowników w poprzedniej sekcji. Na przykład jeśli użytkownik (jako instruktor) ustawił limit przydziału dla wszystkich użytkowników na 10 godzin i ustawił dodatkowy przydział 5 godzin dla określonych użytkowników, będzie miał 15 (10 + 5) godzin przydziału. Jeśli w późniejszym czasie zmienisz wspólny limit przydziału na, powiedzmy 15, a następnie użytkownik uzyska 20 (15 + 5) godzin przydziału. Należy pamiętać, że ten całkowity limit przydziału jest poza zaplanowanym terminem. Czas spędzony przez student w maszynie wirtualnej laboratorium w czasie planowania nie jest uwzględniany w stosunku do tego przydziału. 
+
+Aby to zrobić, wykonaj następujące kroki:
 
 1. Wybierz użytkownika (student) z listy użytkowników na stronie **Użytkownicy** .
 2. Następnie wybierz pozycję **Dopasuj przydział** na pasku narzędzi. 
@@ -128,10 +134,42 @@ Dla użytkownika można ustawić oddzielny przydział. Aby to zrobić, wykonaj n
 3. Wprowadź liczbę **dodatkowych godzin** dla wybranego użytkownika lub użytkowników, a następnie wybierz pozycję **Zastosuj**. 
 
     ![Dodatkowy przydział dla użytkownika](../media/how-to-configure-student-usage/additional-quota.png)
-4. Zaktualizowane użycie użytkownika będzie widoczne w kolumnie **użycie** . 
+4. Zobaczysz zaktualizowane użycie dla użytkownika w kolumnie **użycie** . 
 
     ![Nowe użycie dla użytkownika](../media/how-to-configure-student-usage/new-usage-hours.png)
 
+## <a name="student-accounts"></a>Konta uczniów
+Aby dodać uczniów do laboratorium zajęć, użyj swoich kont e-mail. Mogą być używane następujące typy kont e-mail:
+
+- Konto e-mail ucznia, które jest dostarczane przez Azure Active Directory Office 365 (AAD). 
+- Konto e-mail firmy Microsoft, takie jak `@outlook.com`, `@hotmail.com`, `@msn.com`lub `@live.com`.
+- Konto e-mail inne niż firmy Microsoft, na przykład udostępniane przez firmę Yahoo lub Google. Jednak te typy kont muszą być połączone z konto Microsoft.
+- Konto usługi GitHub. To konto musi być połączone z konto Microsoft.
+
+### <a name="using-a-non-microsoft-email-account"></a>Korzystanie z konta e-mail innego niż Microsoft
+Studenci mogą korzystać z kont e-mail innych niż firmy Microsoft w celu zarejestrowania i zalogowania się do laboratorium zajęć.  Jednak rejestracja wymaga, aby uczniowie najpierw utworzyły konto Microsoft, które są połączone ze swoimi adresami e-mail spoza firmy Microsoft.
+
+Wielu uczniów może już mieć konto Microsoft połączony z adresami e-mail spoza firmy Microsoft. Na przykład uczniowie mają już konto Microsoft, jeśli użyły swojego adresu e-mail od innych produktów lub usług firmy Microsoft, takich jak Office, Skype, OneDrive lub Windows.  
+
+Gdy student kliknie adres URL rejestracji, aby zalogować się do klasy, zostanie wyświetlony monit o podanie adresu e-mail i hasła. Jeśli student podejmie próbę zalogowania się przy użyciu niekonto Microsoft, który nie ma powiązanego konto Microsoft, student otrzyma następujący komunikat o błędzie: 
+
+![Komunikat o błędzie](../media/how-to-configure-student-usage/cant-find-account.png)
+
+Aby zarejestrować się w celu uzyskania konto Microsoft, uczniowie powinni przejść do [http://signup.live.com](http://signup.live.com).  
+
+> [!IMPORTANT]
+> Gdy uczniowie logują się do laboratorium z klasą, nie mają możliwości utworzenia konto Microsoft. Dlatego zalecamy uwzględnienie tego linku do rejestracji w wiadomości e-mail z rejestracją w laboratorium zajęć, która jest wysyłana do uczniów, którzy korzystają z kont innych niż Microsoft.
+
+### <a name="using-a-github-account"></a>Korzystanie z konta usługi GitHub
+Studenci mogą także użyć istniejącego konta usługi GitHub do zarejestrowania się i zalogować się do laboratorium zajęć. Jeśli student ma już konto Microsoft połączony z kontem usługi GitHub, może się zalogować i podać hasło, jak pokazano w poprzedniej sekcji. Jeśli konto usługi GitHub nie zostało jeszcze połączone z konto Microsoft, należy wybrać **Opcje logowania**:
+
+![Link opcji logowania](../media/how-to-configure-student-usage/signin-options.png)
+
+Na stronie **Opcje logowania** wybierz pozycję **Zaloguj się za pomocą usługi GitHub**.
+
+![Zaloguj się przy użyciu linku GitHub](../media/how-to-configure-student-usage/signin-github.png)
+
+Na koniec są wyświetlane monity o utworzenie konto Microsoft połączonego z kontem usługi GitHub. Odbywa się to automatycznie po wybraniu przez studenta **przycisku Dalej**.  Student jest następnie natychmiast zalogowany i połączony z laboratorium zajęć.
 
 ## <a name="next-steps"></a>Następne kroki
 Zobacz następujące artykuły:

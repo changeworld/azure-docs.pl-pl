@@ -8,12 +8,12 @@ ms.service: event-grid
 ms.topic: conceptual
 ms.date: 05/22/2019
 ms.author: babanisa
-ms.openlocfilehash: f22d8c57b0127e646321a20587d0cd89f5c9ea45
-ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
+ms.openlocfilehash: b9e471928940094b29bdffeb73ea42fe852492cb
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72325408"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73665574"
 ---
 # <a name="event-grid-security-and-authentication"></a>Event Grid zabezpieczenia i uwierzytelnianie 
 
@@ -39,9 +39,9 @@ Jeśli używasz innego typu punktu końcowego, takiego jak oparty na wyzwalaczu 
 
 2. **Uzgadnianie ValidationURL (ręczne)** : w niektórych przypadkach nie można uzyskać dostępu do kodu źródłowego punktu końcowego w celu zaimplementowania uzgadniania ValidationCode. Na przykład w przypadku korzystania z usługi innej firmy (np. [zapier](https://zapier.com) lub [IFTTT](https://ifttt.com/)) nie można programowo odpowiedzieć na kod weryfikacyjny.
 
-   Począwszy od wersji 2018-05-01-Preview, Event Grid obsługuje ręczne uzgadnianie walidacji. Jeśli tworzysz subskrypcję zdarzeń z zestawem SDK lub narzędziem korzystającym z interfejsu API w wersji 2018-05-01-Preview lub nowszej, Event Grid wysyła Właściwość `validationUrl` w części danych zdarzenia walidacji subskrypcji. Aby ukończyć uzgadnianie, Znajdź ten adres URL w danych zdarzenia i ręcznie Wyślij do niego żądanie GET. Możesz użyć klienta REST lub przeglądarki sieci Web.
+   Począwszy od wersji 2018-05-01-Preview, Event Grid obsługuje ręczne uzgadnianie walidacji. Jeśli tworzysz subskrypcję zdarzeń za pomocą zestawu SDK lub narzędzia korzystającego z interfejsu API w wersji 2018-05-01-Preview lub nowszej, Event Grid wysyła Właściwość `validationUrl` w części danych zdarzenia walidacji subskrypcji. Aby ukończyć uzgadnianie, Znajdź ten adres URL w danych zdarzenia i ręcznie Wyślij do niego żądanie GET. Możesz użyć klienta REST lub przeglądarki sieci Web.
 
-   Podany adres URL jest prawidłowy przez 5 minut. W tym czasie stan aprowizacji subskrypcji zdarzenia to `AwaitingManualAction`. Jeśli weryfikacja ręczna nie zostanie zakończona w ciągu 5 minut, stan aprowizacji zostanie ustawiony na `Failed`. Przed rozpoczęciem walidacji ręcznej należy utworzyć subskrypcję zdarzeń.
+   Podany adres URL jest prawidłowy przez 5 minut. W tym czasie stan aprowizacji subskrypcji zdarzeń jest `AwaitingManualAction`. Jeśli weryfikacja ręczna nie zostanie zakończona w ciągu 5 minut, stan aprowizacji zostanie ustawiony na `Failed`. Przed rozpoczęciem walidacji ręcznej należy utworzyć subskrypcję zdarzeń.
 
     Ten mechanizm uwierzytelniania wymaga również, aby punkt końcowy elementu webhook zwracał kod stanu HTTP 200, aby wiedział, że wpis dla zdarzenia sprawdzania poprawności został zaakceptowany, zanim będzie można go umieścić w trybie walidacji ręcznej. Innymi słowy, jeśli punkt końcowy zwraca 200, ale nie zwraca ponownie odpowiedzi na weryfikację, tryb przechodzi do trybu walidacji ręcznej. Jeśli adres URL sprawdzania poprawności jest dostępny w ciągu 5 minut, uzgadnianie walidacji jest uznawane za pomyślne.
 
@@ -54,8 +54,8 @@ Jeśli używasz innego typu punktu końcowego, takiego jak oparty na wyzwalaczu 
 * Zdarzenie zawiera wartość nagłówka "AEG-Event-Type: SubscriptionValidation".
 * Treść zdarzenia ma ten sam schemat co inne zdarzenia Event Grid.
 * Właściwość eventType zdarzenia jest `Microsoft.EventGrid.SubscriptionValidationEvent`.
-* Właściwość Data zdarzenia zawiera właściwość `validationCode` z losowo wygenerowanym ciągiem. Na przykład "validationCode: acb13...".
-* Dane zdarzenia zawierają również właściwość `validationUrl` z adresem URL służącym do ręcznego weryfikowania subskrypcji.
+* Właściwość Data zdarzenia zawiera właściwość `validationCode` z losowo generowanym ciągiem. Na przykład "validationCode: acb13...".
+* Dane zdarzenia zawierają również właściwość `validationUrl` z adresem URL w celu ręcznej weryfikacji subskrypcji.
 * Tablica zawiera tylko zdarzenie walidacji. Inne zdarzenia są wysyłane w oddzielnym żądaniu po ECHA kodu weryfikacyjnego.
 * Zestawy SDK EventGrid dataplanes mają klasy odpowiadające danym zdarzenia weryfikacji subskrypcji i odpowiedzi na weryfikację subskrypcji.
 
@@ -85,15 +85,15 @@ Aby udowodnić własność punktu końcowego, echo kod weryfikacyjny we właści
 }
 ```
 
-Należy zwrócić kod stanu odpowiedzi HTTP 200. Akceptowany protokół HTTP 202 nie został rozpoznany jako prawidłowa odpowiedź na weryfikację subskrypcji Event Grid.
+Należy zwrócić kod stanu odpowiedzi HTTP 200. Akceptowany protokół HTTP 202 nie został rozpoznany jako prawidłowa odpowiedź na weryfikację subskrypcji Event Grid. Żądanie HTTP musi zakończyć się w ciągu 30 sekund. Jeśli operacja nie zakończy się w ciągu 30 sekund, operacja zostanie anulowana i może zostać ponownie podjęta po 5 sekundach. Jeśli wszystkie próby zakończą się niepowodzeniem, będzie ono traktowane jako błąd uzgadniania walidacji.
 
-Można też ręcznie zweryfikować subskrypcję, wysyłając żądanie GET do adresu URL walidacji. Subskrypcja zdarzeń pozostaje w stanie oczekiwania do momentu zweryfikowania.
+Można też ręcznie zweryfikować subskrypcję, wysyłając żądanie GET do adresu URL walidacji. Subskrypcja zdarzeń pozostaje w stanie oczekiwania do momentu zweryfikowania. Adres URL walidacji używa portu 553. Jeśli reguły zapory blokują port 553, reguły mogą wymagać aktualizacji w celu pomyślnego uzgodnienia ręcznego.
 
 Aby zapoznać się z przykładem obsługi uzgadniania subskrypcji, zobacz [ C# przykład](https://github.com/Azure-Samples/event-grid-dotnet-publish-consume-events/blob/master/EventGridConsumer/EventGridConsumer/Function1.cs).
 
 ### <a name="checklist"></a>Lista kontrolna
 
-Podczas tworzenia subskrypcji zdarzeń, jeśli widzisz komunikat o błędzie, taki jak "próba zweryfikowania podanego punktu końcowego https: \//Twój punkt końcowy — nie powiodło się. Aby uzyskać więcej informacji, odwiedź stronę https: \//alias. MS/esvalidation ", co oznacza, że wystąpił błąd uzgadniania walidacji. Aby rozwiązać ten problem, sprawdź następujące aspekty:
+Podczas tworzenia subskrypcji zdarzeń, jeśli widzisz komunikat o błędzie, taki jak "próba zweryfikowania dostarczonego https:\//Your-Endpoint-here nie powiodła się. Aby uzyskać więcej informacji, odwiedź stronę https:\//aka.ms/esvalidation ", co oznacza, że wystąpił błąd uzgadniania walidacji. Aby rozwiązać ten problem, sprawdź następujące aspekty:
 
 * Czy masz kontrolę nad kodem aplikacji w docelowym punkcie końcowym? Jeśli na przykład używasz funkcji platformy Azure opartej na wyzwalaczu HTTP, czy masz dostęp do kodu aplikacji, aby wprowadzić w nim zmiany?
 * Jeśli masz dostęp do kodu aplikacji, zaimplementuj mechanizm uzgadniania oparty na ValidationCode, jak pokazano w powyższym przykładzie.

@@ -1,6 +1,6 @@
 ---
-title: Schemat zdarzeń w usłudze Azure Event Grid
-description: Opisuje właściwości, które są dostarczane dla zdarzeń za pomocą usługi Azure Event Grid
+title: Schemat zdarzeń Azure Event Grid
+description: Opisuje właściwości, które są dostępne dla zdarzeń z Azure Event Grid
 services: event-grid
 author: banisadr
 manager: timlt
@@ -8,29 +8,29 @@ ms.service: event-grid
 ms.topic: reference
 ms.date: 01/20/2019
 ms.author: babanisa
-ms.openlocfilehash: 8a8193d21bbc1d0af933657705e605ce31589cbf
-ms.sourcegitcommit: 1572b615c8f863be4986c23ea2ff7642b02bc605
+ms.openlocfilehash: 44cc611a9a7d71a3ac4ac7b0d779b18778d0aacd
+ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/10/2019
-ms.locfileid: "67785849"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73607603"
 ---
-# <a name="azure-event-grid-event-schema"></a>Schemat zdarzeń w usłudze Azure Event Grid
+# <a name="azure-event-grid-event-schema"></a>Schemat zdarzeń Azure Event Grid
 
-W tym artykule opisano, właściwości i schematu, które znajdują się dla wszystkich zdarzeń. Zdarzenia składają się z zbiór właściwości pięć wymaganych parametrów i obiekt wymaganych danych. Właściwości są wspólne dla wszystkich zdarzeń z dowolnego wydawcę. Obiekt danych posiada właściwości, które są specyficzne dla każdego wydawcy. Tematy systemu te właściwości są specyficzne dla dostawcy zasobów, takich jak usługa Azure Storage lub Azure Event Hubs.
+W tym artykule opisano właściwości i schemat, które są obecne dla wszystkich zdarzeń. Zdarzenia składają się z zestawu pięciu wymaganych właściwości ciągu i wymaganego obiektu danych. Właściwości są wspólne dla wszystkich zdarzeń z dowolnego wydawcy. Obiekt danych ma właściwości, które są specyficzne dla każdego wydawcy. W przypadku tematów systemowych te właściwości są specyficzne dla dostawcy zasobów, na przykład Azure Storage lub Azure Event Hubs.
 
-Źródła zdarzeń wysyła zdarzenia do usługi Azure Event Grid w tablicy, który może mieć kilka obiektów zdarzeń. Ogłaszając zdarzenia do tematu usługi event grid tablicy może mieć całkowity rozmiar do 1 MB. Każde zdarzenie w tablicy jest ograniczony do 64 KB (ogólnie) lub 1 MB (wersja zapoznawcza). Jeśli zdarzenia lub tablicy jest większy niż limity rozmiaru, pojawi się odpowiedź **413 ładunku duży**.
+Źródła zdarzeń wysyłają zdarzenia do Azure Event Grid w tablicy, które mogą mieć kilka obiektów zdarzeń. Podczas ogłaszania zdarzeń w temacie Event Grid tablica może mieć łączny rozmiar do 1 MB. Każde zdarzenie w tablicy jest ograniczone do 64 KB (ogólna dostępność) lub 1 MB (wersja zapoznawcza). Jeśli zdarzenie lub tablica jest większe niż limity rozmiaru, otrzymasz **ładunek odpowiedzi 413 za duży**.
 
 > [!NOTE]
-> Zdarzenie o rozmiarze do 64 KB jest objęty przez umowy poziomu usług (SLA) ogólna dostępność (GA). Pomoc techniczna dotycząca zdarzenie o rozmiarze do 1 MB jest obecnie w wersji zapoznawczej. Zdarzenia przekracza 64 KB są naliczane w przyrostach 64 KB. 
+> Zdarzenie o rozmiarze do 64 KB jest objęte ogólnym dostępnością Umowa dotycząca poziomu usług (SLA). Obsługa zdarzeń o rozmiarze do 1 MB jest obecnie dostępna w wersji zapoznawczej. Zdarzenia powyżej 64 KB są naliczone w przyrostach 64 KB. 
 
-Usługa Event Grid wysyła zdarzenia do subskrybentów w tablicy, która ma pojedyncze zdarzenie. To zachowanie, mogą ulec zmianie w przyszłości.
+Event Grid wysyła zdarzenia do subskrybentów w tablicy, która ma pojedyncze zdarzenie. Takie zachowanie może ulec zmianie w przyszłości.
 
-Dla zdarzeń usługi Event Grid i ładunek danych każdego wydawcy platformy Azure można znaleźć schematu JSON [magazynie schematów zdarzeń](https://github.com/Azure/azure-rest-api-specs/tree/master/specification/eventgrid/data-plane).
+Schemat JSON dla zdarzenia Event Grid i każdego ładunku danych wydawcy platformy Azure można znaleźć w [magazynie schematów zdarzeń](https://github.com/Azure/azure-rest-api-specs/tree/master/specification/eventgrid/data-plane).
 
 ## <a name="event-schema"></a>Schemat zdarzeń
 
-Poniższy przykład pokazuje właściwości, które są używane przez wszystkich wydawców zdarzeń:
+W poniższym przykładzie przedstawiono właściwości, które są używane przez wszystkich wydawców zdarzeń:
 
 ```json
 [
@@ -49,7 +49,7 @@ Poniższy przykład pokazuje właściwości, które są używane przez wszystkic
 ]
 ```
 
-Na przykład jest schematu opublikowane zdarzenia magazynu obiektów Blob platformy Azure:
+Na przykład schemat opublikowany dla zdarzenia usługi Azure Blob Storage to:
 
 ```json
 [
@@ -81,20 +81,20 @@ Na przykład jest schematu opublikowane zdarzenia magazynu obiektów Blob platfo
 
 ## <a name="event-properties"></a>Właściwości zdarzenia
 
-Wszystkie zdarzenia mają te same dane następujących najwyższego poziomu:
+Wszystkie zdarzenia mają takie same dane jak najwyższego poziomu:
 
 | Właściwość | Typ | Opis |
 | -------- | ---- | ----------- |
-| topic | string | Zasobów Pełna ścieżka do źródła zdarzeń. To pole nie jest zapisywalna. Usługa Event Grid udostępnia tę wartość. |
-| subject | string | Ścieżka zdefiniowana przez wydawcę na temat zdarzenia. |
-| eventType | string | Jeden z typów zdarzeń zarejestrowane dla tego źródła zdarzeń. |
-| eventTime | string | Czas, którego zdarzenie jest generowane na podstawie czasu UTC dostawcy. |
-| id | string | Unikatowy identyfikator zdarzenia. |
-| data | object | Dane zdarzenia specyficzne dla dostawcy zasobów. |
-| dataVersion | string | Wersja schematu obiektu danych. Wydawca Określa wersję schematu. |
-| metadataVersion | string | Wersja schematu dla metadanych zdarzenia. Usługa Event Grid definiuje schemat właściwości najwyższego poziomu. Usługa Event Grid udostępnia tę wartość. |
+| temat | ciąg | Pełna ścieżka zasobu do źródła zdarzeń. To pole nie umożliwia zapisu. Event Grid udostępnia tę wartość. |
+| Temat | ciąg | Ścieżka zdefiniowana przez program Publisher do tematu zdarzenia. |
+| eventType | ciąg | Jeden z zarejestrowanych typów zdarzeń dla tego źródła zdarzeń. |
+| eventTime | ciąg | Czas generowania zdarzenia na podstawie czasu UTC dostawcy. |
+| id | ciąg | Unikatowy identyfikator zdarzenia. |
+| Data | obiekt | Dane zdarzenia specyficzne dla dostawcy zasobów. |
+| dataVersion | ciąg | Wersja schematu obiektu danych. Wydawca definiuje wersję schematu. |
+| metadataVersion | ciąg | Wersja schematu metadanych zdarzenia. Event Grid definiuje schemat właściwości najwyższego poziomu. Event Grid udostępnia tę wartość. |
 
-Aby dowiedzieć się więcej na temat właściwości w obiekcie danych, zobacz źródło zdarzenia:
+Aby dowiedzieć się więcej o właściwościach w obiekcie danych, zobacz Źródło zdarzenia:
 
 * [Subskrypcje platformy Azure (operacje zarządzania)](event-schema-subscriptions.md)
 * [Container Registry](event-schema-container-registry.md)
@@ -104,15 +104,16 @@ Aby dowiedzieć się więcej na temat właściwości w obiekcie danych, zobacz �
 * [Media Services](../media-services/latest/media-services-event-schemas.md?toc=%2fazure%2fevent-grid%2ftoc.json)
 * [Grupy zasobów (operacje zarządzania)](event-schema-resource-groups.md)
 * [Service Bus](event-schema-service-bus.md)
-* [Azure SignalR](event-schema-azure-signalr.md)
+* [Usługa Azure Signal](event-schema-azure-signalr.md)
+* [Azure Machine Learning](event-schema-machine-learning.md)
 
-Niestandardowe tematy wydawca zdarzeń określa obiekt danych. Najwyższego poziomu dane powinny mieć te same pola jako standardowych zdarzeń zdefiniowanych przez zasób.
+W przypadku niestandardowych tematów Wydawca zdarzeń określa obiekt danych. Dane najwyższego poziomu powinny mieć te same pola co standardowe zdarzenia zdefiniowane przez zasób.
 
-Podczas publikowania zdarzeń w tematy niestandardowe, należy utworzyć tematy dla zdarzeń, które ułatwiają subskrybentów dowiedzieć się, czy są one zainteresowani zdarzenia. Subskrybenci użyć do filtrowania i trasy zdarzenia tematu. Rozważ podanie ścieżki dla której zaszło zdarzenie, dzięki czemu subskrybenci można filtrować według segmentami tej ścieżki. Ścieżka pozwala subskrybentom wąskiego lub szeroko filtrowanie zdarzeń. Na przykład, jeśli należy podać ścieżkę trzy segmentu, takie jak `/A/B/C` w tym temacie, subskrybenci można filtrować według pierwszy segment `/A` uzyskać szeroką gamę zdarzenia. Te zdarzenia jest subskrybenci z tematów, takich jak `/A/B/C` lub `/A/D/E`. Innymi subskrybentami, można filtrować według `/A/B` Aby uzyskać bardziej szczegółowy zestaw zdarzeń.
+Podczas publikowania zdarzeń w niestandardowych tematach, należy utworzyć tematy dotyczące wydarzeń, które ułatwią subskrybentom dowiedzieć się, czy zainteresują się wydarzeniem. Subskrybenci używają podmiotu do filtrowania i kierowania zdarzeń. Rozważ podanie ścieżki do miejsca wystąpienia zdarzenia, dzięki czemu Subskrybenci mogą filtrować według segmentów tej ścieżki. Ścieżka umożliwia subskrybentom Zawężanie lub szerokie filtrowanie zdarzeń. Na przykład jeśli podano trzy ścieżki segmentu, takie jak `/A/B/C` w temacie, subskrybenci mogą filtrować według pierwszego segmentu `/A`, aby uzyskać obszerny zestaw zdarzeń. Subskrybenci uzyskują zdarzenia z podmiotami takimi jak `/A/B/C` lub `/A/D/E`. Inni Subskrybenci mogą filtrować według `/A/B`, aby uzyskać węższy zestaw zdarzeń.
 
-Czasami tematu potrzebuje więcej szczegółów na temat co się stało. Na przykład **kont magazynu** wydawcy zawiera temat `/blobServices/default/containers/<container-name>/blobs/<file>` po dodaniu pliku do kontenera. Subskrybent można filtrować według ścieżki `/blobServices/default/containers/testcontainer` można pobrać wszystkie zdarzenia dla tego kontenera, ale nie innych kontenerów na koncie magazynu. Subskrybent można również filtrować lub tras po przyrostku `.txt` aby działał tylko w przypadku plików tekstowych.
+Czasami podmiot wymaga więcej szczegółów na temat tego, co się stało. Na przykład Wydawca **kont magazynu** udostępnia temat `/blobServices/default/containers/<container-name>/blobs/<file>` po dodaniu pliku do kontenera. Subskrybent może filtrować według ścieżki `/blobServices/default/containers/testcontainer`, aby uzyskać wszystkie zdarzenia dla tego kontenera, ale nie inne kontenery na koncie magazynu. Subskrybent może również filtrować lub kierować sufiksem `.txt`, aby działał tylko z plikami tekstowymi.
 
 ## <a name="next-steps"></a>Następne kroki
 
-* Wprowadzenie do usługi Azure Event Grid, zobacz [co to jest usługa Event Grid?](overview.md)
-* Aby uzyskać więcej informacji na temat tworzenia subskrypcji usługi Azure Event Grid, zobacz [schemat subskrypcji usługi Event Grid](subscription-creation-schema.md).
+* Aby zapoznać się z wprowadzeniem do Azure Event Grid, zobacz [co to jest Event Grid?](overview.md)
+* Aby uzyskać więcej informacji na temat tworzenia subskrypcji Azure Event Grid, zobacz [Event Grid schematu subskrypcji](subscription-creation-schema.md).

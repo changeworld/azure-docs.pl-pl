@@ -1,5 +1,5 @@
 ---
-title: Limity pojemności — Azure Synapse Analytics (dawniej SQL DW) | Microsoft Docs
+title: Limity pojemności — Azure Synapse Analytics (dawniej SQL DW)
 description: Maksymalne wartości dozwolone dla różnych składników usługi SQL Analytics w usłudze Azure Synapse.
 services: sql-data-warehouse
 author: mlee3gsd
@@ -10,25 +10,26 @@ ms.subservice: design
 ms.date: 11/04/2019
 ms.author: martinle
 ms.reviewer: igorstan
-ms.openlocfilehash: 702f78f5bae12b2eba6669a344af14f6d1236856
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: c4ab9d9cc8007281e0e5729fe883e654107be6fe
+ms.sourcegitcommit: 359930a9387dd3d15d39abd97ad2b8cb69b8c18b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73475805"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73645289"
 ---
 # <a name="azure-synapse-analytics-formerly-sql-dw-capacity-limits"></a>Limity pojemności usługi Azure Synapse Analytics (dawniej SQL DW)
 
 Maksymalne wartości dozwolone dla różnych składników usługi Azure Synapse.
 
 ## <a name="workload-management"></a>Zarządzanie obciążeniem
+
 | Kategoria | Opis | Maksimum |
 |:--- |:--- |:--- |
 | [Jednostki magazynu danych (jednostek dwu)](what-is-a-data-warehouse-unit-dwu-cdwu.md) |Maksymalna jednostek dwu dla pojedynczej jednostki puli SQL (magazyn danych) | Gen1: DW6000<br></br>Gen2: DW30000c |
 | [Jednostki magazynu danych (jednostek dwu)](what-is-a-data-warehouse-unit-dwu-cdwu.md) |Domyślna wartość DTU na serwer |54 000<br></br>Domyślnie każdy serwer SQL (na przykład myserver.database.windows.net) ma limit przydziału jednostek DTU 54 000, który umożliwia do 9 DW6000c. Ten limit przydziału jest po prostu limitem bezpieczeństwa. Możesz zwiększyć limit przydziału, [tworząc bilet pomocy technicznej](sql-data-warehouse-get-started-create-support-ticket.md) i wybierając pozycję *przydział* jako typ żądania.  Aby obliczyć zapotrzebowanie na jednostki DTU, pomnóż 7,5 przez łączną potrzebną jednostek dwu lub pomnożenie 9,0 przez łączną cDWU potrzebną. Na przykład:<br></br>DW6000 x 7,5 = 45 000 DTU<br></br>DW6000c x 9,0 = 54 000 DTU.<br></br>Bieżące użycie jednostek DTU można wyświetlić z poziomu opcji programu SQL Server w portalu. Limit przydziału jednostek DTU obejmuje zarówno wstrzymane, jak i niewstrzymane bazy danych. |
 | Połączenie z bazą danych |Maksymalna liczba otwartych sesji współbieżnych |1024<br/><br/>Liczba równoczesnych otwartych sesji różni się w zależności od wybranej jednostek dwu. DWU600c i nowsze obsługują maksymalnie 1024 otwartych sesji. DWU500c i poniżej, obsługują maksymalny limit współbieżnych sesji otwierania wynoszący 512. Uwaga Istnieją limity liczby zapytań, które mogą być wykonywane współbieżnie. Po przekroczeniu limitu współbieżności żądanie przechodzi do kolejki wewnętrznej, w której czeka na przetworzenie. |
 | Połączenie z bazą danych |Maksymalna ilość pamięci dla przygotowanych instrukcji |20 MB |
-| [Zarządzanie obciążeniami](resource-classes-for-workload-management.md) |Maksymalna liczba współbieżnych zapytań |128<br/><br/>  Zostanie wykonane maksymalnie 128 współbieżnych zapytań, a pozostałe zapytania zostaną dodane do kolejki.<br/><br/>Liczba współbieżnych zapytań może się zmniejszyć, gdy użytkownicy są przypisani do wyższych klas zasobów lub gdy ustawienie [jednostki magazynu danych](memory-and-concurrency-limits.md) jest mniejsze. Niektóre zapytania, takie jak zapytania DMV, są zawsze dozwolone do uruchomienia i nie wpływają na współbieżny limit zapytań. Aby uzyskać więcej informacji na temat jednoczesnego wykonywania zapytań, zobacz artykuł [maksymalne wartości współbieżności](memory-and-concurrency-limits.md#concurrency-maximums) . |
+| [Zarządzanie obciążeniami](resource-classes-for-workload-management.md) |Maksymalna liczba współbieżnych zapytań |128<br/><br/>  Zostanie wykonane maksymalnie 128 współbieżnych zapytań, a pozostałe zapytania zostaną dodane do kolejki.<br/><br/>Liczba współbieżnych zapytań może się zmniejszyć, gdy użytkownicy są przypisani do wyższych klas zasobów lub gdy wartość ustawienia współbieżność pamięci (w jednostkach magazynu danych) jest mniejsza. Niektóre zapytania, takie jak zapytania DMV, są zawsze dozwolone do uruchomienia i nie wpływają na współbieżny limit zapytań. Aby uzyskać więcej informacji na temat jednoczesnego wykonywania zapytań, zobacz artykuł [współbieżność — współbieżność] pamięć-limits.md). |
 | [tempdb](sql-data-warehouse-tables-temporary.md) |Maksymalna ilość GB |399 GB na DW100. W związku z tym w DWU1000 baza danych tempdb ma rozmiar 3,99 TB. |
 
 ## <a name="database-objects"></a>Obiekty bazy danych
@@ -64,7 +65,7 @@ Maksymalne wartości dozwolone dla różnych składników usługi Azure Synapse.
 | Zapytanie |Współbieżne zapytania w widokach systemu. |100 |
 | Zapytanie |Zakolejkowane zapytania w widokach systemu |1000 |
 | Zapytanie |Parametry maksymalne |2098 |
-| Partia zadań |Maksymalny rozmiar |65536 * 4096 |
+| Batch |Maksymalny rozmiar |65536 * 4096 |
 | Wybierz wyniki |Kolumny na wiersz |4096<br/><br/>Nie można nigdy mieć więcej niż 4096 kolumn na wiersz w wyniku SELECT. Nie ma gwarancji, że zawsze możesz mieć 4096. Jeśli plan zapytania wymaga tabeli tymczasowej, może zostać zastosowana Maksymalna liczba kolumn 1024 na tabelę. |
 | SELECT |Zagnieżdżone podzapytania |32<br/><br/>W instrukcji SELECT nigdy nie można korzystać z więcej niż 32 zagnieżdżonych podzapytań. Nie ma gwarancji, że zawsze możesz mieć 32. Na przykład SPRZĘŻENIe może wprowadzić podzapytanie do planu zapytania. Liczbę podzapytań można również ograniczyć przez dostępną pamięć. |
 | SELECT |Kolumny na SPRZĘŻENIe |1024 kolumn<br/><br/>W SPRZĘŻENIu nigdy nie można mieć więcej niż 1024 kolumn. Nie ma gwarancji, że zawsze możesz mieć 1024. Jeśli plan SPRZĘŻENIa wymaga tabeli tymczasowej zawierającej więcej kolumn niż wynik SPRZĘŻENIa, limit 1024 dotyczy tabeli tymczasowej. |

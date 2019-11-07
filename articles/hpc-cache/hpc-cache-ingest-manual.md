@@ -1,19 +1,19 @@
 ---
-title: Pozyskiwanie danych w pamięci podręcznej platformy Azure HPC — kopia ręczna
+title: Pobieranie danych z pamięci podręcznej platformy Azure HPC — kopia ręczna
 description: Jak używać poleceń CP do przenoszenia danych do docelowego magazynu obiektów BLOB w pamięci podręcznej Azure HPC
 author: ekpgh
 ms.service: hpc-cache
 ms.topic: conceptual
-ms.date: 08/30/2019
+ms.date: 10/30/2019
 ms.author: rohogue
-ms.openlocfilehash: 7e29cbd202b32897026bed074743de543d3fd587
-ms.sourcegitcommit: 1c2659ab26619658799442a6e7604f3c66307a89
+ms.openlocfilehash: b2514eaaf70d13d3be63963f24ea7be99c4fbcce
+ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/10/2019
-ms.locfileid: "72254474"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73582280"
 ---
-# <a name="azure-hpc-cache-preview-data-ingest---manual-copy-method"></a>Pobieranie danych z pamięci podręcznej platformy Azure HPC (wersja zapoznawcza) — Metoda kopiowania ręcznego
+# <a name="azure-hpc-cache-data-ingest---manual-copy-method"></a>Pobieranie danych z pamięci podręcznej platformy Azure HPC — metoda kopiowania ręcznego
 
 Ten artykuł zawiera szczegółowe instrukcje dotyczące ręcznego kopiowania danych do kontenera magazynu obiektów BLOB do użycia z pamięcią podręczną platformy Azure HPC. Używa wielowątkowych operacji równoległych do optymalizowania szybkości kopiowania.
 
@@ -23,7 +23,7 @@ Aby dowiedzieć się więcej na temat przenoszenia danych do magazynu obiektów 
 
 Można ręcznie utworzyć kopię wielowątkową na kliencie, uruchamiając więcej niż jedno polecenie kopiowania jednocześnie w tle względem wstępnie zdefiniowanych zestawów plików lub ścieżek.
 
-Polecenie ``cp`` z systemem Linux/UNIX zawiera argument ``-p`` w celu zachowania własności i metadanych mtime. Dodanie tego argumentu do poniższych poleceń jest opcjonalne. (Dodanie argumentu zwiększa liczbę wywołań systemu plików wysyłanych z klienta do docelowego systemu plików na potrzeby modyfikacji metadanych).
+Polecenie ``cp`` systemu Linux/UNIX zawiera argument ``-p``, aby zachować własność i mtime metadane. Dodanie tego argumentu do poniższych poleceń jest opcjonalne. (Dodanie argumentu zwiększa liczbę wywołań systemu plików wysyłanych z klienta do docelowego systemu plików na potrzeby modyfikacji metadanych).
 
 Ten prosty przykład kopiuje jednocześnie dwa pliki:
 
@@ -37,7 +37,7 @@ Po wydaniu tego polecenia `jobs` polecenie pokazuje, że dwa wątki są uruchomi
 
 Jeśli nazwy plików są przewidywalne, można użyć wyrażeń do tworzenia równoległych wątków kopiowania. 
 
-Na przykład, jeśli katalog zawiera 1000 plików, które są numerowane sekwencyjnie od `0001` do `1000`, można użyć następujących wyrażeń, aby utworzyć dziesięć równoległych wątków, dla których każda kopia 100 plików ma:
+Na przykład, jeśli katalog zawiera 1000 plików, które są numerowane sekwencyjnie od `0001` do `1000`, można użyć następujących wyrażeń, aby utworzyć dziesięć równoległych wątków, które każdy z nich skopiuje (100):
 
 ```bash
 cp /mnt/source/file0* /mnt/destination1/ & \
@@ -56,7 +56,7 @@ cp /mnt/source/file9* /mnt/destination1/
 
 Jeśli struktura nazewnictwa plików nie jest przewidywalna, można grupować pliki według nazw katalogów. 
 
-Ten przykład zbiera całe katalogi do wysłania do poleceń ``cp`` uruchamianych jako zadania w tle:
+Ten przykład zbiera wszystkie katalogi do wysłania do ``cp`` polecenia uruchamiane jako zadania w tle:
 
 ```bash
 /root
@@ -92,7 +92,7 @@ W takim przypadku można dodać punkty instalacji po stronie klienta do innych a
 10.1.1.103:/nfs on /mnt/destination3type nfs (rw,vers=3,proto=tcp,addr=10.1.1.103)
 ```
 
-Dodanie punktów instalacji po stronie klienta umożliwia utworzenie rozwidlenia dodatkowych poleceń kopiowania do dodatkowych punktów instalacji `/mnt/destination[1-3]`, osiągając dalsze równoległości.  
+Dodanie punktów instalacji po stronie klienta umożliwia rozwidlenie dodatkowych poleceń kopiowania do dodatkowych punktów instalacji `/mnt/destination[1-3]`, co zapewnia dalsze równoległość.  
 
 Na przykład, jeśli pliki są bardzo duże, możesz zdefiniować polecenia kopiowania, aby użyć odrębnych ścieżek docelowych, a następnie wysłać więcej poleceń równolegle od klienta wykonującego kopię.
 
@@ -138,7 +138,7 @@ Client4: cp -R /mnt/source/dir3/dir3d /mnt/destination/dir3/ &
 
 Po zrozumieniu powyższych metod (wielu wątków kopiowania na miejsce docelowe, wielu miejsc docelowych na klienta, wielu klientów na system plików źródłowych dostępnych dla sieci) należy wziąć pod uwagę następujące zalecenie: Kompiluj manifesty plików, a następnie użyj ich razem z kopią polecenia na wielu klientach.
 
-W tym scenariuszu do tworzenia manifestów plików lub katalogów służy polecenie UNIX ``find``:
+W tym scenariuszu do tworzenia manifestów plików lub katalogów służy polecenie ``find`` UNIX:
 
 ```bash
 user@build:/mnt/source > find . -mindepth 4 -maxdepth 4 -type d

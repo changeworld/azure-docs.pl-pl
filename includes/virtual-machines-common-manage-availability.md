@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 03/27/2018
 ms.author: cynthn
 ms.custom: include file
-ms.openlocfilehash: 0879cb33a0796e19724bd143e57780d6ce27bfcf
-ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
+ms.openlocfilehash: 7c884d3c7102fc47f6efad86d9fe3704afd0edcf
+ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "69657840"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73591155"
 ---
 ## <a name="understand-vm-reboots---maintenance-vs-downtime"></a>Omówienie ponownych rozruchów maszyn wirtualnych — konserwacja a przestój
 Istnieją trzy scenariusze, które mogą spowodować wpływ na maszynę wirtualną na platformie Azure: nieplanowana konserwacja sprzętu, nieoczekiwany przestój i planowana konserwacja.
@@ -39,7 +39,7 @@ Aby zmniejszyć wpływ przestoju spowodowanego co najmniej jednym z tych zdarze�
 
 ## <a name="use-availability-zones-to-protect-from-datacenter-level-failures"></a>Używanie stref dostępności do ochrony przed awariami na poziomie centrum danych
 
-[Strefy dostępności](../articles/availability-zones/az-overview.md) rozszerzają poziom kontroli, aby zachować dostępność aplikacji i danych na maszynach wirtualnych. Strefy dostępności to unikatowe fizycznie lokalizacje w regionie platformy Azure. Każda strefa składa się z co najmniej jeden centrów danych, wyposażone w niezależne zasilanie, chłodzenie i usługi sieciowe. Aby zapewnić odporność, istnieją co najmniej trzy oddzielne strefy we wszystkich włączonych regionach. Fizyczna separacja stref dostępności w ramach regionu chroni aplikacje i dane przed awariami centrum danych. Usługi strefowo nadmiarowe replikujeją aplikacje i dane między Strefy dostępności, aby chronić je przed awariami jednego punktu.
+[Strefy dostępności](../articles/availability-zones/az-overview.md) rozszerzają poziom kontroli, aby zachować dostępność aplikacji i danych na maszynach wirtualnych. Strefy dostępności to unikatowe fizyczne lokalizacje w regionie świadczenia usługi Azure. Każda strefa składa się z co najmniej jednego centrum danych wyposażonego w niezależne zasilanie, chłodzenie i sieć. Aby zapewnić odporność, istnieją co najmniej trzy oddzielne strefy we wszystkich włączonych regionach. Fizyczna separacja stref dostępności w ramach regionu chroni aplikacje i dane przed awariami centrum danych. Usługi strefowo nadmiarowe replikujeją aplikacje i dane między Strefy dostępności, aby chronić je przed awariami jednego punktu.
 
 Strefa dostępności w regionie świadczenia usługi Azure to kombinacja **domeny błędów** i **domeny aktualizacji**. Jeśli na przykład utworzysz trzy lub więcej maszyn wirtualnych w trzech strefach w regionie świadczenia usługi Azure, maszyny wirtualne będą rozproszone w trzech domenach błędów i trzech domenach aktualizacji. Platforma Azure rozpoznaje to rozproszenie w domenach aktualizacji, aby upewnić się, że maszyny wirtualne w różnych strefach nie są aktualizowane w tym samym czasie.
 
@@ -60,24 +60,31 @@ Każda maszyna wirtualna w zestawie dostępności ma przypisaną **domenę aktua
 Domeny błędów definiują grupę maszyn wirtualnych, które korzystają ze wspólnego źródła zasilania i przełącznika sieciowego. Domyślnie maszyny wirtualne skonfigurowane w zestawie dostępności są rozdzielane między maksymalnie trzy domeny błędów w przypadku wdrożeń usługi Resource Manager (dwie domeny błędów w przypadku modelu klasycznego). Umieszczenie maszyn wirtualnych w zestawie dostępności nie chroni aplikacji przed błędami związanymi z systemem operacyjnym lub daną aplikacją, ale ogranicza wpływ potencjalnych awarii sprzętu fizycznego, awarii sieci i przerw w dostawie prądu.
 
 <!--Image reference-->
-   ![Koncepcyjne rysowanie konfiguracji domeny aktualizacji i domeny błędów](./media/virtual-machines-common-manage-availability/ud-fd-configuration.png)
+   ![koncepcyjne rysowanie konfiguracji domeny aktualizacji i domeny błędów](./media/virtual-machines-common-manage-availability/ud-fd-configuration.png)
 
 ## <a name="use-managed-disks-for-vms-in-an-availability-set"></a>Używanie dysków zarządzanych dla maszyn wirtualnych w zestawie dostępności
 Jeśli obecnie korzystasz z maszyn wirtualnych z dyskami niezarządzanymi, zdecydowanie zalecamy [konwersję maszyn wirtualnych w zestawie dostępności do korzystania z dysków zarządzanych](../articles/virtual-machines/windows/convert-unmanaged-to-managed-disks.md).
 
 [Dyski zarządzane](../articles/virtual-machines/windows/managed-disks-overview.md) zapewniają większą niezawodność zestawów dostępności przez zagwarantowanie, że dyski maszyn wirtualnych w zestawie dostępności są wystarczająco odizolowane od siebie, aby uniknąć pojedynczych punktów awarii. Jest to możliwe przez automatyczne umieszczenie dysków w różnych domenach błędów magazynu (klastrów magazynu) i dostosowanie ich do domeny błędów maszyny wirtualnej. Jeśli domena błędów magazynu ulegnie awarii ze względu na awarię sprzętu lub oprogramowania, tylko wystąpienie maszyny wirtualnej z dyskami w domenie błędów magazynu zakończy się niepowodzeniem.
-![Domenami błędów dysków zarządzanych](./media/virtual-machines-common-manage-availability/md-fd-updated.png)
+![domenami błędów Managed disks](./media/virtual-machines-common-manage-availability/md-fd-updated.png)
 
 > [!IMPORTANT]
 > Liczba domen błędów dla zarządzanych zestawów dostępności jest zależna od regionu i może wynosić dwa lub trzy na region. W poniższej tabeli przedstawiono liczbę na region
 
 [!INCLUDE [managed-disks-common-fault-domain-region-list](managed-disks-common-fault-domain-region-list.md)]
 
+> Uwaga: w pewnych okolicznościach może się zdarzyć, że 2 maszyny wirtualne należące do tego samego AvailabilitySet korzystają z tego samego FaultDomainu. Można to potwierdzić, przechodząc do AvailabilitySet i Sprawdź kolumnę "domena błędów".
+> Takie zachowanie może być przestrzegane, gdy podczas wdrażania maszyn wirtualnych wystąpił następująca sekwencja:
+> - Wdrażanie pierwszej maszyny wirtualnej
+> - Zatrzymaj/Cofnij przydział pierwszej maszyny wirtualnej
+> - W tym przypadku należy wdrożyć drugą maszynę wirtualną. dysk systemu operacyjnego drugiej maszyny wirtualnej może zostać utworzony w tej samej domenie błędów co pierwsza maszyna wirtualna, a druga maszyna wirtualna będzie również znajdować się na tym samym FaultDomain. 
+> Aby uniknąć tego problemu, zaleca się, aby nie zatrzymywać ani cofnąć alokacji maszyny wirtualnej między ich wdrożeniami.
+
 Jeśli planujesz używanie maszyn wirtualnych z dyskami niezarządzanymi, postępuj zgodnie z najlepszymi rozwiązaniami dotyczącymi kont magazynu, w których wirtualne dyski twarde (VHD) maszyn wirtualnych są przechowywane jako [stronicowe obiekty blob](https://docs.microsoft.com/rest/api/storageservices/Understanding-Block-Blobs--Append-Blobs--and-Page-Blobs#about-page-blobs).
 
 1. **Obsługuj wszystkie dyski (systemu operacyjnego i danych) skojarzone z maszyną wirtualną na tym samym koncie magazynu.**
 2. Przed dodaniem kolejnych wirtualnych dysków twardych do konta magazynu **przejrzyj [limity](../articles/storage/common/storage-scalability-targets.md) dotyczące liczby niezarządzanych dysków na koncie magazynu**.
-3. **Używaj oddzielnego konta magazynu dla każdej maszyny wirtualnej w zestawie dostępności.** Nie stosuj współużytkowania kont magazynu przez wiele maszyn wirtualnych w tym samym zestawie dostępności. Jest ona akceptowalna dla maszyn wirtualnych w różnych zestawach dostępności, aby współużytkować konta magazynu ![, jeśli powyższe najlepsze rozwiązania są po wykonaniu domenami błędów dysków niezarządzanych](./media/virtual-machines-common-manage-availability/umd-updated.png)
+3. **Używaj oddzielnego konta magazynu dla każdej maszyny wirtualnej w zestawie dostępności.** Nie stosuj współużytkowania kont magazynu przez wiele maszyn wirtualnych w tym samym zestawie dostępności. Jest ona akceptowalna dla maszyn wirtualnych w różnych zestawach dostępności, aby współużytkować konta magazynu, jeśli powyższe najlepsze rozwiązania są obserwowane ![dysków niezarządzanych domenami błędów](./media/virtual-machines-common-manage-availability/umd-updated.png)
 
 ## <a name="use-scheduled-events-to-proactively-respond-to-vm-impacting-events"></a>Używanie zaplanowanych zdarzeń do aktywnego reagowania na zdarzenia wpływające na maszynę wirtualną
 
@@ -89,7 +96,7 @@ Jeśli maszyny wirtualne są niemal identyczne i służą do tego samego celu dl
 Można na przykład umieścić wszystkie maszyny wirtualne w frontonie aplikacji, na których działają usługi IIS, Apache i Nginx w jednej strefie dostępności lub w zestawie. Upewnij się, że tylko maszyny wirtualne frontonu są umieszczane w tej samej strefie dostępności lub w zestawie. Należy również upewnić się, że tylko maszyny wirtualne warstwy danych są umieszczane we własnej strefie dostępności lub w zestawie, takie jak zreplikowane SQL Server maszyny wirtualne lub maszyny wirtualne MySQL.
 
 <!--Image reference-->
-   ![Warstwy aplikacji](./media/virtual-machines-common-manage-availability/application-tiers.png)
+   ![warstw aplikacji](./media/virtual-machines-common-manage-availability/application-tiers.png)
 
 ## <a name="combine-a-load-balancer-with-availability-zones-or-sets"></a>Łączenie modułu równoważenia obciążenia z strefami dostępności lub zestawami
 Połącz [Azure Load Balancer](../articles/load-balancer/load-balancer-overview.md) ze strefą dostępności lub ustaw, aby uzyskać największą odporność aplikacji. Usługa Azure Load Balancer dystrybuuje ruch między wieloma maszynami wirtualnymi. W przypadku naszych maszyn wirtualnych w warstwie Standardowa usługa Azure Load Balancer jest uwzględniana. Nie wszystkie warstwy maszyn wirtualnych obejmują usługę Azure Load Balancer. Aby uzyskać więcej informacji na temat równoważenia obciążenia maszyn wirtualnych, zobacz [Load Balancing virtual machines](../articles/virtual-machines/virtual-machines-linux-load-balance.md) (Równoważenie obciążenia maszyn wirtualnych).

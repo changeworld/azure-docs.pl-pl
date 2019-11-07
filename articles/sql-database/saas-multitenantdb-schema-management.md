@@ -1,5 +1,5 @@
 ---
-title: Zarządzanie schematami usługi Azure SQL Database w aplikacji z wieloma dzierżawami | Microsoft Docs
+title: Zarządzanie schematem Azure SQL Database w aplikacji z wieloma dzierżawcami
 description: Zarządzanie schematami wielu dzierżaw w aplikacji z wieloma dzierżawami, która korzysta z usługi Azure SQL Database
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: MightyPen
 ms.author: genemi
 ms.reviewer: billgib, sstein
 ms.date: 12/18/2018
-ms.openlocfilehash: db6f471438324e984434704a2cab01d57c800ba5
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: a4838e571c6dc678fba470ef7f1026388f55d444
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68570259"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73691983"
 ---
 # <a name="manage-schema-in-a-saas-application-that-uses-sharded-multi-tenant-sql-databases"></a>Zarządzanie schematem w aplikacji SaaS używającej podzielonej na fragmenty wielodostępnych baz danych SQL
 
@@ -45,14 +45,14 @@ Ten samouczek zawiera informacje na temat wykonywania następujących czynności
 - Wielodostępna aplikacja bazy danych biletów Wingtip musi już być wdrożona:
     - Aby uzyskać instrukcje, zobacz pierwszy samouczek, w którym wprowadzono bilety Wingtip SaaS aplikacji bazy danych z wieloma dzierżawcami:<br />[Wdróż i Eksploruj aplikację podzielonej na fragmenty z wieloma dzierżawcami, która używa Azure SQL Database](saas-multitenantdb-get-started-deploy.md).
         - Proces wdrażania przebiega krócej niż pięć minut.
-    - Musisz mieć zainstalowaną *podzielonej na fragmenty* wielodostępną wersję Wingtip. Wersje autonomiczne i *bazy danych na dzierżawcę* nie obsługują tego samouczka.
+    - Musisz mieć zainstalowaną *podzielonej na fragmenty wielodostępną* wersję Wingtip. Wersje *autonomiczne* i *bazy danych na dzierżawcę* nie obsługują tego samouczka.
 
 - Należy zainstalować najnowszą wersję programu SQL Server Management Studio (SSMS). [Pobierz i zainstaluj program SSMS](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms).
 
 - Należy zainstalować Azure PowerShell. Aby uzyskać szczegółowe informacje, zobacz [wprowadzenie do Azure PowerShell](https://docs.microsoft.com/powershell/azure/get-started-azureps).
 
 > [!NOTE]
-> W tym samouczku są używane funkcje usługi Azure SQL Database, które znajdują się w ograniczonej wersji zapoznawczej ([zadania Elastic Database](sql-database-elastic-database-client-library.md)). Jeśli chcesz wykonać ten samouczek, podaj identyfikator subskrypcji, aby *SaaSFeedback\@Microsoft.com* z tematem "zadania elastyczne" w wersji zapoznawczej. Po otrzymaniu potwierdzenia, że Twoja subskrypcja została włączona, [pobierz i zainstaluj najnowsze polecenia cmdlet zadań w wersji wstępnej](https://github.com/jaredmoo/azure-powershell/releases). Ta wersja zapoznawcza jest ograniczona, więc skontaktuj się z *SaaSFeedback\@Microsoft.com* , aby uzyskać powiązane pytania lub pomoc techniczną.
+> W tym samouczku są używane funkcje usługi Azure SQL Database, które znajdują się w ograniczonej wersji zapoznawczej ([zadania Elastic Database](sql-database-elastic-database-client-library.md)). Jeśli chcesz wykonać ten samouczek, podaj identyfikator subskrypcji do *SaaSFeedback\@Microsoft.com* z tematem "zadania elastyczne" w wersji zapoznawczej. Po otrzymaniu potwierdzenia, że Twoja subskrypcja została włączona, [pobierz i zainstaluj najnowsze polecenia cmdlet zadań w wersji wstępnej](https://github.com/jaredmoo/azure-powershell/releases). Ta wersja zapoznawcza jest ograniczona, dlatego skontaktuj się z firmą *SaaSFeedback\@Microsoft.com* , aby uzyskać powiązane pytania lub pomoc techniczną.
 
 ## <a name="introduction-to-saas-schema-management-patterns"></a>Wprowadzenie do wzorców zarządzania schematami SaaS
 
@@ -64,17 +64,17 @@ Model bazy danych z wieloma dzierżawcami podzielonej na fragmenty używany w ty
 
 Dostępna jest nowa wersja zadań elastycznych, która jest teraz zintegrowaną funkcją Azure SQL Database. Nowa wersja Zadań elastycznych jest obecnie dostępna w ograniczonej wersji zapoznawczej. Ograniczona wersja zapoznawcza jest obecnie obsługiwana przy użyciu programu PowerShell do tworzenia agenta zadań i języka T-SQL w celu tworzenia zadań i zarządzania nimi.
 > [!NOTE]
-> W tym samouczku są używane funkcje usługi SQL Database, które znajdują się w ograniczonej wersji zapoznawczej (zadania Elastic Database). Jeśli chcesz wykonać ten samouczek, podaj identyfikator SaaSFeedback@microsoft.com subskrypcji z tematem "zadania elastyczne" w wersji zapoznawczej. Po otrzymaniu potwierdzenia, że subskrypcja została włączona, Pobierz i zainstaluj najnowsze polecenia cmdlet zadań w wersji wstępnej. Ta wersja zapoznawcza jest ograniczona SaaSFeedback@microsoft.com , dlatego należy skontaktować się z tematem powiązanych pytań lub pomocy technicznej.
+> W tym samouczku są używane funkcje usługi SQL Database, które znajdują się w ograniczonej wersji zapoznawczej (zadania Elastic Database). Jeśli chcesz wykonać ten samouczek, podaj identyfikator subskrypcji, aby SaaSFeedback@microsoft.com z tematem "zadania elastyczne" w wersji zapoznawczej. Po otrzymaniu potwierdzenia, że subskrypcja została włączona, Pobierz i zainstaluj najnowsze polecenia cmdlet zadań w wersji wstępnej. Ta wersja zapoznawcza jest ograniczona, dlatego skontaktuj się SaaSFeedback@microsoft.com z pokrewnymi pytaniami lub pomocą techniczną.
 
 ## <a name="get-the-wingtip-tickets-saas-multi-tenant-database-application-source-code-and-scripts"></a>Pobierz Wingtip bilety SaaS kodu źródłowego i skryptów aplikacji bazy danych z wieloma dzierżawcami
 
-Wingtip bilety SaaS wielodostępnych skryptów bazy danych i kodu źródłowego aplikacji są dostępne w repozytorium [WingtipTicketsSaaS-MultitenantDB](https://github.com/microsoft/WingtipTicketsSaaS-MultiTenantDB) w witrynie GitHub. Zapoznaj [](saas-tenancy-wingtip-app-guidance-tips.md) się z ogólnymi wskazówkami dotyczącymi kroków pobierania i odblokowywania Wingtip biletów SaaS.
+Wingtip bilety SaaS wielodostępnych skryptów bazy danych i kodu źródłowego aplikacji są dostępne w repozytorium [WingtipTicketsSaaS-MultitenantDB](https://github.com/microsoft/WingtipTicketsSaaS-MultiTenantDB) w witrynie GitHub. Zapoznaj się z [ogólnymi wskazówkami](saas-tenancy-wingtip-app-guidance-tips.md) dotyczącymi kroków pobierania i odblokowywania Wingtip biletów SaaS.
 
 ## <a name="create-a-job-agent-database-and-new-job-agent"></a>Tworzenie bazy danych agenta zadań i nowego agenta zadań
 
 Ten samouczek wymaga użycia programu PowerShell do utworzenia bazy danych i agenta zadań agenta zadań. Podobnie jak w przypadku bazy danych MSDB używanej przez program SQL Agent, Agent zadań korzysta z bazy danych SQL Azure do przechowywania definicji zadań, stanu zadania i historii. Po utworzeniu agenta zadań można natychmiast utworzyć i monitorować zadania.
 
-1. W programie **POWERSHELL ISE**Otwórz *... Zarządzanie schematami modułów\\uczenia demo-SchemaManagement. ps1.\\ \\*
+1. W programie **POWERSHELL ISE**Otwórz pozycję *...\\moduły uczenia\\zarządzania schematami\\demo-SchemaManagement. ps1*.
 2. Naciśnij klawisz **F5**, aby uruchomić skrypt.
 
 Skrypt *demo-SchemaManagement. ps1* wywołuje skrypt *Deploy-SchemaManagement. ps1* w celu utworzenia bazy danych o nazwie _jobagent_ na serwerze wykazu. Następnie skrypt tworzy agenta zadania, przekazując bazę danych _jobagent_ jako parametr.
@@ -83,12 +83,12 @@ Skrypt *demo-SchemaManagement. ps1* wywołuje skrypt *Deploy-SchemaManagement. p
 
 #### <a name="prepare"></a>Przygotowanie
 
-Baza danych każdej dzierżawy zawiera zestaw typów miejsc w tabeli **VenueTypes** . Każdy typ miejsca określa rodzaj zdarzeń, które mogą być hostowane w miejscu. Te typy miejsc odpowiadają obrazom tła widocznym w aplikacji zdarzenia dzierżawców.  W tym ćwiczeniu wdrażasz aktualizację do wszystkich baz danych, aby dodać dwa dodatkowe typy miejsc: *Wyścigi motocyklowe* i *trefle*.
+Baza danych każdej dzierżawy zawiera zestaw typów miejsc w tabeli **VenueTypes** . Każdy typ miejsca określa rodzaj zdarzeń, które mogą być hostowane w miejscu. Te typy miejsc odpowiadają obrazom tła widocznym w aplikacji zdarzenia dzierżawców.  W tym ćwiczeniu wdrażasz aktualizację do wszystkich baz danych, aby dodać dwa dodatkowe typy miejsc: *wyścigi motocykla* i *Trefl*.
 
 Najpierw przejrzyj typy miejsc zawarte w każdej bazie danych dzierżawcy. Połącz się z jedną z baz danych dzierżaw w SQL Server Management Studio (SSMS) i sprawdź tabelę VenueTypes.  Możesz również zbadać tę tabelę w edytorze zapytań w Azure Portal dostępnym ze strony baza danych.
 
-1. Otwórz narzędzie SSMS i Połącz się z serwerem dzierżawy: *tenants1-&lt;DPT&gt;-User. Database.Windows.NET*
-1. Aby upewnić się, że **nie są** obecnie uwzględniane *wyścigi* i klubu z motocykla, przejdź do bazy danych *contosoconcerthall* na serwerze *tenants1&gt; -&lt;DPT-User* i zapytaj  *Tabela VenueTypes* .
+1. Otwórz narzędzie SSMS i Połącz się z serwerem dzierżawy: *tenants1-DPT-&lt;user&gt;. Database.Windows.NET*
+1. Aby upewnić się, że **nie są** obecnie uwzględniane wyścigi i *kluby* z *motocykla* , przejdź do bazy danych *contosoconcerthall* na serwerze *tenants1-DPT-&lt;&gt;użytkownika* , a następnie wykonaj zapytanie dotyczące *VenueTypes* tabela.
 
 
 
@@ -98,60 +98,60 @@ Teraz utworzysz zadanie aktualizowania tabeli **VenueTypes** w każdej bazie dan
 
 Aby utworzyć nowe zadanie, należy użyć zestawu zadań procedury składowane, które zostały utworzone w bazie danych _jobagent_ . Procedury składowane zostały utworzone podczas tworzenia agenta zadań.
 
-1. W programie SSMS Połącz się z serwerem dzierżawy: tenants1-MT&lt;-&gt;User. Database.Windows.NET
+1. W programie SSMS Połącz się z serwerem dzierżawy: tenants1-MT-&lt;User&gt;. database.windows.net
 
 2. Przejdź do bazy danych *tenants1* .
 
 3. Zbadaj tabelę *VenueTypes* , aby upewnić się *, że na* liście wyników nie ma jeszcze *klubu i trefl* .
 
-4. Połącz się z serwerem wykazu, który jest *katalogiem-MT&lt;-&gt;User. Database.Windows.NET*.
+4. Nawiąż połączenie z serwerem wykazu, który jest *katalogiem-MT-&lt;użytkownika&gt;. Database.Windows.NET*.
 
 5. Nawiąż połączenie z bazą danych _jobagent_ na serwerze wykazu.
 
-6. W programie SSMS Otwórz plik *... Moduły uczeniazarządzania\\schematami DeployReferenceData. SQL.\\ \\*
+6. W programie SSMS Otwórz plik *...\\moduły uczenia\\zarządzania schematami\\DeployReferenceData. SQL*.
 
-7. Zmodyfikuj instrukcję: set @User = &lt;User&gt; i Zastąp wartość użytkownika używaną podczas wdrażania wielodostępnej aplikacji bazy danych SaaS biletów Wingtip.
+7. Modyfikowanie instrukcji: Ustaw @User = &lt;użytkownika&gt; i Zastąp wartość użytkownika używaną podczas wdrażania aplikacji bazy danych z obsługą wielu dzierżawców Wingtip SaaS.
 
 8. Naciśnij klawisz **F5**, aby uruchomić skrypt.
 
-#### <a name="observe"></a>Obserwuj
+#### <a name="observe"></a>Obserwacj
 
 Obserwuj następujące elementy w skrypcie *DeployReferenceData. SQL* :
 
-- **SP\_Add\_TargetGroup\_** tworzy nazwę grupy docelowej *DemoServerGroup*i dodaje docelowe elementy członkowskie do grupy.
+- **\_dodaj\_celu programu sp\_** tworzy grupę docelową o nazwie *DemoServerGroup*i dodaje członków docelowych do grupy.
 
-- **członek\_grupyDodaj\_\_grupędocelowądodatkuSPdodajenastępująceelementy\_** :
+- **\_dodaj\_docelowego grupy programu sp\_\_członek** dodaje następujące elementy:
     - Typ elementu członkowskiego *serwera* docelowego.
-        - Jest to serwer *tenants1-MT-&lt;User&gt;*  , który zawiera bazy danych dzierżawców.
+        - Jest to *tenants1-MT-&lt;użytkownika&gt;* serwer zawierający bazy danych dzierżawców.
         - Uwzględnienie serwera obejmuje bazy danych dzierżawy, które istnieją w czasie wykonywania zadania.
-    - Docelowy typ elementu członkowskiego *bazy danych* dla bazy danych szablonów (*basetenantdb*), który znajduje się w *katalogu-&lt;MT&gt; -User* Server,
+    - Docelowy typ elementu członkowskiego *bazy danych* dla bazy danych szablonów (*basetenantdb*), który znajduje się w *katalogu-MT-&lt;użytkownika&gt;* serwera,
     - Docelowy typ elementu członkowskiego *bazy danych* do uwzględnienia bazy danych *adhocreporting* , która jest używana w późniejszym samouczku.
 
-- **SP\_Add\_Job** tworzy zadanie o nazwie *wdrożenie danych referencyjnych*.
+- Program **sp\_Dodawanie zadania\_** tworzy zadanie o nazwie *wdrożenie danych referencyjnych*.
 
-- **SP\_Add\_JobStep** tworzy krok zadania zawierający tekst polecenia T-SQL w celu zaktualizowania tabeli referencyjnej, VenueTypes.
+- **sp\_add\_JobStep** tworzy krok zadania zawierający tekst polecenia t-SQL w celu zaktualizowania tabeli referencyjnej, VenueTypes.
 
 - Pozostałe widoki w skrypcie dotyczą istnienia obiektów i monitorowania wykonania zadań. Użyj tych zapytań, aby przejrzeć wartość stanu w kolumnie **cykl życia** , aby określić, kiedy zadanie zostało zakończone. Zadanie aktualizuje bazę danych dzierżawców i aktualizuje dwie dodatkowe bazy danych, które zawierają tabelę referencyjną.
 
-W programie SSMS przejdź do bazy danych dzierżawy na serwerze *tenants1-MT&lt;-&gt; User* . Zbadaj tabelę *VenueTypes* , aby upewnić się, że do tabeli dodano teraz dane wyścigowe i *klubu* z *motocykla* . Łączna liczba typów miejsc powinna wzrósł o dwa.
+W programie SSMS przejdź do bazy danych dzierżawy na serwerze *tenants1-MT-&lt;użytkownika&gt;* . Zbadaj tabelę *VenueTypes* , aby upewnić się, że do tabeli dodano teraz dane wyścigowe i *klubu* z *motocykla* . Łączna liczba typów miejsc powinna wzrósł o dwa.
 
 ## <a name="create-a-job-to-manage-the-reference-table-index"></a>Tworzenie zadania do zarządzania indeksem tabeli referencyjnej
 
 To ćwiczenie tworzy zadanie w celu odbudowania indeksu klucza podstawowego tabeli referencyjnej we wszystkich bazach danych dzierżaw. Ponowne kompilowanie indeksu to typowa operacja zarządzania bazami danych, którą administrator może uruchomić po załadowaniu dużej ilości danych w celu zwiększenia wydajności.
 
-1. W programie SSMS Nawiąż połączenie z bazą danych _jobagent_ w *katalogu&lt;-&gt;MT-User. Database.Windows.NET* .
+1. W programie SSMS Nawiąż połączenie z bazą danych _jobagent_ w *katalogu-MT-&lt;User&gt;. Database.Windows.NET* .
 
-2. W programie SSMS Otwórz pozycję *... Moduły uczeniazarządzania\\schematami OnlineReindex. SQL.\\ \\*
+2. W programie SSMS Otwórz pozycję *...\\moduły uczenia\\zarządzania schematami\\OnlineReindex. SQL*.
 
 3. Naciśnij klawisz **F5**, aby uruchomić skrypt.
 
-#### <a name="observe"></a>Obserwuj
+#### <a name="observe"></a>Obserwacj
 
 Obserwuj następujące elementy w skrypcie *OnlineReindex. SQL* :
 
-* **SP\_Add\_Job** tworzy nowe zadanie o nazwie *online reindex PK\_\_VenueTyp\_\_265E44FD7FD4C885*.
+* Program **sp\_Dodawanie zadania\_** tworzy nowe zadanie o nazwie *reindex PK w trybie online\_\_VENUETYP\_\_265E44FD7FD4C885*.
 
-* **SP\_Add\_JobStep** tworzy krok zadania zawierający tekst polecenia T-SQL w celu zaktualizowania indeksu.
+* **sp\_add\_JobStep** tworzy krok zadania zawierający tekst polecenia t-SQL w celu zaktualizowania indeksu.
 
 * Pozostałe widoki w ramach wykonywania zadania monitora skryptów. Użyj tych zapytań, aby przejrzeć wartość stanu w kolumnie **cykl życia** , aby określić, kiedy zadanie zostało pomyślnie zakończone na wszystkich członkach grupy docelowej.
 
@@ -162,7 +162,7 @@ Obserwuj następujące elementy w skrypcie *OnlineReindex. SQL* :
 -->
 * [Zarządzanie skalowaną w poziomie bazą danych w chmurze](elastic-jobs-overview.md)
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 W tym samouczku zawarto informacje na temat wykonywania następujących czynności:
 

@@ -1,5 +1,5 @@
 ---
-title: Kopiowanie danych z chmury marketingowej usług Salesforce przy użyciu Azure Data Factory | Microsoft Docs
+title: Kopiowanie danych z chmury marketingowej usług Salesforce przy użyciu Azure Data Factory
 description: Dowiedz się, jak skopiować dane z chmury marketingowej usług Salesforce do obsługiwanych magazynów danych ujścia przy użyciu działania kopiowania w potoku Azure Data Factory.
 services: data-factory
 documentationcenter: ''
@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 10/25/2019
 ms.author: jingwang
-ms.openlocfilehash: 93d875fa67e9954268cec26f7413b6a4a4131f9c
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: d66341507b9237e4d41c31997fd59b8a038cb433
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72931025"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73680378"
 ---
 # <a name="copy-data-from-salesforce-marketing-cloud-using-azure-data-factory"></a>Kopiowanie danych z chmury marketingowej usług Salesforce przy użyciu Azure Data Factory
 
@@ -47,7 +47,7 @@ Poniższe sekcje zawierają szczegółowe informacje o właściwościach, które
 
 Następujące właściwości są obsługiwane dla połączonej usługi Salesforce w chmurze marketingowej:
 
-| Właściwość | Opis | Wymagane |
+| Właściwość | Opis | Wymagany |
 |:--- |:--- |:--- |
 | type | Właściwość Type musi mieć wartość: **SalesforceMarketingCloud** | Tak |
 | clientId | Identyfikator klienta skojarzony z aplikacją usługi Salesforce Marketing Cloud.  | Tak |
@@ -84,10 +84,10 @@ Aby uzyskać pełną listę sekcji i właściwości dostępnych do definiowania 
 
 Aby skopiować dane z chmury marketingowej usług Salesforce, ustaw właściwość Type zestawu danych na **SalesforceMarketingCloudObject**. Obsługiwane są następujące właściwości:
 
-| Właściwość | Opis | Wymagane |
+| Właściwość | Opis | Wymagany |
 |:--- |:--- |:--- |
 | type | Właściwość Type zestawu danych musi być ustawiona na wartość: **SalesforceMarketingCloudObject** | Tak |
-| tableName | Nazwa tabeli. | Nie (Jeśli określono "zapytanie" w źródle aktywności) |
+| tableName | Nazwa tabeli. | Nie (Jeśli określono parametr "query" w źródle działania) |
 
 **Przykład**
 
@@ -114,7 +114,7 @@ Aby uzyskać pełną listę sekcji i właściwości dostępnych do definiowania 
 
 Aby skopiować dane z chmury marketingowej usług Salesforce, ustaw typ źródła w działaniu Copy na **SalesforceMarketingCloudSource**. W sekcji **Źródło** działania kopiowania są obsługiwane następujące właściwości:
 
-| Właściwość | Opis | Wymagane |
+| Właściwość | Opis | Wymagany |
 |:--- |:--- |:--- |
 | type | Właściwość Type źródła działania Copy musi być ustawiona na wartość: **SalesforceMarketingCloudSource** | Tak |
 | query | Użyj niestandardowego zapytania SQL, aby odczytać dane. Na przykład: `"SELECT * FROM MyTable"`. | Nie (Jeśli określono "TableName" w zestawie danych) |

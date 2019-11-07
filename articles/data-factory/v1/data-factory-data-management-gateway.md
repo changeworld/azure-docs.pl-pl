@@ -1,5 +1,5 @@
 ---
-title: Zarządzanie danymi bramę dla Data Factory | Microsoft Docs
+title: Zarządzanie danymi bramę dla Data Factory
 description: Skonfiguruj bramę danych do przenoszenia danych między środowiskiem lokalnym i chmurą. Użyj Zarządzanie danymi Gateway w Azure Data Factory, aby przenieść dane.
 services: data-factory
 documentationcenter: ''
@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: abnarain
 robots: noindex
-ms.openlocfilehash: 0e4cf8802f9f12774f03199b76b58cb494f1c439
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.openlocfilehash: 41d8a5d3569d0b38ff569f9ccfa28a4b2af1d959
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73162735"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73682710"
 ---
 # <a name="data-management-gateway"></a>Brama zarządzania danymi
 > [!NOTE]
@@ -38,7 +38,7 @@ Bramę zarządzania danymi można skalować w poziomie, kojarząc wiele maszyn l
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
-## <a name="overview"></a>Przegląd
+## <a name="overview"></a>Omówienie
 ### <a name="capabilities-of-data-management-gateway"></a>Możliwości bramy zarządzania danymi
 Brama zarządzania danymi zapewnia następujące możliwości:
 

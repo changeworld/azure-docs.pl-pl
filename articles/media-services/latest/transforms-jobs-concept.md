@@ -1,6 +1,7 @@
 ---
-title: Transformacje i zadania w Azure Media Services | Microsoft Docs
-description: W przypadku korzystania z Media Services należy utworzyć transformację, aby opisać reguły lub specyfikacje dotyczące przetwarzania filmów wideo. Ten artykuł zawiera omówienie transformacji i sposobu jej używania.
+title: Transformacje i zadania w Media Services
+titleSuffix: Azure Media Services
+description: Dowiedz się, jak utworzyć przekształcenia, aby opisać reguły przetwarzania filmów wideo w Azure Media Services.
 services: media-services
 documentationcenter: ''
 author: Juliako
@@ -11,45 +12,45 @@ ms.workload: ''
 ms.topic: article
 ms.date: 08/19/2019
 ms.author: juliako
-ms.openlocfilehash: 466ab0737aa5af40bd1bc137b98ab57a48feafde
-ms.sourcegitcommit: 36e9cbd767b3f12d3524fadc2b50b281458122dc
+ms.openlocfilehash: ab99b974aed6f8cd5e1da2ee9b427f593b405889
+ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "69637354"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73571239"
 ---
-# <a name="transforms-and-jobs"></a>Przekształcenia i zadania
+# <a name="transforms-and-jobs-in-media-services"></a>Transformacje i zadania w Media Services
 
-Ten temat zawiera szczegółowe informacje [](https://docs.microsoft.com/rest/api/media/transforms) o transformacjech [](https://docs.microsoft.com/rest/api/media/jobs) i zadaniach oraz opis relacji między tymi jednostkami. 
+Ten temat zawiera szczegółowe informacje o [transformacjech](https://docs.microsoft.com/rest/api/media/transforms) i [zadaniach](https://docs.microsoft.com/rest/api/media/jobs) oraz opis relacji między tymi jednostkami.
 
-## <a name="overview"></a>Omówienie 
+## <a name="overview"></a>Omówienie
 
 ### <a name="transformsjobs-workflow"></a>Przepływ pracy transformacji/zadań
 
-Na poniższym diagramie przedstawiono przepływ pracy przekształcenia/zadań.
+Na poniższym diagramie przedstawiono przepływ pracy transformacji/zadań:
 
-![Przekształcenia](./media/encoding/transforms-jobs.png)
+![Przepływy pracy transformacji i zadań w Azure Media Services](./media/encoding/transforms-jobs.png)
 
 #### <a name="typical-workflow"></a>Typowy przepływ pracy
 
-1. Tworzenie przekształcenia 
-2. Prześlij zadania w ramach tego przekształcenia 
-3. Przekształceń list 
-4. Usuń transformację, jeśli nie planujesz jej używania w przyszłości. 
+1. Utwórz transformację.
+2. Prześlij zadania w ramach tej transformacji.
+3. Przekształceń list.
+4. Usuń transformację, jeśli nie planujesz jej używania w przyszłości.
 
 #### <a name="example"></a>Przykład
 
-Załóżmy, że chcesz wyodrębnić pierwszą ramkę ze wszystkich filmów wideo jako obraz miniatury — kroki, które należy wykonać: 
+Załóżmy, że chcesz wyodrębnić pierwszą ramkę ze wszystkich filmów wideo jako obraz miniatury — kroki, które należy wykonać:
 
-1. Zdefiniuj przepis lub regułę przetwarzania filmów wideo — "Użyj pierwszej ramki filmu wideo jako miniatury". 
-2. Dla każdego wideo należy wskazać usługę: 
-    1. Gdzie można znaleźć ten film wideo,  
-    2. Miejsce zapisania obrazu miniatury wyjściowej. 
+1. Zdefiniuj przepis lub regułę przetwarzania filmów wideo: "Użyj pierwszej ramki filmu wideo jako miniatury".
+2. Dla każdego filmu wideo poinformuj usługę:
+    1. Gdzie znaleźć ten film wideo.
+    2. Miejsce zapisania obrazu miniatury wyjściowej.
 
 **Transformacja** pomaga utworzyć przepis jednokrotnie (krok 1) i przesłać zadania przy użyciu tego przepisu (krok 2).
 
 > [!NOTE]
-> Właściwości **transformacji** i **zadania** , które są typu DateTime, są zawsze w formacie UTC.
+> Właściwości **transformacji** i **zadania** typu datetime są zawsze w formacie UTC.
 
 ## <a name="transforms"></a>Przekształcenia
 
@@ -57,25 +58,27 @@ Za pomocą **transformacji** można skonfigurować typowe zadania związane z ko
 
 ### <a name="viewing-schema"></a>Wyświetlanie schematu
 
-W Media Services v3, ustawienia wstępne są jednoznacznie określonymi jednostkami w interfejsie API. Definicję "schemat" tych obiektów można znaleźć w temacie [Open API Specification (lub Swagger)](https://github.com/Azure/azure-rest-api-specs/tree/master/specification/mediaservices/resource-manager/Microsoft.Media/stable/2018-07-01). Możesz również wyświetlić wstępnie zdefiniowane definicje (na przykład **StandardEncoderPreset**) w [interfejsie API REST](https://docs.microsoft.com/rest/api/media/transforms/createorupdate#standardencoderpreset), [zestawie .NET SDK](https://docs.microsoft.com/dotnet/api/microsoft.azure.management.media.models.standardencoderpreset?view=azure-dotnet) (lub Media Services innej dokumentacji dotyczącej zestawu SDK w wersji v3).
+W Media Services v3, ustawienia wstępne są jednoznacznie określonymi jednostkami w interfejsie API. Definicję "schemat" tych obiektów można znaleźć w temacie [Open API Specification (lub Swagger)](https://github.com/Azure/azure-rest-api-specs/tree/master/specification/mediaservices/resource-manager/Microsoft.Media/stable/2018-07-01). Możesz również wyświetlić wstępnie zdefiniowane definicje (takie jak **StandardEncoderPreset**) w [interfejsie API REST](https://docs.microsoft.com/rest/api/media/transforms/createorupdate#standardencoderpreset), [zestawie .NET SDK](https://docs.microsoft.com/dotnet/api/microsoft.azure.management.media.models.standardencoderpreset?view=azure-dotnet)lub Media Services innej dokumentacji dotyczącej zestawu SDK w wersji v3.
 
 ### <a name="creating-transforms"></a>Tworzenie transformacji
 
-Można tworzyć przekształcenia przy użyciu REST, interfejsu wiersza polecenia lub użyć dowolnego z opublikowanych zestawów SDK. Interfejs API programu Media Services V3 jest oparty na Azure Resource Manager, dzięki czemu można także tworzyć i wdrażać transformacje na koncie Media Services przy użyciu szablonów Menedżer zasobów. Kontrola dostępu oparta na rolach może służyć do blokowania dostępu do transformacji.
+Przekształcenia można tworzyć przy użyciu REST, interfejsu wiersza polecenia lub dowolnego z opublikowanych zestawów SDK. Interfejs API programu Media Services V3 jest oparty na Azure Resource Manager, dzięki czemu można także tworzyć i wdrażać transformacje na koncie Media Services przy użyciu szablonów Menedżer zasobów. Kontrola dostępu oparta na rolach może służyć do blokowania dostępu do transformacji.
 
 ### <a name="updating-transforms"></a>Aktualizowanie przekształceń
 
-Jeśli musisz zaktualizować transformację, [](https://docs.microsoft.com/rest/api/media/transforms)Użyj operacji **Update** . Jest ona przeznaczona do wprowadzania zmian w opisie lub priorytetów bazowego TransformOutputs. Zalecane jest, aby takie aktualizacje były wykonywane po zakończeniu wszystkich zadań w toku. Jeśli zamierzasz ponownie napisać przepis, musisz utworzyć nowe przekształcenie.
+Jeśli musisz zaktualizować [transformację](https://docs.microsoft.com/rest/api/media/transforms), użyj operacji **Update** . Jest ona przeznaczona do wprowadzania zmian w opisie lub priorytetów bazowego TransformOutputs. Zaleca się, aby takie aktualizacje zostały wykonane po zakończeniu wszystkich zadań w toku. Jeśli zamierzasz ponownie napisać przepis, musisz utworzyć nowe przekształcenie.
 
 ### <a name="transform-object-diagram"></a>Przekształć diagram obiektów
 
-Na poniższym diagramie przedstawiono obiekt **przekształcenia** i obiekty, do których się odwołuje, łącznie z relacjami pochodnymi. Szare strzałki pokazują typ, do którego odwołuje się zadanie, a zielona strzałka Pokaż relacje klasy pochodnej.<br/>Kliknij obraz, aby go wyświetlić w pełnym rozmiarze.  
+Na poniższym diagramie przedstawiono obiekt **przekształcenia** i obiekty, do których się odwołuje, łącznie z relacjami pochodnymi. Szare strzałki pokazują typ, do którego odwołuje się zadanie, a zielona strzałka Pokaż relacje klasy pochodnej.
 
-<a href="./media/api-diagrams/transform-large.png" target="_blank"><img src="./media/api-diagrams/transform-small.png"></a> 
+Wybierz obraz, aby wyświetlić go w pełnym rozmiarze.  
+
+<a href="./media/api-diagrams/transform-large.png" target="_blank"><img src="./media/api-diagrams/transform-small.png"></a>
 
 ## <a name="jobs"></a>Zadania
 
-**Zadanie** to rzeczywiste żądanie Azure Media Services, aby zastosować transformację do danych wejściowych wideo lub audio. Po utworzeniu przekształcenia można przesłać zadania przy użyciu interfejsów API Media Services lub dowolnego z opublikowanych zestawów SDK. **Zadanie** określa informacje, takie jak lokalizacja wejściowego wideo, oraz lokalizacja danych wyjściowych. Możesz określić lokalizację wejściowego wideo przy użyciu: Adresy URL HTTPS, adresy URL SAS lub [zasoby](https://docs.microsoft.com/rest/api/media/assets).  
+**Zadanie** to rzeczywiste żądanie Media Services, aby zastosować **transformację** do danych wejściowych wideo lub audio. Po utworzeniu przekształcenia można przesłać zadania przy użyciu interfejsów API Media Services lub dowolnego z opublikowanych zestawów SDK. **Zadanie** określa informacje na przykład o lokalizacji wejściowego wideo i lokalizacji danych wyjściowych. Możesz określić lokalizację wejściowego wideo przy użyciu: adresy URL HTTPS, adresy URL SAS lub [zasoby](https://docs.microsoft.com/rest/api/media/assets).  
 
 ### <a name="job-input-from-https"></a>Dane wejściowe zadania z protokołu HTTPS
 
@@ -91,17 +94,19 @@ Postęp i stan zadań można uzyskać przez monitorowanie zdarzeń za pomocą Ev
 
 ### <a name="updating-jobs"></a>Aktualizowanie zadań
 
-Operacji Update w jednostce [zadania](https://docs.microsoft.com/rest/api/media/jobs) można użyć do zmodyfikowania *opisu*oraz właściwości *priorytetu* po zadaniu zadania. Zmiana właściwości *Priority* jest skuteczna tylko wtedy, gdy zadanie jest nadal w stanie w kolejce. Jeśli zadanie rozpoczęło przetwarzanie lub zostało zakończone, zmiana priorytetu nie ma żadnego wpływu.
+Operacja Update w jednostce [zadania](https://docs.microsoft.com/rest/api/media/jobs) może służyć do modyfikowania *opisu* i właściwości *priorytetu* po przesłaniu zadania. Zmiana właściwości *Priority* jest skuteczna tylko wtedy, gdy zadanie jest nadal w stanie w kolejce. Jeśli zadanie rozpoczęło przetwarzanie lub zostało zakończone, zmiana priorytetu nie ma żadnego wpływu.
 
 ### <a name="job-object-diagram"></a>Diagram obiektu zadania
 
-Na poniższym diagramie przedstawiono obiekt **zadania** i obiekty, do których się odwołuje, w tym relacje wyznaczania.<br/>Kliknij obraz, aby go wyświetlić w pełnym rozmiarze.  
+Na poniższym diagramie przedstawiono obiekt **zadania** i obiekty, do których się odwołuje, w tym relacje wyznaczania.
 
-<a href="./media/api-diagrams/job-large.png" target="_blank"><img src="./media/api-diagrams/job-small.png"></a> 
+Kliknij obraz, aby go wyświetlić w pełnym rozmiarze.  
+
+<a href="./media/api-diagrams/job-large.png" target="_blank"><img src="./media/api-diagrams/job-small.png"></a>
 
 ## <a name="configure-media-reserved-units"></a>Konfigurowanie jednostek zarezerwowanych multimediów
 
-W przypadku zadań analizy audio i analizy wideo, które są wyzwalane przez Media Services v3 lub Video Indexer, zdecydowanie zaleca się zainicjowanie obsługi konta przy użyciu 10 jednostek zarezerwowanych multimediów (MRUs). Jeśli potrzebujesz więcej niż 10 S3 lokalizacje MRU, otwórz bilet pomocy technicznej przy użyciu [witryny Azure portal](https://portal.azure.com/).
+W przypadku zadań analizy audio i analizy wideo, które są wyzwalane przez Media Services v3 lub Video Indexer, zdecydowanie zaleca się zainicjowanie obsługi konta przy użyciu 10 jednostek zarezerwowanych multimediów (MRUs). Jeśli potrzebujesz więcej niż 10 MRUs S3, Otwórz bilet pomocy technicznej przy użyciu [Azure Portal](https://portal.azure.com/).
 
 Aby uzyskać szczegółowe informacje, zobacz [Skalowanie przetwarzania multimediów przy użyciu interfejsu wiersza polecenia](media-reserved-units-cli-how-to.md).
 
@@ -109,7 +114,7 @@ Aby uzyskać szczegółowe informacje, zobacz [Skalowanie przetwarzania multimed
 
 Zapoznaj się z artykułem [community Azure Media Services](media-services-community.md) , aby zobaczyć różne sposoby zadawania pytań, przekazać Opinie i uzyskać aktualizacje dotyczące Media Services.
 
-## <a name="see-also"></a>Zobacz także
+## <a name="see-also"></a>Zobacz też
 
 * [Kody błędów](https://docs.microsoft.com/rest/api/media/jobs/get#joberrorcode)
 * [Filtrowanie, porządkowanie, stronicowanie jednostek Media Services](entities-overview.md)
@@ -119,6 +124,6 @@ Zapoznaj się z artykułem [community Azure Media Services](media-services-commu
 - Przed rozpoczęciem opracowywania, zobacz [Tworzenie aplikacji przy użyciu interfejsów api Media Services v3](media-services-apis-overview.md) (w tym informacje na temat uzyskiwania dostępu do interfejsów API, konwencji nazewnictwa itp.).
 - Zapoznaj się z tymi samouczkami:
 
-    - [Samouczek: Kodowanie pliku zdalnego na podstawie adresu URL i strumieniowego wideo](stream-files-tutorial-with-rest.md)
-    - [Samouczek: Przekazywanie, kodowanie i przesyłanie strumieniowe filmów wideo](stream-files-tutorial-with-api.md)
-    - [Samouczek: Analizowanie filmów wideo z Media Services v3](analyze-videos-tutorial-with-api.md)
+    - [Samouczek: kodowanie pliku zdalnego na podstawie adresu URL i strumieniowego wideo](stream-files-tutorial-with-rest.md)
+    - [Samouczek: przekazywanie, kodowanie i przesyłanie strumieniowe filmów wideo](stream-files-tutorial-with-api.md)
+    - [Samouczek: analizowanie filmów wideo z Media Services v3](analyze-videos-tutorial-with-api.md)

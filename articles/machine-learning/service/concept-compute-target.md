@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.author: sgilley
 author: sdgilley
 ms.date: 11/04/2019
-ms.openlocfilehash: c3791946ee31183e4b3c5131a8e62934bf87dfee
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
-ms.translationtype: HT
+ms.openlocfilehash: 75e789ac1f9c161bc67ba90062be39f986f5b140
+ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 11/04/2019
-ms.locfileid: "73497478"
+ms.locfileid: "73580583"
 ---
 #  <a name="what-are-compute-targets-in-azure-machine-learning"></a>Co to są cele obliczeniowe w Azure Machine Learning? 
 
@@ -46,22 +46,11 @@ Dowiedz się [, gdzie i jak wdrożyć model w miejscu docelowym obliczeń](how-t
 <a name="amlcompute"></a>
 ## <a name="azure-machine-learning-compute-managed"></a>Azure Machine Learning COMPUTE (zarządzane)
 
-Zarządzany zasób obliczeniowy jest tworzony i zarządzany przez Azure Machine Learning. To obliczenie jest zoptymalizowane pod kątem obciążeń uczenia maszynowego. Azure Machine Learning klastrami obliczeniowymi i [wystąpieniami obliczeniowymi](concept-compute-instance.md) są jedyne zarządzane obliczenia. W przyszłości mogą zostać dodane dodatkowe zarządzane zasoby obliczeniowe.
+Zarządzany zasób obliczeniowy jest tworzony i zarządzany przez Azure Machine Learning. To obliczenie jest zoptymalizowane pod kątem obciążeń uczenia maszynowego. Azure Machine Learning klastrów obliczeniowych. W przyszłości mogą zostać dodane dodatkowe zarządzane zasoby obliczeniowe.
 
-Można tworzyć Azure Machine Learning wystąpienia obliczeniowe lub Klastry obliczeniowe w programie:
-
-| | Studio uczenia maszynowego Azure | Azure Portal | SDK | Szablon usługi Resource Manager | Interfejs wiersza polecenia |
-|---| ----- | ----- | ----- | ----- | ----- |
-| Wystąpienie obliczeniowe | tak | tak | tak | tak |  |
-| Klaster obliczeniowy | tak | tak | tak | tak | tak |
+Azure Machine Learning klastrów obliczeniowych można tworzyć w programie Azure Machine Learning Studio, Azure Portal, zestawie SDK, szablonie Menedżer zasobów lub interfejsie wiersza polecenia.
 
 Po utworzeniu te zasoby obliczeniowe są automatycznie częścią obszaru roboczego w przeciwieństwie do innych rodzajów obiektów docelowych obliczeń.
-
-> [!NOTE]
-> Wystąpienia obliczeniowe są dostępne tylko dla obszarów roboczych z regionem **Północno-środkowe stany USA** lub **Południowe Zjednoczone Królestwo**.
->Jeśli obszar roboczy znajduje się w innym regionie, możesz w zamian utworzyć [maszynę wirtualną w notesie](concept-compute-instance.md#notebookvm) i korzystać z niej. 
-
-### <a name="compute-clusters"></a>Klastry obliczeniowe
 
 Azure Machine Learning klastrów obliczeniowych można użyć do szkolenia i usługi Batch inferencing (wersja zapoznawcza).  Ten zasób obliczeniowy posiada następujące:
 
@@ -78,6 +67,6 @@ Niezarządzany cel obliczeń *nie* jest zarządzany przez Azure Machine Learning
 
 ## <a name="next-steps"></a>Następne kroki
 
-Omawiane kwestie:
+Instrukcje:
 * [Skonfiguruj cel obliczeń do uczenia modelu](how-to-set-up-training-targets.md)
 * [Wdrażanie modelu w obiekcie docelowym obliczeń](how-to-deploy-and-where.md)

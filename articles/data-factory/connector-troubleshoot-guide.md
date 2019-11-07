@@ -1,5 +1,5 @@
 ---
-title: Rozwiązywanie problemów z łącznikami Azure Data Factory | Microsoft Docs
+title: Rozwiązywanie problemów z łącznikami Azure Data Factory
 description: Dowiedz się, jak rozwiązywać problemy z łącznikiem w Azure Data Factory.
 services: data-factory
 author: linda33wj
@@ -8,12 +8,12 @@ ms.topic: troubleshooting
 ms.date: 08/26/2019
 ms.author: jingwang
 ms.reviewer: craigg
-ms.openlocfilehash: bea5191063cf673f6b1395d46a15536e80b0aa30
-ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
+ms.openlocfilehash: 8cabc1031f9d0be772ba087109ae1dfc881ce163
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70143507"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73680078"
 ---
 # <a name="troubleshoot-azure-data-factory-connectors"></a>Rozwiązywanie problemów z łącznikami Azure Data Factory
 
@@ -21,20 +21,20 @@ W tym artykule przedstawiono typowe metody rozwiązywania problemów z łącznik
 
 ## <a name="azure-data-lake-storage"></a>Azure Data Lake Storage
 
-### <a name="error-message-the-remote-server-returned-an-error-403-forbidden"></a>Komunikat o błędzie: Serwer zdalny zwrócił błąd: (403) zabronione
+### <a name="error-message-the-remote-server-returned-an-error-403-forbidden"></a>Komunikat o błędzie: serwer zdalny zwrócił błąd: (403) zabroniony
 
-- **Objawy**: Działanie kopiowania kończy się niepowodzeniem z powodu następującego błędu: 
+- **Objawy**: działanie kopiowania kończy się niepowodzeniem z powodu następującego błędu: 
 
     ```
     Message: The remote server returned an error: (403) Forbidden.. 
     Response details: {"RemoteException":{"exception":"AccessControlException""message":"CREATE failed with error 0x83090aa2 (Forbidden. ACL verification failed. Either the resource does not exist or the user is not authorized to perform the requested operation.)....
     ```
 
-- **Przyczyna**: Jedną z możliwych przyczyn jest to, że główna lub zarządzana tożsamość usługi nie ma uprawnień dostępu do określonego folderu/pliku.
+- **Przyczyna**: jedną z możliwych przyczyn jest to, że główna lub zarządzana tożsamość usługi nie ma uprawnień dostępu do określonego folderu/pliku.
 
-- **Rozpoznawanie**: Udziel odpowiednich uprawnień do wszystkich folderów i podfolderów, które chcesz skopiować. Zapoznaj się z [tym dokumentem](connector-azure-data-lake-store.md#linked-service-properties).
+- **Rozwiązanie**: Przyznaj odpowiednie uprawnienia do wszystkich folderów i podfolderów, które chcesz skopiować. Zapoznaj się z [tym dokumentem](connector-azure-data-lake-store.md#linked-service-properties).
 
-### <a name="error-message-failed-to-get-access-token-by-using-service-principal-adal-error-service_unavailable"></a>Komunikat o błędzie: Nie można uzyskać tokenu dostępu przy użyciu nazwy głównej usługi. Błąd ADAL: service_unavailable
+### <a name="error-message-failed-to-get-access-token-by-using-service-principal-adal-error-service_unavailable"></a>Komunikat o błędzie: nie można uzyskać tokenu dostępu przy użyciu nazwy głównej usługi. Błąd ADAL: service_unavailable
 
 - **Objawy**: działanie kopiowania kończy się niepowodzeniem z powodu następującego błędu:
 
@@ -43,15 +43,15 @@ W tym artykule przedstawiono typowe metody rozwiązywania problemów z łącznik
     ADAL Error: service_unavailable, The remote server returned an error: (503) Server Unavailable.
     ```
 
-- **Przyczyna**: Gdy serwer tokenów usług (STS) należący do Azure Active Directory nie jest niedostępny, czyli zbyt zajęty, aby obsługiwać żądania, zwraca błąd HTTP 503. 
+- **Przyczyna**: gdy serwer tokenów usług (STS) należący do Azure Active Directory nie jest niedostępny, czyli zbyt zajęty, aby obsługiwać żądania, zwraca błąd HTTP 503. 
 
-- **Rozpoznawanie**: Uruchom ponownie działanie kopiowania po kilku minutach.
+- **Rozwiązanie**: ponownie uruchom działanie kopiowania po kilku minutach.
 
 ## <a name="azure-sql-data-warehouse"></a>Azure SQL Data Warehouse
 
-### <a name="error-message-conversion-failed-when-converting-from-a-character-string-to-uniqueidentifier"></a>Komunikat o błędzie: Konwersja ciągu znaków na unikatowy identyfikator nie powiodła się
+### <a name="error-message-conversion-failed-when-converting-from-a-character-string-to-uniqueidentifier"></a>Komunikat o błędzie: konwersja nie powiodła się podczas konwertowania ciągu znaków na unikatowy identyfikator
 
-- **Objawy**: W przypadku kopiowania danych ze źródła danych tabelarycznych (takich jak SQL Server) do Azure SQL Data Warehouse przy użyciu kopiowania etapowego i bazy, wystąpił następujący błąd:
+- **Objawy**: w przypadku kopiowania danych ze źródła danych tabelarycznych (takich jak SQL Server) do Azure SQL Data Warehouse przy użyciu kopiowania etapowego i bazy, wystąpił następujący błąd:
 
     ```
     ErrorCode=FailedDbOperation,Type=Microsoft.DataTransfer.Common.Shared.HybridDeliveryException,
@@ -60,13 +60,13 @@ W tym artykule przedstawiono typowe metody rozwiązywania problemów z łącznik
     Message=Conversion failed when converting from a character string to uniqueidentifier...
     ```
 
-- **Przyczyna**: Azure SQL Data Warehouse baza Base nie może przekonwertować pustego ciągu na identyfikator GUID.
+- **Przyczyna**: Azure SQL Data Warehouse baza nie może przekonwertować pustego ciągu na identyfikator GUID.
 
-- **Rozpoznawanie**: W obszarze ujścia działania kopiowania w obszarze Ustawienia bazy danych ustaw wartość false dla opcji**Użyj typu domyślnego**.
+- **Rozwiązanie**: w ujścia działania kopiowania w obszarze Ustawienia bazy danych ustaw wartość false dla opcji**Użyj typu domyślnego**.
 
-### <a name="error-message-expected-data-type-decimalxx-offending-value"></a>Komunikat o błędzie: Oczekiwany typ danych: Liczba dziesiętna (x, x), wartość powodująca problemy
+### <a name="error-message-expected-data-type-decimalxx-offending-value"></a>Komunikat o błędzie: Oczekiwano typu danych: DECIMAL (x, x), wartość powodująca problemy
 
-- **Objawy**: W przypadku kopiowania danych ze źródła danych tabelarycznych (takich jak SQL Server) do usługi SQL DW przy użyciu kopiowania etapowego i bazy, wystąpił następujący błąd:
+- **Objawy**: podczas kopiowania danych ze źródła danych tabelarycznych (takich jak SQL Server) do usługi SQL DW przy użyciu kopiowania etapowego i wielopodstawa, wystąpił następujący błąd:
 
     ```
     ErrorCode=FailedDbOperation,Type=Microsoft.DataTransfer.Common.Shared.HybridDeliveryException,
@@ -78,11 +78,11 @@ W tym artykule przedstawiono typowe metody rozwiązywania problemów z łącznik
 
 - **Przyczyna**: Azure SQL Data Warehouse Base nie może wstawić pustego ciągu (wartość null) do kolumny dziesiętnej.
 
-- **Rozpoznawanie**: W obszarze ujścia działania kopiowania w obszarze Ustawienia bazy danych ustaw wartość false dla opcji**Użyj typu domyślnego**.
+- **Rozwiązanie**: w ujścia działania kopiowania w obszarze Ustawienia bazy danych ustaw wartość false dla opcji**Użyj typu domyślnego**.
 
-### <a name="error-message-java-exception-messagehdfsbridgecreaterecordreader"></a>Komunikat o błędzie: Komunikat o wyjątku Java: HdfsBridge:: CreateRecordReader
+### <a name="error-message-java-exception-messagehdfsbridgecreaterecordreader"></a>Komunikat o błędzie: komunikat o wyjątku Java: HdfsBridge:: CreateRecordReader
 
-- **Objawy**: Dane są kopiowane do Azure SQL Data Warehouse przy użyciu bazy danych Base i wystąpił następujący błąd:
+- **Objawy**: skopiujesz dane do Azure SQL Data Warehouse przy użyciu bazy danych Base i wystąpił następujący błąd:
 
     ```
     Message=110802;An internal DMS error occurred that caused this operation to fail. 
@@ -91,7 +91,7 @@ W tym artykule przedstawiono typowe metody rozwiązywania problemów z łącznik
     Java exception message:HdfsBridge::CreateRecordReader - Unexpected error encountered creating the record reader.: Error [HdfsBridge::CreateRecordReader - Unexpected error encountered creating the record reader.] occurred while accessing external file.....
     ```
 
-- **Przyczyna**: Możliwą przyczyną jest to, że schemat (całkowita szerokość kolumny) jest zbyt duży (większy niż 1 MB). Sprawdź schemat docelowej tabeli programu SQL DW przez dodanie rozmiaru wszystkich kolumn:
+- **Przyczyna**: możliwe przyczyny jest to, że schemat (całkowita szerokość kolumny) jest zbyt duży (większy niż 1 MB). Sprawdź schemat docelowej tabeli programu SQL DW przez dodanie rozmiaru wszystkich kolumn:
 
     - Int-> 4 bajty
     - Bigint-> 8 bajtów
@@ -109,35 +109,35 @@ W tym artykule przedstawiono typowe metody rozwiązywania problemów z łącznik
     - Czas — > 12 bajtów
     - Tinyint — > 1 bajt
 
-- **Rozpoznawanie**: Zmniejsz szerokość kolumny, tak aby była mniejsza niż 1 MB
+- **Rozdzielczość**: Zmniejsz szerokość kolumny, aby była mniejsza niż 1 MB
 
 - Lub użyj metody wstawiania zbiorczego, wyłączając bazę
 
-### <a name="error-message-the-condition-specified-using-http-conditional-headers-is-not-met"></a>Komunikat o błędzie: Warunek określony przy użyciu nagłówków warunkowych HTTP nie jest spełniony
+### <a name="error-message-the-condition-specified-using-http-conditional-headers-is-not-met"></a>Komunikat o błędzie: warunek określony przy użyciu nagłówków warunkowych HTTP nie jest spełniony
 
-- **Objawy**: Kwerenda SQL służy do ściągania danych z Azure SQL Data Warehouse i wystąpił następujący błąd:
+- **Objawy**: używasz zapytania SQL do ściągania danych z Azure SQL Data Warehouse i wystąpił następujący błąd:
 
     ```
     ...StorageException: The condition specified using HTTP conditional header(s) is not met...
     ```
 
-- **Przyczyna**: Wystąpił problem z Azure SQL Data Warehouseą zapytania o tabelę zewnętrzną w usłudze Azure Storage.
+- **Przyczyna**Azure SQL Data Warehouse: Wystąpił błąd podczas wysyłania zapytania do tabeli zewnętrznej w usłudze Azure Storage.
 
-- **Rozpoznawanie**: Uruchom to samo zapytanie w programie SSMS i sprawdź, czy widzisz ten sam wynik. Jeśli tak, Otwórz bilet pomocy technicznej, aby Azure SQL Data Warehouse i podać nazwę serwera i bazy danych SQL DW, aby kontynuować rozwiązywanie problemów.
+- **Rozwiązanie**: Uruchom to samo zapytanie w programie SSMS i sprawdź, czy widzisz ten sam wynik. Jeśli tak, Otwórz bilet pomocy technicznej, aby Azure SQL Data Warehouse i podać nazwę serwera i bazy danych SQL DW, aby kontynuować rozwiązywanie problemów.
 
 ## <a name="azure-cosmos-db"></a>Azure Cosmos DB
 
-### <a name="error-message-request-size-is-too-large"></a>Komunikat o błędzie: Rozmiar żądania jest zbyt duży
+### <a name="error-message-request-size-is-too-large"></a>Komunikat o błędzie: rozmiar żądania jest zbyt duży
 
-- **Objawy**: Kopiujesz dane do Azure Cosmos DB przy użyciu domyślnego rozmiaru wsadu zapisu i wystąpił błąd *"**rozmiar żądania jest zbyt duży**"* .
+- **Objawy**: dane są kopiowane do Azure Cosmos dB przy użyciu domyślnego rozmiaru wsadu zapisu i wystąpił błąd *"**rozmiar żądania jest zbyt duży**"* .
 
-- **Przyczyna**: Cosmos DB ograniczenie rozmiaru jednego żądania do 2 MB. Formuła jest, rozmiar żądania = rozmiar pojedynczego dokumentu * Zapisz rozmiar partii. Jeśli rozmiar dokumentu jest duży, zachowanie domyślne spowoduje zbyt duży rozmiar żądania. Można dostosować rozmiar partii zapisu.
+- **Przyczyna**: Cosmos DB ogranicza jeden rozmiar pojedynczego żądania do 2 MB. Formuła jest, rozmiar żądania = rozmiar pojedynczego dokumentu * Zapisz rozmiar partii. Jeśli rozmiar dokumentu jest duży, zachowanie domyślne spowoduje zbyt duży rozmiar żądania. Można dostosować rozmiar partii zapisu.
 
-- **Rozpoznawanie**: W obszarze ujścia działania kopiowania Zmniejsz wartość w polu "Zapisz rozmiar partii" (wartość domyślna to 10000).
+- **Rozwiązanie**: w ujścia działania kopiowania Zmniejsz wartość w polu "Zapisz rozmiar partii" (wartość domyślna to 10000).
 
-### <a name="error-message-unique-index-constraint-violation"></a>Komunikat o błędzie: Naruszenie ograniczenia indeksu unikatowego
+### <a name="error-message-unique-index-constraint-violation"></a>Komunikat o błędzie: naruszenie ograniczenia indeksu unikatowego
 
-- **Objawy**: Podczas kopiowania danych do Cosmos DB wystąpił następujący błąd:
+- **Objawy**: podczas kopiowania danych do Cosmos DB można napotkać następujący błąd:
 
     ```
     Message=Partition range id 0 | Failed to import mini-batch. 
@@ -150,23 +150,23 @@ W tym artykule przedstawiono typowe metody rozwiązywania problemów z łącznik
 
     - Jeśli używasz **upsert** jako zachowania zapisu i ustawisz kolejny unikatowy klucz do kontenera, ten błąd oznacza, że dane źródłowe mają wiersze/obiekty z różnymi identyfikatorami, ale te same wartości zdefiniowanego unikatowego klucza.
 
-- **Rozpoznawanie**: 
+- **Rozwiązanie**: 
 
     - W przypadku cause1 Ustaw **upsert** jako zachowanie zapisu.
     - W przypadku przyczyny 2 Upewnij się, że każdy dokument ma inną wartość dla zdefiniowanego unikatowego klucza.
 
-### <a name="error-message-request-rate-is-large"></a>Komunikat o błędzie: Duża liczba żądań
+### <a name="error-message-request-rate-is-large"></a>Komunikat o błędzie: częstotliwość żądań jest duża
 
-- **Objawy**: Podczas kopiowania danych do Cosmos DB wystąpił następujący błąd:
+- **Objawy**: podczas kopiowania danych do Cosmos DB można napotkać następujący błąd:
 
     ```
     Type=Microsoft.Azure.Documents.DocumentClientException,
     Message=Message: {"Errors":["Request rate is large"]}
     ```
 
-- **Przyczyna**: Używane jednostki żądania są większe niż dostępne RU skonfigurowane w Cosmos DB. Dowiedz się, jak Cosmos DB oblicza RU z tego [miejsca](../cosmos-db/request-units.md#request-unit-considerations).
+- **Przyczyna**: użyte jednostki żądania są większe niż dostępne ru skonfigurowane w Cosmos DB. Dowiedz się, jak Cosmos DB oblicza RU z tego [miejsca](../cosmos-db/request-units.md#request-unit-considerations).
 
-- **Rozpoznawanie**: Poniżej przedstawiono dwa rozwiązania:
+- **Rozwiązanie**: Oto dwa rozwiązania:
 
     1. **Zwiększ wartość kontenera ru** do większej w Cosmos DB, co poprawi wydajność działania kopiowania, ale powiąże się z dodatkowym kosztem Cosmos DB. 
 
@@ -174,11 +174,11 @@ W tym artykule przedstawiono typowe metody rozwiązywania problemów z łącznik
 
 ### <a name="column-missing-in-column-mapping"></a>Brak kolumny w mapowaniu kolumny
 
-- **Objawy**: Podczas importowania schematu dla Cosmos DB na potrzeby mapowania kolumn brakuje niektórych kolumn. 
+- **Objawy**: podczas importowania schematu dla Cosmos DB na potrzeby mapowania kolumn brakuje niektórych kolumn. 
 
 - **Przyczyna**: ADF zawnioskuje schemat z pierwszych 10 Cosmos DB dokumentów. Jeśli niektóre kolumny/właściwości nie mają wartości w tych dokumentach, nie będą one wykrywane przez ADF, dlatego nie będą wyświetlane.
 
-- **Rozpoznawanie**: Możesz dostosować zapytanie jak poniżej, aby wymusić wyświetlanie kolumny w zestawie wyników z wartością pustą: (Załóżmy, że w pierwszych 10 dokumentach brakuje kolumny "niemożliwe"). Alternatywnie można ręcznie dodać kolumnę do mapowania.
+- **Rozwiązanie**: można dostosować zapytanie jak poniżej, aby wymusić wyświetlenie kolumny w zestawie wyników z wartością pustą: (Załóżmy, że w pierwszych 10 dokumentach brakuje kolumny "niemożliwe"). Alternatywnie można ręcznie dodać kolumnę do mapowania.
 
     ```sql
     select c.company, c.category, c.comments, (c.impossible??'') as impossible from c
@@ -186,7 +186,7 @@ W tym artykule przedstawiono typowe metody rozwiązywania problemów z łącznik
 
 ### <a name="error-message-the-guidrepresentation-for-the-reader-is-csharplegacy"></a>Komunikat o błędzie: GuidRepresentation dla czytnika to CSharpLegacy
 
-- **Objawy**: Podczas kopiowania danych z Cosmos DB MongoAPI/MongoDB z użyciem pola UUID wystąpił następujący błąd:
+- **Objawy**: podczas kopiowania danych z Cosmos DB MongoAPI/MongoDB z użyciem pola UUID wystąpił następujący błąd:
 
     ```
     Failed to read data via MongoDB client.,
@@ -196,25 +196,25 @@ W tym artykule przedstawiono typowe metody rozwiązywania problemów z łącznik
 
 - **Przyczyna**: Istnieją dwa sposoby reprezentowania identyfikatora UUID w BSON-UuidStardard i UuidLegacy. Domyślnie UuidLegacy jest używany do odczytywania danych. Zostanie trafiony błąd, jeśli dane UUID w MongoDB jest UuidStandard.
 
-- **Rozpoznawanie**: W parametrach połączenia MongoDB Dodaj opcję "**uuidRepresentation = Standard**". Aby uzyskać więcej informacji, zobacz [MongoDB parametry połączenia](connector-mongodb.md#linked-service-properties).
+- **Rozwiązanie**: w parametrach połączenia MongoDB Dodaj opcję "**uuidRepresentation = Standard**". Aby uzyskać więcej informacji, zobacz [MongoDB parametry połączenia](connector-mongodb.md#linked-service-properties).
 
 ## <a name="sftp"></a>SFTP
 
-### <a name="error-message-invalid-sftp-credential-provided-for-sshpublickey-authentication-type"></a>Komunikat o błędzie: Podano nieprawidłowe poświadczenie SFTP dla typu uwierzytelniania "SshPublicKey"
+### <a name="error-message-invalid-sftp-credential-provided-for-sshpublickey-authentication-type"></a>Komunikat o błędzie: podano nieprawidłowe poświadczenie SFTP dla typu uwierzytelniania "SshPublicKey"
 
-- **Objawy**: `SshPublicKey` Używasz uwierzytelniania i wystąpił następujący błąd:
+- **Objawy**: używasz uwierzytelniania `SshPublicKey` i wystąpił następujący błąd:
 
     ```
     Invalid Sftp credential provided for 'SshPublicKey' authentication type
     ```
 
-- **Przyczyna**: Istnieją 3 możliwe przyczyny:
+- **Przyczyna**: Istnieją trzy możliwe przyczyny:
 
     1. Jeśli do utworzenia połączonej usługi SFTP jest używany interfejs użytkownika tworzenia APD, ten błąd oznacza, że klucz prywatny, którego chcesz użyć, ma zły format. Możesz użyć formatu PKCS # 8 prywatnego klucza SSH, podczas gdy funkcja ADF obsługuje tylko tradycyjny format klucza SSH. Bardziej szczegółowe różnice w formacie PKCS # 8 i tradycyjnym formacie klucza to zawartość klucza PKCS # 8 rozpoczyna się od " *-----rozpoczęcia szyfrowania klucza prywatnego-----* ", natomiast tradycyjny format klucza rozpoczyna się od " *-----Rozpocznij-----klucza prywatnego RSA*".
     2. Jeśli używasz Azure Key Vault do przechowywania zawartości klucza prywatnego lub korzystania z programistycznego sposobu tworzenia połączonej usługi SFTP, ten błąd oznacza, że zawartość klucza prywatnego jest niepoprawna, prawdopodobnie nie jest zakodowana w formacie base64.
     3. Nieprawidłowa zawartość poświadczeń lub klucza prywatnego.
 
-- **Rozpoznawanie**: 
+- **Rozwiązanie**: 
 
     - W celu uzyskania przyczyny #1 Uruchom następujące polecenia, aby skonwertować klucz na tradycyjny format, a następnie użyj go w interfejsie użytkownika tworzenia ADF.
 
@@ -243,7 +243,7 @@ W tym artykule przedstawiono typowe metody rozwiązywania problemów z łącznik
 
 Aby uzyskać więcej informacji dotyczących rozwiązywania problemów, wypróbuj następujące zasoby:
 
-*  [Blog Data Factory](https://azure.microsoft.com/blog/tag/azure-data-factory/)
+*  [Blog dotyczący usługi Data Factory](https://azure.microsoft.com/blog/tag/azure-data-factory/)
 *  [Żądania funkcji Data Factory](https://feedback.azure.com/forums/270578-data-factory)
 *  [Wideo na platformie Azure](https://azure.microsoft.com/resources/videos/index/?sort=newest&services=data-factory)
 *  [Forum MSDN](https://social.msdn.microsoft.com/Forums/home?sort=relevancedesc&brandIgnore=True&searchTerm=data+factory)

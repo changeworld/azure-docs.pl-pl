@@ -1,5 +1,5 @@
 ---
-title: Dostosowywanie zasad ochrony informacji SQL w programie Azure Security Center | Microsoft Docs
+title: Dostosowywanie programu SQL Information Protection — Azure Security Center
 description: Dowiedz się, jak dostosować zasady ochrony informacji w Azure Security Center.
 services: security-center
 documentationcenter: na
@@ -13,20 +13,20 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 04/29/2019
 ms.author: memildin
-ms.openlocfilehash: f9b161bbb692c1336083640250b93f9d87f1e0d9
-ms.sourcegitcommit: 3f8017692169bd75483eefa96c225d45cd497f06
-ms.translationtype: HT
+ms.openlocfilehash: d37333c0ca3f8acab7a35c23bbab67beef056b72
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73520807"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73664388"
 ---
 # <a name="customize-the-sql-information-protection-policy-in-azure-security-center-preview"></a>Dostosowywanie zasad ochrony informacji SQL w Azure Security Center (wersja zapoznawcza)
  
-Zasady usługi SQL Information Protection można definiować i dostosowywać dla całej dzierżawy platformy Azure w Azure Security Center.
+W Azure Security Center można definiować i dostosowywać zasady usługi SQL Information Protection dla całej dzierżawy platformy Azure.
 
 Information Protection to zaawansowana funkcja zabezpieczeń do odnajdywania, klasyfikowania, etykietowania i ochrony poufnych danych w zasobach danych platformy Azure. Odkrywanie i klasyfikowanie najbardziej poufnych danych (biznes, finanse, opieka, dane osobowe itp.) może odgrywać rolę przestawną w usłudze Information Protection schemacie. Może to być infrastruktura dla:
 - Pomaganie spełnić standardy prywatności danych i wymagania dotyczące zgodności z przepisami
-- Różne scenariusze zabezpieczeń, takie jak monitorowanie (inspekcja) i alerty dotyczące nietypowego dostępu do poufnych danych
+- Scenariusze zabezpieczeń, takie jak monitorowanie (inspekcja) i alerty dotyczące nietypowego dostępu do poufnych danych
 - Kontrolowanie dostępu do i ograniczanie bezpieczeństwa magazynów danych zawierających wysoce poufne dane
  
 [Program sql Information Protection](../sql-database/sql-database-data-discovery-and-classification.md) implementuje ten model dla magazynów danych SQL, które są obecnie obsługiwane przez Azure SQL Database. Funkcja SQL Information Protection automatycznie wykrywa i klasyfikuje potencjalnie wrażliwe dane, zapewnia mechanizm etykietowania do trwałego tagowania poufnych danych przy użyciu atrybutów klasyfikacji i udostępnia szczegółowy pulpit nawigacyjny pokazujący stan klasyfikacji bazy danych. Ponadto oblicza on czułość zestawu wyników zapytań SQL, tak aby zapytania, które wyodrębniają poufne dane, mogły być jawnie poddane inspekcji, a dane mogą być chronione. Aby uzyskać więcej informacji na temat Information Protection SQL, zobacz [Azure SQL Database odnajdywania i klasyfikowania danych](../sql-database/sql-database-data-discovery-and-classification.md).
@@ -35,7 +35,7 @@ Mechanizm klasyfikacji opiera się na dwóch głównych konstrukcjach, które tw
 - **Etykiety** — główne atrybuty klasyfikacji używane do definiowania poziomu czułości danych przechowywanych w kolumnie. 
 - **Typy informacji** — zapewnia dodatkowy poziom szczegółowości dla typu danych przechowywanych w kolumnie.
  
-Information Protection jest dostarczany z wbudowanym zestawem etykiet i typów informacji, które są używane domyślnie. Aby je dostosować, można dostosować zasady ochrony informacji w Azure Security Center.
+Information Protection jest dostarczany z wbudowanym zestawem etykiet i typów informacji, które są używane domyślnie. Aby dostosować te etykiety i typy, można dostosować zasady ochrony informacji w Security Center.
  
 ## <a name="customize-the-information-protection-policy"></a>Dostosowywanie zasad ochrony informacji
 Aby dostosować zasady ochrony informacji dla dzierżawy platformy Azure, musisz mieć [uprawnienia administracyjne w głównej grupie zarządzania dzierżawcy](security-center-management-groups.md). 

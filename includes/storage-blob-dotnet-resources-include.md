@@ -9,11 +9,11 @@ ms.date: 07/11/2019
 ms.author: tamram
 ms.custom: include file
 ms.openlocfilehash: d72915cc8a96dd2593f640045da71d4569efa60c
-ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
+ms.sourcegitcommit: 3f8017692169bd75483eefa96c225d45cd497f06
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "69011956"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73591150"
 ---
 ## <a name="resources-for-development-with-net"></a>Zasoby na potrzeby programowania przy użyciu platformy .NET
 
@@ -25,7 +25,7 @@ Poniższe linki zapewniają przydatne zasoby dla deweloperów korzystających z 
 - [Kod źródłowy biblioteki](https://github.com/Azure/azure-storage-net/tree/master/Common)
 - [Pakiet (NuGet)](https://www.nuget.org/packages/Microsoft.Azure.Storage.Common/)
 
-### <a name="blob-storage-apis"></a>Magazyn obiektów blob interfejsów API
+### <a name="blob-storage-apis"></a>Interfejsy API magazynu obiektów BLOB
 
 - [Dokumentacja interfejsu API](/dotnet/api/overview/azure/storage/client)
 - [Kod źródłowy biblioteki](https://github.com/Azure/azure-storage-net/tree/master/Blob)
@@ -36,4 +36,4 @@ Poniższe linki zapewniają przydatne zasoby dla deweloperów korzystających z 
 ### <a name="net-tools"></a>Narzędzia .NET
 
 - [.NET](https://dotnet.microsoft.com/download/)
-- [Visual Studio](https://visualstudio.microsoft.com/)
+- [Program Visual Studio](https://visualstudio.microsoft.com/)

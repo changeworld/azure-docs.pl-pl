@@ -1,20 +1,17 @@
 ---
 title: Często zadawane pytania dotyczące chmury wiosennej platformy Azure | Microsoft Docs
 description: Przejrzyj często zadawane pytania dotyczące chmury wiosennej platformy Azure
-services: spring-cloud
-author: v-vasuke
-manager: jeconnoc
-editor: ''
+author: jpconnock
 ms.service: spring-cloud
-ms.topic: quickstart
+ms.topic: conceptual
 ms.date: 10/07/2019
-ms.author: v-vasuke
-ms.openlocfilehash: 12ef5586ac1e7ecf27824f95add3355451cf555a
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.author: jeconnoc
+ms.openlocfilehash: 1fb241ab1335e6b9c9be55acbbe2e21378831b69
+ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73163774"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73607225"
 ---
 # <a name="frequently-asked-questions"></a>Często zadawane pytania
 
@@ -32,7 +29,7 @@ Chmura sprężynowa platformy Azure rozszerza środowisko diagnostyki aplikacji 
 
 Chmura Wiosenna Azure oferuje jeden plan usługi w okresie zapoznawczym.  Wdrożenie z chmurą wiosenną zawiera 16 rdzeni vCPU i 32 GB pamięci.  Górna granica każdego wystąpienia mikrousług w ramach wdrożenia wynosi 4 vCPU rdzeni z 8 GB pamięci.
 
-Zasób | Ilość
+Zasób | Kwota
 ------- | -------
 Wystąpienia aplikacji na wiosnę | 20
 Łączna liczba wystąpień aplikacji na usługę Azure sprężynowego wystąpienia usługi w chmurze | 50 *
@@ -60,7 +57,7 @@ Wschodnie stany USA, zachodnie stany USA 2, Europa Zachodnia i Azja Południowo-
 Poniżej przedstawiono znane ograniczenia chmury wiosennej platformy Azure, gdy usługa jest w wersji zapoznawczej.
 
 * `spring.application.name` zostanie przesłonięty przez nazwę aplikacji używaną do tworzenia każdej aplikacji.
-* `server.port` nie jest dozwolony w pliku konfiguracji z repozytorium git. Dodanie go do pliku konfiguracji prawdopodobnie spowoduje, że aplikacja nie będzie mogła być niedostępna z innych aplikacji lub Internetu.
+* nie można `server.port` w pliku konfiguracji z repozytorium git. Dodanie go do pliku konfiguracji prawdopodobnie spowoduje, że aplikacja nie będzie mogła być niedostępna z innych aplikacji lub Internetu.
 * Szablony Azure Portal i Menedżer zasobów nie obsługują przekazywania pakietów aplikacji. Można to zrobić tylko za pomocą wdrażania aplikacji za pomocą interfejsu wiersza polecenia platformy Azure.
 * Aby uzyskać ograniczenia dotyczące limitu przydziału, zapoznaj się z [planami usług dotyczącymi usługi Azure wiosny Cloud](#what-service-plans-does-azure-spring-cloud-offer).
 
@@ -95,7 +92,7 @@ Obecnie są obsługiwane trzy usługi: Azure Cosmos DB, Azure Database for MySQL
 ### <a name="can-i-viewaddmove-persistent-volumes-from-inside-my-applications"></a>Czy mogę wyświetlać/dodawać/przenosić woluminy trwałe z wewnątrz aplikacji?
 Tak.
 
-## <a name="deployment"></a>Wdrażanie
+## <a name="deployment"></a>Wdrożenie
 
 ### <a name="does-azure-spring-cloud-support-blue-green-deployment"></a>Czy usługa Azure Wiosenna Cloud obsługuje wdrożenie Blue-Green?
 Tak. więcej informacji można znaleźć w [przewodniku po środowisku przejściowym](spring-cloud-howto-staging-environment.md) .

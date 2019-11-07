@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/04/2019
 ms.author: memildin
-ms.openlocfilehash: db700c1c06b89e1a3287b5eee1a11fc8877dedde
-ms.sourcegitcommit: 3f8017692169bd75483eefa96c225d45cd497f06
-ms.translationtype: HT
+ms.openlocfilehash: 93e52b393db288f5b19afde4a31e08d0bb91b471
+ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 11/04/2019
-ms.locfileid: "73520835"
+ms.locfileid: "73571558"
 ---
 # <a name="advanced-data-security-for-sql-servers-on-azure-virtual-machines-preview"></a>Zaawansowane zabezpieczenia danych dla serwerów SQL w systemie Azure Virtual Machines (wersja zapoznawcza)
 Zaawansowane zabezpieczenia danych dla serwerów SQL w systemie Azure Virtual Machines to ujednolicony pakiet dla zaawansowanych funkcji zabezpieczeń SQL. Ta funkcja w wersji zapoznawczej obejmuje funkcje identyfikacji i łagodzenia potencjalnych luk w zabezpieczeniach bazy danych oraz wykrywania nietypowych działań, które mogą wskazywać na zagrożenia dla bazy danych. 
@@ -63,7 +63,7 @@ Aby połączyć hosta SQL Server z obszarem roboczym, postępuj zgodnie z instru
 
 ## <a name="set-up-email-notification-for-atp-alerts"></a>Konfigurowanie powiadomień e-mail dla alertów ATP 
 
-Po wygenerowaniu alertów ASC można ustawić listę adresatów, którzy otrzymają powiadomienie e-mail. Wiadomość e-mail zawiera bezpośredni link do alertu w Azure Security Center ze wszystkimi odpowiednimi szczegółami. 
+Po wygenerowaniu alertów Security Center można ustawić listę adresatów, którzy otrzymają powiadomienie e-mail. Wiadomość e-mail zawiera bezpośredni link do alertu w Azure Security Center ze wszystkimi odpowiednimi szczegółami. 
 
 1. Przejdź do **Security Center** > **cennika & Ustawienia** i kliknij odpowiednią subskrypcję
 

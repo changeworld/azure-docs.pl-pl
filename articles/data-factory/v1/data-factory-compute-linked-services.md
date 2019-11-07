@@ -1,5 +1,5 @@
 ---
-title: Środowiska obliczeniowe obsługiwane przez Azure Data Factory | Microsoft Docs
+title: Środowiska obliczeniowe obsługiwane przez Azure Data Factory
 description: Informacje o środowiskach obliczeniowych, których można użyć w potokach Azure Data Factory (takich jak usługa Azure HDInsight) do przekształcania lub przetwarzania danych.
 services: data-factory
 documentationcenter: ''
@@ -11,12 +11,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/10/2018
-ms.openlocfilehash: 12d12e96616d94360e5d193cf2b778a9ae389062
-ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
+ms.openlocfilehash: 0cc7c3b7d8b364e0bcca671efaff2cf324695428
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70140246"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73667761"
 ---
 # <a name="compute-environments-supported-by-azure-data-factory"></a>Środowiska obliczeniowe obsługiwane przez Azure Data Factory
 > [!NOTE]
@@ -30,7 +30,7 @@ Poniższa tabela zawiera listę środowisk obliczeniowych obsługiwanych przez D
 | ---------------------------------------- | ---------------------------------------- |
 | [Klaster usługi Azure HDInsight na żądanie](#azure-hdinsight-on-demand-linked-service) lub [własny klaster HDInsight](#azure-hdinsight-linked-service) | [Dotnet](data-factory-use-custom-activities.md), [Hive](data-factory-hive-activity.md), [świnie](data-factory-pig-activity.md), [MapReduce](data-factory-map-reduce.md), usługa [Hadoop Streaming](data-factory-hadoop-streaming-activity.md) |
 | [Azure Batch](#azure-batch-linked-service) | [DotNet](data-factory-use-custom-activities.md) |
-| [Azure Machine Learning](#azure-machine-learning-linked-service) | [Działania Machine Learning: Wykonywanie wsadowe i aktualizowanie zasobu](data-factory-azure-ml-batch-execution-activity.md) |
+| [Azure Machine Learning](#azure-machine-learning-linked-service) | [Działania usługi Machine Learning: wykonywanie wsadowe i aktualizacja zasobów](data-factory-azure-ml-batch-execution-activity.md) |
 | [Azure Data Lake Analytics](#azure-data-lake-analytics-linked-service) | [Język U-SQL usługi Data Lake Analytics](data-factory-usql-activity.md) |
 | [Azure SQL](#azure-sql-linked-service), [Azure SQL Data Warehouse](#azure-sql-data-warehouse-linked-service), [SQL Server](#sql-server-linked-service) | [Działania procedur składowanych](data-factory-stored-proc-activity.md) |
 
@@ -49,7 +49,7 @@ Firma Microsoft aktualizuje listę obsługiwanych wersji usługi HDInsight z naj
 Po 15 grudnia 2017:
 
 - Nie można już tworzyć klastrów opartych na systemie Linux w wersji 3,3 (lub starszych) przy użyciu połączonej usługi HDInsight na żądanie w Data Factory wersji 1. 
-- Jeśli właściwości [ **OsType** i **Version** ](https://docs.microsoft.com/azure/data-factory/v1/data-factory-compute-linked-services#azure-hdinsight-on-demand-linked-service) nie zostały jawnie określone w definicji JSON dla istniejącej połączonej usługi HDInsight Data Factory wersja 1 na żądanie, wartość domyślna zostanie zmieniona z **wersji = 3.1, osType = Windows** do **wersji =\<Najnowsza wersja\>domyślna HDi (https://docs.microsoft.com/azure/hdinsight/hdinsight-component-versioning), osType = Linux**.
+- Jeśli właściwości [ **OsType** i **Version** ](https://docs.microsoft.com/azure/data-factory/v1/data-factory-compute-linked-services#azure-hdinsight-on-demand-linked-service) nie zostały jawnie określone w definicji JSON dla istniejącej połączonej usługi HDInsight Data Factory wersja 1 na żądanie, wartość domyślna zostanie zmieniona z **wersji = 3.1, osType = Windows** do **wersji =\<najnowszej wersji domyślnej\>(https://docs.microsoft.com/azure/hdinsight/hdinsight-component-versioning), OsType = Linux**.
 
 Po 31 lipca 2018:
 
@@ -119,10 +119,10 @@ Poniższy kod JSON definiuje połączoną usługę HDInsight na żądanie z syst
 > 
 
 ### <a name="properties"></a>Właściwości
-| Właściwość                     | Opis                              | Wymagane |
+| Właściwość                     | Opis                              | Wymagany |
 | ---------------------------- | ---------------------------------------- | -------- |
 | type                         | Ustaw Właściwość Type na **HDInsightOnDemand**. | Tak      |
-| clusterSize                  | Liczba węzłów procesu roboczego i danych w klastrze. Klaster usługi HDInsight jest tworzony z 2 węzłami głównymi, a także z liczbą węzłów procesu roboczego określonych dla tej właściwości. Węzły mają rozmiar Standard_D3, który ma 4 rdzenie. Klaster węzeł 4-proces roboczy przyjmuje 24 rdzenie (\*4 4 = 16 rdzeni dla węzłów procesu roboczego,\*a 2 4 = 8 rdzeni dla węzłów głównych). Aby uzyskać szczegółowe informacje na temat warstwy Standard_D3, zobacz [Tworzenie klastrów Hadoop opartych na systemie Linux w usłudze HDInsight](../../hdinsight/hdinsight-hadoop-provision-linux-clusters.md). | Tak      |
+| clusterSize                  | Liczba węzłów procesu roboczego i danych w klastrze. Klaster usługi HDInsight jest tworzony z 2 węzłami głównymi, a także z liczbą węzłów procesu roboczego określonych dla tej właściwości. Węzły mają rozmiar Standard_D3, który ma 4 rdzenie. Klaster węzeł 4-proces roboczy przyjmuje 24 rdzenie (4\*4 = 16 rdzeni dla węzłów procesu roboczego oraz 2\*4 = 8 rdzeni dla węzłów głównych). Aby uzyskać szczegółowe informacje na temat warstwy Standard_D3, zobacz [Tworzenie klastrów Hadoop opartych na systemie Linux w usłudze HDInsight](../../hdinsight/hdinsight-hadoop-provision-linux-clusters.md). | Tak      |
 | timeToLive                   | Dozwolony czas bezczynności dla klastra usługi HDInsight na żądanie. Określa, jak długo klaster usługi HDInsight na żądanie pozostaje aktywny po zakończeniu uruchomienia działania, jeśli nie ma żadnych innych aktywnych zadań w klastrze.<br /><br />Na przykład, Jeśli uruchomienie działania trwa 6 minut, a **TimeToLive** jest ustawiony na 5 minut, klaster pozostaje aktywny przez 5 minut po 6 minutach przetwarzania działania. Jeśli w oknie 6-minutowy zostanie wykonane inne uruchomienie działania, jest ono przetwarzane przez ten sam klaster.<br /><br />Tworzenie klastra usługi HDInsight na żądanie jest kosztowną operacją (może to potrwać trochę czasu). Użyj tego ustawienia, aby zwiększyć wydajność fabryki danych przez ponowne użycie klastra usługi HDInsight na żądanie.<br /><br />Jeśli wartość **TimeToLive** jest ustawiona na **0**, klaster zostanie usunięty zaraz po zakończeniu uruchomienia działania. Jeśli jednak ustawisz wysoką wartość, klaster może pozostać bezczynny, niekoniecznie powodując wysokie koszty. Ważne jest, aby ustawić odpowiednią wartość na podstawie Twoich potrzeb.<br /><br />Jeśli wartość **TimeToLive** jest odpowiednio ustawiona, wiele potoków może współdzielić wystąpienie klastra usługi HDInsight na żądanie. | Tak      |
 | version                      | Wersja klastra usługi HDInsight. Aby uzyskać dozwolone wersje usługi HDInsight, zobacz [obsługiwane wersje usługi HDInsight](https://docs.microsoft.com/azure/hdinsight/hdinsight-component-versioning#supported-hdinsight-versions). Jeśli ta wartość nie jest określona, używana jest [Najnowsza wersja HDI](https://docs.microsoft.com/azure/hdinsight/hdinsight-component-versioning) . | Nie       |
 | linkedServiceName            | Połączona usługa Azure Storage, która będzie używana przez klaster na żądanie do przechowywania i przetwarzania danych. Klaster usługi HDInsight jest tworzony w tym samym regionie, w którym znajduje się to konto magazynu.<p>Obecnie nie można utworzyć klastra usługi HDInsight na żądanie, który używa Azure Data Lake Store jako magazynu. Jeśli chcesz przechowywać dane wynikowe z przetwarzania usługi HDInsight w Data Lake Store, Użyj działania kopiowania, aby skopiować dane z magazynu obiektów BLOB do Data Lake Store. </p> | Tak      |
@@ -142,7 +142,7 @@ Poniższy kod JSON definiuje połączoną usługę HDInsight na żądanie z syst
 ### <a name="advanced-properties"></a>Właściwości zaawansowane
 Aby uzyskać szczegółową konfigurację klastra usługi HDInsight na żądanie, można określić następujące właściwości:
 
-| Właściwość               | Opis                              | Wymagane |
+| Właściwość               | Opis                              | Wymagany |
 | :--------------------- | :--------------------------------------- | :------- |
 | coreConfiguration      | Określa podstawowe parametry konfiguracji (pliku Core-site. xml) dla klastra usługi HDInsight, który ma zostać utworzony. | Nie       |
 | hBaseConfiguration     | Określa parametry konfiguracji HBase (HBase-site. xml) dla klastra usługi HDInsight. | Nie       |
@@ -195,9 +195,9 @@ Aby uzyskać szczegółową konfigurację klastra usługi HDInsight na żądanie
 ### <a name="node-sizes"></a>Rozmiary węzłów
 Aby określić rozmiar węzłów głowy, danych i dozorcy, użyj następujących właściwości: 
 
-| Właściwość          | Opis                              | Wymagane |
+| Właściwość          | Opis                              | Wymagany |
 | :---------------- | :--------------------------------------- | :------- |
-| headNodeSize      | Ustawia rozmiar węzła głównego. Wartość domyślna to **Standard_D3**. Aby uzyskać szczegółowe informacje, zobacz [Określanie rozmiarów węzłów](#specify-node-sizes). | Nie       |
+| Dodano      | Ustawia rozmiar węzła głównego. Wartość domyślna to **Standard_D3**. Aby uzyskać szczegółowe informacje, zobacz [Określanie rozmiarów węzłów](#specify-node-sizes). | Nie       |
 | dataNodeSize      | Ustawia rozmiar węzła danych. Wartość domyślna to **Standard_D3**. | Nie       |
 | zookeeperNodeSize | Ustawia rozmiar węzła dozorcy. Wartość domyślna to **Standard_D3**. | Nie       |
 
@@ -213,7 +213,7 @@ Jeśli chcesz utworzyć węzły główne rozmiaru D4 i węzły procesu roboczego
 
 W przypadku ustawienia nieprawidłowej wartości dla tych właściwości może zostać wyświetlony następujący komunikat:
 
-  Utworzenie klastra nie powiodło się. Oprócz Nie można ukończyć operacji tworzenia klastra. Operacja zakończona niepowodzeniem z kodem „400”. Stan klastra po lewej stronie: "Błąd". Komunikat: 'PreClusterCreationValidationFailure'. 
+  Utworzenie klastra nie powiodło się. Wyjątek: nie można ukończyć operacji tworzenia klastra. Operacja zakończona niepowodzeniem z kodem „400”. Końcowy stan klastra: „Błąd”. Komunikat: "PreClusterCreationValidationFailure". 
   
 Jeśli zobaczysz ten komunikat, upewnij się, że używasz poleceń cmdlet i nazw interfejsów API z tabeli w obszarze [rozmiary maszyn wirtualnych](../../virtual-machines/linux/sizes.md).  
 
@@ -255,12 +255,12 @@ Można utworzyć połączoną usługę HDInsight, aby zarejestrować własny kla
 ```
 
 ### <a name="properties"></a>Właściwości
-| Właściwość          | Opis                              | Wymagane |
+| Właściwość          | Opis                              | Wymagany |
 | ----------------- | ---------------------------------------- | -------- |
 | type              | Ustaw Właściwość Type na **HDInsight**. | Tak      |
 | clusterUri        | Identyfikator URI klastra usługi HDInsight.        | Tak      |
-| username          | Nazwa konta użytkownika, które ma zostać użyte do nawiązania połączenia z istniejącym klastrem usługi HDInsight. | Tak      |
-| password          | Hasło konta użytkownika.   | Tak      |
+| nazwa użytkownika          | Nazwa konta użytkownika, które ma zostać użyte do nawiązania połączenia z istniejącym klastrem usługi HDInsight. | Tak      |
+| hasło          | Hasło konta użytkownika.   | Tak      |
 | linkedServiceName | Nazwa połączonej usługi Storage odwołująca się do magazynu obiektów BLOB używanego przez klaster usługi HDInsight. <p>Obecnie nie można określić Data Lake Store połączonej usługi dla tej właściwości. Jeśli klaster usługi HDInsight ma dostęp do Data Lake Store, możesz uzyskać dostęp do danych w Data Lake Store ze skryptów Hive lub świńskiej. </p> | Tak      |
 
 ## <a name="azure-batch-linked-service"></a>Azure Batch połączona usługa
@@ -289,13 +289,13 @@ Jeśli dopiero zaczynasz korzystać z usługi Batch:
 }
 ```
 
-Dla właściwości **AccountName** Dołącz wartość **.\< nazwa\> regionu** dla nazwy konta w usłudze Batch. Na przykład:
+Dla właściwości **AccountName** Dołącz wartość **.\<regionu Name\>** do nazwy konta usługi Batch. Na przykład:
 
 ```json
 "accountName": "mybatchaccount.eastus"
 ```
 
-Innym rozwiązaniem jest dostarczenie punktu końcowego **batchUri** . Przykład:
+Innym rozwiązaniem jest dostarczenie punktu końcowego **batchUri** . Na przykład:
 
 ```json
 "accountName": "adfteam",
@@ -303,7 +303,7 @@ Innym rozwiązaniem jest dostarczenie punktu końcowego **batchUri** . Przykład
 ```
 
 ### <a name="properties"></a>Właściwości
-| Właściwość          | Opis                              | Wymagane |
+| Właściwość          | Opis                              | Wymagany |
 | ----------------- | ---------------------------------------- | -------- |
 | type              | Ustaw Właściwość Type na **AzureBatch**. | Tak      |
 | accountName       | Nazwa konta wsadowego.         | Tak      |
@@ -330,9 +330,9 @@ Możesz utworzyć połączoną usługę Machine Learning, aby zarejestrować pun
 ```
 
 ### <a name="properties"></a>Właściwości
-| Właściwość   | Opis                              | Wymagane |
+| Właściwość   | Opis                              | Wymagany |
 | ---------- | ---------------------------------------- | -------- |
-| Type       | Ustaw właściwość typu **AzureML**. | Tak      |
+| Typ       | Ustaw Właściwość Type na **Azure**. | Tak      |
 | mlEndpoint | Adres URL oceniania partii.                   | Tak      |
 | apiKey     | Interfejs API opublikowanego modelu obszaru roboczego.     | Tak      |
 
@@ -341,7 +341,7 @@ Można utworzyć Data Lake Analytics połączonej usługi, aby połączyć usłu
 
 W poniższej tabeli opisano ogólne właściwości, które są używane w definicji JSON:
 
-| Właściwość                 | Opis                              | Wymagane                                 |
+| Właściwość                 | Opis                              | Wymagany                                 |
 | ------------------------ | ---------------------------------------- | ---------------------------------------- |
 | type                 | Ustaw Właściwość Type na **AzureDataLakeAnalytics**. | Tak                                      |
 | accountName          | Nazwa konta Data Lake Analytics.  | Tak                                      |
@@ -353,18 +353,18 @@ W poniższej tabeli opisano ogólne właściwości, które są używane w defini
 W przypadku usługi połączonej Data Lake Analytics można wybrać uwierzytelnianie przy użyciu nazwy głównej usługi lub poświadczenia użytkownika.
 
 #### <a name="service-principal-authentication-recommended"></a>Uwierzytelnianie jednostki usługi (zalecane)
-Aby użyć uwierzytelniania nazwy głównej usługi, zarejestruj jednostkę aplikacji w Azure Active Directory (Azure AD). Następnie Udziel dostępu do usługi Azure AD Data Lake Store. Aby uzyskać szczegółowe instrukcje, zobacz [Service-to-service authentication](../../data-lake-store/data-lake-store-authenticate-using-active-directory.md). Zanotuj następujące wartości, które służą do definiowania połączonej usługi:
+Aby użyć uwierzytelniania nazwy głównej usługi, zarejestruj jednostkę aplikacji w Azure Active Directory (Azure AD). Następnie Udziel dostępu do usługi Azure AD Data Lake Store. Aby uzyskać szczegółowe instrukcje, zobacz [uwierzytelnianie między usługami](../../data-lake-store/data-lake-store-authenticate-using-active-directory.md). Należy zwrócić uwagę na następujące wartości, których można użyć do zdefiniowania połączonej usługi:
 * Identyfikator aplikacji
 * Klucz aplikacji 
 * Identyfikator dzierżawy
 
 Użyj uwierzytelniania nazwy głównej usługi, określając następujące właściwości:
 
-| Właściwość                | Opis                              | Wymagane |
+| Właściwość                | Opis                              | Wymagany |
 | :---------------------- | :--------------------------------------- | :------- |
 | servicePrincipalId  | Identyfikator klienta aplikacji.     | Tak      |
 | servicePrincipalKey | Klucz aplikacji.           | Tak      |
-| tenant              | Informacje o dzierżawie (nazwa domeny lub identyfikator dzierżawy), w których znajduje się aplikacja. Aby uzyskać te informacje, umieść wskaźnik myszy w prawym górnym rogu Azure Portal. | Tak      |
+| dzierżaw              | Informacje o dzierżawie (nazwa domeny lub identyfikator dzierżawy), w których znajduje się aplikacja. Aby uzyskać te informacje, umieść wskaźnik myszy w prawym górnym rogu Azure Portal. | Tak      |
 
 **Przykład: Uwierzytelnianie jednostki usługi**
 ```json
@@ -388,12 +388,12 @@ Użyj uwierzytelniania nazwy głównej usługi, określając następujące wła�
 #### <a name="user-credential-authentication"></a>Uwierzytelnianie poświadczeń użytkownika
 W przypadku uwierzytelniania poświadczeń użytkowników dla Data Lake Analytics określ następujące właściwości:
 
-| Właściwość          | Opis                              | Wymagane |
+| Właściwość          | Opis                              | Wymagany |
 | :---------------- | :--------------------------------------- | :------- |
-| authorization | W edytorze Data Factory wybierz przycisk **Autoryzuj** . Wprowadź poświadczenia, które przypisuje automatycznie wygenerowany adres URL autoryzacji do tej właściwości. | Tak      |
+| Zgody | W edytorze Data Factory wybierz przycisk **Autoryzuj** . Wprowadź poświadczenia, które przypisuje automatycznie wygenerowany adres URL autoryzacji do tej właściwości. | Tak      |
 | sessionId     | Identyfikator sesji OAuth z sesji autoryzacji OAuth. Każdy identyfikator sesji jest unikatowy i może być używany tylko raz. To ustawienie jest generowane automatycznie, gdy jest używany Edytor Data Factory. | Tak      |
 
-**Przykład: Uwierzytelnianie poświadczeń użytkownika**
+**Przykład: uwierzytelnianie poświadczeń użytkownika**
 ```json
 {
     "name": "AzureDataLakeAnalyticsLinkedService",
@@ -416,14 +416,14 @@ Kod autoryzacji, który został wygenerowany przez wybranie przycisku **Autoryzu
 
 Po wygaśnięciu tokenu uwierzytelniania może zostać wyświetlony następujący komunikat o błędzie: 
 
-  Błąd operacji poświadczeń: invalid_grant-AADSTS70002: Błąd podczas weryfikowania poświadczeń. AADSTS70008: Podany przydział dostępu wygasł lub został odwołany. Identyfikator śledzenia: d18629e8-af88-43c5-88e3-d8419eb1fca1 korelacji: fac30a0c-6be6-4e02-8d69-a776d2ffefd7 timestamp: 2015-12-15 21:09:31Z
+  Błąd operacji poświadczeń: invalid_grant-AADSTS70002: Wystąpił błąd podczas walidacji poświadczeń. AADSTS70008: podany przydział dostępu wygasł lub został odwołany. Identyfikator śledzenia: identyfikator korelacji d18629e8-af88-43c5-88e3-d8419eb1fca1: fac30a0c-6be6-4e02-8d69-a776d2ffefd7 sygnatura czasowa: 2015-12-15 21:09:31Z
 
 W poniższej tabeli przedstawiono wygaśnięcia według typu konta użytkownika: 
 
 | Typ użytkownika                                | Wygasa po                            |
 | :--------------------------------------- | :--------------------------------------- |
 | Konta użytkowników, które *nie* są zarządzane przez usługę Azure AD (Hotmail, Live itd.) | 12 godzin.                                 |
-| Konta użytkowników zarządzane przez usługę Azure AD | 14 dni od ostatniego uruchomienia wycinka. <br /><br />90 dni, jeśli Plasterek oparty na połączonej usłudze opartej na protokole OAuth jest uruchamiany co najmniej raz na 14 dni. |
+| Konta *użytkowników zarządzane przez* usługę Azure AD | 14 dni od ostatniego uruchomienia wycinka. <br /><br />90 dni, jeśli Plasterek oparty na połączonej usłudze opartej na protokole OAuth jest uruchamiany co najmniej raz na 14 dni. |
 
 Aby uniknąć tego błędu lub rozwiązać ten błąd, należy przeprowadzić autoryzację, wybierając przycisk **Autoryzuj** po wygaśnięciu tokenu. Następnie ponownie Wdróż połączoną usługę. Możesz również generować wartości właściwości **SessionID** i **Authorization** programowo przy użyciu następującego kodu:
 
@@ -453,8 +453,8 @@ if (linkedService.Properties.TypeProperties is AzureDataLakeStoreLinkedService |
 ```
 
 Aby uzyskać szczegółowe informacje na temat klas Data Factory, które są używane w tym przykładzie kodu, zobacz:
-* [AzureDataLakeStoreLinkedService class](https://msdn.microsoft.com/library/microsoft.azure.management.datafactories.models.azuredatalakestorelinkedservice.aspx)
-* [AzureDataLakeAnalyticsLinkedService class](https://msdn.microsoft.com/library/microsoft.azure.management.datafactories.models.azuredatalakeanalyticslinkedservice.aspx)
+* [Klasa AzureDataLakeStoreLinkedService](https://msdn.microsoft.com/library/microsoft.azure.management.datafactories.models.azuredatalakestorelinkedservice.aspx)
+* [Klasa AzureDataLakeAnalyticsLinkedService](https://msdn.microsoft.com/library/microsoft.azure.management.datafactories.models.azuredatalakeanalyticslinkedservice.aspx)
 * [Klasa AuthorizationSessionGetResponse](https://msdn.microsoft.com/library/microsoft.azure.management.datafactories.models.authorizationsessiongetresponse.aspx)
 
 Dodaj odwołanie do Microsoft. IdentityModel. clients. ActiveDirectory. WindowsForms. dll dla klasy **WindowsFormsWebAuthenticationDialog** . 

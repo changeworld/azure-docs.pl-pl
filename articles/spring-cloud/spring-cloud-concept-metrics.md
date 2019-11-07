@@ -1,20 +1,17 @@
 ---
 title: Informacje o metrykach dla chmury wiosennej platformy Azure
 description: Dowiedz się, jak przejrzeć metryki w chmurze wiosennej platformy Azure
-services: spring-cloud
-author: v-vasuke
-manager: jeconnoc
-editor: ''
+author: jpconnock
 ms.service: spring-cloud
-ms.topic: quickstart
+ms.topic: conceptual
 ms.date: 10/06/2019
-ms.author: v-vasuke
-ms.openlocfilehash: d9c6f14b7ecfc2929dc48c11e0df1fe80303c8b1
-ms.sourcegitcommit: d773b5743cb54b8cbcfa5c5e4d21d5b45a58b081
+ms.author: jeconnoc
+ms.openlocfilehash: 952dfc1c707df3b7fa61443ea6ea18630352f0dc
+ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/08/2019
-ms.locfileid: "72039126"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73607806"
 ---
 # <a name="metrics-for-azure-spring-cloud"></a>Metryki dla chmury wiosennej platformy Azure
 

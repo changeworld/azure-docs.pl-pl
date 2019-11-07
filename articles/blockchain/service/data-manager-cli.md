@@ -8,12 +8,12 @@ ms.date: 11/04/2019
 ms.topic: article
 ms.service: azure-blockchain
 ms.reviewer: chroyal
-ms.openlocfilehash: 1e92ae36aee5e62cd05b40bbaa38a226943f0adb
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
-ms.translationtype: HT
+ms.openlocfilehash: 9f408b090db40e5145b424034c39cdba4de14a8f
+ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73518023"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73605900"
 ---
 # <a name="configure-blockchain-data-manager-using-azure-cli"></a>Konfigurowanie Data Manager łańcucha bloków przy użyciu interfejsu wiersza polecenia platformy Azure
 
@@ -259,6 +259,10 @@ az resource create \
 
 Jeśli dodasz aplikację łańcucha bloków, łańcucha bloków Data Manager dekoduje zdarzenie i stan właściwości aplikacji. W przeciwnym razie wysyłane są tylko nieprzetworzone dane transakcji blokowych i nieprzetworzonych. Łańcucha bloków Data Manager również wykrywa adresy kontraktu po wdrożeniu kontraktu. Można dodać wiele aplikacji łańcucha bloków do wystąpienia Data Manager łańcucha bloków.
 
+
+> [!IMPORTANT]
+> Obecnie aplikacje łańcucha bloków, które deklarują [Typy tablic](https://solidity.readthedocs.io/en/v0.5.12/types.html#arrays) stałych lub [typy mapowania](https://solidity.readthedocs.io/en/v0.5.12/types.html#mapping-types) , nie są w pełni obsługiwane. Właściwości zadeklarowane jako tablica lub typy mapowania nie będą zdekodowane w wiadomościach *ContractPropertiesMsg* lub *DecodedContractEventsMsg* .
+
 ``` azurecli
 az resource create \
                    --resource-group <Resource group> \
@@ -306,7 +310,7 @@ Przykład konfiguracji JSON tworzenia zasobu aplikacji w regionie *Wschodnie sta
 | location | Region, w którym ma zostać utworzony zasób aplikacji. |
 | artefakttype | Typ aplikacji. Obecnie **EthereumSmartContract** jest obsługiwana. |
 | abiFileUrl | Adres URL pliku JSON ABI kontraktu inteligentnego. Aby uzyskać więcej informacji na temat uzyskiwania ABIów kontraktu i tworzenia adresu URL, zobacz [pobieranie kontraktu ABI i kod bajtowy](data-manager-portal.md#get-contract-abi-and-bytecode) oraz [Tworzenie ABI i adresów URL kontraktu](data-manager-portal.md#create-contract-abi-and-bytecode-url). |
-| bytecodeFileUrl | Adres URL pliku JSON dla kontraktu inteligentnego. Aby uzyskać więcej informacji na temat uzyskiwania kodu wielobajtowego kontraktu inteligentnego i tworzenia adresu URL, zobacz [pobieranie kontraktu ABI i kod bajtowy](data-manager-portal.md#get-contract-abi-and-bytecode) oraz [Tworzenie kontraktu ABI i adresu URL kodu bajtowego](data-manager-portal.md#create-contract-abi-and-bytecode-url). |
+| bytecodeFileUrl | Adres URL pliku JSON wdrożenia kontraktu inteligentnego. Aby uzyskać więcej informacji na temat uzyskiwania kodu bajtowego wdrożonego w kontrakcie inteligentnym i tworzenia adresu URL, zobacz [pobieranie kontraktu ABI i kod bajtowy](data-manager-portal.md#get-contract-abi-and-bytecode) oraz [Tworzenie kontraktu ABI i URL kodu bajtowego](data-manager-portal.md#create-contract-abi-and-bytecode-url). Uwaga: łańcucha bloków Data Manager wymaga **wdrożonego kodu bajtowego**. |
 | queryTargetTypes | Typy opublikowanych komunikatów. Określanie **ContractProperties** publikuje *ContractPropertiesMsg* typ komunikatu. Określanie **ContractEvents** publikuje *DecodedContractEventsMsg* typ komunikatu. Uwaga: typy wiadomości *RawBlockAndTransactionMsg* i *RawTransactionContractCreationMsg* są zawsze publikowane. |
 
 Utwórz aplikację o nazwie Moja *aplikacja* dla elementu *czujka* , która monitoruje kontrakt inteligentny zdefiniowany przez ciąg JSON.
@@ -415,4 +419,7 @@ az resource delete \
 
 ## <a name="next-steps"></a>Następne kroki
 
-Dowiedz się więcej o [obsłudze zdarzeń w Azure Event Grid](../../event-grid/event-handlers.md).
+Spróbuj utworzyć Eksplorator komunikatów łańcucha bloków Transaction przy użyciu łańcucha bloków Data Manager i Azure Cosmos DB.
+
+> [!div class="nextstepaction"]
+> [Samouczek: wysyłanie danych do Azure Cosmos DB za pomocą łańcucha bloków Data Manager](data-manager-cosmosdb.md)

@@ -1,5 +1,5 @@
 ---
-title: 'Przekształcanie danych: Przetwarzaj & Przekształć dane | Microsoft Docs'
+title: 'Przekształcanie danych: Przetwarzaj & Przekształć dane '
 description: Dowiedz się, jak przekształcać dane lub przetwarzać dane w Azure Data Factory przy użyciu usługi Hadoop, Machine Learning lub Azure Data Lake Analytics.
 services: data-factory
 documentationcenter: ''
@@ -11,12 +11,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/10/2018
-ms.openlocfilehash: 9e70877a51c23be2d626492f84a69ae49fb27fac
-ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
+ms.openlocfilehash: 3af01ef76421e95f74a65fe597cafff5fa9ef39e
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70139772"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73682610"
 ---
 # <a name="transform-data-in-azure-data-factory"></a>Przekształcanie danych w Azure Data Factory
 > [!div class="op_single_selector"]
@@ -46,7 +46,7 @@ Data Factory obsługuje następujące działania przekształcania danych, które
 Działanie programu Hive w usłudze HDInsight w potoku Data Factory wykonuje zapytania Hive na własnym lub lokalnym klastrze usługi HDInsight opartym na systemie Windows/Linux. Aby uzyskać szczegółowe informacje o tym działaniu, zobacz artykuł dotyczący [działań Hive](data-factory-hive-activity.md) . 
 
 ## <a name="hdinsight-pig-activity"></a>Działanie dotyczące usługi HDInsight świni
-Działanie świni w usłudze HDInsight w potoku Data Factory wykonuje zapytania dotyczące trzody chlewnej we własnym lub lokalnym klastrze usługi HDInsight opartym na systemie Windows/Linux. Szczegółowe informacje na temat tego działania znajdziesz w artykule dotyczącym [działań](data-factory-pig-activity.md) związanych z świnią. 
+Działanie świni w usłudze HDInsight w potoku Data Factory wykonuje zapytania dotyczące trzody chlewnej we własnym lub lokalnym klastrze usługi HDInsight opartym na systemie Windows/Linux. Szczegółowe informacje na temat tego działania znajdziesz w artykule dotyczącym działań związanych z [świnią](data-factory-pig-activity.md) . 
 
 ## <a name="hdinsight-mapreduce-activity"></a>Działanie MapReduce usługi HDInsight
 Działanie MapReduce usługi HDInsight w potoku Data Factory wykonuje programy MapReduce na własnym lub na żądanie w klastrze HDInsight opartym na systemie Windows/Linux. Aby uzyskać szczegółowe informacje o tym działaniu, zobacz artykuł dotyczący [działań MapReduce](data-factory-map-reduce.md) .
@@ -64,8 +64,8 @@ W miarę upływu czasu modele predykcyjne w eksperymentach oceniających Machine
 
 Aby uzyskać szczegółowe informacje o tych Machine Learning działaniach, zobacz temat [używanie Machine Learning działań](data-factory-azure-ml-batch-execution-activity.md) . 
 
-## <a name="stored-procedure-activity"></a>Działanie procedury przechowywanej
-Możesz użyć działania procedury składowanej SQL Server w potoku Data Factory, aby wywołać procedurę składowaną w jednym z następujących magazynów danych: Azure SQL Database, Azure SQL Data Warehouse, SQL Server bazę danych w przedsiębiorstwie lub maszynie wirtualnej platformy Azure. Szczegóły można znaleźć w artykule dotyczącym [działania procedury składowanej](data-factory-stored-proc-activity.md) .  
+## <a name="stored-procedure-activity"></a>Działanie procedury składowanej
+Możesz użyć działania procedury składowanej SQL Server w potoku Data Factory, aby wywołać procedurę składowaną w jednym z następujących magazynów danych: Azure SQL Database, Azure SQL Data Warehouse, SQL Server bazą danych w przedsiębiorstwie lub maszynie wirtualnej platformy Azure. Szczegóły można znaleźć w artykule dotyczącym [działania procedury składowanej](data-factory-stored-proc-activity.md) .  
 
 ## <a name="data-lake-analytics-u-sql-activity"></a>Data Lake Analytics działanie U-SQL
 Data Lake Analytics działanie U-SQL uruchamia skrypt U-SQL w klastrze Azure Data Lake Analytics. Szczegóły można znaleźć w artykule dotyczącym [działania analiza danych U-SQL](data-factory-usql-activity.md) . 
@@ -78,8 +78,8 @@ Możesz utworzyć niestandardowe działanie, aby uruchamiać skrypty w klastrze 
 ## <a name="compute-environments"></a>Środowiska obliczeniowe
 Należy utworzyć połączoną usługę dla środowiska obliczeniowego, a następnie użyć połączonej usługi podczas definiowania działania transformacji. Istnieją dwa typy środowisk obliczeniowych obsługiwanych przez Data Factory. 
 
-1. **Na żądanie**:  W takim przypadku środowisko komputerowe jest w pełni zarządzane przez Data Factory. Jest automatycznie tworzony przez usługę Data Factory przed przesłaniem zadania w celu przetworzenia danych i usunięciu po zakończeniu zadania. Można skonfigurować i kontrolować szczegółowe ustawienia środowiska obliczeniowego na żądanie na potrzeby wykonywania zadań, zarządzania klastrami i uruchamiania akcji. 
-2. **Dobierz swój własny**: W takim przypadku można zarejestrować własne środowisko obliczeniowe (na przykład klaster usługi HDInsight) jako połączoną usługę w Data Factory. Środowisko komputerowe jest zarządzane przez Ciebie, a usługa Data Factory używa jej do wykonywania działań. 
+1. **Na żądanie**: w tym przypadku środowisko komputerowe jest w pełni zarządzane przez Data Factory. Jest automatycznie tworzony przez usługę Data Factory przed przesłaniem zadania w celu przetworzenia danych i usunięciu po zakończeniu zadania. Można skonfigurować i kontrolować szczegółowe ustawienia środowiska obliczeniowego na żądanie na potrzeby wykonywania zadań, zarządzania klastrami i uruchamiania akcji. 
+2. **Wprowadź swój własny**: w tym przypadku możesz zarejestrować własne środowisko obliczeniowe (na przykład klaster usługi HDInsight) jako połączoną usługę w Data Factory. Środowisko komputerowe jest zarządzane przez Ciebie, a usługa Data Factory używa jej do wykonywania działań. 
 
 Zobacz artykuł dotyczący [połączonych usług](data-factory-compute-linked-services.md) , aby dowiedzieć się więcej o usługach obliczeniowych obsługiwanych przez Data Factory. 
 
@@ -92,7 +92,7 @@ Azure Data Factory obsługuje następujące działania przekształcania danych i
 | [Pig](data-factory-pig-activity.md) |HDInsight [Hadoop] |
 | [MapReduce](data-factory-map-reduce.md) |HDInsight [Hadoop] |
 | [Przesyłanie strumieniowe usługi Hadoop](data-factory-hadoop-streaming-activity.md) |HDInsight [Hadoop] |
-| [Działania Machine Learning: Wykonywanie wsadowe i aktualizowanie zasobu](data-factory-azure-ml-batch-execution-activity.md) |Azure VM |
+| [Działania usługi Machine Learning: wykonywanie wsadowe i aktualizacja zasobów](data-factory-azure-ml-batch-execution-activity.md) |Maszyna wirtualna platformy Azure |
 | [Procedura składowana](data-factory-stored-proc-activity.md) |Azure SQL, Azure SQL Data Warehouse lub SQL Server |
 | [Język U-SQL usługi Data Lake Analytics](data-factory-usql-activity.md) |Azure Data Lake Analytics |
 | [DotNet](data-factory-use-custom-activities.md) |Usługa HDInsight [Hadoop] lub usługa Azure Batch |

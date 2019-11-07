@@ -8,35 +8,57 @@ ms.workload: big-data
 ms.service: time-series-insights
 services: time-series-insights
 ms.topic: conceptual
-ms.date: 10/23/2019
+ms.date: 11/04/2019
 ms.custom: seodec18
-ms.openlocfilehash: 0b61e194bdea5fd8272ffc0fc9e16a2d80d3cf60
-ms.sourcegitcommit: 92d42c04e0585a353668067910b1a6afaf07c709
+ms.openlocfilehash: d0cdd78aaa2b58743e16a2e7cfe213a9daed85ff
+ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/28/2019
-ms.locfileid: "72989709"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73605881"
 ---
 # <a name="data-storage-and-ingress-in-azure-time-series-insights-preview"></a>Magazyn danych i ruch przychodzący w wersji zapoznawczej Azure Time Series Insights
 
-W tym artykule opisano aktualizacje usługi Data Storage i transfer danych przychodzących na potrzeby wersji zapoznawczej Azure Time Series Insights. Obejmuje ona podstawową strukturę magazynu, format pliku i Właściwość identyfikatora szeregów czasowych. Omówiono w nim również podstawowe procesy związane z transferem danych przychodzących, przepływność i ograniczenia.
+W tym artykule opisano aktualizacje usługi Data Storage i transfer danych przychodzących na potrzeby wersji zapoznawczej Azure Time Series Insights. Obejmuje ona podstawową strukturę magazynu, format pliku i Właściwość identyfikatora szeregów czasowych. Omówiono w nim również podstawowe procesy związane z transferem danych przychodzących, najlepsze rozwiązania i bieżące ograniczenia wersji zapoznawczej.
 
 ## <a name="data-ingress"></a>Dane wejściowe
 
-W programie Time Series Insights w wersji zapoznawczej zasady danych przychodzących określają, z których danych mogą pochodzić i jakie dane mają być dostępne w formacie.
-
-[Omówienie modelu szeregów czasowych![](media/v2-update-storage-ingress/tsi-data-ingress.png)](media/v2-update-storage-ingress/tsi-data-ingress.png#lightbox)
+Środowisko Azure Time Series Insights zawiera aparat pozyskiwania do zbierania, przetwarzania i przechowywania danych szeregów czasowych. Podczas planowania środowiska należy wziąć pod uwagę pewne zagadnienia, aby zapewnić, że wszystkie dane przychodzące są przetwarzane i aby osiągnąć wysoką skalę transferu danych przychodzących i zminimalizować opóźnienia pozyskiwania (czas potrzebny przez TSI do odczytu i przetworzenia z zdarzenia Źródło). W programie Time Series Insights w wersji zapoznawczej zasady danych przychodzących określają, z których danych mogą pochodzić i jakie dane mają być dostępne w formacie.
 
 ### <a name="ingress-policies"></a>Zasady dotyczące transferu danych przychodzących
 
-Wersja zapoznawcza Time Series Insights obsługuje te same źródła zdarzeń, które Time Series Insights obecnie obsługiwane:
+Wersja zapoznawcza Time Series Insights obsługuje następujące źródła zdarzeń:
 
 - [Azure IoT Hub](../iot-hub/about-iot-hub.md)
 - [Azure Event Hubs](../event-hubs/event-hubs-about.md)
 
 Wersja zapoznawcza Time Series Insights obsługuje maksymalnie dwa źródła zdarzeń na wystąpienie.
   
-Azure Time Series Insights obsługuje dane JSON przesłane za pomocą usługi Azure IoT Hub lub Azure Event Hubs. Aby zoptymalizować dane JSON IoT, Dowiedz się, [jak kształtować kod JSON](./time-series-insights-send-events.md#supported-json-shapes).
+Azure Time Series Insights obsługuje dane JSON przesłane za pomocą usługi Azure IoT Hub lub Azure Event Hubs.
+
+> [!WARNING] 
+> W przypadku dołączania nowego źródła zdarzeń do środowiska Time Series Insights w wersji zapoznawczej, w zależności od liczby zdarzeń znajdujących się obecnie w IoT Hub lub centrum zdarzeń, może wystąpić duże opóźnienie pozyskiwania. W miarę pozyskiwania danych należy oczekiwać, że jest to duże opóźnienie, ale jeśli środowisko użytkownika wskazuje w inny sposób, skontaktuj się z nami, przesyłając bilet pomocy technicznej za pomocą Azure Portal.
+
+## <a name="ingress-best-practices"></a>Najlepsze rozwiązania związane z transferem danych przychodzących
+
+Zalecamy stosowanie następujących najlepszych rozwiązań:
+
+* Skonfiguruj Time Series Insights i centrum IoT Hub lub centrum zdarzeń w tym samym regionie. Spowoduje to zmniejszenie opóźnienia pozyskiwania wynikającego z sieci.
+* Zaplanuj potrzeby skalowania, obliczając przewidywany wskaźnik pozyskiwania i sprawdzając, czy znajduje się on w ramach obsługiwanej stawki wymienionej poniżej
+* Dowiedz się, jak optymalizować i kształtować dane JSON, a także bieżące ograniczenia w wersji zapoznawczej, odczytując [Informacje o sposobie tworzenia kształtu JSON dla](./time-series-insights-update-how-to-shape-events.md)ruchu przychodzącego i zapytań.
+
+### <a name="ingress-scale-and-limitations-in-preview"></a>Skala ruchu przychodzącego i ograniczenia w wersji zapoznawczej
+
+Domyślnie Time Series Insights wersja zapoznawcza obsługuje początkową skalę ruchu przychodzącego do 1 megabajtów na sekundę (MB/s) na środowisko. W razie potrzeby jest dostępna maksymalnie 16 MB/s, skontaktuj się z nami, przesyłając bilet pomocy technicznej w Azure Portal, jeśli jest to konieczne. Ponadto istnieje limit partycji na 0,5 MB/s. Ma to wpływ na to, że klienci korzystający z IoT Hub, w odniesieniu do koligacji między urządzeniem IoT Hub a partycją. W scenariuszach, w których jedno urządzenie bramy przekazuje komunikaty do usługi Hub przy użyciu identyfikatora urządzenia i parametrów połączenia, występuje niebezpieczeństwo w stosunku do limitu 0,5 MB/s, pod warunkiem, że komunikaty docierają do jednej partycji, nawet jeśli ładunek zdarzenia określa inny TS Identyfikatory. Ogólnie stawka transferu danych przychodzących jest wyświetlana jako współczynnik liczby urządzeń w organizacji, częstotliwości emisji zdarzeń i rozmiaru zdarzenia. Podczas obliczania współczynnika pozyskiwania IoT Hub użytkownicy powinni używać liczby używanych połączeń centrów zamiast łącznego urządzenia w organizacji. Trwa Ulepszona obsługa skalowania. Ta dokumentacja zostanie zaktualizowana w celu odzwierciedlenia tych ulepszeń. 
+
+> [!WARNING]
+> W przypadku środowisk, w których IoT Hub jako źródło zdarzenia, Oblicz szybkość pozyskiwania przy użyciu liczby używanych urządzeń koncentratora.
+
+Aby uzyskać więcej informacji na temat jednostek przepływności i partycji, zobacz następujące linki:
+
+* [Skalowanie IoT Hub](https://docs.microsoft.com/azure/iot-hub/iot-hub-scaling)
+* [Skala centrum zdarzeń](https://docs.microsoft.com/azure/event-hubs/event-hubs-scalability#throughput-units)
+* [Partycje centrum zdarzeń](https://docs.microsoft.com/azure/event-hubs/event-hubs-features#partitions)
 
 ### <a name="data-storage"></a>Magazyn danych
 
@@ -53,19 +75,11 @@ Time Series Insights w wersji zapoznawczej zapisuje dane w chłodnym sklepie w u
 > Jako właściciel konta usługi Azure Blob Storage, na którym znajdują się dane w chłodnym sklepie, masz pełny dostęp do wszystkich danych na koncie. Ten dostęp obejmuje uprawnienia do zapisu i usuwania. Nie Edytuj ani nie usuwaj danych, które Time Series Insights zapisywania w wersji zapoznawczej, ponieważ może to spowodować utratę danych.
 
 ### <a name="data-availability"></a>Dostępność danych
+
 Time Series Insights Podgląd partycji i indeksowanie danych w celu uzyskania optymalnej wydajności zapytań. Dane będą dostępne do zbadania po jego indeksowaniu. Ilość danych, które są pozyskiwane, może mieć wpływ na tę dostępność.
 
 > [!IMPORTANT]
-> Wydanie ogólnej dostępności (GA) Time Series Insights udostępni dane w ciągu 60 sekund od momentu odczytania ze źródła zdarzeń. W trakcie korzystania z wersji zapoznawczej może wystąpić dłuższy okres, po upływie którego dane staną się dostępne. Jeśli wystąpi znaczący czas oczekiwania przekraczający 60 sekund, skontaktuj się z nami.
-
-### <a name="scale"></a>Skalowanie
-
-Domyślnie Time Series Insights wersja zapoznawcza obsługuje początkową skalę ruchu przychodzącego do 1 megabajtów na sekundę (MB/s) na środowisko. W razie potrzeby jest dostępna przepływność o rozmiarze do 16 MB/s. Jeśli potrzebujesz rozszerzonej pomocy technicznej skalowania, skontaktuj się z nami.
-
-Możesz uzyskać dodatkowe możliwości związane z ruchem przychodzącym i skalowaniem dla źródła zdarzeń:
-
-* [IoT Hub](../iot-hub/iot-hub-scaling.md)
-* [Event Hubs](../event-hubs/event-hubs-scalability.md)
+> Nadchodzące wydanie ogólnej dostępności Time Series Insights udostępni dane w ciągu 60 sekund od momentu odczytania ze źródła zdarzeń. W trakcie korzystania z wersji zapoznawczej może wystąpić dłuższy okres, po upływie którego dane staną się dostępne. Jeśli wystąpi znaczący czas oczekiwania przekraczający 60 sekund, Prześlij bilet pomocy technicznej za pomocą Azure Portal.
 
 ## <a name="azure-storage"></a>Azure Storage
 

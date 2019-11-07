@@ -7,12 +7,12 @@ ms.service: azure-functions
 ms.topic: conceptual
 ms.date: 10/19/2018
 ms.author: glenga
-ms.openlocfilehash: 89709edf085e1c424156fb68bd86fbc66b6ae8a7
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: 614e02e4ba2599154cd3308d6a4fe222b6f63d3d
+ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72934332"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73576153"
 ---
 # <a name="hostjson-reference-for-azure-functions-1x"></a>Dokumentacja pliku host. JSON dla Azure Functions 1. x
 
@@ -20,7 +20,7 @@ ms.locfileid: "72934332"
 > * [Wersja 1](functions-host-json-v1.md)
 > * [Wersja 2](functions-host-json.md)
 
-Plik metadanych *hosta. JSON* zawiera globalne opcje konfiguracji, które mają wpływ na wszystkie funkcje aplikacji funkcji. W tym artykule wymieniono ustawienia dostępne dla środowiska uruchomieniowego v1. Schemat JSON ma wartość http://json.schemastore.org/host.
+Plik metadanych *hosta. JSON* zawiera globalne opcje konfiguracji, które mają wpływ na wszystkie funkcje aplikacji funkcji. W tym artykule wymieniono ustawienia dostępne dla środowiska uruchomieniowego v1. Schemat JSON jest w http://json.schemastore.org/host.
 
 > [!NOTE]
 > Ten artykuł dotyczy Azure Functions 1. x.  Aby uzyskać odwołanie do pliku host. JSON w funkcjach 2. x, zobacz informacje dotyczące pliku [host. JSON dla Azure Functions 2. x](functions-host-json.md).
@@ -124,7 +124,7 @@ W poniższych sekcjach tego artykułu opisano każdą właściwość najwyższeg
 
 [!INCLUDE [applicationInsights](../../includes/functions-host-json-applicationinsights.md)]
 
-## <a name="documentdb"></a>Baza danych DocumentDB
+## <a name="documentdb"></a>DocumentDB
 
 Ustawienia konfiguracji dla [wyzwalacza Azure Cosmos DB i powiązań](functions-bindings-cosmosdb.md).
 
@@ -142,9 +142,9 @@ Ustawienia konfiguracji dla [wyzwalacza Azure Cosmos DB i powiązań](functions-
 
 |Właściwość  |Domyślne | Opis |
 |---------|---------|---------|
-|Bramamode|Brama|Tryb połączenia używany przez funkcję podczas nawiązywania połączenia z usługą Azure Cosmos DB. Dostępne opcje to `Direct` i `Gateway`|
-|Protocol (Protokół)|Schemat|Protokół połączenia używany przez funkcję podczas nawiązywania połączenia z usługą Azure Cosmos DB.  Przeczytaj [tutaj, aby uzyskać wyjaśnienie obu trybów](../cosmos-db/performance-tips.md#networking)|
-|leasePrefix|nd.|Prefiks dzierżawy do użycia we wszystkich funkcjach w aplikacji.|
+|Bramamode|Brama|Tryb połączenia używany przez funkcję podczas nawiązywania połączenia z usługą Azure Cosmos DB. Opcje są `Direct` i `Gateway`|
+|Protokół|Schemat|Protokół połączenia używany przez funkcję podczas nawiązywania połączenia z usługą Azure Cosmos DB.  Przeczytaj [tutaj, aby uzyskać wyjaśnienie obu trybów](../cosmos-db/performance-tips.md#networking)|
+|leasePrefix|Nie dotyczy|Prefiks dzierżawy do użycia we wszystkich funkcjach w aplikacji.|
 
 ## <a name="durabletask"></a>durableTask
 
@@ -215,15 +215,18 @@ Ustawienia konfiguracji dla [wyzwalaczy i powiązań http](functions-bindings-ht
 }
 ```
 
-[!INCLUDE [functions-host-json-http](../../includes/functions-host-json-http.md)]
+|Właściwość  |Domyślne | Opis |
+|---------|---------|---------| 
+|dynamicThrottlesEnabled|false|Włączenie tego ustawienia powoduje, że potok przetwarzania żądań okresowo sprawdza liczniki wydajności systemu, takie jak połączenia/wątki/procesy/pamięć/procesor CPU/itp. Jeśli którykolwiek z tych liczników korzysta ze wstępnie zdefiniowanego progu górnego (80%), żądania będą odrzucono z odpowiedzią na 429 "zbyt zajęte" do momentu powrotu liczników do normalnych poziomów.|
+|maxConcurrentRequests|nieograniczone (`-1`)|Maksymalna liczba funkcji http, które będą wykonywane równolegle. Pozwala to na kontrolowanie współbieżności, co może ułatwić zarządzanie użyciem zasobów. Na przykład może istnieć funkcja http, która korzysta z dużej ilości zasobów systemowych (pamięć/procesor CPU/gniazda), co powoduje problemy, gdy współbieżność jest zbyt wysoka. Może też istnieć funkcja, która wysyła żądania wychodzące do usługi innej firmy, a te wywołania muszą mieć ograniczoną szybkość. W takich przypadkach można w tym celu zastosować ograniczenie przepustowości.|
+|maxOutstandingRequests|nieograniczone (`-1`)|Maksymalna liczba oczekujących żądań, które są przechowywane w danym momencie. Ten limit obejmuje żądania, które są umieszczane w kolejce, ale nie rozpoczęto wykonywania, a także w trakcie wykonywania. Wszystkie żądania przychodzące przez ten limit są odrzucane przez odpowiedź 429 "zbyt zajęta". Dzięki temu obiekty wywołujące mogą korzystać z strategii ponawiania prób, a także kontrolować maksymalne opóźnienia żądania. Tylko kontroluje kolejkowanie, które występuje w ścieżce wykonywania hosta skryptu. Inne kolejki, takie jak Kolejka żądań ASP.NET, nadal będą obowiązywać i nie mają wpływu na to ustawienie.|
+|routePrefix|api|Prefiks trasy dotyczący wszystkich tras. Użyj pustego ciągu, aby usunąć domyślny prefiks. |
 
 ## <a name="id"></a>id
 
-*Tylko wersja 1. x.*
+Unikatowy identyfikator dla hosta zadania. Może to być dolny identyfikator GUID przypadku z usuniętymi kreskami. Wymagane w przypadku uruchamiania lokalnego. W przypadku uruchamiania na platformie Azure zalecamy, aby nie ustawić wartości identyfikatora. Identyfikator jest generowany automatycznie na platformie Azure po pominięciu `id`. 
 
-Unikatowy identyfikator dla hosta zadania. Może to być dolny identyfikator GUID przypadku z usuniętymi kreskami. Wymagane w przypadku uruchamiania lokalnego. W przypadku uruchamiania na platformie Azure zalecamy, aby nie ustawić wartości identyfikatora. Identyfikator jest generowany automatycznie na platformie Azure, gdy zostanie pominięte `id`. 
-
-W przypadku udostępniania konta magazynu w wielu aplikacjach funkcji upewnij się, że każda aplikacja funkcji ma inny `id`. Możesz pominąć Właściwość `id` lub ręcznie ustawić każdą aplikację funkcji `id` na inną wartość. Wyzwalacz czasomierza korzysta z blokady magazynu, aby upewnić się, że po przeskalowaniu aplikacji funkcji na wiele wystąpień będzie istnieć tylko jedno wystąpienie czasomierza. Jeśli dwie aplikacje funkcji współużytkują ten sam `id` i każdy z nich używa wyzwalacza czasomierza, zostanie uruchomiony tylko jeden czasomierz.
+W przypadku udostępniania konta magazynu w wielu aplikacjach funkcji upewnij się, że każda aplikacja funkcji ma inną `id`. Możesz pominąć Właściwość `id` lub ręcznie ustawić każdą `id` aplikacji funkcji na inną wartość. Wyzwalacz czasomierza korzysta z blokady magazynu, aby upewnić się, że po przeskalowaniu aplikacji funkcji na wiele wystąpień będzie istnieć tylko jedno wystąpienie czasomierza. Jeśli dwie aplikacje funkcji współużytkują ten sam `id` i każdy z nich używa wyzwalacza czasomierza, zostanie uruchomiony tylko jeden czasomierz.
 
 ```json
 {
@@ -252,9 +255,9 @@ Kontroluje filtrowanie dla dzienników pisanych przez [obiekt ILogger](functions
 
 |Właściwość  |Domyślne | Opis |
 |---------|---------|---------| 
-|categoryFilter|nd.|Określa filtrowanie według kategorii| 
-|defaultLevel|Informacje|Dla wszystkich kategorii nieokreślonych w tablicy `categoryLevels` Wyślij dzienniki na tym poziomie i powyżej, aby Application Insights.| 
-|categoryLevels|nd.|Tablica kategorii, która określa minimalny poziom rejestrowania do wysłania do Application Insights dla każdej kategorii. Określona tutaj Kategoria kontroluje wszystkie kategorie, które zaczynają się od tej samej wartości, a dłuższe wartości mają pierwszeństwo. W poprzednim przykładzie pliku *host. JSON* wszystkie kategorie zaczynające się od "host. agregator" na poziomie `Information`. Wszystkie inne kategorie zaczynające się od "host", takie jak "host. wykonawca", logują się na poziomie `Error`.| 
+|categoryFilter|Nie dotyczy|Określa filtrowanie według kategorii| 
+|defaultLevel|Informacje|Dla wszystkich kategorii, które nie są określone w tablicy `categoryLevels`, Wyślij dzienniki na tym poziomie i powyżej, aby Application Insights.| 
+|categoryLevels|Nie dotyczy|Tablica kategorii, która określa minimalny poziom rejestrowania do wysłania do Application Insights dla każdej kategorii. Określona tutaj Kategoria kontroluje wszystkie kategorie, które zaczynają się od tej samej wartości, a dłuższe wartości mają pierwszeństwo. W poprzednim przykładzie pliku *host. JSON* wszystkie kategorie zaczynające się od dziennika "host. agregator" na poziomie `Information`. Wszystkie inne kategorie zaczynające się od "host", takie jak "host. wykonawca", logują się na poziomie `Error`.| 
 
 ## <a name="queues"></a>tworzone
 
@@ -276,7 +279,7 @@ Ustawienia konfiguracji dla [wyzwalaczy i powiązań kolejki magazynu](functions
 |---------|---------|---------| 
 |maxPollingInterval|60000|Maksymalny interwał w milisekundach między sondowaniem kolejki.| 
 |visibilityTimeout|0|Przedział czasu między ponownymi próbami, gdy przetwarzanie komunikatu kończy się niepowodzeniem.| 
-|batchSize|16|Liczba komunikatów w kolejce, które środowisko uruchomieniowe funkcji jednocześnie pobiera i przetwarza równolegle. Gdy liczba jest przetwarzana do `newBatchThreshold`, środowisko uruchomieniowe pobiera kolejną partię i rozpocznie przetwarzanie tych komunikatów. Maksymalna liczba współbieżnych komunikatów przetwarzanych na funkcję to `batchSize` Plus `newBatchThreshold`. Ten limit dotyczy osobno każdej funkcji wyzwalanej przez kolejkę. <br><br>Jeśli chcesz uniknąć równoległego wykonywania komunikatów odebranych w jednej kolejce, możesz ustawić `batchSize` na 1. To ustawienie eliminuje jednak współbieżność tylko wtedy, gdy aplikacja funkcji działa na jednej maszynie wirtualnej. Jeśli aplikacja funkcji jest skalowana do wielu maszyn wirtualnych, każda maszyna wirtualna może uruchomić jedno wystąpienie każdej funkcji wyzwalanej przez kolejkę.<br><br>Wartość maksymalna `batchSize` to 32. | 
+|batchSize|16|Liczba komunikatów w kolejce, które środowisko uruchomieniowe funkcji jednocześnie pobiera i przetwarza równolegle. Gdy przetworzona liczba zostanie Poprzednia `newBatchThreshold`, środowisko uruchomieniowe pobiera kolejną partię i rozpocznie przetwarzanie tych komunikatów. Dlatego Maksymalna liczba współbieżnych komunikatów przetwarzanych na funkcję jest `batchSize` i `newBatchThreshold`. Ten limit dotyczy osobno każdej funkcji wyzwalanej przez kolejkę. <br><br>Aby uniknąć równoległego wykonywania komunikatów odebranych w jednej kolejce, można ustawić `batchSize` na 1. To ustawienie eliminuje jednak współbieżność tylko wtedy, gdy aplikacja funkcji działa na jednej maszynie wirtualnej. Jeśli aplikacja funkcji jest skalowana do wielu maszyn wirtualnych, każda maszyna wirtualna może uruchomić jedno wystąpienie każdej funkcji wyzwalanej przez kolejkę.<br><br>Maksymalna `batchSize` to 32. | 
 |maxDequeueCount|5|Liczba prób przetworzenia komunikatu przed przeniesieniem go do kolejki trującej.| 
 |newBatchThreshold|batchSize/2|Gdy liczba przetwarzanych komunikatów współbieżnie przyjdzie do tego numeru, środowisko uruchomieniowe pobiera kolejną partię.| 
 
@@ -293,7 +296,7 @@ Ustawienie konfiguracji dla [powiązania danych wyjściowych SendGrind](function
 
 |Właściwość  |Domyślne | Opis |
 |---------|---------|---------| 
-|wniosek|nd.|Adres e-mail nadawcy we wszystkich funkcjach.| 
+|wniosek|Nie dotyczy|Adres e-mail nadawcy we wszystkich funkcjach.| 
 
 ## <a name="servicebus"></a>serviceBus
 
@@ -311,8 +314,8 @@ Ustawienia konfiguracji dla [wyzwalaczy Service Bus i powiązań](functions-bind
 
 |Właściwość  |Domyślne | Opis |
 |---------|---------|---------| 
-|maxConcurrentCalls|16|Maksymalna liczba jednoczesnych wywołań wywołania zwrotnego, które powinna zostać zainicjowana przez pompę komunikatów. Domyślnie środowisko uruchomieniowe funkcji przetwarza wiele komunikatów jednocześnie. Aby skierować środowisko uruchomieniowe do przetworzenia tylko jednej kolejki lub komunikatu tematu jednocześnie, ustaw wartość `maxConcurrentCalls` na 1. | 
-|prefetchCount|nd.|Domyślny PrefetchCount, który będzie używany przez bazowe MessageReceiver.| 
+|maxConcurrentCalls|16|Maksymalna liczba jednoczesnych wywołań wywołania zwrotnego, które powinna zostać zainicjowana przez pompę komunikatów. Domyślnie środowisko uruchomieniowe funkcji przetwarza wiele komunikatów jednocześnie. Aby skierować środowisko uruchomieniowe do przetwarzania tylko pojedynczej kolejki lub komunikatu tematu, ustaw `maxConcurrentCalls` na 1. | 
+|prefetchCount|Nie dotyczy|Domyślny PrefetchCount, który będzie używany przez bazowe MessageReceiver.| 
 |Właściwość autorenewtimeout|00:05:00|Maksymalny czas, w którym Blokada wiadomości zostanie odnowiona automatycznie.| 
 
 ## <a name="singleton"></a>pojedynczego
@@ -337,7 +340,7 @@ Ustawienia konfiguracji dla zachowania pojedynczej blokady. Aby uzyskać więcej
 |listenerLockPeriod|00:01:00|Okres, w którym są wykonywane blokady odbiornika.| 
 |listenerLockRecoveryPollingInterval|00:01:00|Przedział czasu używany do odzyskiwania blokady odbiornika, jeśli nie można uzyskać blokady odbiornika podczas uruchamiania.| 
 |lockAcquisitionTimeout|00:01:00|Maksymalny czas, przez jaki środowisko uruchomieniowe podejmie próbę uzyskania blokady.| 
-|lockAcquisitionPollingInterval|nd.|Interwał między kolejnymi próbami przejęcia blokady.| 
+|lockAcquisitionPollingInterval|Nie dotyczy|Interwał między kolejnymi próbami przejęcia blokady.| 
 
 ## <a name="tracing"></a>pochodzenia
 
@@ -356,8 +359,8 @@ Ustawienia konfiguracji dla dzienników tworzonych przy użyciu obiektu `TraceWr
 
 |Właściwość  |Domyślne | Opis |
 |---------|---------|---------| 
-|consoleLevel|Informacje|Poziom śledzenia dla rejestrowania konsoli. Dostępne są następujące opcje: `off`, `error`, `warning`, `info` i `verbose`.|
-|fileLoggingMode|debugOnly|Poziom śledzenia dla rejestrowania plików. Dostępne opcje to `never`, `always`, `debugOnly`.| 
+|consoleLevel|Informacje|Poziom śledzenia dla rejestrowania konsoli. Dostępne są następujące opcje: `off`, `error`, `warning`, `info`i `verbose`.|
+|fileLoggingMode|debugOnly|Poziom śledzenia dla rejestrowania plików. Dostępne są `never`, `always`, `debugOnly`.| 
 
 ## <a name="watchdirectories"></a>watchDirectories
 

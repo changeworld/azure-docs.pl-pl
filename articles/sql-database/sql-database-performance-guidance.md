@@ -1,5 +1,5 @@
 ---
-title: Wskazówki dotyczące dostrajania wydajności Azure SQL Database | Microsoft Docs
+title: Wskazówki dotyczące dostrajania wydajności Azure SQL Database
 description: Dowiedz się więcej o korzystaniu z zaleceń w celu ręcznego dostrajania wydajności zapytań Azure SQL Database.
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: juliemsft
 ms.author: jrasnick
 ms.reviewer: carlrab
 ms.date: 01/25/2019
-ms.openlocfilehash: 4ea5d6c734659d36822f62237a42a8fbe332c996
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 971b35838f370f31d6e2d2da06dfdbced2fafb02
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68567109"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73687675"
 ---
 # <a name="manual-tune-query-performance-in-azure-sql-database"></a>Ręczne dostrajanie wydajności zapytań w Azure SQL Database
 
@@ -25,7 +25,7 @@ Po zidentyfikowaniu problemu z wydajnością, do którego nastąpi SQL Database,
 - Dostosuj aplikację i Zastosuj niektóre najlepsze rozwiązania, które mogą zwiększyć wydajność.
 - Dostrajaj bazę danych, zmieniając indeksy i zapytania, aby skuteczniej pracować z danymi.
 
-W tym artykule przyjęto założenie, że użytkownik pracował już nad zaleceniami usługi Azure SQL Database [Database](sql-database-advisor.md) i zaleceniami autodostrajania Azure SQL Database. [](sql-database-automatic-tuning.md) Przyjęto również założenie, że przegląd dotyczący [monitorowania i dostrajania](sql-database-monitor-tune-overview.md) oraz powiązanych artykułów związanych z rozwiązywaniem problemów z wydajnością. Ponadto w tym artykule założono, że nie masz zasobów procesora, problem z wydajnością związany z działaniem, który można rozwiązać przez zwiększenie rozmiaru lub warstwy usług w celu zapewnienia większej ilości zasobów dla bazy danych.
+W tym artykule przyjęto założenie, że użytkownik pracował już nad [zaleceniami](sql-database-advisor.md) usługi Azure SQL Database Database i zaleceniami [autodostrajania](sql-database-automatic-tuning.md)Azure SQL Database. Przyjęto również założenie, że przegląd dotyczący [monitorowania i dostrajania](sql-database-monitor-tune-overview.md) oraz powiązanych artykułów związanych z rozwiązywaniem problemów z wydajnością. Ponadto w tym artykule założono, że nie masz zasobów procesora, problem z wydajnością związany z działaniem, który można rozwiązać przez zwiększenie rozmiaru lub warstwy usług w celu zapewnienia większej ilości zasobów dla bazy danych.
 
 ## <a name="tune-your-application"></a>Dostrajanie aplikacji
 
@@ -206,11 +206,11 @@ Każda część tego przykładu podejmuje próbę uruchomienia sparametryzowanej
 
 Ponieważ procedura została wykonana przy użyciu wartości 1, otrzymany plan był optymalny dla wartości 1, ale był optymalny dla wszystkich innych wartości w tabeli. Wynik prawdopodobnie nie jest tym, co należy zrobić, jeśli chcesz losowo wybrać każdy plan, ponieważ plan działa wolniej i zużywa więcej zasobów.
 
-W przypadku uruchomienia testu z `SET STATISTICS IO` ustawioną na `ON`wartość w tym przykładzie działanie skanowania logicznego jest wykonywane w tle. Zobaczysz, że istnieją 1 148 odczyty wykonywane przez plan (co jest niewydajne, jeśli średni przypadek ma zwrócić tylko jeden wiersz):
+Jeśli testujesz test z `SET STATISTICS IO` ustawionym na `ON`, działanie skanowania logicznego w tym przykładzie odbywa się w tle. Zobaczysz, że istnieją 1 148 odczyty wykonywane przez plan (co jest niewydajne, jeśli średni przypadek ma zwrócić tylko jeden wiersz):
 
 ![Dostrajanie zapytania przy użyciu skanowania logicznego](./media/sql-database-performance-guidance/query_tuning_2.png)
 
-W drugiej części przykładu użyto wskazówki zapytania, aby nakazać Optymalizatorowi użycie określonej wartości podczas procesu kompilacji. W takim przypadku zmusza procesor zapytań do ignorowania wartości, która jest przesyłana jako parametr, a zamiast tego `UNKNOWN`. Odnosi się do wartości, która ma średnią częstotliwość w tabeli (ignorowanie pochylenia). Powstały plan jest planem opartym na wyszukiwaniach, który jest szybszy i używa mniejszej ilości zasobów, średnio od planu w części 1 tego przykładu:
+W drugiej części przykładu użyto wskazówki zapytania, aby nakazać Optymalizatorowi użycie określonej wartości podczas procesu kompilacji. W takim przypadku zmusza procesor zapytań do ignorowania wartości, która jest przesyłana jako parametr, a zamiast tego przyjmuje `UNKNOWN`. Odnosi się do wartości, która ma średnią częstotliwość w tabeli (ignorowanie pochylenia). Powstały plan jest planem opartym na wyszukiwaniach, który jest szybszy i używa mniejszej ilości zasobów, średnio od planu w części 1 tego przykładu:
 
 ![Dostrajanie zapytania przy użyciu podpowiedzi zapytania](./media/sql-database-performance-guidance/query_tuning_3.png)
 

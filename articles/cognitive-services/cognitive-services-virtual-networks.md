@@ -9,12 +9,12 @@ ms.service: cognitive-services
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.author: dapine
-ms.openlocfilehash: 36e0742101203764a731dd2007d239593a500bfa
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 1ae3caa2d1f90bbbae1070d95d676eb206a361a0
+ms.sourcegitcommit: 359930a9387dd3d15d39abd97ad2b8cb69b8c18b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73507925"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73647345"
 ---
 # <a name="configure-azure-cognitive-services-virtual-networks"></a>Konfigurowanie sieci wirtualnych Cognitive Services platformy Azure
 
@@ -24,7 +24,7 @@ Aplikacja, która uzyskuje dostęp do zasobu Cognitive Services, gdy reguły sie
 
 > [!IMPORTANT]
 > Włączenie reguł zapory dla konta Cognitive Services domyślnie blokuje przychodzące żądania dla danych. Aby można było zezwolić na żądania w programie, należy spełnić jeden z następujących warunków:
-> * Żądanie powinno pochodzić z usługi działającej w ramach platformy Azure Virtual Network (VNet) na liście dozwolonych podsieci docelowego konta Cognitive Services.
+> * Żądanie powinno pochodzić z usługi działającej w ramach platformy Azure Virtual Network (VNet) na liście dozwolonych podsieci docelowego konta Cognitive Services. Punkt końcowy w żądaniach pochodzących z sieci wirtualnej musi być ustawiony jako [niestandardową poddomeną](cognitive-services-custom-subdomains.md) konta Cognitive Services.
 > * Lub żądanie powinno pochodzić z listy dozwolonych adresów IP.
 >
 > Zablokowane żądania obejmują te z innych usług platformy Azure, z Azure Portal z usług rejestrowania i metryk i tak dalej.

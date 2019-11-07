@@ -8,12 +8,12 @@ ms.date: 11/04/2019
 ms.topic: article
 ms.service: azure-blockchain
 ms.reviewer: chroyal
-ms.openlocfilehash: 1f46fe92fd6650daa3ba4b9a930c4d781925d3fc
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
-ms.translationtype: HT
+ms.openlocfilehash: 484322fb0486eeb4ab67366d32350c69a18da743
+ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73518257"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73605919"
 ---
 # <a name="configure-blockchain-data-manager-using-the-azure-portal"></a>Konfigurowanie Data Manager łańcucha bloków przy użyciu Azure Portal
 
@@ -53,7 +53,7 @@ Połączenie wychodzące wysyła dane łańcucha bloków do Azure Event Grid. Po
 
 1. Kliknij przycisk **OK**.
 
-    Utworzenie wystąpienia Data Manager łańcucha bloków może zająć mniej niż minutę. Po wdrożeniu wystąpienia zostanie ono automatycznie uruchomione. Uruchomione wystąpienie Data Manager łańcucha bloków przechwytuje zdarzenia łańcucha bloków z węzła Transaction i wysyła dane do połączeń wychodzących. Jeśli chcesz również przechwycić zdekodowane zdarzenie i dane właściwości z węzła Transaction, Utwórz aplikację łańcucha bloków dla wystąpienia Data Manager łańcucha bloków.
+    Utworzenie wystąpienia Data Manager łańcucha bloków może zająć mniej niż minutę. Po wdrożeniu wystąpienia zostanie ono automatycznie uruchomione. Uruchomione wystąpienie Data Manager łańcucha bloków przechwytuje zdarzenia łańcucha bloków z węzła Transaction i wysyła dane do połączeń wychodzących.
 
     Nowe wystąpienie zostanie wyświetlone na liście wystąpień łańcucha bloków Data Manager dla elementu członkowskiego usługi Azure łańcucha bloków.
 
@@ -63,7 +63,10 @@ Połączenie wychodzące wysyła dane łańcucha bloków do Azure Event Grid. Po
 
 Jeśli dodasz aplikację łańcucha bloków, łańcucha bloków Data Manager dekoduje zdarzenie i stan właściwości aplikacji. W przeciwnym razie wysyłane są tylko nieprzetworzone dane transakcji blokowych i nieprzetworzonych. Łańcucha bloków Data Manager również wykrywa adresy kontraktu po wdrożeniu kontraktu. Można dodać wiele aplikacji łańcucha bloków do wystąpienia Data Manager łańcucha bloków.
 
-Aby można było dodać aplikację, Data Manager łańcucha bloków wymaga pliku ABI i kodu bajtowego kontraktu inteligentnego.
+> [!IMPORTANT]
+> Obecnie aplikacje łańcucha bloków, które deklarują [Typy tablic](https://solidity.readthedocs.io/en/v0.5.12/types.html#arrays) stałych lub [typy mapowania](https://solidity.readthedocs.io/en/v0.5.12/types.html#mapping-types) , nie są w pełni obsługiwane. Właściwości zadeklarowane jako tablica lub typy mapowania nie będą zdekodowane w wiadomościach *ContractPropertiesMsg* lub *DecodedContractEventsMsg* .
+
+Aby można było dodać aplikację, Data Manager łańcucha bloków wymaga inteligentnego ABI kontraktu i wdrożonego pliku kodu.
 
 ### <a name="get-contract-abi-and-bytecode"></a>Pobierz ABI kontraktu i kod bajtowy
 
@@ -79,17 +82,15 @@ ABI kontraktu definiuje inteligentne interfejsy kontraktu. Opisuje sposób korzy
 
 1. Zapisz tablicę **ABI** jako plik JSON. Na przykład *ABI. JSON*. Ten plik jest używany w późniejszym kroku.
 
-Kod bajtowy kontraktu jest skompilowanym inteligentnym kontraktem wykonywanym przez maszynę wirtualną Ethereum. Możesz użyć rozszerzenia, aby skopiować kod bajtowy kontraktu do Schowka.
+Łańcucha bloków Data Manager wymaga wdrożonego kodu bajtowego dla kontraktu inteligentnego. Wdrożony kod bajtowy jest inny niż kod bajtowy kontraktu inteligentnego. Wdrożony kod bajtowy można uzyskać z skompilowanego pliku metadanych kontraktu.
 
-1. W okienku Eksploratora Visual Studio Code rozwiń folder **kompilacja/kontrakty** w projekcie o trwałym stanie.
-1. Kliknij prawym przyciskiem myszy plik JSON metadanych kontraktu. Nazwa pliku jest nazwą kontraktu inteligentnego, po której następuje rozszerzenie **. JSON** .
-1. Wybierz pozycję **Kopiuj kod bajtowy kontraktu**.
+1. Otwórz plik metadanych kontraktu znajdujący się w folderze **kompilacja/kontrakty** w projekcie o trwałym stanie. Nazwa pliku jest nazwą kontraktu inteligentnego, po której następuje rozszerzenie **. JSON** .
+1. Znajdź element **deployedBytecode** w pliku JSON.
+1. Skopiuj wartość szesnastkową bez cudzysłowów.
 
-    ![Visual Studio Code okienku z opcją kopiowania kodu bajtowego kontraktu](./media/data-manager-portal/bytecode-devkit.png)
+    ![Visual Studio Code okienku z użyciem kodu bajtowego w metadanych](./media/data-manager-portal/bytecode-metadata.png)
 
-    Kod bajtowy kontraktu jest kopiowany do Schowka.
-
-1. Zapisz wartość **kodu bajtowego** jako plik JSON. Na przykład, *kod bajtowy. JSON*. Zapisz tylko wartość szesnastkową. Ten plik jest używany w późniejszym kroku.
+1. Zapisz wartość **kodu bajtowego** jako plik JSON. Na przykład, *kod bajtowy. JSON*. Ten plik jest używany w późniejszym kroku.
 
 W poniższym przykładzie przedstawiono pliki *ABI. JSON* i *unformating. JSON* otwarte w edytorze vs Code. Pliki powinny wyglądać podobnie.
 
@@ -169,4 +170,7 @@ Zatrzymaj wystąpienie Menedżera łańcucha bloków, jeśli chcesz zatrzymać p
 
 ## <a name="next-steps"></a>Następne kroki
 
-Dowiedz się więcej o [obsłudze zdarzeń w Azure Event Grid](../../event-grid/event-handlers.md).
+Spróbuj utworzyć Eksplorator komunikatów łańcucha bloków Transaction przy użyciu łańcucha bloków Data Manager i Azure Cosmos DB.
+
+> [!div class="nextstepaction"]
+> [Samouczek: wysyłanie danych do Azure Cosmos DB za pomocą łańcucha bloków Data Manager](data-manager-cosmosdb.md)

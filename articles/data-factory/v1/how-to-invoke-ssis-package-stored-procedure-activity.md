@@ -1,6 +1,6 @@
 ---
-title: Wywoływanie pakietów SSIS za pomocą usługi Azure Data Factory — działania dotyczącego procedury składowanej | Dokumentacja firmy Microsoft
-description: W tym artykule opisano, jak celu wywołania pakietu usług SQL Server Integration Services (SSIS) z potoku usługi Azure Data Factory przy użyciu działania dotyczącego procedury składowanej.
+title: Wywołaj pakiet SSIS za pomocą działania procedury składowanej Azure Data Factory
+description: W tym artykule opisano sposób wywoływania pakietu SQL Server Integration Services (SSIS) z potoku Azure Data Factory za pomocą działania procedury składowanej.
 services: data-factory
 documentationcenter: ''
 author: linda33wj
@@ -13,36 +13,36 @@ ms.devlang: powershell
 ms.topic: conceptual
 ms.date: 01/19/2018
 ms.author: jingwang
-ms.openlocfilehash: 030617d3afd73c68793ca0a1d6185264c92b791f
-ms.sourcegitcommit: 64798b4f722623ea2bb53b374fb95e8d2b679318
+ms.openlocfilehash: f0a63db95d0948951ec98159af381e0a04ac91ff
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/11/2019
-ms.locfileid: "67839901"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73666397"
 ---
-# <a name="invoke-an-ssis-package-using-stored-procedure-activity-in-azure-data-factory"></a>Wywoływanie pakietów SSIS za pomocą działania procedury składowanej w usłudze Azure Data Factory
-W tym artykule opisano jak wywołać pakietu SSIS z potoku usługi Azure Data Factory za pomocą działania procedury składowanej. 
+# <a name="invoke-an-ssis-package-using-stored-procedure-activity-in-azure-data-factory"></a>Wywołaj pakiet SSIS za pomocą działania procedury składowanej w Azure Data Factory
+W tym artykule opisano sposób wywoływania pakietu SSIS z potoku Azure Data Factory przy użyciu działania procedury składowanej. 
 
 > [!NOTE]
-> Ten artykuł dotyczy wersji 1 usługi Data Factory. Jeśli używasz bieżącą wersję usługi Data Factory, zobacz [wywoływanie pakietów usług SSIS za pomocą działania procedury składowanej w](../how-to-invoke-ssis-package-stored-procedure-activity.md).
+> Ten artykuł dotyczy wersji 1 usługi Data Factory. Jeśli używasz bieżącej wersji usługi Data Factory, zobacz [wywoływanie pakietów SSIS za pomocą działania procedury składowanej w](../how-to-invoke-ssis-package-stored-procedure-activity.md).
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
 ### <a name="azure-sql-database"></a>Azure SQL Database 
-Instrukcje przedstawione w tym artykule używa usługi Azure SQL database, który hostuje katalog usług SSIS. Można również użyć bazy danych wystąpienia zarządzanego Azure SQL.
+W przewodniku w tym artykule jest stosowana baza danych Azure SQL Database, która hostuje wykaz usług SSIS. Można również użyć Azure SQL Database wystąpienia zarządzanego.
 
 ### <a name="create-an-azure-ssis-integration-runtime"></a>Tworzenie środowiska Azure SSIS Integration Runtime
-Tworzenie środowiska Azure-SSIS integration runtime, jeśli nie masz, wykonując instrukcje krok po kroku instrukcji w [samouczka: Wdrażanie pakietów usług SSIS](../tutorial-create-azure-ssis-runtime-portal.md). Data Factory w wersji 1 nie można używać do tworzenia środowiska Azure-SSIS integration runtime. 
+Utwórz środowisko Azure-SSIS Integration Runtime, jeśli go nie masz, postępując zgodnie z instrukcjami krok po kroku w [samouczku: Wdrażanie pakietów usług SSIS](../tutorial-create-azure-ssis-runtime-portal.md). Nie można użyć Data Factory w wersji 1 do utworzenia środowiska Azure-SSIS Integration Runtime. 
 
-## <a name="azure-powershell"></a>Azure PowerShell
-W tej sekcji użyjesz programu Azure PowerShell do utworzenia potoku usługi fabryka danych za pomocą działania procedury składowanej, która wywołuje pakietu SSIS.
+## <a name="azure-powershell"></a>Program Azure PowerShell
+W tej sekcji użyjesz Azure PowerShell, aby utworzyć potok Data Factory za pomocą działania procedury składowanej, które wywołuje pakiet usług SSIS.
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
 Zainstaluj najnowsze moduły programu Azure PowerShell, wykonując instrukcje podane w temacie [Instalowanie i konfigurowanie programu Azure PowerShell](/powershell/azure/install-az-ps).
 
 ### <a name="create-a-data-factory"></a>Tworzenie fabryki danych
-Poniższa procedura zawiera kroki, aby utworzyć fabrykę danych. Utworzysz potok z działaniem procedury składowanej w tej fabryce danych. Działanie procedury składowanej wykonuje procedurę składowaną w bazie danych SSISDB do uruchamiania pakietu SSIS.
+Poniższa procedura zawiera procedurę tworzenia fabryki danych. Tworzysz potok za pomocą działania procedury składowanej w tej fabryce danych. Działanie procedury składowanej wykonuje procedurę przechowywaną w bazie danych SSISDB w celu uruchomienia pakietu usług SSIS.
 
 1. Zdefiniuj zmienną nazwy grupy zasobów, której użyjesz później w poleceniach programu PowerShell. Skopiuj poniższy tekst polecenia do programu PowerShell, podaj nazwę [grupy zasobów platformy Azure](../../azure-resource-manager/resource-group-overview.md) w podwójnych cudzysłowach, a następnie uruchom polecenie. Na przykład: `"adfrg"`. 
    
@@ -66,7 +66,7 @@ Poniższa procedura zawiera kroki, aby utworzyć fabrykę danych. Utworzysz poto
     $DataFactoryName = "ADFTutorialFactory";
     ```
 
-5. Aby utworzyć fabrykę danych, uruchom następujące polecenie **New AzDataFactory** polecenia cmdlet, używając właściwości Location i ResourceGroupName ze zmiennej $ResGrp: 
+5. Aby utworzyć fabrykę danych, uruchom następujące polecenie cmdlet **New-AzDataFactory** , używając właściwości Location i ResourceGroupName ze zmiennej $ResGrp: 
     
     ```powershell       
     $df = New-AzDataFactory -ResourceGroupName $ResourceGroupName -Name $dataFactoryName -Location "East US"
@@ -82,12 +82,12 @@ Pamiętaj o następujących kwestiach:
 * Aby utworzyć wystąpienia usługi Data Factory, konto użytkownika używane do logowania się na platformie Azure musi być członkiem roli **współautora** lub **właściciela** albo **administratorem** subskrypcji platformy Azure.
 
 ### <a name="create-an-azure-sql-database-linked-service"></a>Tworzenie połączonej usługi Azure SQL Database
-Utwórz połączoną usługę służącą do połączenia z bazą danych Azure SQL hostującym wykazu usług SSIS z fabryką danych. Data Factory używa informacji w tej połączonej usługi, do łączenia z bazą danych SSISDB i wykonuje procedurę składowaną do uruchamiania pakietów SSIS. 
+Utwórz połączoną usługę w celu połączenia bazy danych Azure SQL Database, która hostuje katalog SSIS w fabryce danych. Data Factory używa informacji w tej połączonej usłudze, aby nawiązać połączenie z bazą danych SSISDB i wykonać procedurę przechowywaną w celu uruchomienia pakietu usług SSIS. 
 
-1. Utwórz plik JSON o nazwie **AzureSqlDatabaseLinkedService.json** w **C:\ADF\RunSSISPackage** folderu o następującej zawartości: 
+1. Utwórz plik JSON o nazwie **AzureSqlDatabaseLinkedService. JSON** w folderze **C:\ADF\RunSSISPackage** o następującej zawartości: 
 
     > [!IMPORTANT]
-    > Zastąp &lt;servername&gt;, &lt;username&gt;@&lt;servername&gt; i &lt;hasło&gt; z wartościami bazy danych SQL Azure przed Zapisywanie pliku.
+    > Przed zapisaniem pliku Zastąp ciąg &lt;ServerName&gt;&lt;username&gt;@&lt;ServerName&gt; i &lt;hasło&gt; z wartościami Azure SQL Database.
 
     ```json
     {
@@ -100,17 +100,17 @@ Utwórz połączoną usługę służącą do połączenia z bazą danych Azure S
         }
         }
     ```
-2. W **programu Azure PowerShell**, przełącz się do **C:\ADF\RunSSISPackage** folderu.
-3. Uruchom **New AzDataFactoryLinkedService** polecenia cmdlet, aby utworzyć połączoną usługę: **AzureSqlDatabaseLinkedService**. 
+2. W **Azure PowerShell**przejdź do folderu **C:\ADF\RunSSISPackage** .
+3. Uruchom polecenie cmdlet **New-AzDataFactoryLinkedService** , aby utworzyć połączoną usługę: **AzureSqlDatabaseLinkedService**. 
 
     ```powershell
     New-AzDataFactoryLinkedService $df -File ".\AzureSqlDatabaseLinkedService.json"
     ```
 
 ### <a name="create-an-output-dataset"></a>Tworzenie wyjściowego zestawu danych
-Ten wyjściowy zestaw danych jest fikcyjnego zestaw danych kieruje harmonogramem potoku. Należy zauważyć, że parametr frequency ma wartość Hour, interval jest ustawiona na 1. W związku z tym potok jest uruchamiany, gdy godziny w ramach potoku godziny rozpoczęcia i zakończenia. 
+Ten wyjściowy zestaw danych jest fikcyjnym zestawem danych, który jest dyskiem z harmonogramem potoku. Należy zauważyć, że częstotliwość jest ustawiona na wartość Godzina, a interwał jest ustawiony na 1. W związku z tym potok jest uruchamiany raz na godzinę w czasie rozpoczęcia i zakończenia potoku. 
 
-1. Utwórz plik OutputDataset.json o następującej zawartości: 
+1. Utwórz plik OutputDataset. JSON o następującej zawartości: 
     
     ```json
     {
@@ -126,19 +126,19 @@ Ten wyjściowy zestaw danych jest fikcyjnego zestaw danych kieruje harmonogramem
         }
     }
     ```
-2. Uruchom **New AzDataFactoryDataset** polecenia cmdlet, aby utworzyć zestaw danych. 
+2. Uruchom polecenie cmdlet **New-AzDataFactoryDataset** , aby utworzyć zestaw danych. 
 
     ```powershell
     New-AzDataFactoryDataset $df -File ".\OutputDataset.json"
     ```
 
 ### <a name="create-a-pipeline-with-stored-procedure-activity"></a>Tworzenie potoku za pomocą działania procedury składowanej 
-W tym kroku utworzysz potok z działaniem procedury składowanej. Działanie wywołuje procedury przechowywanej sp_executesql do uruchamiania pakietu SSIS. 
+W tym kroku utworzysz potok z działaniem procedury składowanej. Działanie wywołuje procedurę składowaną sp_executesql w celu uruchomienia pakietu usług SSIS. 
 
-1. Utwórz plik JSON o nazwie **MyPipeline.json** w **C:\ADF\RunSSISPackage** folderu o następującej zawartości:
+1. W folderze **C:\ADF\RunSSISPackage** Utwórz plik JSON o nazwie Moje **potok. JSON** o następującej zawartości:
 
     > [!IMPORTANT]
-    > Zastąp &lt;nazwa folderu&gt;, &lt;Nazwa projektu&gt;, &lt;nazwy pakietu&gt; nazwą folderu projektu i pakietu w katalogu usług SSIS przed zapisaniem pliku.
+    > Zastąp &lt;nazwę folderu&gt;, &lt;nazwę projektu&gt;, &lt;nazwa pakietu&gt; z nazwami folderu, projektu i pakietu w katalogu usług SSIS przed zapisaniem pliku.
 
     ```json
     {
@@ -168,7 +168,7 @@ W tym kroku utworzysz potok z działaniem procedury składowanej. Działanie wyw
     }    
     ```
 
-2. Aby utworzyć potok: **RunSSISPackagePipeline**Uruchom **New AzDataFactoryPipeline** polecenia cmdlet.
+2. Aby utworzyć potok: **RunSSISPackagePipeline**, uruchom polecenie cmdlet **New-AzDataFactoryPipeline** .
 
     ```powershell
     $DFPipeLine = New-AzDataFactoryPipeline -DataFactoryName $DataFactory.DataFactoryName -ResourceGroupName $ResGrp.ResourceGroupName -Name "RunSSISPackagePipeline" -DefinitionFile ".\RunSSISPackagePipeline.json"
@@ -176,13 +176,13 @@ W tym kroku utworzysz potok z działaniem procedury składowanej. Działanie wyw
 
 ### <a name="monitor-the-pipeline-run"></a>Monitorowanie działania potoku
 
-1. Uruchom **Get AzDataFactorySlice** Aby uzyskać szczegółowe informacje na temat wszystkich wycinków elementu wyjściowego zestawu danych **, który stanowi tabelę wyjściową potoku.
+1. Uruchom polecenie **Get-AzDataFactorySlice** , aby uzyskać szczegółowe informacje na temat wszystkich wycinków wyjściowego zestawu danych * *, który jest tabelą wyjściową potoku.
 
     ```powershell
     Get-AzDataFactorySlice $df -DatasetName sprocsampleout -StartDateTime 2017-10-01T00:00:00Z
     ```
     Zauważ, że określana tutaj właściwość StartDateTime oznacza taki sam czas rozpoczęcia jak określony w potoku JSON. 
-1. Uruchom **Get AzDataFactoryRun** Aby uzyskać szczegółowe informacje o uruchomieniach działania dla określonego wycinka.
+1. Uruchom **Get-AzDataFactoryRun** , aby uzyskać szczegółowe informacje o uruchomieniach działania dla określonego wycinka.
 
     ```powershell
     Get-AzDataFactoryRun $df -DatasetName sprocsampleout -StartDateTime 2017-10-01T00:00:00Z
@@ -190,12 +190,12 @@ W tym kroku utworzysz potok z działaniem procedury składowanej. Działanie wyw
 
     Możesz kontynuować uruchamianie tego polecenia cmdlet do momentu, gdy wycinek będzie widoczny w stanie **Gotowe** lub **Niepowodzenie**. 
 
-    Można uruchomić następujące zapytanie względem bazy danych SSISDB znajdujących się na serwerze Azure SQL, aby sprawdzić, czy pakiet, który został wykonany. 
+    Aby sprawdzić, czy pakiet został uruchomiony, możesz uruchomić następujące zapytanie względem bazy danych SSISDB na serwerze Azure SQL. 
 
     ```sql
     select * from catalog.executions
     ```
 
 ## <a name="next-steps"></a>Następne kroki
-Aby uzyskać szczegółowe informacje dotyczące działania procedury składowanej, zobacz [działania procedura składowana](data-factory-stored-proc-activity.md) artykułu.
+Aby uzyskać szczegółowe informacje o działaniu procedury składowanej, zobacz artykuł dotyczący [działania procedury składowanej](data-factory-stored-proc-activity.md) .
 

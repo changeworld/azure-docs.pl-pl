@@ -1,18 +1,18 @@
 ---
 title: Rejestrowanie diagnostyczne dla Azure Analysis Services | Microsoft Docs
-description: Dowiedz się więcej o konfigurowaniu rejestrowania diagnostycznego dla Azure Analysis Services.
+description: Opisuje sposób konfigurowania rejestrowania diagnostyki zasobów platformy Azure w celu monitorowania serwera Azure Analysis Services.
 author: minewiskan
 ms.service: azure-analysis-services
 ms.topic: conceptual
-ms.date: 09/12/2019
+ms.date: 10/31/2019
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: a9684042a76c9c906a75334c319b4ca8ee0b727b
-ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
+ms.openlocfilehash: b8ae2c529bebebae4ebc2d7b0b8a7e420fe9bcc7
+ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/13/2019
-ms.locfileid: "72298609"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73572789"
 ---
 # <a name="setup-diagnostic-logging"></a>Konfigurowanie rejestrowania diagnostycznego
 
@@ -43,9 +43,9 @@ Wybieranie dzienników **aparatów** wszystkie [xEvents](https://docs.microsoft.
 |Polecenia     |  Początek polecenia       |
 |Polecenia     |  Koniec polecenia       |
 |Błędy & ostrzeżeń     |   Błąd      |
-|Wykrywaj     |   Odnajdź zakończenie      |
-|Powiadomienia     |    Powiadomienia     |
-|Session     |  Inicjowanie sesji       |
+|Wykrywanie     |   Odnajdź zakończenie      |
+|Powiadomienie     |    Powiadomienie     |
+|Sesja     |  Inicjowanie sesji       |
 |Blokady    |  Stanu       |
 |Przetwarzanie zapytania     |   Rozpoczęcie zapytania VertiPaq SE      |
 |Przetwarzanie zapytania     |   Koniec zapytania VertiPaq SE      |
@@ -88,9 +88,9 @@ Kategoria metryki rejestruje te same [metryki serwera](analysis-services-monitor
     * **Usługa**. Wybierz tę opcję, aby rejestrować zdarzenia poziomu usługi. W przypadku archiwizowania na koncie magazynu można wybrać okres przechowywania dzienników diagnostycznych. Dzienniki są usuwane autokasowanie po upływie okresu przechowywania.
     * **Metryki**. Wybierz tę opcję, aby przechowywać pełne dane w [metrykach](analysis-services-monitor.md#server-metrics). W przypadku archiwizowania na koncie magazynu można wybrać okres przechowywania dzienników diagnostycznych. Dzienniki są usuwane autokasowanie po upływie okresu przechowywania.
 
-3. Kliknij przycisk **Save** (Zapisz).
+3. Kliknij pozycję **Zapisz**.
 
-    Jeśli zostanie wyświetlony komunikat o błędzie "nie można zaktualizować diagnostyki \<workspace Name >. Subskrypcja \<subscription ID > nie jest zarejestrowana w celu korzystania z usługi Microsoft. Insights. Postępuj zgodnie z instrukcjami [Diagnostyka Azure](https://docs.microsoft.com/azure/log-analytics/log-analytics-azure-storage) , aby zarejestrować konto, a następnie spróbuj ponownie wykonać tę procedurę.
+    Jeśli zostanie wyświetlony komunikat o błędzie "nie można zaktualizować diagnostyki dla nazwy obszaru roboczego \<>. Identyfikator subskrypcji \<subskrypcji > nie jest zarejestrowany do korzystania z usługi Microsoft. Insights. Postępuj zgodnie z instrukcjami [Diagnostyka Azure](https://docs.microsoft.com/azure/log-analytics/log-analytics-azure-storage) , aby zarejestrować konto, a następnie spróbuj ponownie wykonać tę procedurę.
 
     Jeśli chcesz zmienić sposób zapisywania dzienników diagnostycznych w dowolnym momencie w przyszłości, możesz powrócić do tej strony, aby zmodyfikować ustawienia.
 
@@ -158,7 +158,7 @@ Aby wyświetlić dane diagnostyczne, w obszarze roboczym Log Analytics Otwórz p
 
 ![Opcje przeszukiwania dzienników w Azure Portal](./media/analysis-services-logging/aas-logging-open-log-search.png)
 
-W konstruktorze zapytań rozwiń węzeł **LogManagement** > **AzureDiagnostics**. AzureDiagnostics obejmuje zdarzenia aparatu i usługi. Zwróć uwagę na to, że zapytanie jest tworzone na bieżąco. Pole EventClass @ no__t-0s zawiera nazwy systemu xEvent, które mogą wyglądać dobrze, jeśli użyto xEvents do rejestrowania lokalnego. Kliknij pozycję **EventClass @ no__t-1S** lub jeden z nazw zdarzeń, a obszar roboczy log Analytics kontynuuje konstruowanie zapytania. Pamiętaj, aby zapisać zapytania do ponownego użycia później.
+W konstruktorze zapytań rozwiń węzeł **LogManagement** > **AzureDiagnostics**. AzureDiagnostics obejmuje zdarzenia aparatu i usługi. Zwróć uwagę na to, że zapytanie jest tworzone na bieżąco. Pole EventClass\_s zawiera nazwy systemu xEvent, które mogą wyglądać dobrze, jeśli użyto xEvents do rejestrowania lokalnego. Kliknij pozycję **EventClass\_s** lub jeden z nazw zdarzeń, a obszar roboczy log Analytics kontynuuje konstruowanie zapytania. Pamiętaj, aby zapisać zapytania do ponownego użycia później.
 
 ### <a name="example-queries"></a>Przykładowe zapytania
 
@@ -220,7 +220,7 @@ Aby ukończyć ten samouczek, musisz dysponować następującymi zasobami:
 
 * Istniejący serwer Azure Analysis Services. Aby uzyskać instrukcje dotyczące tworzenia zasobu serwera, zobacz [Tworzenie serwera w Azure Portal](analysis-services-create-server.md)lub [Tworzenie serwera Azure Analysis Services przy użyciu programu PowerShell](analysis-services-create-powershell.md).
 
-### <a name="aconnect-to-your-subscriptions"></a>@no__t — 0Connect do subskrypcji
+### <a name="aconnect-to-your-subscriptions"></a></a>połączyć się z subskrypcjami
 
 Uruchom sesję programu PowerShell Azure i zaloguj się na konto platformy Azure przy użyciu następującego polecenia:  
 
@@ -251,7 +251,7 @@ Set-AzContext -SubscriptionId <subscription ID>
 
 Możesz użyć istniejącego konta magazynu dla dzienników, pod warunkiem, że znajduje się on w tej samej subskrypcji co serwer. W tym samouczku utworzysz nowe konto magazynu przeznaczone do Analysis Services dzienników. Aby to ułatwić, zapisujesz szczegóły konta magazynu w zmiennej o nazwie **sa**.
 
-Należy także użyć tej samej grupy zasobów, która zawiera serwer Analysis Services. Podstaw wartości dla `awsales_resgroup`, `awsaleslogs` i `West Central US` własnymi wartościami:
+Należy także użyć tej samej grupy zasobów, która zawiera serwer Analysis Services. Podstaw wartości `awsales_resgroup`, `awsaleslogs`i `West Central US` z własnymi wartościami:
 
 ```powershell
 $sa = New-AzStorageAccount -ResourceGroupName awsales_resgroup `

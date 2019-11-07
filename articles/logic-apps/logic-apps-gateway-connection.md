@@ -9,12 +9,12 @@ ms.author: estfan
 ms.reviewer: arthii, LADocs
 ms.topic: article
 ms.date: 10/18/2019
-ms.openlocfilehash: 6a01999eff6accf1b8d7f56729d9dce77fbedb0a
-ms.sourcegitcommit: 92d42c04e0585a353668067910b1a6afaf07c709
+ms.openlocfilehash: 49ed6eedf55a8a3c0faa2fa1ff60b9894af78285
+ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/28/2019
-ms.locfileid: "72988708"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73580854"
 ---
 # <a name="connect-to-on-premises-data-sources-from-azure-logic-apps"></a>Nawiązywanie połączenia z lokalnymi źródłami danych z Azure Logic Apps
 
@@ -28,8 +28,8 @@ W tym artykule przedstawiono sposób tworzenia zasobu bramy platformy Azure dla 
 Aby uzyskać informacje o sposobach korzystania z bramy z innymi usługami, zobacz następujące artykuły:
 
 * [Lokalna Brama danych Power BI firmy Microsoft](https://powerbi.microsoft.com/documentation/powerbi-gateway-onprem/)
-* [Microsoft Flow lokalnej bramy danych](https://flow.microsoft.com/documentation/gateway-manage/)
-* [Microsoft PowerApps lokalnej bramy danych](https://powerapps.microsoft.com/tutorials/gateway-management/)
+* [Automatyzacja lokalnej bramy danych](https://flow.microsoft.com/documentation/gateway-manage/)
+* [Lokalna Brama danych firmy Microsoft dla aplikacji zaawansowanych](https://powerapps.microsoft.com/tutorials/gateway-management/)
 * [Azure Analysis Services lokalnej bramy danych](../analysis-services/analysis-services-gateway.md)
 
 <a name="supported-connections"></a>
@@ -47,8 +47,8 @@ W Azure Logic Apps lokalna Brama danych obsługuje [Łączniki lokalne](../conne
 * Baza danych Oracle
 * PostgreSQL
 * SAP
-* SharePoint Server
-* Oprogramowanie SQL Server
+* Oprogramowanie SharePoint Server
+* SQL Server
 * Teradata
 
 Azure Logic Apps obsługuje operacje odczytu i zapisu za pomocą bramy danych. Jednak te operacje mają [limity rozmiaru ładunku](https://docs.microsoft.com/data-integration/gateway/service-gateway-onprem#considerations). Mimo że sama Brama nie wiąże się z dodatkowymi kosztami, [model cenowy Logic Apps](../logic-apps/logic-apps-pricing.md) ma zastosowanie do tych łączników i innych operacji w Azure Logic Apps.
@@ -140,7 +140,7 @@ Aby zaktualizować ustawienia dla połączenia bramy, można edytować połącze
 
 Aby znaleźć wszystkie połączenia interfejsu API skojarzone z subskrypcją platformy Azure:
 
-* W głównym menu platformy Azure przejdź do pozycji **wszystkie usługi**  > **połączenia interfejsu API** > **sieci Web** .
+* W głównym menu platformy Azure przejdź do pozycji **wszystkie usługi** > **połączenia interfejsu API** > **sieci Web** .
 * Lub w głównym menu platformy Azure przejdź do pozycji **wszystkie zasoby**. Ustaw filtr **typu** dla **połączenia interfejsu API**.
 
 <a name="change-delete-gateway-resource"></a>

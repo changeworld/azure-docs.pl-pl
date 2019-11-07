@@ -4,14 +4,14 @@ description: Dowiedz się, jak definiować procedury składowane, wyzwalacze i f
 author: markjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 05/21/2019
+ms.date: 10/31/2019
 ms.author: mjbrown
-ms.openlocfilehash: bec28874bbd67ece4b29f6975e8c7fdcea457bd5
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: cdac8321ec4ac7b2e13c5545a2483527118daae3
+ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70092837"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73606256"
 ---
 # <a name="how-to-write-stored-procedures-triggers-and-user-defined-functions-in-azure-cosmos-db"></a>Jak pisać procedury składowane, wyzwalacze i funkcje zdefiniowane przez użytkownika w usłudze Azure Cosmos DB
 
@@ -21,6 +21,9 @@ Aby wywołać procedurę składowaną, wyzwalacz i funkcję zdefiniowaną przez 
 
 > [!NOTE]
 > W przypadku kontenerów podzielonych na partycje podczas wykonywania procedury składowanej w opcjach żądania należy podać wartość klucza partycji. Procedury składowane są zawsze ograniczone do klucza partycji. Elementy, które mają inną wartość klucza partycji, nie będą widoczne dla procedury składowanej. Ma to również zastosowanie do wyzwalaczy.
+
+> [!Tip]
+> Program Cosmos obsługuje wdrażanie kontenerów za pomocą procedur składowanych, wyzwalaczy i funkcji zdefiniowanych przez użytkownika. Aby uzyskać więcej informacji [, zobacz Tworzenie kontenera Azure Cosmos dB przy użyciu funkcji po stronie serwera.](manage-sql-with-resource-manager.md#create-sproc)
 
 ## <a id="stored-procedures"></a>Jak pisać procedury składowane
 

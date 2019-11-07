@@ -1,24 +1,25 @@
 ---
-title: Zaawansowana ochrona przed zagrożeniami — Azure SQL Database | Microsoft Docs
+title: Skonfiguruj zaawansowaną ochronę przed zagrożeniami — Azure SQL Database
 description: Zaawansowana ochrona przed zagrożeniami wykrywa nietypowe działania bazy danych wskazujące na potencjalne zagrożenia bezpieczeństwa bazy danych w pojedynczej bazie danych lub puli elastycznej.
 services: sql-database
 ms.service: sql-database
 ms.subservice: security
+ms.custom: seo-dt-2019
 ms.topic: conceptual
 author: rmatchoro
 ms.author: ronmat
 ms.reviewer: vanto, carlrab
 ms.date: 08/05/2019
-ms.openlocfilehash: 755a3b391cb7b4909169b034cc8d89892ec2ed05
-ms.sourcegitcommit: c8a102b9f76f355556b03b62f3c79dc5e3bae305
+ms.openlocfilehash: 8a6d40f37dec3488009a702d52d6437cd345717b
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68816539"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73686943"
 ---
 # <a name="azure-sql-database-advanced-threat-protection-for-single-or-pooled-databases"></a>Azure SQL Database zaawansowaną ochronę przed zagrożeniami dla jednej lub puli baz danych
 
-[Zaawansowana ochrona przed zagrożeniami](sql-database-threat-detection-overview.md) dla baz danych o pojedynczej i puli wykrywa nietypowe działania wskazujące nietypowe i potencjalnie szkodliwe próby uzyskania dostępu do baz danych lub ich wykorzystania. Zaawansowana ochrona przed zagrożeniami może identyfikować **potencjalne iniekcje SQL**, **uzyskiwać dostęp z nietypowej lokalizacji lub centrum danych**, **uzyskiwać dostęp z nieznanego podmiotu zabezpieczeń lub potencjalnie szkodliwej aplikacji**oraz wymuszać **poświadczenia SQL** — Zobacz Więcej szczegółów na temat alertów dotyczących [zaawansowanej ochrony przed zagrożeniami](sql-database-threat-detection-overview.md#advanced-threat-protection-alerts).
+[Zaawansowana ochrona przed zagrożeniami](sql-database-threat-detection-overview.md) dla baz danych o pojedynczej i puli wykrywa nietypowe działania wskazujące nietypowe i potencjalnie szkodliwe próby uzyskania dostępu do baz danych lub ich wykorzystania. Zaawansowana ochrona przed zagrożeniami może identyfikować **potencjalne iniekcje SQL**, **uzyskiwać dostęp z nietypowej lokalizacji lub centrum danych**, **uzyskiwać dostęp z nieznanego podmiotu zabezpieczeń lub potencjalnie szkodliwej aplikacji**oraz **wymuszać poświadczenia SQL** — Zobacz Więcej szczegółów na temat [alertów dotyczących zaawansowanej ochrony przed zagrożeniami](sql-database-threat-detection-overview.md#advanced-threat-protection-alerts).
 
 Powiadomienia dotyczące wykrytych zagrożeń można odbierać za pośrednictwem [powiadomień e-mail](sql-database-threat-detection-overview.md#explore-anomalous-database-activities-upon-detection-of-a-suspicious-event) lub [Azure Portal](sql-database-threat-detection-overview.md#explore-advanced-threat-protection-alerts-for-your-database-in-the-azure-portal)
 
@@ -26,7 +27,7 @@ Powiadomienia dotyczące wykrytych zagrożeń można odbierać za pośrednictwem
 
 ## <a name="set-up-advanced-threat-protection-in-the-azure-portal"></a>Skonfiguruj zaawansowaną ochronę przed zagrożeniami w Azure Portal
 
-1. Uruchom Azure Portal pod adresem [https://portal.azure.com](https://portal.azure.com).
+1. Uruchom Azure Portal w [https://portal.azure.com](https://portal.azure.com).
 2. Przejdź do strony konfiguracji serwera Azure SQL Database, który ma być chroniony. W obszarze Ustawienia zabezpieczeń wybierz pozycję **Zaawansowane zabezpieczenia danych**.
 3. Na stronie Konfiguracja **zabezpieczeń danych zaawansowanych** :
 

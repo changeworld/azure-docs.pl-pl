@@ -1,5 +1,5 @@
 ---
-title: Azure SQL Database skalowanie zasobów | Microsoft Docs
+title: Azure SQL Database skalowanie zasobów
 description: W tym artykule wyjaśniono, jak skalować bazę danych, dodając lub usuwając przydzielone zasoby.
 services: sql-database
 ms.service: sql-database
@@ -11,18 +11,18 @@ author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: jrasnik, carlrab
 ms.date: 06/25/2019
-ms.openlocfilehash: 98d24b4f497f09e982101917296b572a5c381f42
-ms.sourcegitcommit: 87efc325493b1cae546e4cc4b89d9a5e3df94d31
+ms.openlocfilehash: fe93dbac74348166ed623754e5e1460132ca968c
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/29/2019
-ms.locfileid: "73053594"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73687440"
 ---
 # <a name="dynamically-scale-database-resources-with-minimal-downtime"></a>Dynamiczne skalowanie zasobów bazy danych przy minimalnym przestoju
 
 Azure SQL Database umożliwia dynamiczne dodawanie większej liczby zasobów do bazy danych z minimalnym [czasem przestoju](https://azure.microsoft.com/support/legal/sla/sql-database/v1_2/); Jednak istnieje przedział czasu, w którym połączenie jest tracone do bazy danych przez krótki czas, co można wyeliminować przy użyciu logiki ponawiania.
 
-## <a name="overview"></a>Przegląd
+## <a name="overview"></a>Omówienie
 
 Gdy zapotrzebowanie na aplikację rośnie od kilku urządzeń i klientów do milionów, Azure SQL Database skalowanie na bieżąco przy minimalnym przestoju. Skalowalność to jedna z najważniejszych cech PaaS, które umożliwiają dynamiczne dodawanie większej liczby zasobów do usługi w razie potrzeby. Azure SQL Database umożliwia łatwe zmienianie zasobów (mocy procesora CPU, pamięci, przepływności we/wy i magazynu) przyznanych do baz danych.
 

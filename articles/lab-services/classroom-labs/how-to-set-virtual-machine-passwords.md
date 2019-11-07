@@ -11,16 +11,16 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/12/2019
+ms.date: 10/31/2019
 ms.author: spelluru
-ms.openlocfilehash: 40cdd0adf7bf100e1dbca64dbba68db3bc59a4fe
-ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
+ms.openlocfilehash: d89d506d8912706bbdb802801b16d01036ecb8e2
+ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72331403"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73583618"
 ---
-# <a name="set-up-and-manage-virtual-machine-pool"></a>Skonfiguruj pulę maszyn wirtualnych i zarządzaj nią 
+# <a name="set-up-and-manage-virtual-machine-pool"></a>Konfigurowanie puli maszyn wirtualnych i zarządzanie nią 
 W tym artykule przedstawiono sposób wykonywania następujących zadań:
 
 - Zwiększ liczbę maszyn wirtualnych w laboratorium
@@ -30,12 +30,12 @@ W tym artykule przedstawiono sposób wykonywania następujących zadań:
 ## <a name="update-the-lab-capacity"></a>Aktualizowanie pojemności laboratorium
 Aby zwiększyć lub zmniejszyć wydajność laboratorium (liczbę maszyn wirtualnych w laboratorium), wykonaj następujące czynności:
 
-1. Na stronie **Pula maszyn wirtualnych** wybierz pozycję **pojemność laboratorium: &lt;number @ no__t-3 maszyn**.
+1. Na stronie **Pula maszyn wirtualnych** wybierz pozycję **pojemność laboratorium: &lt;numer&gt; maszyny**.
 2. Wprowadź nową **liczbę maszyn wirtualnych** , które mają być w laboratorium. Ta wartość musi być większa lub równa liczbie użytkowników zarejestrowanych w laboratorium. 
 3. Następnie wybierz pozycję **Zapisz**. 
 
     ![Przycisk Uruchom wszystko](../media/how-to-set-virtual-machine-passwords/number-of-vms-in-lab.png)
-4. W przypadku zwiększenia pojemności można zobaczyć utworzoną maszynę wirtualną lub maszyny wirtualne. 
+4. W przypadku zwiększenia pojemności można zobaczyć utworzoną maszynę wirtualną lub maszyny wirtualne. Jeśli nowa maszyna wirtualna nie jest widoczna na liście, Odśwież stronę. 
 
     ![Maszyna wirtualna jest tworzona](../media/how-to-set-virtual-machine-passwords/vm-being-created.png)
 
@@ -51,11 +51,13 @@ Aby zwiększyć lub zmniejszyć wydajność laboratorium (liczbę maszyn wirtual
     ![Przycisk Zatrzymaj wszystko](../media/how-to-set-virtual-machine-passwords/stop-all-vms-button.png)
 
 ### <a name="start-selected-vms"></a>Uruchom wybrane maszyny wirtualne
-Istnieją dwa sposoby uruchamiania wybranych maszyn wirtualnych (jeden lub więcej). Pierwszym sposobem jest wybranie maszyny wirtualnej lub maszyn wirtualnych z listy, a następnie na pasku narzędzi wybierz pozycję **Rozpocznij** . Drugi sposób polega na wybraniu maszyny wirtualnej lub maszyn wirtualnych z listy, wybraniu listy rozwijanej w kolumnie **stan** w jednym z wierszy, a następnie wybraniu opcji **Rozpocznij**. 
+Istnieją dwa sposoby uruchamiania wybranych maszyn wirtualnych (jeden lub więcej). Pierwszym sposobem jest wybranie maszyny wirtualnej lub maszyn wirtualnych z listy, a następnie na pasku narzędzi wybierz pozycję **Rozpocznij** . 
+
+Drugi sposób polega na wybraniu co najmniej jednej maszyny wirtualnej na liście i przełączeniu przycisku w kolumnie **stan** . 
 
 ![Uruchom wybrane maszyny wirtualne](../media/how-to-set-virtual-machine-passwords/start-selected-vms.png)
 
-Podobnie można zatrzymać co najmniej jedną maszynę wirtualną za pomocą listy rozwijanej w kolumnie **stan** lub **zatrzymać** na pasku narzędzi. 
+Podobnie można zatrzymać co najmniej jedną maszynę wirtualną, przełączając przycisk w kolumnie **stan** lub wybierając pozycję **Zatrzymaj** na pasku narzędzi. 
 
 ## <a name="reset-vms"></a>Resetowanie maszyn wirtualnych
 Aby zresetować co najmniej jedną maszynę wirtualną, wybierz ją z listy, a następnie na pasku narzędzi wybierz pozycję **Zresetuj** . 
@@ -81,11 +83,19 @@ Przez włączenie/wyłączenie opcji **Użyj tego samego hasła dla wszystkich m
 ### <a name="reset-password-later"></a>Zresetuj hasło później
 
 1. Na stronie **szablon** laboratorium wybierz pozycję **zresetuj hasło** na pasku narzędzi. 
-
-    ![Menu resetowania hasła na stronie głównej](../media/how-to-set-virtual-machine-passwords/reset-password-menu-dashboard.png)
 1. W oknie dialogowym **Resetowanie hasła** wprowadź hasło, a następnie wybierz pozycję **Resetuj hasło**.
     
     ![Okno dialogowe Ustawianie hasła](../media/how-to-set-virtual-machine-passwords/set-password.png)
+
+## <a name="connect-to-student-vms"></a>Nawiązywanie połączenia z maszynami wirtualnymi uczniów
+Twórca laboratorium (instruktor/profesor) może nawiązać połączenie z maszyną wirtualną ucznia w przypadku spełnienia następujących warunków: 
+
+- Podczas tworzenia laboratorium wybrano opcję **Użyj tego samego hasła dla wszystkich maszyn wirtualnych**
+- Maszyna wirtualna jest uruchomiona 
+
+ Aby nawiązać połączenie z maszyną wirtualną ucznia, umieść wskaźnik myszy na maszynie wirtualnej na liście i wybierz przycisk komputer.  
+
+![Przycisk połączenia z maszyną wirtualną ucznia](../media/how-to-set-virtual-machine-passwords/connect-student-vm.png)
 
 ## <a name="next-steps"></a>Następne kroki
 Aby dowiedzieć się więcej o opcjach użycia ucznia (jako właściciel laboratorium), zobacz następujący artykuł: [Konfigurowanie użycia ucznia](how-to-configure-student-usage.md).

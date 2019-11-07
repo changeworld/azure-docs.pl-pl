@@ -8,12 +8,12 @@ author: lgayhardt
 ms.author: lagayhar
 ms.date: 06/07/2019
 ms.reviewer: sergkanz
-ms.openlocfilehash: 4f1b8b116cf2a8411a90946dd5801dd1e541323c
-ms.sourcegitcommit: f7f70c9bd6c2253860e346245d6e2d8a85e8a91b
+ms.openlocfilehash: bcdc6633980ec3684217c8c19b4799befe2af3a3
+ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73063951"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73576857"
 ---
 # <a name="telemetry-correlation-in-application-insights"></a>Korelacja telemetrii w Application Insights
 
@@ -35,7 +35,7 @@ W środowisku mikrousług ślady składników mogą przechodzić do różnych el
 
 ## <a name="example"></a>Przykład
 
-Przyjrzyjmy się przykładowi do aplikacji o nazwie ceny giełdowe, która przedstawia bieżącą cenę rynkową przy użyciu zewnętrznego interfejsu API o nazwie `Stock`. Aplikacja do cen giełdowych ma stronę o nazwie `Stock page`, że przeglądarka sieci Web klienta otwiera się przy użyciu `GET /Home/Stock`. Aplikacja wysyła zapytanie do interfejsu API `Stock` przy użyciu `GET /api/stock/value` wywołania HTTP.
+Przyjrzyjmy się przykładowi do aplikacji o nazwie ceny giełdowe, która przedstawia bieżącą cenę rynkową przy użyciu zewnętrznego interfejsu API o nazwie `Stock`. Aplikacja do cen giełdowych ma stronę o nazwie `Stock page`, że przeglądarka sieci Web klienta otwiera się przy użyciu `GET /Home/Stock`. Aplikacja wysyła zapytanie do interfejsu API `Stock` przy użyciu `GET /api/stock/value`wywołania HTTP.
 
 Dane telemetryczne mogą być analizowane przez uruchomienie zapytania:
 
@@ -90,8 +90,8 @@ W przypadku uruchomienia starszej wersji zestawu SDK Zalecamy zaktualizowanie go
 Ta funkcja jest dostępna w `Microsoft.ApplicationInsights.Web` i `Microsoft.ApplicationInsights.DependencyCollector` pakietów, począwszy od wersji 2.8.0-beta1.
 Jest on domyślnie wyłączony. Aby ją włączyć, Zmień `ApplicationInsights.config`:
 
-- W obszarze `RequestTrackingTelemetryModule` Dodaj element `EnableW3CHeadersExtraction` z wartością ustawioną na `true`.
-- W obszarze `DependencyTrackingTelemetryModule` Dodaj element `EnableW3CHeadersInjection` z wartością ustawioną na `true`.
+- W obszarze `RequestTrackingTelemetryModule`Dodaj element `EnableW3CHeadersExtraction` z wartością ustawioną na `true`.
+- W obszarze `DependencyTrackingTelemetryModule`Dodaj element `EnableW3CHeadersInjection` z wartością ustawioną na `true`.
 - Dodaj `W3COperationCorrelationTelemetryInitializer` w `TelemetryInitializers` podobne do 
 
 ```xml
@@ -244,14 +244,14 @@ if __name__ == '__main__':
     app.run(host='localhost', port=8080, threaded=True)
 ```
 
-Spowoduje to uruchomienie przykładowej aplikacji `flask` na komputerze lokalnym, nasłuchiwanie `8080` portów. Aby skorelować kontekst śledzenia, wysyłamy żądanie do punktu końcowego. W tym przykładzie możemy użyć `curl` polecenia.
+Spowoduje to uruchomienie przykładowej aplikacji `flask` na komputerze lokalnym, nasłuchiwanie `8080`portów. Aby skorelować kontekst śledzenia, wysyłamy żądanie do punktu końcowego. W tym przykładzie możemy użyć `curl` polecenia.
 ```
 curl --header "traceparent: 00-4bf92f3577b34da6a3ce929d0e0e4736-00f067aa0ba902b7-01" localhost:8080
 ```
-Przeglądając [Format nagłówka kontekstu śledzenia](https://www.w3.org/TR/trace-context/#trace-context-http-headers-format), firma Microsoft udostępnia następujące informacje: `version`: `00` 
- `trace-id`: `4bf92f3577b34da6a3ce929d0e0e4736` 
- `parent-id/span-id`: `00f067aa0ba902b7` 
- 0: 1
+Przeglądając [Format nagłówka kontekstu śledzenia](https://www.w3.org/TR/trace-context/#trace-context-http-headers-format), firma Microsoft udostępnia następujące informacje: `version`: `00`
+`trace-id`: `4bf92f3577b34da6a3ce929d0e0e4736`
+`parent-id/span-id`: `00f067aa0ba902b7`
+`trace-flags`: `01`
 
 Jeśli Przyjrzyjmy się wpisowi żądania, który został wysłany do Azure Monitor, można zobaczyć pola wypełnione informacjami nagłówka śledzenia. Te dane można znaleźć w obszarze Dzienniki (analiza) w Azure Monitor Application Insights zasobów.
 
@@ -263,7 +263,7 @@ Pole `operation_ParentId` ma format `<trace-id>.<parent-id>`, gdzie `trace-id` i
 
 ### <a name="logs-correlation"></a>Korelacja dzienników
 
-OpenCensus Python umożliwia korelację dzienników poprzez wzbogacanie rekordów dziennika o identyfikator śledzenia, identyfikator zakresu i flagę próbkowania. W tym celu należy zainstalować [integrację rejestrowania](https://pypi.org/project/opencensus-ext-logging/)OpenCensus. Następujące atrybuty zostaną dodane do `LogRecord`s Python: `traceId`, `spanId` i `traceSampled`. Należy pamiętać, że ta wartość obowiązuje tylko w przypadku rejestratorów utworzonych po integracji.
+OpenCensus Python umożliwia korelację dzienników poprzez wzbogacanie rekordów dziennika o identyfikator śledzenia, identyfikator zakresu i flagę próbkowania. W tym celu należy zainstalować [integrację rejestrowania](https://pypi.org/project/opencensus-ext-logging/)OpenCensus. Następujące atrybuty zostaną dodane do języka Python `LogRecord`s: `traceId`, `spanId` i `traceSampled`. Należy pamiętać, że ta wartość obowiązuje tylko w przypadku rejestratorów utworzonych po integracji.
 Poniżej znajduje się przykładowa aplikacja pokazująca to.
 
 ```python
@@ -334,25 +334,22 @@ Aby skorelować dane telemetryczne w aplikacji do rozruchu asynchronicznego spr�
 
 Czasami można dostosować sposób wyświetlania nazw składników na [mapie aplikacji](../../azure-monitor/app/app-map.md). Aby to zrobić, możesz ręcznie ustawić `cloud_RoleName`, wykonując jedną z następujących czynności:
 
+- Począwszy od Application Insights 2.5.0 Java SDK, można określić nazwę roli w chmurze, dodając `<RoleName>` do pliku `ApplicationInsights.xml`, np.
+
+  ```XML
+  <?xml version="1.0" encoding="utf-8"?>
+  <ApplicationInsights xmlns="http://schemas.microsoft.com/ApplicationInsights/2013/Settings" schemaVersion="2014-05-30">
+     <InstrumentationKey>** Your instrumentation key **</InstrumentationKey>
+     <RoleName>** Your role name **</RoleName>
+     ...
+  </ApplicationInsights>
+  ```
+
 - Jeśli używasz sprężynowego rozruchu z Application Insights sprężynowego rozruchu Starter, jedyną wymaganą zmianą jest ustawienie niestandardowej nazwy aplikacji w pliku Application. Properties.
 
   `spring.application.name=<name-of-app>`
 
   Naruch sprężynowy Starter automatycznie przypisuje `cloudRoleName` do wartości wprowadzonej dla właściwości `spring.application.name`.
-
-- Jeśli używasz `WebRequestTrackingFilter`, `WebAppNameContextInitializer` automatycznie ustawi nazwę aplikacji. Dodaj następujący kod do pliku konfiguracji (ApplicationInsights. xml):
-
-  ```XML
-  <ContextInitializers>
-    <Add type="com.microsoft.applicationinsights.web.extensibility.initializers.WebAppNameContextInitializer" />
-  </ContextInitializers>
-  ```
-
-- Jeśli używasz klasy kontekstu chmury:
-
-  ```Java
-  telemetryClient.getContext().getCloud().setRole("My Component Name");
-  ```
 
 ## <a name="next-steps"></a>Następne kroki
 

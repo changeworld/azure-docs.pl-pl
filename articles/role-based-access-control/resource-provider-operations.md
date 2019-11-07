@@ -13,12 +13,12 @@ ms.workload: identity
 ms.date: 09/25/2019
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: 37d895d5631cf8487549fd9a9ebfb9dc37209c60
-ms.sourcegitcommit: 15e3bfbde9d0d7ad00b5d186867ec933c60cebe6
+ms.openlocfilehash: 6360c7ea5bfdfb2d348cc843288655ed904e6c74
+ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/03/2019
-ms.locfileid: "71839614"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73580790"
 ---
 # <a name="azure-resource-manager-resource-provider-operations"></a>Operacje dostawcy zasobów Azure Resource Manager
 
@@ -446,7 +446,7 @@ Operacje dostawcy zasobów są zawsze rozwijane. Aby uzyskać najnowsze operacje
 > | Akcja | Microsoft. Authorization/providerOperations/Read | Pobierz operacje dla wszystkich dostawców zasobów, których można użyć w definicjach ról. |
 > | Akcja | Microsoft. Authorization/roleAssignments/Delete | Usuń przypisanie roli w określonym zakresie. |
 > | Akcja | Microsoft. Authorization/roleAssignments/Read | Pobierz informacje o przypisaniu roli. |
-> | Akcja | Microsoft. Authorization/roleAssignments/Write | Utwórz przypisanie roli w określonym zakresie. |
+> | Akcja | Microsoft.Authorization/roleAssignments/write | Utwórz przypisanie roli w określonym zakresie. |
 > | Akcja | Microsoft. Authorization/roleDefinitions/Delete | Usuń określoną definicję roli niestandardowej. |
 > | Akcja | Microsoft. Authorization/roleDefinitions/Read | Pobierz informacje o definicji roli. |
 > | Akcja | Microsoft. Authorization/roleDefinitions/Write | Utwórz lub zaktualizuj niestandardową definicję roli z określonymi uprawnieniami i możliwymi do przypisania zakresami. |
@@ -596,14 +596,14 @@ Operacje dostawcy zasobów są zawsze rozwijane. Aby uzyskać najnowsze operacje
 > | Akcja | Microsoft. AzureStack/registrations/customerSubscriptions/Read | Pobiera właściwości subskrypcji klienta Azure Stack |
 > | Akcja | Microsoft. AzureStack/registrations/customerSubscriptions/Write | Tworzy lub aktualizuje subskrypcję klienta Azure Stack |
 > | Akcja | Microsoft. AzureStack/rejestracje/usuwanie | Usuwa rejestrację Azure Stack |
-> | Akcja | Microsoft. AzureStack/registrations/getActivationKey/Action | Pobiera najnowszy klucz aktywacji Azure Stack |
+> | Akcja | Microsoft.AzureStack/registrations/getActivationKey/action | Pobiera najnowszy klucz aktywacji Azure Stack |
 > | Akcja | Microsoft. AzureStack/rejestracje/produkty/listDetails/akcja | Pobiera rozszerzone szczegóły dotyczące produktu Azure Stack Marketplace |
 > | Akcja | Microsoft. AzureStack/rejestracje/produkty/odczyt | Pobiera właściwości produktu Azure Stack Marketplace |
 > | Akcja | Microsoft. AzureStack/rejestracje/produkty/uploadProductLog/akcja | Rejestrowanie stanu i sygnatury czasowej operacji produktu Azure Stack Marketplace |
 > | Akcja | Microsoft. AzureStack/rejestracje/odczyt | Pobiera właściwości rejestracji Azure Stack |
 > | Akcja | Microsoft. AzureStack/rejestracje/zapis | Tworzy lub aktualizuje rejestrację Azure Stack |
 
-## <a name="microsoftbatch"></a>Microsoft. Batch
+## <a name="microsoftbatch"></a>Microsoft.Batch
 
 > [!div class="mx-tdCol2BreakAll"]
 > | Typ akcji | Operacja | Opis |
@@ -909,7 +909,7 @@ Operacje dostawcy zasobów są zawsze rozwijane. Aby uzyskać najnowsze operacje
 > | Akcja | Microsoft. CertificateRegistration/Register/Action | Zarejestruj dostawcę zasobów Microsoft Certificates dla subskrypcji |
 > | Akcja | Microsoft. CertificateRegistration/validateCertificateRegistrationInformation/Action | Weryfikowanie obiektu zakupu certyfikatu bez jego przesyłania |
 
-## <a name="microsoftclassiccompute"></a>Microsoft. ClassicCompute
+## <a name="microsoftclassiccompute"></a>Microsoft.ClassicCompute
 
 > [!div class="mx-tdCol2BreakAll"]
 > | Typ akcji | Operacja | Opis |
@@ -1239,9 +1239,9 @@ Operacje dostawcy zasobów są zawsze rozwijane. Aby uzyskać najnowsze operacje
 > | Akcja | Microsoft. CognitiveServices/accounts/regenerateKey/Action | Wygeneruj ponownie klucz |
 > | Akcja | Microsoft. CognitiveServices/accounts/SKU/Read | Odczytuje dostępne jednostki SKU dla istniejącego zasobu. |
 > | Akcja dataaction | Microsoft. CognitiveServices/accounts/sprawdzanie pisowni/sprawdzanie pisowni/akcja | Pobierz wynik zapytania sprawdzania pisowni za pomocą GET lub POST. |
-> | Akcja dataaction | Microsoft. CognitiveServices/accounts/textanalytics/Entities/akcja | Interfejs API zwraca listę znanych jednostek i ogólnych nazwanych jednostek (\"Person @ no__t-1, \"Location @ no__t-3, \"Organization @ no__t-5 itp.) w danym dokumencie. |
-> | Akcja dataaction | Microsoft. CognitiveServices/accounts/textanalytics/frazy kluczowe/akcja | Interfejs API zwraca listę ciągów oznaczających kluczowe punkty w tekście wejściowym. |
-> | Akcja dataaction | Microsoft. CognitiveServices/accounts/textanalytics/Języki/akcja | Interfejs API zwraca wykryty język i wynik liczbowy z zakresu od 0 do 1. Wyniki zbliżone do 1 wskazują na 100% pewności, że zidentyfikowany język ma wartość true. Obsługiwana jest łączna liczba języków 120. |
+> | Akcja dataaction | Microsoft. CognitiveServices/accounts/textanalytics/Entities/akcja | Interfejs API zwraca listę znanych jednostek i ogólnych nazwanych jednostek (\"osoby\", \"lokalizację\", \"organizacji\" itp.) w danym dokumencie. |
+> | Akcja dataaction | Microsoft. CognitiveServices/accounts/textanalytics/frazy kluczowe/akcja | Interfejs API zwraca listę ciągów wskazujących najważniejsze punkty w tekście wejściowym. |
+> | Akcja dataaction | Microsoft. CognitiveServices/accounts/textanalytics/Języki/akcja | Interfejs API zwraca wykryty język i wynik liczbowy z zakresu od 0 do 1. Wyniki zbliżone do wartości 1 oznaczają 100% pewności, że określony język jest poprawny. Obsługiwanych jest 120 języków. |
 > | Akcja dataaction | Microsoft. CognitiveServices/accounts/textanalytics/tonacji/Action | Interfejs API zwraca wynik liczbowy z zakresu od 0 do 1.<br>Wyniki zbliżone do 1 oznaczają pozytywne tonacji, podczas gdy wyniki zbliżone do 0 oznaczają ujemną tonacji.<br>Wynik 0,5 wskazuje brak tonacji (np.<br>Instrukcja factoid). |
 > | Akcja | Microsoft. CognitiveServices/accounts/Usages/Read | Pobierz użycie przydziału dla istniejącego zasobu. |
 > | Akcja dataaction | Microsoft. CognitiveServices/accounts/VideoSearch/szczegóły/akcja | Uzyskaj wgląd w dane wideo, takie jak powiązane wideo. |
@@ -1266,7 +1266,7 @@ Operacje dostawcy zasobów są zawsze rozwijane. Aby uzyskać najnowsze operacje
 > | Akcja | Microsoft. Commerce/RateCard/odczyt | Zwraca dane oferty, metadane zasobów/licznika i stawki dla danej subskrypcji. |
 > | Akcja | Microsoft. Commerce/UsageAggregates/odczyt | Pobiera użycie Microsoft Azure przez subskrypcję. Wynik zawiera zagregowane dane użycia, informacje dotyczące subskrypcji i zasobów, w określonym przedziale czasu. |
 
-## <a name="microsoftcompute"></a>Microsoft. COMPUTE
+## <a name="microsoftcompute"></a>Microsoft.Compute
 
 > [!div class="mx-tdCol2BreakAll"]
 > | Typ akcji | Operacja | Opis |
@@ -1892,7 +1892,7 @@ Operacje dostawcy zasobów są zawsze rozwijane. Aby uzyskać najnowsze operacje
 > | Akcja | Microsoft. kontach datalakestore/accounts/shares/Delete | Usuń udział. |
 > | Akcja | Microsoft. kontach datalakestore/accounts/shares/Read | Pobierz informacje o udziale. |
 > | Akcja | Microsoft. kontach datalakestore/accounts/shares/Write | Utwórz lub zaktualizuj udział. |
-> | Akcja | Microsoft. kontach datalakestore/accounts/administratora/Action | Przyznaj administratora na Data Lake Store po udzieleniu z firmą Microsoft. Authorization/roleAssignments/Write. |
+> | Akcja | Microsoft.DataLakeStore/accounts/Superuser/action | Przyznaj administratora na Data Lake Store po udzieleniu z firmą Microsoft. Authorization/roleAssignments/Write. |
 > | Akcja | Microsoft. kontach datalakestore/accounts/trustedIdProviders/Delete | Usuń zaufanego dostawcę tożsamości. |
 > | Akcja | Microsoft. kontach datalakestore/accounts/trustedIdProviders/Read | Uzyskaj informacje na temat zaufanego dostawcy tożsamości. |
 > | Akcja | Microsoft. kontach datalakestore/accounts/trustedIdProviders/Write | Utwórz lub zaktualizuj zaufanego dostawcę tożsamości. |
@@ -2296,7 +2296,7 @@ Operacje dostawcy zasobów są zawsze rozwijane. Aby uzyskać najnowsze operacje
 > | Akcja | Microsoft. wspólny/Labs/servicerunners/Read | Odczytywanie modułu uruchamiającego usługi. |
 > | Akcja | Microsoft. wspólny/Labs/servicerunners/Write | Dodawanie lub modyfikowanie modułu uruchamiającego usługi. |
 > | Akcja | Microsoft. wspólny/Labs/sharedGalleries/usuwanie | Usuń udostępnione galerie. |
-> | Akcja | Microsoft. wspólny/Labs/sharedGalleries/odczyt | Odczytuj udostępnione galerie. |
+> | Akcja | Microsoft.DevTestLab/labs/sharedGalleries/read | Odczytuj udostępnione galerie. |
 > | Akcja | Microsoft. wspólny/Labs/sharedGalleries/sharedImages/Delete | Usuń obrazy udostępnione. |
 > | Akcja | Microsoft. wspólny/Labs/sharedGalleries/sharedImages/Read | Odczytuj obrazy udostępnione. |
 > | Akcja | Microsoft. wspólny/Labs/sharedGalleries/sharedImages/Write | Dodaj lub Modyfikuj obrazy udostępnione. |
@@ -2396,7 +2396,7 @@ Operacje dostawcy zasobów są zawsze rozwijane. Aby uzyskać najnowsze operacje
 > | Akcja | Microsoft. DocumentDB/databaseAccounts/API/Databases/Settings/operationResults/Read | Stan odczytu operacji asynchronicznej. Dotyczy tylko typów interfejsu API: "SQL", "MongoDB", "gremlin'". Dotyczy tylko typów ustawień: przepływność. |
 > | Akcja | Microsoft. DocumentDB/databaseAccounts/API/Databases/Settings/Read | Odczytaj przepływność bazy danych. Dotyczy tylko typów interfejsu API: "SQL", "MongoDB", "gremlin'". Dotyczy tylko typów ustawień: przepływność. |
 > | Akcja | Microsoft. DocumentDB/databaseAccounts/API/Databases/Settings/Write | Aktualizowanie przepływności bazy danych. Dotyczy tylko typów interfejsu API: "SQL", "MongoDB", "gremlin'". Dotyczy tylko typów ustawień: przepływność. |
-> | Akcja | Microsoft. DocumentDB/databaseAccounts/API/Databases/Write | Utwórz bazę danych. Dotyczy tylko typów interfejsu API: "SQL", "MongoDB", "gremlin'". |
+> | Akcja | Microsoft. DocumentDB/databaseAccounts/API/Databases/Write | Tworzenie bazy danych Dotyczy tylko typów interfejsu API: "SQL", "MongoDB", "gremlin'". |
 > | Akcja | Microsoft. DocumentDB/databaseAccounts/interfejsy API/przestrzenie kluczy/usuwanie | Usuń przestrzeń kluczy. Dotyczy tylko typów interfejsu API: "Cassandra". |
 > | Akcja | Microsoft. DocumentDB/databaseAccounts/API/Spaces/operationResults/Read | Stan odczytu operacji asynchronicznej. Dotyczy tylko typów interfejsu API: "Cassandra". |
 > | Akcja | Microsoft. DocumentDB/databaseAccounts/API/Spaces/Read | Odczytaj miejsce na dysku lub Wyświetl wszystkie spacje. Dotyczy tylko typów interfejsu API: "Cassandra". |
@@ -2583,8 +2583,8 @@ Operacje dostawcy zasobów są zawsze rozwijane. Aby uzyskać najnowsze operacje
 > | Akcja | Microsoft. EventHub/przestrzenie nazw/ipFilterRules/Delete | Usuń zasób filtru IP |
 > | Akcja | Microsoft. EventHub/przestrzenie nazw/ipFilterRules/Read | Pobierz zasób filtru IP |
 > | Akcja | Microsoft. EventHub/przestrzenie nazw/ipFilterRules/Write | Utwórz zasób filtru IP |
-> | Akcja dataaction | Microsoft. EventHub/przestrzenie nazw/komunikaty/odbieranie/akcja | Odbierz komunikaty |
-> | Akcja dataaction | Microsoft. EventHub/przestrzenie nazw/komunikaty/wysyłanie/akcja | Wysyłanie wiadomości |
+> | Akcja dataaction | Microsoft. EventHub/przestrzenie nazw/komunikaty/odbieranie/akcja | Odbieranie komunikatów |
+> | Akcja dataaction | Microsoft. EventHub/przestrzenie nazw/komunikaty/wysyłanie/akcja | Wysyłanie komunikatów |
 > | Akcja | Microsoft. EventHub/przestrzenie nazw/messagingPlan/Read | Pobiera plan obsługi komunikatów dla przestrzeni nazw.<br>Ten interfejs API jest przestarzały.<br>Właściwości uwidocznione za pośrednictwem zasobu MessagingPlan są przenoszone do zasobu przestrzeni nazw (nadrzędny) w nowszych wersjach interfejsu API.<br>Ta operacja nie jest obsługiwana w interfejsie API w wersji 2017-04-01. |
 > | Akcja | Microsoft. EventHub/przestrzenie nazw/messagingPlan/Write | Aktualizuje plan obsługi komunikatów dla przestrzeni nazw.<br>Ten interfejs API jest przestarzały.<br>Właściwości uwidocznione za pośrednictwem zasobu MessagingPlan są przenoszone do zasobu przestrzeni nazw (nadrzędny) w nowszych wersjach interfejsu API.<br>Ta operacja nie jest obsługiwana w interfejsie API w wersji 2017-04-01. |
 > | Akcja | Microsoft. EventHub/przestrzenie nazw/networkruleset/Delete | Usuń zasób reguły sieci wirtualnej |
@@ -2941,7 +2941,7 @@ Operacje dostawcy zasobów są zawsze rozwijane. Aby uzyskać najnowsze operacje
 > | Akcja | Microsoft. Insights/Metrics/Read | Odczytaj metryki |
 > | Akcja dataaction | Microsoft. Insights/Metrics/Write | Metryki zapisu |
 > | Akcja | Microsoft. Insights/MigrateToNewpricingModel/Action | Migruj subskrypcję do nowego modelu cen |
-> | Akcja | Microsoft. Insights/Operations/Read | operacje odczytu |
+> | Akcja | Microsoft. Insights/Operations/Read | Operacje odczytu |
 > | Akcja | Microsoft. Insights/Register/Action | Zarejestruj dostawcę usługi Microsoft Insights |
 > | Akcja | Microsoft. Insights/RollbackToLegacyPricingModel/Action | Wycofywanie subskrypcji do starszego modelu cen |
 > | Akcja | Microsoft. Insights/ScheduledQueryRules/Delete | Usuwanie reguły zaplanowanego zapytania |
@@ -3012,7 +3012,7 @@ Operacje dostawcy zasobów są zawsze rozwijane. Aby uzyskać najnowsze operacje
 > | Akcja | Microsoft.//Rejestr/Rejestracja/akcja | Rejestruje subskrypcję |
 > | Akcja | Microsoft.//Unregister/akcja | Wyrejestrowuje subskrypcję |
 > | Akcja | Microsoft./magazyny kluczy/magazynu/accessPolicies/zapis | Aktualizowanie istniejących zasad dostępu przez scalanie lub zastępowanie lub Dodawanie nowych zasad dostępu do magazynu. |
-> | Akcja | Microsoft./magazyny/magazynu/usuwanie | Usuwanie magazynu kluczy |
+> | Akcja | Microsoft./magazyny/magazynu/usuwanie | Usuń magazyn kluczy |
 > | Akcja | Microsoft./magazyny/magazynu/wdrożenie/akcja | Zapewnia dostęp do wpisów tajnych w magazynie kluczy podczas wdrażania zasobów platformy Azure |
 > | Akcja | Microsoft./magazyny/magazynu/eventGridFilters/usuwanie | Powiadamia Microsoft. EventGrid, że jest usuwana subskrypcja usługi dla Key Vault |
 > | Akcja | Microsoft./magazyny/magazynu/eventGridFilters/odczyt | Powiadamia Microsoft. EventGrid, że jest wyświetlana subskrypcja usługi dla Key Vault |
@@ -3022,7 +3022,7 @@ Operacje dostawcy zasobów są zawsze rozwijane. Aby uzyskać najnowsze operacje
 > | Akcja | Microsoft./magazyny/magazynu/wpisy tajne/zapis | Utwórz nowy wpis tajny lub zaktualizuj wartość istniejącego klucza tajnego. |
 > | Akcja | Microsoft./magazyny kluczy/magazynu/zapis | Utwórz nowy magazyn kluczy lub zaktualizuj właściwości istniejącego magazynu kluczy |
 
-## <a name="microsoftkusto"></a>Microsoft. Kusto
+## <a name="microsoftkusto"></a>Microsoft.Kusto
 
 > [!div class="mx-tdCol2BreakAll"]
 > | Typ akcji | Operacja | Opis |
@@ -3243,7 +3243,7 @@ Operacje dostawcy zasobów są zawsze rozwijane. Aby uzyskać najnowsze operacje
 > | Akcja | Microsoft. MachineLearning/obszary robocze/resyncstoragekeys/akcja | Ponowne synchronizowanie kluczy konta magazynu skonfigurowanego dla Obszar roboczy usługi Machine Learning |
 > | Akcja | Microsoft. MachineLearning/obszary robocze/zapis | Utwórz lub zaktualizuj dowolne Obszar roboczy usługi Machine Learning |
 
-## <a name="microsoftmachinelearningservices"></a>Microsoft. MachineLearningServices
+## <a name="microsoftmachinelearningservices"></a>Microsoft.MachineLearningServices
 
 > [!div class="mx-tdCol2BreakAll"]
 > | Typ akcji | Operacja | Opis |
@@ -3533,7 +3533,7 @@ Operacje dostawcy zasobów są zawsze rozwijane. Aby uzyskać najnowsze operacje
 > | Akcja | Microsoft. NetApp/Register/Action | Rejestruje subskrypcję za pomocą dostawcy zasobów Microsoft. NetApp |
 > | Akcja | Microsoft. NetApp/Unregister/Action | Wyrejestrowuje subskrypcję za pomocą dostawcy zasobów Microsoft. NetApp |
 
-## <a name="microsoftnetwork"></a>Microsoft. Network
+## <a name="microsoftnetwork"></a>Microsoft.Network
 
 > [!div class="mx-tdCol2BreakAll"]
 > | Typ akcji | Operacja | Opis |
@@ -3947,7 +3947,7 @@ Operacje dostawcy zasobów są zawsze rozwijane. Aby uzyskać najnowsze operacje
 > | Akcja | Microsoft. Network/virtualNetworks/virtualMachines/odczyt | Pobiera odwołania do wszystkich maszyn wirtualnych w sieci wirtualnej |
 > | Akcja | Microsoft. Network/virtualNetworks/virtualNetworkPeerings/Delete | Usuwa komunikację równorzędną sieci wirtualnej |
 > | Akcja | Microsoft. Network/virtualNetworks/virtualNetworkPeerings/odczyt | Pobiera definicję komunikacji równorzędnej sieci wirtualnej |
-> | Akcja | Microsoft. Network/virtualNetworks/virtualNetworkPeerings/Write | Tworzy komunikację równorzędną sieci wirtualnej lub aktualizuje istniejącą komunikację równorzędną sieci wirtualnej |
+> | Akcja | Microsoft.Network/virtualNetworks/virtualNetworkPeerings/write | Tworzy komunikację równorzędną sieci wirtualnej lub aktualizuje istniejącą komunikację równorzędną sieci wirtualnej |
 > | Akcja | Microsoft. Network/virtualNetworks/Write | Tworzy sieć wirtualną lub aktualizuje istniejącą sieć wirtualną |
 > | Akcja | Microsoft. Network/virtualNetworkTaps/Delete | Usuń naciśnięcie Virtual Network |
 > | Akcja | Microsoft. Network/virtualNetworkTaps/Join/Action | Umożliwia dołączenie do programu TAP sieci wirtualnej. Brak alertów. |
@@ -4557,9 +4557,9 @@ Operacje dostawcy zasobów są zawsze rozwijane. Aby uzyskać najnowsze operacje
 > | Akcja | Microsoft. RecoveryServices/magazyny/replicationFabrics/replicationProtectionContainers/replicationProtectedItems/ResolveHealthErrors/akcja |  |
 > | Akcja | Microsoft. RecoveryServices/magazyny/replicationFabrics/replicationProtectionContainers/replicationProtectedItems/submitFeedback/akcja | Prześlij opinię |
 > | Akcja | Microsoft. RecoveryServices/magazyny/replicationFabrics/replicationProtectionContainers/replicationProtectedItems/targetComputeSizes/odczyt | Odczytaj wszystkie docelowe rozmiary obliczeń |
-> | Akcja | Microsoft. RecoveryServices/magazyny/replicationFabrics/replicationProtectionContainers/replicationProtectedItems/testFailover/akcja | Testowanie pracy w trybie failover |
+> | Akcja | Microsoft. RecoveryServices/magazyny/replicationFabrics/replicationProtectionContainers/replicationProtectedItems/testFailover/akcja | Test pracy w trybie failover |
 > | Akcja | Microsoft. RecoveryServices/magazyny/replicationFabrics/replicationProtectionContainers/replicationProtectedItems/testFailoverCleanup/akcja | Czyszczenie testu pracy w trybie failover |
-> | Akcja | Microsoft. RecoveryServices/magazyny/replicationFabrics/replicationProtectionContainers/replicationProtectedItems/unplannedFailover/akcja | Pracy |
+> | Akcja | Microsoft. RecoveryServices/magazyny/replicationFabrics/replicationProtectionContainers/replicationProtectedItems/unplannedFailover/akcja | Tryb failover |
 > | Akcja | Microsoft. RecoveryServices/magazyny/replicationFabrics/replicationProtectionContainers/replicationProtectedItems/updateMobilityService/akcja | Aktualizowanie usługi mobilności |
 > | Akcja | Microsoft. RecoveryServices/magazyny/replicationFabrics/replicationProtectionContainers/replicationProtectedItems/Write | Utwórz lub zaktualizuj wszystkie chronione elementy |
 > | Akcja | Microsoft. RecoveryServices/magazyny/replicationFabrics/replicationProtectionContainers/replicationProtectionContainerMappings/Delete | Usuń wszystkie mapowania kontenerów ochrony |
@@ -4786,7 +4786,7 @@ Operacje dostawcy zasobów są zawsze rozwijane. Aby uzyskać najnowsze operacje
 > | Akcja | Microsoft. Search/searchServices/Stop/Action | Powoduje zatrzymanie usługi wyszukiwania. |
 > | Akcja | Microsoft. Search/searchServices/Write | Tworzy lub aktualizuje usługę wyszukiwania. |
 
-## <a name="microsoftsecurity"></a>Microsoft.Security
+## <a name="microsoftsecurity"></a>Microsoft. Security
 
 > [!div class="mx-tdCol2BreakAll"]
 > | Typ akcji | Operacja | Opis |
@@ -4855,7 +4855,7 @@ Operacje dostawcy zasobów są zawsze rozwijane. Aby uzyskać najnowsze operacje
 > | Akcja | Microsoft. SecurityGraph/diagnosticsettings/Write | Zapisywanie ustawień diagnostycznych |
 > | Akcja | Microsoft. SecurityGraph/diagnosticsettingscategories/odczyt | Odczytywanie kategorii ustawień diagnostycznych |
 
-## <a name="microsoftservicebus"></a>Microsoft. ServiceBus
+## <a name="microsoftservicebus"></a>Microsoft.ServiceBus
 
 > [!div class="mx-tdCol2BreakAll"]
 > | Typ akcji | Operacja | Opis |
@@ -4885,8 +4885,8 @@ Operacje dostawcy zasobów są zawsze rozwijane. Aby uzyskać najnowsze operacje
 > | Akcja | Microsoft. ServiceBus/Namespaces/ipFilterRules/Delete | Usuń zasób filtru IP |
 > | Akcja | Microsoft. ServiceBus/Namespaces/ipFilterRules/Read | Pobierz zasób filtru IP |
 > | Akcja | Microsoft. ServiceBus/Namespaces/ipFilterRules/Write | Utwórz zasób filtru IP |
-> | Akcja dataaction | Microsoft. ServiceBus/przestrzenie nazw/komunikaty/odbieranie/akcja | Odbierz komunikaty |
-> | Akcja dataaction | Microsoft. ServiceBus/przestrzenie nazw/komunikaty/wysyłanie/akcja | Wysyłanie wiadomości |
+> | Akcja dataaction | Microsoft. ServiceBus/przestrzenie nazw/komunikaty/odbieranie/akcja | Odbieranie komunikatów |
+> | Akcja dataaction | Microsoft. ServiceBus/przestrzenie nazw/komunikaty/wysyłanie/akcja | Wysyłanie komunikatów |
 > | Akcja | Microsoft. ServiceBus/Namespaces/messagingPlan/Read | Pobiera plan obsługi komunikatów dla przestrzeni nazw.<br>Ten interfejs API jest przestarzały.<br>Właściwości uwidocznione za pośrednictwem zasobu MessagingPlan są przenoszone do zasobu przestrzeni nazw (nadrzędny) w nowszych wersjach interfejsu API.<br>Ta operacja nie jest obsługiwana w interfejsie API w wersji 2017-04-01. |
 > | Akcja | Microsoft. ServiceBus/Namespaces/messagingPlan/Write | Aktualizuje plan obsługi komunikatów dla przestrzeni nazw.<br>Ten interfejs API jest przestarzały.<br>Właściwości uwidocznione za pośrednictwem zasobu MessagingPlan są przenoszone do zasobu przestrzeni nazw (nadrzędny) w nowszych wersjach interfejsu API.<br>Ta operacja nie jest obsługiwana w interfejsie API w wersji 2017-04-01. |
 > | Akcja | Microsoft. ServiceBus/przestrzenie nazw/migracja/akcja | Operacja migracji przestrzeni nazw |
@@ -5020,7 +5020,7 @@ Operacje dostawcy zasobów są zawsze rozwijane. Aby uzyskać najnowsze operacje
 > | Akcja | Microsoft. Solutions/Register/Action | Zarejestruj się w rozwiązaniach. |
 > | Akcja | Microsoft. Solutions/Unregister/Action | Wyrejestrowuje z rozwiązań. |
 
-## <a name="microsoftsql"></a>Microsoft. SQL
+## <a name="microsoftsql"></a>Microsoft.Sql
 
 > [!div class="mx-tdCol2BreakAll"]
 > | Typ akcji | Operacja | Opis |
@@ -5373,7 +5373,7 @@ Operacje dostawcy zasobów są zawsze rozwijane. Aby uzyskać najnowsze operacje
 > | Akcja | Microsoft. SQL/serwery/syncAgents/odczyt | Zwróć listę agentów synchronizacji lub pobiera właściwości dla określonego agenta synchronizacji. |
 > | Akcja | Microsoft. SQL/serwery/syncAgents/Write | Tworzy agenta synchronizacji z określonymi parametrami lub aktualizuje właściwości określonego agenta synchronizacji. |
 > | Akcja | Microsoft. SQL/serwery/tdeCertificates/akcja | Utwórz/zaktualizuj certyfikat TDE |
-> | Akcja | Microsoft. SQL/serwery/użycia/odczyt | Limit przydziału jednostek DTU serwera i bieżących consuption jednostek DTU przez wszystkie bazy danych na serwerze |
+> | Akcja | Microsoft. SQL/serwery/użycia/odczyt | Limit przydziału jednostek DTU serwera i bieżące użycie jednostek DTU przez wszystkie bazy danych na serwerze |
 > | Akcja | Microsoft. SQL/serwery/virtualNetworkRules/Delete | Usuwa istniejącą regułę Virtual Network |
 > | Akcja | Microsoft. SQL/serwery/virtualNetworkRules/odczyt | Zwróć listę reguł sieci wirtualnej lub pobiera właściwości dla określonej reguły sieci wirtualnej. |
 > | Akcja | Microsoft. SQL/serwery/virtualNetworkRules/Write | Tworzy regułę sieci wirtualnej z określonymi parametrami lub aktualizuje właściwości lub Tagi dla określonej reguły sieci wirtualnej. |
@@ -5386,7 +5386,7 @@ Operacje dostawcy zasobów są zawsze rozwijane. Aby uzyskać najnowsze operacje
 > | Akcja | Microsoft. SQL/virtualClusters/odczyt | Zwróć listę klastrów wirtualnych lub pobiera właściwości dla określonego klastra wirtualnego. |
 > | Akcja | Microsoft. SQL/virtualClusters/Write | Aktualizuje Tagi klastra wirtualnego. |
 
-## <a name="microsoftstorage"></a>Microsoft. Storage
+## <a name="microsoftstorage"></a>Microsoft.Storage
 
 > [!div class="mx-tdCol2BreakAll"]
 > | Typ akcji | Operacja | Opis |
@@ -5749,9 +5749,9 @@ Operacje dostawcy zasobów są zawsze rozwijane. Aby uzyskać najnowsze operacje
 > [!div class="mx-tdCol2BreakAll"]
 > | Typ akcji | Operacja | Opis |
 > | --- | --- | --- |
-> | Akcja | Microsoft. Support/Register/Action | Rejestruje do obsługi dostawcy zasobów |
-> | Akcja | Microsoft. Support/supportTickets/Read | Pobiera szczegóły biletu pomocy technicznej (w tym stan, ważność, szczegóły kontaktu i komunikacja) lub pobiera listę biletów pomocy technicznej między subskrypcjami. |
-> | Akcja | Microsoft. Support/supportTickets/Write | Tworzy lub aktualizuje bilet pomocy technicznej. Możesz utworzyć bilet pomocy technicznej, aby uzyskać pomoc techniczną, rozliczenia, limity przydziału lub problemy związane z zarządzaniem subskrypcjami. Możesz zaktualizować ważność, szczegóły kontaktu i komunikację dla istniejących biletów pomocy technicznej. |
+> | Akcja | Microsoft.Support/register/action | Przeprowadza rejestrację u dostawcy zasobów pomocy technicznej |
+> | Akcja | Microsoft.Support/supportTickets/read | Pobiera szczegóły biletu pomocy technicznej (w tym stan, ważność, szczegóły dotyczące kontaktu i komunikacji) lub pobiera listę biletów pomocy technicznej dla różnych subskrypcji. |
+> | Akcja | Microsoft.Support/supportTickets/write | Tworzy lub aktualizuje bilet pomocy technicznej. Można utworzyć bilet pomocy technicznej dotyczący problemów technicznych, rozliczeń, limitów przydziału lub problemów związanych z zarządzaniem subskrypcją. Można także zaktualizować ważność, szczegóły dotyczące kontaktu i komunikacji dla istniejących biletów pomocy technicznej. |
 
 ## <a name="microsofttimeseriesinsights"></a>Microsoft. TimeSeriesInsights
 
@@ -6235,5 +6235,5 @@ Operacje dostawcy zasobów są zawsze rozwijane. Aby uzyskać najnowsze operacje
 
 ## <a name="next-steps"></a>Następne kroki
 
-- [Role niestandardowe dla zasobów platformy Azure](custom-roles.md)
+- [Niestandardowe role dla zasobów platformy Azure](custom-roles.md)
 - [Wbudowane role dla zasobów platformy Azure](built-in-roles.md)

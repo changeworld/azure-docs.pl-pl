@@ -1,19 +1,19 @@
 ---
-title: Użyj pamięci podręcznej platformy Azure HPC (wersja zapoznawcza) i Azure NetApp Files
+title: Użyj pamięci podręcznej platformy Azure HPC i Azure NetApp Files
 description: Jak korzystać z pamięci podręcznej platformy Azure HPC w celu ulepszania dostępu do danych przechowywanych przy użyciu Azure NetApp Files
 author: ekpgh
 ms.service: hpc-cache
 ms.topic: conceptual
-ms.date: 10/24/2019
+ms.date: 10/30/2019
 ms.author: rohogue
-ms.openlocfilehash: 35d7a11c4f39f15c6b2f904df77b88b85c2208e5
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: c6259dabd5ee9c53d37a3396f36832720a103c23
+ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72954944"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73582164"
 ---
-# <a name="use-azure-hpc-cache-preview-with-azure-netapp-files"></a>Korzystanie z usługi Azure HPC cache (wersja zapoznawcza) z Azure NetApp Files
+# <a name="use-azure-hpc-cache-with-azure-netapp-files"></a>Używanie pamięci podręcznej platformy Azure HPC z Azure NetApp Files
 
 [Azure NetApp Files](https://azure.microsoft.com/services/netapp/) jako miejsce docelowe magazynu dla pamięci podręcznej platformy Azure HPC. W tym artykule wyjaśniono, jak te dwie usługi mogą współdziałać i podano porady dotyczące ich konfigurowania.
 
@@ -21,7 +21,7 @@ Azure NetApp Files łączy swój system operacyjny ONTAP z skalowalnością i sz
 
 Dodanie składnika pamięci podręcznej platformy Azure HPC może poprawić dostęp do pliku przez zaprezentowanie wielu Azure NetApp Files woluminów w jednej zagregowanej przestrzeni nazw. Może zapewnić buforowanie krawędzi dla woluminów znajdujących się w innym regionie usługi. Może również zwiększyć wydajność na żądanie dla woluminów, które zostały utworzone na poziomach usługi niższej warstwy w celu oszczędności kosztów.
 
-## <a name="overview"></a>Przegląd
+## <a name="overview"></a>Omówienie
 
 Aby użyć systemu Azure NetApp Files jako magazynu zaplecza z pamięcią podręczną Azure HPC, wykonaj ten proces.
 

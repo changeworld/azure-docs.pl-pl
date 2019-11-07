@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.author: sgilley
 author: sdgilley
 ms.date: 11/04/2019
-ms.openlocfilehash: 9fbe4f34bb27d2de662f11dbdd047356ff3d3941
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
-ms.translationtype: HT
+ms.openlocfilehash: 4fe405d4027535eb6b0211f7a3f997194b8819aa
+ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 11/04/2019
-ms.locfileid: "73497351"
+ms.locfileid: "73580762"
 ---
 # <a name="what-is-an-azure-machine-learning-workspace"></a>Co to jest obszar roboczy Azure Machine Learning?
 
@@ -32,7 +32,7 @@ Taksonomia obszaru roboczego przedstawiono na poniższym diagramie:
 
 Na diagramie przedstawiono następujące składniki obszaru roboczego:
 
-+ Obszar roboczy może zawierać [Azure Machine Learning wystąpienia obliczeniowe](concept-compute-instance.md), zasoby w chmurze skonfigurowane ze środowiskiem Python niezbędne do uruchomienia Azure Machine Learning.
++ Obszar roboczy może zawierać Azure Machine Learning maszyn wirtualnych notesu, zasobów w chmurze skonfigurowanych przy użyciu środowiska Python niezbędnych do uruchomienia Azure Machine Learning.
 + [Role użytkowników](how-to-assign-roles.md) umożliwiają udostępnianie obszaru roboczego innym użytkownikom, zespołom lub projektom.
 + [Cele obliczeń](concept-azure-machine-learning-architecture.md#compute-targets) są używane do uruchamiania eksperymentów.
 + Podczas tworzenia obszaru roboczego są również tworzone [skojarzone zasoby](#resources) .
@@ -75,11 +75,8 @@ Można również wykonać następujące zadania zarządzania obszarem roboczym:
 | Zarządzanie dostępem do obszaru roboczego    | **&check;**   || |  **&check;**    |
 | Uaktualnianie do wersji Enterprise    | **&check;** |  | |     |
 | Tworzenie zasobów obliczeniowych i zarządzanie nimi    |   | **&check;** | **&check;** |  **&check;**   |
-| Tworzenie wystąpienia obliczeniowego | **&check;**  | **&check;** | **&check;** |     |
+| Tworzenie maszyny wirtualnej notesu |   | **&check;** | |     |
 
-> [!NOTE]
-> Wystąpienia obliczeniowe są dostępne tylko dla obszarów roboczych z regionem **Północno-środkowe stany USA** lub **Południowe Zjednoczone Królestwo**.
->Jeśli obszar roboczy znajduje się w innym regionie, możesz w zamian utworzyć [maszynę wirtualną w notesie](concept-compute-instance.md#notebookvm) i korzystać z niej.
 
 ## <a name='create-workspace'></a>Tworzenie obszaru roboczego
 
@@ -101,7 +98,7 @@ Możesz [uaktualnić obszar roboczy z wersji Basic do Enterprise Edition](how-to
 Podczas tworzenia nowego obszaru roboczego program automatycznie tworzy kilka zasobów platformy Azure, które są używane przez obszar roboczy:
 
 + [Azure Container Registry](https://azure.microsoft.com/services/container-registry/): rejestruje kontenery platformy Docker, które są używane podczas uczenia i wdrażania modelu. Aby zminimalizować koszty, ACR jest **załadowane z opóźnieniem** do momentu utworzenia obrazów wdrożenia.
-+ [Konto usługi Azure Storage](https://azure.microsoft.com/services/storage/): służy jako domyślny magazyn danych dla obszaru roboczego.  Tutaj są przechowywane notesy Jupyter, które są używane z wystąpieniem obliczeniowym Azure Machine Learning.
++ [Konto usługi Azure Storage](https://azure.microsoft.com/services/storage/): służy jako domyślny magazyn danych dla obszaru roboczego.  Tutaj są przechowywane notesy Jupyter, które są używane z maszyną wirtualną Azure Machine Learning notesu.
 + [Azure Application Insights](https://azure.microsoft.com/services/application-insights/): przechowuje informacje o monitorowaniu dla modeli.
 + [Azure Key Vault](https://azure.microsoft.com/services/key-vault/): przechowuje wpisy tajne, które są używane przez cele obliczeniowe i inne poufne informacje, które są zbędne w obszarze roboczym.
 

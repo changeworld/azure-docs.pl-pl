@@ -1,10 +1,10 @@
 ---
 title: Poprawianie bezpieczeństwa zdalnego zarządzania na platformie Azure | Microsoft Docs
-description: W tym artykule opisano kroki związane z poprawianiem zabezpieczeń zdalnego zarządzania podczas administrowania środowiskami Microsoft Azure, w tym usługami w chmurze, usługą Virtual Machines i aplikacjami niestandardowymi.
+description: W tym artykule omówiono procedurę rozszerzania zabezpieczeń zdalnego zarządzania podczas administrowania środowiskami Microsoft Azure, w tym usługami w chmurze, maszynami wirtualnymi i aplikacjami niestandardowymi.
 services: security
 documentationcenter: na
 author: TerryLanfear
-manager: barbkess
+manager: rkarlin
 editor: TomSh
 ms.assetid: 2431feba-3364-4a63-8e66-858926061dd3
 ms.service: security
@@ -13,14 +13,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 11/21/2017
+ms.date: 10/31/2019
 ms.author: terrylan
-ms.openlocfilehash: 5efd82a2cb0652f6dd2aab621c578ff90aca0111
-ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
+ms.openlocfilehash: 45efaadf7d15fff290165fe831c45c0bc063db53
+ms.sourcegitcommit: 359930a9387dd3d15d39abd97ad2b8cb69b8c18b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68927868"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73643796"
 ---
 # <a name="security-management-in-azure"></a>Zarządzanie zabezpieczeniami na platformie Azure
 Subskrybenci platformy Azure mogą zarządzać środowiskami chmury przy użyciu wielu urządzeń, łącznie ze stacjami roboczymi do zarządzania, komputerami deweloperów, a nawet urządzeniami uprzywilejowanych użytkowników końcowych, którzy mają uprawnienia specyficzne dla zadania. W niektórych przypadkach funkcje administracyjne są wykonywane za pośrednictwem konsol sieci Web, takich jak [Azure Portal](https://azure.microsoft.com/features/azure-portal/). W innych przypadkach mogą istnieć bezpośrednie połączenia z platformą Azure z systemów lokalnych za pośrednictwem wirtualnych sieci prywatnych (VPN), usług terminalowych, protokołów aplikacji klienckich lub (programowo) interfejsu API zarządzania usługami Azure (SMAPI, Service Management API). Ponadto punkty końcowe klienta mogą być przyłączone do domeny lub odizolowane i niezarządzane (np. tablety lub smartfony).
@@ -224,7 +224,6 @@ Użycie konfiguracji stacji roboczej ze wzmocnionymi zabezpieczeniami do adminis
 ## <a name="next-steps"></a>Następne kroki
 Dostępne są następujące zasoby zawierające bardziej ogólne informacje dotyczące platformy Azure i powiązanych usług firmy Microsoft, oprócz szczegółowych zagadnień omówionych w tym dokumencie:
 
-* [Securing Privileged Access (Zabezpieczanie uprzywilejowanego dostępu)](https://technet.microsoft.com/library/mt631194.aspx) — szczegółowe informacje techniczne dotyczące projektowania i konfigurowania bezpiecznej administracyjnej stacji roboczej do zarządzania platformą Azure
+* [Securing Privileged Access (Zabezpieczanie uprzywilejowanego dostępu)](https://docs.microsoft.com/windows-server/identity/securing-privileged-access/securing-privileged-access) — szczegółowe informacje techniczne dotyczące projektowania i konfigurowania bezpiecznej administracyjnej stacji roboczej do zarządzania platformą Azure
 * [Microsoft Trust Center (Centrum zaufania Microsoft)](https://microsoft.com/en-us/trustcenter/cloudservices/azure) — dowiedz się więcej na temat funkcji platformy Azure umożliwiających ochronę sieci szkieletowej Azure i obciążeń uruchamianych na platformie Azure
-* [Microsoft Security Response Center (Centrum zabezpieczeń firmy Microsoft)](https://technet.microsoft.com/security/dn440717.aspx) — służące do zgłaszania luk w zabezpieczeniach oprogramowania firmy Microsoft, w tym problemów z platformą Azure — w tym celu można również korzystać z adresu e-mail [secure@microsoft.com](mailto:secure@microsoft.com)
-* [Blog zabezpieczeń platformy Azure](https://blogs.msdn.com/b/azuresecurity/) — aktualne informacje dotyczące najnowszych zabezpieczeń platformy Azure
+* [Microsoft Security Response Center (Centrum zabezpieczeń firmy Microsoft)](https://www.microsoft.com/msrc) — służące do zgłaszania luk w zabezpieczeniach oprogramowania firmy Microsoft, w tym problemów z platformą Azure — w tym celu można również korzystać z adresu e-mail [secure@microsoft.com](mailto:secure@microsoft.com)

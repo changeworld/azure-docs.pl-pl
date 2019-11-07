@@ -1,5 +1,5 @@
 ---
-title: Reguły zapory Azure SQL Database i Azure SQL Data Warehouse IP | Microsoft Docs
+title: Reguły zapory Azure SQL Database i Azure SQL Data Warehouse IP
 description: Skonfiguruj reguły zapory adresów IP na poziomie serwera dla bazy danych SQL lub SQL Data Warehouse zapory. Zarządzanie dostępem i konfigurowanie reguł zapory adresów IP na poziomie bazy danych dla jednej lub puli baz danych.
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: VanMSFT
 ms.author: vanto
 ms.reviewer: carlrab
 ms.date: 03/12/2019
-ms.openlocfilehash: e3e65a6deadfbcad563a6b64c0a9f48182cdd571
-ms.sourcegitcommit: 6013bacd83a4ac8a464de34ab3d1c976077425c7
+ms.openlocfilehash: 52566dbc60c3c2fd532891ab4f7d3461f9d77557
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/30/2019
-ms.locfileid: "71686470"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73690034"
 ---
 # <a name="azure-sql-database-and-azure-sql-data-warehouse-ip-firewall-rules"></a>Reguły zapory Azure SQL Database i Azure SQL Data Warehouse IP
 
@@ -218,7 +218,7 @@ az sql server firewall-rule create --resource-group myResourceGroup --server $se
 
 ### <a name="use-a-rest-api-to-manage-server-level-ip-firewall-rules"></a>Zarządzanie regułami zapory adresów IP na poziomie serwera przy użyciu interfejsu API REST
 
-| API | Poziom | Opis |
+| Interfejs API | Poziom | Opis |
 | --- | --- | --- |
 | [Wyświetlanie listy reguł zapory](https://docs.microsoft.com/rest/api/sql/firewallrules/listbyserver) |Serwer |Wyświetla bieżące reguły zapory adresów IP na poziomie serwera |
 | [Utwórz lub zaktualizuj reguły zapory](https://docs.microsoft.com/rest/api/sql/firewallrules/createorupdate) |Serwer |Tworzy lub aktualizuje reguły zapory adresów IP na poziomie serwera |

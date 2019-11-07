@@ -1,26 +1,25 @@
 ---
 title: 'Szybki Start: Tworzenie nowej aplikacji w portalu LUIS'
 titleSuffix: Azure Cognitive Services
-description: W tym przewodniku szybki start utworzysz nową aplikację w portalu LUIS. Utwórz podstawowe elementy aplikacji, intencje i jednostki. Przetestuj aplikację, dostarczając przykładowej wypowiedź użytkownika w panelu test interaktywny, aby uzyskać przewidywany cel. Tworzenie aplikacji jest bezpłatne; nie wymaga subskrypcji platformy Azure.
+description: W tym przewodniku szybki start utworzysz podstawowe elementy aplikacji, intencje i jednostki, a także test z przykładową wypowiedźą w portalu LUIS.
 services: cognitive-services
 author: diberry
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: quickstart
-ms.date: 09/04/2019
+ms.date: 11/04/2019
 ms.author: diberry
-ms.openlocfilehash: 6888c53122e649d6a0e91f8ece30101f051c08e8
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
-ms.translationtype: HT
+ms.openlocfilehash: 087b3a61902c533648b5d6e1b4b763f88ee5d794
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73488782"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73669675"
 ---
 # <a name="quickstart-create-a-new-app-in-the-luis-portal"></a>Szybki Start: Tworzenie nowej aplikacji w portalu LUIS
 
-
-[!INCLUDE [Waiting for LUIS portal refresh](./includes/wait-v3-upgrade.md)]
+[!INCLUDE [Uses preview portal](./includes/uses-portal-preview.md)]
 
 W tym przewodniku szybki start utworzysz nową aplikację w [portalu Luis](https://www.luis.ai). Najpierw utworzysz podstawowe elementy aplikacji, **intencje**i **jednostki**. Następnie przetestuj aplikację, dostarczając przykładowej wypowiedź użytkownika w panelu testów interakcyjnych, aby uzyskać przewidywany cel.
 
@@ -32,7 +31,7 @@ Tworzenie aplikacji jest bezpłatne i nie wymaga subskrypcji platformy Azure. Gd
 
 1. Wybierz pozycję **+ Utwórz** na pasku narzędzi kontekstu.
 
-   [![utworzyć nową aplikację w portalu LUIS](./media/get-started-portal-build-app/create-app-in-portal.png)](./media/get-started-portal-build-app/create-app-in-portal.png#lightbox)
+   [![utworzyć nową aplikację w portalu LUIS](./media/create-app-in-portal.png)](./media/create-app-in-portal.png#lightbox)
 
 1. W oknie podręcznym Skonfiguruj aplikację przy użyciu następujących ustawień, a następnie wybierz pozycję **gotowe**.
 
@@ -40,8 +39,8 @@ Tworzenie aplikacji jest bezpłatne i nie wymaga subskrypcji platformy Azure. Gd
    |--|--|--|
    |Nazwa|`myEnglishApp`|Unikatowa nazwa aplikacji LUIS<br>Wymagane|
    |Kultura|**Angielski**|Język wyrażenia długości od użytkowników, **en-us**<br>Wymagane|
-   |Opis|`App made with LUIS Portal`|Opis aplikacji<br>Obowiązkowe|
-   | | | |
+   |Opis (opcjonalnie)|`App made with LUIS Portal`|Opis aplikacji<br>Obowiązkowe|
+   |Zasób predykcyjny (opcjonalnie) |-  |Nie wybieraj. LUIS udostępnia klucz początkowy do użycia bezpłatnie na potrzeby tworzenia i 1 000 żądań punktu końcowego przewidywania. |
 
    ![Wprowadź nowe ustawienia aplikacji](./media/get-started-portal-build-app/create-new-app-settings.png)
 
@@ -61,13 +60,11 @@ Dwie różne _intencje_ dotyczące aplikacji są wyrównane do następujących i
 
 Aby utworzyć intencje, wykonaj następujące czynności:
 
-1. Po utworzeniu aplikacji znajduje się na stronie **intencje** w sekcji **kompilacja** . Wybierz pozycję**Create new intent** (Utwórz nową intencję).
+1. Po utworzeniu aplikacji znajduje się na stronie **intencje** w sekcji **kompilacja** . Wybierz pozycję **Utwórz**.
 
-   [![wybierz przycisk Utwórz nowy cel](./media/get-started-portal-build-app/create-new-intent-button.png)](./media/get-started-portal-build-app/create-new-intent-button.png#lightbox)
+   [![wybierz pozycję Utwórz, aby utworzyć nowy cel](./media/get-started-portal-build-app/create-new-intent-button.png)](./media/get-started-portal-build-app/create-new-intent-button.png#lightbox)
 
 1. Wprowadź nazwę zamierzenia, `FindForm`a następnie wybierz pozycję **gotowe**.
-
-   ![Wprowadź nazwę zamiaru FindForm](./media/get-started-portal-build-app/create-new-intent-dialog.png)
 
 ## <a name="add-an-example-utterance"></a>Dodawanie przykładu wypowiedź
 
@@ -113,13 +110,16 @@ Aby zwrócić numer formularza w odpowiedzi przewidywania środowiska uruchomien
 
 1. Wybierz pozycję **jednostki** z menu po lewej stronie.
 
-1. Na stronie **jednostki** wybierz pozycję **Utwórz nową jednostkę** .
+1. Na stronie **jednostki** wybierz pozycję **Utwórz** .
 
-1. Wprowadź nazwę `Human Resources Form Number`, wybierz typ podmiotu **wyrażenia regularnego** , a następnie wprowadź wyrażenie regularne, `hrf-[0-9]{6}`. Ten wpis Dopasowuje znaki literału, `hrf-`i zezwala na dokładnie 6 cyfr.
+1. Wprowadź nazwę `Human Resources Form Number`, wybierz typ podmiotu **wyrażenia regularnego** , a następnie wybierz przycisk **dalej**.
 
-   ![Wprowadź informacje o jednostce dla jednostki wyrażenia regularnego](./media/get-started-portal-build-app/create-regular-expression-entity.png)
+   ![Utwórz jednostkę wyrażenia regularnego](./media/get-started-portal-build-app/create-regular-expression-entity.png)
 
-1. Wybierz pozycję **Done** (Gotowe).
+1. Wprowadź wyrażenie regularne, `hrf-[0-9]{6}`. Ten wpis jest zgodny ze znakami literału, `hrf-`i zezwala na dokładnie 6 cyfr, a następnie wybierz pozycję **Utwórz**.
+
+   ![Wprowadź wyrażenie regularne dla jednostki](./media/get-started-portal-build-app/create-regular-expression-entity-with-expression.png)
+
 
 ## <a name="add-example-utterances-to-the-none-intent"></a>Dodawanie przykładowych wypowiedzi do intencji None
 
@@ -137,11 +137,11 @@ Przykładowa metoda wyrażenia długości **nie** powinna być poza domeną apli
    |Order a pizza for me (Zamów dla mnie pizzę)|
    |Penguins in the ocean (Pingwiny w oceanie)|
 
-   W przypadku tej aplikacji kadrowej te przykładowe wyrażenia długości znajdują się poza domeną. Jeśli domena zasobów ludzkich obejmuje zwierzęta, żywność lub ocean, należy użyć innego przykładu wyrażenia długości dla opcji **Brak** .
+   W przypadku tej aplikacji te przykładowe wyrażenia długości znajdują się poza domeną. Jeśli domena obejmuje zwierzęta, żywność lub ocean, należy użyć innego przykładu wyrażenia długości dla opcji **Brak** .
 
 ## <a name="train-the-app"></a>Uczenie aplikacji
 
-W menu w prawym górnym rogu wybierz pozycję **uczenie** , aby zastosować zmiany wprowadzone w modelu zamierzenia do bieżącej wersji aplikacji.
+[!INCLUDE [LUIS How to Train steps](includes/howto-train.md)]
 
 ## <a name="look-at-the-regular-expression-entity-in-the-example-utterances"></a>Przyjrzyj się jednostce wyrażenia regularnego w przykładzie wyrażenia długości
 
@@ -168,8 +168,6 @@ Użyj interaktywnego okienka **testowego** w portalu Luis, aby sprawdzić, czy j
 ## <a name="clean-up-resources"></a>Oczyszczanie zasobów
 
 Po zakończeniu korzystania z tego przewodnika Szybki Start i przechodzenia do następnego przewodnika Szybki Start wybierz pozycję **Moje aplikacje** w górnym menu nawigacji. Następnie zaznacz pole wyboru po lewej stronie z listy i wybierz pozycję **Usuń** z paska narzędzi kontekstu powyżej listy.
-
-[![usunąć aplikacji z listy Moje aplikacje](./media/get-started-portal-build-app/delete-app.png)](./media/get-started-portal-build-app/delete-app.png#lightbox)
 
 ## <a name="next-steps"></a>Następne kroki
 

@@ -11,12 +11,12 @@ author: MayMSFT
 manager: cgronlun
 ms.reviewer: nibaccam
 ms.date: 09/25/2019
-ms.openlocfilehash: 12c08a95cd43f9f988c98711141b1b1f879e8b3a
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
-ms.translationtype: HT
+ms.openlocfilehash: 53a190a611af42f0eaca8d4348d1d066d3d4f9e4
+ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 11/04/2019
-ms.locfileid: "73489380"
+ms.locfileid: "73584416"
 ---
 # <a name="train-with-datasets-preview-in-azure-machine-learning"></a>Uczenie się z zestawami danych (wersja zapoznawcza) w Azure Machine Learning
 [!INCLUDE [applies-to-skus](../../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -104,7 +104,7 @@ experiment_run.wait_for_completion(show_output=True)
 
 Jeśli chcesz, aby pliki danych były dostępne w celu obliczeń na potrzeby szkoleń, użyj [FileDataset](https://docs.microsoft.com/python/api/azureml-core/azureml.data.file_dataset.filedataset?view=azure-ml-py) do instalowania lub pobierania plików, do których się odwołuje.
 
-W przypadku instalowania systemu plików należy dołączyć ten system plików do katalogu (punkt instalacji) i udostępnić go w celu obliczenia. Instalowanie jest natychmiastowe, ponieważ pliki są ładowane tylko w czasie przetwarzania. Instalowanie jest obsługiwane i zalecane w przypadku obliczeń opartych na systemie Linux, w tym Azure Machine Learning obliczeń, maszyn wirtualnych i usługi HDInsight. W przypadku obliczeń nieopartych na systemie Linux obsługiwane jest tylko pobieranie.  
+W przypadku instalowania systemu plików należy dołączyć ten system plików do katalogu (punkt instalacji) i udostępnić go w celu obliczenia. Instalowanie jest natychmiastowe, ponieważ pliki są ładowane tylko w czasie przetwarzania. Instalowanie jest obsługiwane i zalecane w przypadku obliczeń opartych na systemie Linux, w tym Azure Machine Learning obliczeń, maszyn wirtualnych i usługi HDInsight. W przypadku obliczeń opartych na systemie innym niż Linux tylko pobieranie jest obsługiwane.  
 
 >[!WARNING]
 > Jeśli rozmiar danych przekracza limit pamięci docelowej obliczeń, pobieranie nie powiedzie się.

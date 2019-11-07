@@ -9,12 +9,12 @@ ms.service: azure-functions
 ms.topic: conceptual
 ms.date: 08/22/2019
 ms.author: azfuncdf
-ms.openlocfilehash: 7b395bd6024beb52b9263ac4fe655b5328a8e662
-ms.sourcegitcommit: 42748f80351b336b7a5b6335786096da49febf6a
+ms.openlocfilehash: 555b4d95358978e84e14e8a2e8b3d1c9cb2efc18
+ms.sourcegitcommit: b2fb32ae73b12cf2d180e6e4ffffa13a31aa4c6f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/09/2019
-ms.locfileid: "70933153"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73614598"
 ---
 # <a name="durable-functions-types-and-features-azure-functions"></a>Durable Functions typy i funkcje (Azure Functions)
 
@@ -24,7 +24,7 @@ Istnieją obecnie cztery trwałe typy funkcji w Azure Functions: aktywność, Or
 
 ## <a name="orchestrator-functions"></a>Funkcje programu Orchestrator
 
-Funkcje programu Orchestrator opisują sposób wykonywania akcji i kolejność wykonywania akcji. Funkcje programu Orchestrator opisują aranżację w kodzieC# (lub JavaScript), jak pokazano w [Durable Functions wzorców aplikacji](durable-functions-overview.md#application-patterns). Aranżacja może mieć wiele różnych typów akcji, w tym [funkcje działania](#activity-functions), [podwykonawcy](durable-functions-orchestrations.md#sub-orchestrations), [oczekujące na zewnętrzne zdarzenia](durable-functions-orchestrations.md#external-events), [http](durable-functions-orchestrations.md#calling-http-endpoints)i [czasomierze](durable-functions-orchestrations.md#durable-timers). Funkcje programu Orchestrator mogą również współdziałać z [funkcjami jednostek](#entity-functions).
+Funkcje programu Orchestrator opisują sposób wykonywania akcji i kolejność wykonywania akcji. Funkcje programu Orchestrator opisują aranżację w kodzieC# (lub JavaScript), jak pokazano w [Durable Functions wzorców aplikacji](durable-functions-overview.md#application-patterns). Aranżacja może mieć wiele różnych typów akcji, w tym [funkcje działania](#activity-functions), [podwykonawcy](durable-functions-orchestrations.md#sub-orchestrations), [oczekujące na zewnętrzne zdarzenia](durable-functions-orchestrations.md#external-events), [http](durable-functions-http-features.md)i [czasomierze](durable-functions-orchestrations.md#durable-timers). Funkcje programu Orchestrator mogą również współdziałać z [funkcjami jednostek](#entity-functions).
 
 > [!NOTE]
 > Funkcje programu Orchestrator są zapisywane przy użyciu zwykłego kodu, ale istnieją ścisłe wymagania dotyczące pisania kodu. W każdym przypadku kod funkcji programu Orchestrator musi być *deterministyczny*. Niespełnienie wymagań dotyczących tego ustalenia może spowodować, że funkcje programu Orchestrator nie działają poprawnie. Szczegółowe informacje o tych wymaganiach i sposobach ich obejścia można znaleźć w temacie [ograniczenia kodu](durable-functions-code-constraints.md) .
@@ -40,7 +40,7 @@ W przeciwieństwie do funkcji programu Orchestrator, funkcje działania nie są 
 > [!NOTE]
 > Ponieważ funkcje działania gwarantują tylko *jednokrotne* wykonanie, zalecamy, aby logika funkcji działania *idempotentne* się zawsze wtedy, gdy jest to możliwe.
 
-Użyj [wyzwalacza działania](durable-functions-bindings.md#activity-trigger) , aby zdefiniować funkcję działania. Funkcje programu .NET otrzymują [DurableActivityContext](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableActivityContext.html) jako parametr. Można również powiązać wyzwalacz z dowolnym innym obiektem serializacji JSON, aby przekazać dane wejściowe do funkcji. W języku JavaScript można uzyskać dostęp do danych wejściowych za pomocą właściwości `<activity trigger binding name>` [obiektu `context.bindings`](../functions-reference-node.md#bindings). Do funkcji działania można przekazywać tylko jedną wartość. Aby przekazać wiele wartości, należy użyć krotek, tablic lub typów złożonych.
+Użyj [wyzwalacza działania](durable-functions-bindings.md#activity-trigger) , aby zdefiniować funkcję działania. Program .NET Functions otrzymuje `DurableActivityContext` jako parametr. Można również powiązać wyzwalacz z dowolnym innym obiektem serializacji JSON, aby przekazać dane wejściowe do funkcji. W języku JavaScript można uzyskać dostęp do danych wejściowych za pomocą właściwości `<activity trigger binding name>` w [obiekcie`context.bindings`](../functions-reference-node.md#bindings). Do funkcji działania można przekazywać tylko jedną wartość. Aby przekazać wiele wartości, należy użyć krotek, tablic lub typów złożonych.
 
 > [!NOTE]
 > Funkcję działania można wyzwolić tylko przy użyciu funkcji programu Orchestrator.
@@ -50,7 +50,7 @@ Użyj [wyzwalacza działania](durable-functions-bindings.md#activity-trigger) , 
 Funkcje jednostki definiują operacje odczytu i aktualizowania małych fragmentów stanu. Często odwołują się do tych jednostek stanowych jako *jednostek trwałych*. Podobnie jak funkcje programu Orchestrator, funkcje jednostki są funkcjami o specjalnym typie wyzwalacza, *wyzwalaczem jednostki*. Mogą być również wywoływane z funkcji klienta lub funkcji programu Orchestrator. W przeciwieństwie do funkcji programu Orchestrator, funkcje jednostek nie mają żadnych ograniczeń związanych z kodem. Funkcje jednostek również zarządzają stanem jawnie, a nie niejawnie reprezentującą stan za pośrednictwem przepływu sterowania.
 
 > [!NOTE]
-> Funkcje jednostki i powiązane funkcje są dostępne tylko w Durable Functions 2,0 i nowszych. Funkcje jednostki są obecnie w publicznej wersji zapoznawczej.
+> Funkcje jednostki i powiązane funkcje są dostępne tylko w Durable Functions 2,0 i nowszych.
 
 Aby uzyskać więcej informacji na temat funkcji jednostki, zobacz artykuł dotyczący [jednostek trwałych](durable-functions-entities.md) .
 

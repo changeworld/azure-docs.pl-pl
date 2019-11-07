@@ -1,5 +1,5 @@
 ---
-title: 'PowerShell i interfejs wiersza polecenia: Włącz TDE SQL — z Azure Key Vault — Przenieś własny klucz Azure SQL Database | Microsoft Docs'
+title: 'PowerShell i interfejs wiersza polecenia: Włącz TDE SQL — z Azure Key Vault — Przenieś własny klucz Azure SQL Database '
 description: Dowiedz się, jak skonfigurować Azure SQL Database i magazyn danych, aby rozpocząć korzystanie z Transparent Data Encryption (TDE) na potrzeby szyfrowania w środowisku REST przy użyciu programu PowerShell lub interfejsu wiersza polecenia.
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: aliceku
 ms.author: aliceku
 ms.reviewer: vanto
 ms.date: 03/12/2019
-ms.openlocfilehash: beeb5fa4f979ac457db8a779dd8f8f2e94ef87f5
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.openlocfilehash: 232f38b239090356ae3ad1a70b522188f6ab6a4f
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73163853"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73686756"
 ---
 # <a name="powershell-and-cli-enable-transparent-data-encryption-with-customer-managed-key-from-azure-key-vault"></a>PowerShell i interfejs wiersza polecenia: Włącz Transparent Data Encryption z kluczem zarządzanym przez klienta w programie Azure Key Vault
 

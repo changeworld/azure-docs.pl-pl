@@ -6,12 +6,12 @@ ms.author: dacoulte
 ms.date: 10/21/2019
 ms.topic: conceptual
 ms.service: resource-graph
-ms.openlocfilehash: 80b33212afa7fed3f87b241d5cf69b43be66574d
-ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
+ms.openlocfilehash: d0ba3195aef246ff49042f61dcec0b4397b5dde6
+ms.sourcegitcommit: 6c2c97445f5d44c5b5974a5beb51a8733b0c2be7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/22/2019
-ms.locfileid: "72755911"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73622632"
 ---
 # <a name="understanding-the-azure-resource-graph-query-language"></a>Informacje o języku zapytań grafu zasobów platformy Azure
 
@@ -25,21 +25,21 @@ W tym artykule omówiono składniki językowe obsługiwane przez program Resourc
 
 ## <a name="resource-graph-tables"></a>Tabele grafu zasobów
 
-Wykres zasobów zawiera kilka tabel służących do przechowywania danych o typach zasobów Menedżer zasobów i ich właściwościach. Te tabele mogą być używane z operatorami `join` lub `union`, aby uzyskać właściwości z powiązanych typów zasobów. Poniżej znajduje się lista tabel dostępnych na wykresie zasobów:
+Wykres zasobów zawiera kilka tabel służących do przechowywania danych o typach zasobów Menedżer zasobów i ich właściwościach. Te tabele mogą być używane z operatorami `join` lub `union` do pobierania właściwości z powiązanych typów zasobów. Poniżej znajduje się lista tabel dostępnych na wykresie zasobów:
 
 |Tabele grafu zasobów |Opis |
 |---|---|
 |Zasoby |Domyślna tabela, jeśli żadna nie została zdefiniowana w zapytaniu. Większość Menedżer zasobów typów zasobów i właściwości jest tutaj. |
 |ResourceContainers |Obejmuje subskrypcję (w wersji zapoznawczej--`Microsoft.Resources/subscriptions`) i typy zasobów (`Microsoft.Resources/subscriptions/resourcegroups`) grupy zasobów. |
-|AlertsManagementResources |Obejmuje zasoby _związane_ z `Microsoft.AlertsManagement`. |
-|SecurityResources |Obejmuje zasoby _związane_ z `Microsoft.Security`. |
+|AlertsManagementResources |Obejmuje zasoby _dotyczące_ `Microsoft.AlertsManagement`. |
+|SecurityResources |Obejmuje zasoby _dotyczące_ `Microsoft.Security`. |
 
 > [!NOTE]
-> _Zasoby_ są tabelami domyślnymi. Podczas wykonywania zapytania względem tabeli _zasobów_ nie jest wymagane podanie nazwy tabeli, chyba że użyto `join` lub `union`. Jednak zalecanym sposobem jest zawsze dołączenie początkowej tabeli do zapytania.
+> _Zasoby_ są tabelami domyślnymi. Podczas wykonywania zapytania względem tabeli _zasobów_ nie jest wymagane podanie nazwy tabeli, chyba że `join` ani `union` są używane. Jednak zalecanym sposobem jest zawsze dołączenie początkowej tabeli do zapytania.
 
 Użyj Eksploratora grafów zasobów w portalu, aby dowiedzieć się, jakie typy zasobów są dostępne w każdej tabeli. Alternatywnie użyj zapytania, takiego jak `<tableName> | distinct type`, aby uzyskać listę typów zasobów, których dana tabela grafu zasobów obsługuje istniejące w danym środowisku.
 
-Następujące zapytanie pokazuje prostą `join`. Wyniki zapytania powodują mieszanie kolumn wraz ze wszystkimi zduplikowanymi nazwami kolumn z sprzężonej tabeli, _ResourceContainers_ w tym przykładzie, są dołączane z **1**. Ponieważ tabela _ResourceContainers_ zawiera typy dla subskrypcji i grup zasobów, do przyłączenia do zasobu z tabeli _zasobów_ można użyć dowolnego typu.
+Poniższe zapytanie pokazuje prostą `join`. Wyniki zapytania powodują mieszanie kolumn wraz ze wszystkimi zduplikowanymi nazwami kolumn z sprzężonej tabeli, _ResourceContainers_ w tym przykładzie, są dołączane z **1**. Ponieważ tabela _ResourceContainers_ zawiera typy dla subskrypcji i grup zasobów, do przyłączenia do zasobu z tabeli _zasobów_ można użyć dowolnego typu.
 
 ```kusto
 Resources
@@ -47,7 +47,7 @@ Resources
 | limit 1
 ```
 
-Poniższe zapytanie pokazuje bardziej skomplikowane użycie `join`. Zapytanie ogranicza przyłączoną tabelę do zasobów subskrypcji i z `project`, aby uwzględnić tylko oryginalny identyfikator _subskrypcji_ pola i _nazwę pola Nazwa_ zmieniona na _SubName_. Zmiana nazwy pola unika `join` dodanie go jako _Name1_ , ponieważ pole już istnieje w obszarze _zasoby_. Oryginalna tabela jest filtrowana z `where`, a poniższe `project` zawierają kolumny z obu tabel. Wynikiem zapytania jest pojedynczy magazyn kluczy zawierający typ, nazwę magazynu kluczy oraz nazwę subskrypcji, w której znajduje się.
+Poniższe zapytanie pokazuje bardziej złożone użycie `join`. Zapytanie ogranicza przyłączoną tabelę do zasobów subskrypcji i z `project`, aby uwzględnić tylko oryginalny identyfikator _subskrypcji_ pola i _nazwę pola Nazwa_ zmieniona na _SubName_. Zmiana nazwy pola unika `join` dodawania go jako _Name1_ , ponieważ pole już istnieje w obszarze _zasoby_. Oryginalna tabela jest filtrowana z `where`, a poniższe `project` zawierają kolumny z obu tabel. Wynikiem zapytania jest pojedynczy magazyn kluczy zawierający typ, nazwę magazynu kluczy oraz nazwę subskrypcji, w której znajduje się.
 
 ```kusto
 Resources
@@ -58,7 +58,7 @@ Resources
 ```
 
 > [!NOTE]
-> W przypadku ograniczenia wartości `join` z `project` właściwość używana przez `join` do powiązania dwóch tabel, identyfikator _subskrypcji_ w powyższym przykładzie, musi być uwzględniona w `project`.
+> W przypadku ograniczenia `join` z `project`, właściwość używana przez `join` do powiązania dwóch tabel, identyfikator _subskrypcji_ w powyższym przykładzie, musi być uwzględniona w `project`.
 
 ## <a name="supported-kql-language-elements"></a>Obsługiwane elementy języka KQL
 
@@ -83,7 +83,7 @@ Poniżej znajduje się lista operatorów tabelarycznych KQL obsługiwanych przez
 |[Podsumuj](/azure/kusto/query/summarizeoperator) |[Liczba zasobów platformy Azure](../samples/starter.md#count-resources) |Uproszczona tylko pierwsza strona |
 |[czasochłonn](/azure/kusto/query/takeoperator) |[Lista wszystkich publicznych adresów IP](../samples/starter.md#list-publicip) |Synonim `limit` |
 |[Do góry](/azure/kusto/query/topoperator) |[Pokaż pierwsze pięć maszyn wirtualnych według nazwy i ich typu systemu operacyjnego](../samples/starter.md#show-sorted) | |
-|[Unii](/azure/kusto/query/unionoperator) |[Łączenie wyników z dwóch zapytań w jeden wynik](../samples/advanced.md#unionresults) |Dozwolona pojedyncza tabela: _T_ `| union` \[ `kind=` `inner` \| `outer` \] \[ `withsource=`_ColumnName_ 1 _Table_. Limit 3 `union` etapów w pojedynczym zapytaniu. Rozpoznawanie rozmyte tabel podetapów `union` jest niedozwolone. Może być używany w jednej tabeli lub między tabelami _zasobów_ i _ResourceContainers_ . |
+|[Unii](/azure/kusto/query/unionoperator) |[Łączenie wyników z dwóch zapytań w jeden wynik](../samples/advanced.md#unionresults) |Dozwolona pojedyncza tabela: _T_ `| union` \[`kind=` `inner`\|`outer`\] \[`withsource=`_ColumnName_\] _Table_. Limit 3 `union`ych etapów w pojedynczym zapytaniu. Rozpoznawanie rozmyte tabel nogi `union` nie jest dozwolone. Może być używany w jednej tabeli lub między tabelami _zasobów_ i _ResourceContainers_ . |
 |[miejscu](/azure/kusto/query/whereoperator) |[Pokaż zasoby, które zawierają magazyn](../samples/starter.md#show-storage) | |
 
 ## <a name="escape-characters"></a>Znaki ucieczki
@@ -100,9 +100,9 @@ Niektóre nazwy właściwości, takie jak te, które zawierają `.` lub `$`, mus
 
 - `$` — znak ucieczki w nazwie właściwości. Używany znak ucieczki zależy od wykresu zasobów powłoki jest uruchamiany z.
 
-  - **bash**  -  `\`
+  - **bash** - `\`
 
-    Przykładowe zapytanie, które wyprowadza Właściwość _\$type_ w bash:
+    Przykładowe zapytanie, które wyprowadza Właściwość _\$typ_ w bash:
 
     ```kusto
     where type=~'Microsoft.Insights/alertRules' | project name, properties.condition.\$type
@@ -110,9 +110,9 @@ Niektóre nazwy właściwości, takie jak te, które zawierają `.` lub `$`, mus
 
   - **cmd** — nie należy wyznaczać znaku `$`.
 
-  - @No__t_2  -  **programu PowerShell**
+  - ``` ` ``` - **programu PowerShell**
 
-    Przykładowe zapytanie, które wyprowadza Właściwość _\$type_ w programie PowerShell:
+    Przykładowe zapytanie, które wyprowadza Właściwość _\$Type_ w programie PowerShell:
 
     ```kusto
     where type=~'Microsoft.Insights/alertRules' | project name, properties.condition.`$type
@@ -120,6 +120,6 @@ Niektóre nazwy właściwości, takie jak te, które zawierają `.` lub `$`, mus
 
 ## <a name="next-steps"></a>Następne kroki
 
-- Zobacz język używany w [zapytaniach początkowych](../samples/starter.md)
-- Zobacz zaawansowane zastosowania w [zaawansowanych zapytaniach](../samples/advanced.md)
-- Dowiedz się, jak [eksplorować zasoby](explore-resources.md)
+- Zobacz język używany w [zapytaniach początkowych](../samples/starter.md).
+- Zobacz zaawansowane zastosowania w [zaawansowanych zapytaniach](../samples/advanced.md).
+- Dowiedz się więcej o sposobach [eksplorowania zasobów](explore-resources.md).

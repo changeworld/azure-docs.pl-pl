@@ -10,18 +10,18 @@ ms.topic: conceptual
 ms.date: 08/08/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 134ca92671a41eb53201101a3622215466a60c09
-ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
+ms.openlocfilehash: a921d6110fd0294012e2e59542ba2c82d63ffcde
+ms.sourcegitcommit: 359930a9387dd3d15d39abd97ad2b8cb69b8c18b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71065094"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73642075"
 ---
 # <a name="set-up-sign-up-and-sign-in-with-a-microsoft-account-using-azure-active-directory-b2c"></a>Skonfiguruj konto i zaloguj się za pomocą konto Microsoft przy użyciu Azure Active Directory B2C
 
 ## <a name="create-a-microsoft-account-application"></a>Tworzenie aplikacji konto Microsoft
 
-Aby użyć konto Microsoft jako [dostawcy tożsamości](active-directory-b2c-reference-oidc.md) w Azure Active Directory B2C (Azure AD B2C), należy utworzyć aplikację w dzierżawie usługi Azure AD. Dzierżawa usługi Azure AD nie jest taka sama jak dzierżawa Azure AD B2C. Jeśli nie masz jeszcze konto Microsoft, możesz uzyskać jeden z [https://www.live.com/](https://www.live.com/)nich.
+Aby użyć konto Microsoft jako [dostawcy tożsamości](active-directory-b2c-reference-oidc.md) w Azure Active Directory B2C (Azure AD B2C), należy utworzyć aplikację w dzierżawie usługi Azure AD. Dzierżawa usługi Azure AD nie jest taka sama jak dzierżawa Azure AD B2C. Jeśli nie masz jeszcze konto Microsoft, możesz ją uzyskać na [https://www.live.com/](https://www.live.com/).
 
 1. Zaloguj się w witrynie [Azure Portal](https://portal.azure.com).
 1. Upewnij się, że używasz katalogu, który zawiera dzierżawę usługi Azure AD, wybierając filtr **katalog + subskrypcja** w górnym menu i wybierając katalog zawierający dzierżawę usługi Azure AD.
@@ -30,8 +30,8 @@ Aby użyć konto Microsoft jako [dostawcy tożsamości](active-directory-b2c-ref
 1. Wprowadź **nazwę** aplikacji. Na przykład *MSAapp1*.
 1. W obszarze **obsługiwane typy kont**wybierz pozycję **konta w dowolnym katalogu organizacyjnym i osobiste konta Microsoft (np. Skype, Xbox, Outlook.com)** . Ta opcja jest przeznaczona dla szerokiego zestawu tożsamości firmy Microsoft.
 
-   Aby uzyskać więcej informacji na temat różnych typów kont, zobacz [szybki start: Zarejestruj aplikację na platformie](../active-directory/develop/quickstart-register-app.md)tożsamości firmy Microsoft.
-1. W obszarze **URI przekierowania (opcjonalnie)** wybierz pozycję **Sieć Web** i wprowadź `https://your-tenant-name.b2clogin.com/your-tenant-name.onmicrosoft.com/oauth2/authresp` wartość w polu tekstowym. Zamień `your-tenant-name` na nazwę dzierżawy Azure AD B2C.
+   Aby uzyskać więcej informacji na temat różnych typów kont, zobacz [Szybki Start: rejestrowanie aplikacji na platformie tożsamości firmy Microsoft](../active-directory/develop/quickstart-register-app.md).
+1. W obszarze **URI przekierowania (opcjonalnie)** wybierz pozycję **Sieć Web** i wprowadź `https://your-tenant-name.b2clogin.com/your-tenant-name.onmicrosoft.com/oauth2/authresp` w polu tekstowym. Zastąp `your-tenant-name` nazwą dzierżawy Azure AD B2C.
 1. Wybierz pozycję **zarejestruj**
 1. Zapisz **Identyfikator aplikacji (klienta)** widoczny na stronie przeglądu aplikacji. Jest to potrzebne podczas konfigurowania dostawcy tożsamości w następnej sekcji.
 1. Wybierz **certyfikaty & wpisy tajne**

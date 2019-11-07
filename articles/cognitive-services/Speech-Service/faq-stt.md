@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 10/17/2019
 ms.author: panosper
-ms.openlocfilehash: 1f934bc5627331cc92ad3f497f1f7e4e0e5526cd
-ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
+ms.openlocfilehash: 3b957181015cba06eb361272ca1004ba3e7a7008
+ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/18/2019
-ms.locfileid: "72595343"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73579678"
 ---
 # <a name="speech-to-text-frequently-asked-questions"></a>Zamiana mowy na tekst często zadawanych pytań
 
@@ -175,6 +175,18 @@ Odp **.: to**zależy od tego, jak różne słownictwo i frazy używane w aplikac
 **P: Czy mogę po prostu przekazać listę słów?**
 
 Odp **.:** przekazanie listy wyrazów spowoduje dodanie wyrazów do słownika, ale nie uczy się, w jaki sposób wyrazy są zwykle używane. Dostarczając pełne lub częściowe wyrażenia długości (zdania lub frazy, które użytkownicy mogą powiedzieć), model języka może poznać nowe wyrazy i sposób ich użycia. Niestandardowy model języka jest dobry nie tylko w przypadku dodawania nowych słów do systemu, ale również do dostosowywania prawdopodobieństwa znanych wyrazów dla aplikacji. Zapewnienie pełnej wyrażenia długości pomaga lepiej poznać system. 
+
+## <a name="tenant-model-custom-speech-with-office-365-data"></a>Model dzierżawców (Custom Speech z danymi pakietu Office 365)
+
+**P: jakie informacje znajdują się w modelu dzierżawców i jak zostało utworzone?**
+
+Odp **.:** Model dzierżawy jest tworzony przy użyciu [publicznych grup](https://support.office.com/article/learn-about-office-365-groups-b565caa1-5c40-40ef-9915-60fdb2d97fa2) wiadomości e-mail i dokumentów, które mogą być widoczne dla wszystkich użytkowników w organizacji. 
+ 
+**P: jakie środowiska mowy zostały ulepszone przez model dzierżawców?**
+
+Odp **.:** Gdy model dzierżawy jest włączony, tworzony i publikowany, jest używany do ulepszania rozpoznawania dla dowolnych aplikacji przedsiębiorstwa utworzonych przy użyciu usługi Speech. to również przekazanie tokenu usługi AAD użytkownika wskazującego na członkostwo w przedsiębiorstwie. 
+ 
+Funkcje mowy wbudowane w pakiet Office 365, takie jak dyktowanie i podpisy programu PowerPoint, nie ulegają zmianie podczas tworzenia modelu dzierżawców dla aplikacji usługi Speech.
 
 ## <a name="next-steps"></a>Następne kroki
 

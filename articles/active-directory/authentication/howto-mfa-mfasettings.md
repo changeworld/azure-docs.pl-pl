@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: dfca7ef1dabb8c6021c9df2e3174d3e208a839b5
-ms.sourcegitcommit: 38251963cf3b8c9373929e071b50fd9049942b37
+ms.openlocfilehash: 29ea89af780df72b97fef553cf79b84c4b28da05
+ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/29/2019
-ms.locfileid: "73042092"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73569871"
 ---
 # <a name="configure-azure-multi-factor-authentication-settings"></a>Konfigurowanie ustawień usługi Azure Multi-Factor Authentication
 
@@ -97,7 +97,7 @@ Skonfiguruj funkcję _alertu oszustwa_ , aby umożliwić użytkownikom zgłaszan
 
 ### <a name="view-fraud-reports"></a>Wyświetlanie raportów o oszustwie
 
-1. Zaloguj się do [portalu Azure](https://portal.azure.com).
+1. Zaloguj się w witrynie [Azure Portal](https://portal.azure.com).
 2. Wybierz pozycję **Azure Active Directory** > **logowania**. Raport oszustwa jest teraz częścią standardowego raportu logowania do usługi Azure AD.
 
 ## <a name="notifications"></a>Powiadomienia
@@ -192,7 +192,7 @@ Funkcja _jednorazowe obejście_ umożliwia użytkownikowi uwierzytelnianie pojed
 
 ### <a name="view-the-one-time-bypass-report"></a>Wyświetl raport jednorazowego obejścia
 
-1. Zaloguj się do [portalu Azure](https://portal.azure.com).
+1. Zaloguj się w witrynie [Azure Portal](https://portal.azure.com).
 2. Przejdź do **Azure Active Directory** > usługi **MFA** > **jednorazowe obejście**.
 
 ## <a name="caching-rules"></a>Reguły buforowania
@@ -275,7 +275,7 @@ Usługa Azure AD obsługuje Federacji lub Logowanie jednokrotne (SSO) z lokalnym
 
 Domyślnie użytkownicy nie mogą tworzyć haseł aplikacji. Funkcja haseł aplikacji musi być włączona. Aby umożliwić użytkownikom tworzenie haseł aplikacji, należy wykonać poniższą procedurę:
 
-1. Zaloguj się do [portalu Azure](https://portal.azure.com).
+1. Zaloguj się w witrynie [Azure Portal](https://portal.azure.com).
 2. Po lewej stronie wybierz pozycję **Azure Active Directory** > **Użytkownicy**.
 3. Wybierz **Multi-Factor Authentication**.
 4. W obszarze Multi-Factor Authentication wybierz pozycję **Ustawienia usługi**.
@@ -298,7 +298,7 @@ Jeśli w organizacji wdrożono rozszerzenie serwera NPS w celu zapewnienia uwier
 
 | Typ dzierżawy usługi Azure AD | Opcje funkcji Zaufane adresy IP |
 |:--- |:--- |
-| Zarządzane |**Określony zakres adresów IP**: Administratorzy określają zakres adresów IP, które mogą pomijać weryfikację dwuetapową dla użytkowników logujących się z firmowej sieci intranet.|
+| Zarządzane |**Określony zakres adresów IP**: Administratorzy określają zakres adresów IP, które mogą pomijać weryfikację dwuetapową dla użytkowników logujących się z firmowej sieci intranet. Można skonfigurować maksymalnie 50 zaufanych zakresów adresów IP.|
 | Federacyjny |**Wszyscy użytkownicy zafederacyjnych**: Wszyscy użytkownicy federacyjne, którzy logują się z wewnątrz organizacji, mogą ominąć weryfikację dwuetapową. Użytkownicy pomijają weryfikację przy użyciu roszczeń wydawanych przez Active Directory Federation Services (AD FS).<br/>**Określony zakres adresów IP**: Administratorzy określają zakres adresów IP, które mogą pomijać weryfikację dwuetapową dla użytkowników logujących się z firmowej sieci intranet. |
 
 Obejście zaufanych adresów IP działa tylko z wewnątrz intranetu firmy. W przypadku wybrania opcji **Wszyscy użytkownicy Federacji** , a użytkownik loguje się spoza firmowej sieci intranet, użytkownik musi uwierzytelnić się przy użyciu weryfikacji dwuetapowej. Ten proces jest taki sam, nawet jeśli użytkownik prezentuje AD FS. 
@@ -315,7 +315,7 @@ Niezależnie od tego, czy funkcja zaufanych adresów IP jest włączona, dla prz
 
 ### <a name="enable-named-locations-by-using-conditional-access"></a>Włączanie nazwanych lokalizacji przy użyciu dostępu warunkowego
 
-1. Zaloguj się do [portalu Azure](https://portal.azure.com).
+1. Zaloguj się w witrynie [Azure Portal](https://portal.azure.com).
 2. Po lewej stronie wybierz pozycję **Azure Active Directory** > **zabezpieczenia** > **dostęp warunkowy** > **nazwanych lokalizacji**.
 3. Wybierz pozycję **Nowa lokalizacja**.
 4. Wprowadź nazwę lokalizacji.
@@ -325,7 +325,7 @@ Niezależnie od tego, czy funkcja zaufanych adresów IP jest włączona, dla prz
 
 ### <a name="enable-the-trusted-ips-feature-by-using-conditional-access"></a>Włączanie funkcji Zaufane adresy IP przy użyciu dostępu warunkowego
 
-1. Zaloguj się do [portalu Azure](https://portal.azure.com).
+1. Zaloguj się w witrynie [Azure Portal](https://portal.azure.com).
 2. Po lewej stronie wybierz pozycję **Azure Active Directory** > **zabezpieczenia** >  **dostęp warunkowy** > **nazwanych lokalizacji**.
 3. Wybierz pozycję **Konfiguruj Zaufane adresy IP usługi MFA**.
 4. Na stronie **Ustawienia usługi** w obszarze **Zaufane adresy IP**wybierz jedną z następujących dwóch opcji:
@@ -343,7 +343,7 @@ Niezależnie od tego, czy funkcja zaufanych adresów IP jest włączona, dla prz
 
 ### <a name="enable-the-trusted-ips-feature-by-using-service-settings"></a>Włączanie funkcji Zaufane adresy IP przy użyciu ustawień usługi
 
-1. Zaloguj się do [portalu Azure](https://portal.azure.com).
+1. Zaloguj się w witrynie [Azure Portal](https://portal.azure.com).
 2. Po lewej stronie wybierz pozycję **Azure Active Directory** > **Użytkownicy**.
 3. Wybierz **Multi-Factor Authentication**.
 4. W obszarze Multi-Factor Authentication wybierz pozycję **Ustawienia usługi**.
@@ -375,12 +375,12 @@ Gdy użytkownicy rejestrują swoje konta dla usługi Azure Multi-Factor Authenti
 
 ### <a name="enable-and-disable-verification-methods"></a>Włączanie i wyłączanie metod weryfikacji
 
-1. Zaloguj się do [portalu Azure](https://portal.azure.com).
+1. Zaloguj się w witrynie [Azure Portal](https://portal.azure.com).
 2. Po lewej stronie wybierz pozycję **Azure Active Directory** > **Użytkownicy**.
 3. Wybierz **Multi-Factor Authentication**.
 4. W obszarze Multi-Factor Authentication wybierz pozycję **Ustawienia usługi**.
 5. Na stronie **Ustawienia usługi** w obszarze **Opcje weryfikacji**wybierz/Usuń zaznaczenie metod, które mają być dostępne dla użytkowników.
-6. Kliknij przycisk **Save** (Zapisz).
+6. Kliknij pozycję **Zapisz**.
 
 Dodatkowe szczegóły dotyczące korzystania z metod uwierzytelniania można znaleźć w artykule [co to są metody uwierzytelniania](concept-authentication-methods.md).
 
@@ -411,7 +411,7 @@ Funkcja zmniejsza liczbę uwierzytelnień w aplikacjach sieci Web, które zwykle
 
 ### <a name="enable-remember-multi-factor-authentication"></a>Włącz Multi-Factor Authentication Pamiętaj
 
-1. Zaloguj się do [portalu Azure](https://portal.azure.com).
+1. Zaloguj się w witrynie [Azure Portal](https://portal.azure.com).
 2. Po lewej stronie wybierz pozycję **Azure Active Directory** > **Użytkownicy**.
 3. Wybierz **Multi-Factor Authentication**.
 4. W obszarze Multi-Factor Authentication wybierz pozycję **Ustawienia usługi**.

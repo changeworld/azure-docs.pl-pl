@@ -1,5 +1,5 @@
 ---
-title: Monitorowanie obciążenia — Azure Portal | Microsoft Docs
+title: Monitorowanie obciążenia — Azure Portal
 description: Monitorowanie Azure SQL Data Warehouse przy użyciu Azure Portal
 services: sql-data-warehouse
 author: kevinvngo
@@ -10,12 +10,12 @@ ms.subservice: manage
 ms.date: 03/22/2019
 ms.author: kevin
 ms.reviewer: jrasnick
-ms.openlocfilehash: 176762e0d1c007f924d779a1b77dd52c7ed56e01
-ms.sourcegitcommit: 6d2a147a7e729f05d65ea4735b880c005f62530f
+ms.openlocfilehash: 73d837c34dd5a480cae08a41c89939414899052a
+ms.sourcegitcommit: 359930a9387dd3d15d39abd97ad2b8cb69b8c18b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69981485"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73645630"
 ---
 # <a name="monitor-workload---azure-portal"></a>Monitorowanie obciążenia — Azure Portal
 
@@ -23,8 +23,8 @@ W tym artykule opisano, jak używać Azure Portal do monitorowania obciążenia.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-- Subskrypcja platformy Azure: Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpłatne konto](https://azure.microsoft.com/free/).
-- Azure SQL Data Warehouse: Będziemy zbierać dzienniki dla SQL Data Warehouse. Jeśli nie masz zainicjowanego SQL Data Warehouse, zapoznaj się z instrukcjami w artykule [tworzenie SQL Data Warehouse](https://docs.microsoft.com/azure/sql-data-warehouse/sql-data-warehouse-get-started-tutorial).
+- Subskrypcja platformy Azure: Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem Utwórz [bezpłatne konto](https://azure.microsoft.com/free/) .
+- Azure SQL Data Warehouse: będziemy zbierać dzienniki dla SQL Data Warehouse. Jeśli nie masz zainicjowanego SQL Data Warehouse, zapoznaj się z instrukcjami w artykule [tworzenie SQL Data Warehouse](https://docs.microsoft.com/azure/sql-data-warehouse/sql-data-warehouse-get-started-tutorial).
 
 ## <a name="create-a-log-analytics-workspace"></a>Tworzenie obszaru roboczego Log Analytics
 
@@ -61,7 +61,7 @@ Przejdź do obszaru roboczego Log Analytics, gdzie można wykonać następujące
 
 - Analizuj dzienniki przy użyciu zapytań dzienników i zapisuj zapytania do ponownego użycia
 - Zapisz zapytania do ponownego użycia
-- Tworzenie alertów dziennika
+- Tworzenie alertów dotyczących dzienników
 - Przypinanie wyników zapytania do pulpitu nawigacyjnego
 
 Aby uzyskać szczegółowe informacje na temat możliwości kwerend dzienników, zapoznaj się z poniższą [dokumentacją](https://docs.microsoft.com/azure/azure-monitor/log-query/query-language).

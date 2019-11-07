@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: librown
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e17a99a522c6ab960c2ccd0cc2729076c54ed07f
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.openlocfilehash: 8c8bfa5fc31ce8500d1ed339ba28afeed21e25a0
+ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73151850"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73603503"
 ---
 # <a name="passwordless-authentication-options"></a>Opcje uwierzytelniania bezhasła
 
@@ -52,7 +52,7 @@ Powoduje to włączenie dowolnego telefonu z systemem iOS lub Android w celu uzy
 
 Klucze zabezpieczeń FIDO2 to metoda uwierzytelniania bez hasła oparta na standardach, która może mieć dowolny współczynnik form. Szybka tożsamość w trybie online (FIDO) to otwarty standard uwierzytelniania bezhaseł. Dzięki temu użytkownicy i organizacje mogą wykorzystać standard do logowania się do swoich zasobów bez nazwy użytkownika ani hasła przy użyciu zewnętrznego klucza zabezpieczeń lub klucza platformy wbudowanego w urządzenie.
 
-W publicznej wersji zapoznawczej pracownicy mogą korzystać z kluczy zabezpieczeń, aby zalogować się do usługi Azure AD lub hybrydowych urządzeń z systemem Windows 10 dołączonych do usługi Azure AD i uzyskać Logowanie jednokrotne do swoich zasobów w chmurze i lokalnych. Mogą także zalogować się do obsługiwanych przeglądarek.
+W publicznej wersji zapoznawczej pracownicy mogą korzystać z kluczy zabezpieczeń, aby zalogować się do swoich urządzeń z systemem Windows 10 dołączonych do usługi Azure AD i uzyskać Logowanie jednokrotne do swoich zasobów w chmurze i lokalnych. Mogą także zalogować się do obsługiwanych przeglądarek.
 
 ![Zaloguj się do przeglądarki Microsoft Edge przy użyciu klucza zabezpieczeń](./media/concept-authentication-passwordless/concept-web-sign-in-security-key.png)
 
@@ -64,7 +64,7 @@ Klucz zabezpieczeń **musi** implementować następujące funkcje i rozszerzenia
 | --- | --- | --- |
 | 1 | Klucz rezydentny | Ta funkcja umożliwia przenośny Klucz zabezpieczeń, w którym Twoje poświadczenia są przechowywane w kluczu zabezpieczeń. |
 | 2 | Numer PIN klienta | Ta funkcja umożliwia ochronę poświadczeń przy użyciu drugiego czynnika i ma zastosowanie do kluczy zabezpieczeń, które nie mają interfejsu użytkownika. |
-| 3 | HMAC-Secret | To rozszerzenie zapewnia możliwość zalogowania się na urządzeniu, gdy jest ono wyłączone lub w trybie samolotowym. |
+| 3 | hmac-secret | To rozszerzenie zapewnia możliwość zalogowania się na urządzeniu, gdy jest ono wyłączone lub w trybie samolotowym. |
 | 4 | Wiele kont na jednostkę UZALEŻNIONą | Ta funkcja zapewnia, że można użyć tego samego klucza zabezpieczeń dla wielu usług, takich jak konto Microsoft i Azure Active Directory. |
 
 Następujący dostawcy oferują klucze zabezpieczeń FIDO2 różnego rodzaju, które są znane jako zgodne z funkcją bezhaseł. Firma Microsoft zachęca klientów do ocenienia właściwości zabezpieczeń tych kluczy, kontaktując się z dostawcą oraz FIDO Alliance.
@@ -81,7 +81,7 @@ Następujący dostawcy oferują klucze zabezpieczeń FIDO2 różnego rodzaju, kt
 > [!NOTE]
 > Jeśli kupisz i planujesz korzystanie z kluczy zabezpieczeń opartych na NFC, musisz mieć obsługiwanego czytnika NFC.
 
-Jeśli jesteś dostawcą i chcesz uzyskać dostęp do urządzenia na tej liście, skontaktuj się z [Fido2Request@Microsoft.com](mailto:Fido2Request@Microsoft.com).
+Jeśli jesteś dostawcą i chcesz uzyskać dostęp do urządzenia na tej liście, skontaktuj się z firmą [Fido2Request@Microsoft.com](mailto:Fido2Request@Microsoft.com).
 
 Klucze zabezpieczeń FIDO2 są świetną opcją dla przedsiębiorstw, które mają bardzo duże znaczenie dla bezpieczeństwa lub mają scenariusze lub pracowników, którzy nie chcą korzystać z telefonu jako drugiego czynnika.
 

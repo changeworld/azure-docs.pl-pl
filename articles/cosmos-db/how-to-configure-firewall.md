@@ -4,14 +4,14 @@ description: Dowiedz się, jak skonfigurować zasady kontroli dostępu do adres�
 author: markjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 09/28/2019
+ms.date: 10/31/2019
 ms.author: mjbrown
-ms.openlocfilehash: d4fab572f31d3187135ea3ac406431ced98828b1
-ms.sourcegitcommit: 80da36d4df7991628fd5a3df4b3aa92d55cc5ade
+ms.openlocfilehash: 8522a537301c1d35da2a2eb46b4374fa4daf6a27
+ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71815929"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73580683"
 ---
 # <a name="configure-ip-firewall-in-azure-cosmos-db"></a>Konfigurowanie zapory IP w Azure Cosmos DB
 
@@ -36,11 +36,11 @@ Po włączeniu kontroli dostępu do adresów IP Azure Portal zapewnia możliwoś
 
 Po włączeniu programowo zasad kontroli dostępu IP należy dodać adres IP dla Azure Portal do właściwości **ipRangeFilter** , aby zachować dostęp. Adresy IP portalu to:
 
-|okolicy|Adres IP|
+|Region|Adres IP|
 |------|----------|
 |Niemcy|51.4.229.218|
-|Chinach|139.217.8.252|
-|US Gov|52.244.48.71|
+|Chiny|139.217.8.252|
+|Rząd USA|52.244.48.71|
 |Wszystkie pozostałe regiony|104.42.195.92,40.76.54.131,52.176.6.30,52.169.50.45,52.187.184.26|
 
 Dostęp do Azure Portal można włączyć, wybierając opcję **Zezwalaj na dostęp z Azure Portal** , jak pokazano na poniższym zrzucie ekranu:
@@ -94,13 +94,13 @@ W przypadku uzyskiwania dostępu do konta Azure Cosmos DB z komputera w Internec
 
 ## <a id="configure-ip-firewall-arm"></a>Konfigurowanie zapory IP przy użyciu szablonu Menedżer zasobów
 
-Aby skonfigurować kontrolę dostępu do konta Azure Cosmos DB, upewnij się, że szablon Menedżer zasobów określa atrybut **ipRangeFilter** z listą dozwolonych zakresów adresów IP. W przypadku konfigurowania zapory IP dla już wdrożonego konta Cosmos upewnij się, że tablica `locations` jest zgodna z aktualnie wdrożoną. Nie można jednocześnie zmodyfikować tablicy `locations` i innych właściwości. Aby uzyskać więcej informacji i przykłady szablonów Azure Resource Manager dla Azure Cosmos DB Zobacz, [Azure Resource Manager szablony dla Azure Cosmos DB](resource-manager-samples.md)
+Aby skonfigurować kontrolę dostępu do konta Azure Cosmos DB, upewnij się, że szablon Menedżer zasobów określa atrybut **ipRangeFilter** z listą dozwolonych zakresów adresów IP. W przypadku konfigurowania zapory IP dla już wdrożonego konta Cosmos upewnij się, że tablica `locations` jest zgodna z aktualnie wdrożonym. Nie można jednocześnie zmodyfikować tablicy `locations` i innych właściwości. Aby uzyskać więcej informacji i przykłady szablonów Azure Resource Manager dla Azure Cosmos DB Zobacz, [Azure Resource Manager szablony dla Azure Cosmos DB](resource-manager-samples.md)
 
 ```json
 {
   "type": "Microsoft.DocumentDB/databaseAccounts",
   "name": "[variables('accountName')]",
-  "apiVersion": "2016-03-31",
+  "apiVersion": "2019-08-01",
   "location": "[parameters('location')]",
   "kind": "GlobalDocumentDB",
   "properties": {
@@ -108,8 +108,7 @@ Aby skonfigurować kontrolę dostępu do konta Azure Cosmos DB, upewnij się, ż
     "locations": "[variables('locations')]",
     "databaseAccountOfferType": "Standard",
     "enableAutomaticFailover": "[parameters('automaticFailover')]",
-    "enableMultipleWriteLocations": "[parameters('multipleWriteLocations')]",
-    "ipRangeFilter":"183.240.196.255,104.42.195.92,40.76.54.131,52.176.6.30,52.169.50.45,52.187.184.26"
+    "ipRangeFilter":"40.76.54.131,52.176.6.30,52.169.50.45,52.187.184.26"
   }
 }
 ```
@@ -168,7 +167,7 @@ Problemy z zasadami kontroli dostępu IP można rozwiązać, korzystając z nast
 
 Po włączeniu zasad kontroli dostępu IP dla konta Azure Cosmos DB należy zablokować wszystkie żądania do konta z maszyn spoza listy dozwolonych zakresów adresów IP. Aby włączyć operacje płaszczyzny danych portalu, takie jak kontenery przeglądania i wysyłanie zapytań do dokumentów, należy jawnie zezwolić na dostęp Azure Portal przy użyciu okienka **Zapora** w portalu.
 
-### <a name="sdks"></a>Zestawy
+### <a name="sdks"></a>Zestawy SDK
 
 Gdy uzyskujesz dostęp do zasobów Azure Cosmos DB przy użyciu zestawów SDK z maszyn, które nie znajdują się na liście dozwolonych, zostanie zwrócona ogólna odpowiedź z **zabronionym 403** bez dodatkowych szczegółów. Sprawdź listę dozwolonych adresów IP dla swojego konta i upewnij się, że do konta Azure Cosmos DB jest stosowana poprawna konfiguracja zasad.
 

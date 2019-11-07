@@ -1,5 +1,5 @@
 ---
-title: Automatyzuj replikację zmian schematu w usłudze Azure SQL Data Sync | Microsoft Docs
+title: Automatyzowanie replikacji zmian schematu w usłudze Azure SQL Data Sync
 description: Dowiedz się, jak zautomatyzować replikację zmian schematu w usłudze Azure SQL Data Sync.
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: allenwux
 ms.author: xiwu
 ms.reviewer: carlrab
 ms.date: 11/14/2018
-ms.openlocfilehash: b1c3f49808a59576f02178dee1107b4019e34b5e
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 01cc82a2ada1f4ac8f26b223b7168b2cca157793
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68566263"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73686882"
 ---
 # <a name="automate-the-replication-of-schema-changes-in-azure-sql-data-sync"></a>Automatyzowanie replikacji zmian schematu w usłudze Azure SQL Data Sync
 
@@ -88,7 +88,7 @@ Możesz również dodać więcej wyzwalaczy, aby replikować inne typy zmian sch
 
 ### <a name="create-a-trigger-on-other-endpoints-to-apply-schema-changes-during-insertion"></a>Utwórz wyzwalacz dla innych punktów końcowych, aby zastosować zmiany schematu podczas wstawiania
 
-Ten wyzwalacz wykonuje polecenie zmiany schematu, gdy jest synchronizowane z innymi punktami końcowymi. Ten wyzwalacz należy utworzyć we wszystkich punktach końcowych, z wyjątkiem tego, gdzie wprowadzono zmiany schematu (czyli w bazie danych, w której wyzwalacz `AlterTableDDLTrigger` DDL został utworzony w poprzednim kroku).
+Ten wyzwalacz wykonuje polecenie zmiany schematu, gdy jest synchronizowane z innymi punktami końcowymi. Ten wyzwalacz należy utworzyć we wszystkich punktach końcowych, z wyjątkiem tego, gdzie wprowadzono zmiany schematu (czyli w bazie danych, w której wyzwalacz DDL `AlterTableDDLTrigger` został utworzony w poprzednim kroku).
 
 ```sql
 CREATE TRIGGER SchemaChangesTrigger
@@ -161,7 +161,7 @@ Po zreplikowaniu zmian schematu do wszystkich punktów końcowych należy równi
 
 1.  Odśwież schemat bazy danych.
 
-1.  Jeśli nowe i stare typy danych nie są w pełni zgodne — na przykład, jeśli zmieni się z `int` na `bigint` — Synchronizacja może zakończyć się niepowodzeniem przed wykonaniem kroków tworzących wyzwalacze. Synchronizacja powiedzie się po ponowieniu próby.
+1.  Jeśli nowe i stare typy danych nie są w pełni zgodne — na przykład jeśli zmienisz się z `int` na `bigint` — Synchronizacja może zakończyć się niepowodzeniem przed wykonaniem kroków tworzących wyzwalacze. Synchronizacja powiedzie się po ponowieniu próby.
 
 #### <a name="rename-columns-or-tables"></a>Zmiana nazw kolumn lub tabel
 
@@ -226,7 +226,7 @@ Aby uzyskać więcej informacji na temat usługi SQL Data Sync, zobacz:
     - W portalu — [Tutorial: Set up SQL Data Sync to sync data between Azure SQL Database and SQL Server on-premises](sql-database-get-started-sql-data-sync.md) (Samouczek: konfigurowanie usługi SQL Data Sync w celu synchronizowania danych między usługą Azure SQL Database i lokalnym programem SQL Server)
     - Z programem PowerShell
         -  [Użycie programu PowerShell do synchronizowania wielu baz danych Azure SQL Database](scripts/sql-database-sync-data-between-sql-databases.md)
-        -  [Use PowerShell to sync between an Azure SQL Database and a SQL Server on-premises database (Synchronizacja bazy danych usługi Azure SQL i lokalnej bazy danych programu SQL Server przy użyciu programu PowerShell)](scripts/sql-database-sync-data-between-azure-onprem.md)
+        -  [Use PowerShell to sync between an Azure SQL Database and a SQL Server on-premises database (Synchronizacja bazy danych usługi Azure SQL Database i lokalnej bazy danych programu SQL Server przy użyciu programu PowerShell)](scripts/sql-database-sync-data-between-azure-onprem.md)
 -   Agent synchronizacji danych — [Data Sync Agent for Azure SQL Data Sync](sql-database-data-sync-agent.md) (Agent synchronizacji danych dla usługi Azure SQL Data Sync)
 -   Najlepsze rozwiązania — [Best practices for Azure SQL Data Sync](sql-database-best-practices-data-sync.md) (Najlepsze rozwiązania dotyczące korzystania z usługi Azure SQL Data Sync)
 -   Monitor- [monitor SQL Data Sync z dziennikami Azure monitor](sql-database-sync-monitor-oms.md)

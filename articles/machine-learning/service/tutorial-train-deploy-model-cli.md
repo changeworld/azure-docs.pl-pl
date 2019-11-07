@@ -9,12 +9,12 @@ ms.service: machine-learning
 ms.subservice: core
 ms.topic: conceptual
 ms.date: 09/12/2019
-ms.openlocfilehash: 3f619caf7e2713e1c9251550b06c8bdefba5936f
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
-ms.translationtype: HT
+ms.openlocfilehash: 1854599956755716955a6e691c3266ac54ddafd9
+ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 11/04/2019
-ms.locfileid: "73493390"
+ms.locfileid: "73581546"
 ---
 # <a name="tutorial-train-and-deploy-a-model-from-the-cli"></a>Samouczek: uczenie i wdrażanie modelu z poziomu interfejsu wiersza polecenia
 [!INCLUDE [applies-to-skus](../../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -183,7 +183,7 @@ To polecenie tworzy plik `.azureml/config.json`, który zawiera informacje, któ
 
 ## <a name="create-the-compute-target-for-training"></a>Utwórz element docelowy obliczeń na potrzeby szkolenia
 
-W tym przykładzie zastosowano Azure Machine Learning klaster obliczeniowy do uczenia modelu. Aby utworzyć nowy klaster obliczeniowy, użyj następującego polecenia:
+Ten przykład używa maszyny wirtualnej Azure Machine Learning notesu do uczenia modelu. Aby utworzyć nową maszynę wirtualną notesu, użyj następującego polecenia:
 
 ```azurecli-interactive
 az ml computetarget create amlcompute -n cpu --max-nodes 4 --vm-size Standard_D2_V2
@@ -239,7 +239,7 @@ Ten tekst jest rejestrowany ze skryptu szkoleniowego (`train-sklearn.py`) i wyś
 
 W przypadku inspekcji `train-sklearn.py`należy zauważyć, że używa ona również wartości alfa, gdy przechowuje przeszkolone modele do pliku. W tym przypadku pociąga za niego kilka modeli. Jeden z najwyższą wartością alfa powinna być najlepszym. Patrząc na dane wyjściowe powyżej, a kod, model z alfa 0,95 został zapisany jako `./outputs/ridge_0.95.pkl`
 
-Model został zapisany w katalogu `./outputs` w miejscu docelowym obliczeń, w którym został przeszkolony. W tym przypadku wystąpienie obliczeniowe Azure Machine Learning w chmurze platformy Azure. Proces uczenia automatycznie przekazuje zawartość katalogu `./outputs` z elementu docelowego obliczeń, w którym szkolenia odbywają się w obszarze roboczym Azure Machine Learning. Jest ona przechowywana w ramach eksperymentu (`myexperiment` w tym przykładzie).
+Model został zapisany w katalogu `./outputs` w miejscu docelowym obliczeń, w którym został przeszkolony. W takim przypadku Azure Machine Learning maszynę wirtualną notesu w chmurze platformy Azure. Proces uczenia automatycznie przekazuje zawartość katalogu `./outputs` z elementu docelowego obliczeń, w którym szkolenia odbywają się w obszarze roboczym Azure Machine Learning. Jest ona przechowywana w ramach eksperymentu (`myexperiment` w tym przykładzie).
 
 ## <a name="register-the-model"></a>Rejestrowanie modelu
 

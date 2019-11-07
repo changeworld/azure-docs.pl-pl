@@ -10,12 +10,12 @@ ms.service: azure-functions
 ms.topic: reference
 ms.date: 11/21/2017
 ms.author: cshoe
-ms.openlocfilehash: 9dd3f6490d1e9f6bdd20e99025545d83bca191fb
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.openlocfilehash: 9203f54989d010b8f1f10a7f90f00cc82fa41238
+ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73162325"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73574617"
 ---
 # <a name="azure-functions-http-triggers-and-bindings"></a>Azure Functions wyzwalacze i powiązania HTTP
 
@@ -361,7 +361,7 @@ Ten przykład odczytuje treść żądania POST jako ```String```i używa go do s
 
 #### <a name="read-parameter-from-a-route"></a>Odczyt parametru z trasy
 
-Ten przykład odczytuje obowiązkowy parametr o nazwie ```id```i opcjonalny parametr ```name``` ze ścieżki trasy, a następnie używa ich do kompilowania dokumentu JSON zwróconego do klienta z typem zawartości ```application/json```. trylionów
+Ten przykład odczytuje obowiązkowy parametr o nazwie ```id```i opcjonalny parametr ```name``` ze ścieżki trasy, a następnie używa ich do kompilowania dokumentu JSON zwróconego do klienta z typem zawartości ```application/json```. T
 
 ```java
 @FunctionName("TriggerStringRoute")
@@ -522,9 +522,9 @@ W poniższej tabeli objaśniono właściwości konfiguracji powiązań ustawiane
 
 |Function. JSON — Właściwość | Właściwość atrybutu |Opis|
 |---------|---------|----------------------|
-| **type** | nd.| Wymagane — musi być ustawiony na `httpTrigger`. |
-| **direction** | nd.| Wymagany — musi być ustawiony na wartość `in`. |
-| **Nazwij** | nd.| Wymagane — nazwa zmiennej używana w kodzie funkcji dla żądania lub treści żądania. |
+| **type** | Nie dotyczy| Wymagane — musi być ustawiony na `httpTrigger`. |
+| **direction** | Nie dotyczy| Wymagane — musi być ustawiony na `in`. |
+| **Nazwij** | Nie dotyczy| Wymagane — nazwa zmiennej używana w kodzie funkcji dla żądania lub treści żądania. |
 | <a name="http-auth"></a>**authLevel** |  **AuthLevel** |Określa, jakie klucze (jeśli istnieją) muszą być obecne w żądaniu w celu wywołania funkcji. Poziom autoryzacji może być jedną z następujących wartości: <ul><li><code>anonymous</code>&mdash;nie jest wymagany żaden klucz interfejsu API.</li><li><code>function</code>&mdash;klucz interfejsu API specyficzny dla funkcji jest wymagany. Jest to wartość domyślna, jeśli nie podano żadnej z nich.</li><li><code>admin</code>&mdash;klucz główny jest wymagany.</li></ul> Aby uzyskać więcej informacji, zapoznaj się z sekcją dotyczącej [kluczy autoryzacji](#authorization-keys). |
 | **form** |**Form** | Tablica metod HTTP, do których funkcja reaguje. Jeśli nie zostanie określony, funkcja reaguje na wszystkie metody HTTP. Zobacz [Dostosowywanie punktu końcowego http](#customize-the-http-endpoint). |
 | **Szlak** | **Szlak** | Definiuje szablon trasy, który kontroluje adresy URL żądań, które odpowiada funkcja. Wartość domyślna, jeśli nie jest określona, jest `<functionname>`. Aby uzyskać więcej informacji, zobacz [Dostosowywanie punktu końcowego http](#customize-the-http-endpoint). |
@@ -857,12 +857,6 @@ Długość żądania HTTP jest ograniczona do 100 MB (104 857 600 bajtów), a d�
 
 Jeśli funkcja, która używa wyzwalacza HTTP, nie kończy się w ciągu około 2,5 minut, Brama przekroczy limit czasu i zwróci błąd HTTP 502. Funkcja będzie kontynuowała działanie, ale nie będzie mogła zwracać odpowiedzi HTTP. W przypadku długotrwałych funkcji zalecamy wykonanie wzorców asynchronicznych i zwrócenie lokalizacji, w której można wysłać polecenie ping do stanu żądania. Informacje o tym, jak długo funkcja może być uruchamiana, znajduje się w artykule [skalowanie i planowanie zużycia](functions-scale.md#timeout).
 
-## <a name="trigger---hostjson-properties"></a>Wyzwalacz — właściwości pliku host. JSON
-
-Plik [host. JSON](functions-host-json.md) zawiera ustawienia kontrolujące zachowanie wyzwalacza http.
-
-[!INCLUDE [functions-host-json-http](../../includes/functions-host-json-http.md)]
-
 ## <a name="output"></a>Dane wyjściowe
 
 Użyj powiązania wyjściowego HTTP, aby odpowiedzieć na nadawcę żądania HTTP. To powiązanie wymaga wyzwalacza HTTP i umożliwia dostosowanie odpowiedzi skojarzonej z żądaniem wyzwalacza. Jeśli nie podano powiązania danych wyjściowych HTTP, wyzwalacz HTTP zwróci wartość HTTP 200 OK z pustą treścią w funkcjach 1. x lub HTTP 204 Brak zawartości z pustą treścią w funkcjach 2. x.
@@ -874,14 +868,51 @@ W poniższej tabeli objaśniono właściwości konfiguracji powiązań ustawiane
 |Właściwość  |Opis  |
 |---------|---------|
 | **type** |Musi być ustawiony na `http`. |
-| **direction** | Musi mieć ustawioną wartość `out`. |
-|**Nazwij** | Nazwa zmiennej używana w kodzie funkcji dla odpowiedzi lub `$return` do używania wartości zwracanej. |
+| **direction** | Musi być ustawiony na `out`. |
+| **Nazwij** | Nazwa zmiennej używana w kodzie funkcji dla odpowiedzi lub `$return` do używania wartości zwracanej. |
 
 ## <a name="output---usage"></a>Dane wyjściowe — użycie
 
 Aby wysłać odpowiedź HTTP, użyj standardowych wzorców odpowiedzi języka. W C# programie C# lub, należy sprawić, aby funkcja zwracała typ `IActionResult` lub `Task<IActionResult>`. W C#programie atrybut wartości zwracanej nie jest wymagany.
 
 Na przykład odpowiedzi, zobacz [przykład wyzwalacza](#trigger---example).
+
+## <a name="hostjson-settings"></a>Ustawienia pliku host. JSON
+
+W tej sekcji opisano globalne ustawienia konfiguracji dostępne dla tego powiązania w wersji 2. x. Poniższy przykładowy plik host. JSON zawiera tylko ustawienia wersji 2. x dla tego powiązania. Aby uzyskać więcej informacji na temat ustawień konfiguracji globalnej w wersji 2. x, zobacz informacje dotyczące pliku [host. JSON dla Azure Functions wersji 2. x](functions-host-json.md).
+
+> [!NOTE]
+> Aby uzyskać odwołanie do pliku host. JSON w funkcjach 1. x, zobacz informacje dotyczące pliku [host. JSON dla Azure Functions 1. x](functions-host-json-v1.md#http).
+
+```json
+{
+    "extensions": {
+        "http": {
+            "routePrefix": "api",
+            "maxOutstandingRequests": 200,
+            "maxConcurrentRequests": 100,
+            "dynamicThrottlesEnabled": true,
+            "hsts": {
+                "isEnabled": true,
+                "maxAge": "10"
+            },
+            "customHeaders": {
+                "X-Content-Type-Options": "nosniff"
+            }
+        }
+    }
+}
+```
+
+|Właściwość  |Domyślne | Opis |
+|---------|---------|---------| 
+| customHeaders|brak|Umożliwia ustawienie niestandardowych nagłówków w odpowiedzi HTTP. Poprzedni przykład dodaje nagłówek `X-Content-Type-Options` do odpowiedzi, aby uniknąć wykrywania typu zawartości. |
+|dynamicThrottlesEnabled|wartość true<sup>\*</sup>|Włączenie tego ustawienia powoduje, że potok przetwarzania żądań okresowo sprawdza liczniki wydajności systemu, takie jak połączenia/wątki/procesy/pamięć/procesor CPU/itp. Jeśli którykolwiek z tych liczników korzysta ze wstępnie zdefiniowanego progu górnego (80%), żądania będą odrzucono z odpowiedzią na 429 "zbyt zajęte" do momentu powrotu liczników do normalnych poziomów.<br/><sup>\*</sup> Wartość domyślna w planie zużycia jest `true`. Wartość domyślna w ramach dedykowanego planu to `false`.|
+|HSTS|Niewłączony|Gdy `isEnabled` jest ustawiony na `true`, wymuszane jest [zachowanie zabezpieczeń HTTP Strict Transport (HSTS) dla platformy .NET Core](/aspnet/core/security/enforcing-ssl?view=aspnetcore-3.0&tabs=visual-studio#hsts) , zgodnie z definicją w [klasie`HstsOptions`](/dotnet/api/microsoft.aspnetcore.httpspolicy.hstsoptions?view=aspnetcore-3.0). Powyższy przykład ustawia również właściwość [`maxAge`](/dotnet/api/microsoft.aspnetcore.httpspolicy.hstsoptions.maxage?view=aspnetcore-3.0#Microsoft_AspNetCore_HttpsPolicy_HstsOptions_MaxAge) na 10 dni. |
+|maxConcurrentRequests|100<sup>\*</sup>|Maksymalna liczba funkcji http, które są wykonywane równolegle. Pozwala to na kontrolowanie współbieżności, co może ułatwić zarządzanie użyciem zasobów. Na przykład może istnieć funkcja http, która korzysta z dużej ilości zasobów systemowych (pamięć/procesor CPU/gniazda), co powoduje problemy, gdy współbieżność jest zbyt wysoka. Może też istnieć funkcja, która wysyła żądania wychodzące do usługi innej firmy, a te wywołania muszą mieć ograniczoną szybkość. W takich przypadkach można w tym celu zastosować ograniczenie przepustowości. <br/><sup>*</sup> Wartością domyślną planu zużycia jest 100. Wartość domyślna dla dedykowanego planu jest nieograniczona (`-1`).|
+|maxOutstandingRequests|200<sup>\*</sup>|Maksymalna liczba oczekujących żądań, które są przechowywane w danym momencie. Ten limit obejmuje żądania, które są umieszczane w kolejce, ale nie rozpoczęto wykonywania, a także w trakcie wykonywania. Wszystkie żądania przychodzące przez ten limit są odrzucane przez odpowiedź 429 "zbyt zajęta". Dzięki temu obiekty wywołujące mogą korzystać z strategii ponawiania prób, a także kontrolować maksymalne opóźnienia żądania. Tylko kontroluje kolejkowanie, które występuje w ścieżce wykonywania hosta skryptu. Inne kolejki, takie jak Kolejka żądań ASP.NET, nadal będą obowiązywać i nie mają wpływu na to ustawienie. <br/><sup>\*</sup>\The domyślny dla planu zużycia to 200. Wartość domyślna dla dedykowanego planu jest nieograniczona (`-1`).|
+|routePrefix|api|Prefiks trasy dotyczący wszystkich tras. Użyj pustego ciągu, aby usunąć domyślny prefiks. |
+
 
 ## <a name="next-steps"></a>Następne kroki
 

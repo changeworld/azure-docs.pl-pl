@@ -7,16 +7,16 @@ ms.topic: conceptual
 author: lzchen
 ms.author: lechen
 ms.date: 10/15/2019
-ms.openlocfilehash: 00ebf86bf6d0d57b29d660f78aae3dd828d44ded
-ms.sourcegitcommit: 8e271271cd8c1434b4254862ef96f52a5a9567fb
+ms.openlocfilehash: c28ef627e9ef65f9985a520c8c4f3facc7a160da
+ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72819144"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73575496"
 ---
 # <a name="track-dependencies-with-opencensus-python"></a>Śledzenie zależności przy użyciu języka Python OpenCensus
 
-Zależność jest składnikiem zewnętrznym, który jest wywoływany przez aplikację. Dane zależności są zbierane przy użyciu języka Python OpenCensus i różnych integracji. Dane są następnie wysyłane do Application Insights w Azure Monitor.
+Zależność jest składnikiem zewnętrznym, który jest wywoływany przez aplikację. Dane zależności są zbierane przy użyciu języka Python OpenCensus i różnych integracji. Dane są następnie wysyłane do Application Insights w obszarze Azure Monitor jako dane telemetryczne `dependencies`.
 
 Najpierw Instrumentacja aplikacji w języku Python przy użyciu najnowszego [zestawu SDK języka Python OpenCensus](../../azure-monitor/app/opencensus-python.md).
 

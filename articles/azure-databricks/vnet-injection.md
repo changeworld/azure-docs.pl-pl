@@ -8,12 +8,12 @@ ms.reviewer: jasonh
 ms.service: azure-databricks
 ms.topic: conceptual
 ms.date: 10/10/2019
-ms.openlocfilehash: 0bb3221c201e6dd4dd17cca8ef7e3ed3331de228
-ms.sourcegitcommit: 77bfc067c8cdc856f0ee4bfde9f84437c73a6141
+ms.openlocfilehash: 5eded3217e96ccc45951acae004d1424e16cb098
+ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72432664"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73605662"
 ---
 # <a name="deploy-azure-databricks-in-your-virtual-network"></a>Wdrażanie usługi Azure Databricks w sieci wirtualnej
 
@@ -99,7 +99,7 @@ Aby utworzyć sieć wirtualną, sieciowe grupy zabezpieczeń i Azure Databricks 
 
 W przypadku korzystania z tego szablonu nie trzeba wykonywać żadnych ręcznych listy dozwolonych ruchu w podsieci.
 
-### <a name="network-security-groups"></a>Sieciowe grupy zabezpieczeń
+### <a name="network-security-groups"></a>Grupy zabezpieczeń sieci
 
 Aby utworzyć sieciowe grupy zabezpieczeń z regułami wymaganymi dla istniejącej sieci wirtualnej, użyj [szablonu sieciowej grupy zabezpieczeń dla iniekcji sieci wirtualnej datakostka](https://azure.microsoft.com/resources/templates/101-databricks-all-in-one-template-for-vnet-injection/).
 
@@ -119,17 +119,17 @@ Jeśli użyjesz tego szablonu bez również używania szablonu sieciowe grupy za
 
 ## <a name="whitelisting-subnet-traffic"></a>Ruch podsieci listy dozwolonych
 
-Jeśli nie korzystasz z szablonów [Azure Portal](https://docs.azuredatabricks.net/administration-guide/cloud-configurations/azure/vnet-inject.html#vnet-inject-portal) lub [Azure Resource Manager](https://docs.azuredatabricks.net/administration-guide/cloud-configurations/azure/vnet-inject.html#vnet-inject-advanced) do tworzenia grup zabezpieczeń sieci, musisz ręcznie dozwolonych następujący ruch w podsieciach.
+Jeśli nie korzystasz z szablonów [Azure Portal](/azure/databricks/administration-guide/cloud-configurations/azure/vnet-inject#vnet-inject-portal) lub [Azure Resource Manager](/azure/databricks/administration-guide/cloud-configurations/azure/vnet-inject.html#vnet-inject-advanced) do tworzenia grup zabezpieczeń sieci, musisz ręcznie dozwolonych następujący ruch w podsieciach.
 
-|Kierunek|Protocol (Protokół)|Źródło|Port źródłowy|Cel|Port docelowy|
+|Kierunek|Protokół|Element źródłowy|Port źródłowy|Element docelowy|Port docelowy|
 |---------|--------|------|-----------|-----------|----------------|
-|Przychodzące|\*|VirtualNetwork|\*|\*|\*|
-|Przychodzące|\*|Płaszczyzna kontroli translator adresów sieciowych IP|\*|\*|22|
-|Przychodzące|\*|Płaszczyzna kontroli translator adresów sieciowych IP|\*|\*|5557|
-|Wychodzące|\*|\*|\*|Webapp IP|\*|
-|Wychodzące|\*|\*|\*|SQL (tag usługi)|\*|
-|Wychodzące|\*|\*|\*|Magazyn (tag usługi)|\*|
-|Wychodzące|\*|\*|\*|VirtualNetwork|\*|
+|Przychodzący|\*|VirtualNetwork|\*|\*|\*|
+|Przychodzący|\*|Płaszczyzna kontroli translator adresów sieciowych IP|\*|\*|22|
+|Przychodzący|\*|Płaszczyzna kontroli translator adresów sieciowych IP|\*|\*|5557|
+|Wychodzący|\*|\*|\*|Webapp IP|\*|
+|Wychodzący|\*|\*|\*|SQL (tag usługi)|\*|
+|Wychodzący|\*|\*|\*|Magazyn (tag usługi)|\*|
+|Wychodzący|\*|\*|\*|VirtualNetwork|\*|
 
 Dozwolonych ruch podsieci przy użyciu następujących adresów IP. W przypadku usług SQL (magazynu metadanych) i magazynu (artefaktu i magazynu dzienników) należy używać [tagów usługi](https://docs.microsoft.com/azure/virtual-network/security-overview#service-tags)SQL i magazynu.
 
@@ -137,9 +137,9 @@ Dozwolonych ruch podsieci przy użyciu następujących adresów IP. W przypadku 
 |-----------------------|-------|---------|
 |Wschodnie stany USA|Płaszczyzna kontroli translator adresów sieciowych </br></br>Webapp|23.101.152.95/32 </br></br>40.70.58.221/32|
 |Wschodnie stany USA 2|Płaszczyzna kontroli translator adresów sieciowych </br></br>Webapp|23.101.152.95/32 </br></br>40.70.58.221/32|
-|Północno-środkowe stany USA|Płaszczyzna kontroli translator adresów sieciowych </br></br>Webapp|23.101.152.95/32 </br></br>40.70.58.221/32|
+|Środkowo-północne stany USA|Płaszczyzna kontroli translator adresów sieciowych </br></br>Webapp|23.101.152.95/32 </br></br>40.70.58.221/32|
 |Środkowe stany USA|Płaszczyzna kontroli translator adresów sieciowych </br></br>Webapp|23.101.152.95/32 </br></br>40.70.58.221/32|
-|Południowo-środkowe stany USA|Płaszczyzna kontroli translator adresów sieciowych </br></br>Webapp|40.83.178.242/32 </br></br>40.118.174.12/32|
+|Środkowo-południowe stany USA|Płaszczyzna kontroli translator adresów sieciowych </br></br>Webapp|40.83.178.242/32 </br></br>40.118.174.12/32|
 |Zachodnie stany USA|Płaszczyzna kontroli translator adresów sieciowych </br></br>Webapp|40.83.178.242/32 </br></br>40.118.174.12/32|
 |Zachodnie stany USA 2|Płaszczyzna kontroli translator adresów sieciowych </br></br>Webapp|40.83.178.242/32 </br></br>40.118.174.12/32|
 |Kanada Środkowa|Płaszczyzna kontroli translator adresów sieciowych </br></br>Webapp|40.85.223.25/32 </br></br>13.71.184.74/32|
@@ -151,7 +151,7 @@ Dozwolonych ruch podsieci przy użyciu następujących adresów IP. W przypadku 
 |Indie Środkowe|Płaszczyzna kontroli translator adresów sieciowych </br></br>Webapp|104.211.89.81/32 </br></br>104.211.101.14/32|
 |Indie Południowe|Płaszczyzna kontroli translator adresów sieciowych </br></br>Webapp|104.211.89.81/32 </br></br>104.211.101.14/32|
 |Indie Zachodnie|Płaszczyzna kontroli translator adresów sieciowych </br></br>Webapp|104.211.89.81/32 </br></br>104.211.101.14/32|
-|Azja Południowo-wschodnia|Płaszczyzna kontroli translator adresów sieciowych </br></br>Webapp|52.187.0.85/32 </br></br>52.187.145.107/32|
+|Azja Południowo-Wschodnia|Płaszczyzna kontroli translator adresów sieciowych </br></br>Webapp|52.187.0.85/32 </br></br>52.187.145.107/32|
 |Azja Wschodnia|Płaszczyzna kontroli translator adresów sieciowych </br></br>Webapp|52.187.0.85/32 </br></br>52.187.145.107/32|
 |Australia Wschodnia|Płaszczyzna kontroli translator adresów sieciowych </br></br>Webapp|13.70.105.50/32 </br></br>13.75.218.172/32|
 |Australia Południowo-Wschodnia|Płaszczyzna kontroli translator adresów sieciowych </br></br>Webapp|13.70.105.50/32 </br></br>13.75.218.172/32|

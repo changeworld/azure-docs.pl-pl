@@ -9,11 +9,11 @@ ms.date: 07/25/2019
 ms.author: cynthn
 ms.custom: include file
 ms.openlocfilehash: 262880997c6b065dc5293a18d9a07c52ac836f37
-ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
+ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68703044"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73591193"
 ---
 > [!IMPORTANT]
 > Dedykowane hosty platformy Azure są obecnie dostępne w publicznej wersji zapoznawczej.
@@ -21,7 +21,7 @@ ms.locfileid: "68703044"
 >
 > **Ograniczenia znanej wersji zapoznawczej**
 > - Zestawy skalowania maszyn wirtualnych nie są obecnie obsługiwane na dedykowanych hostach.
-> - Początkowa wersja zapoznawcza obsługuje następującą serię maszyn wirtualnych: DSv3 i ESv3. 
+> - Początkowa wersja zapoznawcza obsługuje następujące serie maszyn wirtualnych: DSv3 i ESv3. 
 
 
 ## <a name="create-a-host-group"></a>Tworzenie grupy hostów
@@ -45,7 +45,7 @@ W tym przykładzie utworzymy grupę hostów przy użyciu jednej strefy dostępno
 1. Na stronie **grupy hostów (wersja zapoznawcza)** wybierz pozycję **Utwórz**.
 1. Wybierz subskrypcję, której chcesz użyć, a następnie wybierz pozycję **Utwórz nową** , aby utworzyć nową grupę zasobów.
 1. Wpisz *myDedicatedHostsRG* jako **nazwę** , a następnie wybierz przycisk **OK**.
-1. W obszarze **Nazwa grupy hostów**wpiszelement webhost.
+1. W obszarze **Nazwa grupy hostów**wpisz element *webhost*.
 1. W obszarze **Lokalizacja**wybierz pozycję **Wschodnie stany USA**.
 1. W **obszarze strefa dostępności**wybierz pozycję **1**.
 1. W obszarze **liczba domen błędów**wybierz pozycję **2**.
@@ -71,7 +71,7 @@ Jeśli ustawisz liczbę domen błędów dla grupy hostów, zostanie wyświetlony
 1. Na stronie **dedykowane hosty (wersja zapoznawcza)** wybierz pozycję **Utwórz**.
 1. Wybierz subskrypcję, której chcesz użyć.
 1. Wybierz pozycję *myDedicatedHostsRG* jako **grupę zasobów**.
-1. W obszarze **szczegóły wystąpienia**wpisz wartość webhost dla **nazwy** i wybierz pozycję *Wschodnie stany USA* dla lokalizacji.
+1. W obszarze **szczegóły wystąpienia**wpisz wartość *webhost* dla **nazwy** i wybierz pozycję *Wschodnie stany USA* dla lokalizacji.
 1. W obszarze **profil sprzętu**wybierz pozycję *standardowa rodzina Es3 — typ 1* dla **rodziny rozmiarów**, wybierz pozycję *myHostGrup* dla **grupy hostów** , a następnie wybierz pozycję *1* dla **domeny błędów**. Pozostaw wartości domyślne pozostałych pól.
 1. Gdy wszystko będzie gotowe, wybierz pozycję **Przegląd + Utwórz** i poczekaj na weryfikację.
 

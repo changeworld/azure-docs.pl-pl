@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 09/09/2019
 ms.author: raynew
-ms.openlocfilehash: ff35c5e23c5d8a448d62a3eeb8d15ba8d5a531e4
-ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
+ms.openlocfilehash: 081e1db4df0d77fa600e132a5585172d44f1196a
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/09/2019
-ms.locfileid: "70814540"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73663024"
 ---
 # <a name="set-up-disaster-recovery-for-azure-vms-after-migration-to-azure"></a>Konfigurowanie odzyskiwania po awarii maszyn wirtualnych platformy Azure po migracji na platformę Azure 
 
@@ -29,7 +29,7 @@ Przed skonfigurowaniem odzyskiwania po awarii upewnij się, że migracja zakońc
 
 Dla każdej maszyny wirtualnej platformy Azure musi być zainstalowany [Agent maszyny wirtualnej platformy Azure](../virtual-machines/extensions/agent-windows.md) . Aby replikować maszyny wirtualne platformy Azure, Site Recovery instaluje rozszerzenie agenta.
 
-- Jeśli na maszynie jest uruchomiona wersja 9.7.0.0 lub nowsza Site Recovery, Agent maszyny wirtualnej platformy Azure zostanie automatycznie zainstalowany przez usługę mobilności na maszynach wirtualnych z systemem Windows. We wcześniejszych wersjach usługi mobilności należy zainstalować agenta automatycznie.
+- Jeśli na maszynie jest uruchomiona wersja 9.7.0.0 lub nowsza Site Recovery, Agent maszyny wirtualnej platformy Azure zostanie automatycznie zainstalowany przez usługę mobilności na maszynach wirtualnych z systemem Windows. We wcześniejszych wersjach usługi mobilności należy zainstalować agenta ręcznie.
 - W przypadku maszyn wirtualnych z systemem Linux należy ręcznie zainstalować agenta maszyny wirtualnej platformy Azure. Należy zainstalować agenta maszyny wirtualnej platformy Azure tylko wtedy, gdy usługa mobilności zainstalowana na migrowanej maszynie ma wartość v 9.6 lub wcześniejszą.
 
 

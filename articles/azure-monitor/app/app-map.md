@@ -8,12 +8,12 @@ author: mrbullwinkle
 ms.author: mbullwin
 ms.date: 03/15/2019
 ms.reviewer: sdash
-ms.openlocfilehash: 49efad50b988da263a715c1aba9d53ad4b4a7121
-ms.sourcegitcommit: 1bd2207c69a0c45076848a094292735faa012d22
+ms.openlocfilehash: 65a257cc4613fb9e4dece09a2544de2e78779ab4
+ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "72678389"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73577059"
 ---
 # <a name="application-map-triage-distributed-applications"></a>Mapa aplikacji: Klasyfikacja aplikacje rozproszone
 
@@ -180,13 +180,22 @@ appInsights.defaultClient.addTelemetryProcessor(envelope => {
 
 ### <a name="java"></a>Java
 
+Począwszy od Application Insights 2.5.0 Java SDK, można określić nazwę roli w chmurze, dodając `<RoleName>` do pliku `ApplicationInsights.xml`, np.
+
+```XML
+<?xml version="1.0" encoding="utf-8"?>
+<ApplicationInsights xmlns="http://schemas.microsoft.com/ApplicationInsights/2013/Settings" schemaVersion="2014-05-30">
+   <InstrumentationKey>** Your instrumentation key **</InstrumentationKey>
+   <RoleName>** Your role name **</RoleName>
+   ...
+</ApplicationInsights>
+```
+
 Jeśli używasz sprężynowego rozruchu z Application Insights sprężynowego rozruchu Starter, jedyną wymaganą zmianą jest ustawienie niestandardowej nazwy aplikacji w pliku Application. Properties.
 
 `spring.application.name=<name-of-app>`
 
 W przypadku rozruchu sprężynowego Starter zostanie automatycznie przypisana nazwa roli chmury do wartości wprowadzonej dla właściwości spring.application.name.
-
-Aby uzyskać więcej informacji na temat korelacji w języku Java i sposobu konfigurowania nazwy roli w chmurze dla aplikacji innych niż SpringBoot, Wyewidencjonuj tę [sekcję](https://docs.microsoft.com/azure/application-insights/application-insights-correlation#role-name) na stronie korelacji.
 
 ### <a name="clientbrowser-side-javascript"></a>Klient/przeglądarka JavaScript
 
@@ -205,7 +214,7 @@ W miarę jak sądzisz o **nazwie roli w chmurze**, warto przyjrzeć się mapie a
 
 ![Zrzut ekranu mapy aplikacji](media/app-map/cloud-rolename.png)
 
-Na mapie aplikacji powyżej każdej z nazw w zielonych polach znajdują się wartości nazw ról w chmurze dla różnych aspektów tej konkretnej aplikacji rozproszonej. W przypadku tej aplikacji role składają się z: `Authentication`, `acmefrontend`, `Inventory Management` `Payment Processing Worker Role`. 
+Na mapie aplikacji powyżej każdej z nazw w zielonych polach znajdują się wartości nazw ról w chmurze dla różnych aspektów tej konkretnej aplikacji rozproszonej. W przypadku tej aplikacji role składają się z: `Authentication`, `acmefrontend`, `Inventory Management``Payment Processing Worker Role`. 
 
 W przypadku tej aplikacji każda z tych nazw roli w chmurze reprezentuje również inny unikatowy Application Insights zasób z własnymi kluczami Instrumentacji. Ponieważ właściciel tej aplikacji ma dostęp do każdego z czterech różnych zasobów Application Insights, Mapa aplikacji jest w stanie połączyć mapę relacji podstawowych.
 

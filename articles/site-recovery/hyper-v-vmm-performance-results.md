@@ -1,5 +1,5 @@
 ---
-title: Wyniki testu dotyczące replikacji maszyn wirtualnych funkcji Hyper-V w chmurach programu VMM do lokacji dodatkowej z Azure Site Recovery | Microsoft Docs
+title: Testowanie replikacji maszyny wirtualnej funkcji Hyper-V do lokacji dodatkowej za pomocą programu VMM przy użyciu Azure Site Recovery
 description: Ten artykuł zawiera informacje o testowaniu wydajności replikacji maszyn wirtualnych funkcji Hyper-V w chmurach programu VMM do lokacji dodatkowej przy użyciu Azure Site Recovery.
 author: sujayt
 manager: rochakm
@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 12/27/2018
 ms.author: sutalasi
-ms.openlocfilehash: a7413b2dcb24a42092eb2af9816b1d29a8306e19
-ms.sourcegitcommit: 13d5eb9657adf1c69cc8df12486470e66361224e
+ms.openlocfilehash: 3edd182e335bc679d95d7be64f45b617a9f54c1a
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68377212"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73663174"
 ---
 # <a name="test-results-for-hyper-v-replication-to-a-secondary-site"></a>Wyniki testu dla replikacji funkcji Hyper-V do lokacji dodatkowej
 
@@ -90,7 +90,7 @@ Na poniższym wykresie przedstawiono przepływność maszyn wirtualnych z różn
 
 ![Efekty replik wyników](./media/hyper-v-vmm-performance-results/IC744921.png)
 
-## <a name="conclusion"></a>Wniosek
+## <a name="conclusion"></a>Podsumowanie
 
 Wyniki jasno pokazują, że Site Recovery, w połączeniu z funkcją Hyper-V Replica, skaluje się dobrze przy minimalnym obciążeniu dla dużego klastra. Site Recovery zapewnia proste wdrażanie, replikację, zarządzanie i monitorowanie. Funkcja Hyper-V Replica zapewnia infrastrukturę niezbędną do pomyślnego skalowania replikacji. 
 
@@ -100,29 +100,29 @@ Wyniki jasno pokazują, że Site Recovery, w połączeniu z funkcją Hyper-V Rep
 
 * Lokacja główna ma klaster zawierający pięć serwerów funkcji Hyper-V, na których działają maszyny wirtualne 470.
 * Maszyny wirtualne uruchamiają różne obciążenia, a wszystkie Site Recovery ochrony są włączone.
-* Magazyn dla węzła klastra jest udostępniany przez sieć SAN iSCSI. Model – Hitachi HUS130.
+* Magazyn dla węzła klastra jest udostępniany przez sieć SAN iSCSI. Model — Hitachi HUS130.
 * Każdy serwer klastra ma cztery karty sieciowe (nic) o jednej GB/s każdy.
 * Dwie karty sieciowe są połączone z siecią prywatną iSCSI, a dwie są połączone z zewnętrzną siecią przedsiębiorstwa. Jedna z sieci zewnętrznych jest zarezerwowana tylko do komunikacji z klastrem.
 
 ![Podstawowe wymagania sprzętowe](./media/hyper-v-vmm-performance-results/IC744922.png)
 
-| Serwer | Pamięć RAM | Modelowanie | Procesor | Liczba procesorów | NIC | Oprogramowanie |
+| Serwer | Pamięć RAM | Modelowanie | Procesor | Liczba procesorów | Karta sieciowa | Oprogramowanie |
 | --- | --- | --- | --- | --- | --- | --- |
-| Serwery funkcji Hyper-V w klastrze: <br />ESTLAB-HOST11<br />ESTLAB-HOST12<br />ESTLAB-HOST13<br />ESTLAB-HOST14<br />ESTLAB-HOST25 |128<br />ESTLAB – HOST25 ma 256 |Dell ™ PowerEdge ™ R820 |Procesor Intel (r) Xeon (R) E5-4620 0 \@ 2.20 GHz |4 |I GB/s x 4 |Windows Server Datacenter 2012 R2 (x64) + rola funkcji Hyper-V |
+| Serwery funkcji Hyper-V w klastrze: <br />ESTLAB-HOST11<br />ESTLAB-HOST12<br />ESTLAB-HOST13<br />ESTLAB-HOST14<br />ESTLAB-HOST25 |128<br />ESTLAB – HOST25 ma 256 |Dell™ PowerEdge™ R820 |Procesor Intel (R) Xeon (R) E5-4620 0 \@ 2.20 GHz |4 |I GB/s x 4 |Windows Server Datacenter 2012 R2 (x64) + rola funkcji Hyper-V |
 | Serwer programu VMM |2 | | |2 |1 Gb/s |Baza danych systemu Windows Server 2012 R2 (x64) + VMM 2012 R2 |
 
 ### <a name="secondary-site"></a>Lokacja dodatkowa
 
 * Lokacja dodatkowa zawiera klaster trybu failover z sześcioma węzłami.
-* Magazyn dla węzła klastra jest udostępniany przez sieć SAN iSCSI. Model – Hitachi HUS130.
+* Magazyn dla węzła klastra jest udostępniany przez sieć SAN iSCSI. Model — Hitachi HUS130.
 
 ![Podstawowa specyfikacja sprzętu](./media/hyper-v-vmm-performance-results/IC744923.png)
 
-| Serwer | Pamięć RAM | Modelowanie | Procesor | Liczba procesorów | NIC | Oprogramowanie |
+| Serwer | Pamięć RAM | Modelowanie | Procesor | Liczba procesorów | Karta sieciowa | Oprogramowanie |
 | --- | --- | --- | --- | --- | --- | --- |
-| Serwery funkcji Hyper-V w klastrze: <br />ESTLAB-HOST07<br />ESTLAB-HOST08<br />ESTLAB-HOST09<br />ESTLAB-HOST10 |96 |Dell™ PowerEdge™ R720 |Procesor Intel (r) Xeon (R) E5-2630 0 \@ 2.30 GHz |2 |I GB/s x 4 |Windows Server Datacenter 2012 R2 (x64) + rola funkcji Hyper-V |
-| ESTLAB-HOST17 |128 |Dell ™ PowerEdge ™ R820 |Procesor Intel (r) Xeon (R) E5-4620 0 \@ 2.20 GHz |4 | |Windows Server Datacenter 2012 R2 (x64) + rola funkcji Hyper-V |
-| ESTLAB-HOST24 |256 |Dell ™ PowerEdge ™ R820 |Procesor Intel (r) Xeon (R) E5-4620 0 \@ 2.20 GHz |2 | |Windows Server Datacenter 2012 R2 (x64) + rola funkcji Hyper-V |
+| Serwery funkcji Hyper-V w klastrze: <br />ESTLAB-HOST07<br />ESTLAB-HOST08<br />ESTLAB-HOST09<br />ESTLAB-HOST10 |96 |Dell™ PowerEdge™ R720 |Procesor Intel (R) Xeon (R) E5-2630 0 \@ 2.30 GHz |2 |I GB/s x 4 |Windows Server Datacenter 2012 R2 (x64) + rola funkcji Hyper-V |
+| ESTLAB-HOST17 |128 |Dell™ PowerEdge™ R820 |Procesor Intel (R) Xeon (R) E5-4620 0 \@ 2.20 GHz |4 | |Windows Server Datacenter 2012 R2 (x64) + rola funkcji Hyper-V |
+| ESTLAB-HOST24 |256 |Dell™ PowerEdge™ R820 |Procesor Intel (R) Xeon (R) E5-4620 0 \@ 2.20 GHz |2 | |Windows Server Datacenter 2012 R2 (x64) + rola funkcji Hyper-V |
 | Serwer programu VMM |2 | | |2 |1 Gb/s |Baza danych systemu Windows Server 2012 R2 (x64) + VMM 2012 R2 |
 
 ### <a name="server-workloads"></a>Obciążenia serwera
@@ -150,9 +150,9 @@ Wyniki jasno pokazują, że Site Recovery, w połączeniu z funkcją Hyper-V Rep
 | SQL Server |51 |1 |4 |167 |10 |
 | Exchange Server |71 |1 |4 |552 |10 |
 | Serwer plików |50 |1 |2 |552 |22 |
-| VDI |149 |.5 |1 |80 |6 |
+| Pulpit |149 |.5 |1 |80 |6 |
 | Serwer sieci Web |149 |.5 |1 |80 |6 |
-| SUMA |470 | | |96,83 TB |4108 |
+| OGÓLNEGO |470 | | |96,83 TB |4108 |
 
 ### <a name="site-recovery-settings"></a>Ustawienia Site Recovery
 
@@ -170,15 +170,15 @@ Wyniki jasno pokazują, że Site Recovery, w połączeniu z funkcją Hyper-V Rep
 
 Tabela zawiera podsumowanie metryk wydajności i liczników, które były mierzone we wdrożeniu.
 
-| Metryka | Licznik |
+| Metryka | Przeciw |
 | --- | --- |
 | Procesor CPU |\Processor(_Total)\% Processor Time |
 | Dostępna pamięć |\Memory\Available (MB) |
-| IOPS |\PhysicalDisk (_Total) \Bajty transferów/s |
-| Operacje odczytu maszyny wirtualnej (IOPS)/s |\Hyper-V wirtualne urządzenie magazynujące (\<VHD >) \Read operacje/s |
-| Operacje zapisu maszyny wirtualnej (IOPS)/s |\Hyper-V wirtualne urządzenie magazynujące (\<VHD >) \Write operacje/S |
-| Przepływność odczytu maszyny wirtualnej |\Hyper-V wirtualne urządzenie magazynujące (\<VHD >) \Read bajty/s |
-| Przepływność zapisu maszyny wirtualnej |\Hyper-V wirtualne urządzenie magazynujące (\<VHD >) \Write bajty/s |
+| Liczba operacji we/wy na sekundę |\PhysicalDisk (_Total) \Bajty transferów/s |
+| Operacje odczytu maszyny wirtualnej (IOPS)/s |\Hyper-V wirtualne urządzenie magazynujące (>\<VHD) \Read operacji/s |
+| Operacje zapisu maszyny wirtualnej (IOPS)/s |\Hyper-V wirtualne urządzenie magazynujące (> wirtualnego dysku twardego\<) \Write operacje/S |
+| Przepływność odczytu maszyny wirtualnej |\Hyper-V wirtualne urządzenie magazynujące (> wirtualnego dysku twardego\<) \Read bajty/s |
+| Przepływność zapisu maszyny wirtualnej |\Hyper-V wirtualne urządzenie magazynujące (> wirtualnego dysku twardego\<) \Write bajty/s |
 
 ## <a name="next-steps"></a>Następne kroki
 

@@ -3,17 +3,17 @@ title: Korzystanie z programu Visual Studio i Visual Studio Code do kompilowania
 description: Użyj programu Visual Studio i Visual Studio Code, aby przyspieszyć tworzenie modeli urządzeń Plug and Play IoT i implementowanie kodu urządzenia.
 author: liydu
 ms.author: liydu
-ms.date: 09/10/2019
+ms.date: 10/29/2019
 ms.topic: conceptual
 ms.service: iot-pnp
 services: iot-pnp
 ms.custom: mvc
-ms.openlocfilehash: d68a3f99096ca64b357239f61cf7ff17d6fc3f83
-ms.sourcegitcommit: f3f4ec75b74124c2b4e827c29b49ae6b94adbbb7
-ms.translationtype: MT
+ms.openlocfilehash: 7bb4e507df24f50238197b738fd54e6b5c1d05ee
+ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/12/2019
-ms.locfileid: "70935731"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73571175"
 ---
 # <a name="use-azure-iot-tools-for-visual-studio-code"></a>Korzystanie z narzędzi Azure IoT Tools for Visual Studio Code
 
@@ -25,7 +25,7 @@ W tym artykule pokazano, jak:
 - Użyj wygenerowanego kodu w projekcie urządzenia.
 - Wykonaj iterację, ponownie generując kod szkieletowy.
 
-Aby dowiedzieć się więcej o używaniu VS Code do tworzenia urządzeń IoT [https://github.com/microsoft/vscode-iot-workbench](https://github.com/microsoft/vscode-iot-workbench), zobacz.
+Aby dowiedzieć się więcej o używaniu VS Code do tworzenia urządzeń IoT, zobacz [https://github.com/microsoft/vscode-iot-workbench](https://github.com/microsoft/vscode-iot-workbench).
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
@@ -46,23 +46,32 @@ W VS Code **naciśnij kombinację klawiszy Ctrl + Shift + P** , aby otworzyć pa
 
 - **Nazwa projektu**. Nazwa projektu jest używana jako nazwa folderu dla wygenerowanego kodu i innych plików projektu. Folder jest domyślnie umieszczony obok pliku DCM. Aby uniknąć konieczności ręcznego kopiowania folderu kodu wygenerowanego za każdym razem, gdy zaktualizujesz DCM i ponownie wygenerujesz kod urządzenia, Zachowaj plik DCM w tym samym folderze, w którym znajduje się folder projektu.
 
-- **Typ projektu**. Generator kodu generuje również plik projektu, dzięki czemu można zintegrować kod z własnym projektem lub projektem zestawu SDK urządzeń. Obecnie obsługiwane typy projektów są następujące:
-
-    - **Projekt CMAKE**: dla projektu urządzenia, który używa [CMAKE](https://cmake.org/) jako systemu kompilacji. Ta opcja generuje `CMakeLists.txt` plik w tym samym folderze co kod języka C.
-    - **Zestawu deweloperskiego IoT DevKit Project**: dla projektu urządzenia uruchomionego na urządzeniu [zestawu deweloperskiego IoT DevKit](https://aka.ms/iot-devkit) . Ta opcja generuje projekt Arduino, którego można [użyć w vs Code](https://docs.microsoft.com/azure/iot-hub/iot-hub-arduino-iot-devkit-az3166-get-started) lub w środowisku IDE Arduino do kompilowania i uruchamiania na urządzeniu IoT DevKit.
-
 - **Metoda nawiązywania połączenia z usługą Azure IoT**. Wygenerowane pliki zawierają również kod umożliwiający skonfigurowanie urządzenia do nawiązywania połączenia z platformą Azure IoT Hub. Możesz wybrać opcję bezpośredniego połączenia z [platformą Azure IoT Hub](https://docs.microsoft.com/azure/iot-hub) lub użyć [usługi Device Provisioning](https://docs.microsoft.com/azure/iot-dps).
 
     - **Za pomocą IoT Hub parametry połączenia urządzenia**: Określ parametry połączenia urządzenia, które mają być połączone IoT Hub bezpośrednio.
-    - **Za pośrednictwem klucza symetrycznego usługi DPS**: Określ **Identyfikator zakresu**, **Identyfikator rejestracji**i **klucz sygnatury dostępu współdzielonego** dla aplikacji urządzenia, które są wymagane do nawiązania połączenia z usługą IoT Hub lub IoT Central przy użyciu usługi DPS.
+    - **Przy użyciu klucza symetrycznego usługi DPS**: Określ **zakres identyfikatora**, **klucz symetryczny** i **Identyfikator urządzenia** dla aplikacji urządzenia, które są wymagane do nawiązania połączenia z IoT Hub lub IoT Central przy użyciu usługi DPS.
+
+- **Typ projektu**. Generator kodu generuje również projekt CMake lub Arduino. Obecnie obsługiwane typy projektów są następujące:
+
+    - **Projekt CMAKE w systemie Windows**: dla projektu urządzenia, który używa [CMAKE](https://cmake.org/) jako systemu kompilacji w systemie Windows. Ta opcja generuje `CMakeLists.txt` z konfiguracjami zestawu SDK urządzeń w tym samym folderze, w którym znajduje się kod C.
+    - **Projekt CMAKE w systemie Linux**: dla projektu urządzenia, który używa [CMAKE](https://cmake.org/) jako systemu kompilacji w systemie Linux. Ta opcja generuje `CMakeLists.txt` z konfiguracjami zestawu SDK urządzeń w tym samym folderze, w którym znajduje się kod C.
+    - **Zestawu deweloperskiego IoT DevKit Project**: dla projektu urządzenia uruchomionego na urządzeniu [zestawu deweloperskiego IoT DevKit](https://aka.ms/iot-devkit) . Ta opcja generuje projekt Arduino, którego można [użyć w vs Code](https://docs.microsoft.com/azure/iot-hub/iot-hub-arduino-iot-devkit-az3166-get-started) lub w środowisku IDE Arduino do kompilowania i uruchamiania na urządzeniu IoT DevKit.
+
+- **Typ zestawu SDK urządzeń**. Jeśli wybierzesz pozycję CMake jako typ projektu, jest to krok w celu skonfigurowania sposobu, w jaki wygenerowany kod będzie uwzględniać zestaw SDK urządzeń usługi Azure IoT C w `CMakeLists.txt`:
+
+    - **Za pośrednictwem kodu źródłowego**: wygenerowany kod opiera się na [kodzie źródłowym zestawu SDK urządzenia](https://github.com/Azure/azure-iot-sdk-c) do uwzględnienia w i kompilacji razem z nim. Jest to zalecane w przypadku dostosowania kodu źródłowego zestawu SDK urządzeń.
+    - **Za pośrednictwem Vcpkg**: wygenerowany kod opiera się na [zestawie SDK urządzeń Vcpkg](https://github.com/microsoft/vcpkg/tree/master/ports/azure-iot-sdk-c) , aby uwzględnić go i skompilować razem z nim. Jest to zalecany sposób dla urządzeń z systemem Windows, Linux lub macOS.
+
+    > [!NOTE]
+    > Obsługa macOS dla zestawu SDK urządzeń Azure IoT C Vcpkg działa w toku.
 
 Generator kodu próbuje użyć DCM i plików interfejsu znajdujących się w folderze lokalnym. Jeśli pliki interfejsu nie znajdują się w folderze lokalnym, generator kodu szuka ich w repozytorium modelu publicznego lub repozytorium modelu firmy. [Pliki Common Interface](./concepts-common-interfaces.md) są przechowywane w repozytorium modelu publicznego.
 
 Po zakończeniu generowania kodu rozszerzenie otwiera nowe okno VS Code z kodem. Jeśli otworzysz wygenerowany plik, taki jak **Main. c**, może się okazać, że technologia IntelliSense nie może otworzyć plików źródłowych zestawu c SDK. Aby włączyć poprawną funkcję IntelliSense i nawigowanie po kodzie, wykonaj następujące kroki, aby dołączyć źródło zestawu SDK języka C:
 
-1. W VS Code Użyj **kombinacji klawiszy Ctrl + Shift + P** , aby otworzyć paletę poleceń, wpisz **i wybierzC++pozycję C/: Edytuj konfiguracje (JSON)** , aby otworzyć plik **c_cpp_properties. JSON** .
+1. W vs Code Użyj **kombinacji klawiszy Ctrl + Shift + P** , aby otworzyć paletę poleceń, wpisz i wybierz pozycję **C/C++: Edit Configurations (JSON)** , aby otworzyć plik **c_cpp_properties. JSON** .
 
-1. Dodaj ścieżkę zestawu SDK urządzenia w `includePath` sekcji:
+1. Dodaj ścieżkę do zestawu SDK urządzenia w sekcji `includePath`:
 
     ```json
     "includePath": [
@@ -79,100 +88,81 @@ Poniższe instrukcje opisują sposób używania wygenerowanego kodu w projekcie 
 
 ### <a name="linux"></a>Linux
 
-Aby skompilować kod urządzenia wraz z zestawem SDK urządzenia C przy użyciu CMake w środowisku systemu Linux, takim jak Ubuntu lub Debian:
+Aby skompilować kod urządzenia wraz z zestawem SDK urządzenia Vcpkg przy użyciu CMake w środowisku systemu Linux, takim jak Ubuntu lub Debian:
 
 1. Otwórz aplikację terminala.
 
-1. Zainstaluj usługi w **zatoce**, `cmake` **git**i wszystkie zależności przy użyciu `apt-get` polecenia:
+1. Zainstaluj usługi w **zatoce**, **git**, `cmake`i wszystkie zależności przy użyciu polecenia `apt-get`:
 
-    ```sh
+    ```bash
     sudo apt-get update
     sudo apt-get install -y git cmake build-essential curl libcurl4-openssl-dev libssl-dev uuid-dev
     ```
 
-    Sprawdź, czy wersja `cmake` programu jest powyżej **2.8.12** , a wersja **tej wersji jest większa** niż **4.4.7**.
+    Upewnij się, że wersja `cmake` jest wyższa niż **2.8.12** , a wersja programu w **zatoce** jest większa niż **4.4.7**.
 
-    ```sh
+    ```bash
     cmake --version
     gcc --version
     ```
 
-1. Sklonuj repozytorium [zestawu SDK usługi Azure IoT C](https://github.com/Azure/azure-iot-sdk-c) :
+1. Zainstaluj Vcpkg:
 
-    ```sh
-    git clone https://github.com/Azure/azure-iot-sdk-c --recursive -b public-preview
+    ```bash
+    git clone https://github.com/Microsoft/vcpkg.git
+    cd vcpkg
+
+    ./bootstrap-vcpkg.sh
     ```
 
-    Należy się spodziewać, że ukończenie operacji potrwa kilka minut.
+    Następnie, aby podłączyć [integrację](https://github.com/microsoft/vcpkg/blob/master/docs/users/integration.md)obejmującą wiele użytkowników, uruchom następujące polecenie:
 
-1. Skopiuj folder zawierający wygenerowany kod do folderu głównego zestawu SDK urządzeń.
-
-1. W vs Code Otwórz `CMakeLists.txt` plik w folderze głównym zestawu SDK urządzeń.
-
-1. Dodaj następujący wiersz na końcu `CMakeLists.txt` pliku, aby uwzględnić folder zastępczy kodu urządzenia podczas kompilowania zestawu SDK:
-
-    ```txt
-    add_subdirectory({generated_code_folder_name})
+    ```bash
+    ./vcpkg integrate install
     ```
 
-1. Utwórz folder o nazwie `cmake` w folderze głównym zestawu SDK urządzenia i przejdź do tego folderu.
+1. Zainstaluj zestaw SDK urządzeń usługi Azure IoT C Vcpkg:
 
-    ```sh
+    ```bash
+    ./vcpkg install azure-iot-sdk-c[public-preview,use_prov_client]
+    ```
+
+1. Utwórz podkatalog `cmake` w folderze zawierającym wytworzoną procedurę tworzenia kodu i przejdź do tego folderu:
+
+    ```bash
     mkdir cmake
     cd cmake
     ```
 
 1. Uruchom następujące polecenia, aby użyć CMake do skompilowania zestawu SDK urządzenia i wygenerowanej klasy zastępczej kodu:
 
-    ```cmd\sh
-    cmake -Duse_prov_client=ON -Dhsm_type_symm_key:BOOL=ON ..
+    ```bash
+    cmake .. -Duse_prov_client=ON -Dhsm_type_symm_key:BOOL=ON -DCMAKE_TOOLCHAIN_FILE="{directory of your Vcpkg repo}/scripts/buildsystems/vcpkg.cmake"
+
     cmake --build .
     ```
 
 1. Po pomyślnym zakończeniu kompilacji Uruchom aplikację określającą IoT Hub parametry połączenia urządzenia jako parametr.
 
-    ```cmd\sh
-    cd azure-iot-sdk-c/cmake/{generated_code_folder_name}/
+    ```bash
     ./{generated_code_project_name} "[IoT Hub device connection string]"
     ```
 
 ### <a name="windows"></a>Windows
 
-Aby skompilować kod urządzenia wraz z zestawem SDK urządzenia w systemie Windows przy użyciu CMake i Visual Studio C/C++ kompilators w wierszu polecenia, zobacz [przewodnik Szybki Start Plug and Play IoT](./quickstart-create-pnp-device.md). Poniższe kroki pokazują, jak skompilować kod urządzenia wraz z zestawem SDK urządzenia jako CMake w programie Visual Studio.
+Aby skompilować kod urządzenia wraz z zestawem SDK urządzenia w systemie Windows przy użyciu CMake i Visual Studio C/C++ kompilators w wierszu polecenia, zobacz [przewodnik Szybki Start Plug and Play IoT](./quickstart-create-pnp-device.md). Poniższe kroki pokazują, jak skompilować kod urządzenia wraz z zestawem SDK urządzenia Vcpkg jako CMake Project w programie Visual Studio.
+
+1. Wykonaj kroki opisane w [przewodniku szybki start](https://docs.microsoft.com/azure/iot-pnp/quickstart-create-pnp-device#prepare-the-development-environment) , aby zainstalować zestaw SDK urządzeń Azure IoT dla języka C za pośrednictwem usługi Vcpkg.
 
 1. Zainstaluj [program Visual Studio 2019 (Community, Professional lub Enterprise)](https://visualstudio.microsoft.com/downloads/) — upewnij się, że dołączysz składnik **Menedżera pakietów NuGet** i **programowanie pulpitu z C++**  obciążeniem.
 
-1. Otwórz program Visual Studio, a na stronie **wprowadzenie** wybierz pozycję **Klonuj lub Wyewidencjonuj kod**:
-
-1. W obszarze **Lokalizacja repozytorium**Sklonuj repozytorium [zestawu SDK usługi Azure IoT C](https://github.com/Azure/azure-iot-sdk-c) :
-
-    ```txt
-    https://github.com/Azure/azure-iot-sdk-c
-    ```
-
-    Należy oczekiwać, że wykonanie tej operacji trwa kilka minut, postęp można zobaczyć w okienku **Team Explorer** .
-
-1. Otwórz repozytorium **Azure-IoT-SDK-c** w **Team Explorer**, wybierz pozycję **gałęzie**, Wyszukaj gałąź **publiczna w wersji zapoznawczej** i sprawdź ją.
-
-    ![Publiczna wersja zapoznawcza](media/howto-develop-with-vs-vscode/vs-public-preview.png)
-
-1. Skopiuj folder zawierający wygenerowany kod do folderu głównego zestawu SDK urządzeń.
-
-1. `azure-iot-sdk-c` Otwórz folder w programie vs.
-
-1. `CMakeLists.txt` Otwórz plik w folderze głównym zestawu SDK urządzeń.
-
-1. Dodaj następujący wiersz na końcu `CMakeLists.txt` pliku, aby uwzględnić folder zastępczy kodu urządzenia podczas kompilowania zestawu SDK:
-
-    ```txt
-    add_subdirectory({generated_code_folder_name})
-    ```
+1. Otwórz program Visual Studio, wybierz pozycję **plik > otwórz > CMAKE.** Aby otworzyć `CMakeLists.txt` w folderze zawiera wygenerowany kod.
 
 1. Na pasku narzędzi **Ogólne** Znajdź listę rozwijaną **konfiguracje** . Wybierz pozycję **Zarządzaj konfiguracją** , aby dodać ustawienie CMAKE dla projektu.
 
     ![Zarządzanie konfiguracją](media/howto-develop-with-vs-vscode/vs-manage-config.png)
 
-1. W **ustawieniach CMAKE**Dodaj nową konfigurację i wybierz pozycję **x64-Release** jako element docelowy.
+1. W **ustawieniach CMAKE**Dodaj nową konfigurację i wybierz **x86-Debug** jako cel.
 
 1. W **argumentach polecenia CMAKE**Dodaj następujący wiersz:
 
@@ -182,13 +172,16 @@ Aby skompilować kod urządzenia wraz z zestawem SDK urządzenia w systemie Wind
 
 1. Zapisz plik.
 
-1. W **Eksplorator rozwiązań**kliknij prawym przyciskiem `CMakeLists.txt` myszy w folderze głównym, a następnie wybierz polecenie **Kompiluj** z menu kontekstowego, aby skompilować zestaw SDK urządzenia i wygenerowany kod zastępczy.
+1. Przejdź do opcji **x86-Debug** na liście rozwijanej **konfiguracje** . Wygenerowanie pamięci podręcznej przez CMake potrzebuje kilka sekund. Wyświetl okno dane wyjściowe, aby zobaczyć postęp.
+
+    ![CMake dane wyjściowe](media/howto-develop-with-vs-vscode/vs-cmake-output.png)
+
+1. W **Eksplorator rozwiązań**kliknij prawym przyciskiem myszy `CMakeLists.txt` w folderze głównym, a następnie wybierz polecenie **Kompiluj** z menu kontekstowego, aby skompilować wygenerowany skrót kodu za pomocą zestawu SDK urządzenia.
 
 1. Po pomyślnym zakończeniu kompilacji, w wierszu polecenia, uruchom aplikację określającą IoT Hub parametry połączenia urządzenia jako parametr.
 
     ```cmd
-    cd %USERPROFILE%\CMakeBuilds\{workspaceHash}\build\x64-Release\{generated_code_folder_name}\
-    {generated_code_project_name}.exe "[IoT Hub device connection string]"
+    .\out\build\x86-Debug\{generated_code_project_name}.exe "[IoT Hub device connection string]"
     ```
 
 > [!TIP]
@@ -196,7 +189,7 @@ Aby skompilować kod urządzenia wraz z zestawem SDK urządzenia w systemie Wind
 
 ### <a name="macos"></a>macOS
 
-Poniższe kroki pokazują, jak skompilować kod urządzenia wraz z zestawem SDK urządzenia dla macOS przy użyciu CMake:
+Poniższe kroki pokazują, jak skompilować kod urządzenia wraz z kodem źródłowym urządzenia C SDK na macOS za pomocą CMake:
 
 1. Otwórz aplikację terminala.
 
@@ -215,7 +208,7 @@ Poniższe kroki pokazują, jak skompilować kod urządzenia wraz z zestawem SDK 
 
 1. [Zazwinięcie poprawki](https://github.com/Azure/azure-iot-sdk-c/blob/master/doc/devbox_setup.md#upgrade-curl-on-mac-os) do najnowszej dostępnej wersji.
 
-1. Sklonuj repozytorium [zestawu SDK usługi Azure IoT C](https://github.com/Azure/azure-iot-sdk-c) :
+1. W folderze zawierającym wygenerowany kod Sklonuj repozytorium [zestawu SDK usługi Azure IoT C](https://github.com/Azure/azure-iot-sdk-c) :
 
     ```bash
     git clone https://github.com/Azure/azure-iot-sdk-c --recursive -b public-preview
@@ -223,17 +216,7 @@ Poniższe kroki pokazują, jak skompilować kod urządzenia wraz z zestawem SDK 
 
     Należy się spodziewać, że ukończenie operacji potrwa kilka minut.
 
-1. Skopiuj folder zawierający wygenerowany kod do folderu głównego zestawu SDK urządzeń.
-
-1. W vs Code Otwórz `CMakeLists.txt` plik w folderze głównym zestawu SDK urządzeń.
-
-1. Dodaj następujący wiersz na końcu `CMakeLists.txt` pliku, aby uwzględnić folder zastępczy kodu urządzenia podczas kompilowania zestawu SDK:
-
-    ```txt
-    add_subdirectory({generated_code_folder_name})
-    ```
-
-1. Utwórz folder o nazwie `cmake` w folderze głównym zestawu SDK urządzenia i przejdź do tego folderu.
+1. Utwórz folder o nazwie `cmake` w folderze zawierającym wygenerowany kod i przejdź do tego folderu.
 
     ```bash
     mkdir cmake
@@ -250,7 +233,7 @@ Poniższe kroki pokazują, jak skompilować kod urządzenia wraz z zestawem SDK 
 1. Po pomyślnym zakończeniu kompilacji Uruchom aplikację określającą IoT Hub parametry połączenia urządzenia jako parametr.
 
     ```bash
-    cd azure-iot-sdk-c/cmake/{generated_code_folder_name}/
+    cd {generated_code_folder_name}/cmake/
     ./{generated_code_project_name} "[IoT Hub device connection string]"
     ```
 
@@ -264,10 +247,10 @@ Generator kodu może ponownie wygenerować kod, jeśli zaktualizujesz pliki DCM 
 
 1. Wybierz pozycję **ponownie Generuj kod dla {Nazwa projektu}** .
 
-1. Generator kodu używa poprzedniego skonfigurowanego ustawienia i ponownie generuje kod. Nie zastępuje jednak plików, które mogą zawierać kod użytkownika, taki jak `main.c` i. `{project_name}_impl.c`
+1. Generator kodu używa poprzedniego skonfigurowanego ustawienia i ponownie generuje kod. Nie zastępuje jednak plików, które mogą zawierać kod użytkownika, taki jak `main.c` i `{project_name}_impl.c`.
 
 > [!NOTE]
-> Jeśli zaktualizujesz identyfikator URN w pliku interfejsu, jest on traktowany jako nowy interfejs. Po ponownym wygenerowaniu kodu generator kodu generuje kod dla interfejsu, ale nie zastępuje oryginalnego `{project_name}_impl.c` pliku.
+> Jeśli zaktualizujesz identyfikator URN w pliku interfejsu, jest on traktowany jako nowy interfejs. Po ponownym wygenerowaniu kodu generator kodu generuje kod dla interfejsu, ale nie zastępuje oryginalnego pliku w `{project_name}_impl.c`.
 
 ## <a name="problems-and-feedback"></a>Problemy i opinie
 

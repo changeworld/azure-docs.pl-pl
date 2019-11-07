@@ -13,12 +13,12 @@ ms.author: lizross
 ms.reviewer: kasimpso
 ms.custom: user-help
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 74033200bc365caf13035284108f2cf05eee7bbe
-ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
+ms.openlocfilehash: e7eb3dbe3ce82b794a5ed530107781b634ceb32f
+ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73180753"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73573852"
 ---
 # <a name="access-and-start-apps-from-the-my-apps-preview-portal"></a>Dostęp do aplikacji i uruchamianie ich z poziomu portalu My Apps (wersja zapoznawcza)
 
@@ -53,7 +53,7 @@ Jeśli masz uprawnienia do uzyskiwania dostępu do aplikacji opartych na chmurze
 
 1. Zaloguj się do swojego konta służbowego lub szkolnego na swoim komputerze.
 
-2. Otwórz obsługiwaną przeglądarkę internetową i przejdź do https://myapps.microsoft.com lub Użyj linku dostarczonego przez organizację. Na przykład możesz być ukierunkowana na użycie niestandardowej strony w organizacji, takiej jak `https://myapps.microsoft.com/contoso.com`.
+2. Otwórz obsługiwaną przeglądarkę internetową i przejdź do https://myapps.microsoft.comlub Użyj linku dostarczonego przez organizację. Na przykład możesz być ukierunkowana na użycie niestandardowej strony w organizacji, takiej jak `https://myapps.microsoft.com/contoso.com`.
 
     Zostanie wyświetlona strona **aplikacje** przedstawiająca wszystkie aplikacje oparte na chmurze należące do organizacji i dostępne do użycia.
 
@@ -63,7 +63,7 @@ Wyświetlanie aplikacji w organizacji i używanie ich z poziomu aplikacji Intune
 
 1. Na urządzeniu przenośnym Pobierz i zainstaluj aplikację Intune Managed Browser ze [sklepu Apple App Store](https://itunes.apple.com/us/app/microsoft-intune-managed-browser/id943264951?mt=8) lub [sklep Google Play](https://play.google.com/store/apps/details?id=com.microsoft.intune.mam.managedbrowser).
 
-2. Otwórz aplikację Intune Managed Browser, przejdź do https://myapps.microsoft.com lub Użyj linku dostarczonego przez organizację. Na przykład może nastąpić przekierowanie do dostosowanej strony organizacji, takiej jak https://myapps.microsoft.com/contoso.com.
+2. Otwórz aplikację Intune Managed Browser, przejdź do https://myapps.microsoft.comlub Użyj linku dostarczonego przez organizację. Na przykład może nastąpić przekierowanie do dostosowanej strony organizacji, takiej jak https://myapps.microsoft.com/contoso.com.
 
     Zostanie wyświetlona strona **aplikacje** przedstawiająca wszystkie aplikacje oparte na chmurze należące do organizacji i dostępne do użycia.
 
@@ -73,7 +73,7 @@ Wyświetl Portal **Moje aplikacje** i korzystaj z niego z urządzenia iPhone lub
 
 1. Na urządzeniu przenośnym Uruchom aplikację przeglądarki sieci Web, taką jak Safari.
 
-2. Przejdź do https://myapps.microsoft.com lub Użyj linku dostarczonego przez organizację. Na przykład może nastąpić przekierowanie do dostosowanej strony organizacji, takiej jak https://myapps.microsoft.com/contoso.com.
+2. Przejdź do https://myapps.microsoft.comlub Użyj linku dostarczonego przez organizację. Na przykład może nastąpić przekierowanie do dostosowanej strony organizacji, takiej jak https://myapps.microsoft.com/contoso.com.
 
     Zostanie wyświetlona strona **aplikacje** przedstawiająca wszystkie aplikacje oparte na chmurze należące do organizacji i dostępne do użycia.
 
@@ -83,7 +83,7 @@ Wyświetl Portal **Moje aplikacje** i korzystaj z niego na urządzeniu z systeme
 
 1. Na urządzeniu przenośnym Uruchom aplikację przeglądarki sieci Web, np. Google Chrome.
 
-2. Przejdź do https://myapps.microsoft.com lub Użyj linku dostarczonego przez organizację. Na przykład może nastąpić przekierowanie do dostosowanej strony organizacji, takiej jak https://myapps.microsoft.com/contoso.com.
+2. Przejdź do https://myapps.microsoft.comlub Użyj linku dostarczonego przez organizację. Na przykład może nastąpić przekierowanie do dostosowanej strony organizacji, takiej jak https://myapps.microsoft.com/contoso.com.
 
     Zostanie wyświetlona strona **aplikacje** przedstawiająca wszystkie aplikacje oparte na chmurze należące do organizacji i dostępne do użycia.
 
@@ -106,10 +106,10 @@ Po przejściu do portalu **My Apps** możesz:
 >[!Note]
 >Jeśli nie widzisz żadnych dostępnych obszarów roboczych lub kategorii, oznacza to, że administrator nie został skonfigurowany ani udostępniony Tobie. Skontaktuj się z pomocą techniczną w Twojej organizacji, aby uzyskać dodatkową pomoc lub uprawnienia do wyświetlania udostępnionych obszarów roboczych.
 
-## <a name="related-articles"></a>Pokrewne artykuły:
+## <a name="related-articles"></a>Pokrewne artykuły
 
-- [Aktualizowanie informacji o profilu i koncie](myprofile-portal-overview.md). Instrukcje dotyczące aktualizowania danych osobowych, które są wyświetlane w portalu **My profile** (wersja zapoznawcza).
+- [Aktualizowanie informacji o profilu i koncie](my-account-portal-overview.md). Instrukcje dotyczące aktualizowania danych osobowych, które są wyświetlane w portalu **My profile** (wersja zapoznawcza).
 
-- [Zarządzanie organizacjami](myprofile-portal-organizations-page.md). Instrukcje dotyczące wyświetlania informacji związanych z organizacją i zarządzania nimi na stronie **organizacje** portalu **My profile** .
+- [Zarządzanie organizacjami](my-account-portal-organizations-page.md). Instrukcje dotyczące wyświetlania informacji związanych z organizacją i zarządzania nimi na stronie **organizacje** portalu **My profile** .
 
-- [Zarządzaj połączonymi urządzeniami](myprofile-portal-devices-page.md). Instrukcje dotyczące zarządzania urządzeniami, z którymi nawiązano połączenie przy użyciu konta służbowego, na stronie **urządzenia** portalu **My profile** .
+- [Zarządzaj połączonymi urządzeniami](my-account-portal-devices-page.md). Instrukcje dotyczące zarządzania urządzeniami, z którymi nawiązano połączenie przy użyciu konta służbowego, na stronie **urządzenia** portalu **My profile** .

@@ -1,6 +1,6 @@
 ---
-title: Łącznik niestandardowy temat prowadzi — Azure Logic Apps | Dokumentacja firmy Microsoft
-description: Łącza do tematów dotyczących sposobu tworzenia, używania, udostępniania i certyfikowanie łączników niestandardowych
+title: Linki do tematu łączników niestandardowych — Azure Logic Apps | Microsoft Docs
+description: Linki do tematów dotyczących tworzenia, używania, udostępniania i certyfikowania łączników niestandardowych
 services: logic-apps
 ms.service: logic-apps
 ms.suite: integration
@@ -9,20 +9,20 @@ ms.author: estfan
 ms.reviewer: divswa, LADocs
 ms.topic: article
 ms.date: 1/30/2018
-ms.openlocfilehash: 6b02954f9f89074c5eff7e3b7fad2bc6afb29540
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: c4cc0201b8ac61c54aadcc59b549877238b95e54
+ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64689780"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73574456"
 ---
-# <a name="custom-connectors-in-logic-apps"></a>Łączniki niestandardowe w usłudze Logic Apps
+# <a name="custom-connectors-in-logic-apps"></a>Łączniki niestandardowe w Logic Apps
 
-Bez pisania żadnego kodu możesz tworzyć przepływy pracy i aplikacje w usługach [Azure Logic Apps](https://azure.microsoft.com/services/logic-apps), [Microsoft Flow](https://flow.microsoft.com) i [PowerApps](https://powerapps.microsoft.com). Aby pomóc w zintegrowaniu aplikacji, danych i procesów biznesowych, te usługi oferują [~ 200 łączników](https://docs.microsoft.com/connectors/) — w przypadku usług firmy Microsoft i produktów, a także innych usług, takich jak GitHub, Salesforce, Twitter i.
+Bez pisania kodu możesz tworzyć przepływy pracy i aplikacje za pomocą [Azure Logic Apps](https://azure.microsoft.com/services/logic-apps), [automatyzacji](https://flow.microsoft.com)i [zaawansowanych aplikacji](https://powerapps.microsoft.com). Aby ułatwić integrację aplikacji, danych i procesów biznesowych, te usługi oferują [200 łączniki](https://docs.microsoft.com/connectors/) — dla usług i produktów firmy Microsoft, a także innych usług, takich jak GitHub, Salesforce, Twitter i inne.
 
-Czasami jednak może być konieczne wywoływanie interfejsów API, usług i systemów, które nie są dostępne jako wstępnie utworzone łączniki. Na potrzeby obsługi bardziej niestandardowych scenariuszy można tworzyć *łączniki niestandardowe* z ich własnymi wyzwalaczami i akcjami. Pełne podstawowych i zaawansowanych samouczków dotyczących łączników niestandardowych są dostępne w witrynie dokumentacji łączników. Można zacząć od [omówienie łączników niestandardowych](https://docs.microsoft.com/connectors/custom-connectors/), ale możesz też przejść bezpośrednio do tych tematów, aby uzyskać szczegółowe informacje dotyczące określonego obszaru:
+Czasami jednak może być konieczne wywoływanie interfejsów API, usług i systemów, które nie są dostępne jako wstępnie utworzone łączniki. Na potrzeby obsługi bardziej niestandardowych scenariuszy można tworzyć *łączniki niestandardowe* z ich własnymi wyzwalaczami i akcjami. Witryna dokumentacji łączników ma kompletne i zaawansowane samouczki dotyczące łączników niestandardowych. Możesz zacząć od [przeglądu niestandardowego łącznika](https://docs.microsoft.com/connectors/custom-connectors/), ale możesz też przejść bezpośrednio do tych tematów, aby uzyskać szczegółowe informacje na temat określonego obszaru:
 
-* [Tworzenie łącznika usługi Logic Apps](https://docs.microsoft.com/connectors/custom-connectors/create-logic-apps-connector)
+* [Tworzenie łącznika Logic Apps](https://docs.microsoft.com/connectors/custom-connectors/create-logic-apps-connector)
 
 * [Tworzenie łącznika niestandardowego na podstawie definicji interfejsu OpenAPI](https://docs.microsoft.com/connectors/custom-connectors/define-openapi-definition)
 
@@ -32,6 +32,6 @@ Czasami jednak może być konieczne wywoływanie interfejsów API, usług i syst
 
 * [Udostępnianie łączników niestandardowych w organizacji](https://docs.microsoft.com/connectors/custom-connectors/share)
 
-* [Przesyłanie łączników do certyfikacji firmy Microsoft](https://docs.microsoft.com/connectors/custom-connectors/submit-certification)
+* [Prześlij swoje łączniki do certyfikacji firmy Microsoft](https://docs.microsoft.com/connectors/custom-connectors/submit-certification)
 
 * [Łącznik niestandardowy — często zadawane pytania](https://docs.microsoft.com/connectors/custom-connectors/faq)

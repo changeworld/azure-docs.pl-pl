@@ -1,5 +1,5 @@
 ---
-title: Planowanie zdarzeń konserwacji platformy Azure — Azure SQL Database | Microsoft Docs
+title: Planowanie zdarzeń konserwacji platformy Azure — Azure SQL Database
 description: Dowiedz się, jak przygotować się do zaplanowanych zdarzeń konserwacji do Azure SQL Database.
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: aamalvea
 ms.author: aamalvea
 ms.reviewer: carlrab
 ms.date: 01/30/2019
-ms.openlocfilehash: 1bb88d6f74ab4b93e226fe8630f07f0a96f4ba47
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 5598d5a465645ce20d9244011de6d9cef47ac3c4
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68567051"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73687633"
 ---
 # <a name="planning-for-azure-maintenance-events-in-azure-sql-database"></a>Planowanie zdarzeń konserwacji platformy Azure w Azure SQL Database
 
@@ -28,17 +28,17 @@ Dla każdej bazy danych usługa Azure SQL DB utrzymuje kworum replik baz danych,
 
 ## <a name="what-to-expect-during-a-planned-maintenance-event"></a>Czego można oczekiwać podczas planowanego zdarzenia konserwacji
 
-Ponowne konfiguracje/przełączenia w tryb failover są zwykle ukończone w ciągu 30 sekund — średnia wynosi 8 sekund. Jeśli jest już połączony, aplikacja musi ponownie nawiązać połączenie z nową repliką podstawową bazy danych w dobrej kondycji. Jeśli nastąpi próba ponownego skonfigurowania nowego połączenia, aby Nowa replika podstawowa była w trybie online, zostanie wyświetlony komunikat o błędzie 40613 (baza danych jest niedostępna): "Baza danych" {DatabaseName} "na serwerze" {ServerName} "jest obecnie niedostępna. Spróbuj ponownie nawiązać połączenie później. ". Jeśli baza danych ma długotrwałe zapytanie, to zapytanie zostanie przerwane podczas ponownej konfiguracji i musi zostać ponownie uruchomione.
+Ponowne konfiguracje/przełączenia w tryb failover są zwykle ukończone w ciągu 30 sekund — średnia wynosi 8 sekund. Jeśli jest już połączony, aplikacja musi ponownie nawiązać połączenie z nową repliką podstawową bazy danych w dobrej kondycji. Jeśli nastąpi próba ponownego skonfigurowania nowego połączenia, aby Nowa replika podstawowa była w trybie online, zostanie wyświetlony komunikat o błędzie 40613 (baza danych jest niedostępna): "baza danych" {DatabaseName} "na serwerze" {ServerName} "jest obecnie niedostępna. Spróbuj ponownie nawiązać połączenie później. ". Jeśli baza danych ma długotrwałe zapytanie, to zapytanie zostanie przerwane podczas ponownej konfiguracji i musi zostać ponownie uruchomione.
 
 ## <a name="retry-logic"></a>Logika ponawiania
 
-Każda aplikacja produkcyjna klienta, która nawiązuje połączenie z usługą bazy danych w chmurze [](sql-database-connectivity-issues.md#retry-logic-for-transient-errors), powinna implementować niezawodną logikę ponawiania połączenia. Pomoże to ograniczyć te sytuacje i ogólnie rzecz biorąc, te błędy powinny być widoczne dla użytkownika końcowego.
+Każda aplikacja produkcyjna klienta, która nawiązuje połączenie z usługą bazy danych w chmurze, powinna implementować niezawodną [logikę ponawiania](sql-database-connectivity-issues.md#retry-logic-for-transient-errors)połączenia. Pomoże to ograniczyć te sytuacje i ogólnie rzecz biorąc, te błędy powinny być widoczne dla użytkownika końcowego.
 
 ## <a name="frequency"></a>Częstotliwość
 
 Średnio 1,7 zdarzeń konserwacji planowanej odbywa się co miesiąc.
 
-## <a name="resource-health"></a>Kondycja zasobu
+## <a name="resource-health"></a>Kondycja zasobów
 
 Jeśli baza danych SQL napotkała błędy logowania, Sprawdź okno [Resource Health](../service-health/resource-health-overview.md#get-started) w [Azure Portal](https://portal.azure.com) dla bieżącego stanu. Sekcja historia kondycji zawiera przyczynę przestoju dla każdego zdarzenia (jeśli jest dostępna).
 

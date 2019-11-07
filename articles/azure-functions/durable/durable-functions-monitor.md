@@ -9,16 +9,18 @@ ms.service: azure-functions
 ms.topic: conceptual
 ms.date: 12/07/2018
 ms.author: azfuncdf
-ms.openlocfilehash: 992e3f7aa53fdd006d29c06113cd30b07a406f3b
-ms.sourcegitcommit: 97605f3e7ff9b6f74e81f327edd19aefe79135d2
+ms.openlocfilehash: 5cb4602ac0431e09208953122f13b30124ab77f5
+ms.sourcegitcommit: b2fb32ae73b12cf2d180e6e4ffffa13a31aa4c6f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70734335"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73614749"
 ---
 # <a name="monitor-scenario-in-durable-functions---weather-watcher-sample"></a>Scenariusz monitorowania w przykładowym monitorze Durable Functions-Pogoda
 
 Wzorzec monitora odnosi się do elastycznego procesu *cyklicznego* w przepływie pracy — na przykład sondowania do momentu spełnienia określonych warunków. W tym artykule opisano przykład, który używa [Durable Functions](durable-functions-overview.md) do wdrożenia monitorowania.
+
+[!INCLUDE [v1-note](../../../includes/functions-durable-v1-tutorial-note.md)]
 
 [!INCLUDE [durable-functions-prerequisites](../../../includes/durable-functions-prerequisites.md)]
 
@@ -41,7 +43,7 @@ Ten przykład służy do monitorowania bieżących warunków pogodowych lokaliza
 
 Ten przykład obejmuje użycie podziemnego interfejsu API Pogoda do sprawdzenia bieżących warunków pogodowych dla lokalizacji.
 
-Pierwszym z nich jest konto podziemne. Możesz go utworzyć bezpłatnie o [https://www.wunderground.com/signup](https://www.wunderground.com/signup). Po utworzeniu konta należy uzyskać klucz interfejsu API. Możesz to zrobić, odwiedzając [https://www.wunderground.com/weather/api](https://www.wunderground.com/weather/api/?MR=1), a następnie wybierając pozycję Ustawienia klucza. Plan dewelopera Stratus jest bezpłatny i wystarczający do uruchomienia tego przykładu.
+Pierwszym z nich jest konto podziemne. Możesz go utworzyć bezpłatnie w [https://www.wunderground.com/signup](https://www.wunderground.com/signup). Po utworzeniu konta należy uzyskać klucz interfejsu API. Możesz to zrobić, odwiedzając [https://www.wunderground.com/weather/api](https://www.wunderground.com/weather/api/?MR=1), a następnie wybierając pozycję Ustawienia klucza. Plan dewelopera Stratus jest bezpłatny i wystarczający do uruchomienia tego przykładu.
 
 Gdy masz klucz interfejsu API, Dodaj następujące **ustawienie aplikacji** do aplikacji funkcji.
 
@@ -53,11 +55,11 @@ Gdy masz klucz interfejsu API, Dodaj następujące **ustawienie aplikacji** do a
 
 W tym artykule wyjaśniono następujące funkcje w przykładowej aplikacji:
 
-* `E3_Monitor`: Funkcja programu Orchestrator, która `E3_GetIsClear` okresowo wywołuje. Jest wywoływana `E3_SendGoodWeatherAlert` , `E3_GetIsClear` jeśli zwraca wartość true.
-* `E3_GetIsClear`: Funkcja działania, która sprawdza bieżące warunki pogodowe dla lokalizacji.
-* `E3_SendGoodWeatherAlert`: Funkcja działania, która wysyła wiadomość SMS za pośrednictwem Twilio.
+* `E3_Monitor`: funkcja programu Orchestrator, która okresowo wywołuje `E3_GetIsClear`. Wywołuje `E3_SendGoodWeatherAlert`, jeśli `E3_GetIsClear` zwraca wartość true.
+* `E3_GetIsClear`: funkcja działania, która sprawdza bieżące warunki pogodowe dla lokalizacji.
+* `E3_SendGoodWeatherAlert`: funkcja działania, która wysyła wiadomość SMS za pośrednictwem Twilio.
 
-W poniższych sekcjach opisano konfigurację i kod, które są używane C# do obsługi skryptów i języka JavaScript. Kod dla projektowania programu Visual Studio znajduje się na końcu artykułu.
+W poniższych sekcjach opisano konfigurację i kod, który jest używany C# do obsługi skryptów i języka JavaScript. Kod dla projektowania programu Visual Studio znajduje się na końcu artykułu.
 
 ## <a name="the-weather-monitoring-orchestration-visual-studio-code-and-azure-portal-sample-code"></a>Aranżacja monitorowania pogody (Visual Studio Code i Azure Portal przykładowy kod)
 
@@ -71,7 +73,7 @@ Oto kod implementujący funkcję:
 
 [!code-csharp[Main](~/samples-durable-functions/samples/csx/E3_Monitor/run.csx)]
 
-### <a name="javascript-functions-2x-only"></a>JavaScript (tylko funkcje 2. x)
+### <a name="javascript-functions-20-only"></a>JavaScript (tylko funkcje 2,0)
 
 [!code-javascript[Main](~/samples-durable-functions/samples/javascript/E3_Monitor/index.js)]
 
@@ -82,7 +84,7 @@ Ta funkcja programu Orchestrator wykonuje następujące akcje:
 3. Wywołuje **E3_GetIsClear** , aby określić, czy w żądanym miejscu znajdują się jasne Skies.
 4. Jeśli pogoda jest jasne, program wywołuje **E3_SendGoodWeatherAlert** w celu wysłania powiadomienia SMS do żądanego numeru telefonu.
 5. Tworzy trwały czasomierz w celu wznowienia aranżacji przy następnym interwale sondowania. Przykład używa zakodowanej wartości zwięzłości.
-6. Kontynuuje działanie, [](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationContext.html#Microsoft_Azure_WebJobs_DurableOrchestrationContext_CurrentUtcDateTime) dopóki CurrentUtcDateTimeC#() `currentUtcDateTime` lub (JavaScript) przejdzie do czasu wygaśnięcia monitora lub zostanie wysłany alert programu SMS.
+6. Kontynuuje działanie, dopóki `CurrentUtcDateTime` (.NET) lub `currentUtcDateTime` (JavaScript) przejdzie do czasu wygaśnięcia monitora lub zostanie wysłany alert programu SMS.
 
 Jednocześnie można uruchomić wiele wystąpień programu Orchestrator, wysyłając wiele **MonitorRequests**. Można określić lokalizację do monitorowania i numer telefonu, na który ma zostać wysłany alert programu SMS.
 
@@ -97,7 +99,7 @@ Przykładowy kod JavaScript używa zwykłych obiektów JSON jako parametrów.
 
 ## <a name="helper-activity-functions"></a>Funkcje działania pomocnika
 
-Podobnie jak w przypadku innych próbek, funkcje działania pomocnika są regularnymi funkcjami `activityTrigger` , które używają powiązania wyzwalacza. Funkcja **E3_GetIsClear** pobiera bieżące warunki pogodowe przy użyciu podziemnego interfejsu API Pogoda i określa, czy ta wartość jest wyczyszczona. *Funkcja. JSON* jest definiowana w następujący sposób:
+Podobnie jak w przypadku innych próbek, funkcje działania pomocnika są regularnymi funkcjami, które używają powiązań wyzwalacza `activityTrigger`. Funkcja **E3_GetIsClear** pobiera bieżące warunki pogodowe przy użyciu podziemnego interfejsu API Pogoda i określa, czy ta wartość jest wyczyszczona. *Funkcja. JSON* jest definiowana w następujący sposób:
 
 [!code-json[Main](~/samples-durable-functions/samples/csx/E3_GetIsClear/function.json)]
 
@@ -107,7 +109,7 @@ A oto implementacja. Podobnie jak w przypadku POCOs używanym do transferowania 
 
 [!code-csharp[Main](~/samples-durable-functions/samples/csx/E3_GetIsClear/run.csx)]
 
-### <a name="javascript-functions-2x-only"></a>JavaScript (tylko funkcje 2. x)
+### <a name="javascript-functions-20-only"></a>JavaScript (tylko funkcje 2,0)
 
 [!code-javascript[Main](~/samples-durable-functions/samples/javascript/E3_GetIsClear/index.js)]
 
@@ -121,7 +123,7 @@ A Oto kod, który wysyła wiadomość SMS:
 
 [!code-csharp[Main](~/samples-durable-functions/samples/csx/E3_SendGoodWeatherAlert/run.csx)]
 
-### <a name="javascript-functions-2x-only"></a>JavaScript (tylko funkcje 2. x)
+### <a name="javascript-functions-20-only"></a>JavaScript (tylko funkcje 2,0)
 
 [!code-javascript[Main](~/samples-durable-functions/samples/javascript/E3_SendGoodWeatherAlert/index.js)]
 
@@ -140,10 +142,10 @@ Content-Type: application/json
 ```
 HTTP/1.1 202 Accepted
 Content-Type: application/json; charset=utf-8
-Location: https://{host}/admin/extensions/DurableTaskExtension/instances/f6893f25acf64df2ab53a35c09d52635?taskHub=SampleHubVS&connection=Storage&code={SystemKey}
+Location: https://{host}/runtime/webhooks/durabletask/instances/f6893f25acf64df2ab53a35c09d52635?taskHub=SampleHubVS&connection=Storage&code={SystemKey}
 RetryAfter: 10
 
-{"id": "f6893f25acf64df2ab53a35c09d52635", "statusQueryGetUri": "https://{host}/admin/extensions/DurableTaskExtension/instances/f6893f25acf64df2ab53a35c09d52635?taskHub=SampleHubVS&connection=Storage&code={systemKey}", "sendEventPostUri": "https://{host}/admin/extensions/DurableTaskExtension/instances/f6893f25acf64df2ab53a35c09d52635/raiseEvent/{eventName}?taskHub=SampleHubVS&connection=Storage&code={systemKey}", "terminatePostUri": "https://{host}/admin/extensions/DurableTaskExtension/instances/f6893f25acf64df2ab53a35c09d52635/terminate?reason={text}&taskHub=SampleHubVS&connection=Storage&code={systemKey}"}
+{"id": "f6893f25acf64df2ab53a35c09d52635", "statusQueryGetUri": "https://{host}/runtime/webhooks/durabletask/instances/f6893f25acf64df2ab53a35c09d52635?taskHub=SampleHubVS&connection=Storage&code={systemKey}", "sendEventPostUri": "https://{host}/runtime/webhooks/durabletask/instances/f6893f25acf64df2ab53a35c09d52635/raiseEvent/{eventName}?taskHub=SampleHubVS&connection=Storage&code={systemKey}", "terminatePostUri": "https://{host}/runtime/webhooks/durabletask/instances/f6893f25acf64df2ab53a35c09d52635/terminate?reason={text}&taskHub=SampleHubVS&connection=Storage&code={systemKey}"}
 ```
 
 Wystąpienie **E3_Monitor** uruchamia i bada bieżące warunki pogodowe dla żądanej lokalizacji. Jeśli pogoda jest jasne, wywołuje funkcję działania w celu wysłania alertu; w przeciwnym razie ustawia czasomierz. Gdy czasomierz wygaśnie, aranżacja zostanie wznowiona.
@@ -166,10 +168,10 @@ Działanie aranżacji można zobaczyć, przeglądając dzienniki funkcji w porta
 2018-03-01T01:14:54.030 Function completed (Success, Id=561d0c78-ee6e-46cb-b6db-39ef639c9a2c, Duration=62ms)
 ```
 
-Aranżacja zostanie [zakończona](durable-functions-instance-management.md) po osiągnięciu limitu czasu lub wykryciu Skies. Można również `TerminateAsync` użyć (.NET) `terminate` lub (JavaScript) wewnątrz innej funkcji lub wywołać element webhook **terminatePostUri** http, do którego odwołuje się powyżej 202 powyżej, `{text}` zastępując z powód zakończenia:
+Aranżacja zostanie [zakończona](durable-functions-instance-management.md) po osiągnięciu limitu czasu lub wykryciu Skies. Można również użyć `TerminateAsync` (.NET) lub `terminate` (JavaScript) wewnątrz innej funkcji lub wywołać **terminatePostUri** http post elementu webhook, do którego odwołuje się odpowiedź 202 powyżej, zastępując `{text}` z przyczyną zakończenia:
 
 ```
-POST https://{host}/admin/extensions/DurableTaskExtension/instances/f6893f25acf64df2ab53a35c09d52635/terminate?reason=Because&taskHub=SampleHubVS&connection=Storage&code={systemKey}
+POST https://{host}/runtime/webhooks/durabletask/instances/f6893f25acf64df2ab53a35c09d52635/terminate?reason=Because&taskHub=SampleHubVS&connection=Storage&code={systemKey}
 ```
 
 ## <a name="visual-studio-sample-code"></a>Przykładowy kod programu Visual Studio
@@ -177,7 +179,7 @@ POST https://{host}/admin/extensions/DurableTaskExtension/instances/f6893f25acf6
 Oto aranżacja jako pojedynczy C# plik w projekcie programu Visual Studio:
 
 > [!NOTE]
-> Musisz zainstalować `Microsoft.Azure.WebJobs.Extensions.Twilio` pakiet NuGet, aby uruchomić przykładowy kod poniżej.
+> Musisz zainstalować pakiet NuGet `Microsoft.Azure.WebJobs.Extensions.Twilio`, aby uruchomić przykładowy kod poniżej.
 
 [!code-csharp[Main](~/samples-durable-functions/samples/precompiled/Monitor.cs)]
 

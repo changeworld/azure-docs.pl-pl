@@ -1,5 +1,5 @@
 ---
-title: Używanie Azure Data Factory do migrowania danych z lokalnego serwera Netezza na platformę Azure | Microsoft Docs
+title: Używanie Azure Data Factory do migrowania danych z lokalnego serwera Netezza na platformę Azure
 description: Użyj Azure Data Factory do migrowania danych z lokalnego serwera Netezza na platformę Azure.
 services: data-factory
 documentationcenter: ''
@@ -12,12 +12,12 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 9/03/2019
-ms.openlocfilehash: 9ea8326b10536cb91b9dc67f637664f0fc055e74
-ms.sourcegitcommit: fad368d47a83dadc85523d86126941c1250b14e2
+ms.openlocfilehash: c5b36a04501b417af4e4527968a082da8a061804
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/19/2019
-ms.locfileid: "71122834"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73675801"
 ---
 # <a name="use-azure-data-factory-to-migrate-data-from-an-on-premises-netezza-server-to-azure"></a>Używanie Azure Data Factory do migrowania danych z lokalnego serwera Netezza na platformę Azure 
 
@@ -120,9 +120,9 @@ Poprzedni diagram można interpretować w następujący sposób:
 
 W przypadku małych tabel (czyli tabel o woluminie o rozmiarze mniejszym niż 100 GB lub migracji na platformę Azure w ciągu dwóch godzin) można wykonać każde zadanie kopiowania Załaduj dane na tabelę. Aby uzyskać większą przepływność, można uruchomić wiele zadań kopiowania Azure Data Factory w celu załadowania oddzielnych tabel współbieżnie. 
 
-W ramach każdego zadania kopiowania, aby uruchamiać zapytania równoległe i kopiować dane przez partycje, można także uzyskać dostęp do pewnego poziomu równoległego przy użyciu [ `parallelCopies` ustawienia właściwości](https://docs.microsoft.com/azure/data-factory/copy-activity-performance#parallel-copy) z jedną z następujących opcji partycji danych:
+W ramach każdego zadania kopiowania, aby uruchamiać zapytania równoległe i kopiować dane przez partycje, można także uzyskać dostęp do pewnego poziomu równoległego przy użyciu [Ustawienia właściwości`parallelCopies`](https://docs.microsoft.com/azure/data-factory/copy-activity-performance#parallel-copy) z jedną z następujących opcji partycji danych:
 
-- Aby ułatwić osiągnięcie większej wydajności, zachęcamy do rozpoczęcia od wycinka danych.  Upewnij się, że wartość w `parallelCopies` ustawieniu jest mniejsza niż całkowita liczba partycji wycinków danych w tabeli na serwerze Netezza.  
+- Aby ułatwić osiągnięcie większej wydajności, zachęcamy do rozpoczęcia od wycinka danych.  Upewnij się, że wartość w ustawieniu `parallelCopies` jest mniejsza niż całkowita liczba partycji wycinków danych w tabeli na serwerze Netezza.  
 
 - Jeśli wolumin poszczególnych partycji wycinków danych jest nadal duży (na przykład 10 GB lub więcej), zachęcamy do przełączenia na dynamiczną partycję zakresu. Ta opcja zapewnia większą elastyczność definiowania liczby partycji i woluminu każdej partycji przez kolumnę partycji, górną granicę i dolną granicę.
 
@@ -156,7 +156,7 @@ Jeśli nie można go załadować do platformy Azure w ciągu dwóch godzin, a po
 
 Monitoruj użycie procesora CPU i pamięci na samoobsługowej maszynie IR i przygotuj się do skalowania maszyny w górę lub w poziomie do wielu maszyn, gdy widzisz, że procesor i pamięć są w pełni używane. 
 
-W przypadku wystąpienia błędów ograniczania przepustowości, zgodnie z Azure Data Factory działania kopiowania, Zmniejsz współbieżność lub `parallelCopies` ustawienie w Azure Data Factory lub Rozważ zwiększenie przepustowości lub limitów operacji we/wy na sekundę (IOPS) sieci i magazyny danych. 
+W przypadku wystąpienia błędów ograniczania, zgodnie z Azure Data Factory działania kopiowania, należy zmniejszyć ustawienie współbieżności lub `parallelCopies` w Azure Data Factory lub rozważyć zwiększenie przepustowości lub limitów operacji we/wy na sekundę (IOPS) sieci i danych przechowywać. 
 
 
 ### <a name="estimate-your-pricing"></a>Oszacowanie cen 
@@ -173,7 +173,7 @@ Załóżmy, że następujące instrukcje są prawdziwe:
 
 - Wolumin 50-TB jest podzielony na partycje 500, a każda czynność kopiowania przenosi jedną partycję.
 
-- Każde działanie kopiowania jest skonfigurowane z użyciem jednego własnego środowiska IR w porównaniu z czterema maszynami i osiąga przepływność wynoszącą 20 megabajtów na sekundę (MB/s). (W ramach działania `parallelCopies` kopiowania jest ustawiony na 4, a każdy wątek ładowania danych z tabeli osiąga przepływność 5 MB/s).
+- Każde działanie kopiowania jest skonfigurowane z użyciem jednego własnego środowiska IR w porównaniu z czterema maszynami i osiąga przepływność wynoszącą 20 megabajtów na sekundę (MB/s). (W ramach działania kopiowania `parallelCopies` jest ustawiony na 4, a każdy wątek ładowania danych z tabeli osiągnie przepływność 5 MB/s).
 
 - Ustawienie współbieżności ForEach jest ustawione na 3, a przepustowość zagregowana to 60 MB/s.
 

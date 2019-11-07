@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 08/03/2018
 ms.author: dacurwin
 ms.assetid: b80b3a41-87bf-49ca-8ef2-68e43c04c1a3
-ms.openlocfilehash: 701972c32f3e80682e2a20d04b02bcd555532e08
-ms.sourcegitcommit: 0f54f1b067f588d50f787fbfac50854a3a64fff7
-ms.translationtype: MT
+ms.openlocfilehash: 837401256aa264a527e2323b055713f4bd8e8d1c
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/12/2019
-ms.locfileid: "68954976"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73671684"
 ---
 # <a name="back-up-an-azure-vm-using-azure-backup-via-rest-api"></a>Tworzenie kopii zapasowej maszyny wirtualnej platformy Azure przy użyciu Azure Backup za pośrednictwem interfejsu API REST
 
@@ -35,22 +35,22 @@ Najpierw magazyn powinien być w stanie identyfikować maszynę wirtualną platf
 POST https://management.azure.com/Subscriptions/{subscriptionId}/resourceGroups/{vaultresourceGroupname}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/backupFabrics/{fabricName}/refreshContainers?api-version=2016-12-01
 ```
 
-Identyfikator URI wpisu ma `{subscriptionId}`, `{vaultName}`, `{vaultresourceGroupName}`, `{fabricName}` parametrów. `{fabricName}` Jest to "Azure". Zgodnie z naszym Przykładem `{vaultName}` jest "testVault" i `{vaultresourceGroupName}` jest "testVaultRG". Ponieważ wszystkie wymagane parametry są określone w identyfikatorze URI, nie ma potrzeby oddzielnej treści żądania.
+Identyfikator URI wpisu ma `{subscriptionId}`, `{vaultName}`, `{vaultresourceGroupName}`, `{fabricName}` parametrów. `{fabricName}` to "Azure". Zgodnie z naszym Przykładem `{vaultName}` jest "testVault", a `{vaultresourceGroupName}` to "testVaultRG". Ponieważ wszystkie wymagane parametry są określone w identyfikatorze URI, nie ma potrzeby oddzielnej treści żądania.
 
 ```http
 POST https://management.azure.com/Subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/testVaultRG/providers/Microsoft.RecoveryServices/vaults/testVault/backupFabrics/Azure/refreshContainers?api-version=2016-12-01
 ```
 
-#### <a name="responses"></a>Responses
+#### <a name="responses"></a>Odpowiedzi
 
-Operacja "Refresh" jest operacją [asynchroniczną](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-async-operations). Oznacza to, że ta operacja tworzy kolejną operację, która musi być śledzona oddzielnie.
+Operacja "Refresh" jest [operacją asynchroniczną](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-async-operations). Oznacza to, że ta operacja tworzy kolejną operację, która musi być śledzona oddzielnie.
 
-Zwraca dwie odpowiedzi: 202 (zaakceptowane) podczas tworzenia innej operacji, a następnie 200 (OK) po zakończeniu tej operacji.
+Zwraca dwie odpowiedzi: 202 (zaakceptowane), gdy tworzona jest inna operacja, a następnie 200 (OK) po zakończeniu tej operacji.
 
-|Name (Nazwa)  |Typ  |Opis  |
+|Nazwa  |Typ  |Opis  |
 |---------|---------|---------|
 |204 Brak zawartości     |         |  OK bez zwracanej zawartości      |
-|202 zaakceptowane     |         |     Zaakceptowany    |
+|202 zaakceptowane     |         |     Przyjmować    |
 
 ##### <a name="example-responses"></a>Przykładowe odpowiedzi
 
@@ -98,7 +98,7 @@ X-Powered-By: ASP.NET
 
 ### <a name="selecting-the-relevant-azure-vm"></a>Wybieranie odpowiedniej maszyny wirtualnej platformy Azure
 
- Aby potwierdzić, że "buforowanie" jest wykonywane, należy wyświetlić [listę wszystkich elementów](https://docs.microsoft.com/rest/api/backup/backupprotectableitems/list) podlegających ochronie w ramach subskrypcji i zlokalizować ŻĄDAną maszynę wirtualną w odpowiedzi. [Odpowiedź tej operacji](#example-responses-1) zawiera również informacje dotyczące sposobu, w jaki Recovery Services identyfikuje maszynę wirtualną.  Po zapoznaniu się ze wzorcem możesz pominąć ten krok i bezpośrednio przejść do włączania [ochrony](#enabling-protection-for-the-azure-vm).
+ Aby potwierdzić, że "buforowanie" jest wykonywane, należy wyświetlić [listę wszystkich elementów podlegających ochronie](https://docs.microsoft.com/rest/api/backup/backupprotectableitems/list) w ramach subskrypcji i zlokalizować ŻĄDAną maszynę wirtualną w odpowiedzi. [Odpowiedź tej operacji](#example-responses-1) zawiera również informacje dotyczące sposobu, w jaki Recovery Services identyfikuje maszynę wirtualną.  Po zapoznaniu się ze wzorcem możesz pominąć ten krok i bezpośrednio przejść do [włączania ochrony](#enabling-protection-for-the-azure-vm).
 
 Ta operacja jest operacją *pobierania* .
 
@@ -110,7 +110,7 @@ Identyfikator URI *Get* zawiera wszystkie wymagane parametry. Żadna dodatkowa t
 
 ##### <a name="responses-1"></a>Reagowani
 
-|Name (Nazwa)  |Typ  |Opis  |
+|Nazwa  |Typ  |Opis  |
 |---------|---------|---------|
 |200 OK     | [WorkloadProtectableItemResourceList](https://docs.microsoft.com/rest/api/backup/backupprotectableitems/list#workloadprotectableitemresourcelist)        |       OK |
 
@@ -155,11 +155,11 @@ X-Powered-By: ASP.NET
 > [!TIP]
 > Liczba wartości w odpowiedzi *Get* jest ograniczona do 200 dla strony. Użyj pola "nextLink", aby uzyskać adres URL dla następnego zestawu odpowiedzi.
 
-Odpowiedź zawiera listę wszystkich niechronionych maszyn wirtualnych platformy Azure, a każda `{value}` z nich zawiera wszystkie informacje wymagane przez usługę Azure Recovery w celu skonfigurowania kopii zapasowej. Aby skonfigurować kopię zapasową `{name}` , zanotuj `{virtualMachineId}` pola i `{properties}` pola w sekcji. Utwórz dwie zmienne z tych wartości pól, jak wspomniano poniżej.
+Odpowiedź zawiera listę wszystkich niechronionych maszyn wirtualnych platformy Azure, a każda `{value}` zawiera wszystkie informacje wymagane przez usługę Azure Recovery w celu skonfigurowania kopii zapasowej. Aby skonfigurować kopię zapasową, należy zwrócić uwagę na pole `{name}` i pole `{virtualMachineId}` w sekcji `{properties}`. Utwórz dwie zmienne z tych wartości pól, jak wspomniano poniżej.
 
 - ContainerName = "iaasvmcontainer;" +`{name}`
-- protectedItemName = "VM;" +`{name}`
-- `{virtualMachineId}`jest używany w dalszej [części treści żądania](#example-request-body)
+- protectedItemName = "VM;" + `{name}`
+- `{virtualMachineId}` jest używany w dalszej [części treści żądania](#example-request-body)
 
 W tym przykładzie powyższe wartości przekładają się na:
 
@@ -176,17 +176,17 @@ Włączenie ochrony jest asynchroniczną operacją *Put* , która tworzy "chroni
 https://management.azure.com/Subscriptions/{subscriptionId}/resourceGroups/{vaultresourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/backupFabrics/{fabricName}/protectionContainers/{containerName}/protectedItems/{protectedItemName}?api-version=2016-12-01
 ```
 
-`{containerName}` I`{protectedItemName}` są tak skonstruowane jak powyżej. `{fabricName}` Jest to "Azure". W naszym przykładzie jest to tłumaczone na:
+`{containerName}` i `{protectedItemName}` są tak skonstruowane jak powyżej. `{fabricName}` to "Azure". W naszym przykładzie jest to tłumaczone na:
 
 ```http
-PUT https://management.azure.com/Subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/testVaultRG/providers/Microsoft.RecoveryServices/vaults/testVault/backupFabrics/Azure/protectionContainers/iaasvmcontainer;iaasvmcontainerv2;testRG;testVM/protectedItems/vm;iaasvmcontainerv2;testRG;testVM?api-version=2016-12-01
+PUT https://management.azure.com/Subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/testVaultRG/providers/Microsoft.RecoveryServices/vaults/testVault/backupFabrics/Azure/protectionContainers/iaasvmcontainer;iaasvmcontainerv2;testRG;testVM/protectedItems/vm;iaasvmcontainerv2;testRG;testVM?api-version=2019-05-13
 ```
 
 #### <a name="create-the-request-body"></a>Tworzenie treści żądania
 
 Aby utworzyć chroniony element, poniżej przedstawiono składniki treści żądania.
 
-|Name (Nazwa)  |Typ  |Opis  |
+|Nazwa  |Typ  |Opis  |
 |---------|---------|---------|
 |properties     | AzureIaaSVMProtectedItem        |Właściwości zasobów ProtectedItem         |
 
@@ -206,18 +206,18 @@ Następująca treść żądania definiuje właściwości wymagane do utworzenia 
 }
 ```
 
-Jest to wymienione powyżej z odpowiedzi na [listę elementów](#example-responses-1)podlegających ochronie. `{virtualMachineId}` `{sourceResourceId}`
+`{sourceResourceId}` to `{virtualMachineId}` wymienione powyżej z [odpowiedzi na listę elementów podlegających ochronie](#example-responses-1).
 
-#### <a name="responses"></a>Responses
+#### <a name="responses"></a>Odpowiedzi
 
 Tworzenie chronionego elementu jest [operacją asynchroniczną](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-async-operations). Oznacza to, że ta operacja tworzy kolejną operację, która musi być śledzona oddzielnie.
 
-Zwraca dwie odpowiedzi: 202 (zaakceptowane) podczas tworzenia innej operacji, a następnie 200 (OK) po zakończeniu tej operacji.
+Zwraca dwie odpowiedzi: 202 (zaakceptowane), gdy tworzona jest inna operacja, a następnie 200 (OK) po zakończeniu tej operacji.
 
-|Name (Nazwa)  |Typ  |Opis  |
+|Nazwa  |Typ  |Opis  |
 |---------|---------|---------|
 |200 OK     |    [ProtectedItemResource](https://docs.microsoft.com/rest/api/backup/protecteditemoperationresults/get#protecteditemresource)     |  OK       |
-|202 zaakceptowane     |         |     Zaakceptowany    |
+|202 zaakceptowane     |         |     Przyjmować    |
 
 ##### <a name="example-responses"></a>Przykładowe odpowiedzi
 
@@ -227,7 +227,7 @@ Po przesłaniu żądania *Put* dotyczącego tworzenia lub aktualizowania chronio
 HTTP/1.1 202 Accepted
 Pragma: no-cache
 Retry-After: 60
-Azure-AsyncOperation: https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/testVaultRG/providers/microsoft.recoveryservices/vaults/testVault/backupFabrics/Azure/protectionContainers/iaasvmcontainer;iaasvmcontainerv2;testRG;testVM/protectedItems/vm;testRG;testVM/operationsStatus/a0866047-6fc7-4ac3-ba38-fb0ae8aa550f?api-version=2016-12-01
+Azure-AsyncOperation: https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/testVaultRG/providers/microsoft.recoveryservices/vaults/testVault/backupFabrics/Azure/protectionContainers/iaasvmcontainer;iaasvmcontainerv2;testRG;testVM/protectedItems/vm;testRG;testVM/operationsStatus/a0866047-6fc7-4ac3-ba38-fb0ae8aa550f?api-version=2019-05-13
 X-Content-Type-Options: nosniff
 x-ms-request-id: db785be0-bb20-4598-bc9f-70c9428b170b
 x-ms-client-request-id: e1f94eef-9b2d-45c4-85b8-151e12b07d03; e1f94eef-9b2d-45c4-85b8-151e12b07d03
@@ -237,7 +237,7 @@ x-ms-correlation-request-id: db785be0-bb20-4598-bc9f-70c9428b170b
 x-ms-routing-request-id: SOUTHINDIA:20180521T073907Z:db785be0-bb20-4598-bc9f-70c9428b170b
 Cache-Control: no-cache
 Date: Mon, 21 May 2018 07:39:06 GMT
-Location: https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/testVaultRG/providers/microsoft.recoveryservices/vaults/testVault/backupFabrics/Azure/protectionContainers/iaasvmcontainer;iaasvmcontainerv2;testRG;testVM/protectedItems/vm;testRG;testVM/operationResults/a0866047-6fc7-4ac3-ba38-fb0ae8aa550f?api-version=2016-12-01
+Location: https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/testVaultRG/providers/microsoft.recoveryservices/vaults/testVault/backupFabrics/Azure/protectionContainers/iaasvmcontainer;iaasvmcontainerv2;testRG;testVM/protectedItems/vm;testRG;testVM/operationResults/a0866047-6fc7-4ac3-ba38-fb0ae8aa550f?api-version=2019-05-13
 X-Powered-By: ASP.NET
 ```
 
@@ -290,17 +290,17 @@ Wyzwalanie kopii zapasowej na żądanie jest operacją *post* .
 POST https://management.azure.com/Subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/backupFabrics/{fabricName}/protectionContainers/{containerName}/protectedItems/{protectedItemName}/backup?api-version=2016-12-01
 ```
 
-I są tak skonstruowane jak [powyżej.](#responses-1) `{containerName}` `{protectedItemName}` `{fabricName}` Jest to "Azure". W naszym przykładzie jest to tłumaczone na:
+`{containerName}` i `{protectedItemName}` są tak skonstruowane jak [powyżej](#responses-1). `{fabricName}` to "Azure". W naszym przykładzie jest to tłumaczone na:
 
 ```http
-POST https://management.azure.com/Subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/testVaultRG/providers/Microsoft.RecoveryServices/vaults/testVault/backupFabrics/Azure/protectionContainers/iaasvmcontainer;iaasvmcontainerv2;testRG;testVM/protectedItems/vm;iaasvmcontainerv2;testRG;testVM/backup?api-version=2016-12-01
+POST https://management.azure.com/Subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/testVaultRG/providers/Microsoft.RecoveryServices/vaults/testVault/backupFabrics/Azure/protectionContainers/iaasvmcontainer;iaasvmcontainerv2;testRG;testVM/protectedItems/vm;iaasvmcontainerv2;testRG;testVM/backup?api-version=2019-05-13
 ```
 
 ### <a name="create-the-request-body"></a>Tworzenie treści żądania
 
 Aby wyzwolić kopię zapasową na żądanie, poniżej przedstawiono składniki treści żądania.
 
-|Name (Nazwa)  |Typ  |Opis  |
+|Nazwa  |Typ  |Opis  |
 |---------|---------|---------|
 |properties     | [IaaSVMBackupRequest](https://docs.microsoft.com/rest/api/backup/backups/trigger#iaasvmbackuprequest)        |Właściwości BackupRequestResource         |
 
@@ -319,15 +319,15 @@ Następująca treść żądania definiuje właściwości wymagane do wyzwolenia 
 }
 ```
 
-### <a name="responses"></a>Responses
+### <a name="responses"></a>Odpowiedzi
 
 Wyzwalanie kopii zapasowej na żądanie jest [operacją asynchroniczną](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-async-operations). Oznacza to, że ta operacja tworzy kolejną operację, która musi być śledzona oddzielnie.
 
-Zwraca dwie odpowiedzi: 202 (zaakceptowane) podczas tworzenia innej operacji, a następnie 200 (OK) po zakończeniu tej operacji.
+Zwraca dwie odpowiedzi: 202 (zaakceptowane), gdy tworzona jest inna operacja, a następnie 200 (OK) po zakończeniu tej operacji.
 
-|Name (Nazwa)  |Typ  |Opis  |
+|Nazwa  |Typ  |Opis  |
 |---------|---------|---------|
-|202 zaakceptowane     |         |     Zaakceptowany    |
+|202 zaakceptowane     |         |     Przyjmować    |
 
 ##### <a name="example-responses-3"></a>Przykładowe odpowiedzi
 
@@ -337,7 +337,7 @@ Po przesłaniu żądania *post* do kopii zapasowej na żądanie początkowa odpo
 HTTP/1.1 202 Accepted
 Pragma: no-cache
 Retry-After: 60
-Azure-AsyncOperation: https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/testVaultRG/providers/microsoft.recoveryservices/vaults/testVault/backupFabrics/Azure/protectionContainers/iaasvmcontainer;iaasvmcontainerv2;testVaultRG;testVM/protectedItems/vm;testRG;testVM/operationsStatus/b8daecaa-f8f5-44ed-9f18-491a9e9ba01f?api-version=2016-12-01
+Azure-AsyncOperation: https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/testVaultRG/providers/microsoft.recoveryservices/vaults/testVault/backupFabrics/Azure/protectionContainers/iaasvmcontainer;iaasvmcontainerv2;testVaultRG;testVM/protectedItems/vm;testRG;testVM/operationsStatus/b8daecaa-f8f5-44ed-9f18-491a9e9ba01f?api-version=2019-05-13
 X-Content-Type-Options: nosniff
 x-ms-request-id: 7885ca75-c7c6-43fb-a38c-c0cc437d8810
 x-ms-client-request-id: 7df8e874-1d66-4f81-8e91-da2fe054811d; 7df8e874-1d66-4f81-8e91-da2fe054811d
@@ -354,7 +354,7 @@ X-Powered-By: ASP.NET
 Następnie Śledź wyniki operacji przy użyciu nagłówka lokalizacji lub nagłówka Azure-AsyncOperation z prostym poleceniem *Get* .
 
 ```http
-GET https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/testVaultRG/providers/microsoft.recoveryservices/vaults/testVault/backupFabrics/Azure/protectionContainers/iaasvmcontainer;iaasvmcontainerv2;testRG;testVM/protectedItems/vm;testRG;testVM/operationsStatus/a0866047-6fc7-4ac3-ba38-fb0ae8aa550f?api-version=2016-12-01
+GET https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/testVaultRG/providers/microsoft.recoveryservices/vaults/testVault/backupFabrics/Azure/protectionContainers/iaasvmcontainer;iaasvmcontainerv2;testRG;testVM/protectedItems/vm;testRG;testVM/operationsStatus/a0866047-6fc7-4ac3-ba38-fb0ae8aa550f?api-version=2019-05-13
 ```
 
 Po zakończeniu operacji zwraca 200 (OK) z IDENTYFIKATORem wynikowego zadania tworzenia kopii zapasowej w treści odpowiedzi.
@@ -393,7 +393,7 @@ Ponieważ zadanie tworzenia kopii zapasowej jest długotrwałą operacją, musi 
 
 ### <a name="changing-the-policy-of-protection"></a>Zmiana zasad ochrony
 
-Aby zmienić zasady, za pomocą których maszyna wirtualna jest chroniona, można użyć tego samego formatu co [włączenie ochrony](#enabling-protection-for-the-azure-vm). Po prostu podaj nowy identyfikator zasad w [treści żądania](#example-request-body) i prześlij żądanie. Przykład: Aby zmienić zasady testVM z "DefaultPolicy" na "ProdPolicy", podaj identyfikator "ProdPolicy" w treści żądania.
+Aby zmienić zasady, za pomocą których maszyna wirtualna jest chroniona, można użyć tego samego formatu co [włączenie ochrony](#enabling-protection-for-the-azure-vm). Po prostu podaj nowy identyfikator zasad w [treści żądania](#example-request-body) i prześlij żądanie. Na przykład: Aby zmienić zasady testVM z "DefaultPolicy" na "ProdPolicy", podaj identyfikator "ProdPolicy" w treści żądania.
 
 ```http
 {
@@ -430,25 +430,25 @@ Aby usunąć ochronę chronionej maszyny wirtualnej i usunąć również dane ko
 Zatrzymywanie ochrony i usuwanie danych jest operacją *usuwania* .
 
 ```http
-DELETE https://management.azure.com/Subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/backupFabrics/{fabricName}/protectionContainers/{containerName}/protectedItems/{protectedItemName}?api-version=2016-12-01
+DELETE https://management.azure.com/Subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/backupFabrics/{fabricName}/protectionContainers/{containerName}/protectedItems/{protectedItemName}?api-version=2019-05-13
 ```
 
-I są tak skonstruowane jak [powyżej.](#responses-1) `{containerName}` `{protectedItemName}` `{fabricName}`to "Azure". W naszym przykładzie jest to tłumaczone na:
+`{containerName}` i `{protectedItemName}` są tak skonstruowane jak [powyżej](#responses-1). `{fabricName}` to "Azure". W naszym przykładzie jest to tłumaczone na:
 
 ```http
-DELETE https://management.azure.com//Subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/testVaultRG/providers/Microsoft.RecoveryServices/vaults/testVault/backupFabrics/Azure/protectionContainers/iaasvmcontainer;iaasvmcontainerv2;testRG;testVM/protectedItems/vm;iaasvmcontainerv2;testRG;testVM?api-version=2016-12-01
+DELETE https://management.azure.com//Subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/testVaultRG/providers/Microsoft.RecoveryServices/vaults/testVault/backupFabrics/Azure/protectionContainers/iaasvmcontainer;iaasvmcontainerv2;testRG;testVM/protectedItems/vm;iaasvmcontainerv2;testRG;testVM?api-version=2019-05-13
 ```
 
 ### <a name="responses-2"></a>Reagowani
 
 *Usuwanie* ochrony jest [operacją asynchroniczną](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-async-operations). Oznacza to, że ta operacja tworzy kolejną operację, która musi być śledzona oddzielnie.
 
-Zwraca dwie odpowiedzi: 202 (zaakceptowane) po utworzeniu innej operacji, a następnie 204 (NoContent) po zakończeniu tej operacji.
+Zwraca dwie odpowiedzi: 202 (zaakceptowane), gdy tworzona jest inna operacja, a następnie 204 (NoContent) po zakończeniu tej operacji.
 
-|Name (Nazwa)  |Typ  |Opis  |
+|Nazwa  |Typ  |Opis  |
 |---------|---------|---------|
 |204 NoContent     |         |  NoContent       |
-|202 zaakceptowane     |         |     Zaakceptowany    |
+|202 zaakceptowane     |         |     Przyjmować    |
 
 ## <a name="next-steps"></a>Następne kroki
 
@@ -457,4 +457,4 @@ Zwraca dwie odpowiedzi: 202 (zaakceptowane) po utworzeniu innej operacji, a nast
 Aby uzyskać więcej informacji na temat Azure Backup interfejsów API REST, zapoznaj się z następującymi dokumentami:
 
 - [Interfejs API REST dostawcy usługi Azure Recovery Services](/rest/api/recoveryservices/)
-- [Wprowadzenie do interfejsu API REST platformy Azure](/rest/api/azure/)
+- [Rozpoczynanie pracy z interfejsem API REST platformy Azure](/rest/api/azure/)

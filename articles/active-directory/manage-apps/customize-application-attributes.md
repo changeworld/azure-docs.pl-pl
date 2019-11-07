@@ -14,12 +14,12 @@ ms.topic: conceptual
 ms.date: 04/03/2019
 ms.author: mimart
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ef3d6a47986056925f9964638c9c7192341ca5f9
-ms.sourcegitcommit: 824e3d971490b0272e06f2b8b3fe98bbf7bfcb7f
+ms.openlocfilehash: 82c1a536bb86f0b3a4fe6a24af00379686ccc292
+ms.sourcegitcommit: 359930a9387dd3d15d39abd97ad2b8cb69b8c18b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/10/2019
-ms.locfileid: "72240988"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73641502"
 ---
 # <a name="customizing-user-provisioning-attribute-mappings-for-saas-applications-in-azure-active-directory"></a>Dostosowywanie mapowania atrybutów aprowizacji użytkowników dla aplikacji SaaS w Azure Active Directory
 
@@ -77,6 +77,16 @@ Wraz z tą właściwością mapowania atrybutów obsługują również następuj
   - **Zawsze** — Zastosuj to mapowanie zarówno dla akcji tworzenia i aktualizowania użytkownika.
   - **Tylko podczas tworzenia** — Zastosuj to mapowanie tylko w przypadku akcji tworzenia użytkownika.
 
+## <a name="matching-users-in-the-source-and-target--systems"></a>Dopasowanie użytkowników w systemach źródłowych i docelowych
+Usługę Azure AD Provisioning można wdrożyć w obu Greenfield (użytkownicy nie opuszczają się w systemie docelowym) i brownfield (użytkownicy już istnieją w systemie docelowym). Aby zapewnić obsługę obu scenariuszy, usługa aprowizacji używa koncepcji pasujących atrybutów. Zgodne atrybuty umożliwiają określenie sposobu unikatowego identyfikowania użytkownika w źródle i dopasowania go do użytkownika w miejscu docelowym. W ramach planowania wdrożenia Zidentyfikuj atrybut, którego można użyć do unikatowego identyfikowania użytkownika w systemie źródłowym i docelowym. Kwestie do uwagi:
+
+- **Zgodne atrybuty powinny być unikatowe:** Klienci często używają atrybutów, takich jak userPrincipalName, mail lub ID obiektu, jako pasującego atrybutu.
+- **Można użyć wielu atrybutów jako pasujących atrybutów:** Można zdefiniować wiele atrybutów do oceny w przypadku dopasowywania użytkowników i kolejności, w której są oceniane (zdefiniowane jako pierwszeństwo w interfejsie użytkownika). Jeśli na przykład zdefiniujesz trzy atrybuty jako pasujące atrybuty, a użytkownik zostanie jednoznacznie dopasowany po przeprowadzeniu oceny pierwszych dwóch atrybutów, usługa nie będzie oceniać trzeciego atrybutu. Usługa oceni pasujące atrybuty w podanej kolejności i Zatrzymaj ocenę, gdy zostanie znalezione dopasowanie.  
+- **Wartość w źródle i miejscu docelowym nie musi dokładnie pasować:** Wartość w elemencie docelowym może być prostą funkcją wartości w źródle. Tak więc jeden może mieć atrybut emailAddress w źródle i userPrincipalName w elemencie docelowym i pasować przez funkcję atrybutu emailAddress, który zastępuje niektóre znaki niepewną wartością stałą.  
+- **Dopasowanie na podstawie kombinacji atrybutów nie jest obsługiwane:** Większość aplikacji nie obsługuje wykonywania zapytań w oparciu o dwie właściwości i Therfore nie jest możliwe dopasowanie w oparciu o kombinację atrybutów. Istnieje możliwość oszacowania jednego z pojedynczych właściwości.
+- **Wszyscy użytkownicy muszą mieć wartość dla co najmniej jednego zgodnego atrybutu:** Jeśli zdefiniujesz jeden pasujący atrybut, wszyscy użytkownicy muszą mieć wartość dla tego atrybutu w systemie źródłowym. Jeśli na przykład definiujesz wartość userPrincipalName jako pasujący atrybut, wszyscy użytkownicy muszą mieć element userPrincipalName. Jeśli zdefiniujesz wiele pasujących atrybutów (np. extensionAttribute1 i mail), nie wszyscy użytkownicy muszą mieć ten sam pasujący atrybut. Jeden użytkownik może mieć extensionAttribute1, ale nie pocztą e-mail, ale inny użytkownik może korzystać z poczty e-mail, ale nie extensionAttribute1. 
+- **Aplikacja docelowa musi obsługiwać filtrowanie na zgodnym atrybucie:** Deweloperzy aplikacji umożliwiają filtrowanie podzestawu atrybutów w INTERFEJSie użytkownika lub grupy użytkowników. W przypadku aplikacji w galerii upewnij się, że domyślne mapowanie atrybutów dotyczy atrybutu, który interfejs API aplikacji docelowej obsługuje filtrowanie. Podczas zmiany domyślnego atrybutu dopasowywania dla aplikacji docelowej Sprawdź dokumentację interfejsu API innej firmy, aby upewnić się, że atrybut może być filtrowany.  
+
 ## <a name="editing-group-attribute-mappings"></a>Edytowanie atrybutów grupy — mapowania
 
 Wybrana liczba aplikacji, takich jak usługi ServiceNow, Box i G Suite, umożliwia obsługę administracyjną obiektów grup i obiektów użytkowników. Obiekty grupy mogą zawierać właściwości grupy, takie jak nazwy wyświetlane i aliasy poczty e-mail, wraz z członkami grupy.
@@ -98,7 +108,7 @@ Niektóre aplikacje obsługują jednak atrybuty niestandardowe, a usługa Azure 
 
 Aplikacje i systemy obsługujące Dostosowywanie listy atrybutów obejmują:
 
-- Salesforce
+- SalesForce
 - ServiceNow
 - Workday
 - Azure Active Directory (obsługiwane są[domyślne atrybuty usługi Azure AD interfejs API programu Graph](https://msdn.microsoft.com/Library/Azure/Ad/Graph/api/entity-and-complex-type-reference#user-entity) i niestandardowe rozszerzenia katalogu)
@@ -125,6 +135,113 @@ Podczas edytowania listy obsługiwanych atrybutów są dostępne następujące w
 - **Atrybut obiektu przywoływany** — jeśli jest to atrybut typu referencyjnego, to menu umożliwia wybranie tabeli i atrybutu w aplikacji docelowej zawierającej wartość skojarzoną z atrybutem. Na przykład jeśli masz atrybut o nazwie "Department", którego przechowywana wartość odwołuje się do obiektu w oddzielnej tabeli "działS", wybierz pozycję "Departments.Name". Tabele odwołań i pola identyfikatora podstawowego obsługiwane przez daną aplikację są wstępnie skonfigurowane i obecnie nie można ich edytować za pomocą Azure Portal, ale można je edytować przy użyciu [interfejs API programu Graph](https://developer.microsoft.com/graph/docs/api-reference/beta/resources/synchronization-configure-with-custom-target-attributes).
 
 Aby dodać nowy atrybut, przewiń do końca listy obsługiwanych atrybutów, wypełnij pola powyżej przy użyciu dostarczonych danych wejściowych, a następnie wybierz pozycję **Dodaj atrybut**. Wybierz pozycję **Zapisz** po zakończeniu dodawania atrybutów. Następnie należy ponownie załadować kartę **aprowizacji** , aby nowe atrybuty były dostępne w edytorze mapowania atrybutów.
+## <a name="provisioning-a-role-to-a-scim-app"></a>Inicjowanie obsługi administracyjnej roli w aplikacji Standard scim
+Wykonaj poniższe kroki, aby zainicjować obsługę ról dla użytkownika w aplikacji. Należy zauważyć, że opis poniżej dotyczy niestandardowych aplikacji Standard scim. W przypadku aplikacji galerii, takich jak Salesforce i usługi ServiceNow, należy użyć wstępnie zdefiniowanych mapowań ról. Punktory poniżej opisują sposób przekształcania atrybutu AppRoleAssignments w format oczekiwany przez aplikację.
+
+- Mapowanie appRoleAssignment w usłudze Azure AD do roli w aplikacji wymaga przekształcenia atrybutu przy użyciu [wyrażenia](https://docs.microsoft.com/azure/active-directory/manage-apps/functions-for-customizing-application-data). Atrybut appRoleAssignment **nie powinien być mapowany bezpośrednio** do atrybutu roli bez użycia wyrażenia w celu przeanalizowania szczegółów roli. 
+
+- **SingleAppRoleAssignment** 
+  - **Kiedy używać:** Użyj wyrażenia SingleAppRoleAssignment, aby zainicjować obsługę pojedynczej roli dla użytkownika i określić rolę podstawową. 
+  - **Jak skonfigurować:** Wykonaj kroki opisane powyżej, aby przejść do strony mapowania atrybutów i użyć wyrażenia SingleAppRoleAssignment do mapowania atrybutu role. Istnieją trzy atrybuty roli do wyboru: (role [podstawowa EQ "true"]. Display, role [Primary EQ "true]. Type i Roles [Primary EQ" true "]. Value). Możesz uwzględnić dowolne lub wszystkie atrybuty roli w mapowaniu. Jeśli chcesz dołączyć więcej niż jeden, wystarczy dodać nowe mapowanie i dołączyć je jako atrybut docelowy.  
+  
+  ![Dodaj SingleAppRoleAssignment](./media/customize-application-attributes/edit-attribute-singleapproleassignment.png)
+  - **Rzeczy do rozważenia**
+    - Upewnij się, że wiele ról nie jest przypisanych do użytkownika. Nie możemy zagwarantować, która rola zostanie zainicjowana.
+    
+  - **Przykładowe dane wyjściowe** 
+
+   ```json
+    {
+      "schemas": [
+          "urn:ietf:params:scim:schemas:core:2.0:User"
+      ],
+      "externalId": "alias",
+      "userName": "alias@contoso.OnMicrosoft.com",
+      "active": true,
+      "displayName": "First Name Last Name",
+      "meta": {
+           "resourceType": "User"
+      },
+      "roles": [
+         {
+               "primary": true,
+               "type": "WindowsAzureActiveDirectoryRole",
+               "value": "Admin"
+         }
+      ]
+   }
+   ```
+  
+- **AppRoleAssignmentsComplex** 
+  - **Kiedy używać:** Użyj wyrażenia AppRoleAssignmentsComplex, aby zainicjować obsługę wielu ról dla użytkownika. 
+  - **Jak skonfigurować:** Edytuj listę obsługiwanych atrybutów, jak opisano powyżej, aby uwzględnić nowy atrybut dla ról: 
+  
+    ![Dodawanie ról](./media/customize-application-attributes/add-roles.png)<br>
+
+    Następnie użyj wyrażenia AppRoleAssignmentsComplex, aby zamapować na niestandardowy atrybut roli, jak pokazano na poniższej ilustracji:
+
+    ![Dodaj AppRoleAssignmentsComplex](./media/customize-application-attributes/edit-attribute-approleassignmentscomplex.png)<br>
+  - **Rzeczy do rozważenia**
+    - Wszystkie role będą obsługiwane jako podstawowe = fałszywe.
+    - WPIS zawiera typ roli. Żądanie PATCH nie zawiera typu. Pracujemy nad wysłaniem typu w żądaniach POST i PATCH.
+    
+  - **Przykładowe dane wyjściowe** 
+  
+   ```json
+   {
+       "schemas": [
+           "urn:ietf:params:scim:schemas:core:2.0:User"
+      ],
+      "externalId": "alias",
+      "userName": "alias@contoso.OnMicrosoft.com",
+      "active": true,
+      "displayName": "First Name Last Name",
+      "meta": {
+           "resourceType": "User"
+      },
+      "roles": [
+         {
+               "primary": false,
+               "type": "WindowsAzureActiveDirectoryRole",
+               "display": "Admin",
+               "value": "Admin"
+         },
+         {
+               "primary": false,
+               "type": "WindowsAzureActiveDirectoryRole",
+               "display": "User",
+             "value": "User"
+         }
+      ]
+   }
+   ```
+
+  
+
+
+## <a name="provisioning-a-multi-value-attribute"></a>Inicjowanie obsługi atrybutu wielowartościowego
+Niektóre atrybuty, takie jak numery telefonu i wiadomości e-mail, są atrybutami wielowartościowymi, w których może być konieczne określenie różnych typów numerów telefonów lub wiadomości e-mail. Użyj poniższego wyrażenia dla atrybutów wielowartościowych. Umożliwia określenie typu atrybutu i mapy do odpowiedniego atrybutu użytkownika usługi Azure AD dla tej wartości. 
+
+* numer telefonu [typ EQ "Work"]. wartość
+* numer telefonu [typ EQ "Mobile"]. Value
+* numer telefonu [typ EQ "Fax"]. wartość
+
+   ```json
+   "phoneNumbers": [
+       {
+         "value": "555-555-5555",
+         "type": "work"
+      },
+      {
+         "value": "555-555-5555",
+         "type": "mobile"
+      },
+      {
+         "value": "555-555-5555",
+         "type": "fax"
+      }
+   ]
+   ```
 
 ## <a name="restoring-the-default-attributes-and-attribute-mappings"></a>Przywracanie domyślnych atrybutów i mapowań atrybutów
 

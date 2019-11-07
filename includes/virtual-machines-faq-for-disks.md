@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 05/13/2019
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: f8c049cc8d2b09cb37dbd444427b03c1013da65c
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
-ms.translationtype: HT
+ms.openlocfilehash: 95fe5471789b66c253aa21d73433f5192cd01e6b
+ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73523453"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73612140"
 ---
 # <a name="frequently-asked-questions-about-azure-iaas-vm-disks-and-managed-and-unmanaged-premium-disks"></a>Często zadawane pytania dotyczące dysków maszyn wirtualnych usługi Azure IaaS oraz zarządzanych i niezarządzanych dysków Premium
 
@@ -170,15 +170,6 @@ Rezerwacja dysków Azure jest zakupionych dla określonego regionu i jednostki S
 Powiadomienia e-mail będą wysyłane na 30 dni przed wygaśnięciem i od daty wygaśnięcia. Po wygaśnięciu rezerwacji wdrożone dyski będą nadal działać i opłaty są naliczane przy użyciu najnowszych [stawek płatności zgodnie z rzeczywistym](https://azure.microsoft.com/pricing/details/managed-disks/)użyciem.
 
 ## <a name="ultra-disks"></a>Ultra disks
-
-**Jakie regiony obecnie obsługują Ultra disks?**
-- Wschodnie stany USA 2
-- Azja Południowo-Wschodnia
-- Europa Północna
-
-**Jakie serie maszyn wirtualnych obsługują teraz Ultra disks?**
-- ESv3
-- DSv3
 
 **Jak należy ustawić moją przepływność na dysku?**
 Jeśli nie masz pewności, w jaki sposób ustawić przepływność dysku, zalecamy rozpoczęcie od zagwarantowania, że rozmiar we/wy wynoszący 16 KiB i dostosowanie wydajności w trakcie monitorowania aplikacji. Formuła: przepływność w MB/s = liczba operacji we/wy * 16/1000.

@@ -1,18 +1,18 @@
 ---
 title: Azure Analysis Services skalowanie w poziomie | Microsoft Docs
-description: Replikowanie serwerów Azure Analysis Services przy użyciu skalowania w poziomie
+description: Replikowanie Azure Analysis Services serwerów z skalowaniem w poziomie. Zapytania klientów mogą następnie zostać rozdystrybuowane między wieloma replikami zapytań w puli zapytań skalowalnych w poziomie.
 author: minewiskan
 ms.service: azure-analysis-services
 ms.topic: conceptual
-ms.date: 08/01/2019
+ms.date: 10/30/2019
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: af1a0db397510014301a58aea7238b695a6c0740
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.openlocfilehash: 1b40238dfc579e42d0389ae14fdea4b5692ede06
+ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73146446"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73572590"
 ---
 # <a name="azure-analysis-services-scale-out"></a>Skalowanie w poziomie usług Azure Analysis Services
 
@@ -30,7 +30,7 @@ Bez względu na liczbę replik zapytań używanych w puli zapytań przetwarzanie
 
 Skalowanie w górę może potrwać do 5 minut, aby nowe repliki zapytań były przyrostowo dodawane do puli zapytań. Gdy wszystkie nowe repliki zapytań są uruchomione, nowe połączenia klientów są zrównoważone dla zasobów w puli zapytań. Istniejące połączenia klientów nie są zmieniane z zasobu, z którym są obecnie połączone. Podczas skalowania w programie wszystkie istniejące połączenia klientów z pulą zapytań, które są usuwane z puli zapytań, są przerywane. Klienci mogą ponownie połączyć się z innym zasobem puli zapytań.
 
-## <a name="how-it-works"></a>Zasady działania
+## <a name="how-it-works"></a>Jak to działa
 
 Podczas konfigurowania skalowania w poziomie po raz pierwszy bazy danych modelu na serwerze podstawowym są *automatycznie* synchronizowane z nowymi replikami w nowej puli zapytań. Automatyczna synchronizacja odbywa się tylko raz. Podczas automatycznej synchronizacji pliki danych serwera podstawowego (szyfrowane przy użyciu magazynu obiektów BLOB) są kopiowane do drugiej lokalizacji, również szyfrowane w usłudze BLOB Storage. Repliki w puli zapytań są następnie *odwodnione* danymi z drugiego zestawu plików. 
 
@@ -44,9 +44,9 @@ Podczas kolejnej operacji skalowania w poziomie, na przykład zwiększając licz
 
 * Synchronizacja jest dozwolona nawet wtedy, gdy w puli zapytań nie ma żadnych replik. W przypadku skalowania z zera do co najmniej jednej repliki z nowymi danymi z operacji przetwarzania na serwerze podstawowym Wykonaj synchronizację najpierw bez replik w puli zapytań, a następnie Skaluj w poziomie. Synchronizacja przed skalowaniem nie pozwala na uniknięcie nadmiarowego uzupełniania nowo dodanych replik.
 
-* W przypadku usuwania bazy danych modelu z serwera podstawowego nie są automatycznie usuwane z replik w puli zapytań. Należy wykonać operację synchronizacji za pomocą polecenia programu PowerShell [Sync-AzAnalysisServicesInstance](https://docs.microsoft.com/powershell/module/az.analysisservices/sync-AzAnalysisServicesinstance) , które usuwa pliki/s dla tej bazy danych z udostępnionej lokalizacji magazynu obiektów BLOB repliki, a następnie usuwa bazę danych modelu w replikach w puli zapytań. Aby określić, czy istnieje baza danych modelu w replikach w puli zapytań, ale nie na serwerze podstawowym, upewnij się, że ustawienie **oddziel serwer przetwarzania od tworzenia zapytań do puli** ma **wartość tak**. Następnie użyj programu SSMS do nawiązania połączenia z serwerem podstawowym przy użyciu kwalifikatora `:rw`, aby sprawdzić, czy baza danych istnieje. Następnie połącz się z replikami w puli zapytań, łącząc bez kwalifikatora `:rw`, aby sprawdzić, czy ta sama baza danych również istnieje. Jeśli baza danych istnieje w replikach w puli zapytań, ale nie na serwerze podstawowym, uruchom operację synchronizacji.   
+* W przypadku usuwania bazy danych modelu z serwera podstawowego nie są automatycznie usuwane z replik w puli zapytań. Należy wykonać operację synchronizacji za pomocą polecenia programu PowerShell [Sync-AzAnalysisServicesInstance](https://docs.microsoft.com/powershell/module/az.analysisservices/sync-AzAnalysisServicesinstance) , które usuwa pliki/s dla tej bazy danych z udostępnionej lokalizacji magazynu obiektów BLOB repliki, a następnie usuwa bazę danych modelu w replikach w puli zapytań. Aby określić, czy istnieje baza danych modelu w replikach w puli zapytań, ale nie na serwerze podstawowym, upewnij się, że ustawienie **oddziel serwer przetwarzania od tworzenia zapytań do puli** ma **wartość tak**. Następnie użyj programu SSMS, aby nawiązać połączenie z serwerem podstawowym przy użyciu kwalifikatora `:rw`, aby sprawdzić, czy baza danych istnieje. Następnie połącz się z replikami w puli zapytań, łącząc się bez kwalifikatora `:rw`, aby sprawdzić, czy również istnieje taka sama baza danych. Jeśli baza danych istnieje w replikach w puli zapytań, ale nie na serwerze podstawowym, uruchom operację synchronizacji.   
 
-* W przypadku zmiany nazwy bazy danych na serwerze podstawowym należy wykonać dodatkowy krok, aby upewnić się, że baza danych jest prawidłowo synchronizowana z dowolnymi replikami. Po zmianie nazwy Wykonaj synchronizację przy użyciu polecenia [Sync-AzAnalysisServicesInstance](https://docs.microsoft.com/powershell/module/az.analysisservices/sync-AzAnalysisServicesinstance) określającego parametr `-Database` o starej nazwie bazy danych. Ta Synchronizacja powoduje usunięcie bazy danych i plików ze starą nazwą z dowolnych replik. Następnie wykonaj kolejną synchronizację określającą parametr `-Database` z nową nazwą bazy danych. Druga synchronizacja kopiuje nowo nazwaną bazę danych do drugiego zestawu plików i odwodnione wszystkie repliki. Tych synchronizacji nie można wykonać za pomocą polecenia Synchronizuj model w portalu.
+* W przypadku zmiany nazwy bazy danych na serwerze podstawowym należy wykonać dodatkowy krok, aby upewnić się, że baza danych jest prawidłowo synchronizowana z dowolnymi replikami. Po zmianie nazwy Wykonaj synchronizację przy użyciu polecenia [Sync-AzAnalysisServicesInstance](https://docs.microsoft.com/powershell/module/az.analysisservices/sync-AzAnalysisServicesinstance) określającego parametr `-Database` o starej nazwie bazy danych. Ta Synchronizacja powoduje usunięcie bazy danych i plików ze starą nazwą z dowolnych replik. Następnie wykonaj kolejną synchronizację określającą parametr `-Database` o nowej nazwie bazy danych. Druga synchronizacja kopiuje nowo nazwaną bazę danych do drugiego zestawu plików i odwodnione wszystkie repliki. Tych synchronizacji nie można wykonać za pomocą polecenia Synchronizuj model w portalu.
 
 ### <a name="separate-processing-from-query-pool"></a>Oddzielne przetwarzanie od puli zapytań
 
@@ -109,7 +109,7 @@ Kody stanu powrotu:
 
 |Kod  |Opis  |
 |---------|---------|
-|-1     |  Nieprawidłowe       |
+|-1     |  Nieprawidłowy       |
 |0     | Replikacji        |
 |1     |  Ponownego wypełniania       |
 |2     |   Zakończone       |
@@ -148,9 +148,9 @@ Warstwę cenową można zmienić na serwerze z wieloma replikami. Ta sama warstw
 
 ## <a name="troubleshoot"></a>Rozwiązywanie problemów
 
-**Problem:** Użytkownicy **nie mogą znaleźć serwera "\<Name wystąpienia serwera >" w trybie połączenia "ReadOnly".**
+**Problem:** Użytkownicy **nie mogą znaleźć serwera "\<nazwę wystąpienia serwera >" w trybie połączenia "ReadOnly".**
 
-**Rozwiązanie:** Po wybraniu opcji **oddziel serwer przetwarzania od puli zapytań** , połączenia klienta przy użyciu domyślnych parametrów połączenia (bez `:rw`) są przekierowywane do replik puli zapytań. Jeśli repliki w puli zapytań nie są jeszcze w trybie online, ponieważ synchronizacja nie została jeszcze zakończona, przekierowane połączenia klientów mogą zakończyć się niepowodzeniem. Aby uniknąć nieudanych połączeń, w puli zapytań muszą znajdować się co najmniej dwa serwery podczas przeprowadzania synchronizacji. Każdy serwer jest synchronizowany pojedynczo, podczas gdy inne pozostają w trybie online. Jeśli zdecydujesz, aby nie mieć serwera przetwarzania w puli zapytań podczas przetwarzania, możesz usunąć go z puli do przetworzenia, a następnie dodać z powrotem do puli po zakończeniu przetwarzania, ale przed synchronizacją. Do monitorowania stanu synchronizacji służą metryki pamięci i QPU.
+**Rozwiązanie:** Po wybraniu opcji **oddziel serwer przetwarzania od puli zapytań** , połączenia klientów z użyciem domyślnych parametrów połączenia (bez `:rw`) są przekierowywane do replik puli zapytań. Jeśli repliki w puli zapytań nie są jeszcze w trybie online, ponieważ synchronizacja nie została jeszcze zakończona, przekierowane połączenia klientów mogą zakończyć się niepowodzeniem. Aby uniknąć nieudanych połączeń, w puli zapytań muszą znajdować się co najmniej dwa serwery podczas przeprowadzania synchronizacji. Każdy serwer jest synchronizowany pojedynczo, podczas gdy inne pozostają w trybie online. Jeśli zdecydujesz, aby nie mieć serwera przetwarzania w puli zapytań podczas przetwarzania, możesz usunąć go z puli do przetworzenia, a następnie dodać z powrotem do puli po zakończeniu przetwarzania, ale przed synchronizacją. Do monitorowania stanu synchronizacji służą metryki pamięci i QPU.
 
 
 

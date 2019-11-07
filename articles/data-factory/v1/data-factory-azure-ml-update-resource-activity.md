@@ -1,5 +1,5 @@
 ---
-title: Aktualizowanie modeli Machine Learning przy użyciu Azure Data Factory | Microsoft Docs
+title: Aktualizowanie modeli Machine Learning przy użyciu Azure Data Factory
 description: Zawiera opis sposobu tworzenia potoku predykcyjnego przy użyciu Azure Data Factory i Azure Machine Learning
 services: data-factory
 documentationcenter: ''
@@ -11,12 +11,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/22/2018
-ms.openlocfilehash: a980f269c8b88618ffa3311c05310a88ade379ed
-ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
+ms.openlocfilehash: 190a4e704b002a4d6d4876d048c693a5fffe0114
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70140475"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73683116"
 ---
 # <a name="updating-azure-machine-learning-models-using-update-resource-activity"></a>Aktualizowanie modeli Azure Machine Learning przy użyciu działania Update Resource
 
@@ -36,7 +36,7 @@ ms.locfileid: "70140475"
 > [!NOTE]
 > Ten artykuł dotyczy wersji 1 usługi Data Factory. Jeśli używasz bieżącej wersji usługi Data Factory, zobacz temat [aktualizowanie modeli uczenia maszynowego w programie Data Factory](../update-machine-learning-models.md).
 
-Ten artykuł stanowi uzupełnienie głównego artykułu dotyczącego integracji Azure Data Factory Azure Machine Learning: [Twórz potoki predykcyjne przy użyciu Azure Machine Learning i Azure Data Factory](data-factory-azure-ml-batch-execution-activity.md). Jeśli jeszcze tego nie zrobiono, zapoznaj się z głównym artykułem przed przeczytaniem tego artykułu. 
+Ten artykuł stanowi uzupełnienie głównego artykułu z integracją Azure Data Factory Azure Machine Learning: [Tworzenie potoków predykcyjnych za pomocą Azure Machine Learning i Azure Data Factory](data-factory-azure-ml-batch-execution-activity.md). Jeśli jeszcze tego nie zrobiono, zapoznaj się z głównym artykułem przed przeczytaniem tego artykułu. 
 
 ## <a name="overview"></a>Omówienie
 W miarę upływu czasu modele predykcyjne w eksperymentach oceniania w usłudze Azure ML muszą być ponownie przeszkoli przy użyciu nowych wejściowych zestawów danych. Po wykonaniu ponownych szkoleń, chcesz zaktualizować usługę oceniania w sieci Web przy użyciu ponownie przemieszczonego modelu ML. Typowe kroki umożliwiające przeszkolenie i zaktualizowanie modeli usługi Azure ML za pośrednictwem usług sieci Web:

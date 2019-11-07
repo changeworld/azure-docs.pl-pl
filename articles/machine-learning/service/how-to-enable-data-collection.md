@@ -11,12 +11,12 @@ ms.author: copeters
 author: lostmygithubaccount
 ms.date: 10/15/2019
 ms.custom: seodec18
-ms.openlocfilehash: 845d271c60762177ea88912f2100f3b47aedde46
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
-ms.translationtype: HT
+ms.openlocfilehash: 2ca091a1bbf56e2d2850a464d0109020b06483d0
+ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 11/04/2019
-ms.locfileid: "73489994"
+ms.locfileid: "73576688"
 ---
 # <a name="collect-data-for-models-in-production"></a>Zbieranie danych dla modeli w środowisku produkcyjnym
 [!INCLUDE [applies-to-skus](../../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -124,7 +124,7 @@ Jeśli masz już usługę z zależnościami zainstalowanymi w **pliku środowisk
 
    ![Edytuj usługę](media/how-to-enable-data-collection/EditService.PNG)
 
-1. W obszarze **Ustawienia zaawansowane**Usuń zaznaczenie opcji **Włącz zbieranie danych modelu**. 
+1. W obszarze **Ustawienia zaawansowane**wybierz pozycję **Włącz zbieranie danych modelu**. 
 
     [![Sprawdź zbieranie danych](media/how-to-enable-data-collection/CheckDataCollection.png)](./media/how-to-enable-data-collection/CheckDataCollection.png#lightbox)
 

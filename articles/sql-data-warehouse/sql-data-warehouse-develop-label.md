@@ -1,5 +1,5 @@
 ---
-title: Używanie etykiet do Instrumentacji zapytań w SQL Data Warehouse | Microsoft Docs
+title: Używanie etykiet do Instrumentacji zapytań
 description: Porady dotyczące używania etykiet do Instrumentacji zapytań w Azure SQL Data Warehouse do tworzenia rozwiązań.
 services: sql-data-warehouse
 author: XiaoyuMSFT
@@ -10,12 +10,13 @@ ms.subservice: query
 ms.date: 04/17/2018
 ms.author: xiaoyul
 ms.reviewer: igorstan
-ms.openlocfilehash: ee991fdfcd93ea064d1205d61d07adf377cce667
-ms.sourcegitcommit: 75a56915dce1c538dc7a921beb4a5305e79d3c7a
+ms.custom: seo-lt-2019
+ms.openlocfilehash: 4ca0b3564418aafe774158057bc3efd541f71f66
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/24/2019
-ms.locfileid: "68480038"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73692824"
 ---
 # <a name="using-labels-to-instrument-queries-in-azure-sql-data-warehouse"></a>Używanie etykiet do Instrumentacji zapytań w Azure SQL Data Warehouse
 Porady dotyczące używania etykiet do Instrumentacji zapytań w Azure SQL Data Warehouse do tworzenia rozwiązań.

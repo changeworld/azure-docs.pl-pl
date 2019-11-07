@@ -1,5 +1,5 @@
 ---
-title: Zaawansowana ochrona przed zagrożeniami w usłudze Microsoft Defender przy użyciu Azure Security Center
+title: Microsoft Defender Advanced Threat Protection — Azure Security Center
 description: W tym dokumencie przedstawiono integrację między programem Azure Security Center i zaawansowaną ochroną przed zagrożeniami w usłudze Microsoft Defender.
 services: security-center
 documentationcenter: na
@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/24/2019
 ms.author: memildin
-ms.openlocfilehash: 6ceed914d1c69ccdfce5d7acb6dcfc1afc9ef868
-ms.sourcegitcommit: 8e271271cd8c1434b4254862ef96f52a5a9567fb
+ms.openlocfilehash: 46b9fe5c6a038aa98cf8df64c40bf8ea1747efec
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72819892"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73663610"
 ---
 # <a name="microsoft-defender-advanced-threat-protection-with-azure-security-center"></a>Zaawansowana ochrona przed zagrożeniami w usłudze Microsoft Defender przy użyciu Azure Security Center
 
@@ -70,7 +70,7 @@ Aby dołączać serwery do Security Center, kliknij przycisk **Przejdź do Azure
 
 ## <a name="enable-microsoft-defender-atp-integration"></a>Włącz integrację z programem Microsoft Defender ATP
 
-Aby sprawdzić, czy integracja z usługą Microsoft Defender ATP jest włączona, wybierz**ustawienia & cennika** usługi **Security Center** >  > kliknij subskrypcję.
+Aby sprawdzić, czy integracja z usługą Microsoft Defender ATP jest włączona, wybierz pozycję **Security center** > **cennik & Ustawienia** > kliknij subskrypcję.
 W tym miejscu można zobaczyć aktualnie włączone integracje.
 
   ![Strona ustawień wykrywania zagrożeń Azure Security Center z włączoną integracją z usługą Microsoft Defender ATP](media/security-center-wdatp/enable-integrations.png)
@@ -95,7 +95,7 @@ Jeśli masz serwer proxy lub zaporę blokującą ruch anonimowy, ponieważ czujn
 
 Aby wygenerować niegroźny alert dotyczący testu Microsoft Defender ATP:
 
-1. Użyj Pulpit zdalny, aby uzyskać dostęp do maszyny wirtualnej z systemem Windows Server 2012 R2 lub z maszyną wirtualną z systemem Windows Server 2016.  Otwórz okno wiersza polecenia.
+1. Użyj Pulpit zdalny, aby uzyskać dostęp do maszyny wirtualnej z systemem Windows Server 2012 R2 lub z maszyną wirtualną z systemem Windows Server 2016. Otwórz okno wiersza polecenia.
 
 2. W wierszu polecenia skopiuj i uruchom następujące polecenie. Okno wiersza polecenia zostanie zamknięte automatycznie.
 
@@ -107,7 +107,7 @@ Aby wygenerować niegroźny alert dotyczący testu Microsoft Defender ATP:
 
 3. Jeśli polecenie zakończy się pomyślnie, zobaczysz nowy Alert na pulpicie nawigacyjnym Azure Security Center i portalu Microsoft Defender ATP. Ten alert może potrwać kilka minut.
 
-4. Aby sprawdzić alert w Security Center, przejdź do **alertów zabezpieczeń** >  **podejrzany wiersz polecenia programu PowerShell**.
+4. Aby sprawdzić alert w Security Center, przejdź do **alertów zabezpieczeń** > **podejrzanego wiersza polecenia programu PowerShell**.
 
 5. W oknie badanie wybierz link, aby przejść do portalu usługi Microsoft Defender ATP.
 

@@ -1,5 +1,5 @@
 ---
-title: Używanie Azure Data Factory do migrowania danych z usługi Data Lake i magazynu danych na platformę Azure | Microsoft Docs
+title: Używanie Azure Data Factory do migrowania danych z usługi Data Lake i magazynu danych na platformę Azure
 description: Użyj Azure Data Factory, aby zmigrować dane z usługi Data Lake i magazynu danych na platformę Azure.
 services: data-factory
 documentationcenter: ''
@@ -12,12 +12,12 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 7/30/2019
-ms.openlocfilehash: 2d2fc1e2992e379c80a16dee2c1983f9559470c5
-ms.sourcegitcommit: f3f4ec75b74124c2b4e827c29b49ae6b94adbbb7
+ms.openlocfilehash: 0be9cbc9c5af2e0778654ef70c5350b48f10c35d
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/12/2019
-ms.locfileid: "70931131"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73675756"
 ---
 # <a name="use-azure-data-factory-to-migrate-data-from-your-data-lake-or-data-warehouse-to-azure"></a>Używanie Azure Data Factory do migrowania danych z usługi Data Lake lub magazynu danych na platformę Azure
 
@@ -36,7 +36,7 @@ Azure Data Factory może przenosić petabajtów (PB) danych na potrzeby migracji
   - Azure Data Factory używa metody płatność zgodnie z rzeczywistym użyciem, dzięki czemu płacisz tylko za czas używany do uruchamiania migracji danych na platformę Azure.  
 - Azure Data Factory mogą wykonywać zarówno jednorazowe historyczne obciążenia, jak i zaplanowane obciążenia przyrostowe.
 - Azure Data Factory używa platformy Azure Integration Runtime (IR) do przenoszenia danych między publicznie dostępnymi punktami końcowymi usługi Data Lake i magazynem. Może również używać własnego środowiska IR do przeniesienia danych dla punktów końcowych usługi Data Lake i magazynu w ramach platformy Azure Virtual Network (VNet) lub za zaporą.
-- Azure Data Factory ma zabezpieczenia klasy korporacyjnej: Można użyć Instalator Windows (MSI) lub tożsamości usługi dla zabezpieczonej integracji usługi z usługą lub użyć Azure Key Vault do zarządzania poświadczeniami.
+- Azure Data Factory ma zabezpieczenia klasy korporacyjnej: można użyć Instalator Windows (MSI) lub tożsamości usługi do bezpiecznej integracji usługi z usługą lub użyć Azure Key Vault do zarządzania poświadczeniami.
 - Azure Data Factory zapewnia środowisko autorskie bez kodu i bogaty, wbudowany pulpit nawigacyjny monitorowania.  
 
 ## <a name="online-vs-offline-data-migration"></a>Migracja danych w trybie online i offline
@@ -51,7 +51,7 @@ Istnieją trzy kluczowe zagadnienia związane z podejściem do migracji w trybie
 
 Załóżmy na przykład, że planujesz użyć Azure Data Factory, aby ukończyć migrację danych w ciągu dwóch tygodni ( *okna migracji*). Zwróć uwagę na różowe/niebieskie linie wycinania w poniższej tabeli. Najniższa różowa komórka dla każdej podanej kolumny pokazuje rozmiar danych/parowanie przepustowości sieci, których okno migracji jest najbliższe, ale nie mniej niż dwa tygodnie. (Każdy parowanie rozmiaru/przepustowości w niebieskiej komórce ma okno migracji online o więcej niż dwa tygodnie). 
 
-![w trybie online i](media/data-migration-guidance-overview/online-offline.png) w trybie offline ta tabela ułatwia określenie, czy można dopasować zamierzone okno migracji za pośrednictwem migracji w trybie online (Azure Data Factory) na podstawie rozmiaru danych i dostępnej przepustowości sieci. Jeśli okno migracji online ma więcej niż dwa tygodnie, należy użyć migracji w trybie offline.
+![w porównaniu do trybu offline](media/data-migration-guidance-overview/online-offline.png) ta tabela ułatwia określenie, czy można spełnić zamierzone okno migracji w trybie online (Azure Data Factory) w oparciu o rozmiar danych i dostępną przepustowość sieci. Jeśli okno migracji online ma więcej niż dwa tygodnie, należy użyć migracji w trybie offline.
 
 > [!NOTE]
 > Korzystając z migracji w trybie online, można osiągnąć zarówno dane historyczne ładowania, jak i przyrostowe źródła danych za pomocą jednego narzędzia.  Dzięki tej metodzie dane można synchronizować między istniejącym magazynem a nowym magazynem podczas całego okna migracji. Oznacza to, że można ponownie skompilować logikę ETL w nowym sklepie przy użyciu odświeżonych danych.

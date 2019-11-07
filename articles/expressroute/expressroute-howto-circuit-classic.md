@@ -1,33 +1,31 @@
 ---
-title: 'Modyfikowanie obwodu ExpressRoute: Program PowerShell: Klasyczny Azure | Microsoft Docs'
-description: W tym artykule przedstawiono kroki, aby sprawdzić stan, update lub delete i anulować aprowizację obwodu usługi ExpressRoute modelu wdrożenia klasycznego.
+title: 'Modyfikowanie obwodu usługi ExpressRoute: program PowerShell: klasyczny | Microsoft Docs'
+description: W tym artykule omówiono procedurę sprawdzania stanu, aktualizowania lub usuwania i anulowania aprowizacji obwodu klasycznego modelu wdrażania ExpressRoute.
 services: expressroute
-author: ganesr
+author: cherylmc
 ms.service: expressroute
 ms.topic: conceptual
-ms.date: 12/06/2018
-ms.author: ganesr
-ms.reviewer: cherylmc
-ms.custom: seodec18
-ms.openlocfilehash: 7468338e7bc39128564e71831abe61bb1714ff72
-ms.sourcegitcommit: fa45c2bcd1b32bc8dd54a5dc8bc206d2fe23d5fb
+ms.date: 11/05/2019
+ms.author: cherylmc
+ms.openlocfilehash: 9f1c05b85fac6dd0168d9c2b2944326800e90493
+ms.sourcegitcommit: 359930a9387dd3d15d39abd97ad2b8cb69b8c18b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/12/2019
-ms.locfileid: "67849246"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73643668"
 ---
-# <a name="modify-an-expressroute-circuit-using-powershell-classic"></a>Modyfikowanie obwodu ExpressRoute za pomocą programu PowerShell (wersja klasyczna)
+# <a name="modify-an-expressroute-circuit-using-powershell-classic"></a>Modyfikowanie obwodu usługi ExpressRoute przy użyciu programu PowerShell (wersja klasyczna)
 
 > [!div class="op_single_selector"]
 > * [Azure Portal](expressroute-howto-circuit-portal-resource-manager.md)
 > * [Program PowerShell](expressroute-howto-circuit-arm.md)
 > * [Interfejs wiersza polecenia platformy Azure](howto-circuit-cli.md)
 > * [Szablon usługi Azure Resource Manager](expressroute-howto-circuit-resource-manager-template.md)
-> * [Wideo — witryna Azure portal](https://azure.microsoft.com/documentation/videos/azure-expressroute-how-to-create-an-expressroute-circuit)
+> * [Wideo — Azure Portal](https://azure.microsoft.com/documentation/videos/azure-expressroute-how-to-create-an-expressroute-circuit)
 > * [PowerShell (klasyczny)](expressroute-howto-circuit-classic.md)
 >
 
-W tym artykule przedstawiono kroki, aby sprawdzić stan, update lub delete i anulować aprowizację obwodu usługi ExpressRoute modelu wdrożenia klasycznego. Dotyczy on klasycznego modelu wdrożenia.
+W tym artykule omówiono procedurę sprawdzania stanu, aktualizowania lub usuwania i anulowania aprowizacji obwodu klasycznego modelu wdrażania ExpressRoute. Dotyczy on klasycznego modelu wdrożenia.
 
 [!INCLUDE [expressroute-classic-end-include](../../includes/expressroute-classic-end-include.md)]
 
@@ -35,47 +33,26 @@ W tym artykule przedstawiono kroki, aby sprawdzić stan, update lub delete i anu
 
 [!INCLUDE [vpn-gateway-classic-rm](../../includes/vpn-gateway-classic-rm-include.md)]
 
-
-[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
-
 ## <a name="before-you-begin"></a>Przed rozpoczęciem
 
-Zainstaluj najnowsze wersje modułu usługi ExpressRoute i modułów programu PowerShell usługi Azure Service Management (SM).  Podczas korzystając z następującego przykładu, należy pamiętać, że numer wersji (w tym przykładzie 5.1.1) zmieni się nowsze wersje poleceń cmdlet zostaną zwolnione.
+Zainstaluj najnowsze wersje modułów programu PowerShell dla usługi Azure Service Management (SM) i modułu ExpressRoute. Do uruchamiania modułów SM nie można używać środowiska CloudShell platformy Azure.
 
-```powershell
-Import-Module 'C:\Program Files\WindowsPowerShell\Modules\Azure\5.1.1\Azure\Azure.psd1'
-Import-Module 'C:\Program Files\WindowsPowerShell\Modules\Azure\5.1.1\ExpressRoute\ExpressRoute.psd1'
-```
-
-Aby uzyskać więcej informacji na temat programu Azure PowerShell, zobacz [wprowadzenie do poleceń cmdlet programu Azure PowerShell](/powershell/azure/overview) wskazówki krok po kroku dotyczące sposobu konfigurowania komputera do modułów programu Azure PowerShell.
-
-Aby zalogować się do konta platformy Azure, skorzystaj z następującego przykładu:
-
-1. Otwórz konsolę programu PowerShell z podwyższonym poziomem uprawnień i połącz się ze swoim kontem. Użyj poniższego przykładu w celu łatwiejszego nawiązania połączenia:
+1. Aby zainstalować moduł zarządzania usługami platformy Azure, wykonaj instrukcje opisane w artykule [Instalowanie modułu zarządzania usługami](/powershell/azure/servicemanagement/install-azure-ps) . Jeśli masz już zainstalowany moduł AZ lub RM, upewnij się, że używasz elementu "-AllowClobber".
+2. Zaimportuj zainstalowane moduły. W poniższym przykładzie Dostosuj ścieżkę, aby odzwierciedlić lokalizację zainstalowanych modułów programu PowerShell.
 
    ```powershell
-   Connect-AzAccount
+   Import-Module 'C:\Program Files\WindowsPowerShell\Modules\Azure\5.3.0\Azure.psd1'
+   Import-Module 'C:\Program Files\WindowsPowerShell\Modules\Azure\5.3.0\ExpressRoute\ExpressRoute.psd1'
    ```
-2. Sprawdź subskrypcje dostępne na koncie.
-
-   ```powershell
-   Get-AzSubscription
-   ```
-3. Jeśli masz więcej niż jedną subskrypcję, wybierz tę, której chcesz użyć.
-
-   ```powershell
-   Select-AzSubscription -SubscriptionName "Replace_with_your_subscription_name"
-   ```
-
-4. Następnie użyj następującego polecenia cmdlet, aby dodać subskrypcję platformy Azure do programu PowerShell dla klasycznego modelu wdrażania.
+3. Aby zalogować się do konta platformy Azure, Otwórz konsolę programu PowerShell z podwyższonym poziomem uprawnień i Połącz się ze swoim kontem. Skorzystaj z następującego przykładu, aby nawiązać połączenie przy użyciu modułu zarządzania usługami:
 
    ```powershell
    Add-AzureAccount
    ```
 
-## <a name="get-the-status-of-a-circuit"></a>Pobierz stan obwodu
+## <a name="get-the-status-of-a-circuit"></a>Pobieranie stanu obwodu
 
-Te informacje w dowolnym momencie można pobrać za pomocą `Get-AzureCircuit` polecenia cmdlet. Wywołania bez parametrów wyświetla listę wszystkich obwodów.
+Te informacje można pobrać w dowolnym momencie za pomocą polecenia cmdlet `Get-AzureCircuit`. Wywołanie bez parametrów wyświetla wszystkie obwody.
 
 ```powershell
 Get-AzureDedicatedCircuit
@@ -99,7 +76,7 @@ Sku                              : Standard
 Status                           : Enabled
 ```
 
-Możesz uzyskać informacji na temat określonego obwodu usługi ExpressRoute, przekazując klucz usługi jako parametr do wywołania.
+Możesz uzyskać informacje dotyczące określonego obwodu usługi ExpressRoute, przechodząc jako parametr do wywołania.
 
 ```powershell
 Get-AzureDedicatedCircuit -ServiceKey "*********************************"
@@ -114,7 +91,7 @@ Sku                              : Standard
 Status                           : Enabled
 ```
 
-Aby uzyskać szczegółowy opis wszystkich parametrów, uruchomieniem następującego przykładu:
+Aby uzyskać szczegółowe opisy wszystkich parametrów, należy uruchomić następujący przykład:
 
 ```powershell
 get-help get-azurededicatedcircuit -detailed
@@ -122,20 +99,20 @@ get-help get-azurededicatedcircuit -detailed
 
 ## <a name="modify-a-circuit"></a>Modyfikowanie obwodu
 
-Można modyfikować niektórych właściwości obwodu usługi ExpressRoute, bez wywierania wpływu na łączność.
+Niektóre właściwości obwodu usługi ExpressRoute można modyfikować bez wpływu na łączność.
 
-Możesz wykonać następujące zadania bez przerw w dostępności:
+W przypadku braku przestojów można wykonać następujące zadania:
 
-* Włącz lub Wyłącz dodatek ExpressRoute premium dla obwodu usługi ExpressRoute.
-* Zwiększyć przepustowość obwodu usługi ExpressRoute, pod warunkiem, że pojemność dostępna na porcie. Obniżenie przepustowości obwodu nie jest obsługiwane.
-* Zmień plan zliczania z plan taryfowy z danymi na dane nieograniczone. Zmiana planu zliczania z danymi nieograniczonymi plan taryfowy z danymi nie jest obsługiwana.
-* Można włączać i wyłączać *Zezwalaj na klasyczne operacje*.
+* Włącz lub Wyłącz dodatek ExpressRoute Premium dla obwodu usługi ExpressRoute.
+* Zwiększ przepustowość obwodu ExpressRoute pod warunkiem, że na porcie jest dostępna pojemność. Obniżenie przepustowości obwodu nie jest obsługiwane.
+* Zmień plan pomiaru z danych mierzonych na dane nieograniczone. Zmiana planu pomiaru z nieograniczonej ilości danych na dane taryfowe nie jest obsługiwana.
+* Można włączać i wyłączać *Zezwalanie na klasyczne operacje*.
 
-Zapoznaj się [ExpressRoute — często zadawane pytania](expressroute-faqs.md) Aby uzyskać więcej informacji na temat limity i ograniczenia.
+Więcej informacji na temat limitów i ograniczeń można znaleźć w temacie [ExpressRoute FAQ (często zadawane pytania](expressroute-faqs.md) ).
 
-### <a name="enable-the-expressroute-premium-add-on"></a>Włącz dodatek ExpressRoute premium
+### <a name="enable-the-expressroute-premium-add-on"></a>Włącz dodatek ExpressRoute Premium
 
-Należy włączyć dodatek premium usługi ExpressRoute dla istniejącego obwodu za pomocą następującego polecenia cmdlet programu PowerShell:
+Dodatek ExpressRoute Premium dla istniejącego obwodu można włączyć za pomocą następującego polecenia cmdlet programu PowerShell:
 
 ```powershell
 Set-AzureDedicatedCircuitProperties -ServiceKey "*********************************" -Sku Premium
@@ -150,24 +127,24 @@ Sku                              : Premium
 Status                           : Enabled
 ```
 
-Obwód usługi będą teraz mieć funkcje dodatku premium usługi ExpressRoute, włączone. Zaraz po pomyślnym wykonaniu polecenia, rozpoczyna się okres rozliczeniowy możliwości dodatku premium.
+W obwodzie będzie teraz dostępna funkcja dodatku ExpressRoute Premium. Gdy tylko polecenie zostało pomyślnie uruchomione, rozpocznie się rozliczanie dla możliwości dodatku Premium.
 
-### <a name="disable-the-expressroute-premium-add-on"></a>Wyłącz dodatek ExpressRoute premium
+### <a name="disable-the-expressroute-premium-add-on"></a>Wyłącz dodatek ExpressRoute Premium
 
 > [!IMPORTANT]
-> Ta operacja może zakończyć się niepowodzeniem, jeśli używasz zasobów, które są większe niż co to jest dozwolone w przypadku obwód standardowy.
+> Ta operacja może zakończyć się niepowodzeniem, jeśli używasz zasobów, które są większe niż dozwolone dla obwodu standardowego.
 >
 >
 
 #### <a name="considerations"></a>Zagadnienia do rozważenia
 
-* Upewnij się, że liczba sieci wirtualnych połączonych z obwodem usługi jest mniejsza niż 10, zanim obniżanie poziomu z wersji premium na standardową. Jeśli tego nie zrobisz, Twoje żądanie aktualizacji nie powiedzie się i opłaty są naliczane zgodnie ze stawkami premium.
-* Należy odłączyć wszystkie sieci wirtualne w innych regionach geopolitycznych. Jeśli tego nie zrobisz, Twoje żądanie aktualizacji nie powiedzie się i opłaty są naliczane zgodnie ze stawkami premium.
-* Tabela tras muszą być mniej niż 4000 tras do prywatnej komunikacji równorzędnej. Jeśli rozmiar tabeli tras jest większa niż 4000, sesji protokołu BGP spada i nie będzie reenabled, dopóki liczba prefiksów anonsowanych spadnie poniżej 4000.
+* Upewnij się, że liczba sieci wirtualnych podłączonych do obwodu jest mniejsza niż 10 przed obniżeniem poziomu warstwy Premium do warstwy Standardowa. Jeśli tego nie zrobisz, żądanie aktualizacji zakończy się niepowodzeniem, a opłaty są naliczane.
+* Należy odłączyć wszystkie sieci wirtualne w innych regionach geopolitycznych. Jeśli tego nie zrobisz, żądanie aktualizacji zakończy się niepowodzeniem, a opłaty są naliczane.
+* Tabela tras musi być krótsza niż 4 000 tras dla prywatnej komunikacji równorzędnej. Jeśli rozmiar tabeli tras jest większy niż 4 000 tras, sesja protokołu BGP spadnie i nie zostanie ponownie włączona, dopóki liczba anonsowanych prefiksów nie spadnie poniżej 4 000.
 
-#### <a name="to-disable-the-premium-add-on"></a>Aby wyłączyć dodatek premium
+#### <a name="to-disable-the-premium-add-on"></a>Aby wyłączyć dodatek Premium
 
-Możesz wyłączyć dodatek premium usługi ExpressRoute dla istniejącego obwodu za pomocą następującego polecenia cmdlet programu PowerShell:
+Dodatek ExpressRoute Premium dla istniejącego obwodu można wyłączyć za pomocą następującego polecenia cmdlet programu PowerShell:
 
 ```powershell
 
@@ -183,20 +160,20 @@ Sku                              : Standard
 Status                           : Enabled
 ```
 
-### <a name="update-the-expressroute-circuit-bandwidth"></a>Aktualizacja przepustowości obwodu usługi ExpressRoute
+### <a name="update-the-expressroute-circuit-bandwidth"></a>Aktualizowanie przepustowości obwodu ExpressRoute
 
-Sprawdź [ExpressRoute — często zadawane pytania](expressroute-faqs.md) obsługiwane opcje przepustowości dla dostawcy. Można wybrać dowolnego rozmiaru, który jest większy niż rozmiar istniejącego obwodu, tak długo, jak umożliwia port fizyczny (w którym została utworzona obwodu).
+Zapoznaj się z [ExpressRoute często zadawanymi pytaniami](expressroute-faqs.md) dotyczącymi obsługiwanych opcji przepustowości dla dostawcy. Można wybrać dowolny rozmiar, który jest większy niż rozmiar istniejącego obwodu, o ile jest to port fizyczny (na którym jest tworzony obwód).
 
 > [!IMPORTANT]
-> Może być konieczne odtworzenie obwód usługi ExpressRoute, jeśli istnieje niewystarczająca wydajność przy użyciu istniejącego portu. Nie można uaktualnić obwodu, jeśli w tej lokalizacji jest dostępna nie dodatkowej pojemności.
+> Może być konieczne ponowne utworzenie obwodu ExpressRoute, jeśli nie ma odpowiedniej pojemności na istniejącym porcie. Nie można uaktualnić obwodu, jeśli w tej lokalizacji nie ma dodatkowej pojemności.
 >
-> Nie można zmniejszyć przepustowość obwodu usługi ExpressRoute bez przerw w działaniu. Obniżenie przepustowości wymaga anulować aprowizację obwodu usługi ExpressRoute, a następnie ponownie udostępnić nowego obwodu usługi ExpressRoute.
+> Nie można zmniejszyć przepustowości obwodu ExpressRoute bez zakłóceń. Obniżenie przepustowości wymaga anulowania aprowizacji obwodu ExpressRoute, a następnie ponownego aprowizacji nowego obwodu ExpressRoute.
 >
 >
 
-#### <a name="resize-a-circuit"></a>Zmiana rozmiaru obwodu
+#### <a name="resize-a-circuit"></a>Zmień rozmiar obwodu
 
-Po podjęciu decyzji rozmiar, jakiego potrzebujesz, służy następujące polecenie zmiany rozmiaru obwodu:
+Po podjęciu decyzji o żądanym rozmiarze możesz użyć następującego polecenia, aby zmienić rozmiar obwodu:
 
 ```powershell
 Set-AzureDedicatedCircuitProperties -ServiceKey ********************************* -Bandwidth 1000
@@ -211,9 +188,9 @@ Sku                              : Standard
 Status                           : Enabled
 ```
 
-Gdy Twój obwód ma zostały wielkości po stronie firmy Microsoft, musisz skontaktować się z dostawcą połączenia, można zaktualizować konfiguracji po ich stronie odpowiadający tej zmiany. Rozliczanie rozpoczyna się dla opcji przepustowości zaktualizowane od tej pory.
+Gdy rozmiar obwodu zostanie osiągnięty po stronie firmy Microsoft, należy skontaktować się z dostawcą połączenia w celu zaktualizowania konfiguracji po stronie, aby dopasować tę zmianę. Rozliczenia zaczynają obowiązywać dla zaktualizowanej przepustowości od tego momentu.
 
-Jeśli zobaczysz następujący błąd podczas zwiększania przepustowości obwodu, oznacza to, zostanie pozostawiony nie wystarczającą przepustowość na porcie fizycznego, tworzona dla istniejącego obwodu. Należy usunąć ten obwód i utworzenia nowego obwodu o rozmiarze, których potrzebujesz.
+Jeśli podczas zwiększania przepustowości obwodu zostanie wyświetlony następujący błąd, oznacza to, że nie ma wystarczającej przepustowości w porcie fizycznym, w którym jest tworzony istniejący obwód. Należy usunąć ten obwód i utworzyć nowy obwód rozmiaru, którego potrzebujesz.
 
 ```powershell
 Set-AzureDedicatedCircuitProperties : InvalidOperation : Insufficient bandwidth available to perform this circuit
@@ -225,17 +202,17 @@ At line:1 char:1
   + FullyQualifiedErrorId : Microsoft.WindowsAzure.Commands.ExpressRoute.SetAzureDedicatedCircuitPropertiesCommand
 ```
 
-## <a name="deprovision-and-delete-a-circuit"></a>Anulowanie aprowizacji i usuwanie obwodu
+## <a name="deprovision-and-delete-a-circuit"></a>Cofanie aprowizacji i usuwanie obwodu
 
 ### <a name="considerations"></a>Zagadnienia do rozważenia
 
-* Należy odłączyć wszystkie sieci wirtualne z obwodem usługi ExpressRoute dla tej operacji. Sprawdź, czy masz wszystkie sieci wirtualne, które są połączone z obwodem, jeśli operacja zakończy się niepowodzeniem.
-* Jeśli dostawca usług obwodu usługi ExpressRoute, w stanie inicjowania obsługi **aprowizacji** lub **Aprowizowana** należy skontaktować się z dostawcą usługi, aby anulować aprowizację obwodu po ich stronie. Firma Microsoft nadal rezerwowania zasobów oraz są naliczane, dopóki dostawcy usług wykonuje anulowanie aprowizacji obwodu i będzie powiadamiał.
-* Jeśli dostawca usług ma anulowanie aprowizacji obwodu (stan aprowizacji dostawcy usług jest równa **nie zainicjowano obsługi administracyjnej**), następnie można usunąć obwodu. Spowoduje to zatrzymanie naliczania opłat za obwód.
+* Aby ta operacja zakończyła się powodzeniem, należy odłączyć wszystkie sieci wirtualne od obwodu usługi ExpressRoute. Sprawdź, czy istnieją sieci wirtualne połączone z obwodem, jeśli ta operacja nie powiedzie się.
+* Jeśli stan aprowizacji dostawcy usługi obwodu ExpressRoute jest inicjowany lub **Zainicjowano obsługę administracyjną** , należy skontaktować się z dostawcą usług w celu **anulowania aprowizacji** obwodu po stronie. Nadal rezerwujemy zasoby i obciążamy Cię, dopóki dostawca usług nie ukończy anulowania aprowizacji obwodu i powiadamia nas.
+* Jeśli dostawca usług anulował **obsługę administracyjną**obwodu (stan aprowizacji dostawcy usług jest ustawiony na nieudostępniane), można następnie usunąć obwód. Spowoduje to zatrzymanie naliczania opłat za obwód.
 
 #### <a name="delete-a-circuit"></a>Usuwanie obwodu
 
-Możesz usunąć obwód usługi ExpressRoute, uruchamiając następujące polecenie:
+Obwód ExpressRoute można usunąć, uruchamiając następujące polecenie:
 
 ```powershell
 Remove-AzureDedicatedCircuit -ServiceKey "*********************************"

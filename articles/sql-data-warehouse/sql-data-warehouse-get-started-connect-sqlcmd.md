@@ -1,5 +1,5 @@
 ---
-title: Nawiązywanie połączenia z usługą Azure SQL Data Warehouse — narzędzie sqlcmd | Microsoft Docs
+title: Nawiązywanie połączenia przy użyciu narzędzia sqlcmd
 description: Użyj narzędzia wiersza polecenia sqlcmd, aby nawiązać połączenie z Azure SQL Data Warehouse i wykonać zapytanie.
 services: sql-data-warehouse
 author: XiaoyuMSFT
@@ -10,12 +10,13 @@ ms.subservice: development
 ms.date: 04/17/2018
 ms.author: xiaoyul
 ms.reviewer: igorstan
-ms.openlocfilehash: f3b93660fb9f8f3b0bfdddc37105b9e998ed9eee
-ms.sourcegitcommit: 75a56915dce1c538dc7a921beb4a5305e79d3c7a
+ms.custom: seo-lt-2019
+ms.openlocfilehash: e4b432e0be0cdded5089965b9d272aa82e31bd36
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/24/2019
-ms.locfileid: "68479503"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73685741"
 ---
 # <a name="connect-to-sql-data-warehouse-with-sqlcmd"></a>Nawiązywanie połączenia z usługą SQL Data Warehouse przy użyciu narzędzia sqlcmd
 > [!div class="op_single_selector"]
@@ -32,14 +33,14 @@ Użyj narzędzia wiersza polecenia [sqlcmd][sqlcmd] , aby nawiązać połączeni
 ## <a name="1-connect"></a>1. Połącz
 Aby rozpocząć pracę z narzędziem [sqlcmd][sqlcmd], otwórz wiersz polecenia i wpisz **sqlcmd**, a następnie podaj parametry połączenia z bazą danych usługi SQL Data Warehouse. Wymagane parametry połączenia to:
 
-* **Serwer (-S):** Serwer w postaci `<`Server Name`>`. Database.Windows.NET
-* **Baza danych (-d):** Nazwa bazy danych.
-* **Włącz identyfikatory ujęte w cudzysłów (-I):** Identyfikatory w cudzysłowie muszą być włączone, aby można było połączyć się z wystąpieniem SQL Data Warehouse.
+* **Serwer (-S):** serwer w postaci `<`nazwa_serwera`>`.database.windows.net
+* **Baza danych (-d):** nazwa bazy danych.
+* **Włącz cytowane identyfikatory (-I):** cytowane identyfikatory muszą być włączone w celu połączenia z wystąpieniem usługi SQL Data Warehouse.
 
 Aby użyć uwierzytelniania programu SQL Server, należy dodać parametry nazwy użytkownika/hasła:
 
-* **Użytkownik (-U):** Użytkownik serwera w formularzu `<`użytkownika`>`
-* **Hasło (-P):** Hasło skojarzone z użytkownikiem.
+* **Użytkownik (-U):** użytkownik serwera w formie `<`Użytkownik`>`
+* **Hasło (-P):** hasło skojarzone z użytkownikiem.
 
 Na przykład parametry połączenia mogą wyglądać następująco:
 
@@ -62,7 +63,7 @@ C:\>sqlcmd -S MySqlDw.database.windows.net -d Adventure_Works -G -I
 > 
 > 
 
-## <a name="2-query"></a>2. Zapytanie
+## <a name="2-query"></a>2. zapytanie
 Po nawiązaniu połączenia można wydawać dowolne obsługiwane instrukcje języka Transact-SQL dotyczące wystąpienia.  W tym przykładzie zapytania są przesyłane w trybie interaktywnym.
 
 ```sql

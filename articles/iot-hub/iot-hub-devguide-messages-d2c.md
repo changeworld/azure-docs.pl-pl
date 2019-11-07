@@ -8,12 +8,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 05/15/2019
 ms.author: asrastog
-ms.openlocfilehash: 5d21d3800655cc0be78a2b63d13a3616b1d0f2f8
-ms.sourcegitcommit: 0576bcb894031eb9e7ddb919e241e2e3c42f291d
-ms.translationtype: MT
+ms.openlocfilehash: e4f1797d600a226eb152a464efe4da8ddbdb6207
+ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72372715"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73606225"
 ---
 # <a name="use-iot-hub-message-routing-to-send-device-to-cloud-messages-to-different-endpoints"></a>Używanie routingu komunikatów IoT Hub do wysyłania komunikatów z urządzenia do chmury do różnych punktów końcowych
 
@@ -41,15 +41,15 @@ IoT Hub obecnie obsługuje następujące usługi jako niestandardowe punkty koń
 
 Możesz użyć standardowej [integracji i zestawów sdk Event Hubs,](iot-hub-devguide-messages-read-builtin.md) aby odbierać komunikaty z urządzenia do chmury z wbudowanego punktu końcowego (**komunikaty/zdarzenia**). Po utworzeniu trasy dane przestają przepływać do wbudowanego punktu końcowego, o ile nie zostanie utworzona trasa do tego punktu końcowego.
 
-### <a name="azure-blob-storage"></a>Azure Blob Storage
+### <a name="azure-storage"></a>Azure Storage
 
-IoT Hub obsługuje zapisywanie danych na platformie Azure Blob Storage w formacie [Apache Avro](https://avro.apache.org/) oraz w formacie JSON. Możliwość kodowania formatu JSON jest ogólnie dostępna we wszystkich regionach, w których IoT Hub jest dostępna. Wartość domyślna to AVRO. Format kodowania można ustawić tylko w przypadku skonfigurowania punktu końcowego magazynu obiektów BLOB. Nie można edytować formatu dla istniejącego punktu końcowego. W przypadku korzystania z kodowania JSON należy ustawić wartość ContentType na **Application/JSON** i ContentEncoding na **UTF-8** we [właściwościach systemu](iot-hub-devguide-routing-query-syntax.md#system-properties)komunikatów. W obu tych wartościach jest rozróżniana wielkość liter. Jeśli kodowanie zawartości nie jest ustawione, IoT Hub będzie zapisywać komunikaty w standardowym formacie 64. Można wybrać format kodowania za pomocą IoT Hub tworzenia lub aktualizacji interfejsu API REST, w tym [RoutingStorageContainerProperties](https://docs.microsoft.com/rest/api/iothub/iothubresource/createorupdate#routingstoragecontainerproperties), Azure Portal, [interfejsu wiersza polecenia platformy Azure](https://docs.microsoft.com/cli/azure/iot/hub/routing-endpoint?view=azure-cli-latest)lub programu [Azure PowerShell](https://docs.microsoft.com/powershell/module/az.iothub/add-aziothubroutingendpoint?view=azps-1.3.0). Na poniższym diagramie przedstawiono sposób wybierania formatu kodowania w Azure Portal.
+Istnieją dwa usługi magazynu IoT Hub mogą kierować wiadomości do kont [usługi Azure Blob Storage](../storage/blobs/storage-blobs-introduction.md) i [Azure Data Lake Storage Gen2](../storage/blobs/data-lake-storage-introduction.md) (ADLS Gen2). Konta Azure Data Lake Storage to [hierarchiczne](../storage/blobs/data-lake-storage-namespace.md)konta magazynu z obsługą nazw oparte na usłudze BLOB Storage. Oba te elementy używają obiektów BLOB dla ich magazynu.
+
+IoT Hub obsługuje zapisywanie danych w usłudze Azure Storage w formacie [Apache Avro](https://avro.apache.org/) oraz w formacie JSON. Wartość domyślna to AVRO. Format kodowania można ustawić tylko w przypadku skonfigurowania punktu końcowego magazynu obiektów BLOB. Nie można edytować formatu dla istniejącego punktu końcowego. W przypadku korzystania z kodowania JSON należy ustawić wartość ContentType na **Application/JSON** i ContentEncoding na **UTF-8** we [właściwościach systemu](iot-hub-devguide-routing-query-syntax.md#system-properties)komunikatów. W obu tych wartościach jest rozróżniana wielkość liter. Jeśli kodowanie zawartości nie jest ustawione, IoT Hub będzie zapisywać komunikaty w standardowym formacie 64. Można wybrać format kodowania za pomocą IoT Hub tworzenia lub aktualizacji interfejsu API REST, w tym [RoutingStorageContainerProperties](https://docs.microsoft.com/rest/api/iothub/iothubresource/createorupdate#routingstoragecontainerproperties), Azure Portal, [interfejsu wiersza polecenia platformy Azure](https://docs.microsoft.com/cli/azure/iot/hub/routing-endpoint?view=azure-cli-latest)lub programu [Azure PowerShell](https://docs.microsoft.com/powershell/module/az.iothub/add-aziothubroutingendpoint?view=azps-1.3.0). Na poniższym diagramie przedstawiono sposób wybierania formatu kodowania w Azure Portal.
 
 ![Kodowanie punktu końcowego magazynu obiektów BLOB](./media/iot-hub-devguide-messages-d2c/blobencoding.png)
 
-IoT Hub obsługuje także komunikaty routingu do kont [Azure Data Lake Storage](https://docs.microsoft.com/en-us/azure/storage/blobs/data-lake-storage-introduction) (ADLS) Gen2, które są [hierarchicznymi](../storage/blobs/data-lake-storage-namespace.md)kontami magazynu opartymi na przestrzeni nazw utworzonymi na podstawie usługi BLOB Storage. Ta funkcja jest w publicznej wersji zapoznawczej i dostępna dla nowych kont ADLS Gen2 w regionie zachodnie stany USA 2 i zachodnie stany USA. [Utwórz konto](https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbR2EUNXd_ZNJCq_eDwZGaF5VURjFLTDRGS0Q4VVZCRFY5MUVaTVJDTkROMi4u) , aby wyświetlić podgląd tego programu. Ta funkcja zostanie wkrótce udostępniona wszystkim regionom chmury. 
-
-IoT Hub partie komunikatów i zapisuje dane w obiekcie blob, gdy partia osiągnie określony rozmiar lub upłynął określony czas. IoT Hub domyślne do następującej konwencji nazewnictwa plików: 
+IoT Hub partie komunikatów i zapisuje dane w magazynie, gdy partia osiągnie określony rozmiar lub upłynął określony czas. IoT Hub domyślne do następującej konwencji nazewnictwa plików: 
 
 ```
 {iothub}/{partition}/{YYYY}/{MM}/{DD}/{HH}/{mm}
@@ -57,29 +57,34 @@ IoT Hub partie komunikatów i zapisuje dane w obiekcie blob, gdy partia osiągni
 
 Licencjobiorca może korzystać z dowolnej konwencji nazewnictwa plików, jednak należy używać wszystkich wymienionych tokenów. IoT Hub będzie zapisywać do pustego obiektu BLOB, jeśli nie ma danych do zapisania.
 
-Podczas routingu do magazynu obiektów BLOB zalecamy zarejestrowanie obiektów blob, a następnie iterację ich, aby upewnić się, że wszystkie kontenery są odczytywane bez wprowadzania żadnych założeń partycji. Zakres partycji może ulec zmianie podczas pracy w [trybie failover zainicjowanej przez firmę Microsoft](iot-hub-ha-dr.md#microsoft-initiated-failover) lub IoT Hub [ręcznej pracy awaryjnej](iot-hub-ha-dr.md#manual-failover). Aby wyliczyć listę obiektów blob, można użyć [interfejsu API listy obiektów BLOB](https://docs.microsoft.com/rest/api/storageservices/list-blobs) . Zapoznaj się z poniższym przykładem.
+Zalecamy przeprowadzenie rejestracji kontenerów magazynu, a następnie iterację w nich, aby upewnić się, że wszystkie kontenery są odczytywane bez wprowadzania jakichkolwiek założeń partycji. Zakres partycji może ulec zmianie podczas pracy w [trybie failover zainicjowanej przez firmę Microsoft](iot-hub-ha-dr.md#microsoft-initiated-failover) lub IoT Hub [ręcznej pracy awaryjnej](iot-hub-ha-dr.md#manual-failover). Aby wyliczyć listę obiektów blob, można użyć [interfejsu API listy obiektów BLOB](https://docs.microsoft.com/rest/api/storageservices/list-blobs) . Zapoznaj się z poniższym przykładem.
 
-   ```csharp
-        public void ListBlobsInContainer(string containerName, string iothub)
+```csharp
+public void ListBlobsInContainer(string containerName, string iothub)
+{
+    var storageAccount = CloudStorageAccount.Parse(this.blobConnectionString);
+    var cloudBlobContainer = storageAccount.CreateCloudBlobClient().GetContainerReference(containerName);
+    if (cloudBlobContainer.Exists())
+    {
+        var results = cloudBlobContainer.ListBlobs(prefix: $"{iothub}/");
+        foreach (IListBlobItem item in results)
         {
-            var storageAccount = CloudStorageAccount.Parse(this.blobConnectionString);
-            var cloudBlobContainer = storageAccount.CreateCloudBlobClient().GetContainerReference(containerName);
-            if (cloudBlobContainer.Exists())
-            {
-                var results = cloudBlobContainer.ListBlobs(prefix: $"{iothub}/");
-                foreach (IListBlobItem item in results)
-                {
-                    Console.WriteLine(item.Uri);
-                }
-            }
+            Console.WriteLine(item.Uri);
         }
-   ```
+    }
+}
+```
+
+Aby utworzyć konto magazynu zgodne z usługą Azure Data Lake Gen2, Utwórz nowe konto magazynu w wersji 2 i wybierz pozycję *włączone* w polu *hierarchiczna przestrzeń nazw* na karcie **Zaawansowane** , jak pokazano na poniższej ilustracji:
+
+![Wybierz pozycję Azure Data Lake Gen2 Storage](./media/iot-hub-devguide-messages-d2c/selectadls2storage.png)
+
 
 ### <a name="service-bus-queues-and-service-bus-topics"></a>Service Bus kolejki i Service Bus tematy
 
 Kolejki Service Bus i tematy używane jako punkty końcowe IoT Hub nie mogą mieć włączonej **sesji** lub **wykrywania duplikatów** . Jeśli jedna z tych opcji jest włączona, punkt końcowy jest wyświetlany jako **nieosiągalny** w Azure Portal.
 
-### <a name="event-hubs"></a>Centra zdarzeń
+### <a name="event-hubs"></a>Usługa Event Hubs
 
 Oprócz wbudowanego punktu końcowego zgodnego z Event Hubs można również kierować dane do niestandardowych punktów końcowych typu Event Hubs. 
 

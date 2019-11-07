@@ -1,5 +1,5 @@
 ---
-title: Obsługiwane formaty plików w Azure Data Factory | Microsoft Docs
+title: Obsługiwane formaty plików w Azure Data Factory
 description: W tym temacie opisano formaty plików i kody kompresji, które są obsługiwane przez łączniki oparte na plikach w Azure Data Factory.
 author: linda33wj
 manager: craigg
@@ -9,12 +9,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 10/24/2019
 ms.author: jingwang
-ms.openlocfilehash: 00d8fb69abb6ce74a36ff017f3f356cb86114d99
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: d0183e991a3cbc0481aff44b5b0f03eaa9d43103
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72930933"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73683977"
 ---
 # <a name="supported-file-formats-and-compression-codecs-in-azure-data-factory"></a>Obsługiwane formaty plików i kodeki kompresji w Azure Data Factory
 
@@ -39,7 +39,7 @@ Jeśli chcesz **skopiować pliki** między magazynami opartymi na plikach (kopia
 
 Jeśli chcesz czytać z pliku tekstowego lub zapisywać do pliku tekstowego, ustaw właściwość `type` w sekcji `format` zestawu danych na wartość **TextFormat**. Ponadto możesz określić następujące **opcjonalne** właściwości w sekcji `format`. Aby uzyskać informacje na temat sposobu konfigurowania, zobacz sekcję [Przykład formatu TextFormat](#textformat-example).
 
-| Właściwość | Opis | Dozwolone wartości | Wymagane |
+| Właściwość | Opis | Dozwolone wartości | Wymagany |
 | --- | --- | --- | --- |
 | columnDelimiter |Znak używany do rozdzielania kolumn w pliku. Można rozważyć użycie rzadko niedrukowalnego znaku, który może nie istnieć w danych. Na przykład określ wartość "\u0001", która reprezentuje początek nagłówka (raport o kondycji). |Dozwolony jest tylko jeden znak. Wartość **domyślna** to **przecinek (,)** . <br/><br/>Aby użyć znaku Unicode, zapoznaj się ze [znakami Unicode](https://en.wikipedia.org/wiki/List_of_Unicode_characters) w celu uzyskania odpowiedniego kodu. |Nie |
 | rowDelimiter |Znak używany do rozdzielania wierszy w pliku. |Dozwolony jest tylko jeden znak. Wartością **domyślną** jest dowolna z następujących wartości przy odczycie: **[„\r\n”, „\r”, „\n”]** oraz wartość **„\r\n”** przy zapisie. |Nie |
@@ -47,9 +47,9 @@ Jeśli chcesz czytać z pliku tekstowego lub zapisywać do pliku tekstowego, ust
 | quoteChar |Znak używany do umieszczania wartości ciągu w cudzysłowie. Ograniczniki kolumny i wiersza umieszczone w cudzysłowie są traktowane jako część wartości ciągu. Ta właściwość ma zastosowanie zarówno do wejściowych, jak i wyjściowych zestawów danych.<br/><br/>W przypadku tabeli nie można określić zarówno właściwości escapeChar, jak i quoteChar. |Dozwolony jest tylko jeden znak. Brak wartości domyślnej. <br/><br/>Na przykład jeśli ogranicznikiem kolumny jest przecinek (,), ale chcesz, aby znak przecinka występował w tekście (przykład: <Witaj, świecie>), możesz zdefiniować cudzysłów (") jako znak cudzysłowu i użyć ciągu "Witaj, świecie" w źródle. |Nie |
 | nullValue |Co najmniej jeden znak służący do reprezentowania wartości null. |Co najmniej jeden znak. Wartości **domyślne** to **„\N” i „NULL”** przy odczycie oraz **„\N”** przy zapisie. |Nie |
 | encodingName |Określa nazwę kodowania. |Prawidłowa nazwa kodowania. Zobacz [właściwość Encoding.EncodingName](https://msdn.microsoft.com/library/system.text.encoding.aspx). Przykład: windows-1250 lub shift_jis. Wartość **domyślna** to **UTF-8**. |Nie |
-| firstRowAsHeader |Określa, czy pierwszy wiersz ma być traktowany jako nagłówek. W przypadku zestawu danych wejściowych usługa Data Factory odczytuje pierwszy wiersz jako nagłówek. W przypadku zestawu danych wyjściowych usługa Data Factory zapisuje pierwszy wiersz jako nagłówek. <br/><br/>Aby uzyskać przykładowe scenariusze, zobacz sekcję [Scenariusze użycia właściwości `firstRowAsHeader` oraz `skipLineCount`](#scenarios-for-using-firstrowasheader-and-skiplinecount). |Prawda<br/><b>False (domyślnie)</b> |Nie |
+| firstRowAsHeader |Określa, czy pierwszy wiersz ma być traktowany jako nagłówek. W przypadku zestawu danych wejściowych usługa Data Factory odczytuje pierwszy wiersz jako nagłówek. W przypadku zestawu danych wyjściowych usługa Data Factory zapisuje pierwszy wiersz jako nagłówek. <br/><br/>Aby uzyskać przykładowe scenariusze, zobacz sekcję [Scenariusze użycia właściwości `firstRowAsHeader` oraz `skipLineCount`](#scenarios-for-using-firstrowasheader-and-skiplinecount). |True<br/><b>False (domyślnie)</b> |Nie |
 | skipLineCount |Wskazuje liczbę **niepustych** wierszy do pominięcia podczas odczytywania danych z plików wejściowych. Jeśli określono zarówno właściwość skipLineCount, jak i firstRowAsHeader, najpierw zostaną pominięte wiersze, a następnie zostaną odczytane informacje nagłówka z pliku wejściowego. <br/><br/>Aby uzyskać przykładowe scenariusze, zobacz sekcję [Scenariusze użycia właściwości `firstRowAsHeader` oraz `skipLineCount`](#scenarios-for-using-firstrowasheader-and-skiplinecount). |Liczba całkowita |Nie |
-| treatEmptyAsNull |Określa, czy ciąg pusty lub o wartości null ma być traktowany jako wartość null podczas odczytu danych z pliku wejściowego. |**True (domyślnie)**<br/>Fałsz |Nie |
+| treatEmptyAsNull |Określa, czy ciąg pusty lub o wartości null ma być traktowany jako wartość null podczas odczytu danych z pliku wejściowego. |**True (domyślnie)**<br/>False |Nie |
 
 ### <a name="textformat-example"></a>Przykład formatu TextFormat
 
@@ -95,7 +95,7 @@ Aby **zaimportować/wyeksportować plik JSON w postaci-do/z Azure Cosmos DB**, z
 
 Jeśli chcesz przeanalizować pliki JSON lub zapisać dane w formacie JSON, ustaw właściwość `type` w sekcji `format` na **formatu jsonformat**. Ponadto możesz określić następujące **opcjonalne** właściwości w sekcji `format`. Aby uzyskać informacje na temat sposobu konfigurowania, zobacz sekcję [Przykład formatu JsonFormat](#jsonformat-example).
 
-| Właściwość | Opis | Wymagane |
+| Właściwość | Opis | Wymagany |
 | --- | --- | --- |
 | filePattern |Wskazuje wzorzec danych przechowywanych w każdym pliku JSON. Dozwolone wartości to: **setOfObjects** i **arrayOfObjects**. Wartością **domyślną** jest **setOfObjects**. Aby uzyskać szczegółowe informacje o tych wzorcach, zobacz sekcję [Wzorce plików JSON](#json-file-patterns). |Nie |
 | jsonNodeReference | Jeśli chcesz wykonać iterację i ekstrakcję danych z obiektów wewnątrz pola tablicy o tym samym wzorcu, określ ścieżkę JSON tej tablicy. Ta właściwość jest obsługiwana tylko podczas kopiowania danych **z** plików JSON. | Nie |
@@ -446,13 +446,13 @@ W przypadku kopiowania uruchomionego na samoobsługowym środowisku IR przy uży
 
 ![Ustawianie rozmiaru sterty JVM na samoobsługowym środowisku IR](./media/supported-file-formats-and-compression-codecs/set-jvm-heap-size-on-selfhosted-ir.png)
 
-Przykład: Ustaw zmienną `_JAVA_OPTIONS` przy użyciu `-Xms256m -Xmx16g`wartości. Flaga `Xms` określa początkową pulę alokacji pamięci dla wirtualna maszyna Java (JVM), podczas gdy `Xmx` określa maksymalną pulę alokacji pamięci. Oznacza to, że JVM zostanie uruchomiona z ilością pamięci `Xms` i będzie można użyć maksymalnie `Xmx` ilości pamięci. Domyślnie funkcja ADF korzysta z minimalnej 64 MB i maksymalnej wartości 1G.
+Przykład: Ustaw zmienną `_JAVA_OPTIONS` przy użyciu `-Xms256m -Xmx16g`wartości. Flaga `Xms` określa początkową pulę alokacji pamięci dla wirtualna maszyna Java (JVM), podczas gdy `Xmx` określa maksymalną pulę alokacji pamięci. Oznacza to, że JVM zostanie uruchomione z `Xms` ilości pamięci i będzie można użyć maksymalnie `Xmx` ilości pamięci. Domyślnie funkcja ADF korzysta z minimalnej 64 MB i maksymalnej wartości 1G.
 
 ### <a name="data-type-mapping-for-parquet-files"></a>Mapowanie typu danych dla plików Parquet
 
 | Typ danych pośrednich fabryki danych | Typ pierwotny Parquet | Parquet oryginalny typ (deserializacji) | Parquet oryginalny typ (Serializacja) |
 |:--- |:--- |:--- |:--- |
-| Wartość logiczna | Wartość logiczna | ND | ND |
+| Wartość logiczna | Wartość logiczna | Nie dotyczy | Nie dotyczy |
 | SByte | Elementem | Int8 | Int8 |
 | Bajc | Elementem | UInt8 | Int16 |
 | Int16 | Elementem | Int16 | Int16 |
@@ -461,17 +461,17 @@ Przykład: Ustaw zmienną `_JAVA_OPTIONS` przy użyciu `-Xms256m -Xmx16g`wartoś
 | Równ | Int64 | Równ | Int64 |
 | Int64 | Int64 | Int64 | Int64 |
 | UInt64 | Int64/Binary | UInt64 | Dokładności |
-| Pojedyncze | Float | ND | ND |
-| Double | Double | ND | ND |
+| Pojedyncze | Float | Nie dotyczy | Nie dotyczy |
+| Double | Double | Nie dotyczy | Nie dotyczy |
 | Dokładności | Binarny | Dokładności | Dokładności |
 | Ciąg | Binarny | kodowania | kodowania |
-| Data i godzina | Int96 | ND | ND |
-| Czasu | Int96 | ND | ND |
-| DateTimeOffset | Int96 | ND | ND |
-| ByteArray | Binarny | ND | ND |
+| DateTime | Int96 | Nie dotyczy | Nie dotyczy |
+| Czasu | Int96 | Nie dotyczy | Nie dotyczy |
+| DateTimeOffset | Int96 | Nie dotyczy | Nie dotyczy |
+| ByteArray | Binarny | Nie dotyczy | Nie dotyczy |
 | Identyfikator GUID | Binarny | kodowania | kodowania |
 | delikatn | Binarny | kodowania | kodowania |
-| CharArray | Brak obsługi | ND | ND |
+| CharArray | Nieobsługiwane | Nie dotyczy | Nie dotyczy |
 
 ## <a name="orc-format"></a>Format ORC
 
@@ -518,7 +518,7 @@ W przypadku kopiowania uruchomionego na samoobsługowym środowisku IR przy uży
 | Double | Double |
 | Dokładności | Dokładności |
 | Ciąg | Ciąg |
-| Data i godzina | Znacznik czasu |
+| DateTime | Znacznik czasu |
 | DateTimeOffset | Znacznik czasu |
 | Czasu | Znacznik czasu |
 | ByteArray | Binarny |

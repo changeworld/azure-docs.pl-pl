@@ -7,12 +7,12 @@ ms.date: 07/05/2019
 ms.topic: conceptual
 ms.service: iot-pnp
 services: iot-pnp
-ms.openlocfilehash: 6d5247454fe65e5539a2401330192f1db9a65114
-ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
+ms.openlocfilehash: 6d8e0e9e675b88c69b74cdad261280f5dcaf7161
+ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/21/2019
-ms.locfileid: "69880568"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73581624"
 ---
 # <a name="iot-plug-and-play-preview-modeling-developer-guide"></a>Przewodnik dla deweloperów modelu IoT Plug and Play w wersji zapoznawczej
 
@@ -27,7 +27,7 @@ Za pomocą DTDL można utworzyć _model możliwości urządzenia_ do opisywania 
 - Części niestandardowe, które są elementami, które sprawiają, że urządzenie jest unikatowe.
 - Standardowe części, które są wspólne dla wszystkich urządzeń.
 
-Te części nazywają się interfejsami w modelu możliwości urządzeń. Interfejsy definiują szczegóły każdej części implementującej Twoje urządzenie.
+Te części nazywają się _interfejsami_ w modelu możliwości urządzeń. Interfejsy definiują szczegóły każdej części implementującej Twoje urządzenie.
 
 Poniższy przykład przedstawia model możliwości urządzenia dla termostatu:
 
@@ -63,9 +63,9 @@ Każdy wpis na liście interfejsów w sekcji Implements ma:
 
 Istnieją dodatkowe pola opcjonalne, za pomocą których można dodać więcej szczegółów do modelu możliwości, takich jak wyświetlana nazwa i opis. Interfejsy, które są zadeklarowane w ramach modelu możliwości, można traktować jako składniki urządzenia. W publicznej wersji zapoznawczej lista interfejsów może zawierać tylko jeden wpis na schemat.
 
-## <a name="interface"></a>Interface
+## <a name="interface"></a>Interfejsu
 
-Dzięki DTDL można opisać możliwości urządzenia przy użyciu interfejsów. Interfejsy opisują _Właściwości_,dane telemetryczne i _polecenia_ , które są implementowane przez część urządzenia:
+Dzięki DTDL można opisać możliwości urządzenia przy użyciu interfejsów. Interfejsy opisują _Właściwości_, dane _telemetryczne_i _polecenia_ , które są implementowane przez część urządzenia:
 
 - `Properties`. Właściwości to pola danych, które reprezentują stan urządzenia. Użyj właściwości, aby reprezentować stan trwały urządzenia, taki jak stan włączony pompy chłodzącej. Właściwości mogą również reprezentować podstawowe właściwości urządzenia, takie jak wersja oprogramowania układowego urządzenia. Można zadeklarować właściwości jako tylko do odczytu lub do zapisu.
 - `Telemetry`. Pola telemetrii przedstawiają pomiary z czujników. Za każdym razem, gdy urządzenie przyjmuje pomiar czujnika, należy wysłać zdarzenie telemetrii zawierające dane czujnika.
@@ -84,7 +84,7 @@ Poniższy przykład pokazuje interfejs dla urządzenia z termostatem:
       "schema": "double"
     }
   ],
-  "@context": "http://azureiot.com/v1/contexts/Interface.json"
+  "@context": "http://azureiot.com/v1/contexts/IoTModel.json"
 }
 ```
 
@@ -97,7 +97,7 @@ Interfejs ma niektóre wymagane pola:
 
 W tym prostym przykładzie istnieje tylko jedno pole telemetrii. Minimalny opis pola ma:
 
-- `@type`: określa typ możliwości: `Telemetry`, `Property`, lub `Command`.
+- `@type`: określa typ możliwości: `Telemetry`, `Property`lub `Command`.
 - `name`: zawiera nazwę wartości telemetrii.
 - `schema`: określa typ danych telemetrii. Ta wartość może być typem pierwotnym, takim jak Double, Integer, Boolean lub String. Obsługiwane są również złożone typy obiektów, tablice i mapy.
 
@@ -129,7 +129,7 @@ Korzystaj z poleceń asynchronicznych dla długotrwałych operacji. Urządzenie 
 
 - `iothub-command-name`: nazwa polecenia, na przykład `UpdateFirmware`.
 - `iothub-command-request-id`: Identyfikator żądania wygenerowany po stronie serwera i wysyłany do urządzenia w wywołaniu początkowym.
-- `iothub-interface-id`:  Identyfikator interfejsu, na którym jest zdefiniowane to polecenie, na przykład `urn:example:AssetTracker:1`.
+- `iothub-interface-id`: identyfikator interfejsu, w którym jest zdefiniowane to polecenie, na przykład `urn:example:AssetTracker:1`.
  `iothub-interface-name`: nazwa wystąpienia tego interfejsu, na przykład `myAssetTracker`.
 - `iothub-command-statuscode`: kod stanu zwrócony z urządzenia, na przykład `202`.
 
@@ -184,15 +184,15 @@ Plug and Play IoT umożliwia korzystanie z urządzeń zarejestrowanych w usłudz
 
 Aby użyć urządzenia Plug and Play IoT, które jest połączone z Centrum IoT, użyj interfejsu API REST IoT Hub lub jednego z zestawów SDK języka IoT. W poniższych przykładach użyto interfejsu API REST IoT Hub.
 
-Aby uzyskać wartość właściwości urządzenia, taką jak wersja oprogramowania układowego (`fwVersion`) `DeviceInformation` w interfejsie termostatu, należy użyć interfejsu API REST Digital bliźniaczych reprezentacji.
+Aby uzyskać wartość właściwości urządzenia, taką jak wersja oprogramowania układowego (`fwVersion`) w interfejsie `DeviceInformation` w ramach termostatu, należy użyć interfejsu API REST Digital bliźniaczych reprezentacji.
 
-Jeśli urządzenie termostatu zostanie wywołane `t-123`, uzyskasz wszystkie właściwości zaimplementowane przez urządzenie przy użyciu interfejsu API REST Get:
+Jeśli urządzenie termostatu jest nazywane `t-123`, uzyskasz wszystkie właściwości zaimplementowane przez urządzenie przy użyciu interfejsu API REST GET:
 
 ```REST
 GET /digitalTwins/t-123/interfaces
 ```
 
-Ogólnie rzecz biorąc, wszystkie właściwości są dostępne z tym szablonem interfejsu `{device-id}` API REST, gdzie jest identyfikatorem urządzenia:
+Ogólnie rzecz biorąc, wszystkie właściwości są dostępne przy użyciu tego szablonu interfejsu API REST, gdzie `{device-id}` jest identyfikatorem urządzenia:
 
 ```REST
 GET /digitalTwins/{device-id}/interfaces
@@ -204,13 +204,13 @@ Jeśli znasz nazwę interfejsu i chcesz uzyskać właściwości tego określoneg
 GET /digitalTwins/t-123/interfaces/info
 ```
 
-Bardziej ogólnie rzecz biorąc, można uzyskać dostęp do właściwości dla określonego interfejsu za pomocą tego szablonu `device-id` interfejsu API REST, gdzie jest identyfikatorem urządzenia i `{interface-name}` jest nazwą interfejsu:
+Bardziej ogólnie rzecz biorąc, można uzyskać dostęp do właściwości określonego interfejsu za pomocą tego szablonu interfejsu API REST, gdzie `device-id` jest identyfikatorem urządzenia, a `{interface-name}` jest nazwą interfejsu:
 
 ```REST
 GET /digitalTwins/{device-id}/interfaces/{interface-name}
 ```
 
-Polecenia IoT Plug and Play Device można wywołać bezpośrednio. Jeśli interfejs w urządzeniu ma `restart` polecenie, możesz wywołać go przy użyciu wywołania interfejsu API REST: `t-123` `Thermostat`
+Polecenia IoT Plug and Play Device można wywołać bezpośrednio. Jeśli interfejs `Thermostat` na urządzeniu `t-123` ma `restart` polecenie, można wywołać go przy użyciu wywołania interfejsu API REST:
 
 ```REST
 POST /digitalTwins/t-123/interfaces/thermostat/commands/restart

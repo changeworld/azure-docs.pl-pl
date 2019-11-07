@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: librown, aakapo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b5758b1fbb9d311219e3dc4dd483691f6c9d80c1
-ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
+ms.openlocfilehash: 9b57fe9241a6a29e6f5ce12b7a1412455df4a001
+ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73172171"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73603474"
 ---
 # <a name="enable-passwordless-security-key-sign-in-to-windows-10-devices-preview"></a>Włącz klucz zabezpieczeń bezhasłem Zaloguj się na urządzeniach z systemem Windows 10 (wersja zapoznawcza)
 
@@ -29,19 +29,13 @@ Ten dokument koncentruje się na włączaniu uwierzytelniania bezhaseł opartego
 
 ## <a name="requirements"></a>Wymagania
 
-| Typ urządzenia | Przyłączone do usługi Azure AD | Dołączona hybrydowa usługa Azure AD |
-| --- | --- | --- |
-| [Multi-Factor Authentication platformy Azure](howto-mfa-getstarted.md) | X | X |
-| [Wersja zapoznawcza rejestracji informacji o zabezpieczeniach](concept-registration-mfa-sspr-combined.md) | X | X |
-| Zgodne [FIDO2 klucze zabezpieczeń](concept-authentication-passwordless.md#fido2-security-keys) | X | X |
-| WebAuthN wymaga systemu Windows 10 w wersji 1809 lub nowszej | X | X |
-| [Urządzenia przyłączone do usługi Azure AD](../devices/concept-azure-ad-join.md) wymagają systemu Windows 10 w wersji 1809 lub nowszej | X |   |
-| [Hybrydowe urządzenia dołączone do usługi Azure AD](../devices/concept-azure-ad-join-hybrid.md) wymagają kompilacji niejawnego programu testów systemu Windows 10 18945 lub nowszej |   | X |
-| W pełni poprawione kontrolery domeny systemu Windows Server 2016/2019. |   | X |
-| Uaktualnij do najnowszej wersji [Azure AD Connect](../hybrid/how-to-connect-install-roadmap.md#install-azure-ad-connect) |   | X |
-| [Microsoft Intune](https://docs.microsoft.com/intune/fundamentals/what-is-intune) (opcjonalnie) | X | X |
-| Pakiet aprowizacji (opcjonalnie) | X | X |
-| Zasady grupy (opcjonalnie) |   | X |
+- [Multi-Factor Authentication platformy Azure](howto-mfa-getstarted.md)
+- [Wersja zapoznawcza rejestracji informacji o zabezpieczeniach](concept-registration-mfa-sspr-combined.md)
+- Zgodne [FIDO2 klucze zabezpieczeń](concept-authentication-passwordless.md#fido2-security-keys)
+- WebAuthN wymaga systemu Windows 10 w wersji 1809 lub nowszej
+- [Urządzenia przyłączone do usługi Azure AD](../devices/concept-azure-ad-join.md) wymagają systemu Windows 10 w wersji 1809 lub nowszej
+- [Microsoft Intune](https://docs.microsoft.com/intune/fundamentals/what-is-intune) (opcjonalnie)
+- Pakiet aprowizacji (opcjonalnie)
 
 ### <a name="unsupported-scenarios"></a>Nieobsługiwane scenariusze
 
@@ -56,8 +50,6 @@ Ten dokument koncentruje się na włączaniu uwierzytelniania bezhaseł opartego
 
 Urządzenia przyłączone do usługi Azure AD, które będą używane do pilotażu, muszą mieć uruchomiony system Windows 10 w wersji 1809 lub nowszej. Najlepszym rozwiązaniem jest system Windows 10 w wersji 1903 lub nowszej.
 
-Hybrydowe urządzenia dołączone do usługi Azure AD, z którymi będziesz się testować, muszą mieć uruchomiony system Windows 10 w wersji 18945 lub nowszej.
-
 ## <a name="enable-security-keys-for-windows-sign-in"></a>Włącz klucze zabezpieczeń logowania systemu Windows
 
 Organizacje mogą wybrać jedną lub więcej z poniższych metod, aby umożliwić korzystanie z kluczy zabezpieczeń logowania systemu Windows zgodnie z wymaganiami organizacji.
@@ -65,16 +57,10 @@ Organizacje mogą wybrać jedną lub więcej z poniższych metod, aby umożliwi�
 - [Włącz w usłudze Intune](#enable-with-intune)
    - [Planowane wdrożenie usługi Intune](#targeted-intune-deployment)
 - [Włącz z pakietem aprowizacji](#enable-with-a-provisioning-package)
-- [Włącz z zasady grupy (tylko urządzenia dołączone do hybrydowej usługi Azure AD)](#enable-with-group-policy)
-
-> [!IMPORTANT]
-> Organizacje z **urządzeniami dołączonymi do hybrydowej usługi Azure AD** muszą **również** wykonać kroki opisane w tym artykule, [Aby włączyć uwierzytelnianie FIDO2 w zasobach lokalnych](howto-authentication-passwordless-security-key-on-premises.md) przed rozpoczęciem uwierzytelniania klucza zabezpieczeń w systemie Windows 10 FIDO2.
->
-> Organizacje z **urządzeniami przyłączonymi do usługi Azure AD** muszą to zrobić, zanim będą mogły być uwierzytelniane w zasobach lokalnych przy użyciu kluczy zabezpieczeń FIDO2.
 
 ### <a name="enable-with-intune"></a>Włącz w usłudze Intune
 
-1. Zaloguj się do [portalu Azure](https://portal.azure.com).
+1. Zaloguj się w witrynie [Azure Portal](https://portal.azure.com).
 1. Przejdź do **Microsoft Intune** > **rejestracji urządzeń** > **Rejestracja systemu Windows** > **Właściwości**usługi **Windows Hello dla firm** > .
 1. W obszarze **Ustawienia** Ustaw **Użyj kluczy zabezpieczeń do logowania** do **włączenia**.
 
@@ -84,7 +70,7 @@ Konfiguracja kluczy zabezpieczeń dla logowania nie zależy od konfigurowania fu
 
 Aby włączyć dostawcę poświadczeń dla określonych grup urządzeń, użyj następujących ustawień niestandardowych za pośrednictwem usługi Intune.
 
-1. Zaloguj się do [portalu Azure](https://portal.azure.com).
+1. Zaloguj się w witrynie [Azure Portal](https://portal.azure.com).
 1. Przejdź do **Microsoft Intune** > **Konfiguracja urządzenia** > **Profile** > **Utwórz profil**.
 1. Skonfiguruj nowy profil przy użyciu następujących ustawień
    1. Name: klucze zabezpieczeń logowania systemu Windows
@@ -93,7 +79,7 @@ Aby włączyć dostawcę poświadczeń dla określonych grup urządzeń, użyj n
    1. Typ profilu: niestandardowy
    1. Niestandardowe ustawienia OMA-URI:
       1. Nazwa: Włącz klucze zabezpieczeń FIDO dla logowania do systemu Windows
-      1. OMA-URI:./Device/Vendor/MSFT/PassportForWork/SecurityKey/UseSecurityKeyForSignin
+      1. OMA-URI: ./Device/Vendor/MSFT/PassportForWork/SecurityKey/UseSecurityKeyForSignin
       1. Typ danych: liczba całkowita
       1. Wartość: 1
 1. Te zasady mogą być przypisane do określonych użytkowników, urządzeń lub grup. Więcej informacji można znaleźć w artykule [przypisywanie profilów użytkowników i urządzeń w Microsoft Intune](https://docs.microsoft.com/intune/device-profile-assign).
@@ -124,18 +110,7 @@ W przypadku urządzeń, które nie są zarządzane przez usługę Intune, można
 > [!NOTE]
 > W przypadku urządzeń z systemem Windows 10 w wersji 1809 należy również włączyć tryb Shared PC (EnableSharedPCMode). Informacje na temat włączania tej funkcjonalność można znaleźć w artykule, [skonfigurować komputer współużytkowany lub Gościa z systemem Windows 10](https://docs.microsoft.com/windows/configuration/set-up-shared-or-guest-pc).
 
-### <a name="enable-with-group-policy"></a>Włącz z zasady grupy
-
-W przypadku **hybrydowych urządzeń przyłączonych do usługi Azure AD** można skonfigurować następujące ustawienie zasady grupy, aby włączyć logowanie przy użyciu klucza zabezpieczeń Fido.
-
-Ustawienie to można znaleźć w obszarze **Konfiguracja komputera** > **Szablony administracyjne** > **system** > **Logon** > **włączyć logowanie przy użyciu klucza zabezpieczeń**.
-
-- Ustawienie tych zasad na **włączone** umożliwi użytkownikom logowanie się przy użyciu kluczy zabezpieczeń.
-- Ustawienie tych zasad na **wyłączone** lub **Nieskonfigurowane** uniemożliwi użytkownikom logowanie się przy użyciu kluczy zabezpieczeń.
-
-To ustawienie zasady grupy wymaga zaktualizowanej wersji szablonu `credentialprovider.admx` zasady grupy. Ten nowy szablon jest dostępny w następnej wersji systemu Windows Server i z systemem Windows 10 20H1. To ustawienie może być zarządzane przy użyciu urządzenia z jedną z tych nowszych wersji systemu Windows lub centralnie, postępując zgodnie ze wskazówkami w temacie dotyczącym pomocy technicznej, [jak utworzyć magazyn centralny dla zasady grupy Szablony administracyjne w systemie Windows i zarządzać](https://support.microsoft.com/help/3087759/how-to-create-and-manage-the-central-store-for-group-policy-administra)nim.
-
-## <a name="sign-in-with-fido2-security-key"></a>Zaloguj się przy użyciu klucza zabezpieczeń FIDO2
+## <a name="sign-in-to-windows-with-a-fido2-security-key"></a>Zaloguj się do systemu Windows przy użyciu klucza zabezpieczeń FIDO2
 
 W poniższym przykładzie w przypadku użytkownika Bala Sandhu został już zainicjowany klucz zabezpieczeń FIDO2 za pomocą kroków opisanych w poprzednim artykule, [Włącz opcję Zaloguj klucz zabezpieczeń](howto-authentication-passwordless-security-key.md#user-registration-and-management-of-fido2-security-keys). Bala może wybrać dostawcę poświadczeń klucza zabezpieczeń z ekranu blokady systemu Windows 10 i wstawić klucz zabezpieczeń, aby zalogować się do systemu Windows.
 
@@ -157,9 +132,29 @@ Jeśli chcesz udostępnić opinię lub napotkać problemy podczas korzystania z 
    1. Podkategoria: FIDO
 1. Aby przechwytywać dzienniki, użyj opcji: **Utwórz ponownie mój problem**
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="frequently-asked-questions"></a>Często zadawane pytania
 
-[Zapewnianie dostępu do zasobów lokalnych w usłudze Azure AD i hybrydowych urządzeniach z usługą Azure AD](howto-authentication-passwordless-security-key-on-premises.md)
+### <a name="does-this-work-in-my-on-premises-environment"></a>Czy ta usługa działa w środowisku lokalnym?
+
+Ta funkcja nie działa w przypadku czystego środowiska lokalnego Active Directory Domain Services (AD DS).
+
+### <a name="my-organization-requires-two-factor-authentication-to-access-resources-what-can-i-do-to-support-this-requirement"></a>Moja organizacja wymaga uwierzytelniania dwuskładnikowego, aby uzyskać dostęp do zasobów, co można zrobić, aby obsłużyć to wymaganie?
+
+Klucze zabezpieczeń są dostępne w różnych aspektach. Skontaktuj się z producentem urządzenia, aby omówić, jak ich urządzenia mogą być włączone przy użyciu kodu PIN lub biometrycznego jako drugiego czynnika.
+
+### <a name="can-admins-set-up-security-keys"></a>Czy Administratorzy mogą konfigurować klucze zabezpieczeń?
+
+Pracujemy nad tą funkcją, aby uzyskać ogólną dostępność tej funkcji.
+
+### <a name="where-can-i-go-to-find-compliant-security-keys"></a>Gdzie mogę znaleźć zgodne klucze zabezpieczeń?
+
+[FIDO2 klucze zabezpieczeń](concept-authentication-passwordless.md#fido2-security-keys)
+
+### <a name="what-do-i-do-if-i-lose-my-security-key"></a>Co mam zrobić, Jeśli utracisz mój klucz zabezpieczeń?
+
+Klucze można usunąć z Azure Portal, przechodząc do strony informacje zabezpieczające i usuwając klucz zabezpieczeń.
+
+## <a name="next-steps"></a>Następne kroki
 
 [Dowiedz się więcej o rejestrowaniu urządzeń](../devices/overview.md)
 

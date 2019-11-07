@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: baselden, librown
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5aab9d8c2b7993598c602ae6b730baff06d807e1
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.openlocfilehash: 9b6f07e1dd8e9252d2b6e00b85a47ba2e19f8bd8
+ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73151634"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73603449"
 ---
 # <a name="complete-a-passwordless-authentication-deployment"></a>Ukończ wdrażanie uwierzytelniania przy użyciu hasła
 
@@ -71,7 +71,7 @@ Metody uwierzytelniania bezhaseł firmy Microsoft umożliwiają korzystanie z r�
 
 Przed rozpoczęciem wdrażania bezhaseł, organizacje muszą spełniać następujące wymagania wstępne.
 
-| Warunek wstępny | Aplikacja Authenticator | FIDO2 klucze zabezpieczeń |
+| Wymagania wstępne | Aplikacja Authenticator | FIDO2 klucze zabezpieczeń |
 | --- | --- | --- |
 | [Połączona Rejestracja w ramach usługi Azure MFA i samoobsługowego resetowania hasła (SSPR)](howto-registration-mfa-sspr-combined.md) jest włączona (funkcja w wersji zapoznawczej) | √ | √ |
 | [Użytkownicy mogą korzystać z usługi Azure MFA](howto-mfa-getstarted.md) | √ | √ |
@@ -84,7 +84,7 @@ Przed rozpoczęciem wdrażania bezhaseł, organizacje muszą spełniać następu
 
 Wymagania wstępne dotyczące usługi Windows Hello są wysoce zależne od tego, czy są wdrażane w konfiguracji lokalnej, hybrydowej czy w chmurze. Aby uzyskać więcej informacji, zobacz [pełną listę wymagań wstępnych dotyczących usługi Windows Hello dla firm](https://docs.microsoft.com/windows/security/identity-protection/hello-for-business/hello-identity-verification).
 
-### <a name="azure-multi-factor-authentication"></a>Usługa Azure Multi-Factor Authentication
+### <a name="azure-multi-factor-authentication"></a>Azure Multi-Factor Authentication
 
 Użytkownicy rejestrują metodę bezhaseł w ramach przepływu rejestracji usługi Azure MFA. Uwierzytelnianie wieloskładnikowe przy użyciu nazwy użytkownika i hasła wraz z inną zarejestrowanej metody może być używane jako rezerwa w przypadku, gdy nie mogą korzystać z swojego telefonu ani klucza zabezpieczeń w niektórych scenariuszach.
 
@@ -110,15 +110,6 @@ Włączenie logowania systemu Windows 10 przy użyciu kluczy zabezpieczeń FIDO2
    - Jeśli wdrożenie usługi Intune nie jest możliwe, Administratorzy muszą wdrożyć pakiet na każdej maszynie, aby włączyć funkcję dostawcy poświadczeń. Instalację pakietu można przeprowadzić za pomocą jednej z następujących opcji:
       - Zasady grupy lub System Center Configuration Manager (SCCM)
       - Instalacja lokalna na komputerze z systemem Windows 10
-- [Włącz dostawcę poświadczeń przy użyciu zasady grupy](howto-authentication-passwordless-security-key-windows.md#enable-with-group-policy)
-   - Obsługiwane tylko w przypadku urządzeń przyłączonych do hybrydowej usługi Azure AD.
-
-#### <a name="enable-on-premises-integration"></a>Włącz integrację lokalną
-
-Wykonaj kroki opisane w artykule [Włączanie klucza zabezpieczeń bezhasłem Zaloguj się do zasobów lokalnych (wersja zapoznawcza)](howto-authentication-passwordless-security-key-on-premises.md) , aby umożliwić dostęp do zasobów lokalnych.
-
-> [!IMPORTANT]
-> Te kroki należy również wykonać dla wszystkich urządzeń z dołączoną hybrydą usługą Azure AD, aby użyć kluczy zabezpieczeń FIDO2 dla logowania do systemu Windows 10.
 
 ### <a name="register-security-keys"></a>Rejestrowanie kluczy zabezpieczeń
 
@@ -143,7 +134,7 @@ W poniższej tabeli przedstawiono przypadki użycia do wdrożenia w ramach tego 
 | **Dostęp** | Logowanie bez hasła jest dostępne z urządzenia firmowego lub osobistego w sieci firmowej lub poza nią. |
 | **Inspekcja** | Dane użycia są dostępne dla administratorów w celu przeprowadzania inspekcji niemal w czasie rzeczywistym. <br> Dane użycia są pobierane do systemów firmowych co najmniej co 29 dni lub używane jest narzędzie SIEM. |
 | **Dobrego** | Cykl życia przypisań użytkowników do odpowiedniej metody uwierzytelniania i skojarzonych grup jest zdefiniowany i monitorowany. |
-| **Bezpieczeństwo** | Dostęp do odpowiedniej metody uwierzytelniania jest kontrolowany za pośrednictwem przypisań użytkowników i grup. <br> Tylko autoryzowani użytkownicy mogą korzystać z logowania bezhasłem. |
+| **Zabezpieczenia** | Dostęp do odpowiedniej metody uwierzytelniania jest kontrolowany za pośrednictwem przypisań użytkowników i grup. <br> Tylko autoryzowani użytkownicy mogą korzystać z logowania bezhasłem. |
 | **Wydajność** | Osie czasu propagacji przydziału dostępu są udokumentowane i monitorowane. <br> Czasy logowania są mierzone w celu ułatwienia użycia. |
 | **Środowisko użytkownika** | Użytkownicy są świadomi zgodności urządzeń przenośnych. <br> Użytkownicy mogą konfigurować logowanie bezhasłem aplikacji uwierzytelniania. |
 | **Pomoc techniczna** | Użytkownicy wiedzą, jak znaleźć pomoc techniczną w przypadku problemów z logowaniem bezhasłem. |
@@ -163,7 +154,7 @@ Komunikacja z użytkownikami końcowymi będzie musiała obejmować:
 - [Rejestrowanie w aplikacji Microsoft Authenticator](howto-authentication-passwordless-phone.md)
 - [Logowanie za pomocą telefonu](../user-help/user-help-auth-app-sign-in.md)
 
-Firma Microsoft udostępnia [Szablony komunikacji](https://aka.ms/mfatemplates)MFA, [Szablony komunikacji](https://www.microsoft.com/download/details.aspx?id=56768)samoobsługowego resetowania haseł (SSPR) oraz [dokumentację użytkowników końcowych](../user-help/security-info-setup-signin.md) , która ułatwia przygotowanie komunikacji. Możesz wysyłać użytkowników do [https://myprofile.microsoft.com](https://myprofile.microsoft.com/) , aby zarejestrować się bezpośrednio, wybierając linki do informacji zabezpieczających na tej stronie.
+Firma Microsoft udostępnia [Szablony komunikacji](https://aka.ms/mfatemplates)MFA, [Szablony komunikacji](https://www.microsoft.com/download/details.aspx?id=56768)samoobsługowego resetowania haseł (SSPR) oraz [dokumentację użytkowników końcowych](../user-help/security-info-setup-signin.md) , która ułatwia przygotowanie komunikacji. Możesz wysyłać użytkowników, aby [https://myprofile.microsoft.com](https://myprofile.microsoft.com/) rejestrować się bezpośrednio, wybierając linki do informacji zabezpieczających na tej stronie.
 
 ### <a name="testing-passwordless"></a>Testowanie bezhasła
 

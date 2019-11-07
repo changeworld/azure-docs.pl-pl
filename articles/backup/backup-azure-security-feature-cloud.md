@@ -7,12 +7,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 09/13/2019
 ms.author: dacurwin
-ms.openlocfilehash: b882b8ee08c38b6313558916ab46f80ce9dd5130
-ms.sourcegitcommit: 2ed6e731ffc614f1691f1578ed26a67de46ed9c2
+ms.openlocfilehash: f0e4540f3f5ab3fdbb5953cbf100c5fdc2b2542a
+ms.sourcegitcommit: 6c2c97445f5d44c5b5974a5beb51a8733b0c2be7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/19/2019
-ms.locfileid: "71129335"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73622005"
 ---
 # <a name="security-features-to-help-protect-cloud-workloads-that-use-azure-backup"></a>Funkcje zabezpieczeń pomagające w ochronie obciążeń w chmurze korzystających z Azure Backup
 
@@ -70,6 +70,29 @@ Ten wykres przepływu przedstawia różne kroki i Stany elementu kopii zapasowej
 
 Aby uzyskać więcej informacji, zobacz sekcję [często zadawane pytania](backup-azure-security-feature-cloud.md#frequently-asked-questions) poniżej.
 
+## <a name="disabling-soft-delete"></a>Wyłączanie usuwania nietrwałego
+
+Usuwanie nietrwałe jest domyślnie włączone w nowo utworzonych magazynach. Jeśli funkcja usuwania nietrwałego zabezpieczeń jest wyłączona, dane kopii zapasowej nie będą chronione przed przypadkowym lub złośliwym usunięciem. Bez funkcji usuwania nietrwałego wszystkie usunięcia elementów chronionych spowodują natychmiastowe usunięcie, bez możliwości przywrócenia. Ponieważ dane kopii zapasowej w stanie "usuwanie nietrwałe" nie wiążą się z kosztem klienta, wyłączenie tej funkcji nie jest zalecane. Jedyną okolicznością, w której należy rozważyć wyłączenie usuwania nietrwałego, jest to, że planujesz przeniesienie chronionych elementów do nowego magazynu i nie będzie można odczekać 14 dni przed usunięciem i ponownym włączeniem ochrony (na przykład w środowisku testowym).
+
+### <a name="prerequisites-for-disabling-soft-delete"></a>Wymagania wstępne dotyczące wyłączania usuwania nietrwałego
+
+- Włączenie lub wyłączenie usuwania nietrwałego dla magazynów (bez elementów chronionych) może być wykonywane tylko przez Azure Portal. Dotyczy to:
+  - Nowo utworzone magazyny, które nie zawierają elementów chronionych
+  - Istniejące magazyny, których chronione elementy zostały usunięte i wygasły (poza ustalonym 14-dniowym okresem przechowywania)
+- Jeśli funkcja usuwania nietrwałego jest wyłączona dla magazynu, można ją ponownie włączyć, ale nie można jej cofnąć i wyłączyć, jeśli magazyn zawiera chronione elementy.
+- Nie można wyłączyć usuwania nietrwałego dla magazynów zawierających elementy chronione lub elementy w stanie nieusuniętym. Jeśli trzeba to zrobić, wykonaj następujące kroki:
+  - Zatrzymaj ochronę usuniętych danych dla wszystkich elementów chronionych.
+  - Poczekaj na wygaśnięcie 14 dni przechowywania w zabezpieczeniach.
+  - Wyłącz usuwanie nietrwałe.
+
+Aby wyłączyć usuwanie nietrwałe, upewnij się, że spełniono wymagania wstępne, a następnie wykonaj następujące kroki:
+
+1. W Azure Portal przejdź do magazynu, a następnie przejdź do pozycji **ustawienia** -> **Właściwości**.
+2. W okienku właściwości wybierz pozycję **Ustawienia zabezpieczeń** -> **Aktualizacja**.
+3. W okienku ustawienia zabezpieczeń w obszarze usuwanie nietrwałe wybierz pozycję **Wyłącz**.
+
+![Wyłącz usuwanie nietrwałe](./media/backup-azure-security-feature-cloud/disable-soft-delete.png)
+
 ## <a name="other-security-features"></a>Inne funkcje zabezpieczeń
 
 ### <a name="storage-side-encryption"></a>Szyfrowanie po stronie magazynu
@@ -78,17 +101,17 @@ Usługa Azure Storage automatycznie szyfruje dane podczas ich utrwalania w chmur
 
 W ramach platformy Azure dane przesyłane między usługą Azure Storage i magazynem są chronione za pośrednictwem protokołu HTTPS. Te dane pozostają w sieci szkieletowej platformy Azure.
 
-Aby uzyskać więcej informacji, zobacz [szyfrowanie usługi Azure Storage w przypadku przechowywanych danych](https://docs.microsoft.com/en-in/azure/storage/common/storage-service-encryption).
+Aby uzyskać więcej informacji, zobacz [szyfrowanie usługi Azure Storage w przypadku przechowywanych danych](https://docs.microsoft.com/azure/storage/common/storage-service-encryption).
 
 ### <a name="vm-encryption"></a>Szyfrowanie maszyny wirtualnej
 
-Można tworzyć kopie zapasowe i przywracać maszyny wirtualne systemu Windows lub Linux z szyfrowanymi dyskami przy użyciu usługi Azure Backup. Aby uzyskać instrukcje, zobacz [wykonywanie kopii zapasowej i Przywracanie zaszyfrowanych maszyn wirtualnych przy użyciu Azure Backup](https://docs.microsoft.com/en-us/azure/backup/backup-azure-vms-encryption).
+Można tworzyć kopie zapasowe i przywracać maszyny wirtualne systemu Windows lub Linux z szyfrowanymi dyskami przy użyciu usługi Azure Backup. Aby uzyskać instrukcje, zobacz [wykonywanie kopii zapasowej i Przywracanie zaszyfrowanych maszyn wirtualnych przy użyciu Azure Backup](https://docs.microsoft.com/azure/backup/backup-azure-vms-encryption).
 
 ### <a name="protection-of-azure-backup-recovery-points"></a>Ochrona punktów odzyskiwania Azure Backup
 
 Konta magazynu używane przez magazyny usługi Recovery Services są izolowane i nie są dostępne dla użytkowników w przypadku jakichkolwiek złośliwych celów. Dostęp jest dozwolony tylko za pomocą Azure Backup operacji zarządzania, takich jak przywracanie. Te operacje zarządzania są kontrolowane za pośrednictwem Access Control opartej na rolach (RBAC).
 
-Aby uzyskać więcej informacji, zobacz [używanie Access Control opartej na rolach w celu zarządzania Azure Backup punktów odzyskiwania](https://docs.microsoft.com/en-us/azure/backup/backup-rbac-rs-vault).
+Aby uzyskać więcej informacji, zobacz [używanie Access Control opartej na rolach w celu zarządzania Azure Backup punktów odzyskiwania](https://docs.microsoft.com/azure/backup/backup-rbac-rs-vault).
 
 ## <a name="frequently-asked-questions"></a>Często zadawane pytania
 
@@ -101,23 +124,23 @@ Nie. jest on tworzony i domyślnie włączony dla wszystkich magazynów usługi 
 #### <a name="can-i-configure-the-number-of-days-for-which-my-data-will-be-retained-in-soft-deleted-state-after-delete-operation-is-complete"></a>Czy można skonfigurować liczbę dni, przez jaką dane będą przechowywane w stanie nieusuniętym, po zakończeniu operacji usuwania?
 
 Nie, po operacji usuwania zostanie ustalony 14-dniowy dodatkowy czas przechowywania.
- 
+
 #### <a name="do-i-need-to-pay-the-cost-for-this-additional-14-day-retention"></a>Czy muszę płacić za to dodatkowe 14 dni?
 
 Nie, to 14-dniowe dodatkowe przechowywanie jest bezpłatne w ramach funkcji usuwania nietrwałego.
- 
+
 #### <a name="can-i-perform-a-restore-operation-when-my-data-is-in-soft-delete-state"></a>Czy można wykonać operację przywracania, gdy moje dane są w stanie usuwania nietrwałego?
 
 Nie, Usuń nietrwały zasób nietrwałego w celu przywrócenia. Operacja cofnięcia usunięcia spowoduje przywrócenie zasobu z powrotem do **stanu Zatrzymaj ochronę przy zachowaniu danych** , w którym można przywrócić wszystkie punkty w czasie. Moduł wyrzucania elementów bezużytecznych pozostaje wstrzymany w tym stanie.
- 
+
 #### <a name="will-my-snapshots-follow-the-same-lifecycle-as-my-recovery-points-in-the-vault"></a>Czy moje migawki będą zgodne z tym samym cyklem życia jak moje punkty odzyskiwania w magazynie?
 
 Tak.
- 
+
 #### <a name="how-can-i-trigger-the-scheduled-backups-again-for-a-soft-deleted-resource"></a>Jak można ponownie wyzwolić zaplanowane kopie zapasowe dla nietrwałego zasobu?
 
 Cofnięcie usunięcia po wykonaniu operacji Wznów spowoduje ponowne włączenie ochrony zasobu. Operacja Wznów kojarzy zasady tworzenia kopii zapasowych, aby wyzwolić zaplanowane kopie zapasowe z wybranym okresem przechowywania. Ponadto Moduł wyrzucania elementów bezużytecznych jest uruchamiany zaraz po zakończeniu operacji wznawiania. Jeśli chcesz wykonać przywracanie z punktu odzyskiwania, który przekroczył datę wygaśnięcia, zaleca się wykonanie tej czynności przed wyzwoleniem operacji wznowienia.
- 
+
 #### <a name="can-i-delete-my-vault-if-there-are-soft-deleted-items-in-the-vault"></a>Czy mogę usunąć swój magazyn, jeśli w magazynie istnieją nietrwałe elementy usunięte?
 
 Nie można usunąć magazynu Recovery Services, jeśli w magazynie istnieją elementy kopii zapasowej w stanie nieusuniętym. Elementy usunięte nietrwałe są trwale usuwane po 14 dniach operacji usuwania. Magazyn można usunąć tylko po przeczyszczeniu wszystkich usuniętych elementów.  
@@ -136,4 +159,4 @@ Nie. Obecnie usuwanie nietrwałe jest obsługiwane tylko dla maszyn wirtualnych 
 
 ## <a name="next-steps"></a>Następne kroki
 
-* Przeczytaj o [kontrolkach zabezpieczeń dla Azure Backup](backup-security-controls.md).
+- Przeczytaj o [kontrolkach zabezpieczeń dla Azure Backup](backup-security-controls.md).

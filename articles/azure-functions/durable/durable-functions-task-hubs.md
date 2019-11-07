@@ -1,20 +1,20 @@
 ---
 title: Centra zadań w Durable Functions — Azure
-description: Dowiedz się, co to jest centrum zadań w Durable Functions rozszerzeniu Azure Functions. Informacje na temat konfigurowania centrów zadań.
+description: Dowiedz się, co to jest centrum zadań w Durable Functions rozszerzeniu Azure Functions. Dowiedz się, jak skonfigurować centra zadań.
 services: functions
 author: cgillum
 manager: jeconnoc
 keywords: ''
 ms.service: azure-functions
 ms.topic: conceptual
-ms.date: 12/07/2017
+ms.date: 11/03/2019
 ms.author: azfuncdf
-ms.openlocfilehash: b0a58251530467d788710b0584b15715a207e20f
-ms.sourcegitcommit: 97605f3e7ff9b6f74e81f327edd19aefe79135d2
+ms.openlocfilehash: b42294fdcf60add8496116bd1f83bf64f54a5f63
+ms.sourcegitcommit: b2fb32ae73b12cf2d180e6e4ffffa13a31aa4c6f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70734322"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73614698"
 ---
 # <a name="task-hubs-in-durable-functions-azure-functions"></a>Centra zadań w Durable Functions (Azure Functions)
 
@@ -33,24 +33,15 @@ Centrum zadań składa się z następujących zasobów magazynu:
 * Jedna tabela historii.
 * Jedna tabela wystąpień.
 * Jeden kontener magazynu zawierający co najmniej jeden obiekt BLOB dzierżawy.
+* Kontener magazynu zawierający duże ładunki komunikatów, jeśli ma zastosowanie.
 
-Wszystkie te zasoby są tworzone automatycznie w domyślnym koncie usługi Azure Storage, gdy funkcje programu Orchestrator lub Activity są uruchamiane lub zaplanowane do uruchomienia. W artykule [wydajność i skalowanie](durable-functions-perf-and-scale.md) wyjaśniono, jak te zasoby są używane.
+Wszystkie te zasoby są tworzone automatycznie w domyślnym koncie usługi Azure Storage, gdy funkcje programu Orchestrator, Entity lub Activity działają lub są zaplanowane do uruchomienia. W artykule [wydajność i skalowanie](durable-functions-perf-and-scale.md) wyjaśniono, jak te zasoby są używane.
 
 ## <a name="task-hub-names"></a>Nazwy centrów zadań
 
 Centra zadań są identyfikowane za pomocą nazwy zadeklarowanej w pliku *host. JSON* , jak pokazano w następującym przykładzie:
 
-### <a name="hostjson-functions-1x"></a>Host. JSON (funkcje 1. x)
-
-```json
-{
-  "durableTask": {
-    "hubName": "MyTaskHub"
-  }
-}
-```
-
-### <a name="hostjson-functions-2x"></a>plik host. JSON (Functions 2. x)
+### <a name="hostjson-functions-20"></a>Host. JSON (funkcje 2,0)
 
 ```json
 {
@@ -63,9 +54,19 @@ Centra zadań są identyfikowane za pomocą nazwy zadeklarowanej w pliku *host. 
 }
 ```
 
-Centra zadań można również skonfigurować za pomocą ustawień aplikacji, jak pokazano w następującym przykładowym pliku *host. JSON* :
-
 ### <a name="hostjson-functions-1x"></a>Host. JSON (funkcje 1. x)
+
+```json
+{
+  "durableTask": {
+    "hubName": "MyTaskHub"
+  }
+}
+```
+
+Centra zadań można również skonfigurować za pomocą ustawień aplikacji, jak pokazano w następującym `host.json` przykładowym pliku:
+
+### <a name="hostjson-functions-10"></a>Host. JSON (funkcje 1,0)
 
 ```json
 {
@@ -75,7 +76,7 @@ Centra zadań można również skonfigurować za pomocą ustawień aplikacji, ja
 }
 ```
 
-### <a name="hostjson-functions-2x"></a>plik host. JSON (Functions 2. x)
+### <a name="hostjson-functions-20"></a>Host. JSON (funkcje 2,0)
 
 ```json
 {
@@ -88,7 +89,7 @@ Centra zadań można również skonfigurować za pomocą ustawień aplikacji, ja
 }
 ```
 
-Nazwa centrum zadań zostanie ustawiona na wartość `MyTaskHub` ustawienia aplikacji. Poniżej `local.settings.json` przedstawiono sposób `MyTaskHub` definiowania ustawienia jako `samplehubname`:
+Nazwa centrum zadań zostanie ustawiona na wartość ustawienia aplikacji `MyTaskHub`. Poniższy `local.settings.json` ilustruje sposób definiowania ustawienia `MyTaskHub` jako `samplehubname`:
 
 ```json
 {
@@ -99,7 +100,7 @@ Nazwa centrum zadań zostanie ustawiona na wartość `MyTaskHub` ustawienia apli
 }
 ```
 
-Oto wstępnie skompilowany C# przykład sposobu pisania funkcji korzystającej z [OrchestrationClientBinding](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.OrchestrationClientAttribute.html) do pracy z centrum zadań, które jest skonfigurowane jako ustawienie aplikacji:
+Poniższy kod jest prekompilowanym C# przykładem sposobu pisania funkcji, która używa [powiązania klienta aranżacji](durable-functions-bindings.md#orchestration-client) do pracy z centrum zadań skonfigurowanym jako ustawienie aplikacji:
 
 ### <a name="c"></a>C#
 
@@ -107,7 +108,7 @@ Oto wstępnie skompilowany C# przykład sposobu pisania funkcji korzystającej z
 [FunctionName("HttpStart")]
 public static async Task<HttpResponseMessage> Run(
     [HttpTrigger(AuthorizationLevel.Function, methods: "post", Route = "orchestrators/{functionName}")] HttpRequestMessage req,
-    [OrchestrationClient(TaskHub = "%MyTaskHub%")] DurableOrchestrationClientBase starter,
+    [OrchestrationClient(TaskHub = "%MyTaskHub%")] IDurableOrchestrationClient starter,
     string functionName,
     ILogger log)
 {
@@ -121,9 +122,13 @@ public static async Task<HttpResponseMessage> Run(
 }
 ```
 
+> [!NOTE]
+> Poprzedni C# przykład dotyczy Durable Functions 2. x. W przypadku Durable Functions 1. x należy użyć `DurableOrchestrationContext` zamiast `IDurableOrchestrationContext`. Aby uzyskać więcej informacji o różnicach między wersjami, zobacz artykuł dotyczący [wersji Durable Functions](durable-functions-versions.md) .
+
 ### <a name="javascript"></a>JavaScript
 
-Właściwość centrum zadań w `function.json` pliku jest ustawiana za pośrednictwem ustawienia aplikacji:
+Właściwość centrum zadań w pliku `function.json` jest ustawiana za pośrednictwem ustawienia aplikacji:
+
 ```json
 {
     "name": "input",
@@ -133,12 +138,19 @@ Właściwość centrum zadań w `function.json` pliku jest ustawiana za pośredn
 }
 ```
 
-Nazwy centrów zadań muszą zaczynać się literą i składać się tylko z liter i cyfr. Jeśli nie zostanie określony, nazwa domyślna to **DurableFunctionsHub**.
+Nazwy centrów zadań muszą zaczynać się literą i składać się tylko z liter i cyfr. Jeśli nie zostanie określony, zostanie użyta domyślna nazwa centrum zadań, jak pokazano w poniższej tabeli:
+
+| Wersja rozszerzenia trwałego | Nazwa domyślnego centrum zadań |
+| - | - |
+| 2.x | Po wdrożeniu na platformie Azure nazwa centrum zadań jest tworzona na podstawie nazwy _aplikacji funkcji_. W przypadku uruchamiania poza platformą Azure domyślną nazwą centrum zadań jest `TestHubName`. |
+| 1.x | Domyślna nazwa centrum zadań dla wszystkich środowisk jest `DurableFunctionsHub`. |
+
+Aby uzyskać więcej informacji o różnicach między wersjami rozszerzeń, zobacz artykuł dotyczący [wersji Durable Functions](durable-functions-versions.md) .
 
 > [!NOTE]
-> Nazwa różni się od jednego centrum zadań, gdy istnieje wiele centrów zadań na koncie magazynu udostępnionego. Jeśli masz wiele aplikacji funkcji współużytkujących udostępnione konto magazynu, musisz jawnie skonfigurować różne nazwy dla każdego centrum zadań w plikach *host. JSON* . W przeciwnym razie wiele aplikacji funkcji będzie współdziałać ze sobą dla komunikatów, co może spowodować niezdefiniowane zachowanie.
+> Nazwa różni się od jednego centrum zadań, gdy istnieje wiele centrów zadań na koncie magazynu udostępnionego. Jeśli masz wiele aplikacji funkcji współużytkujących udostępnione konto magazynu, musisz jawnie skonfigurować różne nazwy dla każdego centrum zadań w plikach *host. JSON* . W przeciwnym razie wiele aplikacji funkcji będzie współdziałać ze sobą w przypadku komunikatów, co może spowodować nieoczekiwane zachowanie, w tym aranżacje, które w stanie `Pending` lub `Running`.
 
 ## <a name="next-steps"></a>Następne kroki
 
 > [!div class="nextstepaction"]
-> [Dowiedz się, jak obsługiwać przechowywanie wersji](durable-functions-versioning.md)
+> [Dowiedz się, jak obsługiwać przechowywanie wersji aranżacji](durable-functions-versioning.md)

@@ -11,12 +11,12 @@ author: tsikiksr
 manager: cgronlun
 ms.reviewer: nibaccam
 ms.date: 11/04/2019
-ms.openlocfilehash: 05bae18d35eafc47eddc7c1450eb06af5bbe5562
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
-ms.translationtype: HT
+ms.openlocfilehash: e1bb84c142fb24086cf6c11a7b1070bdd29ae3f2
+ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 11/04/2019
-ms.locfileid: "73497175"
+ms.locfileid: "73581318"
 ---
 # <a name="create-explore-and-deploy-automated-machine-learning-experiments-with-azure-machine-learning-studio"></a>Twórz, eksploruj i wdrażaj zautomatyzowane eksperymenty uczenia maszynowego za pomocą programu Azure Machine Learning Studio
 [!INCLUDE [applies-to-skus](../../../includes/aml-applies-to-enterprise-sku.md)]
@@ -31,7 +31,7 @@ ms.locfileid: "73497175"
 
 * Obszar roboczy Azure Machine Learning z typem **wersji Enterprise Edition**. Zobacz [Tworzenie obszaru roboczego Azure Machine Learning](how-to-manage-workspace.md).  Aby uaktualnić istniejący obszar roboczy do wersji Enterprise, zobacz [uaktualnianie do wersji Enterprise Edition](how-to-manage-workspace.md#upgrade).
 
-## <a name="get-started"></a>Rozpocznij
+## <a name="get-started"></a>Rozpoczęcie pracy
 
 1. Zaloguj się do [Azure Machine Learning Studio](https://ml.azure.com). 
 
@@ -104,7 +104,7 @@ W przeciwnym razie zostanie wyświetlona lista ostatnich zautomatyzowanych ekspe
 
     Wybierz opcję **Dalej**.
 
-1. W formularzu **Typ zadania i ustawienia** wybierz typ zadania: Klasyfikacja, regresja lub prognozowanie. 
+1. W formularzu **Typ zadania i ustawienia** wybierz typ zadania: Klasyfikacja, regresja lub prognozowanie. Zobacz [jak zdefiniować typy zadań,](how-to-define-task-type.md) Aby uzyskać więcej informacji.
 
     1. W przypadku klasyfikacji można również włączyć uczenie głębokie, które jest używane dla featurizations tekstu.
 
@@ -205,12 +205,17 @@ Automatyczna ML pomaga wdrożyć model bez pisania kodu:
 
     Pole| Wartość
     ----|----
-    Nazwa wdrożenia| Wprowadź unikatową nazwę wdrożenia.
-    Opis wdrożenia| Wprowadź opis, aby lepiej zidentyfikować to wdrożenie.
-    Skrypt oceniania| Automatycznie Generuj lub Przekaż własny plik oceniania. [Dowiedz się więcej o skrypcie oceniania](how-to-deploy-and-where.md#script).
-    Skrypt środowiska| Automatycznie Generuj lub Przekaż własny plik środowiska.
+    Nazwa| Wprowadź unikatową nazwę wdrożenia.
+    Opis| Wprowadź opis, aby lepiej zidentyfikować to wdrożenie.
+    Typ obliczenia| Wybierz typ punktu końcowego, który chcesz wdrożyć: *Azure Kubernetes Service (AKS)* lub *Azure Container Instance (ACI)* .
+    Nazwa| *Dotyczy tylko AKS:* Wybierz nazwę klastra AKS, w którym chcesz wdrożyć.
+    Włączanie uwierzytelniania | Wybierz, aby zezwalać na uwierzytelnianie oparte na tokenach lub na podstawie klucza.
+    Używanie niestandardowych zasobów wdrażania| Włącz tę funkcję, jeśli chcesz przekazać własny skrypt oceniania i plik środowiska. [Dowiedz się więcej o skryptach oceniania](how-to-deploy-and-where.md#script).
+
     >[!Important]
     > Nazwy plików muszą mieć długość 32 znaków i muszą zaczynać się i kończyć znakiem alfanumerycznym. Może zawierać łączniki, podkreślenia, kropki i znaki alfanumeryczne między. Spacje są niedozwolone.
+
+    Menu *Zaawansowane* oferuje domyślne funkcje wdrażania, takie jak zbieranie danych i ustawienia wykorzystania zasobów. Jeśli chcesz przesłonić te ustawienia domyślne, zrób to w menu.
 
 1. Wybierz pozycję **Wdróż**. Wdrożenie może potrwać około 20 minut.
 

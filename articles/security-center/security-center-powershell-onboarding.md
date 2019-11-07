@@ -1,5 +1,5 @@
 ---
-title: Użyj programu PowerShell do dołączania Azure Security Center i ochrony sieci | Microsoft Docs
+title: Dołączanie do Azure Security Center za pomocą programu PowerShell
 description: Ten dokument przeprowadzi Cię przez proces dołączania Azure Security Center przy użyciu poleceń cmdlet programu PowerShell.
 services: security-center
 documentationcenter: na
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/02/2018
 ms.author: memildin
-ms.openlocfilehash: 8e2f7b87efe89166175748cec310f24575b7f102
-ms.sourcegitcommit: 8a717170b04df64bd1ddd521e899ac7749627350
+ms.openlocfilehash: b20b3c1e4216fe8065fbc8ac24c7d8097903fc5a
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/23/2019
-ms.locfileid: "71201225"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73686370"
 ---
 # <a name="automate-onboarding-of-azure-security-center-using-powershell"></a>Automatyzowanie dołączania Azure Security Center przy użyciu programu PowerShell
 
@@ -31,13 +31,13 @@ Ten artykuł zawiera przykładowy skrypt programu PowerShell, który można zmod
 
 W tym przykładzie zostanie włączone Security Center w ramach subskrypcji o IDENTYFIKATORze: d07c0080-170c-4c24-861d-9c817742786c i zastosowaniu zalecanych ustawień, które zapewniają wysoki poziom ochrony, implementując standardową warstwę Security Center, która zapewnia Zaawansowane funkcje ochrony przed zagrożeniami i wykrywania:
 
-1. Ustaw [poziom zabezpieczeń ASC w warstwie Standardowa](https://azure.microsoft.com/pricing/details/security-center/). 
+1. Ustaw [Security Center standardowy poziom ochrony](https://azure.microsoft.com/pricing/details/security-center/). 
  
 2. Ustaw obszar roboczy Log Analytics, do którego Microsoft Monitoring Agent wyśle dane zbierane na maszynach wirtualnych skojarzonych z subskrypcją — w tym przykładzie istniejący zdefiniowany przez użytkownika obszar roboczy (mój obszar roboczy).
 
 3. Aktywuj automatyczne Inicjowanie obsługi agenta Security Center, które [wdraża Microsoft Monitoring Agent](security-center-enable-data-collection.md#auto-provision-mma).
 
-5. Ustaw [CISO organizacji jako kontakt z zabezpieczeniami dla alertów ASC i istotnych zdarzeń](security-center-provide-security-contact-details.md).
+5. Ustaw [CISO organizacji jako kontakt z zabezpieczeniami dla alertów Security Center i istotnych zdarzeń](security-center-provide-security-contact-details.md).
 
 6. Przypisz [domyślne zasady zabezpieczeń](tutorial-security-policy.md)Security Center.
 
@@ -58,7 +58,7 @@ Te kroki należy wykonać przed uruchomieniem Security Center poleceń cmdlet:
         Set-AzContext -Subscription "d07c0080-170c-4c24-861d-9c817742786c"
         Register-AzResourceProvider -ProviderNamespace 'Microsoft.Security' 
 
-2.  Opcjonalnie: Ustaw poziom pokrycia (warstwa cenowa) subskrypcji (jeśli nie jest zdefiniowany, warstwa cenowa jest ustawiona na wartość bezpłatna):
+2.  Opcjonalne: Ustaw poziom pokrycia (warstwa cenowa) subskrypcji (jeśli nie jest zdefiniowany, warstwa cenowa jest ustawiona na wartość bezpłatna):
 
         Set-AzContext -Subscription "d07c0080-170c-4c24-861d-9c817742786c"
         Set-AzSecurityPricing -Name "default" -PricingTier "Standard"
@@ -78,7 +78,7 @@ Te kroki należy wykonać przed uruchomieniem Security Center poleceń cmdlet:
     > Zaleca się włączenie automatycznej obsługi administracyjnej, aby upewnić się, że maszyny wirtualne platformy Azure są automatycznie chronione przez Azure Security Center.
     >
 
-5.  Opcjonalnie: Zdecydowanie zaleca się zdefiniowanie szczegółowych informacji o kontakcie z subskrypcjami, które będą używane jako adresaci alertów i powiadomień generowanych przez Security Center:
+5.  Opcjonalne: zdecydowanie zaleca się zdefiniowanie szczegółowych informacji o kontakcie z zabezpieczeniami dla subskrypcji, które zostaną użyte jako adresaci alertów i powiadomień generowanych przez Security Center:
 
         Set-AzSecurityContact -Name "default1" -Email "CISO@my-org.com" -Phone "2142754038" -AlertAdmin -NotifyOnAlert 
 
@@ -97,7 +97,7 @@ Teraz można używać tych poleceń cmdlet programu PowerShell ze skryptami auto
 
 
 
-## <a name="see-also"></a>Zobacz także
+## <a name="see-also"></a>Zobacz też
 Aby dowiedzieć się więcej na temat sposobu automatyzowania dołączania do Security Center za pomocą programu PowerShell, zobacz następujący artykuł:
 
 * [AZ. Security](https://docs.microsoft.com/powershell/module/az.security).

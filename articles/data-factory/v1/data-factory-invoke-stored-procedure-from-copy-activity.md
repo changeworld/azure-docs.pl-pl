@@ -1,6 +1,6 @@
 ---
-title: Wywołaj procedurę składowaną z działania kopiowania w fabryce danych platformy Azure | Dokumentacja firmy Microsoft
-description: Dowiedz się, jak wywołać procedurę składowaną w usłudze Azure SQL Database lub SQL Server z działania kopiowania w usłudze Azure Data Factory.
+title: Wywołaj procedurę składowaną z działania Azure Data Factory Copy
+description: Dowiedz się, jak wywołać procedurę składowaną w Azure SQL Database lub SQL Server z działania kopiowania Azure Data Factory.
 services: data-factory
 documentationcenter: ''
 author: linda33wj
@@ -13,24 +13,24 @@ ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 35e9347039a7b9939ab4d2719f9738429dec168c
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 0c5bb7ab4e8932c9568293620352435c7259d810
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60824256"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73682490"
 ---
-# <a name="invoke-stored-procedure-from-copy-activity-in-azure-data-factory"></a>Wywołaj procedurę składowaną z działaniem kopiowania w usłudze Azure Data Factory
+# <a name="invoke-stored-procedure-from-copy-activity-in-azure-data-factory"></a>Wywołaj procedurę składowaną z działania kopiowania w Azure Data Factory
 > [!NOTE]
-> Ten artykuł dotyczy wersji 1 usługi Data Factory. Jeśli używasz bieżącą wersję usługi Data Factory, zobacz [przekształcania danych za pomocą działania procedury składowanej w usłudze Data Factory](../transform-data-using-stored-procedure.md).
+> Ten artykuł dotyczy wersji 1 usługi Data Factory. Jeśli używasz bieżącej wersji usługi Data Factory, zobacz [Przekształć dane za pomocą działania procedury składowanej w Data Factory](../transform-data-using-stored-procedure.md).
 
 
-Podczas kopiowania danych do [programu SQL Server](data-factory-sqlserver-connector.md) lub [usługi Azure SQL Database](data-factory-azure-sql-connector.md), można skonfigurować **SqlSink** w działaniu kopiowania, aby wywołać procedurę składowaną. Możesz chcieć użyć przechowywaną procedurę, aby wykonywać żadnego dodatkowego przetwarzania (Scalanie kolumn wyszukiwania wartości, wstawiania do wielu tabel, itp.) jest wymagana przed wstawieniem danych w tabeli docelowej. Ta funkcja korzysta z zalet [parametry Table-Valued](https://msdn.microsoft.com/library/bb675163.aspx). 
+Podczas kopiowania danych do [SQL Server](data-factory-sqlserver-connector.md) lub [Azure SQL Database](data-factory-azure-sql-connector.md), można skonfigurować działanie **sqlsink** w działaniu Copy, aby wywołać procedurę składowaną. Możesz chcieć użyć procedury składowanej, aby wykonać wszelkie dodatkowe przetwarzanie (Scalanie kolumn, wyszukiwanie wartości, wstawianie do wielu tabel itp.) jest wymagane przed wstawieniem danych do tabeli docelowej. Ta funkcja wykorzystuje parametry z [wartościami przechowywanymi w tabeli](https://msdn.microsoft.com/library/bb675163.aspx). 
 
-Poniższy przykład pokazuje jak wywołać procedurę składowaną w bazie danych programu SQL Server z potoku usługi fabryka danych (działanie kopiowania):  
+Poniższy przykład pokazuje, jak wywołać procedurę składowaną w bazie danych SQL Server z potoku Data Factory (działanie kopiowania):  
 
-## <a name="output-dataset-json"></a>Wyjściowy zestaw danych JSON
-W przypadku wyjściowy zestaw danych JSON, ustaw **typu** do: **SqlServerTable**. Ustaw ją na **AzureSqlTable** za pomocą usługi Azure SQL database. Wartość **tableName** właściwość musi być zgodna z nazwą pierwszy parametr procedury składowanej.  
+## <a name="output-dataset-json"></a>JSON zestawu danych wyjściowych
+W pliku JSON wyjściowego zestawu danych ustaw **Typ** na: **SqlServerName**. Ustaw **wartość azuresqltable** do użycia z bazą danych Azure SQL Database. Wartość właściwości **TableName** musi być zgodna z nazwą pierwszego parametru procedury składowanej.  
 
 ```json
 {
@@ -49,8 +49,8 @@ W przypadku wyjściowy zestaw danych JSON, ustaw **typu** do: **SqlServerTable**
 }
 ```
 
-## <a name="sqlsink-section-in-copy-activity-json"></a>Sekcja SqlSink w działaniu kopiowania JSON
-Zdefiniuj **SqlSink** sekcji w działaniu kopiowania JSON w następujący sposób. Aby wywołać procedurę składowaną podczas wstawiania danych do bazy danych będących ujściem/docelowym, należy określić wartości dla obu **SqlWriterStoredProcedureName** i **SqlWriterTableType** właściwości. Opisy tych właściwości można znaleźć [SqlSink sekcji tego artykułu łącznik programu SQL Server](data-factory-sqlserver-connector.md#sqlsink).
+## <a name="sqlsink-section-in-copy-activity-json"></a>Sekcja sqlsink w formacie JSON działania kopiowania
+Zdefiniuj sekcję **sqlsink** w kodzie JSON działania kopiowania w następujący sposób. Aby wywołać procedurę składowaną podczas wstawiania danych do ujścia/docelowa baza danych, określ wartości dla właściwości **SqlWriterStoredProcedureName** i **SqlWriterTableType** . Opisy tych właściwości znajdują się [w sekcji sqlsink w artykule dotyczącym łącznika SQL Server](data-factory-sqlserver-connector.md#sqlsink).
 
 ```json
 "sink":
@@ -69,7 +69,7 @@ Zdefiniuj **SqlSink** sekcji w działaniu kopiowania JSON w następujący sposó
 ```
 
 ## <a name="stored-procedure-definition"></a>Definicja procedury składowanej 
-W bazie danych, zdefiniuj procedurę składowaną z taką samą nazwę jak **SqlWriterStoredProcedureName**. Procedura składowana obsługuje danych wejściowych z magazynu danych źródłowych i wstawia dane do tabeli w docelowej bazie danych. Nazwa pierwszego parametru procedury składowanej musi odpowiadać tableName zdefiniowane w zestawie danych JSON (Marketing).
+W bazie danych Zdefiniuj procedurę składowaną o takiej samej nazwie jak **SqlWriterStoredProcedureName**. Procedura składowana obsługuje dane wejściowe z magazynu danych źródłowych i wstawia dane do tabeli w docelowej bazie danych. Nazwa pierwszego parametru procedury składowanej musi być zgodna z nazwą tabeli zdefiniowaną w kodzie JSON zestawu danych (Marketing).
 
 ```sql
 CREATE PROCEDURE spOverwriteMarketing @Marketing [dbo].[MarketingType] READONLY, @stringData varchar(256)
@@ -82,7 +82,7 @@ END
 ```
 
 ## <a name="table-type-definition"></a>Definicja typu tabeli
-W bazie danych, zdefiniuj typ tabeli z taką samą nazwę jak **SqlWriterTableType**. Schematu typu tabeli muszą być zgodne ze schematem wejściowego zestawu danych.
+W swojej bazie danych Zdefiniuj typ tabeli o tej samej nazwie co **SqlWriterTableType**. Schemat typu tabeli musi być zgodny ze schematem wejściowego zestawu danych.
 
 ```sql
 CREATE TYPE [dbo].[MarketingType] AS TABLE(
@@ -91,8 +91,8 @@ CREATE TYPE [dbo].[MarketingType] AS TABLE(
 )
 ```
 
-## <a name="next-steps"></a>Kolejne kroki
-Przejrzyj poniższe łącznika artykuły, aby uzyskać kompletny przykład JSON: 
+## <a name="next-steps"></a>Następne kroki
+Zapoznaj się z następującymi artykułami dotyczącymi łączników, które zawierają kompletne przykłady kodu JSON: 
 
 - [Azure SQL Database](data-factory-azure-sql-connector.md)
 - [SQL Server](data-factory-sqlserver-connector.md)

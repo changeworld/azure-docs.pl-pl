@@ -1,5 +1,5 @@
 ---
-title: Jednostki magazynu danych (jednostek dwu, cDWUs) w usłudze Azure Synapse Analytics (dawniej SQL DW) | Microsoft Docs
+title: Jednostki magazynu danych (jednostek dwu, cDWUs) w usłudze Azure Synapse Analytics (dawniej SQL DW)
 description: Zalecenia dotyczące wyboru idealnej liczby jednostek magazynu danych (jednostek dwu, cDWUs) w celu zoptymalizowania cen i wydajności oraz sposobu zmiany liczby jednostek.
 services: sql-data-warehouse
 author: mlee3gsd
@@ -10,13 +10,13 @@ ms.subservice: design
 ms.date: 11/04/2019
 ms.author: martinle
 ms.reviewer: igorstan
-mscustom: sqlfreshmay19
-ms.openlocfilehash: 32e75b78b8a5c304fc65a9c20d16fb85b4f8307b
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.custom: seo-lt-2019
+ms.openlocfilehash: f3415522a6ae80723500ba2d38867322fdef0dd7
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73475753"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73685329"
 ---
 # <a name="data-warehouse-units-dwus-and-compute-data-warehouse-units-cdwus"></a>Jednostki magazynu danych (jednostek dwu) i jednostki magazynu danych obliczeniowych (cDWUs)
 
@@ -215,4 +215,4 @@ Po rozpoczęciu operacji skalowania system najpierw kasuje wszystkie otwarte ses
 
 ## <a name="next-steps"></a>Następne kroki
 
-Aby dowiedzieć się więcej o zarządzaniu wydajnością, zobacz [klasy zasobów dla zarządzania obciążeniami](resource-classes-for-workload-management.md) oraz [limity pamięci i współbieżności](memory-and-concurrency-limits.md).
+Aby dowiedzieć się więcej o zarządzaniu wydajnością, zobacz [klasy zasobów dla zarządzania obciążeniami](resource-classes-for-workload-management.md) i [limity pamięci i współbieżności] pamięć-współbieżność-Limits.MD).

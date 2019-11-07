@@ -141,7 +141,7 @@
 - name: Pojęcia
   items:
     - name: Azure Resource Manager
-      href: ../../azure-resource-manager/resource-group-overview.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json
+      href: ../../azure-resource-manager/resource-group-overview.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
     - name: Regiony
       href: regions.md
     - name: Dostępność i wydajność
@@ -151,7 +151,7 @@
         - name: Współlokacja
           href: co-location.md
         - name: Wydajność sieci
-          href: ../..//virtual-network/virtual-network-optimize-network-bandwidth.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json
+          href: ../..//virtual-network/virtual-network-optimize-network-bandwidth.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
     - name: Typy i rozmiary maszyn wirtualnych
       href: sizes.md
       items:
@@ -231,7 +231,7 @@
     - name: Networking
       href: network-overview.md
     - name: Zestawy skalowania
-      href: ../../virtual-machine-scale-sets/overview.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json
+      href: ../../virtual-machine-scale-sets/overview.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
     - name: Automatyzacja infrastruktury
       href: infrastructure-automation.md
     - name: Bezpieczeństwo
@@ -320,7 +320,7 @@
         - name: Korzystanie ze składnika WinRM
           href: winrm.md
         - name: Korzystanie z kontroli dostępu
-          href: ../../role-based-access-control/overview.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json
+          href: ../../role-based-access-control/overview.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
         - name: Korzystanie z zasad
           href: policy.md
         - name: Tworzenie magazynu kluczy
@@ -328,25 +328,25 @@
     - name: Ochrona maszyn wirtualnych
       items:
         - name: Tworzenie kopii zapasowej maszyn wirtualnych
-          href: ../../backup/backup-introduction-to-azure-backup.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json
+          href: ../../backup/backup-introduction-to-azure-backup.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
           items:
             - name: Tworzenie kopii zapasowej pojedynczej maszyny wirtualnej
-              href: ../../backup/quick-backup-vm-cli.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json
+              href: ../../backup/quick-backup-vm-cli.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
             - name: Tworzenie kopii zapasowej wielu maszyn wirtualnych
-              href: ../../backup/tutorial-backup-vm-at-scale.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json
+              href: ../../backup/tutorial-backup-vm-at-scale.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
             - name: Przywracanie dysku
-              href: ../../backup/tutorial-restore-disk.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json
+              href: ../../backup/tutorial-restore-disk.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
             - name: Przywracanie pojedynczych plików
-              href: ../../backup/tutorial-restore-files.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json
+              href: ../../backup/tutorial-restore-files.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
         - name: Konfigurowanie odzyskiwania po awarii dla maszyn wirtualnych
-          href: ../../site-recovery/site-recovery-overview.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json
+          href: ../../site-recovery/site-recovery-overview.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
           items:
             - name: Włączanie odzyskiwania po awarii dla maszyny wirtualnej
-              href: ../../site-recovery/azure-to-azure-tutorial-enable-replication.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json
+              href: ../../site-recovery/azure-to-azure-tutorial-enable-replication.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
             - name: Uruchamianie próbnego odzyskiwania po awarii dla maszyny wirtualnej
-              href: ../../site-recovery/azure-to-azure-tutorial-dr-drill.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json
+              href: ../../site-recovery/azure-to-azure-tutorial-dr-drill.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
             - name: Przełączanie maszyny wirtualnej do pracy w trybie failover w innym regionie
-              href: ../../site-recovery/azure-to-azure-tutorial-failover-failback.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json
+              href: ../../site-recovery/azure-to-azure-tutorial-failover-failback.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
     - name: Zarządzanie maszynami wirtualnymi
       items:
         - name: Użycie maszyny wirtualnej
@@ -407,7 +407,7 @@
             - name: Portal
               href: shared-images-portal.md
             - name: Interfejs wiersza polecenia
-              href: ../linux/shared-images.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json
+              href: ../linux/shared-images.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
             - name: Udostępnianie obrazów między dzierżawami
               href: share-images-across-tenants.md
             - name: Rozwiązywanie problemów z obrazami udostępnionymi
@@ -415,7 +415,7 @@
         - name: Konstruktor obrazów (wersja zapoznawcza)
           items:
             - name: Omówienie
-              href: ../linux/image-builder-overview.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json
+              href: ../linux/image-builder-overview.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
             - name: Interfejs wiersza polecenia platformy Azure
               href: image-builder.md
             - name: Tworzenie dla galerii obrazów
@@ -423,9 +423,9 @@
             - name: Aktualizowanie istniejącego obrazu
               href: image-builder-gallery-update-image-version.md
             - name: Przechowywanie skryptów
-              href: ../linux/image-builder-user-assigned-identity.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json
+              href: ../linux/image-builder-user-assigned-identity.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
             - name: Dokumentacja dotycząca szablonów
-              href: ../linux/image-builder-json.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json
+              href: ../linux/image-builder-json.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
             - name: Rozwiązywanie problemów
               href: 'https://github.com/danielsollondon/azvmimagebuilder/blob/master/troubleshootingaib.md'
         - name: Znajdowanie obrazów i korzystanie z nich
@@ -445,7 +445,7 @@
     - name: Dostępność i skala
       items:
         - name: Zestawy skali maszyn wirtualnych
-          href: ../../virtual-machine-scale-sets/virtual-machine-scale-sets-overview.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json
+          href: ../../virtual-machine-scale-sets/virtual-machine-scale-sets-overview.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
         - name: Wysoka dostępność
           href: manage-availability.md
         - name: Tworzenie grupy umieszczania w pobliżu
@@ -543,7 +543,7 @@
       href: ps-common-network-ref.md
       items:
         - name: Tworzenie sieci wirtualnej
-          href: ../../virtual-network/virtual-networks-create-vnet-arm-pportal.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json
+          href: ../../virtual-network/virtual-networks-create-vnet-arm-pportal.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
         - name: Otwieranie portów dla maszyny wirtualnej
           items:
             - name: Portal Azure
@@ -551,15 +551,15 @@
             - name: Azure PowerShell
               href: nsg-quickstart-powershell.md
         - name: Przypisywanie publicznego adresu IP
-          href: ../../virtual-network/virtual-network-deploy-static-pip-arm-portal.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json
+          href: ../../virtual-network/virtual-network-deploy-static-pip-arm-portal.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
         - name: Korzystanie z wielu kart interfejsu sieciowego
           href: multiple-nics.md
         - name: Korzystanie z przyspieszonej sieci
-          href: ../../virtual-network/create-vm-accelerated-networking-powershell.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json
+          href: ../../virtual-network/create-vm-accelerated-networking-powershell.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
         - name: Przypisywanie publicznej nazwy DNS
           href: portal-create-fqdn.md
         - name: Rozpoznawanie nazw DNS
-          href: ../../dns/dns-for-azure-services.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json
+          href: ../../dns/dns-for-azure-services.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
     - name: Konfigurowanie tożsamości zarządzanych
       items:
         - name: Portal
@@ -581,9 +581,9 @@
         - name: Zmienianie subskrypcji lub grupy zasobów
           href: move-vm.md
         - name: Przenoszenie regionów
-          href: ../../site-recovery/azure-to-azure-tutorial-migrate.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json
+          href: ../../site-recovery/azure-to-azure-tutorial-migrate.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
         - name: Przenoszenie do strefy dostępności
-          href: ../../site-recovery/move-azure-vms-avset-azone.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json
+          href: ../../site-recovery/move-azure-vms-avset-azone.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
         - name: Migrowanie lokalnych maszyn wirtualnych i maszyn wirtualnych usług AWS
           href: on-prem-to-azure.md
           items:
@@ -592,7 +592,7 @@
             - name: Z usługi Amazon Web Services (AWS)
               href: aws-to-azure.md
             - name: Korzystanie z usługi Azure Site Recovery
-              href: ../../site-recovery/site-recovery-migrate-to-azure.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json
+              href: ../../site-recovery/site-recovery-migrate-to-azure.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
         - name: Migrowanie z wersji klasycznej do usługi Azure Resource Manager
           href: migration-classic-resource-manager-overview.md
           items:
@@ -634,7 +634,7 @@
 - name: Zasoby
   items:
     - name: Tworzenie szablonów
-      href: ../../azure-resource-manager/resource-group-authoring-templates.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json
+      href: ../../azure-resource-manager/resource-group-authoring-templates.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
     - name: Rozwijanie umiejętności dzięki środowisku Microsoft Learn
       href: /learn/browse/?products=azure-virtual-machines
     - name: Harmonogram działania dla platformy Azure

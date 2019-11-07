@@ -1,5 +1,5 @@
 ---
-title: Replikacja transakcyjna z Azure SQL Database | Microsoft Docs "
+title: Replikacja transakcyjna z Azure SQL Database "
 description: Dowiedz się więcej o używaniu SQL Server replikacji transakcyjnej z pojedynczymi bazami danych w puli i wystąpieniami w Azure SQL Database.
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: MashaMSFT
 ms.author: mathoma
 ms.reviewer: carlrab
 ms.date: 02/08/2019
-ms.openlocfilehash: 86bd479eff48a7feb42557eb1d175345728f0a69
-ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
+ms.openlocfilehash: 016b4f2ee191443cf608af18d1be6a94b6d53a39
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68879055"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73687830"
 ---
 # <a name="transactional-replication-with-single-pooled-and-instance-databases-in-azure-sql-database"></a>Replikacja transakcyjna z pojedynczymi, w puli i wystąpieniami baz danych w Azure SQL Database
 
@@ -29,7 +29,7 @@ Replikacja transakcyjna jest przydatna w następujących scenariuszach:
 - Utrzymuj synchronizację kilku rozproszonych baz danych.
 - Migrowanie baz danych z jednego SQL Server lub wystąpienia zarządzanego do innej bazy danych przez ciągłe publikowanie zmian.
 
-## <a name="overview"></a>Przegląd
+## <a name="overview"></a>Omówienie
 
 Najważniejsze składniki replikacji transakcyjnej przedstawiono na poniższej ilustracji:  
 
@@ -49,11 +49,11 @@ Najważniejsze składniki replikacji transakcyjnej przedstawiono na poniższej i
 
 **Subskrybent** jest wystąpieniem lub serwerem, który otrzymuje zmiany dokonane przez wydawcę. Subskrybenci mogą być pojedynczymi, w puli i wystąpieniami baz danych w bazie danych Azure SQL Database lub SQL Server. Subskrybent z pojedynczą lub pulą baz danych musi być skonfigurowany jako subskrybent wypychania. 
 
-| Role | Pojedyncze i w puli baz danych | Wystąpienia baz danych |
+| Rola | Pojedyncze i w puli baz danych | Wystąpienia baz danych |
 | :----| :------------- | :--------------- |
-| **Publisher** | Nie | Tak | 
+| **Wydawca** | Nie | Tak | 
 | **Dystrybutor** | Nie | Tak|
-| **Subskrybent ściągania** | Nie | Yes|
+| **Subskrybent ściągania** | Nie | Tak|
 | **Wypychanie subskrybenta**| Tak | Tak|
 | &nbsp; | &nbsp; | &nbsp; |
 
@@ -69,18 +69,18 @@ Istnieją różne [typy replikacji](https://docs.microsoft.com/sql/relational-da
 | [**Zdjęcie**](https://docs.microsoft.com/sql/relational-databases/replication/snapshot-replication) | Tak (tylko jako subskrybent) | Tak|
 | [**Replikacja scalająca**](https://docs.microsoft.com/sql/relational-databases/replication/merge/merge-replication) | Nie | Nie|
 | [**Peer-to-peer**](https://docs.microsoft.com/sql/relational-databases/replication/transactional/peer-to-peer-transactional-replication) | Nie | Nie|
-| [**Kierunk**](https://docs.microsoft.com/sql/relational-databases/replication/transactional/bidirectional-transactional-replication) | Nie | Yes|
+| [**Kierunk**](https://docs.microsoft.com/sql/relational-databases/replication/transactional/bidirectional-transactional-replication) | Nie | Tak|
 | [**Aktualizowalne subskrypcje**](https://docs.microsoft.com/sql/relational-databases/replication/transactional/updatable-subscriptions-for-transactional-replication) | Nie | Nie|
 | &nbsp; | &nbsp; | &nbsp; |
 
   >[!NOTE]
-  > - Próba skonfigurowania replikacji przy użyciu starszej wersji może spowodować wystąpienie błędu MSSQL_REPL20084 (proces nie mógł nawiązać połączenia z subskrybentem) i MSSQ_REPL40532 (nie można otworzyć \<nazwy serwera > żądanej przez login. Logowanie nie powiodło się.
+  > - Próba skonfigurowania replikacji przy użyciu starszej wersji może spowodować wystąpienie błędu MSSQL_REPL20084 (proces nie może połączyć się z subskrybentem) i MSSQ_REPL40532 (nie można otworzyć serwera \<nazwy > żądanym przez nazwę logowania. Logowanie nie powiodło się.
   > - Aby korzystać ze wszystkich funkcji Azure SQL Database, musisz używać najnowszych wersji narzędzi [SQL Server Management Studio (SSMS)](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms) i [SQL Server Data Tools (SSDT)](https://docs.microsoft.com/sql/ssdt/download-sql-server-data-tools-ssdt).
   
   ### <a name="supportability-matrix-for-instance-databases-and-on-premises-systems"></a>Macierz obsługi dla baz danych wystąpień i systemów lokalnych
   Macierz obsługi replikacji dla baz danych wystąpień jest taka sama jak dla SQL Server lokalnego. 
   
-  | **Publisher**   | **Dystrybutor** | **Subscriber** |
+  | **Wydawca**   | **Dystrybutor** | **Subscriber** |
 | :------------   | :-------------- | :------------- |
 | SQL Server 2017 | SQL Server 2017 | SQL Server 2017 <br/> SQL Server 2016 <br/> SQL Server 2014 |
 | SQL Server 2016 | SQL Server 2017 <br/> SQL Server 2016 | SQL Server 2017 <br/>SQL Server 2016 <br/> SQL Server 2014 <br/> SQL Server 2012 |
@@ -154,6 +154,6 @@ W tej konfiguracji Azure SQL Database (pojedyncza, w puli i baza danych wystąpi
 - [Replikacja do wystąpienia zarządzanego](replication-with-sql-database-managed-instance.md)
 - [Tworzenie publikacji](https://docs.microsoft.com/sql/relational-databases/replication/publish/create-a-publication)
 - [Tworzenie subskrypcji wypychanej](https://docs.microsoft.com/sql/relational-databases/replication/create-a-push-subscription/)
-- [Typy replikacji](https://docs.microsoft.com/sql/relational-databases/replication/types-of-replication)
+- [Types of Replication (Typy replikacji)](https://docs.microsoft.com/sql/relational-databases/replication/types-of-replication)
 - [Monitorowanie (replikacja)](https://docs.microsoft.com/sql/relational-databases/replication/monitor/monitoring-replication)
 - [Inicjowanie subskrypcji](https://docs.microsoft.com/sql/relational-databases/replication/initialize-a-subscription)  

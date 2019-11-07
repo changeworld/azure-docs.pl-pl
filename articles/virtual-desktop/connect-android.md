@@ -7,16 +7,16 @@ ms.service: virtual-desktop
 ms.topic: conceptual
 ms.date: 09/26/2019
 ms.author: helohr
-ms.openlocfilehash: c19aa6e0acc936c5b03afdab99ce0b9230838ce2
-ms.sourcegitcommit: e1b6a40a9c9341b33df384aa607ae359e4ab0f53
+ms.openlocfilehash: 41b0c1ced9e66bd58d73683865b2c40afc16c5d3
+ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71339012"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73605846"
 ---
-# <a name="connect-with-the-android-client"></a>Nawiązywanie połączenia z klientem systemu Android
+# <a name="connect-with-the-android-client"></a>Łączenie się z klientem systemu Android
 
-> Dotyczy: System Android 4,1 i nowsze, Chromebooks z ChromeOS 53 i nowszymi.
+> Dotyczy: system Android 4,1 i nowsze, Chromebooks z ChromeOS 53 i nowszymi.
 
 >[!NOTE]
 > Możliwość dostępu do zasobów pulpitu wirtualnego systemu Windows z klienta systemu Android jest obecnie dostępna w wersji zapoznawczej.
@@ -35,7 +35,7 @@ Aby subskrybować źródło danych:
 
 1. W centrum połączenia naciśnij pozycję **+** , a następnie naciśnij pozycję **zdalne źródło danych**.
 2. Wprowadź adres URL źródła danych w polu **adres URL źródła danych** . Adres URL źródła danych może być adresem URL lub adresem e-mail.
-   - Jeśli używasz adresu URL, użyj tego administratora, zwykle <https://rdweb.wvd.microsoft.com>.
+   - Jeśli używasz adresu URL, użyj swojego administratora, który został przez Ciebie podany, zwykle <https://rdweb.wvd.microsoft.com>.
    - Aby użyć poczty e-mail, wprowadź swój adres e-mail. Klient będzie szukać adresu URL skojarzonego z Twoim adresem e-mail, jeśli administrator skonfigurował serwer w taki sposób.
 3. Naciśnij przycisk **dalej**.
 4. Po wyświetleniu monitu podaj swoje poświadczenia.

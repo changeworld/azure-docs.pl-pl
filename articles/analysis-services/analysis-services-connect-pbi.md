@@ -1,18 +1,18 @@
 ---
 title: Nawiązywanie połączenia z Azure Analysis Services przy użyciu Power BI | Microsoft Docs
-description: Dowiedz się, jak nawiązać połączenie z serwerem Azure Analysis Services przy użyciu Power BI.
+description: Dowiedz się, jak nawiązać połączenie z serwerem Azure Analysis Services przy użyciu Power BI. Po nawiązaniu połączenia użytkownicy mogą eksplorować dane modelu.
 author: minewiskan
 ms.service: azure-analysis-services
 ms.topic: conceptual
-ms.date: 07/29/2019
+ms.date: 10/30/2019
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 181a63fda1feddfb654eb32f46632f0656febb82
-ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
+ms.openlocfilehash: db0c00268c343cd99e439bb49460523cf0563c3c
+ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/13/2019
-ms.locfileid: "72295297"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73573098"
 ---
 # <a name="connect-with-power-bi"></a>Łączenie z usługą Power BI
 
@@ -46,7 +46,7 @@ Po utworzeniu serwera na platformie Azure i wdrożeniu modelu tabelarycznego uż
 1. Utwórz plik Power BI Desktop, który ma połączenie na żywo z modelem na serwerze.
 2. W [Power BI](https://powerbi.microsoft.com)kliknij pozycję **Pobierz dane** > **plików**, a następnie Znajdź i wybierz plik pbix.
 
-## <a name="see-also"></a>Zobacz także
-[Nawiązywanie połączenia z Azure Analysis Services](analysis-services-connect.md)   
+## <a name="see-also"></a>Zobacz też
+[Połącz z Azure Analysis Services](analysis-services-connect.md)   
 [Biblioteki klienckie](analysis-services-data-providers.md)
 

@@ -1,5 +1,5 @@
 ---
-title: Przekształcenie filtru w Azure Data Factory mapowaniu przepływu danych | Microsoft Docs
+title: Przekształcenie filtru w przepływie danych mapowania Azure Data Factory
 description: Filtrowanie wierszy przy użyciu transformacji filtru w przepływie danych mapowania Azure Data Factory
 author: kromerm
 ms.author: makromer
@@ -7,18 +7,18 @@ ms.reviewer: daperlov
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 10/16/2019
-ms.openlocfilehash: a4dd53f37a8a963d05a3ad9c49769528e945f6a1
-ms.sourcegitcommit: f29fec8ec945921cc3a89a6e7086127cc1bc1759
+ms.openlocfilehash: 77587d007d9bfcdc1461201f676c79880bd89d6b
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72527372"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73676173"
 ---
 # <a name="filter-transformation-in-mapping-data-flow"></a>Przekształcenie filtru w strumieniu danych mapowania
 
 Przekształcenia filtru umożliwiają filtrowanie wierszy na podstawie warunku. Strumień wyjściowy zawiera wszystkie wiersze, które pasują do warunku filtrowania. Transformacja filtru jest podobna do klauzuli WHERE w SQL.
 
-## <a name="configuration"></a>Konfigurowanie
+## <a name="configuration"></a>Konfiguracja
 
 Użyj konstruktora wyrażeń przepływu danych, aby wprowadzić wyrażenie dla warunku filtru. Aby otworzyć Konstruktora wyrażeń, kliknij niebieską ramkę. Warunek filtru musi być typu Boolean. Aby uzyskać więcej informacji na temat tworzenia wyrażenia, zobacz dokumentację programu [Expression Builder](concepts-data-flow-expression-builder.md) .
 
@@ -37,7 +37,7 @@ Użyj konstruktora wyrażeń przepływu danych, aby wprowadzić wyrażenie dla w
 
 ### <a name="example"></a>Przykład
 
-Poniższy przykład to transformacja podziału warunkowego o nazwie `FilterBefore1960`, która przyjmuje `CleanData` strumienia przychodzącego. Warunek filtru jest `year <= 1960` wyrażenia.
+Poniższy przykład to transformacja podziału warunkowego o nazwie `FilterBefore1960`, która przyjmuje `CleanData`strumienia przychodzącego. Warunek filtru jest `year <= 1960`wyrażenia.
 
 W Data Factory środowisku użytkownika Ta transformacja wygląda jak na poniższym obrazie:
 

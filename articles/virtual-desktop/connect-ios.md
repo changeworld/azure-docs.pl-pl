@@ -7,12 +7,12 @@ ms.service: virtual-desktop
 ms.topic: conceptual
 ms.date: 09/04/2019
 ms.author: helohr
-ms.openlocfilehash: 764ed4fefd1a3aba1f0b7812fa2965505aa34161
-ms.sourcegitcommit: e1b6a40a9c9341b33df384aa607ae359e4ab0f53
+ms.openlocfilehash: bfc7efa6e8ead3b53704e3c9bd189b18cb787618
+ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71338688"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73605829"
 ---
 # <a name="connect-with-the-ios-client"></a>Nawiązywanie połączenia z klientem systemu iOS
 
@@ -28,7 +28,7 @@ Aby zainstalować klienta systemu iOS beta:
 
 1. Zainstaluj aplikację [Apple usługi TestFlight](https://apps.apple.com/us/app/testflight/id899247664) na urządzeniu z systemem iOS.
 2. Na urządzeniu z systemem iOS otwórz przeglądarkę i przejdź do [aka.MS/rdiosbeta](https://aka.ms/rdiosbeta).
-3. Pod etykietą **krok 2: Dołącz do wersji**beta, wybierz pozycję **Rozpocznij testowanie**.
+3. W obszarze Etykieta **krok 2: dołączanie do wersji beta**wybierz pozycję **Rozpocznij testowanie**.
 4. Po przekierowaniu do aplikacji usługi TestFlight wybierz pozycję **Akceptuj**, a następnie wybierz pozycję **Zainstaluj**.
 
 ## <a name="subscribe-to-a-feed"></a>Subskrybowanie kanału informacyjnego
@@ -37,9 +37,9 @@ Zasubskrybuj źródło danych dostarczone przez administratora, aby uzyskać lis
 
 Aby subskrybować źródło danych:
 
-1. W centrum połączenia naciśnij **+** pozycję, a następnie naciśnij pozycję **Dodaj obszar roboczy**.
+1. W centrum połączenia naciśnij pozycję **+** , a następnie naciśnij pozycję **Dodaj obszar roboczy**.
 2. Wprowadź adres URL źródła danych w polu **adres URL źródła danych** . Adres URL źródła danych może być adresem URL lub adresem e-mail.
-   - Jeśli używasz adresu URL, użyj tego administratora. Zwykle jest <https://rdweb.wvd.microsoft.com>to adres URL.
+   - Jeśli używasz adresu URL, użyj tego administratora. Zwykle adres URL jest <https://rdweb.wvd.microsoft.com>.
    - Aby użyć poczty e-mail, wprowadź swój adres e-mail. Oznacza to, że klient może wyszukać adres URL skojarzony z Twoim adresem e-mail, jeśli administrator skonfigurował serwer w taki sposób.
 3. Naciśnij przycisk **dalej**.
 4. Po wyświetleniu monitu podaj swoje poświadczenia.

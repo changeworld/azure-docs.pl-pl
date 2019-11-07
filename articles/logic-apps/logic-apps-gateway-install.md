@@ -9,20 +9,20 @@ ms.author: estfan
 ms.reviewer: arthii, LADocs
 ms.topic: article
 ms.date: 10/18/2019
-ms.openlocfilehash: 6467937e2aca08e234cb136c5f610503627921fb
-ms.sourcegitcommit: 38251963cf3b8c9373929e071b50fd9049942b37
+ms.openlocfilehash: d515982dc2937b660de75ee723cebe39b33bec7d
+ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/29/2019
-ms.locfileid: "73042204"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73580866"
 ---
 # <a name="install-on-premises-data-gateway-for-azure-logic-apps"></a>Zainstaluj lokalną bramę danych dla Azure Logic Apps
 
-Przed [nawiązaniem połączenia z lokalnymi źródłami danych z Azure Logic Apps](../logic-apps/logic-apps-gateway-connection.md)Pobierz i zainstaluj lokalną [bramę danych](https://aka.ms/on-premises-data-gateway-installer) na komputerze lokalnym. Brama działa jako most, który zapewnia szybkie przesyłanie i szyfrowanie danych między źródłami danych w środowisku lokalnym i aplikacjami logiki. Możesz użyć tej samej instalacji bramy z innymi usługami w chmurze, takimi jak Power BI, Microsoft Flow, PowerApps i Azure Analysis Services. Aby uzyskać informacje o sposobach korzystania z bramy za pomocą tych usług, zobacz następujące artykuły:
+Przed [nawiązaniem połączenia z lokalnymi źródłami danych z Azure Logic Apps](../logic-apps/logic-apps-gateway-connection.md)Pobierz i zainstaluj lokalną [bramę danych](https://aka.ms/on-premises-data-gateway-installer) na komputerze lokalnym. Brama działa jako most, który zapewnia szybkie przesyłanie i szyfrowanie danych między źródłami danych w środowisku lokalnym i aplikacjami logiki. Możesz użyć tej samej instalacji bramy z innymi usługami w chmurze, takich jak Power BI, Automatyzacja, aplikacje i Azure Analysis Services. Aby uzyskać informacje o sposobach korzystania z bramy za pomocą tych usług, zobacz następujące artykuły:
 
 * [Lokalna Brama danych Power BI firmy Microsoft](https://powerbi.microsoft.com/documentation/powerbi-gateway-onprem/)
-* [Microsoft PowerApps lokalnej bramy danych](https://powerapps.microsoft.com/tutorials/gateway-management/)
-* [Microsoft Flow lokalnej bramy danych](https://flow.microsoft.com/documentation/gateway-manage/)
+* [Lokalna Brama danych firmy Microsoft dla aplikacji zaawansowanych](https://powerapps.microsoft.com/tutorials/gateway-management/)
+* [Automatyzacja lokalnej bramy danych](https://flow.microsoft.com/documentation/gateway-manage/)
 * [Azure Analysis Services lokalnej bramy danych](../analysis-services/analysis-services-gateway.md)
 
 W tym artykule pokazano, jak pobrać, zainstalować i skonfigurować lokalną bramę danych, aby można było uzyskać dostęp do lokalnych źródeł danych z Azure Logic Apps. Możesz również dowiedzieć się więcej o tym [, jak Brama danych działa](#gateway-cloud-service) w dalszej części tego tematu. Aby uzyskać więcej informacji na temat bramy, zobacz [co to jest brama lokalna](https://docs.microsoft.com/data-integration/gateway/service-gateway-onprem)?
@@ -105,7 +105,7 @@ W tym artykule pokazano, jak pobrać, zainstalować i skonfigurować lokalną br
 
    Instalacja bramy może być połączona tylko z jednym kontem platformy Azure.
 
-1. Wybierz pozycję **zarejestruj nową bramę na tym komputerze** > **dalej**. Ten krok rejestruje instalację bramy w [usłudze bramy w chmurze](#gateway-cloud-service).
+1. Wybierz pozycję **zarejestruj nową bramę na tym komputerze** , > **dalej**. Ten krok rejestruje instalację bramy w [usłudze bramy w chmurze](#gateway-cloud-service).
 
    ![Zarejestruj bramę na komputerze lokalnym](./media/logic-apps-gateway-install/register-gateway-local-computer.png)
 
@@ -140,7 +140,7 @@ W tym artykule pokazano, jak pobrać, zainstalować i skonfigurować lokalną br
 
       ![Wybierz inny region dla usługi bramy](./media/logic-apps-gateway-install/select-region-gateway-install.png)
 
-1. Przejrzyj informacje w oknie potwierdzenie końcowe. Ten przykład używa tego samego konta dla Logic Apps, Power BI, PowerApps i Microsoft Flow, aby brama była dostępna dla wszystkich tych usług. Gdy wszystko będzie gotowe, wybierz pozycję **Zamknij**.
+1. Przejrzyj informacje w oknie potwierdzenie końcowe. Ten przykład używa tego samego konta dla Logic Apps, Power BI, aplikacji zaawansowanych i automatyzacji, aby brama była dostępna dla wszystkich tych usług. Gdy wszystko będzie gotowe, wybierz pozycję **Zamknij**.
 
    ![Potwierdź informacje o bramie danych](./media/logic-apps-gateway-install/finished-gateway-default-location.png)
 
@@ -179,7 +179,7 @@ Jeśli konieczna jest zmiana lokalizacji bramy, przeniesienie instalacji bramy n
 
 1. Po otwarciu Instalatora Zaloguj się przy użyciu tego samego konta platformy Azure, które zostało użyte do zainstalowania bramy.
 
-1. Wybierz kolejno pozycje **Migruj, Przywróć lub przejęcie istniejącej bramy**  > **dalej**, na przykład:
+1. Wybierz kolejno pozycje **Migruj, Przywróć lub przejęcie istniejącej bramy** > **dalej**, na przykład:
 
    ![Wybieranie opcji "Migruj, Przywróć lub przejęcie istniejącej bramy"](./media/logic-apps-gateway-install/migrate-recover-take-over-gateway.png)
 

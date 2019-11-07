@@ -1,182 +1,188 @@
 ---
-title: Włączanie inspekcji dla usług domenowych Azure AD | Dokumentacja firmy Microsoft
-description: Włączanie inspekcji dla usług domenowych Azure AD
+title: Włącz inspekcje zabezpieczeń dla Azure AD Domain Services | Microsoft Docs
+description: Dowiedz się, jak włączyć inspekcje zabezpieczeń w celu scentralizowania rejestrowania zdarzeń na potrzeby analizy i alertów w Azure AD Domain Services
 services: active-directory-ds
-documentationcenter: ''
 author: iainfoulds
 manager: daveba
-editor: curtand
 ms.assetid: 662362c3-1a5e-4e94-ae09-8e4254443697
 ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
-ms.date: 06/28/2019
+ms.date: 10/31/2019
 ms.author: iainfou
-ms.openlocfilehash: 3105296b3c670d3d44789c93878fa1fc6076973b
-ms.sourcegitcommit: d2785f020e134c3680ca1c8500aa2c0211aa1e24
+ms.openlocfilehash: 6ff996129cc140c9154edb8fb60840cd48017a5e
+ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/04/2019
-ms.locfileid: "67566497"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73569801"
 ---
-# <a name="enable-security-audits-for-azure-ad-domain-services-preview"></a>Włączanie inspekcji dla usług domenowych Azure AD (wersja zapoznawcza)
-Inspekcja zabezpieczeń usługi w usłudze Azure AD Domain umożliwia klientom korzystanie z portalu usługi Azure AD Domain do strumienia zdarzeń inspekcji zabezpieczeń zasobów docelowych. Zasoby, które mogą odbierać zdarzenia te obejmują usługi Azure Storage, obszary robocze usługi Azure Log Analytics lub Centrum zdarzeń platformy Azure. Wkrótce po włączeniu zdarzeń inspekcji zabezpieczeń usług domenowych Azure AD wysyła zdarzenia inspekcji dla wybranej kategorii do zasobu docelowego. Zdarzenia inspekcji zabezpieczeń umożliwiać klientom archiwum poddane inspekcji zdarzenia w usłudze Azure storage. Ponadto klienci mogą przesyłanie strumieniowe zdarzeń do zabezpieczeń informacji i zdarzeń oprogramowania do zarządzania (SIEM) (lub odpowiednik) przy użyciu usługi event hubs lub własnych analizy i szczegółowych informacji za pomocą usługi Azure Log Analytics w witrynie Azure portal. 
+# <a name="enable-security-audits-for-azure-active-directory-domain-services-preview"></a>Włącz inspekcje zabezpieczeń dla Azure Active Directory Domain Services (wersja zapoznawcza)
+
+Inspekcje zabezpieczeń w programie Azure Active Directory Domain Services (Azure AD DS) umożliwiają zdarzenia zabezpieczeń usługi Azure Stream do zasobów. Te zasoby obejmują usługę Azure Storage, obszary robocze platformy Azure Log Analytics lub usługę Azure Event Hub. Po włączeniu zdarzeń inspekcji zabezpieczeń usługa Azure AD DS wysyła wszystkie zdarzenia poddane inspekcji dla wybranej kategorii do zamierzonego zasobu. Zdarzenia można archiwizować do usługi Azure Storage i przesyłać strumieniowo zdarzenia do oprogramowania do zarządzania informacjami i zdarzeniami zabezpieczeń (SIEM) (lub równoważne) przy użyciu usługi Azure Event Hubs lub do własnej analizy oraz przy użyciu obszarów roboczych usługi Azure Log Analytics z Azure Portal.
 
 > [!IMPORTANT]
-> Inspekcja zabezpieczeń platformy Azure w usługach domenowych AD jest dostępne tylko w przypadku wystąpienia oparte na usłudze Azure Resource Manager dla usługi Azure AD Domain Services.
->
->
+> Inspekcje zabezpieczeń AD DS platformy Azure są dostępne tylko dla wystąpień opartych na Azure Resource Manager. Aby uzyskać informacje na temat migracji, zobacz [migrowanie AD DS platformy Azure z klasycznego modelu sieci wirtualnej do Menedżer zasobów][migrate-azure-adds].
 
-## <a name="auditing-event-categories"></a>Kategorie zdarzeń inspekcji
-Inspekcja zabezpieczeń platformy Azure w usługach domenowych AD wyrównane tradycyjny inspekcji, który jest dostarczany dla kontrolerów domeny Active Directory Domain Services. Ponowne używanie istniejących wzorców inspekcji gwarantuje, że ta sama logika mogą być używane podczas analizowania zdarzenia. Inspekcja zabezpieczeń platformy Azure w usługach domenowych AD zawiera następujące kategorie zdarzeń.
+## <a name="audit-event-categories"></a>Kategorie zdarzeń inspekcji
+
+Inspekcje zabezpieczeń AD DS systemu Azure są wyrównane z tradycyjnym inspekcją dla tradycyjnych AD DS kontrolerów domeny. W środowiskach hybrydowych można ponownie używać istniejących wzorców inspekcji, aby podczas analizowania zdarzeń można było używać tej samej logiki. W zależności od scenariusza potrzebnego do rozwiązywania problemów lub analizowania należy zastosować różne kategorie zdarzeń inspekcji.
+
+Dostępne są następujące kategorie zdarzeń inspekcji:
 
 | Nazwa kategorii inspekcji | Opis |
 |:---|:---|
-| Konto logowania|Przeprowadza inspekcję prób uwierzytelnienia dane konta na kontrolerze domeny lub na lokalnym Menedżera kont zabezpieczeń (SAM).</p>Logowanie i wylogowywanie, ustawienia zasad i zdarzenia śledzenia prób uzyskania dostępu do określonego komputera. Ustawienia i zdarzenia w tej kategorii należy skoncentrować się na konta bazy danych, który jest używany. Ta kategoria zawiera następujące podkategorie:<ul><li>[Inspekcja weryfikacji poświadczeń](https://docs.microsoft.com/windows/security/threat-protection/auditing/audit-credential-validation)</li><li>[Inspekcja usługi uwierzytelniania Kerberos](https://docs.microsoft.com/windows/security/threat-protection/auditing/audit-kerberos-authentication-service)</li><li>[Inspekcja operacji biletów usługi Kerberos](https://docs.microsoft.com/windows/security/threat-protection/auditing/audit-kerberos-service-ticket-operations)</li><li>[Inspekcja innych zdarzeń logowania/wylogowania](https://docs.microsoft.com/windows/security/threat-protection/auditing/audit-other-logonlogoff-events)</li></ul>|
-| Zarządzanie kontami|Inspekcje zmienia się na konta użytkowników i komputerów i grup. Ta kategoria zawiera następujące podkategorie:<ul><li>[Inspekcja zarządzania grupami aplikacji](https://docs.microsoft.com/windows/security/threat-protection/auditing/audit-application-group-management)</li><li>[Inspekcja zarządzania kontami komputerów](https://docs.microsoft.com/windows/security/threat-protection/auditing/audit-computer-account-management)</li><li>[Inspekcja zarządzania grupami dystrybucyjnymi](https://docs.microsoft.com/windows/security/threat-protection/auditing/audit-distribution-group-management)</li><li>[Przeprowadź inspekcję zarządzania kontami, inne](https://docs.microsoft.com/windows/security/threat-protection/auditing/audit-other-account-management-events)</li><li>[Inspekcja zarządzania grupami zabezpieczeń](https://docs.microsoft.com/windows/security/threat-protection/auditing/audit-security-group-management)</li><li>[Inspekcja zarządzania kontami użytkowników](https://docs.microsoft.com/windows/security/threat-protection/auditing/audit-user-account-management)</li></ul>|
-| Szczegóły śledzenia|Działania inspekcji poszczególnych aplikacji i użytkowników na tym komputerze i zrozumienie sposobu korzystania z komputera. Ta kategoria zawiera następujące podkategorie:<ul><li>[Inspekcja działań DPAPI](https://docs.microsoft.com/windows/security/threat-protection/auditing/audit-dpapi-activity)</li><li>[Inspekcja aktywności PNP](https://docs.microsoft.com/windows/security/threat-protection/auditing/audit-pnp-activity)</li><li>[Tworzenie procesu inspekcji](https://docs.microsoft.com/windows/security/threat-protection/auditing/audit-process-creation)</li><li>[Inspekcja kończenia procesu](https://docs.microsoft.com/windows/security/threat-protection/auditing/audit-process-termination)</li><li>[Inspekcja zdarzeń RPC](https://docs.microsoft.com/windows/security/threat-protection/auditing/audit-rpc-events)</li></ul>|
-| Dostęp do usług katalogowych|Inspekcje podejmie próbę uzyskania dostępu i modyfikowania obiektów w usługach domenowych w usłudze Active Directory (AD DS). Inspekcja, te zdarzenia są rejestrowane tylko na kontrolerach domeny. Ta kategoria zawiera następujące podkategorie:<ul><li>[Inspekcja szczegółowej replikacji usługi katalogowej](https://docs.microsoft.com/windows/security/threat-protection/auditing/audit-detailed-directory-service-replication)</li><li>[Przeprowadź inspekcję dostępu do usługi katalogowej](https://docs.microsoft.com/windows/security/threat-protection/auditing/audit-directory-service-access)</li><li>[Inspekcja zmian usługi katalogowej](https://docs.microsoft.com/windows/security/threat-protection/auditing/audit-directory-service-changes)</li><li>[Inspekcja replikacji usługi katalogowej](https://docs.microsoft.com/windows/security/threat-protection/auditing/audit-directory-service-replication)</li></ul>|
-| Logowanie i wylogowywanie|Przeprowadza inspekcję prób logowania na komputerze interaktywnie lub za pośrednictwem sieci. Zdarzenia te są przydatne do śledzenia działań użytkownika oraz identyfikowanie potencjalnych ataków na zasoby sieciowe. Ta kategoria zawiera następujące podkategorie:<ul><li>[Inspekcja blokady konta](https://docs.microsoft.com/windows/security/threat-protection/auditing/audit-account-lockout)</li><li>[Inspekcja oświadczenia użytkownika i urządzenia](https://docs.microsoft.com/windows/security/threat-protection/auditing/audit-user-device-claims)</li><li>[Tryb rozszerzony protokołu IPsec inspekcji](https://docs.microsoft.com/windows/security/threat-protection/auditing/audit-ipsec-extended-mode)</li><li>[Członkostwo w grupie inspekcji](https://docs.microsoft.com/windows/security/threat-protection/auditing/audit-group-membership)</li><li>[Inspekcja trybu głównego protokołu IPsec](https://docs.microsoft.com/windows/security/threat-protection/auditing/audit-ipsec-main-mode)</li><li>[Inspekcja trybu szybkiego protokołu IPsec](https://docs.microsoft.com/windows/security/threat-protection/auditing/audit-ipsec-quick-mode)</li><li>[Inspekcja wylogowania](https://docs.microsoft.com/windows/security/threat-protection/auditing/audit-logoff)</li><li>[Inspekcja logowania](https://docs.microsoft.com/windows/security/threat-protection/auditing/audit-logon)</li><li>[Inspekcja serwera zasad sieciowych](https://docs.microsoft.com/windows/security/threat-protection/auditing/audit-network-policy-server)</li><li>[Inspekcja innych zdarzeń logowania/wylogowania](https://docs.microsoft.com/windows/security/threat-protection/auditing/audit-other-logonlogoff-events)</li><li>[Inspekcja logowania specjalnego](https://docs.microsoft.com/windows/security/threat-protection/auditing/audit-special-logon)</li></ul>|
-|Dostęp do obiektów| Przeprowadza inspekcję prób uzyskania dostępu do określonych obiektów lub typów obiektów w sieci lub na komputerze. Ta kategoria zawiera następujące podkategorie:<ul><li>[Wygenerowano aplikację inspekcji](https://docs.microsoft.com/windows/security/threat-protection/auditing/audit-application-generated)</li><li>[Inspekcja usług certyfikacji](https://docs.microsoft.com/windows/security/threat-protection/auditing/audit-certification-services)</li><li>[Inspekcja szczegółowego udziału plików](https://docs.microsoft.com/windows/security/threat-protection/auditing/audit-detailed-file-share)</li><li>[Inspekcja udziału plików](https://docs.microsoft.com/windows/security/threat-protection/auditing/audit-file-share)</li><li>[Przeprowadź inspekcję systemu plików](https://docs.microsoft.com/windows/security/threat-protection/auditing/audit-file-system)</li><li>[Inspekcja połączenia platformy filtrowania](https://docs.microsoft.com/windows/security/threat-protection/auditing/audit-filtering-platform-connection)</li><li>[Inspekcja porzucania pakietów platformy filtrowania](https://docs.microsoft.com/windows/security/threat-protection/auditing/audit-filtering-platform-packet-drop)</li><li>[Inspekcja manipulowania dojściem](https://docs.microsoft.com/windows/security/threat-protection/auditing/audit-handle-manipulation)</li><li>[Inspekcja obiektu jądra](https://docs.microsoft.com/windows/security/threat-protection/auditing/audit-kernel-object)</li><li>[Inspekcja innych zdarzeń dostępu do obiektu](https://docs.microsoft.com/windows/security/threat-protection/auditing/audit-other-object-access-events)</li><li>[Inspekcja rejestru](https://docs.microsoft.com/windows/security/threat-protection/auditing/audit-registry)</li><li>[Inspekcja magazynu wymiennego](https://docs.microsoft.com/windows/security/threat-protection/auditing/audit-removable-storage)</li><li>[Inspekcja SAM](https://docs.microsoft.com/windows/security/threat-protection/auditing/audit-sam)</li><li>[Przeprowadź inspekcję przemieszczania centralnych zasad dostępu](https://docs.microsoft.com/windows/security/threat-protection/auditing/audit-central-access-policy-staging)</li></ul>|
-|Zmiany zasad|Inspekcji zmian zasad zabezpieczeń ważne do systemu lokalnego lub w sieci. Zasady zwykle są wyznaczane przez administratorów, które ułatwia zasobów bezpiecznej sieci. Monitorowanie zmian i próby zmiany tych zasad może być istotnym elementem zarządzania zabezpieczeniami sieci. Ta kategoria zawiera następujące podkategorie:<ul><li>[Inspekcja zmiany zasad inspekcji](https://docs.microsoft.com/windows/security/threat-protection/auditing/audit-audit-policy-change)</li><li>[Inspekcja zmiany zasad uwierzytelniania](https://docs.microsoft.com/windows/security/threat-protection/auditing/audit-authentication-policy-change)</li><li>[Inspekcja zmiany zasad autoryzacji](https://docs.microsoft.com/windows/security/threat-protection/auditing/audit-authorization-policy-change)</li><li>[Inspekcja zmiany zasad platformy filtrowania](https://docs.microsoft.com/windows/security/threat-protection/auditing/audit-filtering-platform-policy-change)</li><li>[Inspekcja zmiany zasad poziomie reguł MPSSVC](https://docs.microsoft.com/windows/security/threat-protection/auditing/audit-mpssvc-rule-level-policy-change)</li><li>[Inne zmiany zasad inspekcji](https://docs.microsoft.com/windows/security/threat-protection/auditing/audit-other-policy-change-events)</li></ul>|
-|Użycie uprawnień| Przeprowadza inspekcję użycia niektórych uprawnień na jednym lub kilku systemów. Ta kategoria zawiera następujące podkategorie:<ul><li>[Inspekcja użycia zwykłych uprawnień](https://docs.microsoft.com/windows/security/threat-protection/auditing/audit-non-sensitive-privilege-use)</li><li>[Inspekcja użycia poufnych uprawnień](https://docs.microsoft.com/windows/security/threat-protection/auditing/audit-sensitive-privilege-use)</li><li>[Inspekcja innych zdarzeń użycia uprawnień](https://docs.microsoft.com/windows/security/threat-protection/auditing/audit-other-privilege-use-events)</li></ul>|
-|System| Inspekcji poziom systemu zmiany na komputerze, nie są uwzględnione w innych kategoriach, które dotyczą potencjalne zabezpieczeń. Ta kategoria zawiera następujące podkategorie:<ul><li>[Audit IPsec Driver](https://docs.microsoft.com/windows/security/threat-protection/auditing/audit-ipsec-driver)</li><li>[Inspekcja innych zdarzeń systemowych](https://docs.microsoft.com/windows/security/threat-protection/auditing/audit-other-system-events)</li><li>[Inspekcja zmian stanu zabezpieczeń](https://docs.microsoft.com/windows/security/threat-protection/auditing/audit-security-state-change)</li><li>[Inspekcja rozszerzenia systemu zabezpieczeń](https://docs.microsoft.com/windows/security/threat-protection/auditing/audit-security-system-extension)</li><li>[Inspekcja integralności systemu](https://docs.microsoft.com/windows/security/threat-protection/auditing/audit-system-integrity)</li></ul>|
+| Logowanie do konta|Inspekcje próbują uwierzytelnić dane konta na kontrolerze domeny lub w lokalnym Menedżerze kont zabezpieczeń (SAM).</p>Ustawienia zasad logowania i wylogowywania oraz zdarzenia śledzą próby dostępu do określonego komputera. Ustawienia i zdarzenia w tej kategorii koncentrują się na używanej bazie danych kont. Ta kategoria zawiera następujące podkategorie:<ul><li>[Inspekcja weryfikacji poświadczeń](https://docs.microsoft.com/windows/security/threat-protection/auditing/audit-credential-validation)</li><li>[Inspekcja usługi uwierzytelniania Kerberos](https://docs.microsoft.com/windows/security/threat-protection/auditing/audit-kerberos-authentication-service)</li><li>[Inspekcja operacji biletów usługi Kerberos](https://docs.microsoft.com/windows/security/threat-protection/auditing/audit-kerberos-service-ticket-operations)</li><li>[Inspekcja innych zdarzeń logowania/wylogowywania](https://docs.microsoft.com/windows/security/threat-protection/auditing/audit-other-logonlogoff-events)</li></ul>|
+| Zarządzanie kontami|Inspekcja zmian kont użytkowników i komputerów oraz grup. Ta kategoria zawiera następujące podkategorie:<ul><li>[Inspekcja zarządzania grupami aplikacji](https://docs.microsoft.com/windows/security/threat-protection/auditing/audit-application-group-management)</li><li>[Inspekcja zarządzania kontami komputerów](https://docs.microsoft.com/windows/security/threat-protection/auditing/audit-computer-account-management)</li><li>[Inspekcja zarządzania grupami dystrybucyjnymi](https://docs.microsoft.com/windows/security/threat-protection/auditing/audit-distribution-group-management)</li><li>[Inspekcja zarządzania innymi kontami](https://docs.microsoft.com/windows/security/threat-protection/auditing/audit-other-account-management-events)</li><li>[Inspekcja zarządzania grupami zabezpieczeń](https://docs.microsoft.com/windows/security/threat-protection/auditing/audit-security-group-management)</li><li>[Inspekcja zarządzania kontami użytkowników](https://docs.microsoft.com/windows/security/threat-protection/auditing/audit-user-account-management)</li></ul>|
+| Śledzenie szczegółów|Przeprowadza inspekcję działań poszczególnych aplikacji i użytkowników na tym komputerze oraz zrozumienie sposobu korzystania z komputera. Ta kategoria zawiera następujące podkategorie:<ul><li>[Inspekcja aktywności DPAPI](https://docs.microsoft.com/windows/security/threat-protection/auditing/audit-dpapi-activity)</li><li>[Inspekcja aktywności PNP](https://docs.microsoft.com/windows/security/threat-protection/auditing/audit-pnp-activity)</li><li>[Tworzenie procesu inspekcji](https://docs.microsoft.com/windows/security/threat-protection/auditing/audit-process-creation)</li><li>[Zakończenie procesu inspekcji](https://docs.microsoft.com/windows/security/threat-protection/auditing/audit-process-termination)</li><li>[Inspekcja zdarzeń RPC](https://docs.microsoft.com/windows/security/threat-protection/auditing/audit-rpc-events)</li></ul>|
+| Dostęp do usług katalogowych|Inspekcje próbują uzyskać dostęp i zmodyfikować obiekty w Active Directory Domain Services (AD DS). Te zdarzenia inspekcji są rejestrowane tylko na kontrolerach domeny. Ta kategoria zawiera następujące podkategorie:<ul><li>[Inspekcja szczegółowej replikacji usługi katalogowej](https://docs.microsoft.com/windows/security/threat-protection/auditing/audit-detailed-directory-service-replication)</li><li>[Inspekcja dostępu do usługi katalogowej](https://docs.microsoft.com/windows/security/threat-protection/auditing/audit-directory-service-access)</li><li>[Inspekcja zmian usługi katalogowej](https://docs.microsoft.com/windows/security/threat-protection/auditing/audit-directory-service-changes)</li><li>[Inspekcja replikacji usługi katalogowej](https://docs.microsoft.com/windows/security/threat-protection/auditing/audit-directory-service-replication)</li></ul>|
+| Logowanie-wylogowywanie|Inspekcje próbują zalogować się na komputerze interaktywnie lub za pośrednictwem sieci. Te zdarzenia są przydatne do śledzenia aktywności użytkownika i identyfikowania potencjalnych ataków na zasoby sieciowe. Ta kategoria zawiera następujące podkategorie:<ul><li>[Inspekcja blokady konta](https://docs.microsoft.com/windows/security/threat-protection/auditing/audit-account-lockout)</li><li>[Inspekcja oświadczeń użytkowników/urządzeń](https://docs.microsoft.com/windows/security/threat-protection/auditing/audit-user-device-claims)</li><li>[Inspekcja trybu rozszerzonego protokołu IPsec](https://docs.microsoft.com/windows/security/threat-protection/auditing/audit-ipsec-extended-mode)</li><li>[Inspekcja członkostwa w grupie](https://docs.microsoft.com/windows/security/threat-protection/auditing/audit-group-membership)</li><li>[Inspekcja trybu głównego protokołu IPsec](https://docs.microsoft.com/windows/security/threat-protection/auditing/audit-ipsec-main-mode)</li><li>[Inspekcja trybu szybkiego protokołu IPsec](https://docs.microsoft.com/windows/security/threat-protection/auditing/audit-ipsec-quick-mode)</li><li>[Inspekcja wylogowania](https://docs.microsoft.com/windows/security/threat-protection/auditing/audit-logoff)</li><li>[Inspekcja logowania](https://docs.microsoft.com/windows/security/threat-protection/auditing/audit-logon)</li><li>[Inspekcja serwera zasad sieciowych](https://docs.microsoft.com/windows/security/threat-protection/auditing/audit-network-policy-server)</li><li>[Inspekcja innych zdarzeń logowania/wylogowywania](https://docs.microsoft.com/windows/security/threat-protection/auditing/audit-other-logonlogoff-events)</li><li>[Inspekcja logowania specjalnego](https://docs.microsoft.com/windows/security/threat-protection/auditing/audit-special-logon)</li></ul>|
+|Dostęp do obiektów| Inspekcje próbuje uzyskać dostęp do określonych obiektów lub typów obiektów w sieci lub na komputerze. Ta kategoria zawiera następujące podkategorie:<ul><li>[Wygenerowano inspekcję aplikacji](https://docs.microsoft.com/windows/security/threat-protection/auditing/audit-application-generated)</li><li>[Inspekcja usług certyfikacji](https://docs.microsoft.com/windows/security/threat-protection/auditing/audit-certification-services)</li><li>[Inspekcja szczegółowego udziału plików](https://docs.microsoft.com/windows/security/threat-protection/auditing/audit-detailed-file-share)</li><li>[Inspekcja udziału plików](https://docs.microsoft.com/windows/security/threat-protection/auditing/audit-file-share)</li><li>[Inspekcja systemu plików](https://docs.microsoft.com/windows/security/threat-protection/auditing/audit-file-system)</li><li>[Inspekcja połączenia platformy filtrowania](https://docs.microsoft.com/windows/security/threat-protection/auditing/audit-filtering-platform-connection)</li><li>[Porzucanie pakietów na platformie filtrowania inspekcji](https://docs.microsoft.com/windows/security/threat-protection/auditing/audit-filtering-platform-packet-drop)</li><li>[Inspekcja manipulowania obsługą](https://docs.microsoft.com/windows/security/threat-protection/auditing/audit-handle-manipulation)</li><li>[Inspekcja obiektu jądra](https://docs.microsoft.com/windows/security/threat-protection/auditing/audit-kernel-object)</li><li>[Inspekcja innych zdarzeń dostępu do obiektów](https://docs.microsoft.com/windows/security/threat-protection/auditing/audit-other-object-access-events)</li><li>[Inspekcja rejestru](https://docs.microsoft.com/windows/security/threat-protection/auditing/audit-registry)</li><li>[Inspekcja magazynu wymiennego](https://docs.microsoft.com/windows/security/threat-protection/auditing/audit-removable-storage)</li><li>[Inspekcja — SAM](https://docs.microsoft.com/windows/security/threat-protection/auditing/audit-sam)</li><li>[Inspekcja centralnych zasad dostępu tymczasowych](https://docs.microsoft.com/windows/security/threat-protection/auditing/audit-central-access-policy-staging)</li></ul>|
+|Zmiana zasad|Inspekcja zmian ważnych zasad zabezpieczeń w systemie lokalnym lub w sieci. Zasady są zwykle określane przez administratorów, aby pomóc w zabezpieczaniu zasobów sieciowych. Monitorowanie zmian lub próba zmiany tych zasad może być ważnym aspektem zarządzania zabezpieczeniami w sieci. Ta kategoria zawiera następujące podkategorie:<ul><li>[Inspekcja zmian zasad inspekcji](https://docs.microsoft.com/windows/security/threat-protection/auditing/audit-audit-policy-change)</li><li>[Inspekcja zmian zasad uwierzytelniania](https://docs.microsoft.com/windows/security/threat-protection/auditing/audit-authentication-policy-change)</li><li>[Inspekcja zmiany zasad autoryzacji](https://docs.microsoft.com/windows/security/threat-protection/auditing/audit-authorization-policy-change)</li><li>[Inspekcja zmian zasad platformy filtrowania](https://docs.microsoft.com/windows/security/threat-protection/auditing/audit-filtering-platform-policy-change)</li><li>[Inspekcja zmian zasad na poziomie reguły MPSSVC](https://docs.microsoft.com/windows/security/threat-protection/auditing/audit-mpssvc-rule-level-policy-change)</li><li>[Inspekcja innych zmian zasad](https://docs.microsoft.com/windows/security/threat-protection/auditing/audit-other-policy-change-events)</li></ul>|
+|Użycie uprawnień| Przeprowadza inspekcję używania określonych uprawnień w jednym lub wielu systemach. Ta kategoria zawiera następujące podkategorie:<ul><li>[Inspekcja użycia uprawnień niewrażliwych](https://docs.microsoft.com/windows/security/threat-protection/auditing/audit-non-sensitive-privilege-use)</li><li>[Inspekcja użycia uprawnień poufnych](https://docs.microsoft.com/windows/security/threat-protection/auditing/audit-sensitive-privilege-use)</li><li>[Inspekcja innych zdarzeń użycia uprawnień](https://docs.microsoft.com/windows/security/threat-protection/auditing/audit-other-privilege-use-events)</li></ul>|
+|System| Przeprowadza inspekcję zmian na poziomie systemu na komputerze nieuwzględnionym w innych kategoriach i ma potencjalne konsekwencje dla bezpieczeństwa. Ta kategoria zawiera następujące podkategorie:<ul><li>[Inspekcja sterownika IPsec](https://docs.microsoft.com/windows/security/threat-protection/auditing/audit-ipsec-driver)</li><li>[Inspekcja innych zdarzeń systemowych](https://docs.microsoft.com/windows/security/threat-protection/auditing/audit-other-system-events)</li><li>[Inspekcja zmiany stanu zabezpieczeń](https://docs.microsoft.com/windows/security/threat-protection/auditing/audit-security-state-change)</li><li>[Inspekcja rozszerzenia systemu zabezpieczeń](https://docs.microsoft.com/windows/security/threat-protection/auditing/audit-security-system-extension)</li><li>[Inspekcja integralności systemu](https://docs.microsoft.com/windows/security/threat-protection/auditing/audit-system-integrity)</li></ul>|
 
-## <a name="event-ids-per-category"></a>Identyfikatory zdarzeń według kategorii
- Inspekcji usługi Azure AD Domain Services zabezpieczeń rejestruje następujące identyfikatory zdarzeń, gdy określonej akcji wyzwala zdarzenie inspekcji.
+## <a name="event-ids-per-category"></a>Identyfikatory zdarzeń na kategorię
 
-| Nazwa kategorii zdarzenia | Identyfikatory zdarzeń |
+ Inspekcje zabezpieczeń usługi Azure AD DS rejestruje następujące identyfikatory zdarzeń, gdy określona akcja wyzwala zdarzenie podlegające inspekcji:
+
+| Nazwa kategorii zdarzeń | Identyfikatory zdarzeń |
 |:---|:---|
-|Zabezpieczenia logowania konta|4767, 4774, 4775, 4776, 4777|
-|Zabezpieczenia zarządzania konta|4720, 4722, 4723, 4724, 4725, 4726, 4727, 4728, 4729, 4730, 4731, 4732, 4733, 4734, 4735, 4737, 4738, 4740, 4741, 4742, 4743, 4754, 4755, 4756, 4757, 4758, 4764, 4765, 4766, 4780, 4781, 4782, 4793, 4798, 4799, 5376, 5377|
+|Zabezpieczenia logowania do konta|4767, 4774, 4775, 4776, 4777|
+|Zabezpieczenia zarządzania kontami|4720, 4722, 4723, 4724, 4725, 4726, 4727, 4728, 4729, 4730, 4731, 4732, 4733, 4734, 4735, 4737, 4738, 4740, 4741, 4742, 4743, 4754, 4755, 4756, 4757, 4758, 4764, 4765, 4766, 4780|
 |Szczegóły śledzenia zabezpieczeń|Brak|
-|Zabezpieczenia dostępu do usługi Katalogowej|5136, 5137, 5138, 5139, 5141|
-|Logowanie i wylogowywanie zabezpieczeń|4624, 4625, 4634, 4647, 4648, 4672, 4675, 4964|
-|Zabezpieczenia dostępu do obiektu|Brak|
-|Zasady zmian zabezpieczeń|4670, 4703, 4704, 4705, 4706, 4707, 4713, 4715, 4716, 4717, 4718, 4719, 4739, 4864, 4865, 4866, 4867, 4904, 4906, 4911, 4912|
-|Korzystanie z uprawnień zabezpieczeń|4985|
+|Zabezpieczenia dostępu do DS|5136, 5137, 5138, 5139, 5141|
+|Zabezpieczenia wylogowywania|4624, 4625, 4634, 4647, 4648, 4672, 4675, 4964|
+|Zabezpieczenia dostępu do obiektów|Brak|
+|Zabezpieczenia zmiany zasad|4670, 4703, 4704, 4705, 4706, 4707, 4713, 4715, 4716, 4717, 4718, 4719, 4739, 4864, 4865, 4866, 4867, 4904, 4906, 4911, 4912|
+|Zabezpieczenia użycia uprawnień|4985|
 |Zabezpieczenia systemu|4612, 4621|
 
-## <a name="enable-security-audit-events"></a>Włącz zdarzenia inspekcji zabezpieczeń
-Poniższe wskazówki ułatwiają zasubskrybować zdarzeń inspekcji zabezpieczeń usługi Azure AD Domain Services.
+## <a name="security-audit-destinations"></a>Miejsca docelowe inspekcji zabezpieczeń
+
+Możesz użyć dowolnej kombinacji obszarów roboczych usługi Azure Storage, Azure Event Hubs lub Azure Log Analytics w ramach zasobu docelowego dla inspekcji usługi Azure AD DS Security. Możesz użyć usługi Azure Storage do archiwizowania zdarzeń inspekcji zabezpieczeń, ale obszar roboczy Log Analytics platformy Azure umożliwia analizowanie i raportowanie informacji w krótkim czasie.
+
+W poniższej tabeli przedstawiono scenariusze dla każdego typu zasobu docelowego.
 
 > [!IMPORTANT]
-> Inspekcja zabezpieczeń w usłudze Azure AD Domain Services nie są wstecznego. Nie jest możliwe, można pobrać zdarzenia z ostatnich lub odtwarzać ponownie zdarzenia z przeszłości. Usługę można wysyłać tylko zdarzenia, które wystąpiły po jego włączeniu.
->
-
-### <a name="choose-the-target-resource"></a>Wybierz zasób docelowy
-Dla Twojej inspekcji zabezpieczeń, można użyć dowolnej kombinacji usługi Azure Storage, Azure Event Hubs lub obszary robocze usługi Azure Log Analytics jako zasób docelowy. Należy wziąć pod uwagę w poniższej tabeli zostanie najlepszy zasób dla przypadków użycia.
-
-> [!IMPORTANT]
-> Musisz utworzyć zasób docelowy, przed włączeniem inspekcji zabezpieczeń w usługach domenowych Azure AD.
->
+> Należy utworzyć zasób docelowy przed włączeniem Azure AD Domain Services inspekcji zabezpieczeń. Te zasoby można utworzyć przy użyciu Azure Portal, Azure PowerShell lub interfejsu wiersza polecenia platformy Azure.
 
 | Zasób docelowy | Scenariusz |
 |:---|:---|
-|Azure Storage|Należy rozważyć użycie tego obiektu docelowego po podstawowego wymaganego do przechowywania zdarzeń inspekcji zabezpieczeń w celu jego archiwizacji. Inne obiekty docelowe mogą służyć do celów archiwizacji; Jednak te obiekty docelowe zapewniają większe możliwości niż podstawowy potrzeb archiwizacji. Aby utworzyć konto usługi Azure Storage, wykonaj [Tworzenie konta magazynu.](https://docs.microsoft.com/azure/storage/common/storage-quickstart-create-account?tabs=azure-portal#create-a-storage-account-1)|
-|Azure Event Hubs|Należy rozważyć użycie tego obiektu docelowego po podstawowego wymaganego na udostępnianie zdarzeń inspekcji zabezpieczeń dodatkowego oprogramowania, takie jak oprogramowanie do analizy danych lub oprogramowania zabezpieczającego, informacji i zdarzeń zarządzania (SIEM). Aby utworzyć Centrum zdarzeń, wykonaj [Szybki Start: Tworzenie Centrum zdarzeń za pomocą witryny Azure portal.](https://docs.microsoft.com/azure/event-hubs/event-hubs-create)|
-|Azure Log Analytics Workspace|Należy rozważyć użycie tego obiektu docelowego po podstawowego wymaganego do analizowania i przejrzyj bezpośrednio bezpiecznego inspekcji w witrynie Azure portal.  Aby utworzyć obszar roboczy usługi Log Analytics, wykonaj [Utwórz obszar roboczy usługi Log Analytics w witrynie Azure portal.](https://docs.microsoft.com/azure/azure-monitor/learn/quick-create-workspace)|
+|Azure Storage| Tego celu należy używać, gdy głównym wymaganiem jest przechowywanie zdarzeń inspekcji zabezpieczeń w celach archiwalnych. Inne elementy docelowe mogą być używane do celów archiwalnych, ale te elementy docelowe zapewniają możliwości wykraczające poza podstawową potrzebę archiwizowania. Przed włączeniem zdarzeń inspekcji usługi Azure AD DS Security [Utwórz konto usługi Azure Storage](../storage/common/storage-quickstart-create-account.md?tabs=azure-portal#create-a-storage-account-1).|
+|Azure Event Hubs| Tego celu należy używać, gdy głównym wymaganiem jest udostępnianie zdarzeń inspekcji zabezpieczeń za pomocą dodatkowego oprogramowania, takiego jak oprogramowanie do analizy danych lub informacje o zabezpieczeniach & oprogramowania do zarządzania zdarzeniami (SIEM). Przed włączeniem zdarzeń inspekcji usługi Azure AD DS Security [Utwórz centrum zdarzeń przy użyciu Azure Portal](https://docs.microsoft.com/azure/event-hubs/event-hubs-create)|
+|Obszar roboczy usługi Azure Log Analytics| Tego celu należy używać, gdy głównym wymaganiem jest analizowanie i przeglądanie bezpiecznych inspekcji bezpośrednio z Azure Portal. Przed włączeniem zdarzeń inspekcji usługi Azure AD DS Security należy [utworzyć log Analytics obszar roboczy w Azure Portal.](https://docs.microsoft.com/azure/azure-monitor/learn/quick-create-workspace)|
 
-## <a name="using-the-azure-portal-to-enable-security-audit-events"></a>Zdarzenia inspekcji zabezpieczeń przy użyciu witryny Azure portal 
-1. Zaloguj się do witryny Azure Portal pod adresem https://portal.azure.com.  W witrynie Azure portal kliknij pozycję wszystkie usługi. Na liście zasobów wpisz **domeny**. Po rozpoczęciu pisania zawartość listy jest filtrowana w oparciu o wpisywane dane. Kliknij przycisk **usług domenowych Azure AD**.
-2. Kliknij wystąpienie usług domenowych Azure AD z listy.
-3. Kliknij przycisk **ustawienia diagnostyczne (wersja zapoznawcza)** z listy akcji po lewej stronie.</p>
-![Akcja ustawienie diagnostyczne](./media/security-audit-events/diagnostic-settings-action.png)
-4. Wpisz nazwę konfiguracji diagnostycznych (**inspekcji aadds** jako przykład).</p>
-![Strona ustawień diagnostycznych](./media/security-audit-events/diagnostic-settings-page.png)
-5. Zaznacz odpowiednie pole wyboru obok zasobów docelowych, które ma być używany do zdarzeń inspekcji zabezpieczeń.
-    > [!NOTE]
-    > Zasoby docelowe nie można utworzyć na tej stronie.
-    >
-    
-    **Usługa Azure storage:**</p>
-    Wybierz **Zarchiwizuj na koncie magazynu**. Kliknij pozycję **Konfiguruj**. Wybierz **subskrypcji** i **konta magazynu** chcesz użyć do archiwizacji zdarzeń inspekcji zabezpieczeń. Kliknij przycisk **OK**.</p>
-    
-    ![ustawienia diagnostyczne magazynu](./media/security-audit-events/diag-settings-storage.png)
-    
-    **Usługi Azure event hubs:**</p>
-    Wybierz **Stream do usługi event hub**. Kliknij pozycję **Konfiguruj**. W **strony Centrum zdarzeń wybierz**, wybierz opcję **subskrypcji** używany do tworzenia Centrum zdarzeń. Następnie wybierz pozycję **przestrzeń nazw Centrum zdarzeń**, **nazwę Centrum zdarzeń**, i **Nazwa zasad Centrum zdarzeń**. Kliknij przycisk **OK**.</p>
-    ![Ustawienia Centrum zdarzeń diagnostycznych](./media/security-audit-events/diag-settings-eventhub.png)
-    
-    **Usługa Azure Log Analytics obszary robocze:**</p>
-    Wybierz **wysyłanie do usługi Log Analytics**. Wybierz **subskrypcji** i **obszar roboczy usługi Log Analytics** używany do przechowywania zdarzeń inspekcji zabezpieczeń.</p>
-    ![ustawienia diagnostyczne obszaru roboczego](./media/security-audit-events/diag-settings-log-analytics.png)
+## <a name="enable-security-audit-events-using-the-azure-portal"></a>Włączanie zdarzeń inspekcji zabezpieczeń przy użyciu Azure Portal
 
-6. Wybierz kategorie dziennika, który chcesz dołączyć zasobu określonego docelowego. Jeśli używasz konta magazynu, można skonfigurować zasady przechowywania.
+Aby włączyć zdarzenia inspekcji usługi Azure AD DS Security przy użyciu Azure Portal, wykonaj następujące czynności.
 
-    > [!NOTE]
-    > Można wybrać kategorie dziennika dla każdego zasobu docelowego w ramach jednej konfiguracji. Dzięki temu można wybrać, który rejestruje kategorie, które chcesz zachować dla usługi Log Analytics i która rejestruje kategorie chcesz zarchiwizować.
-    >
+> [!IMPORTANT]
+> Inspekcje zabezpieczeń AD DS platformy Azure nie są wsteczne. Nie jest możliwe pobieranie zdarzeń z przeszłości lub powtarzanie zdarzeń z przeszłości. Usługa Azure AD DS może wysyłać tylko zdarzenia, które wystąpiły po włączeniu.
 
-7. Kliknij przycisk **Zapisz** aby zatwierdzić zmiany. Zasoby docelowe otrzymają zdarzeń inspekcji zabezpieczeń usług domenowych Azure AD wkrótce po zapisaniu konfigurację.
+1. Zaloguj się do witryny Azure Portal pod adresem https://portal.azure.com.
+1. W górnej części Azure Portal Wyszukaj i wybierz pozycję **Azure AD Domain Services**. Wybierz domenę zarządzaną, taką jak *contoso.com*.
+1. W oknie AD DS platformy Azure wybierz pozycję **Ustawienia diagnostyczne (wersja zapoznawcza)** po lewej stronie.
+1. Żadna Diagnostyka nie jest domyślnie skonfigurowana. Aby rozpocząć, wybierz pozycję **Dodaj ustawienie diagnostyczne**.
 
-## <a name="using-azure-powershell-to-enable-security-audit-events"></a>Przy użyciu programu Azure PowerShell w celu udostępnienia zdarzeń inspekcji zabezpieczeń
- 
-### <a name="prerequisites"></a>Wymagania wstępne
+    ![Dodaj ustawienie diagnostyczne dla Azure AD Domain Services](./media/security-audit-events/add-diagnostic-settings.png)
 
-Postępuj zgodnie z instrukcjami w artykule, aby [Instalowanie modułu Azure PowerShell i nawiązać połączenie z subskrypcją platformy Azure](https://docs.microsoft.com/powershell/azure/install-az-ps?toc=%2fazure%2factive-directory-domain-services%2ftoc.json).
+1. Wprowadź nazwę konfiguracji diagnostycznej, na przykład *aadds-Audit*.
 
-### <a name="enable-security-audits"></a>Włączanie inspekcji zabezpieczeń
+    Zaznacz pole wyboru dla docelowej inspekcji zabezpieczeń. Możesz wybrać konto usługi Azure Storage, centrum zdarzeń platformy Azure lub obszar roboczy Log Analytics. Te zasoby docelowe muszą już istnieć w subskrypcji platformy Azure. Nie można utworzyć zasobów docelowych w tym kreatorze.
 
-1. Uwierzytelnianie na Azure Resource Manager dla odpowiedniego dzierżawy i subskrypcji za pomocą **Connect AzAccount** polecenia cmdlet programu Azure PowerShell.
-2. Utwórz zasób docelowy dla zabezpieczeń zdarzeń inspekcji.</p>
-    **Usługa Azure storage:**</p>
-    Postępuj zgodnie z [Tworzenie konta magazynu](https://docs.microsoft.com/azure/storage/common/storage-quickstart-create-account?tabs=azure-powershell) do utworzenia konta magazynu.</p>
-    **Usługi Azure event hubs:**</p>
-    Postępuj zgodnie z [Szybki Start: Tworzenie Centrum zdarzeń za pomocą programu Azure PowerShell](https://docs.microsoft.com/azure/event-hubs/event-hubs-quickstart-powershell) do tworzenia Centrum zdarzeń. Również może być konieczne użycie [New AzEventHubAuthorizationRule](https://docs.microsoft.com/powershell/module/az.eventhub/new-azeventhubauthorizationrule?view=azps-2.3.2) polecenia cmdlet programu Azure PowerShell, aby utworzyć regułę autoryzacji, aby umożliwić uprawnień w usługach domenowych AD w usłudze Active Directory do Centrum zdarzeń **przestrzeni nazw**. Reguła autoryzacji musi zawierać **Zarządzaj**, **nasłuchiwania**, i **wysyłania** praw.
-    > [!IMPORTANT]
-    > Upewnij się, że w przypadku ustawienia reguły autoryzacji na przestrzeń nazw Centrum zdarzeń i nie Centrum zdarzeń.
-       
-    </p>
-    
-    **Usługa Azure Log Analytics obszary robocze:**</p>
-    Postępuj zgodnie z [Utwórz obszar roboczy usługi Log Analytics przy użyciu programu Azure PowerShell](https://docs.microsoft.com/azure/azure-monitor/learn/quick-create-workspace-posh) do utworzenia obszaru roboczego.
-3. Pobierz identyfikator zasobu dla swojego wystąpienia usługi Azure AD Domain Services. W otwartym, uwierzytelniony konsoli środowiska Windows PowerShell wpisz następujące polecenie. Użyj **$aadds. ResourceId** zmiennej jako parametru dla Identyfikatora zasobu usług domenowych Azure AD dla poleceń cmdlet w przyszłości.
-    ```powershell
+    ![Włącz wymagane miejsce docelowe i typ zdarzeń inspekcji do przechwycenia](./media/security-audit-events/diagnostic-settings-page.png)
+
+    * **Magazyn platformy Azure**
+        * Wybierz pozycję **Archiwizuj na koncie magazynu**, a następnie wybierz pozycję **Konfiguruj**.
+        * Wybierz **subskrypcję** i **konto magazynu** , którego chcesz użyć do archiwizacji zdarzeń inspekcji zabezpieczeń.
+        * Gdy wszystko będzie gotowe, wybierz **przycisk OK**.
+    * **Centra zdarzeń platformy Azure**
+        * Wybierz pozycję **strumień do centrum zdarzeń**, a następnie wybierz pozycję **Konfiguruj**.
+        * Wybierz **subskrypcję** i **przestrzeń nazw centrum zdarzeń**. W razie konieczności należy również wybrać **nazwę centrum zdarzeń** , a następnie **nazwę zasad centrum zdarzeń**.
+        * Gdy wszystko będzie gotowe, wybierz **przycisk OK**.
+    * **Obszary robocze analityczne dzienników platformy Azure**
+        * Wybierz pozycję **Wyślij do log Analytics**, a następnie wybierz **obszar roboczy** **subskrypcja** i log Analytics, który ma być używany do przechowywania zdarzeń inspekcji zabezpieczeń.
+
+1. Wybierz kategorie dzienników, które chcesz uwzględnić dla określonego zasobu docelowego. W przypadku wysyłania zdarzeń inspekcji do konta usługi Azure Storage można także skonfigurować zasady przechowywania, które definiują liczbę dni przechowywania danych. Ustawienie domyślne *0* zachowuje wszystkie dane i nie powoduje rotacji zdarzeń po upływie czasu.
+
+    W ramach jednej konfiguracji można wybrać różne kategorie dzienników dla każdego z zasobów. Ta możliwość umożliwia wybranie kategorii dzienników, które mają być przechowywane dla Log Analytics i które kategorie dzienników mają być archiwizowane.
+
+1. Po zakończeniu wybierz pozycję **Zapisz** , aby zatwierdzić zmiany. Zasoby docelowe zaczynają otrzymywać zdarzenia usługi Azure AD DS Security Audit wkrótce po zapisaniu konfiguracji.
+
+## <a name="enable-security-audit-events-using-azure-powershell"></a>Włączanie zdarzeń inspekcji zabezpieczeń przy użyciu Azure PowerShell
+
+Aby włączyć zdarzenia inspekcji usługi Azure AD DS Security przy użyciu Azure PowerShell, wykonaj następujące czynności. W razie potrzeby najpierw [Zainstaluj moduł Azure PowerShell i nawiąż połączenie z subskrypcją platformy Azure](/powershell/azure/install-az-ps).
+
+> [!IMPORTANT]
+> Inspekcje zabezpieczeń AD DS platformy Azure nie są wsteczne. Nie jest możliwe pobieranie zdarzeń z przeszłości lub powtarzanie zdarzeń z przeszłości. Usługa Azure AD DS może wysyłać tylko zdarzenia, które wystąpiły po włączeniu.
+
+1. Uwierzytelnij się w subskrypcji platformy Azure przy użyciu polecenia cmdlet [Connect-AzAccount](/powershell/module/Az.Accounts/Connect-AzAccount) . Po wyświetleniu monitu wprowadź poświadczenia konta.
+
+    ```azurepowershell
+    Connect-AzAccount
+    ```
+
+1. Utwórz zasób docelowy dla zdarzeń inspekcji zabezpieczeń.
+
+    * **Usługa Azure storage** - [Tworzenie konta magazynu przy użyciu Azure PowerShell](../storage/common/storage-quickstart-create-account.md?tabs=azure-powershell)
+    * **Usługa Azure Event hub** - [utworzyć centrum zdarzeń przy użyciu Azure PowerShell](../event-hubs/event-hubs-quickstart-powershell.md). Może być również konieczne użycie polecenia cmdlet [New-AzEventHubAuthorizationRule](/powershell/module/az.eventhub/new-azeventhubauthorizationrule) w celu utworzenia reguły autoryzacji, która przyznaje uprawnienia AD DS platformy Azure do *przestrzeni nazw*centrum zdarzeń. Reguła autoryzacji musi zawierać prawa do **zarządzania**, **nasłuchiwania**i **wysyłania** .
+
+        > [!IMPORTANT]
+        > Upewnij się, że zasada autoryzacji jest ustawiona w przestrzeni nazw centrum zdarzeń, a nie w centrum zdarzeń.
+
+    * **Obszary robocze analityczne dzienników platformy Azure** - [tworzenia obszaru roboczego Log Analytics przy użyciu Azure PowerShell](../azure-monitor/learn/quick-create-workspace-posh.md).
+
+1. Pobierz identyfikator zasobu dla domeny zarządzanej platformy Azure AD DS za pomocą polecenia cmdlet [Get-AzResource](/powershell/module/Az.Resources/Get-AzResource) . Utwórz zmienną o nazwie *$aadds. ResourceId* do przechowywania wartości:
+
+    ```azurepowershell
     $aadds = Get-AzResource -name aaddsDomainName
-    ``` 
-4. Użyj **AzDiagnosticSetting zestaw** polecenia cmdlet, aby skonfigurować ustawienia diagnostyki Azure do użycia zasobu docelowego dla zdarzeń inspekcji zabezpieczeń usługi Azure AD Domain Services. W przykładach poniżej zmiennej $aadds. ResourceId reprezentuje identyfikator zasobu wystąpienia usługi Azure AD Domain Services (zobacz krok 3).</p>
-    **Usługa Azure storage:**
-    ```powershell
-    Set-AzDiagnosticSetting `
-    -ResourceId $aadds.ResourceId` 
-    -StorageAccountId storageAccountId `
-    -Enabled $true
     ```
-    Zastąp *storageAccountId* identyfikatorem konta usługi storage</p>
-    
-    **Usługi Azure event hubs:**
-    ```powershell
-    Set-AzDiagnosticSetting -ResourceId $aadds.ResourceId ` 
-    -EventHubName eventHubName `
-    -EventHubAuthorizationRuleId eventHubRuleId `
-    -Enabled $true
-    ```
-    Zastąp *eventHubName* nazwą Centrum zdarzeń. Zastąp *eventHubRuleId* za pomocą Identyfikatora reguły autoryzacji została wcześniej utworzona.</p>
-    
-    **Usługa Azure Log Analytics obszary robocze:**
-    ```powershell
-    Set-AzureRmDiagnosticSetting -ResourceId $aadds.ResourceId ` 
-    -WorkspaceID workspaceId `
-    -Enabled $true
-    ```
-    Zastąp *workspaceId* z Identyfikatorem obszaru roboczego usługi Log Analytics został wcześniej utworzony. 
 
-## <a name="view-security-audit-events-using-azure-monitor"></a>Wyświetlanie zdarzeń inspekcji zabezpieczeń za pomocą usługi Azure Monitor
-Obszary robocze usługi log Analytics umożliwia wyświetlanie i analizowanie zdarzeń inspekcji zabezpieczeń przy użyciu usługi Azure Monitor i język zapytania Kusto. Język zapytań jest przeznaczony do użytku tylko do odczytu, która oferuje duże możliwości analityczne ze składnią łatwych do zrozumienia.
-Oto kilka zasobów, aby pomóc Ci rozpocząć pracę z językami zapytania Kusto.
+1. Skonfiguruj ustawienia diagnostyczne platformy Azure za pomocą polecenia cmdlet [Set-AzDiagnosticSetting](/powershell/module/Az.Monitor/Set-AzDiagnosticSetting) , aby użyć zasobu docelowego dla zdarzeń inspekcji zabezpieczeń Azure AD Domain Services. W poniższych przykładach zmienna *$aadds. Identyfikator ResourceId* jest używany w poprzednim kroku.
+
+    * **Azure Storage** — Zamień *storageAccountId* na nazwę konta magazynu:
+
+        ```powershell
+        Set-AzDiagnosticSetting `
+            -ResourceId $aadds.ResourceId `
+            -StorageAccountId storageAccountId `
+            -Enabled $true
+        ```
+
+    * **Centra zdarzeń platformy Azure** — Zamień *eventHubName* na nazwę centrum zdarzeń i *eventHubRuleId* z identyfikatorem reguły autoryzacji:
+
+        ```powershell
+        Set-AzDiagnosticSetting -ResourceId $aadds.ResourceId `
+            -EventHubName eventHubName `
+            -EventHubAuthorizationRuleId eventHubRuleId `
+            -Enabled $true
+        ```
+
+    * **Obszary robocze analityczne dzienników platformy Azure** — Zamień *Identyfikator obszaru roboczego* na identyfikator obszaru roboczego log Analytics:
+
+        ```powershell
+        Set-AzureRmDiagnosticSetting -ResourceId $aadds.ResourceId `
+            -WorkspaceID workspaceId `
+            -Enabled $true
+        ```
+
+## <a name="query-and-view-security-audit-events-using-azure-monitor"></a>Wykonywanie zapytań i Wyświetlanie zdarzeń inspekcji zabezpieczeń przy użyciu Azure Monitor
+
+Obszary robocze analityczne dzienników umożliwiają wyświetlanie i analizowanie zdarzeń inspekcji zabezpieczeń przy użyciu Azure Monitor i języka zapytań Kusto. Ten język zapytań jest przeznaczony do użycia tylko do odczytu, który boasts możliwości analityczne, dzięki łatwemu do odczytu składni. Aby uzyskać więcej informacji na temat rozpoczynania pracy z językami zapytań Kusto, zobacz następujące artykuły:
+
 * [Dokumentacja usługi Azure Monitor](https://docs.microsoft.com/azure/azure-monitor/)
-* [Rozpoczynanie pracy z usługą Log Analytics w usłudze Azure Monitor](https://docs.microsoft.com/azure/azure-monitor/log-query/get-started-portal)
-* [Wprowadzenie do zapytań dzienników w usłudze Azure Monitor](https://docs.microsoft.com/azure/azure-monitor/log-query/get-started-queries)
-* [Tworzenie i udostępnianie pulpitów nawigacyjnych z danymi usługi Log Analytics](https://docs.microsoft.com/azure/azure-monitor/learn/tutorial-logs-dashboards)
+* [Wprowadzenie do Log Analytics w Azure Monitor](../azure-monitor/log-query/get-started-portal.md)
+* [Wprowadzenie do zapytań dzienników w Azure Monitor](../azure-monitor/log-query/get-started-queries.md)
+* [Tworzenie i udostępnianie pulpitów nawigacyjnych Log Analytics danych](../azure-monitor/learn/tutorial-logs-dashboards.md)
 
-## <a name="sample-queries"></a>Przykładowe zapytania
+Następujące przykładowe zapytania mogą służyć do rozpoczęcia analizowania zdarzeń inspekcji zabezpieczeń z usługi Azure AD DS.
 
-### <a name="sample-query-1"></a>Przykładowe Zapytanie 1
-Wszystkie konta blokady zdarzenia w ciągu ostatnich siedmiu dni.
+### <a name="sample-query-1"></a>Przykładowe zapytanie 1
+
+Wyświetl wszystkie zdarzenia blokady konta w ciągu ostatnich siedmiu dni:
+
 ```Kusto
 AADDomainServicesAccountManagement
 | where TimeGenerated >= ago(7d)
@@ -184,16 +190,20 @@ AADDomainServicesAccountManagement
 ```
 
 ### <a name="sample-query-2"></a>Przykładowe zapytanie 2
-Wszystkie konta blokady zdarzenia (4740) od 26 czerwca 2019, 9: 00 i północ 1 lipca 2019 r, sortowane rosnąco daty i godziny.
+
+Wyświetl wszystkie zdarzenia blokady konta (*4740*) od 26 czerwca 2019 o godz. 9 i 1 lipca 2019 północy, posortowane rosnąco według daty i godziny:
+
 ```Kusto
 AADDomainServicesAccountManagement
-| where TimeGenerated >= datetime(2019-06-26 09:00) and TimeGenerated <= datetime(2019-07-01) 
+| where TimeGenerated >= datetime(2019-06-26 09:00) and TimeGenerated <= datetime(2019-07-01)
 | where OperationName has "4740"
 | sort by TimeGenerated asc
 ```
 
 ### <a name="sample-query-3"></a>Przykładowe zapytanie 3
-Konto dziennika zdarzeń siedem dni (od teraz) dla konta o nazwie użytkownika.
+
+Wyświetl zdarzenia logowania do konta siedem dni temu (od teraz) dla konta o nazwie użytkownik:
+
 ```Kusto
 AADDomainServicesAccountLogon
 | where TimeGenerated >= ago(7d)
@@ -201,7 +211,9 @@ AADDomainServicesAccountLogon
 ```
 
 ### <a name="sample-query-4"></a>Przykładowe zapytanie 4
-Zdarzeń logowania na koncie użytkownika, który próbowano zalogować się przy użyciu nieprawidłowego hasła (0xC0000006a) o nazwie siedem dni od teraz dla konta.
+
+Wyświetl zdarzenia logowania do konta siedem dni temu od teraz dla konta o nazwie użytkownik próbującego zalogować się przy użyciu nieprawidłowego hasła (*0xC0000006a*):
+
 ```Kusto
 AADDomainServicesAccountLogon
 | where TimeGenerated >= ago(7d)
@@ -210,7 +222,9 @@ AADDomainServicesAccountLogon
 ```
 
 ### <a name="sample-query-5"></a>Przykładowe zapytanie 5
-Zdarzenia logowania na kontach siedem dni od teraz dla konta o nazwie użytkownik próbował się zalogować, gdy konto zostało zablokowane (0xC0000234).
+
+Wyświetl zdarzenia logowania do konta siedem dni temu od teraz dla konta o nazwie użytkownik próbującego się zalogować, gdy konto zostało zablokowane (*0xC0000234*):
+
 ```Kusto
 AADDomainServicesAccountLogon
 | where TimeGenerated >= ago(7d)
@@ -219,7 +233,9 @@ AADDomainServicesAccountLogon
 ```
 
 ### <a name="sample-query-6"></a>Przykładowe zapytanie 6
-Liczba zdarzeń logowania na koncie siedem dni od teraz dla wszystkich Zaloguj się w przypadku prób ataków, które wystąpiły dla wszystkich użytkowników blokady.
+
+Wyświetl liczbę zdarzeń logowania do konta siedem dni temu teraz dla wszystkich prób logowania, które wystąpiły dla wszystkich zablokowanych użytkowników:
+
 ```Kusto
 AADDomainServicesAccountLogon
 | where TimeGenerated >= ago(7d)
@@ -227,23 +243,14 @@ AADDomainServicesAccountLogon
 | summarize count()
 ```
 
-## <a name="related-content"></a>Powiązana zawartość
-* [Omówienie](https://docs.microsoft.com/azure/kusto/query/) Kusto języka zapytań.
-* [Samouczek Kusto](https://docs.microsoft.com/azure/kusto/query/tutorial) na zapoznanie się z podstawowe informacje o zapytań.
-* [Przykładowe zapytania](https://docs.microsoft.com/azure/kusto/query/samples) ułatwiające dowiesz się, zobacz swoje dane na nowe sposoby.
-* Kusto [najlepsze praktyki](https://docs.microsoft.com/azure/kusto/query/best-practices) — zoptymalizowanie zapytań w celu osiągnięcia sukcesu.
+## <a name="next-steps"></a>Następne kroki
 
+Aby uzyskać szczegółowe informacje na temat usługi Kusto, zobacz następujące artykuły:
 
+* [Przegląd](/azure/kusto/query/) języka zapytań Kusto.
+* [Kusto samouczek](/azure/kusto/query/tutorial) , aby zapoznać się z podstawowymi informacjami o zapytaniach.
+* [Przykładowe zapytania](/azure/kusto/query/samples) , które pomagają poznać nowe sposoby wyświetlania danych.
+* Kusto [najlepsze rozwiązania](/azure/kusto/query/best-practices) w celu zoptymalizowania zapytań.
 
-
-
-
-
-
-
-
-
-
-
-
- 
+<!-- LINKS - Internal -->
+[migrate-azure-adds]: migrate-from-classic-vnet.md

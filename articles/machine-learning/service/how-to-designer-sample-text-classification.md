@@ -1,7 +1,7 @@
 ---
-title: 'Przykład projektanta #7: klasyfikowanie przeglądów książki'
+title: Projektant&#58; klasyfikuje przeglądy książki
 titleSuffix: Azure Machine Learning
-description: Dowiedz się, jak utworzyć model uczenia maszynowego klasyfikowanie przeglądów książki w różnych kategoriach.
+description: Utwórz model uczenia maszynowego klasyfikowanie przeglądów książki w różnych kategoriach.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -10,12 +10,12 @@ author: xiaoharper
 ms.author: zhanxia
 ms.reviewer: peterlu
 ms.date: 11/04/2019
-ms.openlocfilehash: 6f9a2327953177f29ba7a1f5948d24c7df428c09
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 949ddc847a6011d460f2a3685008d12e64868767
+ms.sourcegitcommit: 359930a9387dd3d15d39abd97ad2b8cb69b8c18b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73515449"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73647125"
 ---
 # <a name="sample-7---text-classification-predict-company-category"></a>Przykład 7 — Klasyfikacja tekstu: przewidywanie kategorii firmy 
 
@@ -35,7 +35,7 @@ Podstawowe kroki związane z modelem uczenia maszynowego z danymi tekstowymi są
 
    Konwertuj funkcję tekstu na funkcję liczbową za pomocą modułu wyodrębniania funkcji, takiego jak mieszanie funkcji, Wyodrębnij funkcję n-gramową z danych tekstowych.
 
-1. Trenowanie modelu
+1. Uczenie modelu
 
 1. Zestaw danych oceny
 
@@ -79,7 +79,7 @@ Używamy [**funkcji Wyodrębnij N-gram z modułu tekstowego**](../algorithm-modu
 
 Po przeprowadzeniu konwersji danych tekstowych do wektorów funkcji liczbowych, moduł **SELECT Column** służy do usuwania danych tekstowych z zestawu danych. 
 
-## <a name="train-the-model"></a>Trenowanie modelu
+## <a name="train-the-model"></a>Uczenie modelu
 
 Wybór algorytmu często zależy od wymagań dotyczących przypadku użycia. Ponieważ celem tego potoku jest przewidywanie kategorii firmy, model klasyfikatora wieloklasowego jest dobrym wyborem. Biorąc pod uwagę, że liczba funkcji jest duża i są one rozrzedzone, używamy modelu **regresji logistycznej** dla tego potoku.
 

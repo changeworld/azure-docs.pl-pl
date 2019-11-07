@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: mrbullwinkle
 ms.author: mbullwin
 ms.date: 08/10/2018
-ms.openlocfilehash: 04848f763fe8246f8e10f563169c04ea37b0ed37
-ms.sourcegitcommit: 1bd2207c69a0c45076848a094292735faa012d22
+ms.openlocfilehash: 3ec20f82bc12b60e5b88a02bb92a4a0ada4dcae7
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "72677310"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73668006"
 ---
 # <a name="feed-power-bi-from-application-insights"></a>Power BI kanału informacyjnego z Application Insights
 [Power BI](https://www.powerbi.com/) to pakiet narzędzi firmy, który ułatwia analizowanie danych i udostępnianie szczegółowych informacji. Rozbudowane pulpity nawigacyjne są dostępne na każdym urządzeniu. Możesz połączyć dane z wielu źródeł, w tym zapytania analityczne z [usługi Azure Application Insights](../../azure-monitor/app/app-insights-overview.md).
@@ -40,7 +40,7 @@ Zainstaluj [Power BI Desktop](https://powerbi.microsoft.com/en-us/desktop/).
 3. W menu **Eksportuj** wybierz **Power BI (M)** . Zapisz plik tekstowy.
    
     ![Zrzut ekranu analizy z wyróżnionym menu Eksportuj](./media/export-power-bi/analytics-export-power-bi.png)
-4. W Power BI Desktop wybierz pozycję **Pobierz dane**  > **puste zapytanie**. Następnie w edytorze zapytań w obszarze **Widok**wybierz pozycję **Edytor zaawansowany**.
+4. W Power BI Desktop wybierz pozycję **Pobierz dane** > **puste zapytanie**. Następnie w edytorze zapytań w obszarze **Widok**wybierz pozycję **Edytor zaawansowany**.
 
     Wklej wyeksportowany skrypt języka M do Edytor zaawansowany.
 
@@ -65,7 +65,7 @@ Zainstaluj [Power BI Desktop](https://powerbi.microsoft.com/en-us/desktop/).
 
    ![Zrzut ekranu przedstawiający przycisk Power BI](./media/export-power-bi/button.png)
 
-3. W Power BI Desktop wybierz pozycję **Pobierz dane**  > **puste zapytanie**. Następnie w edytorze zapytań w obszarze **Widok**wybierz pozycję **Edytor zaawansowany**.
+3. W Power BI Desktop wybierz pozycję **Pobierz dane** > **puste zapytanie**. Następnie w edytorze zapytań w obszarze **Widok**wybierz pozycję **Edytor zaawansowany**.
 
    ![Zrzut ekranu przedstawiający Power BI Desktop, z wyróżnionym pustym przyciskiem zapytania](./media/export-power-bi/blankquery.png)
 
@@ -90,6 +90,8 @@ Taka sytuacja może wystąpić, jeśli token odświeżania nie został zaktualiz
 
 1. Zaloguj się do Azure Portal i upewnij się, że masz dostęp do zasobu.
 2. Spróbuj odświeżyć poświadczenia dla pulpitu nawigacyjnego.
+3. Spróbuj wyczyścić pamięć podręczną z poziomu pulpitu usługi Power BI.
+
 
    Jeśli masz dostęp i odświeżanie poświadczeń nie działa, Otwórz bilet pomocy technicznej.
 
@@ -100,8 +102,8 @@ Jeśli zmniejszenie zestawu danych pochodzącego z zapytania analitycznego nie s
 
 1. Utwórz [klucz interfejsu API](https://dev.applicationinsights.io/documentation/Authorization/API-key-and-App-ID).
 2. Zaktualizuj Power BI M skrypt wyeksportowany z analizy, zastępując adres URL Azure Resource Manager za pomocą interfejsu API Application Insights.
-   * Zastąp ciąg **https: \//Management.Azure.com/Subscriptions/...**
-   * z **protokołem https: \//API.ApplicationInsights.IO/beta/Apps/...**
+   * Zastąp ciąg **https:\//Management.Azure.com/Subscriptions/...**
+   * z **protokołem https:\//API.ApplicationInsights.IO/beta/Apps/...**
 3. Na koniec zaktualizuj poświadczenia do warstwy Podstawowa i Użyj klucza interfejsu API.
 
 **Istniejący skrypt**
@@ -121,7 +123,7 @@ Ta metoda umożliwia utworzenie kompletnego pulpitu nawigacyjnego telemetrii. Po
 
 ### <a name="get-the-adapter"></a>Pobierz kartę
 1. Zaloguj się do [Power BI](https://app.powerbi.com/).
-2. Otwórz pozycję **Pobierz dane** ![Screenshot ikony GetData w lewym dolnym rogu ](./media/export-power-bi/001.png), **usługi**.
+2. Otwórz pozycję **Pobierz dane** ![zrzut ekranu ikony GetData w lewym dolnym rogu](./media/export-power-bi/001.png), **usługi**.
 
     ![Zrzuty ekranu przedstawiające pobieranie ze źródła danych Application Insights](./media/export-power-bi/002.png)
 

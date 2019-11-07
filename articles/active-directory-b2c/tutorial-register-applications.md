@@ -10,12 +10,12 @@ ms.topic: article
 ms.date: 10/16/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 00b7d1cfea4a36b8ba5b78aea344288e11da67cf
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 3a5d5099c91736276aca56c8b94b846b53a190c1
+ms.sourcegitcommit: 359930a9387dd3d15d39abd97ad2b8cb69b8c18b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73474723"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73642412"
 ---
 # <a name="tutorial-register-an-application-in-azure-active-directory-b2c"></a>Samouczek: rejestrowanie aplikacji w Azure Active Directory B2C
 
@@ -35,7 +35,7 @@ Jeśli nie utworzono jeszcze własnej [dzierżawy Azure AD B2C](tutorial-create-
 
 ## <a name="register-a-web-application"></a>Rejestrowanie aplikacji internetowej
 
-Aby zarejestrować aplikację w dzierżawie Azure AD B2C, możesz użyć bieżącego środowiska **aplikacji** lub naszego nowego interfejsu Unified **rejestracje aplikacji (wersja zapoznawcza)** . [Dowiedz się więcej na temat środowiska w wersji zapoznawczej](https://aka.ms/b2cappregintro).
+Aby zarejestrować aplikację w dzierżawie Azure AD B2C, możesz użyć bieżącego środowiska **aplikacji** lub naszego nowego interfejsu Unified **rejestracje aplikacji (wersja zapoznawcza)** . [Dowiedz się więcej na temat nowego środowiska](https://aka.ms/b2cappregintro).
 
 #### <a name="applicationstabapplications"></a>[Aplikacje](#tab/applications/)
 

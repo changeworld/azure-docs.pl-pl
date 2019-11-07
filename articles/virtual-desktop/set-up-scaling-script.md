@@ -1,5 +1,5 @@
 ---
-title: Automatyczne skalowanie hostów sesji pulpitu wirtualnego systemu Windows — Azure
+title: Dynamiczne skalowanie hostów sesji pulpitu wirtualnego systemu Windows — Azure
 description: Opisuje sposób konfigurowania skryptu automatycznego skalowania dla hostów sesji usług pulpitu wirtualnego systemu Windows.
 services: virtual-desktop
 author: Heidilohr
@@ -7,12 +7,12 @@ ms.service: virtual-desktop
 ms.topic: conceptual
 ms.date: 10/02/2019
 ms.author: helohr
-ms.openlocfilehash: 932fbe6814df8ec324dd3360bcacfcbcf1c19b62
-ms.sourcegitcommit: 15e3bfbde9d0d7ad00b5d186867ec933c60cebe6
+ms.openlocfilehash: 744f7d5c191180757620e87d926422c9f1e0baba
+ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/03/2019
-ms.locfileid: "71842766"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73607454"
 ---
 # <a name="scale-session-hosts-dynamically"></a>Dynamiczne skalowanie hostów sesji
 
@@ -49,7 +49,7 @@ Poniższe procedury zawierają informacje dotyczące sposobu wdrażania skryptu 
 Najpierw Przygotuj środowisko do skalowania skryptu:
 
 1. Zaloguj się do maszyny wirtualnej (maszyny wirtualnej skalowania), która uruchomi zaplanowane zadanie przy użyciu konta administratora domeny.
-2. Utwórz folder na maszynie wirtualnej skalowania, aby przechowywać skrypt skalowania i jego konfigurację (na przykład **C: \\scaling-HostPool1**).
+2. Utwórz folder na maszynie wirtualnej skalowania, aby przechowywać skrypt skalowania i jego konfigurację (na przykład **C:\\skalowanie-HostPool1**).
 3. Pobierz pliki **basicScale. ps1**, **config. XML**i **Functions-PSStoredCredentials. ps1** oraz folder **PowershellModules** z [repozytorium skryptów skalowania](https://github.com/Azure/RDS-Templates/tree/master/wvd-sh/WVD%20scaling%20script) i skopiuj je do folderu utworzonego w kroku 2. Istnieją dwa podstawowe sposoby uzyskiwania plików przed skopiowaniem ich do maszyny wirtualnej skalowania:
     - Sklonuj repozytorium Git na komputerze lokalnym.
     - Wyświetl **nieprzetworzoną** wersję każdego pliku, skopiuj i wklej zawartość każdego pliku do edytora tekstów, a następnie Zapisz pliki z odpowiadającą jej nazwą i typem pliku. 
@@ -72,9 +72,9 @@ Następnie musisz utworzyć bezpieczne przechowywane poświadczenia:
     Set-Variable -Name KeyPath -Scope Global -Value <LocalScalingScriptFolder>
     ```
     
-    Na przykład **@no__t: Set-Variable-Name Path-Scope Global-Value**
-5. Uruchom polecenie cmdlet **New-StoredCredential-path \$KeyPath** . Po wyświetleniu monitu wprowadź poświadczenia pulpitu wirtualnego systemu Windows z uprawnieniami do wysyłania zapytań do puli hostów (Pula hostów jest określona w **pliku config. XML**).
-    - W przypadku korzystania z różnych jednostek usługi lub konta standardowego Uruchom polecenie cmdlet **New-StoredCredential \$KeyPath** dla każdego konta, aby utworzyć lokalne poświadczenia przechowywane.
+    Na przykład **\\: Set-Variable-Name Path-Scope Global-Value**
+5. Uruchom polecenie **New-StoredCredential-path \$** polecenia cmdlet. Po wyświetleniu monitu wprowadź poświadczenia pulpitu wirtualnego systemu Windows z uprawnieniami do wysyłania zapytań do puli hostów (Pula hostów jest określona w **pliku config. XML**).
+    - Jeśli używasz różnych nazw głównych usług lub kont standardowych, uruchom polecenie cmdlet **New-StoredCredential-path \$** raz dla każdego konta, aby utworzyć lokalne, przechowywane poświadczenia.
 6. Uruchom **Get-StoredCredential-list** , aby potwierdzić, że poświadczenia zostały pomyślnie utworzone.
 
 ### <a name="configure-the-configxml-file"></a>Konfiguruj plik config. XML
@@ -89,7 +89,7 @@ Wprowadź odpowiednie wartości w poniższych polach, aby zaktualizować ustawie
 | currentAzureSubscriptionId    | Identyfikator subskrypcji platformy Azure, w której działają maszyny wirtualne hosta sesji                        |
 | tenantName                    | Nazwa dzierżawy pulpitu wirtualnego systemu Windows                                                    |
 | hostPoolName                  | Nazwa puli hostów usług pulpitu wirtualnego systemu Windows                                                 |
-| RDBroker                      | Adres URL usługi WVD, wartość domyślna to https: \//rdbroker. WVD. Microsoft. com             |
+| RDBroker                      | Adres URL usługi WVD, wartość domyślna to https:\//rdbroker.wvd.microsoft.com             |
 | Nazwa użytkownika                      | Identyfikator aplikacji głównej usługi (może mieć taką samą nazwę główną usługi jak AADApplicationId) lub użytkownika standardowego bez uwierzytelniania wieloskładnikowego |
 | isServicePrincipal            | Akceptowane wartości to **true** i **false**. Wskazuje, czy drugi używany zestaw poświadczeń jest jednostką usługi lub kontem standardowym. |
 | BeginPeakTime                 | Gdy rozpoczyna się czas szczytowego użycia                                                            |
@@ -111,7 +111,7 @@ Po skonfigurowaniu pliku Configuration. XML należy skonfigurować Harmonogram z
 4. Przejdź do karty **wyzwalacze** , a następnie wybierz pozycję **Nowy...**
 5. W oknie dialogowym **Nowy wyzwalacz** w obszarze **Ustawienia zaawansowane**zaznacz opcję **Powtarzaj zadanie co** i wybierz odpowiedni okres i czas trwania (na przykład **15 minut** lub **nieskończoność**).
 6. Wybierz kartę **Akcje** i **Nowy...**
-7. W oknie dialogowym **Nowa akcja** wpisz **PowerShell. exe** w polu **Program/skrypt** , a następnie wprowadź **C: \\Scaling @ no__t-5basicScale. ps1** w polu **Dodaj argumenty (opcjonalnie)** .
+7. W oknie dialogowym **Nowa akcja** wprowadź polecenie **PowerShell. exe** do pola **Program/skrypt** , a następnie wprowadź **C:\\skalowanie\\basicScale. ps1** w polu **Dodaj argumenty (opcjonalnie)** .
 8. Przejdź do karty **warunki** i **Ustawienia** , a następnie wybierz **przycisk OK** , aby zaakceptować ustawienia domyślne dla każdego z nich.
 9. Wprowadź hasło dla konta administracyjnego, w którym planujesz uruchomić skrypt skalowania.
 

@@ -1,5 +1,5 @@
 ---
-title: Skonfiguruj własne środowisko Integration Runtime jako serwer proxy dla usług SSIS w Azure Data Factory | Microsoft Docs
+title: Skonfiguruj własne środowisko Integration Runtime jako serwer proxy dla usług SSIS w Azure Data Factory
 description: Dowiedz się, jak skonfigurować Integration Runtime samodzielne jako serwer proxy dla Azure-SSIS Integration Runtime.
 services: data-factory
 documentationcenter: ''
@@ -12,12 +12,12 @@ author: swinarko
 ms.author: sawinark
 ms.reviewer: douglasl
 manager: craigg
-ms.openlocfilehash: 2ade270011ad5c1e1e5f5940ca305687e52bba86
-ms.sourcegitcommit: 8a717170b04df64bd1ddd521e899ac7749627350
+ms.openlocfilehash: 178628db11b95fbd345e94111ebf15809da3fc35
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/23/2019
-ms.locfileid: "71200300"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73684303"
 ---
 # <a name="configure-self-hosted-ir-as-a-proxy-for-azure-ssis-ir-in-adf"></a>Skonfiguruj własne środowisko IR jako serwer proxy dla Azure-SSIS IR w usłudze ADF
 W tym artykule opisano sposób uruchamiania pakietów SQL Server Integration Services (SSIS) na Azure-SSIS Integration Runtime (IR) w Azure Data Factory (ADF) z własnym hostowanym systemem IR skonfigurowanym jako serwer proxy.  Ta funkcja umożliwia dostęp do danych lokalnych bez [przyłączania Azure-SSIS IR do sieci wirtualnej](https://docs.microsoft.com/azure/data-factory/join-azure-ssis-integration-runtime-virtual-network).  Jest to przydatne w przypadku, gdy sieć firmowa ma zbyt skomplikowane zasady konfiguracji/ograniczania, aby móc wprowadzać w niej Azure-SSIS IR.
@@ -40,7 +40,7 @@ Na koniec należy pobrać i zainstalować najnowszą wersję własnego środowis
 Utwórz połączoną usługę Azure Blob Storage w ramach tego samego PODAJNIKa systemu, w którym zainicjowano Azure-SSIS IR, jeśli jeszcze tego nie zrobiono, wykonując czynności opisane w artykule [Tworzenie połączonej usługi ADF](https://docs.microsoft.com/azure/data-factory/quickstart-create-data-factory-portal#create-a-linked-service) .  Upewnij się, że:
 - Wybrano **BLOB Storage platformy Azure** do **przechowywania danych**
 - Wybrano **AutoResolveIntegrationRuntime** do **połączenia za pośrednictwem środowiska Integration Runtime**
-- /Wybrano jednostkę**usługi** **URI sygnatury dostępu współdzielonego** **klucza**/konta dla **metody uwierzytelniania**
+- Dla **metody uwierzytelniania** wybrano **Identyfikator URI sygnatury dostępu współdzielonego** dla **klucza konta**//jednostki **usługi**
 
 ![Przygotowywanie usługi połączonej Blob Storage Azure na potrzeby przemieszczania](media/self-hosted-integration-runtime-proxy-ssis/shir-azure-blob-storage-linked-service.png)
 
@@ -59,7 +59,7 @@ Podczas projektowania nowych pakietów zawierających zadania przepływu danych 
 ![Włącz Właściwość ConnectByProxy](media/self-hosted-integration-runtime-proxy-ssis/shir-connection-manager-properties.png)
 
 Możesz również włączyć tę właściwość podczas uruchamiania istniejących pakietów bez konieczności ręcznej zmiany ich po jednym.  Dostępne są dwie opcje:
-- Otwieranie, ponowna kompilacja i ponowne wdrażanie projektu zawierającego te pakiety przy użyciu najnowszych SSDT do uruchamiania na Azure-SSIS IR: Właściwość można następnie włączyć, ustawiając jej **wartość na true** dla odpowiednich menedżerów połączeń, które są wyświetlane na karcie **Menedżer połączeń** w oknie podręcznym wykonaj pakiet w przypadku uruchamiania pakietów z programu SSMS.
+- Otwieranie, ponowna kompilacja i ponowne wdrażanie projektu zawierającego te pakiety przy użyciu najnowszych SSDT do uruchomienia na Azure-SSIS IR: Właściwość można następnie włączyć, **ustawiając dla odpowiednich** menedżerów połączeń, które są wyświetlane w ramach **połączenia Karta kierownicy** okna podręcznego wykonywania pakietu podczas uruchamiania pakietów z programu SSMS.
 
   ![Włącz ConnectByProxy Property2](media/self-hosted-integration-runtime-proxy-ssis/shir-connection-managers-tab-ssms.png)
 
@@ -67,16 +67,16 @@ Możesz również włączyć tę właściwość podczas uruchamiania istniejący
   
   ![Włącz ConnectByProxy Property3](media/self-hosted-integration-runtime-proxy-ssis/shir-connection-managers-tab-ssis-activity.png)
 
-- Ponowne wdrażanie projektu zawierającego te pakiety do uruchomienia na urządzeniu SSIS IR: Właściwość można następnie włączyć, podając jej ścieżkę właściwości, `\Package.Connections[YourConnectionManagerName].Properties[ConnectByProxy]`i ustawiając ją na **wartość true** jako przesłonięcie właściwości na karcie **Zaawansowane** w oknie podręcznym wykonywania pakietu podczas uruchamiania pakietów z programu SSMS.
+- Ponowne wdrażanie projektu zawierającego te pakiety do uruchomienia na urządzeniu IR programu SSIS: Właściwość można następnie włączyć, podając jej ścieżkę właściwości, `\Package.Connections[YourConnectionManagerName].Properties[ConnectByProxy]`i ustawiając **wartość na true** jako przesłonięcie właściwości na karcie **Zaawansowane** w oknie podręcznym wykonaj pakiet. podczas uruchamiania pakietów z programu SSMS.
 
   ![Włącz ConnectByProxy Property4](media/self-hosted-integration-runtime-proxy-ssis/shir-advanced-tab-ssms.png)
 
-  Właściwość można również włączyć, podając jej ścieżkę właściwości `\Package.Connections[YourConnectionManagerName].Properties[ConnectByProxy]`, i ustawiając ją na **wartość true** w ramach przesłonięcia właściwości na karcie **przesłonięcie** [działania pakietu SSIS](https://docs.microsoft.com/azure/data-factory/how-to-invoke-ssis-package-ssis-activity) w przypadku uruchamiania pakietów w potokach ADF.
+  Właściwość można również włączyć, podając jej ścieżkę właściwości, `\Package.Connections[YourConnectionManagerName].Properties[ConnectByProxy]`i ustawiając ją na **wartość true** w przypadku zastąpienia właściwości na karcie **przesłonięcie** [działania pakietu SSIS](https://docs.microsoft.com/azure/data-factory/how-to-invoke-ssis-package-ssis-activity) w przypadku uruchamiania pakietów w potokach ADF.
   
   ![Włącz ConnectByProxy Property5](media/self-hosted-integration-runtime-proxy-ssis/shir-property-overrides-tab-ssis-activity.png)
 
 ## <a name="debug-the-first-and-second-staging-tasks"></a>Debugowanie pierwszego i drugiego zadania przemieszczania
-Na własnym hostowanym środowisku IR można znaleźć dzienniki środowiska uruchomieniowego w `C:\ProgramData\SSISTelemetry` folderze i dzienniki wykonywania pierwszego zadania przemieszczania w `C:\ProgramData\SSISTelemetry\ExecutionLog` folderze.  Dzienniki wykonywania drugiego zadania przemieszczania znajdują się w SSISDB lub określonych ścieżkach rejestrowania, w zależności od tego, czy pakiety są przechowywane odpowiednio w SSISDB, czy w systemie plików/udziałach plików/Azure Files.  Unikatowe identyfikatory pierwszych zadań przemieszczania można także znaleźć w dziennikach wykonywania drugiego zadania przemieszczania, np. 
+Na własnym hostowanym środowisku IR możesz znaleźć dzienniki środowiska uruchomieniowego w folderze `C:\ProgramData\SSISTelemetry` i dzienniki wykonywania pierwszych zadań przemieszczania w folderze `C:\ProgramData\SSISTelemetry\ExecutionLog`.  Dzienniki wykonywania drugiego zadania przemieszczania znajdują się w SSISDB lub określonych ścieżkach rejestrowania, w zależności od tego, czy pakiety są przechowywane odpowiednio w SSISDB, czy w systemie plików/udziałach plików/Azure Files.  Unikatowe identyfikatory pierwszych zadań przemieszczania można także znaleźć w dziennikach wykonywania drugiego zadania przemieszczania, np. 
 
 ![Unikatowy identyfikator pierwszego zadania przemieszczania](media/self-hosted-integration-runtime-proxy-ssis/shir-first-staging-task-guid.png)
 
@@ -88,7 +88,7 @@ Pozostałe zadania przemieszczania uruchomione w Azure-SSIS IR nie będą rozlic
 ## <a name="current-limitations"></a>Bieżące ograniczenia
 
 - Obecnie są obsługiwane tylko menedżerów połączeń plików OLEDB/Flat i źródła plików OLEDB/Flat. 
-- Obecnie są obsługiwane tylko połączone usługi platformy Azure Blob Storage skonfigurowane z uwierzytelnianiem podstawowym **klucza**/konta**SAS**/**usługi** .
+- Obecnie są obsługiwane tylko połączone usługi platformy Azure Blob Storage skonfigurowane z **kluczem konta**/**URI SAS**/uwierzytelnianie **nazwy głównej usługi** .
 - Obecnie jest obsługiwane tylko własne środowisko IR obsługiwane w ramach tego samego PODAJNIKa danych, w którym zainicjowano Azure-SSIS IR.
 - Korzystanie z parametrów/zmiennych SSIS w ramach właściwości w źródłach plików OLEDB/Flat i menedżerach połączeń nie jest obsługiwane.
 

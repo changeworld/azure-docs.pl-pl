@@ -10,12 +10,12 @@ ms.author: larryfr
 author: Blackmist
 ms.date: 10/16/2019
 ms.custom: seodec18
-ms.openlocfilehash: ba6d81596cd8a690f5c17e1ca55b91c5ff27b916
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
-ms.translationtype: HT
+ms.openlocfilehash: 36c496b77be5bfda83b3ed424a7fdf2b53101aa4
+ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 11/04/2019
-ms.locfileid: "73497533"
+ms.locfileid: "73580614"
 ---
 # <a name="how-azure-machine-learning-works-architecture-and-concepts"></a>Jak działa Azure Machine Learning: architektura i koncepcje
 
@@ -56,7 +56,7 @@ Użyj tych narzędzi dla Azure Machine Learning:
 
 ## <a name="glossary"></a>Słownik
 + <a href="#activities">Działanie</a>
-+ <a href="#compute-instance">Wystąpienie obliczeniowe</a>
++ <a href="#compute-instance">Maszyna wirtualna Notes</a>
 + <a href="#compute-targets">Cele obliczeń</a>
 + <a href="#datasets-and-datastores">& Magazynów danych</a>
 + <a href="#endpoints">Punktów końcowych</a>
@@ -84,15 +84,11 @@ Działanie reprezentuje długotrwałą operację. Następujące operacje są prz
 
 Działania mogą udostępniać powiadomienia za pomocą zestawu SDK lub internetowego interfejsu użytkownika, dzięki czemu można łatwo monitorować postęp tych operacji.
 
-### <a name="compute-instance"></a>Wystąpienie obliczeniowe
+### <a name="compute-instance"></a>Maszyna wirtualna Notes
 
-> [!NOTE]
-> Wystąpienia obliczeniowe są dostępne tylko dla obszarów roboczych z regionem **Północno-środkowe stany USA** lub **Południowe Zjednoczone Królestwo**.
->Jeśli obszar roboczy znajduje się w innym regionie, możesz w zamian utworzyć [maszynę wirtualną w notesie](concept-compute-instance.md#notebookvm) i korzystać z niej. 
+**Maszyna wirtualna w Azure Machine Learning notesie** to w pełni zarządzana stacja robocza oparta na chmurze, która obejmuje wiele narzędzi i środowisk zainstalowanych na potrzeby uczenia maszynowego. Maszyny wirtualne notesu mogą służyć jako obiekt docelowy obliczeń dla mniejszych zadań szkoleniowych i inferencing. W przypadku dużych zadań [Azure Machine Learning klastrów obliczeniowych](how-to-set-up-training-targets.md#amlcompute) z możliwościami skalowania wielu węzłów jest lepszym rozwiązaniem docelowym obliczeń.
 
-**Wystąpienie obliczeniowe Azure Machine Learning** (dawniej jest maszyną wirtualną) to w pełni zarządzana stacja robocza oparta na chmurze, która obejmuje wiele narzędzi i środowisk zainstalowanych na potrzeby uczenia maszynowego. Wystąpienia obliczeniowe mogą służyć jako element docelowy obliczeń dla zadań szkoleniowych i inferencing. W przypadku dużych zadań [Azure Machine Learning klastrów obliczeniowych](how-to-set-up-training-targets.md#amlcompute) z możliwościami skalowania wielu węzłów jest lepszym rozwiązaniem docelowym obliczeń.
-
-Dowiedz się więcej o [wystąpieniach obliczeniowych](concept-compute-instance.md).
+Dowiedz się więcej o maszynach wirtualnych notesu.
 
 ### <a name="compute-targets"></a>Cele obliczeń
 

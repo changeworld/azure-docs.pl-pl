@@ -1,5 +1,5 @@
 ---
-title: Do działania w Azure Data Factory | Microsoft Docs
+title: Do działania w Azure Data Factory
 description: Działanie until wykonuje zestaw działań w pętli do momentu, gdy warunek skojarzony z działaniem zwróci wartość true lub upłynie limit czasu.
 services: data-factory
 documentationcenter: ''
@@ -11,12 +11,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/10/2018
-ms.openlocfilehash: 80eebf0813b6403d5e1e8ff510003f7f0f57c821
-ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
+ms.openlocfilehash: ab24b4f3a819e2b44c68d052c355f10219eb1dc4
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70142461"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73679356"
 ---
 # <a name="until-activity-in-azure-data-factory"></a>Do działania w Azure Data Factory
 Działanie until zapewnia te same funkcje, które struktura pętli do-until zawiera w językach programowania. Służy do wykonywania zestawu działań w pętli do momentu, gdy warunek skojarzony z działaniem zostanie obliczony na wartość true. W usłudze Data Factory można określić wartość limitu czasu działania Until. 
@@ -51,13 +51,13 @@ Działanie until zapewnia te same funkcje, które struktura pętli do-until zawi
 
 ## <a name="type-properties"></a>Właściwości typu
 
-Właściwość | Opis | Dozwolone wartości | Wymagane
+Właściwość | Opis | Dozwolone wartości | Wymagany
 -------- | ----------- | -------------- | --------
-name | `Until` Nazwa działania. | String | Tak
-type | Musi być ustawiona na wartość **until**. | String | Tak
+name | Nazwa działania `Until`. | Ciąg | Tak
+type | Musi być ustawiona na wartość **until**. | Ciąg | Tak
 wyrażenia | Wyrażenie, które musi oszacować do wartości true lub false. | Wyrażenia.  | Tak
-limit czasu | Pętla do-until przekroczy limit czasu po upływie określonego czasu. | Parametry. `d.hh:mm:ss`oraz `hh:mm:ss`. Wartość domyślna to 7 dni. Wartość maksymalna: 90 dni. | Nie
-Działania | Zestaw działań, które są wykonywane, dopóki wyrażenie nie zostanie `true`oszacowane. | Tablica działań. |  Tak
+timeout | Pętla do-until przekroczy limit czasu po upływie określonego czasu. | parametry. `hh:mm:ss``d.hh:mm:ss` (lub). Wartość domyślna to 7 dni. Wartość maksymalna to: 90 dni. | Nie
+Działania | Zestaw działań, które są wykonywane do momentu, gdy wyrażenie zwróci wartość `true`. | Tablica działań. |  Tak
 
 ## <a name="example-1"></a>Przykład 1
 
@@ -65,7 +65,7 @@ Działania | Zestaw działań, które są wykonywane, dopóki wyrażenie nie zos
 > Ta sekcja zawiera definicje JSON i przykładowe polecenia programu PowerShell umożliwiające uruchomienie potoku. Aby zapoznać się z instrukcjami krok po kroku dotyczącymi tworzenia potoku Data Factory przy użyciu definicji Azure PowerShell i JSON, zobacz [Samouczek: Tworzenie fabryki danych przy użyciu Azure PowerShell](quickstart-create-data-factory-powershell.md).
 
 ### <a name="pipeline-with-until-activity"></a>Potok z działaniem until
-W tym przykładzie potok ma dwie działania: **Przed** i **czekaj**. Działanie oczekiwania czeka przez określony czas przed uruchomieniem działania sieci Web w pętli. Aby dowiedzieć się więcej na temat wyrażeń i funkcji w Data Factory, zobacz [Language Expression and Functions](control-flow-expression-language-functions.md). 
+W tym przykładzie potok ma dwie działania: **do** **czekania i oczekiwania**. Działanie oczekiwania czeka przez określony czas przed uruchomieniem działania sieci Web w pętli. Aby dowiedzieć się więcej na temat wyrażeń i funkcji w Data Factory, zobacz [Language Expression and Functions](control-flow-expression-language-functions.md). 
 
 ```json
 {

@@ -1,39 +1,36 @@
 ---
-title: Filtrowaniu na podstawie analizy zagrożeń w usłudze Azure zapory
-description: Więcej informacji na temat filtrowania analizy zagrożeń w zapory usługi Azure
+title: Filtrowanie na podstawie analizy zagrożeń zapory platformy Azure
+description: Dowiedz się więcej o filtrowaniu analizy zagrożeń zapory platformy Azure
 services: firewall
 author: vhorne
 ms.service: firewall
 ms.topic: article
-ms.date: 3/11/2019
+ms.date: 11/05/2019
 ms.author: victorh
-ms.openlocfilehash: 4ef9089c94d9e806cc519c4f8243cdcb7e73953a
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: f6a60d7c29fc7e482e32233aa86d65a801e3f55c
+ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60194051"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73582250"
 ---
-# <a name="azure-firewall-threat-intelligence-based-filtering---public-preview"></a>Filtrowanie Azure zagrożeń zapory na podstawie analizy — publiczna wersja zapoznawcza
+# <a name="azure-firewall-threat-intelligence-based-filtering"></a>Filtrowanie na podstawie analizy zagrożeń zapory platformy Azure
 
-Filtrowanie oparte na analizie zagrożeń można włączyć dla zapory, aby wysyłać alerty oraz blokować ruch ze znanych złośliwych adresów IP i domen i do nich. Adresy IP i domeny pochodzą z kanału informacyjnego analizy zagrożeń firmy Microsoft. [Intelligent Security Graph](https://www.microsoft.com/en-us/security/operations/intelligence) uprawnienia analizy zagrożeń firmy Microsoft i jest używany przez wiele usług, w tym usługi Azure Security Center.
+Filtrowanie oparte na analizie zagrożeń można włączyć dla zapory, aby wysyłać alerty oraz blokować ruch ze znanych złośliwych adresów IP i domen i do nich. Adresy IP i domeny pochodzą z kanału informacyjnego analizy zagrożeń firmy Microsoft. [Intelligent Security Graph](https://www.microsoft.com/en-us/security/operations/intelligence) zapewnia program Microsoft Threat Intelligence i jest używany przez wiele usług, w tym Azure Security Center.
 
 ![Analiza zagrożeń zapory](media/threat-intel/firewall-threat.png)
 
-> [!IMPORTANT]
-> Filtrowaniu na podstawie analizy zagrożeń jest obecnie dostępna w publicznej wersji zapoznawczej i jest dostarczana z wersji zapoznawczej Umowa dotycząca poziomu usług. Niektóre funkcje mogą być nieobsługiwane lub ograniczone.  Aby uzyskać szczegółowe informacje, zobacz [Dodatkowe warunki użytkowania wersji zapoznawczych platformy Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+W przypadku włączenia filtrowania opartego na analizie zagrożeń skojarzone reguły są przetwarzane przed dowolnymi regułami NAT, regułami sieciowymi lub regułami aplikacji.
 
-Jeśli włączono filtrowanie na podstawie analizy zagrożeń skojarzone reguły są przetwarzane przed zastosowaniem reguł NAT, reguł sieci lub reguł aplikacji. W trakcie okresu zapoznawczego uwzględniane są tylko najwyższy rekordy zaufania.
+Można wybrać opcję rejestrowania alertu, gdy reguła jest wyzwalana, lub wybrać opcję alert i tryb Odmów.
 
-Można tylko zalogować alert, gdy reguła jest wyzwalana, lub wybierz alert i odmawianie trybu.
+Domyślnie filtrowanie oparte na analizie zagrożeń jest włączone w trybie alertu. Nie można wyłączyć tej funkcji ani zmienić trybu do momentu udostępnienia interfejsu portalu w Twoim regionie.
 
-Domyślnie filtrowanie na podstawie analizy zagrożeń jest włączone w trybie alertu. Nie można wyłączyć tę funkcję, lub zmienić tryb, dopóki interfejs portalu staje się dostępna w Twoim regionie.
-
-![Analiza zagrożeń na podstawie filtrowania interfejsie portalu](media/threat-intel/threat-intel-ui.png)
+![Interfejs portalu filtrowania oparty na analizie zagrożeń](media/threat-intel/threat-intel-ui.png)
 
 ## <a name="logs"></a>Dzienniki
 
-Poniższy fragment dziennika pokazuje wyzwalane reguły:
+Poniższy fragment dziennika przedstawia wyzwalaną regułę:
 
 ```
 {
@@ -49,12 +46,12 @@ Poniższy fragment dziennika pokazuje wyzwalane reguły:
 
 ## <a name="testing"></a>Testowanie
 
-- **Testowanie wychodzącego** — ruch wychodzący alertów należy rzadkie wystąpienia, oznacza to, że naruszono bezpieczeństwo środowiska. Ułatwia alerty wychodzącego testu pracy, test utworzenia nazwy FQDN, który wyzwala alert. Użyj **testmaliciousdomain.eastus.cloudapp.azure.com** dla ruchu wychodzącego testów.
+- **Testowanie wychodzące** — alerty ruchu wychodzącego powinny być rzadkimi wystąpieniami, ponieważ oznacza to naruszenie bezpieczeństwa środowiska. Aby można było przetestować alerty wychodzące, została utworzona testowa nazwa FQDN, która wyzwala alert. Użyj **testmaliciousdomain.eastus.cloudapp.Azure.com** dla testów wychodzących.
 
-- **Dla ruchu przychodzącego testowania** — mogą oczekiwać wyświetlić alerty w zakresie ruchu przychodzącego, jeśli DNAT reguły zostały skonfigurowane w zaporze. Ta zasada obowiązuje, nawet jeśli tylko określone źródło są dozwolone w regule DNAT i ruch w przeciwnym razie zostanie odrzucone. Zapora usługi Azure alerty dotyczące wszystkich skanery znanym porcie; tylko w przypadku skanerów, które są znane również prowadzenia złośliwych działań.
+- **Testowanie przychodzące** — możesz oczekiwać, że alerty dotyczące ruchu przychodzącego są wyświetlane, jeśli reguły DNAT są skonfigurowane na zaporze. Jest to prawdziwe, nawet jeśli tylko określone źródła są dozwolone w regule DNAT, a ruch jest odrzucany w inny sposób. Zapora platformy Azure nie ma alertu dotyczącego wszystkich znanych skanerów portów; tylko w przypadku skanerów, które są znane również w przypadku złośliwego działania.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
-- Zobacz [próbki analizy dzienników zapory platformy Azure](log-analytics-samples.md)
-- Dowiedz się, jak [Wdróż i Skonfiguruj zaporę platformy Azure](tutorial-firewall-deploy-portal.md)
-- Przegląd [Microsoft Security intelligence raportu](https://www.microsoft.com/en-us/security/operations/security-intelligence-report)
+- Zobacz [przykłady log Analytics zapory platformy Azure](log-analytics-samples.md)
+- Dowiedz się [, jak wdrożyć i skonfigurować zaporę platformy Azure](tutorial-firewall-deploy-portal.md)
+- Przejrzyj [Raport analizy zabezpieczeń firmy Microsoft](https://www.microsoft.com/en-us/security/operations/security-intelligence-report)

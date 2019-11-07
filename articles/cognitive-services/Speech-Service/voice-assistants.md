@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 11/05/2019
 ms.author: travisw
-ms.openlocfilehash: c97f6414876441290cade68b8f9a054970586402
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
-ms.translationtype: HT
+ms.openlocfilehash: bd808c0c71e02483b4c4b06e612720c1802869a0
+ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 11/04/2019
-ms.locfileid: "73507738"
+ms.locfileid: "73577988"
 ---
 # <a name="about-voice-assistants"></a>Asystenci głosu — informacje
 
@@ -27,26 +27,29 @@ Aplikacje nawiązują połączenie z usługą asystenta głosowego za pomocą ze
 
    ![Diagram koncepcyjny przepływu usługi aranżacji asystenta głosowego](media/voice-assistants/overview.png "Przepływ asystenta głosowego")
 
+## <a name="choosing-an-assistant-solution"></a>Wybieranie rozwiązania Asystenta
+
+Pierwszym krokiem tworzenia asystenta głosowego jest podjęcie decyzji o tym, co należy zrobić. Usługi Azure Speech Services udostępniają wiele, uzupełniających się rozwiązań do przedstawiania interakcji z asystentem. Bez względu na to, czy chcesz elastyczną i uniwersalną infrastrukturę mowy w ramach [linii Direct line](direct-line-speech.md) bot Framework, czy prostota [poleceń niestandardowych (wersja zapoznawcza)](custom-commands.md) w przypadku prostych scenariuszy, wybranie odpowiednich narzędzi zostanie rozpoczęte.
+
+| Jeśli chcesz... | Następnie Rozważmy... | Na przykład... |
+|-------------------|------------------|----------------|
+|Otwarta-zakończona konwersacja z niezawodną integracją umiejętności i pełną kontrolą wdrożenia | Kanał [mowy liniowej linii](direct-line-speech.md) bot Framework | <ul><li>"Muszę przejść do Seattle"</li><li>"Jakiego rodzaju Pizza można zamówić?"</li></ul>
+|Obsługa poleceń i kontrolek oraz ukierunkowanych zadań z uproszczonym tworzeniem i hostingiem | [Polecenia niestandardowe (wersja zapoznawcza)](custom-commands.md) | <ul><li>"Włącz światło narzutu"</li><li>"Przekształć w 5 stopniowy"</ul>
+
+Zaleca się [bezpośrednie używanie mowy liniowej](direct-line-speech.md) jako najlepszego wyboru, jeśli nie masz jeszcze pewności, co chcesz obsłużyć asystenta. Oferuje ona integrację z rozbudowanym zestawem narzędzi i ułatwieniami autorskimi, takimi jak [rozwiązanie dla Asystenta wirtualnego i szablon przedsiębiorstwa](https://docs.microsoft.com/azure/bot-service/bot-builder-enterprise-template-overview) oraz [Usługa QNA Maker](https://docs.microsoft.com/azure/cognitive-services/QnAMaker/Overview/overview) , które umożliwiają kompilowanie wspólnych wzorców i korzystanie z istniejących źródeł wiedzy.
+
+[Polecenia niestandardowe (wersja zapoznawcza)](custom-commands.md) zapewniają usprawnione środowisko tworzenia i hostingu specjalnie dostosowane do scenariuszy poleceń i kontroli języka naturalnego.
+   ![Porównanie rozwiązań Asystenta](media/voice-assistants/assistant-solution-comparison.png "Comparison rozwiązań asystenta ")
+
 ## <a name="core-features"></a>Podstawowe funkcje
+
+Bez względu na to, czy wybierasz [bezpośrednią mowę liniową](direct-line-speech.md) , czy [polecenia niestandardowe (wersja zapoznawcza)](custom-commands.md) w celu utworzenia interakcji asystenta, możesz użyć bogatego zestawu funkcji dostosowywania, aby dostosować asystenta do swojej marki, produktu i osobowości.
 
 | Kategoria | Funkcje |
 |----------|----------|
 |[Custom — słowo kluczowe](speech-devices-sdk-create-kws.md) | Użytkownicy mogą uruchamiać konwersacje z asystentami przy użyciu niestandardowego słowa kluczowego, takiego jak "Hej contoso". Aplikacja wykonuje tę funkcję za pomocą niestandardowego aparatu słów kluczowych w zestawie mowy SDK, który można skonfigurować za pomocą niestandardowego słowa kluczowego [, które można wygenerować w tym miejscu](speech-devices-sdk-create-kws.md). Asystenci głosu mogą korzystać z weryfikacji słowa kluczowego po stronie usługi, aby poprawić dokładność aktywacji słowa kluczowego (w przeciwieństwie do samego urządzenia).
 |[Zamiana mowy na tekst](speech-to-text.md) | Asystenci głosu konwertują dźwięk w czasie rzeczywistym na rozpoznany tekst przy użyciu [zamiany mowy na tekst](speech-to-text.md) z usług Azure Speech Services. Ten tekst jest dostępny, ponieważ jest uzyskanego, zarówno w implementacji asystenta, jak i aplikacji klienckiej.
 |[Zamiana tekstu na mowę](text-to-speech.md) | Odpowiedzi na tekst od asystenta są syntezą przy użyciu zamiany [tekstu na mowę](text-to-speech.md) z usług Azure Speech Services. Ta synteza jest następnie udostępniana aplikacji klienckiej jako strumień audio. Firma Microsoft oferuje możliwość tworzenia własnego, niestandardowego głosu neuronowych TTS, który daje głos do marki. Aby dowiedzieć się więcej, [skontaktuj się z nami](mailto:mstts@microsoft.com).
-
-## <a name="comparing-assistant-solutions"></a>Porównywanie rozwiązań Asystenta
-
-Usługa asystenta głosowego nawiązuje połączenie aplikacji na urządzeniu z unikatową implementacją asystenta. Deweloperzy tworzą asystentów głosowych przy użyciu jednego (1) kanału [bezpośredniej linii mowy](direct-line-speech.md) lub (2) rozwiązania [poleceń niestandardowych (wersja zapoznawcza)](custom-commands.md) .
-
-   ![Porównanie rozwiązań Asystenta](media/voice-assistants/assistant-solution-comparison.png "Porównanie rozwiązań Asystenta")
-
-| Rozwiązanie | Funkcje |
-|----------|----------|
-|[Polecenia niestandardowe (wersja zapoznawcza)](custom-commands.md) | Polecenia niestandardowe (wersja zapoznawcza) zapewniają usprawnione rozwiązanie do tworzenia i hostowania dla asystentów głosowych. Jest to dostosowane do potrzeb scenariuszy uzupełniania zadań i kontroli poleceń.
-|[Bezpośredni wiersz mowy](https://docs.microsoft.com/azure/bot-service/bot-service-channel-connect-directlinespeech) | Bezpośredni tryb mowy umożliwia bezproblemowe i bezproblemowe połączenie między (1) aplikacją kliencką, (2) zgodnym bot i (3) możliwościami usług Azure Speech Services. Aby uzyskać więcej informacji na temat konfigurowania Bot do korzystania z kanału mowy z linią bezpośrednią, zobacz [jego stronę w dokumentacji programu bot Framework](https://docs.microsoft.com/azure/bot-service/bot-service-channel-connect-directlinespeech).
-
-Po utworzeniu asystenta głosowego przy użyciu jednego z tych rozwiązań Połącz swoją aplikację na urządzeniu przy użyciu `DialogServiceConnector` w zestawie mowy SDK. Aby uzyskać więcej informacji, zobacz Przewodniki Szybki Start i przykłady dla każdego rozwiązania.
 
 ## <a name="getting-started-with-voice-assistants"></a>Wprowadzenie do asystentów głosowych
 

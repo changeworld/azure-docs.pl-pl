@@ -1,7 +1,7 @@
 ---
 title: Tworzenie modelu dzierżawy (wersja zapoznawcza) — usługa mowy
 titleSuffix: Azure Cognitive Services
-description: Automatycznie Generuj niestandardowy model mowy, który korzysta z danych usługi Office 365, aby zapewnić optymalne rozpoznawanie mowy dla specyficznych dla organizacji warunków, które są bezpieczne i zgodne.
+description: Automatycznie Generuj model dzierżawców (Custom Speech z danymi pakietu Office 365), które wykorzystują dane z pakietu Office 365 w celu zapewnienia optymalnego rozpoznawania mowy w przypadku warunków, które są bezpieczne i zgodne.
 services: cognitive-services
 author: erhopf
 manager: nitinme
@@ -10,19 +10,19 @@ ms.subservice: speech-service
 ms.topic: tutorial
 ms.date: 10/26/2019
 ms.author: erhopf
-ms.openlocfilehash: 85b9291ee24c024ebc8ce81ddba46d04f7744081
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
-ms.translationtype: HT
+ms.openlocfilehash: c8a2855ce9cd320be3aea8b3b4a05f3b3eb39976
+ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 11/04/2019
-ms.locfileid: "73502660"
+ms.locfileid: "73578215"
 ---
 # <a name="create-a-tenant-model-preview"></a>Tworzenie modelu dzierżawy (wersja zapoznawcza)
 
-Model dzierżawy to usługa z dodatkiem dla klientów korporacyjnych usługi Office 365, która automatycznie generuje niestandardowy model rozpoznawania mowy z danych usługi Office 365. Tworzony model jest zoptymalizowany pod kątem warunków technicznych, żargon i nazwisk osób, a wszystko to w bezpieczny i zgodny sposób.
+Model dzierżawy (Custom Speech z danymi pakietu Office 365) to usługa w przypadku klientów z pakietem Office 365 Enterprise, która automatycznie generuje niestandardowy model rozpoznawania mowy na podstawie danych w organizacji. Tworzony model jest zoptymalizowany pod kątem warunków technicznych, żargon i nazwisk osób, a wszystko to w bezpieczny i zgodny sposób.
 
 > [!IMPORTANT]
-> Jeśli Twoja organizacja rejestruje się w modelu dzierżawy, usługa mowy może uzyskać dostęp do modelu języka organizacji, który jest generowany przez zasoby pakietu Office 365, takie jak wiadomości e-mail i dokumenty. Administrator programu Office 365 w organizacji może włączyć/wyłączyć użycie modelu języka w całej organizacji przy użyciu portalu administracyjnego pakietu Office 365.
+> Jeśli Twoja organizacja rejestruje się w modelu dzierżawy, usługa mowy może uzyskać dostęp do modelu języka w organizacji, który jest generowany 365 na podstawie publicznych grup poczty e-mail i dokumentów, które mogą być widoczne dla wszystkich użytkowników w organizacji. Administrator programu Office 365 w organizacji może włączyć/wyłączyć użycie modelu języka w całej organizacji przy użyciu portalu administracyjnego pakietu Office 365.
 
 Ten samouczek zawiera informacje na temat wykonywania następujących czynności:
 
@@ -33,8 +33,6 @@ Ten samouczek zawiera informacje na temat wykonywania następujących czynności
 > * Wdrażanie modelu dzierżawy
 > * Korzystanie z modelu dzierżawy z zestawem SDK mowy
 
-![Diagram modelu dzierżawców](media/tenant-language-model/tenant-language-model-diagram.png)
-
 ## <a name="enroll-using-the-microsoft-365-admin-center"></a>Rejestrowanie przy użyciu Centrum administracyjnego Microsoft 365
 
 Przed wdrożeniem modelu dzierżawy należy najpierw zarejestrować się przy użyciu Centrum administracyjnego Microsoft 365. To zadanie można wykonać tylko przez administratora Microsoft 365.
@@ -42,11 +40,11 @@ Przed wdrożeniem modelu dzierżawy należy najpierw zarejestrować się przy u�
 1. Zaloguj się do [Centrum administracyjnego Microsoft 365](https://admin.microsoft.com ).
 2. W lewym panelu wybierz kolejno pozycje **Ustawienia** i **aplikacje**.
 
-   ![Diagram modelu dzierżawców](media/tenant-language-model/tenant-language-model-enrollment.png)
+   ![Rejestracja modelu dzierżawy](media/tenant-language-model/tenant-language-model-enrollment.png)
 
 3. Znajdź i wybierz pozycję **Azure Speech Services**.
 
-   ![Diagram modelu dzierżawców](media/tenant-language-model/tenant-language-model-enrollment-2.png)
+   ![Rejestracja modelu dzierżawy 2](media/tenant-language-model/tenant-language-model-enrollment-2.png)
 
 4. Kliknij pole wyboru i Zapisz.
 
@@ -77,9 +75,10 @@ Gdy administrator włączył model dzierżawy dla Twojej organizacji, możesz ut
 
 3. W tym momencie zobaczysz komunikat informujący o tym, że masz kwalifikacje do utworzenia modelu dzierżawy.
    > [!NOTE]
-   > Klienci korzystający z pakietu Office 365 Enterprise w Ameryka Północna mogą tworzyć model dzierżawy (angielski). Jeśli jesteś klientem z kluczem Skrytka klienta (CLB) lub klientem, ta funkcja jest niedostępna. Aby określić, czy jesteś klientem z kluczem Skrytka klienta lub klientem, wykonaj następujące instrukcje:
+   > Klienci korzystający z pakietu Office 365 Enterprise w Ameryka Północna mogą tworzyć model dzierżawy (angielski). Jeśli jesteś Skrytka klienta (CLB), Customer Key (SOCZEWK) lub Office 365 dla instytucji rządowych, ta funkcja jest niedostępna. Aby określić, czy jesteś klientem z kluczem Skrytka klienta lub klientem, wykonaj następujące instrukcje:
    > * [Skrytka klienta](https://docs.microsoft.com/office365/securitycompliance/controlling-your-data-using-customer-key#FastTrack)
    > * [Klucz klienta](https://docs.microsoft.com/microsoft-365/compliance/customer-lockbox-requests)
+   > * [Pakiet Office 365 dla instytucji rządowych](https://www.microsoft.com/microsoft-365/government)
 
 4. Następnie wybierz pozycję zgadzam **się**. Gdy model dzierżawy jest gotowy, otrzymasz wiadomość e-mail z instrukcjami.
 

@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 03/14/2017
 ms.author: tdsp
 ms.custom: seodec18, previous-author=garyericson, previous-ms.author=garye
-ms.openlocfilehash: b41241d3f0223e7c96dce4a9e98262b403cb0660
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 7c7011991deb632110264233ea0e7aeabe793fbb
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73495069"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73670484"
 ---
 # <a name="cheat-sheet-for-an-automated-data-pipeline-for-azure-machine-learning-predictions"></a>Ściągawka dotycząca zautomatyzowanego potoku danych dla prognoz usługi Azure Machine Learning
 **Arkusz Ściągawka zautomatyzowanych potoków danych** ułatwia nawigowanie po technologii, z której można korzystać w celu uzyskania danych do usługi Machine Learning sieci Web, w której może być wyliczony przez model analizy predykcyjnej. Microsoft Azure Machine Learning
@@ -36,6 +36,6 @@ Pobierz arkusz Ściągawka tutaj:  **[Microsoft Azure Machine Learning zautomaty
 
 ## <a name="more-help-with-machine-learning-studio"></a>Więcej pomocy na temat usługi Machine Learning Studio
 * Aby zapoznać się z omówieniem Microsoft Azure Machine Learning, zobacz [wprowadzenie do uczenia maszynowego na Microsoft Azure](../studio/what-is-machine-learning.md).
-* Aby uzyskać informacje na temat sposobu wdrażania usługi sieci Web oceniania, zobacz [wdrażanie usługi sieci web Azure Machine Learning](../studio/publish-a-machine-learning-web-service.md).
+* Aby uzyskać informacje na temat sposobu wdrażania usługi sieci Web oceniania, zobacz [wdrażanie usługi sieci web Azure Machine Learning](../studio/deploy-a-machine-learning-web-service.md).
 * Aby zapoznać się z omówieniem sposobu korzystania z usługi sieci Web oceniania, zobacz [jak korzystać z usługi sieci web Azure Machine Learning](../studio/consume-web-services.md).
 

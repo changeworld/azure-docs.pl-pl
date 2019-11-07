@@ -4,14 +4,14 @@ description: Dowiedz się więcej na temat przydziałów i planów usług dla ch
 author: jpconnock
 ms.service: spring-cloud
 ms.topic: conceptual
-ms.date: 9/27/2019
+ms.date: 11/04/2019
 ms.author: jeconnoc
-ms.openlocfilehash: 89934ee0ab0c901a904a1a5ac2fb620185571a23
-ms.sourcegitcommit: d773b5743cb54b8cbcfa5c5e4d21d5b45a58b081
+ms.openlocfilehash: 41a2b1a7d9aa5089ba2ee73cd3c5c5c5e31f5225
+ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/08/2019
-ms.locfileid: "72038784"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73607670"
 ---
 # <a name="quotas-and-service-plans-for-azure-spring-cloud"></a>Limity przydziału i plany usług dla chmury wiosennej platformy Azure
 
@@ -23,10 +23,10 @@ W tym artykule opisano limity przydziału usługi oferowane w trakcie bieżąceg
 
 W trakcie okresu zapoznawczego chmura Wiosenna platformy Azure oferuje tylko jedną warstwę usług.
 
-Zasób | Ilość
+Zasób | Kwota
 ------- | -------
-vCPU | 4
-Pamięć | 8 GBytes
+Procesor wirtualny | 4
+Memory (Pamięć) | 8 GBytes
 Subskrypcja chmury ze sprężyną Azure | 1
 Wystąpienia usługi w chmurze ze sprężyną na platformie Azure na region na subskrypcję | 2
 Łączna liczba wystąpień aplikacji na usługę Azure sprężynowego wystąpienia usługi w chmurze | 50
@@ -37,4 +37,4 @@ Po osiągnięciu limitu przydziału otrzymasz błąd 400, który odczytuje: "prz
 
 ## <a name="next-steps"></a>Następne kroki
 
-Niektóre domyślne limity i przydziały mogą zostać zwiększone. Jeśli zasób wymaga zwiększenia, Wyślij do nas żądanie: azure-spring-cloud@service.microsoft.com.
+Niektóre domyślne limity i przydziały mogą zostać zwiększone. Jeśli zasób wymaga zwiększenia, [Utwórz żądanie pomocy technicznej](https://docs.microsoft.com/azure/azure-supportability/how-to-create-azure-support-request).

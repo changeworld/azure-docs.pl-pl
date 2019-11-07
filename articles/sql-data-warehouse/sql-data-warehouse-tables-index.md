@@ -1,5 +1,5 @@
 ---
-title: Indeksowanie tabel w Azure SQL Data Warehouse | Microsoft Azure
+title: Indeksowanie tabel
 description: Zalecenia i przykłady dotyczące indeksowania tabel w Azure SQL Data Warehouse.
 services: sql-data-warehouse
 author: XiaoyuMSFT
@@ -10,13 +10,13 @@ ms.subservice: development
 ms.date: 03/18/2019
 ms.author: xiaoyul
 ms.reviewer: igorstan
-ms.custom: seoapril2019
-ms.openlocfilehash: 4d51bd6906a8299a25fe50ca817b1a2b6082ab91
-ms.sourcegitcommit: 75a56915dce1c538dc7a921beb4a5305e79d3c7a
+ms.custom: seo-lt-2019
+ms.openlocfilehash: 079891824bf71caf1ebfa575833de650a55ed5be
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/24/2019
-ms.locfileid: "68479837"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73685458"
 ---
 # <a name="indexing-tables-in-sql-data-warehouse"></a>Indeksowanie tabel w SQL Data Warehouse
 
@@ -24,7 +24,7 @@ Zalecenia i przykłady dotyczące indeksowania tabel w Azure SQL Data Warehouse.
 
 ## <a name="index-types"></a>Typy indeksów
 
-SQL Data Warehouse oferuje kilka opcji indeksowania, takich jak [klastrowane indeksy magazynu kolumn](/sql/relational-databases/indexes/columnstore-indexes-overview), [indeksy klastrowane i indeksy](/sql/relational-databases/indexes/clustered-and-nonclustered-indexes-described)nieklastrowane, a także opcję nieindeksowaną [](/sql/relational-databases/indexes/heaps-tables-without-clustered-indexes), znaną również jako sterta.  
+SQL Data Warehouse oferuje kilka opcji indeksowania, takich jak [klastrowane indeksy magazynu kolumn](/sql/relational-databases/indexes/columnstore-indexes-overview), [indeksy klastrowane i indeksy nieklastrowane](/sql/relational-databases/indexes/clustered-and-nonclustered-indexes-described), a także opcję nieindeksowaną, znaną również jako [sterta](/sql/relational-databases/indexes/heaps-tables-without-clustered-indexes).  
 
 Aby utworzyć tabelę z indeksem, zapoznaj się z dokumentacją [CREATE TABLE (Azure SQL Data Warehouse)](/sql/t-sql/statements/create-table-azure-sql-data-warehouse) .
 
@@ -206,7 +206,7 @@ Wsadowe operacje aktualizacji i wstawiania, które przekraczają próg zbiorczy 
 
 Małe obciążenia, które są przesyłane do SQL Data Warehouse są również czasami znane jako obciążenia Trickle. Zwykle przedstawiają one blisko stałego strumienia danych wprowadzanych przez system. Jednak ponieważ ten strumień zbliża się do ciągłego, ilość wierszy nie jest szczególnie duża. Częściej niż nie są znacznie częściej wartości progowej wymaganej do bezpośredniego ładowania do formatu magazynu kolumn.
 
-W takich sytuacjach często lepiej jest wystawić dane w usłudze Azure Blob Storage i pozwolić na jego gromadzenie przed załadowaniem. Ta technika jest często znana jako mikropartie.
+W takich sytuacjach często lepiej jest wystawić dane w usłudze Azure Blob Storage i pozwolić na jego gromadzenie przed załadowaniem. Ta technika jest często znana jako *mikropartie*.
 
 ### <a name="too-many-partitions"></a>Zbyt wiele partycji
 
@@ -216,7 +216,7 @@ Po załadowaniu tabel z danymi wykonaj następujące kroki, aby zidentyfikować 
 
 ## <a name="rebuilding-indexes-to-improve-segment-quality"></a>Ponowne kompilowanie indeksów w celu zwiększenia jakości segmentu
 
-### <a name="step-1-identify-or-create-user-which-uses-the-right-resource-class"></a>Krok 1: Zidentyfikuj lub Utwórz użytkownika, który używa odpowiedniej klasy zasobów
+### <a name="step-1-identify-or-create-user-which-uses-the-right-resource-class"></a>Krok 1. identyfikowanie lub Tworzenie użytkownika, który używa odpowiedniej klasy zasobów
 
 Jednym z szybkim sposobem na natychmiastowe zwiększenie jakości segmentu jest odbudowanie indeksu.  KOD SQL zwrócony przez powyższy widok zwraca instrukcję ALTER INDEX Rebuild, której można użyć do odbudowania indeksów. Podczas ponownego kompilowania indeksów należy przydzielić wystarczającą ilość pamięci do sesji, która odtwarza indeks.  W tym celu należy zwiększyć klasę zasobów użytkownika, który ma uprawnienia do odbudowania indeksu w tej tabeli do zalecanej minimalnej wartości.
 
@@ -226,7 +226,7 @@ Poniżej znajduje się przykład sposobu przydzielania większej ilości pamięc
 EXEC sp_addrolemember 'xlargerc', 'LoadUser'
 ```
 
-### <a name="step-2-rebuild-clustered-columnstore-indexes-with-higher-resource-class-user"></a>Krok 2: Ponowne kompilowanie klastrowanych indeksów magazynu kolumn przy użyciu wyższego użytkownika klasy zasobów
+### <a name="step-2-rebuild-clustered-columnstore-indexes-with-higher-resource-class-user"></a>Krok 2. ponowne kompilowanie klastrowanych indeksów magazynu kolumn przy użyciu wyższego użytkownika klasy zasobów
 
 Zaloguj się jako użytkownik z kroku 1 (np. LoadUser), który jest teraz używany do wyższego poziomu klasy zasobów i wykonaj instrukcje ALTER INDEX. Upewnij się, że ten użytkownik ma uprawnienie ALTER do tabel, w których trwa ponowne kompilowanie indeksu. W poniższych przykładach pokazano, jak ponownie skompilować cały indeks magazynu kolumn lub jak ponownie skompilować jedną partycję. W przypadku dużych tabel bardziej praktyczna jest możliwość ponownego kompilowania indeksów pojedynczej partycji w danym momencie.
 
@@ -254,7 +254,7 @@ ALTER INDEX ALL ON [dbo].[FactInternetSales] REBUILD Partition = 5 WITH (DATA_CO
 
 Ponowne kompilowanie indeksu w SQL Data Warehouse jest operacją offline.  Aby uzyskać więcej informacji na temat odbudowywania indeksów, zobacz sekcję ALTER INDEX Rebuild w obszarze [defragmentacja indeksów magazynu kolumn](/sql/relational-databases/indexes/columnstore-indexes-defragmentation)i [Zmień indeks](/sql/t-sql/statements/alter-index-transact-sql).
 
-### <a name="step-3-verify-clustered-columnstore-segment-quality-has-improved"></a>Krok 3: Ulepszono Weryfikowanie jakości klastrowanego segmentu magazynu kolumn
+### <a name="step-3-verify-clustered-columnstore-segment-quality-has-improved"></a>Krok 3. ulepszone sprawdzanie jakości klastrowanego segmentu magazynu kolumn
 
 Uruchom ponownie zapytanie, które określiło tabelę z niską jakością segmentu i sprawdź, czy jakość segmentu została ulepszona.  Jeśli jakość segmentu nie poprawi się, może to oznaczać, że wiersze w tabeli są bardzo szerokie.  Podczas ponownego kompilowania indeksów Rozważ użycie wyższej klasy zasobów lub jednostek dwu.
 

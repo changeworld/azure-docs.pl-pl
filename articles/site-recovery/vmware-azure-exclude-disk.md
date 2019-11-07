@@ -1,6 +1,6 @@
 ---
-title: Wykluczanie dysków z replikacji na potrzeby odzyskiwania po awarii programu VMware do platformy Azure przy użyciu usługi Azure Site Recovery | Dokumentacja firmy Microsoft
-description: Opisuje, dlaczego i jak wykluczać dyski maszyny Wirtualnej z replikacji na potrzeby odzyskiwania po awarii programu VMware do platformy Azure.
+title: Wykluczanie dysków maszyny wirtualnej VMware z odzyskiwania po awarii na platformę Azure za pomocą Azure Site Recovery
+description: Opisuje, dlaczego i jak wykluczać dyski maszyny wirtualnej z replikacji na potrzeby odzyskiwania po awarii oprogramowania VMware na platformę Azure.
 author: mayurigupta13
 manager: rochakm
 ms.service: site-recovery
@@ -8,16 +8,16 @@ ms.workload: storage-backup-recovery
 ms.date: 3/3/2019
 ms.author: mayg
 ms.topic: conceptual
-ms.openlocfilehash: 105074892cc6dfa4da1e7c8ddd0a0aad9f1b60a1
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: c003620420611f3416e6481c575f987fbd1bd05f
+ms.sourcegitcommit: 6c2c97445f5d44c5b5974a5beb51a8733b0c2be7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60922128"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73622387"
 ---
-# <a name="exclude-disks-from-replication-of-vmware-vms-to-azure"></a>Wykluczanie dysków z replikacji maszyn wirtualnych programu VMware do platformy Azure
+# <a name="exclude-disks-from-vmware-vm-replication-to-azure"></a>Wykluczanie dysków z replikacji maszyny wirtualnej VMware do platformy Azure
 
-W tym artykule opisano sposób wykluczania dysków podczas replikowania maszyn wirtualnych VMware na platformę Azure. Takie wykluczenie może zoptymalizować przepustowość używaną przez replikację lub zoptymalizować zasoby po stronie docelowej, z których korzystają takie dyski. Jeśli potrzebujesz informacji na temat funkcji Hyper-v z wyjątkiem dysków, zapoznaj się z [w tym artykule](hyper-v-exclude-disk.md)
+W tym artykule opisano sposób wykluczania dysków podczas replikowania maszyn wirtualnych VMware na platformę Azure. Takie wykluczenie może zoptymalizować przepustowość używaną przez replikację lub zoptymalizować zasoby po stronie docelowej, z których korzystają takie dyski. Jeśli potrzebujesz informacji na temat wykluczania dysków dla funkcji Hyper-V, zapoznaj się z [tym artykułem](hyper-v-exclude-disk.md)
 
 
 ## <a name="prerequisites"></a>Wymagania wstępne
@@ -52,12 +52,12 @@ Postępuj zgodnie z przepływem pracy [Włączanie replikacji](vmware-azure-enab
 
 >[!NOTE]
 >
-> * Można wykluczyć tylko te dyski, na maszynach wirtualnych, które mają już zainstalowaną usługę mobilności. Należy ręcznie zainstalować usługę mobilności, ponieważ jest ona instalowana tylko przy użyciu mechanizmu wypychania po włączeniu replikacji.
+> * Na maszynach wirtualnych, na których jest już zainstalowana usługa mobilności, można wykluczać tylko dyski. Należy ręcznie zainstalować usługę mobilności, ponieważ jest ona instalowana tylko przy użyciu mechanizmu wypychania po włączeniu replikacji.
 > * Tylko dyski podstawowe można wyłączyć z replikacji. Nie możesz wykluczać dysków systemu operacyjnego ani dysków dynamicznych.
 > * Po włączeniu replikacji nie możesz dodawać dysków do replikacji ani ich usuwać. Jeśli chcesz dodać lub wykluczyć dysk, musisz wyłączyć ochronę maszyny, a następnie włączyć ją ponownie.
 > * Jeśli wykluczysz dysk wymagany do działania aplikacji, po przełączeniu w tryb failover na platformie Azure musisz utworzyć go na tej platformie ręcznie, aby można było uruchomić replikowaną aplikację. Alternatywnie możesz zintegrować usługę Azure Automation z planem odzyskiwania, aby utworzyć dysk podczas przełączania maszyny w tryb failover.
-> * Okno maszyny wirtualnej: Dyski utworzone ręcznie na platformie Azure nie są powrotu po awarii. Jeśli na przykład przełączysz w tryb failover trzy dyski i utworzysz dwa bezpośrednio w usłudze Azure Virtual Machines, powrót po awarii nastąpi tylko dla trzech dysków przełączonych w tryb failover. Dysków utworzonych ręcznie nie możesz uwzględnić podczas powrotu po awarii ani ponownego włączania ochrony z zasobów lokalnych do platformy Azure.
-> * Maszyny wirtualnej systemu Linux: Dyski utworzone ręcznie na platformie Azure nastąpi powrót po awarii. Jeśli na przykład przełączysz w tryb failover trzy dyski i utworzysz dwa bezpośrednio w usłudze Azure Virtual Machines, powrót po awarii nastąpi dla wszystkich pięciu dysków. Dysków utworzonych ręcznie nie możesz wykluczyć z powrotu po awarii.
+> * Maszyna wirtualna z systemem Windows: Dyski utworzone ręcznie na platformie Azure nie mają możliwości powrotu po awarii. Jeśli na przykład przełączysz w tryb failover trzy dyski i utworzysz dwa bezpośrednio w usłudze Azure Virtual Machines, powrót po awarii nastąpi tylko dla trzech dysków przełączonych w tryb failover. Dysków utworzonych ręcznie nie możesz uwzględnić podczas powrotu po awarii ani ponownego włączania ochrony z zasobów lokalnych do platformy Azure.
+> * Maszyna wirtualna z systemem Linux: Dyski utworzone ręcznie na platformie Azure są uwzględniane podczas powrotu po awarii. Jeśli na przykład przełączysz w tryb failover trzy dyski i utworzysz dwa bezpośrednio w usłudze Azure Virtual Machines, powrót po awarii nastąpi dla wszystkich pięciu dysków. Dysków utworzonych ręcznie nie możesz wykluczyć z powrotu po awarii.
 >
 
 
@@ -67,7 +67,7 @@ Rozważmy dwa scenariusze, aby zrozumieć funkcję wykluczania dysku:
 - Dysk bazy danych tempdb programu SQL Server
 - Dysk pliku stronicowania (pagefile.sys)
 
-## <a name="example-1-exclude-the-sql-server-tempdb-disk"></a>Przykład 1: Wykluczanie dysku bazy danych tempdb programu SQL Server
+## <a name="example-1-exclude-the-sql-server-tempdb-disk"></a>Przykład 1. Wykluczanie dysku bazy danych tempdb programu SQL Server
 Rozważmy maszynę wirtualną programu SQL Server z bazą danych tempdb, którą można wykluczyć.
 
 Nazwa dysku wirtualnego to SalesDB.
@@ -80,7 +80,7 @@ Na źródłowej maszynie wirtualnej są następujące dyski:
 DB-Disk0-OS | DYSK0 | C:\ | Dysk systemu operacyjnego
 DB-Disk1| Dysk1 | D:\ | Systemowa baza danych SQL i baza danych użytkownika 1
 DB-Disk2 (wykluczono dysk z ochrony) | Dysk2 | E:\ | Pliki tymczasowe
-DB-Disk3 (wykluczono dysk z ochrony) | Dysk3 | F:\ | Baza danych SQL tempdb — ścieżka folderu (F:\MSSQL\Data\) <br /> <br />Zanotuj ścieżkę folderu przed włączeniem trybu failover.
+DB-Disk3 (wykluczono dysk z ochrony) | Dysk3 | F:\ | Baza danych SQL tempdb — ścieżka folderu (F:\MSSQL\Data\) <br /> <br />Zapisz ścieżkę folderu przed przejściem w tryb failover.
 DB-Disk4 | Dysk4 |G:\ |Baza danych użytkownika 2
 
 Ponieważ zmiany danych na dwóch dyskach maszyny wirtualnej dotyczą danych tymczasowych, podczas włączania ochrony maszyny wirtualnej bazy danych SalesDB, wyklucz dyski Dysk2 i Dysk3 z replikacji. Usługa Azure Site Recovery nie będzie replikować tych dysków. Po przełączeniu w tryb failover te dyski nie będą istnieć na maszynie wirtualnej w trybie failover na platformie Azure.
@@ -90,7 +90,7 @@ Dyski na maszynie wirtualnej platformy Azure po przełączeniu w tryb failover b
 **Nr dysku systemu operacyjnego gościa** | **Litera dysku** | **Typ danych na dysku**
 --- | --- | ---
 DYSK0 | C:\ | Dysk systemu operacyjnego
-Dysk1 | E:\ | Magazyn tymczasowy<br /> <br />Platforma Azure dodaje ten dysk i przypisuje pierwszą dostępną literę dysku.
+Dysk1 | E:\ | Magazyn tymczasowy<br /> <br />Platforma Azure dodaje ten dysk i przypisuje mu pierwszą dostępną literę dysku.
 Dysk2 | D:\ | Systemowa baza danych SQL i baza danych użytkownika 1
 Dysk3 | G:\ | Baza danych użytkownika 2
 
@@ -154,7 +154,7 @@ W poprzednim przykładzie konfiguracja dysków maszyny wirtualnej platformy Azur
 **Nr dysku systemu operacyjnego gościa** | **Litera dysku** | **Typ danych na dysku**
 --- | --- | ---
 DYSK0 | C:\ | Dysk systemu operacyjnego
-Dysk1 | E:\ | Magazyn tymczasowy<br /> <br />Platforma Azure dodaje ten dysk i przypisuje pierwszą dostępną literę dysku.
+Dysk1 | E:\ | Magazyn tymczasowy<br /> <br />Platforma Azure dodaje ten dysk i przypisuje mu pierwszą dostępną literę dysku.
 Dysk2 | D:\ | Systemowa baza danych SQL i baza danych użytkownika 1
 Dysk3 | G:\ | Baza danych użytkownika 2
 
@@ -168,12 +168,12 @@ DYSK0 | C:\ | Dysk systemu operacyjnego
 Dysk1 | D:\ | Systemowa baza danych SQL i baza danych użytkownika 1
 Dysk2 | G:\ | Baza danych użytkownika 2
 
-## <a name="example-2-exclude-the-paging-file-pagefilesys-disk"></a>Przykład 2: Wykluczanie dysku pliku stronicowania (pagefile.sys)
+## <a name="example-2-exclude-the-paging-file-pagefilesys-disk"></a>Przykład 2. Wykluczanie dysku pliku stronicowania (pagefile.sys)
 
 Rozważmy maszynę wirtualną zawierającą dysk z plikiem stronicowania, który można wykluczyć.
 Są dwa przypadki.
 
-### <a name="case-1-the-paging-file-is-configured-on-the-d-drive"></a>Przypadek 1: Plik stronicowania skonfigurowano na dysku D:
+### <a name="case-1-the-paging-file-is-configured-on-the-d-drive"></a>Przypadek 1. Plik stronicowania skonfigurowano na dysku D:
 Konfiguracja dysków:
 
 **Nazwa dysku** | **Nr dysku systemu operacyjnego gościa** | **Litera dysku** | **Typ danych na dysku**
@@ -203,7 +203,7 @@ Poniżej przedstawiono ustawienia pliku stronicowania na maszynie wirtualnej pla
 
 ![Ustawienia pliku stronicowania na maszynie wirtualnej platformy Azure](./media/vmware-azure-exclude-disk/pagefile-on-azure-vm-after-failover.png)
 
-### <a name="case-2-the-paging-file-is-configured-on-another-drive-other-than-d-drive"></a>Przypadek 2: Plik stronicowania skonfigurowano na innym dysku (innym niż d:)
+### <a name="case-2-the-paging-file-is-configured-on-another-drive-other-than-d-drive"></a>Przypadek 2. Plik stronicowania skonfigurowano na innym dysku (innym niż D:)
 
 Poniżej przedstawiono konfigurację dysków źródłowej maszyny wirtualnej:
 
@@ -233,5 +233,5 @@ Poniżej przedstawiono ustawienia pliku stronicowania na maszynie wirtualnej pla
 
 ![Ustawienia pliku stronicowania na maszynie wirtualnej platformy Azure](./media/vmware-azure-exclude-disk/pagefile-on-azure-vm-after-failover-2.png)
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 Po skonfigurowaniu i uruchomieniu wdrożenia [dowiedz się więcej](site-recovery-failover.md) o różnych typach trybu failover.

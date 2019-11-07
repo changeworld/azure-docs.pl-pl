@@ -1,7 +1,7 @@
 ---
 title: Niestandardowe poddomeny
 titleSuffix: Azure Cognitive Services
-description: Platforma Azure Cognitive Services używać niestandardowych nazw poddomen dla każdego zasobu utworzonego za pomocą Azure Portal, Azure Cloud Shell lub interfejsu wiersza polecenia platformy Azure. W przeciwieństwie do regionalnych punktów końcowych, które były wspólne dla wszystkich klientów w określonym regionie świadczenia usługi Azure, niestandardowe nazwy domen poddomen są unikatowe dla zasobu. Niestandardowe nazwy domen poddomen są wymagane do włączenia funkcji, takich jak Azure Active Directory (Azure AD) do uwierzytelniania.
+description: Niestandardowe nazwy domen poddomen dla każdego zasobu usługi poznawczej są tworzone za pomocą Azure Portal, Azure Cloud Shell lub interfejsu wiersza polecenia platformy Azure.
 services: cognitive-services
 author: erhopf
 manager: nitinme
@@ -9,12 +9,12 @@ ms.service: cognitive-services
 ms.topic: conceptual
 ms.date: 07/24/2019
 ms.author: erhopf
-ms.openlocfilehash: 7153735052f96bef65bf3daaccde4eab3e61b0f9
-ms.sourcegitcommit: c72ddb56b5657b2adeb3c4608c3d4c56e3421f2c
+ms.openlocfilehash: 108e5ebfa34db711af4ff33cbf4fbba897b8947d
+ms.sourcegitcommit: 359930a9387dd3d15d39abd97ad2b8cb69b8c18b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/24/2019
-ms.locfileid: "68473052"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73647692"
 ---
 # <a name="custom-subdomain-names-for-cognitive-services"></a>Niestandardowe nazwy domen poddomen dla Cognitive Services
 
@@ -39,7 +39,7 @@ Nie. Regionalny punkt końcowy będzie nadal działał w przypadku nowych i istn
 ## <a name="what-if-an-sdk-asks-me-for-the-region-for-a-resource"></a>Co zrobić, jeśli zestaw SDK poprosi o podanie regionu dla zasobu?
 
 > [!WARNING]
-> **Usługi mowy** nie obsługują w tym momencie niestandardowych poddomen. Użyj regionalnych punktów końcowych, gdy korzystasz z usług mowy i skojarzonych zestawów SDK.
+> **Usługi mowy nie obsługują** w tym momencie niestandardowych poddomen. Użyj regionalnych punktów końcowych, gdy korzystasz z usług mowy i skojarzonych zestawów SDK.
 
 Regionalne punkty końcowe i niestandardowe nazwy domen są obsługiwane i mogą być używane zamiennie. Wymagany jest jednak pełny punkt końcowy.
 
@@ -51,7 +51,7 @@ Tak. Używanie niestandardowej nazwy domeny podrzędnej nie zmienia żadnych asp
 
 ## <a name="what-are-the-requirements-for-a-custom-subdomain-name"></a>Jakie są wymagania dotyczące niestandardowej nazwy domeny podrzędnej?
 
-Niestandardowa nazwa domeny podrzędnej jest unikatowa dla zasobu. Nazwa może zawierać tylko znaki alfanumeryczne i `-` znak; długość musi należeć do przedziału od 2 do 64 znaków i nie może kończyć się spacją. `-`
+Niestandardowa nazwa domeny podrzędnej jest unikatowa dla zasobu. Nazwa może zawierać tylko znaki alfanumeryczne i znak `-`; musi mieć długość od 2 do 64 znaków i nie może kończyć się `-`.
 
 ## <a name="can-i-change-a-custom-domain-name"></a>Czy mogę zmienić niestandardową nazwę domeny?
 
@@ -76,7 +76,7 @@ Tak. Jest to lista regionalnych punktów końcowych, które mogą być używane 
 | | Kanada Środkowa | `https://canadacentral.api.cognitive.microsoft.com` |
 | | Środkowe stany USA | `https://centralus.api.cognitive.microsoft.com` |
 | | Azja Wschodnia | `https://eastasia.api.cognitive.microsoft.com` |
-| | East US | `https://eastus.api.cognitive.microsoft.com` |
+| | Wschodnie stany USA | `https://eastus.api.cognitive.microsoft.com` |
 | | Wschodnie stany USA 2 | `https://eastus2.api.cognitive.microsoft.com` |
 | | Francja Środkowa | `https://francecentral.api.cognitive.microsoft.com` |
 | | Indie Środkowe | `https://centralindia.api.cognitive.microsoft.com` |
@@ -92,11 +92,11 @@ Tak. Jest to lista regionalnych punktów końcowych, które mogą być używane 
 | | Europa Zachodnia | `https://westeurope.api.cognitive.microsoft.com` |
 | | Zachodnie stany USA | `https://westus.api.cognitive.microsoft.com` |
 | | Zachodnie stany USA 2 | `https://westus2.api.cognitive.microsoft.com` |
-| US Gov | Administracja USA — Wirginia | `https://virginia.api.cognitive.microsoft.us` |
+| Rząd USA | Administracja USA — Wirginia | `https://virginia.api.cognitive.microsoft.us` |
 | Chiny | Chiny Wschodnie 2 | `https://chinaeast2.api.cognitive.azure.cn` |
 | | Chiny Północne | `https://chinanorth.api.cognitive.azure.cn` |
 
-## <a name="see-also"></a>Zobacz także
+## <a name="see-also"></a>Zobacz też
 
 * [Co to jest Cognitive Services?](Welcome.md)
 * [Uwierzytelnianie](authentication.md)

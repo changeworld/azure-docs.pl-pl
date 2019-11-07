@@ -1,6 +1,6 @@
 ---
-title: Rozwiązywanie problemów Azure SQL Data Warehouse | Microsoft Docs
-description: Rozwiązywanie problemów Azure SQL Data Warehouse.
+title: Rozwiązywanie problemów z łącznością
+description: Rozwiązywanie problemów z łącznością w Azure SQL Data Warehouse.
 services: sql-data-warehouse
 author: anumjs
 manager: craigg
@@ -10,23 +10,24 @@ ms.subservice: supportability
 ms.date: 03/27/2019
 ms.author: anjangsh
 ms.reviewer: igorstan
-ms.openlocfilehash: ebdeaf21253e89a9a14e3a56ca7be0f6e8adceb0
-ms.sourcegitcommit: 65131f6188a02efe1704d92f0fd473b21c760d08
+ms.custom: seo-lt-2019
+ms.openlocfilehash: d1139032176b3b44c58471b87cabd10ffeaa3d20
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/10/2019
-ms.locfileid: "70859234"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73692426"
 ---
 # <a name="troubleshooting-connectivity-issues"></a>Rozwiązywanie problemów z łącznością
 
 W tym artykule wymieniono typowe techniki rozwiązywania problemów dotyczące łączenia się z SQL Data Warehouse.
 - [Sprawdź dostępność usługi](./sql-data-warehouse-troubleshoot-connectivity.md#check-service-availability)
-- [Sprawdź wstrzymanie lub skalowanie operacji](./sql-data-warehouse-troubleshoot-connectivity.md#check-for-paused-or-scaling-operation)
-- [Sprawdź ustawienia zapory](./sql-data-warehouse-troubleshoot-connectivity.md#check-your-firewall-settings)
-- [Sprawdź ustawienia sieci wirtualnej/punktu końcowego usługi](./sql-data-warehouse-troubleshoot-connectivity.md#check-your-vnetservice-endpoint-settings)
-- [Sprawdź, czy są zainstalowane najnowsze sterowniki](./sql-data-warehouse-troubleshoot-connectivity.md#check-for-the-latest-drivers)
-- [Sprawdź parametry połączenia](./sql-data-warehouse-troubleshoot-connectivity.md#check-your-connection-string)
-- [Sporadyczne problemy z połączeniem](./sql-data-warehouse-troubleshoot-connectivity.md#intermittent-connection-issues)
+- [Sprawdzanie istnienia wstrzymania lub operacji skalowania](./sql-data-warehouse-troubleshoot-connectivity.md#check-for-paused-or-scaling-operation)
+- [Sprawdzanie ustawień zapory](./sql-data-warehouse-troubleshoot-connectivity.md#check-your-firewall-settings)
+- [Sprawdzanie ustawień sieci wirtualnej/punktu końcowego usługi](./sql-data-warehouse-troubleshoot-connectivity.md#check-your-vnetservice-endpoint-settings)
+- [Sprawdzanie, czy są zainstalowane najnowsze sterowniki](./sql-data-warehouse-troubleshoot-connectivity.md#check-for-the-latest-drivers)
+- [Sprawdzanie parametrów połączenia](./sql-data-warehouse-troubleshoot-connectivity.md#check-your-connection-string)
+- [Sporadyczne problemy z połączeniami](./sql-data-warehouse-troubleshoot-connectivity.md#intermittent-connection-issues)
 - [Typowe komunikaty o błędach](./sql-data-warehouse-troubleshoot-connectivity.md#common-error-messages)
 
 ## <a name="check-service-availability"></a>Sprawdź dostępność usługi
@@ -41,7 +42,7 @@ W tym miejscu zostanie wyświetlony stan SQL Data Warehouse. Jeśli usługa nie 
 
 Jeśli Kondycja zasobów pokazuje, że magazyn danych jest wstrzymany lub skalowany, postępuj zgodnie ze wskazówkami, aby wznowić działanie magazynu danych.
 
-![Usługa wstrzymała](./media/sql-data-warehouse-troubleshoot-connectivity/resource-health-pausing.png) dodatkowe informacje na temat Resource Health można znaleźć tutaj.
+Usługa ![została wstrzymana](./media/sql-data-warehouse-troubleshoot-connectivity/resource-health-pausing.png) dodatkowe informacje na temat Resource Health można znaleźć tutaj.
 
 ## <a name="check-for-paused-or-scaling-operation"></a>Sprawdź wstrzymanie lub skalowanie operacji
 
@@ -57,7 +58,7 @@ W przeciwnym razie skontaktuj się z administratorem IT, aby sprawdzić, czy ta 
 
 ## <a name="check-your-firewall-settings"></a>Sprawdź ustawienia zapory
 
-Usługa SQL Data Warehouse komunikuje się przez port 1433.   Jeśli próbujesz nawiązać połączenie z sieci firmowej, ruch wychodzący na porcie 1433 może być blokowany przez zaporę sieciową. W takim przypadku nie można nawiązać połączenia z serwerem Azure SQL Database, chyba że dział IT otworzy port 1433. Dodatkowe informacje na temat konfiguracji zapory można znaleźć [tutaj](https://docs.microsoft.com/azure/sql-database/sql-database-firewall-configure#create-and-manage-ip-firewall-rules).
+Usługa SQL Data Warehouse komunikuje się przez port 1433.   Jeśli próbujesz nawiązać połączenie z sieci firmowej, ruch wychodzący przez port 1433 może być niedozwolony przez zaporę sieciową. W takim przypadku nie będzie można nawiązać połączenia z serwerem usługi Azure SQL Database, chyba że dział IT otworzy port 1433. Dodatkowe informacje na temat konfiguracji zapory można znaleźć [tutaj](https://docs.microsoft.com/azure/sql-database/sql-database-firewall-configure#create-and-manage-ip-firewall-rules).
 
 ## <a name="check-your-vnetservice-endpoint-settings"></a>Sprawdź ustawienia sieci wirtualnej/punktu końcowego usługi
 
@@ -71,7 +72,7 @@ Upewnij się, że używasz najnowszych narzędzi do nawiązywania połączenia z
 
 * SSMS
 * Azure Data Studio
-* SQL Server Data Tools (Visual Studio)
+* Narzędzia danych SQL Server (Visual Studio)
 
 ### <a name="drivers"></a>Sterowniki
 
@@ -84,7 +85,7 @@ Upewnij się, że korzystasz z najnowszej wersji sterownika.  Używanie starsz
 
 ## <a name="check-your-connection-string"></a>Sprawdź parametry połączenia
 
-Upewnij się, że parametry połączenia zostały prawidłowo ustawione.  Poniżej przedstawiono przykłady.  Dodatkowe informacje o [ciągach połączeń](https://docs.microsoft.com/azure/sql-data-warehouse/sql-data-warehouse-connection-strings)można znaleźć tutaj.
+Upewnij się, że parametry połączenia zostały prawidłowo ustawione.  Poniżej przedstawiono przykłady.  Dodatkowe informacje na temat [parametrów połączeń można znaleźć tutaj](https://docs.microsoft.com/azure/sql-data-warehouse/sql-data-warehouse-connection-strings).
 
 Parametry połączenia sterownika ADO.NET
 
@@ -112,7 +113,7 @@ jdbc:sqlserver://yourserver.database.windows.net:1433;database=yourdatabase;user
 
 ## <a name="intermittent-connection-issues"></a>Sporadyczne problemy z połączeniem
 
-Sprawdź, czy na serwerze występują duże obciążenie z dużą liczbą żądań umieszczonych w kolejce. Może być konieczne skalowanie magazynu danych w górę w celu uzyskania dodatkowych zasobów.
+Sprawdź, czy serwer nie jest mocno obciążony, a w kolejce nie ma dużej liczby żądań. Może być konieczne skalowanie magazynu danych w górę w celu uzyskania dodatkowych zasobów.
 
 ## <a name="common-error-messages"></a>Typowe komunikaty o błędach
 

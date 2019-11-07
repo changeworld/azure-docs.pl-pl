@@ -7,27 +7,17 @@ ms.author: jzim
 manager: jeconnoc
 ms.service: container-service
 ms.topic: article
-ms.date: 05/08/2019
-ms.openlocfilehash: 8f7349310f72c8cccc7b1906239ece3038dd7861
-ms.sourcegitcommit: 961468fa0cfe650dc1bec87e032e648486f67651
+ms.date: 11/04/2019
+ms.openlocfilehash: d8707e2edccf144cbe58a530bcfe2c176e656915
+ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/10/2019
-ms.locfileid: "72249213"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73582398"
 ---
 # <a name="azure-red-hat-openshift-faq"></a>Azure Red Hat OpenShift — często zadawane pytania
 
 W tym artykule opisano często zadawane pytania dotyczące Microsoft Azure Red Hat OpenShift.
-
-## <a name="how-do-i-get-started"></a>Jak rozpocząć pracę?
-
-Przed rozpoczęciem korzystania z usługi Azure Red Hat OpenShift należy zakupić co najmniej 4 zastrzeżone aplikacje usługi Azure Red Hat OpenShift.
-
-Jeśli jesteś klientem platformy Azure,[Kup wystąpienia zarezerwowane w systemie Azure Red Hat OpenShift](https://aka.ms/openshift/buy) za pomocą Azure Portal. Po zakupieniu subskrypcja zostanie uaktywniona w ciągu 24 godzin, po upływie której będzie możliwe udostępnienie klastrów.
-
-Jeśli nie jesteś klientem platformy Azure, [skontaktuj się ze sprzedażą](https://aka.ms/openshift/contact-sales) i wypełnij formularz sprzedaży w dolnej części strony, aby rozpocząć proces.
-
-Aby uzyskać więcej informacji, zobacz [stronę z cennikiem usługi Azure Red Hat OpenShift](https://aka.ms/openshift/pricing) .
 
 ## <a name="which-azure-regions-are-supported"></a>Które regiony platformy Azure są obsługiwane?
 
@@ -39,7 +29,7 @@ Nie. Można jednak połączyć klaster usługi Azure Red Hat OpenShift z istniej
 
 ## <a name="what-cluster-operations-are-available"></a>Jakie operacje klastra są dostępne?
 
-Można skalować w górę lub w dół liczbę węzłów obliczeniowych. Żadne inne modyfikacje nie są dozwolone dla zasobu `Microsoft.ContainerService/openShiftManagedClusters` po utworzeniu. Maksymalna liczba węzłów obliczeniowych jest ograniczona do 20.
+Można skalować w górę lub w dół liczbę węzłów obliczeniowych. Po utworzeniu nie są dozwolone żadne inne modyfikacje zasobu `Microsoft.ContainerService/openShiftManagedClusters`. Maksymalna liczba węzłów obliczeniowych jest ograniczona do 20.
 
 ## <a name="what-virtual-machine-sizes-can-i-use"></a>Jakie rozmiary maszyn wirtualnych można użyć?
 
@@ -63,7 +53,7 @@ Rejestr platformy Docker jest dostępny z `https://docker-registry.apps.<cluster
 
 ## <a name="is-cross-namespace-networking-supported"></a>Czy obsługa sieci między przestrzenią nazw jest obsługiwana?
 
-Administratorzy klientów i poszczególnych projektów mogą dostosowywać sieci obejmujące wiele przestrzeni nazw (w tym odrzucanie ich) dla poszczególnych projektów przy użyciu obiektów `NetworkPolicy`.
+Administratorzy klienta i indywidualnego projektu mogą dostosowywać sieci obejmujące wiele przestrzeni nazw (w tym odrzucanie ich) na podstawie projektu przy użyciu obiektów `NetworkPolicy`.
 
 ## <a name="can-an-admin-manage-users-and-quotas"></a>Czy administrator może zarządzać użytkownikami i przydziałami?
 
@@ -85,7 +75,7 @@ Nie. Wszystkie zasoby, w tym główny klaster, są uruchamiane w ramach subskryp
 
 Tak. Możesz użyć OSBA z platformą Azure Red Hat OpenShift. Aby uzyskać więcej informacji, zobacz [otwórz Service Broker dla platformy Azure](https://github.com/Azure/open-service-broker-azure#openshift-project-template) .
 
-## <a name="i-am-trying-to-peer-into-a-virtual-network-in-a-different-subscription-but-getting-failed-to-get-vnet-cidr-error"></a>Próbuję nawiązać połączenie równorzędne w sieci wirtualnej w innej subskrypcji, ale pobieranie `Failed to get vnet CIDR` błędu.
+## <a name="i-am-trying-to-peer-into-a-virtual-network-in-a-different-subscription-but-getting-failed-to-get-vnet-cidr-error"></a>Próbuję nawiązać połączenie równorzędne w sieci wirtualnej w innej subskrypcji, ale pojawia się błąd `Failed to get vnet CIDR`.
 
 Upewnij się, że w subskrypcji z siecią wirtualną zarejestrowano dostawcę `Microsoft.ContainerService` z `az provider register -n Microsoft.ContainerService --wait` 
 
@@ -93,7 +83,7 @@ Upewnij się, że w subskrypcji z siecią wirtualną zarejestrowano dostawcę `M
 
 Istnieją trzy typy czynności konserwacyjnych: uaktualnienia, tworzenie kopii zapasowych i przywracanie danych etcd oraz Konserwacja inicjowana przez dostawcę chmury.
 
-+ Uaktualnienia obejmują uaktualnienia oprogramowania i CVEs. Korygowanie CVE występuje przy uruchamianiu, uruchamiając `yum update` i umożliwia natychmiastowe ograniczenie problemu.  Równolegle zostanie utworzona nowa kompilacja obrazu dla przyszłego tworzenia klastra.
++ Uaktualnienia obejmują uaktualnienia oprogramowania i CVEs. Korygowanie CVE następuje podczas uruchamiania przez uruchomienie `yum update` i umożliwia natychmiastowe ograniczenie problemu.  Równolegle zostanie utworzona nowa kompilacja obrazu dla przyszłego tworzenia klastra.
 
 + Tworzenie kopii zapasowych danych etcd i zarządzanie nimi to zautomatyzowany proces, który może wymagać przestoju klastra w zależności od akcji. Jeśli baza danych etcd jest przywracana z kopii zapasowej, będzie przestoje. Wykonujemy kopie zapasowe etcd co godzinę i zachowuję ostatnie 6 godzin wykonywania kopii zapasowych.
 
@@ -129,7 +119,7 @@ Nie jest on szyfrowany na poziomie etcd. Opcja włączenia tej opcji nie jest ob
 
 Dziennik systemowy, dzienniki platformy Docker, dziennik i dmesg są obsługiwane przez usługę zarządzaną i nie są dostępne dla klientów.
 
-## <a name="how-can-a-customer-get-access-to-metrics-like-cpumemory-at-the-node-level-to-take-action-to-scale-debug-issues-etc-i-cannot-seem-to-run-kubectl-top-on-an-aro-cluster"></a>Jak klient może uzyskać dostęp do metryk, takich jak procesor CPU/pamięć na poziomie węzła, aby podjąć działania w celu skalowania, debugowania problemów itp. Nie można uruchomić `kubectl top` w klastrze ARO.
+## <a name="how-can-a-customer-get-access-to-metrics-like-cpumemory-at-the-node-level-to-take-action-to-scale-debug-issues-etc-i-cannot-seem-to-run-kubectl-top-on-an-aro-cluster"></a>Jak klient może uzyskać dostęp do metryk, takich jak procesor CPU/pamięć na poziomie węzła, aby podjąć działania w celu skalowania, debugowania problemów itp. Nie mogę uruchomić `kubectl top` w klastrze ARO.
 
 `kubectl top` nie jest dostępna w Red Hat OpenShift. Wymaga ona źródła metryk zapasowych, Heapster (przestarzałe) lub metryk — serwera (inkubacji lub alfa), nie są uwzględniane w stosie monitorowania OpenShift.
 

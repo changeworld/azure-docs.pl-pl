@@ -1,5 +1,5 @@
 ---
-title: Konfigurowanie usługi Azure SQL Data Sync | Microsoft Docs
+title: Konfigurowanie usługi Azure SQL Data Sync
 description: W tym samouczku przedstawiono sposób konfigurowania usługi Azure SQL Data Sync
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: allenwux
 ms.author: xiwu
 ms.reviewer: carlrab
 ms.date: 01/14/2019
-ms.openlocfilehash: 37b8f64360e871236be7a8623460bbe75bd1d8b5
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 082721ef1436d0b6668016aca29870016038af86
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68568173"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73689998"
 ---
 # <a name="tutorial-set-up-sql-data-sync-between-azure-sql-database-and-sql-server-on-premises"></a>Samouczek: Konfigurowanie SQL Data Sync między Azure SQL Database i SQL Server lokalnie
 
@@ -31,7 +31,7 @@ Przykłady programu PowerShell dotyczące konfigurowania SQL Data Sync można zn
 > [!IMPORTANT]
 > Usługa Azure SQL Data Sync **nie** obsługuje obecnie wystąpienia zarządzanego usługi Azure SQL Database.
 
-## <a name="create-sync-group"></a>Tworzenie grupy synchronizacji
+## <a name="create-sync-group"></a>Utwórz grupę synchronizacji
 
 1. W przeglądarce przejdź do Azure Portal. Zlokalizuj bazę danych SQL na pulpicie nawigacyjnym lub wybierz ikonę **bazy danych SQL** na pasku narzędzi i na stronie **bazy danych SQL** wybierz bazę danych, która ma być używana jako baza danych usługi Hub do synchronizacji danych.
 
@@ -60,7 +60,7 @@ Przykłady programu PowerShell dotyczące konfigurowania SQL Data Sync można zn
 
    Wybierz **przycisk OK** i poczekaj na utworzenie i wdrożenie grupy synchronizacji.
 
-## <a name="add-sync-members"></a>Dodawanie elementów członkowskich synchronizacji
+## <a name="add-sync-members"></a>Dodaj elementy członkowskie synchronizacji
 
 Po utworzeniu i wdrożeniu nowej grupy synchronizacji polecenie **Dodaj elementy członkowskie synchronizacji (krok 2)** zostanie wyróżnione na stronie **Nowa grupa synchronizacji** .
 
@@ -82,7 +82,7 @@ W sekcji **baza danych elementu członkowskiego** opcjonalnie Dodaj Azure SQL Da
   | **Subskrypcja** | Wybierz skojarzoną subskrypcję platformy Azure na potrzeby rozliczeń. |
   | **SQL Server platformy Azure** | Wybierz istniejący serwer SQL Database. |
   | **Azure SQL Database** | Wybierz istniejącą bazę danych SQL. |
-  | **Wskazówki dotyczące synchronizacji** | Wybierz opcję **Synchronizacja**dwukierunkowa, z **centrum**lub **z centrum**. |
+  | **Wskazówki dotyczące synchronizacji** | Wybierz opcję **Synchronizacja dwukierunkowa**, z **centrum**lub **z centrum**. |
   | **Nazwa użytkownika** i **hasło** | Wprowadź istniejące poświadczenia dla serwera SQL Database, na którym znajduje się baza danych elementu członkowskiego. W tej sekcji nie wprowadzaj *nowych* poświadczeń. |
 
   Wybierz **przycisk OK** i poczekaj na utworzenie i wdrożenie nowej synchronizacji elementu członkowskiego.
@@ -138,7 +138,7 @@ W sekcji **baza danych elementu członkowskiego** opcjonalnie Dodaj SQL Server l
 
 1. W portalu na stronie **Konfiguracja lokalna** wybierz **pozycję Wybierz bazę danych**.
 
-1. Na stronie **Wybieranie bazy danych** w polu **Nazwa elementu członkowskiego synchronizacji** Podaj nazwę nowego elementu członkowskiego synchronizacji. Ta nazwa różni się od nazwy samej bazy danych. Wybierz bazę danych z listy. W polu **instrukcje synchronizacji** wybierz opcję **Synchronizacja**dwukierunkowa, **z centrum**lub **z centrum**.
+1. Na stronie **Wybieranie bazy danych** w polu **Nazwa elementu członkowskiego synchronizacji** Podaj nazwę nowego elementu członkowskiego synchronizacji. Ta nazwa różni się od nazwy samej bazy danych. Wybierz bazę danych z listy. W polu **instrukcje synchronizacji** wybierz opcję **Synchronizacja dwukierunkowa**, **z centrum**lub **z centrum**.
 
     ![Wybierz lokalną bazę danych](media/sql-database-get-started-sql-data-sync/datasync-preview-selectdb.png)
 
@@ -147,7 +147,7 @@ W sekcji **baza danych elementu członkowskiego** opcjonalnie Dodaj SQL Server l
 > [!NOTE]
 > Aby nawiązać połączenie z usługą SQL Data Sync i agentem lokalnym, Dodaj nazwę użytkownika do roli *DataSync_Executor*. Synchronizacja danych tworzy tę rolę w wystąpieniu SQL Server.
 
-## <a name="configure-sync-group"></a>Konfigurowanie grupy synchronizacji
+## <a name="configure-sync-group"></a>Konfiguruj grupę synchronizacji
 
 Po utworzeniu i wdrożeniu nowych członków grupy synchronizacji na stronie **Nowa grupa synchronizacji** zostanie wyróżniona pozycja **Konfiguruj grupę synchronizacji (krok 3)** .
 
@@ -191,7 +191,7 @@ Synchronizacja danych tworzy dodatkowe tabele w bazie danych na potrzeby śledze
 
 **Czy moje dane są Convergent po zakończeniu synchronizacji?**
 
-Niekoniecznie. Utwórz grupę synchronizacji z koncentratorem i trzema szprychami (A, B i C), w przypadku których synchronizacje są piastami z centrum, do B i Hub do dysku C. W przypadku zmiany w bazie danych A *po* przeprowadzeniu synchronizacji przez centrum zmiana ta nie jest zapisywana w bazie danych B lub w bazie danych C do momentu następnego zadania synchronizacji.
+Niekoniecznie. Utwórz grupę synchronizacji z koncentratorem i trzema szprychami (A, B i C), w przypadku których synchronizacje są piastami z centrum, do B i Hub do dysku C. W przypadku zmiany w bazie danych A *po przeprowadzeniu* synchronizacji przez centrum zmiana ta nie jest zapisywana w bazie danych B lub w bazie danych C do momentu następnego zadania synchronizacji.
 
 **Jak mogę pobrać zmian schematu do grupy synchronizacji?**
 
@@ -223,7 +223,7 @@ Po wyeksportowaniu bazy danych jako pliku *. BACPAC* i zaimportowaniu pliku w ce
 
 W przypadku często zadawanych pytań dotyczących agenta klienta zobacz [często zadawane](sql-database-data-sync-agent.md#agent-faq)pytania dotyczące agenta.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 Gratulacje. Utworzono grupę synchronizacji obejmującą zarówno wystąpienie SQL Database, jak i bazę danych SQL Server.
 
