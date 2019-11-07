@@ -10,12 +10,12 @@ ms.topic: overview
 ms.date: 08/07/2019
 ms.author: cgillum
 ms.reviewer: azfuncdf
-ms.openlocfilehash: a917a823d47d6a072cf5a3ee5d636b432913df9a
-ms.sourcegitcommit: 29880cf2e4ba9e441f7334c67c7e6a994df21cfe
+ms.openlocfilehash: 0b85d6fbe8e66b94bad372ccb29e5489dd81587b
+ms.sourcegitcommit: b2fb32ae73b12cf2d180e6e4ffffa13a31aa4c6f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/26/2019
-ms.locfileid: "71299440"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73614781"
 ---
 # <a name="what-are-durable-functions"></a>Co to jest Durable Functions?
 
@@ -44,7 +44,7 @@ Podstawowym zastosowaniem rozszerzenia Durable Functions jest uproszczenie zło�
 * [Interakcja z użytkownikami](#human)
 * [Agregatora](#aggregator)
 
-### <a name="chaining"></a>#1 wzorca: Łączenie funkcji w łańcuchy
+### <a name="chaining"></a>#1 wzorca: łańcuch funkcji
 
 W wzorcu łańcucha funkcji sekwencja funkcji jest wykonywana w określonej kolejności. W tym wzorcu dane wyjściowe jednej funkcji są stosowane do danych wejściowych innej funkcji.
 
@@ -57,7 +57,7 @@ Można użyć Durable Functions do wdrożenia wzorca łańcucha funkcji zwięzł
 ```csharp
 [FunctionName("Chaining")]
 public static async Task<object> Run(
-    [OrchestrationTrigger] DurableOrchestrationContext context)
+    [OrchestrationTrigger] IDurableOrchestrationContext context)
 {
     try
     {
@@ -73,7 +73,7 @@ public static async Task<object> Run(
 }
 ```
 
-#### <a name="javascript-functions-2x-only"></a>JavaScript (tylko funkcje 2. x)
+#### <a name="javascript-functions-20-only"></a>JavaScript (tylko funkcje 2,0)
 
 ```javascript
 const df = require("durable-functions");
@@ -86,14 +86,14 @@ module.exports = df.orchestrator(function*(context) {
 });
 ```
 
-W tym przykładzie `F1`wartości, `F2`, `F3`i `F4` są nazwami innych funkcji w aplikacji funkcji. Przepływ sterowania można zaimplementować przy użyciu zwykłych konstrukcji kodowania. Kod jest wykonywany z góry. Kod może dotyczyć istniejącej semantyki przepływu sterowania języka, takich jak warunkowe i pętle. Logikę obsługi błędów można uwzględnić w `try` / / `catch` blokach`finally` .
+W tym przykładzie wartości `F1`, `F2`, `F3`i `F4` są nazwami innych funkcji w aplikacji funkcji. Przepływ sterowania można zaimplementować przy użyciu zwykłych konstrukcji kodowania. Kod jest wykonywany z góry. Kod może dotyczyć istniejącej semantyki przepływu sterowania języka, takich jak warunkowe i pętle. Logikę obsługi błędów można uwzględnić w `try`/`catch`/`finally` bloków.
 
-Można użyć `context` parametru [DurableOrchestrationContext] \(.NET\) i `context.df` obiektu (JavaScript), aby wywołać inne funkcje według nazwy, przekazywania parametrów i zwracanych danych wyjściowych funkcji. Za każdym razem, gdy `await` kodC#wywołuje ( `yield` ) lub (JavaScript), program Durable Functions Framework punkty kontrolne postępu bieżącego wystąpienia funkcji. Jeśli proces lub maszyna wirtualna odtwarza w połowie wykonywania, wystąpienie funkcji zostaje wznowione od poprzedniego `await` lub `yield` wywołania. Aby uzyskać więcej informacji, zobacz następną sekcję #2 wzorca: Wentylator na zewnątrz.
+Można użyć `context` parametru [IDurableOrchestrationContext] \(.NET\) i obiektu `context.df` (JavaScript), aby wywołać inne funkcje według nazwy, przekazywania parametrów i zwracanych danych wyjściowych funkcji. Za każdym razem, gdy kod wywołujeC#`await` () lub `yield` (JavaScript), program Durable Functions Framework będzie Checkpoint postęp bieżącego wystąpienia funkcji. Jeśli proces lub maszyna wirtualna odtwarza w połowie wykonywania, wystąpienie funkcji zostaje wznowione z poprzedniego `await` lub `yield` wywołania. Aby uzyskać więcej informacji, zobacz następną sekcję, wzorzec #2: wentylator/wentylator w.
 
 > [!NOTE]
-> Obiekt w języku JavaScript reprezentuje cały [kontekst funkcji](../functions-reference-node.md#context-object), a nie tylko parametr [DurableOrchestrationContext]. `context`
+> Obiekt `context` w języku JavaScript reprezentuje cały [kontekst funkcji](../functions-reference-node.md#context-object), a nie tylko parametr [IDurableOrchestrationContext].
 
-### <a name="fan-in-out"></a>#2 wzorca: Wentylator na zewnątrz
+### <a name="fan-in-out"></a>#2 wzorca: wentylator/wentylator w
 
 W wzorcu wentylator/wentylator w wzorcem wykonujesz równolegle wiele funkcji, a następnie poczekaj na zakończenie wszystkich funkcji. Często pewne zadania agregacji są wykonywane na wynikach, które są zwracane przez funkcje.
 
@@ -108,7 +108,7 @@ Rozszerzenie Durable Functions obsługuje ten wzorzec z stosunkowo prostym kodem
 ```csharp
 [FunctionName("FanOutFanIn")]
 public static async Task Run(
-    [OrchestrationTrigger] DurableOrchestrationContext context)
+    [OrchestrationTrigger] IDurableOrchestrationContext context)
 {
     var parallelTasks = new List<Task<int>>();
 
@@ -128,7 +128,7 @@ public static async Task Run(
 }
 ```
 
-#### <a name="javascript-functions-2x-only"></a>JavaScript (tylko funkcje 2. x)
+#### <a name="javascript-functions-20-only"></a>JavaScript (tylko funkcje 2,0)
 
 ```javascript
 const df = require("durable-functions");
@@ -150,14 +150,14 @@ module.exports = df.orchestrator(function*(context) {
 });
 ```
 
-Wentylator-out Work jest dystrybuowany do wielu wystąpień `F2` funkcji. Zadanie jest śledzone przy użyciu dynamicznej listy zadań. Interfejs API `Task.WhenAll` platformy .NET lub `context.df.Task.all` interfejs API języka JavaScript jest wywoływany, aby poczekać na zakończenie wszystkich wywoływanych funkcji. Następnie dane `F2` wyjściowe funkcji są agregowane z listy zadań dynamicznych i przenoszone `F3` do funkcji.
+Wentylator-out Work jest dystrybuowany do wielu wystąpień funkcji `F2`. Zadanie jest śledzone przy użyciu dynamicznej listy zadań. Interfejs API programu .NET `Task.WhenAll` lub interfejs API `context.df.Task.all` JavaScript jest wywoływany, aby poczekać na zakończenie wszystkich wywoływanych funkcji. Następnie dane wyjściowe funkcji `F2` są agregowane z listy zadań dynamicznych i przesyłane do funkcji `F3`.
 
-Automatyczne tworzenie punktów kontrolnych, które odbywa `await` się `yield` w trakcie `Task.WhenAll` wywołania `context.df.Task.all` lub zapewnia, że potencjalne awarie w Midway lub ponowny rozruch nie wymagają ponownego uruchomienia już wykonanego zadania.
+Automatyczne tworzenie punktów kontrolnych, które odbywa się w `await` lub `yield` wywołania na `Task.WhenAll` lub `context.df.Task.all` zapewnia, że potencjalne awarie w Midway lub ponowny rozruch nie wymagają ponownego uruchomienia już wykonanego zadania.
 
 > [!NOTE]
 > W rzadkich przypadkach może wystąpić awaria w oknie po zakończeniu funkcji działania, ale przed jej ukończeniem zostanie zapisana w historii aranżacji. W takim przypadku funkcja działania zostanie ponownie uruchomiona od początku po zakończeniu procesu odzyskiwania.
 
-### <a name="async-http"></a>#3 wzorca: Asynchroniczne interfejsy API HTTP
+### <a name="async-http"></a>#3 wzorca: asynchroniczne interfejsy API protokołu HTTP
 
 Wzorzec asynchronicznego interfejsu API protokołu HTTP rozwiązuje problem związany z uzgadnianiem stanu długotrwałych operacji z klientami zewnętrznymi. Typowym sposobem implementacji tego wzorca jest posiadanie, że punkt końcowy HTTP wyzwala długotrwałą akcję. Następnie Przekieruj klienta do punktu końcowego stanu, który będzie sondował klient, aby dowiedzieć się, kiedy operacja zostanie zakończona.
 
@@ -196,7 +196,7 @@ Rozszerzenie Durable Functions udostępnia wbudowane interfejsy API protokołu H
 
 Aby uzyskać więcej informacji, zobacz artykuł [funkcje http](durable-functions-http-features.md) , w którym wyjaśniono, jak można uwidocznić asynchroniczne, długotrwałe procesy za pośrednictwem protokołu HTTP przy użyciu rozszerzenia Durable Functions.
 
-### <a name="monitoring"></a>#4 wzorca: Monitorowanie
+### <a name="monitoring"></a>#4 wzorca: Monitor
 
 Wzorzec monitora odnosi się do elastycznego, cyklicznego procesu w przepływie pracy. Przykład jest sondowany, dopóki nie zostaną spełnione określone warunki. Można użyć [wyzwalacza regularnego czasomierza](../functions-bindings-timer.md) , aby zająć się podstawowym scenariuszem, takim jak okresowe zadanie oczyszczania, ale jego interwał jest statyczny i zarządzanie okresami istnienia wystąpienia stanie się skomplikowany. Za pomocą Durable Functions można tworzyć Elastyczne interwały cykliczne, zarządzać okresami istnienia zadań oraz tworzyć wiele procesów monitorowania z jednej aranżacji.
 
@@ -204,7 +204,7 @@ Przykładem wzorca monitora jest odwrócenie wcześniejszego scenariusza asynchr
 
 ![Diagram wzorca monitora](./media/durable-functions-concepts/monitor.png)
 
-W kilku wierszach kodu można użyć Durable Functions, aby utworzyć wiele monitorów, które obserwują dowolne punkty końcowe. Monitory mogą kończyć wykonywanie, gdy spełniony jest warunek, lub [DurableOrchestrationClient](durable-functions-instance-management.md) może zakończyć działanie monitorów. `wait` Interwał monitora można zmienić na podstawie określonego warunku (na przykład wykładniczy wycofywania). 
+W kilku wierszach kodu można użyć Durable Functions, aby utworzyć wiele monitorów, które obserwują dowolne punkty końcowe. Monitory mogą kończyć wykonywanie po spełnieniu warunku lub `IDurableOrchestrationClient` mogą kończyć monitory. Można zmienić interwał `wait` monitora na podstawie określonego warunku (na przykład wykładniczy wycofywania). 
 
 Poniższy kod implementuje podstawowy Monitor:
 
@@ -213,7 +213,7 @@ Poniższy kod implementuje podstawowy Monitor:
 ```csharp
 [FunctionName("MonitorJobStatus")]
 public static async Task Run(
-    [OrchestrationTrigger] DurableOrchestrationContext context)
+    [OrchestrationTrigger] IDurableOrchestrationContext context)
 {
     int jobId = context.GetInput<int>();
     int pollingInterval = GetPollingInterval();
@@ -238,7 +238,7 @@ public static async Task Run(
 }
 ```
 
-#### <a name="javascript-functions-2x-only"></a>JavaScript (tylko funkcje 2. x)
+#### <a name="javascript-functions-20-only"></a>JavaScript (tylko funkcje 2,0)
 
 ```javascript
 const df = require("durable-functions");
@@ -266,9 +266,9 @@ module.exports = df.orchestrator(function*(context) {
 });
 ```
 
-Po odebraniu żądania dla tego identyfikatora zadania zostanie utworzone nowe wystąpienie aranżacji. Wystąpienie sonduje stan do momentu spełnienia warunku, a pętla zostanie zakończona. Trwały czasomierz steruje interwałem sondowania. Następnie można wykonać więcej pracy lub zorganizować. Po przekroczeniu `expiryTime` wartości `context.df.currentUtcDateTime` (.NET)lub(JavaScript)Monitorzostaniezakończony.`context.CurrentUtcDateTime`
+Po odebraniu żądania dla tego identyfikatora zadania zostanie utworzone nowe wystąpienie aranżacji. Wystąpienie sonduje stan do momentu spełnienia warunku, a pętla zostanie zakończona. Trwały czasomierz steruje interwałem sondowania. Następnie można wykonać więcej pracy lub zorganizować. Gdy `context.CurrentUtcDateTime` (.NET) lub `context.df.currentUtcDateTime` (JavaScript) przekracza wartość `expiryTime`, Monitor zostanie zakończony.
 
-### <a name="human"></a>#5 wzorca: Interakcja z użytkownikami
+### <a name="human"></a>#5 wzorca: interakcja ludzka
 
 Wiele zautomatyzowanych procesów dotyczy pewnego rodzaju interakcji przez człowieka. W przypadku ludzi w zautomatyzowanym procesie jest to trudne, ponieważ ludzie nie są w pełni dostępni i jako usługi w chmurze. Zautomatyzowany proces może pozwolić na interakcję przy użyciu limitów czasu i logiki kompensacji.
 
@@ -285,7 +285,7 @@ Te przykłady umożliwiają utworzenie procesu zatwierdzania w celu zademonstrow
 ```csharp
 [FunctionName("ApprovalWorkflow")]
 public static async Task Run(
-    [OrchestrationTrigger] DurableOrchestrationContext context)
+    [OrchestrationTrigger] IDurableOrchestrationContext context)
 {
     await context.CallActivityAsync("RequestApproval", null);
     using (var timeoutCts = new CancellationTokenSource())
@@ -307,7 +307,7 @@ public static async Task Run(
 }
 ```
 
-#### <a name="javascript-functions-2x-only"></a>JavaScript (tylko funkcje 2. x)
+#### <a name="javascript-functions-20-only"></a>JavaScript (tylko funkcje 2,0)
 
 ```javascript
 const df = require("durable-functions");
@@ -329,15 +329,15 @@ module.exports = df.orchestrator(function*(context) {
 });
 ```
 
-Aby utworzyć trwały czasomierz, wywołaj `context.CreateTimer` (.NET) lub `context.df.createTimer` (JavaScript). Powiadomienie jest odbierane przez `context.WaitForExternalEvent` (.NET) lub `context.df.waitForExternalEvent` (JavaScript). Następnie ( `Task.WhenAny` .NET) lub `context.df.Task.any` (JavaScript) jest wywoływana, aby zdecydować, czy należy eskalować (przekroczyć limit czasu) lub przetworzyć zatwierdzenie (zatwierdzenie zostanie odebrane przed upływem limitu czasu).
+Aby utworzyć trwały czasomierz, wywołaj `context.CreateTimer` (.NET) lub `context.df.createTimer` (JavaScript). Powiadomienie jest odbierane przez `context.WaitForExternalEvent` (.NET) lub `context.df.waitForExternalEvent` (JavaScript). Następnie należy wywołać `Task.WhenAny` (.NET) lub `context.df.Task.any` (JavaScript), aby zdecydować, czy należy eskalować (przekroczyć limit czasu) czy przetworzyć zatwierdzenie (zatwierdzenie zostanie odebrane przed upływem limitu czasu).
 
-Klient zewnętrzny może dostarczyć powiadomienie o zdarzeniu do oczekującej funkcji programu Orchestrator przy użyciu [wbudowanych interfejsów API protokołu HTTP](durable-functions-http-api.md#raise-event) lub przy użyciu interfejsu API [DurableOrchestrationClient. RaiseEventAsync](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationClient.html#Microsoft_Azure_WebJobs_DurableOrchestrationClient_RaiseEventAsync_System_String_System_String_System_Object_) z innej funkcji:
+Klient zewnętrzny może dostarczyć powiadomienie o zdarzeniu do oczekującej funkcji programu Orchestrator przy użyciu [wbudowanych interfejsów API protokołu HTTP](durable-functions-http-api.md#raise-event) lub przy użyciu metody `RaiseEventAsync` (.NET) lub `raiseEvent` (JavaScript) z innej funkcji:
 
 ```csharp
 [FunctionName("RaiseEventToOrchestration")]
 public static async Task Run(
     [HttpTrigger] string instanceId,
-    [OrchestrationClient] DurableOrchestrationClient client)
+    [DurableClient] IDurableOrchestrationClient client)
 {
     bool isApproved = true;
     await client.RaiseEventAsync(instanceId, "ApprovalEvent", isApproved);
@@ -358,7 +358,7 @@ module.exports = async function (context) {
 curl -d "true" http://localhost:7071/runtime/webhooks/durabletask/instances/{instanceId}/raiseEvent/ApprovalEvent -H "Content-Type: application/json"
 ```
 
-### <a name="aggregator"></a>#6 wzorca: Agregator (wersja zapoznawcza)
+### <a name="aggregator"></a>Wzorzec #6: agregator
 
 Szósty wzorzec polega na agregowaniu danych zdarzeń w danym okresie do pojedynczej, adresowanej *jednostki*. W tym wzorcu dane agregowane mogą pochodzić z wielu źródeł, mogą być dostarczane w partiach lub mogą być rozproszone w długim okresie czasu. Agregator może wymagać podjęcia działania względem danych zdarzenia w miarę ich nadejścia, a klienci zewnętrzni mogą potrzebować zapytania do zagregowanych danych.
 
@@ -366,33 +366,50 @@ Szósty wzorzec polega na agregowaniu danych zdarzeń w danym okresie do pojedyn
 
 W celu zaimplementowania tego wzorca przy użyciu normalnych, bezstanowych funkcji Kontrola współbieżności jest bardzo trudne. Nie tylko trzeba martwić się o wiele wątków modyfikujących te same dane w tym samym czasie, należy również pamiętać o zapewnieniu, że agregator działa tylko na jednej maszynie wirtualnej naraz.
 
-Korzystając z [funkcji trwałej jednostki](durable-functions-preview.md#entity-functions), może ona łatwo zaimplementować ten wzorzec jako pojedynczą funkcję.
+Za pomocą [jednostek trwałych](durable-functions-entities.md) można łatwo zaimplementować ten wzorzec jako pojedynczą funkcję.
 
 ```csharp
 [FunctionName("Counter")]
 public static void Counter([EntityTrigger] IDurableEntityContext ctx)
 {
     int currentValue = ctx.GetState<int>();
-
     switch (ctx.OperationName.ToLowerInvariant())
     {
         case "add":
             int amount = ctx.GetInput<int>();
-            currentValue += amount;
+            ctx.SetState(currentValue + amount);
             break;
         case "reset":
-            currentValue = 0;
+            ctx.SetState(0);
             break;
         case "get":
             ctx.Return(currentValue);
             break;
     }
-
-    ctx.SetState(currentValue);
 }
 ```
 
-Trwałe jednostki mogą być również modelowane jako klasy .NET. Ten model może być przydatny, jeśli lista operacji jest stała i będzie duża. Poniższy przykład jest równoważną implementacją `Counter` jednostki przy użyciu klas i metod platformy .NET.
+```javascript
+const df = require("durable-functions");
+
+module.exports = df.entity(function(context) {
+    const currentValue = context.df.getState(() => 0);
+    switch (context.df.operationName) {
+        case "add":
+            const amount = context.df.getInput();
+            context.df.setState(currentValue + amount);
+            break;
+        case "reset":
+            context.df.setState(0);
+            break;
+        case "get":
+            context.df.return(currentValue);
+            break;
+    }
+});
+```
+
+Trwałe jednostki mogą być również modelowane jako klasy w programie .NET. Ten model może być przydatny, jeśli lista operacji jest stała i będzie duża. Poniższy przykład jest równoważną implementacją jednostki `Counter` przy użyciu klas i metod platformy .NET.
 
 ```csharp
 public class Counter
@@ -418,7 +435,7 @@ Klienci mogą umieścić w kolejce *operacje* dla (zwane także "sygnalizacją")
 [FunctionName("EventHubTriggerCSharp")]
 public static async Task Run(
     [EventHubTrigger("device-sensor-events")] EventData eventData,
-    [OrchestrationClient] IDurableOrchestrationClient entityClient)
+    [DurableClient] IDurableOrchestrationClient entityClient)
 {
     var metricType = (string)eventData.Properties["metric"];
     var delta = BitConverter.ToInt32(eventData.Body, eventData.Body.Offset);
@@ -429,10 +446,21 @@ public static async Task Run(
 }
 ```
 
-Dynamicznie generowane serwery proxy są również dostępne do sygnalizowania jednostkami w bezpiecznym typie. Oprócz sygnalizowania klienci mogą również wysyłać zapytania dotyczące stanu funkcji jednostki przy użyciu [metod bezpiecznych typu](durable-functions-bindings.md#entity-client-usage) dla powiązania klienta aranżacji.
-
 > [!NOTE]
-> Funkcje jednostki są obecnie dostępne tylko w programie .NET w ramach [wersji zapoznawczej Durable Functions 2,0](durable-functions-preview.md).
+> Dynamicznie generowane serwery proxy są również dostępne w programie .NET do sygnalizowania jednostek w sposób bezpieczny dla typów. Oprócz sygnalizowania klienci mogą również wysyłać zapytania dotyczące stanu funkcji jednostki przy użyciu [metod bezpiecznych typu](durable-functions-bindings.md#entity-client-usage) dla powiązania klienta aranżacji.
+
+
+```javascript
+const df = require("durable-functions");
+
+module.exports = async function (context) {
+    const client = df.getClient(context);
+    const entityId = new df.EntityId("Counter", "myCounter");
+    await context.df.signalEntity(entityId, "add", 1);
+};
+```
+
+Funkcje jednostki są dostępne w [Durable Functions 2,0](durable-functions-versions.md) i nowszych.
 
 ## <a name="the-technology"></a>Technologia
 
@@ -444,7 +472,7 @@ Aby zapewnić niezawodne i długotrwałe gwarancje wykonywania, funkcje programu
 
 ## <a name="billing"></a>Rozliczenia
 
-Opłaty za rozszerzenie Durable Functions są naliczane tak samo, jak w przypadku usługi Azure Functions. Aby uzyskać więcej informacji, zobacz [cennika usługi Azure Functions](https://azure.microsoft.com/pricing/details/functions/). Podczas wykonywania funkcji programu Orchestrator w [planie zużycia](../functions-scale.md#consumption-plan)Azure Functions należy pamiętać o rozliczeniach. Aby uzyskać więcej informacji na temat tych zachowań, zobacz artykuł dotyczący [rozliczeń Durable Functions](durable-functions-billing.md) .
+Opłaty za rozszerzenie Durable Functions są naliczane tak samo, jak w przypadku usługi Azure Functions. Aby uzyskać więcej informacji, zobacz [Cennik usługi Azure Functions](https://azure.microsoft.com/pricing/details/functions/). Podczas wykonywania funkcji programu Orchestrator w [planie zużycia](../functions-scale.md#consumption-plan)Azure Functions należy pamiętać o rozliczeniach. Aby uzyskać więcej informacji na temat tych zachowań, zobacz artykuł dotyczący [rozliczeń Durable Functions](durable-functions-billing.md) .
 
 ## <a name="jump-right-in"></a>Błyskawicznie rozpocznij pracę
 

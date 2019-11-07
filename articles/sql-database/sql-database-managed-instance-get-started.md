@@ -1,5 +1,5 @@
 ---
-title: 'Azure Portal: Tworzenie wystąpienia zarządzanego SQL Database | Microsoft Docs'
+title: 'Azure Portal: Tworzenie wystąpienia zarządzanego SQL Database '
 description: Utwórz SQL Database wystąpienie zarządzane, środowisko sieciowe i maszynę wirtualną klienta, aby uzyskać dostęp.
 services: sql-database
 ms.service: sql-database
@@ -11,14 +11,14 @@ author: danimir
 ms.author: danil
 ms.reviewer: sstein, carlrab
 ms.date: 09/26/2019
-ms.openlocfilehash: 4f9ea699bd6d09f902a3ff97c95ff3455926a9d8
-ms.sourcegitcommit: 7f6d986a60eff2c170172bd8bcb834302bb41f71
+ms.openlocfilehash: a1d5873d826f513d92a421f84e3b66a55262d906
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71350920"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73688082"
 ---
-# <a name="quickstart-create-an-azure-sql-database-managed-instance"></a>Szybki start: Tworzenie wystąpienia zarządzanego usługi Azure SQL Database
+# <a name="quickstart-create-an-azure-sql-database-managed-instance"></a>Szybki Start: Tworzenie Azure SQL Database wystąpienia zarządzanego
 
 Ten przewodnik Szybki Start przeprowadzi Cię przez proces tworzenia Azure SQL Database [wystąpienia zarządzanego](sql-database-managed-instance.md) w programie Azure Portal.
 
@@ -43,7 +43,7 @@ Poniższe kroki pokazują, jak utworzyć wystąpienie zarządzane:
 
 4. Użyj kart w formularzu **utwórz Azure SQL Database aprowizacji wystąpienia zarządzanego** , aby dodać wymagane i opcjonalne informacje. Poniższe sekcje zawierają opis tych kart.
 
-### <a name="basics"></a>Ustawienia podstawowe
+### <a name="basics"></a>Podstawy
 
 - Wypełnij obowiązkowe informacje wymagane na karcie **podstawy** . Jest to minimalny zestaw informacji wymaganych do aprowizacji wystąpienia zarządzanego.
 
@@ -64,7 +64,7 @@ Poniższe kroki pokazują, jak utworzyć wystąpienie zarządzane:
 
    ![Formularz wystąpienia zarządzanego](./media/sql-database-managed-instance-get-started/tabs/mi-create-tab-configure-performance.png)
 
-- Aby przejrzeć wybór przed utworzeniem wystąpienia zarządzanego, możesz wybrać pozycję **Przegląd + Utwórz**. Lub skonfiguruj opcje sieci, wybierając pozycję **dalej: Sieć**.
+- Aby przejrzeć wybór przed utworzeniem wystąpienia zarządzanego, możesz wybrać pozycję **Przegląd + Utwórz**. Lub skonfiguruj opcje sieci, wybierając pozycję **Dalej: sieć**.
 
 ### <a name="networking"></a>Networking
 
@@ -78,10 +78,10 @@ Poniższe kroki pokazują, jak utworzyć wystąpienie zarządzane:
    | ------ | --------------- | ----------- |
    | **Sieć wirtualna** | Wybierz opcję **Utwórz nową sieć wirtualną** lub prawidłową sieć wirtualną i podsieć.| Jeśli sieć lub podsieć jest niedostępna, należy ją [zmodyfikować, aby spełniała wymagania sieciowe](sql-database-managed-instance-configure-vnet-subnet.md) przed wybraniem jej jako docelowej dla nowego wystąpienia zarządzanego. Aby uzyskać informacje o wymaganiach dotyczących konfigurowania środowiska sieciowego dla wystąpienia zarządzanego, zobacz [Konfigurowanie sieci wirtualnej dla wystąpienia zarządzanego](sql-database-managed-instance-connectivity-architecture.md). |
    | **Typ połączenia** | Wybierz między serwerem proxy a typem połączenia przekierowania.|Aby uzyskać więcej informacji na temat typów połączeń, zobacz [Azure SQL Database Policy Connection](sql-database-connectivity-architecture.md#connection-policy).|
-   | **Publiczny punkt końcowy**  | Wybierz **Włącz**. | Aby wystąpienie zarządzane było dostępne za pomocą publicznego punktu końcowego danych, należy włączyć tę opcję. | 
-   | **Zezwalaj na dostęp z** (Jeśli **publiczny punkt końcowy** jest włączony) | Wybierz jedną z opcji.   |Środowisko portalu umożliwia skonfigurowanie grupy zabezpieczeń z publicznym punktem końcowym. </br> </br> Na podstawie Twojego scenariusza wybierz jedną z następujących opcji: </br> <ul> <li>**Usługi platformy Azure**: Zalecamy korzystanie z tej opcji podczas łączenia się z Power BI lub innej usługi wielodostępnej. </li> <li> **Internet**: Używane do celów testowych, gdy chcesz szybko utworzyć wystąpienie zarządzane. Nie zalecamy jej w środowiskach produkcyjnych. </li> <li> **Brak dostępu**: Ta opcja powoduje utworzenie reguły **odmowy dostępu** . Zmodyfikuj tę regułę, aby umożliwić dostęp do wystąpienia zarządzanego za pomocą publicznego punktu końcowego. </li> </ul> </br> Aby uzyskać więcej informacji o zabezpieczeniach publicznego punktu końcowego, zobacz [bezpieczne używanie Azure SQL Database wystąpienia zarządzanego z publicznym punktem końcowym](sql-database-managed-instance-public-endpoint-securely.md).|
+   | **Publiczny punkt końcowy**  | Wybierz pozycję **Włącz**. | Aby wystąpienie zarządzane było dostępne za pomocą publicznego punktu końcowego danych, należy włączyć tę opcję. | 
+   | **Zezwalaj na dostęp z** (Jeśli **publiczny punkt końcowy** jest włączony) | Wybierz jedną z opcji.   |Środowisko portalu umożliwia skonfigurowanie grupy zabezpieczeń z publicznym punktem końcowym. </br> </br> Na podstawie Twojego scenariusza wybierz jedną z następujących opcji: </br> <ul> <li>**Usługi platformy Azure**: zalecamy korzystanie z tej opcji w przypadku łączenia się z Power BI lub z innej usługi wielodostępnej. </li> <li> **Internet**: służy do celów testowych, gdy chcesz szybko utworzyć wystąpienie zarządzane. Nie zalecamy jej w środowiskach produkcyjnych. </li> <li> **Brak dostępu**: Ta opcja tworzy regułę zabezpieczeń **Odmów** . Zmodyfikuj tę regułę, aby umożliwić dostęp do wystąpienia zarządzanego za pomocą publicznego punktu końcowego. </li> </ul> </br> Aby uzyskać więcej informacji o zabezpieczeniach publicznego punktu końcowego, zobacz [bezpieczne używanie Azure SQL Database wystąpienia zarządzanego z publicznym punktem końcowym](sql-database-managed-instance-public-endpoint-securely.md).|
 
-- Wybierz pozycję **Recenzja + Utwórz** , aby przejrzeć wybrane opcje przed utworzeniem wystąpienia zarządzanego. Lub skonfiguruj więcej ustawień niestandardowych, wybierając pozycję **dalej: Ustawienia**dodatkowe.
+- Wybierz pozycję **Recenzja + Utwórz** , aby przejrzeć wybrane opcje przed utworzeniem wystąpienia zarządzanego. Lub skonfiguruj więcej ustawień niestandardowych, wybierając pozycję **Dalej: Ustawienia dodatkowe**.
 
 ### <a name="additional-settings"></a>Ustawienia dodatkowe
 
@@ -93,10 +93,10 @@ Poniższe kroki pokazują, jak utworzyć wystąpienie zarządzane:
 
    | Ustawienie| Sugerowana wartość | Opis |
    | ------ | --------------- | ----------- |
-   | **Sortowanie** | Wybierz sortowanie, które ma być używane dla wystąpienia zarządzanego. W przypadku migrowania baz danych z SQL Server sprawdź sortowanie źródłowe za `SELECT SERVERPROPERTY(N'Collation')` pomocą i Użyj tej wartości.| Aby uzyskać informacje o sortowaniu, zobacz [Ustawianie lub zmienianie sortowania serwera](https://docs.microsoft.com/sql/relational-databases/collations/set-or-change-the-server-collation).|   
+   | **Sortowanie** | Wybierz sortowanie, które ma być używane dla wystąpienia zarządzanego. W przypadku migrowania baz danych z SQL Server sprawdź sortowanie źródłowe, używając `SELECT SERVERPROPERTY(N'Collation')` i Użyj tej wartości.| Aby uzyskać informacje o sortowaniu, zobacz [Ustawianie lub zmienianie sortowania serwera](https://docs.microsoft.com/sql/relational-databases/collations/set-or-change-the-server-collation).|   
    | **Strefa czasowa** | Wybierz strefę czasową, której będzie przestrzegać wystąpienie zarządzane.|Aby uzyskać więcej informacji, zobacz [strefy czasowe](sql-database-managed-instance-timezone.md).|
-   | **Użyj jako dodatkowego trybu failover** | Wybierz pozycję **tak**. | Włącz tę opcję, aby użyć wystąpienia zarządzanego jako dodatkowej grupy trybu failover.|
-   | **Podstawowe wystąpienie zarządzane** (Jeśli wartość **Użyj jako pomocnicza praca awaryjna** jest ustawiona na **tak**) | Wybierz istniejące podstawowe wystąpienie zarządzane, które zostanie przyłączone do tej samej strefy DNS z tworzonym wystąpieniem zarządzanym. | W tym kroku zostanie włączona konfiguracja po utworzeniu grupy trybu failover. Aby uzyskać więcej informacji, zobacz [Samouczek: Dodaj wystąpienie zarządzane SQL Database do grupy](sql-database-managed-instance-failover-group-tutorial.md)trybu failover.|
+   | **Użyj jako dodatkowego trybu failover** | Wybierz pozycję **Tak**. | Włącz tę opcję, aby użyć wystąpienia zarządzanego jako dodatkowej grupy trybu failover.|
+   | **Podstawowe wystąpienie zarządzane** (Jeśli **użycie jako ustawienia pomocnicze trybu failover** jest ustawione na **wartość tak**) | Wybierz istniejące podstawowe wystąpienie zarządzane, które zostanie przyłączone do tej samej strefy DNS z tworzonym wystąpieniem zarządzanym. | W tym kroku zostanie włączona konfiguracja po utworzeniu grupy trybu failover. Aby uzyskać więcej informacji, zobacz [Samouczek: dodawanie wystąpienia zarządzanego SQL Database do grupy trybu failover](sql-database-managed-instance-failover-group-tutorial.md).|
 
 ### <a name="review--create"></a>Przegląd + tworzenie
 
