@@ -1,5 +1,5 @@
 ---
-title: Link prywatny dla Azure SQL Database i magazynu danych | Microsoft Docs
+title: Prywatny link do Azure SQL Database i magazynu danych
 description: Omówienie funkcji prywatnego punktu końcowego
 author: rohitnayakmsft
 ms.author: rohitna
@@ -7,12 +7,12 @@ ms.service: sql-database
 ms.topic: overview
 ms.reviewer: vanto
 ms.date: 09/17/2019
-ms.openlocfilehash: 3adcccde89823f865535c9e1350ac4c3e541eef6
-ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
+ms.openlocfilehash: a056c4beeeb05886d4b4ed492a05d1963372b366
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "71066258"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73687611"
 ---
 # <a name="private-link-for-azure-sql-database-and-data-warehouse-preview"></a>Link prywatny dla Azure SQL Database i magazynu danych (wersja zapoznawcza)
 
@@ -60,16 +60,16 @@ Po utworzeniu przez administratora sieci prywatnego punktu końcowego (PE) admin
 
     - (1) wybierz połączenia prywatnego punktu końcowego w lewym okienku
     - (2) przedstawia listę wszystkich połączeń prywatnych punktów końcowych (PECs)
-    - (3) odpowiedni prywatny punkt końcowy (PE) utworzony ![Screenshot wszystkich PECs @ no__t-1
+    - (3) odpowiedni prywatny punkt końcowy (PE) utworzony ![zrzut ekranu wszystkich PECs][3]
 
 1. Wybierz z listy indywidualny element PEC, wybierając go.
-![Screenshot wybrany komputer PEC @ no__t-1
+Zrzut ekranu ![wybraną PEC][6]
 
 1. Administrator SQL może zdecydować się na zatwierdzenie lub odrzucenie PEC i opcjonalnie dodać odpowiedź krótką tekstu.
-![Screenshot zatwierdzenia PEC @ no__t-1
+![zrzut ekranu z zatwierdzeniem PEC][4]
 
 1. Po zatwierdzeniu lub odrzuceniu lista będzie odzwierciedlać odpowiedni stan wraz z tekstem odpowiedzi.
-![Screenshot wszystkich PECs po zatwierdzeniu @ no__t-1
+![zrzut ekranu przedstawiający wszystkie PECs po zatwierdzeniu][5]
 
 ## <a name="use-cases-of-private-link-for-azure-sql-database"></a>Przypadki użycia prywatnego linku do Azure SQL Database 
 

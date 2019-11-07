@@ -1,18 +1,18 @@
 ---
-title: Szybki start — Tworzenie serwera usług Analysis Services przy użyciu witryny Azure Portal | Microsoft Docs
-description: Dowiedz się, jak utworzyć wystąpienie serwera usług Analysis Services na platformie Azure.
+title: Szybki Start — Tworzenie serwera Analysis Services w Azure Portal | Microsoft Docs
+description: Dowiedz się, jak szybko utworzyć wystąpienie serwera Azure Analysis Services przy użyciu Azure Portal.
 author: minewiskan
 ms.service: azure-analysis-services
 ms.topic: quickstart
-ms.date: 07/02/2019
+ms.date: 10/30/2019
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: c104af3bcfddb4b0863f69b6571d4cd62ca9c2b8
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.openlocfilehash: cfd624ce49add0f8fd04bfccca9d6b7c3f1f71bd
+ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73147101"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73573067"
 ---
 # <a name="quickstart-create-a-server---portal"></a>Szybki start: tworzenie serwera — portal
 

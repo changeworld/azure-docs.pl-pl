@@ -13,12 +13,12 @@ ms.date: 10/30/2019
 ms.author: lizross
 ms.custom: user-help
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6d2adb5552a417331ea315b0ed265e35f48ec660
-ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
+ms.openlocfilehash: 3d5e154fb34d66b505989131f091fbac29458c92
+ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73178109"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73573815"
 ---
 # <a name="what-is-the-my-apps-preview-portal"></a>Co to jest portal moje aplikacje (wersja zapoznawcza)?
 
@@ -39,10 +39,10 @@ Aby uzyskać szczegółowe informacje i instrukcje dotyczące tego, co jest dost
 | [Dostęp do obszarów roboczych i korzystanie z nich w portalu My Apps (wersja zapoznawcza)](my-applications-portal-workspaces.md) | Instrukcje dotyczące sposobu używania portalu sieci Web **My Apps** do organizowania aplikacji opartych na chmurze w kategoriach organizacji. |
 | [Edytuj lub Odwołaj uprawnienia aplikacji w portalu My Apps (wersja zapoznawcza)](my-applications-portal-permissions-saved-accounts.md) | Instrukcje dotyczące sposobu przeglądania i zarządzania uprawnieniami aplikacji oraz zapisywanych poświadczeń konta w portalu internetowym **Moje aplikacje** . |
 
-## <a name="related-articles"></a>Pokrewne artykuły:
+## <a name="related-articles"></a>Pokrewne artykuły
 
-- [Aktualizowanie informacji o profilu i koncie](myprofile-portal-overview.md). Instrukcje dotyczące aktualizowania danych osobowych, które są wyświetlane w portalu **My profile** (wersja zapoznawcza).
+- [Aktualizowanie informacji o profilu i koncie](my-account-portal-overview.md). Instrukcje dotyczące aktualizowania danych osobowych, które są wyświetlane w portalu **My profile** (wersja zapoznawcza).
 
-- [Zarządzanie organizacjami](myprofile-portal-organizations-page.md). Instrukcje dotyczące wyświetlania informacji związanych z organizacją i zarządzania nimi na stronie **organizacje** portalu **My profile** .
+- [Zarządzanie organizacjami](my-account-portal-organizations-page.md). Instrukcje dotyczące wyświetlania informacji związanych z organizacją i zarządzania nimi na stronie **organizacje** portalu **My profile** .
 
-- [Zarządzaj połączonymi urządzeniami](myprofile-portal-devices-page.md). Instrukcje dotyczące zarządzania urządzeniami, z którymi nawiązano połączenie przy użyciu konta służbowego, na stronie **urządzenia** portalu **My profile** .
+- [Zarządzaj połączonymi urządzeniami](my-account-portal-devices-page.md). Instrukcje dotyczące zarządzania urządzeniami, z którymi nawiązano połączenie przy użyciu konta służbowego, na stronie **urządzenia** portalu **My profile** .

@@ -9,12 +9,12 @@ ms.topic: overview
 ms.date: 10/22/2019
 ms.author: babanisa
 ms.custom: seodec18
-ms.openlocfilehash: 117c74eac1e234f84af6be2d275637d7b8f4e2a7
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.openlocfilehash: 03cf8eb2036a9670dbc75e3efb55e52a70de5c54
+ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72794022"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73607264"
 ---
 # <a name="what-is-azure-event-grid"></a>Co to jest usługa Azure Event Grid?
 
@@ -56,7 +56,7 @@ Aby uzyskać szczegółowe informacje o możliwościach poszczególnych procedur
 * [Logic Apps](event-handlers.md#logic-apps)
 * [Microsoft Flow](https://preview.flow.microsoft.com/connectors/shared_azureeventgrid/azure-event-grid/)
 * [Queue Storage](event-handlers.md#queue-storage)
-* [Service Bus](event-handlers.md#service-bus-queue-preview) (wersja zapoznawcza)
+* [Service Bus](event-handlers.md#service-bus-queue)
 * [Elementy webhook](event-handlers.md#webhooks)
 
 ## <a name="concepts"></a>Pojęcia
@@ -94,7 +94,7 @@ Usługa Azure Event Grid udostępnia kilka funkcji, które znacząco usprawniaj�
 
 ![Architektura aplikacji bez użycia serwera](./media/overview/serverless_web_app.png)
 
-Usługa Event Grid łączy źródła danych i programy obsługi zdarzeń. Usługi Event Grid można na przykład użyć, aby wyzwolić funkcję bezserwerową, która analizuje obrazy po dodaniu do kontenera magazynu obiektów blob. 
+Usługa Event Grid łączy źródła danych i procedury obsługi zdarzeń. Usługi Event Grid można na przykład użyć, aby wyzwolić funkcję bezserwerową, która analizuje obrazy po dodaniu do kontenera magazynu obiektów blob. 
 
 ### <a name="ops-automation"></a>Automatyzacja operacji
 

@@ -1,18 +1,18 @@
 ---
-title: Szybki Start — Konfigurowanie zapory na potrzeby serwera usług Analysis Services na platformie Azure | Microsoft Docs
-description: Dowiedz się, jak skonfigurować zaporę na potrzeby wystąpienia serwera usług Analysis Services na platformie Azure.
+title: Szybki Start — Konfigurowanie zapory serwera Azure Analysis Services | Microsoft Docs
+description: Ten przewodnik Szybki Start pomaga skonfigurować zaporę dla serwera Azure Analysis Services przy użyciu Azure Portal.
 author: minewiskan
 ms.service: azure-analysis-services
 ms.topic: quickstart
-ms.date: 07/02/2019
+ms.date: 10/30/2019
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: c3c8de80f90fe203029b38171502e3d4a9b9dd46
-ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
+ms.openlocfilehash: 8a1f774aae071a561bdda2d8c349861d640cb287
+ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/13/2019
-ms.locfileid: "72298535"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73572471"
 ---
 # <a name="quickstart-configure-server-firewall---portal"></a>Szybki start: konfigurowanie zapory serwera — Portal
 
@@ -34,7 +34,7 @@ Ten przewodnik Szybki start ułatwia konfigurowanie zapory na potrzeby serwera u
 2. Wybierz opcje **USTAWIENIA** > **Zapora** > **Włącz zaporę** i kliknij przycisk **Włączone**.
 3. Aby zezwolić na dostęp w trybie DirectQuery z poziomu usługi Power BI, w obszarze **Zezwalaj na dostęp z usługi Power BI** kliknij przycisk **Włączone**.  
 4. (Opcjonalnie) Podaj co najmniej jeden zakres adresów IP. Wprowadź nazwę oraz początkowy i końcowy adres IP dla każdego zakresu. Nazwa reguły zapory powinna być ograniczona do 128 znaków i może zawierać tylko wielkie litery, małe litery, cyfry, znaki podkreślenia i łącznik. Odstępy i inne znaki specjalne są niedozwolone.
-5. Kliknij przycisk **Save** (Zapisz).
+5. Kliknij pozycję **Zapisz**.
 
      ![Ustawienia zapory](./media/analysis-services-qs-firewall/aas-qs-firewall.png)
 

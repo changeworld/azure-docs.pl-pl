@@ -7,12 +7,12 @@ ms.service: lighthouse
 ms.date: 10/17/2019
 ms.topic: overview
 manager: carmonm
-ms.openlocfilehash: 10105d06e48a727e71ea5cb03f2ffceb589df50a
-ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
+ms.openlocfilehash: 4b2ce1253fd4421b36105fdbae68c6e89173a3c6
+ms.sourcegitcommit: b2fb32ae73b12cf2d180e6e4ffffa13a31aa4c6f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/18/2019
-ms.locfileid: "72595272"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73615463"
 ---
 # <a name="publish-a-managed-services-offer-to-azure-marketplace"></a>Publikowanie oferty usług zarządzanych w witrynie Azure Marketplace
 
@@ -52,9 +52,11 @@ Po zakończeniu wybierz pozycję **Zapisz**. Teraz możesz przejść do sekcji *
 
 Każda oferta musi mieć co najmniej jeden plan (czasami określany jako jednostki SKU). Możesz dodać wiele planów, aby obsługiwać różne zestawy funkcji w różnych cenach lub dostosować konkretny plan dla ograniczonej liczby odbiorców określonych klientów. Klienci mogą przeglądać plany, które są dostępne dla nich w ramach oferty nadrzędnej.
 
-W sekcji plany dla każdego planu, który chcesz utworzyć, wybierz pozycję **nowy plan**. Następnie wprowadź **identyfikator planu**. Ten identyfikator może zawierać tylko małe znaki alfanumeryczne, łączniki i podkreślenia, maksymalnie 50 znaków. Identyfikator planu może być widoczny dla klientów w miejscach takich jak w przypadku adresów URL produktów i raportów dotyczących rozliczeń. Po opublikowaniu oferty nie można zmienić tej wartości.
+W sekcji plany wybierz pozycję **nowy plan**. Następnie wprowadź **identyfikator planu**. Ten identyfikator może zawierać tylko małe znaki alfanumeryczne, łączniki i podkreślenia, maksymalnie 50 znaków. Identyfikator planu może być widoczny dla klientów w miejscach takich jak w przypadku adresów URL produktów i raportów dotyczących rozliczeń. Po opublikowaniu oferty nie można zmienić tej wartości.
 
-Następnie wykonaj następujące sekcje w sekcji **szczegóły planu** :
+### <a name="plan-details"></a>Szczegóły planu
+
+Wykonaj następujące sekcje w sekcji **szczegóły planu** :
 
 |Pole  |Opis  |
 |---------|---------|
@@ -64,27 +66,36 @@ Następnie wykonaj następujące sekcje w sekcji **szczegóły planu** :
 |**Model rozliczeń**     | W tym miejscu są wyświetlane 2 modele rozliczeń, ale należy wybrać **Bring Your Own License** dla ofert usług zarządzanych. Oznacza to, że klienci będą rozliczani bezpośrednio za koszty związane z tą ofertą, a firma Microsoft nie nalicza opłat za Ciebie.   |
 |**Czy jest to plan prywatny?**     | Wskazuje, czy jednostka SKU jest prywatna, czy publiczna. Wartość domyślna to **no** (Public). Jeśli opuścisz tę opcję, Twój plan nie zostanie ograniczony do określonych klientów (lub do określonej liczby klientów); Po opublikowaniu planu publicznego nie można go później zmienić do prywatnego. Aby ten plan był dostępny tylko dla określonych klientów, wybierz opcję **tak**. W takim przypadku należy zidentyfikować klientów, podając ich identyfikatory subskrypcji. Można je wprowadzić jeden po jednym (dla maksymalnie 10 subskrypcji) lub przez przekazanie pliku CSV (dla maksymalnie 20 000 subskrypcji). Pamiętaj o dołączeniu własnych subskrypcji tutaj, aby móc testować i sprawdzać poprawność oferty. Aby uzyskać więcej informacji, zobacz [prywatne jednostki SKU i plany](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cloud-partner-portal-azure-private-skus).  |
 
-Na koniec Wypełnij sekcję **szczegóły manifestu** . Spowoduje to utworzenie manifestu z informacjami o autoryzacji do zarządzania zasobami klienta. Informacje wprowadzone w tym miejscu są niezbędne do dołączenia klientów do zarządzania zasobami delegowanymi przez platformę Azure. Jak wspomniano powyżej, te uprawnienia będą stosowane do każdego klienta, który kupuje plan, więc jeśli chcesz ograniczyć dostęp do określonego klienta, musisz opublikować plan prywatny do ich wyłącznego użytku.
+### <a name="manifest-details"></a>Szczegóły manifestu
 
-- Najpierw Podaj **wersję** manifestu. Użyj formatu *n. n. n* (na przykład 1.2.5).
-- Następnie wprowadź swój **Identyfikator dzierżawy**. Jest to identyfikator GUID skojarzony z IDENTYFIKATORem dzierżawy Azure Active Directory organizacji (tj. dzierżawcą, w którym będziesz pracować w celu zarządzania zasobami klientów). Jeśli go nie masz, możesz go znaleźć, umieszczając kursor nad nazwą swojego konta w prawym górnym rogu Azure Portal lub wybierając pozycję **Przełącz katalog**. 
-- Na koniec Dodaj jeden lub więcej wpisów **autoryzacji** do planu. Autoryzacje definiują jednostki, które mogą uzyskiwać dostęp do zasobów i subskrypcji dla klientów, którzy kupują plan. Należy podać te informacje w celu uzyskania dostępu do zasobów w imieniu klienta przy użyciu funkcji zarządzania zasobami delegowanymi przez platformę Azure.
-  Dla każdej autoryzacji podaj następujące dane. Następnie można wybrać **nową autoryzację** dowolną liczbę razy, aby dodać więcej użytkowników/definicje ról.
+Wypełnij sekcję **szczegóły manifestu** dla Twojego planu. Spowoduje to utworzenie manifestu z informacjami o autoryzacji do zarządzania zasobami klienta. Te informacje są wymagane w celu włączenia zarządzania zasobami delegowanymi przez platformę Azure.
+
+> [!NOTE]
+> Jak wspomniano powyżej, użytkownicy i role w wpisach **autoryzacji** będą stosowane do każdego klienta, który kupuje plan. Jeśli chcesz ograniczyć dostęp do określonego klienta, musisz opublikować plan prywatny do ich wyłącznego użytku.
+
+Najpierw Podaj **wersję** manifestu. Użyj formatu *n. n. n* (na przykład 1.2.5).
+
+Następnie wprowadź swój **Identyfikator dzierżawy**. Jest to identyfikator GUID skojarzony z IDENTYFIKATORem dzierżawy Azure Active Directory organizacji (tj. dzierżawcą, w którym będziesz pracować w celu zarządzania zasobami klientów). Jeśli go nie masz, możesz go znaleźć, umieszczając kursor nad nazwą swojego konta w prawym górnym rogu Azure Portal lub wybierając pozycję **Przełącz katalog**.
+
+Na koniec Dodaj jeden lub więcej wpisów **autoryzacji** do planu. Autoryzacje definiują jednostki, które mogą uzyskiwać dostęp do zasobów i subskrypcji dla klientów, którzy kupują plan, i przypisują role, które udzielają określonych poziomów dostępu. Aby uzyskać szczegółowe informacje o obsługiwanych rolach, zobacz [dzierżawy, role i użytkowników w scenariuszach usługi Azure Lighthouse](../concepts/tenants-users-roles.md).
+
+Dla każdej **autoryzacji**należy podać następujące dane. Następnie można wybrać **nową autoryzację** dowolną liczbę razy, aby dodać więcej użytkowników i definicje ról.
+
   - **Identyfikator obiektu usługi Azure AD**: identyfikator usługi Azure AD użytkownika, grupy użytkowników lub aplikacji, do której zostaną przyznane określone uprawnienia (zgodnie z opisem w definicji roli) do zasobów klientów.
   - **Nazwa wyświetlana obiektu usługi Azure AD**: przyjazna nazwa, która pomaga klientowi zrozumieć cel tej autoryzacji. Klient zobaczy tę nazwę podczas delegowania zasobów.
-  - **Definicja roli**: Wybierz jedną z dostępnych ról wbudowanych usługi Azure AD z listy. Ta rola określi uprawnienia, które użytkownik w polu **Identyfikator obiektu usługi Azure AD** będzie mieć w zasobach klientów. Aby uzyskać informacje na temat tych ról, zobacz [role wbudowane](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles).
-  - **Role**możliwe do przypisania: jest to wymagane tylko wtedy, gdy w **definicji roli** dla tej autoryzacji została wybrana wartość administrator dostępu użytkowników. Jeśli tak, należy dodać co najmniej jedną przypisaną rolę w tym miejscu. Użytkownik w polu **Identyfikator obiektu usługi Azure AD** będzie mógł przypisać te role, które można **przypisać** do [zarządzanych tożsamości](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview). Należy pamiętać, że żadne inne uprawnienia zwykle skojarzone z rolą administratora dostępu użytkowników będą stosowane dla tego użytkownika. Jeśli nie wybierzesz w tym miejscu co najmniej jednej roli, przesyłanie nie zostanie przekazane do certyfikacji. (Jeśli nie wybrano administratora dostępu użytkowników dla definicji roli tego użytkownika, to pole nie ma żadnego efektu).
+  - **Definicja roli**: Wybierz jedną z dostępnych ról wbudowanych usługi Azure AD z listy. Ta rola określi uprawnienia, które użytkownik w polu **Identyfikator obiektu usługi Azure AD** będzie mieć w zasobach klientów. Opisy tych ról można znaleźć w temacie [wbudowane role](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles) i [Obsługa ról dla delegowanego zarządzania zasobami platformy Azure](../concepts/tenants-users-roles.md#role-support-for-azure-delegated-resource-management) .
+  - **Role**możliwe do przypisania: jest to wymagane tylko wtedy, gdy w **definicji roli** dla tej autoryzacji została wybrana wartość administrator dostępu użytkowników. Jeśli tak, należy dodać co najmniej jedną przypisaną rolę w tym miejscu. Użytkownik w polu **Identyfikator obiektu usługi Azure AD** będzie mógł przypisać te role możliwe do **przypisania** do [tożsamości zarządzanych](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview), które są wymagane w celu [wdrożenia zasad, które można skorygować](deploy-policy-remediation.md). Należy pamiętać, że żadne inne uprawnienia zwykle skojarzone z rolą administratora dostępu użytkowników będą stosowane dla tego użytkownika. Jeśli nie wybierzesz w tym miejscu co najmniej jednej roli, przesyłanie nie zostanie przekazane do certyfikacji. (Jeśli nie wybrano administratora dostępu użytkowników dla definicji roli tego użytkownika, to pole nie ma żadnego efektu).
 
 > [!TIP]
-> W większości przypadków użytkownik chce przypisać uprawnienia do grupy użytkowników usługi Azure AD lub nazwy głównej usług, a nie do serii poszczególnych kont użytkowników. Pozwala to na dodawanie lub usuwanie dostępu dla poszczególnych użytkowników bez konieczności aktualizacji i ponownego publikowania planu, gdy zmienią się wymagania dotyczące dostępu.
+> W większości przypadków użytkownik chce przypisać uprawnienia do grupy użytkowników usługi Azure AD lub nazwy głównej usług, a nie do serii poszczególnych kont użytkowników. Pozwala to na dodawanie lub usuwanie dostępu dla poszczególnych użytkowników bez konieczności aktualizacji i ponownego publikowania planu, gdy zmienią się wymagania dotyczące dostępu. Aby uzyskać dodatkowe zalecenia, zobacz [dzierżawy, role i użytkowników w scenariuszach usługi Azure Lighthouse](../concepts/tenants-users-roles.md).
 
-Po zakończeniu dodawania planów wybierz pozycję **Zapisz**, a następnie przejdź do sekcji **Marketplace** .
+Po zakończeniu tych informacji możesz wybrać pozycję **nowy plan** dowolną liczbę razy, aby utworzyć dodatkowe plany. Gdy skończysz, wybierz pozycję **Zapisz**, a następnie przejdź do sekcji **Marketplace** .
 
 ## <a name="provide-marketplace-text-and-images"></a>Podaj tekst i obrazy z witryny Marketplace
 
 W sekcji **Marketplace** znajduje się tekst i obrazy, które klienci zobaczą w witrynie Azure Marketplace i Azure Portal.
 
-Podaj informacje dotyczące następujących pól w sekcji **Przegląd** :
+Wykonaj następujące pola w sekcji **Przegląd** :
 
 |Pole  |Opis  |
 |---------|---------|
@@ -92,7 +103,7 @@ Podaj informacje dotyczące następujących pól w sekcji **Przegląd** :
 |**Podsumowanie**     | Krótki cel lub funkcja oferty. Jest to zwykle wyświetlane pod tytułem. Maksymalna długość 100 znaków.        |
 |**Długie podsumowanie**     | Dłuższe podsumowanie przeznaczenia lub funkcji oferty. Maksymalna długość 256 znaków.        |
 |**Opis**     | Więcej informacji o ofercie. To pole ma maksymalną długość 3000 znaków i obsługuje proste formatowanie HTML. W opisie należy uwzględnić słowa "usługa zarządzana" lub "zarządzane usługi".       |
-|**Identyfikator marketingu**     | Unikatowy identyfikator przyjazny dla adresu URL. zostanie ona użyta w adresach URL witryny Marketplace dla tej oferty. Na przykład jeśli identyfikator wydawcy to *contoso* , a Twój identyfikator marketingu to *sampleApp*, adres URL oferty w witrynie Azure Marketplace będzie *https://azuremarketplace.microsoft.com/marketplace/apps/contoso.sampleApp* .        |
+|**Identyfikator marketingu**     | Unikatowy identyfikator przyjazny dla adresu URL. zostanie ona użyta w adresach URL witryny Marketplace dla tej oferty. Na przykład jeśli identyfikator wydawcy to *contoso* , a Twój identyfikator marketingu to *sampleApp*, adres URL oferty w witrynie Azure Marketplace zostanie *https://azuremarketplace.microsoft.com/marketplace/apps/contoso.sampleApp* .        |
 |**Podgląd identyfikatorów subskrypcji**     | Dodaj jeden do 100 identyfikatorów subskrypcji. Klienci powiązani z tymi subskrypcjami będą mogli wyświetlać ofertę w portalu Azure Marketplace przed rozpoczęciem jej używania. Zalecamy dołączenie własnych subskrypcji tutaj, aby można było wyświetlić podgląd oferty w portalu Azure Marketplace przed udostępnieniem jej klientom.  (Zespoły pomocy technicznej i inżynierów firmy Microsoft będą mogli wyświetlać swoją ofertę w trakcie okresu zapoznawczego).   |
 |**Przydatne linki**     | Adresy URL powiązane z ofertą, takie jak dokumentacja, informacje o wersji, często zadawane pytania itp.        |
 |**Sugerowane kategorie (maks. 5)**     | Co najmniej jedna kategoria (do pięciu), która ma zastosowanie do oferty. Te kategorie pomagają klientom w znalezieniu oferty w witrynie Azure Marketplace i Azure Portal.        |
@@ -122,13 +133,13 @@ Pamiętaj, aby zapisać zmiany przed przejściem do sekcji **Pomoc techniczna** 
 
 ## <a name="add-support-info"></a>Dodaj informacje o pomocy technicznej
 
-W sekcji **Pomoc techniczna** Podaj nazwę, adres e-mail i numer telefonu dla kontaktu inżynierowego i skontaktuj się z działem pomocy technicznej klienta. Należy również podać adresy URL pomocy technicznej. Firma Microsoft może używać tych informacji, gdy będziemy musieli skontaktować się z Tobą w sprawie problemów z firmą i pomocą techniczną.
+W sekcji **Pomoc techniczna** Podaj nazwę, adres e-mail i numer telefonu dla kontaktu inżynierowego i skontaktuj się z działem pomocy technicznej klienta. Należy również podać adresy URL pomocy technicznej. Firma Microsoft może używać tych informacji w razie konieczności skontaktowania się z Tobą w sprawie problemów z firmą i pomocą techniczną.
 
 Po dodaniu tych informacji wybierz pozycję **Zapisz.**
 
 ## <a name="publish-your-offer"></a>Publikowanie oferty
 
-Gdy będziesz zadowolony ze wszystkich dostarczonych informacji, następnym krokiem jest opublikowanie oferty w portalu Azure Marketplace. Wybierz przycisk **Publikuj** , aby zainicjować proces tworzenia oferty na żywo. Aby uzyskać więcej informacji o tym procesie, zobacz temat [Publikowanie ofert Azure Marketplace i AppSource](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/manage-offers/cpp-publish-offer).
+Po zakończeniu wszystkich sekcji następnym krokiem jest opublikowanie oferty w portalu Azure Marketplace. Wybierz przycisk **Publikuj** , aby zainicjować proces tworzenia oferty na żywo. Aby uzyskać więcej informacji o tym procesie, zobacz temat [Publikowanie ofert Azure Marketplace i AppSource](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/manage-offers/cpp-publish-offer).
 
 ## <a name="the-customer-onboarding-process"></a>Proces dołączania klienta
 
