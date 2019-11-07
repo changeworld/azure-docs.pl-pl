@@ -1,7 +1,7 @@
 ---
 title: Przechowywanie wersji zestawu danych
 titleSuffix: Azure Machine Learning service
-description: Zapoznaj się z najlepszymi rozwiązaniami dotyczącymi wersji zestawów danych i sposobem działania wersji z potokami uczenia maszynowego
+description: Dowiedz się, jak najlepiej określić wersję zestawów danych i jak działa obsługa wersji przy użyciu potoków uczenia maszynowego.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -9,31 +9,32 @@ ms.topic: conceptual
 ms.author: sihhu
 author: sihhu
 ms.reviewer: nibaccam
-ms.date: 10/25/2019
+ms.date: 11/04/2019
 ms.custom: ''
-ms.openlocfilehash: a361800623796cb3bc26a47c4f8f532503836124
-ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
+ms.openlocfilehash: 426a93473b969c166a847374d1b4c039055e92d5
+ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72902004"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73716093"
 ---
 # <a name="version-and-track-datasets-in-experiments"></a>Wersje i śledzenie zestawów danych w eksperymentach
+[!INCLUDE [applies-to-skus](../../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
-W tym instruktażu dowiesz się, jak uzyskać informacje o wersji i śledzeniu Azure Machine Learning zestawów danych w celu uzyskania odtwarzalności. Wersja zestawu danych to sposób zakładania stanu danych, dzięki czemu można zastosować określoną wersję zestawu danych do przyszłych eksperymentów.
+Ten artykuł zawiera informacje na temat wersji i śledzenia Azure Machine Learning zestawów danych w celu uzyskania odtwarzalności. Wersja zestawu danych to sposób zakładania stanu danych, aby można było zastosować określoną wersję zestawu danych do przyszłych eksperymentów.
 
-Typowe scenariusze, które należy wziąć pod uwagę w przypadku przechowywania wersji:
+Typowe scenariusze obsługi wersji:
 
-* Gdy nowe dane są dostępne do ponownego szkolenia.
-* W przypadku stosowania różnych metod przygotowywania lub opracowywania funkcji.
+* Gdy nowe dane są dostępne do ponownego szkolenia
+* W przypadku stosowania różnych metod przygotowywania lub opracowywania funkcji
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-W tym celu należy:
+W celu skorzystania z tego samouczka potrzebne są następujące elementy:
 
-- [Zestaw Azure Machine Learning SDK dla języka Python](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py), który obejmuje pakiet usługi [Azure DataSets](https://docs.microsoft.com/python/api/azureml-core/azureml.core.dataset?view=azure-ml-py) .
+- [Azure Machine Learning zestawu SDK dla języka Python](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py). Ten zestaw SDK zawiera pakiet [Azure-DataSets](https://docs.microsoft.com/python/api/azureml-core/azureml.core.dataset?view=azure-ml-py) .
     
-- [Obszar roboczy Azure Machine Learning](concept-workspace.md). Pobierz istniejący z poniższym kodem lub [Utwórz nowy obszar roboczy](how-to-manage-workspace.md).
+- [Obszar roboczy Azure Machine Learning](concept-workspace.md). Pobierz istniejący kod lub [Utwórz nowy obszar roboczy](how-to-manage-workspace.md).
 
     ```Python
     import azureml.core
@@ -47,11 +48,11 @@ W tym celu należy:
 
 ## <a name="register-and-retrieve-dataset-versions"></a>Rejestrowanie i pobieranie wersji zestawu danych
 
-Zarejestrowanie zestawu danych umożliwia jego wersję, ponowne użycie i udostępnienie w eksperymentach i współpracownikom. Można zarejestrować wiele zestawów danych w tej samej nazwie i pobrać określoną wersję według nazwy i numeru wersji.
+Rejestrując zestaw danych, można w wersji, ponownie użyć i udostępnić go w eksperymentach i współpracownikom. Można zarejestrować wiele zestawów danych w tej samej nazwie i pobrać określoną wersję według nazwy i numeru wersji.
 
 ### <a name="register-a-dataset-version"></a>Rejestrowanie wersji zestawu danych
 
-Poniższy kod rejestruje nową wersję zestawu danych, `titanic_ds`, ustawiając parametr `create_new_version` na `True`. Jeśli nie ma żadnych istniejących `titanic_ds` zarejestrowanych w obszarze roboczym, utworzy nowy zestaw danych o nazwie `titanic_ds` i ustawi jego wersję na 1.
+Poniższy kod rejestruje nową wersję zestawu danych `titanic_ds` przez ustawienie parametru `create_new_version` na `True`. Jeśli nie ma żadnych istniejących `titanic_ds` DataSet zarejestrowanych w obszarze roboczym, kod utworzy nowy zestaw danych o nazwie `titanic_ds` i ustawi jego wersję na 1.
 
 ```Python
 titanic_ds = titanic_ds.register(workspace = workspace,
@@ -78,14 +79,14 @@ titanic_ds = Dataset.get_by_name(workspace = workspace,
 
 ## <a name="versioning-best-practice"></a>Najlepsze rozwiązanie w zakresie wersji
 
-Podczas tworzenia wersji zestawu danych **nie** jest tworzona dodatkowa kopia danych z obszarem roboczym. Zestawy danych są odwołaniami do dane w usłudze magazynu, więc masz tylko jedno źródło prawdziwie zarządzane przez usługę magazynu. 
+Podczas tworzenia wersji zestawu danych *nie* jest tworzona dodatkowa kopia danych z obszarem roboczym. Ze względu na to, że zestawy danych są odwołaniami do dane w usłudze Storage, masz pojedyncze Źródło prawdy, zarządzane przez usługę magazynu.
 
 >[!IMPORTANT]
-> Jeśli dane, do których odwołuje się zestaw danych, zostaną zastąpione lub usunięte, wywołanie określonej wersji zestawu danych nie może przywrócić zmiany. 
+> Jeśli dane, do których odwołuje się zestaw danych, zostaną zastąpione lub usunięte, wywołanie określonej wersji zestawu *danych nie powoduje przywrócenia zmiany* .
 
-Podczas ładowania danych z zestawu danych zawsze zostanie załadowana bieżąca zawartość danych, do której odwołuje się zestaw danych. Jeśli chcesz zapewnić odtwarzalność poszczególnych wersji zestawu danych, zalecamy, aby nie modyfikować zawartości danych, do której odwołuje się wersja zestawu danych. Gdy nowe dane są dostępne, Zapisz nowe pliki danych w osobnym folderze danych i Utwórz nową wersję zestawu danych, aby dołączyć dane z tego nowego folderu danych.
+Podczas ładowania danych z zestawu danych bieżąca zawartość danych, do której odwołuje się zestaw danych, jest zawsze ładowana. Jeśli chcesz upewnić się, że każda wersja zestawu danych jest powtarzalna, zalecamy, aby nie modyfikować zawartości danych, do której odwołuje się wersja zestawu danych. Po dojściu do nowych danych Zapisz nowe pliki danych w osobnym folderze danych, a następnie utwórz nową wersję zestawu danych, aby dołączyć dane z tego nowego folderu.
 
-Na poniższym obrazie i przykładowym kodzie przedstawiono zalecany sposób struktury folderów danych i Tworzenie wersji zestawu danych odwołujących się do tych folderów.
+Na poniższym obrazie i przykładowym kodzie przedstawiono zalecany sposób struktury folderów danych i tworzenia wersji zestawu danych, które odwołują się do tych folderów:
 
 ![Struktura folderów](media/how-to-version-datasets/folder-image.png)
 
@@ -117,9 +118,9 @@ dataset2.register(workspace = workspace,
 
 ## <a name="version-a-pipeline-output-dataset"></a>Wersja zestawu danych wyjściowych potoku
 
-Zestawu danych można użyć jako danych wejściowych i wyjściowych poszczególnych etapów potoku uczenia maszynowego (ML). Po ponownym uruchomieniu potoków dane wyjściowe poszczególnych etapów potoku zostaną zarejestrowane jako nowa wersja zestawu danych. 
+Zestawu danych można użyć jako danych wejściowych i wyjściowych każdego etapu potoku Machine Learning. Po ponownym uruchomieniu potoków dane wyjściowe poszczególnych etapów potoku są rejestrowane jako nowa wersja zestawu danych.
 
-Ponieważ potoki ML wypełniają dane wyjściowe każdego kroku do nowego folderu za każdym razem, gdy potok jest ponownie uruchamiany, zestawy danych wyjściowych z wersjami są odtwarzalne.
+Ponieważ Machine Learning potoki wypełniają dane wyjściowe każdego kroku do nowego folderu za każdym razem, gdy potok zostanie ponownie skonfigurowany, przywracane wersje zestawów danych są odtwarzalne.
 
 ```Python
 from azureml.core import Dataset
@@ -145,9 +146,9 @@ prep_step = PythonScriptStep(script_name="prepare.py",
 
 ## <a name="track-datasets-in-experiments"></a>Śledzenie zestawów danych w eksperymentach
 
-Dla każdego eksperymentu uczenia maszynowego można łatwo śledzić zestawy danych używane jako dane wejściowe za pomocą obiektu `Run` zarejestrowanego modelu.
+Dla każdego Machine Learning eksperymentu można łatwo śledzić zestawy danych używane jako dane wejściowe za pomocą obiektu `Run` zarejestrowanego modelu.
 
-Użyj poniższego kodu, aby zarejestrować modele z zestawami danych.
+Użyj następującego kodu, aby zarejestrować modele z zestawami danych:
 
 ```Python
 model = run.register_model(model_name='keras-mlp-mnist',
@@ -155,9 +156,9 @@ model = run.register_model(model_name='keras-mlp-mnist',
                            datasets =[('training data',train_dataset)])
 ```
 
-Po zarejestrowaniu można zobaczyć listę modeli zarejestrowanych w zestawie danych przy użyciu języka Python lub [strony docelowej obszaru roboczego](https://ml.azure.com/).
+Po zarejestrowaniu można zobaczyć listę modeli zarejestrowanych w zestawie danych przy użyciu języka Python lub [Azure Machine Learning Studio](https://ml.azure.com/).
 
-Poniższy kod używa metody [`get_details()`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.run.run?view=azure-ml-py#get-details--) do śledzenia, które wejściowe zestawy danych zostały użyte w tym przebiegu eksperymentu.
+Poniższy kod używa metody [`get_details()`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.run.run?view=azure-ml-py#get-details--) do śledzenia, które wejściowe zestawy danych były używane z przebiegiem eksperymentu:
 
 ```Python
 # get input datasets
@@ -168,17 +169,17 @@ train_dataset = inputs[0]['dataset']
 train_dataset.to_path()
 ```
 
-`input_datasets` z eksperymentów można również znaleźć za pomocą [strony docelowej obszaru roboczego (wersja zapoznawcza)](https://ml.azure.com/). 
+`input_datasets` z eksperymentów można również znaleźć przy użyciu [Azure Machine Learning Studio](https://ml.azure.com/). 
 
-Na poniższej ilustracji przedstawiono, gdzie znaleźć zestaw danych wejściowych eksperymentu na stronie docelowej obszaru roboczego. Na potrzeby tego przykładu przejdź do okienka **eksperymenty** , a następnie otwórz kartę **Właściwości** dla określonego uruchomienia eksperymentu `keras-mnist`. 
+Na poniższej ilustracji przedstawiono, gdzie znaleźć zestaw danych wejściowych eksperymentu na Azure Machine Learning Studio. Na potrzeby tego przykładu przejdź do okienka **eksperymenty** i Otwórz kartę **Właściwości** dla określonego uruchomienia eksperymentu, `keras-mnist`.
 
 ![Wejściowe zestawy danych](media/how-to-version-datasets/input-datasets.png)
 
-Modele, które używały zestawu danych, można również znaleźć na stronie docelowej obszaru roboczego. Poniższy widok pochodzi z bloku zestawy danych w obszarze zasoby. Wybierz zestaw danych i przejdź do karty modele, aby wyświetlić listę modeli korzystających z tego zestawu danych. 
+Możesz również znaleźć modele, które używały zestawu danych. Poniższy widok pochodzi z okienka **zestawy danych** w obszarze **zasoby**. Wybierz zestaw danych, a następnie wybierz kartę **modele** , aby wyświetlić listę modeli, które korzystają z tego zestawu danych. 
 
 ![Modele wejściowych zestawów danych](media/how-to-version-datasets/dataset-models.png)
 
 ## <a name="next-steps"></a>Następne kroki
 
-* [Uczenie się z zestawami danych](how-to-train-with-datasets.md).
-* [Więcej przykładowych notesów zestawów danych](https://aka.ms/dataset-tutorial).
+* [Uczenie z zestawami danych](how-to-train-with-datasets.md)
+* [Więcej przykładowych notesów zestawu danych](https://aka.ms/dataset-tutorial)

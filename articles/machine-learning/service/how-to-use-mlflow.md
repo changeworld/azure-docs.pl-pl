@@ -1,5 +1,5 @@
 ---
-title: Użyj MLflow z
+title: MLflow śledzenie dla eksperymentów ML
 titleSuffix: Azure Machine Learning
 description: Skonfiguruj MLflow z Azure Machine Learning, aby rejestrować metryki & artefakty i wdrażać modele z zestawów danych, środowiska lokalnego lub środowiska maszyn wirtualnych.
 services: machine-learning
@@ -11,12 +11,12 @@ ms.reviewer: nibaccam
 ms.topic: conceptual
 ms.date: 09/23/2019
 ms.custom: seodec18
-ms.openlocfilehash: d98e45d3ef77fea6b64efef10c20ecce3787b14c
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
-ms.translationtype: HT
+ms.openlocfilehash: 946350af0c1a4e8140fbf7f926061aae250e9969
+ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73489303"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73716488"
 ---
 # <a name="track-metrics-and-deploy-models-with-mlflow-and-azure-machine-learning-preview"></a>Śledzenie metryk i wdrażanie modeli przy użyciu MLflow i Azure Machine Learning (wersja zapoznawcza)
 [!INCLUDE [applies-to-skus](../../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -27,11 +27,14 @@ W tym artykule pokazano, jak włączyć śledzenie identyfikatorów URI MLflow i
 
 + Wdróż eksperymenty MLflow jako usługę sieci Web Azure Machine Learning. Wdrażając jako usługę sieci Web, można zastosować funkcje monitorowania Azure Machine Learning i wykrywania dryfowania danych do modeli produkcyjnych. 
 
-[MLflow](https://www.mlflow.org) to biblioteka typu open source służąca do zarządzania cyklem życia eksperymentów uczenia maszynowego. Śledzenie MLFlow jest składnikiem MLflow, które rejestruje i śledzi przebiegi szkoleniowe i artefakty modelu, niezależnie od środowiska eksperymentu — lokalnie, na maszynie wirtualnej, zdalnego klastra obliczeniowego, nawet na Azure Databricks.
+[MLflow](https://www.mlflow.org) to biblioteka typu open source służąca do zarządzania cyklem życia eksperymentów uczenia maszynowego. Śledzenie MLFlow to składnik MLflow, który rejestruje i śledzi przebiegi szkoleniowe i artefakty modelu, bez względu na środowisko eksperymentu — na zdalnym serwerze docelowym obliczeń na maszynie wirtualnej, lokalnie na komputerze lub w klastrze Azure Databricks.
 
-Na poniższym diagramie przedstawiono, że dzięki śledzeniu MLflow można dowolnie eksperymentować — czy znajduje się on na zdalnym miejscu docelowym obliczeń na maszynie wirtualnej, lokalnie na komputerze lub w klastrze Azure Databricks — i śledzi jego artefakty uruchamiania w obszarze roboczym Azure Machine Learning.
+Na poniższym diagramie przedstawiono, że śledzenie MLflow umożliwia śledzenie metryk uruchamiania i modeli magazynu eksperymentu w obszarze roboczym Azure Machine Learning.
 
 ![mlflow z diagramem usługi Azure Machine Learning](media/how-to-use-mlflow/mlflow-diagram-track.png)
+
+> [!TIP]
+> Informacje przedstawione w tym dokumencie są przeznaczone głównie dla analityków danych i deweloperów, którzy chcą monitorować proces szkolenia modelu. Jeśli jesteś administratorem zainteresowani monitorowaniem użycia zasobów i zdarzeń z usługi Azure Machine Learning, takich jak przydziały, ukończone przebiegi szkoleniowe lub wdrożone wdrożenia modelu, zobacz [Azure Machine Learning monitorowania](monitor-azure-machine-learning.md).
 
 ## <a name="compare-mlflow-and-azure-machine-learning-clients"></a>Porównanie klientów MLflow i Azure Machine Learning
 
@@ -134,7 +137,7 @@ with mlflow.start_run():
     mlflow.log_metric('example', 1.23)
 ```
 
-W przypadku konfiguracji przebiegu obliczeń i szkoleń Użyj metody `Experiment.submit('train.py')`, aby przesłać uruchomienie. Spowoduje to automatyczne ustawienie identyfikatora URI śledzenia MLflow i skierowanie rejestrowania z MLflow do obszaru roboczego.
+W przypadku konfiguracji przebiegu obliczeń i szkoleń Użyj metody `Experiment.submit('train.py')`, aby przesłać uruchomienie. Ta metoda automatycznie ustawia identyfikator URI śledzenia MLflow i kieruje rejestrowanie z MLflow do obszaru roboczego.
 
 ```Python
 run = exp.submit(src)
@@ -163,7 +166,7 @@ W polu **pakiet** wpisz polecenie Azure-mlflow, a następnie kliknij przycisk In
 
 Po skonfigurowaniu klastra zaimportuj Notes eksperymentu, otwórz go i Dołącz do niego klaster.
 
-Poniższy kod powinien znajdować się w notesie eksperymentu. Spowoduje to pobranie szczegółów subskrypcji platformy Azure w celu utworzenia wystąpienia Twojego obszaru roboczego. Przyjęto założenie, że masz istniejącą grupę zasobów i obszar roboczy Azure Machine Learning, w przeciwnym razie można [je utworzyć](how-to-manage-workspace.md). 
+Poniższy kod powinien znajdować się w notesie eksperymentu. Ten kod pobiera szczegóły subskrypcji platformy Azure w celu utworzenia wystąpienia Twojego obszaru roboczego. Ten kod zakłada, że masz istniejącą grupę zasobów i obszar roboczy Azure Machine Learning, w przeciwnym razie można [je utworzyć](how-to-manage-workspace.md). 
 
 ```python
 import mlflow
@@ -194,7 +197,7 @@ Na [Azure Portal](https://ms.portal.azure.com)można połączyć obszar roboczy 
 
 ### <a name="link-mlflow-tracking-to-your-workspace"></a>Łączenie śledzenia MLflow z obszarem roboczym
 
-Po utworzeniu wystąpienia obszaru roboczego ustaw identyfikator URI śledzenia MLflow. Dzięki temu można połączyć śledzenie MLflow z obszarem roboczym Azure Machine Learning. Po wykonaniu tych badań wszystkie eksperymenty będą gruntować w usłudze Managed Azure Machine Learning śledzenie.
+Po utworzeniu wystąpienia obszaru roboczego ustaw identyfikator URI śledzenia MLflow. Dzięki temu można połączyć śledzenie MLflow z obszarem roboczym Azure Machine Learning. Po nawiązaniu połączenia wszystkie eksperymenty będą użytkowane w usłudze Managed Azure Machine Learning Tracking.
 
 #### <a name="directly-set-mlflow-tracking-in-your-notebook"></a>Bezpośrednio ustaw Śledzenie MLflow w notesie
 
@@ -249,7 +252,7 @@ mlflow.sklearn.log_model(regression_model, model_save_path)
 
 ### <a name="retrieve-model-from-previous-run"></a>Pobierz model z poprzedniego przebiegu
 
-Aby można było pobrać żądany przebieg, wymagany jest identyfikator przebiegu i ścieżka w historii przebiegów, gdzie model został zapisany. 
+Aby można było pobrać przebieg, wymagany jest identyfikator uruchomienia i ścieżka w historii przebiegu, w którym zapisano model. 
 
 ```python
 # gets the list of runs for your experiment as an array
@@ -312,7 +315,7 @@ webservice.wait_for_deployment(show_output=True)
 ```
 #### <a name="deploy-to-aks"></a>Wdrażanie w usłudze AKS
 
-Aby wdrożyć aplikację w usłudze AKS, należy utworzyć klaster AKS i przenieść go na obraz platformy Docker, który ma zostać wdrożony. Na potrzeby tego przykładu należy przenieść wcześniej utworzony obraz z wdrożenia ACI.
+Aby wdrożyć aplikację w usłudze AKS, najpierw utwórz klaster AKS i Umieść obraz platformy Docker, który chcesz wdrożyć. Na potrzeby tego przykładu należy przenieść wcześniej utworzony obraz z wdrożenia ACI.
 
 Aby pobrać obraz z poprzedniego wdrożenia ACI, użyj klasy [Image](https://docs.microsoft.com/python/api/azureml-core/azureml.core.image.image.image?view=azure-ml-py) . 
 
@@ -323,7 +326,7 @@ from azureml.core.image import Image
 myimage = Image(workspace=ws, name='sklearn-image') 
 ```
 
-Utwórz AKS obliczeń może upłynąć 20-25 minut, aby utworzyć nowy klaster
+Utwórz klaster AKS przy użyciu metody [ComputeTarget. Create ()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.computetarget?view=azure-ml-py#create-workspace--name--provisioning-configuration-) . Utworzenie nowego klastra może potrwać 20-25 minut.
 
 ```python
 from azureml.core.compute import AksCompute, ComputeTarget

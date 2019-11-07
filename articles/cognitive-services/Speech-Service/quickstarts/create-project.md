@@ -1,26 +1,26 @@
 ---
 title: 'Szybki Start: Tworzenie projektu'
 titleSuffix: Azure Cognitive Services
-description: TBD
+description: W tym przewodniku szybki start utworzysz pusty projekt dla preferowanego języka programowania, który będzie używany do ukończenia przewodnika Szybki start lub tworzenia aplikacji.
 services: cognitive-services
 author: erhopf
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: quickstart
-ms.date: 10/28/2019
+ms.date: 11/04/2019
 ms.author: erhopf
 zone_pivot_groups: programming-languages-set-three
-ms.openlocfilehash: 25d6e8f7642db05663082414f013b2b11bff46da
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 276dbcdfe3f40122b6a7a14e78aeee4d6ab2fbe9
+ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73504046"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73721014"
 ---
-# <a name="quickstart-create-an-empty-project"></a>Szybki Start: Tworzenie pustego projektu.
+# <a name="quickstart-create-a-project"></a>Szybki Start: Tworzenie projektu
 
-W tym przewodniku pokazano, jak utworzyć pusty projekt do użycia w innych przewodnikach Szybki Start.
+W tym przewodniku szybki start utworzysz pusty projekt dla preferowanego języka programowania, który będzie używany do ukończenia przewodnika Szybki start lub tworzenia aplikacji.
 
 ::: zone pivot="programming-language-csharp"
 **Wybierz środowisko docelowe**
@@ -54,6 +54,9 @@ Na potrzeby tego przykładu będziemy kompilować przy użyciu usługi g + +, wi
 ::: zone-end
 
 ::: zone pivot="programming-language-python"
+
+Dla przewodników szybki start opartych na języku Python należy utworzyć plik o nazwie `helloworld.py` przy użyciu ulubionego edytora tekstu lub środowiska IDE.
+
 ::: zone-end
 
 ## <a name="next-steps"></a>Następne kroki
@@ -63,4 +66,3 @@ Na potrzeby tego przykładu będziemy kompilować przy użyciu usługi g + +, wi
 - [Szybki Start: tłumaczenie zamiany mowy na tekst](translate-speech-to-text.md)
 - [Szybki Start: synteza mowy z tekstem](text-to-speech.md)
 - [Szybki Start: Rozpoznawanie intencji](intent-recognition.md)
-
