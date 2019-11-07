@@ -1,5 +1,5 @@
 ---
-title: Tworzenie, aktualizowanie statystyk — Azure SQL Data Warehouse | Microsoft Docs
+title: Tworzenie, aktualizowanie statystyk
 description: Zalecenia i przykłady dotyczące tworzenia i aktualizowania statystyk optymalizacji zapytań w tabelach w Azure SQL Data Warehouse.
 services: sql-data-warehouse
 author: XiaoyuMSFT
@@ -10,13 +10,13 @@ ms.subservice: development
 ms.date: 05/09/2018
 ms.author: xiaoyul
 ms.reviewer: igorstan
-ms.custom: seoapril2019
-ms.openlocfilehash: 00643e303b3352ce9ce39e5a27fd8b42246aac51
-ms.sourcegitcommit: 75a56915dce1c538dc7a921beb4a5305e79d3c7a
+ms.custom: seo-lt-2019
+ms.openlocfilehash: c995358fc0135a1f9b504b57b23ecb3f6b41d6da
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/24/2019
-ms.locfileid: "68479166"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73692397"
 ---
 # <a name="table-statistics-in-azure-sql-data-warehouse"></a>Statystyka tabeli w Azure SQL Data Warehouse
 
@@ -46,7 +46,7 @@ SET AUTO_CREATE_STATISTICS ON
 
 Te instrukcje wyzwalają automatyczne tworzenie statystyk:
 
-- WYBIERZ
+- SELECT
 - WSTAW — WYBIERZ
 - CTAS
 - UPDATE
@@ -61,7 +61,7 @@ Automatyczne tworzenie statystyk jest wykonywane synchronicznie, dzięki czemu m
 > [!NOTE]
 > Tworzenie statystyk zostanie zarejestrowane w tabeli [sys. DM _pdw_exec_requests](/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-exec-requests-transact-sql?view=azure-sqldw-latest) w innym kontekście użytkownika.
 
-Po utworzeniu automatycznych statystyk będą one miały postać: _WA_Sys_< 8 Identyfikator kolumny cyfrowej w > szesnastkowym _ < 8 identyfikator tabeli cyfrowej w > szesnastkowym. Można wyświetlić statystyki, które zostały już utworzone, uruchamiając polecenie [DBCC SHOW_STATISTICS](/sql/t-sql/database-console-commands/dbcc-show-statistics-transact-sql?view=azure-sqldw-latest) :
+Po utworzeniu automatycznych statystyk będą one miały postać: _WA_Sys_< 8 Identyfikator kolumny cyfr w postaci szesnastkowej > _ < 8 identyfikator tabeli cyfrowej w > szesnastkowym. Można wyświetlić statystyki, które zostały już utworzone, uruchamiając polecenie [DBCC SHOW_STATISTICS](/sql/t-sql/database-console-commands/dbcc-show-statistics-transact-sql?view=azure-sqldw-latest) :
 
 ```sql
 DBCC SHOW_STATISTICS (<table_name>, <target>)
@@ -77,7 +77,7 @@ Poniżej przedstawiono zalecenia dotyczące aktualizowania statystyk:
 
 |||
 |-|-|
-| **Częstotliwość aktualizacji statystyk**  | Zachowawcze Codziennie </br> Po załadowaniu lub przeprowadzeniu przekształcenia danych |
+| **Częstotliwość aktualizacji statystyk**  | Ostrożne: codziennie </br> Po załadowaniu lub przeprowadzeniu przekształcenia danych |
 | **Próbkowanie** |  Mniej niż 1 000 000 000 wierszy, Użyj domyślnego próbkowania (20 procent). </br> Mając więcej niż 1 000 000 000 wierszy, użyj próbkowania dwóch procent. |
 
 Jednym z pierwszych pytań, które należy zadać w przypadku rozwiązywania problemów z kwerendą jest **"czy statystyki są aktualne?"**
@@ -130,7 +130,7 @@ Następujące zasady dotyczące identyfikatorów GUID są udostępniane do aktua
 * Skup się na kolumnach uczestniczących w klauzulach JOIN, GROUP BY, ORDER BY i DISTINCT.
 * Należy rozważyć aktualizowanie kolumn "Ascending Key", takich jak daty transakcji, ponieważ te wartości nie zostaną uwzględnione w histogramie statystyki.
 * Należy rozważyć częste Aktualizowanie statycznych kolumn dystrybucji.
-* Należy pamiętać, że każdy obiekt statystyki jest aktualizowany w kolejności. Po prostu `UPDATE STATISTICS <TABLE_NAME>` implementacja nie zawsze jest idealnym rozwiązaniem, szczególnie w przypadku szerokich tabel zawierających wiele obiektów statystyk.
+* Należy pamiętać, że każdy obiekt statystyki jest aktualizowany w kolejności. Samo wdrożenie `UPDATE STATISTICS <TABLE_NAME>` nie zawsze jest idealne, szczególnie w przypadku szerokich tabel z dużą ilością obiektów statystyk.
 
 Aby uzyskać więcej informacji, zobacz [oszacowanie kardynalności](/sql/relational-databases/performance/cardinality-estimation-sql-server).
 
@@ -210,13 +210,13 @@ Aby utworzyć obiekt statystyk z wieloma kolumnami, wystarczy użyć powyższych
 > [!NOTE]
 > Histogram, który jest używany do oszacowania liczby wierszy w wyniku zapytania, jest dostępny tylko dla pierwszej kolumny wymienionej w definicji obiektu statystyki.
 
-W tym przykładzie histogram znajduje się w *kategorii Product\_(produkt*). Statystyki między kolumnami są obliczane na *podstawie\_kategorii produktu* i *sub_category produktu\_* :
+W tym przykładzie histogram znajduje się w *kategorii product\_* . Statystyki między kolumnami są obliczane na podstawie *kategorii\_produktu* i *produktu\_sub_category*:
 
 ```sql
 CREATE STATISTICS stats_2cols ON table1 (product_category, product_sub_category) WHERE product_category > '2000101' AND product_category < '20001231' WITH SAMPLE = 50 PERCENT;
 ```
 
-Ponieważ istnieje korelacja między *kategorią\_produktu* a *\_podrzędną\_kategorią produktu*, obiekt statystyk wielokolumnowych może być przydatny, jeśli dostęp do tych kolumn odbywa się w tym samym czasie.
+Ze względu na to, że istnieje korelacja między kategorią *\_produktu* a *\_\_kategorii*, obiekt statystyki wielokolumnowej może być przydatny, jeśli te kolumny są dostępne w tym samym czasie.
 
 ### <a name="create-statistics-on-all-columns-in-a-table"></a>Tworzenie statystyk dla wszystkich kolumn w tabeli
 
@@ -352,7 +352,7 @@ EXEC [dbo].[prc_sqldw_create_stats] 3, 20;
 
 Aby utworzyć próbkowanie statystyk dla wszystkich kolumn
 
-## <a name="examples-update-statistics"></a>Przykłady: Aktualizowanie statystyk
+## <a name="examples-update-statistics"></a>Przykłady: aktualizowanie statystyk
 
 Aby zaktualizować dane statystyczne, możesz:
 
@@ -367,7 +367,7 @@ Aby zaktualizować konkretny obiekt Statystyczny, należy użyć następującej 
 UPDATE STATISTICS [schema_name].[table_name]([stat_name]);
 ```
 
-Przykład:
+Na przykład:
 
 ```sql
 UPDATE STATISTICS [dbo].[table1] ([stats_col1]);
@@ -394,7 +394,7 @@ Instrukcja UPDATE STATISTICs jest łatwa w użyciu. Należy pamiętać, że aktu
 > [!NOTE]
 > Podczas aktualizowania wszystkich statystyk w tabeli SQL Data Warehouse skanuje w celu próbkowania tabeli dla każdego obiektu statystyki. Jeśli tabela jest duża i zawiera wiele kolumn i wiele statystyk, może być bardziej wydajna aktualizacja indywidualnych statystyk w zależności od potrzeb.
 
-Aby uzyskać implementację `UPDATE STATISTICS` procedury, zobacz [tabele tymczasowe](sql-data-warehouse-tables-temporary.md). Metoda implementacji różni się nieco od poprzedniej `CREATE STATISTICS` procedury, ale wynik jest taki sam.
+Aby uzyskać implementację procedury `UPDATE STATISTICS`, zobacz [tabele tymczasowe](sql-data-warehouse-tables-temporary.md). Metoda implementacji różni się nieco od poprzedniej procedury `CREATE STATISTICS`, ale wynik jest taki sam.
 
 Pełną składnię można znaleźć w temacie [Update Statistics](/sql/t-sql/statements/update-statistics-transact-sql).
 
@@ -408,13 +408,13 @@ Te widoki systemowe zawierają informacje o statystyce:
 
 | Widok wykazu | Opis |
 |:--- |:--- |
-| [sys.columns](/sql/relational-databases/system-catalog-views/sys-columns-transact-sql) |Jeden wiersz dla każdej kolumny. |
-| [sys.objects](/sql/relational-databases/system-catalog-views/sys-objects-transact-sql) |Jeden wiersz dla każdego obiektu w bazie danych. |
-| [sys.schemas](/sql/relational-databases/system-catalog-views/sys-objects-transact-sql) |Jeden wiersz dla każdego schematu w bazie danych. |
-| [sys.stats](/sql/relational-databases/system-catalog-views/sys-stats-transact-sql) |Jeden wiersz dla każdego obiektu statystyki. |
-| [sys.stats_columns](/sql/relational-databases/system-catalog-views/sys-stats-columns-transact-sql) |Jeden wiersz dla każdej kolumny w obiekcie Statystyka. Linki z powrotem do widoku sys. Columns. |
-| [sys.tables](/sql/relational-databases/system-catalog-views/sys-tables-transact-sql) |Jeden wiersz dla każdej tabeli (zawiera tabele zewnętrzne). |
-| [sys.table_types](/sql/relational-databases/system-catalog-views/sys-table-types-transact-sql) |Jeden wiersz dla każdego typu danych. |
+| [sys. Columns](/sql/relational-databases/system-catalog-views/sys-columns-transact-sql) |Jeden wiersz dla każdej kolumny. |
+| [sys. Objects](/sql/relational-databases/system-catalog-views/sys-objects-transact-sql) |Jeden wiersz dla każdego obiektu w bazie danych. |
+| [sys. schematy](/sql/relational-databases/system-catalog-views/sys-objects-transact-sql) |Jeden wiersz dla każdego schematu w bazie danych. |
+| [sys. statystyki](/sql/relational-databases/system-catalog-views/sys-stats-transact-sql) |Jeden wiersz dla każdego obiektu statystyki. |
+| [sys. stats_columns](/sql/relational-databases/system-catalog-views/sys-stats-columns-transact-sql) |Jeden wiersz dla każdej kolumny w obiekcie Statystyka. Linki z powrotem do widoku sys. Columns. |
+| [sys. Tables](/sql/relational-databases/system-catalog-views/sys-tables-transact-sql) |Jeden wiersz dla każdej tabeli (zawiera tabele zewnętrzne). |
+| [sys. table_types](/sql/relational-databases/system-catalog-views/sys-table-types-transact-sql) |Jeden wiersz dla każdego typu danych. |
 
 ### <a name="system-functions-for-statistics"></a>Funkcje systemowe dla statystyk
 
@@ -423,7 +423,7 @@ Te funkcje systemowe są przydatne do pracy z statystykami:
 | Funkcja systemowa | Opis |
 |:--- |:--- |
 | [STATS_DATE](/sql/t-sql/functions/stats-date-transact-sql) |Data ostatniej aktualizacji obiektu statystyki. |
-| [DBCC SHOW_STATISTICS](/sql/t-sql/database-console-commands/dbcc-show-statistics-transact-sql) |Poziom podsumowania i szczegółowe informacje o dystrybucji wartości zrozumiałe dla obiektu Statystyka. |
+| [POLECENIE DBCC SHOW_STATISTICS](/sql/t-sql/database-console-commands/dbcc-show-statistics-transact-sql) |Poziom podsumowania i szczegółowe informacje o dystrybucji wartości zrozumiałe dla obiektu Statystyka. |
 
 ### <a name="combine-statistics-columns-and-functions-into-one-view"></a>Łączenie kolumn statystyk i funkcji w jeden widok
 
@@ -465,13 +465,13 @@ AND     st.[user_created] = 1
 ;
 ```
 
-## <a name="dbcc-showstatistics-examples"></a>Przykłady DBCC SHOW_STATISTICS ()
+## <a name="dbcc-show_statistics-examples"></a>Przykłady DBCC SHOW_STATISTICS ()
 
 Polecenie DBCC SHOW_STATISTICS () pokazuje dane przechowywane w obiekcie statystyk. Te dane wchodzą w skład trzech części:
 
-- nagłówek
+- Nagłówek
 - Wektor gęstości
-- Histogram
+- Razem
 
 Metadane nagłówka dotyczące statystyk. Histogram wyświetla rozkład wartości w pierwszej kolumnie klucza obiektu Statystyka. Wektor gęstości mierzy korelację między kolumnami. SQL Data Warehouse oblicza oszacowania kardynalności przy użyciu dowolnych danych w obiekcie Statystyka.
 
@@ -483,15 +483,15 @@ Ten prosty przykład przedstawia wszystkie trzy części obiektu statystyki:
 DBCC SHOW_STATISTICS([<schema_name>.<table_name>],<stats_name>)
 ```
 
-Przykład:
+Na przykład:
 
 ```sql
 DBCC SHOW_STATISTICS (dbo.table1, stats_col1);
 ```
 
-### <a name="show-one-or-more-parts-of-dbcc-showstatistics"></a>Pokaż co najmniej jedną część instrukcji DBCC SHOW_STATISTICS ()
+### <a name="show-one-or-more-parts-of-dbcc-show_statistics"></a>Pokaż co najmniej jedną część instrukcji DBCC SHOW_STATISTICS ()
 
-Jeśli interesuje Cię tylko wyświetlanie określonych części, użyj `WITH` klauzuli i określ, które części mają być widoczne:
+Jeśli interesuje Cię tylko wyświetlanie określonych części, użyj klauzuli `WITH` i określ, które części mają być widoczne:
 
 ```sql
 DBCC SHOW_STATISTICS([<schema_name>.<table_name>],<stats_name>) WITH stat_header, histogram, density_vector
@@ -503,7 +503,7 @@ Na przykład:
 DBCC SHOW_STATISTICS (dbo.table1, stats_col1) WITH histogram, density_vector
 ```
 
-## <a name="dbcc-showstatistics-differences"></a>Różnice DBCC SHOW_STATISTICS ()
+## <a name="dbcc-show_statistics-differences"></a>Różnice DBCC SHOW_STATISTICS ()
 
 Polecenie DBCC SHOW_STATISTICS () jest bardziej ściśle zaimplementowane w SQL Data Warehouse porównaniu do SQL Server:
 

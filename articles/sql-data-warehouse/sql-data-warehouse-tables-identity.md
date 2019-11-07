@@ -1,5 +1,5 @@
 ---
-title: Używanie tożsamości do tworzenia kluczy zastępczych — Azure SQL Data Warehouse | Microsoft Docs
+title: Używanie tożsamości do tworzenia kluczy zastępczych
 description: Zalecenia i przykłady dotyczące używania właściwości IDENTITY do tworzenia kluczy zastępczych w tabelach w Azure SQL Data Warehouse.
 services: sql-data-warehouse
 author: XiaoyuMSFT
@@ -10,12 +10,13 @@ ms.subservice: development
 ms.date: 04/30/2019
 ms.author: xiaoyul
 ms.reviewer: igorstan
-ms.openlocfilehash: 4c65bf7cc8edfa246508bb22001aed40c34414f3
-ms.sourcegitcommit: f5cc71cbb9969c681a991aa4a39f1120571a6c2e
+ms.custom: seo-lt-2019
+ms.openlocfilehash: 0ee15b975b5513077b26cceeb80ea3fb8c02456b
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68515591"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73692469"
 ---
 # <a name="using-identity-to-create-surrogate-keys-in-azure-sql-data-warehouse"></a>Używanie tożsamości do tworzenia kluczy zastępczych w Azure SQL Data Warehouse
 
@@ -43,7 +44,7 @@ WITH
 ;
 ```
 
-Można następnie użyć `INSERT..SELECT` , aby wypełnić tabelę.
+Następnie można użyć `INSERT..SELECT`, aby wypełnić tabelę.
 
 W tym pozostałej części tej sekcji przedstawiono wszystkie szczegóły wdrożenia, aby ułatwić zrozumienie ich w pełni.  
 
@@ -80,9 +81,9 @@ W poprzednim przykładzie dwa wiersze wyładowywane w dystrybucji 1. Pierwszy wi
 
 ### <a name="skewed-data"></a>Skośne dane
 
-Zakres wartości dla typu danych jest równomiernie rozłożony przez dystrybucje. Jeśli tabela rozproszona pogorszy się od pochylonych danych, zakres wartości dostępnych dla tego elementu DataType może zostać przedwcześnie wyczerpany. Na przykład, jeśli wszystkie dane kończą się w ramach jednej dystrybucji, efektywnie tabela ma dostęp tylko do jednej sixtieth wartości typu danych. Z tego powodu właściwość Identity jest ograniczona tylko do `INT` `BIGINT` typów danych.
+Zakres wartości dla typu danych jest równomiernie rozłożony przez dystrybucje. Jeśli tabela rozproszona pogorszy się od pochylonych danych, zakres wartości dostępnych dla tego elementu DataType może zostać przedwcześnie wyczerpany. Na przykład, jeśli wszystkie dane kończą się w ramach jednej dystrybucji, efektywnie tabela ma dostęp tylko do jednej sixtieth wartości typu danych. Z tego powodu właściwość IDENTITY jest ograniczona do `INT` i `BIGINT` tylko typy danych.
 
-### <a name="selectinto"></a>WYBIERZ POZYCJĘ.. PRZEKSZTAŁCA
+### <a name="selectinto"></a>Wybierz pozycję.. PRZEKSZTAŁCA
 
 Po wybraniu istniejącej kolumny tożsamości w nowej tabeli, Nowa kolumna dziedziczy właściwość IDENTITY, chyba że jest spełniony jeden z następujących warunków:
 
@@ -95,11 +96,11 @@ Jeśli którykolwiek z tych warunków ma wartość true, kolumna zostanie utworz
 
 ### <a name="create-table-as-select"></a>CREATE TABLE JAKO WYBRANE
 
-CREATE TABLE jako SELECT (CTAS) ma takie samo zachowanie SQL Server, które zostało udokumentowane w przypadku WYBRANia.. Przekształca. Nie można jednak określić właściwości Identity w definicji `CREATE TABLE` kolumny części instrukcji. Nie można również użyć funkcji Identity w `SELECT` części CTAs. Aby wypełnić tabelę, należy użyć `CREATE TABLE` do zdefiniowania tabeli, `INSERT..SELECT` a następnie jej wypełnienia.
+CREATE TABLE jako SELECT (CTAS) ma takie samo zachowanie SQL Server, które zostało udokumentowane w przypadku WYBRANia.. Przekształca. Nie można jednak określić właściwości IDENTITY w definicji kolumny części `CREATE TABLE` instrukcji. Nie można również użyć funkcji IDENTITY w `SELECT` części CTAS. Aby wypełnić tabelę, należy użyć `CREATE TABLE` do zdefiniowania tabeli, a następnie `INSERT..SELECT` do jej wypełnienia.
 
 ## <a name="explicitly-inserting-values-into-an-identity-column"></a>Jawne wstawianie wartości do kolumny tożsamości
 
-SQL Data Warehouse obsługuje `SET IDENTITY_INSERT <your table> ON|OFF` składnię. Możesz użyć tej składni, aby jawnie wstawić wartości do kolumny tożsamość.
+SQL Data Warehouse obsługuje składnię `SET IDENTITY_INSERT <your table> ON|OFF`. Możesz użyć tej składni, aby jawnie wstawić wartości do kolumny tożsamość.
 
 Wiele modeli danych, takich jak użycie wstępnie zdefiniowanych wartości ujemnych dla niektórych wierszy w ich wymiarach. Przykładem jest wiersz-1 lub "nieznany element członkowski".
 
@@ -157,7 +158,7 @@ DBCC PDW_SHOWSPACEUSED('dbo.T1');
 ```
 
 > [!NOTE]
-> Obecnie nie jest możliwe użycie `CREATE TABLE AS SELECT` podczas ładowania danych do tabeli z kolumną tożsamości.
+> Nie jest możliwe używanie `CREATE TABLE AS SELECT` obecnie podczas ładowania danych do tabeli z kolumną tożsamości.
 >
 
 Aby uzyskać więcej informacji na temat ładowania danych, zobacz [projektowanie wyodrębniania, ładowania i przekształcania (ELT) w celu Azure SQL Data Warehouse](design-elt-data-loading.md) i [ładowania najlepszych](guidance-for-loading-data.md)rozwiązań.
@@ -211,7 +212,7 @@ Kolumna C1 jest TOŻSAMOŚCIą we wszystkich następujących zadaniach.
 
 ### <a name="find-the-highest-allocated-value-for-a-table"></a>Znajdź najwyższą przydzieloną wartość dla tabeli
 
-Użyj funkcji `MAX()` , aby określić największą wartość przydzieloną dla rozproszonej tabeli:
+Użyj funkcji `MAX()`, aby określić największą wartość przydzieloną dla rozproszonej tabeli:
 
 ```sql
 SELECT MAX(C1)

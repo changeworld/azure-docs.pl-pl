@@ -1,5 +1,5 @@
 ---
-title: Ładowanie danych z pliku CSV do Azure SQL Database (bcp) | Microsoft Docs
+title: Ładowanie danych z pliku CSV do Azure SQL Database (bcp)
 description: Dane niewielkich rozmiarów można importować do usługi Azure SQL Database za pomocą narzędzia bcp.
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: carlrab
 ms.date: 01/25/2019
-ms.openlocfilehash: b3dff4e100d3859978667ad0df7d895a24ca8a8d
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: d9c4a6293fe2c52870e61488713455ac6c2ed4a1
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68567833"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73689568"
 ---
 # <a name="load-data-from-csv-into-azure-sql-database-flat-files"></a>Ładowanie danych z pliku CSV do usługi Azure SQL Database (pliki proste)
 
@@ -57,7 +57,7 @@ sqlcmd.exe -S <server name> -d <database name> -U <username> -P <password> -I -Q
 ```
 
 
-## <a name="2-create-a-source-data-file"></a>2. Tworzenie źródłowego pliku danych
+## <a name="2-create-a-source-data-file"></a>2. Utwórz plik danych źródłowych
 
 Otwórz program Notatnik i skopiuj następujące wiersze danych do nowego pliku tekstowego, a następnie zapisz ten plik w lokalnym katalogu tymczasowym: C:\Temp\DimDate2.txt. Te dane są w formacie ASCII.
 
@@ -82,7 +82,7 @@ Otwórz program Notatnik i skopiuj następujące wiersze danych do nowego pliku 
 bcp <TableName> out C:\Temp\DimDate2_export.txt -S <ServerName> -d <DatabaseName> -U <Username> -P <Password> -q -c -t , 
 ```
 
-## <a name="3-load-the-data"></a>3. Ładowanie danych
+## <a name="3-load-the-data"></a>3. Załaduj dane
 
 Aby załadować dane, otwórz wiersz polecenia i uruchom następujące polecenie, zastępując najpierw wartości parametrów nazwą serwera, nazwą bazy danych, nazwą użytkownika i hasłem.
 
@@ -113,7 +113,7 @@ Wyniki powinny wyglądać następująco:
 | 20151101 |4 |2 |
 | 20151201 |4 |2 |
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 Aby przeprowadzić migrację bazy danych programu SQL Server, zobacz [SQL Server database migration](sql-database-single-database-migrate.md) (Migracja bazy danych programu SQL Server).
 

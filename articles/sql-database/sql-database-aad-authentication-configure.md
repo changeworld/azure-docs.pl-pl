@@ -1,5 +1,5 @@
 ---
-title: Konfigurowanie uwierzytelniania Azure Active Directory — SQL | Microsoft Docs
+title: Konfigurowanie uwierzytelniania Azure Active Directory — SQL
 description: Dowiedz się, jak nawiązać połączenie z SQL Database, wystąpieniem zarządzanym i SQL Data Warehouse przy użyciu uwierzytelniania Azure Active Directory — po skonfigurowaniu usługi Azure AD.
 services: sql-database
 ms.service: sql-database
@@ -10,13 +10,13 @@ ms.topic: conceptual
 author: GithubMirek
 ms.author: mireks
 ms.reviewer: vanto, carlrab
-ms.date: 10/16/2019
-ms.openlocfilehash: 1dbccf43d03907cefb68315b6908a35735f373ce
-ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
+ms.date: 11/06/2019
+ms.openlocfilehash: d23fcb781f5eddd71d5ddce9344d988d2e323611
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73177637"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73691392"
 ---
 # <a name="configure-and-manage-azure-active-directory-authentication-with-sql"></a>Konfigurowanie i Zarządzanie uwierzytelnianiem Azure Active Directory przy użyciu programu SQL
 
@@ -58,6 +58,9 @@ W przypadku korzystania z Azure Active Directory z replikacją geograficzną adm
 > [!IMPORTANT]
 > Wykonaj te czynności tylko w przypadku aprowizacji wystąpienia zarządzanego. Tę operację można wykonać tylko przez administratora globalnego/firmy lub administratora ról uprzywilejowanych w usłudze Azure AD. Poniższe kroki opisują proces przyznawania uprawnień użytkownikom mającym różne uprawnienia w katalogu.
 
+> [!NOTE]
+> W przypadku administratorów usługi Azure AD dla mnie utworzonych przed rozpoczęciem korzystania z systemu, ale kontynuuje posting, nie ma żadnej funkcjonalnej zmiany w istniejącym zachowaniu. Aby uzyskać więcej informacji, zapoznaj się z sekcją [nowe funkcje administratora usługi Azure AD dla elementu mi](#new-azure-ad-admin-functionality-for-mi) , aby uzyskać więcej informacji.
+
 Wystąpienie zarządzane musi mieć uprawnienia do odczytu usługi Azure AD, aby pomyślnie wykonać zadania, takie jak uwierzytelnianie użytkowników za pomocą przynależności do grupy zabezpieczeń lub tworzenie nowych użytkowników. Aby to umożliwić, należy przyznać uprawnienia do wystąpienia zarządzanego w celu odczytania usługi Azure AD. Istnieją dwa sposoby wykonania tej czynności: z poziomu portalu i programu PowerShell. Obie metody są opisane poniżej.
 
 1. W Azure Portal w prawym górnym rogu wybierz połączenie, aby rozwinąć listę możliwych aktywnych katalogów.
@@ -68,7 +71,7 @@ Wystąpienie zarządzane musi mieć uprawnienia do odczytu usługi Azure AD, aby
 
    ![AAD](./media/sql-database-aad-authentication/aad.png)
 
-4. Wybierz transparent w górnej części strony administratora Active Directory i Udziel uprawnienia bieżącemu użytkownikowi. Jeśli logujesz się jako Administrator globalny/firmowy w usłudze Azure AD, możesz to zrobić z poziomu Azure Portal lub przy użyciu programu PowerShell z poniższym skryptem.
+4. Wybierz transparent w górnej części strony administratora Active Directory i Udziel uprawnienia bieżącemu użytkownikowi. Jeśli użytkownik jest zalogowany jako Administrator globalny/firmowy w usłudze Azure AD, można wykonać tę czynność z poziomu Azure Portal lub przy użyciu programu PowerShell z poniższym skryptem.
 
     ![Przyznawanie uprawnień — Portal](./media/sql-database-aad-authentication/grant-permissions.png)
 
@@ -146,10 +149,34 @@ Wystąpienie zarządzane musi mieć uprawnienia do odczytu usługi Azure AD, aby
 
     Proces zmiany administratora może potrwać kilka minut. Następnie nowy administrator zostanie wyświetlony w oknie Administrator Active Directory.
 
-Po zainicjowaniu obsługi administracyjnej administratora usługi Azure AD dla wystąpienia zarządzanego możesz rozpocząć tworzenie głównych nazw (logowania) usługi Azure AD (w**publicznej wersji zapoznawczej**) przy użyciu składni <a href="/sql/t-sql/statements/create-login-transact-sql?view=azuresqldb-mi-current">tworzenia nazwy logowania</a> . Aby uzyskać więcej informacji, zobacz [Omówienie wystąpienia zarządzanego](sql-database-managed-instance.md#azure-active-directory-integration).
+Po zainicjowaniu obsługi administracyjnej administratora usługi Azure AD dla wystąpienia zarządzanego można rozpocząć tworzenie podmiotów zabezpieczeń serwera usługi Azure AD przy użyciu składni <a href="/sql/t-sql/statements/create-login-transact-sql?view=azuresqldb-mi-current">tworzenia nazwy logowania</a> . Aby uzyskać więcej informacji, zobacz [Omówienie wystąpienia zarządzanego](sql-database-managed-instance.md#azure-active-directory-integration).
 
 > [!TIP]
 > Aby później usunąć administratora, w górnej części strony Administrator Active Directory wybierz pozycję **Usuń administratora**, a następnie wybierz pozycję **Zapisz**.
+
+### <a name="new-azure-ad-admin-functionality-for-mi"></a>Nowe funkcje administratora usługi Azure AD dla programu MI
+
+Poniższa tabela zawiera podsumowanie funkcji administratora logowania do usługi Azure AD w wersji zapoznawczej dla mnie, a następnie nowe funkcje dostarczane z usługą Azure AD na potrzeby logowania.
+
+| Administrator logowania usługi Azure AD dla mnie w publicznej wersji zapoznawczej | Funkcja GA dla administratora usługi Azure AD dla mnie |
+| --- | ---|
+| Zachowuje się w podobny sposób jak administrator usługi Azure AD dla SQL Database, co umożliwia uwierzytelnianie usługi Azure AD, ale administrator usługi Azure AD nie może utworzyć usługi Azure AD lub logowania SQL w bazie danych Master dla mnie. | Administrator usługi Azure AD ma uprawnienie sysadmin i może tworzyć identyfikatory logowania w usłudze AAD i SQL w bazie danych Master dla programu MI. |
+| Nie występuje w widoku sys. server_principals | Znajduje się w widoku sys. server_principals |
+| Zezwala indywidualnym użytkownikom gościa usługi Azure AD na skonfigurowanie usługi Azure AD administrator dla programu MI. Aby uzyskać więcej informacji, zobacz [dodawanie Azure Active Directory użytkowników współpracy B2B w Azure Portal](../active-directory/b2b/add-users-administrator.md). | Wymaga utworzenia grupy usługi Azure AD z użytkownikami Gości jako członkami, aby skonfigurować tę grupę jako administratora usługi Azure AD dla MI. Aby uzyskać więcej informacji, zobacz temat [Obsługa usługi Azure AD Business dla firm](sql-database-ssms-mfa-authentication.md#azure-ad-business-to-business-support). |
+
+Jako najlepsze rozwiązanie dla istniejących administratorów usługi Azure AD dla mnie utworzonych przed rozpowszechną i nadal działające posting, zresetuj administratora usługi Azure AD przy użyciu opcji Azure Portal "Usuń administratora" i "Ustaw administratora" dla tego samego użytkownika lub grupy usługi Azure AD.
+
+### <a name="known-issues-with-the-azure-ad-login-ga-for-mi"></a>Znane problemy związane z logowaniem do usługi Azure AD GA dla mnie
+
+- Jeśli w bazie danych Master istnieje logowanie do usługi Azure AD, utworzone za pomocą polecenia T-SQL `CREATE LOGIN [myaadaccount] FROM EXTERNAL PROVIDER`nie można go skonfigurować jako administratora usługi Azure AD dla mnie. Wystąpił błąd podczas konfigurowania logowania jako administrator usługi Azure AD przy użyciu poleceń Azure Portal, PowerShell lub interfejsu wiersza polecenia, aby utworzyć identyfikator logowania usługi Azure AD. 
+  - Aby można było utworzyć konto jako administrator usługi Azure AD, należy najpierw porzucić nazwę logowania w bazie danych Master przy użyciu polecenia `DROP LOGIN [myaadaccount]`.
+  - Skonfiguruj konto administratora usługi Azure AD w Azure Portal po pomyślnym `DROP LOGIN`. 
+  - Jeśli nie możesz skonfigurować konta administratora usługi Azure AD, zapoznaj się z główną bazą danych wystąpienia zarządzanego. Użyj następującego polecenia: `SELECT * FROM sys.server_principals`
+  - Skonfigurowanie administratora usługi Azure AD dla programu MI spowoduje automatyczne utworzenie nazwy logowania w bazie danych Master dla tego konta. Usunięcie administratora usługi Azure AD spowoduje automatyczne porzucenie nazwy logowania z bazy danych Master.
+   
+- Indywidualni użytkownicy Gości usługi Azure AD nie są obsługiwani jako Administratorzy usługi Azure AD. Użytkownicy-Goście muszą być częścią grupy usługi Azure AD, aby można ją było skonfigurować jako administratora usługi Azure AD. Obecnie blok Azure Portal nie jest wyszarzony dla użytkowników-Gości dla innej usługi Azure AD, co pozwala użytkownikom na kontynuowanie instalacji administratora. Zapisanie użytkowników-Gości jako administrator usługi Azure AD spowoduje niepowodzenie instalacji. 
+  - Jeśli chcesz, aby użytkownik-Gość był administratorem usługi Azure AD, Uwzględnij użytkownika-gościa w grupie usługi Azure AD i ustaw tę grupę jako administratora usługi Azure AD.
+
 
 ### <a name="powershell-for-sql-managed-instance"></a>PowerShell dla wystąpienia zarządzanego SQL
 
@@ -318,8 +345,8 @@ Wymagania te można spełnić w następujący sposób:
 
 ## <a name="create-contained-database-users-in-your-database-mapped-to-azure-ad-identities"></a>Utwórz użytkowników zawartej bazy danych w bazie danych zamapowanej na tożsamości usługi Azure AD
 
->[!IMPORTANT]
->Wystąpienie zarządzane obsługuje teraz główne nazwy usługi Azure AD (logowania) (**publiczna wersja zapoznawcza**), która umożliwia tworzenie nazw logowania z użytkowników, grup lub aplikacji usługi Azure AD. Podmioty zabezpieczeń serwera usługi Azure AD umożliwiają uwierzytelnianie w zarządzanym wystąpieniu bez konieczności tworzenia użytkowników bazy danych jako zawartych użytkowników bazy danych. Aby uzyskać więcej informacji, zobacz [Omówienie wystąpienia zarządzanego](sql-database-managed-instance.md#azure-active-directory-integration). Aby zapoznać się ze składnią tworzenia podmiotów zabezpieczeń serwera usługi Azure AD (logowania), zobacz <a href="/sql/t-sql/statements/create-login-transact-sql?view=azuresqldb-mi-current">Tworzenie nazwy logowania</a>.
+> [!IMPORTANT]
+> Wystąpienie zarządzane obsługuje teraz podmioty zabezpieczeń serwera usługi Azure AD, które umożliwiają tworzenie logowań z użytkowników, grup lub aplikacji usługi Azure AD. Podmioty zabezpieczeń serwera usługi Azure AD umożliwiają uwierzytelnianie w zarządzanym wystąpieniu bez konieczności tworzenia użytkowników bazy danych jako zawartych użytkowników bazy danych. Aby uzyskać więcej informacji, zobacz [Omówienie wystąpienia zarządzanego](sql-database-managed-instance.md#azure-active-directory-integration). Aby zapoznać się ze składnią tworzenia podmiotów zabezpieczeń serwera usługi Azure AD (logowania), zobacz <a href="/sql/t-sql/statements/create-login-transact-sql?view=azuresqldb-mi-current">Tworzenie nazwy logowania</a>.
 
 Uwierzytelnianie w usłudze Azure Active Directory wymaga utworzenia użytkowników bazy danych jako użytkowników zawartej bazy danych. Użytkownik zawartej bazy danych oparty na tożsamości w usłudze Azure AD to użytkownik bazy danych, który nie ma loginu w bazie danych master i jest zamapowany na tożsamość w katalogu Azure AD skojarzonym z bazą danych. Tożsamość w usłudze Azure AD może być indywidualnym kontem użytkownika lub grupą. Aby uzyskać więcej informacji na temat użytkowników zawartej bazy danych, patrz [Contained Database Users - Making Your Database Portable](https://msdn.microsoft.com/library/ff929188.aspx) (Użytkownicy zawartych baz danych — tworzenie przenośnej bazy danych).
 
@@ -405,7 +432,7 @@ Użyj tej metody podczas nawiązywania połączenia z nazwą główną usługi A
 Użyj tej metody do uwierzytelniania w usłudze SQL DB/DW przy użyciu usługi Azure AD dla natywnych lub federacyjnych użytkowników usługi Azure AD. Użytkownik natywny jest jawnie tworzony w usłudze Azure AD i uwierzytelniany przy użyciu nazwy użytkownika i hasła, a użytkownik federacyjny jest użytkownikiem systemu Windows, którego domena jest federacyjna z usługą Azure AD. Ta druga metoda (przy użyciu hasła użytkownika &) może być używana, gdy użytkownik chce użyć poświadczeń systemu Windows, ale ich komputer lokalny nie jest przyłączony do domeny (na przykład przy użyciu dostępu zdalnego). W takim przypadku użytkownik systemu Windows może wskazywać swoje konto domeny i hasło oraz może uwierzytelniać się w usłudze SQL DB/DW przy użyciu poświadczeń federacyjnych.
 
 1. Uruchom Management Studio lub narzędzia danych, a następnie w oknie dialogowym **łączenie z serwerem** (lub **łączenie z aparatem bazy danych**) w polu **uwierzytelnianie** wybierz pozycję **Active Directory-Password**.
-2. W polu **Nazwa użytkownika** wpisz nazwę użytkownika Azure Active Directory w formacie **username \@domain. com**. Nazwy użytkowników muszą być kontami z Azure Active Directory lub konta z domeny sfederować z Azure Active Directory.
+2. W polu **Nazwa użytkownika** wpisz nazwę użytkownika Azure Active Directory w formacie **username\@Domain.com**. Nazwy użytkowników muszą być kontami z Azure Active Directory lub konta z domeny sfederować z Azure Active Directory.
 3. W polu **hasło** wpisz hasło użytkownika dla konta Azure Active Directory lub domeny federacyjnej.
 
     ![Wybieranie opcji uwierzytelnianie hasła usługi AD][12]

@@ -4,21 +4,22 @@ description: Dowiedz się, jak szkolić model, przekonwertować go na ONNX, wdro
 keywords: Wdróż krawędź bazy danych SQL
 services: sql-database-edge
 ms.service: sql-database-edge
+ms.subservice: machine-learning
 ms.topic: conceptual
 author: ronychatterjee
 ms.author: achatter
 ms.reviewer: davidph
 ms.date: 11/04/2019
-ms.openlocfilehash: 2306a63aa46bd8816c742b0a6d076471705c46a6
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 37fc04919b844d1edf87be62a587c34de4a8c4d5
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73514071"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73692343"
 ---
 # <a name="deploy-and-make-predictions-with-an-onnx-model-in-sql-database-edge-preview"></a>Wdrażanie i Tworzenie prognoz przy użyciu modelu ONNX w wersji zapoznawczej programu SQL Database Edge
 
-W tym przewodniku szybki start dowiesz się, jak nauczyć model, przekonwertować go na ONNX, wdrożyć go w usłudze Azure SQL Database Edge w wersji zapoznawczej, a następnie uruchamiać natywne przewidywania danych przy użyciu przekazanego modelu ONNX.
+W tym przewodniku szybki start dowiesz się, jak nauczyć model, przekonwertować go na ONNX, wdrożyć go w usłudze Azure SQL Database Edge w wersji zapoznawczej, a następnie uruchamiać natywne przewidywania danych przy użyciu przekazanego modelu ONNX. Aby uzyskać więcej informacji, zobacz temat [Uczenie maszynowe i AI z ONNX w SQL Database Edge w wersji zapoznawczej](onnx-overview.md).
 
 Ten przewodnik Szybki Start jest oparty na **scikit — uczenie** i używa [zestawu danych dla obudowy Boston](https://scikit-learn.org/stable/modules/generated/sklearn.datasets.load_boston.html).
 

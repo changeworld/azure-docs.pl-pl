@@ -1,5 +1,5 @@
 ---
-title: Architektura łączności Azure SQL Database i SQL Data Warehouse | Microsoft Docs
+title: Architektura łączności Azure SQL Database i SQL Data Warehouse
 description: W tym dokumencie opisano architekturę łączności usługi Azure SQL dla połączeń z bazą danych z platformy Azure lub spoza platformy Azure.
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: rohitnayakmsft
 ms.author: rohitna
 ms.reviewer: carlrab, vanto
 ms.date: 07/02/2019
-ms.openlocfilehash: f26eb44dd407e379d0bf3291eb890d2e451c919e
-ms.sourcegitcommit: ec2b75b1fc667c4e893686dbd8e119e7c757333a
+ms.openlocfilehash: d414276e081407af8ea21ebcbd96909d34455a22
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72807916"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73690849"
 ---
 # <a name="azure-sql-connectivity-architecture"></a>Architektura łączności usługi Azure SQL
 
@@ -88,17 +88,17 @@ Szczegóły dotyczące sposobu migrowania ruchu do nowych bram w określonych re
 | Japonia Zachodnia           | 104.214.148.156, 40.74.100.192, 191.238.68.11, 40.74.97.10 | 
 | Korea Środkowa        | 52.231.32.42       |
 | Korea Południowa          | 52.231.200.86      |
-| Północno-środkowe stany USA     | 23.96.178.199, 23.98.55.75, 52.162.104.33 |
+| Środkowo-północne stany USA     | 23.96.178.199, 23.98.55.75, 52.162.104.33 |
 | Europa Północna         | 40.113.93.91, 191.235.193.75, 52.138.224.1 | 
 | Północna Republika Południowej Afryki   | 102.133.152.0      |
 | Północna Republika Południowej Afryki    | 102.133.24.0       |
-| Południowo-środkowe stany USA     | 13.66.62.124, 23.98.162.75, 104.214.16.32   | 
-| Azja Południowo-wschodnia      | 104.43.15.0, 23.100.117.95, 40.78.232.3   | 
+| Środkowo-południowe stany USA     | 13.66.62.124, 23.98.162.75, 104.214.16.32   | 
+| Azja Południowo-Wschodnia      | 104.43.15.0, 23.100.117.95, 40.78.232.3   | 
 | Środkowe Zjednoczone Emiraty Arabskie          | 20.37.72.64        |
 | Północne Zjednoczone Emiraty Arabskie            | 65.52.248.0        |
 | Południowe Zjednoczone Królestwo             | 51.140.184.11      |
 | Zachodnie Zjednoczone Królestwo              | 51.141.8.11        |
-| Zachodnio-środkowe stany USA      | 13.78.145.25       |
+| Środkowo-zachodnie stany USA      | 13.78.145.25       |
 | Europa Zachodnia          | 40.68.37.158, 191.237.232.75, 104.40.168.105  |
 | Zachodnie stany USA              | 104.42.238.205, 23.99.34.75, 13.86.216.196   |
 | Zachodnie stany USA 2            | 13.66.226.202      |

@@ -1,5 +1,5 @@
 ---
-title: 'Always Encrypted: SQL Database-Azure Key Vault | Microsoft Docs'
+title: 'Always Encrypted: SQL Database Azure Key Vault '
 description: W tym artykule opisano sposób zabezpieczania poufnych danych w bazie danych SQL przy użyciu szyfrowania danych za pomocą Kreatora Always Encrypted w SQL Server Management Studio.
 keywords: Szyfrowanie danych, klucz szyfrowania, szyfrowanie w chmurze
 services: sql-database
@@ -12,14 +12,14 @@ author: VanMSFT
 ms.author: vanto
 ms.reviewer: ''
 ms.date: 03/12/2019
-ms.openlocfilehash: 924ec20b9922d12da7291dc4f44b7413c68728c6
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 7ba19f3f3e03c414d651082898976c5bd17e89c9
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68569579"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73691270"
 ---
-# <a name="always-encrypted-protect-sensitive-data-and-store-encryption-keys-in-azure-key-vault"></a>Always Encrypted: Ochrona danych poufnych i przechowywanie kluczy szyfrowania w Azure Key Vault
+# <a name="always-encrypted-protect-sensitive-data-and-store-encryption-keys-in-azure-key-vault"></a>Always Encrypted: Ochrona danych poufnych i przechowywanie kluczy szyfrowania w programie Azure Key Vault
 
 W tym artykule opisano sposób zabezpieczania poufnych danych w bazie danych SQL przy użyciu szyfrowania danych za pomocą [kreatora Always Encrypted](https://msdn.microsoft.com/library/mt459280.aspx) w programie [SQL Server Management Studio (SSMS)](https://msdn.microsoft.com/library/hh213248.aspx). Zawiera również instrukcje, które pokazują, jak przechowywać każdy klucz szyfrowania w Azure Key Vault.
 
@@ -91,7 +91,7 @@ Możesz szybko utworzyć magazyn kluczy, uruchamiając Poniższy skrypt. Aby uzy
 
 Parametry połączenia będą potrzebne później w samouczku, więc po utworzeniu bazy danych przejdź do nowej bazy danych kliniki i skopiuj parametry połączenia. Parametry połączenia można uzyskać w dowolnym momencie, ale jest to łatwe do skopiowania w Azure Portal.
 
-1. Przejdź do pozycji**Klinika** >  **bazy danych** > SQL**Pokaż parametry połączenia bazy danych**.
+1. Przejdź do **bazy danych SQL** , > **Klinika** > **Pokaż parametry połączenia bazy danych**.
 2. Skopiuj parametry połączenia dla **ADO.NET**.
    
     ![Kopiowanie parametrów połączenia](./media/sql-database-always-encrypted-azure-key-vault/connection-strings.png)
@@ -99,7 +99,7 @@ Parametry połączenia będą potrzebne później w samouczku, więc po utworzen
 ## <a name="connect-to-the-database-with-ssms"></a>Nawiązywanie połączenia z bazą danych za pomocą programu SSMS
 Otwórz program SSMS i Połącz się z serwerem przy użyciu bazy danych kliniki.
 
-1. Otwórz program SSMS. (Przejdź do aparatu **łączenia** > **bazy danych** , aby otworzyć okno **łączenie z serwerem** , jeśli nie jest otwarte).
+1. Otwórz program SSMS. (Przejdź do programu **connect** > **Database Engine** , aby otworzyć okno **łączenie z serwerem** , jeśli nie jest otwarte).
 2. Wprowadź nazwę serwera i poświadczenia. Nazwę serwera można znaleźć w bloku bazy danych SQL i w wcześniej kopiowanych parametrach połączenia. Wpisz pełną nazwę serwera, łącznie z *Database.Windows.NET*.
    
     ![Kopiowanie parametrów połączenia](./media/sql-database-always-encrypted-azure-key-vault/ssms-connect.png)
@@ -110,7 +110,7 @@ Jeśli zostanie otwarte okno **Nowa reguła zapory** , zaloguj się do platformy
 W tej sekcji utworzysz tabelę do przechowywania danych pacjenta. Nie jest on początkowo zaszyfrowany — skonfigurujesz szyfrowanie w następnej sekcji.
 
 1. Rozwiń węzeł **bazy danych**.
-2. Kliknij prawym przyciskiem myszy bazę danych kliniki, a następnie kliknij pozycję **nowe zapytanie**.
+2. Kliknij prawym przyciskiem myszy bazę danych **kliniki** , a następnie kliknij pozycję **nowe zapytanie**.
 3. Wklej następujący język Transact-SQL (T-SQL) do nowego okna zapytania i **Wykonaj** go.
 
 ```sql
@@ -132,17 +132,17 @@ W tej sekcji utworzysz tabelę do przechowywania danych pacjenta. Nie jest on po
 ## <a name="encrypt-columns-configure-always-encrypted"></a>Szyfruj kolumny (Konfigurowanie Always Encrypted)
 Program SSMS zawiera kreatora, który ułatwia konfigurowanie Always Encrypted przez skonfigurowanie klucza głównego kolumny, klucza szyfrowania kolumn i zaszyfrowanych kolumn.
 
-1. Rozwiń węzeł > **kliniki** >  **baz danych** **.**
+1. Rozwiń węzeł **bazy danych** > **Klinika** > **tabele**.
 2. Kliknij prawym przyciskiem myszy tabelę **pacjentów** i wybierz pozycję **Szyfruj kolumny** , aby otworzyć Kreatora Always Encrypted:
    
     ![Szyfruj kolumny](./media/sql-database-always-encrypted-azure-key-vault/encrypt-columns.png)
 
-Kreator Always Encrypted zawiera następujące sekcje: **Wybieranie kolumn**, **Konfiguracja klucza głównego**, **Walidacja**i **Podsumowanie**.
+Kreator Always Encrypted zawiera następujące sekcje: **wybór kolumn**, **Konfiguracja klucza głównego**, **Walidacja**i **Podsumowanie**.
 
 ### <a name="column-selection"></a>Wybór kolumny
 Kliknij przycisk **dalej** na stronie **wprowadzenie** , aby otworzyć stronę **wybór kolumny** . Na tej stronie można wybrać kolumny, które mają zostać zaszyfrowane, [typ szyfrowania i klucz szyfrowania kolumn (CEK)](https://msdn.microsoft.com/library/mt459280.aspx#Anchor_2) , które mają być używane.
 
-Szyfruj informacje o **PESEL** i dataurodzeniu dla każdego pacjenta. Kolumna SSN będzie używać deterministycznego szyfrowania, które obsługuje wyszukiwania równości, sprzężeń i grupowania. Kolumna dataurodzenie będzie używać losowego szyfrowania, które nie obsługuje operacji.
+Szyfruj informacje o **PESEL** i **dataurodzeniu** dla każdego pacjenta. Kolumna SSN będzie używać deterministycznego szyfrowania, które obsługuje wyszukiwania równości, sprzężeń i grupowania. Kolumna dataurodzenie będzie używać losowego szyfrowania, które nie obsługuje operacji.
 
 Ustaw **typ szyfrowania** dla kolumny SSN na wartość **deterministyczną** i kolumnę DataUrodzenia, która ma być **Losowa**. Kliknij przycisk **Dalej**.
 
@@ -159,7 +159,7 @@ W tym samouczku pokazano, jak przechowywać klucze w Azure Key Vault.
 
 ![Konfiguracja klucza głównego](./media/sql-database-always-encrypted-azure-key-vault/master-key-configuration.png)
 
-### <a name="validation"></a>Weryfikacja
+### <a name="validation"></a>Walidacja
 Możesz zaszyfrować kolumny teraz lub zapisać skrypt programu PowerShell, aby uruchomić go później. Na potrzeby tego samouczka wybierz pozycję **Przejdź do pozycji Zakończ teraz** , a następnie kliknij przycisk **dalej**.
 
 ### <a name="summary"></a>Podsumowanie
@@ -174,7 +174,7 @@ Po zakończeniu działania kreatora baza danych jest skonfigurowana do Always En
 * Utworzono klucz szyfrowania kolumny i zapisany w Azure Key Vault.
 * Skonfigurowano wybrane kolumny do szyfrowania. Tabela pacjentów nie ma obecnie żadnych danych, ale wszystkie istniejące dane w wybranych kolumnach są teraz szyfrowane.
 
-Aby sprawdzić, jak utworzyć klucze w programie SSMS > , można zwiększyć**bezpieczeństwo** > **Always Encrypted kluczy**.
+Aby sprawdzić, jak utworzyć klucze w programie SSMS, można **powiększać** >  > **zabezpieczeń** i **Always Encrypted kluczy**.
 
 ## <a name="create-a-client-application-that-works-with-the-encrypted-data"></a>Tworzenie aplikacji klienckiej, która współpracuje z zaszyfrowanymi danymi
 Teraz, gdy Always Encrypted jest skonfigurowany, można skompilować aplikację, która wykonuje operacje *wstawiania* i *wybiera* w zaszyfrowanej kolumnie.  
@@ -186,7 +186,7 @@ Teraz, gdy Always Encrypted jest skonfigurowany, można skompilować aplikację,
 
 1. Otwórz program Visual Studio i Utwórz nową C# **aplikację konsolową** (Visual Studio 2015 i starsze) lub **aplikację konsolową (.NET Framework)** (Visual Studio 2017 i nowsze). Upewnij się, że projekt jest ustawiony na **.NET Framework 4,6** lub nowszy.
 2. Nadaj projektowi nazwę **AlwaysEncryptedConsoleAKVApp** i kliknij przycisk **OK**.
-3. Zainstaluj następujące pakiety NuGet, przechodząc do **Narzędzia** > Menedżer**pakietów** > NuGet**konsola Menedżera**pakietów.
+3. Zainstaluj następujące pakiety NuGet, przechodząc do **narzędzi** > **menedżera pakietów NuGet** > **konsoli Menedżera pakietów**.
 
 Uruchom te dwa wiersze kodu w konsoli Menedżera pakietów.
 
@@ -614,8 +614,8 @@ Aby używać narzędzia SSMS do uzyskiwania dostępu do danych w postaci zwykłe
 
 Następnie Dodaj *ustawienie szyfrowanie kolumn = włączone* parametr podczas połączenia.
 
-1. W programie SSMS kliknij prawym przyciskiem myszy serwer w **Eksplorator obiektów** i wybierz polecenie Rozłącz.
-2. Kliknij pozycję **Połącz** > **aparat bazy danych** , aby otworzyć okno **łączenie z serwerem** , a następnie kliknij przycisk **Opcje**.
+1. W programie SSMS kliknij prawym przyciskiem myszy serwer w **Eksplorator obiektów** i wybierz polecenie **Rozłącz**.
+2. Kliknij pozycję **połącz** > **aparat bazy danych** , aby otworzyć okno **łączenie z serwerem** , a następnie kliknij przycisk **Opcje**.
 3. Kliknij pozycję **dodatkowe parametry połączenia** i **ustawienie szyfrowania kolumny Typ = włączone**.
    
     ![Nowa aplikacja konsolowa](./media/sql-database-always-encrypted-azure-key-vault/ssms-connection-parameter.png)
@@ -626,7 +626,7 @@ Następnie Dodaj *ustawienie szyfrowanie kolumn = włączone* parametr podczas p
    ```
 
      Teraz można zobaczyć dane w postaci zwykłego tekstu w zaszyfrowanych kolumnach.
-     ![Nowa aplikacja konsolowa](./media/sql-database-always-encrypted-azure-key-vault/ssms-plaintext.png)
+     ![nową aplikację konsolową](./media/sql-database-always-encrypted-azure-key-vault/ssms-plaintext.png)
 
 
 ## <a name="next-steps"></a>Następne kroki

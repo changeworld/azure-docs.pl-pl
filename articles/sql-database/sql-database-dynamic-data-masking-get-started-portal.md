@@ -1,5 +1,5 @@
 ---
-title: 'Azure Portal: SQL Database Dynamiczne maskowanie danych | Microsoft Docs'
+title: 'Azure Portal: SQL Database Dynamiczne maskowanie danych '
 description: Jak rozpocząć pracę z SQL Database dynamiczną maskowanie danych w Azure Portal
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: ronitr
 ms.author: ronitr
 ms.reviewer: vanto
 ms.date: 03/04/2018
-ms.openlocfilehash: 1400a21c3fee51bb26a3271546a7553a3429b42d
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: d92f77c56221d7c79ed30a6ca67d31d1b3f7f703
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68568799"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73690583"
 ---
 # <a name="get-started-with-sql-database-dynamic-data-masking-with-the-azure-portal"></a>Rozpocznij pracę z SQL Database dynamiczną maskowanie danych przy użyciu Azure Portal
 
@@ -24,7 +24,7 @@ W tym artykule pokazano, jak zaimplementować [Dynamiczne maskowanie danych](sql
 
 ## <a name="set-up-dynamic-data-masking-for-your-database-using-the-azure-portal"></a>Skonfiguruj Dynamiczne maskowanie danych dla bazy danych przy użyciu Azure Portal
 
-1. Uruchom Azure Portal pod adresem [https://portal.azure.com](https://portal.azure.com).
+1. Uruchom Azure Portal w [https://portal.azure.com](https://portal.azure.com).
 2. Przejdź do strony Ustawienia w bazie danych, która zawiera poufne dane, które mają być maskowane.
 3. Kliknij kafelek **Dynamiczne maskowanie danych** , który uruchamia stronę konfiguracji **dynamicznego maskowania danych** .
 

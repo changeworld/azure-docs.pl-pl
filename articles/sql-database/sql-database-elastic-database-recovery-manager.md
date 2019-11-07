@@ -1,5 +1,5 @@
 ---
-title: Używanie Recovery Manager do rozwiązywania problemów z mapą fragmentu | Microsoft Docs
+title: Rozwiązywanie problemów z mapami fragmentu przy użyciu Recovery Manager
 description: Używanie klasy Recoverymanager do rozwiązywania problemów z mapami fragmentu
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 01/03/2019
-ms.openlocfilehash: cbc4985f032c228db7a9ddf719390bbf2d0166b9
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 5920f0a3f08d83b1300956ca830b3b9b827fa5e2
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68568700"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73690489"
 ---
 # <a name="using-the-recoverymanager-class-to-fix-shard-map-problems"></a>Używanie klasy RecoveryManager do rozwiązywanie problemów z mapą fragmentów
 
@@ -24,7 +24,7 @@ Klasa [recoverymanager](https://docs.microsoft.com/dotnet/api/microsoft.azure.sq
 
 Metody GSM i LSM śledzą mapowanie każdej bazy danych w środowisku podzielonej na fragmentyu. Sporadycznie występuje przerwy między GSM i LSM. W takim przypadku należy użyć klasy Recoverymanager do wykrycia i naprawy przerwy.
 
-Klasa Recoverymanager jest częścią Elastic Databaseej [biblioteki klienta](sql-database-elastic-database-client-library.md).
+Klasa Recoverymanager jest częścią [Elastic Databaseej biblioteki klienta](sql-database-elastic-database-client-library.md).
 
 ![Mapa fragmentu][1]
 
@@ -36,19 +36,19 @@ W środowisku bazy danych podzielonej na fragmenty istnieje jedna dzierżawa na 
 
 Usługi GSM i LSM mogą stać się niezsynchronizowane z następujących powodów:
 
-1. Usunięcie elementu fragmentu, którego zakres nie jest już używany, lub zmiana nazwy fragmentu. Usunięcie fragmentu skutkuje mapowaniem oddzielonym **fragmentu**. Podobnie baza danych o zmienionej nazwie może spowodować oddzielenie mapowania fragmentu. W zależności od intencji zmiany fragmentu może być konieczne usunięcie lub należy zaktualizować lokalizację fragmentu. Aby odzyskać usuniętą bazę danych, zobacz [przywracanie usuniętej bazy danych](sql-database-recovery-using-backups.md).
-2. Wystąpi zdarzenie geograficzne — tryb failover. Aby kontynuować, należy zaktualizować nazwę serwera i nazwę bazy danych Menedżera mapy fragmentu w aplikacji, a następnie zaktualizować szczegóły mapowania fragmentu dla wszystkich fragmentów na mapie fragmentu. W przypadku geograficznego trybu failover taka logika odzyskiwania powinna być zautomatyzowana w ramach przepływu pracy trybu failover. Automatyzacja akcji odzyskiwania umożliwia łatwość zarządzania bazami danych z obsługą geograficzną i unika ręcznych działań ludzkich. Aby dowiedzieć się więcej o opcjach odzyskiwania bazy danych w przypadku awarii centrum danych, [](sql-database-business-continuity.md) Zobacz ciągłość działania i [odzyskiwanie po awarii](sql-database-disaster-recovery.md).
+1. Usunięcie elementu fragmentu, którego zakres nie jest już używany, lub zmiana nazwy fragmentu. Usunięcie fragmentu skutkuje **mapowaniem oddzielonym fragmentu**. Podobnie baza danych o zmienionej nazwie może spowodować oddzielenie mapowania fragmentu. W zależności od intencji zmiany fragmentu może być konieczne usunięcie lub należy zaktualizować lokalizację fragmentu. Aby odzyskać usuniętą bazę danych, zobacz [przywracanie usuniętej bazy danych](sql-database-recovery-using-backups.md).
+2. Wystąpi zdarzenie geograficzne — tryb failover. Aby kontynuować, należy zaktualizować nazwę serwera i nazwę bazy danych Menedżera mapy fragmentu w aplikacji, a następnie zaktualizować szczegóły mapowania fragmentu dla wszystkich fragmentów na mapie fragmentu. W przypadku geograficznego trybu failover taka logika odzyskiwania powinna być zautomatyzowana w ramach przepływu pracy trybu failover. Automatyzacja akcji odzyskiwania umożliwia łatwość zarządzania bazami danych z obsługą geograficzną i unika ręcznych działań ludzkich. Aby dowiedzieć się więcej o opcjach odzyskiwania bazy danych w przypadku awarii centrum danych, zobacz [ciągłość](sql-database-business-continuity.md) działania i [odzyskiwanie po awarii](sql-database-disaster-recovery.md).
 3. Baza danych fragmentu lub ShardMapManager jest przywracana do wcześniejszego punktu w czasie. Aby dowiedzieć się więcej o odzyskiwaniu do punktu w czasie za pomocą kopii zapasowych, zobacz [odzyskiwanie przy użyciu kopii zapas](sql-database-recovery-using-backups.md)
 
 Aby uzyskać więcej informacji na temat Azure SQL Database narzędzi Elastic Database, replikacji geograficznej i przywracania, zobacz następujące tematy:
 
-* [Podsumowanie Ciągłość działania w chmurze i odzyskiwanie po awarii bazy danych za pomocą SQL Database](sql-database-business-continuity.md)
+* [Przegląd: Ciągłość biznesowa w chmurze i odzyskiwanie po awarii bazy danych za pomocą SQL Database](sql-database-business-continuity.md)
 * [Wprowadzenie do narzędzi elastycznych baz danych](sql-database-elastic-scale-get-started.md)  
 * [ShardMap Management](sql-database-elastic-scale-shard-map-management.md)
 
 ## <a name="retrieving-recoverymanager-from-a-shardmapmanager"></a>Pobieranie elementu Recoverymanager z ShardMapManager
 
-Pierwszym krokiem jest utworzenie wystąpienia programu Recoverymanager. [Metoda](https://docs.microsoft.com/dotnet/api/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardmapmanager.getrecoverymanager) getrecoverymanager zwraca Menedżera odzyskiwania dla bieżącego wystąpienia [ShardMapManager](https://docs.microsoft.com/dotnet/api/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardmapmanager) . Aby rozwiązać wszelkie niespójności w mapie fragmentu, należy najpierw pobrać program Recoverymanager dla konkretnej mapy fragmentu.
+Pierwszym krokiem jest utworzenie wystąpienia programu Recoverymanager. [Metoda Getrecoverymanager](https://docs.microsoft.com/dotnet/api/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardmapmanager.getrecoverymanager) zwraca Menedżera odzyskiwania dla bieżącego wystąpienia [ShardMapManager](https://docs.microsoft.com/dotnet/api/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardmapmanager) . Aby rozwiązać wszelkie niespójności w mapie fragmentu, należy najpierw pobrać program Recoverymanager dla konkretnej mapy fragmentu.
 
    ```java
     ShardMapManager smm = ShardMapManagerFactory.GetSqlShardMapManager(smmConnectionString,  
@@ -112,7 +112,7 @@ Ponieważ przyjęto założenie, że usunięcie bazy danych zostało zamierzone,
    ```
 
 * Parametr *Location* to nazwa serwera i nazwa bazy danych fragmentu, które są dołączane.
-* Parametr *shardMapName* jest nazwą mapy fragmentu. Jest to wymagane tylko wtedy, gdy wiele map fragmentu jest zarządzanych przez ten sam Menedżer mapy fragmentu. Opcjonalna.
+* Parametr *shardMapName* jest nazwą mapy fragmentu. Jest to wymagane tylko wtedy, gdy wiele map fragmentu jest zarządzanych przez ten sam Menedżer mapy fragmentu. Opcjonalny.
 
 Ten przykład dodaje fragmentu do mapy fragmentu, która została ostatnio przywrócona z wcześniejszego punktu w czasie. Ponieważ fragmentu (tj. mapowanie dla fragmentu w LSM) zostało przywrócone, może być niespójny z wpisem fragmentu w GSM. Na zewnątrz tego przykładowego kodu fragmentu został przywrócony i zmieniono nazwę na oryginalną. Ponieważ został przywrócony, zakłada się, że mapowanie w LSM jest zaufanym mapowaniem.
 

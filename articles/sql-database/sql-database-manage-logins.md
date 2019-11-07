@@ -1,5 +1,5 @@
 ---
-title: Identyfikatory logowania i użytkownicy bazy danych SQL platformy Azure | Microsoft Docs
+title: Logowania i użytkownicy usługi Azure SQL
 description: Dowiedz się więcej na temat SQL Database i SQL Data Warehouse zarządzania zabezpieczeniami, w tym, jak zarządzać dostępem do bazy danych i zabezpieczeniami logowania za pomocą konta głównego na poziomie serwera.
 keywords: zabezpieczenia bazy danych sql, zarządzanie zabezpieczeniami bazy danych, zabezpieczenia logowania, zabezpieczenia bazy danych, dostęp do bazy danych
 services: sql-database
@@ -12,12 +12,12 @@ author: VanMSFT
 ms.author: vanto
 ms.reviewer: carlrab
 ms.date: 03/26/2019
-ms.openlocfilehash: 9dae1e3864f5f1cf745bfe9b0872f15f61471a1c
-ms.sourcegitcommit: fe50db9c686d14eec75819f52a8e8d30d8ea725b
+ms.openlocfilehash: 501df95b80bd651020fa044970f6bc701959a6a5
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/14/2019
-ms.locfileid: "69014505"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73689483"
 ---
 # <a name="controlling-and-granting-database-access-to-sql-database-and-sql-data-warehouse"></a>Kontrolowanie i udzielanie dostępu do bazy danych do SQL Database i SQL Data Warehouse
 
@@ -49,11 +49,11 @@ Konta administratorów **serwera** i **usługi Azure AD** mają następującą c
 
 - Są jedynymi kontami, które mogą automatycznie łączyć się z dowolnymi SQL Database na serwerze. (Aby połączyć się z bazą danych użytkownika, inne konta muszą być właścicielem bazy danych lub mieć konto użytkownika w bazie danych użytkownika).
 - Te konta korzystają z baz danych użytkowników jako użytkownik `dbo` i mają wszystkie uprawnienia w bazach danych użytkowników. (Właściciel bazy danych użytkownika również korzysta z bazy danych jako użytkownik `dbo`). 
-- Nie należy wprowadzać `master` bazy danych `dbo` jako użytkownik i mieć ograniczone uprawnienia w obszarze głównym. 
+- Nie wprowadzaj `master` bazy danych jako użytkownika `dbo` i masz ograniczone uprawnienia w głównym. 
 - **Nie** są członkami standardowej SQL Server `sysadmin` stałej roli serwera, która nie jest dostępna w usłudze SQL Database.  
 - Może tworzyć, zmieniać i usuwać bazy danych, nazwy logowania, użytkowników z wzorców i reguły zapory adresów IP na poziomie serwera.
-- Może dodawać i usuwać członków do `dbmanager` ról i. `loginmanager`
-- Może wyświetlać `sys.sql_logins` tabelę systemową.
+- Może dodawać i usuwać członków do ról `dbmanager` i `loginmanager`.
+- Może wyświetlać tabelę systemową `sys.sql_logins`.
 
 ### <a name="configuring-the-firewall"></a>Konfigurowanie zapory
 
@@ -83,9 +83,9 @@ Oprócz ról administracyjnych na poziomie serwera omówionych wcześniej usług
 
 ### <a name="database-creators"></a>Kreatory bazy danych
 
-Jedna z tych ról administracyjnych to rola **dbmanager**. Członkowie tej roli mogą tworzyć nowe bazy danych. Aby użyć tej roli, należy utworzyć użytkownika w bazie danych `master` i dodać go do roli bazy danych **dbmanager**. Aby utworzyć bazę danych, użytkownik musi być użytkownikiem opartym na SQL Server logowaniu `master` do bazy danych lub użytkownika zawartej bazy danych na podstawie Azure Active Directory użytkownika.
+Jedna z tych ról administracyjnych to rola **dbmanager**. Członkowie tej roli mogą tworzyć nowe bazy danych. Aby użyć tej roli, należy utworzyć użytkownika w bazie danych `master` i dodać go do roli bazy danych **dbmanager**. Aby utworzyć bazę danych, użytkownik musi być użytkownikiem opartym na SQL Server logowaniu do bazy danych `master` lub użytkownika zawartej bazy danych na podstawie Azure Active Directory użytkownika.
 
-1. Aby nawiązać połączenie z `master` bazą danych, użyj konta administratora.
+1. Korzystając z konta administratora, Połącz się z bazą danych `master`.
 2. Utwórz nazwę logowania SQL Server uwierzytelniania przy użyciu instrukcji [CREATE LOGIN](https://msdn.microsoft.com/library/ms189751.aspx) . Przykładowa instrukcja:
 
    ```sql
@@ -97,7 +97,7 @@ Jedna z tych ról administracyjnych to rola **dbmanager**. Członkowie tej roli 
 
    W celu poprawy wydajności nazwy logowania (nazwy główne na poziomie serwera) są tymczasowo przechowywane w pamięci podręcznej na poziomie bazy danych. Aby odświeżyć pamięć podręczną uwierzytelniania, zobacz artykuł [DBCC FLUSHAUTHCACHE](https://msdn.microsoft.com/library/mt627793.aspx).
 
-3. W bazie danych Utwórz użytkownika przy użyciu instrukcji [Create User.](https://msdn.microsoft.com/library/ms173463.aspx) `master` Użytkownik może być użytkownikiem uwierzytelnienia zawartej bazy danych usługi Azure Active Directory (jeśli skonfigurowano środowisko dla uwierzytelniania usługi Azure AD), użytkownikiem uwierzytelnienia zawartej bazy danych programu SQL Server lub użytkownikiem uwierzytelniania programu SQL Server w oparciu o nazwę logowania uwierzytelniania programu SQL Server (utworzonym w poprzednim kroku). Przykładowe instrukcje:
+3. W bazie danych `master` Utwórz użytkownika przy użyciu instrukcji [Create User](https://msdn.microsoft.com/library/ms173463.aspx) . Użytkownik może być Azure Active Directory uwierzytelnieniem zawartej bazy danych (Jeśli skonfigurowano środowisko na potrzeby uwierzytelniania w usłudze Azure AD) lub użytkownika uwierzytelniania SQL Server zawartej bazy danych lub SQL Server użytkownika uwierzytelniania na podstawie SQL Server Logowanie uwierzytelniania (utworzone w poprzednim kroku). Przykładowe instrukcje:
 
    ```sql
    CREATE USER [mike@contoso.com] FROM EXTERNAL PROVIDER; -- To create a user with Azure Active Directory
@@ -105,7 +105,7 @@ Jedna z tych ról administracyjnych to rola **dbmanager**. Członkowie tej roli 
    CREATE USER Mary FROM LOGIN Mary;  -- To create a SQL Server user based on a SQL Server authentication login
    ```
 
-4. Dodaj nowego użytkownika do roli bazy danych **DBManager** w programie `master` przy użyciu instrukcji [ALTER role](https://msdn.microsoft.com/library/ms189775.aspx) . Przykładowe instrukcje:
+4. Dodaj nowego użytkownika do roli bazy danych **DBManager** w `master` przy użyciu instrukcji [ALTER role](https://msdn.microsoft.com/library/ms189775.aspx) . Przykładowe instrukcje:
 
    ```sql
    ALTER ROLE dbmanager ADD MEMBER Mary; 
@@ -117,7 +117,7 @@ Jedna z tych ról administracyjnych to rola **dbmanager**. Członkowie tej roli 
 
 5. W razie potrzeby skonfiguruj regułę zapory, aby umożliwić połączenie się nowemu użytkownikowi. (Nowy użytkownik może być objęty istniejącą regułą zapory).
 
-Teraz użytkownik może połączyć `master` się z bazą danych i może tworzyć nowe bazy danych. Konto tworzące bazę danych staje się właścicielem bazy danych.
+Teraz użytkownik może nawiązać połączenie z bazą danych `master` i może tworzyć nowe bazy danych. Konto tworzące bazę danych staje się właścicielem bazy danych.
 
 ### <a name="login-managers"></a>Menedżerowie logowania
 
@@ -125,7 +125,7 @@ Druga rola administracyjna to rola menedżera logowania. Członkowie tej roli mo
 
 ## <a name="non-administrator-users"></a>Użytkownicy niebędący administratorami
 
-Ogólnie rzecz biorąc, konta inne niż administracyjne nie potrzebują dostępu do bazy danych master. Tworzenie użytkowników zawartej bazy danych na poziomie bazy danych przy użyciu instrukcji [CREATE USER (język Transact-SQL)](https://msdn.microsoft.com/library/ms173463.aspx). Użytkownik może być użytkownikiem uwierzytelnienia zawartej bazy danych usługi Azure Active Directory (jeśli skonfigurowano środowisko dla uwierzytelniania usługi Azure AD), użytkownikiem uwierzytelnienia zawartej bazy danych programu SQL Server lub użytkownikiem uwierzytelniania programu SQL Server w oparciu o nazwę logowania uwierzytelniania programu SQL Server (utworzonym w poprzednim kroku). Aby uzyskać więcej informacji, zobacz artykuł [Contained Database Users - Making Your Database Portable](https://msdn.microsoft.com/library/ff929188.aspx) (Użytkownicy zawartej bazy danych — tworzenie przenośnej bazy danych). 
+Ogólnie rzecz biorąc, konta inne niż administracyjne nie potrzebują dostępu do bazy danych master. Tworzenie użytkowników zawartej bazy danych na poziomie bazy danych przy użyciu instrukcji [CREATE USER (język Transact-SQL)](https://msdn.microsoft.com/library/ms173463.aspx). Użytkownik może być Azure Active Directory uwierzytelnieniem zawartej bazy danych (Jeśli skonfigurowano środowisko na potrzeby uwierzytelniania w usłudze Azure AD) lub użytkownika uwierzytelniania SQL Server zawartej bazy danych lub SQL Server użytkownika uwierzytelniania na podstawie SQL Server Logowanie uwierzytelniania (utworzone w poprzednim kroku). Aby uzyskać więcej informacji, zobacz [Użytkownicy zawartej bazy danych — Tworzenie przenośnej bazy danych](https://msdn.microsoft.com/library/ff929188.aspx). 
 
 Aby utworzyć użytkowników, połącz się z bazą danych i wykonaj instrukcje podobne do następujących:
 
@@ -142,7 +142,7 @@ GRANT ALTER ANY USER TO Mary;
 
 Aby zapewnić dodatkowym użytkownikom pełną kontrolę nad bazą danych, nadaj im członkom stałej roli bazy danych **db_owner** .
 
-W Azure SQL Database Użyj `ALTER ROLE` instrukcji.
+W Azure SQL Database Użyj instrukcji `ALTER ROLE`.
 
 ```sql
 ALTER ROLE db_owner ADD MEMBER Mary;
@@ -186,7 +186,7 @@ Istnieje ponad 100 uprawnień, których można indywidualnie udzielić lub odmó
 
 Podczas zarządzania nazwami logowania i użytkownikami w usłudze SQL Database należy uwzględnić następujące fakty:
 
-- Podczas wykonywania instrukcji `CREATE/ALTER/DROP DATABASE` musisz mieć połączenie z bazą danych **master**.   
+- Podczas wykonywania instrukcji **musisz mieć połączenie z bazą danych**master`CREATE/ALTER/DROP DATABASE`.   
 - Użytkownik bazy danych odpowiadający identyfikatorowi logowania **Administrator serwera** nie może zostać zmieniony ani usunięty. 
 - Domyślnym językiem identyfikatora logowania **Administrator serwera** jest angielski (Stany Zjednoczone).
 - Tylko administratorzy (identyfikator logowania **Administrator serwera** lub Administrator usługi Azure AD) i członkowie roli bazy danych **dbmanager** w bazie danych **master** mają uprawnienia do wykonywania instrukcji `CREATE DATABASE` i `DROP DATABASE`.
@@ -213,7 +213,7 @@ Podczas zarządzania nazwami logowania i użytkownikami w usłudze SQL Database 
 - Podczas wykonywania instrukcji `CREATE USER` z opcją `FOR/FROM LOGIN` musi to być jedyna instrukcja w zadaniu wsadowym języka Transact-SQL.
 - Podczas wykonywania instrukcji `ALTER USER` z opcją `WITH LOGIN` musi to być jedyna instrukcja w zadaniu wsadowym języka Transact-SQL.
 - Aby wykonać instrukcję `CREATE/ALTER/DROP`, użytkownik musi mieć uprawnienia `ALTER ANY USER` dla bazy danych.
-- Gdy właściciel roli bazy danych próbuje dodać lub usunąć innego użytkownika bazy danych do lub z tej roli bazy danych, może wystąpić następujący błąd: **Użytkownik lub rola "name" nie istnieje w tej bazie danych.** Ten błąd występuje, ponieważ użytkownik nie jest widoczny dla właściciela. Aby rozwiązać ten problem, należy udzielić właścicielowi roli uprawnień `VIEW DEFINITION` do użytkownika. 
+- Gdy właściciel roli database próbuje dodać lub usunąć innego użytkownik bazy danych z roli database, może wystąpić następujący błąd: **User or role 'Name' does not exist in this database** (Użytkownik lub rola „Nazwa” nie istnieje w tej bazie danych). Ten błąd występuje, ponieważ użytkownik nie jest widoczny dla właściciela. Aby rozwiązać ten problem, należy udzielić właścicielowi roli uprawnień `VIEW DEFINITION` do użytkownika. 
 
 
 ## <a name="next-steps"></a>Następne kroki

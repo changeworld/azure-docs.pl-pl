@@ -1,5 +1,5 @@
 ---
-title: Szybsze odzyskiwanie bazy danych — Azure SQL Database | Microsoft Docs
+title: Szybsze odzyskiwanie bazy danych — Azure SQL Database
 description: Azure SQL Database ma nową funkcję, która zapewnia szybkie i spójne odzyskiwanie bazy danych, natychmiastowe wycofywanie transakcji oraz agresywne obcinanie dzienników dla pojedynczych baz danych i baz danych w puli w Azure SQL Database i bazach danych w usłudze Azure SQL Data Hurtowni.
 ms.service: sql-database
 ms.subservice: high-availability
@@ -10,12 +10,12 @@ author: mashamsft
 ms.author: mathoma
 ms.reviewer: carlrab
 ms.date: 01/25/2019
-ms.openlocfilehash: d516dc51a25cbef92ff9fa22012773507b528a99
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: e66b3e6563d796cc7b59e82233bd1b22bc906c6e
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68569631"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73691356"
 ---
 # <a name="accelerated-database-recovery"></a>Szybsze odzyskiwanie bazy danych
 
@@ -95,7 +95,7 @@ Cztery kluczowe składniki reguły ADR są następujące:
 
 - **Magazyn trwałych wersji (PVS)**
 
-  Utrwalony magazyn wersji to nowy mechanizm aparatu usługi SQL Database służący do utrwalania wersji wiersza generowanych w bazie danych zamiast tradycyjnego `tempdb` magazynu wersji. PVS umożliwia izolację zasobów, a także zwiększa dostępność czytelnych serwerów pomocniczych.
+  Utrwalony magazyn wersji to nowy mechanizm aparatu usługi SQL Database służący do utrwalania wersji wierszy generowanych w bazie danych, a nie w tradycyjnych `tempdb` wersji. PVS umożliwia izolację zasobów, a także zwiększa dostępność czytelnych serwerów pomocniczych.
 
 - **Przywrócenie logiczne**
 

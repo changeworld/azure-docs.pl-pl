@@ -1,5 +1,5 @@
 ---
-title: Inicjowanie obsługi administracyjnej nowych dzierżawców w aplikacji wielodostępnej, która używa Azure SQL Database | Microsoft Docs
+title: Inicjowanie obsługi administracyjnej nowych dzierżawców w aplikacji wielodostępnej korzystającej z Azure SQL Database
 description: Dowiedz się, jak udostępniać i katalogować nowe dzierżawy w Azure SQL Database wielodostępnej aplikacji SaaS
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 09/24/2018
-ms.openlocfilehash: b5a996fe6be5aa839b78b6693accac9b1000cef8
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: f0f1ebd8b2ef719a9556b6b20f6685d1da493263
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68570424"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73692115"
 ---
 # <a name="learn-how-to-provision-new-tenants-and-register-them-in-the-catalog"></a>Dowiedz się, jak zainicjować obsługę nowych dzierżawców i zarejestrować je w wykazie
 
@@ -30,7 +30,7 @@ Ten samouczek zawiera informacje na temat wykonywania następujących czynności
 > * Zainicjuj obsługę partii dodatkowych dzierżawców.
 
 
-Do wykonania zadań opisanych w tym samouczku niezbędne jest spełnienie następujących wymagań wstępnych:
+Do wykonania kroków tego samouczka niezbędne jest spełnienie następujących wymagań wstępnych:
 
 * Wdrożono aplikację Wingtip bilety SaaS bazy danych dla dzierżawców. Aby wdrożyć ją w czasie krótszym niż pięć minut, zobacz [wdrażanie i eksplorowanie Wingtip biletów SaaS bazy danych dla dzierżawców](saas-dbpertenant-get-started-deploy.md).
 * Zainstalowany jest program Azure PowerShell. Aby uzyskać więcej informacji, zobacz [Rozpoczynanie pracy z programem Azure PowerShell](https://docs.microsoft.com/powershell/azure/get-started-azureps).
@@ -70,18 +70,18 @@ Skrypty aprowizacji kopiują bazę danych _basetenantdb_ , aby utworzyć nową b
 
 ## <a name="get-the-wingtip-tickets-saas-database-per-tenant-application-scripts"></a>Pobierz bilety Wingtip SaaS dla skryptów aplikacji dla dzierżawców
 
-Wingtip bilety SaaS skrypty i kod źródłowy aplikacji są dostępne w repozytorium GitHub [WingtipTicketsSaaS-DbPerTenant](https://github.com/Microsoft/WingtipTicketsSaaS-DbPerTenant) . Zapoznaj się [](saas-tenancy-wingtip-app-guidance-tips.md) z ogólnymi wskazówkami dotyczącymi kroków pobierania i odblokowywania Wingtip biletów SaaS.
+Wingtip bilety SaaS skrypty i kod źródłowy aplikacji są dostępne w repozytorium GitHub [WingtipTicketsSaaS-DbPerTenant](https://github.com/Microsoft/WingtipTicketsSaaS-DbPerTenant) . Zapoznaj się z [ogólnymi wskazówkami](saas-tenancy-wingtip-app-guidance-tips.md) dotyczącymi kroków pobierania i odblokowywania Wingtip biletów SaaS.
 
 
 ## <a name="provision-and-catalog-detailed-walkthrough"></a>Szczegółowy przewodnik po aprowizacji i wykazie
 
 Aby zrozumieć, w jaki sposób aplikacja biletów Wingtip implementuje nową obsługę dzierżawy, Dodaj punkt przerwania i postępuj zgodnie z przepływem pracy podczas aprowizacji dzierżawy.
 
-1. W ISE programu PowerShell Otwórz pozycję... Moduły uczeniaProvisionAndCatalog\\_demo-ProvisionAndCatalog. ps1_ i ustawiają następujące parametry:\\ \\
+1. W programie PowerShell ISE Otwórz program...\\moduły uczenia\\ProvisionAndCatalog\\_demo-ProvisionAndCatalog. ps1_ i ustaw następujące parametry:
 
    * **$TenantName** = nazwa nowego miejsca (na przykład *Bushwillow Blues*).
    * **$VenueType** = jeden ze wstępnie zdefiniowanych typów miejsc: _Blues, ClassicalMusic, odpowiedzialna, Jazz, judo, wyścigi mechaniczne, Multipurpose, Opera, ROCKMUSIC, piłka nożna_.
-   * $DemoScenario = **1**, *Zainicjuj obsługę pojedynczej dzierżawy*.
+   * **$DemoScenario** = **1**, *Zainicjuj obsługę pojedynczej dzierżawy*.
 
 2. Aby dodać punkt przerwania, umieść kursor w dowolnym miejscu w wierszu informującym o *nowym dzierżawie*. Następnie naciśnij klawisz F9.
 
@@ -105,7 +105,7 @@ Nie musisz jawnie obserwować tego przepływu pracy. Wyjaśniono, jak debugować
 * **Pobierz szczegóły konfiguracji.** Wkrocz do Get-Configuration przy użyciu klawisza F11 i zobacz, jak określono konfigurację aplikacji. Nazwy zasobów i inne wartości specyficzne dla aplikacji są definiowane w tym miejscu. Nie zmieniaj tych wartości, dopóki nie znasz skryptów.
 * **Pobierz obiekt katalogu.** Wkrocz do Get-Catalog, który składa się z obiektu katalogu, który jest używany w skrypcie wyższego poziomu. Ta funkcja korzysta z funkcji zarządzania fragmentu, które są importowane z **AzureShardManagement. PSM1**. Obiekt wykazu składa się z następujących elementów:
 
-   * $catalogServerFullyQualifiedName jest konstruowany przy użyciu standardowego trzonu i nazwy użytkownika: _Catalog-\<User\>. Database. Windows .NET_.
+   * $catalogServerFullyQualifiedName jest konstruowany przy użyciu standardowego trzonu i nazwy użytkownika: _Catalog-\<user\>. Database. Windows .NET_.
    * Obiekt $catalogDatabaseName jest pobierany z konfiguracji: *tenantcatalog*.
    * Obiekt $shardMapManager jest inicjowany z bazy danych wykazu.
    * Obiekt $shardMap jest inicjowany z mapy fragmentów _tenantcatalog_ w bazie danych wykazu. Obiekt wykazu jest tworzony i zwracany. Jest on używany w skrypcie wyższego poziomu.
@@ -135,9 +135,9 @@ Po zakończeniu aprowizacji, wykonanie powraca do oryginalnego skryptu *demonstr
 
 W tym ćwiczeniu zainicjujemy partię 17 dzierżawców. Zalecamy udostępnienie tej partii dzierżawców przed rozpoczęciem innych biletów Wingtip SaaSych samouczków bazy danych dla dzierżawców. Istnieje więcej niż kilka baz danych, z którymi można współpracować.
 
-1. W ISE programu PowerShell Otwórz pozycję... Moduły uczeniaProvisionAndCatalog\\*demo-ProvisionAndCatalog. ps1.* \\\\ Zmień parametr *$DemoScenario* na 3:
+1. W ISE programu PowerShell Otwórz program...\\moduły uczenia\\ProvisionAndCatalog\\*demo-ProvisionAndCatalog. ps1*. Zmień parametr *$DemoScenario* na 3:
 
-   * $DemoScenario = **3**, *Zainicjuj obsługę partii dzierżawców*.
+   * **$DemoScenario** = **3**, *Zainicjuj obsługę partii dzierżawców*.
 2. Aby uruchomić skrypt, naciśnij klawisz F5.
 
 Skrypt wdroży partię dodatkowych dzierżaw. Używa [szablonu Azure Resource Manager](../azure-resource-manager/resource-manager-template-walkthrough.md) , który kontroluje zadanie wsadowe i deleguje Inicjowanie obsługi każdej bazy danych w połączonym szablonie. Ten sposób użycia szablonów umożliwia aplikacji Azure Resource Manager pełnienie roli brokera w procesie aprowizacji przy użyciu skryptu. Szablony udostępniają bazy danych równolegle i obsługują ponowne próby w razie konieczności. Skrypt jest idempotentne, więc jeśli nie powiedzie się lub zostanie zatrzymany z dowolnego powodu, uruchom go ponownie.
@@ -154,9 +154,9 @@ Skrypt wdroży partię dodatkowych dzierżaw. Używa [szablonu Azure Resource Ma
 
 Inne wzorce aprowizacji, które nie zostały uwzględnione w tym samouczku:
 
-**Wstępne Inicjowanie obsługi administracyjnej baz danych**: Wzorzec wstępnej aprowizacji wykorzystuje fakt, że bazy danych w puli elastycznej nie dodawaj dodatkowych kosztów. Opłaty są naliczane za pulę elastyczną, a nie bazy danych. Bezczynne bazy danych nie zużywają żadnych zasobów. Przed zainicjowaniem obsługi administracyjnej baz danych w puli i przydzieleniu ich w razie potrzeby można skrócić czas dodawania dzierżawców. Liczba wstępnie zainicjowanych baz danych można dostosować w miarę potrzeb, aby zachować bufor odpowiedni dla przewidywanego tempa aprowizacji.
+**Wstępne Inicjowanie obsługi administracyjnej baz danych**: wzorzec wstępnej aprowizacji wykorzystuje fakt, że bazy danych w puli elastycznej nie dodawaj dodatkowych kosztów. Opłaty są naliczane za pulę elastyczną, a nie bazy danych. Bezczynne bazy danych nie zużywają żadnych zasobów. Przed zainicjowaniem obsługi administracyjnej baz danych w puli i przydzieleniu ich w razie potrzeby można skrócić czas dodawania dzierżawców. Liczba wstępnie zainicjowanych baz danych można dostosować w miarę potrzeb, aby zachować bufor odpowiedni dla przewidywanego tempa aprowizacji.
 
-**Funkcja autoaprowizacji**: W przypadku wzorca automatycznego inicjowania obsługi administracyjnej usługa aprowizacji automatycznie inicjuje obsługę administracyjną serwerów, pul i baz danych. Jeśli chcesz, możesz dołączyć bazy danych wstępnej aprowizacji do pul elastycznych. W przypadku zlikwidowania i usunięcia baz danych luki w pulach elastycznych mogą być wypełniane przez usługę aprowizacji. Takie usługi mogą być proste lub złożone, takie jak obsługa aprowizacji wielu lokalizacje geograficzne i Konfigurowanie replikacji geograficznej na potrzeby odzyskiwania po awarii. 
+**Automatyczne Inicjowanie obsługi**: w przypadku automatycznego inicjowania obsługi administracyjnej usługa aprowizacji automatycznie inicjuje obsługę administracyjną serwerów, pul i baz danych. Jeśli chcesz, możesz dołączyć bazy danych wstępnej aprowizacji do pul elastycznych. W przypadku zlikwidowania i usunięcia baz danych luki w pulach elastycznych mogą być wypełniane przez usługę aprowizacji. Takie usługi mogą być proste lub złożone, takie jak obsługa aprowizacji wielu lokalizacje geograficzne i Konfigurowanie replikacji geograficznej na potrzeby odzyskiwania po awarii. 
 
 Ze wzorcem autoaprowizacji aplikacja kliencka lub skrypt przesyła żądanie aprowizacji do kolejki w celu przetworzenia przez usługę aprowizacji. Następnie sonduje usługę, aby określić zakończenie. Jeśli jest używane wstępne Inicjowanie obsługi, żądania są obsługiwane szybko. Usługa inicjuje zastępowanie zastępczej bazy danych w tle.
 

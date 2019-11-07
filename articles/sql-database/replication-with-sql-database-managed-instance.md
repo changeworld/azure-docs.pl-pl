@@ -1,5 +1,5 @@
 ---
-title: Skonfiguruj replikację w bazie danych wystąpienia zarządzanego Azure SQL Database | Microsoft Docs
+title: 'Konfigurowanie replikacji w Azure SQL Database bazie danych wystąpienia zarządzanego '
 description: Dowiedz się więcej o konfigurowaniu replikacji transakcyjnej w Azure SQL Database bazie danych wystąpienia zarządzanego
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: allenwux
 ms.author: xiwu
 ms.reviewer: mathoma
 ms.date: 02/07/2019
-ms.openlocfilehash: b940be1d1b68e4e2a41e3f8353cb54fdb51bb886
-ms.sourcegitcommit: e1b6a40a9c9341b33df384aa607ae359e4ab0f53
+ms.openlocfilehash: 21275ce7716ffc394c1e7445c3f6836f09b44c87
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71338738"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73692167"
 ---
 # <a name="configure-replication-in-an-azure-sql-database-managed-instance-database"></a>Konfigurowanie replikacji w Azure SQL Database bazie danych wystąpienia zarządzanego
 
@@ -41,7 +41,7 @@ Skonfigurowanie wystąpienia zarządzanego do działania w ramach wydawcy i/lub 
 - Że wystąpienie zarządzane wydawcy znajduje się w tej samej sieci wirtualnej co dystrybutora i subskrybenta, lub ustanowiono [komunikację równorzędną](../virtual-network/tutorial-connect-virtual-networks-powershell.md) sieci wirtualnych w ramach wszystkich trzech jednostek. 
 - Połączenie korzysta z uwierzytelniania SQL między uczestnikami replikacji.
 - Udział konta usługi Azure Storage dla katalogu roboczego replikacji.
-- Port 445 (ruch wychodzący TCP) jest otwarty w regułach zabezpieczeń sieciowej grupy zabezpieczeń dla wystąpień zarządzanych, aby uzyskać dostęp do udziału plików platformy Azure.  Jeśli wystąpi błąd "nie można nawiązać połączenia z usługą Azure Storage @no__t — nazwa konta 0storage > z błędem systemu operacyjnego 53", należy dodać regułę wychodzącą do sieciowej grupy zabezpieczeń odpowiedniej podsieci wystąpienia zarządzanego SQL.
+- Port 445 (ruch wychodzący TCP) jest otwarty w regułach zabezpieczeń sieciowej grupy zabezpieczeń dla wystąpień zarządzanych, aby uzyskać dostęp do udziału plików platformy Azure.  Jeśli wystąpi błąd "nie można nawiązać połączenia z usługą Azure Storage \<nazwą konta magazynu > z powodu błędu systemu operacyjnego 53", należy dodać regułę ruchu wychodzącego do sieciowej grupy zabezpieczeń odpowiedniej podsieci wystąpienia zarządzanego SQL.
 
 
  > [!NOTE]
@@ -86,7 +86,7 @@ Skopiuj klucze dostępu do magazynu w formacie: `DefaultEndpointsProtocol=https;
 
 ## <a name="4---create-a-publisher-database"></a>4 — Tworzenie bazy danych wydawcy
 
-Połącz się z wystąpieniem zarządzanym `sql-mi-pub` przy użyciu SQL Server Management Studio i uruchom następujący kod języka Transact-SQL (T-SQL), aby utworzyć bazę danych wydawcy:
+Połącz się z wystąpieniem `sql-mi-pub` zarządzanym przy użyciu SQL Server Management Studio i uruchom następujący kod języka Transact-SQL (T-SQL), aby utworzyć bazę danych wydawcy:
 
 ```sql
 USE [master]
@@ -141,7 +141,7 @@ GO
 
 ## <a name="6---configure-distribution"></a>6 — Konfigurowanie dystrybucji
 
-Połącz się z wystąpieniem zarządzanym `sql-mi-pub` przy użyciu SQL Server Management Studio i uruchom następujący kod T-SQL w celu skonfigurowania bazy danych dystrybucji. 
+Połącz się z wystąpieniem `sql-mi-pub` zarządzanym przy użyciu SQL Server Management Studio i uruchom następujący kod T-SQL w celu skonfigurowania bazy danych dystrybucji. 
 
 ```sql
 USE [master]
@@ -154,7 +154,7 @@ GO
 
 ## <a name="7---configure-publisher-to-use-distributor"></a>7 — Konfigurowanie wydawcy do korzystania z dystrybutora 
 
-W wystąpieniu zarządzanym wydawcy `sql-mi-pub` Zmień wykonanie zapytania na tryb [sqlcmd](/sql/ssms/scripting/edit-sqlcmd-scripts-with-query-editor) i uruchom następujący kod w celu zarejestrowania nowego dystrybutora z wydawcą. 
+Na `sql-mi-pub`wystąpieniu zarządzanym wydawcy Zmień wykonanie zapytania na tryb [sqlcmd](/sql/ssms/scripting/edit-sqlcmd-scripts-with-query-editor) i uruchom następujący kod, aby zarejestrować nowego dystrybutora z wydawcą. 
 
 ```sql
 :setvar username loginUsedToAccessSourceManagedInstance
@@ -322,7 +322,7 @@ EXEC sp_dropdistributor @no_checks = 1
 GO
 ```
 
-Możesz wyczyścić zasoby platformy Azure, [usuwając zarządzane zasoby wystąpienia z grupy zasobów](../azure-resource-manager/manage-resources-portal.md#delete-resources) , a następnie usuwając grupę zasobów `SQLMI-Repl`. 
+Możesz wyczyścić zasoby platformy Azure, [usuwając zasoby wystąpienia zarządzanego z grupy zasobów](../azure-resource-manager/manage-resources-portal.md#delete-resources) , a następnie usuwając grupę zasobów `SQLMI-Repl`. 
 
    
 ## <a name="see-also"></a>Zobacz też

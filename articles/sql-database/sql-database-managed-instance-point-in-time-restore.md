@@ -1,5 +1,5 @@
 ---
-title: SQL Database Zarządzanie wystąpieniami zarządzanymi — przywracanie do punktu w czasie | Microsoft Docs
+title: SQL Database przywracanie do punktu w czasie zarządzanym
 description: Przywracanie bazy danych SQL w wystąpieniu zarządzanym do wcześniejszego punktu w czasie.
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: sstein, carlrab, mathoma
 ms.date: 08/25/2019
-ms.openlocfilehash: 61249d8ac21c3bb698deb92e5f46a8998205ced9
-ms.sourcegitcommit: f29fec8ec945921cc3a89a6e7086127cc1bc1759
+ms.openlocfilehash: 44f99b6a5201e91e37ace0f5aa4c5c2eb8e3b1db
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72529664"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73687986"
 ---
 # <a name="restore-a-sql-database-in-a-managed-instance-to-a-previous-point-in-time"></a>Przywracanie bazy danych SQL w wystąpieniu zarządzanym do wcześniejszego punktu w czasie
 
@@ -58,7 +58,7 @@ Przywróć istniejącą bazę danych do tego samego wystąpienia przy użyciu Az
 
 # <a name="portaltabazure-portal"></a>[Portal](#tab/azure-portal)
 
-1. Zaloguj się do [portalu Azure](https://portal.azure.com). 
+1. Zaloguj się w witrynie [Azure Portal](https://portal.azure.com). 
 2. Przejdź do wystąpienia zarządzanego i wybierz bazę danych, którą chcesz przywrócić.
 3. Na stronie Baza danych wybierz pozycję **Przywróć** :
 

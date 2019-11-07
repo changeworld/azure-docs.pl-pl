@@ -1,5 +1,5 @@
 ---
-title: Skonfiguruj publiczny punkt końcowy Azure SQL Database wystąpienia zarządzanego | Microsoft Docs
+title: Skonfiguruj publiczny punkt końcowy Azure SQL Database wystąpienia zarządzanego
 description: Dowiedz się, jak skonfigurować publiczny punkt końcowy dla wystąpienia zarządzanego
 services: sql-database
 ms.service: sql-database
@@ -10,12 +10,12 @@ author: srdan-bozovic-msft
 ms.author: srbozovi
 ms.reviewer: vanto, carlrab
 ms.date: 05/07/2019
-ms.openlocfilehash: cebe6b4ca61b835e7c77f51592c20799fe271853
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 6f953e4c549619a30564bdb061e98761474174c3
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68567395"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73687968"
 ---
 # <a name="configure-public-endpoint-in-azure-sql-database-managed-instance"></a>Skonfiguruj publiczny punkt końcowy w Azure SQL Database wystąpieniu zarządzanym
 
@@ -38,12 +38,12 @@ Ze względu na czułość danych w wystąpieniu zarządzanym, konfiguracja do w�
 
 ## <a name="enabling-public-endpoint-for-a-managed-instance-in-the-azure-portal"></a>Włączanie publicznego punktu końcowego dla wystąpienia zarządzanego w Azure Portal
 
-1. Uruchom Azure Portal w<https://portal.azure.com/.>
+1. Uruchom Azure Portal w <https://portal.azure.com/.>
 1. Otwórz grupę zasobów z wystąpieniem zarządzanym i wybierz **wystąpienie zarządzane SQL** , dla którego chcesz skonfigurować publiczny punkt końcowy.
 1. Na stronie ustawienia **zabezpieczeń** wybierz kartę **Sieć wirtualna** .
 1. Na stronie Konfiguracja sieci wirtualnej wybierz pozycję **Włącz** , a następnie ikonę **Zapisz** , aby zaktualizować konfigurację.
 
-![mi-vnet-config.png](media/sql-database-managed-instance-public-endpoint-configure/mi-vnet-config.png)
+![mi-VNET-config. png](media/sql-database-managed-instance-public-endpoint-configure/mi-vnet-config.png)
 
 ## <a name="enabling-public-endpoint-for-a-managed-instance-using-powershell"></a>Włączanie publicznego punktu końcowego dla wystąpienia zarządzanego przy użyciu programu PowerShell
 
@@ -80,13 +80,13 @@ Set-AzSqlInstance -PublicDataEndpointEnabled $false -force
 
 ## <a name="allow-public-endpoint-traffic-on-the-network-security-group"></a>Zezwalaj na ruch publicznego punktu końcowego w sieciowej grupie zabezpieczeń
 
-1. Jeśli strona Konfiguracja wystąpienia zarządzanego jest nadal otwarta, przejdź do karty **Przegląd** . W przeciwnym razie Wróć do zasobu **wystąpienia zarządzanego SQL** . Wybierz łącze **Sieć wirtualna/podsieć** , co spowoduje przejście do strony Konfiguracja sieci wirtualnej.
+1. Jeśli strona Konfiguracja wystąpienia zarządzanego jest nadal otwarta, przejdź do karty **Przegląd** . w przeciwnym razie Wróć do zasobu **wystąpienia zarządzanego SQL** . Wybierz łącze **Sieć wirtualna/podsieć** , co spowoduje przejście do strony Konfiguracja sieci wirtualnej.
 
-    ![mi-overview.png](media/sql-database-managed-instance-public-endpoint-configure/mi-overview.png)
+    ![mi-Overview. png](media/sql-database-managed-instance-public-endpoint-configure/mi-overview.png)
 
 1. Wybierz kartę **podsieci** w okienku Konfiguracja po lewej stronie sieci wirtualnej, a następnie zanotuj **grupę zabezpieczeń** dla wystąpienia zarządzanego.
 
-    ![mi-vnet-subnet.png](media/sql-database-managed-instance-public-endpoint-configure/mi-vnet-subnet.png)
+    ![mi-VNET-Subnet. png](media/sql-database-managed-instance-public-endpoint-configure/mi-vnet-subnet.png)
 
 1. Wróć do grupy zasobów zawierającej wystąpienie zarządzane. Powinna zostać wyświetlona poprzednia nazwa **grupy zabezpieczeń sieci** . Wybierz nazwę, aby przejść do strony konfiguracji sieciowej grupy zabezpieczeń.
 
@@ -96,10 +96,10 @@ Set-AzSqlInstance -PublicDataEndpointEnabled $false -force
     |---------|---------|---------|
     |**Element źródłowy**     |Dowolny adres IP lub tag usługi         |<ul><li>W przypadku usług platformy Azure, takich jak Power BI, wybierz tag usługi w chmurze platformy Azure</li> <li>Użyj adresu IP translatora adresów sieciowych dla komputera lub maszyny wirtualnej platformy Azure</li></ul> |
     |**Zakresy portów źródłowych**     |*         |Pozostaw to * (any), ponieważ porty źródłowe są zwykle przydzielane dynamicznie i nieprzewidywalne |
-    |**Punktu**     |Any         |Pozostawienie miejsca docelowego jako dowolnego do zezwalania na ruch w podsieci wystąpienia zarządzanego |
+    |**Punktu**     |Dowolne         |Pozostawienie miejsca docelowego jako dowolnego do zezwalania na ruch w podsieci wystąpienia zarządzanego |
     |**Docelowe zakresy portów**     |3342         |Port docelowy zakresu do 3342, czyli publiczny punkt końcowy TDS wystąpienia zarządzanego |
     |**Protokół**     |TCP         |Wystąpienie zarządzane używa protokołu TCP dla TDS |
-    |**Akcja**     |Allow         |Zezwalaj na ruch przychodzący do wystąpienia zarządzanego za pomocą publicznego punktu końcowego |
+    |**Akcja**     |Zezwalaj         |Zezwalaj na ruch przychodzący do wystąpienia zarządzanego za pomocą publicznego punktu końcowego |
     |**Priorytet**     |1300         |Upewnij się, że ta reguła ma wyższy priorytet niż reguła **deny_all_inbound** |
 
     ![mi-NSG-rules. png](media/sql-database-managed-instance-public-endpoint-configure/mi-nsg-rules.png)
@@ -112,8 +112,8 @@ Set-AzSqlInstance -PublicDataEndpointEnabled $false -force
 1. Przejdź do strony konfiguracji wystąpienia zarządzanego SQL, która została włączona dla publicznego punktu końcowego. Wybierz kartę **Parametry połączenia** w obszarze Konfiguracja **ustawień** .
 1. Należy pamiętać, że nazwa hosta publicznego punktu końcowego jest w formacie < mi_name >. **Public**. < dns_zone >. Database. Windows. NET oraz że port używany do połączenia to 3342.
 
-    ![mi-public-endpoint-conn-string.png](media/sql-database-managed-instance-public-endpoint-configure/mi-public-endpoint-conn-string.png)
+    ![mi-Public-Endpoint-Conn-String. png](media/sql-database-managed-instance-public-endpoint-configure/mi-public-endpoint-conn-string.png)
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 - Zapoznaj się [z bezpiecznym użyciem Azure SQL Database wystąpienia zarządzanego z publicznym punktem końcowym](sql-database-managed-instance-public-endpoint-securely.md).

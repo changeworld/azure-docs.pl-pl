@@ -1,5 +1,5 @@
 ---
-title: Jak skonfigurować Azure SQL Database-pojedynczy | Microsoft Docs
+title: Jak skonfigurować Azure SQL Database — pojedyncza
 description: Informacje dotyczące konfigurowania Azure SQL Database-pojedynczej bazy danych i zarządzania nią
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: carlr
 ms.date: 02/08/2019
-ms.openlocfilehash: 2117a811f977230dd9c9eecf6ea09b9b7deda3be
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 45e25641092fae36cd58a59400cea025f74cbc1f
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68568050"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73689903"
 ---
 # <a name="how-to-use-a-single-database-in-azure-sql-database"></a>Jak korzystać z pojedynczej bazy danych w Azure SQL Database
 
@@ -34,7 +34,7 @@ W tej sekcji znajdują się różne przewodniki, skrypty i wyjaśnienia, które 
 - [Skonfiguruj Dynamiczne maskowanie danych](sql-database-dynamic-data-masking-get-started-portal.md) , aby chronić poufne dane.
 - [Skonfiguruj przechowywanie kopii zapasowych](sql-database-long-term-backup-retention-configure.md) bazy danych, aby zachować kopie zapasowe na platformie Azure Blob Storage. Alternatywą jest [skonfigurowanie przechowywania kopii zapasowych za pomocą podejścia do magazynu platformy Azure (przestarzałe)](sql-database-long-term-backup-retention-configure-vault.md) .
 - [Skonfiguruj replikację geograficzną](sql-database-geo-replication-portal.md) , aby zachować replikę bazy danych w innym regionie.
-- [Skonfiguruj zabezpieczenia dla replik](sql-database-geo-replication-security-config.md)geograficznych.
+- [Skonfiguruj zabezpieczenia dla replik geograficznych](sql-database-geo-replication-security-config.md).
 
 ## <a name="monitor-and-tune-your-database"></a>Monitorowanie i dostrajanie bazy danych
 
@@ -42,12 +42,12 @@ W tej sekcji znajdują się różne przewodniki, skrypty i wyjaśnienia, które 
 - [Włącz powiadomienia e-mail na potrzeby dostrajania automatycznego](sql-database-automatic-tuning-email-notifications.md) , aby uzyskać informacje o zaleceniach dostrajania.
 - [Stosuj zalecenia dotyczące wydajności](sql-database-advisor-portal.md) i Optymalizuj bazę danych.
 - [Utwórz alerty](sql-database-insights-alerts-portal.md) , aby otrzymywać powiadomienia z Azure SQL Database.
-- [Rozwiązywanie problemów z](sql-database-troubleshoot-common-connection-issues.md) łącznością, jeśli zauważysz problemy z łącznością między aplikacjami i bazą danych. Resource Health można także użyć [do problemów](sql-database-resource-health.md)z łącznością.
+- [Rozwiązywanie problemów z](sql-database-troubleshoot-common-connection-issues.md) łącznością, jeśli zauważysz problemy z łącznością między aplikacjami i bazą danych. Resource Health można także użyć [do problemów z łącznością](sql-database-resource-health.md).
 - [Zarządzaj miejscem w pliku](sql-database-file-space-management.md) , aby monitorować użycie magazynu w bazie danych programu.
 
 ## <a name="query-distributed-data"></a>Wykonywanie zapytań względem danych rozproszonych
 
-- [Wykonywanie zapytań o dane partycjonowane](sql-database-elastic-query-getting-started-vertical.md) w pionie w wielu bazach danych.
+- [Wykonywanie zapytań o dane partycjonowane w pionie](sql-database-elastic-query-getting-started-vertical.md) w wielu bazach danych.
 - [Raport w warstwie danych skalowanych w poziomie](sql-database-elastic-query-horizontal-partitioning.md).
 - [Zapytania między tabelami z różnymi schematami](sql-database-elastic-query-vertical-partitioning.md).
 

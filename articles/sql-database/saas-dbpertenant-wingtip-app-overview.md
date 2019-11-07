@@ -1,5 +1,5 @@
 ---
-title: Przykład Azure SQL Database aplikacji wielodostępnej — Wingtip SaaS | Microsoft Docs
+title: Przykład Azure SQL Database aplikacji wielodostępnej — Wingtip SaaS
 description: Dowiedz się, jak używać przykładowej aplikacji wielodostępnej, która używa Azure SQL Database Wingtip SaaS
 services: sql-database
 ms.service: sql-database
@@ -11,18 +11,18 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 09/24/2018
-ms.openlocfilehash: 16f4bb946af4720a327a8755c6bf9187f3b71ba6
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 1a4931a24802290e0e7e207f32528a1192fd880f
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68570341"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73692063"
 ---
 # <a name="introduction-to-a-multitenant-saas-app-that-uses-the-database-per-tenant-pattern-with-sql-database"></a>Wprowadzenie do wielodostępnej aplikacji SaaS, która używa wzorca bazy danych na dzierżawcę z SQL Database
 
 Aplikacja Wingtip SaaS to przykładowa aplikacja wielodostępna. Aplikacja używa wzorca aplikacji SaaS bazy danych na dzierżawcę do obsługi wielu dzierżawców. Aplikacja zawiera funkcje Azure SQL Database, które umożliwiają SaaS scenariusze przy użyciu kilku wzorców SaaS projektowania i zarządzania. Aby szybko rozpocząć pracę, aplikacja Wingtip SaaS jest wdrażana w mniej niż pięć minut.
 
-Kod źródłowy aplikacji i skrypty zarządzania są dostępne w repozytorium GitHub [WingtipTicketsSaaS-DbPerTenant](https://github.com/Microsoft/WingtipTicketsSaaS-DbPerTenant) . Przed rozpoczęciem programu zapoznaj [](saas-tenancy-wingtip-app-guidance-tips.md) się z ogólnymi wskazówkami dotyczącymi kroków pobierania i odblokowywania skryptów zarządzania biletami Wingtip.
+Kod źródłowy aplikacji i skrypty zarządzania są dostępne w repozytorium GitHub [WingtipTicketsSaaS-DbPerTenant](https://github.com/Microsoft/WingtipTicketsSaaS-DbPerTenant) . Przed rozpoczęciem programu zapoznaj się z [ogólnymi wskazówkami](saas-tenancy-wingtip-app-guidance-tips.md) dotyczącymi kroków pobierania i odblokowywania skryptów zarządzania biletami Wingtip.
 
 ## <a name="application-architecture"></a>Architektura aplikacji
 
@@ -52,7 +52,7 @@ Po wdrożeniu aplikacji zapoznaj się z poniższymi samouczkami, które kompiluj
 |[Uruchamianie analizy dla wyodrębnionych danych dzierżawy](saas-tenancy-tenant-analytics.md) | Wyodrębnij dane dzierżawy do bazy danych analizy lub magazynu danych na potrzeby zapytań analitycznych w trybie offline. |
 
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 - [Ogólne wskazówki i porady dotyczące wdrażania i używania Wingtip biletów SaaS aplikacji](saas-tenancy-wingtip-app-guidance-tips.md)
 - [Wdrażanie aplikacji Wingtip SaaS](saas-dbpertenant-get-started-deploy.md)

@@ -1,5 +1,5 @@
 ---
-title: Konfiguracja zabezpieczeń Split-Merge | Microsoft Docs
+title: Konfiguracja zabezpieczeń Split-Merge
 description: Skonfiguruj certyfikaty x409 do szyfrowania za pomocą usługi Split/Merge na potrzeby elastycznego skalowania.
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: VanMSFT
 ms.author: vanto
 ms.reviewer: sstein
 ms.date: 12/18/2018
-ms.openlocfilehash: ada794807f980854c203b56874e452713ecef6ea
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 98d645fc76010d96bc016a63b4882979f3489698
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68568358"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73690141"
 ---
 # <a name="split-merge-security-configuration"></a>Konfiguracja zabezpieczeń Split-Merge
 
@@ -37,8 +37,8 @@ Jeśli te opcje nie są dostępne, można generować certyfikaty z podpisem **w�
 
 ## <a name="tools-to-generate-certificates"></a>Narzędzia do generowania certyfikatów
 
-* [makecert.exe](https://msdn.microsoft.com/library/bfsktky3.aspx)
-* [pvk2pfx.exe](https://msdn.microsoft.com/library/windows/hardware/ff550672.aspx)
+* [MakeCert. exe](https://msdn.microsoft.com/library/bfsktky3.aspx)
+* [Pvk2pfx. exe](https://msdn.microsoft.com/library/windows/hardware/ff550672.aspx)
 
 ### <a name="to-run-the-tools"></a>Aby uruchomić narzędzia
 
@@ -47,7 +47,7 @@ Jeśli te opcje nie są dostępne, można generować certyfikaty z podpisem **w�
     Jeśli jest zainstalowany, przejdź do:
   
         %ProgramFiles(x86)%\Windows Kits\x.y\bin\x86 
-* Pobierz WDK z [Windows 8.1: Pobierz zestawy i narzędzia](https://msdn.microsoft.com/windows/hardware/gg454513#drivers)
+* Pobierz pakiet WDK z [Windows 8.1: Pobierz zestawy i narzędzia](https://msdn.microsoft.com/windows/hardware/gg454513#drivers)
 
 ## <a name="to-configure-the-ssl-certificate"></a>Aby skonfigurować certyfikat SSL
 
@@ -120,7 +120,7 @@ Konfiguracja domyślna odrzuca cały dostęp do punktu końcowego HTTP. Jest to 
 Konfiguracja domyślna zezwala na dostęp do punktu końcowego HTTPS. To ustawienie może być ograniczone.
 
 ### <a name="changing-the-configuration"></a>Zmiana konfiguracji
-Grupa reguł kontroli dostępu, które dotyczą i punkt końcowy są konfigurowane w  **\<sekcji EndpointAcls >** w **pliku konfiguracji usługi**.
+Grupa reguł kontroli dostępu, które dotyczą i punkt końcowy są konfigurowane w sekcji **\<EndpointAcls >** w **pliku konfiguracji usługi**.
 
 ```xml
 <EndpointAcls>
@@ -129,7 +129,7 @@ Grupa reguł kontroli dostępu, które dotyczą i punkt końcowy są konfigurowa
 </EndpointAcls>
 ```
 
-Reguły w grupie kontroli dostępu są konfigurowane w \<sekcji AccessControl Name = "" > pliku konfiguracji usługi. 
+Reguły w grupie kontroli dostępu są konfigurowane w \<AccessControl Name = "" > pliku konfiguracji usługi. 
 
 Ten format jest wyjaśniony w temacie Network Access Control lists.
 Na przykład, aby zezwalać tylko na adresy IP w zakresie 100.100.0.0 na 100.100.255.255 dostępu do punktu końcowego HTTPS, reguły będą wyglądać następująco:
@@ -420,7 +420,7 @@ Wykonaj następujące kroki:
 1. Uruchom program MMC. exe.
 2. Plik-> Dodaj/Usuń przystawkę...
 3. Wybierz pozycję **Certyfikaty**.
-4. Kliknij przycisk **Dodaj**.
+4. Kliknij pozycję **Dodaj**.
 5. Wybierz lokalizację magazynu certyfikatów.
 6. Kliknij przycisk **Zakończ**.
 7. Kliknij przycisk **OK**.
@@ -433,7 +433,7 @@ Wykonaj następujące kroki:
 W **Kreatorze eksportu certyfikatów**:
 
 1. Kliknij przycisk **Dalej**.
-2. Wybierz opcję **tak**, a następnie wyeksportuj **klucz prywatny**.
+2. Wybierz opcję **tak**, a następnie **wyeksportuj klucz prywatny**.
 3. Kliknij przycisk **Dalej**.
 4. Wybierz żądany format pliku wyjściowego.
 5. Sprawdź odpowiednie opcje.
@@ -465,7 +465,7 @@ W Kreatorze importu certyfikatów:
    * Jeśli wybrano magazyn zaufanych głównych urzędów certyfikacji, kliknij przycisk **tak**.
 9. Kliknij przycisk **OK** we wszystkich oknach okna dialogowego.
 
-## <a name="upload-certificate"></a>Przekaż certyfikat
+## <a name="upload-certificate"></a>Przekazywanie certyfikatu
 W witrynie [Azure Portal](https://portal.azure.com/)
 
 1. Wybierz **Cloud Services**.

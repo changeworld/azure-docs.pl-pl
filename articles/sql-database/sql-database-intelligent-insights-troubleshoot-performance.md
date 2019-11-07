@@ -1,5 +1,5 @@
 ---
-title: Rozwiązywanie problemów z wydajnością Azure SQL Database przy użyciu Intelligent Insights | Microsoft Docs
+title: Rozwiązywanie problemów z wydajnością Azure SQL Database przy użyciu Intelligent Insights
 description: Intelligent Insights pomaga rozwiązywać problemy Azure SQL Database wydajności.
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: danimir
 ms.author: danil
 ms.reviewer: jrasnik, carlrab
 ms.date: 01/25/2019
-ms.openlocfilehash: f884b39db92f44f7cff938e0ac4b9c2e22dc36cb
-ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
+ms.openlocfilehash: fef1ed386dbf3acccc09b9bba743b6b33492da0e
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71262194"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73689716"
 ---
 # <a name="troubleshoot-azure-sql-database-performance-issues-with-intelligent-insights"></a>Rozwiązywanie problemów z wydajnością Azure SQL Database przy użyciu Intelligent Insights
 
@@ -108,9 +108,9 @@ Można zoptymalizować lub usunąć zapytania związane z urzędnikami z najwię
 
 Możesz również zmniejszyć obciążenie, optymalizując lub rozpowszechniając je w wielu bazach danych. Można też rozesłać obciążenie między wieloma bazami danych. Jeśli te rozwiązania nie są możliwe, należy rozważyć zwiększenie warstwy cenowej subskrypcji usługi SQL Database, aby zwiększyć ilość zasobów pamięci dostępnej dla bazy danych.
 
-Dodatkowe sugestie dotyczące rozwiązywania problemów [można znaleźć w temacie granty pamięci Meditation: Tajemniczymi SQL Server pamięci użytkownika z wieloma nazwami](https://blogs.msdn.microsoft.com/sqlmeditation/20../../memory-meditation-the-mysterious-sql-server-memory-consumer-with-many-names/).
+Aby uzyskać dodatkowe sugestie dotyczące rozwiązywania problemów, zobacz część [Grants Meditation: The tajemniczymi SQL Server Memory Consumer z wieloma nazwami](https://blogs.msdn.microsoft.com/sqlmeditation/20../../memory-meditation-the-mysterious-sql-server-memory-consumer-with-many-names/).
 
-## <a name="locking"></a>Blokowanie
+## <a name="locking"></a>Blokowan
 
 ### <a name="what-is-happening"></a>Co się dzieje
 
@@ -226,7 +226,7 @@ Ten wykryty wzorzec wydajności wskazuje warunek wydajności bazy danych, w któ
 
 ### <a name="troubleshooting"></a>Rozwiązywanie problemów
 
-Szczegóły rywalizacji o zawartość bazy danych w dzienniku diagnostyki. Możesz użyć informacji jako punktu wyjścia do rozwiązywania problemów. Istnieją dwie rzeczy, które można wykonywać, aby uniknąć tego rodzaju rywalizacji i zwiększyć przepływność całego obciążenia: Można zatrzymać korzystanie z tabel tymczasowych. Można również użyć tabel zoptymalizowanych pod kątem pamięci. 
+Szczegóły rywalizacji o zawartość bazy danych w dzienniku diagnostyki. Możesz użyć informacji jako punktu wyjścia do rozwiązywania problemów. Istnieją dwie rzeczy, które można wykonać, aby uniknąć tego rodzaju rywalizacji i zwiększyć przepływność całego obciążenia: można zatrzymać korzystanie z tabel tymczasowych. Można również użyć tabel zoptymalizowanych pod kątem pamięci. 
 
 Aby uzyskać więcej informacji, zobacz [wprowadzenie do tabel zoptymalizowanych pod kątem pamięci](https://docs.microsoft.com/sql/relational-databases/in-memory-oltp/introduction-to-memory-optimized-tables). 
 
@@ -280,7 +280,7 @@ Aby uzyskać więcej informacji, zobacz [Informacje o tym, jak SQL Server uniemo
 
 Ten wykrywalny wzorzec wydajności wskazuje stan, w którym zmiana w konfiguracji z zakresem bazy danych powoduje, że regresja wydajności wykryto w porównaniu z siódmym 7-dniowym zachowaniem obciążenia bazy danych. Ten wzorzec oznacza, że Ostatnia zmiana w konfiguracji z zakresem bazy danych nie ma wpływu na wydajność bazy danych.
 
-Zmiany konfiguracji w zakresie bazy danych można ustawić dla każdej pojedynczej bazy danych. Ta konfiguracja jest używana na podstawie wielkości liter w celu zoptymalizowania indywidualnej wydajności bazy danych. Dla każdej pojedynczej bazy danych można skonfigurować następujące opcje: MAXDOP, LEGACY_CARDINALITY_ESTIMATION, PARAMETER_SNIFFING, QUERY_OPTIMIZER_HOTFIXES i CLEAR PROCEDURE_CACHE.
+Zmiany konfiguracji w zakresie bazy danych można ustawić dla każdej pojedynczej bazy danych. Ta konfiguracja jest używana na podstawie wielkości liter w celu zoptymalizowania indywidualnej wydajności bazy danych. Następujące opcje można skonfigurować dla każdej pojedynczej bazy danych: MAXDOP, LEGACY_CARDINALITY_ESTIMATION, PARAMETER_SNIFFING, QUERY_OPTIMIZER_HOTFIXES i CLEAR PROCEDURE_CACHE.
 
 ### <a name="troubleshooting"></a>Rozwiązywanie problemów
 
@@ -320,7 +320,7 @@ W przypadku zredukowania warstwy cenowej i w związku z tym DTU są dostępne dl
 
 Uzyskaj dostęp do Intelligent Insights za pośrednictwem Azure Portal, przechodząc do Azure SQL Analytics. Spróbuj zlokalizować alert wydajności dla ruchu przychodzącego, a następnie wybierz go. Określ, co dzieje się na stronie wykrywania. Obserwuj podaną analizę głównej przyczyny problemu, tekstu zapytania, trendów czasu zapytania i ewolucji incydentu. Podjęto próbę rozwiązania problemu, korzystając z zalecenia Intelligent Insights w celu ograniczenia problemu z wydajnością. 
 
-[![Wykres przepływu rozwiązywania problemów](./media/sql-database-intelligent-insights/intelligent-insights-troubleshooting-flowchart.png)](https://github.com/Microsoft/sql-server-samples/blob/master/samples/features/intelligent-insight/Troubleshoot%20Azure%20SQL%20Database%20performance%20issues%20using%20Intelligent%20Insight.pdf)
+[Wykres przepływu ![rozwiązywania problemów](./media/sql-database-intelligent-insights/intelligent-insights-troubleshooting-flowchart.png)](https://github.com/Microsoft/sql-server-samples/blob/master/samples/features/intelligent-insight/Troubleshoot%20Azure%20SQL%20Database%20performance%20issues%20using%20Intelligent%20Insight.pdf)
 
 > [!TIP]
 > Wybierz schemat blokowy, aby pobrać wersję pliku PDF.

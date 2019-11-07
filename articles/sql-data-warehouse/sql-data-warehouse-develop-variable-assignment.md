@@ -1,5 +1,5 @@
 ---
-title: Przypisywanie zmiennych w Azure SQL Data Warehouse | Microsoft Docs
+title: Przypisz zmienne
 description: Wskazówki dotyczące przypisywania zmiennych T-SQL w Azure SQL Data Warehouse tworzenia rozwiązań.
 services: sql-data-warehouse
 author: XiaoyuMSFT
@@ -10,12 +10,13 @@ ms.subservice: development
 ms.date: 04/17/2018
 ms.author: xiaoyul
 ms.reviewer: igorstan
-ms.openlocfilehash: 6c943478f3904aac17a572f012f2b2b69ffa2223
-ms.sourcegitcommit: 75a56915dce1c538dc7a921beb4a5305e79d3c7a
+ms.custom: seo-lt-2019
+ms.openlocfilehash: 1ae5285a8d1cf6fa391c082d0196b213e6b6a9c5
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/24/2019
-ms.locfileid: "68479558"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73692760"
 ---
 # <a name="assigning-variables-in-azure-sql-data-warehouse"></a>Przypisywanie zmiennych w Azure SQL Data Warehouse
 
@@ -23,7 +24,7 @@ Wskazówki dotyczące przypisywania zmiennych T-SQL w Azure SQL Data Warehouse t
 
 ## <a name="setting-variables-with-declare"></a>Ustawianie zmiennych przy użyciu deklaracji DECLARE
 
-Zmienne w SQL Data Warehouse są ustawiane przy `DECLARE` użyciu instrukcji `SET` lub instrukcji. Inicjowanie zmiennych przy użyciu deklaracji jest jednym z najbardziej elastycznych metod ustawiania wartości zmiennej w SQL Data Warehouse.
+Zmienne w SQL Data Warehouse są ustawiane przy użyciu instrukcji `DECLARE` lub instrukcji `SET`. Inicjowanie zmiennych przy użyciu deklaracji jest jednym z najbardziej elastycznych metod ustawiania wartości zmiennej w SQL Data Warehouse.
 
 ```sql
 DECLARE @v  int = 0
@@ -38,7 +39,7 @@ DECLARE @v  INT = (SELECT TOP 1 c_customer_sk FROM Customer where c_last_name = 
 ;
 ```
 
-Nie można zainicjować i użyć zmiennej w tej samej instrukcji DECLARE. W celu zilustrowania punktu Poniższy przykład jest **niedozwolony,** ponieważ @p1 jest zainicjowany i używany w tej samej instrukcji DECLARE. Poniższy przykład zawiera błąd.
+Nie można zainicjować i użyć zmiennej w tej samej instrukcji DECLARE. W celu zilustrowania punktu Poniższy przykład jest **niedozwolony,** ponieważ @p1 jest inicjowany i używany w tej samej instrukcji DECLARE. Poniższy przykład zawiera błąd.
 
 ```sql
 DECLARE @p1 int = 0

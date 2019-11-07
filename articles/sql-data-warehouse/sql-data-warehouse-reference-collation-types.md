@@ -1,5 +1,5 @@
 ---
-title: Sortowanie — Azure SQL Data Warehouse | Microsoft Docs
+title: Sortowanie
 description: Typy sortowania obsługiwane w Azure SQL Data Warehouse.
 services: sql-data-warehouse
 author: antvgski
@@ -9,12 +9,13 @@ ms.topic: conceptual
 ms.date: 07/10/2019
 ms.author: anvang
 ms.reviewer: jrasnick
-ms.openlocfilehash: 598ad4c103035ec2d94015e1f8e12194d1b723fc
-ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
+ms.custom: seo-lt-2019
+ms.openlocfilehash: f05e54a3dd4b69fff2bc7d122391d145b222b295
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68935094"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73692549"
 ---
 # <a name="database-collation-support-for-azure-sql-data-warehouse"></a>Obsługa sortowania bazy danych dla Azure SQL Data Warehouse
 
@@ -99,5 +100,5 @@ Na przykład jeśli chcesz zmienić domyślne sortowanie na uwzględniające wie
 *   SQL_EBCDIC277_2_CP1_CS_AS
 
 ## <a name="checking-the-current-collation"></a>Sprawdzanie bieżącego sortowania
-Aby sprawdzić bieżące sortowanie bazy danych, można uruchomić następujące fragmenty kodu T-SQL: Wybierz DATABASEPROPERTYEX (DB_NAME (), "Collation") jako sortowanie; Po przekazaniu elementu "Collation" jako parametru właściwości funkcja DatabasePropertyEx zwraca bieżące sortowanie dla określonej bazy danych. Więcej informacji na temat funkcji DatabasePropertyEx można znaleźć w witrynie MSDN.
+Aby sprawdzić bieżące sortowanie bazy danych, można uruchomić następujące fragmenty kodu T-SQL: SELECT DATABASEPROPERTYEX (DB_NAME (), "Collation") jako sortowanie; Po przekazaniu elementu "Collation" jako parametru właściwości funkcja DatabasePropertyEx zwraca bieżące sortowanie dla określonej bazy danych. Więcej informacji na temat funkcji DatabasePropertyEx można znaleźć w witrynie MSDN.
 

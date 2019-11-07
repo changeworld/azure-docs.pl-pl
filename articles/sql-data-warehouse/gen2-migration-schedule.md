@@ -1,5 +1,5 @@
 ---
-title: Migruj istniejące Azure SQL Data Warehouse do Gen2 | Microsoft Docs
+title: Migrowanie magazynu danych do Gen2
 description: Instrukcje dotyczące migrowania istniejącego magazynu danych do Gen2 i harmonogramu migracji według regionów.
 services: sql-data-warehouse
 author: mlee3gsd
@@ -10,12 +10,13 @@ ms.assetid: 04b05dea-c066-44a0-9751-0774eb84c689
 ms.service: sql-data-warehouse
 ms.topic: article
 ms.date: 07/22/2019
-ms.openlocfilehash: ac478a7b75bbac0c5e7f59cbe565ec2bbcd643ce
-ms.sourcegitcommit: 3e7646d60e0f3d68e4eff246b3c17711fb41eeda
+ms.custom: seo-lt-2019
+ms.openlocfilehash: 888f50d645c9b3babf95335e434db65423108ccb
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70900323"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73693041"
 ---
 # <a name="upgrade-your-data-warehouse-to-gen2"></a>Uaktualnij magazyn danych do Gen2
 
@@ -28,45 +29,45 @@ Firma Microsoft pomaga w zwiększeniu kosztów wejścia/wyjścia magazynu danych
 
 Poniższa tabela podsumowuje według regionu, gdy dolna warstwa obliczeniowa Gen2 będzie dostępna i kiedy rozpocznie się automatyczne uaktualnienia. Daty mogą ulec zmianie. Sprawdź ponownie, aby zobaczyć, kiedy region będzie dostępny.
 
-\*wskazuje, że określony harmonogram dla regionu jest obecnie niedostępny.
+\* wskazuje, że określony harmonogram dla regionu jest obecnie niedostępny.
 
 | **Region** | **Dolna Gen2 dostępna** | **Rozpoczęcie uaktualniania automatycznego** |
 |:--- |:--- |:--- |
-| Australia Wschodnia |Dostępne |Ukończ |
-| Australia Południowo-Wschodnia |Dostępne |Ukończ |
-| Brazylia Południowa |Dostępne |Ukończ |
-| Kanada Środkowa |Dostępne |Ukończ |
+| Australia Wschodnia |Dostępne |Zakończ |
+| Australia Południowo-Wschodnia |Dostępne |Zakończ |
+| Brazylia Południowa |Dostępne |Zakończ |
+| Kanada Środkowa |Dostępne |Zakończ |
 | Kanada Wschodnia |1 czerwca 2020 |1 lipca 2020 |
-| Środkowe stany USA |Dostępne |Ukończ |
+| Środkowe stany USA |Dostępne |Zakończ |
 | Chiny Wschodnie |\* |\* |
-| Chiny Wschodnie 2 |Dostępne |Ukończ |
+| Chiny Wschodnie 2 |Dostępne |Zakończ |
 | Chiny Północne |\* |\* |
-| Chiny Północne 2 |Dostępne |Ukończ |
-| Azja Wschodnia |Dostępne |Ukończ |
-| East US |Dostępne |Ukończ |
-| Wschodnie stany USA 2 |Dostępne |Ukończ |
+| Chiny Północne 2 |Dostępne |Zakończ |
+| Azja Wschodnia |Dostępne |Zakończ |
+| Wschodnie stany USA |Dostępne |Zakończ |
+| Wschodnie stany USA 2 |Dostępne |Zakończ |
 | Francja Środkowa |Dostępne |W toku |
 | Niemcy Środkowe |\* |\* |
 | Niemcy Środkowo-Zachodnie |1 września 2019|1 października 2019 |
-| Indie Środkowe |Dostępne |Ukończ |
-| Indie Południowe |Dostępne |Ukończ |
+| Indie Środkowe |Dostępne |Zakończ |
+| Indie Południowe |Dostępne |Zakończ |
 | Indie Zachodnie |1 lipca 2019 |W toku |
-| Japonia Wschodnia |Dostępne |Ukończ |
-| Japonia Zachodnia |Dostępne |Ukończ |
-| Korea Środkowa |Dostępne |Ukończ |
-| Korea Południowa |Dostępne |Ukończ |
-| Środkowo-północne stany USA |Dostępne |Ukończ |
-| Europa Północna |Dostępne |Ukończ |
-| Północna Republika Południowej Afryki |12 lipca 2019 |Ukończ |
-| Środkowo-południowe stany USA |Dostępne |Ukończ |
-| Azja Południowo-Wschodnia |Dostępne |Ukończ |
-| Północne Zjednoczone Emiraty Arabskie |20 lipca 2019 |Ukończ |
+| Japonia Wschodnia |Dostępne |Zakończ |
+| Japonia Zachodnia |Dostępne |Zakończ |
+| Korea Środkowa |Dostępne |Zakończ |
+| Korea Południowa |Dostępne |Zakończ |
+| Środkowo-północne stany USA |Dostępne |Zakończ |
+| Europa Północna |Dostępne |Zakończ |
+| Północna Republika Południowej Afryki |12 lipca 2019 |Zakończ |
+| Środkowo-południowe stany USA |Dostępne |Zakończ |
+| Azja Południowo-Wschodnia |Dostępne |Zakończ |
+| Północne Zjednoczone Emiraty Arabskie |20 lipca 2019 |Zakończ |
 | Południowe Zjednoczone Królestwo |Dostępne |W toku |
 | Zachodnie Zjednoczone Królestwo |Dostępne |W toku |
 | Środkowo-zachodnie stany USA |1 listopada 2019 |1 grudnia 2019|
-| Europa Zachodnia |Dostępne |Ukończ |
-| Zachodnie stany USA |Dostępne |Ukończ |
-| Zachodnie stany USA 2 |Dostępne |Ukończ |
+| Europa Zachodnia |Dostępne |Zakończ |
+| Zachodnie stany USA |Dostępne |Zakończ |
+| Zachodnie stany USA 2 |Dostępne |Zakończ |
 
 ## <a name="automatic-upgrade-process"></a>Proces automatycznego uaktualniania
 
@@ -88,8 +89,8 @@ Podczas przeprowadzania samodzielnego uaktualniania dostępne są dwie opcje.  M
 - [Uaktualnij w miejscu](upgrade-to-latest-generation.md) — ta opcja spowoduje uaktualnienie istniejącego magazynu danych Gen1 do Gen2. Proces uaktualniania obejmuje krótki spadek łączności (około 5 minut), co spowoduje ponowne uruchomienie magazynu danych.  Po ponownym uruchomieniu magazynu danych będzie on w pełni dostępny do użycia. Jeśli wystąpią problemy podczas uaktualniania, Otwórz [żądanie obsługi](https://docs.microsoft.com/azure/sql-data-warehouse/sql-data-warehouse-get-started-create-support-ticket) i odwołuje się do "Gen2 upgrade" jako możliwej przyczyny.
 - [Uaktualnienie z punktu przywracania](sql-data-warehouse-restore.md) — Utwórz punkt przywracania zdefiniowany przez użytkownika w bieżącym magazynie danych Gen1, a następnie Przywróć bezpośrednio do wystąpienia Gen2. Istniejący magazyn danych Gen1 pozostanie na miejscu. Po zakończeniu przywracania magazyn danych Gen2 będzie w pełni dostępny do użycia.  Po uruchomieniu wszystkich procesów testowania i walidacji w przywracanym wystąpieniu Gen2 można usunąć oryginalne wystąpienie Gen1.
 
-   - Krok 1: W Azure Portal [Utwórz punkt przywracania zdefiniowany przez użytkownika](sql-data-warehouse-restore-active-paused-dw.md#restore-an-existing-data-warehouse-through-the-azure-portal).
-   - Krok 2: Podczas przywracania z punktu przywracania zdefiniowanego przez użytkownika Ustaw poziom wydajności na preferowaną warstwę Gen2.
+   - Krok 1. z Azure Portal [Utwórz punkt przywracania zdefiniowany przez użytkownika](sql-data-warehouse-restore-active-paused-dw.md#restore-an-existing-data-warehouse-through-the-azure-portal).
+   - Krok 2. podczas przywracania z punktu przywracania zdefiniowanego przez użytkownika Ustaw poziom wydajności na preferowaną warstwę Gen2.
 
 Może nastąpić okresowe pogorszenie wydajności, gdy w tle będzie odbywać się uaktualnianie plików danych. Łączny okres obniżonej wydajności zależy od rozmiaru plików danych.
 
@@ -104,49 +105,49 @@ Aby uzyskać więcej informacji, zobacz [uaktualnianie do Gen2](upgrade-to-lates
 
 ## <a name="migration-frequently-asked-questions"></a>Często zadawane pytania dotyczące migracji
 
-**Pyt.: Czy Gen2 koszt jest taki sam jak Gen1?**
+**P: czy Gen2 koszt jest taki sam jak Gen1?**
 
-- Odp.: Tak.
+- Odp. Tak.
 
-**Pyt.: Jak uaktualnienia będą mieć wpływ na moje skrypty automatyzacji?**
+**P: w jaki sposób uaktualnienia będą mieć wpływ na moje skrypty automatyzacji?**
 
-- Odp.: Każdy skrypt automatyzacji, który odwołuje się do celu poziomu usługi, powinien zostać zmieniony w taki sposób, aby odpowiadał Gen2 równoważnemu.  Szczegóły można znaleźć [tutaj](upgrade-to-latest-generation.md#sign-in-to-the-azure-portal).
+- Odp.: każdy skrypt automatyzacji, który odwołuje się do celu poziomu usługi, powinien zostać zmieniony w taki sposób, aby odpowiadał Gen2 równoważnej.  Szczegóły można znaleźć [tutaj](upgrade-to-latest-generation.md#sign-in-to-the-azure-portal).
 
-**Pyt.: Jak długo trwa samodzielne uaktualnianie?**
+**P: jak długo trwa samodzielne uaktualnianie?**
 
-- Odp.: Uaktualnienie można przeprowadzić w miejscu lub uaktualnieniu z punktu przywracania.  
+- Odp.: można uaktualnić miejsce lub uaktualnić z punktu przywracania.  
    - Uaktualnienie w miejscu spowoduje chwilowe wstrzymanie i wznowienie działania hurtowni danych.  Proces w tle będzie kontynuowany, gdy magazyn danych jest w trybie online.  
    - Trwa to dłużej, Jeśli uaktualniasz punkt przywracania, ponieważ uaktualnienie przejdzie przez proces pełnego przywracania.
 
-**Pyt.: Jak długo trwa Autouaktualnianie?**
+**P: jak długo trwa Autouaktualnianie?**
 
-- Odp.: Rzeczywisty czas przestoju uaktualnienia to tylko czas potrzebny na wstrzymywanie i wznawianie usługi, czyli czas z przedziału od 5 do 10 minut. Po krótkim czasie przestoju proces w tle uruchomi migrację magazynu. Czas działania procesu w tle zależy od rozmiaru magazynu danych.
+- Odp.: rzeczywisty czas przestoju w przypadku uaktualnienia to przedział czasu potrzebny do wstrzymania i wznowienia działania usługi, która wynosi od 5 do 10 minut. Po krótkim czasie przestoju proces w tle uruchomi migrację magazynu. Czas działania procesu w tle zależy od rozmiaru magazynu danych.
 
-**Pyt.: Kiedy zostanie wykonane automatyczne uaktualnienie?**
+**P: Kiedy to automatyczne uaktualnienie zostanie wykonane?**
 
-- Odp.: W harmonogramie konserwacji. Korzystanie z wybranego harmonogramu konserwacji pozwoli zminimalizować zakłócenia Twojej firmy.
+- Odp.: w harmonogramie konserwacji. Korzystanie z wybranego harmonogramu konserwacji pozwoli zminimalizować zakłócenia Twojej firmy.
 
-**Pyt.: Co należy zrobić, jeśli mój proces uaktualniania w tle wydaje się być zablokowany?**
+**P: co należy zrobić, jeśli mój proces uaktualniania w tle wydaje się być zablokowany?**
 
- - Odp.: Rozpocznij ponowne indeksowanie tabel magazynu kolumn. Należy pamiętać, że ponowne indeksowanie tabeli będzie w trybie offline podczas tej operacji.
+ - Odp.: należy uruchomić ponowne indeksowanie tabel magazynu kolumn. Należy pamiętać, że ponowne indeksowanie tabeli będzie w trybie offline podczas tej operacji.
 
-**Pyt.: Co jeśli Gen2 nie ma celu poziomu usług, mam na Gen1?**
+**P: co, jeśli Gen2 nie ma celu poziomu usług, mam na Gen1?**
 - Odp.: Jeśli używasz wartości DW600 lub DW1200 na Gen1, zaleca się użycie odpowiednio DW500c lub DW1000c, ponieważ Gen2 oferuje więcej pamięci, zasobów i wyższą wydajność niż Gen1.
 
-**Pyt.: Czy można wyłączyć geograficzną kopię zapasową?**
-- Odp.: Nie. Geograficzna kopia zapasowa to funkcja korporacyjna, która pozwala zachować dostępność magazynu danych w przypadku, gdy region staną się niedostępne. Otwórz [żądanie pomocy technicznej](sql-data-warehouse-get-started-create-support-ticket.md) , jeśli chcesz uzyskać więcej problemów.
+**P: Czy można wyłączyć geograficzną kopię zapasową?**
+- Odp.: nie. Geograficzna kopia zapasowa to funkcja korporacyjna, która pozwala zachować dostępność magazynu danych w przypadku, gdy region staną się niedostępne. Otwórz [żądanie pomocy technicznej](sql-data-warehouse-get-started-create-support-ticket.md) , jeśli chcesz uzyskać więcej problemów.
 
-**Pyt.: Czy istnieje różnica w składni T-SQL między Gen1 i Gen2?**
+**P: czy istnieje różnica w składni T-SQL między Gen1 i Gen2?**
 
-- Odp.: Nie wprowadzono zmian w składni języka T-SQL od Gen1 do Gen2.
+- Odp.: nie wprowadzono zmian w składni języka T-SQL od Gen1 do Gen2.
 
-**Pyt.: Czy usługa Gen2 obsługuje okna obsługi?**
+**P: czy Gen2 obsługuje okna obsługi?**
 
-- Odp.: Tak.
+- Odp. Tak.
 
-**Pyt.: Czy po uaktualnieniu mojego regionu będzie można utworzyć nowe wystąpienie Gen1?**
+**P: czy będzie można utworzyć nowe wystąpienie Gen1 po uaktualnieniu mojego regionu?**
 
-- Odp.: Nie. Po uaktualnieniu regionu tworzenie nowych wystąpień Gen1 zostanie wyłączone.
+- Odp.: nie. Po uaktualnieniu regionu tworzenie nowych wystąpień Gen1 zostanie wyłączone.
 
 ## <a name="next-steps"></a>Następne kroki
 

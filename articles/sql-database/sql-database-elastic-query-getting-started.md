@@ -1,5 +1,5 @@
 ---
-title: Raportowanie w skalowanych bazach danych w chmurze (partycjonowanie poziome) | Microsoft Docs
+title: Raportowanie w skalowanych bazach danych w chmurze (partycjonowanie poziome)
 description: Zapytania bazy danych między bazami danych umożliwiają raportowanie wielu baz danych.
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: MladjoA
 ms.author: mlandzic
 ms.reviewer: sstein
 ms.date: 10/10/2019
-ms.openlocfilehash: 4e896fae0d8459629c58dfd0bbdfbb32b90b1cac
-ms.sourcegitcommit: b4665f444dcafccd74415fb6cc3d3b65746a1a31
+ms.openlocfilehash: 1adc7757edc6d5abc50ed31ea2227711db60fcfe
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/11/2019
-ms.locfileid: "72264236"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73690419"
 ---
 # <a name="report-across-scaled-out-cloud-databases-preview"></a>Raportowanie w skalowanych bazach danych w chmurze (wersja zapoznawcza)
 
@@ -123,7 +123,7 @@ Wszystkie wiersze z tabeli **Customers** , przechowywane w różnych fragmentów
 
 Teraz można korzystać z zaawansowanych funkcji wizualizacji danych programu Excel. Możesz użyć parametrów połączenia z nazwą serwera, nazwą bazy danych i poświadczeniami, aby połączyć narzędzia do analizy biznesowej i danych z bazą danych zapytań elastycznych. Upewnij się, że SQL Server jest obsługiwane jako źródło danych dla narzędzia. Można odwołać się do bazy danych zapytań elastycznych i tabel zewnętrznych, podobnie jak każda inna baza danych SQL Server i SQL Server tabele, z którymi można nawiązać połączenie za pomocą narzędzia.
 
-### <a name="cost"></a>Koszt
+### <a name="cost"></a>Koszty
 Za korzystanie z funkcji zapytania Elastic Database nie ma dodatkowych opłat.
 
 Aby uzyskać informacje o cenach, zobacz [szczegóły cennika SQL Database](https://azure.microsoft.com/pricing/details/sql-database/).
@@ -134,7 +134,7 @@ Aby uzyskać informacje o cenach, zobacz [szczegóły cennika SQL Database](http
 * Aby zapoznać się z pionowym samouczkiem partycjonowania, zobacz [Rozpoczynanie pracy z kwerendą między bazami danych (partycjonowanie pionowe)](sql-database-elastic-query-getting-started-vertical.md).
 * Aby poznać składnię i przykładowe zapytania dotyczące danych partycjonowanych pionowo, zobacz [wykonywanie zapytań dotyczących partycjonowanych danych w pionie.](sql-database-elastic-query-vertical-partitioning.md)
 * Aby poznać składnię i przykładowe zapytania dla danych z podziałem na partycje, zobacz [wykonywanie zapytań o dane partycjonowane w poziomie.](sql-database-elastic-query-horizontal-partitioning.md)
-* Zobacz [SP @ no__t-1execute \_remote](https://msdn.microsoft.com/library/mt703714) dla procedury składowanej, która wykonuje instrukcję języka Transact-SQL w ramach pojedynczego Azure SQL Database zdalnego lub zestawu baz danych służących jako fragmentów w poziomym schemacie partycjonowania.
+* Zobacz [sp\_wykonaj \_zdalnego](https://msdn.microsoft.com/library/mt703714) dla procedury składowanej, która wykonuje instrukcję języka Transact-SQL w ramach jednej zdalnej Azure SQL Database lub zestawu baz danych służących jako fragmentów w poziomym schemacie partycjonowania.
 
 
 <!--Image references-->

@@ -1,5 +1,5 @@
 ---
-title: Odzyskiwanie po awarii dla aplikacji SaaS przy użyciu replikacji geograficznej Azure SQL Database | Microsoft Docs
+title: Odzyskiwanie po awarii dla aplikacji SaaS przy użyciu replikacji geograficznej Azure SQL Database
 description: Dowiedz się, jak za pomocą replik geograficznych Azure SQL Database odzyskać wielodostępną aplikację SaaS w przypadku awarii
 services: sql-database
 ms.service: sql-database
@@ -11,23 +11,23 @@ author: AyoOlubeko
 ms.author: craigg
 ms.reviewer: sstein
 ms.date: 01/25/2019
-ms.openlocfilehash: bebbb3d053db37a9716230dfbb14372696dd4936
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: f6f8ed39de36ce38b0bc4b879980a054bf480d0e
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68570522"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73692228"
 ---
 # <a name="disaster-recovery-for-a-multi-tenant-saas-application-using-database-geo-replication"></a>Odzyskiwanie po awarii dla wielodostępnej aplikacji SaaS przy użyciu replikacji geograficznej bazy danych
 
-W tym samouczku przedstawiono scenariusz pełnego odzyskiwania po awarii dla wielodostępnej aplikacji SaaS wdrożonej przy użyciu modelu bazy danych na dzierżawcę. Aby ochronić aplikację przed awarią, należy użyć [_replikacji_](sql-database-geo-replication-overview.md) geograficznej w celu utworzenia replik dla katalogu i baz danych dzierżaw w alternatywnym regionie odzyskiwania. Jeśli wystąpi awaria, możesz szybko przejść do trybu failover z tymi replikami, aby wznowić normalne operacje biznesowe. W przypadku przejścia w tryb failover bazy danych w pierwotnym regionie stają się replikami pomocniczymi baz danych w regionie odzyskiwania. Po powrocie tych replik do trybu online automatycznie przechwytuje do stanu baz danych w regionie odzyskiwania. Po rozwiązaniu awarii nastąpiło powrót po awarii do baz danych w pierwotnym regionie produkcyjnym.
+W tym samouczku przedstawiono scenariusz pełnego odzyskiwania po awarii dla wielodostępnej aplikacji SaaS wdrożonej przy użyciu modelu bazy danych na dzierżawcę. Aby ochronić aplikację przed awarią, należy użyć [_replikacji geograficznej_](sql-database-geo-replication-overview.md) w celu utworzenia replik dla katalogu i baz danych dzierżaw w alternatywnym regionie odzyskiwania. Jeśli wystąpi awaria, możesz szybko przejść do trybu failover z tymi replikami, aby wznowić normalne operacje biznesowe. W przypadku przejścia w tryb failover bazy danych w pierwotnym regionie stają się replikami pomocniczymi baz danych w regionie odzyskiwania. Po powrocie tych replik do trybu online automatycznie przechwytuje do stanu baz danych w regionie odzyskiwania. Po rozwiązaniu awarii nastąpiło powrót po awarii do baz danych w pierwotnym regionie produkcyjnym.
 
 W tym samouczku przedstawiono przepływy pracy trybu failover i powrotu po awarii. Omawiane tematy:
 > [!div class="checklist"]
 > 
 > * Synchronizuj informacje o konfiguracji bazy danych i elastycznej puli do katalogu dzierżawy
 > * Konfigurowanie środowiska odzyskiwania w innym regionie zawierającym aplikacje, serwery i pule
-> * Replikowanie katalogów i baz danych dzierżawy do regionu odzyskiwania przy użyciu _replikacji_ geograficznej
+> * Replikowanie katalogów i baz danych dzierżawy do regionu odzyskiwania przy użyciu _replikacji geograficznej_
 > * Przełączenie w tryb failover aplikacji i katalogu oraz baz danych dzierżawy do regionu odzyskiwania 
 > * Później w przypadku przełączenia w tryb failover aplikacji, katalogu i baz danych dzierżawy do oryginalnego regionu po rozwiązaniu awarii
 > * Aktualizowanie katalogu w miarę przełączenia w tryb failover każdej bazy danych dzierżawy w celu śledzenia podstawowej lokalizacji bazy danych każdej dzierżawy
@@ -51,7 +51,7 @@ Plan odzyskiwania po awarii oparty na replikacji geograficznej obejmuje trzy ró
 
 Wszystkie części muszą być traktowane ostrożnie, szczególnie w przypadku działania na dużą skalę. Ogólnie, plan musi mieć kilka celów:
 
-* Konfiguracja
+* Konfigurowanie
     * Ustanów i obsługuj środowisko obrazu dublowanego w regionie odzyskiwania. Tworzenie pul elastycznych i replikowanie wszystkich baz danych w tym środowisku odzyskiwania rezerwuje pojemność w regionie odzyskiwania. Utrzymywanie tego środowiska obejmuje replikowanie nowych baz danych dzierżawy w miarę ich udostępniania.  
 * Odzyskiwanie
     * W przypadku, gdy środowisko odzyskiwania skalowane w dół służy do minimalizowania codziennych kosztów, pule i bazy danych muszą być skalowane w celu uzyskania pełnej pojemności operacyjnej w regionie odzyskiwania
@@ -76,7 +76,7 @@ W tym samouczku te wyzwania są rozwiązywane przy użyciu funkcji Azure SQL Dat
 > [!IMPORTANT]
 > Podobnie jak w przypadku wszystkich skryptów zarządzania biletów Wingtip, skrypty DR są przykładową jakością i nie są używane w środowisku produkcyjnym. 
 
-Skrypty odzyskiwania używane w tym samouczku i kodzie źródłowym aplikacji Wingtip są dostępne w [repozytorium GitHub Wingtip SaaS Database](https://github.com/Microsoft/WingtipTicketsSaaS-DbPerTenant/)for dzierżawca. Zapoznaj się [](saas-tenancy-wingtip-app-guidance-tips.md) z ogólnymi wskazówkami dotyczącymi kroków pobierania i odblokowywania skryptów zarządzania biletami Wingtip.
+Skrypty odzyskiwania używane w tym samouczku i kodzie źródłowym aplikacji Wingtip są dostępne w [repozytorium GitHub Wingtip SaaS Database for dzierżawca](https://github.com/Microsoft/WingtipTicketsSaaS-DbPerTenant/). Zapoznaj się z [ogólnymi wskazówkami](saas-tenancy-wingtip-app-guidance-tips.md) dotyczącymi kroków pobierania i odblokowywania skryptów zarządzania biletami Wingtip.
 
 ## <a name="tutorial-overview"></a>Omówienie samouczka
 W tym samouczku należy najpierw użyć replikacji geograficznej w celu utworzenia replik aplikacji biletów Wingtip i jej baz danych w innym regionie. Następnie przejdź do trybu failover w tym regionie, aby symulować odzyskiwanie po awarii. Po zakończeniu aplikacja jest w pełni funkcjonalna w regionie odzyskiwania.
@@ -89,10 +89,10 @@ Później w oddzielnym kroku repatriacji katalog i bazy danych dzierżawy są pr
 ## <a name="review-the-healthy-state-of-the-application"></a>Przejrzyj stan kondycji aplikacji
 
 Przed rozpoczęciem procesu odzyskiwania zapoznaj się z normalnym dobrym stanem aplikacji.
-1. W przeglądarce sieci Web otwórz centrum zdarzeń http://events.wingtip-dpt.&lt biletów Wingtip (; User&gt;. trafficmanager.NET — Zamień &lt; użytkownika&gt; na wartość użytkownika wdrożenia).
+1. W przeglądarce sieci Web otwórz centrum zdarzeń biletów Wingtip (http://events.wingtip-dpt.&lt; User&gt;. trafficmanager.net-Zastąp &lt;&gt; użytkownika wartością użytkownika wdrożenia).
     * Przewiń w dół strony i zwróć uwagę na nazwę serwera wykazu i lokalizację w stopce. Lokalizacja to region, w którym została wdrożona aplikacja.
-    *WYOWIETLON Umieść kursor myszy nad lokalizacją, aby powiększyć wyświetlania.* 
-    ![Dobrej kondycji Centrum zdarzeń w regionie oryginalny](media/saas-dbpertenant-dr-geo-replication/events-hub-original-region.png)
+    *Porada: Umieść wskaźnik myszy nad lokalizacją, aby powiększyć ekran.* 
+    stan kondycji centrum zdarzeń ![w oryginalnym regionie](media/saas-dbpertenant-dr-geo-replication/events-hub-original-region.png)
 
 2. Kliknij dzierżawę korytarza w firmie Contoso i otwórz jej stronę zdarzeń.
     * W stopce Zwróć uwagę na nazwę serwera dzierżawy. Lokalizacja będzie taka sama jak lokalizacja serwera wykazu.
@@ -107,13 +107,13 @@ W tym zadaniu zostanie rozpoczęty proces, który synchronizuje konfigurację se
 > [!IMPORTANT]
 > Dla uproszczenia proces synchronizacji i inne długotrwałe procesy odzyskiwania i wycofywania są implementowane w tych samouczkach jako lokalne zadania programu PowerShell lub sesje, które są uruchamiane w ramach logowania użytkownika klienta. Tokeny uwierzytelniania wydawane podczas logowania wygaśnie po kilku godzinach, a zadania zakończą się niepowodzeniem. W scenariuszu produkcyjnym długotrwałe procesy powinny być implementowane jako niezawodne usługi platformy Azure, które są uruchamiane w ramach jednostki usługi. Zobacz [używanie Azure PowerShell, aby utworzyć jednostkę usługi przy użyciu certyfikatu](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-authenticate-service-principal).
 
-1. W _ISE programu PowerShell_Otwórz plik. ..\Learning Modules\UserConfig.PSM1. `<resourcegroup>` Zastąp `<user>` wartości i w wierszach 10 i 11 wartością używaną podczas wdrażania aplikacji.  Zapisz plik!
+1. W _ISE programu PowerShell_Otwórz plik. ..\Learning Modules\UserConfig.PSM1. Zastąp `<resourcegroup>` i `<user>` wierszami 10 i 11 wartością używaną podczas wdrażania aplikacji.  Zapisz plik!
 
 2. W *ISE programu PowerShell*Otwórz skrypt. ..\Learning Modules\Business, a następnie wybierz polecenie:
     * **$DemoScenario = 1**, uruchom zadanie w tle, które synchronizuje serwer dzierżawy i informacje o konfiguracji puli do wykazu
 
 3. Naciśnij klawisz **F5** , aby uruchomić skrypt synchronizacji. Zostanie otwarta nowa sesja programu PowerShell w celu zsynchronizowania konfiguracji zasobów dzierżawy.
-![Proces synchronizacji](media/saas-dbpertenant-dr-geo-replication/sync-process.png)
+](media/saas-dbpertenant-dr-geo-replication/sync-process.png) procesu synchronizacji ![
 
 Pozostaw okno programu PowerShell działające w tle i Kontynuuj pracę z pozostałą częścią samouczka. 
 
@@ -131,7 +131,7 @@ W tym zadaniu zostanie rozpoczęty proces służący do wdrażania zduplikowaneg
     * **$DemoScenario = 2**, Tworzenie dublowanego środowiska odzyskiwania obrazu i replikowanie wykazu oraz baz danych dzierżaw
 
 2. Naciśnij klawisz **F5**, aby uruchomić skrypt. Zostanie otwarta nowa sesja programu PowerShell w celu utworzenia replik.
-![Proces synchronizacji](media/saas-dbpertenant-dr-geo-replication/replication-process.png)  
+](media/saas-dbpertenant-dr-geo-replication/replication-process.png) procesu synchronizacji ![  
 
 ## <a name="review-the-normal-application-state"></a>Przegląd normalnego stanu aplikacji
 
@@ -141,7 +141,7 @@ W tym momencie aplikacja działa normalnie w oryginalnym regionie i jest teraz c
 
 2. Eksplorowanie zasobów w grupie zasobów odzyskiwania.  
 
-3. Kliknij bazę danych korytarze contoso wspólnie na serwerze _tenants1-DPT-&lt;User&gt;-Recovery_ .  Po lewej stronie kliknij pozycję replikacja geograficzna. 
+3. Kliknij bazę danych korytarze contoso wspólnie na serwerze _tenants1-DPT-&lt;user&gt;-Recovery_ .  Po lewej stronie kliknij pozycję replikacja geograficzna. 
 
     ![Link do replikacji geograficznej firmy Contoso](media/saas-dbpertenant-dr-geo-replication/contoso-geo-replication.png) 
 
@@ -185,10 +185,10 @@ Teraz Załóżmy, że wystąpi awaria w regionie, w którym aplikacja jest wdra�
 
 2. Naciśnij klawisz **F5**, aby uruchomić skrypt.  
     * Skrypt zostanie otwarty w nowym oknie programu PowerShell, a następnie rozpocznie się seria zadań programu PowerShell uruchamianych równolegle. Te zadania przechodzą w tryb failover baz danych dzierżawy do regionu odzyskiwania.
-    * Region odzyskiwania to sparowany _region_ skojarzony z regionem świadczenia usługi Azure, w którym została wdrożona aplikacja. Aby uzyskać więcej informacji, zobacz [regiony sparowane na platformie Azure](https://docs.microsoft.com/azure/best-practices-availability-paired-regions). 
+    * Region odzyskiwania to _sparowany region_ skojarzony z regionem świadczenia usługi Azure, w którym została wdrożona aplikacja. Aby uzyskać więcej informacji, zobacz [regiony sparowane na platformie Azure](https://docs.microsoft.com/azure/best-practices-availability-paired-regions). 
 
 3. Monitoruj stan procesu odzyskiwania w oknie programu PowerShell.
-    ![proces trybu failover](media/saas-dbpertenant-dr-geo-replication/failover-process.png)
+    ](media/saas-dbpertenant-dr-geo-replication/failover-process.png) procesu ![trybu failover
 
 > [!Note]
 > Aby poznać kod zadań odzyskiwania, przejrzyj skrypty programu PowerShell w folderze. ..\Learning Modules\Business ciągłości i Recovery\DR-FailoverToReplica\RecoveryJobs awarii.
@@ -206,7 +206,7 @@ Gdy punkt końcowy aplikacji jest wyłączony w Traffic Manager, aplikacja jest 
  
      ![Centrum zdarzeń w trybie offline](media/saas-dbpertenant-dr-geo-replication/events-hub-offlinemode.png) 
 
-   * Jeśli otworzysz bezpośrednio stronę zdarzeń dzierżawcy w trybie offline, zostanie wyświetlone powiadomienie "dzierżawa w trybie offline". Jeśli na przykład firma Contoso jest w trybie offline, spróbuj otworzyć http://events.wingtip-dpt.&lt stronę "User&gt;. trafficmanager.NET/contosoconcerthall ![ contoso w trybie offline](media/saas-dbpertenant-dr-geo-replication/dr-in-progress-offline-contosoconcerthall.png) 
+   * Jeśli otworzysz bezpośrednio stronę zdarzeń dzierżawcy w trybie offline, zostanie wyświetlone powiadomienie "dzierżawa w trybie offline". Jeśli na przykład firma Contoso jest w trybie offline, spróbuj otworzyć http://events.wingtip-dpt.&lt; User&gt;. trafficmanager.net/contosoconcerthall ![stronę offline firmy Contoso](media/saas-dbpertenant-dr-geo-replication/dr-in-progress-offline-contosoconcerthall.png) 
 
 ### <a name="provision-a-new-tenant-in-the-recovery-region"></a>Inicjowanie obsługi administracyjnej nowej dzierżawy w regionie odzyskiwania
 Nawet przed przełączeniem wszystkich istniejących baz danych dzierżaw do trybu failover można udostępnić nowe dzierżawy w regionie odzyskiwania.  
@@ -217,7 +217,7 @@ Nawet przed przełączeniem wszystkich istniejących baz danych dzierżaw do try
 2. Naciśnij klawisz **F5** , aby uruchomić skrypt i udostępnić nową dzierżawę. 
 
 3. Po zakończeniu zostanie otwarta strona zdarzenia korytarzy Hawthorn w przeglądarce. Zwróć uwagę na stopkę, w której zainicjowano Inicjowanie obsługi bazy danych Hawthorn w regionie odzyskiwania.
-    ![Strona zdarzeń korytarza Hawthorn](media/saas-dbpertenant-dr-geo-replication/hawthornhallevents.png) 
+    Strona zdarzeń korytarza ![Hawthorn](media/saas-dbpertenant-dr-geo-replication/hawthornhallevents.png) 
 
 4. W przeglądarce Odśwież stronę centrum zdarzeń biletów Wingtip, aby zobaczyć dołączoną część Hawthorn. 
     * Jeśli zainicjowano Inicjowanie obsługi Hawthorn bez oczekiwania na przywrócenie innych dzierżawców, inne dzierżawy mogą być nadal w trybie offline.
@@ -229,7 +229,7 @@ Po zakończeniu procesu odzyskiwania aplikacja i wszystkie dzierżawy są w peł
 
 1. Gdy widok w oknie konsoli programu PowerShell wskazuje, że wszystkie dzierżawy są odzyskiwane, Odśwież centrum zdarzeń.  Wszystkie dzierżawy będą widoczne w trybie online, łącznie z nową dzierżawą, Hawthorn.
 
-    ![odzyskane i nowe dzierżawy w centrum zdarzeń](media/saas-dbpertenant-dr-geo-replication/events-hub-with-hawthorn-hall.png)
+    ![Odzyskane i nowe dzierżawy w centrum zdarzeń](media/saas-dbpertenant-dr-geo-replication/events-hub-with-hawthorn-hall.png)
 
 2. W [Azure Portal](https://portal.azure.com)Otwórz listę grup zasobów.  
     * Zwróć uwagę na wdrożoną grupę zasobów oraz grupę zasobów odzyskiwania z sufiksem _odzyskiwania_ .  Grupa zasobów odzyskiwania zawiera wszystkie zasoby utworzone podczas procesu odzyskiwania oraz nowe zasoby utworzone podczas przestoju.  
@@ -237,14 +237,14 @@ Po zakończeniu procesu odzyskiwania aplikacja i wszystkie dzierżawy są w peł
 3. Otwórz grupę zasobów odzyskiwania i zwróć uwagę na następujące elementy:
    * Wersje odzyskiwania katalogu i serwerów tenants1 z sufiksem _odzyskiwania_ .  Przywrócone wykazy i bazy danych dzierżawy na tych serwerach mają nazwy używane w oryginalnym regionie.
 
-   * Program SQL Server _tenants2-&lt;DPT&gt;-User-Recovery_ .  Ten serwer jest używany do aprowizacji nowych dzierżawców podczas przestoju.
-   * App Service o nazwie _Events-Wingtip&lt;-DPT-&lt;recoveryregion&gt;-User & gt_;, czyli wystąpienie odzyskiwania aplikacji Events. 
+   * _Tenants2-DPT-&lt;użytkownika&gt;— odzyskiwanie_ programu SQL Server.  Ten serwer jest używany do aprowizacji nowych dzierżawców podczas przestoju.
+   * App Service o nazwie _Events-Wingtip-DPT-&lt;recoveryregion&gt;-&lt;użytkownik & gt_;, czyli wystąpienie odzyskiwania aplikacji Events. 
 
      ![Zasoby odzyskiwania platformy Azure](media/saas-dbpertenant-dr-geo-replication/resources-in-recovery-region.png) 
     
-4. Otwórz program SQL Server _tenants2-&lt;DPT&gt;-User-Recovery_ .  Zwróć uwagę, że zawiera _hawthornhall_ bazy danych i pulę elastyczną, _Pool1_.  Baza danych _hawthornhall_ jest konfigurowana jako Elastyczna baza danych w elastycznej puli _Pool1_ .
+4. Otwórz _tenants2-DPT-&lt;użytkownika&gt;-Recovery_ SQL Server.  Zwróć uwagę, że zawiera _hawthornhall_ bazy danych i pulę elastyczną, _Pool1_.  Baza danych _hawthornhall_ jest konfigurowana jako Elastyczna baza danych w elastycznej puli _Pool1_ .
 
-5. Przejdź z powrotem do grupy zasobów i kliknij bazę danych korytarze contoso wspólnie na serwerze _tenants1-DPT-&lt;User&gt;-Recovery_ . Po lewej stronie kliknij pozycję replikacja geograficzna.
+5. Przejdź z powrotem do grupy zasobów i kliknij bazę danych korytarze contoso wspólnie na serwerze _tenants1-DPT-&lt;użytkownika&gt;-Recovery_ . Po lewej stronie kliknij pozycję replikacja geograficzna.
     
     ![Baza danych firmy Contoso po zakończeniu pracy w trybie failover](media/saas-dbpertenant-dr-geo-replication/contoso-geo-replication-after-failover.png)
 
@@ -255,7 +255,7 @@ W tym zadaniu należy zaktualizować jedną z baz danych dzierżawy.
 2. W *ISE programu PowerShell*w skrypcie. ..\Learning Modules\Business (ciągłość i awaria Recovery\DR-FailoverToReplica\Demo-FailoverToReplica.ps1) Ustaw następującą wartość:
     * **$DemoScenario = 5** Usuwanie zdarzenia z dzierżawy w regionie odzyskiwania
 3. Naciśnij klawisz **F5** , aby wykonać skrypt
-4. Odśwież stronę ze zdarzeniami korytarzy w http://events.wingtip-dpt.&lt firmie Contoso&gt; (; User. &lt; trafficmanager.NET/contosoconcerthall&gt; — podstawianie użytkownika z wartością użytkownika wdrożenia) i Zauważ, że ostatnie zdarzenie zostało usunięte.
+4. Odśwież stronę ze zdarzeniami korytarzy w firmie Contoso (http://events.wingtip-dpt.&lt; User&gt;. trafficmanager.net/contosoconcerthall — podstaw &lt;&gt; użytkownika z wartością użytkownika wdrożenia) i zwróć uwagę na to, że ostatnie zdarzenie zostało usunięte.
 
 ## <a name="repatriate-the-application-to-its-original-production-region"></a>Wycofywanie aplikacji do oryginalnego regionu produkcji
 
@@ -286,13 +286,13 @@ Teraz wyobraź sobie, że awaria zostanie rozwiązany i uruchomisz skrypt repatr
 3.  Następnie, aby rozpocząć proces wycofywania, ustaw:
     * **$DemoScenario = 6**, wycofywanie aplikacji do jej oryginalnego regionu
     * Naciśnij klawisz **F5** , aby uruchomić skrypt odzyskiwania w nowym oknie programu PowerShell.  Repatriacja zajmie kilka minut i będzie można monitorować ją w oknie programu PowerShell.
-    ![Proces repatriacji](media/saas-dbpertenant-dr-geo-replication/repatriation-process.png)
+    ![procesu wycofywania](media/saas-dbpertenant-dr-geo-replication/repatriation-process.png)
 
-4. Gdy skrypt jest uruchomiony, Odśwież stronę centrum zdarzeń (http://events.wingtip-dpt.&lt ; User&gt;. trafficmanager.NET)
+4. Gdy skrypt jest uruchomiony, Odśwież stronę centrum zdarzeń (http://events.wingtip-dpt.&lt; User&gt;. trafficmanager.net)
     * Zwróć uwagę, że wszyscy dzierżawcy są w trybie online i są dostępni w całym procesie.
 
 5. Po zakończeniu procesu wycofywania Odśwież centrum zdarzeń i Otwórz stronę zdarzeń dla korytarza Hawthorn. Zwróć uwagę, że ta baza danych została przywrócona do oryginalnego regionu.
-    ![Wycofywane centrum zdarzeń](media/saas-dbpertenant-dr-geo-replication/events-hub-repatriated.png)
+    ![wycofywania centrum zdarzeń](media/saas-dbpertenant-dr-geo-replication/events-hub-repatriated.png)
 
 
 ## <a name="designing-the-application-to-ensure-app-and-database-are-colocated"></a>Projektowanie aplikacji w celu zapewnienia współdziałania aplikacji i bazy danych 
@@ -307,7 +307,7 @@ W tym samouczku zawarto informacje na temat wykonywania następujących czynnoś
 > 
 > * Synchronizuj informacje o konfiguracji bazy danych i elastycznej puli do katalogu dzierżawy
 > * Konfigurowanie środowiska odzyskiwania w innym regionie zawierającym aplikacje, serwery i pule
-> * Replikowanie katalogów i baz danych dzierżawy do regionu odzyskiwania przy użyciu _replikacji_ geograficznej
+> * Replikowanie katalogów i baz danych dzierżawy do regionu odzyskiwania przy użyciu _replikacji geograficznej_
 > * Przełączenie w tryb failover aplikacji i katalogu oraz baz danych dzierżawy do regionu odzyskiwania 
 > * Po rozwiązaniu awarii Przewróć do oryginalnego regionu aplikacje, katalog i bazy danych dzierżawy
 

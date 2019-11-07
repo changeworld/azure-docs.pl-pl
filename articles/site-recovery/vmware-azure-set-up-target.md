@@ -1,6 +1,6 @@
 ---
-title: Przygotowanie środowiska docelowego dla replikacji VMware na platformie Azure | Dokumentacja firmy Microsoft
-description: W tym artykule opisano sposób przygotowania urządzenie docelowe środowisko platformy Azure do replikacji maszyn wirtualnych programu VMware na platformę Azure.
+title: Przygotuj miejsce docelowe replikacji maszyny wirtualnej VMware w Azure Site Recovery
+description: W tym artykule opisano sposób przygotowania docelowego środowiska platformy Azure na potrzeby replikacji maszyny wirtualnej VMware na platformę Azure.
 services: site-recovery
 author: mayurigupta13
 manager: rochakm
@@ -8,37 +8,37 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 03/03/2019
 ms.author: mayg
-ms.openlocfilehash: e75d4b1701944e206fcf6ded2dcb6d1e1fbc77cb
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: c721234f2e1d806d51d31f3466e441bf8360f6b8
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60723815"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73693170"
 ---
-# <a name="prepare-the-target-environment-for-disaster-recovery-of-vmware-vms-or-physical-servers-to-azure"></a>Przygotowywanie środowiska docelowego dla odzyskiwania po awarii maszyn wirtualnych programu VMware lub serwery fizyczne do platformy Azure
+# <a name="prepare-the-target-environment-for-disaster-recovery-of-vmware-vms-or-physical-servers-to-azure"></a>Przygotuj środowisko docelowe na potrzeby odzyskiwania po awarii maszyn wirtualnych VMware lub serwerów fizycznych na platformę Azure
 
-W tym artykule opisano sposób przygotowania urządzenie docelowe środowisko platformy Azure, aby rozpocząć replikowanie maszyn wirtualnych VMware lub serwery fizyczne do platformy Azure.
+W tym artykule opisano, jak przygotować docelowe środowisko platformy Azure, aby rozpocząć replikowanie maszyn wirtualnych VMware lub serwerów fizycznych na platformę Azure.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-Artykuł zakłada:
-- Utworzono magazyn usługi Recovery Services na [witryny Azure portal](https://portal.azure.com "witryny Azure portal") chronić maszyny źródłowej
-- Skonfigurowano w lokalnym środowisku replikacji źródła [maszyn wirtualnych VMware](vmware-azure-set-up-source.md) lub [serwerów fizycznych](physical-azure-set-up-source.md) na platformie Azure.
+W tym artykule przyjęto:
+- Utworzono magazyn Recovery Services na [Azure Portal](https://portal.azure.com "Azure Portal") , aby chronić maszyny źródłowe
+- Środowisko lokalne zostało skonfigurowane w celu replikowania źródłowych [maszyn wirtualnych VMware](vmware-azure-set-up-source.md) lub [serwerów fizycznych](physical-azure-set-up-source.md) na platformę Azure.
 
 ## <a name="prepare-target"></a>Przygotowywanie celu
 
-Po zakończeniu **krok 1: Wybierz cel ochrony** i **krok 2: Przygotowywanie źródła**, nastąpi przekierowanie do **krok 3: Docelowy**
+Po wykonaniu **kroku 1: Wybierz cel ochrony** i **krok 2: przygotowanie źródła**, nastąpi **przejście do kroku 3: cel**
 
 ![Przygotowywanie celu](./media/vmware-azure-set-up-target/prepare-target-vmware-to-azure.png)
 
-1. **Subskrypcja:** Z menu rozwijanego Wybierz subskrypcję, dla której chcesz wykonać replikację maszyn wirtualnych ani serwery fizyczne do.
-2. **Model wdrażania:** Wybierz model wdrażania (Model Klasyczny lub usługi Resource Manager)
+1. **Subskrypcja:** Z menu rozwijanego wybierz subskrypcję, do której chcesz replikować maszyny wirtualne lub serwery fizyczne.
+2. **Model wdrażania:** Wybierz model wdrażania (klasyczny lub Menedżer zasobów)
 
-Oparte na modelu wdrażania wybranego, sprawdzania poprawności jest wykonywane do upewnij się, że co najmniej jedną sieć wirtualną w subskrypcji docelowej replikacji i trybu failover z maszyny wirtualnej lub serwer fizyczny z platformą.
+W oparciu o wybrany model wdrożenia zostanie uruchomiona Walidacja, aby upewnić się, że w subskrypcji docelowej istnieje co najmniej jedna sieć wirtualna do replikacji i przejścia do trybu failover maszyny wirtualnej lub serwera fizycznego do programu.
 
-Po operacje sprawdzania poprawności zakończy się pomyślnie, kliknij przycisk OK, aby przejść do następnego kroku.
+Po pomyślnym ukończeniu walidacji kliknij przycisk OK, aby przejść do następnego kroku.
 
-Jeśli nie masz sieć wirtualną można utworzyć jeden, klikając **+ sieć** znajdujący się u góry strony.
+Jeśli nie masz sieci wirtualnej, możesz ją utworzyć, klikając przycisk **+ Sieć** w górnej części strony.
 
-## <a name="next-steps"></a>Kolejne kroki
-[Konfigurowanie ustawień replikacji](vmware-azure-set-up-replication.md).
+## <a name="next-steps"></a>Następne kroki
+[Skonfiguruj ustawienia replikacji](vmware-azure-set-up-replication.md).

@@ -1,5 +1,5 @@
 ---
-title: Wskazówki dotyczące projektowania zreplikowanych tabel — Azure SQL Data Warehouse | Microsoft Docs
+title: Wskazówki dotyczące projektowania zreplikowanych tabel
 description: Zalecenia dotyczące projektowania zreplikowanych tabel w schemacie Azure SQL Data Warehouse. 
 services: sql-data-warehouse
 author: XiaoyuMSFT
@@ -10,12 +10,13 @@ ms.subservice: development
 ms.date: 03/19/2019
 ms.author: xiaoyul
 ms.reviewer: igorstan
-ms.openlocfilehash: c622edc6c3a37b2bc71323cf0e2c155f7aec6e33
-ms.sourcegitcommit: 75a56915dce1c538dc7a921beb4a5305e79d3c7a
+ms.custom: seo-lt-2019
+ms.openlocfilehash: 18577cb729c9f17a112979cd1ebb763af38b9ca2
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/24/2019
-ms.locfileid: "68479312"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73693043"
 ---
 # <a name="design-guidance-for-using-replicated-tables-in-azure-sql-data-warehouse"></a>Wskazówki dotyczące projektowania na potrzeby używania zreplikowanych tabel w Azure SQL Data Warehouse
 W tym artykule przedstawiono zalecenia dotyczące projektowania zreplikowanych tabel w schemacie SQL Data Warehouse. Te zalecenia umożliwiają zwiększenie wydajności zapytań, zmniejszając jednocześnie przemieszczenie danych i złożoność zapytań.
@@ -95,7 +96,7 @@ DROP TABLE [dbo].[DimSalesTerritory_old];
 
 Replikowana tabela nie wymaga przenoszenia danych dla sprzężeń, ponieważ cała tabela jest już obecna w każdym węźle obliczeniowym. Jeśli tabele wymiarów są dystrybuowane w sposób okrężny, sprzężenie kopiuje tabelę wymiarów w całości do każdego węzła obliczeniowego. Aby przenieść dane, plan zapytania zawiera operację o nazwie BroadcastMoveOperation. Ten typ operacji przenoszenia danych spowalnia wydajność zapytań i jest eliminowany przy użyciu zreplikowanych tabel. Aby wyświetlić kroki planu zapytania, użyj widoku wykazu systemu [sys. DM _pdw_request_steps](/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-request-steps-transact-sql) . 
 
-Na przykład w poniższym zapytaniu względem schematu `FactInternetSales` AdventureWorks tabela jest dystrybuowana z mieszaniem. Tabele `DimDate` i`DimSalesTerritory` są mniejszymi tabelami wymiarów. To zapytanie zwraca łączną wartość sprzedaży w Ameryka Północna dla roku obrachunkowego 2004:
+Na przykład w poniższym zapytaniu względem schematu AdventureWorks w tabeli `FactInternetSales` jest dystrybuowana wartość skrótu. Tabele `DimDate` i `DimSalesTerritory` są mniejszymi tabelami wymiarów. To zapytanie zwraca łączną wartość sprzedaży w Ameryka Północna dla roku obrachunkowego 2004:
 
 ```sql
 SELECT [TotalSalesAmount] = SUM(SalesAmount)
@@ -107,7 +108,7 @@ INNER JOIN dbo.DimSalesTerritory t
 WHERE d.FiscalYear = 2004
   AND t.SalesTerritoryGroup = 'North America'
 ```
-Tworzenie `DimDate` i`DimSalesTerritory` jak tabele działające w trybie okrężnym. W efekcie zapytanie wykazało następujący plan zapytania, który ma wiele operacji przenoszenia emisji: 
+Utworzyliśmy `DimDate` i `DimSalesTerritory` jako tabele działające w trybie okrężnym. W efekcie zapytanie wykazało następujący plan zapytania, który ma wiele operacji przenoszenia emisji: 
  
 ![Plan zapytania okrężnego](media/design-guidance-for-replicated-tables/round-robin-tables-query-plan.jpg) 
 

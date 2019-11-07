@@ -1,5 +1,5 @@
 ---
-title: Raportowanie w ramach skalowalnych baz danych w chmurze | Microsoft Docs
+title: Raportowanie w skalowanych bazach danych w chmurze
 description: Jak skonfigurować zapytania elastyczne na partycjach poziomych
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: MladjoA
 ms.author: mlandzic
 ms.reviewer: sstein
 ms.date: 01/03/2019
-ms.openlocfilehash: 1416cbdc29d355e2ed83737140b46306de734127
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 37b19cd86cd13dd2bdc8b3a38abf61898b81d01b
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68568578"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73690389"
 ---
 # <a name="reporting-across-scaled-out-cloud-databases-preview"></a>Raportowanie w skalowanych bazach danych w chmurze (wersja zapoznawcza)
 
@@ -35,7 +35,7 @@ W przypadku baz danych innych niż podzielonej na fragmenty zobacz [zapytania w 
 * Użytkownik musi mieć uprawnienie Zmień każde zewnętrzne źródło danych. To uprawnienie jest dołączone do uprawnienia ALTER DATABASE.
 * Aby odwołać się do bazowego źródła danych, należy zmienić wszystkie uprawnienia zewnętrznych źródeł danych.
 
-## <a name="overview"></a>Przegląd
+## <a name="overview"></a>Omówienie
 
 Te instrukcje tworzą reprezentację metadanych warstwy danych podzielonej na fragmenty w bazie danych zapytań elastycznych.
 
@@ -54,7 +54,7 @@ To poświadczenie jest używane przez zapytanie elastyczne do łączenia się ze
     [;]
 
 > [!NOTE]
-> Upewnij się, że *"\<username\>"* nie zawiera żadnego sufiksu *\@"ServerName"* .
+> Upewnij się, że *"\<username\>"* nie zawiera żadnego sufiksu *"\@ServerName"* .
 
 ## <a name="12-create-external-data-sources"></a>1,2 Tworzenie zewnętrznych źródeł danych
 
@@ -136,19 +136,19 @@ Aby porzucić tabele zewnętrzne:
 
 ### <a name="remarks"></a>Uwagi
 
-Klauzula źródła\_danych definiuje zewnętrzne źródło danych (mapę fragmentu), które jest używane dla tabeli zewnętrznej.  
+Klauzula źródła danych\_definiuje zewnętrzne źródło danych (mapę fragmentu), które jest używane dla tabeli zewnętrznej.  
 
-Nazwy schematu\_i klauzule\_nazw obiektów mapują definicję tabeli zewnętrznej na tabelę w innym schemacie. W przypadku pominięcia założono, że schemat obiektu zdalnego jest "dbo", a jego nazwa jest taka sama jak zdefiniowana nazwa tabeli zewnętrznej. Jest to przydatne, jeśli nazwa tabeli zdalnej jest już wykonywana w bazie danych, w której ma zostać utworzona tabela zewnętrzna. Na przykład, chcesz zdefiniować tabelę zewnętrzną, aby uzyskać Zagregowany widok widoków wykazu lub widoków DMV w warstwie danych skalowanych w poziomie. Ponieważ widoki wykazu i widoków DMV już istnieją lokalnie, nie można używać ich nazw dla definicji tabeli zewnętrznej. Zamiast tego należy użyć innej nazwy i użyć nazwy widoku wykazu lub DMV w klauzulach nazwa schematu\_i/lub nazwa obiektu.\_ (Zobacz Poniższy przykład).
+W SCHEMAcie\_nazwy i obiektu\_klauzule NAME mapują definicję tabeli zewnętrznej na tabelę w innym schemacie. W przypadku pominięcia założono, że schemat obiektu zdalnego jest "dbo", a jego nazwa jest taka sama jak zdefiniowana nazwa tabeli zewnętrznej. Jest to przydatne, jeśli nazwa tabeli zdalnej jest już wykonywana w bazie danych, w której ma zostać utworzona tabela zewnętrzna. Na przykład, chcesz zdefiniować tabelę zewnętrzną, aby uzyskać Zagregowany widok widoków wykazu lub widoków DMV w warstwie danych skalowanych w poziomie. Ponieważ widoki wykazu i widoków DMV już istnieją lokalnie, nie można używać ich nazw dla definicji tabeli zewnętrznej. Zamiast tego należy użyć innej nazwy i użyć nazwy widoku wykazu lub DMV w SCHEMAcie\_nazwy i/lub\_klauzule nazw obiektów. (Zobacz Poniższy przykład).
 
 Klauzula DISTRIBUTION określa dystrybucję danych używaną dla tej tabeli. Procesor zapytań wykorzystuje informacje podane w klauzuli DISTRIBUTION do tworzenia najbardziej wydajnych planów zapytań.
 
 1. **Podzielonej na fragmenty** oznacza, że dane są partycjonowane w poziomie między bazami danych. Kluczem partycjonowania dystrybucji danych jest **< sharding_column_name >** parametr.
 2. **Zreplikowane** oznacza, że identyczne kopie tabeli są obecne w każdej bazie danych. Jest odpowiedzialny za zapewnienie, że repliki są identyczne w bazach danych.
-3. **Round\_Robin** oznacza, że tabela jest w poziomie partycjonowana przy użyciu metody dystrybucji zależnej od aplikacji.
+3. " **ROUND\_Robin** " oznacza, że tabela jest w poziomie partycjonowana przy użyciu metody dystrybucji zależnej od aplikacji.
 
-**Odwołanie do warstwy danych**: KOD DDL tabeli zewnętrznej odwołuje się do zewnętrznego źródła danych. Zewnętrzne źródło danych określa mapę fragmentu, która dostarcza tabelę zewnętrzną z informacjami niezbędnymi do lokalizowania wszystkich baz danych w warstwie danych.
+**Odwołanie do warstwy danych**: tablica zewnętrzna DDL odwołuje się do zewnętrznego źródła danych. Zewnętrzne źródło danych określa mapę fragmentu, która dostarcza tabelę zewnętrzną z informacjami niezbędnymi do lokalizowania wszystkich baz danych w warstwie danych.
 
-### <a name="security-considerations"></a>Zagadnienia dotyczące bezpieczeństwa
+### <a name="security-considerations"></a>Zagadnienia związane z zabezpieczeniami
 
 Użytkownicy z dostępem do tabeli zewnętrznej automatycznie uzyskują dostęp do podstawowych tabel zdalnych w ramach poświadczeń podanych w definicji zewnętrznego źródła danych. Unikaj niepożądanego podniesienia uprawnień za pomocą poświadczeń zewnętrznego źródła danych. Użyj uprawnienia GRANT lub REVOKE dla tabeli zewnętrznej, tak jakby była to zwykła tabela.  
 
@@ -175,16 +175,16 @@ Następujące zapytanie wykonuje trójwymiarowe sprzężenie między magazynami,
     group by w_id, o_c_id
 ```
 
-## <a name="stored-procedure-for-remote-t-sql-execution-spexecuteremote"></a>Procedura składowana dla zdalnego wykonywania T-SQL: SP\_execute_remote
+## <a name="stored-procedure-for-remote-t-sql-execution-sp_execute_remote"></a>Procedura składowana dla zdalnego wykonywania T-SQL: SP\_execute_remote
 
-Zapytanie elastyczne zawiera również procedurę składowaną, która zapewnia bezpośredni dostęp do fragmentów. Procedura składowana jest nazywana [SP\_Execute \_Remote](https://msdn.microsoft.com/library/mt703714) i może służyć do wykonywania zdalnych procedur składowanych lub kodu T-SQL w zdalnych bazach danych. Przyjmuje następujące parametry:
+Zapytanie elastyczne zawiera również procedurę składowaną, która zapewnia bezpośredni dostęp do fragmentów. Procedura składowana jest nazywana [sp\_execute \_Remote](https://msdn.microsoft.com/library/mt703714) i może służyć do wykonywania zdalnych procedur składowanych lub kodu t-SQL w zdalnych bazach danych. Przyjmuje następujące parametry:
 
 * Nazwa źródła danych (nvarchar): Nazwa zewnętrznego źródła danych typu RDBMS.
-* Zapytanie (nvarchar): Zapytanie T-SQL, które ma być wykonywane na każdym fragmentu.
-* Deklaracja parametru (nvarchar) — opcjonalne: Ciąg z definicjami typu danych dla parametrów używanych w parametrze zapytania (na przykład sp_executesql).
-* Lista wartości parametrów — opcjonalne: Rozdzielana przecinkami lista wartości parametrów (na przykład sp_executesql).
+* Query (nvarchar): zapytanie T-SQL, które ma zostać wykonane na każdym fragmentu.
+* Deklaracja parametru (nvarchar)-Optional: ciąg z definicjami typu danych dla parametrów używanych w parametrze zapytania (na przykład sp_executesql).
+* Lista wartości parametrów — opcjonalne: rozdzielana przecinkami lista wartości parametrów (na przykład sp_executesql).
 
-Funkcja Sp\_Execute\_umożliwia zdalne użycie zewnętrznego źródła danych podanego w parametrach wywołania, aby wykonać daną instrukcję T-SQL w zdalnych bazach danych. Używa poświadczeń zewnętrznego źródła danych, aby nawiązać połączenie z bazą danych programu shardmap Manager i zdalnymi bazami danych.  
+Polecenie Sp\_Execute\_zdalnego używa zewnętrznego źródła danych podanego w parametrach wywołania, aby wykonać daną instrukcję T-SQL w zdalnych bazach danych. Używa poświadczeń zewnętrznego źródła danych, aby nawiązać połączenie z bazą danych programu shardmap Manager i zdalnymi bazami danych.  
 
 Przykład:
 
@@ -211,7 +211,7 @@ Użyj zwykłych parametrów połączenia SQL Server, aby połączyć swoją apli
 * Aby zapoznać się z pionowym samouczkiem partycjonowania, zobacz [Rozpoczynanie pracy z kwerendą między bazami danych (partycjonowanie pionowe)](sql-database-elastic-query-getting-started-vertical.md).
 * Aby poznać składnię i przykładowe zapytania dotyczące danych partycjonowanych pionowo, zobacz [wykonywanie zapytań dotyczących partycjonowanych danych w pionie.](sql-database-elastic-query-vertical-partitioning.md)
 * Aby zapoznać się z samouczkiem dotyczącym partycjonowania poziomego (fragmentowania), zobacz [wprowadzenie do elastycznego zapytania na potrzeby partycjonowania poziomego (fragmentowania)](sql-database-elastic-query-getting-started.md).
-* Zapoznaj się z artykułem [\_Sp Execute \_Remote](https://msdn.microsoft.com/library/mt703714) dla procedury składowanej, która wykonuje instrukcję języka Transact-SQL w ramach jednego zdalnego Azure SQL Database lub zestawu baz danych służących jako fragmentów w poziomym schemacie partycjonowania.
+* Zobacz [sp\_wykonaj \_zdalnego](https://msdn.microsoft.com/library/mt703714) dla procedury składowanej, która wykonuje instrukcję języka Transact-SQL w ramach jednej zdalnej Azure SQL Database lub zestawu baz danych służących jako fragmentów w poziomym schemacie partycjonowania.
 
 <!--Image references-->
 [1]: ./media/sql-database-elastic-query-horizontal-partitioning/horizontalpartitioning.png

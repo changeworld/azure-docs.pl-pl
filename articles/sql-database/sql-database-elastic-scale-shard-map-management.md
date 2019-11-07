@@ -1,5 +1,5 @@
 ---
-title: Skalowanie w poziomie bazy danych Azure SQL Database | Microsoft Docs
+title: Skalowanie w poziomie bazy danych Azure SQL Database
 description: Jak używać biblioteki klienckiej ShardMapManager, Elastic Database
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 01/25/2019
-ms.openlocfilehash: 3e7e2294938179da83fb5ad03db177c1142ad096
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: d704e22dcd9ce4442ed16ae901c9c447fc025ebd
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68568339"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73690156"
 ---
 # <a name="scale-out-databases-with-the-shard-map-manager"></a>Skalowanie baz danych za pomocą Menedżera mapy fragmentu
 
@@ -53,12 +53,12 @@ Skalowanie elastyczne obsługuje następujące typy jako klucze fragmentowania:
 
 | .NET | Java |
 | --- | --- |
-| integer |integer |
-| long |long |
-| ident |uuid |
-| byte[]  |byte[] |
-| datetime | timestamp |
-| TimeSpan | duration|
+| liczba całkowita |liczba całkowita |
+| Długo |Długo |
+| guid |uuid |
+| Byte []  |Byte [] |
+| datetime | sygnatura czasowa |
+| czasu | trwania|
 | DateTimeOffset |offsetdatetime |
 
 ### <a name="list-and-range-shard-maps"></a>Mapowanie list i zakresów fragmentu
@@ -85,10 +85,10 @@ Na przykład **[0, 100)** zawiera wszystkie liczby całkowite większe niż lub 
 
 | Klucz | Lokalizacja fragmentu |
 | --- | --- |
-| [1,50) |Database_A |
-| [50,100) |Database_B |
-| [100,200) |Database_C |
-| [400,600) |Database_C |
+| [1, 50) |Database_A |
+| [50 100) |Database_B |
+| [100 200) |Database_C |
+| [400 600) |Database_C |
 | Przyciski ... |Przyciski ... |
 
 Każda z pokazanych tabel jest przykładem koncepcyjnym obiektu **ShardMap** . Każdy wiersz to uproszczony przykład poszczególnych **PointMapping** (dla mapy list fragmentu) lub **RangeMapping** (dla obiektu Range fragmentu map).
@@ -97,9 +97,9 @@ Każda z pokazanych tabel jest przykładem koncepcyjnym obiektu **ShardMap** . K
 
 W bibliotece klienta Menedżer mapy fragmentu jest zbiorem map fragmentu. Dane zarządzane przez wystąpienie **ShardMapManager** są przechowywane w trzech miejscach:
 
-1. **Globalna mapa fragmentu (GSM)** : Należy określić bazę danych, która będzie stanowić repozytorium dla wszystkich map i mapowań fragmentu. Tabele specjalne i procedury składowane są tworzone automatycznie w celu zarządzania informacjami. Jest to zazwyczaj mała baza danych i jest w niewielkim zakresie dostępna i nie powinna być używana do innych potrzeb aplikacji. Tabele znajdują się w specjalnym schemacie o nazwie **__ShardManagement**.
-2. **Lokalna Mapa fragmentu (LSM)** : Każda baza danych określona jako fragmentu jest modyfikowana w taki sposób, aby zawierała kilka małych tabel i specjalnych procedur składowanych, które zawierają i zarządzają informacjami o mapie fragmentu specyficznymi dla tego fragmentu. Te informacje są nadmiarowe informacjami w usłudze GSM i umożliwiają aplikacji Weryfikowanie buforowanych informacji mapy fragmentu bez konieczności naciskania obciążenia na GSM; aplikacja używa LSM, aby określić, czy buforowane mapowanie jest nadal ważne. Tabele odpowiadające LSM w każdym fragmentu znajdują się również w schemacie **__ShardManagement**.
-3. **Pamięć podręczna aplikacji**: Każde wystąpienie aplikacji uzyskujący dostęp do obiektu **ShardMapManager** przechowuje w lokalnej pamięci podręcznej jej mapowań. Przechowuje informacje o routingu, które zostały ostatnio pobrane.
+1. **Globalna mapa fragmentu (GSM)** : określana jest baza danych służąca jako repozytorium dla wszystkich map fragmentu i mapowań. Tabele specjalne i procedury składowane są tworzone automatycznie w celu zarządzania informacjami. Jest to zazwyczaj mała baza danych i jest w niewielkim zakresie dostępna i nie powinna być używana do innych potrzeb aplikacji. Tabele znajdują się w specjalnym schemacie o nazwie **__ShardManagement**.
+2. **Lokalna Mapa fragmentu (LSM)** : każda baza danych określona jako fragmentu jest modyfikowana tak, aby zawierała kilka małych tabel i specjalnych procedur składowanych, które zawierają i zarządzają informacjami o mapie fragmentu specyficznymi dla tego fragmentu. Te informacje są nadmiarowe informacjami w usłudze GSM i umożliwiają aplikacji Weryfikowanie buforowanych informacji mapy fragmentu bez konieczności naciskania obciążenia na GSM; aplikacja używa LSM, aby określić, czy buforowane mapowanie jest nadal ważne. Tabele odpowiadające LSM w każdym fragmentu znajdują się również w schemacie **__ShardManagement**.
+3. **Pamięć podręczna aplikacji**: każde wystąpienie aplikacji uzyskujące dostęp do obiektu **ShardMapManager** przechowuje w lokalnej pamięci podręcznej jej mapowań. Przechowuje informacje o routingu, które zostały ostatnio pobrane.
 
 ## <a name="constructing-a-shardmapmanager"></a>Konstruowanie elementu ShardMapManager
 

@@ -1,5 +1,5 @@
 ---
-title: Nawiązywanie połączenia z Azure SQL Data Warehouse-SSMS | Microsoft Docs
+title: Nawiązywanie połączenia z programem SSMS
 description: Użyj SQL Server Management Studio (SSMS), aby nawiązać połączenie z usługą i Azure SQL Data Warehouse zapytań.
 services: sql-data-warehouse
 author: XiaoyuMSFT
@@ -10,12 +10,13 @@ ms.subservice: development
 ms.date: 04/17/2018
 ms.author: xiaoyul
 ms.reviewer: igorstan
-ms.openlocfilehash: b96896c0366c6fba2548480b166bdb9cf6ca692c
-ms.sourcegitcommit: 5ded08785546f4a687c2f76b2b871bbe802e7dae
+ms.custom: seo-lt-2019
+ms.openlocfilehash: d5c903a24ea47cb152555330688dd0bc515c625b
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69575350"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73692585"
 ---
 # <a name="connect-to-sql-data-warehouse-with-sql-server-management-studio-ssms"></a>Nawiązywanie połączenia z SQL Data Warehouse przy użyciu SQL Server Management Studio (SSMS)
 > [!div class="op_single_selector"]
@@ -36,7 +37,7 @@ Aby użyć tego samouczka, potrzebne są następujące elementy:
 * SQL Server Management Studio (SSMS). Bezpłatnie [Zainstaluj program SSMS][Install SSMS] , jeśli go jeszcze nie masz.
 * W pełni kwalifikowana nazwa serwera SQL. Aby ją znaleźć, zobacz [Nawiązywanie połączenia z usługą SQL Data Warehouse][Connect to SQL Data Warehouse].
 
-## <a name="1-connect-to-your-sql-data-warehouse"></a>1. Nawiązywanie połączenia z usługą SQL Data Warehouse
+## <a name="1-connect-to-your-sql-data-warehouse"></a>1. Połącz się z SQL Data Warehouse
 1. Otwórz program SSMS.
 2. Otwórz Eksplorator obiektów. W tym celu wybierz pozycję **plik** > **Połącz Eksplorator obiektów**.
    
@@ -53,7 +54,7 @@ Aby użyć tego samouczka, potrzebne są następujące elementy:
    
     ![Poznawanie bazy danych AdventureWorksDW][3]
 
-## <a name="2-run-a-sample-query"></a>2. Uruchamianie przykładowego zapytania
+## <a name="2-run-a-sample-query"></a>2. Uruchom przykładowe zapytanie
 Teraz, po nawiązaniu połączenia z bazą danych, napiszemy zapytanie.
 
 1. Kliknij prawym przyciskiem myszy bazę danych w Eksploratorze obiektów SQL Server.
@@ -65,9 +66,9 @@ Teraz, po nawiązaniu połączenia z bazą danych, napiszemy zapytanie.
     ```sql
     SELECT COUNT(*) FROM dbo.FactInternetSales;
     ```
-4. Uruchom zapytanie. Aby to zrobić, kliknij `Execute` lub użyj następującego skrótu:. `F5`
+4. Uruchom zapytanie. Aby to zrobić, kliknij przycisk `Execute` lub użyj następującego skrótu: `F5`.
    
-    ![Uruchom zapytanie][5]
+    ![Uruchamianie zapytania][5]
 5. Przejrzyj wyniki zapytania. W tym przykładzie tabela FactInternetSales ma 60398 wierszy.
    
     ![Wyniki zapytania][6]

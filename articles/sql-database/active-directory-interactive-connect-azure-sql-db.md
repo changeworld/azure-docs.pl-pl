@@ -1,5 +1,5 @@
 ---
-title: ActiveDirectoryInteractive nawiązuje połączenie z serwerem SQL | Microsoft Docs
+title: ActiveDirectoryInteractive nawiązuje połączenie z serwerem SQL
 description: C#Przykład kodu z objaśnieniami do nawiązywania połączenia z Azure SQL Database przy użyciu trybu SqlAuthenticationMethod. ActiveDirectoryInteractive.
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: GithubMirek
 ms.author: MirekS
 ms.reviewer: GeneMi, vanto
 ms.date: 10/11/2019
-ms.openlocfilehash: c55fa6d58109345a0c600bd0c1c76c5a229c03bc
-ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
+ms.openlocfilehash: 5e7d58e5e0fc79e407e77ae9d73314a1d5d22666
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72554477"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73692302"
 ---
 # <a name="connect-to-azure-sql-database-with-azure-multi-factor-authentication"></a>Nawiązywanie połączenia z usługą Azure SQL Database przy użyciu usługi Azure Multi-Factor Authentication
 
@@ -45,7 +45,7 @@ Zrzuty ekranu tych okien dialogowych, zobacz [Konfigurowanie uwierzytelniania wi
 > [!TIP]
 > .NET Framework interfejsów API można wyszukiwać za pomocą [strony narzędzia przeglądarki interfejsu API platformy .NET](https://docs.microsoft.com/dotnet/api/).
 >
-> Możesz również wyszukiwać bezpośrednio z [parametrem Optional? Term = &lt;search wartość &gt;](https://docs.microsoft.com/dotnet/api/?term=SqlAuthenticationMethod).
+> Możesz również wyszukiwać bezpośrednio za pomocą [opcjonalnego parametru "Term =&lt;wartość wyszukiwania&gt;](https://docs.microsoft.com/dotnet/api/?term=SqlAuthenticationMethod).
 
 ## <a name="configure-your-c-application-in-the-azure-portal"></a>Skonfiguruj C# aplikację w Azure Portal
 
@@ -59,7 +59,7 @@ Zakończenie rejestracji aplikacji powoduje wygenerowanie i wyświetlenie **iden
 
 Aby zarejestrować i ustawić wymagane uprawnienia dla aplikacji:
 
-1. W Azure Portal wybierz pozycję **Azure Active Directory**  > **rejestracje aplikacji**  > **nową rejestrację**.
+1. W Azure Portal wybierz pozycję **Azure Active Directory** > **rejestracje aplikacji** > **nową rejestrację**.
 
     ![Rejestracja aplikacji](media/active-directory-interactive-connect-azure-sql-db/image1.png)
 
@@ -67,7 +67,7 @@ Aby zarejestrować i ustawić wymagane uprawnienia dla aplikacji:
 
     ![Wyświetlany identyfikator aplikacji](media/active-directory-interactive-connect-azure-sql-db/image2.png)
 
-2. Wybierz pozycję **uprawnienia interfejsu API**  > **Dodaj uprawnienie**.
+2. Wybierz pozycję **uprawnienia interfejsu API** > **Dodaj uprawnienie**.
 
     ![Ustawienia uprawnień dla zarejestrowanej aplikacji](media/active-directory-interactive-connect-azure-sql-db/sshot-registered-app-settings-required-permissions-add-api-access-c32.png)
 
@@ -75,7 +75,7 @@ Aby zarejestrować i ustawić wymagane uprawnienia dla aplikacji:
 
     ![Dodawanie dostępu do interfejsu API dla Azure SQL Database](media/active-directory-interactive-connect-azure-sql-db/sshot-registered-app-settings-required-permissions-add-api-access-Azure-sql-db-d11.png)
 
-4. Wybierz **uprawnienia delegowane**  > **user_impersonation**  > **Dodaj uprawnienia**.
+4. Wybierz **uprawnienia delegowane** > **user_impersonation** > **Dodaj uprawnienia**.
 
     ![Delegowanie uprawnień do interfejsu API dla Azure SQL Database](media/active-directory-interactive-connect-azure-sql-db/sshot-add-api-access-azure-sql-db-delegated-permissions-checkbox-e14.png)
 
@@ -83,7 +83,7 @@ Aby zarejestrować i ustawić wymagane uprawnienia dla aplikacji:
 
 Aby C# program mógł zostać uruchomiony, administrator programu Azure SQL Server musi przypisać administratora usługi Azure AD dla serwera SQL Database. 
 
-Na stronie **SQL Server** wybierz pozycję **Active Directory administrator**  > **Ustaw administratora**.
+Na stronie **SQL Server** wybierz pozycję **Active Directory administrator** > **Ustaw administratora**.
 
 Więcej informacji o administratorach i użytkownikach usługi Azure AD dla Azure SQL Database można znaleźć w temacie zrzuty ekranu w artykule [Konfigurowanie i zarządzanie Azure Active Directory uwierzytelnianiem przy użyciu SQL Database](sql-database-aad-authentication-configure.md#provision-an-azure-active-directory-administrator-for-your-azure-sql-database-server).
 
@@ -117,11 +117,11 @@ Aby C# program mógł zostać pomyślnie uruchomiony, należy przypisać odpowie
 
 | Nazwa pola statycznego | Przykładowa wartość | Gdzie w Azure Portal |
 | :---------------- | :------------ | :-------------------- |
-| Az_SQLDB_svrName | "my-sqldb-svr.database.windows.net" | **Serwery SQL**  > **filtrowania według nazwy** |
-| AzureAD_UserID | "auser \@abc. onmicrosoft.com" | **Azure Active Directory**  > **użytkownika**  > **nowego użytkownika-gościa** |
-| Initial_DatabaseName | "baza danych" | **Serwery sql**  > **baz danych SQL** |
-| ClientApplicationID | "a94f9c62-97fe-4d19-b06d-111111111111" | **Azure Active Directory**  > **rejestracje aplikacji**  > **wyszukiwania według nazwy**  > **Identyfikator aplikacji** |
-| RedirectUri | nowy identyfikator URI ("https://mywebserver.com/") | **Azure Active Directory**  > **rejestracje aplikacji**  > **wyszukiwania według nazwy**  >  *[twoja aplikacja-Rejestracja]*  > **Ustawienia**  > **RedirectURIs**<br /><br />W tym artykule wszystkie prawidłowe wartości są poprawne dla RedirectUri, ponieważ nie są używane w tym miejscu. |
+| Az_SQLDB_svrName | "my-sqldb-svr.database.windows.net" | **Serwery SQL** > **filtrowania według nazwy** |
+| AzureAD_UserID | "auser\@abc.onmicrosoft.com" | **Azure Active Directory** > **użytkownika** > **nowego użytkownika-gościa** |
+| Initial_DatabaseName | "baza danych" | **Serwery sql** > **baz danych SQL** |
+| ClientApplicationID | "a94f9c62-97fe-4d19-b06d-111111111111" | **Azure Active Directory** > **rejestracje aplikacji** > **wyszukiwania według nazwy** > **Identyfikator aplikacji** |
+| RedirectUri | nowy identyfikator URI ("https://mywebserver.com/") | **Azure Active Directory** > **rejestracje aplikacji** > **wyszukiwania według nazwy** >  *[twoja aplikacja-Rejestracja]*  > **Ustawienia** > **RedirectURIs**<br /><br />W tym artykule wszystkie prawidłowe wartości są poprawne dla RedirectUri, ponieważ nie są używane w tym miejscu. |
 | &nbsp; | &nbsp; | &nbsp; |
 
 ## <a name="verify-with-sql-server-management-studio"></a>Weryfikuj przy użyciu SQL Server Management Studio
@@ -139,13 +139,13 @@ Ponownie uruchom program SSMS, tym razem z **uwierzytelnianiem** ustawionym na *
 Aby uzyskać więcej informacji, zobacz [konfigurowanie Multi-Factor Authentication dla programu SSMS i usługi Azure AD](sql-database-ssms-mfa-authentication-configure.md).
 
 > [!NOTE]
-> Jeśli jesteś użytkownikiem-gościem w bazie danych, musisz również podać nazwę domeny usługi Azure AD dla bazy danych: Wybierz **opcje**  > **nazwy domeny usługi AD lub identyfikatora dzierżawy**. Aby znaleźć nazwę domeny w Azure Portal, wybierz pozycję **Azure Active Directory**  > **niestandardowe nazwy domen**. W C# przykładzie programu podanie nazwy domeny nie jest konieczne.
+> Jeśli jesteś użytkownikiem-gościem w bazie danych, musisz również podać nazwę domeny usługi Azure AD dla bazy danych: Wybierz **opcje** > **nazwy domeny usługi AD lub identyfikatora dzierżawy**. Aby znaleźć nazwę domeny w Azure Portal, wybierz pozycję **Azure Active Directory** > **niestandardowe nazwy domen**. W C# przykładzie programu podanie nazwy domeny nie jest konieczne.
 
 ## <a name="c-code-example"></a>C#przykład kodu
 
 Przykładowy C# program opiera się na zestawie dll [*Microsoft. IdentityModel. clients. ActiveDirectory*](https://docs.microsoft.com/dotnet/api/microsoft.identitymodel.clients.activedirectory) .
 
-Aby zainstalować ten pakiet, w programie Visual Studio wybierz pozycję **projekt**  > **Zarządzanie pakietami NuGet**. Wyszukaj i zainstaluj **Microsoft. IdentityModel. clients. ActiveDirectory**.
+Aby zainstalować ten pakiet, w programie Visual Studio wybierz pozycję **projekt** > **Zarządzanie pakietami NuGet**. Wyszukaj i zainstaluj **Microsoft. IdentityModel. clients. ActiveDirectory**.
 
 Jest to przykładowy kod C# źródłowy.
 

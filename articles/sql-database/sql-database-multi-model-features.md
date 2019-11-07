@@ -1,5 +1,5 @@
 ---
-title: Azure SQL Database możliwości wielomodelowe | Microsoft Docs
+title: Azure SQL Database możliwości modelu wielomodelowego
 description: Azure SQL Database umożliwia współpracę z wieloma modelami danych w tej samej bazie danych.
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: ''
 ms.date: 12/17/2018
-ms.openlocfilehash: e319daf322d688828c7d05d78dacd2359273223f
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 7156b9923c9cb98ae3dde143c98eb32a6eb11a9c
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68567122"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73687727"
 ---
 # <a name="multi-model-capabilities-of-azure-sql-database"></a>Możliwości wielomodelowe Azure SQL Database
 
@@ -34,7 +34,7 @@ Należy rozważyć użycie funkcji wielomodelowych Azure SQL Database w następu
 ## <a name="overview"></a>Omówienie
 
 Usługa Azure SQL udostępnia następujące funkcje wielomodelowe:
-- [Funkcje wykresu](#graph-features) umożliwiają prezentowanie danych jako zestawu węzłów i krawędzi oraz używanie standardowych zapytań Transact-SQL ulepszonych z operatorem Graph `MATCH` w celu wykonywania zapytań dotyczących danych grafu.
+- [Funkcje grafu](#graph-features) umożliwiają prezentowanie danych jako zestawu węzłów i krawędzi oraz używanie standardowych zapytań Transact-SQL ulepszonych z operatorem `MATCH` grafu w celu wykonywania zapytań dotyczących danych grafu.
 - [Funkcje JSON](#json-features) umożliwiają umieszczanie dokumentów JSON w tabelach, Przekształcanie danych relacyjnych z dokumentami JSON i na odwrót. Aby zoptymalizować zapytania, można użyć standardowego języka Transact-SQL rozszerzonego z funkcjami JSON w celu analizowania dokumentów i używania indeksów nieklastrowanych, indeksów magazynu kolumn lub tabel zoptymalizowanych pod kątem pamięci.
 - [Funkcje przestrzenne](#spatial-features) umożliwiają przechowywanie danych geograficznych i geometrycznych, indeksowanie ich przy użyciu indeksów przestrzennych oraz pobieranie danych przy użyciu zapytań przestrzennych.
 - [Funkcje XML](#xml-features) umożliwiają przechowywanie i indeksowanie danych XML w bazie danych i używanie natywnych operacji XQuery/XPath do pracy z danymi XML. Usługa Azure SQL Database ma wyspecjalizowany wbudowany aparat zapytań XML, który przetwarza dane XML.
@@ -74,7 +74,7 @@ Azure SQL Database umożliwia łatwe korzystanie z danych JSON i integrację baz
 
 ![Funkcje JSON](./media/sql-database-json-features/image_1.png)
 
-W przypadku tekstu JSON można wyodrębnić dane z pliku JSON lub sprawdzić, czy format JSON jest poprawnie sformatowany przy użyciu wbudowanych funkcji [JSON_VALUE](https://msdn.microsoft.com/library/dn921898.aspx), [JSON_QUERY](https://msdn.microsoft.com/library/dn921884.aspx)i isjson. [](https://msdn.microsoft.com/library/dn921896.aspx) Funkcja [JSON_MODIFY](https://msdn.microsoft.com/library/dn921892.aspx) umożliwia zaktualizowanie wartości w postaci tekstu JSON. Aby uzyskać bardziej zaawansowane zapytania i analizę, funkcja [OPENJSON](https://msdn.microsoft.com/library/dn921885.aspx) może przekształcić tablicę obiektów JSON w zestaw wierszy. Wszystkie zapytania SQL można wykonać na zwracanym zestawie wyników. Na koniec istnieje klauzula [for JSON](https://msdn.microsoft.com/library/dn921882.aspx) , która umożliwia formatowanie danych przechowywanych w tabelach relacyjnych jako tekstu JSON.
+W przypadku tekstu JSON można wyodrębnić dane z pliku JSON lub sprawdzić, czy format JSON jest poprawnie sformatowany przy użyciu wbudowanych funkcji [JSON_VALUE](https://msdn.microsoft.com/library/dn921898.aspx), [JSON_QUERY](https://msdn.microsoft.com/library/dn921884.aspx)i [isjson](https://msdn.microsoft.com/library/dn921896.aspx). Funkcja [JSON_MODIFY](https://msdn.microsoft.com/library/dn921892.aspx) umożliwia zaktualizowanie wartości w postaci tekstu JSON. Aby uzyskać bardziej zaawansowane zapytania i analizę, funkcja [OPENJSON](https://msdn.microsoft.com/library/dn921885.aspx) może przekształcić tablicę obiektów JSON w zestaw wierszy. Wszystkie zapytania SQL można wykonać na zwracanym zestawie wyników. Na koniec istnieje klauzula [for JSON](https://msdn.microsoft.com/library/dn921882.aspx) , która umożliwia formatowanie danych przechowywanych w tabelach relacyjnych jako tekstu JSON.
 
 Aby uzyskać więcej informacji, zobacz [jak korzystać z danych JSON w usłudze azure SQL Database](sql-database-json-features.md).
 [JSON](https://docs.microsoft.com/sql/relational-databases/json/json-data-sql-server) to podstawowa funkcja aparatu bazy danych SQL Server, dzięki czemu można znaleźć więcej informacji na temat funkcji JSON.
@@ -132,7 +132,7 @@ CREATE TABLE Collection (
 )
 ```
 
-Tę strukturę klucz-wartość można dostosować do własnych potrzeb bez ograniczeń. Przykładowo wartością może być dokument XML, a nie `nvarchar(max)` typ, jeśli wartość jest dokumentu JSON, można umieścić `CHECK` ograniczenie, które weryfikuje ważność zawartości JSON. Można umieścić dowolną liczbę wartości związanych z jednym kluczem w dodatkowych kolumnach, dodać kolumny obliczane i indeksy, aby uprościć i zoptymalizować dostęp do danych, zdefiniować tabelę jako pamięć/zoptymalizowaną pod względem schematu tabelę, aby uzyskać lepszą wydajność itd.
+Tę strukturę klucz-wartość można dostosować do własnych potrzeb bez ograniczeń. Przykładowo wartością może być dokument XML, a nie typ `nvarchar(max)`, jeśli wartość jest dokumentu JSON, można umieścić ograniczenie `CHECK`, które weryfikuje ważność zawartości JSON. Można umieścić dowolną liczbę wartości związanych z jednym kluczem w dodatkowych kolumnach, dodać kolumny obliczane i indeksy, aby uprościć i zoptymalizować dostęp do danych, zdefiniować tabelę jako pamięć/zoptymalizowaną pod względem schematu tabelę, aby uzyskać lepszą wydajność itd.
 
 Zobacz, w [jaki sposób BWin korzysta z funkcji OLTP w pamięci, aby osiągnąć niespotykaną wydajność i skalę](https://blogs.msdn.microsoft.com/sqlcat/20../../how-bwin-is-using-sql-server-2016-in-memory-oltp-to-achieve-unprecedented-performance-and-scale/) dla rozwiązania pamięci podręcznej ASP.NET, które osiągnęło 1.200.000 partie w ciągu kilku sekund, jak na przykład, jak model relacyjny może być efektywnie używany jako rozwiązanie par klucz-wartość w rzeczywistości.
 

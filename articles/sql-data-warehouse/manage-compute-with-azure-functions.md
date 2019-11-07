@@ -1,29 +1,30 @@
 ---
-title: 'Samouczek: Zarządzanie obliczeniami w środowisku Azure Functions w usłudze Azure SQL Data Warehouse | Dokumentacja firmy Microsoft'
+title: 'Samouczek: Zarządzanie obliczeniami przy użyciu Azure Functions'
 description: Jak zarządzać zasobami obliczeniowymi magazynu danych przy użyciu usługi Azure Functions.
 services: sql-data-warehouse
-author: KavithaJonnakuti
+author: julieMSFT
 manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
 ms.subservice: consume
 ms.date: 04/27/2018
-ms.author: kavithaj
+ms.author: jrasnick
 ms.reviewer: igorstan
-ms.openlocfilehash: b94e4c6f178119d6205c302cf35a9effaf2aa885
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.custom: seo-lt-2019
+ms.openlocfilehash: bc350ed092c063dcc7eca479f064114be9eb28f5
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61083865"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73693021"
 ---
-# <a name="use-azure-functions-to-manage-compute-resources-in-azure-sql-data-warehouse"></a>Użyj usługi Azure Functions do zarządzania compute zasobów w usłudze Azure SQL Data Warehouse
+# <a name="use-azure-functions-to-manage-compute-resources-in-azure-sql-data-warehouse"></a>Aby zarządzać zasobami obliczeniowymi w programie Azure SQL Data Warehouse, użyj Azure Functions
 
-Ten samouczek używa usługi Azure Functions do zarządzania zasobami obliczeniowymi dla magazynu danych w usłudze Azure SQL Data Warehouse.
+Ten samouczek używa Azure Functions do zarządzania zasobami obliczeniowymi dla hurtowni danych w Azure SQL Data Warehouse.
 
 Aby móc używać aplikacji funkcji platformy Azure z usługą SQL Data Warehouse, należy utworzyć [konto nazwy głównej usługi](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-create-service-principal-portal) z dostępem współautora w ramach tej samej subskrypcji, w której znajduje się wystąpienie magazynu danych. 
 
-## <a name="deploy-timer-based-scaling-with-an-azure-resource-manager-template"></a>Wdrażanie oparte na czasomierzu skalowanie przy użyciu szablonu usługi Azure Resource Manager
+## <a name="deploy-timer-based-scaling-with-an-azure-resource-manager-template"></a>Wdrażanie skalowania opartego na czasomierzu przy użyciu szablonu Azure Resource Manager
 
 Aby wdrożyć szablon, potrzebne są następujące informacje:
 
@@ -35,25 +36,25 @@ Aby wdrożyć szablon, potrzebne są następujące informacje:
 - Identyfikator aplikacji nazwy głównej usługi
 - Klucz tajny usługi nazwy głównej usługi
 
-Po uzyskaniu informacji przedstawionych powyżej, Wdróż następujący szablon:
+Po uzyskaniu powyższych informacji Wdróż ten szablon:
 
 <a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FMicrosoft%2Fsql-data-warehouse-samples%2Fmaster%2Farm-templates%2FsqlDwTimerScaler%2Fazuredeploy.json" target="_blank">
 <img src="https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/1-CONTRIBUTION-GUIDE/images/deploytoazure.png"/>
 </a>
 
-Po wdrożeniu szablonu powinny dostępne trzy nowe zasoby: bezpłatny Plan usługi Azure App Service, plan na podstawie użycia aplikacja funkcji i konta magazynu, która obsługuje rejestrowanie i kolejkę operacji. Kontynuuj czytanie pozostałych sekcji, aby dowiedzieć się, jak zmodyfikować wdrożone funkcje i dostosować je do swoich potrzeb.
+Po wdrożeniu szablonu należy znaleźć trzy nowe zasoby: bezpłatny plan Azure App Service, plan aplikacja funkcji na podstawie zużycia oraz konto magazynu obsługujące rejestrowanie i kolejkę operacji. Kontynuuj czytanie pozostałych sekcji, aby dowiedzieć się, jak zmodyfikować wdrożone funkcje i dostosować je do swoich potrzeb.
 
-## <a name="change-the-compute-level"></a>Zmienianie poziomu obliczeniowego
+## <a name="change-the-compute-level"></a>Zmień poziom obliczeń
 
 1. Przejdź do usługi aplikacji funkcji. Jeśli szablon został wdrożony przy użyciu wartości domyślnych, usługa ta powinna mieć nazwę *DWOperations*. Po otwarciu aplikacji funkcji powinno być widocznych pięć funkcji wdrożonych w usłudze aplikacji funkcji. 
 
    ![Funkcje wdrażane przy użyciu szablonu](media/manage-compute-with-azure-functions/five-functions.png)
 
-2. Wybierz pozycję *DWScaleDownTrigger* lub *DWScaleUpTrigger* w zależności od tego, czy chcesz zmienić czas skalowania w górę, czy czas skalowania w dół. W menu rozwijanym wybierz pozycję Integruj.
+2. Wybierz pozycję *DWScaleDownTrigger* lub *DWScaleUpTrigger* w zależności od tego, czy chcesz zmienić czas skalowania w górę, czy czas skalowania w dół. Z menu rozwijanego wybierz pozycję Integruj.
 
    ![Wybieranie pozycji Integruj dla funkcji](media/manage-compute-with-azure-functions/select-integrate.png)
 
-3. Obecnie powinna być wyświetlana wartość *%ScaleDownTime%* lub *%ScaleUpTime%* . Te wartości wskazują, że harmonogram jest oparty na wartościach określonych w [ustawieniach aplikacji][Application Settings]. Teraz możesz zignorować tę wartość i zmienić harmonogram na preferowaną godzinę dotyczącymi kolejnych kroków.
+3. Obecnie powinna być wyświetlana wartość *%ScaleDownTime%* lub *%ScaleUpTime%* . Te wartości wskazują, że harmonogram jest oparty na wartościach zdefiniowanych w [ustawieniach aplikacji][Application Settings]. Na razie można zignorować tę wartość i zmienić harmonogram na preferowany czas na podstawie następnych kroków.
 
 4. W obszarze harmonogramu dodaj godzinę, o której wyrażenie CRON ma odzwierciedlać, jak często usługa SQL Data Warehouse ma być skalowana w górę. 
 
@@ -64,10 +65,10 @@ Po wdrożeniu szablonu powinny dostępne trzy nowe zasoby: bezpłatny Plan usłu
    {second} {minute} {hour} {day} {month} {day-of-week}
    ```
 
-   Na przykład *"0 30 9 ** 1-5"* spowoduje odzwierciedlanie wyzwalacza w każdy dzień roboczy o godzinie 9:30:00. Aby uzyskać więcej informacji, zapoznaj się z [przykładami harmonogramów][schedule examples] usługi Azure Functions.
+   Na przykład *"0 30 9 * * 1-5"* będzie odzwierciedlał wyzwalacz każdego dnia tygodnia o godzinie 9:10:30. Aby uzyskać więcej informacji, zapoznaj się z tematem Azure Functions [Schedule przykłady][schedule examples].
 
 
-## <a name="change-the-time-of-the-scale-operation"></a>Zmień czas operacji skalowania
+## <a name="change-the-time-of-the-scale-operation"></a>Zmień godzinę operacji skalowania
 
 1. Przejdź do usługi aplikacji funkcji. Jeśli szablon został wdrożony przy użyciu wartości domyślnych, usługa ta powinna mieć nazwę *DWOperations*. Po otwarciu aplikacji funkcji powinno być widocznych pięć funkcji wdrożonych w usłudze aplikacji funkcji. 
 
@@ -75,7 +76,7 @@ Po wdrożeniu szablonu powinny dostępne trzy nowe zasoby: bezpłatny Plan usłu
 
    ![Zmienianie poziomu obliczeniowego wyzwalacza funkcji](media/manage-compute-with-azure-functions/index-js.png)
 
-3. Zmień wartość elementu *ServiceLevelObjective* na odpowiedni poziom i wybierz pozycję Zapisz. Ta wartość jest poziom obliczeniowy, które wystąpienie magazynu danych będzie skalowane na podstawie zgodnie z harmonogramem, zdefiniowane w sekcji integracja.
+3. Zmień wartość elementu *ServiceLevelObjective* na odpowiedni poziom i wybierz pozycję Zapisz. Ta wartość jest poziomem obliczeń, na który będzie skalowane wystąpienie magazynu danych, na podstawie harmonogramu zdefiniowanego w sekcji Integruj.
 
 ## <a name="use-pause-or-resume-instead-of-scale"></a>Używanie wstrzymywania lub wznawiania zamiast skalowania 
 
@@ -92,14 +93,14 @@ Obecnie funkcje włączone domyślnie to *DWScaleDownTrigger* i *DWScaleUpTrigge
 3. Przejdź do kart *Integracja* odpowiednich wyzwalaczy, aby zmienić ich harmonogram.
 
    > [!NOTE]
-   > Różnicy funkcjonalności pomiędzy wyzwalaczy skalowania i wyzwalacze wstrzymywanie i wznawianie jest komunikat, który jest wysyłany do kolejki. Aby uzyskać więcej informacji, zobacz [Dodawanie nowej funkcji wyzwalacza][Add a new trigger function].
+   > Różnica funkcjonalna między wyzwalaczami skalowania i wyzwalaczami wstrzymywania/wznawiania jest komunikatem wysyłanym do kolejki. Aby uzyskać więcej informacji, zobacz [Dodawanie nowej funkcji wyzwalacza][Add a new trigger function].
 
 
 ## <a name="add-a-new-trigger-function"></a>Dodawanie nowej funkcji wyzwalacza
 
-Obecnie szablon zawiera tylko dwie funkcje skalowania. Za pomocą tych funkcji w trakcie dnia, możesz tylko skalować w dół oraz jego nowszymi wersjami jeden raz. Aby uzyskać większą kontrolę, takie jak skalowanie w dół wielokrotnie w ciągu dnia lub określenia innego zachowania skalowania w weekendy konieczne jest dodanie kolejnego wyzwalacza.
+Obecnie szablon zawiera tylko dwie funkcje skalowania. Korzystając z tych funkcji, w ciągu dnia można skalować w dół tylko raz i jeden raz. Aby uzyskać bardziej szczegółową kontrolę, na przykład skalowanie w dół wiele razy dziennie lub mieć inne zachowanie skalowania w weekendy, należy dodać kolejny wyzwalacz.
 
-1. Utwórz nową pustą funkcję. Wybierz *+* przycisk obok pozycji Funkcje, aby wyświetlić okienko szablonu funkcji.
+1. Utwórz nową pustą funkcję. Wybierz przycisk *+* blisko lokalizacji funkcji, aby wyświetlić okienko szablonu funkcji.
 
    ![Tworzenie nowej funkcji](media/manage-compute-with-azure-functions/create-new-function.png)
 
@@ -115,7 +116,7 @@ Obecnie szablon zawiera tylko dwie funkcje skalowania. Za pomocą tych funkcji w
 
    ![Kopiowanie pliku index.js](media/manage-compute-with-azure-functions/index-js.png)
 
-5. Ustawić zmiennej operacji żądane zachowanie w następujący sposób:
+5. Ustaw dla zmiennej operacji odpowiednie zachowanie w następujący sposób:
 
    ```javascript
    // Resume the data warehouse instance
@@ -138,7 +139,7 @@ Obecnie szablon zawiera tylko dwie funkcje skalowania. Za pomocą tych funkcji w
 
 ## <a name="complex-scheduling"></a>Sporządzanie złożonego harmonogramu
 
-W tej sekcji przedstawiono pokrótce, co jest potrzebne do uzyskania bardziej złożonych, wstrzymywania, wznawiania i skalowania funkcje.
+W tej sekcji przedstawiono krótkie informacje o tym, co jest niezbędne do uzyskania bardziej złożonego harmonogramu funkcji wstrzymywania, wznawiania i skalowania.
 
 ### <a name="example-1"></a>Przykład 1:
 
@@ -151,7 +152,7 @@ Codzienne skalowanie w górę o godz. 8:00 do wartości DW600 i skalowanie w dó
 
 ### <a name="example-2"></a>Przykład 2: 
 
-Codzienne skalowanie w górę o 8: 00 do wartości dw1000, jednokrotne skalowanie w dół do wartości DW600 o 16: 00, a następnie Skaluj w o godzinie 22: 00 do wartości DW200.
+Codzienne skalowanie w górę o 8:00 do wartości DW1000, skalowanie w dół do wartości DW600 w 16:00 i skalowanie w dół o 10pm do wartości DW200.
 
 | Funkcja  | Harmonogram     | Operacja                                |
 | :-------- | :----------- | :--------------------------------------- |
@@ -172,7 +173,7 @@ Skalowanie w górę o godz. 8:00 do wartości DW1000, jednokrotne skalowanie w d
 
 
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 Dowiedz się więcej o funkcjach platformy Azure z [wyzwalaczem czasomierza](../azure-functions/functions-create-scheduled-function.md).
 

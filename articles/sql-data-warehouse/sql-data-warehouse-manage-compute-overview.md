@@ -1,5 +1,5 @@
 ---
-title: Zarządzanie zasobem obliczeniowym w Azure SQL Data Warehouse | Microsoft Docs
+title: Zarządzanie zasobem obliczeniowym
 description: Dowiedz się więcej o możliwościach skalowania wydajności w Azure SQL Data Warehouse. Skalowanie w poziomie przez dostosowanie jednostek dwu lub niższych kosztów przez wstrzymanie magazynu danych.
 services: sql-data-warehouse
 author: kevinvngo
@@ -10,18 +10,19 @@ ms.subservice: manage
 ms.date: 04/17/2018
 ms.author: kevin
 ms.reviewer: igorstan
-ms.openlocfilehash: f0935ccc4c4274bfab0c589ef158d4ea0bef455c
-ms.sourcegitcommit: 5ded08785546f4a687c2f76b2b871bbe802e7dae
+ms.custom: seo-lt-2019
+ms.openlocfilehash: f93996d834ab805f2228543a833c4ce601042dc4
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69575324"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73692629"
 ---
 # <a name="manage-compute-in-azure-sql-data-warehouse"></a>Zarządzanie obliczeniami w Azure SQL Data Warehouse
 Dowiedz się więcej na temat zarządzania zasobami obliczeniowymi w Azure SQL Data Warehouse. Niższe koszty przez wstrzymanie magazynu danych lub skalowanie magazynu danych w celu spełnienia wymagań dotyczących wydajności. 
 
 ## <a name="what-is-compute-management"></a>Co to jest zarządzanie obliczeniami?
-Architektura SQL Data Warehouse oddziela magazyn i obliczeniowe, umożliwiając każdemu skalowanie niezależnie. W związku z tym można skalować obliczenia w celu spełnienia wymagań dotyczących wydajności niezależnie od magazynu danych. Możesz również wstrzymywać i wznawiać zasoby obliczeniowe. Naturalna konsekwencja tej architektury polega na tym [](https://azure.microsoft.com/pricing/details/sql-data-warehouse/) , że rozliczenia na potrzeby obliczeniowe i magazyny są oddzielone. Jeśli nie musisz używać hurtowni danych przez pewien czas, możesz zaoszczędzić koszty obliczeń, zatrzymując obliczenia. 
+Architektura SQL Data Warehouse oddziela magazyn i obliczeniowe, umożliwiając każdemu skalowanie niezależnie. W związku z tym można skalować obliczenia w celu spełnienia wymagań dotyczących wydajności niezależnie od magazynu danych. Możesz również wstrzymywać i wznawiać zasoby obliczeniowe. Naturalna konsekwencja tej architektury polega na tym, że [rozliczenia](https://azure.microsoft.com/pricing/details/sql-data-warehouse/) na potrzeby obliczeniowe i magazyny są oddzielone. Jeśli nie musisz używać hurtowni danych przez pewien czas, możesz zaoszczędzić koszty obliczeń, zatrzymując obliczenia. 
 
 ## <a name="scaling-compute"></a>Skalowanie obliczeniowe
 Obliczenia można skalować w poziomie lub skali z powrotem przez dostosowanie ustawienia [jednostki magazynu danych](what-is-a-data-warehouse-unit-dwu-cdwu.md) dla magazynu danych. Ładowanie i wydajność zapytań można zwiększyć liniowo w miarę dodawania większej liczby jednostek magazynu danych. 
@@ -32,7 +33,7 @@ Aby wykonać operację skalowania, SQL Data Warehouse najpierw Kasuj wszystkie z
 
 W poniższej tabeli przedstawiono, w jaki sposób liczba dystrybucji na węzeł obliczeniowy zmienia się w miarę zmiany jednostek magazynu danych.  DWU6000 udostępnia 60 węzłów obliczeniowych i osiąga znacznie wyższą wydajność zapytań niż DWU100. 
 
-| Jednostki magazynu danych  | \#węzłów obliczeniowych | \#z dystrybucji na węzeł |
+| Jednostki magazynu danych  | \# węzłów obliczeniowych | \# dystrybucji na węzeł |
 | ---- | ------------------ | ---------------------------- |
 | 100  | 1                  | 60                           |
 | 200  | 2                  | 30                           |
@@ -111,7 +112,7 @@ Aby sprawdzić stan magazynu danych, zobacz Przewodnik Szybki Start dotyczący [
 
 ## <a name="permissions"></a>Uprawnienia
 
-Skalowanie magazynu danych wymaga uprawnień opisanych w [instrukcji ALTER DATABASE](/sql/t-sql/statements/alter-database-azure-sql-data-warehouse).  Polecenie Wstrzymaj i Wznów wymaga uprawnienia współautora [bazy danych SQL](../role-based-access-control/built-in-roles.md#sql-db-contributor) , w tym Microsoft. SQL/serwery/bazy danych/działanie.
+Skalowanie magazynu danych wymaga uprawnień opisanych w [instrukcji ALTER DATABASE](/sql/t-sql/statements/alter-database-azure-sql-data-warehouse).  Polecenie Wstrzymaj i Wznów wymaga uprawnienia [współautora bazy danych SQL](../role-based-access-control/built-in-roles.md#sql-db-contributor) , w tym Microsoft. SQL/serwery/bazy danych/działanie.
 
 
 ## <a name="next-steps"></a>Następne kroki

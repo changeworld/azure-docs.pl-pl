@@ -1,5 +1,5 @@
 ---
-title: Udostępnianie w usłudze Azure SaaS z wieloma dzierżawami | Microsoft Docs
+title: Udostępnianie w usłudze Azure SaaS z wieloma dzierżawcami
 description: Dowiedz się, jak udostępniać i katalogować nowe dzierżawy w Azure SQL Database aplikacji SaaS z wieloma dzierżawcami
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: MightyPen
 ms.author: genemi
 ms.reviewer: billgib,andrela,stein
 ms.date: 09/24/2018
-ms.openlocfilehash: 3e8e0c69c93c992f31c515c2033a9ae57d2ee3e0
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: f829c0d734838de42a82343876cefa007dcca04d
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68570304"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73692014"
 ---
 # <a name="provision-and-catalog-new-tenants-in-a-saas-application-using-a-sharded-multi-tenant-azure-sql-database"></a>Udostępnianie i katalogowanie nowych dzierżawców w aplikacji SaaS przy użyciu wielodostępnej usługi Azure SQL Database podzielonej na fragmenty
 
@@ -124,7 +124,7 @@ Ten samouczek zawiera informacje na temat wykonywania następujących czynności
 
 #### <a name="prerequisites"></a>Wymagania wstępne
 
-Do wykonania zadań opisanych w tym samouczku niezbędne jest spełnienie następujących wymagań wstępnych:
+Do wykonania kroków tego samouczka niezbędne jest spełnienie następujących wymagań wstępnych:
 
 - Zainstalowany jest program Azure PowerShell. Aby uzyskać szczegółowe informacje, zobacz [Rozpoczynanie pracy z programem Azure PowerShell](https://docs.microsoft.com/powershell/azure/get-started-azureps)
 
@@ -132,7 +132,7 @@ Do wykonania zadań opisanych w tym samouczku niezbędne jest spełnienie nastę
 
 - Pobierz skrypty Wingtip i kod źródłowy:
     - Wingtip bilety SaaS wielodostępnych skryptów bazy danych i kodu źródłowego aplikacji są dostępne w repozytorium GitHub [WingtipTicketsSaaS-MultitenantDB](https://github.com/microsoft/WingtipTicketsSaaS-MultiTenantDB) .
-    - Zapoznaj [](saas-tenancy-wingtip-app-guidance-tips.md) się z ogólnymi wskazówkami dotyczącymi kroków pobierania i odblokowywania skryptów Wingtip. 
+    - Zapoznaj się z [ogólnymi wskazówkami](saas-tenancy-wingtip-app-guidance-tips.md) dotyczącymi kroków pobierania i odblokowywania skryptów Wingtip. 
 
 ## <a name="provision-a-tenant-into-a-database-shared-with-other-tenants"></a>Udostępnianie dzierżawcy do bazy danych *udostępnionej* innym dzierżawcom
 
@@ -142,12 +142,12 @@ W tej sekcji zostanie wyświetlona lista najważniejszych akcji związanych z ob
 
 Poniżej przedstawiono najważniejsze elementy przepływu pracy aprowizacji, które można krokowo wykonać:
 
-- **Oblicz nowy klucz dzierżawy**: Funkcja skrótu służy do tworzenia klucza dzierżawy na podstawie nazwy dzierżawy.
-- **Sprawdź, czy klucz dzierżawy już istnieje**: Wykaz jest sprawdzany w celu upewnienia się, że klucz nie został jeszcze zarejestrowany.
-- **Zainicjuj dzierżawcę w domyślnej bazie danych dzierżawcy**: Baza danych dzierżawy została zaktualizowana w celu dodania nowych informacji o dzierżawie.  
-- **Zarejestruj dzierżawcę w wykazie**: Mapowanie między nowym kluczem dzierżawy a istniejącą bazą danych tenants1 jest dodawane do wykazu. 
-- **Dodaj nazwę dzierżawy do tabeli rozszerzeń wykazu**: Nazwa miejsca zostanie dodana do tabeli dzierżawców w katalogu.  To dodanie pokazuje, w jaki sposób baza danych wykazu może zostać rozszerzona w celu obsługi dodatkowych danych specyficznych dla aplikacji.
-- **Otwórz stronę zdarzeń dla nowej dzierżawy**: Strona zdarzenia *Bushwillow Blues* zostanie otwarta w przeglądarce.
+- **Oblicz nowy klucz dzierżawy**: funkcja skrótu służy do tworzenia klucza dzierżawy na podstawie nazwy dzierżawy.
+- **Sprawdź, czy klucz dzierżawy już istnieje**: wykaz jest sprawdzany w celu upewnienia się, że klucz nie został jeszcze zarejestrowany.
+- **Zainicjuj dzierżawcę w domyślnej bazie danych dzierżawy**: baza danych dzierżawy została zaktualizowana w celu dodania informacji o nowej dzierżawie.  
+- **Rejestrowanie dzierżawy w wykazie**: mapowanie między nowym kluczem dzierżawy a istniejącą bazą danych tenants1 jest dodawane do wykazu. 
+- **Dodaj nazwę dzierżawy do tabeli rozszerzeń wykazu**: nazwa miejsca jest dodawana do tabeli dzierżawców w katalogu.  To dodanie pokazuje, w jaki sposób baza danych wykazu może zostać rozszerzona w celu obsługi dodatkowych danych specyficznych dla aplikacji.
+- **Otwórz stronę zdarzeń dla nowej dzierżawy**: Strona zdarzeń *Bushwillow Blues* zostanie otwarta w przeglądarce.
 
    ![zdarzenia](media/saas-multitenantdb-provision-and-catalog/bushwillow.png)
 
@@ -155,12 +155,12 @@ Poniżej przedstawiono najważniejsze elementy przepływu pracy aprowizacji, kt�
 
 Aby zrozumieć, w jaki sposób aplikacja Wingtip implementuje nowe udostępnianie dzierżawy w udostępnionej bazie danych, Dodaj punkt przerwania i przejdź przez przepływ pracy:
 
-1. W *ISE programu PowerShell*Otwórz pozycję... Moduły uczeniaProvisionTenants\\*demo-ProvisionTenants. ps1* i ustawiają następujące parametry:\\ \\
-   - $TenantName = **Bushwillow Blues**, nazwa nowego miejsca.
-   - $VenueType = **Blues**, jeden ze wstępnie zdefiniowanych typów miejsc: blues, ClassicalMusic, odpowiedzialna, Jazz, judo, motorracing, Multipurpose, Opera, ROCKMUSIC, piłka nożna (małe litery, bez spacji).
-   - $DemoScenario = **1**, aby zainicjować dzierżawę w udostępnionej bazie danych innym dzierżawcom.
+1. W programie *POWERSHELL ISE*Otwórz program...\\moduły uczenia\\ProvisionTenants\\*demo-ProvisionTenants. ps1* i ustaw następujące parametry:
+   - **$TenantName** = **Bushwillow Blues**, nazwa nowego miejsca.
+   - **$VenueType** = **Blues**, jeden ze wstępnie zdefiniowanych typów miejsc: blues, ClassicalMusic, odpowiedzialna, Jazz, judo, motorracing, Multipurpose, Opera, ROCKMUSIC, piłka nożna (małe litery, bez spacji).
+   - **$DemoScenario** = **1**, aby zainicjować dzierżawę w udostępnionej bazie danych innym dzierżawcom.
 
-2. Dodaj punkt przerwania, umieszczając kursor w dowolnym miejscu w wierszu 38, wiersz, który brzmi: *New-dzierżawca*, a następnie naciśnij klawisz **F9**.
+2. Dodaj punkt przerwania, umieszczając kursor w dowolnym miejscu w wierszu 38, wiersz o następującej treści: *New-dzierżawca*, a następnie naciśnij klawisz **F9**.
 
    ![punkt przerwania](media/saas-multitenantdb-provision-and-catalog/breakpoint.png)
 
@@ -168,7 +168,7 @@ Aby zrozumieć, w jaki sposób aplikacja Wingtip implementuje nowe udostępniani
 
 4. Po zatrzymaniu wykonywania skryptu w punkcie przerwania naciśnij klawisz **F11** , aby wkroczyć do kodu.
 
-   ![debuguj](media/saas-multitenantdb-provision-and-catalog/debug.png)
+   ![Rozpocząć](media/saas-multitenantdb-provision-and-catalog/debug.png)
 
 5. Śledź wykonywanie skryptu przy użyciu opcji menu **Debuguj** , **F10** i **F11**, aby przekroczyć lub użyć funkcji o nazwie.
 
@@ -180,14 +180,14 @@ Aby uzyskać więcej informacji na temat debugowania skryptów programu PowerShe
 
 Poniżej przedstawiono najważniejsze elementy przepływu pracy, które należy wykonać podczas śledzenia skryptu:
 
-- **Oblicz nowy klucz dzierżawy**: Funkcja skrótu służy do tworzenia klucza dzierżawy na podstawie nazwy dzierżawy.
-- **Sprawdź, czy klucz dzierżawy już istnieje**: Wykaz jest sprawdzany w celu upewnienia się, że klucz nie został jeszcze zarejestrowany.
-- **Utwórz nową bazę danych dzierżawy**: Baza danych jest tworzona przez skopiowanie bazy danych *basetenantdb* przy użyciu szablonu Menedżer zasobów.  Nazwa nowej bazy danych jest określana na podstawie nazwy dzierżawy.
+- **Oblicz nowy klucz dzierżawy**: funkcja skrótu służy do tworzenia klucza dzierżawy na podstawie nazwy dzierżawy.
+- **Sprawdź, czy klucz dzierżawy już istnieje**: wykaz jest sprawdzany w celu upewnienia się, że klucz nie został jeszcze zarejestrowany.
+- **Tworzenie nowej bazy danych dzierżawy**: baza danych jest tworzona przez skopiowanie bazy danych *basetenantdb* przy użyciu szablonu Menedżer zasobów.  Nazwa nowej bazy danych jest określana na podstawie nazwy dzierżawy.
 - **Dodaj bazę danych do wykazu**: Nowa baza danych dzierżawy jest zarejestrowana jako fragmentu w wykazie.
-- **Zainicjuj dzierżawcę w domyślnej bazie danych dzierżawcy**: Baza danych dzierżawy została zaktualizowana w celu dodania nowych informacji o dzierżawie.  
-- **Zarejestruj dzierżawcę w wykazie**: Mapowanie między nowym kluczem dzierżawy i bazą danych *sequoiasoccer* jest dodawane do wykazu.
-- **Nazwa dzierżawy została dodana do wykazu**: Nazwa miejsca zostanie dodana do tabeli rozszerzeń dzierżawców w wykazie.
-- **Otwórz stronę zdarzeń dla nowej dzierżawy**: Strona zdarzenia *Sequoia piłka nożna* zostanie otwarta w przeglądarce.
+- **Zainicjuj dzierżawcę w domyślnej bazie danych dzierżawy**: baza danych dzierżawy została zaktualizowana w celu dodania informacji o nowej dzierżawie.  
+- **Rejestrowanie dzierżawy w wykazie**: mapowanie między nowym kluczem dzierżawy i bazą danych *sequoiasoccer* jest dodawane do wykazu.
+- **Nazwa dzierżawy została dodana do wykazu**: nazwa miejsca zostanie dodana do tabeli rozszerzenia dzierżawców w wykazie.
+- **Otwórz stronę zdarzeń dla nowej dzierżawy**: Strona zdarzenia *Sequoia piłkarskie* jest otwarta w przeglądarce.
 
    ![zdarzenia](media/saas-multitenantdb-provision-and-catalog/sequoiasoccer.png)
 
@@ -195,12 +195,12 @@ Poniżej przedstawiono najważniejsze elementy przepływu pracy, które należy 
 
 Teraz przechodzenie przez proces skryptu podczas tworzenia dzierżawy we własnej bazie danych:
 
-1. Nadal w... Moduły uczeniaProvisionTenants\\*demo-ProvisionTenants. ps1* ustawiają następujące parametry:\\ \\
-   - $TenantName = **Sequoia piłka nożna**, nazwisko nowego miejsca.
-   - $VenueType = **piłka nożna**, jeden ze wstępnie zdefiniowanych typów miejsc: blues, ClassicalMusic, odpowiedzialna, Jazz, judo, motorracing, Multipurpose, Opera, ROCKMUSIC, piłka nożna (małe litery, bez spacji).
-   - $DemoScenario = **2**, aby udostępnić dzierżawcom swoją własną bazę danych.
+1. Nadal w...\\moduły uczenia\\ProvisionTenants\\*demo-ProvisionTenants. ps1* ustaw następujące parametry:
+   - **$TenantName** = **Sequoia piłka nożna**, nazwa nowego miejsca.
+   - **$VenueType** = **piłka nożna**, jeden ze wstępnie zdefiniowanych typów miejsc: blues, ClassicalMusic, odpowiedzialna, Jazz, judo, motorracing, Multipurpose, Opera, ROCKMUSIC, piłka nożna (małe litery, bez spacji).
+   - **$DemoScenario** = **2**, aby udostępnić dzierżawcom swoją własną bazę danych.
 
-2. Dodaj nowy punkt przerwania, umieszczając kursor w dowolnym miejscu w wierszu 57, wiersz  *& &nbsp;"$PSScriptRoot \new-tenantanddatabase"* , a następnie naciśnij klawisz **F9**.
+2. Dodaj nowy punkt przerwania, umieszczając kursor w dowolnym miejscu w wierszu 57, wiersz " *&&nbsp;$PSScriptRoot \new-tenantanddatabase"* , a następnie naciśnij klawisz **F9**.
 
    ![punkt przerwania](media/saas-multitenantdb-provision-and-catalog/breakpoint2.png)
 
@@ -212,14 +212,14 @@ Teraz przechodzenie przez proces skryptu podczas tworzenia dzierżawy we własne
 
 W tym ćwiczeniu zainicjujemy partię 17 dzierżawców. Zaleca się zainicjowanie tej partii dzierżawców przed rozpoczęciem innych samouczków Wingtip, aby umożliwić pracę z innymi bazami danych.
 
-1. W *ISE programu PowerShell*Otwórz pozycję... \\Moduły uczeniaProvisionTenants\\demo-ProvisionTenants. ps1 i Zmień parametr $DemoScenario na 4:\\
-   - $DemoScenario = **4**, aby zainicjować obsługę partii dzierżawców w udostępnionej bazie danych.
+1. W *ISE programu PowerShell*Otwórz pozycję...\\moduły uczenia\\ProvisionTenants\\*demo-ProvisionTenants. ps1* i Zmień parametr *$DemoScenario* na 4:
+   - **$DemoScenario** = **4**, aby zainicjować obsługę partii dzierżawców w udostępnionej bazie danych.
 
 2. Naciśnij klawisz **F5** i uruchom skrypt.
 
 ### <a name="verify-the-deployed-set-of-tenants"></a>Weryfikowanie wdrożonego zestawu dzierżawców 
 
-Na tym etapie masz połączenie dzierżawców wdrożonych w udostępnionej bazie danych i dzierżawcach wdrożonych w ich własnych bazach danych. Azure Portal można użyć do sprawdzenia utworzonych baz danych. W [Azure Portal](https://portal.azure.com)Otwórz serwer **tenants1-\<MT-User\>**  , przechodząc do listy serwerów SQL.  Lista **baz danych SQL** powinna zawierać udostępnioną bazę danych **tenants1** oraz bazy danych dla dzierżawców, które znajdują się w własnej bazie danych:
+Na tym etapie masz połączenie dzierżawców wdrożonych w udostępnionej bazie danych i dzierżawcach wdrożonych w ich własnych bazach danych. Azure Portal można użyć do sprawdzenia utworzonych baz danych. W [Azure Portal](https://portal.azure.com)otwórz serwer **\>tenants1-MT-\<użytkownika** , przechodząc do listy serwerów SQL.  Lista **baz danych SQL** powinna zawierać udostępnioną bazę danych **tenants1** oraz bazy danych dla dzierżawców, które znajdują się w własnej bazie danych:
 
    ![lista baz danych](media/saas-multitenantdb-provision-and-catalog/Databases.png)
 
@@ -227,7 +227,7 @@ Gdy Azure Portal zawiera bazy danych dzierżawy, nie można zobaczyć dzierżawc
 
 #### <a name="using-wingtip-tickets-events-hub-page"></a>Korzystanie ze strony centrum zdarzeń biletów Wingtip
 
-Otwórz stronę centrum zdarzeń w przeglądarce (http: Events. Wingtip-Mt.\<User\>. trafficmanager.NET)  
+Otwórz stronę centrum zdarzeń w przeglądarce (http: Events. Wingtip-Mt.\<USER\>. trafficmanager.net)  
 
 #### <a name="using-catalog-database"></a>Korzystanie z bazy danych wykazu
 
@@ -236,7 +236,7 @@ Pełna lista dzierżawców i odpowiednia baza danych dla każdej z nich są dost
 - Nazwa dzierżawy jest przechowywana w tabeli dzierżawców.
 - Nazwa bazy danych jest przechowywana w tabelach zarządzania fragmentu.
 
-1. W SQL Server Management Studio (SSMS) Połącz się z serwerem dzierżawców w **katalogu-Mt.\<User\>. Database.Windows.NET**, z loginem, **Developer**i Password = **P ssword1\@**
+1. W SQL Server Management Studio (SSMS) Połącz się z serwerem dzierżawców w **katalogu-Mt.\<użytkownika\>. Database.Windows.NET**, z logowaniem = **Developer**i hasłem = **P\@ssword1**
 
     ![Okno dialogowe połączenia programu SSMS](media/saas-multitenantdb-provision-and-catalog/SSMSConnection.png)
 

@@ -1,5 +1,5 @@
 ---
-title: Zadania usługi Azure SQL Elastic Database (wersja zapoznawcza) | Microsoft Docs
+title: Zadania usługi Azure SQL Elastic Database (wersja zapoznawcza)
 description: Skonfiguruj zadania Elastic Database (wersja zapoznawcza), aby uruchamiać skrypty Transact-SQL (T-SQL) w zestawie co najmniej jednej bazy danych Azure SQL Database
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: srinia
 ms.author: srinia
 ms.reviewer: sstein
 ms.date: 12/18/2018
-ms.openlocfilehash: 3a0aa6e28ea4c40d5cad5ba99edec344c7979acf
-ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
+ms.openlocfilehash: 2afe7d5c9667002c97d354cd1e94f292c6302558
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68935091"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73685299"
 ---
 # <a name="create-configure-and-manage-elastic-jobs"></a>Tworzenie, Konfigurowanie i zarządzanie zadaniami elastycznymi
 
@@ -48,7 +48,7 @@ Za pomocą [poświadczeń o zakresie bazy danych](/sql/t-sql/statements/create-d
 Konfigurowanie odpowiednich poświadczeń służących do uruchamiania zadania może wydawać się nieco mylące, więc należy mieć na uwadze następujące kwestie:
 
 - Poświadczenia o zakresie bazy danych należy utworzyć w *bazie danych zadań*.
-- **Aby zadanie zostało pomyślnie ukończone [](https://docs.microsoft.com/sql/relational-databases/security/permissions-database-engine) (** `jobuser` na poniższym diagramie), wszystkie docelowe bazy danych muszą mieć uprawnienia do logowania z odpowiednimi uprawnieniami.
+- Aby zadanie zakończyło **się pomyślnie, wszystkie docelowe bazy danych muszą mieć [odpowiednie uprawnienia](https://docs.microsoft.com/sql/relational-databases/security/permissions-database-engine) do ukończenia zadania** (`jobuser` na poniższym diagramie).
 - Poświadczenia mogą być ponownie używane między zadaniami, a hasła poświadczeń są szyfrowane i zabezpieczone przez użytkowników, którzy mają dostęp tylko do odczytu do obiektów zadań.
 
 Poniższa ilustracja ułatwia zrozumienie i ustawienie odpowiednich poświadczeń zadań. **Pamiętaj, aby utworzyć użytkownika w każdej bazie danych (wszystkie *docelowe bazy danych użytkowników*), w której ma być uruchamiane zadanie**.
@@ -75,7 +75,7 @@ Wersja zapoznawcza jest obecnie ograniczona do 100 współbieżnych zadań.
 
 Aby zapewnić, że zasoby nie będą przeciążone podczas uruchamiania zadań w ramach baz danych w elastycznej puli SQL, możliwe jest skonfigurowanie zadań w taki sposób, aby ograniczana była liczba baz danych, w ramach których mogą one być jednocześnie uruchamiane.
 
-Ustaw liczbę współbieżnych baz danych wykonywanych przez zadanie przez ustawienie `sp_add_jobstep` `@max_parallelism` parametru procedury składowanej w języku T-SQL lub `Add-AzSqlElasticJobStep -MaxParallelism` w programie PowerShell.
+Ustaw liczbę współbieżnych baz danych, dla których uruchomione jest zadanie, ustawiając parametr `@max_parallelism` procedury składowanej `sp_add_jobstep` w języku T-SQL lub `Add-AzSqlElasticJobStep -MaxParallelism` w programie PowerShell.
 
 ## <a name="best-practices-for-creating-jobs"></a>Najlepsze rozwiązania dotyczące tworzenia zadań
 

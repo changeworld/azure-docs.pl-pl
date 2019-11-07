@@ -1,5 +1,5 @@
 ---
-title: Wdrażanie usługi Split-Merge | Microsoft Docs
+title: Wdrażanie usługi z podziałem i scalaniem
 description: Aby przenieść dane między bazami danych podzielonej na fragmenty, użyj zbyt Split-Merge.
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 12/04/2018
-ms.openlocfilehash: a8c50f492c28bf1e009d15d6332e939959190a49
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 009fb4be61aad5c700c7520764e9414ed9422721
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68568509"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73690317"
 ---
 # <a name="deploy-a-split-merge-service-to-move-data-between-sharded-databases"></a>Wdrażanie usługi Split-Merge do przenoszenia danych między bazami danych podzielonej na fragmenty
 
@@ -40,12 +40,12 @@ Pliki są umieszczane w katalogu o nazwie **Microsoft. Azure. SQLDatabase. Elast
 
 ## <a name="configure-your-split-merge-service"></a>Konfigurowanie usługi Split-Merge
 ### <a name="split-merge-service-configuration"></a>Konfiguracja usługi Split-Merge
-1. W folderze, do którego pobrano zbiory z podziałem, Utwórz kopię pliku **ServiceConfiguration. Template. cscfg** , który został wysłany wraz z **SplitMergeService. cspkg** i zmień jego nazwę na ServiceConfiguration **. cscfg**.
+1. W folderze, do którego pobrano zbiory z podziałem, Utwórz kopię pliku **ServiceConfiguration. Template. cscfg** , który został wysłany wraz z **SplitMergeService. cspkg** i zmień jego nazwę na **ServiceConfiguration. cscfg**.
 2. Otwórz element **ServiceConfiguration. cscfg** w edytorze tekstu, takim jak program Visual Studio, który sprawdza poprawność danych wejściowych, takich jak format odcisków palców certyfikatów.
 3. Utwórz nową bazę danych lub wybierz istniejącą bazę danych, która będzie stanowić bazę danych stanu dla operacji Split-Merge i Pobierz parametry połączenia tej bazy danych. 
    
    > [!IMPORTANT]
-   > W tej chwili baza danych stanu musi używać sortowania łacińskiego (SQL\_Latin1\_General\_CP1\_Ci\_AS). Aby uzyskać więcej informacji, zobacz [Nazwa sortowania systemu Windows (Transact-SQL)](https://msdn.microsoft.com/library/ms188046.aspx).
+   > W tej chwili baza danych stanu musi używać sortowania łacińskiego (SQL\_Latin1\_ogólne\_CP1\_CI\_jako). Aby uzyskać więcej informacji, zobacz [Nazwa sortowania systemu Windows (Transact-SQL)](https://msdn.microsoft.com/library/ms188046.aspx).
    >
 
    W usłudze Azure SQL DB parametry połączenia zwykle mają postać:
@@ -142,7 +142,7 @@ Jeśli rola procesu roboczego nie zostanie przełączona w tryb online, ale rola
    ```
 
 * Upewnij się, że nazwa serwera nie zaczyna się od **https://** .
-* Upewnij się, że serwer usługi Azure SQL DB umożliwia usługom platformy Azure Łączenie się z nią. Aby to zrobić, Otwórz swoją bazę danych w portalu i upewnij się, że **zezwolić na dostęp do usług platformy Azure** jest ustawiana **na** **.
+* Upewnij się, że serwer usługi Azure SQL DB umożliwia usługom platformy Azure Łączenie się z nią. Aby to zrobić, Otwórz bazę danych w portalu i upewnij się, że ustawienie **Zezwalaj na dostęp do usług platformy Azure** jest ustawione na * * na * * * *.
 
 ## <a name="test-the-service-deployment"></a>Testowanie wdrożenia usługi
 ### <a name="connect-with-a-web-browser"></a>Nawiązywanie połączenia za pomocą przeglądarki sieci Web
@@ -165,7 +165,7 @@ Uwzględnione pliki skryptów:
        <th>Kroki</th>
      </tr>
      <tr>
-       <th rowspan="5">SetupSampleSplitMergeEnvironment.ps1</th>
+       <th rowspan="5">SetupSampleSplitMergeEnvironment. ps1</th>
        <td>1.    Tworzy bazę danych Menedżera map fragmentu</td>
      </tr>
      <tr>
@@ -187,7 +187,7 @@ Uwzględnione pliki skryptów:
        <th>Kroki</th>
      </tr>
    <tr>
-       <th rowspan="4">ExecuteSampleSplitMerge.ps1 </th>
+       <th rowspan="4">ExecuteSampleSplitMerge. ps1 </th>
        <td>1.    Wysyła żądanie Split do frontonu sieci Web usługi Split-Merge, który dzieli dane z pierwszego fragmentuu na drugi fragmentu.</td>
      </tr>
      <tr>
