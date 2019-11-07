@@ -1,5 +1,5 @@
 ---
-title: Samouczek SaaS z wieloma dzierżawcami — Azure SQL Database | Microsoft Docs
+title: Samouczek SaaS z wieloma dzierżawcami — Azure SQL Database
 description: Inicjowanie obsługi administracyjnej i katalogowanie nowych dzierżawców przy użyciu wzorca aplikacji autonomicznej
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: billgib
 ms.date: 09/24/2018
-ms.openlocfilehash: f9087ff33bccb54497ec8d781a47469553683d65
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: de1007aac3988f2ea78b9d1b7b1de19b862f196a
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68570277"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73691939"
 ---
 # <a name="provision-and-catalog-new-tenants-using-the--application-per-tenant-saas-pattern"></a>Inicjowanie obsługi administracyjnej i katalogowanie nowych dzierżawców przy użyciu wzorca aplikacji dla dzierżawców SaaS
 
@@ -69,7 +69,7 @@ Na końcu tego samouczka masz zestaw autonomicznych aplikacji dzierżawców z ka
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-Do wykonania zadań opisanych w tym samouczku niezbędne jest spełnienie następujących wymagań wstępnych: 
+Do wykonania kroków tego samouczka niezbędne jest spełnienie następujących wymagań wstępnych: 
 
 * Zainstalowany jest program Azure PowerShell. Aby uzyskać szczegółowe informacje, zobacz [Rozpoczynanie pracy z programem Azure PowerShell](https://docs.microsoft.com/powershell/azure/get-started-azureps)
 * Zostaną wdrożone trzy przykładowe aplikacje dzierżawy. Aby wdrożyć te aplikacje w mniej niż pięć minut, zobacz [wdrażanie i eksplorowanie wzorca aplikacji autonomicznej Wingtip biletów SaaS](saas-standaloneapp-get-started-deploy.md).
@@ -79,12 +79,12 @@ Do wykonania zadań opisanych w tym samouczku niezbędne jest spełnienie nastę
 W tym zadaniu dowiesz się, jak udostępnić katalog używany do rejestracji wszystkich baz danych dzierżaw. Wykonasz następujące zadania: 
 
 * **Zainicjuj obsługę administracyjną bazy danych katalogu** przy użyciu szablonu zarządzania zasobami platformy Azure. Baza danych została zainicjowana przez zaimportowanie pliku BACPAC.  
-* **Zarejestruj przykładowe** wdrożone wcześniej aplikacje dzierżawców.  Każda dzierżawa jest zarejestrowana przy użyciu klucza złożonego ze skrótu nazwy dzierżawy.  Nazwa dzierżawy jest również przechowywana w tabeli rozszerzeń w wykazie.
+* **Zarejestruj przykładowe wdrożone wcześniej aplikacje dzierżawców** .  Każda dzierżawa jest zarejestrowana przy użyciu klucza złożonego ze skrótu nazwy dzierżawy.  Nazwa dzierżawy jest również przechowywana w tabeli rozszerzeń w wykazie.
 
-1. W programie PowerShell ISE Otwórz *..\Learning Modules\UserConfig.PSM* i zaktualizuj **\<wartość użytkownika\>** do wartości użytej podczas wdrażania trzech przykładowych aplikacji.  **Zapisz plik**.  
+1. W programie PowerShell ISE Otwórz *..\Learning Modules\UserConfig.PSM* i zaktualizuj wartość **\<\>użytkownika** do wartości użytej podczas wdrażania trzech przykładowych aplikacji.  **Zapisz plik**.  
 1. W programie PowerShell ISE Otwórz *..\Learning Modules\ProvisionTenants\Demo-ProvisionAndCatalog.ps1* i ustaw **$Scenario = 1**. Wdróż katalog dzierżawy i zarejestruj wstępnie zdefiniowane dzierżawy.
 
-1. Dodaj punkt przerwania, umieszczając kursor w dowolnym miejscu w wierszu `& $PSScriptRoot\New-Catalog.ps1`, a następnie naciśnij klawisz **F9**.
+1. Dodaj punkt przerwania, umieszczając kursor w dowolnym miejscu w wierszu, który brzmi `& $PSScriptRoot\New-Catalog.ps1`, a następnie naciśnij klawisz **F9**.
 
     ![Ustawianie punktu przerwania na potrzeby śledzenia](media/saas-standaloneapp-provision-and-catalog/breakpoint.png)
 
@@ -97,13 +97,13 @@ Po zakończeniu działania skryptu katalog będzie istnieć i wszystkie przykła
 
 Teraz przyjrzyj się utworzonym zasobom.
 
-1. Otwórz [Azure Portal](https://portal.azure.com/) i przejrzyj grupy zasobów.  Otwórz grupę zasobów **\<użytkownika\> Wingtip-sa-Catalog** i zanotuj serwer wykazu i bazę danych.
+1. Otwórz [Azure Portal](https://portal.azure.com/) i przejrzyj grupy zasobów.  Otwórz grupę zasobów **Wingtip-sa-catalog\<\>użytkownika** i zanotuj serwer wykazu oraz bazę danych.
 1. Otwórz bazę danych w portalu i wybierz pozycję *Eksplorator danych* z menu po lewej stronie.  Kliknij polecenie Zaloguj, a następnie wprowadź hasło = **P\@ssword1**.
 
 
 1. Eksploruj schemat bazy danych *tenantcatalog* .  
-   * Wszystkie obiekty w `__ShardManagement` schemacie są udostępniane przez Elastic Databaseą bibliotekę kliencką.
-   * `Tenants` Tabela i`TenantsExtended` widok są rozszerzeniami dodawanymi w przykładzie, który pokazuje, jak można rozszerzać katalog w celu zapewnienia dodatkowej wartości.
+   * Wszystkie obiekty w schemacie `__ShardManagement` są udostępniane przez Elastic Database bibliotekę kliencką.
+   * Tabela `Tenants` i widok `TenantsExtended` są rozszerzeniami dodawanymi w przykładzie, który pokazuje, jak można rozszerzać katalog w celu zapewnienia dodatkowej wartości.
 1. Uruchom zapytanie, `SELECT * FROM dbo.TenantsExtended`.          
 
    ![Eksplorator danych](media/saas-standaloneapp-provision-and-catalog/data-explorer-tenantsextended.png)
@@ -124,7 +124,7 @@ W tym zadaniu dowiesz się, jak zainicjować obsługę administracyjną pojedync
 
 1. W programie PowerShell ISE Otwórz *..\Learning Modules\ProvisionTenants\Demo-ProvisionAndCatalog.ps1* i ustaw **$Scenario = 2**. Wdróż katalog dzierżawy i zarejestruj wstępnie zdefiniowane dzierżawy
 
-1. Dodaj punkt przerwania w skrypcie, umieszczając kursor w dowolnym miejscu w wierszu 49, `& $PSScriptRoot\New-TenantApp.ps1`a następnie naciśnij klawisz **F9**.
+1. Dodaj punkt przerwania w skrypcie, umieszczając kursor w dowolnym miejscu w wierszu 49, który brzmi `& $PSScriptRoot\New-TenantApp.ps1`, a następnie naciśnij klawisz **F9**.
 1. Uruchom skrypt, naciskając klawisz **F5**. 
 1.  Po zatrzymaniu wykonywania skryptu w punkcie przerwania naciśnij klawisz **F11** , aby przejść do skryptu New-Catalog. ps1.
 1.  Śledź wykonywanie skryptu przy użyciu opcji menu Debuguj, F10 i F11, aby przekroczyć lub użyć funkcji o nazwie.

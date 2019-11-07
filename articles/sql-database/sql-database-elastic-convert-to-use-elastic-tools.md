@@ -1,5 +1,5 @@
 ---
-title: Migrowanie istniejących baz danych do skalowania w poziomie | Microsoft Docs
+title: Migrowanie istniejących baz danych w celu skalowania w poziomie
 description: Konwertowanie baz danych podzielonej na fragmenty na korzystanie z narzędzi elastycznych baz danych przez utworzenie Menedżera mapy fragmentu
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 01/25/2019
-ms.openlocfilehash: 2d6d5c51cb381c089633ba010a1d64c8486ddcd8
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: b88c56872408a7ffe127a4e96d2313301d44c892
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68568730"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73690532"
 ---
 # <a name="migrate-existing-databases-to-scale-out"></a>Migrowanie istniejących baz danych w celu skalowania w poziomie
 Łatwo Zarządzaj istniejącymi bazami danych podzielonej na fragmenty skalowanymi w poziomie przy użyciu narzędzi bazy danych Azure SQL Database (takich jak [Elastic Database Biblioteka klienta](sql-database-elastic-database-client-library.md)). Najpierw przekonwertuj istniejący zestaw baz danych, aby użyć [Menedżera mapy fragmentu](sql-database-elastic-scale-shard-map-management.md). 
@@ -97,10 +97,10 @@ Aby użyć tego wzorca mapowania, wartości identyfikatora dzierżawy muszą by�
     -RangeShardMapName 'RangeShardMap' 
     -ShardMapManager $ShardMapManager 
 
-### <a name="option-3-list-mappings-on-an-individual-database"></a>Opcja 3: Mapowanie listy dla pojedynczej bazy danych
+### <a name="option-3-list-mappings-on-an-individual-database"></a>Opcja 3: mapowania listy dla pojedynczej bazy danych
 Skonfigurowanie tego wzorca wymaga również utworzenia mapy listy, jak pokazano w kroku 2, opcja 1.
 
-## <a name="step-3-prepare-individual-shards"></a>Krok 3: Przygotowywanie pojedynczych fragmentów
+## <a name="step-3-prepare-individual-shards"></a>Krok 3. przygotowanie poszczególnych fragmentów
 Dodaj każdy fragmentu (baza danych) do Menedżera mapy fragmentu. Przygotowuje to pojedyncze bazy danych do przechowywania informacji dotyczących mapowania. Wykonaj tę metodę dla każdego fragmentuu.
 
     Add-Shard 
@@ -110,7 +110,7 @@ Dodaj każdy fragmentu (baza danych) do Menedżera mapy fragmentu. Przygotowuje 
     # The $ShardMap is the shard map created in step 2.
 
 
-## <a name="step-4-add-mappings"></a>Krok 4: Dodaj mapowania
+## <a name="step-4-add-mappings"></a>Krok 4. Dodawanie mapowań
 Dodawanie mapowań zależy od rodzaju utworzonej mapy fragmentu. Jeśli utworzono mapę list, należy dodać mapowania listy. Jeśli utworzono mapę zakresu, należy dodać mapowania zakresu.
 
 ### <a name="option-1-map-the-data-for-a-list-mapping"></a>Opcja 1. Mapowanie danych dla mapowania listy
@@ -148,9 +148,9 @@ Do informacji o istniejących fragmentów i skojarzonych z nimi mapowań można 
     Get-Mappings -ShardMap $ShardMap 
 
 ## <a name="summary"></a>Podsumowanie
-Po zakończeniu instalacji można rozpocząć korzystanie z biblioteki klienta Elastic Database. Można również użyć kwerendy [routingu](sql-database-elastic-scale-data-dependent-routing.md) i [fragmentu](sql-database-elastic-scale-multishard-querying.md)opartego na danych.
+Po zakończeniu instalacji można rozpocząć korzystanie z biblioteki klienta Elastic Database. Można również użyć kwerendy routingu i [fragmentu](sql-database-elastic-scale-multishard-querying.md) [opartego na danych](sql-database-elastic-scale-data-dependent-routing.md) .
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 Pobierz skrypty programu PowerShell z [skryptów narzędzi Elastic Database usługi Azure SQL DB](https://gallery.technet.microsoft.com/scriptcenter/Azure-SQL-DB-Elastic-731883db).
 
 Narzędzia są również w serwisie GitHub: [Azure/Elastic-DB-Tools](https://github.com/Azure/elastic-db-tools).

@@ -1,22 +1,22 @@
 ---
-title: Korzystanie z lokalnej bramy danych dla usługi Azure Virtual Network źródła danych | Microsoft Docs
-description: Dowiedz się, jak skonfigurować serwer do korzystania z bramy dla źródeł danych w sieci wirtualnej.
+title: Konfigurowanie Azure Analysis Services dla źródeł danych sieci wirtualnej | Microsoft Docs
+description: Dowiedz się, jak skonfigurować serwer Azure Analysis Services, aby używał bramy dla źródeł danych w usłudze Azure Virtual Network (VNet).
 author: minewiskan
 ms.service: azure-analysis-services
 ms.topic: conceptual
-ms.date: 09/12/2019
+ms.date: 10/30/2019
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: d1993996c0f982624d6976b50871fa8c4592e2f6
-ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
+ms.openlocfilehash: 384f4c2ee3021678c530aa5c98eaf4dbfd661e95
+ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/13/2019
-ms.locfileid: "72301223"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73572274"
 ---
 # <a name="use-gateway-for-data-sources-on-an-azure-virtual-network-vnet"></a>Używanie bramy dla źródeł danych w usłudze Azure Virtual Network (Sieć wirtualna)
 
-W tym artykule opisano właściwość serwera **AlwaysUseGateway** , która ma być używana, gdy źródła danych znajdują się w usłudze [Azure Virtual Network (VNET)](../virtual-network/virtual-networks-overview.md).
+W tym artykule opisano Azure Analysis Services właściwość serwera **AlwaysUseGateway** , która ma być używana, gdy źródła danych znajdują się w usłudze [Azure Virtual Network (VNET)](../virtual-network/virtual-networks-overview.md).
 
 ## <a name="server-access-to-vnet-data-sources"></a>Dostęp serwera do źródeł danych sieci wirtualnej
 
@@ -29,14 +29,14 @@ Azure SQL Database źródła danych wystąpienia zarządzanego są uruchamiane w
 
 ## <a name="configure-alwaysusegateway-property"></a>Skonfiguruj Właściwość AlwaysUseGateway
 
-1. W obszarze SSMS > Server > **właściwości** > **Ogólne**wybierz pozycję **Pokaż zaawansowane (wszystkie) właściwości**.
+1. W obszarze narzędzia SSMS > Server > **właściwości** > **Ogólne**wybierz pozycję **Pokaż zaawansowane (wszystkie) właściwości**.
 2. W **ASPaaS\AlwaysUseGateway**wybierz **wartość true**.
 
     ![Zawsze używaj właściwości bramy](media/analysis-services-vnet-gateway/aas-ssms-always-property.png)
 
 
-## <a name="see-also"></a>Zobacz także
+## <a name="see-also"></a>Zobacz też
 [Łączenie z lokalnymi źródłami danych](analysis-services-gateway.md)   
-[Instalowanie i Konfigurowanie lokalnej bramy danych](analysis-services-gateway-install.md)   
+[Zainstalowanie i skonfigurowanie lokalnej bramy danych](analysis-services-gateway-install.md)   
 [Virtual Network platformy Azure (Sieć wirtualna)](../virtual-network/virtual-networks-overview.md)   
 

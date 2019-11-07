@@ -1,5 +1,5 @@
 ---
-title: Dostrajanie wydajności przy użyciu widoków Azure SQL Data Warehouseych Microsoft Docs
+title: Dostrajanie wydajności w widokach z materiałami
 description: Zalecenia i zagadnienia, które należy znać w przypadku używania widoków z materiałami, aby zwiększyć wydajność zapytań.
 services: sql-data-warehouse
 author: XiaoyuMSFT
@@ -10,12 +10,13 @@ ms.subservice: development
 ms.date: 09/05/2019
 ms.author: xiaoyul
 ms.reviewer: nibruno; jrasnick
-ms.openlocfilehash: 593841ac95c4c6f17f33a8d35d6b3f83a6db1124
-ms.sourcegitcommit: e1b6a40a9c9341b33df384aa607ae359e4ab0f53
+ms.custom: seo-lt-2019
+ms.openlocfilehash: c1cfd3b4c365a04c3d4704f37e4ed4177fa74619
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71338917"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73692988"
 ---
 # <a name="performance-tuning-with-materialized-views"></a>Dostrajanie wydajności w widokach z materiałami 
 Widoki z materiałami w Azure SQL Data Warehouse zapewniają niską metodę konserwacji dla złożonych zapytań analitycznych w celu uzyskania szybkiej wydajności bez żadnej zmiany w zapytaniu. W tym artykule omówiono ogólne wskazówki dotyczące korzystania z widoków z materiałami.
@@ -37,7 +38,7 @@ Większość wymagań dotyczących widoku standardowego nadal stosuje się do wi
 |Definicja widoku                 | Przechowywane w usłudze Azure Data Warehouse.              | Przechowywane w usłudze Azure Data Warehouse.    
 |Wyświetl zawartość                    | Generowane za każdym razem, gdy widok jest używany.   | Wstępnie przetworzone i przechowywane w usłudze Azure Data Warehouse podczas tworzenia widoku. Zaktualizowano w miarę dodawania danych do tabel bazowych.                                             
 |Odświeżanie danych                    | Zawsze aktualizowane                               | Zawsze aktualizowane                          
-|Szybkość pobierania danych widoku z złożonych zapytań     | opóźnienie                                         | Szybko  
+|Szybkość pobierania danych widoku z złożonych zapytań     | Opóźnienie                                         | Szybkość  
 |Magazyn dodatkowy                   | Nie                                           | Tak                             
 |Składnia                          | UTWÓRZ WIDOK                                  | UTWÓRZ WIDOK Z MATERIAŁAMI JAKO WYBRANY           
      

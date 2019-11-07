@@ -1,5 +1,5 @@
 ---
-title: Monitorowanie i dostrajanie wydajności — Azure SQL Database | Microsoft Docs
+title: Monitorowanie i dostrajanie wydajności — Azure SQL Database
 description: Wskazówki dotyczące dostrajania wydajności w Azure SQL Database oceny i ulepszeń.
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: jrasnick, carlrab
 ms.date: 01/25/2019
-ms.openlocfilehash: 5df9df1474489d7f1b1fb4e1089143cca63a3e42
-ms.sourcegitcommit: f2d9d5133ec616857fb5adfb223df01ff0c96d0a
+ms.openlocfilehash: c11112963ec82a0e53df156048495e7b5141bcb7
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/03/2019
-ms.locfileid: "71935598"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73687769"
 ---
 # <a name="monitoring-and-performance-tuning"></a>Monitorowanie i dostrajanie wydajności
 
@@ -72,7 +72,7 @@ Problemy związane z uruchamianiem mogą być spowodowane przez:
 
 Problemy zależne mogą być spowodowane przez:
 - **Blokowanie**: jedno zapytanie może blokować blokowanie obiektów w bazie danych, podczas gdy inne próbują uzyskać dostęp do tych samych obiektów. Można zidentyfikować blokowanie zapytań za pomocą narzędzi widoków DMV lub monitorowania.
-- **Problemy we/wy**: zapytania mogą oczekiwać na zapisanie stron w plikach danych lub dziennika. W takim przypadku należy sprawdzić statystykę oczekiwania `INSTANCE_LOG_RATE_GOVERNOR`, `WRITE_LOG` lub `PAGEIOLATCH_*` w DMV.
+- **Problemy we/wy**: zapytania mogą oczekiwać na zapisanie stron w plikach danych lub dziennika. W takim przypadku należy sprawdzić dane statystyczne `INSTANCE_LOG_RATE_GOVERNOR`, `WRITE_LOG`lub `PAGEIOLATCH_*` zaczekać w DMV.
 - **Problemy**z bazą danych tempdb: Jeśli obciążenie używa tabel tymczasowych lub w planach występuje Relanie bazy danych tempdb, zapytania mogą mieć problem z przepływem pracy w bazie danych tempdb. 
 - **Problemy związane z pamięcią**: Jeśli obciążenie nie ma wystarczającej ilości pamięci, może to oznaczać, że stron życia strony lub zapytania mogą uzyskać mniejszą ilość pamięci niż jest to potrzebne. W niektórych przypadkach wbudowana analiza w optymalizatora zapytań naprawi problemy związane z pamięcią.
  
@@ -105,7 +105,7 @@ Aby uzyskać więcej informacji na temat wykrywania parametrów i przetwarzania 
 
 Kilka obejść może rozwiązać problemy związane z PSP. Każde obejście ma powiązane kompromisy i wady:
 
-- Użyj wskazówki dotyczącej ponownej [kompilacji](https://docs.microsoft.com/sql/t-sql/queries/hints-transact-sql-query) w każdym wykonaniu zapytania. To obejście umożliwia wymianę czasu kompilacji i zwiększenie procesora w celu zapewnienia lepszej jakości planu. Opcja `RECOMPILE` często nie jest możliwa w przypadku obciążeń wymagających dużej przepływności.
+- Użyj wskazówki dotyczącej ponownej [kompilacji](https://docs.microsoft.com/sql/t-sql/queries/hints-transact-sql-query) w każdym wykonaniu zapytania. To obejście umożliwia wymianę czasu kompilacji i zwiększenie procesora w celu zapewnienia lepszej jakości planu. Opcja `RECOMPILE` jest często niemożliwa w przypadku obciążeń wymagających dużej przepływności.
 - Użyj [opcji zapytania (Optymalizacja dla...)](https://docs.microsoft.com/sql/t-sql/queries/hints-transact-sql-query) , aby zastąpić rzeczywistą wartość parametru wartością typowego parametru, która generuje plan, który jest wystarczająco dobry dla większości wartości parametrów. Ta opcja wymaga dobrego poznania optymalnych wartości parametrów i skojarzonych cech planu.
 - Użyj [opcji (Optymalizacja dla NIEznanej)](https://docs.microsoft.com/sql/t-sql/queries/hints-transact-sql-query) wskazówki, aby zastąpić rzeczywistą wartość parametru, a zamiast tego użyć średniej gęstości wektora. Można to zrobić również, przechwytując wartości parametrów przychodzących w zmiennych lokalnych, a następnie używając zmiennych lokalnych w predykatach zamiast używać samych parametrów. W przypadku tej poprawki średnia gęstość musi być *wystarczająca*.
 - Wyłącz wykrywanie parametrów za pomocą wskazówki zapytania [DISABLE_PARAMETER_SNIFFING](https://docs.microsoft.com/sql/t-sql/queries/hints-transact-sql-query) .
@@ -132,7 +132,7 @@ FROM t1 JOIN t2 ON t1.c1 = t2.c1
 WHERE t1.c1 = @p1 AND t2.c2 = '961C3970-0E54-4E8E-82B6-5545BE897F8F'
 ```
 
-W tym przykładzie `t1.c1` przyjmuje `@p1`, ale `t2.c2` kontynuuje korzystanie z identyfikatora GUID jako literału. W takim przypadku, jeśli zmienisz wartość `c2`, zapytanie jest traktowane jako inne zapytanie i zostanie wykonana Nowa kompilacja. Aby zmniejszyć kompilacje w tym przykładzie, należy również Sparametryzuj identyfikator GUID.
+W tym przykładzie `t1.c1` pobiera `@p1`, ale `t2.c2` nadal przyjmuje identyfikator GUID jako literał. W takim przypadku, jeśli zmienisz wartość `c2`, zapytanie jest traktowane jako inne zapytanie i zostanie wykonana Nowa kompilacja. Aby zmniejszyć kompilacje w tym przykładzie, należy również Sparametryzuj identyfikator GUID.
 
 Następujące zapytanie pokazuje liczbę zapytań według skrótu zapytania, aby określić, czy zapytanie jest prawidłowo sparametryzowane:
 

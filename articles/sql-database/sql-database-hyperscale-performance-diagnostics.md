@@ -1,5 +1,5 @@
 ---
-title: Azure SQL Database — Diagnostyka wydajności w warstwie usługi w ramach skalowania | Microsoft Docs
+title: Azure SQL Database — Diagnostyka wydajności w warstwie usługi w ramach skalowania
 description: W tym artykule opisano sposób rozwiązywania problemów z wydajnością skalowania w Azure SQL Database.
 services: sql-database
 ms.service: sql-database
@@ -9,12 +9,12 @@ author: denzilribeiro
 ms.author: denzilr
 ms.reviewer: sstein
 ms.date: 10/18/2019
-ms.openlocfilehash: fa8b02cf5ee6f24bcc77aae057f41842da721981
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: b8acdbc63098ae99355e8874f7c1585759e5fb7f
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73521136"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73689846"
 ---
 # <a name="sql-hyperscale-performance-troubleshooting-diagnostics"></a>Diagnostyka rozwiązywania problemów z wydajnością w ramach skalowania SQL
 
@@ -99,7 +99,7 @@ Stosunek liczby odczytów wykonanych na RBPEX do zagregowanych odczytów wykonan
 - W podstawowym obliczeniu zapis w dzienniku jest uwzględniany w file_id 2 programu sys. DM _io_virtual_file_stats. Zapis w dzienniku w podstawowym obliczeniu jest zapisem w strefie wyładunkowej dziennika.
 - Rekordy dziennika nie są zaostrzone w replice pomocniczej przy zatwierdzeniu. W ramach skalowania usługa xlog jest stosowana w dzienniku w odniesieniu do zdalnych replik. Ponieważ zapisy dziennika nie są faktycznie wykonywane w replikach pomocniczych, wszystkie operacje we/wy dziennika w replikach pomocniczych są tylko do celów śledzenia.
 
-## <a name="additional-resources"></a>Zasoby dodatkowe
+## <a name="additional-resources"></a>Dodatkowe zasoby
 
 - W przypadku limitów zasobów rdzeń wirtualny dla pojedynczej bazy danych na potrzeby skalowania w poziomie można zobaczyć [limity rdzeń wirtualny warstwy usługi](sql-database-vcore-resource-limits-single-databases.md#hyperscale---provisioned-compute---gen5) .
 - Aby uzyskać Azure SQL Database dostrajania wydajności, zobacz [wydajność zapytań w Azure SQL Database](sql-database-performance-guidance.md)

@@ -1,5 +1,5 @@
 ---
-title: Monitorowanie wydajności Azure SQL Database przy użyciu widoków DMV | Microsoft Docs
+title: Monitorowanie wydajności Azure SQL Database przy użyciu widoków DMV
 description: Informacje na temat wykrywania i diagnozowania typowych problemów z wydajnością przy użyciu dynamicznych widoków zarządzania do monitorowania Microsoft Azure SQL Database.
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: juliemsft
 ms.author: jrasnick
 ms.reviewer: carlrab
 ms.date: 12/19/2018
-ms.openlocfilehash: a630ceb1748f38dc169a4ebabcbb4e021de4273c
-ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
+ms.openlocfilehash: c7eed3fc8e9d0328a3e793e1ff4b3652ab86e2bc
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68881556"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73687739"
 ---
 # <a name="monitoring-performance-azure-sql-database-using-dynamic-management-views"></a>Monitorowanie wydajności Azure SQL Database przy użyciu dynamicznych widoków zarządzania
 
@@ -79,7 +79,7 @@ GO
 
 ### <a name="the-cpu-issue-occurred-in-the-past"></a>Wystąpił problem z procesorem CPU w przeszłości
 
-Jeśli problem wystąpił w przeszłości i chcesz przeprowadzić analizę głównej przyczyny, użyj [magazynu zapytań](https://docs.microsoft.com/sql/relational-databases/performance/monitoring-performance-by-using-the-query-store). Użytkownicy z dostępem do bazy danych mogą używać języka T-SQL do wykonywania zapytań dotyczących danych magazynu zapytań.  Domyślne konfiguracje magazynu zapytań korzystają z stopnia szczegółowości 1 godziny.  Użyj następującego zapytania, aby przyjrzeć się działaniu w przypadku dużych zapytań zużywających procesor CPU. To zapytanie zwraca 15 najważniejszych zapytań zużywających procesor CPU.  Pamiętaj, aby `rsi.start_time >= DATEADD(hour, -2, GETUTCDATE()`zmienić:
+Jeśli problem wystąpił w przeszłości i chcesz przeprowadzić analizę głównej przyczyny, użyj [magazynu zapytań](https://docs.microsoft.com/sql/relational-databases/performance/monitoring-performance-by-using-the-query-store). Użytkownicy z dostępem do bazy danych mogą używać języka T-SQL do wykonywania zapytań dotyczących danych magazynu zapytań.  Domyślne konfiguracje magazynu zapytań korzystają z stopnia szczegółowości 1 godziny.  Użyj następującego zapytania, aby przyjrzeć się działaniu w przypadku dużych zapytań zużywających procesor CPU. To zapytanie zwraca 15 najważniejszych zapytań zużywających procesor CPU.  Pamiętaj, aby zmienić `rsi.start_time >= DATEADD(hour, -2, GETUTCDATE()`:
 
 ```sql
 -- Top 15 CPU consuming queries by query hash
@@ -108,7 +108,7 @@ Podczas identyfikowania problemów dotyczących wydajności operacji we/wy najwa
 
 - `PAGEIOLATCH_*`
 
-  W przypadku problemów we/wy pliku `PAGEIOLATCH_SH`danych `PAGEIOLATCH_EX`( `PAGEIOLATCH_UP`w tym,,).  Jeśli nazwa typu oczekiwania zawiera we **/wy** , wskazuje na problem we/wy. Jeśli nie ma **operacji we/wy** w nazwie oczekiwania zamka strony, wskazuje na inny typ problemu (na przykład rywalizacja o bazę danych tempdb).
+  W przypadku problemów we/wy pliku danych (w tym `PAGEIOLATCH_SH`, `PAGEIOLATCH_EX`, `PAGEIOLATCH_UP`).  Jeśli nazwa typu oczekiwania zawiera we **/wy** , wskazuje na problem we/wy. Jeśli nie ma **operacji we/wy** w nazwie oczekiwania zamka strony, wskazuje na inny typ problemu (na przykład rywalizacja o bazę danych tempdb).
 
 - `WRITE_LOG`
 
@@ -116,7 +116,7 @@ Podczas identyfikowania problemów dotyczących wydajności operacji we/wy najwa
 
 ### <a name="if-the-io-issue-is-occurring-right-now"></a>Jeśli problem we/wy występuje już teraz
 
-Użyj [widoku sys. DM _exec_requests](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-exec-requests-transact-sql) lub [sys. DM _os_waiting_tasks](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-os-waiting-tasks-transact-sql) , `wait_type` aby zobaczyć i `wait_time`.
+Aby wyświetlić `wait_type` i `wait_time`, użyj [widoku sys. DM _exec_requests](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-exec-requests-transact-sql) lub [sys. DM _os_waiting_tasks](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-os-waiting-tasks-transact-sql) .
 
 #### <a name="identify-data-and-log-io-usage"></a>Identyfikowanie użycia operacji we/wy danych i dziennika
 
@@ -130,8 +130,8 @@ ORDER BY end_time DESC;
 
 Jeśli limit operacji we/wy został osiągnięty, dostępne są dwie opcje:
 
-- Option 1: Uaktualnij rozmiar obliczeń lub warstwę usług
-- Opcja 2: Zidentyfikuj i Dostosuj zapytania korzystające z większości operacji we/wy.
+- Opcja 1: uaktualnianie rozmiaru obliczeń lub warstwy usług
+- Opcja 2: Identyfikowanie i dostrajanie zapytań zużywających najwięcej operacji we/wy.
 
 #### <a name="view-buffer-related-io-using-the-query-store"></a>Wyświetlanie operacji we/wy związanych z buforem przy użyciu magazynu zapytań
 
@@ -235,15 +235,15 @@ ORDER BY total_log_bytes_used DESC;
 GO
 ```
 
-## <a name="identify-tempdb-performance-issues"></a>Identyfikowanie `tempdb` problemów z wydajnością
+## <a name="identify-tempdb-performance-issues"></a>Identyfikowanie problemów z wydajnością `tempdb`
 
-W przypadku identyfikowania problemów dotyczących wydajności operacji we/wy najważniejsze `tempdb` typy oczekiwania `PAGELATCH_*` skojarzone z `PAGEIOLATCH_*`problemami to (nie). Jednak oczekiwania nie zawsze oznaczają `tempdb` rywalizację. `PAGELATCH_*`  Taka odczekanie może również oznaczać, że masz zawartość strony danych obiektu użytkownika z powodu współbieżnych żądań przeznaczonych dla tej samej strony danych. Aby dodatkowo potwierdzić `tempdb` rywalizację, użyj [widoku sys. DM _exec_requests](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-exec-requests-transact-sql) , aby upewnić się, że `2:x:y` wartość wait_resource rozpoczyna `tempdb` się od gdzie 2 jest `x` identyfikatorem bazy danych, jest `y` identyfikatorem pliku i jest identyfikatorem strony.  
+W przypadku identyfikowania problemów dotyczących wydajności operacji we/wy na `tempdb` początku są `PAGELATCH_*` (nie `PAGEIOLATCH_*`). Niemniej jednak `PAGELATCH_*` oczekiwania nie zawsze oznaczają `tempdb` rywalizacji.  Taka odczekanie może również oznaczać, że masz zawartość strony danych obiektu użytkownika z powodu współbieżnych żądań przeznaczonych dla tej samej strony danych. Aby dodatkowo potwierdzić rywalizację `tempdb`, użyj [widoku sys. DM _exec_requests](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-exec-requests-transact-sql) , aby potwierdzić, że wartość wait_resource rozpoczyna się od `2:x:y` gdzie 2 jest `tempdb` identyfikatorem bazy danych, `x` jest identyfikatorem pliku, a `y` to identyfikator strony.  
 
-W przypadku rywalizacji o bazę danych tempdb wspólna metoda polega na zmniejszeniu lub ponownym zapisaniu kodu aplikacji `tempdb`, na którym bazuje.  Typowe `tempdb` obszary użycia obejmują:
+W przypadku rywalizacji o bazę danych tempdb wspólna metoda polega na zmniejszeniu lub ponownym zapisaniu kodu aplikacji, który opiera się na `tempdb`.  Typowe obszary użycia `tempdb` obejmują:
 
 - Tabele tymczasowe
 - Zmienne tabeli
-- Parametry z wartościami przechowywanymi w tabeli
+- parametry z wartościami przechowywanymi w tabeli
 - Użycie magazynu wersji (powiązane z długotrwałymi transakcjami)
 - Zapytania z planami zapytania, które używają sortowania, sprzężeń skrótów i buforów
 
@@ -332,11 +332,11 @@ ORDER BY start_time ASC;
 
 ## <a name="identify-memory-grant-wait-performance-issues"></a>Identyfikuj problemy z wydajnością odczekania pamięci
 
-Jeśli typ oczekiwania to `RESOURCE_SEMAHPORE` i nie masz wysokiego problemu dotyczącego użycia procesora CPU, może wystąpić problem z przydzieleniem pamięci.
+Jeśli pierwszy typ oczekiwania to `RESOURCE_SEMAHPORE` i nie masz problemu z dużym procesorem CPU, może wystąpić problem z przydzieleniem pamięci.
 
-### <a name="determine-if-a-resource_semahpore-wait-is-a-top-wait"></a>Określanie, `RESOURCE_SEMAHPORE` czy oczekiwanie jest oczekiwanie na początku
+### <a name="determine-if-a-resource_semahpore-wait-is-a-top-wait"></a>Ustalanie, czy `RESOURCE_SEMAHPORE` oczekiwania są oczekiwane na początku
 
-Użyj następującego zapytania, aby określić, czy `RESOURCE_SEMAHPORE` oczekiwanie jest oczekiwanie na początku
+Użyj poniższego zapytania, aby określić, czy `RESOURCE_SEMAHPORE` oczekiwania są oczekiwane na początku
 
 ```sql
 SELECT wait_type,
@@ -509,10 +509,10 @@ Użycie zasobów można monitorować przy użyciu [SQL Database szczegółowe in
 
 Możesz również monitorować użycie przy użyciu następujących dwóch widoków:
 
-- [sys.dm_db_resource_stats](https://msdn.microsoft.com/library/dn800981.aspx)
-- [sys.resource_stats](https://msdn.microsoft.com/library/dn269979.aspx)
+- [sys. DM _db_resource_stats](https://msdn.microsoft.com/library/dn800981.aspx)
+- [sys. resource_stats](https://msdn.microsoft.com/library/dn269979.aspx)
 
-### <a name="sysdm_db_resource_stats"></a>sys.dm_db_resource_stats
+### <a name="sysdm_db_resource_stats"></a>sys. DM _db_resource_stats
 
 Widoku [sys. DM _db_resource_stats](https://msdn.microsoft.com/library/dn800981.aspx) można użyć w każdej bazie danych SQL. W widoku **sys. DM _db_resource_stats** są wyświetlane ostatnie dane użycia względem warstwy usług. Średnia wartość procentowa dla procesora CPU, operacji we/wy danych, zapisów dziennika i pamięci są rejestrowane co 15 sekund i są przechowywane przez 1 godzinę.
 
@@ -533,7 +533,7 @@ FROM sys.dm_db_resource_stats;
 
 Inne zapytania można znaleźć w przykładach w tabeli [sys. DM _db_resource_stats](https://msdn.microsoft.com/library/dn800981.aspx).
 
-### <a name="sysresource_stats"></a>sys.resource_stats
+### <a name="sysresource_stats"></a>sys. resource_stats
 
 Widok [sys. resource_stats](https://msdn.microsoft.com/library/dn269979.aspx) w bazie danych **Master** zawiera dodatkowe informacje, które mogą pomóc w monitorowaniu wydajności bazy danych SQL w określonej warstwie usług i rozmiarze obliczeniowym. Dane są zbierane co 5 minut i są przechowywane przez około 14 dni. Ten widok jest przydatny do długoterminowej analizy historycznej, w jaki sposób baza danych SQL używa zasobów.
 
@@ -573,7 +573,7 @@ W następnym przykładzie pokazano różne sposoby używania widoku wykazu **sys
     ORDER BY start_time DESC;
     ```
 
-2. Aby sprawdzić, jak pojemność obciążenia pasuje do rozmiaru obliczeń, należy przejść do szczegółów poszczególnych aspektów metryk zasobów: PROCESOR, odczyty, zapisy, liczba procesów roboczych i liczba sesji. Oto poprawione zapytanie przy użyciu wykazu **sys. resource_stats** , aby zgłosić średnią i maksymalną wartość tych metryk zasobów:
+2. Aby oszacować, w jaki sposób obciążenie jest zgodne z rozmiarem obliczeń, należy przejść do szczegółów poszczególnych aspektów metryk zasobów: procesor, Odczyt, zapis, liczba procesów roboczych i liczba sesji. Oto poprawione zapytanie przy użyciu wykazu **sys. resource_stats** , aby zgłosić średnią i maksymalną wartość tych metryk zasobów:
 
     ```sql
     SELECT
@@ -612,7 +612,7 @@ W następnym przykładzie pokazano różne sposoby używania widoku wykazu **sys
 
    | Średni procent procesora CPU | Maksymalny procent użycia procesora CPU |
    | --- | --- |
-   | 24.5 |100.00 |
+   | 24,5 |100,00 |
 
     Średni procesor CPU jest około kwartału limitu rozmiaru obliczeniowego, który może być również dopasowany do rozmiaru obliczeniowego bazy danych. Jednak wartość maksymalna pokazuje, że baza danych osiągnie limit rozmiaru obliczeń. Czy chcesz przejść do kolejnego większego rozmiaru obliczeń? Sprawdź, ile razy obciążenie osiągnie 100 procent, a następnie porównaj je z celem obciążenia bazy danych.
 
@@ -732,6 +732,6 @@ Nieefektywny plan zapytania może również zwiększyć użycie procesora CPU. P
     ORDER BY highest_cpu_queries.total_worker_time DESC;
     ```
 
-## <a name="see-also"></a>Zobacz także
+## <a name="see-also"></a>Zobacz też
 
 [Wprowadzenie do SQL Database](sql-database-technical-overview.md)

@@ -1,6 +1,6 @@
 ---
-title: Tworzenie obszaru roboczego Machine Learning Studio (klasyczny)
-titleSuffix: Azure Machine Learning Studio (classic)
+title: Tworzenie obszaru roboczego
+titleSuffix: ML Studio (classic) Azure
 description: Aby użyć Azure Machine Learning Studio (klasyczny), musisz mieć obszar roboczy Machine Learning Studio (klasyczny). Ten obszar roboczy zawiera narzędzia potrzebne do tworzenia i publikowania eksperymentów oraz zarządzania nimi.
 services: machine-learning
 ms.service: machine-learning
@@ -10,12 +10,12 @@ author: xiaoharper
 ms.author: amlstudiodocs
 ms.custom: seodec18
 ms.date: 12/07/2017
-ms.openlocfilehash: 6302ded4ab951d0490b128989a45c41c013db7ea
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: c5aa5a0ea4a74c2047e600fa3c46e226d12f69c0
+ms.sourcegitcommit: 359930a9387dd3d15d39abd97ad2b8cb69b8c18b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73493208"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73647098"
 ---
 # <a name="create-and-share-an-azure-machine-learning-studio-classic-workspace"></a>Tworzenie i udostępnianie obszaru roboczego Azure Machine Learning Studio (klasyczny)
 

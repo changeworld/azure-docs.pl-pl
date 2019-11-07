@@ -1,5 +1,5 @@
 ---
-title: Limity zasobów serwera Azure SQL Database | Microsoft Docs
+title: Limity zasobów serwera Azure SQL Database
 description: Ten artykuł zawiera omówienie limitów zasobów serwera Azure SQL Database dla pojedynczych baz danych i pul elastycznych. Zawiera również informacje dotyczące tego, co się dzieje po osiągnięciu lub przekroczeniu limitów zasobów.
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: sashan,moslake,josack
 ms.date: 04/18/2019
-ms.openlocfilehash: 175f694cbe46f871349136c9ce91888b6de48d21
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: b358e69df1df579e91a9098c120c7e6b4e3f2ead
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68566857"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73687483"
 ---
 # <a name="sql-database-resource-limits-for-azure-sql-database-server"></a>Limity zasobów SQL Database dla serwera Azure SQL Database
 
@@ -27,12 +27,12 @@ Ten artykuł zawiera omówienie limitów zasobów SQL Database dla serwera SQL D
 
 ## <a name="maximum-resource-limits"></a>Maksymalne limity zasobów
 
-| Resource | Limit |
+| Zasób | Limit |
 | :--- | :--- |
 | Bazy danych na serwer | 5000 |
 | Domyślna liczba serwerów na subskrypcję w dowolnym regionie | 20 |
 | Maksymalna liczba serwerów na subskrypcję w dowolnym regionie | 200 |  
-| Przydział jednostek DTU/eDTU na serwer | 54,000 |  
+| Przydział jednostek DTU/eDTU na serwer | 54 000 |  
 | przydział rdzeń wirtualny na serwer/wystąpienie | 540 |
 | Maksymalna liczba pul na serwer | Ograniczone przez liczbę DTU lub rdzeni wirtualnych. Na przykład jeśli każda pula ma 1000 DTU, serwer może obsługiwać pule 54.|
 |||

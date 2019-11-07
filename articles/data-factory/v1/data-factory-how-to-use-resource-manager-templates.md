@@ -1,5 +1,5 @@
 ---
-title: Użyj Menedżer zasobów szablonów w Data Factory | Microsoft Docs
+title: Korzystanie z szablonów Menedżer zasobów w programie Data Factory
 description: Dowiedz się, jak tworzyć i używać Azure Resource Manager szablonów do tworzenia jednostek Data Factory.
 services: data-factory
 documentationcenter: ''
@@ -11,18 +11,18 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/10/2018
-ms.openlocfilehash: d2360efe71327f02d5cb7d16cb8141f47c304b0c
-ms.sourcegitcommit: 19a821fc95da830437873d9d8e6626ffc5e0e9d6
+ms.openlocfilehash: d9ee060b7d1f7a443357c7116c01e8aaf972e666
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70164675"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73682536"
 ---
 # <a name="use-templates-to-create-azure-data-factory-entities"></a>Tworzenie jednostek Azure Data Factory przy użyciu szablonów
 > [!NOTE]
 > Ten artykuł dotyczy wersji 1 usługi Data Factory. 
 
-## <a name="overview"></a>Przegląd
+## <a name="overview"></a>Omówienie
 Korzystając z Azure Data Factory na potrzeby integracji danych, można odróżnić się od siebie w różnych środowiskach lub wielokrotnie wdrażać te same zadania w ramach tego samego rozwiązania. Szablony ułatwiają wdrażanie tych scenariuszy i zarządzanie nimi w prosty sposób. Szablony w Azure Data Factory doskonale nadają się do scenariuszy, które wymagają ponownego wykorzystania i powtórzenia.
 
 Rozważ sytuację, w której organizacja ma 10 zakładów produkcyjnych na całym świecie. Dzienniki z poszczególnych zakładów są przechowywane w oddzielnej lokalnej bazie danych SQL Server. Firma chce utworzyć pojedynczy magazyn danych w chmurze na potrzeby analiz ad hoc. Chce również mieć taką samą logikę, ale różne konfiguracje dla środowisk programistycznych, testowych i produkcyjnych.
@@ -37,7 +37,7 @@ Ponadto, ponieważ organizacja chce wdrożyć te 10 fabryk danych wiele razy w r
 ## <a name="tutorials"></a>Samouczki
 Aby uzyskać instrukcje krok po kroku dotyczące tworzenia jednostek Data Factory przy użyciu szablonów Menedżer zasobów, zobacz następujące samouczki:
 
-* [Samouczek: Tworzenie potoku w celu skopiowania danych przy użyciu szablonu Azure Resource Manager](data-factory-copy-activity-tutorial-using-azure-resource-manager-template.md)
+* [Samouczek: Tworzenie potoku w celu kopiowania danych przy użyciu szablonu Azure Resource Manager](data-factory-copy-activity-tutorial-using-azure-resource-manager-template.md)
 * [Samouczek: Tworzenie potoku w celu przetwarzania danych przy użyciu szablonu Azure Resource Manager](data-factory-build-your-first-pipeline.md)
 
 ## <a name="data-factory-templates-on-github"></a>Szablony Data Factory w usłudze GitHub

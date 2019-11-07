@@ -1,5 +1,5 @@
 ---
-title: Infrastruktura Integration Runtime w usłudze Azure Data Factory | Microsoft Docs
+title: Infrastruktura Integration Runtime w usłudze Azure Data Factory
 description: Więcej informacji na temat infrastruktury Integration Runtime w usłudze Azure Data Factory.
 services: data-factory
 documentationcenter: ''
@@ -12,20 +12,20 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 05/31/2019
 ms.author: abnarain
-ms.openlocfilehash: ab82055d99401b0e7bc8aedf247fdf0d779f9f07
-ms.sourcegitcommit: de47a27defce58b10ef998e8991a2294175d2098
+ms.openlocfilehash: 7475d660fd2fa64ce69e7c23e0bad518fffddd26
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/15/2019
-ms.locfileid: "67875274"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73681510"
 ---
 # <a name="integration-runtime-in-azure-data-factory"></a>Infrastruktura Integration Runtime w usłudze Azure Data Factory
 Integration Runtime (IR) to infrastruktura obliczeniowa używana przez usługę Azure Data Factory do zapewnienia następujących możliwości integracji danych w różnych środowiskach sieciowych:
 
-- **Przepływ danych**: Wykonaj [przepływ danych](concepts-data-flow-overview.md) w zarządzanym środowisku obliczeniowym platformy Azure.  
-- **Przenoszenie danych**: Kopiuj dane między magazynami danych w sieci publicznej i magazynami danych w sieci prywatnej (lokalnej lub wirtualnej sieci prywatnej). Zapewnia obsługę wbudowanych łączników, konwersji formatów i mapowania kolumn oraz wydajne i skalowalne przenoszenie danych.
-- **Wysyłka działania**:  Wysyłaj i Monitoruj działania transformacji działające w różnych usługach obliczeniowych, takich jak Azure Databricks, Azure HDInsight, Azure Machine Learning, Azure SQL Database, SQL Server i wiele innych.
-- **Wykonywanie pakietu SSIS**: Natywnie wykonuj pakiety SQL Server Integration Services (SSIS) w zarządzanym środowisku obliczeniowym platformy Azure.
+- **Przepływ danych**: wykonywanie [przepływu danych](concepts-data-flow-overview.md) w zarządzanym środowisku obliczeniowym platformy Azure.  
+- **Przenoszenie danych**: Skopiuj dane między magazynami danych w sieci publicznej i magazynami danych w sieci prywatnej (lokalnej lub wirtualnej sieci prywatnej). Zapewnia obsługę wbudowanych łączników, konwersji formatów i mapowania kolumn oraz wydajne i skalowalne przenoszenie danych.
+- **Wysyłanie działań**: wysyłanie i monitorowanie działań przekształcania działających na różnych usługach obliczeniowych, takich jak Azure Databricks, Azure HDInsight, Azure Machine Learning, Azure SQL Database, SQL Server i innych.
+- **Wykonanie pakietów SSIS**: natywne wykonywanie pakietów SQL Server Integration Services (SSIS) w zarządzanym środowisku obliczeniowym platformy Azure.
 
 W usłudze Data Factory działanie definiuje akcję do wykonania. Połączona usługa definiuje docelowy magazyn danych lub usługę obliczeniową. Infrastruktura Integration Runtime zapewnia połączenie między działaniem i połączonymi usługami.  Jest przywoływana przez połączoną usługę lub działanie i udostępnia środowisko obliczeniowe, w którym działanie jest uruchamiane lub wysyłane z programu. Dzięki temu działanie można wykonać w regionie najbliższym docelowemu magazynowi danych lub usłudze obliczeniowej, w sposób najbardziej wydajny, jednocześnie spełniając wymagania dotyczące zabezpieczeń i zgodności.
 
@@ -53,7 +53,7 @@ Infrastruktura Azure Integration Runtime zapewnia następujące funkcje:
 
 - Uruchamianie przepływów danych na platformie Azure 
 - Uruchamianie działania kopiowania między magazynami danych w chmurze
-- Wysyłanie następujących działań transformacji w sieci publicznej: Operacje dotyczące notesu/jar/Python, działania programu Hive w usłudze HDInsight, działania dotyczącego usługi HDInsight, działania MapReduce, działania usługi HDInsight Spark, działania przesyłania strumieniowego usługi HDInsight Machine Learning, działania wykonywania wsadowego usługi Batch, Machine Learning aktualizacji zasobów działania, działanie procedury składowanej, Data Lake Analytics działania U-SQL, działanie niestandardowe platformy .NET, aktywność sieci Web, działanie Lookup i działanie Get Metadata.
+- Wysyłanie następujących działań przekształcania w sieci publicznej: działania notesu/jar/Python, działania Hive usługi HDInsight, działania w usłudze HDInsight, działanie usługi HDInsight MapReduce, działanie usługi HDInsight Spark, działanie usługi HDInsight streaming, maszyna Uczenie działania wykonywania wsadowego, Machine Learning aktualizowania działań związanych z zasobami, działania procedury składowanej, Data Lake Analytics działania U-SQL, działania niestandardowego platformy .NET, działania sieci Web, działania wyszukiwania oraz działania pobierania metadanych.
 
 ### <a name="azure-ir-network-environment"></a>Środowisko sieciowe IR Azure
 Azure Integration Runtime obsługuje łączenie z magazynami danych i usługami obliczeniowymi za pomocą dostępnych publicznie punktów końcowych. Zastosowanie infrastruktury Integration Runtime (Self-hosted) w środowisku sieci wirtualnej Azure.
@@ -74,10 +74,10 @@ Informacje na temat tworzenia i konfigurowania infrastruktury Azure IR można zn
 Infrastruktura IR (Self-hosted) oferuje następujące możliwości:
 
 - Uruchamianie działania kopiowania między magazynami danych w chmurze i magazynem danych w sieci prywatnej.
-- Wysyłanie następujących działań transformacji do zasobów obliczeniowych w ramach lokalnej lub Virtual Network platformy Azure: Działanie programu Hive w usłudze HDInsight (BYOC — Tworzenie własnego klastra), działanie usługi HDInsight (BYOC), Usługa HDInsight MapReduce (BYOC), działanie usługi HDInsight Spark (BYOC), działanie usługi HDInsight streaming (BYOC), działanie wykonywania wsadowego Machine Learning, Machine Learning Aktualizowanie działań dotyczących zasobów, działania procedury składowanej, Data Lake Analytics działania U-SQL, działania niestandardowego (uruchomionego na Azure Batch), działania wyszukiwania oraz działania pobierania metadanych.
+- Wysyłanie następujących działań przekształcania do zasobów obliczeniowych w ramach lokalnego lub Virtual Network platformy Azure: działanie programu Hive w usłudze HDInsight (BYOC — przenoszenie własnego klastra), działanie dla trzody chlewnej (BYOC), Usługa HDInsight MapReduce (BYOC), HDInsight Spark działanie (BYOC), działanie HDInsight przesyłania strumieniowego (BYOC), Machine Learning działania wykonywania wsadowego, Machine Learning aktualizowania zasobów, działania procedury składowanej, Data Lake Analytics działania U-SQL, działanie niestandardowe (uruchomione na Azure Batch), wyszukiwanie działanie i Pobieranie metadanych.
 
 > [!NOTE] 
-> Infrastruktura Integration Runtime (Self-hosted) umożliwia obsługę magazynów danych wymagających własnych sterowników, takich jak SAP Hana, MySQL itp.  Więcej informacji można znaleźć w sekcji dotyczącej [obsługiwanych magazynów danych](copy-activity-overview.md#supported-data-stores-and-formats).
+> Korzystaj z własnego środowiska Integration Runtime, aby obsługiwać magazyny danych, które wymagają sterownika przystosowanego do oprogramowania, takiego jak SAP HANA, MySQL itp.  Aby uzyskać więcej informacji, zobacz [obsługiwane magazyny danych](copy-activity-overview.md#supported-data-stores-and-formats).
 
 ### <a name="self-hosted-ir-network-environment"></a>Własne środowisko sieciowe IR
 Jeśli chcesz przeprowadzić integrację danych bezpiecznie w środowisku sieci prywatnej, która nie ma bezpośredniego połączenia ze środowiskiem chmury publicznej, możesz zainstalować hostowane samodzielnie, lokalne środowisko IR za zaporą firmową lub w wirtualnej sieci prywatnej.  Infrastruktura Integration Runtime (Self-hosted) wykonuje tylko wychodzące połączenia HTTP do otwartej sieci Internet.
@@ -85,7 +85,7 @@ Jeśli chcesz przeprowadzić integrację danych bezpiecznie w środowisku sieci 
 ### <a name="self-hosted-ir-compute-resource-and-scaling"></a>Zasoby obliczeniowe i skalowanie własnego środowiska IR
 Infrastrukturę Integration Runtime (Self-hosted) należy zainstalować na maszynie lokalnej lub maszynie wirtualnej w sieci prywatnej. Aktualnie obsługujemy uruchamianie środowisk IR (Self-hosted) w systemie operacyjnym Windows.  
 
-W celu zapewnienia wysokiej dostępności i skalowalności można zmienić skalowanie środowiska IR (Self-hosted), łącząc wystąpienie logiczne z wieloma maszynami lokalnymi w trybie aktywny-aktywny.  Aby uzyskać więcej informacji, zobacz artykuł jak [utworzyć i skonfigurować](create-self-hosted-integration-runtime.md) samoobsługowe środowisko IR w sekcji jak przewodniki dotyczące szczegółów.
+W celu zapewnienia wysokiej dostępności i skalowalności można zmienić skalowanie środowiska IR (Self-hosted), łącząc wystąpienie logiczne z wieloma maszynami lokalnymi w trybie aktywny-aktywny.  Aby uzyskać więcej informacji, zobacz artykuł jak [utworzyć i skonfigurować samoobsługowe środowisko IR](create-self-hosted-integration-runtime.md) w sekcji jak przewodniki dotyczące szczegółów.
 
 ## <a name="azure-ssis-integration-runtime"></a>Infrastruktura Azure SSIS Integration Runtime
 Aby zmniejszyć i przenieść obecne obciążenie SSIS, można utworzyć środowisko IR Azure-SSIS w celu natywnego wykonywania pakietów SSIS.
@@ -101,7 +101,7 @@ Więcej informacji można znaleźć w artykule przewodnika How to create and con
 Aby uzyskać więcej informacji o środowisku uruchomieniowym Azure-SSIS, zobacz następujące artykuły: 
 
 - [Samouczek: Wdrażanie pakietów usług SSIS na platformie Azure](tutorial-create-azure-ssis-runtime-portal.md). Ten artykuł zawiera szczegółowe instrukcje dotyczące tworzenia środowiska Azure-SSIS IR i używania bazy danych Azure SQL Database do hostowania wykazu usług SSIS. 
-- [Instrukcje: Utwórz środowisko Azure-SSIS Integration Runtime](create-azure-ssis-integration-runtime.md). Ten artykuł rozszerza się w samouczku i zawiera instrukcje dotyczące używania wystąpienia zarządzanego Azure SQL Database i dołączania do sieci wirtualnej. 
+- [How to: Create an Azure-SSIS integration runtime (Jak: Tworzenie środowiska Azure SSIS Integration Runtime)](create-azure-ssis-integration-runtime.md). Ten artykuł rozszerza się w samouczku i zawiera instrukcje dotyczące używania wystąpienia zarządzanego Azure SQL Database i dołączania do sieci wirtualnej. 
 - [Monitor an Azure-SSIS IR (Monitorowanie środowiska Azure-SSIS IR)](monitor-integration-runtime.md#azure-ssis-integration-runtime). W tym artykule przedstawiono sposób pobierania informacji o środowisku Azure-SSIS IR i opisów stanów w pobranych informacjach. 
 - [Manage an Azure-SSIS IR (Zarządzanie środowiskiem Azure-SSIS IR)](manage-azure-ssis-integration-runtime.md). W tym artykule przedstawiono sposób zatrzymywania, uruchamiania lub usuwania środowiska Azure-SSIS IR. Zawiera on również instrukcje skalowania środowiska Azure-SSIS IR do wewnątrz za pomocą dodawania do niego węzłów. 
 - [Join an Azure-SSIS IR to a virtual network](join-azure-ssis-integration-runtime-virtual-network.md) (Dołączanie środowiska IR Azure SSIS do sieci wirtualnej). Ten artykuł zawiera podstawowe informacje na temat dołączania środowiska IR Azure-SSIS do sieci wirtualnej platformy Azure. Opisano w nim kroki konfigurowania sieci wirtualnej za pomocą witryny Azure Portal tak, aby umożliwić dołączanie środowiska IR Azure-SSIS do sieci wirtualnej. 
@@ -138,9 +138,9 @@ W przypadku zastosowania do wykonania przenoszenia danych, środowisko IR (Self-
 ### <a name="azure-ssis-ir-location"></a>Lokalizacja środowiska IR Azure-SSIS
 Wybór odpowiedniej lokalizacji dla środowiska IR Azure-SSIS jest kluczowy dla osiągnięcia wysokiej wydajności obciążeń wyodrębnianie-przekształcanie-ładowanie (ETL).
 
-- Lokalizacja środowiska Azure-SSIS IR nie musi być taka sama jak lokalizacja fabryki danych, ale powinna być taka sama jak lokalizacja własnego serwera Azure SQL Database/zarządzanego wystąpienia, gdzie SSISDB ma być hostowana. Dzięki temu środowisko IR Azure-SSIS może z łatwością uzyskać dostęp do bazy SSISDB bez wytwarzania dużego ruchu między różnymi lokalizacjami.
-- Jeśli nie masz istniejącego serwera wystąpienia Azure SQL Database/zarządzanego do hostowania SSISDB, ale masz lokalne źródła danych/miejsca docelowe, należy utworzyć nowy serwer wystąpienia Azure SQL Database/zarządzanego w tej samej lokalizacji sieci wirtualnej połączonej z usługą Sieć lokalna.  W ten sposób można utworzyć środowisko Azure-SSIS IR przy użyciu nowego serwera wystąpienia Azure SQL Database/zarządzanego i dołączyć do tej sieci wirtualnej, wszystkie w tej samej lokalizacji, co skutecznie minimalizuje ruchy danych w różnych lokalizacjach.
-- Jeśli lokalizacja istniejącego serwera Azure SQL Database/zarządzanego wystąpienia, gdzie SSISDB jest hostowana, nie jest taka sama jak lokalizacja sieci wirtualnej podłączonej do sieci lokalnej, najpierw Utwórz środowisko Azure-SSIS IR przy użyciu istniejącej Azure SQL Database/ Serwer wystąpienia zarządzanego i przyłączanie innej sieci wirtualnej w tej samej lokalizacji, a następnie Konfigurowanie sieci wirtualnej do połączenia sieci wirtualnej między różnymi lokalizacjami.
+- Lokalizacja Azure-SSIS IR nie musi być taka sama jak lokalizacja fabryki danych, ale powinna być taka sama jak lokalizacja własnego serwera Azure SQL Database/Managed instance, gdzie SSISDB ma być hostowana. Dzięki temu środowisko IR Azure-SSIS może z łatwością uzyskać dostęp do bazy SSISDB bez wytwarzania dużego ruchu między różnymi lokalizacjami.
+- Jeśli nie masz istniejącego serwera wystąpienia Azure SQL Database/zarządzanego do hostowania SSISDB, ale masz lokalne źródła danych/miejsca docelowe, należy utworzyć nowy serwer wystąpienia Azure SQL Database/zarządzanego w tej samej lokalizacji sieci wirtualnej połączonej z usługą Sieć lokalna.  W ten sposób można utworzyć Azure-SSIS IR przy użyciu nowego serwera wystąpienia Azure SQL Database/zarządzanego i dołączenia do tej sieci wirtualnej, a wszystko to w tej samej lokalizacji, co skutecznie minimalizuje ruchy danych w różnych lokalizacjach.
+- Jeśli lokalizacja istniejącego serwera Azure SQL Database/zarządzanego wystąpienia, gdzie SSISDB jest hostowana, nie jest taka sama jak lokalizacja sieci wirtualnej podłączonej do sieci lokalnej, najpierw utwórz Azure-SSIS IR przy użyciu istniejącej Azure SQL Database/ Serwer wystąpienia zarządzanego i przyłączanie innej sieci wirtualnej w tej samej lokalizacji, a następnie Konfigurowanie sieci wirtualnej do połączenia sieci wirtualnej między różnymi lokalizacjami.
 
 Na poniższym diagramie przedstawiono ustawienia lokalizacji usługi Data Factory i jej czasy uruchomienia integracji:
 

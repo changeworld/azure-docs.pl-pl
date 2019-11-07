@@ -1,5 +1,5 @@
 ---
-title: Korzystanie z procedur składowanych w Azure SQL Data Warehouse | Microsoft Docs
+title: Korzystanie z procedur składowanych
 description: Wskazówki dotyczące wdrażania procedur składowanych w Azure SQL Data Warehouse tworzenia rozwiązań.
 services: sql-data-warehouse
 author: XiaoyuMSFT
@@ -10,12 +10,13 @@ ms.subservice: development
 ms.date: 04/02/2019
 ms.author: xiaoyul
 ms.reviewer: igorstan
-ms.openlocfilehash: 2c12a679ed5f0a1574deb34df8c0151e737d2d01
-ms.sourcegitcommit: 75a56915dce1c538dc7a921beb4a5305e79d3c7a
+ms.custom: seo-lt-2019
+ms.openlocfilehash: e6e1144043cbbbc8124785351e1e56a776b84527
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/24/2019
-ms.locfileid: "68479590"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73692812"
 ---
 # <a name="using-stored-procedures-in-sql-data-warehouse"></a>Korzystanie z procedur składowanych w SQL Data Warehouse
 Wskazówki dotyczące wdrażania procedur składowanych w Azure SQL Data Warehouse tworzenia rozwiązań.
@@ -63,9 +64,9 @@ GO
 EXEC prc_nesting
 ```
 
-Uwaga SQL Data Warehouse nie obsługuje obecnie [@@NESTLEVEL](/sql/t-sql/functions/nestlevel-transact-sql). Musisz śledzić poziom zagnieżdżenia. Jest mało prawdopodobne, aby przekroczyć limit ośmiu poziomów zagnieżdżenia, ale jeśli to zrobisz, musisz ponownie obsłużyć swój kod, aby dopasować poziomy zagnieżdżenia w ramach tego limitu.
+Uwaga SQL Data Warehouse obecnie nie obsługuje [@@NESTLEVEL](/sql/t-sql/functions/nestlevel-transact-sql). Musisz śledzić poziom zagnieżdżenia. Jest mało prawdopodobne, aby przekroczyć limit ośmiu poziomów zagnieżdżenia, ale jeśli to zrobisz, musisz ponownie obsłużyć swój kod, aby dopasować poziomy zagnieżdżenia w ramach tego limitu.
 
-## <a name="insertexecute"></a>WSTAW.. WYKONANA
+## <a name="insertexecute"></a>Wstaw.. WYKONANA
 SQL Data Warehouse nie zezwala na korzystanie z zestawu wyników procedury składowanej z instrukcją INSERT. Istnieje jednak alternatywna metoda, której można użyć. Aby zapoznać się z przykładem, zapoznaj się z artykułem dotyczącym [tabel tymczasowych](sql-data-warehouse-tables-temporary.md). 
 
 ## <a name="limitations"></a>Ograniczenia

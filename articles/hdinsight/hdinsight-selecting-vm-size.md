@@ -9,12 +9,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 10/09/2019
-ms.openlocfilehash: d93c3599bb4a52a03d4ac436ca664ce6be1c55b9
-ms.sourcegitcommit: fa5ce8924930f56bcac17f6c2a359c1a5b9660c9
+ms.openlocfilehash: a21e8d6c76c93b3084619c09f6a7664a25c1929c
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/31/2019
-ms.locfileid: "73200829"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73682203"
 ---
 # <a name="selecting-the-right-vm-size-for-your-azure-hdinsight-cluster"></a>Wybieranie odpowiedniego rozmiaru maszyny wirtualnej dla klastra usługi Azure HDInsight
 
@@ -45,7 +45,7 @@ Rodziny maszyn wirtualnych na platformie Azure są zoptymalizowane pod kątem zg
 | [Optymalizacja pod kątem obliczeń](../virtual-machines/linux/sizes-compute.md)        | F           | Duża moc procesora CPU w stosunku do pamięci. Dobrze sprawdzają się w przypadku serwerów sieci Web o średnim ruchu, urządzeń sieciowych, procesów wsadowych i serwerów aplikacji.        |
 | [Optymalizacja pod kątem pamięci](../virtual-machines/linux/sizes-memory.md)         | Esv3, EV3  | Duże proporcje pamięci i procesora CPU. Świetnie sprawdzają się w przypadku serwerów relacyjnych baz danych, średnich i dużych pamięci podręcznych oraz analizowania w pamięci.                 |
 
-- Aby uzyskać informacje o cenach dostępnych wystąpień maszyn wirtualnych w regionach obsługiwanych przez usługi HDInsight, zobacz [Cennik usługi HDInsight](https://azure.microsoft.com/en-us/pricing/details/hdinsight/).
+- Aby uzyskać informacje o cenach dostępnych wystąpień maszyn wirtualnych w regionach obsługiwanych przez usługi HDInsight, zobacz [Cennik usługi HDInsight](https://azure.microsoft.com/pricing/details/hdinsight/).
 
 ## <a name="cost-saving-vm-types-for-light-workloads"></a>Koszt oszczędności typów maszyn wirtualnych dla obciążeń lekkich
 
@@ -55,12 +55,12 @@ W poniższej tabeli opisano typy klastrów i typy węzłów, które można tworz
 
 | Typ klastra | Wersja | Węzeł roboczy | Węzeł główny | Węzeł usługi ZooKeeper |
 |---|---|---|---|---|
-| Spark | Wszystko | F4 i nowsze | nie | nie |
-| Usługa Hadoop | Wszystko | F4 i nowsze | nie | nie |
-| Kafka | Wszystko | F4 i nowsze | nie | nie |
-| HBase | Wszystko | F4 i nowsze | nie | nie |
-| LLAP | Wyłączony | nie | nie | nie |
-| Storm | Wyłączony | nie | nie | nie |
+| platforma Spark | Wszyscy | F4 i nowsze | nie | nie |
+| Hadoop | Wszyscy | F4 i nowsze | nie | nie |
+| Kafka | Wszyscy | F4 i nowsze | nie | nie |
+| HBase | Wszyscy | F4 i nowsze | nie | nie |
+| LLAP | wyłączony | nie | nie | nie |
+| Storm | wyłączony | nie | nie | nie |
 | Usługa ML | TYLKO HDI 3,6 | F4 i nowsze | nie | nie |
 
 Aby wyświetlić specyfikacje każdej jednostki SKU serii F, zobacz [rozmiary maszyn wirtualnych z serii f](https://azure.microsoft.com/blog/f-series-vm-size/).

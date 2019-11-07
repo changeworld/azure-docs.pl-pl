@@ -1,6 +1,6 @@
 ---
-title: Kopiowanie danych z Concur przy użyciu usługi Azure Data Factory (wersja zapoznawcza) | Dokumentacja firmy Microsoft
-description: Dowiedz się, jak skopiować dane z Concur do magazynów danych ujścia obsługiwane za pomocą działania kopiowania w potoku usługi Azure Data Factory.
+title: Kopiowanie danych z Concur za pomocą Azure Data Factory (wersja zapoznawcza)
+description: Informacje o kopiowaniu danych z programu Concur do obsługiwanych magazynów danych ujścia przy użyciu działania kopiowania w potoku Azure Data Factory.
 services: data-factory
 documentationcenter: ''
 author: linda33wj
@@ -12,53 +12,53 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 08/01/2019
 ms.author: jingwang
-ms.openlocfilehash: 89c497286b8fcb7650bac2ed9c4eff6a2a500c1d
-ms.sourcegitcommit: c79aa93d87d4db04ecc4e3eb68a75b349448cd17
+ms.openlocfilehash: 403373324d32024c5559358563ee4025b3a3e1db
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71092136"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73681083"
 ---
-# <a name="copy-data-from-concur-using-azure-data-factory-preview"></a>Kopiowanie danych z Concur przy użyciu usługi Azure Data Factory (wersja zapoznawcza)
+# <a name="copy-data-from-concur-using-azure-data-factory-preview"></a>Kopiowanie danych z Concur za pomocą Azure Data Factory (wersja zapoznawcza)
 
-W tym artykule opisano sposób używania działania kopiowania w usłudze Azure Data Factory do kopiowania danych ze Concur. Opiera się na [omówienie działania kopiowania](copy-activity-overview.md) artykułu, który przedstawia ogólne omówienie działania kopiowania.
+W tym artykule opisano sposób używania działania kopiowania w Azure Data Factory do kopiowania danych z Concur. Jest ona oparta na [przeglądzie działania kopiowania](copy-activity-overview.md) , która przedstawia ogólne omówienie działania kopiowania.
 
 > [!IMPORTANT]
-> Ten łącznik jest obecnie w wersji zapoznawczej. Możesz wypróbować tę funkcję i przekaż nam swoją opinię. Jeśli w swoim rozwiązaniu chcesz wprowadzić zależność od łączników w wersji zapoznawczej, skontaktuj się z [pomocą techniczną platformy Azure](https://azure.microsoft.com/support/).
+> Ten łącznik jest obecnie w wersji zapoznawczej. Możesz ją wypróbować i przekazać nam swoją opinię. Jeśli w swoim rozwiązaniu chcesz wprowadzić zależność od łączników w wersji zapoznawczej, skontaktuj się z [pomocą techniczną platformy Azure](https://azure.microsoft.com/support/).
 
-## <a name="supported-capabilities"></a>Obsługiwane funkcje
+## <a name="supported-capabilities"></a>Obsługiwane możliwości
 
 Ten łącznik Concur jest obsługiwany dla następujących działań:
 
 - [Działanie kopiowania](copy-activity-overview.md) z [obsługiwaną macierzą źródłową/ujścia](copy-activity-overview.md)
 - [Działanie Lookup](control-flow-lookup-activity.md)
 
-Możesz skopiować dane z Concur, do dowolnego obsługiwanego magazynu danych ujścia. Aby uzyskać listę magazynów danych, obsługiwane przez działanie kopiowania jako źródła/ujścia, zobacz [obsługiwane magazyny danych](copy-activity-overview.md#supported-data-stores-and-formats) tabeli.
+Dane z Concur można skopiować do dowolnego obsługiwanego magazynu danych ujścia. Listę magazynów danych obsługiwanych jako źródła/ujścia przez działanie kopiowania można znaleźć w tabeli [obsługiwane magazyny danych](copy-activity-overview.md#supported-data-stores-and-formats) .
 
-Usługa Azure Data Factory udostępnia wbudowanego sterownika, aby umożliwić łączność, dlatego nie trzeba ręcznie zainstalować dowolnego sterownika, za pomocą tego łącznika.
+Azure Data Factory udostępnia wbudowany sterownik umożliwiający połączenie, dlatego nie trzeba ręcznie instalować żadnego sterownika przy użyciu tego łącznika.
 
 > [!NOTE]
-> Partner kont nie jest obecnie obsługiwane.
+> Konto partnera nie jest obecnie obsługiwane.
 
 ## <a name="getting-started"></a>Wprowadzenie
 
 [!INCLUDE [data-factory-v2-connector-get-started](../../includes/data-factory-v2-connector-get-started.md)]
 
-Poniższe sekcje zawierają szczegółowe informacje dotyczące właściwości, które są używane do definiowania jednostek usługi fabryka danych określonej do łącznika Concur.
+Poniższe sekcje zawierają szczegółowe informacje o właściwościach, które są używane do definiowania jednostek Data Factory specyficznych dla łącznika Concur.
 
-## <a name="linked-service-properties"></a>Właściwości usługi połączonej
+## <a name="linked-service-properties"></a>Właściwości połączonej usługi
 
-Następujące właściwości są obsługiwane w przypadku Concur połączone usługi:
+Dla połączonej usługi Concur są obsługiwane następujące właściwości:
 
-| Właściwość | Opis | Wymagane |
+| Właściwość | Opis | Wymagany |
 |:--- |:--- |:--- |
-| type | Właściwość Type musi mieć ustawioną wartość: **Concur** | Tak |
-| clientId | Dostarczony przez Zarządzanie aplikacjami Concur client_id aplikacji.  | Yes |
-| username | Nazwa użytkownika, który umożliwia dostęp do usługi Concur.  | Yes |
-| password | Hasło odpowiadający nazwie użytkownika, podanym w polu Nazwa użytkownika. Oznacz to pole jako SecureString, aby bezpiecznie przechowywać w usłudze Data Factory lub [odwołanie wpisu tajnego przechowywanych w usłudze Azure Key Vault](store-credentials-in-key-vault.md). | Yes |
+| type | Właściwość Type musi mieć wartość: **Concur** | Tak |
+| clientId | Aplikacja client_id dostarczana przez Zarządzanie aplikacjami Concur.  | Tak |
+| nazwa użytkownika | Nazwa użytkownika służąca do uzyskiwania dostępu do usługi Concur.  | Tak |
+| hasło | Hasło odpowiadające nazwie użytkownika podanej w polu Nazwa użytkownika. Oznacz to pole jako element SecureString, aby bezpiecznie przechowywać go w Data Factory, lub [odwoływać się do wpisu tajnego przechowywanego w Azure Key Vault](store-credentials-in-key-vault.md). | Tak |
 | useEncryptedEndpoints | Określa, czy punkty końcowe źródła danych są szyfrowane przy użyciu protokołu HTTPS. Wartość domyślna to true.  | Nie |
-| useHostVerification | Określa, czy wymagają zgodności nazwy hosta w certyfikacie serwera, aby dopasować nazwę hosta serwera podczas nawiązywania połączenia za pośrednictwem protokołu SSL. Wartość domyślna to true.  | Nie |
-| usePeerVerification | Określa, czy do zweryfikowania tożsamości serwera, podczas nawiązywania połączenia za pośrednictwem protokołu SSL. Wartość domyślna to true.  | Nie |
+| useHostVerification | Określa, czy nazwa hosta ma być wymagana w certyfikacie serwera, aby odpowiadała nazwie hosta serwera podczas nawiązywania połączenia za pośrednictwem protokołu SSL. Wartość domyślna to true.  | Nie |
+| usePeerVerification | Określa, czy należy zweryfikować tożsamość serwera podczas nawiązywania połączenia za pośrednictwem protokołu SSL. Wartość domyślna to true.  | Nie |
 
 **Przykład:**
 
@@ -81,11 +81,11 @@ Następujące właściwości są obsługiwane w przypadku Concur połączone us�
 
 ## <a name="dataset-properties"></a>Właściwości zestawu danych
 
-Aby uzyskać pełną listę sekcje i właściwości dostępne Definiowanie zestawów danych, zobacz [zestawów danych](concepts-datasets-linked-services.md) artykułu. Ta sekcja zawiera listę właściwości obsługiwanych przez zestaw danych Concur.
+Aby uzyskać pełną listę sekcji i właściwości dostępnych do definiowania zestawów danych, zobacz artykuł [zestawy danych](concepts-datasets-linked-services.md) . Ta sekcja zawiera listę właściwości obsługiwanych przez zestaw danych Concur.
 
-Aby skopiować dane z Concur, należy ustawić właściwość typu zestawu danych na **ConcurObject**. Nie ma dodatkowych właściwości specyficzne dla danego typu w tego typu zestawu danych. Obsługiwane są następujące właściwości:
+Aby skopiować dane z Concur, ustaw właściwość Type zestawu danych na **ConcurObject**. Brak dodatkowej właściwości specyficznej dla typu dla tego typu zestawu danych. Obsługiwane są następujące właściwości:
 
-| Właściwość | Opis | Wymagane |
+| Właściwość | Opis | Wymagany |
 |:--- |:--- |:--- |
 | type | Właściwość Type zestawu danych musi być ustawiona na wartość: **ConcurObject** | Tak |
 | tableName | Nazwa tabeli. | Nie (Jeśli określono parametr "query" w źródle działania) |
@@ -110,16 +110,16 @@ Aby skopiować dane z Concur, należy ustawić właściwość typu zestawu danyc
 
 ## <a name="copy-activity-properties"></a>Właściwości działania kopiowania
 
-Aby uzyskać pełną listę sekcje i właściwości dostępne do definiowania działań zobacz [potoki](concepts-pipelines-activities.md) artykułu. Ta sekcja zawiera listę właściwości obsługiwanych przez źródło Concur.
+Aby uzyskać pełną listę sekcji i właściwości dostępnych do definiowania działań, zobacz artykuł [potoki](concepts-pipelines-activities.md) . Ta sekcja zawiera listę właściwości obsługiwanych przez źródło Concur.
 
 ### <a name="concursource-as-source"></a>ConcurSource jako źródło
 
-Aby skopiować dane z Concur, należy ustawić typ źródła w działaniu kopiowania, aby **ConcurSource**. Następujące właściwości są obsługiwane w działaniu kopiowania **źródła** sekcji:
+Aby skopiować dane z Concur, ustaw typ źródła w działaniu Copy na **ConcurSource**. W sekcji **Źródło** działania kopiowania są obsługiwane następujące właściwości:
 
-| Właściwość | Opis | Wymagane |
+| Właściwość | Opis | Wymagany |
 |:--- |:--- |:--- |
-| type | Właściwość Type źródła działania Copy musi mieć ustawioną wartość: **ConcurSource** | Tak |
-| query | Umożliwia odczytywanie danych niestandardowe zapytania SQL. Na przykład: `"SELECT * FROM Opportunities where Id = xxx "`. | Nie (Jeśli określono parametr "tableName" w zestawie danych) |
+| type | Właściwość Type źródła działania Copy musi być ustawiona na wartość: **ConcurSource** | Tak |
+| query | Użyj niestandardowego zapytania SQL, aby odczytać dane. Na przykład: `"SELECT * FROM Opportunities where Id = xxx "`. | Nie (Jeśli określono "TableName" w zestawie danych) |
 
 **Przykład:**
 
@@ -158,4 +158,4 @@ Aby skopiować dane z Concur, należy ustawić typ źródła w działaniu kopiow
 Aby dowiedzieć się więcej o właściwościach, sprawdź [działanie Lookup (wyszukiwanie](control-flow-lookup-activity.md)).
 
 ## <a name="next-steps"></a>Następne kroki
-Aby uzyskać listę magazynów danych obsługiwanych jako źródła i ujścia działania kopiowania w usłudze Azure Data Factory, zobacz [obsługiwane magazyny danych](copy-activity-overview.md#supported-data-stores-and-formats).
+Listę magazynów danych obsługiwanych jako źródła i ujścia przez działanie kopiowania w Azure Data Factory można znaleźć w temacie [obsługiwane magazyny danych](copy-activity-overview.md#supported-data-stores-and-formats).

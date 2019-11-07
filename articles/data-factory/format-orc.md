@@ -1,5 +1,5 @@
 ---
-title: ORC format w Azure Data Factory | Microsoft Docs
+title: Format ORC w Azure Data Factory
 description: W tym temacie opisano sposób postępowania z formatem ORC w Azure Data Factory.
 author: linda33wj
 manager: craigg
@@ -9,12 +9,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 10/24/2019
 ms.author: jingwang
-ms.openlocfilehash: beff81b7e8d207a2173497d039b915b7614fc30e
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: a5125b53d960ddead063435666de5b26ce0bc291
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72952279"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73674761"
 ---
 # <a name="orc-format-in-azure-data-factory"></a>Format ORC w Azure Data Factory
 
@@ -26,7 +26,7 @@ Format ORC jest obsługiwany dla następujących łączników: [Amazon S3](conne
 
 Aby uzyskać pełną listę sekcji i właściwości dostępnych do definiowania zestawów danych, zobacz artykuł [zestawy danych](concepts-datasets-linked-services.md) . Ta sekcja zawiera listę właściwości obsługiwanych przez zestaw danych ORC.
 
-| Właściwość         | Opis                                                  | Wymagane |
+| Właściwość         | Opis                                                  | Wymagany |
 | ---------------- | ------------------------------------------------------------ | -------- |
 | type             | Właściwość Type zestawu danych musi być ustawiona na wartość **Orc**. | Tak      |
 | location         | Ustawienia lokalizacji plików. Każdy Łącznik oparty na plikach ma własny typ lokalizacji i obsługiwane właściwości w obszarze `location`. **Zobacz szczegóły w sekcji łącznik — > Właściwości zestawu danych**. | Tak      |
@@ -68,7 +68,7 @@ Aby uzyskać pełną listę sekcji i właściwości dostępnych do definiowania 
 
 Następujące właściwości są obsługiwane w sekcji działanie kopiowania ***\*źródło\**** .
 
-| Właściwość      | Opis                                                  | Wymagane |
+| Właściwość      | Opis                                                  | Wymagany |
 | ------------- | ------------------------------------------------------------ | -------- |
 | type          | Właściwość Type źródła działania Copy musi być ustawiona na wartość **OrcSource**. | Tak      |
 | storeSettings | Grupa właściwości do odczytywania danych z magazynu danych. Każdy Łącznik oparty na plikach ma własne obsługiwane ustawienia odczytu w obszarze `storeSettings`. **Zobacz szczegóły w artykule łącznik — > właściwości działania kopiowania**. | Nie       |
@@ -77,7 +77,7 @@ Następujące właściwości są obsługiwane w sekcji działanie kopiowania ***
 
 Następujące właściwości są obsługiwane w sekcji działanie kopiowania ***\*ujścia\**** .
 
-| Właściwość      | Opis                                                  | Wymagane |
+| Właściwość      | Opis                                                  | Wymagany |
 | ------------- | ------------------------------------------------------------ | -------- |
 | type          | Właściwość Type źródła działania Copy musi być ustawiona na wartość **OrcSink**. | Tak      |
 | storeSettings | Grupa właściwości do zapisywania danych w magazynie danych. Każdy Łącznik oparty na plikach ma własne obsługiwane ustawienia zapisu w obszarze `storeSettings`. **Zobacz szczegóły w artykule łącznik — > właściwości działania kopiowania**. | Nie       |
@@ -97,7 +97,7 @@ W przypadku kopiowania uruchomionego na samoobsługowym środowisku IR przy uży
 
 ![Ustawianie rozmiaru sterty JVM na samoobsługowym środowisku IR](./media/supported-file-formats-and-compression-codecs/set-jvm-heap-size-on-selfhosted-ir.png)
 
-Przykład: Ustaw zmienną `_JAVA_OPTIONS` przy użyciu `-Xms256m -Xmx16g`wartości. Flaga `Xms` określa początkową pulę alokacji pamięci dla wirtualna maszyna Java (JVM), podczas gdy `Xmx` określa maksymalną pulę alokacji pamięci. Oznacza to, że JVM zostanie uruchomiona z ilością pamięci `Xms` i będzie można użyć maksymalnie `Xmx` ilości pamięci. Domyślnie funkcja ADF korzysta z minimalnej 64 MB i maksymalnej wartości 1G.
+Przykład: Ustaw zmienną `_JAVA_OPTIONS` przy użyciu `-Xms256m -Xmx16g`wartości. Flaga `Xms` określa początkową pulę alokacji pamięci dla wirtualna maszyna Java (JVM), podczas gdy `Xmx` określa maksymalną pulę alokacji pamięci. Oznacza to, że JVM zostanie uruchomione z `Xms` ilości pamięci i będzie można użyć maksymalnie `Xmx` ilości pamięci. Domyślnie funkcja ADF korzysta z minimalnej 64 MB i maksymalnej wartości 1G.
 
 ## <a name="next-steps"></a>Następne kroki
 

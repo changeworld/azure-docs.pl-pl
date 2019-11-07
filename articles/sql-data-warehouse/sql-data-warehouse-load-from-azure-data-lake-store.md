@@ -1,5 +1,5 @@
 ---
-title: Załaduj samouczek z Azure Data Lake Storage do Azure SQL Data Warehouse | Microsoft Docs
+title: Samouczek ładowania danych z Azure Data Lake Storage
 description: Użyj wielobazowych tabel zewnętrznych do ładowania danych z Azure Data Lake Storage do Azure SQL Data Warehouse.
 services: sql-data-warehouse
 author: kevinvngo
@@ -10,12 +10,13 @@ ms.subservice: load-data
 ms.date: 08/08/2019
 ms.author: kevin
 ms.reviewer: igorstan
-ms.openlocfilehash: 3db355cf5782620bda3a9e04afbee073c8929856
-ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
+ms.custom: seo-lt-2019
+ms.openlocfilehash: 522cb9b75d5c0db270f8ba4a65850e35a2e8c4fd
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68935122"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73685697"
 ---
 # <a name="load-data-from-azure-data-lake-storage-to-sql-data-warehouse"></a>Załaduj dane z Azure Data Lake Storage do SQL Data Warehouse
 Użyj wielobazowych tabel zewnętrznych do ładowania danych z Azure Data Lake Storage do Azure SQL Data Warehouse. Mimo że można uruchamiać zapytania ad hoc dotyczące danych przechowywanych w Data Lake Storage, zalecamy zaimportowanie danych do SQL Data Warehouse w celu uzyskania najlepszej wydajności.
@@ -203,7 +204,7 @@ ALTER INDEX ALL ON [dbo].[DimProduct] REBUILD;
 ## <a name="optimize-statistics"></a>Optymalizowanie statystyk
 Najlepiej jest utworzyć statystyki pojedynczej kolumny bezpośrednio po załadowaniu. Istnieją pewne możliwości statystyczne. Na przykład w przypadku tworzenia statystyk z jedną kolumną dla każdej kolumny może upłynąć dużo czasu, aby ponownie skompilować wszystkie statystyki. Jeśli wiesz, że niektóre kolumny nie będą znajdować się w predykatach zapytań, możesz pominąć tworzenie statystyk dla tych kolumn.
 
-Jeśli zdecydujesz się utworzyć statystykę jednokolumnową dla każdej kolumny każdej tabeli, możesz użyć przykładowego `prc_sqldw_create_stats` kodu procedury składowanej w artykule [Statystyka](sql-data-warehouse-tables-statistics.md) .
+Jeśli zdecydujesz się utworzyć statystykę jednokolumnową dla każdej kolumny każdej tabeli, możesz użyć przykładowego kodu procedury składowanej `prc_sqldw_create_stats` w artykule [Statystyka](sql-data-warehouse-tables-statistics.md) .
 
 Poniższy przykład jest dobrym punktem wyjścia do tworzenia statystyk. Tworzy statystykę jednokolumnową dla każdej kolumny w tabeli wymiarów i dla każdej kolumny sprzężenia w tabelach faktów. Można zawsze dodawać pojedyncze lub wielokolumnowe statystyki do innych kolumn tabeli faktów w późniejszym czasie.
 

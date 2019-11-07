@@ -1,5 +1,5 @@
 ---
-title: Elastyczne skalowanie usługi Azure SQL — często zadawane pytania | Microsoft Docs
+title: Elastyczne skalowanie usługi Azure SQL — często zadawane pytania
 description: Często zadawane pytania dotyczące Azure SQL Database elastycznym skalowaniu.
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 01/25/2019
-ms.openlocfilehash: 2b101aebd048b94ac95e1dba0f6504446d6d6803
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 8ef99d6d752f1e9474fccea6c00b51b61ae1304b
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68568431"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73690262"
 ---
 # <a name="elastic-database-tools-frequently-asked-questions-faq"></a>Narzędzia elastycznej bazy danych — często zadawane pytania
 
@@ -34,7 +34,7 @@ Korzystanie z biblioteki klienta Elastic Database nie wiąże się z żadnymi ko
 
 ## <a name="why-are-my-credentials-not-working-when-i-add-a-shard-from-a-different-server"></a>Dlaczego moje poświadczenia nie działają po dodaniu fragmentu z innego serwera
 
-Nie używaj poświadczeń w postaci "User ID =username@servername", zamiast tego po prostu Użyj "User ID = username".  Upewnij się również, że nazwa logowania "username" ma uprawnienia do fragmentu.
+Nie należy używać poświadczeń w postaci "User ID =username@servername", zamiast tego po prostu Użyj "User ID = username".  Upewnij się również, że nazwa logowania "username" ma uprawnienia do fragmentu.
 
 ## <a name="do-i-need-to-create-a-shard-map-manager-and-populate-shards-every-time-i-start-my-applications"></a>Czy muszę utworzyć Menedżera mapy fragmentu i wypełnić fragmentów przy każdym uruchomieniu aplikacji
 

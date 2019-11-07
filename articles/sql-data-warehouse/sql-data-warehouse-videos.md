@@ -1,6 +1,6 @@
 ---
-title: Wideo — Azure SQL Data Warehouse | Dokumentacja firmy Microsoft
-description: Zawiera łącza do różnych listy odtwarzania wideo dotyczące usługi Azure SQL Data Warehouse.
+title: Filmy wideo
+description: Linki do różnych list odtwarzania wideo dla Azure SQL Data Warehouse.
 services: sql-data-warehouse
 author: anumjs
 manager: craigg
@@ -10,18 +10,19 @@ ms.subservice: manage
 ms.date: 02/15/2019
 ms.author: anjangsh
 ms.reviewer: igorstan
-ms.openlocfilehash: 52f61f606ddf28c23eb3f72ff91c68a47b667ea1
-ms.sourcegitcommit: ccb9a7b7da48473362266f20950af190ae88c09b
+ms.custom: seo-lt-2019
+ms.openlocfilehash: 5d01ff2eb74844997eb1640123e4af59abe2340b
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67595454"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73692440"
 ---
-# <a name="azure-sql-data-warehouse---videos"></a>Usługa Azure SQL Data Warehouse — wideo
+# <a name="azure-sql-data-warehouse---videos"></a>Azure SQL Data Warehouse — wideo
 
-Oglądaj najnowsze wideo usługi Azure SQL Data Warehouse, aby dowiedzieć się o nowe funkcje i ulepszenia wydajności. 
+Obejrzyj najnowsze Azure SQL Data Warehouse wideo, aby dowiedzieć się więcej o nowych możliwościach i ulepszeniach wydajności. 
 
-Aby rozpocząć, wybierz film wideo z omówieniem poniżej, aby dowiedzieć się o nowych aktualizacjach usługi Azure SQL Data Warehouse. Ponadto Dowiedz się, jak wzorce z nowoczesnym magazynem danych może służyć do rzeczywistych scenariuszy, takich jak przestępstwami cyfrowymi.
+Aby rozpocząć, wybierz poniższe wideo z omówieniem, aby dowiedzieć się więcej o nowych aktualizacjach do Azure SQL Data Warehouse. Należy również dowiedzieć się, jak nowoczesne wzorce magazynu danych mogą służyć do rozwiązywania rzeczywistych scenariuszy, takich jak Cybercrime.
 </br>
 
 <a href="https://www.youtube.com/watch?v=7MDCWgxPnVY&list=PLXtHYVsvn_b_v4EKljH6dGo9qJ7JjItWL&index=2">
@@ -30,8 +31,8 @@ Aby rozpocząć, wybierz film wideo z omówieniem poniżej, aby dowiedzieć się
   </div>
 </a>
 
-Obejrzeć dodatkowe filmy wideo opisujące określone funkcje mogą być wyświetlane na: 
-- [YouTube: Zaawansowane funkcje analityczne przy użyciu platformy Azure](https://www.youtube.com/playlist?list=PLLasX02E8BPClOvjNV9bXk3LUuf3nQiS2)
-- [Wideo dotyczących systemu Azure](https://azure.microsoft.com/resources/videos/index/?services=sql-data-warehouse)
+Dodatkowe filmy wideo opisujące konkretne funkcje można wyświetlać w: 
+- [YouTube: Zaawansowana analiza na platformie Azure](https://www.youtube.com/playlist?list=PLLasX02E8BPClOvjNV9bXk3LUuf3nQiS2)
+- [Wideo na platformie Azure](https://azure.microsoft.com/resources/videos/index/?services=sql-data-warehouse)
 
 

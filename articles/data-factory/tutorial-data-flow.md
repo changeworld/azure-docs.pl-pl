@@ -1,5 +1,5 @@
 ---
-title: Przekształcanie danych przy użyciu przepływu danych mapowania w Azure Data Factory | Microsoft Docs
+title: Przekształcanie danych przy użyciu przepływu danych mapowania w Azure Data Factory
 description: Ten samouczek zawiera instrukcje krok po kroku dotyczące korzystania z Azure Data Factory do przekształcania danych przy użyciu przepływu danych mapowania
 author: djpmsft
 ms.author: daperlov
@@ -7,12 +7,12 @@ ms.reviewer: makromer
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 10/07/2019
-ms.openlocfilehash: 5b618798c74393f3e7d89cfc69c67ba831356ce4
-ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
+ms.openlocfilehash: 886e6e659dee2a898167054c5d76bc3977f27e11
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72385551"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73683626"
 ---
 # <a name="transform-data-using-mapping-data-flows"></a>Przekształcanie danych przy użyciu mapowania przepływów danych
 
@@ -122,7 +122,7 @@ Po utworzeniu przepływu danych zostanie on automatycznie wysłany do kanwy prze
 
     ```toInteger(year) >= 1910 && toInteger(year) <= 2000```
 
-    Aby znaleźć filmy, które są Comedies, można użyć funkcji ```rlike()``` w celu znalezienia wzorca "komedia" w gatunku kolumny. Utwórz wyrażenie rlike z porównaniem lat, aby uzyskać:
+    Aby znaleźć filmy, które są comediese, możesz użyć funkcji ```rlike()```, aby znaleźć wzorzec "komedia" w gatunku kolumny. Utwórz wyrażenie rlike z porównaniem lat, aby uzyskać:
 
     ```toInteger(year) >= 1910 && toInteger(year) <= 2000 && rlike(genres, 'Comedy')```
 
@@ -144,7 +144,7 @@ Po utworzeniu przepływu danych zostanie on automatycznie wysłany do kanwy prze
 1. Przejdź do karty **agregaty** . W lewym polu tekstowym nadaj kolumnie agregującej **AverageComedyRating**. Kliknij pole wyrażenia z prawej strony, aby wprowadzić wyrażenie agregujące za pośrednictwem konstruktora wyrażeń.
     
     ![Agregacja](media/tutorial-data-flow/agg3.png)
-1. Aby uzyskać średnią **klasyfikację**kolumn, użyj funkcji agregującej ```avg()```. Ponieważ **Klasyfikacja** jest ciągiem, a ```avg()``` przyjmuje numeryczne dane wejściowe, należy przekonwertować wartość na liczbę za pośrednictwem funkcji ```toInteger()```. To wyrażenie wygląda następująco:
+1. Aby uzyskać średnią **klasyfikację**kolumn, użyj ```avg()``` funkcji agregującej. Ponieważ **Klasyfikacja** jest ciągiem, a ```avg()``` przyjmuje numeryczne dane wejściowe, należy przekonwertować wartość na liczbę za pośrednictwem funkcji ```toInteger()```. To wyrażenie wygląda następująco:
 
     ```avg(toInteger(Rating))```
     

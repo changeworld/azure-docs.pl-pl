@@ -1,6 +1,6 @@
 ---
-title: Usługa SQL Data Warehouse partnerów w dziedzinie zarządzania danych | Dokumentacja firmy Microsoft
-description: Wyświetla listę danych firm partnerów zarządzania dzięki rozwiązaniom, które obsługują SQL Data Warehouse.
+title: Partnerzy zarządzania danymi
+description: Listy partnerów zarządzania danymi innych firm z rozwiązaniami, które obsługują Azure SQL Data Warehouse.
 services: sql-data-warehouse
 author: mabasile-MSFT
 manager: craigg
@@ -10,27 +10,28 @@ ms.subservice: consume
 ms.date: 04/17/2018
 ms.author: mabasile
 ms.reviewer: igorstan
-ms.openlocfilehash: 98f581eca893fc3f0cf2eae12fdcffbe0440bdd7
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.custom: seo-lt-2019
+ms.openlocfilehash: b26d81a125cd64987a9725d88b2f3fcadbdb19ac
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65873696"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73685590"
 ---
-# <a name="sql-data-warehouse-data-management-partners"></a>Usługa SQL Data Warehouse partnerów w dziedzinie zarządzania danych
-Aby utworzyć swoje rozwiązanie magazynu danych, wybierz z szerokiej gamy narzędzi wiodące w branży. W tym artykule przedstawiono firm partnerskich firmy Microsoft przy użyciu narzędzia do zarządzania danymi i rozwiązań Obsługa usługi Azure SQL Data Warehouse.
+# <a name="sql-data-warehouse-data-management-partners"></a>SQL Data Warehouse partnerzy zarządzania danymi
+Aby utworzyć rozwiązanie magazynu danych, wybierz jedną z wielu narzędzi wiodących w branży. W tym artykule przedstawiono firmy partnerskie firmy Microsoft z narzędziami do zarządzania danymi i rozwiązaniami obsługiwanymi Azure SQL Data Warehouse.
 
-## <a name="data-management-partners"></a>Partnerów w dziedzinie zarządzania danych
+## <a name="data-management-partners"></a>Partnerzy zarządzania danymi
 | Partner | Opis | Link do witryny sieci Web/produktu |
 | ------- | ----------- | -------------------- |
-| ![Magazynowanie danych coffing][1] |**Magazynowanie danych coffing**<br>Magazynowanie danych coffing zapewnia Chameleon Nexus, narzędzie o 10 lat projektu do wykonywania zapytań w systemach w wersji dedykowanej. Węzła jest narzędziem do wykonywania zapytań dla usługi SQL Data Warehouse. Użyj węzła zapytania w firmie i w chmurze komputerów i łączenia danych na różnych platformach. Punkt kliknij Report! |[Strona produktu][coffing_website]<br> |
-| ![Inbrein][2] |**Inbrein MicroERD**<br>Inbrein MicroERD udostępnia narzędzia, które należy utworzyć model dokładnych danych, zmniejszyć nadmiarowość danych, zwiększyć wydajność i obserwować standardy. Za pomocą jego interfejsu użytkownika, który został opracowany oparte na wrażenia użytkowników rozbudowane, narzędzia do modelowania może pracować nad modeli bazy danych, łatwo i wygodnie. Może stale korzystaj z nowych i ulepszonych funkcji MicroERD przy użyciu monitu funkcjonalności ulepszeń i aktualizacji. |[Strona produktu][inbrein_website]<br> |
-| ![Infolibrarian][3] |**Infolibrarian (serwer zarządzania metadanych)**<br>InfoLibrarian katalogach, przechowuje i zarządza metadanych, które ułatwią rozwiązywanie kluczowych punktów danych. Ponadto Infolibrarian zawiera metadane zarządzania, zarządzanie danymi i rozwiązaniom oprogramowania do zarządzania zasobami do zarządzania i publikowanie metadanych ze zróżnicowanego zestawu narzędzi i technologii. |[Strona produktu][infolibrarian_website]<br> [Azure Marketplace][infolibrarian_marketplace]<br> |
-| ![Redpoint globalne][4] |**RedPoint Data Management**<br>Zarządzanie danymi RedPoint umożliwia sprzedawcy zastosować wszystkie swoje dane z dysku kanału między zaangażowania użytkowników podczas wykonywania, ze strukturą i zarządzanie danymi bez struktury. Dzięki wykorzystaniu usługi Azure SQL Data Warehouse i RedPoint, mogą maksymalizować wartość z danych strukturyzowanych i niestrukturyzowanych w celu dostarczenia hyper spersonalizowanych, kontekstowych interakcji potrzebne do prowadzenia współczesnych omni kanału klienta. Przeciągnij i upuść interfejs sprawia, że projektowanie i wykonywanie procesów zarządzania danych jest łatwe. |[Strona produktu][redpoint_dm_website]<br> [Azure Marketplace][redpoint_dm_marketplace]<br> |
-| ![Sentry jeden][5] |**SentryOne (DW Sentry)**<br>Dzięki inteligentnym danym i przenoszenie pulpit nawigacyjny i zdarzenia kalendarza zawsze wiadomo dokładnie co ma wpływ na obciążenie. Zaprojektowany, aby umożliwiał widoczność zadań uruchamianych ładowania, tworzenia kopii zapasowej lub przywracania danych i zapytań, nigdy nie zwracaj maksymalne wykorzystanie zasobów na platformie Azure. |[Strona produktu][sql_sentry_website]<br>[Azure Marketplace][sql_sentry_marketplace]<br> |
+| ![Magazynowanie danych w ramach COFF][1] |**Magazynowanie danych w ramach COFF**<br>Magazynowanie danych w języku COFF oferuje Nexus Chameleon, narzędzie z 10-letnim projektem przeznaczonym do wykonywania zapytań w systemach. Nexus jest dostępny jako narzędzie zapytania dla SQL Data Warehouse. Użyj Nexus do wysyłania zapytań do komputerów wewnętrznych i w chmurze oraz sprzęgania danych na różnych platformach. Punkt-kliknij-raport. |[Strona produktu][coffing_website]<br> |
+| ![Inbrein][2] |**Inbrein MicroERD**<br>Inbrein MicroERD zawiera narzędzia, które są potrzebne do utworzenia precyzyjnego modelu danych, zmniejszenia nadmiarowości danych, poprawy produktywności i przestrzegania standardów. Korzystając z interfejsu użytkownika, który został opracowany w oparciu o rozległe środowiska użytkownika, Modelarz może łatwo i wygodnie pracować z modelami bazy danych. Możesz ciągle korzystać z nowych i ulepszonych funkcji MicroERD poprzez monitowanie i aktualizowanie funkcjonalne. |[Strona produktu][inbrein_website]<br> |
+| ![Infolibrarian][3] |**Infolibrarian (serwer zarządzania metadanymi)**<br>InfoLibrarian katalogi, przechowuje i zarządza metadanymi, aby pomóc w rozwiązaniu najważniejszych punktów zarządzania danymi. Ponadto Infolibrarian udostępnia rozwiązania do zarządzania metadanymi, nadzoru danych i zarządzania zasobami służące do zarządzania i publikowania metadanych z różnych zestawów narzędzi i technologii. |[Strona produktu][infolibrarian_website]<br> [Azure Marketplace][infolibrarian_marketplace]<br> |
+| ![RedPoint globalne][4] |**RedPoint Zarządzanie danymi**<br>RedPoint Zarządzanie danymi umożliwia firmom rynkowym stosowanie wszystkich danych w celu przeprowadzenia wielokanałowego zaangażowania klientów podczas wykonywania strukturalnych i niestrukturalnych zarządzania danymi. Korzystając z zalet Azure SQL Data Warehouse i RedPoint, można zmaksymalizować wartość danych ze strukturą i bez struktury, aby zapewnić spersonalizowane i niestrukturalne interakcje, które są potrzebne do wzięcia udziału w korzystaniu z klientów opartych na kanale rozproszonej. Interfejs przeciągania i upuszczania ułatwia projektowanie i wykonywanie procesów zarządzania danymi. |[Strona produktu][redpoint_dm_website]<br> [Azure Marketplace][redpoint_dm_marketplace]<br> |
+| ![Sentry jeden][5] |**SentryOne (DW Sentry)**<br>Dzięki pulpitowi nawigacyjnemu inteligentnego przenoszenia danych i kalendarzowi zdarzeń zawsze wiadomo, co ma wpływ na obciążenie. Zaprojektowana w celu zapewnienia wglądu w zapytania i zadania uruchamiane w celu załadowania, wykonywania kopii zapasowej lub przywracania danych, nie trzeba martwić się o optymalne wykorzystanie zasobów platformy Azure. |[Strona produktu][sql_sentry_website]<br>[Azure Marketplace][sql_sentry_marketplace]<br> |
 
 ## <a name="next-steps"></a>Następne kroki
-Aby dowiedzieć się więcej na temat innych partnerów, zobacz [analizy biznesowej partnerów] [ bi_partners] i [partnerów integracji danych][di_partners].
+Aby dowiedzieć się więcej o innych partnerach, zobacz [partnerzy analizy biznesowej][bi_partners] i [partnerzy integracji danych][di_partners].
 
 <!--Image references-->
 

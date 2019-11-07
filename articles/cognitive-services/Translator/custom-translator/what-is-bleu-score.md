@@ -1,7 +1,7 @@
 ---
-title: Co to jest wynik BLEU? — Niestandardowy w usłudze Translator
+title: Co to jest wynik BLEU? — Translator niestandardowy
 titleSuffix: Azure Cognitive Services
-description: BLEU to pomiar różnic między automatycznym translacją a jednym lub wieloma tłumaczeniami referencyjnymi w tym samym zdaniu źródłowym. Algorytm BLEU porównuje kolejne frazy automatycznego tłumaczenia z następującymi frazami znalezionymi w tłumaczeniu referencyjnym i liczy liczbę dopasowań w sposób ważony.
+description: BLEU to pomiar różnic między translacją maszyn i utworzonymi przez człowieka tłumaczeniami odwołań tego samego zdania źródła.
 author: swmachan
 manager: nitinme
 ms.service: cognitive-services
@@ -9,12 +9,12 @@ ms.subservice: translator-text
 ms.topic: conceptual
 ms.date: 02/21/2019
 ms.author: swmachan
-ms.openlocfilehash: 1993819ad227d7e9aa5ef899045e00447a6740b8
-ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
+ms.openlocfilehash: 85c4ee27a828a05c64ca6cbf84bff438535328be
+ms.sourcegitcommit: 359930a9387dd3d15d39abd97ad2b8cb69b8c18b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68595418"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73647371"
 ---
 # <a name="what-is-a-bleu-score"></a>Co to jest wynik BLEU?
 

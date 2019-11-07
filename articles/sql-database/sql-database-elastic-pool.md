@@ -1,5 +1,5 @@
 ---
-title: Zarządzanie wieloma bazami danych SQL przy użyciu pul elastycznych — platforma Azure | Microsoft Docs
+title: Zarządzanie wieloma bazami danych SQL przy użyciu pul elastycznych — platforma Azure
 description: Zarządzanie i skalowanie wielu baz danych SQL — setki i tysiące — przy użyciu pul elastycznych. Jedna cena za zasoby, które można dystrybuować w razie potrzeby.
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: oslake
 ms.author: moslake
 ms.reviewer: ninarn, carlrab
 ms.date: 08/06/2019
-ms.openlocfilehash: 0b0a6bec7916c056c187ed9e588dd3ac8fea8d84
-ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
+ms.openlocfilehash: 68bb68b47ca240d6c20153af3ed4b0eb42475282
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/21/2019
-ms.locfileid: "69876398"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73690444"
 ---
 # <a name="elastic-pools-help-you-manage-and-scale-multiple-azure-sql-databases"></a>Pule elastyczne ułatwiają zarządzanie wieloma bazami danych Azure SQL i skalowanie ich
 
@@ -101,7 +101,7 @@ Należy zauważyć, że w tym przykładzie nie jest rozważane użycie innych ba
 
 Duża różnica między szczytowym i średnim użyciem bazy danych wskazuje na dłuższe okresy niewielkiego wykorzystania i krótkie okresy wysokiego wykorzystania. Ten wzorzec użycia jest idealny dla współużytkowania zasobów między bazami danych. Bazę danych należy rozważyć do umieszczenia w puli, jeśli jej szczytowe użycie jest ponad 1,5 raza większe niż jej średnie użycie.
 
-**Przykład modelu zakupu opartego na**jednostkach DTU: Baza danych S3, która osiąga szczytowe użycie do 100 DTU, a przeciętnie używa 67 DTU lub mniej, jest dobrym kandydatem do współużytkowania jednostek eDTU w puli. Również baza danych S1, która osiąga szczytowe użycie 20 DTU, a przeciętnie używa 13 DTU lub mniej, jest dobrym kandydatem do umieszczenia w puli.
+**Przykład modelu zakupu opartego na**jednostkach DTU: baza danych S3, która ma szczyt do 100 DTU i średnio używa 67 DTU lub mniej, jest dobrym kandydatem do udostępniania jednostek eDTU w puli. Również baza danych S1, która osiąga szczytowe użycie 20 DTU, a przeciętnie używa 13 DTU lub mniej, jest dobrym kandydatem do umieszczenia w puli.
 
 ## <a name="how-do-i-choose-the-correct-pool-size"></a>Jak mogę wybrać poprawnego rozmiaru puli
 
@@ -116,11 +116,11 @@ W przypadkach, gdy nie można użyć narzędzi, skorzystanie z następujących i
 
 1. Oszacuj jednostek eDTU lub rdzeni wirtualnych wymagany dla puli w następujący sposób:
 
-   W przypadku modelu zakupu opartego na jednostkach DTU: MAX(<*łączna liczba baz danych* X *średnie użycie jednostek DTU na bazę danych*>,<br>  
+   W przypadku modelu zakupu opartego na jednostkach DTU: MAX (<*całkowita liczba baz danych* X *średnia użycie jednostek DTU na bazę danych*>,<br>  
    <*liczba baz danych jednocześnie osiągających szczyt użycia* X *użycie szczytowe jednostek DTU na bazę danych*)
 
-   W przypadku modelu zakupu opartego na rdzeń wirtualny: MAX (<*całkowita liczba baz danych* X *średniego użycia rdzeń wirtualny na bazę danych*>,<br>  
-   <*Liczba współbieżnie szczytowych baz danych* X *szczytowe wykorzystanie rdzeń wirtualny na bazę danych*)
+   W przypadku modelu zakupu opartego na rdzeń wirtualny: MAX (<*całkowita liczba baz danych* X *średnia użycie rdzeń wirtualny na bazę danych*>,<br>  
+   <*liczba równoczesnych szczytowych baz danych* X *szczytowego użycia rdzeń wirtualny na bazę danych*)
 
 2. Oszacuj miejsce do magazynowania wymagane dla puli przez dodanie liczby bajtów potrzebnych dla wszystkich baz danych w puli. Następnie określ rozmiar puli (w jednostkach eDTU), który zapewni tę ilość miejsca przechowywania.
 3. W przypadku modelu zakupu opartego na jednostkach DTU należy uzyskać więcej wartości szacunkowych jednostek eDTU z kroku 1 i 2. W przypadku modelu zakupu opartego na rdzeń wirtualny należy uzyskać oszacowanie rdzeń wirtualny z kroku 1.
@@ -149,7 +149,7 @@ Bazy danych w puli obsługują te same [funkcje ciągłości działalności bizn
 
 - **Aktywna replikacja geograficzna**
 
-  W przypadku aplikacji, które mają bardziej agresywne wymagania dotyczące odzyskiwania niż w przypadku przywracania [](sql-database-active-geo-replication.md) geograficznego, można skonfigurować aktywną replikację geograficzną lub [grupę autotrybu failover](sql-database-auto-failover-group.md).
+  W przypadku aplikacji, które mają bardziej agresywne wymagania dotyczące odzyskiwania niż w przypadku przywracania geograficznego, można skonfigurować [aktywną replikację geograficzną](sql-database-active-geo-replication.md) lub [grupę autotrybu failover](sql-database-auto-failover-group.md).
 
 ## <a name="creating-a-new-sql-database-elastic-pool-using-the-azure-portal"></a>Tworzenie nowej SQL Database elastycznej puli przy użyciu Azure Portal
 

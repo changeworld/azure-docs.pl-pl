@@ -1,5 +1,5 @@
 ---
-title: Przekształcanie danych przy użyciu działania trzody chlewnej w Azure Data Factory | Microsoft Docs
+title: Przekształcanie danych przy użyciu działania trzody chlewnej w Azure Data Factory
 description: Dowiedz się, jak za pomocą działania świni w usłudze Azure Data Factory uruchamiać skrypty wieprzowe na żądanie/własny klaster usługi HDInsight.
 services: data-factory
 documentationcenter: ''
@@ -12,12 +12,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/10/2018
-ms.openlocfilehash: 72f532c277096a20387ab1b4922def2cd35a9afb
-ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
+ms.openlocfilehash: a6861a22f853bb0b48eb7c9832adb251bc3467ca
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70139125"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73682395"
 ---
 # <a name="transform-data-using-pig-activity-in-azure-data-factory"></a>Przekształcanie danych przy użyciu działania trzody chlewnej w Azure Data Factory
 > [!div class="op_single_selector" title1="Działania transformacji"]
@@ -36,10 +36,10 @@ ms.locfileid: "70139125"
 > Ten artykuł dotyczy wersji 1 usługi Data Factory. Jeśli używasz bieżącej wersji usługi Data Factory, zobacz [Przekształć dane przy użyciu działania świni w Data Factory](../transform-data-using-hadoop-pig.md).
 
 
-Działanie świni w [usłudze](data-factory-compute-linked-services.md#azure-hdinsight-on-demand-linked-service) HDInsight w potoku Data Factory wykonuje zapytania dotyczące trzody chlewnej we [własnym lub lokalnym klastrze usługi](data-factory-compute-linked-services.md#azure-hdinsight-linked-service) HDInsight opartym na systemie Windows/Linux. [](data-factory-create-pipelines.md) W tym artykule przedstawiono artykuł [działania przekształcania danych](data-factory-data-transformation-activities.md) , który zawiera ogólne omówienie transformacji danych i obsługiwanych działań transformacji.
+Działanie świni w [usłudze](data-factory-compute-linked-services.md#azure-hdinsight-on-demand-linked-service) HDInsight w [potoku](data-factory-create-pipelines.md) Data Factory wykonuje zapytania dotyczące trzody chlewnej we [własnym lub lokalnym klastrze usługi](data-factory-compute-linked-services.md#azure-hdinsight-linked-service) HDInsight opartym na systemie Windows/Linux. W tym artykule przedstawiono artykuł [działania przekształcania danych](data-factory-data-transformation-activities.md) , który zawiera ogólne omówienie transformacji danych i obsługiwanych działań transformacji.
 
 > [!NOTE] 
-> Jeśli jesteś nowym do Azure Data Factory, przeczytaj artykuł [wprowadzenie do Azure Data Factory](data-factory-introduction.md) i wykonaj samouczek: [Utwórz pierwszy potok danych](data-factory-build-your-first-pipeline.md) przed przeczytaniem tego artykułu. 
+> Jeśli dopiero zaczynasz Azure Data Factory, przeczytaj artykuł [wprowadzenie do Azure Data Factory](data-factory-introduction.md) i wykonaj samouczek: [Kompiluj pierwszy potok danych](data-factory-build-your-first-pipeline.md) przed przeczytaniem tego artykułu. 
 
 ## <a name="syntax"></a>Składnia
 
@@ -82,17 +82,17 @@ Działanie świni w [usłudze](data-factory-compute-linked-services.md#azure-hdi
 
 ## <a name="syntax-details"></a>Szczegóły składni
 
-| Właściwość | Opis | Wymagane |
+| Właściwość | Opis | Wymagany |
 | --- | --- | --- |
 | name |Nazwa działania |Tak |
 | description |Tekst opisujący działanie używanego działania |Nie |
 | type |HDinsightPig |Tak |
-| inputs |Co najmniej jedno wejście używane przez działanie świni |Nie |
-| outputs |Jedno lub więcej danych wyjściowych wytwarzanych przez działanie trzody chlewnej |Tak |
+| danych wejściowych |Co najmniej jedno wejście używane przez działanie świni |Nie |
+| wydajności |Jedno lub więcej danych wyjściowych wytwarzanych przez działanie trzody chlewnej |Tak |
 | linkedServiceName |Odwołanie do klastra usługi HDInsight zarejestrowanego jako połączona usługa w Data Factory |Tak |
-| script |Określ skrypt dla trzody chlewnej |Nie |
+| napisy |Określ skrypt dla trzody chlewnej |Nie |
 | scriptPath |Zapisz skrypt trzody chlewnej w usłudze Azure Blob Storage i podaj ścieżkę do pliku. Użyj właściwości "Script" lub "scriptPath". Nie można jednocześnie używać obu tych metod. W nazwie pliku rozróżniana jest wielkość liter. |Nie |
-| defines |Określ parametry jako pary klucz/wartość do odwołania w skrypcie świni |Nie |
+| definiuje |Określ parametry jako pary klucz/wartość do odwołania w skrypcie świni |Nie |
 
 ## <a name="example"></a>Przykład
 Rozważmy przykładową analizę dzienników gier, w której chcesz określić czas spędzony przez graczy, którzy odgrywają gry uruchomione przez firmę.

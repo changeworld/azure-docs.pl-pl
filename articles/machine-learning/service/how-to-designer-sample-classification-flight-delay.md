@@ -1,5 +1,5 @@
 ---
-title: 'Przykład projektanta #6: Klasyfikacja do przewidywania opóźnień lotów'
+title: 'Projektant: klasyfikowanie, przewidywanie opóźnień lotów'
 titleSuffix: Azure Machine Learning
 description: W tym artykule opisano sposób tworzenia modelu uczenia maszynowego w celu przewidywania opóźnień lotów przy użyciu projektanta metodą "przeciągnij i upuść" oraz niestandardowego kodu języka R.
 services: machine-learning
@@ -10,12 +10,12 @@ author: xiaoharper
 ms.author: zhanxia
 ms.reviewer: peterlu
 ms.date: 11/04/2019
-ms.openlocfilehash: 4b21ebffe8959809acc71fc09aff7e58873e10b8
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 10b3b78b4878eeddf2f786fda90ab9709e4bd2b4
+ms.sourcegitcommit: 359930a9387dd3d15d39abd97ad2b8cb69b8c18b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73515527"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73647198"
 ---
 # <a name="sample-6---classification-predict-flight-delays-using-r"></a>Przykład 6 — Klasyfikacja: przewidywanie opóźnień lotów przy użyciu języka R
 [!INCLUDE [applies-to-skus](../../../includes/aml-applies-to-enterprise-sku.md)]
@@ -58,7 +58,7 @@ Zestaw danych wymaga zwykle przetworzenia wstępnego, zanim będzie można go pr
 
 Kolumny **Carrier**, **OriginAirportID**i **DestAirportID** są zapisywane jako liczby całkowite. Jednak są one atrybutami kategorii, za pomocą modułu **Edytowanie metadanych** można konwertować je na kategorii.
 
-![Edytuj metadane](media/how-to-ui-sample-classification-predict-flight-delay/edit-metadata.png)
+![edit-metadata](media/how-to-ui-sample-classification-predict-flight-delay/edit-metadata.png)
 
 Następnie użyj modułu **Wybieranie kolumn** w zestawie danych, aby wykluczyć z kolumn zestawu danych, które są możliwymi przeciekami docelowymi: **DepDelay**, **DepDel15**, **ArrDelay**, **anulowane**, **Year**. 
 

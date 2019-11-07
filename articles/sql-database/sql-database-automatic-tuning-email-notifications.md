@@ -1,5 +1,5 @@
 ---
-title: Automatyczne dostrajanie powiadomień e-mail — Przewodnik Azure SQL Database | Microsoft Docs
+title: Automatyczne dostrajanie powiadomień e-mail — Przewodnik Azure SQL Database
 description: Włącz powiadomienia e-mail dla Azure SQL Database automatycznego dostrajania zapytań.
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: danimir
 ms.author: danil
 ms.reviewer: jrasnik, carlrab
 ms.date: 06/03/2019
-ms.openlocfilehash: df9390c00c34fce82de8cc17efb5cc3bce2e4e3d
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: e1478ab6abc9705a67f2d47bc076d3c2fe54ccd4
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68569442"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73691144"
 ---
 # <a name="email-notifications-for-automatic-tuning"></a>Powiadomienia e-mail dotyczące dostrajania automatycznego
 
@@ -81,7 +81,7 @@ Wykonaj następujące kroki, aby załadować skrypt programu PowerShell wewnątr
 - W okienku "**Edytuj element Runbook programu PowerShell**" Wybierz pozycję "**elementy Runbook**" w drzewie menu i rozwiń widok, dopóki nie zostanie wyświetlona nazwa elementu Runbook (w tym przykładzie "**AutomaticTuningEmailAutomation**"). Wybierz ten element Runbook.
 - W pierwszym wierszu "Edytuj element Runbook programu PowerShell" (rozpoczynając od numeru 1) Skopiuj poniższy kod skryptu programu PowerShell. Ten skrypt programu PowerShell jest dostępny z chwilą rozpoczęcia pracy. Zmodyfikuj skrypt, aby wymusić Twoje potrzeby.
 
-W nagłówku podanego skryptu programu PowerShell należy zastąpić `<SUBSCRIPTION_ID_WITH_DATABASES>` identyfikatorem subskrypcji platformy Azure. Aby dowiedzieć się, jak pobrać identyfikator subskrypcji platformy Azure, zobacz temat [Pobieranie identyfikatora GUID subskrypcji platformy Azure](https://blogs.msdn.microsoft.com/mschray/20../../getting-your-azure-subscription-guid-new-portal/).
+W nagłówku podanego skryptu programu PowerShell należy zastąpić `<SUBSCRIPTION_ID_WITH_DATABASES>` IDENTYFIKATORem subskrypcji platformy Azure. Aby dowiedzieć się, jak pobrać identyfikator subskrypcji platformy Azure, zobacz temat [Pobieranie identyfikatora GUID subskrypcji platformy Azure](https://blogs.msdn.microsoft.com/mschray/20../../getting-your-azure-subscription-guid-new-portal/).
 
 W przypadku kilku subskrypcji można je dodać jako rozdzielane przecinkami do właściwości "$subscriptions" w nagłówku skryptu.
 

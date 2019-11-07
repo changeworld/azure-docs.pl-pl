@@ -8,23 +8,23 @@ ms.date: 10/22/2019
 ms.author: normesta
 ms.subservice: common
 ms.reviewer: dineshm
-ms.openlocfilehash: 6680efb89eddcfb1c4fa931993956ef83369b292
-ms.sourcegitcommit: 8e271271cd8c1434b4254862ef96f52a5a9567fb
+ms.openlocfilehash: 78e3f1d4f457e041d386ac7754d089b8b3635b08
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72817049"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73686633"
 ---
 # <a name="transfer-data-with-azcopy-and-blob-storage"></a>Transferowanie danych za pomocą AzCopy i magazynu obiektów BLOB
 
 AzCopy to narzędzie wiersza polecenia, za pomocą którego można kopiować dane do, z lub między kontami magazynu. Ten artykuł zawiera przykładowe polecenia, które działają z usługą BLOB Storage.
 
-## <a name="get-started"></a>Rozpocznij
+## <a name="get-started"></a>Rozpoczęcie pracy
 
 Zapoznaj się z artykułem [wprowadzenie do AzCopy](storage-use-azcopy-v10.md) w celu pobrania AzCopy i Dowiedz się więcej na temat sposobów dostarczania poświadczeń autoryzacji do usługi magazynu.
 
 > [!NOTE]
-> W przykładach w tym artykule przyjęto założenie, że tożsamość została uwierzytelniona przy użyciu `AzCopy login` polecenia. AzCopy następnie używa konta usługi Azure AD do autoryzacji dostępu do danych w usłudze BLOB Storage.
+> W przykładach w tym artykule przyjęto założenie, że tożsamość została uwierzytelniona przy użyciu polecenia `AzCopy login`. AzCopy następnie używa konta usługi Azure AD do autoryzacji dostępu do danych w usłudze BLOB Storage.
 >
 > Jeśli wolisz używać tokenu SAS do autoryzacji dostępu do danych obiektów blob, możesz dołączyć ten token do adresu URL zasobu w każdym poleceniu AzCopy.
 >
@@ -70,7 +70,7 @@ Aby uzyskać szczegółowe dokumenty referencyjne, zobacz [AzCopy Copy](storage-
 | **Przykład** | `azcopy copy 'C:\myDirectory\myTextFile.txt' 'https://mystorageaccount.blob.core.windows.net/mycontainer/myTextFile.txt'` |
 | **Przykład** (hierarchiczna przestrzeń nazw) | `azcopy copy 'C:\myDirectory\myTextFile.txt' 'https://mystorageaccount.dfs.core.windows.net/mycontainer/myTextFile.txt'` |
 
-Możesz również przekazać plik za pomocą symbolu wieloznacznego (*) w dowolnym miejscu w ścieżce lub nazwie pliku. Na przykład: `'C:\myDirectory\*.txt'` lub `C:\my*\*.txt`.
+Możesz również przekazać plik za pomocą symbolu wieloznacznego (*) w dowolnym miejscu w ścieżce lub nazwie pliku. Na przykład: `'C:\myDirectory\*.txt'`lub `C:\my*\*.txt`.
 
 > [!NOTE]
 > AzCopy domyślnie przekazuje dane do blokowych obiektów BLOB. Aby przekazać pliki jako Dołącz obiekty blob lub stronicowe obiekty blob, Użyj flagi `--blob-type=[BlockBlob|PageBlob|AppendBlob]`.
@@ -105,7 +105,7 @@ Zawartość katalogu można przekazać bez kopiowania samego katalogu zawierają
 | **Przykład** (hierarchiczna przestrzeń nazw) | `azcopy copy 'C:\myDirectory\*' 'https://mystorageaccount.dfs.core.windows.net/mycontainer/myBlobDirectory'` |
 
 > [!NOTE]
-> Dołącz flagę `--recursive` w celu przekazywania plików we wszystkich podkatalogach.
+> Dołącz flagę `--recursive` do przekazywania plików we wszystkich podkatalogach.
 
 ### <a name="upload-specific-files"></a>Przekazywanie określonych plików
 
@@ -235,7 +235,7 @@ AzCopy używa [interfejsów API](https://docs.microsoft.com/rest/api/storageserv
 >
 > - Obsługiwane są tylko konta, które nie mają hierarchicznej przestrzeni nazw.
 > - Musisz dołączyć token sygnatury dostępu współdzielonego do każdego źródłowego adresu URL. W przypadku podania poświadczeń autoryzacji za pomocą Azure Active Directory (AD) można pominąć token sygnatury dostępu współdzielonego tylko z docelowego adresu URL.
->-  Konta magazynu blokowych obiektów BLOB w warstwie Premium nie obsługują warstw dostępu. Pomiń warstwę dostępu obiektu BLOB z operacji kopiowania, ustawiając wartość `s2s-preserve-access-tier` na `false` (na przykład: `--s2s-preserve-access-tier=false`).
+>-  Konta magazynu blokowych obiektów BLOB w warstwie Premium nie obsługują warstw dostępu. Aby pominąć warstwę dostępu obiektu BLOB w operacji kopiowania, należy ustawić `s2s-preserve-access-tier` na `false` (na przykład: `--s2s-preserve-access-tier=false`).
 
 Ta sekcja zawiera następujące przykłady:
 
@@ -285,9 +285,9 @@ Zawartość lokalnego systemu plików można zsynchronizować z kontenerem obiek
 > [!NOTE]
 > Obecnie ten scenariusz jest obsługiwany tylko w przypadku kont, które nie mają hierarchicznej przestrzeni nazw. Bieżąca wersja AzCopy nie jest synchronizowana między innymi źródłami i miejscami docelowymi (na przykład: Magazyn plików lub Amazon Web Services (AWS).
 
-Polecenie [Sync](storage-ref-azcopy-sync.md) porównuje nazwy plików i ostatnio modyfikowane sygnatury czasowe. Ustaw opcjonalną flagę `--delete-destination` na wartość `true` lub `prompt`, aby usunąć pliki w katalogu docelowym, jeśli te pliki nie znajdują się już w katalogu źródłowym.
+Polecenie [Sync](storage-ref-azcopy-sync.md) porównuje nazwy plików i ostatnio modyfikowane sygnatury czasowe. Ustaw opcjonalną flagę `--delete-destination` na wartość `true` lub `prompt`, aby usunąć pliki w katalogu docelowym, jeśli te pliki nie istnieją już w katalogu źródłowym.
 
-Jeśli ustawisz flagę `--delete-destination` do `true` AzCopy usuwa pliki bez wyświetlania monitu. Jeśli chcesz, aby monit pojawił się zanim AzCopy usunie plik, Ustaw flagę `--delete-destination` na `prompt`.
+Jeśli ustawisz flagę `--delete-destination` na `true` AzCopy usuwa pliki bez podawania monitu. Jeśli chcesz, aby monit pojawił się przed AzCopy usunięciem pliku, Ustaw flagę `--delete-destination` na `prompt`.
 
 > [!NOTE]
 > Aby zapobiec przypadkowemu usunięciu, upewnij się, że funkcja [usuwania nietrwałego](https://docs.microsoft.com/azure/storage/blobs/storage-blob-soft-delete) została włączona przed użyciem flagi `--delete-destination=prompt|true`.
@@ -332,7 +332,7 @@ Pierwszym katalogiem, który pojawia się w tym poleceniu jest źródło. Drugim
 |    |     |
 |--------|-----------|
 | **Obowiązuje** | `azcopy sync 'https://<source-storage-account-name>.blob.core.windows.net/<container-name>/<directory-name>' 'https://<destination-storage-account-name>.blob.core.windows.net/<container-name>/<directory-name>' --recursive` |
-| **Przykład** | `azcopy copy 'https://mysourceaccount.blob.core.windows.net/<container-name>/myDirectory' 'https://mydestinationaccount.blob.core.windows.net/mycontainer/myDirectory' --recursive` |
+| **Przykład** | `azcopy sync 'https://mysourceaccount.blob.core.windows.net/<container-name>/myDirectory' 'https://mydestinationaccount.blob.core.windows.net/mycontainer/myDirectory' --recursive` |
 
 ## <a name="next-steps"></a>Następne kroki
 

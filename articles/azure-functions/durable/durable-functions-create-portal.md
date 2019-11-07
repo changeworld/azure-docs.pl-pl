@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 10/23/2018
 ms.author: glenga
 ms.reviewer: azfuncdf
-ms.openlocfilehash: b765e7a03f84211d4a86c4242e9484b3517c95f9
-ms.sourcegitcommit: f3f4ec75b74124c2b4e827c29b49ae6b94adbbb7
+ms.openlocfilehash: 238969b320608c08491c3d3e85870d57f41c1589
+ms.sourcegitcommit: b2fb32ae73b12cf2d180e6e4ffffa13a31aa4c6f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/12/2019
-ms.locfileid: "70933559"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73614975"
 ---
 # <a name="create-durable-functions-using-the-azure-portal"></a>Tworzenie Durable Functions przy użyciu Azure Portal
 
@@ -36,7 +36,7 @@ Domyślnie utworzona aplikacja funkcji używa wersji 2. x środowiska uruchomien
 
 ## <a name="install-the-durable-functions-npm-package-javascript-only"></a>Instalowanie pakietu npm o trwałych funkcjach (tylko kod JavaScript)
 
-W przypadku tworzenia Durable Functions JavaScript należy zainstalować [ `durable-functions` pakiet npm](https://www.npmjs.com/package/durable-functions).
+W przypadku tworzenia Durable Functions JavaScript należy zainstalować [pakiet`durable-functions` npm](https://www.npmjs.com/package/durable-functions).
 
 1. Wybierz nazwę aplikacji funkcji, a następnie pozycję **funkcje platformy**, a następnie **Narzędzia zaawansowane (kudu)** .
 
@@ -46,19 +46,19 @@ W przypadku tworzenia Durable Functions JavaScript należy zainstalować [ `dura
 
    ![Konsola debugowania kudu](./media/durable-functions-create-portal/kudu-choose-debug-console.png)
 
-3. Struktura katalogu plików aplikacji funkcji powinna być wyświetlana. Przejdź do folderu `site/wwwroot`. W tym miejscu możesz przekazać `package.json` plik, przeciągając go i upuszczając do okna katalogu plików. Poniżej przedstawiono `package.json` przykład:
+3. Struktura katalogu plików aplikacji funkcji powinna być wyświetlana. Przejdź do folderu `site/wwwroot`. W tym miejscu możesz przekazać plik `package.json`, przeciągając go i upuszczając do okna katalogu plików. `package.json` przykład poniżej:
 
     ```json
     {
       "dependencies": {
-        "durable-functions": "^1.1.2"
+        "durable-functions": "^1.3.1"
       }
     }
     ```
 
    ![Kudu Przekaż plik Package. JSON](./media/durable-functions-create-portal/kudu-choose-debug-console.png)
 
-4. Po przekazaniu należy uruchomić polecenie z konsoli wykonywania zdalnego kudu. `npm install` `package.json`
+4. Po przekazaniu `package.json` Uruchom polecenie `npm install` z konsoli wykonywania zdalnego kudu.
 
    ![Kudu Uruchom instalację npm](./media/durable-functions-create-portal/kudu-npm-install.png)
 
@@ -72,17 +72,17 @@ W przypadku tworzenia Durable Functions JavaScript należy zainstalować [ `dura
 
     ![Wybieranie pozycji Więcej szablonów w przewodniku Szybki start usługi Functions](./media/durable-functions-create-portal/add-first-function.png)
 
-1. W polu wyszukiwania wpisz `durable` , a następnie wybierz szablon **Durable Functions http Starter** .
+1. W polu wyszukiwania wpisz `durable` a następnie wybierz szablon **DURABLE Functions http Starter** .
 
 1. Po wyświetleniu monitu wybierz pozycję **Zainstaluj** , aby zainstalować rozszerzenie Azure DurableTask wszystkie zależności w aplikacji funkcji. Wystarczy zainstalować rozszerzenie tylko raz dla aplikacji funkcji. Po pomyślnym zakończeniu instalacji wybierz pozycję **Kontynuuj**.
 
     ![Instalowanie rozszerzeń powiązania](./media/durable-functions-create-portal/install-durabletask-extension.png)
 
-1. Po zakończeniu instalacji Nazwij nową funkcję `HttpStart` i wybierz pozycję **Utwórz**. Utworzona funkcja jest używana do uruchomienia aranżacji.
+1. Po zakończeniu instalacji Nazwij nową funkcję `HttpStart` a następnie wybierz pozycję **Utwórz**. Utworzona funkcja jest używana do uruchomienia aranżacji.
 
-1. Utwórz kolejną funkcję w aplikacji funkcji, tym razem używając szablonu **Durable Functions Orchestrator** . Nazwij nową funkcję `HelloSequence`aranżacji.
+1. Utwórz kolejną funkcję w aplikacji funkcji, tym razem używając szablonu **Durable Functions Orchestrator** . Nazwij nową funkcję aranżacji `HelloSequence`.
 
-1. Utwórz trzecią funkcję o `Hello` nazwie przy użyciu szablonu **działania Durable Functions** .
+1. Utwórz trzecią funkcję o nazwie `Hello` przy użyciu szablonu **działania Durable Functions** .
 
 ## <a name="test-the-durable-function-orchestration"></a>Testowanie aranżacji funkcji trwałych
 
@@ -94,7 +94,7 @@ W przypadku tworzenia Durable Functions JavaScript należy zainstalować [ `dura
     curl -X POST https://{your-function-app-name}.azurewebsites.net/api/orchestrators/HelloSequence
     ```
 
-    W tym przykładzie `{your-function-app-name}` jest to domena, która jest nazwą aplikacji funkcji. Komunikat odpowiedzi zawiera zestaw punktów końcowych identyfikatora URI, których można użyć do monitorowania wykonywania i zarządzania nim, który wygląda podobnie do następującego przykładu:
+    W tym przykładzie `{your-function-app-name}` jest domeną, która jest nazwą aplikacji funkcji. Komunikat odpowiedzi zawiera zestaw punktów końcowych identyfikatora URI, których można użyć do monitorowania wykonywania i zarządzania nim, który wygląda podobnie do następującego przykładu:
 
     ```json
     {  
@@ -106,7 +106,7 @@ W przypadku tworzenia Durable Functions JavaScript należy zainstalować [ `dura
     }
     ```
 
-1. Wywołaj identyfikator URI punktu końcowego i zobaczysz bieżący stan funkcji trwałej, która może wyglądać podobnie do tego przykładu: `statusQueryGetUri`
+1. Wywołaj identyfikator URI punktu końcowego `statusQueryGetUri` i zobaczysz bieżący stan funkcji trwałej, która może wyglądać podobnie do tego przykładu:
 
     ```json
         {
@@ -118,7 +118,7 @@ W przypadku tworzenia Durable Functions JavaScript należy zainstalować [ `dura
         }
     ```
 
-1. Kontynuuj wywoływanie `statusQueryGetUri` punktu końcowego do momentu zmiany stanu na **zakończone**i zobaczysz odpowiedź podobną do poniższego przykładu:
+1. Kontynuuj wywoływanie punktu końcowego `statusQueryGetUri`, dopóki stan zmieni się na **zakończone**, a zobaczysz odpowiedź podobną do poniższego przykładu:
 
     ```json
     {

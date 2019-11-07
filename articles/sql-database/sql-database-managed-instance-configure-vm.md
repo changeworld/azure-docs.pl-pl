@@ -1,6 +1,6 @@
 ---
-title: Łączenie maszyny Wirtualnej klienta - wystąpienia zarządzanego Azure SQL Database | Dokumentacja firmy Microsoft
-description: Nawiązać połączenia bazy danych wystąpienia zarządzanego Azure SQL przy użyciu programu SQL Server Management Studio, z maszyną wirtualną platformy Azure.
+title: 'Połącz z maszyną wirtualną klienta Azure SQL Database wystąpienia zarządzanego '
+description: Nawiąż połączenie z wystąpieniem zarządzanym Azure SQL Database przy użyciu SQL Server Management Studio z maszyny wirtualnej platformy Azure.
 services: sql-database
 ms.service: sql-database
 ms.subservice: managed-instance
@@ -11,20 +11,20 @@ author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: sstein, carlrab, srbozovi, bonova
 ms.date: 02/18/2019
-ms.openlocfilehash: ddcac56671e145728f02d31bf23c657ea172e4c0
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: fb45df869bc9ecbe6584837894844c29bafa6223
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68567650"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73689392"
 ---
-# <a name="quickstart-configure-azure-vm-to-connect-to-an-azure-sql-database-managed-instance"></a>Szybki start: Konfigurowanie maszyny wirtualnej platformy Azure do nawiązywania połączenia z wystąpieniem zarządzanym Azure SQL Database
+# <a name="quickstart-configure-azure-vm-to-connect-to-an-azure-sql-database-managed-instance"></a>Szybki Start: Konfigurowanie maszyny wirtualnej platformy Azure do nawiązywania połączenia z wystąpieniem zarządzanym Azure SQL Database
 
-Ten przewodnik Szybki Start dowiesz się, jak skonfigurować maszynę wirtualną platformy Azure, nawiązać połączenia z bazą danych wystąpienia zarządzanego Azure SQL przy użyciu programu SQL Server Management Studio (SSMS). Aby uzyskać szybki start przedstawiający sposób nawiązywania połączeń z poziomu komputera klienckiego w środowisku lokalnym za pomocą połączenia punkt lokacja, zobacz [Konfigurowanie połączenia typu punkt lokacja](sql-database-managed-instance-configure-p2s.md)
+W tym przewodniku szybki start pokazano, jak skonfigurować maszynę wirtualną platformy Azure w celu nawiązania połączenia z wystąpieniem zarządzanym Azure SQL Database przy użyciu SQL Server Management Studio (SSMS). Aby zapoznać się z przewodnikiem Szybki Start pokazujący, jak nawiązać połączenie z lokalnego komputera klienckiego przy użyciu połączenia typu punkt-lokacja, zobacz [Konfigurowanie połączenia typu punkt-lokacja](sql-database-managed-instance-configure-p2s.md)
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-Ten przewodnik Szybki Start używa zasobów utworzonych w [utworzysz wystąpienie zarządzane](sql-database-managed-instance-get-started.md) jako punktu początkowego.
+Ten przewodnik Szybki Start używa zasobów utworzonych w ramach [tworzenia wystąpienia zarządzanego](sql-database-managed-instance-get-started.md) jako punktu początkowego.
 
 ## <a name="sign-in-to-the-azure-portal"></a>Logowanie się do witryny Azure Portal
 
@@ -32,68 +32,68 @@ Zaloguj się w witrynie [Azure Portal](https://portal.azure.com/).
 
 ## <a name="create-a-new-subnet-in-the-managed-instance-vnet"></a>Utwórz nową podsieć w sieci wirtualnej wystąpienia zarządzanego
 
-Poniższe kroki umożliwiają utworzenie nowej podsieci w sieci wirtualnej wystąpienia zarządzanego maszynie wirtualnej platformy Azure do połączenia się do wystąpienia zarządzanego. Podsieci wystąpienia zarządzanego jest dedykowany do wystąpienia zarządzanego. Inne zasoby, takie jak maszyny wirtualne platformy Azure, nie można utworzyć w tej podsieci.
+Poniższe kroki tworzą nową podsieć w sieci wirtualnej wystąpienia zarządzanego, aby maszyna wirtualna platformy Azure mogła połączyć się z wystąpieniem zarządzanym. Podsieć wystąpienia zarządzanego jest przeznaczona dla wystąpień zarządzanych. W tej podsieci nie można tworzyć żadnych innych zasobów, takich jak maszyny wirtualne platformy Azure.
 
-1. Otwórz grupę zasobów dla wystąpienia zarządzanego, który został utworzony w [utworzysz wystąpienie zarządzane](sql-database-managed-instance-get-started.md) Szybki Start. Wybierz sieć wirtualną dla wystąpienia zarządzanego.
+1. Otwórz grupę zasobów dla wystąpienia zarządzanego utworzonego w temacie [Tworzenie wystąpienia zarządzanego](sql-database-managed-instance-get-started.md) — Szybki Start. Wybierz sieć wirtualną dla wystąpienia zarządzanego.
 
    ![Zasoby wystąpienia zarządzanego](./media/sql-database-managed-instance-configure-vm/resources.png)
 
-2. Wybierz **podsieci** , a następnie wybierz **+ podsieć** do utworzenia nowej podsieci.
+2. Wybierz pozycję **podsieci** , a następnie wybierz pozycję **+ podsieć** , aby utworzyć nową podsieć.
 
-   ![Zarządzane wystąpienia podsieci](./media/sql-database-managed-instance-configure-vm/subnets.png)
+   ![Podsieci wystąpienia zarządzanego](./media/sql-database-managed-instance-configure-vm/subnets.png)
 
-3. Wypełnij formularz, korzystając z informacji w tej tabeli:
+3. Wypełnij formularz, korzystając z informacji podanych w tej tabeli:
 
    | Ustawienie| Sugerowana wartość | Opis |
    | ---------------- | ----------------- | ----------- |
    | **Nazwa** | Dowolna prawidłowa nazwa|Prawidłowe nazwy opisano w artykule [Ograniczenia i reguły nazewnictwa](https://docs.microsoft.com/azure/architecture/best-practices/naming-conventions).|
-   | **Zakres adresów (blok CIDR)** | Prawidłowy zakres | Wartość domyślna to rozwiązanie dobre dla tego przewodnika Szybki Start.|
-   | **Sieciowa grupa zabezpieczeń** | Brak | Wartość domyślna to rozwiązanie dobre dla tego przewodnika Szybki Start.|
-   | **Tabela tras** | Brak | Wartość domyślna to rozwiązanie dobre dla tego przewodnika Szybki Start.|
-   | **Punkty końcowe usługi** | Wybrano 0 | Wartość domyślna to rozwiązanie dobre dla tego przewodnika Szybki Start.|
-   | **Delegowanie podsieci** | Brak | Wartość domyślna to rozwiązanie dobre dla tego przewodnika Szybki Start.|
+   | **Zakres adresów (blok CIDR)** | Prawidłowy zakres | Wartość domyślna jest dobra dla tego przewodnika Szybki Start.|
+   | **Sieciowa grupa zabezpieczeń** | Brak | Wartość domyślna jest dobra dla tego przewodnika Szybki Start.|
+   | **Tabela tras** | Brak | Wartość domyślna jest dobra dla tego przewodnika Szybki Start.|
+   | **Punkty końcowe usługi** | wybrano 0 | Wartość domyślna jest dobra dla tego przewodnika Szybki Start.|
+   | **Delegowanie podsieci** | Brak | Wartość domyślna jest dobra dla tego przewodnika Szybki Start.|
 
-   ![Nowa podsieć wystąpienia zarządzanego dla maszyny Wirtualnej klienta](./media/sql-database-managed-instance-configure-vm/new-subnet.png)
+   ![Nowa podsieć wystąpienia zarządzanego dla maszyny wirtualnej klienta](./media/sql-database-managed-instance-configure-vm/new-subnet.png)
 
-4. Wybierz **OK** utworzyć ta dodatkowa podsieć w sieci wirtualnej wystąpienia zarządzanego.
+4. Wybierz **przycisk OK** , aby utworzyć tę dodatkową podsieć w sieci wirtualnej wystąpienia zarządzanego.
 
 ## <a name="create-a-virtual-machine-in-the-new-subnet-in-the-vnet"></a>Tworzenie maszyny wirtualnej w nowej podsieci w sieci wirtualnej
 
-Poniższe kroki pokazują, jak utworzyć maszynę wirtualną w nowej podsieci, aby nawiązać połączenie z wystąpieniem zarządzanym.
+Poniższe kroki pokazują, jak utworzyć maszynę wirtualną w nowej podsieci w celu nawiązania połączenia z wystąpieniem zarządzanym.
 
 ## <a name="prepare-the-azure-virtual-machine"></a>Przygotowywanie maszyny wirtualnej platformy Azure
 
-Ponieważ wystąpienia zarządzanego SQL znajduje się w prywatnej sieci wirtualnej, musisz utworzyć Maszynę wirtualną platformy Azure za pomocą narzędzia zainstalowanego klienta SQL, takich jak SQL Server Management Studio lub Studio danych platformy Azure. To narzędzie pozwala nawiązać połączenie z wystąpieniem zarządzanym i wykonywania zapytań. Ten przewodnik Szybki Start używa programu SQL Server Management Studio.
+Ponieważ wystąpienie zarządzane SQL jest umieszczane w Virtual Network prywatnym, należy utworzyć maszynę wirtualną platformy Azure przy użyciu zainstalowanego narzędzia klienta SQL, takiego jak SQL Server Management Studio lub Azure Data Studio. To narzędzie umożliwia łączenie się z wystąpieniem zarządzanym i wykonywanie zapytań. Ten przewodnik Szybki Start używa SQL Server Management Studio.
 
-Najprostszym sposobem utworzenia maszyny wirtualnej klienta za pomocą wszystkie niezbędne narzędzia jest za pomocą szablonów usługi Azure Resource Manager.
+Najprostszym sposobem utworzenia klienckiej maszyny wirtualnej przy użyciu wszystkich niezbędnych narzędzi jest użycie szablonów Azure Resource Manager.
 
-1. Upewnij się, że użytkownik zalogowany do witryny Azure portal w innej karcie przeglądarki. Wybierz poniższy przycisk, aby utworzyć maszynę wirtualną klienta i zainstalować SQL Server Management Studio:
+1. Upewnij się, że zalogowano się do Azure Portal na innej karcie przeglądarki. Następnie wybierz poniższy przycisk, aby utworzyć maszynę wirtualną klienta i zainstalować SQL Server Management Studio:
 
     <a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2Fjovanpop-msft%2Fazure-quickstart-templates%2Fsql-win-vm-w-tools%2F201-vm-win-vnet-sql-tools%2Fazuredeploy.json" target="_blank"><img src="https://azuredeploy.net/deploybutton.png"/></a>
 
-2. Wypełnij formularz, korzystając z informacji w poniższej tabeli:
+2. Wypełnij formularz, korzystając z informacji podanych w poniższej tabeli:
 
    | Ustawienie| Sugerowana wartość | Opis |
    | ---------------- | ----------------- | ----------- |
-   | **Subskrypcja** | Ważną subskrypcją | Musi być subskrypcją, w którym masz uprawnienia do tworzenia nowych zasobów. |
-   | **Grupa zasobów** |Grupa zasobów, który określiłeś w [Tworzenie wystąpienia zarządzanego](sql-database-managed-instance-get-started.md) Szybki Start.|Ta grupa zasobów musi być jedną, w którym istnieje sieć wirtualna.|
-   | **Lokalizacja** | Lokalizacja grupy zasobów | Ta wartość jest wypełniana na podstawie grupy zasobów, wybrana. |
+   | **Subskrypcja** | Prawidłowa subskrypcja | Musi być subskrypcją, w której masz uprawnienia do tworzenia nowych zasobów. |
+   | **Grupa zasobów** |Grupa zasobów określona w ramach [tworzenia wystąpienia zarządzanego](sql-database-managed-instance-get-started.md) — Szybki Start.|Ta grupa zasobów musi być tą, w której istnieje sieć wirtualna.|
+   | **Lokalizacja** | Lokalizacja grupy zasobów | Ta wartość jest wypełniana na podstawie wybranej grupy zasobów. |
    | **Nazwa maszyny wirtualnej**  | Dowolna prawidłowa nazwa | Prawidłowe nazwy opisano w artykule [Ograniczenia i reguły nazewnictwa](https://docs.microsoft.com/azure/architecture/best-practices/naming-conventions).|
-   |**Nazwa użytkownika administratora**|Dowolną prawidłową nazwę użytkownika|Prawidłowe nazwy opisano w artykule [Ograniczenia i reguły nazewnictwa](https://docs.microsoft.com/azure/architecture/best-practices/naming-conventions). Nie używaj nazwy „serveradmin”, gdyż jest ona zarezerwowana dla roli poziomu serwera.<br>Użyj tej nazwy użytkownika wtedy, gdy [nawiązać połączenie z maszyną Wirtualną](#connect-to-virtual-machine).|
-   |**Hasło**|Dowolne prawidłowe hasło|Hasło musi mieć co najmniej 12 znaków i spełniać [zdefiniowane wymagania dotyczące złożoności](../virtual-machines/windows/faq.md#what-are-the-password-requirements-when-creating-a-vm).<br>To hasło jest używane wtedy, gdy [nawiązać połączenie z maszyną Wirtualną](#connect-to-virtual-machine).|
-   | **Rozmiar maszyny wirtualnej** | Wszelkie prawidłowy rozmiar | Wartość domyślna, w tym szablonie o **Standard_B2s** jest wystarczająca na potrzeby tego przewodnika Szybki Start. |
-   | **Lokalizacja**|[resourceGroup () .location].| Nie zmieniaj tej wartości. |
-   | **Nazwa sieci wirtualnej**|Sieć wirtualna, w której utworzono wystąpienie zarządzane.|
-   | **Nazwa podsieci**|Nazwa podsieci, który został utworzony w poprzedniej procedurze| Nie wybieraj podsieci, w której utworzono wystąpienie zarządzane.|
-   | **Artefakty lokalizacji** | [.properties.templateLink.uri wdrożenia ()] | Nie zmieniaj tej wartości. |
-   | **token sygnatury dostępu współdzielonego lokalizacji artefaktów** | Pozostaw to pole puste | Nie zmieniaj tej wartości. |
+   |**Nazwa użytkownika administratora**|Dowolna prawidłowa nazwa użytkownika|Prawidłowe nazwy opisano w artykule [Ograniczenia i reguły nazewnictwa](https://docs.microsoft.com/azure/architecture/best-practices/naming-conventions). Nie używaj nazwy „serveradmin”, gdyż jest ona zarezerwowana dla roli poziomu serwera.<br>Ta nazwa użytkownika jest używana przy każdej próbie [połączenia z maszyną wirtualną](#connect-to-virtual-machine).|
+   |**Hasło**|Dowolne prawidłowe hasło|Hasło musi mieć co najmniej 12 znaków i spełniać [zdefiniowane wymagania dotyczące złożoności](../virtual-machines/windows/faq.md#what-are-the-password-requirements-when-creating-a-vm).<br>To hasło jest używane podczas [nawiązywania połączenia z maszyną wirtualną](#connect-to-virtual-machine).|
+   | **Rozmiar maszyny wirtualnej** | Dowolny prawidłowy rozmiar | Wartość domyślna w tym szablonie **Standard_B2s** jest wystarczająca dla tego przewodnika Szybki Start. |
+   | **Lokalizacja**|[resourceing (). Location].| Nie zmieniaj tej wartości. |
+   | **Nazwa Virtual Network**|Sieć wirtualna, w której utworzono wystąpienie zarządzane.|
+   | **Nazwa podsieci**|Nazwa podsieci, która została utworzona w poprzedniej procedurze| Nie wybieraj podsieci, w której utworzono wystąpienie zarządzane.|
+   | **Lokalizacja artefaktów** | [Deployment (). Properties. templateLink. URI] | Nie zmieniaj tej wartości. |
+   | **token SAS lokalizacji artefaktów** | Pozostaw puste | Nie zmieniaj tej wartości. |
 
    ![tworzenie maszyny wirtualnej klienta](./media/sql-database-managed-instance-configure-vm/create-client-sql-vm.png)
 
-   Jeśli używasz sugerowana nazwa sieci wirtualnej i podsieci domyślne w [tworzenia wystąpienia zarządzanego](sql-database-managed-instance-get-started.md), nie trzeba zmienić ostatnie dwa parametry. W przeciwnym razie należy zmieniać te wartości do wartości, które wprowadzony podczas konfigurowania środowiska sieciowego.
+   Jeśli podczas [tworzenia wystąpienia zarządzanego](sql-database-managed-instance-get-started.md)użyto sugerowanej nazwy sieci wirtualnej i domyślnej podsieci, nie trzeba zmieniać ostatnich dwóch parametrów. W przeciwnym razie należy zmienić te wartości na wartości wprowadzone podczas konfigurowania środowiska sieciowego.
 
-3. Wybierz **zgodę na warunki i postanowienia, o których wspomniano** pola wyboru.
-4. Wybierz **zakupu** do wdrażania maszyn wirtualnych platformy Azure w sieci.
+3. Zaznacz pole wyboru **Wyrażam zgodę na powyższe warunki i postanowienia** .
+4. Wybierz pozycję **Kup** , aby wdrożyć maszynę wirtualną platformy Azure w sieci.
 5. Wybierz ikonę **Powiadomienia**, aby wyświetlić stan wdrożenia.
 
 > [!IMPORTANT]
@@ -109,38 +109,38 @@ Poniższe kroki pokazują, jak nawiązać połączenie z nowo utworzoną maszyn�
 
 2. Wybierz przycisk **Połącz**.
 
-   Zostanie wyświetlony formularz protokołu Remote Desktop Protocol pliku (RDP), za pomocą publicznego adresu IP adres i numer portu dla maszyny wirtualnej.
+   Zostanie wyświetlony formularz Remote Desktop Protocol pliku (RDP) z publicznym adresem IP i numerem portu dla maszyny wirtualnej.
 
-   ![Formularz protokołu RDP](./media/sql-database-managed-instance-configure-vm/rdp.png)  
+   ![Formularz RDP](./media/sql-database-managed-instance-configure-vm/rdp.png)  
 
-3. Wybierz **Pobierz plik RDP**.
+3. Wybierz opcję **Pobierz plik RDP**.
 
    > [!NOTE]
-   > Można również używanie protokołu SSH, aby nawiązać połączenie z maszyną Wirtualną.
+   > Do nawiązania połączenia z maszyną wirtualną można także użyć protokołu SSH.
 
-4. Zamknij **Połącz z maszyną wirtualną** formularza.
+4. Zamknij formularz **Połącz z maszyną wirtualną** .
 5. Aby połączyć się z maszyną wirtualną, otwórz pobrany plik RDP.
-6. Po wyświetleniu monitu wybierz **Connect**. Na komputerze Mac należy skorzystać z klienta RDP, takiego jak ten [klient pulpitu zdalnego](https://itunes.apple.com/us/app/microsoft-remote-desktop/id715768417?mt=12) ze sklepu Mac App Store.
+6. Po wyświetleniu monitu wybierz pozycję **Połącz**. Na komputerze Mac należy skorzystać z klienta RDP, takiego jak ten [klient pulpitu zdalnego](https://itunes.apple.com/us/app/microsoft-remote-desktop/id715768417?mt=12) ze sklepu Mac App Store.
 
-7. Wprowadź nazwę użytkownika i hasło określone podczas tworzenia maszyny wirtualnej, a następnie wybierz **OK**.
+7. Wprowadź nazwę użytkownika i hasło określone podczas tworzenia maszyny wirtualnej, a następnie wybierz przycisk **OK**.
 
-8. Podczas procesu logowania może pojawić się ostrzeżenie o certyfikacie. Wybierz **tak** lub **Kontynuuj** Aby nawiązać połączenie.
+8. Podczas procesu logowania może pojawić się ostrzeżenie o certyfikacie. Wybierz opcję **tak** lub **Kontynuuj** , aby kontynuować połączenie.
 
-Masz połączenia z maszyną wirtualną na pulpicie nawigacyjnym Menedżera serwera.
+Nawiązano połączenie z maszyną wirtualną na pulpicie nawigacyjnym Menedżer serwera.
 
-## <a name="use-ssms-to-connect-to-the-managed-instance"></a>Nawiązywanie połączenia z wystąpieniem zarządzanym za pomocą programu SSMS
+## <a name="use-ssms-to-connect-to-the-managed-instance"></a>Łączenie się z wystąpieniem zarządzanym przy użyciu programu SSMS
 
-1. Na maszynie wirtualnej Otwórz program SQL Server Management Studio (SSMS).
+1. Na maszynie wirtualnej Otwórz SQL Server Management Studio (SSMS).
 
-   Może potrwać kilka chwil, Otwórz, ile potrzebuje ukończyć jej konfigurowanie, ponieważ jest to przy pierwszym uruchomieniu programu SSMS.
-2. W **Połącz z serwerem** okna dialogowego wprowadź w pełni kwalifikowaną **nazwy hosta** wystąpienia zarządzanego w **nazwy serwera** pole. Wybierz **uwierzytelniania programu SQL Server**, podaj nazwę użytkownika i hasło, a następnie wybierz **Connect**.
+   Otwarcie programu może chwilę potrwać, ponieważ jest to konieczne po raz pierwszy.
+2. W oknie dialogowym **łączenie z serwerem** wprowadź w pełni kwalifikowaną **nazwę hosta** dla wystąpienia zarządzanego w polu **Nazwa serwera** . Wybierz pozycję **uwierzytelnianie SQL Server**, podaj nazwę użytkownika i hasło, a następnie wybierz pozycję **Połącz**.
 
     ![nawiązywanie połączenia w programie ssms](./media/sql-database-managed-instance-configure-vm/ssms-connect.png)  
 
 Po nawiązaniu połączenia możesz wyświetlić systemowe bazy danych oraz bazy danych użytkownika w węźle Bazy danych, a także różne obiekty w węzłach Zabezpieczenia, Obiekty serwera, Replikacja, Zarządzanie, Agent programu SQL Server oraz Profiler systemu XEvent.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
-- Aby uzyskać szybki start przedstawiający sposób nawiązywania połączeń z poziomu komputera klienckiego w środowisku lokalnym za pomocą połączenia punkt lokacja, zobacz [Konfigurowanie połączenia typu punkt lokacja](sql-database-managed-instance-configure-p2s.md).
-- Aby uzyskać omówienie opcji połączenia dla aplikacji, zobacz artykuł [Connect your applications to Managed Instance](sql-database-managed-instance-connect-app.md) (Łączenie aplikacji z wystąpieniem zarządzanym).
-- Aby przywrócić istniejącą bazę danych programu SQL Server ze środowiska lokalnego do wystąpienia zarządzanego, można użyć [usługi Azure Database Migration Service (DMS) do migracji](../dms/tutorial-sql-server-to-managed-instance.md) lub [polecenia języka T-SQL RESTORE](sql-database-managed-instance-get-started-restore.md) przywracania z Plik kopii zapasowej bazy danych.
+- Przewodnik Szybki Start przedstawiający sposób łączenia się z lokalnego komputera klienckiego przy użyciu połączenia typu punkt-lokacja znajduje się w temacie [Konfigurowanie połączenia punkt-lokacja](sql-database-managed-instance-configure-p2s.md).
+- Aby uzyskać omówienie opcji połączenia dla aplikacji, zobacz artykuł [Łączenie aplikacji z wystąpieniem zarządzanym](sql-database-managed-instance-connect-app.md).
+- Aby przywrócić istniejącą bazę danych SQL Server z lokalnego do wystąpienia zarządzanego, można użyć [Azure Database Migration Service (DMS) do migracji](../dms/tutorial-sql-server-to-managed-instance.md) lub [polecenia przywracania T-SQL](sql-database-managed-instance-get-started-restore.md) , aby przywrócić plik kopii zapasowej bazy danych.

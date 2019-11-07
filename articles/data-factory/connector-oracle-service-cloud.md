@@ -1,6 +1,6 @@
 ---
-title: Kopiowanie danych z chmury usługi bazy danych Oracle przy użyciu usługi Azure Data Factory (wersja zapoznawcza) | Dokumentacja firmy Microsoft
-description: Dowiedz się, jak skopiować dane z usługi w chmurze firmy Oracle do magazynów danych ujścia obsługiwane za pomocą działania kopiowania w potoku usługi Azure Data Factory.
+title: Kopiowanie danych z chmury usługi Oracle przy użyciu Azure Data Factory (wersja zapoznawcza)
+description: Informacje o kopiowaniu danych z chmury usługi firmy Oracle do obsługiwanych magazynów danych ujścia przy użyciu działania kopiowania w potoku Azure Data Factory.
 services: data-factory
 documentationcenter: ''
 author: linda33wj
@@ -12,50 +12,50 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 08/01/2019
 ms.author: jingwang
-ms.openlocfilehash: a50f2d9bc50b235b2b7375b90288e72609f36eff
-ms.sourcegitcommit: c79aa93d87d4db04ecc4e3eb68a75b349448cd17
+ms.openlocfilehash: 2b2d41d7ef2c42fea90555d2b24f6d055712bfc5
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71089889"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73680523"
 ---
-# <a name="copy-data-from-oracle-service-cloud-using-azure-data-factory-preview"></a>Kopiowanie danych z chmury usługi bazy danych Oracle przy użyciu usługi Azure Data Factory (wersja zapoznawcza)
+# <a name="copy-data-from-oracle-service-cloud-using-azure-data-factory-preview"></a>Kopiowanie danych z chmury usługi Oracle przy użyciu Azure Data Factory (wersja zapoznawcza)
 
-W tym artykule opisano sposób użycia działania kopiowania w usłudze Azure Data Factory, aby skopiować dane z usługi w chmurze firmy Oracle. Opiera się na [omówienie działania kopiowania](copy-activity-overview.md) artykułu, który przedstawia ogólne omówienie działania kopiowania.
+W tym artykule opisano sposób używania działania kopiowania w Azure Data Factory do kopiowania danych z chmury usług Oracle. Jest ona oparta na [przeglądzie działania kopiowania](copy-activity-overview.md) , która przedstawia ogólne omówienie działania kopiowania.
 
 > [!IMPORTANT]
-> Ten łącznik jest obecnie w wersji zapoznawczej. Możesz wypróbować tę funkcję i przekazać opinię. Jeśli w swoim rozwiązaniu chcesz wprowadzić zależność od łączników w wersji zapoznawczej, skontaktuj się z [pomocą techniczną platformy Azure](https://azure.microsoft.com/support/).
+> Ten łącznik jest obecnie w wersji zapoznawczej. Możesz wypróbować tę usługę i przekazać opinię. Jeśli w swoim rozwiązaniu chcesz wprowadzić zależność od łączników w wersji zapoznawczej, skontaktuj się z [pomocą techniczną platformy Azure](https://azure.microsoft.com/support/).
 
-## <a name="supported-capabilities"></a>Obsługiwane funkcje
+## <a name="supported-capabilities"></a>Obsługiwane możliwości
 
 Ten łącznik chmury usługi Oracle Service jest obsługiwany dla następujących działań:
 
 - [Działanie kopiowania](copy-activity-overview.md) z [obsługiwaną macierzą źródłową/ujścia](copy-activity-overview.md)
 - [Działanie Lookup](control-flow-lookup-activity.md)
 
-Możesz skopiować dane z usługi w chmurze firmy Oracle do dowolnego obsługiwanego magazynu danych ujścia. Aby uzyskać listę magazynów danych, obsługiwane przez działanie kopiowania jako źródła/ujścia, zobacz [obsługiwane magazyny danych](copy-activity-overview.md#supported-data-stores-and-formats) tabeli.
+Dane z chmury usługi firmy Oracle można kopiować do dowolnego obsługiwanego magazynu danych ujścia. Listę magazynów danych obsługiwanych jako źródła/ujścia przez działanie kopiowania można znaleźć w tabeli [obsługiwane magazyny danych](copy-activity-overview.md#supported-data-stores-and-formats) .
 
-Usługa Azure Data Factory udostępnia wbudowanego sterownika, aby umożliwić łączność, dlatego nie trzeba ręcznie zainstalować dowolnego sterownika, za pomocą tego łącznika.
+Azure Data Factory udostępnia wbudowany sterownik umożliwiający połączenie, dlatego nie trzeba ręcznie instalować żadnego sterownika przy użyciu tego łącznika.
 
 ## <a name="getting-started"></a>Wprowadzenie
 
 [!INCLUDE [data-factory-v2-connector-get-started](../../includes/data-factory-v2-connector-get-started.md)]
 
-Poniższe sekcje zawierają szczegółowe informacje dotyczące właściwości, które są używane do definiowania jednostek usługi fabryka danych określonej do łącznika usługi w chmurze firmy Oracle.
+Poniższe sekcje zawierają szczegółowe informacje o właściwościach, które są używane do definiowania jednostek Data Factory specyficznych dla łącznika usługi Oracle Service Cloud.
 
-## <a name="linked-service-properties"></a>Właściwości usługi połączonej
+## <a name="linked-service-properties"></a>Właściwości połączonej usługi
 
-Następujące właściwości są obsługiwane dla usługi w chmurze usługi Oracle połączone:
+Następujące właściwości są obsługiwane dla połączonej usługi w chmurze Oracle Service:
 
-| Właściwość | Opis | Wymagane |
+| Właściwość | Opis | Wymagany |
 |:--- |:--- |:--- |
-| type | Właściwość Type musi mieć ustawioną wartość: **OracleServiceCloud** | Tak |
-| host | Adres URL wystąpienia usługi w chmurze firmy Oracle.  | Yes |
-| username | Nazwa użytkownika, który umożliwia dostęp do serwera usługi w chmurze firmy Oracle.  | Yes |
-| password | Hasło odpowiadający nazwie użytkownika, podane w kluczu nazwy użytkownika. Możesz oznaczyć to pole jako element SecureString, aby bezpiecznie przechowywać go w podajniku APD, lub przechowywać hasło w Azure Key Vault i wypróbować działanie Copy APD z tego miejsca podczas kopiowania danych — Dowiedz się więcej z [poświadczeń sklepu w Key Vault](store-credentials-in-key-vault.md). | Tak |
+| type | Właściwość Type musi mieć wartość: **OracleServiceCloud** | Tak |
+| Host | Adres URL wystąpienia chmury usługi firmy Oracle.  | Tak |
+| nazwa użytkownika | Nazwa użytkownika służąca do uzyskiwania dostępu do programu Oracle Service Server w chmurze.  | Tak |
+| hasło | Hasło odpowiadające nazwie użytkownika podanej w kluczu username. Możesz oznaczyć to pole jako element SecureString, aby bezpiecznie przechowywać go w podajniku APD, lub przechowywać hasło w Azure Key Vault i wypróbować działanie Copy APD z tego miejsca podczas kopiowania danych — Dowiedz się więcej z [poświadczeń sklepu w Key Vault](store-credentials-in-key-vault.md). | Tak |
 | useEncryptedEndpoints | Określa, czy punkty końcowe źródła danych są szyfrowane przy użyciu protokołu HTTPS. Wartość domyślna to true.  | Nie |
-| useHostVerification | Określa, czy wymagają zgodności nazwy hosta w certyfikacie serwera, aby dopasować nazwę hosta serwera podczas nawiązywania połączenia za pośrednictwem protokołu SSL. Wartość domyślna to true.  | Nie |
-| usePeerVerification | Określa, czy do zweryfikowania tożsamości serwera, podczas nawiązywania połączenia za pośrednictwem protokołu SSL. Wartość domyślna to true.  | Nie |
+| useHostVerification | Określa, czy nazwa hosta ma być wymagana w certyfikacie serwera, aby odpowiadała nazwie hosta serwera podczas nawiązywania połączenia za pośrednictwem protokołu SSL. Wartość domyślna to true.  | Nie |
+| usePeerVerification | Określa, czy należy zweryfikować tożsamość serwera podczas nawiązywania połączenia za pośrednictwem protokołu SSL. Wartość domyślna to true.  | Nie |
 
 **Przykład:**
 
@@ -82,11 +82,11 @@ Następujące właściwości są obsługiwane dla usługi w chmurze usługi Orac
 
 ## <a name="dataset-properties"></a>Właściwości zestawu danych
 
-Aby uzyskać pełną listę sekcje i właściwości dostępne Definiowanie zestawów danych, zobacz [zestawów danych](concepts-datasets-linked-services.md) artykułu. Ta sekcja zawiera listę właściwości obsługiwanych przez zestaw danych usługi w chmurze firmy Oracle.
+Aby uzyskać pełną listę sekcji i właściwości dostępnych do definiowania zestawów danych, zobacz artykuł [zestawy danych](concepts-datasets-linked-services.md) . Ta sekcja zawiera listę właściwości obsługiwanych przez zestaw danych w chmurze usługi firmy Oracle.
 
-Aby skopiować dane z usługi w chmurze firmy Oracle, należy ustawić właściwość typu zestawu danych na **OracleServiceCloudObject**. Obsługiwane są następujące właściwości:
+Aby skopiować dane z chmury usługi Oracle, ustaw właściwość Type zestawu danych na **OracleServiceCloudObject**. Obsługiwane są następujące właściwości:
 
-| Właściwość | Opis | Wymagane |
+| Właściwość | Opis | Wymagany |
 |:--- |:--- |:--- |
 | type | Właściwość Type zestawu danych musi być ustawiona na wartość: **OracleServiceCloudObject** | Tak |
 | tableName | Nazwa tabeli. | Nie (Jeśli określono parametr "query" w źródle działania) |
@@ -111,16 +111,16 @@ Aby skopiować dane z usługi w chmurze firmy Oracle, należy ustawić właściw
 
 ## <a name="copy-activity-properties"></a>Właściwości działania kopiowania
 
-Aby uzyskać pełną listę sekcje i właściwości dostępne do definiowania działań zobacz [potoki](concepts-pipelines-activities.md) artykułu. Ta sekcja zawiera listę właściwości obsługiwanych przez źródło usługi w chmurze firmy Oracle.
+Aby uzyskać pełną listę sekcji i właściwości dostępnych do definiowania działań, zobacz artykuł [potoki](concepts-pipelines-activities.md) . Ta sekcja zawiera listę właściwości obsługiwanych przez źródło w chmurze usługi firmy Oracle.
 
-### <a name="oracle-service-cloud-as-source"></a>Usługa w chmurze firmy Oracle jako źródło
+### <a name="oracle-service-cloud-as-source"></a>Chmura usługi Oracle jako źródło
 
-Aby skopiować dane z usługi w chmurze firmy Oracle, należy ustawić typ źródłowego w działaniu kopiowania, aby **OracleServiceCloudSource**. Następujące właściwości są obsługiwane w działaniu kopiowania **źródła** sekcji:
+Aby skopiować dane z chmury usługi Oracle, ustaw typ źródła w działaniu Copy na **OracleServiceCloudSource**. W sekcji **Źródło** działania kopiowania są obsługiwane następujące właściwości:
 
-| Właściwość | Opis | Wymagane |
+| Właściwość | Opis | Wymagany |
 |:--- |:--- |:--- |
-| type | Właściwość Type źródła działania Copy musi mieć ustawioną wartość: **OracleServiceCloudSource** | Tak |
-| query | Umożliwia odczytywanie danych niestandardowe zapytania SQL. Na przykład: `"SELECT * FROM MyTable"`. | Nie (Jeśli określono parametr "tableName" w zestawie danych) |
+| type | Właściwość Type źródła działania Copy musi być ustawiona na wartość: **OracleServiceCloudSource** | Tak |
+| query | Użyj niestandardowego zapytania SQL, aby odczytać dane. Na przykład: `"SELECT * FROM MyTable"`. | Nie (Jeśli określono "TableName" w zestawie danych) |
 
 **Przykład:**
 
@@ -160,4 +160,4 @@ Aby dowiedzieć się więcej o właściwościach, sprawdź [działanie Lookup (w
 
 
 ## <a name="next-steps"></a>Następne kroki
-Aby uzyskać listę magazynów danych obsługiwanych jako źródła i ujścia działania kopiowania w usłudze Azure Data Factory, zobacz [obsługiwane magazyny danych](copy-activity-overview.md#supported-data-stores-and-formats).
+Listę magazynów danych obsługiwanych jako źródła i ujścia przez działanie kopiowania w Azure Data Factory można znaleźć w temacie [obsługiwane magazyny danych](copy-activity-overview.md#supported-data-stores-and-formats).

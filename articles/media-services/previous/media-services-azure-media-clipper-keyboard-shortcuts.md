@@ -1,26 +1,26 @@
 ---
-title: Skonfiguruj ustawienia klawiatury usługi Azure Media Clipper | Dokumentacja firmy Microsoft
-description: Procedura konfigurowania można skonfigurować skróty klawiaturowe dla usługi Azure Media Clipper
+title: Konfigurowanie ustawień klawiatury usługi Azure Media Clipper | Microsoft Docs
+description: Procedura konfigurowania konfigurowalnych skrótów klawiaturowych dla usługi Azure Media Clipper
 services: media-services
-keywords: clip;subclip;encoding;media
-author: dbgeorge
-manager: jasonsue
-ms.author: dwgeo
+keywords: Clip; subclip; kodowanie; nośnik
+author: Juliako
+manager: femila
+ms.author: juliako
 ms.date: 03/14/2019
 ms.topic: article
 ms.service: media-services
-ms.openlocfilehash: 2eb32b8ec265a4afa2581374c1f07ac06958a576
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 013ca640d30baceeb41e9cb38fab69020b3c50dd
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61466110"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73685055"
 ---
-# <a name="configure-azure-media-clipper-keyboard-shortcuts"></a>Konfigurowanie skróty klawiaturowe usługi Azure Media Clipper 
+# <a name="configure-azure-media-clipper-keyboard-shortcuts"></a>Konfigurowanie skrótów klawiaturowych usługi Azure Media Clipper 
 
-Usługa Azure Media Clipper obsługuje dostosowywania domyślne skróty klawiaturowe, zapewniając opcjonalny `keymap` parametru JSON.
+Usługa Azure Media Clipper obsługuje Dostosowywanie domyślnych skrótów klawiaturowych, dostarczając opcjonalny parametr `keymap` JSON.
 
-Poniższy przykład JSON przedstawiono domyślne skróty klawiaturowe. Te ustawienia można dostosować, zmieniając pola kluczy i przekazywanie w parametrze podczas inicjowania Clipper.
+Poniższy przykładowy kod JSON ilustruje domyślne skróty klawiaturowe. Te ustawienia można dostosować, zmieniając pola klucza i przekazując parametr podczas inicjowania programu Clipper.
 
 ```json
 {

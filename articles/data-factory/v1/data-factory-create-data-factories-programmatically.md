@@ -1,5 +1,5 @@
 ---
-title: Tworzenie potoków danych przy użyciu zestawu Azure .NET SDK | Microsoft Docs
+title: Tworzenie potoków danych przy użyciu zestawu Azure .NET SDK
 description: Dowiedz się, jak programowo tworzyć fabryki danych platformy Azure, monitorować je i zarządzać nimi za pomocą zestawu SDK Data Factory.
 services: data-factory
 documentationcenter: ''
@@ -12,12 +12,12 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 01/22/2018
-ms.openlocfilehash: 11120a84f2796061d76d8d813ba906da073b57c6
-ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
+ms.openlocfilehash: cabeb6314c16aa5bc37f1139954f8829a37af5bb
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70140214"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73682762"
 ---
 # <a name="create-monitor-and-manage-azure-data-factories-using-azure-data-factory-net-sdk"></a>Tworzenie i monitorowanie fabryk danych platformy Azure oraz zarządzanie nimi przy użyciu zestawu Azure Data Factory .NET SDK
 > [!NOTE]
@@ -34,7 +34,7 @@ Fabryki danych platformy Azure można tworzyć, monitorować programowo i zarzą
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
 * Program Visual Studio w wersji 2012, 2013 lub 2015.
-* Pobierz i zainstaluj [Azure .NET SDK](https://azure.microsoft.com/downloads/).
+* Pobierz i zainstaluj [zestaw Azure .NET SDK](https://azure.microsoft.com/downloads/).
 * Azure PowerShell. Postępuj zgodnie z instrukcjami w artykule [How to install and configure Azure PowerShell](/powershell/azure/overview) (Instalowanie i konfigurowanie programu Azure PowerShell), aby zainstalować program Azure PowerShell na komputerze. Program Azure PowerShell służy do tworzenia aplikacji Azure Active Directory.
 
 ### <a name="create-an-application-in-azure-active-directory"></a>Tworzenie aplikacji w usłudze Azure Active Directory
@@ -138,7 +138,7 @@ Działanie kopiowania wykonuje operację przenoszenia danych w usłudze Azure Da
         </appSettings>
     </configuration>
     ```
-5. W pliku App. config zaktualizuj wartości dla  **&lt;identyfikatora&gt;aplikacji**,  **&lt;hasła&gt;** ,  **&lt;identyfikatora&gt;subskrypcji**i **&lt;identyfikatora dzierżawy z&gt;** własnymi wartościami.
+5. W pliku App. config zaktualizuj wartości **&lt;identyfikatora aplikacji&gt;** , **&lt;hasła&gt;** , **&lt;Identyfikator subskrypcji** &gt;i **&lt;identyfikator dzierżawy&gt;** z własnymi wartościami.
 6. Dodaj następujące instrukcje **using** do pliku **program.cs** w projekcie.
 
     ```csharp
@@ -446,7 +446,7 @@ Działanie kopiowania wykonuje operację przenoszenia danych w usłudze Azure Da
     }
     ```
 
-15. W Eksplorator rozwiązań rozwiń projekt: **DataFactoryAPITestApp**, kliknij prawym przyciskiem myszy pozycję **odwołania**i kliknij polecenie **Dodaj odwołanie**. Zaznacz pole wyboru dla `System.Configuration` zestawu i kliknij przycisk **OK**.
+15. W Eksplorator rozwiązań rozwiń projekt: **DataFactoryAPITestApp**, kliknij prawym przyciskiem myszy pozycję **odwołania**i kliknij polecenie **Dodaj odwołanie**. Zaznacz pole wyboru dla zestawu `System.Configuration` i kliknij przycisk **OK**.
 15. Skompiluj aplikację konsolową. Kliknij przycisk **Kompiluj** w menu i kliknij opcję **Kompiluj rozwiązanie**.
 16. Upewnij się, że w usłudze Azure Blob Storage istnieje co najmniej jeden plik w kontenerze adftutorial. W przeciwnym razie Utwórz plik EMP. txt w programie Notepad z następującą zawartością i przekaż go do kontenera adftutorial.
 

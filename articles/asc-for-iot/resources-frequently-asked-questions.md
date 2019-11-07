@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/23/2019
 ms.author: mlottner
-ms.openlocfilehash: 0262be687b74ec1b97cb508f6da1b95cd5d7a533
-ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
+ms.openlocfilehash: 639a3f89e470a832279add8d2ed7cf49441611f4
+ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68596926"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73571799"
 ---
 # <a name="azure-security-center-for-iot-frequently-asked-questions"></a>Azure Security Center często zadawanych pytań dotyczących IoT  
 
@@ -70,7 +70,7 @@ Azure Security Center dla usługi IoT Security Agent to open source i dostępna 
 
 ## <a name="where-does-the-azure-security-center-for-iot-agent-get-installed"></a>Gdzie jest zainstalowany Azure Security Center dla agenta IoT? 
 
-Szczegółowe informacje o instalacji i wdrożeniu agentów można znaleźć w witrynie https://github.com/Azure/Azure-Security-IoT GitHub:.
+Szczegółowe informacje o instalacji i wdrożeniu agentów można znaleźć w witrynie GitHub: https://github.com/Azure/Azure-IoT-Security.
 
 ## <a name="what-are-the-dependencies-and-prerequisites-of-the-agent"></a>Jakie są zależności i wymagania wstępne agenta?
 
@@ -122,7 +122,7 @@ Nie można wyłączyć agenta.
 
 ## <a name="is-there-a-way-to-test-if-the-agent-is-working-correctly"></a>Czy istnieje sposób, aby sprawdzić, czy agent działa prawidłowo? 
 
-Jeśli Agent przestanie komunikować się lub nie można wysłać komunikatów zabezpieczeń , zostanie wygenerowany alert dyskretny.
+Jeśli Agent przestanie komunikować się lub nie można wysłać komunikatów zabezpieczeń, zostanie wygenerowany alert **dyskretny** .
 
 ## <a name="can-i-create-my-own-alerts"></a>Czy mogę tworzyć własne alerty?
 
@@ -139,7 +139,7 @@ Tak. Możesz ustawić dostosowany alert dla wstępnie ustalonego zestawu zachowa
 Azure Security Center dla modułu IoT służy do konfigurowania agentów i zarządzania nimi.
 
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 Aby dowiedzieć się więcej na temat rozpoczynania pracy z usługą Azure Security Center for IoT, zobacz następujące artykuły:
 

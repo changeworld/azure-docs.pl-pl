@@ -1,5 +1,5 @@
 ---
-title: Konfiguracja maszyny wirtualnej hosta sesji — Azure
+title: Rozwiązywanie problemów z hostem sesji usług pulpitu wirtualnego systemu Windows — Azure
 description: Jak rozwiązywać problemy podczas konfigurowania maszyn wirtualnych hosta sesji usług pulpitu wirtualnego systemu Windows.
 services: virtual-desktop
 author: Heidilohr
@@ -7,18 +7,18 @@ ms.service: virtual-desktop
 ms.topic: troubleshooting
 ms.date: 10/02/2019
 ms.author: helohr
-ms.openlocfilehash: a847ba7d782b332d9cae7f83bc1278fea58b8811
-ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
+ms.openlocfilehash: 1470bb049cffce52ae921057bdaece40f3d3161c
+ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72330819"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73607395"
 ---
 # <a name="session-host-virtual-machine-configuration"></a>Konfiguracja maszyny wirtualnej hosta sesji
 
 Ten artykuł służy do rozwiązywania problemów występujących podczas konfigurowania maszyn wirtualnych hosta sesji usług pulpitu wirtualnego systemu Windows.
 
-## <a name="provide-feedback"></a>Prześlij opinię
+## <a name="provide-feedback"></a>Przekazywanie opinii
 
 Odwiedź [społeczność Tech. pulpitu wirtualnego systemu Windows](https://techcommunity.microsoft.com/t5/Windows-Virtual-Desktop/bd-p/WindowsVirtualDesktop) , aby omówić usługę pulpitu wirtualnego systemu Windows z zespołem produktu i aktywnymi członkami społeczności.
 
@@ -309,7 +309,7 @@ Jeśli zobaczysz jeden z tych komunikatów, oznacza to, że obraz nie ma zainsta
 
 ### <a name="disable-the-remote-desktop-licensing-mode-group-policy-setting"></a>Wyłącz ustawienie zasad grupy trybu licencjonowania Pulpit zdalny
 
-Sprawdź ustawienie zasad grupy, otwierając Edytor zasady grupy na maszynie wirtualnej i przechodząc do **Szablony administracyjne** > **składników systemu Windows** > **usługi pulpitu zdalnego** > **pulpit zdalny hosta sesji**@no **Licencjonowanie**__t-7  > **ustawia tryb licencjonowania pulpit zdalny**. Jeśli ustawienie zasad grupy jest **włączone**, zmień je na **wyłączone**. Jeśli jest już wyłączona, pozostaw ją jako-is.
+Sprawdź ustawienie zasad grupy, otwierając Edytor zasady grupy na maszynie wirtualnej i przechodząc do **Szablony administracyjne** > **składniki systemu Windows** > **usługi pulpitu zdalnego** > **hosta sesji** > **licencjonowanie** > **ustawić tryb licencjonowania pulpit zdalny**. Jeśli ustawienie zasad grupy jest **włączone**, zmień je na **wyłączone**. Jeśli jest już wyłączona, pozostaw ją jako-is.
 
 >[!NOTE]
 >Jeśli zasady grupy są ustawiane za pośrednictwem domeny, należy wyłączyć to ustawienie dla zasad przeznaczonych dla maszyn wirtualnych obejmujących wiele sesji systemu Windows 10 Enterprise.

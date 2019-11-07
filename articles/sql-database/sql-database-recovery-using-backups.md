@@ -1,5 +1,5 @@
 ---
-title: Przywracanie bazy danych Azure SQL Database z kopii zapasowej | Microsoft Docs
+title: Przywracanie bazy danych Azure SQL Database z kopii zapasowej
 description: Dowiedz się więcej o przywracaniu do punktu w czasie, który umożliwia wycofanie bazy danych Azure SQL Database do 35 dni.
 services: sql-database
 ms.service: sql-database
@@ -11,16 +11,16 @@ author: anosov1960
 ms.author: sashan
 ms.reviewer: mathoma, carlrab, danil
 ms.date: 09/26/2019
-ms.openlocfilehash: b858776d8309be94a0dd64f994a9e34e589d3c49
-ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
+ms.openlocfilehash: 799926eeb6a508ea04b879231625cf321e95d043
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/22/2019
-ms.locfileid: "72750460"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73687538"
 ---
 # <a name="recover-an-azure-sql-database-by-using-automated-database-backups"></a>Odzyskiwanie bazy danych Azure SQL Database przy użyciu zautomatyzowanych kopii zapasowych bazy danych
 
-Domyślnie kopie zapasowe Azure SQL Database są przechowywane w replikowanym geograficznie magazynie obiektów BLOB (typ magazynu RA-GRS). Poniższe opcje są dostępne do odzyskiwania bazy danych przy użyciu [zautomatyzowanych kopii zapasowych bazy danych](sql-database-automated-backups.md). Przekonaj się:
+Domyślnie kopie zapasowe Azure SQL Database są przechowywane w replikowanym geograficznie magazynie obiektów BLOB (typ magazynu RA-GRS). Poniższe opcje są dostępne do odzyskiwania bazy danych przy użyciu [zautomatyzowanych kopii zapasowych bazy danych](sql-database-automated-backups.md). Możesz:
 
 - Utwórz nową bazę danych na tym samym serwerze SQL Database, a następnie Odzyskaj ją do określonego punktu w czasie w okresie przechowywania.
 - Utwórz bazę danych na tym samym serwerze SQL Database, Odzyskaj do czasu usunięcia usuniętej bazy danych.
@@ -145,7 +145,7 @@ Z Azure Portal można utworzyć nową bazę danych wystąpienia z jedną lub zar
 
 Aby przywrócić geograficzną pojedynczą bazę danych SQL z Azure Portal w wybranym regionie i serwerze, wykonaj następujące kroki:
 
-1. Z poziomu **pulpitu nawigacyjnego**wybierz pozycję **dodaj**  > **Utwórz SQL Database**. Na karcie **podstawowe** wprowadź wymagane informacje.
+1. Z poziomu **pulpitu nawigacyjnego**wybierz pozycję **dodaj** > **Utwórz SQL Database**. Na karcie **podstawowe** wprowadź wymagane informacje.
 2. Wybierz **dodatkowe ustawienia**.
 3. W obszarze **Użyj istniejących danych**wybierz pozycję **kopia zapasowa**.
 4. W obszarze **kopia zapasowa**wybierz pozycję Kopia zapasowa z listy dostępnych kopii zapasowych przywracania geograficznego.
@@ -222,7 +222,7 @@ Aby przywrócić bazę danych wystąpienia zarządzanego, zobacz [Restore-AzSqlI
 
 Aby przywrócić pojedynczą lub w puli bazę danych przy użyciu interfejsu API REST:
 
-| API | Opis |
+| Interfejs API | Opis |
 | --- | --- |
 | [REST (createmode = Recovery)](https://docs.microsoft.com/rest/api/sql/databases) |Przywraca bazę danych. |
 | [Pobieranie lub aktualizowanie stanu bazy danych](https://docs.microsoft.com/rest/api/sql/operations) |Zwraca stan podczas operacji przywracania. |

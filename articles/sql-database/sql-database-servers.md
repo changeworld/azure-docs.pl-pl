@@ -1,5 +1,5 @@
 ---
-title: Serwery Azure SQL Database | Microsoft Docs
+title: Serwery Azure SQL Database
 description: Dowiedz się więcej na temat serwerów Azure SQL Database i zarządzania nimi.
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 03/12/2019
-ms.openlocfilehash: 02d57c297926ef375eecaa76af55ffed60668cf1
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 8ebe08f37255743578cbc3dd44f7d84d79b9d17a
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68566770"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73687410"
 ---
 # <a name="azure-sql-database-servers-and-their-management"></a>Serwery Azure SQL Database i ich zarządzanie
 
@@ -45,7 +45,7 @@ Serwer SQL Database:
 - Jest zakresem przechowywania wersji dla funkcji włączonych w zawartych zasobach
 - Logowania główne na poziomie serwera mogą zarządzać wszystkimi bazami danych na serwerze
 - Może zawierać logowania podobne do tych w lokalnych wystąpieniach programu SQL Server, którym udzielono dostępu do co najmniej jednej bazy danych na serwerze, i może otrzymać ograniczone prawa administracyjne. Aby uzyskać więcej informacji, zobacz temat [Logowania](sql-database-manage-logins.md).
-- Domyślne sortowanie dla wszystkich baz danych utworzonych `SQL_LATIN1_GENERAL_CP1_CI_AS`na serwerze SQL Database to, gdzie `LATIN1_GENERAL` jest angielski (Stany Zjednoczone), `CP1` jest stroną kodową 1252, `CI` bez uwzględniania wielkości liter i `AS` jest uwzględniana w akcentie.
+- Domyślne sortowanie dla wszystkich baz danych utworzonych na serwerze SQL Database jest `SQL_LATIN1_GENERAL_CP1_CI_AS`, gdzie `LATIN1_GENERAL` jest angielski (Stany Zjednoczone), `CP1` jest stroną kodową 1252, `CI` nie jest rozróżniana wielkość liter, a `AS` jest uwzględniana w akcentie.
 
 ## <a name="manage-azure-sql-servers-databases-and-firewalls-using-the-azure-portal"></a>Zarządzanie serwerami SQL, bazami danych i zaporami platformy Azure przy użyciu Azure Portal
 
@@ -87,7 +87,7 @@ Aby zarządzać istniejącą bazą danych, przejdź do strony **bazy danych SQL*
 
 Aby utworzyć i zarządzać usługą Azure SQL Server, bazami danych i zaporami przy użyciu Azure PowerShell, należy użyć następujących poleceń cmdlet programu PowerShell. Jeśli musisz zainstalować lub uaktualnić program PowerShell, zobacz [install Azure PowerShell module](/powershell/azure/install-az-ps). Aby utworzyć pule elastyczne i zarządzać nimi, zobacz [Pule elastyczne](sql-database-elastic-pool.md).
 
-| Polecenia cmdlet | Opis |
+| Polecenie cmdlet | Opis |
 | --- | --- |
 |[New-AzSqlDatabase](/powershell/module/az.sql/new-azsqldatabase)|Tworzy bazę danych |
 |[Get-AzSqlDatabase](/powershell/module/az.sql/get-azsqldatabase)|Pobiera co najmniej jedną bazę danych|
@@ -112,7 +112,7 @@ Aby utworzyć i zarządzać usługą Azure SQL Server, bazami danych i zaporami 
 
 Aby utworzyć i zarządzać usługą Azure SQL Server, bazami danych i zaporami przy użyciu [interfejsu wiersza polecenia platformy](/cli/azure)Azure, użyj następujących poleceń [SQL Database interfejsu wiersza polecenia platformy Azure](/cli/azure/sql/db) . Używaj usługi [Cloud Shell](/azure/cloud-shell/overview), aby uruchamiać interfejs wiersza polecenia w przeglądarce, albo [zainstaluj](/cli/azure/install-azure-cli) go w systemie macOS, Linux lub Windows. Aby utworzyć pule elastyczne i zarządzać nimi, zobacz [Pule elastyczne](sql-database-elastic-pool.md).
 
-| Polecenia cmdlet | Opis |
+| Polecenie cmdlet | Opis |
 | --- | --- |
 |[az sql db create](/cli/azure/sql/db#az-sql-db-create) |Tworzy bazę danych|
 |[Lista AZ SQL DB](/cli/azure/sql/db#az-sql-db-list)|Wyświetla listę wszystkich baz danych i magazynów danych na serwerze lub wszystkich baz danych w puli elastycznej|
@@ -152,10 +152,10 @@ Aby utworzyć i zarządzać programem Azure SQL Server, bazami danych i zaporami
 | [ALTER DATABASE (Azure SQL Database)](/sql/t-sql/statements/alter-database-azure-sql-database) |Modyfikuje bazę danych SQL Azure. |
 |[ALTER DATABASE (Azure SQL Data Warehouse)](/sql/t-sql/statements/alter-database-azure-sql-data-warehouse)|Modyfikuje Azure SQL Data Warehouse.|
 |[DROP DATABASE (Transact-SQL)](/sql/t-sql/statements/drop-database-transact-sql)|Usuwa bazę danych.|
-|[sys.database_service_objectives (Azure SQL Database)](/sql/relational-databases/system-catalog-views/sys-database-service-objectives-azure-sql-database)|Zwraca wersję (warstwę usług), cel usługi (warstwę cenową) i nazwę puli elastycznej (jeśli istnieje) dla usługi Azure SQL Database lub Azure SQL Data Warehouse. Jeśli użytkownik jest zalogowany do bazy danych Master na serwerze Azure SQL Database, zwraca informacje o wszystkich bazach danych. W przypadku Azure SQL Data Warehouse należy nawiązać połączenie z bazą danych Master.|
-|[sys.dm_db_resource_stats (Azure SQL Database)](/sql/relational-databases/system-dynamic-management-views/sys-dm-db-resource-stats-azure-sql-database)| Zwraca użycie procesora CPU, operacji we/wy i pamięci dla bazy danych Azure SQL Database. Jeden wiersz istnieje przez co 15 sekund, nawet jeśli w bazie danych nie ma żadnych działań.|
-|[sys.resource_stats (Azure SQL Database)](/sql/relational-databases/system-catalog-views/sys-resource-stats-azure-sql-database)|Zwraca dane użycia procesora CPU i magazynu dla Azure SQL Database. Dane są zbierane i agregowane w ciągu pięciu minut.|
-|[sys.database_connection_stats (Azure SQL Database)](/sql/relational-databases/system-catalog-views/sys-database-connection-stats-azure-sql-database)|Zawiera dane statystyczne dotyczące zdarzeń łączności z bazą danych SQL Database, które zawierają omówienie sukcesów i niepowodzeń połączeń z bazą danych. |
+|[sys. database_service_objectives (Azure SQL Database)](/sql/relational-databases/system-catalog-views/sys-database-service-objectives-azure-sql-database)|Zwraca wersję (warstwę usług), cel usługi (warstwę cenową) i nazwę puli elastycznej (jeśli istnieje) dla usługi Azure SQL Database lub Azure SQL Data Warehouse. Jeśli użytkownik jest zalogowany do bazy danych Master na serwerze Azure SQL Database, zwraca informacje o wszystkich bazach danych. W przypadku Azure SQL Data Warehouse należy nawiązać połączenie z bazą danych Master.|
+|[sys. DM _db_resource_stats (Azure SQL Database)](/sql/relational-databases/system-dynamic-management-views/sys-dm-db-resource-stats-azure-sql-database)| Zwraca użycie procesora CPU, operacji we/wy i pamięci dla bazy danych Azure SQL Database. Jeden wiersz istnieje przez co 15 sekund, nawet jeśli w bazie danych nie ma żadnych działań.|
+|[sys. resource_stats (Azure SQL Database)](/sql/relational-databases/system-catalog-views/sys-resource-stats-azure-sql-database)|Zwraca dane użycia procesora CPU i magazynu dla Azure SQL Database. Dane są zbierane i agregowane w ciągu pięciu minut.|
+|[sys. database_connection_stats (Azure SQL Database)](/sql/relational-databases/system-catalog-views/sys-database-connection-stats-azure-sql-database)|Zawiera dane statystyczne dotyczące zdarzeń łączności z bazą danych SQL Database, które zawierają omówienie sukcesów i niepowodzeń połączeń z bazą danych. |
 |[sys. event_log (Azure SQL Database)](/sql/relational-databases/system-catalog-views/sys-event-log-azure-sql-database)|Zwraca pomyślne Azure SQL Database połączenia z bazą danych, błędy połączeń i zakleszczenie. Te informacje służą do śledzenia i rozwiązywania problemów z działaniem bazy danych za pomocą SQL Database.|
 |[sp_set_firewall_rule (Azure SQL Database)](/sql/relational-databases/system-stored-procedures/sp-set-firewall-rule-azure-sql-database)|Tworzy lub aktualizuje ustawienia zapory na poziomie serwera dla serwera SQL Database. Ta procedura składowana jest dostępna tylko w bazie danych Master do nazwy logowania podmiotu zabezpieczeń na poziomie serwera. Regułę zapory na poziomie serwera można utworzyć tylko przy użyciu języka Transact-SQL po utworzeniu pierwszej reguły zapory na poziomie serwera przez użytkownika z uprawnieniami na poziomie platformy Azure.|
 |[sys. firewall_rules (Azure SQL Database)](/sql/relational-databases/system-catalog-views/sys-firewall-rules-azure-sql-database)|Zwraca informacje o ustawieniach zapory na poziomie serwera skojarzonych z Microsoft Azure SQL Database.|
@@ -165,7 +165,7 @@ Aby utworzyć i zarządzać programem Azure SQL Server, bazami danych i zaporami
 |[sp_delete_database_firewall_rule (Azure SQL Database)](/sql/relational-databases/system-stored-procedures/sp-delete-database-firewall-rule-azure-sql-database)|Usuwa ustawienie zapory na poziomie bazy danych z Azure SQL Database lub SQL Data Warehouse. |
 
 > [!TIP]
-> Aby zapoznać się z przewodnikiem Szybki Start przy użyciu [SQL Server Management Studio w systemie Microsoft Windows, zobacz Azure SQL Database: Użyj SQL Server Management Studio, aby nawiązać połączenie](sql-database-connect-query-ssms.md)i wykonać zapytania dotyczące danych. Aby uzyskać szybki Start przy użyciu Visual Studio Code w macOS, Linux lub Windows, zobacz [Azure SQL Database: Użyj Visual Studio Code, aby nawiązać połączenie](sql-database-connect-query-vscode.md)i wykonać zapytania dotyczące danych.
+> Aby uzyskać szybki Start przy użyciu SQL Server Management Studio w systemie Microsoft Windows, zobacz [Azure SQL Database: używanie SQL Server Management Studio do nawiązywania połączenia i wykonywania zapytań dotyczących danych](sql-database-connect-query-ssms.md). Aby uzyskać szybki Start przy użyciu Visual Studio Code w macOS, Linux lub Windows, zobacz [Azure SQL Database: używanie Visual Studio Code do nawiązywania połączenia i wykonywania zapytań dotyczących danych](sql-database-connect-query-vscode.md).
 
 ## <a name="manage-azure-sql-servers-databases-and-firewalls-using-the-rest-api"></a>Zarządzanie serwerami, bazami danych i zaporami platformy Azure SQL przy użyciu interfejsu API REST
 

@@ -1,6 +1,6 @@
 ---
-title: Kopiowanie danych z usługi QuickBooks Online przy użyciu usługi Azure Data Factory (wersja zapoznawcza) | Dokumentacja firmy Microsoft
-description: Dowiedz się, jak skopiować dane z usługi QuickBooks Online do magazynów danych ujścia obsługiwane za pomocą działania kopiowania w potoku usługi Azure Data Factory.
+title: Kopiowanie danych z usługi QuickBooks online przy użyciu Azure Data Factory (wersja zapoznawcza)
+description: Informacje o kopiowaniu danych z usługi QuickBooks online do obsługiwanych magazynów danych ujścia przy użyciu działania kopiowania w potoku Azure Data Factory.
 services: data-factory
 documentationcenter: ''
 author: linda33wj
@@ -12,52 +12,52 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 08/01/2019
 ms.author: jingwang
-ms.openlocfilehash: 44bfae58badd6aa6b05763dff094475f82fb2e18
-ms.sourcegitcommit: c79aa93d87d4db04ecc4e3eb68a75b349448cd17
+ms.openlocfilehash: dd8044c6c2e87262f80a53eaa52114c82b71de50
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71089694"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73680420"
 ---
-# <a name="copy-data-from-quickbooks-online-using-azure-data-factory-preview"></a>Kopiowanie danych z usługi QuickBooks Online przy użyciu usługi Azure Data Factory (wersja zapoznawcza)
+# <a name="copy-data-from-quickbooks-online-using-azure-data-factory-preview"></a>Kopiowanie danych z usługi QuickBooks online przy użyciu Azure Data Factory (wersja zapoznawcza)
 
-W tym artykule opisano sposób użycia działania kopiowania w usłudze Azure Data Factory, aby skopiować dane z usługi QuickBooks Online. Opiera się na [omówienie działania kopiowania](copy-activity-overview.md) artykułu, który przedstawia ogólne omówienie działania kopiowania.
+W tym artykule opisano sposób używania działania kopiowania w Azure Data Factory do kopiowania danych z usługi QuickBooks online. Jest ona oparta na [przeglądzie działania kopiowania](copy-activity-overview.md) , która przedstawia ogólne omówienie działania kopiowania.
 
 > [!IMPORTANT]
-> Ten łącznik jest obecnie w wersji zapoznawczej. Możesz wypróbować tę funkcję i przekaż nam swoją opinię. Jeśli w swoim rozwiązaniu chcesz wprowadzić zależność od łączników w wersji zapoznawczej, skontaktuj się z [pomocą techniczną platformy Azure](https://azure.microsoft.com/support/).
+> Ten łącznik jest obecnie w wersji zapoznawczej. Możesz ją wypróbować i przekazać nam swoją opinię. Jeśli w swoim rozwiązaniu chcesz wprowadzić zależność od łączników w wersji zapoznawczej, skontaktuj się z [pomocą techniczną platformy Azure](https://azure.microsoft.com/support/).
 
-## <a name="supported-capabilities"></a>Obsługiwane funkcje
+## <a name="supported-capabilities"></a>Obsługiwane możliwości
 
 Ten łącznik programu QuickBooks jest obsługiwany dla następujących działań:
 
 - [Działanie kopiowania](copy-activity-overview.md) z [obsługiwaną macierzą źródłową/ujścia](copy-activity-overview.md)
 - [Działanie Lookup](control-flow-lookup-activity.md)
 
-Możesz skopiować dane z usługi QuickBooks Online, do dowolnego obsługiwanego magazynu danych ujścia. Aby uzyskać listę magazynów danych, obsługiwane przez działanie kopiowania jako źródła/ujścia, zobacz [obsługiwane magazyny danych](copy-activity-overview.md#supported-data-stores-and-formats) tabeli.
+Dane z usługi QuickBooks online można kopiować do dowolnego obsługiwanego magazynu danych ujścia. Listę magazynów danych obsługiwanych jako źródła/ujścia przez działanie kopiowania można znaleźć w tabeli [obsługiwane magazyny danych](copy-activity-overview.md#supported-data-stores-and-formats) .
 
-Usługa Azure Data Factory udostępnia wbudowanego sterownika, aby umożliwić łączność, dlatego nie trzeba ręcznie zainstalować dowolnego sterownika, za pomocą tego łącznika.
+Azure Data Factory udostępnia wbudowany sterownik umożliwiający połączenie, dlatego nie trzeba ręcznie instalować żadnego sterownika przy użyciu tego łącznika.
 
-Ten łącznik obsługuje obecnie tylko 1.0a, co oznacza, że musisz mieć konto dewelopera z aplikacji utworzonych przed 17 lipca 2017 r.
+Obecnie ten łącznik obsługuje tylko 1.0 a, co oznacza, że musisz mieć konto dewelopera z aplikacjami utworzonymi przed 17 lipca 2017.
 
 ## <a name="getting-started"></a>Wprowadzenie
 
 [!INCLUDE [data-factory-v2-connector-get-started](../../includes/data-factory-v2-connector-get-started.md)]
 
-Poniższe sekcje zawierają szczegółowe informacje dotyczące właściwości, które są używane do definiowania jednostek usługi Data Factory określonych QuickBooks łącznikiem.
+Poniższe sekcje zawierają szczegółowe informacje o właściwościach, które są używane do definiowania jednostek Data Factory specyficznych dla łącznika programu QuickBooks.
 
-## <a name="linked-service-properties"></a>Właściwości usługi połączonej
+## <a name="linked-service-properties"></a>Właściwości połączonej usługi
 
-Następujące właściwości są obsługiwane w przypadku QuickBooks połączone usługi:
+Dla połączonej usługi programu QuickBooks są obsługiwane następujące właściwości:
 
-| Właściwość | Opis | Wymagane |
+| Właściwość | Opis | Wymagany |
 |:--- |:--- |:--- |
-| type | Właściwość Type musi mieć ustawioną wartość: **Programu** | Tak |
-| endpoint | Punkt końcowy serwera usługi QuickBooks Online. (czyli quickbooks.api.intuit.com)  | Yes |
-| companyId | Identyfikator firmy firmy QuickBooks, do autoryzacji. Aby uzyskać informacje o sposobach znajdowania Identyfikatora firmy, zobacz [jak znaleźć swój identyfikator firmy?](https://quickbooks.intuit.com/community/Getting-Started/How-do-I-find-my-Company-ID/m-p/185551). | Yes |
-| consumerKey | Klucz klienta do uwierzytelniania protokołu OAuth 1.0. | Yes |
-| consumerSecret | Klucz tajny klienta do uwierzytelniania protokołu OAuth 1.0. Oznacz to pole jako SecureString, aby bezpiecznie przechowywać w usłudze Data Factory lub [odwołanie wpisu tajnego przechowywanych w usłudze Azure Key Vault](store-credentials-in-key-vault.md). | Yes |
-| accessToken | Token dostępu do uwierzytelniania protokołu OAuth 1.0. Oznacz to pole jako SecureString, aby bezpiecznie przechowywać w usłudze Data Factory lub [odwołanie wpisu tajnego przechowywanych w usłudze Azure Key Vault](store-credentials-in-key-vault.md). | Yes |
-| accessTokenSecret | Klucz tajny tokenu dostępu do uwierzytelniania protokołu OAuth 1.0. Oznacz to pole jako SecureString, aby bezpiecznie przechowywać w usłudze Data Factory lub [odwołanie wpisu tajnego przechowywanych w usłudze Azure Key Vault](store-credentials-in-key-vault.md). | Yes |
+| type | Właściwość Type musi być ustawiona na wartość: **Quickbooks** | Tak |
+| endpoint | Punkt końcowy serwera usługi QuickBooks online. (to jest, quickbooks.api.intuit.com)  | Tak |
+| companyId | Identyfikator firmy w firmie QuickBooks do autoryzacji. Aby uzyskać informacje na temat sposobu wyszukiwania identyfikatora firmy, zobacz [Jak mogę Find My ID firmy?](https://quickbooks.intuit.com/community/Getting-Started/How-do-I-find-my-Company-ID/m-p/185551). | Tak |
+| consumerKey | Klucz klienta uwierzytelniania OAuth 1,0. | Tak |
+| consumerSecret | Wpis tajny klienta na potrzeby uwierzytelniania OAuth 1,0. Oznacz to pole jako element SecureString, aby bezpiecznie przechowywać go w Data Factory, lub [odwoływać się do wpisu tajnego przechowywanego w Azure Key Vault](store-credentials-in-key-vault.md). | Tak |
+| accessToken | Token dostępu do uwierzytelniania OAuth 1,0. Oznacz to pole jako element SecureString, aby bezpiecznie przechowywać go w Data Factory, lub [odwoływać się do wpisu tajnego przechowywanego w Azure Key Vault](store-credentials-in-key-vault.md). | Tak |
+| accessTokenSecret | Wpis tajny tokenu dostępu do uwierzytelniania OAuth 1,0. Oznacz to pole jako element SecureString, aby bezpiecznie przechowywać go w Data Factory, lub [odwoływać się do wpisu tajnego przechowywanego w Azure Key Vault](store-credentials-in-key-vault.md). | Tak |
 | useEncryptedEndpoints | Określa, czy punkty końcowe źródła danych są szyfrowane przy użyciu protokołu HTTPS. Wartość domyślna to true.  | Nie |
 
 **Przykład:**
@@ -91,13 +91,13 @@ Następujące właściwości są obsługiwane w przypadku QuickBooks połączone
 
 ## <a name="dataset-properties"></a>Właściwości zestawu danych
 
-Aby uzyskać pełną listę sekcje i właściwości dostępne Definiowanie zestawów danych, zobacz [zestawów danych](concepts-datasets-linked-services.md) artykułu. Ta sekcja zawiera listę właściwości obsługiwanych przez program QuickBooks w zestawie danych.
+Aby uzyskać pełną listę sekcji i właściwości dostępnych do definiowania zestawów danych, zobacz artykuł [zestawy danych](concepts-datasets-linked-services.md) . Ta sekcja zawiera listę właściwości obsługiwanych przez zestaw danych programu QuickBooks.
 
-Aby skopiować dane z usługi QuickBooks Online, należy ustawić właściwość typu zestawu danych na **QuickBooksObject**. Obsługiwane są następujące właściwości:
+Aby skopiować dane z usługi QuickBooks online, ustaw właściwość Type zestawu danych na **quickbooksobject**. Obsługiwane są następujące właściwości:
 
-| Właściwość | Opis | Wymagane |
+| Właściwość | Opis | Wymagany |
 |:--- |:--- |:--- |
-| type | Właściwość Type zestawu danych musi być ustawiona na wartość: **QuickBooksObject** | Tak |
+| type | Właściwość Type zestawu danych musi być ustawiona na wartość: **quickbooksobject** | Tak |
 | tableName | Nazwa tabeli. | Nie (Jeśli określono parametr "query" w źródle działania) |
 
 **Przykład**
@@ -119,16 +119,16 @@ Aby skopiować dane z usługi QuickBooks Online, należy ustawić właściwość
 
 ## <a name="copy-activity-properties"></a>Właściwości działania kopiowania
 
-Aby uzyskać pełną listę sekcje i właściwości dostępne do definiowania działań zobacz [potoki](concepts-pipelines-activities.md) artykułu. Ta sekcja zawiera listę właściwości obsługiwanych przez źródło QuickBooks.
+Aby uzyskać pełną listę sekcji i właściwości dostępnych do definiowania działań, zobacz artykuł [potoki](concepts-pipelines-activities.md) . Ta sekcja zawiera listę właściwości obsługiwanych przez źródło programu QuickBooks.
 
-### <a name="quickbooks-as-source"></a>Program QuickBooks jako źródło
+### <a name="quickbooks-as-source"></a>QuickBooks jako źródło
 
-Aby skopiować dane z usługi QuickBooks Online, należy ustawić typ źródłowego w działaniu kopiowania, aby **QuickBooksSource**. Następujące właściwości są obsługiwane w działaniu kopiowania **źródła** sekcji:
+Aby skopiować dane z usługi QuickBooks online, ustaw typ źródła w działaniu Copy na **QuickBooksSource**. W sekcji **Źródło** działania kopiowania są obsługiwane następujące właściwości:
 
-| Właściwość | Opis | Wymagane |
+| Właściwość | Opis | Wymagany |
 |:--- |:--- |:--- |
-| type | Właściwość Type źródła działania Copy musi mieć ustawioną wartość: **QuickBooksSource** | Tak |
-| query | Umożliwia odczytywanie danych niestandardowe zapytania SQL. Na przykład: `"SELECT * FROM "Bill" WHERE Id = '123'"`. | Nie (Jeśli określono parametr "tableName" w zestawie danych) |
+| type | Właściwość Type źródła działania Copy musi być ustawiona na wartość: **QuickBooksSource** | Tak |
+| query | Użyj niestandardowego zapytania SQL, aby odczytać dane. Na przykład: `"SELECT * FROM "Bill" WHERE Id = '123'"`. | Nie (Jeśli określono "TableName" w zestawie danych) |
 
 **Przykład:**
 
@@ -161,9 +161,9 @@ Aby skopiować dane z usługi QuickBooks Online, należy ustawić typ źródłow
     }
 ]
 ```
-## <a name="copy-data-from-quickbooks-desktop"></a>Kopiowanie danych z programu Quickbooks Desktop
+## <a name="copy-data-from-quickbooks-desktop"></a>Kopiowanie danych z programu QuickBooks Desktop
 
-Działanie kopiowania w usłudze Azure Data Factory nie można skopiować danych bezpośrednio z programu Quickbooks Desktop. Aby skopiować dane z programu Quickbooks Desktop, eksportowania danych Quickbooks z plikiem przecinkami zawierającego wartości rozdzielane przecinkami (CSV), a następnie przekazać plik do usługi Azure Blob Storage. W tym miejscu można użyć usługi Data Factory do skopiowania danych ujścia wybranych przez użytkownika.
+Działanie kopiowania w Azure Data Factory nie może kopiować danych bezpośrednio z programu QuickBooks Desktop. Aby skopiować dane z programu QuickBooks Desktop, wyeksportuj dane z programu QuickBooks do pliku z wartościami rozdzielanymi przecinkami (CSV), a następnie Przekaż plik do usługi Azure Blob Storage. Z tego miejsca możesz użyć Data Factory, aby skopiować dane do wybranego ujścia.
 
 ## <a name="lookup-activity-properties"></a>Właściwości działania Lookup
 
@@ -171,4 +171,4 @@ Aby dowiedzieć się więcej o właściwościach, sprawdź [działanie Lookup (w
 
 
 ## <a name="next-steps"></a>Następne kroki
-Aby uzyskać listę magazynów danych obsługiwanych jako źródła i ujścia działania kopiowania w usłudze Azure Data Factory, zobacz [obsługiwane magazyny danych](copy-activity-overview.md#supported-data-stores-and-formats).
+Listę magazynów danych obsługiwanych jako źródła i ujścia przez działanie kopiowania w Azure Data Factory można znaleźć w temacie [obsługiwane magazyny danych](copy-activity-overview.md#supported-data-stores-and-formats).

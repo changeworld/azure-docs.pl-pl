@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 09/19/2019
 ms.author: cephalin
-ms.openlocfilehash: 436ab0a561349185de58c3783f334ea1dce9001d
-ms.sourcegitcommit: a19f4b35a0123256e76f2789cd5083921ac73daf
+ms.openlocfilehash: f9b1af14bd986f1fa6fb5feb398a7f1fdf982f77
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71720128"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73669092"
 ---
 # <a name="set-up-staging-environments-in-azure-app-service"></a>Konfigurowanie środowisk przejściowych w Azure App Service
 <a name="Overview"></a>
@@ -188,7 +188,7 @@ Funkcja autoswap usprawnia scenariusze usługi Azure DevOps, w której aplikacja
 
 Aby skonfigurować funkcję autoswap:
 
-1. Przejdź do strony zasobów aplikacji. Wybierz pozycję miejsca **wdrożenia** >  *\<desired Source >*  > **Configuration** > **Ustawienia ogólne**.
+1. Przejdź do strony zasobów aplikacji. Wybierz miejsca **wdrożenia** >  *\<żądanych miejsc źródłowych >*  > **Konfiguracja** > **Ustawienia ogólne**.
    
 2. W przypadku opcji **autoswap włączone**wybierz pozycję **włączone**. Następnie wybierz żądane miejsce docelowe dla **miejsca wdrożenia autoswap**, a następnie wybierz pozycję **Zapisz** na pasku poleceń. 
    
@@ -202,7 +202,7 @@ Jeśli masz jakieś problemy, zobacz [Rozwiązywanie problemów z wymianą](#tro
 
 ## <a name="specify-custom-warm-up"></a>Określ niestandardową rozgrzewanie
 
-Niektóre aplikacje mogą wymagać niestandardowych akcji rozgrzewania przed wymianą. Element konfiguracji `applicationInitialization` w pliku Web. config pozwala określić niestandardowe akcje inicjowania. [Operacja wymiany](#AboutConfiguration) czeka na zakończenie tej niestandardowej rozgrzanej wartości przed zamianą na miejsce docelowe. Oto przykładowy fragment pliku Web. config.
+Niektóre aplikacje mogą wymagać niestandardowych akcji rozgrzewania przed wymianą. Element konfiguracji `applicationInitialization` w pliku Web. config pozwala określić niestandardowe akcje inicjacji. [Operacja wymiany](#AboutConfiguration) czeka na zakończenie tej niestandardowej rozgrzanej wartości przed zamianą na miejsce docelowe. Oto przykładowy fragment pliku Web. config.
 
     <system.webServer>
         <applicationInitialization>
@@ -215,11 +215,11 @@ Aby uzyskać więcej informacji na temat dostosowywania elementu `applicationIni
 
 Możesz również dostosować zachowanie rozgrzewania, korzystając z jednego lub obu następujących [ustawień aplikacji](configure-common.md):
 
-- `WEBSITE_SWAP_WARMUP_PING_PATH`: ścieżka do polecenia ping, aby rozgrzać lokację. Dodaj to ustawienie aplikacji, określając ścieżkę niestandardową rozpoczynającą się od ukośnika jako wartość. Może to być na przykład `/statuscheck`. Wartość domyślna to `/`. 
+- `WEBSITE_SWAP_WARMUP_PING_PATH`: ścieżka do polecenia ping do rozgrzewania lokacji. Dodaj to ustawienie aplikacji, określając ścieżkę niestandardową rozpoczynającą się od ukośnika jako wartość. Może to być na przykład `/statuscheck`. Wartość domyślna to `/`. 
 - `WEBSITE_SWAP_WARMUP_PING_STATUSES`: prawidłowe kody odpowiedzi HTTP dla operacji rozgrzewania. Dodaj to ustawienie aplikacji z rozdzieloną przecinkami listą kodów HTTP. Przykładem jest `200,202`. Jeśli zwrócony kod stanu nie znajduje się na liście, operacje rozgrzewania i swap są zatrzymane. Domyślnie wszystkie kody odpowiedzi są prawidłowe.
 
 > [!NOTE]
-> `<applicationInitialization>` jest częścią każdego uruchomienia aplikacji, gdzie te dwa ustawienia aplikacji mają zastosowanie tylko do zamian w gnieździe.
+> Element konfiguracji `<applicationInitialization>` jest częścią każdego uruchomienia aplikacji, podczas gdy dwa ustawienia aplikacji do rozgrzanych zachowań stosują się tylko do zamian w gnieździe.
 
 Jeśli masz jakieś problemy, zobacz [Rozwiązywanie problemów z wymianą](#troubleshoot-swaps).
 
@@ -229,7 +229,7 @@ Jeśli [operacja wymiany](#AboutConfiguration) trwa długo, możesz uzyskać inf
 
 Na stronie zasobów aplikacji w portalu w lewym okienku wybierz pozycję **Dziennik aktywności**.
 
-Operacja zamiany pojawia się w zapytaniu dziennika jako `Swap Web App Slots`. Można ją rozwinąć i wybrać jedną z podoperacji lub błędów, aby wyświetlić szczegóły.
+Operacja zamiany zostanie wyświetlona w zapytaniu dziennika jako `Swap Web App Slots`. Można ją rozwinąć i wybrać jedną z podoperacji lub błędów, aby wyświetlić szczegóły.
 
 ## <a name="route-traffic"></a>Ruch tras
 
@@ -247,11 +247,11 @@ Aby automatycznie kierować ruch produkcyjny:
 
 Po zapisaniu tego ustawienia określony procent klientów jest losowo kierowany do gniazda nieprodukcyjnego. 
 
-Po automatycznym przekierowaniu klienta do określonego gniazda zostanie on przypięty do tego gniazda w okresie istnienia sesji klienta. W przeglądarce klienta możesz sprawdzić, do którego gniazda sesja jest przypięta, przeglądając plik cookie `x-ms-routing-name` w nagłówkach HTTP. Żądanie przesyłane do miejsca "przemieszczania" ma plik cookie `x-ms-routing-name=staging`. Żądanie przesyłane do miejsca produkcyjnego ma plik cookie `x-ms-routing-name=self`.
+Po automatycznym przekierowaniu klienta do określonego gniazda zostanie on przypięty do tego gniazda w okresie istnienia sesji klienta. W przeglądarce klienta możesz sprawdzić, do którego gniazda sesja jest przypięta, przeglądając plik cookie `x-ms-routing-name` w nagłówkach HTTP. Żądanie kierowane do gniazda "przemieszczania" ma `x-ms-routing-name=staging`plików cookie. Żądanie przesyłane do miejsca produkcyjnego ma `x-ms-routing-name=self`plików cookie.
 
 ### <a name="route-production-traffic-manually"></a>Ręczne kierowanie ruchu produkcyjnego
 
-Oprócz automatycznego routingu ruchu App Service mogą kierować żądania do określonego gniazda. Jest to przydatne, jeśli chcesz, aby użytkownicy mogli wyrazić zgodę na lub zrezygnować z aplikacji w wersji beta. Aby ręcznie skierować ruch produkcyjny, należy użyć parametru zapytania `x-ms-routing-name`.
+Oprócz automatycznego routingu ruchu App Service mogą kierować żądania do określonego gniazda. Jest to przydatne, jeśli chcesz, aby użytkownicy mogli wyrazić zgodę na lub zrezygnować z aplikacji w wersji beta. Aby ręcznie skierować ruch produkcyjny, należy użyć `x-ms-routing-name` parametru zapytania.
 
 Aby umożliwić użytkownikom zrezygnowanie z aplikacji w wersji beta, można na przykład umieścić ten link na stronie sieci Web:
 
@@ -259,7 +259,7 @@ Aby umożliwić użytkownikom zrezygnowanie z aplikacji w wersji beta, można na
 <a href="<webappname>.azurewebsites.net/?x-ms-routing-name=self">Go back to production app</a>
 ```
 
-Ciąg `x-ms-routing-name=self` określa miejsce produkcyjne. Po uzyskaniu dostępu do linku przez przeglądarkę klienta zostanie on przekierowany do miejsca produkcyjnego. Każde kolejne żądanie ma plik cookie `x-ms-routing-name=self`, który przypina sesję do miejsca produkcyjnego.
+Ciąg `x-ms-routing-name=self` określa miejsce produkcyjne. Po uzyskaniu dostępu do linku przez przeglądarkę klienta zostanie on przekierowany do miejsca produkcyjnego. Każde kolejne żądanie ma `x-ms-routing-name=self` plik cookie, który przypina sesję do miejsca produkcyjnego.
 
 Aby umożliwić użytkownikom dołączanie do aplikacji w wersji beta, należy ustawić ten sam parametr zapytania na nazwę gniazda nieprodukcyjnego. Oto przykład:
 
@@ -273,7 +273,7 @@ Domyślnie nowe gniazda otrzymują regułę routingu `0%`, która jest wyświetl
 
 ## <a name="delete-a-slot"></a>Usuń gniazdo
 
-Przejdź do strony zasobów aplikacji. Wybierz pozycję miejsca **wdrożenia** >  *\<slot, aby usunąć***Przegląd**>  > . Na pasku poleceń wybierz pozycję **Usuń** .  
+Przejdź do strony zasobów aplikacji. Wybierz pozycję miejsca **wdrożenia** > *miejsce\<do usunięcia >*  > **Przegląd**. Na pasku poleceń wybierz pozycję **Usuń** .  
 
 ![Usuń miejsce wdrożenia](./media/web-sites-staged-publishing/DeleteStagingSiteButton.png)
 
@@ -334,14 +334,14 @@ Remove-AzResource -ResourceGroupName [resource group name] -ResourceType Microso
 
 ## <a name="automate-with-arm-templates"></a>Automatyzowanie przy użyciu szablonów ARM
 
-[Szablony ARM](https://docs.microsoft.com/en-us/azure/azure-resource-manager/template-deployment-overview) to DEKLARACYJNE pliki JSON używane do automatyzowania wdrażania i konfigurowania zasobów platformy Azure. Aby zamienić miejsca przy użyciu szablonów ARM, należy ustawić dwie właściwości dla zasobów *Microsoft. Web/Sites/Slots* i *Microsoft. Web/Sites* :
+[Szablony ARM](https://docs.microsoft.com/azure/azure-resource-manager/template-deployment-overview) to DEKLARACYJNE pliki JSON używane do automatyzowania wdrażania i konfigurowania zasobów platformy Azure. Aby zamienić miejsca przy użyciu szablonów ARM, należy ustawić dwie właściwości dla zasobów *Microsoft. Web/Sites/Slots* i *Microsoft. Web/Sites* :
 
 - `buildVersion`: jest to właściwość ciągu reprezentująca bieżącą wersję aplikacji wdrożonej w gnieździe. Na przykład: "v1", "1.0.0.1" lub "2019-09-20T11:53:25.2887393-07:00".
-- `targetBuildVersion`: jest to właściwość ciągu określająca, co `buildVersion` powinno mieć miejsce. Jeśli targetBuildVersion nie jest taka sama jak bieżąca `buildVersion`, spowoduje to wyzwolenie operacji zamiany przez znalezienie gniazda, które ma określoną `buildVersion`.
+- `targetBuildVersion`: jest to właściwość ciągu określająca, co `buildVersion` powinno mieć miejsce. Jeśli targetBuildVersion nie jest taka sama jak bieżąca `buildVersion`, spowoduje to wyzwolenie operacji zamiany przez znalezienie miejsca, w którym określono `buildVersion`.
 
 ### <a name="example-arm-template"></a>Przykładowy szablon ARM
 
-Następujący szablon ARM zaktualizuje `buildVersion` miejsca przejściowego i ustawi `targetBuildVersion` w gnieździe produkcyjnym. Spowoduje to zamianę dwóch miejsc. Szablon zakłada, że masz już webapp utworzony z miejscem o nazwie "przemieszczanie".
+Następujący szablon ARM zaktualizuje `buildVersion` miejsca przejściowego i ustawi `targetBuildVersion` w miejscu produkcyjnym. Spowoduje to zamianę dwóch miejsc. Szablon zakłada, że masz już webapp utworzony z miejscem o nazwie "przemieszczanie".
 
 ```json
 {
@@ -385,7 +385,7 @@ Następujący szablon ARM zaktualizuje `buildVersion` miejsca przejściowego i u
 }
 ```
 
-Ten szablon ARM jest idempotentne, co oznacza, że może być wykonywany wielokrotnie i generować ten sam stan miejsc. Po pierwszym wykonaniu `targetBuildVersion` będzie pasować do bieżącej `buildVersion`, więc nie zostanie wyzwolone zamiana.
+Ten szablon ARM jest idempotentne, co oznacza, że może być wykonywany wielokrotnie i generować ten sam stan miejsc. Po pierwszym wykonaniu `targetBuildVersion` będzie zgodna z bieżącą `buildVersion`, więc nie zostanie wyzwolone zamiana.
 
 <!-- ======== Azure CLI =========== -->
 
@@ -422,9 +422,9 @@ Poniżej przedstawiono niektóre typowe błędy wymiany:
       ...
     </conditions>
     ```
-- Niektóre [reguły ograniczeń adresów IP](app-service-ip-restrictions.md) mogą uniemożliwiać operacji zamiany wysyłanie żądań HTTP do aplikacji. Zakresy adresów IPv4, które zaczynają się od `10.` i `100.` są wewnętrzne dla wdrożenia. Należy zezwolić im na łączenie się z Twoją aplikacją.
+- Niektóre [reguły ograniczeń adresów IP](app-service-ip-restrictions.md) mogą uniemożliwiać operacji zamiany wysyłanie żądań HTTP do aplikacji. Zakresy adresów IPv4, które zaczynają się od `10.` i `100.` są wewnętrzne dla Twojego wdrożenia. Należy zezwolić im na łączenie się z Twoją aplikacją.
 
-- Po wymianie gniazd może wystąpić nieoczekiwane ponowne uruchomienie aplikacji. Jest to spowodowane tym, że po wymianie Konfiguracja powiązania nazwy hosta nie jest zsynchronizowana, co nie powoduje ponownego uruchomienia. Jednak niektóre bazowe zdarzenia magazynu (takie jak przełączanie awaryjne woluminu magazynu) mogą wykryć te rozbieżności i wymusić ponowne uruchomienie wszystkich procesów roboczych. Aby zminimalizować te typy ponownych uruchomień, należy ustawić dla *wszystkich miejsc* [Ustawienia aplikacji `WEBSITE_ADD_SITENAME_BINDINGS_IN_APPHOST_CONFIG=1`](https://github.com/projectkudu/kudu/wiki/Configurable-settings#disable-the-generation-of-bindings-in-applicationhostconfig) . To ustawienie aplikacji *nie działa jednak* z aplikacjami Windows Communication Foundation (WCF).
+- Po wymianie gniazd może wystąpić nieoczekiwane ponowne uruchomienie aplikacji. Jest to spowodowane tym, że po wymianie Konfiguracja powiązania nazwy hosta nie jest zsynchronizowana, co nie powoduje ponownego uruchomienia. Jednak niektóre bazowe zdarzenia magazynu (takie jak przełączanie awaryjne woluminu magazynu) mogą wykryć te rozbieżności i wymusić ponowne uruchomienie wszystkich procesów roboczych. Aby zminimalizować te typy ponownych uruchomień, należy ustawić [ustawienie aplikacji`WEBSITE_ADD_SITENAME_BINDINGS_IN_APPHOST_CONFIG=1`](https://github.com/projectkudu/kudu/wiki/Configurable-settings#disable-the-generation-of-bindings-in-applicationhostconfig) na *wszystkie gniazda*. To ustawienie aplikacji *nie działa jednak* z aplikacjami Windows Communication Foundation (WCF).
 
 ## <a name="next-steps"></a>Następne kroki
 [Blokuj dostęp do gniazd nieprodukcyjnych](app-service-ip-restrictions.md)

@@ -1,5 +1,5 @@
 ---
-title: Monitorowanie potoków danych i zarządzanie nimi — Azure | Microsoft Docs
+title: Monitorowanie potoków danych i zarządzanie nimi — Azure
 description: Dowiedz się, jak używać aplikacji do monitorowania i zarządzania do monitorowania fabryk danych platformy Azure i potoków oraz zarządzania nimi.
 services: data-factory
 documentationcenter: ''
@@ -12,12 +12,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/10/2018
-ms.openlocfilehash: 052ea99f0489458269adf4dca2c6713535933638
-ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
+ms.openlocfilehash: de56ba1281d0f20c8be838fa1bc9ebc24905b26c
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70139592"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73666925"
 ---
 # <a name="monitor-and-manage-azure-data-factory-pipelines-by-using-the-monitoring-and-management-app"></a>Monitorowanie potoków Azure Data Factory i zarządzanie nimi za pomocą aplikacji do monitorowania i zarządzania
 > [!div class="op_single_selector"]
@@ -58,7 +58,7 @@ Na liście okna działania w środkowym okienku zobaczysz okno działania dla ka
 Jeśli nie masz aplikacji Data Factory do przetestowania tych kroków w programie, wykonaj czynności opisane w samouczku: [Kopiowanie danych z BLOB Storage do SQL Database przy użyciu Data Factory](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md).
 
 ## <a name="understand-the-monitoring-and-management-app"></a>Omówienie aplikacji do monitorowania i zarządzania
-Po lewej stronie znajdują się trzy karty: **Eksplorator zasobów**, **monitorowanie widoków**i **alerty**. Pierwsza karta (**Eksplorator zasobów**) jest domyślnie zaznaczona.
+Po lewej stronie znajdują się trzy karty: **Eksplorator zasobów**, **widoki monitorowania**i **alerty**. Pierwsza karta (**Eksplorator zasobów**) jest domyślnie zaznaczona.
 
 ### <a name="resource-explorer"></a>Eksplorator zasobów
 Zobaczysz następujące elementy:
@@ -108,7 +108,7 @@ Kliknij opcję **Otwórz potok** , aby wyświetlić wszystkie działania w potok
 
 ![Menu Otwórz potok](./media/data-factory-monitor-manage-app/OpenPipelineMenu.png)
 
-W widoku otwarty potok zobaczysz wszystkie działania w potoku. W tym przykładzie jest tylko jedno działanie: działaniem kopiowania. 
+W widoku otwarty potok zobaczysz wszystkie działania w potoku. W tym przykładzie istnieje tylko jedno działanie: działanie Copy (kopiowanie). 
 
 ![Otwarty potok](./media/data-factory-monitor-manage-app/OpenedPipeline.png)
 
@@ -144,7 +144,7 @@ W oknie podręcznym działania okna podręcznego w systemie Windows można przew
 
 ![Eksplorator okna działania — strzałki w lewo/w prawo](./media/data-factory-monitor-manage-app/ActivityWindowExplorerLeftRightArrows.png)
 
-W dolnej części widoku diagramu zobaczysz następujące przyciski: Powiększ, Pomniejsz, Dopasuj do rozmiaru, Powiększ do 100%, zablokuj układ. Przycisk **blokowania układu** uniemożliwia przypadkowe przeniesienie tabel i potoków w widoku diagramu. Jest on domyślnie włączony. Można ją wyłączyć i przenieść jednostki na diagramie. Po wyłączeniu tej opcji możesz użyć ostatniego przycisku, aby automatycznie pozycjonować tabele i potoki. Możesz również powiększyć lub pomniejszyć, używając kółka myszy.
+W dolnej części widoku diagramu zobaczysz następujące przyciski: Powiększ, Pomniejsz, Powiększ, Dopasuj do rozmiaru, Powiększ do 100%, zablokuj układ. Przycisk **blokowania układu** uniemożliwia przypadkowe przeniesienie tabel i potoków w widoku diagramu. Jest on domyślnie włączony. Można ją wyłączyć i przenieść jednostki na diagramie. Po wyłączeniu tej opcji możesz użyć ostatniego przycisku, aby automatycznie pozycjonować tabele i potoki. Możesz również powiększyć lub pomniejszyć, używając kółka myszy.
 
 ![Polecenia powiększenia widoku diagramu](./media/data-factory-monitor-manage-app/DiagramViewZoomCommands.png)
 
@@ -159,7 +159,7 @@ Okna działania mogą mieć jeden z następujących stanów:
 
 <table>
 <tr>
-    <th align="left">State</th><th align="left">Substatus</th><th align="left">Opis</th>
+    <th align="left">Stan</th><th align="left">Substatus</th><th align="left">Opis</th>
 </tr>
 <tr>
     <td rowspan="8">Oczekiwanie</td><td>ScheduleTime</td><td>Czas nie ma czasu na uruchomienie okna działania.</td>
@@ -180,14 +180,14 @@ Okna działania mogą mieć jeden z następujących stanów:
 <td>Ponawianie próby</td><td>Trwa ponawianie wykonywania działania.</td>
 </tr>
 <tr>
-<td>Weryfikacja</td><td>Sprawdzanie poprawności nie zostało jeszcze rozpoczęte.</td>
+<td>Walidacja</td><td>Sprawdzanie poprawności nie zostało jeszcze rozpoczęte.</td>
 </tr>
 <tr>
 <td>ValidationRetry</td><td>Trwa oczekiwanie na ponowną próbę weryfikacji.</td>
 </tr>
 <tr>
 <tr>
-<td rowspan="2">W toku</td><td>Sprawdzanie poprawności</td><td>Walidacja jest w toku.</td>
+<td rowspan="2">Toku</td><td>Ponownego</td><td>Walidacja jest w toku.</td>
 </tr>
 <td>-</td>
 <td>Trwa przetwarzanie okna działania.</td>
@@ -199,15 +199,15 @@ Okna działania mogą mieć jeden z następujących stanów:
 <td>Anulowane</td><td>Okno działania zostało anulowane przez akcję użytkownika.</td>
 </tr>
 <tr>
-<td>Weryfikacja</td><td>Walidacja nie powiodła się.</td>
+<td>Walidacja</td><td>Walidacja nie powiodła się.</td>
 </tr>
 <tr>
 <td>-</td><td>Nie można wygenerować lub sprawdzić poprawności okna działania.</td>
 </tr>
-<td>Gotowe</td><td>-</td><td>Okno działania jest gotowe do użycia.</td>
+<td>Gotowy</td><td>-</td><td>Okno działania jest gotowe do użycia.</td>
 </tr>
 <tr>
-<td>Pominięte</td><td>-</td><td>Okno działania nie zostało przetworzone.</td>
+<td>Pominięto</td><td>-</td><td>Okno działania nie zostało przetworzone.</td>
 </tr>
 <tr>
 <td>Brak</td><td>-</td><td>Okno działania używane do istnienia z innym stanem, ale zostało zresetowane.</td>
@@ -222,10 +222,10 @@ Po kliknięciu okna działania na liście zostaną wyświetlone szczegółowe in
 ### <a name="refresh-activity-windows"></a>Odśwież okna działania
 Szczegóły nie są odświeżane automatycznie, więc Użyj przycisku Odśwież (drugi przycisk) na pasku poleceń, aby ręcznie odświeżyć listę okien działania.  
 
-### <a name="properties-window"></a>Okno właściwości
+### <a name="properties-window"></a>okno Właściwości
 Okno Właściwości znajduje się w prawym okienku aplikacji monitorowanie i zarządzanie.
 
-![Okno właściwości](./media/data-factory-monitor-manage-app/PropertiesWindow.png)
+![okno Właściwości](./media/data-factory-monitor-manage-app/PropertiesWindow.png)
 
 Wyświetla właściwości dla elementu wybranego w Eksplorator zasobów (widok drzewa), widok diagramu lub lista okien działania.
 
@@ -266,11 +266,11 @@ Zmień ustawienia **godzina rozpoczęcia** i **godzina zakończenia** na pasku p
 >
 >
 
-Na **liście okna działania**kliknij nazwę kolumny (na przykład: Stan).
+Na **liście okna działania**kliknij nazwę kolumny (na przykład: stan).
 
 ![Menu kolumny listy okien działania](./media/data-factory-monitor-manage-app/ActivityWindowsListColumnMenu.png)
 
-Możesz wykonać następujące czynności:
+Można wykonać następujące czynności:
 
 * Sortuj w kolejności rosnącej.
 * Sortuj w kolejności malejącej.
@@ -286,10 +286,10 @@ Możesz użyć tego samego okna podręcznego do czyszczenia filtrów. Aby wyczy�
 
 ## <a name="perform-batch-actions"></a>Wykonywanie akcji wsadowych
 ### <a name="rerun-selected-activity-windows"></a>Uruchom ponownie wybrane okna działania
-Wybierz okno działania, kliknij strzałkę w dół dla pierwszego przycisku paska poleceń, a następnie wybierz pozycję **Uruchom** / ponownie**za pomocą nadrzędnego w potoku**. Po wybraniu opcji **Uruchom ponownie za pomocą nadrzędnego w potoku** jest również wykonywane ponowne uruchomienie wszystkich okien działania nadrzędnego.
-    ![Uruchom ponownie okno działania](./media/data-factory-monitor-manage-app/ReRunSlice.png)
+Wybierz okno działania, kliknij strzałkę w dół obok przycisku pasek poleceń, a następnie wybierz pozycję **Uruchom ponownie** / **ponownie przy użyciu potoku**. Po wybraniu opcji **Uruchom ponownie za pomocą nadrzędnego w potoku** jest również wykonywane ponowne uruchomienie wszystkich okien działania nadrzędnego.
+    ![ponownie uruchomić okno działania](./media/data-factory-monitor-manage-app/ReRunSlice.png)
 
-Możesz również zaznaczyć wiele okien aktywności na liście i uruchomić je ponownie w tym samym czasie. Możesz chcieć filtrować okna aktywności na podstawie stanu (na przykład: **Nie powiodło się**) --, a następnie ponownie uruchom okna działania zakończonego niepowodzeniem po usunięciu problemu powodującego niepowodzenie działania systemu Windows. Zapoznaj się z sekcją w poniższej sekcji, aby uzyskać szczegółowe informacje na temat filtrowania okien aktywności na liście.  
+Możesz również zaznaczyć wiele okien aktywności na liście i uruchomić je ponownie w tym samym czasie. Możesz chcieć filtrować okna aktywności na podstawie stanu (na przykład: **Niepowodzenie**)--, a następnie ponownie uruchomić okna działania zakończonego niepowodzeniem po usunięciu problemu powodującego niepowodzenie działania systemu Windows. Zapoznaj się z sekcją w poniższej sekcji, aby uzyskać szczegółowe informacje na temat filtrowania okien aktywności na liście.  
 
 ### <a name="pauseresume-multiple-pipelines"></a>Wstrzymywanie/wznawianie wielu potoków
 Można wybrać dwa lub więcej potoków przy użyciu klawisza CTRL. Możesz użyć przycisków paska poleceń (które są wyróżnione na czerwono prostokąt na poniższym obrazie), aby je wstrzymać/wznowić.

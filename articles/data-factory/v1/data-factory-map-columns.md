@@ -1,6 +1,6 @@
 ---
-title: Mapowanie kolumny zestawu danych w usłudze Azure Data Factory | Dokumentacja firmy Microsoft
-description: Dowiedz się, jak zamapować kolumny źródłowe kolumny docelowe.
+title: Mapowanie kolumn zestawu danych w Azure Data Factory
+description: Dowiedz się, jak mapować kolumny źródłowe na kolumny docelowe.
 services: data-factory
 documentationcenter: ''
 author: linda33wj
@@ -12,35 +12,35 @@ ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 1b009ac2ca42e9804b88989b55b2e73524732550
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 80ba7dc48da7cb5c43aae209c4e76c54948b8f88
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60238150"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73666786"
 ---
-# <a name="map-source-dataset-columns-to-destination-dataset-columns"></a>Mapowanie kolumny zestawu danych źródła do docelowego zestawu danych kolumn
+# <a name="map-source-dataset-columns-to-destination-dataset-columns"></a>Mapowanie kolumn źródłowych zestawów danych do docelowych kolumn zestawu danych
 > [!NOTE]
 > Ten artykuł dotyczy wersji 1 usługi Data Factory. 
 
-Mapowanie kolumn może służyć do określenia, jak kolumny określone w "Struktura" Mapowanie tabel źródłowych do kolumn określonych w "strukturę" w tabeli ujścia. **ColumnMapping** właściwość jest dostępna w **typeProperties** części działania kopiowania.
+Mapowania kolumn można użyć do określenia sposobu, w jaki kolumny określone w "strukturze" tabeli źródłowej są mapowane do kolumn określonych w "strukturze" tabeli ujścia. Właściwość **ColumnMapping** jest dostępna w sekcji **typeProperties** działania kopiowania.
 
-Mapowanie kolumny obsługuje następujące scenariusze:
+Mapowanie kolumn obsługuje następujące scenariusze:
 
-* Wszystkie kolumny w strukturze zestawu danych źródłowych są mapowane do wszystkich kolumn w strukturze zestawu danych ujścia.
-* Podzbiór kolumn w strukturze zestawu danych źródła jest zamapowana na wszystkie kolumny w strukturze zestawu danych ujścia.
+* Wszystkie kolumny w strukturze zestawu danych źródłowych są mapowane na wszystkie kolumny w strukturze zestawu danych ujścia.
+* Podzestaw kolumn w strukturze zestawu danych źródłowych jest mapowany na wszystkie kolumny w strukturze zestawu danych ujścia.
 
-Dostępne są następujące warunki błędów, które powoduje wyjątek:
+Poniżej przedstawiono warunki błędów, które powodują wyjątek:
 
-* Mniejszą liczbę kolumn lub większą liczbę kolumn "strukturę" tabeli ujścia niż określony w mapowaniu.
-* Zduplikowane mapowania.
-* Wynik zapytania SQL nie ma nazwę kolumny, który jest określony w mapowaniu.
+* Mniejsza liczba kolumn lub więcej kolumn w strukturze "struktura" tabeli ujścia niż określona w mapowaniu.
+* Zduplikowane mapowanie.
+* Wynik zapytania SQL nie ma nazwy kolumny, która jest określona w mapowaniu.
 
 > [!NOTE]
-> Poniższe przykłady są przeznaczone dla usługi Azure SQL i obiektów Blob platformy Azure, ale mają zastosowanie do wszelkich magazyn danych, który obsługuje prostokątnych zestawów danych. Dostosuj zestaw danych i definicji usługi połączonej w przykładach, aby wskazać dane w źródle danych.
+> Poniższe przykłady są przeznaczone dla usług Azure SQL i Azure Blob, ale mają zastosowanie do każdego magazynu danych, który obsługuje prostokątne zestawy DataSet. Dostosuj definicje zestawu danych i połączonej usługi w przykładach, aby wskazać dane w odpowiednim źródle danych.
 
-## <a name="sample-1--column-mapping-from-azure-sql-to-azure-blob"></a>Przykład 1 — kolumny mapowanie z bazy danych SQL Azure, do obiektów blob platformy Azure
-W tym przykładzie Tabela wejściowa ma strukturę i wskazuje tabelę SQL w bazie danych Azure SQL.
+## <a name="sample-1--column-mapping-from-azure-sql-to-azure-blob"></a>Przykład 1 — Mapowanie kolumn z usługi Azure SQL do obiektu blob platformy Azure
+W tym przykładzie tabela wejściowa ma strukturę i wskazuje tabelę SQL w bazie danych SQL Azure.
 
 ```json
 {
@@ -73,7 +73,7 @@ W tym przykładzie Tabela wejściowa ma strukturę i wskazuje tabelę SQL w bazi
 }
 ```
 
-W tym przykładzie tabela danych wyjściowych ma strukturę i wskazuje obiekt blob w usłudze Azure blob storage.
+W tym przykładzie tabela wyjściowa ma strukturę i wskazuje na obiekt BLOB w magazynie obiektów blob platformy Azure.
 
 ```json
 {
@@ -106,7 +106,7 @@ W tym przykładzie tabela danych wyjściowych ma strukturę i wskazuje obiekt bl
 }
 ```
 
-Następujący kod JSON definiuje działania kopiowania w potoku. Kolumny ze źródła mapowane na kolumny w ujściu (**columnMappings**) przy użyciu **Translator** właściwości.
+Poniższy kod JSON definiuje działanie kopiowania w potoku. Kolumny ze źródła zamapowane na kolumny w usłudze sink (**ColumnMappings**) za pomocą właściwości **translator** .
 
 ```json
 {
@@ -136,12 +136,12 @@ Następujący kod JSON definiuje działania kopiowania w potoku. Kolumny ze źr�
         }
 }
 ```
-**Przepływ mapowanie kolumny:**
+**Przepływ mapowania kolumn:**
 
-![Przepływ mapowanie kolumn](./media/data-factory-map-columns/column-mapping-flow.png)
+![Przepływ mapowania kolumn](./media/data-factory-map-columns/column-mapping-flow.png)
 
-## <a name="sample-2--column-mapping-with-sql-query-from-azure-sql-to-azure-blob"></a>Przykład 2 — kolumny mapowanie z zapytania SQL z bazy danych SQL Azure do obiektów blob platformy Azure
-W tym przykładzie zapytanie SQL jest używany do wyodrębniania danych z bazy danych SQL Azure zamiast określania po prostu nazwę tabeli i nazwy kolumn w sekcji "strukturę". 
+## <a name="sample-2--column-mapping-with-sql-query-from-azure-sql-to-azure-blob"></a>Przykład 2 — Mapowanie kolumn za pomocą zapytania SQL z usługi Azure SQL do obiektu blob platformy Azure
+W tym przykładzie zapytanie SQL służy do wyodrębniania danych z usługi Azure SQL, a nie do zwykłego określania nazwy tabeli i nazw kolumn w sekcji "Structure". 
 
 ```json
 {
@@ -173,13 +173,13 @@ W tym przykładzie zapytanie SQL jest używany do wyodrębniania danych z bazy d
         }
 }
 ```
-W tym przypadku wyniki zapytania najpierw są mapowane na kolumny określone w "strukturę" źródła. Następnie kolumny ze źródła "strukturę" są mapowane na kolumny w ujściu "strukturę" za pomocą reguł określonych w columnMappings.  Załóżmy, że zapytanie zwraca 5 kolumn, dwóch kolumn niż określone w "strukturę" źródła.
+W takim przypadku wyniki zapytania są najpierw mapowane do kolumn określonych w "strukturze" źródła. Następnie kolumny ze źródła "Structure" są mapowane na kolumny w ujścia "Structure" z regułami określonymi w kolumnie columnMappings.  Załóżmy, że zapytanie zwraca 5 kolumn, dwie więcej kolumn niż określone w "strukturze" źródła.
 
-**Przepływ mapowanie kolumn**
+**Przepływ mapowania kolumn**
 
-![Mapowanie kolumny flow-2](./media/data-factory-map-columns/column-mapping-flow-2.png)
+![Przepływ mapowania kolumn — 2](./media/data-factory-map-columns/column-mapping-flow-2.png)
 
-## <a name="next-steps"></a>Kolejne kroki
-Samouczek dotyczący za pomocą działania kopiowania, zobacz artykuł: 
+## <a name="next-steps"></a>Następne kroki
+Zapoznaj się z samouczkiem dotyczącym korzystania z działania kopiowania: 
 
-- [Kopiowanie danych z magazynu obiektów Blob do bazy danych SQL](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)
+- [Kopiuj dane z Blob Storage do SQL Database](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)

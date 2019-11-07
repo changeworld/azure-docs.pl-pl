@@ -7,12 +7,12 @@ ms.service: virtual-desktop
 ms.topic: conceptual
 ms.date: 09/04/2019
 ms.author: helohr
-ms.openlocfilehash: fa61d69ae7aa650b6011696fd45d05ba20d2ac8b
-ms.sourcegitcommit: e1b6a40a9c9341b33df384aa607ae359e4ab0f53
+ms.openlocfilehash: dc980d60c1db684a47c38b3b8efceb08dd618838
+ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71338703"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73605803"
 ---
 # <a name="connect-with-the-macos-client"></a>Nawiązywanie połączenia z klientem systemu macOS
 
@@ -25,7 +25,7 @@ Możesz uzyskać dostęp do zasobów pulpitu wirtualnego systemu Windows z urzą
 
 ## <a name="install-the-client"></a>Instalowanie klienta programu
 
-Aby rozpocząć, [Pobierz](https://apps.apple.com/app/microsoft-remote-desktop/id1295203466?mt=12) i zainstaluj klienta programu na urządzeniu macOS.
+Aby rozpocząć, [pobierz](https://apps.apple.com/app/microsoft-remote-desktop/id1295203466?mt=12) i zainstaluj klienta programu na urządzeniu macOS.
 
 ## <a name="subscribe-to-a-feed"></a>Subskrybowanie kanału informacyjnego
 
@@ -35,7 +35,7 @@ Aby subskrybować źródło danych:
 
 1. Wybierz pozycję **Dodaj źródło danych** na stronie głównej, aby nawiązać połączenie z usługą i pobrać zasoby.
 2. Wprowadź adres URL źródła danych. Może to być adres URL lub adres e-mail:
-   - Jeśli używasz adresu URL, użyj tego administratora. Zwykle jest <https://rdweb.wvd.microsoft.com>to adres URL.
+   - Jeśli używasz adresu URL, użyj tego administratora. Zwykle adres URL jest <https://rdweb.wvd.microsoft.com>.
    - Aby użyć poczty e-mail, wprowadź swój adres e-mail. Oznacza to, że klient może wyszukać adres URL skojarzony z Twoim adresem e-mail, jeśli administrator skonfigurował serwer w taki sposób.
 3. Wybierz pozycję **Subskrybuj**.
 4. Po wyświetleniu monitu zaloguj się przy użyciu konta użytkownika.

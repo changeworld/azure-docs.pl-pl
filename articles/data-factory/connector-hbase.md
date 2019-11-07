@@ -1,6 +1,6 @@
 ---
-title: Kopiowanie danych z bazy danych HBase za pomocą usługi Azure Data Factory | Dokumentacja firmy Microsoft
-description: Dowiedz się, jak skopiować dane z bazy danych HBase do magazynów danych ujścia obsługiwane za pomocą działania kopiowania w potoku usługi Azure Data Factory.
+title: Kopiowanie danych z HBase za pomocą Azure Data Factory
+description: Informacje o kopiowaniu danych z programu HBase do obsługiwanych magazynów danych ujścia przy użyciu działania kopiowania w potoku Azure Data Factory.
 services: data-factory
 documentationcenter: ''
 author: linda33wj
@@ -12,27 +12,27 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 08/12/2019
 ms.author: jingwang
-ms.openlocfilehash: 56d2750257748ab69a2f42385441b1ce12805d34
-ms.sourcegitcommit: c79aa93d87d4db04ecc4e3eb68a75b349448cd17
+ms.openlocfilehash: 4768a3fbe30cf338628be44cb003e8aab527c946
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71090291"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73680876"
 ---
-# <a name="copy-data-from-hbase-using-azure-data-factory"></a>Kopiowanie danych z bazy danych HBase za pomocą usługi Azure Data Factory 
+# <a name="copy-data-from-hbase-using-azure-data-factory"></a>Kopiowanie danych z HBase za pomocą Azure Data Factory 
 
-W tym artykule opisano sposób używania działania kopiowania w usłudze Azure Data Factory, aby skopiować dane z bazy danych HBase. Opiera się na [omówienie działania kopiowania](copy-activity-overview.md) artykułu, który przedstawia ogólne omówienie działania kopiowania.
+W tym artykule opisano sposób używania działania kopiowania w Azure Data Factory do kopiowania danych z HBase. Jest ona oparta na [przeglądzie działania kopiowania](copy-activity-overview.md) , która przedstawia ogólne omówienie działania kopiowania.
 
-## <a name="supported-capabilities"></a>Obsługiwane funkcje
+## <a name="supported-capabilities"></a>Obsługiwane możliwości
 
 Ten łącznik HBase jest obsługiwany dla następujących działań:
 
 - [Działanie kopiowania](copy-activity-overview.md) z [obsługiwaną macierzą źródłową/ujścia](copy-activity-overview.md)
 - [Działanie Lookup](control-flow-lookup-activity.md)
 
-Możesz skopiować dane z bazy danych HBase do dowolnego obsługiwanego magazynu danych ujścia. Aby uzyskać listę magazynów danych, obsługiwane przez działanie kopiowania jako źródła/ujścia, zobacz [obsługiwane magazyny danych](copy-activity-overview.md#supported-data-stores-and-formats) tabeli.
+Dane z HBase można skopiować do dowolnego obsługiwanego magazynu danych ujścia. Listę magazynów danych obsługiwanych jako źródła/ujścia przez działanie kopiowania można znaleźć w tabeli [obsługiwane magazyny danych](copy-activity-overview.md#supported-data-stores-and-formats) .
 
-Usługa Azure Data Factory udostępnia wbudowanego sterownika, aby umożliwić łączność, dlatego nie trzeba ręcznie zainstalować dowolnego sterownika, za pomocą tego łącznika.
+Azure Data Factory udostępnia wbudowany sterownik umożliwiający połączenie, dlatego nie trzeba ręcznie instalować żadnego sterownika przy użyciu tego łącznika.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
@@ -42,31 +42,31 @@ Usługa Azure Data Factory udostępnia wbudowanego sterownika, aby umożliwić �
 
 [!INCLUDE [data-factory-v2-connector-get-started](../../includes/data-factory-v2-connector-get-started.md)]
 
-Poniższe sekcje zawierają szczegółowe informacje dotyczące właściwości, które są używane do definiowania jednostek usługi fabryka danych określonej do bazy danych HBase łącznika.
+Poniższe sekcje zawierają szczegółowe informacje o właściwościach, które są używane do definiowania jednostek Data Factory specyficznych dla łącznika HBase.
 
-## <a name="linked-service-properties"></a>Właściwości usługi połączonej
+## <a name="linked-service-properties"></a>Właściwości połączonej usługi
 
-Następujące właściwości są obsługiwane dla bazy danych HBase, połączone usługi:
+Dla połączonej usługi HBase są obsługiwane następujące właściwości:
 
-| Właściwość | Opis | Wymagane |
+| Właściwość | Opis | Wymagany |
 |:--- |:--- |:--- |
-| type | Właściwość Type musi mieć ustawioną wartość: **HBase** | Tak |
-| host | Adres IP lub hosta nazwę serwera bazy danych HBase. co.  `[clustername].azurehdinsight.net`, )`192.168.222.160`  | Tak |
-| port | Port TCP używany przez wystąpienie bazy danych HBase do nasłuchiwania połączeń klientów. Wartość domyślna to 9090. Jeśli łączysz się Azure HDInsights, należy określić port ustawiony na 443. | Nie |
-| httpPath | Częściowe adres URL serwera bazy danych HBase, np. `/hbaserest0` przy użyciu klaster HDInsights. | Nie |
-| authenticationType | Mechanizm uwierzytelniania na potrzeby łączenia się z serwerem bazy danych HBase. <br/>Dozwolone wartości to: **Anonimowe**, **podstawowe** | Tak |
-| username | Nazwa użytkownika, używany do łączenia się z wystąpieniem bazy danych HBase.  | Nie |
-| password | Hasło odpowiadający nazwie użytkownika. Oznacz to pole jako SecureString, aby bezpiecznie przechowywać w usłudze Data Factory lub [odwołanie wpisu tajnego przechowywanych w usłudze Azure Key Vault](store-credentials-in-key-vault.md). | Nie |
+| type | Właściwość Type musi mieć wartość: **HBase** | Tak |
+| Host | Adres IP lub nazwa hosta serwera HBase. co.  `[clustername].azurehdinsight.net`, `192.168.222.160`)  | Tak |
+| port | Port TCP, którego wystąpienie HBase używa do nasłuchiwania połączeń klientów. Wartość domyślna to 9090. W przypadku nawiązywania połączenia z usługą Azure HDInsight określ port jako 443. | Nie |
+| httpPath | Częściowy adres URL odpowiadający serwerowi HBase, np. `/hbaserest0` podczas korzystania z klastra usługi HDInsight. | Nie |
+| authenticationType | Mechanizm uwierzytelniania używany do nawiązywania połączenia z serwerem HBase. <br/>Dozwolone wartości to: **Anonymous**, **Basic** | Tak |
+| nazwa użytkownika | Nazwa użytkownika używana do nawiązywania połączenia z wystąpieniem HBase.  | Nie |
+| hasło | Hasło odpowiadające nazwie użytkownika. Oznacz to pole jako element SecureString, aby bezpiecznie przechowywać go w Data Factory, lub [odwoływać się do wpisu tajnego przechowywanego w Azure Key Vault](store-credentials-in-key-vault.md). | Nie |
 | enableSsl | Określa, czy połączenia z serwerem są szyfrowane przy użyciu protokołu SSL. Wartość domyślna to false.  | Nie |
-| trustedCertPath | Pełna ścieżka pliku PEM, zawierająca zaufane certyfikaty urzędu certyfikacji w celu sprawdzenia serwer podczas nawiązywania połączenia za pośrednictwem protokołu SSL. Tę właściwość można ustawić tylko w przypadku korzystania z protokołu SSL na Self-Hosted IR Wartością domyślną jest instalowany z wewnątrz pliku cacerts.pem  | Nie |
-| allowHostNameCNMismatch | Określa, czy wymagają nazwy certyfikatów wystawionych przez urząd certyfikacji SSL Period z nazwą hosta serwera podczas nawiązywania połączenia za pośrednictwem protokołu SSL. Wartość domyślna to false.  | Nie |
+| trustedCertPath | Pełna ścieżka pliku PEM zawierającego certyfikaty zaufanych urzędów certyfikacji w celu zweryfikowania serwera podczas łączenia za pośrednictwem protokołu SSL. Tę właściwość można ustawić tylko w przypadku korzystania z protokołu SSL na samoobsługowym środowisku IR. Wartość domyślna to plik cacerts. pem instalowany z programem IR.  | Nie |
+| allowHostNameCNMismatch | Określa, czy ma być wymagana nazwa certyfikatu SSL wystawionego przez urząd certyfikacji, aby odpowiadała nazwie hosta serwera podczas nawiązywania połączenia za pośrednictwem protokołu SSL. Wartość domyślna to false.  | Nie |
 | allowSelfSignedServerCert | Określa, czy zezwalać na certyfikaty z podpisem własnym z serwera. Wartość domyślna to false.  | Nie |
-| connectVia | [Środowiska Integration Runtime](concepts-integration-runtime.md) ma być używany do łączenia się z magazynem danych. Dowiedz się więcej z sekcji [wymagania wstępne](#prerequisites) . Jeśli nie zostanie określony, używa domyślnego środowiska Azure Integration Runtime. |Nie |
+| Właściwością connectvia | [Integration Runtime](concepts-integration-runtime.md) używany do nawiązywania połączenia z magazynem danych. Dowiedz się więcej z sekcji [wymagania wstępne](#prerequisites) . Jeśli nie zostanie określony, zostanie użyta domyślna Azure Integration Runtime. |Nie |
 
 >[!NOTE]
->Jeśli klaster nie obsługuje trwałych sesji, np. HDInsight, należy jawnie dodać indeksu węzła na końcu ustawienia ścieżki http, np. Określ `/hbaserest0` zamiast `/hbaserest`.
+>Jeśli klaster nie obsługuje sesji programu Sticky Notes, np. HDInsight, jawnie Dodaj indeks węzła na końcu ustawienia ścieżki http, np. Określ `/hbaserest0`, a nie `/hbaserest`.
 
-**Przykład dotyczący HDInsights bazy danych HBase:**
+**Przykład HBase usługi HDInsight:**
 
 ```json
 {
@@ -93,7 +93,7 @@ Następujące właściwości są obsługiwane dla bazy danych HBase, połączone
 }
 ```
 
-**Przykład ogólnych bazy danych HBase:**
+**Przykład dla generycznej HBase:**
 
 ```json
 {
@@ -125,11 +125,11 @@ Następujące właściwości są obsługiwane dla bazy danych HBase, połączone
 
 ## <a name="dataset-properties"></a>Właściwości zestawu danych
 
-Aby uzyskać pełną listę sekcje i właściwości dostępne Definiowanie zestawów danych, zobacz [zestawów danych](concepts-datasets-linked-services.md) artykułu. Ta sekcja zawiera listę właściwości obsługiwanych przez zestaw danych bazy danych HBase.
+Aby uzyskać pełną listę sekcji i właściwości dostępnych do definiowania zestawów danych, zobacz artykuł [zestawy danych](concepts-datasets-linked-services.md) . Ta sekcja zawiera listę właściwości obsługiwanych przez zestaw danych HBase.
 
-Aby skopiować dane z bazy danych HBase, należy ustawić właściwość typu zestawu danych na **HBaseObject**. Obsługiwane są następujące właściwości:
+Aby skopiować dane z HBase, ustaw właściwość Type zestawu danych na **HBaseObject**. Obsługiwane są następujące właściwości:
 
-| Właściwość | Opis | Wymagane |
+| Właściwość | Opis | Wymagany |
 |:--- |:--- |:--- |
 | type | Właściwość Type zestawu danych musi być ustawiona na wartość: **HBaseObject** | Tak |
 | tableName | Nazwa tabeli. | Nie (Jeśli określono parametr "query" w źródle działania) |
@@ -153,16 +153,16 @@ Aby skopiować dane z bazy danych HBase, należy ustawić właściwość typu ze
 
 ## <a name="copy-activity-properties"></a>Właściwości działania kopiowania
 
-Aby uzyskać pełną listę sekcje i właściwości dostępne do definiowania działań zobacz [potoki](concepts-pipelines-activities.md) artykułu. Ta sekcja zawiera listę właściwości obsługiwanych przez źródło bazy danych HBase.
+Aby uzyskać pełną listę sekcji i właściwości dostępnych do definiowania działań, zobacz artykuł [potoki](concepts-pipelines-activities.md) . Ta sekcja zawiera listę właściwości obsługiwanych przez źródło HBase.
 
 ### <a name="hbasesource-as-source"></a>HBaseSource jako źródło
 
-Aby skopiować dane z bazy danych HBase, należy ustawić typ źródłowego w działaniu kopiowania, aby **HBaseSource**. Następujące właściwości są obsługiwane w działaniu kopiowania **źródła** sekcji:
+Aby skopiować dane z HBase, ustaw typ źródła w działaniu Copy na **HBaseSource**. W sekcji **Źródło** działania kopiowania są obsługiwane następujące właściwości:
 
-| Właściwość | Opis | Wymagane |
+| Właściwość | Opis | Wymagany |
 |:--- |:--- |:--- |
-| type | Właściwość Type źródła działania Copy musi mieć ustawioną wartość: **HBaseSource** | Tak |
-| query | Umożliwia odczytywanie danych niestandardowe zapytania SQL. Na przykład: `"SELECT * FROM MyTable"`. | Nie (Jeśli określono parametr "tableName" w zestawie danych) |
+| type | Właściwość Type źródła działania Copy musi być ustawiona na wartość: **HBaseSource** | Tak |
+| query | Użyj niestandardowego zapytania SQL, aby odczytać dane. Na przykład: `"SELECT * FROM MyTable"`. | Nie (Jeśli określono "TableName" w zestawie danych) |
 
 **Przykład:**
 
@@ -202,4 +202,4 @@ Aby skopiować dane z bazy danych HBase, należy ustawić typ źródłowego w dz
 Aby dowiedzieć się więcej o właściwościach, sprawdź [działanie Lookup (wyszukiwanie](control-flow-lookup-activity.md)).
 
 ## <a name="next-steps"></a>Następne kroki
-Aby uzyskać listę magazynów danych obsługiwanych jako źródła i ujścia działania kopiowania w usłudze Azure Data Factory, zobacz [obsługiwane magazyny danych](copy-activity-overview.md#supported-data-stores-and-formats).
+Listę magazynów danych obsługiwanych jako źródła i ujścia przez działanie kopiowania w Azure Data Factory można znaleźć w temacie [obsługiwane magazyny danych](copy-activity-overview.md#supported-data-stores-and-formats).

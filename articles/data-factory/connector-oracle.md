@@ -1,5 +1,5 @@
 ---
-title: Kopiowanie danych do i z programu Oracle przy użyciu Azure Data Factory | Microsoft Docs
+title: Kopiowanie danych do i z programu Oracle przy użyciu Azure Data Factory
 description: Informacje o kopiowaniu danych z obsługiwanych magazynów źródłowych do bazy danych Oracle lub z programu Oracle do obsługiwanych magazynów ujścia przy użyciu Data Factory.
 services: data-factory
 documentationcenter: ''
@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 10/24/2019
 ms.author: jingwang
-ms.openlocfilehash: 24ff711fcd27d59c555a53a910065e19f7298131
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: d8cbc7410f2b2bd525148cee9dc5b8ddbb756dff
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72931056"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73680501"
 ---
 # <a name="copy-data-from-and-to-oracle-by-using-azure-data-factory"></a>Kopiowanie danych z i do programu Oracle przy użyciu Azure Data Factory
 > [!div class="op_single_selector" title1="Wybierz używaną wersję usługi Data Factory:"]
@@ -57,7 +57,7 @@ W przypadku tego łącznika Oracle obsługuje:
 
 Środowisko Integration Runtime zapewnia wbudowany sterownik Oracle. W związku z tym nie trzeba ręcznie instalować sterownika podczas kopiowania danych z programu i do programu Oracle.
 
-## <a name="get-started"></a>Rozpocznij
+## <a name="get-started"></a>Rozpoczęcie pracy
 
 [!INCLUDE [data-factory-v2-connector-get-started](../../includes/data-factory-v2-connector-get-started.md)]
 
@@ -67,7 +67,7 @@ Poniższe sekcje zawierają szczegółowe informacje o właściwościach, które
 
 Połączona usługa Oracle obsługuje następujące właściwości:
 
-| Właściwość | Opis | Wymagane |
+| Właściwość | Opis | Wymagany |
 |:--- |:--- |:--- |
 | type | Właściwość Type musi mieć wartość **Oracle**. | Tak |
 | Przekształcon | Określa informacje, które są konieczne do nawiązania połączenia z wystąpieniem Oracle Database. <br/>Oznacz to pole jako `SecureString`, aby bezpiecznie je przechowywać w Data Factory. Możesz również wprowadzić hasło w Azure Key Vault i ściągnąć konfigurację `password` z parametrów połączenia. Zapoznaj się z poniższymi przykładami i [Zapisz poświadczenia w Azure Key Vault](store-credentials-in-key-vault.md) , aby uzyskać więcej szczegółów. <br><br>**Obsługiwany typ połączenia**: możesz użyć **identyfikatora SID Oracle** lub **nazwy usługi Oracle** , aby zidentyfikować swoją bazę danych:<br>— Jeśli używasz identyfikatora SID: `Host=<host>;Port=<port>;Sid=<sid>;User Id=<username>;Password=<password>;`<br>— Jeśli używasz nazwy usługi: `Host=<host>;Port=<port>;ServiceName=<servicename>;User Id=<username>;Password=<password>;` | Tak |
@@ -121,7 +121,7 @@ Aby włączyć szyfrowanie na połączeniu z programem Oracle, dostępne są dwi
         ```
 
     3.  Umieść plik `truststore` na komputerze z własnym obsługą podczerwieni. Na przykład Umieść plik w lokalizacji C:\MyTrustStoreFile.
-    4.  W Azure Data Factory Skonfiguruj parametry połączenia Oracle z `EncryptionMethod=1` i `TrustStore`wartość/`TrustStorePassword`. Na przykład `Host=<host>;Port=<port>;Sid=<sid>;User Id=<username>;Password=<password>;EncryptionMethod=1;TrustStore=C:\\MyTrustStoreFile;TrustStorePassword=<trust_store_password>`.
+    4.  W Azure Data Factory Skonfiguruj parametry połączenia Oracle z `EncryptionMethod=1` i `TrustStore`wartość /`TrustStorePassword`. Na przykład `Host=<host>;Port=<port>;Sid=<sid>;User Id=<username>;Password=<password>;EncryptionMethod=1;TrustStore=C:\\MyTrustStoreFile;TrustStorePassword=<trust_store_password>`.
 
 **Przykład:**
 
@@ -178,11 +178,11 @@ Ta sekcja zawiera listę właściwości obsługiwanych przez zestaw danych Oracl
 
 Aby skopiować dane z i do programu Oracle, ustaw właściwość Type zestawu danych na `OracleTable`. Obsługiwane są następujące właściwości.
 
-| Właściwość | Opis | Wymagane |
+| Właściwość | Opis | Wymagany |
 |:--- |:--- |:--- |
 | type | Właściwość Type zestawu danych musi być ustawiona na `OracleTable`. | Tak |
 | schematy | Nazwa schematu. |Nie dla źródła, tak dla ujścia  |
-| Tabele | Nazwa tabeli/widoku. |Nie dla źródła, tak dla ujścia  |
+| tabele | Nazwa tabeli/widoku. |Nie dla źródła, tak dla ujścia  |
 | tableName | Nazwa tabeli/widoku ze schematem. Ta właściwość jest obsługiwana w celu zapewnienia zgodności z poprzednimi wersjami. W przypadku nowych obciążeń Użyj `schema` i `table`. | Nie dla źródła, tak dla ujścia |
 
 **Przykład:**
@@ -217,7 +217,7 @@ Ta sekcja zawiera listę właściwości obsługiwanych przez źródło i ujścia
 
 Aby skopiować dane z programu Oracle, należy ustawić typ źródła w działaniu kopiowania na `OracleSource`. W sekcji **Źródło** działania kopiowania są obsługiwane następujące właściwości.
 
-| Właściwość | Opis | Wymagane |
+| Właściwość | Opis | Wymagany |
 |:--- |:--- |:--- |
 | type | Właściwość Type źródła działania Copy musi mieć wartość `OracleSource`. | Tak |
 | oracleReaderQuery | Użyj niestandardowego zapytania SQL, aby odczytać dane. Może to być na przykład `"SELECT * FROM MyTable"`.<br>Po włączeniu obciążenia partycjonowanego należy podłączyć wszystkie odpowiednie wbudowane parametry partycji w zapytaniu. Przykłady można znaleźć w sekcji [Kopiowanie równoległe z programu Oracle](#parallel-copy-from-oracle) . | Nie |
@@ -264,7 +264,7 @@ Aby skopiować dane z programu Oracle, należy ustawić typ źródła w działan
 
 Aby skopiować dane do programu Oracle, ustaw typ ujścia w działaniu kopiowania na `OracleSink`. W sekcji **ujścia** działania kopiowania są obsługiwane następujące właściwości.
 
-| Właściwość | Opis | Wymagane |
+| Właściwość | Opis | Wymagany |
 |:--- |:--- |:--- |
 | type | Właściwość Type ujścia działania Copy musi mieć wartość `OracleSink`. | Tak |
 | writeBatchSize | Wstawia dane do tabeli SQL, gdy rozmiar buforu osiągnie `writeBatchSize`.<br/>Dozwolone wartości to liczba całkowita (liczba wierszy). |Nie (domyślnie 10 000) |
@@ -357,12 +357,12 @@ Podczas kopiowania danych z programu i do programu Oracle są stosowane następu
 | Typ danych Oracle | Data Factory typ danych pośrednich |
 |:--- |:--- |
 | DOTYCZĄCE |Byte [] |
-| TWORZENIA |Byte []<br/>(obsługiwane tylko w systemach Oracle 10g i nowszych) |
+| BLOB |Byte []<br/>(obsługiwane tylko w systemach Oracle 10g i nowszych) |
 | DELIKATN |Ciąg |
-| OBIEKTÓW CLOB |Ciąg |
-| DATE |Data i godzina |
+| CLOB |Ciąg |
+| DATE |DateTime |
 | FLOAT |Decimal, String (jeśli precyzja > 28) |
-| CAŁKOWITĄ |Decimal, String (jeśli precyzja > 28) |
+| INTEGER |Decimal, String (jeśli precyzja > 28) |
 | DŁUGO |Ciąg |
 | DŁUGI NIEPRZETWORZONY |Byte [] |
 | NCHAR |Ciąg |
@@ -371,7 +371,7 @@ Podczas kopiowania danych z programu i do programu Oracle są stosowane następu
 | NVARCHAR2 |Ciąg |
 | SUROWCÓW |Byte [] |
 | Właściwość |Ciąg |
-| ZNACZNIK czasu |Data i godzina |
+| ZNACZNIK czasu |DateTime |
 | SYGNATURA CZASOWA Z LOKALNĄ STREFĄ CZASOWĄ |Ciąg |
 | SYGNATURA CZASOWA ZE STREFĄ CZASOWĄ |Ciąg |
 | LICZBA CAŁKOWITA BEZ ZNAKU |Liczba |

@@ -1,6 +1,6 @@
 ---
 title: Stwórz eksperymenty z przykładów
-titleSuffix: Azure Machine Learning Studio (classic)
+titleSuffix: ML Studio (classic) Azure
 description: Dowiedz się, jak używać przykładowych eksperymentów uczenia maszynowego do tworzenia nowych eksperymentów przy użyciu Azure AI Gallery i Azure Machine Learning Studio (klasyczne).
 services: machine-learning
 ms.service: machine-learning
@@ -10,12 +10,12 @@ author: xiaoharper
 ms.author: amlstudiodocs
 ms.custom: seodec18, previous-author=heatherbshapiro, previous-ms.author=hshapiro
 ms.date: 01/05/2018
-ms.openlocfilehash: 547cd7c97ddf7aa08ef94f6aeea82e16119c7135
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: fa23612070a5b0c1a33c2effb9cd9e533ca5eada
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73496769"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73670641"
 ---
 # <a name="create-azure-machine-learning-studio-classic-experiments-from-working-examples-in-azure-ai-gallery"></a>Tworzenie Azure Machine Learning Studio (klasycznych) eksperymentów z przykładów roboczych w programie Azure AI Gallery
 
@@ -59,4 +59,4 @@ Nowy eksperyment zostanie utworzony w obszarze roboczym Machine Learning Studio 
 ## <a name="next-steps"></a>Następne kroki
 * [Importowanie danych z różnych źródeł](import-data.md)
 * [Samouczek szybkiego startu dotyczący języka R w usłudze Machine Learning](r-quickstart.md)
-* [Wdrażanie usługi sieci Web Machine Learning](publish-a-machine-learning-web-service.md)
+* [Wdrażanie usługi sieci Web Machine Learning](deploy-a-machine-learning-web-service.md)

@@ -1,5 +1,5 @@
 ---
-title: Przekształcanie danych za pomocą działania procedury składowanej w Azure Data Factory | Microsoft Docs
+title: Przekształcanie danych za pomocą działania procedury składowanej w Azure Data Factory
 description: Wyjaśnia, jak za pomocą działania procedury składowanej SQL Server wywołać procedurę składowaną w magazynie Azure SQL Database/danych z potoku Data Factory.
 services: data-factory
 documentationcenter: ''
@@ -10,12 +10,12 @@ ms.date: 11/27/2018
 author: nabhishek
 ms.author: abnarain
 manager: craigg
-ms.openlocfilehash: e063875e4c619b65290511d61923fd7c715aba49
-ms.sourcegitcommit: d060947aae93728169b035fd54beef044dbe9480
+ms.openlocfilehash: 5ebb2b9cdcbef59e07476dbebd289bb4402ca5fa
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/02/2019
-ms.locfileid: "68742177"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73683726"
 ---
 # <a name="transform-data-by-using-the-sql-server-stored-procedure-activity-in-azure-data-factory"></a>Przekształcanie danych za pomocą działania procedury składowanej SQL Server w Azure Data Factory
 > [!div class="op_single_selector" title1="Wybierz używaną wersję usługi Data Factory:"]
@@ -65,24 +65,24 @@ Oto format JSON służący do definiowania działania procedury składowanej:
 
 W poniższej tabeli opisano te właściwości JSON:
 
-| Właściwość                  | Opis                              | Wymagane |
+| Właściwość                  | Opis                              | Wymagany |
 | ------------------------- | ---------------------------------------- | -------- |
 | name                      | Nazwa działania                     | Tak      |
 | description               | Tekst opisujący działanie używanego działania | Nie       |
 | type                      | W przypadku działania procedury składowanej typem działania jest **SqlServerStoredProcedure** | Tak      |
-| linkedServiceName         | Odwołanie do **Azure SQL Database** lub **Azure SQL Data Warehouse** lub **SQL Server** zarejestrowanych jako połączona usługa w Data Factory. Aby dowiedzieć się więcej o tej połączonej usłudze, zobacz artykuł dotyczący [połączonych usług obliczeniowych](compute-linked-services.md) . | Yes      |
+| linkedServiceName         | Odwołanie do **Azure SQL Database** lub **Azure SQL Data Warehouse** lub **SQL Server** zarejestrowanych jako połączona usługa w Data Factory. Aby dowiedzieć się więcej o tej połączonej usłudze, zobacz artykuł dotyczący [połączonych usług obliczeniowych](compute-linked-services.md) . | Tak      |
 | storedProcedureName       | Określ nazwę procedury składowanej do wywołania. | Tak      |
-| storedProcedureParameters | Określ wartości parametrów procedury składowanej. Służy `"param1": { "value": "param1Value","type":"param1Type" }` do przekazywania wartości parametrów i ich typów obsługiwanych przez źródło danych. Jeśli chcesz przekazać wartość null dla parametru, użyj `"param1": { "value": null }` (w przypadku małych liter). | Nie       |
+| storedProcedureParameters | Określ wartości parametrów procedury składowanej. Użyj `"param1": { "value": "param1Value","type":"param1Type" }`, aby przekazać wartości parametrów i ich typów obsługiwanych przez źródło danych. Jeśli musisz przekazać wartość null dla parametru, użyj `"param1": { "value": null }` (wszystkie małe litery). | Nie       |
 
 ## <a name="parameter-data-type-mapping"></a>Mapowanie typu danych parametru
 Typ danych określony dla parametru to typ Azure Data Factory, który jest mapowany na typ danych w używanym źródle danych. Mapowania typu danych dla źródła danych można znaleźć w obszarze łączniki. Przykłady są
 
 | Źródło danych          | Mapowanie typu danych |
 | ---------------------|-------------------|
-| Azure SQL Data Warehouse | https://docs.microsoft.com/en-us/azure/data-factory/connector-azure-sql-data-warehouse#data-type-mapping-for-azure-sql-data-warehouse |
-| Azure SQL Database   | https://docs.microsoft.com/en-us/azure/data-factory/connector-azure-sql-database#data-type-mapping-for-azure-sql-database | 
-| Oracle               | https://docs.microsoft.com/en-us/azure/data-factory/connector-oracle#data-type-mapping-for-oracle |
-| SQL Server           | https://docs.microsoft.com/en-us/azure/data-factory/connector-sql-server#data-type-mapping-for-sql-server |
+| Azure SQL Data Warehouse | https://docs.microsoft.com/azure/data-factory/connector-azure-sql-data-warehouse#data-type-mapping-for-azure-sql-data-warehouse |
+| Azure SQL Database   | https://docs.microsoft.com/azure/data-factory/connector-azure-sql-database#data-type-mapping-for-azure-sql-database | 
+| Oracle               | https://docs.microsoft.com/azure/data-factory/connector-oracle#data-type-mapping-for-oracle |
+| SQL Server           | https://docs.microsoft.com/azure/data-factory/connector-sql-server#data-type-mapping-for-sql-server |
 
 
 ## <a name="error-info"></a>Informacje o błędzie

@@ -1,6 +1,6 @@
 ---
-title: Użyj usługi Azure Resource Health, aby monitorować kondycję bazy danych SQL | Dokumentacja firmy Microsoft
-description: Użyj usługi Azure Resource Health, aby monitorować kondycję bazy danych SQL, pomaga diagnozować i uzyskać pomoc techniczną, gdy problem z platformą Azure wpłynie na Twoje zasoby programu SQL.
+title: Monitorowanie kondycji SQL Database za pomocą Azure Resource Health
+description: Użyj Azure Resource Health do monitorowania kondycji SQL Database, pomaga diagnozować i uzyskiwać pomoc techniczną, gdy problem z platformą Azure wpływa na zasoby SQL.
 services: sql-database
 ms.service: sql-database
 ms.subservice: monitor
@@ -11,71 +11,71 @@ author: aamalvea
 ms.author: aamalvea
 ms.reviewer: jrasnik, carlrab
 ms.date: 02/26/2019
-ms.openlocfilehash: 1c2720d61c7b4ea918a3d0c1ff7f41984ea42c69
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 10ce2da8ae8bcd8a12f0972d437a84a37a8390b9
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68566906"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73687509"
 ---
-# <a name="use-resource-health-to-troubleshoot-connectivity-for-azure-sql-database"></a>Umożliwia Rozwiązywanie problemów z łącznością dla usługi Azure SQL Database Resource Health
+# <a name="use-resource-health-to-troubleshoot-connectivity-for-azure-sql-database"></a>Użyj Resource Health do rozwiązywania problemów z łącznością dla Azure SQL Database
 
-## <a name="overview"></a>Przegląd
+## <a name="overview"></a>Omówienie
 
-[Usługa Resource Health](../service-health/resource-health-overview.md#get-started) dla bazy danych SQL Database pomaga diagnozować i uzyskać pomoc techniczną, gdy problem z platformą Azure wpłynie na Twoje zasoby SQL. Informuje o bieżącej i wcześniejszej kondycji zasobów oraz pomaga uniknąć problemów. Usługa Resource Health oferuje pomoc techniczną w przypadku problemów z usługą platformy Azure.
+[Resource Health](../service-health/resource-health-overview.md#get-started) dla SQL Database pomaga zdiagnozować i uzyskać pomoc techniczną, gdy problem z platformą Azure ma wpływ na zasoby SQL. Informuje o bieżącej i wcześniejszej kondycji zasobów oraz pomaga uniknąć problemów. Usługa Resource Health oferuje pomoc techniczną w przypadku problemów z usługą platformy Azure.
 
-![Przegląd](./media/sql-database-resource-health/sql-resource-health-overview.jpg)
+![Omówienie](./media/sql-database-resource-health/sql-resource-health-overview.jpg)
 
 ## <a name="health-checks"></a>Kontrole kondycji
 
-Kondycja zasobu określa kondycję zasobu bazy danych SQL, sprawdzając sukcesów i niepowodzeń logowania się do zasobu. Obecnie usługa kondycja zasobu dla zasobu bazy danych SQL sprawdza niepowodzenia logowania z powodu błędu systemu, a nie błąd użytkownika. Stan kondycji zasobu jest aktualizowany co 1 – 2 minutach.
+Resource Health określa kondycję zasobu SQL, sprawdzając powodzenie i niepowodzenie logowania do zasobu. Obecnie Resource Health dla zasobu bazy danych SQL są badane tylko błędy logowania z powodu błędu systemu, a nie błędu użytkownika. Stan Resource Health jest aktualizowany co 1-2 minut.
 
 ## <a name="health-states"></a>Stany kondycji
 
 ### <a name="available"></a>Dostępne
 
-Stan **dostępne** oznacza, że kondycja zasobu nie wykrył niepowodzeń logowania z powodu błędów systemowych na zasobu bazy danych SQL.
+Stan **dostępne** oznacza, że Resource Health nie wykrył niepowodzeń logowania z powodu błędów systemowych w Twoim zasobie SQL.
 
 ![Dostępne](./media/sql-database-resource-health/sql-resource-health-available.jpg)
 
-### <a name="degraded"></a>Obniżono poziom
+### <a name="degraded"></a>Obniżona wydajność
 
-Stan **Obniżona sprawność** oznacza, że usługa Resource Health zarejestrowała w większości zakończone sukcesem próby zalogowania się, ale wystąpiły pewne błędy. Są to najbardziej prawdopodobne błędy przejściowe logowania. Aby zmniejszyć wpływ problemów z łącznością powodowanych przez błędy przejściowe logowania, zaimplementuj [Logika ponawiania próby](./sql-database-connectivity-issues.md#retry-logic-for-transient-errors) w kodzie.
+Stan **Obniżona sprawność** oznacza, że usługa Resource Health zarejestrowała w większości zakończone sukcesem próby zalogowania się, ale wystąpiły pewne błędy. Najprawdopodobniej występują błędy przejściowe logowania. Aby zmniejszyć wpływ problemów z połączeniami spowodowanych przez przejściowe błędy logowania, należy wdrożyć [logikę ponowień](./sql-database-connectivity-issues.md#retry-logic-for-transient-errors) w kodzie.
 
-![Obniżono poziom](./media/sql-database-resource-health/sql-resource-health-degraded.jpg)
+![Obniżona wydajność](./media/sql-database-resource-health/sql-resource-health-degraded.jpg)
 
 ### <a name="unavailable"></a>Niedostępny
 
-Stan **Unavailable** oznacza, że usługa Resource Health wykrył nieudanych prób zalogowania spójne do zasobu bazy danych SQL. Jeśli zasób pozostaje w tym stanie przez dłuższy czas, skontaktuj się z pomocy technicznej.
+Stan **niedostępne** oznacza, że Resource Health wykryła spójne błędy logowania do zasobu SQL. Jeśli zasób pozostaje w tym stanie przez dłuższy czas, skontaktuj się z pomocą techniczną.
 
 ![Niedostępny](./media/sql-database-resource-health/sql-resource-health-unavailable.jpg)
 
 ### <a name="unknown"></a>Nieznane
 
-Stan kondycji **nieznany** wskazuje, że kondycja zasobu nie odebrał informacji na temat tego zasobu na więcej niż 10 minut. Mimo że ten stan nie jest ostateczną wskazanie stan zasobu, to ważny punkt danych w proces rozwiązywania problemów. Jeśli zasób działa zgodnie z oczekiwaniami, stan zasobu zmieni się na dostępne po kilku minutach. Jeśli występują problemy z zasobem, Nieznana kondycja może sugerować, że zdarzenie na platformie ma wpływ na zasób.
+Stan kondycji **nieznany** wskazuje, że Resource Health nie otrzymał informacji o tym zasobie przez więcej niż 10 minut. Mimo że ten stan nie jest ostatecznym oznaczeniem stanu zasobu, jest to ważny punkt danych w procesie rozwiązywania problemów. Jeśli zasób działa zgodnie z oczekiwaniami, stan zasobu zmieni się na dostępny po kilku minutach. Jeśli występują problemy z zasobem, nieznany stan kondycji może zasugerować, że zdarzenie na platformie ma wpływ na zasób.
 
 ![Nieznane](./media/sql-database-resource-health/sql-resource-health-unknown.jpg)
 
 ## <a name="historical-information"></a>Informacje historyczne
 
-Możesz uzyskać dostęp do 14 dni historii kondycji w historii kondycji części Resource Health. Sekcji zawiera również z powodu przestojów (jeśli jest dostępna) dla przestoje zgłoszone przez Resource Health. Obecnie w platformie Azure wyświetlany jest czas przestoju zasobu bazy danych SQL database na szczegółowości dwie minuty. W rzeczywistości przestój trwa mniej niż minutę prawdopodobnie — średnia 8s.
+Możesz uzyskać dostęp do 14 dni historii kondycji w sekcji Historia kondycji Resource Health. Sekcja zawiera również przyczynę przestoju (jeśli jest dostępna) dla przestojów raportowanych przez Resource Health. Obecnie platforma Azure pokazuje przestój zasobu usługi SQL Database z dokładnością do dwóch minut. W rzeczywistości przestój trwa prawdopodobnie krócej niż minutę — średni czas to 8 s.
 
-### <a name="downtime-reasons"></a>Przyczyny przestojów
+### <a name="downtime-reasons"></a>Przyczyny przestoju
 
-W przypadku bazy danych SQL napotyka Przestój, aby zidentyfikować przyczynę jest wykonywana analiza. Jeśli jest dostępny, z powodu przestojów jest zgłaszany w historii kondycji części kondycji zasobu. Przyczyny przestojów są zazwyczaj publikowane w ciągu 30 minut po wystąpieniu zdarzenia.
+W przypadku przestoju SQL Database analiza jest przeprowadzana w celu ustalenia przyczyny. W razie potrzeby przyczyny przestoju są raportowane w sekcji Historia kondycji Resource Health. Przyczyny przestojów są zazwyczaj publikowane w ciągu 30 minut po wystąpieniu zdarzenia.
 
 #### <a name="planned-maintenance"></a>Planowana konserwacja
 
-Infrastruktura platformy Azure okresowo przeprowadza planowaną konserwację — Uaktualnij składniki sprzętowe lub programowe w centrum danych. Gdy baza danych jest poddawany konserwacji, SQL może zakończyć niektóre istniejące połączenia i odmówić nowe. Niepowodzenia logowania podczas planowanej konserwacji mają zwykle charakter przejściowy i [Logika ponawiania próby](./sql-database-connectivity-issues.md#retry-logic-for-transient-errors) pomaga zredukować wpływ. Jeśli nadal występują błędy podczas logowania, skontaktuj się z pomocą techniczną.
+Infrastruktura platformy Azure okresowo przeprowadza planowaną konserwację — uaktualnianie składników sprzętowych i programowych w centrum danych. Podczas gdy baza danych jest w trakcie konserwacji, program SQL może zakończyć niektóre istniejące połączenia i odrzucić nowe. Błędy logowania występujące podczas planowanej konserwacji są zwykle przejściowe i [logika ponowień](./sql-database-connectivity-issues.md#retry-logic-for-transient-errors) pomaga zmniejszyć wpływ. Jeśli błędy logowania będą nadal występować, skontaktuj się z pomocą techniczną.
 
 #### <a name="reconfiguration"></a>Ponowne konfigurowanie
 
-Reconfigurations są traktowane jako przejściowe warunki, a oczekuje się od czasu do czasu. Te zdarzenia mogą być wywoływane przez błędy ładowania równoważenia lub oprogramowanie i sprzęt. Każda aplikacja kliencka produkcji, który nawiązuje połączenie z bazą danych w chmurze powinny implementować niezawodne połączenia [Logika ponawiania próby](./sql-database-connectivity-issues.md#retry-logic-for-transient-errors), ponieważ może ułatwić uniknięcie sytuacji i powinien ogólnie przezroczystego błędy użytkownikowi końcowemu.
+Ponowne konfiguracje są uznawane za przejściowe i oczekują od czasu do czasu. Te zdarzenia mogą być wyzwalane przez równoważenie obciążenia lub awarie oprogramowania/sprzętu. Dowolna aplikacja produkcyjna klienta, która łączy się z bazą danych w chmurze, powinna implementować niezawodną [logikę ponawiania](./sql-database-connectivity-issues.md#retry-logic-for-transient-errors)połączenia, ponieważ może to pomóc w ograniczeniu tych sytuacji i ogólnie mówiąc, że błędy będą widoczne dla użytkownika końcowego.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
-- Dowiedz się więcej o [Logika ponawiania próby dla błędów przejściowych](./sql-database-connectivity-issues.md#retry-logic-for-transient-errors)
+- Dowiedz się więcej o [logice ponawiania prób w przypadku błędów przejściowych](./sql-database-connectivity-issues.md#retry-logic-for-transient-errors)
 - [Troubleshoot, diagnose, and prevent SQL connection errors](./sql-database-connectivity-issues.md) (Rozwiązywanie problemów, diagnozowanie i zapobieganie błędom połączeń SQL)
-- Dowiedz się więcej o [Konfigurowanie alertów dotyczących kondycji zasobu](../service-health/resource-health-alert-arm-template-guide.md)
-- Zapoznaj się z omówieniem programu [Resource Health](../service-health/resource-health-overview.md)
-- [Usługa Resource Health — często zadawane pytania](../service-health/resource-health-faq.md)
+- Dowiedz się więcej o [konfigurowaniu Resource Health alertów](../service-health/resource-health-alert-arm-template-guide.md)
+- Zapoznaj się z omówieniem [Resource Health](../service-health/resource-health-overview.md)
+- [Resource Health często zadawane pytania](../service-health/resource-health-faq.md)

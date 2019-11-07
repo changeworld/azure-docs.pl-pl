@@ -2,17 +2,17 @@
 title: Architektura sieci wirtualnej usługi Azure HDInsight
 description: Informacje o zasobach dostępnych podczas tworzenia klastra usługi HDInsight w usłudze Azure Virtual Network.
 author: hrasheed-msft
+ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
-ms.date: 03/26/2019
-ms.author: hrasheed
-ms.openlocfilehash: 340974201d62f97669db442f4a95439a6ac90a5e
-ms.sourcegitcommit: dd69b3cda2d722b7aecce5b9bd3eb9b7fbf9dc0a
+ms.date: 10/31/2019
+ms.openlocfilehash: 0a1139f7bf1711a5f6d980e67a8a9027bfd3af52
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/12/2019
-ms.locfileid: "70960628"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73665319"
 ---
 # <a name="azure-hdinsight-virtual-network-architecture"></a>Architektura sieci wirtualnej usługi Azure HDInsight
 
@@ -22,7 +22,7 @@ W tym artykule opisano zasoby, które są obecne podczas wdrażania klastra usł
 
 Klastry usługi Azure HDInsight mają różne typy maszyn wirtualnych lub węzłów. Każdy typ węzła odgrywa rolę w działaniu systemu. Poniższa tabela zawiera podsumowanie typów węzłów i ich ról w klastrze.
 
-| Type | Opis |
+| Typ | Opis |
 | --- | --- |
 | Węzeł główny |  W przypadku wszystkich typów klastrów, z wyjątkiem Apache Storm, węzły główne obsługują procesy zarządzające wykonywaniem aplikacji rozproszonej. Węzeł główny jest również węzłem, w którym można używać protokołu SSH, i wykonywać aplikacje, które następnie są skoordynowane do uruchamiania przez zasoby klastra. Liczba węzłów głównych jest ustalona w dwóch dla wszystkich typów klastrów. |
 | Węzeł dozorcy | Dozorcy koordynuje zadania między węzłami, które przetwarzają przetwarzanie danych. Powoduje również wybór lidera węzła głównego i śledzi, w którym węźle głównym działa określona usługa główna. Liczba węzłów dozorcy jest ustalona na trzy. |
@@ -62,16 +62,16 @@ Następujące zasoby sieciowe są tworzone automatycznie w ramach sieci wirtualn
 Dostęp do klastra usługi HDInsight można uzyskać na trzy sposoby:
 
 - Punkt końcowy HTTPS poza siecią wirtualną w `CLUSTERNAME.azurehdinsight.net`.
-- Punkt końcowy SSH służący do bezpośredniego łączenia się z `CLUSTERNAME-ssh.azurehdinsight.net`usługą węzła głównego pod adresem.
-- Punkt końcowy HTTPS w sieci `CLUSTERNAME-int.azurehdinsight.net`wirtualnej. Zwróć uwagę na wartość "-int" w tym adresie URL. Ten punkt końcowy zostanie rozpoznany jako prywatny adres IP w tej sieci wirtualnej i nie będzie dostępny z publicznego Internetu.
+- Punkt końcowy SSH służący do bezpośredniego łączenia się z usługą węzła głównego w `CLUSTERNAME-ssh.azurehdinsight.net`.
+- Punkt końcowy HTTPS w sieci wirtualnej `CLUSTERNAME-int.azurehdinsight.net`. Zwróć uwagę na wartość "-int" w tym adresie URL. Ten punkt końcowy zostanie rozpoznany jako prywatny adres IP w tej sieci wirtualnej i nie będzie dostępny z publicznego Internetu.
 
 Te trzy punkty końcowe są przypisane do modułu równoważenia obciążenia.
 
 Publiczne adresy IP są również dostarczane do dwóch punktów końcowych, które zezwalają na połączenie spoza sieci wirtualnej.
 
 1. Jeden publiczny adres IP jest przypisywany do modułu równoważenia obciążenia dla w pełni kwalifikowanej nazwy domeny (FQDN) do użycia podczas nawiązywania połączenia z klastrem z Internetu `CLUSTERNAME.azurehdinsight.net`.
-1. Drugi publiczny adres IP jest używany jako nazwa `CLUSTERNAME-ssh.azurehdinsight.net`domeny tylko SSH.
+1. Drugi publiczny adres IP jest używany dla nazwy domeny tylko SSH `CLUSTERNAME-ssh.azurehdinsight.net`.
 
 ## <a name="next-steps"></a>Następne kroki
 
-* [Zabezpieczanie ruchu przychodzącego do klastrów usługi HDInsight w sieci wirtualnej za pomocą prywatnego punktu końcowego](https://azure.microsoft.com/blog/secure-incoming-traffic-to-hdinsight-clusters-in-a-vnet-with-private-endpoint/)
+- [Zabezpieczanie ruchu przychodzącego do klastrów usługi HDInsight w sieci wirtualnej za pomocą prywatnego punktu końcowego](https://azure.microsoft.com/blog/secure-incoming-traffic-to-hdinsight-clusters-in-a-vnet-with-private-endpoint/)

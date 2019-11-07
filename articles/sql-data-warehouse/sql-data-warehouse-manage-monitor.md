@@ -1,5 +1,5 @@
 ---
-title: Monitorowanie obciążenia przy użyciu usługi widoków DMV | Microsoft Docs
+title: Monitor your workload using DMVs
 description: Dowiedz się, jak monitorować obciążenie przy użyciu widoków DMV.
 services: sql-data-warehouse
 author: ronortloff
@@ -10,12 +10,12 @@ ms.subservice: manage
 ms.date: 08/23/2019
 ms.author: rortloff
 ms.reviewer: igorstan
-ms.openlocfilehash: 1d1af13eb54daf060f0172a0506370ca459f2ece
-ms.sourcegitcommit: 3f78a6ffee0b83788d554959db7efc5d00130376
+ms.openlocfilehash: e1a754747ae5c0fb7c50653f4881b67a81e011ef
+ms.sourcegitcommit: 359930a9387dd3d15d39abd97ad2b8cb69b8c18b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/26/2019
-ms.locfileid: "70018942"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73645669"
 ---
 # <a name="monitor-your-workload-using-dmvs"></a>Monitor your workload using DMVs
 W tym artykule opisano sposób korzystania z dynamicznych widoków zarządzania (widoków DMV) do monitorowania obciążenia. Obejmuje to badanie wykonywania zapytań w Azure SQL Data Warehouse.
@@ -45,7 +45,7 @@ Wszystkie zapytania wykonane w SQL Data Warehouse są rejestrowane w [widoku sys
 
 Poniżej przedstawiono kroki, które należy wykonać w celu zbadania planów i czasów wykonywania zapytań dotyczących określonego zapytania.
 
-### <a name="step-1-identify-the-query-you-wish-to-investigate"></a>KROK 1: Określ zapytanie, które chcesz zbadać
+### <a name="step-1-identify-the-query-you-wish-to-investigate"></a>Krok 1. określenie zapytania, które chcesz zbadać
 ```sql
 -- Monitor active queries
 SELECT * 
@@ -81,7 +81,7 @@ FROM    sys.dm_pdw_exec_requests
 WHERE   [label] = 'My Query';
 ```
 
-### <a name="step-2-investigate-the-query-plan"></a>KROK 2: Zbadaj plan zapytania
+### <a name="step-2-investigate-the-query-plan"></a>Krok 2. Badanie planu zapytania
 Użyj identyfikatora żądania, aby pobrać plan rozproszonej bazy danych SQL (DSQL) zapytania z [widoku sys. DM _pdw_request_steps][sys.dm_pdw_request_steps].
 
 ```sql
@@ -97,7 +97,7 @@ Gdy plan DSQL trwa dłużej niż oczekiwano, przyczyną może być złożony pla
 
 Aby zbadać dalsze szczegóły dotyczące pojedynczego kroku, kolumny *operation_type* długotrwałego zapytania i zanotuj **indeks kroku**:
 
-* Przejdź do kroku 3a dla **operacji SQL**: Onoperation, RemoteOperation, ReturnOperation.
+* Przejdź do kroku 3a dla **operacji SQL**: onoperation, RemoteOperation, ReturnOperation.
 * Przejdź do kroku 3B dla **operacji przenoszenia danych**: ShuffleMoveOperation, BroadcastMoveOperation, TrimMoveOperation, PartitionMoveOperation, MoveOperation, CopyOperation.
 
 ### <a name="step-3a-investigate-sql-on-the-distributed-databases"></a>Krok 3a: Badanie SQL w rozproszonych bazach danych
@@ -120,7 +120,7 @@ Gdy krok zapytania jest uruchomiony, [polecenia DBCC PDW_SHOWEXECUTIONPLAN][DBCC
 DBCC PDW_SHOWEXECUTIONPLAN(1, 78);
 ```
 
-### <a name="step-3b-investigate-data-movement-on-the-distributed-databases"></a>Krok 3B: Badanie przenoszenia danych w rozproszonych bazach danych
+### <a name="step-3b-investigate-data-movement-on-the-distributed-databases"></a>Krok 3B: badanie przenoszenia danych w rozproszonych bazach danych
 Użyj identyfikatora żądania i indeksu kroku, aby pobrać informacje o kroku przenoszenia danych uruchomionym w każdej dystrybucji z poziomu [widoku sys. DM _pdw_dms_workers][sys.dm_pdw_dms_workers].
 
 ```sql

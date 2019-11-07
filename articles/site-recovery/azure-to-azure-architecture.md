@@ -1,19 +1,19 @@
 ---
-title: Architektura replikacji platformy Azure do platformy Azure w Azure Site Recovery | Microsoft Docs
-description: Ten artykuł zawiera omówienie składników i architektury używanych podczas konfigurowania odzyskiwania po awarii między regionami platformy Azure dla maszyn wirtualnych platformy Azure przy użyciu usługi Azure Site Recovery.
+title: Architektura odzyskiwania po awarii platformy Azure do platformy Azure w Azure Site Recovery
+description: Omówienie architektury używanej podczas konfigurowania odzyskiwania po awarii między regionami platformy Azure dla maszyn wirtualnych platformy Azure przy użyciu usługi Azure Site Recovery.
 services: site-recovery
 author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 09/03/2019
+ms.date: 11/05/2019
 ms.author: raynew
-ms.openlocfilehash: d415f303976ae454cb99f07e8d6e15e338e24d7d
-ms.sourcegitcommit: 2aefdf92db8950ff02c94d8b0535bf4096021b11
+ms.openlocfilehash: e83c14e5ce337e8a3c4c119acc2397b98afd5b56
+ms.sourcegitcommit: 6c2c97445f5d44c5b5974a5beb51a8733b0c2be7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/03/2019
-ms.locfileid: "70231455"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73621120"
 ---
 # <a name="azure-to-azure-disaster-recovery-architecture"></a>Architektura odzyskiwania po awarii z platformy Azure do platformy Azure
 
@@ -65,7 +65,7 @@ Po włączeniu replikacji maszyny wirtualnej platformy Azure domyślnie Site Rec
 
 **Ustawienie zasad** | **Szczegóły** | **Domyślne**
 --- | --- | ---
-**Przechowywanie punktów odzyskiwania** | Określa, jak długo Site Recovery zachowuje punkty odzyskiwania | 24 godz.
+**Przechowywanie punktów odzyskiwania** | Określa, jak długo Site Recovery zachowuje punkty odzyskiwania | 24 godziny
 **Częstotliwość migawek spójnych na poziomie aplikacji** | Jak często Site Recovery pobiera migawkę spójną na poziomie aplikacji. | Co cztery godziny
 
 ### <a name="managing-replication-policies"></a>Zarządzanie zasadami replikacji
@@ -97,13 +97,13 @@ W poniższej tabeli objaśniono różne typy spójności.
 
 ### <a name="crash-consistent"></a>Spójny na poziomie awarii
 
-**Opis** | **Szczegóły** | **Zalecenie**
+**Opis** | **Szczegóły** | **Zaleca**
 --- | --- | ---
 Migawka spójna pod kątem awarii przechwytuje dane znajdujące się na dysku podczas tworzenia migawki. Nie zawiera żadnych elementów w pamięci.<br/><br/> Zawiera odpowiednik danych na dysku, które mogą być obecne, jeśli maszyna wirtualna uległa awarii lub przewód zasilający został pobrany z serwera na chwilę, gdy migawka została wykonana.<br/><br/> Spójna awaria nie gwarantuje spójności danych dla systemu operacyjnego lub aplikacji na maszynie wirtualnej. | Site Recovery domyślnie tworzy punkty odzyskiwania spójne z awarią co pięć minut. Nie można zmodyfikować tego ustawienia.<br/><br/>  | Obecnie większość aplikacji może odzyskać z punktów spójnych z awarią.<br/><br/> Punkty odzyskiwania spójne z awarią są zwykle wystarczające do replikacji systemów operacyjnych i aplikacji, takich jak serwery DHCP i serwery wydruku.
 
 ### <a name="app-consistent"></a>Spójna na poziomie aplikacji
 
-**Opis** | **Szczegóły** | **Zalecenie**
+**Opis** | **Szczegóły** | **Zaleca**
 --- | --- | ---
 Punkty odzyskiwania spójne z aplikacjami są tworzone na podstawie migawek spójnych na poziomie aplikacji.<br/><br/> Migawka spójna na poziomie aplikacji zawiera wszystkie informacje w migawce spójnej na poziomie awarii oraz wszystkie dane w pamięci i transakcjach w toku. | Migawki spójne z aplikacjami używają Usługa kopiowania woluminów w tle (VSS):<br/><br/>   1) po zainicjowaniu migawki usługa VSS wykonuje na woluminie operację kopiowania na zapis (KROWy).<br/><br/>   2) przed wykonaniem KROWy usługa VSS informuje każdą aplikację na komputerze, że musi ona opróżnić dane rezydentne pamięci na dysk.<br/><br/>   3) usługa VSS umożliwia korzystanie z kopii zapasowej/odzyskiwania po awarii (w tym przypadku Site Recovery) w celu odczytania danych migawki i przejścia. | Migawki spójne z aplikacjami są wykonywane zgodnie z określoną częstotliwością. Ta częstotliwość powinna być zawsze mniejsza niż ustawiona dla zachowywania punktów odzyskiwania. Jeśli na przykład zachowasz punkty odzyskiwania przy użyciu domyślnego ustawienia przez 24 godziny, należy ustawić częstotliwość krótszą niż 24 godziny.<br/><br/>Są one bardziej skomplikowane i trwają dłużej niż w przypadku migawek spójnych na poziomie awarii.<br/><br/> Wpływają one na wydajność aplikacji uruchomionych na maszynie wirtualnej z włączoną obsługą replikacji. 
 
@@ -143,18 +143,18 @@ Należy pamiętać, że szczegółowe informacje o wymaganiach dotyczących łą
 
 #### <a name="source-region-rules"></a>Reguły regionu źródłowego
 
-**Reguły** |  **Szczegóły** | **Tag usługi**
+**Rule** |  **Szczegóły** | **Tag usługi**
 --- | --- | --- 
-Zezwalaj na ruch wychodzący HTTPS: port 443 | Zezwalaj na zakresy, które odpowiadają kontom magazynu w regionie źródłowym | Chowan. \<nazwa regionu >.
-Zezwalaj na ruch wychodzący HTTPS: port 443 | Zezwalaj na zakresy, które odpowiadają Azure Active Directory (Azure AD).<br/><br/> Jeśli w przyszłości zostaną dodane adresy usługi Azure AD, musisz utworzyć nowe reguły sieciowej grupy zabezpieczeń (sieciowej grupy zabezpieczeń).  | AzureActiveDirectory
+Zezwalaj na ruch wychodzący HTTPS: port 443 | Zezwalaj na zakresy, które odpowiadają kontom magazynu w regionie źródłowym | Chowan.\<> nazwy regionu.
+Zezwalaj na ruch wychodzący HTTPS: port 443 | Zezwalaj na zakresy, które odpowiadają Azure Active Directory (Azure AD).<br/><br/> Jeśli w przyszłości zostaną dodane adresy usługi Azure AD, musisz utworzyć nowe reguły sieciowej grupy zabezpieczeń (sieciowej grupy zabezpieczeń).  | Usługi azureactivedirectory
 Zezwalaj na ruch wychodzący HTTPS: port 443 | Zezwalaj na dostęp do [Site Recovery punktów końcowych](https://aka.ms/site-recovery-public-ips) , które odpowiadają lokalizacji docelowej. 
 
 #### <a name="target-region-rules"></a>Reguły regionu docelowego
 
-**Reguły** |  **Szczegóły** | **Tag usługi**
+**Rule** |  **Szczegóły** | **Tag usługi**
 --- | --- | --- 
-Zezwalaj na ruch wychodzący HTTPS: port 443 | Zezwalaj na zakresy, które odpowiadają kontom magazynu w regionie docelowym. | Chowan. \<nazwa regionu >.
-Zezwalaj na ruch wychodzący HTTPS: port 443 | Zezwalaj na zakresy odpowiadające usłudze Azure AD.<br/><br/> Jeśli w przyszłości zostaną dodane adresy usługi Azure AD, musisz utworzyć nowe reguły sieciowej grupy zabezpieczeń.  | AzureActiveDirectory
+Zezwalaj na ruch wychodzący HTTPS: port 443 | Zezwalaj na zakresy, które odpowiadają kontom magazynu w regionie docelowym. | Chowan.\<> nazwy regionu.
+Zezwalaj na ruch wychodzący HTTPS: port 443 | Zezwalaj na zakresy odpowiadające usłudze Azure AD.<br/><br/> Jeśli w przyszłości zostaną dodane adresy usługi Azure AD, musisz utworzyć nowe reguły sieciowej grupy zabezpieczeń.  | Usługi azureactivedirectory
 Zezwalaj na ruch wychodzący HTTPS: port 443 | Zezwalaj na dostęp do [Site Recovery punktów końcowych](https://aka.ms/site-recovery-public-ips) odpowiadających lokalizacji źródłowej. 
 
 
@@ -168,7 +168,7 @@ W przypadku kontrolowania łączności maszyn wirtualnych przez filtrowanie ruch
     - Tagi usług reprezentują grupę prefiksów adresów IP zebranych razem, aby zminimalizować złożoność podczas tworzenia reguł zabezpieczeń.
     - Firma Microsoft automatycznie aktualizuje Tagi usług w czasie. 
  
-Dowiedz się więcej o [łączności](azure-to-azure-about-networking.md#outbound-connectivity-for-ip-address-ranges) wychodzącej dla Site Recovery i [kontrolowania łączności z usługą sieciowych grup zabezpieczeń](concepts-network-security-group-with-site-recovery.md).
+Dowiedz się więcej o [łączności wychodzącej](azure-to-azure-about-networking.md#outbound-connectivity-for-ip-address-ranges) dla Site Recovery i [kontrolowania łączności z usługą sieciowych grup zabezpieczeń](concepts-network-security-group-with-site-recovery.md).
 
 
 ### <a name="connectivity-for-multi-vm-consistency"></a>Łączność dla spójności dotyczącej kilku maszyn wirtualnych

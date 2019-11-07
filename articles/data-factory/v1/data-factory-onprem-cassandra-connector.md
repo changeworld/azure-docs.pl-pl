@@ -1,6 +1,6 @@
 ---
-title: Przenoszenie danych z bazy danych Cassandra przy użyciu usługi fabryka danych | Dokumentacja firmy Microsoft
-description: Dowiedz się więcej o sposobach przenoszenia danych z bazy danych Cassandra w środowisku lokalnym za pomocą usługi Azure Data Factory.
+title: Przenoszenie danych z Cassandra za pomocą Data Factory
+description: Dowiedz się, jak przenieść dane z lokalnej bazy danych Cassandra przy użyciu Azure Data Factory.
 services: data-factory
 documentationcenter: ''
 author: linda33wj
@@ -13,110 +13,110 @@ ms.topic: conceptual
 ms.date: 06/07/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 5b098aaf2df5e04983aa53563d5e0203f3287b42
-ms.sourcegitcommit: 64798b4f722623ea2bb53b374fb95e8d2b679318
+ms.openlocfilehash: 4edd4d663e02601a97474c5d3a54adaa6b7fd27d
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/11/2019
-ms.locfileid: "67839944"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73682448"
 ---
-# <a name="move-data-from-an-on-premises-cassandra-database-using-azure-data-factory"></a>Przenoszenie danych z bazy danych Cassandra w środowisku lokalnym za pomocą usługi Azure Data Factory
-> [!div class="op_single_selector" title1="Wybierz wersję usługi Data Factory, którego używasz:"]
+# <a name="move-data-from-an-on-premises-cassandra-database-using-azure-data-factory"></a>Przenoszenie danych z lokalnej bazy danych Cassandra przy użyciu Azure Data Factory
+> [!div class="op_single_selector" title1="Wybierz używaną wersję usługi Data Factory:"]
 > * [Wersja 1](data-factory-onprem-cassandra-connector.md)
 > * [Wersja 2 (bieżąca wersja)](../connector-cassandra.md)
 
 > [!NOTE]
-> Ten artykuł dotyczy wersji 1 usługi Data Factory. Jeśli używasz bieżącą wersję usługi Data Factory, zobacz [łącznika bazy danych Cassandra w wersji 2](../connector-cassandra.md).
+> Ten artykuł dotyczy wersji 1 usługi Data Factory. Jeśli używasz bieżącej wersji usługi Data Factory, zobacz [Łącznik Cassandra w wersji 2](../connector-cassandra.md).
 
-W tym artykule wyjaśniono, jak użyć działania kopiowania w usłudze Azure Data Factory, aby przenieść dane z lokalnej bazy danych Cassandra. Opiera się na [działania przenoszenia danych](data-factory-data-movement-activities.md) artykułu, który przedstawia ogólne omówienie przenoszenie danych za pomocą działania kopiowania.
+W tym artykule wyjaśniono, jak za pomocą działania kopiowania w Azure Data Factory przenieść dane z lokalnej bazy danych Cassandra. Jest on używany w artykule dotyczącym [przenoszenia danych](data-factory-data-movement-activities.md) , który przedstawia ogólne omówienie przenoszenia danych za pomocą działania kopiowania.
 
-Możesz skopiować dane z magazynu danych oprogramowania Cassandra w środowisku lokalnym, do dowolnego obsługiwanego magazynu danych ujścia. Aby uzyskać listę magazynów danych obsługiwanych jako ujścia działania kopiowania, zobacz [obsługiwane magazyny danych](data-factory-data-movement-activities.md#supported-data-stores-and-formats) tabeli. Data factory obsługuje obecnie tylko przenosi dane z magazynu danych oprogramowania Cassandra do innych magazynów danych, ale nie przenosi dane z innych magazynów danych do magazynu danych oprogramowania Cassandra.
+Dane można kopiować z lokalnego magazynu danych Cassandra do dowolnego obsługiwanego magazynu danych ujścia. Listę magazynów danych obsługiwanych jako ujścia przez działanie kopiowania można znaleźć w tabeli [obsługiwane magazyny danych](data-factory-data-movement-activities.md#supported-data-stores-and-formats) . Fabryka danych obsługuje obecnie tylko przeniesienie danych z magazynu danych Cassandra do innych magazynów danych, ale nie do przeniesienia danych z innych magazynów danych do magazynu danych Cassandra.
 
 ## <a name="supported-versions"></a>Obsługiwane wersje
-Łącznik rozwiązania Cassandra obsługuje następujące wersje oprogramowania Cassandra: 2.x i 3.x. Działania uruchomione na własne środowisko IR, bazy danych Cassandra 3.x jest obsługiwana, ponieważ środowisko IR w wersji 3.7 lub nowszym.
+Łącznik Cassandra obsługuje następujące wersje Cassandra: 2. x i 3. x. W przypadku działania uruchomionego na samoobsługowym Integration Runtime Cassandra 3. x jest obsługiwany przez środowisko IR w wersji 3,7 lub nowszej.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
-Dla usługi Azure Data Factory można było połączyć się z lokalną bazą danych Cassandra należy zainstalować bramę zarządzania danymi na tym samym komputerze, który jest hostem bazy danych lub na osobnym komputerze, aby uniknąć rywalizując o zasoby z bazą danych. Brama zarządzania danymi jest składnikiem, który łączy z lokalnymi źródłami danych z usługami w chmurze w sposób bezpieczny i zarządzane. Zobacz [bramy zarządzania danymi](data-factory-data-management-gateway.md) artykuł, szczegółowe informacje na temat bramy zarządzania danymi. Zobacz [przenoszenie danych ze środowiska lokalnego do chmury](data-factory-move-data-between-onprem-and-cloud.md) artykuł, aby uzyskać instrukcje krok po kroku dotyczące konfigurowania bramy potoku danych do przenoszenia danych.
+Aby usługa Azure Data Factory mogła nawiązać połączenie z lokalną bazą danych Cassandra, należy zainstalować bramę Zarządzanie danymi na tym samym komputerze, na którym znajduje się baza danych programu, lub na oddzielnym komputerze, aby uniknąć konkurowania zasobów z bazą danych. Zarządzanie danymi Gateway to składnik, który łączy lokalne źródła danych z usługami w chmurze w bezpieczny i zarządzany sposób. Szczegółowe informacje o bramie Zarządzanie danymi można znaleźć w artykule [Zarządzanie danymi Gateway](data-factory-data-management-gateway.md) . Instrukcje krok po kroku dotyczące konfigurowania bramy do przenoszenia danych można znaleźć w artykule [przenoszenie danych z lokalizacji lokalnej do chmury](data-factory-move-data-between-onprem-and-cloud.md) .
 
-Należy użyć bramy do łączenia z bazą danych Cassandra, nawet wtedy, gdy baza danych znajduje się w chmurze, na przykład na maszynie Wirtualnej IaaS platformy Azure. Y może masz bramy na tej samej maszyny Wirtualnej, który jest hostem bazy danych lub osobne maszyny wirtualnej, tak długo, jak bramy można połączyć z bazą danych.
+Musisz użyć bramy, aby nawiązać połączenie z bazą danych Cassandra, nawet jeśli baza danych jest hostowana w chmurze, na przykład na maszynie wirtualnej platformy Azure IaaS. T możesz mieć bramę na tej samej maszynie wirtualnej, która hostuje bazę danych lub na oddzielnej maszynie wirtualnej, o ile Brama może połączyć się z bazą danych.
 
-Po zainstalowaniu bramy, automatycznie instaluje sterownik Microsoft Cassandra ODBC, używane do łączenia z bazą danych Cassandra. W związku z tym nie trzeba ręcznie zainstalować dowolnego sterownika na maszynie bramy, podczas kopiowania danych z bazy danych Cassandra.
+Podczas instalacji bramy automatycznie instalowany jest sterownik Microsoft Cassandra ODBC używany do łączenia się z bazą danych Cassandra. W związku z tym nie trzeba ręcznie instalować żadnego sterownika na maszynie bramy podczas kopiowania danych z bazy danych Cassandra.
 
 > [!NOTE]
-> Zobacz [problemów bramy](data-factory-data-management-gateway.md#troubleshooting-gateway-issues) porady dotyczące rozwiązywania problemów z bramy połączenia/problemy związane z usługą.
+> Zobacz [Rozwiązywanie problemów z bramą](data-factory-data-management-gateway.md#troubleshooting-gateway-issues) , aby uzyskać porady dotyczące rozwiązywania problemów związanych z połączeniem/bramą.
 
 ## <a name="getting-started"></a>Wprowadzenie
-Utworzysz potok z działaniem kopiowania, które przenosi dane z lokalnego magazynu danych Cassandra przy użyciu różnych narzędzi/interfejsów API.
+Można utworzyć potok za pomocą działania kopiowania, które przenosi dane z lokalnego magazynu danych Cassandra przy użyciu różnych narzędzi/interfejsów API.
 
-- Najprostszym sposobem utworzenia potoku jest użycie **kreatora kopiowania**. Zobacz [samouczka: Tworzenie potoku przy użyciu Kreatora kopiowania](data-factory-copy-data-wizard-tutorial.md) szybki przewodnik dotyczący tworzenia potoku za pomocą Kreatora kopiowania danych.
-- Aby utworzyć potok umożliwia także następujących narzędzi: **Program Visual Studio**, **programu Azure PowerShell**, **szablonu usługi Azure Resource Manager**, **interfejsu API platformy .NET**, i **interfejsu API REST**. Zobacz [samouczka działania kopiowania](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) instrukcje krok po kroku utworzyć potok z działaniem kopiowania.
+- Najprostszym sposobem utworzenia potoku jest użycie **Kreatora kopiowania**. Zobacz [Samouczek: Tworzenie potoku za pomocą Kreatora kopiowania](data-factory-copy-data-wizard-tutorial.md) na potrzeby szybkiego instruktażu dotyczącego tworzenia potoku przy użyciu Kreatora kopiowania danych.
+- Do utworzenia potoku można także użyć następujących narzędzi: **Visual Studio**, **Azure PowerShell**, **szablon Azure Resource Manager**, interfejs API **platformy .NET**i **interfejs API REST**. Aby uzyskać instrukcje krok po kroku dotyczące tworzenia potoku za pomocą działania kopiowania, zobacz [Samouczek dotyczący działania kopiowania](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) .
 
-Czy używasz narzędzi lub interfejsów API, należy wykonać poniższe kroki, aby utworzyć potok, który przenosi dane z magazynu danych źródłowych do magazynu danych ujścia:
+Niezależnie od tego, czy używasz narzędzi, czy interfejsów API, wykonaj następujące kroki, aby utworzyć potok służący do przenoszenia danych ze źródłowego magazynu danych do magazynu danych ujścia:
 
-1. Tworzenie **połączonych usług** połączyć dane wejściowe i wyjściowe przechowywane z fabryką danych.
-2. Tworzenie **zestawów danych** do reprezentowania dane wejściowe i wyjściowe operacji kopiowania.
-3. Tworzenie **potoku** za pomocą działania kopiowania, która przyjmuje jako dane wejściowe zestawu danych i zestaw danych jako dane wyjściowe.
+1. Utwórz **połączone usługi** , aby połączyć magazyny danych wejściowych i wyjściowych z fabryką danych.
+2. Utwórz **zestawy** danych, aby reprezentować dane wejściowe i wyjściowe dla operacji kopiowania.
+3. Utwórz **potok** z działaniem kopiowania, które pobiera zestaw danych jako dane wejściowe i zestaw danych jako dane wyjściowe.
 
-Korzystając z kreatora, definicje JSON dotyczące tych jednostek usługi Data Factory (połączone usługi, zestawy danych i potok) są tworzone automatycznie dla Ciebie. Korzystając z narzędzi/interfejsów API (z wyjątkiem interfejsu API platformy .NET), należy zdefiniować te jednostki usługi Data Factory przy użyciu formatu JSON. Przykład przy użyciu definicji JSON dla jednostek fabryki danych, które są używane w celu skopiowania danych z lokalnego magazynu danych oprogramowania Cassandra, zobacz [przykład kodu JSON: Kopiowanie danych z bazy danych Cassandra do usługi Azure Blob](#json-example-copy-data-from-cassandra-to-azure-blob) dalszej części tego artykułu.
+Gdy używasz Kreatora, definicje JSON dla tych Data Factory jednostek (połączone usługi, zestawy danych i potok) są automatycznie tworzone. Korzystając z narzędzi/interfejsów API (z wyjątkiem interfejsu API .NET), należy zdefiniować te Data Factory jednostki przy użyciu formatu JSON. Aby uzyskać przykład z definicjami JSON dla Data Factory jednostek, które są używane do kopiowania danych z lokalnego magazynu danych Cassandra, zobacz [przykład JSON: Kopiuj dane z Cassandra do usługi Azure Blob](#json-example-copy-data-from-cassandra-to-azure-blob) w tym artykule.
 
-Poniższe sekcje zawierają szczegółowe informacje o właściwościach JSON, które są używane do definiowania jednostek usługi fabryka danych określonej do magazynu danych oprogramowania Cassandra:
+Poniższe sekcje zawierają szczegółowe informacje na temat właściwości JSON, które są używane do definiowania jednostek Data Factory specyficznych dla magazynu danych Cassandra:
 
-## <a name="linked-service-properties"></a>Właściwości usługi połączonej
-Poniższa tabela zawiera opis dla elementów JSON, które są specyficzne dla rozwiązania Cassandra połączonej usługi.
+## <a name="linked-service-properties"></a>Właściwości połączonej usługi
+Poniższa tabela zawiera opis elementów JSON specyficznych dla Cassandra połączonej usługi.
 
-| Właściwość | Opis | Wymagane |
+| Właściwość | Opis | Wymagany |
 | --- | --- | --- |
-| type |Właściwość type musi być równa: **OnPremisesCassandra** |Tak |
-| host |Jeden lub więcej adresów IP lub nazw hostów serwerów bazy danych Cassandra.<br/><br/>Określ rozdzielaną przecinkami listę adresów IP lub nazw hostów, połączyć się z wszystkich serwerów jednocześnie. |Yes |
-| port |Port TCP, którego serwer Cassandra korzysta do nasłuchiwania połączeń klientów. |Nie, wartość domyślna: 9042 |
-| authenticationType |Podstawowe lub anonimowe |Yes |
-| username |Określ nazwę użytkownika dla konta użytkownika. |Tak, jeśli element authenticationType ustawiany jest podstawowy. |
-| password |Określ hasło dla konta użytkownika. |Tak, jeśli element authenticationType ustawiany jest podstawowy. |
-| gatewayName |Nazwa bramy, która służy do łączenia z bazą danych Cassandra w środowisku lokalnym. |Tak |
-| encryptedCredential |Poświadczenie szyfrowane przez bramę. |Nie |
+| type |Właściwość Type musi mieć wartość: **OnPremisesCassandra** |Tak |
+| Host |Co najmniej jeden adres IP lub nazwa hosta serwerów Cassandra.<br/><br/>Określ rozdzieloną przecinkami listę adresów IP lub nazw hostów, które mają być połączone jednocześnie ze wszystkimi serwerami. |Tak |
+| port |Port TCP, którego serwer Cassandra używa do nasłuchiwania połączeń klientów. |Nie, wartość domyślna: 9042 |
+| authenticationType |Podstawowa lub anonimowa |Tak |
+| nazwa użytkownika |Określ nazwę użytkownika dla konta użytkownika. |Tak, Jeśli AuthenticationType ma wartość Basic. |
+| hasło |Określ hasło dla konta użytkownika. |Tak, Jeśli AuthenticationType ma wartość Basic. |
+| gatewayName |Nazwa bramy, która jest używana do nawiązywania połączenia z lokalną bazą danych Cassandra. |Tak |
+| encryptedCredential |Poświadczenie zaszyfrowane przez bramę. |Nie |
 
 >[!NOTE]
->Połączenie bazy danych Cassandra przy użyciu protokołu SSL nie jest obecnie obsługiwane.
+>Obecnie połączenie z usługą Cassandra przy użyciu protokołu SSL nie jest obsługiwane.
 
 ## <a name="dataset-properties"></a>Właściwości zestawu danych
-Aby uzyskać pełną listę sekcje & właściwości dostępne Definiowanie zestawów danych, zobacz [tworzenie zestawów danych](data-factory-create-datasets.md) artykułu. Sekcje, takie jak struktury, dostępność i zasady zestawem danych JSON są podobne dla wszystkich typów na zestaw danych (Azure SQL, obiektów blob platformy Azure, usługa Azure table itp.).
+Aby uzyskać pełną listę sekcji & właściwości dostępne do definiowania zestawów danych, zobacz artykuł [Tworzenie zestawów danych](data-factory-create-datasets.md) . Sekcje, takie jak struktura, dostępność i zasady JSON zestawu danych są podobne dla wszystkich typów zestawu danych (Azure SQL, Azure Blob, Azure Table itp.).
 
-**TypeProperties** sekcji różni się dla każdego typu zestawu danych i zawiera informacje o lokalizacji danych w magazynie danych. Zestaw danych o typie sekcji typeProperties **CassandraTable** ma następujące właściwości
+Sekcja **typeProperties** jest inna dla każdego typu zestawu danych i zawiera informacje dotyczące lokalizacji danych w magazynie danych. Sekcja typeProperties zestawu danych typu **CassandraTable** ma następujące właściwości:
 
-| Właściwość | Opis | Wymagane |
+| Właściwość | Opis | Wymagany |
 | --- | --- | --- |
-| keyspace |Nazwa przestrzeni kluczy lub schemat bazy danych Cassandra. |Tak (Jeśli **zapytania** dla **CassandraSource** nie jest zdefiniowana). |
-| tableName |Nazwa tabeli w bazie danych Cassandra. |Tak (Jeśli **zapytania** dla **CassandraSource** nie jest zdefiniowana). |
+| przestrzeń kluczy |Nazwa przestrzeni kluczy lub schematu w bazie danych Cassandra. |Tak (jeśli nie zdefiniowano **kwerendy** dla **CassandraSource** ). |
+| tableName |Nazwa tabeli w bazie danych Cassandra. |Tak (jeśli nie zdefiniowano **kwerendy** dla **CassandraSource** ). |
 
 ## <a name="copy-activity-properties"></a>Właściwości działania kopiowania
-Aby uzyskać pełną listę sekcje & właściwości dostępne do definiowania działań, zobacz [tworzenie potoków](data-factory-create-pipelines.md) artykułu. Właściwości, takie jak nazwa, opis, dane wejściowe i wyjściowe tabel i zasady są dostępne dla wszystkich typów działań.
+Aby uzyskać pełną listę sekcji & właściwości dostępne do definiowania działań, zobacz artykuł [Tworzenie potoków](data-factory-create-pipelines.md) . Właściwości, takie jak nazwa, opis, tabele wejściowe i wyjściowe, oraz zasady są dostępne dla wszystkich typów działań.
 
-Natomiast właściwości, które są dostępne w sekcji typeProperties działania zależą od każdego typu działania. Działanie kopiowania ich różnią się w zależności od typów źródła i ujścia.
+Natomiast właściwości dostępne w sekcji typeProperties działania różnią się w zależności od typu działania. W przypadku działania kopiowania różnią się w zależności od typów źródeł i ujścia.
 
-Jeśli źródło jest typu **CassandraSource**, w sekcji typeProperties dostępne są następujące właściwości:
+Jeśli źródło jest typu **CassandraSource**, w sekcji typeProperties są dostępne następujące właściwości:
 
-| Właściwość | Opis | Dozwolone wartości | Wymagane |
+| Właściwość | Opis | Dozwolone wartości | Wymagany |
 | --- | --- | --- | --- |
-| query |Użyj zapytania niestandardowe można odczytać danych. |Zapytanie SQL 92 lub zapytanie języka CQL. Zobacz [odwołanie do języka CQL](https://docs.datastax.com/en/cql/3.1/cql/cql_reference/cqlReferenceTOC.html). <br/><br/>Korzystając z zapytania SQL, określ **nazwa name.table przestrzeń kluczy** do reprezentowania tabeli, które chcesz zbadać. |Nie (jeśli są zdefiniowane tableName oraz przestrzeń kluczy w zestawie danych). |
-| consistencyLevel |Poziom spójności Określa, jak wiele replik musi odpowiadać na żądania odczytu przed zwróceniem danych do aplikacji klienckiej. Bazy danych Cassandra sprawdza określoną liczbę replik dla danych do spełnienia żądania odczytu. |JEDEN, DWA, TRZY, KWORUM, WSZYSTKIE, LOCAL_QUORUM EACH_QUORUM, LOCAL_ONE. Zobacz [Konfigurowanie spójności danych](https://docs.datastax.com/en/cassandra/2.1/cassandra/dml/dml_config_consistency_c.html) Aby uzyskać szczegółowe informacje. |Nie. Wartość domyślna to jeden. |
+| query |Użyj zapytania niestandardowego do odczytywania danych. |Zapytanie SQL-92 zapytania lub CQL. Zobacz [CQL Reference](https://docs.datastax.com/en/cql/3.1/cql/cql_reference/cqlReferenceTOC.html). <br/><br/>W przypadku korzystania z zapytania SQL określ **nazwę przestrzeni kluczy. nazwa tabeli** do reprezentowania tabeli, którą chcesz zbadać. |Nie (Jeśli określono element TableName i przestrzeń kluczy w zestawie danych). |
+| consistencyLevel |Poziom spójności określa, ile replik musi odpowiedzieć na żądanie odczytu przed zwróceniem danych do aplikacji klienckiej. Cassandra sprawdza określoną liczbę replik dla danych, aby spełnić żądanie odczytu. |JEDEN, DWA, TRZY, KWORUM, ALL, LOCAL_QUORUM, EACH_QUORUM, LOCAL_ONE. Aby uzyskać szczegółowe informacje, zobacz [Konfigurowanie spójności danych](https://docs.datastax.com/en/cassandra/2.1/cassandra/dml/dml_config_consistency_c.html) . |Nie. Wartość domyślna to 1. |
 
-## <a name="json-example-copy-data-from-cassandra-to-azure-blob"></a>Przykład kodu JSON: Kopiowanie danych z bazy danych Cassandra do obiektów Blob platformy Azure
-W poniższym przykładzie przedstawiono przykładowe definicji JSON, które umożliwiają tworzenie potoku za pomocą [programu Visual Studio](data-factory-copy-activity-tutorial-using-visual-studio.md) lub [programu Azure PowerShell](data-factory-copy-activity-tutorial-using-powershell.md). Widoczny jest sposób skopiować dane z lokalnej bazy danych Cassandra do usługi Azure Blob Storage. Jednakże, można skopiować danych do dowolnego ujścia, o których wspomniano [tutaj](data-factory-data-movement-activities.md#supported-data-stores-and-formats) za pomocą działania kopiowania w usłudze Azure Data Factory.
+## <a name="json-example-copy-data-from-cassandra-to-azure-blob"></a>Przykład JSON: kopiowanie danych z Cassandra do obiektu blob platformy Azure
+Ten przykład zawiera przykładowe definicje JSON, których można użyć do utworzenia potoku przy użyciu [programu Visual Studio](data-factory-copy-activity-tutorial-using-visual-studio.md) lub [Azure PowerShell](data-factory-copy-activity-tutorial-using-powershell.md). Pokazuje, jak skopiować dane z lokalnej bazy danych Cassandra do Blob Storage platformy Azure. Dane można jednak kopiować do dowolnego ujścia w [tym miejscu](data-factory-data-movement-activities.md#supported-data-stores-and-formats) za pomocą działania kopiowania w Azure Data Factory.
 
 > [!IMPORTANT]
-> W tym przykładzie przedstawiono fragmenty kodu JSON. Nie obejmuje instrukcje krok po kroku dotyczące tworzenia fabryki danych. Zobacz [przenoszenia danych między lokalizacjami lokalnymi i chmurą](data-factory-move-data-between-onprem-and-cloud.md) artykuł, aby uzyskać instrukcje krok po kroku.
+> Ten przykład zawiera fragmenty kodu JSON. Zawiera instrukcje krok po kroku dotyczące tworzenia fabryki danych. Instrukcje krok po kroku znajdują się [w sekcji przeniesienie danych między lokalizacjami lokalnymi i artykułem w chmurze](data-factory-move-data-between-onprem-and-cloud.md) .
 
-Przykład obejmuje następujących jednostek fabryki danych:
+Przykład zawiera następujące jednostki fabryki danych:
 
-* Połączonej usługi typu [OnPremisesCassandra](#linked-service-properties).
-* Połączonej usługi typu [AzureStorage](data-factory-azure-blob-connector.md#linked-service-properties).
-* Dane wejściowe [dataset](data-factory-create-datasets.md) typu [CassandraTable](#dataset-properties).
-* Dane wyjściowe [dataset](data-factory-create-datasets.md) typu [AzureBlob](data-factory-azure-blob-connector.md#dataset-properties).
-* A [potoku](data-factory-create-pipelines.md) za pomocą działania kopiowania, która używa [CassandraSource](#copy-activity-properties) i [BlobSink](data-factory-azure-blob-connector.md#copy-activity-properties).
+* Połączona usługa typu [OnPremisesCassandra](#linked-service-properties).
+* Połączona usługa typu [AzureStorage](data-factory-azure-blob-connector.md#linked-service-properties).
+* Wejściowy [zestaw danych](data-factory-create-datasets.md) typu [CassandraTable](#dataset-properties).
+* Wyjściowy [zestaw danych](data-factory-create-datasets.md) typu [AzureBlob](data-factory-azure-blob-connector.md#dataset-properties).
+* [Potok](data-factory-create-pipelines.md) z działaniem kopiowania korzystającym z [CassandraSource](#copy-activity-properties) i [wartość blobsink](data-factory-azure-blob-connector.md#copy-activity-properties).
 
-**Bazy danych Cassandra połączoną usługę:**
+**Cassandra połączona usługa:**
 
-W tym przykładzie użyto **Cassandra** połączoną usługę. Zobacz [Cassandra połączoną usługę](#linked-service-properties) sekcja dotycząca właściwości obsługiwanych przez tej połączonej usługi.
+Ten przykład używa połączonej usługi **Cassandra** . Zobacz sekcję [Cassandra połączonej usługi](#linked-service-properties) , aby uzyskać właściwości obsługiwane przez tę połączoną usługę.
 
 ```json
 {
@@ -151,7 +151,7 @@ W tym przykładzie użyto **Cassandra** połączoną usługę. Zobacz [Cassandra
 }
 ```
 
-**Wejściowy zestaw danych bazy danych Cassandra:**
+**Cassandra wejściowy zestaw danych:**
 
 ```json
 {
@@ -179,11 +179,11 @@ W tym przykładzie użyto **Cassandra** połączoną usługę. Zobacz [Cassandra
 }
 ```
 
-Ustawienie **zewnętrznych** do **true** usługi Data Factory informuje, że zestaw danych jest zewnętrzne w usłudze data factory i nie jest generowany przez działanie w usłudze data factory.
+Ustawienie od **zewnątrz** do **true** informuje usługę Data Factory, że zestaw danych znajduje się poza fabryką danych i nie jest wytwarzany przez działanie w fabryce danych.
 
-**Usługa Azure Blob wyjściowy zestaw danych:**
+**Wyjściowy zestaw danych obiektów blob platformy Azure:**
 
-Dane są zapisywane do nowego obiektu blob, co godzinę (frequency: godzina, interwał: 1).
+Dane są zapisywane w nowym obiekcie blob co godzinę (częstotliwość: godzina, interwał: 1).
 
 ```json
 {
@@ -205,11 +205,11 @@ Dane są zapisywane do nowego obiektu blob, co godzinę (frequency: godzina, int
 }
 ```
 
-**Działanie kopiowania w potoku za pomocą bazy danych Cassandra źródła i ujścia obiektu Blob:**
+**Działanie kopiowania w potoku ze źródłem Cassandra i obiektem BLOB:**
 
-Potoku zawierającego działanie kopiowania, który jest skonfigurowany do korzystania z danych wejściowych i wyjściowych zestawów danych i jest zaplanowane do uruchomienia na godzinę. W definicji JSON potok **źródła** ustawiono typ **CassandraSource** i **ujścia** ustawiono typ **BlobSink**.
+Potok zawiera działanie kopiowania, które jest skonfigurowane do korzystania z wejściowych i wyjściowych zestawów danych i zaplanowane do uruchomienia co godzinę. W definicji JSON potoku typ **źródła** ma wartość **CassandraSource** , a typ **ujścia** to **wartość blobsink**.
 
-Zobacz [właściwości typu RelationalSource](#copy-activity-properties) listy właściwości obsługiwanych przez RelationalSource.
+Zobacz [właściwości typu RelationalSource](#copy-activity-properties) , aby uzyskać listę właściwości obsługiwanych przez RelationalSource.
 
 ```json
 {
@@ -259,64 +259,64 @@ Zobacz [właściwości typu RelationalSource](#copy-activity-properties) listy w
 }
 ```
 
-### <a name="type-mapping-for-cassandra"></a>Mapowanie typu dla bazy danych Cassandra
-| Typ bazy danych Cassandra | Typ oparte na platformie .NET |
+### <a name="type-mapping-for-cassandra"></a>Mapowanie typu dla Cassandra
+| Typ Cassandra | Typ oparty na platformie .NET |
 | --- | --- |
-| ASCII |String |
+| ASCII |Ciąg |
 | BIGINT |Int64 |
-| BLOB |Byte[] |
-| BOOLEAN |Boolean |
-| DECIMAL |Decimal |
+| BLOB |Byte [] |
+| TYPU |Wartość logiczna |
+| DOKŁADNOŚCI |Dokładności |
 | DOUBLE |Double |
-| FLOAT |Single |
-| INET |String |
-| INT |Int32 |
-| TEXT |Ciąg |
-| TIMESTAMP |Datetime |
-| TIMEUUID |Guid |
-| UUID |Guid |
-| VARCHAR |String |
-| VARINT |Decimal |
+| FLOAT |Pojedyncze |
+| INET |Ciąg |
+| INT |Elementem |
+| Opis |Ciąg |
+| ZNACZNIK czasu |DateTime |
+| TIMEUUID |Identyfikator GUID |
+| INTERFEJSU |Identyfikator GUID |
+| VARCHAR |Ciąg |
+| VARINT |Dokładności |
 
 > [!NOTE]
-> Kolekcja typów (mapa, zestaw, listy itp.), można znaleźć [pracują z typami kolekcji bazy danych Cassandra przy użyciu tabeli wirtualnej](#work-with-collections-using-virtual-table) sekcji.
+> W przypadku typów kolekcji (map, Set, list itp.) zapoznaj się z sekcją [Work with Cassandra Types using przy użyciu tabeli wirtualnej](#work-with-collections-using-virtual-table) .
 >
 > Typy zdefiniowane przez użytkownika nie są obsługiwane.
 >
-> Długość binarne kolumny i kolumny typu String długości nie może być większa niż 4000.
+> Długość kolumny binarnej i długości kolumny ciągu nie może być większa niż 4000.
 >
 >
 
-## <a name="work-with-collections-using-virtual-table"></a>Praca z kolekcji za pomocą tabeli wirtualnej
-Usługa Azure Data Factory używa wbudowanego sterownika ODBC, aby nawiązać połączenie i kopiowanie danych z bazy danych Cassandra. Dla typów kolekcji, łącznie z mapy, zestaw i listy sterownik renormalizes dane do odpowiedniego tabele wirtualne. W szczególności jeśli tabela zawiera żadnych kolumn kolekcji, sterownik generuje następujące tabele wirtualne:
+## <a name="work-with-collections-using-virtual-table"></a>Pracuj z kolekcjami przy użyciu tabeli wirtualnej
+Azure Data Factory używa wbudowanego sterownika ODBC do nawiązywania połączenia i kopiowania danych z bazy danych Cassandra. W przypadku typów kolekcji, w tym map, Set i list, sterownik ponownie normalizuje dane do odpowiednich tabel wirtualnych. W przypadku, gdy tabela zawiera wszystkie kolumny kolekcji, sterownik generuje następujące tabele wirtualne:
 
-* A **tabeli podstawowej**, który zawiera te same dane jako tabelę rzeczywistych, z wyjątkiem kolumn kolekcji. Tabela podstawowa używa tej samej nazwie jako rzeczywistych tabeli, który reprezentuje.
-* A **tabeli wirtualnej** dla każdej kolumny kolekcji, która rozszerza zagnieżdżone dane. Wirtualne tabel, które reprezentują kolekcje są nazywane przy użyciu nazwy tabeli rzeczywistych separator "*vt*" i nazwę kolumny.
+* **Tabela podstawowa**, która zawiera te same dane, co rzeczywista tabela z wyjątkiem kolumn kolekcji. Tabela podstawowa używa takiej samej nazwy jak rzeczywista tabela, która reprezentuje.
+* **Tabela wirtualna** dla każdej kolumny kolekcji, która rozszerza zagnieżdżone dane. Tabele wirtualne reprezentujące kolekcje są nazwane przy użyciu nazwy rzeczywistej tabeli, separatora "*VT*" i nazwy kolumny.
 
-Tabele wirtualne odnoszą się do danych w tabeli rzeczywistych Włączanie sterownik dostępu do danych nieznormalizowany. Zobacz przykład sekcję, aby uzyskać szczegółowe informacje. Wykonywanie zapytań i przyłączanie tabel wirtualnego, ma dostęp do zawartości, kolekcji bazy danych Cassandra.
+Tabele wirtualne odwołują się do danych w rzeczywistej tabeli, umożliwiając sterownikowi dostęp do nieznormalizowanych danych. Aby uzyskać szczegółowe informacje, zobacz sekcję dotyczącą przykładu. Możesz uzyskać dostęp do zawartości kolekcji Cassandra, wykonując zapytania i dołączając do tabel wirtualnych.
 
-Możesz użyć [kreatora kopiowania](data-factory-data-movement-activities.md#create-a-pipeline-with-copy-activity) intuicyjnie wyświetlać listę tabel w bazie danych Cassandra, łącznie z tabelami wirtualnego i wyświetlić podgląd danych wewnątrz. Można również utworzyć kwerendę w kreatorze kopiowania i weryfikacji, aby wyświetlić wynik.
+[Kreatora kopiowania](data-factory-data-movement-activities.md#create-a-pipeline-with-copy-activity) można użyć, aby intuicyjnie wyświetlić listę tabel w bazie danych Cassandra, w tym tabele wirtualne, i wyświetlić podgląd danych wewnątrz. Możesz również utworzyć zapytanie w Kreatorze kopiowania i sprawdzić poprawność, aby zobaczyć wynik.
 
 ### <a name="example"></a>Przykład
-Na przykład poniższy "ExampleTable" jest tabeli bazy danych Cassandra, która zawiera całkowitą kolumna klucza podstawowego o nazwie "pk_int", nazwanej wartości kolumny tekstowej, kolumna listy, kolumna mapy i zestawu kolumn (o nazwie "StringSet").
+Na przykład następująca "przykład" jest tabelą bazy danych Cassandra, która zawiera kolumnę klucza podstawowego Integer o nazwie "pk_int", kolumnę tekstową o nazwie Value, kolumnę listy, kolumnę mapy i kolumnę zestawu (o nazwie "StringSet").
 
 | pk_int | Wartość | List | Mapa | StringSet |
 | --- | --- | --- | --- | --- |
-| 1 |"przykład: wartość 1" |["1", "2", "3"] |{"S1": "a", "S2": "b"} |{"A", "B", "C"} |
-| 3 |"przykład value 3" |["100", "101", "102", "105"] |{"S1": "t"} |{"A", "E"} |
+| 1 |"przykładowa wartość 1" |["1", "2", "3"] |{"S1": "a", "S2": "b"} |{"A", "B", "C"} |
+| 3 |"przykładowa wartość 3" |["100", "101", "102", "105"] |{"S1": "t"} |{"A", "E"} |
 
-Sterownik wygeneruje wiele tabel wirtualnego do reprezentowania jednej tabeli. Kolumny klucza obcego w tabelach wirtualnych odwoływać się do kolumny klucza podstawowego w tabeli rzeczywistych i wskazać, który wiersz tabeli rzeczywistych wiersz tabeli wirtualnej odpowiada.
+Sterownik generuje wiele tabel wirtualnych do reprezentowania tej pojedynczej tabeli. Kolumny klucza obcego w tabelach wirtualnych odwołują się do kolumn klucza podstawowego w rzeczywistej tabeli i wskazują, który wiersz tabeli w rzeczywistości odpowiada wiersz tabeli wirtualnej.
 
-Pierwsza tabela wirtualnego jest tabela bazowa o nazwie "ExampleTable" przedstawiono w poniższej tabeli. Tabela podstawowa zawiera te same dane, co oryginalnej tabeli bazy danych, z wyjątkiem kolekcji, które są pomijane w tej tabeli i rozwinięty w innych tabelach wirtualnych.
+Pierwsza tabela wirtualna jest tabelą podstawową o nazwie "Przykładowe" przedstawiono w poniższej tabeli. Tabela podstawowa zawiera te same dane, co oryginalna tabela bazy danych, z wyjątkiem kolekcji, które zostały pominięte w tej tabeli i rozwinięte w innych tabelach wirtualnych.
 
-| pk_int | Value |
+| pk_int | Wartość |
 | --- | --- |
-| 1 |"przykład: wartość 1" |
-| 3 |"przykład value 3" |
+| 1 |"przykładowa wartość 1" |
+| 3 |"przykładowa wartość 3" |
 
-W poniższych tabelach przedstawiono tabele wirtualne, które ponownie normalizować dane z listy, mapy i StringSet kolumn. Kolumny z nazwami, które kończą się "_index" lub "_klucz" wskazują pozycji danych w oryginalnej listy lub mapy. Kolumny z nazwami, które kończą się "_wartość" zawierają rozwiniętej danych z kolekcji.
+W poniższych tabelach przedstawiono tabelę wirtualną, która ponownie normalizuje dane z kolumn list, map i StringSet. Kolumny z nazwami kończącymi się znakami "_index" lub "_Key" wskazują pozycję danych w oryginalnej liście lub mapie. Kolumny z nazwami kończącymi się znakiem "_Value" zawierają rozwinięte dane z kolekcji.
 
-#### <a name="table-exampletablevtlist"></a>Tabela "ExampleTable_vt_List":
+#### <a name="table-exampletable_vt_list"></a>Tabela "ExampleTable_vt_List":
 | pk_int | List_index | List_value |
 | --- | --- | --- |
 | 1 |0 |1 |
@@ -327,14 +327,14 @@ W poniższych tabelach przedstawiono tabele wirtualne, które ponownie normalizo
 | 3 |2 |102 |
 | 3 |3 |103 |
 
-#### <a name="table-exampletablevtmap"></a>Tabela "ExampleTable_vt_Map":
+#### <a name="table-exampletable_vt_map"></a>Tabela "ExampleTable_vt_Map":
 | pk_int | Map_key | Map_value |
 | --- | --- | --- |
 | 1 |S1 |A |
 | 1 |S2 |b |
 | 3 |S1 |t |
 
-#### <a name="table-exampletablevtstringset"></a>Tabela "ExampleTable_vt_StringSet":
+#### <a name="table-exampletable_vt_stringset"></a>Tabela "ExampleTable_vt_StringSet":
 | pk_int | StringSet_value |
 | --- | --- |
 | 1 |A |
@@ -343,11 +343,11 @@ W poniższych tabelach przedstawiono tabele wirtualne, które ponownie normalizo
 | 3 |A |
 | 3 |E |
 
-## <a name="map-source-to-sink-columns"></a>Mapy źródła do ujścia kolumn
-Aby uzyskać informacje dotyczące mapowania kolumn w zestaw danych źródłowych do kolumn w zestawie danych ujścia, zobacz [mapowanie kolumny zestawu danych w usłudze Azure Data Factory](data-factory-map-columns.md).
+## <a name="map-source-to-sink-columns"></a>Mapowanie źródła do kolumn ujścia
+Aby dowiedzieć się więcej na temat mapowania kolumn w źródłowym zestawie danych na kolumny w datadataset, zobacz [Mapowanie kolumn zestawu danych w Azure Data Factory](data-factory-map-columns.md).
 
-## <a name="repeatable-read-from-relational-sources"></a>Odczyt powtarzalny ze źródeł relacyjnych
-Podczas kopiowania danych z relacyjnej bazie danych są przechowywane, Zachowaj powtarzalności należy pamiętać, aby uniknąć niezamierzonego wyników. W usłudze Azure Data Factory możesz ponownie uruchomić wycinek ręcznie. Można również skonfigurować zasady ponawiania dla zestawu danych, dzięki czemu wycinek będzie uruchamiana ponownie, gdy wystąpi błąd. Gdy wycinek będzie uruchamiana ponownie w obu przypadkach, należy się upewnić, że te same dane jest do odczytu niezależnie od tego, ile razy wycinek jest uruchamiany. Zobacz [Repeatable odczytywać źródła relacyjnego](data-factory-repeatable-copy.md#repeatable-read-from-relational-sources).
+## <a name="repeatable-read-from-relational-sources"></a>Powtarzanie odczytu ze źródeł relacyjnych
+Podczas kopiowania danych z magazynów danych relacyjnych należy mieć na uwadze powtarzalność, aby uniknąć niezamierzonych wyników. W Azure Data Factory można ręcznie uruchomić ponownie wycinka. Możesz również skonfigurować zasady ponawiania dla zestawu danych, aby wycinek był uruchamiany ponownie w przypadku wystąpienia błędu. Gdy wycinek jest uruchamiany ponownie w dowolny sposób, należy się upewnić, że te same dane są odczytywane niezależnie od tego, ile razy jest uruchomiony plasterek. Zobacz [powtarzanie odczytu ze źródeł relacyjnych](data-factory-repeatable-copy.md#repeatable-read-from-relational-sources).
 
 ## <a name="performance-and-tuning"></a>Wydajność i dostrajanie
-Zobacz [wydajności działania kopiowania & przewodnika dostrajania](data-factory-copy-activity-performance.md) Aby dowiedzieć się więcej o kluczowych czynników tego obniżenie wydajności przenoszenia danych (działanie kopiowania) w usłudze Azure Data Factory i różne sposoby, aby zoptymalizować ją.
+Zobacz [Przewodnik dostrajania wydajności & działania kopiowania](data-factory-copy-activity-performance.md) , aby poznać kluczowe czynniki wpływające na wydajność przenoszenia danych (działanie kopiowania) w Azure Data Factory i różne sposoby jego optymalizacji.

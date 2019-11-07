@@ -1,5 +1,5 @@
 ---
-title: 'Aplikacja SaaS: Monitorowanie wydajności wielu baz danych usługi Azure SQL Database | Microsoft Docs'
+title: 'Aplikacja SaaS: monitorowanie wydajności wielu baz danych SQL Azure '
 description: Monitorowanie wydajności baz danych i pul usługi Azure SQL w wielodostępnej aplikacji SaaS oraz zarządzanie nią
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 01/25/2019
-ms.openlocfilehash: 322cc2fd53972c7c084da76ac0c80b757d0d2297
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 4860766ddb4214591dc2c77f2746f958cb101741
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68570416"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73692137"
 ---
 # <a name="monitor-and-manage-performance-of-azure-sql-databases-and-pools-in-a-multi-tenant-saas-app"></a>Monitorowanie wydajności baz danych i pul usługi Azure SQL w wielodostępnej aplikacji SaaS oraz zarządzanie nią
 
@@ -34,7 +34,7 @@ Ten samouczek zawiera informacje na temat wykonywania następujących czynności
 > * Aprowizacja drugiej elastycznej puli w celu równoważenia aktywności baz danych
 
 
-Do wykonania zadań opisanych w tym samouczku niezbędne jest spełnienie następujących wymagań wstępnych:
+Do wykonania kroków tego samouczka niezbędne jest spełnienie następujących wymagań wstępnych:
 
 * Wdrożono Wingtip bilety bazy danych SaaS dla dzierżawy. Aby wdrożyć program w ciągu mniej niż pięciu minut, zobacz [wdrażanie i eksplorowanie bazy danych Wingtip biletów SaaS na aplikację dzierżawców](saas-dbpertenant-get-started-deploy.md)
 * Zainstalowany jest program Azure PowerShell. Aby uzyskać szczegółowe informacje, zobacz [Rozpoczynanie pracy z programem Azure PowerShell](https://docs.microsoft.com/powershell/azure/get-started-azureps)
@@ -60,7 +60,7 @@ W przypadku scenariuszy o dużej ilości, w których pracujesz z wieloma zasobam
 
 ## <a name="get-the-wingtip-tickets-saas-database-per-tenant-application-scripts"></a>Pobierz Wingtip bilety bazy danych SaaS na skrypty aplikacji dzierżawców
 
-Wingtip bilety SaaS wielodostępnych skryptów bazy danych i kodu źródłowego aplikacji są dostępne w repozytorium GitHub [WingtipTicketsSaaS-DbPerTenant](https://github.com/Microsoft/WingtipTicketsSaaS-DbPerTenant) . Zapoznaj się [](saas-tenancy-wingtip-app-guidance-tips.md) z ogólnymi wskazówkami dotyczącymi kroków pobierania i odblokowywania Wingtip biletów SaaS.
+Wingtip bilety SaaS wielodostępnych skryptów bazy danych i kodu źródłowego aplikacji są dostępne w repozytorium GitHub [WingtipTicketsSaaS-DbPerTenant](https://github.com/Microsoft/WingtipTicketsSaaS-DbPerTenant) . Zapoznaj się z [ogólnymi wskazówkami](saas-tenancy-wingtip-app-guidance-tips.md) dotyczącymi kroków pobierania i odblokowywania Wingtip biletów SaaS.
 
 ## <a name="provision-additional-tenants"></a>Aprowizacja dodatkowych dzierżaw
 
@@ -68,7 +68,7 @@ Pule stają się opłacalne nawet w przypadku zaledwie dwóch baz danych nas poz
 
 Jeśli masz już zainicjowaną partię dzierżawców w poprzednim samouczku, przejdź do sekcji [symulowanie użycia we wszystkich bazach danych dzierżaw](#simulate-usage-on-all-tenant-databases) .
 
-1. W **ISE programu PowerShell**Otwórz pozycję... Monitorowanie wydajności\\modułów szkoleniowych i\\zarządzanie*demo-PerformanceMonitoringAndManagement. ps1.* \\ Nie zamykaj tego skryptu, gdyż w ramach tego samouczka będzie konieczne uruchomienie kilku scenariuszy.
+1. W programie **POWERSHELL ISE**Otwórz program...\\modułów uczenia\\monitorowania wydajności i zarządzania\\*demo-PerformanceMonitoringAndManagement. ps1*. Nie zamykaj tego skryptu, gdyż w ramach tego samouczka będzie konieczne uruchomienie kilku scenariuszy.
 1. Ustaw zmienną **$DemoScenario** = **1**, **Provision a batch of tenants** (Aprowizacja partii dzierżaw)
 1. Naciśnij klawisz **F5**, aby uruchomić skrypt.
 
@@ -80,7 +80,7 @@ Skrypt *New-TenantBatch* używa zagnieżdżonego lub połączonego zestawu [Mene
 
 Został udostępniony skrypt *demo-PerformanceMonitoringAndManagement. ps1* , który symuluje obciążenie uruchomione dla wszystkich baz danych dzierżaw. Obciążenie jest generowane przy użyciu jednego z dostępnych scenariuszy ładowania:
 
-| Pokaz | Scenariusz |
+| Demonstracja | Scenariusz |
 |:--|:--|
 | 2 | Generuj normalne obciążenie natężenia (około 40 jednostek DTU) |
 | 3 | Generowanie obciążenia z dłuższymi i częstszymi skokami wartości dla każdej bazy danych|
@@ -90,8 +90,8 @@ Został udostępniony skrypt *demo-PerformanceMonitoringAndManagement. ps1* , kt
 
 Generator obciążenia stosuje obciążenie *syntetyczne* wyłącznie do procesorów dla każdej bazy danych dzierżawy. Generator uruchamia zadanie dla każdej bazy danych dzierżawy, co powoduje cykliczne wywołanie procedury składowanej, która generuje obciążenie. Poziomy obciążenia (mierzone w jednostkach eDTU), czas trwania i interwały są zróżnicowane dla wszystkich baz danych, co symuluje nieprzewidywalną aktywność dzierżawy.
 
-1. W **ISE programu PowerShell**Otwórz pozycję... Monitorowanie wydajności\\modułów szkoleniowych i\\zarządzanie*demo-PerformanceMonitoringAndManagement. ps1.* \\ Nie zamykaj tego skryptu, gdyż w ramach tego samouczka będzie konieczne uruchomienie kilku scenariuszy.
-1. Ustaw **$DemoScenario** = **2**, *generując normalne obciążenie intensywnie*.
+1. W programie **POWERSHELL ISE**Otwórz program...\\modułów uczenia\\monitorowania wydajności i zarządzania\\*demo-PerformanceMonitoringAndManagement. ps1*. Nie zamykaj tego skryptu, gdyż w ramach tego samouczka będzie konieczne uruchomienie kilku scenariuszy.
+1. Ustaw **$DemoScenario** = **2**, *Generuj normalne obciążenie intensywnie*.
 1. Naciśnij klawisz **F5**, aby zastosować obciążenie do wszystkich baz danych dzierżaw.
 
 Bilety Wingtip SaaS Database na dzierżawcę to aplikacja SaaS, a rzeczywiste obciążenie aplikacji SaaS jest zwykle sporadyczne i nieprzewidywalne. Aby to zasymulować, generator w sposób losowy obciąża wszystkie dzierżawy. Do nawiązania wzorca obciążenia potrzeba kilku minut, więc uruchom generator obciążenia przez 3-5 minut przed próbą monitorowania obciążenia w poniższych sekcjach.
@@ -103,7 +103,7 @@ Bilety Wingtip SaaS Database na dzierżawcę to aplikacja SaaS, a rzeczywiste ob
 
 Aby monitorować użycie zasobów wynikające z zastosowanego obciążenia, Otwórz Portal w puli zawierającej bazy danych dzierżawcy:
 
-1. Otwórz [Azure Portal](https://portal.azure.com) i przejdź do serwera *tenants1-&lt;DPT-User.&gt;*
+1. Otwórz [Azure Portal](https://portal.azure.com) i przejdź do serwera *&gt;użytkownika tenants1-DPT-&lt;* .
 1. Przewiń w dół, zlokalizuj elastyczne pule i kliknij pozycję **Pool1**. Ta pula zawiera wszystkie bazy danych dzierżaw utworzone dotychczas.
 
 Obserwuj wykresy monitorowania **elastycznej puli** i monitorowania **Elastic Database** .
@@ -119,9 +119,9 @@ Ponieważ w puli znajdują się dodatkowe bazy danych powyżej pięciu pierwszyc
 
 ## <a name="set-performance-alerts-on-the-pool"></a>Ustawianie alertów wydajności dla puli
 
-Ustaw Alert w puli, który wyzwala na \>75% użycie w następujący sposób:
+Ustaw Alert w puli, który wyzwala na \>użycie 75% w następujący sposób:
 
-1. Otwórz *Pool1* (na serwerze *tenants1-DPT-\<User\>*  ) w [Azure Portal](https://portal.azure.com).
+1. Otwórz *Pool1* (na *\>tenants1-DPT-\<użytkownika* ) w [Azure Portal](https://portal.azure.com).
 1. Kliknij pozycję **Reguły alertów**, a następnie kliknij przycisk **+ Dodaj alert**:
 
    ![dodawanie alertu](media/saas-dbpertenant-performance-monitoring/add-alert.png)
@@ -158,7 +158,7 @@ Monitoruj zwiększone użycie jednostek eDTU puli na górnym wykresie. Nowe wyż
 1. Dostosuj ustawienie liczby **jednostek EDTU puli** do **100**. Zmiana liczby jednostek eDTU puli nie zmienia ustawienia poszczególnych baz danych (które nadal ma maksymalną wartość 50 jednostek eDTU na bazę danych). Ustawienia poszczególnych baz danych są widoczne po prawej stronie strony **Konfigurowanie puli** .
 1. Kliknij przycisk **Zapisz** , aby przesłać żądanie skalowania puli.
 
-Wróć do**omówienia** **Pool1** > , aby wyświetlić wykresy monitorowania. Monitoruj wpływ puli o więcej zasobów (choć z nielicznymi bazami danych i losowo załadowanego obciążenia nie zawsze łatwo sprawdzaj się, dopóki nie zostanie uruchomiony przez jakiś czas). Patrząc na wykresy należy sobie zdawać sprawę, że 100% na górnym wykresie odpowiada teraz 100 jednostkom eDTU, podczas gdy na dolnym wykresie 100% nadal odpowiada 50 jednostkom eDTU, gdyż maksymalna wartość dla pojedynczej bazy danych nadal wynosi 50 jednostek eDTU.
+Wróć do **Pool1** > **Przegląd** , aby wyświetlić wykresy monitorowania. Monitoruj wpływ puli o więcej zasobów (choć z nielicznymi bazami danych i losowo załadowanego obciążenia nie zawsze łatwo sprawdzaj się, dopóki nie zostanie uruchomiony przez jakiś czas). Patrząc na wykresy należy sobie zdawać sprawę, że 100% na górnym wykresie odpowiada teraz 100 jednostkom eDTU, podczas gdy na dolnym wykresie 100% nadal odpowiada 50 jednostkom eDTU, gdyż maksymalna wartość dla pojedynczej bazy danych nadal wynosi 50 jednostek eDTU.
 
 Bazy danych pozostają w trybie online i są w pełni dostępne podczas całego procesu. W ostatniej chwili przed włączeniem dla każdej bazy danych nowej wartości eDTU dla puli wszystkie aktywne połączenia zostają przerwane. Kod aplikacji powinien być napisany w taki sposób, aby zawsze próbować ponownie nawiązać przerwane połączenie, by móc ponownie połączyć się z bazą danych w puli przeskalowanej w górę.
 
@@ -166,7 +166,7 @@ Bazy danych pozostają w trybie online i są w pełni dostępne podczas całego 
 
 Alternatywnym rozwiązaniem w stosunku do skalowania puli w górę jest utworzenie drugiej puli i przeniesienie do niej baz danych w celu zrównoważenia obciążenia między dwoma pulami. Aby to rozwiązanie zadziałało, nowa pula musi zostać utworzona na tym samym serwerze co pierwsza.
 
-1. W [Azure Portal](https://portal.azure.com)Otwórz serwer **tenants1-&lt;DPT-użytkownika.&gt;**
+1. W [Azure Portal](https://portal.azure.com)otwórz serwer **&gt;użytkownika tenants1-DPT-&lt;** .
 1. Kliknij pozycję **+ Nowa pula** , aby utworzyć pulę na bieżącym serwerze.
 1. W szablonie **elastycznej puli** :
 
@@ -177,14 +177,14 @@ Alternatywnym rozwiązaniem w stosunku do skalowania puli w górę jest utworzen
    1. Kliknij pozycję **Dodaj bazy danych** , aby wyświetlić listę baz danych na serwerze, które mogą zostać dodane do *Pool2*.
    1. Wybierz dowolną 10 baz danych, aby przenieść je do nowej puli, a następnie kliknij przycisk **Wybierz**. Jeśli używasz generatora obciążenia, usługa już wie, że profil wydajności wymaga większej puli niż domyślny 50 jednostek eDTU i zaleca się rozpoczęcie od ustawienia jednostki eDTU 100.
 
-      ![zalecenie](media/saas-dbpertenant-performance-monitoring/configure-pool.png)
+      ![Zaleca](media/saas-dbpertenant-performance-monitoring/configure-pool.png)
 
    1. Na potrzeby tego samouczka pozostaw wartość domyślną na 50 jednostek eDTU, a następnie kliknij pozycję **Wybierz** ponownie.
    1. Wybierz **przycisk OK** , aby utworzyć nową pulę i przenieść do niej wybrane bazy danych.
 
 Utworzenie puli i przeniesienie baz danych trwa kilka minut. Po przeniesieniu bazy danych są one w trybie online i są w pełni dostępne do momentu, w którym wszystkie otwarte połączenia są zamknięte. Tak długo, jak masz kilka logiki ponawiania prób, klienci będą łączyć się z bazą danych w nowej puli.
 
-Przejdź do **Pool2** (na serwerze *tenants1-DPT-\<User\>*  ), aby otworzyć pulę i monitorować jej wydajność. Jeśli go nie widzisz, poczekaj na ukończenie aprowizacji nowej puli.
+Przejdź do **Pool2** (na *\>użytkownika tenants1-DPT-\<* ), aby otworzyć pulę i monitorować jej wydajność. Jeśli go nie widzisz, poczekaj na ukończenie aprowizacji nowej puli.
 
 Zobaczysz teraz, że użycie zasobów na *Pool1* zostało przerwane i że *Pool2* jest teraz podobnie załadowane.
 
@@ -194,24 +194,24 @@ Jeśli poszczególna baza danych w puli ma duże obciążenie, w zależności od
 
 W tym ćwiczeniu zostanie zasymulowane zwiększone obciążenie dotyczące miejsca Contoso Concert Hall wywołane wzmożonym pobytem na bilety na popularny koncert.
 
-1. W **ISE programu PowerShell**Otwórz pozycję... Skrypt demo-PerformanceMonitoringAndManagement *. ps1.* \\
+1. W **ISE programu PowerShell**Otwórz skrypt...\\*demo-PerformanceMonitoringAndManagement. ps1* .
 1. Ustaw **$DemoScenario = 5, wygeneruj normalne obciążenie i wysokie obciążenie dla pojedynczej dzierżawy (około 95 jednostek DTU).**
 1. Ustaw wartość zmiennej **$SingleTenantDatabaseName = contosoconcerthall**
 1. Wykonaj skrypt, używając klawisza **F5**.
 
 
-1. W [Azure Portal](https://portal.azure.com)przejdź do listy baz danych na serwerze *tenants1-\<DPT-użytkownika.\>* 
+1. W [Azure Portal](https://portal.azure.com)przejdź do listy baz danych na serwerze *tenants1-DPT-\<User\>* . 
 1. Kliknij bazę danych **contosoconcerthall** .
 1. Kliknij pulę, w której znajduje się **contosoconcerthall** . Znajdź pulę w sekcji **Pula elastyczna** .
 
 1. Sprawdź wykres **monitorowania puli elastycznej** i poszukaj zwiększonych obciążeń jednostek eDTU puli. Po minucie lub dwóch powinno być widoczne wyższe obciążenie, które wkrótce osiągnie poziom 100% wykorzystania puli.
 2. Zbadaj wyświetlacz **monitorowania Elastic Database** , który pokazuje bazy danych okienko w ciągu ostatniej godziny. Baza danych *contosoconcerthall* powinna wkrótce pojawić się jako jedna z pięciu baz danych okienko.
-3. **Kliknij pozycję monitorowanie elastycznej bazy danych** **Wykres** zostanie otwarty na stronie **użycie zasobów bazy danych** , na której można monitorować dowolną bazę danych. Umożliwia to wyizolowanie ekranu dla bazy danych *contosoconcerthall* .
+3. **Kliknij wykres monitorowania Elastic Database** , aby otworzyć stronę **użycie zasobów bazy danych** , na której można monitorować dowolną bazę danych. Umożliwia to wyizolowanie ekranu dla bazy danych *contosoconcerthall* .
 4. Z listy baz danych kliknij pozycję **contosoconcerthall**.
 5. Kliknij pozycję **warstwa cenowa (DTU skalowania)** , aby otworzyć stronę **Konfigurowanie wydajności** , na której można ustawić autonomiczny rozmiar obliczeń dla bazy danych.
 6. Kliknij kartę **Standardowa**, aby otworzyć opcje skalowania w warstwie Standardowa.
 7. Przesuń **suwak DTU** w prawo, aby wybrać **100** DTU. Należy pamiętać, że odnosi się to do celu usługi ( **S3**).
-8. Kliknij przycisk **Zastosuj** , aby przenieść bazę danych z puli i uczynić ją standardową bazą danych *S3* .
+8. Kliknij przycisk **Zastosuj** , aby przenieść bazę danych z puli i uczynić ją *standardową* bazą danych S3.
 9. Po zakończeniu skalowania należy monitorować wpływ bazy danych contosoconcerthall i Pool1 na bloki elastycznej puli i bazy danych.
 
 Po nawiązaniu wysokiego obciążenia bazy danych contosoconcerthall należy natychmiast zwrócić ją do puli, aby zmniejszyć jej koszt. Jeśli jest to niejasne, gdy zostanie wykonane, można ustawić alert dla bazy danych, która zostanie wyzwolona, gdy użycie jednostek DTU spadnie poniżej wartości maksymalnej dla bazy danych w puli. Przenoszenie bazy danych do puli opisano w ćwiczeniu 5.

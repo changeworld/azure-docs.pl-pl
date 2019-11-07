@@ -8,12 +8,12 @@ ms.reviewer: jasonh
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 05/30/2019
-ms.openlocfilehash: 8f64b3381f22c31b58604477260b5dae4b84d19a
-ms.sourcegitcommit: 92d42c04e0585a353668067910b1a6afaf07c709
+ms.openlocfilehash: df111d605b7c05bcb934771b6063f2be04770ea9
+ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/28/2019
-ms.locfileid: "72988262"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73606458"
 ---
 # <a name="stream-data-as-input-into-stream-analytics"></a>Przesyłaj strumieniowo dane jako dane wejściowe do Stream Analytics
 
@@ -129,7 +129,13 @@ W przypadku scenariuszy zawierających duże ilości danych bez struktury do prz
 
 Przetwarzanie dziennika jest często używanym scenariuszem do używania danych wejściowych usługi BLOB Storage z Stream Analytics. W tym scenariuszu pliki danych telemetrycznych zostały przechwycone z systemu i muszą zostać przeanalizowane i przetworzone w celu wyodrębnienia istotnych danych.
 
-Domyślna sygnatura czasowa zdarzeń magazynu obiektów BLOB w Stream Analytics to sygnatura czasowa ostatniej modyfikacji obiektu BLOB, który jest `BlobLastModifiedUtcTime`. Aby przetworzyć dane jako strumień przy użyciu sygnatury czasowej w ładunku zdarzenia, należy użyć słowa kluczowego [timestamp by](https://docs.microsoft.com/stream-analytics-query/stream-analytics-query-language-reference) . Zadanie Stream Analytics pobiera dane z danych wejściowych z usługi Azure Blob Storage co sekundę, jeśli plik BLOB jest dostępny. Jeśli plik BLOB jest niedostępny, istnieje wykładnicza wycofywania z maksymalnym opóźnieniem wynoszącym 90 sekund.
+Domyślna sygnatura czasowa zdarzeń magazynu obiektów BLOB w Stream Analytics to sygnatura czasowa ostatniej modyfikacji obiektu BLOB, który jest `BlobLastModifiedUtcTime`. Jeśli obiekt BLOB zostanie przekazany do konta magazynu o godzinie 13:00, a zadanie Azure Stream Analytics zostanie uruchomione przy użyciu opcji *teraz* o godzinie 13:01, obiekt BLOB nie zostanie pobrany jako zmodyfikowany czas poza okresem wykonywania zadania.
+
+Jeśli obiekt BLOB zostanie przekazany do kontenera konta magazynu o godzinie 13:00, a zadanie Azure Stream Analytics zostanie rozpoczęte przy użyciu *czasu niestandardowego* o godzinie 13:00 lub starszej, obiekt BLOB zostanie pobrany jako jego zmodyfikowany czas w okresie wykonywania zadania.
+
+Jeśli zadanie Azure Stream Analytics zostało uruchomione przy użyciu *teraz* o godzinie 13:00, a obiekt BLOB zostanie przekazany do kontenera konta magazynu o godzinie 13:01, Azure Stream Analytics pobierze obiekt BLOB.
+
+Aby przetworzyć dane jako strumień przy użyciu sygnatury czasowej w ładunku zdarzenia, należy użyć słowa kluczowego [timestamp by](https://docs.microsoft.com/stream-analytics-query/stream-analytics-query-language-reference) . Zadanie Stream Analytics pobiera dane z danych wejściowych z usługi Azure Blob Storage co sekundę, jeśli plik BLOB jest dostępny. Jeśli plik BLOB jest niedostępny, istnieje wykładnicza wycofywania z maksymalnym opóźnieniem wynoszącym 90 sekund.
 
 Dane wejściowe w formacie CSV wymagają wiersza nagłówka, aby zdefiniować pola dla zestawu danych, a wszystkie pola wiersza nagłówka muszą być unikatowe.
 
@@ -149,7 +155,7 @@ W poniższej tabeli opisano każdą właściwość na stronie **nowe dane wejśc
 | **Konto magazynu** | Nazwa konta magazynu, w którym znajdują się pliki obiektów BLOB. |
 | **Klucz konta magazynu** | Klucz tajny skojarzony z kontem magazynu. Ta opcja jest wypełniana automatycznie, chyba że zostanie wybrana opcja ręcznego dostarczania ustawień magazynu obiektów BLOB. |
 | **Wbudowane** | Kontener dla danych wejściowych obiektu BLOB. Kontenery zapewniają logiczne grupowanie obiektów BLOB przechowywanych w Blob service Microsoft Azure. Podczas przekazywania obiektu BLOB do usługi Azure Blob Storage należy określić kontener dla tego obiektu BLOB. Możesz wybrać opcję **Użyj istniejącego** kontenera lub **utworzyć nowy** , aby utworzyć nowy kontener.|
-| **Wzorzec ścieżki** (opcjonalnie) | Ścieżka pliku używana do lokalizowania obiektów BLOB w określonym kontenerze. W ścieżce można określić jedno lub więcej wystąpień następujących trzech zmiennych: `{date}`, `{time}`lub `{partition}`<br/><br/>Przykład 1: `cluster1/logs/{date}/{time}/{partition}`<br/><br/>Przykład 2: `cluster1/logs/{date}`<br/><br/>Znak `*` nie jest dozwoloną wartością dla prefiksu ścieżki. Dozwolone są tylko poprawne <a HREF="https://msdn.microsoft.com/library/azure/dd135715.aspx">znaki obiektów blob platformy Azure</a> . Nie dołączaj nazw kontenerów ani nazw plików. |
+| **Wzorzec ścieżki** (opcjonalnie) | Ścieżka pliku używana do lokalizowania obiektów BLOB w określonym kontenerze. Jeśli chcesz odczytywać obiekty blob z katalogu głównego kontenera, nie ustawiaj wzorca ścieżki. W ścieżce można określić jedno lub więcej wystąpień następujących trzech zmiennych: `{date}`, `{time}`lub `{partition}`<br/><br/>Przykład 1: `cluster1/logs/{date}/{time}/{partition}`<br/><br/>Przykład 2: `cluster1/logs/{date}`<br/><br/>Znak `*` nie jest dozwoloną wartością dla prefiksu ścieżki. Dozwolone są tylko poprawne <a HREF="https://msdn.microsoft.com/library/azure/dd135715.aspx">znaki obiektów blob platformy Azure</a> . Nie dołączaj nazw kontenerów ani nazw plików. |
 | **Format daty** (opcjonalnie) | Jeśli używasz zmiennej daty w ścieżce, format daty, w którym są zorganizowane pliki. Przykład: `YYYY/MM/DD` |
 | **Format czasu** (opcjonalnie) |  Jeśli używasz zmiennej czasowej w ścieżce, format czasu, w którym są zorganizowane pliki. Obecnie jedyną obsługiwaną wartością jest `HH` dla godzin. |
 | **Format serializacji zdarzeń** | Format serializacji (JSON, CSV, Avro lub [inny (protobuf, XML, własny,...)](custom-deserializer.md)) przychodzącego strumienia danych.  Upewnij się, że format JSON jest wyrównany ze specyfikacją i nie zawiera wiodących wartości 0 dla liczb dziesiętnych. |

@@ -1,5 +1,5 @@
 ---
-title: Uaktualnij do warstwy Standardowa Security Center na potrzeby zwiększonych zabezpieczeń | Microsoft Docs
+title: Cennik Azure Security Center warstw
 description: Ten artykuł zawiera informacje na temat cen Azure Security Center.
 services: security-center
 documentationcenter: na
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/04/2019
 ms.author: memildin
-ms.openlocfilehash: 43ae34b946fada4d27c6843dbb8c3f9511aefd81
-ms.sourcegitcommit: 3f8017692169bd75483eefa96c225d45cd497f06
+ms.openlocfilehash: 0c3fdc48d9b3bc77b629d4d6f1da081d70658c88
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73520774"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73664261"
 ---
 # <a name="upgrade-to-security-centers-standard-tier-for-enhanced-security"></a>Uaktualnij do warstwy Standardowa Security Center na potrzeby zwiększonych zabezpieczeń
 Usługa Azure Security Center zapewnia ujednolicone zarządzanie zabezpieczeniami i zaawansowaną ochronę przed zagrożeniami na potrzeby obciążeń uruchamianych na platformie Azure, lokalnie i w innych chmurach. Zapewnia widoczność i kontrolę nad obciążeniami w chmurze hybrydowej, aktywną obroną, która zmniejsza narażenie na zagrożenia oraz Inteligentne wykrywanie, które ułatwiają szybkie rozwijanie ataków cybernetycznymi.
@@ -54,7 +54,7 @@ Aby uzyskać warstwę standardową:
 Security Center oferuje zwiększone zabezpieczenia i ochronę przed zagrożeniami dla obciążeń chmury hybrydowej, w tym:
 
 - **Bezpieczeństwo hybrydowe** — Uzyskaj ujednolicony widok zabezpieczeń we wszystkich obciążeniach lokalnych i w chmurze. Stosuj zasady zabezpieczeń i stale oceniaj bezpieczeństwo obciążeń chmury hybrydowej w celu zapewnienia zgodności ze standardami zabezpieczeń. Zbieranie, wyszukiwanie i analizowanie danych zabezpieczeń z wielu źródeł, w tym zapór i innych rozwiązań partnerskich.
-- **Zaawansowane wykrywanie zagrożeń** — Użyj zaawansowanej analizy i Microsoft Intelligent Security Graph, aby uzyskać krawędzie przed rozwojem ataków cybernetycznymi.  Wykorzystaj wbudowaną analizę behawioralną i uczenie maszynowe do identyfikowania ataków i luk typu zero day. Monitoruj sieci, maszyny i usługi w chmurze pod kątem przychodzących ataków i działań po naruszeniu zabezpieczeń. Usprawnij badanie dzięki interaktywnym narzędziom i kontekstowej analizie zagrożeń.
+- **Zaawansowane wykrywanie zagrożeń** — Użyj zaawansowanej analizy i Microsoft Intelligent Security Graph, aby uzyskać krawędzie przed rozwojem ataków cybernetycznymi. Wykorzystaj wbudowaną analizę behawioralną i uczenie maszynowe do identyfikowania ataków i luk typu zero day. Monitoruj sieci, maszyny i usługi w chmurze pod kątem przychodzących ataków i działań po naruszeniu zabezpieczeń. Usprawnij badanie dzięki interaktywnym narzędziom i kontekstowej analizie zagrożeń.
 - **Kontrola dostępu i aplikacji** — blokowanie złośliwego oprogramowania i innych niechcianych aplikacji przez zastosowanie listy dozwolonychowych zaleceń dotyczących uczenia maszynowego dostosowanych do określonych obciążeń. Ogranicz obszar ataków sieci z dostępem just-in-Time do portów zarządzania na maszynach wirtualnych platformy Azure. Radykalnie zmniejsza to narażenie na rozżycie i inne ataki sieciowe.
 - **Funkcje zabezpieczeń kontenera** — korzyści wynikające z zarządzania lukami w zabezpieczeniach i wykrywania zagrożeń w czasie rzeczywistym w środowiskach kontenerów. Po włączeniu zasobu rejestrów kontenerów może upłynąć do 12hrs do momentu włączenia wszystkich funkcji.
 

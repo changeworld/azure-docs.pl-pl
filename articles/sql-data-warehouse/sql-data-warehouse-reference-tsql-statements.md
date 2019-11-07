@@ -1,5 +1,5 @@
 ---
-title: Instrukcje języka T-SQL — Azure SQL Data Warehouse | Microsoft Docs
+title: Instrukcje języka T-SQL
 description: Linki do dokumentacji dotyczącej instrukcji języka T-SQL obsługiwanych w Azure SQL Data Warehouse.
 services: sql-data-warehouse
 author: XiaoyuMSFT
@@ -10,12 +10,13 @@ ms.subservice: query
 ms.date: 05/01/2019
 ms.author: xiaoyul
 ms.reviewer: igorstan
-ms.openlocfilehash: 5704ee4bf84b396dcef5a4f9edd887128ba95fb1
-ms.sourcegitcommit: 75a56915dce1c538dc7a921beb4a5305e79d3c7a
+ms.custom: seo-lt-2019
+ms.openlocfilehash: 861675941693697a20da189edebe33d91918782c
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/24/2019
-ms.locfileid: "68479387"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73685519"
 ---
 # <a name="t-sql-statements-supported-in-azure-sql-data-warehouse"></a>Instrukcje języka T-SQL obsługiwane w Azure SQL Data Warehouse
 Linki do dokumentacji dotyczącej instrukcji języka T-SQL obsługiwanych w Azure SQL Data Warehouse.
@@ -23,7 +24,7 @@ Linki do dokumentacji dotyczącej instrukcji języka T-SQL obsługiwanych w Azur
 ## <a name="data-definition-language-ddl-statements"></a>Instrukcje języka definicji danych (DDL)
 * [ALTER DATABASE](https://msdn.microsoft.com/library/mt204042.aspx)
 * [ZMIEŃ INDEKS](https://msdn.microsoft.com/library/ms188388.aspx)
-* [Zmień widok](/sql/t-sql/statements/alter-materialized-view-transact-sql?view=azure-sqldw-latest) z materiałami Przeglądania 
+* [Zmień widok z materiałami](/sql/t-sql/statements/alter-materialized-view-transact-sql?view=azure-sqldw-latest) (wersja zapoznawcza) 
 * [ALTER — PROCEDURA](https://msdn.microsoft.com/library/ms189762.aspx)
 * [ZMIEŃ SCHEMAT](https://msdn.microsoft.com/library/ms173423.aspx)
 * [ALTER TABLE](https://msdn.microsoft.com/library/ms190273.aspx)
@@ -35,7 +36,7 @@ Linki do dokumentacji dotyczącej instrukcji języka T-SQL obsługiwanych w Azur
 * [TWORZENIE TABELI ZEWNĘTRZNEJ](https://msdn.microsoft.com/library/dn935021.aspx)
 * [UTWÓRZ FUNKCJĘ](https://msdn.microsoft.com/library/mt203952.aspx)
 * [UTWÓRZ INDEKS](https://msdn.microsoft.com/library/ms188783.aspx)
-* [Utwórz widok z materiałami jako wybrany](/sql/t-sql/statements/create-materialized-view-as-select-transact-sql?view=azure-sqldw-latest) Przeglądania 
+* [Utwórz widok z materiałami jako wybrany](/sql/t-sql/statements/create-materialized-view-as-select-transact-sql?view=azure-sqldw-latest) (wersja zapoznawcza) 
 * [UTWÓRZ PROCEDURĘ](https://msdn.microsoft.com/library/ms187926.aspx)
 * [UTWÓRZ SCHEMAT](https://msdn.microsoft.com/library/ms189462.aspx)
 * [CREATE STATISTICS](https://msdn.microsoft.com/library/ms188038.aspx)
@@ -53,7 +54,7 @@ Linki do dokumentacji dotyczącej instrukcji języka T-SQL obsługiwanych w Azur
 * [UPUŚĆ SCHEMAT](https://msdn.microsoft.com/library/ms186751.aspx)
 * [UPUŚĆ WIDOK](https://msdn.microsoft.com/library/ms173492.aspx)
 * [PORZUĆ KLASYFIKATOR OBCIĄŻEŃ](/sql/t-sql/statements/drop-workload-classifier-transact-sql)
-* [RENAME](https://msdn.microsoft.com/library/mt631611.aspx)
+* [ZMIEŃNAZWĘ](https://msdn.microsoft.com/library/mt631611.aspx)
 * [USTAW RESULT_SET_CACHING](/sql/t-sql/statements/set-result-set-caching-transact-sql) 
 * [TRUNCATE TABLE](https://msdn.microsoft.com/library/ms177570.aspx)
 * [UPDATE STATISTICS](https://msdn.microsoft.com/library/ms187348.aspx)
@@ -64,16 +65,16 @@ Linki do dokumentacji dotyczącej instrukcji języka T-SQL obsługiwanych w Azur
 * [AKTUALIZACJI](https://msdn.microsoft.com/library/ms177523.aspx)
 
 ## <a name="database-console-commands"></a>Polecenia konsoli bazy danych
-* [DBCC DROPCLEANBUFFERS](https://msdn.microsoft.com/library/ms187762.aspx)
-* [polecenie DBCC DROPRESULTSETCACHE](/sql/t-sql/database-console-commands/dbcc-dropresultsetcache-transact-sql?view=azure-sqldw-latest) Przeglądania
+* [POLECENIE DBCC DROPCLEANBUFFERS](https://msdn.microsoft.com/library/ms187762.aspx)
+* [DBCC DROPRESULTSETCACHE](/sql/t-sql/database-console-commands/dbcc-dropresultsetcache-transact-sql?view=azure-sqldw-latest) (wersja zapoznawcza)
 * [POLECENIE DBCC FREEPROCCACHE](https://msdn.microsoft.com/library/mt204018.aspx)
-* [DBCC SHRINKLOG](https://msdn.microsoft.com/library/mt204020.aspx)
+* [POLECENIE DBCC SHRINKLOG](https://msdn.microsoft.com/library/mt204020.aspx)
 * [DBCC PDW_SHOWEXECUTIONPLAN](https://msdn.microsoft.com/library/mt204017.aspx)
 * [POLECENIE DBCC PDW_SHOWMATERIALIZEDVIEWOVERHEAD](/sql/t-sql/database-console-commands/dbcc-pdw-showmaterializedviewoverhead-transact-sql?view=azure-sqldw-latest)
-* [polecenie DBCC SHOWRESULTCACHESPACEUSED](/sql/t-sql/database-console-commands/dbcc-showresultcachespaceused-transact-sql) Przeglądania
-* [DBCC PDW_SHOWPARTITIONSTATS](https://msdn.microsoft.com/library/mt204013.aspx)
-* [DBCC PDW_SHOWSPACEUSED](https://msdn.microsoft.com/library/mt204028.aspx)
-* [DBCC SHOW_STATISTICS](https://msdn.microsoft.com/library/mt204043.aspx)
+* [DBCC SHOWRESULTCACHESPACEUSED](/sql/t-sql/database-console-commands/dbcc-showresultcachespaceused-transact-sql) (wersja zapoznawcza)
+* [POLECENIE DBCC PDW_SHOWPARTITIONSTATS](https://msdn.microsoft.com/library/mt204013.aspx)
+* [POLECENIE DBCC PDW_SHOWSPACEUSED](https://msdn.microsoft.com/library/mt204028.aspx)
+* [POLECENIE DBCC SHOW_STATISTICS](https://msdn.microsoft.com/library/mt204043.aspx)
 
 ## <a name="query-statements"></a>Instrukcje zapytania
 * [ZAZNACZENIA](https://msdn.microsoft.com/library/ms189499.aspx)
@@ -86,15 +87,15 @@ Linki do dokumentacji dotyczącej instrukcji języka T-SQL obsługiwanych w Azur
 * [DYSPONUJĄC](https://msdn.microsoft.com/library/ms180199.aspx)
 * [PORZĄDKUJ WEDŁUG](https://msdn.microsoft.com/library/ms188385.aspx)
 * [OPTION](https://msdn.microsoft.com/library/ms190322.aspx)
-* [UNII](https://msdn.microsoft.com/library/ms180026.aspx)
+* [Unii](https://msdn.microsoft.com/library/ms180026.aspx)
 * [MIEJSCU](https://msdn.microsoft.com/library/ms188047.aspx)
-* [DO GÓRY](https://msdn.microsoft.com/library/ms189463.aspx)
+* [Do góry](https://msdn.microsoft.com/library/ms189463.aspx)
 * [Aliasowanie](https://msdn.microsoft.com/library/mt631614.aspx)
 * [Warunek wyszukiwania](https://msdn.microsoft.com/library/ms173545.aspx)
 * [Podzapytania](https://msdn.microsoft.com/library/mt631613.aspx)
 
 ## <a name="security-statements"></a>Instrukcje zabezpieczeń
-* Uprawnienia: [UDZIEL](https://msdn.microsoft.com/library/ms187965.aspx), [ODMÓW](https://msdn.microsoft.com/library/ms188338.aspx), [ODWOŁAJ](https://msdn.microsoft.com/library/ms187728.aspx)
+* Uprawnienia: [Udziel](https://msdn.microsoft.com/library/ms187965.aspx), [Odmów](https://msdn.microsoft.com/library/ms188338.aspx), [odwołaj](https://msdn.microsoft.com/library/ms187728.aspx)
 * [ZMIEŃ AUTORYZACJĘ](https://msdn.microsoft.com/library/ms187359.aspx)
 * [ZMIEŃ CERTYFIKAT](https://msdn.microsoft.com/library/ms189511.aspx)
 * [ZMIEŃ KLUCZ SZYFROWANIA BAZY DANYCH](https://msdn.microsoft.com/library/bb630389.aspx)

@@ -1,5 +1,5 @@
 ---
-title: Przechowuj kopie zapasowe Azure SQL Database przez maksymalnie 10 lat | Microsoft Docs
+title: Przechowywanie Azure SQL Database kopii zapasowych przez maksymalnie 10 lat
 description: Dowiedz się, jak Azure SQL Database obsługuje przechowywanie pełnych kopii zapasowych bazy danych przez maksymalnie 10 lat.
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: anosov1960
 ms.author: sashan
 ms.reviewer: mathoma, carlrab
 ms.date: 05/18/2019
-ms.openlocfilehash: b43097dee6a3b4e8ec762e193dc2faf006ec796c
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 5d6f0797802a622ada1916752bc35c1bae2cde9f
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68567761"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73689518"
 ---
 # <a name="store-azure-sql-database-backups-for-up-to-10-years"></a>Przechowywanie Azure SQL Database kopii zapasowych przez maksymalnie 10 lat
 
@@ -32,15 +32,15 @@ Długoterminowe przechowywanie kopii zapasowych (LTR) wykorzystuje pełne kopie 
 
 Przykłady zasad LTR:
 
--  W=0, M=0, Y=5, WeekOfYear=3
+-  W = 0, M = 0, Y = 5, WeekOfYear = 3
 
    Trzecia pełna kopia zapasowa każdego roku będzie utrzymywana przez pięć lat.
    
-- W=0, M=3, Y=0
+- W = 0, M = 3, Y = 0
 
    Pierwsza pełna kopia zapasowa każdego miesiąca będzie utrzymywana przez trzy miesiące.
 
-- W=12, M=0, Y=0
+- W = 12, M = 0, Y = 0
 
    Każde cotygodniowe pełne kopie zapasowe będą przechowywane przez 12 tygodni.
 
@@ -79,4 +79,4 @@ Aby przywrócić bazę danych z magazynu LTR, można wybrać określoną kopię 
 
 ## <a name="next-steps"></a>Następne kroki
 
-Ponieważ kopie zapasowe bazy danych chronią dane przed przypadkowym uszkodzeniem lub usunięciem, są one istotną częścią strategii ciągłości działania i odzyskiwania po awarii. Aby dowiedzieć się więcej na temat innych SQL Database rozwiązań zapewniających ciągłość działania firmy, zobacz temat ciągłość działania — [Omówienie](sql-database-business-continuity.md).
+Ponieważ kopie zapasowe bazy danych chronią dane przed przypadkowym uszkodzeniem lub usunięciem, są one istotną częścią strategii ciągłości działania i odzyskiwania po awarii. Aby dowiedzieć się więcej na temat innych SQL Database rozwiązań zapewniających ciągłość działania firmy, zobacz temat [ciągłość](sql-database-business-continuity.md)działania — Omówienie.

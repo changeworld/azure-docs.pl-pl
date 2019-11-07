@@ -1,5 +1,5 @@
 ---
-title: Publiczne punkty końcowe wystąpienia zarządzanego zarządzania — Azure SQL Database wystąpienie zarządzane | Microsoft Docs
+title: Publiczne punkty końcowe wystąpienia zarządzanego zarządzania — Azure SQL Database wystąpienia zarządzanego
 description: Bezpieczne używanie publicznych punktów końcowych na platformie Azure z wystąpieniami zarządzanymi
 services: sql-database
 ms.service: sql-database
@@ -10,12 +10,12 @@ author: srdan-bozovic-msft
 ms.author: srbozovi
 ms.reviewer: vanto, carlrab
 ms.date: 05/08/2019
-ms.openlocfilehash: c7f57a636e95bb137dd4285b8f9ce8343b27d2a0
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 3d97eb16ee2a8b3203b187dca7b2a17974473098
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68567365"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73687947"
 ---
 # <a name="use-an-azure-sql-database-managed-instance-securely-with-public-endpoints"></a>Bezpieczne używanie Azure SQL Database wystąpienia zarządzanego z publicznymi punktami końcowymi
 
@@ -43,14 +43,14 @@ Na poniższym diagramie przedstawiono zalecane konfiguracje zabezpieczeń:
 
 ![Konfiguracje zabezpieczeń służące do blokowania łączności przychodzącej i wychodzącej](media/sql-database-managed-instance-public-endpoint-securely/managed-instance-vnet.png)
 
-Wystąpienie zarządzane ma dedykowany [publiczny adres punktu końcowego](sql-database-managed-instance-find-management-endpoint-ip-address.md). W zaporze wychodzącej po stronie klienta i w regułach sieciowej grupy zabezpieczeń ustaw ten publiczny adres IP punktu końcowego, aby ograniczyć łączność wychodzącą.
+Wystąpienie zarządzane ma [dedykowany publiczny adres punktu końcowego](sql-database-managed-instance-find-management-endpoint-ip-address.md). W zaporze wychodzącej po stronie klienta i w regułach sieciowej grupy zabezpieczeń ustaw ten publiczny adres IP punktu końcowego, aby ograniczyć łączność wychodzącą.
 
 Aby zapewnić, że ruch do wystąpienia zarządzanego pochodzi z zaufanych źródeł, zalecamy łączenie ze źródła przy użyciu dobrze znanych adresów IP. Użyj sieciowej grupy zabezpieczeń, aby ograniczyć dostęp do publicznego punktu końcowego wystąpienia zarządzanego na porcie 3342.
 
 Gdy klienci muszą inicjować połączenie z sieci lokalnej, upewnij się, że adres źródłowy jest tłumaczony na dobrze znany zestaw adresów IP. Jeśli nie możesz tego zrobić (na przykład dla pracowników mobilnych jest typowy scenariusz), zalecamy użycie [połączeń sieci VPN typu punkt-lokacja i prywatnego punktu końcowego](sql-database-managed-instance-configure-p2s.md).
 
-Jeśli połączenia są uruchamiane z platformy Azure, zalecamy, aby ruch pochodzi z dobrze znanego, przypisanego [wirtualnego adresu IP](../virtual-network/virtual-networks-reserved-public-ip.md) (na przykład maszyny wirtualnej). Aby łatwiej zarządzać wirtualnymi adresami IP (VIP), warto użyć prefiksów [publicznych adresów IP](../virtual-network/public-ip-address-prefix.md).
+Jeśli połączenia są uruchamiane z platformy Azure, zalecamy, aby ruch pochodzi z dobrze znanego, przypisanego [wirtualnego adresu IP](../virtual-network/virtual-networks-reserved-public-ip.md) (na przykład maszyny wirtualnej). Aby łatwiej zarządzać wirtualnymi adresami IP (VIP), warto użyć [prefiksów publicznych adresów IP](../virtual-network/public-ip-address-prefix.md).
 
 ## <a name="next-steps"></a>Następne kroki
 
-- Dowiedz się, jak skonfigurować publiczny punkt końcowy do zarządzania wystąpieniami: [Konfigurowanie publicznego punktu końcowego](sql-database-managed-instance-public-endpoint-configure.md)
+- Dowiedz się, jak skonfigurować publiczny punkt końcowy dla zarządzania wystąpieniami: [Skonfiguruj publiczny punkt końcowy](sql-database-managed-instance-public-endpoint-configure.md)

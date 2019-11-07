@@ -1,5 +1,5 @@
 ---
-title: Skalowanie zasobów pojedynczej bazy danych — Azure SQL Database | Microsoft Docs
+title: Skalowanie zasobów pojedynczych baz danych — Azure SQL Database
 description: W tym artykule opisano, jak skalować zasoby obliczeniowe i magazynowe dostępne dla pojedynczej bazy danych w Azure SQL Database.
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: carlrab
 ms.date: 04/26/2019
-ms.openlocfilehash: d2571b04f10bbbd3a461e553a56904abb3b46588
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 7f3e0c6a5f2d3594e8a03ed4034248b1fd43c73d
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73496028"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73687163"
 ---
 # <a name="scale-single-database-resources-in-azure-sql-database"></a>Skalowanie zasobów pojedynczej bazy danych w Azure SQL Database
 
@@ -57,7 +57,7 @@ Zmiana warstwy usług lub rozmiaru obliczeniowego głównie obejmuje usługę wy
 
 Szacowane opóźnienie zmiany warstwy usług lub ponowne skalowanie wielkości obliczeniowej pojedynczej bazy danych lub puli elastycznej jest opisane w następujący sposób:
 
-|Warstwa usługi|Podstawowa pojedyncza baza danych,</br>Standard (S0-S1)|Podstawowa Pula elastyczna,</br>Standardowa (S2-S12), </br>Hiperskali </br>Ogólnego przeznaczenia pojedynczej bazy danych lub puli elastycznej|Premium lub Krytyczne dla działania firmy pojedynczą bazę danych lub pulę elastyczną|
+|Warstwa usług|Podstawowa pojedyncza baza danych,</br>Standard (S0-S1)|Podstawowa Pula elastyczna,</br>Standardowa (S2-S12), </br>Hiperskali </br>Ogólnego przeznaczenia pojedynczej bazy danych lub puli elastycznej|Premium lub Krytyczne dla działania firmy pojedynczą bazę danych lub pulę elastyczną|
 |:---|:---|:---|:---|
 |**Podstawowa pojedyncza baza danych,</br> Standard (S0-S1)**|&bull; &nbsp;czas opóźnienia niezależny od użytego miejsca</br>&bull; &nbsp;zwykle, mniej niż 5 minut|&bull; &nbsp;opóźnieniu proporcjonalnym do miejsca bazy danych użytego z powodu kopiowania danych</br>&bull; &nbsp;zwykle, mniej niż 1 minuta na GB zajętego miejsca|&bull; &nbsp;opóźnieniu proporcjonalnym do miejsca bazy danych użytego z powodu kopiowania danych</br>&bull; &nbsp;zwykle, mniej niż 1 minuta na GB zajętego miejsca|
 |**Podstawowa Pula elastyczna, </br>Standard (S2-S12), </br>do skalowania, </br>Ogólnego przeznaczenia pojedynczej bazy danych lub puli elastycznej**|&bull; &nbsp;opóźnieniu proporcjonalnym do miejsca bazy danych użytego z powodu kopiowania danych</br>&bull; &nbsp;zwykle, mniej niż 1 minuta na GB zajętego miejsca|&bull; &nbsp;czas opóźnienia niezależny od użytego miejsca</br>&bull; &nbsp;zwykle, mniej niż 5 minut|&bull; &nbsp;opóźnieniu proporcjonalnym do miejsca bazy danych użytego z powodu kopiowania danych</br>&bull; &nbsp;zwykle, mniej niż 1 minuta na GB zajętego miejsca|

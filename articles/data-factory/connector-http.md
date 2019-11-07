@@ -1,5 +1,5 @@
 ---
-title: Kopiowanie danych ze źródła HTTP przy użyciu Azure Data Factory | Microsoft Docs
+title: Kopiowanie danych ze źródła HTTP przy użyciu Azure Data Factory
 description: Informacje o kopiowaniu danych z chmury lub lokalnego źródła HTTP do obsługiwanych magazynów danych ujścia przy użyciu działania kopiowania w potoku Azure Data Factory.
 services: data-factory
 documentationcenter: ''
@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 10/24/2019
 ms.author: jingwang
-ms.openlocfilehash: 7c3a657ff80f05a7f6bc3273edd85ebe4bddc65d
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: 125841697a8ad7d34441dfca3a4c079ef59e5f96
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72935582"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73680835"
 ---
 # <a name="copy-data-from-an-http-endpoint-by-using-azure-data-factory"></a>Kopiowanie danych z punktu końcowego HTTP przy użyciu Azure Data Factory
 
@@ -55,7 +55,7 @@ Tego łącznika protokołu HTTP można użyć do:
 
 [!INCLUDE [data-factory-v2-integration-runtime-requirements](../../includes/data-factory-v2-integration-runtime-requirements.md)]
 
-## <a name="get-started"></a>Rozpocznij
+## <a name="get-started"></a>Rozpoczęcie pracy
 
 [!INCLUDE [data-factory-v2-connector-get-started](../../includes/data-factory-v2-connector-get-started.md)]
 
@@ -65,7 +65,7 @@ Poniższe sekcje zawierają szczegółowe informacje o właściwościach, który
 
 Dla połączonej usługi HTTP są obsługiwane następujące właściwości:
 
-| Właściwość | Opis | Wymagane |
+| Właściwość | Opis | Wymagany |
 |:--- |:--- |:--- |
 | type | Właściwość **Type** musi być ustawiona na wartość **HttpServer**. | Tak |
 | url | Podstawowy adres URL serwera sieci Web. | Tak |
@@ -77,7 +77,7 @@ Dla połączonej usługi HTTP są obsługiwane następujące właściwości:
 
 Ustaw właściwość **AuthenticationType** na wartość **Basic**, **Digest**lub **Windows**. Oprócz ogólnych właściwości, które są opisane w poprzedniej sekcji, określ następujące właściwości:
 
-| Właściwość | Opis | Wymagane |
+| Właściwość | Opis | Wymagany |
 |:--- |:--- |:--- |
 | Uż | Nazwa użytkownika, która ma być używana do uzyskiwania dostępu do punktu końcowego HTTP. | Tak |
 | hasło | Hasło użytkownika (wartość **username** ). Oznacz to pole jako typ **SecureString** , aby bezpiecznie przechowywać go w Data Factory. Możesz również [odwoływać się do wpisu tajnego przechowywanego w Azure Key Vault](store-credentials-in-key-vault.md). | Tak |
@@ -110,7 +110,7 @@ Ustaw właściwość **AuthenticationType** na wartość **Basic**, **Digest**lu
 
 Aby użyć uwierzytelniania ClientCertificate, należy ustawić właściwość **AuthenticationType** na **Kolekcja ClientCertificate**. Oprócz ogólnych właściwości, które są opisane w poprzedniej sekcji, określ następujące właściwości:
 
-| Właściwość | Opis | Wymagane |
+| Właściwość | Opis | Wymagany |
 |:--- |:--- |:--- |
 | embeddedCertData | Dane certyfikatu zakodowane algorytmem Base64. | Określ wartość **embeddedCertData** lub **certThumbprint**. |
 | certThumbprint | Odcisk palca certyfikatu, który został zainstalowany na własnym magazynie certyfikatów maszyny Integration Runtime. Ma zastosowanie tylko wtedy, gdy w właściwości **właściwością connectvia** jest określony typ samodzielny Integration Runtime. | Określ wartość **embeddedCertData** lub **certThumbprint**. |
@@ -175,7 +175,7 @@ Aby uzyskać pełną listę sekcji i właściwości dostępnych do definiowania 
 
 Następujące właściwości są obsługiwane w przypadku protokołu HTTP w obszarze Ustawienia `location` w zestawie danych opartym na formacie:
 
-| Właściwość    | Opis                                                  | Wymagane |
+| Właściwość    | Opis                                                  | Wymagany |
 | ----------- | ------------------------------------------------------------ | -------- |
 | type        | Właściwość Type w obszarze `location` w elemencie DataSet musi być ustawiona na wartość **HttpServerLocation**. | Tak      |
 | relativeUrl | Względny adres URL do zasobu, który zawiera dane.       | Nie       |
@@ -214,7 +214,7 @@ Następujące właściwości są obsługiwane w przypadku protokołu HTTP w obsz
 >[!NOTE]
 >Następujący model zestawu danych jest nadal obsługiwany w przypadku zapewnienia zgodności z poprzednimi wersjami. Zalecane jest użycie nowego modelu wymienionego w powyższej sekcji, co przechodzenie do przodu, a interfejs użytkownika tworzenia ADF został przełączony w celu wygenerowania nowego modelu.
 
-| Właściwość | Opis | Wymagane |
+| Właściwość | Opis | Wymagany |
 |:--- |:--- |:--- |
 | type | Właściwość **Type** zestawu danych musi być ustawiona na wartość **HttpFile**. | Tak |
 | relativeUrl | Względny adres URL do zasobu, który zawiera dane. Jeśli ta właściwość nie jest określona, używana jest tylko adres URL określony w definicji połączonej usługi. | Nie |
@@ -278,7 +278,7 @@ Aby zapoznać się z pełną listą sekcji i właściwości, które są dostępn
 
 Następujące właściwości są obsługiwane w przypadku protokołu HTTP w obszarze Ustawienia `storeSettings` w źródle kopiowania opartego na formacie:
 
-| Właściwość                 | Opis                                                  | Wymagane |
+| Właściwość                 | Opis                                                  | Wymagany |
 | ------------------------ | ------------------------------------------------------------ | -------- |
 | type                     | Właściwość Type w obszarze `storeSettings` musi być ustawiona na wartość **HttpReadSetting**. | Tak      |
 | requestMethod            | Metoda HTTP. <br>Dozwolone wartości to **Get** (default) i **post**. | Nie       |
@@ -333,7 +333,7 @@ Następujące właściwości są obsługiwane w przypadku protokołu HTTP w obsz
 >[!NOTE]
 >Następujący model źródłowy kopiowania jest nadal obsługiwany w przypadku zapewnienia zgodności z poprzednimi wersjami. Zalecane jest użycie nowego modelu wymienionego powyżej, a interfejs użytkownika tworzenia ADF został przełączony w celu wygenerowania nowego modelu.
 
-| Właściwość | Opis | Wymagane |
+| Właściwość | Opis | Wymagany |
 |:--- |:--- |:--- |
 | type | Właściwość **Type** źródła działania Copy musi być ustawiona na wartość **HttpSource**. | Tak |
 | httpRequestTimeout | Limit czasu (wartość **TimeSpan** ) żądania HTTP w celu uzyskania odpowiedzi. Ta wartość jest przekroczeniem limitu czasu w celu uzyskania odpowiedzi, a nie limitu czasu odczytu danych odpowiedzi. Wartość domyślna to **00:01:40**.  | Nie |

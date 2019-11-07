@@ -1,5 +1,5 @@
 ---
-title: Wdróż aplikację podzielonej na fragmenty z wielodostępną bazą danych SaaS, która używa Azure SQL Database | Microsoft Docs
+title: 'Wdróż aplikację podzielonej na fragmenty z wielodostępną bazą danych SaaS, która używa Azure SQL Database '
 description: Wdróż i Eksploruj podzielonej na fragmenty Wingtip bilety SaaS wielodostępną aplikację bazy danych, która demonstruje wzorce SaaS przy użyciu Azure SQL Database.
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: MightyPen
 ms.author: genemi
 ms.reviewer: billgib, stein
 ms.date: 10/16/2018
-ms.openlocfilehash: 2ddb1fe40507da5caa218f73284a1095035df951
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: aa61c9af2e8fbfbe1caeaffb6231afe5b8be6f3c
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68570371"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73692051"
 ---
 # <a name="deploy-and-explore-a-sharded-multi-tenant-application"></a>Wdrażanie i eksplorowanie aplikacji podzielonej na fragmenty z wieloma dzierżawcami
 
@@ -48,7 +48,7 @@ Dostępna jest seria powiązanych samouczków, które kompilują po wdrożeniu p
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-Do wykonania zadań opisanych w tym samouczku niezbędne jest spełnienie następujących wymagań wstępnych:
+Do wykonania kroków tego samouczka niezbędne jest spełnienie następujących wymagań wstępnych:
 
 - Najnowsza Azure PowerShell jest zainstalowana. Aby uzyskać szczegółowe informacje, zobacz [wprowadzenie do Azure PowerShell][link-azure-get-started-powershell-41q].
 
@@ -57,8 +57,8 @@ Do wykonania zadań opisanych w tym samouczku niezbędne jest spełnienie nastę
 ### <a name="plan-the-names"></a>Planowanie nazw
 
 W krokach tej sekcji podajesz wartość *użytkownika* , która jest używana do zapewnienia, że nazwy zasobów są unikatowe globalnie, oraz nazwę *grupy zasobów* , która zawiera wszystkie zasoby utworzone przez wdrożenie aplikacji. W przypadku osoby o nazwie *Ann Finley*sugerujemy:
-- *Użytkownik:* **AF1** *(Ich inicjały i cyfry.   Jeśli aplikacja jest wdrażana po raz drugi, użyj innej wartości (np. AF2).*
-- *Grupa zasobów:* **Wingtip-MT-AF1** *(Wingtip-MT wskazuje, że jest to aplikacja podzielonej na fragmenty z wieloma dzierżawcami. Dołączenie nazwy użytkownika AF1 powoduje skorelowanie nazwy grupy zasobów z nazwami zasobów, które zawiera.)*
+- *User:* **AF1**  *(ich inicjały, plus cyfra). Jeśli aplikacja jest wdrażana po raz drugi, użyj innej wartości (np. AF2).*
+- *Grupa zasobów:* **Wingtip-MT-AF1** *(Wingtip-MT wskazuje, że jest to aplikacja podzielonej na fragmenty z wieloma dzierżawcami. dołączenie nazwy użytkownika AF1 powoduje skorelowanie nazw grup zasobów z nazwami zasobów, które zawiera.)*
 
 Wybierz swoje nazwy teraz i Zapisz je w dół. 
 
@@ -99,17 +99,17 @@ Podczas wdrażania aplikacji Pobierz kod źródłowy aplikacji i skrypty zarząd
 2. Kliknij pozycję **Klonuj lub Pobierz**.
 3. Kliknij pozycję **Pobierz kod pocztowy** i Zapisz plik.
 4. Kliknij prawym przyciskiem myszy plik **WingtipTicketsSaaS-MultiTenantDb-Master. zip** i wybierz polecenie **Właściwości**.
-5. Na karcie **Ogólne** wybierz pozycję Odblokuj, a następnie kliknij pozycję **Zastosuj**.
+5. Na karcie **Ogólne** wybierz pozycję **Odblokuj**, a następnie kliknij pozycję **Zastosuj**.
 6. Kliknij przycisk **OK**.
 7. Wyodrębnij pliki.
 
-Skrypty znajdują się w *... WingtipTicketsSaaS-MultiTenantDb-Master\\Learning\\ modules folder. \\*
+Skrypty znajdują się w folderze *..\\WingtipTicketsSaaS-MultiTenantDb-\\Master Learning modules\\* folder.
 
 ## <a name="update-the-configuration-file-for-this-deployment"></a>Zaktualizuj plik konfiguracji dla tego wdrożenia
 
 Przed uruchomieniem jakichkolwiek skryptów, należy ustawić *grupę zasobów* i wartości *użytkownika* w **userconfig. PSM1**. Ustaw te zmienne na te same wartości, które zostały ustawione podczas wdrażania.
 
-1. Otwórz... Moduły uczenia*userconfig. PSM1* w *programie PowerShell ISE.* \\\\
+1. Otwórz...\\moduły uczenia\\*userconfig. PSM1* w programie *PowerShell ISE*.
 2. Zaktualizuj *ResourceGroupName* i *nadaj nazwę* określonym wartościom dla danego wdrożenia (tylko wiersze 10 i 11).
 3. Zapisz zmiany.
 
@@ -124,19 +124,19 @@ Każdy z miejsc otrzymuje spersonalizowaną aplikację sieci Web, aby wyświetli
 Centralna Strona sieci Web **centrum zdarzeń** zawiera listę linków do dzierżawców w określonym wdrożeniu. Wykonaj następujące kroki, aby skorzystać z witryny sieci Web **centrum zdarzeń** i pojedynczej aplikacji internetowej:
 
 1. Otwórz **centrum zdarzeń** w przeglądarce internetowej:
-   - http://events.wingtip-mt.&lt ; User&gt;. trafficmanager.NET &nbsp; *(Zamień &lt; użytkownika&gt; na wartość użytkownika wdrożenia).*
+   - http://events.wingtip-mt.&lt; użytkownik&gt;. trafficmanager.net &nbsp; *(Zastąp &lt;użytkownika&gt; wartością użytkownika wdrożenia).*
 
      ![centrum zdarzeń](media/saas-multitenantdb-get-started-deploy/events-hub.png)
 
 2. Kliknij przycisk **Fabrikam Jazz Club** w **Centrum zdarzeń**.
 
-   ![Events](./media/saas-multitenantdb-get-started-deploy/fabrikam.png)
+   ![Zdarzenia](./media/saas-multitenantdb-get-started-deploy/fabrikam.png)
 
 ### <a name="azure-traffic-manager"></a>Azure Traffic Manager
 
 Aby kontrolować dystrybucję żądań przychodzących, aplikacja Wingtip używa [platformy Azure Traffic Manager](../traffic-manager/traffic-manager-overview.md). Strona zdarzenia dla każdej dzierżawy zawiera nazwę dzierżawy w adresie URL. Każdy adres URL zawiera również określoną wartość użytkownika. Każdy adres URL jest przestrzegany w pokazanym formacie, wykonując następujące czynności:
 
-- http://events.wingtip-mt.&lt ;user&gt;.trafficmanager.net/*fabrikamjazzclub*
+- http://events.wingtip-mt.&lt; User&gt;. trafficmanager.net/*fabrikamjazzclub*
 
 1. Aplikacja Events analizuje nazwę dzierżawy na podstawie adresu URL. Nazwa dzierżawy jest *fabrikamjazzclub* w powyższym PRZYKŁADowym adresie URL.
 2. Następnie aplikacja miesza nazwę dzierżawy w celu utworzenia klucza w celu uzyskania dostępu do wykazu przy użyciu funkcji [zarządzania mapami fragmentu](sql-database-elastic-scale-shard-map-management.md).
@@ -154,7 +154,7 @@ W środowisku produkcyjnym zwykle tworzony jest rekord DNS CNAME, który [wskazu
 
 Teraz, gdy aplikacja jest wdrożona, przyjrzyjmy ją. *LoadGenerator* skrypt programu PowerShell uruchamia obciążenie dla każdej dzierżawy. Rzeczywiste obciążenie wielu aplikacji SaaS jest zwykle sporadyczne i nieprzewidywalne. W celu symulowania tego typu obciążenia Generator tworzy obciążenie rozproszone dla wszystkich dzierżawców. Obciążenie obejmuje losowe przyrosty dla każdej dzierżawy występujące w interwałach losowych. Aby wzorzec obciążenia był uruchamiany przez kilka minut, najlepszym rozwiązaniem jest umożliwienie generatora przez co najmniej trzy minuty przed monitorowaniem obciążenia.
 
-1. W *ISE programu PowerShell*Otwórz pozycję... Moduły szkolenioweUtilities\\*demo-LoadGenerator. ps1.* \\\\
+1. W *ISE programu PowerShell*Otwórz moduły...\\uczenie\\narzędzia\\*demo-LoadGenerator. ps1* .
 2. Naciśnij klawisz **F5**, aby uruchomić skrypt i generator obciążenia (na razie pozostaw bez zmian wartości domyślne parametrów).
 
 Skrypt *demo-LoadGenerator. ps1* otwiera kolejną sesję programu PowerShell, w której jest uruchamiany Generator obciążenia. Generator obciążenia jest uruchamiany w tej sesji jako zadanie pierwszego planu, które wywołuje zadania generowania obciążenia w tle, po jednym dla każdej dzierżawy.
@@ -169,7 +169,7 @@ Możesz chcieć ponownie uruchomić sesję generatora obciążenia, aby użyć i
 
 Początkowe wdrożenie obejmuje trzy przykładowe dzierżawy w bazie danych *Tenants1* . Utwórzmy kolejną dzierżawę i obserwuj jej wpływ na wdrożoną aplikację. W tym kroku należy nacisnąć jeden klawisz, aby utworzyć nową dzierżawę:
 
-1. Otwórz... \\Moduły szkoleniowe udostępniają i wykazują demo-ProvisionTenants. ps1 w programie PowerShell ISE.\\ \\
+1. Otwórz...\\moduły uczenia\\aprowizacji i wykazu\\*demo-ProvisionTenants. ps1* w programie *PowerShell ISE*.
 2. Naciśnij klawisz **F5** (nie **F8**), aby uruchomić skrypt (pozostaw wartości domyślne teraz).
 
    > [!NOTE]
@@ -192,7 +192,7 @@ W przypadku baz danych z wieloma dzierżawcami możesz wybrać klientów z bezp�
 
 Następnie oferujemy inną dzierżawcę, tym razem z własną bazą danych:
 
-1. W... \\Moduły szkoleniowe udostępniają i wykazują demo-ProvisionTenants. ps1, modyfikują $TenantName do Salix Salsa, $VenueType do odpowiedzialna i $Scenario do\\ \\ **2**.
+1. W...\\moduły uczenia\\aprowizacji i wykazu\\*demo-ProvisionTenants. ps1*, zmodyfikuj *$TenantName* do **Salix Salsa**, *$VenueType* **odpowiedzialna** i *$Scenario* do **2**.
 
 2. Naciśnij klawisz **F5** , aby ponownie uruchomić skrypt.
     - Naciśnięcie klawisza **F5** spowoduje zarezerwowanie nowej dzierżawy w oddzielnej bazie danych. Baza danych i dzierżawca są zarejestrowane w wykazie. Następnie w przeglądarce zostanie otwarta strona zdarzenia dzierżawy.
@@ -211,7 +211,7 @@ Teraz korzystamy z niektórych wdrożonych zasobów:
 
    ![grupa zasobów](./media/saas-multitenantdb-get-started-deploy/resource-group.png)
 
-2. Kliknij pozycję **katalog —&lt;MT&gt; User** Server. Serwer wykazu zawiera dwie bazy danych o nazwie *tenantcatalog* i *basetenantdb*. Baza danych *basetenantdb* jest pustą bazą danych szablonów. Jest on kopiowany w celu utworzenia nowej bazy danych dzierżawy, niezależnie od tego, czy jest używany dla wielu dzierżawców, czy tylko dla jednej dzierżawy.
+2. Kliknij pozycję **katalog — mt&lt;user&gt;** Server. Serwer wykazu zawiera dwie bazy danych o nazwie *tenantcatalog* i *basetenantdb*. Baza danych *basetenantdb* jest pustą bazą danych szablonów. Jest on kopiowany w celu utworzenia nowej bazy danych dzierżawy, niezależnie od tego, czy jest używany dla wielu dzierżawców, czy tylko dla jednej dzierżawy.
 
    ![serwer wykazu](./media/saas-multitenantdb-get-started-deploy/catalog-server.png)
 
@@ -225,13 +225,13 @@ Teraz korzystamy z niektórych wdrożonych zasobów:
 
 Jeśli Generator obciążenia był uruchomiony przez kilka minut, dostępna jest wystarczająca ilość danych telemetrycznych, aby przyjrzeć się funkcjom monitorowania w Azure Portal.
 
-1. Przejdź do serwera **użytkownika&gt; tenants1-&lt;MT** , a następnie kliknij pozycję **tenants1** , aby wyświetlić wykorzystanie zasobów dla bazy danych, która ma cztery dzierżawców. Każda dzierżawa podlega sporadycznemu obciążeniu od generatora obciążenia:
+1. Przejdź do serwera **&gt;tenants1-mt&lt;użytkownika** , a następnie kliknij pozycję **tenants1** , aby wyświetlić wykorzystanie zasobów dla bazy danych, która ma cztery dzierżawców. Każda dzierżawa podlega sporadycznemu obciążeniu od generatora obciążenia:
 
    ![monitorowanie tenants1](./media/saas-multitenantdb-get-started-deploy/monitor-tenants1.png)
 
    Wykres wykorzystania jednostek DTU dobrze ilustruje, w jaki sposób baza danych z wieloma dzierżawcami może obsługiwać nieprzewidywalne obciążenie dla wielu dzierżawców. W takim przypadku Generator obciążenia stosuje sporadyczne obciążenie o około 30 DTU do każdej dzierżawy. To obciążenie jest równe 60% wykorzystania bazy danych DTU 50. Wartości szczytowe przekraczające 60% są wynikiem obciążenia zastosowanego do więcej niż jednej dzierżawy w tym samym czasie.
 
-2. Przejdź do serwera **użytkownika&gt; tenants1-&lt;MT** i kliknij bazę danych **salixsalsa** . Możesz zobaczyć użycie zasobów w tej bazie danych, która zawiera tylko jedną dzierżawę.
+2. Przejdź do serwera **&gt;tenants1-mt&lt;użytkownika** , a następnie kliknij bazę danych **salixsalsa** . Możesz zobaczyć użycie zasobów w tej bazie danych, która zawiera tylko jedną dzierżawę.
 
    ![Baza danych salixsalsa](./media/saas-multitenantdb-get-started-deploy/monitor-salix.png)
 

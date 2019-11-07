@@ -1,6 +1,6 @@
 ---
 title: Ocena wydajności modelu
-titleSuffix: Azure Machine Learning Studio (classic)
+titleSuffix: ML Studio (classic) Azure
 description: W tym artykule przedstawiono sposób oceny wydajności modelu w Azure Machine Learning Studio (klasyczny) i przedstawiono krótkie objaśnienie metryk dostępnych dla tego zadania.
 services: machine-learning
 ms.service: machine-learning
@@ -10,12 +10,12 @@ author: xiaoharper
 ms.author: amlstudiodocs
 ms.custom: seodec18, previous-author=heatherbshapiro, previous-ms.author=hshapiro
 ms.date: 03/20/2017
-ms.openlocfilehash: 7947c1be552e72cea9fb0b9214e82a1ecc481fb1
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 0a3ceb8c46c883e76c06053e395dca1310a86419
+ms.sourcegitcommit: 6c2c97445f5d44c5b5974a5beb51a8733b0c2be7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73493084"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73621727"
 ---
 # <a name="how-to-evaluate-model-performance-in-azure-machine-learning-studio-classic"></a>Jak oszacować wydajność modelu w Azure Machine Learning Studio (klasyczny)
 

@@ -1,6 +1,6 @@
 ---
-title: Dostrajanie wydajności z buforowaniem zestawu wyników | Microsoft Docs
-description: Omówienie funkcji
+title: Dostrajanie wydajności z buforowaniem zestawu wyników
+description: Omówienie funkcji buforowania zestawu wyników dla Azure SQL Data Warehouse
 services: sql-data-warehouse
 author: XiaoyuMSFT
 manager: craigg
@@ -10,12 +10,13 @@ ms.subservice: development
 ms.date: 10/10/2019
 ms.author: xiaoyul
 ms.reviewer: nidejaco;
-ms.openlocfilehash: 6dd3172dd9098db0cb7ec09e812eec65f717340a
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.custom: seo-lt-2019
+ms.openlocfilehash: 461320b9c3ed48176fb60fe695704c582edcd552
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73163204"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73692956"
 ---
 # <a name="performance-tuning-with-result-set-caching"></a>Dostrajanie wydajności z buforowaniem zestawu wyników  
 Gdy buforowanie zestawu wyników jest włączone, Azure SQL Data Warehouse automatycznie buforuje wyniki zapytania w bazie danych użytkownika do powtarzanego użycia.  Dzięki temu kolejne wykonania zapytania będą uzyskiwać wyniki bezpośrednio z utrwalonej pamięci podręcznej, więc ponowne obliczenie nie jest konieczne.   Buforowanie zestawu wyników zwiększa wydajność zapytań i zmniejsza użycie zasobów obliczeniowych.  Ponadto zapytania korzystające z zbuforowanego zestawu wyników nie używają żadnych miejsc współbieżności, więc nie są wliczane do istniejących limitów współbieżności. W celu zapewnienia bezpieczeństwa użytkownicy mogą uzyskiwać dostęp do buforowanych wyników tylko wtedy, gdy mają one takie same uprawnienia dostępu do danych, jak użytkownicy tworzący buforowane wyniki.  

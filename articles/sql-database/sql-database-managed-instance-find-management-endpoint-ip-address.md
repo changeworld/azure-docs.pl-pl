@@ -1,5 +1,5 @@
 ---
-title: Odnajdź Azure SQL Database punkt końcowy zarządzania wystąpieniami zarządzanymi | Microsoft Docs
+title: Odnajdź Azure SQL Database punkt końcowy zarządzania wystąpieniami zarządzanymi
 description: Dowiedz się, jak uzyskać Azure SQL Database publiczny adres IP punktu końcowego zarządzania wystąpieniami zarządzanymi i zweryfikować jego wbudowaną ochronę zapory
 services: sql-database
 ms.service: sql-database
@@ -11,20 +11,20 @@ author: srdan-bozovic-msft
 ms.author: srbozovi
 ms.reviewer: sstein, carlrab
 ms.date: 12/04/2018
-ms.openlocfilehash: a0d47c61bf84cfb22c767fd09b3feed74f55b7fc
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 0cc3ca3a2b8130e52d8c7fc670c0ee7997e4aa47
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68567487"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73688029"
 ---
 # <a name="determine-the-management-endpoint-ip-address"></a>Określ adres IP punktu końcowego zarządzania
 
 Klaster wirtualny Azure SQL Database wystąpienia zarządzanego zawiera punkt końcowy zarządzania wykorzystywany przez firmę Microsoft do zarządzania operacjami. Punkt końcowy zarządzania jest chroniony za pomocą wbudowanej zapory na poziomie sieci i weryfikacji certyfikatu wzajemnego na poziomie aplikacji. Możesz określić adres IP punktu końcowego zarządzania, ale nie możesz uzyskać dostępu do tego punktu końcowego.
 
-Aby określić adres IP zarządzania, wykonaj wyszukiwanie DNS na nazwie FQDN wystąpienia zarządzanego: `mi-name.zone_id.database.windows.net`. Spowoduje to zwrócenie wpisu DNS, który jest taki `trx.region-a.worker.vnet.database.windows.net`sam. Następnie można wykonać wyszukiwanie DNS dla tej nazwy FQDN z usuniętym elementem ". VNET". Spowoduje to zwrócenie adresu IP zarządzania. 
+Aby określić adres IP zarządzania, wykonaj wyszukiwanie DNS na nazwie FQDN wystąpienia zarządzanego: `mi-name.zone_id.database.windows.net`. Spowoduje to zwrócenie wpisu DNS, który jest podobny do `trx.region-a.worker.vnet.database.windows.net`. Następnie można wykonać wyszukiwanie DNS dla tej nazwy FQDN z usuniętym elementem ". VNET". Spowoduje to zwrócenie adresu IP zarządzania. 
 
-Ten program PowerShell wykona wszystkie czynności, jeśli zamienisz \<nazwę FQDN\> z wpisem DNS w wystąpieniu zarządzanym: `mi-name.zone_id.database.windows.net`
+Ten program PowerShell wykona wszystkie czynności, jeśli zastąpisz \<MI nazwę FQDN\> z wpisem DNS wystąpienia zarządzanego: `mi-name.zone_id.database.windows.net`:
   
 ``` powershell
   $MIFQDN = "<MI FQDN>"

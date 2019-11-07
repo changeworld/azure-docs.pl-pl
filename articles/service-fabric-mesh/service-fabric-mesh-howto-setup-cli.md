@@ -1,6 +1,6 @@
 ---
 title: Konfigurowanie interfejsu wiersza polecenia usługi Azure Service Fabric mesh | Microsoft Docs
-description: Dowiedz się, jak skonfigurować interfejs wiersza polecenia usługi Azure Service Fabric mesh.
+description: Interfejs wiersza polecenia usługi Service Fabric Mesh jest wymagany do wdrażania zasobów i zarządzania nimi lokalnie oraz w usłudze Azure Service Fabric Mesh. Poniżej przedstawiono sposób konfigurowania tego programu.
 services: service-fabric-mesh
 keywords: ''
 author: dkkapur
@@ -9,23 +9,23 @@ ms.date: 11/28/2018
 ms.topic: conceptual
 ms.service: service-fabric-mesh
 manager: timlt
-ms.openlocfilehash: 46b2a9a0c4d8a1d9e0fa069d512670dffb94fc28
-ms.sourcegitcommit: f2771ec28b7d2d937eef81223980da8ea1a6a531
+ms.openlocfilehash: 5c9733a5fc5aec337a326fe39e78c3e5c0b8ca4f
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/20/2019
-ms.locfileid: "71173766"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73686301"
 ---
 # <a name="set-up-service-fabric-mesh-cli"></a>Konfigurowanie interfejsu wiersza polecenia usługi Service Fabric Mesh
-Interfejs wiersza polecenia usługi Service Fabric Mesh jest wymagany do wdrażania zasobów i zarządzania nimi lokalnie oraz w usłudze Azure Service Fabric Mesh. 
+Interfejs wiersza polecenia usługi Service Fabric Mesh jest wymagany do wdrażania zasobów i zarządzania nimi lokalnie oraz w usłudze Azure Service Fabric Mesh. Poniżej przedstawiono sposób konfigurowania tego programu.
 
-Istnieją trzy typy interfejsów wiersza polecenia, które mogą być używane. Ich podsumowanie znajduje się w poniższej tabeli. 
+Istnieją trzy typy interfejsów wiersza polecenia, które mogą być używane. Ich podsumowanie znajduje się w poniższej tabeli.
 
 | Moduł interfejsu wiersza polecenia | Środowisko docelowe |  Opis | 
 |---|---|---|
 | az mesh | Azure Service Fabric Mesh | Podstawowy interfejs wiersza polecenia umożliwiający wdrażanie aplikacji i zarządzanie zasobami w ramach środowiska Azure Service Fabric Mesh. 
 | sfctl | Klastry lokalne | Interfejs wiersza polecenia usługi Service Fabric umożliwiający wdrażanie i testowanie zasobów usługi Service Fabric w ramach klastrów lokalnych.  
-| Interfejs wiersza polecenia programu Maven | Klastry lokalne i usługa Azure Service Fabric Mesh | Otoka `az mesh` w programie `sfctl` i umożliwiająca deweloperom języka Java używanie znanego środowiska wiersza polecenia na potrzeby środowiska projektowania lokalnego i platformy Azure.  
+| Interfejs wiersza polecenia programu Maven | Klastry lokalne i usługa Azure Service Fabric Mesh | Otoka wokół `az mesh` i `sfctl`, dzięki której deweloperzy języka Java mogą korzystać z znanego środowiska wiersza polecenia dla środowiska programowania lokalnego i platformy Azure.  
 
 Na potrzeby wersji zapoznawczej interfejs wiersza polecenia usługi Azure Service Fabric mesh jest napisany jako rozszerzenie interfejsu wiersza polecenia platformy Azure. Zainstalować go można w usłudze Azure Cloud Shell lub w lokalnej instalacji wiersza polecenia platformy Azure. 
 
@@ -56,7 +56,7 @@ Aby korzystać z interfejsu wiersza polecenia programu Maven, na maszynie muszą
 
 * [Java](https://www.azul.com/downloads/zulu/)
 * [Maven](https://maven.apache.org/download.cgi)
-* [Usługa Git](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git)
+* [Git](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git)
 * Interfejs wiersza polecenia usługi Azure Mesh (az mesh) — pod kątem usługi Azure Service Fabric Mesh 
 * Interfejs SFCTL (sfctl) — pod kątem klastrów lokalnych 
 

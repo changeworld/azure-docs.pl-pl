@@ -1,5 +1,5 @@
 ---
-title: Działanie wykonywania potoku w Azure Data Factory | Microsoft Docs
+title: Działanie wykonywania potoku w Azure Data Factory
 description: Dowiedz się, jak za pomocą działania Execute Pipeline wywołać jeden Data Factory potoku z innego potoku Data Factory.
 services: data-factory
 documentationcenter: ''
@@ -11,12 +11,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/10/2018
-ms.openlocfilehash: 1611f740f6b55ecf9f15ecd234d63b5e95baeba1
-ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
+ms.openlocfilehash: 093050952ed826a540c35b2b73acd107fafc45ab
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70141704"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73679935"
 ---
 # <a name="execute-pipeline-activity-in-azure-data-factory"></a>Działanie wykonywania potoku w Azure Data Factory
 Działanie Execute Pipeline umożliwia potokowi Data Factory wywoływanie innego potoku.
@@ -59,18 +59,18 @@ Działanie Execute Pipeline umożliwia potokowi Data Factory wywoływanie innego
 
 ## <a name="type-properties"></a>Właściwości typu
 
-Właściwość | Opis | Dozwolone wartości | Wymagane
+Właściwość | Opis | Dozwolone wartości | Wymagany
 -------- | ----------- | -------------- | --------
-name | Nazwa działania wykonywania potoku. | String | Tak
-type | Musi być ustawiona na: **ExecutePipeline**. | String | Tak
-potok | Odwołanie do potoku do potoku zależnego, który wywołuje ten potok. Obiekt odwołania potoku ma dwie właściwości: **ReferenceName** i **Type**. Właściwość ReferenceName określa nazwę potoku odwołania. Właściwość Type musi być ustawiona na wartość PipelineReference. | PipelineReference | Tak
+name | Nazwa działania wykonywania potoku. | Ciąg | Tak
+type | Musi być ustawiona na: **ExecutePipeline**. | Ciąg | Tak
+Proces | Odwołanie do potoku do potoku zależnego, który wywołuje ten potok. Obiekt odwołania potoku ma dwie właściwości: **ReferenceName** i **Type**. Właściwość ReferenceName określa nazwę potoku odwołania. Właściwość Type musi być ustawiona na wartość PipelineReference. | PipelineReference | Tak
 parameters | Parametry, które mają zostać przesłane do wywoływanego potoku | Obiekt JSON, który mapuje nazwy parametrów na wartości argumentów | Nie
-waitOnCompletion | Określa, czy wykonanie działania czeka na zakończenie zależnego wykonania potoku. Wartość domyślna to false. | Boolean | Nie
+waitOnCompletion | Określa, czy wykonanie działania czeka na zakończenie zależnego wykonania potoku. Wartość domyślna to false. | Wartość logiczna | Nie
 
-## <a name="sample"></a>Próbka
+## <a name="sample"></a>Sample
 Ten scenariusz ma dwa potoki:
 
-- **Potok główny** — ten potok ma jedno działanie Execute Pipeline, które wywołuje wywoływany potok. Potok główny przyjmuje dwa parametry: `masterSourceBlobContainer`,. `masterSinkBlobContainer`
+- **Potok główny** — ten potok ma jedno działanie Execute Pipeline, które wywołuje wywoływany potok. Potok główny przyjmuje dwa parametry: `masterSourceBlobContainer`, `masterSinkBlobContainer`.
 - **Wywołano potok** — ten potok ma jedno działanie kopiowania, które kopiuje dane ze źródła obiektów blob platformy Azure do ujścia obiektów blob platformy Azure. Wywoływany potok przyjmuje dwa parametry: `sourceBlobContainer`, `sinkBlobContainer`.
 
 ### <a name="master-pipeline-definition"></a>Definicja potoku głównego

@@ -1,5 +1,5 @@
 ---
-title: Kopiowanie danych do/z systemu plików przy użyciu Azure Data Factory | Microsoft Docs
+title: Kopiowanie danych do/z systemu plików przy użyciu Azure Data Factory
 description: Informacje o kopiowaniu danych do i z lokalnego systemu plików przy użyciu Azure Data Factory.
 services: data-factory
 documentationcenter: ''
@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 04/13/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: eea0b930ab26e3f4d816fed69ccf8e987e6d33c7
-ms.sourcegitcommit: 7c5a2a3068e5330b77f3c6738d6de1e03d3c3b7d
+ms.openlocfilehash: 32649b1e13b49979af3ad5042054e1ee8917227a
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70881353"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73682467"
 ---
 # <a name="copy-data-to-and-from-an-on-premises-file-system-by-using-azure-data-factory"></a>Kopiowanie danych do i z lokalnego systemu plików przy użyciu Azure Data Factory
 > [!div class="op_single_selector" title1="Wybierz używaną wersję usługi Data Factory:"]
@@ -53,9 +53,9 @@ Aby użyć udziału plików systemu Linux, zainstaluj program [Samba](https://ww
 ## <a name="getting-started"></a>Wprowadzenie
 Można utworzyć potok z działaniem kopiowania, które przenosi dane do/z systemu plików przy użyciu różnych narzędzi/interfejsów API.
 
-Najprostszym sposobem utworzenia potoku jest użycie **Kreatora kopiowania**. Zobacz [samouczek: Tworzenie potoku za pomocą kreatora](data-factory-copy-data-wizard-tutorial.md) kopiowania na potrzeby szybkiego instruktażu dotyczącego tworzenia potoku przy użyciu Kreatora kopiowania danych.
+Najprostszym sposobem utworzenia potoku jest użycie **Kreatora kopiowania**. Zobacz [Samouczek: Tworzenie potoku za pomocą Kreatora kopiowania](data-factory-copy-data-wizard-tutorial.md) na potrzeby szybkiego instruktażu dotyczącego tworzenia potoku przy użyciu Kreatora kopiowania danych.
 
-Do utworzenia potoku można także użyć następujących narzędzi: **Visual Studio**, **Azure PowerShell**, **szablon Azure Resource Manager**, **interfejs API platformy .NET**i **interfejs API REST**. Zobacz [samouczka działania kopiowania](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) instrukcje krok po kroku utworzyć potok z działaniem kopiowania.
+Do utworzenia potoku można także użyć następujących narzędzi: **Visual Studio**, **Azure PowerShell**, **szablon Azure Resource Manager**, interfejs API **platformy .NET**i **interfejs API REST**. Aby uzyskać instrukcje krok po kroku dotyczące tworzenia potoku za pomocą działania kopiowania, zobacz [Samouczek dotyczący działania kopiowania](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) .
 
 Niezależnie od tego, czy używasz narzędzi, czy interfejsów API, wykonaj następujące kroki, aby utworzyć potok służący do przenoszenia danych ze źródłowego magazynu danych do magazynu danych ujścia:
 
@@ -68,29 +68,29 @@ Gdy używasz Kreatora, definicje JSON dla tych Data Factory jednostek (połączo
 
 Poniższe sekcje zawierają szczegółowe informacje na temat właściwości JSON, które są używane do definiowania jednostek Data Factory specyficznych dla systemu plików:
 
-## <a name="linked-service-properties"></a>Właściwości usługi połączonej
+## <a name="linked-service-properties"></a>Właściwości połączonej usługi
 Lokalny system plików można połączyć z fabryką danych Azure przy użyciu połączonej usługi **lokalnego serwera plików** . Poniższa tabela zawiera opisy elementów JSON, które są specyficzne dla połączonej usługi lokalnego serwera plików.
 
-| Właściwość | Opis | Wymagane |
+| Właściwość | Opis | Wymagany |
 | --- | --- | --- |
 | type |Upewnij się, że Właściwość Type ma wartość **OnPremisesFileServer**. |Tak |
-| host |Określa ścieżkę katalogu głównego folderu, który chcesz skopiować. Użyj znaku ucieczki "\" dla znaków specjalnych w ciągu. Zobacz [przykładowe połączone definicje usługi i zestaw danych](#sample-linked-service-and-dataset-definitions) przykłady. |Yes |
+| Host |Określa ścieżkę katalogu głównego folderu, który ma zostać skopiowany. Użyj znaku ucieczki "\" dla znaków specjalnych w ciągu. Przykłady można znaleźć w temacie [przykładowe połączone usługi i zestawy danych](#sample-linked-service-and-dataset-definitions) . |Tak |
 | userid |Określ identyfikator użytkownika, który ma dostęp do serwera. |Nie (w przypadku wybrania opcji encryptedCredential) |
-| password |Określ hasło dla użytkownika (nazwa użytkownika). |Nie (w przypadku wybrania opcji encryptedCredential |
+| hasło |Określ hasło użytkownika (UserID). |Nie (w przypadku wybrania opcji encryptedCredential |
 | encryptedCredential |Określ zaszyfrowane poświadczenia, które można uzyskać, uruchamiając polecenie cmdlet New-AzDataFactoryEncryptValue. |Nie (Jeśli wybierzesz opcję określenia identyfikatora użytkownika i hasła w postaci zwykłego tekstu) |
 | gatewayName |Określa nazwę bramy, która Data Factory powinna być używana do nawiązywania połączenia z lokalnym serwerem plików. |Tak |
 
 
-### <a name="sample-linked-service-and-dataset-definitions"></a>Przykładowe połączona usługa i definicje zestawów danych
+### <a name="sample-linked-service-and-dataset-definitions"></a>Przykładowa połączona usługa i definicje zestawu danych
 | Scenariusz | Definicja hosta w połączonej usłudze | folderPath w definicji zestawu danych |
 | --- | --- | --- |
-| Folder lokalny na maszynie Zarządzanie danymi bramy: <br/><br/>Przykłady: D:\\ \* lub D:\folder\subfolder\\\* |D:\\ \\ (for zarządzanie danymi Gateway 2,0 i nowsze wersje) <br/><br/> localhost (dla wcześniejszych wersji niż Zarządzanie danymi Gateway 2,0) |. lub podfolderfolderu\\(dla zarządzanie danymi Gateway 2,0 i nowsze wersje)\\ \\ \\ <br/><br/>D:\\ \\ lub d:\\podfolderfolderu\\(dlawersjibramyponiżej2,0)\\\\ |
-| Zdalny folder udostępniony: <br/><br/>Przykłady: \\ \\myserver\\udostępnianie\\ \* lub \\ \\myserver\\udostępnianie\\folderu\\podfolderów\\\* |\\\\\\\\\\Udostępnijudział\\ |. lub podfolderfolderu\\\\ \\ \\ |
+| Folder lokalny na maszynie Zarządzanie danymi bramy: <br/><br/>Przykłady: D:\\\* lub D:\folder\subfolder\\\* |D:\\\\ (dla bramy Zarządzanie danymi 2,0 i nowszych) <br/><br/> localhost (dla wcześniejszych wersji niż Zarządzanie danymi Gateway 2,0) |.\\\\ lub folderu\\\\podfolderem (dla Zarządzanie danymi Gateway 2,0 i nowsze wersje) <br/><br/>D:\\\\ lub D:\\\\folderu\\\\podfolderu (w przypadku wersji bramy poniżej 2,0) |
+| Zdalny folder udostępniony: <br/><br/>Przykłady: \\\\uzyskać\\udostępniania\\\* lub \\\\\\Udostępnij\\folder\\\\\* |\\\\\\\\i\\\\ |.\\\\ lub folderu\\\\podfolderem |
 
 >[!NOTE]
->Podczas tworzenia, za pośrednictwem interfejsu użytkownika, nie jest potrzebny do wprowadzenia podwójny ukośnik odwrotny (`\\`) aby wyjść, jak za pomocą formatu JSON, należy określić pojedynczy ukośnik odwrotny.
+>Podczas tworzenia za pośrednictwem interfejsu użytkownika nie trzeba wprowadzać podwójnego ukośnika odwrotnego (`\\`), aby wyjść w taki sposób, jak w przypadku kodu JSON, należy określić pojedynczy ukośnik odwrotny.
 
-### <a name="example-using-username-and-password-in-plain-text"></a>Przykład: Używanie nazwy użytkownika i hasła w postaci zwykłego tekstu
+### <a name="example-using-username-and-password-in-plain-text"></a>Przykład: używanie nazwy użytkownika i hasła w postaci zwykłego tekstu
 
 ```JSON
 {
@@ -107,7 +107,7 @@ Lokalny system plików można połączyć z fabryką danych Azure przy użyciu p
 }
 ```
 
-### <a name="example-using-encryptedcredential"></a>Przykład: Korzystanie z encryptedcredential
+### <a name="example-using-encryptedcredential"></a>Przykład: korzystanie z encryptedcredential
 
 ```JSON
 {
@@ -128,14 +128,14 @@ Aby zapoznać się z pełną listą sekcji i właściwości, które są dostępn
 
 Sekcja typeProperties jest inna dla każdego typu zestawu danych. Zawiera informacje, takie jak lokalizacja i format danych w magazynie danych. Sekcja typeProperties dla zestawu **danych typu "** DataSet" ma następujące właściwości:
 
-| Właściwość | Opis | Wymagane |
+| Właściwość | Opis | Wymagany |
 | --- | --- | --- |
-| folderPath |Określa ścieżkę podrzędną do folderu. Użyj znaku ucieczki "\' dla znaków specjalnych w ciągu. Filtr z symbolami wieloznacznymi nie jest obsługiwana. Zobacz [przykładowe połączone definicje usługi i zestaw danych](#sample-linked-service-and-dataset-definitions) przykłady.<br/><br/>Możesz połączyć tę właściwość z **partitionBy** , aby mieć ścieżki folderu na podstawie daty rozpoczęcia/zakończenia wycinka. |Tak |
-| fileName |Określ nazwę pliku w **folderPath** , jeśli chcesz, aby tabela odnosiła się do określonego pliku w folderze. Jeśli nie określisz żadnej wartości dla tej właściwości, tabela wskazuje wszystkie pliki w folderze.<br/><br/>Jeśli nie określono **nazwy pliku** dla wyjściowego zestawu danych, a **preserveHierarchy** nie jest określona w ujścia aktywności, nazwa wygenerowanego pliku ma następujący format: <br/><br/>`Data.<Guid>.txt`Przyklad Data.0a405f8a-93ff-4c6f-b3be-f69616f1df7a.txt) |Nie |
+| folderPath |Określa ścieżkę podrzędną do folderu. Użyj znaku ucieczki "\' dla znaków specjalnych w ciągu. Filtr symboli wieloznacznych nie jest obsługiwany. Przykłady można znaleźć w temacie [przykładowe połączone usługi i zestawy danych](#sample-linked-service-and-dataset-definitions) .<br/><br/>Możesz połączyć tę właściwość z **partitionBy** , aby mieć ścieżki folderu na podstawie daty rozpoczęcia/zakończenia wycinka. |Tak |
+| fileName |Określ nazwę pliku w **folderPath** , jeśli chcesz, aby tabela odnosiła się do określonego pliku w folderze. Jeśli nie określisz żadnej wartości dla tej właściwości, tabela wskazuje wszystkie pliki w folderze.<br/><br/>Jeśli nie określono **nazwy pliku** dla wyjściowego zestawu danych, a **preserveHierarchy** nie jest określona w ujścia aktywności, nazwa wygenerowanego pliku ma następujący format: <br/><br/>`Data.<Guid>.txt` (przykład: Data. 0a405f8a-93ff-4c6f-B3BE-f69616f1df7a. txt) |Nie |
 | fileFilter |Określ filtr, który ma być używany do wybierania podzbioru plików w folderPath, a nie wszystkich plików. <br/><br/>Dozwolone wartości to: `*` (wiele znaków) i `?` (pojedynczy znak).<br/><br/>Przykład 1: "fileFilter": "*. log"<br/>Przykład 2: "fileFilter": 2014-1-?. zawierającego<br/><br/>Należy zauważyć, że fileFilter ma zastosowanie do wejściowego zestawu danych. |Nie |
 | partitionedBy |Możesz użyć partitionedBy, aby określić dynamiczny folderPath/fileName dla danych szeregów czasowych. Przykładem jest folderPath sparametryzowane dla każdej godziny danych. |Nie |
-| format | Obsługiwane są następujące typy formatów: **TextFormat**, **JsonFormat**, **AvroFormat**, **OrcFormat**, **ParquetFormat**. Ustaw **typu** właściwości w obszarze format ma jedną z następujących wartości. Aby uzyskać więcej informacji, zobacz [Format tekstu](data-factory-supported-file-and-compression-formats.md#text-format), [formatu Json](data-factory-supported-file-and-compression-formats.md#json-format), [Avro Format](data-factory-supported-file-and-compression-formats.md#avro-format), [Orc Format](data-factory-supported-file-and-compression-formats.md#orc-format), i [formatu Parquet](data-factory-supported-file-and-compression-formats.md#parquet-format) sekcje. <br><br> Jeśli chcesz **skopiuj pliki — jest** między opartych na plikach magazynów (kopia binarna), Pomiń sekcji format w obu definicji zestawu danych wejściowych i wyjściowych. |Nie |
-| compression | Określ typ i poziom kompresji danych. Obsługiwane typy to: **Gzip**, **Wklęśnięcie**, **BZip2**i **ZipDeflate**. Obsługiwane są następujące poziomy: Optymalnai najszybsza. Zobacz [formaty plików i kompresji w Azure Data Factory](data-factory-supported-file-and-compression-formats.md#compression-support). |Nie |
+| Formatowanie | Obsługiwane są następujące typy formatów: **TextFormat**, **formatu jsonformat**, **AvroFormat**, **OrcFormat**, **ParquetFormat**. Ustaw **typu** właściwości w obszarze format ma jedną z następujących wartości. Aby uzyskać więcej informacji, zobacz [format tekstowy](data-factory-supported-file-and-compression-formats.md#text-format), [Format JSON](data-factory-supported-file-and-compression-formats.md#json-format), [Format Avro](data-factory-supported-file-and-compression-formats.md#avro-format), [Format Orc](data-factory-supported-file-and-compression-formats.md#orc-format)i sekcje [formatu Parquet](data-factory-supported-file-and-compression-formats.md#parquet-format) . <br><br> Jeśli chcesz **skopiować pliki** między magazynami opartymi na plikach (kopia binarna), Pomiń sekcję format w definicjach zestawu danych wejściowych i wyjściowych. |Nie |
+| skompresowane | Określ typ i poziom kompresji danych. Obsługiwane typy to: **gzip**, **Wklęśnięcie**, **BZip2**i **ZipDeflate**. Obsługiwane poziomy to: **optymalne** i **najszybszy**. Zobacz [formaty plików i kompresji w Azure Data Factory](data-factory-supported-file-and-compression-formats.md#compression-support). |Nie |
 
 > [!NOTE]
 > Nie można jednocześnie używać fileName i fileFilter.
@@ -180,27 +180,27 @@ W przypadku działania kopiowania różnią się w zależności od typów źród
 
 **FileSystemSource** obsługuje następujące właściwości:
 
-| Właściwość | Opis | Dozwolone wartości | Wymagane |
+| Właściwość | Opis | Dozwolone wartości | Wymagany |
 | --- | --- | --- | --- |
-| recursive |Wskazuje, czy dane są odczytywane cyklicznie z podfolderów lub tylko z określonego folderu. |Prawda, FAŁSZ (wartość domyślna) |Nie |
+| rozpoznawania |Wskazuje, czy dane są odczytane cyklicznie z podfolderów, czy tylko z określonego folderu. |Prawda, FAŁSZ (wartość domyślna) |Nie |
 
 **FileSystemSink** obsługuje następujące właściwości:
 
-| Właściwość | Opis | Dozwolone wartości | Wymagane |
+| Właściwość | Opis | Dozwolone wartości | Wymagany |
 | --- | --- | --- | --- |
-| copyBehavior |Definiuje zachowanie kopiowania, gdy źródłem jest BlobSource lub system plików. |**PreserveHierarchy:** Zachowuje hierarchię plików w folderze docelowym. Oznacza to, że ścieżka względna pliku źródłowego do folderu źródłowego jest taka sama jak ścieżka względna pliku docelowego do folderu docelowego.<br/><br/>**FlattenHierarchy** Wszystkie pliki z folderu źródłowego są tworzone przy użyciu pierwszego poziomu folderu docelowego. Pliki docelowe są tworzone z automatycznie wygenerowaną nazwą.<br/><br/>**MergeFiles** Scala wszystkie pliki z folderu źródłowego do jednego pliku. Jeśli nazwa pliku/obiektu BLOB jest określona, scalona nazwa pliku jest podaną nazwą. W przeciwnym razie jest to automatycznie wygenerowana nazwa pliku. |Nie |
+| copyBehavior |Definiuje zachowanie kopiowania, gdy źródłem jest BlobSource lub system plików. |**PreserveHierarchy:** Zachowuje hierarchię plików w folderze docelowym. Oznacza to, że ścieżka względna pliku źródłowego do folderu źródłowego jest taka sama jak ścieżka względna pliku docelowego do folderu docelowego.<br/><br/>**FlattenHierarchy:** Wszystkie pliki z folderu źródłowego są tworzone przy użyciu pierwszego poziomu folderu docelowego. Pliki docelowe są tworzone z automatycznie wygenerowaną nazwą.<br/><br/>**MergeFiles:** Scala wszystkie pliki z folderu źródłowego do jednego pliku. Jeśli nazwa pliku/obiektu BLOB jest określona, scalona nazwa pliku jest podaną nazwą. W przeciwnym razie jest to automatycznie wygenerowana nazwa pliku. |Nie |
 
-### <a name="recursive-and-copybehavior-examples"></a>przykładów rekurencyjnych i copyBehavior
+### <a name="recursive-and-copybehavior-examples"></a>Przykłady cykliczne i copyBehavior
 W tej sekcji opisano zachowanie operacji kopiowania dla różnych kombinacji wartości właściwości cyklicznych i copyBehavior.
 
 | wartość cykliczna | copyBehavior wartość | Zachowanie rezultatowe |
 | --- | --- | --- |
-| true |preserveHierarchy |Dla folderu źródłowego Folder1 z następującą strukturą,<br/><br/>Folder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;File1<br/>&nbsp;&nbsp;&nbsp;&nbsp;File2<br/>&nbsp;&nbsp;&nbsp;&nbsp;Subfolder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File3<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File4<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File5<br/><br/>Folder docelowy Folder1 jest tworzony z tą samą strukturą co Źródło:<br/><br/>Folder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;File1<br/>&nbsp;&nbsp;&nbsp;&nbsp;File2<br/>&nbsp;&nbsp;&nbsp;&nbsp;Subfolder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File3<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File4<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File5 |
-| true |flattenHierarchy |Dla folderu źródłowego Folder1 z następującą strukturą,<br/><br/>Folder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;File1<br/>&nbsp;&nbsp;&nbsp;&nbsp;File2<br/>&nbsp;&nbsp;&nbsp;&nbsp;Subfolder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File3<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File4<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File5<br/><br/>Docelowy Folder1 jest tworzony z następującą strukturą: <br/><br/>Folder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;wygenerowany automatycznie nazwę File1<br/>&nbsp;&nbsp;&nbsp;&nbsp;wygenerowany automatycznie nazwę File2<br/>&nbsp;&nbsp;&nbsp;&nbsp;wygenerowany automatycznie nazwę File3<br/>&nbsp;&nbsp;&nbsp;&nbsp;wygenerowany automatycznie nazwę File4<br/>&nbsp;&nbsp;&nbsp;&nbsp;wygenerowany automatycznie nazwę File5 |
-| true |mergeFiles |Dla folderu źródłowego Folder1 z następującą strukturą,<br/><br/>Folder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;File1<br/>&nbsp;&nbsp;&nbsp;&nbsp;File2<br/>&nbsp;&nbsp;&nbsp;&nbsp;Subfolder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File3<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File4<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File5<br/><br/>Docelowy Folder1 jest tworzony z następującą strukturą: <br/><br/>Folder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;Plik1 + plik2 + file3 + File4 + zawartość pliku 5 są scalane w jeden plik z automatycznie wygenerowaną nazwą pliku. |
-| false |preserveHierarchy |Dla folderu źródłowego Folder1 z następującą strukturą,<br/><br/>Folder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;File1<br/>&nbsp;&nbsp;&nbsp;&nbsp;File2<br/>&nbsp;&nbsp;&nbsp;&nbsp;Subfolder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File3<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File4<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File5<br/><br/>Folder docelowy Folder1 jest tworzony z następującą strukturą:<br/><br/>Folder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;File1<br/>&nbsp;&nbsp;&nbsp;&nbsp;File2<br/><br/>Subfolder1 File3, File4 i File5 nie są pobierane. |
-| false |flattenHierarchy |Dla folderu źródłowego Folder1 z następującą strukturą,<br/><br/>Folder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;File1<br/>&nbsp;&nbsp;&nbsp;&nbsp;File2<br/>&nbsp;&nbsp;&nbsp;&nbsp;Subfolder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File3<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File4<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File5<br/><br/>Folder docelowy Folder1 jest tworzony z następującą strukturą:<br/><br/>Folder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;wygenerowany automatycznie nazwę File1<br/>&nbsp;&nbsp;&nbsp;&nbsp;wygenerowany automatycznie nazwę File2<br/><br/>Subfolder1 File3, File4 i File5 nie są pobierane. |
-| false |mergeFiles |Dla folderu źródłowego Folder1 z następującą strukturą,<br/><br/>Folder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;File1<br/>&nbsp;&nbsp;&nbsp;&nbsp;File2<br/>&nbsp;&nbsp;&nbsp;&nbsp;Subfolder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File3<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File4<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File5<br/><br/>Folder docelowy Folder1 jest tworzony z następującą strukturą:<br/><br/>Folder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;Wartość plik1 + plik2 jest scalana w jeden plik z automatycznie wygenerowaną nazwą pliku.<br/>&nbsp;&nbsp;&nbsp;&nbsp;Automatycznie wygenerowana nazwa dla plik1<br/><br/>Subfolder1 File3, File4 i File5 nie są pobierane. |
+| true |preserveHierarchy |Dla folderu źródłowego Folder1 z następującą strukturą,<br/><br/>Folder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;plik1<br/>&nbsp;&nbsp;&nbsp;&nbsp;plik2<br/>&nbsp;&nbsp;&nbsp;&nbsp;Subfolder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;file3<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File4<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File5<br/><br/>Folder docelowy Folder1 jest tworzony z tą samą strukturą co Źródło:<br/><br/>Folder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;plik1<br/>&nbsp;&nbsp;&nbsp;&nbsp;plik2<br/>&nbsp;&nbsp;&nbsp;&nbsp;Subfolder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;file3<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File4<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File5 |
+| true |flattenHierarchy |Dla folderu źródłowego Folder1 z następującą strukturą,<br/><br/>Folder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;plik1<br/>&nbsp;&nbsp;&nbsp;&nbsp;plik2<br/>&nbsp;&nbsp;&nbsp;&nbsp;Subfolder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;file3<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File4<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File5<br/><br/>Docelowy Folder1 jest tworzony z następującą strukturą: <br/><br/>Folder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;automatycznie wygenerowana nazwa dla plik1<br/>&nbsp;&nbsp;&nbsp;&nbsp;automatycznie wygenerowana nazwa dla plik2<br/>&nbsp;&nbsp;&nbsp;&nbsp;automatycznie wygenerowana nazwa dla file3<br/>&nbsp;&nbsp;&nbsp;&nbsp;automatycznie wygenerowana nazwa dla File4<br/>&nbsp;&nbsp;&nbsp;&nbsp;automatycznie wygenerowana nazwa dla File5 |
+| true |mergeFiles |Dla folderu źródłowego Folder1 z następującą strukturą,<br/><br/>Folder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;plik1<br/>&nbsp;&nbsp;&nbsp;&nbsp;plik2<br/>&nbsp;&nbsp;&nbsp;&nbsp;Subfolder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;file3<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File4<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File5<br/><br/>Docelowy Folder1 jest tworzony z następującą strukturą: <br/><br/>Folder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;plik1 + plik2 + file3 + File4 + plik 5 są scalane w jeden plik z automatycznie wygenerowaną nazwą pliku. |
+| false |preserveHierarchy |Dla folderu źródłowego Folder1 z następującą strukturą,<br/><br/>Folder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;plik1<br/>&nbsp;&nbsp;&nbsp;&nbsp;plik2<br/>&nbsp;&nbsp;&nbsp;&nbsp;Subfolder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;file3<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File4<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File5<br/><br/>Folder docelowy Folder1 jest tworzony z następującą strukturą:<br/><br/>Folder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;plik1<br/>&nbsp;&nbsp;&nbsp;&nbsp;plik2<br/><br/>Subfolder1 z file3, File4 i File5 nie są pobierane. |
+| false |flattenHierarchy |Dla folderu źródłowego Folder1 z następującą strukturą,<br/><br/>Folder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;plik1<br/>&nbsp;&nbsp;&nbsp;&nbsp;plik2<br/>&nbsp;&nbsp;&nbsp;&nbsp;Subfolder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;file3<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File4<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File5<br/><br/>Folder docelowy Folder1 jest tworzony z następującą strukturą:<br/><br/>Folder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;automatycznie wygenerowana nazwa dla plik1<br/>&nbsp;&nbsp;&nbsp;&nbsp;automatycznie wygenerowana nazwa dla plik2<br/><br/>Subfolder1 z file3, File4 i File5 nie są pobierane. |
+| false |mergeFiles |Dla folderu źródłowego Folder1 z następującą strukturą,<br/><br/>Folder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;plik1<br/>&nbsp;&nbsp;&nbsp;&nbsp;plik2<br/>&nbsp;&nbsp;&nbsp;&nbsp;Subfolder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;file3<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File4<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File5<br/><br/>Folder docelowy Folder1 jest tworzony z następującą strukturą:<br/><br/>Folder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;plik1 + plik2 zawartości są scalane w jeden plik z automatycznie wygenerowaną nazwą pliku.<br/>&nbsp;&nbsp;&nbsp;&nbsp;automatycznie wygenerowana nazwa dla plik1<br/><br/>Subfolder1 z file3, File4 i File5 nie są pobierane. |
 
 ## <a name="supported-file-and-compression-formats"></a>Obsługiwane formaty plików i kompresji
 Aby uzyskać szczegółowe informacje [, zobacz formaty plików i kompresji w artykule Azure Data Factory](data-factory-supported-file-and-compression-formats.md) .
@@ -208,7 +208,7 @@ Aby uzyskać szczegółowe informacje [, zobacz formaty plików i kompresji w ar
 ## <a name="json-examples-for-copying-data-to-and-from-file-system"></a>Przykłady JSON kopiowania danych do i z systemu plików
 W poniższych przykładach przedstawiono przykładowe definicje JSON, których można użyć do utworzenia potoku przy użyciu [programu Visual Studio](data-factory-copy-activity-tutorial-using-visual-studio.md) lub [Azure PowerShell](data-factory-copy-activity-tutorial-using-powershell.md). Pokazują one sposób kopiowania danych do i z lokalnego systemu plików i usługi Azure Blob Storage. Można jednak skopiować dane *bezpośrednio* z dowolnego źródła do dowolnego ujścia wymienionego w obszarze [obsługiwane źródła i ujścia](data-factory-data-movement-activities.md#supported-data-stores-and-formats) przy użyciu działania kopiowania w Azure Data Factory.
 
-### <a name="example-copy-data-from-an-on-premises-file-system-to-azure-blob-storage"></a>Przykład: Kopiowanie danych z lokalnego systemu plików do usługi Azure Blob Storage
+### <a name="example-copy-data-from-an-on-premises-file-system-to-azure-blob-storage"></a>Przykład: kopiowanie danych z lokalnego systemu plików do usługi Azure Blob Storage
 Ten przykład pokazuje, jak skopiować dane z lokalnego systemu plików do usługi Azure Blob Storage. Przykład zawiera następujące jednostki Data Factory:
 
 * Połączona usługa typu [OnPremisesFileServer](#linked-service-properties).
@@ -430,7 +430,7 @@ Potok zawiera działanie kopiowania, które jest skonfigurowane do korzystania z
 }
 ```
 
-### <a name="example-copy-data-from-azure-sql-database-to-an-on-premises-file-system"></a>Przykład: Kopiowanie danych z Azure SQL Database do lokalnego systemu plików
+### <a name="example-copy-data-from-azure-sql-database-to-an-on-premises-file-system"></a>Przykład: kopiowanie danych z Azure SQL Database do lokalnego systemu plików
 Poniższy przykład pokazuje:
 
 * Połączona usługa typu [AzureSqlDatabase.](data-factory-azure-sql-connector.md#linked-service-properties)

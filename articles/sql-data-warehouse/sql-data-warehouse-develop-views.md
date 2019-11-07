@@ -1,5 +1,5 @@
 ---
-title: Korzystanie z widoków T-SQL w Azure SQL Data Warehouse | Microsoft Docs
+title: Korzystanie z widoków T-SQL
 description: Porady dotyczące korzystania z widoków T-SQL w Azure SQL Data Warehouse tworzenia rozwiązań.
 services: sql-data-warehouse
 author: XiaoyuMSFT
@@ -10,12 +10,13 @@ ms.subservice: development
 ms.date: 04/17/2018
 ms.author: xiaoyul
 ms.reviewer: igorstan
-ms.openlocfilehash: 1fd406243f0f2f5339c4170c4ec17286fcf2ef6d
-ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
+ms.custom: seo-lt-2019
+ms.openlocfilehash: 14ff990fa21f4af3c77b4dba10b4fea758ff32b6
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72901707"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73685761"
 ---
 # <a name="views-in-azure-sql-data-warehouse"></a>Widoki w Azure SQL Data Warehouse
 Widoki mogą być używane na wiele różnych sposobów ulepszania jakości rozwiązania. 

@@ -1,6 +1,6 @@
 ---
-title: Usługa Azure Site Recovery — ustawienia i testowania odzyskiwania po awarii dla maszyn wirtualnych platformy Azure przy użyciu programu Azure PowerShell | Dokumentacja firmy Microsoft
-description: Dowiedz się, jak skonfigurować odzyskiwanie po awarii dla maszyn wirtualnych platformy Azure za pomocą usługi Azure Site Recovery przy użyciu programu Azure PowerShell.
+title: Odzyskiwanie po awarii dla maszyn wirtualnych platformy Azure przy użyciu Azure PowerShell i Azure Site Recovery
+description: Dowiedz się, jak skonfigurować odzyskiwanie po awarii dla maszyn wirtualnych platformy Azure przy użyciu Azure Site Recovery Azure PowerShell.
 services: site-recovery
 author: sujayt
 manager: rochakm
@@ -8,33 +8,33 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 3/29/2019
 ms.author: sutalasi
-ms.openlocfilehash: fe74080387f76b858f60c5285a98c9b67f051449
-ms.sourcegitcommit: 2e4b99023ecaf2ea3d6d3604da068d04682a8c2d
+ms.openlocfilehash: aa91725daf36113334849dd15dd01b6ce6ed4389
+ms.sourcegitcommit: 6c2c97445f5d44c5b5974a5beb51a8733b0c2be7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67671886"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73621095"
 ---
-# <a name="set-up-disaster-recovery-for-azure-virtual-machines-using-azure-powershell"></a>Konfigurowanie odzyskiwania po awarii dla maszyn wirtualnych platformy Azure przy użyciu programu Azure PowerShell
+# <a name="set-up-disaster-recovery-for-azure-virtual-machines-using-azure-powershell"></a>Skonfiguruj odzyskiwanie po awarii dla maszyn wirtualnych platformy Azure przy użyciu Azure PowerShell
 
 
-W tym artykule, możesz dowiedzieć się, jak skonfigurować i przetestować odzyskiwanie po awarii dla maszyn wirtualnych platformy Azure przy użyciu programu Azure PowerShell.
+W tym artykule przedstawiono sposób konfigurowania i testowania odzyskiwania po awarii dla maszyn wirtualnych platformy Azure przy użyciu Azure PowerShell.
 
 Omawiane kwestie:
 
 > [!div class="checklist"]
 > - Utwórz magazyn usługi Recovery Services.
-> - W sesji programu PowerShell, należy ustawić kontekst magazynu.
-> - Przygotuj magazyn, aby rozpocząć replikowanie maszyn wirtualnych platformy Azure.
-> - Tworzenie mapowania sieci.
-> - Tworzenie konta magazynu do replikowania maszyn wirtualnych.
-> - Replikowanie maszyn wirtualnych platformy Azure w regionie odzyskiwania do odzyskiwania po awarii.
-> - Wykonaj test trybu failover, weryfikowanie i wyczyść test pracy awaryjnej.
-> - Tryb failover do regionu odzyskiwania.
+> - Ustaw kontekst magazynu dla sesji programu PowerShell.
+> - Przygotuj magazyn, aby rozpocząć replikację maszyn wirtualnych platformy Azure.
+> - Utwórz mapowania sieci.
+> - Utwórz konta magazynu, aby replikować maszyny wirtualne.
+> - Replikowanie maszyn wirtualnych platformy Azure do regionu odzyskiwania na potrzeby odzyskiwania po awarii.
+> - Wykonaj test pracy w trybie failover, zweryfikuj i oczyść test pracy w trybie failover.
+> - Przejście w tryb failover do regionu odzyskiwania.
 
 > [!NOTE]
-> Nie wszystkie funkcje scenariusz dostępne za pośrednictwem portalu mogą być dostępne za pośrednictwem programu Azure PowerShell. Niektóre funkcje scenariusza, nie są obecnie obsługiwane za pośrednictwem programu Azure PowerShell są:
-> - Możliwość określenia, że wszystkie dyski na maszynie wirtualnej powinny być replikowane bez konieczności jawnego określania każdego dysku maszyny wirtualnej.  
+> Nie wszystkie możliwości scenariusza dostępne w portalu mogą być dostępne za pomocą Azure PowerShell. Niektóre funkcje scenariusza nie są obecnie obsługiwane przez Azure PowerShell są następujące:
+> - Możliwość określenia, że wszystkie dyski na maszynie wirtualnej mają być replikowane bez konieczności jawnego określania poszczególnych dysków maszyny wirtualnej.  
 
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
@@ -44,24 +44,24 @@ Omawiane kwestie:
 Przed rozpoczęciem:
 - Przeanalizuj informacje o [składnikach i architekturze scenariusza](azure-to-azure-architecture.md).
 - Zapoznaj się z [wymaganiami dotyczącymi obsługi](azure-to-azure-support-matrix.md) wszystkich składników.
-- Masz programu Azure PowerShell `Az` modułu. Jeśli potrzebujesz zainstalować lub uaktualnić programu Azure PowerShell, postępuj zgodnie z tym [Przewodnik instalowania i konfigurowania programu Azure PowerShell](/powershell/azure/install-az-ps).
+- Masz moduł `Az` Azure PowerShell. Jeśli musisz zainstalować lub uaktualnić Azure PowerShell, postępuj zgodnie [z tym przewodnikiem, aby zainstalować i skonfigurować Azure PowerShell](/powershell/azure/install-az-ps).
 
-## <a name="log-in-to-your-microsoft-azure-subscription"></a>Zaloguj się do subskrypcji usługi Microsoft Azure
+## <a name="log-in-to-your-microsoft-azure-subscription"></a>Logowanie do subskrypcji Microsoft Azure
 
 Zaloguj się do subskrypcji platformy Azure przy użyciu polecenia cmdlet Connect-AzAccount
 
 ```azurepowershell
 Connect-AzAccount
 ```
-Wybierz swoją subskrypcję platformy Azure. Aby uzyskać listę subskrypcji platformy Azure, do których masz dostęp do, użyj polecenia cmdlet Get-AzSubscription. Wybierz subskrypcję platformy Azure, które chcesz pracować przy użyciu polecenia cmdlet Select AzSubscription.
+Wybierz swoją subskrypcję platformy Azure. Użyj polecenia cmdlet Get-AzSubscription, aby uzyskać listę subskrypcji platformy Azure, do których masz dostęp. Wybierz subskrypcję platformy Azure, z którą chcesz korzystać przy użyciu polecenia cmdlet Select-AzSubscription.
 
 ```azurepowershell
 Select-AzSubscription -SubscriptionId "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
 ```
 
-## <a name="get-details-of-the-virtual-machines-to-be-replicated"></a>Uzyskaj szczegółowe informacje o maszyny wirtualne do replikacji
+## <a name="get-details-of-the-virtual-machines-to-be-replicated"></a>Pobierz szczegóły maszyn wirtualnych, które mają być replikowane
 
-W przykładzie w tym artykule będą replikowane do i odzyskana w regionie zachodnie stany USA 2 maszynę wirtualną w regionie wschodnie stany USA. Maszyna wirtualna jest replikowana jest maszyną wirtualną za pomocą dysku systemu operacyjnego i dysk z danymi pojedynczego. Nazwa maszyny wirtualnej użytych w tym przykładzie jest AzureDemoVM.
+W przykładzie w tym artykule maszyna wirtualna w regionie Wschodnie stany USA zostanie zreplikowana do i odzyskana w regionie zachodnie stany USA 2. Replikowana maszyna wirtualna jest maszyną wirtualną z dyskiem systemu operacyjnego i pojedynczym dyskiem danych. Nazwa maszyny wirtualnej używanej w tym przykładzie to AzureDemoVM.
 
 ```azurepowershell
 # Get details of the virtual machine
@@ -86,23 +86,23 @@ ProvisioningState  : Succeeded
 StorageProfile     : {ImageReference, OsDisk, DataDisks}
 ```
 
-Pobieranie szczegółów dysku dla dysków maszyny wirtualnej. Szczegóły dysku będzie używana później podczas uruchamiania replikacji dla maszyny wirtualnej.
+Pobierz szczegóły dysku dla dysków maszyny wirtualnej. Szczegóły dysku będą później używane podczas uruchamiania replikacji maszyny wirtualnej.
 
 ```azurepowershell
 $OSDiskVhdURI = $VM.StorageProfile.OsDisk.Vhd
 $DataDisk1VhdURI = $VM.StorageProfile.DataDisks[0].Vhd
 ```
 
-## <a name="create-a-recovery-services-vault"></a>Tworzenie magazynu usługi Recovery Services
+## <a name="create-a-recovery-services-vault"></a>Tworzenie magazynu Usług odzyskiwania
 
-Utwórz grupę zasobów, w której chcesz utworzyć magazyn usługi Recovery Services.
+Utwórz grupę zasobów, w której ma zostać utworzony magazyn Recovery Services.
 
 > [!IMPORTANT]
-> * Magazyn usługi Recovery services i maszyny wirtualne chronione, muszą być w różnych lokalizacjach platformy Azure.
-> * Grupa zasobów magazynu usługi Recovery services i virtual machines chroniony, musi być w różnych lokalizacjach platformy Azure.
-> * Magazyn usługi Recovery services i grupę zasobów, do której on należy, może być w tej samej lokalizacji platformy Azure.
+> * Magazyn usługi Recovery Services i chronione maszyny wirtualne muszą znajdować się w różnych lokalizacjach platformy Azure.
+> * Grupa zasobów magazynu usługi Recovery Services i chronione maszyny wirtualne muszą znajdować się w różnych lokalizacjach platformy Azure.
+> * Magazyn usługi Recovery Services i Grupa zasobów, do której ona należy, mogą znajdować się w tej samej lokalizacji platformy Azure.
 
-W tym przykładzie w tym artykule chroniona maszyna wirtualna jest w regionie wschodnie stany USA. Region odzyskiwania wybrane do odzyskania po awarii jest regionu zachodnie stany USA 2. Magazyn usługi recovery services i grupę zasobów magazynu, znajdują się w regionie odzyskiwania (zachodnie stany USA 2)
+W przykładzie w tym artykule chroniona maszyna wirtualna znajduje się w regionie Wschodnie stany USA. Region odzyskiwania wybrany na potrzeby odzyskiwania po awarii jest regionem zachodnie stany USA 2. Magazyn usługi Recovery Services i Grupa zasobów magazynu są zarówno w regionie odzyskiwania (Zachodnie stany USA 2).
 
 ```azurepowershell
 #Create a resource group for the recovery services vault in the recovery Azure region
@@ -116,7 +116,7 @@ Tags              :
 ResourceId        : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/a2ademorecoveryrg
 ```
 
-Utwórz magazyn usługi Recovery services. W przykładzie poniżej w magazynie usługi Recovery Services o nazwie a2aDemoRecoveryVault zostało utworzone w regionie zachodnie stany USA 2.
+Utwórz magazyn usługi Recovery Services. W poniższym przykładzie Recovery Services magazyn o nazwie a2aDemoRecoveryVault jest tworzony w regionie zachodnie stany USA 2.
 
 ```azurepowershell
 #Create a new Recovery services vault in the recovery region
@@ -136,7 +136,7 @@ Properties        : Microsoft.Azure.Commands.RecoveryServices.ARSVaultProperties
 ## <a name="set-the-vault-context"></a>Ustaw kontekst magazynu
 
 
-Ustaw kontekst magazynu do użytku w sesji programu PowerShell. Po ustawieniu kolejne operacje usługi Azure Site Recovery w sesji programu PowerShell są wykonywane w kontekście wybranego magazynu.
+Ustaw kontekst magazynu do użycia w sesji programu PowerShell. Po ustawieniu kolejne Azure Site Recovery operacje w sesji programu PowerShell są wykonywane w kontekście wybranego magazynu.
 
  ```azurepowershell
 #Setting the vault context.
@@ -154,7 +154,7 @@ a2aDemoRecoveryVault a2ademorecoveryrg Microsoft.RecoveryServices Vaults
 Remove-Item -Path $Vaultsettingsfile.FilePath
 ```
 
-W przypadku migracji do platformy można ustawić kontekst magazynu do nowo utworzonego magazynu: 
+Aby przeprowadzić migrację z platformy Azure na platformę Azure, można ustawić kontekst magazynu dla nowo utworzonego magazynu: 
 
 ```azurepowershell
 
@@ -163,17 +163,17 @@ Set-AzRecoveryServicesAsrVaultContext -Vault $vault
 
 ```
 
-## <a name="prepare-the-vault-to-start-replicating-azure-virtual-machines"></a>Przygotowanie magazynu, aby rozpocząć replikowanie maszyn wirtualnych platformy Azure
+## <a name="prepare-the-vault-to-start-replicating-azure-virtual-machines"></a>Przygotuj magazyn, aby rozpocząć replikację maszyn wirtualnych platformy Azure
 
-### <a name="create-a-site-recovery-fabric-object-to-represent-the-primary-source-region"></a>Utwórz obiekt sieci szkieletowej Site Recovery do reprezentowania region podstawowy (źródło)
+### <a name="create-a-site-recovery-fabric-object-to-represent-the-primary-source-region"></a>Utwórz obiekt sieci szkieletowej Site Recovery, aby reprezentować region podstawowy (źródłowy)
 
-Obiekt sieci szkieletowej, w magazynie reprezentuje region platformy Azure. Do reprezentowania regionu platformy Azure, które chronione w magazynie maszyny wirtualne należą do tworzenia obiektu podstawowego sieci szkieletowej. W tym przykładzie w tym artykule chroniona maszyna wirtualna jest w regionie wschodnie stany USA.
+Obiekt sieci szkieletowej w magazynie reprezentuje region świadczenia usługi Azure. Obiekt podstawowej sieci szkieletowej jest tworzony w celu reprezentowania regionu platformy Azure, do którego należą maszyny wirtualne chronione magazynem. W przykładzie w tym artykule chroniona maszyna wirtualna znajduje się w regionie Wschodnie stany USA.
 
-- Można utworzyć tylko jedną siecią szkieletową obiektu na region.
-- Jeśli zostało wcześniej włączone replikacji usługi Site Recovery dla maszyny Wirtualnej w witrynie Azure portal, Usługa Site Recovery automatycznie tworzy obiekt sieci szkieletowej. Jeśli istnieje obiekt sieci szkieletowej dla regionu, nie można utworzyć nowy.
+- Na region można utworzyć tylko jeden obiekt sieci szkieletowej.
+- Jeśli wcześniej włączono Site Recovery replikację maszyny wirtualnej w Azure Portal, Site Recovery automatycznie tworzy obiekt sieci szkieletowej. Jeśli obiekt sieci szkieletowej istnieje dla regionu, nie można utworzyć nowego.
 
 
-Przed rozpoczęciem należy pamiętać, że operacjami usługi Site Recovery są wykonywane asynchronicznie. Po zainicjowaniu operacji przesyłania zadania usługi Azure Site Recovery i zwracany jest zadaniem śledzenia obiektu. Pobierz najnowszy stan zadania (Get-ASRJob) i monitorowanie stanu operacji, należy użyć zadania śledzenia obiektu.
+Przed rozpoczęciem należy zauważyć, że operacje Site Recovery są wykonywane asynchronicznie. Po zainicjowaniu operacji zostanie przesłane zadanie Azure Site Recovery i zostanie zwrócony obiekt śledzenia zadań. Użyj obiektu śledzenia zadań, aby uzyskać najnowszy stan zadania (Get-ASRJob) oraz monitorować stan operacji.
 
 ```azurepowershell
 #Create Primary ASR fabric
@@ -191,11 +191,11 @@ Write-Output $TempASRJob.State
 
 $PrimaryFabric = Get-AsrFabric -Name "A2Ademo-EastUS"
 ```
-Jeśli chronione maszyny wirtualne z różnych regionów platformy Azure w tym samym magazynie, należy utworzyć jeden obiekt sieci szkieletowej dla każdego źródła region platformy Azure.
+Jeśli maszyny wirtualne z wielu regionów platformy Azure są chronione w tym samym magazynie, Utwórz jeden obiekt sieci szkieletowej dla każdego źródłowego regionu platformy Azure.
 
-### <a name="create-a-site-recovery-fabric-object-to-represent-the-recovery-region"></a>Utwórz obiekt sieci szkieletowej Site Recovery do reprezentowania region odzyskiwania
+### <a name="create-a-site-recovery-fabric-object-to-represent-the-recovery-region"></a>Utwórz obiekt sieci szkieletowej Site Recovery, aby reprezentować region odzyskiwania
 
-Obiekt sieci szkieletowej odzyskiwania reprezentuje odzyskiwania lokalizacji platformy Azure. Maszyny wirtualne będą replikowane do i odzyskana (w przypadku pracy awaryjnej) regionie odzyskiwania, reprezentowane przez sieć szkieletową odzyskiwania. Odzyskiwanie region platformy Azure, w tym przykładzie jest zachodnie stany USA 2.
+Obiekt sieci szkieletowej odzyskiwania reprezentuje lokalizację odzyskiwania na platformie Azure. Maszyny wirtualne zostaną zreplikowane do programu (w przypadku przejścia w tryb failover) do obszaru odzyskiwania reprezentowanego przez sieć szkieletową odzyskiwania. Region odzyskiwania systemu Azure używany w tym przykładzie to zachodnie stany USA 2.
 
 ```azurepowershell
 #Create Recovery ASR fabric
@@ -214,9 +214,9 @@ $RecoveryFabric = Get-AsrFabric -Name "A2Ademo-WestUS"
 
 ```
 
-### <a name="create-a-site-recovery-protection-container-in-the-primary-fabric"></a>Tworzenie kontenera ochrony Usługa Site Recovery w podstawowej sieci szkieletowej
+### <a name="create-a-site-recovery-protection-container-in-the-primary-fabric"></a>Tworzenie kontenera ochrony Site Recovery w podstawowej sieci szkieletowej
 
-Kontener ochrony jest kontenerem, używane do grupowania zreplikowane elementy w sieci szkieletowej.
+Kontener ochrony jest kontenerem używanym do grupowania replikowanych elementów w sieci szkieletowej.
 
 ```azurepowershell
 #Create a Protection container in the primary Azure region (within the Primary fabric)
@@ -232,7 +232,7 @@ Write-Output $TempASRJob.State
 
 $PrimaryProtContainer = Get-ASRProtectionContainer -Fabric $PrimaryFabric -Name "A2AEastUSProtectionContainer"
 ```
-### <a name="create-a-site-recovery-protection-container-in-the-recovery-fabric"></a>Tworzenie kontenera ochrony Usługa Site Recovery w sieci szkieletowej odzyskiwania
+### <a name="create-a-site-recovery-protection-container-in-the-recovery-fabric"></a>Tworzenie kontenera ochrony Site Recovery w sieci szkieletowej odzyskiwania
 
 ```azurepowershell
 #Create a Protection container in the recovery Azure region (within the Recovery fabric)
@@ -268,9 +268,9 @@ Write-Output $TempASRJob.State
 
 $ReplicationPolicy = Get-ASRPolicy -Name "A2APolicy"
 ```
-### <a name="create-a-protection-container-mapping-between-the-primary-and-recovery-protection-container"></a>Utwórz mapowanie kontenera ochrony między podstawowymi i odzyskiwania w kontenerze ochrony
+### <a name="create-a-protection-container-mapping-between-the-primary-and-recovery-protection-container"></a>Tworzenie mapowania kontenera ochrony między podstawowym i głównym kontenerem ochrony
 
-Do mapowania kontenera ochrony mapuje kontener ochronę podstawową za pomocą kontenera ochrony odzyskiwania i zasady replikacji. Utwórz jedno mapowanie dla każdej zasady replikacji, które będzie używane do replikacji maszyn wirtualnych między dwoma kontenera ochrony.
+Mapowanie kontenera ochrony mapuje podstawowy kontener ochrony z kontenerem ochrony odzyskiwania i zasadami replikacji. Utwórz jedno mapowanie dla każdej zasady replikacji, która będzie używana do replikowania maszyn wirtualnych między parą kontenera ochrony.
 
 ```azurepowershell
 #Create Protection container mapping between the Primary and Recovery Protection Containers with the Replication policy
@@ -288,9 +288,9 @@ Write-Output $TempASRJob.State
 $EusToWusPCMapping = Get-ASRProtectionContainerMapping -ProtectionContainer $PrimaryProtContainer -Name "A2APrimaryToRecovery"
 ```
 
-### <a name="create-a-protection-container-mapping-for-failback-reverse-replication-after-a-failover"></a>Tworzenie mapowania kontenera ochrony w przypadku powrotu po awarii (replikacja odwrotna po przejściu w tryb failover)
+### <a name="create-a-protection-container-mapping-for-failback-reverse-replication-after-a-failover"></a>Tworzenie mapowania kontenera ochrony na potrzeby powrotu po awarii (replikacja odwrotna po przejściu w tryb failover)
 
-Po przejściu w tryb failover, gdy jesteś gotowy przywrócić nieudane przez maszynę wirtualną do oryginalnego region platformy Azure, można przeprowadzić powrotu po awarii. Powrót po awarii, nie powiodło się za pośrednictwem maszyny wirtualnej jest replikowany z nie powiodło się w regionie do regionu oryginalnego. Do replikacji odwrotnej przełączyć role oryginalnego region i region odzyskiwania. Oryginalny region staje się teraz nowy region odzyskiwania, a jaki był pierwotnie regionie odzyskiwania teraz staje się regionu podstawowego. Mapowanie kontenera ochrony do replikacji odwrotnej reprezentuje przełączono stan role regionów oryginału i odzyskiwania.
+Po przejściu w tryb failover, gdy wszystko będzie gotowe do przełączenia maszyny wirtualnej przełączonej do tyłu do oryginalnego regionu platformy Azure, powrót po awarii. Aby przeprowadzić powrót po awarii, maszyna wirtualna w trybie failover została odłączona od regionu przełączonego w tryb failover do oryginalnego regionu. W przypadku replikacji odwrotnej role oryginalnego regionu i przełączenia regionu odzyskiwania. Oryginalny region zostanie teraz nowym regionem odzyskiwania, a początkowo region odzyskiwania stał się regionem podstawowym. Mapowanie kontenera ochrony na potrzeby replikacji odwrotnej reprezentuje role przełączane w regionach oryginalnego i odzyskiwania.
 
 ```azurepowershell
 #Create Protection container mapping (for failback) between the Recovery and Primary Protection Containers with the Replication policy
@@ -308,14 +308,14 @@ Write-Output $TempASRJob.State
 
 ## <a name="create-cache-storage-accounts-and-target-storage-accounts"></a>Tworzenie kont magazynu pamięci podręcznej i docelowych kont magazynu
 
-Konto magazynu pamięci podręcznej jest standardowe konto magazynu w tym samym regionie platformy Azure jako maszyna wirtualna jest replikowana. Konto magazynu pamięci podręcznej jest używany do przechowywania replikacji zmian tymczasowo niedostępny, zanim zmiany zostaną przeniesione do odzyskiwania region platformy Azure. Użytkownik może (ale nie musi) określania kont magazynu pamięci podręcznej różne dla różnych dysków maszyny wirtualnej.
+Konto magazynu pamięci podręcznej to standardowe konto magazynu w tym samym regionie świadczenia usługi Azure, w którym jest replikowana maszyna wirtualna. Konto magazynu pamięci podręcznej służy do tymczasowego przechowywania zmian replikacji przed przeniesieniem zmian do regionu odzyskiwania usługi Azure. Można wybrać opcję (ale nie musi) określić różne konta magazynu pamięci podręcznej dla różnych dysków maszyny wirtualnej.
 
 ```azurepowershell
 #Create Cache storage account for replication logs in the primary region
 $EastUSCacheStorageAccount = New-AzStorageAccount -Name "a2acachestorage" -ResourceGroupName "A2AdemoRG" -Location 'East US' -SkuName Standard_LRS -Kind Storage
 ```
 
-W przypadku maszyn wirtualnych **nie używa usługi managed disks**, docelowe konto magazynu to konta magazynu w regionie odzyskiwania, do której są replikowane dyski maszyny wirtualnej. Docelowe konto magazynu może być standardowe konto magazynu lub konta usługi premium storage. Wybierz rodzaj wymagane jest konto magazynu, w oparciu o częstotliwość zmian danych (szybkość zapisu We/Wy) dla dysków i limity zmian usługi Azure Site Recovery obsługiwane dla typu magazynu.
+W przypadku maszyn wirtualnych, które **nie korzystają z dysków zarządzanych**, docelowe konto magazynu to konto magazynu w regionie odzyskiwania, do którego są replikowane dyski maszyny wirtualnej. Docelowe konto magazynu może być kontem magazynu w warstwie Standardowa lub kontem magazynu w warstwie Premium. Wybierz rodzaj konta magazynu wymagane na podstawie współczynnika zmian danych (współczynnik zapisu we/wy) dla dysków i Azure Site Recovery obsługiwanych limitów dla typu magazynu.
 
 ```azurepowershell
 #Create Target storage account in the recovery region. In this case a Standard Storage account
@@ -323,11 +323,11 @@ $WestUSTargetStorageAccount = New-AzStorageAccount -Name "a2atargetstorage" -Res
 
 ```
 
-## <a name="create-network-mappings"></a>Tworzenie mapowania sieci
+## <a name="create-network-mappings"></a>Utwórz mapowania sieci
 
-Mapowanie sieci działa sieciami wirtualnymi w regionie podstawowym, sieciami wirtualnymi w regionie odzyskiwania. Mapowanie sieci określa sieć wirtualna platformy Azure w regionie odzyskiwania, które maszyny wirtualnej w wirtualnej sieci podstawowej należy przejściu w tryb failover. Jedna sieć wirtualna platformy Azure mogą być mapowane do tylko jednej sieci wirtualnej platformy Azure w regionie odzyskiwania.
+Mapowanie sieci mapuje sieci wirtualne w regionie podstawowym do sieci wirtualnych w regionie odzyskiwania. Mapowanie sieci określa sieć wirtualną platformy Azure w regionie odzyskiwania, do której maszyna wirtualna w podstawowej sieci wirtualnej powinna przełączyć do trybu failover. Jedną sieć wirtualną platformy Azure można zamapować do pojedynczej sieci wirtualnej platformy Azure w regionie odzyskiwania.
 
-- Tworzenie sieci wirtualnej platformy Azure w regionie odzyskiwania przejścia w tryb failover
+- Tworzenie sieci wirtualnej platformy Azure w regionie odzyskiwania w celu przejścia do trybu failover
 
    ```azurepowershell
     #Create a Recovery Network in the recovery region
@@ -337,7 +337,7 @@ Mapowanie sieci działa sieciami wirtualnymi w regionie podstawowym, sieciami wi
 
     $WestUSRecoveryNetwork = $WestUSRecoveryVnet.Id
    ```
-- Pobieranie podstawowego sieci wirtualnej (vnet maszyna wirtualna jest połączona z)
+- Pobieranie podstawowej sieci wirtualnej (wirtualnej, z którą jest połączona maszyna wirtualna)
    ```azurepowershell
     #Retrieve the virtual network that the virtual machine is connected to
 
@@ -359,7 +359,7 @@ Mapowanie sieci działa sieciami wirtualnymi w regionie podstawowym, sieciami wi
     # Extract the resource ID of the Azure virtual network the nic is connected to from the subnet ID
     $EastUSPrimaryNetwork = (Split-Path(Split-Path($PrimarySubnet.Id))).Replace("\","/")  
    ```
-- Utwórz mapowanie sieci między podstawowym sieć wirtualną i siecią wirtualną odzyskiwania
+- Utwórz mapowanie sieci między podstawową siecią wirtualną a siecią wirtualną odzyskiwania
    ```azurepowershell
     #Create an ASR network mapping between the primary Azure virtual network and the recovery Azure virtual network
     $TempASRJob = New-ASRNetworkMapping -AzureToAzure -Name "A2AEusToWusNWMapping" -PrimaryFabric $PrimaryFabric -PrimaryAzureNetworkId $EastUSPrimaryNetwork -RecoveryFabric $RecoveryFabric -RecoveryAzureNetworkId $WestUSRecoveryNetwork
@@ -374,7 +374,7 @@ Mapowanie sieci działa sieciami wirtualnymi w regionie podstawowym, sieciami wi
     Write-Output $TempASRJob.State
 
    ```
-- Tworzenie mapowania sieci na potrzeby zorientowanych w kierunku odwrotnym (powrót po awarii)
+- Utwórz mapowanie sieci na odwrotny kierunek (powrót po awarii)
     ```azurepowershell
     #Create an ASR network mapping for failback between the recovery Azure virtual network and the primary Azure virtual network
     $TempASRJob = New-ASRNetworkMapping -AzureToAzure -Name "A2AWusToEusNWMapping" -PrimaryFabric $RecoveryFabric -PrimaryAzureNetworkId $WestUSRecoveryNetwork -RecoveryFabric $PrimaryFabric -RecoveryAzureNetworkId $EastUSPrimaryNetwork
@@ -389,9 +389,9 @@ Mapowanie sieci działa sieciami wirtualnymi w regionie podstawowym, sieciami wi
     Write-Output $TempASRJob.State
     ```
 
-## <a name="replicate-azure-virtual-machine"></a>Replikowanie maszyn wirtualnych platformy Azure
+## <a name="replicate-azure-virtual-machine"></a>Replikowanie maszyny wirtualnej platformy Azure
 
-Replikowanie maszyn wirtualnych platformy Azure za pomocą **usługi managed disks**.
+Replikuj maszynę wirtualną platformy Azure z **dyskami zarządzanymi**.
 
 ```azurepowershell
 
@@ -428,7 +428,7 @@ $TempASRJob = New-ASRReplicationProtectedItem -AzureToAzure -AzureVmId $VM.Id -N
 
 ```
 
-Replikowanie maszyn wirtualnych platformy Azure za pomocą **niezarządzane dyski**.
+Replikuj maszynę wirtualną platformy Azure z **dyskami niezarządzanymi**.
 
 ```azurepowershell
 #Specify replication properties for each disk of the VM that is to be replicated (create disk replication configuration)
@@ -460,13 +460,13 @@ while (($TempASRJob.State -eq "InProgress") -or ($TempASRJob.State -eq "NotStart
 Write-Output $TempASRJob.State
 ```
 
-Po rozpoczęcia replikacji powiedzie się, dane maszyny wirtualnej są replikowane w regionie odzyskiwania.
+Po pomyślnym zakończeniu operacji uruchamiania replikacji dane maszyny wirtualnej są replikowane do regionu odzyskiwania.
 
-Proces replikacji rozpoczyna się przez wstępnie rozmieszczania kopię replikowanych dyskach maszyny wirtualnej w regionie odzyskiwania. Ta faza nosi nazwę fazy replikacji początkowej.
+Proces replikacji rozpoczyna się od wstępnego wypełniania kopii dysków replikowanych maszyny wirtualnej w regionie odzyskiwania. Ta faza jest nazywana fazą replikacji początkowej.
 
-Po zakończeniu replikacji początkowej replikacji przenosi faza synchronizacji różnicowej. W tym momencie maszyna wirtualna jest chroniona i testu pracy awaryjnej operację można wykonać na nim. Stan replikacji zreplikowany element reprezentujący maszyna wirtualna przechodzi do stanu "Protected", po zakończeniu replikacji początkowej.
+Po zakończeniu replikacji początkowej replikacja przechodzi do fazy synchronizacji różnicowej. W tym momencie maszyna wirtualna jest chroniona i można na niej wykonać operację testowania pracy w trybie failover. Stan replikacji replikowanego elementu reprezentujący maszynę wirtualną przechodzi do stanu "chroniony" po zakończeniu replikacji początkowej.
 
-Trwa pobieranie szczegółów chronionego elementu replikacji odpowiadającego mu monitorować stan replikacji i kondycję replikacji dla maszyny wirtualnej.
+Monitoruj stan replikacji i kondycję replikacji maszyny wirtualnej, pobierając szczegóły dotyczące chronionego elementu replikacji.
 ```azurepowershell
  Get-ASRReplicationProtectedItem -ProtectionContainer $PrimaryProtContainer | Select FriendlyName, ProtectionState, ReplicationHealth
 ```
@@ -476,9 +476,9 @@ FriendlyName ProtectionState ReplicationHealth
 AzureDemoVM  Protected       Normal           
 ```
 
-## <a name="perform-a-test-failover-validate-and-cleanup-test-failover"></a>Wykonaj test trybu failover, weryfikowanie i wyczyść test pracy awaryjnej
+## <a name="perform-a-test-failover-validate-and-cleanup-test-failover"></a>Wykonaj test pracy w trybie failover, zweryfikuj i oczyść test pracy w trybie failover
 
-Po replikacji maszyny wirtualnej osiągnęła stanu chronionego, test pracy awaryjnej operację można wykonać na maszynie wirtualnej (w obrębie chronionego elementu replikacji maszyny wirtualnej.)
+Po osiągnięciu chronionego stanu przez replikację maszyny wirtualnej można wykonać operację testowej pracy w trybie failover na maszynie wirtualnej (na chronionym elemencie replikacji maszyny wirtualnej).
 
 ```azurepowershell
 #Create a separate network for test failover (not connected to my DR network)
@@ -489,7 +489,7 @@ Add-AzVirtualNetworkSubnetConfig -Name "default" -VirtualNetwork $TFOVnet -Addre
 $TFONetwork= $TFOVnet.Id
 ```
 
-Wykonaj test trybu failover.
+Wykonaj test pracy w trybie failover.
 ```azurepowershell
 $ReplicationProtectedItem = Get-ASRReplicationProtectedItem -FriendlyName "AzureDemoVM" -ProtectionContainer $PrimaryProtContainer
 
@@ -498,7 +498,7 @@ $TFOJob = Start-ASRTestFailoverJob -ReplicationProtectedItem $ReplicationProtect
 
 ```
 
-Poczekaj na zakończenie operacji testu trybu failover.
+Poczekaj na zakończenie operacji testowej pracy w trybie failover.
 ```azurepowershell
 Get-ASRJob -Job $TFOJob
 ```
@@ -522,9 +522,9 @@ AllowedActions   :
 Tasks            : {Prerequisites check for test failover, Create test virtual machine, Preparing the virtual machine, Start the virtual machine}
 Errors           : {}
 ```
-Po zadania testowego trybu failover zakończy się pomyślnie, można nawiązać połączenia testowego w trybie Failover maszyny wirtualnej i sprawdź poprawność testowy tryb failover.
+Po pomyślnym ukończeniu zadania testowego przejścia w tryb failover można nawiązać połączenie z testem zakończonym niepowodzeniem za pomocą maszyny wirtualnej i zweryfikować test pracy w trybie failover.
 
-Po zakończeniu testowania na test przełączone w tryb failover maszyny wirtualnej oczyszczania kopiowania testu przez uruchomienie czyszczenia Testuj operację trybu failover. Ta operacja usuwa testu kopię maszyny wirtualnej, która została utworzona przez testowy tryb failover.
+Po zakończeniu testowania na maszynie wirtualnej z testem zakończonym niepowodzeniem Wyczyść kopię testową, uruchamiając operację oczyszczania testowego trybu failover. Ta operacja usuwa kopię testową maszyny wirtualnej, która została utworzona przez test pracy w trybie failover.
 
 ```azurepowershell
 $Job_TFOCleanup = Start-ASRTestFailoverCleanupJob -ReplicationProtectedItem $ReplicationProtectedItem
@@ -539,7 +539,7 @@ Succeeded
 
 ## <a name="failover-to-azure"></a>Przełączanie do trybu failover na platformie Azure
 
-Tryb failover maszyny wirtualnej, aby określony punkt odzyskiwania.
+Przełączenie maszyny wirtualnej w tryb failover do określonego punktu odzyskiwania.
 
 ```azurepowershell
 $RecoveryPoints = Get-ASRRecoveryPoint -ReplicationProtectedItem $ReplicationProtectedItem
@@ -567,7 +567,7 @@ $Job_Failover.State
 Succeeded
 ```
 
-Po pomyślnie przełączone w tryb failover, należy zatwierdzić operacji trybu failover.
+Po pomyślnym przełączeniu w tryb failover możesz zatwierdzić operację w trybie pracy awaryjnej.
 ```azurepowershell
 $CommitFailoverJOb = Start-ASRCommitFailoverJob -ReplicationProtectedItem $ReplicationProtectedItem
 
@@ -594,9 +594,9 @@ Tasks            : {Prerequisite check, Commit}
 Errors           : {}
 ```
 
-## <a name="reprotect-and-failback-to-source-region"></a>Ponowne włączanie ochrony i powrotu po awarii do regionu źródłowego
+## <a name="reprotect-and-failback-to-source-region"></a>Ponowne włączanie ochrony i powrót po awarii do regionu źródłowego
 
-Po przejściu w tryb failover gdy jesteś gotowy wrócić do oryginalnego regionie, Uruchom replikację odwrotną dla chronionego elementu replikacji za pomocą polecenia cmdlet Update-AzRecoveryServicesAsrProtectionDirection.
+Po przejściu w tryb failover, gdy wszystko jest gotowe do powrotu do oryginalnego regionu, uruchom replikację odwrotną dla chronionego elementu replikacji za pomocą polecenia cmdlet Update-AzRecoveryServicesAsrProtectionDirection.
 
 ```azurepowershell
 #Create Cache storage account for replication logs in the primary region
@@ -609,15 +609,15 @@ Update-AzRecoveryServicesAsrProtectionDirection -ReplicationProtectedItem $Repli
 -ProtectionContainerMapping $RecoveryProtContainer -LogStorageAccountId $WestUSCacheStorageAccount.Id -RecoveryResourceGroupID $sourceVMResourcegroup.Id
 ```
 
-Po zakończeniu ponownego włączania ochrony, należy zainicjować trybu failover w zorientowanych w kierunku odwrotnym (zachodnie stany USA to wschodnie stany USA) i powrót po awarii do regionu źródłowego.
+Po ponownym włączeniu ochrony można zainicjować tryb failover w kierunku odwrotnym (Zachodnie stany USA do Wschodnie stany USA) i powrócić po awarii do regionu źródłowego.
 
 ## <a name="disable-replication"></a>Wyłączanie replikacji
 
-Za pomocą polecenia cmdlet Remove-ASRReplicationProtectedItem, można wyłączyć replikacji.
+Replikację można wyłączyć za pomocą polecenia cmdlet Remove-ASRReplicationProtectedItem.
 
 ```azurepowershell
 Remove-ASRReplicationProtectedItem -ReplicationProtectedItem $ReplicatedItem
 ```
 
 ## <a name="next-steps"></a>Następne kroki
-Widok [dokumentacja programu PowerShell odzyskiwania witryn Azure](https://docs.microsoft.com/powershell/module/az.RecoveryServices) Aby dowiedzieć się, jak można wykonywać inne zadania, takie jak tworzenie planów odzyskiwania i testowania pracy w trybie failover planów odzyskiwania za pomocą programu PowerShell.
+Wyświetl [informacje dotyczące Azure Site Recovery programu PowerShell](https://docs.microsoft.com/powershell/module/az.RecoveryServices) , aby dowiedzieć się, jak wykonywać inne zadania, takie jak tworzenie planów odzyskiwania i testowanie pracy w trybie failover planów odzyskiwania za pomocą programu PowerShell.

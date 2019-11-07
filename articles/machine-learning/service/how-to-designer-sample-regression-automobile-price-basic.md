@@ -1,5 +1,5 @@
 ---
-title: 'Przykład projektanta #1: regresja na cenę predykcyjną'
+title: 'Projektant: cena predykcyjna (regresja)'
 titleSuffix: Azure Machine Learning
 description: Dowiedz się, jak utworzyć model uczenia maszynowego, aby przewidzieć cenę samochodów, bez konieczności pisania pojedynczego wiersza kodu.
 services: machine-learning
@@ -10,12 +10,12 @@ author: xiaoharper
 ms.author: zhanxia
 ms.reviewer: peterlu
 ms.date: 11/04/2019
-ms.openlocfilehash: 14b9f5fd1459ebd3341218a4ada14b16ddb4853f
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 0cdf2d0b632368a5a5bc24e092783c979f7c26bc
+ms.sourcegitcommit: 359930a9387dd3d15d39abd97ad2b8cb69b8c18b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73515475"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73647168"
 ---
 # <a name="sample-1---regression-predict-price"></a>Przykład 1-regresja: cena predykcyjna
 [!INCLUDE [applies-to-skus](../../../includes/aml-applies-to-enterprise-sku.md)]
@@ -28,7 +28,7 @@ Podstawowe kroki związane z modelem uczenia maszynowego są następujące:
 
 1. Pobieranie danych
 1. Wstępnie przetwórz dane
-1. Trenowanie modelu
+1. Uczenie modelu
 1. Ocenianie modelu
 
 Oto końcowy, ukończony wykres potoku. Ten artykuł zawiera uzasadnienie dla wszystkich modułów, dzięki czemu można podejmować podobne decyzje.
@@ -54,7 +54,7 @@ Użyj modułu **SELECT Columns in DataSet (Wybieranie kolumn w zestawie danych**
 
 ![Przetwarzanie wstępne danych](./media/how-to-ui-sample-regression-predict-automobile-price-basic/data-processing.png)
 
-## <a name="train-the-model"></a>Trenowanie modelu
+## <a name="train-the-model"></a>Uczenie modelu
 
 Problemy dotyczące uczenia maszynowego są różne. Typowe zadania uczenia maszynowego obejmują klasyfikację, klastrowanie, regresję i systemy zalecające, z których każdy może wymagać innego algorytmu. Wybór algorytmu często zależy od wymagań dotyczących przypadku użycia. Po wybraniu algorytmu należy dostosować jego parametry, aby szkolić dokładniejszy model. Następnie należy oszacować wszystkie modele na podstawie metryk, takich jak dokładność, intelligibility i wydajność.
 

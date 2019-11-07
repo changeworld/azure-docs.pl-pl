@@ -1,6 +1,6 @@
 ---
-title: Szybki start Striim za pomocą usługi Azure SQL Data Warehouse | Dokumentacja firmy Microsoft
-description: Szybko Rozpocznij pracę z Striim i Azure SQL Data Warehouse.
+title: Striim — Szybki Start
+description: Szybko Rozpocznij pracę z Striimami i Azure SQL Data Warehouse.
 services: sql-data-warehouse
 author: mlee3gsd
 manager: craigg
@@ -10,56 +10,57 @@ ms.subservice: integration
 ms.date: 10/12/2018
 ms.author: martinle
 ms.reviewer: igorstan
-ms.openlocfilehash: 8ed9936884a648d736942caecade2ac3c2980e67
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.custom: seo-lt-2019
+ms.openlocfilehash: 65dc0b8fcece4364f3828fee09221612b999df4e
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65873411"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73685354"
 ---
-# <a name="striim-azure-sql-dw-marketplace-offering-install-guide"></a>Portal SQL magazynu danych Striim Azure Marketplace oferuje Przewodnik instalacji
+# <a name="striim-azure-sql-dw-marketplace-offering-install-guide"></a>Przewodnik dotyczący instalacji oferty portalu Azure SQL DW w witrynie Striim
 
-Ten przewodnik Szybki Start założono, że masz już istniejące wystąpienie usługi SQL Data Warehouse.
+W tym przewodniku szybki start założono, że masz już istniejące wystąpienie SQL Data Warehouse.
 
-Wyszukaj Striim w witrynie Azure Marketplace, a następnie wybierz Striim integracji danych, do opcji/SQL Data Warehouse (przejściowa) 
+Wyszukaj Striim w portalu Azure Marketplace i wybierz opcję Striim integracji danych do SQL Data Warehouse (przemieszczane) 
 
 ![Zainstaluj Striim][install]
 
-Konfigurowanie maszyny Wirtualnej Striim przy użyciu określonych właściwości, zanotowaną Striim nazwę klastra, hasła i hasło administratora
+Skonfiguruj maszynę wirtualną Striim z określonymi właściwościami, zwracając uwagę na nazwę klastra Striim, hasło i hasło administratora.
 
 ![Konfigurowanie Striim][configure]
 
-Po wdrożeniu, kliknij pozycję \<Nazwa maszyny Wirtualnej >-masternode w witrynie Azure portal kliknij pozycję Połącz, a następnie skopiuj logowania przy użyciu lokalnego konta maszyny Wirtualnej 
+Po wdrożeniu kliknij pozycję \<VM Name >-masternode w Azure Portal, kliknij przycisk Połącz i skopiuj nazwę logowania przy użyciu lokalnego konta maszyny wirtualnej 
 
-![Połącz Striim do usługi SQL Data Warehouse][connect]
+![Połącz Striim z SQL Data Warehouse][connect]
 
-Pobierz sqljdbc42.jar z <https://www.microsoft.com/en-us/download/details.aspx?id=54671> na komputer lokalny. 
+Pobierz plik sqljdbc42. jar z <https://www.microsoft.com/en-us/download/details.aspx?id=54671> na maszynę lokalną. 
 
-Otwórz okno wiersza polecenia i zmień katalogi, do którego został pobrany plik jar JDBC. Punkt połączenia usługi plik jar z maszyną wirtualną Striim, uzyskiwanie adres i hasło z portalu Azure
+Otwórz okno wiersza polecenia i zmień katalogi na miejsce pobrania JDBC jar. Przechodzenie do pliku JAR na maszynę wirtualną Striim, pobieranie adresu i hasła z Azure Portal
 
-![Skopiuj plik jar z maszyną wirtualną][copy-jar]
+![Kopiuj plik jar do maszyny wirtualnej][copy-jar]
 
-Otwiera inne okno wiersza polecenia lub użyj ssh narzędzia ssh do Striim klastra
+Otwórz inne okno wiersza polecenia lub użyj narzędzia SSH do nawiązać połączenia SSH z klastrem Striim
 
-![SSH do klastra][ssh]
+![Protokół SSH do klastra][ssh]
 
-Wykonaj następujące polecenia, aby przenieść plik jar JDBC do katalogu lib firmy Striim i uruchamianie i zatrzymywanie serwera.
+Wykonaj następujące polecenia, aby przenieść plik JAR JDBC do katalogu lib Striim, a następnie uruchom i Zatrzymaj serwer.
 
-   1. "sudo" su
-   2. cd /tmp
-   3. mv sqljdbc42.jar /opt/striim/lib
-   4. systemctl stop striim-node
-   5. systemctl stop striim-dbms
-   6. danych striim start systemctl-dbms
-   7. węzeł striim systemctl początkowy
+   1. sudo Su
+   2. /tmp CD
+   3. MV sqljdbc42. jar/opt/striim/lib
+   4. systemctl Zatrzymaj striim — węzeł
+   5. systemctl Stop striim-DBMS
+   6. systemctl Start striim-DBMS
+   7. systemctl Start striim — węzeł
 
-![Uruchomienie klastra Striim][start-striim]
+![Uruchom klaster Striim][start-striim]
 
-Teraz Otwórz ulubioną przeglądarkę i przejdź do \<DNS Name >: 9080
+Teraz otwórz ulubioną przeglądarkę i przejdź do \<nazwy DNS >: 9080
 
 ![Przejdź do ekranu logowania][navigate]
 
-Zaloguj się przy użyciu nazwy użytkownika i hasła, możesz skonfigurować w witrynie Azure portal i wybierz swoje preferowane kreatora, aby rozpocząć pracę, lub przejdź na stronę aplikacji, aby rozpocząć korzystanie z przeciągania i upuszczania interfejsu użytkownika
+Zaloguj się przy użyciu nazwy użytkownika i hasła, które zostały skonfigurowane w Azure Portal, a następnie wybierz preferowanego kreatora, aby rozpocząć, lub przejdź do strony aplikacje, aby rozpocząć korzystanie z interfejsu użytkownika przeciągania i upuszczania.
 
 ![Zaloguj się przy użyciu poświadczeń serwera][login]
 

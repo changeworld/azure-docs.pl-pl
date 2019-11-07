@@ -1,5 +1,5 @@
 ---
-title: Kontenery profilów FSLogix i Azure Files w programie Virtual Desktop systemu Windows — Azure
+title: Pliki kontenerów profilu FSLogix pulpitu wirtualnego systemu Windows — Azure
 description: W tym artykule opisano kontenery profilu FSLogix w ramach usług pulpitu wirtualnego systemu Windows i usługi Azure Files.
 services: virtual-desktop
 author: Heidilohr
@@ -7,12 +7,12 @@ ms.service: virtual-desktop
 ms.topic: conceptual
 ms.date: 08/07/2019
 ms.author: helohr
-ms.openlocfilehash: e651695055b9bfdbfbb5b6281af8c1d21235009b
-ms.sourcegitcommit: 9dec0358e5da3ceb0d0e9e234615456c850550f6
+ms.openlocfilehash: cf4274931d83b51afb4a8ada7d1c9040ccce3c14
+ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/14/2019
-ms.locfileid: "72311799"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73606845"
 ---
 # <a name="fslogix-profile-containers-and-azure-files"></a>Kontenery profili FSLogix i pliki platformy Azure
 
@@ -58,7 +58,7 @@ W poniższej tabeli przedstawiono zalety i ograniczenia dotyczące wcześniejszy
 
 UPD wymaga [bezpośrednie miejsca do magazynowania (S2D)](https://docs.microsoft.com/windows-server/remote/remote-desktop-services/rds-storage-spaces-direct-deployment) , aby rozwiązać wymagania dotyczące wydajności. UPD używa protokołu SMB (Server Message Block). Kopiuje profil do maszyny wirtualnej, w której użytkownik jest rejestrowany. UPD z funkcją S2D to rozwiązanie, które zalecamy dla pulpitu wirtualnego systemu Windows.  
 
-#### <a name="cost"></a>Koszt
+#### <a name="cost"></a>Koszty
 
 Gdy klastry funkcji S2D osiągnąą wymaganą wydajność, koszt jest kosztowny dla klientów korporacyjnych, ale szczególnie kosztownych dla małych i średnich klientów. W przypadku tego rozwiązania firmy płacisz za dyski magazynu, a także koszt maszyn wirtualnych korzystających z dysków dla udziału.
 

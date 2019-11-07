@@ -11,18 +11,20 @@ ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 11/03/2019
 ms.author: diberry
-ms.openlocfilehash: 08f78e4945b612a92d372c832490c380d3749811
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 0cab6eb38459a632f1e7bd1a21e6a7251d33f683
+ms.sourcegitcommit: 359930a9387dd3d15d39abd97ad2b8cb69b8c18b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73487520"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73647414"
 ---
 # <a name="machine-learned-features"></a>Funkcje uczenia maszynowego 
 
 W uczeniu maszynowym *Funkcja* jest odróżnianą cechą lub atrybutem danych, które system obserwuje &. W Language Understanding (LUIS) funkcja opisuje i wyjaśnia, co jest istotne dla Twoich intencji i jednostek.
 
-## <a name="features-in-language-understanding"></a>Funkcje w Language Understanding
+W [portalu Luis w wersji zapoznawczej](https://preview.luis.ai)funkcje są _deskryptorami_ , ponieważ są używane do _opisywania_ zamiaru lub jednostki.  
+
+## <a name="features-_descriptors_-in-language-understanding"></a>Funkcje (_deskryptory_) w Language Understanding
 
 Funkcje, znane także jako deskryptory, opisują wskazówki ułatwiające Language Understanding identyfikowanie przykładu wyrażenia długości. Funkcje obejmują: 
 

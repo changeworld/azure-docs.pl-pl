@@ -1,19 +1,19 @@
 ---
-title: Microsoft Azure Data Box Disk — omówienie | Microsoft Docs — dane
-description: Ten artykuł dotyczy usługi Azure Data Box Disk, rozwiązania w chmurze umożliwiającego przenoszenie dużych ilości danych na platformę Azure
+title: Microsoft Azure Data Box Disk funkcje zabezpieczeń | Microsoft Docs danych
+description: Opisuje funkcje zabezpieczeń zaimplementowane dla Azure Data Box Disk, rozwiązanie w chmurze, które umożliwia Transferowanie dużych ilości danych na platformę Azure
 services: databox
 author: alkohli
 ms.service: databox
 ms.subservice: disk
-ms.topic: overview
-ms.date: 01/09/2019
+ms.topic: conceptual
+ms.date: 11/04/2019
 ms.author: alkohli
-ms.openlocfilehash: afb344418f843e54c3172c17d28bde7055e101b4
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 5db65ab6f1c96ff816252ecaba2170adf358001c
+ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60327941"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73606572"
 ---
 # <a name="azure-data-box-disk-security-and-data-protection"></a>Zabezpieczenia i ochrona danych w usłudze Azure Data Box Disk
 
@@ -90,7 +90,7 @@ W usłudze Azure Data Box Disk dane osobowe są zbierane i wyświetlane w nastę
 Aby uzyskać więcej informacji, zapoznaj się z Zasadami ochrony prywatności firmy Microsoft w [Centrum zaufania](https://www.microsoft.com/trustcenter).
 
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 - Zapoznaj się z [wymaganiami rozwiązania Data Box Disk](data-box-disk-system-requirements.md).
 - Zapoznaj się z [limitami usługi Data Box Disk](data-box-disk-limits.md).

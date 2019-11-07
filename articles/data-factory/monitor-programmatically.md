@@ -1,5 +1,5 @@
 ---
-title: Programowe monitorowanie fabryki danych Azure | Microsoft Docs
+title: Programowe monitorowanie fabryki danych Azure
 description: Dowiedz się, jak monitorować potok w fabryce danych przy użyciu różnych zestawów SDK (Software Development Kit).
 services: data-factory
 documentationcenter: ''
@@ -11,12 +11,12 @@ ms.date: 01/16/2018
 author: djpmsft
 ms.author: daperlov
 manager: craigg
-ms.openlocfilehash: 5c1f64282f1e0b1f225bcad0935c4c9b9a0f96b4
-ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
+ms.openlocfilehash: f9e85a2660ffe1088a9897e9936b6fd0360f87d5
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70141038"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73684597"
 ---
 # <a name="programmatically-monitor-an-azure-data-factory"></a>Programowe monitorowanie fabryki danych Azure
 W tym artykule opisano sposób monitorowania potoku w fabryce danych przy użyciu różnych zestawów SDK (Software Development Kit). 
@@ -25,7 +25,7 @@ W tym artykule opisano sposób monitorowania potoku w fabryce danych przy użyci
 
 ## <a name="data-range"></a>Zakres danych
 
-Data Factory przechowuje tylko dane uruchomienia potoku przez 45 dni. Podczas wykonywania zapytania programistycznego w celu uzyskania danych o Data Factory uruchomieniach potoku — na przykład `Get-AzDataFactoryV2PipelineRun` przy użyciu polecenia programu PowerShell nie są dostępne żadne `LastUpdatedAfter` maksymalne `LastUpdatedBefore` daty dla parametrów opcjonalnych i. Ale jeśli kwerenda dotyczy danych przez ostatni rok, na przykład zapytanie nie zwraca błędu, ale zwraca dane przebiegu potoku z ostatnich 45 dni.
+Data Factory przechowuje tylko dane uruchomienia potoku przez 45 dni. Podczas wykonywania zapytań programistycznych dotyczących danych dotyczących uruchomień Data Factory potoku — na przykład przy użyciu polecenia programu PowerShell `Get-AzDataFactoryV2PipelineRun`-nie ma maksymalnej liczby dat dla opcjonalnych `LastUpdatedAfter` i parametrów `LastUpdatedBefore`. Ale jeśli kwerenda dotyczy danych przez ostatni rok, na przykład zapytanie nie zwraca błędu, ale zwraca dane przebiegu potoku z ostatnich 45 dni.
 
 Jeśli chcesz utrwalać dane przebiegu potoku przez ponad 45 dni, skonfiguruj własne rejestrowanie diagnostyczne przy użyciu [Azure monitor](monitor-using-azure-monitor.md).
 

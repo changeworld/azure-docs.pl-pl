@@ -1,6 +1,6 @@
 ---
-title: Analizowanie obciążenia w usłudze Azure SQL Data Warehouse | Dokumentacja firmy Microsoft
-description: Techniki do analizowania priorytetyzacji zapytania dla obciążenia w usłudze Azure SQL Data Warehouse.
+title: Analizowanie obciążenia
+description: Techniki analizowania priorytetyzacji zapytań dla obciążenia w Azure SQL Data Warehouse.
 services: sql-data-warehouse
 author: ronortloff
 manager: craigg
@@ -10,24 +10,25 @@ ms.subservice: workload-management
 ms.date: 03/13/2019
 ms.author: rortloff
 ms.reviewer: jrasnick
-ms.openlocfilehash: 54652ba573fb2ec2d064b7a85ad5728b73e71db3
-ms.sourcegitcommit: ccb9a7b7da48473362266f20950af190ae88c09b
+ms.custom: seo-lt-2019
+ms.openlocfilehash: 14e53c1ebe63fac0f7c8e29f66ee5aa0cb3b9526
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67588747"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73693119"
 ---
-# <a name="analyze-your-workload-in-azure-sql-data-warehouse"></a>Analizowanie obciążenia w usłudze Azure SQL Data Warehouse
+# <a name="analyze-your-workload-in-azure-sql-data-warehouse"></a>Analizowanie obciążenia w Azure SQL Data Warehouse
 
-Techniki do analizowania obciążenia w usłudze Azure SQL Data Warehouse.
+Techniki analizowania obciążeń w Azure SQL Data Warehouse.
 
 ## <a name="resource-classes"></a>Klasy zasobów
 
-Usługa SQL Data Warehouse udostępnia klasy zasobów do przypisanych zasobów do zapytań.  Aby uzyskać więcej informacji na temat klas zasobów, zobacz [zarządzanie zasobami w klasach i obciążeniem](resource-classes-for-workload-management.md).  Zapytań będzie czekać, jeśli klasy zasobów przypisanej zapytanie wymaga więcej zasobów niż są obecnie dostępne.
+SQL Data Warehouse udostępnia klasy zasobów do przypisywania zasobów systemowych do zapytań.  Aby uzyskać więcej informacji na temat klas zasobów, zobacz [klasy zasobów & zarządzanie obciążeniami](resource-classes-for-workload-management.md).  Zapytania zaczekają, jeśli klasa zasobów przypisana do zapytania będzie potrzebowała więcej zasobów niż jest to obecnie dostępne.
 
-## <a name="queued-query-detection-and-other-dmvs"></a>Wykrywanie umieszczonych w kolejce zapytań i innych widoków DMV
+## <a name="queued-query-detection-and-other-dmvs"></a>Wykrywanie zapytań w kolejce i inne widoków DMV
 
-Możesz użyć `sys.dm_pdw_exec_requests` DMV, aby identyfikować zapytania, które oczekują w kolejce współbieżności. Zapytań oczekujących dla miejsca współbieżności ma stan inny niż **zawieszone**.
+Aby identyfikować zapytania oczekujące w kolejce współbieżności, można użyć `sys.dm_pdw_exec_requests` DMV. Zapytania oczekujące na gniazdo współbieżności mają stan **zawieszone**.
 
 ```sql
 SELECT  r.[request_id]                           AS Request_ID
@@ -40,7 +41,7 @@ FROM    sys.dm_pdw_exec_requests r
 ;
 ```
 
-Role związane z zarządzaniem obciążenia mogą być wyświetlane ze `sys.database_principals`.
+Role zarządzania obciążeniami można przeglądać za pomocą `sys.database_principals`.
 
 ```sql
 SELECT  ro.[name]           AS [db_role_name]
@@ -50,7 +51,7 @@ AND     ro.[is_fixed_role]  = 0
 ;
 ```
 
-Następujące zapytanie wyświetla każdy użytkownik jest przypisany do roli.
+Następujące zapytanie pokazuje, do której roli każdy użytkownik jest przypisany.
 
 ```sql
 SELECT  r.name AS role_principal_name
@@ -62,14 +63,14 @@ WHERE   r.name IN ('mediumrc','largerc','xlargerc')
 ;
 ```
 
-Usługa SQL Data Warehouse ma czekać typów:
+SQL Data Warehouse ma następujące typy oczekiwania:
 
-* **LocalQueriesConcurrencyResourceType**: Zapytania, które znajdują się poza szablonem miejsca współbieżności. Zapytania DMV i systemu przez funkcje, takie jak `SELECT @@VERSION` są przykłady kwerend lokalnych.
-* **UserConcurrencyResourceType**: Zapytania, które znajdują się w strukturze gniazdo współbieżności. Zapytania dotyczące tabel przez użytkownika końcowego reprezentują przykłady używających tego typu zasobu.
-* **DmsConcurrencyResourceType**: W tym czasie czeka wynikające z operacje przenoszenia danych.
-* **BackupConcurrencyResourceType**: Ta oczekiwania wskazuje, że bazy danych jest tworzona kopia zapasowa. Maksymalna wartość dla tego typu zasobu to 1. Jeśli zażądano wielu kopii zapasowych, w tym samym czasie inne kolejki. Ogólnie rzecz biorąc zaleca się minimalny czas między migawkami kolejne 10 minut. 
+* **LocalQueriesConcurrencyResourceType**: zapytania, które znajdują się poza platformą miejsc współbieżności. Zapytania DMV i funkcje systemowe, takie jak `SELECT @@VERSION` są przykładami zapytań lokalnych.
+* **UserConcurrencyResourceType**: zapytania, które znajdują się wewnątrz struktury gniazda współbieżności. Zapytania dotyczące tabel użytkowników końcowych przedstawiają przykłady, które mogłyby używać tego typu zasobu.
+* **DmsConcurrencyResourceType**: czeka na wyniki operacji przenoszenia danych.
+* **BackupConcurrencyResourceType**: to poczekanie wskazuje, że tworzona jest kopia zapasowa bazy danych. Maksymalna wartość dla tego typu zasobu to 1. Jeśli w tym samym czasie zażądano wielu kopii zapasowych, kolejka innych. Ogólnie rzecz biorąc zalecamy minimalny czas między kolejnymi migawkami 10 minut. 
 
-`sys.dm_pdw_waits` DMV może służyć do wyświetlania zasobów, które czeka na żądanie.
+`sys.dm_pdw_waits` DMV może służyć do sprawdzenia, które zasoby oczekują na żądanie.
 
 ```sql
 SELECT  w.[wait_id]
@@ -106,7 +107,7 @@ WHERE    w.[session_id] <> SESSION_ID()
 ;
 ```
 
-`sys.dm_pdw_resource_waits` DMV pokazuje informacje oczekiwania dla danego zapytania. Zasób poczekaj miar czasu czasu oczekiwania na zasoby, aby podać. Czas oczekiwania na sygnał jest czasu potrzebnego dla podstawowych serwerów SQL do zaplanowania zapytania na procesorze CPU.
+`sys.dm_pdw_resource_waits` DMV pokazuje informacje o poczekaniu dla danego zapytania. Czas oczekiwania zasobu mierzy czas oczekiwania na udostępnienie zasobów. Czas oczekiwania na sygnał to czas potrzebny na bazowe serwery SQL do zaplanowania zapytania na procesor CPU.
 
 ```sql
 SELECT  [session_id]
@@ -125,7 +126,7 @@ WHERE    [session_id] <> SESSION_ID()
 ;
 ```
 
-Można również użyć `sys.dm_pdw_resource_waits` DMV obliczania liczby gniazd współbieżności zostały przyznane.
+Można również użyć `sys.dm_pdw_resource_waits` DMV obliczenia liczby miejsc współbieżności przyznanych.
 
 ```sql
 SELECT  SUM([concurrency_slots_used]) as total_granted_slots
@@ -136,7 +137,7 @@ AND     [session_id]     <> session_id()
 ;
 ```
 
-`sys.dm_pdw_wait_stats` DMV może służyć do analizy trendów historycznych czeka.
+`sys.dm_pdw_wait_stats` DMV może służyć do analizy trendu historycznego oczekiwania.
 
 ```sql
 SELECT   w.[pdw_node_id]
@@ -150,6 +151,6 @@ FROM    sys.dm_pdw_wait_stats w
 ;
 ```
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
-Aby uzyskać więcej informacji o zarządzaniu bazy danych użytkowników i zabezpieczeń, zobacz [Zabezpieczanie bazy danych w usłudze SQL Data Warehouse](sql-data-warehouse-overview-manage-security.md). Aby uzyskać więcej informacji na temat sposobu większych klas zasobów może zwiększyć jakość indeksu klastrowanego magazynu kolumn, zobacz [ponowne tworzenie indeksów w celu zwiększenia jakości segmentów](sql-data-warehouse-tables-index.md#rebuilding-indexes-to-improve-segment-quality).
+Aby uzyskać więcej informacji na temat zarządzania użytkownikami i zabezpieczeniami bazy danych, zobacz temat [Zabezpieczanie bazy danych w SQL Data Warehouse](sql-data-warehouse-overview-manage-security.md). Aby uzyskać więcej informacji o tym, jak większe klasy zasobów mogą ulepszyć jakość klastrowanego indeksu magazynu kolumn, zobacz Ponowne [Kompilowanie indeksów w celu zwiększenia jakości segmentu](sql-data-warehouse-tables-index.md#rebuilding-indexes-to-improve-segment-quality).

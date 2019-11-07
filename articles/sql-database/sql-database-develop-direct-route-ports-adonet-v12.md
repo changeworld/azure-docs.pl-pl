@@ -1,5 +1,5 @@
 ---
-title: Porty powyżej 1433 dla SQL Database | Microsoft Docs
+title: Porty powyżej 1433 dla SQL Database
 description: Połączenia klientów z ADO.NET do Azure SQL Database mogą ominąć serwer proxy i korzystać bezpośrednio z bazy danych przy użyciu portów innych niż 1433.
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: MightyPen
 ms.author: genemi
 ms.reviewer: sstein
 ms.date: 04/03/2019
-ms.openlocfilehash: a39cfd1981041c807a91a08c198378d238f0846e
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 38ab3b6b0c64ad17311d15fd12e7625e8aa728ce
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68568911"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73690689"
 ---
 # <a name="ports-beyond-1433-for-adonet-45"></a>Porty powyżej 1433 dla ADO.NET 4,5
 
@@ -30,11 +30,11 @@ W tym temacie opisano zachowanie Azure SQL Database połączenia dla klientów k
 
 W przypadku połączeń do Azure SQL Database musimy najpierw zażądać, czy program kliencki działa *poza* granicą chmury platformy Azure, czy *wewnątrz* niej. Podsekcje omawiają dwa typowe scenariusze.
 
-### <a name="outside-client-runs-on-your-desktop-computer"></a>*Dział* Klient uruchomiony na komputerze stacjonarnym
+### <a name="outside-client-runs-on-your-desktop-computer"></a>*Poza:* Klient uruchomiony na komputerze stacjonarnym
 
 Port 1433 jest jedynym portem, który musi być otwarty na komputerze stacjonarnym, który hostuje SQL Database aplikację kliencką.
 
-### <a name="inside-client-runs-on-azure"></a>*Ramce* Klient uruchomiony na platformie Azure
+### <a name="inside-client-runs-on-azure"></a>*Wewnątrz:* Klient uruchomiony na platformie Azure
 
 Gdy klient działa w ramach granicy chmury platformy Azure, korzysta z tego, co możemy wywołać *bezpośrednią trasę* do współdziałania z serwerem SQL Database. Po ustanowieniu połączenia dalsze interakcje między klientem i bazą danych nie obejmują bramy Azure SQL Database.
 
@@ -70,7 +70,7 @@ W tej części objaśniono monikery odwołujące się do wersji produktu. Zawier
 
 * Microsoft SQL Server JDBC 4,2 lub nowszy (JDBC 4,0 faktycznie obsługuje TDS 7,4, ale nie implementuje "przekierowania")
 
-## <a name="related-links"></a>Linki pokrewne
+## <a name="related-links"></a>Powiązane linki
 
 * ADO.NET 4,6 został opublikowany 20 lipca 2015. Ogłoszenie w blogu z zespołu .NET jest dostępne [tutaj](https://blogs.msdn.com/b/dotnet/archive/20../../announcing-net-framework-4-6.aspx).
 * ADO.NET 4,5 został opublikowany 15 sierpnia 2012. Ogłoszenie w blogu z zespołu .NET jest dostępne [tutaj](https://blogs.msdn.com/b/dotnet/archive/20../../announcing-the-release-of-net-framework-4-5-rtm-product-and-source-code.aspx).
@@ -78,11 +78,11 @@ W tej części objaśniono monikery odwołujące się do wersji produktu. Zawier
 
 * Microsoft® ODBC Driver 17 dla SQL Server® — Windows, Linux, & macOS https://www.microsoft.com/download/details.aspx?id=56567
 
-* Nawiązywanie połączenia z usługą Azure SQL Database V12 za pomocą przekierowania https://techcommunity.microsoft.com/t5/DataCAT/Connect-to-Azure-SQL-Database-V12-via-Redirection/ba-p/305362
+* Łączenie się z usługą Azure SQL Database V12 za pomocą przekierowania https://techcommunity.microsoft.com/t5/DataCAT/Connect-to-Azure-SQL-Database-V12-via-Redirection/ba-p/305362
 
 * [Lista wersji protokołu TDS](https://www.freetds.org/userguide/tdshistory.htm)
 * [Przegląd SQL Database Development](sql-database-develop-overview.md)
 * [Zapora Azure SQL Database](sql-database-firewall-configure.md)
-* [Instrukcje: Konfigurowanie ustawień zapory w usłudze SQL Database](sql-database-configure-firewall-settings.md)
+* [Instrukcje: Konfigurowanie ustawień zapory na SQL Database](sql-database-configure-firewall-settings.md)
 
 

@@ -1,5 +1,5 @@
 ---
-title: Udzielanie dostępu do Azure SQL Database i SQL Data Warehouse | Microsoft Docs
+title: Udzielanie dostępu do Azure SQL Database i SQL Data Warehouse
 description: Dowiedz się więcej na temat udzielania dostępu do Microsoft Azure SQL Database i SQL Data Warehouse.
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: VanMSFT
 ms.author: vanto
 ms.reviewer: carlrab
 ms.date: 05/08/2019
-ms.openlocfilehash: 1292dbf43b5246fe3da95ead4d5d9113b4bc84f9
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: c115cd7e4d531bfdc7ddbacd4f6eff2a892ea3c3
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68569029"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73690755"
 ---
 # <a name="azure-sql-database-and-sql-data-warehouse-access-control"></a>Azure SQL Database i SQL Data Warehouse kontroli dostępu
 
@@ -50,7 +50,7 @@ Konta użytkowników można utworzyć w bazie danych master i przyznać im upraw
 
 Zalecanym najlepszym rozwiązaniem jest używanie przez daną aplikację dedykowanego konta do uwierzytelniania — w ten sposób można ograniczyć uprawnienia nadane aplikacji i zmniejszyć ryzyko złośliwych działań w przypadku, gdy kod aplikacji jest narażony na atak polegający na wstrzyknięciu kodu SQL. Zalecaną metodą jest utworzenie [użytkownika zawartej bazy danych](https://docs.microsoft.com/sql/relational-databases/security/contained-database-users-making-your-database-portable), co umożliwia aplikacji bezpośrednie uwierzytelnianie w bazie danych. 
 
-## <a name="authorization"></a>Authorization
+## <a name="authorization"></a>Autoryzacja
 
 Autoryzacja określa, co użytkownik może zrobić w usłudze Azure SQL Database, i jest kontrolowana za pomocą [członkostw roli](https://docs.microsoft.com/sql/relational-databases/security/authentication-access/database-level-roles) bazy danych konta użytkownika i [uprawnień na poziomie obiektu](https://docs.microsoft.com/sql/relational-databases/security/permissions-database-engine). Zalecanym najlepszym rozwiązaniem jest przyznanie użytkownikom minimalnych niezbędnych uprawnień. Konto administratora serwera, za pomocą którego nawiązujesz połączenie, jest członkiem roli db_owner, która ma uprawnienia do wykonywania wszystkich funkcji w bazie danych. Zapisz to konto, aby móc wdrażać uaktualnienia schematów i wykonywać inne operacje zarządzania. Używaj konta „ApplicationUser” z bardziej ograniczonymi uprawnienia do nawiązywania połączenia pomiędzy swoją aplikacją a bazą danych aplikacji, korzystając z minimalnych uprawnień wymaganych przez aplikację. Aby uzyskać więcej informacji, zobacz temat [Zarządzanie danymi logowania](sql-database-manage-logins.md).
 
@@ -63,7 +63,7 @@ Należy zapoznać się z następującymi funkcjami, których można użyć do og
 - [Maskowania danych](sql-database-dynamic-data-masking-get-started.md) można używać do ograniczania ujawniania danych wrażliwych.
 - [Procedury składowane](https://docs.microsoft.com/sql/relational-databases/stored-procedures/stored-procedures-database-engine) umożliwiają ograniczenie czynności wykonywanych w bazie danych.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 - Aby zobaczyć przegląd funkcji zabezpieczeń usługi SQL Database, zobacz [omówienie zabezpieczeń usługi SQL](sql-database-security-overview.md).
 - Aby dowiedzieć się więcej o regułach zapory, zobacz [reguły zapory](sql-database-firewall-configure.md).

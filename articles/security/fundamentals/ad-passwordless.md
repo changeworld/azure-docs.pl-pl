@@ -2,25 +2,25 @@
 title: Informacje o świecie bez hasła Azure Active Directory | Microsoft Docs
 description: Ten przewodnik pomaga CEOs, dyrektorzy działu informatyki, CISOs, starszym architektom tożsamości, architektom przedsiębiorstwa oraz zabezpieczeniom i organom IT odpowiedzialnym za wybór metody uwierzytelniania bezhasła dla ich implementacji Azure Active Directory.
 keywords: bezhasło, azuread
-author: martincoetzer
-ms.author: martinco
+author: TerryLanfear
+ms.author: terrylan
 ms.date: 07/09/2019
 ms.topic: article
 ms.service: security
 ms.subservice: security-fundamentals
 ms.workload: identity
-ms.openlocfilehash: d1c69cd1cf9990fc77a24e18d87690210453cf75
-ms.sourcegitcommit: c79aa93d87d4db04ecc4e3eb68a75b349448cd17
+ms.openlocfilehash: a24195dcf8f384db8d78d39ac7100e487f6c9272
+ms.sourcegitcommit: 6c2c97445f5d44c5b5974a5beb51a8733b0c2be7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71091952"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73621277"
 ---
 # <a name="a-world-without-passwords-with-azure-active-directory"></a>Świat bez hasła przy użyciu Azure Active Directory
 
-Jest to czas na rozdzielenie relacji z hasłami. Hasła były dobre dla nas w przeszłości, ale w dzisiejszej, cyfrowej miejscu pracy stało się stosunkowo łatwym sposobem ataku na ataki hakerów. Hakerzy lubią hasła i nie są trudne do sprawdzenia, dlaczego należy wziąć pod uwagę, że najczęściej odrzucone hasła w usłudze Azure Active Directory (Azure AD) zawierają warunki, takie jak rok, miesiąc, sezon lub lokalny zespół sportowy. Ponadto [badania](https://aka.ms/passwordguidance) wykazały, że tradycyjne zalecenia dotyczące zarządzania hasłami, takie jak wymagania dotyczące długości, wymagania dotyczące złożoności i częstotliwości zmian, są counterproductive z różnych powodów związanych z charakterem ludzkim.
+Jest to czas na rozdzielenie relacji z hasłami. Hasła były dobre dla nas w przeszłości, ale w dzisiejszej, cyfrowej miejscu pracy stało się stosunkowo łatwym sposobem ataku na ataki hakerów. Hakerzy lubią hasła i nie są trudne do sprawdzenia, dlaczego należy wziąć pod uwagę, że najczęściej odrzucone hasła w usłudze Azure Active Directory (Azure AD) zawierają warunki, takie jak rok, miesiąc, sezon lub lokalny zespół sportowy. Ponadto [badania wykazały](https://aka.ms/passwordguidance) , że tradycyjne zalecenia dotyczące zarządzania hasłami, takie jak wymagania dotyczące długości, wymagania dotyczące złożoności i częstotliwości zmian, są counterproductive z różnych powodów związanych z charakterem ludzkim.
 
-Trzy typy ataków często używanych do naruszenia zabezpieczeń kont użytkowników to rozpylanie, phishing i ponowne odtworzenie naruszenia. Funkcje usługi Azure AD, takie jak [inteligentna blokada](../../active-directory/authentication/howto-password-smart-lockout.md), [zabronione hasła](../../active-directory/authentication/concept-password-ban-bad-on-premises.md)i [Ochrona hasłem](../../active-directory/authentication/concept-password-ban-bad-on-premises.md) , mogą pomóc chronić przed atakami tego typu. Podobnie, implementacja [uwierzytelniania](../../active-directory/authentication/concept-mfa-howitworks.md) wieloskładnikowego (MFA) lub dwuetapowa weryfikacja zapewnia dodatkowe zabezpieczenia, wymagając drugiej formy uwierzytelniania. Jednak w długim czasie, rozwiązanie bezhasło to najlepsze rozwiązanie do zapewnienia najbezpieczniejszej metody uwierzytelniania.
+Trzy typy ataków często używanych do naruszenia zabezpieczeń kont użytkowników to rozpylanie, phishing i ponowne odtworzenie naruszenia. Funkcje usługi Azure AD, takie jak [inteligentna blokada](../../active-directory/authentication/howto-password-smart-lockout.md), [zabronione hasła](../../active-directory/authentication/concept-password-ban-bad-on-premises.md)i [Ochrona hasłem](../../active-directory/authentication/concept-password-ban-bad-on-premises.md) , mogą pomóc chronić przed atakami tego typu. Podobnie, implementacja [uwierzytelniania wieloskładnikowego](../../active-directory/authentication/concept-mfa-howitworks.md) (MFA) lub dwuetapowa weryfikacja zapewnia dodatkowe zabezpieczenia, wymagając drugiej formy uwierzytelniania. Jednak w długim czasie, rozwiązanie bezhasło to najlepsze rozwiązanie do zapewnienia najbezpieczniejszej metody uwierzytelniania.
 
 Ten artykuł jest początek podróży, aby pomóc Ci zrozumieć i wdrożyć rozwiązania bezhaseł firmy Microsoft, a także wybrać jedną z następujących opcji:
 
@@ -109,7 +109,7 @@ Aby lepiej poznać proces uwierzytelniania w innych scenariuszach obejmujących 
 
 [Usługi resetowania numerów PIN firmy Microsoft](/windows/security/identity-protection/hello-for-business/hello-feature-pin-reset) to funkcja w usłudze Azure AD, która umożliwia użytkownikom Resetowanie numerów PIN w razie potrzeby. Za pomocą zasad grupy, Microsoft Intune lub zgodnego zarządzania urządzeniami przenośnymi, administrator może skonfigurować urządzenia z systemem Windows 10, aby bezpiecznie używały usługi resetowania numerów PIN firmy Microsoft, która umożliwia użytkownikom resetowanie zapomnianego numeru PIN za pośrednictwem ustawień lub ponad ekranu blokady bez konieczności ponowna rejestracja.
 
-Czasami użytkownicy muszą wrócić do korzystania z haseł. [Samoobsługowe resetowanie hasła](../../active-directory/authentication/howto-sspr-deployment.md) (SSPR) to inna funkcja usługi Azure AD, która umożliwia użytkownikom Resetowanie swoich haseł bez konieczności kontaktowania się z pracownikami działu IT. Przed skorzystaniem z usługi użytkownicy muszą zarejestrować się w usłudze lub zostać zarejestrowani do samoobsługowego resetowania hasła. Podczas rejestracji użytkownik wybiera jedną lub więcej metod uwierzytelniania włączonych przez ich organizację. SSPR umożliwia użytkownikom szybkie uzyskanie odblokowania i kontynuowanie pracy niezależnie od miejsca, w którym są lub pory dnia. Dzięki umożliwieniu użytkownikom samodzielnego odblokowania, organizacja może ograniczyć czas nieproduktywny i wysokie koszty obsługi typowych problemów związanych z hasłami.
+Czasami użytkownicy muszą wrócić do korzystania z haseł. [Samoobsługowe resetowanie hasła](../../active-directory/authentication/howto-sspr-deployment.md) (SSPR) to inna funkcja usługi Azure AD, która umożliwia użytkownikom resetowanie haseł bez konieczności kontaktowania się z pracownikami działu IT. Przed skorzystaniem z usługi użytkownicy muszą zarejestrować się w usłudze lub zostać zarejestrowani do samoobsługowego resetowania hasła. Podczas rejestracji użytkownik wybiera jedną lub więcej metod uwierzytelniania włączonych przez ich organizację. SSPR umożliwia użytkownikom szybkie uzyskanie odblokowania i kontynuowanie pracy niezależnie od miejsca, w którym są lub pory dnia. Dzięki umożliwieniu użytkownikom samodzielnego odblokowania, organizacja może ograniczyć czas nieproduktywny i wysokie koszty obsługi typowych problemów związanych z hasłami.
 
 ## <a name="passwordless-sign-in-with-microsoft-authenticator"></a>Logowanie bez hasła przy użyciu Microsoft Authenticator
 
@@ -123,7 +123,7 @@ Aplikacja Microsoft Authenticator umożliwia użytkownikom weryfikowanie tożsam
 
 Wymagania wstępne dotyczące używania aplikacji Microsoft Authenticator do logowania bez hasła do usługi Azure AD są następujące:
 
-* Użytkownicy końcowi są włączeni do uwierzytelniania wieloskładnikowego platformy Azure
+* Użytkownicy końcowi są włączeni do Multi-Factor Authentication platformy Azure
 
 * Zaleca się, aby użytkownicy rejestrowali swoje urządzenia przy użyciu Microsoft Intune lub rozwiązania do zarządzania urządzeniami przenośnymi (MDM) innej firmy w celu ułatwienia wdrożenia aplikacji
 
@@ -131,7 +131,7 @@ Przy założeniu, że te wymagania są spełnione, Administratorzy włączają l
 
 Przy założeniu, że logowanie bezhasło jest włączone przez administratora, użytkownicy końcowi muszą spełniać następujące wymagania:
 
-* Zarejestrowano w usłudze Azure MFA Authentication
+* Zarejestrowane w usłudze Azure Multi-Factor Authentication
 
 * Najnowsza wersja Microsoft Authenticator zainstalowana na urządzeniach z systemem iOS 8,0 lub nowszym albo systemem Android 6,0 lub nowszym
 
@@ -150,7 +150,7 @@ Ze względu na to, że większość użytkowników jest przyzwyczajonych do korz
 
 Aby można było zalogować się do konta usługi Azure AD za pomocą aplikacji Microsoft Authenticator, należy wykonać czynności wykonywane przez administratora i użytkowników końcowych.
 
-Najpierw administrator musi [włączyć korzystanie z aplikacji jako poświadczenia](../../active-directory/authentication/howto-authentication-passwordless-phone.md) w dzierżawie przy użyciu programu Windows PowerShell. Administrator musi również umożliwić użytkownikom końcowym uwierzytelnianie wieloskładnikowe systemu Azure (Azure MFA) i skonfigurować aplikację Microsoft Authenticator jako jedną z [metod weryfikacji](../../active-directory/authentication/howto-mfa-mfasettings.md#verification-methods).
+Najpierw administrator musi [włączyć korzystanie z aplikacji jako poświadczenia](../../active-directory/authentication/howto-authentication-passwordless-phone.md) w dzierżawie przy użyciu programu Windows PowerShell. Administrator będzie również musiał włączyć użytkowników końcowych dla usługi Azure Multi-Factor Authentication (Azure MFA) i skonfigurować aplikację Microsoft Authenticator jako jedną z [metod weryfikacji](../../active-directory/authentication/howto-mfa-mfasettings.md#verification-methods).
 
 Użytkownicy końcowi będą musieli [pobrać i zainstalować](../../active-directory/user-help/user-help-auth-app-download-install.md) aplikację Microsoft Authenticator i [skonfigurować swoje konto](../../active-directory/user-help/security-info-setup-auth-app.md) do korzystania z aplikacji Microsoft Authenticator jako jednej z metod weryfikacji.
 
@@ -184,7 +184,7 @@ Uwierzytelnianie bez hasła przy użyciu Microsoft Authenticator jest zgodne z t
 
 #### <a name="user-manages-their-passwordless-sign-in-with-microsoft-authenticator-credentials"></a>Użytkownik zarządza logowaniem bez hasła przy użyciu poświadczeń Microsoft Authenticator
 
-Dzięki [połączeniu](../../active-directory/authentication/concept-registration-mfa-sspr-combined.md)z rejestracją użytkownicy mogą rejestrować i korzystać z zalet uwierzytelniania wieloskładnikowego platformy Azure oraz samoobsługowego resetowania hasła. Użytkownicy rejestrują te ustawienia i zarządzają nimi, przechodząc do [strony mój profil](https://aka.ms/mysecurityinfo). Oprócz włączenia SSPR, rejestracja łączona obsługuje wiele metod i akcji uwierzytelniania.
+Dzięki [połączeniu z rejestracją](../../active-directory/authentication/concept-registration-mfa-sspr-combined.md)użytkownicy mogą rejestrować i korzystać z zalet usługi Azure Multi-Factor Authentication oraz samoobsługowego resetowania hasła. Użytkownicy rejestrują te ustawienia i zarządzają nimi, przechodząc do [strony mój profil](https://aka.ms/mysecurityinfo). Oprócz włączenia SSPR, rejestracja łączona obsługuje wiele metod i akcji uwierzytelniania.
 
 ## <a name="fido2-security-keys"></a>FIDO2 klucze zabezpieczeń
 
@@ -228,7 +228,7 @@ Zalecamy również, aby każda organizacja utworzyła protokół dla użytkownik
 
 Administratorzy mogą [ręcznie zainicjować obsługę kluczy](https://docs.microsoft.com/azure/active-directory/authentication/concept-authentication-passwordless) i przekazać je do użytkowników końcowych, aprowizacji i włączeniu dostawcy poświadczeń FIDO2 na ekranie blokady systemu Windows 10 będą obsługiwane za pomocą usługi [Intune](https://docs.microsoft.com/intune/windows-enrollment-methods). Administratorzy muszą również użyć [Azure Portal](https://portal.azure.com/) , aby włączyć urządzenia tokenów sprzętowych jako metodę uwierzytelniania bezhaseł.
 
-Wdrożenie kluczy zabezpieczeń FIDO2 wymaga również, aby użytkownicy rejestrowali swoje klucze przy użyciu [połączonej rejestracji](../../active-directory/authentication/concept-registration-mfa-sspr-combined.md). Dzięki połączeniu z rejestracją użytkownicy rejestrują się raz i uzyskują korzyści wynikające z uwierzytelniania wieloskładnikowego platformy Azure i resetowania hasła logowania jednokrotnego (SSPR).
+Wdrożenie kluczy zabezpieczeń FIDO2 wymaga również, aby użytkownicy rejestrowali swoje klucze przy użyciu [połączonej rejestracji](../../active-directory/authentication/concept-registration-mfa-sspr-combined.md). Dzięki połączeniu z rejestracją użytkownicy rejestrują się jednokrotnie i uzyskują korzyści wynikające zarówno z usługi Azure Multi-Factor Authentication, jak i do resetowania hasła logowania jednokrotnego (SSPR).
 
 Oprócz wybierania tokenu sprzętowego jako domyślnej metody uwierzytelniania wieloskładnikowego zaleca się również wybranie opcji dodatkowej weryfikacji.
 
@@ -334,7 +334,7 @@ Aby osiągnąć te cele, zalecamy następujące podejście:
 > [!NOTE]
 > Zapoznaj się ze [stroną licencjonowania](https://azure.microsoft.com/pricing/details/active-directory/) Azure Active Directory, aby uzyskać szczegółowe informacje na temat wymagań dotyczących licencjonowania dla metod bezhaseł.
 
-## <a name="conclusion"></a>Wniosek
+## <a name="conclusion"></a>Podsumowanie
 
 W ciągu ostatnich kilku lat firma Microsoft kontynuowała zaangażowanie w włączenie świata bez hasła. W systemie Windows 10 firma Microsoft wprowadziła funkcję Windows Hello dla firm, silne, chronione przez klienta poświadczenie dwuskładnikowe umożliwiające Logowanie jednokrotne do Azure Active Directory i Active Directory. Podobnie jak w przypadku technologii Windows Hello dla firm, aplikacja Microsoft Authenticator używa uwierzytelniania opartego na kluczach, aby umożliwić poświadczenie użytkownika powiązanego z urządzeniem przenośnym i użycie biometrycznych lub PIN. Teraz FIDO2 klucze zabezpieczeń umożliwiają przeprowadzenie poświadczeń i zalogowanie się do usługi Azure AD, wybierając klucz zabezpieczeń jako dostawcę poświadczeń na ekranie blokady systemu Windows 10. Wszystkie trzy z tych rozwiązań bez hasła zmniejszają ryzyko wyłudzania informacji, odrozpylania hasła i ponownego rozegrania oraz zapewniania użytkownikom wysoce bezpiecznego i wygodnego sposobu logowania i uzyskiwania dostępu do danych z dowolnego miejsca.
 

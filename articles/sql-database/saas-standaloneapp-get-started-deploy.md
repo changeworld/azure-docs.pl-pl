@@ -1,5 +1,5 @@
 ---
-title: Samouczek SaaS z jedną dzierżawą — Azure SQL Database | Microsoft Docs
+title: Samouczek SaaS z jedną dzierżawą — Azure SQL Database
 description: Wdróż i Eksploruj autonomiczną aplikację SaaS z jedną dzierżawą, która używa Azure SQL Database.
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: MightyPen
 ms.author: genemi
 ms.reviewer: sstein
 ms.date: 11/07/2018
-ms.openlocfilehash: 2e6b18e53358cad1bfe89e8c0ae7fbacec24d179
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: df9c3913851055f1bb477264cf5a7486f79b56b0
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68570213"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73691959"
 ---
 # <a name="deploy-and-explore-a-standalone-single-tenant-application-that-uses-azure-sql-database"></a>Wdróż i Eksploruj autonomiczną aplikację z jedną dzierżawą, która używa Azure SQL Database
 
@@ -43,11 +43,11 @@ Zostaną wydane dodatkowe samouczki. Umożliwiają one Eksplorowanie wielu scena
 Wdróż aplikację dla trzech dostarczonych dzierżawców:
 
 1. Kliknij każde niebieskie polecenie **Wdróż na platformie Azure** , aby otworzyć szablon wdrożenia w [Azure Portal](https://portal.azure.com). Każdy szablon wymaga dwóch wartości parametrów; Nazwa nowej grupy zasobów oraz nazwa użytkownika, która odróżnia to wdrożenie od innych wdrożeń aplikacji. Następny krok zawiera szczegółowe informacje dotyczące ustawiania tych wartości.<br><br>
-    <a href="https://aka.ms/deploywingtipsa-contoso" target="_blank"><img style="vertical-align:middle" src="media/saas-standaloneapp-get-started-deploy/deploy.png"/></a>**Korytarz uzgadniania contoso** &nbsp;
+    <a href="https://aka.ms/deploywingtipsa-contoso" target="_blank"><img style="vertical-align:middle" src="media/saas-standaloneapp-get-started-deploy/deploy.png"/></a> &nbsp; **contoso uzgadniania**
 <br><br>
-    <a href="https://aka.ms/deploywingtipsa-dogwood" target="_blank"><img style="vertical-align:middle" src="media/saas-standaloneapp-get-started-deploy/deploy.png"/></a>&nbsp; **Dogwood Dojo**
+    <a href="https://aka.ms/deploywingtipsa-dogwood" target="_blank"><img style="vertical-align:middle" src="media/saas-standaloneapp-get-started-deploy/deploy.png"/></a> &nbsp; **Dogwood Dojo**
 <br><br>
-    <a href="https://aka.ms/deploywingtipsa-fabrikam" target="_blank"><img style="vertical-align:middle" src="media/saas-standaloneapp-get-started-deploy/deploy.png"/></a> &nbsp; **Fabrikam Jazz Club**
+    <a href="https://aka.ms/deploywingtipsa-fabrikam" target="_blank"><img style="vertical-align:middle" src="media/saas-standaloneapp-get-started-deploy/deploy.png"/></a> &nbsp; **Trefl Jazz**
 
 2. Wprowadź wymagane wartości parametrów dla każdego wdrożenia.
 
@@ -55,7 +55,7 @@ Wdróż aplikację dla trzech dostarczonych dzierżawców:
     > Pewne uwierzytelnianie i zapory serwera są celowo niezabezpieczone w celach demonstracyjnych. **Utwórz nową grupę zasobów** dla każdego wdrożenia aplikacji.  Nie należy używać istniejącej grupy zasobów. Nie należy używać tej aplikacji ani żadnych tworzonych przez nie zasobów dla środowiska produkcyjnego. Usuń wszystkie grupy zasobów po zakończeniu pracy z aplikacjami, aby zatrzymać powiązane rozliczenia.
 
     Najlepiej używać małych liter, cyfr i łączników w nazwach zasobów.
-    * W obszarze **Grupa zasobów**wybierz pozycję Utwórz nową, a następnie podaj nazwę z małymi literami dla grupy zasobów. **Wingtip-sa-\<\>-miejscname\<jestzalecanymwzorcem.\>**  \<Zastąpwartość\>nazwa miejsca bez spacji. W \<polu\>użytkownik Zastąp wartość użytkownika poniżej.  W tym wzorcu nazwy grup zasobów mogą być *Wingtip-sa-contosoconcerthall-AF1*, *Wingtip-sa-dogwooddojo-AF1*, *Wingtip-sa-fabrikamjazzclub-AF1*.
+    * W obszarze **Grupa zasobów**wybierz pozycję Utwórz nową, a następnie podaj nazwę z małymi literami dla grupy zasobów. **Wingtip-sa-\<miejscname\>-\<użytkownika\>** jest zalecanym wzorcem.  W przypadku \<miejscowego\>Zastąp wartość Nazwa miejsca bez spacji. W przypadku \<\>użytkownika Zastąp wartość użytkownika poniżej.  W tym wzorcu nazwy grup zasobów mogą być *Wingtip-sa-contosoconcerthall-AF1*, *Wingtip-sa-dogwooddojo-AF1*, *Wingtip-sa-fabrikamjazzclub-AF1*.
     * Z listy rozwijanej wybierz **lokalizację** .
 
     * Dla **użytkownika** — zaleca się użycie krótkiej wartości, takiej jak inicjały oraz cyfra: na przykład *AF1*.
@@ -75,16 +75,16 @@ W tej aplikacji zaprezentowane są zdarzenia hosta.  Miejsca są dzierżawcami a
 
 1. Otwórz stronę zdarzeń dla każdej z trzech dzierżawców na osobnych kartach przeglądarki:
 
-   - http://events.contosoconcerthall.&lt;user&gt;.trafficmanager.net
-   - http://events.dogwooddojo.&lt;user&gt;.trafficmanager.net
-   - http://events.fabrikamjazzclub.&lt;user&gt;.trafficmanager.net
+   - http://events.contosoconcerthall.&lt; User&gt;. trafficmanager.net
+   - http://events.dogwooddojo.&lt; User&gt;. trafficmanager.net
+   - http://events.fabrikamjazzclub.&lt; User&gt;. trafficmanager.net
 
-     (W każdym adresie URL &lt;Zastąp&gt; wartość User swoją wdrożeniem).
+     (W każdym adresie URL Zastąp &lt;użytkownika&gt; wartością użytkownika wdrożenia).
 
-   ![Events](./media/saas-standaloneapp-get-started-deploy/fabrikam.png)
+   ![Zdarzenia](./media/saas-standaloneapp-get-started-deploy/fabrikam.png)
 
 Aby kontrolować dystrybucję żądań przychodzących, aplikacja używa [*platformy Azure Traffic Manager*](../traffic-manager/traffic-manager-overview.md). Każde wystąpienie aplikacji specyficzne dla dzierżawy zawiera nazwę dzierżawy jako część nazwy domeny w adresie URL. Wszystkie adresy URL dzierżawy zawierają konkretną wartość **użytkownika** . Adresy URL są zgodne z następującym formatem:
-- http://events.&lt; miejscu&gt;.&lt; User&gt;. trafficmanager.NET
+- http://events.&lt; domiejscname&gt;.&lt;użytkownika&gt;. trafficmanager.net
 
 **Lokalizacja** bazy danych każdej dzierżawy jest uwzględniana w ustawieniach aplikacji odpowiedniej wdrożonej aplikacji.
 
@@ -97,7 +97,7 @@ Przyjrzyjmy się pewnym zasobom, które zostały wdrożone:
 
 1. W [Azure Portal](https://portal.azure.com)przejdź do listy grup zasobów.
 2. Powinny zostać wyświetlone trzy grupy zasobów dzierżawy.
-3. Otwórz grupę zasobów **Wingtip-sa-Fabrikam&lt;-&gt; User** , która zawiera zasoby dla wdrożenia klubu firmy Fabrikam Jazz.  Serwer **fabrikamjazzclub-&lt;User&gt;**  zawiera bazę danych **fabrikamjazzclub** .
+3. Otwórz grupę zasobów **Wingtip-sa-Fabrikam-&lt;user&gt;** , która zawiera zasoby dla wdrożenia klubu firmy Fabrikam Jazz.  Serwer **&gt;użytkownika fabrikamjazzclub&lt;** zawiera bazę danych **fabrikamjazzclub** .
 
 Każda baza danych dzierżawy jest 50ą *autonomiczną* bazą danych DTU.
 
@@ -125,6 +125,6 @@ Ten samouczek zawiera informacje na temat wykonywania następujących czynności
 > * Informacje o serwerach i bazach danych, które tworzą aplikację.
 > * Jak usunąć przykładowe zasoby, aby zatrzymać powiązane rozliczenia.
 
-Następnie Wypróbuj samouczek dotyczący aprowizacji [i katalogu](saas-standaloneapp-provision-and-catalog.md) , w którym można zapoznać się z użyciem wykazu dzierżawców, który umożliwia szereg scenariuszy obejmujących wiele dzierżawców, takich jak zarządzanie schematami i analiza dzierżawców.
+Następnie Wypróbuj samouczek [dotyczący aprowizacji i katalogu](saas-standaloneapp-provision-and-catalog.md) , w którym można zapoznać się z użyciem wykazu dzierżawców, który umożliwia szereg scenariuszy obejmujących wiele dzierżawców, takich jak zarządzanie schematami i analiza dzierżawców.
  
 

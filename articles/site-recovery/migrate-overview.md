@@ -1,19 +1,19 @@
 ---
-title: Informacje o migracji maszyn lokalnych i maszyn wirtualnych platformy Azure Azure Site Recovery
-description: W tym artykule opisano sposób migrowania maszyn wirtualnych lokalnych i Azure IaaS na platformę Azure przy użyciu usługi Azure Site Recovery.
+title: Migrowanie serwerów i maszyn wirtualnych na platformę Azure za pomocą Azure Site Recovery
+description: Opisuje sposób migrowania maszyn wirtualnych lokalnych i Azure IaaS na platformę Azure przy użyciu usługi Azure Site Recovery.
 services: site-recovery
 author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 09/09/2019
+ms.date: 11/05/2019
 ms.author: raynew
-ms.openlocfilehash: c043950de9565f96d52c848f96efac80385f2321
-ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
+ms.openlocfilehash: 8e256aac16bb8c2d2f1eca494981458f71cc2e4d
+ms.sourcegitcommit: 6c2c97445f5d44c5b5974a5beb51a8733b0c2be7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/09/2019
-ms.locfileid: "70814488"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73620612"
 ---
 # <a name="about-migration"></a>Informacje o migracji
 
@@ -21,9 +21,9 @@ Przeczytaj ten artykuł, aby zapoznać się z krótkim omówieniem, w jaki spos�
 
 Oto, co można migrować za pomocą Site Recovery:
 
-- **Migrowanie z lokalizacji lokalnej na platformę Azure**: Migrowanie lokalnych maszyn wirtualnych funkcji Hyper-V, maszyn wirtualnych VMware i serwerów fizycznych na platformę Azure. Po zakończeniu migracji obciążenia uruchomione na maszynach lokalnych będą działać na maszynach wirtualnych platformy Azure. 
-- **Migrowanie na platformę Azure**: Migrowanie maszyn wirtualnych platformy Azure między regionami platformy Azure. 
-- **MIGRUJ AWS**: Migruj AWS wystąpień systemu Windows do maszyn wirtualnych platformy Azure IaaS. 
+- **Migrowanie z lokalnego na platformę Azure**: Migrowanie lokalnych maszyn wirtualnych funkcji Hyper-V, maszyn wirtualnych VMware i serwerów fizycznych na platformę Azure. Po zakończeniu migracji obciążenia uruchomione na maszynach lokalnych będą działać na maszynach wirtualnych platformy Azure. 
+- **Przeprowadzić migrację na platformie Azure**: przeprowadź migrację maszyn wirtualnych platformy Azure między regionami świadczenia usługi Azure. 
+- **Przeprowadzić migrację usługi AWS**: przeprowadź migrację wystąpień usługi AWS dla systemu Windows do maszyn wirtualnych IaaS platformy Azure. 
 
 > [!NOTE]
 > Teraz można migrować z lokalizacji lokalnej na platformę Azure przy użyciu usługi Azure Migrate. [Dowiedz się więcej](../migrate/migrate-overview.md).

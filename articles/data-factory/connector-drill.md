@@ -1,5 +1,5 @@
 ---
-title: Kopiowanie danych z poziomu drążenia przy użyciu Azure Data Factory | Microsoft Docs
+title: Kopiuj dane z przechodzenia do szczegółów przy użyciu Azure Data Factory
 description: Dowiedz się, jak skopiować dane z przechodzenia do szczegółów do obsługiwanych magazynów danych ujścia przy użyciu działania kopiowania w potoku Azure Data Factory.
 services: data-factory
 documentationcenter: ''
@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 10/25/2019
 ms.author: jingwang
-ms.openlocfilehash: bdbb5742c74ff2b8871b00c7251af03ec8e026ad
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: 3d91e8df3f0ecafc133b82dcb0172dbbba966e27
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72931124"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73681027"
 ---
 # <a name="copy-data-from-drill-using-azure-data-factory"></a>Kopiuj dane z przechodzenia do szczegółów przy użyciu Azure Data Factory
 
@@ -48,7 +48,7 @@ Poniższe sekcje zawierają szczegółowe informacje o właściwościach, które
 
 Dla połączonej usługi z przechodzeniem do szczegółów są obsługiwane następujące właściwości:
 
-| Właściwość | Opis | Wymagane |
+| Właściwość | Opis | Wymagany |
 |:--- |:--- |:--- |
 | type | Właściwość Type musi być ustawiona na: **drążenie** | Tak |
 | Przekształcon | Parametry połączenia ODBC, aby nawiązać połączenie z przechodzeniem do szczegółów. <br/>Oznacz to pole jako element SecureString, aby bezpiecznie przechowywać go w Data Factory. Możesz również wprowadzić hasło w Azure Key Vault i ściągnąć konfigurację `pwd` z parametrów połączenia. Zapoznaj się z poniższymi przykładami i [Zapisz poświadczenia w Azure Key Vault](store-credentials-in-key-vault.md) artykule, aby uzyskać więcej szczegółów. | Tak |
@@ -111,12 +111,12 @@ Aby uzyskać pełną listę sekcji i właściwości dostępnych do definiowania 
 
 Aby skopiować dane z przechodzenia do szczegółów, ustaw właściwość Type zestawu danych na **drążenie**. Obsługiwane są następujące właściwości:
 
-| Właściwość | Opis | Wymagane |
+| Właściwość | Opis | Wymagany |
 |:--- |:--- |:--- |
 | type | Właściwość Type zestawu danych musi być ustawiona na: **drążenie** | Tak |
-| schematy | Nazwa schematu. |Nie (Jeśli określono "zapytanie" w źródle aktywności)  |
-| Tabele | Nazwa tabeli. |Nie (Jeśli określono "zapytanie" w źródle aktywności)  |
-| tableName | Nazwa tabeli ze schematem. Ta właściwość jest obsługiwana w celu zapewnienia zgodności z poprzednimi wersjami. Użyj `schema` i `table` dla nowego obciążenia. | Nie (Jeśli określono "zapytanie" w źródle aktywności) |
+| schematy | Nazwa schematu. |Nie (Jeśli określono parametr "query" w źródle działania)  |
+| tabele | Nazwa tabeli. |Nie (Jeśli określono parametr "query" w źródle działania)  |
+| tableName | Nazwa tabeli ze schematem. Ta właściwość jest obsługiwana w celu zapewnienia zgodności z poprzednimi wersjami. Użyj `schema` i `table` dla nowego obciążenia. | Nie (Jeśli określono parametr "query" w źródle działania) |
 
 **Przykład**
 
@@ -143,7 +143,7 @@ Aby uzyskać pełną listę sekcji i właściwości dostępnych do definiowania 
 
 Aby skopiować dane z przechodzenia do szczegółów, ustaw typ źródła w działaniu Copy na **DrillSource**. W sekcji **Źródło** działania kopiowania są obsługiwane następujące właściwości:
 
-| Właściwość | Opis | Wymagane |
+| Właściwość | Opis | Wymagany |
 |:--- |:--- |:--- |
 | type | Właściwość Type źródła działania Copy musi być ustawiona na wartość: **DrillSource** | Tak |
 | query | Użyj niestandardowego zapytania SQL, aby odczytać dane. Na przykład: `"SELECT * FROM MyTable"`. | Nie (Jeśli określono "TableName" w zestawie danych) |

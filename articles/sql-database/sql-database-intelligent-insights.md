@@ -1,5 +1,5 @@
 ---
-title: Monitorowanie wydajności bazy danych za pomocą Intelligent Insights-Azure SQL Database | Microsoft Docs
+title: Monitorowanie wydajności bazy danych za pomocą Intelligent Insights-Azure SQL Database
 description: Azure SQL Database Intelligent Insights używa wbudowanej analizy do ciągłego monitorowania użycia bazy danych za pomocą sztucznej analizy i wykrywania zdarzeń powodujących zakłócenia, które powodują niską wydajność.
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: danimir
 ms.author: danil
 ms.reviewer: jrasnik, carlrab
 ms.date: 12/19/2018
-ms.openlocfilehash: 70498c5f4c824681ee59b7232e9409235d7f6a93
-ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
+ms.openlocfilehash: c073b535271ba8f9f11e17ba5203b13e257e211b
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71262154"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73689683"
 ---
 # <a name="intelligent-insights-using-ai-to-monitor-and-troubleshoot-database-performance"></a>Intelligent Insights przy użyciu AI do monitorowania i rozwiązywania problemów z wydajnością bazy danych
 
@@ -56,7 +56,7 @@ Zidentyfikowane SQL Database obniżenie wydajności są rejestrowane w dzienniku
 | Wartość wpływu | Wartość zmierzonej metryki. |
 | Zapytania i kody błędów, których dotyczy problem | Wartość skrótu zapytania lub kod błędu. Mogą one być używane do łatwego skorelowania z zapytaniami, których to dotyczy. Podawane są metryki, które składają się z wzrostu czasu trwania zapytania, czasu oczekiwania, liczby limitów czasu lub kodów błędów. |
 | Wykrycia | Wykrywanie wykryte w bazie danych w czasie trwania zdarzenia. Istnieją 15 wzorców wykrywania. Aby uzyskać więcej informacji, zobacz [Rozwiązywanie problemów z wydajnością bazy danych przy użyciu Intelligent Insights](sql-database-intelligent-insights-troubleshoot-performance.md). |
-| Analiza głównych przyczyn | Analiza głównej przyczyny problemu zidentyfikowanego w formacie do odczytu przez człowieka. Niektóre szczegółowe informacje mogą zawierać zalecenia dotyczące poprawy wydajności, jeśli jest to możliwe. |
+| Analiza głównej przyczyny | Analiza głównej przyczyny problemu zidentyfikowanego w formacie do odczytu przez człowieka. Niektóre szczegółowe informacje mogą zawierać zalecenia dotyczące poprawy wydajności, jeśli jest to możliwe. |
 |||
 
 Aby dowiedzieć się więcej na temat korzystania z Intelligent Insights z Azure SQL Analytics i dla typowych scenariuszy użycia, zobacz osadzony film wideo:
@@ -83,7 +83,7 @@ Aby uzyskać więcej informacji na temat włączania rejestrowania Intelligent I
 Rozwiązanie Azure SQL Analytics zapewnia graficznego interfejsu użytkownika, raportowania i funkcji alertów dotyczących wydajności bazy danych oraz danych dzienników diagnostyki Intelligent Insights.
 
 > [!TIP]
-> Szybkie rozpoczęcie pracy: Najprostszym sposobem na rozpoczęcie pracy przy użyciu Intelligent Insights jest użycie go wraz z Azure SQL Analytics, który zapewni graficzny interfejs użytkownika do problemów z wydajnością bazy danych. Dodaj Azure SQL Analytics rozwiązanie z portalu Marketplace, Utwórz obszar roboczy w tym rozwiązaniu, a następnie dla każdej bazy danych, którą chcesz włączyć Intelligent Insights, skonfiguruj przesyłanie strumieniowe dziennika "SQLInsights" w bloku ustawień diagnostycznych bazy danych do obszar roboczy Azure SQL Analytics.
+> Szybki Start: Najprostszym sposobem na rozpoczęcie pracy z usługą Intelligent Insights jest użycie jej wraz z Azure SQL Analytics, która zapewni graficzny interfejs użytkownika do problemów z wydajnością bazy danych. Dodaj Azure SQL Analytics rozwiązanie z portalu Marketplace, Utwórz obszar roboczy w tym rozwiązaniu, a następnie dla każdej bazy danych, którą chcesz włączyć Intelligent Insights, skonfiguruj przesyłanie strumieniowe dziennika "SQLInsights" w bloku ustawień diagnostycznych bazy danych do obszar roboczy Azure SQL Analytics.
 >
 
 Przed wymaganiem Azure SQL Analytics dodać do pulpitu nawigacyjnego Azure Portal z portalu Marketplace i utworzyć obszar roboczy, zobacz [konfigurowanie Azure SQL Analytics](../azure-monitor/insights/azure-sql.md#configuration)
@@ -92,7 +92,7 @@ Aby użyć Intelligent Insights z Azure SQL Analytics, skonfiguruj dane dziennik
 
 Poniższy przykład pokazuje Intelligent Insights oglądany przez Azure SQL Analytics:
 
-![Intelligent Insights raportu](./media/sql-database-intelligent-insights/intelligent-insights-azure-sql-analytics.png)
+![Raport Intelligent Insights](./media/sql-database-intelligent-insights/intelligent-insights-azure-sql-analytics.png)
 
 ### <a name="set-up-with-event-hubs"></a>Konfiguracja przy użyciu Event Hubs
 

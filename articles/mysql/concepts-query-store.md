@@ -5,20 +5,17 @@ author: ajlam
 ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
-ms.date: 10/17/2019
-ms.openlocfilehash: 40718cdb12cbc46bf0587dfdc657ee06c090061b
-ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
+ms.date: 11/04/2019
+ms.openlocfilehash: c8891fc96e3e511e4127b4e114a45b5a865cf8eb
+ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/18/2019
-ms.locfileid: "72598239"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73603027"
 ---
 # <a name="monitor-azure-database-for-mysql-performance-with-query-store"></a>Monitorowanie wydajności Azure Database for MySQL przy użyciu magazynu zapytań
 
 **Dotyczy:** Azure Database for MySQL 5,7
-
-> [!IMPORTANT]
-> Magazyn zapytań jest w wersji zapoznawczej.
 
 Funkcja magazynu zapytań w Azure Database for MySQL zapewnia sposób śledzenia wydajności zapytań w miarę upływu czasu. Magazyn zapytań upraszcza Rozwiązywanie problemów z wydajnością, pomagając szybko znaleźć najdłuższych uruchomionych i większości zapytań intensywnie korzystających z zasobów. Magazyn zapytań automatycznie przechwytuje historię zapytań i statystyk środowiska uruchomieniowego i zachowuje je do przeglądu. Oddziela ona dane według czasu, dzięki czemu można zobaczyć wzorce użycia bazy danych. Dane dla wszystkich użytkowników, baz danych i zapytań są przechowywane w bazie danych schematu **MySQL** w wystąpieniu Azure Database for MySQL.
 
@@ -107,7 +104,7 @@ Poniższe opcje są stosowane w odniesieniu do statystyk oczekiwania.
 > [!NOTE]
 > Obecnie **query_store_capture_mode** zastępuje tę konfigurację, co oznacza, że zarówno **query_store_capture_mode** , jak i **QUERY_STORE_WAIT_SAMPLING_CAPTURE_MODE** muszą być włączone dla wszystkich, aby statystyki oczekiwania mogły działać. Jeśli **query_store_capture_mode** jest wyłączone, a następnie zaczekaj, statystyki są również wyłączone, ponieważ statystyki oczekiwania wykorzystują performance_schema włączone i zapytanie_tekst przechwycone przez magazyn zapytań.
 
-Użyj [Azure Portal](howto-server-parameters.md)  or [interfejsu wiersza polecenia platformy Azure](howto-configure-server-parameters-using-cli.md)  to Pobierz lub ustaw inną wartość dla parametru.
+Użyj  [Azure Portal](howto-server-parameters.md) lub [interfejsu wiersza polecenia platformy Azure](howto-configure-server-parameters-using-cli.md) , aby uzyskać lub ustawić inną wartość dla parametru.
 
 ## <a name="views-and-functions"></a>Widoki i funkcje
 
@@ -164,7 +161,7 @@ Ten widok zwraca dane zdarzeń oczekiwania w magazynie zapytań. Istnieje jeden 
 | `count_star` | bigint (20) | NO| Liczba zdarzeń oczekiwania próbkowanych w przedziale czasu dla zapytania |
 | `sum_timer_wait_ms` | double | NO| Łączny czas oczekiwania (w milisekundach) tego zapytania w interwale |
 
-### <a name="functions"></a>Functions
+### <a name="functions"></a>Funkcje
 
 | **Nazwa**| **Opis** |
 |---|---|
@@ -175,7 +172,7 @@ Ten widok zwraca dane zdarzeń oczekiwania w magazynie zapytań. Istnieje jeden 
 ## <a name="limitations-and-known-issues"></a>Ograniczenia i znane problemy
 
 - Jeśli serwer MySQL ma parametr `default_transaction_read_only` on, magazyn zapytań nie może przechwycić danych.
-- Funkcja magazynu zapytań może zostać przerwana, jeśli napotka długie zapytania Unicode (\> = 6000 bajtów).
+- Funkcja magazynu zapytań może zostać przerwana, jeśli napotka długie zapytania Unicode (\>= 6000 bajtów).
 - Okres przechowywania statystyk oczekiwania wynosi 24 godziny.
 - Statystyki oczekiwania używają przykładu do przechwytywania części zdarzeń. Częstotliwość można zmodyfikować przy użyciu parametru `query_store_wait_sampling_frequency`.
 

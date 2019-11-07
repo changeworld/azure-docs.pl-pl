@@ -1,5 +1,5 @@
 ---
-title: 'Przykład projektanta #3: regresja do ceny i porównywanie algorytmów'
+title: 'Projektant: przewidywanie cen samochodu (regresja)'
 titleSuffix: Azure Machine Learning
 description: W tym artykule przedstawiono sposób tworzenia złożonego potoku uczenia maszynowego bez konieczności pisania pojedynczego wiersza kodu przy użyciu narzędzia Projektant (wersja zapoznawcza). Dowiedz się, jak uczenie i porównywanie wielu modeli regresji w celu przewidywania cen samochodu w oparciu o funkcje techniczne
 services: machine-learning
@@ -10,12 +10,12 @@ author: xiaoharper
 ms.author: zhanxia
 ms.reviewer: peterlu
 ms.date: 11/04/2019
-ms.openlocfilehash: 4fb2e4c5c96c0c4c1b4d8ef14de65e470d545638
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: d73f6d67afff13696de78d026ff65228fd68fb28
+ms.sourcegitcommit: 359930a9387dd3d15d39abd97ad2b8cb69b8c18b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73515436"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73647948"
 ---
 # <a name="sample-2---regression-predict-price-and-compare-algorithms"></a>Przykład 2-Regresja: przewidywanie ceny i porównywanie algorytmów
 [!INCLUDE [applies-to-skus](../../../includes/aml-applies-to-enterprise-sku.md)]
@@ -55,7 +55,7 @@ Użyj modułu **SELECT Columns in DataSet (Wybieranie kolumn w zestawie danych**
 
 ![Przetwarzanie wstępne danych](media/how-to-ui-sample-regression-predict-automobile-price-compare-algorithms/data-processing.png)
 
-## <a name="train-the-model"></a>Trenowanie modelu
+## <a name="train-the-model"></a>Uczenie modelu
 
 Problemy dotyczące uczenia maszynowego są różne. Typowe zadania uczenia maszynowego obejmują klasyfikację, klastrowanie, regresję i systemy zalecające, z których każdy może wymagać innego algorytmu. Wybór algorytmu często zależy od wymagań dotyczących przypadku użycia. Po wybraniu algorytmu należy dostosować jego parametry, aby szkolić dokładniejszy model. Następnie należy oszacować wszystkie modele na podstawie metryk, takich jak dokładność, intelligibility i wydajność.
 

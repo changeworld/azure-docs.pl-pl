@@ -1,5 +1,5 @@
 ---
-title: Przenoszenie plików między magazynem opartym na plikach przy użyciu Azure Data Factory | Microsoft Docs
+title: Przenoszenie plików między magazynem opartym na plikach za pomocą Azure Data Factory
 description: Informacje o sposobie przenoszenia plików między magazynem opartym na plikach przy użyciu szablonu rozwiązania Azure Data Factory.
 services: data-factory
 documentationcenter: ''
@@ -12,16 +12,16 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 7/12/2019
-ms.openlocfilehash: 9eb82a23aac5a98a521976118c1e859d0be253d0
-ms.sourcegitcommit: 1b7b0e1c915f586a906c33d7315a5dc7050a2f34
+ms.openlocfilehash: f6f83917e84a880fb86b5f592c4d51b03462753d
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/15/2019
-ms.locfileid: "67881245"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73684076"
 ---
 # <a name="move-files-with-azure-data-factory"></a>Przenoszenie plików z Azure Data Factory
 
-W tym artykule opisano szablon rozwiązania, którego można użyć do przenoszenia plików z jednego folderu do innego między magazynami opartymi na plikach. Jednym z typowych scenariuszy korzystania z tego szablonu: Pliki są ciągle opuszczane do folderu obładunkowego magazynu źródłowego. Tworząc wyzwalacz harmonogramu, potok ADF może okresowo przenosić te pliki ze źródła do magazynu docelowego.  Sposób, w jaki potok ADF osiąga "przeniesienie plików", pobiera pliki z folderu wyładunkowego, kopiując każdy z nich do innego folderu w magazynie docelowym, a następnie usuwając te same pliki z folderu wyładunkowego w magazynie źródłowym.
+W tym artykule opisano szablon rozwiązania, którego można użyć do przenoszenia plików z jednego folderu do innego między magazynami opartymi na plikach. Jednym z typowych scenariuszy korzystania z tego szablonu: pliki są ciągle opuszczane do folderu wyładunkowego magazynu źródłowego. Tworząc wyzwalacz harmonogramu, potok ADF może okresowo przenosić te pliki ze źródła do magazynu docelowego.  Sposób, w jaki potok ADF osiąga "przeniesienie plików", pobiera pliki z folderu wyładunkowego, kopiując każdy z nich do innego folderu w magazynie docelowym, a następnie usuwając te same pliki z folderu wyładunkowego w magazynie źródłowym.
 
 > [!NOTE]
 > Należy pamiętać, że ten szablon jest przeznaczony do przenoszenia plików, a nie do przenoszenia folderów.  Jeśli chcesz przenieść folder, zmieniając zestaw danych tak, aby zawierał tylko ścieżkę do folderu, a następnie za pomocą działania kopiowania i usuwania, aby odwołać się do tego samego zestawu danych reprezentującego folder, musisz zachować ostrożność. Jest to spowodowane tym, że trzeba upewnić się, że nie będzie nowych plików dołączanych do folderu między operacją kopiowania a operacją usuwania. Jeśli w folderze znajdują się nowe pliki docierające do folderu, gdy działanie kopiowania po prostu zostało ukończone, ale działanie usuwania nie zostało jaśniejsze, istnieje możliwość usunięcia tego nowego pliku, który nie został skopiowany do destinati jeszcze przez usunięcie całego folderu.
@@ -32,7 +32,7 @@ Ten szablon pobiera pliki ze źródłowego magazynu opartego na plikach. Następ
 
 Szablon zawiera pięć działań:
 - **GetMetadata** pobiera listę obiektów, w tym pliki i podfoldery z folderu w magazynie źródłowym. Obiekty nie zostaną cyklicznie pobrane. 
-- Filtr Filtruj listę obiektów z działania **GetMetadata** , aby wybrać tylko pliki. 
+- **Filtr Filtruj** listę obiektów z działania **GetMetadata** , aby wybrać tylko pliki. 
 - Instrukcja **foreach** pobiera listę plików z działania **filtru** , a następnie wykonuje iterację na liście i przekazuje każdy plik do działania kopiowania i usuwania działania.
 - **Kopiuj** kopiuje jeden plik ze źródła do magazynu docelowego.
 - **Delete** usuwa ten sam plik z magazynu źródłowego.

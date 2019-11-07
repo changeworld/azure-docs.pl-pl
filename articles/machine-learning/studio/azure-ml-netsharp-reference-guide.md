@@ -1,6 +1,6 @@
 ---
-title: 'Tworzenie niestandardowych sieci neuronowych w usłudze net #'
-titleSuffix: Azure Machine Learning Studio (classic)
+title: Sieć neuronowych — niestandardowe sieci
+titleSuffix: ML Studio (classic) Azure
 description: 'Przewodnik dotyczący składni języka NET # neuronowych Network Specification. Dowiedz się, jak tworzyć niestandardowe modele sieci neuronowych w Azure Machine Learning Studio (klasyczne).'
 services: machine-learning
 ms.service: machine-learning
@@ -10,12 +10,12 @@ author: xiaoharper
 ms.author: amlstudiodocs
 ms.custom: previous-author=heatherbshapiro, previous-ms.author=hshapiro
 ms.date: 03/01/2018
-ms.openlocfilehash: 7e7ad51622c3d3c8254755fb1ad24a047d48a58b
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 0c413bbc3c3b0bd4b1a6e6d6ff40dc1061bbc834
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73493364"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73684843"
 ---
 # <a name="guide-to-net-neural-network-specification-language-for-azure-machine-learning-studio-classic"></a>Przewodnik dotyczący języka specyfikacji sieci NET # neuronowych dla Azure Machine Learning Studio (klasyczny)
 
@@ -56,7 +56,7 @@ Ponadto NET # obsługuje cztery następujące rodzaje zaawansowanych pakietów p
 
 ## <a name="supported-customizations"></a>Obsługiwane dostosowania
 
-Architektura modeli sieci neuronowych utworzonych w klasycznej wersji Azure Machine Learning Studio może być szeroko dostosowywana przy użyciu net #. Przekonaj się:
+Architektura modeli sieci neuronowych utworzonych w klasycznej wersji Azure Machine Learning Studio może być szeroko dostosowywana przy użyciu net #. Możesz:
 
 + Utwórz ukryte warstwy i kontroluj liczbę węzłów w każdej warstwie.
 + Określ, w jaki sposób warstwy mają być połączone ze sobą.

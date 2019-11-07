@@ -1,5 +1,5 @@
 ---
-title: Aktywna replikacja geograficzna — Azure SQL Database | Microsoft Docs
+title: Aktywna replikacja geograficzna — Azure SQL Database
 description: Użyj aktywnej replikacji geograficznej, aby utworzyć odczytane pomocnicze bazy danych poszczególnych baz danych w tym samym lub różnych centrach danych (region).
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: anosov1960
 ms.author: sashan
 ms.reviewer: mathoma, carlrab
 ms.date: 07/09/2019
-ms.openlocfilehash: c1f50dfb499c220a4e13f043438798c556319ddf
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 74cbb9fa5a00b287746afd92fe74f50bfa19110b
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70092812"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73691322"
 ---
 # <a name="creating-and-using-active-geo-replication"></a>Tworzenie i używanie aktywnej replikacji geograficznej
 
@@ -37,10 +37,10 @@ Jeśli z jakiegoś powodu nie powiedzie się podstawowa baza danych lub po prost
 Można zarządzać replikacją i trybem failover pojedynczej bazy danych lub zestawu baz danych na serwerze lub w puli elastycznej przy użyciu aktywnej replikacji geograficznej. Można to zrobić za pomocą polecenia:
 
 - [Azure Portal](sql-database-geo-replication-portal.md)
-- [Narzędzia Pojedyncza baza danych](scripts/sql-database-setup-geodr-and-failover-database-powershell.md)
-- [Narzędzia Pula elastyczna](scripts/sql-database-setup-geodr-and-failover-pool-powershell.md)
-- [Język Transact-SQL: Pojedyncza baza danych lub Pula elastyczna](/sql/t-sql/statements/alter-database-azure-sql-database)
-- [INTERFEJS API REST: Pojedyncza baza danych](https://docs.microsoft.com/rest/api/sql/replicationlinks)
+- [PowerShell: pojedyncza baza danych](scripts/sql-database-setup-geodr-and-failover-database-powershell.md)
+- [PowerShell: Pula elastyczna](scripts/sql-database-setup-geodr-and-failover-pool-powershell.md)
+- [Transact-SQL: pojedyncza baza danych lub Pula elastyczna](/sql/t-sql/statements/alter-database-azure-sql-database)
+- [Interfejs API REST: pojedyncza baza danych](https://docs.microsoft.com/rest/api/sql/replicationlinks)
 
 
 Aktywna replikacja geograficzna korzysta z technologii [Always On](https://docs.microsoft.com/sql/database-engine/availability-groups/windows/overview-of-always-on-availability-groups-sql-server) SQL Server, aby asynchronicznie replikować zatwierdzone transakcje z podstawowej bazy danych do pomocniczej bazy danych przy użyciu izolacji migawek. Grupy autotrybu failover zapewniają semantykę grupy na aktywnej replikacji geograficznej, ale jest używany ten sam mechanizm replikacji asynchronicznej. W dowolnym momencie pomocnicza baza danych może być nieco poza podstawową bazą danych, a dane pomocnicze nigdy nie mają transakcji częściowych. Nadmiarowość między regionami umożliwia aplikacjom szybkie odzyskiwanie po trwałej utracie całego centrum danych lub jego części z powodu klęsk żywiołowych, katastrofalnych błędów ludzkich lub złośliwych działań. Konkretne dane celu punktu odzyskiwania można znaleźć w temacie [Omówienie ciągłości działania firmy](sql-database-business-continuity.md).
@@ -58,10 +58,10 @@ Ponieważ pomocnicze bazy danych są odczytywane, mogą one służyć do odcią�
 
 Oprócz odzyskiwania po awarii aktywnej replikacji geograficznej można użyć w następujących scenariuszach:
 
-- **Migracja bazy danych**: Możesz użyć aktywnej replikacji geograficznej, aby przeprowadzić migrację bazy danych z jednego serwera do drugiego w trybie online z minimalnym przestojem.
-- **Uaktualnienia aplikacji**: Podczas uaktualniania aplikacji można utworzyć dodatkową pomocniczą jako kopię zapasową awaryjną.
+- **Migracja bazy danych**: można użyć aktywnej replikacji geograficznej w celu migrowania bazy danych z jednego serwera do drugiego w trybie online z minimalnym przestojem.
+- **Uaktualnienia aplikacji**: można utworzyć dodatkową kopię zapasową jako nieudaną podczas uaktualniania aplikacji.
 
-Aby osiągnąć prawdziwą ciągłość biznesową, Dodawanie nadmiarowości bazy danych między centrami elementów jest tylko częścią rozwiązania. Odzyskiwanie aplikacji (usługi) od końca do końca po katastrofalnym błędzie wymaga odzyskania wszystkich składników wchodzących w skład usługi i usług zależnych. Przykładowe składniki obejmują oprogramowanie klienta (na przykład przeglądarkę z niestandardowym językiem JavaScript), frontony sieci Web, magazyn i system DNS. Należy pamiętać, że wszystkie składniki są odporne na te same awarie i stają się dostępne w ramach celu czasu odzyskiwania (RTO) aplikacji. W związku z tym należy zidentyfikować wszystkie usługi zależne i zrozumieć gwarancje i funkcje, które zapewnia. Następnie należy wykonać odpowiednie czynności, aby upewnić się, że usługa działa w trybie failover usług, na których jest ona zależna. Aby uzyskać więcej informacji na temat projektowania rozwiązań na potrzeby odzyskiwania po awarii, zobacz [projektowanie rozwiązań w chmurze na potrzeby odzyskiwania po awarii przy użyciu aktywnej replikacji](sql-database-designing-cloud-solutions-for-disaster-recovery.md)geograficznej.
+Aby osiągnąć prawdziwą ciągłość biznesową, Dodawanie nadmiarowości bazy danych między centrami elementów jest tylko częścią rozwiązania. Odzyskiwanie aplikacji (usługi) od końca do końca po katastrofalnym błędzie wymaga odzyskania wszystkich składników wchodzących w skład usługi i usług zależnych. Przykładowe składniki obejmują oprogramowanie klienta (na przykład przeglądarkę z niestandardowym językiem JavaScript), frontony sieci Web, magazyn i system DNS. Należy pamiętać, że wszystkie składniki są odporne na te same awarie i stają się dostępne w ramach celu czasu odzyskiwania (RTO) aplikacji. W związku z tym należy zidentyfikować wszystkie usługi zależne i zrozumieć gwarancje i funkcje, które zapewnia. Następnie należy wykonać odpowiednie czynności, aby upewnić się, że usługa działa w trybie failover usług, na których jest ona zależna. Aby uzyskać więcej informacji na temat projektowania rozwiązań na potrzeby odzyskiwania po awarii, zobacz [projektowanie rozwiązań w chmurze na potrzeby odzyskiwania po awarii przy użyciu aktywnej replikacji geograficznej](sql-database-designing-cloud-solutions-for-disaster-recovery.md).
 
 ## <a name="active-geo-replication-terminology-and-capabilities"></a>Terminologia i możliwości związane z replikacją geograficzną
 
@@ -76,7 +76,7 @@ Aby osiągnąć prawdziwą ciągłość biznesową, Dodawanie nadmiarowości baz
 > [!NOTE]
 > Odtwarzanie dziennika jest opóźnione w pomocniczej bazie danych, jeśli istnieją aktualizacje schematu na serwerze podstawowym. Ten ostatni wymaga blokady schematu w pomocniczej bazie danych.
 > [!IMPORTANT]
-> Możesz użyć replikacji geograficznej, aby utworzyć pomocniczą bazę danych w tym samym regionie co podstawowy. Tej dodatkowej można użyć do równoważenia obciążenia obciążeń tylko do odczytu w tym samym regionie. Jednak pomocnicza baza danych w tym samym regionie nie zapewnia dodatkowej odporności na uszkodzenia i dlatego nie jest odpowiednim miejscem docelowym trybu failover na potrzeby odzyskiwania po awarii. Nie gwarantuje to również izolacji strefy dostępności. Aby uzyskać izolację strefy dostępności, użyj warstwy usługi krytycznej lub Premium firmy z konfiguracją nadmiarową [stref](sql-database-high-availability.md#zone-redundant-configuration) .   
+> Możesz użyć replikacji geograficznej, aby utworzyć pomocniczą bazę danych w tym samym regionie co podstawowy. Tej dodatkowej można użyć do równoważenia obciążenia obciążeń tylko do odczytu w tym samym regionie. Jednak pomocnicza baza danych w tym samym regionie nie zapewnia dodatkowej odporności na uszkodzenia i dlatego nie jest odpowiednim miejscem docelowym trybu failover na potrzeby odzyskiwania po awarii. Nie gwarantuje to również izolacji strefy dostępności. Aby uzyskać izolację strefy dostępności, użyj warstwy usługi krytycznej lub Premium firmy z [konfiguracją nadmiarową stref](sql-database-high-availability.md#zone-redundant-configuration) .   
 >
 
 - **Planowana praca w trybie failover**
@@ -162,7 +162,7 @@ Aby zmierzyć zwłokę w odniesieniu do zmian w podstawowej bazie danych, która
 
 Jak wspomniano wcześniej, aktywna replikacja geograficzna może być również zarządzana programowo przy użyciu Azure PowerShell i interfejsu API REST. W poniższych tabelach opisano zestaw dostępnych poleceń. Aktywna replikacja geograficzna obejmuje zestaw Azure Resource Manager interfejsów API do zarządzania, w tym [Azure SQL Database interfejsu API REST](https://docs.microsoft.com/rest/api/sql/) i [poleceń cmdlet Azure PowerShell](https://docs.microsoft.com/powershell/azure/overview). Te interfejsy API wymagają użycia grup zasobów i obsługują zabezpieczenia oparte na rolach (RBAC). Aby uzyskać więcej informacji na temat implementowania ról dostępu, zobacz [Access Control oparte na rolach platformy Azure](../role-based-access-control/overview.md).
 
-### <a name="t-sql-manage-failover-of-single-and-pooled-databases"></a>T-SQL: Zarządzanie trybem failover dla jednej i puli baz danych
+### <a name="t-sql-manage-failover-of-single-and-pooled-databases"></a>T-SQL: zarządzanie trybem failover dla jednej i puli baz danych
 
 > [!IMPORTANT]
 > Te polecenia języka Transact-SQL mają zastosowanie tylko do aktywnej replikacji geograficznej i nie mają zastosowania do grup trybu failover. W związku z tym nie dotyczą one również wystąpień zarządzanych, ponieważ obsługują one tylko grupy trybu failover.
@@ -172,19 +172,19 @@ Jak wspomniano wcześniej, aktywna replikacja geograficzna może być również 
 | [ALTER DATABASE](https://docs.microsoft.com/sql/t-sql/statements/alter-database-transact-sql?view=azuresqldb-current) |Użyj argumentu Dodaj dodatkową na serwerze, aby utworzyć pomocniczą bazę danych dla istniejącej bazy danych i rozpocząć replikację danych |
 | [ALTER DATABASE](https://docs.microsoft.com/sql/t-sql/statements/alter-database-transact-sql?view=azuresqldb-current) |Użycie trybu FAILOVER lub FORCE_FAILOVER_ALLOW_DATA_LOSS w celu przełączenia pomocniczej bazy danych jako głównej w celu zainicjowania trybu failover |
 | [ALTER DATABASE](https://docs.microsoft.com/sql/t-sql/statements/alter-database-transact-sql?view=azuresqldb-current) |Użyj Usuń POMOCNICZy serwer na serwerze, aby zakończyć replikację danych między SQL Database a określoną pomocniczą bazą danych. |
-| [sys.geo_replication_links](/sql/relational-databases/system-dynamic-management-views/sys-geo-replication-links-azure-sql-database) |Zwraca informacje o wszystkich istniejących łączach replikacji dla każdej bazy danych na serwerze Azure SQL Database. |
-| [sys.dm_geo_replication_link_status](/sql/relational-databases/system-dynamic-management-views/sys-dm-geo-replication-link-status-azure-sql-database) |Pobiera czas ostatniej replikacji, ostatnie opóźnienie replikacji oraz inne informacje o łączu replikacji danej bazy danych SQL. |
-| [sys.dm_operation_status](/sql/relational-databases/system-dynamic-management-views/sys-dm-operation-status-azure-sql-database) |Przedstawia stan wszystkich operacji bazy danych, w tym stan łączy replikacji. |
+| [_replication_links geograficzna](/sql/relational-databases/system-dynamic-management-views/sys-geo-replication-links-azure-sql-database) |Zwraca informacje o wszystkich istniejących łączach replikacji dla każdej bazy danych na serwerze Azure SQL Database. |
+| [sys. DM _geo_replication_link_status](/sql/relational-databases/system-dynamic-management-views/sys-dm-geo-replication-link-status-azure-sql-database) |Pobiera czas ostatniej replikacji, ostatnie opóźnienie replikacji oraz inne informacje o łączu replikacji danej bazy danych SQL. |
+| [sys. DM _operation_status](/sql/relational-databases/system-dynamic-management-views/sys-dm-operation-status-azure-sql-database) |Przedstawia stan wszystkich operacji bazy danych, w tym stan łączy replikacji. |
 | [sp_wait_for_database_copy_sync](/sql/relational-databases/system-stored-procedures/active-geo-replication-sp-wait-for-database-copy-sync) |powoduje, że aplikacja czeka, aż wszystkie zatwierdzone transakcje zostaną zreplikowane i potwierdzone przez aktywną pomocniczą bazę danych. |
 |  | |
 
-### <a name="powershell-manage-failover-of-single-and-pooled-databases"></a>Program PowerShell: Zarządzanie trybem failover dla jednej i puli baz danych
+### <a name="powershell-manage-failover-of-single-and-pooled-databases"></a>PowerShell: zarządzanie trybem failover z jedną i pulą baz danych
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 > [!IMPORTANT]
 > Moduł Azure Resource Manager programu PowerShell jest nadal obsługiwany przez Azure SQL Database, ale wszystkie przyszłe Programowanie dla modułu AZ. SQL. W przypadku tych poleceń cmdlet zobacz [AzureRM. SQL](https://docs.microsoft.com/powershell/module/AzureRM.Sql/). Argumenty poleceń polecenia AZ module i w modułach AzureRm są zasadniczo identyczne.
 
-| Polecenia cmdlet | Opis |
+| Polecenie cmdlet | Opis |
 | --- | --- |
 | [Get-AzSqlDatabase](https://docs.microsoft.com/powershell/module/az.sql/get-azsqldatabase) |Pobiera co najmniej jedną bazę danych. |
 | [New-AzSqlDatabaseSecondary](https://docs.microsoft.com/powershell/module/az.sql/new-azsqldatabasesecondary) |Tworzy pomocniczą bazę danych dla istniejącej bazy danych i rozpoczyna replikację danych. |
@@ -194,11 +194,11 @@ Jak wspomniano wcześniej, aktywna replikacja geograficzna może być również 
 |  | |
 
 > [!IMPORTANT]
-> Przykładowe skrypty można znaleźć w temacie [Konfigurowanie i przełączanie w tryb failover pojedynczej bazy danych przy użyciu aktywnej replikacji](scripts/sql-database-setup-geodr-and-failover-database-powershell.md) geograficznej oraz [Konfigurowanie i przełączanie w tryb failover bazy danych w puli przy użyciu aktywnej replikacji](scripts/sql-database-setup-geodr-and-failover-pool-powershell.md)geograficznej
+> Przykładowe skrypty można znaleźć w temacie [Konfigurowanie i przełączanie w tryb failover pojedynczej bazy danych przy użyciu aktywnej replikacji geograficznej](scripts/sql-database-setup-geodr-and-failover-database-powershell.md) oraz [Konfigurowanie i przełączanie w tryb failover bazy danych w puli przy użyciu aktywnej replikacji geograficznej](scripts/sql-database-setup-geodr-and-failover-pool-powershell.md)
 
-### <a name="rest-api-manage-failover-of-single-and-pooled-databases"></a>INTERFEJS API REST: Zarządzanie trybem failover dla jednej i puli baz danych
+### <a name="rest-api-manage-failover-of-single-and-pooled-databases"></a>Interfejs API REST: zarządzanie trybem failover dla jednej i puli baz danych
 
-| interfejs API | Opis |
+| Interfejs API | Opis |
 | --- | --- |
 | [Utwórz lub zaktualizuj bazę danych (createmode = Restore)](https://docs.microsoft.com/rest/api/sql/databases/createorupdate) |Tworzy, aktualizuje lub przywraca podstawową lub pomocniczą bazę danych. |
 | [Pobieranie lub aktualizowanie stanu bazy danych](https://docs.microsoft.com/rest/api/sql/databases/createorupdate) |Zwraca stan podczas operacji tworzenia. |
@@ -215,7 +215,7 @@ Jak wspomniano wcześniej, aktywna replikacja geograficzna może być również 
   - [Konfigurowanie pojedynczej bazy danych i wprowadzanie jej w tryb failover przy użyciu funkcji aktywnej replikacji geograficznej](scripts/sql-database-setup-geodr-and-failover-database-powershell.md)
   - [Konfigurowanie bazy danych w puli i wprowadzanie jej w tryb failover przy użyciu funkcji aktywnej replikacji geograficznej](scripts/sql-database-setup-geodr-and-failover-pool-powershell.md)
 - SQL Database obsługuje również grupy autotrybu failover. Aby uzyskać więcej informacji, zobacz Korzystanie z [grup Autotryb failover](sql-database-auto-failover-group.md).
-- Aby zapoznać się z omówieniem i scenariuszami ciągłości działania, zobacz temat ciągłość działania [— Omówienie](sql-database-business-continuity.md)
+- Aby zapoznać się z omówieniem i scenariuszami ciągłości działania, zobacz temat [ciągłość działania — Omówienie](sql-database-business-continuity.md)
 - Aby dowiedzieć się więcej o Azure SQL Database zautomatyzowanych kopii zapasowych, zobacz [SQL Database zautomatyzowane kopie zapasowe](sql-database-automated-backups.md).
 - Aby dowiedzieć się więcej o korzystaniu z automatycznych kopii zapasowych na potrzeby odzyskiwania, zobacz [przywracanie bazy danych z kopii zapasowych inicjowanych przez usługę](sql-database-recovery-using-backups.md).
 - Aby dowiedzieć się więcej o wymaganiach dotyczących uwierzytelniania dla nowego serwera podstawowego i bazy danych, zobacz [SQL Database zabezpieczenia po odzyskiwaniu po awarii](sql-database-geo-replication-security-config.md).

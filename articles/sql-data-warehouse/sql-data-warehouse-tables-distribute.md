@@ -1,5 +1,5 @@
 ---
-title: Wskazówki dotyczące projektowania tabel rozproszonych — Azure SQL Data Warehouse | Microsoft Docs
+title: Wskazówki dotyczące projektowania tabel rozproszonych
 description: Zalecenia dotyczące projektowania tabel rozproszonych rozproszonych i rozmieszczonych w trybie okrężnym w Azure SQL Data Warehouse.
 services: sql-data-warehouse
 author: XiaoyuMSFT
@@ -10,12 +10,13 @@ ms.subservice: development
 ms.date: 04/17/2018
 ms.author: xiaoyul
 ms.reviewer: igorstan
-ms.openlocfilehash: 4b322415592a7202387cb6776d2c040cda765b27
-ms.sourcegitcommit: 75a56915dce1c538dc7a921beb4a5305e79d3c7a
+ms.custom: seo-lt-2019
+ms.openlocfilehash: f05e732e11fb9cd88d4671528d551c68e448a8d7
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/24/2019
-ms.locfileid: "68479348"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73685462"
 ---
 # <a name="guidance-for-designing-distributed-tables-in-azure-sql-data-warehouse"></a>Wskazówki dotyczące projektowania tabel rozproszonych w Azure SQL Data Warehouse
 Zalecenia dotyczące projektowania tabel rozproszonych rozproszonych i rozmieszczonych w trybie okrężnym w Azure SQL Data Warehouse.
@@ -112,8 +113,8 @@ W celu uzyskania poprawnych kwerend wyników zapytania mogą przenosić dane z j
 
 Aby zminimalizować przenoszenie danych, wybierz kolumnę dystrybucji, która:
 
-- Jest używana w `JOIN`klauzulach `DISTINCT`, `GROUP BY`, `OVER`, `HAVING` i. Gdy dwa duże tabele faktów mają częste sprzężenia, wydajność zapytań zwiększa się, gdy obie tabele są dystrybuowane w jednej z kolumn sprzężenia.  Gdy tabela nie jest używana w sprzężeniach, rozważ rozłożenie tabeli w kolumnie, która jest często w `GROUP BY` klauzuli.
-- *Nie* jest używany w `WHERE` klauzulach. Może to spowodować zawężenie zapytania, aby nie było uruchamiane na wszystkich dystrybucjach. 
+- Jest używany w klauzulach `JOIN`, `GROUP BY`, `DISTINCT`, `OVER`i `HAVING`. Gdy dwa duże tabele faktów mają częste sprzężenia, wydajność zapytań zwiększa się, gdy obie tabele są dystrybuowane w jednej z kolumn sprzężenia.  Gdy tabela nie jest używana w sprzężeniach, rozważ rozłożenie tabeli w kolumnie, która jest często w klauzuli `GROUP BY`.
+- *Nie* jest używany w klauzulach `WHERE`. Może to spowodować zawężenie zapytania, aby nie było uruchamiane na wszystkich dystrybucjach. 
 - *Nie* jest kolumną daty. Klauzule WHERE często filtrują według daty.  W takim przypadku przetwarzanie może być wykonywane tylko w kilku dystrybucjach.
 
 ### <a name="what-to-do-when-none-of-the-columns-are-a-good-distribution-column"></a>Co zrobić, gdy żadna z kolumn nie jest dobrą kolumną dystrybucji

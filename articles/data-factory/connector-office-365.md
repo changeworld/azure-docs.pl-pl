@@ -1,5 +1,5 @@
 ---
-title: Skopiuj dane z pakietu Office 365 przy użyciu Azure Data Factory | Microsoft Docs
+title: Skopiuj dane z pakietu Office 365 przy użyciu Azure Data Factory
 description: Informacje o kopiowaniu danych z pakietu Office 365 do obsługiwanych magazynów danych ujścia przy użyciu działania kopiowania w potoku Azure Data Factory.
 services: data-factory
 documentationcenter: ''
@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 10/20/2019
 ms.author: jingwang
-ms.openlocfilehash: 7290a7a2f0bf6e12234ff3c09f5c5211dcaeba2d
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: 9bd059d42686a37701af0d42f54335b83c06b752
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72931048"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73680568"
 ---
 # <a name="copy-data-from-office-365-into-azure-using-azure-data-factory"></a>Skopiuj dane z pakietu Office 365 do platformy Azure przy użyciu Azure Data Factory
 
@@ -77,7 +77,7 @@ Poniższe sekcje zawierają szczegółowe informacje o właściwościach, które
 
 Dla połączonej usługi Office 365 są obsługiwane następujące właściwości:
 
-| Właściwość | Opis | Wymagane |
+| Właściwość | Opis | Wymagany |
 |:--- |:--- |:--- |
 | type | Właściwość Type musi być ustawiona na wartość: **Office 365** | Tak |
 | office365TenantId | Identyfikator dzierżawy platformy Azure, do której należy konto usługi Office 365. | Tak |
@@ -117,7 +117,7 @@ Aby uzyskać pełną listę sekcji i właściwości dostępnych do definiowania 
 
 Aby skopiować dane z pakietu Office 365, obsługiwane są następujące właściwości:
 
-| Właściwość | Opis | Wymagane |
+| Właściwość | Opis | Wymagany |
 |:--- |:--- |:--- |
 | type | Właściwość Type zestawu danych musi być ustawiona na wartość: **Office365Table** | Tak |
 | tableName | Nazwa zestawu danych do wyodrębnienia z pakietu Office 365. Zapoznaj [się](https://docs.microsoft.com/graph/data-connect-datasets#datasets) z listą zestawów danych pakietu Office 365 dostępnych do wyodrębnienia. | Tak |
@@ -151,7 +151,7 @@ Aby uzyskać pełną listę sekcji i właściwości dostępnych do definiowania 
 
 Aby skopiować dane z pakietu Office 365, w sekcji **Źródło** działania kopiowania są obsługiwane następujące właściwości:
 
-| Właściwość | Opis | Wymagane |
+| Właściwość | Opis | Wymagany |
 |:--- |:--- |:--- |
 | type | Właściwość Type źródła działania Copy musi być ustawiona na wartość: **Office365Source** | Tak |
 | allowedGroups | Predykat wyboru grupy.  Ta właściwość umożliwia wybranie do 10 grup użytkowników, dla których zostaną pobrane dane.  Jeśli nie określono żadnych grup, dane będą zwracane dla całej organizacji. | Nie |

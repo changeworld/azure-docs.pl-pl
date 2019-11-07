@@ -1,5 +1,5 @@
 ---
-title: Migruj dane z usługi Amazon S3 do Azure Data Lake Storage Gen2 z Azure Data Factory | Microsoft Docs
+title: Migrowanie danych z usługi Amazon S3 do Azure Data Lake Storage Gen2 z Azure Data Factory
 description: Dowiedz się, jak za pomocą szablonu rozwiązania przeprowadzić migrację danych z usługi Amazon S3 przy użyciu zewnętrznej tabeli formantów do przechowywania listy partycji na AWS S3 z Azure Data Factory.
 services: data-factory
 documentationcenter: ''
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 09/07/2019
-ms.openlocfilehash: e4567d79b70fc18622e4a5e927031e9849b96e99
-ms.sourcegitcommit: c79aa93d87d4db04ecc4e3eb68a75b349448cd17
+ms.openlocfilehash: a8591762bf4e8eccd5e1b7d67538674feed720b9
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71092289"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73684200"
 ---
 # <a name="migrate-data-from-amazon-s3-to-azure-data-lake-storage-gen2"></a>Migrowanie danych z usługi Amazon S3 do Azure Data Lake Storage Gen2
 
@@ -73,7 +73,7 @@ Szablon zawiera dwa parametry:
 
     > [!NOTE]
     > Nazwa tabeli to s3_partition_control_table.
-    > Schemat tabeli formantów to PartitionPrefix i SuccessOrFailure, gdzie PartitionPrefix jest ustawieniem prefiksu w S3 do filtrowania folderów i plików w usłudze Amazon S3 według nazwy, a SuccessOrFailure jest stanem kopiowania każdej partycji: 0 oznacza, że ta partycja nie została skopiowana na platformę Azure i 1 oznacza, że ta partycja została pomyślnie skopiowana na platformę Azure.
+    > Schemat tabeli formantów to PartitionPrefix i SuccessOrFailure, gdzie PartitionPrefix jest ustawieniem prefiksu w S3 do filtrowania folderów i plików w usłudze Amazon S3 według nazwy, a SuccessOrFailure jest stanem kopiowania każdej partycji: 0 oznacza, że ta partycja ma nie skopiowano na platformę Azure i 1 oznacza to, że ta partycja została pomyślnie skopiowana na platformę Azure.
     > W tabeli formantów zdefiniowano 5 partycji i domyślny stan kopiowania każdej partycji wynosi 0.
 
     ```sql
@@ -109,7 +109,7 @@ Szablon zawiera dwa parametry:
 
 3. Przejdź do szablonu " **Migrowanie danych historycznych z AWS S3 do Azure Data Lake Storage Gen2** . Wprowadź połączenia z tabelą formantów zewnętrznych, AWS S3 jako magazyny danych i Azure Data Lake Storage Gen2 jako magazyn docelowy. Należy pamiętać, że zewnętrzna tabela formantów i procedura składowana odnoszą się do tego samego połączenia.
 
-    ![Utwórz nowe połączenie](media/solution-template-migration-s3-azure/historical-migration-s3-azure1.png)
+    ![Tworzenie nowego połączenia](media/solution-template-migration-s3-azure/historical-migration-s3-azure1.png)
 
 4. Wybierz pozycję **Użyj tego szablonu**.
 
@@ -172,7 +172,7 @@ Szablon zawiera dwa parametry:
 
 3. Przejdź do szablonu **Kopiuj dane różnicowe z AWS S3 do Azure Data Lake Storage Gen2** . Wprowadź połączenia z tabelą formantów zewnętrznych, AWS S3 jako magazyny danych i Azure Data Lake Storage Gen2 jako magazyn docelowy. Należy pamiętać, że zewnętrzna tabela formantów i procedura składowana odnoszą się do tego samego połączenia.
 
-    ![Utwórz nowe połączenie](media/solution-template-migration-s3-azure/delta-migration-s3-azure1.png)
+    ![Tworzenie nowego połączenia](media/solution-template-migration-s3-azure/delta-migration-s3-azure1.png)
 
 4. Wybierz pozycję **Użyj tego szablonu**.
 

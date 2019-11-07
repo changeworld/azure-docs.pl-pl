@@ -1,17 +1,17 @@
 ---
-title: Dodawanie magazynu do pamięci podręcznej platformy Azure HPC (wersja zapoznawcza)
+title: Dodawanie magazynu do pamięci podręcznej platformy Azure HPC
 description: Jak zdefiniować cele magazynu, aby pamięć podręczna platformy Azure HPC mogła używać lokalnego systemu plików NFS lub kontenerów obiektów blob platformy Azure do przechowywania długoterminowych plików
 author: ekpgh
 ms.service: hpc-cache
 ms.topic: conceptual
-ms.date: 10/01/2019
+ms.date: 10/30/2019
 ms.author: rohogue
-ms.openlocfilehash: dbcc68bacf8a11a7a85d5fad7fb4435fd03c7f93
-ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
+ms.openlocfilehash: b10692e352007ee2b0fd18543d8ae2ad8f9819dc
+ms.sourcegitcommit: 6c2c97445f5d44c5b5974a5beb51a8733b0c2be7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/08/2019
-ms.locfileid: "72024564"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73621467"
 ---
 # <a name="add-storage-targets"></a>Dodawanie lokalizacji docelowych magazynu
 
@@ -74,7 +74,7 @@ Procedura dodawania ról RBAC:
 1. W polu **Wybierz** Wyszukaj ciąg "HPC".  Ten ciąg powinien być zgodny z jedną jednostką usługi o nazwie "dostawca zasobów pamięci podręcznej HPC". Kliknij ten podmiot zabezpieczeń, aby go wybrać.
 
    > [!NOTE]
-   > Jeśli wyszukiwanie "HPC" nie działa, spróbuj użyć zamiast niego ciągu "storagecache". Użytkownicy, którzy dołączeli do wcześniejszej wersji zapoznawczej, muszą używać starszej nazwy dla nazwy głównej usługi.
+   > Jeśli wyszukiwanie "HPC" nie działa, spróbuj użyć zamiast niego ciągu "storagecache". Użytkownicy, którzy dołączeli do wersji zapoznawczych (przed uzyskaniem wiedzy), muszą używać starszej nazwy dla nazwy głównej usługi.
 
 1. Kliknij przycisk **Zapisz** , aby dodać przypisanie roli do konta magazynu.
 
@@ -134,3 +134,5 @@ Po utworzeniu obiektów docelowych magazynu należy wziąć pod uwagę jedno z n
 
 * [Instalowanie pamięci podręcznej platformy Azure HPC](hpc-cache-mount.md)
 * [Przenoszenie danych do usługi Azure Blob Storage](hpc-cache-ingest.md)
+
+Jeśli potrzebujesz zmienić miejsce docelowe magazynu, przeczytaj artykuł [Edycja miejsc docelowych](hpc-cache-edit-storage.md) , aby dowiedzieć się, jak.

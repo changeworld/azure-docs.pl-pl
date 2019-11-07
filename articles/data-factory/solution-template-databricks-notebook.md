@@ -1,6 +1,6 @@
 ---
-title: Przekształcanie danych za pomocą usługi Databricks w usłudze Azure Data Factory | Dokumentacja firmy Microsoft
-description: Dowiedz się, jak przekształcić dane za pomocą notesu usługi Databricks w usłudze Azure Data Factory za pomocą szablonu rozwiązania.
+title: Przekształcanie danych przy użyciu kostek datakostki w Azure Data Factory
+description: Dowiedz się, jak używać szablonu rozwiązania do przekształcania danych przy użyciu notesu datakostki w Azure Data Factory.
 services: data-factory
 documentationcenter: ''
 author: nabhishek
@@ -12,40 +12,40 @@ ms.topic: conceptual
 ms.date: 12/10/2018
 ms.author: abnarain
 ms.reviewer: douglasl
-ms.openlocfilehash: 562ce675acc43002ce468d60f8a8c412410be86c
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 471c1d9610fa346b0eac44c73fe02f4510bd2889
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60395403"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73684239"
 ---
-# <a name="transform-data-by-using-databricks-in-azure-data-factory"></a>Przekształcanie danych za pomocą usługi Databricks w usłudze Azure Data Factory
+# <a name="transform-data-by-using-databricks-in-azure-data-factory"></a>Przekształcanie danych przy użyciu kostek datakostki w Azure Data Factory
 
-W tym samouczku utworzysz potok end-to-end, zawierający **wyszukiwania**, **kopiowania**, i **notesu usługi Databricks** działań w usłudze Data Factory.
+W tym samouczku utworzysz kompleksowy potok zawierający działania w notesie **Wyszukiwanie**, **Kopiowanie**i **datakostki** w Data Factory.
 
--   **Wyszukiwanie** lub działanie GetMetadata służy do upewnij się, zestaw danych źródłowych jest gotowe do użycia transmisji, przed wyzwoleniem zadania kopiowania i analizy.
+-   Działanie **Lookup** lub GetMetadata służy do upewnienia się, że źródłowy zestaw danych jest gotowy do użycia na użytek podrzędny, przed wyzwoleniem zadania kopiowania i analizy.
 
--   **Działanie kopiowania, które** kopiuje plik źródłowy / zestawu danych z magazynem ujścia. Magazynu ujścia jest zainstalowany jako DBFS notesu usługi Databricks, tak aby zestaw danych, które mogą być bezpośrednio używane przez rozwiązanie Spark.
+-   **Działanie Copy** kopiuje plik źródłowy/zestaw danych do magazynu ujścia. Magazyn ujścia jest instalowany jako DBFS w notesie datakosteks, dzięki czemu zestaw danych może być bezpośrednio używany przez platformę Spark.
 
--   **Działania notesu usługi Databricks** wyzwala notesu usługi Databricks, które przekształca zestawu danych i dodaje go do folderu przetworzonych / SQL data Warehouse.
+-   **Działanie notesu datakosteks** wyzwala Notes datakostks, który przekształca zestaw danych i dodaje go do przetworzonego folderu/DW programu SQL.
 
-W celu uproszczenia tego szablonu, szablon nie tworzy zaplanowane wyzwalanie. Możesz dodać, jeśli to konieczne.
+Aby zachować ten szablon jako prosty, szablon nie tworzy zaplanowanego wyzwalacza. W razie potrzeby można je dodać.
 
 ![1](media/solution-template-Databricks-notebook/Databricks-tutorial-image01.png)
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-1.  Tworzenie **konta magazynu obiektów blob** oraz nazywany kontenerem `sinkdata` ma być używany jako **ujścia**. Zapisz **nazwa konta magazynu**, **nazwa kontenera**, i **klucz dostępu**, ponieważ odwołuje się w dalszej części szablonu.
+1.  Utwórz **konto magazynu obiektów BLOB** i kontener o nazwie `sinkdata`, który ma być używany jako **obiekt sink**. Zanotuj **nazwę konta magazynu**, **nazwę kontenera**i **klucz dostępu**, ponieważ są one przywoływane później w szablonie.
 
-2.  Upewnij się, że **obszaru roboczego usługi Azure Databricks** lub utworzyć nowy.
+2.  Upewnij się, że masz **obszar roboczy Azure Databricks** lub Utwórz nowy.
 
-1.  **Importuj Notes ETL**. Importuj poniżej Notes przekształcenia do obszaru roboczego usługi Databricks. (Go nie ma znajdować się w tej samej lokalizacji, tak jak pokazano poniżej, ale należy pamiętać ścieżkę, wybierz dla później). Importuj Notes z następującego adresu URL, wprowadzając ten adres URL w polu adres URL: `https://adflabstaging1.blob.core.windows.net/share/Transformations.html`. Wybierz **importu**.
+1.  **Zaimportuj Notes dla ETL**. Zaimportuj Poniższy Notes Przekształć do obszaru roboczego datakosteks. (Nie musi znajdować się w tej samej lokalizacji co poniżej, ale należy pamiętać, że ścieżka wybrana później). Zaimportuj Notes z następującego adresu URL, wprowadzając ten adres URL w polu adres URL: `https://adflabstaging1.blob.core.windows.net/share/Transformations.html`. Wybierz pozycję **Importuj**.
 
     ![2](media/solution-template-Databricks-notebook/Databricks-tutorial-image02.png)
 
     ![3](media/solution-template-Databricks-notebook/Databricks-tutorial-image03.png)  
 
-1.  Teraz zaktualizujmy **przekształcania** notesu za pomocą usługi **informacje o połączeniu magazynu** (nazwy i klucza dostępu). Przejdź do **polecenia 5** w notesie importowanych powyżej, zastąp go wartością poniżej fragment kodu po zastąpieniu wartości wyróżnione. Upewnij się, to konto jest tego samego konta magazynu utworzonego wcześniej i zawiera `sinkdata` kontenera.
+1.  Teraz zaktualizujmy Notes **transformacji** przy użyciu **informacji o połączeniu z magazynem** (nazwa i klucz dostępu). Przejdź do **polecenia 5** w zaimportowanym notesie, zastąp go następującym fragmentem kodu po zastąpieniu wyróżnionych wartości. Upewnij się, że to konto magazynu zostało utworzone wcześniej i zawiera kontener `sinkdata`.
 
     ```python
     # Supply storageName and accessKey values  
@@ -69,7 +69,7 @@ W celu uproszczenia tego szablonu, szablon nie tworzy zaplanowane wyzwalanie. Mo
       print e \# Otherwise print the whole stack trace.  
     ```
 
-1.  Generowanie **token dostępu usługi Databricks** dla usługi Data Factory dostęp do usługi Databricks. **Zapisywanie tokenu dostępu** do późniejszego użycia w tworzeniu usługi Databricks połączone usługi, która wygląda podobnie "dapi32db32cbb4w6eee18b7d87e45exxxxxx"
+1.  Generowanie **tokenu dostępu do datakostki** dla Data Factory w celu uzyskania dostępu do datakostki. **Zapisz token dostępu** do późniejszego użycia podczas tworzenia połączonej usługi datakostki, która wygląda podobnie jak "dapi32db32cbb4w6eee18b7d87e45exxxxxx"
 
     ![4](media/solution-template-Databricks-notebook/Databricks-tutorial-image04.png)
 
@@ -77,80 +77,80 @@ W celu uproszczenia tego szablonu, szablon nie tworzy zaplanowane wyzwalanie. Mo
 
 ## <a name="create-linked-services-and-datasets"></a>Tworzenie połączonych usług i zestawów danych
 
-1.  Utwórz nową **połączonych usług** w interfejs użytkownika usługi Data Factory, przechodząc do *połączeń połączonych usług + nowe*
+1.  Utwórz nowe **połączone usługi** w Data Factory interfejsie użytkownika, przechodząc do *połączeń połączonych usług i nowych*
 
-    1.  **Źródło** — służy do uzyskiwania dostępu do źródła danych. Można użyć magazynu publicznego obiektu blob zawierającego pliki źródłowe dla tego przykładu.
+    1.  **Źródło** — w celu uzyskania dostępu do danych źródłowych. Możesz użyć publicznego magazynu obiektów BLOB zawierającego pliki źródłowe dla tego przykładu.
 
-        Wybierz **magazynu obiektów Blob**, użyj poniżej **identyfikatora URI połączenia SAS** do połączenia z magazynem źródła (dostęp tylko do odczytu).
+        Wybierz **BLOB Storage**, użyj poniższego **identyfikatora URI sygnatury dostępu współdzielonego** , aby nawiązać połączenie z magazynem źródłowym (dostęp tylko do odczytu).
 
         `https://storagewithdata.blob.core.windows.net/?sv=2017-11-09&ss=b&srt=sco&sp=rl&se=2019-12-31T21:40:53Z&st=2018-10-24T13:40:53Z&spr=https&sig=K8nRio7c4xMLnUV0wWVAmqr5H4P3JDwBaG9HCevI7kU%3D`
 
         ![6](media/solution-template-Databricks-notebook/Databricks-tutorial-image06.png)
 
-    1.  **Obiekt sink** — służy do kopiowania danych do.
+    1.  **Ujścia** — do kopiowania danych do programu.
 
-        Wybierz magazyn, utworzone w ramach warunku wstępnego 1, w usłudze połączonej ujścia.
+        Wybierz magazyn utworzony w ramach wymagania wstępnego 1 w połączonej usłudze ujścia.
 
         ![7](media/solution-template-Databricks-notebook/Databricks-tutorial-image07.png)
 
-    1.  **Usługi Databricks** — służy do łączenia się z klastrem usługi Databricks
+    1.  **Datakostki** — do łączenia się z klastrem datakostki
 
-        Utwórz połączoną usługę Databricks przy użyciu klucza dostępu wygenerowanych w 2.c wymagań wstępnych. Jeśli masz *klastra interaktywne*, może wybrać, który. (W tym przykładzie użyto *nowego klastra zadań* opcję.)
+        Tworzenie połączonej usługi datakostki przy użyciu klucza dostępu wygenerowanego w wymaganiu wstępnym 2. c. Jeśli masz *interaktywny klaster*, możesz wybrać tę opcję. (W tym przykładzie jest stosowana opcja *nowy klaster zadania* ).
 
         ![8](media/solution-template-Databricks-notebook/Databricks-tutorial-image08.png)
 
-2.  Utwórz **zestawów danych**
+2.  Tworzenie **zestawów danych**
 
-    1.  Tworzenie **"sourceAvailability_Dataset"** do sprawdzenia, czy źródło danych jest dostępna
+    1.  Utwórz **element "sourceAvailability_Dataset"** , aby sprawdzić, czy dane źródłowe są dostępne
 
     ![9](media/solution-template-Databricks-notebook/Databricks-tutorial-image09.png)
 
-    1.  **Zestaw danych źródłowych —** do kopiowania danych źródłowych (przy użyciu kopia binarna)
+    1.  **Źródłowy zestaw danych —** do kopiowania danych źródłowych (przy użyciu kopii binarnej)
 
     ![10](media/solution-template-Databricks-notebook/Databricks-tutorial-image10.png)
 
-    1.  **Zestaw danych będący ujściem** — służy do kopiowania do zlewu / lokalizacja docelowa
+    1.  **Zestaw danych ujścia** — do kopiowania do lokalizacji ujścia/miejsce docelowe
 
-        1.  Połączona usługa — wybierz pozycję "sinkBlob_LS" utworzone w 1.b
+        1.  Połączona usługa — wybierz pozycję "sinkBlob_LS" utworzoną w 1. b
 
-        2.  Ścieżka pliku - "sinkdata/staged_sink"
+        2.  Ścieżka pliku — "sinkdata/staged_sink"
 
         ![11](media/solution-template-Databricks-notebook/Databricks-tutorial-image11.png)
 
 ## <a name="create-activities"></a>Tworzenie działań
 
-1.  Utwórz działanie Lookup "**flagi dostępności**" do wykonywania sprawdzania dostępności źródła (wyszukiwania lub GetMetadata mogą być używane). Wybierz utworzony w 2.a "sourceAvailability_Dataset".
+1.  Utwórz**flagę dostępności**działania Lookup, aby wykonać kontrolę dostępności źródła (można użyć funkcji Lookup lub GetMetadata). Wybierz pozycję "sourceAvailability_Dataset" utworzoną w 2. a.
 
     ![12](media/solution-template-Databricks-notebook/Databricks-tutorial-image12.png)
 
-1.  Utwórz działanie Copy "**pliku do obiektu blob**" kopiowania zestaw danych ze źródła do ujścia. W tym przypadku dane są pliku binarnego. Dokumentacja poniższe zrzuty ekranu w przypadku konfiguracji źródła i ujścia w działaniu kopiowania.
+1.  Utwórz działanie kopiowania "**File-to-BLOB**" do kopiowania zestawu danych ze źródła do ujścia. W takim przypadku dane są plikami binarnymi. Odnosi się do poniższych zrzutów ekranu dla konfiguracji źródła i ujścia w działaniu kopiowania.
 
     ![13](media/solution-template-Databricks-notebook/Databricks-tutorial-image13.png)
 
     ![14](media/solution-template-Databricks-notebook/Databricks-tutorial-image14.png)
 
-1.  Zdefiniuj **potoku parametrów**
+1.  Definiowanie **parametrów potoku**
 
     ![15](media/solution-template-Databricks-notebook/Databricks-tutorial-image15.png)
 
-1.  Utwórz **działania usługi Databricks**
+1.  Tworzenie **działania dotyczącego elementów datakostki**
 
-    Wybieranie połączonej usługi, utworzony w poprzednim kroku.
+    Wybierz połączoną usługę utworzoną w poprzednim kroku.
 
     ![16](media/solution-template-Databricks-notebook/Databricks-tutorial-image16.png)
 
-    Konfigurowanie **ustawienia**. Tworzenie **parametry Base** jak pokazano na zrzucie ekranu i utworzyć parametry do przekazania do notesu usługi Databricks z fabryką danych. Przeglądaj i **wybierz** **ścieżkę notesu poprawne** przekazane **wymaganie wstępne 2**.
+    Skonfiguruj **Ustawienia**. Utwórz **parametry podstawowe** , jak pokazano na zrzucie ekranu, i utwórz parametry, które mają zostać przesłane do notesu Databases z Data Factory. Przeglądaj i **Wybierz** **poprawną ścieżkę notesu** przekazaną w **wymaganiu wstępnym 2**.
 
     ![17](media/solution-template-Databricks-notebook/Databricks-tutorial-image17.png)
 
-1.  **Uruchamianie potoku**. Aby uzyskać bardziej szczegółowe dzienniki platformy Spark można znaleźć link do dzienników usługi Databricks.
+1.  **Uruchamianie potoku**. Łącze do dzienników datakostek można znaleźć, aby poznać bardziej szczegółowe dzienniki platformy Spark.
 
     ![18](media/solution-template-Databricks-notebook/Databricks-tutorial-image18.png)
 
-    Można również sprawdzić plik danych, za pomocą Eksploratora usługi storage. (Do korelacji z uruchomienia potoku fabryki danych, w tym przykładzie dołącza identyfikator uruchomienia z fabryki danych do folderu wyjściowego potoku. Dzięki temu można śledzić ponownie wygenerowanych plików za pomocą każdego uruchomienia.)
+    Możesz również zweryfikować plik danych przy użyciu Eksploratora usługi Storage. (W celu skorelowania z uruchomieniami potoku Data Factory ten przykład dołącza identyfikator uruchomienia potoku z fabryki danych do folderu danych wyjściowych. W ten sposób można śledzić pliki wygenerowane przez poszczególne uruchomienia.
 
 ![19](media/solution-template-Databricks-notebook/Databricks-tutorial-image19.png)
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 - [Wprowadzenie do usługi Azure Data Factory](introduction.md)

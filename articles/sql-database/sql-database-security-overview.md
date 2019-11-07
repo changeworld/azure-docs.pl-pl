@@ -1,5 +1,5 @@
 ---
-title: Omówienie zabezpieczeń usługi Azure SQL Database | Microsoft Docs
+title: Omówienie zabezpieczeń Azure SQL Database
 description: Dowiedz się więcej na temat Azure SQL Database i SQL Server zabezpieczeń, w tym różnic między chmurą i SQL Server lokalnie.
 services: sql-database
 ms.service: sql-database
@@ -11,18 +11,18 @@ author: aliceku
 ms.author: aliceku
 ms.reviewer: vanto, carlrab, emlisa
 ms.date: 05/14/2019
-ms.openlocfilehash: 44b330fcf93b9d2d2d305b3da954421e4fbbcbbc
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 2365f9cedef73c61870f6e83fa491de5e950c801
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68566839"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73687460"
 ---
 # <a name="an-overview-of-azure-sql-database-security-capabilities"></a>Przegląd możliwości zabezpieczeń Azure SQL Database
 
 W tym artykule przedstawiono podstawowe informacje dotyczące zabezpieczania warstwy danych aplikacji przy użyciu Azure SQL Database. Opisana poniżej strategia zabezpieczeń ma zastosowanie do opartego na warstwach podejścia do kompleksowej ochrony, jak pokazano na ilustracji poniżej, i przemieszcza się z zewnątrz w:
 
-![sql-security-layer.png](media/sql-database-security-overview/sql-security-layer.png)
+![SQL-Security-Layer. png](media/sql-database-security-overview/sql-security-layer.png)
 
 ## <a name="network-security"></a>Bezpieczeństwo sieci
 
@@ -39,7 +39,7 @@ Reguły zapory adresów IP umożliwiają dostęp do baz danych na podstawie źr�
 [Reguły sieci wirtualnej](sql-database-vnet-service-endpoint-rule-overview.md) umożliwiają Azure SQL Database tylko akceptowanie komunikacji wysyłanej z wybranych podsieci w sieci wirtualnej.
 
 > [!NOTE]
-> Kontrolowanie dostępu za pomocą reguł zapory nie *ma zastosowania do* **wystąpienia zarządzanego**. Aby uzyskać więcej informacji o wymaganej konfiguracji sieci, zobacz [nawiązywanie połączenia z wystąpieniem zarządzanym](sql-database-managed-instance-connect-app.md)
+> Kontrolowanie dostępu za pomocą reguł *zapory nie ma zastosowania do* **wystąpienia zarządzanego**. Aby uzyskać więcej informacji o wymaganej konfiguracji sieci, zobacz [nawiązywanie połączenia z wystąpieniem zarządzanym](sql-database-managed-instance-connect-app.md)
 
 ## <a name="access-management"></a>Zarządzanie dostępem
 
@@ -60,12 +60,12 @@ Uwierzytelnianie to proces potwierdzania tożsamości użytkownika. Azure SQL Da
 
      Administrator serwera o nazwie **administrator Active Directory** musi zostać utworzony w celu korzystania z uwierzytelniania usługi Azure AD z SQL Database. Aby uzyskać więcej informacji, zobacz [nawiązywanie połączenia z SQL Database przy użyciu uwierzytelniania Azure Active Directory](sql-database-aad-authentication.md). Uwierzytelnianie usługi Azure AD obsługuje konta zarządzane i federacyjne. Konta federacyjne obsługują użytkowników i grupy systemu Windows dla domeny klienta federacyjnego z usługą Azure AD.
 
-    Dostępne są dodatkowe opcje uwierzytelniania usługi Azure AD [Active Directory uniwersalnego uwierzytelniania dla SQL Server Management Studio](sql-database-ssms-mfa-authentication.md) połączeń, w tym [uwierzytelniania](../active-directory/authentication/concept-mfa-howitworks.md) wieloskładnikowego i [dostępu warunkowego](sql-database-conditional-access.md).
+    Dostępne są dodatkowe opcje uwierzytelniania usługi Azure AD [Active Directory uniwersalnego uwierzytelniania dla połączeń SQL Server Management Studio, w](sql-database-ssms-mfa-authentication.md) tym [Multi-Factor Authentication](../active-directory/authentication/concept-mfa-howitworks.md) i [dostępu warunkowego](sql-database-conditional-access.md).
 
 > [!IMPORTANT]
-> Zarządzanie bazami danych i serwerami na platformie Azure jest kontrolowane przez przypisania roli konta użytkownika portalu. Aby uzyskać więcej informacji na temat tego artykułu, zobacz [Kontrola dostępu oparta na rolach w Azure Portal](../role-based-access-control/overview.md). Kontrolowanie dostępu za pomocą reguł zapory nie *ma zastosowania do* **wystąpienia zarządzanego**. Aby uzyskać więcej informacji na temat konfiguracji sieci, należy zapoznać się z poniższym artykułem dotyczącym [łączenia się z wystąpieniem zarządzanym](sql-database-managed-instance-connect-app.md) .
+> Zarządzanie bazami danych i serwerami na platformie Azure jest kontrolowane przez przypisania roli konta użytkownika portalu. Aby uzyskać więcej informacji na temat tego artykułu, zobacz [Kontrola dostępu oparta na rolach w Azure Portal](../role-based-access-control/overview.md). Kontrolowanie dostępu za pomocą reguł *zapory nie ma zastosowania do* **wystąpienia zarządzanego**. Aby uzyskać więcej informacji na temat konfiguracji sieci, należy zapoznać się z poniższym artykułem dotyczącym [łączenia się z wystąpieniem zarządzanym](sql-database-managed-instance-connect-app.md) .
 
-## <a name="authorization"></a>Authorization
+## <a name="authorization"></a>Autoryzacja
 
 Autoryzacja odnosi się do uprawnień przypisanych do użytkownika w ramach Azure SQL Database i określa, co użytkownik może zrobić. Uprawnienia są kontrolowane przez dodawanie kont użytkowników do [ról bazy danych](/sql/relational-databases/security/authentication-access/database-level-roles) i przypisywanie uprawnień na poziomie bazy danych do tych ról lub udzielanie użytkownikowi określonych [uprawnień na poziomie obiektów](/sql/relational-databases/security/permissions-database-engine). Aby uzyskać więcej informacji, zobacz [logowania i użytkownicy](sql-database-manage-logins.md)
 
@@ -75,7 +75,7 @@ Najlepszym rozwiązaniem jest utworzenie ról niestandardowych w razie konieczno
 
 Zabezpieczenia na poziomie wiersza umożliwiają klientom kontrolowanie dostępu do wierszy w tabeli bazy danych na podstawie właściwości użytkownika wykonującego zapytanie (na przykład przynależności do grupy lub kontekstu wykonania). Zabezpieczenia na poziomie wiersza mogą również służyć do implementowania niestandardowych koncepcji zabezpieczeń opartych na etykietach. Aby uzyskać więcej informacji, zobacz [Zabezpieczenia na poziomie wierszy](/sql/relational-databases/security/row-level-security).
 
-![azure-database-rls.png](media/sql-database-security-overview/azure-database-rls.png)
+![Azure-Database-RLS. png](media/sql-database-security-overview/azure-database-rls.png)
 
 ## <a name="threat-protection"></a>Ochrona przed zagrożeniami
 
@@ -89,7 +89,7 @@ Inspekcja SQL Database śledzi działania bazy danych i pomaga zachować zgodno�
 
 Zaawansowana ochrona przed zagrożeniami analizuje dzienniki SQL Server, aby wykrywać nietypowe zachowanie i potencjalnie szkodliwe próby dostępu do baz danych lub korzystania z nich. Alerty są tworzone dla podejrzanych działań, takich jak iniekcja kodu SQL, potencjalne filtrowanie danych i ataki typu "wymuszanie" i "anomalie" w wzorcach dostępu do przechwytywania eskalacji uprawnień i użycia poświadczeń naruszeń. Alerty są wyświetlane w [Azure Security Center](https://azure.microsoft.com/services/security-center/), w którym znajdują się szczegółowe informacje o podejrzanych działaniach, a także zalecenia dotyczące dalszych badań oraz działań związanych z ograniczeniami zagrożenia. Zaawansowaną ochronę przed zagrożeniami można włączyć dla każdego serwera w celu uzyskania dodatkowej opłaty. Aby uzyskać więcej informacji, zobacz [wprowadzenie do SQL Database zaawansowanej ochrony przed zagrożeniami](sql-database-threat-detection.md).
 
-![azure-database-td.jpg](media/sql-database-security-overview/azure-database-td.jpg)
+![Azure-Database-TD. jpg](media/sql-database-security-overview/azure-database-td.jpg)
 
 ## <a name="information-protection-and-encryption"></a>Ochrona informacji i szyfrowanie
 
@@ -116,17 +116,17 @@ Na platformie Azure wszystkie nowo utworzone bazy danych SQL są szyfrowane domy
 
 ### <a name="key-management-with-azure-key-vault"></a>Zarządzanie kluczami za pomocą Azure Key Vault
 
-[Bring Your Own Key](transparent-data-encryption-byok-azure-sql.md) (BYOK) obsługa [transparent Data Encryption](/sql/relational-databases/security/encryption/transparent-data-encryption) (TDE) umożliwia klientom przejęcie na własność zarządzania kluczami i rotacji przy użyciu systemu [Azure Key Vault](../key-vault/key-vault-secure-your-key-vault.md), opartego na chmurze platformy Azure zewnętrznego zarządzania kluczami. Jeśli dostęp do bazy danych jest odwołany, nie można odszyfrować bazy danych i odczytać jej do pamięci. Azure Key Vault zapewnia centralną platformę do zarządzania kluczami, wykorzystuje ściśle monitorowane sprzętowe moduły zabezpieczeń (sprzętowych modułów zabezpieczeń) i umożliwia rozdzielenie obowiązków między zarządzaniem kluczami i danymi, aby zapewnić zgodność z wymaganiami dotyczącymi zgodności.
+[Bring Your Own Key](transparent-data-encryption-byok-azure-sql.md) (BYOK) obsługa [transparent Data Encryption](/sql/relational-databases/security/encryption/transparent-data-encryption) (TDE) umożliwia klientom Przejmowanie na własność zarządzania kluczami i rotacji przy użyciu [Azure Key Vault](../key-vault/key-vault-secure-your-key-vault.md)systemu Azure — zewnętrzny system zarządzania kluczami. Jeśli dostęp do bazy danych jest odwołany, nie można odszyfrować bazy danych i odczytać jej do pamięci. Azure Key Vault zapewnia centralną platformę do zarządzania kluczami, wykorzystuje ściśle monitorowane sprzętowe moduły zabezpieczeń (sprzętowych modułów zabezpieczeń) i umożliwia rozdzielenie obowiązków między zarządzaniem kluczami i danymi, aby zapewnić zgodność z wymaganiami dotyczącymi zgodności.
 
 ### <a name="always-encrypted-encryption-in-use"></a>Always Encrypted (szyfrowanie w użyciu)
 
-![azure-database-ae.png](media/sql-database-security-overview/azure-database-ae.png)
+![Azure-Database-AE. png](media/sql-database-security-overview/azure-database-ae.png)
 
 [Always Encrypted](/sql/relational-databases/security/encryption/always-encrypted-database-engine) to funkcja przeznaczona do ochrony poufnych danych przechowywanych w określonych kolumnach bazy danych w celu uzyskania dostępu (na przykład numerów kart kredytowych, krajowych numerów identyfikacyjnych lub danych, _które muszą być znane_ ). Dotyczy to administratorów bazy danych lub innych użytkowników uprzywilejowanych, którzy mają uprawnienia dostępu do bazy danych w celu wykonywania zadań związanych z zarządzaniem, ale nie muszą uzyskiwać dostępu do określonych danych w zaszyfrowanych kolumnach. Dane są zawsze szyfrowane, co oznacza, że zaszyfrowane dane są odszyfrowywane tylko do przetwarzania przez aplikacje klienckie z dostępem do klucza szyfrowania.  Klucz szyfrowania nigdy nie jest ujawniany w programie SQL i może być przechowywany w [magazynie certyfikatów systemu Windows](sql-database-always-encrypted.md) lub w [Azure Key Vault](sql-database-always-encrypted-azure-key-vault.md).
 
 ### <a name="dynamic-data-masking"></a>Dynamiczne maskowanie danych
 
-![azure-database-ddm.png](media/sql-database-security-overview/azure-database-ddm.png)
+![Azure-Database-DDM. png](media/sql-database-security-overview/azure-database-ddm.png)
 
 SQL Database Dynamiczne maskowanie danych ogranicza narażenie na dane poufne przez zamaskowanie go dla użytkowników bez uprawnień. Dynamiczne maskowanie danych automatycznie odnajduje potencjalnie wrażliwe dane w Azure SQL Database i oferuje zalecenia z możliwością wykonania akcji, które umożliwiają maskowanie tych pól, przy minimalnym wpływie na warstwę aplikacji. Jego działanie polega na zaciemnianiu poufnych danych w wyznaczonych polach bazy danych w zestawie wyników zapytania, przy czym dane w bazie danych pozostają bez zmian. Aby uzyskać więcej informacji, zobacz Rozpoczynanie [pracy z SQL Database dynamiczną maskowanie danych](sql-database-dynamic-data-masking-get-started.md).
 
@@ -134,7 +134,7 @@ SQL Database Dynamiczne maskowanie danych ogranicza narażenie na dane poufne pr
 
 ### <a name="vulnerability-assessment"></a>Ocena luk w zabezpieczeniach
 
-[Ocena luk](sql-vulnerability-assessment.md) w zabezpieczeniach to prosta konfiguracja usługi, która umożliwia odnajdywanie, śledzenie i rozwiązywanie problemów dotyczących potencjalnych luk w zabezpieczeniach bazy danych w celu aktywnego ulepszania ogólnych zabezpieczeń bazy danych. Ocena luk w zabezpieczeniach jest częścią oferty Advanced Data Security (ADS), która jest ujednoliconym pakietem zaawansowanych funkcji zabezpieczeń SQL. Dostęp do oceny luk w zabezpieczeniach można uzyskać i zarządzać nim za pośrednictwem centralnego portalu SQL ADS.
+[Ocena luk w zabezpieczeniach](sql-vulnerability-assessment.md) to prosta konfiguracja usługi, która umożliwia odnajdywanie, śledzenie i rozwiązywanie problemów dotyczących potencjalnych luk w zabezpieczeniach bazy danych w celu aktywnego ulepszania ogólnych zabezpieczeń bazy danych. Ocena luk w zabezpieczeniach jest częścią oferty Advanced Data Security (ADS), która jest ujednoliconym pakietem zaawansowanych funkcji zabezpieczeń SQL. Dostęp do oceny luk w zabezpieczeniach można uzyskać i zarządzać nim za pośrednictwem centralnego portalu SQL ADS.
 
 ### <a name="data-discovery--classification"></a>Odnajdowanie i klasyfikacja danych
 

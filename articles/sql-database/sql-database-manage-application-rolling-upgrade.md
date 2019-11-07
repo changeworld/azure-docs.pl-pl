@@ -1,5 +1,5 @@
 ---
-title: Stopniowe Uaktualnianie aplikacji — Azure SQL Database | Microsoft Docs
+title: Stopniowe Uaktualnianie aplikacji — Azure SQL Database
 description: Dowiedz się, jak używać replikacji geograficznej Azure SQL Database do obsługi uaktualnień online aplikacji w chmurze.
 services: sql-database
 ms.service: sql-database
@@ -11,16 +11,16 @@ author: anosov1960
 ms.author: sashan
 ms.reviewer: mathoma, carlrab
 ms.date: 02/13/2019
-ms.openlocfilehash: 55b23b8d8e03a79aa0806a68306017f89c747760
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 253a10e75832cf6ee8294405e34fa93b801c1b49
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68567770"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73689503"
 ---
 # <a name="manage-rolling-upgrades-of-cloud-applications-by-using-sql-database-active-geo-replication"></a>Zarządzanie uaktualnieniami stopniowymi aplikacji w chmurze za pomocą SQL Database aktywnej replikacji geograficznej
 
-Dowiedz się, jak korzystać z [aktywnej replikacji](sql-database-auto-failover-group.md) geograficznej w Azure SQL Database, aby umożliwić uaktualnianie stopniowe aplikacji w chmurze. Ze względu na to, że uaktualnienia są operacją zakłócania, powinny być częścią planowania i projektowania ciągłości działania firmy. W tym artykule przedstawiono dwie różne metody organizowania procesu uaktualniania i omawiają zalety i wady poszczególnych opcji. Na potrzeby tego artykułu odwołujemy się do aplikacji, która składa się z witryny sieci Web, która jest połączona z pojedynczą bazą danych jako jej warstwy danych. Naszym celem jest uaktualnienie wersji 1 (v1) aplikacji do wersji 2 (v2) bez znaczącego wpływu na środowisko użytkownika.
+Dowiedz się, jak korzystać z [aktywnej replikacji geograficznej](sql-database-auto-failover-group.md) w Azure SQL Database, aby umożliwić uaktualnianie stopniowe aplikacji w chmurze. Ze względu na to, że uaktualnienia są operacją zakłócania, powinny być częścią planowania i projektowania ciągłości działania firmy. W tym artykule przedstawiono dwie różne metody organizowania procesu uaktualniania i omawiają zalety i wady poszczególnych opcji. Na potrzeby tego artykułu odwołujemy się do aplikacji, która składa się z witryny sieci Web, która jest połączona z pojedynczą bazą danych jako jej warstwy danych. Naszym celem jest uaktualnienie wersji 1 (v1) aplikacji do wersji 2 (v2) bez znaczącego wpływu na środowisko użytkownika.
 
 Podczas oceny opcji uaktualniania należy wziąć pod uwagę następujące czynniki:
 
@@ -51,7 +51,7 @@ Po zakończeniu kroków przygotowania aplikacja jest gotowa do rzeczywistego uak
 
 Jeśli uaktualnienie zakończyło się pomyślnie, możesz teraz przystąpić do przełączania użytkowników do uaktualnionej kopii aplikacji, która stanie się środowiskiem produkcyjnym. Przełączenie obejmuje kilka dodatkowych kroków, jak pokazano na następnym diagramie:
 
-1. Aktywuj operację wymiany między środowiskami produkcyjnymi i tymczasowymi aplikacji sieci Web (6). Ta operacja umożliwia przełączenie adresów URL dwóch środowisk. Teraz `contoso.azurewebsites.net` wskazuje wersję w wersji 2 witryny sieci Web i bazę danych (środowisko produkcyjne). 
+1. Aktywuj operację wymiany między środowiskami produkcyjnymi i tymczasowymi aplikacji sieci Web (6). Ta operacja umożliwia przełączenie adresów URL dwóch środowisk. Teraz `contoso.azurewebsites.net` wskazuje wersję w wersji 2 witryny sieci Web i bazy danych (środowisko produkcyjne). 
 2. Jeśli wersja w wersji 1 nie jest już potrzebna, która stała się kopią przejściową po wymianie, można zlikwidować środowisko przejściowe (7).
 
 ![SQL Database konfigurację replikacji geograficznej na potrzeby odzyskiwania po awarii w chmurze.](media/sql-database-manage-application-rolling-upgrade/option1-3.png)
@@ -79,13 +79,13 @@ Jeśli aplikacja używa aktywnej replikacji geograficznej lub grupy autotrybu fa
 * Aplikacja pozostaje chroniona przed błędami w trakcie procesu uaktualniania.
 * Elementy geograficznie nadmiarowe aplikacji są uaktualniane równolegle z aktywnymi składnikami.
 
-Aby osiągnąć te cele, oprócz korzystania ze środowisk Web Apps można korzystać z usługi Azure Traffic Manager przy użyciu profilu trybu failover z jednym aktywnym punktem końcowym i jednym punktem końcowym kopii zapasowej. Następny diagram ilustruje środowisko operacyjne przed procesem uaktualniania. Witryny `contoso-1.azurewebsites.net` sieci Web i `contoso-dr.azurewebsites.net` reprezentują środowisko produkcyjne aplikacji z pełną nadmiarowością geograficzną. Środowisko produkcyjne obejmuje następujące składniki:
+Aby osiągnąć te cele, oprócz korzystania ze środowisk Web Apps można korzystać z usługi Azure Traffic Manager przy użyciu profilu trybu failover z jednym aktywnym punktem końcowym i jednym punktem końcowym kopii zapasowej. Następny diagram ilustruje środowisko operacyjne przed procesem uaktualniania. Witryny sieci Web `contoso-1.azurewebsites.net` i `contoso-dr.azurewebsites.net` reprezentują środowisko produkcyjne aplikacji z pełną nadmiarowością geograficzną. Środowisko produkcyjne obejmuje następujące składniki:
 
-* Środowisko produkcyjne aplikacji `contoso-1.azurewebsites.net` sieci Web w regionie podstawowym (1)
+* Środowisko produkcyjne aplikacji internetowej `contoso-1.azurewebsites.net` w regionie podstawowym (1)
 * Podstawowa baza danych w regionie podstawowym (2)
 * Wystąpienie w stanie wstrzymania aplikacji sieci Web w regionie kopii zapasowej (3)
 * Pomocnicza baza danych z replikacją geograficzną w regionie kopii zapasowej (4)
-* Profil wydajności Traffic Manager z wywoływanym `contoso-1.azurewebsites.net` punktem końcowym online i wywoływanym punktem końcowym w trybie offline`contoso-dr.azurewebsites.net`
+* Profil wydajności Traffic Manager z punktem końcowym online o nazwie `contoso-1.azurewebsites.net` i punktem końcowym w trybie offline o nazwie `contoso-dr.azurewebsites.net`
 
 Aby umożliwić wycofanie uaktualnienia, należy utworzyć środowisko przejściowe z w pełni zsynchronizowaną kopią aplikacji. Ponieważ trzeba upewnić się, że aplikacja może szybko wykonać odzyskiwanie w przypadku wystąpienia awarii w procesie uaktualniania, środowisko przejściowe musi być również Geograficznie nadmiarowy. Następujące kroki są wymagane do utworzenia środowiska przejściowego dla uaktualnienia:
 
@@ -117,7 +117,7 @@ ALTER DATABASE <Prod_DB>
 REMOVE SECONDARY ON SERVER <Partner-Server>
 ```
 
-3. Uruchom skrypt uaktualnienia w odniesieniu `contoso-1-staging.azurewebsites.net`do, `contoso-dr-staging.azurewebsites.net`i tymczasowej podstawowej bazy danych (12). Zmiany w bazie danych zostaną zreplikowane automatycznie do tymczasowego pomocniczego.
+3. Uruchom skrypt uaktualnienia względem `contoso-1-staging.azurewebsites.net`, `contoso-dr-staging.azurewebsites.net`i tymczasowej bazy danych (12). Zmiany w bazie danych zostaną zreplikowane automatycznie do tymczasowego pomocniczego.
 
 ![SQL Database konfigurację replikacji geograficznej na potrzeby odzyskiwania po awarii w chmurze.](media/sql-database-manage-application-rolling-upgrade/option2-2.png)
 
@@ -150,8 +150,8 @@ Dwie metody uaktualniania opisane w artykule różnią się w zależności od st
 
 ## <a name="next-steps"></a>Następne kroki
 
-* Aby zapoznać się z omówieniem i scenariuszami ciągłości działania, zobacz temat ciągłość działania [— Omówienie](sql-database-business-continuity.md).
-* Aby dowiedzieć się więcej o Azure SQL Database aktywnej replikacji geograficznej, zobacz temat [Tworzenie pomocniczych baz danych przy użyciu aktywnej replikacji](sql-database-active-geo-replication.md)geograficznej.
+* Aby zapoznać się z omówieniem i scenariuszami ciągłości działania, zobacz temat [ciągłość działania — Omówienie](sql-database-business-continuity.md).
+* Aby dowiedzieć się więcej o Azure SQL Database aktywnej replikacji geograficznej, zobacz temat [Tworzenie pomocniczych baz danych przy użyciu aktywnej replikacji geograficznej](sql-database-active-geo-replication.md).
 * Aby dowiedzieć się więcej na temat Azure SQL Database grup autotrybu failover, zobacz [Korzystanie z grup autotrybu failover w celu zapewnienia przezroczystej i skoordynowanej pracy w trybie failover wielu baz danych](sql-database-auto-failover-group.md).
 * Aby dowiedzieć się więcej na temat środowisk przejściowych w Azure App Service, zobacz [Konfigurowanie środowisk przejściowych w programie Azure App Service](../app-service/deploy-staging-slots.md).
 * Aby dowiedzieć się więcej o profilach usługi Azure Traffic Manager, zobacz [Zarządzanie profilem Traffic Manager platformy Azure](../traffic-manager/traffic-manager-manage-profiles.md).

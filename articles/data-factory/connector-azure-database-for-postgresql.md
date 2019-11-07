@@ -1,5 +1,5 @@
 ---
-title: Kopiowanie danych do i z Azure Database for PostgreSQL przy użyciu Azure Data Factory | Microsoft Docs
+title: Kopiowanie danych do i z Azure Database for PostgreSQL przy użyciu Azure Data Factory
 description: Informacje o kopiowaniu danych do i z Azure Database for PostgreSQL przy użyciu działania kopiowania w potoku Azure Data Factory.
 services: data-factory
 documentationcenter: ''
@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 09/16/2019
 ms.author: jingwang
-ms.openlocfilehash: b92177b162f4649f253bf74372b175fc16130af6
-ms.sourcegitcommit: 29880cf2e4ba9e441f7334c67c7e6a994df21cfe
+ms.openlocfilehash: 7443ab3abb12451619e77d925912b4bfc118cfaa
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/26/2019
-ms.locfileid: "71300393"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73681217"
 ---
 # <a name="copy-data-to-and-from-azure-database-for-postgresql-by-using-azure-data-factory"></a>Kopiowanie danych do i z Azure Database for PostgreSQL przy użyciu Azure Data Factory
 
@@ -25,16 +25,16 @@ W tym artykule opisano sposób używania funkcji działania kopiowania w program
 
 Ten łącznik jest wyspecjalizowany dla [usługi Azure Database for PostgreSQL](../postgresql/overview.md). Aby skopiować dane z ogólnej bazy danych PostgreSQL znajdującej się lokalnie lub w chmurze, użyj [łącznika PostgreSQL](connector-postgresql.md).
 
-## <a name="supported-capabilities"></a>Obsługiwane funkcje
+## <a name="supported-capabilities"></a>Obsługiwane możliwości
 
 Ten łącznik Azure Database for PostgreSQL jest obsługiwany dla następujących działań:
 
 - [Działanie kopiowania](copy-activity-overview.md) z [obsługiwaną macierzą źródłową/ujścia](copy-activity-overview.md)
 - [Działanie Lookup](control-flow-lookup-activity.md)
 
-Możesz skopiować dane z usługi Azure Database for PostgreSQL do dowolnego obsługiwanego magazynu danych ujścia. Można też skopiować dane z dowolnego obsługiwanego magazynu danych źródłowych do Azure Database for PostgreSQL. Listę magazynów danych obsługiwanych przez działanie kopiowania jako źródła i ujścia można znaleźć w tabeli [obsługiwane magazyny danych](copy-activity-overview.md#supported-data-stores-and-formats) .
+Dane z Azure Database for PostgreSQL można kopiować do dowolnego obsługiwanego magazynu danych ujścia. Można też skopiować dane z dowolnego obsługiwanego magazynu danych źródłowych do Azure Database for PostgreSQL. Listę magazynów danych obsługiwanych przez działanie kopiowania jako źródła i ujścia można znaleźć w tabeli [obsługiwane magazyny danych](copy-activity-overview.md#supported-data-stores-and-formats) .
 
-Usługa Azure Data Factory udostępnia wbudowane sterowników, aby włączyć łączność. W związku z tym nie trzeba ręcznie instalować żadnego sterownika, aby można było używać tego łącznika.
+Azure Data Factory udostępnia wbudowany sterownik umożliwiający nawiązywanie połączeń. W związku z tym nie trzeba ręcznie instalować żadnego sterownika, aby można było używać tego łącznika.
 
 ## <a name="getting-started"></a>Wprowadzenie
 
@@ -42,22 +42,22 @@ Usługa Azure Data Factory udostępnia wbudowane sterowników, aby włączyć ł
 
 Poniższe sekcje zawierają szczegółowe informacje o właściwościach, które są używane do definiowania Data Factory jednostek specyficznych dla łącznika Azure Database for PostgreSQL.
 
-## <a name="linked-service-properties"></a>Właściwości usługi połączonej
+## <a name="linked-service-properties"></a>Właściwości połączonej usługi
 
 Następujące właściwości są obsługiwane dla Azure Database for PostgreSQL połączonej usługi:
 
-| Właściwość | Opis | Wymagane |
+| Właściwość | Opis | Wymagany |
 |:--- |:--- |:--- |
-| type | Właściwość Type musi mieć ustawioną wartość: **AzurePostgreSql**. | Tak |
-| connectionString | Ciąg połączenia ODBC, nawiązać połączenia z usługi Azure Database for PostgreSQL.<br/>Oznacz to pole jako element SecureString, aby bezpiecznie przechowywać go w Data Factory. Możesz również wprowadzić hasło w Azure Key Vault i ściągnąć `password` konfigurację z parametrów połączenia. Aby uzyskać więcej informacji, zobacz następujące przykłady i [przechowywanie poświadczeń w Azure Key Vault](store-credentials-in-key-vault.md) . | Tak |
-| connectVia | Ta właściwość reprezentuje [środowisko Integration Runtime](concepts-integration-runtime.md) , które ma być używane do nawiązywania połączenia z magazynem danych. (Jeśli Twój magazyn danych znajduje się w sieci prywatnej), można użyć środowiska Azure Integration Runtime lub środowiskiem Integration Runtime. Jeśli nie zostanie określony, używa domyślnego środowiska Azure Integration Runtime. |Nie |
+| type | Właściwość Type musi mieć wartość: **AzurePostgreSql**. | Tak |
+| Przekształcon | Parametry połączenia ODBC do połączenia z Azure Database for PostgreSQL.<br/>Oznacz to pole jako element SecureString, aby bezpiecznie przechowywać go w Data Factory. Możesz również wprowadzić hasło w Azure Key Vault i ściągnąć konfigurację `password` z parametrów połączenia. Aby uzyskać więcej informacji, zobacz następujące przykłady i [przechowywanie poświadczeń w Azure Key Vault](store-credentials-in-key-vault.md) . | Tak |
+| Właściwością connectvia | Ta właściwość reprezentuje [środowisko Integration Runtime](concepts-integration-runtime.md) , które ma być używane do nawiązywania połączenia z magazynem danych. Możesz użyć Azure Integration Runtime lub samodzielnego Integration Runtime (Jeśli magazyn danych znajduje się w sieci prywatnej). Jeśli nie zostanie określony, zostanie użyta domyślna Azure Integration Runtime. |Nie |
 
-Typowe parametry połączenia jest `Server=<server>.postgres.database.azure.com;Database=<database>;Port=<port>;UID=<username>;Password=<Password>`. Poniżej przedstawiono więcej właściwości, które można ustawić dla danego przypadku:
+Typowe parametry połączenia to `Server=<server>.postgres.database.azure.com;Database=<database>;Port=<port>;UID=<username>;Password=<Password>`. Poniżej przedstawiono więcej właściwości, które można ustawić dla danego przypadku:
 
-| Właściwość | Opis | Opcje | Wymagane |
+| Właściwość | Opis | Opcje | Wymagany |
 |:--- |:--- |:--- |:--- |
-| EncryptionMethod (EM)| Metoda sterownik używa do szyfrowania danych przesyłanych między sterownik i serwera bazy danych. Na przykład`EncryptionMethod=<0/1/6>;`| 0 (bez szyfrowania) **(opcja domyślna)** / 1 (SSL) / 6 (RequestSSL) | Nie |
-| ValidateServerCertificate (VSC) | Określa, czy sterownik sprawdza poprawność certyfikatu wysyłanego przez serwer bazy danych, gdy włączone jest szyfrowanie SSL (metoda szyfrowania = 1). Na przykład`ValidateServerCertificate=<0/1>;`| 0 (wyłączone) **(opcja domyślna)** / 1 (włączony) | Nie |
+| EncryptionMethod (EM)| Metoda wykorzystywana przez sterownik do szyfrowania danych przesyłanych między sterownikiem a serwerem bazy danych. Na przykład `EncryptionMethod=<0/1/6>;`| 0 (bez szyfrowania) **(wartość domyślna)** /1 (SSL)/6 (RequestSSL) | Nie |
+| ValidateServerCertificate (VSC) | Określa, czy sterownik sprawdza poprawność certyfikatu wysyłanego przez serwer bazy danych, gdy włączone jest szyfrowanie SSL (metoda szyfrowania = 1). Na przykład `ValidateServerCertificate=<0/1>;`| 0 (wyłączone) **(wartość domyślna)** /1 (włączone) | Nie |
 
 **Przykład**:
 
@@ -107,9 +107,9 @@ Typowe parametry połączenia jest `Server=<server>.postgres.database.azure.com;
 
 Aby uzyskać pełną listę sekcji i właściwości dostępnych do definiowania zestawów danych, zobacz [zestawy danych w Azure Data Factory](concepts-datasets-linked-services.md). Ta sekcja zawiera listę właściwości, które Azure Database for PostgreSQL obsługiwane w zestawach danych.
 
-Aby skopiować dane z usługi Azure Database for PostgreSQL, należy ustawić właściwość typu zestawu danych na **AzurePostgreSqlTable**. Obsługiwane są następujące właściwości:
+Aby skopiować dane z Azure Database for PostgreSQL, ustaw właściwość Type zestawu danych na **AzurePostgreSqlTable**. Obsługiwane są następujące właściwości:
 
-| Właściwość | Opis | Wymagane |
+| Właściwość | Opis | Wymagany |
 |:--- |:--- |:--- |
 | type | Właściwość Type zestawu danych musi być ustawiona na wartość **AzurePostgreSqlTable** | Tak |
 | tableName | Nazwa tabeli | Nie (Jeśli określono parametr "query" w źródle działania) |
@@ -134,14 +134,14 @@ Aby skopiować dane z usługi Azure Database for PostgreSQL, należy ustawić w�
 
 Aby uzyskać pełną listę sekcji i właściwości dostępnych do definiowania działań, zobacz [potoki i działania w Azure Data Factory](concepts-pipelines-activities.md). Ta sekcja zawiera listę właściwości obsługiwanych przez źródło Azure Database for PostgreSQL.
 
-### <a name="azure-database-for-postgresql-as-source"></a>Usługa Azure Database for postgresql w warstwie jako źródło
+### <a name="azure-database-for-postgresql-as-source"></a>Usługa Azure Database for PostgreSql jako źródło
 
-Aby skopiować dane z usługi Azure Database for PostgreSQL, należy ustawić typ źródła w działaniu kopiowania, aby **AzurePostgreSqlSource**. Następujące właściwości są obsługiwane w działaniu kopiowania **źródła** sekcji:
+Aby skopiować dane z Azure Database for PostgreSQL, ustaw typ źródła w działaniu Copy na **AzurePostgreSqlSource**. W sekcji **Źródło** działania kopiowania są obsługiwane następujące właściwości:
 
-| Właściwość | Opis | Wymagane |
+| Właściwość | Opis | Wymagany |
 |:--- |:--- |:--- |
 | type | Właściwość Type źródła działania Copy musi być ustawiona na wartość **AzurePostgreSqlSource** | Tak |
-| query | Umożliwia odczytywanie danych niestandardowe zapytania SQL. Na przykład: `"SELECT * FROM MyTable"` | Nie (Jeśli określono Właściwość TableName w zestawie danych) |
+| query | Użyj niestandardowego zapytania SQL, aby odczytać dane. Na przykład: `"SELECT * FROM MyTable"` | Nie (Jeśli określono Właściwość TableName w zestawie danych) |
 
 **Przykład**:
 
@@ -179,7 +179,7 @@ Aby skopiować dane z usługi Azure Database for PostgreSQL, należy ustawić ty
 
 Aby skopiować dane do Azure Database for PostgreSQL, w sekcji **ujścia** działania kopiowania są obsługiwane następujące właściwości:
 
-| Właściwość | Opis | Wymagane |
+| Właściwość | Opis | Wymagany |
 |:--- |:--- |:--- |
 | type | Właściwość Type ujścia działania Copy musi być ustawiona na wartość **AzurePostgreSQLSink**. | Tak |
 | preCopyScript | Określ zapytanie SQL dla działania kopiowania, które ma zostać wykonane, zanim zapiszesz dane w Azure Database for PostgreSQL w każdym przebiegu. Ta właściwość służy do czyszczenia wstępnie załadowanych danych. | Nie |

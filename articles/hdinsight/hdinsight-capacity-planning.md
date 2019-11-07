@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 10/15/2019
-ms.openlocfilehash: 31d7299b0c14b35aad7a29c875630d8a7fa4827e
-ms.sourcegitcommit: fa5ce8924930f56bcac17f6c2a359c1a5b9660c9
+ms.openlocfilehash: d8d5ecd64ba689dc9cce342513702d8359038162
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/31/2019
-ms.locfileid: "73200590"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73682257"
 ---
 # <a name="capacity-planning-for-hdinsight-clusters"></a>Planowanie pojemności klastrów usługi HDInsight
 
@@ -31,13 +31,13 @@ Kluczowe pytania dotyczące planowania pojemności są następujące:
 
 Region platformy Azure określa, gdzie klaster jest fizycznie zainicjowany. Aby zminimalizować opóźnienie operacji odczytu i zapisu, klaster powinien znajdować się w sąsiedztwie danych.
 
-Usługa HDInsight jest dostępna w wielu regionach świadczenia usługi Azure. Aby znaleźć najbliższy region, zobacz [dostępne produkty według regionów](https://azure.microsoft.com/en-us/global-infrastructure/services/?products=hdinsight/).
+Usługa HDInsight jest dostępna w wielu regionach świadczenia usługi Azure. Aby znaleźć najbliższy region, zobacz [dostępne produkty według regionów](https://azure.microsoft.com/global-infrastructure/services/?products=hdinsight).
 
 ## <a name="choose-storage-location-and-size"></a>Wybierz lokalizację i rozmiar magazynu
 
 ### <a name="location-of-default-storage"></a>Lokalizacja magazynu domyślnego
 
-Domyślny magazyn, konto usługi Azure Storage lub Azure Data Lake Storage, musi znajdować się w tej samej lokalizacji co klaster. Usługa Azure Storage jest dostępna we wszystkich lokalizacjach. Data Lake Storage Gen1 jest dostępny w niektórych regionach — zapoznaj się z bieżącą [Data Lake Storage dostępności](https://azure.microsoft.com/en-us/global-infrastructure/services/?products=storage).
+Domyślny magazyn, konto usługi Azure Storage lub Azure Data Lake Storage, musi znajdować się w tej samej lokalizacji co klaster. Usługa Azure Storage jest dostępna we wszystkich lokalizacjach. Data Lake Storage Gen1 jest dostępny w niektórych regionach — zapoznaj się z bieżącą [Data Lake Storage dostępności](https://azure.microsoft.com/global-infrastructure/services/?products=storage).
 
 ### <a name="location-of-existing-data"></a>Lokalizacja istniejących danych
 
@@ -94,7 +94,7 @@ Czasami mogą wystąpić błędy spowodowane równoległym wykonywaniem wielu ma
 
 Po określeniu rozmiaru, skali i typu docelowej maszyny wirtualnej klastra sprawdź bieżące limity pojemności przydziału dla subskrypcji. Po osiągnięciu limitu przydziału może nie być możliwe wdrożenie nowych klastrów lub skalowanie istniejących klastrów przez dodanie więcej węzłów procesu roboczego. Jedynym limitem przydziału jest przydział rdzeni procesora CPU, który istnieje na poziomie regionu dla każdej subskrypcji. Na przykład subskrypcja może mieć limit 30 rdzeni w regionie Wschodnie stany USA. Jeśli musisz zażądać zwiększenia limitu przydziału, wykonaj następujące czynności:
 
-1. Zaloguj się do [portalu Azure](https://portal.azure.com/).
+1. Zaloguj się w witrynie [Azure Portal](https://portal.azure.com/).
 1. Wybierz pozycję **Pomoc i obsługa techniczna** w lewej dolnej części strony.
 1. Wybierz pozycję **Nowe żądanie obsługi**.
 1. Na stronie **nowe żądanie obsługi** w obszarze **podstawowe** karty wybierz następujące opcje:

@@ -1,5 +1,5 @@
 ---
-title: Monitorowanie magazynu XTP w pamięci | Microsoft Docs
+title: Monitorowanie magazynu XTP w pamięci
 description: Oszacuj i monitoruj XTP użycie magazynu w pamięci; błąd rozwiązywania problemów z pojemnością 41823
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: juliemsft
 ms.author: jrasnick
 ms.reviewer: genemi
 ms.date: 01/25/2019
-ms.openlocfilehash: 1c5a57f634c01cc42934a98decd8f392334dede6
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: d67a6d151f65252faab40f8f7289fe9e884eff17
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68567976"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73689799"
 ---
 # <a name="monitor-in-memory-oltp-storage"></a>Monitorowanie magazynu OLTP w pamięci
 
@@ -36,7 +36,7 @@ Wiersze zmiennych tabeli i tabeli, a także indeksy, są wliczane do maksymalneg
 Można monitorować użycie magazynu w pamięci jako procent limitu magazynu dla rozmiaru obliczeń w [Azure Portal](https://portal.azure.com/): 
 
 1. W bloku baza danych Znajdź pole wykorzystanie zasobów i kliknij przycisk Edytuj.
-2. Wybierz metrykę `In-Memory OLTP Storage percentage`.
+2. Wybierz `In-Memory OLTP Storage percentage`metryki.
 3. Aby dodać alert, kliknij pole użycie zasobów, aby otworzyć blok Metryka, a następnie kliknij pozycję Dodaj alert.
 
 Lub użyj następującego zapytania, aby pokazać użycie magazynu w pamięci:

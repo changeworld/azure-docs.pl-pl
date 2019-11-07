@@ -1,5 +1,5 @@
 ---
-title: Migrowanie bazy danych z wystąpienia SQL Server do wystąpienia zarządzanego Azure SQL Database | Microsoft Docs
+title: Migrowanie bazy danych z wystąpienia SQL Server do wystąpienia zarządzanego Azure SQL Database
 description: Dowiedz się, jak przeprowadzić migrację bazy danych z wystąpienia SQL Server do wystąpienia zarządzanego przez Azure SQL Database.
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: bonova
 ms.author: bonova
 ms.reviewer: douglas, carlrab
 ms.date: 07/11/2019
-ms.openlocfilehash: f877306170b45d65a52a4c76afd7f064e83f240a
-ms.sourcegitcommit: f2d9d5133ec616857fb5adfb223df01ff0c96d0a
+ms.openlocfilehash: 228b22d9d283fe8c23cbf7a82036b7f3782cbf25
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/03/2019
-ms.locfileid: "71937308"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73687994"
 ---
 # <a name="sql-server-instance-migration-to-azure-sql-database-managed-instance"></a>SQL Server migracji wystąpień do Azure SQL Database wystąpienia zarządzanego
 
@@ -107,9 +107,9 @@ Wystąpienie zarządzane to usługa zarządzana, która umożliwia delegowanie n
 Wystąpienie zarządzane obsługuje następujące opcje migracji bazy danych (obecnie są to jedyne obsługiwane metody migracji):
 
 - Azure Database Migration Service — migracja z niezerowym przestojem,
-- Natywne `RESTORE DATABASE FROM URL` — używa natywnych kopii zapasowych z SQL Server i wymaga pewnego przestoju.
+- Natywna `RESTORE DATABASE FROM URL` — używa natywnych kopii zapasowych z SQL Server i wymaga pewnego przestoju.
 
-### <a name="azure-database-migration-service"></a>Usługa migracji bazy danych platformy Azure
+### <a name="azure-database-migration-service"></a>Azure Database Migration Service
 
 [Azure Database Migration Service (DMS)](../dms/dms-overview.md) to w pełni zarządzana usługa, która umożliwia bezproblemowe Migrowanie z wielu źródeł baz danych do platform danych platformy Azure z minimalnym czasem przestoju. Ta usługa usprawnia zadania wymagane do przeniesienia istniejących stron trzecich i SQL Server baz danych na platformę Azure. Opcje wdrażania w publicznej wersji zapoznawczej obejmują bazy danych Azure SQL Database i SQL Server baz danych na maszynie wirtualnej platformy Azure. DMS jest zalecaną metodą migracji obciążeń przedsiębiorstwa.
 
@@ -127,7 +127,7 @@ Poniższy diagram przedstawia ogólny przegląd procesu:
 
 Poniższa tabela zawiera więcej informacji na temat metod, których można użyć w zależności od uruchomionej wersji SQL Server źródłowej:
 
-|Czynność|Aparat i wersja SQL|Metoda tworzenia kopii zapasowej/przywracania|
+|Krok|Aparat i wersja SQL|Metoda tworzenia kopii zapasowej/przywracania|
 |---|---|---|
 |Umieszczanie kopii zapasowej w usłudze Azure Storage|Wcześniejsza ZASTOSUJESZ pakietu CU2 programu SQL 2012 z dodatkiem SP1|Przekaż plik. bak bezpośrednio do usługi Azure Storage|
 ||2012 SP1 ZASTOSUJESZ PAKIETU CU2-2016|Bezpośrednia kopia zapasowa przy użyciu przestarzałej składni [poświadczeń](https://docs.microsoft.com/sql/t-sql/statements/restore-statements-transact-sql)|
@@ -181,7 +181,7 @@ Zmień parametry lub warstwy usługi uaktualniania na zbieżność z optymalną 
 Wystąpienie zarządzane udostępnia wiele zaawansowanych narzędzi do monitorowania i rozwiązywania problemów oraz służy do monitorowania wydajności w wystąpieniu. Oto niektóre z parametrów, które muszą być monitorowane:
 - Użycie procesora CPU w wystąpieniu w celu ustalenia, czy liczba zainicjowanych rdzeni wirtualnych jest właściwym dopasowaniem dla obciążenia.
 - Stron życia strony na wystąpieniu zarządzanym, aby określić [, czy potrzebna jest dodatkowa pamięć](https://techcommunity.microsoft.com/t5/Azure-SQL-Database/Do-you-need-more-memory-on-Azure-SQL-Managed-Instance/ba-p/563444).
-- Zaczekaj na statystyki, takie jak `INSTANCE_LOG_GOVERNOR` lub `PAGEIOLATCH`, które będą mieć problemy z operacjami we/wy magazynu, szczególnie w warstwie Ogólnego przeznaczenia, w której może zajść potrzeba wstępnego przydzielenia plików w celu uzyskania lepszej wydajności operacji we/wy.
+- Zaczekaj na statystyki, takie jak `INSTANCE_LOG_GOVERNOR` lub `PAGEIOLATCH`, które będą mieć problemy z operacjami we/wy magazynu, szczególnie w warstwach Ogólnego przeznaczenia, w których może być konieczne wstępne przydzielenie plików w celu uzyskania lepszej wydajności operacji we/wy.
 
 ## <a name="leverage-advanced-paas-features"></a>Korzystanie z zaawansowanych funkcji PaaS
 

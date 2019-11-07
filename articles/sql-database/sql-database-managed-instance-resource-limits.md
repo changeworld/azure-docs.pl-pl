@@ -1,5 +1,5 @@
 ---
-title: Azure SQL Database limitów zasobów — wystąpienie zarządzane | Microsoft Docs
+title: Limity zasobów Azure SQL Database — wystąpienie zarządzane
 description: Ten artykuł zawiera omówienie limitów zasobów Azure SQL Database dla wystąpień zarządzanych.
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: bonova
 ms.author: bonova
 ms.reviewer: carlrab, jovanpop, sachinp, sstein
 ms.date: 10/02/2019
-ms.openlocfilehash: 17ffc07bb5632b1b56b7bff1e843e5955d396089
-ms.sourcegitcommit: 0576bcb894031eb9e7ddb919e241e2e3c42f291d
+ms.openlocfilehash: 723704b6b81aacf086ff42b02c32259d0e2f1c6d
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72372213"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73687919"
 ---
 # <a name="overview-azure-sql-database-managed-instance-resource-limits"></a>Przegląd Azure SQL Database limitów zasobów wystąpienia zarządzanego
 
@@ -65,7 +65,7 @@ Wystąpienie zarządzane ma dwie warstwy usług: [ogólnego przeznaczenia](sql-d
 
 | **Funkcja** | **Ogólnego przeznaczenia** | **Krytyczne dla działania firmy** |
 | --- | --- | --- |
-| Liczba rdzeni wirtualnych @ no__t-0 | Obliczenia: 8, 16, 24<br/>5 rdzeń: 4, 8, 16, 24, 32, 40, 64, 80 | Obliczenia: 8, 16, 24 <br/> 5 rdzeń: 4, 8, 16, 24, 32, 40, 64, 80 <br/>\*Same liczba rdzeni wirtualnych jest przeznaczona dla zapytań tylko do odczytu. |
+| Liczba rdzeni wirtualnych\* | Obliczenia: 8, 16, 24<br/>5 rdzeń: 4, 8, 16, 24, 32, 40, 64, 80 | Obliczenia: 8, 16, 24 <br/> 5 rdzeń: 4, 8, 16, 24, 32, 40, 64, 80 <br/>\*ta sama liczba rdzeni wirtualnych jest przeznaczona dla zapytań tylko do odczytu. |
 | Maksymalna pamięć | Obliczenia: 56 GB – 168 GB (7GB/rdzeń wirtualny)<br/>5 rdzeń: 20,4 GB – 408 GB (5.1 GB/rdzeń wirtualny)<br/>Aby uzyskać więcej pamięci, Dodaj więcej rdzeni wirtualnych. | Obliczenia: 56 GB – 168 GB (7GB/rdzeń wirtualny)<br/>5 rdzeń: 20,4 GB-408 GB (5.1 GB/rdzeń wirtualny) dla zapytań do odczytu i zapisu<br/>+ dodatkowe 20,4 GB – 408 GB (5.1 GB/rdzeń wirtualny) dla zapytań tylko do odczytu.<br/>Aby uzyskać więcej pamięci, Dodaj więcej rdzeni wirtualnych. |
 | Maksymalny rozmiar magazynu wystąpienia (zarezerwowany) | -2 TB dla 4 rdzeni wirtualnych (tylko 5 rdzeń)<br/>-8 TB dla innych rozmiarów | Obliczenia: 1 TB <br/> 5 rdzeń <br/>-1 TB dla 4, 8, 16 rdzeni wirtualnych<br/>-2 TB przez 24 rdzeni wirtualnych<br/>-4 TB dla 32, 40, 64, 80 rdzeni wirtualnych |
 | Maksymalny rozmiar bazy danych | Do aktualnie dostępnego rozmiaru wystąpienia (maksymalnie 2 TB – 8 TB w zależności od liczby rdzeni wirtualnych). | Do aktualnie dostępnego rozmiaru wystąpienia (maksymalnie 1 TB — 4 TB w zależności od liczby rdzeni wirtualnych). |
@@ -74,11 +74,11 @@ Wystąpienie zarządzane ma dwie warstwy usług: [ogólnego przeznaczenia](sql-d
 | Maksymalna liczba plików bazy danych na wystąpienie | Do 280, o ile nie osiągnięto rozmiaru magazynu wystąpienia lub limitu [przestrzeni dyskowej usługi Azure Premium](sql-database-managed-instance-transact-sql-information.md#exceeding-storage-space-with-small-database-files) . | 32 767 plików na bazę danych, o ile nie osiągnięto limitu rozmiaru magazynu wystąpień. |
 | Maksymalny rozmiar pliku danych | Ograniczone do aktualnie dostępnego rozmiaru magazynu wystąpień (maksymalnie 2 TB-8 TB) i [miejsca alokacji dysku Azure Premium Storage](sql-database-managed-instance-transact-sql-information.md#exceeding-storage-space-with-small-database-files). | Ograniczone do aktualnie dostępnego rozmiaru magazynu wystąpień (do 1 TB – 4 TB). |
 | Maksymalny rozmiar pliku dziennika | Ograniczone do 2 TB i aktualnie dostępnego rozmiaru magazynu wystąpień. | Ograniczone do 2 TB i aktualnie dostępnego rozmiaru magazynu wystąpień. |
-| Operacje we/wy danych/dziennika (przybliżone) | Do 30-40 K operacji we/wy na wystąpienie *, 500-7500 na plik<br/>\*[zwiększenie rozmiaru pliku w celu uzyskania większej liczby operacji we/wy na sekundę](#file-io-characteristics-in-general-purpose-tier)| 5,5 k – 110 K (1375 IOPS/rdzeń wirtualny)<br/>Dodaj więcej rdzeni wirtualnych, aby uzyskać lepszą wydajność operacji we/wy. |
+| Operacje we/wy danych/dziennika (przybliżone) | Do 30-40 K operacji we/wy na wystąpienie *, 500-7500 na plik<br/>\*[zwiększyć rozmiar pliku, aby uzyskać więcej operacji we/wy na sekundę](#file-io-characteristics-in-general-purpose-tier)| 5,5 k – 110 K (1375 IOPS/rdzeń wirtualny)<br/>Dodaj więcej rdzeni wirtualnych, aby uzyskać lepszą wydajność operacji we/wy. |
 | Limit przepływności zapisu dziennika (na wystąpienie) | 3 MB/s na rdzeń wirtualny<br/>Maks. 22 MB/s | 4 MB/s na rdzeń wirtualny<br/>Maks 48 MB/s |
-| Przepływność danych (przybliżona) | 100 – 250 MB/s na plik<br/>\*[zwiększenie rozmiaru pliku w celu uzyskania lepszej wydajności operacji we/wy](#file-io-characteristics-in-general-purpose-tier) | Nieograniczone. |
+| Przepływność danych (przybliżona) | 100 – 250 MB/s na plik<br/>\*[zwiększyć rozmiar pliku, aby uzyskać lepszą wydajność operacji we/wy](#file-io-characteristics-in-general-purpose-tier) | Nieograniczone. |
 | Opóźnienie operacji we/wy magazynu (w przybliżeniu) | 5-10 ms | 1-2 MS |
-| Przetwarzanie OLTP w pamięci | Brak obsługi | Dostępne, [rozmiar zależy od liczby rdzeń wirtualny](#in-memory-oltp-available-space) |
+| Przetwarzanie OLTP w pamięci | Nieobsługiwane | Dostępne, [rozmiar zależy od liczby rdzeń wirtualny](#in-memory-oltp-available-space) |
 | Maksymalna liczba sesji | 30000 | 30000 |
 | [Repliki tylko do odczytu](sql-database-read-scale-out.md) | 0 | 1 (wliczone w cenę) |
 
@@ -137,14 +137,14 @@ W poniższej tabeli przedstawiono **domyślne limity** dla obsługiwanych typów
 |Płatność zgodnie z rzeczywistym użyciem|3|320|
 |CSP |8 (15 w niektórych regionach * *)|960 (1440 w niektórych regionach * *)|
 |Płatność zgodnie z rzeczywistym użyciem — tworzenie i testowanie|3|320|
-|Tworzenie i testowanie (przedsiębiorstwo)|3|320|
+|Enterprise — tworzenie i testowanie|3|320|
 |EA|8 (15 w niektórych regionach * *)|960 (1440 w niektórych regionach * *)|
 |Visual Studio Enterprise|2 |64|
 |Visual Studio Professional i Platformy MSDN|2|32|
 
-\* w planowaniu wdrożeń należy wziąć pod uwagę, że warstwa usług Krytyczne dla działania firmy (BC) wymaga czterech (4) razy więcej rdzeń wirtualny pojemności niż w przypadku Ogólnego przeznaczenia (GP) warstwy usług. Na przykład: 1 GP rdzeń wirtualny = 1 rdzeń wirtualny Unit i 1 BC rdzeń wirtualny = 4 jednostki rdzeń wirtualny. Aby uprościć analizę zużycia pod kątem domyślnych limitów, należy podsumować jednostki rdzeń wirtualny we wszystkich podsieciach w regionie, w którym wdrożono wystąpienia zarządzane i porównać wyniki z limitami jednostek wystąpienia dla danego typu subskrypcji. **Maksymalna liczba jednostek rdzeń wirtualny** dotyczy każdej subskrypcji w regionie. Nie ma żadnego limitu dla poszczególnych podsieci, z tą różnicą, że suma wszystkich rdzeni wirtualnych wdrożonych w wielu podsieciach musi być mniejsza lub równa **maksymalnej liczbie jednostek rdzeń wirtualny**.
+\* w planowaniu wdrożeń, weź pod uwagę, że warstwa usług Krytyczne dla działania firmy (BC) wymaga czterech (4) razy więcej rdzeń wirtualny pojemności niż w warstwie usług Ogólnego przeznaczenia (GP). Na przykład: 1 GP rdzeń wirtualny = 1 rdzeń wirtualny Unit i 1 BC rdzeń wirtualny = 4 jednostki rdzeń wirtualny. Aby uprościć analizę zużycia pod kątem domyślnych limitów, należy podsumować jednostki rdzeń wirtualny we wszystkich podsieciach w regionie, w którym wdrożono wystąpienia zarządzane i porównać wyniki z limitami jednostek wystąpienia dla danego typu subskrypcji. **Maksymalna liczba jednostek rdzeń wirtualny** dotyczy każdej subskrypcji w regionie. Nie ma żadnego limitu dla poszczególnych podsieci, z tą różnicą, że suma wszystkich rdzeni wirtualnych wdrożonych w wielu podsieciach musi być mniejsza lub równa **maksymalnej liczbie jednostek rdzeń wirtualny**.
 
-\* @ no__t-1 większa podsieć i limity rdzeń wirtualny są dostępne w następujących regionach: Australia Wschodnia, Wschodnie stany USA, Wschodnie stany USA 2, Europa Północna, Południowo-środkowe stany USA, Azja Południowo-Wschodnia Południowe Zjednoczone Królestwo, Europa Zachodnia, zachodnie stany USA 2.
+\*\* większe limity podsieci i rdzeń wirtualny są dostępne w następujących regionach: Australia Wschodnia, Wschodnie stany USA, Wschodnie stany USA 2, Europa Północna, Południowo-środkowe stany USA, Azja Południowo-Wschodnia Południowe Zjednoczone Królestwo, Europa Zachodnia, zachodnie stany USA 2.
 
 ## <a name="obtaining-a-larger-quota-for-sql-managed-instance"></a>Uzyskiwanie większego przydziału dla wystąpienia zarządzanego SQL
 
@@ -178,7 +178,7 @@ Aby zainicjować proces uzyskiwania większego przydziału:
 
 5. Kliknij przycisk **Dalej**.
 6. Na karcie Informacje kontaktowe dla nowego żądania obsługi wprowadź preferowaną metodę kontaktu (adres e-mail lub telefon) i szczegóły kontaktu.
-7. Kliknij przycisk **Utwórz**.
+7. Kliknij pozycję **Utwórz**.
 
 ## <a name="next-steps"></a>Następne kroki
 

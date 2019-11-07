@@ -1,7 +1,7 @@
 ---
 title: Jak przekazać dokument — translator niestandardowy
 titleSuffix: Azure Cognitive Services
-description: Za pomocą funkcji przekazywania dokumentów można przekazać równoległy dokument do szkoleń. Dokumenty równoległe to pary dokumentów, które są tłumaczeniami innych. Jeden dokument w parze zawiera zdania w języku źródłowym, a drugi dokumentu zawiera te zdania tłumaczone na język docelowy.
+description: Funkcja przekazywania dokumentów przekazuje równoległe dokumenty (dwa dokumenty, w których jeden jest źródłem, a drugi to tłumaczenie) do usługi.
 author: swmachan
 manager: nitinme
 ms.service: cognitive-services
@@ -9,12 +9,12 @@ ms.subservice: translator-text
 ms.date: 02/21/2019
 ms.author: swmachan
 ms.topic: conceptual
-ms.openlocfilehash: f2bd6103c27d455265ee967554fb27513f78a472
-ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
+ms.openlocfilehash: b2a249a40d8c782d54a12df43d33655f3409753c
+ms.sourcegitcommit: 359930a9387dd3d15d39abd97ad2b8cb69b8c18b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68595650"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73647384"
 ---
 # <a name="upload-a-document"></a>Przekazywanie dokumentu
 
@@ -37,27 +37,27 @@ W portalu usługi [tłumaczenia niestandardowego](https://portal.customtranslato
 
     a.  Typ dokumentu:
 
-    -  Trenowanie: Te dokumenty będą używane na potrzeby zestawu szkoleniowego.
-    -  BIÓR Te dokumenty będą używane na potrzeby zestawu strojenia.
-    -  Testowy Te dokumenty będą używane do zestawu testów.
-    -  Słownik fraz: Te dokumenty będą używane na potrzeby słownika fraz.
-    -  Słownik zdań: Te dokumenty będą używane dla słownika zdania
+    -  Szkolenie: te dokumenty będą używane na potrzeby zestawu szkoleniowego.
+    -  Dostrajanie: te dokumenty będą używane na potrzeby zestawu strojenia.
+    -  Testowanie: te dokumenty będą używane do zestawu testów.
+    -  Słownik fraz: te dokumenty będą używane dla słownika fraz.
+    -  Słownik zdań: te dokumenty będą używane dla słownika zdania
 
     b.  Para językowa
 
-    c.  Zastąp dokument, jeśli istnieje: Zaznacz to pole wyboru, jeśli chcesz zastąpić wszystkie istniejące dokumenty o tej samej nazwie.
+    d.  Zastąp dokument, jeśli istnieje: zaznacz to pole wyboru, jeśli chcesz zastąpić wszystkie istniejące dokumenty o tej samej nazwie.
 
     d.  Wypełnij odpowiednie sekcje dla danych równoległych lub danych kombi.
 
     -  Dane równoległe:
-        -  Plik źródłowy: Wybierz plik języka źródłowego z komputera lokalnego.
+        -  Plik źródłowy: wybierz z komputera lokalnego plik języka źródłowego.
         -  Plik docelowy: Wybierz docelowy plik języka z komputera lokalnego.
-        -  Nazwa dokumentu: Używane tylko w przypadku przekazywania plików równoległych.
+        -  Nazwa dokumentu: jest używana tylko w przypadku przekazywania plików równoległych.
 
     - Dane kombi:
         -  Plik kombi: Wybierz plik kombi z komputera lokalnego. Plik kombi zawiera oba zdania języka źródłowego i docelowego. [Konwencja nazewnictwa](document-formats-naming-convention.md) jest ważna dla plików kombi.
 
-    e.  Kliknij przycisk Przekaż
+    e.  Kliknij pozycję Przekaż.
 
     ![Okno dialogowe przekazywania dokumentu](media/how-to/how-to-upload-dialog.png)
 
@@ -84,7 +84,7 @@ Na stronie Historia przekazywania można wyświetlić historię wszystkich szcze
 
 3. Kliknij dowolny rekord historii przekazywania. Na stronie szczegóły historii przekazywania można wyświetlić pliki przekazane w ramach przekazywania, przekazanego stanu pliku, języka pliku i komunikatu o błędzie (Jeśli wystąpi błąd podczas przekazywania).
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 - Na [stronie szczegóły dokumentu](how-to-view-document-details.md) można przejrzeć listę wyodrębnionych zdań.
 - [Jak szkolić model](how-to-train-model.md).

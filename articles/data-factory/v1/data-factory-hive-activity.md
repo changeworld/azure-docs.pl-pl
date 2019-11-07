@@ -1,5 +1,5 @@
 ---
-title: Przekształcanie danych przy użyciu działania programu Hive — Azure | Microsoft Docs
+title: Przekształcanie danych przy użyciu działania programu Hive — Azure
 description: Dowiedz się, jak za pomocą działania programu Hive w usłudze Azure Data Factory uruchamiać zapytania programu Hive na żądanie/własny klaster usługi HDInsight.
 services: data-factory
 documentationcenter: ''
@@ -12,12 +12,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/10/2018
-ms.openlocfilehash: 8a7e6748f450ae398a05097ac6b192d074f5f1f7
-ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
+ms.openlocfilehash: f159f672c999d7877ef89cd78d23c4a608ccf1ab
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70139528"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73666994"
 ---
 # <a name="transform-data-using-hive-activity-in-azure-data-factory"></a>Przekształcanie danych przy użyciu działania programu Hive w Azure Data Factory 
 > [!div class="op_single_selector" title1="Działania transformacji"]
@@ -35,10 +35,10 @@ ms.locfileid: "70139528"
 > [!NOTE]
 > Ten artykuł dotyczy wersji 1 usługi Data Factory. Jeśli używasz bieżącej wersji usługi Data Factory, zobacz [Przekształć dane przy użyciu działania programu Hive w Data Factory](../transform-data-using-hadoop-hive.md).
 
-Działanie programu Hive w [usłudze](data-factory-compute-linked-services.md#azure-hdinsight-on-demand-linked-service) HDInsight w [potoku](data-factory-create-pipelines.md) Data Factory wykonuje zapytania Hive na własnym lub [lokalnym klastrze usługi](data-factory-compute-linked-services.md#azure-hdinsight-linked-service) HDInsight opartym na systemie Windows/Linux. W tym artykule przedstawiono artykuł [działania przekształcania danych](data-factory-data-transformation-activities.md) , który zawiera ogólne omówienie transformacji danych i obsługiwanych działań transformacji.
+Działanie programu Hive w [usłudze](data-factory-compute-linked-services.md#azure-hdinsight-on-demand-linked-service) HDInsight w [potoku](data-factory-create-pipelines.md) Data Factory wykonuje zapytania Hive na [własnym lub lokalnym klastrze usługi](data-factory-compute-linked-services.md#azure-hdinsight-linked-service) HDInsight opartym na systemie Windows/Linux. W tym artykule przedstawiono artykuł [działania przekształcania danych](data-factory-data-transformation-activities.md) , który zawiera ogólne omówienie transformacji danych i obsługiwanych działań transformacji.
 
 > [!NOTE] 
-> Jeśli jesteś nowym do Azure Data Factory, przeczytaj artykuł [wprowadzenie do Azure Data Factory](data-factory-introduction.md) i wykonaj samouczek: [Utwórz pierwszy potok danych](data-factory-build-your-first-pipeline.md) przed przeczytaniem tego artykułu. 
+> Jeśli dopiero zaczynasz Azure Data Factory, przeczytaj artykuł [wprowadzenie do Azure Data Factory](data-factory-introduction.md) i wykonaj samouczek: [Kompiluj pierwszy potok danych](data-factory-build-your-first-pipeline.md) przed przeczytaniem tego artykułu. 
 
 ## <a name="syntax"></a>Składnia
 
@@ -72,22 +72,22 @@ Działanie programu Hive w [usłudze](data-factory-compute-linked-services.md#az
 }
 ```
 ## <a name="syntax-details"></a>Szczegóły składni
-| Właściwość | Opis | Wymagane |
+| Właściwość | Opis | Wymagany |
 | --- | --- | --- |
 | name |Nazwa działania |Tak |
 | description |Tekst opisujący działanie używanego działania |Nie |
 | type |HDinsightHive |Tak |
-| inputs |Dane wejściowe używane przez działanie Hive |Nie |
-| outputs |Dane wyjściowe generowane przez działanie Hive |Tak |
+| danych wejściowych |Dane wejściowe używane przez działanie Hive |Nie |
+| wydajności |Dane wyjściowe generowane przez działanie Hive |Tak |
 | linkedServiceName |Odwołanie do klastra usługi HDInsight zarejestrowanego jako połączona usługa w Data Factory |Tak |
-| script |Określ skrypt Hive w tekście |Nie |
+| napisy |Określ skrypt Hive w tekście |Nie |
 | scriptPath |Zapisz skrypt Hive w magazynie obiektów blob platformy Azure i podaj ścieżkę do pliku. Użyj właściwości "Script" lub "scriptPath". Nie można jednocześnie używać obu tych metod. W nazwie pliku rozróżniana jest wielkość liter. |Nie |
-| defines |Określ parametry jako pary klucz/wartość dla odwołania w skrypcie Hive przy użyciu elementu "hiveconf" |Nie |
+| definiuje |Określ parametry jako pary klucz/wartość dla odwołania w skrypcie Hive przy użyciu elementu "hiveconf" |Nie |
 
 ## <a name="example"></a>Przykład
 Rozważmy przykładową analizę dzienników gier, w której chcesz zidentyfikować czas spędzony przez użytkowników, którzy odgrywają gry uruchomione przez firmę. 
 
-Następujący dziennik to Przykładowy dziennik gier, który jest rozdzielony przecinkami`,`() i zawiera następujące pola — ProfileID, SessionStart, Duration, SrcIPAddress i GameType.
+Następujący dziennik to Przykładowy dziennik gier, który jest rozdzielony przecinkami (`,`) i zawiera następujące pola: ProfileID, SessionStart, Duration, SrcIPAddress i GameType.
 
 ```
 1809,2014-05-04 12:04:25.3470000,14,221.117.223.75,CaptureFlag

@@ -1,68 +1,68 @@
 ---
-title: Wykonywanie zapytań o dane Avro przy użyciu usługi Azure Data Lake Analytics | Dokumentacja firmy Microsoft
-description: Użyj właściwości treści wiadomości do kierowania danych telemetrycznych z urządzenia do usługi Blob storage i wykonywanie zapytań o dane formatu Avro, które są zapisywane do magazynu obiektów Blob.
+title: Wykonywanie zapytań dotyczących danych Avro przy użyciu Azure Data Lake Analytics | Microsoft Docs
+description: Użyj właściwości treści wiadomości, aby skierować dane telemetryczne urządzenia do magazynu obiektów blob i wysyłać zapytania do danych formatu Avro, które są zapisywane w usłudze BLOB Storage.
 author: ash2017
 ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
 ms.date: 05/15/2019
 ms.author: asrastog
-ms.openlocfilehash: 84e1dd77c6e873dc2facb5126bbddf795192b60d
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 92fc5bb88ff5efd8fe1a8cd61be833b3984b673a
+ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66257739"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73605614"
 ---
-# <a name="query-avro-data-by-using-azure-data-lake-analytics"></a>Avro zapytania o dane za pomocą usługi Azure Data Lake Analytics
+# <a name="query-avro-data-by-using-azure-data-lake-analytics"></a>Wykonywanie zapytań dotyczących danych Avro przy użyciu Azure Data Lake Analytics
 
-W tym artykule omówiono sposób wykonywania zapytań o dane Avro do efektywne kierowanie komunikatów z usługi Azure IoT Hub do usług platformy Azure. [Routing komunikatów](iot-hub-devguide-messages-d2c.md) pozwala na filtrowanie danych za pomocą zaawansowanych zapytań na podstawie właściwości wiadomości, treści wiadomości, tagów bliźniaczych reprezentacji urządzeń i właściwości bliźniaczych reprezentacji urządzeń. Aby dowiedzieć się więcej na temat możliwości zapytań routingu wiadomości, zobacz artykuł na temat [komunikat o składni zapytań routingu](iot-hub-devguide-routing-query-syntax.md).
+W tym artykule omówiono sposób wykonywania zapytań dotyczących danych Avro w celu wydajnej trasy komunikatów z usługi Azure IoT Hub do usług platformy Azure. Funkcja [routingu komunikatów](iot-hub-devguide-messages-d2c.md) umożliwia filtrowanie danych przy użyciu zaawansowanych zapytań na podstawie właściwości wiadomości, treści wiadomości, znaczników sznurów urządzeń i właściwości z sznurów urządzenia. Aby dowiedzieć się więcej na temat możliwości wykonywania zapytań w obszarze Routing wiadomości, zobacz artykuł dotyczący [składni zapytania dotyczącego routingu komunikatów](iot-hub-devguide-routing-query-syntax.md).
 
-Żądania zostało, gdy usługi Azure IoT Hub kieruje komunikaty do usługi Azure Blob storage, domyślnie Centrum IoT Hub zapisuje zawartość w formacie Avro, która ma zarówno właściwość treści wiadomości, jak i właściwość wiadomości. Avro format nie jest używana dla innych punktów końcowych. Avro format to idealne narzędzie do przechowywania danych i komunikatów, może się jednak żądania na potrzeby zapytania o dane. W odróżnieniu od formacie JSON lub CSV jest znacznie łatwiejsze do wykonywania zapytań na danych. Usługa IoT Hub obsługuje teraz zapisywanie danych w magazynie obiektów Blob w formacie JSON, a także AVRO.
+Wyzwanie zostało spowodowane tym, że usługa Azure IoT Hub kieruje komunikaty do usługi Azure Blob Storage, domyślnie IoT Hub zapisuje zawartość w formacie Avro, który ma Właściwość Body komunikatu i Właściwość Message. Format Avro nie jest używany dla żadnych innych punktów końcowych. Chociaż format Avro jest doskonały w przypadku przechowywania danych i komunikatów, jest wyzwaniem do korzystania z niego do wykonywania zapytań dotyczących danych. W porównaniu, format JSON lub CSV jest znacznie łatwiejszy do wykonywania zapytań dotyczących danych. IoT Hub teraz obsługuje zapisywanie danych do magazynu obiektów BLOB w formacie JSON oraz AVRO.
 
-Aby uzyskać więcej informacji, zobacz [przy użyciu usługi Azure Blob Storage jako punktu końcowego routingu](iot-hub-devguide-messages-d2c.md#azure-blob-storage).
+Aby uzyskać więcej informacji, zobacz [Korzystanie z usługi Azure Storage jako punktu końcowego routingu](iot-hub-devguide-messages-d2c.md#azure-storage).
 
-Adres formatów i nierelacyjnych danych big data musi i stawić czoła temu wyzwaniu, można użyć wielu wzorców danych big data dla transformacji i skalowania danych. Jednym z wzorców, "płacić za zapytania", Azure Data Lake Analytics, czyli fokus w tym artykule. Mimo że można łatwo wykonywać zapytania w usłudze Hadoop ani innych rozwiązań, Data Lake Analytics często lepiej jest odpowiedni dla tego podejścia "płacić za zapytania".
+Aby rozwiązać nierelacyjne potrzeby dużych ilości danych i formaty i przezwyciężyć to wyzwanie, można użyć wielu wzorców danych Big Data do przekształcania i skalowania danych. Jeden z wzorców "płatność za zapytanie" jest Azure Data Lake Analytics, który jest fokusem tego artykułu. Mimo że można łatwo wykonać zapytanie w usłudze Hadoop lub innych rozwiązaniach, Data Lake Analytics jest często lepiej dopasowane do podejścia "płatność za zapytanie".
 
-Brak "ekstraktor" dla systemu Avro w języku U-SQL. Aby uzyskać więcej informacji, zobacz [przykład Avro U-SQL](https://github.com/Azure/usql/tree/master/Examples/AvroExamples).
+Istnieje "Ekstraktor" dla Avro w języku U-SQL. Aby uzyskać więcej informacji, zobacz [przykład U-SQL Avro](https://github.com/Azure/usql/tree/master/Examples/AvroExamples).
 
-## <a name="query-and-export-avro-data-to-a-csv-file"></a>Zapytania i wyeksportować dane Avro do pliku CSV
+## <a name="query-and-export-avro-data-to-a-csv-file"></a>Wykonywanie zapytań i eksportowanie danych Avro do pliku CSV
 
-W tej sekcji, wykonywanie zapytań o dane Avro i wyeksportować je do pliku CSV w usłudze Azure Blob storage, mimo że można łatwo umieścić dane w innych magazynach danych lub repozytoriów.
+Ta sekcja zawiera kwerendy dotyczące Avro danych i eksportowania ich do pliku CSV w usłudze Azure Blob Storage, chociaż można łatwo umieścić dane w innych repozytoriach lub magazynach danych.
 
-1. Konfigurowanie usługi Azure IoT Hub do kierowania danych do punktu końcowego magazynu obiektów Blob platformy Azure przy użyciu właściwości w treści wiadomości, aby zaznaczyć wiadomości.
+1. Skonfiguruj IoT Hub platformy Azure, aby kierować dane do punktu końcowego usługi Azure Blob Storage za pomocą właściwości w treści komunikatu w celu wybrania komunikatów.
 
-   ![W sekcji "Niestandardowe punkty końcowe."](./media/iot-hub-query-avro-data/query-avro-data-1a.png)
+   ![Sekcja "niestandardowe punkty końcowe"](./media/iot-hub-query-avro-data/query-avro-data-1a.png)
 
    ![Reguły routingu](./media/iot-hub-query-avro-data/query-avro-data-1b.png)
 
-   Aby uzyskać więcej informacji na temat ustawień tras i niestandardowe punkty końcowe, zobacz [Routing komunikatów usługi IoT hub](iot-hub-create-through-portal.md#message-routing-for-an-iot-hub).
+   Aby uzyskać więcej informacji na temat ustawień tras i niestandardowych punktów końcowych, zobacz [Routing komunikatów dla Centrum IoT](iot-hub-create-through-portal.md#message-routing-for-an-iot-hub).
 
-2. Upewnij się, że urządzenie ma kodowania, typu zawartości i potrzebne dane w właściwości lub w treści wiadomości, zgodnie z odwołaniem w dokumentacji produktu. Podczas wyświetlania tych atrybutów w Device Explorer, jak pokazano poniżej, możesz sprawdzić, czy są one prawidłowo ustawione.
+2. Upewnij się, że urządzenie ma kodowanie, typ zawartości i dane niepotrzebne we właściwościach lub treści wiadomości, jak określono w dokumentacji produktu. Po wyświetleniu tych atrybutów w Device Explorer, jak pokazano poniżej, można sprawdzić, czy zostały one ustawione prawidłowo.
 
-   ![W okienku dane do Centrum zdarzeń](./media/iot-hub-query-avro-data/query-avro-data-2.png)
+   ![Okienko dane centrum zdarzeń](./media/iot-hub-query-avro-data/query-avro-data-2.png)
 
-3. Konfigurowanie wystąpienia usługi Azure Data Lake Store i wystąpienia usługi Data Lake Analytics. Usługa Azure IoT Hub nie jest kierowany do wystąpienia programu Data Lake Store, ale wymaga wystąpienia usługi Data Lake Analytics.
+3. Skonfiguruj wystąpienie Azure Data Lake Store i wystąpienie Data Lake Analytics. Usługa Azure IoT Hub nie kieruje do wystąpienia Data Lake Store, ale wystąpienie Data Lake Analytics wymaga jednego z nich.
 
-   ![Data Lake Store i Data Lake Analytics](./media/iot-hub-query-avro-data/query-avro-data-3.png)
+   ![Wystąpienia Data Lake Store i Data Lake Analytics](./media/iot-hub-query-avro-data/query-avro-data-3.png)
 
-4. W usługi Data Lake Analytics należy skonfigurować usługi Azure Blob storage jako magazynu dodatkowego, usługi Azure IoT Hub kieruje dane do tego samego magazynu obiektów Blob.
+4. W Data Lake Analytics Skonfiguruj magazyn obiektów blob platformy Azure jako dodatkowy magazyn, który jest tym samym magazynem obiektów blob, do którego usługa Azure IoT Hub kieruje dane.
 
-   ![W okienku "Źródła danych"](./media/iot-hub-query-avro-data/query-avro-data-4.png)
+   ![Okienko "źródła danych"](./media/iot-hub-query-avro-data/query-avro-data-4.png)
 
-5. Zgodnie z opisem w [przykład Avro U-SQL](https://github.com/Azure/usql/tree/master/Examples/AvroExamples), potrzebne są cztery pliki DLL. Przekaż te pliki do lokalizacji w wystąpieniu usługi Data Lake Store.
+5. Zgodnie z opisem w [przykładzie U-SQL Avro](https://github.com/Azure/usql/tree/master/Examples/AvroExamples)potrzebne są cztery pliki dll. Przekaż te pliki do lokalizacji w wystąpieniu Data Lake Store.
 
-   ![Cztery przekazywanych plików DLL](./media/iot-hub-query-avro-data/query-avro-data-5.png)
+   ![Cztery przekazane pliki DLL](./media/iot-hub-query-avro-data/query-avro-data-5.png)
 
 6. W programie Visual Studio Utwórz projekt U-SQL.
 
-   ! Utwórz project](./media/iot-hub-query-avro-data/query-avro-data-6.png) języka U-SQL
+   ! Tworzenie projektu U-SQL] (./Media/IoT-Hub-Query-Avro-Data/Query-Avro-Data-6.png)
 
-7. Wklej zawartość poniższego skryptu do nowo utworzony plik. Zmodyfikuj trzy wyróżnione sekcje: Twoje konto usługi Data Lake Analytics, skojarzone ścieżki plików DLL i poprawna ścieżka konta magazynu.
+7. Wklej zawartość następującego skryptu do nowo utworzonego pliku. Zmodyfikuj trzy wyróżnione sekcje: konto Data Lake Analytics, skojarzone ścieżki pliku DLL i poprawna ścieżka do konta magazynu.
 
    ![Trzy sekcje do zmodyfikowania](./media/iot-hub-query-avro-data/query-avro-data-7a.png)
 
-   Rzeczywiste skrypt U-SQL proste dane wyjściowe do pliku CSV:
+   Rzeczywisty skrypt U-SQL dla prostych danych wyjściowych do pliku CSV:
 
     ```sql
         DROP ASSEMBLY IF EXISTS [Avro];
@@ -129,15 +129,15 @@ W tej sekcji, wykonywanie zapytań o dane Avro i wyeksportować je do pliku CSV 
         OUTPUT @cnt TO @output_file USING Outputters.Text(); 
     ```
 
-    Zajęło to Data Lake Analytics Uruchom następujący skrypt, która została ograniczona do 10 jednostek analitycznych i przetworzyć pliki 177 pięć minut. Wynik jest wyświetlany w danych wyjściowych z pliku CSV, który jest wyświetlany na poniższej ilustracji:
+    Uruchomienie następującego skryptu zajęło Data Lake Analytics pięć minut, który został ograniczony do 10 jednostek analitycznych i przetworzył 177 plików. Wynik jest wyświetlany w danych wyjściowych pliku CSV, który jest wyświetlany na poniższym obrazie:
 
-    ![Wyniki dane wyjściowe do pliku CSV](./media/iot-hub-query-avro-data/query-avro-data-7b.png)
+    ![Wyniki wyjściowe do pliku CSV](./media/iot-hub-query-avro-data/query-avro-data-7b.png)
 
     ![Dane wyjściowe konwertowane do pliku CSV](./media/iot-hub-query-avro-data/query-avro-data-7c.png)
 
-    Aby analizować dane JSON, przejdź do kroku 8.
+    Aby przeanalizować kod JSON, przejdź do kroku 8.
 
-8. Większość IoT komunikaty są w formacie pliku JSON. Dodając następujące wiersze, można przeanalizować wiadomość do pliku JSON, która umożliwia dodawanie klauzulach WHERE i tylko potrzebne dane wyjściowe.
+8. Większość wiadomości IoT jest w formacie pliku JSON. Dodając następujące wiersze, można przeanalizować komunikat do pliku JSON, który umożliwia dodanie klauzul WHERE i wyprowadza tylko potrzebne dane.
 
     ```sql
        @jsonify =
@@ -163,16 +163,16 @@ W tej sekcji, wykonywanie zapytań o dane Avro i wyeksportować je do pliku CSV 
         OUTPUT @cnt TO @output_file USING Outputters.Text();
     ```
 
-    Dane wyjściowe Wyświetla kolumnę dla każdego elementu w `SELECT` polecenia.
+    W danych wyjściowych zostanie wyświetlona kolumna dla każdego elementu w `SELECT` polecenie.
 
-    ![Pokazywanie kolumny dla każdego elementu danych wyjściowych](./media/iot-hub-query-avro-data/query-avro-data-8.png)
+    ![Dane wyjściowe pokazujące kolumnę dla każdego elementu](./media/iot-hub-query-avro-data/query-avro-data-8.png)
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
-W tym samouczku przedstawiono sposób wykonywania zapytań o dane Avro do efektywne kierowanie komunikatów z usługi Azure IoT Hub do usług platformy Azure.
+W tym samouczku przedstawiono sposób tworzenia zapytań dotyczących danych Avro w celu wydajnej trasy komunikatów z usługi Azure IoT Hub do usług platformy Azure.
 
-Aby uzyskać przykłady kompletne rozwiązania end-to-end, które używają usługi IoT Hub, zobacz [dokumentacja akceleratorów rozwiązań IoT Azure](/azure/iot-accelerators).
+Aby zapoznać się z przykładami kompletnych rozwiązań, które używają IoT Hub, zobacz [dokumentację akceleratorów rozwiązań usługi Azure IoT](/azure/iot-accelerators).
 
-Aby dowiedzieć się więcej na temat opracowywania rozwiązań usługi IoT Hub, zobacz [usługi IoT Hub — przewodnik dewelopera](iot-hub-devguide.md).
+Aby dowiedzieć się więcej na temat opracowywania rozwiązań za pomocą IoT Hub, zobacz [przewodnik dewelopera IoT Hub](iot-hub-devguide.md).
 
-Aby dowiedzieć się więcej na temat routingu komunikatów w usłudze IoT Hub, zobacz [wysyłania i odbierania komunikatów za pomocą usługi IoT Hub](iot-hub-devguide-messaging.md).
+Aby dowiedzieć się więcej na temat routingu wiadomości w IoT Hub, zobacz [wysyłanie i odbieranie komunikatów przy użyciu IoT Hub](iot-hub-devguide-messaging.md).

@@ -1,5 +1,5 @@
 ---
-title: Działanie elementu webhook w Azure Data Factory | Microsoft Docs
+title: Działanie elementu webhook w Azure Data Factory
 description: Działanie elementu webhook nie kontynuuje wykonywania potoku do momentu zweryfikowania dołączonego zestawu danych z określonymi kryteriami, które użytkownik określi.
 services: data-factory
 documentationcenter: ''
@@ -11,12 +11,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 03/25/2019
-ms.openlocfilehash: c11fb800dba06ab5566647489f020f727860a7ff
-ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
+ms.openlocfilehash: 3734472d9026d4e355c08b36d5ba58974288daac
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70142405"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73678222"
 ---
 # <a name="webhook-activity-in-azure-data-factory"></a>Działanie elementu webhook w Azure Data Factory
 Możesz użyć działania elementu webhook, aby kontrolować wykonywanie potoków za pomocą kodu niestandardowego. Korzystając z działania elementu webhook, klienci mogą wywołać punkt końcowy i przekazać adres URL wywołania zwrotnego. Uruchomienie potoku oczekuje na wywołanie wywołania zwrotnego przed przejściem do następnego działania.
@@ -53,18 +53,18 @@ Możesz użyć działania elementu webhook, aby kontrolować wykonywanie potokó
 
 
 
-Właściwość | Opis | Dozwolone wartości | Wymagane
+Właściwość | Opis | Dozwolone wartości | Wymagany
 -------- | ----------- | -------------- | --------
-name | Nazwa działania elementu webhook | String | Tak |
-type | Musi być ustawiona na **element webhook**. | String | Tak |
-— metoda | Metoda interfejsu API REST dla docelowego punktu końcowego. | Parametry. Obsługiwane typy: POUBOJOWEGO | Tak |
+name | Nazwa działania elementu webhook | Ciąg | Tak |
+type | Musi być ustawiona na **element webhook**. | Ciąg | Tak |
+method | Metoda interfejsu API REST dla docelowego punktu końcowego. | parametry. Obsługiwane typy: "POST" | Tak |
 url | Docelowy punkt końcowy i ścieżka | Ciąg (lub wyrażenie z typem ResultType ciągu). | Tak |
-nagłówka | Nagłówki wysyłane do żądania. Na przykład, aby ustawić język i typ dla żądania: "heads": {"Accept-Language": "en-us", "Content-Type": "Application/JSON"}. | Ciąg (lub wyrażenie z typem ResultType ciągu) | Tak, nagłówek Content-Type jest wymagany. "headers":{ "Content-Type":"application/json"} |
-treść | Reprezentuje ładunek, który jest wysyłany do punktu końcowego. | Treść przeniesiona z powrotem do identyfikatora URI wywołania zwrotnego powinna być prawidłowym kodem JSON. Zobacz schemat ładunku żądania w sekcji [schematu ładunku żądania](https://nam06.safelinks.protection.outlook.com/?url=https%3A%2F%2Fdocs.microsoft.com%2Fen-us%2Fazure%2Fdata-factory%2Fcontrol-flow-web-activity%23request-payload-schema&amp;data=02%7C01%7Cshlo%40microsoft.com%7Cde517eae4e7f4f2c408d08d6b167f6b1%7C72f988bf86f141af91ab2d7cd011db47%7C1%7C0%7C636891457414397501&amp;sdata=ljUZv5csQQux2TT3JtTU9ZU8e1uViRzuX5DSNYkL0uE%3D&amp;reserved=0) . | Tak |
+Nagłówka | Nagłówki wysyłane do żądania. Na przykład, aby ustawić język i typ dla żądania: "heads": {"Accept-Language": "en-us", "Content-Type": "Application/JSON"}. | Ciąg (lub wyrażenie z typem ResultType ciągu) | Tak, nagłówek Content-Type jest wymagany. "heads": {"Content-Type": "Application/JSON"} |
+jednostce | Reprezentuje ładunek, który jest wysyłany do punktu końcowego. | Treść przeniesiona z powrotem do identyfikatora URI wywołania zwrotnego powinna być prawidłowym kodem JSON. Zobacz schemat ładunku żądania w sekcji [schematu ładunku żądania](https://nam06.safelinks.protection.outlook.com/?url=https%3A%2F%2Fdocs.microsoft.com%2Fen-us%2Fazure%2Fdata-factory%2Fcontrol-flow-web-activity%23request-payload-schema&amp;data=02%7C01%7Cshlo%40microsoft.com%7Cde517eae4e7f4f2c408d08d6b167f6b1%7C72f988bf86f141af91ab2d7cd011db47%7C1%7C0%7C636891457414397501&amp;sdata=ljUZv5csQQux2TT3JtTU9ZU8e1uViRzuX5DSNYkL0uE%3D&amp;reserved=0) . | Tak |
 uwierzytelnianie | Metoda uwierzytelniania używana do wywoływania punktu końcowego. Obsługiwane typy to "podstawowa" lub "ClientCertificate". Aby uzyskać więcej informacji, zobacz sekcję [uwierzytelnianie](https://nam06.safelinks.protection.outlook.com/?url=https%3A%2F%2Fdocs.microsoft.com%2Fen-us%2Fazure%2Fdata-factory%2Fcontrol-flow-web-activity%23authentication&amp;data=02%7C01%7Cshlo%40microsoft.com%7Cde517eae4e7f4f2c408d08d6b167f6b1%7C72f988bf86f141af91ab2d7cd011db47%7C1%7C0%7C636891457414397501&amp;sdata=GdA1%2Fh2pAD%2BSyWJHSW%2BSKucqoAXux%2F4L5Jgndd3YziM%3D&amp;reserved=0) . Jeśli uwierzytelnianie nie jest wymagane, Wyklucz tę właściwość. | Ciąg (lub wyrażenie z typem ResultType ciągu) | Nie |
-limit czasu | Jak długo działanie będzie oczekiwać na wywołanie &#39;callBackUri.&#39; Jak długo działanie będzie oczekiwać na wywołanie elementu "callBackUri". Wartość domyślna to 10mins ("00:10:00"). Format to TimeSpan, np. hh: mm: SS | String | Nie |
+timeout | Jak długo działanie będzie oczekiwać na wywołanie &#39;callBackUri.&#39; Jak długo działanie będzie oczekiwać na wywołanie elementu "callBackUri". Wartość domyślna to 10mins ("00:10:00"). Format to TimeSpan, np. hh: mm: SS | Ciąg | Nie |
 
-## <a name="additional-notes"></a>Dodatkowe uwagi
+## <a name="additional-notes"></a>Uwagi dodatkowe
 
 Azure Data Factory przekaże dodatkową właściwość "callBackUri" w treści do punktu końcowego adresu URL i będzie oczekiwać, że ten identyfikator URI będzie wywoływany przed określoną wartością limitu czasu. Jeśli identyfikator URI nie zostanie wywołany, działanie zakończy się niepowodzeniem ze stanem "TimedOut".
 

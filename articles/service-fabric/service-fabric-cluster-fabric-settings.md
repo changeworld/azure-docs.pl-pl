@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 08/30/2019
 ms.author: atsenthi
-ms.openlocfilehash: d0d87b42232a19d6bcd3c225fb4a4f8f8b459350
-ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
+ms.openlocfilehash: cf070e91d6f15e80f51242722a59918d1bc70696
+ms.sourcegitcommit: b2fb32ae73b12cf2d180e6e4ffffa13a31aa4c6f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73177794"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73615552"
 ---
 # <a name="customize-service-fabric-cluster-settings"></a>Dostosuj ustawienia klastra Service Fabric
 W tym artykule opisano różne ustawienia sieci szkieletowej dla klastra Service Fabric, które można dostosować. W przypadku klastrów hostowanych na platformie Azure można dostosować ustawienia za pomocą [Azure Portal](https://portal.azure.com) lub szablonu Azure Resource Manager. Aby uzyskać więcej informacji, zobacz [uaktualnianie konfiguracji klastra platformy Azure](service-fabric-cluster-config-upgrade-azure.md). W przypadku klastrów autonomicznych można dostosować ustawienia, aktualizując plik *ClusterConfig. JSON* i wykonując uaktualnienie konfiguracji w klastrze. Aby uzyskać więcej informacji, zobacz [uaktualnianie konfiguracji klastra autonomicznego](service-fabric-cluster-config-upgrade-windows-server.md).
@@ -88,7 +88,7 @@ Poniżej znajduje się lista ustawień sieci szkieletowej, które można dostoso
 |MaxDataMigrationTimeout |Czas w sekundach, wartość domyślna to 600 |Dynamiczny|Określ wartość TimeSpan w sekundach. Maksymalny limit czasu operacji odzyskiwania migracji danych po przeprowadzeniu uaktualnienia sieci szkieletowej. |
 |MaxOperationRetryDelay |Czas w sekundach, wartość domyślna to 5|Dynamiczny| Określ wartość TimeSpan w sekundach. Maksymalne opóźnienie wewnętrznych ponownych prób w przypadku wystąpienia błędów. |
 |MaxOperationTimeout |Czas w sekundach, wartość domyślna to MaxValue |Dynamiczny| Określ wartość TimeSpan w sekundach. Maksymalny globalny limit czasu dla wewnętrznych operacji przetwarzania na serwerze Clustermanager. |
-|MaxTimeoutRetryBuffer | Czas w sekundach, wartość domyślna to 600 |Dynamiczny|Określ wartość TimeSpan w sekundach. Maksymalny limit czasu operacji podczas wewnętrznego ponawiania próby z powodu przekroczeń limitu czasu wynosi `<Original Time out> + <MaxTimeoutRetryBuffer>`. Dodatkowy limit czasu jest dodawany w przyrostach MinOperationTimeout. |
+|MaxTimeoutRetryBuffer | Czas w sekundach, wartość domyślna to 600 |Dynamiczny|Określ wartość TimeSpan w sekundach. Maksymalny limit czasu operacji podczas wewnętrznego ponawiania próby z powodu przekroczeń limitu czasu jest `<Original Time out> + <MaxTimeoutRetryBuffer>`. Dodatkowy limit czasu jest dodawany w przyrostach MinOperationTimeout. |
 |MinOperationTimeout | Czas w sekundach, wartość domyślna to 60 |Dynamiczny|Określ wartość TimeSpan w sekundach. Minimalny limit czasu globalnego operacji przetwarzania wewnętrznego w programie Clustermanager. |
 |MinReplicaSetSize |Int, wartość domyślna to 3 |Niedozwolone|MinReplicaSetSize dla Klastramanager. |
 |PlacementConstraints | ciąg, wartość domyślna to "" |Niedozwolone|PlacementConstraints dla Klastramanager. |
@@ -234,13 +234,12 @@ Poniżej znajduje się lista ustawień sieci szkieletowej, które można dostoso
 |QuorumLossWaitDuration |Czas w sekundach, wartość domyślna to MaxValue |Dynamiczny|Określ wartość TimeSpan w sekundach. Jest to maksymalny czas trwania obowiązywania partycji w stanie utraty kworum. Jeśli partycja nadal znajduje się w utracie kworum po tym czasie trwania; partycja jest odzyskiwana po utracie kworum, rozważając repliki w dół jako utracone. Należy pamiętać, że może to spowodować utratę danych. |
 |ReconfigurationTimeLimit|TimeSpan, wartość domyślna to common:: TimeSpan:: FromSeconds (300)|Dynamiczny|Określ wartość TimeSpan w sekundach. Limit czasu dla ponownej konfiguracji; po upływie którego zostanie zainicjowany Raport kondycji ostrzegawczej |
 |ReplicaRestartWaitDuration|TimeSpan, wartość domyślna to common:: TimeSpan:: FromSeconds (60.0 \* 30)|Niedozwolone|Określ wartość TimeSpan w sekundach. Jest to ReplicaRestartWaitDuration dla FMService |
+| SeedNodeQuorumAdditionalBufferNodes | int, wartość domyślna to 0 | Dynamiczny | Bufor węzłów inicjatora, które muszą być spełnione (wraz z kworum węzłów inicjatora) FM powinien zezwalać na przechodzenie między węzłami inicjatora (totalNumSeedNodes-(seedNodeQuorum + SeedNodeQuorumAdditionalBufferNodes)). |
 |StandByReplicaKeepDuration|TimeSpan, wartość domyślna to common:: TimeSpan:: FromSeconds (3600.0 \* 24 \* 7)|Niedozwolone|Określ wartość TimeSpan w sekundach. Jest to StandByReplicaKeepDuration dla FMService |
 |Wartość targetreplicasetsize|Int, wartość domyślna to 7|Niedozwolone|Jest to docelowa liczba replik FM, które będą obsługiwane przez Windows Fabric. Wyższa liczba powoduje wyższą niezawodność danych FM; z małą wadą wydajności. |
 |UserMaxStandByReplicaCount |int, wartość domyślna to 1 |Dynamiczny|Domyślna maksymalna liczba replik rezerwowych zachowywanych przez system dla usług użytkownika. |
 |UserReplicaRestartWaitDuration |Czas w sekundach, wartość domyślna to 60,0 \* 30 |Dynamiczny|Określ wartość TimeSpan w sekundach. Gdy trwała replika ulegnie awarii; Windows Fabric czeka na ten czas trwania repliki, aby utworzyć kopię zapasową przed utworzeniem nowych replik zamiennych (co wymagałoby kopii stanu). |
 |UserStandByReplicaKeepDuration |Czas w sekundach, wartość domyślna to 3600,0 \* 24 \* 7 |Dynamiczny|Określ wartość TimeSpan w sekundach. Gdy utrwalona replika wraca ze stanu Down; być może został już zastąpiony. Ten czasomierz określa, jak długo Radio będzie utrzymywać replikę rezerwową przed odpisaniem. |
-|WaitForInBuildReplicaSafetyCheckTimeout|TimeSpan, wartość domyślna to common:: TimeSpan:: FromSeconds (60 * 10)|Dynamiczny|Określ wartość TimeSpan w sekundach. Wpis konfiguracyjny dla opcjonalnego limitu czasu sprawdzania bezpieczeństwa WaitForInBuildReplica. Ta konfiguracja określa limit czasu sprawdzania bezpieczeństwa WaitForInBuildReplica dla aktywacji i uaktualnień węzłów. To sprawdzenie zabezpieczeń kończy się niepowodzeniem, jeśli którykolwiek z poniższych ma wartość PRAWDA:-tworzony jest podstawowy i rozmiar zestawu repliki docelowej ft > 1 — Jeśli bieżąca replika jest w kompilacji i jest utrwalona — jeśli jest to bieżąca podstawowa i Nowa replika jest skompilowana, to sprawdzanie zabezpieczeń zostanie pominięte PED, jeśli limit czasu wygaśnie, nawet jeśli jeden z poprzednich warunków nadal jest prawdziwy. |
-|WaitForReconfigurationSafetyCheckTimeout|TimeSpan, wartość domyślna to common:: TimeSpan:: FromSeconds (60.0 * 10)|Dynamiczny|Określ wartość TimeSpan w sekundach. Wpis konfiguracyjny dla opcjonalnego limitu czasu sprawdzania bezpieczeństwa WaitForReconfiguration. Ta konfiguracja definiuje limit czasu sprawdzania bezpieczeństwa WaitForReconfiguration dla aktywacji i uaktualnień węzłów. To sprawdzenie zabezpieczeń kończy się niepowodzeniem, jeśli sprawdzana replika jest częścią partycji, która jest w trakcie ponownej konfiguracji. Sprawdzanie bezpieczeństwa zostanie pominięte po upływie limitu czasu, nawet jeśli partycja nadal jest w ponownej konfiguracji.|
 
 ## <a name="faultanalysisservice"></a>FaultAnalysisService
 
@@ -340,6 +339,8 @@ Poniżej znajduje się lista ustawień sieci szkieletowej, które można dostoso
 |ActivationRetryBackoffInterval |Czas w sekundach, wartość domyślna to 5 |Dynamiczny|Wycofywania interwał dla każdej awarii aktywacji; W przypadku każdej awarii ciągłej aktywacji system ponawia próbę aktywacji do MaxActivationFailureCount. Interwał ponawiania prób przy każdej próbie to produkt o ciągłej awarii aktywacji oraz interwał wycofywania aktywacji. |
 |ActivationTimeout| TimeSpan, wartość domyślna to common:: TimeSpan:: FromSeconds (180)|Dynamiczny| Określ wartość TimeSpan w sekundach. Limit czasu aktywacji aplikacji; Dezaktywacja i uaktualnienie. |
 |ApplicationHostCloseTimeout| TimeSpan, wartość domyślna to common:: TimeSpan:: FromSeconds (120)|Dynamiczny| Określ wartość TimeSpan w sekundach. Po wykryciu wyjścia sieci szkieletowej w procesach samoaktywowanych; FabricRuntime zamyka wszystkie repliki w procesie hosta użytkownika (ApplicationHost). Jest to limit czasu dla operacji zamknięcia. |
+| CnsNetworkPluginCnmUrlPort | wstring, wartość domyślna to L "48080" | Statyczny | Port URL interfejsu API usługi Azure CNM |
+| CnsNetworkPluginCnsUrlPort | wstring, wartość domyślna to L "10090" | Statyczny | Port URL CNS platformy Azure |
 |ContainerServiceArguments|ciąg, wartość domyślna to "-H localhost: 2375-H npipe://"|Statyczny|Service Fabric (SF) zarządza demonem platformy Docker (z wyjątkiem komputerów klienckich z systemem Windows, takich jak Win10). Ta konfiguracja umożliwia użytkownikowi Określanie niestandardowych argumentów, które powinny być przekazane do demona platformy Docker podczas jej uruchamiania. W przypadku określenia argumentów niestandardowych Service Fabric nie przekazywać żadnego innego argumentu do aparatu platformy Docker, z wyjątkiem argumentu "--pidfile". W związku z tym użytkownicy nie powinni określać argumentu "--pidfile" jako części argumentów klienta. Ponadto argumenty niestandardowe powinny zapewnić, że demon Docker nasłuchuje w domyślnym potoku nazw w systemie Windows (lub w gnieździe domeny systemu UNIX w systemie Linux), aby Service Fabric mógł z nich komunikować się.|
 |ContainerServiceLogFileMaxSizeInKb|int, wartość domyślna to 32768|Statyczny|Maksymalny rozmiar pliku dziennika wygenerowanego przez kontenery platformy Docker.  Tylko system Windows.|
 |ContainerImageDownloadTimeout|int, liczba sekund, wartość domyślna to 1200 (20 minut)|Dynamiczny|Liczba sekund przed upływem limitu czasu pobierania obrazu.|
@@ -357,6 +358,7 @@ Poniżej znajduje się lista ustawień sieci szkieletowej, które można dostoso
 |DisableContainers|bool, wartość domyślna to FALSE|Statyczny|Konfiguracja do wyłączania kontenerów — używana zamiast DisableContainerServiceStartOnContainerActivatorOpen, która jest przestarzałą konfiguracją |
 |DisableDockerRequestRetry|bool, wartość domyślna to FALSE |Dynamiczny| Domyślnie SF komunikuje się z DD (Docker Dameon) o limicie czasu DockerRequestTimeout ' dla każdego wysłanego żądania HTTP. Jeśli DD nie odpowiada w tym okresie; SF ponownie wysyła żądanie, jeśli operacja najwyższego poziomu nadal ma pozostały czas.  Z kontenerem HyperV; DD czasami Poświęć więcej czasu na przełączenie kontenera lub jego dezaktywowanie. W takich przypadkach DD żądanie, które upłynął od perspektywa SF i SF ponawia operację. Czasami wydaje się, że zwiększa nacisk na DD. Ta konfiguracja pozwala wyłączyć tę ponowną próbę i poczekać na odpowiedź DD. |
 |DnsServerListTwoIps | bool, wartość domyślna to FALSE | Statyczny | Ta flaga dodaje dwa razy lokalny serwer DNS, aby pomóc w zmniejszeniu sporadycznych problemów. |
+| DoNotInjectLocalDnsServer | bool, wartość domyślna to FALSE | Statyczny | Zapobiega wprowadzaniu przez środowisko uruchomieniowe lokalnego adresu IP jako serwera DNS dla kontenerów. |
 |EnableActivateNoWindow| bool, wartość domyślna to FALSE|Dynamiczny| Aktywowany proces jest tworzony w tle bez żadnej konsoli. |
 |EnableContainerServiceDebugMode|bool, wartość domyślna to TRUE|Statyczny|Włącz/Wyłącz rejestrowanie kontenerów platformy Docker.  Tylko system Windows.|
 |EnableDockerHealthCheckIntegration|bool, wartość domyślna to TRUE|Statyczny|Włącza integrację zdarzeń platformy Docker HEALTHCHECK z raportem kondycji systemu Service Fabric |
@@ -646,17 +648,17 @@ Poniżej znajduje się lista ustawień sieci szkieletowej, które można dostoso
 |RunAsAccountType|ciąg, wartość domyślna to "" |Dynamiczny|Wskazuje typ konta RunAs. Jest to potrzebne w przypadku wszystkich prawidłowych wartości sekcji RunAs to "LocalUser/DomainUser/NetworkService/ManagedServiceAccount/LocalSystem". |
 |RunAsPassword|ciąg, wartość domyślna to "" |Dynamiczny|Wskazuje hasło do konta Uruchom jako. Ta wartość jest wymagana tylko dla typu konta "DomainUser". |
 
-## <a name="security"></a>Zabezpieczenia
+## <a name="security"></a>Bezpieczeństwo
 | **Konstruktora** | **Dozwolone wartości** |**Zasady uaktualniania**| **Wskazówki lub Krótki opis** |
 | --- | --- | --- | --- |
-|AADCertEndpointFormat|ciąg, wartość domyślna to ""|Statyczny|Format punktu końcowego certyfikatu usługi AAD, domyślny komercyjny dla platformy Azure, określony dla środowiska innego niż domyślne, takie jak Azure Government "https: \//login. microsoftonline. us/{0}/federationmetadata/2007-06/federationmetadata. xml" |
+|AADCertEndpointFormat|ciąg, wartość domyślna to ""|Statyczny|Format punktu końcowego certyfikatu usługi AAD, domyślny komercyjny dla platformy Azure, określony dla środowiska innego niż domyślne, takie jak Azure Government "https:\//login.microsoftonline.us/{0}/federationmetadata/2007-06/federationmetadata.xml" |
 |AADClientApplication|ciąg, wartość domyślna to ""|Statyczny|Nazwa lub identyfikator natywnej aplikacji klienckiej reprezentującej klientów sieci szkieletowej |
 |AADClusterApplication|ciąg, wartość domyślna to ""|Statyczny|Nazwa lub identyfikator aplikacji internetowego interfejsu API reprezentujący klaster |
-|AADLoginEndpoint|ciąg, wartość domyślna to ""|Statyczny|Punkt końcowy logowania usługi AAD, domyślny komercyjny dla platformy Azure określony dla środowiska innego niż domyślne, takie jak Azure Government "https: \//login. microsoftonline. us" |
+|AADLoginEndpoint|ciąg, wartość domyślna to ""|Statyczny|Punkt końcowy logowania usługi AAD, domyślna komercyjna platforma Azure określona dla środowiska innego niż domyślne, takie jak Azure Government "https:\//login.microsoftonline.us" |
 |AADTenantId|ciąg, wartość domyślna to ""|Statyczny|Identyfikator dzierżawy (GUID) |
 |AcceptExpiredPinnedClusterCertificate|bool, wartość domyślna to FALSE|Dynamiczny|Flaga oznaczająca, czy akceptować wygasłe certyfikaty klastrów zadeklarowane przez odcisk palca mają zastosowanie tylko do certyfikatów klastra; tak, aby zachować aktywność klastra. |
 |AdminClientCertThumbprints|ciąg, wartość domyślna to ""|Dynamiczny|Odciski palca certyfikatów używanych przez klientów w roli administratora. Jest to lista nazw rozdzielonych przecinkami. |
-|AADTokenEndpointFormat|ciąg, wartość domyślna to ""|Statyczny|Punkt końcowy tokenu usługi AAD, domyślny komercyjny dla platformy Azure określony dla środowiska innego niż domyślne, takie jak Azure Government "https: \//login. microsoftonline. us/{0}" |
+|AADTokenEndpointFormat|ciąg, wartość domyślna to ""|Statyczny|Punkt końcowy tokenu usługi AAD, domyślny komercyjny dla platformy Azure, określony dla środowiska innego niż domyślne, takie jak Azure Government "https:\//login.microsoftonline.us/{0}" |
 |AdminClientClaims|ciąg, wartość domyślna to ""|Dynamiczny|Wszystkie możliwe oświadczenia oczekiwane przez klientów administracyjnych; ten sam format co ClientClaims; Ta lista jest wewnętrznie dodawana do ClientClaims; nie trzeba również dodawać tych samych wpisów do ClientClaims. |
 |AdminClientIdentities|ciąg, wartość domyślna to ""|Dynamiczny|Tożsamości systemu Windows klientów sieci szkieletowej w roli administratora; służy do autoryzacji uprzywilejowanych operacji sieci szkieletowej. Jest to rozdzielana przecinkami lista; Każdy wpis jest nazwą konta domeny lub grupą. Dla wygody; konto, na którym jest uruchamiany plik Fabric. exe, ma automatycznie przypisaną rolę administratora. jest to grupa ServiceFabricAdministrators. |
 |AppRunAsAccountGroupX509Folder|ciąg, wartość domyślna to/Home/sfuser/sfusercerts |Statyczny|Folder, w którym znajdują się AppRunAsAccountGroup certyfikaty x509 i klucze prywatne |
@@ -677,6 +679,7 @@ Poniżej znajduje się lista ustawień sieci szkieletowej, które można dostoso
 |DisableFirewallRuleForDomainProfile| bool, wartość domyślna to TRUE |Statyczny| Wskazuje, czy reguła zapory nie powinna być włączona dla profilu domeny |
 |DisableFirewallRuleForPrivateProfile| bool, wartość domyślna to TRUE |Statyczny| Wskazuje, czy reguła zapory nie powinna być włączona dla profilu prywatnego | 
 |DisableFirewallRuleForPublicProfile| bool, wartość domyślna to TRUE | Statyczny|Wskazuje, czy reguła zapory nie powinna być włączona dla profilu publicznego |
+| EnforceLinuxMinTlsVersion | bool, wartość domyślna to FALSE | Dynamiczny | Jeśli wartość jest równa true; Obsługiwane są tylko protokoły TLS w wersji 1.2 +.  Jeśli wartość jest równa false; Obsługa wcześniejszych wersji protokołu TLS. Dotyczy tylko systemu Linux |
 |FabricHostSpn| ciąg, wartość domyślna to "" |Statyczny| Nazwa główna usługi elemencie fabrichost określono; gdy sieć szkieletowa działa jako pojedynczy użytkownik domeny (gMSA/konto użytkownika domeny) i elemencie fabrichost określono działa w ramach konta komputera. Jest to nazwa SPN odbiornika IPC dla elemencie fabrichost określono; Domyślnie powinno pozostać puste, ponieważ elemencie fabrichost określono jest uruchamiany w ramach konta komputera |
 |IgnoreCrlOfflineError|bool, wartość domyślna to FALSE|Dynamiczny|Czy ignorowanie błędów offline listy CRL, gdy po stronie serwera sprawdza przychodzące certyfikaty klienta |
 |IgnoreSvrCrlOfflineError|bool, wartość domyślna to TRUE|Dynamiczny|Czy ignorowanie błędów offline listy CRL, gdy po stronie klienta sprawdza przychodzące certyfikaty serwera; wartość domyślna to true. Ataki z odwołanymi certyfikatami serwera wymagają naruszenia systemu DNS; trudniejsze niż w przypadku odwołanych certyfikatów klienta. |
@@ -709,7 +712,7 @@ Poniżej znajduje się lista ustawień sieci szkieletowej, które można dostoso
 |Wolumin|ciąg, wartość domyślna to "Administrator"|Dynamiczny|Tworzy wolumin |
 |Operacja deactivatenode |ciąg, wartość domyślna to "Administrator" |Dynamiczny| Konfiguracja zabezpieczeń dla dezaktywowania węzła. |
 |DeactivateNodesBatch |ciąg, wartość domyślna to "Administrator" |Dynamiczny| Konfiguracja zabezpieczeń dla dezaktywowania wielu węzłów. |
-|Usuń |ciąg, wartość domyślna to "Administrator" |Dynamiczny| Konfiguracje zabezpieczeń dla operacji usuwania klienta magazynu obrazów. |
+|Usuwanie |ciąg, wartość domyślna to "Administrator" |Dynamiczny| Konfiguracje zabezpieczeń dla operacji usuwania klienta magazynu obrazów. |
 |Operacji deleteapplication |ciąg, wartość domyślna to "Administrator" |Dynamiczny| Konfiguracja zabezpieczeń do usunięcia aplikacji. |
 |DeleteComposeDeployment|ciąg, wartość domyślna to "Administrator"| Dynamiczny|Usuwa wdrożenie redagowania |
 |DeleteGatewayResource|ciąg, wartość domyślna to "Administrator"| Dynamiczny|Usuwa zasób bramy |
@@ -743,7 +746,7 @@ Poniżej znajduje się lista ustawień sieci szkieletowej, które można dostoso
 |InvokeContainerApi|ciąg, wartość domyślna to "Administrator"|Dynamiczny|Wywołaj interfejs API kontenera |
 |InvokeInfrastructureCommand |ciąg, wartość domyślna to "Administrator" |Dynamiczny| Konfiguracja zabezpieczeń dla poleceń zarządzania zadaniami infrastruktury. |
 |InvokeInfrastructureQuery |ciąg, wartość domyślna to "Administrator\|\|użytkownika" | Dynamiczny|Konfiguracja zabezpieczeń do wykonywania zapytań dotyczących zadań infrastruktury. |
-|Lista |ciąg, wartość domyślna to "Administrator\|\|użytkownika" | Dynamiczny|Konfiguracja zabezpieczeń dla operacji na liście plików klienta magazynu obrazów. |
+|List |ciąg, wartość domyślna to "Administrator\|\|użytkownika" | Dynamiczny|Konfiguracja zabezpieczeń dla operacji na liście plików klienta magazynu obrazów. |
 |MoveNextFabricUpgradeDomain |ciąg, wartość domyślna to "Administrator" |Dynamiczny| Konfiguracja zabezpieczeń służąca do wznawiania uaktualnień klastra z jawną domeną uaktualnienia. |
 |MoveNextUpgradeDomain |ciąg, wartość domyślna to "Administrator" |Dynamiczny| Konfiguracja zabezpieczeń służąca do wznawiania uaktualnień aplikacji z jawną domeną uaktualnienia. |
 |MoveReplicaControl |ciąg, wartość domyślna to "Administrator" | Dynamiczny|Przenieś replikę. |
@@ -793,7 +796,7 @@ Poniżej znajduje się lista ustawień sieci szkieletowej, które można dostoso
 |UpgradeApplication |ciąg, wartość domyślna to "Administrator" |Dynamiczny| Konfiguracja zabezpieczeń na potrzeby uruchamiania lub przerywania uaktualnień aplikacji. |
 |UpgradeComposeDeployment|ciąg, wartość domyślna to "Administrator"| Dynamiczny|Uaktualnia wdrożenie redagowania |
 |UpgradeFabric |ciąg, wartość domyślna to "Administrator" |Dynamiczny| Konfiguracja zabezpieczeń do uruchamiania uaktualnień klastra. |
-|Przekazywanie |ciąg, wartość domyślna to "Administrator" | Dynamiczny|Konfiguracja zabezpieczeń dla operacji przekazywania klienta magazynu obrazów. |
+|Upload |ciąg, wartość domyślna to "Administrator" | Dynamiczny|Konfiguracja zabezpieczeń dla operacji przekazywania klienta magazynu obrazów. |
 
 ## <a name="securityclientcertificateissuerstores"></a>Security/ClientCertificateIssuerStores
 
@@ -831,7 +834,7 @@ Poniżej znajduje się lista ustawień sieci szkieletowej, które można dostoso
 | --- | --- | --- | --- |
 |PropertyGroup|X509NameMap, wartość domyślna to None|Dynamiczny|Jest to lista par "name" i "value". Każdy "name" ma wspólną nazwę podmiotu lub DnsName certyfikaty x509 autoryzowane dla operacji na serwerze. Dla danej "name", "value" jest oddzielną listą odcisków palców certyfikatów dla przypinania wystawcy, jeśli nie jest pusty, bezpośredni wystawca certyfikatów serwera musi znajdować się na liście.|
 
-## <a name="setup"></a>Konfiguracja
+## <a name="setup"></a>Konfigurowanie
 
 | **Konstruktora** | **Dozwolone wartości** | **Zasady uaktualniania** | **Wskazówki lub Krótki opis** |
 | --- | --- | --- | --- |

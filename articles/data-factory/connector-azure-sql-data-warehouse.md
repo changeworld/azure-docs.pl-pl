@@ -1,5 +1,5 @@
 ---
-title: Kopiowanie danych do i z Azure SQL Data Warehouse przy użyciu Azure Data Factory | Microsoft Docs
+title: Kopiowanie danych do i z Azure SQL Data Warehouse przy użyciu Azure Data Factory
 description: Informacje o kopiowaniu danych z obsługiwanych magazynów źródłowych do Azure SQL Data Warehouse lub z SQL Data Warehouse do obsługiwanych magazynów ujścia przy użyciu Data Factory.
 services: data-factory
 documentationcenter: ''
@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 09/16/2019
 ms.author: jingwang
-ms.openlocfilehash: 5351f7f01bbe99b1e3ebc3c94a0805f0419cc1cf
-ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
+ms.openlocfilehash: b64bfd046a42a630e7913c45213053e84377a037
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72387910"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73681151"
 ---
 # <a name="copy-data-to-or-from-azure-sql-data-warehouse-by-using-azure-data-factory"></a>Kopiowanie danych do lub z Azure SQL Data Warehouse przy użyciu Azure Data Factory 
 > [!div class="op_single_selector" title1="Wybierz używaną wersję usługi Data Factory:"]
@@ -45,7 +45,7 @@ W tym Azure SQL Data Warehouse łącznik obsługuje następujące funkcje:
 > W przypadku kopiowania danych przy użyciu Integration Runtime Azure Data Factory należy skonfigurować [zaporę programu Azure SQL Server](https://msdn.microsoft.com/library/azure/ee621782.aspx#ConnectingFromAzure) , tak aby usługi platformy Azure mogły uzyskiwać dostęp do serwera.
 > W przypadku kopiowania danych przy użyciu własnego środowiska Integration Runtime Skonfiguruj zaporę programu Azure SQL Server tak, aby zezwalała na odpowiedni zakres adresów IP. Ten zakres obejmuje adres IP maszyny, który jest używany do nawiązywania połączenia z Azure SQL Database.
 
-## <a name="get-started"></a>Rozpocznij
+## <a name="get-started"></a>Rozpoczęcie pracy
 
 > [!TIP]
 > Aby uzyskać najlepszą wydajność, należy użyć bazy danych na potrzeby ładowania do Azure SQL Data Warehouse. Szczegółowe informacje znajdują się w sekcji [use Base, aby załadować dane do Azure SQL Data Warehouse](#use-polybase-to-load-data-into-azure-sql-data-warehouse) . Aby zapoznać się z przewodnikiem dotyczącym przypadku użycia, zobacz [ładowanie 1 TB do Azure SQL Data Warehouse na 15 minut z Azure Data Factory](load-azure-sql-data-warehouse.md).
@@ -58,7 +58,7 @@ Poniższe sekcje zawierają szczegółowe informacje o właściwościach, które
 
 Następujące właściwości są obsługiwane dla Azure SQL Data Warehouse połączonej usługi:
 
-| Właściwość            | Opis                                                  | Wymagane                                                     |
+| Właściwość            | Opis                                                  | Wymagany                                                     |
 | :------------------ | :----------------------------------------------------------- | :----------------------------------------------------------- |
 | type                | Właściwość Type musi być ustawiona na wartość **AzureSqlDW**.             | Tak                                                          |
 | Przekształcon    | Określ informacje, które są konieczne do nawiązania połączenia z wystąpieniem Azure SQL Data Warehouse dla właściwości **ConnectionString** . <br/>Oznacz to pole jako element SecureString, aby bezpiecznie przechowywać go w Data Factory. Klucz nazwy głównej usługi można również umieścić w Azure Key Vault i jeśli jest to uwierzytelnianie SQL, należy ściągnąć konfigurację `password` z parametrów połączenia. Zobacz przykład JSON poniżej tabeli i [Zapisz poświadczenia w Azure Key Vault](store-credentials-in-key-vault.md) artykule, aby uzyskać więcej szczegółów. | Tak                                                          |
@@ -231,11 +231,11 @@ Aby uzyskać pełną listę sekcji i właściwości dostępnych do definiowania 
 
 Aby skopiować dane z lub do Azure SQL Data Warehouse, obsługiwane są następujące właściwości:
 
-| Właściwość  | Opis                                                  | Wymagane                    |
+| Właściwość  | Opis                                                  | Wymagany                    |
 | :-------- | :----------------------------------------------------------- | :-------------------------- |
 | type      | Właściwość **Type** zestawu danych musi być ustawiona na wartość **AzureSqlDWTable**. | Tak                         |
 | schematy | Nazwa schematu. |Nie dla źródła, tak dla ujścia  |
-| Tabele | Nazwa tabeli/widoku. |Nie dla źródła, tak dla ujścia  |
+| tabele | Nazwa tabeli/widoku. |Nie dla źródła, tak dla ujścia  |
 | tableName | Nazwa tabeli/widoku ze schematem. Ta właściwość jest obsługiwana w celu zapewnienia zgodności z poprzednimi wersjami. W przypadku nowych obciążeń Użyj `schema` i `table`. | Nie dla źródła, tak dla ujścia |
 
 #### <a name="dataset-properties-example"></a>Przykład właściwości zestawu danych
@@ -267,7 +267,7 @@ Aby uzyskać pełną listę sekcji i właściwości dostępnych do definiowania 
 
 Aby skopiować dane z Azure SQL Data Warehouse, ustaw właściwość **Type** w źródle działania Copy na **SqlDWSource**. W sekcji **Źródło** działania kopiowania są obsługiwane następujące właściwości:
 
-| Właściwość                     | Opis                                                  | Wymagane |
+| Właściwość                     | Opis                                                  | Wymagany |
 | :--------------------------- | :----------------------------------------------------------- | :------- |
 | type                         | Właściwość **Type** źródła działania Copy musi być ustawiona na wartość **SqlDWSource**. | Tak      |
 | sqlReaderQuery               | Użyj niestandardowego zapytania SQL, aby odczytać dane. Przykład: `select * from MyTable`. | Nie       |
@@ -277,7 +277,7 @@ Aby skopiować dane z Azure SQL Data Warehouse, ustaw właściwość **Type** w 
 ### <a name="points-to-note"></a>Punkty do uwagi
 
 - Jeśli **sqlReaderQuery** jest określony dla elementu **Sqlsource**, działanie Copy uruchamia to zapytanie względem źródła Azure SQL Data Warehouse, aby uzyskać dane. Lub można określić procedurę składowaną. Określ **sqlReaderStoredProcedureName** i **storedProcedureParameters** , jeśli procedura składowana pobiera parametry.
-- Jeśli nie określisz elementu **sqlReaderQuery** ani **sqlReaderStoredProcedureName**, kolumny zdefiniowane w sekcji **Structure** w formacie JSON zestawu danych są używane do konstruowania zapytania. `select column1, column2 from mytable` przebiega względem Azure SQL Data Warehouse. Jeśli definicja zestawu danych nie ma **struktury**, wszystkie kolumny są wybierane z tabeli.
+- Jeśli nie określisz elementu **sqlReaderQuery** ani **sqlReaderStoredProcedureName**, kolumny zdefiniowane w sekcji **Structure** w formacie JSON zestawu danych są używane do konstruowania zapytania. `select column1, column2 from mytable` działa względem Azure SQL Data Warehouse. Jeśli definicja zestawu danych nie ma **struktury**, wszystkie kolumny są wybierane z tabeli.
 
 #### <a name="sql-query-example"></a>Przykład zapytania SQL
 
@@ -370,7 +370,7 @@ GO
 
 Aby skopiować dane do Azure SQL Data Warehouse, ustaw typ ujścia w działaniu Copy na **SqlDWSink**. W sekcji **ujścia** działania kopiowania są obsługiwane następujące właściwości:
 
-| Właściwość          | Opis                                                  | Wymagane                                      |
+| Właściwość          | Opis                                                  | Wymagany                                      |
 | :---------------- | :----------------------------------------------------------- | :-------------------------------------------- |
 | type              | Właściwość **Type** ujścia działania Copy musi być ustawiona na wartość **SqlDWSink**. | Tak                                           |
 | allowPolyBase     | Wskazuje, czy należy użyć bazy, jeśli ma zastosowanie, a nie mechanizmu BULKINSERT. <br/><br/> Zalecamy załadowanie danych do SQL Data Warehouse przy użyciu bazy. Zobacz sekcję [use Base, aby załadować dane do Azure SQL Data Warehouse](#use-polybase-to-load-data-into-azure-sql-data-warehouse) w celu uzyskania ograniczeń i szczegółów.<br/><br/>Dozwolone wartości to **true** i **false** (wartość domyślna). | Nie                                            |
@@ -436,14 +436,14 @@ Jeśli wymagania nie są spełnione, Azure Data Factory sprawdza ustawienia i au
 2. **Format danych źródłowych** jest **Parquet**, **Orc**lub **rozdzielany tekstem**z następującymi konfiguracjami:
 
    1. Ścieżka folderu nie zawiera filtru symboli wieloznacznych.
-   2. Nazwa pliku jest pusta lub wskazuje na pojedynczy plik. W przypadku określenia wieloznacznej nazwy pliku w działaniu kopiowania może być `*` lub `*.*`.
+   2. Nazwa pliku jest pusta lub wskazuje na pojedynczy plik. W przypadku określenia wieloznacznej nazwy pliku w działaniu kopiowania można ją `*` lub `*.*`.
    3. `rowDelimiter` to **default**, **\n**, **\r\n**lub **\r**.
-   4. `nullValue` jest pozostawiony jako domyślny lub ustawiony jako **pusty ciąg** (""), a `treatEmptyAsNull` jest pozostawiony jako domyślny lub ma ustawioną wartość true.
+   4. `nullValue` jest pozostawiony jako domyślny lub ustawiony jako **ciąg pusty** (""), a `treatEmptyAsNull` jest pozostawiony jako domyślny lub ma ustawioną wartość true.
    5. `encodingName` jest pozostawiony jako domyślny lub ustawiony na **UTF-8**.
-   6. nie określono `quoteChar`, `escapeChar` i `skipLineCount`. Obsługa linii bazowej pomija wiersz nagłówka, który można skonfigurować jako `firstRowAsHeader` w podajniku ADF.
-   7. `compression` nie może mieć **kompresji**, **gzip**ani **korekt**.
+   6. nie określono `quoteChar`, `escapeChar`i `skipLineCount`. Obsługa linii bazowej pomija wiersz nagłówka, który można skonfigurować jako `firstRowAsHeader` w podajniku ADF.
+   7. `compression` nie może być **kompresja**, **gzip**ani **Wklęśnięcie**.
 
-3. Jeśli źródło jest folderem, `recursive` w działaniu kopiowania musi mieć ustawioną wartość true.
+3. Jeśli źródło jest folderem, `recursive` w działaniu kopiowania muszą mieć ustawioną wartość true.
 
 >[!NOTE]
 >Jeśli źródło jest folderem, należy zwrócić uwagę, że plik jest pobierany z folderu i wszystkich jego podfolderów, a nie pobiera danych z plików, dla których nazwa pliku zaczyna się od podkreślenia (_) lub kropki (.), zgodnie z opisem w [miejscu ARGUMENTU lokalizacji](https://docs.microsoft.com/sql/t-sql/statements/create-external-table-transact-sql?view=azure-sqldw-latest#arguments-2).
@@ -486,7 +486,7 @@ Jeśli wymagania nie są spełnione, Azure Data Factory sprawdza ustawienia i au
 
 Jeśli dane źródłowe nie spełniają kryteriów w poprzedniej sekcji, Włącz kopiowanie danych za pośrednictwem tymczasowego tymczasowego wystąpienia magazynu obiektów blob platformy Azure. Nie może to być Premium Storage platformy Azure. W takim przypadku Azure Data Factory automatycznie uruchamia przekształcenia danych w celu spełnienia wymagań dotyczących formatu danych Base. Następnie używa podstawy, aby załadować dane do SQL Data Warehouse. Na koniec czyści dane tymczasowe z magazynu obiektów BLOB. Aby uzyskać szczegółowe informacje o kopiowaniu danych za pośrednictwem wystąpienia tymczasowego magazynu obiektów blob platformy Azure, zobacz [przygotowane kopie](copy-activity-performance.md#staged-copy) .
 
-Aby użyć tej funkcji, Utwórz [połączoną usługę azure BLOB Storage](connector-azure-blob-storage.md#linked-service-properties) , która odwołuje się do konta usługi Azure Storage z tymczasowym magazynem obiektów BLOB. Następnie określ właściwości `enableStaging` i `stagingSettings` dla działania kopiowania, jak pokazano w poniższym kodzie.
+Aby użyć tej funkcji, Utwórz [połączoną usługę azure BLOB Storage](connector-azure-blob-storage.md#linked-service-properties) , która odwołuje się do konta usługi Azure Storage z tymczasowym magazynem obiektów BLOB. Następnie określ `enableStaging` i `stagingSettings` właściwości działania kopiowania, jak pokazano w poniższym kodzie.
 
 >[!IMPORTANT]
 >Jeśli przejściowy Magazyn Azure jest skonfigurowany z punktem końcowym usługi sieci wirtualnej, należy użyć uwierzytelniania tożsamości zarządzanej — Zobacz, aby korzystać z [punktów końcowych usługi sieci wirtualnej w usłudze Azure Storage](../sql-database/sql-database-vnet-service-endpoint-rule-overview.md#impact-of-using-vnet-service-endpoints-with-azure-storage). Informacje na temat konfiguracji wymaganych w programie Data Factory z poziomu [uwierzytelniania tożsamości zarządzanego przez usługę Azure Blob](connector-azure-blob-storage.md#managed-identity).
@@ -605,9 +605,9 @@ Podczas kopiowania danych z programu lub do Azure SQL Data Warehouse, następuj�
 | Binarny                                | Byte []                         |
 | bit                                   | Wartość logiczna                        |
 | delikatn                                  | String, Char []                 |
-| date                                  | Data i godzina                       |
-| Datę                              | Data i godzina                       |
-| datetime2                             | Data i godzina                       |
+| date                                  | DateTime                       |
+| Datę                              | DateTime                       |
+| datetime2                             | DateTime                       |
 | DateTimeOffset                        | DateTimeOffset                 |
 | Dokładności                               | Dokładności                        |
 | FILESTREAM — atrybut (varbinary (max)) | Byte []                         |
@@ -620,7 +620,7 @@ Podczas kopiowania danych z programu lub do Azure SQL Data Warehouse, następuj�
 | nvarchar                              | String, Char []                 |
 | czasie rzeczywistym                                  | Pojedyncze                         |
 | rowversion                            | Byte []                         |
-| smalldatetime                         | Data i godzina                       |
+| smalldatetime                         | DateTime                       |
 | smallint                              | Int16                          |
 | smallmoney                            | Dokładności                        |
 | time                                  | Czasu                       |

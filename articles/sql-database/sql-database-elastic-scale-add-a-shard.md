@@ -1,5 +1,5 @@
 ---
-title: Dodawanie fragmentu za pomocą narzędzi elastycznych baz danych | Microsoft Docs
+title: Dodawanie fragmentu za pomocą narzędzi elastycznych baz danych
 description: Jak używać interfejsów API skalowania elastycznego do dodawania nowych fragmentów do zestawu fragmentu.
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 01/03/2019
-ms.openlocfilehash: 679c1bea640644cd46c436ec04278558f610ceda
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 3243c8dfcfa83129f57bcd3ea7969fb4f8b07156
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68568527"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73690353"
 ---
 # <a name="adding-a-shard-using-elastic-database-tools"></a>Dodawanie fragmentu przy użyciu narzędzi Elastic Database
 
@@ -78,6 +78,6 @@ upd.Shard = shard2;
 sm.MarkMappingOnline(sm.UpdateMapping(sm.GetMappingForKey(25), upd));
 ```
 
-**Ważne**:  Tej techniki należy używać tylko wtedy, gdy masz pewność, że zakres zaktualizowanego mapowania jest pusty.  Powyższe metody nie sprawdzają danych dla przenoszonego przedziału, dlatego najlepiej dołączyć sprawdzenia w kodzie.  Jeśli istnieją wiersze w przenoszeniu przedziału, rzeczywista Dystrybucja danych nie będzie zgodna ze zaktualizowaną mapą fragmentu. Użyj [Narzędzia Split-Merge](sql-database-elastic-scale-overview-split-and-merge.md) do wykonania operacji zamiast tego w takich przypadkach.  
+**Ważne**: Użyj tej techniki tylko wtedy, gdy masz pewność, że zakres zaktualizowanego mapowania jest pusty.  Powyższe metody nie sprawdzają danych dla przenoszonego przedziału, dlatego najlepiej dołączyć sprawdzenia w kodzie.  Jeśli istnieją wiersze w przenoszeniu przedziału, rzeczywista Dystrybucja danych nie będzie zgodna ze zaktualizowaną mapą fragmentu. Użyj [Narzędzia Split-Merge](sql-database-elastic-scale-overview-split-and-merge.md) do wykonania operacji zamiast tego w takich przypadkach.  
 
 [!INCLUDE [elastic-scale-include](../../includes/elastic-scale-include.md)]

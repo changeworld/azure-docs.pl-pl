@@ -1,5 +1,5 @@
 ---
-title: Ochrona maszyn i aplikacji w Azure Security Center | Microsoft Docs
+title: Ochrona maszyn i aplikacji w Azure Security Center
 description: Ten dokument zawiera zalecenia dotyczące Security Center, które pomagają chronić maszyny wirtualne i komputery oraz aplikacje sieci Web i środowiska App Service.
 services: security-center
 documentationcenter: na
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/20/2019
 ms.author: memildin
-ms.openlocfilehash: 2317d0206e3fc4a342606d17c172ac42cbe82870
-ms.sourcegitcommit: 3f8017692169bd75483eefa96c225d45cd497f06
+ms.openlocfilehash: 803e64c9df1b52a33a1b50714f77b005032bf200
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73520689"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73686358"
 ---
 # <a name="protecting-your-machines-and-applications-in-azure-security-center"></a>Ochrona maszyn i aplikacji w Azure Security Center
 Azure Security Center analizuje stan zabezpieczeń zasobów platformy Azure, serwerów spoza platformy Azure i maszyn wirtualnych. Gdy Security Center identyfikuje potencjalne luki w zabezpieczeniach, tworzy zalecenia, które przeprowadzą Cię przez proces konfigurowania wymaganych kontrolek. Zalecenia dotyczą typów zasobów platformy Azure: maszyny wirtualne (maszyny wirtualne) i komputery, aplikacje, sieci, SQL i tożsamość i dostęp.
@@ -153,7 +153,7 @@ Istnieją trzy typy ikon reprezentowane na tej liście:
 
 2. Wybierz zalecenie, aby wyświetlić opis zalecenia i listę zasobów w złej kondycji, zdrowe zasoby i niezeskanowane zasoby.
 
-   - W kolumnie **przekazano oceny** jest to Lista przetestowanych ocen.  Ważność tych ocen jest zawsze zielona.
+   - W kolumnie **przekazano oceny** jest to Lista przetestowanych ocen. Ważność tych ocen jest zawsze zielona.
 
    - Wybierz przekazaną ocenę z listy, aby zapoznać się z opisem oceny, listą nieprawidłowych i zdrowych zasobów oraz listą niezeskanowanych zasobów. Istnieje karta dla zasobów o złej kondycji, ale ta lista jest zawsze pusta od czasu przeprowadzenia oceny.
 
@@ -198,7 +198,7 @@ Jeśli chcesz ustawić wszystkie istniejące zestawy skalowania w celu zainstalo
 |Zasoby obliczeniowe (Batch)|5|Włączanie dzienników diagnostycznych na kontach wsadowych|Włącz dzienniki i zachowaj je na rok. Pozwala to na ponowne utworzenie śladów aktywności w celach dochodzeniowych w przypadku wystąpienia zdarzenia związanego z bezpieczeństwem lub zabezpieczenia sieci. |
 |Zasoby obliczeniowe (centrum zdarzeń)|5|Dzienniki diagnostyczne w centrum zdarzeń powinny być włączone|Włącz dzienniki i zachowaj je na rok. Pozwala to na ponowne utworzenie śladów aktywności w celach dochodzeniowych w przypadku wystąpienia zdarzenia związanego z bezpieczeństwem lub zabezpieczenia sieci. |
 |Zasoby obliczeniowe (Aplikacje logiki)|5|Włączanie dzienników diagnostycznych w Logic Apps|Włącz dzienniki i zachowaj je na rok. Pozwala to na ponowne utworzenie śladów aktywności w celach dochodzeniowych w przypadku wystąpienia zdarzenia związanego z bezpieczeństwem lub zabezpieczenia sieci. |
-|Zasoby obliczeniowe (Usługa Service Fabric)|15|Ustaw właściwość ClusterProtectionLevel na EncryptAndSign w Service Fabric|Service Fabric zapewnia trzy poziomy ochrony (brak, podpisywanie i EncryptAndSign) w przypadku komunikacji między węzłami przy użyciu podstawowego certyfikatu klastra.  Ustaw poziom ochrony, aby upewnić się, że wszystkie komunikaty między węzłami są szyfrowane i podpisane cyfrowo. |
+|Zasoby obliczeniowe (Usługa Service Fabric)|15|Ustaw właściwość ClusterProtectionLevel na EncryptAndSign w Service Fabric|Service Fabric zapewnia trzy poziomy ochrony (brak, podpisywanie i EncryptAndSign) w przypadku komunikacji między węzłami przy użyciu podstawowego certyfikatu klastra. Ustaw poziom ochrony, aby upewnić się, że wszystkie komunikaty między węzłami są szyfrowane i podpisane cyfrowo. |
 |Zasoby obliczeniowe (Magistrala usług)|1|Usuń wszystkie reguły autoryzacji z wyjątkiem RootManageSharedAccessKey z przestrzeni nazw Service Bus |Klienci Service Bus nie powinni używać zasad dostępu na poziomie przestrzeni nazw, które zapewniają dostęp do wszystkich kolejek i tematów w przestrzeni nazw. Aby dostosować model zabezpieczeń najniższych uprawnień, należy utworzyć zasady dostępu na poziomie jednostki dla kolejek i tematów, aby zapewnić dostęp tylko do określonej jednostki.|
 |Zasoby obliczeniowe (centrum zdarzeń)|1|Wszystkie reguły autoryzacji z wyjątkiem RootManageSharedAccessKey powinny zostać usunięte z przestrzeni nazw centrum zdarzeń|Klienci centrum zdarzeń nie powinni używać zasad dostępu na poziomie przestrzeni nazw, które zapewniają dostęp do wszystkich kolejek i tematów w przestrzeni nazw. Aby dostosować model zabezpieczeń najniższych uprawnień, należy utworzyć zasady dostępu na poziomie jednostki dla kolejek i tematów, aby zapewnić dostęp tylko do określonej jednostki.|
 |Zasoby obliczeniowe (centrum zdarzeń)|5|Należy zdefiniować reguły autoryzacji w jednostce centrum zdarzeń|Przeprowadź inspekcję reguł autoryzacji w jednostce centrum zdarzeń, aby udzielić dostępu z najwyższymi uprawnieniami.|

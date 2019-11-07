@@ -1,5 +1,5 @@
 ---
-title: Jak skonfigurować Azure SQL Database | Microsoft Docs
+title: Jak skonfigurować Azure SQL Database
 description: Dowiedz się, jak konfigurować Azure SQL Database i zarządzać nimi.
 services: sql-database
 ms.service: sql-database
@@ -11,18 +11,18 @@ author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: sstein
 ms.date: 01/25/2019
-ms.openlocfilehash: 98c522f3d2718691e32b4e78180027b69f28289f
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: ccdeb883dc9cf2cba499e45e25ff4706bb120463
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68568013"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73689873"
 ---
 # <a name="how-to-use-azure-sql-database"></a>Jak używać Azure SQL Database
 
 W tej sekcji znajdują się różne przewodniki, skrypty i wyjaśnienia, które mogą pomóc w zarządzaniu i konfigurowaniu Azure SQL Database. Możesz również znaleźć konkretne przewodniki dotyczące wykonywania [pojedynczych baz danych](sql-database-howto-single-database.md) i [wystąpienia zarządzanego](sql-database-howto-managed-instance.md).
 
-## <a name="load-data"></a>Ładuj dane
+## <a name="load-data"></a>Ładowanie danych
 
 - [Kopiowanie pojedynczej bazy danych lub bazy danych w puli na platformie Azure](sql-database-copy.md)
 - [Importowanie bazy danych z BACPAC](sql-database-import.md)
@@ -48,7 +48,7 @@ W tej sekcji znajdują się różne przewodniki, skrypty i wyjaśnienia, które 
 - [Użyj dziennika diagnostyki Intelligent Insights](sql-database-intelligent-insights-use-diagnostics-log.md)
 - [Monitoruj przestrzeń OLTP w pamięci](sql-database-in-memory-oltp-monitoring.md)
 
-### <a name="extended-events"></a>Zdarzenia rozszerzone
+### <a name="extended-events"></a>Rozszerzone zdarzenia
 
 - [Zdarzenia rozszerzone](sql-database-xevent-db-diff-from-svr.md)
 - [Przechowuj zdarzenia rozszerzone w pliku zdarzeń](sql-database-xevent-code-event-file.md)
@@ -93,7 +93,7 @@ W tej sekcji znajdują się różne przewodniki, skrypty i wyjaśnienia, które 
 - [Indeksator wideo SaaS](saas-tenancy-video-index-wingtip-brk3120-20171011.md)
 - [Zabezpieczenia aplikacji SaaS](saas-tenancy-elastic-tools-multi-tenant-row-level-security.md)
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 - Dowiedz się więcej [na temat przewodników związanych z wystąpieniami zarządzanymi](sql-database-howto-managed-instance.md).
 - Dowiedz się więcej [na temat przewodników dla pojedynczych baz danych](sql-database-howto-single-database.md).

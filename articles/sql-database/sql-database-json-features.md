@@ -1,5 +1,5 @@
 ---
-title: Praca z danymi JSON w Azure SQL Database | Microsoft Docs
+title: Praca z danymi JSON w Azure SQL Database
 description: Azure SQL Database umożliwia analizowanie, wykonywanie zapytań i formatowanie danych w notacji JavaScript Object Notation (JSON).
 services: sql-database
 ms.service: sql-database
@@ -11,19 +11,19 @@ author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: ''
 ms.date: 01/15/2019
-ms.openlocfilehash: 3a09fba3f01eec6c712bad67ef10b8b5c55fb33e
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 2fe760e3792b5540b18946fd9dbcc5d571b50ee9
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68567847"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73689646"
 ---
 # <a name="getting-started-with-json-features-in-azure-sql-database"></a>Wprowadzenie do funkcji JSON w Azure SQL Database
 Azure SQL Database umożliwia analizowanie i wykonywanie zapytań o dane reprezentowane w formacie JavaScript Object Notation [(JSON)](https://www.json.org/) i eksportowanie danych relacyjnych jako tekstu JSON. W Azure SQL Database są dostępne następujące scenariusze JSON:
-- [Formatowanie danych relacyjnych w formacie JSON](#formatting-relational-data-in-json-format) przy użyciu `FOR JSON` klauzuli.
+- [Formatowanie danych relacyjnych w formacie JSON](#formatting-relational-data-in-json-format) przy użyciu klauzuli `FOR JSON`.
 - [Praca z danymi JSON](#working-with-json-data)
 - [Wykonywanie zapytań dotyczących danych JSON](#querying-json-data) przy użyciu funkcji skalarnych JSON.
-- [Przekształcanie kodu JSON do formatu](#transforming-json-into-tabular-format) tabelarycznego `OPENJSON` za pomocą funkcji.
+- [Przekształcanie kodu JSON w format tabelaryczny](#transforming-json-into-tabular-format) za pomocą funkcji `OPENJSON`.
 
 ## <a name="formatting-relational-data-in-json-format"></a>Formatowanie danych relacyjnych w formacie JSON
 Jeśli masz usługę sieci Web, która pobiera dane z warstwy bazy danych i zawiera odpowiedź w formacie JSON lub struktury lub biblioteki JavaScript po stronie klienta, które akceptują dane sformatowane jako JSON, możesz sformatować zawartość bazy danych jako plik JSON bezpośrednio w zapytaniu SQL. Nie trzeba już pisać kodu aplikacji, który formatuje wyniki z Azure SQL Database jako JSON, lub dołączać bibliotekę serializacji JSON, aby konwertować wyniki zapytania tabelarycznego, a następnie serializować obiekty do formatu JSON. Zamiast tego można użyć klauzuli FOR JSON, aby sformatować wyniki zapytania SQL jako dane JSON w Azure SQL Database i używać ich bezpośrednio w aplikacji.
@@ -71,7 +71,7 @@ Dane wyjściowe tego zapytania wyglądają następująco:
 
 W tym przykładzie został zwrócony pojedynczy obiekt JSON zamiast tablicy przez określenie opcji [WITHOUT_ARRAY_WRAPPER](https://msdn.microsoft.com/library/mt631354.aspx) . Możesz użyć tej opcji, Jeśli wiesz, że zwracasz pojedynczy obiekt w wyniku zapytania.
 
-Główną wartością klauzuli FOR JSON jest możliwość zwrócenia złożonych danych hierarchicznych z bazy danych sformatowane jako zagnieżdżone obiekty JSON lub tablice. Poniższy przykład pokazuje, jak uwzględnić wiersze z `Orders` tabeli, która należy `Customer` do `Orders`jako zagnieżdżoną tablicę:
+Główną wartością klauzuli FOR JSON jest możliwość zwrócenia złożonych danych hierarchicznych z bazy danych sformatowane jako zagnieżdżone obiekty JSON lub tablice. Poniższy przykład pokazuje, jak uwzględnić wiersze z tabeli `Orders` należącej do `Customer` jako zagnieżdżoną tablicę `Orders`:
 
 ```
 select CustomerName as Name, PhoneNumber as Phone, FaxNumber as Fax,
@@ -166,7 +166,7 @@ OPENJSON to funkcja Table-Value, która analizuje tekst JSON, lokalizuje tablic�
 
 W powyższym przykładzie możemy określić, gdzie należy zlokalizować tablicę JSON, która ma zostać otwarta (w $. Ścieżka Orders), jakie kolumny należy zwrócić jako wynik i gdzie można znaleźć wartości JSON, które będą zwracane jako komórki.
 
-Możemy przekształcić tablicę JSON w @orders zmiennej na zestaw wierszy, analizować ten zestaw wyników lub wstawiać wiersze do tabeli standardowej:
+Możemy przekształcić tablicę JSON w zmiennej @orders na zestaw wierszy, analizować ten zestaw wyników lub wstawiać wiersze do tabeli standardowej:
 
 ```
 CREATE PROCEDURE InsertOrders(@orders nvarchar(max))
@@ -193,5 +193,5 @@ Aby dowiedzieć się, jak zintegrować kod JSON z aplikacją, zapoznaj się z na
 * [Dokumentacja MSDN](https://msdn.microsoft.com/library/dn921897.aspx)
 * [Wideo Channel 9](https://channel9.msdn.com/Shows/Data-Exposed/SQL-Server-2016-and-JSON-Support)
 
-Aby dowiedzieć się więcej na temat różnych scenariuszy integracji kodu JSON z aplikacją, zobacz pokazy w tym [filmie wideo kanału 9](https://channel9.msdn.com/Events/DataDriven/SQLServer2016/JSON-as-a-bridge-betwen-NoSQL-and-relational-worlds) lub Znajdź scenariusz pasujący do przypadku użycia w wpisach w [blogu JSON](https://blogs.msdn.com/b/sqlserverstorageengine/archive/tags/json/).
+Aby dowiedzieć się więcej na temat różnych scenariuszy integracji kodu JSON z aplikacją, zobacz pokazy w tym [filmie wideo kanału 9](https://channel9.msdn.com/Events/DataDriven/SQLServer2016/JSON-as-a-bridge-betwen-NoSQL-and-relational-worlds) lub Znajdź scenariusz pasujący do przypadku użycia w [wpisach w blogu JSON](https://blogs.msdn.com/b/sqlserverstorageengine/archive/tags/json/).
 

@@ -1,5 +1,5 @@
 ---
-title: Azure SQL Database aplikacji do łączenia wystąpienia zarządzanego | Microsoft Docs
+title: Azure SQL Database aplikacji do łączenia wystąpienia zarządzanego
 description: W tym artykule omówiono sposób łączenia aplikacji z Azure SQL Database wystąpieniem zarządzanym.
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: srdan-bozovic-msft
 ms.author: srbozovi
 ms.reviewer: sstein, bonova, carlrab, vanto
 ms.date: 11/09/2018
-ms.openlocfilehash: 133110d015ac7a26f18f14f6ff957729a4f079b5
-ms.sourcegitcommit: 388c8f24434cc96c990f3819d2f38f46ee72c4d8
+ms.openlocfilehash: 5dc287ab58636b4921c14ae71f9a62ab36d9c596
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/27/2019
-ms.locfileid: "70060659"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73688241"
 ---
 # <a name="connect-your-application-to-azure-sql-database-managed-instance"></a>Połącz aplikację z Azure SQL Database wystąpieniem zarządzanym
 
@@ -137,13 +137,13 @@ Aby rozwiązać problemy z łącznością, zapoznaj się z następującymi temat
 
 Następujące minimalne wersje narzędzi i sterowników są zalecane, jeśli chcesz połączyć się z wystąpieniem zarządzanym:
 
-| Sterownik/narzędzie | Version |
+| Sterownik/narzędzie | Wersja |
 | --- | --- |
 |.NET Framework | 4.6.1 (lub .NET Core) |
 |Sterownik ODBC| v17 |
 |Sterownik PHP| 5.2.0 |
 |Sterownik JDBC| 6.4.0 |
-|Sterownik Node.js| 2.1.1 |
+|Sterownik Node.js| pkt |
 |Sterownik OLEDB| 18.0.2.0 |
 |SSMS| 18,0 lub [więcej](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms) |
 |[SMO](https://docs.microsoft.com/sql/relational-databases/server-management-objects-smo/sql-server-management-objects-smo-programming-guide) | [150](https://www.nuget.org/packages/Microsoft.SqlServer.SqlManagementObjects) lub więcej |

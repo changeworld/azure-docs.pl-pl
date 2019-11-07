@@ -1,6 +1,6 @@
 ---
-title: Optymalizowanie pamięci podręcznej Gen2 | Dokumentacja firmy Microsoft
-description: Dowiedz się, jak monitorować Gen2 pamięci podręcznej w witrynie Azure portal.
+title: Optymalizowanie pamięci podręcznej Gen2
+description: Dowiedz się, jak monitorować pamięć podręczną Gen2 przy użyciu Azure Portal.
 services: sql-data-warehouse
 author: kevinvngo
 manager: craigg
@@ -10,47 +10,47 @@ ms.topic: conceptual
 ms.date: 09/06/2018
 ms.author: kevin
 ms.reviewer: igorstan
-ms.openlocfilehash: 26791aecb2ca57b31358d3385d07230c73c84904
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: b33f7cedca4ef130eefa28c1dbaaedd82d11a9e4
+ms.sourcegitcommit: 359930a9387dd3d15d39abd97ad2b8cb69b8c18b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61474423"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73645764"
 ---
-# <a name="how-to-monitor-the-gen2-cache"></a>Jak monitorować Gen2 pamięci podręcznej
-Architektura magazynu Gen2 automatycznie tworzy warstwy segmentów najczęściej poszukiwanych magazynu kolumn w pamięci podręcznej znajdującej się na NVMe oparte na dyskach SSD, przeznaczona dla magazynów danych Gen2. Większa wydajność jest wykonywane zapytania pobierają segmenty, które są znajdującej się w pamięci podręcznej. W tym artykule opisano sposób monitorowania i rozwiązywanie problemów z wydajnością wolnych zapytań, ustalając, czy obciążenie optymalnie korzystanie z pamięci podręcznej Gen2.  
-## <a name="troubleshoot-using-the-azure-portal"></a>Rozwiązywanie problemów przy użyciu witryny Azure portal
-Aby wyświetlić metryki pamięci podręcznej Gen2 rozwiązywać problemy z wydajnością zapytań, można użyć usługi Azure Monitor. Najpierw przejdź do witryny Azure portal i kliknij Monitor:
+# <a name="how-to-monitor-the-gen2-cache"></a>Jak monitorować pamięć podręczną Gen2
+Architektura magazynu Gen2 automatycznie warstwuje najczęściej badane segmenty magazynu kolumn w pamięci podręcznej na podstawie dysków SSD opartych na interfejsie NVMe, które są przeznaczone dla Gen2 magazynów danych. Zwiększenie wydajności jest realizowane, gdy zapytania pobierają segmenty znajdujące się w pamięci podręcznej. W tym artykule opisano sposób monitorowania i rozwiązywania problemów z niską wydajnością zapytań przez określenie, czy obciążenie jest optymalnie używane w pamięci podręcznej Gen2.  
+## <a name="troubleshoot-using-the-azure-portal"></a>Rozwiązywanie problemów przy użyciu Azure Portal
+Za pomocą Azure Monitor można wyświetlać metryki pamięci podręcznej Gen2 w celu rozwiązywania problemów z wydajnością zapytań. Najpierw przejdź do Azure Portal i kliknij przycisk Monitoruj:
 
 ![Azure Monitor](./media/sql-data-warehouse-cache-portal/cache_0.png)
 
-Wybierz przycisk metryki, a następnie wypełnij **subskrypcji**, **zasobów** **grupy**, **typ zasobu**, i **zasobów Nazwa** magazynu danych.
+Wybierz przycisk metryki i wypełnij pola **subskrypcja**, Grupa **zasobów**, **Typ zasobu**i **nazwa zasobu** magazynu danych.
 
-Czy kluczowych metryk do rozwiązywania problemów z pamięci podręcznej Gen2 **procent liczby trafień pamięci podręcznej** i **pamięć podręczna używana wartość procentowa**. Konfigurowanie usługi Azure wykresu metryki, aby wyświetlić te dwie metryki.
+Kluczowe metryki dotyczące rozwiązywania problemów z pamięcią podręczną Gen2 są **procentami trafień pamięci podręcznej** i **procentowo używane**. Skonfiguruj wykres metryki platformy Azure, aby wyświetlić te dwie metryki.
 
 ![Metryki pamięci podręcznej](./media/sql-data-warehouse-cache-portal/cache_1.png)
 
 
-## <a name="cache-hit-and-used-percentage"></a>Pamięć podręczna trafień i używana wartość procentowa
-Tabela poniżej opisano scenariusze, w oparciu o wartości metryk pamięci podręcznej:
+## <a name="cache-hit-and-used-percentage"></a>Procent trafień i użycia pamięci podręcznej
+W poniższej macierzy opisano scenariusze oparte na wartościach metryk pamięci podręcznej:
 
-|                                | **Procent trafień wysokiej pamięci podręcznej** | **Procent trafień w pamięci podręcznej niski** |
+|                                | **Wysoki procent trafień w pamięci podręcznej** | **Procent trafień niskiego poziomu pamięci podręcznej** |
 | :----------------------------: | :---------------------------: | :--------------------------: |
-| **Wysoki procent pamięć podręczna w użyciu** |          Scenariusz 1           |          Scenariusz 2          |
-| **Niska pamięć podręczna używana wartość procentowa**  |          Scenariusz 3           |          Scenariusz 4          |
+| **Procent użycia dużej pamięci podręcznej** |          Scenariusz 1           |          Scenariusz 2          |
+| **Procent użycia niskiej pamięci podręcznej**  |          Scenariusz 3           |          Scenariusz 4          |
 
-**Scenariusz 1:** Używane są optymalnie pamięci podręcznej. [Rozwiązywanie problemów z](https://docs.microsoft.com/azure/sql-data-warehouse/sql-data-warehouse-manage-monitor) innych obszarów, które mogą spowalniać zapytania.
+**Scenariusz 1:** Optymalnie korzystasz z pamięci podręcznej. [Rozwiązywanie problemów z](https://docs.microsoft.com/azure/sql-data-warehouse/sql-data-warehouse-manage-monitor) innymi obszarami, które mogą spowalniać zapytania.
 
-**Scenariusz 2:** Bieżący zestaw danych roboczych nie mieści się w pamięci podręcznej, co powoduje, że niskiej wartości procentowej ze względu na fizyczne odczyty trafień w pamięci podręcznej. Rozważ skalowanie w górę poziomu wydajności i ponownie uruchom obciążenia, aby wypełnić pamięć podręczną.
+**Scenariusz 2:** Bieżący roboczy zestaw danych nie mieści się w pamięci podręcznej, co powoduje niską wartość procentową trafień pamięci podręcznej z powodu fizycznych operacji odczytu. Rozważ skalowanie w górę poziomu wydajności i ponowne uruchomienie obciążenia w celu wypełnienia pamięci podręcznej.
 
-**Scenariusz 3:** Istnieje prawdopodobieństwo, że zapytanie działa wolno, z przyczyn niezwiązanych ze sobą w pamięci podręcznej. [Rozwiązywanie problemów z](https://docs.microsoft.com/azure/sql-data-warehouse/sql-data-warehouse-manage-monitor) innych obszarów, które mogą spowalniać zapytania. Możesz też rozważyć [skalowanie w dół wystąpienia](https://docs.microsoft.com/azure/sql-data-warehouse/sql-data-warehouse-manage-monitor) Aby zmniejszyć rozmiar pamięci podręcznej w celu obniżenia kosztów. 
+**Scenariusz 3:** Prawdopodobnie zapytanie działa wolno ze względu na przyczyny niezwiązane z pamięcią podręczną. [Rozwiązywanie problemów z](https://docs.microsoft.com/azure/sql-data-warehouse/sql-data-warehouse-manage-monitor) innymi obszarami, które mogą spowalniać zapytania. Możesz również rozważyć [skalowanie wystąpienia](https://docs.microsoft.com/azure/sql-data-warehouse/sql-data-warehouse-manage-monitor) , aby zmniejszyć rozmiar pamięci podręcznej w celu oszczędności kosztów. 
 
-**Scenariusz 4:** Trzeba było zimnych pamięci podręcznej, która może być powód, dlaczego zapytania została powolne. Należy rozważyć ponowne uruchomienie zapytania jako zestaw danych roboczych powinny teraz być w buforowane. 
+**Scenariusz 4:** Masz zimną pamięć podręczną, która może być przyczyną powolnego działania zapytania. Rozważ ponowne uruchomienie zapytania, ponieważ roboczy zestaw danych powinien teraz znajdować się w pamięci podręcznej. 
 
-**Ważne: Procent trafień w pamięci podręcznej, lub wartość procentowa pamięć podręczna w użyciu nie jest aktualizacji po ponownym uruchomieniu obciążenie, zestaw roboczy może być już znajdującym się w pamięci. Uwaga tylko klastrowanego magazynu kolumn, które tabele są buforowane.**
+**Ważne: Jeśli procent trafień pamięci podręcznej lub procent użycia pamięci podręcznej nie jest aktualizowany po rozpoczęciu obciążenia, zestaw roboczy może już znajdować się w pamięci. Uwaga tylko klastrowane tabele magazynu kolumn są buforowane.**
 
-## <a name="next-steps"></a>Kolejne kroki
-Aby uzyskać więcej informacji na temat dostosowywania wydajności kwerendy ogólne, zobacz [monitorowania wykonywanych zapytań](https://docs.microsoft.com/azure/sql-data-warehouse/sql-data-warehouse-manage-monitor#monitor-query-execution).
+## <a name="next-steps"></a>Następne kroki
+Aby uzyskać więcej informacji na temat ogólnego dostrajania wydajności zapytań, zobacz [monitorowanie wykonywania zapytań](https://docs.microsoft.com/azure/sql-data-warehouse/sql-data-warehouse-manage-monitor#monitor-query-execution).
 
 
 <!--Image references-->

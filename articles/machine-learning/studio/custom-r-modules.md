@@ -1,6 +1,6 @@
 ---
 title: Definiowanie niestandardowych modułów R
-titleSuffix: Azure Machine Learning Studio (classic)
+titleSuffix: ML Studio (classic) Azure
 description: W tym temacie opisano sposób tworzenia i wdrażania niestandardowego programu R Studio (klasycznego). Wyjaśniono, jakie niestandardowe moduły R są i które pliki są używane do ich definiowania.
 services: machine-learning
 ms.service: machine-learning
@@ -10,12 +10,12 @@ author: xiaoharper
 ms.author: amlstudiodocs
 ms.custom: seodec18
 ms.date: 11/29/2017
-ms.openlocfilehash: 92a6e0fec07c5e90c1e64a8c4a9e7470cf9fd634
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: dba1b092d9a12f189ce7b4a207c362cad2bf8858
+ms.sourcegitcommit: 6c2c97445f5d44c5b5974a5beb51a8733b0c2be7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73493183"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73619496"
 ---
 # <a name="define-custom-r-modules-for-azure-machine-learning-studio-classic"></a>Definiowanie niestandardowych modułów R dla Azure Machine Learning Studio (klasyczny)
 

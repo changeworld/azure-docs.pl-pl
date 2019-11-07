@@ -1,6 +1,6 @@
 ---
 title: Zadania usługi Azure Batch
-titleSuffix: Azure Machine Learning Studio (classic)
+titleSuffix: ML Studio (classic) Azure
 description: Omówienie zadań usług Azure Batch Services dla Machine Learning Studio (klasycznych). Przetwarzanie puli wsadowej umożliwia tworzenie pul, na których można przesyłać zadania wsadowe.
 services: machine-learning
 ms.service: machine-learning
@@ -10,12 +10,12 @@ author: xiaoharper
 ms.author: amlstudiodocs
 ms.custom: seodec18, previous-title='Dedicated capacity for batch execution service jobs - Azure Machine Learning Studio (classic) | Microsoft Docs'
 ms.date: 04/19/2017
-ms.openlocfilehash: 1de7ad10a54c34595f69a543843097cee1377067
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: a0e829f61117df25f8643301a0acdadeafd7c267
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73493032"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73684802"
 ---
 # <a name="azure-batch-service-for-azure-machine-learning-studio-classic-jobs"></a>Usługa Azure Batch dla zadań Azure Machine Learning Studio (klasycznych)
 
@@ -43,7 +43,7 @@ Tworzysz pule, wywołując operację Utwórz pulę na adres URL usługi puli udo
 
 Można użyć dowolnej nowej usługi sieci Web opartej na Menedżer zasobów, ale należy pamiętać, że opłaty za zadania są naliczane zgodnie z planem rozliczeniowym skojarzonym z tą usługą. Możesz chcieć utworzyć usługę sieci Web i nowy plan rozliczeń przeznaczony do uruchamiania zadań puli usługi Batch.
 
-Aby uzyskać więcej informacji na temat tworzenia usług sieci Web, zobacz [wdrażanie usługi sieci web Azure Machine Learning](publish-a-machine-learning-web-service.md).
+Aby uzyskać więcej informacji na temat tworzenia usług sieci Web, zobacz [wdrażanie usługi sieci web Azure Machine Learning](deploy-a-machine-learning-web-service.md).
 
 Po utworzeniu puli należy przesłać zadanie BES przy użyciu adresu URL żądań wsadowych dla usługi sieci Web. Możesz przesłać go do puli lub do klasycznego przetwarzania wsadowego. Aby przesłać zadanie do przetwarzania puli wsadowej, należy dodać następujący parametr do treści żądania przesłania zadania:
 

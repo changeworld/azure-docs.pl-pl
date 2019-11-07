@@ -1,5 +1,5 @@
 ---
-title: Przechowywanie poświadczeń w Azure Key Vault | Microsoft Docs
+title: Przechowywanie poświadczeń w usłudze Azure Key Vault
 description: Dowiedz się, jak przechowywać poświadczenia dla magazynów danych używanych w magazynie kluczy platformy Azure, które Azure Data Factory mogą być automatycznie pobierane w czasie wykonywania.
 services: data-factory
 author: linda33wj
@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 03/13/2019
 ms.author: jingwang
-ms.openlocfilehash: 3f46c54edff2bc765e75742848f83d30e7aa7c09
-ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
+ms.openlocfilehash: 1e2458fa125ee4d223ef46001534fb7ae72b805e
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/15/2019
-ms.locfileid: "71003400"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73684011"
 ---
 # <a name="store-credential-in-azure-key-vault"></a>Przechowywanie poświadczeń w Azure Key Vault
 
@@ -41,14 +41,14 @@ Aby odwołać się do poświadczeń przechowywanych w Azure Key Vault, należy:
 
 Następujące właściwości są obsługiwane dla Azure Key Vault połączonej usługi:
 
-| Właściwość | Opis | Wymagane |
+| Właściwość | Opis | Wymagany |
 |:--- |:--- |:--- |
-| type | Właściwość Type musi mieć ustawioną wartość: **AzureKeyVault**. | Tak |
-| baseUrl | Określ adres URL Azure Key Vault. | Tak |
+| type | Właściwość Type musi mieć wartość: **AzureKeyVault**. | Tak |
+| BaseUrl | Określ adres URL Azure Key Vault. | Tak |
 
 **Korzystanie z interfejsu użytkownika tworzenia:**
 
-Kliknij kolejno pozycje **połączenia** -> **połączone usługi** -> **i nowe** -> Wyszukaj ciąg "Azure Key Vault":
+Kliknij kolejno pozycje **połączenia** -> **połączone usługi** ->  **+ nowe** -> Wyszukaj "Azure Key Vault":
 
 ![Wyszukaj AKV](media/store-credentials-in-key-vault/search-akv.png)
 
@@ -74,12 +74,12 @@ Wybierz Azure Key Vault, w którym są przechowywane Twoje poświadczenia. Może
 
 Następujące właściwości są obsługiwane podczas konfigurowania pola w połączonej usłudze, do którego odwołuje się klucz tajny magazynu kluczy:
 
-| Właściwość | Opis | Wymagane |
+| Właściwość | Opis | Wymagany |
 |:--- |:--- |:--- |
-| type | Właściwość Type pola musi być ustawiona na: **AzureKeyVaultSecret**. | Tak |
+| type | Właściwość Type pola musi być ustawiona na wartość: **AzureKeyVaultSecret**. | Tak |
 | secretName | Nazwa wpisu tajnego w Azure Key Vault. | Tak |
 | Wersjawpisutajnego | Wersja wpisu tajnego w Azure Key Vault.<br/>Jeśli nie zostanie określony, zawsze używa najnowszej wersji klucza tajnego.<br/>Jeśli ta wartość jest określona, zostanie ona dodana do danej wersji.| Nie |
-| store | Odnosi się do Azure Key Vault połączonej usługi, która jest używana do przechowywania poświadczeń. | Tak |
+| zachować | Odnosi się do Azure Key Vault połączonej usługi, która jest używana do przechowywania poświadczeń. | Tak |
 
 **Korzystanie z interfejsu użytkownika tworzenia:**
 
@@ -116,4 +116,4 @@ Wybierz **Azure Key Vault** dla pól tajnych podczas tworzenia połączenia z ma
 ```
 
 ## <a name="next-steps"></a>Następne kroki
-Aby uzyskać listę magazynów danych obsługiwanych jako źródła i ujścia działania kopiowania w usłudze Azure Data Factory, zobacz [obsługiwane magazyny danych](copy-activity-overview.md#supported-data-stores-and-formats).
+Listę magazynów danych obsługiwanych jako źródła i ujścia przez działanie kopiowania w Azure Data Factory można znaleźć w temacie [obsługiwane magazyny danych](copy-activity-overview.md#supported-data-stores-and-formats).

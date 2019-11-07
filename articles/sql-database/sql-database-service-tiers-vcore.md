@@ -1,5 +1,5 @@
 ---
-title: Azure SQL Database Service — Omówienie modelu rdzeń wirtualny | Microsoft Docs
+title: 'Azure SQL Database Service — Omówienie modelu rdzeń wirtualny '
 description: Model zakupów rdzeń wirtualny umożliwia niezależne skalowanie zasobów obliczeniowych i magazynu, dopasowanie wydajności lokalnej i optymalizację cen.
 services: sql-database
 ms.service: sql-database
@@ -9,12 +9,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: sashan, moslake, carlrab
 ms.date: 11/04/2019
-ms.openlocfilehash: 2bbdd565a861004014ca4161856bba83ec0be511
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 4795e709e1f43ebd952e37e36e2dc81a428dd539
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73496059"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73687252"
 ---
 # <a name="vcore-model-overview"></a>Rdzeń wirtualny model — Omówienie
 
@@ -36,7 +36,7 @@ Opcje warstwy usług w modelu rdzeń wirtualny obejmują Ogólnego przeznaczenia
 |Przepływność we/wy (przybliżona)|**Pojedyncza baza danych i Pula elastyczna**: 500 operacji we/wy na sekundę rdzeń wirtualny do 40000 maksymalnej liczby IOPS.<br/>**Wystąpienie zarządzane**: zależy od [rozmiaru pliku](../virtual-machines/windows/premium-storage-performance.md#premium-storage-disk-sizes).|5000 operacji we/wy na sekundę na 320 000 rdzeń wirtualny Maksymalna liczba IOPS|Skalowanie jest architekturą wielowarstwową z buforowaniem na wielu poziomach. Efektywne operacje we/wy będą zależeć od obciążenia.|
 |Dostępność|1 replika, brak replik w skali odczytu|3 repliki, 1 [replika w skali odczytu](sql-database-read-scale-out.md),<br/>Strefa — nadmiarowa wysoka dostępność (HA)|1 replika odczytu i zapisu oraz 0-4 [replik w skali odczytu](sql-database-read-scale-out.md)|
 |Tworzenie kopii zapasowych|[Magazyn Geograficznie nadmiarowy do odczytu (RA-GRS)](../storage/common/storage-designing-ha-apps-with-ragrs.md), 7-35 dni (domyślnie 7 dni)|[RA-GRS](../storage/common/storage-designing-ha-apps-with-ragrs.md), 7-35 dni (domyślnie 7 dni)|Tworzenie kopii zapasowych opartych na migawce w magazynie zdalnym platformy Azure. Przywraca używanie tych migawek do szybkiego odzyskiwania. Kopie zapasowe są natychmiast i nie wpływają na wydajność obliczeń we/wy. Przywracanie odbywa się szybko i nie jest operacją o rozmiarze danych (w minutach, a nie w godzinach lub dniach).|
-|W pamięci|Brak obsługi|Obsługiwane|Brak obsługi|
+|W pamięci|Nieobsługiwane|Obsługiwane|Nieobsługiwane|
 |||
 
 

@@ -1,17 +1,17 @@
 ---
-title: Transformację kolumn pochodnych w Azure Data Factory mapowaniu przepływu danych | Microsoft Docs
+title: Transformacja kolumn pochodnych w przepływie danych mapowania Azure Data Factory
 description: Dowiedz się, jak przekształcać dane w skali w Azure Data Factory przy użyciu transformacji kolumn pochodnych przepływu danych mapowania.
 author: kromerm
 ms.author: makromer
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 10/15/2019
-ms.openlocfilehash: 60451fa6152590ed0fde51be436c867f39906acf
-ms.sourcegitcommit: 12de9c927bc63868168056c39ccaa16d44cdc646
+ms.openlocfilehash: 387af25b87fdedff5d15ccb6a03819ad8b020e9a
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72514816"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73676884"
 ---
 # <a name="derived-column-transformation-in-mapping-data-flow"></a>Transformacja kolumn pochodnych w mapowaniu przepływu danych
 
@@ -46,7 +46,7 @@ Aby dodać dodatkowe kolumny pochodne, umieść kursor na istniejącej kolumnie 
 
 ### <a name="example"></a>Przykład
 
-Poniższy przykład jest kolumną pochodną o nazwie `CleanData`, która przyjmuje strumień przychodzący `MoviesYear` i tworzy dwie kolumny pochodne. Pierwsza kolumna pochodna zastępuje kolumnę `Rating` wartością klasyfikacji jako typ liczby całkowitej. Druga kolumna pochodna to wzorzec pasujący do każdej kolumny, której nazwa rozpoczyna się od "filmów". Dla każdej dopasowanej kolumny tworzy kolumnę `movie`, która jest równa wartości dopasowanej kolumny poprzedzonej prefiksem "movie_". 
+Poniższy przykład jest kolumną pochodną o nazwie `CleanData`, która przyjmuje strumień przychodzący `MoviesYear` i tworzy dwie kolumny pochodne. Pierwsza kolumna pochodna zastępuje kolumnę `Rating` przy użyciu wartości Rating jako typu liczby całkowitej. Druga kolumna pochodna to wzorzec pasujący do każdej kolumny, której nazwa rozpoczyna się od "filmów". Dla każdej dopasowanej kolumny tworzy kolumnę `movie`, która jest równa wartości dopasowanej kolumny poprzedzonej prefiksem "movie_". 
 
 W Data Factory środowisku użytkownika Ta transformacja wygląda jak na poniższym obrazie:
 

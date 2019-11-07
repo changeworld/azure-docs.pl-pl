@@ -1,5 +1,5 @@
 ---
-title: Ciągła integracja i dostarczanie w Azure Data Factory | Microsoft Docs
+title: Ciągła integracja i dostarczanie w Azure Data Factory
 description: Dowiedz się, jak korzystać z ciągłej integracji i dostarczania, aby przenosić Data Factory potoków z jednego środowiska (Programowanie, testowanie, produkcja) do innego.
 services: data-factory
 documentationcenter: ''
@@ -11,16 +11,16 @@ ms.reviewer: maghan
 manager: jroth
 ms.topic: conceptual
 ms.date: 08/14/2019
-ms.openlocfilehash: ff1d34852890a8d5005153ebdfa2fa0f9749d129
-ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
+ms.openlocfilehash: 7c5c1e91e97087bf28b03629659e5194f67c22b3
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/08/2019
-ms.locfileid: "72030621"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73680029"
 ---
 # <a name="continuous-integration-and-delivery-cicd-in-azure-data-factory"></a>Ciągła integracja i dostarczanie (CI/CD) w Azure Data Factory
 
-## <a name="overview"></a>Przegląd
+## <a name="overview"></a>Omówienie
 
 Ciągła integracja to zwyczajowa metoda testowania każdej zmiany wykonywanej w bazie kodu, jak najszybciej, jak to możliwe. Ciągłe dostarczanie odbywa się przy testowaniu, który jest wykonywany podczas ciągłej integracji i wypycha zmiany do systemu przejściowego lub produkcyjnego.
 
@@ -118,11 +118,11 @@ Poniżej znajduje się przewodnik konfigurowania wersji Azure Pipelines, która 
 
     d.  Na liście rozwijanej Akcja wybierz pozycję **Utwórz lub Zaktualizuj grupę zasobów**.
 
-    e.  Wybierz **...** w polu **szablon** . Przeglądaj w poszukiwaniu szablonu Azure Resource Manager Utwórz za pomocą kroku **Importuj szablon ARM** w temacie [Tworzenie szablonu usługi Resource Manager dla każdego środowiska](continuous-integration-deployment.md#create-a-resource-manager-template-for-each-environment). Wyszukaj ten plik w folderze `<FactoryName>` z gałęzi `adf_publish`.
+    e.  Wybierz **...** w polu **szablon** . Przeglądaj w poszukiwaniu szablonu Azure Resource Manager Utwórz za pomocą kroku **Importuj szablon ARM** w temacie [Tworzenie szablonu usługi Resource Manager dla każdego środowiska](continuous-integration-deployment.md#create-a-resource-manager-template-for-each-environment). Wyszukaj ten plik w folderze `<FactoryName>` rozgałęzienia `adf_publish`.
 
     f.  Wybierz **...** w **polu Parametry szablonu.** Aby wybrać plik parametrów. Wybierz odpowiedni plik w zależności od tego, czy utworzono kopię, czy używasz domyślnego pliku *ARMTemplateParametersForFactory. JSON*.
 
-    g.  Wybierz **...** obok pola **Przesłoń parametry szablonu** i wprowadź informacje dotyczące Data Factory docelowej. W przypadku poświadczeń, które pochodzą z magazynu kluczy, wprowadź nazwę klucza tajnego między podwójnymi cudzysłowami. Na przykład, jeśli nazwa wpisu tajnego to `cred1`, wprowadź `"$(cred1)"`for jego wartość.
+    g.  Wybierz **...** obok pola **Przesłoń parametry szablonu** i wprowadź informacje dotyczące Data Factory docelowej. W przypadku poświadczeń, które pochodzą z magazynu kluczy, wprowadź nazwę klucza tajnego między podwójnymi cudzysłowami. Na przykład, jeśli nazwa wpisu tajnego to `cred1`, wprowadź `"$(cred1)"`dla jego wartości.
 
     ![](media/continuous-integration-deployment/continuous-integration-image9.png)
 
@@ -176,7 +176,7 @@ Istnieją dwa sposoby obsługi wpisów tajnych:
 
 #### <a name="grant-permissions-to-the-azure-pipelines-agent"></a>Przyznawanie uprawnień agentowi Azure Pipelines
 
-Jeśli odpowiednie uprawnienia nie są dostępne, zadanie Azure Key Vault może zakończyć się niepowodzeniem z powodu błędu odmowy dostępu. Pobierz dzienniki dla wydania i Znajdź plik `.ps1` z poleceniem, aby przyznać uprawnienia agentowi Azure Pipelines. Można uruchomić polecenie bezpośrednio lub skopiować Identyfikator podmiotu zabezpieczeń z pliku i ręcznie dodać zasady dostępu w Azure Portal. Wymagane są **minimalne** uprawnienia.
+Jeśli odpowiednie uprawnienia nie są dostępne, zadanie Azure Key Vault może zakończyć się niepowodzeniem z powodu błędu odmowy dostępu. Pobierz dzienniki wydania i Znajdź plik `.ps1` za pomocą polecenia, aby przyznać uprawnienia agentowi Azure Pipelines. Można uruchomić polecenie bezpośrednio lub skopiować Identyfikator podmiotu zabezpieczeń z pliku i ręcznie dodać zasady dostępu w Azure Portal. Wymagane są **minimalne** uprawnienia.
 
 ### <a name="update-active-triggers"></a>Aktualizuj aktywne wyzwalacze
 
@@ -196,7 +196,7 @@ Wdrożenie może zakończyć się niepowodzeniem, jeśli spróbujesz zaktualizow
 
     ![](media/continuous-integration-deployment/continuous-integration-image11.png)
 
-Po wdrożeniu można wykonać podobne kroki (z funkcją `Start-AzDataFactoryV2Trigger`).
+Możesz wykonać podobne kroki (z funkcją `Start-AzDataFactoryV2Trigger`), aby ponownie uruchomić Wyzwalacze po wdrożeniu.
 
 > [!IMPORTANT]
 > W scenariuszach ciągłej integracji i wdrażania typ Integration Runtime w różnych środowiskach musi być taki sam. Na przykład jeśli w środowisku deweloperskim jest używane *Samodzielna* Integration Runtime (IR), ten sam IR musi być typu *samodzielnego* w innych środowiskach, takich jak test i produkcja. Podobnie, jeśli udostępniasz środowiska Integration Runtime na wielu etapach, musisz skonfigurować środowisko Integration Runtime jako *połączone samodzielnie hostowane* we wszystkich środowiskach, takich jak programowanie, testowanie i środowisko produkcyjne.
@@ -336,13 +336,13 @@ W tych warunkach, aby zastąpić domyślny szablon parametryzacja, Utwórz plik 
 Poniżej przedstawiono niektóre wskazówki, które należy stosować podczas tworzenia pliku parametrów niestandardowych. Plik składa się z sekcji dla każdego typu jednostki: wyzwalacza, potok, połączona usługa, zestaw danych, środowisko Integration Runtime itd.
 * Wprowadź ścieżkę właściwości pod odpowiednim typem jednostki.
 * Po ustawieniu nazwy właściwości na "\*" "wskazujesz, że chcesz Sparametryzuj wszystkie właściwości w tym obszarze (tylko do pierwszego poziomu, a nie cyklicznie). Możesz również podać wszelkie wyjątki.
-* Po ustawieniu wartości właściwości jako ciągu, należy wskazać, że właściwość ma być Sparametryzuj. Użyj formatu @ no__t-0.
-   *  `<action>` @ no__t-1can może być jednym z następujących znaków:
-      * `=` @ no__t-1means Zachowaj bieżącą wartość jako wartość domyślną dla parametru.
-      * `-` @ no__t-1means nie zachowuj domyślnej wartości parametru.
-      * `|` @ no__t-1Is specjalny przypadek dla wpisów tajnych z Azure Key Vault dla parametrów połączenia lub kluczy.
-   * `<name>` @ no__t-1Is nazwę parametru. Jeśli jest pusta, przyjmuje nazwę właściwości. Jeśli wartość zaczyna się od znaku `-`, nazwa zostanie skrócona. Na przykład `AzureStorage1_properties_typeProperties_connectionString` zostałaby skrócona do `AzureStorage1_connectionString`.
-   * `<stype>` @ no__t-1Is typ parametru. Jeśli @ no__t-0 @ no__t-1Is puste, domyślnym typem jest `string`. Obsługiwane wartości: `string`, `bool`, `number`, `object` i `securestring`.
+* Po ustawieniu wartości właściwości jako ciągu, należy wskazać, że właściwość ma być Sparametryzuj. Użyj formatu `<action>:<name>:<stype>`.
+   *  `<action>` może być jednym z następujących znaków:
+      * `=` oznacza, że bieżąca wartość jest zachowywana jako wartość domyślna parametru.
+      * `-` oznacza, że wartość domyślna parametru nie jest zachowywana.
+      * `|` to specjalny przypadek dla wpisów tajnych z Azure Key Vault dla parametrów połączenia lub kluczy.
+   * `<name>` to nazwa parametru. Jeśli jest pusta, przyjmuje nazwę właściwości. Jeśli wartość zaczyna się od znaku `-`, nazwa zostanie skrócona. Na przykład `AzureStorage1_properties_typeProperties_connectionString` zostałaby skrócona do `AzureStorage1_connectionString`.
+   *  `<stype>`jest typem parametru. Jeśli `<stype>` jest puste, domyślnym typem jest `string`. Obsługiwane wartości: `string`, `bool`, `number`, `object`i `securestring`.
 * Gdy określisz tablicę w pliku definicji, wskazujesz, że pasująca właściwość w szablonie jest tablicą. Data Factory wykonuje iterację wszystkich obiektów w tablicy przy użyciu definicji określonej w obiekcie Integration Runtime tablicy. Drugi obiekt, ciąg, będzie nazwą właściwości, która jest używana jako nazwa parametru dla każdej iteracji.
 * Nie istnieje możliwość zdefiniowania definicji specyficznej dla wystąpienia zasobu. Każda definicja ma zastosowanie do wszystkich zasobów tego typu.
 * Domyślnie wszystkie bezpieczne ciągi, takie jak Key Vault Secret i Secure String, takie jak parametry połączenia, klucze i tokeny, są sparametryzowane.
@@ -415,7 +415,7 @@ Poniżej przedstawiono wyjaśnienie sposobu konstruowania powyższego szablonu, 
 #### <a name="pipelines"></a>Potoki
     
 * Wszystkie właściwości w działaniach Path/typeProperties/waitTimeInSeconds są sparametryzowane. Wszystkie działania w potoku, które mają właściwość poziomu kodu o nazwie `waitTimeInSeconds` (na przykład działanie `Wait`) są sparametryzowane jako liczba z nazwą domyślną. Ale nie będzie on miał wartości domyślnej w szablonie Menedżer zasobów. Będzie to obowiązkowe wejście podczas wdrażania Menedżer zasobów.
-* Podobnie właściwość o nazwie `headers` (na przykład w działaniu `Web`) jest sparametryzowane z typem `object` (JObject). Ma wartość domyślną, która jest taka sama jak wartość w fabryki źródłowej.
+* Podobnie właściwość o nazwie `headers` (na przykład w działaniu `Web`) jest sparametryzowane przy użyciu typu `object` (JObject). Ma wartość domyślną, która jest taka sama jak wartość w fabryki źródłowej.
 
 #### <a name="integrationruntimes"></a>IntegrationRuntimes
 
@@ -423,18 +423,18 @@ Poniżej przedstawiono wyjaśnienie sposobu konstruowania powyższego szablonu, 
 
 #### <a name="triggers"></a>Wyzwalacze
 
-* W obszarze `typeProperties` dwie właściwości są sparametryzowane. Pierwszy z nich jest `maxConcurrency`, który jest określony jako ma wartość domyślną i jest typu @ no__t-1. Ma domyślną nazwę parametru `<entityName>_properties_typeProperties_maxConcurrency`.
+* W obszarze `typeProperties`dwie właściwości są sparametryzowane. Pierwszy z nich jest `maxConcurrency`, który jest określony jako ma wartość domyślną i jest typu`string`. Ma domyślną nazwę parametru `<entityName>_properties_typeProperties_maxConcurrency`.
 * Właściwość `recurrence` jest również sparametryzowana. W obszarze IT wszystkie właściwości na tym poziomie są określane jako ciągi, z wartościami domyślnymi i nazwami parametrów. Wyjątkiem jest właściwość `interval`, która jest sparametryzowane jako typ liczbowy i z nazwą parametru z sufiksem `<entityName>_properties_typeProperties_recurrence_triggerSuffix`. Podobnie Właściwość `freq` jest ciągiem i jest sparametryzowane jako ciąg. Jednak Właściwość `freq` jest sparametryzowane bez wartości domyślnej. Nazwa jest skracana i ma sufiks. Na przykład `<entityName>_freq`.
 
 #### <a name="linkedservices"></a>LinkedServices
 
-* Połączone usługi są unikatowe. Ponieważ połączone usługi i zestawy danych mają szeroką gamę typów, można zapewnić dostosowanie specyficzne dla określonego typu. W tym przykładzie wszystkie połączone usługi typu `AzureDataLakeStore`, zostanie zastosowany określony szablon i dla wszystkich innych (za pośrednictwem \*) zostanie zastosowany inny szablon.
-* Właściwość `connectionString` będzie sparametryzowana jako wartość `securestring`, ale nie będzie miała wartości domyślnej i ma skróconą nazwę parametru, która ma sufiks `connectionString`.
-* Właściwość `secretAccessKey` ma być `AzureKeyVaultSecret` (na przykład w połączonej usłudze `AmazonS3`). Jest on automatycznie sparametryzowany jako wpis tajny Azure Key Vault i pobierany ze skonfigurowanego magazynu kluczy. Możesz również Sparametryzuj sam magazyn kluczy.
+* Połączone usługi są unikatowe. Ponieważ połączone usługi i zestawy danych mają szeroką gamę typów, można zapewnić dostosowanie specyficzne dla określonego typu. W tym przykładzie zostaną zastosowane wszystkie połączone usługi typu `AzureDataLakeStore`, określony szablon i dla wszystkich innych (za pośrednictwem \*) zostanie zastosowany inny szablon.
+* Właściwość `connectionString` zostanie sparametryzowana jako wartość `securestring`, nie będzie mieć wartości domyślnej i ma skróconą nazwę parametru, która ma sufiks `connectionString`.
+* Właściwość `secretAccessKey` występuje `AzureKeyVaultSecret` (na przykład w usłudze połączonej `AmazonS3`). Jest on automatycznie sparametryzowany jako wpis tajny Azure Key Vault i pobierany ze skonfigurowanego magazynu kluczy. Możesz również Sparametryzuj sam magazyn kluczy.
 
 #### <a name="datasets"></a>Zestawy danych
 
-* Chociaż dostosowanie specyficzne dla typu jest dostępne dla zestawów danych, konfiguracja może być świadczona bez jawnego @no__t konfigurację poziomu -0. W powyższym przykładzie wszystkie właściwości zestawu danych w obszarze `typeProperties` są sparametryzowane.
+* Chociaż dostosowanie specyficzne dla typu jest dostępne dla zestawów danych, konfiguracja może być świadczona bez jawnego konfigurowania \*na poziomie. W powyższym przykładzie wszystkie właściwości zestawu danych w obszarze `typeProperties` są sparametryzowane.
 
 ### <a name="default-parameterization-template"></a>Domyślny szablon parametryzacja
 
@@ -545,7 +545,7 @@ Poniżej znajduje się bieżący domyślny szablon parametryzacja. Jeśli musisz
 }
 ```
 
-Poniżej przedstawiono przykład sposobu dodawania pojedynczej wartości do domyślnego szablonu parametryzacja. Chcemy dodać do pliku parametrów tylko istniejący, interaktywny identyfikator klastra datakostki dla połączonej usługi datakostki. Zwróć uwagę, że Poniższy plik jest taki sam jak plik powyżej, z wyjątkiem `existingClusterId` w polu właściwości `Microsoft.DataFactory/factories/linkedServices`.
+Poniżej przedstawiono przykład sposobu dodawania pojedynczej wartości do domyślnego szablonu parametryzacja. Chcemy dodać do pliku parametrów tylko istniejący, interaktywny identyfikator klastra datakostki dla połączonej usługi datakostki. Zwróć uwagę, że Poniższy plik jest taki sam jak plik powyżej, z wyjątkiem `existingClusterId` uwzględnionych w polu właściwości `Microsoft.DataFactory/factories/linkedServices`.
 
 ```json
 {
@@ -657,11 +657,11 @@ Poniżej przedstawiono przykład sposobu dodawania pojedynczej wartości do domy
 
 Jeśli skonfigurowano ciągłą integrację i wdrażanie (CI/CD) dla fabryk danych, może wystąpić Azure Resource Manager ograniczeń szablonów w miarę wzrostu fabryki. Przykładem limitu jest maksymalna liczba zasobów w szablonie Menedżer zasobów. Aby obsłużyć duże fabryki oraz generować pełny Menedżer zasobów szablon dla fabryki, Data Factory teraz generuje połączone szablony Menedżer zasobów. W przypadku tej funkcji cały ładunek fabryki jest podzielony na kilka plików, dzięki czemu nie można przekroczyć limitów.
 
-W przypadku skonfigurowania usługi git połączone szablony są generowane i zapisywane wraz z pełnymi szablonami Menedżer zasobów w gałęzi `adf_publish` w ramach nowego folderu o nazwie `linkedTemplates`.
+W przypadku skonfigurowania usługi git połączone szablony są generowane i zapisywane wraz z pełnymi szablonami Menedżer zasobów w gałęzi `adf_publish` pod nowym folderem o nazwie `linkedTemplates`.
 
 ![Folder połączonych Menedżer zasobów szablonów](media/continuous-integration-deployment/linked-resource-manager-templates.png)
 
-Połączone szablony Menedżer zasobów zwykle mają szablon główny i zestaw szablonów podrzędnych połączonych z serwerem głównym. Szablon nadrzędny ma nazwę `ArmTemplate_master.json`, a szablony podrzędne są nazwane przy użyciu wzorca `ArmTemplate_0.json`, `ArmTemplate_1.json` itd. Aby użyć połączonych szablonów zamiast szablonu pełnego Menedżer zasobów, zaktualizuj zadanie ciągłej integracji/ciągłego dostarczania, aby wskazywało `ArmTemplate_master.json` zamiast `ArmTemplateForFactory.json` (pełny szablon Menedżer zasobów). Menedżer zasobów wymaga również przekazania połączonych szablonów do konta magazynu, aby umożliwić im dostęp do nich przez platformę Azure podczas wdrażania. Aby uzyskać więcej informacji, zobacz [wdrażanie połączonych szablonów ARM z VSTS](https://blogs.msdn.microsoft.com/najib/2018/04/22/deploying-linked-arm-templates-with-vsts/).
+Połączone szablony Menedżer zasobów zwykle mają szablon główny i zestaw szablonów podrzędnych połączonych z serwerem głównym. Szablon nadrzędny ma nazwę `ArmTemplate_master.json`, a szablony podrzędne są nazwane przy użyciu wzorca `ArmTemplate_0.json`, `ArmTemplate_1.json`i tak dalej. Aby użyć połączonych szablonów zamiast szablonu pełnego Menedżer zasobów, zaktualizuj zadanie ciągłej integracji/ciągłego dostarczania, aby wskazywało `ArmTemplate_master.json` zamiast `ArmTemplateForFactory.json` (pełny szablon Menedżer zasobów). Menedżer zasobów wymaga również przekazania połączonych szablonów do konta magazynu, aby umożliwić im dostęp do nich przez platformę Azure podczas wdrażania. Aby uzyskać więcej informacji, zobacz [wdrażanie połączonych szablonów ARM z VSTS](https://blogs.msdn.microsoft.com/najib/2018/04/22/deploying-linked-arm-templates-with-vsts/).
 
 Pamiętaj, aby dodać skrypty Data Factory w potoku ciągłej integracji/ciągłego wdrażania przed i po wykonaniu zadania wdrożenia.
 

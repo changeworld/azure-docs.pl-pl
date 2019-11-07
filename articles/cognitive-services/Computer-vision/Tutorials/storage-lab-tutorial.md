@@ -1,5 +1,5 @@
 ---
-title: 'Samouczek: Generuj metadane dla obrazów platformy Azure'
+title: 'Samouczek: generowanie metadanych dla obrazów platformy Azure'
 titleSuffix: Azure Cognitive Services
 description: W tym samouczku dowiesz się, jak zintegrować usługę przetwarzania obrazów platformy Azure z aplikacją internetową, aby generować metadane dla obrazów.
 services: cognitive-services
@@ -10,16 +10,18 @@ ms.subservice: computer-vision
 ms.topic: tutorial
 ms.date: 09/04/2019
 ms.author: pafarley
-ms.openlocfilehash: 7caf4493db32201a8e83ffb3722c80c5e9b41a8f
-ms.sourcegitcommit: ca359c0c2dd7a0229f73ba11a690e3384d198f40
+ms.openlocfilehash: ac292f020bb64c7c70ce3ea5c7f66fe9e9ed1bb7
+ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71057736"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73604653"
 ---
-# <a name="tutorial-use-computer-vision-to-generate-image-metadata-in-azure-storage"></a>Samouczek: generowanie metadanych obrazów w usłudze Azure Storage przy użyciu przetwarzania obrazów
+# <a name="tutorial-use-computer-vision-to-generate-image-metadata-in-azure-storage"></a>Samouczek: generowanie metadanych obrazu w usłudze Azure Storage za pomocą przetwarzanie obrazów
 
-W tym samouczku dowiesz się, jak zintegrować usługę przetwarzania obrazów platformy Azure z aplikacją internetową, aby generować metadane dla przekazanych obrazów. Pełny przewodnik dotyczący aplikacji można znaleźć w [laboratorium usług Azure Storage i Cognitive Services](https://github.com/Microsoft/computerscience/blob/master/Labs/Azure%20Services/Azure%20Storage/Azure%20Storage%20and%20Cognitive%20Services%20(MVC).md) na platformie GitHub — ten samouczek dotyczy ćwiczenia 5 z tego laboratorium. Możesz utworzyć całą aplikację, wykonując każdy krok od początku do końca — jeśli jednak chcesz tylko dowiedzieć się, jak zintegrować przetwarzanie obrazów z istniejącą aplikacją internetową, przeczytaj ten artykuł.
+W tym samouczku dowiesz się, jak zintegrować usługę Azure przetwarzanie obrazów z aplikacją sieci Web w celu wygenerowania metadanych dla przekazanych obrazów. Jest to przydatne w przypadku scenariuszy [zarządzania zasobami cyfrowymi](../Home.md#computer-vision-for-digital-asset-management) , na przykład jeśli firma chce szybko wygenerować napisy opisowe lub słowa kluczowe do przeszukiwania dla wszystkich swoich obrazów.
+
+Pełny przewodnik dotyczący aplikacji można znaleźć w [laboratorium usług Azure Storage i Cognitive Services](https://github.com/Microsoft/computerscience/blob/master/Labs/Azure%20Services/Azure%20Storage/Azure%20Storage%20and%20Cognitive%20Services%20(MVC).md) na platformie GitHub — ten samouczek dotyczy ćwiczenia 5 z tego laboratorium. Możesz utworzyć całą aplikację, wykonując każdy krok od początku do końca — jeśli jednak chcesz tylko dowiedzieć się, jak zintegrować przetwarzanie obrazów z istniejącą aplikacją internetową, przeczytaj ten artykuł.
 
 Ten samouczek przedstawia sposób wykonania następujących czynności:
 

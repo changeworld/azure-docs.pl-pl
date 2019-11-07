@@ -1,5 +1,5 @@
 ---
-title: Przywracanie usuniętego Azure SQL Data Warehouse | Microsoft Docs
+title: Przywracanie usuniętego magazynu danych
 description: Przewodnik dotyczący przywracania usuniętego Azure SQL Data Warehouse.
 services: sql-data-warehouse
 author: anumjs
@@ -10,12 +10,13 @@ ms.subservice: manage
 ms.date: 08/29/2018
 ms.author: anjangsh
 ms.reviewer: igorstan
-ms.openlocfilehash: 376a50a79858aee34aa71d172ca5836646a6651d
-ms.sourcegitcommit: 198c3a585dd2d6f6809a1a25b9a732c0ad4a704f
+ms.custom: seo-lt-2019
+ms.openlocfilehash: cb09b4808bd6d59d2f70e85d204ab8451d501cee
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/23/2019
-ms.locfileid: "68426631"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73692611"
 ---
 # <a name="restore-a-deleted-azure-sql-data-warehouse"></a>Przywracanie usuniętego Azure SQL Data Warehouse
 

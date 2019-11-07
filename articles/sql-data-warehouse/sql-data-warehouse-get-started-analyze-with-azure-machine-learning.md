@@ -1,5 +1,5 @@
 ---
-title: Analizowanie danych przy użyciu usługi Azure Machine Learning | Microsoft Docs
+title: Analizowanie danych przy użyciu usługi Azure Machine Learning
 description: Używając usługi Azure Machine Learning, można utworzyć predykcyjny model uczenia maszynowego korzystający z danych przechowywanych w usłudze Azure SQL Data Warehouse.
 services: sql-data-warehouse
 author: mlee3gsd
@@ -10,12 +10,13 @@ ms.subservice: integration
 ms.date: 03/22/2019
 ms.author: martinle
 ms.reviewer: igorstan
-ms.openlocfilehash: cae2acf98f39030f4ff340d32f1911bb2b5763ae
-ms.sourcegitcommit: 0f54f1b067f588d50f787fbfac50854a3a64fff7
+ms.custom: seo-lt-2019
+ms.openlocfilehash: f91960eaac92047e76275e63b1feaf471de3bac3
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/12/2019
-ms.locfileid: "65860841"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73692788"
 ---
 # <a name="analyze-data-with-azure-machine-learning"></a>Analizowanie danych przy użyciu usługi Azure Machine Learning
 > [!div class="op_single_selector"]
@@ -38,12 +39,12 @@ Do wykonania kroków opisanych w tym samouczku potrzebne są:
 
 * Baza danych usługi SQL Data Warehouse. ze wstępnie załadowanymi danymi z bazy danych AdventureWorksDW. Aby dowiedzieć się, jak załadować dane przykładowe, zobacz artykuł [Tworzenie bazy danych w usłudze SQL Data Warehouse][Create a SQL Data Warehouse]. Jeśli masz już magazyn danych, ale bez przykładowych danych, możesz [ręcznie załadować przykładowe dane][load sample data manually].
 
-## <a name="1-get-the-data"></a>1. Pobieranie danych
+## <a name="1-get-the-data"></a>1. Pobierz dane
 Dane znajdują się w widoku dbo.vTargetMail w bazie danych AdventureWorksDW. Aby odczytać te dane:
 
 1. Zaloguj się do programu [Studio uczenia maszynowego Azure][Azure Machine Learning studio] i kliknij eksperymenty.
 2. Kliknij pozycję **+ Nowy** w lewym dolnym rogu ekranu, a następnie wybierz pozycję **pusty eksperyment**.
-3. Wprowadź nazwę eksperymentu: Marketing przeznaczony dla wybranych.
+3. Wprowadź nazwę swojego eksperymentu: Targeted Marketing (Marketing docelowy).
 4. Przeciągnij moduł **Importuj dane** w obszarze **dane wejściowe i wyjściowe** z okienka moduły do kanwy.
 5. Określ szczegóły bazy danych usługi SQL Data Warehouse w okienku Properties (Właściwości).
 6. Określ **zapytanie** do bazy danych, aby odczytać potrzebne dane.
@@ -74,7 +75,7 @@ Aby uruchomić eksperyment, kliknij pozycję **Run** (Uruchom) na kanwie ekspery
 Po pomyślnym wykonaniu eksperymentu kliknij port wyjściowy na dole modułu Reader (Czytnik) i wybierz opcję **Visualize** (Wizualizacja), aby wyświetlić zaimportowane danych.
 ![Wyświetlanie zaimportowanych danych][3]
 
-## <a name="2-clean-the-data"></a>2. Czyszczenie danych
+## <a name="2-clean-the-data"></a>2. Wyczyść dane
 Aby wyczyścić dane, usuń kilka kolumn, które nie są istotne dla modelu. W tym celu:
 
 1. Przeciągnij **pozycję Wybierz kolumny w zestawie danych** w obszarze **przekształcanie danych < manipulowanie** na kanwę. Połącz ten moduł z modułem **Importuj dane** .
@@ -83,8 +84,8 @@ Aby wyczyścić dane, usuń kilka kolumn, które nie są istotne dla modelu. W t
 3. Wyklucz dwie kolumny: CustomerAlternateKey i GeographyKey.
    ![Usuwanie zbędnych kolumn][5]
 
-## <a name="3-build-the-model"></a>3. Tworzenie modelu
-Zostaną podzielone dane 80-20: 80% do uczenia modelu uczenia maszynowego i 20% do testowania modelu. Użyjemy algorytmów „dwuklasowych” do rozwiązania tego problemu klasyfikacji binarnej.
+## <a name="3-build-the-model"></a>3. Kompiluj model
+Podzielimy dane w proporcji 80–20: 80% do trenowania tworzenia modelu uczenia maszynowego i 20% do testowania modelu. Użyjemy algorytmów „dwuklasowych” do rozwiązania tego problemu klasyfikacji binarnej.
 
 1. Przeciągnij moduł **Split** (Podział) na kanwę.
 2. W okienku właściwości wprowadź 0,8 dla części wierszy w pierwszym wyjściowym zestawie danych.
@@ -98,8 +99,8 @@ Zostaną podzielone dane 80-20: 80% do uczenia modelu uczenia maszynowego i 20% 
 ## <a name="4-score-the-model"></a>4. Ocena modelu
 Teraz przetestujemy działanie modelu na danych testowych. Porównamy wybrany algorytm z innym algorytmem, aby zobaczyć, który działa lepiej.
 
-1. Przeciągnij moduł **modelu oceny** na kanwę i połącz go, aby nauczyć **model** i **podzielić moduły danych** .
-   ![Ocena modelu][9]
+1. Przeciągnij moduł **modelu oceny** na kanwę i połącz go, aby **nauczyć model** i **podzielić moduły danych** .
+   ![oceny modelu][9]
 2. Przeciągnij moduł **Two-Class Bayes Point Machine** (Dwuklasowa maszyna punktu Bayesa) do kanwy eksperymentu. Porównamy działanie tego algorytmu z algorytmem Two-Class Boosted Decision Tree (Dwuklasowe wzmocnione drzewo decyzyjne).
 3. Skopiuj i wklej moduły Train Model (Model szkoleniowy) i Score Model (Model klasyfikacyjny) do kanwy.
 4. Przeciągnij moduł **Evaluate Model** (Ocena modelu) do kanwy, aby porównać oba algorytmy.

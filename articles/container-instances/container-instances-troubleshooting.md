@@ -9,12 +9,12 @@ ms.topic: article
 ms.date: 09/25/2019
 ms.author: danlep
 ms.custom: mvc
-ms.openlocfilehash: 28a391fded422b00508e006bfd613d6c98d82f17
-ms.sourcegitcommit: aef6040b1321881a7eb21348b4fd5cd6a5a1e8d8
+ms.openlocfilehash: 1fda05ffcac8952ee5a12c23383aad1a04d36b97
+ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/09/2019
-ms.locfileid: "72166470"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73601314"
 ---
 # <a name="troubleshoot-common-issues-in-azure-container-instances"></a>Rozwiązywanie typowych problemów w Azure Container Instances
 
@@ -37,7 +37,7 @@ Podczas definiowania specyfikacji kontenera niektóre parametry wymagają przest
 
 ## <a name="os-version-of-image-not-supported"></a>Wersja systemu operacyjnego obrazu nie jest obsługiwana
 
-W przypadku określenia obrazu, który Azure Container Instances nie obsługuje, zwracany jest błąd `OsVersionNotSupported`. Ten błąd jest podobny do poniższego, gdzie `{0}` jest nazwą obrazu, który próbujesz wdrożyć:
+Jeśli określisz obraz, który Azure Container Instances nie obsługuje, zostanie zwrócony błąd `OsVersionNotSupported`. Ten błąd jest podobny do poniższego, gdzie `{0}` jest nazwą obrazu, który próbujesz wdrożyć:
 
 ```json
 {
@@ -52,7 +52,7 @@ Ten błąd jest najczęściej spotykany podczas wdrażania obrazów systemu Wind
 
 ## <a name="unable-to-pull-image"></a>Nie można ściągnąć obrazu
 
-Jeśli Azure Container Instances początkowo nie można ściągnąć obrazu, ponawia próbę przez pewien czas. Jeśli operacja ściągnięcia obrazu nie powiedzie się, ACI ostatecznie kończy się niepowodzeniem wdrożenia i może zostać wyświetlony błąd `Failed to pull image`.
+Jeśli Azure Container Instances początkowo nie można ściągnąć obrazu, ponawia próbę przez pewien czas. Jeśli operacja ściągania obrazu nie powiedzie się, ACI ostatecznie kończy się niepowodzeniem wdrożenia i może zostać wyświetlony błąd `Failed to pull image`.
 
 Aby rozwiązać ten problem, Usuń wystąpienie kontenera i spróbuj ponownie wykonać wdrożenie. Upewnij się, że obraz istnieje w rejestrze i że wpisano poprawną nazwę obrazu.
 
@@ -104,7 +104,7 @@ az container create -g myResourceGroup --name mywindowsapp --os-type Windows --i
  --command-line "ping -t localhost"
 ```
 
-Interfejs API Container Instances i Azure Portal zawiera właściwość `restartCount`. Aby sprawdzić liczbę ponownych uruchomień dla kontenera, w interfejsie wiersza polecenia platformy Azure można użyć polecenie [AZ Container show][az-container-show] . W poniższych przykładowych danych wyjściowych (które zostały obcięte dla zwięzłości) można zobaczyć Właściwość `restartCount` na końcu danych wyjściowych.
+Interfejs Container Instances API i Azure Portal zawiera właściwość `restartCount`. Aby sprawdzić liczbę ponownych uruchomień dla kontenera, w interfejsie wiersza polecenia platformy Azure można użyć polecenie [AZ Container show][az-container-show] . W poniższych przykładowych danych wyjściowych (które zostały obcięte dla zwięzłości) można zobaczyć Właściwość `restartCount` na końcu danych wyjściowych.
 
 ```json
 ...
@@ -176,7 +176,7 @@ Innym sposobem zmniejszenia wpływu pobierania obrazu na czas uruchamiania konte
 
 ### <a name="cached-images"></a>Obrazy w pamięci podręcznej
 
-Azure Container Instances używa mechanizmu buforowania w celu skrócenia czasu uruchamiania kontenera dla obrazów opartych na typowych [obrazach podstawowych systemu Windows](container-instances-faq.md#what-windows-base-os-images-are-supported), w tym `nanoserver:1809`, `servercore:ltsc2019` i `servercore:1809`. Często używane obrazy systemu Linux, takie jak `ubuntu:1604` i `alpine:3.6`, są również buforowane. Aby uzyskać aktualną listę buforowanych obrazów i tagów, użyj interfejsu API [listy buforowanych obrazów][list-cached-images] .
+Azure Container Instances używa mechanizmu buforowania w celu skrócenia czasu uruchamiania kontenera dla obrazów opartych na typowych [obrazach podstawowych systemu Windows](container-instances-faq.md#what-windows-base-os-images-are-supported), w tym `nanoserver:1809`, `servercore:ltsc2019`i `servercore:1809`. Często używane obrazy systemu Linux, takie jak `ubuntu:1604` i `alpine:3.6`, są również buforowane. Aby uzyskać aktualną listę buforowanych obrazów i tagów, użyj interfejsu API [listy buforowanych obrazów][list-cached-images] .
 
 > [!NOTE]
 > Korzystanie z obrazów opartych na systemie Windows Server 2019 w Azure Container Instances jest w wersji zapoznawczej.
@@ -206,9 +206,9 @@ Azure Container Instances nie ujawnia bezpośredniego dostępu do podstawowej in
 
 Azure Container Instances nie obsługuje jeszcze mapowania portów, takiego jak zwykła konfiguracja platformy Docker. Jeśli okaże się, że adres IP grupy kontenerów nie jest dostępny, gdy sądzisz, że jest to konieczne, upewnij się, że skonfigurowano obraz kontenera do nasłuchiwania na tych samych portach, które zostały ujawnione w grupie kontenerów za pomocą właściwości `ports`.
 
-Jeśli chcesz potwierdzić, że Azure Container Instances może nasłuchiwać na porcie skonfigurowanym w obrazie kontenera, przetestuj wdrożenie obrazu `aci-helloworld`, który uwidacznia port. Uruchom również aplikację `aci-helloworld`, aby nasłuchiwać na porcie. `aci-helloworld` akceptuje opcjonalną zmienną środowiskową `PORT` w celu przesłonięcia domyślnego portu 80, na którym nasłuchuje. Na przykład, aby przetestować port 9000:
+Jeśli chcesz potwierdzić, że Azure Container Instances może nasłuchiwać na porcie skonfigurowanym w obrazie kontenera, przetestuj wdrożenie obrazu `aci-helloworld`, który uwidacznia port. Uruchom również aplikację `aci-helloworld`, aby nasłuchiwać na porcie. `aci-helloworld` akceptuje opcjonalną zmienną środowiskową `PORT`, aby zastąpić domyślny port 80, na którym nasłuchuje. Na przykład aby przetestować port 9000, należy ustawić [zmienną środowiskową](container-instances-environment-variables.md) podczas tworzenia grupy kontenerów:
 
-1. Skonfiguruj grupę kontenerów, aby udostępnić port 9000 i przekazać numer portu jako wartość zmiennej środowiskowej:
+1. Skonfiguruj grupę kontenerów, aby udostępnić port 9000 i przekazać numer portu jako wartość zmiennej środowiskowej. Przykład jest sformatowany dla powłoki bash. Jeśli wolisz innej powłoki, takiej jak PowerShell lub wiersz polecenia, musisz odpowiednio dostosować przypisanie zmiennej.
     ```azurecli
     az container create --resource-group myResourceGroup \
     --name mycontainer --image mcr.microsoft.com/azuredocs/aci-helloworld \
@@ -219,7 +219,7 @@ Jeśli chcesz potwierdzić, że Azure Container Instances może nasłuchiwać na
 1. Po pomyślnym zainicjowaniu kontenera przejdź do adresu IP i portu aplikacji kontenera w przeglądarce, na przykład: `192.0.2.0:9000`. 
 
     Powinna zostać wyświetlona wartość "Witamy w Azure Container Instances!" komunikat wyświetlany przez aplikację internetową.
-1. Po zakończeniu pracy z kontenerem usuń go za pomocą polecenia `az container delete`:
+1. Po zakończeniu pracy z kontenerem usuń go przy użyciu polecenia `az container delete`:
 
     ```azurecli
     az container delete --resource-group myResourceGroup --name mycontainer

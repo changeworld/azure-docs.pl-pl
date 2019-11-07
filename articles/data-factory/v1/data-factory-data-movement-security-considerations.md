@@ -1,5 +1,5 @@
 ---
-title: Zagadnienia dotyczące zabezpieczeń dotyczące przenoszenia danych w Azure Data Factory | Microsoft Docs
+title: Zagadnienia dotyczące zabezpieczeń dotyczące przenoszenia danych w Azure Data Factory
 description: Informacje na temat zabezpieczania przenoszenia danych w Azure Data Factory.
 services: data-factory
 documentationcenter: ''
@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: abnarain
 robots: noindex
-ms.openlocfilehash: b425db761375c705d3c810002234a937bac46d78
-ms.sourcegitcommit: 6cff17b02b65388ac90ef3757bf04c6d8ed3db03
+ms.openlocfilehash: 7f18505e02c5d65d21e93759eb5da480c20e2eb3
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68610169"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73682639"
 ---
 # <a name="azure-data-factory---security-considerations-for-data-movement"></a>Azure Data Factory — zagadnienia dotyczące zabezpieczeń związane z przenoszeniem danych
 
@@ -37,7 +37,7 @@ Przenoszenie danych przy użyciu Azure Data Factory jest **certyfikowane** dla:
 -   [HIPAA/HITECH](https://www.microsoft.com/en-us/trustcenter/Compliance/HIPAA)  
 -   [ISO/IEC 27001](https://www.microsoft.com/en-us/trustcenter/Compliance/ISO-IEC-27001)  
 -   [ISO/IEC 27018](https://www.microsoft.com/en-us/trustcenter/Compliance/ISO-IEC-27018) 
--   [CSA STAR](https://www.microsoft.com/en-us/trustcenter/Compliance/CSA-STAR-Certification)
+-   [GWIAZDA](https://www.microsoft.com/en-us/trustcenter/Compliance/CSA-STAR-Certification)
      
 Jeśli interesuje Cię zgodność z platformą Azure i sposób, w jaki platforma Azure zabezpiecza własną infrastrukturę, odwiedź [Centrum zaufania firmy Microsoft](https://microsoft.com/en-us/trustcenter/default.aspx). 
 
@@ -79,7 +79,7 @@ Firma Amazon S3 obsługuje szyfrowanie danych między klientem i serwerem. Aby u
 #### <a name="amazon-redshift"></a>Amazon Redshift
 Amazon RedShift obsługuje szyfrowanie klastra dla danych przechowywanych w spoczynku. Aby uzyskać więcej informacji, zobacz temat [szyfrowanie bazy danych Amazon RedShift](https://docs.aws.amazon.com/redshift/latest/mgmt/working-with-db-encryption.html). Obecnie Data Factory nie obsługuje usługi Amazon RedShift wewnątrz VPC. 
 
-#### <a name="salesforce"></a>Usługi SalesForce
+#### <a name="salesforce"></a>SalesForce
 Usługi Salesforce obsługują szyfrowanie platformy osłony, które umożliwiają szyfrowanie wszystkich plików, załączników, pól niestandardowych. Aby uzyskać więcej informacji, zobacz [Omówienie przepływu uwierzytelniania OAuth serwera sieci Web](https://developer.salesforce.com/docs/atlas.en-us.api_rest.meta/api_rest/intro_understanding_web_server_oauth_flow.htm).  
 
 ## <a name="hybrid-scenarios-using-data-management-gateway"></a>Scenariusze hybrydowe (przy użyciu bramy Zarządzanie danymi)
@@ -114,8 +114,8 @@ Obecnie Brama Zarządzanie danymi używa jednego **certyfikatu**. Ten certyfikat
   
 | Wersja bramy (podczas tworzenia) | Przechowywane poświadczenia | Szyfrowanie/zabezpieczenia poświadczeń | 
 | --------------------------------- | ------------------ | --------- |  
-| < = 2.3.xxxx.x | W chmurze | Zaszyfrowane przy użyciu certyfikatu (innego niż używany przez aplikację Menedżer poświadczeń) | 
-| > = 2.4.xxxx.x | Lokalnie | Zabezpieczone za pomocą funkcji DPAPI | 
+| < = 2.3. xxxx. x | W chmurze | Zaszyfrowane przy użyciu certyfikatu (innego niż używany przez aplikację Menedżer poświadczeń) | 
+| > = 2.4. xxxx. x | Lokalnie | Zabezpieczone za pomocą funkcji DPAPI | 
   
 
 ### <a name="encryption-in-transit"></a>Szyfrowanie podczas przesyłania
@@ -127,11 +127,11 @@ Usługa Virtual Network to logiczna reprezentacja sieci w chmurze. Możesz poł�
 
 Poniższa tabela zawiera podsumowanie zaleceń dotyczących konfiguracji sieci i bramy na podstawie różnych kombinacji lokalizacji źródłowej i docelowej do przenoszenia danych hybrydowych.
 
-| Source | Miejsce docelowe | Konfiguracja sieci | Konfiguracja bramy |
+| Element źródłowy | Element docelowy | Konfiguracja sieci | Konfiguracja bramy |
 | ------ | ----------- | --------------------- | ------------- | 
-| Lokalne | Maszyny wirtualne i usługi w chmurze wdrożone w sieciach wirtualnych | IPSec sieci VPN (punkt-lokacja lub lokacja-lokacja) | Bramę można zainstalować lokalnie lub na maszynie wirtualnej platformy Azure w sieci wirtualnej | 
-| Lokalne | Maszyny wirtualne i usługi w chmurze wdrożone w sieciach wirtualnych | ExpressRoute (prywatna Komunikacja równorzędna) | Bramę można zainstalować lokalnie lub na maszynie wirtualnej platformy Azure w sieci wirtualnej | 
-| Lokalne | Usługi oparte na platformie Azure, które mają publiczny punkt końcowy | ExpressRoute (publiczna Komunikacja równorzędna) | Brama musi być zainstalowana lokalnie | 
+| Lokalnie | Maszyny wirtualne i usługi w chmurze wdrożone w sieciach wirtualnych | IPSec sieci VPN (punkt-lokacja lub lokacja-lokacja) | Bramę można zainstalować lokalnie lub na maszynie wirtualnej platformy Azure w sieci wirtualnej | 
+| Lokalnie | Maszyny wirtualne i usługi w chmurze wdrożone w sieciach wirtualnych | ExpressRoute (prywatna Komunikacja równorzędna) | Bramę można zainstalować lokalnie lub na maszynie wirtualnej platformy Azure w sieci wirtualnej | 
+| Lokalnie | Usługi oparte na platformie Azure, które mają publiczny punkt końcowy | ExpressRoute (publiczna Komunikacja równorzędna) | Brama musi być zainstalowana lokalnie | 
 
 Na poniższych ilustracjach przedstawiono użycie bramy Zarządzanie danymi do przeniesienia danych między lokalną bazą danych i usługami platformy Azure przy użyciu usługi Express Route i sieci VPN IPSec (z Virtual Network):
 
@@ -139,14 +139,14 @@ Na poniższych ilustracjach przedstawiono użycie bramy Zarządzanie danymi do p
  
 ![Korzystanie z bramy Express Route z bramą](media/data-factory-data-movement-security-considerations/express-route-for-gateway.png) 
 
-**IPSec VPN:**
+**IPSec sieci VPN:**
 
 ![IPSec VPN z bramą](media/data-factory-data-movement-security-considerations/ipsec-vpn-for-gateway.png)
 
 ### <a name="firewall-configurations-and-whitelisting-ip-address-of-gateway"></a>Konfiguracje zapory i listy dozwolonych adres IP bramy
 
 #### <a name="firewall-requirements-for-on-premisesprivate-network"></a>Wymagania dotyczące zapory dla sieci lokalnej/prywatnej  
-W przedsiębiorstwie firmowa **Zapora** jest uruchamiana na centralnym routerze organizacji. Ponadto **Zapora systemu Windows** jest uruchamiana jako demon na komputerze lokalnym, na którym zainstalowano bramę. 
+W przedsiębiorstwie **firmowa Zapora** jest uruchamiana na centralnym routerze organizacji. Ponadto **Zapora systemu Windows** jest uruchamiana jako demon na komputerze lokalnym, na którym zainstalowano bramę. 
 
 W poniższej tabeli przedstawiono wymagania dotyczące **portów wychodzących** i domen dla **zapory firmowej**.
 
@@ -177,21 +177,21 @@ Następujące magazyny danych w chmurze wymagają listy dozwolonych adresu IP ma
 - [Azure SQL Database](../../sql-database/sql-database-firewall-configure.md) 
 - [Azure SQL Data Warehouse](../../sql-data-warehouse/sql-data-warehouse-get-started-provision.md)
 - [Azure Data Lake Store](../../data-lake-store/data-lake-store-secure-data.md#set-ip-address-range-for-data-access)
-- [Usługi Azure Cosmos DB](../../cosmos-db/firewall-support.md)
+- [Azure Cosmos DB](../../cosmos-db/firewall-support.md)
 - [Amazon Redshift](https://docs.aws.amazon.com/redshift/latest/gsg/rs-gsg-authorize-cluster-access.html) 
 
 ## <a name="frequently-asked-questions"></a>Często zadawane pytania
 
-**Zainteresowany** Czy brama może być współużytkowana przez różne fabryki danych?
-**Udzielić** Ta funkcja nie jest jeszcze obsługiwana. Aktywnie nad nią pracujemy.
+**Pytanie:** Czy brama może być współużytkowana przez różne fabryki danych?
+**Odpowiedź:** Ta funkcja nie jest jeszcze obsługiwana. Aktywnie nad nią pracujemy.
 
-**Zainteresowany** Jakie są wymagania dotyczące portów, które mają być wykonywane przez bramę?
-**Udzielić** Brama umożliwia nawiązywanie połączeń z Internetem przy użyciu protokołu HTTP. **Porty wychodzące 443 i 80** muszą zostać otwarte dla bramy w celu nawiązania połączenia. Otwórz **port Przychodzący 8050** tylko na poziomie komputera (nie na poziomie zapory firmowej) dla aplikacji Menedżer poświadczeń. Jeśli Azure SQL Database lub Azure SQL Data Warehouse jest używany jako źródło/miejsce docelowe, należy również otworzyć port **1433** . Aby uzyskać więcej informacji, zobacz sekcję [konfiguracje zapory i listy dozwolonych adresy IP](#firewall-configurations-and-whitelisting-ip-address-of gateway) . 
+**Pytanie:** Jakie są wymagania dotyczące portów, które mają być wykonywane przez bramę?
+**Odpowiedź:** Brama umożliwia nawiązywanie połączeń z Internetem przy użyciu protokołu HTTP. **Porty wychodzące 443 i 80** muszą zostać otwarte dla bramy w celu nawiązania połączenia. Otwórz **port Przychodzący 8050** tylko na poziomie komputera (nie na poziomie zapory firmowej) dla aplikacji Menedżer poświadczeń. Jeśli Azure SQL Database lub Azure SQL Data Warehouse jest używany jako źródło/miejsce docelowe, należy również otworzyć port **1433** . Aby uzyskać więcej informacji, zobacz sekcję [konfiguracje zapory i listy dozwolonych adresy IP](#firewall-configurations-and-whitelisting-ip-address-of gateway) . 
 
-**Zainteresowany** Jakie są wymagania dotyczące certyfikatów dla bramy?
-**Udzielić** Bieżąca Brama wymaga certyfikatu, który jest używany przez aplikację Menedżer poświadczeń do bezpiecznego ustawiania poświadczeń magazynu danych. Ten certyfikat jest certyfikatem z podpisem własnym utworzonym i skonfigurowanym przez Instalatora bramy. Zamiast tego możesz użyć własnego certyfikatu TLS/SSL. Aby uzyskać więcej informacji, zobacz sekcję kliknij jednokrotne [polecenie aplikacji Menedżer poświadczeń](#click-once-credentials-manager-app) . 
+**Pytanie:** Jakie są wymagania dotyczące certyfikatów dla bramy?
+**Odpowiedź:** Bieżąca Brama wymaga certyfikatu, który jest używany przez aplikację Menedżer poświadczeń do bezpiecznego ustawiania poświadczeń magazynu danych. Ten certyfikat jest certyfikatem z podpisem własnym utworzonym i skonfigurowanym przez Instalatora bramy. Zamiast tego możesz użyć własnego certyfikatu TLS/SSL. Aby uzyskać więcej informacji, zobacz sekcję kliknij jednokrotne [polecenie aplikacji Menedżer poświadczeń](#click-once-credentials-manager-app) . 
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 Aby uzyskać informacje o wydajności działania kopiowania, zobacz [Przewodnik dotyczący wydajności i dostrajania działania kopiowania](data-factory-copy-activity-performance.md).
 
  

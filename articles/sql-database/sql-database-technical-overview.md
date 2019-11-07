@@ -1,5 +1,5 @@
 ---
-title: Co to jest usługa Azure SQL Database? | Microsoft Docs
+title: Co to jest usługa Azure SQL Database?
 description: 'Zapoznaj się z wprowadzeniem do SQL Database: szczegóły techniczne i możliwości systemu zarządzania relacyjnymi bazami danych firmy Microsoft (RDBMS) w chmurze.'
 keywords: wprowadzenie do usługi sql, co to jest sql database
 services: sql-database
@@ -12,12 +12,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: carlrab
 ms.date: 04/08/2019
-ms.openlocfilehash: e5782ba016cf58335de17cdacabbcca95914f59a
-ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
+ms.openlocfilehash: d22408904ae21bc7512d4ebe8792666227893337
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71066279"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73687007"
 ---
 # <a name="what-is-the-azure-sql-database-service"></a>Co to jest usługa Azure SQL Database?
 
@@ -99,9 +99,9 @@ Azure SQL Database zapewnia zaawansowane funkcje monitorowania i rozwiązywania 
 
 Platforma Azure udostępnia wbudowane narzędzia do monitorowania i [generowania alertów](sql-database-insights-alerts-portal.md) [wydajności](sql-database-performance.md) połączone z ocenami wydajności, które umożliwiają monitorowanie stanu tysięcy baz danych. Za pomocą tych narzędzi możesz szybko ocenić wpływ skalowania w górę lub w dół na podstawie bieżących lub przewidywanych wymagań dotyczących wydajności. Ponadto usługa SQL Database może [tworzyć metryki i dzienniki diagnostyczne](sql-database-metrics-diag-logging.md), które ułatwiają monitorowanie. Usługę SQL Database można skonfigurować do przechowywania danych dotyczących użycia zasobów, pracowników i sesji oraz połączeń z jednym z następujących zasobów platformy Azure:
 
-- **Azure Storage**: Do archiwizowania ogromnych ilości danych telemetrycznych w niewielkiej cenie.
-- **Event Hubs platformy Azure**: W celu integracji danych telemetrycznych SQL Database z niestandardowym rozwiązaniem monitorowania lub potokami aktywnymi.
-- **Azure monitor dzienników**: Wbudowane rozwiązanie do monitorowania z raportowaniem, alertami i możliwościami ograniczającymi.
+- **Usługa Azure Storage**: w celu archiwizowania ogromnych ilości danych telemetrycznych za niewielką cenę.
+- **Event Hubs platformy Azure**: w celu integracji telemetrii SQL Database z niestandardowym rozwiązaniem monitorowania lub potokami aktywnymi.
+- **Dzienniki Azure monitor**: dla wbudowanego rozwiązania do monitorowania z raportowaniem, alertami i możliwościami ograniczającymi.
 
 ![Diagram architektury monitorowania platformy Azure](./media/sql-database-metrics-diag-logging/architecture.png)
 
@@ -152,8 +152,8 @@ Wielu naszych partnerów, którzy uruchamiają [aplikacje SaaS z wieloma dzierż
 
 [W SQL Database są dostępne](sql-database-automatic-tuning.md)dwa aspekty dostrajania automatycznego:
 
-- **Automatyczne zarządzanie indeksami**: Identyfikuje indeksy, które powinny zostać dodane w bazie danych, i indeksy, które powinny zostać usunięte.
-- **Automatyczna korekta planu**: Identyfikuje plany problematyczne i rozwiązuje problemy z wydajnością planu SQL.
+- **Automatyczne zarządzanie indeksami**: identyfikuje indeksy, które powinny zostać dodane w bazie danych, i indeksy, które powinny zostać z niej usunięte.
+- **Automatyczna korekta planu**: identyfikuje plany problematyczne i rozwiązuje problemy z wydajnością planu SQL.
 
 ### <a name="adaptive-query-processing"></a>Adaptacyjne przetwarzanie zapytań
 
@@ -173,7 +173,7 @@ Zaawansowane zabezpieczenia danych to ujednolicony pakiet zaawansowanych funkcji
 - [Odnajdywanie i Klasyfikacja danych](sql-database-data-discovery-and-classification.md):
 
   Ta funkcja udostępnia funkcje wbudowane w Azure SQL Database do odnajdywania, klasyfikowania, etykietowania i ochrony poufnych danych w bazach danych. Zapewnia wgląd w stan klasyfikacji bazy danych i śledzi dostęp do poufnych danych w bazie danych i wykracza poza jego granice.
-- [Ocena luk](sql-vulnerability-assessment.md)w zabezpieczeniach:
+- [Ocena luk w zabezpieczeniach](sql-vulnerability-assessment.md):
 
   Ta usługa może wykrywać, śledzić i pomagać w korygowaniu potencjalnych luk w zabezpieczeniach bazy danych. Zapewnia wgląd w stan zabezpieczeń i zapewnia kroki, które można wykonać w celu rozwiązania problemów z zabezpieczeniami oraz zwiększenia bezpieczeństwa bazy danych.
 - [Wykrywanie zagrożeń](sql-database-threat-detection.md):
@@ -221,7 +221,7 @@ Bieżąca wersja SQL Database to V12. Wersja v11 została wycofana.
 
 ### <a name="can-i-control-when-patching-downtime-occurs"></a>Czy mogę kontrolować, kiedy występuje poprawka przestoju?
 
-Nie. Skutki zastosowania poprawek zwykle nie są zauważalne, jeśli w aplikacji [](sql-database-develop-overview.md#resiliency) jest stosowana logika ponawiania. Aby uzyskać więcej informacji, zobacz [Planowanie zdarzeń konserwacji platformy Azure w Azure SQL Database](sql-database-planned-maintenance.md).
+Nie. Skutki zastosowania poprawek zwykle nie są zauważalne, jeśli w aplikacji jest stosowana [logika ponawiania](sql-database-develop-overview.md#resiliency) . Aby uzyskać więcej informacji, zobacz [Planowanie zdarzeń konserwacji platformy Azure w Azure SQL Database](sql-database-planned-maintenance.md).
 
 ### <a name="azure-hybrid-benefit-questions"></a>Pytania Korzyść użycia hybrydowego platformy Azure
 
@@ -250,11 +250,11 @@ SQL Database klienci mają następujące prawa skojarzone z Korzyść użycia hy
 
 ## <a name="engage-with-the-sql-server-engineering-team"></a>Kontakt z zespołem inżynierów programu SQL Server
 
-- [Serwer Exchange](https://dba.stackexchange.com/questions/tagged/sql-server): Zadawaj pytania dotyczące administrowania bazami danych.
-- [Stack Overflow](https://stackoverflow.com/questions/tagged/sql-server): Zadawaj pytania dotyczące projektowania.
-- [Fora MSDN](https://social.msdn.microsoft.com/Forums/home?category=sqlserver): Zadawaj pytania techniczne.
+- Baza danych [usługi dba Exchange](https://dba.stackexchange.com/questions/tagged/sql-server): zadawanie odpowiedzi na pytania administracyjne.
+- [Stack Overflow](https://stackoverflow.com/questions/tagged/sql-server): zadawaj pytania dotyczące programowania.
+- [Fora MSDN](https://social.msdn.microsoft.com/Forums/home?category=sqlserver): zadawaj pytania techniczne.
 - [Opinie](https://aka.ms/sqlfeedback): Zgłoś błędy i funkcję żądania.
-- [Reddit](https://www.reddit.com/r/SQLServer/): Omówienie SQL Server.
+- [Reddit](https://www.reddit.com/r/SQLServer/): Dyskutuj SQL Server.
 
 ## <a name="next-steps"></a>Następne kroki
 

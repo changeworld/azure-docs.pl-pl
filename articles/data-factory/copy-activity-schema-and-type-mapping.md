@@ -1,5 +1,5 @@
 ---
-title: Mapowanie schematu w działaniu kopiowania | Microsoft Docs
+title: Mapowanie schematu w działaniu kopiowania
 description: Dowiedz się więcej o tym, jak działa kopiowanie w Azure Data Factory mapuje schematy i typy danych z danych źródłowych na dane ujścia podczas kopiowania danych.
 services: data-factory
 documentationcenter: ''
@@ -12,18 +12,18 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 04/29/2019
 ms.author: jingwang
-ms.openlocfilehash: b705123dc6492466c30b3c1ddaf4b330b0d684a1
-ms.sourcegitcommit: a6718e2b0251b50f1228b1e13a42bb65e7bf7ee2
+ms.openlocfilehash: ed0823930b819661baf384d51478547cb2e0eccf
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71272261"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73678137"
 ---
 # <a name="schema-mapping-in-copy-activity"></a>Mapowanie schematu w działaniu kopiowania
 
 W tym artykule opisano, w jaki sposób działanie Copy Azure Data Factory ma mapowanie schematu i mapowanie typu danych z danych źródłowych na dane ujścia podczas wykonywania kopii danych.
 
-## <a name="schema-mapping"></a>mapowanie schematu
+## <a name="schema-mapping"></a>Mapowanie schematu
 
 Mapowanie kolumn ma zastosowanie w przypadku kopiowania danych ze źródła do ujścia. Domyślnie Kopiuj **dane źródłowe mapy aktywności do ujścia według nazw kolumn**. Możesz określić [jawne mapowanie](#explicit-mapping) , aby dostosować mapowanie kolumn na podstawie potrzeb. Dokładniej działanie kopiowania:
 
@@ -33,7 +33,7 @@ Mapowanie kolumn ma zastosowanie w przypadku kopiowania danych ze źródła do u
 
 ### <a name="explicit-mapping"></a>Jawne mapowanie
 
-Możesz określić kolumny, które mają być mapowane w działaniu kopiowania `translator` — >  ->  `mappings` właściwości. Poniższy przykład definiuje działanie kopiowania w potoku, aby skopiować dane z rozdzielanego tekstu do Azure SQL Database.
+Możesz określić kolumny, które mają być mapowane w działaniu kopiowania — > `translator` -> `mappings` właściwości. Poniższy przykład definiuje działanie kopiowania w potoku, aby skopiować dane z rozdzielanego tekstu do Azure SQL Database.
 
 ```json
 {
@@ -86,26 +86,26 @@ Możesz określić kolumny, które mają być mapowane w działaniu kopiowania `
 }
 ```
 
-Następujące właściwości są `translator` obsługiwane w  ->  `mappings` obiekcie-> z `source` i `sink`:
+Następujące właściwości są obsługiwane w `translator` -> `mappings` > obiektu z `source` i `sink`:
 
-| Właściwość | Opis                                                  | Wymagane |
+| Właściwość | Opis                                                  | Wymagany |
 | -------- | ------------------------------------------------------------ | -------- |
 | name     | Nazwa kolumny źródłowej lub ujścia.                           | Tak      |
-| ordinal  | Indeks kolumn. Zacznij od 1. <br>Zastosuj i wymagane w przypadku używania tekstu rozdzielanego bez wiersza nagłówka. | Nie       |
-| path     | Wyrażenie ścieżki JSON dla każdego pola do wyodrębnienia lub zamapowania. Zastosuj dla danych hierarchicznych, np. MongoDB/REST.<br>W przypadku pól pod obiektem głównym ścieżka JSON rozpoczyna się od elementu root $; w przypadku pól wewnątrz tablicy wybranej przez `collectionReference` właściwość ścieżka JSON zaczyna się od elementu Array. | Nie       |
+| liczbą  | Indeks kolumn. Zacznij od 1. <br>Zastosuj i wymagane w przypadku używania tekstu rozdzielanego bez wiersza nagłówka. | Nie       |
+| ścieżka     | Wyrażenie ścieżki JSON dla każdego pola do wyodrębnienia lub zamapowania. Zastosuj dla danych hierarchicznych, np. MongoDB/REST.<br>W przypadku pól pod obiektem głównym ścieżka JSON rozpoczyna się od elementu root $; w przypadku pól wewnątrz tablicy wybranej przez właściwość `collectionReference` ścieżka JSON zaczyna się od elementu Array. | Nie       |
 | type     | Data Factory pośredni typ danych kolumny źródłowej lub ujścia. | Nie       |
-| culture  | Kultura kolumny źródłowej lub ujścia. <br>Zastosuj, gdy typ `Datetime` jest `Datetimeoffset`lub. Wartość domyślna to `en-us`. | Nie       |
-| format   | Ciąg formatu, który ma być używany, `Datetime` gdy `Datetimeoffset`typem jest lub. Zapoznaj się z [niestandardowymi ciągami formatu daty i godziny](https://docs.microsoft.com/dotnet/standard/base-types/custom-date-and-time-format-strings) na potrzeby formatowania daty i godziny. | Nie       |
+| dziedzinie  | Kultura kolumny źródłowej lub ujścia. <br>Zastosuj, gdy typ jest `Datetime` lub `Datetimeoffset`. Wartość domyślna to `en-us`. | Nie       |
+| Formatowanie   | Ciąg formatu, który ma być używany, gdy typ jest `Datetime` lub `Datetimeoffset`. Zapoznaj się z [niestandardowymi ciągami formatu daty i godziny](https://docs.microsoft.com/dotnet/standard/base-types/custom-date-and-time-format-strings) na potrzeby formatowania daty i godziny. | Nie       |
 
-Następujące właściwości `translator` są obsługiwane  ->  `mappings` w dodatku do obiektów z `source` i `sink`:
+Następujące właściwości są obsługiwane w `translator` -> `mappings` oprócz obiektów z `source` i `sink`:
 
-| Właściwość            | Opis                                                  | Wymagane |
+| Właściwość            | Opis                                                  | Wymagany |
 | ------------------- | ------------------------------------------------------------ | -------- |
 | collectionReference | Obsługiwane tylko wtedy, gdy dane hierarchiczne, np. MongoDB/REST, są źródłem.<br>Jeśli chcesz wykonać iterację i wyodrębnić dane z obiektów **wewnątrz pola tablicy** o tym samym wzorcu i przekonwertować na na wiersz dla każdego obiektu, określ ścieżkę JSON tej tablicy, która ma być stosowana krzyżowo. | Nie       |
 
 ### <a name="alternative-column-mapping"></a>Alternatywne Mapowanie kolumn
 
-Możesz określić działanie kopiowania — > `translator`  ->  `columnMappings` , aby mapować między danymi w kształcie tabelarycznym. W takim przypadku sekcja "Structure" jest wymagana zarówno dla zestawów danych wejściowych, jak i wyjściowych. Mapowanie kolumn obsługuje **mapowanie wszystkich lub podzbioru kolumn w źródłowym zestawie danych "struktura" na wszystkie kolumny w zestawie danych ujścia "Structure**". Poniżej przedstawiono warunki błędów, które powodują wyjątek:
+Możesz określić > działania kopiowania — `translator` -> `columnMappings`, aby mapować między danymi w kształcie tabelarycznym. W takim przypadku sekcja "Structure" jest wymagana zarówno dla zestawów danych wejściowych, jak i wyjściowych. Mapowanie kolumn obsługuje **mapowanie wszystkich lub podzbioru kolumn w źródłowym zestawie danych "struktura" na wszystkie kolumny w zestawie danych ujścia "Structure**". Poniżej przedstawiono warunki błędów, które powodują wyjątek:
 
 * Wynik zapytania źródłowego magazynu danych nie zawiera nazwy kolumny określonej w sekcji "struktura" wejściowego zestawu danych.
 * Magazyn danych ujścia (jeśli ze wstępnie zdefiniowanym schematem) nie ma nazwy kolumny określonej w sekcji "struktura" wyjściowego zestawu danych.
@@ -160,7 +160,7 @@ W tym przykładzie wyjściowy zestaw danych ma strukturę i wskazuje tabelę w S
 }
 ```
 
-Poniższy kod JSON definiuje działanie kopiowania w potoku. Kolumny ze źródła zamapowane na kolumny w usłudze ujścia przy**użyciu właściwości** **translatora** -> obiektów.
+Poniższy kod JSON definiuje działanie kopiowania w potoku. Kolumny ze źródła zamapowane na kolumny w usłudze sink przy użyciu właściwości **translator** -> **ColumnMappings** .
 
 ```json
 {
@@ -195,16 +195,16 @@ Poniższy kod JSON definiuje działanie kopiowania w potoku. Kolumny ze źródł
 }
 ```
 
-Jeśli używasz składni `"columnMappings": "UserId: MyUserId, Group: MyGroup, Name: MyName"` w celu określenia mapowania kolumn, jest ono nadal obsługiwane.
+Jeśli używasz składni `"columnMappings": "UserId: MyUserId, Group: MyGroup, Name: MyName"` do określenia mapowania kolumn, jest ono nadal obsługiwane.
 
 ### <a name="alternative-schema-mapping"></a>Alternatywne mapowanie schematu
 
-Możesz określić działanie kopiowania — > `translator`  ->  `schemaMapping` , aby mapować między danymi w kształcie hierarchicznym a danymi w formie tabelarycznej, np. kopiowania z MongoDB/REST do pliku tekstowego i kopiowania z programu Oracle do Azure Cosmos DB interfejsu API dla MongoDB. W sekcji działania `translator` kopiowania są obsługiwane następujące właściwości:
+Możesz określić działanie kopiowania — > `translator` -> `schemaMapping`, aby mapować między danymi w formie hierarchicznej i danymi w kształcie tabelarycznym, np. Skopiuj z MongoDB/REST do pliku tekstowego i skopiuj z Oracle do Azure Cosmos DB interfejsu API MongoDB. W sekcji `translator` działania kopiowania są obsługiwane następujące właściwości:
 
-| Właściwość | Opis | Wymagane |
+| Właściwość | Opis | Wymagany |
 |:--- |:--- |:--- |
-| type | Właściwość Type translatora działania kopiowania musi mieć ustawioną wartość: **TabularTranslator** | Tak |
-| schemaMapping | Kolekcja par klucz-wartość, która reprezentuje relację mapowania **ze strony źródłowej do ujścia**.<br/>- **Key:** reprezentuje źródło. Dla **źródła tabelarycznego**Określ nazwę kolumny, zgodnie z definicją w strukturze zestawu danych. dla **źródła hierarchicznego**Określ wyrażenie ścieżki JSON dla każdego pola, które ma zostać wyodrębnione i zamapowane.<br>- **Value:** reprezentuje ujścia. W przypadku **ujścia tabelarycznego**należy określić nazwę kolumny, zgodnie z definicją w strukturze zestawu danych. dla **obiektu ujścia hierarchiczne**Określ wyrażenie ścieżki JSON dla każdego pola do wyodrębnienia i mapowania. <br>W przypadku danych hierarchicznych dla pól w obszarze obiekt główny ścieżka JSON rozpoczyna się od elementu głównego $; w przypadku pól wewnątrz tablicy wybranej przez `collectionReference` właściwość ścieżka JSON zaczyna się od elementu Array.  | Tak |
+| type | Właściwość Type translatora działania kopiowania musi być ustawiona na wartość: **TabularTranslator** | Tak |
+| schemaMapping | Kolekcja par klucz-wartość, która reprezentuje relację mapowania **ze strony źródłowej do ujścia**.<br/>**klucz - :** reprezentuje źródło. Dla **źródła tabelarycznego**Określ nazwę kolumny, zgodnie z definicją w strukturze zestawu danych. dla **źródła hierarchicznego**Określ wyrażenie ścieżki JSON dla każdego pola, które ma zostać wyodrębnione i zamapowane.<br>**wartość - :** reprezentuje obiekt sink. W przypadku **ujścia tabelarycznego**należy określić nazwę kolumny, zgodnie z definicją w strukturze zestawu danych. dla **obiektu ujścia hierarchiczne**Określ wyrażenie ścieżki JSON dla każdego pola do wyodrębnienia i mapowania. <br>W przypadku danych hierarchicznych dla pól w obszarze obiekt główny ścieżka JSON rozpoczyna się od elementu głównego $; w przypadku pól wewnątrz tablicy wybranej przez właściwość `collectionReference` ścieżka JSON zaczyna się od elementu Array.  | Tak |
 | collectionReference | Jeśli chcesz wykonać iterację i wyodrębnić dane z obiektów **wewnątrz pola tablicy** o tym samym wzorcu i przekonwertować na na wiersz dla każdego obiektu, określ ścieżkę JSON tej tablicy, która ma być stosowana krzyżowo. Ta właściwość jest obsługiwana tylko wtedy, gdy dane hierarchiczne są źródłem. | Nie |
 
 **Przykład: Kopiuj z MongoDB do Oracle:**
@@ -283,23 +283,23 @@ Mapowanie między typu natywnego na typ pośredni można znaleźć w sekcji "map
 
 ### <a name="supported-data-types"></a>Obsługiwane typy danych
 
-Data Factory obsługuje następujące typy danych pośrednich: Podczas konfigurowania informacji o typie w konfiguracji [struktury zestawu danych](concepts-datasets-linked-services.md#dataset-structure-or-schema) można określić poniższe wartości:
+Data Factory obsługuje następujące pośrednie typy danych: podczas konfigurowania informacji o typie w konfiguracji [struktury zestawu danych](concepts-datasets-linked-services.md#dataset-structure-or-schema) można określić poniższe wartości:
 
-* Byte[]
-* Boolean
-* Datetime
-* Datetimeoffset
-* Decimal
+* Byte []
+* Wartość logiczna
+* Datę
+* DateTimeOffset
+* Dokładności
 * Double
-* Guid
+* Identyfikator GUID
 * Int16
-* Int32
+* Elementem
 * Int64
-* Single
-* String
-* Timespan
+* Pojedyncze
+* Ciąg
+* Zakres czasu
 
 ## <a name="next-steps"></a>Następne kroki
-Zobacz inne artykuły dotyczące działania kopiowania:
+Zapoznaj się z innymi artykułami dotyczącymi działania kopiowania:
 
-- [Omówienie działania kopiowania](copy-activity-overview.md)
+- [Przegląd działania kopiowania](copy-activity-overview.md)

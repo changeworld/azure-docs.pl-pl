@@ -1,5 +1,5 @@
 ---
-title: Przezroczyste szyfrowanie danych dla Azure SQL Database i magazynu danych | Microsoft Docs
+title: 'Przezroczyste szyfrowanie danych dla Azure SQL Database i magazynu danych '
 description: Przegląd przezroczystego szyfrowania danych dla SQL Database i magazynu danych. Ten dokument zawiera zalety i opcje konfiguracji, w tym zarządzane Bring Your Own Key i niejawne szyfrowanie danych przez usługę.
 services: sql-database
 ms.service: sql-database
@@ -10,13 +10,13 @@ ms.topic: conceptual
 author: aliceku
 ms.author: aliceku
 ms.reviewer: vanto
-ms.date: 08/27/2019
-ms.openlocfilehash: b63a8c9defdf154f35a847f29182b49ff94ff3a6
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.date: 11/01/2019
+ms.openlocfilehash: ff712f956278a2a54584c0b0346f8f1147add189
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72933202"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73686790"
 ---
 # <a name="transparent-data-encryption-for-sql-database-and-data-warehouse"></a>Przezroczyste szyfrowanie danych dla SQL Database i magazynu danych
 
@@ -42,10 +42,10 @@ Firma Microsoft bezproblemowo przenosi klucze i zarządza nimi w zależności od
 
 ## <a name="customer-managed-transparent-data-encryption---bring-your-own-key"></a>Szyfrowanie danych przezroczystych zarządzanych przez klienta — Bring Your Own Key
 
-[TDE z kluczami zarządzanymi przez klienta w programie Azure Key Vault](transparent-data-encryption-byok-azure-sql.md) umożliwia szyfrowanie klucza szyfrowania bazy danych (.  Jest to również ogólnie określane jako Bring Your Own Key (BYOK) obsługa Transparent Data Encryption. W scenariuszu BYOK funkcja ochrony TDE jest przechowywana w [Azure Key Vaultach](https://docs.microsoft.com/azure/key-vault/key-vault-secure-your-key-vault)należących do klienta i zarządzanych przez chmurę systemu zarządzania Kluczami na platformie Azure. Funkcja ochrony TDE może być [generowana przez Magazyn kluczy lub transferowana do magazynu kluczy](https://docs.microsoft.com/azure/key-vault/about-keys-secrets-and-certificates#key-vault-keys) z lokalnego urządzenia HSM. TDE, który jest przechowywany na stronie rozruchowej bazy danych, jest szyfrowany i odszyfrowywany przez funkcję ochrony TDE, która jest przechowywana w Azure Key Vault i nigdy nie pozostawia magazynu kluczy.  SQL Database musi mieć przyznane uprawnienia do magazynu kluczy należącego do klienta, aby odszyfrować i zaszyfrować klucz szyfrowania danych. Jeśli uprawnienia logicznego serwera SQL do magazynu kluczy zostaną odwołane, baza danych będzie niedostępna, a wszystkie dane są szyfrowane. W przypadku Azure SQL Database funkcja ochrony TDE jest ustawiana na poziomie logicznego serwera SQL i jest dziedziczona przez wszystkie bazy danych skojarzone z tym serwerem. W przypadku [wystąpienia zarządzanego Azure SQL](https://docs.microsoft.com/azure/sql-database/sql-database-howto-managed-instance) (funkcji BYOK w wersji zapoznawczej) funkcja ochrony TDE jest ustawiona na poziomie wystąpienia i jest dziedziczona przez wszystkie *zaszyfrowane* bazy danych w tym wystąpieniu. Termin " *serwer* " dotyczy zarówno serwera, jak i wystąpienia w tym dokumencie, chyba że określono inaczej.
+[TDE z kluczami zarządzanymi przez klienta w programie Azure Key Vault](transparent-data-encryption-byok-azure-sql.md) umożliwia szyfrowanie klucza szyfrowania bazy danych (.  Jest to również ogólnie określane jako Bring Your Own Key (BYOK) obsługa Transparent Data Encryption. W scenariuszu BYOK funkcja ochrony TDE jest przechowywana w [Azure Key Vaultach](https://docs.microsoft.com/azure/key-vault/key-vault-secure-your-key-vault)należących do klienta i zarządzanych przez chmurę systemu zarządzania Kluczami na platformie Azure. Funkcja ochrony TDE może być [generowana przez Magazyn kluczy lub transferowana do magazynu kluczy](https://docs.microsoft.com/azure/key-vault/about-keys-secrets-and-certificates#key-vault-keys) z lokalnego urządzenia HSM. TDE, który jest przechowywany na stronie rozruchowej bazy danych, jest szyfrowany i odszyfrowywany przez funkcję ochrony TDE, która jest przechowywana w Azure Key Vault i nigdy nie pozostawia magazynu kluczy.  SQL Database musi mieć przyznane uprawnienia do magazynu kluczy należącego do klienta, aby odszyfrować i zaszyfrować klucz szyfrowania danych. Jeśli uprawnienia logicznego serwera SQL do magazynu kluczy zostaną odwołane, baza danych będzie niedostępna, a wszystkie dane są szyfrowane. W przypadku Azure SQL Database funkcja ochrony TDE jest ustawiana na poziomie logicznego serwera SQL i jest dziedziczona przez wszystkie bazy danych skojarzone z tym serwerem. W przypadku [wystąpienia zarządzanego Azure SQL](https://docs.microsoft.com/azure/sql-database/sql-database-howto-managed-instance)funkcja ochrony TDE jest ustawiana na poziomie wystąpienia i jest dziedziczona przez wszystkie *zaszyfrowane* bazy danych w tym wystąpieniu. Termin " *serwer* " dotyczy zarówno serwera, jak i wystąpienia w tym dokumencie, chyba że określono inaczej.
 
 Dzięki funkcji TDE z integracją Azure Key Vault użytkownicy mogą kontrolować zadania zarządzania kluczami, w tym kluczowe rotacje, uprawnienia do magazynu kluczy, kopie zapasowe kluczy, a także włączać inspekcje/raportowanie we wszystkich funkcjach Azure Key Vault ochrony TDE. Key Vault udostępnia centralne zarządzanie kluczami, korzysta ze ściśle monitorowanych sprzętowych modułów zabezpieczeń (sprzętowych modułów zabezpieczeń) i umożliwia rozdzielenie obowiązków między zarządzaniem kluczami i danymi, aby zapewnić zgodność z zasadami zabezpieczeń.
-Aby dowiedzieć się więcej na temat funkcji przezroczystego szyfrowania danych z integracją Azure Key Vault (obsługa Bring Your Own Key) dla Azure SQL Database, wystąpienia zarządzanego SQL (funkcja BYOK w wersji zapoznawczej) i magazyn danych, zobacz [przezroczyste szyfrowanie danych za pomocą Azure Key Vault Integracja](transparent-data-encryption-byok-azure-sql.md).
+Aby dowiedzieć się więcej na temat funkcji przezroczystego szyfrowania danych z integracją Azure Key Vault (obsługa Bring Your Own Key) dla Azure SQL Database, wystąpienia zarządzanego SQL i magazynu danych, zobacz [przezroczyste szyfrowanie danych z integracją Azure Key Vault](transparent-data-encryption-byok-azure-sql.md).
 
 Aby rozpocząć korzystanie z funkcji przezroczystego szyfrowania danych z integracją Azure Key Vault (obsługa Bring Your Own Key), zapoznaj się z tematem jak [włączyć funkcję przezroczystego szyfrowania danych przy użyciu własnego klucza z Key Vault przy użyciu programu PowerShell](transparent-data-encryption-byok-azure-sql-configure.md).
 

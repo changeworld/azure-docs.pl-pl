@@ -1,5 +1,5 @@
 ---
-title: Azure SQL Database warstwy usług — model zakupu oparty na jednostkach DTU | Microsoft Docs
+title: 'Azure SQL Database warstwy usług — model zakupu oparty na jednostkach DTU '
 description: Informacje o warstwach usług w modelu zakupu opartego na jednostkach DTU dla baz danych o pojedynczej i puli w celu zapewnienia rozmiarów zasobów obliczeniowych i magazynowych.
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: carlrab
 ms.date: 09/06/2019
-ms.openlocfilehash: e735d8832912f5b512b7cfe015ca47efbe641da7
-ms.sourcegitcommit: be344deef6b37661e2c496f75a6cf14f805d7381
+ms.openlocfilehash: 43f4f9e0d1e5f33dde32e5274dddf9d17776db21
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/07/2019
-ms.locfileid: "72000428"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73687302"
 ---
 # <a name="service-tiers-in-the-dtu-based-purchase-model"></a>Warstwy usług w modelu zakupu opartego na jednostkach DTU
 
@@ -31,16 +31,16 @@ Warstwy usług w modelu zakupu opartego na jednostkach DTU są zróżnicowane pr
 
 Wybór warstwy usług zależy głównie od ciągłości biznesowej, magazynu i wymagań dotyczących wydajności.
 
-||Podstawowy|Standardowa|Tytułu|
+||Podstawowa|Standardowa|Premium|
 | :-- | --: |--:| --:|
 |Docelowe obciążenie|Programowanie i produkcja|Programowanie i produkcja|Programowanie i produkcja|
-|Umowa SLA dla czasu działania|99,99%|99,99%|99,99%|
+|Umowa SLA dotycząca czasu dostępności|99,99%|99,99%|99,99%|
 |Maksymalne przechowywanie kopii zapasowych|7 dni|35 dni|35 dni|
-|CPU|Małą|Niski, średni, wysoki|Średni, wysoki|
+|Procesor CPU|Małe|Niski, średni, wysoki|Średni, wysoki|
 |Przepływność we/wy (przybliżona) |1-5 operacji we/wy na jednostkę DTU| 1-5 operacji we/wy na jednostkę DTU | 25 operacji we/wy na jednostkę DTU|
 |Opóźnienie we/wy (przybliżone)|5 ms (odczyt), 10 ms (zapis)|5 ms (odczyt), 10 ms (zapis)|2 ms (odczyt i zapis)|
-|Indeksowanie magazynu kolumn |Brak|S3 i nowsze|Obsługiwane|
-|Przetwarzanie OLTP w pamięci|Brak|Brak|Obsługiwane|
+|Indeksowanie magazynu kolumn |Nie dotyczy|S3 i nowsze|Obsługiwane|
+|Przetwarzanie OLTP w pamięci|Nie dotyczy|Nie dotyczy|Obsługiwane|
 |||||
 
 > [!NOTE]
@@ -50,7 +50,7 @@ Wybór warstwy usług zależy głównie od ciągłości biznesowej, magazynu i w
 
 Rozmiary obliczeń są wyrażone w kategoriach jednostek transakcji bazy danych (DTU) dla pojedynczych baz danych i jednostek transakcji Elastic Database (jednostek eDTU) dla pul elastycznych. Aby uzyskać więcej informacji na temat DTU i jednostek eDTU, zobacz [model zakupów oparty na](sql-database-purchase-models.md#dtu-based-purchasing-model)jednostkach DTU?
 
-||Podstawowy|Standardowa|Tytułu|
+||Podstawowa|Standardowa|Premium|
 | :-- | --: | --: | --: |
 | Maksymalny rozmiar magazynu | 2 GB | 1 TB | 4 TB  |
 | Maksymalna DTU | 5 | 3000 | 4000 | 
@@ -61,7 +61,7 @@ Rozmiary obliczeń są wyrażone w kategoriach jednostek transakcji bazy danych 
 
 ## <a name="elastic-pool-edtu-storage-and-pooled-database-limits"></a>Limity liczby jednostek eDTU puli elastycznej, magazynu i bazy danych w puli
 
-| | **Podstawy** | **Standardowa** | **Tytułu** |
+| | **Podstawowa** | **Standard** | **Premium** |
 | :-- | --: | --: | --: |
 | Maksymalny rozmiar magazynu na bazę danych  | 2 GB | 1 TB | 1 TB |
 | Maksymalny rozmiar magazynu na pulę | 156 GB | 4 TB | 4 TB |
@@ -71,7 +71,7 @@ Rozmiary obliczeń są wyrażone w kategoriach jednostek transakcji bazy danych 
 |||||
 
 > [!IMPORTANT]
-> Więcej niż 1 TB magazynu w warstwie Premium jest obecnie dostępne we wszystkich regionach z wyjątkiem: Chiny Wschodnie, Chiny Północne, Niemcy środkowe, Niemcy północno-zachodnie stany USA, regiony US DoD oraz centralne stany USA. W tych regionach Maksymalna wielkość magazynu w warstwie Premium jest ograniczona do 1 TB.  Aby uzyskać więcej informacji, zobacz [P11-P15 Current ograniczenia](sql-database-single-database-scale.md#p11-and-p15-constraints-when-max-size-greater-than-1-tb).  
+> Więcej niż 1 TB magazynu w warstwie Premium jest obecnie dostępne we wszystkich regionach z wyjątkiem: Chiny Wschodnie, Chiny Północne, Niemcy środkowe, Niemcy północno-zachodnie stany USA, regiony US DoD oraz centralne stany USA. W tych regionach maksymalna wielkość magazynu w warstwie Premium jest ograniczona do 1 TB.  Aby uzyskać więcej informacji, zobacz [bieżące ograniczenia poziomów P11–P15](sql-database-single-database-scale.md#p11-and-p15-constraints-when-max-size-greater-than-1-tb).  
 > [!IMPORTANT]
 > W pewnych okolicznościach może być konieczne zmniejszenie bazy danych w celu Odbierz nieużywanej przestrzeni. Aby uzyskać więcej informacji, zobacz [Zarządzanie obszarem plików w Azure SQL Database](sql-database-file-space-management.md).
 
@@ -164,9 +164,9 @@ Kluczowe metryki testu porównawczego to przepływność i czas odpowiedzi.
 
 | Klasa usługi | Pomiar przepływności | Wymagany czas odpowiedzi |
 | --- | --- | --- |
-| Tytułu |Liczba transakcji na sekundę |używany 95. percentyl o 0,5 sekund |
-| Standardowa |Liczba transakcji na minutę |90 percentyl o 1,0 s |
-| Podstawowy |Liczba transakcji na godzinę |80th percentyl o 2,0 sekund |
+| Premium |Transakcje na sekundę |używany 95. percentyl o 0,5 sekund |
+| Standardowa |Transakcje na minutę |90 percentyl o 1,0 s |
+| Podstawowa |Transakcje na godzinę |80th percentyl o 2,0 sekund |
 
 ## <a name="next-steps"></a>Następne kroki
 

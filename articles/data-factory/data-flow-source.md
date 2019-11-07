@@ -1,17 +1,17 @@
 ---
-title: Transformacja źródła w mapowaniu danych mapowania — Azure Data Factory | Microsoft Docs
+title: Transformacja źródła w przepływie danych mapowania — Azure Data Factory
 description: Dowiedz się, jak skonfigurować transformację źródłową w mapowaniu przepływu danych.
 author: kromerm
 ms.author: makromer
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 09/06/2019
-ms.openlocfilehash: fb11b785cecbd021c0b894754e31d226edfe72f2
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 5889d96057d4b028e8716e407819d17938f58b3c
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73519305"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73675953"
 ---
 # <a name="source-transformation-for-mapping-data-flow"></a>Przekształcanie źródła na potrzeby mapowania przepływu danych 
 

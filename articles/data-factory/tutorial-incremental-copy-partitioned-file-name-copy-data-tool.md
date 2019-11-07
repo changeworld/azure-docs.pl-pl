@@ -1,5 +1,5 @@
 ---
-title: Używanie Azure Data Factory do przyrostowego kopiowania nowych plików na podstawie nazwy pliku podzielonego na partycje Microsoft Docs
+title: Używanie Azure Data Factory do przyrostowego kopiowania nowych plików na podstawie nazwy pliku podzielonego na partycje
 description: Utwórz fabrykę danych platformy Azure, a następnie użyj narzędzia Kopiowanie danych, aby przyrostowo ładować nowe pliki na podstawie nazwy pliku podzielonego na partycje.
 services: data-factory
 documentationcenter: ''
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 1/24/2019
-ms.openlocfilehash: 8081d7112d67e3bb4e72c6f6e88d765a159e047f
-ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
+ms.openlocfilehash: 273aaaa2ac51f75edfad6da03d6720f58b7c3c47
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68933916"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73683450"
 ---
 # <a name="incrementally-copy-new-files-based-on-time-partitioned-file-name-by-using-the-copy-data-tool"></a>Przyrostowe kopiowanie nowych plików na podstawie nazwy pliku podzielonego na partycje przy użyciu narzędzia Kopiowanie danych
 
@@ -36,7 +36,7 @@ Ten samouczek obejmuje wykonanie następujących kroków:
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-* **Subskrypcja platformy Azure**: Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpłatne konto](https://azure.microsoft.com/free/).
+* **Subskrypcja platformy Azure**: jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpłatne konto](https://azure.microsoft.com/free/).
 * **Konto usługi Azure Storage**: Użyj magazynu obiektów BLOB jako magazynu danych _źródłowych_ i _ujścia_ . Jeśli nie masz konta usługi Azure Storage, zobacz instrukcje podane w temacie [Tworzenie konta magazynu](../storage/common/storage-quickstart-create-account.md).
 
 ### <a name="create-two-containers-in-blob-storage"></a>Tworzenie dwóch kontenerów w usłudze BLOB Storage
@@ -88,7 +88,7 @@ Aby przygotować magazyn obiektów BLOB do samouczka, wykonaj te kroki.
 
 ## <a name="use-the-copy-data-tool-to-create-a-pipeline"></a>Tworzenie potoku za pomocą narzędzia do kopiowania danych
 
-1. Na stronie wprowadzenie wybierz tytuł **Kopiowanie danych** , aby uruchomić narzędzie kopiowanie danych. 
+1. **Na stronie Wprowadzenie** wybierz tytuł **Kopiowanie danych** , aby uruchomić narzędzie kopiowanie danych. 
 
    ![Kafelek narzędzia do kopiowania danych](./media/doc-common-process/get-started-page.png)
    
@@ -98,7 +98,7 @@ Aby przygotować magazyn obiektów BLOB do samouczka, wykonaj te kroki.
 
     b. W obszarze **zadanie erze lub harmonogram zadań**wybierz pozycję **Uruchom regularnie zgodnie z harmonogramem**.
 
-    c. W obszarze **Typ wyzwalacza**wybierz pozycję **okno wirowania**.
+    d. W obszarze **Typ wyzwalacza**wybierz pozycję **okno wirowania**.
     
     d. W obszarze **cykl**wprowadź **1 godzinę**. 
     
@@ -117,7 +117,7 @@ Aby przygotować magazyn obiektów BLOB do samouczka, wykonaj te kroki.
 
     ![Strona Źródłowy magazyn danych](./media/tutorial-incremental-copy-partitioned-file-name-copy-data-tool/source-data-store-page-select-blob.png)
     
-    c. Na stronie **Nowa połączona usługa** wybierz konto magazynu z listy **nazwa konta magazynu** , a następnie kliknij przycisk **Zakończ**.
+    d. Na stronie **Nowa połączona usługa** wybierz konto magazynu z listy **nazwa konta magazynu** , a następnie kliknij przycisk **Zakończ**.
     
     ![Strona Źródłowy magazyn danych](./media/tutorial-incremental-copy-partitioned-file-name-copy-data-tool/source-data-store-page-linkedservice.png)
     
@@ -134,7 +134,7 @@ Aby przygotować magazyn obiektów BLOB do samouczka, wykonaj te kroki.
     
     ![Wybieranie pliku lub folderu wejściowego](./media/tutorial-incremental-copy-partitioned-file-name-copy-data-tool/choose-loading-behavior.png)
     
-    c. Zapisz ścieżkę do folderu dynamicznego jako **Źródło/{Year}/{Month}/{Day}/{Hour}/** , a następnie Zmień format w następujący sposób:
+    d. Zapisz ścieżkę do folderu dynamicznego jako **Źródło/{Year}/{Month}/{Day}/{Hour}/** , a następnie Zmień format w następujący sposób:
     
     ![Wybieranie pliku lub folderu wejściowego](./media/tutorial-incremental-copy-partitioned-file-name-copy-data-tool/input-file-name.png)
     
@@ -154,7 +154,7 @@ Aby przygotować magazyn obiektów BLOB do samouczka, wykonaj te kroki.
     
     ![Wybieranie pliku lub folderu wyjściowego](./media/tutorial-incremental-copy-partitioned-file-name-copy-data-tool/input-file-name2.png)    
     
-    c. Kliknij przycisk **Dalej**.
+    d. Kliknij przycisk **Dalej**.
     
     ![Wybieranie pliku lub folderu wyjściowego](./media/tutorial-incremental-copy-partitioned-file-name-copy-data-tool/click-next-after-output-folder.png)  
 7. Na stronie **Ustawienia** wybierz przycisk **Dalej**. 
@@ -165,16 +165,16 @@ Aby przygotować magazyn obiektów BLOB do samouczka, wykonaj te kroki.
     ![Strona podsumowania](./media/tutorial-incremental-copy-partitioned-file-name-copy-data-tool/summary-page.png)
     
 9. Na **stronie Wdrażanie** wybierz pozycję **Monitorowanie**, aby monitorować potok (zadanie).
-    ![Strona wdrożenia](./media/tutorial-incremental-copy-partitioned-file-name-copy-data-tool/deployment-page.png)
+    ](./media/tutorial-incremental-copy-partitioned-file-name-copy-data-tool/deployment-page.png) strony wdrożenia ![
     
-10. Zwróć uwagę, że karta **Monitor** po lewej stronie jest automatycznie wybrana.  Musisz poczekać na uruchomienie potoku, gdy zostanie on wyzwolony automatycznie (około godzinę).  Po uruchomieniu kolumna Actions zawiera linki do wyświetlania szczegółów uruchomienia działania i ponownego uruchomienia potoku. Wybierz pozycję **Odśwież** , aby odświeżyć listę, a następnie wybierz link **Wyświetl uruchomienia działania** w kolumnie **Akcje** . 
+10. Zwróć uwagę, że karta **Monitor** po lewej stronie jest automatycznie wybrana.  Musisz poczekać na uruchomienie potoku, gdy zostanie on wyzwolony automatycznie (około godzinę).  Po uruchomieniu kolumna **Actions** zawiera linki do wyświetlania szczegółów uruchomienia działania i ponownego uruchomienia potoku. Wybierz pozycję **Odśwież** , aby odświeżyć listę, a następnie wybierz link **Wyświetl uruchomienia działania** w kolumnie **Akcje** . 
 
     ![Monitorowanie uruchomień potoku](./media/tutorial-incremental-copy-partitioned-file-name-copy-data-tool/monitor-pipeline-runs1.png)
 11. W potoku jest tylko jedno działanie (działanie kopiowania), dlatego na liście jest wyświetlana tylko jedna pozycja. Plik źródłowy (plik1. txt) został skopiowany ze **źródła/2019/02/26/14/** do **lokalizacji docelowej/2019/02/26/14/** o tej samej nazwie pliku.  
 
     ![Monitorowanie uruchomień potoku](./media/tutorial-incremental-copy-partitioned-file-name-copy-data-tool/monitor-pipeline-runs2.png)
     
-    Możesz również sprawdzić to samo przy użyciu Eksplorator usługi Azure Storage (https://storageexplorer.com/) aby skanować pliki.
+    Możesz również sprawdzić to samo przy użyciu Eksplorator usługi Azure Storage (https://storageexplorer.com/) do skanowania plików.
     
     ![Monitorowanie uruchomień potoku](./media/tutorial-incremental-copy-partitioned-file-name-copy-data-tool/monitor-pipeline-runs3.png)
 12. Utwórz kolejny pusty plik tekstowy o nowej nazwie jako **plik2. txt**. Przekaż plik plik2. txt do folderu **Source Path/2019/02/26/15** na koncie magazynu.   Do wykonania tych zadań możesz użyć różnych narzędzi, takich jak [Eksplorator usługi Azure Storage](https://storageexplorer.com/).   

@@ -1,5 +1,5 @@
 ---
-title: Omówienie tworzenia aplikacji korzystających z usługi SQL Database | Microsoft Docs
+title: Omówienie tworzenia aplikacji korzystających z usługi SQL Database
 description: Informacje o dostępnych bibliotekach łączności i najlepsze praktyki dotyczące aplikacji łączących się z usługą SQL Database.
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: genemi
 ms.date: 02/07/2019
-ms.openlocfilehash: 42fc73b5557fba91cc132a0abe8561f0a72bbb64
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 58f823aad157657de5445b1010a405af01c70171
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68568856"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73690629"
 ---
 # <a name="sql-database-application-development-overview"></a>Omówienie tworzenia aplikacji SQL Database
 
@@ -44,7 +44,7 @@ W logice połączenia klienta zastąp domyślny limit czasu wartością 30 sekun
 
 Jeśli korzystasz z [puli połączeń](https://msdn.microsoft.com/library/8xx3tyca.aspx), pamiętaj o zamknięciu połączenia, gdy tylko Twój program nie korzysta z niego aktywnie i nie przygotowuje się do jego ponownego użycia.
 
-Unikaj długotrwałych transakcji, ponieważ Jakakolwiek awaria infrastruktury lub połączenia może spowodować wycofanie transakcji. Jeśli to możliwe, Podziel transakcję w wielu mniejszych transakcjach i użyj operacji wsadowych w [celu zwiększenia wydajności](sql-database-use-batching-to-improve-performance.md).
+Unikaj długotrwałych transakcji, ponieważ Jakakolwiek awaria infrastruktury lub połączenia może spowodować wycofanie transakcji. Jeśli to możliwe, Podziel transakcję w wielu mniejszych transakcjach i użyj operacji [wsadowych w celu zwiększenia wydajności](sql-database-use-batching-to-improve-performance.md).
 
 ## <a name="resiliency"></a>Odporność
 
@@ -54,11 +54,11 @@ Aby uzyskać więcej informacji o sposobach przygotowania do planowanych zdarze�
 
 ## <a name="network-considerations"></a>Zagadnienia dotyczące sieci
 
-- Upewnij się, że zapora na komputerze hostującym program kliencki zezwala na wychodzącą komunikację TCP na porcie 1433.  Więcej informacji: [Skonfiguruj zaporę Azure SQL Database](sql-database-configure-firewall-settings.md).
-- Jeśli program kliencki nawiązuje połączenie z SQL Database, gdy klient działa na maszynie wirtualnej platformy Azure (VM), należy otworzyć niektóre zakresy portów na maszynie wirtualnej. Więcej informacji: [Porty powyżej 1433 dla ADO.NET 4,5 i SQL Database](sql-database-develop-direct-route-ports-adonet-v12.md).
+- Upewnij się, że zapora na komputerze hostującym program kliencki zezwala na wychodzącą komunikację TCP na porcie 1433.  Więcej informacji: [Konfigurowanie zapory Azure SQL Database](sql-database-configure-firewall-settings.md).
+- Jeśli program kliencki nawiązuje połączenie z SQL Database, gdy klient działa na maszynie wirtualnej platformy Azure (VM), należy otworzyć niektóre zakresy portów na maszynie wirtualnej. Więcej informacji: [porty przekraczające 1433 dla ADO.NET 4,5 i SQL Database](sql-database-develop-direct-route-ports-adonet-v12.md).
 - Połączenia klientów z Azure SQL Database czasami pomijają serwer proxy i współpracują bezpośrednio z bazą danych. Porty inne niż 1433 nabierają znaczenia. Aby uzyskać więcej informacji, [Azure SQL Database architekturze](sql-database-connectivity-architecture.md) i [portów łączności ponad 1433 dla ADO.NET 4,5 i SQL Database](sql-database-develop-direct-route-ports-adonet-v12.md).
 - Aby uzyskać konfigurację sieci dla wystąpienia zarządzanego, zapoznaj się z tematem [Konfiguracja sieci dla wystąpień zarządzanych](sql-database-howto-managed-instance.md#network-configuration).
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 Poznaj wszystkie [możliwości usługi SQL Database](sql-database-technical-overview.md).

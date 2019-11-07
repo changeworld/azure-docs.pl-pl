@@ -1,7 +1,7 @@
 ---
-title: Co to jest obszar roboczy i projekt? — Niestandardowy w usłudze Translator
+title: Co to jest obszar roboczy i projekt? — Translator niestandardowy
 titleSuffix: Azure Cognitive Services
-description: Obszar roboczy to obszar roboczy służący do redagowania i kompilowania niestandardowego systemu tłumaczenia. Obszar roboczy może zawierać wiele projektów, modeli i dokumentów. Projekt jest otoką dla modelu, dokumentów i testów. Każdy projekt automatycznie zawiera wszystkie dokumenty, które są przekazywane do tego obszaru roboczego, który ma poprawną parę językową.
+description: W tym artykule opisano różnice między obszarem roboczym i projektem, a także kategorie projektu i etykiety dla usługi translatora niestandardowego.
 services: cognitive-services
 author: swmachan
 manager: nitinme
@@ -10,12 +10,12 @@ ms.subservice: translator-text
 ms.date: 02/21/2019
 ms.author: swmachan
 ms.topic: conceptual
-ms.openlocfilehash: 23db27ba7b51b0f5a312498dbcb1d0f2741245bb
-ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
+ms.openlocfilehash: d2f7903fa85c645357e46a753d1cb043e0893254
+ms.sourcegitcommit: 359930a9387dd3d15d39abd97ad2b8cb69b8c18b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68595345"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73647316"
 ---
 # <a name="what-is-a-custom-translator-workspace"></a>Co to jest obszar roboczy usługi tłumaczenia niestandardowego?
 
@@ -41,7 +41,7 @@ Translator niestandardowy umożliwia przypisanie etykiety projektu do projektu. 
 
 Etykieta projektu jest używana jako część IDKategorii. Jeśli etykieta projektu jest pozostawiona nieustawiona lub jest ustawiana identycznie między projektami, projekty o tej samej kategorii i *różne* pary języka będą współużytkować ten sam IDkategorii. Takie podejście jest korzystne, ponieważ umożliwia użytkownikowi lub klientowi przechodzenie między językami w przypadku korzystania z interfejsu API usługi Text translator bez obaw o IDKategorii, który jest unikatowy dla każdego projektu.
 
-Na przykład jeśli chciałem włączyć tłumaczenia w domenie technologii z języka angielskiego na francuski i z francuskiego na angielski, chcę utworzyć dwa projekty: jeden dla języka angielskiego —\> francuski i drugi dla języka\> francuskiego. Należy określić tę samą kategorię (technologię) dla obu i pozostawić pustą etykietę projektu. IDKategorii dla obu projektów jest zgodny, dlatego można wysyłać zapytania do interfejsu API w przypadku tłumaczeń w języku angielskim i francuskim bez konieczności modyfikowania mojego IDKategorii.
+Na przykład jeśli chcę włączyć tłumaczenia w domenie technologii z języka angielskiego na francuski i z francuskiego na angielski, chcę utworzyć dwa projekty: jeden dla języka angielskiego —\> francuski i jeden dla języka francuskiego\> w języku angielskim. Należy określić tę samą kategorię (technologię) dla obu i pozostawić pustą etykietę projektu. IDKategorii dla obu projektów jest zgodny, dlatego można wysyłać zapytania do interfejsu API w przypadku tłumaczeń w języku angielskim i francuskim bez konieczności modyfikowania mojego IDKategorii.
 
 Jeśli jesteś dostawcą usług językowych i chcesz obsłużyć wielu klientów z różnymi modelami, które zachowują ten sam atrybut kategorii i języka, użyj etykiety projektu w celu rozróżnienia klientów.
 

@@ -1,5 +1,5 @@
 ---
-title: Powiadomienie o migracji ruchu bramy dla Azure SQL Database | Microsoft Docs
+title: Powiadomienie o migracji ruchu bramy dla Azure SQL Database
 description: Artykuł zawiera powiadomienie dla użytkowników o migracji adresów IP bram Azure SQL Database Gateway
 services: sql-database
 ms.service: sql-database
@@ -10,12 +10,12 @@ author: rohitnayakmsft
 ms.author: rohitna
 ms.reviewer: vanto
 ms.date: 07/01/2019
-ms.openlocfilehash: a2064e0012abea237c1b4c0c6f7e35119c1aeff5
-ms.sourcegitcommit: 6013bacd83a4ac8a464de34ab3d1c976077425c7
+ms.openlocfilehash: 37c6c8e0f26d0281c3f6e76cb891fe14eb2ef04e
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/30/2019
-ms.locfileid: "71686800"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73690007"
 ---
 # <a name="azure-sql-database-traffic-migration-to-newer-gateways"></a>Azure SQL Database migrację ruchu do nowszych bram
 
@@ -31,10 +31,10 @@ Pierwsza część migracji ruchu do nowszych bram jest zaplanowana na **14 paźd
 - Europa Zachodnia
 - Wschodnie stany USA
 - Środkowe stany USA
-- Azja Południowo-wschodnia
-- Południowo-środkowe stany USA
+- Azja Południowo-Wschodnia
+- Środkowo-południowe stany USA
 - Europa Północna
-- Północno-środkowe stany USA
+- Środkowo-północne stany USA
 - Japonia Zachodnia
 - Japonia Wschodnia
 - Wschodnie stany USA 2

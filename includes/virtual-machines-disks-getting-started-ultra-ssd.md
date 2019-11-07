@@ -5,46 +5,29 @@ services: virtual-machines
 author: roygara
 ms.service: virtual-machines
 ms.topic: include
-ms.date: 08/15/2019
+ms.date: 11/04/2019
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: 3f910a3d0466153bd60fe23ef2f9f656cac292ee
-ms.sourcegitcommit: 083aa7cc8fc958fc75365462aed542f1b5409623
+ms.openlocfilehash: 838037804baad9105b4636934de957c2e5f3e810
+ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70919721"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73612130"
 ---
 # <a name="using-azure-ultra-disks"></a>Korzystanie z usługi Azure Ultra disks
 
 Usługa Azure Ultra disks oferuje wysoką przepływność, dużą liczbę IOPS i spójny magazyn dyskowy o małym opóźnieniu dla maszyn wirtualnych IaaS platformy Azure. Ta nowa oferta zapewnia najwyższą wydajność linii na tych samych poziomach dostępności co istniejące dyski. Jedną z głównych zalet funkcji Ultra disks jest możliwość dynamicznego zmieniania wydajności dysków SSD wraz z obciążeniami bez konieczności ponownego uruchamiania maszyn wirtualnych. Ultra dyski są odpowiednie dla obciążeń intensywnie korzystających z danych, takich jak SAP HANA, baz danych najwyższej warstwy i obciążeń intensywnie korzystających z transakcji.
 
-## <a name="check-if-your-subscription-has-access"></a>Sprawdź, czy Twoja subskrypcja ma dostęp
+## <a name="ga-scope-and-limitations"></a>Zakres i ograniczenia dotyczące GA
 
-Jeśli masz już konto w usłudze Ultra disks i chcesz sprawdzić, czy subskrypcja jest włączona dla Ultra disks, użyj jednego z następujących poleceń: 
+[!INCLUDE [managed-disks-ultra-disks-GA-scope-and-limitations](managed-disks-ultra-disks-GA-scope-and-limitations.md)]
 
-INTERFEJS`az feature show --namespace Microsoft.Compute --name UltraSSD`
+## <a name="determine-vm-size-and-region-availability"></a>Określanie rozmiaru maszyny wirtualnej i dostępności regionów
 
-PowerShell: `Get-AzProviderFeature -ProviderNamespace Microsoft.Compute -FeatureName UltraSSD`
+Aby korzystać z Ultra disks, należy określić, w której strefie dostępności znajduje się. Nie każdy region obsługuje wszystkie rozmiary maszyn wirtualnych za pomocą Ultra Disks. Aby określić, czy rozmiar regionu, strefy i maszyny wirtualnej obsługuje Ultra disks, Uruchom jedno z następujących poleceń, pamiętaj, aby najpierw zastąpić wartości **regionu**, **vmSize**i **subskrypcji** :
 
-Jeśli subskrypcja jest włączona, dane wyjściowe powinny wyglądać następująco:
-
-```bash
-{
-  "id": "/subscriptions/<yoursubID>/providers/Microsoft.Features/providers/Microsoft.Compute/features/UltraSSD",
-  "name": "Microsoft.Compute/UltraSSD",
-  "properties": {
-    "state": "Registered"
-  },
-  "type": "Microsoft.Features/providers/features"
-}
-```
-
-## <a name="determine-your-availability-zone"></a>Określanie strefy dostępności
-
-Po zatwierdzeniu należy określić strefę dostępności, w której ma być używane polecenie Ultra Disks. Uruchom jedno z następujących poleceń, aby określić strefę, do której ma zostać wdrożony dysk, przede wszystkim Zastąp wartości **region**, **vmSize**i **Subscription** :
-
-INTERFEJS
+Interfejs
 
 ```bash
 $subscription = "<yourSubID>"
@@ -62,26 +45,26 @@ $vmSize = "Standard_E64s_v3"
 (Get-AzComputeResourceSku | where {$_.Locations.Contains($region) -and ($_.Name -eq $vmSize) -and $_.LocationInfo[0].ZoneDetails.Count -gt 0})[0].LocationInfo[0].ZoneDetails
 ```
 
-Odpowiedź będzie wyglądać podobnie do poniższego formularza, gdzie X jest strefą używaną do wdrożenia w wybranym regionie. Wartość X może być 1, 2 lub 3. Obecnie tylko trzy regiony obsługują Ultra dyski: Wschodnie stany USA 2, Azja Południowo-Wschodnia i Europa Północna.
+Odpowiedź będzie wyglądać podobnie do poniższego formularza, gdzie X jest strefą używaną do wdrożenia w wybranym regionie. Wartość X może być 1, 2 lub 3.
 
 Zachowywanie wartości **strefy** reprezentuje strefę dostępności i będzie potrzebna do wdrożenia Ultra Disk.
 
-|ResourceType  |Name  |Location  |Strefy  |Ograniczenie  |Możliwość  |Value  |
+|ResourceType  |Nazwa  |Lokalizacja  |Strefy  |Ograniczenie  |Możliwości  |Wartość  |
 |---------|---------|---------|---------|---------|---------|---------|
-|dyski     |UltraSSD_LRS         |eastus2         |X         |         |         |         |
+|dysku     |UltraSSD_LRS         |eastus2         |X         |         |         |         |
 
 > [!NOTE]
-> Jeśli nie ma odpowiedzi z polecenia, rejestracja w funkcji jest nadal w stanie oczekiwania lub używasz starej wersji interfejsu wiersza polecenia lub programu PowerShell.
+> Jeśli nie ma odpowiedzi z polecenia, wybrany rozmiar maszyny wirtualnej nie jest obsługiwany w przypadku Ultra dysków w wybranym regionie.
 
 Teraz, gdy znasz strefę do wdrożenia, wykonaj kroki wdrażania opisane w tym artykule, aby wdrożyć maszynę wirtualną z dołączonym dyskiem Ultra lub dołączyć dysk Ultra do istniejącej maszyny wirtualnej.
 
 ## <a name="deploy-an-ultra-disk-using-azure-resource-manager"></a>Wdróż dysk Ultra przy użyciu Azure Resource Manager
 
-Najpierw Ustal rozmiar maszyny wirtualnej do wdrożenia. Obecnie tylko rodziny maszyn wirtualnych DsV3 i EsV3 obsługują Ultra Disks. Więcej informacji o tych rozmiarach maszyn wirtualnych znajduje się w drugiej tabeli w tym [blogu](https://azure.microsoft.com/blog/introducing-the-new-dv3-and-ev3-vm-sizes/) .
+Najpierw Ustal rozmiar maszyny wirtualnej do wdrożenia. Aby zapoznać się z listą obsługiwanych rozmiarów maszyn wirtualnych, zobacz sekcję dotyczącą [zakresu i ograniczeń](#ga-scope-and-limitations) .
 
 Jeśli chcesz utworzyć maszynę wirtualną z wieloma dyskami, zapoznaj się z przykładem [Tworzenie maszyny wirtualnej z wieloma dyskami](https://aka.ms/ultradiskArmTemplate).
 
-Jeśli zamierzasz użyć własnego szablonu, upewnij się, że **apiVersion** `Microsoft.Compute/virtualMachines` dla i `Microsoft.Compute/Disks` jest ustawiony jako `2018-06-01` (lub nowszy).
+Jeśli zamierzasz użyć własnego szablonu, upewnij się, że **apiVersion** dla `Microsoft.Compute/virtualMachines` i `Microsoft.Compute/Disks` są ustawione jako `2018-06-01` (lub nowsze).
 
 Ustaw jednostkę SKU dysku na **UltraSSD_LRS**, a następnie ustaw wartość dyskową, liczbę operacji we/wy na sekundę, strefę dostępności i przepływność w MB/s, aby utworzyć dysk o najwyższej wydajności.
 
@@ -89,11 +72,11 @@ Po aprowizacji maszyny wirtualnej można podzielić na partycje i sformatować d
 
 ## <a name="deploy-an-ultra-disk-using-cli"></a>Wdrażanie Ultra Disk przy użyciu interfejsu wiersza polecenia
 
-Najpierw Ustal rozmiar maszyny wirtualnej do wdrożenia. Obecnie tylko rodziny maszyn wirtualnych DsV3 i EsV3 obsługują Ultra Disks. Więcej informacji o tych rozmiarach maszyn wirtualnych znajduje się w drugiej tabeli w tym [blogu](https://azure.microsoft.com/blog/introducing-the-new-dv3-and-ev3-vm-sizes/) .
+Najpierw Ustal rozmiar maszyny wirtualnej do wdrożenia. Zapoznaj się z sekcją " [ga Scope and ograniczenia](#ga-scope-and-limitations) ", aby uzyskać listę obsługiwanych rozmiarów maszyn wirtualnych.
 
 Aby dołączyć dysk Ultra, należy utworzyć maszynę wirtualną, która może korzystać z usługi Ultra Disks.
 
-Zastąp lub ustaw **$VMName**, **$rgName**, **$diskname**, **$Location**, **$Password**, **$User** zmienne z własnymi wartościami. Ustaw **$Zone** na wartość strefy dostępności uzyskaną od [początku tego artykułu](#determine-your-availability-zone). Następnie uruchom następujące polecenie interfejsu wiersza polecenia, aby utworzyć maszynę wirtualną o niezwykle włączonej:
+Zastąp lub ustaw **$VMName**, **$rgName**, **$diskname**, **$Location**, **$Password**, **$User** zmienne z własnymi wartościami. Ustaw **$Zone** na wartość strefy dostępności uzyskaną od [początku tego artykułu](#determine-vm-size-and-region-availability). Następnie uruchom następujące polecenie interfejsu wiersza polecenia, aby utworzyć maszynę wirtualną o niezwykle włączonej:
 
 ```azurecli-interactive
 az vm create --subscription $subscription -n $vmname -g $rgname --image Win2016Datacenter --ultra-ssd-enabled true --zone $zone --authentication-type password --admin-password $password --admin-username $user --size Standard_D4s_v3 --location $location
@@ -152,9 +135,9 @@ az disk update `
 
 ## <a name="deploy-an-ultra-disk-using-powershell"></a>Wdrażanie programu Ultra Disk przy użyciu programu PowerShell
 
-Najpierw Ustal rozmiar maszyny wirtualnej do wdrożenia. Obecnie tylko rodziny maszyn wirtualnych DsV3 i EsV3 obsługują Ultra Disks. Więcej informacji o tych rozmiarach maszyn wirtualnych znajduje się w drugiej tabeli w tym [blogu](https://azure.microsoft.com/blog/introducing-the-new-dv3-and-ev3-vm-sizes/) .
+Najpierw Ustal rozmiar maszyny wirtualnej do wdrożenia. Zapoznaj się z sekcją " [ga Scope and ograniczenia](#ga-scope-and-limitations) ", aby uzyskać listę obsługiwanych rozmiarów maszyn wirtualnych. Aby uzyskać dodatkowe informacje o tych rozmiarach maszyn wirtualnych.
 
-Aby korzystać z usługi Ultra disks, należy utworzyć maszynę wirtualną, która może korzystać z usługi Ultra Disks. Zastąp lub Ustaw zmienne **$resourcegroup** i **$vmName** własnymi wartościami. Ustaw **$Zone** na wartość strefy dostępności uzyskaną od [początku tego artykułu](#determine-your-availability-zone). Następnie uruchom następujące polecenie [New-AzVm](/powershell/module/az.compute/new-azvm) , aby utworzyć maszynę wirtualną z funkcją Ultra Enabled:
+Aby korzystać z usługi Ultra disks, należy utworzyć maszynę wirtualną, która może korzystać z usługi Ultra Disks. Zastąp lub Ustaw zmienne **$resourcegroup** i **$vmName** własnymi wartościami. Ustaw **$Zone** na wartość strefy dostępności uzyskaną od [początku tego artykułu](#determine-vm-size-and-region-availability). Następnie uruchom następujące polecenie [New-AzVm](/powershell/module/az.compute/new-azvm) , aby utworzyć maszynę wirtualną z funkcją Ultra Enabled:
 
 ```powershell
 New-AzVm `

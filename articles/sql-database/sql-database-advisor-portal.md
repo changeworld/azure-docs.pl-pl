@@ -1,5 +1,5 @@
 ---
-title: Zastosuj zalecenia dotyczące wydajności — Azure SQL Database | Microsoft Docs
+title: Zastosuj zalecenia dotyczące wydajności — Azure SQL Database
 description: Użyj Azure Portal, aby znaleźć zalecenia dotyczące wydajności, które mogą zoptymalizować wydajność Azure SQL Database.
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: danimir
 ms.author: danil
 ms.reviewer: jrasnik, carlrab
 ms.date: 12/19/2018
-ms.openlocfilehash: b6bcb2650cd11ed97b6e81fda6aaafe7fca61202
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 24a590a80e768bba2e9b102bdf200e0cd96858f8
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68569590"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73691277"
 ---
 # <a name="find-and-apply-performance-recommendations"></a>Znajdź i Zastosuj zalecenia dotyczące wydajności
 
@@ -24,7 +24,7 @@ Możesz użyć Azure Portal, aby znaleźć zalecenia dotyczące wydajności, kt�
 
 ## <a name="viewing-recommendations"></a>Wyświetlanie zaleceń
 
-Aby wyświetlać i stosować zalecenia dotyczące wydajności, potrzebne są odpowiednie uprawnienia [kontroli dostępu opartej na rolach](../role-based-access-control/overview.md) na platformie Azure. Aby można było wykonać wszystkie akcje, wymagane są uprawnienia współautora bazy danych **SQL** do wyświetlania zaleceń i **właściciel** **bazy danych SQL** . Utwórz lub upuść indeksy i Anuluj tworzenie indeksu.
+Aby wyświetlać i stosować zalecenia dotyczące wydajności, potrzebne są odpowiednie uprawnienia [kontroli dostępu opartej na rolach](../role-based-access-control/overview.md) na platformie Azure. Aby można było wykonać wszystkie **akcje, wymagane**są uprawnienia współautora bazy danych **SQL** do wyświetlania zaleceń i **właściciel** **bazy danych SQL** . Utwórz lub upuść indeksy i Anuluj tworzenie indeksu.
 
 Wykonaj następujące kroki, aby znaleźć zalecenia dotyczące wydajności na Azure Portal:
 
@@ -34,14 +34,14 @@ Wykonaj następujące kroki, aby znaleźć zalecenia dotyczące wydajności na A
 
 Zalecenia dotyczące wydajności są wyświetlane w tabeli podobnej do przedstawionej na poniższej ilustracji:
 
-![Zalecenia](./media/sql-database-advisor-portal/recommendations.png)
+![Polecane elementy](./media/sql-database-advisor-portal/recommendations.png)
 
 Zalecenia są sortowane według ich potencjalnego wpływu na wydajność na następujące kategorie:
 
 | Wpływ | Opis |
 |:--- |:--- |
 | Wysoka |Zalecenia o dużym wpływie powinny zapewnić najbardziej znaczący wpływ na wydajność. |
-| Średni |Zalecenia dotyczące średniego wpływu powinny poprawić wydajność, ale nie w znaczący sposób. |
+| Medium |Zalecenia dotyczące średniego wpływu powinny poprawić wydajność, ale nie w znaczący sposób. |
 | Małe |Zalecenia dotyczące niskiego wpływu powinny zapewnić lepszą wydajność niż bez, ale ulepszenia mogą nie być znaczące. |
 
 
@@ -53,7 +53,7 @@ Można również wyświetlić stan operacji historycznych. Wybierz zalecenie lub
 
 Oto przykład rekomendacji "Utwórz indeks" w Azure Portal.
 
-![Utwórz indeks](./media/sql-database-advisor-portal/sql-database-performance-recommendation.png)
+![tworzenie indeksu](./media/sql-database-advisor-portal/sql-database-performance-recommendation.png)
 
 ## <a name="applying-recommendations"></a>Stosowanie zaleceń
 Azure SQL Database zapewnia pełną kontrolę nad sposobem włączania zaleceń przy użyciu dowolnej z następujących trzech opcji: 
@@ -80,8 +80,8 @@ Wybrane zalecenie jest stosowane do bazy danych.
 
 Jeśli lista zaleceń zawiera elementy, które chcesz usunąć z listy, możesz odrzucić zalecenie:
 
-1. Wybierz zalecenie z listy zaleceń, aby otworzyć Szczegóły.
-2. Na stronie **szczegółów** kliknij pozycję Odrzuć.
+1. Wybierz zalecenie z listy **zaleceń** , aby otworzyć Szczegóły.
+2. Na stronie **szczegółów** kliknij pozycję **Odrzuć** .
 
 W razie potrzeby można dodać odrzucone elementy z listy **rekomendacje** :
 
@@ -130,12 +130,12 @@ Zastosowanie zalecenia może nie być chwilowo wykonywane. Portal zawiera szczeg
 | Stan | Opis |
 |:--- |:--- |
 | Oczekujące |Odebrano polecenie zastosowania zalecenia i zaplanowano jego wykonanie. |
-| Wykonywanie |Zalecenie jest stosowane. |
-| Sprawdzanie poprawności |Zalecenie zostało pomyślnie zastosowane i usługa mierzy korzyści. |
+| Operacji |Zalecenie jest stosowane. |
+| Ponownego |Zalecenie zostało pomyślnie zastosowane i usługa mierzy korzyści. |
 | Powodzenie |Zalecenie zostało pomyślnie zastosowane i korzyści zostały zmierzone. |
-| Błąd |Wystąpił błąd w trakcie procesu stosowania zalecenia. Może to być problem przejściowy lub prawdopodobnie zmiana schematu tabeli, a skrypt nie jest już prawidłowy. |
-| Cofanie |Zalecenie zostało zastosowane, ale zostało uznane za niewykonane i jest automatycznie przywracane. |
-| Cofnięte |Zalecenie zostało cofnięte. |
+| Błąd |Wystąpił błąd podczas procesu stosowania zalecenia. Może to być problem przejściowy lub prawdopodobnie zmiana schematu tabeli, a skrypt nie jest już prawidłowy. |
+| Przywracanie |Zalecenie zostało zastosowane, ale zostało uznane za niewykonane i jest automatycznie przywracane. |
+| Przywrócono |Zalecenie zostało cofnięte. |
 
 Kliknij rekomendację w procesie z listy, aby wyświetlić więcej informacji:
 
@@ -157,7 +157,7 @@ Po pomyślnym wdrożeniu zaleceń (obecnie, operacji indeksowania i zaleceń Spa
 ## <a name="summary"></a>Podsumowanie
 Azure SQL Database zawiera zalecenia dotyczące poprawy wydajności usługi SQL Database. Dostarczając skrypty T-SQL, uzyskasz pomoc w optymalizowaniu bazy danych i ostatecznie ulepszaniu wydajności zapytań.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 Monitoruj swoje rekomendacje i Kontynuuj ich stosowanie w celu udoskonalenia wydajności. Obciążenia baz danych są dynamiczne i zmieniają się w sposób ciągły. Azure SQL Database kontynuuje monitorowanie i udostępnianie zaleceń, które mogą poprawić wydajność bazy danych. 
 
 * Zobacz [Automatyczne dostrajanie](sql-database-automatic-tuning.md) , aby dowiedzieć się więcej na temat dostrajania automatycznego w Azure SQL Database.

@@ -1,5 +1,5 @@
 ---
-title: SQL Database odzyskiwania po awarii | Microsoft Docs
+title: SQL Database odzyskiwania po awarii
 description: Dowiedz się, jak odzyskać bazę danych z regionalnego przestoju lub niepowodzenia w przypadku korzystania z Azure SQL Database aktywnej replikacji geograficznej oraz możliwości przywracania geograficznego.
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: anosov1960
 ms.author: sashan
 ms.reviewer: mathoma, carlrab
 ms.date: 06/21/2019
-ms.openlocfilehash: 95814805d0bcb2532c09f4f68c6b8d97c3b8c6a5
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: bc4968541c29e3bf18eb4caca2abe648d17342a4
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68568821"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73690601"
 ---
 # <a name="restore-an-azure-sql-database-or-failover-to-a-secondary"></a>Przywracanie Azure SQL Database lub przełączenia w tryb failover do pomocniczego
 
@@ -27,7 +27,7 @@ Azure SQL Database oferuje następujące możliwości odzyskiwania po awarii:
 - [Przywracanie geograficzne](sql-database-recovery-using-backups.md#point-in-time-restore)
 - [Strefowo nadmiarowe bazy danych](sql-database-high-availability.md)
 
-Aby dowiedzieć się więcej o scenariuszach ciągłości biznesowej i funkcjach obsługujących te [](sql-database-business-continuity.md)scenariusze, zobacz ciągłość działania.
+Aby dowiedzieć się więcej o scenariuszach ciągłości biznesowej i funkcjach obsługujących te scenariusze, zobacz [ciągłość](sql-database-business-continuity.md)działania.
 
 > [!NOTE]
 > W przypadku używania strefowo nadmiarowych baz danych lub Krytyczne dla działania firmy, proces odzyskiwania jest zautomatyzowany, a pozostała część tego materiału nie ma zastosowania.
@@ -83,13 +83,13 @@ Użyj jednej z następujących przewodników, aby przełączyć się w tryb fail
 
 ## <a name="recover-using-geo-restore"></a>Odzyskaj przy użyciu funkcji przywracania geograficznego
 
-Jeśli przestój aplikacji nie powoduje odpowiedzialności biznesowej, można użyć funkcji [przywracania](sql-database-recovery-using-backups.md) geograficznego jako metody odzyskiwania baz danych aplikacji. Tworzy kopię bazy danych z jej najnowszej geograficznie nadmiarowej kopii zapasowej.
+Jeśli przestój aplikacji nie powoduje odpowiedzialności biznesowej, można użyć funkcji [przywracania geograficznego](sql-database-recovery-using-backups.md) jako metody odzyskiwania baz danych aplikacji. Tworzy kopię bazy danych z jej najnowszej geograficznie nadmiarowej kopii zapasowej.
 
 ## <a name="configure-your-database-after-recovery"></a>Skonfiguruj bazę danych po odzyskaniu
 
 Jeśli używasz funkcji przywracania geograficznego do odzyskiwania po awarii, musisz upewnić się, że połączenie z nowymi bazami danych jest prawidłowo skonfigurowane, aby można było wznowić normalną funkcję aplikacji. Jest to lista kontrolna zadań umożliwiających przywrócenie gotowej produkcji bazy danych.
 
-### <a name="update-connection-strings"></a>Zaktualizuj parametry połączenia
+### <a name="update-connection-strings"></a>Aktualizowanie parametrów połączenia
 
 Ponieważ odzyskana baza danych znajduje się na innym serwerze, należy zaktualizować parametry połączenia aplikacji, aby wskazywały na ten serwer.
 
@@ -97,11 +97,11 @@ Aby uzyskać więcej informacji na temat zmiany parametrów połączenia, zobacz
 
 ### <a name="configure-firewall-rules"></a>Konfigurowanie reguł zapory
 
-Należy upewnić się, że reguły zapory skonfigurowane na serwerze i w bazie danych są zgodne z tymi, które zostały skonfigurowane na serwerze podstawowym i w podstawowej bazie danych. Aby uzyskać więcej informacji, zobacz [jak: Skonfiguruj ustawienia zapory (Azure SQL Database)](sql-database-configure-firewall-settings.md).
+Należy upewnić się, że reguły zapory skonfigurowane na serwerze i w bazie danych są zgodne z tymi, które zostały skonfigurowane na serwerze podstawowym i w podstawowej bazie danych. Aby uzyskać więcej informacji, zobacz [How to: Configure firewall Settings (Azure SQL Database)](sql-database-configure-firewall-settings.md).
 
 ### <a name="configure-logins-and-database-users"></a>Konfigurowanie logowania i użytkowników bazy danych
 
-Musisz się upewnić, że wszystkie logowania używane przez aplikację istnieją na serwerze, na którym jest obsługiwana odzyskana baza danych. Aby uzyskać więcej informacji, zobacz [Konfiguracja zabezpieczeń na potrzeby replikacji](sql-database-geo-replication-security-config.md)geograficznej.
+Musisz się upewnić, że wszystkie logowania używane przez aplikację istnieją na serwerze, na którym jest obsługiwana odzyskana baza danych. Aby uzyskać więcej informacji, zobacz [Konfiguracja zabezpieczeń na potrzeby replikacji geograficznej](sql-database-geo-replication-security-config.md).
 
 > [!NOTE]
 > Podczas przechodzenia do szczegółów odzyskiwania po awarii należy skonfigurować i przetestować reguły zapory serwera oraz nazwy logowania (i ich uprawnienia). Te obiekty na poziomie serwera i ich konfiguracje mogą nie być dostępne podczas przestoju.
@@ -116,7 +116,7 @@ Aby uzyskać więcej informacji na temat reguł alertów bazy danych, zobacz [Od
 
 Jeśli do uzyskania dostępu do bazy danych jest wymagana inspekcja, należy włączyć inspekcję po odzyskaniu bazy danych. Aby uzyskać więcej informacji, zobacz [Inspekcja bazy danych](sql-database-auditing.md).
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 - Aby dowiedzieć się więcej o Azure SQL Database zautomatyzowanych kopii zapasowych, zobacz [SQL Database zautomatyzowane kopie zapasowe](sql-database-automated-backups.md)
 - Aby dowiedzieć się więcej o scenariuszach związanych z planowaniem i odzyskiwaniem ciągłości biznesowej, zobacz [scenariusze ciągłości](sql-database-business-continuity.md)

@@ -9,16 +9,16 @@ ms.author: estfan
 ms.reviewer: klam, LADocs
 ms.topic: article
 ms.date: 07/19/2019
-ms.openlocfilehash: e2b866ddd888261e7d8817c73952d4830a4f8147
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
-ms.translationtype: HT
+ms.openlocfilehash: cd7b8c3de46cb88833f27cbebb7d07f944a711e4
+ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 11/04/2019
-ms.locfileid: "73464007"
+ms.locfileid: "73580832"
 ---
 # <a name="limits-and-configuration-information-for-azure-logic-apps"></a>Informacje o limitach i konfiguracji Azure Logic Apps
 
-W tym artykule opisano limity i szczegóły konfiguracji dotyczące tworzenia i uruchamiania zautomatyzowanych przepływów pracy przy użyciu Azure Logic Apps. Aby uzyskać Microsoft Flow, zobacz [limity i konfiguracja w Microsoft Flow](https://docs.microsoft.com/flow/limits-and-config).
+W tym artykule opisano limity i szczegóły konfiguracji dotyczące tworzenia i uruchamiania zautomatyzowanych przepływów pracy przy użyciu Azure Logic Apps. Aby uzyskać automatyzację, zobacz [limity i konfiguracja w programie do automatyzacji](https://docs.microsoft.com/flow/limits-and-config).
 
 <a name="definition-limits"></a>
 
@@ -213,7 +213,7 @@ Poniżej przedstawiono limity liczby artefaktów dla każdej warstwy konta integ
 |----------|------|-------|----------|
 | Umowy handlowe EDI | 10 | 1 | 1000 |
 | Partnerzy handlowi EDI | 25 | 2 | 1000 |
-| Mapy | 25 | 500 | 1000 |
+| Maps | 25 | 500 | 1000 |
 | Schematy | 25 | 500 | 1000 |
 | Zestawy | 10 | 25 | 1000 |
 | Certyfikaty | 25 | 2 | 1000 |
@@ -267,7 +267,7 @@ Po usunięciu aplikacji logiki nie są tworzone wystąpienia nowych przebiegów.
 Adresy IP używane przez Azure Logic Apps dla wywołań przychodzących i wychodzących zależą od regionu, w którym znajduje się aplikacja logiki. *Wszystkie* Aplikacje logiki, które znajdują się w tym samym regionie, używają tych samych zakresów adresów IP.
 
 > [!NOTE]
-> Niektóre Microsoft Flow wywołania, takie jak żądania **http** i **http + openapi** , przechodzą bezpośrednio przez usługę Azure Logic Apps i pochodzą z adresów IP, które są wymienione w tym miejscu. Aby uzyskać więcej informacji na temat adresów IP używanych przez Microsoft Flow, zobacz [limity i konfiguracja w Microsoft Flow](https://docs.microsoft.com/flow/limits-and-config#ip-address-configuration).
+> Niektóre wywołania narzędzia do automatyzowania, takie jak żądania **http** i **http + openapi** , przechodzą bezpośrednio przez usługę Azure Logic Apps i pochodzą z adresów IP wymienionych poniżej. Aby uzyskać więcej informacji na temat adresów IP używanych przez program do automatyzowania, zobacz [limity i konfiguracja w programie do automatyzacji](https://docs.microsoft.com/flow/limits-and-config#ip-address-configuration).
 
 * Aby zapewnić obsługę wywołań tworzonych przez aplikacje logiki bezpośrednio przy użyciu [protokołu HTTP](../connectors/connectors-native-http.md), [http + Swagger](../connectors/connectors-native-http-swagger.md)i innych żądań HTTP, należy skonfigurować zaporę ze *wszystkimi* adresami IP [przychodzącymi](#inbound) *i* [wychodzącymi](#outbound) , które są używane przez Logic Apps usługi, w zależności od regionu, w którym znajdują się Aplikacje logiki. Te adresy są wyświetlane w obszarze nagłówki **przychodzące** i **wychodzące** w tej sekcji i są sortowane według regionów.
 
@@ -306,12 +306,12 @@ Adresy IP używane przez Azure Logic Apps dla wywołań przychodzących i wychod
 | Japonia Zachodnia | 40.74.68.85, 40.74.81.13, 40.74.85.215, 40.74.140.173 |
 | Korea Środkowa | 52.231.14.182, 52.231.103.142, 52.231.39.29, 52.231.14.42 |
 | Korea Południowa | 52.231.166.168, 52.231.163.55, 52.231.163.150, 52.231.192.64 |
-| Północno-środkowe stany USA | 65.52.9.64, 65.52.211.164, 168.62.249.81, 157.56.12.202 |
+| Środkowo-północne stany USA | 65.52.9.64, 65.52.211.164, 168.62.249.81, 157.56.12.202 |
 | Europa Północna | 13.79.173.49, 40.112.90.39, 52.169.218.253, 52.169.220.174 |
 | Środkowo-południowe stany USA | 13.65.98.39, 13.84.41.46, 13.84.43.45, 40.84.138.132 |
 | Indie Południowe | 52.172.9.47, 52.172.49.43, 52.172.51.140, 104.211.225.152 |
 | Azja Południowo-Wschodnia | 52.163.93.214, 52.187.65.81, 52.187.65.155, 104.215.181.6 |
-| Zachodnio-środkowe stany USA | 13.78.137.247, 52.161.8.128, 52.161.19.82, 52.161.26.172 |
+| Środkowo-zachodnie stany USA | 13.78.137.247, 52.161.8.128, 52.161.19.82, 52.161.26.172 |
 | Europa Zachodnia | 13.95.155.53, 52.174.54.218, 52.174.49.6, 51.144.176.185 |
 | Indie Zachodnie | 104.211.157.237, 104.211.164.25, 104.211.164.112, 104.211.165.81 |
 | Zachodnie stany USA | 13.91.252.184, 52.160.90.237, 138.91.188.137, 157.56.160.212 |
@@ -342,12 +342,12 @@ Adresy IP używane przez Azure Logic Apps dla wywołań przychodzących i wychod
 | Japonia Zachodnia | 40.74.64.207, 40.74.68.85, 40.74.74.21, 40.74.76.213, 40.74.77.205, 40.74.140.4, 104.214.137.243, 138.91.26.45 | 40.74.100.224 - 40.74.100.239, 104.215.61.248 |
 | Korea Środkowa | 52.231.14.11, 52.231.14.219, 52.231.15.6, 52.231.10.111, 52.231.14.223, 52.231.77.107, 52.231.8.175, 52.231.9.39 | 52.141.36.214, 52.231.18.208 - 52.231.18.223 |
 | Korea Południowa | 52.231.204.74, 52.231.188.115, 52.231.189.221, 52.231.203.118, 52.231.166.28, 52.231.153.89, 52.231.155.206, 52.231.164.23 | 52.231.163.10, 52.231.147.0 - 52.231.147.15 |
-| Północno-środkowe stany USA | 52.162.208.216, 52.162.213.231, 65.52.8.225, 65.52.9.96, 65.52.10.183, 157.55.210.61, 157.55.212.238, 168.62.248.37 | 52.162.107.160 - 52.162.107.175, 52.162.242.161 |
+| Środkowo-północne stany USA | 52.162.208.216, 52.162.213.231, 65.52.8.225, 65.52.9.96, 65.52.10.183, 157.55.210.61, 157.55.212.238, 168.62.248.37 | 52.162.107.160 - 52.162.107.175, 52.162.242.161 |
 | Europa Północna | 40.112.92.104, 40.112.95.216, 40.113.1.181, 40.113.3.202, 40.113.4.18, 40.113.12.95, 52.178.165.215, 52.178.166.21 | 13.69.227.208 - 13.69.227.223, 52.178.150.68 |
 | Środkowo-południowe stany USA | 13.65.82.17, 13.66.52.232, 23.100.124.84, 23.100.127.172, 23.101.183.225, 70.37.54.122, 70.37.50.6, 104.210.144.48 | 104.214.19.48 - 104.214.19.63, 13.65.86.57 |
 | Indie Południowe | 52.172.50.24, 52.172.52.0, 52.172.55.231, 104.211.227.229, 104.211.229.115, 104.211.230.126, 104.211.230.129, 104.211.231.39 | 40.78.194.240 - 40.78.194.255, 13.71.125.22 |
 | Azja Południowo-Wschodnia | 13.67.91.135, 13.67.107.128, 13.67.110.109, 13.76.4.194, 13.76.5.96, 13.76.133.155, 52.163.228.93, 52.163.230.166 | 13.67.8.240 - 13.67.8.255, 52.187.68.19 |
-| Zachodnio-środkowe stany USA | 13.78.129.20, 13.78.137.179, 13.78.141.75, 13.78.148.140, 13.78.151.161, 52.161.18.218, 52.161.9.108, 52.161.27.190 | 13.71.195.32 - 13.71.195.47, 52.161.102.22 |
+| Środkowo-zachodnie stany USA | 13.78.129.20, 13.78.137.179, 13.78.141.75, 13.78.148.140, 13.78.151.161, 52.161.18.218, 52.161.9.108, 52.161.27.190 | 13.71.195.32 - 13.71.195.47, 52.161.102.22 |
 | Europa Zachodnia | 40.68.222.65, 40.68.209.23, 13.95.147.65, 23.97.218.130, 51.144.182.201, 23.97.211.179, 104.45.9.52, 23.97.210.126 | 13.69.64.208 - 13.69.64.223, 40.115.50.13, 52.174.88.118 |
 | Indie Zachodnie | 104.211.154.7, 104.211.154.59, 104.211.156.153, 104.211.158.123, 104.211.158.127, 104.211.162.205, 104.211.164.80, 104.211.164.136 | 104.211.146.224 - 104.211.146.239, 104.211.189.218 |
 | Zachodnie stany USA | 40.83.164.80, 40.118.244.241, 40.118.241.243, 52.160.92.112, 104.42.38.32, 104.42.49.145, 157.56.162.53, 157.56.167.147 | 40.112.243.160 - 40.112.243.175, 104.42.122.49 |

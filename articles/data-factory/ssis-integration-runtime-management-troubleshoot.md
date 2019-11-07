@@ -1,5 +1,5 @@
 ---
-title: Rozwiązywanie problemów z usługą SSIS Integration Runtime Management w programie Azure Data Factory | Microsoft Docs
+title: 'Rozwiązywanie problemów z usługą SSIS Integration Runtime Management w programie Azure Data Factory '
 description: Ten artykuł zawiera wskazówki dotyczące rozwiązywania problemów z zarządzaniem Integration Runtime SSIS (SSIS IR)
 services: data-factory
 documentationcenter: ''
@@ -12,18 +12,18 @@ author: chinadragon0515
 ms.author: dashe
 ms.reviewer: sawinark
 manager: craigg
-ms.openlocfilehash: d16267e104d753770dc40ce99b0f56e5c749b2d0
-ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
+ms.openlocfilehash: 3452fc2274eb646acb19c0e6a203ebadcb81cad5
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/22/2019
-ms.locfileid: "72752165"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73684026"
 ---
 # <a name="troubleshoot-ssis-integration-runtime-management-in-azure-data-factory"></a>Rozwiązywanie problemów z usługą SSIS Integration Runtime Management w programie Azure Data Factory
 
 Ten artykuł zawiera wskazówki dotyczące rozwiązywania problemów z zarządzaniem w systemie Azure — SQL Server Integration Services (SSIS) Integration Runtime (IR), znane także jako SSIS IR.
 
-## <a name="overview"></a>Przegląd
+## <a name="overview"></a>Omówienie
 
 W przypadku napotkania dowolnego problemu podczas aprowizacji lub anulowania obsługi usługi SSIS IR zostanie wyświetlony komunikat o błędzie w portalu Microsoft Azure Data Factory lub zwrócony błąd z polecenia cmdlet programu PowerShell. Błąd jest zawsze wyświetlany w formacie kodu błędu z szczegółowym komunikatem o błędzie.
 
@@ -105,7 +105,7 @@ Ten błąd oznacza, że wykonanie skryptu instalacji niestandardowej (main.cmd) 
 
 ### <a name="customsetupscripttimeout"></a>CustomSetupScriptTimeout
 
-Ten błąd wskazuje, że upłynął limit czasu wykonywania skryptu instalacji niestandardowej. Upewnij się, że skrypt może być wykonywany w trybie dyskretnym i nie potrzebujesz interaktywnych danych wejściowych i upewnij się, że kontener obiektów BLOB zawiera tylko niezbędne pliki instalacji niestandardowej. Zalecane jest najpierw przetestowanie skryptu na komputerze lokalnym. Należy również sprawdzić dzienniki wykonywania instalacji niestandardowej w kontenerze obiektów blob. Limit czasu instalacji niestandardowej jest przekraczany po 45 minutach, a maksymalny okres obejmuje czas pobierania wszystkich plików z kontenera i instalowania ich w środowisku SSIS IR. Jeśli potrzebujesz dłuższego okresu, zgłoś bilet pomocy technicznej.
+Ten błąd wskazuje, że upłynął limit czasu wykonywania skryptu instalacji niestandardowej. Upewnij się, że skrypt może być wykonywany w trybie dyskretnym i nie potrzebuje żadnej interakcji. Upewnij się również, że kontener obiektów blob zawiera tylko niezbędne pliki instalacji niestandardowej. Zalecane jest przetestowanie skryptu najpierw na komputerze lokalnym. Należy również sprawdzić dzienniki wykonywania instalacji niestandardowej w kontenerze obiektów blob. Limit czasu instalacji niestandardowej jest przekraczany po 45 minutach, a maksymalny okres obejmuje czas pobierania wszystkich plików z kontenera i instalowania ich w środowisku SSIS IR. Jeśli potrzebujesz dłuższego okresu, zgłoś bilet pomocy technicznej.
 
 ### <a name="customsetupscriptloguploadfailure"></a>CustomSetupScriptLogUploadFailure
 

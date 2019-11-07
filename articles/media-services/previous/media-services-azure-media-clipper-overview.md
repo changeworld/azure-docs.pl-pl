@@ -1,69 +1,69 @@
 ---
-title: Twórz klipy z usługi Azure Media Clipper | Dokumentacja firmy Microsoft
-description: Omówienie usługi Azure Media Clipper, narzędzia do tworzenia nośnika klipy z zasobów
+title: Tworzenie klipów za pomocą usługi Azure Media Clipper | Microsoft Docs
+description: Omówienie usługi Azure Media Clipper — narzędzia do tworzenia klipów multimedialnych z zasobów
 services: media-services
-keywords: clip;subclip;encoding;media
-author: dbgeorge
-manager: jasonsue
-ms.author: dwgeo
+keywords: Clip; subclip; kodowanie; nośnik
+author: Juliako
+manager: femila
+ms.author: juliako
 ms.date: 03/14/2019
 ms.topic: article
 ms.service: media-services
-ms.openlocfilehash: 35f1f359b44af00000ccd9047673b80ca541d376
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 51f85dffd48e451b477018ef20491f8619a30f25
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61243884"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73685016"
 ---
-# <a name="create-clips-with-azure-media-clipper"></a>Twórz klipy z usługi Azure Media Clipper 
+# <a name="create-clips-with-azure-media-clipper"></a>Tworzenie klipów za pomocą usługi Azure Media Clipper 
 
-Usługa Azure Media Clipper jest bezpłatne biblioteki JavaScript, która umożliwia projektantom sieci web użytkownikom ich z interfejsem do tworzenia klipów multimedialnych. To narzędzie może zostać włączone do dowolnej strony sieci web i udostępnia interfejsy API do ładowania zasobów i przesyłanie zadań przycinania.
+Azure Media Clipper to bezpłatna biblioteka języka JavaScript, która umożliwia deweloperom sieci Web udostępnianie użytkownikom interfejsu do tworzenia klipów multimedialnych. To narzędzie można zintegrować z dowolną stroną sieci Web i dostarcza interfejsy API do ładowania zasobów i przesyłania wycinków zadań.
 
 Usługa Azure Media Clipper umożliwia:
-- TRIM plansz przed i po planszy z na żywo archiwa 
-- Redagowanie wideo najważniejsze informacje z wydarzeń na żywo usługi AMS, archiwów na żywo lub pliki wideo na żądanie fMP4 
-- Łączenie filmy wideo z wielu źródeł 
-- Tworzy podsumowanie klipy z zasobów multimedialnych usługi AMS 
-- Klip wideo z dokładności ramce 
-- Generowanie filtry manifestów dynamicznych istniejące na żywo oraz wideo na żądanie zasobów z dokładnością grupy z obrazów (GOP) 
-- Tworzyć zadania kodowania względem zasobów w konto usługi media services
+- Przytnij przedplanszowe i końcowe z archiwów na żywo 
+- Twórz fragmenty wideo ze zdarzeń na żywo, archiwów na żywo lub plików VOD fMP4 
+- Łączenie filmów wideo z wielu źródeł 
+- Tworzenie klipów podsumowujących z zasobów multimediów usługi AMS 
+- Klip wideo z dokładnością do ramek 
+- Generuj filtry manifestu dynamicznego dla istniejących elementów zawartości na żywo i VOD z dokładnością do grup obrazów (grupę GOP) 
+- Tworzenie zadań kodowania względem zasobów na koncie usługi Media Services
 
-Aby poprosić o nowe funkcje, pomysły lub opinie, Prześlij, aby [UserVoice dla usługi Azure Media Services](https://aka.ms/amsvoice/). Jeśli masz i określonych problemów, pytania lub znajdowania usterek, docelowej usługi Media Services zespołu linii w amcinfo@microsoft.com.
+Aby zażądać nowych funkcji, podaj pomysły lub opinie, Prześlij do witryny [UserVoice, aby uzyskać Azure Media Services](https://aka.ms/amsvoice/). W przypadku wystąpienia i określonych problemów, pytań lub wyszukania błędów Porzuć zespół Media Services linię w amcinfo@microsoft.com.
 
-Na poniższym obrazie przedstawiono interfejs Clipper: ![Azure Media Clipper](media/media-services-azure-media-clipper-overview/media-services-azure-media-clipper-interface.PNG)
+Na poniższej ilustracji przedstawiono interfejs Clipper: ![Azure Media Clipper](media/media-services-azure-media-clipper-overview/media-services-azure-media-clipper-interface.PNG)
 
 ## <a name="release-notes"></a>Informacje o wersji
-Zobacz Clipper wpis w blogu, różne znane problemy i dziennika zmian, aby uzyskać najnowszą wersję Clipper następującą listę:
+Na poniższej liście znajduje się wpis w blogu dla programu Clipper, różne znane problemy i dziennik zmian dla najnowszej wersji programu Clipper:
 - [Wpis w blogu](https://azure.microsoft.com/blog/azure-media-clipper/)
 - [Lista znanych problemów](https://amp.azure.net/libs/amc/latest/docs/known_issues.html)
-- [Changelog](https://amp.azure.net/libs/amc/latest/docs/changelog.html)
+- [Dziennika zmian](https://amp.azure.net/libs/amc/latest/docs/changelog.html)
 
-## <a name="browser-support"></a>Obsługa przeglądarek
-Usługa Azure Media Clipper został skompilowany przy użyciu nowoczesnych technologii HTML5 i obsługuje następujące przeglądarki:
+## <a name="browser-support"></a>Obsługa przeglądarki
+Usługa Azure Media Clipper została skompilowana przy użyciu nowoczesnych technologii HTML5 i obsługuje następujące przeglądarki:
 
-- Microsoft Edge 13+
-- Internet Explorer 11+
-- Chrome 54+
-- Safari 10+
-- Firefox 50+
+- Microsoft Edge 13 +
+- Internet Explorer 11 +
+- Chrome 54 +
+- Przeglądarka Safari 10 +
+- Firefox 50 +
 
 > [!NOTE]
-> Tylko HTML5 odtwarzania strumieni z usługi Azure Media Services jest obecnie obsługiwane.
+> Obecnie obsługiwane jest tylko odtwarzanie w języku HTML5 strumieni z Azure Media Services.
 
 ## <a name="language-support"></a>Obsługa języków
-Element widget Clipper jest dostępna w następujących językach w 18:
+Widżet Clipper jest dostępny w następujących 18 językach:
 - Chiński (uproszczony)
 - Chiński (tradycyjny)
 - Czeski
-- Holenderski, flamandzki
+- Holenderski, Flemish
 - Polski
 - Francuski
 - Niemiecki
 - Węgierski
 - Włoski
 - Japoński
-- koreański
+- Koreański
 - Polski
 - Portugalski (Brazylia)
 - Portugalski (Portugalia)
@@ -72,5 +72,5 @@ Element widget Clipper jest dostępna w następujących językach w 18:
 - Szwedzki
 - Turecki
 
-## <a name="next-steps"></a>Kolejne kroki
-Aby rozpocząć korzystanie z usługi Azure Media Clipper przeczytaj [wprowadzenie](media-services-azure-media-clipper-getting-started.md) artykuł, aby uzyskać szczegółowe informacje na temat wdrażania elementu widget.
+## <a name="next-steps"></a>Następne kroki
+Aby rozpocząć korzystanie z usługi Azure Media Clipper, przeczytaj artykuł [wprowadzenie](media-services-azure-media-clipper-getting-started.md) , aby uzyskać szczegółowe informacje na temat sposobu wdrażania widżetu.

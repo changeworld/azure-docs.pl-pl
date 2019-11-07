@@ -1,5 +1,5 @@
 ---
-title: Tworzenie kontenera profilu FSLogix dla puli hostów przy użyciu Azure NetApp Files w programie Virtual Desktop systemu Windows — Azure
+title: Kontenery profilu FSLogix NetApp Windows Virtual Desktop — Azure
 description: Jak utworzyć kontener profilu FSLogix przy użyciu Azure NetApp Files na pulpicie wirtualnym systemu Windows.
 services: virtual-desktop
 author: Heidilohr
@@ -7,12 +7,12 @@ ms.service: virtual-desktop
 ms.topic: conceptual
 ms.date: 08/26/2019
 ms.author: helohr
-ms.openlocfilehash: 4e714b872ae43eb313efe549c77f5610342f430c
-ms.sourcegitcommit: 9dec0358e5da3ceb0d0e9e234615456c850550f6
+ms.openlocfilehash: 1f5d1050815961f51c2bb1cfce256b1ea37d3ac1
+ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/14/2019
-ms.locfileid: "72311624"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73605775"
 ---
 # <a name="create-an-fslogix-profile-container-for-a-host-pool-using-azure-netapp-files"></a>Tworzenie kontenera profilu FSLogix dla puli hostów przy użyciu Azure NetApp Files
 
@@ -44,7 +44,7 @@ Przed utworzeniem kontenera profilu FSLogix dla puli hostów należy:
 
 Aby rozpocząć, musisz skonfigurować konto Azure NetApp Files.
 
-1. Zaloguj się do [portalu Azure](https://portal.azure.com). Upewnij się, że Twoje konto ma uprawnienia współautora lub administrator.
+1. Zaloguj się w witrynie [Azure Portal](https://portal.azure.com). Upewnij się, że Twoje konto ma uprawnienia współautora lub administrator.
 
 2. Wybierz **ikonę Azure Cloud Shell** po prawej stronie paska wyszukiwania, aby otworzyć Azure Cloud Shell.
 
@@ -134,7 +134,7 @@ Następnie musisz utworzyć nowy wolumin.
     - W obszarze **Sieć wirtualna**wybierz istniejącą sieć wirtualną z połączeniem z kontrolerem domeny z menu rozwijanego.
     - W obszarze **podsieć**wybierz pozycję **Utwórz nową**. Należy pamiętać, że ta podsieć zostanie delegowana do Azure NetApp Files.
 
-3.  Wybierz pozycję **Dalej: protokół \> @ no__t-2** , aby otworzyć kartę Protokół i skonfigurować parametry dostępu do woluminu.
+3.  Wybierz pozycję **Dalej: protokół \>\>** , aby otworzyć kartę Protokół i skonfigurować parametry dostępu do woluminu.
 
 ## <a name="configure-volume-access-parameters"></a>Konfigurowanie parametrów dostępu do woluminów
 
@@ -160,7 +160,7 @@ Ta sekcja opiera się na [tworzeniu kontenera profilu dla puli hostów przy uży
 
 2. Rozpakuj pobrany plik.
 
-3. W pliku przejdź do **wersji x64**@no__t **-1 i** Uruchom program **FSLogixAppsSetup. exe**. Zostanie otwarte menu instalacja.
+3. W pliku przejdź do **wersji x64** > **releases** i uruchom program **FSLogixAppsSetup. exe**. Zostanie otwarte menu instalacja.
 
 4.  Jeśli masz klucz produktu, wprowadź go w polu tekstowym klucz produktu.
 
@@ -168,11 +168,11 @@ Ta sekcja opiera się na [tworzeniu kontenera profilu dla puli hostów przy uży
 
 6. Wybierz pozycję **Zainstaluj**.
 
-7. Przejdź do **C: \\Program Files @ no__t-2FSLogix @ no__t-3Apps** , aby potwierdzić, że Agent jest zainstalowany.
+7. Przejdź do **C:\\Program Files\\FSLogix\\Apps** , aby potwierdzić, że Agent został zainstalowany.
 
 8. Z menu Start Uruchom polecenie **regedit** jako administrator.
 
-9. Przejdź do **komputera @ no__t-1HKEY_LOCAL_MACHINE @ no__t-2software @ no__t-3FSLogix**.
+9. Przejdź do **komputera\\HKEY_LOCAL_MACHINE\\software\\FSLogix**.
 
 10. Utwórz klucz o nazwie **Profile**.
 
@@ -219,7 +219,7 @@ Ta sekcja opiera się na [tworzeniu kontenera profilu dla puli hostów przy uży
 
 5. Przejdź do karty **Przegląd** i upewnij się, że kontener profilu FSLogix używa przestrzeni.
 
-6. Połącz się bezpośrednio z dowolną częścią maszyny wirtualnej puli hostów przy użyciu Pulpit zdalny i Otwórz **Eksploratora plików.** Następnie przejdź do **ścieżki instalacji** (w poniższym przykładzie ścieżka instalacji to @no__t -1\\anf-SMB-3863.gt1107.onmicrosoft.com @ no__t-3ANF-vol).
+6. Połącz się bezpośrednio z dowolną częścią maszyny wirtualnej puli hostów przy użyciu Pulpit zdalny i Otwórz **Eksploratora plików.** Następnie przejdź do **ścieżki instalacji** (w poniższym przykładzie ścieżka instalacji jest \\\\ANF-SMB-3863.gt1107.onmicrosoft.com\\ANF-vol).
 
    W tym folderze powinien istnieć dysk VHD (lub VHDX) profilu, taki jak ten, w poniższym przykładzie.
 

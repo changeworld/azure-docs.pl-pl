@@ -1,6 +1,6 @@
 ---
-title: Kopiowanie danych do lub z bazy danych Oracle przy użyciu usługi fabryka danych | Dokumentacja firmy Microsoft
-description: Dowiedz się, jak skopiować dane do lub z bazą danych Oracle w środowisku lokalnym za pomocą usługi Azure Data Factory.
+title: Kopiowanie danych do lub z programu Oracle przy użyciu Data Factory
+description: Informacje o kopiowaniu danych do lub z lokalnej bazy danych Oracle przy użyciu Azure Data Factory.
 services: data-factory
 documentationcenter: ''
 author: linda33wj
@@ -13,104 +13,104 @@ ms.topic: conceptual
 ms.date: 05/15/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 51fae63b6db99f28a5b3bed056dadc0c2513ff0f
-ms.sourcegitcommit: 64798b4f722623ea2bb53b374fb95e8d2b679318
+ms.openlocfilehash: 822713d67790906c972ad77a748ef8d52b871bc4
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/11/2019
-ms.locfileid: "67839933"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73682422"
 ---
-# <a name="copy-data-to-or-from-oracle-on-premises-by-using-azure-data-factory"></a>Kopiowanie danych do i z oprogramowania Oracle w środowisku lokalnym za pomocą usługi Azure Data Factory
+# <a name="copy-data-to-or-from-oracle-on-premises-by-using-azure-data-factory"></a>Kopiowanie danych do lokalnego lub z programu Oracle w środowisku lokalnym przy użyciu Azure Data Factory
 
-> [!div class="op_single_selector" title1="Wybierz wersję usługi Data Factory, którego używasz:"]
+> [!div class="op_single_selector" title1="Wybierz używaną wersję usługi Data Factory:"]
 > * [Wersja 1](data-factory-onprem-oracle-connector.md)
 > * [Wersja 2 (bieżąca wersja)](../connector-oracle.md)
 
 > [!NOTE]
-> Ten artykuł dotyczy wersji 1 usługi Azure Data Factory. Jeśli używasz bieżącą wersję usługi Azure Data Factory, zobacz [łącznik Oracle w wersji 2](../connector-oracle.md).
+> Ten artykuł dotyczy wersji 1 usługi Azure Data Factory. Jeśli używasz bieżącej wersji usługi Azure Data Factory, zobacz [Łącznik Oracle w wersji 2](../connector-oracle.md).
 
 
-W tym artykule wyjaśniono, jak użyć działania kopiowania w usłudze Azure Data Factory do przenoszenia danych do lub z bazą danych Oracle w środowisku lokalnym. Artykuł opiera się na [działania przenoszenia danych](data-factory-data-movement-activities.md), który ma ogólne omówienie przenoszenie danych za pomocą działania kopiowania.
+W tym artykule opisano sposób używania działania kopiowania w programie Azure Data Factory do przenoszenia danych do lub z lokalnej bazy danych programu Oracle. Artykuł jest oparty na [działaniach związanych z przenoszeniem danych](data-factory-data-movement-activities.md), które przedstawia ogólne omówienie przenoszenia danych za pomocą działania kopiowania.
 
 ## <a name="supported-scenarios"></a>Obsługiwane scenariusze
 
-Dane można kopiować *z bazy danych Oracle* się następujące dane są przechowywane:
+Dane *z bazy danych programu Oracle* można kopiować do następujących magazynów danych:
 
 [!INCLUDE [data-factory-supported-sink](../../../includes/data-factory-supported-sinks.md)]
 
-Możesz skopiować dane z następujących magazynów danych *z bazą danych Oracle*:
+Dane z następujących magazynów danych można kopiować *do bazy danych programu Oracle*:
 
 [!INCLUDE [data-factory-supported-sources](../../../includes/data-factory-supported-sources.md)]
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-Usługa Data Factory obsługuje łączenie z lokalnymi źródłami bazy danych Oracle przy użyciu bramy zarządzania danymi. Zobacz [bramy zarządzania danymi](data-factory-data-management-gateway.md) Aby dowiedzieć się więcej na temat bramy zarządzania danymi. Aby uzyskać instrukcje krok po kroku dotyczące sposobu konfigurowania bramy w potoku danych, aby przenieść dane, zobacz [przenoszenie danych ze środowiska lokalnego do chmury](data-factory-move-data-between-onprem-and-cloud.md).
+Data Factory obsługuje łączenie się z lokalnymi źródłami programu Oracle przy użyciu bramy Zarządzanie danymi Gateway. Aby dowiedzieć się więcej o bramie Zarządzanie danymi, zobacz [Zarządzanie danymi Gateway](data-factory-data-management-gateway.md) . Instrukcje krok po kroku dotyczące sposobu konfigurowania bramy w potoku danych do przenoszenia danych można znaleźć [w temacie Przenoszenie danych z lokalizacji lokalnej do chmury](data-factory-move-data-between-onprem-and-cloud.md).
 
-Brama jest wymagana, nawet wtedy, gdy programu Oracle znajduje się w infrastrukturze platformy Azure jako usługa (IaaS) maszyny Wirtualnej. Można zainstalować bramy w tej samej maszyny Wirtualnej IaaS jako magazyn danych lub w innej maszyny Wirtualnej, tak długo, jak bramy można połączyć z bazą danych.
+Brama jest wymagana nawet wtedy, gdy Oracle jest hostowana na maszynie wirtualnej infrastruktury jako usługi (IaaS) platformy Azure. Możesz zainstalować bramę na tej samej maszynie wirtualnej IaaS, w której znajduje się magazyn danych lub na innej maszynie wirtualnej, o ile Brama może połączyć się z bazą danych.
 
 > [!NOTE]
-> Aby uzyskać wskazówki dotyczące rozwiązywania problemów, które są związane połączenie i bramy, zobacz [problemów bramy](data-factory-data-management-gateway.md#troubleshooting-gateway-issues).
+> Aby uzyskać porady dotyczące rozwiązywania problemów związanych z połączeniem i bramą, zobacz [Rozwiązywanie problemów z bramą](data-factory-data-management-gateway.md#troubleshooting-gateway-issues).
 
-## <a name="supported-versions-and-installation"></a>Obsługiwane wersje i instalacji
+## <a name="supported-versions-and-installation"></a>Obsługiwane wersje i instalacja
 
 Ten łącznik Oracle obsługuje dwie wersje sterowników:
 
-- **Sterownik firmy Microsoft dla bazy danych Oracle (zalecane)** : Począwszy od bramą zarządzania danymi w wersji 2.7 sterownik firmy Microsoft dla oprogramowania Oracle jest automatycznie instalowany z bramą. Nie potrzebujesz zainstalować lub zaktualizować sterownik do ustanowienia połączenia Oracle. Mogą także występować podniesienia wydajności kopiowania przy użyciu tego sterownika. Obsługiwane są następujące wersje baz danych Oracle:
-  - R1 Oracle 12c (12.1)
-  - Oracle 11g R1, R2 (11.1, 11.2)
-  - Oracle 10g R1, R2 (10.1, 10.2)
-  - Oracle 9i R1, R2 (9.0.1, 9.2)
+- **Microsoft Driver for Oracle (zalecane)** : począwszy od bramy zarządzanie danymi w wersji 2,7, zostanie automatycznie zainstalowany sterownik firmy Microsoft dla programu Oracle z bramą. Nie musisz instalować ani aktualizować sterownika w celu nawiązania połączenia z bazą danych Oracle. Możesz również zwiększyć wydajność kopiowania przy użyciu tego sterownika. Obsługiwane są następujące wersje baz danych Oracle:
+  - Oracle 12c R1 (12,1)
+  - Oracle 11g R1, R2 (11,1, 11,2)
+  - Oracle 10g R1, R2 (10,1, 10,2)
+  - Oracle 9i R1, R2 (9.0.1, 9,2)
   - Oracle 8i R3 (8.1.7)
 
     > [!NOTE]
-    > Serwer proxy Oracle nie jest obsługiwane.
+    > Serwer proxy Oracle nie jest obsługiwany.
 
     > [!IMPORTANT]
-    > Obecnie sterownik firmy Microsoft dla bazy danych Oracle obsługuje tylko kopiowanie danych z bazy danych Oracle. Sterownik nie obsługuje zapisywania do bazy danych Oracle. Możliwość połączenia testowego w ramach bramy zarządzania danymi **diagnostyki** karta nie obsługuje tego sterownika. Alternatywnie można użyć Kreatora kopiowania, aby zweryfikować połączenie.
+    > Obecnie sterownik firmy Microsoft dla programu Oracle obsługuje tylko kopiowanie danych z programu Oracle. Sterownik nie obsługuje zapisywania do bazy danych Oracle. Możliwość połączenia testowego na karcie **diagnostyka** zarządzanie danymi Gateway nie obsługuje tego sterownika. Alternatywnie możesz użyć Kreatora kopiowania, aby sprawdzić poprawność łączności.
     >
 
-- **Dostawca danych programu Oracle dla platformy .NET**: Dostawca danych programu Oracle można użyć do skopiowania danych z lub do bazy danych Oracle. Ten składnik jest objęta [Oracle Data Access składników dla Windows](https://www.oracle.com/technetwork/topics/dotnet/downloads/). Odpowiedniej wersji (32-bitowy lub 64-bitowych) należy zainstalować na komputerze, na którym zainstalowano bramę. [Dostawca danych programu Oracle .NET 12.1](https://docs.oracle.com/database/121/ODPNT/InstallSystemRequirements.htm#ODPNT149) mają dostęp do bazy danych Oracle Database 10 g w wersji 2 i nowsze wersje.
+- **Oracle dostawca danych dla platformy .NET**: możesz użyć programu Oracle dostawca danych do kopiowania danych z programu lub do programu Oracle. Ten składnik jest dostępny w [składnikach programu Oracle Data Access dla systemu Windows](https://www.oracle.com/technetwork/topics/dotnet/downloads/). Zainstaluj odpowiednią wersję (32-bitową lub 64-bitową) na komputerze, na którym zainstalowano bramę. [Oracle dostawca danych .net 12,1](https://docs.oracle.com/database/121/ODPNT/InstallSystemRequirements.htm#ODPNT149) ma dostęp do Oracle Database 10 GB w wersji 2 i nowszych.
 
-    Jeśli wybierzesz **instalacji XCopy**, wykonaj kroki, które są opisane w pliku readme.htm. Zalecane jest wybranie opcji Instalatora, która ma interfejs użytkownika (a nie Instalator XCopy).
+    W przypadku wybrania opcji **Instalacja xcopy**wykonaj kroki opisane w pliku Readme. htm. Zalecamy wybranie Instalatora z interfejsem użytkownika (nie Instalatora XCopy).
 
-    Po zainstalowaniu dostawcy należy ponownie uruchomić usługę hosta bramy zarządzania danymi na komputerze przy użyciu Menedżera konfiguracji bramy zarządzania danych lub apletu usługi.
+    Po zainstalowaniu dostawcy należy ponownie uruchomić usługę hosta bramy Zarządzanie danymi na maszynie za pomocą apletu usługi lub Zarządzanie danymi bramy Configuration Manager.
 
-Jeśli używasz kreatora kopiowania do utworzenia potoku kopiowania typ sterownika jest autodetermined. Sterownik firmy Microsoft jest używany domyślnie, chyba że używana wersja bramy jest starsza niż wersja 2.7, lub wybierz Oracle jako obiekt sink.
+W przypadku tworzenia potoku kopiowania przy użyciu Kreatora kopiowania typ sterownika jest określany jako autoustalany. Sterownik firmy Microsoft jest używany domyślnie, chyba że wersja bramy jest wcześniejsza niż wersja 2,7 lub jako ujścia jest wybierana baza danych Oracle.
 
-## <a name="get-started"></a>Wprowadzenie
+## <a name="get-started"></a>Rozpoczęcie pracy
 
-Można utworzyć potok, który zawiera działania kopiowania. Potok przenosi dane z lokalnej bazy danych Oracle lub przy użyciu różnych narzędzi lub interfejsów API.
+Można utworzyć potok z działaniem kopiowania. Potok przenosi dane do lub z lokalnej bazy danych Oracle przy użyciu różnych narzędzi lub interfejsów API.
 
-Najprostszym sposobem utworzenia potoku jest użycie Kreatora kopiowania. Zobacz [samouczka: Tworzenie potoku za pomocą Kreatora kopiowania](data-factory-copy-data-wizard-tutorial.md) szybki przewodnik dotyczący tworzenia potoku za pomocą Kreatora kopiowania danych.
+Najprostszym sposobem utworzenia potoku jest użycie Kreatora kopiowania. Zobacz [Samouczek: Tworzenie potoku za pomocą Kreatora kopiowania](data-factory-copy-data-wizard-tutorial.md) , aby zapoznać się z krótkim przewodnikiem tworzenia potoku przy użyciu kreatora kopiowanie danych.
 
-Umożliwia także jedną z następujących narzędzi do tworzenia potoku: **Program Visual Studio**, **programu Azure PowerShell**, **szablonu usługi Azure Resource Manager**, **interfejsu API platformy .NET**, lub **interfejsu API REST**. Zobacz [samouczka działania kopiowania](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) instrukcje krok po kroku dotyczące sposobu tworzenia potoku, który zawiera działania kopiowania.
+Do utworzenia potoku można także użyć jednego z następujących narzędzi: **Visual Studio**, **Azure PowerShell**, **szablonu Azure Resource Manager**, **interfejsu API platformy .NET**lub **interfejsu API REST**. Aby uzyskać instrukcje krok po kroku dotyczące tworzenia potoku z działaniem kopiowania, zobacz [Samouczek dotyczący działania kopiowania](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) .
 
-Czy używasz narzędzi lub interfejsów API, wykonaj następujące kroki, aby utworzyć potok, który przenosi dane z magazynu danych źródłowych do magazynu danych ujścia:
+Niezależnie od tego, czy używasz narzędzi, czy interfejsów API, wykonaj następujące kroki, aby utworzyć potok służący do przenoszenia danych ze źródłowego magazynu danych do magazynu danych ujścia:
 
-1. Tworzenie **usługi data factory**. Fabryka danych może zawierać jeden lub wiele potoków.
-2. Tworzenie **połączonych usług** połączyć dane wejściowe i wyjściowe przechowywane z fabryką danych. Na przykład jeśli kopiujesz dane z bazy danych Oracle do usługi Azure Blob storage, Utwórz dwie połączone usługi, aby połączyć swoje bazy danych Oracle database i konto usługi Azure storage z fabryką danych. Aby uzyskać właściwości połączonej usługi, które są specyficzne dla oprogramowania Oracle, zobacz [właściwości usługi połączonej](#linked-service-properties).
-3. Tworzenie **zestawów danych** do reprezentowania dane wejściowe i wyjściowe operacji kopiowania. W przykładzie w poprzednim kroku utworzysz zestaw danych, aby określić tabelę w bazie danych programu Oracle, która zawiera dane wejściowe. Możesz utworzyć inny zestaw danych, aby określić kontener obiektów blob oraz folder, który przechowuje dane skopiowane z bazy danych Oracle. Dla właściwości zestawu danych, które są specyficzne dla oprogramowania Oracle, zobacz [właściwości zestawu danych](#dataset-properties).
-4. Tworzenie **potoku** zawierającego działanie kopiowania, które przyjmuje jako dane wejściowe zestawu danych i zestaw danych jako dane wyjściowe. W powyższym przykładzie użyjesz **OracleSource** jako źródło i **BlobSink** jako obiekt sink dla działania kopiowania. Podobnie, jeśli są kopiowane z usługi Azure Blob storage do bazy danych Oracle, możesz użyć **BlobSource** i **elementu OracleSink** w działaniu kopiowania. Dla właściwości działania kopiowania, które są specyficzne dla bazy danych Oracle, zobacz [właściwości działania kopiowania](#copy-activity-properties). Aby uzyskać szczegółowe informacje o sposobie używania magazynu danych jako źródła lub ujścia wybierz link dla magazynu danych w poprzedniej sekcji.
+1. Utwórz **fabrykę danych**. Fabryka danych może zawierać jeden lub więcej potoków.
+2. Utwórz **połączone usługi** , aby połączyć magazyny danych wejściowych i wyjściowych z fabryką danych. Na przykład w przypadku kopiowania danych z bazy danych programu Oracle do usługi Azure Blob Storage Utwórz dwie połączone usługi, aby połączyć bazę danych Oracle i konto usługi Azure Storage z fabryką danych. Aby uzyskać właściwości połączonej usługi, które są specyficzne dla platformy Oracle, zobacz [Właściwości połączonej usługi](#linked-service-properties).
+3. Utwórz **zestawy** danych, aby reprezentować dane wejściowe i wyjściowe dla operacji kopiowania. W przykładzie w poprzednim kroku utworzysz zestaw danych, aby określić tabelę w bazie danych Oracle, która zawiera dane wejściowe. Tworzysz kolejny zestaw danych, aby określić kontener obiektów blob i folder, w którym są przechowywane dane skopiowane z bazy danych programu Oracle. Dla właściwości zestawu danych, które są specyficzne dla platformy Oracle, zobacz [Właściwości zestawu danych](#dataset-properties).
+4. Utwórz **potok** z działaniem kopiowania, które pobiera zestaw danych jako dane wejściowe i zestaw danych jako dane wyjściowe. W poprzednim przykładzie użyto **OracleSource** jako źródła i **wartość blobsink** jako ujścia dla działania kopiowania. Podobnie, jeśli kopiujesz z usługi Azure Blob Storage do bazy danych Oracle, używasz funkcji **BlobSource** i **OracleSink** w działaniu kopiowania. Dla właściwości działania kopiowania, które są specyficzne dla bazy danych Oracle, zobacz [właściwości działania kopiowania](#copy-activity-properties). Aby uzyskać szczegółowe informacje na temat używania magazynu danych jako źródła lub ujścia, wybierz link do magazynu danych w poprzedniej sekcji.
 
-Korzystając z kreatora, definicje JSON dotyczące jednostek usługi Data Factory, te są tworzone automatycznie dla Ciebie: połączone usługi, zestawy danych i potoku. Korzystając z narzędzi lub interfejsów API (z wyjątkiem interfejsu API platformy .NET), należy zdefiniować te jednostki usługi Data Factory przy użyciu formatu JSON. Aby uzyskać przykłady, które mają definicje JSON dotyczące jednostek usługi Data Factory, które służy do kopiowania danych do lub z bazą danych Oracle w środowisku lokalnym, zobacz przykłady JSON.
+Gdy używasz Kreatora, definicje JSON dla tych Data Factory jednostek są tworzone automatycznie dla Ciebie: połączone usługi, zestawy danych i potok. Korzystając z narzędzi lub interfejsów API (z wyjątkiem interfejsu API .NET), należy zdefiniować te Data Factory jednostki przy użyciu formatu JSON. Przykłady, które mają definicje JSON dla jednostek Data Factory używanych do kopiowania danych do lub z lokalnej bazy danych programu Oracle, można znaleźć w przykładach JSON.
 
-Poniższe sekcje zawierają szczegółowe informacje o właściwościach JSON, które służą do definiowania jednostek usługi Data Factory.
+Poniższe sekcje zawierają szczegółowe informacje na temat właściwości JSON używanych do definiowania jednostek Data Factory.
 
-## <a name="linked-service-properties"></a>Właściwości usługi połączonej
+## <a name="linked-service-properties"></a>Właściwości połączonej usługi
 
-W poniższej tabeli opisano elementy JSON, które są specyficzne dla usługi połączonej bazy danych Oracle:
+W poniższej tabeli opisano elementy JSON, które są specyficzne dla połączonej usługi Oracle:
 
-| Właściwość | Opis | Wymagane |
+| Właściwość | Opis | Wymagany |
 | --- | --- | --- |
-| type |**Typu** właściwość musi być równa **OnPremisesOracle**. |Tak |
-| driverType | Określ, który sterownik do użycia w celu skopiowania danych z lub z bazą danych Oracle. Dozwolone wartości to **Microsoft** i **ODP** (ustawienie domyślne). Zobacz [obsługiwanych wersji i instalacji](#supported-versions-and-installation) Szczegóły sterownika. | Nie |
-| connectionString | Podaj informacje potrzebne do nawiąż połączenie z wystąpieniem bazy danych programu Oracle dla **connectionString** właściwości. | Yes |
-| gatewayName | Nazwa bramy, który służy do łączenia się z serwerem Oracle w środowisku lokalnym. |Yes |
+| type |Właściwość **Type** musi być ustawiona na wartość **OnPremisesOracle**. |Tak |
+| drivertype | Określ, który sterownik ma być używany do kopiowania danych z lub do bazy danych Oracle. Dozwolone wartości to **Microsoft** i **ODP** (domyślnie). Zobacz [obsługiwaną wersję i instalację,](#supported-versions-and-installation) Aby uzyskać szczegółowe informacje o sterowniku. | Nie |
+| Przekształcon | Określ informacje, które są konieczne do nawiązania połączenia z wystąpieniem bazy danych Oracle dla właściwości **ConnectionString** . | Tak |
+| gatewayName | Nazwa bramy, która jest używana do nawiązywania połączenia z lokalnym serwerem Oracle. |Tak |
 
-**Przykład: Za pomocą sterownika Microsoft**
+**Przykład: korzystanie z sterownika firmy Microsoft**
 
 > [!TIP]
-> Jeśli zostanie wyświetlony błąd, który mówi "ORA 01025: Parametr zaległej płatności za przedmiot poza zakresem"i usługi Oracle jest w wersji 8i, Dodaj `WireProtocolMode=1` parametry połączenia i spróbuj ponownie:
+> Jeśli zostanie wyświetlony komunikat o błędzie "ORA-01025: UPI parametr spoza zakresu" i Oracle to wersja 8i, Dodaj `WireProtocolMode=1` do parametrów połączenia i spróbuj ponownie:
 
 ```json
 {
@@ -126,9 +126,9 @@ W poniższej tabeli opisano elementy JSON, które są specyficzne dla usługi po
 }
 ```
 
-**Przykład: Za pomocą sterownika ODP**
+**Przykład: Użycie sterownika ODP**
 
-Aby dowiedzieć się więcej na temat dopuszczalnych formatów, zobacz [dostawca danych programu Oracle dla platformy .NET ODP](https://www.connectionstrings.com/oracle-data-provider-for-net-odp-net/).
+Aby dowiedzieć się więcej na temat dozwolonych formatów, zobacz artykuł [dostawca danych programu Oracle dla programu .NET Odp](https://www.connectionstrings.com/oracle-data-provider-for-net-odp-net/).
 
 ```json
 {
@@ -145,63 +145,63 @@ Aby dowiedzieć się więcej na temat dopuszczalnych formatów, zobacz [dostawca
 
 ## <a name="dataset-properties"></a>Właściwości zestawu danych
 
-Aby uzyskać pełną listę sekcje i właściwości, które są dostępne do definiowania zestawów danych, zobacz [tworzenie zestawów danych](data-factory-create-datasets.md).
+Aby zapoznać się z pełną listą sekcji i właściwości, które są dostępne do definiowania zestawów danych, zobacz [Tworzenie zestawów danych](data-factory-create-datasets.md).
 
-Sekcje pliku JSON zestawu danych, takie jak struktury, dostępność i zasady, są podobne dla wszystkich typów w zestawie danych (na przykład w przypadku bazy danych Oracle, usługi Azure Blob storage i Azure Table storage).
+Sekcje pliku JSON zestawu danych, takie jak struktura, dostępność i zasady, są podobne do wszystkich typów zestawu danych (na przykład dla Oracle, Azure Blob Storage i Azure Table Storage).
 
-**TypeProperties** sekcji różni się dla każdego typu zestawu danych i zawiera informacje o lokalizacji danych w magazynie danych. **TypeProperties** sekcji dla zestawu danych typu **OracleTable** ma następujące właściwości:
+Sekcja **typeProperties** jest inna dla każdego typu zestawu danych i zawiera informacje dotyczące lokalizacji danych w magazynie danych. Sekcja **typeProperties** zestawu danych typu **Oracle** ma następujące właściwości:
 
-| Właściwość | Opis | Wymagane |
+| Właściwość | Opis | Wymagany |
 | --- | --- | --- |
-| tableName |Nazwa tabeli w bazie danych Oracle, których połączona usługa przywołuje. |Nie (Jeśli **oracleReaderQuery** lub **OracleSource** zostanie określona) |
+| tableName |Nazwa tabeli w bazie danych Oracle, do której odwołuje się połączona usługa. |Nie (Jeśli określono **oracleReaderQuery** lub **OracleSource** ) |
 
 ## <a name="copy-activity-properties"></a>Właściwości działania kopiowania
 
-Aby uzyskać pełną listę sekcje i właściwości, które są dostępne do definiowania działań, zobacz [tworzenia potoków](data-factory-create-pipelines.md).
+Aby zapoznać się z pełną listą sekcji i właściwości, które są dostępne do definiowania działań, zobacz [Tworzenie potoków](data-factory-create-pipelines.md).
 
-Właściwości, takie jak nazwa, opis, dane wejściowe i wyjściowe tabel i zasady są dostępne dla wszystkich typów działań.
+Właściwości, takie jak nazwa, opis, tabele wejściowe i wyjściowe, a zasady są dostępne dla wszystkich typów działań.
 
 > [!NOTE]
-> Działanie kopiowania przyjmuje tylko jeden zestaw danych wejściowych i tworzy tylko jedno wyjście.
+> Działanie kopiowania przyjmuje tylko jedną dane wejściowe i generuje tylko jedno wyjście.
 
-Właściwości, które są dostępne w **typeProperties** różnią się w sekcji działania za pomocą poszczególnych typów działań. Właściwości działania kopiowania różnią się w zależności od typu źródła i ujścia.
+Właściwości, które są dostępne w sekcji **typeProperties** działania, różnią się w zależności od typu działania. Właściwości działania kopiowania różnią się w zależności od typu źródła i ujścia.
 
 ### <a name="oraclesource"></a>OracleSource
 
-W działaniu kopiowania, gdy źródłem jest **OracleSource** , następujące właściwości są dostępne w **typeProperties** sekcji:
+W działaniu kopiowania, gdy źródłem jest typ **OracleSource** , w sekcji **typeProperties** są dostępne następujące właściwości:
 
-| Właściwość | Opis | Dozwolone wartości | Wymagane |
+| Właściwość | Opis | Dozwolone wartości | Wymagany |
 | --- | --- | --- | --- |
-| oracleReaderQuery |Użyj zapytania niestandardowe można odczytać danych. |Ciąg zapytania SQL. Na przykład "Wybierz \* z **MyTable**". <br/><br/>Jeśli nie zostanie określony, to instrukcja SQL jest wykonywana: "Wybierz \* z **MyTable**" |Nie<br />(Jeśli **tableName** z **dataset** zostanie określona) |
+| oracleReaderQuery |Użyj zapytania niestandardowego do odczytywania danych. |Ciąg zapytania SQL. Na przykład "Wybierz \* z **MyTable**". <br/><br/>Jeśli nie zostanie określony, ta instrukcja SQL jest wykonywana: "Select \* from **MyTable**" |Nie<br />(Jeśli określono element **TableName** **zestawu danych** ) |
 
 ### <a name="oraclesink"></a>OracleSink
 
-**Elementu OracleSink** obsługuje następujące właściwości:
+**OracleSink** obsługuje następujące właściwości:
 
-| Właściwość | Opis | Dozwolone wartości | Wymagane |
+| Właściwość | Opis | Dozwolone wartości | Wymagany |
 | --- | --- | --- | --- |
-| writeBatchTimeout |Czas oczekiwania dla partii wstawić na zakończenie przed upływem limitu czasu operacji. |**timespan**<br/><br/> Przykład: 00:30:00 (30 minut) |Nie |
-| writeBatchSize |Wstawia dane do tabeli SQL, gdy rozmiar buforu osiągnie wartość **writeBatchSize**. |Liczba całkowita (liczba wierszy) |Nie (domyślne: 100) |
-| sqlWriterCleanupScript |Określa kwerendę dla działania kopiowania, które można wykonać, aby po oczyszczeniu danych określonego wycinka. |Instrukcja zapytania. |Nie |
-| sliceIdentifierColumnName |Określa nazwę kolumny działanie kopiowania w celu wypełnienia odpowiadającym wycinek wygenerowany automatycznie. Wartość **sliceIdentifierColumnName** służy do czyszczenia danych określonego wycinka, gdy ponowne uruchomienie. |Nazwa kolumny, która ma typ danych kolumny **binary(32)** . |Nie |
+| writeBatchTimeout |Czas oczekiwania na zakończenie operacji wstawiania partii przed przekroczeniem limitu czasu. |**czasu**<br/><br/> Przykład: 00:30:00 (30 minut) |Nie |
+| writeBatchSize |Wstawia dane do tabeli SQL, gdy rozmiar buforu osiągnie wartość **writeBatchSize**. |Liczba całkowita (liczba wierszy) |Nie (domyślnie: 100) |
+| sqlWriterCleanupScript |Określa zapytanie dla działania kopiowania, które ma zostać wykonane, aby dane określonego wycinka zostały oczyszczone. |Instrukcja zapytania. |Nie |
+| sliceIdentifierColumnName |Określa nazwę kolumny dla działania kopiowania, która ma zostać wypełniona automatycznie wygenerowany identyfikator wycinka. Wartość dla **sliceIdentifierColumnName** służy do czyszczenia danych określonego wycinka podczas ponownego uruchomienia. |Nazwa kolumny zawierającej dane typu **Binary (32)** . |Nie |
 
-## <a name="json-examples-for-copying-data-to-and-from-the-oracle-database"></a>Przykłady JSON do kopiowania danych z bazy danych Oracle
+## <a name="json-examples-for-copying-data-to-and-from-the-oracle-database"></a>Przykłady JSON kopiowania danych do i z bazy danych programu Oracle
 
-W poniższych przykładach udostępniono przykładowe definicji JSON, które umożliwiają tworzenie potoku za pomocą [programu Visual Studio](data-factory-copy-activity-tutorial-using-visual-studio.md) lub [programu Azure PowerShell](data-factory-copy-activity-tutorial-using-powershell.md). W przykładach pokazano, jak skopiować dane z lub z bazą danych Oracle i do / z usługi Azure Blob storage. Jednak można skopiować danych do dowolnego ujścia, na liście [obsługiwane magazyny danych i formatów](data-factory-data-movement-activities.md#supported-data-stores-and-formats) za pomocą działania kopiowania w usłudze Azure Data Factory.
+W poniższych przykładach przedstawiono przykładowe definicje JSON, których można użyć do utworzenia potoku przy użyciu [programu Visual Studio](data-factory-copy-activity-tutorial-using-visual-studio.md) lub [Azure PowerShell](data-factory-copy-activity-tutorial-using-powershell.md). W przykładach pokazano, jak skopiować dane z lub do bazy danych Oracle oraz z usługi Azure Blob Storage lub z niej. Dane można jednak kopiować do dowolnego ujścia z listy [obsługiwanych magazynów danych i formatów](data-factory-data-movement-activities.md#supported-data-stores-and-formats) przy użyciu działania kopiowania w Azure Data Factory.
 
-**Przykład: Kopiowanie danych z bazy danych Oracle do usługi Azure Blob storage**
+**Przykład: kopiowanie danych z programu Oracle do magazynu obiektów blob platformy Azure**
 
-Przykład obejmuje następujących jednostek usługi Data Factory:
+Przykład zawiera następujące jednostki Data Factory:
 
-* Połączonej usługi typu [OnPremisesOracle](data-factory-onprem-oracle-connector.md#linked-service-properties).
-* Połączonej usługi typu [AzureStorage](data-factory-azure-blob-connector.md#linked-service-properties).
-* Dane wejściowe [dataset](data-factory-create-datasets.md) typu [OracleTable](data-factory-onprem-oracle-connector.md#dataset-properties).
-* Dane wyjściowe [dataset](data-factory-create-datasets.md) typu [AzureBlob](data-factory-azure-blob-connector.md#dataset-properties).
-* A [potoku](data-factory-create-pipelines.md) za pomocą działania kopiowania, która używa [OracleSource](data-factory-onprem-oracle-connector.md#copy-activity-properties) jako źródło i [BlobSink](data-factory-azure-blob-connector.md#copy-activity-properties) jako ujścia.
+* Połączona usługa typu [OnPremisesOracle](data-factory-onprem-oracle-connector.md#linked-service-properties).
+* Połączona usługa typu [AzureStorage](data-factory-azure-blob-connector.md#linked-service-properties).
+* Wejściowy [zestaw danych](data-factory-create-datasets.md) typu [Oracle](data-factory-onprem-oracle-connector.md#dataset-properties).
+* Wyjściowy [zestaw danych](data-factory-create-datasets.md) typu [AzureBlob](data-factory-azure-blob-connector.md#dataset-properties).
+* [Potok](data-factory-create-pipelines.md) z działaniem kopiowania, który używa [OracleSource](data-factory-onprem-oracle-connector.md#copy-activity-properties) jako źródła i [wartość blobsink](data-factory-azure-blob-connector.md#copy-activity-properties) jako ujścia.
 
-Przykład kopiuje dane z tabeli w bazie danych Oracle w środowisku lokalnym do obiektu blob co godzinę. Aby uzyskać więcej informacji na temat różnych właściwości, które są używane w przykładzie zobacz sekcje, które należy wykonać przykłady.
+Przykład kopiuje dane z tabeli w lokalnej bazie danych Oracle do obiektu BLOB co godzinę. Aby uzyskać więcej informacji na temat różnych właściwości, które są używane w przykładzie, zobacz sekcje, które są zgodne z przykładami.
 
-**Usługi połączone programu Oracle**
+**Połączona usługa Oracle**
 
 ```json
 {
@@ -217,7 +217,7 @@ Przykład kopiuje dane z tabeli w bazie danych Oracle w środowisku lokalnym do 
 }
 ```
 
-**Obiekt Blob połączona usługa Azure storage**
+**Połączona usługa Azure Blob Storage**
 
 ```json
 {
@@ -231,11 +231,11 @@ Przykład kopiuje dane z tabeli w bazie danych Oracle w środowisku lokalnym do 
 }
 ```
 
-**Wejściowy zestaw danych Oracle**
+**Zestaw danych wejściowych Oracle**
 
-Przykład założono, że utworzono tabelę o nazwie **MyTable** Oracle. Zawiera kolumnę o nazwie **timestampcolumn** danych szeregów czasowych.
+W przykładzie przyjęto założenie, że utworzono tabelę o nazwie **MyTable** w bazie danych Oracle. Zawiera kolumnę o nazwie **timestampcolumn** dla danych szeregów czasowych.
 
-Ustawienie **zewnętrznych**: **true** usługi Data Factory informuje, że zestaw danych jest zewnętrzne w stosunku do usługi data factory i że zestaw danych nie jest generowany przez działanie w usłudze data factory.
+Ustawienie **zewnętrzne**: **true** informuje usługę Data Factory, że zestaw danych znajduje się poza fabryką danych i że zestaw danych nie jest generowany przez działanie w fabryce danych.
 
 ```json
 {
@@ -266,7 +266,7 @@ Ustawienie **zewnętrznych**: **true** usługi Data Factory informuje, że zesta
 
 **Wyjściowy zestaw danych obiektów blob platformy Azure**
 
-Dane są zapisywane do nowego obiektu blob, co godzinę (**częstotliwość**: **godzinę**, **interwał**: **1**). Folder ścieżkę i nazwę dla obiektu blob są dynamicznie obliczana na podstawie czasu rozpoczęcia wycinek, który jest przetwarzany. Ścieżka folderu używa rok, miesiąc, dzień i godzinę część czasu rozpoczęcia.
+Dane są zapisywane w nowym obiekcie blob co godzinę (**częstotliwość**: **godzina**, **Interwał**: **1**). Ścieżka folderu i nazwa pliku obiektu BLOB są dynamicznie oceniane na podstawie czasu rozpoczęcia przetwarzanego wycinka. Ścieżka folderu używa części Year, month, Day i Hour czasu rozpoczęcia.
 
 ```json
 {
@@ -326,7 +326,7 @@ Dane są zapisywane do nowego obiektu blob, co godzinę (**częstotliwość**: *
 
 **Potok z działaniem kopiowania**
 
-Potoku zawierającego działanie kopiowania, który został skonfigurowany do korzystania z danych wejściowych i wyjściowych zestawów danych i zaplanowane co godzinę. W definicji JSON potok **źródła** ustawiono typ **OracleSource** i **ujścia** ustawiono typ **BlobSink**. Zapytanie SQL, które należy określić za pomocą **oracleReaderQuery** właściwość wybiera dane w ciągu ostatniej godziny do skopiowania.
+Potok zawiera działanie kopiowania, które jest skonfigurowane do używania wejściowych i wyjściowych zestawów danych i zaplanowane do uruchamiania co godzinę. W definicji JSON potoku typ **źródła** ma wartość **OracleSource** , a typ **ujścia** to **wartość blobsink**. Zapytanie SQL określone za pomocą właściwości **oracleReaderQuery** wybiera dane w ciągu ostatniej godziny do skopiowania.
 
 ```json
 {
@@ -375,21 +375,21 @@ Potoku zawierającego działanie kopiowania, który został skonfigurowany do ko
 }
 ```
 
-**Przykład: Kopiowanie danych z usługi Azure Blob storage do bazy danych Oracle**
+**Przykład: kopiowanie danych z usługi Azure Blob Storage do programu Oracle**
 
-Ten przykład pokazuje, jak skopiować dane z konta usługi Azure Blob storage do bazy danych Oracle w środowisku lokalnym. Jednak może kopiować dane *bezpośrednio* z dowolnego źródła w [obsługiwane magazyny danych i formatów](data-factory-data-movement-activities.md#supported-data-stores-and-formats) za pomocą działania kopiowania w usłudze Azure Data Factory.
+Ten przykład pokazuje, jak skopiować dane z konta usługi Azure Blob Storage do lokalnej bazy danych programu Oracle. Można jednak skopiować dane *bezpośrednio* z dowolnego źródła wymienionego w [obsługiwanych magazynach danych i formatach](data-factory-data-movement-activities.md#supported-data-stores-and-formats) za pomocą działania kopiowania w Azure Data Factory.
 
-Przykład obejmuje następujących jednostek usługi Data Factory:
+Przykład zawiera następujące jednostki Data Factory:
 
-* Połączonej usługi typu [OnPremisesOracle](data-factory-onprem-oracle-connector.md#linked-service-properties).
-* Połączonej usługi typu [AzureStorage](data-factory-azure-blob-connector.md#linked-service-properties).
-* Dane wejściowe [dataset](data-factory-create-datasets.md) typu [AzureBlob](data-factory-azure-blob-connector.md#dataset-properties).
-* Dane wyjściowe [dataset](data-factory-create-datasets.md) typu [OracleTable](data-factory-onprem-oracle-connector.md#dataset-properties).
-* A [potoku](data-factory-create-pipelines.md) zawierającego działanie kopiowania, które używa [BlobSource](data-factory-azure-blob-connector.md#copy-activity-properties) jako źródło [elementu OracleSink](data-factory-onprem-oracle-connector.md#copy-activity-properties) jako ujścia.
+* Połączona usługa typu [OnPremisesOracle](data-factory-onprem-oracle-connector.md#linked-service-properties).
+* Połączona usługa typu [AzureStorage](data-factory-azure-blob-connector.md#linked-service-properties).
+* Wejściowy [zestaw danych](data-factory-create-datasets.md) typu [AzureBlob](data-factory-azure-blob-connector.md#dataset-properties).
+* Wyjściowy [zestaw danych](data-factory-create-datasets.md) typu [Oracle](data-factory-onprem-oracle-connector.md#dataset-properties).
+* [Potok](data-factory-create-pipelines.md) z działaniem kopiowania, który używa [BlobSource](data-factory-azure-blob-connector.md#copy-activity-properties) jako źródła [OracleSink](data-factory-onprem-oracle-connector.md#copy-activity-properties) jako ujścia.
 
-Przykład kopiuje dane z obiektu blob do tabeli w bazie danych Oracle w środowisku lokalnym co godzinę. Aby uzyskać więcej informacji na temat różnych właściwości, które są używane w przykładzie zobacz sekcje, które należy wykonać przykłady.
+Przykład kopiuje dane z obiektu BLOB do tabeli w lokalnej bazie danych Oracle co godzinę. Aby uzyskać więcej informacji na temat różnych właściwości, które są używane w przykładzie, zobacz sekcje, które są zgodne z przykładami.
 
-**Usługi połączone programu Oracle**
+**Połączona usługa Oracle**
 
 ```json
 {
@@ -405,7 +405,7 @@ Przykład kopiuje dane z obiektu blob do tabeli w bazie danych Oracle w środowi
 }
 ```
 
-**Obiekt Blob połączona usługa Azure storage**
+**Połączona usługa Azure Blob Storage**
 
 ```json
 {
@@ -421,7 +421,7 @@ Przykład kopiuje dane z obiektu blob do tabeli w bazie danych Oracle w środowi
 
 **Wejściowy zestaw danych obiektów blob platformy Azure**
 
-Dane są pobierane z nowy obiekt blob co godzinę (**częstotliwość**: **godzinę**, **interwał**: **1**). Folder ścieżkę i nazwę dla obiektu blob są dynamicznie obliczana na podstawie czasu rozpoczęcia wycinek, który jest przetwarzany. Ścieżka folderu używa rok, miesiąc i dzień część czasu rozpoczęcia. Nazwa pliku używa godzinę część czas rozpoczęcia. Ustawienie **zewnętrznych**: **true** usługi Data Factory informuje, że ta tabela jest zewnętrzne w usłudze data factory i nie jest generowany przez działanie w usłudze data factory.
+Dane są pobierane z nowego obiektu BLOB co godzinę (**częstotliwość**: **godzina**, **Interwał**: **1**). Ścieżka folderu i nazwa pliku obiektu BLOB są dynamicznie oceniane na podstawie czasu rozpoczęcia przetwarzanego wycinka. Ścieżka folderu używa części Year, month i Day czasu rozpoczęcia. Nazwa pliku używa części godzinowej godziny rozpoczęcia. Ustawienie **External**: **true** informuje usługę Data Factory, że ta tabela jest zewnętrzna z fabryką danych i nie jest generowana przez działanie w fabryce danych.
 
 ```json
 {
@@ -479,9 +479,9 @@ Dane są pobierane z nowy obiekt blob co godzinę (**częstotliwość**: **godzi
 }
 ```
 
-**Oracle wyjściowy zestaw danych**
+**Wyjściowy zestaw danych Oracle**
 
-Przykład przyjęto założenie, utworzono tabelę o nazwie **MyTable** Oracle. Tworzenie tabeli w Oracle z taką samą liczbę kolumn, których oczekujesz, że plik CSV obiektów blob, który będzie zawierał. Nowe wiersze są dodawane do tabeli, co godzinę.
+W przykładzie przyjęto założenie, że utworzono tabelę o nazwie **MyTable** w bazie danych Oracle. Utwórz tabelę w bazie danych Oracle z tą samą liczbą kolumn, która będzie zawierała plik CSV. Nowe wiersze są dodawane do tabeli co godzinę.
 
 ```json
 {
@@ -502,7 +502,7 @@ Przykład przyjęto założenie, utworzono tabelę o nazwie **MyTable** Oracle. 
 
 **Potok z działaniem kopiowania**
 
-Potoku zawierającego działanie kopiowania, który został skonfigurowany do korzystania z danych wejściowych i wyjściowych zestawów danych i zaplanowane do uruchomienia na godzinę. W definicji JSON potok **źródła** ustawiono typ **BlobSource** i **ujścia** ustawiono typ **elementu OracleSink**.
+Potok zawiera działanie kopiowania, które jest skonfigurowane do używania wejściowych i wyjściowych zestawów danych i zaplanowane do uruchamiania co godzinę. W definicji JSON potoku typ **źródła** ma wartość **BlobSource** , a typ **ujścia** to **OracleSink**.
 
 ```json
 {
@@ -553,85 +553,85 @@ Potoku zawierającego działanie kopiowania, który został skonfigurowany do ko
 
 ## <a name="troubleshooting-tips"></a>Wskazówki dotyczące rozwiązywania problemów
 
-### <a name="problem-1-net-framework-data-provider"></a>Problem 1: .NET Framework Data Provider
+### <a name="problem-1-net-framework-data-provider"></a>Problem 1: .NET Framework Dostawca danych
 
-**komunikat o błędzie**
+**Komunikat o błędzie**
 
     Copy activity met invalid parameters: 'UnknownParameterName', Detailed message: Unable to find the requested .NET Framework Data Provider. It may not be installed.
 
 **Możliwe przyczyny**
 
-* .NET Framework Data Provider for Oracle nie został zainstalowany.
-* .NET Framework Data Provider for Oracle została zainstalowana na .NET Framework 2.0 i nie zostanie odnaleziony w folderach programu .NET Framework 4.0.
+* Nie zainstalowano Dostawca danych .NET Framework dla programu Oracle.
+* Dostawca danych .NET Framework dla programu Oracle został zainstalowany w .NET Framework 2,0 i nie można go znaleźć w folderach .NET Framework 4,0.
 
-**Rozdzielczość**
+**Tłumaczenia**
 
-* Jeśli nie zainstalowano dostawcy .NET dla Oracle, [go zainstalować](https://www.oracle.com/technetwork/topics/dotnet/downloads/), a następnie ponów próbę wykonania tego scenariusza.
-* Jeśli widzisz komunikat o błędzie, nawet po zainstalowaniu dostawcy, wykonaj następujące czynności:
-    1. Otwórz plik konfiguracji maszyny dla platformy .NET w wersji 2.0 z folderu < dysk systemowy\>: \Windows\Microsoft.NET\Framework64\v2.0.50727\CONFIG\machine.config.
-    2. Wyszukaj **dostawca danych programu Oracle dla platformy .NET**. Powinno być możliwe odnaleźć wpisu, jak pokazano w poniższym przykładzie w obszarze **system.data** > **DbProviderFactories**: `<add name="Oracle Data Provider for .NET" invariant="Oracle.DataAccess.Client" description="Oracle Data Provider for .NET" type="Oracle.DataAccess.Client.OracleClientFactory, Oracle.DataAccess, Version=2.112.3.0, Culture=neutral, PublicKeyToken=89b483f429c47342" />`
-* Skopiuj ten wpis do pliku machine.config w następującym folderze .NET 4.0: < dysk systemowy\>: \Windows\Microsoft.NET\Framework64\v4.0.30319\Config\machine.config. Następnie należy zmienić wersję na 4.xxx.x.x.
-* Zainstaluj < ścieżka zainstalowane ODP.NET\>\11.2.0\client_1\odp.net\bin\4\Oracle.DataAccess.dll w globalnej pamięci podręcznej zestawów (GAC), uruchamiając **gacutil /i [ścieżka dostawcy]** .
+* Jeśli nie zainstalowano dostawcy platformy .NET dla programu Oracle, [zainstaluj ją](https://www.oracle.com/technetwork/topics/dotnet/downloads/), a następnie ponów próbę wykonania tego scenariusza.
+* Jeśli zobaczysz komunikat o błędzie nawet po zainstalowaniu dostawcy, wykonaj następujące czynności:
+    1. Otwórz plik konfiguracji maszyny dla programu .NET 2,0 z folderu < dysk systemowy\>: \Windows\Microsoft.NET\Framework64\v2.0.50727\CONFIG\machine.config.
+    2. Wyszukaj ciąg **Oracle dostawca danych dla platformy .NET**. Powinno być możliwe znalezienie wpisu, jak pokazano w poniższym przykładzie w obszarze **System. data** > **DbProviderFactories**: `<add name="Oracle Data Provider for .NET" invariant="Oracle.DataAccess.Client" description="Oracle Data Provider for .NET" type="Oracle.DataAccess.Client.OracleClientFactory, Oracle.DataAccess, Version=2.112.3.0, Culture=neutral, PublicKeyToken=89b483f429c47342" />`
+* Skopiuj ten wpis do pliku Machine. config w następującym folderze .NET 4,0: < dysku systemowego\>: \Windows\Microsoft.NET\Framework64\v4.0.30319\Config\machine.config. Następnie zmień wersję na 4. xxx. x.x.
+* Zainstaluj plik < ODP. NET installed Path\>\11.2.0\client_1\odp.net\bin\4\Oracle.DataAccess.dll w globalnej pamięci podręcznej zestawów (GAC) przez uruchomienie **Gacutil/i [ścieżka dostawcy]** .
 
-### <a name="problem-2-datetime-formatting"></a>Problem 2: Formatowanie daty/godziny
+### <a name="problem-2-datetime-formatting"></a>Problem 2: Formatowanie daty i godziny
 
-**komunikat o błędzie**
+**Komunikat o błędzie**
 
     Message=Operation failed in Oracle Database with the following error: 'ORA-01861: literal does not match format string'.,Source=,''Type=Oracle.DataAccess.Client.OracleException,Message=ORA-01861: literal does not match format string,Source=Oracle Data Provider for .NET,'.
 
-**Rozdzielczość**
+**Tłumaczenia**
 
-Może być konieczne dostosowanie ciągu zapytania w swoje działania kopiowania, oparte na konfiguracji dat w bazie danych programu Oracle. Oto przykład (przy użyciu **to_date** funkcji):
+Może być konieczne dostosowanie ciągu zapytania w działaniu kopiowania w zależności od sposobu skonfigurowania dat w bazie danych Oracle. Oto przykład (przy użyciu funkcji **TO_DATE** ):
 
     "oracleReaderQuery": "$$Text.Format('select * from MyTable where timestampcolumn >= to_date(\\'{0:MM-dd-yyyy HH:mm}\\',\\'MM/DD/YYYY HH24:MI\\') AND timestampcolumn < to_date(\\'{1:MM-dd-yyyy HH:mm}\\',\\'MM/DD/YYYY HH24:MI\\') ', WindowStart, WindowEnd)"
 
 
-## <a name="type-mapping-for-oracle"></a>Mapowanie typu na oprogramowanie Oracle
+## <a name="type-mapping-for-oracle"></a>Mapowanie typu dla programu Oracle
 
-Jak wspomniano w [działania przenoszenia danych](data-factory-data-movement-activities.md), działanie kopiowania wykonuje operację automatyczne konwersje z typów źródła do ujścia typów przy użyciu następujących podejście dwuetapowe:
+Jak wspomniano w [działaniach związanych z przenoszeniem danych](data-factory-data-movement-activities.md), działanie kopiowania wykonuje konwersje typów automatycznych z typów źródłowych na typy obiektów ujścia przy użyciu następujących dwuetapowych podejścia:
 
-1. Przekonwertować na typ architektury .NET typy natywne źródła.
-2. Przekonwertować typ architektury .NET na typ ujścia natywnych.
+1. Konwertuj z natywnych typów źródła na typ .NET.
+2. Konwertuj z typu .NET na natywny typ ujścia.
 
-Podczas przenoszenia danych z bazy danych Oracle, następujące mapowania są używane z typu danych Oracle na typ architektury .NET i na odwrót:
+Podczas przenoszenia danych z programu Oracle następujące mapowania są używane z typu danych Oracle do typu .NET i na odwrót:
 
-| Typ danych Oracle | Typ danych .NET framework |
+| Typ danych Oracle | Typ danych .NET Framework |
 | --- | --- |
-| BFILE |Byte[] |
-| BLOB |Byte[]<br/>(obsługiwane wyłącznie w Oracle 10g i nowszych wersjach po użyciu sterownika Microsoft) |
-| CHAR |String |
-| CLOB |String |
-| DATE |Datetime |
-| FLOAT |Decimal, String (jeśli dokładności > 28) |
-| INTEGER |Decimal, String (jeśli dokładności > 28) |
-| INTERWAŁU ROKU DO MIESIĄCA |Int32 |
-| INTERWAŁU DNIA DO SEKUNDY |TimeSpan |
-| LONG |String |
-| LONG RAW |Byte[] |
+| DOTYCZĄCE |Byte [] |
+| BLOB |Byte []<br/>(obsługiwane tylko w systemach Oracle 10g i nowszych w przypadku korzystania ze sterownika firmy Microsoft) |
+| DELIKATN |Ciąg |
+| CLOB |Ciąg |
+| DATE |DateTime |
+| FLOAT |Decimal, String (jeśli precyzja > 28) |
+| INTEGER |Decimal, String (jeśli precyzja > 28) |
+| INTERWAŁ OD ROKU DO MIESIĄCA |Elementem |
+| INTERWAŁ OD DNIA DO SEKUNDY |Czasu |
+| DŁUGO |Ciąg |
+| DŁUGI NIEPRZETWORZONY |Byte [] |
 | NCHAR |Ciąg |
 | NCLOB |Ciąg |
-| NUMBER |Decimal, String (jeśli dokładności > 28) |
+| Liczba |Decimal, String (jeśli precyzja > 28) |
 | NVARCHAR2 |Ciąg |
-| RAW |Byte[] |
-| ROWID |String |
-| TIMESTAMP |Datetime |
-| TIMESTAMP WITH LOCAL TIME ZONE |Datetime |
-| TIMESTAMP WITH TIME ZONE |Datetime |
-| UNSIGNED INTEGER |Number |
-| VARCHAR2 |String |
-| XML |String |
+| SUROWCÓW |Byte [] |
+| Właściwość |Ciąg |
+| ZNACZNIK czasu |DateTime |
+| SYGNATURA CZASOWA Z LOKALNĄ STREFĄ CZASOWĄ |DateTime |
+| SYGNATURA CZASOWA ZE STREFĄ CZASOWĄ |DateTime |
+| LICZBA CAŁKOWITA BEZ ZNAKU |Liczba |
+| VARCHAR2 |Ciąg |
+| DOKUMENT |Ciąg |
 
 > [!NOTE]
-> Typy danych **INTERWAŁU roku do miesiąca** i **INTERWAŁU dnia do sekundy** nie są obsługiwane w przypadku używania sterownik firmy Microsoft.
+> Typy danych **Interwał od roku do miesiąca** oraz **Interwał od dnia do sekundy** nie są obsługiwane w przypadku używania sterownika firmy Microsoft.
 
-## <a name="map-source-to-sink-columns"></a>Mapy źródła do ujścia kolumn
+## <a name="map-source-to-sink-columns"></a>Mapowanie źródła do kolumn ujścia
 
-Aby dowiedzieć się więcej na temat mapowania kolumn w zestawie danych źródłowych do kolumn w zestawie danych ujścia, zobacz [mapowanie kolumny zestawu danych w usłudze Data Factory](data-factory-map-columns.md).
+Aby dowiedzieć się więcej o mapowaniu kolumn w źródłowym zestawie danych do kolumn w zestawie danych ujścia, zobacz [Mapowanie kolumn zestawu danych w Data Factory](data-factory-map-columns.md).
 
-## <a name="repeatable-read-from-relational-sources"></a>Odczyt powtarzalny ze źródeł relacyjnych
+## <a name="repeatable-read-from-relational-sources"></a>Powtarzanie odczytu ze źródeł relacyjnych
 
-Podczas kopiowania danych z magazynów danych relacyjnych, pamiętać powtarzalności Aby uniknąć niezamierzonego wyników. W usłudze Azure Data Factory możesz ręcznie ponownie uruchomić wycinek. Można również skonfigurować zasady ponawiania dla zestawu danych, tak, aby wycinek będzie uruchamiana ponownie, gdy wystąpi błąd. Gdy wycinek będzie uruchamiana ponownie, albo ręcznie lub przez zasady ponawiania, upewnij się, że te same dane jest odczyt niezależnie od tego, jak wiele razy wycinek jest uruchamiany. Aby uzyskać więcej informacji, zobacz [Repeatable odczytywać źródła relacyjnego](data-factory-repeatable-copy.md#repeatable-read-from-relational-sources).
+Podczas kopiowania danych z magazynów danych relacyjnych należy mieć na uwadze powtarzalność, aby uniknąć niezamierzonych wyników. W Azure Data Factory można ręcznie ponownie uruchomić wycinek. Możesz również skonfigurować zasady ponawiania dla zestawu danych, aby wycinek został ponownie uruchomiony po wystąpieniu błędu. Po ponownym uruchomieniu wycinka ręcznie lub przez zasady ponawiania, upewnij się, że te same dane są odczytywane niezależnie od tego, ile razy jest uruchomiony plasterek. Aby uzyskać więcej informacji, zobacz [powtarzalny odczyt ze źródeł relacyjnych](data-factory-repeatable-copy.md#repeatable-read-from-relational-sources).
 
 ## <a name="performance-and-tuning"></a>Wydajności i dostosowywanie
 
-Zobacz [dostrajania przewodnik dotyczący wydajności działania kopiowania i](data-factory-copy-activity-performance.md) Aby dowiedzieć się więcej na temat kluczowych czynników wpływających na wydajność przenoszenia danych (działanie kopiowania) w usłudze Azure Data Factory. Można także poznasz różne sposoby, aby zoptymalizować ją.
+Zapoznaj się z [przewodnikiem dotyczącym wydajności i dostrajania działania kopiowania](data-factory-copy-activity-performance.md) , aby poznać kluczowe czynniki wpływające na wydajność przenoszenia danych (działanie kopiowania) w Azure Data Factory. Możesz również poznać różne sposoby jego optymalizacji.

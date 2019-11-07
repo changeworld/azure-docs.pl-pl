@@ -1,18 +1,18 @@
 ---
-title: Macierz obsługi odzyskiwania po awarii maszyn wirtualnych funkcji Hyper-V w chmurach programu VMM do lokacji dodatkowej z Azure Site Recovery
+title: Obsługa odzyskiwania po awarii macierzy z funkcją Hyper-V w dodatkowej lokacji programu VMM z Azure Site Recovery
 description: Podsumowuje obsługę replikacji maszyny wirtualnej funkcji Hyper-V w chmurach programu VMM do lokacji dodatkowej z Azure Site Recovery.
 author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 09/09/2019
+ms.date: 11/06/2019
 ms.author: raynew
-ms.openlocfilehash: 46d6cba1d702773639420a3bc5ac74b9c16ce706
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: 7711ebaaddccd68d4322c1d3ebdd049a57bc709b
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72933810"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73686172"
 ---
 # <a name="support-matrix-for-disaster-recovery-of-hyper-v-vms-to-a-secondary-site"></a>Macierz obsługi odzyskiwania po awarii maszyn wirtualnych funkcji Hyper-V w lokacji dodatkowej
 
@@ -67,13 +67,13 @@ Maszyna wirtualna gościa — system Windows/Linux — statyczny adres IP | Tak
 Maszyna wirtualna gościa — wiele kart sieciowych | Tak
 
 
-## <a name="storage"></a>Usługa Storage
+## <a name="storage"></a>Magazyn
 
 ### <a name="host-storage"></a>Magazyn hosta
 
 **Magazyn (Host)** | **Obsługiwane**
 --- | --- 
-NFS | ND
+NFS | Nie dotyczy
 SMB 3.0 |  Tak
 SIEĆ SAN (ISCSI) | Tak
 Wiele ścieżek (MPIO) | Tak
@@ -82,15 +82,15 @@ Wiele ścieżek (MPIO) | Tak
 
 **Konfiguracja** | **Obsługiwane**
 --- | --- | 
-VMDK |  ND
+VMDK |  Nie dotyczy
 DYSK VHD/VHDX | Tak (do 16 dysków)
 Maszyna wirtualna generacji 2 | Tak
 Udostępniony dysk klastra | Nie
 Zaszyfrowany dysk | Nie
-UEFI| ND
+UEFI| Nie dotyczy
 NFS | Nie
 SMB 3.0 | Nie
-RDM | ND
+RDM | Nie dotyczy
 Dysk > 1 TB | Tak
 Wolumin z dyskiem rozłożonym > 1 TB<br/><br/> LVM | Tak
 Miejsca do magazynowania | Tak

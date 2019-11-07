@@ -1,5 +1,5 @@
 ---
-title: Usuń działanie w Azure Data Factory | Microsoft Docs
+title: Usuń działanie w Azure Data Factory
 description: Dowiedz się, jak usuwać pliki w różnych magazynach plików przy użyciu działania usuwania w Azure Data Factory.
 services: data-factory
 documentationcenter: ''
@@ -13,19 +13,19 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 08/20/2019
-ms.openlocfilehash: d9a1c76e8ac386b954c68f16e2189df4e6c0e1b7
-ms.sourcegitcommit: 4b8a69b920ade815d095236c16175124a6a34996
+ms.openlocfilehash: 8efbf5cd6003781450afe70b8019b39d75290546
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/23/2019
-ms.locfileid: "69996317"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73675616"
 ---
 # <a name="delete-activity-in-azure-data-factory"></a>Usuń działanie w Azure Data Factory
 
 Możesz użyć działania Usuń w Azure Data Factory, aby usunąć pliki lub foldery z lokalnych magazynów magazynów lub magazynów w chmurze. To działanie służy do czyszczenia lub archiwizowania plików, gdy nie są już potrzebne.
 
 > [!WARNING]
-> Nie można przywrócić usuniętych plików lub folderów. Należy zachować ostrożność w przypadku usuwania plików lub folderów przy użyciu działania usuwania.
+> Usuniętych plików lub folderów nie można przywrócić. Należy zachować ostrożność przy usuwaniu plików lub folderów za pomocą działania usuwania.
 
 ## <a name="best-practices"></a>Najlepsze praktyki
 
@@ -52,7 +52,7 @@ Poniżej przedstawiono kilka zaleceń dotyczących używania działania usuwania
 -   [FTP](connector-ftp.md)
 -   [SFTP](connector-sftp.md)
 -   [Amazon S3](connector-amazon-simple-storage-service.md)
--   [Google Cloud Storage](connector-google-cloud-storage.md)
+-   [Magazyn w chmurze Google](connector-google-cloud-storage.md)
 
 ## <a name="syntax"></a>Składnia
 
@@ -81,15 +81,15 @@ Poniżej przedstawiono kilka zaleceń dotyczących używania działania usuwania
 
 ## <a name="type-properties"></a>Właściwości typu
 
-| Właściwość | Opis | Wymagane |
+| Właściwość | Opis | Wymagany |
 | --- | --- | --- |
-| zestawu | Zawiera odwołanie do zestawu danych w celu określenia plików lub folderów do usunięcia | Tak |
-| recursive | Wskazuje, czy pliki są usuwane rekursywnie z podfolderów, czy tylko z określonego folderu.  | Nie. Wartość domyślna to `false`. |
+| Zestawu | Zawiera odwołanie do zestawu danych w celu określenia plików lub folderów do usunięcia | Tak |
+| rozpoznawania | Wskazuje, czy pliki są usuwane rekursywnie z podfolderów, czy tylko z określonego folderu.  | Nie. Wartość domyślna to `false`. |
 | maxConcurrentConnections | Liczba połączeń do równoczesnego połączenia z magazynem magazynów w celu usunięcia folderów lub plików.   |  Nie. Wartość domyślna to `1`. |
 | enablelogging | Wskazuje, czy konieczne jest zapisanie nazw folderów lub plików, które zostały usunięte. W przypadku wartości true należy dodatkowo podać konto magazynu, aby zapisać plik dziennika, aby można było śledzić zachowania działania usuwania, odczytując plik dziennika. | Nie |
 | logStorageSettings | Dotyczy tylko gdy EnableLogging = true.<br/><br/>Grupa właściwości magazynu, które można określić w miejscu, w którym chcesz zapisać plik dziennika zawierający nazwy folderów lub plików, które zostały usunięte przez działanie usuwania. | Nie |
 | linkedServiceName | Dotyczy tylko gdy EnableLogging = true.<br/><br/>Połączona usługa [Azure Storage](connector-azure-blob-storage.md#linked-service-properties), [Azure Data Lake Storage Gen1](connector-azure-data-lake-store.md#linked-service-properties)lub [Azure Data Lake Storage Gen2](connector-azure-data-lake-storage.md#linked-service-properties) do przechowywania pliku dziennika zawierającego nazwy folderów lub plików, które zostały usunięte przez działanie usuwania. Należy pamiętać, że musi być skonfigurowany przy użyciu tego samego typu Integration Runtime z tego, który jest używany przez działanie Delete do usuwania plików. | Nie |
-| path | Dotyczy tylko gdy EnableLogging = true.<br/><br/>Ścieżka zapisu pliku dziennika na koncie magazynu. Jeśli nie podasz ścieżki, usługa utworzy dla Ciebie kontener. | Nie |
+| ścieżka | Dotyczy tylko gdy EnableLogging = true.<br/><br/>Ścieżka zapisu pliku dziennika na koncie magazynu. Jeśli nie podasz ścieżki, usługa utworzy dla Ciebie kontener. | Nie |
 
 ## <a name="monitoring"></a>Monitorowanie
 
@@ -117,12 +117,12 @@ Istnieją dwa miejsca, w których można zobaczyć i monitorować wyniki działa
 
 ### <a name="sample-log-file-of-the-delete-activity"></a>Przykładowy plik dziennika działania usuwania
 
-| Name | Kategoria | State | Błąd |
+| Nazwa | Kategoria | Stan | Błąd |
 |:--- |:--- |:--- |:--- |
 | TEST1/yyy. JSON | Plik | Usunięte |  |
-| test2/hello789.txt | Plik | Usunięte |  |
+| TEST2/hello789. txt | Plik | Usunięte |  |
 | TEST2/test3/hello000. txt | Plik | Usunięte |  |
-| test2/test3/zzz.json | Plik | Usunięte |  |
+| TEST2/test3/ZZZ. JSON | Plik | Usunięte |  |
 
 ## <a name="examples-of-using-the-delete-activity"></a>Przykłady użycia działania usuwania
 
@@ -134,12 +134,12 @@ Pierwiastek<br/>&nbsp;&nbsp;&nbsp;&nbsp;Folder_A_1/<br/>&nbsp;&nbsp;&nbsp;&nbsp;
 
 Teraz używasz działania usuwania do usuwania folderu lub plików przez połączenie różnych wartości właściwości z zestawu danych i działania usuwania:
 
-| folderPath (z zestawu danych) | Nazwa pliku (z zestawu danych) | cykliczne (z działania usuwania) | Output |
+| folderPath (z zestawu danych) | Nazwa pliku (z zestawu danych) | cykliczne (z działania usuwania) | Dane wyjściowe |
 |:--- |:--- |:--- |:--- |
-| Element główny/Folder_A_2 | NULL | False | Pierwiastek<br/>&nbsp;&nbsp;&nbsp;&nbsp;Folder_A_1/<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1. txt<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2. txt<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;3. csv<br/>&nbsp;&nbsp;&nbsp;&nbsp;Folder_A_2/<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strike>4. txt</strike><br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strike>5.csv</strike><br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Folder_B_1/<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;6. txt<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;7. csv<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Folder_B_2/<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;8. txt |
-| Element główny/Folder_A_2 | NULL | Prawda | Pierwiastek<br/>&nbsp;&nbsp;&nbsp;&nbsp;Folder_A_1/<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1. txt<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2. txt<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;3. csv<br/>&nbsp;&nbsp;&nbsp;&nbsp;<strike>Folder_A_2/</strike><br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strike>4. txt</strike><br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strike>5.csv</strike><br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strike>Folder_B_1/</strike><br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strike>6. txt</strike><br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strike>7.csv</strike><br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strike>Folder_B_2/</strike><br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strike>8. txt</strike> |
+| Element główny/Folder_A_2 | NULL | False | Pierwiastek<br/>&nbsp;&nbsp;&nbsp;&nbsp;Folder_A_1/<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1. txt<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2. txt<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;3. csv<br/>&nbsp;&nbsp;&nbsp;&nbsp;Folder_A_2/<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strike>4. txt</strike><br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strike>5. csv</strike><br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Folder_B_1/<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;6. txt<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;7. csv<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Folder_B_2/<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;8. txt |
+| Element główny/Folder_A_2 | NULL | True | Pierwiastek<br/>&nbsp;&nbsp;&nbsp;&nbsp;Folder_A_1/<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1. txt<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2. txt<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;3. csv<br/>&nbsp;&nbsp;&nbsp;&nbsp;<strike>Folder_A_2/</strike><br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strike>4. txt</strike><br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strike>5. csv</strike><br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strike>Folder_B_1/</strike><br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strike>6. txt</strike><br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strike>7. csv</strike><br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strike>Folder_B_2/</strike><br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strike>8. txt</strike> |
 | Element główny/Folder_A_2 | *. txt | False | Pierwiastek<br/>&nbsp;&nbsp;&nbsp;&nbsp;Folder_A_1/<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1. txt<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2. txt<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;3. csv<br/>&nbsp;&nbsp;&nbsp;&nbsp;Folder_A_2/<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strike>4. txt</strike><br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;5. csv<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Folder_B_1/<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;6. txt<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;7. csv<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Folder_B_2/<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;8. txt |
-| Element główny/Folder_A_2 | *. txt | Prawda | Pierwiastek<br/>&nbsp;&nbsp;&nbsp;&nbsp;Folder_A_1/<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1. txt<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2. txt<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;3. csv<br/>&nbsp;&nbsp;&nbsp;&nbsp;Folder_A_2/<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strike>4. txt</strike><br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;5. csv<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Folder_B_1/<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strike>6. txt</strike><br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;7. csv<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Folder_B_2/<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strike>8. txt</strike> |
+| Element główny/Folder_A_2 | *. txt | True | Pierwiastek<br/>&nbsp;&nbsp;&nbsp;&nbsp;Folder_A_1/<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1. txt<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2. txt<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;3. csv<br/>&nbsp;&nbsp;&nbsp;&nbsp;Folder_A_2/<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strike>4. txt</strike><br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;5. csv<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Folder_B_1/<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strike>6. txt</strike><br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;7. csv<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Folder_B_2/<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strike>8. txt</strike> |
 
 ### <a name="periodically-clean-up-the-time-partitioned-folder-or-files"></a>Okresowo oczyszczanie folderu lub plików na partycje czasowej
 
@@ -263,7 +263,7 @@ Można utworzyć potok w celu okresowego czyszczenia pliku lub folderu podzielon
 
 ### <a name="clean-up-the-expired-files-that-were-last-modified-before-201811"></a>Wyczyść wygasłe pliki, które zostały ostatnio zmodyfikowane przed 2018.1.1
 
-Można utworzyć potok w celu oczyszczenia starych lub wygasłych plików, korzystając z filtru atrybutów plików: "LastModified" w zestawie danych.  
+Można utworzyć potok w celu oczyszczenia starych lub wygasłych plików, wykorzystując Filtr atrybutów pliku: "LastModified" w zestawie danych.  
 
 #### <a name="sample-pipeline"></a>Przykładowy potok
 

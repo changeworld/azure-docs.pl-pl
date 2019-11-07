@@ -1,5 +1,5 @@
 ---
-title: Zapytanie podzielonej na fragmenty bazy danych Azure SQL Database | Microsoft Docs
+title: Wykonywanie zapytań dotyczących baz danych usługi Azure SQL podzielonej na fragmenty
 description: Uruchom zapytania w fragmentów za pomocą biblioteki klienta Elastic Database.
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 01/25/2019
-ms.openlocfilehash: 471af9e1bc699ccaa8bc930ab930d6d40bbdc984
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 108da61323f61b009fbfdedac4cd345c6b87a7be
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68568365"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73690184"
 ---
 # <a name="multi-shard-querying-using-elastic-database-tools"></a>Wykonywanie zapytań wielofragmentuowych przy użyciu narzędzi Elastic Database
 
@@ -58,7 +58,7 @@ using (MultiShardConnection conn = new MultiShardConnection(myShardMap.GetShards
 }
 ```
 
-Kluczową różnicą jest konstrukcja połączeń wielofragmentuowych. Gdy element SqlConnection działa na pojedynczej bazie danych, **MultiShardConnection** pobiera ***kolekcję fragmentów*** jako dane wejściowe. Wypełnij kolekcję fragmentów z mapy fragmentu. Zapytanie jest następnie wykonywane w kolekcji fragmentów przy użyciu semantyki **All Union** do złożenia pojedynczego ogólnego wyniku. Opcjonalnie nazwę fragmentu, z którego pochodzi wiersz, można dodać do danych wyjściowych przy użyciu właściwości **ExecutionOptions** polecenia.
+Kluczową różnicą jest konstrukcja połączeń wielofragmentuowych. Gdy element **SqlConnection** działa na pojedynczej bazie danych, **MultiShardConnection** pobiera ***kolekcję fragmentów*** jako dane wejściowe. Wypełnij kolekcję fragmentów z mapy fragmentu. Zapytanie jest następnie wykonywane w kolekcji fragmentów przy użyciu semantyki **All Union** do złożenia pojedynczego ogólnego wyniku. Opcjonalnie nazwę fragmentu, z którego pochodzi wiersz, można dodać do danych wyjściowych przy użyciu właściwości **ExecutionOptions** polecenia.
 
 Zwróć uwagę na wywołanie metody **myShardMap. GetShards ()** . Ta metoda pobiera wszystkie fragmentów z mapy fragmentu i zapewnia łatwy sposób uruchamiania zapytania dla wszystkich odpowiednich baz danych. Kolekcję fragmentów dla zapytania o wiele fragmentu można zwiększyć, wykonując zapytanie LINQ w kolekcji zwróconej przez wywołanie **myShardMap. GetShards ()** . W połączeniu z zasadą częściowe wyniki bieżąca możliwość w kwerendach fragmentu została zaprojektowana tak, aby była dobrze gotowa do setek fragmentów.
 

@@ -1,5 +1,5 @@
 ---
-title: Zdarzenia rozszerzone w SQL Database | Microsoft Docs
+title: Zdarzenia rozszerzone w SQL Database
 description: Opisuje zdarzenia rozszerzone (XEvents) w Azure SQL Database oraz sposób różnicowania sesji zdarzeń w przypadku sesji zdarzeń w Microsoft SQL Server.
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: MightyPen
 ms.author: genemi
 ms.reviewer: jrasnik
 ms.date: 12/19/2018
-ms.openlocfilehash: f9af487e2eb35e7dc94e1b70945d5c03ffdde2ba
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 64cfcd9451416a6eb35301268b285bd00cf0cad4
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68566082"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73686783"
 ---
 # <a name="extended-events-in-sql-database"></a>Zdarzenia rozszerzone w SQL Database
 [!INCLUDE [sql-database-xevents-selectors-1-include](../../includes/sql-database-xevents-selectors-1-include.md)]
@@ -31,7 +31,7 @@ W tym temacie wyjaśniono, w jaki sposób implementacja rozszerzonych zdarzeń w
 
 Dodatkowe informacje na temat zdarzeń rozszerzonych, dla Azure SQL Database i Microsoft SQL Server, są dostępne w:
 
-- [Szybki start: Zdarzenia rozszerzone w SQL Server](https://msdn.microsoft.com/library/mt733217.aspx)
+- [Szybki start: rozszerzone zdarzenia w SQL Server](https://msdn.microsoft.com/library/mt733217.aspx)
 - [Zdarzenia rozszerzone](https://msdn.microsoft.com/library/bb630282.aspx)
 
 ## <a name="prerequisites"></a>Wymagania wstępne
@@ -58,7 +58,7 @@ Tematy pokrewne zawierają dwa przykłady kodu:
 
 - [Kod docelowy buforu pierścieniowego dla zdarzeń rozszerzonych w SQL Database](sql-database-xevent-code-ring-buffer.md)
     - Krótki prosty skrypt języka Transact-SQL.
-    - Podkreślamy w temacie przykładowy kod, który po zakończeniu pracy z obiektem docelowym bufora pierścieniowego należy zwolnić jego zasoby przez wykonanie instrukcji ALTER-Drop `ALTER EVENT SESSION ... ON DATABASE DROP TARGET ...;` . Później można dodać kolejne wystąpienie buforu pierścienia przez `ALTER EVENT SESSION ... ON DATABASE ADD TARGET ...`.
+    - Podkreślamy w temacie przykładowy kod, który po zakończeniu pracy z obiektem docelowym bufora pierścieniowego należy zwolnić jego zasoby, wykonując instrukcję ALTER-Drop `ALTER EVENT SESSION ... ON DATABASE DROP TARGET ...;`. Później można dodać kolejne wystąpienie buforu pierścienia według `ALTER EVENT SESSION ... ON DATABASE ADD TARGET ...`.
 
 
 - [Kod docelowy pliku zdarzeń dla zdarzeń rozszerzonych w SQL Database](sql-database-xevent-code-event-file.md)
@@ -83,13 +83,13 @@ Funkcja zdarzeń rozszerzonych jest obsługiwana przez kilka [widoków wykazu](h
 
 | Nazwa<br/>Widok wykazu | Opis |
 |:--- |:--- |
-| **sys.database_event_session_actions** |Zwraca wiersz dla każdej akcji w każdym zdarzeniu sesji zdarzeń. |
-| **sys.database_event_session_events** |Zwraca wiersz dla każdego zdarzenia w sesji zdarzeń. |
-| **sys.database_event_session_fields** |Zwraca wiersz dla każdej kolumny dostosowania, która została jawnie ustawiona dla zdarzeń i elementów docelowych. |
-| **sys.database_event_session_targets** |Zwraca wiersz dla każdego obiektu docelowego zdarzenia dla sesji zdarzeń. |
-| **sys.database_event_sessions** |Zwraca wiersz dla każdej sesji zdarzeń w bazie danych SQL Database. |
+| **sys. database_event_session_actions** |Zwraca wiersz dla każdej akcji w każdym zdarzeniu sesji zdarzeń. |
+| **sys. database_event_session_events** |Zwraca wiersz dla każdego zdarzenia w sesji zdarzeń. |
+| **sys. database_event_session_fields** |Zwraca wiersz dla każdej kolumny dostosowania, która została jawnie ustawiona dla zdarzeń i elementów docelowych. |
+| **sys. database_event_session_targets** |Zwraca wiersz dla każdego obiektu docelowego zdarzenia dla sesji zdarzeń. |
+| **sys. database_event_sessions** |Zwraca wiersz dla każdej sesji zdarzeń w bazie danych SQL Database. |
 
-W Microsoft SQL Server podobne widoki wykazu mają nazwy, które obejmują *. serwer\_*  zamiast *. baza danych\_* . Wzorzec nazwy jest taki jak **sys. server_event_%** .
+W Microsoft SQL Server podobne widoki wykazu mają nazwy, które obejmują *. serwer\_* zamiast *. baza danych\_* . Wzorzec nazwy jest taki jak **sys. server_event_%** .
 
 ## <a name="new-dynamic-management-views-dmvshttpsmsdnmicrosoftcomlibraryms188754aspx"></a>Nowe dynamiczne widoki zarządzania [(widoków DMV)](https://msdn.microsoft.com/library/ms188754.aspx)
 
@@ -97,29 +97,29 @@ Azure SQL Database ma [dynamiczne widoki zarządzania (widoków DMV)](https://ms
 
 | Nazwa DMV | Opis |
 |:--- |:--- |
-| **sys.dm_xe_database_session_event_actions** |Zwraca informacje o akcjach sesji zdarzeń. |
-| **sys.dm_xe_database_session_events** |Zwraca informacje o zdarzeniach sesji. |
-| **sys.dm_xe_database_session_object_columns** |Pokazuje wartości konfiguracji dla obiektów, które są powiązane z sesją. |
-| **sys.dm_xe_database_session_targets** |Zwraca informacje o celach docelowych sesji. |
-| **sys.dm_xe_database_sessions** |Zwraca wiersz dla każdej sesji zdarzeń, który jest objęty zakresem bieżącej bazy danych. |
+| **sys. DM _xe_database_session_event_actions** |Zwraca informacje o akcjach sesji zdarzeń. |
+| **sys. DM _xe_database_session_events** |Zwraca informacje o zdarzeniach sesji. |
+| **sys. DM _xe_database_session_object_columns** |Pokazuje wartości konfiguracji dla obiektów, które są powiązane z sesją. |
+| **sys. DM _xe_database_session_targets** |Zwraca informacje o celach docelowych sesji. |
+| **sys. DM _xe_database_sessions** |Zwraca wiersz dla każdej sesji zdarzeń, który jest objęty zakresem bieżącej bazy danych. |
 
-W Microsoft SQL Server podobne widoki wykazu są nazwane bez  *\_części nazwy bazy danych* , takiej jak:
+W Microsoft SQL Server podobne widoki wykazu są nazwane bez *bazy danych\_* część nazwy, na przykład:
 
-- **sys. DM _xe_sessions**, zamiast nazwy<br/>**sys.dm_xe_database_sessions**.
+- **sys. DM _xe_sessions**, zamiast nazwy<br/>**sys. DM _xe_database_sessions**.
 
 ### <a name="dmvs-common-to-both"></a>Widoków DMV wspólne dla obu
 W przypadku zdarzeń rozszerzonych istnieją dodatkowe widoków DMV, które są wspólne dla obu Azure SQL Database i Microsoft SQL Server:
 
-- **sys.dm_xe_map_values**
-- **sys.dm_xe_object_columns**
-- **sys.dm_xe_objects**
-- **sys.dm_xe_packages**
+- **sys. DM _xe_map_values**
+- **sys. DM _xe_object_columns**
+- **sys. DM _xe_objects**
+- **sys. DM _xe_packages**
 
   <a name="sqlfindseventsactionstargets" id="sqlfindseventsactionstargets"></a>
 
 ## <a name="find-the-available-extended-events-actions-and-targets"></a>Znajdź dostępne rozszerzone zdarzenia, akcje i cele
 
-Można uruchomić prostą **instrukcję SQL** , aby uzyskać listę dostępnych zdarzeń, akcji i celu.
+Można uruchomić prostą instrukcję SQL, aby uzyskać listę dostępnych zdarzeń, akcji **i celu.**
 
 ```sql
 SELECT
@@ -169,8 +169,8 @@ Musisz mieć uprawnienie **Kontrola** w bazie danych, aby wystawić instrukcję 
 
 Token sygnatury dostępu współdzielonego generowany dla kontenera usługi Azure Storage musi określać **RWL** dla uprawnień. Wartość **RWL** zapewnia następujące uprawnienia:
 
-- Odczyt
-- Zapis
+- Odczytywanie
+- Zapisywanie
 - List
 
 ## <a name="performance-considerations"></a>Zagadnienia dotyczące wydajności
@@ -180,15 +180,15 @@ Istnieją scenariusze, w których intensywne wykorzystanie zdarzeń rozszerzonyc
 Jeśli zostanie wyświetlony komunikat o błędzie informujący, że maksymalna ilość pamięci została wymuszona, niektóre akcje naprawcze, które można wykonać, to:
 
 - Uruchom mniejszą liczbę współbieżnych sesji zdarzeń.
-- Za pomocą instrukcji **Create** i **ALTER** dla sesji zdarzeń Zmniejsz ilość pamięci określonej w klauzuli **Max\_Memory** .
+- Za pomocą instrukcji **Create** i **ALTER** dla sesji zdarzeń Zmniejsz ilość pamięci określonej w polu **Maksymalna\_pamięci** .
 
 ### <a name="network-latency"></a>Opóźnienie sieci
 
-W celu przechowywania danych **w obiektach** BLOB usługi Azure Storage może wystąpić opóźnienie sieci lub błędy. Inne zdarzenia w SQL Database mogą być opóźnione podczas oczekiwania na zakończenie komunikacji sieciowej. To opóźnienie może spowolnić obciążenie.
+W **celu przechowywania danych w obiektach** BLOB usługi Azure Storage może wystąpić opóźnienie sieci lub błędy. Inne zdarzenia w SQL Database mogą być opóźnione podczas oczekiwania na zakończenie komunikacji sieciowej. To opóźnienie może spowolnić obciążenie.
 
 - Aby zmniejszyć ryzyko związane z wydajnością, należy unikać ustawiania opcji **EVENT_RETENTION_MODE** na **NO_EVENT_LOSS** w definicjach sesji zdarzeń.
 
-## <a name="related-links"></a>Linki pokrewne
+## <a name="related-links"></a>Powiązane linki
 
 - [Używanie Azure PowerShell z usługą Azure Storage](../storage/common/storage-powershell-guide-full.md).
 - [Polecenia cmdlet usługi Azure Storage](https://docs.microsoft.com/powershell/module/Azure.Storage)

@@ -1,5 +1,5 @@
 ---
-title: Praca z błędami przejściowymi — Azure SQL Database | Microsoft Docs
+title: Praca z błędami przejściowymi — Azure SQL Database
 description: Dowiedz się, jak rozwiązywać problemy, diagnozować i zapobiegać błędom połączenia SQL lub błędem przejściowym w Azure SQL Database.
 keywords: połączenie SQL, parametry połączenia, problemy z łącznością, błąd przejściowy, błąd połączenia
 services: sql-database
@@ -13,12 +13,12 @@ manager: dcscontentpm
 ms.author: ninarn
 ms.reviewer: carlrab
 ms.date: 06/14/2019
-ms.openlocfilehash: aba404842658aaa946a14a3cde03853c2fb3062d
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.openlocfilehash: 0191506cab9a54ad3978bfa7387c9ba1112ae815
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72792570"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73690824"
 ---
 # <a name="working-with-sql-database-connection-issues-and-transient-errors"></a>Praca z SQL Database problemami z połączeniem i błędami przejściowymi
 

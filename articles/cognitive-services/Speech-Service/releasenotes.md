@@ -11,14 +11,38 @@ ms.topic: conceptual
 ms.date: 11/05/2019
 ms.author: brianem
 ms.custom: seodec18
-ms.openlocfilehash: 353e0478172ed03cde848d8c5127d2ee41724963
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: b40df5878d08b222d145531bfdad1e30b2fe989d
+ms.sourcegitcommit: 359930a9387dd3d15d39abd97ad2b8cb69b8c18b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73481246"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73647395"
 ---
 # <a name="release-notes"></a>Informacje o wersji
+
+## <a name="speech-sdk-180-2019-november-release"></a>Speech SDK 1.8.0:2019 — wydanie w listopadzie
+
+**Nowe funkcje**
+*   Dodano interfejs API FromHost (), aby ułatwić korzystanie z kontenerów Premium i suwerennych chmur.
+*   Dodano automatyczne wykrywanie języka źródła dla funkcji rozpoznawania mowy (w języku C++Java i)
+*   Dodano obiekt SourceLanguageConfig dla funkcji rozpoznawania mowy, używany do określania oczekiwanych języków źródłowych (w C++języku Java i)
+*   Dodano obsługę KeywordRecognizer w systemach Windows (platformy UWP), Android i iOS za pomocą pakietów NuGet i Windows Unity
+*   Dodano interfejs API języka Java konwersacji zdalnych w celu przeprowadzenia transkrypcji konwersacji w partiach asynchronicznych.
+
+**Istotne zmiany**
+*   Konwersacje Transcriber zostały przeniesione w przestrzeni nazw Microsoft. CognitiveServices. Speech. transkrypcji.
+*   Część metod Transcriber konwersacji jest przenoszona do nowej klasy konwersacji.
+*   Porzucone wsparcie dla 32-bitowych (architektury ARMv7 i x86) iOS 
+
+**Poprawki błędów**
+*   Poprawka dla awarii, jeśli lokalny KeywordRecognizer jest używany bez prawidłowego klucza subskrypcji usługi mowy
+
+**Przykłady**
+*   Przykład platformy Xamarin dla KeywordRecognizer
+*   Przykład aparatu Unity dla KeywordRecognizer
+*   C++i przykłady dla środowiska Java dla automatycznych wykrywanie języka źródłowych.
+
+
 ## <a name="speech-sdk-170-2019-september-release"></a>Speech SDK 1.7.0:2019 — wydanie z września
 
 **Nowe funkcje**
@@ -37,7 +61,6 @@ ms.locfileid: "73481246"
 *   Rozwiązano problem z identyfikatorami UUID, które nie są unikatowe we właściwościach połączenia
 *   Rozwiązano kilka ostrzeżeń dotyczących specyfikatorów wartości null w powiązaniach SWIFT (może wymagać wprowadzenia małych kodu)
 *   Rozwiązano błąd, który spowodował, że połączenia protokołu WebSocket są niebezpiecznie zamknięte w ramach obciążenia sieci
-*   iOS: porzucone wsparcie dla architektury arm7s
 *   Rozwiązano problem w systemie Android, który czasami powoduje wystąpienie zduplikowanych identyfikatorów nakładów używanych przez DialogServiceConnector
 *   Ulepszenia stabilności połączeń między interakcjami i raportowanie błędów (za pośrednictwem zdarzeń anulowanych) w przypadku wystąpienia z DialogServiceConnector
 *   Rozpoczęcie sesji DialogServiceConnector będzie teraz prawidłowo udostępniać zdarzenia, w tym podczas wywoływania ListenOnceAsync () w aktywnym StartKeywordRecognitionAsync ()

@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: mrbullwinkle
 ms.author: mbullwin
 ms.date: 03/27/2019
-ms.openlocfilehash: 515d1da5333bb29237baa4bd941275f32ba754d3
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.openlocfilehash: 8bb144c78c5346f3351a6ada779a808410dbb30d
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73161581"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73668001"
 ---
 # <a name="application-insights-api-for-custom-events-and-metrics"></a>Application Insights API dla niestandardowych zdarzeń i metryk
 
@@ -20,7 +20,7 @@ Wstaw kilka wierszy kodu w aplikacji, aby dowiedzieć się, co użytkownicy robi
 
 ## <a name="api-summary"></a>Podsumowanie interfejsu API
 
-Podstawowy interfejs API jest jednolity na wszystkich platformach, z wyjątkiem kilku odmian, takich jak `GetMetric` (tylko platforma .NET).
+Podstawowy interfejs API jest jednolity na wszystkich platformach, z wyjątkiem kilku odmian, takich jak `GetMetric`(tylko platforma .NET).
 
 | Metoda | Używana do |
 | --- | --- |
@@ -569,7 +569,7 @@ telemetry.trackTrace({
 *Klient/przeglądarka JavaScript*
 
 ```javascript
-trackTrace(message: string, properties?: {[string]:string}, severityLevel?: AI.SeverityLevel)
+trackTrace(message: string, properties?: {[string]:string}, severityLevel?: SeverityLevel)
 ```
 
 Rejestruj zdarzenie diagnostyczne, takie jak wprowadzanie lub opuszczanie metody.

@@ -1,5 +1,5 @@
 ---
-title: Monitoruj wydajność usługi Azure SQL Database z wieloma dzierżawcami w wielodostępnej aplikacji SaaS | Microsoft Docs
+title: Monitorowanie wydajności podzielonej na fragmenty wielodostępnej bazy danych Azure SQL Database w aplikacji SaaS z wieloma dzierżawcami
 description: Monitorowanie i zarządzanie wydajnością podzielonej na fragmenty wielodostępnej bazy danych Azure SQL Database w aplikacji SaaS z wieloma dzierżawcami
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 01/25/2019
-ms.openlocfilehash: 50fab6afe837ad409f05dbb0f3a8a44d089a894e
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 03487c7e0e5fd08b6c93f81b733ab5ec1afb5605
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68570318"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73692022"
 ---
 # <a name="monitor-and-manage-performance-of-sharded-multi-tenant-azure-sql-database-in-a-multi-tenant-saas-app"></a>Monitorowanie i zarządzanie wydajnością podzielonej na fragmenty wielodostępnej bazy danych Azure SQL Database w aplikacji SaaS z wieloma dzierżawcami
 
@@ -33,7 +33,7 @@ Ten samouczek zawiera informacje na temat wykonywania następujących czynności
 > * Skalowanie bazy danych w górę w odpowiedzi na zwiększone obciążenie bazy danych
 > * Udostępnianie dzierżawy w bazie danych z jedną dzierżawą
 
-Do wykonania zadań opisanych w tym samouczku niezbędne jest spełnienie następujących wymagań wstępnych:
+Do wykonania kroków tego samouczka niezbędne jest spełnienie następujących wymagań wstępnych:
 
 * Wdrożono Wingtip biletów SaaS aplikację bazy danych z wieloma dzierżawcami. Aby wdrożyć program w mniej niż pięć minut, zobacz [wdrażanie i eksplorowanie aplikacji bazy danych z obsługą wielu dzierżawców Wingtip SaaS](saas-multitenantdb-get-started-deploy.md)
 * Zainstalowany jest program Azure PowerShell. Aby uzyskać szczegółowe informacje, zobacz [Rozpoczynanie pracy z programem Azure PowerShell](https://docs.microsoft.com/powershell/azure/get-started-azureps)
@@ -44,7 +44,7 @@ Zarządzanie wydajnością bazy danych polega na zbieraniu danych dotyczących w
 
 ### <a name="performance-management-strategies"></a>Strategie zarządzania wydajnością
 
-* Aby uniknąć konieczności ręcznego monitorowania wydajności, najprawdopodobniej ustawisz alerty wyzwalane w przypadku nienormalnego przedziału **baz danych**.
+* Aby uniknąć konieczności ręcznego monitorowania wydajności, najprawdopodobniej **ustawisz alerty wyzwalane w przypadku nienormalnego przedziału baz danych**.
 * Aby odpowiedzieć na krótkoterminowe fluktuacje w rozmiarze obliczeniowym bazy danych, **poziom jednostek DTU można skalować w górę lub w dół**. Jeśli ta fluktuacja występuje regularnie lub przewidywalna, **skalowanie bazy danych może odbywać się automatycznie**. Na przykład skalowanie w dół może nastąpić, kiedy przewidywane jest niskie obciążenie — w nocy lub podczas weekendów.
 * Aby odpowiedzieć na dłuższe wahania lub zmiany w dzierżawach, **poszczególne dzierżawy można przenieść do innej bazy danych**.
 * Aby odpowiedzieć na krótkoterminowe wzrosty obciążenia *poszczególnych* dzierżawców, **poszczególne dzierżawy mogą być wyłączane z bazy danych i mieć przypisany indywidualny rozmiar obliczeniowy**. Po zmniejszeniu obciążenia dzierżawa może zostać zwrócona do bazy danych z wieloma dzierżawcami. Gdy jest to znane z wyprzedzeniem, dzierżawy mogą być przenoszone przed emptivelyem, aby zapewnić, że baza danych zawsze ma potrzebne zasoby, i nie ma wpływu na inne dzierżawców w bazie danych z wieloma dzierżawcami. Jeśli takie wymaganie jest przewidywalne, na przykład w przypadku oczekiwania na wzmożone zakupy biletów na popularną imprezę, wówczas takie działanie funkcji zarządzania można uwzględnić w aplikacji.
@@ -55,15 +55,15 @@ W przypadku scenariuszy o dużej ilości, w których pracujesz z wieloma zasobam
 
 ## <a name="get-the-wingtip-tickets-saas-multi-tenant-database-application-source-code-and-scripts"></a>Pobierz Wingtip bilety SaaS kodu źródłowego i skryptów aplikacji bazy danych z wieloma dzierżawcami
 
-Wingtip bilety SaaS wielodostępnych skryptów bazy danych i kodu źródłowego aplikacji są dostępne w repozytorium GitHub [WingtipTicketsSaaS-MultitenantDB](https://github.com/microsoft/WingtipTicketsSaaS-MultiTenantDB) . Zapoznaj się [](saas-tenancy-wingtip-app-guidance-tips.md) z ogólnymi wskazówkami dotyczącymi kroków pobierania i odblokowywania Wingtip biletów SaaS.
+Wingtip bilety SaaS wielodostępnych skryptów bazy danych i kodu źródłowego aplikacji są dostępne w repozytorium GitHub [WingtipTicketsSaaS-MultitenantDB](https://github.com/microsoft/WingtipTicketsSaaS-MultiTenantDB) . Zapoznaj się z [ogólnymi wskazówkami](saas-tenancy-wingtip-app-guidance-tips.md) dotyczącymi kroków pobierania i odblokowywania Wingtip biletów SaaS.
 
 ## <a name="provision-additional-tenants"></a>Aprowizacja dodatkowych dzierżaw
 
 Aby zrozumieć, jak monitorowanie wydajności i zarządzanie działa w odpowiedniej skali, ten samouczek wymaga posiadania wielu dzierżawców w bazie danych z wieloma dzierżawcami.
 
-Jeśli masz już zainicjowaną partię dzierżawców w poprzednim samouczku, przejdź do sekcji symulowanie [użycia we wszystkich bazach danych dzierżaw](#simulate-usage-on-all-tenant-databases) .
+Jeśli masz już zainicjowaną partię dzierżawców w poprzednim samouczku, przejdź do sekcji [symulowanie użycia we wszystkich bazach danych dzierżaw](#simulate-usage-on-all-tenant-databases) .
 
-1. W **ISE programu PowerShell**Otwórz pozycję... Monitorowanie wydajności\\modułów szkoleniowych i\\zarządzanie*demo-PerformanceMonitoringAndManagement. ps1.* \\ Nie zamykaj tego skryptu, gdyż w ramach tego samouczka będzie konieczne uruchomienie kilku scenariuszy.
+1. W programie **POWERSHELL ISE**Otwórz program...\\modułów uczenia\\monitorowania wydajności i zarządzania\\*demo-PerformanceMonitoringAndManagement. ps1*. Nie zamykaj tego skryptu, gdyż w ramach tego samouczka będzie konieczne uruchomienie kilku scenariuszy.
 1. Ustaw zmienną **$DemoScenario** = **1**, _Provision a batch of tenants_ (Aprowizacja partii dzierżaw)
 1. Naciśnij klawisz **F5**, aby uruchomić skrypt.
 
@@ -75,7 +75,7 @@ Skrypt *New-TenantBatch* tworzy nowe dzierżawy z unikatowymi kluczami dzierżaw
 
 Podano skrypt *demo-PerformanceMonitoringAndManagement. ps1* , który symuluje obciążenie działające z wielodostępną bazą danych. Obciążenie jest generowane przy użyciu jednego z dostępnych scenariuszy ładowania:
 
-| Pokaz | Scenariusz |
+| Demonstracja | Scenariusz |
 |:--|:--|
 | 2 | Generuj normalne obciążenie natężenia (około 30 jednostek DTU) |
 | 3 | Generuj obciążenie z dłuższymi seriami na dzierżawcę|
@@ -84,8 +84,8 @@ Podano skrypt *demo-PerformanceMonitoringAndManagement. ps1* , który symuluje o
 
 Generator obciążenia stosuje obciążenie *syntetyczne* wyłącznie do procesorów dla każdej bazy danych dzierżawy. Generator uruchamia zadanie dla każdej bazy danych dzierżawy, co powoduje cykliczne wywołanie procedury składowanej, która generuje obciążenie. Poziomy obciążenia (w DTU), czas trwania i interwały są zróżnicowane dla wszystkich baz danych, co symuluje nieprzewidywalne działanie dzierżawy.
 
-1. W **ISE programu PowerShell**Otwórz pozycję... Monitorowanie wydajności\\modułów szkoleniowych i\\zarządzanie*demo-PerformanceMonitoringAndManagement. ps1.* \\ Nie zamykaj tego skryptu, gdyż w ramach tego samouczka będzie konieczne uruchomienie kilku scenariuszy.
-1. Ustawianie **$DemoScenario** = **2**, _generowanie normalnego obciążenia_ o natężeniu
+1. W programie **POWERSHELL ISE**Otwórz program...\\modułów uczenia\\monitorowania wydajności i zarządzania\\*demo-PerformanceMonitoringAndManagement. ps1*. Nie zamykaj tego skryptu, gdyż w ramach tego samouczka będzie konieczne uruchomienie kilku scenariuszy.
+1. Ustaw **$DemoScenario** = **2**, _Generuj normalne obciążenie natężenia_
 1. Naciśnij klawisz **F5** , aby zastosować obciążenie do wszystkich dzierżawców.
 
 Bilety Wingtip SaaS wielodostępnej bazy danych to aplikacja SaaS, a rzeczywiste obciążenie aplikacji SaaS jest zwykle sporadyczne i nieprzewidywalne. Aby to zasymulować, generator w sposób losowy obciąża wszystkie dzierżawy. Do nawiązania wzorca obciążenia potrzeba kilku minut, więc uruchom generator obciążenia przez 3-5 minut przed próbą monitorowania obciążenia w poniższych sekcjach.
@@ -97,7 +97,7 @@ Bilety Wingtip SaaS wielodostępnej bazy danych to aplikacja SaaS, a rzeczywiste
 
 Aby monitorować użycie zasobów wynikające z zastosowanego obciążenia, Otwórz Portal do bazy danych z wieloma dzierżawcami, **tenants1**zawierający dzierżawców:
 
-1. Otwórz [Azure Portal](https://portal.azure.com) i przejdź do serwera *tenants1-&lt;MT-User.&gt;*
+1. Otwórz [Azure Portal](https://portal.azure.com) i przejdź do *&gt;użytkownika serwera tenants1-MT-&lt;* .
 1. Przewiń w dół i Znajdź bazy danych, a następnie kliknij pozycję **tenants1**. Ta podzielonej na fragmenty baza danych z wieloma dzierżawcami zawiera wszystkie utworzone dzierżawy.
 
 ![Wykres bazy danych](./media/saas-multitenantdb-performance-monitoring/multitenantdb.png)
@@ -108,7 +108,7 @@ Obserwuj wykres **DTU** .
 
 Ustaw Alert dla bazy danych, która wyzwala na \>75% użycie w następujący sposób:
 
-1. Otwórz bazę danych *tenants1* (na serwerze *tenants1-MT-&lt;User&gt;*  ) w [Azure Portal](https://portal.azure.com).
+1. Otwórz bazę danych *tenants1* (na serwerze *&gt;użytkownika tenants1-&lt;mt* ) w [Azure Portal](https://portal.azure.com).
 1. Kliknij pozycję **Reguły alertów**, a następnie kliknij przycisk **+ Dodaj alert**:
 
    ![dodawanie alertu](media/saas-multitenantdb-performance-monitoring/add-alert.png)
@@ -133,7 +133,7 @@ Jeśli poziom obciążenia zostanie zwiększony w bazie danych do punktu, w któ
 
 Można symulować zajętą bazę danych przez zwiększenie obciążenia wytwarzanego przez generator. Wydłużenie liczby dzierżawców i wydłużenie obciążenia wielodostępnej bazy danych bez konieczności zmiany wymagań poszczególnych dzierżawców. Skalowanie w górę bazy danych jest łatwo wykonywane w portalu lub w programie PowerShell. W tym ćwiczeniu użyto portalu.
 
-1. Ustaw *$DemoScenario* = **3**, _Generuj obciążenia z dłuższą i bardziej częstą liczbą serii na bazę danych_ , aby zwiększyć intensywność obciążenia zagregowanego w bazie danych bez zmiany szczytowego obciążenia wymaganego przez poszczególne dzierżawy.
+1. Ustaw *$DemoScenario* = **3**, _Generuj obciążenia z dłuższą i bardziej częstą liczbą serii na bazę danych_ , aby zwiększyć intensywność zagregowanego obciążenia bazy danych bez zmiany szczytowego obciążenia wymaganego przez poszczególne dzierżawy.
 1. Naciśnij klawisz **F5**, aby zastosować obciążenie do wszystkich baz danych dzierżaw.
 1. Przejdź do bazy danych **tenants1** w Azure Portal.
 
@@ -143,7 +143,7 @@ Monitoruj zwiększone użycie jednostek DTU bazy danych na górnym wykresie. Now
 1. Dostosuj ustawienie **jednostek DTU** do **100**. 
 1. Kliknij przycisk **Zastosuj** , aby przesłać żądanie do skalowania bazy danych.
 
-Wróć do**omówienia** **tenants1** > , aby wyświetlić wykresy monitorowania. Monitoruj wpływ bazy danych na więcej zasobów (choć z kilkoma dzierżawcami i losowo Załaduj, które nie zawsze są łatwo widoczne do momentu uruchomienia przez jakiś czas). Podczas przeglądania wykresów należy pamiętać, że 100% na górnym wykresie teraz reprezentuje 100 DTU, natomiast na niższym wykresie 100% jest nadal 50 DTU.
+Wróć do **tenants1** > **Przegląd** , aby wyświetlić wykresy monitorowania. Monitoruj wpływ bazy danych na więcej zasobów (choć z kilkoma dzierżawcami i losowo Załaduj, które nie zawsze są łatwo widoczne do momentu uruchomienia przez jakiś czas). Podczas przeglądania wykresów należy pamiętać, że 100% na górnym wykresie teraz reprezentuje 100 DTU, natomiast na niższym wykresie 100% jest nadal 50 DTU.
 
 Bazy danych pozostają w trybie online i są w pełni dostępne podczas całego procesu. Kod aplikacji powinien zawsze być zapisany, aby ponowić próbę porzucenia połączeń i dlatego ponownie nawiąże połączenie z bazą danych.
 
@@ -153,7 +153,7 @@ Model z wieloma dzierżawcami podzielonej na fragmenty umożliwia wybranie, czy 
 
 Jeśli została już zainicjowana Nowa dzierżawa w swojej bazie danych, Pomiń kilka następnych kroków.
 
-1. W **ISE programu PowerShell**Otwórz pozycję... Moduły uczeniaProvisionTenants\\*demo-ProvisionTenants. ps1.* \\\\ 
+1. W **ISE programu PowerShell**Otwórz program...\\moduły uczenia\\ProvisionTenants\\*demo-ProvisionTenants. ps1*. 
 1. Modyfikuj **$TenantName = "Salix Salsa"** i **$VenueType = "odpowiedzialna"**
 1. Ustawianie **$Scenario** = **2**, _Inicjowanie obsługi dzierżawy w nowej bazie danych z jedną dzierżawą_
 1. Naciśnij klawisz **F5**, aby uruchomić skrypt.
@@ -166,12 +166,12 @@ Jeśli pojedyncza dzierżawa w ramach wielodostępnej bazy danych korzysta z du�
 
 To ćwiczenie symuluje efekt Salix Salsa, gdy bilety przechodzą do sprzedaży dla popularnego zdarzenia.
 
-1. Otwórz... Skrypt demo-PerformanceMonitoringAndManagement *. ps1.* \\
+1. Otwórz skrypt...\\*demo-PerformanceMonitoringAndManagement. ps1* .
 1. Ustaw **$DemoScenario = 5**, _Wygeneruj normalne obciążenie i wysokie obciążenie dla pojedynczej dzierżawy (około 90 jednostek DTU)._
 1. Ustaw **$SingleTenantName = Salix Salsa**
 1. Wykonaj skrypt, używając klawisza **F5**.
 
-Przejdź do portalu i przejdź do**omówienia** **salixsalsa** > , aby wyświetlić wykresy monitorowania. 
+Przejdź do portalu i przejdź do **salixsalsa** > **Przegląd** , aby wyświetlić wykresy monitorowania. 
 
 ## <a name="other-performance-management-patterns"></a>Inne wzorce zarządzania wydajnością
 
@@ -183,7 +183,7 @@ Ze względu na to, że skalowanie to zadanie łatwo wywoływane za pośrednictwe
 
 W przypadku agregowania użycia dzierżawy poniżej przewidywalnych wzorców użycia można użyć Azure Automation do skalowania bazy danych w górę i w dół zgodnie z harmonogramem. Na przykład przeskalować bazę danych w dół po 18:00 i ponownie przed 6:00 w dniach tygodnia, gdy wiadomo, że zaistnieją pewne wymagania dotyczące zasobów.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 Ten samouczek zawiera informacje na temat wykonywania następujących czynności:
 

@@ -5,58 +5,39 @@ author: zr-msft
 services: azure-dev-spaces
 ms.service: azure-dev-spaces
 ms.author: zarhoads
-ms.date: 10/24/2019
+ms.date: 11/04/2019
 ms.topic: conceptual
 description: Przejrzyj i przetestuj zmiany z żądania ściągnięcia bezpośrednio w usłudze Azure Kubernetes za pomocą akcji usługi GitHub i Azure Dev Spaces.
 keywords: Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, kontenery, akcje GitHub, Helm, Siatka usług, routing w sieci usług, polecenia kubectl, k8s
 manager: gwallace
-ms.openlocfilehash: 2638fe2cd12407e43d3b3b698cdfca5231362db4
-ms.sourcegitcommit: f7f70c9bd6c2253860e346245d6e2d8a85e8a91b
+ms.openlocfilehash: 590d49f4c189ff48f20369d18b17e0f6e4a46fa2
+ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73065940"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73571589"
 ---
 # <a name="github-actions--azure-kubernetes-service-preview"></a>Akcje GitHub & usługi Azure Kubernetes (wersja zapoznawcza)
 
 Azure Dev Spaces udostępnia przepływ pracy korzystający z akcji usługi GitHub, które umożliwiają przetestowanie zmian z żądania ściągnięcia bezpośrednio w AKS przed scaleniem żądania ściągnięcia z gałęzią główną repozytorium. Mając działającą aplikację, aby przeglądać zmiany żądania ściągnięcia, można zwiększyć zaufanie zarówno dla deweloperów, jak i członków zespołu. Ta działająca aplikacja może również pomóc członkom zespołu, takim jak Menedżerowie produktów i projektanci, stać się częścią procesu przeglądu podczas wczesnych etapów programowania.
 
-Niniejszy przewodnik zawiera informacje na temat wykonywania następujących czynności:
+Ten przewodnik zawiera informacje na temat wykonywania następujących czynności:
 
-- Skonfiguruj Azure Dev Spaces w zarządzanym klastrze Kubernetes na platformie Azure.
-- Wdróż dużą aplikację z wieloma mikrousługami w miejscu dev.
-- Konfigurowanie ciągłej integracji/ciągłego wdrażania za pomocą akcji usługi GitHub.
-- Przetestuj pojedynczą mikrousługę w izolowanym miejscu dev w kontekście pełnej aplikacji.
+* Skonfiguruj Azure Dev Spaces w zarządzanym klastrze Kubernetes na platformie Azure.
+* Wdróż dużą aplikację z wieloma mikrousługami w miejscu dev.
+* Konfigurowanie ciągłej integracji/ciągłego wdrażania za pomocą akcji usługi GitHub.
+* Przetestuj pojedynczą mikrousługę w izolowanym miejscu dev w kontekście pełnej aplikacji.
 
 > [!IMPORTANT]
 > Ta funkcja jest obecnie dostępna w wersji zapoznawczej. Wersje zapoznawcze są udostępniane pod warunkiem udzielenia zgody na [dodatkowe warunki użytkowania](https://azure.microsoft.com/support/legal/preview-supplemental-terms/). Niektóre cechy funkcji mogą ulec zmianie, zanim stanie się ona ogólnie dostępna.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-- Subskrypcja platformy Azure. Jeśli nie masz subskrypcji platformy Azure, możesz utworzyć [bezpłatne konto](https://azure.microsoft.com/free).
-- [Zainstalowany interfejs wiersza polecenia platformy Azure][azure-cli-installed].
-- [Helm 2,13 lub nowszy][helm-installed].
-- Konto usługi GitHub z [włączonymi akcjami usługi GitHub][github-actions-beta-signup].
-
-## <a name="create-an-azure-kubernetes-service-cluster"></a>Tworzenie klastra usługi Azure Kubernetes Service
-
-Należy utworzyć klaster AKS w [obsługiwanym regionie][supported-regions]. Poniższe polecenia tworzą grupę zasobów o nazwie Moja *zasobów* i klaster AKS o nazwie *MyAKS*.
-
-```cmd
-az group create --name MyResourceGroup --location eastus
-az aks create -g MyResourceGroup -n MyAKS --location eastus --disable-rbac --generate-ssh-keys
-```
-
-## <a name="enable-azure-dev-spaces-on-your-aks-cluster"></a>Włączanie Azure Dev Spaces w klastrze AKS
-
-Użyj `use-dev-spaces` polecenia, aby włączyć miejsca deweloperskie w klastrze AKS i postępuj zgodnie z monitami. Poniższe polecenie włącza miejsca deweloperskie w klastrze *MyAKS* w grupie Grupa *zasobów* i tworzy przestrzeń dev o nazwie *dev*.
-
-> [!NOTE]
-> Polecenie `use-dev-spaces` zainstaluje również interfejs wiersza polecenia Azure Dev Spaces, jeśli nie został jeszcze zainstalowany. Nie można zainstalować interfejsu wiersza polecenia Azure Dev Spaces w Azure Cloud Shell.
-
-```cmd
-az aks use-dev-spaces -g MyResourceGroup -n MyAKS --space dev --yes
-```
+* Subskrypcja platformy Azure. Jeśli nie masz subskrypcji platformy Azure, możesz utworzyć [bezpłatne konto](https://azure.microsoft.com/free).
+* [Zainstalowany interfejs wiersza polecenia platformy Azure][azure-cli-installed].
+* [Helm 2,13 lub nowszy][helm-installed].
+* Konto usługi GitHub z [włączonymi akcjami usługi GitHub][github-actions-beta-signup].
+* [Przykładowa aplikacja do udostępniania Azure dev Spaces roweru](https://github.com/Azure/dev-spaces/tree/master/samples/BikeSharingApp/README.md) uruchamiana w klastrze AKS.
 
 ## <a name="create-an-azure-container-registry"></a>Tworzenie rejestru Azure Container Registry
 
@@ -104,87 +85,10 @@ az role assignment create --assignee <ClientId>  --scope <ACRId> --role AcrPush
 > [!IMPORTANT]
 > Aby zapewnić jednostce usługi dostęp do tych zasobów, musisz być właścicielem klastra AKS i ACR.
 
-## <a name="get-sample-application-code"></a>Pobierz przykładowy kod aplikacji
-
-W tym artykule użyto [przykładowej aplikacji do udostępniania Azure dev Spaces roweru][bike-sharing-gh] do zademonstrowania użycia Azure dev Spaces z akcjami usługi GitHub.
-
-Utwórz rozwidlenie przykładowego repozytorium Azure Dev Spaces, a następnie przejdź do repozytorium z rozwidleniem. Kliknij kartę *działania* , a następnie Włącz akcje dla tego repozytorium.
-
-Sklonuj repozytorium rozwidlenia i przejdź do jego katalogu:
-
-```cmd
-git clone https://github.com/USERNAME/dev-spaces
-cd dev-spaces/samples/BikeSharingApp/
-```
-
-## <a name="retrieve-the-hostsuffix-for-dev"></a>Pobierz HostSuffix dla *deweloperów*
-
-Użyj `azds show-context` polecenia, aby wyświetlić HostSuffix dla *deweloperów*.
-
-```cmd
-$ azds show-context
-
-Name                ResourceGroup     DevSpace  HostSuffix
-------------------  ----------------  --------  -----------------------
-MyAKS               MyResourceGroup   dev       fedcab0987.eus.azds.io
-```
-
-## <a name="update-the-helm-chart-with-your-hostsuffix"></a>Aktualizowanie wykresu Helm za pomocą HostSuffix
-
-Otwórz [wykresy/Values. YAML][bike-sharing-values-yaml] i Zastąp wszystkie wystąpienia `<REPLACE_ME_WITH_HOST_SUFFIX>` wartością HostSuffix, która została pobrana wcześniej. Zapisz zmiany i zamknij plik.
-
-## <a name="run-the-sample-application-in-kubernetes"></a>Uruchamianie przykładowej aplikacji w Kubernetes
-
-Polecenia służące do uruchamiania przykładowej aplikacji na Kubernetes są częścią istniejącego procesu i nie są zależne od narzędzi Azure Dev Spaces. W takim przypadku Helm jest narzędziem służącym do uruchamiania tej przykładowej aplikacji, ale inne narzędzia mogą służyć do uruchamiania całej aplikacji w przestrzeni nazw w klastrze. Polecenia Helm są przeznaczone dla obszaru deweloperskiego o nazwie *dev* utworzonego wcześniej, ale ten obszar deweloperski jest również przestrzenią nazw Kubernetes. W związku z tym miejsca deweloperskie mogą być wskazywane przez inne narzędzia takie same jak inne przestrzenie nazw.
-
-Azure Dev Spaces do programowania można użyć po uruchomieniu aplikacji w klastrze, niezależnie od narzędzi użytych do jego wdrożenia.
-
-Użyj poleceń `helm init` i `helm install`, aby skonfigurować i zainstalować przykładową aplikację w klastrze.
-
-```cmd
-cd charts/
-helm init --wait
-helm install -n bikesharing . --dep-up --namespace dev --atomic
-```
-
-> [!Note]
-> W **przypadku korzystania z klastra z włączoną funkcją RBAC**należy pamiętać o skonfigurowaniu [konta usługi dla][tiller-rbac]tego elementu. W przeciwnym razie polecenia `helm` zakończą się niepowodzeniem.
-
-Wykonanie polecenia `helm install` może potrwać kilka minut. Dane wyjściowe polecenia pokazują stan wszystkich usług, które zostały wdrożone w klastrze po zakończeniu:
-
-```cmd
-$ cd charts/
-$ helm init --wait
-...
-Happy Helming!
-
-$ helm install -n bikesharing . --dep-up --namespace dev --atomic
-
-Hang tight while we grab the latest from your chart repositories...
-...
-NAME               READY  UP-TO-DATE  AVAILABLE  AGE
-bikes              1/1    1           1          4m32s
-bikesharingweb     1/1    1           1          4m32s
-billing            1/1    1           1          4m32s
-gateway            1/1    1           1          4m32s
-reservation        1/1    1           1          4m32s
-reservationengine  1/1    1           1          4m32s
-users              1/1    1           1          4m32s
-```
-
-Po zainstalowaniu przykładowej aplikacji w klastrze, ponieważ w klastrze są włączone spacje, użyj polecenia `azds list-uris`, aby wyświetlić adresy URL dla przykładowej aplikacji w *deweloperskim* , który jest obecnie wybrany.
-
-```cmd
-$ azds list-uris
-Uri                                                 Status
---------------------------------------------------  ---------
-http://dev.bikesharingweb.fedcab0987.eus.azds.io/  Available
-http://dev.gateway.fedcab0987.eus.azds.io/         Available
-```
-
-Przejdź do usługi *bikesharingweb* , otwierając publiczny adres URL z `azds list-uris` polecenia. W powyższym przykładzie publiczny adres URL dla usługi *bikesharingweb* jest `http://dev.bikesharingweb.fedcab0987.eus.azds.io/`. Wybierz pozycję *Aurelia Briggs (Customer)* jako użytkownik, a następnie wybierz rower do wynajęcia. Sprawdź, czy jest wyświetlany obraz symbolu zastępczego dla roweru.
-
 ## <a name="configure-your-github-action"></a>Skonfiguruj akcję GitHub
+
+> [!IMPORTANT]
+> Musisz mieć włączone akcje usługi GitHub dla repozytorium. Aby włączyć akcje usługi GitHub dla repozytorium, przejdź do repozytorium w serwisie GitHub, kliknij kartę akcje, a następnie Włącz akcje dla tego repozytorium.
 
 Przejdź do repozytorium z rozwidleniem, a następnie kliknij pozycję *Ustawienia*. Kliknij pozycję wpisy *tajne* na lewym pasku bocznym. Kliknij pozycję *Dodaj nowy klucz tajny* , aby dodać każde nowe hasło poniżej:
 
@@ -193,6 +97,7 @@ Przejdź do repozytorium z rozwidleniem, a następnie kliknij pozycję *Ustawien
 1. *CLUSTER_NAME*: Nazwa klastra AKS, która jest w tym przykładzie *MyAKS*.
 1. *CONTAINER_REGISTRY*: *loginServer* dla ACR.
 1. *Host*: Host dla miejsca deweloperskiego, który przyjmuje formularz *< MASTER_SPACE >. < APP_NAME >. < HOST_SUFFIX >* , który w tym przykładzie jest *dev.bikesharingweb.fedcab0987.EUS.azds.IO*.
+1. *HOST_SUFFIX*: sufiks hosta dla obszaru dev, który jest w tym przykładzie *fedcab0987.EUS.azds.IO*.
 1. *IMAGE_PULL_SECRET*: Nazwa klucza tajnego, którego chcesz użyć, na przykład *Demonstracja-wpis tajny*.
 1. *MASTER_SPACE*: Nazwa nadrzędnego obszaru deweloperskiego, który w tym przykładzie jest *deweloperem*.
 1. *REGISTRY_USERNAME*: *clientId* z danych wyjściowych JSON z tworzenia jednostki usługi.
@@ -203,10 +108,10 @@ Przejdź do repozytorium z rozwidleniem, a następnie kliknij pozycję *Ustawien
 
 ## <a name="create-a-new-branch-for-code-changes"></a>Utwórz nową gałąź dla zmian kodu
 
-Wróć do `BikeSharingApp/` i Utwórz nową gałąź o nazwie *rower-images*.
+Przejdź do `BikeSharingApp/` i Utwórz nowe rozgałęzienie o nazwie *rower-images*.
 
 ```cmd
-cd ..
+cd dev-spaces/samples/BikeSharingApp/
 git checkout -b bike-images
 ```
 
@@ -240,7 +145,7 @@ Użyj `git push`, aby wypchnąć nową gałąź do repozytorium z rozwidleniem:
 git push origin bike-images
 ```
 
-Po zakończeniu wypychania przejdź do repozytorium rozwidlenia w usłudze GitHub Utwórz żądanie ściągnięcia z *wzorcem* w repozytorium z rozwidleniem jako gałęzią bazową w porównaniu z gałęzią *rower-images* .
+Po zakończeniu wypychania przejdź do repozytorium rozwidlenia w usłudze GitHub Utwórz żądanie ściągnięcia z elementem *dev* w repozytorium z rozwidleniem jako gałęzią bazową w porównaniu z gałęzią *rower-images* .
 
 Gdy żądanie ściągnięcia zostanie otwarte, przejdź do karty *Akcje* . Sprawdź, czy nowa akcja została uruchomiona i kompiluje usługę *Bikes* .
 
@@ -252,6 +157,8 @@ Po zakończeniu akcji zobaczysz komentarz z adresem URL do nowego miejsca podrz�
 > ![adres URL akcji usługi GitHub](../media/github-actions/github-action-url.png)
 
 Przejdź do usługi *bikesharingweb* , otwierając adres URL z komentarza. Wybierz pozycję *Aurelia Briggs (Customer)* jako użytkownik, a następnie wybierz rower do wynajęcia. Sprawdź, czy obraz symbolu zastępczego dla roweru nie jest już widoczny.
+
+W przypadku scalania zmian w gałęzi *dev* zostanie uruchomiona kolejna Akcja w celu odbudowania i uruchomienia całej aplikacji w nadrzędnym obszarze dev. W tym przykładzie przestrzeń nadrzędna jest *deweloperem*. Ta akcja jest konfigurowana w witrynie [GitHub/Workflows/bikesharing. yml][github-action-bikesharing-yaml].
 
 ## <a name="clean-up-your-azure-resources"></a>Czyszczenie zasobów platformy Azure
 

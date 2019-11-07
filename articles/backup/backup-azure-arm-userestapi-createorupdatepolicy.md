@@ -10,28 +10,28 @@ ms.topic: conceptual
 ms.date: 08/21/2018
 ms.author: dacurwin
 ms.assetid: 5ffc4115-0ae5-4b85-a18c-8a942f6d4870
-ms.openlocfilehash: 8b812ea053cb8e9da7cd3ef021ab6b74196d36ca
-ms.sourcegitcommit: 0f54f1b067f588d50f787fbfac50854a3a64fff7
-ms.translationtype: MT
+ms.openlocfilehash: 50cc327c69529e420837571fdd60c1b2a1364b10
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/12/2019
-ms.locfileid: "68954967"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73670134"
 ---
 # <a name="create-azure-recovery-services-backup-policies-using-rest-api"></a>Tworzenie zasad usługi Kopia zapasowa Azure Recovery Services przy użyciu interfejsu API REST
 
-Kroki tworzenia zasad tworzenia kopii zapasowych dla magazynu usługi Azure Recovery Services są opisane w [dokumencie interfejsu API REST zasad](https://docs.microsoft.com/rest/api/backup/protectionpolicies/createorupdate). Poinformuj nas o tym, jak utworzyć zasady dla kopii zapasowej maszyny wirtualnej platformy Azure.
+Kroki tworzenia zasad tworzenia kopii zapasowych dla magazynu usługi Azure Recovery Services są opisane w [dokumencie interfejsu API REST zasad](https://docs.microsoft.com/rest/api/backup/protectionpolicies(2019-05-13)/createorupdate). Poinformuj nas o tym, jak utworzyć zasady dla kopii zapasowej maszyny wirtualnej platformy Azure.
 
 ## <a name="backup-policy-essentials"></a>Podstawy zasad tworzenia kopii zapasowych
 
 - Tworzone są zasady tworzenia kopii zapasowych na magazyn.
 - Zasady tworzenia kopii zapasowych można utworzyć dla tworzenia kopii zapasowych następujących obciążeń
-  - Azure VM
+  - Maszyna wirtualna platformy Azure
   - SQL na maszynie wirtualnej platformy Azure
   - Udział plików platformy Azure
 - Zasady mogą być przypisane do wielu zasobów. Zasady kopii zapasowych maszyny wirtualnej platformy Azure mogą służyć do ochrony wielu maszyn wirtualnych platformy Azure.
 - Zasady składają się z dwóch składników
-  - Rozkład Kiedy należy wykonać kopię zapasową
-  - Noszą Czas przechowywania poszczególnych kopii zapasowych.
+  - Harmonogram: Kiedy należy wykonać kopię zapasową
+  - Przechowywanie: czas przechowywania poszczególnych kopii zapasowych.
 - Harmonogram może być definiowany jako "dzienny" lub "tygodniowy" w określonym punkcie czasu.
 - Przechowywanie można zdefiniować dla punktów kopii zapasowych "dziennych", "cotygodniowych", "Monthly", "rocznie".
 - "tydzień" odnosi się do kopii zapasowej w określonym dniu tygodnia, "miesięcznie" oznacza, że kopia zapasowa w określonym dniu miesiąca i "corocznie" odnosi się do kopii zapasowej w określonym dniu roku.
@@ -41,21 +41,21 @@ Kroki tworzenia zasad tworzenia kopii zapasowych dla magazynu usługi Azure Reco
 Aby utworzyć lub zaktualizować zasady Azure Backup, użyj następującej operacji *Put*
 
 ```http
-PUT https://management.azure.com/Subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/backupPolicies/{policyName}?api-version=2016-12-01
+PUT https://management.azure.com/Subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/backupPolicies/{policyName}?api-version=2019-05-13
 ```
 
-`{policyName}` I`{vaultName}` są podane w identyfikatorze URI. Dodatkowe informacje znajdują się w treści żądania.
+`{policyName}` i `{vaultName}` są podane w identyfikatorze URI. Dodatkowe informacje znajdują się w treści żądania.
 
 ## <a name="create-the-request-body"></a>Tworzenie treści żądania
 
 Na przykład, aby utworzyć zasady kopii zapasowej maszyny wirtualnej platformy Azure, poniżej przedstawiono składniki treści żądania.
 
-|Name (Nazwa)  |Wymagane  |Typ  |Opis  |
+|Nazwa  |Wymagany  |Typ  |Opis  |
 |---------|---------|---------|---------|
-|properties     |   Prawda      |  ProtectionPolicy:[AzureIaaSVMProtectionPolicy](https://docs.microsoft.com/rest/api/backup/protectionpolicies/createorupdate#azureiaasvmprotectionpolicy)      | Właściwości ProtectionPolicyResource        |
-|tags     |         | Object        |  Tagi zasobów       |
+|properties     |   True      |  ProtectionPolicy:[AzureIaaSVMProtectionPolicy](https://docs.microsoft.com/rest/api/backup/protectionpolicies(2019-05-13)/createorupdate#azureiaasvmprotectionpolicy)      | Właściwości ProtectionPolicyResource        |
+|tagów     |         | Obiekt        |  Tagi zasobów       |
 
-Aby zapoznać się z pełną listą definicji w treści żądania, zapoznaj się z [dokumentem interfejsu API REST zasad tworzenia kopii zapasowych](https://docs.microsoft.com/rest/api/backup/protectionpolicies/createorupdate).
+Aby zapoznać się z pełną listą definicji w treści żądania, zapoznaj się z [dokumentem interfejsu API REST zasad tworzenia kopii zapasowych](https://docs.microsoft.com/rest/api/backup/protectionpolicies(2019-05-13)/createorupdate).
 
 ### <a name="example-request-body"></a>Przykładowa treść żądania
 
@@ -152,16 +152,16 @@ Zasady są następujące:
 > [!IMPORTANT]
 > Formaty czasu dla usługi Harmonogram i przechowywanie obsługują tylko datę i godzinę. Nie obsługują one wyłącznie formatu czasu.
 
-## <a name="responses"></a>Responses
+## <a name="responses"></a>Odpowiedzi
 
 Tworzenie/aktualizowanie zasad kopii zapasowych jest [operacją asynchroniczną](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-async-operations). Oznacza to, że ta operacja tworzy kolejną operację, która musi być śledzona oddzielnie.
 
 Zwraca dwie odpowiedzi: 202 (zaakceptowane) podczas tworzenia innej operacji, a następnie 200 (OK) po zakończeniu tej operacji.
 
-|Name (Nazwa)  |Typ  |Opis  |
+|Nazwa  |Typ  |Opis  |
 |---------|---------|---------|
-|200 OK     |    [PolicyResource ochrony](https://docs.microsoft.com/rest/api/backup/protectionpolicies/createorupdate#protectionpolicyresource)     |  OK       |
-|202 zaakceptowane     |         |     Zaakceptowany    |
+|200 OK     |    [PolicyResource ochrony](https://docs.microsoft.com/rest/api/backup/protectionpolicies(2019-05-13)/createorupdate#protectionpolicyresource)     |  OK       |
+|202 zaakceptowane     |         |     Przyjmować    |
 
 ### <a name="example-responses"></a>Przykładowe odpowiedzi
 
@@ -181,14 +181,14 @@ x-ms-correlation-request-id: db785be0-bb20-4598-bc9f-70c9428b170b
 x-ms-routing-request-id: SOUTHINDIA:20180521T073907Z:db785be0-bb20-4598-bc9f-70c9428b170b
 Cache-Control: no-cache
 Date: Mon, 21 May 2018 07:39:06 GMT
-Location: https://management.azure.com/Subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/SwaggerTestRg/providers/Microsoft.RecoveryServices/vaults/testVault/backupPolicies/testPolicy1/operationResults/00000000-0000-0000-0000-000000000000?api-version=2016-06-01
+Location: https://management.azure.com/Subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/SwaggerTestRg/providers/Microsoft.RecoveryServices/vaults/testVault/backupPolicies/testPolicy1/operationResults/00000000-0000-0000-0000-000000000000?api-version=2019-05-13
 X-Powered-By: ASP.NET
 ```
 
 Następnie Śledź wyniki operacji przy użyciu nagłówka lokalizacji lub nagłówka Azure-AsyncOperation z prostym poleceniem *Get* .
 
 ```http
-GET https://management.azure.com/Subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/SwaggerTestRg/providers/Microsoft.RecoveryServices/vaults/testVault/backupPolicies/testPolicy1/operationResults/00000000-0000-0000-0000-000000000000?api-version=2016-06-01
+GET https://management.azure.com/Subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/SwaggerTestRg/providers/Microsoft.RecoveryServices/vaults/testVault/backupPolicies/testPolicy1/operationResults/00000000-0000-0000-0000-000000000000?api-version=2019-05-13
 ```
 
 Po zakończeniu operacji zwraca 200 (OK) z zawartością zasad w treści odpowiedzi.
@@ -285,7 +285,7 @@ Jeśli zasady są już używane do ochrony elementu, każda aktualizacja zasad s
 
 [Włącz ochronę niechronionej maszyny wirtualnej platformy Azure](backup-azure-arm-userestapi-backupazurevms.md).
 
-Aby uzyskać więcej informacji na temat Azure Backup interfejsów API REST, zapoznaj się z następującymi dokumentami:
+Aby uzyskać więcej informacji na temat Azure Backup interfejsów API REST, zobacz następujące dokumenty:
 
 - [Interfejs API REST dostawcy usługi Azure Recovery Services](/rest/api/recoveryservices/)
-- [Wprowadzenie do interfejsu API REST platformy Azure](/rest/api/azure/)
+- [Rozpoczynanie pracy z interfejsem API REST platformy Azure](/rest/api/azure/)

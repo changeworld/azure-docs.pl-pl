@@ -1,5 +1,5 @@
 ---
-title: Działanie if Condition w Azure Data Factory | Microsoft Docs
+title: Działanie if Condition w Azure Data Factory
 description: Działanie if Condition umożliwia sterowanie przepływem przetwarzania na podstawie warunku.
 services: data-factory
 documentationcenter: ''
@@ -11,12 +11,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/10/2018
-ms.openlocfilehash: fc6318b5033ff1297f917ab95b28f8ed9285e930
-ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
+ms.openlocfilehash: 562e84b4fe51603ae32884057578541f5536ebd4
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70142490"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73679844"
 ---
 # <a name="if-condition-activity-in-azure-data-factory"></a>Działanie if Condition w Azure Data Factory
 Działanie If Condition pełni taką samą rolę, co instrukcja if w językach programowania. Powoduje ono obliczenie zestawu działań, gdy warunek zostanie obliczony na wartość `true`, oraz innego zestawu działań, gdy warunek zostanie obliczony na wartość `false`. 
@@ -63,13 +63,13 @@ Działanie If Condition pełni taką samą rolę, co instrukcja if w językach p
 
 ## <a name="type-properties"></a>Właściwości typu
 
-Właściwość | Opis | Dozwolone wartości | Wymagane
+Właściwość | Opis | Dozwolone wartości | Wymagany
 -------- | ----------- | -------------- | --------
-name | Nazwa działania if-Condition. | String | Tak
-type | Musi być ustawiona na **IfCondition** | String | Tak
+name | Nazwa działania if-Condition. | Ciąg | Tak
+type | Musi być ustawiona na **IfCondition** | Ciąg | Tak
 wyrażenia | Wyrażenie, które musi oszacować do wartości true lub false. | Wyrażenie z typem wyniku Boolean | Tak
-ifTrueActivities | Zestaw działań, które są wykonywane, gdy wynikiem `true`wyrażenia jest wyrażenie. | Array | Tak
-ifFalseActivities | Zestaw działań, które są wykonywane, gdy wynikiem `false`wyrażenia jest wyrażenie. | Array | Tak
+ifTrueActivities | Zestaw działań, które są wykonywane, gdy wyrażenie zwróci wartość `true`. | Tablica | Tak
+ifFalseActivities | Zestaw działań, które są wykonywane, gdy wyrażenie zwróci wartość `false`. | Tablica | Tak
 
 ## <a name="example"></a>Przykład
 Potok w tym przykładzie kopiuje dane z folderu wejściowego do folderu wyjściowego. Folder wyjściowy jest określany przez wartość parametru potoku: routeSelection. Jeśli wartość routeSelection ma wartość true, dane są kopiowane do outputPath1. A jeśli wartością routeSelection jest false, dane są kopiowane do outputPath2. 

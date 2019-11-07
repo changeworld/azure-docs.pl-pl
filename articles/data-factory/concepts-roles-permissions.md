@@ -1,5 +1,5 @@
 ---
-title: Role i uprawnienia dla Azure Data Factory | Microsoft Docs
+title: Role i uprawnienia dla Azure Data Factory
 description: Opisuje role i uprawnienia wymagane do tworzenia fabryk danych i pracy z zasobami podrzędnymi.
 ms.date: 11/5/2018
 ms.topic: conceptual
@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 author: djpmsft
 ms.author: daperlov
 manager: craigg
-ms.openlocfilehash: 9df65322958bffd3182aaa8d734e8b29717d939d
-ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
+ms.openlocfilehash: f5b4cbc670a429a84f42be79adb00057656a5483
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70142522"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73681426"
 ---
 # <a name="roles-and-permissions-for-azure-data-factory"></a>Role i uprawnienia dla Azure Data Factory
 
@@ -46,7 +46,7 @@ Członkostwo w roli **współautor Data Factory** umożliwia użytkownikom wykon
 
 Aby uzyskać więcej informacji na temat tej roli, zobacz [Data Factory roli współautor](../role-based-access-control/built-in-roles.md#data-factory-contributor).
 
-### <a name="resource-manager-template-deployment"></a>Wdrażanie szablonu usługi Resource Manager
+### <a name="resource-manager-template-deployment"></a>Wdrożenie szablonu Menedżer zasobów
 
 Rola **współautor Data Factory** , na poziomie grupy zasobów lub nowszej, umożliwia użytkownikom wdrażanie szablonów Menedżer zasobów. W związku z tym członkowie roli mogą używać szablonów Menedżer zasobów do wdrożenia zarówno fabryk danych, jak i ich zasobów podrzędnych, takich jak zestawy, połączone usługi, potoki, wyzwalacze i środowiska Integration Runtime. Członkostwo w tej roli nie zezwala użytkownikowi na tworzenie innych zasobów.
 

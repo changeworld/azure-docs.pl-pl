@@ -1,5 +1,5 @@
 ---
-title: Projektowanie rozwiązań odzyskiwania po awarii — Azure SQL Database | Microsoft Docs
+title: Projektowanie rozwiązań odzyskiwania po awarii — Azure SQL Database
 description: Dowiedz się, jak zaprojektować rozwiązanie w chmurze na potrzeby odzyskiwania po awarii, wybierając odpowiedni wzorzec trybu failover.
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: anosov1960
 ms.author: sashan
 ms.reviewer: carlrab
 ms.date: 01/25/2019
-ms.openlocfilehash: ccdd2443254da065a15911f567577672492ddb4f
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 535397dcf32a617038ab4bef4ec7aa227f4563b1
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68568888"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73690652"
 ---
 # <a name="disaster-recovery-strategies-for-applications-using-sql-database-elastic-pools"></a>Strategie odzyskiwania po awarii dla aplikacji korzystających z SQL Database pul elastycznych
 
@@ -29,7 +29,7 @@ Nowoczesne aplikacje sieci Web oparte na chmurze udostępniają jedną bazę dan
 W tym artykule omówiono strategie odzyskiwania po awarii obejmujące różne scenariusze od rozróżniania kosztów aplikacji uruchamiania do tych, które mają rygorystyczne wymagania dotyczące dostępności.
 
 > [!NOTE]
-> Jeśli używasz baz danych Premium lub Krytyczne dla działania firmy i pul elastycznych, możesz je odporne na awarie regionalne, konwertując je na konfigurację nadmiarowego wdrożenia strefy. Zobacz [bazy danych strefowo](sql-database-high-availability.md)nadmiarowe.
+> Jeśli używasz baz danych Premium lub Krytyczne dla działania firmy i pul elastycznych, możesz je odporne na awarie regionalne, konwertując je na konfigurację nadmiarowego wdrożenia strefy. Zobacz [bazy danych strefowo nadmiarowe](sql-database-high-availability.md).
 
 ## <a name="scenario-1-cost-sensitive-startup"></a>Scenariusz 1. Uruchamianie z uwzględnieniem kosztów
 
@@ -63,7 +63,7 @@ W tym momencie aplikacja jest w trybie online w regionie podstawowym ze wszystki
 
 ![Rysunek 3](./media/sql-database-disaster-recovery-strategies-for-applications-with-elastic-pool/diagram-3.png)
 
-Najważniejsze **korzyści wynikające** z tej strategii to niski ciągły koszt nadmiarowości warstwy danych. Kopie zapasowe są wykonywane automatycznie przez usługę SQL Database bez ponownego zapisywania aplikacji i bez dodatkowych kosztów.  Koszt jest naliczany tylko w przypadku przywrócenia elastycznych baz danych. Dzięki temu cały czas odzyskiwanie wszystkich baz danych dzierżawy trwa znacznie. Czas zależy od łącznej liczby operacji przywracania zainicjowanej w regionie DR oraz całkowitego rozmiaru baz danych dzierżawy. Nawet jeśli określisz priorytety niektórych dzierżawców, będziesz mieć możliwość konkurowania ze wszystkimi innymi przywracaniami, które są inicjowane w tym samym regionie, w którym usługa rozstrzyga i ogranicza ograniczenia, aby zminimalizować ogólny wpływ na istniejące bazy danych klientów. Ponadto nie można uruchomić odzyskiwania baz danych dzierżawy, dopóki nie zostanie utworzona nowa pula elastyczna w regionie odzyskiwania po awarii.
+Najważniejsze **korzyści wynikające** z tej strategii to niski ciągły koszt nadmiarowości warstwy danych. Kopie zapasowe są wykonywane automatycznie przez usługę SQL Database bez ponownego zapisywania aplikacji i bez dodatkowych kosztów.  Koszt jest naliczany tylko w przypadku przywrócenia elastycznych baz danych. Dzięki temu cały czas odzyskiwanie wszystkich baz danych dzierżawy **trwa znacznie** . Czas zależy od łącznej liczby operacji przywracania zainicjowanej w regionie DR oraz całkowitego rozmiaru baz danych dzierżawy. Nawet jeśli określisz priorytety niektórych dzierżawców, będziesz mieć możliwość konkurowania ze wszystkimi innymi przywracaniami, które są inicjowane w tym samym regionie, w którym usługa rozstrzyga i ogranicza ograniczenia, aby zminimalizować ogólny wpływ na istniejące bazy danych klientów. Ponadto nie można uruchomić odzyskiwania baz danych dzierżawy, dopóki nie zostanie utworzona nowa pula elastyczna w regionie odzyskiwania po awarii.
 
 ## <a name="scenario-2-mature-application-with-tiered-service"></a>Scenariusz 2. Aplikacja dla dorosłych z usługą warstwową
 
@@ -105,7 +105,7 @@ Gdy podstawowy region jest odzyskiwany przez platformę Azure po przywróceniu a
 > [!NOTE]
 > Operacja przejścia w tryb failover jest asynchroniczna. Aby zminimalizować czas odzyskiwania, należy wykonać polecenie trybu failover baz danych dzierżawy w partiach co najmniej 20 baz danych.
 
-Najważniejsze **korzyści wynikające** z tej strategii zapewniają najwyższą umowę SLA dla klientów korzystających z płatności. Gwarantuje również, że nowe wersje próbne zostaną odblokowane natychmiast po utworzeniu puli odzyskiwania po awarii. W **tym** przypadku taka konfiguracja zwiększa łączny koszt baz danych dzierżawy przez koszt dodatkowej puli Dr dla płatnych klientów. Ponadto, jeśli Pula pomocnicza ma inny rozmiar, płatne klienci mogą obniżyć wydajność po przejściu do trybu failover do momentu zakończenia uaktualniania puli w regionie odzyskiwania po awarii.
+Najważniejsze **korzyści wynikające** z tej strategii zapewniają najwyższą umowę SLA dla klientów korzystających z płatności. Gwarantuje również, że nowe wersje próbne zostaną odblokowane natychmiast po utworzeniu puli odzyskiwania po awarii. W **tym przypadku taka** konfiguracja zwiększa łączny koszt baz danych dzierżawy przez koszt dodatkowej puli Dr dla płatnych klientów. Ponadto, jeśli Pula pomocnicza ma inny rozmiar, płatne klienci mogą obniżyć wydajność po przejściu do trybu failover do momentu zakończenia uaktualniania puli w regionie odzyskiwania po awarii.
 
 ## <a name="scenario-3-geographically-distributed-application-with-tiered-service"></a>Scenariusz 3. Aplikacja rozproszona geograficznie z usługą warstwową
 
@@ -169,7 +169,7 @@ Ten artykuł koncentruje się na strategii odzyskiwania po awarii dla warstwy ba
 ## <a name="next-steps"></a>Następne kroki
 
 * Aby dowiedzieć się więcej o Azure SQL Database zautomatyzowanych kopii zapasowych, zobacz [SQL Database zautomatyzowane kopie zapasowe](sql-database-automated-backups.md).
-* Aby zapoznać się z omówieniem i scenariuszami ciągłości działania, zobacz temat ciągłość działania [— Omówienie](sql-database-business-continuity.md).
+* Aby zapoznać się z omówieniem i scenariuszami ciągłości działania, zobacz temat [ciągłość działania — Omówienie](sql-database-business-continuity.md).
 * Aby dowiedzieć się więcej o korzystaniu z automatycznych kopii zapasowych na potrzeby odzyskiwania, zobacz [przywracanie bazy danych z kopii zapasowych inicjowanych przez usługę](sql-database-recovery-using-backups.md).
-* Aby dowiedzieć się więcej na temat szybszych opcji odzyskiwania, zobacz [aktywnej replikacji](sql-database-active-geo-replication.md) geograficznej i [grup Autotryb failover](sql-database-auto-failover-group.md).
+* Aby dowiedzieć się więcej na temat szybszych opcji odzyskiwania, zobacz [aktywnej replikacji geograficznej](sql-database-active-geo-replication.md) i [grup Autotryb failover](sql-database-auto-failover-group.md).
 * Aby dowiedzieć się więcej o korzystaniu z automatycznych kopii zapasowych do archiwizowania, zobacz [kopia bazy danych](sql-database-copy.md).

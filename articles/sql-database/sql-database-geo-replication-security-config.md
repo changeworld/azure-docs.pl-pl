@@ -1,5 +1,5 @@
 ---
-title: Konfigurowanie zabezpieczeń Azure SQL Database na potrzeby odzyskiwania po awarii | Microsoft Docs
+title: Konfigurowanie zabezpieczeń Azure SQL Database na potrzeby odzyskiwania po awarii
 description: Zapoznaj się z zagadnieniami dotyczącymi zabezpieczeń w zakresie konfigurowania zabezpieczeń i zarządzania nimi po przywróceniu bazy danych lub przejściu do trybu failover na serwerze pomocniczym.
 services: sql-database
 ms.service: sql-database
@@ -11,16 +11,16 @@ author: anosov1960
 ms.author: sashan
 ms.reviewer: mathoma, carlrab
 ms.date: 12/18/2018
-ms.openlocfilehash: 4d4939b7a0179216d11f594ce12f384276d15e05
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 3c08ba1a37d7b0d16042d6496c27e0de8d070b75
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68568133"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73689973"
 ---
 # <a name="configure-and-manage-azure-sql-database-security-for-geo-restore-or-failover"></a>Konfigurowanie zabezpieczeń Azure SQL Database i zarządzanie nimi na potrzeby przywracania geograficznego lub przełączenia w tryb failover
 
-W tym artykule opisano wymagania dotyczące uwierzytelniania w celu skonfigurowania i kontrolowania [aktywnej replikacji](sql-database-active-geo-replication.md) geograficznej oraz [grup autotrybu failover](sql-database-auto-failover-group.md). Zawiera również kroki wymagane do skonfigurowania dostępu użytkownika do pomocniczej bazy danych. Na koniec opisano również sposób włączania dostępu do odzyskiwanej bazy danych po użyciu funkcji [przywracania](sql-database-recovery-using-backups.md#geo-restore)geograficznego. Aby uzyskać więcej informacji na temat opcji odzyskiwania, zobacz ciągłość działania [— Omówienie](sql-database-business-continuity.md).
+W tym artykule opisano wymagania dotyczące uwierzytelniania w celu skonfigurowania i kontrolowania [aktywnej replikacji geograficznej](sql-database-active-geo-replication.md) oraz [grup autotrybu failover](sql-database-auto-failover-group.md). Zawiera również kroki wymagane do skonfigurowania dostępu użytkownika do pomocniczej bazy danych. Na koniec opisano również sposób włączania dostępu do odzyskiwanej bazy danych po użyciu funkcji [przywracania geograficznego](sql-database-recovery-using-backups.md#geo-restore). Aby uzyskać więcej informacji na temat opcji odzyskiwania, zobacz [ciągłość działania — Omówienie](sql-database-business-continuity.md).
 
 ## <a name="disaster-recovery-with-contained-users"></a>Odzyskiwanie po awarii z zawartymi użytkownikami
 
@@ -48,11 +48,11 @@ Przygotowanie dostępu użytkowników do replikacji geograficznej należy wykona
 
 Konfigurowanie nazw logowania na serwerze docelowym obejmuje trzy kroki opisane poniżej:
 
-#### <a name="1-determine-logins-with-access-to-the-primary-database"></a>1. Określanie logowań z dostępem do podstawowej bazy danych
+#### <a name="1-determine-logins-with-access-to-the-primary-database"></a>1. Określ nazwy logowania z dostępem do podstawowej bazy danych
 
 Pierwszym krokiem procesu jest określenie, które nazwy logowania muszą być zduplikowane na serwerze docelowym. Jest to realizowane za pomocą pary instrukcji SELECT, jednej w logicznej bazie danych Master na serwerze źródłowym i jednej w podstawowej bazie danych.
 
-Tylko administrator serwera lub członek roli serwera LoginManager może określić nazwy logowania na serwerze źródłowym przy użyciu następującej instrukcji SELECT.
+Tylko administrator serwera lub członek roli serwera **LoginManager** może określić nazwy logowania na serwerze źródłowym przy użyciu następującej instrukcji SELECT.
 
     SELECT [name], [sid]
     FROM [sys].[sql_logins]
@@ -75,9 +75,9 @@ Poniższe zapytanie może służyć do wyświetlania wszystkich podmiotów zabez
     WHERE [type_desc] = 'SQL_USER'
 
 > [!NOTE]
-> Użytkownicy **INFORMATION_SCHEMA** i **sys** mają *null* identyfikatorów SID, a identyfikator SID Gościa to **0x00**. Identyfikator SID **dbo** może zaczynać się od *0x01060000000001648000000000048454*, jeśli twórca bazy danych był administratorem serwera, a nie członkiem programu dbmanager.
+> Użytkownicy **INFORMATION_SCHEMA** i **sys** mają *null* identyfikatorów SID, a identyfikator SID **gościa** to **0x00**. Identyfikator SID **dbo** może zaczynać się od *0x01060000000001648000000000048454*, jeśli twórca bazy danych był administratorem serwera, a nie członkiem programu **DBManager**.
 
-#### <a name="3-create-the-logins-on-the-target-server"></a>3. Tworzenie logowań na serwerze docelowym
+#### <a name="3-create-the-logins-on-the-target-server"></a>3. Utwórz identyfikatory logowania na serwerze docelowym
 
 Ostatnim krokiem jest przejście do serwera docelowego lub serwerów, a następnie wygenerowanie identyfikatorów logowania przy użyciu odpowiednich identyfikatorów SID. Podstawowa składnia jest następująca.
 
@@ -94,10 +94,10 @@ Ostatnim krokiem jest przejście do serwera docelowego lub serwerów, a następn
 >
 > Wartość Wyłącz nie zmienia hasła, więc zawsze można ją włączyć, jeśli jest to konieczne.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
-* Aby uzyskać więcej informacji na temat zarządzania dostępem do bazy danych [i logowaniem, zobacz SQL Database Security: Zarządzanie dostępem do bazy danych i](sql-database-manage-logins.md)zabezpieczeniami logowania.
-* Aby uzyskać więcej informacji o użytkownikach zawartej bazy danych, zobacz użytkownicy zawartej bazy danych [— Tworzenie przenośnej bazy danych](https://msdn.microsoft.com/library/ff929188.aspx).
-* Aby dowiedzieć się więcej o aktywnej replikacji [](sql-database-active-geo-replication.md)geograficznej, zobacz aktywną replikację geograficzną.
+* Aby uzyskać więcej informacji na temat zarządzania dostępem do bazy danych i logowaniem, zobacz [SQL Database Security: zarządzanie dostępem do bazy danych i zabezpieczeniami logowania](sql-database-manage-logins.md).
+* Aby uzyskać więcej informacji o użytkownikach zawartej bazy danych, zobacz [Użytkownicy zawartej bazy danych — Tworzenie przenośnej bazy danych](https://msdn.microsoft.com/library/ff929188.aspx).
+* Aby dowiedzieć się więcej o aktywnej replikacji geograficznej, zobacz [aktywną replikację geograficzną](sql-database-active-geo-replication.md).
 * Aby dowiedzieć się więcej na temat grup autotrybu failover, zobacz [grupy autopraca awaryjna](sql-database-auto-failover-group.md).
 * Aby uzyskać informacje o korzystaniu z przywracania geograficznego, zobacz [geograficznie przywracanie](sql-database-recovery-using-backups.md#geo-restore)

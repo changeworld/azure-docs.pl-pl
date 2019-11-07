@@ -1,5 +1,5 @@
 ---
-title: Najlepsze rozwiązania dotyczące usługi Azure SQL Data Sync | Microsoft Docs
+title: 'Najlepsze rozwiązania dotyczące usługi Azure SQL Data Sync '
 description: Poznaj najlepsze rozwiązania dotyczące konfigurowania i uruchamiania usługi Azure SQL Data Sync.
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: allenwux
 ms.author: xiwu
 ms.reviewer: carlrab
 ms.date: 12/20/2018
-ms.openlocfilehash: 01962770c011a0107abd4e035c25d6c0d45fa0a0
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 728ac8ab42573e1cab30eaf12dd38a6d33b97aac
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68569378"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73691082"
 ---
 # <a name="best-practices-for-sql-data-sync"></a>Najlepsze rozwiązania dotyczące funkcji SQL Data Sync 
 
@@ -50,13 +50,13 @@ Azure SQL Database obsługuje tylko jeden zestaw poświadczeń. Aby wykonać te 
 -   Zmień poświadczenia dla różnych faz (na przykład *credentials1* na potrzeby instalacji i *credentials2* na bieżąco).  
 -   Zmień uprawnienia poświadczeń (oznacza to, że po skonfigurowaniu synchronizacji należy zmienić uprawnienia.
 
-## <a name="setup"></a>Konfiguracja
+## <a name="setup"></a>Konfigurowanie
 
 ### <a name="database-considerations-and-constraints"></a>Zagadnienia i ograniczenia dotyczące bazy danych
 
 #### <a name="sql-database-instance-size"></a>Rozmiar wystąpienia SQL Database
 
-Podczas tworzenia nowego wystąpienia SQL Database ustaw maksymalny rozmiar, tak aby był zawsze większy niż wdrażana baza danych. Jeśli maksymalny rozmiar nie zostanie ustawiony na wartość większą niż wdrożona baza danych, synchronizacja nie powiedzie się. Chociaż SQL Data Sync nie oferuje automatycznego wzrostu, można uruchomić `ALTER DATABASE` polecenie, aby zwiększyć rozmiar bazy danych po jej utworzeniu. Upewnij się, że w obszarze SQL Database limity rozmiaru wystąpienia.
+Podczas tworzenia nowego wystąpienia SQL Database ustaw maksymalny rozmiar, tak aby był zawsze większy niż wdrażana baza danych. Jeśli maksymalny rozmiar nie zostanie ustawiony na wartość większą niż wdrożona baza danych, synchronizacja nie powiedzie się. Chociaż SQL Data Sync nie oferuje automatycznego wzrostu, można uruchomić polecenie `ALTER DATABASE`, aby zwiększyć rozmiar bazy danych po jej utworzeniu. Upewnij się, że w obszarze SQL Database limity rozmiaru wystąpienia.
 
 > [!IMPORTANT]
 > SQL Data Sync przechowuje dodatkowe metadane dla każdej bazy danych. Upewnij się, że te metadane są używane podczas obliczania wymaganego miejsca. Ilość dodanego obciążenia jest powiązana z szerokością tabel (na przykład wąskich tabel wymaga większego nakładu pracy) i ilości ruchu.
@@ -96,7 +96,7 @@ SQL Data Sync ma następujące ograniczenia dotyczące autoaprowizacji:
 -   W przypadku aktualizacji KASKADowych i po USUNIĘCIu akcji w kluczu obcym nie są ponownie tworzone w tabelach docelowych.
 -   Jeśli masz kolumny dziesiętne lub liczbowe o dokładności większej niż 28, SQL Data Sync może wystąpić problem z przepełnieniem konwersji podczas synchronizacji. Zalecamy ograniczenie dokładności kolumn dziesiętnych lub liczbowych do wartości 28 lub mniejszej.
 
-#### <a name="recommendations"></a>Zalecenia
+#### <a name="recommendations"></a>Polecane elementy
 
 -   Użyj funkcji autoaprowizacji SQL Data Sync tylko podczas próby wykonania usługi.  
 -   Dla środowiska produkcyjnego Zainicjuj obsługę administracyjną schematu bazy danych.
@@ -116,7 +116,7 @@ Aby zminimalizować opóźnienie, należy pozostawić bazę danych centrum w pob
 
 Zastosuj powyższe wskazówki do złożonych konfiguracji grup synchronizacji, takich jak te, które są mieszane w scenariuszach między przedsiębiorstwami a chmurą i chmurą.
 
-## <a name="sync"></a>Synchronizuj
+## <a name="sync"></a>Sync
 
 ### <a name="avoid-a-slow-and-costly-initial-synchronization"></a>Unikaj powolnej i kosztownej synchronizacji początkowej
 
@@ -166,15 +166,15 @@ Regularnie Monitoruj grupę synchronizacji i kondycję bazy danych za pomocą po
 
 ### <a name="avoid-out-of-date-databases-and-sync-groups"></a>Unikaj nieaktualnych baz danych i grup synchronizacji
 
-Grupa synchronizacji lub baza danych w grupie synchronizacji mogą stać się nieaktualne. Gdy stan grupy synchronizacji jest nieaktualny, przestaje działać. Jeśli stan bazy **danych jest**nieaktualny, dane mogą zostać utracone. Najlepszym rozwiązaniem jest uniknięcie tego scenariusza zamiast próby odzyskania z niego.
+Grupa synchronizacji lub baza danych w grupie synchronizacji mogą stać się nieaktualne. Gdy stan grupy synchronizacji jest **nieaktualny**, przestaje działać. Jeśli stan bazy **danych jest nieaktualny,** dane mogą zostać utracone. Najlepszym rozwiązaniem jest uniknięcie tego scenariusza zamiast próby odzyskania z niego.
 
 #### <a name="avoid-out-of-date-databases"></a>Unikaj nieaktualnych baz danych
 
-Stan bazy danych jest ustawiony na **nieaktualne** , gdy jest on w trybie offline przez 45 dni lub więcej. Aby uniknąć nieaktualnego stanu bazy danych, upewnij się, że żadna z baz danych nie jest w trybie offline przez 45 dni lub więcej.
+Stan bazy danych jest ustawiony na **nieaktualne** , gdy jest on w trybie offline przez 45 dni lub więcej. Aby uniknąć **nieaktualnego** stanu bazy danych, upewnij się, że żadna z baz danych nie jest w trybie offline przez 45 dni lub więcej.
 
 #### <a name="avoid-out-of-date-sync-groups"></a>Unikaj nieaktualnych grup synchronizacji
 
-Stan grupy synchronizacji jest ustawiany na nieaktualną, gdy jakakolwiek zmiana w grupie synchronizacji nie zostanie propagowana do pozostałej części grupy synchronizacji przez 45 dni lub więcej. Aby uniknąć nieaktualnego stanu grupy synchronizacji, należy regularnie sprawdzać dziennik historii grupy synchronizacji. Upewnij się, że wszystkie konflikty zostały rozwiązane, a zmiany zostały pomyślnie rozpropagowane w całej bazie danych grupy synchronizacji.
+Stan grupy synchronizacji jest ustawiany na **nieaktualną** , gdy jakakolwiek zmiana w grupie synchronizacji nie zostanie propagowana do pozostałej części grupy synchronizacji przez 45 dni lub więcej. Aby uniknąć **nieaktualnego** stanu grupy synchronizacji, należy regularnie sprawdzać dziennik historii grupy synchronizacji. Upewnij się, że wszystkie konflikty zostały rozwiązane, a zmiany zostały pomyślnie rozpropagowane w całej bazie danych grupy synchronizacji.
 
 Grupa synchronizacji może nie zastosować zmiany z jednego z następujących powodów:
 
@@ -198,7 +198,7 @@ W niektórych okolicznościach Wyrejestrowanie bazy danych z agentem klienta mo�
 1. Grupa synchronizacji A została utworzona przy użyciu wystąpienia SQL Database i lokalnej bazy danych SQL Server, która jest skojarzona z agentem lokalnym 1.
 2. Ta sama lokalna baza danych jest zarejestrowana w lokalnym agencie 2 (ten Agent nie jest skojarzony z żadną grupą synchronizacji).
 3. Wyrejestrowanie lokalnej bazy danych z agenta lokalnego 2 powoduje usunięcie śledzenia i meta tabel dla grupy synchronizacji A dla lokalnej bazy danych.
-4. Operacja grupy synchronizacji kończy się niepowodzeniem z powodu tego błędu: "Nie można ukończyć bieżącej operacji, ponieważ nie zainicjowano obsługi administracyjnej bazy danych na potrzeby synchronizacji lub nie masz uprawnień do tabel konfiguracji synchronizacji".
+4. Operacja grupy synchronizacji nie powiodła się z powodu błędu: "nie można ukończyć bieżącej operacji, ponieważ baza danych nie została zainicjowana do synchronizacji lub nie masz uprawnień do tabel konfiguracji synchronizacji".
 
 #### <a name="solution"></a>Rozwiązanie
 
@@ -218,7 +218,7 @@ Zamiast tego należy najpierw usunąć bazę danych z grupy synchronizacji. Nast
 
 W przypadku próby usunięcia bazy danych, a następnie edytowania grupy synchronizacji bez wcześniejszego wdrożenia jednej z tych zmian jedna lub druga operacja zakończy się niepowodzeniem. Interfejs portalu może stać się niespójny. W takim przypadku należy odświeżyć stronę, aby przywrócić poprawny stan.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 Aby uzyskać więcej informacji na temat SQL Data Sync, zobacz:
 
 -   Omówienie — [Sync data across multiple cloud and on-premises databases with Azure SQL Data Sync](sql-database-sync-data.md) (Synchronizowanie danych między wieloma bazami danych w chmurze i lokalnie za pomocą usługi Azure SQL Data Sync)
@@ -226,7 +226,7 @@ Aby uzyskać więcej informacji na temat SQL Data Sync, zobacz:
     - W portalu — [Tutorial: Set up SQL Data Sync to sync data between Azure SQL Database and SQL Server on-premises](sql-database-get-started-sql-data-sync.md) (Samouczek: konfigurowanie usługi SQL Data Sync w celu synchronizowania danych między usługą Azure SQL Database i lokalnym programem SQL Server)
     - Z programem PowerShell
         -  [Użycie programu PowerShell do synchronizowania wielu baz danych Azure SQL Database](scripts/sql-database-sync-data-between-sql-databases.md)
-        -  [Use PowerShell to sync between an Azure SQL Database and a SQL Server on-premises database (Synchronizacja bazy danych usługi Azure SQL i lokalnej bazy danych programu SQL Server przy użyciu programu PowerShell)](scripts/sql-database-sync-data-between-azure-onprem.md)
+        -  [Use PowerShell to sync between an Azure SQL Database and a SQL Server on-premises database (Synchronizacja bazy danych usługi Azure SQL Database i lokalnej bazy danych programu SQL Server przy użyciu programu PowerShell)](scripts/sql-database-sync-data-between-azure-onprem.md)
 -   Agent synchronizacji danych — [Data Sync Agent for Azure SQL Data Sync](sql-database-data-sync-agent.md) (Agent synchronizacji danych dla usługi Azure SQL Data Sync)
 -   Monitor- [monitor SQL Data Sync z dziennikami Azure monitor](sql-database-sync-monitor-oms.md)
 -   Rozwiązywanie problemów — [Troubleshoot issues with Azure SQL Data Sync](sql-database-troubleshoot-data-sync.md) (Rozwiązywanie problemów z usługą Azure SQL Data Sync)

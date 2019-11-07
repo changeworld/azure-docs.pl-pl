@@ -6,18 +6,18 @@ author: dlepow
 manager: gwallace
 ms.service: container-registry
 ms.topic: article
-ms.date: 12/13/2018
+ms.date: 10/04/2019
 ms.author: danlep
-ms.openlocfilehash: 16ad37eaa50f0c3825d131338cc4a0abdc369978
-ms.sourcegitcommit: b4665f444dcafccd74415fb6cc3d3b65746a1a31
+ms.openlocfilehash: 4cb678e1ffa73731c6c1444f87fec588da7ddfbf
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/11/2019
-ms.locfileid: "72262868"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73681826"
 ---
 # <a name="azure-container-registry-authentication-with-service-principals"></a>Uwierzytelnianie Azure Container Registry przy użyciu jednostek usługi
 
-Za pomocą jednostki usługi Azure Active Directory (Azure AD) można zapewnić obraz kontenera `docker push` i `pull` dostęp do rejestru kontenerów. Za pomocą nazwy głównej usługi można zapewnić dostęp do "bezobsługowego" usług i aplikacji.
+Za pomocą nazwy głównej usługi Azure Active Directory (Azure AD) można udostępniać `docker push` obrazów kontenera i `pull` dostęp do rejestru kontenerów. Za pomocą nazwy głównej usługi można zapewnić dostęp do "bezobsługowego" usług i aplikacji.
 
 ## <a name="what-is-a-service-principal"></a>Co to jest jednostka usługi?
 
@@ -29,7 +29,7 @@ W kontekście Azure Container Registry można utworzyć jednostkę usługi Azure
 
 Za pomocą nazwy głównej usługi Azure AD można zapewnić dostęp z zakresu do prywatnego rejestru kontenerów. Utwórz różne jednostki usługi dla każdej aplikacji lub usług, z których każdy może mieć dostosowane prawa dostępu do rejestru. Ponadto, ponieważ możesz uniknąć udostępniania poświadczeń między usługami i aplikacjami, możesz obrócić poświadczenia lub odwołać dostęp tylko do nazwy głównej usługi (i w związku z tym aplikacji).
 
-Na przykład skonfiguruj aplikację sieci Web tak, aby korzystała z jednostki usługi, która udostępnia ją @no__t tylko do odczytu, podczas gdy system kompilacji używa jednostki usługi, która udostępnia ją z dostępem `push` i `pull`. Jeśli opracowywanie aplikacji zmienia się, możesz obrócić swoje poświadczenia zasad usługi bez wpływu na system kompilacji.
+Na przykład skonfiguruj aplikację sieci Web tak, aby korzystała z nazwy głównej usługi, która udostępnia ją tylko `pull` dostępu, podczas gdy system kompilacji używa jednostki usługi, która zapewnia jej dostęp `push` i `pull`. Jeśli rozwój aplikacji zmienia się, możesz obrócić jej poświadczenia głównej usługi bez wpływu na system kompilacji.
 
 ## <a name="when-to-use-a-service-principal"></a>Kiedy używać nazwy głównej usługi
 
@@ -52,7 +52,7 @@ Powyższe przykładowe skrypty dla interfejsu wiersza polecenia platformy Azure 
 
 ## <a name="authenticate-with-the-service-principal"></a>Uwierzytelnianie za pomocą nazwy głównej usługi
 
-Gdy masz nazwę główną usługi, której udzielono dostępu do rejestru kontenerów, możesz skonfigurować jej poświadczenia w taki sposób, aby miały dostęp do "bezobsługowego" usług i aplikacji, lub wprowadzić je przy użyciu `docker login` polecenia. Wprowadź następujące wartości:
+Gdy masz nazwę główną usługi, której udzielono dostępu do rejestru kontenerów, możesz skonfigurować jej poświadczenia w taki sposób, aby miały dostęp do "bezobsługowego" usług i aplikacji, albo wprowadzić je za pomocą polecenia `docker login`. Wprowadź następujące wartości:
 
 * **Nazwa użytkownika** — identyfikator aplikacji głównej usługi (NAZYWANY także *identyfikatorem klienta*)
 * **Hasło** — hasło główne usługi (nazywane także *kluczem tajnym klienta*)
@@ -65,13 +65,13 @@ Każda wartość jest identyfikatorem GUID formularza `xxxxxxxx-xxxx-xxxx-xxxx-x
 
 ### <a name="use-credentials-with-azure-services"></a>Używanie poświadczeń z usługami platformy Azure
 
-Poświadczeń jednostki usługi można użyć z dowolnej usługi platformy Azure, która może być uwierzytelniana w usłudze Azure Container Registry.  Użyj poświadczeń nazwy głównej usługi zamiast poświadczeń administratora rejestru dla różnych scenariuszy.
+Poświadczeń jednostki usługi można użyć z dowolnej usługi platformy Azure, która jest uwierzytelniana w usłudze Azure Container Registry.  Użyj poświadczeń nazwy głównej usługi zamiast poświadczeń administratora rejestru dla różnych scenariuszy.
 
 Na przykład Użyj poświadczeń w celu ściągnięcia obrazu z rejestru kontenerów platformy Azure w celu [Azure Container Instances](container-registry-auth-aci.md).
 
 ### <a name="use-with-docker-login"></a>Użyj z logowaniem Docker
 
-Możesz również uruchomić `docker login` przy użyciu nazwy głównej usługi. W poniższym przykładzie identyfikator aplikacji głównej usługi jest przesyłany w zmiennej środowiskowej `$SP_APP_ID` i hasła w zmiennej `$SP_PASSWD`. Aby zapoznać się z najlepszymi rozwiązaniami dotyczącymi zarządzania poświadczeniami platformy Docker, zobacz informacje dotyczące polecenia [Docker login](https://docs.docker.com/engine/reference/commandline/login/) .
+`docker login` można uruchomić przy użyciu nazwy głównej usługi. W poniższym przykładzie identyfikator aplikacji głównej usługi jest przesyłany w zmiennej środowiskowej `$SP_APP_ID`i hasłem w zmiennej `$SP_PASSWD`. Aby zapoznać się z najlepszymi rozwiązaniami dotyczącymi zarządzania poświadczeniami platformy Docker, zobacz informacje dotyczące polecenia [Docker login](https://docs.docker.com/engine/reference/commandline/login/) .
 
 ```bash
 # Log in to Docker with service principal credentials
@@ -79,6 +79,26 @@ docker login myregistry.azurecr.io --username $SP_APP_ID --password $SP_PASSWD
 ```
 
 Po zalogowaniu się program Docker buforuje poświadczenia.
+
+### <a name="use-with-certificate"></a>Użyj z certyfikatem
+
+Jeśli dodano certyfikat do nazwy głównej usługi, możesz zalogować się do interfejsu wiersza polecenia platformy Azure przy użyciu uwierzytelniania opartego na certyfikatach, a następnie użyć [AZ ACR login][az-acr-login] , aby uzyskać dostęp do rejestru. Użycie certyfikatu jako wpisu tajnego zamiast hasła zapewnia dodatkowe zabezpieczenia podczas korzystania z interfejsu wiersza polecenia. 
+
+Certyfikat z podpisem własnym można utworzyć podczas [tworzenia nazwy głównej usługi](/cli/azure/create-an-azure-service-principal-azure-cli). Lub Dodaj co najmniej jeden certyfikat do istniejącej nazwy głównej usługi. Jeśli na przykład używasz jednego ze skryptów w tym artykule, aby utworzyć lub zaktualizować jednostkę usługi z uprawnieniami do ściągania lub wypychania obrazów z rejestru, Dodaj certyfikat za pomocą polecenia [AZ AD Sp Credential Reset][az-ad-sp-credential-reset] .
+
+Aby można było [zalogować się do interfejsu wiersza polecenia platformy Azure](/cli/azure/authenticate-azure-cli#sign-in-with-a-service-principal)przy użyciu nazwy głównej usługi, certyfikat musi być w formacie PEM i zawierać klucz prywatny. Jeśli certyfikat nie jest w wymaganym formacie, użyj narzędzia, takiego jak `openssl`, aby go przekonwertować. Po uruchomieniu polecenia [AZ login][az-login] , aby zalogować się w interfejsie wiersza polecenia przy użyciu nazwy głównej usługi, podaj również identyfikator aplikacji jednostki usługi i identyfikator dzierżawy Active Directory. Poniższy przykład przedstawia te wartości jako zmienne środowiskowe:
+
+```azurecli
+az login --service-principal --username $SP_APP_ID --tenant $SP_TENANT_ID  --password /path/to/cert/pem/file
+```
+
+Następnie uruchom polecenie [AZ ACR login][az-acr-login] , aby uwierzytelnić się w rejestrze:
+
+```azurecli
+az acr login --name myregistry
+```
+
+Interfejs wiersza polecenia używa tokenu utworzonego podczas uruchamiania `az login` w celu uwierzytelnienia sesji z rejestrem.
 
 ## <a name="next-steps"></a>Następne kroki
 
@@ -92,3 +112,5 @@ Po zalogowaniu się program Docker buforuje poświadczenia.
 
 <!-- LINKS - Internal -->
 [az-acr-login]: /cli/azure/acr#az-acr-login
+[az-login]: /cli/azure/reference-index#az-login
+[az-ad-sp-credential-reset]: /cli/azure/ad/sp/credential#[az-ad-sp-credential-reset]

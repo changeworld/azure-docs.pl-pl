@@ -1,6 +1,6 @@
 ---
 title: Jak model zostaje usługą sieci Web
-titleSuffix: Azure Machine Learning Studio (classic)
+titleSuffix: ML Studio (classic) Azure
 description: Przegląd Mechanics, jak model Azure Machine Learning Studio (klasyczny) postępuje z eksperymentu deweloperskiego z usługą sieci Web.
 services: machine-learning
 ms.service: machine-learning
@@ -10,12 +10,12 @@ author: xiaoharper
 ms.author: amlstudiodocs
 ms.custom: previous-ms.author=yahajiza, previous-author=YasinMSFT
 ms.date: 03/20/2017
-ms.openlocfilehash: c82e636b06d33140ca6dae606d39855084aac04d
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 24a2c31271d123d6378732bd9f85f6341a78d65c
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73496847"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73671246"
 ---
 # <a name="how-a-machine-learning-studio-classic-model-progresses-from-an-experiment-to-a-web-service"></a>Jak model Machine Learning Studio (klasyczny) postępuje z eksperymentu z usługą sieci Web
 Azure Machine Learning Studio (klasyczny) zapewnia interaktywną kanwę, która umożliwia tworzenie, uruchamianie, testowanie i Iterowanie ***eksperymentu*** reprezentującego model analizy predykcyjnej. Dostępne są szeroką gamę modułów, które mogą:
@@ -108,7 +108,7 @@ Jeśli chcesz wprowadzić zmiany do oryginalnego eksperymentu predykcyjnego, na 
 Aby uzyskać więcej informacji na temat procesu opracowywania i eksperymentowania, zobacz następujące artykuły:
 
 * Konwertowanie eksperymentu — [jak przygotować model do wdrożenia w Azure Machine Learning Studio (klasyczny)](convert-training-experiment-to-scoring-experiment.md)
-* Wdrażanie usługi sieci Web — [wdrażanie usługi sieci web Azure Machine Learning](publish-a-machine-learning-web-service.md)
+* Wdrażanie usługi sieci Web — [wdrażanie usługi sieci web Azure Machine Learning](deploy-a-machine-learning-web-service.md)
 * ponowne uczenie modelu — ponownie [poszkol Machine Learning modele](/azure/machine-learning/studio/retrain-machine-learning-model)
 
 Przykłady całego procesu znajdują się w temacie:

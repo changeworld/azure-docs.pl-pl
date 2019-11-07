@@ -1,5 +1,5 @@
 ---
-title: Azure Data Factory — analizy przypadków klientów | Microsoft Docs
+title: Azure Data Factory — analizy przypadków klientów
 description: Dowiedz się, w jaki sposób niektórzy z naszych klientów używają Azure Data Factory.
 services: data-factory
 documentationcenter: ''
@@ -11,12 +11,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/10/2018
-ms.openlocfilehash: 4944a870d27fd9ca0b64234b303906739bdc0d04
-ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
+ms.openlocfilehash: 9b0318cf293428f0d2ce125b190b0b8625c9df97
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70139964"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73682685"
 ---
 # <a name="azure-data-factory---customer-case-studies"></a>Azure Data Factory — analizy przypadków klientów
 Data Factory to usługa zarządzania informacjami oparta na chmurze, która automatyzuje przenoszenie i transformację danych. Klienci w wielu branżach wykorzystują Data Factory i inne usługi platformy Azure do tworzenia potoków analizy i rozwiązywania problemów z działalnością biznesową.  Dowiedz się bezpośrednio od naszych klientów, jak i dlaczego są one używane Data Factory.
@@ -42,5 +42,5 @@ Data Factory to usługa zarządzania informacjami oparta na chmurze, która auto
 ## <a name="pier-1-imports"></a>Pier 1 Imports
 [Znajdowanie lepszego połączenia z klientami za pomocą Machine Learning w chmurze](https://customers.microsoft.com/Pages/CustomerStory.aspx?recid=11257)
 
-## <a name="microsoft-studio"></a>Microsoft Studio
+## <a name="microsoft-studio"></a>Program Microsoft Studio
 [Dostarczanie środowisk epiku Xbox, analizując setki miliardów wydarzeń w grach każdego dnia](https://customers.microsoft.com/en-us/story/xboxunlimited)

@@ -1,5 +1,5 @@
 ---
-title: Azure SQL Database — dostrajanie automatyczne | Microsoft Docs
+title: Azure SQL Database — Dostosowywanie automatyczne
 description: Azure SQL Database analizuje zapytanie SQL i automatycznie dostosowuje się do obciążenia użytkownika.
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: danimir
 ms.author: danil
 ms.reviewer: jrasnik, carlrab
 ms.date: 03/06/2019
-ms.openlocfilehash: b6c2885f0919752f7ede7f5a15121be2f8a953ca
-ms.sourcegitcommit: a7a9d7f366adab2cfca13c8d9cbcf5b40d57e63a
+ms.openlocfilehash: bfac5a0eba68469d912efd02699624e1335e40e5
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/20/2019
-ms.locfileid: "71162315"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73691113"
 ---
 # <a name="automatic-tuning-in-azure-sql-database"></a>Dostrajanie automatyczne w Azure SQL Database
 
@@ -69,9 +69,9 @@ Opcje dostrajania automatycznego dostępne w Azure SQL Database są następując
 | :----------------------------- | ----- | ----- |
 | **Create index** — identyfikuje indeksy, które mogą zwiększyć wydajność obciążenia, tworzy indeksy i automatycznie sprawdzają, czy wydajność zapytań została ulepszona. | Tak | Nie | 
 | **Drop index** — identyfikuje nadmiarowe i zduplikowane indeksy codziennie, z wyjątkiem unikatowych indeksów i indeksów, które nie były używane przez długi czas (> 90 dni). Należy pamiętać, że ta opcja nie jest zgodna z aplikacjami korzystającymi z przełączania partycji i wskazówek dotyczących indeksów. Usuwanie nieużywanych indeksów nie jest obsługiwane dla warstw usług premium i Krytyczne dla działania firmy. | Tak | Nie |
-| **Wymuś ostatni dobry plan** (automatyczne Korekcja planu) — identyfikuje zapytania SQL przy użyciu planu wykonywania, które jest wolniejsze niż poprzedni dobry plan, oraz zapytania przy użyciu ostatniego znanego dobrego planu zamiast planu uległa pogorszeniu. | Tak | Tak |
+| **Wymuś ostatni dobry plan** (automatyczne korekcje planu) — IDENTYFIKUJE zapytania SQL korzystające z planu wykonywania, które jest wolniejsze niż poprzedni dobry plan, i zapytania przy użyciu ostatniego znanego dobrego planu zamiast planu uległa pogorszeniu. | Tak | Tak |
 
-Dostrajanie automatyczneidentyfikuje indeksowanie, **Drop index**i WYmuszanie najnowszych dobrych zaleceń **planu** , które mogą zoptymalizować wydajność bazy danych i wyświetlać je w [Azure Portal](sql-database-advisor-portal.md), i uwidacznia je za poorednictwem [języka T-SQL](https://docs.microsoft.com/sql/t-sql/statements/alter-database-transact-sql-set-options?view=azuresqldb-current) i [ Interfejs API REST](https://docs.microsoft.com/rest/api/sql/serverautomatictuning). Aby dowiedzieć się więcej na temat wymuszania ostatniego dobrego planu i konfigurowania opcji dostrajania automatycznego przy użyciu języka T-SQL, zobacz [dostrajanie automatyczne wprowadza automatyczne korekcje planu](https://azure.microsoft.com/blog/automatic-tuning-introduces-automatic-plan-correction-and-t-sql-management/).
+Dostrajanie automatyczne identyfikuje **indeksowanie**, **Drop index**i **wymuszanie najnowszych dobrych** zaleceń planu, które mogą zoptymalizować wydajność bazy danych i wyświetlać je w [Azure Portal](sql-database-advisor-portal.md), i uwidacznia je za poorednictwem [języka T-SQL](https://docs.microsoft.com/sql/t-sql/statements/alter-database-transact-sql-set-options?view=azuresqldb-current) i [ Interfejs API REST](https://docs.microsoft.com/rest/api/sql/serverautomatictuning). Aby dowiedzieć się więcej na temat wymuszania ostatniego dobrego planu i konfigurowania opcji dostrajania automatycznego przy użyciu języka T-SQL, zobacz [dostrajanie automatyczne wprowadza automatyczne korekcje planu](https://azure.microsoft.com/blog/automatic-tuning-introduces-automatic-plan-correction-and-t-sql-management/).
 
 Możesz ręcznie zastosować zalecenia strojenia przy użyciu portalu lub zezwolić na automatyczne dostosowywanie w sposób autonomiczny. Korzyści wynikające z zapewnienia, że system autonomicznie stosują zalecenia dostosowawcze, są automatycznie sprawdzane, czy istnieje pozytywny wzrost wydajności obciążeń i czy nie wykryto znaczącej poprawy wydajności. automatycznie Przywróć zalecenie dostrajania. Należy pamiętać, że w przypadku zapytań, na które mają wpływ zalecenia strojenia, które nie są wykonywane często, faza weryfikacji może trwać do 72 godzin.
 

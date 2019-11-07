@@ -1,19 +1,19 @@
 ---
-title: Skonfiguruj odzyskiwanie po awarii maszyn wirtualnych VMware lub serwerów fizycznych do lokacji dodatkowej za pomocą Azure Site Recovery | Microsoft Docs
+title: Odzyskiwanie po awarii maszyn wirtualnych VMware/serwerów fizycznych do lokacji dodatkowej za pomocą Azure Site Recovery
 description: Dowiedz się, jak skonfigurować odzyskiwanie po awarii maszyn wirtualnych VMware lub serwerów fizycznych z systemami Windows i Linux do lokacji dodatkowej z Azure Site Recovery.
 author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 services: site-recovery
 ms.topic: conceptual
-ms.date: 08/22/2019
+ms.date: 11/05/2019
 ms.author: raynew
-ms.openlocfilehash: a87abfdd70db07e4310dc6a39a280e12f664d03b
-ms.sourcegitcommit: 47b00a15ef112c8b513046c668a33e20fd3b3119
+ms.openlocfilehash: 71d230c9fea25edfbf0ca4ea40f15b69779ad060
+ms.sourcegitcommit: 6c2c97445f5d44c5b5974a5beb51a8733b0c2be7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69972093"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73620534"
 ---
 # <a name="set-up-disaster-recovery-of-on-premises-vmware-virtual-machines-or-physical-servers-to-a-secondary-site"></a>Konfigurowanie odzyskiwania po awarii lokalnych maszyn wirtualnych VMware lub serwerów fizycznych do lokacji dodatkowej
 
@@ -29,8 +29,8 @@ Azure Site Recovery scenariusz replikacji między lokalnymi centrami danych prog
 
 W okresie 2018 i 2019 zostaną wydane dwie aktualizacje: 
 
--   Aktualizacja Update 7: Rozwiązuje problemy związane z konfiguracją sieci i zgodnością oraz zapewnia obsługę protokołu TLS 1,2.
--   Aktualizacja Update 8: Dodaje obsługę systemów operacyjnych Linux RHEL/CentOS 7.3/7.4/7.5 i dla SUSE 12
+-   Update 7: Rozwiązywanie problemów z konfiguracją sieci i zgodnością oraz zapewnia obsługę protokołu TLS 1,2.
+-   Update 8: dodaje obsługę systemów operacyjnych Linux RHEL/CentOS 7.3/7.4/7.5 i dla SUSE 12
 
 Po aktualizacji 8 nie zostaną wydane żadne dalsze aktualizacje. Zostanie ograniczona obsługa poprawek dla systemów operacyjnych dodanych w Update 8 i poprawki błędów na podstawie najlepszego nakładu pracy.
 
@@ -39,9 +39,9 @@ Azure Site Recovery kontynuuje wprowadzanie innowacji przez udostępnienie klien
 ### <a name="scenario-migration"></a>Migracja scenariusza
 Alternatywnie zalecamy skonfigurowanie odzyskiwania po awarii dla lokalnych maszyn wirtualnych VMware i maszyn fizycznych przez replikowanie ich na platformę Azure. Wykonaj następujące czynności:
 
-1.  Zapoznaj się z poniższym krótkim porównaniem. Aby można było przeprowadzić replikację maszyn lokalnych, należy sprawdzić, czy spełniają one [wymagania](./vmware-physical-azure-support-matrix.md#replicated-machines) związane z replikacją na platformę Azure. Jeśli replikujesz maszyny wirtualne VMware, zalecamy zapoznanie się z wytycznymi [planowania pojemności](./site-recovery-plan-capacity-vmware.md)i uruchomienie [Narzędzia planista wdrażania](./site-recovery-deployment-planner.md) do identyfikacji wymagań dotyczących pojemności i zweryfikowanie zgodności.
+1.  Zapoznaj się z poniższym krótkim porównaniem. Aby można było przeprowadzić replikację maszyn lokalnych, należy sprawdzić, czy spełniają one [wymagania](./vmware-physical-azure-support-matrix.md#replicated-machines) związane z replikacją na platformę Azure. Jeśli replikujesz maszyny wirtualne VMware, zalecamy zapoznanie się z [wytycznymi planowania pojemności](./site-recovery-plan-capacity-vmware.md)i uruchomienie [Narzędzia planista wdrażania](./site-recovery-deployment-planner.md) do identyfikacji wymagań dotyczących pojemności i zweryfikowanie zgodności.
 2.  Po uruchomieniu Planista wdrażania można skonfigurować replikację: o dla maszyn wirtualnych VMware, postępować zgodnie z tymi samouczkami w celu [przygotowania platformy Azure](./tutorial-prepare-azure.md), [przygotowania lokalnego środowiska VMware](./vmware-azure-tutorial-prepare-on-premises.md)i [skonfigurowania odzyskiwania po awarii](./vmware-azure-tutorial-prepare-on-premises.md).
-o dla maszyn fizycznych, postępuj [](./physical-azure-disaster-recovery.md)zgodnie z tym samouczkiem.
+o dla maszyn fizycznych, postępuj zgodnie z tym [samouczkiem](./physical-azure-disaster-recovery.md).
 3.  Gdy maszyny są replikowane na platformę Azure, możesz uruchomić polecenie [przechodzenia do odzyskiwania po awarii](./site-recovery-test-failover-to-azure.md) , aby upewnić się, że wszystko działa zgodnie z oczekiwaniami.
 
 ### <a name="quick-comparison"></a>Szybkie porównanie
@@ -54,7 +54,7 @@ o dla maszyn fizycznych, postępuj [](./physical-azure-disaster-recovery.md)zgod
 **Udostępniony klaster dysków** |Nieobsługiwane|Obsługiwane
 **Limity zmian danych (średnia)** |10 MB/s danych na dysk<br> dane 25 MB/s na maszynę wirtualną<br> [Dowiedz się więcej](./site-recovery-vmware-deployment-planner-analyze-report.md#azure-site-recovery-limits) | > 10 MB/s na dysk  <br> > 25 MB/s na maszynę wirtualną
 **Monitorowanie** |Z Azure Portal|Z CX (serwer konfiguracji)
-**Macierz obsługi** | [Kliknij tutaj, aby uzyskać szczegółowe informacje](./vmware-physical-azure-support-matrix.md)|[Pobieranie macierzy zgodnej z systemem ASR Scout](https://aka.ms/asr-scout-cm)
+**Macierz obsługi** | [Kliknij tutaj w celu poznania szczegółów](./vmware-physical-azure-support-matrix.md)|[Pobieranie macierzy zgodnej z systemem ASR Scout](https://aka.ms/asr-scout-cm)
 
 
 ## <a name="prerequisites"></a>Wymagania wstępne
@@ -81,51 +81,51 @@ Zainstaluj aktualizacje w następujący sposób:
 >Wersja aktualizacji plików wszystkich składników programu Scout nie może być taka sama w pliku Update. zip. Starsza wersja wskazuje, że składnik nie zmienia się od czasu poprzedniej aktualizacji tej aktualizacji.
 
 Pobierz plik [Update](https://aka.ms/asr-scout-update7) . zip i pliki konfiguracji [uaktualnienia MySQL i php](https://aka.ms/asr-scout-u7-mysql-php-manualupgrade) . Plik Update. zip zawiera wszystkie podstawowe pliki binarne i pliki binarne uaktualniania zbiorczego następujących składników: 
-- InMage_ScoutCloud_RX_8.0.1.0_RHEL6-64_GA_02Mar2015.tar.gz
-- RX_8.0.7.0_GA_Update_7_2965621_28Dec18.tar.gz
-- InMage_CX_8.0.1.0_Windows_GA_26Feb2015_release.exe
-- InMage_CX_TP_8.0.1.0_Windows_GA_26Feb2015_release.exe
-- CX_Windows_8.0.7.0_GA_Update_7_2965621_28Dec18.exe
-- InMage_PI_8.0.1.0_Windows_GA_26Feb2015_release.exe
-- InMage_Scout_vContinuum_MT_8.0.7.0_Windows_GA_27Dec2018_release.exe
-- InMage_UA_8.0.7.0_Windows_GA_27Dec2018_release.exe
+- InMage_ScoutCloud_RX_ 8.0.1.0 _RHEL6-64_GA_02Mar2015. tar. gz
+- RX_ 8.0.7.0 _GA_Update_7_2965621_28Dec18. tar. gz
+- InMage_CX_ 8.0.1.0 _Windows_GA_26Feb2015_release. exe
+- InMage_CX_TP_ 8.0.1.0 _Windows_GA_26Feb2015_release. exe
+- CX_Windows_ 8.0.7.0 _GA_Update_7_2965621_28Dec18. exe
+- InMage_PI_ 8.0.1.0 _Windows_GA_26Feb2015_release. exe
+- InMage_Scout_vContinuum_MT_ 8.0.7.0 _Windows_GA_27Dec2018_release. exe
+- InMage_UA_ 8.0.7.0 _Windows_GA_27Dec2018_release. exe
 - InMage_UA_ 8.0.7.0 _OL5-32_GA_03Dec2018_release. tar. gz
-- InMage_UA_8.0.7.0_OL5-64_GA_03Dec2018_release.tar.gz
-- InMage_UA_8.0.7.0_OL6-32_GA_03Dec2018_release.tar.gz
-- InMage_UA_8.0.7.0_OL6-64_GA_03Dec2018_release.tar.gz
+- InMage_UA_ 8.0.7.0 _OL5-64_GA_03Dec2018_release. tar. gz
+- InMage_UA_ 8.0.7.0 _OL6-32_GA_03Dec2018_release. tar. gz
+- InMage_UA_ 8.0.7.0 _OL6-64_GA_03Dec2018_release. tar. gz
 - InMage_UA_ 8.0.7.0 _RHEL5-32_GA_03Dec2018_release. tar. gz
 - InMage_UA_ 8.0.7.0 _RHEL5-64_GA_03Dec2018_release. tar. gz
 - InMage_UA_ 8.0.7.0 _RHEL6-32_GA_03Dec2018_release. tar. gz
 - InMage_UA_ 8.0.7.0 _RHEL6-64_GA_03Dec2018_release. tar. gz
 - InMage_UA_ 8.0.7.0 _RHEL7-64_GA_03Dec2018_release. tar. gz
-- InMage_UA_8.0.7.0_SLES10-32_GA_03Dec2018_release.tar.gz
-- InMage_UA_8.0.7.0_SLES10-64_GA_03Dec2018_release.tar.gz
-- InMage_UA_8.0.7.0_SLES10-SP1-32_GA_03Dec2018_release.tar.gz
-- InMage_UA_8.0.7.0_SLES10-SP1-64_GA_03Dec2018_release.tar.gz
-- InMage_UA_8.0.7.0_SLES10-SP2-32_GA_03Dec2018_release.tar.gz
-- InMage_UA_8.0.7.0_SLES10-SP2-64_GA_03Dec2018_release.tar.gz
-- InMage_UA_8.0.7.0_SLES10-SP3-32_GA_03Dec2018_release.tar.gz
-- InMage_UA_8.0.7.0_SLES10-SP3-64_GA_03Dec2018_release.tar.gz
-- InMage_UA_8.0.7.0_SLES10-SP4-32_GA_03Dec2018_release.tar.gz
-- InMage_UA_8.0.7.0_SLES10-SP4-64_GA_03Dec2018_release.tar.gz
-- InMage_UA_8.0.7.0_SLES11-32_GA_03Dec2018_release.tar.gz
-- InMage_UA_8.0.7.0_SLES11-64_GA_04Dec2018_release.tar.gz
-- InMage_UA_8.0.7.0_SLES11-SP1-32_GA_03Dec2018_release.tar.gz
-- InMage_UA_8.0.7.0_SLES11-SP1-64_GA_04Dec2018_release.tar.gz
-- InMage_UA_8.0.7.0_SLES11-SP2-32_GA_03Dec2018_release.tar.gz
-- InMage_UA_8.0.7.0_SLES11-SP2-64_GA_03Dec2018_release.tar.gz
-- InMage_UA_8.0.7.0_SLES11-SP3-32_GA_03Dec2018_release.tar.gz
-- InMage_UA_8.0.7.0_SLES11-SP3-64_GA_03Dec2018_release.tar.gz
-- InMage_UA_8.0.7.0_SLES11-SP4-64_GA_03Dec2018_release.tar.gz
+- InMage_UA_ 8.0.7.0 _SLES10-32_GA_03Dec2018_release. tar. gz
+- InMage_UA_ 8.0.7.0 _SLES10-64_GA_03Dec2018_release. tar. gz
+- InMage_UA_ 8.0.7.0 _SLES10-SP1-32_GA_03Dec2018_release. tar. gz
+- InMage_UA_ 8.0.7.0 _SLES10-SP1-64_GA_03Dec2018_release. tar. gz
+- InMage_UA_ 8.0.7.0 _SLES10-SP2-32_GA_03Dec2018_release. tar. gz
+- InMage_UA_ 8.0.7.0 _SLES10-SP2-64_GA_03Dec2018_release. tar. gz
+- InMage_UA_ 8.0.7.0 _SLES10-SP3-32_GA_03Dec2018_release. tar. gz
+- InMage_UA_ 8.0.7.0 _SLES10-SP3-64_GA_03Dec2018_release. tar. gz
+- InMage_UA_ 8.0.7.0 _SLES10-SP4-32_GA_03Dec2018_release. tar. gz
+- InMage_UA_ 8.0.7.0 _SLES10-SP4-64_GA_03Dec2018_release. tar. gz
+- InMage_UA_ 8.0.7.0 _SLES11-32_GA_03Dec2018_release. tar. gz
+- InMage_UA_ 8.0.7.0 _SLES11-64_GA_04Dec2018_release. tar. gz
+- InMage_UA_ 8.0.7.0 _SLES11-SP1-32_GA_03Dec2018_release. tar. gz
+- InMage_UA_ 8.0.7.0 _SLES11-SP1-64_GA_04Dec2018_release. tar. gz
+- InMage_UA_ 8.0.7.0 _SLES11-SP2-32_GA_03Dec2018_release. tar. gz
+- InMage_UA_ 8.0.7.0 _SLES11-SP2-64_GA_03Dec2018_release. tar. gz
+- InMage_UA_ 8.0.7.0 _SLES11-SP3-32_GA_03Dec2018_release. tar. gz
+- InMage_UA_ 8.0.7.0 _SLES11-SP3-64_GA_03Dec2018_release. tar. gz
+- InMage_UA_ 8.0.7.0 _SLES11-SP4-64_GA_03Dec2018_release. tar. gz
   1. Wyodrębnij pliki. zip.
   2. **Serwer RX**: Skopiuj **rx_ 8.0.7.0 _ga_update_7_2965621_28dec18. tar. gz** do serwera RX i wyodrębnij go. W wyodrębnionym folderze Uruchom polecenie **/Install**.
   3. **Serwer konfiguracji i serwer przetwarzania**: Skopiuj **cx_windows_ 8.0.7.0 _ga_update_7_2965621_28dec18. exe** na serwer konfiguracji i serwer przetwarzania. Kliknij dwukrotnie, aby go uruchomić.<br>
   4. **Główny serwer docelowy systemu Windows**: Aby zaktualizować ujednoliconego agenta, skopiuj **inmage_ua_ 8.0.7.0 _windows_ga_27dec2018_release. exe** na serwer. Kliknij go dwukrotnie, aby go uruchomić. Ten sam plik może być również używany do instalacji nowej. Ta sama ujednolicona aktualizacja agenta ma również zastosowanie do serwera źródłowego.
   Aktualizacja nie musi być stosowana w głównym miejscu docelowym przygotowanym z **inmage_scout_vcontinuum_mt_ 8.0.7.0 _windows_ga_27dec2018_release. exe** , ponieważ jest to nowy Instalator w wersji GA ze wszystkimi najnowszymi zmianami.
-  5. **serwer vContinuum**:  Skopiuj **inmage_scout_vcontinuum_mt_ 8.0.7.0 _windows_ga_27dec2018_release. exe** na serwer.  Upewnij się, że zamknąłeś kreatora vContinuum. Kliknij dwukrotnie plik, aby go uruchomić.
+  5. **serwer vContinuum**: Skopiuj **inmage_scout_vcontinuum_mt_ 8.0.7.0 _windows_ga_27dec2018_release. exe** na serwer.  Upewnij się, że zamknąłeś kreatora vContinuum. Kliknij dwukrotnie plik, aby go uruchomić.
   6. **Główny serwer docelowy systemu Linux**: Aby zaktualizować ujednoliconego agenta, skopiuj **inmage_ua_ 8.0.7.0 _rhel6-64_ga_03dec2018_release. tar. gz** do głównego serwera docelowego systemu Linux i wyodrębnij go. W wyodrębnionym folderze Uruchom polecenie **/Install**.
   7. **Serwer źródłowy systemu Windows**: Aby zaktualizować ujednoliconego agenta, skopiuj **inmage_ua_ 8.0.7.0 _windows_ga_27dec2018_release. exe** na serwer źródłowy. Kliknij dwukrotnie plik, aby go uruchomić. 
-  8. **Serwer źródłowy systemu Linux**: Aby zaktualizować ujednoliconego agenta, skopiuj odpowiednią wersję ujednoliconego pliku agenta na serwer z systemem Linux i Wyodrębnij ją. W wyodrębnionym folderze Uruchom polecenie **/Install**.  Przykład: Na serwerze RHEL 6,7 64-bitowym Skopiuj **inmage_ua_ 8.0.7.0 _rhel6-64_ga_03dec2018_release. tar. gz** do serwera i wyodrębnij go. W wyodrębnionym folderze Uruchom polecenie **/Install**.
+  8. **Serwer źródłowy systemu Linux**: Aby zaktualizować ujednoliconego agenta, skopiuj odpowiednią wersję ujednoliconego pliku agenta na serwer z systemem Linux i Wyodrębnij ją. W wyodrębnionym folderze Uruchom polecenie **/Install**.  Przykład: dla serwera RHEL 6,7 64-bitowy, skopiuj **inmage_ua_ 8.0.7.0 _rhel6-64_ga_03dec2018_release. tar. gz** do serwera i wyodrębnij go. W wyodrębnionym folderze Uruchom polecenie **/Install**.
   9. Po uaktualnieniu serwera konfiguracji, serwera przetwarzania i serwera RX z wymienionymi wyżej instalatorami, biblioteki PHP i MySQL muszą zostać uaktualnione ręcznie z krokami opisanymi w sekcji 7,4 [przewodnika szybkich instalacji](https://aka.ms/asr-scout-quick-install-guide).
 
 ## <a name="enable-replication"></a>Włączanie replikacji
@@ -143,7 +143,7 @@ Pobierz plik [Update](https://aka.ms/asr-scout-update7) . zip i pliki konfigurac
 ## <a name="updates"></a>Aktualizacje
 
 ### <a name="site-recovery-scout-801-update-7"></a>Site Recovery Scout 8.0.1 Update 7 
-Zaktualizowano: 31 grudnia 2018 Pobierz [aktualizację Scout 7](https://aka.ms/asr-scout-update7).
+Zaktualizowano: 31 grudnia 2018 pobrać [Scout Update 7](https://aka.ms/asr-scout-update7).
 Scout Update 7 to pełny Instalator, którego można użyć do nowej instalacji, a także do uaktualnienia istniejących agentów/MT, które znajdują się w poprzednich aktualizacjach (od wersji Update 1 do Update 6). Zawiera wszystkie poprawki z aktualizacji Update 1 do Update 6 oraz nowe poprawki i ulepszenia opisane poniżej.
  
 #### <a name="new-features"></a>Nowe funkcje
@@ -151,10 +151,10 @@ Scout Update 7 to pełny Instalator, którego można użyć do nowej instalacji,
 * Obsługa protokołu TLS w wersji 1.2
 
 #### <a name="bug-and-security-fixes"></a>Poprawki błędów i zabezpieczeń
-* FIXED Klaster systemu Windows/Komputery autonomiczne mają niepoprawną konfigurację adresów IP podczas odzyskiwania/przywracania po awarii.
-* FIXED Czasami dodanie operacji dyskowej kończy się niepowodzeniem dla klastra V2V.
+* Rozwiązano problem: w przypadku klastra/maszyn autonomicznych z systemem Windows podczas odzyskiwania/przywracania po awarii jest niepoprawna konfiguracja adresów IP.
+* Naprawiono: czasami dodanie operacji dyskowej kończy się niepowodzeniem dla klastra V2V.
 * Naprawiono: Kreator vContinuum jest zablokowany podczas fazy odzyskiwania, jeśli główny element docelowy to Windows Server 2016
-* FIXED Problemy z bezpieczeństwem programu MySQL zostały skorygowane przez uaktualnienie programu MySQL do wersji 5.7.23
+* Naprawiono: problemy z bezpieczeństwem programu MySQL zostały skorygowane przez uaktualnienie programu MySQL do wersji 5.7.23
 
 #### <a name="manual-upgrade-for-php-and-mysql-on-csps-and-rx"></a>Ręczne uaktualnienie dla technologii PHP i MySQL w systemach CS, PS i RX
 Platformę obsługi skryptów PHP należy uaktualnić do wersji 7.2.10 na serwerze konfiguracji, serwerze przetwarzania i serwerze RX.
@@ -172,8 +172,8 @@ Scout Update 6 jest aktualizacją zbiorczą. Zawiera wszystkie poprawki z aktual
 * Dodano obsługę dla źródła systemu Windows Server 2016
 * Dodano obsługę następujących systemów operacyjnych Linux:
     - Red Hat Enterprise Linux (RHEL) 6,9
-    - CentOS 6.9
-    - Oracle Linux 5.11
+    - CentOS 6,9
+    - Oracle Linux 5,11
     - Oracle Linux 6,8
 * Dodano obsługę programu VMware Center 6,5
 
@@ -183,23 +183,23 @@ Zainstaluj aktualizacje w następujący sposób:
 >Wersja aktualizacji plików wszystkich składników programu Scout nie może być taka sama w pliku Update. zip. Starsza wersja wskazuje, że składnik nie zmienia się od czasu poprzedniej aktualizacji tej aktualizacji.
 
 Pobierz plik [Update](https://aka.ms/asr-scout-update6) . zip. Plik zawiera następujące składniki: 
-- RX_8.0.4.0_GA_Update_4_8725872_16Sep16.tar.gz
-- CX_Windows_8.0.6.0_GA_Update_6_13746667_18Sep17.exe
-- UA_Windows_8.0.5.0_GA_Update_5_11525802_20Apr17.exe
-- UA_RHEL6-64_8.0.4.0_GA_Update_4_9035261_26Sep16.tar.gz
-- vCon_Windows_8.0.6.0_GA_Update_6_11525767_21Sep17.exe
-- UA Update4 bity dla RHEL5, OL5, OL6, SUSE 10, SUSE 11: UA_\<systemu operacyjnego Linux > _ 8.0.4.0 _ga_update_4_9035261_26sep16. tar. gz
+- RX_ 8.0.4.0 _GA_Update_4_8725872_16Sep16. tar. gz
+- CX_Windows_ 8.0.6.0 _GA_Update_6_13746667_18Sep17. exe
+- UA_Windows_ 8.0.5.0 _GA_Update_5_11525802_20Apr17. exe
+- UA_RHEL6-64_ 8.0.4.0 _GA_Update_4_9035261_26Sep16. tar. gz
+- vCon_Windows_ 8.0.6.0 _GA_Update_6_11525767_21Sep17. exe
+- UA Update4 bity dla RHEL5, OL5, OL6, SUSE 10, SUSE 11: UA_\<Linux OS > _ 8.0.4.0 _GA_Update_4_9035261_26Sep16. tar. gz
   1. Wyodrębnij pliki. zip.
   2. **Serwer RX**: Skopiuj **rx_ 8.0.4.0 _ga_update_4_8725872_16sep16. tar. gz** do serwera RX i wyodrębnij go. W wyodrębnionym folderze Uruchom polecenie **/Install**.
   3. **Serwer konfiguracji i serwer przetwarzania**: Skopiuj **cx_windows_ 8.0.6.0 _ga_update_6_13746667_18sep17. exe** na serwer konfiguracji i serwer przetwarzania. Kliknij dwukrotnie, aby go uruchomić.<br>
   4. **Główny serwer docelowy systemu Windows**: Aby zaktualizować ujednoliconego agenta, skopiuj **ua_windows_ 8.0.5.0 _ga_update_5_11525802_20apr17. exe** na serwer. Kliknij go dwukrotnie, aby go uruchomić. Ta sama ujednolicona aktualizacja agenta ma również zastosowanie do serwera źródłowego. Jeśli źródło nie zostało zaktualizowane do aktualizacji Update 4, należy zaktualizować ujednoliconego agenta.
   Aktualizacja nie musi być stosowana w głównym miejscu docelowym przygotowanym z **inmage_scout_vcontinuum_mt_ 8.0.1.0 _windows_ga_10oct2017_release. exe** , ponieważ jest to nowy Instalator w wersji GA ze wszystkimi najnowszymi zmianami.
-  5. **serwer vContinuum**:  Skopiuj **vcon_windows_ 8.0.6.0 _ga_update_6_11525767_21sep17. exe** na serwer.  Upewnij się, że zamknąłeś kreatora vContinuum. Kliknij dwukrotnie plik, aby go uruchomić.
+  5. **serwer vContinuum**: Skopiuj **vcon_windows_ 8.0.6.0 _ga_update_6_11525767_21sep17. exe** na serwer.  Upewnij się, że zamknąłeś kreatora vContinuum. Kliknij dwukrotnie plik, aby go uruchomić.
   Aktualizacja nie musi być stosowana w głównym miejscu docelowym przygotowanym z **inmage_scout_vcontinuum_mt_ 8.0.1.0 _windows_ga_10oct2017_release. exe** , ponieważ jest to nowy Instalator w wersji GA ze wszystkimi najnowszymi zmianami.
   6. **Główny serwer docelowy systemu Linux**: Aby zaktualizować ujednoliconego agenta, skopiuj **ua_rhel6-64_ 8.0.4.0 _ga_update_4_9035261_26sep16. tar. gz** do głównego serwera docelowego i wyodrębnij go. W wyodrębnionym folderze Uruchom polecenie **/Install**.
   7. **Serwer źródłowy systemu Windows**: Aby zaktualizować ujednoliconego agenta, skopiuj **ua_windows_ 8.0.5.0 _ga_update_5_11525802_20apr17. exe** na serwer źródłowy. Kliknij dwukrotnie plik, aby go uruchomić. 
   Nie musisz instalować agenta Update 5 na serwerze źródłowym, jeśli został on już zaktualizowany do wersji Update 4 lub Agent źródłowy jest instalowany z najnowszym instalatorem podstawowym **inmage_ua_ 8.0.1.0 _windows_ga_28sep2017_release. exe**.
-  8. **Serwer źródłowy systemu Linux**: Aby zaktualizować ujednoliconego agenta, skopiuj odpowiednią wersję ujednoliconego pliku agenta na serwer z systemem Linux i Wyodrębnij ją. W wyodrębnionym folderze Uruchom polecenie **/Install**.  Przykład: Na serwerze RHEL 6,7 64-bitowym Skopiuj **ua_rhel6-64_ 8.0.4.0 _ga_update_4_9035261_26sep16. tar. gz** do serwera i wyodrębnij go. W wyodrębnionym folderze Uruchom polecenie **/Install**.
+  8. **Serwer źródłowy systemu Linux**: Aby zaktualizować ujednoliconego agenta, skopiuj odpowiednią wersję ujednoliconego pliku agenta na serwer z systemem Linux i Wyodrębnij ją. W wyodrębnionym folderze Uruchom polecenie **/Install**.  Przykład: dla serwera RHEL 6,7 64-bitowy, skopiuj **ua_rhel6-64_ 8.0.4.0 _ga_update_4_9035261_26sep16. tar. gz** do serwera i wyodrębnij go. W wyodrębnionym folderze Uruchom polecenie **/Install**.
 
 
 > [!NOTE]
@@ -217,7 +217,7 @@ Scout Update 5 jest aktualizacją zbiorczą. Zawiera wszystkie poprawki z aktual
 - Jeśli serwery źródłowe, główny serwer docelowy, konfiguracja, proces i odbieranie są już uruchomione w aktualizacji Update 4, zastosuj je tylko na głównym serwerze docelowym. 
 
 #### <a name="new-platform-support"></a>Obsługa nowych platform
-* SUSE Linux Enterprise Server 11 Service Pack 4(SP4)
+* SUSE Linux Enterprise Server 11 z dodatkiem Service Pack 4 (SP4)
 * SLES 11 SP4 64 bit **inmage_ua_ 8.0.1.0 _sles11-SP4-64_ga_13apr2017_release. tar. gz** jest spakowany z podstawowym pakietem Scout GA (**inmage_scout_standard_ 8.0.1 ga. zip**). Pobierz pakiet GA z portalu zgodnie z opisem w temacie Tworzenie magazynu.
 
 
@@ -231,7 +231,7 @@ Scout Update 5 jest aktualizacją zbiorczą. Zawiera wszystkie poprawki z aktual
     * Ochrona klastra z stałym węzłem nie powiodła się z powodu problemu z niezgodnością SCSI. 
     * Stała ponowna ochrona serwera klastra P2V systemu Windows kończy się niepowodzeniem, jeśli istnieją docelowe dyski klastrowe. 
     
-* FIXED W przypadku ochrony przed powrotu po awarii, jeśli wybrany główny serwer docelowy nie znajduje się na tym samym serwerze ESXi co chroniona maszyna źródłowa (w trakcie ochrony przed przekazaniem), vContinuum pobiera niewłaściwy główny serwer docelowy podczas odzyskiwania po awarii i odzyskiwanie Operacja nie powiodła się.
+* Naprawiono: podczas ochrony przed powrotu po awarii, jeśli wybrany główny serwer docelowy nie znajduje się na tym samym serwerze ESXi co chroniona maszyna źródłowa (w trakcie ochrony przed przekazaniem), vContinuum pobiera niewłaściwy główny serwer docelowy podczas odzyskiwania po awarii i odzyskiwanie Operacja nie powiodła się.
 
 > [!NOTE]
 > * Poprawki klastra P2V mają zastosowanie tylko do fizycznych klastrów MSCS, które są nowo chronione za pomocą programu Site Recovery Scout Update 5. Aby zainstalować poprawki klastra dla chronionych klastrów P2V systemu MSCS ze starszymi aktualizacjami, wykonaj kroki uaktualniania wymienione w sekcji 12 [informacji o wersji Site Recovery Scout](https://aka.ms/asr-scout-release-notes).
@@ -249,7 +249,7 @@ Scout Update 4 jest aktualizacją zbiorczą. Zawiera wszystkie poprawki z aktual
   * Red Hat Enterprise Linux (RHEL) 7,0, 7,1 i 7,2
   * CentOS 7,0, 7,1 i 7,2
   * Red Hat Enterprise Linux (RHEL) 6,8
-  * CentOS 6.8
+  * CentOS 6,8
 
 > [!NOTE]
 > RHEL/CentOS 7 64 bit **inmage_ua_ 8.0.1.0 _rhel7-64_ga_06oct2016_release. tar. gz** jest spakowany z podstawowym pakietem Scout ga **inmage_scout_standard_ 8.0.1. zip**. Pobierz pakiet Scout GA z portalu zgodnie z opisem w temacie Tworzenie magazynu.
@@ -257,8 +257,8 @@ Scout Update 4 jest aktualizacją zbiorczą. Zawiera wszystkie poprawki z aktual
 #### <a name="bug-fixes-and-enhancements"></a>Poprawki błędów i ulepszenia
 
 * Ulepszono obsługę zamykania dla następujących systemów operacyjnych Linux i klonów, aby zapobiec niepożądanym problemom z ponowną synchronizacją:
-    * Red Hat Enterprise Linux (RHEL) 6.x
-    * Oracle Linux (OL) 6.x
+    * Red Hat Enterprise Linux (RHEL) 6. x
+    * Oracle Linux (olu) 6. x
 * W przypadku systemu Linux wszystkie uprawnienia dostępu do folderu w katalogu instalacji ujednoliconego agenta są teraz ograniczone tylko do użytkownika lokalnego.
 * W systemie Windows Naprawiono problem z limitem czasu, który wystąpił podczas wystawiania wspólnych, rozmieszczonych zakładek spójności, na silnie załadowane aplikacje rozproszone, takie jak SQL Server i klastry punktów udostępniania.
 * Poprawka dotycząca dziennika w instalatorze podstawowym serwera konfiguracji.
@@ -266,7 +266,7 @@ Scout Update 4 jest aktualizacją zbiorczą. Zawiera wszystkie poprawki z aktual
 * Dodano dodatkowe sprawdzenia i dzienniki w celu zmiany konfiguracji sieci podczas pracy w trybie failover i odzyskiwania po awarii.
 * Poprawka dotycząca problemu, który spowodował, że informacje o przechowywaniu nie są raportowane na serwerze konfiguracji.  
 * W przypadku klastrów fizycznych Poprawka dotycząca problemu powodującego zmianę rozmiaru woluminu nie powiedzie się w Kreatorze vContinuum podczas zmniejszania woluminu źródłowego.
-* Poprawka dotycząca problemu z ochroną klastra, która się nie powiodła z powodu błędu: "Nie można odnaleźć podpisu dysku", gdy dysk klastrowy jest dyskiem PRDM.
+* Poprawka dotycząca problemu z ochroną klastra, która się nie powiodła z powodu błędu: "nie można odnaleźć sygnatury dysku", gdy dysk klastrowy jest dyskiem PRDM.
 * Poprawka dla serwera transportu cxps uległa awarii, spowodowany przez wyjątek poza zakresem.
 * Kolumny Nazwa serwera i adres IP są teraz zmieniane na stronie **Instalacja wypychana** kreatora vContinuum.
 * Udoskonalenia interfejsu API odbierania:
@@ -309,16 +309,16 @@ Aktualizacja Update 3 rozwiązuje następujące problemy:
   * CentOS 6, aktualizacja 7
 * Serwer konfiguracji i konsole RX teraz wyświetlają powiadomienia dla pary, które przechodzą w tryb bitmapy.
 * Dodano następujące poprawki zabezpieczeń w usłudze RX:
-    * Obejście autoryzacji poprzez manipulowanie parametrami: Ograniczony dostęp do nieodpowiednich użytkowników.
-    * Fałszerstwo żądania między lokacjami: Koncepcja tokena strony została zaimplementowana i generuje losowo dla każdej strony. Oznacza to, że istnieje tylko jedno wystąpienie logowania dla tego samego użytkownika, a odświeżanie strony nie działa. Zamiast tego przekierowuje do pulpitu nawigacyjnego.
-    * Przekazywanie złośliwego pliku: Pliki są ograniczone do określonych rozszerzeń: z, AIFF, ASF, AVI, BMP, CSV, doc, docx, FLA, FLV, GIF, GZ, GZIP, JPEG, jpg, log, The MID, w formacie MOV, MP3, MP4, MPC, MPEG, MPG, ODS, ODT, PDF, PNG, PPT, PPTX, PXD, QT, pamięć RAM, RAR, RM, RMI, RMVB, RTF, SDC, sitd , SXC, SXW, tar, tgz, TIF, TIFF, txt, VSD, WAV, WMA, WMV, xls, xlsx, XML i zip.
-    * Trwałe skrypty między lokacjami: Dodano walidacje danych wejściowych.
+    * Obejście autoryzacji poprzez manipulowanie parametrami: ograniczony dostęp do nieodpowiednich użytkowników.
+    * Fałszerstwo żądania między lokacjami: koncepcja strony-tokeny została zaimplementowana i jest generowana losowo dla każdej strony. Oznacza to, że istnieje tylko jedno wystąpienie logowania dla tego samego użytkownika, a odświeżanie strony nie działa. Zamiast tego przekierowuje do pulpitu nawigacyjnego.
+    * Przekazywanie złośliwego pliku: pliki są ograniczone do określonych rozszerzeń: z, AIFF, ASF, AVI, BMP, CSV, doc, docx, FLA, FLV, GIF, GZ, GZIP, JPEG, jpg, log, MID, plików MOV, MP3, MP4, MPC, MPEG, MPG, ODS, ODT, PDF, PNG, PPT, PPTX, PXD, QT, pamięć RAM, RAR, RM, RMI, RMVB, RTF , SDC, sitd, SWF, SXC, SXW, tar, tgz, TIF, TIFF, txt, VSD, WAV, WMA, WMV, xls, xlsx, XML i zip.
+    * Trwałe skrypty między lokacjami: dodano walidacje danych wejściowych.
 
 ### <a name="azure-site-recovery-scout-801-update-2-update-03dec15"></a>Azure Site Recovery Scout 8.0.1 Update 2 (Update 03Dec15)
 
 Poprawki w aktualizacji Update 2 obejmują:
 
-* **Serwer konfiguracji**: Problemy uniemożliwiające pracę z 31-dniową bezpłatną funkcją zliczania, gdy serwer konfiguracji został zarejestrowany w magazynie Azure Site Recovery.
+* **Serwer konfiguracji**: wystąpiły problemy z nieoczekiwanym działaniem z 31-dniową bezpłatną funkcją zliczania, gdy serwer konfiguracji został zarejestrowany w magazynie Azure Site Recovery.
 * **Ujednolicony Agent**: Poprawka dotycząca problemu w aktualizacji Update 1, która spowodowała, że aktualizacja nie jest instalowana na głównym serwerze docelowym, podczas uaktualniania z wersji 8,0 do 8.0.1.
 
 ### <a name="azure-site-recovery-scout-801-update-1"></a>Azure Site Recovery Scout 8.0.1 Update 1
@@ -332,7 +332,7 @@ Aktualizacja Update 1 zawiera następujące poprawki błędów i nowe funkcje:
     * RHEL 6, aktualizacja 6
     * RHEL 5, aktualizacja 11
     * CentOS 6, aktualizacja 6
-    * CentOS 5 Update 11
+    * CentOS 5, aktualizacja 11
 * Poprawki błędów w celu rozwiązania następujących problemów:
   * Rejestracja magazynu kończy się niepowodzeniem na serwerze konfiguracji lub serwerze RX.
   * Woluminy klastra nie są wyświetlane w oczekiwany sposób, gdy klastrowane maszyny wirtualne są ponownie chronione podczas ich wznawiania.

@@ -1,5 +1,5 @@
 ---
-title: Działanie oczekiwania w Azure Data Factory | Microsoft Docs
+title: Działanie oczekiwania w Azure Data Factory
 description: Działanie oczekiwania wstrzymuje wykonywanie potoku w określonym przedziale czasu.
 services: data-factory
 documentationcenter: ''
@@ -11,12 +11,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/12/2018
-ms.openlocfilehash: 48a722979e61209a855dd1fec22fcdcc756ae1ce
-ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
+ms.openlocfilehash: f9dd53fded06eec169219d00993620a0f2aa2bf0
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70142420"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73678241"
 ---
 # <a name="execute-wait-activity-in-azure-data-factory"></a>Działanie wykonywania oczekiwania w Azure Data Factory
 Gdy używasz działania Wait w potoku, potok czeka przez określony okres z kontynuowaniem wykonywania kolejnych działań. 
@@ -36,11 +36,11 @@ Gdy używasz działania Wait w potoku, potok czeka przez określony okres z kont
 
 ## <a name="type-properties"></a>Właściwości typu
 
-Właściwość | Opis | Dozwolone wartości | Wymagane
+Właściwość | Opis | Dozwolone wartości | Wymagany
 -------- | ----------- | -------------- | --------
-name | `Wait` Nazwa działania. | String | Tak
-type | Musi być ustawiony na wartość **czekaj**. | String | Tak
-waitTimeInSeconds | Liczba sekund oczekiwania przez potok przed kontynuowaniem przetwarzania. | Integer | Tak
+name | Nazwa działania `Wait`. | Ciąg | Tak
+type | Musi być ustawiony na wartość **czekaj**. | Ciąg | Tak
+waitTimeInSeconds | Liczba sekund oczekiwania przez potok przed kontynuowaniem przetwarzania. | Liczba całkowita | Tak
 
 ## <a name="example"></a>Przykład
 
@@ -48,7 +48,7 @@ waitTimeInSeconds | Liczba sekund oczekiwania przez potok przed kontynuowaniem p
 > Ta sekcja zawiera definicje JSON i przykładowe polecenia programu PowerShell umożliwiające uruchomienie potoku. Aby zapoznać się z instrukcjami krok po kroku dotyczącymi tworzenia potoku Data Factory przy użyciu definicji Azure PowerShell i JSON, zobacz [Samouczek: Tworzenie fabryki danych przy użyciu Azure PowerShell](quickstart-create-data-factory-powershell.md).
 
 ### <a name="pipeline-with-wait-activity"></a>Potok z działaniem oczekiwania
-W tym przykładzie potok ma dwie działania: **Przed** i **czekaj**. Działanie oczekiwania jest skonfigurowane tak, aby czekało na sekundę. Potok uruchamia działanie sieci Web w pętli z upływem jednego sekundy czasu oczekiwania między każdym przebiegiem. 
+W tym przykładzie potok ma dwie działania: **do** **czekania i oczekiwania**. Działanie oczekiwania jest skonfigurowane tak, aby czekało na sekundę. Potok uruchamia działanie sieci Web w pętli z upływem jednego sekundy czasu oczekiwania między każdym przebiegiem. 
 
 ```json
 {

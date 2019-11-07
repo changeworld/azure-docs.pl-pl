@@ -1,5 +1,5 @@
 ---
-title: Omówienie funkcji preskalowanie Azure SQL Database | Microsoft Docs
+title: Przegląd skalowania Azure SQL Database
 description: W tym artykule opisano warstwę usługi w modelu zakupów rdzeń wirtualny w Azure SQL Database i wyjaśniono, jak różni się ona od Ogólnego przeznaczenia i Krytyczne dla działania firmy warstw usług.
 services: sql-database
 ms.service: sql-database
@@ -7,16 +7,16 @@ ms.subservice: service
 ms.custom: ''
 ms.devlang: ''
 ms.topic: conceptual
-author: stevestein
-ms.author: sstein
+author: dimitri-furman
+ms.author: dfurman
 ms.reviewer: ''
 ms.date: 10/01/2019
-ms.openlocfilehash: db6e47b39b7ebe35a6c0fef42af53f91e96c363f
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
-ms.translationtype: HT
+ms.openlocfilehash: 38402d6ccf5c5582fff878ad60bf1c9fd4a07118
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73496206"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73687327"
 ---
 # <a name="hyperscale-service-tier"></a>Warstwa usługi Hiperskala
 
@@ -82,7 +82,7 @@ W przeciwieństwie do tradycyjnych aparatów baz danych, które mają scentraliz
 
 Na poniższym diagramie przedstawiono różne typy węzłów w bazie danych w skali:
 
-![architektura](./media/sql-database-hyperscale/hyperscale-architecture.png)
+![architektura](./media/sql-database-hyperscale/hyperscale-architecture2.png)
 
 Baza danych wieloskali zawiera następujące różne typy składników:
 
@@ -104,7 +104,7 @@ Usługa Azure Storage zawiera wszystkie pliki danych w bazie danych. Serwery str
 
 ## <a name="backup-and-restore"></a>Tworzenie kopii zapasowej i przywracanie
 
-Kopie zapasowe są tworzone na podstawie migawek plików, a tym samym prawie chwilowo. Rozdzielenie magazynu i obliczeń umożliwia wypychanie operacji tworzenia kopii zapasowej/przywracania do warstwy magazynowania w celu zmniejszenia obciążenia związanego z przetwarzaniem w podstawowej replice obliczeniowej. W związku z tym kopia zapasowa bazy danych nie ma wpływu na wydajność podstawowego węzła obliczeniowego; Analogicznie, przywracanie odbywa się przez przywrócenie migawek plików, co nie jest rozmiarem operacji danych. Przywracanie jest operacją o stałym czasie, a nawet kilka baz danych można przywrócić w ciągu kilku minut, a nie godzin lub dni. Tworzenie nowych baz danych przez przywrócenie istniejącej kopii zapasowej obejmuje również korzystanie z tej funkcji: Tworzenie kopii bazy danych do celów deweloperskich i testowych, nawet w przypadku baz danych o rozmiarze terabajtów, jest doable w ciągu kilku minut.
+Kopie zapasowe są tworzone na podstawie migawek plików, a tym samym prawie chwilowo. Rozdzielenie magazynu i obliczeń umożliwia wypychanie operacji tworzenia kopii zapasowej/przywracania do warstwy magazynowania w celu zmniejszenia obciążenia związanego z przetwarzaniem w podstawowej replice obliczeniowej. W związku z tym kopia zapasowa bazy danych nie ma wpływu na wydajność podstawowego węzła obliczeniowego; Analogicznie, przywracanie odbywa się przez przywrócenie migawek plików, co nie jest rozmiarem operacji danych. Przywracanie jest operacją o stałym czasie, a nawet kilka baz danych można przywrócić w ciągu kilku minut, a nie godzin lub dni. Tworzenie nowych baz danych przez przywrócenie istniejącej kopii zapasowej obejmuje również korzystanie z tej funkcji: Tworzenie kopii bazy danych na tym samym serwerze logicznym do celów deweloperskich i testowych, nawet w przypadku baz danych o rozmiarze terabajtów, jest doable w ciągu kilku minut.
 
 ## <a name="scale-and-performance-advantages"></a>Zalety skalowania i wydajności
 
@@ -181,7 +181,7 @@ Warstwa skalowania Azure SQL Database jest obecnie dostępna w następujących r
 - Japonia Zachodnia
 - Korea Środkowa
 - Korea Południowa
-- Północno-środkowe stany USA
+- Środkowo-północne stany USA
 - Europa Północna
 - Północna Republika Południowej Afryki
 - Środkowo-południowe stany USA

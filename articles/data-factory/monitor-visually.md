@@ -1,5 +1,5 @@
 ---
-title: Wizualne monitorowanie fabryk danych platformy Azure | Microsoft Docs
+title: Wizualne monitorowanie fabryk danych platformy Azure
 description: Dowiedz się, jak wizualnie monitorować fabryki danych platformy Azure
 services: data-factory
 documentationcenter: ''
@@ -11,12 +11,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/19/2018
-ms.openlocfilehash: f7c27bde3806684045bc43f8ff99eefb14c8d04a
-ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
+ms.openlocfilehash: 7b79fd9c87e97e624cce567b57c1c65fefcc151e
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/08/2019
-ms.locfileid: "72029143"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73684642"
 ---
 # <a name="visually-monitor-azure-data-factories"></a>Wizualne monitorowanie fabryk danych platformy Azure
 Azure Data Factory to oparta na chmurze usługa integracji danych. Za jego pomocą można tworzyć oparte na danych przepływy pracy w chmurze służące do organizowania i automatyzowania przenoszenia i przekształcania danych. Za pomocą Azure Data Factory można:
@@ -161,7 +161,7 @@ Wybierz ikonę **opinii** , aby przekazać nam swoją opinię na temat różnych
 
 ## <a name="alerts"></a>Alerty
 
-Alerty dla obsługiwanych metryk można zgłaszać w Data Factory. Wybierz pozycję **monitoruj** > **alerty & metryki** na stronie monitorowanie Data Factory, aby rozpocząć.
+Alerty dla obsługiwanych metryk można zgłaszać w Data Factory. Wybierz pozycję **monitoruj** > **alerty & metryki** na stronie monitorowanie Data Factory, aby rozpocząć pracę.
 
 ![Strona monitora fabryki danych](media/monitor-visually/alerts01.png)
 

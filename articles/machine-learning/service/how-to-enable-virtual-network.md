@@ -10,12 +10,12 @@ ms.reviewer: larryfr
 ms.author: aashishb
 author: aashishb
 ms.date: 10/25/2019
-ms.openlocfilehash: 1f2380748c4feea6321bd8df1c29bd599f19b089
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
-ms.translationtype: HT
+ms.openlocfilehash: 2559a3cbd786c737b316a860e9c75434c6c719a4
+ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 11/04/2019
-ms.locfileid: "73489912"
+ms.locfileid: "73576573"
 ---
 # <a name="secure-azure-ml-experimentation-and-inference-jobs-within-an-azure-virtual-network"></a>Zabezpieczanie zadań eksperymentowania i wnioskowania usługi Azure ML w ramach Virtual Network platformy Azure
 [!INCLUDE [applies-to-skus](../../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -46,7 +46,7 @@ Ten artykuł zawiera również szczegółowe informacje dotyczące *zaawansowany
 
 Aby użyć konta usługi Azure Storage dla obszaru roboczego w sieci wirtualnej, wykonaj następujące czynności:
 
-1. Utwórz zasób obliczeniowy (na przykład wystąpienie obliczeniowe Machine Learning lub klaster) za siecią wirtualną lub Dołącz zasób obliczeniowy do obszaru roboczego (na przykład klaster usługi HDInsight, maszyna wirtualna lub klaster usług Azure Kubernetes). Zasób obliczeniowy może być przeznaczony do eksperymentowania lub wdrażania modelu.
+1. Utwórz zasób obliczeniowy (na przykład klaster Machine Learning) za siecią wirtualną lub Dołącz zasób obliczeniowy do obszaru roboczego (na przykład klaster HDInsight, maszyna wirtualna lub klaster usługi Azure Kubernetes). Zasób obliczeniowy może być przeznaczony do eksperymentowania lub wdrażania modelu.
 
    Aby uzyskać więcej informacji, zobacz sekcję [Korzystanie z Machine Learning obliczeń](#amlcompute), [Używanie maszyny wirtualnej lub klastra usługi HDInsight](#vmorhdi)oraz korzystanie z sekcji [Azure Kubernetes Service](#aksvnet) w tym artykule.
 
@@ -63,7 +63,7 @@ Aby użyć konta usługi Azure Storage dla obszaru roboczego w sieci wirtualnej,
     - W obszarze __sieci wirtualne__wybierz łącze __Dodaj istniejące sieci wirtualne__ . Ta akcja powoduje dodanie sieci wirtualnej, w której znajdują się obliczenia (zobacz krok 1).
 
         > [!IMPORTANT]
-        > Konto magazynu musi znajdować się w tej samej sieci wirtualnej co wystąpienia obliczeniowe lub klastry używane do uczenia lub wnioskowania.
+        > Konto magazynu musi znajdować się w tej samej sieci wirtualnej co maszyny wirtualne lub klastry notesu używane do uczenia lub wnioskowania.
 
     - Zaznacz pole wyboru __Zezwalaj zaufanym usługom firmy Microsoft na dostęp do tego konta magazynu__ .
 
@@ -73,12 +73,6 @@ Aby użyć konta usługi Azure Storage dla obszaru roboczego w sieci wirtualnej,
     > Aby włączyć dostęp do konta magazynu, odwiedź __zapory i sieci wirtualne__ dla konta magazynu *z przeglądarki sieci Web na kliencie deweloperskim*. Następnie użyj pola wyboru __Dodaj adres IP klienta__ , aby dodać adres IP klienta do __zakresu adresów__. Możesz również użyć pola __zakres adresów__ , aby ręcznie wprowadzić adres IP środowiska deweloperskiego. Po dodaniu adresu IP klienta może on uzyskać dostęp do konta magazynu przy użyciu zestawu SDK.
 
    [![okienku "zapory i sieci wirtualne" w Azure Portal](./media/how-to-enable-virtual-network/storage-firewalls-and-virtual-networks-page.png)](./media/how-to-enable-virtual-network/storage-firewalls-and-virtual-networks-page.png#lightbox)
-
-1. Podczas przeprowadzania __eksperymentów__w kodzie eksperymentu Zmień konfigurację uruchamiania, aby korzystać z usługi Azure Blob Storage:
-
-    ```python
-    run_config.source_directory_data_store = "workspaceblobstore"
-    ```
 
 > [!IMPORTANT]
 > _Konto magazynu domyślnego_ można umieścić dla Azure Machine Learning lub _kont magazynu innych niż domyślne_ w sieci wirtualnej.
@@ -114,20 +108,16 @@ Aby korzystać z funkcji eksperymentowania Azure Machine Learning z Azure Key Va
 
 ## <a name="use-a-machine-learning-compute"></a>Użyj środowisko obliczeniowe usługi Machine Learning
 
-> [!NOTE]
-> Wystąpienia obliczeniowe są dostępne tylko dla obszarów roboczych z regionem **Północno-środkowe stany USA** lub **Południowe Zjednoczone Królestwo**.
-> Użyj jednego z tych regionów, aby utworzyć wystąpienie obliczeniowe, które można dodać do sieci wirtualnej.
-
-Aby użyć wystąpienia obliczeniowego Azure Machine Learning lub klastra obliczeniowego w sieci wirtualnej, należy spełnić następujące wymagania dotyczące sieci:
+Aby można było użyć maszyny wirtualnej Azure Machine Learning notesu lub klastra obliczeniowego w sieci wirtualnej, należy spełnić następujące wymagania dotyczące sieci:
 
 > [!div class="checklist"]
 > * Sieć wirtualna musi znajdować się w tej samej subskrypcji i regionie co obszar roboczy Azure Machine Learning.
-> * Podsieć określona dla wystąpienia obliczeniowego lub klastra musi mieć wystarczającą liczbę nieprzypisanych adresów IP w celu uwzględnienia liczby elementów, które są przeznaczone dla maszyny wirtualnej. Jeśli podsieć nie ma wystarczającej liczby nieprzypisanych adresów IP, klaster obliczeniowy zostanie częściowo przydzielony.
+> * Podsieć określona dla klastra obliczeniowego musi mieć wystarczającą liczbę nieprzypisanych adresów IP w celu uwzględnienia liczby elementów, które są przeznaczone dla maszyny wirtualnej. Jeśli podsieć nie ma wystarczającej liczby nieprzypisanych adresów IP, klaster obliczeniowy zostanie częściowo przydzielony.
 > * Sprawdź, czy zasady zabezpieczeń lub blokady w ramach subskrypcji lub grupy zasobów sieci wirtualnej ograniczają uprawnienia do zarządzania siecią wirtualną. Jeśli planujesz zabezpieczenie sieci wirtualnej przez ograniczenie ruchu, pozostaw kilka otwartych portów dla usługi obliczeniowej. Aby uzyskać więcej informacji, zobacz sekcję [wymagane porty](#mlcports) .
-> * Jeśli chcesz umieścić wiele wystąpień obliczeniowych lub klastrów w jednej sieci wirtualnej, może być konieczne zażądanie zwiększenia limitu przydziału dla co najmniej jednego z zasobów.
-> * Jeśli konta usługi Azure Storage dla obszaru roboczego są również zabezpieczone w sieci wirtualnej, muszą znajdować się w tej samej sieci wirtualnej co Azure Machine Learning wystąpienie obliczeniowe lub klaster.
+> * Jeśli chcesz umieścić wiele klastrów obliczeniowych w jednej sieci wirtualnej, może być konieczne zażądanie zwiększenia limitu przydziału dla co najmniej jednego zasobu.
+> * Jeśli konta usługi Azure Storage dla obszaru roboczego są również zabezpieczone w sieci wirtualnej, muszą znajdować się w tej samej sieci wirtualnej co klaster obliczeniowy Azure Machine Learning.
 
-Wystąpienie obliczeniowe Machine Learning lub klaster automatycznie przydziela dodatkowe zasoby sieciowe do grupy zasobów zawierającej sieć wirtualną. Dla każdego wystąpienia obliczeniowego lub klastra usługa przydziela następujące zasoby:
+Klaster obliczeniowy Machine Learning automatycznie przydziela dodatkowe zasoby sieciowe do grupy zasobów zawierającej sieć wirtualną. Dla każdego klastra obliczeniowego usługa przydziela następujące zasoby:
 
 * Jedna sieciowa Grupa zabezpieczeń
 * Jeden publiczny adres IP

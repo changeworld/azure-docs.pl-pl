@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: article
 ms.date: 06/18/2019
 ms.author: dacurwin
-ms.openlocfilehash: c456dfec72f98dc4ae06f1d7d5d9fb461182d579
-ms.sourcegitcommit: b12a25fc93559820cd9c925f9d0766d6a8963703
+ms.openlocfilehash: e4683547a7c305da3d3a3bc7a7d6a50f21ad46f2
+ms.sourcegitcommit: b2fb32ae73b12cf2d180e6e4ffffa13a31aa4c6f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/14/2019
-ms.locfileid: "69018981"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73614396"
 ---
 # <a name="troubleshoot-sql-server-database-backup-by-using-azure-backup"></a>Rozwiązywanie problemów z kopiami zapasowymi SQL Server Database przy użyciu Azure Backup
 
@@ -21,7 +21,7 @@ Ten artykuł zawiera informacje dotyczące rozwiązywania problemów z bazami da
 
 Aby uzyskać więcej informacji na temat procesu i ograniczeń tworzenia kopii zapasowej, zobacz [Informacje o SQL Server kopii zapasowych na maszynach wirtualnych platformy Azure](backup-azure-sql-database.md#feature-consideration-and-limitations).
 
-## <a name="sql-server-permissions"></a>Uprawnienia programu SQL Server
+## <a name="sql-server-permissions"></a>Uprawnienia SQL Server
 
 Aby skonfigurować ochronę bazy danych SQL Server na maszynie wirtualnej, należy zainstalować rozszerzenie **AzureBackupWindowsWorkload** na tej maszynie wirtualnej. Jeśli zostanie wyświetlony błąd **UserErrorSQLNoSysadminMembership**, oznacza to, że wystąpienie SQL Server nie ma wymaganych uprawnień do tworzenia kopii zapasowych. Aby naprawić ten błąd, wykonaj kroki opisane w sekcji [Ustawianie uprawnień maszyny wirtualnej](backup-azure-sql-database.md#set-vm-permissions).
 
@@ -29,10 +29,9 @@ Aby skonfigurować ochronę bazy danych SQL Server na maszynie wirtualnej, nale�
 
 ### <a name="backup-type-unsupported"></a>Nieobsługiwany typ kopii zapasowej
 
-| severity | Opis | Możliwe przyczyny | Zalecana akcja |
+| Ważność | Opis | Możliwe przyczyny | Zalecana akcja |
 |---|---|---|---|
 | Ostrzeżenie | Bieżące ustawienia dla tej bazy danych nie obsługują niektórych typów kopii zapasowych zawartych w skojarzonych zasadach. | <li>Na bazie danych Master można wykonać tylko operację pełnej kopii zapasowej bazy danych. Nie jest możliwa różnicowa kopia zapasowa ani kopia zapasowa dziennika transakcji. </li> <li>Żadna baza danych w modelu odzyskiwania prostego nie zezwala na tworzenie kopii zapasowych dzienników transakcji.</li> | Zmodyfikuj ustawienia bazy danych, aby były obsługiwane wszystkie typy kopii zapasowych w ramach zasad. Lub Zmień bieżące zasady tak, aby zawierały tylko obsługiwane typy kopii zapasowych. W przeciwnym razie nieobsługiwane typy kopii zapasowych zostaną pominięte podczas zaplanowanej kopii zapasowej lub zadanie tworzenia kopii zapasowej zakończy się niepowodzeniem w przypadku kopii w trybie ad
-
 
 ### <a name="usererrorsqlpodoesnotsupportbackuptype"></a>UserErrorSQLPODoesNotSupportBackupType
 
@@ -81,9 +80,9 @@ Aby skonfigurować ochronę bazy danych SQL Server na maszynie wirtualnej, nale�
 
 | Komunikat o błędzie | Możliwe przyczyny | Zalecana akcja |
 |---|---|---|
-| Przywracanie nie powiodło się, ponieważ bazy danych nie można było przełączyć w tryb offline. | Gdy wykonujesz przywracanie, docelowa baza danych musi zostać przełączona w tryb offline. Azure Backup nie można przenieść tych danych do trybu offline. | Skorzystaj z dodatkowych szczegółów w menu błąd Azure Portal, aby zawęzić główne przyczyny. Aby uzyskać więcej informacji, zobacz [dokumentację SQL Server](https://docs.microsoft.com/sql/relational-databases/backup-restore/restore-a-database-backup-using-ssms). |
+| Przywracanie nie powiodło się, ponieważ bazy danych nie można było przełączyć w tryb offline. | Gdy wykonujesz przywracanie, docelowa baza danych musi zostać przełączona w tryb offline. Azure Backup nie można przenieść tych danych do trybu offline. | Skorzystaj z dodatkowych szczegółów w menu błąd Azure Portal, aby zawęzić główne przyczyny. Aby uzyskać więcej informacji, zapoznaj się z [dokumentacją programu SQL Server](https://docs.microsoft.com/sql/relational-databases/backup-restore/restore-a-database-backup-using-ssms). |
 
-###  <a name="usererrorcannotfindservercertificatewiththumbprint"></a>UserErrorCannotFindServerCertificateWithThumbprint
+### <a name="usererrorcannotfindservercertificatewiththumbprint"></a>UserErrorCannotFindServerCertificateWithThumbprint
 
 | Komunikat o błędzie | Możliwe przyczyny | Zalecana akcja |
 |---|---|---|
@@ -94,7 +93,6 @@ Aby skonfigurować ochronę bazy danych SQL Server na maszynie wirtualnej, nale�
 | Komunikat o błędzie | Możliwe przyczyny | Zalecana akcja |
 |---|---|---|
 | Kopia zapasowa dziennika używana do odzyskiwania zawiera zmiany zarejestrowane zbiorczo. Nie można jej użyć do zatrzymania w dowolnym punkcie w czasie, zgodnie z wytycznymi SQL. | Gdy baza danych jest w trybie odzyskiwania z rejestrowaniem zbiorczym, dane między transakcją zarejestrowaną zbiorczo a następną transakcją dziennika nie mogą zostać odzyskane. | Wybierz inny punkt w czasie do odzyskania. [Dowiedz się więcej](https://docs.microsoft.com/previous-versions/sql/sql-server-2008-r2/ms186229(v=sql.105)).
-
 
 ### <a name="fabricsvcbackuppreferencecheckfailedusererror"></a>FabricSvcBackupPreferenceCheckFailedUserError
 
@@ -124,21 +122,20 @@ Aby skonfigurować ochronę bazy danych SQL Server na maszynie wirtualnej, nale�
 
 | Komunikat o błędzie | Możliwe przyczyny | Zalecana akcja |
 |---|---|---|
-Operacja została zablokowana, ponieważ osiągnięto limit liczby operacji dozwolonych w ciągu 24 godzin. | Po osiągnięciu maksymalnego dopuszczalnego limitu operacji w okresie 24-godzinnym ten błąd jest dostępny. <br> Na przykład: Jeśli osiągnięto limit liczby zadań konfigurowania kopii zapasowych, które mogą być wyzwalane dziennie, a użytkownik spróbuje skonfigurować kopię zapasową dla nowego elementu, zostanie wyświetlony ten błąd. | Zazwyczaj ponowna próba wykonania operacji po 24 godzinach rozwiązuje ten problem. Jeśli jednak problem będzie się powtarzać, możesz skontaktować się z pomocą techniczną firmy Microsoft w celu uzyskania pomocy.
+Operacja została zablokowana, ponieważ osiągnięto limit liczby operacji dozwolonych w ciągu 24 godzin. | Po osiągnięciu maksymalnego dopuszczalnego limitu operacji w okresie 24-godzinnym ten błąd jest dostępny. <br> Na przykład: Jeśli osiągnięto limit liczby zadań konfigurowania kopii zapasowych, które mogą zostać wyzwolone dziennie, a użytkownik spróbuje skonfigurować kopię zapasową dla nowego elementu, zostanie wyświetlony ten błąd. | Zazwyczaj ponowna próba wykonania operacji po 24 godzinach rozwiązuje ten problem. Jeśli jednak problem będzie się powtarzać, możesz skontaktować się z pomocą techniczną firmy Microsoft w celu uzyskania pomocy.
 
 ### <a name="clouddosabsolutelimitreachedwithretry"></a>CloudDosAbsoluteLimitReachedWithRetry
 
 | Komunikat o błędzie | Możliwe przyczyny | Zalecana akcja |
 |---|---|---|
-Operacja została zablokowana, ponieważ magazyn osiągnął limit maksymalny dla takich operacji dozwolony w okresie 24 godzin. | Po osiągnięciu maksymalnego dopuszczalnego limitu operacji w okresie 24-godzinnym ten błąd jest dostępny. Ten błąd zwykle jest dostępny w przypadku operacji na skalę, takich jak Modyfikuj zasady lub ochrona automatyczne. W przeciwieństwie do przypadków CloudDosAbsoluteLimitReached, nie istnieje wiele możliwości rozwiązania tego stanu, w rzeczywistości usługa Azure Backup ponowi próbę wykonania operacji wewnętrznie dla wszystkich elementów, których to dotyczy.<br> Na przykład: Jeśli masz dużą liczbę źródeł danych chronionych przy użyciu zasad i podjęto próbę zmodyfikowania tych zasad, zostanie wyzwolone skonfigurowanie zadań ochrony dla każdego z chronionych elementów i czasami może wystąpić maksymalny limit dozwolony dla takich operacji dziennie.| Usługa Azure Backup automatycznie ponowi próbę wykonania tej operacji po 24 godzinach. 
-
+Operacja została zablokowana, ponieważ magazyn osiągnął limit maksymalny dla takich operacji dozwolony w okresie 24 godzin. | Po osiągnięciu maksymalnego dopuszczalnego limitu operacji w okresie 24-godzinnym ten błąd jest dostępny. Ten błąd zazwyczaj występuje, gdy istnieją operacje na skalę, takie jak modyfikacja zasad lub ochrona automatyczne. W przeciwieństwie do przypadków CloudDosAbsoluteLimitReached, nie istnieje wiele możliwości rozwiązania tego stanu, w rzeczywistości usługa Azure Backup ponowi próbę wykonania operacji wewnętrznie dla wszystkich elementów, których to dotyczy.<br> Na przykład: Jeśli masz dużą liczbę źródeł danych chronionych przy użyciu zasad i podjęto próbę zmodyfikowania tych zasad, zostanie wyzwolone skonfigurowanie zadań ochrony dla każdego z chronionych elementów i czasami może wystąpić maksymalny limit dozwolony dla takich operacji dziennie.| Usługa Azure Backup automatycznie ponowi próbę wykonania tej operacji po 24 godzinach.
 
 ## <a name="re-registration-failures"></a>Błędy ponownej rejestracji
 
 Przed wyzwoleniem operacji ponownego rejestrowania Sprawdź co najmniej jeden z następujących objawów:
 
-* Wszystkie operacje (takie jak tworzenie kopii zapasowej, przywracanie i konfigurowanie kopii zapasowej) kończą się niepowodzeniem na maszynie wirtualnej z jednym z następujących kodów błędów: **WorkloadExtensionNotReachable**, **UserErrorWorkloadExtensionNotInstalled**, **WorkloadExtensionNotPresent**, **WorkloadExtensionDidntDequeueMsg**.
-* Obszar **stanu kopii** zapasowej dla elementu kopii zapasowejjest nieosiągalny. Wykorzystaj wszystkie inne przyczyny, które mogą spowodować wystąpienie tego samego stanu:
+* Wszystkie operacje (takie jak wykonywanie kopii zapasowej, przywracanie i konfigurowanie kopii zapasowej) kończą się niepowodzeniem na maszynie wirtualnej z jednym z następujących kodów błędów: **WorkloadExtensionNotReachable**, **UserErrorWorkloadExtensionNotInstalled**, **WorkloadExtensionNotPresent** , **WorkloadExtensionDidntDequeueMsg**.
+* Obszar **stanu kopii** zapasowej dla elementu kopii zapasowej jest **nieosiągalny**. Wykorzystaj wszystkie inne przyczyny, które mogą spowodować wystąpienie tego samego stanu:
 
   * Brak uprawnień do wykonywania operacji związanych z kopiami zapasowymi na maszynie wirtualnej  
   * Zamykanie maszyny wirtualnej, dlatego nie można wykonać kopii zapasowych
@@ -150,14 +147,14 @@ Przed wyzwoleniem operacji ponownego rejestrowania Sprawdź co najmniej jeden z 
 
 Te objawy mogą wystąpić z następujących powodów:
 
-* Rozszerzenie zostało usunięte lub odinstalowane z portalu. 
+* Rozszerzenie zostało usunięte lub odinstalowane z portalu.
 * Rozszerzenie zostało odinstalowane z **Panelu sterowania** na maszynie wirtualnej w celu **odinstalowania lub zmiany programu**.
 * Maszyna wirtualna została przywrócona z powrotem w czasie za pomocą przywracania z dysku w miejscu.
 * Maszyna wirtualna została zamknięta przez dłuższy czas, więc konfiguracja rozszerzenia wygasła.
 * Maszyna wirtualna została usunięta, a inna maszyna wirtualna została utworzona o tej samej nazwie i w tej samej grupie zasobów co usunięta maszyna wirtualna.
 * Jeden z węzłów grupy dostępności nie otrzymał pełnej konfiguracji kopii zapasowej. Taka sytuacja może wystąpić, gdy grupa dostępności zostanie zarejestrowana w magazynie lub dodany nowy węzeł.
 
-W powyższych scenariuszach zalecamy wyzwolenie operacji ponownego zarejestrowania na maszynie wirtualnej. Na razie ta opcja jest dostępna tylko za poorednictwem programu PowerShell.
+W powyższych scenariuszach zalecamy wyzwolenie operacji ponownego zarejestrowania na maszynie wirtualnej. Zobacz [tutaj](https://docs.microsoft.com/azure/backup/backup-azure-sql-automation#enable-backup) , aby uzyskać instrukcje dotyczące wykonywania tego zadania w programie PowerShell.
 
 ## <a name="size-limit-for-files"></a>Limit rozmiaru plików
 
@@ -185,9 +182,10 @@ Jeśli rozmiar ciągu zawartości przekracza 20 000 bajtów, pliki bazy danych s
 
 ### <a name="override-the-default-target-restore-file-path"></a>Zastąp domyślną ścieżkę pliku docelowego przywracania
 
-Docelową ścieżkę pliku przywracania można zastąpić podczas operacji przywracania, umieszczając plik JSON zawierający mapowanie pliku bazy danych do docelowej ścieżki przywracania. Utwórz plik i umieść go w lokalizacji *C:\Program Files\Azure obciążenia Backup\bin\plugins\SQL.* `database_name.json`
+Docelową ścieżkę pliku przywracania można zastąpić podczas operacji przywracania, umieszczając plik JSON zawierający mapowanie pliku bazy danych do docelowej ścieżki przywracania. Utwórz plik `database_name.json` i umieść go w lokalizacji *C:\Program Files\Azure obciążenie Backup\bin\plugins\SQL*.
 
 Zawartość pliku powinna mieć następujący format:
+
 ```json
 [
   {
@@ -227,7 +225,6 @@ SELECT mf.name AS LogicalName FROM sys.master_files mf
                 INNER JOIN sys.databases db ON db.database_id = mf.database_id
                 WHERE db.name = N'<Database Name>'"
   ```
-
 
 Ten plik powinien zostać umieszczony przed wywołaniem operacji przywracania.
 

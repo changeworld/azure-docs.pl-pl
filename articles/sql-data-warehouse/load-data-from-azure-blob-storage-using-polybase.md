@@ -1,5 +1,5 @@
 ---
-title: 'Samouczek: ładowanie danych z Nowego Jorku Taxicab do Azure SQL Data Warehouse | Microsoft Docs'
+title: 'Samouczek: ładowanie danych z Nowego Jorku Taxicab'
 description: Samouczek używa Azure Portal i SQL Server Management Studio do ładowania Taxicab danych z globalnego obiektu blob platformy Azure do Azure SQL Data Warehouse.
 services: sql-data-warehouse
 author: kevinvngo
@@ -10,12 +10,13 @@ ms.subservice: load-data
 ms.date: 04/26/2019
 ms.author: kevin
 ms.reviewer: igorstan
-ms.openlocfilehash: 2e799d84aee9ba4d3bfb00ddfad358c9b90c3d59
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.custom: seo-lt-2019
+ms.openlocfilehash: 5bf1a600bf57ecb598aac485e11f3618dda7244e
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73482390"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73686077"
 ---
 # <a name="tutorial-load-new-york-taxicab-data-to-azure-sql-data-warehouse"></a>Samouczek: ładowanie danych z Nowego Jorku Taxicab do Azure SQL Data Warehouse
 
@@ -44,7 +45,7 @@ Zaloguj się do witryny [Azure Portal](https://portal.azure.com/).
 
 ## <a name="create-a-blank-sql-data-warehouse"></a>Utwórz puste SQL Data Warehouse
 
-Azure SQL Data Warehouse jest tworzony ze zdefiniowanym zestawem [zasobów obliczeniowych](memory-and-concurrency-limits.md). Baza danych jest tworzona w [grupie zasobów platformy Azure](../azure-resource-manager/resource-group-overview.md) oraz na [serwerze logicznym SQL platformy Azure](../sql-database/sql-database-features.md). 
+Azure SQL Data Warehouse jest tworzony za pomocą zdefiniowanego zestawu [zasoby obliczeniowe] pamięć-współbieżność-limits.md). Baza danych jest tworzona w [grupie zasobów platformy Azure](../azure-resource-manager/resource-group-overview.md) oraz na [serwerze logicznym SQL platformy Azure](../sql-database/sql-database-features.md). 
 
 Wykonaj następujące kroki, aby utworzyć puste SQL Data Warehouse. 
 
@@ -151,7 +152,7 @@ W tej sekcji używany jest program [SQL Server Management Studio](/sql/ssms/down
     | Typ serwera | Aparat bazy danych | Ta wartość jest wymagana |
     | Nazwa serwera | W pełni kwalifikowana nazwa serwera | Nazwa powinna wyglądać następująco: **mynewserver-20180430.Database.Windows.NET**. |
     | Authentication | Uwierzytelnianie programu SQL Server | Uwierzytelnianie SQL to jedyny typ uwierzytelniania skonfigurowany w tym samouczku. |
-    | Zaloguj się | Konto administratora serwera | To konto określono podczas tworzenia serwera. |
+    | Login | Konto administratora serwera | To konto określono podczas tworzenia serwera. |
     | Hasło | Hasło konta administratora serwera | To hasło określono podczas tworzenia serwera. |
 
     ![łączenie z serwerem](media/load-data-from-azure-blob-storage-using-polybase/connect-to-server.png)

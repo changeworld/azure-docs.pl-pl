@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.service: cosmos-db
 ms.date: 09/26/2019
 ms.reviewer: sngun
-ms.openlocfilehash: d50b946e67bbcc171850b71021165356011f58e3
-ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
+ms.openlocfilehash: d0b5042c1401a95cc75f4c01ace843659b6babfe
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/22/2019
-ms.locfileid: "72755202"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73681716"
 ---
 # <a name="solutions-using-globally-distributed-analytics-in-azure-cosmos-db"></a>Rozwiązania wykorzystujące globalnie dystrybuowaną analizę w Azure Cosmos DB
 
@@ -34,12 +34,12 @@ Możesz użyć obsługi platformy Spark w Azure Cosmos DB, aby dostarczyć rekom
 
 Na poniższej ilustracji przedstawiono sposób, w jaki Azure Cosmos DB obsługa platformy Spark służy do optymalizowania cen i promocji:
 
-![Azure Cosmos DB obsługa platformy Spark w celu zoptymalizowania cen i promocji](./media/spark-api-introduction/optimize-pricing-and-promotions.png)
+![Azure Cosmos DB obsługa platformy Spark w celu zoptymalizowania cen i promocji](./media/analytics-solution-architectures/optimize-pricing-and-promotions.png)
 
 
 Na poniższej ilustracji przedstawiono, jak Azure Cosmos DB obsługa platformy Spark jest używana w aparacie rekomendacji w czasie rzeczywistym:
 
-![Azure Cosmos DB obsługa platformy Spark w aparacie rekomendacji w czasie rzeczywistym](./media/spark-api-introduction/real-time-recommendation-engine.png)
+![Azure Cosmos DB obsługa platformy Spark w aparacie rekomendacji w czasie rzeczywistym](./media/analytics-solution-architectures/real-time-recommendation-engine.png)
 
 ## <a name="manufacturing-and-iot"></a>Produkcja i IoT
 
@@ -49,9 +49,9 @@ Wbudowana platforma analityczna Azure Cosmos DB umożliwia włączenie analizy d
 
 Na poniższej ilustracji przedstawiono, w jaki sposób obsługa platformy Spark w Azure Cosmos DB jest używana do odczytywania metryk z urządzeń IoT i stosowania inteligentnej analizy siatki:
 
-![Azure Cosmos DB obsługa platformy Spark w celu odczytywania metryk z urządzeń IoT](./media/spark-api-introduction/read-metrics-from-iot-devices.png)
+![Azure Cosmos DB obsługa platformy Spark w celu odczytywania metryk z urządzeń IoT](./media/analytics-solution-architectures/read-metrics-from-iot-devices.png)
 
-## <a name="predictive-maintenance"></a>Konserwacja predykcyjna
+## <a name="predictive-maintenance"></a>Konserwacja zapobiegawcza
 
 * Utrzymywanie zasobów takich jak kompresory, które są używane w małych zbiorach wiertniczych na platformach głębokiej wody, jest złożonym Endeavor. Te zasoby znajdują się na całym świecie i generują petabajtów danych. Za pomocą Azure Cosmos DB można utworzyć kompleksowy Potok danych predykcyjnych, który korzysta z przesyłania strumieniowego Spark, aby przetwarzać duże ilości danych telemetrycznych czujnika, części zasobów magazynu i mapowania czujników.
 
@@ -59,11 +59,11 @@ Na poniższej ilustracji przedstawiono, w jaki sposób obsługa platformy Spark 
 
 Na poniższej ilustracji przedstawiono, w jaki sposób obsługa platformy Spark Azure Cosmos DB jest używana do tworzenia systemu konserwacji predykcyjnej:
 
-![Azure Cosmos DB obsługi platformy Spark w celu utworzenia systemu konserwacji predykcyjnej](./media/spark-api-introduction/predictive-maintenance-system.png)
+![Azure Cosmos DB obsługi platformy Spark w celu utworzenia systemu konserwacji predykcyjnej](./media/analytics-solution-architectures/predictive-maintenance-system.png)
 
 Na poniższej ilustracji przedstawiono, w jaki sposób obsługa platformy Spark Azure Cosmos DB jest używana do kompilowania systemu diagnostycznego w czasie rzeczywistym:
 
-![Azure Cosmos DB obsługi platformy Spark w celu utworzenia systemu diagnostycznego w czasie rzeczywistym](./media/spark-api-introduction/real-time-vehicle-diagnostic-system.png)
+![Azure Cosmos DB obsługi platformy Spark w celu utworzenia systemu diagnostycznego w czasie rzeczywistym](./media/analytics-solution-architectures/real-time-vehicle-diagnostic-system.png)
 
 ## <a name="gaming"></a>Gry
 
@@ -75,7 +75,7 @@ Na poniższej ilustracji przedstawiono, w jaki sposób obsługa platformy Spark 
 
 Na poniższej ilustracji przedstawiono, w jaki sposób obsługa platformy Spark w Azure Cosmos DB jest używana w analizie gier:
 
-![Obsługa platformy Spark Azure Cosmos DB w analizie gier](./media/spark-api-introduction/gaming-analytics.png)
+![Obsługa platformy Spark Azure Cosmos DB w analizie gier](./media/analytics-solution-architectures/gaming-analytics.png)
 
 ## <a name="next-steps"></a>Następne kroki
 

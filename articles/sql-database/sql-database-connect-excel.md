@@ -1,5 +1,5 @@
 ---
-title: Łączenie programu Excel z pojedynczą bazą danych w Azure SQL Database | Microsoft Docs
+title: Łączenie programu Excel z pojedynczą bazą danych w Azure SQL Database
 description: Dowiedz się, jak połączyć program Microsoft Excel z pojedynczą bazą danych w usłudze Azure SQL Database. Importowanie danych do programu Excel, raportowanie i eksploracja danych.
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: joseidz
 ms.author: craigg
 ms.reviewer: ''
 ms.date: 02/12/2019
-ms.openlocfilehash: 8711d8f7ebc00b2d0fa51ff9f420293e96766d1c
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 603aa52aefc4c4d1200d433f7f73f6070849c8f7
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68569357"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73691022"
 ---
 # <a name="connect-excel-to-a-single-database-in-azure-sql-database-and-create-a-report"></a>Łączenie programu Excel z pojedynczą bazą danych w usłudze Azure SQL Database i Tworzenie raportu
 
@@ -33,7 +33,7 @@ Potrzebna będzie również kopia programu Excel. W tym artykule wykorzystano pr
 1. Aby połączyć program Excel z bazą danych SQL, otwórz program Excel, a następnie utwórz nowy skoroszyt lub otwórz istniejący skoroszyt programu Excel.
 2. Na pasku menu w górnej części strony wybierz kartę **dane** , wybierz pozycję **Pobierz dane**, wybierz pozycję z platformy Azure, a następnie wybierz pozycję **z Azure SQL Database**. 
 
-   ![Wybierz źródło danych: Łączenie programu Excel z usługą SQL Database.](./media/sql-database-connect-excel/excel_data_source.png)
+   ![Wybór źródła danych: połącz program Excel z bazą danych SQL.](./media/sql-database-connect-excel/excel_data_source.png)
 
    Zostanie otwarty Kreator połączenia danych.
 3. W oknie dialogowym **Łączenie z serwerem bazy danych** wpisz **nazwę serwera** usługi SQL Database, z którym chcesz nawiązać połączenie w następującej formie: <*nazwaserwera*> **. database.windows.net**. Na przykład **msftestserver.Database.Windows.NET**. Opcjonalnie wprowadź nazwę bazy danych. Wybierz **przycisk OK** , aby otworzyć okno poświadczenia. 
@@ -47,7 +47,7 @@ Potrzebna będzie również kopia programu Excel. W tym artykule wykorzystano pr
    > [!TIP]
    > W zależności od środowiska sieciowego może nie być możliwe nawiązanie połączenia lub można utracić połączenie, jeśli serwer usługi SQL Database nie zezwala na ruch z adresu IP klienta. Przejdź do witryny [Azure Portal](https://portal.azure.com/), kliknij serwery SQL, kliknij serwer, którego używasz, kliknij zaporę systemu w ustawieniach i dodaj swój adres IP klienta. Aby uzyskać szczegółowe informacje, zobacz artykuł [How to configure firewall settings](sql-database-configure-firewall-settings.md) (Jak skonfigurować ustawienia zapory).
 
-5. W **Nawigatorze**wybierz bazę danych, z której chcesz korzystać z listy, wybierz tabele lub widoki, z którymi chcesz współpracować (wybieramy **vGetAllCategories**), a następnie wybierz pozycję Załaduj, aby przenieść dane z bazy danych do arkusza kalkulacyjnego programu Excel.
+5. W **Nawigatorze**wybierz bazę danych, z której chcesz korzystać z listy, wybierz tabele lub widoki, z którymi chcesz współpracować (wybieramy **vGetAllCategories**), a następnie wybierz pozycję **Załaduj** , aby przenieść dane z bazy danych do arkusza kalkulacyjnego programu Excel.
 
     ![Wybierz bazę danych i tabelę.](./media/sql-database-connect-excel/select-database-and-table.png)
 
@@ -55,7 +55,7 @@ Potrzebna będzie również kopia programu Excel. W tym artykule wykorzystano pr
 
 Po nawiązaniu połączenia masz kilka różnych opcji dotyczących ładowania danych. Na przykład poniższe kroki tworzą wykres przestawny na podstawie danych znalezionych w SQL Database. 
 
-1. Wykonaj kroki opisane w poprzedniej sekcji, ale tym razem zamiast wybierania **obciążenia**, wybierz pozycję Załaduj **do na** liście rozwijanej **ładowania** .
+1. Wykonaj kroki opisane w poprzedniej sekcji, ale tym razem zamiast wybierania **obciążenia**, wybierz pozycję **Załaduj do na** liście rozwijanej **ładowania** .
 2. Następnie wybierz sposób wyświetlania tych danych w skoroszycie. Wybrano **Wykres przestawny**. Można również utworzyć **Nowy arkusz** lub wybrać opcję **Dodaj te dane do modelu danych**. Więcej informacji o modelach danych można znaleźć w temacie [Tworzenie modelu danych w programie Excel](https://support.office.com/article/Create-a-Data-Model-in-Excel-87E7A54C-87DC-488E-9410-5C75DBCB0F7B). 
 
     ![Wybieranie formatu danych w programie Excel](./media/sql-database-connect-excel/import-data.png)
@@ -67,7 +67,7 @@ Po nawiązaniu połączenia masz kilka różnych opcji dotyczących ładowania d
 
 > [!TIP]
 > Jeśli chcesz połączyć inne skoroszyty i arkusze programu Excel z bazą danych, wybierz kartę **dane** , a następnie wybierz pozycję **ostatnie źródła** , aby uruchomić okno dialogowe **ostatnie źródła** . Z tego miejsca wybierz utworzone połączenie z listy, a następnie kliknij przycisk **Otwórz**.
-> ![Ostatnie źródła — okno dialogowe](media/sql-database-connect-excel/recent-connections.png)
+> okno dialogowe ![ostatnie źródła](media/sql-database-connect-excel/recent-connections.png)
 
 ## <a name="create-a-permanent-connection-using-odc-file"></a>Tworzenie stałego połączenia przy użyciu pliku odc
 

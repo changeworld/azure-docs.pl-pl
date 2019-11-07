@@ -1,5 +1,5 @@
 ---
-title: Przekształcanie danych za pomocą usługi datakosteks jar — Azure | Microsoft Docs
+title: Przekształcanie danych za pomocą usługi datakosteks jar — Azure
 description: Dowiedz się, jak przetwarzać lub przekształcać dane, uruchamiając plik JAR.
 services: data-factory
 documentationcenter: ''
@@ -12,16 +12,16 @@ ms.date: 03/15/2018
 author: nabhishek
 ms.author: abnarain
 manager: craigg
-ms.openlocfilehash: 924367c6bb85b64bafbcb8feb546eeb490e07a34
-ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
+ms.openlocfilehash: 982f00b5de9fd3e84233e5fe3b68e22fa6f7fe2a
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/09/2019
-ms.locfileid: "70812790"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73683960"
 ---
 # <a name="transform-data-by-running-a-jar-activity-in-azure-databricks"></a>Przekształcanie danych przez uruchomienie działania jar w Azure Databricks
 
-Działanie Azure Databricks jar w [potoku Data Factory](concepts-pipelines-activities.md) uruchamia plik JAR platformy Spark w klastrze Azure Databricks. W tym artykule przedstawiono artykuł [działania przekształcania danych](transform-data.md), który zawiera ogólne omówienie transformacji danych i obsługiwanych działań transformacji. Azure Databricks to zarządzana platforma do uruchamiania Apache Spark.
+Działanie Azure Databricks jar w [potoku Data Factory](concepts-pipelines-activities.md) uruchamia plik JAR platformy Spark w klastrze Azure Databricks. W tym artykule opisano [działania przekształcania danych](transform-data.md) artykuł, który przedstawia ogólne omówienie transformacji danych i obsługiwanych działań transformacji. Azure Databricks to zarządzana platforma do uruchamiania Apache Spark.
 
 Poniższy klip wideo zawiera jedenastominutowe wprowadzenie i demonstrację tej funkcji:
 
@@ -56,12 +56,12 @@ Poniżej znajduje się przykładowa definicja JSON działania dotyczącego jar e
 
 W poniższej tabeli opisano właściwości JSON używane w definicji JSON:
 
-|Właściwość|Opis|Wymagane|
+|Właściwość|Opis|Wymagany|
 |:--|---|:-:|
 |name|Nazwa działania w potoku.|Tak|
 |description|Tekst opisujący działanie działania.|Nie|
 |type|W przypadku działania jar dla datakostki typ działania to DatabricksSparkJar.|Tak|
-|linkedServiceName|Nazwa połączonej usługi datakostki, w której działa działanie jar. Aby dowiedzieć się więcej o tej połączonej usłudze, zobacz artykuł dotyczący  [połączonych usług obliczeniowych](compute-linked-services.md).|Tak|
+|linkedServiceName|Nazwa połączonej usługi datakostki, w której działa działanie jar. Aby dowiedzieć się więcej na temat tej połączonej usługi, zobacz artykuł informacje o [obliczeniu usługi połączonej](compute-linked-services.md) .|Tak|
 |mainClassName|Pełna nazwa klasy zawierającej metodę Main, która ma zostać wykonana. Ta klasa musi być zawarta w formacie JAR udostępnionym jako biblioteka.|Tak|
 |parameters|Parametry, które zostaną przesłane do metody Main.  To jest tablica ciągów.|Nie|
 |bibliotece|Lista bibliotek do zainstalowania w klastrze, w którym będą wykonywane zadania. Może to być tablica < String, Object >|Tak (co najmniej jeden zawierający metodę mainClassName)|
@@ -71,7 +71,7 @@ W poniższej tabeli opisano właściwości JSON używane w definicji JSON:
 
 ## <a name="supported-libraries-for-databricks-activities"></a>Biblioteki obsługiwane dla działań datakostek
 
-W powyższej definicji działań datacegły należy określić następujące typy biblioteki: *jar*, *egg*, *Maven*, *PyPi*, *Cran*.
+W powyższej definicji działań datacegły należy określić następujące typy biblioteki: *jar*, *jaja*, *Maven*, *PyPi*, *Cran*.
 
 ```json
 {

@@ -1,5 +1,5 @@
 ---
-title: Przekształcanie danych za pomocą notesu datakosteks — Azure | Microsoft Docs
+title: Przekształcanie danych za pomocą notesu datakosteks — Azure
 description: Dowiedz się, jak przetwarzać lub przekształcać dane, uruchamiając Notes datakostks.
 services: data-factory
 documentationcenter: ''
@@ -12,16 +12,16 @@ manager: jroth
 ms.reviewer: maghan
 ms.topic: conceptual
 ms.date: 03/15/2018
-ms.openlocfilehash: 23166a4a0110629674db6ccc9d225118264b3c15
-ms.sourcegitcommit: 2aefdf92db8950ff02c94d8b0535bf4096021b11
+ms.openlocfilehash: 685a7863af74bf90c819453b41078b48ab6d2045
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/03/2019
-ms.locfileid: "70233063"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73683915"
 ---
 # <a name="transform-data-by-running-a-databricks-notebook"></a>Przekształcanie danych przez uruchamianie notesu datakostks
 
-Działanie notesu Azure Databricks w [potoku Data Factory](concepts-pipelines-activities.md) uruchamia Notes datacegły w obszarze roboczym Azure Databricks. W tym artykule przedstawiono artykuł [działania](transform-data.md) przekształcania danych, który zawiera ogólne omówienie transformacji danych i obsługiwanych działań transformacji. Azure Databricks to zarządzana platforma do uruchamiania Apache Spark.
+Działanie notesu Azure Databricks w [potoku Data Factory](concepts-pipelines-activities.md) uruchamia Notes datacegły w obszarze roboczym Azure Databricks. W tym artykule opisano [działania przekształcania danych](transform-data.md) artykuł, który przedstawia ogólne omówienie transformacji danych i obsługiwanych działań transformacji. Azure Databricks to zarządzana platforma do uruchamiania Apache Spark.
 
 ## <a name="databricks-notebook-activity-definition"></a>Definicja działania notesu dla elementów datacegłs
 
@@ -57,20 +57,20 @@ Poniżej znajduje się przykładowa definicja JSON działania notesu datakostky:
 
 W poniższej tabeli opisano właściwości JSON używane w definicji JSON:
 
-|Właściwość|Opis|Wymagane|
+|Właściwość|Opis|Wymagany|
 |---|---|---|
 |name|Nazwa działania w potoku.|Tak|
 |description|Tekst opisujący działanie działania.|Nie|
 |type|W przypadku działania notesu datacegły typem działania jest DatabricksNotebook.|Tak|
-|linkedServiceName|Nazwa połączonej usługi datakostki, w której działa Notes datakostki. Aby dowiedzieć się więcej o tej połączonej usłudze, zobacz artykuł dotyczący [połączonych usług](compute-linked-services.md) obliczeniowych.|Tak|
+|linkedServiceName|Nazwa połączonej usługi datakostki, w której działa Notes datakostki. Aby dowiedzieć się więcej na temat tej połączonej usługi, zobacz artykuł informacje o [obliczeniu usługi połączonej](compute-linked-services.md) .|Tak|
 |notebookPath|Ścieżka bezwzględna notesu do uruchomienia w obszarze roboczym datakostki. Ta ścieżka musi zaczynać się od ukośnika.|Tak|
-|baseParameters|Tablica par klucz-wartość. Parametry podstawowe mogą być używane dla każdego uruchomienia działania. Jeśli Notes przyjmuje parametr, który nie jest określony, zostanie użyta wartość domyślna z notesu. Więcej informacji na temat parametrów [](https://docs.databricks.com/api/latest/jobs.html#jobsparampair)w notesach datakostks.|Nie|
+|baseParameters|Tablica par klucz-wartość. Parametry podstawowe mogą być używane dla każdego uruchomienia działania. Jeśli Notes przyjmuje parametr, który nie jest określony, zostanie użyta wartość domyślna z notesu. Więcej informacji na temat parametrów w [notesach datakostks](https://docs.databricks.com/api/latest/jobs.html#jobsparampair).|Nie|
 |bibliotece|Lista bibliotek do zainstalowania w klastrze, w którym będą wykonywane zadania. Może to być tablica \<ciągu, > obiektu.|Nie|
 
 
 ## <a name="supported-libraries-for-databricks-activities"></a>Biblioteki obsługiwane dla działań datakostek
 
-W powyższych definicjach działań datacegły należy określić następujące typy biblioteki: *jar*, *egg*, *WHL*, *Maven*, *PyPi*, *Cran*.
+W powyższych definicjach działań datacegły należy określić następujące typy biblioteki: *jar*, *jaja*, *WHL*, *Maven*, *PyPi*, *Cran*.
 
 ```json
 {
@@ -120,7 +120,7 @@ W niektórych przypadkach może być konieczne przekazanie z powrotem określony
 
 1. W Twoim notesie można wywołać metodę [. Notes. Exit ("ReturnValue")](https://docs.azuredatabricks.net/user-guide/notebooks/notebook-workflows.html#notebook-workflows-exit) i odpowiadający jej "ReturnValue" zostaną zwrócone do fabryki danych.
 
-2. Możesz użyć danych wyjściowych w usłudze Data Factory przy użyciu wyrażeń takich `'@activity('databricks notebook activity name').output.runOutput'`jak. 
+2. Możesz użyć danych wyjściowych w usłudze Data Factory przy użyciu wyrażenia, takiego jak `'@activity('databricks notebook activity name').output.runOutput'`. 
 
    > [!IMPORTANT]
    > W przypadku przekazywania obiektu JSON można pobrać wartości poprzez dołączenie nazw właściwości. Przykład: `'@activity('databricks notebook activity name').output.runOutput.PropertyName'`
@@ -131,7 +131,7 @@ W niektórych przypadkach może być konieczne przekazanie z powrotem określony
 
 Aby uzyskać ścieżkę dBfs biblioteki dodanej przy użyciu interfejsu użytkownika, możesz użyć interfejsu [wiersza polecenia datakosteks (instalacja)](https://docs.azuredatabricks.net/user-guide/dev-tools/databricks-cli.html#install-the-cli). 
 
-Zazwyczaj biblioteki jar są przechowywane w obszarze dBfs:/FileStore/Jars przy użyciu interfejsu użytkownika. Wszystkie te listę można wyświetlić za pomocą interfejsu wiersza polecenia: datakosteks *FS LS dBfs:/FileStore/Jars*.
+Zazwyczaj biblioteki jar są przechowywane w obszarze dBfs:/FileStore/Jars przy użyciu interfejsu użytkownika. Wszystkie te listę można wyświetlić za pomocą interfejsu wiersza polecenia: *datakosteks FS LS dBfs:/FileStore/Jars*.
 
 
 

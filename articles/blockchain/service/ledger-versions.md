@@ -2,20 +2,20 @@
 title: Wersje, poprawki i uaktualnienia finansów usługi Azure łańcucha bloków
 description: Przegląd obsługiwanych wersji księgi w usłudze Azure łańcucha bloków Service, w tym zasady dotyczące poprawek systemów i uaktualnień zarządzanych przez użytkowników oraz zarządzanych przez użytkownika.
 services: azure-blockchain
-keywords: łańcucha bloków
+keywords: ''
 author: PatAltimore
 ms.author: patricka
 ms.date: 10/14/2019
-ms.topic: article
+ms.topic: conceptual
 ms.service: azure-blockchain
 ms.reviewer: janders
 manager: femila
-ms.openlocfilehash: 40719f1c353b8961e14815cb61e7a862b47fc6f5
-ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
+ms.openlocfilehash: 16d0f0876e7d75dfd0266468ddc3005b86fc632f
+ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72329136"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73579795"
 ---
 # <a name="supported-azure-blockchain-service-ledger-versions"></a>Obsługiwane wersje finansów usługi Azure łańcucha bloków Service
 

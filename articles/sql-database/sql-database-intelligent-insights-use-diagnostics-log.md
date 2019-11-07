@@ -1,5 +1,5 @@
 ---
-title: Dziennik diagnostyki wydajności Intelligent Insights Azure SQL Database | Microsoft Docs
+title: Dziennik diagnostyki wydajności Intelligent Insights Azure SQL Database
 description: Intelligent Insights zapewnia dziennik diagnostyczny Azure SQL Database problemów z wydajnością
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: danimir
 ms.author: danil
 ms.reviewer: jrasnik, carlrab
 ms.date: 12/19/2018
-ms.openlocfilehash: c25d37a4d1695ab94cc0667a13e36e4da640e12a
-ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
+ms.openlocfilehash: 86381f5670f09b5e6a215793dc1ea4eab7ecbb8e
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71262146"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73689697"
 ---
 # <a name="use-the-intelligent-insights-azure-sql-database-performance-diagnostics-log"></a>Korzystanie z dziennika diagnostyki wydajności Azure SQL Database Intelligent Insights
 
@@ -80,14 +80,14 @@ W zależności od wykrytego problemu z wydajnością szczegóły, które został
 | Osiąganie limitów zasobów | <li>Uwzględnione zasoby</li><li>Skróty zapytań</li><li>Procent użycia zasobów</li> |
 | Wzrost obciążenia | <li>Liczba zapytań, których wykonywanie zostało zwiększone</li><li>Skróty zapytań o największym udziale do wzrostu obciążenia</li> |
 | Wykorzystanie pamięci | <li>Pracownik pamięci</li> |
-| Blokowanie | <li>Zmodyfikowane skróty zapytań</li><li>Blokowanie skrótów zapytań</li> |
+| Blokowan | <li>Zmodyfikowane skróty zapytań</li><li>Blokowanie skrótów zapytań</li> |
 | Zwiększono MAXDOP | <li>Skróty zapytań</li><li>Czas oczekiwania CXP</li><li>Czas oczekiwania</li> |
 | Rywalizacja o PAGELATCH | <li>Skróty zapytań powodujące rywalizację</li> |
 | Brakujący indeks | <li>Skróty zapytań</li> |
 | Nowe zapytanie | <li>Skrót zapytania dla nowych zapytań</li> |
 | Statystyka nietypowych oczekiwań | <li>Nietypowe typy oczekiwania</li><li>Skróty zapytań</li><li>Czasy oczekiwania zapytania</li> |
 | Rywalizacja o bazę danych TempDB | <li>Skróty zapytań powodujące rywalizację</li><li>Wysyłanie zapytań do ogólnej bazy danych PAGELATCH czas oczekiwania [%]</li> |
-| Niedobory jednostek DTU puli elastycznej | <li>Pula elastyczna</li><li>Najpopularniejsza baza danych zużywająca wartość DTU</li><li>Procent jednostek DTU puli używanych przez najwyższego konsumenta</li> |
+| Niedobory jednostek DTU puli elastycznej | <li>Elastyczna pula</li><li>Najpopularniejsza baza danych zużywająca wartość DTU</li><li>Procent jednostek DTU puli używanych przez najwyższego konsumenta</li> |
 | Regresja planu | <li>Skróty zapytań</li><li>Dobre identyfikatory planu</li><li>Złe identyfikatory planu</li> |
 | Zmiana wartości konfiguracji z zakresem bazy danych | <li>Zmiany konfiguracji w zakresie bazy danych w porównaniu z wartościami domyślnymi</li> |
 | Powolne klienta | <li>Skróty zapytań</li><li>Czas oczekiwania</li> |
@@ -97,11 +97,11 @@ W zależności od wykrytego problemu z wydajnością szczegóły, które został
 
 Właściwość wpływ (wpływ) opisuje, jak wiele wykrytych zachowań jest przyczyną problemu związanego z bazą danych. Ma wpływ na zakres od 1 do 3 z 3 jako najwyższy udział, 2 jako umiarkowany i 1 jako najniższy udział. Wartość wpływu może być używana jako dane wejściowe dla niestandardowej automatyzacji alertów, w zależności od konkretnych potrzeb. Zapytania dotyczące właściwości, których to dotyczy (QueryHashes), zapewniają listę skrótów zapytań, których dotyczyło określone wykrywanie.
 
-### <a name="impacted-queries"></a>Zapytania, na które ma to wpływ
+### <a name="impacted-queries"></a>Zakierowane zapytania
 
-Następna sekcja dziennika Intelligent Insights zawiera informacje o konkretnych zapytaniach, na które miały wpływ wykryte problemy z wydajnością. Te informacje są ujawniane jako tablica obiektów osadzonych we właściwości impact_s. Właściwość wpływ zawiera jednostki i metryki. Jednostki odwołują się do określonego zapytania (typ: Zapytanie). Unikatowy skrót zapytania jest ujawniany w obszarze właściwości wartość (wartość). Ponadto każda z tych zapytań zawiera metrykę i wartość, która wskazuje na wykryty problem z wydajnością.
+Następna sekcja dziennika Intelligent Insights zawiera informacje o konkretnych zapytaniach, na które miały wpływ wykryte problemy z wydajnością. Te informacje są ujawniane jako tablica obiektów osadzonych we właściwości impact_s. Właściwość wpływ zawiera jednostki i metryki. Jednostki odwołują się do określonego zapytania (typ: zapytanie). Unikatowy skrót zapytania jest ujawniany w obszarze właściwości wartość (wartość). Ponadto każda z tych zapytań zawiera metrykę i wartość, która wskazuje na wykryty problem z wydajnością.
 
-W poniższym przykładzie dziennika wykryto, że zapytanie z 0x9102EXZ4em skrótu zostało zwiększone przez czas wykonywania (Metryka: DurationIncreaseSeconds). Wartość 110 sekund oznacza, że wykonywanie danego zapytania zajęło 110 sekund dłużej. Ponieważ można wykryć wiele zapytań, ta sekcja dziennika może zawierać wiele wpisów zapytań.
+W poniższym przykładzie dziennika wykryto, że zapytanie z 0x9102EXZ4em skrótu zostało zwiększone przez czas wykonywania (Metric: DurationIncreaseSeconds). Wartość 110 sekund oznacza, że wykonywanie danego zapytania zajęło 110 sekund dłużej. Ponieważ można wykryć wiele zapytań, ta sekcja dziennika może zawierać wiele wpisów zapytań.
 
 ```json
 "impact" : [{

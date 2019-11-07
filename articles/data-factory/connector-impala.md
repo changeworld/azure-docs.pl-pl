@@ -1,5 +1,5 @@
 ---
-title: Kopiowanie danych z Impala za pomocą Azure Data Factory | Microsoft Docs
+title: Kopiowanie danych z Impala za pomocą Azure Data Factory
 description: Informacje o kopiowaniu danych z programu Impala do obsługiwanych magazynów danych ujścia przy użyciu działania kopiowania w potoku usługi Fabryka danych.
 services: data-factory
 documentationcenter: ''
@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 09/04/2019
 ms.author: jingwang
-ms.openlocfilehash: 54f46c09cfab64d53e8f5f503ca46004289f18c2
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: 4fa43246278c33755f6a8a5b62f914689e6e9b40
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72935566"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73680797"
 ---
 # <a name="copy-data-from-impala-by-using-azure-data-factory"></a>Kopiowanie danych z Impala za pomocą Azure Data Factory
 
@@ -38,7 +38,7 @@ Data Factory udostępnia wbudowany sterownik umożliwiający nawiązywanie poł�
 
 [!INCLUDE [data-factory-v2-integration-runtime-requirements](../../includes/data-factory-v2-integration-runtime-requirements.md)]
 
-## <a name="get-started"></a>Rozpocznij
+## <a name="get-started"></a>Rozpoczęcie pracy
 
 [!INCLUDE [data-factory-v2-connector-get-started](../../includes/data-factory-v2-connector-get-started.md)]
 
@@ -48,7 +48,7 @@ Poniższe sekcje zawierają szczegółowe informacje o właściwościach, które
 
 Następujące właściwości są obsługiwane dla połączonej usługi Impala.
 
-| Właściwość | Opis | Wymagane |
+| Właściwość | Opis | Wymagany |
 |:--- |:--- |:--- |
 | type | Właściwość Type musi być ustawiona na wartość **Impala**. | Tak |
 | Host | Adres IP lub nazwa hosta serwera Impala (czyli 192.168.222.160).  | Tak |
@@ -94,12 +94,12 @@ Aby uzyskać pełną listę sekcji i właściwości dostępnych do definiowania 
 
 Aby skopiować dane z Impala, ustaw właściwość Type zestawu danych na **ImpalaObject**. Obsługiwane są następujące właściwości:
 
-| Właściwość | Opis | Wymagane |
+| Właściwość | Opis | Wymagany |
 |:--- |:--- |:--- |
 | type | Właściwość Type zestawu danych musi być ustawiona na wartość: **ImpalaObject** | Tak |
-| schematy | Nazwa schematu. |Nie (Jeśli określono "zapytanie" w źródle aktywności)  |
-| Tabele | Nazwa tabeli. |Nie (Jeśli określono "zapytanie" w źródle aktywności)  |
-| tableName | Nazwa tabeli ze schematem. Ta właściwość jest obsługiwana w celu zapewnienia zgodności z poprzednimi wersjami. Użyj `schema` i `table` dla nowego obciążenia. | Nie (Jeśli określono "zapytanie" w źródle aktywności) |
+| schematy | Nazwa schematu. |Nie (Jeśli określono parametr "query" w źródle działania)  |
+| tabele | Nazwa tabeli. |Nie (Jeśli określono parametr "query" w źródle działania)  |
+| tableName | Nazwa tabeli ze schematem. Ta właściwość jest obsługiwana w celu zapewnienia zgodności z poprzednimi wersjami. Użyj `schema` i `table` dla nowego obciążenia. | Nie (Jeśli określono parametr "query" w źródle działania) |
 
 **Przykład**
 
@@ -126,7 +126,7 @@ Aby uzyskać pełną listę sekcji i właściwości dostępnych do definiowania 
 
 Aby skopiować dane z Impala, ustaw typ źródła w działaniu Copy na **ImpalaSource**. W sekcji **Źródło** działania kopiowania są obsługiwane następujące właściwości.
 
-| Właściwość | Opis | Wymagane |
+| Właściwość | Opis | Wymagany |
 |:--- |:--- |:--- |
 | type | Właściwość Type źródła działania Copy musi być ustawiona na wartość **ImpalaSource**. | Tak |
 | query | Użyj niestandardowego zapytania SQL, aby odczytać dane. Może to być na przykład `"SELECT * FROM MyTable"`. | Nie (Jeśli określono "TableName" w zestawie danych) |

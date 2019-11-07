@@ -1,5 +1,5 @@
 ---
-title: Klasy zasobów do zarządzania obciążeniami w Azure SQL Data Warehouse | Microsoft Docs
+title: Klasy zasobów do zarządzania obciążeniami
 description: Wskazówki dotyczące używania klas zasobów do zarządzania współbieżnością i zasobami obliczeniowymi dla zapytań w Azure SQL Data Warehouse.
 services: sql-data-warehouse
 author: ronortloff
@@ -7,15 +7,16 @@ manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
 ms.subservice: workload-management
-ms.date: 10/04/2019
+ms.date: 11/04/2019
 ms.author: rortloff
 ms.reviewer: jrasnick
-ms.openlocfilehash: 5ef95faf162a6774e42b7cf258515757fdc9c7eb
-ms.sourcegitcommit: f9e81b39693206b824e40d7657d0466246aadd6e
+ms.custom: seo-lt-2019
+ms.openlocfilehash: 558a6e3faa207e15000657a17bec99a7b1ac99e4
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/08/2019
-ms.locfileid: "72035082"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73685925"
 ---
 # <a name="workload-management-with-resource-classes-in-azure-sql-data-warehouse"></a>Zarządzanie obciążeniami przy użyciu klas zasobów w Azure SQL Data Warehouse
 
@@ -35,7 +36,7 @@ Istnieją dwa typy klas zasobów:
 
 Klasy zasobów używają miejsc współbieżności do mierzenia zużycia zasobów.  [Gniazda współbieżności](#concurrency-slots) są wyjaśnione w dalszej części tego artykułu.
 
-- Aby wyświetlić wykorzystanie zasobów dla klas zasobów, zobacz [limity pamięci i współbieżności](memory-and-concurrency-limits.md#concurrency-maximums).
+- Aby wyświetlić wykorzystanie zasobów dla klas zasobów, zobacz [limity pamięci i współbieżności] pamięć-współbieżność-limits.md).
 - Aby dostosować klasę zasobów, można uruchomić zapytanie w ramach innego użytkownika lub [zmienić członkostwo klasy zasobów bieżącego użytkownika](#change-a-users-resource-class) .
 
 ### <a name="static-resource-classes"></a>Statyczne klasy zasobów
@@ -182,7 +183,7 @@ Zalecamy utworzenie użytkownika, który jest przeznaczony do uruchamiania okre�
 
 ### <a name="resource-classes-for-load-users"></a>Klasy zasobów do załadowania użytkowników
 
-`CREATE TABLE` domyślnie stosuje klastrowane indeksy magazynu kolumn. Kompresowanie danych do indeksu magazynu kolumn jest operacją intensywnie dotyczącą pamięci, a wykorzystanie pamięci może zmniejszyć jakość indeksu. Wykorzystanie pamięci może prowadzić do potrzeb wyższych klas zasobów podczas ładowania danych. Aby zapewnić, że ładunki mają wystarczającą ilość pamięci, można utworzyć użytkownika, który jest przeznaczony do uruchamiania obciążeń i przypisać tego użytkownika do wyższej klasy zasobów.
+`CREATE TABLE` domyślnie używa klastrowanych indeksów magazynu kolumn. Kompresowanie danych do indeksu magazynu kolumn jest operacją intensywnie dotyczącą pamięci, a wykorzystanie pamięci może zmniejszyć jakość indeksu. Wykorzystanie pamięci może prowadzić do potrzeb wyższych klas zasobów podczas ładowania danych. Aby zapewnić, że ładunki mają wystarczającą ilość pamięci, można utworzyć użytkownika, który jest przeznaczony do uruchamiania obciążeń i przypisać tego użytkownika do wyższej klasy zasobów.
 
 Pamięć wymagana do wydajnego przetwarzania obciążeń zależy od rodzaju załadowanej tabeli i rozmiaru danych. Aby uzyskać więcej informacji o wymaganiach dotyczących pamięci, zobacz [maksymalizacja jakości grupy wierszy](sql-data-warehouse-memory-optimizations-for-columnstore-compression.md).
 
@@ -233,9 +234,9 @@ Oto przeznaczenie tej procedury składowanej:
 Obowiązuje  
 `EXEC dbo.prc_workload_management_by_DWU @DWU VARCHAR(7), @SCHEMA_NAME VARCHAR(128), @TABLE_NAME VARCHAR(128)`
   
-1. @DWU: albo podać wartość NULL, aby wyodrębnić bieżącą jednostek dwu z bazy danych DW lub podać dowolne obsługiwane jednostek dwu w postaci "DW100c"
+1. @DWU: podać wartość NULL, aby wyodrębnić bieżącą jednostek dwu z bazy danych DW lub podać dowolne obsługiwane jednostek dwu w postaci "DW100c"
 2. @SCHEMA_NAME: Podaj nazwę schematu tabeli
-3. @TABLE_NAME: podać nazwę tabeli zainteresowania
+3. @TABLE_NAME: podać nazwę tabeli zainteresowań
 
 Przykłady wykonywania tego procesu przechowywanego:
 
@@ -331,7 +332,7 @@ SELECT 'DW100c' AS DWU,4 AS max_queries,4 AS max_slots,1 AS slots_used_
     SELECT 'DW30000c', 128, 1200, 36, 120, 264, 840, 1, 2, 4, 8, 16, 32, 64, 128 
 )
 -- Creating workload mapping to their corresponding slot consumption and default memory grant.
-,map
+,map  
 AS
 (
   SELECT CONVERT(varchar(20), 'SloDWGroupSmall') AS wg_name, slots_used_smallrc AS slots_used FROM alloc WHERE DWU = @DWU
@@ -580,7 +581,7 @@ SELECT  CASE
 GO
 ```
 
-## <a name="next-step"></a>Następny krok
+## <a name="next-steps"></a>Następne kroki
 
 Aby uzyskać więcej informacji na temat zarządzania użytkownikami i zabezpieczeniami bazy danych, zobacz temat [Zabezpieczanie bazy danych w SQL Data Warehouse][Secure a database in SQL Data Warehouse]. Aby uzyskać więcej informacji o tym, jak większe klasy zasobów mogą ulepszyć jakość klastrowanego indeksu magazynu kolumn, zobacz [optymalizacje pamięci dla kompresji magazynu kolumn](sql-data-warehouse-memory-optimizations-for-columnstore-compression.md).
 

@@ -1,5 +1,5 @@
 ---
-title: Przywróć istniejący Azure SQL Data Warehouse | Microsoft Docs
+title: Przywracanie istniejącego magazynu danych
 description: Przewodnik dotyczący przywracania istniejących Azure SQL Data Warehouse.
 services: sql-data-warehouse
 author: anumjs
@@ -10,12 +10,13 @@ ms.subservice: manage
 ms.date: 08/29/2018
 ms.author: anjangsh
 ms.reviewer: igorstan
-ms.openlocfilehash: 7470dd96109823057a174d2ecf097583dcb51898
-ms.sourcegitcommit: 5ded08785546f4a687c2f76b2b871bbe802e7dae
+ms.custom: seo-lt-2019
+ms.openlocfilehash: a73658510111df44c522d88ed5eceb7dcfa80d0d
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69575273"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73685536"
 ---
 # <a name="restore-an-existing-azure-sql-data-warehouse"></a>Przywróć istniejący Azure SQL Data Warehouse
 
@@ -27,7 +28,7 @@ W tym artykule dowiesz się, jak przywrócić istniejące SQL Data Warehouse prz
 
 ## <a name="before-you-begin"></a>Przed rozpoczęciem
 
-1. Upewnij się, że zainstalowano [Azure PowerShell][Install Azure PowerShell].
+1. Upewnij się, że [zainstalowano Azure PowerShell][Install Azure PowerShell].
 2. Mieć istniejący punkt przywracania, z którego chcesz przeprowadzić przywracanie. Jeśli chcesz utworzyć nowe przywracanie, zapoznaj się z [samouczkiem, aby utworzyć nowy punkt przywracania zdefiniowany przez użytkownika][the tutorial to create a new user-defined restore point].
 
 ## <a name="restore-an-existing-data-warehouse-through-powershell"></a>Przywracanie istniejącego magazynu danych za poorednictwem programu PowerShell

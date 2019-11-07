@@ -8,17 +8,21 @@ ms.service: azure-functions
 ms.topic: conceptual
 ms.date: 10/10/2019
 ms.author: azfuncdf
-ms.openlocfilehash: 5e6e51d2a058f89a04a81800b81f3c316be4eab7
-ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
+ms.openlocfilehash: b47604f2c8703ba587e98d68dc30552e5944f562
+ms.sourcegitcommit: b2fb32ae73b12cf2d180e6e4ffffa13a31aa4c6f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/13/2019
-ms.locfileid: "72301492"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73614500"
 ---
 # <a name="zero-downtime-deployment-for-durable-functions"></a>Wdrożenie bez przestojów dla Durable Functions
+
 [Model niezawodnego wykonywania](durable-functions-checkpointing-and-replay.md) Durable Functions wymaga, aby aranżacje były deterministyczne, co tworzy dodatkowe wyzwanie, które należy wziąć pod uwagę podczas wdrażania aktualizacji. Gdy wdrożenie zawiera zmiany sygnatury funkcji działania lub logiki programu Orchestrator, wystąpienia aranżacji w locie kończą się niepowodzeniem. Ta sytuacja dotyczy szczególnie problemów z wystąpieniami długotrwałych aranżacji, które mogą reprezentować godziny lub dni pracy.
 
 Aby zapobiec wystąpieniu tych błędów, należy opóźnić wdrożenie do momentu zakończenia wszystkich uruchomionych wystąpień aranżacji lub upewnić się, że wszystkie uruchomione wystąpienia aranżacji korzystają z istniejących wersji funkcji. Aby uzyskać więcej informacji na temat przechowywania wersji, zobacz [przechowywanie wersji w Durable Functions](durable-functions-versioning.md).
+
+> [!NOTE]
+> Ten artykuł zawiera wskazówki dotyczące aplikacji usługi Functions ukierunkowanych na Durable Functions 1. x. Nie została jeszcze zaktualizowana w celu uwzględnienia zmian wprowadzonych w Durable Functions 2. x. Aby uzyskać więcej informacji o różnicach między wersjami rozszerzeń, zobacz artykuł dotyczący [wersji Durable Functions](durable-functions-versions.md) .
 
 Poniższy wykres zawiera porównanie trzech głównych strategii w celu osiągnięcia nieprzerwanego wdrożenia dla Durable Functions: 
 
@@ -29,6 +33,7 @@ Poniższy wykres zawiera porównanie trzech głównych strategii w celu osiągni
 | **[Routing aplikacji](#application-routing)** | System, który nie ma okresów czasu, gdy aranżacje nie działają, takich jak te z aranżacjami trwającymi ponad 24 godziny lub z często nakładającymi się aranżacjami. | Obsługuje nowe wersje systemów z ciągle uruchomionymi aranżacjami, które mają istotne zmiany. | Wymaga inteligentnego routera aplikacji.<br/>Może przekroczyć maksymalną liczbę aplikacji funkcji dozwolonych w ramach subskrypcji (domyślnie 100). |
 
 ## <a name="versioning"></a>Obsługa wersji
+
 Zdefiniuj nowe wersje funkcji i pozostaw stare wersje w aplikacji funkcji. Jak widać na diagramie, wersja funkcji stanie się częścią nazwy. Ze względu na to, że poprzednie wersje funkcji są zachowywane, wystąpienia aranżacji w locie mogą nadal odwoływać się do nich. Tymczasem żądania nowych wystąpień aranżacji wywołują najnowszą wersję, którą funkcja klienta aranżacji może odwoływać się z poziomu aplikacji.
 
 ![Strategia przechowywania wersji](media/durable-functions-zero-downtime-deployment/versioning-strategy.png)
@@ -62,7 +67,7 @@ Na poniższym diagramie pokazano, jak opisano konfigurację miejsc wdrożenia i 
 
 Poniższe fragmenty kodu JSON to przykłady ustawienia parametrów połączenia w pliku host. JSON.
 
-#### <a name="functions-2x"></a>Functions w wersji 2.x
+#### <a name="functions-20"></a>Funkcje 2,0
 
 ```json
 {
@@ -146,7 +151,7 @@ Router zarządza stanem wdrożonej wersji kodu aplikacji na platformie Azure.
 
 ![Routing aplikacji (pierwszy raz)](media/durable-functions-zero-downtime-deployment/application-routing.png)
 
-Router kieruje żądania wdrożenia i aranżacji do odpowiedniej aplikacji funkcji na podstawie `version` wysyłanej wraz z żądaniem, ignorując wersję poprawki.
+Router kieruje żądania wdrożenia i aranżacji do odpowiedniej aplikacji funkcji na podstawie `version` wysyłanej do żądania, ignorując wersję poprawki.
 
 Podczas wdrażania nowej wersji aplikacji *bez* zmiany, można zwiększyć wersję poprawki. Router jest wdrażany w istniejącej aplikacji funkcji i wysyła żądania dla starych i nowych wersji kodu są kierowane do tej samej aplikacji funkcji.
 
@@ -160,7 +165,7 @@ Router monitoruje stan aranżacji w wersji 1.0.1 i usuwa aplikacje po zakończen
 
 ### <a name="tracking-store-settings"></a>Śledzenie ustawień magazynu
 
-Każda aplikacja funkcji powinna używać oddzielnych kolejek planowania, prawdopodobnie w oddzielnym koncie magazynu. Jeśli jednak chcesz wysyłać zapytania o wszystkie wystąpienia aranżacji we wszystkich wersjach aplikacji, możesz udostępniać tabele wystąpień i historii w aplikacjach funkcji. Tabele można udostępniać przez skonfigurowanie `trackingStoreConnectionStringName` i `trackingStoreNamePrefix` w pliku [ustawień hosta. JSON](durable-functions-bindings.md#host-json) , tak aby wszystkie te same wartości były używane.
+Każda aplikacja funkcji powinna używać oddzielnych kolejek planowania, prawdopodobnie w oddzielnym koncie magazynu. Jeśli jednak chcesz wysyłać zapytania o wszystkie wystąpienia aranżacji we wszystkich wersjach aplikacji, możesz udostępniać tabele wystąpień i historii w aplikacjach funkcji. Tabele można udostępniać, konfigurując `trackingStoreConnectionStringName` i `trackingStoreNamePrefix` w pliku [ustawień hosta. JSON](durable-functions-bindings.md#host-json) , tak aby wszystkie te same wartości były używane.
 
 Aby uzyskać więcej informacji, [Zarządzaj wystąpieniami w Durable Functions na platformie Azure](durable-functions-instance-management.md).
 

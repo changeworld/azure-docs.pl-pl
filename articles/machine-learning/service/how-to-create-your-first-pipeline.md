@@ -11,12 +11,12 @@ ms.author: sanpil
 author: sanpil
 ms.date: 08/09/2019
 ms.custom: seodec18
-ms.openlocfilehash: 373713cc92379236385024beff201d16fbbfd4b5
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
-ms.translationtype: HT
+ms.openlocfilehash: a092647f9772aafdf610ee9a5ba85ded17d50def
+ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 11/04/2019
-ms.locfileid: "73497045"
+ms.locfileid: "73577707"
 ---
 # <a name="create-and-run-machine-learning-pipelines-with-azure-machine-learning-sdk"></a>Tworzenie i uruchamianie potoków uczenia maszynowego za pomocą zestawu SDK Azure Machine Learning
 [!INCLUDE [applies-to-skus](../../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -37,11 +37,7 @@ Jeśli nie masz subskrypcji Azure, przed rozpoczęciem utwórz bezpłatne konto.
 
 * Utwórz [obszar roboczy Azure Machine Learning](how-to-manage-workspace.md) , aby pomieścić wszystkie zasoby potoku.
 
-* [Skonfiguruj środowisko programistyczne](how-to-configure-environment.md) , aby zainstalować zestaw SDK Azure Machine Learning, lub Użyj [wystąpienia obliczeniowego Azure Machine Learning](concept-compute-instance.md) z już zainstalowanym zestawem SDK.
-
-> [!NOTE]
-> Wystąpienia obliczeniowe są dostępne tylko dla obszarów roboczych z regionem **Północno-środkowe stany USA** lub **Południowe Zjednoczone Królestwo**.
->Jeśli obszar roboczy znajduje się w innym regionie, możesz w zamian utworzyć [maszynę wirtualną w notesie](concept-compute-instance.md#notebookvm) i korzystać z niej. 
+* [Skonfiguruj środowisko programistyczne](how-to-configure-environment.md) , aby zainstalować zestaw SDK Azure Machine Learning, lub Użyj [maszyny wirtualnej Azure Machine Learning notesu](concept-azure-machine-learning-architecture.md#compute-instance) z już zainstalowanym zestawem SDK.
 
 Zacznij od dołączenia obszaru roboczego:
 

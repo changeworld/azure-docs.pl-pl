@@ -1,5 +1,5 @@
 ---
-title: Kopiowanie danych z usługi Amazon Marketplace sieci Web przy użyciu Azure Data Factory | Microsoft Docs
+title: Kopiowanie danych z usługi Amazon Marketplace sieci Web przy użyciu Azure Data Factory
 description: Informacje o kopiowaniu danych z usługi sieci Web Amazon Marketplace do obsługiwanych magazynów danych ujścia przy użyciu działania kopiowania w potoku Azure Data Factory.
 services: data-factory
 documentationcenter: ''
@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 08/01/2018
 ms.author: jingwang
-ms.openlocfilehash: cddb8eaf546760ad9d983c429424144ff131de11
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: 8613b52ff8d04b578342a34fe24d6e9e12a8a98c
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72931195"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73681411"
 ---
 # <a name="copy-data-from-amazon-marketplace-web-service-using-azure-data-factory"></a>Kopiowanie danych z usługi Amazon Marketplace sieci Web przy użyciu Azure Data Factory
 
@@ -44,7 +44,7 @@ Poniższe sekcje zawierają szczegółowe informacje o właściwościach, które
 
 Następujące właściwości są obsługiwane w przypadku połączonej usługi sieci Web Amazon Marketplace:
 
-| Właściwość | Opis | Wymagane |
+| Właściwość | Opis | Wymagany |
 |:--- |:--- |:--- |
 | type | Właściwość Type musi mieć wartość: **AmazonMWS** | Tak |
 | endpoint | Punkt końcowy serwera Amazon MWS, czyli mws.amazonservices.com)  | Tak |
@@ -88,10 +88,10 @@ Aby uzyskać pełną listę sekcji i właściwości dostępnych do definiowania 
 
 Aby skopiować dane z usługi Amazon Marketplace sieci Web, ustaw właściwość Type zestawu danych na **AmazonMWSObject**. Obsługiwane są następujące właściwości:
 
-| Właściwość | Opis | Wymagane |
+| Właściwość | Opis | Wymagany |
 |:--- |:--- |:--- |
 | type | Właściwość Type zestawu danych musi być ustawiona na wartość: **AmazonMWSObject** | Tak |
-| tableName | Nazwa tabeli. | Nie (Jeśli określono "zapytanie" w źródle aktywności) |
+| tableName | Nazwa tabeli. | Nie (Jeśli określono parametr "query" w źródle działania) |
 
 **Przykład**
 
@@ -119,7 +119,7 @@ Aby uzyskać pełną listę sekcji i właściwości dostępnych do definiowania 
 
 Aby skopiować dane z usługi Amazon Marketplace sieci Web, ustaw typ źródła w działaniu Copy na **AmazonMWSSource**. W sekcji **Źródło** działania kopiowania są obsługiwane następujące właściwości:
 
-| Właściwość | Opis | Wymagane |
+| Właściwość | Opis | Wymagany |
 |:--- |:--- |:--- |
 | type | Właściwość Type źródła działania Copy musi być ustawiona na wartość: **AmazonMWSSource** | Tak |
 | query | Użyj niestandardowego zapytania SQL, aby odczytać dane. Na przykład: `"SELECT * FROM Orders where  Amazon_Order_Id = 'xx'"`. | Nie (Jeśli określono "TableName" w zestawie danych) |

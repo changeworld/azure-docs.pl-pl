@@ -6,12 +6,12 @@ ms.author: dacoulte
 ms.date: 10/18/2019
 ms.topic: conceptual
 ms.service: resource-graph
-ms.openlocfilehash: b92975e3fe73fb1c882bdfc4338fd8e169728e8b
-ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
+ms.openlocfilehash: 58eb5abc9a8857b81ada65c96eb7deaaa5cc5aeb
+ms.sourcegitcommit: 6c2c97445f5d44c5b5974a5beb51a8733b0c2be7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72387647"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73622661"
 ---
 # <a name="explore-your-azure-resources-with-resource-graph"></a>Badanie zasobów platformy Azure przy użyciu usługi Resources Graph
 
@@ -40,7 +40,7 @@ Search-AzGraph -Query "Resources | where type =~ 'Microsoft.Compute/virtualMachi
 ```
 
 > [!NOTE]
-> Azure PowerShell `Search-AzGraph` polecenie cmdlet domyślnie zwraca **parametr PSCustomObject** . Aby dane wyjściowe wyglądały tak samo jak zwracane przez interfejs wiersza polecenia platformy Azure, jest używane polecenie cmdlet `ConvertTo-Json`. Wartość domyślna dla **głębokości** wynosi _2_. Ustawienie go na _100_ powinno spowodować przekonwertowanie wszystkich zwracanych poziomów.
+> Polecenie cmdlet Azure PowerShell `Search-AzGraph` domyślnie zwraca **parametr PSCustomObject** . Aby dane wyjściowe wyglądały tak samo jak zwracane przez interfejs wiersza polecenia platformy Azure, jest używane polecenie cmdlet `ConvertTo-Json`. Wartość domyślna dla **głębokości** wynosi _2_. Ustawienie go na _100_ powinno spowodować przekonwertowanie wszystkich zwracanych poziomów.
 
 Wyniki JSON są strukturalne podobne do poniższego przykładu:
 
@@ -308,10 +308,10 @@ az graph query -q="Resources | where type =~ 'Microsoft.Network/publicIPAddresse
 Search-AzGraph -Query "Resources | where type =~ 'Microsoft.Network/publicIPAddresses' | where id in ('$($ips.publicIp -join "','")') | project ip = tostring(properties['ipAddress']) | where isnotempty(ip) | distinct ip"
 ```
 
-Aby dowiedzieć się, jak wykonać te kroki w pojedynczym zapytaniu za pomocą operatora `join`, zapoznaj się z [listą maszyn wirtualnych z ich interfejsem sieciowym i przykładem publicznego adresu IP](../samples/advanced.md#join-vmpip) .
+Aby dowiedzieć się, jak wykonać te kroki w pojedynczym zapytaniu z operatorem `join`, zapoznaj się z [listą maszyn wirtualnych z ich interfejsem sieciowym i przykładem publicznego adresu IP](../samples/advanced.md#join-vmpip) .
 
 ## <a name="next-steps"></a>Następne kroki
 
-- Dowiedz się więcej o [języku zapytań](query-language.md)
-- Zobacz język używany w [zapytaniach początkowych](../samples/starter.md)
-- Zobacz zaawansowane zastosowania w [zaawansowanych zapytaniach](../samples/advanced.md)
+- Dowiedz się więcej o [języku zapytań](query-language.md).
+- Zobacz język używany w [zapytaniach początkowych](../samples/starter.md).
+- Zobacz zaawansowane zastosowania w [zaawansowanych zapytaniach](../samples/advanced.md).

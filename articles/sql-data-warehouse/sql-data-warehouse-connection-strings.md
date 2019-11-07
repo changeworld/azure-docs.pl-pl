@@ -1,5 +1,5 @@
 ---
-title: Parametry połączenia dla Azure SQL Data Warehouse | Microsoft Docs
+title: Parametry połączeń
 description: Parametry połączenia dla SQL Data Warehouse
 services: sql-data-warehouse
 author: XiaoyuMSFT
@@ -10,12 +10,13 @@ ms.subservice: development
 ms.date: 04/17/2018
 ms.author: xiaoyul
 ms.reviewer: igorstan
-ms.openlocfilehash: afc8dbfa0bc1b1ad37e5f1a0f290c42998ed1e4b
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.custom: seo-lt-2019
+ms.openlocfilehash: dc2f03978e219a6fbbf3918bef4c44c072d60610
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68479701"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73692879"
 ---
 # <a name="connection-strings-for-azure-sql-data-warehouse"></a>Parametry połączenia dla Azure SQL Data Warehouse
 Możesz połączyć się z SQL Data Warehouse przy użyciu kilku różnych protokołów aplikacji, takich jak [ADO.NET][ADO.NET], [ODBC][ODBC], [php][PHP] i [JDBC][JDBC]. Poniżej przedstawiono kilka przykładów połączeń ciągów dla każdego protokołu.  Możesz również użyć Azure Portal, aby skompilować parametry połączenia.  Aby skompilować parametry połączenia przy użyciu Azure Portal, przejdź do bloku baza danych, w obszarze *Essentials* kliknij pozycję *Pokaż parametry połączenia bazy danych*.
@@ -45,7 +46,7 @@ jdbc:sqlserver://yourserver.database.windows.net:1433;database=yourdatabase;user
 > 
 > 
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 Aby rozpocząć tworzenie zapytań względem magazynu danych przy użyciu programu Visual Studio i innych aplikacji, zobacz artykuł [Query with Visual Studio][Query with Visual Studio] (Wykonywanie zapytań przy użyciu programu Visual Studio).
 
 <!--Image references-->

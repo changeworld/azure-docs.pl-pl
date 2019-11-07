@@ -1,5 +1,5 @@
 ---
-title: Kontrola źródła w Azure Data Factory | Microsoft Docs
+title: Kontrola źródła w Azure Data Factory
 description: Dowiedz się, jak skonfigurować kontrolę źródła w Azure Data Factory
 services: data-factory
 documentationcenter: ''
@@ -12,12 +12,12 @@ author: djpmsft
 ms.author: daperlov
 ms.reviewer: ''
 manager: craigg
-ms.openlocfilehash: f3d443eed43cc1e131cd3dc47407ce2dfb023ce8
-ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
+ms.openlocfilehash: 46c983fcf863c6948c6107b2213879c65396ed39
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72326378"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73684049"
 ---
 # <a name="source-control-in-azure-data-factory"></a>Kontrola źródła w Azure Data Factory
 
@@ -75,8 +75,8 @@ W okienku Konfiguracja są wyświetlane następujące Azure Repos ustawienia rep
 |:--- |:--- |:--- |
 | **Typ repozytorium** | Typ repozytorium kodu Azure Repos.<br/> | Azure DevOps Git lub GitHub |
 | **Azure Active Directory** | Nazwa dzierżawy usługi Azure AD. | `<your tenant name>` |
-| **Organizacja Azure Repos** | Nazwa organizacji Azure Repos. Nazwę organizacji Azure Repos można znaleźć pod adresem `https://{organization name}.visualstudio.com`. Możesz [zalogować się do organizacji Azure Repos](https://www.visualstudio.com/team-services/git/) , aby uzyskać dostęp do profilu programu Visual Studio i zobaczyć repozytoria i projekty. | `<your organization name>` |
-| **ProjectName** | Nazwa projektu Azure Repos. Nazwę projektu Azure Repos można znaleźć pod adresem `https://{organization name}.visualstudio.com/{project name}`. | `<your Azure Repos project name>` |
+| **Organizacja Azure Repos** | Nazwa organizacji Azure Repos. Nazwę organizacji Azure Repos można znaleźć w `https://{organization name}.visualstudio.com`. Możesz [zalogować się do organizacji Azure Repos](https://www.visualstudio.com/team-services/git/) , aby uzyskać dostęp do profilu programu Visual Studio i zobaczyć repozytoria i projekty. | `<your organization name>` |
+| **ProjectName** | Nazwa projektu Azure Repos. Nazwę projektu Azure Repos można znaleźć w `https://{organization name}.visualstudio.com/{project name}`. | `<your Azure Repos project name>` |
 | **Nr repozytorium** | Nazwa repozytorium kodu Azure Repos. Projekty Azure Repos zawierają repozytoria Git umożliwiające zarządzanie kodem źródłowym w miarę rozwoju projektu. Można utworzyć nowe repozytorium lub użyć istniejącego repozytorium, które już istnieje w projekcie. | `<your Azure Repos code repository name>` |
 | **Rozgałęzienie współpracy** | Gałąź współpracy Azure Repos, która jest używana do publikowania. Domyślnie jego `master`. Zmień to ustawienie, jeśli chcesz opublikować zasoby z innej gałęzi. | `<your collaboration branch name>` |
 | **Folder główny** | Folder główny w gałęzi współpracy Azure Repos. | `<your root folder name>` |
@@ -106,7 +106,7 @@ Aby uzyskać więcej informacji na temat łączenia Azure Repos z Active Directo
 
 ## <a name="author-with-github-integration"></a>Tworzenie z integracją usługi GitHub
 
-Tworzenie wizualne dzięki integracji z usługą GitHub obsługuje kontrolę źródła i współpracę w ramach potoków usługi Data Factory. Możesz skojarzyć fabrykę danych z repozytorium konta usługi GitHub na potrzeby kontroli źródła, współpracy i przechowywania wersji. Pojedyncze konto usługi GitHub może mieć wiele repozytoriów, ale repozytorium GitHub może być skojarzone tylko z jedną fabryką danych. Jeśli nie masz konta lub repozytorium usługi GitHub, postępuj zgodnie z poniższymi [instrukcjami](https://github.com/join)@no__t 1To Utwórz zasoby.
+Tworzenie wizualne dzięki integracji z usługą GitHub obsługuje kontrolę źródła i współpracę w ramach potoków usługi Data Factory. Możesz skojarzyć fabrykę danych z repozytorium konta usługi GitHub na potrzeby kontroli źródła, współpracy i przechowywania wersji. Pojedyncze konto usługi GitHub może mieć wiele repozytoriów, ale repozytorium GitHub może być skojarzone tylko z jedną fabryką danych. Jeśli nie masz konta lub repozytorium usługi GitHub, postępuj zgodnie z poniższymi [instrukcjami](https://github.com/join) , , aby utworzyć zasoby.
 
 Integracja z usługą GitHub Data Factory obsługuje zarówno publiczną witrynę GitHub (czyli [https://github.com](https://github.com)), jak i witrynę GitHub Enterprise. Można używać publicznych i prywatnych repozytoriów GitHub z Data Factory, jak długo masz uprawnienia do odczytu i zapisu do repozytorium w serwisie GitHub.
 
@@ -140,10 +140,10 @@ W okienku Konfiguracja są wyświetlane następujące ustawienia repozytorium Gi
 
 | **Ustawienie** | **Opis**  | **Wartość**  |
 |:--- |:--- |:--- |
-| **Typ repozytorium** | Typ repozytorium kodu Azure Repos. | Witryna GitHub |
+| **Typ repozytorium** | Typ repozytorium kodu Azure Repos. | GitHub |
 | **Korzystanie z usługi GitHub Enterprise** | Zaznacz pole wyboru usługi GitHub Enterprise | niezaznaczony (domyślnie) |
 | **Adres URL przedsiębiorstwa usługi GitHub** | Główny adres URL dla przedsiębiorstwa usługi GitHub. Na przykład: https://github.mydomain.com. Wymagane tylko wtedy, gdy wybrano korzystanie z usługi **GitHub Enterprise** | `<your GitHub enterprise url>` |                                                           
-| **Konto usługi GitHub** | Nazwa konta usługi GitHub. Tę nazwę można znaleźć z protokołu https: \//GitHub. com/{account name}/{Repository Name}. Przechodzenie na stronę z prośbą o wprowadzenie poświadczeń OAuth usługi GitHub na Twoje konto w usłudze GitHub. | `<your GitHub account name>` |
+| **Konto usługi GitHub** | Nazwa konta usługi GitHub. Tę nazwę można znaleźć z protokołu https:\//GitHub.com/{account name}/{Repository Name}. Przechodzenie na stronę z prośbą o wprowadzenie poświadczeń OAuth usługi GitHub na Twoje konto w usłudze GitHub. | `<your GitHub account name>` |
 | **Nazwa repozytorium**  | Nazwa repozytorium kodu usługi GitHub. Konta usługi GitHub zawierają repozytoria Git do zarządzania kodem źródłowym. Można utworzyć nowe repozytorium lub użyć istniejącego repozytorium, które już znajduje się na Twoim koncie. | `<your repository name>` |
 | **Rozgałęzienie współpracy** | Gałąź współpracy GitHub, która jest używana do publikowania. Domyślnie jego główna. Zmień to ustawienie, jeśli chcesz opublikować zasoby z innej gałęzi. | `<your collaboration branch>` |
 | **Folder główny** | Twój folder główny w gałęzi współpracy usługi GitHub. |`<your root folder name>` |
@@ -180,13 +180,13 @@ Każde Azure Repos repozytorium git skojarzone z fabryką danych ma rozgałęzie
 
 ![Utwórz nową gałąź](media/author-visually/new-branch.png)
 
-Gdy wszystko będzie gotowe do scalenia zmian z gałęzi funkcji z gałęzią współpracy, kliknij listę rozwijaną rozgałęzienie i wybierz pozycję **Utwórz żądanie ściągnięcia**. Ta akcja spowoduje przejście do Azure Repos git, gdzie można zgłaszać żądania ściągnięcia, przeprowadzać przeglądy kodu i scalać zmiany w gałęzi współpracy. (wartość domyślna to `master`). Możliwe jest tylko publikowanie w usłudze Data Factory z poziomu gałęzi współpracy. 
+Gdy wszystko będzie gotowe do scalenia zmian z gałęzi funkcji z gałęzią współpracy, kliknij listę rozwijaną rozgałęzienie i wybierz pozycję **Utwórz żądanie ściągnięcia**. Ta akcja spowoduje przejście do Azure Repos git, gdzie można zgłaszać żądania ściągnięcia, przeprowadzać przeglądy kodu i scalać zmiany w gałęzi współpracy. (`master` jest wartością domyślną). Możliwe jest tylko publikowanie w usłudze Data Factory z poziomu gałęzi współpracy. 
 
 ![Utwórz nowe żądanie ściągnięcia](media/author-visually/create-pull-request.png)
 
 ### <a name="configure-publishing-settings"></a>Konfigurowanie ustawień publikowania
 
-Aby skonfigurować gałąź Publikuj, czyli gałąź, w której zapisano Menedżer zasobów szablony — Dodaj plik `publish_config.json` do folderu głównego w gałęzi współpracy. Data Factory odczytuje ten plik, szuka pola `publishBranch` i tworzy nową gałąź (jeśli jeszcze nie istnieje) z podaną wartością. Następnie zapisuje wszystkie szablony Menedżer zasobów w określonej lokalizacji. Na przykład:
+Aby skonfigurować gałąź Publikuj, czyli gałąź, w której zapisano Menedżer zasobów szablony — Dodaj plik `publish_config.json` do folderu głównego w gałęzi współpracy. Data Factory odczytuje ten plik, szuka pola `publishBranch`i tworzy nową gałąź (jeśli jeszcze nie istnieje) z podaną wartością. Następnie zapisuje wszystkie szablony Menedżer zasobów w określonej lokalizacji. Na przykład:
 
 ```json
 {
@@ -201,7 +201,7 @@ Po określeniu nowej gałęzi publikowania Data Factory nie usuwa poprzedniej ga
 
 ### <a name="publish-code-changes"></a>Publikuj zmiany kodu
 
-Po scaleniu zmian w gałęzi współpracy (`master` jest wartością domyślną) kliknij przycisk **Opublikuj** , aby ręcznie opublikować zmiany kodu w gałęzi głównej do usługi Data Factory.
+Po scaleniu zmian w gałęzi współpracy (`master` jest to ustawienie domyślne) kliknij przycisk **Opublikuj** , aby ręcznie opublikować zmiany kodu w gałęzi głównej do usługi Data Factory.
 
 ![Publikuj zmiany w usłudze Data Factory](media/author-visually/publish-changes.png)
 
@@ -251,7 +251,7 @@ Jeśli gałąź publikowania nie jest zsynchronizowana z gałęzią główną i 
 1. Usuń wszystkie zasoby z gałęzi współpracy
 1. Utwórz żądanie ściągnięcia, aby scalić zmiany w gałęzi współpracy 
 
-## <a name="provide-feedback"></a>Prześlij opinię
+## <a name="provide-feedback"></a>Przekazywanie opinii
 Wybierz **opinię** , aby skomentować informacje o funkcjach lub powiadomić firmę Microsoft o problemach z narzędziem:
 
 ![Opinia](media/author-visually/provide-feedback.png)

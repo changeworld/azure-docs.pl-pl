@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-pnp
 services: iot-pnp
 ms.custom: mvc
-ms.openlocfilehash: 41a626ba602ad33f22c3ea4acc39dd4f3438cbd0
-ms.sourcegitcommit: f3f4ec75b74124c2b4e827c29b49ae6b94adbbb7
+ms.openlocfilehash: eb4f607672c39d45b7791ccaeeb6f7cff9393cb9
+ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/12/2019
-ms.locfileid: "70935692"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73571019"
 ---
 # <a name="install-and-use-the-azure-iot-extension-for-the-azure-cli"></a>Instalowanie i używanie rozszerzenia Azure IoT dla interfejsu wiersza polecenia platformy Azure
 
@@ -62,7 +62,7 @@ Aby korzystać z rozszerzenia Azure IoT dla interfejsu wiersza polecenia platfor
     > [!NOTE]
     > W publicznej wersji zapoznawczej funkcje Plug and Play IoT są dostępne tylko w centrach IoT, które zostały utworzone w regionach **środkowe stany USA**, **Europa Północna**i **Japonia Wschodnia** .
 
-- Urządzenie zarejestrowane w usłudze IoT Hub. Aby zarejestrować urządzenie, można użyć poniższego polecenia interfejsu CLI platformy Azure. Pamiętaj, aby zastąpić `{YourIoTHubName}` symbole `{YourDeviceID}` zastępcze i wartościami:
+- Urządzenie zarejestrowane w usłudze IoT Hub. Aby zarejestrować urządzenie, możesz użyć poniższego polecenia interfejsu CLI platformy Azure, pamiętaj, aby zastąpić `{YourIoTHubName}` i `{YourDeviceID}` symbole zastępcze wartościami:
 
     ```cmd/sh
     az iot hub device-identity create --hub-name {YourIoTHubName} --device-id {YourDeviceID}
@@ -126,31 +126,31 @@ Wyświetl listę wszystkich poleceń dla interfejsu na urządzeniu:
 az iot dt list-commands --hub-name {YourIoTHubName} --device-id {YourDeviceID} --interface {YourInterfaceID} --source private --repo-login {YourCompanyModelRepoConnectionString}
 ```
 
-`--repo-login` Bez parametru to polecenie używa repozytorium modelu publicznego.
+Bez parametru `--repo-login` to polecenie używa repozytorium modelu publicznego.
 
 Wywołaj polecenie:
 
 ```cmd/sh
-az iot dt invoke-command --hub-name {YourIoTHubName} --device-id {YourDeviceID} --interface {YourInterfaceID} --command-name {CommandName} --command-payload {CommandPayload or FilePath}
+az iot dt invoke-command --hub-name {YourIoTHubName} --device-id {YourDeviceID} --interface {YourInterfaceID} --cn {CommandName} --command-payload {CommandPayload or FilePath}
 ```
 
-#### <a name="telemetry"></a>Telemetria
+#### <a name="digital-twin-events"></a>Cyfrowe wydarzenia bliźniaczye
 
-Monitoruj wszystkie dane telemetryczne Plug and Play IoT z określonego urządzenia i interfejsu przechodzącego do **$default** punktu końcowego centrum zdarzeń:
+Monitoruj wszystkie usługi IoT Plug and Play zdarzenia cyfrowego przędzy z określonego urządzenia i interfejsu przechodzącego do **$default** grupy odbiorców centrum zdarzeń:
 
 ```cmd/sh
-az iot dt monitor-events --hub-name {YourIoTHubName} --device-id {YourDeviceID} --interface {YourInterfaceID} --source private --repo-login {YourCompanyModelRepoConnectionString}
+az iot dt monitor-events --hub-name {YourIoTHubName} --device-id {YourDeviceID} --interface {YourInterfaceID}
 ```
 
-Monitoruj wszystkie dane telemetryczne Plug and Play IoT z określonego urządzenia i interfejsu przechodzącego do określonej grupy odbiorców:
+Monitoruj wszystkie usługi IoT Plug and Play zdarzenia cyfrowego przędzy z określonego urządzenia i interfejsu przechodzącego do określonej grupy odbiorców:
 
 ```cmd/sh
-az iot dt monitor-events --hub-name {YourIoTHubName} --device-id {YourDeviceID} --interface {YourInterfaceID} --source private --repo-login {YourCompanyModelRepoConnectionString} --consumer-group {YourConsumerGroup}
+az iot dt monitor-events --hub-name {YourIoTHubName} --device-id {YourDeviceID} --interface {YourInterfaceID} --consumer-group {YourConsumerGroup}
 ```
 
 ### <a name="manage-interfaces-in-a-model-repository"></a>Zarządzanie interfejsami w repozytorium modelu
 
-Następujące polecenia używają publicznego repozytorium modeli Plug and Play IoT. Aby użyć repozytorium modelu firmy, należy dodać `--login` argument z parametrami połączenia repozytorium modelu.
+Następujące polecenia używają publicznego repozytorium modeli Plug and Play IoT. Aby użyć repozytorium modelu firmy, należy dodać argument `--login` z parametrami połączenia repozytorium modeli.
 
 Wyświetl listę interfejsów w publicznym repozytorium modeli Plug and Play IoT:
 
@@ -190,7 +190,7 @@ Tylko partnerzy firmy Microsoft mogą publikować interfejsy w repozytorium mode
 
 ### <a name="manage-device-capability-models-in-a-model-repository"></a>Zarządzanie modelami możliwości urządzeń w repozytorium modelu
 
-Następujące polecenia używają publicznego repozytorium modeli Plug and Play IoT. Aby użyć repozytorium modelu firmy, należy dodać `--login` argument z parametrami połączenia repozytorium modelu.
+Następujące polecenia używają publicznego repozytorium modeli Plug and Play IoT. Aby użyć repozytorium modelu firmy, należy dodać argument `--login` z parametrami połączenia repozytorium modeli.
 
 Wyświetl listę modeli możliwości urządzeń w repozytorium modelu publicznego Plug and Play IoT:
 

@@ -1,5 +1,5 @@
 ---
-title: Kopiowanie danych z Xero za pomocą Azure Data Factory | Microsoft Docs
+title: Kopiowanie danych z Xero za pomocą Azure Data Factory
 description: Informacje o kopiowaniu danych z programu Xero do obsługiwanych magazynów danych ujścia przy użyciu działania kopiowania w potoku Azure Data Factory.
 services: data-factory
 documentationcenter: ''
@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 10/25/2019
 ms.author: jingwang
-ms.openlocfilehash: 59b9ecb7af53468dc18cf47d2e0510a48d07f925
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: d52e536170c649cbc84b6c6dce92afb76ffe3125
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72930952"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73680010"
 ---
 # <a name="copy-data-from-xero-using-azure-data-factory"></a>Kopiowanie danych z Xero za pomocą Azure Data Factory
 
@@ -49,7 +49,7 @@ Poniższe sekcje zawierają szczegółowe informacje o właściwościach, które
 
 Dla połączonej usługi Xero są obsługiwane następujące właściwości:
 
-| Właściwość | Opis | Wymagane |
+| Właściwość | Opis | Wymagany |
 |:--- |:--- |:--- |
 | type | Właściwość Type musi mieć wartość: **Xero** | Tak |
 | Host | Punkt końcowy serwera Xero (`api.xero.com`).  | Tak |
@@ -95,10 +95,10 @@ Aby uzyskać pełną listę sekcji i właściwości dostępnych do definiowania 
 
 Aby skopiować dane z Xero, ustaw właściwość Type zestawu danych na **XeroObject**. Obsługiwane są następujące właściwości:
 
-| Właściwość | Opis | Wymagane |
+| Właściwość | Opis | Wymagany |
 |:--- |:--- |:--- |
 | type | Właściwość Type zestawu danych musi być ustawiona na wartość: **XeroObject** | Tak |
-| tableName | Nazwa tabeli. | Nie (Jeśli określono "zapytanie" w źródle aktywności) |
+| tableName | Nazwa tabeli. | Nie (Jeśli określono parametr "query" w źródle działania) |
 
 **Przykład**
 
@@ -125,7 +125,7 @@ Aby uzyskać pełną listę sekcji i właściwości dostępnych do definiowania 
 
 Aby skopiować dane z Xero, ustaw typ źródła w działaniu Copy na **XeroSource**. W sekcji **Źródło** działania kopiowania są obsługiwane następujące właściwości:
 
-| Właściwość | Opis | Wymagane |
+| Właściwość | Opis | Wymagany |
 |:--- |:--- |:--- |
 | type | Właściwość Type źródła działania Copy musi być ustawiona na wartość: **XeroSource** | Tak |
 | query | Użyj niestandardowego zapytania SQL, aby odczytać dane. Na przykład: `"SELECT * FROM Contacts"`. | Nie (Jeśli określono "TableName" w zestawie danych) |

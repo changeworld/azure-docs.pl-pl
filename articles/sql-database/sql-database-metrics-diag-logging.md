@@ -1,5 +1,5 @@
 ---
-title: Azure SQL Database metryki i rejestrowania diagnostyki | Microsoft Docs
+title: Azure SQL Database metryki i rejestrowania diagnostyki
 description: Dowiedz się, jak włączyć diagnostykę w Azure SQL Database, aby przechowywać informacje dotyczące użycia zasobów i statystyk wykonywania zapytań.
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: danimir
 ms.author: danil
 ms.reviewer: jrasnik, carlrab
 ms.date: 05/21/2019
-ms.openlocfilehash: 235cdff1297b840bfd1a522e265633b47094c855
-ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
+ms.openlocfilehash: 6c2040a223b7ec33b05ee3c8b3c65bad031aa3c2
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/18/2019
-ms.locfileid: "72597963"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73687797"
 ---
 # <a name="azure-sql-database-metrics-and-diagnostics-logging"></a>Azure SQL Database metryki i rejestrowania diagnostyki
 
@@ -113,7 +113,7 @@ Aby włączyć przesyłanie strumieniowe danych telemetrycznych diagnostyki dla 
 1. Wybierz zasób docelowy dla danych diagnostycznych przesyłania strumieniowego: **Archiwizuj na koncie magazynu**, **przesyła strumieniowo do centrum zdarzeń**lub **wysyłając do log Analytics**.
 1. W przypadku usługi log Analytics wybierz pozycję **Konfiguruj** i Utwórz nowy obszar roboczy, wybierając pozycję **+ Utwórz nowy obszar roboczy**lub wybierz istniejący obszar roboczy.
 1. Zaznacz pole wyboru dla telemetrii diagnostyki puli elastycznej: metryki **podstawowe** .
-   ![Configure Diagnostics dla pul elastycznych ](./media/sql-database-metrics-diag-logging/diagnostics-settings-container-elasticpool-selection.png)
+   ![skonfigurować diagnostykę pul elastycznych](./media/sql-database-metrics-diag-logging/diagnostics-settings-container-elasticpool-selection.png)
 1. Wybierz pozycję **Zapisz**.
 1. Ponadto należy skonfigurować przesyłanie strumieniowe telemetrii diagnostyki dla każdej bazy danych w puli elastycznej, którą chcesz monitorować, wykonując czynności opisane w następnej sekcji.
 
@@ -137,7 +137,7 @@ Aby włączyć przesyłanie strumieniowe danych telemetrycznych diagnostyki dla 
 1. Wybierz zasób docelowy dla danych diagnostycznych przesyłania strumieniowego: **Archiwizuj na koncie magazynu**, **przesyła strumieniowo do centrum zdarzeń**lub **wysyłając do log Analytics**.
 1. W przypadku standardowego środowiska monitorowania opartego na zdarzeniach zaznacz następujące pola wyboru dla telemetrii dziennika diagnostyki bazy danych: **SQLInsights**, **AutomaticTuning**, **QueryStoreRuntimeStatistics**, **QueryStoreWaitStatistics** , **Błędy**, **DatabaseWaitStatistics**, **limity czasu**, **bloki**i **zakleszczenia**.
 1. W przypadku zaawansowanego, opartego na minutę środowiska monitorowania zaznacz pole wyboru dla metryk **podstawowych** .
-   ![Configure Diagnostyka dla baz danych o pojedynczej, puli lub wystąpieniach ](./media/sql-database-metrics-diag-logging/diagnostics-settings-database-sql-selection.png)
+   ![skonfigurować diagnostykę dla baz danych o pojedynczej, puli lub wystąpieniach](./media/sql-database-metrics-diag-logging/diagnostics-settings-database-sql-selection.png)
 1. Wybierz pozycję **Zapisz**.
 1. Powtórz te kroki dla każdej bazy danych, która ma być monitorowana.
 
@@ -175,7 +175,7 @@ Aby włączyć przesyłanie strumieniowe danych telemetrycznych diagnostyki dla 
 1. Wybierz zasób docelowy dla danych diagnostycznych przesyłania strumieniowego: **Archiwizuj na koncie magazynu**, **przesyła strumieniowo do centrum zdarzeń**lub **wysyłając do log Analytics**.
 1. W przypadku usługi log Analytics wybierz pozycję **Konfiguruj** i Utwórz nowy obszar roboczy, wybierając pozycję **+ Utwórz nowy obszar roboczy**lub korzystając z istniejącego obszaru roboczego.
 1. Zaznacz pole wyboru dla danych telemetrycznych diagnostyki wystąpienia: **ResourceUsageStats**.
-   ![Configure Diagnostics dla wystąpienia zarządzanego ](./media/sql-database-metrics-diag-logging/diagnostics-settings-container-mi-selection.png)
+   ![skonfigurować diagnostykę dla wystąpienia zarządzanego](./media/sql-database-metrics-diag-logging/diagnostics-settings-container-mi-selection.png)
 1. Wybierz pozycję **Zapisz**.
 1. Ponadto należy skonfigurować przesyłanie strumieniowe telemetryczne diagnostyki dla każdej bazy danych wystąpienia w zarządzanym wystąpieniu, które chcesz monitorować, wykonując kroki opisane w następnej sekcji.
 
@@ -199,7 +199,7 @@ Aby włączyć strumieniowe dane telemetryczne diagnostyki dla baz danych wystą
 1. Wprowadź nazwę ustawienia dla własnego odwołania.
 1. Wybierz zasób docelowy dla danych diagnostycznych przesyłania strumieniowego: **Archiwizuj na koncie magazynu**, **przesyła strumieniowo do centrum zdarzeń**lub **wysyłając do log Analytics**.
 1. Zaznacz pola wyboru dla telemetrii diagnostyki bazy danych: **SQLInsights**, **QueryStoreRuntimeStatistics**, **QueryStoreWaitStatistics** i **Errors**.
-   ![Configure Diagnostics dla baz danych wystąpień ](./media/sql-database-metrics-diag-logging/diagnostics-settings-database-mi-selection.png)
+   ![skonfigurować diagnostykę baz danych wystąpienia](./media/sql-database-metrics-diag-logging/diagnostics-settings-database-mi-selection.png)
 1. Wybierz pozycję **Zapisz**.
 1. Powtórz te kroki dla każdej bazy danych wystąpienia, która ma być monitorowana.
 
@@ -252,16 +252,16 @@ Te parametry można połączyć, aby włączyć wiele opcji danych wyjściowych.
 
 Aby obsługiwać wiele subskrypcji, Użyj skryptu programu PowerShell z okna [Włączanie rejestrowania metryk zasobów platformy Azure przy użyciu programu PowerShell](https://blogs.technet.microsoft.com/msoms/20../../enable-azure-resource-metrics-logging-using-powershell/).
 
-Podaj identyfikator zasobu obszaru roboczego \< $WSID \> jako parametr podczas wykonywania skryptu `Enable-AzureRMDiagnostics.ps1` do wysyłania danych diagnostycznych z wielu zasobów do obszaru roboczego.
+Podaj identyfikator zasobu obszaru roboczego \<$WSID\> jako parametr podczas wykonywania skryptu `Enable-AzureRMDiagnostics.ps1` do wysyłania danych diagnostycznych z wielu zasobów do obszaru roboczego.
 
-- Aby uzyskać identyfikator obszaru roboczego \< $WSID \> miejsca docelowego danych diagnostycznych, użyj następującego skryptu:
+- Aby uzyskać identyfikator obszaru roboczego \<$WSID\> miejsca docelowego danych diagnostycznych, użyj następującego skryptu:
 
     ```powershell
     PS C:\> $WSID = "/subscriptions/<subID>/resourcegroups/<RG_NAME>/providers/microsoft.operationalinsights/workspaces/<WS_NAME>"
     PS C:\> .\Enable-AzureRMDiagnostics.ps1 -WSID $WSID
     ```
 
-   Zastąp \<subID \> IDENTYFIKATORem subskrypcji, \<RG_NAME \> z nazwą grupy zasobów i \<WS_NAME \> z nazwą obszaru roboczego.
+   Zastąp \<subID\> IDENTYFIKATORem subskrypcji, \<RG_NAME\> z nazwą grupy zasobów i \<WS_NAME\> z nazwą obszaru roboczego.
 
 ### <a name="azure-cli"></a>Interfejs wiersza polecenia platformy Azure
 
@@ -421,7 +421,7 @@ Szczegółowe informacje na temat podstawowych metryk według zasobów można zn
 
 |**Zasób**|**Metryki**|
 |---|---|
-|Pula elastyczna|procentowa wartość eDTU, użyta wartość eDTU, limit liczby jednostek eDTU, procent użycia procesora, procent odczytu danych fizycznych, procent zapisu w dzienniku, procent sesji, procent procesów roboczych, magazyn, procent magazynu, limit magazynu, procent magazynu XTP |
+|Elastyczna pula|procentowa wartość eDTU, użyta wartość eDTU, limit liczby jednostek eDTU, procent użycia procesora, procent odczytu danych fizycznych, procent zapisu w dzienniku, procent sesji, procent procesów roboczych, magazyn, procent magazynu, limit magazynu, procent magazynu XTP |
 
 ### <a name="basic-metrics-for-azure-sql-databases"></a>Podstawowe metryki dla baz danych Azure SQL Database
 

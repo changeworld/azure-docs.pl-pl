@@ -1,6 +1,6 @@
 ---
-title: Przenoszenie danych z platformy SAP HANA przy użyciu usługi Azure Data Factory | Dokumentacja firmy Microsoft
-description: Dowiedz się więcej o sposobach przenoszenia danych z platformy SAP HANA przy użyciu usługi Azure Data Factory.
+title: Przenoszenie danych z SAP HANA przy użyciu Azure Data Factory
+description: Dowiedz się więcej na temat przenoszenia danych z SAP HANA przy użyciu Azure Data Factory.
 services: data-factory
 documentationcenter: ''
 author: linda33wj
@@ -13,97 +13,97 @@ ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 159e10354726e86ff04cb12bff33b6a83bd1fa70
-ms.sourcegitcommit: 64798b4f722623ea2bb53b374fb95e8d2b679318
+ms.openlocfilehash: ebd1cf22bffc6a136845672cedcefa7936eeece5
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/11/2019
-ms.locfileid: "67836101"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73682353"
 ---
-# <a name="move-data-from-sap-hana-using-azure-data-factory"></a>Przenoszenie danych z platformy SAP HANA przy użyciu usługi Azure Data Factory
-> [!div class="op_single_selector" title1="Wybierz wersję usługi Data Factory, którego używasz:"]
+# <a name="move-data-from-sap-hana-using-azure-data-factory"></a>Przenoszenie danych z SAP HANA przy użyciu Azure Data Factory
+> [!div class="op_single_selector" title1="Wybierz używaną wersję usługi Data Factory:"]
 > * [Wersja 1](data-factory-sap-hana-connector.md)
 > * [Wersja 2 (bieżąca wersja)](../connector-sap-hana.md)
 
 > [!NOTE]
-> Ten artykuł dotyczy wersji 1 usługi Data Factory. Jeśli używasz bieżącą wersję usługi Data Factory, zobacz [łącznika SAP HANA w wersji 2](../connector-sap-business-warehouse.md).
+> Ten artykuł dotyczy wersji 1 usługi Data Factory. Jeśli używasz bieżącej wersji usługi Data Factory, zapoznaj się z tematem [SAP HANA Connector w wersji 2](../connector-sap-business-warehouse.md).
 
-W tym artykule wyjaśniono, jak użyć działania kopiowania w usłudze Azure Data Factory do przenoszenia danych z platformy SAP HANA w środowisku lokalnym. Opiera się na [działania przenoszenia danych](data-factory-data-movement-activities.md) artykułu, który przedstawia ogólne omówienie przenoszenie danych za pomocą działania kopiowania.
+W tym artykule wyjaśniono, jak za pomocą działania kopiowania w Azure Data Factory przenieść dane z SAP HANA lokalnych. Jest on używany w artykule dotyczącym [przenoszenia danych](data-factory-data-movement-activities.md) , który przedstawia ogólne omówienie przenoszenia danych za pomocą działania kopiowania.
 
-Możesz skopiować dane z magazynu danych SAP HANA w środowisku lokalnym, do dowolnego obsługiwanego magazynu danych ujścia. Aby uzyskać listę magazynów danych obsługiwanych jako ujścia działania kopiowania, zobacz [obsługiwane magazyny danych](data-factory-data-movement-activities.md#supported-data-stores-and-formats) tabeli. Data factory obsługuje obecnie tylko przenosi dane z platformy SAP HANA do innych magazynów danych, ale nie do przenoszenia danych z innych magazynów danych do platformy SAP HANA.
+Dane z lokalnego magazynu danych SAP HANA można skopiować do dowolnego obsługiwanego magazynu danych ujścia. Listę magazynów danych obsługiwanych jako ujścia przez działanie kopiowania można znaleźć w tabeli [obsługiwane magazyny danych](data-factory-data-movement-activities.md#supported-data-stores-and-formats) . Fabryka danych obsługuje obecnie tylko przeniesienie danych z SAP HANA do innych magazynów danych, ale nie do przeniesienia danych z innych magazynów danych do SAP HANA.
 
-## <a name="supported-versions-and-installation"></a>Obsługiwane wersje i instalacji
-Ten łącznik obsługuje dowolną wersję bazy danych SAP HANA. Obsługuje kopiowanie danych z tabel wiersza/kolumny, które przy użyciu zapytań SQL i modele informacji platformy HANA (takie jak widoki analityczne i obliczeń).
+## <a name="supported-versions-and-installation"></a>Obsługiwane wersje i instalacja
+Ten łącznik obsługuje dowolną wersję bazy danych SAP HANA. Obsługuje kopiowanie danych z modeli informacji HANA (takich jak widoki analityczne i obliczeniowe) oraz tabel wierszy/kolumn przy użyciu zapytań SQL.
 
-Aby włączyć łączność z wystąpieniem platformy SAP HANA, należy zainstalować następujące składniki:
-- **Brama zarządzania danymi**: Usługa Data Factory obsługuje łączenie z lokalnych magazynów danych (takie jak SAP HANA) przy użyciu składnik o nazwie brama zarządzania danymi. Aby dowiedzieć się więcej na temat bramy zarządzania danymi i szczegółowe instrukcje dotyczące konfigurowania bramy, zobacz [przenoszenia danych między lokalnymi danymi zapisać w magazynie danych w chmurze](data-factory-move-data-between-onprem-and-cloud.md) artykułu. Brama jest wymagana, nawet wtedy, gdy oprogramowanie SAP HANA jest hostowany na maszynie wirtualnej IaaS platformy Azure (VM). Można zainstalować bramy w tej samej maszyny Wirtualnej jako magazyn danych lub w innej maszyny Wirtualnej, tak długo, jak bramy można połączyć z bazą danych.
-- **Sterownik ODBC platformy SAP HANA** na maszynie bramy. Możesz pobrać sterownik ODBC platformy SAP HANA z [SAP Software Download Center](https://support.sap.com/swdc). Wyszukiwanie za pomocą słowa kluczowego **SAP HANA klienta dla Windows**. 
+Aby włączyć łączność z wystąpieniem SAP HANA, Zainstaluj następujące składniki:
+- **Zarządzanie danymi Gateway**: Usługa Data Factory obsługuje łączenie się z lokalnymi magazynami danych (w tym SAP HANA) przy użyciu składnika o nazwie Brama zarządzanie danymi. Aby dowiedzieć się więcej na temat bramy Zarządzanie danymi i instrukcje krok po kroku dotyczące konfigurowania bramy, zobacz temat [przeniesienie danych między lokalnym magazynem danych do magazynu danych w chmurze](data-factory-move-data-between-onprem-and-cloud.md) . Brama jest wymagana, nawet jeśli SAP HANA jest hostowana na maszynie wirtualnej Azure IaaS (VM). Możesz zainstalować bramę na tej samej maszynie wirtualnej, w której znajduje się magazyn danych lub na innej maszynie wirtualnej, o ile Brama może połączyć się z bazą danych.
+- **SAP HANA sterownika ODBC** na maszynie bramy. Sterownik SAP HANA ODBC można pobrać z [Centrum pobierania oprogramowania SAP](https://support.sap.com/swdc). Wyszukaj za pomocą słowa kluczowego **SAP HANA Client dla systemu Windows**. 
 
 ## <a name="getting-started"></a>Wprowadzenie
-Utworzysz potok z działaniem kopiowania, które przenosi dane z magazynu danych SAP HANA w środowisku lokalnym przy użyciu różnych narzędzi/interfejsów API. 
+Można utworzyć potok za pomocą działania kopiowania, które przenosi dane z lokalnego magazynu danych SAP HANA przy użyciu różnych narzędzi/interfejsów API. 
 
-- Najprostszym sposobem utworzenia potoku jest użycie **kreatora kopiowania**. Zobacz [samouczka: Tworzenie potoku przy użyciu Kreatora kopiowania](data-factory-copy-data-wizard-tutorial.md) szybki przewodnik dotyczący tworzenia potoku za pomocą Kreatora kopiowania danych. 
-- Aby utworzyć potok umożliwia także następujących narzędzi: **Program Visual Studio**, **programu Azure PowerShell**, **szablonu usługi Azure Resource Manager**, **interfejsu API platformy .NET**, i **interfejsu API REST**. Zobacz [samouczka działania kopiowania](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) instrukcje krok po kroku utworzyć potok z działaniem kopiowania. 
+- Najprostszym sposobem utworzenia potoku jest użycie **Kreatora kopiowania**. Zobacz [Samouczek: Tworzenie potoku za pomocą Kreatora kopiowania](data-factory-copy-data-wizard-tutorial.md) na potrzeby szybkiego instruktażu dotyczącego tworzenia potoku przy użyciu Kreatora kopiowania danych. 
+- Do utworzenia potoku można także użyć następujących narzędzi: **Visual Studio**, **Azure PowerShell**, **szablon Azure Resource Manager**, interfejs API **platformy .NET**i **interfejs API REST**. Aby uzyskać instrukcje krok po kroku dotyczące tworzenia potoku za pomocą działania kopiowania, zobacz [Samouczek dotyczący działania kopiowania](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) . 
 
-Czy używasz narzędzi lub interfejsów API, należy wykonać poniższe kroki, aby utworzyć potok, który przenosi dane z magazynu danych źródłowych do magazynu danych ujścia:
+Niezależnie od tego, czy używasz narzędzi, czy interfejsów API, wykonaj następujące kroki, aby utworzyć potok służący do przenoszenia danych ze źródłowego magazynu danych do magazynu danych ujścia:
 
-1. Tworzenie **połączonych usług** połączyć dane wejściowe i wyjściowe przechowywane z fabryką danych.
-2. Tworzenie **zestawów danych** do reprezentowania dane wejściowe i wyjściowe operacji kopiowania. 
-3. Tworzenie **potoku** za pomocą działania kopiowania, która przyjmuje jako dane wejściowe zestawu danych i zestaw danych jako dane wyjściowe. 
+1. Utwórz **połączone usługi** , aby połączyć magazyny danych wejściowych i wyjściowych z fabryką danych.
+2. Utwórz **zestawy** danych, aby reprezentować dane wejściowe i wyjściowe dla operacji kopiowania. 
+3. Utwórz **potok** z działaniem kopiowania, które pobiera zestaw danych jako dane wejściowe i zestaw danych jako dane wyjściowe. 
 
-Korzystając z kreatora, definicje JSON dotyczące tych jednostek usługi Data Factory (połączone usługi, zestawy danych i potok) są tworzone automatycznie dla Ciebie. Korzystając z narzędzi/interfejsów API (z wyjątkiem interfejsu API platformy .NET), należy zdefiniować te jednostki usługi Data Factory przy użyciu formatu JSON.  Przykładowe definicje JSON dotyczące jednostek usługi Data Factory, które są używane do kopiowania danych z platformy SAP HANA w środowisku lokalnym, możesz znaleźć [przykład kodu JSON: Kopiowanie danych z platformy SAP HANA do usługi Azure Blob](#json-example-copy-data-from-sap-hana-to-azure-blob) dalszej części tego artykułu. 
+Gdy używasz Kreatora, definicje JSON dla tych Data Factory jednostek (połączone usługi, zestawy danych i potok) są automatycznie tworzone. Korzystając z narzędzi/interfejsów API (z wyjątkiem interfejsu API .NET), należy zdefiniować te Data Factory jednostki przy użyciu formatu JSON.  Aby uzyskać przykład z definicjami JSON dla Data Factory jednostek, które są używane do kopiowania danych z SAP HANA lokalnych, zobacz [przykład JSON: Kopiuj dane z SAP HANA do usługi Azure Blob](#json-example-copy-data-from-sap-hana-to-azure-blob) w tym artykule. 
 
-Poniższe sekcje zawierają szczegółowe informacje o właściwościach JSON, które są używane do definiowania jednostek usługi fabryka danych określonej do magazynu danych SAP HANA:
+Poniższe sekcje zawierają szczegółowe informacje na temat właściwości JSON, które są używane do definiowania Data Factory jednostek specyficznych dla SAP HANA magazynu danych:
 
-## <a name="linked-service-properties"></a>Właściwości usługi połączonej
-Poniższa tabela zawiera opis dla elementów JSON, które są specyficzne dla platformy SAP HANA połączonej usługi.
+## <a name="linked-service-properties"></a>Właściwości połączonej usługi
+Poniższa tabela zawiera opis elementów JSON specyficznych dla SAP HANA połączonej usługi.
 
-Właściwość | Opis | Dozwolone wartości | Wymagane
+Właściwość | Opis | Dozwolone wartości | Wymagany
 -------- | ----------- | -------------- | --------
-server | Nazwa serwera, na którym znajduje się wystąpienie SAP HANA. Jeśli serwer używa portu niestandardowe, należy określić `server:port`. | ciąg | Yes
-authenticationType | Typ uwierzytelnienia. | ciąg. "Podstawowa" lub "Windows" | Tak 
-username | Nazwa użytkownika, który ma dostęp do serwera SAP | ciąg | Tak
-password | Hasło użytkownika. | ciąg | Yes
-gatewayName | Nazwa bramy, która powinna być używana w usłudze Data Factory, połączyć się z lokalnym wystąpieniem oprogramowania SAP HANA. | ciąg | Yes
-encryptedCredential | Ciąg zaszyfrowane poświadczenia. | ciąg | Nie
+serwer | Nazwa serwera, na którym znajduje się wystąpienie SAP HANA. Jeśli na serwerze jest używany port dostosowany, określ `server:port`. | ciąg | Tak
+authenticationType | Typ uwierzytelniania. | parametry. "Podstawowa" lub "Windows" | Tak 
+nazwa użytkownika | Nazwa użytkownika, który ma dostęp do serwera SAP | ciąg | Tak
+hasło | Hasło użytkownika. | ciąg | Tak
+gatewayName | Nazwa bramy, która ma być używana przez usługę Data Factory do łączenia się z lokalnym wystąpieniem SAP HANA. | ciąg | Tak
+encryptedCredential | Zaszyfrowany ciąg poświadczeń. | ciąg | Nie
 
 ## <a name="dataset-properties"></a>Właściwości zestawu danych
-Aby uzyskać pełną listę sekcje & właściwości dostępne Definiowanie zestawów danych, zobacz [tworzenie zestawów danych](data-factory-create-datasets.md) artykułu. Sekcje, takie jak struktury, dostępność i zasady zestawem danych JSON są podobne dla wszystkich typów na zestaw danych (Azure SQL, obiektów blob platformy Azure, usługa Azure table itp.).
+Aby uzyskać pełną listę sekcji & właściwości dostępne do definiowania zestawów danych, zobacz artykuł [Tworzenie zestawów danych](data-factory-create-datasets.md) . Sekcje, takie jak struktura, dostępność i zasady JSON zestawu danych są podobne dla wszystkich typów zestawu danych (Azure SQL, Azure Blob, Azure Table itp.).
 
-**TypeProperties** sekcji różni się dla każdego typu zestawu danych i zawiera informacje o lokalizacji danych w magazynie danych. Nie ma żadnych właściwości typu obsługiwanych dla zestawu danych SAP HANA typu **RelationalTable**. 
+Sekcja **typeProperties** jest inna dla każdego typu zestawu danych i zawiera informacje dotyczące lokalizacji danych w magazynie danych. Brak właściwości specyficznych dla typu, które są obsługiwane dla SAP HANAgo zestawu danych typu **relacyjnego**. 
 
 
 ## <a name="copy-activity-properties"></a>Właściwości działania kopiowania
-Aby uzyskać pełną listę sekcje & właściwości dostępne do definiowania działań, zobacz [tworzenie potoków](data-factory-create-pipelines.md) artykułu. Właściwości, takie jak nazwa, opis i tabele wejściowe i wyjściowe, czy zasady są dostępne dla wszystkich typów działań.
+Aby uzyskać pełną listę sekcji & właściwości dostępne do definiowania działań, zobacz artykuł [Tworzenie potoków](data-factory-create-pipelines.md) . Właściwości, takie jak nazwa, opis, tabele wejściowe i wyjściowe, są dostępne dla wszystkich typów działań.
 
-Natomiast właściwości dostępnych w **typeProperties** różnią się w sekcji działania za pomocą poszczególnych typów działań. Działanie kopiowania ich różnią się w zależności od typów źródła i ujścia.
+Natomiast właściwości dostępne w sekcji **typeProperties** działania różnią się w zależności od typu działania. W przypadku działania kopiowania różnią się w zależności od typów źródeł i ujścia.
 
-Gdy źródłowego w działaniu kopiowania jest typu **RelationalSource** (w tym oprogramowanie SAP HANA), w sekcji typeProperties dostępne są następujące właściwości:
+Gdy źródło w działaniu kopiowania jest typu **RelationalSource** (w tym SAP HANA), w sekcji typeProperties są dostępne następujące właściwości:
 
-| Właściwość | Opis | Dozwolone wartości | Wymagane |
+| Właściwość | Opis | Dozwolone wartości | Wymagany |
 | --- | --- | --- | --- |
-| query | Określa zapytanie SQL do odczytywania danych z wystąpienia oprogramowania SAP HANA. | Zapytanie SQL. | Tak |
+| query | Określa zapytanie SQL do odczytu danych z wystąpienia SAP HANA. | Zapytanie SQL. | Tak |
 
-## <a name="json-example-copy-data-from-sap-hana-to-azure-blob"></a>Przykład kodu JSON: Kopiowanie danych z platformy SAP HANA do obiektów Blob platformy Azure
-Poniższy przykład zawiera przykładowe definicji JSON, które umożliwiają tworzenie potoku za pomocą [programu Visual Studio](data-factory-copy-activity-tutorial-using-visual-studio.md) lub [programu Azure PowerShell](data-factory-copy-activity-tutorial-using-powershell.md). Niniejszy przykład pokazuje, jak skopiować dane z platformy SAP HANA w środowisku lokalnym, do usługi Azure Blob Storage. Jednak dane mogą być kopiowane **bezpośrednio** do dowolnego ujścia wymienione [tutaj](data-factory-data-movement-activities.md#supported-data-stores-and-formats) za pomocą działania kopiowania w usłudze Azure Data Factory.  
+## <a name="json-example-copy-data-from-sap-hana-to-azure-blob"></a>Przykład JSON: kopiowanie danych z SAP HANA do obiektu blob platformy Azure
+Poniższy przykład zawiera przykładowe definicje JSON, których można użyć do utworzenia potoku przy użyciu [programu Visual Studio](data-factory-copy-activity-tutorial-using-visual-studio.md) lub [Azure PowerShell](data-factory-copy-activity-tutorial-using-powershell.md). Ten przykład pokazuje, jak skopiować dane z SAP HANA lokalnego do Blob Storage platformy Azure. Dane można jednak skopiować **bezpośrednio** do dowolnego ujścia wymienionego w [tym miejscu](data-factory-data-movement-activities.md#supported-data-stores-and-formats) za pomocą działania kopiowania w Azure Data Factory.  
 
 > [!IMPORTANT]
-> W tym przykładzie przedstawiono fragmenty kodu JSON. Nie obejmuje instrukcje krok po kroku dotyczące tworzenia fabryki danych. Zobacz [przenoszenia danych między lokalizacjami lokalnymi i chmurą](data-factory-move-data-between-onprem-and-cloud.md) artykuł, aby uzyskać instrukcje krok po kroku.
+> Ten przykład zawiera fragmenty kodu JSON. Zawiera instrukcje krok po kroku dotyczące tworzenia fabryki danych. Instrukcje krok po kroku znajdują się [w sekcji przeniesienie danych między lokalizacjami lokalnymi i artykułem w chmurze](data-factory-move-data-between-onprem-and-cloud.md) .
 
-Przykład obejmuje następujących jednostek fabryki danych:
+Przykład zawiera następujące jednostki fabryki danych:
 
-1. Połączonej usługi typu [SapHana](#linked-service-properties).
-2. Połączonej usługi typu [AzureStorage](data-factory-azure-blob-connector.md#linked-service-properties).
-3. Dane wejściowe [dataset](data-factory-create-datasets.md) typu [RelationalTable](#dataset-properties).
-4. Dane wyjściowe [dataset](data-factory-create-datasets.md) typu [AzureBlob](data-factory-azure-blob-connector.md#dataset-properties).
-5. A [potoku](data-factory-create-pipelines.md) za pomocą działania kopiowania, która używa [RelationalSource](#copy-activity-properties) i [BlobSink](data-factory-azure-blob-connector.md#copy-activity-properties).
+1. Połączona usługa typu [SapHana](#linked-service-properties).
+2. Połączona usługa typu [AzureStorage](data-factory-azure-blob-connector.md#linked-service-properties).
+3. Wejściowy [zestaw danych](data-factory-create-datasets.md) typu [relacyjnego](#dataset-properties).
+4. Wyjściowy [zestaw danych](data-factory-create-datasets.md) typu [AzureBlob](data-factory-azure-blob-connector.md#dataset-properties).
+5. [Potok](data-factory-create-pipelines.md) z działaniem kopiowania korzystającym z [RelationalSource](#copy-activity-properties) i [wartość blobsink](data-factory-azure-blob-connector.md#copy-activity-properties).
 
-Przykład kopiuje dane z wystąpienia oprogramowania SAP HANA do obiektu blob platformy Azure co godzinę. Właściwości JSON używanych w tych przykładach są opisane w sekcjach poniżej przykładów.
+Przykład kopiuje dane z wystąpienia SAP HANA do obiektu blob platformy Azure co godzinę. Właściwości JSON używane w tych przykładach są opisane w sekcjach poniżej przykładów.
 
-Pierwszym krokiem konfiguracji bramy zarządzania danymi. Instrukcje znajdują się w [przenoszenia danych między lokalizacjami lokalnymi i chmurą](data-factory-move-data-between-onprem-and-cloud.md) artykułu.
+Pierwszym krokiem jest skonfigurowanie bramy zarządzania danymi. Instrukcje dotyczą [przemieszczania danych między lokalizacjami lokalnymi i artykułami w chmurze](data-factory-move-data-between-onprem-and-cloud.md) .
 
-### <a name="sap-hana-linked-service"></a>SAP HANA, połączone usługi
-Ta połączona usługa łączy wystąpienia platformy SAP HANA w usłudze data factory. Właściwość type jest ustawiona **SapHana**. W sekcji typeProperties przedstawiono informacje o połączeniu dla wystąpień oprogramowania SAP HANA.
+### <a name="sap-hana-linked-service"></a>SAP HANA połączona usługa
+Ta połączona usługa łączy wystąpienie SAP HANA z fabryką danych. Właściwość Type jest ustawiona na wartość **SapHana**. Sekcja typeProperties zawiera informacje o połączeniu dla wystąpienia SAP HANA.
 
 ```json
 {
@@ -125,7 +125,7 @@ Ta połączona usługa łączy wystąpienia platformy SAP HANA w usłudze data f
 ```
 
 ### <a name="azure-storage-linked-service"></a>Połączona usługa Azure Storage
-Ta połączona usługa łączy konto usługi Azure Storage z fabryką danych. Właściwość type jest ustawiona **AzureStorage**. W sekcji typeProperties przedstawiono informacje o połączeniu dla konta usługi Azure Storage.
+Ta połączona usługa łączy Twoje konto usługi Azure Storage z fabryką danych. Właściwość Type jest ustawiona na wartość **AzureStorage**. Sekcja typeProperties zawiera informacje o połączeniu dla konta usługi Azure Storage.
 
 ```json
 {
@@ -139,13 +139,13 @@ Ta połączona usługa łączy konto usługi Azure Storage z fabryką danych. W�
 }
 ```
 
-### <a name="sap-hana-input-dataset"></a>Wejściowy zestaw danych SAP HANA
+### <a name="sap-hana-input-dataset"></a>SAP HANA wejściowy zestaw danych
 
-Ten zestaw danych definiuje zestaw danych SAP HANA. Ustaw typ zestawu danych usługi Data Factory na **RelationalTable**. Obecnie nie należy określać żadnych właściwości specyficzne dla zestawu danych SAP HANA. Zapytanie w definicji działania kopiowania określa jakie dane mają być odczytywane wystąpienie SAP HANA. 
+Ten zestaw danych definiuje zestaw danych SAP HANA. Należy ustawić typ Data Factory zestawu **danych.** Obecnie nie określono żadnych właściwości specyficznych dla typu dla SAP HANA zestawu danych. Zapytanie w definicji działania kopiowania określa, jakie dane mają być odczytywane z wystąpienia SAP HANA. 
 
-Ustawienie właściwości zewnętrznych na wartość true informuje usługi Data Factory, że w tabeli zewnętrznej dla fabryki danych i nie jest generowany przez działanie w usłudze data factory.
+Ustawienie właściwości zewnętrznej na wartość true informuje usługę Data Factory, że tabela jest zewnętrzna z fabryką danych i nie jest generowana przez działanie w fabryce danych.
 
-Właściwości wartościami Frequency i interval definiuje harmonogramu. W tym przypadku dane są odczytywane z wystąpienia oprogramowania SAP HANA co godzinę. 
+Właściwości częstotliwości i interwału definiują harmonogram. W takim przypadku dane są odczytywane z wystąpienia SAP HANA co godzinę. 
 
 ```json
 {
@@ -164,7 +164,7 @@ Właściwości wartościami Frequency i interval definiuje harmonogramu. W tym p
 ```
 
 ### <a name="azure-blob-output-dataset"></a>Wyjściowy zestaw danych obiektów blob platformy Azure
-Ten zestaw danych Określa wyjściowy zestaw danych obiektów Blob platformy Azure. Właściwość type jest ustawiona do usługi AzureBlob. W sekcji typeProperties miejsce, w której są przechowywane dane skopiowane z wystąpienia oprogramowania SAP HANA. Dane są zapisywane do nowego obiektu blob, co godzinę (frequency: godzina, interwał: 1). Ścieżka folderu dla obiektu blob jest dynamicznie obliczana na podstawie czasu rozpoczęcia wycinek, który jest przetwarzany. Ścieżka folderu używa rok, miesiąc, dzień i części godzin od zaplanowanej godziny rozpoczęcia.
+Ten zestaw danych definiuje wyjściowy zestaw danych obiektów blob platformy Azure. Właściwość Type jest ustawiona na wartość AzureBlob. Sekcja typeProperties zawiera informacje o tym, gdzie są przechowywane dane skopiowane z wystąpienia SAP HANA. Dane są zapisywane w nowym obiekcie blob co godzinę (częstotliwość: godzina, interwał: 1). Ścieżka folderu dla obiektu BLOB jest obliczana dynamicznie na podstawie czasu rozpoczęcia przetwarzanego wycinka. Ścieżka folderu używa części roku, miesiąca, dnia i godziny rozpoczęcia.
 
 ```json
 {
@@ -225,7 +225,7 @@ Ten zestaw danych Określa wyjściowy zestaw danych obiektów Blob platformy Azu
 
 ### <a name="pipeline-with-copy-activity"></a>Potok z działaniem kopiowania
 
-Potoku zawierającego działanie kopiowania, który jest skonfigurowany do korzystania z danych wejściowych i wyjściowych zestawów danych i jest zaplanowane do uruchomienia na godzinę. W definicji JSON potok **źródła** ustawiono typ **RelationalSource** (w przypadku oprogramowania SAP HANA źródło) i **ujścia** ustawiono typ **BlobSink**. Zapytanie SQL, określony dla **zapytania** właściwość wybiera dane w ciągu ostatniej godziny do skopiowania.
+Potok zawiera działanie kopiowania, które jest skonfigurowane do korzystania z wejściowych i wyjściowych zestawów danych i zaplanowane do uruchomienia co godzinę. W definicji JSON potoku typ **źródła** ma wartość **RelationalSource** (dla źródła SAP HANA), a typ **ujścia** to **wartość blobsink**. Zapytanie SQL określone dla właściwości **zapytania** wybiera dane w ciągu ostatniej godziny do skopiowania.
 
 ```json
 {
@@ -274,47 +274,47 @@ Potoku zawierającego działanie kopiowania, który jest skonfigurowany do korzy
 ```
 
 
-### <a name="type-mapping-for-sap-hana"></a>Mapowanie typu platformy SAP Hana
-Jak wspomniano w [działania przenoszenia danych](data-factory-data-movement-activities.md) artykułu, działanie kopiowania wykonuje operację automatyczne konwersje z typów źródła do ujścia typy za pomocą następujących podejście dwuetapowe:
+### <a name="type-mapping-for-sap-hana"></a>Mapowanie typu dla SAP HANA
+Jak wspomniano w artykule [działania związane z przenoszeniem danych](data-factory-data-movement-activities.md) , działanie kopiowania wykonuje konwersje typów automatycznych z typów źródłowych na typy obiektów ujścia z następującymi krokami:
 
-1. Konwersji z typów natywnych źródła na typ architektury .NET
-2. Przekonwertowanie z platformy .NET na typ ujścia natywne
+1. Konwertuj z natywnych typów źródła na typ .NET
+2. Konwertuj z typu .NET na natywny typ ujścia
 
-Podczas przenoszenia danych z platformy SAP HANA, następujące mapowania są używane do typów .NET z typów oprogramowania SAP HANA.
+Podczas przemieszczania danych z SAP HANA następujące mapowania są używane z typów SAP HANA do typów .NET.
 
-SAP HANA typu | Typ oparte na platformie .NET
+Typ SAP HANA | Typ oparty na platformie .NET
 ------------- | ---------------
-TINYINT | Byte
+TINYINT | Bajc
 SMALLINT | Int16
-INT | Int32
+INT | Elementem
 BIGINT | Int64
-REAL | Single
-DOUBLE | Single
-DECIMAL | Decimal
-BOOLEAN | Byte
-VARCHAR | String
-NVARCHAR | String
-CLOB | Byte[]
+CZASIE rzeczywistym | Pojedyncze
+DOUBLE | Pojedyncze
+DOKŁADNOŚCI | Dokładności
+TYPU | Bajc
+VARCHAR | Ciąg
+NVARCHAR | Ciąg
+CLOB | Byte []
 ALPHANUM | Ciąg
-BLOB | Byte[]
-DATE | Datetime
-TIME | TimeSpan
-TIMESTAMP | Datetime
-SECONDDATE | Datetime
+BLOB | Byte []
+DATE | DateTime
+CZAS | Czasu
+ZNACZNIK czasu | DateTime
+SECONDDATE | DateTime
 
 ## <a name="known-limitations"></a>Znane ograniczenia
-Istnieje kilka znanych ograniczeniach podczas kopiowania danych z platformy SAP HANA:
+Podczas kopiowania danych z SAP HANA istnieje kilka znanych ograniczeń:
 
-- Ciągi NVARCHAR są obcinane do maksymalnej długości wynoszącej 4000 znaków Unicode
-- Typ danych SMALLDECIMAL nie jest obsługiwane.
-- VARBINARY nie jest obsługiwane.
-- Prawidłowe daty są z zakresu od 1899, 12-30 a 9999-12-31
+- Ciągi NVARCHAR są obcinane do maksymalnej długości 4000 znaków Unicode
+- SMALLDECIMAL nie jest obsługiwana
+- VARBINARY nie jest obsługiwana
+- Prawidłowe daty należą do zakresu od 1899/12/30 do 9999/12/31
 
-## <a name="map-source-to-sink-columns"></a>Mapy źródła do ujścia kolumn
-Aby uzyskać informacje dotyczące mapowania kolumn w zestaw danych źródłowych do kolumn w zestawie danych ujścia, zobacz [mapowanie kolumny zestawu danych w usłudze Azure Data Factory](data-factory-map-columns.md).
+## <a name="map-source-to-sink-columns"></a>Mapowanie źródła do kolumn ujścia
+Aby dowiedzieć się więcej na temat mapowania kolumn w źródłowym zestawie danych na kolumny w datadataset, zobacz [Mapowanie kolumn zestawu danych w Azure Data Factory](data-factory-map-columns.md).
 
-## <a name="repeatable-read-from-relational-sources"></a>Odczyt powtarzalny ze źródeł relacyjnych
-Podczas kopiowania danych z relacyjnej bazie danych są przechowywane, Zachowaj powtarzalności należy pamiętać, aby uniknąć niezamierzonego wyników. W usłudze Azure Data Factory możesz ponownie uruchomić wycinek ręcznie. Można również skonfigurować zasady ponawiania dla zestawu danych, dzięki czemu wycinek będzie uruchamiana ponownie, gdy wystąpi błąd. Gdy wycinek będzie uruchamiana ponownie w obu przypadkach, należy się upewnić, że te same dane jest do odczytu niezależnie od tego, ile razy wycinek jest uruchamiany. Zobacz [Repeatable odczytywać źródeł relacyjnych](data-factory-repeatable-copy.md#repeatable-read-from-relational-sources)
+## <a name="repeatable-read-from-relational-sources"></a>Powtarzanie odczytu ze źródeł relacyjnych
+Podczas kopiowania danych z magazynów danych relacyjnych należy mieć na uwadze powtarzalność, aby uniknąć niezamierzonych wyników. W Azure Data Factory można ręcznie uruchomić ponownie wycinka. Możesz również skonfigurować zasady ponawiania dla zestawu danych, aby wycinek był uruchamiany ponownie w przypadku wystąpienia błędu. Gdy wycinek jest uruchamiany ponownie w dowolny sposób, należy się upewnić, że te same dane są odczytywane niezależnie od tego, ile razy jest uruchomiony plasterek. Zobacz [powtarzanie odczytu ze źródeł relacyjnych](data-factory-repeatable-copy.md#repeatable-read-from-relational-sources)
 
 ## <a name="performance-and-tuning"></a>Wydajność i dostrajanie
-Zobacz [wydajności działania kopiowania & przewodnika dostrajania](data-factory-copy-activity-performance.md) Aby dowiedzieć się więcej o kluczowych czynników tego obniżenie wydajności przenoszenia danych (działanie kopiowania) w usłudze Azure Data Factory i różne sposoby, aby zoptymalizować ją.
+Zobacz [Przewodnik dostrajania wydajności & działania kopiowania](data-factory-copy-activity-performance.md) , aby poznać kluczowe czynniki wpływające na wydajność przenoszenia danych (działanie kopiowania) w Azure Data Factory i różne sposoby jego optymalizacji.

@@ -1,5 +1,5 @@
 ---
-title: Istnieje transformacja w przepływie danych mapowania Azure Data Factory | Microsoft Docs
+title: Istnieje transformacja w przepływie danych mapowania Azure Data Factory
 description: Sprawdzanie istniejących wierszy przy użyciu transformacji EXISTS w Azure Data Factory mapowaniu przepływu danych
 author: kromerm
 ms.author: makromer
@@ -7,18 +7,18 @@ ms.reviewer: daperlov
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 10/16/2019
-ms.openlocfilehash: 79bdfc84310686b2648e12d73d783de049e9d2fa
-ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
+ms.openlocfilehash: a477eba246c4ebcfbd32e92f1fd30c301ea1cc5b
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/18/2019
-ms.locfileid: "72596513"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73676729"
 ---
 # <a name="exists-transformation-in-mapping-data-flow"></a>Istnieje transformacja przepływu danych mapowania
 
 Transformacja EXISTS to transformacja filtrowania wierszy, która sprawdza, czy dane istnieją w innym źródle lub strumieniu. Strumień wyjściowy zawiera wszystkie wiersze w lewym strumieniu, który istnieje lub nie istnieje w odpowiednim strumieniu. Transformacja istnieje podobna do ```SQL WHERE EXISTS``` i ```SQL WHERE NOT EXISTS```.
 
-## <a name="configuration"></a>Konfigurowanie
+## <a name="configuration"></a>Konfiguracja
 
 1. Wybierz, który strumień danych ma być używany na liście rozwijanej **odpowiedniego strumienia** .
 1. Określ, czy chcesz, aby dane były już istniejące, czy nie istnieją w ustawieniu **typu istnieją** .
@@ -54,7 +54,7 @@ Aby utworzyć wyrażenie o dowolnej postaci zawierające operatory inne niż "i"
 
 ### <a name="example"></a>Przykład
 
-Poniższy przykład jest przekształceniem o nazwie `checkForChanges`, które pobiera lewe `NameNorm2` strumienia i właściwe `TypeConversions` przesyłania strumieniowego.  Warunek EXISTS jest wyrażeniem, `NameNorm2@EmpID == TypeConversions@EmpID && NameNorm2@Region == DimEmployees@Region` zwraca wartość true, jeśli zarówno kolumny `EMPID`, jak i `Region` w poszczególnych strumieniach pasują do siebie. Gdy sprawdzimy obecność, `negate` ma wartość false. Nie włączamy żadnej emisji na karcie Optymalizacja, więc `broadcast` ma `'none'` wartości.
+Poniższy przykład jest przekształceniem o nazwie `checkForChanges`, które pobiera lewe `NameNorm2` strumienia i właściwe `TypeConversions`przesyłania strumieniowego.  Warunek EXISTS jest wyrażeniem, `NameNorm2@EmpID == TypeConversions@EmpID && NameNorm2@Region == DimEmployees@Region` zwraca wartość true, jeśli zarówno kolumny `EMPID`, jak i `Region` w poszczególnych strumieniach pasują do siebie. Gdy sprawdzimy obecność, `negate` ma wartość false. Nie włączamy żadnej emisji na karcie Optymalizacja, więc `broadcast` ma `'none'`wartości.
 
 W Data Factory środowisku użytkownika Ta transformacja wygląda jak na poniższym obrazie:
 

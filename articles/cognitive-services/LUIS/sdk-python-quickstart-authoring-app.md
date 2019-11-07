@@ -1,7 +1,7 @@
 ---
-title: 'Szybki start: Language Understanding (LUIS) Tworzenie biblioteki klienta dla języka Python'
+title: 'Szybki Start: Language Understanding (LUIS) Tworzenie biblioteki klienta dla języka Python'
 titleSuffix: Azure Cognitive Services
-description: Rozpocznij pracę z biblioteką klienta Language Understanding (LUIS) dla języka Python. Wykonaj następujące kroki, aby zainstalować pakiet i wypróbować przykładowy kod dla podstawowych zadań.  Language Understanding (LUIS) umożliwia stosowanie niestandardowych analiz uczenia maszynowego do konwersacji użytkownika, tekstu języka naturalnego w celu przewidywania ogólnego znaczenia i ściągania odpowiednich szczegółowych informacji.
+description: Rozpocznij pracę z biblioteką kliencką LUIS dla języka Python. Wykonaj następujące kroki, aby zainstalować pakiet i wypróbować przykładowy kod dla podstawowych zadań.
 services: cognitive-services
 author: diberry
 manager: nitinme
@@ -10,14 +10,14 @@ ms.subservice: language-understanding
 ms.topic: quickstart
 ms.date: 08/07/2019
 ms.author: diberry
-ms.openlocfilehash: f8149372e0a96cda81ef38558ee0bcf87eb53bb3
-ms.sourcegitcommit: 267a9f62af9795698e1958a038feb7ff79e77909
+ms.openlocfilehash: 1b586af569a9406d7fe9fa3d05c198f62f32744f
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70258759"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73671999"
 ---
-# <a name="quickstart-language-understanding-luis-authoring-client-library-for-python"></a>Szybki start: Language Understanding (LUIS) Tworzenie biblioteki klienta dla języka Python
+# <a name="quickstart-language-understanding-luis-authoring-client-library-for-python"></a>Szybki Start: Language Understanding (LUIS) Tworzenie biblioteki klienta dla języka Python
 
 Rozpocznij pracę z biblioteką klienta tworzenia Language Understanding (LUIS) dla języka Python. Wykonaj następujące kroki, aby zainstalować pakiet i wypróbować przykładowy kod dla podstawowych zadań.  Language Understanding (LUIS) umożliwia stosowanie niestandardowych analiz uczenia maszynowego do konwersacji użytkownika, tekstu języka naturalnego w celu przewidywania ogólnego znaczenia i ściągania odpowiednich szczegółowych informacji. 
 
@@ -28,7 +28,7 @@ Użyj biblioteki klienta tworzenia Language Understanding (LUIS) dla języka Pyt
 * Dodaj funkcje, takie jak lista fraz.
 * Uczenie i publikowanie aplikacji.
 
-[Dokumentacja dokumentacji](https://docs.microsoft.com/python/api/azure-cognitiveservices-language-luis/index?view=azure-python) | referencyjnej[(PyPi)](https://pypi.org/project/azure-cognitiveservices-language-luis/)[](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/python/LUIS/application_quickstart.py) [](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/cognitiveservices/azure-cognitiveservices-language-luis/azure/cognitiveservices/language/luis) |  | biblioteki kodu źródłowego
+[Dokumentacja referencyjna](https://docs.microsoft.com/python/api/azure-cognitiveservices-language-luis/index?view=azure-python) |  | [tworzenia pakietów administracyjnych](https://pypi.org/project/azure-cognitiveservices-language-luis/) w [bibliotece kodu źródłowego](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/cognitiveservices/azure-cognitiveservices-language-luis/azure/cognitiveservices/language/luis) ( [](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/python/LUIS/application_quickstart.py) PyPi) | 
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
@@ -39,7 +39,7 @@ Użyj biblioteki klienta tworzenia Language Understanding (LUIS) dla języka Pyt
 
 ### <a name="get-your-language-understanding-luis-starter-key"></a>Pobierz klucz początkowy Language Understanding (LUIS)
 
-Pobierz [klucz początkowy](luis-how-to-azure-subscription.md#starter-key)i [Utwórz zmienną środowiskową](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#configure-an-environment-variable-for-authentication) dla klucza o nazwie `LUIS_AUTHORING_KEY` i zmiennej środowiskowej dla regionu klucza. `LUIS_REGION`
+Pobierz [klucz początkowy](luis-how-to-azure-subscription.md#starter-key)i [Utwórz zmienną środowiskową](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#configure-an-environment-variable-for-authentication) dla klucza o nazwie `LUIS_AUTHORING_KEY` i zmiennej środowiskowej dla regionu klucza, `LUIS_REGION`.
 
 ### <a name="install-the-python-library-for-luis"></a>Zainstaluj bibliotekę języka Python dla LUIS
 
@@ -91,7 +91,7 @@ Utwórz obiekt [CognitiveServicesCredentials](https://docs.microsoft.com/python/
 
 [!code-python[Create LUIS client object](~/cognitive-services-quickstart-code/python/LUIS/application_quickstart.py?name=Client)]
 
-## <a name="create-a-luis-app"></a>Tworzenie aplikacji usługi LUIS
+## <a name="create-a-luis-app"></a>Tworzenie aplikacji LUIS
 
 1. Utwórz aplikację LUIS, aby zawierała model przetwarzania języka naturalnego (NLP), w którym znajdują się intencje, jednostki i przykład wyrażenia długości. 
 
@@ -111,7 +111,7 @@ Użyj metody [model. Add _intent](https://docs.microsoft.com/python/api/azure-co
 
 Jednostki, które nie są wymagane, są dostępne w większości aplikacji. Jednostka wyodrębnia informacje z wypowiedź użytkownika, niezbędne do fullfil zamiaru użytkownika. Istnieje kilka typów [wstępnie skompilowanych](https://docs.microsoft.com/python/api/azure-cognitiveservices-language-luis/azure.cognitiveservices.language.luis.authoring.operations.modeloperations?view=azure-python#add-prebuilt-app-id--version-id--prebuilt-extractor-names--custom-headers-none--raw-false----operation-config-) i niestandardowych jednostek, z których każdy ma własne modele obiektów transformacji danych (DTO).  Typowe wstępnie skompilowane jednostki do dodania do aplikacji obejmują [Number](luis-reference-prebuilt-number.md), [datetimeV2](luis-reference-prebuilt-datetimev2.md), [geographyV2](luis-reference-prebuilt-geographyv2.md), [porządkową](luis-reference-prebuilt-ordinal.md). 
 
-Ta metoda **add_entities** utworzyła `Location` prostą jednostkę z `Class` dwiema rolami, prostą jednostką `Flight` , jednostką złożoną i dodaje kilka wstępnie utworzonych jednostek.
+Ta metoda **add_entities** `Location` utworzyła prostą jednostkę, która ma dwie role, `Class` jednostki prostej, `Flight` jednostki złożonej i dodaje kilka wstępnie utworzonych jednostek.
 
 Ważne jest, aby wiedzieć, że jednostki nie są oznaczone zamiarem. Mogą one i zwykle dotyczyć wielu intencji. Tylko przykład wyrażenia długości użytkownika jest oznaczony dla określonego, pojedynczego zamiaru.
 
@@ -147,7 +147,7 @@ Opublikuj aplikację LUIS przy użyciu metody [App. publish](https://docs.micros
 
 ## <a name="run-the-application"></a>Uruchamianie aplikacji
 
-Uruchom aplikację za pomocą `python` polecenia w pliku szybkiego startu.
+Uruchom aplikację za pomocą polecenia `python` w pliku szybkiego startu.
 
 ```console
 python quickstart-file.py

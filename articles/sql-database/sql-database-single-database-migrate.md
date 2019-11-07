@@ -1,5 +1,5 @@
 ---
-title: SQL Server migrację bazy danych do bazy danych z jedną/pulą w Azure SQL Database | Microsoft Docs
+title: SQL Server migrację bazy danych do bazy danych z jedną/pulą w Azure SQL Database
 description: Dowiedz się, jak informacje o SQL Server migracji bazy danych do pojedynczej bazy danych lub elastycznej puli w programie Azure SQL Database.
 keywords: migracja bazy danych,migracja bazy danych programu sql server,narzędzia migracji bazy danych,migracja bazy danych,migracja bazy danych sql
 services: sql-database
@@ -12,12 +12,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: carlrab
 ms.date: 02/11/2019
-ms.openlocfilehash: a156d73c7eedcbdf7c703b946a26d46ca9129632
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 67030d14670ccc51c89a04863f8b39ab6a9bb183
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68566599"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73687185"
 ---
 # <a name="sql-server-database-migration-to-azure-sql-database"></a>SQL Server migrację bazy danych do Azure SQL Database
 
@@ -32,7 +32,7 @@ W obu przypadkach należy upewnić się, że źródłowa baza danych jest zgodna
 > [!NOTE]
 > Aby wykonać migrację bazy danych innej niż baza danych programu SQL Server, w tym bazy danych Microsoft Access, Sybase, MySQL Oracle i DB2, do usługi Azure SQL Database, zobacz temat [Asystent migracji programu SQL Server](https://blogs.msdn.microsoft.com/datamigration/2017/09/29/release-sql-server-migration-assistant-ssma-v7-6/).
 
-## <a name="method-1-migration-with-downtime-during-the-migration"></a>Metoda 1: Migracja z przestojami podczas migracji
+## <a name="method-1-migration-with-downtime-during-the-migration"></a>Metoda 1. Migracja z przestojem podczas migracji
 
  Ta metoda służy do migrowania do jednej lub puli baz danych, jeśli jest możliwe przestoje lub przeprowadzana jest testowa migracja produkcyjnej bazy danych do późniejszej migracji. Aby zapoznać się z samouczkiem, zobacz [Migrowanie bazy danych SQL Server](../dms/tutorial-sql-server-to-azure-sql.md).
 
@@ -64,7 +64,7 @@ Poniższa lista zawiera zalecenia pozwalające uzyskać najlepszą wydajność p
 
 [Zaktualizuj statystyki](https://msdn.microsoft.com/library/ms187348.aspx) poprzez pełne skanowanie po zakończeniu migracji.
 
-## <a name="method-2-use-transactional-replication"></a>Metoda 2. Korzystanie z replikacji transakcyjnej
+## <a name="method-2-use-transactional-replication"></a>Metoda 2. Użycie replikacji transakcyjnej
 
 Gdy nie możesz sobie pozwolić na usunięcie bazy danych programu SQL Server ze środowiska produkcyjnego na czas migracji, jako rozwiązania do migracji możesz wykorzystać replikację transakcyjną programu SQL Server. Aby użyć tej metody, źródłowa baza danych musi spełniać [wymagania dotyczące replikacji transakcyjnej](https://msdn.microsoft.com/library/mt589530.aspx) i być zgodna z usługą Azure SQL Database. Aby uzyskać informacje o replikacji SQL z funkcją zawsze włączone, zobacz [Konfigurowanie replikacji dla zawsze włączonych grup dostępności (SQL Server)](/sql/database-engine/availability-groups/windows/configure-replication-for-always-on-availability-groups-sql-server).
 
@@ -118,7 +118,7 @@ Oprócz wyszukiwania w Internecie i użycia wymienionych zasobów, możesz skorz
 > [!IMPORTANT]
 > SQL Database wystąpienie zarządzane umożliwia migrowanie istniejącego wystąpienia SQL Server i jego baz danych z minimalnym brakiem problemów ze zgodnością. Zobacz [, co to jest wystąpienie zarządzane](sql-database-managed-instance.md).
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 - Użyj skryptu z blogu SQL EMEA Engineers, aby [monitorować użycie bazy danych tempdb podczas migracji](https://blogs.msdn.microsoft.com/azuresqlemea/2016/12/28/lesson-learned-10-monitoring-tempdb-usage/).
 - Użyj skryptu z blogu SQL EMEA Engineers, aby [monitorować obszar rejestrowania transakcji Twojej bazy danych w czasie trwania migracji](https://blogs.msdn.microsoft.com/azuresqlemea/2016/10/31/lesson-learned-7-monitoring-the-transaction-log-space-of-my-database/0).

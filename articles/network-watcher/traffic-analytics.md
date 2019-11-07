@@ -14,12 +14,12 @@ ms.workload: infrastructure-services
 ms.date: 06/15/2018
 ms.author: kumud
 ms.reviewer: vinigam
-ms.openlocfilehash: ce59b46667f9139157a751d7d7b0205504d71ab0
-ms.sourcegitcommit: 8bae7afb0011a98e82cbd76c50bc9f08be9ebe06
+ms.openlocfilehash: 831e75ba2d3f6af62496d437da3d1413dc612594
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/01/2019
-ms.locfileid: "71695648"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73686555"
 ---
 # <a name="traffic-analytics"></a>Analiza ruchu
 
@@ -62,11 +62,11 @@ Analiza ruchu analizuje dzienniki nieprzetworzonych przepływów sieciowej grupy
 Analizy ruchu można użyć dla sieciowych grup zabezpieczeń w jednym z następujących obsługiwanych regionów:
 
 * Kanada Środkowa
-* Zachodnio-środkowe stany USA
+* Środkowo-zachodnie stany USA
 * Wschodnie stany USA
 * Wschodnie stany USA 2
-* Północno-środkowe stany USA
-* Południowo-środkowe stany USA
+* Środkowo-północne stany USA
+* Środkowo-południowe stany USA
 * Środkowe stany USA
 * Zachodnie stany USA
 * Zachodnie stany USA 2
@@ -79,22 +79,23 @@ Analizy ruchu można użyć dla sieciowych grup zabezpieczeń w jednym z następ
 * Australia Wschodnia
 * Australia Południowo-Wschodnia
 * Azja Wschodnia
-* Azja Południowo-wschodnia
+* Azja Południowo-Wschodnia
 * Korea Środkowa
 * Indie Środkowe
 * Indie Południowe
 * Japonia Wschodnia 
 * Japonia Zachodnia
 * Administracja USA — Wirginia
+* Chiny Wschodnie 2
 
 ## <a name="supported-regions-log-analytics-workspaces"></a>Obsługiwane regiony: Log Analytics obszary robocze
 
 Obszar roboczy Log Analytics musi istnieć w następujących regionach:
 * Kanada Środkowa
-* Zachodnio-środkowe stany USA
+* Środkowo-zachodnie stany USA
 * Wschodnie stany USA
 * Wschodnie stany USA 2
-* Południowo-środkowe stany USA
+* Środkowo-południowe stany USA
 * Zachodnie stany USA
 * Zachodnie stany USA 2
 * Środkowe stany USA
@@ -105,11 +106,12 @@ Obszar roboczy Log Analytics musi istnieć w następujących regionach:
 * Australia Wschodnia
 * Australia Południowo-Wschodnia
 * Azja Wschodnia
-* Azja Południowo-wschodnia
+* Azja Południowo-Wschodnia
 * Korea Środkowa
 * Indie Środkowe
 * Japonia Wschodnia
 * Administracja USA — Wirginia
+* Chiny Wschodnie 2
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 

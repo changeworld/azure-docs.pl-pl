@@ -1,5 +1,5 @@
 ---
-title: Azure SQL Database inspekcji wystąpienia zarządzanego | Microsoft Docs
+title: Azure SQL Database inspekcji wystąpienia zarządzanego
 description: Dowiedz się, jak rozpocząć pracę z Azure SQL Database inspekcji wystąpienia zarządzanego przy użyciu języka T-SQL
 services: sql-database
 ms.service: sql-database
@@ -13,12 +13,12 @@ author: barmichal
 ms.author: mibar
 ms.reviewer: vanto
 ms.date: 04/08/2019
-ms.openlocfilehash: 23e3a15ac26cdf0950ee31fddad2af4a3b7414c2
-ms.sourcegitcommit: d47a30e54c5c9e65255f7ef3f7194a07931c27df
+ms.openlocfilehash: 915d804cd3ae67848b4b9aa2f50fb5f1b4f1f092
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/29/2019
-ms.locfileid: "73025382"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73689429"
 ---
 # <a name="get-started-with-azure-sql-database-managed-instance-auditing"></a>Wprowadzenie do Azure SQL Database inspekcji wystąpienia zarządzanego
 
@@ -171,7 +171,7 @@ Dzienniki inspekcji z wystąpienia zarządzanego mogą być wysyłane do nawet c
 
 5. Wybierz lokalizację docelową dla zdarzeń inspekcji — centrum zdarzeń, dzienniki Azure Monitor lub oba te elementy. Skonfiguruj dla każdego obiektu docelowego wymagane parametry (np. Log Analytics obszar roboczy).
 
-6. Kliknij przycisk **Save** (Zapisz).
+6. Kliknij pozycję **Zapisz**.
 
     ![Konfigurowanie ustawień diagnostycznych](./media/sql-managed-instance-auditing/9_mi_configure_diagnostics.png)
 

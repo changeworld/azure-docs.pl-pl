@@ -6,20 +6,20 @@ keywords: ''
 author: PatAltimore
 ms.author: patricka
 ms.date: 05/02/2019
-ms.topic: article
+ms.topic: conceptual
 ms.service: azure-blockchain
 ms.reviewer: seal
 manager: femila
-ms.openlocfilehash: 00d4911c0f2541ea5c64eccca3ab1b1505e06390
-ms.sourcegitcommit: 6cff17b02b65388ac90ef3757bf04c6d8ed3db03
+ms.openlocfilehash: 63e61844ddb5bd0f0ed52b67e26ea5bf1857fd2b
+ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68608533"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73579918"
 ---
 # <a name="azure-blockchain-service-security"></a>Zabezpieczenia usługi Azure łańcucha bloków
 
-Usługa Azure łańcucha bloków używa kilku funkcji platformy Azure, aby zapewnić bezpieczeństwo i dostępność danych. Dane są zabezpieczane przy użyciu izolacji, szyfrowania i uwierzytelniania.
+Usługa Azure Blockchain Service korzysta z kilku funkcji platformy Azure, zapewniających bezpieczeństwo i dostępność danych. Zabezpieczenia danych obejmują izolację, szyfrowanie i uwierzytelnianie.
 
 ## <a name="isolation"></a>Izolacja
 
@@ -43,7 +43,7 @@ Istnieją trzy tryby uwierzytelniania dostępu do usługi RPC.
 
 Uwierzytelnianie podstawowe używa nagłówka uwierzytelniania HTTP zawierającego nazwę użytkownika i hasło. Nazwa użytkownika jest nazwą węzła łańcucha bloków. Hasło jest ustawiane podczas aprowizacji elementu członkowskiego lub węzła. Hasło można zmienić przy użyciu Azure Portal lub interfejsu wiersza polecenia.
 
-### <a name="access-keys"></a>Klucze dostępu
+### <a name="access-keys"></a>Klawisze dostępu
 
 Klucze dostępu używają losowo generowanego ciągu zawartego w adresie URL punktu końcowego. Dwa klucze dostępu umożliwiają włączenie rotacji kluczy. Klucze można generować ponownie z Azure Portal i interfejsu wiersza polecenia.
 

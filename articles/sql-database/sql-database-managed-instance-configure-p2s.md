@@ -1,5 +1,5 @@
 ---
-title: Konfigurowanie wystąpienia zarządzanego P2S Azure SQL Database | Microsoft Docs
+title: 'Konfigurowanie wystąpienia zarządzanego P2S Azure SQL Database '
 description: Nawiąż połączenie z wystąpieniem zarządzanym Azure SQL Database przy użyciu SQL Server Management Studio przy użyciu połączenia typu punkt-lokacja z lokalnego komputera klienckiego.
 services: sql-database
 ms.service: sql-database
@@ -11,14 +11,14 @@ author: srdan-bozovic-msft
 ms.author: srbozovi
 ms.reviewer: sstein, carlrab, bonova, jovanpop
 ms.date: 03/13/2019
-ms.openlocfilehash: 3ba5190050d45385ad17a87f6dce88ffd601e83d
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 3b3a0ce28c4a936e185ac5f07ba3810c93f4c866
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68567687"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73689418"
 ---
-# <a name="quickstart-configure-a-point-to-site-connection-to-an-azure-sql-database-managed-instance-from-on-premises"></a>Szybki start: Konfigurowanie połączenia punkt-lokacja z wystąpieniem zarządzanym Azure SQL Database z lokalnego
+# <a name="quickstart-configure-a-point-to-site-connection-to-an-azure-sql-database-managed-instance-from-on-premises"></a>Szybki Start: Konfigurowanie połączenia typu punkt-lokacja z wystąpieniem zarządzanym Azure SQL Database z lokalnego
 
 Ten przewodnik Szybki Start przedstawia sposób nawiązywania połączenia z Azure SQL Database wystąpieniem zarządzanym przy użyciu [SQL Server Management Studio](https://docs.microsoft.com/sql/ssms/sql-server-management-studio-ssms) (SSMS) z lokalnego komputera klienckiego w ramach połączenia typu punkt-lokacja. Informacje o połączeniach typu punkt-lokacja można znaleźć w temacie [about the Point-to-site VPN](../vpn-gateway/point-to-site-about.md)
 
@@ -54,7 +54,7 @@ Ten przewodnik Szybki start:
      Invoke-Command -ScriptBlock ([Scriptblock]::Create((iwr ($scriptUrlBase+'/attachVPNGateway.ps1?t='+ [DateTime]::Now.Ticks)).Content)) -ArgumentList $parameters, $scriptUrlBase
      ```
 
-3. Wklej skrypt w oknie programu PowerShell i podaj wymagane parametry. Wartości dla `<subscriptionId>` `<resourceGroup>`, i `<virtualNetworkName>` powinny być zgodne z tymi, które zostały użyte do szybkiego startu [tworzenia wystąpienia zarządzanego](sql-database-managed-instance-get-started.md) . Wartość parametru `<certificateNamePrefix>` może być wybranym ciągiem.
+3. Wklej skrypt w oknie programu PowerShell i podaj wymagane parametry. Wartości `<subscriptionId>`, `<resourceGroup>`i `<virtualNetworkName>` powinny być zgodne z tymi, które były używane dla szybkiego startu [tworzenia wystąpienia zarządzanego](sql-database-managed-instance-get-started.md) . Wartość `<certificateNamePrefix>` może być ciągiem wybranym przez użytkownika.
 
 4. Wykonaj skrypt programu PowerShell.
 
@@ -67,7 +67,7 @@ Ten przewodnik Szybki start:
 2. Otwórz grupę zasobów, w której została utworzona Brama sieci wirtualnej, a następnie otwórz zasób bramy sieci wirtualnej.
 3. Wybierz pozycję **Konfiguracja punktu do lokacji** , a następnie wybierz pozycję **Pobierz klienta sieci VPN**.
 
-    ![Pobieranie klienta VPN](./media/sql-database-managed-instance-configure-p2s/download-vpn-client.png)  
+    ![Pobierz klienta VPN](./media/sql-database-managed-instance-configure-p2s/download-vpn-client.png)  
 4. Na lokalnym komputerze klienckim Wyodrębnij pliki z pliku zip, a następnie otwórz folder przy użyciu wyodrębnionych plików.
 5. Otwórz folder "**WindowsAmd64** " i Otwórz plik **VpnClientSetupAmd64. exe** .
 6. Jeśli otrzymasz **chroniony komputer z systemem Windows** , kliknij pozycję **więcej informacji** , a następnie kliknij pozycję **Uruchom mimo to**.
@@ -80,30 +80,30 @@ Ten przewodnik Szybki start:
 
 1. Przejdź do sieci **VPN** w **sieci & Internet** na lokalnym komputerze klienckim i wybierz swoją sieć wirtualną wystąpienia zarządzanego, aby nawiązać połączenie z tą wirtualną. Na poniższej ilustracji Sieć wirtualna ma nazwę **MyNewVNet**.
 
-    ![Połączenie sieci VPN](./media/sql-database-managed-instance-configure-p2s/vpn-connection.png)  
+    ![Połączenie VPN](./media/sql-database-managed-instance-configure-p2s/vpn-connection.png)  
 2. Wybierz przycisk **Połącz**.
 3. W oknie dialogowym wybierz pozycję **Połącz**.
 
-    ![Połączenie sieci VPN](./media/sql-database-managed-instance-configure-p2s/vpn-connection2.png)  
+    ![Połączenie VPN](./media/sql-database-managed-instance-configure-p2s/vpn-connection2.png)  
 4. Po wyświetleniu monitu, że Menedżer połączeń potrzebuje podwyższonego poziomu uprawnień do aktualizowania tabeli tras, wybierz pozycję **Kontynuuj**.
 5. Aby kontynuować, wybierz pozycję **tak** w oknie dialogowym Kontrola konta użytkownika.
 
    Nawiązano połączenie sieci VPN z siecią wirtualną wystąpienia zarządzanego.
 
-    ![Połączenie sieci VPN](./media/sql-database-managed-instance-configure-p2s/vpn-connection-succeeded.png)  
+    ![Połączenie VPN](./media/sql-database-managed-instance-configure-p2s/vpn-connection-succeeded.png)  
 
-## <a name="use-ssms-to-connect-to-the-managed-instance"></a>Nawiązywanie połączenia z wystąpieniem zarządzanym za pomocą programu SSMS
+## <a name="use-ssms-to-connect-to-the-managed-instance"></a>Łączenie się z wystąpieniem zarządzanym przy użyciu programu SSMS
 
 1. Na lokalnym komputerze klienckim Otwórz SQL Server Management Studio (SSMS).
-2. W **Połącz z serwerem** okna dialogowego wprowadź w pełni kwalifikowaną **nazwy hosta** wystąpienia zarządzanego w **nazwy serwera** pole.
-3. Wybierz **uwierzytelniania programu SQL Server**, podaj nazwę użytkownika i hasło, a następnie wybierz **Connect**.
+2. W oknie dialogowym **łączenie z serwerem** wprowadź w pełni kwalifikowaną **nazwę hosta** dla wystąpienia zarządzanego w polu **Nazwa serwera** .
+3. Wybierz pozycję **uwierzytelnianie SQL Server**, podaj nazwę użytkownika i hasło, a następnie wybierz pozycję **Połącz**.
 
     ![nawiązywanie połączenia w programie ssms](./media/sql-database-managed-instance-configure-vm/ssms-connect.png)  
 
 Po nawiązaniu połączenia możesz wyświetlić bazy danych systemu i użytkownika w węźle bazy danych. Można również wyświetlać różne obiekty w węzłach zabezpieczenia, obiekty serwera, replikacja, zarządzanie, Agent SQL Server i Profiler systemu XEvent.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 - Aby zapoznać się z przewodnikiem Szybki Start pokazujący, jak nawiązać połączenie z maszyny wirtualnej platformy Azure, zobacz [Konfigurowanie połączenia punkt-lokacja](sql-database-managed-instance-configure-p2s.md).
-- Aby uzyskać omówienie opcji połączenia dla aplikacji, zobacz artykuł [Connect your applications to Managed Instance](sql-database-managed-instance-connect-app.md) (Łączenie aplikacji z wystąpieniem zarządzanym).
+- Aby uzyskać omówienie opcji połączenia dla aplikacji, zobacz artykuł [Łączenie aplikacji z wystąpieniem zarządzanym](sql-database-managed-instance-connect-app.md).
 - Aby przywrócić istniejącą bazę danych SQL Server z lokalnego do wystąpienia zarządzanego, można użyć [Azure Database Migration Service (DMS) do migracji](../dms/tutorial-sql-server-to-managed-instance.md) lub [polecenia przywracania T-SQL](sql-database-managed-instance-get-started-restore.md) , aby przywrócić plik kopii zapasowej bazy danych.

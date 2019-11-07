@@ -1,5 +1,5 @@
 ---
-title: Kopiowanie danych do i z SQL Server przy użyciu Azure Data Factory | Microsoft Docs
+title: Kopiowanie danych do i z SQL Server przy użyciu Azure Data Factory
 description: Dowiedz się więcej na temat przenoszenia danych do i z bazy danych SQL Server, która jest lokalna lub na maszynie wirtualnej platformy Azure przy użyciu Azure Data Factory.
 services: data-factory
 documentationcenter: ''
@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 09/09/2019
 ms.author: jingwang
-ms.openlocfilehash: b87676e773c4b7714a3b5ef21a6be703e0e3761a
-ms.sourcegitcommit: be344deef6b37661e2c496f75a6cf14f805d7381
+ms.openlocfilehash: 424007c6bd34c0d582af8cd4df00ce7f5fc7fb0f
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/07/2019
-ms.locfileid: "72001383"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73680145"
 ---
 # <a name="copy-data-to-and-from-sql-server-by-using-azure-data-factory"></a>Kopiowanie danych do i z SQL Server przy użyciu Azure Data Factory
 > [!div class="op_single_selector" title1="Wybierz używaną wersję Azure Data Factory:"]
@@ -52,7 +52,7 @@ W SQL Server ten łącznik obsługuje:
 
 [!INCLUDE [data-factory-v2-integration-runtime-requirements](../../includes/data-factory-v2-integration-runtime-requirements.md)]
 
-## <a name="get-started"></a>Wprowadzenie
+## <a name="get-started"></a>Rozpoczęcie pracy
 
 [!INCLUDE [data-factory-v2-connector-get-started](../../includes/data-factory-v2-connector-get-started.md)]
 
@@ -62,11 +62,11 @@ Poniższe sekcje zawierają szczegółowe informacje o właściwościach, które
 
 Następujące właściwości są obsługiwane dla SQL Server połączonej usługi:
 
-| Właściwość | Opis | Wymagane |
+| Właściwość | Opis | Wymagany |
 |:--- |:--- |:--- |
-| — typ | Właściwość Type musi być ustawiona na wartość **SqlServer**. | Tak |
-| Parametry połączenia |Określ informacje o **ConnectionString** , które są konieczne do nawiązania połączenia z bazą danych SQL Server przy użyciu uwierzytelniania SQL lub uwierzytelniania systemu Windows. Zapoznaj się z poniższymi przykładami.<br/>Oznacz to pole jako **SecureString** , aby bezpiecznie przechowywać je w Azure Data Factory. Można również umieścić hasło w Azure Key Vault. Jeśli jest to uwierzytelnianie SQL, należy ściągnąć konfigurację `password` z parametrów połączenia. Aby uzyskać więcej informacji, zobacz przykład JSON po zalogowaniu do tabeli i [przechowywania w Azure Key Vault](store-credentials-in-key-vault.md). |Tak |
-| Uż |Określ nazwę użytkownika, jeśli używasz uwierzytelniania systemu Windows. Przykładem jest **nazwa_domeny @ no__t-1username**. |Nie |
+| type | Właściwość Type musi być ustawiona na wartość **SqlServer**. | Tak |
+| Przekształcon |Określ informacje o **ConnectionString** , które są konieczne do nawiązania połączenia z bazą danych SQL Server przy użyciu uwierzytelniania SQL lub uwierzytelniania systemu Windows. Zapoznaj się z poniższymi przykładami.<br/>Oznacz to pole jako **SecureString** , aby bezpiecznie przechowywać je w Azure Data Factory. Można również umieścić hasło w Azure Key Vault. Jeśli jest to uwierzytelnianie SQL, należy ściągnąć konfigurację `password` z parametrów połączenia. Aby uzyskać więcej informacji, zobacz przykład JSON po zalogowaniu do tabeli i [przechowywania w Azure Key Vault](store-credentials-in-key-vault.md). |Tak |
+| Uż |Określ nazwę użytkownika, jeśli używasz uwierzytelniania systemu Windows. Przykładem jest **domainname\\username**. |Nie |
 | hasło |Określ hasło dla konta użytkownika określonego dla nazwy użytkownika. Oznacz to pole jako **SecureString** , aby bezpiecznie przechowywać je w Azure Data Factory. Lub można [odwołać się do wpisu tajnego przechowywanego w Azure Key Vault](store-credentials-in-key-vault.md). |Nie |
 | Właściwością connectvia | To [środowisko Integration Runtime](concepts-integration-runtime.md) służy do nawiązywania połączenia z magazynem danych. Dowiedz się więcej z sekcji [wymagania wstępne](#prerequisites) . Jeśli nie zostanie określony, zostanie użyta domyślna usługa Azure Integration Runtime. |Nie |
 
@@ -155,11 +155,11 @@ Aby uzyskać pełną listę sekcji i właściwości dostępnych do definiowania 
 
 Aby skopiować dane z i do bazy danych SQL Server, obsługiwane są następujące właściwości:
 
-| Właściwość | Opis | Wymagane |
+| Właściwość | Opis | Wymagany |
 |:--- |:--- |:--- |
-| — typ | Właściwość Type zestawu danych musi być ustawiona na wartość **Sqlservercollection**. | Tak |
-| schemat | Nazwa schematu. |Nie dla źródła, tak dla ujścia  |
-| tabela | Nazwa tabeli/widoku. |Nie dla źródła, tak dla ujścia  |
+| type | Właściwość Type zestawu danych musi być ustawiona na wartość **Sqlservercollection**. | Tak |
+| schematy | Nazwa schematu. |Nie dla źródła, tak dla ujścia  |
+| tabele | Nazwa tabeli/widoku. |Nie dla źródła, tak dla ujścia  |
 | tableName | Nazwa tabeli/widoku ze schematem. Ta właściwość jest obsługiwana w celu zapewnienia zgodności z poprzednimi wersjami. W przypadku nowych obciążeń Użyj `schema` i `table`. | Nie dla źródła, tak dla ujścia |
 
 **Przykład**
@@ -191,17 +191,17 @@ Aby zapoznać się z pełną listą sekcji i właściwości dostępnych do defin
 
 Aby skopiować dane z SQL Server, ustaw typ źródła w działaniu Copy na **sqlsource**. W sekcji Źródło działania kopiowania są obsługiwane następujące właściwości:
 
-| Właściwość | Opis | Wymagane |
+| Właściwość | Opis | Wymagany |
 |:--- |:--- |:--- |
-| — typ | Właściwość Type źródła działania Copy musi być ustawiona na wartość **sqlsource**. | Tak |
-| sqlReaderQuery |Użyj niestandardowego zapytania SQL, aby odczytać dane. Przykładem jest `select * from MyTable`. |Nie |
+| type | Właściwość Type źródła działania Copy musi być ustawiona na wartość **sqlsource**. | Tak |
+| sqlReaderQuery |Użyj niestandardowego zapytania SQL, aby odczytać dane. Może to być na przykład `select * from MyTable`. |Nie |
 | sqlReaderStoredProcedureName |Ta właściwość jest nazwą procedury składowanej, która odczytuje dane z tabeli źródłowej. Ostatnia instrukcja SQL musi być instrukcją SELECT w procedurze składowanej. |Nie |
 | storedProcedureParameters |Te parametry dotyczą procedury składowanej.<br/>Dozwolone wartości to pary nazw lub wartości. Nazwy i wielkość liter parametrów muszą być zgodne z nazwami i wielkością liter parametrów procedury składowanej. |Nie |
 
 **Punkty do uwagi:**
 
 - Jeśli **sqlReaderQuery** jest określony dla elementu **sqlsource**, działanie Copy uruchamia to zapytanie względem źródła SQL Server, aby uzyskać dane. Można również określić procedurę składowaną, określając **sqlReaderStoredProcedureName** i **storedProcedureParameters** , jeśli procedura składowana pobiera parametry.
-- Jeśli nie określisz opcji **sqlReaderQuery** ani **sqlReaderStoredProcedureName**, kolumny zdefiniowane w sekcji "Structure" w kodzie JSON zestawu danych są używane do konstruowania zapytania. Zapytanie `select column1, column2 from mytable` działa względem SQL Server. Jeśli definicja zestawu danych nie ma "struktury", wszystkie kolumny są wybierane z tabeli.
+- Jeśli nie określisz opcji **sqlReaderQuery** ani **sqlReaderStoredProcedureName**, kolumny zdefiniowane w sekcji "Structure" w kodzie JSON zestawu danych są używane do konstruowania zapytania. `select column1, column2 from mytable` kwerendy jest uruchamiana z SQL Server. Jeśli definicja zestawu danych nie ma "struktury", wszystkie kolumny są wybierane z tabeli.
 
 **Przykład: Użyj zapytania SQL**
 
@@ -297,9 +297,9 @@ GO
 
 Aby skopiować dane do SQL Server, ustaw typ ujścia w działaniu Copy na **sqlsink**. W sekcji ujścia działania kopiowania są obsługiwane następujące właściwości:
 
-| Właściwość | Opis | Wymagane |
+| Właściwość | Opis | Wymagany |
 |:--- |:--- |:--- |
-| — typ | Właściwość Type ujścia działania Copy musi być ustawiona na wartość **sqlsink**. | Tak |
+| type | Właściwość Type ujścia działania Copy musi być ustawiona na wartość **sqlsink**. | Tak |
 | writeBatchSize |Liczba wierszy do wstawienia do tabeli SQL *na partię*.<br/>Dozwolone wartości to liczby całkowite dla liczby wierszy. Domyślnie Azure Data Factory dynamicznie określa odpowiedni rozmiar wsadu na podstawie rozmiaru wiersza. |Nie |
 | writeBatchTimeout |Ta właściwość określa czas oczekiwania na zakończenie operacji wstawiania wsadowego przed upływem limitu czasu.<br/>Dozwolone wartości są dla przedziału czasu. Przykładem jest "00:30:00" w ciągu 30 minut. Jeśli wartość nie zostanie określona, limit czasu zostanie przyjmowana domyślnie jako "02:00:00". |Nie |
 | preCopyScript |Ta właściwość określa zapytanie SQL dla działania kopiowania, które ma zostać uruchomione przed zapisaniem danych w SQL Server. Jest on wywoływany tylko raz dla każdego przebiegu kopiowania. Ta właściwość służy do czyszczenia wstępnie załadowanych danych. |Nie |
@@ -397,7 +397,7 @@ Zapoznaj się z odpowiednimi sekcjami dotyczącymi konfigurowania programu w Azu
 
 Dołączanie danych jest domyślnym zachowaniem tego łącznika SQL Server sink. Azure Data Factory wykonuje zbiorcze Wstawianie w celu wydajnego zapisu w tabeli. Można odpowiednio skonfigurować źródło i ujścia w działaniu kopiowania.
 
-### <a name="upsert-data"></a>Upsert dane
+### <a name="upsert-data"></a>Wykonywanie operacji upsert dla danych
 
 **Opcja 1:** Jeśli masz dużą ilość danych do skopiowania, użyj następującego podejścia, aby wykonać upsert: 
 
@@ -501,37 +501,37 @@ Podczas kopiowania danych z i do SQL Server, następujące mapowania są używan
 | Typ danych SQL Server | Azure Data Factory typ danych pośrednich |
 |:--- |:--- |
 | bigint |Int64 |
-| binarny |Byte [] |
-| bit |Boolean |
-| char |String, Char [] |
-| Data |DataGodzina |
-| Datę |DataGodzina |
-| datetime2 |DataGodzina |
+| Binarny |Byte [] |
+| bit |Wartość logiczna |
+| delikatn |String, Char [] |
+| date |DateTime |
+| Datę |DateTime |
+| datetime2 |DateTime |
 | DateTimeOffset |DateTimeOffset |
-| Wartość dziesiętna |Wartość dziesiętna |
+| Dokładności |Dokładności |
 | FILESTREAM — atrybut (varbinary (max)) |Byte [] |
 | Float |Double |
-| obraz |Byte [] |
-| int |Int32 |
-| finansowego |Wartość dziesiętna |
+| image |Byte [] |
+| int |Elementem |
+| finansowego |Dokładności |
 | nchar |String, Char [] |
 | ntext |String, Char [] |
-| numeryczne |Wartość dziesiętna |
+| przypada |Dokładności |
 | nvarchar |String, Char [] |
-| rzeczywiste |Single |
+| czasie rzeczywistym |Pojedyncze |
 | rowversion |Byte [] |
-| smalldatetime |DataGodzina |
+| smalldatetime |DateTime |
 | smallint |Int16 |
-| smallmoney |Wartość dziesiętna |
+| smallmoney |Dokładności |
 | sql_variant |Obiekt |
 | tekst |String, Char [] |
-| czas |Czasu |
-| znacznik czasu |Byte [] |
+| time |Czasu |
+| sygnatura czasowa |Byte [] |
 | tinyint |Int16 |
-| uniqueidentifier |Ident |
+| uniqueidentifier |Identyfikator GUID |
 | liczby |Byte [] |
 | varchar |String, Char [] |
-| dokument |Xml |
+| xml |dokument |
 
 >[!NOTE]
 > W przypadku typów danych, które są mapowane na typ pośredni dziesiętny, obecnie Azure Data Factory obsługuje precyzję do 28. Jeśli masz dane wymagające dokładności większej niż 28, Rozważ przekonwertowanie na ciąg w zapytaniu SQL.
@@ -561,7 +561,7 @@ Aby uzyskać szczegółowe informacje na temat właściwości, sprawdź [działa
 3. W tym samym oknie kliknij dwukrotnie pozycję **TCP/IP** , aby uruchomić okno **właściwości protokołu TCP/IP** .
 4. Przejdź do karty **adresy IP** . Przewiń w dół, aby wyświetlić sekcję **IPAll** . Zapisz **port TCP**. Wartość domyślna to **1433**.
 5. Utwórz **regułę dla zapory systemu Windows** na komputerze, aby zezwolić na ruch przychodzący przez ten port. 
-6. **Sprawdź połączenie**: Aby nawiązać połączenie z SQL Server przy użyciu w pełni kwalifikowanej nazwy, użyj SQL Server Management Studio z innego komputera. Przykładem jest `"<machine>.<domain>.corp.<company>.com,1433"`.
+6. **Sprawdź połączenie**: Aby nawiązać połączenie z SQL Server przy użyciu w pełni kwalifikowanej nazwy, użyj SQL Server Management Studio z innego komputera. Może to być na przykład `"<machine>.<domain>.corp.<company>.com,1433"`.
 
 ## <a name="next-steps"></a>Następne kroki
 Listę magazynów danych obsługiwanych jako źródła i ujścia przez działanie kopiowania w Azure Data Factory można znaleźć w temacie [obsługiwane magazyny danych](copy-activity-overview.md##supported-data-stores-and-formats).

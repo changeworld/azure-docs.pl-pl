@@ -1,5 +1,5 @@
 ---
-title: Skalowanie w dół przy użyciu Azure SQL Database | Microsoft Docs
+title: Scaling out with Azure SQL Database (Skalowanie w poziomie za pomocą usługi Azure SQL Database)
 description: Deweloperzy oprogramowania jako usługi (SaaS) mogą łatwo tworzyć elastyczne i skalowalne bazy danych w chmurze przy użyciu tych narzędzi
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 01/25/2019
-ms.openlocfilehash: e5ae56b2050243831f10863bbb4184a9e89f5911
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 56556576dffd4e022f919af89459d92e48c6c895
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68568408"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73690239"
 ---
 # <a name="scaling-out-with-azure-sql-database"></a>Scaling out with Azure SQL Database (Skalowanie w poziomie za pomocą usługi Azure SQL Database)
 Możesz łatwo skalować bazy danych Azure SQL Database przy użyciu narzędzi **Elastic Database** . Te narzędzia i funkcje umożliwiają korzystanie z zasobów bazy danych **Azure SQL Database** do tworzenia rozwiązań dla obciążeń transakcyjnych, a zwłaszcza aplikacji oprogramowania jako usługi (SaaS). Elastic Database funkcje składają się z:
@@ -24,7 +24,7 @@ Możesz łatwo skalować bazy danych Azure SQL Database przy użyciu narzędzi *
 * [Elastic Database Biblioteka kliencka](sql-database-elastic-database-client-library.md): Biblioteka kliencka to funkcja, która umożliwia tworzenie i konserwowanie baz danych podzielonej na fragmenty.  Zobacz Rozpoczynanie [pracy z narzędziami Elastic Database](sql-database-elastic-scale-get-started.md).
 * [Narzędzie Elastic Database Split-Merge](sql-database-elastic-scale-overview-split-and-merge.md): przenosi dane między bazami danych podzielonej na fragmenty. To narzędzie jest przydatne do przeniesienia danych z wielodostępnej bazy danych do bazy danych z jedną dzierżawą (lub odwrotnie). Zobacz [samouczek narzędzia do dzielenia i scalania Elastic Database](sql-database-elastic-scale-configure-deploy-split-and-merge.md).
 * [Zadania Elastic Database](elastic-jobs-overview.md): Używanie zadań do zarządzania dużą liczbą baz danych SQL Azure. Łatwe wykonywanie operacji administracyjnych, takich jak zmiany schematu, zarządzanie poświadczeniami, aktualizacje danych referencyjnych, zbieranie danych o wydajności lub zbieranie informacji telemetrycznych dzierżawy (klienta) za pomocą zadań.
-* [Zapytanie Elastic Database](sql-database-elastic-query-overview.md) (wersja zapoznawcza): Umożliwia uruchomienie zapytania Transact-SQL obejmującego wiele baz danych. Dzięki temu można nawiązać połączenie z narzędziami do raportowania, takimi jak Excel, Power BI, Tableau itp.
+* [Zapytanie Elastic Database](sql-database-elastic-query-overview.md) (wersja zapoznawcza): umożliwia uruchomienie zapytania Transact-SQL obejmującego wiele baz danych. Dzięki temu można nawiązać połączenie z narzędziami do raportowania, takimi jak Excel, Power BI, Tableau itp.
 * [Transakcje elastyczne](sql-database-elastic-transactions-overview.md): Ta funkcja umożliwia uruchamianie transakcji obejmujących kilka baz danych w Azure SQL Database. Transakcje Elastic Database są dostępne dla aplikacji .NET korzystających z programu ADO .NET i integrują się z znanym środowiskiem programistycznym korzystającym z [klas System. Transaction](https://msdn.microsoft.com/library/system.transactions.aspx).
 
 Poniższa ilustracja przedstawia architekturę zawierającą **funkcje Elastic Database** w odniesieniu do kolekcji baz danych.
@@ -76,7 +76,7 @@ W innych scenariuszach, takich jak pozyskiwanie danych z urządzeń rozproszonyc
 Fragmentowania działa najlepiej, gdy każda transakcja w aplikacji może być ograniczona do pojedynczej wartości klucza fragmentowania. Gwarantuje to, że wszystkie transakcje są lokalne dla określonej bazy danych.
 
 ## <a name="multi-tenant-and-single-tenant"></a>Wiele dzierżawców i jedna dzierżawa
-Niektóre aplikacje wykorzystują najprostszą metodę tworzenia oddzielnej bazy danych dla każdej dzierżawy. To podejście jest **wzorcem fragmentowania** o pojedynczej dzierżawie, który zapewnia izolację, możliwość tworzenia kopii zapasowej/przywracania i skalowanie zasobów na poziomie szczegółowości dzierżawy. W przypadku pojedynczej dzierżawy fragmentowania każda baza danych jest skojarzona z określoną wartością identyfikatora dzierżawy (lub wartością klucza klienta), ale klucz ten nie zawsze musi znajdować się w samych danych. Jest on odpowiedzialny za kierowanie poszczególnych żądań do odpowiedniej bazy danych, a Biblioteka klienta może uprościć ten proces.
+Niektóre aplikacje wykorzystują najprostszą metodę tworzenia oddzielnej bazy danych dla każdej dzierżawy. To podejście jest **wzorcem fragmentowania o pojedynczej dzierżawie** , który zapewnia izolację, możliwość tworzenia kopii zapasowej/przywracania i skalowanie zasobów na poziomie szczegółowości dzierżawy. W przypadku pojedynczej dzierżawy fragmentowania każda baza danych jest skojarzona z określoną wartością identyfikatora dzierżawy (lub wartością klucza klienta), ale klucz ten nie zawsze musi znajdować się w samych danych. Jest on odpowiedzialny za kierowanie poszczególnych żądań do odpowiedniej bazy danych, a Biblioteka klienta może uprościć ten proces.
 
 ![Pojedynczy dzierżawca a wiele dzierżawców][4]
 
@@ -90,7 +90,7 @@ Aby uzyskać przykładową aplikację, która demonstruje bibliotekę kliencką,
 
 Aby skonwertować istniejące bazy danych do korzystania z narzędzi, zobacz [Migrowanie istniejących baz danych w celu skalowania w poziomie](sql-database-elastic-convert-to-use-elastic-tools.md).
 
-Aby wyświetlić informacje dotyczące puli elastycznej, zobacz zagadnienia [dotyczące cen i wydajności puli elastycznej](sql-database-elastic-pool.md)lub Utwórz nową pulę z [elastycznymi pulami](sql-database-elastic-pool-manage-portal.md).  
+Aby wyświetlić informacje dotyczące puli elastycznej, zobacz [zagadnienia dotyczące cen i wydajności puli elastycznej](sql-database-elastic-pool.md)lub Utwórz nową pulę z [elastycznymi pulami](sql-database-elastic-pool-manage-portal.md).  
 
 [!INCLUDE [elastic-scale-include](../../includes/elastic-scale-include.md)]
 

@@ -1,5 +1,5 @@
 ---
-title: Korzystanie z biblioteki klienta Elastic Database z Dapper | Microsoft Docs
+title: Korzystanie z biblioteki klienta Elastic Database z Dapper
 description: Korzystanie z biblioteki klienta Elastic Database z Dapper.
 services: sql-database
 ms.service: sql-database
@@ -11,26 +11,26 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 12/04/2018
-ms.openlocfilehash: 1eafb123014effad9daca89dc1b852367d9cbbf1
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 3b1fa6ab046845e2fd95e8d4b5611ca2f5d12562
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68568275"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73690085"
 ---
 # <a name="using-elastic-database-client-library-with-dapper"></a>Korzystanie z biblioteki klienta Elastic Database z Dapper
 Ten dokument jest przeznaczony dla deweloperów, którzy korzystają z usługi Dapper do kompilowania aplikacji, ale również chcą korzystać z [narzędzi elastycznych baz danych](sql-database-elastic-scale-introduction.md) w celu tworzenia aplikacji, które implementują fragmentowania w celu skalowania w poziomie warstwy danych.  W tym dokumencie przedstawiono zmiany w aplikacjach opartych na Dapper, które są niezbędne do integracji z narzędziami Elastic Database. Naszym fokusem jest tworzenie Elastic Database fragmentu Management i Routing zależny od danych za pomocą Dapper. 
 
-**Przykładowy kod**: [Narzędzia elastycznej bazy danych dla integracji Azure SQL Database-Dapper](https://code.msdn.microsoft.com/Elastic-Scale-with-Azure-e19fc77f).
+**Przykładowy kod**: [Narzędzia Elastic Database tools dla integracji Azure SQL Database-Dapper](https://code.msdn.microsoft.com/Elastic-Scale-with-Azure-e19fc77f).
 
-Integracja programów **Dapper** i **DapperExtensions** z biblioteką klienta Elastic Database dla Azure SQL Database jest łatwa. Aplikacje mogą używać routingu zależnego od danych przez zmianę sposobu tworzenia i otwierania nowych obiektów [](https://msdn.microsoft.com/library/system.data.sqlclient.sqlconnection.aspx) SqlConnection, aby użyć wywołania [OpenConnectionForKey](https://msdn.microsoft.com/library/azure/dn807226.aspx) z [biblioteki klienta](https://msdn.microsoft.com/library/azure/dn765902.aspx). To ogranicza zmiany w aplikacji tylko wtedy, gdy nowe połączenia są tworzone i otwierane. 
+Integracja programów **Dapper** i **DapperExtensions** z biblioteką klienta Elastic Database dla Azure SQL Database jest łatwa. Aplikacje mogą używać routingu zależnego od danych przez zmianę sposobu tworzenia i otwierania nowych obiektów [SqlConnection](https://msdn.microsoft.com/library/system.data.sqlclient.sqlconnection.aspx) , aby użyć wywołania [OpenConnectionForKey](https://msdn.microsoft.com/library/azure/dn807226.aspx) z [biblioteki klienta](https://msdn.microsoft.com/library/azure/dn765902.aspx). To ogranicza zmiany w aplikacji tylko wtedy, gdy nowe połączenia są tworzone i otwierane. 
 
 ## <a name="dapper-overview"></a>Dapper — Omówienie
 **Dapper** jest mapowaniem obiektowo-relacyjnym. Mapuje obiekty .NET z aplikacji do relacyjnej bazy danych (i odwrotnie). Pierwsza część przykładowego kodu ilustruje, jak można zintegrować bibliotekę klienta Elastic Database z aplikacjami opartymi na Dapper. Druga część przykładowego kodu ilustruje sposób integracji w przypadku używania zarówno Dapper, jak i DapperExtensions.  
 
 Funkcja mapowania w programie Dapper zapewnia metody rozszerzające dla połączeń z bazą danych, które upraszczają przesyłanie instrukcji języka T-SQL na potrzeby wykonywania lub wykonywania zapytań w bazie danych. Na przykład Dapper ułatwia mapowanie między obiektami .NET i parametrami instrukcji SQL na potrzeby **wykonywania** wywołań lub do korzystania z wyników zapytań SQL do obiektów .NET przy użyciu wywołań **zapytań** z Dapper. 
 
-W przypadku korzystania z DapperExtensions nie trzeba już podawać instrukcji SQL. Metody rozszerzeń, takie jak GetList lub **INSERT** over a Connection Database, tworzą instrukcje SQL w tle.
+W przypadku korzystania z DapperExtensions nie trzeba już podawać instrukcji SQL. Metody rozszerzeń, takie jak **GetList** lub **INSERT** over a Connection Database, tworzą instrukcje SQL w tle.
 
 Kolejną zaletą usługi Dapper, a także DapperExtensions jest to, że aplikacja kontroluje tworzenie połączenia z bazą danych. Pomaga to w współpracy z biblioteką klienta Elastic Database, która brokeruje połączenia bazy danych na podstawie mapowania podfragmentów do baz danych.
 
@@ -48,15 +48,15 @@ Zamiast używać tradycyjnego sposobu tworzenia połączeń dla Dapper, należy 
 ### <a name="requirements-for-dapper-integration"></a>Wymagania dotyczące integracji usługi Dapper
 Podczas pracy z biblioteką klienta Elastic Database i interfejsami API Dapper należy zachować następujące właściwości:
 
-* **Skalowanie w poziomie**: Chcemy dodawać i usuwać bazy danych z warstwy dane aplikacji podzielonej na fragmenty, które są niezbędne do zapotrzebowania na wydajność aplikacji. 
-* **Spójność**: Ponieważ aplikacja jest skalowana w poziomie przy użyciu fragmentowania, należy wykonać Routing zależny od danych. Chcemy to zrobić przy użyciu funkcji routingu zależnych od danych w bibliotece. W szczególności chcesz zachować gwarancje weryfikacji i spójności podane przez połączenia, które są obsługiwane przez brokera w Menedżerze mapy fragmentu, aby uniknąć uszkodzenia lub nieprawidłowych wyników zapytania. Zapewnia to, że połączenia z danym podfragmentu są odrzucane lub zatrzymywane, jeśli (na przykład) podfragmentu jest aktualnie przenoszony do innego fragmentu za pomocą interfejsów API z podziałem/scalaniem.
-* **Mapowanie obiektu**: Chcemy zachować wygodę mapowań dostarczonych przez Dapper do translacji między klasami w aplikacji i strukturami źródłowej bazy danych. 
+* **Skalowanie w poziomie**: chcemy dodawać i usuwać bazy danych z warstwy dane aplikacji podzielonej na fragmenty w zależności od potrzeb aplikacji. 
+* **Spójność**: ponieważ aplikacja jest skalowana w poziomie przy użyciu fragmentowania, należy wykonać Routing zależny od danych. Chcemy to zrobić przy użyciu funkcji routingu zależnych od danych w bibliotece. W szczególności chcesz zachować gwarancje weryfikacji i spójności podane przez połączenia, które są obsługiwane przez brokera w Menedżerze mapy fragmentu, aby uniknąć uszkodzenia lub nieprawidłowych wyników zapytania. Zapewnia to, że połączenia z danym podfragmentu są odrzucane lub zatrzymywane, jeśli (na przykład) podfragmentu jest aktualnie przenoszony do innego fragmentu za pomocą interfejsów API z podziałem/scalaniem.
+* **Mapowanie obiektu**: chcemy zachować wygodę mapowań dostarczonych przez Dapper do translacji między klasami w aplikacji i strukturami źródłowej bazy danych. 
 
 W poniższej sekcji znajdują się wskazówki dotyczące tych wymagań dla aplikacji opartych na **Dapper** i **DapperExtensions**.
 
 ## <a name="technical-guidance"></a>Wskazówki techniczne
 ### <a name="data-dependent-routing-with-dapper"></a>Routing zależny od danych za pomocą Dapper
-W programie Dapper aplikacja jest zazwyczaj odpowiedzialna za tworzenie i otwieranie połączeń z podstawową bazą danych. Po wpisaniu typu T przez aplikację Dapper zwraca wyniki zapytania jako kolekcje .NET typu T. Dapper wykonuje mapowanie z wierszy wyniku T-SQL do obiektów typu T. Podobnie Dapper mapuje obiekty .NET na wartości SQL lub parametry na potrzeby instrukcji języka operowania danymi (DML). Dapper oferuje tę funkcję za pomocą metod rozszerzających dla [](https://msdn.microsoft.com/library/system.data.sqlclient.sqlconnection.aspx) zwykłego obiektu SqlConnection z BIBLIOTEK klienta ADO .NET SQL. Połączenie SQL zwrócone przez interfejsy API skalowania elastycznego dla DDR jest również [](https://msdn.microsoft.com/library/system.data.sqlclient.sqlconnection.aspx) zwykłymi obiektami SqlConnection. Dzięki temu możemy bezpośrednio używać rozszerzeń Dapper na podstawie typu zwracanego przez interfejs API DDR biblioteki klienta, ponieważ jest to również proste połączenie z klientem SQL.
+W programie Dapper aplikacja jest zazwyczaj odpowiedzialna za tworzenie i otwieranie połączeń z podstawową bazą danych. Po wpisaniu typu T przez aplikację Dapper zwraca wyniki zapytania jako kolekcje .NET typu T. Dapper wykonuje mapowanie z wierszy wyniku T-SQL do obiektów typu T. Podobnie Dapper mapuje obiekty .NET na wartości SQL lub parametry na potrzeby instrukcji języka operowania danymi (DML). Dapper oferuje tę funkcję za pomocą metod rozszerzających dla zwykłego obiektu [SqlConnection](https://msdn.microsoft.com/library/system.data.sqlclient.sqlconnection.aspx) z BIBLIOTEK klienta ADO .NET SQL. Połączenie SQL zwrócone przez interfejsy API skalowania elastycznego dla DDR jest również zwykłymi obiektami [SqlConnection](https://msdn.microsoft.com/library/system.data.sqlclient.sqlconnection.aspx) . Dzięki temu możemy bezpośrednio używać rozszerzeń Dapper na podstawie typu zwracanego przez interfejs API DDR biblioteki klienta, ponieważ jest to również proste połączenie z klientem SQL.
 
 Te spostrzeżenia sprawiają, że bezpośrednie użycie połączeń obsługiwanych przez brokera w bibliotece klienta Elastic Database dla Dapper.
 
@@ -136,7 +136,7 @@ A Oto przykładowy kod dla zapytania:
     }
 
 ### <a name="handling-transient-faults"></a>Obsługa błędów przejściowych
-Zespół ds. rozwiązań firmy & Microsoft opublikował [blok aplikacji do obsługi błędów przejściowych](https://msdn.microsoft.com/library/hh680934.aspx) , aby pomóc deweloperom w rozwiązaniu typowych warunków błędów w chmurze. Aby uzyskać więcej informacji, [Zobacz Perseverance, Secret of all Triumphs: Korzystanie z bloku](https://msdn.microsoft.com/library/dn440719.aspx)aplikacji do obsługi błędów przejściowych.
+Zespół ds. rozwiązań firmy & Microsoft opublikował [blok aplikacji do obsługi błędów przejściowych](https://msdn.microsoft.com/library/hh680934.aspx) , aby pomóc deweloperom w rozwiązaniu typowych warunków błędów w chmurze. Aby uzyskać więcej informacji, zobacz [Perseverance, Secret of all Triumphss: Using the przejściowe Application obsługa błędów](https://msdn.microsoft.com/library/dn440719.aspx).
 
 Przykładowy kod opiera się na tymczasowej bibliotece błędów, aby chronić przed błędami przejściowymi. 
 
@@ -158,8 +158,8 @@ Podejścia opisane w niniejszym dokumencie wiążą się z kilkoma ograniczeniam
 * Przykładowy kod dla tego dokumentu nie pokazuje, jak zarządzać schematem w programie fragmentów.
 * Na żądanie przyjmujemy, że wszystkie jego przetwarzanie bazy danych jest zawarte w obrębie jednego fragmentuu identyfikowanego przez klucz fragmentowania dostarczony przez żądanie. Jednak to założenie nie zawsze jest przechowywane, na przykład gdy nie jest możliwe udostępnienie klucza fragmentowania. Aby rozwiązać ten konieczność, Biblioteka klienta Elastic Database zawiera [klasę MultiShardQuery](https://msdn.microsoft.com/library/azure/microsoft.azure.sqldatabase.elasticscale.query.multishardexception.aspx). Klasa implementuje abstrakcję połączenia w celu wykonywania zapytań na kilku fragmentów. Używanie MultiShardQuery w połączeniu z Dapper wykracza poza zakres tego dokumentu.
 
-## <a name="conclusion"></a>Wniosek
-Aplikacje korzystające z programów Dapper i DapperExtensions mogą łatwo korzystać z narzędzi elastycznych baz danych dla Azure SQL Database. W ramach kroków opisanych w tym dokumencie te aplikacje mogą korzystać z możliwości narzędzia dla routingu zależnego od danych przez zmianę sposobu tworzenia i otwierania nowych obiektów SqlConnection [](https://msdn.microsoft.com/library/system.data.sqlclient.sqlconnection.aspx) w celu użycia wywołania [OpenConnectionForKey](https://msdn.microsoft.com/library/azure/dn807226.aspx) elastycznego Biblioteka klienta bazy danych. Pozwala to ograniczyć zmiany aplikacji wymagane do tych miejsc, w których nowe połączenia są tworzone i otwierane. 
+## <a name="conclusion"></a>Podsumowanie
+Aplikacje korzystające z programów Dapper i DapperExtensions mogą łatwo korzystać z narzędzi elastycznych baz danych dla Azure SQL Database. W ramach kroków opisanych w tym dokumencie te aplikacje mogą korzystać z możliwości narzędzia dla routingu zależnego od danych przez zmianę sposobu tworzenia i otwierania nowych obiektów [SqlConnection](https://msdn.microsoft.com/library/system.data.sqlclient.sqlconnection.aspx) w celu użycia wywołania [OpenConnectionForKey](https://msdn.microsoft.com/library/azure/dn807226.aspx) elastycznego Biblioteka klienta bazy danych. Pozwala to ograniczyć zmiany aplikacji wymagane do tych miejsc, w których nowe połączenia są tworzone i otwierane. 
 
 [!INCLUDE [elastic-scale-include](../../includes/elastic-scale-include.md)]
 

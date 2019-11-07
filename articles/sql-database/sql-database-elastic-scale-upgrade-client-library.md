@@ -1,5 +1,5 @@
 ---
-title: Uaktualnianie do najnowszej biblioteki klienta Elastic Database | Microsoft Docs
+title: Uaktualnianie do najnowszej biblioteki klienta Elastic Database
 description: Użyj NuGet, aby uaktualnić bibliotekę klienta Elastic Database.
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 01/03/2019
-ms.openlocfilehash: 286fa60fef8de5240fb2ccd0f14ced0c4e38ff73
-ms.sourcegitcommit: 6d2a147a7e729f05d65ea4735b880c005f62530f
+ms.openlocfilehash: acf722268ae7ea5c8b444467f0b5c658d919096c
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69981369"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73690130"
 ---
 # <a name="upgrade-an-app-to-use-the-latest-elastic-database-client-library"></a>Uaktualnij aplikację, aby użyć najnowszej biblioteki klienta Elastic Database
 
@@ -32,7 +32,7 @@ Wykonanie tych kroków w celu zapewnienia, że stare wersje biblioteki klienta n
 
 **1. Uaktualnij aplikacje.** W programie Visual Studio Pobierz najnowszą wersję biblioteki klienta i odwołuje się do wszystkich projektów programistycznych korzystających z biblioteki; następnie Skompiluj i Wdróż.
 
-* W rozwiązaniu programu Visual Studio wybierz kolejno pozycje **Narzędzia** -->  -->  **Menedżer pakietów NuGet**zarządzanie pakietami**NuGet dla rozwiązania**.
+* W rozwiązaniu programu Visual Studio wybierz kolejno pozycje **narzędzia** --> **menedżer pakietów NuGet** -->  **Zarządzanie pakietami NuGet dla rozwiązania**.
 * (Visual Studio 2013) W lewym panelu wybierz pozycję **aktualizacje**, a następnie wybierz przycisk **aktualizuj** w pakiecie **Azure SQL Database biblioteki klienta elastycznej skalowania** , która jest wyświetlana w oknie.
 * (Visual Studio 2015) Ustaw pole filtru na **dostępne do uaktualnienia**. Wybierz pakiet do zaktualizowania, a następnie kliknij przycisk **Aktualizuj** .
 * (Visual Studio 2017) W górnej części okna dialogowego wybierz pozycję **aktualizacje**. Wybierz pakiet do zaktualizowania, a następnie kliknij przycisk **Aktualizuj** .
@@ -42,17 +42,17 @@ Wykonanie tych kroków w celu zapewnienia, że stare wersje biblioteki klienta n
 
 **3. Uaktualnij usługę Split-Merge.** W przypadku używania narzędzia do dzielenia i scalania baz danych w celu reorganizowania danych podzielonej na fragmenty należy [pobrać i wdrożyć najnowszą wersję narzędzia](https://www.nuget.org/packages/Microsoft.Azure.SqlDatabase.ElasticScale.Service.SplitMerge/). Szczegółowe kroki uaktualniania usługi można znaleźć [tutaj](sql-database-elastic-scale-overview-split-and-merge.md).
 
-**4. Uaktualnij bazy danych**Menedżera map fragmentu. Uaktualnij metadane obsługujące mapy fragmentu w Azure SQL Database.  Można to zrobić na dwa sposoby przy użyciu programu PowerShell lub C#. Poniżej przedstawiono obie opcje.
+**4. Uaktualnij bazy danych Menedżera map fragmentu**. Uaktualnij metadane obsługujące mapy fragmentu w Azure SQL Database.  Można to zrobić na dwa sposoby przy użyciu programu PowerShell lub C#. Poniżej przedstawiono obie opcje.
 
 ***Opcja 1: Uaktualnianie metadanych przy użyciu programu PowerShell***
 
 1. Pobierz najnowsze narzędzie wiersza polecenia dla programu NuGet z tego [miejsca](https://nuget.org/nuget.exe) i Zapisz je w folderze.
-2. Otwórz wiersz polecenia, przejdź do tego samego folderu i wydaj polecenie:`nuget install Microsoft.Azure.SqlDatabase.ElasticScale.Client`
-3. Przejdź do podfolderu zawierającego nową wersję biblioteki DLL klienta, na przykład:`cd .\Microsoft.Azure.SqlDatabase.ElasticScale.Client.1.0.0\lib\net45`
+2. Otwórz wiersz polecenia, przejdź do tego samego folderu i wydaj polecenie: `nuget install Microsoft.Azure.SqlDatabase.ElasticScale.Client`
+3. Przejdź do podfolderu zawierającego nowo pobraną wersję biblioteki DLL klienta, na przykład: `cd .\Microsoft.Azure.SqlDatabase.ElasticScale.Client.1.0.0\lib\net45`
 4. Pobierz skrypt uaktualnienia Elastic Database Client z [Centrum skryptów](https://gallery.technet.microsoft.com/scriptcenter/Azure-SQL-Database-Elastic-6442e6a9)i Zapisz go w tym samym folderze, w którym znajduje się biblioteka DLL.
 5. W tym folderze Uruchom polecenie "PowerShell .\upgrade.ps1" w wierszu polecenia i postępuj zgodnie z monitami.
 
-***Opcja 2: Uaktualnij metadane przy użyciuC#***
+***Opcja 2: Uaktualnianie metadanych przy użyciuC#***
 
 Alternatywnie możesz utworzyć aplikację programu Visual Studio, która otwiera ShardMapManager, iteruje wszystkie fragmentów i wykonuje uaktualnienie metadanych, wywołując metody [UpgradeLocalStore](https://docs.microsoft.com/dotnet/api/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardmapmanager.upgradelocalstore) i [UpgradeGlobalStore](https://docs.microsoft.com/dotnet/api/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardmapmanager.upgradeglobalstore) , jak w poniższym przykładzie:
 

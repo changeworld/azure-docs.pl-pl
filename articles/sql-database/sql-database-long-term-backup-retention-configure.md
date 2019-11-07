@@ -1,5 +1,5 @@
 ---
-title: Zarządzanie Azure SQL Database długoterminowym przechowywaniem kopii zapasowych | Microsoft Docs
+title: 'Zarządzanie długoterminowym przechowywaniem kopii zapasowych Azure SQL Database '
 description: Dowiedz się, jak przechowywać zautomatyzowane kopie zapasowe w usłudze SQL Azure Storage, a następnie przywracać je
 services: sql-database
 ms.service: sql-database
@@ -12,16 +12,16 @@ ms.author: sashan
 ms.reviewer: mathoma, carlrab
 manager: craigg
 ms.date: 08/21/2019
-ms.openlocfilehash: b90e364442e46269fc949ef4aecd9a756cff5595
-ms.sourcegitcommit: beb34addde46583b6d30c2872478872552af30a1
+ms.openlocfilehash: 32eb021ecd584e0b1b734abb236f383a32b79131
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69904619"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73689553"
 ---
 # <a name="manage-azure-sql-database-long-term-backup-retention"></a>Zarządzanie długoterminowym przechowywaniem kopii zapasowych Azure SQL Database
 
-W Azure SQL Database można skonfigurować jedną lub bazę danych w puli z długoterminowymi zasadami [przechowywania kopii zapasowych](sql-database-long-term-retention.md) (LTR), aby automatycznie zachować kopie zapasowe bazy danych w oddzielnych kontenerach usługi Azure Blob Storage przez maksymalnie 10 lat. Następnie można odzyskać bazę danych przy użyciu tych kopii zapasowych przy użyciu Azure Portal lub programu PowerShell.
+W Azure SQL Database można skonfigurować jedną lub bazę danych w puli z [długoterminowymi zasadami przechowywania kopii zapasowych](sql-database-long-term-retention.md) (LTR), aby automatycznie zachować kopie zapasowe bazy danych w oddzielnych kontenerach usługi Azure Blob Storage przez maksymalnie 10 lat. Następnie można odzyskać bazę danych przy użyciu tych kopii zapasowych przy użyciu Azure Portal lub programu PowerShell.
 
 > [!IMPORTANT]
 > [Azure SQL Database wystąpienie zarządzane](sql-database-managed-instance.md) nie obsługuje obecnie długoterminowego przechowywania kopii zapasowych.
@@ -99,7 +99,7 @@ W przypadku **usunięcia-AzSqlDatabaseLongTermRetentionBackup**należy mieć jed
 - Rola właściciela subskrypcji lub
 - Rola niestandardowa z następującymi uprawnieniami:
 
-   Microsoft.Sql/locations/longTermRetentionServers/longTermRetentionDatabases/longTermRetentionBackups/delete
+   Microsoft. SQL/Locations/longTermRetentionServers/longTermRetentionDatabases/longTermRetentionBackups/Delete
 
 
 > [!NOTE]

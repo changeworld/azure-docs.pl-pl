@@ -1,18 +1,18 @@
 ---
-title: Macierz obsługi odzyskiwania po awarii lokalnych maszyn wirtualnych funkcji Hyper-V na platformie Azure
+title: Obsługa odzyskiwania po awarii maszyn wirtualnych funkcji Hyper-V na platformie Azure przy użyciu Azure Site Recovery
 description: Podsumowuje obsługiwane składniki i wymagania dotyczące odzyskiwania po awarii maszyny wirtualnej funkcji Hyper-V na platformie Azure przy użyciu Azure Site Recovery
 author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 09/10/2019
+ms.date: 11/05/2019
 ms.author: raynew
-ms.openlocfilehash: e34140f9e014cfd41b0c14e980ca74e4d07d0c85
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: 9af85d8d9b181d619d8895542f142708626649d1
+ms.sourcegitcommit: 6c2c97445f5d44c5b5974a5beb51a8733b0c2be7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72933841"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73620830"
 ---
 # <a name="support-matrix-for-disaster-recovery-of-on-premises-hyper-v-vms-to-azure"></a>Macierz obsługi odzyskiwania po awarii lokalnych maszyn wirtualnych funkcji Hyper-V na platformie Azure
 
@@ -130,7 +130,7 @@ Magazyn geograficznie nadmiarowy | Tak | Tak
 Magazyn Geograficznie nadmiarowy do odczytu | Tak | Tak
 Chłodny magazyn | Nie | Nie
 Magazyn gorąca| Nie | Nie
-Obiekty BLOB typu Block | Nie | Nie
+Blokowe obiekty blob | Nie | Nie
 Szyfrowanie w spoczynku (SSE)| Tak | Tak
 Premium Storage | Tak | Tak
 Usługa importu/eksportu | Nie | Nie
@@ -142,7 +142,7 @@ Modyfikowanie konta magazynu | Nie. Nie można zmodyfikować docelowego konta us
 
 **Funkcja** | **Funkcja Hyper-V z Virtual Machine Manager** | **Funkcja Hyper-V bez Virtual Machine Manager**
 --- | --- | ---
-Zbiory dostępności | Tak | Tak
+Zestawy dostępności | Tak | Tak
 Centralny | Tak | Tak  
 Dyski zarządzane | Tak, w przypadku trybu failover.<br/><br/> Powrót po awarii dysków zarządzanych nie jest obsługiwany. | Tak, w przypadku trybu failover.<br/><br/> Powrót po awarii dysków zarządzanych nie jest obsługiwany.
 
@@ -159,10 +159,10 @@ Liczba dysków systemu operacyjnego | 1 | Sprawdzanie wymagań wstępnych kończ
 Liczba dysków danych | 16 lub mniej  | Sprawdzanie wymagań wstępnych kończy się niepowodzeniem, jeśli nie jest obsługiwana
 Rozmiar dysku VHD z danymi | Do 4 095 GB | Sprawdzanie wymagań wstępnych kończy się niepowodzeniem, jeśli nie jest obsługiwana
 Karty sieciowe | Obsługiwana jest konfiguracja z wieloma kartami sieciowymi |
-Udostępniony wirtualny dysk twardy | Brak obsługi | Sprawdzanie wymagań wstępnych kończy się niepowodzeniem, jeśli nie jest obsługiwana
-Dysk FC | Brak obsługi | Sprawdzanie wymagań wstępnych kończy się niepowodzeniem, jeśli nie jest obsługiwana
+Udostępniony wirtualny dysk twardy | Nieobsługiwane | Sprawdzanie wymagań wstępnych kończy się niepowodzeniem, jeśli nie jest obsługiwana
+Dysk FC | Nieobsługiwane | Sprawdzanie wymagań wstępnych kończy się niepowodzeniem, jeśli nie jest obsługiwana
 Format dysku twardego | VHD <br/><br/> DYSKU | W przypadku przełączenia w tryb failover na platformie Azure Site Recovery automatycznie konwertuje plik VHDX na dysk VHD. Po powrocie po awarii do lokalnego programu maszyny wirtualne nadal używają formatu VHDX.
-BitLocker | Brak obsługi | Aby włączyć replikację dla maszyny wirtualnej, należy wyłączyć funkcję BitLocker.
+BitLocker | Nieobsługiwane | Aby włączyć replikację dla maszyny wirtualnej, należy wyłączyć funkcję BitLocker.
 Nazwa maszyny wirtualnej | Od 1 do 63 znaków. Ograniczone do liter, cyfr i łączników. Nazwa maszyny wirtualnej musi zaczynać się i kończyć literą lub cyfrą. | Zaktualizuj wartość we właściwościach maszyny wirtualnej w Site Recovery.
 Typ maszyny wirtualnej | Generacja 1<br/><br/> Generacja 2 — Windows | Maszyny wirtualne generacji 2 z typem dysku systemu operacyjnego Basic (zawierającym jeden lub dwa woluminy danych sformatowane jako VHDX) i mniej niż 300 GB miejsca na dysku są obsługiwane.<br></br>Maszyny wirtualne 2. generacji systemu Linux nie są obsługiwane. [Dowiedz się więcej](https://azure.microsoft.com/blog/2015/04/28/disaster-recovery-to-azure-enhanced-and-were-listening/).|
 

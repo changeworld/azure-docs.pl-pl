@@ -1,5 +1,5 @@
 ---
-title: Aktualizowanie modeli uczenia maszynowego przy użyciu Azure Data Factory | Microsoft Docs
+title: Aktualizowanie modeli uczenia maszynowego przy użyciu Azure Data Factory
 description: Zawiera opis sposobu tworzenia potoku predykcyjnego przy użyciu Azure Data Factory i uczenia maszynowego
 services: data-factory
 documentationcenter: ''
@@ -11,22 +11,22 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/16/2018
-ms.openlocfilehash: 56d0ce6668c1077b99c980c2bc5b16998a3a41c1
-ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
+ms.openlocfilehash: 3313c9c362a9b82cf7ed8db63479aaa5cf0c777e
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70140529"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73683245"
 ---
 # <a name="update-azure-machine-learning-models-by-using-update-resource-activity"></a>Aktualizowanie modeli Azure Machine Learning przy użyciu działania Update Resource
-Ten artykuł stanowi uzupełnienie głównego artykułu dotyczącego integracji Azure Data Factory Azure Machine Learning: [Twórz potoki predykcyjne przy użyciu Azure Machine Learning i Azure Data Factory](transform-data-using-machine-learning.md). Jeśli jeszcze tego nie zrobiono, zapoznaj się z głównym artykułem przed przeczytaniem tego artykułu.
+Ten artykuł stanowi uzupełnienie głównego artykułu z integracją Azure Data Factory Azure Machine Learning: [Tworzenie potoków predykcyjnych za pomocą Azure Machine Learning i Azure Data Factory](transform-data-using-machine-learning.md). Jeśli jeszcze tego nie zrobiono, zapoznaj się z głównym artykułem przed przeczytaniem tego artykułu.
 
 ## <a name="overview"></a>Omówienie
-W ramach procesu operacjonalizowania modeli Azure Machine Learning model jest szkolony i zapisywany. Możesz następnie użyć go do utworzenia predykcyjne usługi sieci Web. Usługi sieci Web mogą być następnie używane w witrynach sieci web, pulpity nawigacyjne i aplikacje mobilne.
+W ramach procesu operacjonalizowania modeli Azure Machine Learning model jest szkolony i zapisywany. Następnie należy użyć jej do utworzenia predykcyjnej usługi sieci Web. Usługę sieci Web można następnie wykorzystać w witrynach sieci Web, pulpitach nawigacyjnych i aplikacjach mobilnych.
 
-Modele utworzone za pomocą usługi Machine Learning zwykle nie są statyczne. Nowe dane staje się dostępny, lub gdy konsumenta interfejsu API ma swoje własne dane modelu musi być retrained. Aby uzyskać szczegółowe informacje o tym, jak można ponownie przeprowadzić uczenie modelu w Azure Machine Learning, należy zapoznać się z [modelem Machine Learning](../machine-learning/machine-learning-retrain-machine-learning-model.md) .
+Modele tworzone przy użyciu Machine Learning nie są zwykle statyczne. Ponieważ nowe dane staną się dostępne lub gdy użytkownik interfejsu API ma własne dane, należy ponownie przeszkolić model. Aby uzyskać szczegółowe informacje o tym, jak można ponownie przeprowadzić uczenie modelu w Azure Machine Learning, należy zapoznać się z [modelem Machine Learning](../machine-learning/machine-learning-retrain-machine-learning-model.md) .
 
-Ponowne szkolenie może często występować. Za pomocą działania wykonywania wsadowego i aktualizowania aktywności zasobów można operacjonalizować model Azure Machine Learning przeszkolenie i aktualizację usługi sieci Web predykcyjnej przy użyciu Data Factory.
+Przeszkolenie może odbywać się często. Za pomocą działania wykonywania wsadowego i aktualizowania aktywności zasobów można operacjonalizować model Azure Machine Learning przeszkolenie i aktualizację usługi sieci Web predykcyjnej przy użyciu Data Factory.
 
 Na poniższej ilustracji przedstawiono relacje między szkoleniem i predykcyjnymi usługami sieci Web.
 
@@ -56,7 +56,7 @@ Poniższy fragment kodu JSON definiuje działanie wykonywania wsadowego Azure Ma
 }
 ```
 
-| Właściwość                      | Opis                              | Wymagane |
+| Właściwość                      | Opis                              | Wymagany |
 | :---------------------------- | :--------------------------------------- | :------- |
 | name                          | Nazwa działania w potoku     | Tak      |
 | description                   | Tekst opisujący działanie działania.  | Nie       |
@@ -92,7 +92,7 @@ https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{reso
 
 W przypadku wysyłania zapytań do usługi sieci Web w [portalu usług sieci web Azure Machine Learning](https://services.azureml.net/)można uzyskać wartości dla posiadaczy umieszczania w adresie URL.
 
-Nowy typ punktu końcowego zasobu aktualizacji wymaga uwierzytelniania nazwy głównej usługi. Aby użyć uwierzytelniania nazwy głównej usługi, zarejestruj jednostkę aplikacji w Azure Active Directory (Azure AD) i nadaj jej rolę współautora lub **właściciela** subskrypcji lub grupy zasobów, do której należy usługa sieci Web. Zapoznaj się z tematem [Tworzenie nazwy głównej usługi i przypisywanie uprawnień do zarządzania zasobami platformy Azure](../active-directory/develop/howto-create-service-principal-portal.md). Zanotuj następujące wartości, które służą do definiowania połączonej usługi:
+Nowy typ punktu końcowego zasobu aktualizacji wymaga uwierzytelniania nazwy głównej usługi. Aby użyć uwierzytelniania nazwy głównej usługi, zarejestruj jednostkę aplikacji w Azure Active Directory (Azure AD) i nadaj jej rolę **współautora** lub **właściciela** subskrypcji lub grupy zasobów, do której należy usługa sieci Web. Zapoznaj się z tematem [Tworzenie nazwy głównej usługi i przypisywanie uprawnień do zarządzania zasobami platformy Azure](../active-directory/develop/howto-create-service-principal-portal.md). Należy zwrócić uwagę na następujące wartości, których można użyć do zdefiniowania połączonej usługi:
 
 - Identyfikator aplikacji
 - Klucz aplikacji
@@ -127,7 +127,7 @@ Oto definicja połączonej usługi:
 Poniższy scenariusz zawiera więcej szczegółów. Przykładem do ponownego szkolenia i aktualizowania modeli Azure Machine Learning Studio z potoku Azure Data Factory.
 
 
-## <a name="sample-retraining-and-updating-an-azure-machine-learning-model"></a>Przykład: Przeszkolenie i Aktualizacja modelu Azure Machine Learning
+## <a name="sample-retraining-and-updating-an-azure-machine-learning-model"></a>Przykład: ponowne uczenie i aktualizowanie modelu Azure Machine Learning
 
 Ta sekcja zawiera przykładowy potok, który używa **działania wykonywania wsadowego Azure Machine Learning Studio** do ponownego uczenia modelu. Potok używa również **działania Azure Machine Learning Studio Update Resource** do zaktualizowania modelu w usłudze sieci Web oceniania. Sekcja zawiera również fragmenty kodu JSON dla wszystkich połączonych usług, zestawów danych i potoków w przykładzie.
 

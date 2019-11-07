@@ -1,5 +1,5 @@
 ---
-title: Rozwiązywanie problemów z wykonywaniem pakietów w środowisku SSIS Integration Runtime | Microsoft Docs
+title: 'Rozwiązywanie problemów z wykonywaniem pakietów w środowisku SSIS Integration Runtime '
 description: Ten artykuł zawiera wskazówki dotyczące rozwiązywania problemów z wykonaniem pakietu SSIS w środowisku SSIS Integration Runtime
 services: data-factory
 documentationcenter: ''
@@ -12,12 +12,12 @@ author: wenjiefu
 ms.author: wenjiefu
 ms.reviewer: sawinark
 manager: craigg
-ms.openlocfilehash: ec5a3ab0a2498e7d9bb24bed1bc0a37194e38e9e
-ms.sourcegitcommit: f2d9d5133ec616857fb5adfb223df01ff0c96d0a
+ms.openlocfilehash: de90614d9d24b3f57cb170e9a590de859f689331
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/03/2019
-ms.locfileid: "71936967"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73683983"
 ---
 # <a name="troubleshoot-package-execution-in-the-ssis-integration-runtime"></a>Rozwiązywanie problemów z wykonywaniem pakietów w środowisku SSIS Integration Runtime
 
@@ -37,7 +37,7 @@ Oto potencjalne przyczyny i zalecane akcje:
 * Źródło danych lub miejsce docelowe są przeciążone. Sprawdź obciążenie źródła danych lub miejsca docelowego i zobacz, czy ma ono wystarczającą pojemność. Na przykład jeśli używasz Azure SQL Database, rozważ skalowanie w górę, jeśli baza danych prawdopodobnie przekroczy limit czasu.
 * Sieć między środowiskiem programu SSIS Integration Runtime a źródłem danych lub miejscem docelowym jest niestabilna, szczególnie w przypadku, gdy połączenie jest w wielu regionach lub między środowiskiem lokalnym i platformą Azure. Zastosuj wzorzec ponawiania prób w pakiecie SSIS, wykonując następujące czynności:
   * Upewnij się, że pakiety SSIS mogą być ponownie uruchamiane po awarii bez efektów ubocznych (na przykład utrata danych lub duplikowanie danych).
-  * Skonfiguruj pozycję **Ponów** i **Ponów próbę** działania **pakietu SSIS** na karcie **Ogólne** . @no__t właściwości 4Set na karcie Ogólne @ no__t-5
+  * Skonfiguruj pozycję **Ponów** i **Ponów próbę** działania **pakietu SSIS** na karcie **Ogólne** . ![ustawić właściwości na karcie Ogólne](media/how-to-invoke-ssis-package-ssis-activity/ssis-activity-general.png)
   * W przypadku składnika ADO.NET i źródła OLE DB lub docelowego ustaw wartość **ConnectRetryCount** i **ConnectRetryInterval** w Menedżerze połączeń w ramach pakietu SSIS lub działania SSIS.
 
 ### <a name="error-message-ado-net-source-has-failed-to-acquire-the-connection--with-a-network-related-or-instance-specific-error-occurred-while-establishing-a-connection-to-sql-server-the-server-was-not-found-or-was-not-accessible"></a>Komunikat o błędzie: "Źródło sieci ADO nie może uzyskać połączenia"... " podczas ustanawiania połączenia z usługą SQL Server Wystąpił błąd dotyczący sieci lub wystąpienia. Serwer nie został odnaleziony lub był niedostępny.
@@ -73,10 +73,10 @@ Ten błąd oznacza, że dysk lokalny jest używany w węźle SSIS Integration Ru
 * Potencjalna przyczyna i zalecana akcja:
   * Jeśli działanie programu SSIS wykonuje pakiet z systemu plików (plik pakietu lub plik projektu), ten błąd wystąpi, jeśli projekt, pakiet lub plik konfiguracji nie będą dostępne z poświadczeniami dostępu do pakietu dostarczonymi w działaniu usług SSIS.
     * Jeśli używasz usługi Azure File:
-      * Ścieżka pliku powinna rozpoczynać się od \\ @ no__t-1 @ no__t-2storage account name\>.file.core.windows.net @ no__t-4 @ no__t-5file Share Path @ no__t-6
+      * Ścieżka pliku powinna rozpoczynać się od \\\\\<nazwa konta magazynu\>. file.core.windows.net\\\<ścieżka udziału plików\>
       * Domena powinna mieć wartość "Azure"
-      * Nazwa użytkownika powinna być \<storage konta @ no__t-1
-      * Hasło powinno być \<storage Access Key @ no__t-1
+      * Nazwa użytkownika powinna być \<nazwy konta magazynu\>
+      * Hasło powinno być \<klucza dostępu do magazynu\>
     * Jeśli używasz pliku lokalnego, sprawdź, czy sieć wirtualna, poświadczenia dostępu do pakietu i uprawnienia są prawidłowo skonfigurowane, aby środowisko Azure-SSIS Integration Runtime mogły uzyskać dostęp do lokalnego udziału plików
 
 ### <a name="error-message-the-file-name--specified-in-the-connection-was-not-valid"></a>Komunikat o błędzie: "nazwa pliku"... " określone w połączeniu nie są prawidłowe "
@@ -107,7 +107,7 @@ Jeśli wiele pakietów jest uruchomionych równolegle w programie SSIS Integrati
 Ten błąd jest głównie spowodowany przez przejściowy problem, dlatego spróbuj ponownie uruchomić wykonywanie pakietu. Zastosuj wzorzec ponawiania prób w pakiecie SSIS, wykonując następujące czynności:
 
 * Upewnij się, że pakiety SSIS mogą być ponownie uruchamiane po awarii bez efektów ubocznych (na przykład utrata danych lub duplikowanie danych).
-* Skonfiguruj pozycję **Ponów** i **Ponów próbę** działania **pakietu SSIS** na karcie **Ogólne** . @no__t właściwości 4Set na karcie Ogólne @ no__t-5
+* Skonfiguruj pozycję **Ponów** i **Ponów próbę** działania **pakietu SSIS** na karcie **Ogólne** . ![ustawić właściwości na karcie Ogólne](media/how-to-invoke-ssis-package-ssis-activity/ssis-activity-general.png)
 * W przypadku składnika ADO.NET i źródła OLE DB lub docelowego ustaw wartość **ConnectRetryCount** i **ConnectRetryInterval** w Menedżerze połączeń w ramach pakietu SSIS lub działania SSIS.
 
 ### <a name="error-message-there-is-no-active-worker"></a>Komunikat o błędzie: "nie istnieje aktywny proces roboczy".
@@ -156,7 +156,7 @@ Jedną z potencjalnych przyczyn jest to, że własne środowisko Integration Run
   * Dziennik wykonywania można znaleźć w [raportach programu SSMS](https://docs.microsoft.com/sql/integration-services/performance/monitor-running-packages-and-other-operations?view=sql-server-2017#reports) lub w folderze dziennika określonym w działaniu pakietu usług SSIS.
   * Sieć wirtualna może być również używana do uzyskiwania dostępu do danych lokalnych jako alternatywy. Więcej szczegółów można znaleźć w witrynie [Azure-SSIS Integration Runtime do sieci wirtualnej](join-azure-ssis-integration-runtime-virtual-network.md)
 
-### <a name="error-message-staging-task-status-failed-staging-task-error-errorcode-2906-errormessage-package-execution-failed-output-operationerrormessages-ssis-executor-exit-code--1n-loglocation-ssistelemetryexecutionlog-effectiveintegrationruntime--executionduration--durationinqueue--integrationruntimequeue--"></a>Komunikat o błędzie: "stan zadania przemieszczania: niepowodzenie. Błąd zadania przemieszczania: kod błędu: 2906, ErrorMessage: wykonywanie pakietu nie powiodło się. wynik: {"OperationErrorMessages": "kod zakończenia modułu SSIS:-1. \ n", "LogLocation": "... \\SSISTelemetry @ no__t-1ExecutionLog @ no__t-2...", " effectiveIntegrationRuntime": "...", "executionDuration": ..., "durationInQueue": { "integrationRuntimeQueue": ... }}"
+### <a name="error-message-staging-task-status-failed-staging-task-error-errorcode-2906-errormessage-package-execution-failed-output-operationerrormessages-ssis-executor-exit-code--1n-loglocation-ssistelemetryexecutionlog-effectiveintegrationruntime--executionduration--durationinqueue--integrationruntimequeue--"></a>Komunikat o błędzie: "stan zadania przemieszczania: niepowodzenie. Błąd zadania przemieszczania: kod błędu: 2906, ErrorMessage: wykonywanie pakietu nie powiodło się. wynik: {"OperationErrorMessages": "kod zakończenia modułu SSIS:-1. \ n", "LogLocation": "...\\SSISTelemetry\\ExecutionLog\\...", " effectiveIntegrationRuntime": "...", "executionDuration": ..., "durationInQueue": { "integrationRuntimeQueue": ... }}"
 
 Upewnij się, C++ że środowisko uruchomieniowe języka Visual jest zainstalowane na własnym komputerze Integration Runtime. Więcej szczegółów można znaleźć w temacie [Konfigurowanie samodzielnego środowiska IR jako serwera proxy dla Azure-SSIS IR w usłudze ADF](self-hosted-integration-runtime-proxy-ssis.md#prepare-self-hosted-ir)
 
@@ -164,7 +164,7 @@ Upewnij się, C++ że środowisko uruchomieniowe języka Visual jest zainstalowa
 
 * Potencjalna przyczyna i zalecana akcja:
   * Działanie procedury składowanej modułu ADF lub działanie wyszukiwania służy do wyzwalania wykonywania pakietu SSIS. Polecenie t-SQL może napotkać przejściowy problem i wyzwolić ponowne uruchomienie, co może spowodować wykonanie wielu pakietów.
-  * Zamiast tego użyj działania ExecuteSSISPackage, aby zapewnić, że wykonanie pakietu nie zostanie uruchomione ponownie, chyba że w działaniu zostanie określona liczba ponownych prób Szczegóły można znaleźć pod adresem [https://docs.microsoft.com/azure/data-factory/how-to-invoke-ssis-package-ssis-activity](https://docs.microsoft.com/azure/data-factory/how-to-invoke-ssis-package-ssis-activity)
+  * Zamiast tego użyj działania ExecuteSSISPackage, aby zapewnić, że wykonanie pakietu nie zostanie uruchomione ponownie, chyba że w działaniu zostanie określona liczba ponownych prób Szczegóły można znaleźć w [https://docs.microsoft.com/azure/data-factory/how-to-invoke-ssis-package-ssis-activity](https://docs.microsoft.com/azure/data-factory/how-to-invoke-ssis-package-ssis-activity)
   * Uściślij polecenie t-SQL, aby umożliwić ponowne uruchomienie, sprawdzając, czy wykonywanie zostało już wyzwolone
 
 ### <a name="package-execution-takes-too-long"></a>Wykonanie pakietu trwa zbyt długo
@@ -178,7 +178,7 @@ Oto potencjalne przyczyny i zalecane akcje:
   * Aby dowiedzieć się, jak ustawić liczbę węzłów i maksymalne wykonywanie równoległe na węzeł, zobacz temat [Tworzenie środowiska Azure-SSIS Integration Runtime w Azure Data Factory](create-azure-ssis-integration-runtime.md).
 * Środowisko uruchomieniowe środowiska SSIS zostało zatrzymane lub ma stan złej kondycji. Aby dowiedzieć się, jak sprawdzić stan i błędy programu SSIS Integration Runtime, zobacz [Azure-SSIS Integration Runtime](monitor-integration-runtime.md#azure-ssis-integration-runtime).
 
-Zalecamy również ustawienie limitu czasu na karcie **Ogólne** : właściwości ![Set na karcie Ogólne @ no__t-2.
+Zalecamy również ustawienie limitu czasu na karcie **Ogólne** : ![ustawić właściwości na karcie Ogólne](media/how-to-invoke-ssis-package-ssis-activity/ssis-activity-general.png).
 
 ### <a name="poor-performance-in-package-execution"></a>Niska wydajność podczas wykonywania pakietu
 
@@ -191,4 +191,4 @@ Wypróbuj następujące czynności:
 * Sprawdź wydajność węzłów IR w Azure Portal:
   * Aby uzyskać informacje o sposobach monitorowania środowiska usług SSIS Integration Runtime, zobacz [Azure-SSIS Integration Runtime](monitor-integration-runtime.md#azure-ssis-integration-runtime).
   * Historię procesora CPU/pamięci dla środowiska SSIS Integration runtime można znaleźć, wyświetlając metryki fabryki danych w Azure Portal.
-    metryki @no__t 0Monitor programu SSIS Integration Runtime @ no__t-1
+    ![Monitoruj metryki programu SSIS Integration Runtime](media/ssis-integration-runtime-ssis-activity-faq/monitor-metrics-ssis-integration-runtime.png)

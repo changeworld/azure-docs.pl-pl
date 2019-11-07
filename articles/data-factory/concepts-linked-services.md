@@ -1,5 +1,5 @@
 ---
-title: Połączone usługi w Azure Data Factory | Microsoft Docs
+title: Połączone usługi w Azure Data Factory
 description: Dowiedz się więcej o połączonych usługach w Data Factory. Połączone usługi łączą magazyny obliczeniowe z danymi do fabryki danych.
 services: data-factory
 documentationcenter: ''
@@ -11,12 +11,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 04/25/2019
-ms.openlocfilehash: 80e9cee0d973dc8575e9645c537b6b69fbeef700
-ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
+ms.openlocfilehash: 9dd81484d8afab66fcb76f8fccdea348ef6a34c4
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70137118"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73681499"
 ---
 # <a name="linked-services-in-azure-data-factory"></a>Połączone usługi w Azure Data Factory
 > [!div class="op_single_selector" title1="Wybierz używaną wersję usługi Data Factory:"]
@@ -30,11 +30,11 @@ Jeśli dopiero zaczynasz Data Factory, zobacz [wprowadzenie do Azure Data Factor
 ## <a name="overview"></a>Omówienie
 Fabryka danych może obejmować jeden lub wiele potoków. **Potok** jest logicznym grupą **działań** , które wspólnie wykonują zadanie. Działania w potoku definiują akcje do wykonania na danych. Można na przykład użyć działania kopiowania w celu skopiowania danych z SQL Server lokalnego do usługi Azure Blob Storage. Następnie możesz użyć działania programu Hive, które uruchamia skrypt programu Hive w klastrze usługi Azure HDInsight, aby przetwarzać dane z magazynu obiektów BLOB w celu utworzenia danych wyjściowych. Na koniec możesz użyć drugiego działania kopiowania, aby skopiować dane wyjściowe do Azure SQL Data Warehouse, na podstawie których są tworzone rozwiązania do raportowania analizy biznesowej (BI). Aby uzyskać więcej informacji na temat potoków i działań, zobacz [potoki i działania](concepts-pipelines-activities.md) w Azure Data Factory.
 
-Teraz **zestaw** danych to nazwany widok zawierający dane, które po prostu wskazuje lub odwołuje się do danych, które mają być używane w działaniach jako dane wejściowe i wyjściowe.
+Teraz **zestaw** danych to nazwany widok zawierający dane, które po prostu wskazuje lub odwołuje się do danych, które mają być używane w **działaniach** jako dane wejściowe i wyjściowe.
 
 Przed utworzeniem zestawu danych należy utworzyć **połączoną usługę** , aby połączyć magazyn danych z fabryką danych. Połączone usługi działają podobnie do parametrów połączenia, umożliwiając definiowanie informacji wymaganych przez usługę Data Factory do nawiązywania połączeń z zasobami zewnętrznymi. Zastanów się to w ten sposób; DataSet reprezentuje strukturę danych w połączonych magazynach danych, a połączona usługa definiuje połączenie ze źródłem danych. Na przykład połączona usługa Azure Storage łączy konto magazynu z fabryką danych. Zestaw danych obiektów blob platformy Azure reprezentuje kontener obiektów blob i folder w ramach tego konta usługi Azure Storage, które zawiera wejściowe obiekty blob do przetworzenia.
 
-Oto przykładowy scenariusz. Aby skopiować dane z magazynu obiektów BLOB do bazy danych SQL, należy utworzyć dwie połączone usługi: Azure Storage i Azure SQL Database. Następnie Utwórz dwa zestawy danych: Zestaw danych obiektów blob platformy Azure (który odwołuje się do połączonej usługi Azure Storage) i zestawu danych tabeli SQL Azure (który odnosi się do Azure SQL Database połączonej usługi). Połączone usługi Azure Storage i Azure SQL Database zawierają parametry połączenia, które Data Factory używane w środowisku uruchomieniowym do nawiązywania połączenia z usługą Azure Storage i Azure SQL Database. Zestaw danych obiektów blob platformy Azure Określa kontener obiektów blob i folder obiektów blob, który zawiera wejściowe obiekty blob w magazynie obiektów BLOB. Zestaw danych tabeli SQL Azure określa tabelę SQL w bazie danych SQL, do której mają zostać skopiowane dane.
+Oto przykładowy scenariusz. Aby skopiować dane z magazynu obiektów BLOB do bazy danych SQL, należy utworzyć dwie połączone usługi: Azure Storage i Azure SQL Database. Następnie Utwórz dwa zestawy danych: DataSet usługi Azure BLOB (który odwołuje się do połączonej usługi Azure Storage) i zestawu danych tabeli SQL Azure (który odnosi się do Azure SQL Database połączonej usługi). Połączone usługi Azure Storage i Azure SQL Database zawierają parametry połączenia, które Data Factory używane w środowisku uruchomieniowym do nawiązywania połączenia z usługą Azure Storage i Azure SQL Database. Zestaw danych obiektów blob platformy Azure Określa kontener obiektów blob i folder obiektów blob, który zawiera wejściowe obiekty blob w magazynie obiektów BLOB. Zestaw danych tabeli SQL Azure określa tabelę SQL w bazie danych SQL, do której mają zostać skopiowane dane.
 
 Na poniższym diagramie przedstawiono relacje między potokiem, działaniem, zestawem danych i połączoną usługą w Data Factory:
 
@@ -61,12 +61,12 @@ Połączona usługa w Data Factory jest definiowana w formacie JSON w następuj�
 
 W poniższej tabeli opisano właściwości w powyższym kodzie JSON:
 
-Właściwość | Opis | Wymagane |
+Właściwość | Opis | Wymagany |
 -------- | ----------- | -------- |
 name | Nazwa połączonej usługi. Zobacz [reguły nazewnictwa Azure Data Factory](naming-rules.md). |  Tak |
-type | Typ połączonej usługi. Przykład: AzureStorage (magazyn danych) lub AzureBatch (COMPUTE). Zobacz opis typeProperties. | Tak |
+type | Typ połączonej usługi. Na przykład: AzureStorage (magazyn danych) lub AzureBatch (COMPUTE). Zobacz opis typeProperties. | Tak |
 typeProperties | Właściwości typu są różne dla poszczególnych magazynów danych lub obliczeń. <br/><br/> W przypadku obsługiwanych typów magazynów danych i ich właściwości typów zobacz tabelę [typów zestawu danych](concepts-datasets-linked-services.md#dataset-type) w tym artykule. Przejdź do artykułu łącznika magazynu danych, aby dowiedzieć się więcej o właściwościach typu specyficznych dla magazynu danych. <br/><br/> W przypadku obsługiwanych typów obliczeniowych i ich właściwości typu zobacz [połączone usługi obliczeniowe](compute-linked-services.md). | Tak |
-connectVia | [Środowiska Integration Runtime](concepts-integration-runtime.md) ma być używany do łączenia się z magazynem danych. Możesz użyć Azure Integration Runtime lub samodzielnego Integration Runtime (Jeśli magazyn danych znajduje się w sieci prywatnej). Jeśli nie zostanie określony, używa domyślnego środowiska Azure Integration Runtime. | Nie
+Właściwością connectvia | [Integration Runtime](concepts-integration-runtime.md) używany do nawiązywania połączenia z magazynem danych. Możesz użyć Azure Integration Runtime lub samodzielnego Integration Runtime (Jeśli magazyn danych znajduje się w sieci prywatnej). Jeśli nie zostanie określony, zostanie użyta domyślna Azure Integration Runtime. | Nie
 
 ## <a name="linked-service-example"></a>Przykład połączonej usługi
 Następująca połączona usługa to połączona usługa Azure Storage. Należy zauważyć, że typ jest ustawiony na AzureStorage. Właściwości typu połączonej usługi Azure Storage obejmują parametry połączenia. Usługa Data Factory używa tych parametrów połączenia do nawiązywania połączenia z magazynem danych w czasie wykonywania.

@@ -15,16 +15,16 @@ ms.date: 06/12/2019
 ms.author: mimart
 ms.reviewer: arvinh
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5ff6d9e33e15aa04adfa03705172166492f87e30
-ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
+ms.openlocfilehash: ef2ce1ce7a754868a1adc2e78b4c0a83fc84f071
+ms.sourcegitcommit: 359930a9387dd3d15d39abd97ad2b8cb69b8c18b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72330025"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73641446"
 ---
 # <a name="automate-user-provisioning-and-deprovisioning-to-saas-applications-with-azure-active-directory"></a>Automatyzowanie aprowizacji użytkowników i anulowanie obsługi aplikacji SaaS przy użyciu Azure Active Directory
 
-Azure Active Directory (Azure AD) umożliwia automatyzację tworzenia, obsługi i usuwania tożsamości użytkowników w aplikacjach w chmurze ([SaaS](https://azure.microsoft.com/overview/what-is-saas/)), takich jak Dropbox, Salesforce, usługi ServiceNow i inne. Jest to znane jako zautomatyzowane Inicjowanie obsługi użytkowników dla aplikacji SaaS.
+Usługa Azure Active Directory (Azure AD) umożliwia automatyzację tworzenia, obsługi i usuwania tożsamości użytkowników w aplikacjach SaaS w chmurze, takich jak [Dropbox](https://docs.microsoft.com/azure/active-directory/saas-apps/dropboxforbusiness-provisioning-tutorial), [Salesforce](https://docs.microsoft.com/azure/active-directory/saas-apps/salesforce-provisioning-tutorial), [usługi ServiceNow](https://docs.microsoft.com/azure/active-directory/saas-apps/servicenow-provisioning-tutorial)i inne. Jest to znane jako zautomatyzowane Inicjowanie obsługi użytkowników dla aplikacji SaaS.
 
 > [!VIDEO https://www.youtube.com/embed/_ZjARPpI6NI]
 
@@ -56,11 +56,14 @@ Niektóre typowe motywacje dotyczące korzystania z tej funkcji obejmują:
 
 **Usługa Azure AD Provisioning** udostępnia użytkownikom SaaS aplikacje i inne systemy, łącząc się z punktami końcowymi interfejsu API zarządzania użytkownikami udostępnionymi przez poszczególnych dostawców aplikacji. Te punkty końcowe interfejsu API zarządzania użytkownikami umożliwiają usłudze Azure AD Programistyczne tworzenie, aktualizowanie i usuwanie użytkowników. W przypadku wybranych aplikacji usługa aprowizacji może również tworzyć, aktualizować i usuwać dodatkowe obiekty powiązane z tożsamościami, takie jak grupy i role.
 
-@no__t — 0Azure usługi AD Provisioning @ no__t-1*rysunek 1: usługa Azure AD Provisioning*
+![usługi Azure AD Provisioning](./media/user-provisioning/provisioning0.PNG)
+*rysunek 1: usługa Azure AD Provisioning*
 
-@no__t — przepływ pracy aprowizacji użytkowników 0Outbound @ no__t-1*rysunek 2: "wychodzące" przepływ pracy aprowizacji użytkowników z usługi Azure AD do popularnych aplikacji SaaS*
+![wychodzący przepływ pracy aprowizacji użytkowników](./media/user-provisioning/provisioning1.PNG)
+*rysunek 2: "wychodzące" przepływ pracy aprowizacji użytkowników z usługi Azure AD do popularnych aplikacji SaaS*
 
-@no__t — przepływ pracy aprowizacji użytkowników 0Inbound @ no__t-1*rysunek 3: "przychodzące" przepływ pracy aprowizacji użytkowników z popularnych aplikacji do zarządzania stolicą Kadr (HCM) do Azure Active Directory i systemu Windows Server Active Directory*
+![przepływ pracy inicjowania obsługi użytkowników przychodzących](./media/user-provisioning/provisioning2.PNG)
+*rysunek 3: "przychodzący" przepływ pracy aprowizacji użytkowników z popularnych aplikacji do zarządzania stolicą Kadr (HCM) do Azure Active Directory i systemu Windows Server Active Directory*
 
 ## <a name="what-applications-and-systems-can-i-use-with-azure-ad-automatic-user-provisioning"></a>Jakie aplikacje i systemy mogą być używane przez automatyczne Inicjowanie obsługi użytkowników w usłudze Azure AD?
 
@@ -87,11 +90,7 @@ Użyj portalu Azure Active Directory, aby skonfigurować usługę Azure AD Provi
 
 1. Otwórz **[portal Azure Active Directory](https://aad.portal.azure.com)** .
 1. W okienku po lewej stronie wybierz pozycję **aplikacje dla przedsiębiorstw** . Zostanie wyświetlona lista wszystkich skonfigurowanych aplikacji.
-1. Wybierz pozycję **+ Nowa aplikacja** , aby dodać aplikację. Dodaj jedną z następujących czynności w zależności od scenariusza:
-
-   - Opcja **Dodaj własną aplikację** obsługuje integracje Standard scim opracowane przez niestandardowo.
-   - Wszystkie aplikacje w **dodatku z galerii** > **Polecane aplikacje** obsługują automatyczną obsługę administracyjną. Zapoznaj się z [listą samouczków aplikacji dotyczących aprowizacji użytkowników](../saas-apps/tutorial-list.md) , aby uzyskać dodatkowe.
-
+1. Wybierz pozycję **+ Nowa aplikacja** , aby dodać aplikację. 
 1. Podaj wszystkie szczegóły i wybierz pozycję **Dodaj**. Nowa aplikacja zostanie dodana do listy aplikacji dla przedsiębiorstw i zostanie otwarta na swoim ekranie zarządzania aplikacjami.
 1. Wybierz opcję **aprowizacji** , aby zarządzać ustawieniami aprowizacji konta użytkownika dla aplikacji.
 
@@ -193,7 +192,7 @@ Aby zapoznać się ze wskazówkami dotyczącymi sposobu rozwiązywania problemó
 
 > [!VIDEO https://www.youtube.com/embed/MAy8s5WSe3A]
 
-Przykładowy plan wdrożenia krok po kroku dotyczący wychodzącej aprowizacji użytkowników do aplikacji można znaleźć w [Podręczniku wdrażania tożsamości dla aprowizacji użytkowników](https://aka.ms/userprovisioningdeploymentplan).
+Przykładowy plan wdrożenia krok po kroku dotyczący wychodzącej aprowizacji użytkowników do aplikacji można znaleźć w [Podręczniku wdrażania tożsamości dla aprowizacji użytkowników](https://aka.ms/deploymentplans/userprovisioning).
 
 ## <a name="frequently-asked-questions"></a>Często zadawane pytania
 
@@ -225,7 +224,7 @@ W celu obejścia tego problemu należy jawnie przypisać (lub inaczej określić
 
 Tak. Używamy szyfrowania protokołu HTTPS SSL dla serwera docelowego.
 
-## <a name="related-articles"></a>Pokrewne artykuły:
+## <a name="related-articles"></a>Pokrewne artykuły
 
 - [Lista samouczków dotyczących integrowania aplikacji SaaS](../saas-apps/tutorial-list.md)
 - [Dostosowywanie mapowań atrybutów na potrzeby aprowizacji użytkowników](customize-application-attributes.md)

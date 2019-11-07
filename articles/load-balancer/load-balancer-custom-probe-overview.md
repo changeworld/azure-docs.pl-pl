@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/17/2019
 ms.author: allensu
-ms.openlocfilehash: 62af688c6090b61f2596ab376cb479c270b87759
-ms.sourcegitcommit: f272ba8ecdbc126d22a596863d49e55bc7b22d37
+ms.openlocfilehash: 78e085aae97114e6848b736c40b16c755256d0cd
+ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/11/2019
-ms.locfileid: "72274120"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73571118"
 ---
 # <a name="load-balancer-health-probes"></a>Sondy kondycji usługi Load Balancer
 
@@ -48,6 +48,9 @@ Konfiguracja sondy kondycji składa się z następujących elementów:
 - Protokół sondy
 - Port sondy
 - Ścieżka HTTP do użycia w przypadku protokołu HTTP GET podczas korzystania z sond HTTP (S)
+
+> [!NOTE]
+> Definicja sondy nie jest obowiązkowa lub sprawdzana w przypadku używania Azure PowerShell, interfejsu wiersza polecenia platformy Azure, szablonów lub interfejsu API. Testy weryfikacyjne sondy są wykonywane tylko w przypadku korzystania z witryny Azure Portal.
 
 ## <a name="understanding-application-signal-detection-of-the-signal-and-reaction-of-the-platform"></a>Informacje o sygnale aplikacji, wykrywaniu sygnału i reakcji platformy
 

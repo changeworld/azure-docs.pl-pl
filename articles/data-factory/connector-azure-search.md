@@ -1,5 +1,5 @@
 ---
-title: Kopiowanie danych do indeksu wyszukiwania przy użyciu Azure Data Factory | Microsoft Docs
+title: Kopiowanie danych do indeksu wyszukiwania przy użyciu Azure Data Factory
 description: Informacje o sposobie wypychania lub kopiowania danych do indeksu usługi Azure Search przy użyciu działania kopiowania w potoku Azure Data Factory.
 services: data-factory
 documentationcenter: ''
@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 09/13/2019
 ms.author: jingwang
-ms.openlocfilehash: 703dcb5fee0c31328eee91c9673e62653d7aa698
-ms.sourcegitcommit: e0a1a9e4a5c92d57deb168580e8aa1306bd94723
+ms.openlocfilehash: f4e9e9f66d9bf1fecd4565d5eb469703e7a83d0d
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/11/2019
-ms.locfileid: "72286340"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73681183"
 ---
 # <a name="copy-data-to-an-azure-search-index-using-azure-data-factory"></a>Kopiowanie danych do indeksu Azure Search przy użyciu Azure Data Factory
 
@@ -41,7 +41,7 @@ Poniższe sekcje zawierają szczegółowe informacje o właściwościach, które
 
 Następujące właściwości są obsługiwane dla Azure Search połączonej usługi:
 
-| Właściwość | Opis | Wymagane |
+| Właściwość | Opis | Wymagany |
 |:--- |:--- |:--- |
 | type | Właściwość Type musi mieć wartość: **AzureSearch** | Tak |
 | url | Adres URL usługi Azure Search. | Tak |
@@ -79,7 +79,7 @@ Aby uzyskać pełną listę sekcji i właściwości dostępnych do definiowania 
 
 Aby skopiować dane do Azure Search, obsługiwane są następujące właściwości:
 
-| Właściwość | Opis | Wymagane |
+| Właściwość | Opis | Wymagany |
 |:--- |:--- |:--- |
 | type | Właściwość Type zestawu danych musi być ustawiona na wartość: **AzureSearchIndex** | Tak |
 | indexName | Nazwa indeksu Azure Search. Data Factory nie tworzy indeksu. Indeks musi istnieć w Azure Search. | Tak |
@@ -111,7 +111,7 @@ Aby uzyskać pełną listę sekcji i właściwości dostępnych do definiowania 
 
 Aby skopiować dane do Azure Search, ustaw typ źródła w działaniu Copy na **AzureSearchIndexSink**. W sekcji **ujścia** działania kopiowania są obsługiwane następujące właściwości:
 
-| Właściwość | Opis | Wymagane |
+| Właściwość | Opis | Wymagany |
 |:--- |:--- |:--- |
 | type | Właściwość Type źródła działania Copy musi być ustawiona na wartość: **AzureSearchIndexSink** | Tak |
 | WriteBehavior | Określa, czy należy scalić lub zamienić, gdy dokument już istnieje w indeksie. Zobacz [Właściwość WriteBehavior](#writebehavior-property).<br/><br/>Dozwolone wartości to: **Scal** (wartość domyślna) i **Przekaż**. | Nie |

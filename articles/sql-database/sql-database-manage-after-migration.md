@@ -1,5 +1,5 @@
 ---
-title: Zarządzanie bazami danych o pojedynczej i puli po migracji Azure SQL Database | Microsoft Docs
+title: Zarządzanie bazami danych o pojedynczej i puli po migracji Azure SQL Database
 description: Dowiedz się, jak zarządzać bazą danych po migracji do Azure SQL Database.
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: joesackmsft
 ms.author: josack
 ms.reviewer: sstein
 ms.date: 02/13/2019
-ms.openlocfilehash: 36e48e86ed3cf7138f7ff5efe89d08c07df87f25
-ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
+ms.openlocfilehash: d92b4b99e6ae6a7a07174e59d7cf3c9766c0eabf
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/08/2019
-ms.locfileid: "72028259"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73689523"
 ---
 # <a name="new-dba-in-the-cloud--managing-your-single-and-pooled-databases-in-azure-sql-database"></a>Nowa usługa DBA w chmurze — zarządzanie bazami danych z jednym i pulą w puli w Azure SQL Database
 
@@ -64,10 +64,10 @@ Ciągłość działania i możliwości odzyskiwania po awarii umożliwiają kont
 
 Nie można tworzyć kopii zapasowych w usłudze Azure SQL DB, ponieważ nie jest to konieczne. SQL Database automatycznie tworzy kopie zapasowe baz danych, dzięki czemu nie trzeba już martwić się o planowanie i tworzenie kopii zapasowych oraz zarządzanie nimi. Platforma wykonuje pełną kopię zapasową co tydzień, różnicową kopię zapasową co kilka godzin i kopię zapasową dziennika co 5 minut, aby zapewnić wydajność odzyskiwania po awarii i niewielką utratę danych. Pierwsza pełna kopia zapasowa odbywa się zaraz po utworzeniu bazy danych. Te kopie zapasowe są dostępne przez pewien czas o nazwie "okres przechowywania" i różnią się w zależności od wybranej warstwy usług. SQL Database zapewnia możliwość przywracania do dowolnego punktu w czasie w tym okresie przechowywania przy użyciu funkcji [odzyskiwania do punktu w czasie (kopie)](sql-database-recovery-using-backups.md#point-in-time-restore).
 
-|Warstwa usługi|Okres przechowywania w dniach|
+|Warstwa usług|Okres przechowywania w dniach|
 |---|:---:|
-|Basic|7|
-|Standardowa (Standard)|35|
+|Podstawowa|7|
+|Standardowa|35|
 |Premium|35|
 |||
 
@@ -198,7 +198,7 @@ Istnieje dwukluczowa hierarchia w TDE — dane w każdej bazie danych użytkowni
 
 Domyślnie klucz główny dla Transparent Data Encryption jest zarządzany przez usługę SQL Database dla wygody. Jeśli Twoja organizacja ma kontrolę nad kluczem głównym, istnieje możliwość użycia Azure Key Vault] (SQL-Database-Always-Encrypted-Azure-Key-vault.md) jako magazynu kluczy. Korzystając z Azure Key Vault, organizacja zakłada kontrolę nad kontrolami, rotacją i uprawnieniami do obsługi kluczy. [Obracanie lub przełączanie typu klucza głównego TDE](/sql/relational-databases/security/encryption/transparent-data-encryption-byok-azure-sql-key-rotation) jest szybkie, ponieważ powoduje tylko ponowne zaszyfrowanie bazy danych szyfrowania danych. W przypadku organizacji z separacją ról między zabezpieczeniami i zarządzaniem danymi administrator zabezpieczeń może udostępnić klucz klucza głównego TDE w Azure Key Vault i podać identyfikator klucza Azure Key Vault do administratora bazy danych, który ma być używany przez program szyfrowanie na serwerze. Key Vault jest zaprojektowana tak, że firma Microsoft nie widzi ani nie wyodrębni kluczy szyfrowania. Możesz również centralnie zarządzać kluczami dla swojej organizacji.
 
-#### <a name="always-encrypted"></a>Always Encrypted
+#### <a name="always-encrypted"></a>Zawsze szyfrowane
 
 Istnieje również [dwukluczowa hierarchia](/sql/relational-databases/security/encryption/overview-of-key-management-for-always-encrypted) w Always Encrypted — kolumna danych poufnych jest szyfrowana za pomocą klucza szyfrowania AES 256-kolumnowego (CEK), który z kolei jest szyfrowany przy użyciu klucza głównego kolumny (CMK). Sterowniki klienta podane dla Always Encrypted nie mają ograniczeń dotyczących długości CMKs. Zaszyfrowana wartość CEK jest przechowywana w bazie danych, a CMK jest przechowywana w zaufanym magazynie kluczy, takim jak magazyn certyfikatów systemu Windows, Azure Key Vault lub sprzętowy moduł zabezpieczeń.
 

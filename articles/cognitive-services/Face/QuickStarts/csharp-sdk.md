@@ -9,12 +9,12 @@ ms.subservice: face-api
 ms.topic: quickstart
 ms.date: 08/20/2019
 ms.author: pafarley
-ms.openlocfilehash: 4f06e423c6dcc561ef8e51c33f24cd9f88a681b5
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: 1848f7230ed189f139a223020f08db150295132d
+ms.sourcegitcommit: 359930a9387dd3d15d39abd97ad2b8cb69b8c18b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72935891"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73647482"
 ---
 # <a name="quickstart-face-client-library-for-net"></a>Przewodnik Szybki Start: Tworzenie biblioteki klienckiej dla platformy .NET
 
@@ -29,7 +29,7 @@ Użyj biblioteki klienta programu Front for .NET, aby:
 * [Identyfikowanie kroju](#identify-a-face)
 * [Utwórz migawkę migracji danych](#take-a-snapshot-for-data-migration)
 
-[Dokumentacja referencyjna](https://docs.microsoft.com/dotnet/api/overview/azure/cognitiveservices/client/faceapi?view=azure-dotnet)  |   |  pakietu[kodu źródłowego biblioteki](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/cognitiveservices/Vision.Face) [(NuGet)](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Vision.Face/2.5.0-preview.1) [ | ](https://docs.microsoft.com/samples/browse/?products=azure&term=face)
+[Dokumentacja referencyjna](https://docs.microsoft.com/dotnet/api/overview/azure/cognitiveservices/client/faceapi?view=azure-dotnet) |  | pakietu [kodu źródłowego biblioteki](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/cognitiveservices/Vision.Face) [(NuGet)](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Vision.Face/2.5.0-preview.1) [ | ](https://docs.microsoft.com/samples/browse/?products=azure&term=face)
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
@@ -144,9 +144,17 @@ Ostatnia Operacja wykrywania zajmie obiektem [FaceClient](https://docs.microsoft
 
 [!code-csharp[](~/cognitive-services-dotnet-sdk-samples/documentation-samples/quickstarts/Face/Program.cs?name=snippet_detect_call)]
 
-W takim przypadku `DetectFaceExtract` Metoda wykrywa twarze w trzech obrazach pod podanym adresem URL i tworzy listę obiektów [DetectedFace](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.vision.face.models.detectedface?view=azure-dotnet) w pamięci programu. Lista wartości [FaceAttributeType](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.vision.face.models.faceattributetype?view=azure-dotnet) określa funkcje do wyodrębnienia. Zapoznaj się z przykładowym kodem w witrynie [GitHub](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/blob/master/documentation-samples/quickstarts/Face/Program.cs) , aby uzyskać kod pomocnika, który może drukować te dane w intuicyjny sposób.
+### <a name="get-detected-face-objects"></a>Pobieranie wykrytych obiektów czołowych
+
+W następnym bloku kodu Metoda `DetectFaceExtract` wykrywa twarze w trzech obrazach pod podanym adresem URL i tworzy listę obiektów [DetectedFace](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.vision.face.models.detectedface?view=azure-dotnet) w pamięci programu. Lista wartości [FaceAttributeType](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.vision.face.models.faceattributetype?view=azure-dotnet) określa funkcje do wyodrębnienia. 
 
 [!code-csharp[](~/cognitive-services-dotnet-sdk-samples/documentation-samples/quickstarts/Face/Program.cs?name=snippet_detect)]
+
+### <a name="display-detected-face-data"></a>Wyświetl wykryte dane dotyczące kroju
+
+Pozostała część metody `DetectFaceExtract` analizuje i drukuje dane atrybutów dla każdej wykrytej klasy. Każdy atrybut musi być określony osobno w wywołaniu oryginalnego interfejsu API wykrywania kroju (na liście [FaceAttributeType](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.vision.face.models.faceattributetype?view=azure-dotnet) ). Poniższy kod przetwarza każdy atrybut, ale prawdopodobnie trzeba będzie tylko użyć jednego lub kilku.
+
+[!code-csharp[](~/cognitive-services-dotnet-sdk-samples/documentation-samples/quickstarts/Face/Program.cs?name=snippet_detect_parse)]
 
 ## <a name="find-similar-faces"></a>Wyszukiwanie podobnych twarzy
 

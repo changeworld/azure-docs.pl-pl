@@ -1,5 +1,5 @@
 ---
-title: Mapowanie przepływów danych w Azure Data Factory | Microsoft Docs
+title: Mapowanie przepływów danych w Azure Data Factory
 description: Omówienie mapowania przepływów danych w Azure Data Factory
 author: kromerm
 ms.author: makromer
@@ -7,12 +7,12 @@ ms.reviewer: daperlov
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 10/7/2019
-ms.openlocfilehash: 7f6c131737ca63d120e111b3ef4504a36dbd7fc1
-ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
+ms.openlocfilehash: ed2502ffebbacf5e66e3e4738e2e88ce7fb8a562
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/22/2019
-ms.locfileid: "72754710"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73681561"
 ---
 # <a name="what-are-mapping-data-flows"></a>Czym są przepływy danych mapowania?
 
@@ -84,11 +84,11 @@ Pierwsza karta w okienku Konfiguracja każdej transformacji zawiera ustawienia s
 
 ![Karta Ustawienia źródła](media/data-flow/source1.png "Karta Ustawienia źródła")
 
-#### <a name="optimize"></a>Optymalizowanie
+#### <a name="optimize"></a>Optymalizacja
 
 Karta **Optymalizacja** zawiera ustawienia umożliwiające skonfigurowanie schematów partycjonowania.
 
-![Optymalizacja](media/data-flow/optimize1.png "Optymalizowanie")
+![Optymalizacja](media/data-flow/optimize1.png "Optymalizacja")
 
 Ustawieniem domyślnym jest **użycie bieżącego partycjonowania**, które instruuje Azure Data Factory, aby używać schematu partycjonowania natywnego dla przepływów danych uruchomionych w systemie Spark. W większości scenariuszy zalecamy to ustawienie.
 

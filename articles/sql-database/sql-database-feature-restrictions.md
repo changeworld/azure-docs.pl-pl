@@ -1,5 +1,5 @@
 ---
-title: Ograniczenia funkcji Azure SQL Database | Microsoft Docs
+title: Ograniczenia funkcji Azure SQL Database
 description: Ograniczenia funkcji Azure SQL Database zwiększają bezpieczeństwo bazy danych przez ograniczenie funkcji w bazie danych, które mogą być osobami atakującymi w celu uzyskania dostępu do zawartych w nich informacji.
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: barmichal
 ms.author: mibar
 ms.reviewer: vanto
 ms.date: 03/22/2019
-ms.openlocfilehash: f2fd6cb73428c69fbb27cb93377f851a4e06221d
-ms.sourcegitcommit: dd69b3cda2d722b7aecce5b9bd3eb9b7fbf9dc0a
+ms.openlocfilehash: e9518065b2240d72698ed75f2fa8a7aed343b7bf
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/12/2019
-ms.locfileid: "70959131"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73690065"
 ---
 # <a name="azure-sql-database-feature-restrictions"></a>Ograniczenia funkcji Azure SQL Database
 
@@ -24,7 +24,7 @@ Jednym ze wspólnych źródeł ataków SQL Server są aplikacje sieci Web, któr
 
 ## <a name="enabling-feature-restrictions"></a>Włączanie ograniczeń funkcji
 
-Włączenie ograniczeń funkcji odbywa się przy użyciu `sp_add_feature_restriction` procedury składowanej w następujący sposób:
+Włączanie ograniczeń funkcji odbywa się przy użyciu `sp_add_feature_restriction` procedury składowanej w następujący sposób:
 
 ```sql
 EXEC sp_add_feature_restriction <feature>, <object_class>, <object_name>
@@ -32,14 +32,14 @@ EXEC sp_add_feature_restriction <feature>, <object_class>, <object_name>
 
 Można ograniczyć następujące funkcje:
 
-| Cecha          | Opis |
+| Funkcja          | Opis |
 |------------------|-------------|
-| N'ErrorMessages' | Po ograniczeniu dane użytkowników w komunikacie o błędzie będą maskowane. Zobacz [ograniczenie funkcji komunikatów o błędach](#error-messages-feature-restriction) |
+| N'ErrorMessages' | Po ograniczeniu dane użytkowników w komunikacie o błędzie będą maskowane. Zobacz  [ograniczeń funkcji komunikatów o błędach](#error-messages-feature-restriction)|
 | N'Waitfor'       | Gdy jest to ograniczone, polecenie zwróci natychmiast bez opóźnień. Zobacz [ograniczenie funkcji WAITFOR](#waitfor-feature-restriction) |
 
-Wartość `object_class` może `object_name` być `N'User'` albo w celu określenia, czy jest nazwą użytkownika, czy nazwą roli w bazie danych. `N'Role'`
+Wartość `object_class` może być `N'User'` lub `N'Role'`, aby określić, czy `object_name` jest nazwą użytkownika, czy nazwą roli w bazie danych.
 
-Poniższy przykład powoduje, że wszystkie komunikaty o błędach `MyUser` dla użytkownika mają być maskowane:
+Poniższy przykład powoduje, że wszystkie komunikaty o błędach dla `MyUser` użytkownika mają być maskowane:
 
 ```sql
 EXEC sp_add_feature_restriction N'ErrorMessages', N'User', N'MyUser'
@@ -53,7 +53,7 @@ Wyłączenie ograniczeń funkcji odbywa się przy użyciu `sp_drop_feature_restr
 EXEC sp_drop_feature_restriction <feature>, <object_class>, <object_name>
 ```
 
-Poniższy przykład wyłącza maskowanie komunikatu o błędzie dla użytkownika `MyUser`:
+Poniższy przykład wyłącza maskowanie komunikatów o błędach dla `MyUser`użytkownika:
 
 ```sql
 EXEC sp_drop_feature_restriction N'ErrorMessages', N'User', N'MyUser'
@@ -61,13 +61,13 @@ EXEC sp_drop_feature_restriction N'ErrorMessages', N'User', N'MyUser'
 
 ## <a name="viewing-feature-restrictions"></a>Wyświetlanie ograniczeń funkcji
 
-`sys.sql_feature_restrictions` Widok przedstawia wszystkie obecnie zdefiniowane ograniczenia funkcji w bazie danych. Ma następujące kolumny:
+Widok `sys.sql_feature_restrictions` przedstawia wszystkie obecnie zdefiniowane ograniczenia funkcji w bazie danych. Ma następujące kolumny:
 
 | Nazwa kolumny | Typ danych | Opis |
 |-------------|-----------|-------------|
-| class       | nvarchar (128) | Klasa obiektu, do którego stosuje się ograniczenie |
-| object      | nvarchar(256) | Nazwa obiektu, do którego odnosi się ograniczenie |
-| funkcja     | nvarchar (128) | Funkcja, która jest ograniczona |
+| określonej       | nvarchar (128) | Klasa obiektu, do którego stosuje się ograniczenie |
+| obiekt      | nvarchar (256) | Nazwa obiektu, do którego odnosi się ograniczenie |
+| Ona     | nvarchar (128) | Funkcja, która jest ograniczona |
 
 ## <a name="feature-restrictions"></a>Ograniczenia funkcji
 
@@ -81,13 +81,13 @@ Rozważmy aplikację sieci Web, która ma żądanie w formie:
 http://www.contoso.com/employee.php?id=1
 ```
 
-Który wykonuje następujące zapytanie bazy danych:
+który wykonuje następujące zapytanie bazy danych:
 
 ```sql
 SELECT Name FROM EMPLOYEES WHERE Id=$EmpId
 ```
 
-Jeśli wartość przeniesiona jako `id` parametr do żądania aplikacji sieci Web jest kopiowana, aby zastąpić $EmpID w kwerendzie bazy danych, osoba atakująca może wykonać następujące żądanie:
+Jeśli wartość przeniesiona jako parametr `id` do żądania aplikacji sieci Web jest kopiowana w celu zastąpienia $EmpId w kwerendzie bazy danych, osoba atakująca może wykonać następujące żądanie:
 
 ```html
 http://www.contoso.com/employee.php?id=1 AND CAST(DB_NAME() AS INT)=0
@@ -125,7 +125,7 @@ Arithmetic overflow error for data type ******, value = ******.
 
 ### <a name="waitfor-feature-restriction"></a>Ograniczenie funkcji WAITFOR
 
-Ślepa iniekcja SQL jest niezależna od tego, czy aplikacja nie zapewnia osobie atakującej wyników wprowadzonej przez program SQL lub komunikat o błędzie, ale atakujący może wywnioskować informacje z bazy danych przez utworzenie zapytania warunkowego, w którym dwie gałęzie warunkowe Wykonaj inną ilość czasu. Porównując czas odpowiedzi, osoba atakująca może wiedzieć, która gałąź została wykonana, a tym samym uzyskać informacje o systemie. Najprostszą odmianą tego ataku jest użycie `WAITFOR` instrukcji w celu wprowadzenia opóźnienia.
+Ślepa iniekcja SQL jest niezależna od tego, czy aplikacja nie zapewnia osobie atakującej wyników wprowadzonej przez program SQL lub komunikat o błędzie, ale atakujący może wywnioskować informacje z bazy danych przez utworzenie zapytania warunkowego, w którym dwie gałęzie warunkowe Wykonaj inną ilość czasu. Porównując czas odpowiedzi, osoba atakująca może wiedzieć, która gałąź została wykonana, a tym samym uzyskać informacje o systemie. Najprostszą odmianą tego ataku jest użycie instrukcji `WAITFOR` w celu wprowadzenia opóźnienia.
 
 Rozważmy aplikację sieci Web, która ma żądanie w formie:
 
@@ -145,4 +145,4 @@ Jeśli wartość przeniesiona jako parametr identyfikatora do żądań aplikacji
 http://www.contoso.com/employee.php?id=1; IF SYSTEM_USER='sa' WAITFOR DELAY '00:00:05'
 ```
 
-A zapytanie zajmie więcej niż 5 sekund, jeśli `sa` konto było używane. Jeśli `WAITFOR` ograniczenie funkcji jest wyłączone w bazie danych `WAITFOR` , instrukcja zostanie zignorowana i nie zostaną ujawnione informacje za pomocą tego ataku.
+Wykonanie zapytania zajmie więcej niż 5 sekund, jeśli konto `sa` było używane. Jeśli `WAITFOR` ograniczenie funkcji jest wyłączone w bazie danych, instrukcja `WAITFOR` zostanie zignorowana, a informacje nie zostaną ujawnione przy użyciu tego ataku.

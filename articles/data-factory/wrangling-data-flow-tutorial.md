@@ -1,5 +1,5 @@
 ---
-title: Wprowadzenie do przepływu danych przetwarzanie w Azure Data Factory | Microsoft Docs
+title: Wprowadzenie do przepływu danych przetwarzanie w Azure Data Factory
 description: Samouczek dotyczący przygotowywania danych w Azure Data Factory przy użyciu przepływu danych przetwarzanie
 author: djpmsft
 ms.author: daperlov
@@ -7,12 +7,12 @@ ms.reviewer: gamal
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 11/01/2019
-ms.openlocfilehash: 6de6f6976643360613b7bd44d8cb390c409e33e1
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 8ae109045381dba77610dedc5bb95e233b213eee
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73518530"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73682282"
 ---
 # <a name="prepare-data-with-wrangling-data-flow"></a>Przygotowywanie danych za pomocą przepływu danych przetwarzanie
 

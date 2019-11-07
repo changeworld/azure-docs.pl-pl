@@ -1,5 +1,5 @@
 ---
-title: Tworzenie własnego środowiska Integration Runtime w Azure Data Factory | Microsoft Docs
+title: Tworzenie własnego środowiska Integration Runtime w Azure Data Factory
 description: Dowiedz się, jak utworzyć własne środowisko Integration Runtime w Azure Data Factory, co umożliwia fabrykom danych dostęp do magazynów danych w sieci prywatnej.
 services: data-factory
 documentationcenter: ''
@@ -11,12 +11,12 @@ ms.date: 06/18/2019
 author: nabhishek
 ms.author: abnarain
 manager: craigg
-ms.openlocfilehash: 8ea6a365b0c7bc6c254c1313445bb54231e161ae
-ms.sourcegitcommit: e0a1a9e4a5c92d57deb168580e8aa1306bd94723
+ms.openlocfilehash: 594d4b941f3ed67daa4e1cfd57c2f5539e0cb9ee
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/11/2019
-ms.locfileid: "72285649"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73677170"
 ---
 # <a name="create-and-configure-a-self-hosted-integration-runtime"></a>Tworzenie i Konfigurowanie własnego środowiska Integration Runtime
 Środowisko Integration Runtime (IR) to infrastruktura obliczeniowa, która Azure Data Factory używa do zapewniania możliwości integracji danych w różnych środowiskach sieciowych. Aby uzyskać szczegółowe informacje o IR, zobacz [Omówienie środowiska Integration Runtime](concepts-integration-runtime.md).
@@ -27,8 +27,13 @@ W tym dokumencie opisano, jak można utworzyć i skonfigurować samoobsługowe �
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-## <a name="high-level-steps-to-install-a-self-hosted-ir"></a>Ogólne kroki instalacji samoobsługowego środowiska IR
-1. Utwórz własne środowisko Integration Runtime. Dla tego zadania można użyć interfejsu użytkownika Azure Data Factory. Oto przykład środowiska PowerShell:
+## <a name="setting-up-a-self-hosted-integration-runtime"></a>Konfigurowanie samoobsługowego Integration Runtime
+
+Aby utworzyć i skonfigurować własne środowisko Integration Runtime, można użyć następujących metod:
+
+### <a name="create-a-self-hosted-ir-via-azure-powershell"></a>Tworzenie własnego środowiska IR za pośrednictwem Azure PowerShell 
+
+1. Dla tego zadania można użyć Azure PowerShell. Oto przykład:
 
     ```powershell
     Set-AzDataFactoryV2IntegrationRuntime -ResourceGroupName $resourceGroupName -DataFactoryName $dataFactoryName -Name $selfHostedIntegrationRuntimeName -Type SelfHosted -Description "selfhosted IR description"
@@ -44,8 +49,72 @@ W tym dokumencie opisano, jak można utworzyć i skonfigurować samoobsługowe �
 
     ```
 
-## <a name="setting-up-a-self-hosted-ir-on-an-azure-vm-by-using-an-azure-resource-manager-template"></a>Konfigurowanie własnego środowiska IR na maszynie wirtualnej platformy Azure przy użyciu szablonu Azure Resource Manager 
+### <a name="create-a-self-hosted-ir-via-azure-data-factory-ui"></a>Tworzenie własnego środowiska IR za pośrednictwem interfejsu użytkownika Azure Data Factory
+
+Poniższe kroki umożliwiają utworzenie własnego środowiska IR przy użyciu Azure Data Factory interfejsu użytkownika. 
+
+1. Na **stronie** wprowadzenie Azure Data Factory interfejsu użytkownika wybierz kartę **autor** w lewym okienku.
+
+   ![Przycisk autora strony głównej](media/doc-common-process/get-started-page-author-button.png)
+2. Kliknij pozycję **połączenia** w dolnej części okienka po lewej stronie, a następnie przejdź do obszaru **Integration Runtimes** w oknie Connections (połączenia). Wybierz pozycję **+ Nowy**.
+
+   ![Integration Runtime](media/create-self-hosted-integration-runtime/new-integration-runtime.png)
+3. W oknie **Konfiguracja środowiska Integration Runtime** wybierz pozycję *Wykonaj przenoszenie danych i wysyłaj działania do obliczeń zewnętrznych*, a następnie kliknij przycisk **Kontynuuj**.
+4. Wprowadź nazwę dla swojego środowiska IR, a następnie wybierz pozycję **Utwórz**.
+5. Możesz użyć **opcji 1** , aby uruchomić instalację ekspresową na komputerze. Alternatywnie możesz użyć **opcji 2** , aby skonfigurować ręcznie. Poniższe instrukcje są zależne od **konfiguracji ręcznej**:
+
+   ![Instalacja środowiska Integration Runtime](media/create-self-hosted-integration-runtime/integration-runtime-setting-up.png)
+
+    1. Skopiuj i Wklej klucz uwierzytelniania. Wybierz pozycję **Pobierz i zainstaluj środowisko Integration Runtime**.
+        
+    1. Pobierz własne środowisko Integration Runtime na lokalnym komputerze z systemem Windows. Uruchom instalację.
+        
+    1. Na stronie **Rejestrowanie środowiska Integration Runtime (Self-hosted)** wklej klucz zapisany w poprzedniej sekcji i wybierz pozycję **Zarejestruj**.
+    
+       ![Rejestrowanie środowiska Integration Runtime](media/create-self-hosted-integration-runtime/register-integration-runtime.png)
+
+    1. Na stronie **nowy węzeł Integration Runtime (Self-Hosted)** wybierz pozycję **Zakończ**. 
+
+6. Gdy własne środowisko Integration Runtime zostanie pomyślnie zarejestrowane, zostanie wyświetlony następujący komunikat:
+
+    ![Pomyślnie zarejestrowano](media/create-self-hosted-integration-runtime/registered-successfully.png)
+
+### <a name="set-up-a-self-hosted-ir-on-azure-vm-via-azure-resource-manager-template"></a>Konfigurowanie własnego środowiska IR na maszynie wirtualnej platformy Azure za pośrednictwem szablonu Azure Resource Manager 
 Za pomocą [tego szablonu Azure Resource Manager](https://github.com/Azure/azure-quickstart-templates/tree/master/101-vms-with-selfhost-integration-runtime)można zautomatyzować konfigurację samodzielnego środowiska IR na maszynie wirtualnej platformy Azure. Ten szablon umożliwia łatwe w pełni funkcjonalne środowisko IR w sieci wirtualnej platformy Azure o wysokiej dostępności i skalowalności (o ile liczba węzłów jest ustawiana na 2 lub więcej).
+
+### <a name="set-up-an-existing-self-hosted-ir-via-local-powershell"></a>Konfigurowanie istniejącego własnego środowiska IR za pośrednictwem lokalnego programu PowerShell
+
+Za pomocą wiersza polecenia można skonfigurować lub zarządzać istniejącym własnym, obsługiwanym przez siebie środowisku IR. Można to użyć szczególnie w przypadku automatyzowania instalacji, rejestracji samoobsługowych węzłów IR. 
+
+**Dmgcmd. exe** znajduje się w instalacji samoobsługowej, zazwyczaj znajduje się w folderze C:\Program Files\Microsoft Integration Runtime\3.0\Shared\. Obsługuje to różne parametry i może być wywoływana za pomocą wiersza polecenia przy użyciu skryptów wsadowych do automatyzacji. 
+
+*Wykorzystywani* 
+
+```powershell
+dmgcmd [ -RegisterNewNode "<AuthenticationKey>" -EnableRemoteAccess "<port>" ["<thumbprint>"] -EnableRemoteAccessInContainer "<port>" ["<thumbprint>"] -DisableRemoteAccess -Key "<AuthenticationKey>" -GenerateBackupFile "<filePath>" "<password>" -ImportBackupFile "<filePath>" "<password>" -Restart -Start -Stop -StartUpgradeService -StopUpgradeService -TurnOnAutoUpdate -TurnOffAutoUpdate -SwitchServiceAccount "<domain\user>" ["password"] -Loglevel <logLevel> ] 
+```
+
+ *Szczegóły (parametry/Właściwość):* 
+
+| Właściwość                                                    | Opis                                                  | Wymagany |
+| ----------------------------------------------------------- | ------------------------------------------------------------ | -------- |
+| RegisterNewNode "`<AuthenticationKey>`"                     | Zarejestruj Integration Runtime (Self-hosted) węzeł z określonym kluczem uwierzytelniania | Nie       |
+| EnableRemoteAccess "`<port>`" ["`<thumbprint>`"]            | Włącz dostęp zdalny w bieżącym węźle w celu skonfigurowania klastra o wysokiej dostępności i/lub włączenia ustawienia poświadczeń bezpośrednio do samoobsługowego środowiska IR (bez przechodzenia przez usługę ADF) przy użyciu  **Polecenie cmdlet New-AzDataFactoryV2LinkedServiceEncryptedCredential** z komputera zdalnego w tej samej sieci. | Nie       |
+| EnableRemoteAccessInContainer "`<port>`" ["`<thumbprint>`"] | Włącz dostęp zdalny do bieżącego węzła, gdy węzeł jest uruchomiony w kontenerze | Nie       |
+| DisableRemoteAccess                                         | Wyłącz dostęp zdalny do bieżącego węzła. Dostęp zdalny jest wymagany w przypadku konfiguracji wielowęzłowej. Polecenie cmdlet New-**AzDataFactoryV2LinkedServiceEncryptedCredential** programu PowerShell nadal działa nawet wtedy, gdy dostęp zdalny jest wyłączony o ile jest wykonywany na tym samym komputerze co węzeł samodzielnego środowiska IR. | Nie       |
+| Klucz "`<AuthenticationKey>`"                                 | Zastąp/zaktualizuj poprzedni klucz uwierzytelniania. Należy zachować ostrożność, ponieważ może to spowodować, że poprzedni, samodzielny węzeł IR przechodzą do trybu offline, jeśli klucz jest nowym środowiskiem Integration Runtime. | Nie       |
+| GenerateBackupFile "`<filePath>`" "`<password>`"            | Generuj plik kopii zapasowej dla bieżącego węzła, plik kopii zapasowej zawiera klucz węzła i poświadczenia magazynu danych | Nie       |
+| ImportBackupFile "`<filePath>`" "`<password>`"              | Przywróć węzeł z pliku kopii zapasowej                          | Nie       |
+| Ponowne uruchamianie                                                     | Uruchom ponownie usługę hosta Integration Runtime (Self-hosted)   | Nie       |
+| Uruchamianie                                                       | Uruchom usługę hosta Integration Runtime (Self-hosted)     | Nie       |
+| Stop                                                        | Zatrzymaj usługę aktualizacji Integration Runtime (Self-hosted)        | Nie       |
+| StartUpgradeService                                         | Uruchom usługę aktualizacji Integration Runtime (Self-hosted)       | Nie       |
+| StopUpgradeService                                          | Zatrzymaj usługę aktualizacji Integration Runtime (Self-hosted)        | Nie       |
+| TurnOnAutoUpdate                                            | Włącz Integration Runtime (Self-hosted) AutoUpdate        | Nie       |
+| TurnOffAutoUpdate                                           | Wyłącz Integration Runtime (Self-hosted) AutoUpdate       | Nie       |
+| SwitchServiceAccount "< domena \ użytkownik >" ["hasło"]           | Ustaw DIAHostService do uruchamiania jako nowe konto. Użyj pustego hasła ("") dla konta systemowego lub konta wirtualnego | Nie       |
+| `<logLevel>` LogLevel                                       | Ustawianie poziomu dziennika ETW (wyłączone, błąd, pełne lub wszystkie). Zwykle używany przez pomoc techniczną firmy Microsoft podczas debugowania. | Nie       |
+
 
 ## <a name="command-flow-and-data-flow"></a>Przepływ poleceń i przepływ danych
 Gdy przenosisz dane między środowiskiem lokalnym i chmurą, działanie korzysta z własnego środowiska Integration Runtime do transferowania danych z lokalnego źródła danych do chmury i na odwrót.
@@ -62,8 +131,8 @@ Poniżej znajduje się ogólny przepływ danych służący do podsumowania krok�
 
 ## <a name="considerations-for-using-a-self-hosted-ir"></a>Zagadnienia dotyczące korzystania z samodzielnego środowiska IR
 
-- Pojedyncze środowisko Integration Runtime może być używane dla wielu lokalnych źródeł danych. Pojedyncze środowisko Integration Runtime może być współużytkowane z inną fabryką danych w ramach tej samej dzierżawy Azure Active Directory. Aby uzyskać więcej informacji, zobacz [udostępnianie własnego środowiska Integration Runtime](#sharing-the-self-hosted-integration-runtime-with-multiple-data-factories).
-- Na jednym komputerze można zainstalować tylko jedno wystąpienie środowiska Integration Runtime (samodzielne). Jeśli istnieją dwa fabryki danych, które muszą uzyskać dostęp do lokalnych źródeł danych, użyj [funkcji samodzielnego udostępniania IR](#sharing-the-self-hosted-integration-runtime-with-multiple-data-factories) , aby udostępnić środowisko Integration Runtime (własne), lub zainstalować własne środowisko Integration Runtime na dwóch komputerach lokalnych, jeden dla Każda Fabryka danych.  
+- Pojedyncze środowisko Integration Runtime może być używane dla wielu lokalnych źródeł danych. Pojedyncze środowisko Integration Runtime może być współużytkowane z inną fabryką danych w ramach tej samej dzierżawy Azure Active Directory. Aby uzyskać więcej informacji, zobacz [udostępnianie własnego środowiska Integration Runtime](#create-a-shared-self-hosted-integration-runtime-in-azure-data-factory).
+- Na jednym komputerze można zainstalować tylko jedno wystąpienie środowiska Integration Runtime (samodzielne). Jeśli istnieją dwa fabryki danych, które muszą uzyskać dostęp do lokalnych źródeł danych, użyj [funkcji samodzielnego udostępniania IR](#create-a-shared-self-hosted-integration-runtime-in-azure-data-factory) , aby udostępnić środowisko Integration Runtime (własne), lub zainstalować własne środowisko Integration Runtime na dwóch komputerach lokalnych, jeden dla Każda Fabryka danych.  
 - Własne środowisko Integration Runtime nie musi znajdować się na tym samym komputerze co źródło danych. Jednak samodzielne środowisko Integration Runtime bliżej źródła danych skraca czas, w którym środowisko Integration Runtime jest połączone ze źródłem danych. Zalecamy zainstalowanie własnego środowiska Integration Runtime na komputerze innym niż ten, który jest hostem lokalnego źródła danych. Gdy własne środowisko Integration Runtime i źródło danych znajdują się na różnych komputerach, własne środowisko Integration Runtime nie konkuruje o zasoby ze źródłem danych.
 - Na różnych komputerach, które łączą się z tym samym lokalnym źródłem danych, można mieć wiele środowisk Integration Runtime. Na przykład mogą istnieć dwa własne środowiska Integration Runtime, które obsługują dwa fabryki danych, ale to samo lokalne źródło danych jest rejestrowane zarówno dla fabryk danych.
 - Jeśli na komputerze jest już zainstalowana brama do obsługi scenariusza Power BI, zainstaluj osobne środowisko Integration Runtime dla Azure Data Factory na innym komputerze.
@@ -82,14 +151,14 @@ Poniżej znajduje się ogólny przepływ danych służący do podsumowania krok�
 - Uruchomienia działania kopiowania odbywają się z określoną częstotliwością. Użycie zasobów (procesor CPU, pamięć) na komputerze jest zgodne z tym samym wzorcem i okresami szczytu. Użycie zasobów również jest zależne od ilości przenoszonych danych. Gdy trwa wykonywanie wielu zadań kopiowania, zostanie wyświetlone użycie zasobów w godzinach szczytu.
 - Zadania mogą zakończyć się niepowodzeniem w przypadku wyodrębnienia danych w formatach Parquet, ORC lub Avro. Tworzenie pliku jest uruchamiane na własnym komputerze integracji i wymaga, aby poniższe wymagania wstępne działały zgodnie z oczekiwaniami (zobacz [Format Parquet w Azure Data Factory](https://docs.microsoft.com/azure/data-factory/format-parquet#using-self-hosted-integration-runtime)).
     - [Pakiet C++ redystrybucyjny Visual 2010](https://download.microsoft.com/download/3/2/2/3224B87F-CFA0-4E70-BDA3-3DE650EFEBA5/vcredist_x64.exe) (x64)
-    - Środowisko uruchomieniowe języka Java (JRE) w wersji 8 od dostawcy środowiska JRE, takie jak [przyjęcie OpenJDK](https://adoptopenjdk.net/), dzięki czemu jest ustawiona zmienna środowiskowa `JAVA_HOME`.
+    - Środowisko uruchomieniowe Java (JRE) w wersji 8 od dostawcy środowiska JRE, takie jak [przyjęcie OpenJDK](https://adoptopenjdk.net/), co zapewnia, że jest ustawiona zmienna środowiskowa `JAVA_HOME`.
 
 ## <a name="installation-best-practices"></a>Najlepsze rozwiązania dotyczące instalacji
 Możesz zainstalować własne środowisko Integration Runtime, pobierając pakiet instalacyjny MSI z [Centrum pobierania Microsoft](https://www.microsoft.com/download/details.aspx?id=39717). Instrukcje krok po kroku znajdują się [w artykule Przenoszenie danych między środowiskiem lokalnym i chmurą](tutorial-hybrid-copy-powershell.md) .
 
 - Skonfiguruj plan dodatku na komputerze hosta dla własnego środowiska Integration Runtime, aby komputer nie był w stanie hibernacji. Jeśli maszyna hosta przechodzi w stan hibernacji, środowisko Integration Runtime jest w trybie offline.
 - Regularnie Twórz kopie zapasowe poświadczeń skojarzonych z własnym środowiskiem Integration Runtime.
-- Aby zautomatyzować operacje konfiguracji samoobsługowego środowiska IR, zapoznaj się z [sekcją poniżej](#automation-support-for-self-hosted-ir-function).  
+- Aby zautomatyzować operacje konfiguracji samoobsługowego środowiska IR, zapoznaj się z [sekcją w tej sekcji](#setting-up-a-self-hosted-integration-runtime) **Konfigurowanie istniejącego, obsługiwanego przez program PowerShell** .  
 
 ## <a name="install-and-register-self-hosted-ir-from-the-download-center"></a>Instalowanie i rejestrowanie samodzielnego środowiska IR w centrum pobierania
 
@@ -114,45 +183,6 @@ Możesz zainstalować własne środowisko Integration Runtime, pobierając pakie
 
     d. Wybierz pozycję **Zarejestruj**.
 
-## <a name="automation-support-for-self-hosted-ir-function"></a>Obsługa automatyzacji funkcji samodzielnego środowiska IR
-
-
-> [!NOTE]
-> Jeśli planujesz skonfigurować własne środowisko IR na maszynie wirtualnej platformy Azure i chcesz zautomatyzować konfigurację przy użyciu szablonów Azure Resource Manager, zapoznaj się z [sekcją](#setting-up-a-self-hosted-ir-on-an-azure-vm-by-using-an-azure-resource-manager-template).
-
-Za pomocą wiersza polecenia można skonfigurować lub zarządzać istniejącym własnym, obsługiwanym przez siebie środowisku IR. Można to użyć szczególnie w przypadku automatyzowania instalacji, rejestracji samoobsługowych węzłów IR. 
-
-**Dmgcmd. exe** znajduje się w instalacji samoobsługowej, zazwyczaj znajduje się w folderze C:\Program Files\Microsoft Integration Runtime\3.0\Shared\. Obsługuje to różne parametry i może być wywoływana za pomocą wiersza polecenia przy użyciu skryptów wsadowych do automatyzacji. 
-
-*Wykorzystywani* 
-
-```powershell
-dmgcmd [ -RegisterNewNode "<AuthenticationKey>" -EnableRemoteAccess "<port>" ["<thumbprint>"] -EnableRemoteAccessInContainer "<port>" ["<thumbprint>"] -DisableRemoteAccess -Key "<AuthenticationKey>" -GenerateBackupFile "<filePath>" "<password>" -ImportBackupFile "<filePath>" "<password>" -Restart -Start -Stop -StartUpgradeService -StopUpgradeService -TurnOnAutoUpdate -TurnOffAutoUpdate -SwitchServiceAccount "<domain\user>" ["password"] -Loglevel <logLevel> ] 
-```
-
- *Szczegóły (parametry/Właściwość):* 
-
-| Właściwość                                                    | Opis                                                  | Wymagane |
-| ----------------------------------------------------------- | ------------------------------------------------------------ | -------- |
-| RegisterNewNode "`<AuthenticationKey>`"                     | Zarejestruj Integration Runtime (Self-hosted) węzeł z określonym kluczem uwierzytelniania | Nie       |
-| EnableRemoteAccess "`<port>`" ["`<thumbprint>`"]            | Włącz dostęp zdalny w bieżącym węźle w celu skonfigurowania klastra o wysokiej dostępności i/lub włączenia ustawienia poświadczeń bezpośrednio do samoobsługowego środowiska IR (bez przechodzenia przez usługę ADF) przy użyciu  **Polecenie cmdlet New-AzDataFactoryV2LinkedServiceEncryptedCredential** z komputera zdalnego w tej samej sieci. | Nie       |
-| EnableRemoteAccessInContainer "`<port>`" ["`<thumbprint>`"] | Włącz dostęp zdalny do bieżącego węzła, gdy węzeł jest uruchomiony w kontenerze | Nie       |
-| DisableRemoteAccess                                         | Wyłącz dostęp zdalny do bieżącego węzła. Dostęp zdalny jest wymagany w przypadku konfiguracji wielowęzłowej. Polecenie cmdlet New-**AzDataFactoryV2LinkedServiceEncryptedCredential** programu PowerShell nadal działa nawet wtedy, gdy dostęp zdalny jest wyłączony o ile jest wykonywany na tym samym komputerze co węzeł samodzielnego środowiska IR. | Nie       |
-| Klucz "`<AuthenticationKey>`"                                 | Zastąp/zaktualizuj poprzedni klucz uwierzytelniania. Należy zachować ostrożność, ponieważ może to spowodować, że poprzedni, samodzielny węzeł IR przechodzą do trybu offline, jeśli klucz jest nowym środowiskiem Integration Runtime. | Nie       |
-| GenerateBackupFile "`<filePath>`" "`<password>`"            | Generuj plik kopii zapasowej dla bieżącego węzła, plik kopii zapasowej zawiera klucz węzła i poświadczenia magazynu danych | Nie       |
-| ImportBackupFile "`<filePath>`" "`<password>`"              | Przywróć węzeł z pliku kopii zapasowej                          | Nie       |
-| Ponowne uruchamianie                                                     | Uruchom ponownie usługę hosta Integration Runtime (Self-hosted)   | Nie       |
-| Rozpocznij                                                       | Uruchom usługę hosta Integration Runtime (Self-hosted)     | Nie       |
-| Stop                                                        | Zatrzymaj usługę aktualizacji Integration Runtime (Self-hosted)        | Nie       |
-| StartUpgradeService                                         | Uruchom usługę aktualizacji Integration Runtime (Self-hosted)       | Nie       |
-| StopUpgradeService                                          | Zatrzymaj usługę aktualizacji Integration Runtime (Self-hosted)        | Nie       |
-| TurnOnAutoUpdate                                            | Włącz Integration Runtime (Self-hosted) AutoUpdate        | Nie       |
-| TurnOffAutoUpdate                                           | Wyłącz Integration Runtime (Self-hosted) AutoUpdate       | Nie       |
-| SwitchServiceAccount "< domena \ użytkownik >" ["hasło"]           | Ustaw DIAHostService do uruchamiania jako nowe konto. Użyj pustego hasła ("") dla konta systemowego lub konta wirtualnego | Nie       |
-| Loglevel `<logLevel>`                                       | Ustawianie poziomu dziennika ETW (wyłączone, błąd, pełne lub wszystkie). Zwykle używany przez pomoc techniczną firmy Microsoft podczas debugowania. | Nie       |
-
-   
-
 
 ## <a name="high-availability-and-scalability"></a>Wysoka dostępność i skalowalność
 Własne środowisko Integration Runtime może być skojarzone z wieloma maszynami lokalnymi lub Virtual Machines na platformie Azure. Te komputery są nazywane węzłami. Możesz mieć do czterech węzłów skojarzonych z własnym środowiskiem Integration Runtime. Zalety posiadania wielu węzłów (maszyn lokalnych z zainstalowaną bramą) dla bramy logicznej są następujące:
@@ -165,7 +195,7 @@ Możesz skojarzyć wiele węzłów, instalując własne oprogramowanie Integrati
 > Nie musisz tworzyć nowego środowiska Integration Runtime w celu kojarzenia każdego węzła. Możesz zainstalować własne środowisko Integration Runtime na innym komputerze i zarejestrować je przy użyciu tego samego klucza uwierzytelniania. 
 
 > [!NOTE]
-> Przed dodaniem kolejnego węzła w celu zapewnienia wysokiej dostępności i skalowalności upewnij się, że opcja **dostęp zdalny do intranetu** jest włączona w pierwszym węźle (**Microsoft Integration Runtime Configuration Manager** > **Ustawienia** >  **Dostęp zdalny do intranetu**). 
+> Przed dodaniem kolejnego węzła w celu zapewnienia wysokiej dostępności i skalowalności upewnij się, że opcja **dostęp zdalny do intranetu** jest włączona w pierwszym węźle (**Microsoft Integration Runtime Configuration Manager** > **Ustawienia** > **Dostęp zdalny do intranetu**). 
 
 ### <a name="scale-considerations"></a>Zagadnienia dotyczące skalowania
 
@@ -192,11 +222,9 @@ Poniżej przedstawiono wymagania dotyczące certyfikatu TLS/SSL, który jest uż
 > [!NOTE]
 > Ten certyfikat służy do szyfrowania portów w węźle samodzielnego środowiska IR używanym do **komunikacji między** węzłami (w przypadku synchronizacji stanu, która obejmuje synchronizację poświadczeń usług połączonych między węzłami) i **przy użyciu polecenia cmdlet programu PowerShell dla programu ustawienie poświadczeń połączonej usługi** z poziomu sieci lokalnej. Zalecamy użycie tego certyfikatu, jeśli środowisko sieci prywatnej nie jest zabezpieczone lub jeśli chcesz zabezpieczyć komunikację między węzłami w sieci prywatnej. Przenoszenie danych z samoobsługowego środowiska IR do innych magazynów danych zawsze odbywa się przy użyciu szyfrowanego kanału, niezależnie od tego, czy ten zestaw certyfikatów jest ustawiony. 
 
-## <a name="sharing-the-self-hosted-integration-runtime-with-multiple-data-factories"></a>Udostępnianie własnego środowiska Integration Runtime z wieloma fabrykami danych
+## <a name="create-a-shared-self-hosted-integration-runtime-in-azure-data-factory"></a>Utwórz udostępnione środowisko Integration Runtime w Azure Data Factory
 
 Można ponownie użyć istniejącej infrastruktury środowiska Integration Runtime, która została już skonfigurowana w fabryce danych. Dzięki temu można utworzyć *połączone środowisko Integration Runtime* w innej fabryce danych, odwołując się do istniejącego samodzielnego środowiska IR (udostępnionego).
-
-Aby udostępnić środowisko Integration Runtime (własne) przy użyciu programu PowerShell, zobacz [Tworzenie udostępnionego środowiska Integration Runtime w Azure Data Factory przy użyciu programu PowerShell](create-shared-self-hosted-integration-runtime-powershell.md).
 
 W przypadku 12-minutowego wprowadzenia i pokazania tej funkcji Obejrzyj następujące wideo:
 
@@ -207,25 +235,11 @@ W przypadku 12-minutowego wprowadzenia i pokazania tej funkcji Obejrzyj następu
 - **Udostępnione środowisko IR**: oryginalne środowisko IR, które działa w ramach infrastruktury fizycznej.  
 - **Połączone środowisko IR**: IR, który odwołuje się do innego udostępnionego środowiska IR. Jest to logiczne środowisko IR i używa infrastruktury innego środowiska IR samoobsługowego (udostępnionego).
 
-### <a name="high-level-steps-for-creating-a-linked-self-hosted-ir"></a>Ogólne kroki tworzenia połączonego własnego środowiska IR
+### <a name="methods-to-share-a-self-hosted-integration-runtime"></a>Metody udostępniania środowiska Integration Runtime (własne)
 
-1. W przypadku samodzielnego udostępniania środowiska IR Udziel uprawnień do fabryki danych, w której chcesz utworzyć połączony IR. 
+Aby udostępnić środowisko Integration Runtime z wieloma fabrykami danych, zobacz [tę instrukcję](create-shared-self-hosted-integration-runtime-powershell.md) , aby uzyskać szczegółowe informacje.
 
-   ![Przycisk do przyznawania uprawnień na karcie Udostępnianie](media/create-self-hosted-integration-runtime/grant-permissions-IR-sharing.png)
-
-   ![Wybory dotyczące przypisywania uprawnień](media/create-self-hosted-integration-runtime/3_rbac_permissions.png)
-
-2. Zanotuj identyfikator zasobu samodzielnego środowiska IR, który ma zostać udostępniony.
-
-   ![Lokalizacja identyfikatora zasobu](media/create-self-hosted-integration-runtime/4_ResourceID_self-hostedIR.png)
-
-3. W fabryce danych, do której udzielono uprawnień, Utwórz nowe środowisko IR (połączone), a następnie wprowadź identyfikator zasobu.
-
-   ![Przycisk służący do tworzenia połączonego środowiska Integration Runtime (własny)](media/create-self-hosted-integration-runtime/6_create-linkedIR_2.png)
-
-   ![Pola nazwy i identyfikatora zasobu](media/create-self-hosted-integration-runtime/6_create-linkedIR_3.png)
-
-### <a name="monitoring"></a>Monitorowanie 
+### <a name="monitoring"></a>Monitorowanie
 
 - **Udostępniony IR**
 
@@ -261,6 +275,7 @@ Jeśli umieścisz kursor nad ikoną lub komunikatem w obszarze powiadomień, mo�
 ![Powiadomienia w obszarze powiadomień](media/create-self-hosted-integration-runtime/system-tray-notifications.png)
 
 ## <a name="ports-and-firewall"></a>Porty i Zapora
+
 Istnieją dwie zapory, które należy wziąć pod uwagę: *zapora firmowa* uruchomiona na centralnym routerze organizacji oraz *Zapora systemu Windows* skonfigurowana jako demon na komputerze lokalnym, na którym zainstalowano własne środowisko Integration Runtime.
 
 ![Zapora](media/create-self-hosted-integration-runtime/firewall.png)
@@ -278,6 +293,7 @@ Na poziomie *zapory systemu Windows* (na poziomie komputera) te porty wychodząc
 > W przypadku niektórych baz danych w chmurze (na przykład Azure SQL Database i Azure Data Lake) może być konieczne zezwolenie na adresy IP maszyn wirtualnych środowiska Integration Runtime w konfiguracji zapory.
 
 ### <a name="copy-data-from-a-source-to-a-sink"></a>Kopiowanie danych ze źródła do ujścia
+
 Upewnij się, że reguły zapory są prawidłowo włączone w zaporze firmowej, w zaporze systemu Windows na komputerze, na którym działa środowisko Integration Runtime, i w samym magazynie danych. Włączenie tych reguł umożliwia samodzielne środowisko Integration Runtime do pomyślnego nawiązania połączenia ze źródłem i ujściam. Włącz reguły dla wszystkich magazynów danych, które są związane z operacją kopiowania.
 
 Na przykład, aby skopiować z lokalnego magazynu danych do ujścia Azure SQL Database lub ujścia Azure SQL Data Warehouse, wykonaj następujące czynności:
@@ -288,8 +304,8 @@ Na przykład, aby skopiować z lokalnego magazynu danych do ujścia Azure SQL Da
 > [!NOTE]
 > Jeśli Zapora nie zezwala na port wychodzący 1433, własne środowisko Integration Runtime nie może bezpośrednio uzyskać dostępu do usługi Azure SQL Database. W takim przypadku można użyć [kopii przygotowanej](copy-activity-performance.md) do Azure SQL Database i Azure SQL Data Warehouse. W tym scenariuszu do przenoszenia danych wymagane jest tylko HTTPS (port 443).
 
-
 ## <a name="proxy-server-considerations"></a>Zagadnienia dotyczące serwera proxy
+
 Jeśli firmowe środowisko sieciowe używa serwera proxy w celu uzyskania dostępu do Internetu, należy skonfigurować własne środowisko Integration Runtime, aby korzystało z odpowiednich ustawień serwera proxy. Serwer proxy można ustawić podczas początkowej fazy rejestracji.
 
 ![Określ serwer proxy](media/create-self-hosted-integration-runtime/specify-proxy.png)
@@ -342,7 +358,7 @@ W przypadku wybrania ustawienia **Użyj serwera proxy** dla serwera proxy HTTP, 
     </system.net>
     ```
 
-    Dodatkowe właściwości są dozwolone wewnątrz tagu proxy, aby określić wymagane ustawienia, takie jak `scriptLocation`. Zobacz [element proxy (ustawienia sieciowe)](https://msdn.microsoft.com/library/sa91de1e.aspx) dla składni.
+    Aby określić wymagane ustawienia, takie jak `scriptLocation`, w tagu proxy są dozwolone dodatkowe właściwości. Zobacz [element proxy (ustawienia sieciowe)](https://msdn.microsoft.com/library/sa91de1e.aspx) dla składni.
 
     ```xml
     <proxy autoDetect="true|false|unspecified" bypassonlocal="true|false|unspecified" proxyaddress="uriString" scriptLocation="uriString" usesystemdefault="true|false|unspecified "/>
@@ -359,6 +375,7 @@ W przypadku wybrania ustawienia **Użyj serwera proxy** dla serwera proxy HTTP, 
 Należy również upewnić się, że Microsoft Azure znajduje się na liście dozwolonych w firmie. Listę prawidłowych adresów IP Microsoft Azure można pobrać z [Centrum pobierania Microsoft](https://www.microsoft.com/download/details.aspx?id=41653).
 
 ### <a name="possible-symptoms-for-firewall-and-proxy-server-related-issues"></a>Ewentualne objawy dotyczące problemów z zaporą i serwerem proxy
+
 Jeśli wystąpią błędy podobne do następujących, prawdopodobnie jest to spowodowane nieprawidłową konfiguracją zapory lub serwera proxy, co uniemożliwia samodzielne środowisko Integration Runtime łączenie się z usługą Data Factory w celu samodzielnego uwierzytelnienia. Aby upewnić się, że Zapora i serwer proxy są prawidłowo skonfigurowane, zapoznaj się z poprzednią sekcją.
 
 * Podczas próby zarejestrowania własnego środowiska Integration Runtime zostanie wyświetlony następujący komunikat o błędzie: "nie można zarejestrować tego węzła Integration Runtime. Upewnij się, że klucz uwierzytelniania jest prawidłowy, a na tym komputerze jest uruchomiona usługa hosta usługi integracji.
@@ -369,7 +386,8 @@ Jeśli wystąpią błędy podobne do następujących, prawdopodobnie jest to spo
     A component of Integration Runtime has become unresponsive and restarts automatically. Component name: Integration Runtime (Self-hosted).
     ```
 
-### <a name="enabling-remote-access-from-an-intranet"></a>Włączanie dostępu zdalnego z intranetu  
+### <a name="enabling-remote-access-from-an-intranet"></a>Włączanie dostępu zdalnego z intranetu 
+
 W przypadku korzystania z programu PowerShell w celu szyfrowania poświadczeń z innego komputera (w sieci), w którym jest zainstalowany własny środowisko Integration Runtime, można włączyć opcję **dostęp zdalny z intranetu** . Jeśli program PowerShell zostanie uruchomiony w celu szyfrowania poświadczeń na tym samym komputerze, na którym zainstalowano własne środowisko Integration Runtime, nie można włączyć **dostępu zdalnego z intranetu**.
 
 Należy włączyć **dostęp zdalny z intranetu** przed dodaniem kolejnego węzła w celu zapewnienia wysokiej dostępności i skalowalności.  

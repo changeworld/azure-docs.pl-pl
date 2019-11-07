@@ -1,5 +1,5 @@
 ---
-title: Zarządzanie danymi użytkownika w badaniu Azure Security Center | Microsoft Docs
+title: Zarządzanie danymi użytkownika w badaniu Azure Security Centernym
 description: " Dowiedz się, jak zarządzać danymi użytkowników znalezionymi w funkcji badania Azure Security Center. "
 services: operations-management-suite
 documentationcenter: na
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/20/2018
 ms.author: memildin
-ms.openlocfilehash: 8b6bde69f233fee9fe20b260e392966298f13a9a
-ms.sourcegitcommit: 8a717170b04df64bd1ddd521e899ac7749627350
+ms.openlocfilehash: 059ca2a26e50128d6bc4313dad9f995e97c06378
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/23/2019
-ms.locfileid: "71202039"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73686408"
 ---
 # <a name="manage-user-data-found-in-an-azure-security-center-investigation"></a>Zarządzanie danymi użytkownika w badaniu Azure Security Centernym
 Ten artykuł zawiera informacje na temat zarządzania danymi użytkownika znalezionymi w funkcji badania Azure Security Center. Dane badania są przechowywane w [Azure monitor dziennikach](../log-analytics/log-analytics-overview.md) i udostępniane w Security Center. Zarządzanie danymi użytkownika obejmuje możliwość usuwania lub eksportowania danych.
@@ -38,14 +38,14 @@ Zobacz [wbudowane role dla kontroli dostępu opartej na rolach na platformie Azu
 ## <a name="deleting-personal-data"></a>Usuwanie danych osobowych
 Użytkownik Security Center przypisany do roli właściciela, współautora lub administrator konta może usunąć informacje o badaniu.
 
-Aby usunąć badanie, możesz przesłać `DELETE` żądanie do interfejsu API REST Azure Resource Manager:
+Aby usunąć badanie, możesz przesłać żądanie `DELETE` do interfejsu API REST Azure Resource Manager:
 
 ```HTTP
 DELETE
 https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{workspaceName}/features/security/incidents/{incidentName}
 ```
 
-Dane wejściowe można znaleźć, wyświetlając listę wszystkich zdarzeń `GET` przy użyciu żądania: `incidentName`
+Dane wejściowe `incidentName` można znaleźć, wyświetlając listę wszystkich zdarzeń przy użyciu żądania `GET`:
 
 ```HTTP
 GET

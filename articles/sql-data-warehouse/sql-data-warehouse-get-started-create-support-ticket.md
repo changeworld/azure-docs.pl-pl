@@ -1,5 +1,5 @@
 ---
-title: Jak utworzyć bilet pomocy technicznej dla usługi Azure SQL Data Warehouse | Dokumentacja firmy Microsoft
+title: Jak utworzyć bilet pomocy technicznej
 description: Tworzenie biletu pomocy technicznej w usłudze Azure SQL Data Warehouse.
 services: sql-data-warehouse
 author: kevinvngo
@@ -10,18 +10,19 @@ ms.subservice: manage
 ms.date: 04/17/2018
 ms.author: kevin
 ms.reviewer: igorstan
-ms.openlocfilehash: b3ffc9794967f44708d8330d4dc5d5de11b794d6
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.custom: seo-lt-2019
+ms.openlocfilehash: 12a977e26f458fa8ee8a58c44985d9d1ae47d5c3
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61474559"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73692724"
 ---
 # <a name="how-to-create-a-support-ticket-for-sql-data-warehouse"></a>Tworzenie biletu pomocy technicznej dotyczącej usługi SQL Data Warehouse
 Jeśli masz jakiekolwiek problemy z usługą SQL Data Warehouse, utwórz bilet pomocy technicznej, aby zespół inżynierów mógł Ci pomóc.
 
 ## <a name="create-a-support-ticket"></a>Tworzenie biletu pomocy technicznej
-1. Otwórz witrynę [Azure Portal][Azure portal].
+1. Otwórz [portal Azure][Azure portal].
 2. Na ekranie głównym kliknij kartę **Pomoc i obsługa techniczna**.
    
     ![Pomoc i obsługa techniczna](./media/sql-data-warehouse-get-started-create-support-ticket/MainPage.PNG)
@@ -30,10 +31,10 @@ Jeśli masz jakiekolwiek problemy z usługą SQL Data Warehouse, utwórz bilet p
    Wybierz odpowiedni [Plan pomocy technicznej platformy Azure][Azure support plan].
    
    * Pomoc techniczna związana z **rozliczeniami, limitami przydziałów i zarządzaniem subskrypcjami** jest dostępna na wszystkich poziomach pomocy technicznej.
-   * **Naprawa w razie awarii** jest oferowana w ramach pomocy technicznej na poziomach [Developer][Developer], [Standard][Standard], [Professional Direct][Professional Direct] i [Premium][Premier]. Naprawa w razie awarii dotyczy problemów napotykanych przez klientów podczas korzystania z platformy Azure, jeśli istnieje uzasadnione podejrzenie, że problem leży po stronie firmy Microsoft.
+   * Pomoc techniczna dotycząca **usuwania poprawek** jest świadczona za pośrednictwem pomocy technicznej [Developer][Developer], [Standard][Standard], [Professional Direct][Professional Direct]i [Premier][Premier] . Naprawa w razie awarii dotyczy problemów napotykanych przez klientów podczas korzystania z platformy Azure, jeśli istnieje uzasadnione podejrzenie, że problem leży po stronie firmy Microsoft.
    * **Wsparcie dla deweloperów** i **usługi doradcze** są dostępne na poziomach pomocy technicznej [Professional Direct][Professional Direct] i [Premium][Premier]. 
      
-     Jeśli masz plan pomocy technicznej Premium, możesz zgłaszać problemy związane z usługą SQL Data Warehouse także w portalu [Microsoft Premier Online][Microsoft Premier online portal].  Zobacz temat [Plany pomocy technicznej platformy Azure][Azure support plan], aby dowiedzieć się więcej o różnych planach pomocy technicznej, ich zakresach, czasach reakcji, cenach itp.  Często zadawane pytania na temat pomocy technicznej platformy Azure można znaleźć w temacie [Pomoc techniczna platformy Azure — często zadawane pytania][Azure support FAQs].  
+     Jeśli masz plan pomocy technicznej Premium, możesz zgłaszać także problemy związane z usługą SQL Data Warehouse na portalu [Microsoft Premier Online][Microsoft Premier online portal].  Zobacz [plany pomocy technicznej platformy Azure][Azure support plan] , aby dowiedzieć się więcej o różnych planach pomocy technicznej, takich jak zakres, czasy odpowiedzi, Cennik itp.  Często zadawane pytania dotyczące pomocy technicznej platformy Azure można znaleźć w artykule [FAQ pomocy technicznej dla platformy Azure][Azure support FAQs].  
         
      ![Blok Podstawowe](./media/sql-data-warehouse-get-started-create-support-ticket/Create_ticket_1.PNG)
      ![Blok Podstawowe1](./media/sql-data-warehouse-get-started-create-support-ticket/Create_ticket_2.PNG)
@@ -41,7 +42,7 @@ Jeśli masz jakiekolwiek problemy z usługą SQL Data Warehouse, utwórz bilet p
     ![Blok Problem](./media/sql-data-warehouse-get-started-create-support-ticket/Create_ticket_3.PNG)
    
    > [!NOTE]
-   > Domyślnie każdy serwer SQL (na przykład myserver.database.windows.net) ma **limit przydziału jednostek DTU** wynoszący 45 000. Ten limit przydziału jest po prostu limitem bezpieczeństwa. Możesz zwiększyć limit przydziału, tworząc bilet pomocy technicznej i wybierając pozycję *Limit przydziału* jako typ żądania. Aby obliczyć zapotrzebowanie na jednostki DTU, należy pomnożyć 7,5 przez łączną wymaganą liczbę jednostek [DWU][DWU]. Jeśli na przykład chcesz hostować dwie bazy danych z poziomem celu usługi DW6000 na jednym serwerze SQL, zażądaj limitu przydziału wynoszącego 90 000.  Aktualne użycie jednostek DTU możesz zobaczyć z poziomu bloku serwera SQL w portalu. Limit przydziału jednostek DTU obejmuje zarówno wstrzymane, jak i niewstrzymane bazy danych. 
+   > Domyślnie każdy serwer SQL (na przykład myserver.database.windows.net) ma **limit przydziału jednostek DTU** wynoszący 45 000. Ten limit przydziału jest po prostu limitem bezpieczeństwa. Możesz zwiększyć limit przydziału, tworząc bilet pomocy technicznej i wybierając pozycję *Limit przydziału* jako typ żądania. Aby obliczyć potrzeby jednostek DTU, pomnóż 7,5 przez łączną potrzebną [jednostek dwu][DWU] . Jeśli na przykład chcesz hostować dwie bazy danych z poziomem celu usługi DW6000 na jednym serwerze SQL, zażądaj limitu przydziału wynoszącego 90 000.  Aktualne użycie jednostek DTU możesz zobaczyć z poziomu bloku serwera SQL w portalu. Limit przydziału jednostek DTU obejmuje zarówno wstrzymane, jak i niewstrzymane bazy danych. 
    > 
    > 
    
@@ -57,7 +58,7 @@ Po przesłaniu żądania pomocy technicznej zespół pomocy technicznej platform
 ![Sprawdzanie stanu](./media/sql-data-warehouse-get-started-create-support-ticket/Monitor_ticket.PNG)
 
 ## <a name="other-resources"></a>Inne zasoby
-Ponadto można nawiązać kontakt ze społecznością usługi SQL Data Warehouse w witrynie [Stack Overflow][Stack Overflow] lub na [forum MSDN dotyczącym usługi Azure SQL Data Warehouse][Azure SQL Data Warehouse MSDN forum].
+Ponadto można połączyć się ze społecznością usługi SQL Data Warehouse w witrynie [Stack Overflow][Stack Overflow] lub na [forum MSDN dotyczącym usługi Azure SQL Data Warehouse][Azure SQL Data Warehouse MSDN forum].
 
 <!--Image references--> 
 

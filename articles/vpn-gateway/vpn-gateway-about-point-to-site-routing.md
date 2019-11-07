@@ -7,12 +7,12 @@ ms.service: vpn-gateway
 ms.topic: article
 ms.date: 10/08/2019
 ms.author: anzaman
-ms.openlocfilehash: cb5969ccb4ee9780b597326a3811395c3b7d9971
-ms.sourcegitcommit: aef6040b1321881a7eb21348b4fd5cd6a5a1e8d8
+ms.openlocfilehash: ced1bc647f93beec73b8101a952944f31e497658
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/09/2019
-ms.locfileid: "72168482"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73693213"
 ---
 # <a name="about-point-to-site-vpn-routing"></a>Routing sieci VPN typu punkt-lokacja — informacje
 
@@ -32,7 +32,7 @@ W tym artykule istnieje wiele różnych diagramów. Każda sekcja zawiera inną 
 
 Połączenie bramy sieci VPN typu punkt-lokacja w tym przykładzie dotyczy sieci wirtualnej, która nie jest podłączona ani nie jest równorzędna z żadną inną siecią wirtualną (VNet1). W tym przykładzie klienci mogą uzyskać dostęp do VNet1.
 
-Izolacja izolowanej sieci wirtualnej ![Routing]sieci(./media/vpn-gateway-about-point-to-site-routing/1.jpg "wirtualnej")
+![izolowany routing sieci wirtualnej](./media/vpn-gateway-about-point-to-site-routing/1.jpg "izolowany routing sieci wirtualnej")
 
 ### <a name="address-space"></a>Przestrzeń adresowa
 
@@ -56,7 +56,7 @@ W tym przykładzie połączenie bramy sieci VPN typu punkt-lokacja jest przeznac
 
 Klienci korzystający z systemu Windows mogą uzyskać dostęp bezpośrednio do sieci wirtualnych komunikacji równorzędnej, ale klient VPN musi zostać pobrany ponownie, jeśli wprowadzono jakiekolwiek zmiany w komunikacji równorzędnej sieci wirtualnej lub topologii sieciowej. Klienci spoza systemu Windows mogą uzyskać dostęp do bezpośrednio równorzędnej sieci wirtualnych. Dostęp nie jest przechodni i jest ograniczony tylko do bezpośredniej komunikacji równorzędnej sieci wirtualnych.
 
-![wiele komunikacji równorzędnych sieci wirtualnych](./media/vpn-gateway-about-point-to-site-routing/2.jpg "wiele komunikacji równorzędnych sieci wirtualnych")
+![wiele równorzędnych sieci wirtualnych](./media/vpn-gateway-about-point-to-site-routing/2.jpg "wiele równorzędnych sieci wirtualnych")
 
 ### <a name="address-space"></a>Przestrzeń adresowa:
 
@@ -114,7 +114,7 @@ W tym przykładzie połączenie bramy sieci VPN typu punkt-lokacja jest przeznac
 
 Klienci korzystający z systemu Windows lub innego obsługiwanego systemu operacyjnego mogą uzyskać dostęp do wszystkich sieci wirtualnych, które są połączone za pomocą połączenia sieci VPN typu lokacja-lokacja, ale trasy do połączonych sieci wirtualnych muszą być dodawane ręcznie do klientów z systemem Windows.
 
-![wiele sieci wirtualnych i S2S (BGP)](./media/vpn-gateway-about-point-to-site-routing/4.jpg "z wieloma sieci wirtualnych i S2S BGP")
+![wiele sieci wirtualnych i S2S (BGP)](./media/vpn-gateway-about-point-to-site-routing/4.jpg "wiele sieci wirtualnych i protokół BGP S2S")
 
 ### <a name="address-space"></a>Przestrzeń adresowa
 
@@ -142,7 +142,7 @@ W tym przykładzie połączenie bramy sieci VPN typu punkt-lokacja jest przeznac
 
 Komputery z systemem Windows i klientami spoza systemu Windows mogą uzyskać dostęp tylko do VNet1.
 
-![routing z siecią wirtualną oraz z routingiem biura oddziału](./media/vpn-gateway-about-point-to-site-routing/5.jpg "z siecią wirtualną i biurem oddziału")
+![Routing z siecią wirtualną i biurem oddziału](./media/vpn-gateway-about-point-to-site-routing/5.jpg "Routing z siecią wirtualną i biurem oddziału")
 
 ### <a name="address-space"></a>Przestrzeń adresowa
 
@@ -195,7 +195,7 @@ W tym przykładzie połączenie bramy sieci VPN typu punkt-lokacja jest przeznac
 
 Wszyscy klienci mogą uzyskiwać dostęp tylko do VNet1.
 
-wielosieciowe połączenie S2S i(./media/vpn-gateway-about-point-to-site-routing/7.jpg "wiele sieci VNET w") biurze oddziału ![firmy Microsoft]
+![połączenie S2S i oddział z wielosieciową siecią wirtualną](./media/vpn-gateway-about-point-to-site-routing/7.jpg "połączenie S2S i oddział z wielosieciową siecią wirtualną")
 
 ### <a name="address-space"></a>Przestrzeń adresowa
 
@@ -209,7 +209,7 @@ wielosieciowe połączenie S2S i(./media/vpn-gateway-about-point-to-site-routing
 
 ### <a name="routes-added"></a>Dodane trasy
 
-* Dodani klienci: 10.1.0.0/16, 192.168.0.0/24
+* Trasy dodane do klientów systemu Windows: 10.1.0.0/16, 192.168.0.0/24
 
 * Trasy dodane do klientów spoza systemu Windows: 10.1.0.0/16, 10.2.0.0/16, 10.3.0.0/16, 10.101.0.0/16, 192.168.0.0/24
 
@@ -225,7 +225,7 @@ W tym przykładzie połączenie bramy sieci VPN typu punkt-lokacja jest przeznac
 
 Klienci korzystający z systemu Windows mogą uzyskać dostęp do sieci wirtualnych i lokacji połączonych przy użyciu połączenia sieci VPN typu lokacja-lokacja, ale trasy do VNet2, sieci vnet3 i Site1 muszą być dodawane ręcznie do klienta. Klienci spoza systemu Windows mogą uzyskać dostęp do sieci wirtualnych i witryn, które są połączone za pomocą połączenia sieci VPN typu lokacja-lokacja bez żadnej interwencji ręcznej. Dostęp jest przechodni, a klienci mogą uzyskać dostęp do zasobów we wszystkich połączonych sieci wirtualnych i lokacjach (lokalnie).
 
-wielosieciowe połączenie S2S i(./media/vpn-gateway-about-point-to-site-routing/8.jpg "wiele sieci VNET w") biurze oddziału ![firmy Microsoft]
+![połączenie S2S i oddział z wielosieciową siecią wirtualną](./media/vpn-gateway-about-point-to-site-routing/8.jpg "połączenie S2S i oddział z wielosieciową siecią wirtualną")
 
 ### <a name="address-space"></a>Przestrzeń adresowa
 
@@ -239,7 +239,7 @@ wielosieciowe połączenie S2S i(./media/vpn-gateway-about-point-to-site-routing
 
 ### <a name="routes-added"></a>Dodane trasy
 
-* Dodani klienci: 10.1.0.0/16, 192.168.0.0/24
+* Trasy dodane do klientów systemu Windows: 10.1.0.0/16, 192.168.0.0/24
 
 * Trasy dodane do klientów spoza systemu Windows: 10.1.0.0/16, 10.2.0.0/16, 10.3.0.0/16, 10.101.0.0/16, 192.168.0.0/24
 

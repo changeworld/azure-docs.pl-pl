@@ -1,6 +1,6 @@
 ---
 title: Konteneryzowanie istniejącej aplikacji .NET dla usługi Service Fabric Mesh | Microsoft Docs
-description: Dodawanie obsługi usługi Mesh do istniejącej aplikacji .NET
+description: Dodaj obsługę aranżacji kontenera Service Fabric siatki do projektów ASP.NET i konsolowych, które korzystają z pełnego programu .NET Framework.
 services: service-fabric-mesh
 keywords: konteneryzowanie usługi Service Fabric Mesh
 author: dkkapur
@@ -9,12 +9,12 @@ ms.date: 11/08/2018
 ms.topic: conceptual
 ms.service: service-fabric-mesh
 manager: chakdan
-ms.openlocfilehash: cb4e327e1c8c0a653cb94233f568b4847494c439
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 070d07316c0ff06a45e76936e75cb5345548e78f
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60419452"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73686281"
 ---
 # <a name="containerize-an-existing-net-app-for-service-fabric-mesh"></a>Konteneryzowanie istniejącej aplikacji .NET dla usługi Service Fabric Mesh
 
@@ -69,6 +69,6 @@ Po dodaniu obsługi orkiestracji kontenerów do aplikacji możesz nacisnąć kla
 
 Teraz możesz opublikować aplikację w usłudze Azure Service Fabric Mesh.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
-Zobacz, jak opublikować aplikację w usłudze Service Fabric Mesh: [Samouczek — Wdrażanie aplikacji usługi Service Fabric Mesh](service-fabric-mesh-tutorial-deploy-service-fabric-mesh-app.md)
+Zobacz, jak opublikować aplikację w usłudze Service Fabric Mesh: [Samouczek — wdrażanie aplikacji usługi Service Fabric Mesh](service-fabric-mesh-tutorial-deploy-service-fabric-mesh-app.md)

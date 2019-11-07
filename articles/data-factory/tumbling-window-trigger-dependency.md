@@ -1,5 +1,5 @@
 ---
-title: Tworzenie zależności wyzwalacza okna wirowania w Azure Data Factory | Microsoft Docs
+title: Utwórz zależności wyzwalacza okna wirowania w Azure Data Factory
 description: Dowiedz się, jak utworzyć zależność dla wyzwalacza okna wirowania w Azure Data Factory.
 services: data-factory
 documentationcenter: ''
@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 07/29/2019
 ms.author: daperlov
-ms.openlocfilehash: 24a1a5d132990db2aa10b7860774eecafb4b4edb
-ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
+ms.openlocfilehash: 3780a50429b95c402459866b7e3c87e8a91207d3
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/18/2019
-ms.locfileid: "73520636"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73683706"
 ---
 # <a name="create-a-tumbling-window-trigger-dependency"></a>Tworzenie zależności wyzwalacza okna wirowania
 
@@ -79,8 +79,8 @@ Poniższa tabela zawiera listę atrybutów wymaganych do zdefiniowania zależno�
 | **Nazwa właściwości** | **Opis**  | **Typ** | **Wymagane** |
 |---|---|---|---|
 | type  | Wszystkie istniejące wyzwalacze okna wirowania są wyświetlane na liście rozwijanej. Wybierz wyzwalacz, od którego ma być zależne.  | TumblingWindowTriggerDependencyReference lub SelfDependencyTumblingWindowTriggerReference | Tak |
-| Przesunięcie | Przesunięcie wyzwalacza zależności. Podaj wartość w formacie przedziału czasu, a ujemne i pozytywne przesunięcia są dozwolone. Ta właściwość jest wymagana, jeśli wyzwalacz jest zależny od siebie i we wszystkich innych przypadkach jest opcjonalny. Samodzielna wartość powinna zawsze być ujemna. Jeśli żadna wartość nie zostanie określona, okno jest takie samo jak wyzwalacz. | Zakres czasu<br/>(hh: mm: SS) | Samozależność: tak<br/>Inne: nie |
-| Zmienia | Rozmiar okna wirowania zależności. Podaj dodatnią wartość TimeSpan. Ta właściwość jest opcjonalna. | Zakres czasu<br/>(hh: mm: SS) | Nie  |
+| offset | Przesunięcie wyzwalacza zależności. Podaj wartość w formacie przedziału czasu, a ujemne i pozytywne przesunięcia są dozwolone. Ta właściwość jest wymagana, jeśli wyzwalacz jest zależny od siebie i we wszystkich innych przypadkach jest opcjonalny. Samodzielna wartość powinna zawsze być ujemna. Jeśli żadna wartość nie zostanie określona, okno jest takie samo jak wyzwalacz. | Zakres czasu<br/>(hh: mm: SS) | Samozależność: tak<br/>Inne: nie |
+| zmienia | Rozmiar okna wirowania zależności. Podaj dodatnią wartość TimeSpan. Ta właściwość jest opcjonalna. | Zakres czasu<br/>(hh: mm: SS) | Nie  |
 
 > [!NOTE]
 > Wyzwalacz okna wirowania może zależeć od maksymalnie dwóch innych wyzwalaczy.

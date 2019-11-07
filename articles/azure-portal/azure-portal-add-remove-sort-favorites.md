@@ -1,59 +1,69 @@
 ---
-title: Dodawanie, usuwanie i sortowanie elementów ulubionych w witrynie Azure portal | Dokumentacja firmy Microsoft
-description: Dowiedz się, jak dodać lub usunąć elementy z listy ulubionych i sortowania kolejności elementów
+title: Dodawanie, usuwanie i sortowanie ulubionych w Azure Portal | Microsoft Docs
+description: Dowiedz się, jak dodawać lub usuwać elementy z listy ulubionych i sortować kolejność elementów
 services: azure-portal
-keywords: Ulubione
+keywords: Ulubiony
 author: kfollis
 ms.author: kfollis
-ms.date: 04/03/2019
+ms.date: 11/01/2019
 ms.topic: conceptual
 ms.service: azure-portal
 ms.custom: ''
 manager: mtillman
-ms.openlocfilehash: ff3549ce77a2b691dcaaa94b6a59e9c011ff6e21
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 51228f4a28b5c6e19bf341b5576540d36bcaae64
+ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60690706"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73579539"
 ---
 # <a name="add-remove-and-sort-favorites"></a>Dodawanie, usuwanie i sortowanie ulubionych
 
-Dodawanie lub usuwanie elementów z usługi **ulubione** listy tak, aby można szybko przejść do usług, które są używane najczęściej. Dodaliśmy już pewne wspólne usługi do Twojego **ulubione** listy, ale prawdopodobnie zechcesz dostosować go. Jesteś jedyną osobą, która będzie widział zmiany wprowadzone do **ulubione**.
+Dodaj lub Usuń elementy z listy **ulubionych** , aby szybko przejść do najczęściej używanych usług. Niektóre popularne usługi zostały już dodane do listy **ulubionych** , ale prawdopodobnie zechcesz ją dostosować. Jesteś jedyną osobą, która widzi zmiany wprowadzane do **ulubionych**.
 
-## <a name="add-or-remove-a-favorite"></a>Dodaj lub Usuń element ulubiony
+## <a name="add-a-favorite"></a>Dodawanie ulubionych
 
-Elementy, które są wyświetlane w obszarze **ulubione** wybrana w zaufanym **wszystkich usług**. Ikona gwiazdki ![żółtą ikoną gwiazdki](./media/azure-portal-add-remove-sort-favorites/azure-portal-favorites-star.png) obok każdej usługi wskazuje, czy element jest wyświetlany na liście. Wybierz ikonę gwiazdki, aby dodać lub usunąć usługę z **ulubione** listy.
+Elementy znajdujące się na liście **ulubionych** są wybierane ze **wszystkich usług**. Umieść wskaźnik myszy nad nazwą usługi, aby wyświetlić informacje i zasoby związane z usługą. Ikona wypełnionej gwiazdki ![wypełnioną ikoną gwiazdy](./media/azure-portal-add-remove-sort-favorites/azure-portal-favorites-graystar.png) obok nazwy usługi wskazuje, że element pojawia się na liście **Ulubione** . Wybierz ikonę gwiazdki, aby dodać usługę do listy **ulubionych** .
 
-### <a name="add-cost-management--billing-to-favorites"></a>Zarządzanie kosztami i rozliczenia, Dodaj do ulubionych
+### <a name="add-cost-management--billing-to-favorites"></a>Dodawanie Cost Management i rozliczeń do ulubionych
 
-1. Wybierz **wszystkich usług** w górnej części paska bocznego.
+1. Wybierz pozycję **wszystkie usługi** z menu Azure Portal.
 
-    ![Zrzut ekranu przedstawiający wszystkie wybrane usługi](./media/azure-portal-add-remove-sort-favorites/azure-portal-favorites-all-services.png)
+    ![Zrzut ekranu pokazujący wszystkie wybrane usługi](./media/azure-portal-add-remove-sort-favorites/azure-portal-favorites-new-all-services.png)
 
-1. Wprowadź słowo "cost" w polu wyszukiwania. Tylko usługi, które mają "cost" w tytule lub które mają "cost" zostanie pokazany słowo kluczowe.
+1. Wprowadź wyraz "Cost" w polu wyszukiwania. Usługi, które mają "koszt" w tytule lub mają "koszt" jako słowo kluczowe, są wyświetlane.
 
-   ![Zrzut ekranu przedstawiający wyszukiwania w wszystkie usługi](./media/azure-portal-add-remove-sort-favorites/azure-portal-favorites-search.png)
+   ![Zrzut ekranu przedstawiający wyszukiwanie we wszystkich usługach](./media/azure-portal-add-remove-sort-favorites/azure-portal-favorites-find-service.png)
 
-1. Wybierz ikonę gwiazdki.
+1. Umieść wskaźnik myszy nad nazwą usługi, aby wyświetlić kartę Informacje o **rozliczeniach i Cost Management** . Wybierz ikonę gwiazdki.
 
-   ![Zrzut ekranu przedstawiający gwiazdki obok Zarządzanie kosztami i rozliczenia wybranym](./media/azure-portal-add-remove-sort-favorites/azure-portal-favorites-add.png)
+   ![Zrzut ekranu przedstawiający gwiazdkę obok pozycji Cost Management + wybrane rozliczenia](./media/azure-portal-add-remove-sort-favorites/azure-portal-favorites-add.png)
 
-1. **Cost Management + rozliczenia** dodany jako ostatni element w swojej **ulubione** listy.
+1. **Cost Management i rozliczanie** jest teraz dodawane jako ostatni element na liście **ulubionych** .
 
-## <a name="sort-favorites"></a>Sortowanie ulubionych
+## <a name="remove-an-item-from-favorites"></a>Usuń element z ulubionych
 
-Możesz zmienić kolejność wyświetlania ulubionych usług. Wystarczy przeciągnąć i upuścić element menu do innej lokalizacji, w obszarze **ulubione**.
+Teraz możesz usunąć element bezpośrednio z listy **ulubionych** .
 
-### <a name="move-cost-management--billing-to-the-top-of-favorites"></a>Przenieś do góry Ulubione Zarządzanie kosztami i rozliczenia
+1. W sekcji **Ulubione** menu portalu Umieść kursor nad nazwą usługi, którą chcesz usunąć.
 
-1. Wybierz i przytrzymaj **Zarządzanie kosztami i rozliczenia** wpisu na **ulubione** listy.
+   ![Zrzut ekranu przedstawiający zachowanie przy aktywowaniu w ulubionych](./media/azure-portal-add-remove-sort-favorites/azure-portal-favorites-remove.png)
 
-   ![Zrzut ekranu przedstawiający cost management + rozliczenia wybrane](./media/azure-portal-add-remove-sort-favorites/azure-portal-favorites-sort.png)
+2. Na karcie informacje Wybierz gwiazdkę, aby zmieniła się z wypełniony na unfill. Usługa zostanie usunięta z listy **ulubionych** .
 
-1. Przerywając do przechowywania, przeciągnij element do góry **ulubione** i Zwolnij.
+## <a name="sort-favorites"></a>Sortuj Ulubione
 
-## <a name="next-steps"></a>Kolejne kroki
+Można zmienić kolejność na liście ulubionych usług. Po prostu przeciągnij i upuść element menu do innej lokalizacji w obszarze **Ulubione**.
 
-* Aby utworzyć obszar roboczy tematyce projektów, zobacz [tworzenie i udostępnianie pulpitów nawigacyjnych w witrynie Azure portal](../azure-portal/azure-portal-dashboards.md)
-* Dowiedz się, jak więcej — do firmy [Azure portal seria filmów instruktażowych dot](https://www.youtube.com/playlist?list=PLLasX02E8BPBKgXP4oflOL29TtqTzwhxR)
+### <a name="move-cost-management--billing-to-the-top-of-favorites"></a>Przenoszenie Cost Management i rozliczeń na początek ulubionych
+
+1. Wybierz i przytrzymaj wpis **rozliczenia Cost Management** i na liście **Ulubione** .
+
+   ![Zrzut ekranu pokazujący, że wybrano zarządzanie kosztami i rozliczenia](./media/azure-portal-add-remove-sort-favorites/azure-portal-favorites-sort.png)
+
+1. Gdy nadal trzymasz się, przeciągnij element do góry **ulubionych** , a następnie zwolnij.
+
+## <a name="next-steps"></a>Następne kroki
+
+* Aby utworzyć obszar roboczy ukierunkowany na projekt, zobacz [Tworzenie i udostępnianie pulpitów nawigacyjnych w Azure Portal](../azure-portal/azure-portal-dashboards.md)
+* Poznaj więcej informacji na temat [Azure Portal serii filmów wideo](https://www.youtube.com/playlist?list=PLLasX02E8BPBKgXP4oflOL29TtqTzwhxR)

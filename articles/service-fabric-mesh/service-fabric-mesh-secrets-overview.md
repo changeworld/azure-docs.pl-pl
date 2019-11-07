@@ -1,6 +1,6 @@
 ---
 title: Przechowywanie i używanie wpisów tajnych aplikacji usługi Azure Service Fabric Mesh | Microsoft Docs
-description: Przechowywanie i używanie wpisów tajnych usługi Service Fabric Mesh.
+description: Usługa Service Fabric Mesh obsługuje wpisy tajne jako zasoby platformy Azure. Oto jak przechowywać wpisy tajne i zarządzać nimi za pomocą aplikacji Service Fabric siatki.
 services: service-fabric-mesh
 keywords: wpisy tajne
 author: v-steg
@@ -9,12 +9,12 @@ ms.date: 10/25/2018
 ms.topic: conceptual
 ms.service: service-fabric-mesh
 manager: jeconnoc
-ms.openlocfilehash: b5cfa93298222d914069b6ab63deb8ba8a9b59c3
-ms.sourcegitcommit: de47a27defce58b10ef998e8991a2294175d2098
+ms.openlocfilehash: 72188517c237b170b709c48f16d3c131985f95d1
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/15/2019
-ms.locfileid: "67875340"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73686241"
 ---
 # <a name="service-fabric-mesh-application-secrets"></a>Wpisy tajne aplikacji usługi Service Fabric Mesh
 Usługa Service Fabric Mesh obsługuje wpisy tajne jako zasoby platformy Azure. Wpis tajny usługi Service Fabric Mesh może być dowolnym poufnym tekstem, takim jak parametry połączenia magazynu, hasła lub inne wartości, które powinny być przechowywane i przesyłane w bezpieczny sposób.

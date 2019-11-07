@@ -1,6 +1,6 @@
 ---
 title: Zarządzanie cyklem życia aplikacji
-titleSuffix: Azure Machine Learning Studio (classic)
+titleSuffix: ML Studio (classic) Azure
 description: Zastosuj najlepsze rozwiązania dotyczące zarządzania cyklem życia aplikacji w klasycznej wersji Azure Machine Learning Studio
 services: machine-learning
 ms.service: machine-learning
@@ -9,12 +9,12 @@ ms.topic: conceptual
 author: xiaoharper
 ms.author: amlstudiodocs
 ms.date: 10/27/2016
-ms.openlocfilehash: ce1a398939a65bb47c74f00159b667c3659f5a93
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: d5e2ee72c30933305356cd2a7792d1972fa938da
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73467003"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73684747"
 ---
 # <a name="application-lifecycle-management-in-azure-machine-learning-studio-classic"></a>Zarządzanie cyklem życia aplikacji w Azure Machine Learning Studio (klasyczny)
 Azure Machine Learning Studio (klasyczny) to narzędzie służące do opracowywania eksperymentów uczenia maszynowego, które są operacyjne na platformie Azure w chmurze. Podobnie jak w przypadku środowiska IDE programu Visual Studio i skalowalnej usługi w chmurze Scalonej z jedną platformą. Można uwzględnić standardowe rozwiązania do zarządzania cyklem życia aplikacji (ALM) z wersji różnych zasobów do zautomatyzowanego wykonywania i wdrażania w klasycznej wersji Azure Machine Learning Studio. W tym artykule omówiono niektóre opcje i metody.
@@ -96,4 +96,4 @@ Ważnym elementem ALM jest możliwość automatyzowania procesu wykonywania i wd
 ## <a name="next-steps"></a>Następne kroki
 * Pobierz moduł [programu PowerShell dla Azure Machine Learning Studio (klasyczny)](https://aka.ms/amlps) i Rozpocznij automatyzację zadań Alm.
 * Dowiedz się, jak [utworzyć dużą liczbę modeli ml i zarządzać nimi za pomocą pojedynczego eksperymentu](create-models-and-endpoints-with-powershell.md) za pomocą programu PowerShell i środowiska API ponownego uczenia.
-* Dowiedz się więcej na temat [wdrażania usług sieci web Azure Machine Learning](publish-a-machine-learning-web-service.md).
+* Dowiedz się więcej na temat [wdrażania usług sieci web Azure Machine Learning](deploy-a-machine-learning-web-service.md).

@@ -1,5 +1,5 @@
 ---
-title: Dostrajanie wydajności z Azure SQL Data Warehouse uporządkowany klastrowany indeks magazynu kolumn | Microsoft Docs
+title: Dostrajanie wydajności z uporządkowanym klastrowanym indeksem magazynu kolumn
 description: Zalecenia i zagadnienia, które należy znać w przypadku używania uporządkowanego klastrowanego indeksu magazynu kolumn w celu zwiększenia wydajności zapytań.
 services: sql-data-warehouse
 author: XiaoyuMSFT
@@ -10,12 +10,13 @@ ms.subservice: development
 ms.date: 09/05/2019
 ms.author: xiaoyul
 ms.reviewer: nibruno; jrasnick
-ms.openlocfilehash: 37d8f17e825daa3a1c160509b1a38f8c70256d1c
-ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
+ms.custom: seo-lt-2019
+ms.openlocfilehash: 3cc2f140eeed0a4667a01aa8c5ccbad7e4411521
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/18/2019
-ms.locfileid: "72595371"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73685994"
 ---
 # <a name="performance-tuning-with-ordered-clustered-columnstore-index"></a>Dostrajanie wydajności z uporządkowanym klastrowanym indeksem magazynu kolumn  
 
@@ -43,7 +44,7 @@ ORDER BY o.name, pnp.distribution_id, cls.min_data_id
 ```
 
 > [!NOTE] 
-> W uporządkowanej tabeli WIK nowe dane, które wynikają z operacji ładowania DML lub danych, nie są automatycznie sortowane.  Użytkownicy mogą odbudować uporządkowaną WIK, aby posortować wszystkie dane w tabeli.  W Azure SQL Data Warehouse ponowne KOMPILOWAnie indeksu magazynu kolumn jest operacją offline.  W przypadku partycjonowanej tabeli ponowne KOMPILOWAnie wykonuje jedną partycję w danym momencie.  Dane w partycji, która jest ponownie skompilowana, są w trybie offline i niedostępne do momentu ukończenia odbudowy dla tej partycji. 
+> W tabeli uporządkowanej WIK nowe dane, które wynikają z tej samej partii operacji ładowania DML lub danych, są sortowane w tej partii, nie istnieje sortowanie globalne dla wszystkich danych w tabeli.  Użytkownicy mogą odbudować uporządkowaną WIK, aby posortować wszystkie dane w tabeli.  W Azure SQL Data Warehouse ponowne KOMPILOWAnie indeksu magazynu kolumn jest operacją offline.  W przypadku partycjonowanej tabeli ponowne KOMPILOWAnie wykonuje jedną partycję w danym momencie.  Dane w partycji, która jest ponownie skompilowana, są w trybie offline i niedostępne do momentu ukończenia odbudowy dla tej partycji. 
 
 ## <a name="query-performance"></a>Wydajność zapytań
 
@@ -63,7 +64,7 @@ ORDER (Col_C, Col_B, Col_A)
 
 ```
 
-Wydajność zapytania 1 może przynieść więcej korzyści od uporządkowanej WIK niż pozostałe 3 zapytania. 
+Wydajność zapytania 1 może przynieść więcej korzyści od uporządkowanej WIK niż pozostałe trzy zapytania. 
 
 ```sql
 -- Query #1: 
@@ -112,7 +113,7 @@ OPTION (MAXDOP 1);
 - Przed załadowaniem danych do tabel Azure SQL Data Warehouse należy je wstępnie sortować według kluczy sortowania.
 
 
-Oto przykład uporządkowanej dystrybucji tabel WIK, która ma zerowy segment nakładający się na poniższe zalecenia. Uporządkowana tabela WIK jest tworzona w bazie danych DWU1000c za pośrednictwem CTAS z tabeli sterty 20 GB za pomocą MAXDOP 1 i xlargerc.  WIK jest uporządkowana w kolumnie BIGINT bez duplikatów.  
+Oto przykład uporządkowanej dystrybucji tabel WIK, która ma zerowy segment nakładający się na poniższe zalecenia. Uporządkowana tabela WIK jest tworzona w bazie danych DWU1000c za pośrednictwem CTAS z tabeli sterty 20 GB z użyciem MAXDOP 1 i xlargerc.  WIK jest uporządkowana w kolumnie BIGINT bez duplikatów.  
 
 ![Segment_No_Overlapping](media/performance-tuning-ordered-cci/perfect-sorting-example.png)
 

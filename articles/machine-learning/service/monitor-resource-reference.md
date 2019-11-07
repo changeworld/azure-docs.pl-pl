@@ -9,13 +9,13 @@ ms.topic: conceptual
 ms.reviewer: larryfr
 ms.author: aashishb
 author: aashishb
-ms.date: 11/04/2019
-ms.openlocfilehash: 1fb16f6ef58efc5c63e743e557558dc60cf52f86
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.date: 11/06/2019
+ms.openlocfilehash: 178c60d82c8337987e9858a409fcdef7063c9559
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73514240"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73684915"
 ---
 # <a name="azure-machine-learning-monitoring-data-reference"></a>Informacje o monitorowaniu usługi Azure Machine Learning
 
@@ -54,7 +54,7 @@ W poniższej tabeli wymieniono właściwości dzienników zasobów Azure Machine
 | JobErrorMessage | szczegółowy komunikat o błędzie zadania |
 | NodeId | IDENTYFIKATOR węzła utworzonego w przypadku, gdy zadanie jest uruchomione |
 
-### <a name="amlcomputerclusterevents-table"></a>Tabela AmlComputerClusterEvents
+### <a name="amlcomputeclusterevents-table"></a>Tabela AmlComputeClusterEvents
 
 | Właściwość | Opis |
 |:--- |:--- |

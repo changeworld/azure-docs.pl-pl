@@ -1,5 +1,5 @@
 ---
-title: Kopiowanie danych z programu Teradata Vantage przy użyciu Azure Data Factory | Microsoft Docs
+title: Kopiowanie danych z programu Teradata Vantage przy użyciu Azure Data Factory
 description: Łącznik programu Teradata usługi Data Factory umożliwia kopiowanie danych z programu Teradata Vantage do magazynów danych obsługiwanych przez Data Factory jako ujścia.
 services: data-factory
 documentationcenter: ''
@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 10/24/2019
 ms.author: jingwang
-ms.openlocfilehash: 923e248ff7b793d5187faeabdbf073ca90d9efc2
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: 4074c50aa17bf804696060134e37055a18bd0137
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72930982"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73680103"
 ---
 # <a name="copy-data-from-teradata-vantage-by-using-azure-data-factory"></a>Kopiowanie danych z programu Teradata Vantage przy użyciu Azure Data Factory
 > [!div class="op_single_selector" title1="Wybierz używaną wersję usługi Data Factory:"]
@@ -64,7 +64,7 @@ Poniższe sekcje zawierają szczegółowe informacje o właściwościach, które
 
 Połączona usługa programu Teradata obsługuje następujące właściwości:
 
-| Właściwość | Opis | Wymagane |
+| Właściwość | Opis | Wymagany |
 |:--- |:--- |:--- |
 | type | Właściwość Type musi być ustawiona na wartość **Teradata**. | Tak |
 | Przekształcon | Określa informacje, które są konieczne do nawiązania połączenia z wystąpieniem programu Teradata. Zapoznaj się z poniższymi przykładami.<br/>Możesz również wprowadzić hasło w Azure Key Vault i ściągnąć konfigurację `password` z parametrów połączenia. Aby uzyskać więcej informacji, zobacz temat [poświadczenia sklepu w Azure Key Vault](store-credentials-in-key-vault.md) . | Tak |
@@ -151,11 +151,11 @@ Ta sekcja zawiera listę właściwości obsługiwanych przez zestaw danych progr
 
 Aby skopiować dane z programu Teradata, obsługiwane są następujące właściwości:
 
-| Właściwość | Opis | Wymagane |
+| Właściwość | Opis | Wymagany |
 |:--- |:--- |:--- |
 | type | Właściwość Type zestawu danych musi być ustawiona na `TeradataTable`. | Tak |
-| baza danych | Nazwa wystąpienia programu Teradata. | Nie (Jeśli określono "zapytanie" w źródle aktywności) |
-| Tabele | Nazwa tabeli w wystąpieniu programu Teradata. | Nie (Jeśli określono "zapytanie" w źródle aktywności) |
+| baza danych | Nazwa wystąpienia programu Teradata. | Nie (Jeśli określono parametr "query" w źródle działania) |
+| tabele | Nazwa tabeli w wystąpieniu programu Teradata. | Nie (Jeśli określono parametr "query" w źródle działania) |
 
 **Przykład:**
 
@@ -205,10 +205,10 @@ Ta sekcja zawiera listę właściwości obsługiwanych przez źródło programu 
 
 Aby skopiować dane z programu Teradata, w sekcji **Źródło** działania kopiowania są obsługiwane następujące właściwości:
 
-| Właściwość | Opis | Wymagane |
+| Właściwość | Opis | Wymagany |
 |:--- |:--- |:--- |
 | type | Właściwość Type źródła działania Copy musi mieć wartość `TeradataSource`. | Tak |
-| query | Użyj niestandardowego zapytania SQL, aby odczytać dane. Może to być na przykład `"SELECT * FROM MyTable"`.<br>Po włączeniu obciążenia partycjonowanego należy podłączyć wszystkie odpowiednie wbudowane parametry partycji w zapytaniu. Przykłady można znaleźć w sekcji [Kopiowanie równoległe z programu Teradata](#parallel-copy-from-teradata) . | Nie (Jeśli określono tabelę w zestawie danych) |
+| query | Użyj niestandardowego zapytania SQL, aby odczytać dane. Może to być na przykład `"SELECT * FROM MyTable"`.<br>Po włączeniu obciążenia partycjonowanego należy podłączyć wszystkie odpowiednie wbudowane parametry partycji w zapytaniu. Przykłady można znaleźć w sekcji [Kopiowanie równoległe z programu Teradata](#parallel-copy-from-teradata) . | Nie (Jeśli określono table w zestawie danych) |
 | partitionOptions | Określa opcje partycjonowania danych używane do ładowania danych z programu Teradata. <br>Zezwalaj na wartości: **none** (wartość domyślna), **hash** i **DynamicRange**.<br>Gdy opcja partycji jest włączona (to nie `None`), stopień równoległości do współbieżnego ładowania danych z programu Teradata jest kontrolowany przez ustawienie [`parallelCopies`](copy-activity-performance.md#parallel-copy) dla działania kopiowania. | Nie |
 | partitionSettings | Określ grupę ustawień partycjonowania danych. <br>Zastosuj, gdy opcja partycji nie jest `None`. | Nie |
 | partitionColumnName | Określ nazwę kolumny źródłowej, która będzie używana przez partycję zakresu lub partycję skrótu dla kopii równoległej. Jeśli nie zostanie określony, podstawowy indeks tabeli zostanie wykryty i użyty jako kolumna partycji. <br>Zastosuj, gdy opcja partycji jest `Hash` lub `DynamicRange`. Jeśli używasz zapytania do pobierania danych źródłowych, hak `?AdfHashPartitionCondition` lub `?AdfRangePartitionColumnName` w klauzuli WHERE. Zobacz przykład w sekcji [Kopiowanie równoległe z programu Teradata](#parallel-copy-from-teradata) . | Nie |
@@ -307,7 +307,7 @@ Podczas kopiowania danych z programu Teradata są stosowane następujące mapowa
 | ByteInt |Int16 |
 | delikatn |Ciąg |
 | Obiektów CLOB |Ciąg |
-| Data |Data i godzina |
+| Date |DateTime |
 | Dokładności |Dokładności |
 | Double |Double |
 | Zdjęć |Nieobsługiwane. Zastosuj jawne rzutowanie w zapytaniu źródłowym. |
@@ -332,10 +332,10 @@ Podczas kopiowania danych z programu Teradata są stosowane następujące mapowa
 | Kropka (Sygnatura czasowa) |Nieobsługiwane. Zastosuj jawne rzutowanie w zapytaniu źródłowym. |
 | Okres (Sygnatura czasowa ze strefą czasową) |Nieobsługiwane. Zastosuj jawne rzutowanie w zapytaniu źródłowym. |
 | SmallInt |Int16 |
-| Czas |Czasu |
+| Time |Czasu |
 | Czas ze strefą czasową |Czasu |
-| Znacznik czasu |Data i godzina |
-| Sygnatura czasowa ze strefą czasową |Data i godzina |
+| Znacznik czasu |DateTime |
+| Sygnatura czasowa ze strefą czasową |DateTime |
 | VarByte |Byte [] |
 | VarChar |Ciąg |
 | VarGraphic |Nieobsługiwane. Zastosuj jawne rzutowanie w zapytaniu źródłowym. |

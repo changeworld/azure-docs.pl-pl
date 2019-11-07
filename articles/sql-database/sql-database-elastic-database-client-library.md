@@ -1,5 +1,5 @@
 ---
-title: Tworzenie skalowalnych baz danych w chmurze | Microsoft Docs
+title: Tworzenie skalowalnych baz danych w chmurze
 description: Tworzenie skalowalnych aplikacji baz danych platformy .NET przy użyciu biblioteki klienta Elastic Database
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 09/25/2018
-ms.openlocfilehash: 24b7f769be3f4db3c36412e162b5cda40e3ca959
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 0b5b3c924a644c065327db36a6a8d64b4a552d40
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68568714"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73690514"
 ---
 # <a name="building-scalable-cloud-databases"></a>Tworzenie skalowalnych baz danych w chmurze
 
@@ -50,16 +50,16 @@ Do pobrania:
 
 Skalowanie aplikacji przy użyciu usługi *fragmentowania* przedstawia wyzwania zarówno dla deweloperów, jak i administratora. Biblioteka klienta upraszcza zadania zarządzania przez udostępnienie narzędzi, które umożliwiają deweloperom i administratorom zarządzanie skalowanymi bazami danych. W typowym przykładzie istnieje wiele baz danych (nazywanych "fragmentów") w celu zarządzania nimi. Klienci znajdują się w tej samej bazie danych i jedna baza danych na klienta (schemat o pojedynczej dzierżawie). Biblioteka klienta obejmuje następujące funkcje:
 
-- **Zarządzanie mapami fragmentu**: Zostanie utworzona specjalna baza danych o nazwie "Menedżer mapy fragmentu". Zarządzanie mapami fragmentu umożliwia aplikacji Zarządzanie metadanymi o jej fragmentów. Deweloperzy mogą korzystać z tej funkcji, aby zarejestrować bazy danych jako fragmentów, opisać mapowania pojedynczych kluczy fragmentowania lub zakresów kluczy do tych baz danych i zachować te metadane jako liczbę i kompozycję baz danych w celu odzwierciedlenia zmian pojemności. Bez biblioteki klienta Elastic Database należy poświęcać dużo czasu na pisanie kodu zarządzania podczas wdrażania fragmentowania. Aby uzyskać szczegółowe informacje, zobacz [fragmentu Map Management](sql-database-elastic-scale-shard-map-management.md).
+- **Zarządzanie mapami fragmentu**: zostanie utworzona specjalna baza danych o nazwie "Menedżer mapy fragmentu". Zarządzanie mapami fragmentu umożliwia aplikacji Zarządzanie metadanymi o jej fragmentów. Deweloperzy mogą korzystać z tej funkcji, aby zarejestrować bazy danych jako fragmentów, opisać mapowania pojedynczych kluczy fragmentowania lub zakresów kluczy do tych baz danych i zachować te metadane jako liczbę i kompozycję baz danych w celu odzwierciedlenia zmian pojemności. Bez biblioteki klienta Elastic Database należy poświęcać dużo czasu na pisanie kodu zarządzania podczas wdrażania fragmentowania. Aby uzyskać szczegółowe informacje, zobacz [fragmentu Map Management](sql-database-elastic-scale-shard-map-management.md).
 
 - **Routing zależny od danych**: Wyobraź sobie żądanie do aplikacji. Na podstawie wartości klucza fragmentowania żądania aplikacja musi ustalić poprawną bazę danych na podstawie wartości klucza. Następnie zostanie otwarte połączenie z bazą danych w celu przetworzenia żądania. Routing zależny od danych umożliwia otwieranie połączeń przy użyciu jednego prostego wywołania w mapie fragmentu aplikacji. Routing zależny od danych to inny obszar kodu infrastruktury, który jest teraz objęty funkcjonalnością w bibliotece klienta Elastic Database. Aby uzyskać szczegółowe informacje, zobacz [Routing zależny od danych](sql-database-elastic-scale-data-dependent-routing.md).
-- **Zapytania fragmentu (MSQ)** : Badanie wielu fragmentu działa, gdy żądanie obejmuje kilka (lub wszystkie) fragmentów. Zapytanie fragmentu wykonuje ten sam kod T-SQL na wszystkich fragmentów lub zestaw fragmentów. Wyniki z uczestniczących fragmentów są scalone z ogólnym zestawem wyników przy użyciu semantyki ALL. Funkcje udostępniane za pośrednictwem biblioteki klienta programu obsługują wiele zadań, w tym: Zarządzanie połączeniami, zarządzanie wątkami, obsługa błędów i przetwarzanie pośrednich wyników. MSQ może wysyłać zapytania do setek fragmentów. Aby uzyskać szczegółowe informacje, zobacz [wykonywanie zapytań o wiele fragmentu](sql-database-elastic-scale-multishard-querying.md).
+- **Zapytania fragmentu (MSQ)** : zapytania z wieloma fragmentuami działają, gdy żądanie obejmuje kilka (lub wszystkie) fragmentów. Zapytanie fragmentu wykonuje ten sam kod T-SQL na wszystkich fragmentów lub zestaw fragmentów. Wyniki z uczestniczących fragmentów są scalone z ogólnym zestawem wyników przy użyciu semantyki ALL. Funkcje udostępniane za pośrednictwem biblioteki klienta programu obsługują wiele zadań, w tym: Zarządzanie połączeniami, zarządzanie wątkami, obsługa błędów i przetwarzanie pośrednich wyników. MSQ może wysyłać zapytania do setek fragmentów. Aby uzyskać szczegółowe informacje, zobacz [wykonywanie zapytań o wiele fragmentu](sql-database-elastic-scale-multishard-querying.md).
 
 Ogólnie rzecz biorąc, klienci korzystający z narzędzi elastycznych baz danych mogą uzyskać pełną funkcjonalność języka T-SQL podczas przesyłania operacji fragmentu-Local w przeciwieństwie do operacji międzyfragmentuowych mających własne semantykę.
 
 
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 - Elastic Database biblioteki klienta ([Java](https://search.maven.org/#search%7Cga%7C1%7Ca%3A%22azure-elasticdb-tools%22), [.NET](https://www.nuget.org/packages/Microsoft.Azure.SqlDatabase.ElasticScale.Client/)) — w celu **pobrania** biblioteki.
 

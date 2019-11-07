@@ -1,5 +1,5 @@
 ---
-title: Migrowanie certyfikatu TDE — wystąpienie zarządzane usługi Azure SQL Database | Microsoft Docs
+title: 'Migruj certyfikat TDE Azure SQL Database wystąpienia zarządzanego '
 description: Migruj certyfikat ochrony klucza szyfrowania bazy danych z użyciem przezroczystego szyfrowania danych do Azure SQL Database wystąpienia zarządzanego
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: MladjoA
 ms.author: mlandzic
 ms.reviewer: carlrab, jovanpop
 ms.date: 04/25/2019
-ms.openlocfilehash: 6f9c1cefafdf6f7f33db3c5143e6b97b328fe699
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 4d931a927888cb96116043a72006ac77cfa7dded
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68567419"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73688073"
 ---
 # <a name="migrate-certificate-of-tde-protected-database-to-azure-sql-database-managed-instance"></a>Migruj certyfikat TDE chronionej bazy danych Azure SQL Database do wystąpienia zarządzanego
 
@@ -141,7 +141,7 @@ Jeśli certyfikat jest przechowywany w magazynie certyfikatów komputera lokalne
 
 Certyfikat jest teraz dostępny dla określonego wystąpienia zarządzanego i można pomyślnie przywrócić kopię zapasową odpowiedniej bazy danych chronionej przez funkcję TDE.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 W tym artykule przedstawiono sposób migrowania klucza szyfrowania ochrony certyfikatu bazy danych Transparent Data Encryption z SQL Server lokalnego lub IaaS do Azure SQL Database wystąpienia zarządzanego.
 

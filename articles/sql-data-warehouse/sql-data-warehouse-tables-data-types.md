@@ -1,5 +1,5 @@
 ---
-title: Definiowanie typów danych — Azure SQL Data Warehouse | Microsoft Docs
+title: Definiowanie typów danych
 description: Zalecenia dotyczące definiowania typów danych tabeli w Azure SQL Data Warehouse.
 services: sql-data-warehouse
 author: XiaoyuMSFT
@@ -10,12 +10,13 @@ ms.subservice: development
 ms.date: 04/17/2018
 ms.author: xiaoyul
 ms.reviewer: igorstan
-ms.openlocfilehash: 61bb977271186699b0a72389e1538573f978c56b
-ms.sourcegitcommit: 75a56915dce1c538dc7a921beb4a5305e79d3c7a
+ms.custom: seo-lt-2019
+ms.openlocfilehash: a1d88d8fabd5ff32cc1ca5cca4e2a57a86c8dcb3
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/24/2019
-ms.locfileid: "68479368"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73692489"
 ---
 # <a name="table-data-types-in-azure-sql-data-warehouse"></a>Typy danych tabeli w Azure SQL Data Warehouse
 Zalecenia dotyczące definiowania typów danych tabeli w Azure SQL Data Warehouse. 
@@ -54,13 +55,13 @@ Na poniższej liście przedstawiono typy danych, które nie są obsługiwane prz
 | --- | --- |
 | [geometrii](/sql/t-sql/spatial-geometry/spatial-types-geometry-transact-sql) |[liczby](/sql/t-sql/data-types/binary-and-varbinary-transact-sql) |
 | [geograficzne](/sql/t-sql/spatial-geography/spatial-types-geography) |[liczby](/sql/t-sql/data-types/binary-and-varbinary-transact-sql) |
-| [hierarchyid](/sql/t-sql/data-types/hierarchyid-data-type-method-reference) |[nvarchar](/sql/t-sql/data-types/nchar-and-nvarchar-transact-sql) (4000) |
-| [image](/sql/t-sql/data-types/ntext-text-and-image-transact-sql) |[liczby](/sql/t-sql/data-types/binary-and-varbinary-transact-sql) |
-| [text](/sql/t-sql/data-types/ntext-text-and-image-transact-sql) |[varchar](/sql/t-sql/data-types/char-and-varchar-transact-sql) |
+| [hierarchyid](/sql/t-sql/data-types/hierarchyid-data-type-method-reference) |[nvarchar](/sql/t-sql/data-types/nchar-and-nvarchar-transact-sql)(4000) |
+| [Image](/sql/t-sql/data-types/ntext-text-and-image-transact-sql) |[liczby](/sql/t-sql/data-types/binary-and-varbinary-transact-sql) |
+| [Opis](/sql/t-sql/data-types/ntext-text-and-image-transact-sql) |[varchar](/sql/t-sql/data-types/char-and-varchar-transact-sql) |
 | [ntext](/sql/t-sql/data-types/ntext-text-and-image-transact-sql) |[nvarchar](/sql/t-sql/data-types/nchar-and-nvarchar-transact-sql) |
 | [sql_variant](/sql/t-sql/data-types/sql-variant-transact-sql) |Podziel kolumnę na kilka kolumn o jednoznacznie określonym typie. |
 | [table](/sql/t-sql/data-types/table-transact-sql) |Konwertuj na tabele tymczasowe. |
-| [znacznik czasu](/sql/t-sql/data-types/date-and-time-types) |Przepracuj kod, aby użyć [datetime2](/sql/t-sql/data-types/datetime2-transact-sql) i funkcji [CURRENT_TIMESTAMP](/sql/t-sql/functions/current-timestamp-transact-sql) . Tylko stałe są obsługiwane jako wartości domyślne, dlatego nie można zdefiniować CURRENT_TIMESTAMP jako ograniczenia domyślnego. Jeśli konieczne jest przeprowadzenie migracji wartości wersji wiersza z kolumny o określonym typie sygnatury [](/sql/t-sql/data-types/binary-and-varbinary-transact-sql)czasowej, użyj wartości binarnych (8) lub [varbinary](/sql/t-sql/data-types/binary-and-varbinary-transact-sql)(8), aby uzyskać wartość niezerową lub null. |
+| [znacznik czasu](/sql/t-sql/data-types/date-and-time-types) |Przepracuj kod, aby użyć [datetime2](/sql/t-sql/data-types/datetime2-transact-sql) i funkcji [CURRENT_TIMESTAMP](/sql/t-sql/functions/current-timestamp-transact-sql) . Tylko stałe są obsługiwane jako wartości domyślne, dlatego nie można zdefiniować CURRENT_TIMESTAMP jako ograniczenia domyślnego. Jeśli konieczne jest przeprowadzenie migracji wartości wersji wiersza z kolumny o określonym typie sygnatury czasowej, użyj wartości [binarnych](/sql/t-sql/data-types/binary-and-varbinary-transact-sql)(8) lub [varbinary](/sql/t-sql/data-types/binary-and-varbinary-transact-sql)(8), aby uzyskać wartość niezerową lub null. |
 | [xml](/sql/t-sql/xml/xml-transact-sql) |[varchar](/sql/t-sql/data-types/char-and-varchar-transact-sql) |
 | [typ zdefiniowany przez użytkownika](/sql/relational-databases/native-client/features/using-user-defined-types) |Przekonwertuj z powrotem na natywny typ danych, gdy jest to możliwe. |
 | wartości domyślne | Wartości domyślne obsługują tylko literały i stałe. |

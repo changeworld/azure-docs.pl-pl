@@ -1,5 +1,5 @@
 ---
-title: Azure SQL Database wystąpienia zarządzanego określają rozmiar sieci wirtualnej/podsieci | Microsoft Docs
+title: Azure SQL Database Określanie rozmiaru sieci wirtualnej/podsieci przez wystąpienie zarządzane
 description: W tym temacie opisano sposób obliczania rozmiaru podsieci, w której zostaną wdrożone Azure SQL Database wystąpienia zarządzane.
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: srdan-bozovic-msft
 ms.author: srbozovi
 ms.reviewer: sstein, bonova, carlrab
 ms.date: 02/22/2019
-ms.openlocfilehash: 167e243b1fe4ea5ba9403ac3ca1fcea42f02f59a
-ms.sourcegitcommit: a6718e2b0251b50f1228b1e13a42bb65e7bf7ee2
+ms.openlocfilehash: fb0d79a82553349d5dad547a2d78a460301cbd6d
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71273556"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73688120"
 ---
 # <a name="determine-vnet-subnet-size-for-azure-sql-database-managed-instance"></a>Określ rozmiar podsieci sieci wirtualnej dla Azure SQL Database wystąpienia zarządzanego
 
@@ -39,7 +39,7 @@ Jeśli planujesz wdrożyć wiele wystąpień zarządzanych wewnątrz podsieci i 
 - Każde wystąpienie Ogólnego przeznaczenia wymaga dwóch adresów
 - Każde wystąpienie Krytyczne dla działania firmy potrzebuje czterech adresów
 
-**Przykład**: Planujesz trzy Ogólnego przeznaczenia i dwa Krytyczne dla działania firmy wystąpienia zarządzane. Oznacza to, że potrzebujesz 5 + 3 * 2 + 2 * 4 = 19 adresów IP. Ponieważ zakresy adresów IP są zdefiniowane w mocy 2, wymagany jest zakres adresów IP 32 (2 ^ 5). W związku z tym należy zarezerwować podsieć z maską podsieci/27.
+**Przykład**: planujesz trzy ogólnego przeznaczenia i dwa krytyczne dla działania firmy wystąpienia zarządzane. Oznacza to, że potrzebujesz 5 + 3 * 2 + 2 * 4 = 19 adresów IP. Ponieważ zakresy adresów IP są zdefiniowane w mocy 2, wymagany jest zakres adresów IP 32 (2 ^ 5). W związku z tym należy zarezerwować podsieć z maską podsieci/27.
 
 > [!IMPORTANT]
 > Obliczenia wyświetlane powyżej staną się przestarzałe z dalszych ulepszeń.

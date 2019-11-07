@@ -1,5 +1,5 @@
 ---
-title: Kopiowanie bazy danych Azure SQL Database | Microsoft Docs
+title: Kopiowanie bazy danych Azure SQL Database
 description: Utwórz transakcyjnie spójną kopię istniejącej bazy danych Azure SQL na tym samym serwerze lub na innym serwerze.
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sashan
 ms.reviewer: carlrab
 ms.date: 09/04/2019
-ms.openlocfilehash: de56e66046bb61ac31c1842ae6ce7a9c6720760d
-ms.sourcegitcommit: f3f4ec75b74124c2b4e827c29b49ae6b94adbbb7
+ms.openlocfilehash: d49896d8088ae1352cb2785d061cde6c8647cb89
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/12/2019
-ms.locfileid: "70934199"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73690806"
 ---
 # <a name="copy-a-transactionally-consistent-copy-of-an-azure-sql-database"></a>Kopiowanie spójnej transakcyjnie kopii bazy danych Azure SQL Database
 
@@ -72,8 +72,8 @@ Aby utworzyć kopię bazy danych, musisz mieć następujące role:
 - SQL Server rolę współautor lub
 - Rola niestandardowa w źródłowej i docelowej bazie danych z następującymi uprawnieniami:
 
-   Microsoft.Sql/servers/databases/read   
-   Microsoft.Sql/servers/databases/write   
+   Microsoft. SQL/serwery/bazy danych/Odczyt   
+   Microsoft. SQL/serwery/bazy danych/zapis   
 
 Aby anulować kopię bazy danych, musisz mieć następujące role:
 
@@ -81,21 +81,21 @@ Aby anulować kopię bazy danych, musisz mieć następujące role:
 - SQL Server rolę współautor lub
 - Rola niestandardowa w źródłowej i docelowej bazie danych z następującymi uprawnieniami:
 
-   Microsoft.Sql/servers/databases/read   
-   Microsoft.Sql/servers/databases/write   
+   Microsoft. SQL/serwery/bazy danych/Odczyt   
+   Microsoft. SQL/serwery/bazy danych/zapis   
    
 Aby zarządzać kopią bazy danych przy użyciu Azure Portal, potrzebne są również następujące uprawnienia:
 
-&nbsp;&nbsp; Microsoft.resources/subscriptions&nbsp; /sources/Read   
-&nbsp;&nbsp; Microsoft.resources/subscriptions/&nbsp; Resources/Write   
-&nbsp;&nbsp; Microsoft.resources&nbsp; /Deployments/Read   
-&nbsp;&nbsp; Microsoft.resources&nbsp; /Deployments/Write   
-&nbsp;&nbsp; Microsoft.resources/Deployments&nbsp; /operationstatuses/Read    
+&nbsp; &nbsp; &nbsp; Microsoft. resources/subscriptions/Resources/Read   
+&nbsp; &nbsp; &nbsp; Microsoft. resources/subscriptions/Resources/Write   
+&nbsp; &nbsp; &nbsp; Microsoft. resources/Deployments/Read   
+&nbsp; &nbsp; &nbsp; Microsoft. resources/Deployments/Write   
+&nbsp; &nbsp; &nbsp; Microsoft. resources/Deployments/operationstatuses/Read    
 
 Jeśli chcesz zobaczyć operacje w obszarze wdrożenia w grupie zasobów portalu, operacje między wieloma dostawcami zasobów, w tym operacje SQL, będą potrzebne następujące dodatkowe role RBAC: 
 
-&nbsp;&nbsp; Microsoft.resources/subscriptions/ResourceGroups/Deployments&nbsp; /Operations/Read   
-&nbsp;&nbsp; Microsoft.resources/subscriptions/ResourceGroups/Deployments&nbsp; /operationstatuses/Read
+&nbsp; &nbsp; &nbsp; Microsoft. resources/subscriptions/ResourceGroups/Deployments/Operations/Read   
+&nbsp; &nbsp; &nbsp; Microsoft. resources/subscriptions/ResourceGroups/Deployments/operationstatuses/Read
 
 
 

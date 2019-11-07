@@ -1,18 +1,18 @@
 ---
 title: Zarządzanie administratorami serwera w Azure Analysis Services | Microsoft Docs
-description: Dowiedz się, jak zarządzać administratorami serwerów Analysis Services na platformie Azure.
+description: W tym artykule opisano sposób zarządzania administratorami serwera Azure Analysis Servicesm przy użyciu interfejsów API Azure Portal, PowerShell lub REST.
 author: minewiskan
 ms.service: azure-analysis-services
 ms.topic: conceptual
 ms.date: 10/29/2019
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: f597bc9e34a606a6e40a57e5fc7af791d972c68e
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.openlocfilehash: f7c57a5751f2ff34abb26b7653070ce4ee5010fe
+ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73146278"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73572620"
 ---
 # <a name="manage-server-administrators"></a>Zarządzanie administratorami serwerów
 
@@ -23,7 +23,7 @@ Administratorzy serwera muszą być prawidłowymi użytkownikami lub grupami zab
 ## <a name="to-add-server-administrators-by-using-azure-portal"></a>Aby dodać administratorów serwera przy użyciu Azure Portal
 
 1. W portalu dla serwera kliknij pozycję **administratorzy Analysis Services**.
-2. W **\<servername > — administratorzy Analysis Services**kliknij przycisk **Dodaj**.
+2. W **\<nazwa_serwera >-Analysis Services Administratorzy**kliknij przycisk **Dodaj**.
 3. W obszarze **Dodaj administratorów serwera**wybierz pozycję konta użytkowników z usługi Azure AD lub Zaproś użytkowników zewnętrznych według adresu e-mail.
 
     ![Administratorzy serwera w Azure Portal](./media/analysis-services-server-admins/aas-manage-users-admins.png)

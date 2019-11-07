@@ -1,36 +1,36 @@
 ---
-title: Ładowanie zasobów do usługi Azure Media Clipper | Dokumentacja firmy Microsoft
-description: Kroki dotyczące ładowania zasobów do usługi Azure Media Clipper
+title: Ładowanie zasobów do usługi Azure Media Clipper | Microsoft Docs
+description: Kroki ładowania zasobów do usługi Azure Media Clipper
 services: media-services
-keywords: clip;subclip;encoding;media
-author: dbgeorge
-manager: jasonsue
-ms.author: dwgeo
+keywords: Clip; subclip; kodowanie; nośnik
+author: Juliako
+manager: femila
+ms.author: juliako
 ms.date: 03/14/2019
 ms.topic: article
 ms.service: media-services
-ms.openlocfilehash: ec8cd06be78bbd8df0bca390696e736c3a6ee075
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 66b4ca5b2859dd306f6eb1c669a07840189f53d5
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61465885"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73685043"
 ---
-# <a name="loading-assets-into-azure-media-clipper"></a>Trwa ładowanie zasobów do usługi Azure Media Clipper  
+# <a name="loading-assets-into-azure-media-clipper"></a>Ładowanie zasobów do usługi Azure Media Clipper  
 
-Zasoby mogą zostać załadowane do usługi Azure Media Clipper, za pomocą dwóch metod:
-1. Statycznie przekazując biblioteki zasobów
-2. Dynamiczne generowanie listy zasobów za pomocą interfejsu API
+Zasoby mogą być ładowane do usługi Azure Media Clipper przez dwie metody:
+1. Statyczne przekazywanie w bibliotece zasobów
+2. Dynamiczne generowanie listy zasobów za pośrednictwem interfejsu API
 
-## <a name="statically-load-videos-into-clipper"></a>Statycznie ładowanie filmów wideo do Clipper
-Statycznie ładowania wideo Clipper, która umożliwia użytkownikom tworzenie klipów bez zaznaczania filmy wideo z panelu wyboru zasobów.
+## <a name="statically-load-videos-into-clipper"></a>Statycznie Ładuj wideo do programu Clipper
+Statycznie Ładuj wideo do programu Clipper, aby umożliwić użytkownikom końcowym tworzenie klipów bez wybierania wideo z panelu wybór zasobów.
 
-W tym przypadku są przekazywane w statyczny zestaw zasobów do Clipper. Każdy zasób zawiera identyfikator zasobu/filtru usługi AMS, nazwa, opublikowanego adresu URL przesyłania strumieniowego. Jeśli to konieczne, ochrony zawartości tokenu uwierzytelniania lub tablicę miniaturę adresy URL może być przekazywane w. Jeśli przekazany, miniatury są umieszczane w interfejsie. W scenariuszach, gdzie biblioteki zawartości jest statyczna i małe można przekazać w kontrakcie zasobów dla każdego zasobu w bibliotece.
+W takim przypadku do programu Clipper zostanie przekazany statyczny zestaw zasobów. Każdy element zawartości zawiera identyfikator zasobu/filtru AMS, nazwę, opublikowany adres URL przesyłania strumieniowego. W razie potrzeby można przekazywać token uwierzytelniania lub tablicę adresów URL miniatur. W przypadku przekazania miniatury są wypełniane w interfejsie. W scenariuszach, w których Biblioteka zasobów jest statyczna i niewielka, można przekazać kontrakt zasobów dla każdego elementu zawartości w bibliotece.
 
 > [!NOTE]
-> Statycznie ładowanie zasobów do Clipper, zasoby są dodawane **bezpośrednio do osi czasu** i **okienko zasobów nie są odtwarzane**. Pierwszy element zawartości zostanie dodany do osi czasu i pozostałe zasoby są ułożone po prawej stronie na osi czasu).
+> W przypadku statycznego ładowania zasobów do programu Clipper elementy zawartości są dodawane **bezpośrednio do osi czasu** , a **okienko zasobów nie jest renderowane**. Pierwszy element zawartości jest dodawany do osi czasu, a reszta zasobów jest układana po prawej stronie osi czasu.
 
-Aby załadować bibliotekę zawartości statycznej, użyj **obciążenia** metodę, aby przekazać reprezentacja JSON każdego zasobu. Poniższy przykład kodu ilustruje reprezentacji JSON dla jednego zasobu.
+Aby załadować statyczną bibliotekę zasobów, użyj metody **Load** , aby przekazać reprezentację JSON każdego elementu zawartości. Poniższy przykład kodu ilustruje reprezentację JSON dla jednego zasobu.
 
 ```javascript
 var assets = [
@@ -99,10 +99,10 @@ subclipper.ready(function () {
 ```
 
 > [!NOTE]
-> Zaleca się łańcucha metody load() wywołanie metody ready(handler), jak pokazano w powyższym przykładzie. Poprzedni przykład gwarantuje, że widżet jest gotowy, przed załadowaniem zasoby.
+> Zaleca się przetworzenie łańcucha wywołania metody Load () z gotowym (Handler) metodą, jak pokazano w poprzednim przykładzie. Poprzedni przykład gwarantuje, że widżet jest gotowy przed załadowaniem zasobów.
 
 > [!NOTE]
-> Do miniatury adresy URL, aby działać zgodnie z oczekiwaniami na osi czasu Clipper musi zostać równomiernie rozłożone na wideo (oparte na czasie trwania) w kolejności chronologicznej w tablicy. Podczas generowania obrazów za pomocą procesor "Media Encoder Standard", można użyć następujących wstępnie zdefiniowanych fragmentu kodu JSON jako odwołanie do przykładowej:
+> Aby adresy URL miniatur działały zgodnie z oczekiwaniami na osi czasu programu Clipper, muszą one być równomiernie rozłożone na wideo (na podstawie czasu trwania) i w kolejności chronologicznej w obrębie tablicy. Poniższego fragmentu kodu JSON można użyć jako odwołania przykładowe do generowania obrazów z procesorem "Media Encoder Standard":
 
 ```json
 {
@@ -120,13 +120,13 @@ subclipper.ready(function () {
 }
 ```
 
-## <a name="dynamically-load-videos-in-clipper"></a>Dynamiczne ładowanie wideo w Clipper
-Dynamiczne ładowanie filmów wideo do Clipper, aby umożliwić użytkownikom końcowym Wybieranie filmy wideo z panelu wyboru zasobów, kiedy należy przyciąć względem.
+## <a name="dynamically-load-videos-in-clipper"></a>Dynamiczne ładowanie filmów wideo w programie Clipper
+Dynamicznie Ładuj wideo do programu Clipper, aby umożliwić użytkownikom końcowym Wybieranie klipów wideo z panelu wyboru zasobów do wycinania.
 
-Alternatywnie można załadować zasoby dynamicznie za pośrednictwem wywołania zwrotnego. W scenariuszach, w których zasoby są generowane dynamicznie lub biblioteka jest duża powinny zostać załadowane za pośrednictwem wywołania zwrotnego. Aby załadować dynamicznie zasobów, musi implementować onLoadAssets opcjonalnych funkcji wywołania zwrotnego. Ta funkcja jest przekazywana do Clipper podczas inicjowania. Rozwiązany zasobów powinien spełniać te same kontrakty statycznie załadowanych zasoby. Poniższy przykład kodu ilustruje, podpis metody oczekiwanych danych wejściowych i oczekiwanych danych wyjściowych.
+Alternatywnie możesz ładować zasoby dynamicznie za pośrednictwem wywołania zwrotnego. W scenariuszach, w których zasoby są generowane dynamicznie lub biblioteka jest duża, należy załadować za pośrednictwem wywołania zwrotnego. Aby dynamicznie załadować zasób, należy zaimplementować opcjonalną funkcję wywołania zwrotnego onLoadAssets. Ta funkcja jest przenoszona do programu Clipper podczas inicjalizacji. Rozwiązane zasoby powinny być zgodne z tą samą umową jak zasoby ładowane statycznie. Poniższy przykład kodu ilustruje sygnaturę metody, oczekiwano danych wejściowych i oczekiwanych danych wyjściowych.
 
 > [!NOTE]
-> Po dynamiczne ładowanie zasobów do Clipper, zasoby są renderowane w **panel wyboru zasobów**.
+> W przypadku dynamicznego ładowania zasobów do programu Clipper zasoby są renderowane w **panelu wybór elementu zawartości**.
 
 ```javascript
 // Video Assets Pane Callback

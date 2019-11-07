@@ -1,5 +1,5 @@
 ---
-title: Usuń podsieć po usunięciu Azure SQL Database wystąpienia zarządzanego | Microsoft Docs
+title: Usuń podsieć po usunięciu Azure SQL Database wystąpienia zarządzanego
 description: Dowiedz się, jak usunąć usługę Azure Virtual Network po usunięciu Azure SQL Database wystąpienia zarządzanego.
 services: sql-database
 ms.service: sql-database
@@ -10,12 +10,12 @@ author: danimir
 ms.author: danil
 ms.reviewer: douglas, carlrab, sstein
 ms.date: 06/26/2019
-ms.openlocfilehash: 7ad09682275b5cc2311b792899a85c1c47eafc0d
-ms.sourcegitcommit: 77bfc067c8cdc856f0ee4bfde9f84437c73a6141
+ms.openlocfilehash: 84298e49de2de2ac43c33ec38c22846fd8d1e968
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72431293"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73688138"
 ---
 # <a name="delete-a-subnet-after-deleting-an-azure-sql-database-managed-instance"></a>Usuń podsieć po usunięciu Azure SQL Database wystąpienia zarządzanego
 

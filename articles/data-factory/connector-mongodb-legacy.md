@@ -1,5 +1,5 @@
 ---
-title: Kopiowanie danych z MongoDB za pomocą Azure Data Factory | Microsoft Docs
+title: Kopiowanie danych z MongoDB za pomocą Azure Data Factory
 description: Informacje o kopiowaniu danych z usługi Mongo DB do obsługiwanych magazynów danych ujścia przy użyciu działania kopiowania w potoku Azure Data Factory.
 services: data-factory
 documentationcenter: ''
@@ -12,26 +12,26 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 08/12/2019
 ms.author: jingwang
-ms.openlocfilehash: 77d0f632c763651004efa46edf027719040f4760
-ms.sourcegitcommit: 5d6c8231eba03b78277328619b027d6852d57520
+ms.openlocfilehash: 0c2c2d9ad78bb09a37faaa5825f8dae3e27370ea
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68967479"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73680670"
 ---
 # <a name="copy-data-from-mongodb-using-azure-data-factory"></a>Kopiowanie danych z MongoDB za pomocą Azure Data Factory
 > [!div class="op_single_selector" title1="Wybierz używaną wersję usługi Data Factory:"]
 > * [Wersja 1](v1/data-factory-on-premises-mongodb-connector.md)
 > * [Bieżąca wersja](connector-mongodb.md)
 
-W tym artykule opisano sposób używania działania kopiowania w Azure Data Factory do kopiowania danych z bazy danych MongoDB. Opiera się na [omówienie działania kopiowania](copy-activity-overview.md) artykułu, który przedstawia ogólne omówienie działania kopiowania.
+W tym artykule opisano sposób używania działania kopiowania w Azure Data Factory do kopiowania danych z bazy danych MongoDB. Jest ona oparta na [przeglądzie działania kopiowania](copy-activity-overview.md) , która przedstawia ogólne omówienie działania kopiowania.
 
 >[!IMPORTANT]
 >Moduł ADF zwolni nowy łącznik MongoDB, który zapewnia lepszą obsługę natywnych MongoDB w porównaniu do tej implementacji opartej na ODBC, zobacz artykuł dotyczący [łącznika MongoDB](connector-mongodb.md) , aby uzyskać szczegółowe informacje. Ten starszy łącznik MongoDB jest obsługiwany jako gotowy do zapewnienia zgodności z poprzednimi wersjami, a w przypadku każdego nowego obciążenia Użyj nowego łącznika.
 
-## <a name="supported-capabilities"></a>Obsługiwane funkcje
+## <a name="supported-capabilities"></a>Obsługiwane możliwości
 
-Dane z bazy danych MongoDB można kopiować do dowolnego obsługiwanego magazynu danych ujścia. Aby uzyskać listę magazynów danych, obsługiwane przez działanie kopiowania jako źródła/ujścia, zobacz [obsługiwane magazyny danych](copy-activity-overview.md#supported-data-stores-and-formats) tabeli.
+Dane z bazy danych MongoDB można kopiować do dowolnego obsługiwanego magazynu danych ujścia. Listę magazynów danych obsługiwanych jako źródła/ujścia przez działanie kopiowania można znaleźć w tabeli [obsługiwane magazyny danych](copy-activity-overview.md#supported-data-stores-and-formats) .
 
 Ten łącznik MongoDB obsługuje:
 
@@ -50,23 +50,23 @@ Integration Runtime udostępnia wbudowany sterownik MongoDB, dlatego nie trzeba 
 
 Poniższe sekcje zawierają szczegółowe informacje o właściwościach, które są używane do definiowania jednostek Data Factory specyficznych dla łącznika MongoDB.
 
-## <a name="linked-service-properties"></a>Właściwości usługi połączonej
+## <a name="linked-service-properties"></a>Właściwości połączonej usługi
 
 Dla połączonej usługi MongoDB są obsługiwane następujące właściwości:
 
-| Właściwość | Opis | Wymagane |
+| Właściwość | Opis | Wymagany |
 |:--- |:--- |:--- |
-| type |Właściwość Type musi mieć ustawioną wartość: **MongoDb** |Tak |
-| server |Adres IP lub nazwa hosta serwera MongoDB. |Tak |
+| type |Właściwość Type musi mieć wartość: **MongoDB** |Tak |
+| serwer |Adres IP lub nazwa hosta serwera MongoDB. |Tak |
 | port |Port TCP, którego serwer MongoDB używa do nasłuchiwania połączeń klientów. |Nie (domyślnie 27017) |
-| databaseName |Nazwa bazy danych MongoDB, do której chcesz uzyskać dostęp. |Tak |
-| authenticationType | Typ uwierzytelniania używany do łączenia się z bazą danych MongoDB.<br/>Dozwolone wartości to: **Podstawowa**i **anonimowa**. |Tak |
-| username |Konto użytkownika do uzyskiwania dostępu do MongoDB. |Tak (jeśli jest używane uwierzytelnianie podstawowe). |
-| password |Hasło użytkownika. Oznacz to pole jako SecureString, aby bezpiecznie przechowywać w usłudze Data Factory lub [odwołanie wpisu tajnego przechowywanych w usłudze Azure Key Vault](store-credentials-in-key-vault.md). |Tak (jeśli jest używane uwierzytelnianie podstawowe). |
+| Bazy |Nazwa bazy danych MongoDB, do której chcesz uzyskać dostęp. |Tak |
+| authenticationType | Typ uwierzytelniania używany do łączenia się z bazą danych MongoDB.<br/>Dozwolone wartości to: **Basic**i **Anonymous**. |Tak |
+| nazwa użytkownika |Konto użytkownika do uzyskiwania dostępu do MongoDB. |Tak (jeśli jest używane uwierzytelnianie podstawowe). |
+| hasło |Hasło użytkownika. Oznacz to pole jako element SecureString, aby bezpiecznie przechowywać go w Data Factory, lub [odwoływać się do wpisu tajnego przechowywanego w Azure Key Vault](store-credentials-in-key-vault.md). |Tak (jeśli jest używane uwierzytelnianie podstawowe). |
 | authSource |Nazwa bazy danych MongoDB, która ma zostać użyta do sprawdzenia poświadczeń w celu uwierzytelnienia. |Nie. W przypadku uwierzytelniania podstawowego wartość domyślna to użycie konta administratora i bazy danych określonej przy użyciu właściwości databaseName. |
 | enableSsl | Określa, czy połączenia z serwerem są szyfrowane przy użyciu protokołu SSL. Wartość domyślna to false.  | Nie |
 | allowSelfSignedServerCert | Określa, czy zezwalać na certyfikaty z podpisem własnym z serwera. Wartość domyślna to false.  | Nie |
-| connectVia | [Środowiska Integration Runtime](concepts-integration-runtime.md) ma być używany do łączenia się z magazynem danych. Dowiedz się więcej z sekcji [wymagania wstępne](#prerequisites) . Jeśli nie zostanie określony, używa domyślnego środowiska Azure Integration Runtime. |Nie |
+| Właściwością connectvia | [Integration Runtime](concepts-integration-runtime.md) używany do nawiązywania połączenia z magazynem danych. Dowiedz się więcej z sekcji [wymagania wstępne](#prerequisites) . Jeśli nie zostanie określony, zostanie użyta domyślna Azure Integration Runtime. |Nie |
 
 **Przykład:**
 
@@ -95,12 +95,12 @@ Dla połączonej usługi MongoDB są obsługiwane następujące właściwości:
 
 ## <a name="dataset-properties"></a>Właściwości zestawu danych
 
-Aby uzyskać pełną listę sekcje i właściwości, które są dostępne do definiowania zestawów danych, zobacz [zestawy danych i połączone usługi](concepts-datasets-linked-services.md). Dla zestawu danych MongoDB są obsługiwane następujące właściwości:
+Aby zapoznać się z pełną listą sekcji i właściwości, które są dostępne do definiowania zestawów danych, zobacz [zestawy danych i połączone usługi](concepts-datasets-linked-services.md). Dla zestawu danych MongoDB są obsługiwane następujące właściwości:
 
-| Właściwość | Opis | Wymagane |
+| Właściwość | Opis | Wymagany |
 |:--- |:--- |:--- |
 | type | Właściwość Type zestawu danych musi być ustawiona na wartość: **MongoDbCollection** | Tak |
-| collectionName |Nazwa kolekcji w bazie danych MongoDB. |Tak |
+| CollectionName |Nazwa kolekcji w bazie danych MongoDB. |Tak |
 
 **Przykład:**
 
@@ -122,15 +122,15 @@ Aby uzyskać pełną listę sekcje i właściwości, które są dostępne do def
 
 ## <a name="copy-activity-properties"></a>Właściwości działania kopiowania
 
-Aby uzyskać pełną listę sekcje i właściwości dostępne do definiowania działań zobacz [potoki](concepts-pipelines-activities.md) artykułu. Ta sekcja zawiera listę właściwości obsługiwanych przez źródło MongoDB.
+Aby uzyskać pełną listę sekcji i właściwości dostępnych do definiowania działań, zobacz artykuł [potoki](concepts-pipelines-activities.md) . Ta sekcja zawiera listę właściwości obsługiwanych przez źródło MongoDB.
 
 ### <a name="mongodb-as-source"></a>MongoDB jako źródło
 
-Następujące właściwości są obsługiwane w działaniu kopiowania **źródła** sekcji:
+W sekcji **Źródło** działania kopiowania są obsługiwane następujące właściwości:
 
-| Właściwość | Opis | Wymagane |
+| Właściwość | Opis | Wymagany |
 |:--- |:--- |:--- |
-| type | Właściwość Type źródła działania Copy musi mieć ustawioną wartość: **MongoDbSource** | Tak |
+| type | Właściwość Type źródła działania Copy musi być ustawiona na wartość: **MongoDbSource** | Tak |
 | query |Użyj niestandardowej kwerendy SQL-92 do odczytu danych. Na przykład: select * from MyTable. |Nie (Jeśli określono "CollectionName" w zestawie danych) |
 
 **Przykład:**
@@ -166,33 +166,33 @@ Następujące właściwości są obsługiwane w działaniu kopiowania **źródł
 ```
 
 > [!TIP]
-> W przypadku określenia zapytania SQL należy zwrócić uwagę na format daty i godziny. Na przykład: `SELECT * FROM Account WHERE LastModifiedDate >= '2018-06-01' AND LastModifiedDate < '2018-06-02'` lub, aby użyć parametru`SELECT * FROM Account WHERE LastModifiedDate >= '@{formatDateTime(pipeline().parameters.StartTime,'yyyy-MM-dd HH:mm:ss')}' AND LastModifiedDate < '@{formatDateTime(pipeline().parameters.EndTime,'yyyy-MM-dd HH:mm:ss')}'`
+> W przypadku określenia zapytania SQL należy zwrócić uwagę na format daty i godziny. Na przykład: `SELECT * FROM Account WHERE LastModifiedDate >= '2018-06-01' AND LastModifiedDate < '2018-06-02'` lub aby użyć parametru `SELECT * FROM Account WHERE LastModifiedDate >= '@{formatDateTime(pipeline().parameters.StartTime,'yyyy-MM-dd HH:mm:ss')}' AND LastModifiedDate < '@{formatDateTime(pipeline().parameters.EndTime,'yyyy-MM-dd HH:mm:ss')}'`
 
-## <a name="schema-by-data-factory"></a>Schemat przez usługę Data Factory
+## <a name="schema-by-data-factory"></a>Schemat według Data Factory
 
 Azure Data Factory schemat wniosku o usługę z kolekcji MongoDB przy użyciu **najnowszych dokumentów 100** w kolekcji. Jeśli następujące dokumenty 100 nie zawierają pełnego schematu, niektóre kolumny mogą zostać zignorowane podczas operacji kopiowania.
 
 ## <a name="data-type-mapping-for-mongodb"></a>Mapowanie typu danych dla MongoDB
 
-Podczas kopiowania danych z MongoDB następujące mapowania są używane z typów danych MongoDB do Azure Data Factory danych pośrednich. Zobacz [schemat i dane mapowanie typu](copy-activity-schema-and-type-mapping.md) Aby poznać sposób działania kopiowania mapowania typ schematu i danych źródła do ujścia.
+Podczas kopiowania danych z MongoDB następujące mapowania są używane z typów danych MongoDB do Azure Data Factory danych pośrednich. Zobacz [Mapowanie schematu i typu danych](copy-activity-schema-and-type-mapping.md) , aby dowiedzieć się, jak działanie kopiowania mapuje schemat źródłowy i typ danych do ujścia.
 
-| MongoDB — typ danych | Typ danych tymczasowych fabryki danych |
+| MongoDB — typ danych | Typ danych pośrednich fabryki danych |
 |:--- |:--- |
-| Binary |Byte[] |
-| Boolean |Boolean |
+| Binarny |Byte [] |
+| Wartość logiczna |Wartość logiczna |
 | Date |DateTime |
 | NumberDouble |Double |
-| NumberInt |Int32 |
+| NumberInt |Elementem |
 | NumberLong |Int64 |
-| ObjectID |String |
-| String |String |
-| UUID |Guid |
-| Object |Reznormalizowany do spłaszczonych kolumn z "_" jako separatorem zagnieżdżonym |
+| Obiektu |Ciąg |
+| Ciąg |Ciąg |
+| INTERFEJSU |Identyfikator GUID |
+| Obiekt |Reznormalizowany do spłaszczonych kolumn z "_" jako separatorem zagnieżdżonym |
 
 > [!NOTE]
 > Aby dowiedzieć się więcej o obsłudze tablic przy użyciu tabel wirtualnych, zobacz sekcję [Obsługa typów złożonych przy użyciu tabel wirtualnych](#support-for-complex-types-using-virtual-tables) .
 >
-> Obecnie następujące typy danych MongoDB nie są obsługiwane: Dbpointer, JavaScript, klucz max/min, wyrażenie regularne, symbol, znacznik czasu, niezdefiniowany.
+> Obecnie następujące typy danych MongoDB nie są obsługiwane: dbpointer, JavaScript, max/min Key, wyrażenie regularne, symbol, sygnatura czasowa, niezdefiniowane.
 
 ## <a name="support-for-complex-types-using-virtual-tables"></a>Obsługa typów złożonych przy użyciu tabel wirtualnych
 
@@ -207,14 +207,14 @@ Tabele wirtualne odwołują się do danych w rzeczywistej tabeli, umożliwiając
 
 Na przykład przykładem jest tabela MongoDB, która zawiera jedną kolumnę z tablicą obiektów w każdej komórce — faktury i jedną kolumnę z tablicą typów skalarnych — klasyfikacje.
 
-| _id | Nazwa klienta | Faktury | Poziom usługi | Klasyfikowani |
+| _id | Nazwa klienta | Faktury | Poziom usług | Klasyfikowani |
 | --- | --- | --- | --- | --- |
-| 1111 |ABC |[{invoice_id: "123", Item: "wyskakujące", Price: "456", Rabat: "0,2"}, {invoice_id: "124", Item: "piekarnik", Cena: "1235", Rabat: "0.2"}] |Srebrny |[5,6] |
-| 2222 |XYZ |[{invoice_id: "135", element: "lodówki", Cena: "12543", Rabat: "0.0"}] |Złoty |[1,2] |
+| 1111 |ABC |[{invoice_id: "123", Item: "wyskakujące", Price: "456", Rabat: "0,2"}, {invoice_id: "124", Item: "piekarnik", Cena: "1235", Rabat: "0,2"}] |Srebrny |[5, 6] |
+| 2222 |XYZ |[{invoice_id: "135", element: "lodówki", Cena: "12543", Rabat: "0,0"}] |Złoty |[1, 2] |
 
 Sterownik generuje wiele tabel wirtualnych do reprezentowania tej pojedynczej tabeli. Pierwsza tabela wirtualna jest tabelą podstawową o nazwie "Przykładowe", pokazana w przykładzie. Tabela podstawowa zawiera wszystkie dane oryginalnej tabeli, ale dane z tablic zostały pominięte i rozwinięte w tabelach wirtualnych.
 
-| _id | Nazwa klienta | Poziom usługi |
+| _id | Nazwa klienta | Poziom usług |
 | --- | --- | --- |
 | 1111 |ABC |Srebrny |
 | 2222 |XYZ |Złoty |
@@ -227,10 +227,10 @@ W poniższych tabelach przedstawiono tabele wirtualne, które reprezentują oryg
 
 **Tabela "ExampleTable_Invoices":**
 
-| _id | ExampleTable_Invoices_dim1_idx | invoice_id | elementów | cena | Rabat |
+| _id | ExampleTable_Invoices_dim1_idx | invoice_id | Elementów | price | Rabat |
 | --- | --- | --- | --- | --- | --- |
-| 1111 |0 |123 |wyskakujący |456 |0.2 |
-| 1111 |1 |124 |laboratoryjn |1235 |0.2 |
+| 1111 |0 |123 |wyskakujący |456 |0,2 |
+| 1111 |1 |124 |laboratoryjn |1235 |0,2 |
 | 2222 |0 |135 |lodówki |12543 |0.0 |
 
 **Tabela "ExampleTable_Ratings":**
@@ -243,4 +243,4 @@ W poniższych tabelach przedstawiono tabele wirtualne, które reprezentują oryg
 | 2222 |1 |2 |
 
 ## <a name="next-steps"></a>Następne kroki
-Aby uzyskać listę magazynów danych obsługiwanych jako źródła i ujścia działania kopiowania w usłudze Azure Data Factory, zobacz [obsługiwane magazyny danych](copy-activity-overview.md##supported-data-stores-and-formats).
+Listę magazynów danych obsługiwanych jako źródła i ujścia przez działanie kopiowania w Azure Data Factory można znaleźć w temacie [obsługiwane magazyny danych](copy-activity-overview.md##supported-data-stores-and-formats).

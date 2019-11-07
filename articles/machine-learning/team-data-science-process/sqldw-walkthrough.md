@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 11/24/2017
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: fc70e2e6475620bfb8842fc740772e326f8ee8d0
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 76afafb59de762776b7d2614e383320b7d8f79e4
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73480338"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73669403"
 ---
 # <a name="the-team-data-science-process-in-action-using-sql-data-warehouse"></a>Proces nauki danych zespołu w działaniu: używanie SQL Data Warehouse
 W ramach tego samouczka przeprowadzimy Cię przez proces tworzenia i wdrażania modelu uczenia maszynowego przy użyciu SQL Data Warehouse (SQL DW) dla publicznie dostępnego zestawu danych — zestawu danych [podróży NYC](https://www.andresmh.com/nyctaxitrips/) . Model klasyfikacji binarnej skonstruowany przewiduje, czy Porada jest płatna za podróż, oraz czy modele klasyfikacji i regresji wieloklasowej są również omówione w celu przewidywania dystrybucji płatnych sum.
@@ -851,7 +851,7 @@ Przykładem eksperymentu klasyfikacji danych binarnych odczytującego dane bezpo
 >
 
 ## <a name="mldeploy"></a>Wdrażanie modeli w Azure Machine Learning
-Gdy model jest gotowy, możesz go łatwo wdrożyć jako usługę sieci Web bezpośrednio z eksperymentu. Aby uzyskać więcej informacji na temat wdrażania usług sieci Web Azure ML, zobacz [wdrażanie usługi sieci web Azure Machine Learning](../studio/publish-a-machine-learning-web-service.md).
+Gdy model jest gotowy, możesz go łatwo wdrożyć jako usługę sieci Web bezpośrednio z eksperymentu. Aby uzyskać więcej informacji na temat wdrażania usług sieci Web Azure ML, zobacz [wdrażanie usługi sieci web Azure Machine Learning](../studio/deploy-a-machine-learning-web-service.md).
 
 Aby wdrożyć nową usługę sieci Web, należy:
 

@@ -4,7 +4,7 @@ description: Ten artykuł zawiera omówienie zabezpieczeń operacyjnych platform
 services: security
 documentationcenter: na
 author: unifycloud
-manager: barbkess
+manager: rkarlin
 editor: tomsh
 ms.assetid: ''
 ms.service: security
@@ -13,18 +13,18 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 10/30/2018
+ms.date: 10/31/2019
 ms.author: tomsh
-ms.openlocfilehash: 52d74983458a2c6a4de27ec91bc23a8dd9bee387
-ms.sourcegitcommit: d3dced0ff3ba8e78d003060d9dafb56763184d69
+ms.openlocfilehash: c5ab994ce7b4e3d195ec3a4c83094974c5767e66
+ms.sourcegitcommit: 359930a9387dd3d15d39abd97ad2b8cb69b8c18b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69899821"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73643782"
 ---
 # <a name="azure-operational-security-overview"></a>Omówienie zabezpieczeń operacyjnych platformy Azure
 
-[Zabezpieczenia operacyjne platformy Azure](/azure/security/fundamentals/operational-security) odnoszą się do usług, formantów i funkcji dostępnych dla użytkowników w celu ochrony danych, aplikacji i innych zasobów w Microsoft Azure. Jest to platforma, która obejmuje wiedzę uzyskaną za pomocą różnych możliwości, które są unikatowe dla firmy Microsoft. Te funkcje obejmują cykl programowania zabezpieczeń firmy Microsoft (SDL), program Microsoft Security Response Center oraz dogłębną świadomość zagrożeń cyberbezpieczeństwa.
+[Zabezpieczenia operacyjne platformy Azure](/azure/security/fundamentals/operational-security) odnoszą się do usług, formantów i funkcji dostępnych dla użytkowników w celu ochrony danych, aplikacji i innych zasobów w Microsoft Azure. Jest to platforma, która obejmuje wiedzę uzyskaną za pomocą różnych możliwości, które są unikatowe dla firmy Microsoft. Do tych funkcji należą Microsoft Security Development Lifecycle (SDL), program Microsoft Security Response Center i szczegółowa świadomość zagrożeń cyberbezpieczeństwa.
 
 ## <a name="azure-management-services"></a>Usługi zarządzania platformy Azure
 
@@ -34,7 +34,7 @@ Zespół ds. operacyjnych jest odpowiedzialny za zarządzanie infrastrukturą, a
 
 ### <a name="azure-monitor"></a>Azure Monitor
 
-[Azure monitor](/azure/azure-monitor/overview) zbiera dane z zarządzanych źródeł do centralnych magazynów danych. Te dane mogą obejmować zdarzenia, dane dotyczące wydajności lub dane niestandardowe udostępniane za pomocą interfejsu API. Po zebraniu danych są one dostępne dla alertów, analiz i eksportu. 
+[Azure monitor](/azure/azure-monitor/overview) zbiera dane z zarządzanych źródeł do centralnych magazynów danych. Te dane mogą obejmować zdarzenia, dane dotyczące wydajności lub dane niestandardowe udostępniane za pomocą interfejsu API. Po zebraniu danych są one dostępne dla alertów, analiz i eksportu.
 
 Dane można skonsolidować z różnych źródeł i połączyć dane z usług platformy Azure z istniejącym środowiskiem lokalnym. Dzienniki Azure Monitor również wyraźnie oddzielają kolekcję danych od akcji podjętej na tych danych, dzięki czemu wszystkie akcje są dostępne dla wszystkich rodzajów danych.
 
@@ -42,11 +42,11 @@ Dane można skonsolidować z różnych źródeł i połączyć dane z usług pla
 
 [Azure Automation](/azure/automation/automation-intro) zapewnia sposób automatyzacji ręcznych, długotrwałych, podatnych na błędy i często powtarzanych zadań, które są często wykonywane w chmurze i środowisku przedsiębiorstwa. Oszczędza czas i zwiększa niezawodność zadań administracyjnych. Program planuje również automatyczne wykonywanie tych zadań w regularnych odstępach czasu. Procesy można zautomatyzować za pomocą elementów Runbook lub automatyzując zarządzanie konfiguracją przy użyciu konfiguracji żądanego stanu.
 
-### <a name="backup"></a>Tworzenie kopii zapasowej
+### <a name="backup"></a>Tworzenie kopii zapasowych
 
-[Azure Backup](/azure/backup/backup-introduction-to-azure-backup) jest usługą opartą na platformie Azure, za pomocą której można tworzyć kopie zapasowe (lub chronić) i przywracać dane w Microsoft Cloud. Azure Backup zastępuje istniejące rozwiązanie do tworzenia kopii zapasowych w środowisku lokalnym lub poza lokacją przy użyciu rozwiązania opartego na chmurze, które jest niezawodne, bezpieczne i konkurencyjne. 
+[Azure Backup](/azure/backup/backup-introduction-to-azure-backup) jest usługą opartą na platformie Azure, za pomocą której można tworzyć kopie zapasowe (lub chronić) i przywracać dane w Microsoft Cloud. Azure Backup zastępuje istniejące rozwiązanie do tworzenia kopii zapasowych w środowisku lokalnym lub poza lokacją przy użyciu rozwiązania opartego na chmurze, które jest niezawodne, bezpieczne i konkurencyjne.
 
-Azure Backup oferuje składniki pobierane i wdrażane na odpowiednim komputerze lub serwerze albo w chmurze. Wdrażany składnik lub agent zależy od tego, co ma być chronione. Wszystkie składniki Azure Backup (niezależnie od tego, czy dane są chronione lokalnie, czy w chmurze) mogą służyć do tworzenia kopii zapasowych danych w magazynie usługi Azure Recovery Services na platformie Azure. 
+Azure Backup oferuje składniki pobierane i wdrażane na odpowiednim komputerze lub serwerze albo w chmurze. Wdrażany składnik lub agent zależy od tego, co ma być chronione. Wszystkie składniki Azure Backup (niezależnie od tego, czy dane są chronione lokalnie, czy w chmurze) mogą służyć do tworzenia kopii zapasowych danych w magazynie usługi Azure Recovery Services na platformie Azure.
 
 Aby uzyskać więcej informacji, zobacz [tabelę składników Azure Backup](/azure/backup/backup-introduction-to-azure-backup#which-backup-agent-should-i-use).
 
@@ -89,7 +89,7 @@ Dzięki Azure Active Directory wszystkie aplikacje publikowane dla partnerów i 
 
 Security Center używa [Access Control opartego na rolach (RBAC)](/azure/role-based-access-control/role-assignments-portal). RBAC zawiera [wbudowane role](../../role-based-access-control/built-in-roles.md) , które można przypisać do użytkowników, grup i usług na platformie Azure.
 
-Usługa Security Center ocenia konfigurację zasobów, aby zidentyfikować problemy dotyczące zabezpieczeń i luki w zabezpieczeniach. W Security Center informacje dotyczące zasobu są wyświetlane tylko wtedy, gdy przypiszesz rolę właściciela, współautora lub czytelnika dla subskrypcji lub grupy zasobów, do której należy zasób.
+Security Center ocenia konfigurację zasobów w celu zidentyfikowania problemów i luk w zabezpieczeniach. W Security Center informacje dotyczące zasobu są wyświetlane tylko wtedy, gdy przypiszesz rolę właściciela, współautora lub czytelnika dla subskrypcji lub grupy zasobów, do której należy zasób.
 
 >[!Note]
 >Aby dowiedzieć się więcej o rolach i dozwolonych akcjach w Security Center, zobacz [uprawnienia w Azure Security Center](/azure/security-center/security-center-permissions).
@@ -102,7 +102,7 @@ Problemy z wydajnością w aplikacji w chmurze mogą mieć wpływ na Twoją firm
 
 [Azure monitor](/azure/monitoring-and-diagnostics/monitoring-overview-azure-monitor) to podstawowe narzędzie do monitorowania usług działających na platformie Azure. Zapewnia ona dane na poziomie infrastruktury dotyczące przepływności usługi i otoczenia. Jeśli zarządzasz aplikacjami na platformie Azure i zdecydujesz, czy chcesz skalować zasoby w górę czy w dół, Azure Monitor to miejsce do rozpoczęcia.
 
-Dane monitorowania można także wykorzystać do uzyskania szczegółowych informacji o aplikacji. Ta wiedza może pomóc w zwiększeniu wydajności aplikacji lub utrzymaniu lub zautomatyzowaniu działań, które w przeciwnym razie wymagają ręcznej interwencji. 
+Dane monitorowania można także wykorzystać do uzyskania szczegółowych informacji o aplikacji. Ta wiedza może pomóc w zwiększeniu wydajności aplikacji lub utrzymaniu lub zautomatyzowaniu działań, które w przeciwnym razie wymagają ręcznej interwencji.
 
 Azure Monitor obejmuje następujące składniki.
 
@@ -112,7 +112,7 @@ Azure Monitor obejmuje następujące składniki.
 
 ### <a name="azure-diagnostic-logs"></a>Dzienniki diagnostyczne platformy Azure
 
-[Dzienniki diagnostyczne platformy Azure](/azure/monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs) są emitowane przez zasób i zapewniają rozbudowane, częste dane dotyczące operacji tego zasobu. Zawartość tych dzienników jest zależna od typu zasobu.
+[Dzienniki diagnostyczne platformy Azure](/azure/monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs) są emitowane przez zasób i zapewniają rozbudowane, częste dane dotyczące operacji tego zasobu. Zawartość tych dzienników różni się w zależności od typu zasobu.
 
 Dzienniki systemu zdarzeń systemu Windows to jedna kategoria dzienników diagnostycznych dla maszyn wirtualnych. Dzienniki obiektów blob, tabel i kolejek są kategoriami dzienników diagnostycznych dla kont magazynu.
 
@@ -140,29 +140,31 @@ Network Watcher upraszcza monitorowanie i diagnozowanie sieci platformy Azure. N
 
 Network Watcher obecnie ma następujące możliwości:
 
-- [Topologia](/azure/network-watcher/network-watcher-topology-overview): Zawiera widok różnych połączeń i skojarzeń między zasobami sieci w grupie zasobów.
-- [Przechwytywanie pakietów zmiennych](/azure/network-watcher/network-watcher-packet-capture-overview): Przechwytuje dane pakietów do i z maszyny wirtualnej. Bardzo przydatne są zaawansowane opcje filtrowania i dostosowywania ustawień, takie jak określanie czasu i limitów rozmiaru. Dane pakietu mogą być przechowywane w magazynie obiektów blob lub na dysku lokalnym w formacie. Cap.
-- [Weryfikacja przepływu IP](/azure/network-watcher/network-watcher-ip-flow-verify-overview): Sprawdza, czy pakiet jest dozwolony, czy odrzucany na podstawie parametrów pakietu 5-spoiny dla informacji o przepływie (docelowy adres IP, źródłowy adres IP, port docelowy, port źródłowy i protokół). Jeśli grupa zabezpieczeń nie zezwala na pakiet, zwracane są reguły i grupy, które odrzuciły pakiet.
-- [Następny przeskok](/azure/network-watcher/network-watcher-next-hop-overview): Określa następny przeskok dla pakietów przesyłanych w sieci szkieletowej platformy Azure, dzięki czemu można zdiagnozować wszelkie nieprawidłowo skonfigurowane trasy zdefiniowane przez użytkownika.
+- [Topologia](/azure/network-watcher/network-watcher-topology-overview): zawiera widok różnych połączeń i skojarzeń między zasobami sieci w grupie zasobów.
+- [Przechwytywanie pakietów zmiennych](/azure/network-watcher/network-watcher-packet-capture-overview): przechwytuje dane pakietów do i z maszyny wirtualnej. Bardzo przydatne są zaawansowane opcje filtrowania i dostosowywania ustawień, takie jak określanie czasu i limitów rozmiaru. Dane pakietu mogą być przechowywane w magazynie obiektów blob lub na dysku lokalnym w formacie. Cap.
+- [Weryfikowanie przepływu adresów IP](/azure/network-watcher/network-watcher-ip-flow-verify-overview): sprawdza, czy pakiet jest dozwolony, czy odrzucany na podstawie parametrów pakietu 5-spoiny dla informacji o przepływie (docelowy adres IP, źródłowy adres IP, port docelowy, port źródłowy i protokół). Jeśli grupa zabezpieczeń nie zezwala na pakiet, zwracane są reguły i grupy, które odrzuciły pakiet.
+- [Następny przeskok](/azure/network-watcher/network-watcher-next-hop-overview): określa następny przeskok dla pakietów przesyłanych w sieci szkieletowej platformy Azure, dzięki czemu można zdiagnozować wszelkie nieprawidłowo skonfigurowane trasy zdefiniowane przez użytkownika.
 - [Widok grupy zabezpieczeń](/azure/network-watcher/network-watcher-security-group-view-overview): Pobiera obowiązujące i stosowane reguły zabezpieczeń stosowane na maszynie wirtualnej.
-- [Dzienniki przepływu sieciowej grupy zabezpieczeń dla sieciowych grup zabezpieczeń](/azure/network-watcher/network-watcher-nsg-flow-logging-overview): Umożliwia przechwytywanie dzienników związanych z ruchem, które są dozwolone lub odrzucane przez reguły zabezpieczeń w grupie. Przepływ jest definiowany przy użyciu 5-informacje o spójnej kolekcji: źródłowy adres IP, docelowy adres IP, port źródłowy, port docelowy i protokół.
-- [Rozwiązywanie problemów z bramą sieci wirtualnej i połączeniem](/azure/network-watcher/network-watcher-troubleshoot-manage-rest): Zapewnia możliwość rozwiązywania problemów z bramami i połączeniami sieci wirtualnej.
-- [Limity dotyczące subskrypcji sieci](/azure/network-watcher/network-watcher-monitoring-overview): Umożliwia wyświetlenie użycia zasobów sieciowych względem limitów.
-- [Dzienniki diagnostyczne](/azure/network-watcher/network-watcher-monitoring-overview): Udostępnia pojedyncze okienko do włączania lub wyłączania dzienników diagnostycznych dla zasobów sieciowych w grupie zasobów.
+- [Dzienniki przepływu sieciowej grupy zabezpieczeń dla sieciowych grup zabezpieczeń](/azure/network-watcher/network-watcher-nsg-flow-logging-overview): umożliwiają przechwytywanie dzienników związanych z ruchem, które są dozwolone lub odrzucane przez reguły zabezpieczeń w grupie. Przepływ jest definiowany przy użyciu 5-informacje o spójnej kolekcji: źródłowy adres IP, docelowy adres IP, port źródłowy, port docelowy i protokół.
+- [Rozwiązywanie problemów z bramą sieci wirtualnej i połączeniem](/azure/network-watcher/network-watcher-troubleshoot-manage-rest): umożliwia rozwiązywanie problemów z bramami i połączeniami sieci wirtualnej.
+- [Limity dotyczące subskrypcji sieci](/azure/network-watcher/network-watcher-monitoring-overview): umożliwiają wyświetlanie użycia zasobów sieciowych względem limitów.
+- [Dzienniki diagnostyczne](/azure/network-watcher/network-watcher-monitoring-overview): zawiera pojedyncze okienko do włączania lub wyłączania dzienników diagnostycznych dla zasobów sieciowych w grupie zasobów.
 
 Aby uzyskać więcej informacji, zobacz [konfigurowanie Network Watcher](/azure/network-watcher/network-watcher-create).
 
 ## <a name="cloud-service-provider-access-transparency"></a>Przezroczystość dostępu dostawcy usług w chmurze
 
-[Skrytka klienta dla Microsoft Azure](https://azure.microsoft.com/blog/approve-audit-support-access-requests-to-vms-using-customer-lockbox-for-azure/) to usługa zintegrowana z Azure Portal, która zapewnia jawną kontrolę w rzadkim wystąpieniu, gdy inżynier pomoc techniczna firmy Microsoft może potrzebować dostępu do danych w celu rozwiązania problemu. Istnieje kilka wystąpień, takich jak debugowanie problemu dostępu zdalnego, gdzie inżynier pomoc techniczna firmy Microsoft wymaga podniesionych uprawnień, aby rozwiązać ten problem. W takich przypadkach inżynierowie firmy Microsoft używają usługi dostępu just in Time, która zapewnia ograniczoną, powiązaną z czasem autoryzację z dostępem ograniczonym do usługi.  
+[Skrytka klienta dla Microsoft Azure](customer-lockbox-overview.md) to usługa zintegrowana z Azure Portal, która zapewnia jawną kontrolę w rzadkim wystąpieniu, gdy inżynier pomoc techniczna firmy Microsoft może potrzebować dostępu do danych w celu rozwiązania problemu.
+Istnieje kilka wystąpień, takich jak debugowanie problemu dostępu zdalnego, gdzie inżynier pomoc techniczna firmy Microsoft wymaga podniesionych uprawnień, aby rozwiązać ten problem. W takich przypadkach inżynierowie firmy Microsoft używają usługi dostępu just in Time, która zapewnia ograniczoną, powiązaną z czasem autoryzację z dostępem ograniczonym do usługi.  
 Firma Microsoft zawsze uzyskała zgodę klienta na dostęp, Skrytka klienta teraz umożliwia przeglądanie i zatwierdzanie lub odrzucanie takich żądań w witrynie Azure Portal. Inżynierowie pomocy technicznej firmy Microsoft nie otrzymają dostępu do momentu zatwierdzenia żądania.
 
 ## <a name="standardized-and-compliant-deployments"></a>Standardowe i zgodne wdrożenia
 
 [Plany platformy Azure](/azure/governance/blueprints/overview) umożliwiają architektom chmury i centralnym grupom technologii informatycznych Definiowanie powtarzalnych zestawów zasobów platformy Azure, które implementują i stosują się do standardów, wzorców i wymagań organizacji.  
-Dzięki temu zespoły DevOps mogą szybko tworzyć i wdrażać nowe środowiska oraz ufać, że kompilują je z infrastrukturą, która utrzymuje zgodność organizacji. Plany zapewniają deklaratywny sposób organizowania wdrożenia różnych szablonów zasobów i innych artefaktów, takich jak: 
+Dzięki temu zespoły DevOps mogą szybko tworzyć i wdrażać nowe środowiska oraz ufać, że kompilują je z infrastrukturą, która utrzymuje zgodność organizacji.
+Plany zapewniają deklaratywny sposób organizowania wdrożenia różnych szablonów zasobów i innych artefaktów, takich jak:
 
-- Przydziały ról
+- Przypisania ról
 - Przypisania zasad
 - Szablony usługi Azure Resource Manager
 - Grupy zasobów
@@ -183,12 +185,12 @@ Praktykujący lekarze DevOps przyjmuje kilka z poniższych praktyk. Te praktyki 
 - [Ciągłe dostarczanie](https://www.visualstudio.com/learn/what-is-continuous-delivery/) rozwiązań programowych do środowisk produkcyjnych i testowych ułatwia organizacjom szybkie rozwiązywanie usterek i reagowanie na zmieniające się wymagania biznesowe.
 - [Monitorowanie](https://www.visualstudio.com/learn/what-is-monitoring/) uruchomionych aplikacji — w tym środowisk produkcyjnych w celu zapewnienia kondycji aplikacji, a także użycia klienta — pomaga organizacjom tworzyć hipotezy i szybko weryfikować lub odrzucanie strategie.  Bogate dane są przechwytywane i przechowywane w różnych formatach rejestrowania.
 - [Infrastruktura jako kod (IaC)](https://www.visualstudio.com/learn/what-is-infrastructure-as-code/) to rozwiązanie, które umożliwia automatyzację i sprawdzanie poprawności tworzenia i usuwania sieci oraz maszyn wirtualnych w celu ułatwienia dostarczania bezpiecznych, stabilnych platform hostingu aplikacji.
-- [](https://www.visualstudio.com/learn/what-are-microservices/) Architektura mikrousług służy do izolowania przypadków użycia biznesowego w małych usługach wielokrotnego użytku.  Ta architektura umożliwia skalowalność i wydajność.
+- Architektura [mikrousług](https://www.visualstudio.com/learn/what-are-microservices/) służy do izolowania przypadków użycia biznesowego w małych usługach wielokrotnego użytku.  Ta architektura umożliwia skalowalność i wydajność.
 
 ## <a name="next-steps"></a>Następne kroki
 
 Aby dowiedzieć się więcej na temat rozwiązania Security and Audit, zobacz następujące artykuły:
 
-- [Zabezpieczenia i zgodność](https://www.microsoft.com/cloud-platform/security-and-compliance)
+- [Zabezpieczenia i zgodność](https://azure.microsoft.com/overview/trusted-cloud/)
 - [Azure Security Center](/azure/security-center/security-center-intro)
 - [Azure Monitor](/azure/azure-monitor/overview)

@@ -7,12 +7,12 @@ ms.service: private-link
 ms.topic: article
 ms.date: 09/16/2019
 ms.author: kumud
-ms.openlocfilehash: c67d2cd4e90b2fa61a4d95e89a68c888a6e1fe3f
-ms.sourcegitcommit: a6718e2b0251b50f1228b1e13a42bb65e7bf7ee2
+ms.openlocfilehash: 57ab18c8dfffb6994983179f434491b97589ebda
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71273649"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73693234"
 ---
 # <a name="create-a-private-link-service-using-azure-cli"></a>Tworzenie prywatnej usługi linkowej przy użyciu interfejsu wiersza polecenia platformy Azure
 W tym artykule opisano sposób tworzenia usługi linku prywatnego na platformie Azure przy użyciu interfejsu wiersza polecenia platformy Azure.
@@ -23,7 +23,7 @@ Jeśli zdecydujesz się zainstalować interfejs wiersza polecenia platformy Azur
 ## <a name="create-a-private-link-service"></a>Tworzenie usługi łącza prywatnego
 ### <a name="create-a-resource-group"></a>Tworzenie grupy zasobów
 
-Przed utworzeniem sieci wirtualnej należy utworzyć grupę zasobów, która będzie hostowała tę sieć wirtualną. Utwórz grupę zasobów za pomocą polecenia [az group create](/cli/azure/group). Ten przykład tworzy grupę zasobów o nazwie Moja *zasobów* w lokalizacji *westcentralus* :
+Przed utworzeniem sieci wirtualnej musisz utworzyć grupę zasobów, która będzie hostowała tę sieć wirtualną. Utwórz grupę zasobów za pomocą polecenia [az group create](/cli/azure/group). Ten przykład tworzy grupę zasobów o nazwie Moja *zasobów* w lokalizacji *westcentralus* :
 
 ```azurecli-interactive
 az group create --name myResourceGroup --location westcentralus
@@ -104,7 +104,7 @@ az network private-link-service create \
 ```
 Po utworzeniu należy zwrócić uwagę na identyfikator usługi linku prywatnego. Będzie potrzebne później do żądania połączenia z tą usługą.  
  
-Na tym etapie usługa linku prywatnego została pomyślnie utworzona i będzie gotowa do odbierania ruchu. Należy pamiętać, że powyższy przykład dotyczy tylko tworzenia usługi link prywatny przy użyciu interfejsu wiersza polecenia platformy Azure.  Nie skonfigurowano pul zaplecza modułu równoważenia obciążenia ani żadnej aplikacji w pulach zaplecza do nasłuchiwania ruchu. Jeśli chcesz zobaczyć kompleksowe przepływy ruchu, możesz zdecydowanie polecić skonfigurowanie aplikacji za usługa Load Balancer w warstwie Standardowa.  
+Na tym etapie usługa linku prywatnego została pomyślnie utworzona i będzie gotowa do odbierania ruchu. Należy pamiętać, że powyższy przykład dotyczy tylko tworzenia usługi link prywatny przy użyciu interfejsu wiersza polecenia platformy Azure.  Nie skonfigurowano pul zaplecza modułu równoważenia obciążenia ani żadnej aplikacji w pulach zaplecza do nasłuchiwania ruchu. Jeśli chcesz zobaczyć kompleksowe przepływy ruchu, stanowczo zalecamy skonfigurowanie aplikacji za usługa Load Balancer w warstwie Standardowa.  
  
 Następnie przedstawimy sposób mapowania tej usługi do prywatnego punktu końcowego w innej sieci wirtualnej przy użyciu interfejsu wiersza polecenia platformy Azure. Ponownie Przykładowo można utworzyć prywatny punkt końcowy i połączyć się z usługą linków prywatnych utworzoną powyżej przy użyciu interfejsu wiersza polecenia platformy Azure. Ponadto można tworzyć maszyny wirtualne w sieci wirtualnej w celu wysyłania/odbierania ruchu do prywatnego punktu końcowego.        
  
@@ -151,7 +151,7 @@ az network private-endpoint create \
 --connection-name myPEConnectingPLS \
 --location westcentralus 
 ```
-Możesz uzyskać *połączenie Private-Connection-Resource-ID* z `az network private-link-service show` usługą link prywatny. Identyfikator będzie wyglądać następująco:   
+Możesz uzyskać *połączenie Private-Connection-Resource-ID* z `az network private-link-service show` w usłudze link prywatny. Identyfikator będzie wyglądać następująco:   
 /subscriptions/subID/resourceGroups/*ResourceGroupName*/Providers/Microsoft.Network/privateLinkServices/**privatelinkservicename** 
  
 ## <a name="show-private-link-service-connections"></a>Pokaż połączenia usługi link prywatny 

@@ -1,5 +1,5 @@
 ---
-title: Premium RS Azure SQL Database warstwy usług | Microsoft Docs
+title: OdAzure SQL Database Premium RS warstwy usług
 description: Warstwa usługi Premium RS jest wycofywana, a jej obsługa kończy się — Zobacz opcje migracji.
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: carlrab
 ms.date: 02/07/2019
-ms.openlocfilehash: d2637618ea9e2a0a0d0369eddce01fae073be221
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 688fd3fdefb54fc25d5236277c85dd4262df5f34
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68566640"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73687229"
 ---
 # <a name="azure-sql-database-premium-rs-service-tier-preview-is-being-retired---options-for-migration"></a>Azure SQL Database Premium RS warstwy usług (wersja zapoznawcza) jest wycofywana-opcje migracji
 
@@ -26,7 +26,7 @@ Poniżej przedstawiono opcje dotyczące lokalizacji docelowych migracji i cennik
 
 - warstwy usług rdzeń wirtualny
 
-  **Ogólnego przeznaczenia** i **krytyczne dla działania firmy** warstwy usług w [modelu zakupu opartym na rdzeń wirtualny](sql-database-service-tiers-vcore.md). Te dwie warstwy usług są ogólnie dostępne. Model zakupów opartych na rdzeń wirtualny oferuje również warstwę usługi w ramach skalowania, która dostosowuje zapotrzebowanie na żądanie do potrzeb obciążenia dzięki automatycznemu skalowaniu do 100 TB na bazę danych. Warstwa usługi do skalowania zapewnia wydajność we/wy porównywalną z warstwą usługi Premium w [modelu zakupu opartego](sql-database-service-tiers-dtu.md) na jednostkach DTU pod kątem ceny zbliżonej do Premium RS warstwy usług.
+  **Ogólnego przeznaczenia** i **krytyczne dla działania firmy** warstwy usług w [modelu zakupu opartym na rdzeń wirtualny](sql-database-service-tiers-vcore.md). Te dwie warstwy usług są ogólnie dostępne. Model zakupów opartych na rdzeń wirtualny oferuje również warstwę usługi w ramach **skalowania** , która dostosowuje zapotrzebowanie na żądanie do potrzeb obciążenia dzięki automatycznemu skalowaniu do 100 TB na bazę danych. Warstwa usługi do skalowania zapewnia wydajność we/wy porównywalną z warstwą usługi Premium w [modelu zakupu opartego](sql-database-service-tiers-dtu.md) na jednostkach DTU pod kątem ceny zbliżonej do Premium RS warstwy usług.
 - Cennik dotyczący tworzenia i testowania
 
   Cennik dotyczący tworzenia [i testowania](https://azure.microsoft.com/pricing/dev-test/) zapewnia oszczędności do 55% w porównaniu z opłatami za licencję w ramach subskrypcji programu Visual Studio.

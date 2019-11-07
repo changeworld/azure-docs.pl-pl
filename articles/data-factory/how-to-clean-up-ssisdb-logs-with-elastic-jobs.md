@@ -1,6 +1,6 @@
 ---
-title: Czyszczenie dzienników bazy danych SSISDB za pomocą zadania Elastic Database platformy Azure | Dokumentacja firmy Microsoft
-description: W tym artykule opisano, jak czyszczenie dzienników bazy danych SSISDB, za pomocą zadań elastycznych baz danych platformy Azure do wyzwolenia procedury przechowywanej, która istnieje w tym celu
+title: 'Czyszczenie dzienników SSISDB za pomocą zadań Elastic Database platformy Azure '
+description: W tym artykule opisano sposób oczyszczania dzienników SSISDB przy użyciu usługi Azure zadania Elastic Database do wyzwolenia procedury składowanej, która istnieje w tym celu
 services: data-factory
 documentationcenter: ''
 ms.service: data-factory
@@ -12,28 +12,28 @@ author: swinarko
 ms.author: sawinark
 ms.reviewer: douglasl
 manager: craigg
-ms.openlocfilehash: 1afc40bd601c06def57ae59797d31a5edf4095bd
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 0697addb14894855f554c1d82f59f3798e63d03b
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61345567"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73674736"
 ---
-# <a name="clean-up-ssisdb-logs-with-azure-elastic-database-jobs"></a>Czyszczenie dzienników bazy danych SSISDB za pomocą zadania Elastic Database usługi Azure
+# <a name="clean-up-ssisdb-logs-with-azure-elastic-database-jobs"></a>Czyszczenie dzienników SSISDB za pomocą zadań Elastic Database platformy Azure
 
-W tym artykule opisano, jak wyzwolić procedury przechowywanej, która oczyszcza dzienniki bazy danych wykazu usług SQL Server Integration Services, za pomocą zadania Elastic Database usługi Azure `SSISDB`.
+W tym artykule opisano, jak używać zadań Elastic Database platformy Azure do wyzwalania procedury składowanej, która czyści dzienniki dla bazy danych wykazu SQL Server Integration Services, `SSISDB`.
 
-Zadania elastic Database jest usługą platformy Azure, która ułatwia automatyzowaniu i uruchamianiu zadań względem bazy danych lub grupą baz danych. Można zaplanować, uruchamianie i monitorowanie tych zadań za pomocą witryny Azure portal, języka Transact-SQL, programu PowerShell lub interfejsów API REST. Zadanie elastyczne bazy danych należy używać do wyzwalania procedury składowanej Oczyszczanie dziennika jednorazowo lub zgodnie z harmonogramem. Możesz wybrać interwał harmonogramu na podstawie użycia zasobów bazy danych SSISDB, aby uniknąć obciążenia duże bazy danych.
+Zadania Elastic Database to usługa platformy Azure, która ułatwia Automatyzowanie i uruchamianie zadań w odniesieniu do bazy danych lub grupy baz danych. Możesz planować, uruchamiać i monitorować te zadania za pomocą interfejsów API Azure Portal, Transact-SQL, PowerShell lub REST. Użyj zadania Elastic Database, aby wyzwolić procedurę składowaną służącą do czyszczenia dzienników jednokrotnie lub zgodnie z harmonogramem. Możesz wybrać interwał harmonogramu oparty na SSISDB zasobów, aby uniknąć dużego obciążenia bazy danych.
 
-Aby uzyskać więcej informacji, zobacz [Zarządzanie grupami bazami danych za pomocą zadania Elastic Database](../sql-database/elastic-jobs-overview.md).
+Aby uzyskać więcej informacji, zobacz [Zarządzanie grupami baz danych za pomocą zadań Elastic Database](../sql-database/elastic-jobs-overview.md).
 
-W poniższych sekcjach opisano sposób włączania procedury składowanej `[internal].[cleanup_server_retention_window_exclusive]`, co spowoduje usunięcie dzienników bazy danych SSISDB, które są poza oknem przechowywania ustawionych przez administratora.
+W poniższych sekcjach opisano sposób wyzwalania `[internal].[cleanup_server_retention_window_exclusive]`procedury przechowywanej, która usuwa dzienniki SSISDB poza oknem przechowywania ustawionym przez administratora.
 
-## <a name="clean-up-logs-with-power-shell"></a>Czyszczenie dzienników za pomocą powłoki Power Shell
+## <a name="clean-up-logs-with-power-shell"></a>Czyszczenie dzienników przy użyciu powłoki PowerShell
 
 [!INCLUDE [requires-azurerm](../../includes/requires-azurerm.md)]
 
-Następujące przykładowe skrypty programu PowerShell utworzyć nowe zadanie elastycznej do wyzwolenia procedurę składowaną dla Oczyszczanie dziennika bazy danych SSISDB. Aby uzyskać więcej informacji, zobacz [Utwórz agenta elastycznych zadań przy użyciu programu PowerShell](../sql-database/elastic-jobs-powershell.md).
+Następujące przykładowe skrypty programu PowerShell tworzą nowe zadanie elastyczne, aby wyzwolić procedurę składowaną dla czyszczenia dziennika SSISDB. Aby uzyskać więcej informacji, zobacz [Tworzenie elastycznego agenta zadań przy użyciu programu PowerShell](../sql-database/elastic-jobs-powershell.md).
 
 ### <a name="create-parameters"></a>Utwórz parametry
 
@@ -65,7 +65,7 @@ $IntervalCount = $(Read-Host "Please enter the detailed interval value in the gi
 $StartTime = (Get-Date)
 ```
 
-### <a name="trigger-the-cleanup-stored-procedure"></a>Procedura czyszczenia przechowywane wyzwalacza
+### <a name="trigger-the-cleanup-stored-procedure"></a>Wyzwalanie procedury składowanej oczyszczania
 
 ```powershell
 # Install the latest PackageManagement powershell package which PowershellGet v1.6.5 is dependent on
@@ -157,13 +157,13 @@ Write-Output "Start the execution schedule of the stored procedure for SSISDB lo
 $Job | Set-AzureRmSqlElasticJob -IntervalType $IntervalType -IntervalCount $IntervalCount -StartTime $StartTime -Enable
 ```
 
-## <a name="clean-up-logs-with-transact-sql"></a>Czyszczenie dzienników za pomocą języka Transact-SQL
+## <a name="clean-up-logs-with-transact-sql"></a>Czyszczenie dzienników przy użyciu języka Transact-SQL
 
-Następujące przykładowe skrypty języka Transact-SQL utworzyć nowe zadanie elastyczne do wyzwolenia procedurę składowaną dla Oczyszczanie dziennika bazy danych SSISDB. Aby uzyskać więcej informacji, zobacz [użycie języka Transact-SQL (T-SQL) do tworzenia i zarządzania nimi zadania Elastic Database](../sql-database/elastic-jobs-tsql.md).
+Następujące przykładowe skrypty Transact-SQL tworzą nowe zadanie elastyczne, aby wyzwolić procedurę składowaną dla czyszczenia dziennika SSISDB. Aby uzyskać więcej informacji, zobacz [Używanie języka Transact-SQL (T-SQL) w celu tworzenia zadań Elastic Database i zarządzania nimi](../sql-database/elastic-jobs-tsql.md).
 
-1. Tworzenie lub identyfikowanie do bazy danych zadania SSISDBCleanup S0 puste lub nowszej usługi Azure SQL Database. Następnie utwórz Agent elastycznych zadań w [witryny Azure portal](https://ms.portal.azure.com/#create/Microsoft.SQLElasticJobAgent).
+1. Utwórz lub Zidentyfikuj pustą S0ę lub wyższą Azure SQL Database, aby być bazą danych zadań SSISDBCleanup. Następnie Utwórz agenta elastycznego zadania w [Azure Portal](https://ms.portal.azure.com/#create/Microsoft.SQLElasticJobAgent).
 
-2. W bazie danych zadania tworzenia poświadczenia dla zadania oczyszczania dziennika bazy danych SSISDB. To poświadczenie jest używane do połączenia z bazą danych SSISDB, aby wyczyścić dzienniki.
+2. W bazie danych zadań Utwórz poświadczenie dla zadania oczyszczania dziennika SSISDB. To poświadczenie jest używane do nawiązania połączenia z bazą danych SSISDB w celu oczyszczenia dzienników.
 
     ```sql
     -- Connect to the job database specified when creating the job agent
@@ -174,7 +174,7 @@ Następujące przykładowe skrypty języka Transact-SQL utworzyć nowe zadanie e
     CREATE DATABASE SCOPED CREDENTIAL SSISDBLogCleanupCred WITH IDENTITY = 'SSISDBLogCleanupUser', SECRET = '<EnterStrongPasswordHere>'; 
     ```
 
-3. Zdefiniuj grupę docelową, która zawiera bazę danych SSISDB, dla którego chcesz uruchomić procedurę czyszczenia przechowywane.
+3. Zdefiniuj grupę docelową, która zawiera bazę danych SSISDB, dla której chcesz uruchomić procedurę składowaną oczyszczania.
 
     ```sql
     -- Connect to the job database 
@@ -191,7 +191,7 @@ Następujące przykładowe skrypty języka Transact-SQL utworzyć nowe zadanie e
     SELECT * FROM jobs.target_groups WHERE target_group_name = 'SSISDBTargetGroup';
     SELECT * FROM jobs.target_group_members WHERE target_group_name = 'SSISDBTargetGroup';
     ```
-4. Przyznaj odpowiednie uprawnienia dla bazy danych SSISDB. Katalog bazy danych SSISDB musi mieć odpowiednie uprawnienia dla procedury składowanej pomyślnie uruchomić Oczyszczanie dziennika bazy danych SSISDB. Aby uzyskać szczegółowe wskazówki, zobacz [zarządzanie danymi logowania](../sql-database/sql-database-manage-logins.md).
+4. Udziel odpowiednich uprawnień dla bazy danych SSISDB. Wykaz SSISDB musi mieć odpowiednie uprawnienia do procedury składowanej, aby pomyślnie uruchomić oczyszczanie dziennika SSISDB. Aby uzyskać szczegółowe wskazówki, zobacz Zarządzanie nazwami [logowania](../sql-database/sql-database-manage-logins.md).
 
     ```sql
     -- Connect to the master database in the target server including SSISDB 
@@ -201,7 +201,7 @@ Następujące przykładowe skrypty języka Transact-SQL utworzyć nowe zadanie e
     CREATE USER SSISDBLogCleanupUser FROM LOGIN SSISDBLogCleanupUser;
     GRANT EXECUTE ON internal.cleanup_server_retention_window_exclusive TO SSISDBLogCleanupUser
     ```
-5. Tworzenie zadania i dodać krok zadania, aby wyzwolić wykonywanie procedury składowanej dla Oczyszczanie dziennika bazy danych SSISDB.
+5. Utwórz zadanie i Dodaj krok zadania, aby wyzwolić wykonywanie procedury składowanej dla czyszczenia dziennika SSISDB.
 
     ```sql
     --Connect to the job database 
@@ -214,9 +214,9 @@ Następujące przykładowe skrypty języka Transact-SQL utworzyć nowe zadanie e
     @credential_name='SSISDBLogCleanupCred',
     @target_group_name='SSISDBTargetGroup'
     ```
-6. Przed kontynuowaniem upewnij się, że okna przechowywania został odpowiednio ustawiony. Dzienniki bazy danych SSISDB poza oknem zostaną usunięte i nie można go odzyskać.
+6. Przed kontynuowaniem upewnij się, że okno przechowywania zostało odpowiednio ustawione. Dzienniki SSISDB poza oknem zostaną usunięte i nie można ich odzyskać.
 
-   Następnie można uruchomić zadania od razu rozpocząć oczyszczanie dziennika bazy danych SSISDB.
+   Następnie możesz uruchomić zadanie natychmiast, aby rozpocząć oczyszczanie dziennika SSISDB.
 
     ```sql
     --Connect to the job database 
@@ -228,7 +228,7 @@ Następujące przykładowe skrypty języka Transact-SQL utworzyć nowe zadanie e
     select @je
     select * from jobs.job_executions where job_execution_id = @je
     ```
-7. Opcjonalnie można zaplanować Liczba wykonań zadań, aby usunąć dzienniki bazy danych SSISDB poza oknem przechowywania, zgodnie z harmonogramem. Aby zaktualizować parametrów zadania, należy użyć podobnych instrukcji.
+7. Opcjonalnie możesz zaplanować wykonywanie zadań, aby usunąć dzienniki SSISDB poza oknem przechowywania zgodnie z harmonogramem. Aby zaktualizować parametry zadania, należy użyć podobnej instrukcji.
 
     ```sql
     --Connect to the job database 
@@ -241,15 +241,15 @@ Następujące przykładowe skrypty języka Transact-SQL utworzyć nowe zadanie e
     @schedule_end_time='<EnterProperEndTimeForSchedule>'
     ```
 
-## <a name="monitor-the-cleanup-job-in-the-azure-portal"></a>Monitorowanie zadania oczyszczania w witrynie Azure portal
+## <a name="monitor-the-cleanup-job-in-the-azure-portal"></a>Monitoruj zadanie oczyszczania w Azure Portal
 
-Można monitorować wykonywania zadania oczyszczania w witrynie Azure portal. Dla każdego wykonania zostanie wyświetlony stan, czas i czas zakończenia zadania.
+Wykonanie zadania oczyszczania można monitorować w Azure Portal. Dla każdego wykonania zobaczysz stan, godzinę rozpoczęcia i godzinę zakończenia zadania.
 
-![Monitorowanie zadania oczyszczania w witrynie Azure portal](media/how-to-clean-up-ssisdb-logs-with-elastic-jobs/monitor-cleanup-job-portal.png)
+![Monitoruj zadanie oczyszczania w Azure Portal](media/how-to-clean-up-ssisdb-logs-with-elastic-jobs/monitor-cleanup-job-portal.png)
 
-## <a name="monitor-the-cleanup-job-with-transact-sql"></a>Monitorowanie zadania czyszczenia za pomocą instrukcji języka Transact-SQL
+## <a name="monitor-the-cleanup-job-with-transact-sql"></a>Monitorowanie zadania oczyszczania przy użyciu języka Transact-SQL
 
-Aby wyświetlić historię wykonania zadania oczyszczania umożliwia także języka Transact-SQL.
+Możesz również użyć języka Transact-SQL, aby wyświetlić historię wykonywania zadania oczyszczania.
 
 ```sql
 --Connect to the job database 
@@ -262,10 +262,10 @@ SELECT * FROM jobs.job_executions WHERE is_active = 1
 ORDER BY start_time DESC
 ```
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
-Do zarządzania i monitorowania zadań związanych z Azure-SSIS Integration Runtime zobacz następujące artykuły. Azure-SSIS IR to aparat środowiska uruchomieniowego dla pakietów usług SSIS przechowywane w SSISDB w usłudze Azure SQL Database.
+Zadania związane z zarządzaniem i monitorowaniem dotyczące Azure-SSIS Integration Runtime można znaleźć w następujących artykułach. Azure-SSIS IR to aparat środowiska uruchomieniowego dla pakietów SSIS przechowywanych w SSISDB w Azure SQL Database.
 
 -   [Ponowne konfigurowanie środowiska Azure SSIS Integration Runtime](manage-azure-ssis-integration-runtime.md)
 
--   [Monitorowanie środowiska Azure-SSIS integration runtime](monitor-integration-runtime.md#azure-ssis-integration-runtime).
+-   [Monitoruj środowisko Azure-SSIS Integration Runtime](monitor-integration-runtime.md#azure-ssis-integration-runtime).

@@ -1,5 +1,5 @@
 ---
-title: Azure SQL Database limity zasobów rdzeń wirtualny — pojedyncza baza danych | Microsoft Docs
+title: Azure SQL Database limity zasobów rdzeń wirtualny — pojedyncza baza danych
 description: Na tej stronie opisano niektóre typowe limity zasobów rdzeń wirtualny dla pojedynczej bazy danych w Azure SQL Database.
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 11/04/2019
-ms.openlocfilehash: 55b0b28f3081cfe643645683a9773b4c97b9caef
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: b3b55b3542eb0dd8c3c61d7a82c8ce2e9d271113
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73495941"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73686866"
 ---
 # <a name="resource-limits-for-single-databases-using-the-vcore-purchasing-model"></a>Limity zasobów dla pojedynczych baz danych przy użyciu modelu zakupu rdzeń wirtualny
 
@@ -281,7 +281,7 @@ Możesz ustawić warstwę usług, rozmiar obliczeń i ilość miejsca do magazyn
 |Rdzeni wirtualnych|7|8|9|10|16|24|
 |Pamięć (GB)|49|56|63|70|112|168|
 |Obsługa magazynu kolumn|Tak|Tak|Tak|Tak|Tak|Tak|
-|Magazyn OLTP w pamięci (GB)|7|8|9,5|11|20|36|
+|Magazyn OLTP w pamięci (GB)|7|8|9.5|11|20|36|
 |Typ magazynu|Lokalny dysk SSD|Lokalny dysk SSD|Lokalny dysk SSD|Lokalny dysk SSD|Lokalny dysk SSD|Lokalny dysk SSD|
 |Maksymalny rozmiar danych (GB)|1024|1024|1024|1024|1024|1024|
 |Maksymalny rozmiar dziennika (GB)|307|307|307|307|307|307|

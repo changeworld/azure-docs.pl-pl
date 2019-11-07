@@ -1,5 +1,5 @@
 ---
-title: Uaktualnij do najnowszej generacji Azure SQL Data Warehouse | Microsoft Docs
+title: Uaktualnij do najnowszej generacji
 description: Uaktualnij Azure SQL Data Warehouse do najnowszej generacji architektury sprzętu i magazynu platformy Azure.
 services: sql-data-warehouse
 author: mlee3gsd
@@ -10,12 +10,13 @@ ms.subservice: manage
 ms.date: 02/19/2019
 ms.author: martinle
 ms.reviewer: jrasnick
-ms.openlocfilehash: 2864e3d29a0beccd2ef52732a85ea1495e1efab8
-ms.sourcegitcommit: 5ded08785546f4a687c2f76b2b871bbe802e7dae
+ms.custom: seo-lt-2019
+ms.openlocfilehash: 02c426cd921f4af19f3b8c271e4b1c08eae2c3c2
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69575290"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73692457"
 ---
 # <a name="optimize-performance-by-upgrading-sql-data-warehouse"></a>Optymalizowanie wydajności przez zmianę warstwy dla usługi SQL Data Warehouse
 
@@ -27,7 +28,7 @@ Teraz można bezproblemowo przeprowadzić uaktualnienie SQL Data Warehouse do wa
 
 > [!VIDEO https://www.youtube.com/embed/9B2F0gLoyss]
 
-## <a name="applies-to"></a>Stosuje się do
+## <a name="applies-to"></a>Dotyczy
 
 To uaktualnienie dotyczy magazynów danych w warstwach Gen1 zoptymalizowanych pod kątem obliczeń w [obsługiwanych regionach](gen2-migration-schedule.md#automated-schedule-and-region-availability-table).
 
@@ -41,12 +42,12 @@ To uaktualnienie dotyczy magazynów danych w warstwach Gen1 zoptymalizowanych po
    | Warstwa zoptymalizowana pod kątem obliczeń Gen1 | Warstwa zoptymalizowana pod kątem obliczeń Gen2 |
    | :-------------------------: | :-------------------------: |
    |            DW100            |           DW100c            |
-   |            DW200            |           DW200c            |
+   |            WARTOŚCI DW200            |           DW200c            |
    |            DW300            |           DW300c            |
    |            DW400            |           DW400c            |
    |            DW500            |           DW500c            |
-   |            DW600            |           DW500c            |
-   |           DW1000            |           DW1000c           |
+   |            WARTOŚCI DW600            |           DW500c            |
+   |           WARTOŚCI DW1000            |           DW1000c           |
    |           DW1200            |           DW1000c           |
    |           DW1500            |           DW1500c           |
    |           DW2000            |           DW2000c           |
@@ -111,7 +112,7 @@ Zaloguj się w witrynie [Azure Portal](https://portal.azure.com/).
 ## <a name="start-the-upgrade"></a>Rozpocznij uaktualnianie
 
 1. Przejdź do magazynu danych zoptymalizowanego pod kątem obliczeń Gen1 w Azure Portal. Jeśli magazyn danych zoptymalizowanej warstwy Gen1, który ma zostać uaktualniony, zostanie wstrzymany, [Wznów działanie hurtowni danych](pause-and-resume-compute-portal.md). 
-2. Wybierz pozycję **Uaktualnij do karty Gen2** na karcie zadania:  ![Upgrade_1](./media/sql-data-warehouse-upgrade-to-latest-generation/Upgrade_to_Gen2_1.png)
+2. Wybierz pozycję **Uaktualnij do karty Gen2** na karcie zadania: ![Upgrade_1](./media/sql-data-warehouse-upgrade-to-latest-generation/Upgrade_to_Gen2_1.png)
     
     > [!NOTE]
     > Jeśli nie widzisz karty **uaktualnienie do Gen2** na karcie zadania, typ subskrypcji jest ograniczony w bieżącym regionie.

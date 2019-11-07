@@ -1,5 +1,5 @@
 ---
-title: Optymalizowanie transakcji dla Azure SQL Data Warehouse | Microsoft Docs
+title: Optymalizowanie transakcji
 description: Dowiedz się, jak zoptymalizować wydajność kodu transakcyjnego w Azure SQL Data Warehouse, jednocześnie minimalizując ryzyko długotrwałego wycofywania.
 services: sql-data-warehouse
 author: XiaoyuMSFT
@@ -10,12 +10,13 @@ ms.subservice: development
 ms.date: 04/19/2018
 ms.author: xiaoyul
 ms.reviewer: igorstan
-ms.openlocfilehash: 2299c526dd63eb8e8772661ee8fae66153fc36c3
-ms.sourcegitcommit: 75a56915dce1c538dc7a921beb4a5305e79d3c7a
+ms.custom: seo-lt-2019
+ms.openlocfilehash: b8b8be9467ade870e57355be91b0de329b0f6217
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/24/2019
-ms.locfileid: "68479674"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73692866"
 ---
 # <a name="optimizing-transactions-in-azure-sql-data-warehouse"></a>Optymalizowanie transakcji w Azure SQL Data Warehouse
 Dowiedz się, jak zoptymalizować wydajność kodu transakcyjnego w Azure SQL Data Warehouse, jednocześnie minimalizując ryzyko długotrwałego wycofywania.
@@ -42,8 +43,8 @@ Limity bezpieczeństwa transakcji mają zastosowanie tylko do w pełni zarejestr
 ## <a name="minimally-logged-operations"></a>Operacje o minimalnym rejestrowaniu
 Następujące operacje mogą być w sposób minimalny zarejestrowane:
 
-* CREATE TABLE JAKO SELECT ([CTAS](sql-data-warehouse-develop-ctas.md))
-* WSTAW.. ZAZNACZENIA
+* CREATE TABLE jako SELECT ([CTAs](sql-data-warehouse-develop-ctas.md))
+* Wstaw.. ZAZNACZENIA
 * CREATE INDEX
 * ALTER INDEX REBUILD
 * DROP INDEX
@@ -67,7 +68,7 @@ CTAS i Wstaw... SELECT to operacje ładowania zbiorczego. Jednak oba mają wpły
 
 | Indeks podstawowy | Scenariusz ładowania | Tryb rejestrowania |
 | --- | --- | --- |
-| Sterta |Any |**Mniejsze** |
+| Sterta |Dowolne |**Mniejsze** |
 | Klastrowany indeks |Pusta tabela docelowa |**Mniejsze** |
 | Klastrowany indeks |Załadowane wiersze nie nakładają się na istniejące strony w miejscu docelowym |**Mniejsze** |
 | Klastrowany indeks |Załadowane wiersze nakładają się na istniejące strony w miejscu docelowym |Pełne |
@@ -84,7 +85,7 @@ Warto zauważyć, że wszystkie zapisy do aktualizacji pomocniczych lub nieklast
 Ładowanie danych do niepustej tabeli z indeksem klastrowanym może często zawierać kombinację całkowicie zarejestrowanych i minimalnych zarejestrowanych wierszy. Klastrowany indeks to zrównoważone drzewo (b-Tree) stron. Jeśli strona, w której jest zapisywana, zawiera już wiersze z innej transakcji, te zapisy zostaną w pełni zarejestrowane. Jeśli jednak strona jest pusta, zapis na tej stronie zostanie zapisany w sposób minimalny.
 
 ## <a name="optimizing-deletes"></a>Optymalizowanie usunięć
-Usuwanie jest operacją w pełni zarejestrowana.  Jeśli konieczne jest usunięcie dużej ilości danych w tabeli lub partycji, często jest to bardziej zrozumiałe dla `SELECT` danych, które mają być przechowywane, które mogą być uruchamiane jako zarejestrowane minimalnie.  Aby wybrać dane, Utwórz nową tabelę z [CTAs](sql-data-warehouse-develop-ctas.md).  Po utworzeniu Użyj [nazwy](/sql/t-sql/statements/rename-transact-sql) , aby zamienić starą tabelę na nowo utworzoną tabelę.
+Usuwanie jest operacją w pełni zarejestrowana.  Jeśli konieczne jest usunięcie dużej ilości danych w tabeli lub partycji, często warto `SELECT` dane, które mają być przechowywane, które mogą być uruchamiane jako minimalnie zarejestrowane operacje.  Aby wybrać dane, Utwórz nową tabelę z [CTAs](sql-data-warehouse-develop-ctas.md).  Po utworzeniu Użyj [nazwy](/sql/t-sql/statements/rename-transact-sql) , aby zamienić starą tabelę na nowo utworzoną tabelę.
 
 ```sql
 -- Delete all sales transactions for Promotions except PromotionKey 2.
@@ -407,7 +408,7 @@ END
 Azure SQL Data Warehouse umożliwia [wstrzymywanie, wznawianie i skalowanie](sql-data-warehouse-manage-compute-overview.md) magazynu danych na żądanie. Po wstrzymaniu lub przeskalowaniu SQL Data Warehouse należy zrozumieć, że wszystkie transakcje związane z lotem są kończone natychmiast; powoduje wycofywanie wszelkich otwartych transakcji. Jeśli obciążenie wystawiło długotrwałą i niekompletną modyfikację danych przed operacją wstrzymania lub skalowania, należy to zrobić. To cofnięcie może mieć wpływ na czas oczekiwania na wstrzymanie lub skalowanie bazy danych Azure SQL Data Warehouse. 
 
 > [!IMPORTANT]
-> Zarówno `UPDATE` , `DELETE` jak i są w pełni zarejestrowane operacje, więc operacje cofania/ponawiania mogą trwać znacznie dłużej niż równoważne operacje, które nie zostały zarejestrowane w sposób minimalny. 
+> Zarówno `UPDATE`, jak i `DELETE` są w pełni zarejestrowane operacje i dlatego operacje cofania/ponawiania mogą trwać znacznie dłużej niż równoważne operacje w sposób minimalny. 
 > 
 > 
 

@@ -3,15 +3,15 @@ title: Dowiedz się, jak przeprowadzić inspekcję zawartości maszyn wirtualnyc
 description: Dowiedz się, jak Azure Policy używa konfiguracji gościa do inspekcji ustawień w ramach maszyny platformy Azure.
 author: DCtheGeek
 ms.author: dacoulte
-ms.date: 09/20/2019
+ms.date: 11/04/2019
 ms.topic: conceptual
 ms.service: azure-policy
-ms.openlocfilehash: efe929a6ea38a8df7ad9fe37a92c181e3d409b25
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
-ms.translationtype: HT
+ms.openlocfilehash: 0e5592f629646db3132ffd65fd56b1a0d5d5be39
+ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 11/04/2019
-ms.locfileid: "73464058"
+ms.locfileid: "73581442"
 ---
 # <a name="understand-azure-policys-guest-configuration"></a>Opis konfiguracji gościa Azure Policy
 
@@ -121,30 +121,27 @@ Azure Policy używa właściwości **complianceStatus** dostawcy zasobów konfig
 > [!NOTE]
 > Zasady **DeployIfNotExists** są wymagane do zwracania wyników przez zasady **AuditIfNotExists** . Bez **DeployIfNotExists**zasady **AuditIfNotExists** są wyświetlane jako stan zasobów "0 z 0".
 
-Wszystkie wbudowane zasady konfiguracji gościa są zawarte w inicjatywie do grupowania definicji do użycia w przypisaniach. Wbudowana inicjatywa o nazwie *[wersja zapoznawcza]: Inspekcja ustawień zabezpieczeń hasła w systemach Linux i Windows* zawiera 18 zasad. Istnieje sześć par **DeployIfNotExists** i **AuditIfNotExists** dla systemu Windows i trzech par w systemie Linux. Logika [definicji zasad](definition-structure.md#policy-rule) sprawdza, czy jest oceniany tylko docelowy system operacyjny.
+Wszystkie wbudowane zasady konfiguracji gościa są zawarte w inicjatywie do grupowania definicji do użycia w przypisaniach. Wbudowana inicjatywa o nazwie _\[Preview\]: Inspekcja ustawień zabezpieczeń hasła w systemach Linux i Windows_ zawiera 18 zasad. Istnieje sześć par **DeployIfNotExists** i **AuditIfNotExists** dla systemu Windows i trzech par w systemie Linux. Logika [definicji zasad](definition-structure.md#policy-rule) sprawdza, czy jest oceniany tylko docelowy system operacyjny.
 
 #### <a name="auditing-operating-system-settings-following-industry-baselines"></a>Inspekcja ustawień systemu operacyjnego po liniach bazowych branżowych
 
-Jedna z inicjatyw dostępnych w Azure Policy umożliwia inspekcję ustawień systemu operacyjnego w ramach maszyn wirtualnych po "linii bazowej" od firmy Microsoft.  Definicja *[wersja zapoznawcza]: Inspekcja maszyn wirtualnych z systemem Windows, które nie są zgodne z ustawieniami linii bazowej zabezpieczeń platformy Azure,* obejmuje pełny zestaw reguł inspekcji opartych na ustawieniach zasady grupy Active Directory.
+Jedna z inicjatyw dostępnych w Azure Policy umożliwia inspekcję ustawień systemu operacyjnego w ramach maszyn wirtualnych po "linii bazowej" od firmy Microsoft. Definicja _\[wersja Zapoznawcza\]: Inspekcja maszyn wirtualnych z systemem Windows, które nie są zgodne z ustawieniami linii bazowej zabezpieczeń platformy Azure,_ obejmuje pełny zestaw reguł inspekcji opartych na ustawieniach Active Directory zasady grupy.
 
-Większość ustawień jest dostępnych jako parametry.  Ta funkcja umożliwia dostosowanie, co będzie poddawane inspekcji w celu dostosowania zasad do wymagań organizacji, lub zamapowanie zasad na informacje innych firm, takie jak standardy przemysłowe branżowej.
+Większość ustawień jest dostępnych jako parametry. Ta funkcja umożliwia dostosowanie, co jest poddawane inspekcji w celu dopasowania zasad do wymagań organizacji lub zamapowania zasad na informacje innych firm, takie jak standardy branżowe.
 
-Niektóre parametry obsługują zakres wartości całkowitych.  Na przykład parametr maksymalnego wieku hasła można ustawić za pomocą operatora zakresu, aby zapewnić elastyczność dla właścicieli maszyny.  Można przeprowadzić inspekcję, że efektywne ustawienie zasady grupy wymagające od użytkownika zmiany hasła nie może być dłuższe niż 70 dni, ale nie powinno być krótsze niż 1 dzień.  Zgodnie z opisem w polu dymek informacyjny dla parametru, aby wprowadzić tę wartość w polu obowiązuje Inspekcja, ustaw wartość na "1, 70".
+Niektóre parametry obsługują zakres wartości całkowitych. Na przykład parametr maksymalnego wieku hasła można ustawić za pomocą operatora zakresu, aby zapewnić elastyczność dla właścicieli maszyny. Można przeprowadzić inspekcję, że efektywne ustawienie zasady grupy wymagające od użytkowników zmiany hasła nie może być dłuższe niż 70 dni, ale nie powinno być krótsze niż jeden dzień. Zgodnie z opisem w polu dymek informacyjny dla parametru, aby wprowadzić tę zasadę biznesową obowiązującą wartość inspekcji, ustaw wartość "1, 70".
 
-W przypadku przypisywania zasad przy użyciu Azure Resource Manager szablonu dployment można użyć pliku parametrów do zarządzania tymi ustawieniami z kontroli źródła.
-Za pomocą narzędzia, takiego jak Git do zarządzania zmianami zasad inspekcji z komentarzami w każdym zaewidencjonowaniu, program dokumentuje dowody, dlaczego przypisanie powinno być w wyjątku względem oczekiwanej wartości.
+Jeśli zasady są przypisywane przy użyciu szablonu wdrażania Azure Resource Manager, można użyć pliku parametrów do zarządzania tymi ustawieniami z kontroli źródła. Za pomocą narzędzia, takiego jak Git, można zarządzać zmianami zasad inspekcji przy użyciu komentarzy w każdym dokumencie zaewidencjonowania, które potwierdzają, dlaczego przypisanie powinno być wyjątkiem od oczekiwanej wartości.
 
 #### <a name="applying-configurations-using-guest-configuration"></a>Stosowanie konfiguracji przy użyciu konfiguracji gościa
 
-Najnowsza funkcja Azure Policy konfiguruje ustawienia wewnątrz maszyn.
-Definicja *Konfigurowanie strefy czasowej na maszynach z systemem Windows* spowoduje wprowadzenie zmian na maszynie przez skonfigurowanie strefy czasowej.
+Najnowsza funkcja Azure Policy konfiguruje ustawienia wewnątrz maszyn. Definicja _konfiguruje strefę czasową na maszynach z systemem Windows_ wprowadza zmiany na komputerze przez skonfigurowanie strefy czasowej.
 
-Podczas przypisywania definicji zaczynających się od *konfiguracji*należy również przypisać *wymagania wstępne wdrażania definicji, aby włączyć zasady konfiguracji gościa na maszynach wirtualnych z systemem Windows.*
-Możesz połączyć te definicje w ramach inicjatywy, jeśli wybierzesz opcję.
+Podczas przypisywania definicji zaczynających się od _konfiguracji_należy również przypisać _wymagania wstępne wdrażania definicji, aby włączyć zasady konfiguracji gościa na maszynach wirtualnych z systemem Windows_. Możesz połączyć te definicje w ramach inicjatywy, jeśli wybierzesz opcję.
 
 #### <a name="assigning-policies-to-machines-outside-of-azure"></a>Przypisywanie zasad do maszyn poza platformą Azure
 
-Zasady inspekcji dostępne dla konfiguracji gościa obejmują typ zasobu **Microsoft. HybridCompute/Machines** .  Wszystkie komputery dołączone do usługi Azure ARC, które znajdują się w zakresie przypisania, zostaną automatycznie uwzględnione.
+Zasady inspekcji dostępne dla konfiguracji gościa obejmują typ zasobu **Microsoft. HybridCompute/Machines** . Wszystkie maszyny dołączone do [usługi Azure ARC dla serwerów](../../../azure-arc/servers/overview.md) , które znajdują się w zakresie przypisania zasad, są automatycznie dołączane.
 
 ### <a name="multiple-assignments"></a>Wiele przypisań
 
@@ -152,8 +149,7 @@ Zasady konfiguracji gościa obsługują obecnie tylko jednokrotne przypisanie te
 
 ## <a name="built-in-resource-modules"></a>Wbudowane moduły zasobów
 
-Podczas instalowania rozszerzenia konfiguracji gościa moduł programu PowerShell "GuestConfiguration" jest dołączony do najnowszej wersji modułów zasobów DSC. Ten moduł można pobrać z Galeria programu PowerShell przy użyciu linku "Pobieranie ręczne" na stronie modułu [GuestConfiguration](https://www.powershellgallery.com/packages/GuestConfiguration/).
-Dla formatu pliku ". nupkg" można zmienić nazwę na ". zip", aby zdekompresować i przejrzeć.
+Podczas instalowania rozszerzenia konfiguracji gościa moduł programu PowerShell "GuestConfiguration" jest dołączony do najnowszej wersji modułów zasobów DSC. Ten moduł można pobrać z Galeria programu PowerShell przy użyciu linku "Pobieranie ręczne" na stronie modułu [GuestConfiguration](https://www.powershellgallery.com/packages/GuestConfiguration/). Dla formatu pliku ". nupkg" można zmienić nazwę na ". zip", aby zdekompresować i przejrzeć.
 
 ## <a name="client-log-files"></a>Pliki dziennika klienta
 

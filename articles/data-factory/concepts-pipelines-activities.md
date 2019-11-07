@@ -1,5 +1,5 @@
 ---
-title: Potoki i działania w usłudze Azure Data Factory | Microsoft Docs
+title: Potoki i działania w usłudze Azure Data Factory
 description: Informacje na temat potoków i działań w usłudze Azure Data Factory.
 services: data-factory
 documentationcenter: ''
@@ -11,12 +11,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 06/12/2018
-ms.openlocfilehash: cb776b28a8c06784a2aa41e42429a3f183254138
-ms.sourcegitcommit: 909ca340773b7b6db87d3fb60d1978136d2a96b0
+ms.openlocfilehash: bed81633b27d5d0f89cb7e3d7a6e0975de4b6772
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/13/2019
-ms.locfileid: "70984219"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73681458"
 ---
 # <a name="pipelines-and-activities-in-azure-data-factory"></a>Potoki i działania w usłudze Azure Data Factory
 > [!div class="op_single_selector" title1="Wybierz używaną wersję usługi Data Factory:"]
@@ -53,7 +53,7 @@ Działanie przekształcania danych | Środowisko obliczeniowe
 [MapReduce](transform-data-using-hadoop-map-reduce.md) | HDInsight [Hadoop]
 [Przesyłanie strumieniowe usługi Hadoop](transform-data-using-hadoop-streaming.md) | HDInsight [Hadoop]
 [Spark](transform-data-using-spark.md) | HDInsight [Hadoop]
-[Działania Machine Learning: Wykonywanie wsadowe i aktualizowanie zasobu](transform-data-using-machine-learning.md) | Azure VM
+[Działania usługi Machine Learning: wykonywanie wsadowe i aktualizacja zasobów](transform-data-using-machine-learning.md) | Maszyna wirtualna platformy Azure
 [Procedura składowana](transform-data-using-stored-procedure.md) | Azure SQL, Azure SQL Data Warehouse lub SQL Server
 [U-SQL](transform-data-using-data-lake-analytics.md) | Azure Data Lake Analytics
 [Kod niestandardowy](transform-data-using-dotnet-custom-activity.md) | Azure Batch
@@ -95,15 +95,15 @@ Poniżej przedstawiono sposób definiowania potoku w formacie JSON:
 }
 ```
 
-Tag | Opis | Type | Wymagane
+Tag | Opis | Typ | Wymagany
 --- | ----------- | ---- | --------
-name | Nazwa potoku. Określ nazwę, która reprezentuje akcję wykonywaną przez potok. <br/><ul><li>Maksymalna liczba znaków: 140</li><li>Musi zaczynać się literą, cyfrą lub podkreśleniem\_()</li><li>Następujące znaki nie są dozwolone: “.”, “+”, “?”, “/”, “<”,”>”,” * ”,”%”,”&”,”:”,”\”</li></ul> | String | Tak
-description | Wprowadź tekst opisujący przeznaczenie potoku. | String | Nie
-activities | W sekcji **activities** można zdefiniować jedno lub więcej działań. Sprawdź sekcję [Format JSON działania](#activity-json), aby uzyskać szczegółowe informacje na temat elementu JSON activities. | Array | Tak
+name | Nazwa potoku. Określ nazwę, która reprezentuje akcję wykonywaną przez potok. <br/><ul><li>Maksymalna liczba znaków: 140</li><li>Musi zaczynać się literą, cyfrą lub podkreśleniem (\_)</li><li>Następujące znaki nie są dozwolone: “.”, “+”, “?”, “/”, “<”,”>”,” * ”,”%”,”&”,”:”,”\”</li></ul> | Ciąg | Tak
+description | Wprowadź tekst opisujący przeznaczenie potoku. | Ciąg | Nie
+activities | W sekcji **activities** można zdefiniować jedno lub więcej działań. Sprawdź sekcję [Format JSON działania](#activity-json), aby uzyskać szczegółowe informacje na temat elementu JSON activities. | Tablica | Tak
 parameters | Sekcja **parameters** może zawierać jeden lub kilka parametrów zdefiniowanych w potoku, co zwiększa elastyczność i możliwość ponownego zastosowania potoku. | List | Nie
 
 ## <a name="activity-json"></a>Format JSON działania
-W sekcji **activities** można zdefiniować jedno lub więcej działań. Istnieją dwa główne typy działań: Działania wykonywania i kontroli.
+W sekcji **activities** można zdefiniować jedno lub więcej działań. Istnieją dwa główne typy działań: działania wykonywania i sterowania.
 
 ### <a name="execution-activities"></a>Działania wykonywania
 Działania wykonywania obejmują [działania przenoszenia danych](#data-movement-activities) i [działania przekształcania danych](#data-transformation-activities). Ich struktura najwyższego poziomu wygląda następująco:
@@ -128,17 +128,17 @@ Działania wykonywania obejmują [działania przenoszenia danych](#data-movement
 
 Poniższa tabela zawiera opis właściwości w definicji JSON działania:
 
-Tag | Opis | Wymagane
+Tag | Opis | Wymagany
 --- | ----------- | ---------
-name | Nazwa działania. Określ nazwę, która reprezentuje akcję wykonywaną przez działanie. <br/><ul><li>Maksymalna liczba znaków: 55</li><li>Musi zaczynać się cyfrą lub znakiem podkreślenia (\_)</li><li>Następujące znaki nie są dozwolone: “.”, “+”, “?”, “/”, “<”,”>”,” * ”,”%”,”&”,”:”,”\” | Tak</li></ul>
+name | Nazwa działania. Określ nazwę, która reprezentuje akcję wykonywaną przez działanie. <br/><ul><li>Maksymalna liczba znaków: 55</li><li>Musi zaczynać się cyfrą lub podkreśleniem (\_)</li><li>Następujące znaki nie są dozwolone: “.”, “+”, “?”, “/”, “<”,”>”,” * ”,”%”,”&”,”:”,”\” | Tak</li></ul>
 description | Tekst opisujący przeznaczenie działania | Tak
 type | Typ działania. Poszczególne typy działań opisano w sekcjach [Działania przenoszenia danych](#data-movement-activities), [Działania przekształcania danych](#data-transformation-activities) i [Działania sterowania](#control-activities). | Tak
 linkedServiceName | Nazwa połączonej usługi używana na potrzeby działania.<br/><br/>Działanie może wymagać określenia połączonej usługi, która stanowi łącze do wymaganego środowiska obliczeniowego. | Tak dla działań HDInsight, oceny partii Azure Machine Learning i procedury składowanej. <br/><br/>Nie dla wszystkich innych
 typeProperties | Właściwości w sekcji typeProperties zależą od typu działania. Aby wyświetlić właściwości typu dla działania, kliknij linki do działań w poprzedniej sekcji. | Nie
-zasady | Zasady, które mają wpływ na zachowanie działania w czasie wykonania. Ta właściwość zawiera zachowania związane z limitem czasu i ponownymi próbami. Jeśli nie jest określona, używane są wartości domyślne. Więcej informacji można znaleźć w sekcji [Zasady działania](#activity-policy). | Nie
+policy | Zasady, które mają wpływ na zachowanie działania w czasie wykonania. Ta właściwość zawiera zachowania związane z limitem czasu i ponownymi próbami. Jeśli nie jest określona, używane są wartości domyślne. Więcej informacji można znaleźć w sekcji [Zasady działania](#activity-policy). | Nie
 dependsOn | Ta właściwość jest używana do definiowania zależności działania oraz sposobu, w jaki kolejne działania zależą od poprzednich działań. Więcej informacji można znaleźć w sekcji [Zależności działania](#activity-dependency) | Nie
 
-### <a name="activity-policy"></a>Zasady dotyczące działań
+### <a name="activity-policy"></a>Zasady działania
 Zasady wpływają na zachowanie działania w czasie wykonania, określając opcje konfiguracji. Zasady działania są dostępne tylko dla działań wykonywania.
 
 ### <a name="activity-policy-json-definition"></a>Definicja JSON zasad działania
@@ -169,12 +169,12 @@ Zasady wpływają na zachowanie działania w czasie wykonania, określając opcj
 }
 ```
 
-Nazwa JSON | Opis | Dozwolone wartości | Wymagane
+Nazwa JSON | Opis | Dozwolone wartości | Wymagany
 --------- | ----------- | -------------- | --------
-limit czasu | Określa limit czasu pracy działania. | Timespan | Nie. Domyślny limit czasu wynosi 7 dni.
-retry | Maksymalna liczba ponownych prób | Integer | Nie. Wartość domyślna to 0
-retryIntervalInSeconds | Opóźnienie między ponownymi próbami w sekundach | Integer | Nie. Wartość domyślna to 30 sekund
-secureOutput | W przypadku ustawienia wartości „true” dane wyjściowe działania są uznawane za bezpieczne i nie są rejestrowane w ramach monitorowania. | Boolean | Nie. Wartość domyślna to false.
+timeout | Określa limit czasu pracy działania. | Zakres czasu | Nie. Domyślny limit czasu wynosi 7 dni.
+retry | Maksymalna liczba ponownych prób | Liczba całkowita | Nie. Wartość domyślna to 0
+retryIntervalInSeconds | Opóźnienie między ponownymi próbami w sekundach | Liczba całkowita | Nie. Wartość domyślna to 30 sekund
+secureOutput | W przypadku ustawienia wartości „true” dane wyjściowe działania są uznawane za bezpieczne i nie są rejestrowane w ramach monitorowania. | Wartość logiczna | Nie. Wartość domyślna to false.
 
 ### <a name="control-activity"></a>Działanie sterowania
 Działania sterowania mają następującą strukturę najwyższego poziomu:
@@ -193,9 +193,9 @@ Działania sterowania mają następującą strukturę najwyższego poziomu:
 }
 ```
 
-Tag | Opis | Wymagane
+Tag | Opis | Wymagany
 --- | ----------- | --------
-name | Nazwa działania. Określ nazwę, która reprezentuje akcję wykonywaną przez działanie.<br/><ul><li>Maksymalna liczba znaków: 55</li><li>Musi zaczynać się cyfrą lub znakiem podkreślenia (\_)</li><li>Następujące znaki nie są dozwolone: “.”, “+”, “?”, “/”, “<”,”>”,” * ”,”%”,”&”,”:”,”\” | Tak</li><ul>
+name | Nazwa działania. Określ nazwę, która reprezentuje akcję wykonywaną przez działanie.<br/><ul><li>Maksymalna liczba znaków: 55</li><li>Musi zaczynać się cyfrą lub podkreśleniem (\_)</li><li>Następujące znaki nie są dozwolone: “.”, “+”, “?”, “/”, “<”,”>”,” * ”,”%”,”&”,”:”,”\” | Tak</li><ul>
 description | Tekst opisujący przeznaczenie działania | Tak
 type | Typ działania. Poszczególne typy działań opisano w sekcjach [Działania przenoszenia danych](#data-movement-activities), [Działania przekształcania danych](#data-transformation-activities) i [Działania sterowania](#control-activities). | Tak
 typeProperties | Właściwości w sekcji typeProperties zależą od typu działania. Aby wyświetlić właściwości typu dla działania, kliknij linki do działań w poprzedniej sekcji. | Nie
@@ -204,16 +204,16 @@ dependsOn | Ta właściwość jest używana do definiowania zależności działa
 ### <a name="activity-dependency"></a>Zależność działania
 Zależność działania definiuje, w jaki sposób kolejne działania zależą od poprzednich działań, określając warunek kontynuowania wykonywania kolejnego działania. Działanie może zależeć od jednego lub wielu poprzednich działań, z różnymi warunkami zależności.
 
-Różne warunki zależności są następujące: Zakończone powodzeniem, Niepowodzenie, pominięto, ukończono.
+Różne warunki zależności to: Succeeded (powodzenie), Failed (niepowodzenie), Skipped (pominięto) i Completed (ukończono).
 
 Na przykład jeśli potok zawiera zależność Działanie A -> Działanie B, różne możliwe scenariusze to:
 
-- Działanie B ma warunek zależności dla działania A z **sukcesem**: Działanie B działa tylko wtedy, gdy działanie A ma stan końcowy zakończony powodzeniem
-- Działanie B ma warunek zależności dla działania A z **błędem**: Działanie B działa tylko wtedy, gdy działanie o stanie końcowym nie powiodło się
-- Działanie B ma warunek zależności dla działania A z **ukończeniem**: Działanie B działa, jeśli działanie A ma stan końcowy zakończony powodzeniem lub niepowodzeniem
-- Działanie B ma warunek zależności dla działania A z **pominiętym**: Działanie B działa, jeśli działanie A ma stan końcowy pominięte. Stan skipped występuje w scenariuszu Działanie X -> Działanie Y -> Działanie Z, w którym każde działanie jest uruchamiane tylko w przypadku pomyślnego zakończenia poprzedniego działania. W przypadku niepowodzenia Działania X, Działanie Y ma stan „skipped”, ponieważ nigdy nie zostaje wykonane. Podobnie Działanie Z również ma stan „skipped”.
+- Działanie B zawiera warunek zależności dla Działanie A z parametrem **succeeded**: Działanie B jest uruchamiane tylko wtedy, gdy ostateczny stan Działania A to succeeded
+- Działanie B zawiera warunek zależności dla Działanie A z parametrem **failed**: Działanie B jest uruchamiane tylko wtedy, gdy ostateczny stan Działania A to failed
+- Działanie B zawiera warunek zależności dla Działanie A z parametrem **completed**: Działanie B jest uruchamiane tylko wtedy, gdy ostateczny stan Działania A to succeeded lub failed
+- Działanie B zawiera warunek zależności dla Działanie A z parametrem **skipped**: Działanie B jest uruchamiane tylko wtedy, gdy ostateczny stan Działania A to skipped. Stan skipped występuje w scenariuszu Działanie X -> Działanie Y -> Działanie Z, w którym każde działanie jest uruchamiane tylko w przypadku pomyślnego zakończenia poprzedniego działania. W przypadku niepowodzenia Działania X, Działanie Y ma stan „skipped”, ponieważ nigdy nie zostaje wykonane. Podobnie Działanie Z również ma stan „skipped”.
 
-#### <a name="example-activity-2-depends-on-the-activity-1-succeeding"></a>Przykład: Działanie 2 zależy od pomyślnego działania 1
+#### <a name="example-activity-2-depends-on-the-activity-1-succeeding"></a>Przykład: Działanie 2 zależy od pomyślnego zakończenia Działania 1
 
 ```json
 {

@@ -1,5 +1,5 @@
 ---
-title: Używanie Azure Data Factory do migrowania danych z usługi Amazon S3 do magazynu Azure | Microsoft Docs
+title: Używanie Azure Data Factory do migrowania danych z usługi Amazon S3 do magazynu Azure
 description: Użyj Azure Data Factory do migrowania danych z usługi Amazon S3 do magazynu Azure.
 services: data-factory
 documentationcenter: ''
@@ -12,12 +12,12 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 8/04/2019
-ms.openlocfilehash: 5f98cb29bd61c674ef7d7e6af781760fe81a5085
-ms.sourcegitcommit: 42748f80351b336b7a5b6335786096da49febf6a
+ms.openlocfilehash: 4d4e0453105dacfbf35624a2a9acb9d5994f4dea
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/09/2019
-ms.locfileid: "72177894"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73675739"
 ---
 # <a name="use-azure-data-factory-to-migrate-data-from-amazon-s3-to-azure-storage"></a>Używanie Azure Data Factory do migrowania danych z usługi Amazon S3 do magazynu Azure 
 
@@ -26,7 +26,7 @@ Azure Data Factory zapewnia wydajny, niezawodny i ekonomiczny mechanizm migracji
 > [!div class="checklist"]
 > * Wydajność 
 > * Odporność kopiowania
-> * Zabezpieczenia sieci
+> * Bezpieczeństwo sieci
 > * Architektura rozwiązania wysokiego poziomu 
 > * Najlepsze rozwiązania w zakresie implementacji  
 
@@ -44,13 +44,13 @@ Na powyższym obrazie przedstawiono sposób osiągnięcia doskonałej szybkości
 - Pojedyncze działanie kopiowania odczytuje i zapisuje dane w magazynie danych przy użyciu wielu wątków. 
 - Przepływ sterowania ADF można uruchomić równolegle wiele działań kopiowania, na przykład przy użyciu [dla każdej pętli](https://docs.microsoft.com/azure/data-factory/control-flow-for-each-activity). 
 
-## <a name="resilience"></a>Odporności
+## <a name="resilience"></a>Odporność
 
 W ramach pojedynczego uruchomienia działania kopiowania moduł ADF ma wbudowany mechanizm ponawiania prób, dlatego może obsłużyć określony poziom przejściowych błędów w magazynach danych lub w sieci źródłowej. 
 
 Podczas kopiowania binarnego z S3 do obiektów blob i z S3 do ADLS Gen2, funkcja ADF automatycznie wykonuje punkty kontrolne.  Jeśli uruchomienie działania kopiowania nie powiodło się lub upłynął limit czasu przy kolejnej ponowieniu próby (Pamiętaj o ponowieniu liczby > 1), kopiowanie zostanie wznowione od ostatniego punktu awarii zamiast od początku. 
 
-## <a name="network-security"></a>Zabezpieczenia sieci 
+## <a name="network-security"></a>Bezpieczeństwo sieci 
 
 Domyślnie usługa ADF przesyła dane z usługi Amazon S3 do platformy Azure Blob Storage lub Azure Data Lake Storage Gen2 przy użyciu szyfrowanego połączenia za pośrednictwem protokołu HTTPS.  Protokół HTTPS zapewnia szyfrowanie danych podczas przesyłania i uniemożliwia podsłuchiwanie i ataki typu man-in-the-middle. 
 
@@ -136,7 +136,7 @@ Oto Szacowana cena oparta na powyższych założeniach:
 
 ![Cennik — tabela](media/data-migration-guidance-s3-to-azure-storage/pricing-table.png)
 
-### <a name="additional-references"></a>Dodatkowe informacje 
+### <a name="additional-references"></a>Dodatkowa dokumentacja 
 - [Łącznik prostego usługi magazynu Amazon](https://docs.microsoft.com/azure/data-factory/connector-amazon-simple-storage-service)
 - [Łącznik usługi Azure Blob Storage](https://docs.microsoft.com/azure/data-factory/connector-azure-blob-storage)
 - [Łącznik Azure Data Lake Storage Gen2](https://docs.microsoft.com/azure/data-factory/connector-azure-data-lake-storage)
@@ -149,7 +149,7 @@ Oto Szacowana cena oparta na powyższych założeniach:
 - [Kopiuj nowe i zmienione pliki w oparciu o LastModifiedDate](https://docs.microsoft.com/azure/data-factory/tutorial-incremental-copy-lastmodified-copy-data-tool)
 - [Strona cennika ADF](https://azure.microsoft.com/pricing/details/data-factory/data-pipeline/)
 
-## <a name="template"></a>Formularza
+## <a name="template"></a>Szablon
 
 Oto [szablon](solution-template-migration-s3-azure.md) do rozpoczęcia migracji petabajtów danych składających się z setek milionów plików z usługi Amazon S3 do Azure Data Lake Storage Gen2.
 

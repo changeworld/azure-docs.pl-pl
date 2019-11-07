@@ -1,6 +1,6 @@
 ---
 title: Wdrażanie i użycie
-titleSuffix: Azure Machine Learning Studio (classic)
+titleSuffix: ML Studio (classic) Azure
 description: Azure Machine Learning Studio (klasyczny) służy do wdrażania przepływów pracy i modeli uczenia maszynowego jako usług sieci Web. Te usługi sieci Web mogą być następnie używane do wywoływania modeli uczenia maszynowego z aplikacji przez Internet, aby wykonywać przewidywania w czasie rzeczywistym lub w trybie wsadowym.
 services: machine-learning
 ms.service: machine-learning
@@ -10,12 +10,12 @@ author: xiaoharper
 ms.author: amlstudiodocs
 ms.custom: seodec18
 ms.date: 04/19/2017
-ms.openlocfilehash: bf169a9b7064bd83caf0c9f8ec6dd6dd55894d67
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 47cd04615919fcc9db757ed4b9e8fd06eb297592
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73493022"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73684828"
 ---
 # <a name="azure-machine-learning-studio-classic-web-services-deployment-and-consumption"></a>Azure Machine Learning Studio (klasyczne) usługi sieci Web: wdrażanie i użycie
 
@@ -31,8 +31,8 @@ Portal Studio (klasyczny) i Portal usług sieci Web Microsoft Azure Machine Lear
 
 Poniższe linki zawierają ogólne informacje dotyczące sposobu wdrażania nowej usługi sieci Web:
 
-* Aby zapoznać się z omówieniem sposobu wdrażania nowej usługi sieci Web opartej na Azure Resource Manager, zobacz [wdrażanie nowej usługi sieci Web](publish-a-machine-learning-web-service.md).
-* Aby zapoznać się z przewodnikiem dotyczącym wdrażania usługi sieci Web, zobacz [wdrażanie usługi sieci web Azure Machine Learning](publish-a-machine-learning-web-service.md).
+* Aby zapoznać się z omówieniem sposobu wdrażania nowej usługi sieci Web opartej na Azure Resource Manager, zobacz [wdrażanie nowej usługi sieci Web](deploy-a-machine-learning-web-service.md).
+* Aby zapoznać się z przewodnikiem dotyczącym wdrażania usługi sieci Web, zobacz [wdrażanie usługi sieci web Azure Machine Learning](deploy-a-machine-learning-web-service.md).
 * Aby zapoznać się z pełnym przewodnikiem dotyczącym tworzenia i wdrażania usługi sieci Web, Rozpocznij od [samouczka 1: przewidywanie ryzyka kredytowego](tutorial-part1-credit-risk.md).
 * Aby zapoznać się z konkretnymi przykładami, które wdrażają usługę sieci Web, zobacz:
 
@@ -87,8 +87,8 @@ Więcej informacji można znaleźć w następujących artykułach i przykładowy
 
 Usługę sieci Web można testować za pomocą portalu usług sieci Web Azure Machine Learning. Obejmuje to testowanie interfejsów usługi żądanie-odpowiedź i usługi wykonywania wsadowego (BES).
 
-* [Wdrażanie nowej usługi sieci Web](publish-a-machine-learning-web-service.md)
-* [Wdrażanie usługi sieci Web Azure Machine Learning](publish-a-machine-learning-web-service.md)
+* [Wdrażanie nowej usługi sieci Web](deploy-a-machine-learning-web-service.md)
+* [Wdrażanie usługi sieci Web Azure Machine Learning](deploy-a-machine-learning-web-service.md)
 * [Samouczek 3: Wdrażanie modelu ryzyka kredytowego](tutorial-part3-credit-risk-deploy.md)
 
 ### <a name="from-excel"></a>Z programu Excel

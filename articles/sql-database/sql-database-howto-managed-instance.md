@@ -1,5 +1,5 @@
 ---
-title: Jak skonfigurować Azure SQL Database wystąpienie zarządzane | Microsoft Docs
+title: Jak skonfigurować Azure SQL Database wystąpienie zarządzane
 description: Informacje o konfigurowaniu Azure SQL Database wystąpienia zarządzanego i zarządzania nim.
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: sstein, carlr
 ms.date: 04/16/2019
-ms.openlocfilehash: b8c05ab05630e92e64a4885d5e6cdc6f5471dff2
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 22bad381a59a74237a5539cd4294a08797c017b1
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68568056"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73689928"
 ---
 # <a name="how-to-use-a-managed-instance-in-azure-sql-database"></a>Jak używać wystąpienia zarządzanego w Azure SQL Database
 

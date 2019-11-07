@@ -1,5 +1,5 @@
 ---
-title: Rozwiązywanie różnic w języku T-SQL — migracja Azure SQL Database | Microsoft Docs
+title: Rozpoznawanie różnic w języku T-SQL — migracja Azure SQL Database
 description: Instrukcje języka Transact-SQL, które nie są w pełni obsługiwane w usłudze Azure SQL Database
 services: sql-database
 ms.service: sql-database
@@ -11,18 +11,18 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 12/03/2018
-ms.openlocfilehash: fbc4628ff3d3d7d90f7ec2c47c87f7afa3e9cd43
-ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
+ms.openlocfilehash: edb978e27621cbc0df66ab32ba7472629c3f8bd1
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/08/2019
-ms.locfileid: "72028833"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73686927"
 ---
 # <a name="resolving-transact-sql-differences-during-migration-to-sql-database"></a>Rozwiązywanie różnic w języku Transact-SQL podczas migracji do SQL Database
 
 W przypadku [migrowania bazy danych](sql-database-single-database-migrate.md) z programu SQL Server do usługi Azure SQL Server można stwierdzić, że baza danych wymaga przeprowadzenia kilku ponownych migracji przed migracją SQL Server. Ten artykuł zawiera wskazówki ułatwiające wykonywanie tych czynności w ramach tego zadania i zrozumienie podstawowych przyczyn, dla których konieczne jest ponowne inżynierowanie. Aby wykryć niezgodności, użyj [Data Migration Assistant (DMA)](https://www.microsoft.com/download/details.aspx?id=53595).
 
-## <a name="overview"></a>Przegląd
+## <a name="overview"></a>Omówienie
 
 Większość funkcji języka Transact-SQL, które są używane przez aplikacje, jest w pełni obsługiwana zarówno w Microsoft SQL Server, jak i Azure SQL Database. Na przykład podstawowe składniki SQL, takie jak typy danych, operatory, ciągi, operacje arytmetyczne, logiczne i kursorowe, działają identycznie w SQL Server i SQL Database. Istnieją jednak pewne różnice w języku T-SQL w przypadku elementów języka DDL (definicja danych) i DML (Language operowania danymi), które wystąpiły w instrukcjach i zapytaniach języka T-SQL, które są tylko częściowo obsługiwane (które omówiono w dalszej części tego artykułu).
 
@@ -57,7 +57,7 @@ Oprócz instrukcji języka Transact-SQL związanych z nieobsługiwanymi funkcjam
 - Funkcje: `fn_get_sql`, `fn_virtualfilestats`, `fn_virtualservernodes`
 - Sprzęt: Składnia dotycząca ustawień serwera związanych z sprzętem: takich jak pamięć, wątki robocze, koligacja procesora, flagi śledzenia. Zamiast nich używaj warstw usług i rozmiarów obliczeniowych.
 - `KILL STATS JOB`
-- `OPENQUERY`, `OPENROWSET`, `OPENDATASOURCE` i nazwy czterech części
+- nazwy `OPENQUERY`, `OPENROWSET`, `OPENDATASOURCE`i czterech części
 - .NET Framework: integracja środowiska CLR z SQL Server
 - Wyszukiwanie semantyczne
 - Poświadczenia serwera: zamiast tego użyj [poświadczeń w zakresie bazy danych](https://msdn.microsoft.com/library/mt270260.aspx) .
@@ -78,11 +78,11 @@ Oprócz instrukcji języka Transact-SQL związanych z nieobsługiwanymi funkcjam
 
 ## <a name="full-transact-sql-reference"></a>Pełna dokumentacja języka Transact-SQL
 
-Aby uzyskać więcej informacji na temat gramatyki języka Transact-SQL, użycia i przykładów, zobacz [Dokumentacja języka Transact-SQL (aparat bazy danych)](https://msdn.microsoft.com/library/bb510741.aspx) In SQL Server Books Online.
+Aby uzyskać więcej informacji na temat gramatyki Transact-SQL, użycia i przykładów, zobacz [Dokumentacja języka Transact-SQL (aparat bazy danych)](https://msdn.microsoft.com/library/bb510741.aspx) w SQL Server Books Online.
 
 ### <a name="about-the-applies-to-tags"></a>Tagi „Applies to” (Dotyczy)
 
-Dokumentacja języka Transact-SQL zawiera artykuły powiązane z SQL Server wersjami 2008. Poniżej tytułu artykułu znajduje się pasek ikon zawierający cztery SQL Server platformy i wskazujące na zastosowanie. Na przykład grupy dostępności zostały wprowadzone w programie SQL Server 2012.  [Utwórz grupę dostępności](https://msdn.microsoft.com/library/ff878399.aspx) article wskazuje, że instrukcja ma zastosowanie do **SQL Server (Zaczynając od 2012)** . Instrukcja nie dotyczy programu SQL Server 2008, SQL Server 2008 R2, usługi Azure SQL Database, programu Azure SQL Data Warehouse ani Parallel Data Warehouse.
+Dokumentacja języka Transact-SQL zawiera artykuły powiązane z SQL Server wersjami 2008. Poniżej tytułu artykułu znajduje się pasek ikon zawierający cztery SQL Server platformy i wskazujące na zastosowanie. Na przykład grupy dostępności zostały wprowadzone w programie SQL Server 2012. Artykuł [Tworzenie grupy dostępności](https://msdn.microsoft.com/library/ff878399.aspx) wskazuje, że instrukcja ma zastosowanie do **SQL Server (Zaczynając od 2012)** . Instrukcja nie dotyczy programu SQL Server 2008, SQL Server 2008 R2, usługi Azure SQL Database, programu Azure SQL Data Warehouse ani Parallel Data Warehouse.
 
 W niektórych przypadkach ogólna część artykułu może być używana w produkcie, ale istnieją niewielkie różnice między produktami. Różnice są wskazane w środkach w artykule stosownie do potrzeb. W niektórych przypadkach ogólna część artykułu może być używana w produkcie, ale istnieją niewielkie różnice między produktami. Różnice są wskazane w środkach w artykule stosownie do potrzeb. Na przykład artykuł Tworzenie WYZWALACZa jest dostępny w SQL Database. Jednak opcja **wszystkie serwery** dla wyzwalaczy na poziomie serwera wskazuje, że w SQL Database nie można używać wyzwalaczy na poziomie serwera. Zamiast tego Użyj wyzwalaczy na poziomie bazy danych.
 

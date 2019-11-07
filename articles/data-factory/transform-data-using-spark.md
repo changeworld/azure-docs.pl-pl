@@ -1,6 +1,6 @@
 ---
-title: Przekształcanie danych za pomocą działania platformy Spark w usłudze Azure Data Factory | Dokumentacja firmy Microsoft
-description: Dowiedz się, jak przekształcać dane, uruchamiając programy platformy Spark w potoku usługi fabryka danych Azure przy użyciu działania platformy Spark.
+title: Przekształcanie danych przy użyciu działania Spark w Azure Data Factory
+description: Dowiedz się, jak przekształcać dane, uruchamiając programy Spark z potoku usługi Azure Data Factory przy użyciu działania platformy Spark.
 services: data-factory
 documentationcenter: ''
 ms.service: data-factory
@@ -11,23 +11,23 @@ ms.date: 05/31/2018
 author: nabhishek
 ms.author: abnarain
 manager: craigg
-ms.openlocfilehash: c493dbc99edc794dd5a261dfc004c2c8c1cb6d52
-ms.sourcegitcommit: 5cb0b6645bd5dff9c1a4324793df3fdd776225e4
+ms.openlocfilehash: 5f3bb88d3a2e43abe1776a4b46e4ab35490db8ec
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/21/2019
-ms.locfileid: "67312086"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73683751"
 ---
-# <a name="transform-data-using-spark-activity-in-azure-data-factory"></a>Przekształcanie danych za pomocą działania platformy Spark w usłudze Azure Data Factory
-> [!div class="op_single_selector" title1="Wybierz wersję usługi Data Factory, którego używasz:"]
+# <a name="transform-data-using-spark-activity-in-azure-data-factory"></a>Przekształcanie danych przy użyciu działania Spark w Azure Data Factory
+> [!div class="op_single_selector" title1="Wybierz używaną wersję usługi Data Factory:"]
 > * [Wersja 1](v1/data-factory-spark.md)
 > * [Bieżąca wersja](transform-data-using-spark.md)
 
-Działania platformy Spark w usłudze Data Factory [potoku](concepts-pipelines-activities.md) uruchamia program platformy Spark na [własne](compute-linked-services.md#azure-hdinsight-linked-service) lub [na żądanie](compute-linked-services.md#azure-hdinsight-on-demand-linked-service) klastra HDInsight. W tym artykule opiera się na [działania przekształcania danych](transform-data.md) artykułu, który przedstawia ogólny przegląd działań przekształcania obsługiwanych i przekształcania danych. Gdy używasz usługi połączone platformy Spark na żądanie, Data Factory automatycznie tworzy klaster platformy Spark na potrzeby możesz just in time do przetwarzania danych, a następnie usuwa klaster, po zakończeniu przetwarzania. 
+Działanie platformy Spark w [potoku](concepts-pipelines-activities.md) Data Factory wykonuje program platformy Spark we [własnym klastrze usługi](compute-linked-services.md#azure-hdinsight-linked-service) HDInsight lub [na żądanie](compute-linked-services.md#azure-hdinsight-on-demand-linked-service) . W tym artykule przedstawiono artykuł [działania przekształcania danych](transform-data.md) , który zawiera ogólne omówienie transformacji danych i obsługiwanych działań transformacji. Jeśli używasz połączonej usługi Spark na żądanie, Data Factory automatycznie tworzy klaster Spark, aby przetwarzać dane w czasie, a następnie usunąć klaster po zakończeniu przetwarzania. 
 
 
 ## <a name="spark-activity-properties"></a>Właściwości działania platformy Spark
-Oto przykład definicji JSON działania platformy Spark:    
+Oto przykładowa definicja JSON działania platformy Spark:    
 
 ```json
 {
@@ -56,39 +56,39 @@ Oto przykład definicji JSON działania platformy Spark:
 }
 ```
 
-W poniższej tabeli opisano właściwości JSON używanych w definicji JSON:
+W poniższej tabeli opisano właściwości JSON używane w definicji JSON:
 
-| Właściwość              | Opis                              | Wymagane |
+| Właściwość              | Opis                              | Wymagany |
 | --------------------- | ---------------------------------------- | -------- |
-| name                  | Nazwa działania w potoku.    | Yes      |
-| description           | Tekst opisujący, co działanie robi.  | Nie       |
-| type                  | Typ działania jest HDInsightSpark działania platformy Spark. | Yes      |
-| linkedServiceName     | Nazwa HDInsight Spark połączonej usługi, na którym działa program platformy Spark. Aby dowiedzieć się więcej na temat tej połączonej usługi, zobacz [usługi połączone usługi Compute](compute-linked-services.md) artykułu. | Tak      |
-| SparkJobLinkedService | Usługi Azure Storage połączone usługi, która ma platformy Spark, zależności, dzienniki i plik zadania.  Jeśli nie określisz wartości dla tej właściwości, jest używany Magazyn skojarzony z klastrem HDInsight. Wartość tej właściwości można tylko połączoną usługę Azure Storage. | Nie       |
-| rootPath              | Kontener obiektów Blob platformy Azure i folder zawierający plik platformy Spark. Nazwa pliku jest rozróżniana wielkość liter. Zobacz strukturę folderów sekcji (dalej) Aby uzyskać szczegółowe informacje o strukturze tego folderu. | Tak      |
-| entryFilePath         | Względna ścieżka do folderu głównego kodu lub pakietu platformy Spark. Plik w języku Python lub pliku JAR, musi być pliku wejściowego. | Yes      |
-| className             | Główna klasa platformy Java lub Spark aplikacji      | Nie       |
-| arguments             | Lista argumentów wiersza polecenia do programu platformy Spark. | Nie       |
-| proxyUser             | Konto użytkownika do personifikacji, aby wykonać program platformy Spark | Nie       |
-| sparkConfig           | Określ wartości dla właściwości konfiguracji aparatu Spark wymienione w temacie: [Platforma Spark jest Konfiguracja — właściwości aplikacji](https://spark.apache.org/docs/latest/configuration.html#available-properties). | Nie       |
-| getDebugInfo          | Określa, kiedy Spark pliki dziennika są kopiowane do usługi Azure storage używany przez klaster HDInsight (lub) określony przez sparkJobLinkedService. Dozwolone wartości: Brak zawsze lub niepowodzenie. Wartość domyślna: Brak. | Nie       |
+| name                  | Nazwa działania w potoku.    | Tak      |
+| description           | Tekst opisujący działanie działania.  | Nie       |
+| type                  | Dla działania platformy Spark typem działania jest HDInsightSpark. | Tak      |
+| linkedServiceName     | Nazwa połączonej usługi HDInsight Spark, na której jest uruchamiany program Spark. Aby dowiedzieć się więcej o tej połączonej usłudze, zobacz artykuł dotyczący [połączonych usług obliczeniowych](compute-linked-services.md) . | Tak      |
+| sparkJobLinkedService | Połączona usługa Azure Storage, która przechowuje plik zadania platformy Spark, zależności i dzienniki.  Jeśli nie określisz wartości tej właściwości, zostanie użyty magazyn skojarzony z klastrem usługi HDInsight. Wartością tej właściwości może być tylko połączona usługa Azure Storage. | Nie       |
+| Właściwość RootPath              | Kontener i folder obiektów blob platformy Azure, który zawiera plik Spark. W nazwie pliku rozróżniana jest wielkość liter. Szczegółowe informacje na temat struktury tego folderu można znaleźć w sekcji struktury folderów (w następnej sekcji). | Tak      |
+| entryFilePath         | Ścieżka względna do folderu głównego kodu/pakietu platformy Spark. Plik wejściowy musi być plikiem w języku Python lub plikiem jar. | Tak      |
+| Nazwą             | Główna Klasa środowiska Java/Spark aplikacji      | Nie       |
+| Argumentu             | Lista argumentów wiersza polecenia do programu Spark. | Nie       |
+| proxyUser             | Konto użytkownika służące do personifikacji w celu wykonania programu Spark | Nie       |
+| sparkConfig           | Określ wartości właściwości konfiguracji platformy Spark wymienione w temacie: [Konfiguracja platformy Spark — właściwości aplikacji](https://spark.apache.org/docs/latest/configuration.html#available-properties). | Nie       |
+| GetDebugInfo —          | Określa, kiedy pliki dziennika platformy Spark są kopiowane do magazynu platformy Azure używanego przez klaster usługi HDInsight (lub) określonego przez sparkJobLinkedService. Dozwolone wartości: brak, zawsze lub niepowodzenie. Wartość domyślna: Brak. | Nie       |
 
 ## <a name="folder-structure"></a>Struktura folderów
-Zadania Spark są bardziej extensible niż zadania programów Pig/Hive. W przypadku zadań platformy Spark, możesz podać wiele zależności takich jak jar pakietów (umieszczona w ścieżce klas w języku java), pliki języka python (umieszczona na PYTHONPATH) i innych plików.
+Zadania platformy Spark są bardziej rozszerzalne niż zadania dla trzody chlewnej/Hive. W przypadku zadań platformy Spark można podać wiele zależności, takich jak pakiety jar (umieszczone w ścieżce klas Java), pliki Python (umieszczone na PYTHONPATH) i inne pliki.
 
-Utwórz następującą strukturę folderów w usłudze Azure Blob storage przywoływany przez usługę HDInsight połączone. Następnie przekaż pliki zależne do odpowiednich podfolderach w folderze głównym, reprezentowane przez **właściwość entryFilePath**. Na przykład Przekaż pliki języka python do podfolderu pyFiles i pliki jar do podfolderu plikach JAR w folderze głównym. W czasie wykonywania usługa Data Factory oczekuje następującą strukturę folderów w usłudze Azure Blob storage:     
+Utwórz następującą strukturę folderów w magazynie obiektów blob platformy Azure, do której odwołuje się połączona Usługa HDInsight. Następnie Przekaż pliki zależne do odpowiednich podfolderów w folderze głównym reprezentowane przez **entryFilePath**. Na przykład przekazanie plików Python do podfolderu pyFiles i plików jar do podfolderu Jars folderu głównego. W czasie wykonywania Usługa Data Factory oczekuje następującej struktury folderów w usłudze Azure Blob Storage:     
 
-| Ścieżka                  | Opis                              | Wymagane | Type   |
+| Ścieżka                  | Opis                              | Wymagany | Typ   |
 | --------------------- | ---------------------------------------- | -------- | ------ |
-| `.` (root)            | Ścieżka katalogu głównego zadania Spark w połączonej usługi storage | Tak      | Folder |
-| &lt;zdefiniowane przez użytkownika &gt; | Ścieżka do pliku wejściowego zadania Spark | Tak      | Plik   |
-| . / jars                | Wszystkie pliki w tym folderze są przekazywane i umieszczane w ścieżce klasy java klastra | Nie       | Folder |
-| . / pyFiles             | Wszystkie pliki w tym folderze są przekazywane i umieszczane w PYTHONPATH klastra | Nie       | Folder |
-| . / plików               | Wszystkie pliki w tym folderze są przekazywane i umieszczane w katalogu roboczego funkcji wykonawczej | Nie       | Folder |
-| . / archiwa            | Wszystkie pliki w tym folderze znajdują się bez kompresji | Nie       | Folder |
-| . / dzienniki                | Folder, który zawiera dzienników z klastra Spark. | Nie       | Folder |
+| `.` (główny)            | Ścieżka katalogu głównego zadania platformy Spark w połączonej usłudze Storage | Tak      | Folder |
+| &lt;zdefiniowane przez użytkownika &gt; | Ścieżka wskazująca plik wpisu zadania Spark | Tak      | Plik   |
+| ./jars                | Wszystkie pliki w tym folderze są przekazywane i umieszczane na ścieżce klas Java klastra | Nie       | Folder |
+| ./pyFiles             | Wszystkie pliki w tym folderze są przekazywane i umieszczane w PYTHONPATH klastra | Nie       | Folder |
+| ./files               | Wszystkie pliki w tym folderze są przekazywane i umieszczane w katalogu roboczym wykonującym | Nie       | Folder |
+| ./archives            | Wszystkie pliki w tym folderze są nieskompresowane | Nie       | Folder |
+| ./logs                | Folder zawierający dzienniki z klastra Spark. | Nie       | Folder |
 
-Oto przykład dla magazynu zawierającego dwa pliki zadania Spark w usłudze Azure Storage Blob odwołuje się usługa HDInsight połączone.
+Oto przykład dla magazynu zawierającego dwa pliki zadań platformy Spark na platformie Azure Blob Storage do których odwołuje się połączona Usługa HDInsight.
 
 ```
 SparkJob1
@@ -108,15 +108,15 @@ SparkJob2
         script2.py
     logs
 ```
-## <a name="next-steps"></a>Kolejne kroki
-Zobacz następujące artykuły, które wyjaśniają, jak przekształcać dane w inny sposób: 
+## <a name="next-steps"></a>Następne kroki
+Zapoznaj się z następującymi artykułami, które wyjaśniają sposób przekształcania danych w inny sposób: 
 
 * [Działanie U-SQL](transform-data-using-data-lake-analytics.md)
-* [Działanie technologii hive](transform-data-using-hadoop-hive.md)
-* [Działania technologii pig](transform-data-using-hadoop-pig.md)
-* [Działania technologii MapReduce](transform-data-using-hadoop-map-reduce.md)
-* [Działania przesyłania strumieniowego usługi Hadoop](transform-data-using-hadoop-streaming.md)
-* [Działania platformy Spark](transform-data-using-spark.md)
+* [Działanie Hive](transform-data-using-hadoop-hive.md)
+* [Aktywność trzody chlewnej](transform-data-using-hadoop-pig.md)
+* [Działanie MapReduce](transform-data-using-hadoop-map-reduce.md)
+* [Działanie przesyłania strumieniowego Hadoop](transform-data-using-hadoop-streaming.md)
+* [Działanie platformy Spark](transform-data-using-spark.md)
 * [Niestandardowe działanie platformy .NET](transform-data-using-dotnet-custom-activity.md)
-* [Machine Learning Batch Execution działania](transform-data-using-machine-learning.md)
-* [Działania procedur składowanych](transform-data-using-stored-procedure.md)
+* [Działanie wykonywania wsadowego Machine Learning](transform-data-using-machine-learning.md)
+* [Działanie procedury składowanej](transform-data-using-stored-procedure.md)

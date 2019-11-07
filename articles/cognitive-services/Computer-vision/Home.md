@@ -1,5 +1,5 @@
 ---
-title: Co to jest interfejs API przetwarzania obrazów? — Przetwarzanie obrazów
+title: Czym jest przetwarzanie obrazów? — Przetwarzanie obrazów
 titleSuffix: Azure Cognitive Services
 description: Usługa przetwarzania obrazów oferuje deweloperom dostęp do zaawansowanych algorytmów przetwarzania obrazów i zwracania informacji.
 services: cognitive-services
@@ -8,27 +8,31 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: computer-vision
 ms.topic: overview
-ms.date: 10/01/2019
+ms.date: 11/04/2019
 ms.author: pafarley
 ms.custom: seodec18
-ms.openlocfilehash: db62f003f7eb8dd272305b86712cf1d721797114
-ms.sourcegitcommit: a19f4b35a0123256e76f2789cd5083921ac73daf
+ms.openlocfilehash: a34fdb24573df3287b72991454963c67e9689b9f
+ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71719540"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73604555"
 ---
 # <a name="what-is-computer-vision"></a>Czym jest przetwarzanie obrazów?
 
-Usługa przetwarzania obrazów platformy Azure oferuje deweloperom dostęp do zaawansowanych algorytmów przetwarzania obrazów i informacji zwrotnych. W celu analizy obrazu można przekazać obraz lub określić jego adres URL. Algorytmy przetwarzania obrazów pozwalają analizować zawartość na różne sposoby, w zależności od interesujących Cię funkcji wizualnych. Na przykład przetwarzanie obrazów może określić, czy obraz zawiera zawartość dla dorosłych, czy też może znaleźć wszystkie ludzkie twarzy na obrazie.
+Usługa przetwarzanie obrazów platformy Azure zapewnia deweloperom dostęp do zaawansowanych algorytmów, które przetwarzają obrazy i zwracają informacje, w zależności od interesujących Cię funkcji wizualizacji. Na przykład przetwarzanie obrazów może określić, czy obraz zawiera zawartość dla dorosłych, czy też może znaleźć wszystkie ludzkie twarzy na obrazie.
 
-Przetwarzania obrazów w aplikacji można używać, korzystając z natywnego zestawu SDK lub wywołując interfejs API REST bezpośrednio. Na tej stronie ogólnie omówiono, co można zrobić za pomocą przetwarzania obrazów.
+Możesz użyć przetwarzanie obrazów w aplikacji za pomocą natywnego zestawu SDK lub przez wywołanie interfejsu API REST bezpośrednio. Na tej stronie ogólnie omówiono, co można zrobić za pomocą przetwarzania obrazów.
+
+## <a name="computer-vision-for-digital-asset-management"></a>przetwarzanie obrazów do zarządzania cyfrowymi zasobami
+
+Przetwarzanie obrazów może obsługiwać wiele scenariuszy zarządzania zasobami cyfrowymi. Ponosisz biznesową proces organizowania, przechowywania i pobierania rozbudowanych zasobów multimedialnych oraz zarządzania prawami i uprawnieniami cyfrowymi. Na przykład firma może chcieć grupować i identyfikować obrazy na podstawie widocznych logo, twarzy, obiektów, kolorów i tak dalej. Możesz też chcieć automatycznie [generować podpisy dla obrazów](./Tutorials/storage-lab-tutorial.md) i dołączać słowa kluczowe, aby umożliwić ich wyszukiwanie. Aby uzyskać informacje na temat całościowego rozwiązania z użyciem Cognitive Services, Azure Search i inteligentnych raportów, zobacz [Przewodnik dotyczący akceleratora rozwiązań](https://github.com/Azure-Samples/azure-search-knowledge-mining) w witrynie GitHub. Aby zapoznać się z innymi przykładami, zobacz repozytorium [szablonów rozwiązań przetwarzanie obrazów](https://github.com/Azure-Samples/Cognitive-Services-Vision-Solution-Templates) .
 
 ## <a name="analyze-images-for-insight"></a>Analizowanie obrazów w celu uzyskania szczegółowych informacji
 
 Obrazy można analizować, aby wykrywać cechy wizualne i właściwości obrazów oraz dostarczać szczegółowe informacje na ich temat. Wszystkie funkcje w poniższej tabeli są udostępniane przez interfejs API [analizowania obrazu](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fa).
 
-| Działanie | Opis |
+| Akcja | Opis |
 | ------ | ----------- |
 |**[Tagowanie funkcji wizualnych](concept-tagging-images.md)**|Identyfikowanie i tagowanie elementów wizualnych na obrazie w oparciu o zestaw tysięcy rozpoznawalnych obiektów, istot żywych, scenerii i akcji. Gdy Tagi są niejednoznaczne lub nietypowej wiedzy, odpowiedź interfejsu API zawiera wskazówki wyjaśniające kontekst znacznika. Tagowanie nie jest ograniczone do głównego tematu, na przykład do osoby na pierwszym planie, ale uwzględnia także otoczenie (wewnątrz lub na zewnątrz), meble, narzędzia, rośliny, zwierzęta, akcesoria, gadżety itd.|
 |**[Wykrywanie obiektów](concept-object-detection.md)**| Wykrywanie obiektów jest podobne do tagowania, ale interfejs API zwraca współrzędne pola ograniczenia dla każdego zastosowanego tagu. Na przykład jeśli na obrazie znajduje się pies, kot i osoba, operacja wykrywania utworzy listę tych obiektów wraz z ich współrzędnymi na obrazie. Ta funkcja umożliwia przetwarzanie dalszych relacji między obiektami na obrazie. Ponadto w odpowiednich przypadkach informuje, że obraz zawiera wiele wystąpień tego samego tagu.|
@@ -47,8 +51,6 @@ Obrazy można analizować, aby wykrywać cechy wizualne i właściwości obrazó
 Możesz użyć przetwarzanie obrazów [odczytu interfejsu API](concept-recognizing-text.md#read-api) , aby wyodrębnić drukowany i odręczny tekst z obrazów do strumienia znaków z możliwością odczytu maszynowego. Interfejs API odczytu korzysta z naszych najnowszych modeli i pracuje z tekstem na różnych powierzchniach i w tle, takich jak paragony, plakaty, karty biznesowe, litery i tablice. Obecnie jedynym obsługiwanym językiem jest angielski.
 
 Możesz również użyć interfejsu API [rozpoznawania znaków optycznych (OCR)](concept-recognizing-text.md#ocr-optical-character-recognition-api) do wyodrębniania tekstu drukowanego w kilku językach. Jeśli to konieczne, funkcja optycznego rozpoznawania znaków poprawia kąt obrotu i podaje współrzędne ramki każdego wyrazu. Funkcja optycznego rozpoznawania znaków obsługuje 25 języków i automatycznie wykrywa język rozpoznanego tekstu.
-
-
 
 ## <a name="moderate-content-in-images"></a>Moderowanie zawartości na obrazach
 

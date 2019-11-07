@@ -1,5 +1,5 @@
 ---
-title: Wprowadzenie do zapytań między bazami danych (partycjonowanie pionowe) | Microsoft Docs
+title: Wprowadzenie do zapytań między bazami danych (partycjonowanie pionowe)
 description: Jak używać zapytania Elastic Database z bazami danych z podziałem pionowym
 services: sql-database
 ms.service: sql-database
@@ -11,16 +11,16 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 01/25/2019
-ms.openlocfilehash: a6a87f90586dc4392dc1304a83349bc386590ee4
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: b6d9ba0c57850c61626d7b6d99fcb1fffc2d3c25
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68568599"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73690401"
 ---
 # <a name="get-started-with-cross-database-queries-vertical-partitioning-preview"></a>Wprowadzenie do zapytań między bazami danych (partycjonowanie pionowe) (wersja zapoznawcza)
 
-Zapytanie Elastic Database (wersja zapoznawcza) dla Azure SQL Database umożliwia uruchamianie zapytań T-SQL obejmujących wiele baz danych przy użyciu jednego punktu połączenia. Ten artykuł ma zastosowanie do [baz danych partycjonowanych](sql-database-elastic-query-vertical-partitioning.md)w pionie.  
+Zapytanie Elastic Database (wersja zapoznawcza) dla Azure SQL Database umożliwia uruchamianie zapytań T-SQL obejmujących wiele baz danych przy użyciu jednego punktu połączenia. Ten artykuł ma zastosowanie do [baz danych partycjonowanych w pionie](sql-database-elastic-query-vertical-partitioning.md).  
 
 Po zakończeniu: informacje na temat konfigurowania Azure SQL Database i używania ich do wykonywania zapytań obejmujących wiele powiązanych baz danych.
 
@@ -104,7 +104,7 @@ Po zdefiniowaniu zewnętrznego źródła danych i tabel zewnętrznych możesz u�
     INNER JOIN CustomerInformation
     ON CustomerInformation.CustomerID = OrderInformation.CustomerID
 
-## <a name="cost"></a>Koszt
+## <a name="cost"></a>Koszty
 
 Obecnie funkcja zapytania Elastic Database jest uwzględniana w kosztach Azure SQL Database.  
 
@@ -116,4 +116,4 @@ Aby uzyskać informacje o cenach, zobacz [Cennik usługi SQL Database](https://a
 * Aby poznać składnię i przykładowe zapytania dotyczące danych partycjonowanych pionowo, zobacz [wykonywanie zapytań dotyczących partycjonowanych danych w pionie.](sql-database-elastic-query-vertical-partitioning.md)
 * Aby zapoznać się z samouczkiem dotyczącym partycjonowania poziomego (fragmentowania), zobacz [wprowadzenie do elastycznego zapytania na potrzeby partycjonowania poziomego (fragmentowania)](sql-database-elastic-query-getting-started.md).
 * Aby poznać składnię i przykładowe zapytania dla danych z podziałem na partycje, zobacz [wykonywanie zapytań o dane partycjonowane w poziomie.](sql-database-elastic-query-horizontal-partitioning.md)
-* Zapoznaj się z artykułem [\_Sp Execute \_Remote](https://msdn.microsoft.com/library/mt703714) dla procedury składowanej, która wykonuje instrukcję języka Transact-SQL w ramach jednego zdalnego Azure SQL Database lub zestawu baz danych służących jako fragmentów w poziomym schemacie partycjonowania.
+* Zobacz [sp\_wykonaj \_zdalnego](https://msdn.microsoft.com/library/mt703714) dla procedury składowanej, która wykonuje instrukcję języka Transact-SQL w ramach jednej zdalnej Azure SQL Database lub zestawu baz danych służących jako fragmentów w poziomym schemacie partycjonowania.

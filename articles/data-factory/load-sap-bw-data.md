@@ -1,6 +1,6 @@
 ---
-title: Ładowanie danych z rozwiązania SAP Business Warehouse za pomocą usługi Azure Data Factory | Dokumentacja firmy Microsoft
-description: Kopiowanie danych z usługi SAP Business Warehouse (BW) za pomocą usługi Azure Data Factory
+title: Ładowanie danych z programu SAP Business Warehouse przy użyciu Azure Data Factory
+description: Używanie Azure Data Factory do kopiowania danych z programu SAP Business Warehouse (BW)
 services: data-factory
 documentationcenter: ''
 author: linda33wj
@@ -11,168 +11,168 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 05/22/2019
 ms.author: jingwang
-ms.openlocfilehash: 3c846ab3e81e7ab8a4948aa4ed96cfa75e8eb3f4
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: 0c96ecff27a57b3277e7c8105766059b739d11af
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67449696"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73672645"
 ---
-# <a name="copy-data-from-sap-business-warehouse-by-using-azure-data-factory"></a>Kopiowanie danych z rozwiązania SAP Business Warehouse za pomocą usługi Azure Data Factory
+# <a name="copy-data-from-sap-business-warehouse-by-using-azure-data-factory"></a>Kopiowanie danych z programu SAP Business Warehouse przy użyciu Azure Data Factory
 
-W tym artykule pokazano, jak używać usługi Azure Data Factory do kopiowania danych z SAP Business Warehouse (BW) za pośrednictwem Centrum Otwórz do usługi Azure Data Lake Storage Gen2. Można użyć podobnej do kopiowania danych do innych [obsługiwanych magazynów danych ujścia](copy-activity-overview.md#supported-data-stores-and-formats).
+W tym artykule pokazano, jak za pomocą programu Azure Data Factory skopiować dane z programu SAP Business Warehouse (BW) za pośrednictwem usługi Open Hub do programu Azure Data Lake Storage Gen2. Podobny proces służy do kopiowania danych do innych [obsługiwanych magazynów danych ujścia](copy-activity-overview.md#supported-data-stores-and-formats).
 
 > [!TIP]
-> Aby uzyskać ogólne informacje o kopiowaniu danych SAP BW, łącznie z integracją SAP BW Open Centrum i różnicowe wyodrębniania przepływu, zobacz [kopiowanie danych z rozwiązania SAP Business Warehouse, za pośrednictwem Centrum Otwórz za pomocą usługi Azure Data Factory](connector-sap-business-warehouse-open-hub.md).
+> Aby uzyskać ogólne informacje o kopiowaniu danych z SAP BW, w tym SAP BW otwartych rozwiązań do integracji i rozpakowywania, zobacz [Kopiowanie danych z programu SAP Business Warehouse za pośrednictwem usługi Open Hub przy użyciu Azure Data Factory](connector-sap-business-warehouse-open-hub.md).
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-- **Azure Data Factory**: Jeśli nie masz, wykonaj kroki, aby [utworzyć fabrykę danych](quickstart-create-data-factory-portal.md#create-a-data-factory).
+- **Azure Data Factory**: Jeśli go nie masz, postępuj zgodnie z instrukcjami, aby [utworzyć fabrykę danych](quickstart-create-data-factory-portal.md#create-a-data-factory).
 
-- **Oprogramowanie SAP BW Open koncentrator docelowy (OHD) z typem docelowym "W tabeli bazy danych"** : Aby utworzyć OHD lub Sprawdź poprawnie skonfigurowane usługi OHD integracji usługi Data Factory, zobacz [konfiguracji SAP BW Open koncentrator docelowy](#sap-bw-open-hub-destination-configurations) dalszej części tego artykułu.
+- **SAP BW Otwórz lokalizację docelową (OHD) z typem docelowym "tabela bazy danych"** : Aby utworzyć OHD lub sprawdzić, czy OHD jest prawidłowo skonfigurowane do integracji Data Factory, zobacz sekcję [SAP BW Otwórz konfigurację docelową](#sap-bw-open-hub-destination-configurations) w tym artykule.
 
-- **Użytkownik systemu SAP BW musi mieć następujące uprawnienia**:
+- **Użytkownik SAP BW musi mieć następujące uprawnienia**:
 
-  - Autoryzacja dla wywołania funkcji zdalnego (RFC) i systemu SAP BW.
-  - Uprawnienia do działania "Execute" **S_SDSAUTH** obiekt autoryzacji.
+  - Autoryzacja zdalnych wywołań funkcji (RFC) i SAP BW.
+  - Uprawnienia do działania "Execute" obiektu autoryzacji **S_SDSAUTH** .
 
-- **A [może być samodzielnie hostowane środowisko integration runtime (IR)](concepts-integration-runtime.md#self-hosted-integration-runtime) za pomocą łącznika SAP .NET 3.0**. Wykonaj następujące kroki konfiguracji:
+- **[Własne środowisko Integration Runtime (IR)](concepts-integration-runtime.md#self-hosted-integration-runtime) z łącznikiem SAP .NET 3,0**. Wykonaj następujące kroki instalacji:
 
-  1. Instalowanie i rejestrowanie własnego środowiska integration runtime, wersji 3.13 lub nowszej. (Ten proces jest opisany w dalszej części tego artykułu).
+  1. Zainstaluj i zarejestruj własne środowisko Integration Runtime w wersji 3,13 lub nowszej. (Ten proces jest opisany w dalszej części tego artykułu).
 
-  2. Pobierz [łącznika systemu SAP 64-bitowych dla programu Microsoft .NET 3.0](https://support.sap.com/en/product/connectors/msnet.html) z witryny firmy SAP i zainstaluj go na tym samym komputerze co Self-Hosted IR Podczas instalacji upewnij się, że wybrano **zainstalować zestawy GAC** w **opcjonalne kroki instalacji** okno dialogowe, jak przedstawiono na poniższym obrazie:
+  2. Pobierz [64-bitowy łącznik SAP dla Microsoft .NET 3,0](https://support.sap.com/en/product/connectors/msnet.html) z witryny sieci Web SAP i zainstaluj go na tym samym komputerze, na którym znajduje się samoobsługowy interfejs IR. Podczas instalacji upewnij się, że wybrano opcję **Zainstaluj zestawy do GAC** w oknie dialogowym **opcjonalne kroki instalacji** , jak pokazano na poniższej ilustracji:
 
-     ![Konfigurowanie łącznika systemu SAP .NET, okno dialogowe](media/connector-sap-business-warehouse-open-hub/install-sap-dotnet-connector.png)
+     ![Okno dialogowe Konfigurowanie łącznika SAP .NET](media/connector-sap-business-warehouse-open-hub/install-sap-dotnet-connector.png)
 
-## <a name="do-a-full-copy-from-sap-bw-open-hub"></a>Wykonaj pełną kopię SAP BW Open Centrum
+## <a name="do-a-full-copy-from-sap-bw-open-hub"></a>Wykonaj pełną kopię z SAP BW otwartym centrum
 
-W witrynie Azure portal przejdź do usługi data factory. Wybierz **tworzenie i monitorowanie** otworzyć Interfejs użytkownika usługi Data Factory na osobnej karcie.
+W Azure Portal przejdź do fabryki danych. Wybierz pozycję **utwórz & monitor** , aby otworzyć interfejs użytkownika Data Factory na oddzielnej karcie.
 
-1. Na **zaczynajmy** wybierz opcję **kopiowania danych** aby otworzyć narzędzie do kopiowania danych.
+1. **Na stronie Wprowadzenie** wybierz pozycję **Kopiowanie danych** , aby otworzyć narzędzie kopiowanie danych.
 
-2. Na **właściwości** określ **Nazwa zadania**, a następnie wybierz pozycję **dalej**.
+2. Na stronie **Właściwości** Określ **nazwę zadania**, a następnie wybierz przycisk **dalej**.
 
-3. Na **magazynu danych źródłowych** wybierz opcję **+ Utwórz nowe połączenie**. Wybierz **SAP BW Open Centrum** z galerii łączników, a następnie wybierz **Kontynuuj**. Aby filtrować łączniki, można wpisać **SAP** w polu wyszukiwania.
+3. Na stronie **Magazyn danych źródłowych** wybierz pozycję **+ Utwórz nowe połączenie**. Wybierz pozycję **SAP BW Otwórz Centrum** z galerii łączników, a następnie wybierz pozycję **Kontynuuj**. Aby filtrować łączniki, można wpisać **SAP** w polu wyszukiwania.
 
-4. Na **połączenia Określ SAP BW Open Centrum Hub** strony, wykonaj następujące kroki, aby utworzyć nowe połączenie.
+4. Na stronie **określanie SAP BW nawiązywanie połączenia** w usłudze Hub wykonaj następujące kroki, aby utworzyć nowe połączenie.
 
-   ![Utwórz stronę SAP BW Open Centrum połączona usługa](media/load-sap-bw-data/create-sap-bw-open-hub-linked-service.png)
+   ![Utwórz SAP BW Otwórz stronę usługi połączonej z centrum](media/load-sap-bw-data/create-sap-bw-open-hub-linked-service.png)
 
-   1. Z **Połącz za pośrednictwem środowiska integration runtime** wybierz istniejący Self-Hosted IR Lub je utworzyć, jeśli nie masz jeszcze.
+   1. Z listy **Połącz za pośrednictwem środowiska Integration Runtime** Wybierz istniejące środowisko IR samoobsługowego. Możesz też wybrać opcję utworzenia jednego, jeśli jeszcze go nie masz.
 
-      Aby utworzyć nowy własnego środowiska IR, wybierz **+ nowy**, a następnie wybierz pozycję **może być samodzielnie hostowane**. Wprowadź **nazwa**, a następnie wybierz pozycję **dalej**. Wybierz **Instalacja ekspresowa** do zainstalowania na bieżącym komputerze lub wykonaj **instalacji ręcznej** kroki, które są dostarczane.
+      Aby utworzyć nowy samoobsługowy środowisko IR, wybierz pozycję **+ Nowy**, a następnie wybierz pozycję **własne**. Wprowadź **nazwę**, a następnie wybierz przycisk **dalej**. Wybierz pozycję **Instalacja ekspresowa** , aby zainstalować program na bieżącym komputerze, lub wykonaj kroki **ręcznej instalacji** , które są dostępne.
 
-      Jak wspomniano w [wymagania wstępne](#prerequisites), upewnij się, że łącznika systemu SAP dla programu Microsoft .NET 3.0 zainstalowane na tym samym komputerze, na którym działa własne środowisko IR.
+      Zgodnie z opisem w sekcji [wymagania wstępne](#prerequisites)upewnij się, że masz łącznik SAP dla Microsoft .NET 3,0 zainstalowany na tym samym komputerze, na którym działa środowisko IR samoobsługowego.
 
-   2. Wypełnij systemu SAP BW **nazwy serwera**, **numer systemu**, **identyfikator klienta** **języka** (jeśli inne niż **EN**) , **Nazwa_użytkownika**, i **hasło**.
+   2. Wprowadź wartość w polu **Nazwa serwera**SAP BW, **numer systemu**, **Identyfikator klienta,** **Język** (jeśli jest inny niż **EN**), **Nazwa użytkownika**i **hasło**.
 
-   3. Wybierz **Testuj połączenie** Sprawdź poprawność ustawień, a następnie wybierz pozycję **Zakończ**.
+   3. Wybierz **Test connection** , aby sprawdzić poprawność ustawień, a następnie wybierz pozycję **Zakończ**.
 
-   4. Utworzono nowe połączenie. Wybierz opcję **Dalej**.
+   4. Zostanie utworzone nowe połączenie. Wybierz opcję **Dalej**.
 
-5. Na **miejsc docelowych wybierz Otwórz Centrum** strony, przeglądanie Otwórz Centrum miejsca docelowe są dostępne w Twojej systemu SAP BW. Wybierz OHD do kopiowania danych z, a następnie wybierz **dalej**.
+5. Na stronie **Wybierz miejscowe miejsca docelowe programu Open** Hub Przeglądaj lokalizacje dostępne w usłudze SAP BW. Wybierz OHD, z którego mają zostać skopiowane dane, a następnie wybierz przycisk **dalej**.
 
-   ![Wybierz tabelę SAP BW Open koncentrator docelowy](media/load-sap-bw-data/select-sap-bw-open-hub-table.png)
+   ![Wybierz SAP BW otwarcie tabeli docelowej centrum](media/load-sap-bw-data/select-sap-bw-open-hub-table.png)
 
-6. Określ filtr, jeśli potrzebna jest jedna. Jeśli Twoje OHD zawiera tylko dane z wykonanie procesu (DTP) pojedynczy transfer danych, jest identyfikatorem pojedynczego żądania lub wiesz, że Twoje DTP zostanie zakończony, i chcesz skopiować dane, wyczyść **Wyklucz ostatnie żądanie** pole wyboru.
+6. Określ filtr, jeśli będzie potrzebny. Jeśli OHD zawiera tylko dane z pojedynczego procesu transferu danych (DTP) z pojedynczym IDENTYFIKATORem żądania, lub jeśli masz pewność, że DTP została zakończona i chcesz skopiować dane, usuń zaznaczenie pola wyboru **Wyklucz ostatnie żądanie** .
 
-   Dowiedz się więcej na temat tych ustawień w [konfiguracji SAP BW Open koncentrator docelowy](#sap-bw-open-hub-destination-configurations) dalszej części tego artykułu. Wybierz **weryfikacji** dokładnie, jakie dane zostaną zwrócone. Następnie wybierz przycisk **Dalej**.
+   Więcej informacji o tych ustawieniach znajduje się w sekcji [SAP BW Otwórz konfigurację docelową](#sap-bw-open-hub-destination-configurations) w tym artykule. Wybierz pozycję **Weryfikuj** , aby dokładnie sprawdzić, jakie dane zostaną zwrócone. Następnie wybierz przycisk **Dalej**.
 
-   ![Konfiguruj filtr Centrum Otwórz programu SAP BW](media/load-sap-bw-data/configure-sap-bw-open-hub-filter.png)
+   ![Konfigurowanie SAP BW Otwórz filtr centrum](media/load-sap-bw-data/configure-sap-bw-open-hub-filter.png)
 
-7. Na **docelowego magazynu danych** wybierz opcję **+ Utwórz nowe połączenie** > **usługi Azure Data Lake Storage Gen2**  >   **Kontynuuj**.
+7. Na stronie **docelowy magazyn danych** wybierz pozycję **+ utwórz nowe połączenie** > **Azure Data Lake Storage Gen2** > **Kontynuuj**.
 
-8. Na **połączenia Określ magazyn usługi Azure Data Lake** strony, wykonaj następujące kroki, aby utworzyć połączenie.
+8. Na stronie **Określanie połączenia Azure Data Lake Storage** wykonaj następujące kroki, aby utworzyć połączenie.
 
-   ![Tworzenie strony połączonej usługi Azure Data Lake Store Gen2](media/load-sap-bw-data/create-adls-gen2-linked-service.png)
+   ![Tworzenie strony połączonej usługi ADLS Gen2](media/load-sap-bw-data/create-adls-gen2-linked-service.png)
 
-   1. Wybierz swoje konto usługi Data Lake Storage Gen2 możliwością z **nazwa** listy rozwijanej.
-   2. Wybierz **Zakończ** do utworzenia połączenia. Następnie wybierz przycisk **Dalej**.
+   1. Wybierz konto z możliwością Data Lake Storage Gen2 z listy rozwijanej **Nazwa** .
+   2. Wybierz pozycję **Zakończ** , aby utworzyć połączenie. Następnie wybierz przycisk **Dalej**.
 
-9. Na **Wybieranie wyjściowego pliku lub folderu** wpisz **copyfromopenhub** jako nazwa folderu danych wyjściowych. Następnie wybierz przycisk **Dalej**.
+9. Na stronie **Wybieranie pliku lub folderu wyjściowego** wprowadź **copyfromopenhub** jako nazwę folderu wyjściowego. Następnie wybierz przycisk **Dalej**.
 
-   ![Wybierz stronę folderu danych wyjściowych](media/load-sap-bw-data/choose-output-folder.png)
+   ![Strona wybierania folderu wyjściowego](media/load-sap-bw-data/choose-output-folder.png)
 
-10. Na **ustawienia formatu pliku** wybierz opcję **dalej** można użyć ustawień domyślnych.
+10. Na stronie **Ustawienia formatu pliku** wybierz pozycję **dalej** , aby użyć ustawień domyślnych.
 
-    ![Określ stronę format obiektu sink](media/load-sap-bw-data/specify-sink-format.png)
+    ![Strona Określanie formatu ujścia](media/load-sap-bw-data/specify-sink-format.png)
 
-11. Na **ustawienia** rozwiń **ustawienia wydajności**. Wprowadź wartość w **stopień równoległości kopiowania** takich jak 5, aby załadować z systemu SAP BW równolegle. Następnie wybierz przycisk **Dalej**.
+11. Na stronie **Ustawienia** rozwiń węzeł **Ustawienia wydajności**. Wprowadź wartość **stopnia równoległości kopiowania** , taką jak 5, aby załadować ją równolegle do SAP BW. Następnie wybierz przycisk **Dalej**.
 
-    ![Skonfiguruj ustawienia kopiowania](media/load-sap-bw-data/configure-copy-settings.png)
+    ![Konfiguruj ustawienia kopiowania](media/load-sap-bw-data/configure-copy-settings.png)
 
-12. Na **Podsumowanie** Przejrzyj ustawienia. Następnie wybierz przycisk **Dalej**.
+12. Na stronie **Podsumowanie** przejrzyj ustawienia. Następnie wybierz przycisk **Dalej**.
 
-13. Na **wdrożenia** wybierz opcję **Monitor** Aby monitorować potok.
+13. Na stronie **wdrażanie** wybierz pozycję **Monitoruj** , aby monitorować potok.
 
     ![Strona Wdrażanie](media/load-sap-bw-data/deployment.png)
 
-14. Należy zauważyć, że **Monitor** automatycznie wybrana jest karta w lewej części strony. **Akcje** kolumny zawiera linki, aby wyświetlić szczegóły uruchomienia działania i ponowne uruchamianie potoku.
+14. Zauważ, że karta **monitor** po lewej stronie jest automatycznie zaznaczona. Kolumna **Actions** zawiera linki do wyświetlania szczegółów działania i ponownego uruchomienia potoku.
 
     ![Widok monitorowania potoku](media/load-sap-bw-data/pipeline-monitoring.png)
 
-15. Aby wyświetlić uruchomienia działań, które są skojarzone z uruchomieniem potoku, wybierz pozycję **Wyświetl uruchomienia działań** w **akcje** kolumny. W potoku jest tylko jedno działanie (działanie kopiowania), dlatego na liście jest wyświetlana tylko jedna pozycja. Aby wrócić do widoku uruchomień potoków, wybierz **potoki** link u góry. Wybierz pozycję **Odśwież**, aby odświeżyć listę.
+15. Aby wyświetlić uruchomienia działań skojarzone z uruchomieniem potoku, wybierz pozycję **Wyświetl uruchomienia działania** w kolumnie **Akcje** . W potoku jest tylko jedno działanie (działanie kopiowania), dlatego na liście jest wyświetlana tylko jedna pozycja. Aby przełączyć się z powrotem do widoku uruchomienia potoków, wybierz link **potoki** u góry. Wybierz pozycję **Odśwież**, aby odświeżyć listę.
 
-    ![Monitorowanie działania ekranu](media/load-sap-bw-data/activity-monitoring.png)
+    ![Działanie — ekran monitorowania](media/load-sap-bw-data/activity-monitoring.png)
 
-16. Aby monitorować szczegóły wykonania dla każdego działania kopiowania, wybierz **szczegóły** łącza, które znajduje się ikona okularów poniżej **akcje** w widoku Monitorowanie działania. Dostępne szczegółowe informacje zawierają ilość danych skopiowanych ze źródła do ujścia, przepływność danych, wykonywania i czasu trwania i konfiguracje używane.
+16. Aby monitorować szczegóły wykonania dla każdego działania kopiowania, wybierz link **szczegóły** , który jest ikoną okularów poniżej **akcji** w widoku monitorowanie aktywności. Dostępne szczegóły obejmują ilość danych skopiowaną ze źródła do ujścia, przepływność danych, etapy wykonywania oraz używane konfiguracje.
 
-    ![Szczegóły monitorowania aktywności](media/load-sap-bw-data/activity-monitoring-details.png)
+    ![Szczegóły monitorowania działania](media/load-sap-bw-data/activity-monitoring-details.png)
 
-17. Aby wyświetlić **maksymalny identyfikator żądania**, wróć do widoku oraz wybierz opcję Monitorowanie działania **dane wyjściowe** w obszarze **akcje**.
+17. Aby wyświetlić **Maksymalny identyfikator żądania**, Wróć do widoku działania — monitorowanie i wybierz pozycję **dane wyjściowe** w obszarze **Akcje**.
 
-    ![Działania ekranu danych wyjściowych](media/load-sap-bw-data/activity-output.png)
+    ![Ekran danych wyjściowych działania](media/load-sap-bw-data/activity-output.png)
 
-    ![Dane wyjściowe działania w widoku szczegółów](media/load-sap-bw-data/activity-output-details.png)
+    ![Widok szczegółów danych wyjściowych działania](media/load-sap-bw-data/activity-output-details.png)
 
-## <a name="incremental-copy-from-sap-bw-open-hub"></a>Przyrostowe kopiowanie danych z Centrum Otwórz programu SAP BW
+## <a name="incremental-copy-from-sap-bw-open-hub"></a>Kopia przyrostowa z SAP BW Otwórz Centrum
 
 > [!TIP]
-> Zobacz [przepływ wyodrębniania delta łącznika SAP BW Open Centrum](connector-sap-business-warehouse-open-hub.md#delta-extraction-flow) Aby dowiedzieć się, jak łącznik SAP BW Open Centrum w fabryce danych kopiuje dane przyrostowe z systemu SAP BW. Ten artykuł może także ułatwić zrozumienie konfiguracji łącznika podstawowe.
+> Aby dowiedzieć się, w jaki sposób SAP BW otworzyć łącznik usługi Hub w Data Factory kopiuje dane przyrostowe z SAP BW, zobacz [SAP BW otwieranie przepływu wyodrębniania różnicowego łącznika usługi Hub](connector-sap-business-warehouse-open-hub.md#delta-extraction-flow) . Ten artykuł może również pomóc w zrozumieniu podstawowej konfiguracji łącznika.
 
-Teraz możemy w dalszym ciągu skonfigurować przyrostowe kopiowanie danych z Centrum Otwórz programu SAP BW.
+Teraz Kontynuuj, aby skonfigurować przyrostową kopię z poziomu SAP BW Otwórz Centrum.
 
-Przyrostowa kopia wykorzystuje mechanizm "górnym limitem", który jest oparty na **identyfikator żądania**. Ten identyfikator jest automatycznie wygenerowane w SAP BW Open koncentrator docelowy DTP. Na poniższym diagramie przedstawiono ten przepływ pracy:
+Kopia przyrostowa używa mechanizmu "High-Limit", który jest oparty na **identyfikatorze żądania**. Ten identyfikator jest generowany automatycznie w SAP BW otwartym miejscu docelowym przez DTP. Na poniższym diagramie przedstawiono ten przepływ pracy:
 
-![Schemat blokowy przepływu pracy kopiowania przyrostowego](media/load-sap-bw-data/incremental-copy-workflow.png)
+![Wykres przepływu przepływu pracy kopiowania przyrostowego](media/load-sap-bw-data/incremental-copy-workflow.png)
 
-W fabryce danych **zaczynajmy** wybierz opcję **Utwórz potok z szablonu** do użycia wbudowanych szablonów.
+Na **stronie Wprowadzenie do usługi Data Factory wybierz** pozycję **Utwórz potok na podstawie szablonu** , aby użyć wbudowanego szablonu.
 
-1. Wyszukaj **systemu SAP BW** Aby znaleźć i wybrać **przyrostowe kopiowanie z systemu SAP BW, do usługi Azure Data Lake Storage Gen2** szablonu. Ten szablon kopiuje dane do usługi Azure Data Lake Storage Gen2. Podobne przepływu pracy można użyć do skopiowania do innych typów ujścia.
+1. Wyszukaj **SAP BW** , aby znaleźć i wybrać **kopię przyrostową z SAP BW do Azure Data Lake Storage Gen2** szablonu. Ten szablon kopiuje dane do Azure Data Lake Storage Gen2. Możesz użyć podobnego przepływu pracy do kopiowania do innych typów ujścia.
 
-2. Na stronie głównej tego szablonu, wybierz lub utwórz następujące trzy połączenia, a następnie wybierz **za pomocą tego szablonu** w prawym dolnym rogu okna.
+2. Na stronie głównej szablonu wybierz lub Utwórz następujące trzy połączenia, a następnie wybierz pozycję **Użyj tego szablonu** w prawym dolnym rogu okna.
 
-   - **Usługa Azure Blob storage**: W tym przewodniku używamy usługi Azure Blob storage do przechowywania górny limit jest *max skopiować identyfikator żądania*.
-   - **Oprogramowanie SAP BW Open Centrum**: Jest to źródła do skopiowania danych z. Zapoznaj się z poprzednim przewodniku pełne kopie, aby uzyskać szczegółową konfigurację.
-   - **Azure Data Lake Storage Gen2**: Jest to ujścia, aby skopiować dane. Zapoznaj się z poprzednim przewodniku pełne kopie, aby uzyskać szczegółową konfigurację.
+   - **Magazyn obiektów blob platformy Azure**: w tym przewodniku usługa Azure Blob Storage jest używana do przechowywania górnego limitu, który jest *maksymalnym skopiowanym identyfikatorem żądania*.
+   - **SAP BW otworzyć Centrum**: jest to źródło, z którego mają zostać skopiowane dane. Szczegółowe informacje na temat konfiguracji można znaleźć w poprzednim przewodniku pełnego kopiowania.
+   - **Azure Data Lake Storage Gen2**: jest to ujścia, do którego mają zostać skopiowane dane. Szczegółowe informacje na temat konfiguracji można znaleźć w poprzednim przewodniku pełnego kopiowania.
 
-   ![Przyrostowe kopiowanie danych z szablonu programu SAP BW](media/load-sap-bw-data/incremental-copy-from-sap-bw-template.png)
+   ![Kopia przyrostowa z szablonu SAP BW](media/load-sap-bw-data/incremental-copy-from-sap-bw-template.png)
 
-3. Ten szablon generuje potok z następującymi działaniami trzy i sprawia, że ich łańcuchowa powodzenia: *Wyszukiwanie*, *kopiowanie danych*, i *Web*.
+3. Ten szablon generuje potok z następującymi trzema działaniami i sprawia, że są one powiązane z sukcesem: *Lookup*, *Kopiowanie danych*i *sieci Web*.
 
-   Przejdź do potoku **parametry** kartę. Zobaczysz wszystkie konfiguracje, które należy podać.
+   Przejdź do karty **Parametry** potoku. Zobaczysz wszystkie konfiguracje, które należy podać.
 
-   ![Przyrostowe kopiowanie danych z konfiguracji programu SAP BW](media/load-sap-bw-data/incremental-copy-from-sap-bw-pipeline-config.png)
+   ![Przyrostowa kopia z konfiguracji SAP BW](media/load-sap-bw-data/incremental-copy-from-sap-bw-pipeline-config.png)
 
-   - **SAPOpenHubDestinationName**: Określ nazwę tabeli Otwórz Centrum do skopiowania danych z.
+   - **SAPOpenHubDestinationName**: Podaj nazwę otwartej tabeli centrum, z której mają zostać skopiowane dane.
 
-   - **ADLSGen2SinkPath**: Określ ścieżkę usługi Azure Data Lake Storage Gen2 docelowego do kopiowania danych. Jeśli ścieżka nie istnieje, działanie kopiowania usługi Data Factory tworzy ścieżki podczas wykonywania.
+   - **ADLSGen2SinkPath**: określ ścieżkę Azure Data Lake Storage Gen2 lokalizacji docelowej, do której mają zostać skopiowane dane. Jeśli ścieżka nie istnieje, działanie kopiowania Data Factory tworzy ścieżkę podczas wykonywania.
 
-   - **HighWatermarkBlobPath**: Określ ścieżkę do przechowywania wartości limitu wysoka, takich jak `container/path`.
+   - **HighWatermarkBlobPath**: Określ ścieżkę do przechowywania wartości górnego limitu, takiej jak `container/path`.
 
-   - **HighWatermarkBlobName**: Określ nazwę obiektu blob do przechowywania wartości górnego limitu, takich jak `requestIdCache.txt`. W magazynie obiektów Blob, przejdź do odpowiedniej ścieżki HighWatermarkBlobPath + HighWatermarkBlobName, takich jak *container/path/requestIdCache.txt*. Tworzenie obiektu blob z zawartością 0.
+   - **HighWatermarkBlobName**: Określ nazwę obiektu BLOB do przechowywania wartości górnego limitu, takiej jak `requestIdCache.txt`. W usłudze BLOB Storage przejdź do odpowiedniej ścieżki HighWatermarkBlobPath + HighWatermarkBlobName, takich jak *Container/Path/requestIdCache. txt*. Utwórz obiekt BLOB z zawartością 0.
 
-      ![Zawartość obiektu blob](media/load-sap-bw-data/blob.png)
+      ![Zawartość obiektu BLOB](media/load-sap-bw-data/blob.png)
 
-   - **LogicAppURL**: W tym szablonie używamy WebActivity do wywołania usługi Azure Logic Apps, aby ustawić wartość limitu wysokiej w magazynie obiektów Blob. Alternatywnie można użyć usługi Azure SQL Database, zapisz go. Użyj działania procedury składowanej, aby zaktualizować wartość.
+   - **LogicAppURL**: w tym szablonie używamy działania webactivity do wywołania Azure Logic Apps, aby ustawić wartość górnego limitu w magazynie obiektów BLOB. Można też użyć Azure SQL Database, aby go zapisać. Aby zaktualizować wartość, Użyj działania procedury składowanej.
 
-      Należy najpierw utworzyć aplikację logiki, jak przedstawiono na poniższym obrazie. Następnie wklej w **HTTP POST URL**.
+      Najpierw należy utworzyć aplikację logiki, jak pokazano na poniższej ilustracji. Następnie wklej w **adresie URL post protokołu HTTP**.
 
       ![Konfiguracja aplikacji logiki](media/load-sap-bw-data/logic-app-config.png)
 
-      1. Przejdź do witryny Azure Portal. Wybierz nową **Logic Apps** usługi. Wybierz **+ pusta aplikacja logiki** można przejść do **Projektant aplikacji logiki**.
+      1. Przejdź do witryny Azure Portal. Wybierz nową usługę **Logic Apps** . Wybierz pozycję **+ pusta aplikacja logiki** , aby przejść do narzędzia **Logic Apps Designer**.
 
-      2. Tworzenie wyzwalacza **zostanie odebrane żądanie HTTP podczas**. Określ treść żądania HTTP w następujący sposób:
+      2. Utwórz wyzwalacz **po odebraniu żądania HTTP**. Określ treść żądania HTTP w następujący sposób:
 
          ```json
          {
@@ -185,90 +185,90 @@ W fabryce danych **zaczynajmy** wybierz opcję **Utwórz potok z szablonu** do u
          }
          ```
 
-      3. Dodaj **Utwórz obiekt blob** akcji. Dla **ścieżka folderu** i **nazwa obiektu Blob**, użyj tej samej wartości, które wcześniej skonfigurowane w **HighWatermarkBlobPath** i **HighWatermarkBlobName**.
+      3. Dodaj akcję **Utwórz obiekt BLOB** . W polu **ścieżka folderu** i **Nazwa obiektu BLOB**Użyj tych samych wartości, które zostały wcześniej skonfigurowane w **HighWatermarkBlobPath** i **HighWatermarkBlobName**.
 
-      4. Wybierz pozycję **Zapisz**. Następnie skopiuj wartość **HTTP POST URL** do użycia w potoku usługi fabryka danych.
+      4. Wybierz pozycję **Zapisz**. Następnie skopiuj wartość **adresu URL post protokołu HTTP** do użycia w potoku Data Factory.
 
-4. Po podaniu parametrów potoku fabryki danych wybierz **debugowania** > **Zakończ** aby wywołać przebieg, aby zweryfikować konfigurację. Lub wybierz **Opublikuj wszystkie** publikowania zmian, a następnie wybierz pozycję **wyzwalacza** można wykonać uruchomienia.
+4. Po podaniu parametrów potoku Data Factory wybierz pozycję **debuguj** > **Zakończ** , aby wywołać przebieg do sprawdzania poprawności konfiguracji. Lub wybierz pozycję **Opublikuj wszystkie** , aby opublikować zmiany, a następnie wybierz **wyzwalacz** , aby wykonać przebieg.
 
-## <a name="sap-bw-open-hub-destination-configurations"></a>Konfiguracje SAP BW Open koncentrator docelowy
+## <a name="sap-bw-open-hub-destination-configurations"></a>SAP BW otwieranie konfiguracji miejsca docelowego centrum
 
-Ta sekcja wprowadza konfiguracji po stronie SAP BW do korzystania z łącznika SAP BW Open Centrum w usłudze Data Factory do kopiowania danych.
+W tej części przedstawiono konfigurację strony SAP BW, która umożliwia używanie łącznika SAP BW Open Hub w Data Factory do kopiowania danych.
 
-### <a name="configure-delta-extraction-in-sap-bw"></a>Konfigurowanie wyodrębniania zmian w SAP BW
+### <a name="configure-delta-extraction-in-sap-bw"></a>Konfigurowanie wyodrębniania różnicowego w SAP BW
 
-Jeśli potrzebujesz historycznej kopii i kopiowania przyrostowego lub tylko kopiowania przyrostowego należy skonfigurować wyodrębniania delta w SAP BW.
+Jeśli wymagana jest kopia historyczna oraz kopia przyrostowa lub tylko kopia przyrostowa, skonfiguruj wyodrębnianie zmian w SAP BW.
 
-1. Utwórz docelowy Otwórz Centrum. Możesz utworzyć OHD w RSA1 transakcji SAP, co powoduje automatyczne utworzenie procesu transferu danych i wymaganych przekształcania. Użyj następujących ustawień:
+1. Utwórz miejsce docelowe otwierania centrum. Można utworzyć OHD w usłudze SAP Transaction RSA1, która automatycznie tworzy wymaganą transformację i transfer danych. Użyj następujących ustawień:
 
-   - **ObjectType**: Można użyć dowolnego typu obiektu. W tym miejscu użyjemy **InfoCube** jako przykład.
-   - **Typ docelowy**: Wybierz **bazy danych tabeli**.
-   - **Klucz tabeli**: Wybierz **techniczne klucz**.
-   - **Wyodrębnianie**: Wybierz **zachować dane i wstawiania rekordów do tabeli**.
+   - **ObjectType**: można użyć dowolnego typu obiektu. Oto przykład użycia **InfoCube** .
+   - **Typ docelowy**: Wybierz **tabelę bazy danych**.
+   - **Klucz tabeli**: Wybierz **klucz techniczny**.
+   - **Wyodrębnianie**: wybierz pozycję **Zachowaj dane i Wstaw rekordy do tabeli**.
 
-   ![Utwórz okno dialogowe programu SAP BW OHD delta wyodrębniania](media/load-sap-bw-data/create-sap-bw-ohd-delta.png)
+   ![Tworzenie okna dialogowego wyodrębnianie zmian SAP BW OHD](media/load-sap-bw-data/create-sap-bw-ohd-delta.png)
 
-   ![Utwórz okno dialogowe programu SAP BW OHD delta2 wyodrębniania](media/load-sap-bw-data/create-sap-bw-ohd-delta2.png)
+   ![Okno dialogowe tworzenia SAP BW OHD Delta2](media/load-sap-bw-data/create-sap-bw-ohd-delta2.png)
 
    Można zwiększyć liczbę równoległych uruchomionych procesów roboczych SAP dla DTP:
 
-   ![create-sap-bw-ohd-delta3](media/load-sap-bw-data/create-sap-bw-ohd-delta3.png)
+   ![Create-SAP-BW-OHD-delta3](media/load-sap-bw-data/create-sap-bw-ohd-delta3.png)
 
-2. Zaplanuj DTP w łańcuchy procesu.
+2. Zaplanuj DTP w łańcuchach procesów.
 
-   Różnicowa DTP dla modułu tylko wtedy, gdy jeszcze nie zostały skompresowane niezbędne wierszy. Upewnij się, że BW modułu kompresji nie jest uruchomione przed DTP do tabeli Otwórz Centrum. W tym celu najłatwiej nad zintegrowaniem DTP swoje istniejące łańcuchów procesu. W poniższym przykładzie DTP (w celu OHD) są wstawiane do łańcucha procesu między *Dostosuj* (zbiorczy agregacji) i *Zwiń* kroki (modułu kompresją).
+   DTP Delta dla modułu działa tylko wtedy, gdy niezbędne wiersze nie zostały skompresowane. Upewnij się, że kompresja modułu wagi nie jest uruchomiona przed DTP do otwartej tabeli centrum. Najprostszym sposobem, aby to zrobić, jest zintegrowanie DTP z istniejącymi łańcuchami procesów. W poniższym przykładzie DTP (do OHD) jest wstawiany do łańcucha procesów między krokami *Dostosowywanie* (agregowanie agregacji) i *zwijaniem* (kompresja modułu).
 
-   ![Tworzenie schematu blokowego łańcuch proces programu SAP BW](media/load-sap-bw-data/create-sap-bw-process-chain.png)
+   ![Utwórz wykres przepływu łańcucha procesów SAP BW](media/load-sap-bw-data/create-sap-bw-process-chain.png)
 
-### <a name="configure-full-extraction-in-sap-bw"></a>Konfigurowanie pełnej wyodrębniania w SAP BW
+### <a name="configure-full-extraction-in-sap-bw"></a>Skonfiguruj pełną wyodrębnianie w SAP BW
 
-Oprócz wyodrębniania delta możesz zechcieć pełną wyodrębniania samej InfoProvider BW SAP. Dotyczy to zazwyczaj aby pełna kopia, ale nie przyrostowe, lub jeśli chcesz [ponowna synchronizacja różnicowa wyodrębniania](#resync-delta-extraction).
+Oprócz ekstrakcji różnicowych można chcieć przeprowadzić pełną ekstrakcję tego samego SAP BW InfoProvider. Zwykle ma to zastosowanie w przypadku, gdy chcesz wykonać pełną kopię, ale nie przyrostową, lub chcesz ponownie [synchronizować wyodrębnianie różnicowe](#resync-delta-extraction).
 
-Dla tego samego OHD, nie może mieć więcej niż jeden DTP. Tak należy utworzyć dodatkowe OHD przed wyodrębniania delta.
+Nie można mieć więcej niż jednego DTP dla tego samego OHDu. Dlatego należy utworzyć dodatkowe OHD przed rozpoczęciem ekstrakcji różnicowej.
 
-![Utwórz SAP BW OHD pełne](media/load-sap-bw-data/create-sap-bw-ohd-full.png)
+![Utwórz pełne SAP BW OHD](media/load-sap-bw-data/create-sap-bw-ohd-full.png)
 
-Pełne ładowanie OHD wybierz różne opcje niż do wyodrębnienia zmian:
+W przypadku pełnego obciążenia OHD wybierz różne opcje niż w przypadku wyodrębniania różnicowego:
 
-- W OHD: Ustaw **wyodrębniania** opcję **Usuń dane oraz wstawiania rekordów**. W przeciwnym razie dane zostaną wyodrębnione wiele razy, gdy Powtórz DTP w łańcuch proces BW.
+- W OHD: Ustaw opcję **wyodrębniania** , aby **usunąć dane i wstawić rekordy**. W przeciwnym razie dane zostaną wyodrębnione wielokrotnie podczas powtarzania DTP w łańcuchu procesów w sieci.
 
-- W DTP: Ustaw **tryb wyodrębniania** do **pełne**. Należy zmienić automatycznie utworzone DTP z **Delta** do **pełne** natychmiast po OHD, jak pokazano na tej ilustracji:
+- W DTP: Ustaw **tryb wyodrębniania** na **pełny**. Należy zmienić automatycznie utworzone DTP od **delty** do **pełnego** natychmiast po utworzeniu OHD, jak pokazano w tym obrazie:
 
-   ![Tworzenie programu SAP BW OHD skonfigurowane do wyodrębnienia "Pełnej" okno dialogowe](media/load-sap-bw-data/create-sap-bw-ohd-full2.png)
+   ![Utwórz okno dialogowe SAP BW OHD skonfigurowane do ekstrakcji "Full"](media/load-sap-bw-data/create-sap-bw-ohd-full2.png)
 
-- W łączniku BW Open Centrum usługi Data Factory: Wyłącz **Wyklucz ostatnie żądanie**. W przeciwnym razie nic nie zostanie wyodrębniona.
+- W oknie łącznika z otwartym centrum w usłudze BW Data Factory: Wyłącz opcję **Wyklucz ostatnie żądanie**. W przeciwnym razie nic nie zostanie wyodrębnione.
 
-Zazwyczaj uruchomić pełne DTP ręcznie. Alternatywnie można utworzyć łańcuch procesów dla pełnego DTP. Zazwyczaj jest oddzielne łańcucha, która jest niezależna od istniejącej łańcuchów procesu. W obu przypadkach *upewnij się, że DTP została zakończona, przed rozpoczęciem ekstrakcji przy użyciu usługi fabryka danych kopii*. W przeciwnym razie zostaną skopiowane tylko częściowe dane.
+Zwykle ręcznie uruchamiasz pełne DTP. Można też utworzyć łańcuch procesów dla pełnej DTP. Zwykle jest to oddzielny łańcuch, który jest niezależny od istniejących łańcuchów procesów. W obu przypadkach upewnij się, *że DTP jest zakończona przed rozpoczęciem wyodrębniania za pomocą kopii Data Factory*. W przeciwnym razie zostaną skopiowane tylko częściowe dane.
 
-### <a name="run-delta-extraction-the-first-time"></a>Uruchom wyodrębniania delta po raz pierwszy
+### <a name="run-delta-extraction-the-first-time"></a>Uruchom wyodrębnianie zmian po raz pierwszy
 
-Pierwszy wyodrębniania delta jest technicznie *pełne wyodrębniania*. Domyślnie łącznik SAP BW Open Centrum wyklucza ostatniego żądania podczas kopiowania danych. Dla pierwszej ekstrakcji delta nie wyodrębniania danych przez działanie kopiowania usługi Data Factory do momentu kolejnych DTP generuje dane przyrostowe w tabeli z identyfikatorem oddzielne żądanie. Istnieją dwa sposoby, aby uniknąć tego scenariusza:
+Pierwsza Ekstrakcja różnicowa jest technicznie *pełna*. Domyślnie łącznik programu SAP BW Open Hub wyklucza ostatnie żądanie, gdy kopiuje dane. W przypadku pierwszej ekstrakcji różnicowych żadne dane nie są wyodrębniane przez działanie Data Factory Copy, dopóki kolejne DTP nie generują danych różnicowych w tabeli z oddzielnym IDENTYFIKATORem żądania. Istnieją dwa sposoby, aby uniknąć tego scenariusza:
 
-- Wyłącz **Wyklucz ostatnie żądanie** opcję dla pierwszej ekstrakcji delta. Upewnij się, pierwsze delta DTP zostało zakończone przed rozpoczęciem wyodrębniania delta po raz pierwszy.
--  Na użytek Procedura ponownej synchronizacji wyodrębniania różnicowych zgodnie z opisem w następnej sekcji.
+- Wyłącz opcję **Wyklucz ostatnie żądanie** dla pierwszej ekstrakcji różnicowej. Przed rozpoczęciem wyodrębniania zmian po raz pierwszy należy się upewnić, że pierwsze DTP Delta zostało zakończone.
+-  Użyj procedury ponownej synchronizacji wyodrębniania różnicowego, zgodnie z opisem w następnej sekcji.
 
-### <a name="resync-delta-extraction"></a>Ponowna synchronizacja różnicowa wyodrębniania
+### <a name="resync-delta-extraction"></a>Ponowna synchronizacja ekstrakcji różnicowej
 
-Następujące scenariusze zmiany danych w modułach programu SAP BW, ale nie są uważane za przez różnicowe DTP:
+Poniższe scenariusze zmieniają dane w modułach SAP BW, ale nie są one uwzględniane przez DTP Delta:
 
-- System SAP BW selektywne usuwanie (wierszy przy użyciu dowolny warunek filtru)
-- System SAP BW żądanie usunięcia (wadliwe żądań)
+- SAP BW selektywne usuwanie (wierszy przy użyciu dowolnego warunku filtru)
+- Usuwanie żądania SAP BW (wadliwe żądania)
 
-SAP Otwórz Centrum nie jest to cel dane podlegające składnicy danych (w wszystkich pakietów obsługi programu SAP BW od 2015). Tak można usunąć dane z modułu bez wprowadzania zmian w danych w OHD. Następnie należy ponownie zsynchronizować danych modułu przy użyciu usługi fabryka danych:
+Miejsce docelowe typu "Open Hub" SAP nie jest celem danych kontrolowanym przez składnię danych (we wszystkich SAP BW pakietach pomocy technicznej od 2015). W związku z tym można usunąć dane z modułu bez zmiany danych w OHD. Następnie należy ponownie zsynchronizować dane modułu z Data Factory:
 
-1. Uruchom pełną wyodrębniania w usłudze Data Factory (przy użyciu pełnej DTP w systemie SAP).
-2. Usuń wszystkie wiersze w tabeli Centrum Otwórz różnicowych DTP.
-3. Ustaw stan różnicowych DTP do **pobrano**.
+1. Uruchom pełną wyodrębnianie w Data Factory (przy użyciu pełnej DTP w oprogramowaniu SAP).
+2. Usuń wszystkie wiersze z otwartej tabeli centrum DTP Delta.
+3. Ustaw stan DTP Delta do **pobrania**.
 
-Po przypisaniu wszystkich kolejnych różnicowych DTPs i fabryki danych różnicowych wyodrębniania działać zgodnie z oczekiwaniami.
+Po wykonaniu tej czynności wszystkie kolejne DTPs różnicowe i Data Factory wyodrębnianie różnicowe działają zgodnie z oczekiwaniami.
 
-Aby ustawić stan delta DTP do **pobrano**, można użyć następujących opcji ręcznie uruchomić delta DTP:
+Aby ustawić stan DTP Delta do **pobrania**, można użyć następującej opcji, aby ręcznie uruchomić różnicowe DTP:
 
     *No Data Transfer; Delta Status in Source: Fetched*
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
-Dowiedz się więcej o obsłudze łącznik SAP BW Open Centrum:
+Dowiedz się więcej o SAP BW pomocy technicznej łącznika centrum:
 
 > [!div class="nextstepaction"]
->[Łącznika systemu SAP Business Warehouse Otwórz Centrum](connector-sap-business-warehouse-open-hub.md)
+>[Łącznik centrum SAP Business Warehouse Open Hub](connector-sap-business-warehouse-open-hub.md)

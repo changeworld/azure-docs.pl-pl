@@ -1,5 +1,5 @@
 ---
-title: Szczegółowe informacje o wydajności zapytań Azure SQL Database | Microsoft Docs
+title: Szczegółowe informacje o wydajności zapytań Azure SQL Database
 description: Monitorowanie wydajności zapytań identyfikuje większość zapytań zużywających procesor CPU dla bazy danych SQL Azure.
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: danimir
 ms.author: danil
 ms.reviewer: jrasnik, carlrab
 ms.date: 01/03/2019
-ms.openlocfilehash: 659022f625604fe31c2ce47978d1132b20b7ffc8
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: eb6827669829dc7aeeb6758a07218a29955b3682
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68567023"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73687601"
 ---
 # <a name="query-performance-insight-for-azure-sql-database"></a>Szczegółowe informacje o wydajności zapytań Azure SQL Database
 
@@ -44,7 +44,7 @@ Szczegółowe informacje o wydajności zapytań wymaga, aby [Magazyn zapytań](h
 
 Do korzystania z Szczegółowe informacje o wydajności zapytań są wymagane następujące uprawnienia [kontroli dostępu opartej na rolach](../role-based-access-control/overview.md) :
 
-* Aby wyświetlić najpopularniejsze zapytania i wykresy, wymagane są uprawnienia czytelnika, **właściciel**, **współautor**, współautor **bazy danych SQL**lub **SQL Server współautor** .
+* Aby wyświetlić najpopularniejsze zapytania i wykresy, wymagane są uprawnienia **czytelnika**, **właściciel**, **współautor**, współautor **bazy danych SQL**lub **SQL Server współautor** .
 * Do wyświetlania tekstu zapytania wymagane są uprawnienia **właściciel**, **współautor**, **współautor bazy danych SQL**lub współautor **SQL Server** .
 
 ## <a name="use-query-performance-insight"></a>Korzystanie ze szczegółowych informacji o wydajności zapytań
@@ -52,13 +52,13 @@ Do korzystania z Szczegółowe informacje o wydajności zapytań są wymagane na
 Szczegółowe informacje o wydajności zapytań jest łatwe w użyciu:
 
 1. Otwórz [Azure Portal](https://portal.azure.com/) i Znajdź bazę danych, którą chcesz sprawdzić.
-2. Z menu po lewej stronie Otwórz pozycję **Intelligent Performance** > **szczegółowe informacje o wydajności zapytań**.
+2. W menu po lewej stronie Otwórz pozycję **Intelligent performance** **szczegółowe informacje o wydajności zapytań** > .
   
    ![Szczegółowe informacje o wydajności zapytań menu](./media/sql-database-query-performance/tile.png)
 
 3. Na pierwszej karcie Przejrzyj listę najważniejszych zapytań zużywających zasoby.
 4. Wybierz pojedyncze zapytanie, aby wyświetlić jego szczegóły.
-5. Otwórz**zalecenia dotyczące** wydajności **inteligentnej wydajności** > i sprawdź, czy są dostępne jakieś zalecenia dotyczące wydajności. Aby uzyskać więcej informacji na temat wbudowanych zaleceń dotyczących wydajności, zobacz [SQL Database Advisor](sql-database-advisor.md).
+5. Otwórz > **zalecenia dotyczące wydajności** i sprawdź, czy są dostępne jakieś zalecenia **dotyczące wydajności.** Aby uzyskać więcej informacji na temat wbudowanych zaleceń dotyczących wydajności, zobacz [SQL Database Advisor](sql-database-advisor.md).
 6. Użyj suwaków lub powiększ ikony, aby zmienić obserwowany interwał.
 
    ![Pulpit nawigacyjny wydajności](./media/sql-database-query-performance/performance.png)
@@ -83,7 +83,7 @@ Domyślnie Szczegółowe informacje o wydajności zapytań pokazuje pięć najwa
    >
    > Aby zapoznać się z dokładniejszym porównaniem (do jednej minuty), należy rozważyć utworzenie niestandardowego wykresu wykorzystania jednostek DTU:
    >
-   > 1. W Azure Portal wybierz pozycję **Azure SQL Database** > **monitorowanie**.
+   > 1. W Azure Portal wybierz pozycję **Azure SQL Database** **monitorowanie** > .
    > 2. Wybierz pozycję **Metryki**.
    > 3. Wybierz pozycję **+ Dodaj wykres**.
    > 4. Na wykresie wybierz wartość procentową jednostek DTU.
@@ -104,7 +104,7 @@ Domyślnie Szczegółowe informacje o wydajności zapytań pokazuje pięć najwa
 
    ![Suwaki i przyciski powiększania w celu zmiany interwału](./media/sql-database-query-performance/zoom.png)
 
-4. Opcjonalnie możesz wybrać kartę niestandardową, aby dostosować widok:
+4. Opcjonalnie możesz wybrać kartę **niestandardową** , aby dostosować widok:
 
    * Metryka (procesor, czas trwania, Liczba wykonań).
    * Przedział czasu (ostatnie 24 godziny, ubiegły tydzień lub ostatni miesiąc).
@@ -157,7 +157,7 @@ Długotrwałe zapytania mają największy potencjał do blokowania zasobów, blo
 
 Aby zidentyfikować długotrwałe zapytania:
 
-1. Otwórz kartę niestandardową w szczegółowe informacje o wydajności zapytań dla wybranej bazy danych.
+1. Otwórz kartę **niestandardową** w szczegółowe informacje o wydajności zapytań dla wybranej bazy danych.
 2. Zmień metryki na **czas trwania**.
 3. Wybierz liczbę zapytań i interwał obserwacji.
 4. Wybierz funkcję agregacji:
@@ -175,7 +175,7 @@ Aby zidentyfikować długotrwałe zapytania:
    >
    > Aby zrozumieć użycie jednostek DTU bazy danych z większą szczegółowością (do 1 minuty), rozważ utworzenie wykresu niestandardowego w Azure Portal:
    >
-   > 1. Wybierz pozycję**monitorowanie** **Azure SQL Database** > .
+   > 1. Wybierz pozycję **monitorowanie** > **Azure SQL Database** .
    > 2. Wybierz pozycję **Metryki**.
    > 3. Wybierz pozycję **+ Dodaj wykres**.
    > 4. Na wykresie wybierz wartość procentową jednostek DTU.
@@ -194,7 +194,7 @@ Na przykład wiele witryn sieci Web opartych na danych intensywnie uzyskuje dost
 
 Aby zidentyfikować często wykonywane zapytania ("rozmawianie"):
 
-1. Otwórz kartę niestandardową w szczegółowe informacje o wydajności zapytań dla wybranej bazy danych.
+1. Otwórz kartę **niestandardową** w szczegółowe informacje o wydajności zapytań dla wybranej bazy danych.
 2. Zmień metryki na **liczbę wykonań**.
 3. Wybierz liczbę zapytań i interwał obserwacji.
 4. Wybierz przycisk **przejdź >** , aby wyświetlić dostosowany widok.
@@ -237,15 +237,15 @@ Drugi przypadek występuje, gdy magazyn zapytań nie jest włączony lub paramet
 Istnieją dwa typy zasad przechowywania:
 
 * **Na podstawie rozmiaru**: Jeśli ta zasada jest ustawiona na **Automatyczne**, automatycznie czyści dane po osiągnięciu maksymalnego rozmiaru.
-* **Na podstawie czasu**: Domyślnie te zasady są ustawione na 30 dni. W przypadku braku miejsca w magazynie zapytań zostaną usunięte informacje o zapytaniu starsze niż 30 dni.
+* **Czas na podstawie**: Domyślnie te zasady są ustawione na 30 dni. W przypadku braku miejsca w magazynie zapytań zostaną usunięte informacje o zapytaniu starsze niż 30 dni.
 
 Zasady przechwytywania można ustawić na:
 
-* **Wszystkie**: Magazyn zapytań przechwytuje wszystkie zapytania.
-* Auto: Magazyn zapytań ignoruje rzadko występujące zapytania i zapytania z nieznacznym czasem trwania kompilacji i wykonania. Progi liczby wykonań, czas trwania kompilacji i czas trwania środowiska uruchomieniowego są określane wewnętrznie. Jest to opcja domyślna.
-* **Brak**: Magazyn zapytań przechwytuje nowe zapytania, ale statystyki środowiska uruchomieniowego dla już przechwyconych zapytań są nadal zbierane.
+* **Wszystko**: Magazyn zapytań przechwytuje wszystkie zapytania.
+* **Auto: Magazyn**zapytań ignoruje rzadko występujące zapytania i zapytania z nieznacznym czasem trwania kompilacji i wykonania. Progi liczby wykonań, czas trwania kompilacji i czas trwania środowiska uruchomieniowego są określane wewnętrznie. Jest to opcja domyślna.
+* **Brak**: Magazyn zapytań przerywa przechwytywanie nowych zapytań, ale statystyki środowiska uruchomieniowego dla już przechwyconych zapytań są nadal zbierane.
 
-Zalecamy ustawienie dla wszystkich zasad opcji **autoi czyszczenia** na 30 dni, wykonując następujące polecenia w programie [SSMS](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms) lub Azure Portal. (Zamień `YourDB` na nazwę bazy danych).
+Zalecamy ustawienie dla wszystkich zasad opcji **autoi czyszczenia na 30** dni, wykonując następujące polecenia w programie [SSMS](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms) lub Azure Portal. (Zastąp `YourDB` nazwą bazy danych).
 
 ```sql
     ALTER DATABASE [YourDB]
@@ -258,14 +258,14 @@ Zalecamy ustawienie dla wszystkich zasad opcji **autoi czyszczenia** na 30 dni, 
     SET QUERY_STORE (QUERY_CAPTURE_MODE = AUTO);
 ```
 
-Zwiększ rozmiar magazynu zapytań, łącząc się z bazą danych za pomocą programu [SSMS](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms) lub Azure Portal i uruchamiając następujące zapytanie. (Zamień `YourDB` na nazwę bazy danych).
+Zwiększ rozmiar magazynu zapytań, łącząc się z bazą danych za pomocą programu [SSMS](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms) lub Azure Portal i uruchamiając następujące zapytanie. (Zastąp `YourDB` nazwą bazy danych).
 
 ```T-SQL
     ALTER DATABASE [YourDB]
     SET QUERY_STORE (MAX_STORAGE_SIZE_MB = 1024);
 ```
 
-Zastosowanie tych ustawień spowoduje, że magazyn zapytań zbiera dane telemetryczne dla nowych zapytań. Jeśli potrzebujesz od razu działania magazynu zapytań, możesz wybrać opcję czyszczenia magazynu zapytań, uruchamiając następujące zapytanie za pomocą programu SSMS lub Azure Portal. (Zamień `YourDB` na nazwę bazy danych).
+Zastosowanie tych ustawień spowoduje, że magazyn zapytań zbiera dane telemetryczne dla nowych zapytań. Jeśli potrzebujesz od razu działania magazynu zapytań, możesz wybrać opcję czyszczenia magazynu zapytań, uruchamiając następujące zapytanie za pomocą programu SSMS lub Azure Portal. (Zastąp `YourDB` nazwą bazy danych).
 
 > [!NOTE]
 > Uruchomienie następującego zapytania spowoduje usunięcie wszystkich poprzednio zebranych danych telemetrycznych w magazynie zapytań.

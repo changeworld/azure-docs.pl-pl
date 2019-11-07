@@ -9,12 +9,12 @@ ms.date: 03/21/2019
 ms.author: tamram
 ms.reviewer: santoshc
 ms.subservice: common
-ms.openlocfilehash: e7f4d58ceab78aea7031d2c706504bdcb99434c6
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: a02e690e344678b512503f8c3beb57023a838ac0
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73520655"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73686658"
 ---
 # <a name="configure-azure-storage-firewalls-and-virtual-networks"></a>Konfigurowanie zapór i sieci wirtualnych usługi Azure Storage
 
@@ -364,35 +364,34 @@ Reguły sieciowe pomagają w tworzeniu bezpiecznego środowiska dla połączeń 
 
 Niektóre usługi firmy Microsoft działają z sieci, które nie mogą być uwzględnione w regułach sieci. Można przyznać podzbiór takich zaufanych usług firmy Microsoft dostęp do konta magazynu przy zachowaniu reguł sieci dla innych aplikacji. Te zaufane usługi mogą następnie używać silnego uwierzytelniania do bezpiecznego łączenia się z kontem magazynu. Włączamy dwa typy zaufanych dostępu dla usług firmy Microsoft.
 
-- Zasoby niektórych usług, **Jeśli są zarejestrowane w ramach subskrypcji**, mogą uzyskać dostęp do kont magazynu **w ramach tej samej subskrypcji** tylko dla operacji wybranych, takich jak zapisywanie dzienników lub tworzenie kopii zapasowej.
-- Do wystąpień zasobów niektórych usług można uzyskać jawny dostęp do konta magazynu, [**przypisując rolę RBAC**](storage-auth-aad.md#assign-rbac-roles-for-access-rights) do wystąpienia zasobu.
+- Zasoby niektórych usług, które są **rejestrowane w ramach subskrypcji**, mogą uzyskiwać dostęp do konta magazynu **w ramach tej samej subskrypcji** dla operacji wybierania, takich jak zapisywanie dzienników lub kopia zapasowa.
+- Do zasobów niektórych usług można uzyskać jawny dostęp do konta magazynu, [**przypisując rolę RBAC**](storage-auth-aad.md#assign-rbac-roles-for-access-rights) do wystąpienia zasobu.
 
 
-W przypadku włączenia wyjątku **Zezwalaj na zaufane usługi firmy Microsoft..** . (Jeśli zarejestrowano w subskrypcji) przyznano dostęp do konta magazynu dla operacji wybierania zgodnie z opisem:
+Po włączeniu ustawienia **Zezwalaj na zaufane usługi firmy Microsoft..** . dla zasobów następujących usług, które są zarejestrowane w ramach tej samej subskrypcji, co konto magazynu, zostanie udzielony dostęp do ograniczonego zestawu operacji zgodnie z opisem:
 
-| Usługa                  | Nazwa dostawcy zasobów     | Przeznaczenie                            |
+| Usługa                  | Nazwa dostawcy zasobów     | Dozwolone operacje                 |
 |:------------------------ |:-------------------------- |:---------------------------------- |
 | Azure Backup             | Microsoft. RecoveryServices | Uruchamianie kopii zapasowych i przywracanie dysków niezarządzanych w IAAS maszynach wirtualnych. (niewymagane w przypadku dysków zarządzanych). [Dowiedz się więcej](/azure/backup/backup-introduction-to-azure-backup). |
-| Urządzenie Azure Data Box           | Microsoft. DataBox          | Umożliwia importowanie danych na platformę Azure przy użyciu urządzenie Data Box. [Dowiedz się więcej](/azure/databox/data-box-overview). |
+| Azure Data Box           | Microsoft. DataBox          | Umożliwia importowanie danych na platformę Azure przy użyciu urządzenie Data Box. [Dowiedz się więcej](/azure/databox/data-box-overview). |
 | Azure DevTest Labs       | Microsoft. wspólny       | Tworzenie obrazu niestandardowego i instalacja artefaktu. [Dowiedz się więcej](/azure/devtest-lab/devtest-lab-overview). |
 | Azure Event Grid         | Microsoft. EventGrid        | Włącz Blob Storage publikowanie zdarzeń i zezwól Event Grid na publikowanie w kolejkach magazynu. Informacje o [zdarzeniach magazynu obiektów BLOB](/azure/event-grid/event-sources) i [publikowaniu w kolejkach](/azure/event-grid/event-handlers). |
 | Azure Event Hubs         | Microsoft. EventHub         | Archiwizuj dane przy użyciu funkcji przechwytywania Event Hubs. [Dowiedz się więcej](/azure/event-hubs/event-hubs-capture-overview). |
 | Azure File Sync          | Microsoft. StorageSync      | Umożliwia przekształcenie serwera plików Premium na pamięć podręczną dla udziałów plików platformy Azure. Umożliwienie synchronizacji obejmujących wiele witryn, szybkie odzyskiwanie po awarii i tworzenie kopii zapasowej po stronie chmury. [Dowiedz się więcej](../files/storage-sync-files-planning.md) |
-| Azure HDInsight          | Microsoft. HDInsight        | Zainicjuj wstępną zawartość domyślnego systemu plików dla nowego klastra usługi HDInsight. [Dowiedz się więcej](https://azure.microsoft.com/blog/enhance-hdinsight-security-with-service-endpoints/). |
-| Azure Machine Learning | Microsoft.MachineLearningServices | Autoryzowane Azure Machine Learning obszary robocze zapisują dane wyjściowe eksperymentu, modele i dzienniki w usłudze BLOB Storage. [Dowiedz się więcej](/azure/machine-learning/service/how-to-enable-virtual-network#use-a-storage-account-for-your-workspace).   
+| Azure HDInsight          | Microsoft. HDInsight        | Zainicjuj wstępną zawartość domyślnego systemu plików dla nowego klastra usługi HDInsight. [Dowiedz się więcej](/azure/hdinsight/hdinsight-hadoop-use-blob-storage). |
 | Azure Monitor            | Microsoft. Insights         | Umożliwia zapisywanie danych monitorowania na zabezpieczonym koncie magazynu [Dowiedz się więcej](/azure/monitoring-and-diagnostics/monitoring-roles-permissions-security). |
 | Sieci systemu Azure         | Microsoft.Network          | Przechowywanie i analizowanie dzienników ruchu sieciowego. [Dowiedz się więcej](/azure/network-watcher/network-watcher-packet-capture-overview). |
 | Azure Site Recovery      | Microsoft. SiteRecovery     | Włącz replikację na potrzeby odzyskiwania po awarii maszyn wirtualnych platformy Azure IaaS w przypadku korzystania z pamięci podręcznej z włączoną zaporą, źródła lub docelowego konta magazynu.  [Dowiedz się więcej](https://docs.microsoft.com/azure/site-recovery/azure-to-azure-tutorial-enable-replication). |
 
-**Zezwalaj na zaufane usługi firmy Microsoft..** . Exception umożliwia określonemu wystąpieniu poniższych usług uzyskanie dostępu do konta magazynu, jeśli jawnie przypiszesz rolę RBAC do [zarządzanej tożsamości przypisanej do systemu](../../active-directory/managed-identities-azure-resources/overview.md) dla tego wystąpienia zasobu.
+Ustawienie **Zezwalaj na zaufane usługi firmy Microsoft...** umożliwia określonemu wystąpieniu poniższych usług uzyskanie dostępu do konta magazynu, jeśli jawnie przypiszesz rolę RBAC do [zarządzanej tożsamości przypisanej do systemu](../../active-directory/managed-identities-azure-resources/overview.md) dla tego wystąpienia zasobu.
 
 | Usługa                        | Nazwa dostawcy zasobów          | Przeznaczenie                            |
 | :----------------------------- | :------------------------------ | :--------------------------------- |
 | Azure Data Factory             | Microsoft. DataFactory/fabryki | Zezwala na dostęp do kont magazynu za pomocą środowiska uruchomieniowego ADF. |
-| Azure Logic Apps               | Microsoft. Logic/przepływy pracy       | Umożliwia aplikacjom logiki dostęp do kont magazynu. |
+| Azure Logic Apps               | Microsoft. Logic/przepływy pracy       | Umożliwia aplikacjom logiki dostęp do kont magazynu. [Dowiedz się więcej](/azure/logic-apps/create-managed-service-identity#authenticate-access-with-managed-identity.md). |
 | Usługa Azure Machine Learning | Microsoft.MachineLearningServices | Autoryzowane Azure Machine Learning obszary robocze zapisują dane wyjściowe eksperymentu, modele i dzienniki w usłudze BLOB Storage. [Dowiedz się więcej](/azure/machine-learning/service/how-to-enable-virtual-network#use-a-storage-account-for-your-workspace). | 
 | Azure SQL Data Warehouse       | Microsoft.Sql                   | Umożliwia importowanie i eksportowanie danych z określonych wystąpień SQL Database przy użyciu bazy. [Dowiedz się więcej](/azure/sql-database/sql-database-vnet-service-endpoint-rule-overview). |
-| Azure Stream Analytics         | Microsoft. StreamAnalytics       | Umożliwia zapisanie danych z zadania przesyłania strumieniowego w usłudze BLOB Storage. Ta funkcja jest obecnie dostępna w wersji zapoznawczej. [Dowiedz się więcej](../../stream-analytics/blob-output-managed-identity.md). |
+| Azure Stream Analytics         | Microsoft. StreamAnalytics       | Umożliwia zapisanie danych z zadania przesyłania strumieniowego w usłudze BLOB Storage. Ta funkcja jest obecnie dostępna w wersji zapoznawczej. [Dowiedz się więcej](/azure/stream-analytics/blob-output-managed-identity.md). |
 
 
 ### <a name="storage-analytics-data-access"></a>Dostęp do danych w usłudze Storage Analytics

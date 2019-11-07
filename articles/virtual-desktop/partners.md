@@ -5,14 +5,14 @@ services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
 ms.topic: conceptual
-ms.date: 10/30/2019
+ms.date: 11/05/2019
 ms.author: helohr
-ms.openlocfilehash: b62351f1d99ef54d2416a2427264aea225afc5a8
-ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
+ms.openlocfilehash: cf344d6c551ecd3d301d79c29efe9e7adb7f8d83
+ms.sourcegitcommit: 359930a9387dd3d15d39abd97ad2b8cb69b8c18b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73171612"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73646890"
 ---
 # <a name="windows-virtual-desktop-partner-integrations"></a>Integracja z partnerem pulpitu wirtualnego systemu Windows
 
@@ -24,7 +24,7 @@ W tym artykule wymieniono partnerów pulpitu wirtualnego systemu Windows.
 
 Citrix to zatwierdzony dostawca, który oferuje firmowe scentralizowane zarządzanie hybrydowymi aplikacjami wirtualnymi i pulpitami na platformie Azure, obok wdrożeń lokalnych. Obszar roboczy Citrix z usługą Virtual Apps i komputery stacjonarne umożliwia użytkownikom dostęp do aplikacji i komputerów stacjonarnych z dowolnego urządzenia, wykorzystując zaawansowany protokół Citrix HDX w celu zapewnienia wysokiej jakości doświadczenia z dowolnego miejsca.
 
-Firma Citrix rozszerza wartość pulpitu wirtualnego systemu Windows z niezawodnymi narzędziami korporacyjnymi, aby zwiększyć gęstość i wydajność użytkowników, obsługiwać obciążenia na żądanie oraz uprościć zarządzanie obrazami i aplikacjami. Pozwala zoptymalizować koszty dzięki inteligentnym narzędziom do skalowania, a jednocześnie zapewnia niezawodne środowisko użytkownika końcowego, które zostało przetestowane w oparciu o trudniejsze aplikacje między branżami.
+Firma Citrix rozszerza wartość pulpitu wirtualnego systemu Windows z niezawodnymi narzędziami korporacyjnymi, aby zwiększyć gęstość i wydajność użytkowników, obsługiwać obciążenia na żądanie oraz uprościć zarządzanie obrazami i aplikacjami. Pozwala zoptymalizować koszty dzięki inteligentnym narzędziom do skalowania, jednocześnie dostarczając niezawodne środowisko użytkownika, które jest przetestowane w oparciu o trudniejsze aplikacje w branży. Ponadto pulpity zarządzane Citrix to program obsługujący komputery stacjonarne jako usługa, który udostępnia proste, oparte na chmurze rozwiązanie do dostarczania aplikacji wirtualnych i pulpitów do dowolnego urządzenia.
 
 - [Przejdź do witryny sieci Web partnera](https://more.citrix.com/wvd).
 
@@ -44,7 +44,7 @@ Jako zatwierdzony dostawca korzyści z pulpitu wirtualnego systemu Windows zosta
 
 ![Logo CloudJumper](./media/partners/cloudjumper.png)
 
-CloudJumper to dostawca usług dodanej przez pulpit wirtualny systemu Windows, który służy do udostępniania dostawców rozwiązań i korporacyjnej IT w ramach oprogramowania do całościowego aprowizacji środowisk pulpitu wirtualnego systemu Windows i zarządzania nimi. Dzięki oprogramowaniu CloudJumper można zarządzać każdą warstwą wdrożenia pulpitu wirtualnego systemu Windows. Dostarczanie obciążeń i aplikacji jest zautomatyzowane, dzięki czemu użytkownicy mogą szybko uzyskiwać dostęp do swoich pulpitów w dowolnym miejscu na dowolnym urządzeniu.
+CloudJumper to dostawca usług dodanego pulpitu wirtualnego systemu Windows, który udostępnia dostawców rozwiązań i Enterprise IT z oprogramowaniem w celu całościowego udostępniania środowisk pulpitu wirtualnego systemu Windows i zarządzania nimi. Dzięki oprogramowaniu CloudJumper można zarządzać każdą warstwą wdrożenia pulpitu wirtualnego systemu Windows. Dostarczanie obciążeń i aplikacji jest zautomatyzowane, dzięki czemu użytkownicy mogą szybko uzyskiwać dostęp do swoich pulpitów w dowolnym miejscu na dowolnym urządzeniu.
 
 Oprogramowanie CloudJumper, pakiet zarządzania obszarem roboczym w chmurze rozszerza wartość pulpitu wirtualnego systemu Windows, upraszczając wdrażanie i bieżące zadania administracyjne na platformie Azure. W jednym z okien szklanych można udostępniać i optymalizować infrastrukturę dla obszarów roboczych użytkowników oraz zarządzać nią. Aparat wyzwalania skryptu prostego CloudJumper integruje się z platformami usługi IT w celu zautomatyzowania zadań związanych z aprowizacji pulpitu wirtualnego systemu Windows. Ponadto interfejsy API CloudJumper umożliwiają dalsze rozszerzanie i integrację z innymi systemami przedsiębiorstwa, takimi jak usługi ServiceNow i BMC Ready.
 
@@ -66,11 +66,21 @@ Gdy jest używany z pulpitem wirtualnym systemu Windows, ControlUp zapewnia doda
 
 ![Logo deviceTRUST](./media/partners/devicetrust.png)
 
-deviceTRUST to dostawca usług dodanego pulpitu wirtualnego systemu Windows, który contextualizes przedsiębiorstwo korporacyjne, dzięki czemu użytkownicy mogą uzyskać dostęp do pulpitu wirtualnego systemu Windows z dowolnego miejsca, na dowolnym urządzeniu, przy użyciu dowolnej sieci, jednocześnie dostarczając działy informacji i kontroli, których potrzebują, aby spełnić wymagania dotyczące zarządzania. 
+deviceTRUST to dostawca usług dodanego pulpitu wirtualnego systemu Windows, który contextualizes przedsiębiorstwo korporacyjne. Dzięki temu użytkownicy mogą uzyskać dostęp do pulpitu wirtualnego systemu Windows z dowolnego miejsca, na dowolnym urządzeniu, za pośrednictwem dowolnej sieci, jednocześnie dostarczając dział IT informacji i kontroli potrzebnych do spełnienia wymagań związanych z zarządzaniem. 
 
 deviceTRUST rozszerza wartość pulpitu wirtualnego systemu Windows z ich kontekstową technologią zabezpieczeń. deviceTRUST umożliwia dostęp warunkowy do bezpiecznego dostępu do pulpitu wirtualnego systemu Windows, warunkowego dostępu do aplikacji w ramach pulpitu wirtualnego systemu Windows i stosowania zasad pulpitu wirtualnego systemu Windows bez żadnej dodatkowej infrastruktury. Korzystanie z usługi deviceTRUST umożliwia mobilny, elastyczny obszar roboczy, który spełnia wszystkie wymagania dotyczące zabezpieczeń, zgodności i przepisów prawnych. 
 
 - [Przejdź do witryny sieci Web partnera](https://devicetrust.com/wvd).
+
+## <a name="igel"></a>IGEL
+
+![Logo IGEL](./media/partners/igel.png)
+
+IGEL jest zatwierdzonym i zweryfikowanym partnerem Microsoft Azure i usług pulpitu wirtualnego systemu Windows. Usługa IGEL oferuje system operacyjny IGEL, kolejny generacji systemu operacyjnego Edge dla obszarów roboczych w chmurze, zaprojektowany w celu uzyskiwania dostępu do wirtualnych aplikacji, pulpitów i obszarów roboczych w chmurze z jednego lub większej liczby urządzeń użytkowników z lekkim, prostym i bezpiecznym punktem końcowym opartym na systemie Linux. Rozwiązanie programowe niezależne od platformy, IGEL system operacyjny oraz oprogramowanie do zarządzania i kontroli oparte na serwerze, IGEL Universal Management Suite (UMS), składa się z rozwiązania do zarządzania punktami końcowymi i kontroli, które zwalnia przedsiębiorstwa, aby w pełni korzystać z platformy Azure wystąpienia chmury i pulpity pulpitów wirtualnych systemu Windows, w tym ekonomiczny pulpity wirtualne systemu Windows z obsługą wielu sesji, przy jednoczesnym ograniczeniu kosztów związanych z zarządzaniem sprzętem i urządzeniami końcowymi
+ 
+System operacyjny IGEL obsługuje wszystkie popularne aplikacje wirtualne, komputery stacjonarne i protokoły klienckie w chmurze z firmy Citrix, Microsoft i VMware. Obejmuje ona zintegrowane technologie od 85 urządzeń peryferyjnych, interfejsów i protokołów, które ułatwiają organizacjom szybkie wdrażanie usług pulpitu wirtualnego systemu Windows we własnych unikatowych środowiskach użytkownika. System operacyjny IGEL jest tylko do odczytu i modularnym punktem końcowym, który pomaga chronić go przed manipulacją. Teraz zawiera również kompletny "łańcuch zaufania", który weryfikuje integralność wszystkich najważniejszych procesów wykonywanych w punkcie końcowym, od sprzętu punktu końcowego (niektóre z wybranych modeli) lub procesu UEFI, aż do chmury platformy Azure i usług pulpitu wirtualnego systemu Windows. Dzięki IGEL systemu operacyjnego przedsiębiorstwa mogą subskrybować pulpity wirtualne systemu Windows z chmury platformy Azure z pełnym zaufaniem do integralności, zabezpieczeń i możliwości zarządzania urządzeniami końcowymi użytkowników.
+
+- [Przejdź do witryny sieci Web partnera.](https://www.igel.com/igel-os-universal-desktop-operating-system/)
 
 ## <a name="ivanti"></a>Ivanti
 
@@ -78,7 +88,7 @@ deviceTRUST rozszerza wartość pulpitu wirtualnego systemu Windows z ich kontek
 
 Ivanti User Workspace Manager to usługa, która jest dołączana do usług pulpitu wirtualnego systemu Windows, która ułatwia wdrażanie komputerów i zarządzanie nimi, oddzielając dane użytkowników z pulpitu w celu zapewnienia bezproblemowej przenośności. Dzięki programowi Ivanti użytkownicy mogą dostarczać złożone projekty, takie jak migracja do systemu Windows 10, przyjmowanie pakietu Office 365 lub przenoszenie usług do chmury szybciej. 
 
-Gdy jest używany z pulpitem wirtualnym systemu Windows, Menedżer obszaru roboczego użytkownika Ivanti zapewnia proste, kontekstowe zarządzanie środowiska pulpitu użytkownika, eliminując długotrwałe logowanie i likwidowanie zasad grupy Nightmares. Ivanti szablony z menedżerem obszarów roboczych użytkowników upraszczają instalację dla użytkowników za pomocą agentów i istniejącej konsoli programu. Menedżer obszarów roboczych użytkowników Ivanti zapewnia wydajność, bezpieczne pulpity, które użytkownicy odkochają, oszczędzają pieniądze na serwerach, skuteczniej zarządzają użytkownikami i obniżają ryzyko bezpieczeństwa punktów końcowych. 
+Gdy jest używany z pulpitem wirtualnym systemu Windows, Menedżer obszaru roboczego użytkownika Ivanti zapewnia proste, kontekstowe zarządzanie środowiska pulpitu użytkownika, eliminując długotrwałe czasy logowania i likwidowanie zasad grupy Nightmares. Ivanti szablony z menedżerem obszarów roboczych użytkowników upraszczają instalację dla użytkowników za pomocą agentów i istniejącej konsoli programu. Menedżer obszarów roboczych użytkowników Ivanti zapewnia wydajność, bezpieczne pulpity, które użytkownicy odkochają, oszczędzają pieniądze na serwerach, skuteczniej zarządzają użytkownikami i obniżają ryzyko bezpieczeństwa punktów końcowych. 
 
 - [Przejdź do witryny sieci Web partnera](https://www.ivanti.com/products/user-workspace-manager).
 
@@ -137,9 +147,9 @@ Najczęstsze przypadki użycia PolicyPak mają na celu usunięcie lokalnych praw
 
 ![Logo PrinterLogic](./media/partners/printerlogic.png)
 
-PrinterLogic to platforma dostawcy usług dla systemu Windows, która umożliwia informatykom eliminowanie wszystkich serwerów wydruku i dostarczanie wysokiej dostępności bezserwerowej infrastruktury drukowania. PrinterLogic rozszerza wartość pulpitu wirtualnego systemu Windows i platformy Azure, ułatwiając centralne zarządzanie i wdrażanie obiektów drukarki na dowolnej drukarce lub w systemie operacyjnym punktu końcowego.   
+PrinterLogic to platforma dostawcy usług z systemem Windows Virtual Desktop, która umożliwia informatykom eliminowanie wszystkich serwerów wydruku i dostarczanie wysokiej dostępności bezserwerowej infrastruktury drukowania. PrinterLogic rozszerza wartość pulpitu wirtualnego systemu Windows i platformy Azure, dzięki czemu można łatwo zarządzać centralnie i wdrażać obiekty drukarki na dowolnej drukarce lub w systemie operacyjnym punktu końcowego.   
 
-Dostępna jako SaaS lub jako stos sieci Web w prywatnej chmurze, platforma PrinterLogic gwarantuje, że użytkownicy zawsze mają odpowiednie drukarki, których potrzebują w swoich sesjach wirtualnych na podstawie identyfikatora użytkownika, nazwy urządzenia lub lokalizacji. Ta funkcja jest uzupełniana przez pełny zestaw funkcji zarządzania drukowaniem w przedsiębiorstwie, takich jak śledzenie wydruków i raportowanie, Drukowanie mobilne oraz drukowanie w wersji o bezpiecznym wskaźniku. 
+Dostępna jako SaaS lub jako stos sieci Web w prywatnej chmurze, platforma PrinterLogic zapewnia, że użytkownicy zawsze mają odpowiednie drukarki, których potrzebują w swoich sesjach wirtualnych na podstawie identyfikatora użytkownika, nazwy urządzenia lub lokalizacji. Ta funkcja jest uzupełniana przez pełny zestaw funkcji zarządzania drukowaniem w przedsiębiorstwie, takich jak śledzenie wydruków i raportowanie, Drukowanie mobilne oraz drukowanie w wersji o bezpiecznym wskaźniku. 
 
 - [Przejdź do witryny sieci Web partnera](https://www.printerlogic.com).
 
@@ -147,7 +157,7 @@ Dostępna jako SaaS lub jako stos sieci Web w prywatnej chmurze, platforma Print
 
 ![Logo Numecent](./media/partners/numecent.png)
 
-Numecent to dostawca usług dodanej przez pulpit wirtualny systemu Windows, który znacząco zmniejsza łączną liczbę kosztów operacyjnych dzięki szybkiemu dołączeniu i migracji skomplikowanych lub niezgodnych aplikacji systemu Windows w środowiskach klasycznych systemu Windows. Numecent minimalizuje także ilość potrzebnych użytkowników konfiguracji, redukuje aktualizacje aplikacji i upraszcza procesy złożone. Ponieważ Numecent Cloudpaging obsługuje więcej aplikacji bezproblemowo niż inne narzędzia dostarczania aplikacji, skraca czas i obciążenia IT w środowiskach z różnorodnym zestawem aplikacji. 
+Numecent to dostawca usług dodanej przez pulpit wirtualny systemu Windows, który znacząco zmniejsza łączną liczbę kosztów operacyjnych dzięki szybkiemu dołączeniu i migracji skomplikowanych lub niezgodnych aplikacji systemu Windows w środowiskach klasycznych systemu Windows. Numecent minimalizuje także ilość konfiguracji wymaganej przez użytkowników, redukuje aktualizacje aplikacji i upraszcza procesy złożone. Ponieważ Numecent Cloudpaging obsługuje więcej aplikacji bezproblemowo niż inne narzędzia dostarczania aplikacji, skraca czas i obciążenia IT w środowiskach z różnorodnym zestawem aplikacji. 
 
 W przypadku użycia z pulpitem wirtualnym systemu Windows Cloudpaging bardziej obniża koszty, wykonując cykl życia zasobów oprogramowania z wdrożenia w celu uaktualniania, mierzenia i usuwania aplikacji. Cloudpaging upraszcza zarządzanie obrazami przez dynamiczne Inicjowanie obsługi aplikacji zgodnie z potrzebami w czasie rzeczywistym do wdrożeń pulpitów wirtualnych systemu Windows. Cloudpaging pomaga aplikacjom uruchamiać się bez administracji ani interwencji w okresowych aktualizacjach systemu Windows 10. Cloudpaging również zmniejsza koszt licencjonowania kosztownych aplikacji przez umożliwienie wydajniejszego wdrażania i użycia tych aplikacji. 
 
@@ -178,7 +188,7 @@ Rozwiązanie ezeep ThinPrint rozszerza wartość pulpitu wirtualnego systemu Win
 
 ![Logo Tricerat](./media/partners/tricerat.png)
 
-Tricerat oferuje znakomite rozwiązanie do zarządzania drukowaniem dla pulpitów wirtualnych systemu Windows i innych platform stacjonarnych. Oprogramowanie Tricerat ma niezawodne funkcje, oferując lepsze środowisko dla użytkowników i administratorów. Administratorzy mogą uzyskać wydajność dzięki zakończeniu zarządzania sterownikami, uproszczonym wdrażaniu kolejek wydruku i spójnym zarządzaniem na różnych platformach hybrydowych. Środowisko użytkownika zwiększa się w krótszym czasie, inteligentne kolejki wydruku na podstawie użytkownika, urządzenia i lokalizacji sieciowej oraz opcje samoobsługowego wybierania szybkiej drukarki. 
+Tricerat oferuje znakomite rozwiązanie do zarządzania drukowaniem dla pulpitów wirtualnych systemu Windows i innych platform stacjonarnych. Oprogramowanie Tricerat ma niezawodne funkcje, oferując lepsze środowisko dla użytkowników i administratorów. Administratorzy mogą uzyskać wydajność dzięki zakończeniu zarządzania sterownikami, uproszczonym wdrażaniu kolejek wydruku i spójnym zarządzaniem na różnych platformach hybrydowych. Środowisko użytkownika usprawnia pracę przy krótszym czasie logowania, inteligentne kolejki wydruku na podstawie użytkownika, urządzenia i lokalizacji sieciowej oraz opcje samoobsługowego wybierania szybkiej drukarki. 
 
 Dzięki Tricerat drukowanie jest płynne w klasycznym pulpicie systemu Windows. Tricerat oprogramowanie umożliwia administratorom łatwe łączenie drukarek lokalnych z chmurą, rozszerzając Zarządzanie drukowaniem w przedsiębiorstwie z tradycyjnych środowisk na nowe, nowoczesne obszary robocze.
 

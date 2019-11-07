@@ -1,5 +1,5 @@
 ---
-title: Partycjonowanie tabel w Azure SQL Data Warehouse | Microsoft Docs
+title: Partycjonowanie tabel
 description: Zalecenia i przykłady dotyczące korzystania z partycji tabeli w Azure SQL Data Warehouse.
 services: sql-data-warehouse
 author: XiaoyuMSFT
@@ -10,12 +10,13 @@ ms.subservice: development
 ms.date: 03/18/2019
 ms.author: xiaoyul
 ms.reviewer: igorstan
-ms.openlocfilehash: 6791ff2f2a9719a19d2c9abc4ff480435de7bb00
-ms.sourcegitcommit: 75a56915dce1c538dc7a921beb4a5305e79d3c7a
+ms.custom: seo-lt-2019
+ms.openlocfilehash: 7ec313094a9ebc05f966e0c49f44284909ca778f
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/24/2019
-ms.locfileid: "68477073"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73685421"
 ---
 # <a name="partitioning-tables-in-sql-data-warehouse"></a>Partycjonowanie tabel w SQL Data Warehouse
 Zalecenia i przykłady dotyczące korzystania z partycji tabeli w Azure SQL Data Warehouse.
@@ -115,7 +116,7 @@ SQL Data Warehouse obsługuje dzielenie, scalanie i przełączanie partycji. Ka�
 Aby przełączyć partycje między dwiema tabelami, należy się upewnić, że partycje są wyrównane do odpowiednich granic i że definicje tabeli są zgodne. Ponieważ ograniczenia check nie są dostępne, aby wymusić zakres wartości w tabeli, tabela źródłowa musi zawierać te same granice partycji co tabela docelowa. Jeśli granice partycji nie są takie same, przełączenie nie powiedzie się, ponieważ metadane partycji nie zostaną zsynchronizowane.
 
 ### <a name="how-to-split-a-partition-that-contains-data"></a>Jak podzielić partycję zawierającą dane
-Najbardziej wydajną metodą podziału partycji, która zawiera już dane, jest użycie `CTAS` instrukcji. Jeśli partycjonowana tabela jest klastrowaną magazynem kolumn, partycja tabeli musi być pusta, aby można ją było podzielić.
+Najbardziej wydajną metodą podziału partycji, która zawiera już dane, jest użycie instrukcji `CTAS`. Jeśli partycjonowana tabela jest klastrowaną magazynem kolumn, partycja tabeli musi być pusta, aby można ją było podzielić.
 
 Poniższy przykład tworzy partycjonowaną tabelę magazynu kolumn. Wstawia jeden wiersz do każdej partycji:
 
@@ -147,7 +148,7 @@ INSERT INTO dbo.FactInternetSales
 VALUES (1,20000101,1,1,1,1,1,1);
 ```
 
-Poniższe zapytanie umożliwia znalezienie liczby wierszy przy użyciu `sys.partitions` widoku wykazu:
+Poniższe zapytanie umożliwia znalezienie liczby wierszy przy użyciu widoku wykazu `sys.partitions`:
 
 ```sql
 SELECT  QUOTENAME(s.[name])+'.'+QUOTENAME(t.[name]) as Table_name
@@ -172,7 +173,7 @@ ALTER TABLE FactInternetSales SPLIT RANGE (20010101);
 
 Msg 35346, poziom 15, stan 1, klauzula line 44 SPLIT instrukcji ALTER PARTITION nie powiodła się, ponieważ partycja nie jest pusta. W przypadku istnienia indeksu magazynu kolumn w tabeli można podzielić tylko puste partycje. Rozważ wyłączenie indeksu magazynu kolumn przed wygenerowaniem instrukcji ALTER PARTITION, a następnie odbudowanie indeksu magazynu kolumn po ukończeniu operacji ALTER PARTITION.
 
-Można jednak użyć `CTAS` programu, aby utworzyć nową tabelę do przechowywania danych.
+Można jednak użyć `CTAS`, aby utworzyć nową tabelę do przechowywania danych.
 
 ```sql
 CREATE TABLE dbo.FactInternetSales_20000101
@@ -198,7 +199,7 @@ ALTER TABLE FactInternetSales SWITCH PARTITION 2 TO  FactInternetSales_20000101 
 ALTER TABLE FactInternetSales SPLIT RANGE (20010101);
 ```
 
-Wszystko, co pozostało, jest wyrównanie danych do nowej granicy partycji przy `CTAS`użyciu, a następnie przełączenie danych z powrotem do głównej tabeli.
+Wszystko to jest wyrównanie danych do nowej granicy partycji przy użyciu `CTAS`, a następnie przełączenie danych z powrotem do głównej tabeli.
 
 ```sql
 CREATE TABLE [dbo].[FactInternetSales_20000101_20010101]
@@ -226,7 +227,7 @@ UPDATE STATISTICS [dbo].[FactInternetSales];
 ```
 
 ### <a name="load-new-data-into-partitions-that-contain-data-in-one-step"></a>Ładowanie nowych danych do partycji zawierających dane w jednym kroku
-Ładowanie danych do partycji z przełączaniem do partycji jest wygodnym sposobem przemieszczania nowych danych w tabeli, która nie jest widoczna dla użytkowników przełączenia w nowych danych.  Może to być trudne w przypadku zajętych systemów, aby zaradzić sobie z zablokowaniem zawartości skojarzonej z przełączeniem partycji.  Aby wyczyścić istniejące dane w partycji, `ALTER TABLE` należy użyć do przełączenia danych.  Następnie do `ALTER TABLE` przełączenia nowych danych jest wymagane inne.  W SQL Data Warehouse `TRUNCATE_TARGET` opcja jest obsługiwana `ALTER TABLE` w poleceniu.  `TRUNCATE_TARGET` Poleceniezastępujeistniejącedane`ALTER TABLE` w partycji nowymi danymi.  Poniżej znajduje się przykład, który `CTAS` używa do tworzenia nowej tabeli z istniejącymi danymi, wstawiania nowych danych, a następnie przełączania wszystkich danych z powrotem do tabeli docelowej, zastępując istniejące dane.
+Ładowanie danych do partycji z przełączaniem do partycji jest wygodnym sposobem przemieszczania nowych danych w tabeli, która nie jest widoczna dla użytkowników przełączenia w nowych danych.  Może to być trudne w przypadku zajętych systemów, aby zaradzić sobie z zablokowaniem zawartości skojarzonej z przełączeniem partycji.  Aby wyczyścić istniejące dane w partycji, `ALTER TABLE` jest wymagane do przełączenia danych.  Następnie do przełączenia nowych danych jest wymagane inne `ALTER TABLE`.  W SQL Data Warehouse opcja `TRUNCATE_TARGET` jest obsługiwana w `ALTER TABLE` polecenie.  Za pomocą `TRUNCATE_TARGET` `ALTER TABLE` polecenie zastępuje istniejące dane w partycji nowymi danymi.  Poniżej znajduje się przykład, który używa `CTAS`, aby utworzyć nową tabelę z istniejącymi danymi, wstawia nowe dane, a następnie przełącza wszystkie dane z powrotem do tabeli docelowej, zastępując istniejące dane.
 
 ```sql
 CREATE TABLE [dbo].[FactInternetSales_NewSales]
@@ -275,7 +276,7 @@ Aby uniknąć definicji tabeli z **rusting** w systemie kontroli źródła, wart
     ;
     ```
 
-1. `SPLIT`tabela w ramach procesu wdrażania:
+1. `SPLIT` tabelę w ramach procesu wdrażania:
 
     ```sql
      -- Create a table containing the partition boundaries
@@ -329,6 +330,6 @@ Aby uniknąć definicji tabeli z **rusting** w systemie kontroli źródła, wart
 
 W tym podejściu kod w kontroli źródła pozostaje statyczny, a wartości graniczne partycjonowania mogą być dynamiczne; rozwój z magazynem w czasie.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 Aby uzyskać więcej informacji na temat tworzenia tabel, zobacz artykuły w [tabeli przegląd](sql-data-warehouse-tables-overview.md).
 

@@ -9,12 +9,12 @@ ms.date: 08/13/2019
 ms.topic: conceptual
 description: Dowiedz się, jak skonfigurować Azure Dev Spaces, aby użyć niestandardowego kontrolera traefikal i skonfigurować protokół HTTPS za pomocą tego kontrolera
 keywords: Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, Containers, Helm, Service siatk, Service siatk Routing, polecenia kubectl, k8s
-ms.openlocfilehash: 50908bde65b69cb475391cd30bca758dd571f114
-ms.sourcegitcommit: 18061d0ea18ce2c2ac10652685323c6728fe8d5f
+ms.openlocfilehash: c015fe8e7108f07d66d2464c4f8b6287e8f54446
+ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/15/2019
-ms.locfileid: "69036945"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73582323"
 ---
 # <a name="use-a-custom-traefik-ingress-controller-and-configure-https"></a>Korzystanie z niestandardowego kontrolera traefik Ingres i Konfigurowanie protokołu HTTPS
 
@@ -27,7 +27,7 @@ W tym artykule opisano sposób konfigurowania Azure Dev Spaces do używania nies
 * [Klaster usługi Azure Kubernetes Service (AKS) z włączonym Azure dev Spaces][qs-cli].
 * [polecenia kubectl][kubectl] .
 * [Helm 2,13 lub nowszy][helm-installed].
-* [Domena][custom-domain] niestandardowa ze [strefą DNS][dns-zone] w tej samej grupie zasobów co klaster AKS.
+* [Domena niestandardowa][custom-domain] ze [strefą DNS][dns-zone] w tej samej grupie zasobów co klaster AKS.
 
 ## <a name="configure-a-custom-traefik-ingress-controller"></a>Konfigurowanie niestandardowego kontrolera traefik Ingres
 
@@ -45,7 +45,7 @@ NAME                                STATUS   ROLES   AGE    VERSION
 aks-nodepool1-12345678-vmssfedcba   Ready    agent   13m    v1.14.1
 ```
 
-Utwórz przestrzeń nazw Kubernetes dla kontrolera traefik transferu danych przychodzących i zainstaluj ją za pomocą `helm`polecenia.
+Utwórz przestrzeń nazw Kubernetes dla kontrolera traefik transferu danych przychodzących i zainstaluj ją przy użyciu `helm`.
 
 ```console
 kubectl create ns traefik
@@ -87,7 +87,7 @@ git clone https://github.com/Azure/dev-spaces
 cd dev-spaces/samples/BikeSharingApp/charts
 ```
 
-Otwórz [wartość. YAML][values-yaml] i Zastąp wszystkie wystąpienia *< REPLACE_ME_WITH_HOST_SUFFIX >* z *traefik. MY_CUSTOM_DOMAIN* przy użyciu domeny do *MY_CUSTOM_DOMAIN*. Zastąp także *Kubernetes.IO/Ingress.Class: traefik-azds # dev Spaces-swoisty* dla *Kubernetes.IO/Ingress.Class: traefik # Custom*. Poniżej znajduje się przykład zaktualizowanego `values.yaml` pliku:
+Otwórz [wartość. YAML][values-yaml] i Zastąp wszystkie wystąpienia *< REPLACE_ME_WITH_HOST_SUFFIX >* z *traefik. MY_CUSTOM_DOMAIN* przy użyciu domeny do *MY_CUSTOM_DOMAIN*. Zastąp także *Kubernetes.IO/Ingress.Class: traefik-azds # dev Spaces-swoisty* dla *Kubernetes.IO/Ingress.Class: traefik # Custom*. Poniżej znajduje się przykładowy zaktualizowany plik `values.yaml`:
 
 ```yaml
 # This is a YAML-formatted file.
@@ -110,7 +110,7 @@ gateway:
 
 Zapisz zmiany i zamknij plik.
 
-Wdróż przykładową aplikację przy `helm install`użyciu polecenia.
+Wdróż przykładową aplikację przy użyciu `helm install`.
 
 ```console
 helm install -n bikesharing . --dep-up --namespace dev --atomic
@@ -118,7 +118,7 @@ helm install -n bikesharing . --dep-up --namespace dev --atomic
 
 Powyższy przykład służy do wdrażania przykładowej aplikacji w przestrzeni nazw *dev* .
 
-Wybierz miejsce *deweloperskie* za pomocą przykładowej aplikacji `azds space select` i Wyświetl adresy URL, aby uzyskać dostęp do aplikacji `azds list-uris`przykładowej przy użyciu polecenia.
+Wybierz przestrzeń *dev* z przykładową aplikacją przy użyciu `azds space select` i Wyświetl adresy URL, aby uzyskać dostęp do przykładowej aplikacji przy użyciu `azds list-uris`.
 
 ```console
 azds space select -n dev
@@ -134,16 +134,16 @@ http://dev.bikesharingweb.traefik.MY_CUSTOM_DOMAIN/  Available
 http://dev.gateway.traefik.MY_CUSTOM_DOMAIN/         Available
 ```
 
-Przejdź do usługi *bikesharingweb* , otwierając publiczny adres URL z `azds list-uris` polecenia. W powyższym przykładzie publiczny adres URL usługi *bikesharingweb* to `http://dev.bikesharingweb.traefik.MY_CUSTOM_DOMAIN/`.
+Przejdź do usługi *bikesharingweb* , otwierając publiczny adres URL za pomocą polecenia `azds list-uris`. W powyższym przykładzie publiczny adres URL dla usługi *bikesharingweb* jest `http://dev.bikesharingweb.traefik.MY_CUSTOM_DOMAIN/`.
 
-Użyj polecenia `azds space select` , aby utworzyć przestrzeń podrzędną w obszarze *dev* i wyświetlić listę adresów URL, aby uzyskać dostęp do podrzędnego obszaru dev.
+Użyj `azds space select` polecenie, aby utworzyć miejsce podrzędne w obszarze *dev* i wyświetlić listę adresów URL, aby uzyskać dostęp do podrzędnego obszaru dev.
 
 ```console
 azds space select -n dev/azureuser1 -y
 azds list-uris
 ```
 
-Poniższe dane wyjściowe przedstawiają przykładowe adresy URL `azds list-uris` z programu, aby uzyskać dostęp do przykładowej aplikacji w miejscu dev *azureuser1* .
+Poniższe dane wyjściowe pokazują przykładowe adresy URL z `azds list-uris`, aby uzyskać dostęp do przykładowej aplikacji w miejscu dev *azureuser1* .
 
 ```console
 Uri                                                  Status
@@ -152,11 +152,11 @@ http://azureuser1.s.dev.bikesharingweb.traefik.MY_CUSTOM_DOMAIN/  Available
 http://azureuser1.s.dev.gateway.traefik.MY_CUSTOM_DOMAIN/         Available
 ```
 
-Przejdź do usługi *bikesharingweb* w podrzędnym obszarze deweloperskim *azureuser1* , otwierając publiczny `azds list-uris` adres URL za pomocą polecenia. W powyższym przykładzie publiczny adres URL dla usługi *bikesharingweb* w *azureuser1* podrzędnym jest `http://azureuser1.s.dev.bikesharingweb.traefik.MY_CUSTOM_DOMAIN/`.
+Przejdź do usługi *bikesharingweb* w podrzędnym obszarze deweloperskim *azureuser1* , otwierając publiczny adres URL za pomocą polecenia `azds list-uris`. W powyższym przykładzie, publiczny adres URL dla usługi *bikesharingweb* w *azureuser1* w potomnym obszarze deweloperskim jest `http://azureuser1.s.dev.bikesharingweb.traefik.MY_CUSTOM_DOMAIN/`.
 
 ## <a name="configure-the-traefik-ingress-controller-to-use-https"></a>Konfigurowanie kontrolera traefik Ingress do korzystania z protokołu HTTPS
 
-`dev-spaces/samples/BikeSharingApp/traefik-values.yaml` Utwórz plik podobny do poniższego przykładu. Zaktualizuj wartość *e-mail* przy użyciu własnej poczty e-mail, która jest używana do generowania certyfikatu z szyfrowaniem.
+Utwórz plik `dev-spaces/samples/BikeSharingApp/traefik-values.yaml` podobny do poniższego przykładu. Zaktualizuj wartość *e-mail* przy użyciu własnej poczty e-mail, która jest używana do generowania certyfikatu z szyfrowaniem.
 
 ```yaml
 fullnameOverride: traefik
@@ -201,7 +201,7 @@ ssl:
     - TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256
 ```
 
-Zaktualizuj usługę *traefik* przy użyciu `helm repo update` programu i włącznie z utworzonym plikiem *traefik-Values. YAML* .
+Zaktualizuj usługę *traefik* przy użyciu `helm repo update` i łącznie z utworzonym plikiem *traefik-Values. YAML* .
 
 ```console
 cd ..
@@ -211,7 +211,7 @@ helm upgrade traefik stable/traefik --namespace traefik --values traefik-values.
 Powyższe polecenie uruchamia nową wersję usługi traefik przy użyciu wartości z *traefik-Values. YAML* i usuwa poprzednią usługę. Usługa traefik tworzy również certyfikat TLS przy użyciu szyfrowania i uruchamia przekierowywanie ruchu internetowego do korzystania z protokołu HTTPS.
 
 > [!NOTE]
-> Uruchomienie nowej wersji usługi traefik może potrwać kilka minut. Postęp można sprawdzić przy użyciu polecenia `kubectl get pods --namespace traefik --watch`.
+> Uruchomienie nowej wersji usługi traefik może potrwać kilka minut. Postęp można sprawdzić przy użyciu `kubectl get pods --namespace traefik --watch`.
 
 Przejdź do przykładowej aplikacji w obszarze podrzędnym *dev/azureuser1* i zwróć uwagę na to, że nastąpi przekierowanie do korzystania z protokołu HTTPS. Zauważ również, że strona jest ładowana, ale w przeglądarce są wyświetlane pewne błędy. Otwarcie konsoli przeglądarki pokazuje błąd dotyczący strony HTTPS próbującej załadować zasoby HTTP. Na przykład:
 
@@ -219,7 +219,7 @@ Przejdź do przykładowej aplikacji w obszarze podrzędnym *dev/azureuser1* i zw
 Mixed Content: The page at 'https://azureuser1.s.dev.bikesharingweb.traefik.MY_CUSTOM_DOMAIN/devsignin' was loaded over HTTPS, but requested an insecure resource 'http://azureuser1.s.dev.gateway.traefik.MY_CUSTOM_DOMAIN/api/user/allUsers'. This request has been blocked; the content must be served over HTTPS.
 ```
 
-Aby naprawić ten błąd, zaktualizuj [BikeSharingWeb/azds. YAML][azds-yaml] , aby użyć *traefik* dla *Kubernetes.IO/Ingress.class* i niestandardowej domeny dla *$ (hostSuffix)* . Przykład:
+Aby naprawić ten błąd, zaktualizuj [BikeSharingWeb/azds. YAML][azds-yaml] , aby użyć *traefik* dla *Kubernetes.IO/Ingress.class* i niestandardowej domeny dla *$ (hostSuffix)* . Na przykład:
 
 ```yaml
 ...
@@ -261,7 +261,7 @@ Zaktualizuj metodę *getApiHostAsync* w [BikeSharingWeb/Pages/helps. js][helpers
 ...
 ```
 
-Przejdź do `BikeSharingWeb` katalogu i Użyj `azds up` , aby uruchomić zaktualizowaną usługę BikeSharingWeb.
+Przejdź do katalogu `BikeSharingWeb` i użyj `azds up`, aby uruchomić zaktualizowaną usługę BikeSharingWeb.
 
 ```console
 cd BikeSharingWeb/
@@ -288,7 +288,7 @@ Dowiedz się, jak Azure Dev Spaces ułatwiają tworzenie bardziej złożonych ap
 
 [azds-yaml]: https://github.com/Azure/dev-spaces/blob/master/samples/BikeSharingApp/BikeSharingWeb/azds.yaml
 [azure-account-create]: https://azure.microsoft.com/free
-[helm-installed]: https://github.com/helm/helm/blob/master/docs/install.md
+[helm-installed]: https://helm.sh/docs/using_helm/#installing-helm
 [helpers-js]: https://github.com/Azure/dev-spaces/blob/master/samples/BikeSharingApp/BikeSharingWeb/pages/helpers.js#L7
 [kubectl]: https://kubernetes.io/docs/user-guide/kubectl/
 [kubectl-get]: https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#get

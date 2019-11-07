@@ -1,5 +1,5 @@
 ---
-title: Harmonogramy konserwacji platformy Azure (wersja zapoznawcza) | Microsoft Docs
+title: Harmonogramy konserwacji platformy Azure
 description: Planowanie konserwacji umożliwia klientom zaplanowanie niezbędnych zaplanowanych zdarzeń konserwacji, których usługa Azure SQL Data Warehouse używa do tworzenia nowych funkcji, uaktualnień i poprawek.
 services: sql-data-warehouse
 author: antvgski
@@ -10,12 +10,12 @@ ms.subservice: design
 ms.date: 07/16/2019
 ms.author: anvang
 ms.reviewer: jrasnick
-ms.openlocfilehash: 0e5df583112bbb6db9651004e5deaceb6b5b9d12
-ms.sourcegitcommit: 7868d1c40f6feb1abcafbffcddca952438a3472d
+ms.openlocfilehash: 91b202f8a5df841fa3d6aa1f0903999b395f8137
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/04/2019
-ms.locfileid: "71958893"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73686068"
 ---
 # <a name="use-maintenance-schedules-to-manage-service-updates-and-maintenance"></a>Korzystanie z harmonogramów konserwacji do zarządzania aktualizacjami i konserwacją usług
 
@@ -56,7 +56,7 @@ Domyślnie podczas wdrażania wszystkich nowo utworzonych wystąpień usługi Az
 
 Aby wyświetlić harmonogram konserwacji zastosowany do magazynu danych, wykonaj następujące czynności:
 
-1.  Zaloguj się do [portalu Azure](https://portal.azure.com/).
+1.  Zaloguj się w witrynie [Azure Portal](https://portal.azure.com/).
 2.  Wybierz magazyn danych, który chcesz wyświetlić. 
 3.  Wybrany magazyn danych zostanie otwarty w bloku przegląd. Harmonogram konserwacji, który jest stosowany do magazynu danych, zostanie wyświetlony poniżej **harmonogramu konserwacji**.
 
@@ -72,7 +72,7 @@ Harmonogram konserwacji można aktualizować lub zmieniać w dowolnym momencie. 
 Podstawowe i pomocnicze okna muszą mieć oddzielne zakresy dni. Przykładem jest główne okno wtorek – czwartek i dodatkowe okno soboty — niedziela.
 
 Aby zmienić harmonogram konserwacji dla magazynu danych, wykonaj następujące czynności:
-1.  Zaloguj się do [portalu Azure](https://portal.azure.com/).
+1.  Zaloguj się w witrynie [Azure Portal](https://portal.azure.com/).
 2.  Wybierz magazyn danych, który chcesz zaktualizować. Strona zostanie otwarta w bloku przegląd. 
 3.  Otwórz stronę ustawienia harmonogramu konserwacji, wybierając łącze **Podsumowanie harmonogramu konserwacji (wersja zapoznawcza)** w bloku przegląd. Lub wybierz opcję **harmonogram konserwacji** w menu zasobów po lewej stronie.  
 

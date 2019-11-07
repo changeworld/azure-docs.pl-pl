@@ -1,6 +1,6 @@
 ---
-title: Zbiorcze kopiowanie danych z bazy danych przy użyciu tabeli kontroli przy użyciu usługi Azure Data Factory | Dokumentacja firmy Microsoft
-description: Dowiedz się, jak kopiowanie zbiorcze danych z bazy danych przy użyciu tabeli zewnętrznej kontroli przechowywać listę tabel źródłowych w partycji za pomocą usługi Azure Data Factory za pomocą szablonu rozwiązania.
+title: Kopiowanie masowe z bazy danych przy użyciu tabeli formantów z Azure Data Factory
+description: Dowiedz się, jak używać szablonu rozwiązania do kopiowania danych zbiorczych z bazy danych przy użyciu tabeli formantów zewnętrznych do przechowywania listy partycji tabel źródłowych przy użyciu Azure Data Factory.
 services: data-factory
 documentationcenter: ''
 author: dearandyxu
@@ -13,38 +13,38 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 12/14/2018
-ms.openlocfilehash: c4224693642e8c9f76deedc0c8ad8586e122cc23
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: b651721e9b833c02e4789c79ff5ad0b49ce31343
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60635449"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73684281"
 ---
-# <a name="bulk-copy-from-a-database-with-a-control-table"></a>Zbiorcze kopiowanie danych z bazy danych z tabeli kontroli
+# <a name="bulk-copy-from-a-database-with-a-control-table"></a>Kopiowanie masowe z bazy danych za pomocą tabeli formantów
 
-Aby skopiować dane z magazynu danych, serwera Oracle, Netezza, Teradata lub programu SQL Server do usługi Azure SQL Data Warehouse, należy załadować bardzo duże ilości danych z wielu tabel. Zwykle dane muszą być podzielone na partycje w każdej tabeli, aby załadujesz wiersze, dla których wiele równoległych wątków z pojedynczej tabeli. W tym artykule opisano szablon do użycia w tych scenariuszach.
+Aby skopiować dane z magazynu danych programu Oracle Server, Netezza, Teradata lub SQL Server do Azure SQL Data Warehouse, należy załadować ogromne ilości danych z wielu tabel. Zwykle dane należy podzielić na partycje w każdej tabeli, aby można było załadować wiersze z wieloma wątkami równolegle z pojedynczej tabeli. W tym artykule opisano szablon, który ma być używany w tych scenariuszach.
 
- >! Należy PAMIĘTAĆ, jeśli chcesz skopiować dane z niewielkiej liczbie tabel, z woluminem danych stosunkowo mały do usługi SQL Data Warehouse, jest bardziej wydajne, aby użyć [narzędzia Azure Data Factory kopiowania danych](copy-data-tool.md). Szablon, który jest opisany w tym artykule jest większa niż jest Ci potrzebne w przypadku tego scenariusza.
+ >! Uwaga Jeśli chcesz skopiować dane z niewielkiej liczby tabel z stosunkowo małą ilością danych do SQL Data Warehouse, możesz użyć [narzędzia Kopiowanie danych Azure Data Factory](copy-data-tool.md). Szablon opisany w tym artykule jest bardziej niezbędny w przypadku tego scenariusza.
 
-## <a name="about-this-solution-template"></a>Temat ten szablon rozwiązania
+## <a name="about-this-solution-template"></a>Informacje o tym szablonie rozwiązania
 
-Ten szablon umożliwia pobranie listy partycji bazy danych źródłowych do skopiowania z tabeli zewnętrznej kontroli. Następnie wykonuje iterację na każdej partycji w bazie danych źródła i kopiuje dane do lokalizacji docelowej.
+Ten szablon pobiera listę źródłowych partycji baz danych do skopiowania z zewnętrznej tabeli formantów. Następnie wykonuje iterację dla każdej partycji w źródłowej bazie danych i kopiuje dane do miejsca docelowego.
 
-Szablon zawiera trzy czynności:
-- **Wyszukiwanie** umożliwia pobranie listy się partycji bazy danych z tabeli zewnętrznej kontroli.
-- **Instrukcja ForEach** pobiera listę partycji z działania Lookup i dokonuje iteracji każdej partycji do działania kopiowania.
-- **Kopiuj** kopiuje każda partycja z magazynu bazy danych źródłowego do docelowego magazynu.
+Szablon zawiera trzy działania:
+- Funkcja **Lookup** pobiera listę baz danych z tabeli formantów zewnętrznych.
+- Instrukcja **foreach** pobiera listę partycji z działania Lookup i iteruje każdą partycję w działaniu kopiowania.
+- **Kopiuj** kopiuje każdą partycję ze źródłowego magazynu bazy danych do magazynu docelowego.
 
-Szablon definiuje parametry pięć:
-- *Control_Table_Name* jest tabela zewnętrznej kontroli, w której są przechowywane na liście partycji dla źródłowej bazy danych.
-- *Control_Table_Schema_PartitionID* nazywa się nazwa kolumny w tabeli zewnętrznej kontroli przechowujący każdego identyfikatora partycji. Upewnij się, że identyfikator partycji jest unikatowy dla każdej partycji w źródłowej bazie danych.
-- *Control_Table_Schema_SourceTableName* jest tabeli zewnętrznej kontroli przechowujący każdej nazwy tabeli ze źródłowej bazy danych.
-- *Control_Table_Schema_FilterQuery* jest nazwą kolumny w tabeli zewnętrznej kontroli, która przechowuje zapytanie filtru, aby pobrać danych z każdej partycji w źródłowej bazie danych. Na przykład, jeśli dane są dzielone według roku, zapytanie, które są przechowywane w każdym wierszu może być podobny do "Wybierz * ze źródła danych gdzie LastModifytime > =" 2015-01-01-00:00:00 "i LastModifytime < ="2015-12-31 23:59:59.999'' ".
-- *Data_Destination_Folder_Path* jest ścieżką, w którym dane są kopiowane do magazynu docelowego. Ten parametr jest widoczna tylko w przypadku miejsca docelowego, które możesz wybrać magazyn oparty na pliku. Jeśli usługa SQL Data Warehouse jako magazyn docelowy, ten parametr nie jest wymagane. Jednak nazwy tabel i schematu usługi SQL Data Warehouse musi być taka sama, jak te w źródłowej bazie danych.
+Szablon definiuje pięć parametrów:
+- *Control_Table_Name* jest tabelą formantów zewnętrznych, która przechowuje listę partycji dla źródłowej bazy danych.
+- *Control_Table_Schema_PartitionID* to nazwa kolumny w tabeli formantów zewnętrznych, która przechowuje każdy identyfikator partycji. Upewnij się, że identyfikator partycji jest unikatowy dla każdej partycji w źródłowej bazie danych.
+- *Control_Table_Schema_SourceTableName* jest tabelą formantów zewnętrznych, która przechowuje każdą nazwę tabeli ze źródłowej bazy danych.
+- *Control_Table_Schema_FilterQuery* to nazwa kolumny w tabeli formantów zewnętrznych, która przechowuje zapytanie filtru, aby pobrać dane z każdej partycji w źródłowej bazie danych. Na przykład w przypadku partycjonowania danych według roku zapytanie przechowywane w każdym wierszu może być podobne do elementu "select * from DataSource, gdzie LastModifytime > =" "2015-01-01 00:00:00" "i LastModifytime < =" "2015-12-31 23:59:59.999" "".
+- *Data_Destination_Folder_Path* to ścieżka, w której dane są kopiowane do magazynu docelowego. Ten parametr jest widoczny tylko w przypadku, gdy wybrane miejsce docelowe jest magazynem opartym na plikach. W przypadku wybrania SQL Data Warehouse jako magazynu docelowego ten parametr nie jest wymagany. Nazwy tabel i schematu w SQL Data Warehouse muszą być takie same jak te w źródłowej bazie danych.
 
 ## <a name="how-to-use-this-solution-template"></a>Jak używać tego szablonu rozwiązania
 
-1. Utwórz tabelę kontroli programu SQL Server lub usługi Azure SQL Database do przechowywania listy źródłowej bazy danych partycji z kopiowaniem masowym. W poniższym przykładzie istnieje pięć partycji w źródłowej bazie danych. Trzy partycje dotyczą *datasource_table*, a dwa są przeznaczone dla *tabeli project_table*. Kolumna *LastModifytime* służy do partycjonowania danych w tabeli *datasource_table* ze źródłowej bazy danych. Zapytanie, które służy do odczytywania pierwszej partycji jest "Wybierz * z datasource_table gdzie LastModifytime > =" 2015-01-01-00:00:00 "i LastModifytime < ="2015-12-31 23:59:59.999'' ". Podobne zapytanie służy do odczytywania danych z innych partycji.
+1. Utwórz tabelę formantów w SQL Server lub Azure SQL Database do przechowywania listy partycji źródłowej bazy danych na potrzeby kopiowania zbiorczego. W poniższym przykładzie istnieje pięć partycji w źródłowej bazie danych. Trzy partycje są dla *datasource_table*, a dwa są dla *project_table*. Kolumna *LastModifytime* służy do partycjonowania danych w tabeli *datasource_table* ze źródłowej bazy danych. Zapytanie, które jest używane do odczytywania pierwszej partycji, to "select * from datasource_table, gdzie LastModifytime > =" "2015-01-01 00:00:00" "i LastModifytime < =" "2015-12-31 23:59:59.999" "". Możesz użyć podobnego zapytania do odczytywania danych z innych partycji.
 
      ```sql
             Create table ControlTableForTemplate
@@ -64,38 +64,38 @@ Szablon definiuje parametry pięć:
             (5, 'project_table','select * from project_table where ID >= 1000 and ID < 2000');
     ```
 
-2. Przejdź do **zbiorcze kopiowanie danych z bazy danych** szablonu. Tworzenie **New** połączenie tabeli zewnętrznej kontroli, który został utworzony w kroku 1.
+2. Przejdź do szablonu **kopiowania zbiorczego z bazy danych** . Utwórz **nowe** połączenie z tabelą formantów zewnętrznych utworzoną w kroku 1.
 
-    ![Utwórz nowe połączenie do tabeli kontroli](media/solution-template-bulk-copy-with-control-table/BulkCopyfromDB_with_ControlTable2.png)
+    ![Utwórz nowe połączenie z tabelą formantów](media/solution-template-bulk-copy-with-control-table/BulkCopyfromDB_with_ControlTable2.png)
 
-3. Tworzenie **New** połączenia źródłowej bazy danych, aby skopiować dane z.
+3. Utwórz **nowe** połączenie z źródłową bazą danych, z której są kopiowane dane.
 
-     ![Utwórz nowe połączenie do źródłowej bazy danych](media/solution-template-bulk-copy-with-control-table/BulkCopyfromDB_with_ControlTable3.png)
+     ![Utwórz nowe połączenie ze źródłową bazą danych](media/solution-template-bulk-copy-with-control-table/BulkCopyfromDB_with_ControlTable3.png)
     
-4. Tworzenie **New** połączenie z danymi miejsce docelowe przechowywania, kopiowane dane.
+4. Utwórz **nowe** połączenie z docelowym magazynem danych, do którego chcesz skopiować dane.
 
-    ![Utwórz nowe połączenie do docelowego magazynu](media/solution-template-bulk-copy-with-control-table/BulkCopyfromDB_with_ControlTable4.png)
+    ![Utwórz nowe połączenie z magazynem docelowym](media/solution-template-bulk-copy-with-control-table/BulkCopyfromDB_with_ControlTable4.png)
 
-5. Wybierz **za pomocą tego szablonu**.
+5. Wybierz pozycję **Użyj tego szablonu**.
 
     ![Użyj tego szablonu](media/solution-template-bulk-copy-with-control-table/BulkCopyfromDB_with_ControlTable5.png)
     
-6. Zostanie wyświetlony potok, jak pokazano w poniższym przykładzie:
+6. Zostanie wyświetlony potok, jak pokazano w następującym przykładzie:
 
-    ![Przejrzyj potoku](media/solution-template-bulk-copy-with-control-table/BulkCopyfromDB_with_ControlTable6.png)
+    ![Przeglądanie potoku](media/solution-template-bulk-copy-with-control-table/BulkCopyfromDB_with_ControlTable6.png)
 
-7. Wybierz **debugowania**, wprowadź **parametry**, a następnie wybierz pozycję **Zakończ**.
+7. Wybierz pozycję **Debuguj**, wprowadź **Parametry**, a następnie wybierz pozycję **Zakończ**.
 
-    ![Click **Debug**](media/solution-template-bulk-copy-with-control-table/BulkCopyfromDB_with_ControlTable7.png)
+    ![Kliknij pozycję * * Debuguj * *](media/solution-template-bulk-copy-with-control-table/BulkCopyfromDB_with_ControlTable7.png)
 
-8. Zostaną wyświetlone wyniki podobne do poniższego przykładu:
+8. Zobaczysz wyniki podobne do poniższego przykładu:
 
     ![Przejrzyj wynik](media/solution-template-bulk-copy-with-control-table/BulkCopyfromDB_with_ControlTable8.png)
 
-9. (Opcjonalnie) Wybrana usługa SQL Data Warehouse jako miejsca docelowego danych, należy wprowadzić połączenie do usługi Azure Blob storage, potrzeby wdrażania przejściowego, zgodnie z wymaganiami programu Polybase magazynu danych SQL. Upewnij się, że już utworzono kontener w usłudze Blob storage.
+9. Obowiązkowe W przypadku wybrania SQL Data Warehouse jako miejsca docelowego danych należy wprowadzić połączenie z usługą Azure Blob Storage na potrzeby przemieszczania, zgodnie z wymaganiami SQL Data Warehouse Base. Upewnij się, że kontener w usłudze BLOB Storage został już utworzony.
     
-    ![Ustawienia programu Polybase](media/solution-template-bulk-copy-with-control-table/BulkCopyfromDB_with_ControlTable9.png)
+    ![Ustawienie bazy](media/solution-template-bulk-copy-with-control-table/BulkCopyfromDB_with_ControlTable9.png)
        
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 - [Wprowadzenie do usługi Azure Data Factory](introduction.md)

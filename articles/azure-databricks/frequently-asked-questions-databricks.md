@@ -9,23 +9,23 @@ ms.service: azure-databricks
 ms.workload: big-data
 ms.topic: conceptual
 ms.date: 10/25/2018
-ms.openlocfilehash: 8707aa55c1126af6a7fb2812d4c7314f031209d0
-ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
+ms.openlocfilehash: 0436a0898f27d3059069ce2df1fdfb143a98f325
+ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/18/2019
-ms.locfileid: "72597475"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73601800"
 ---
 # <a name="frequently-asked-questions-about-azure-databricks"></a>Często zadawane pytania dotyczące usługi Azure Databricks
 
 W tym artykule wymieniono najważniejsze pytania, które mogą być powiązane z Azure Databricks. Znajduje się w nim również kilka typowych problemów, które mogą wystąpić podczas korzystania z kostek. Aby uzyskać więcej informacji, zobacz [co to jest Azure Databricks](what-is-azure-databricks.md). 
 
 ## <a name="can-i-use-azure-key-vault-to-store-keyssecrets-to-be-used-in-azure-databricks"></a>Czy można używać Azure Key Vault do przechowywania kluczy/wpisów tajnych, które mają być używane w Azure Databricks?
-Tak. Za pomocą Azure Key Vault można przechowywać klucze/wpisy tajne do użycia z Azure Databricks. Aby uzyskać więcej informacji, zobacz [zakresy Azure Key Vault-z kopiami zapasowymi](https://docs.azuredatabricks.net/user-guide/secrets/secret-scopes.html#akv-ss).
+Tak. Za pomocą Azure Key Vault można przechowywać klucze/wpisy tajne do użycia z Azure Databricks. Aby uzyskać więcej informacji, zobacz [zakresy Azure Key Vault-z kopiami zapasowymi](/azure/databricks/security/secrets/secret-scopes).
 
 
 ## <a name="can-i-use-azure-virtual-networks-with-databricks"></a>Czy mogę używać sieci wirtualnych platformy Azure z kostkami
-Tak. Możesz użyć usługi Azure Virtual Network (VNET) z Azure Databricks. Aby uzyskać więcej informacji, zobacz [wdrażanie Azure Databricks w usłudze Azure Virtual Network](https://docs.azuredatabricks.net/administration-guide/cloud-configurations/azure/vnet-inject.html).
+Tak. Możesz użyć usługi Azure Virtual Network (VNET) z Azure Databricks. Aby uzyskać więcej informacji, zobacz [wdrażanie Azure Databricks w usłudze Azure Virtual Network](/azure/databricks/administration-guide/cloud-configurations/azure/vnet-inject).
 
 ## <a name="how-do-i-access-azure-data-lake-storage-from-a-notebook"></a>Jak mogę dostępu Azure Data Lake Storage z notesu? 
 
@@ -34,7 +34,7 @@ Wykonaj następujące kroki:
 1. Przypisz odpowiednie uprawnienia do nazwy głównej usługi w Data Lake Storage.
 1. Aby uzyskać dostęp do pliku w Data Lake Storage, Użyj poświadczeń nazwy głównej usługi w notesie.
 
-Aby uzyskać więcej informacji, zobacz [używanie Azure Data Lake Storage z Azure Databricks](https://docs.azuredatabricks.net/spark/latest/data-sources/azure/azure-datalake.html).
+Aby uzyskać więcej informacji, zobacz [używanie Azure Data Lake Storage z Azure Databricks](/azure/databricks/data/data-sources/azure/azure-datalake.html).
 
 ## <a name="fix-common-problems"></a>Rozwiązywanie typowych problemów
 
@@ -67,7 +67,7 @@ Poniżej przedstawiono kilka rozwiązań tego problemu:
 
 * Ten błąd może również wystąpić, jeśli nazwa domeny poczty e-mail jest przypisana do wielu katalogów w usłudze Azure AD. Aby obejść ten problem, Utwórz nowego użytkownika w katalogu zawierającym subskrypcję z obszarem roboczym datakostki.
 
-    a. W Azure Portal przejdź do usługi Azure AD. Wybierz pozycję **Użytkownicy i grupy**  > **Dodaj użytkownika**.
+    a. W Azure Portal przejdź do usługi Azure AD. Wybierz pozycję **Użytkownicy i grupy** > **Dodaj użytkownika**.
 
     b. Dodaj użytkownika z adresem e-mail `@<tenant_name>.onmicrosoft.com`, a nie `@<your_domain>` e-mail. Tę opcję można znaleźć w obszarze **domeny niestandardowe**w obszarze usługi Azure AD w Azure Portal.
     
@@ -82,7 +82,7 @@ Poniżej przedstawiono kilka rozwiązań tego problemu:
 
 #### <a name="solution"></a>Rozwiązanie
 
-Jeśli nie utworzono obszaru roboczego, a użytkownik zostanie dodany jako użytkownik, skontaktuj się z osobą, która utworzyła obszar roboczy. Należy dodać tę osobę przy użyciu konsoli administracyjnej Azure Databricks. Aby uzyskać instrukcje, zobacz [Dodawanie użytkowników i zarządzanie nimi](https://docs.azuredatabricks.net/administration-guide/admin-settings/users.html). Jeśli obszar roboczy został utworzony i nadal pojawia się ten błąd, spróbuj ponownie wybrać opcję **zainicjuj obszar roboczy** w Azure Portal.
+Jeśli nie utworzono obszaru roboczego, a użytkownik zostanie dodany jako użytkownik, skontaktuj się z osobą, która utworzyła obszar roboczy. Należy dodać tę osobę przy użyciu konsoli administracyjnej Azure Databricks. Aby uzyskać instrukcje, zobacz [Dodawanie użytkowników i zarządzanie nimi](/azure/databricks/administration-guide/users-groups/users). Jeśli obszar roboczy został utworzony i nadal pojawia się ten błąd, spróbuj ponownie wybrać opcję **zainicjuj obszar roboczy** w Azure Portal.
 
 ### <a name="issue-cloud-provider-launch-failure-while-setting-up-the-cluster-publicipcountlimitreached"></a>Problem: Wystąpił błąd podczas uruchamiania dostawcy chmury podczas konfigurowania klastra (PublicIPCountLimitReached)
 

@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.author: laobri
 author: lobrien
 ms.date: 11/04/2019
-ms.openlocfilehash: 85346a2334d240eceb0daa4519ce69b4eb4906cc
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
-ms.translationtype: HT
+ms.openlocfilehash: f1b061e92ce0650da4d5b95643eb6e9df917e3b8
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73497454"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73671547"
 ---
 # <a name="what-are-azure-machine-learning-pipelines"></a>Co to są Azure Machine Learning potoki?
 
@@ -119,7 +119,7 @@ Deweloperzy, którzy preferują powierzchnię projektowania wizualizacji, mogą 
 
 Podczas wizualnego projektowania potoków dane wejściowe i wyjściowe kroku są wyświetlane w sposób widoczny. Możesz przeciągać i upuszczać dane, co pozwala szybko zrozumieć i zmodyfikować przepływu danych potoku.
  
-![Przykład projektanta Azure Machine Learning](./media/concept-ml-pipelines/visual-design-surface.gif)
+![Przykład projektanta Azure Machine Learning](./media/concept-ml-pipelines/designer-drag-and-drop.gif)
 
 ### <a name="understanding-the-execution-graph"></a>Informacje na temat grafu wykonywania
 
@@ -183,7 +183,7 @@ Można łatwo stać r o ponowne używanie buforowanych wyników, szczegółową 
 
 * Korzystanie z potoków jako jedynego środka do oddzielenia obaw. Wbudowane funkcje, obiekty i moduły w języku Python umożliwiają długotrwałe uniknięcie niemylącego stanu. Krok potoku jest znacznie bardziej kosztowny niż wywołanie funkcji.
 
-* Duże sprzężenie między krokami potoku. Jeśli Refaktoryzacja krok zależny często wymaga modyfikacji danych wyjściowych poprzedniego kroku, istnieje duże ryzyko, że poszczególne kroki są obecnie bardziej kosztowne niż korzyść. Kolejną wskazówki, że kroki są zbyt powiązane z argumentami, które nie są danymi, ale flagi sterujące przetwarzaniem. 
+* Duże sprzęganie między krokami potoku. Jeśli Refaktoryzacja krok zależny często wymaga modyfikacji danych wyjściowych poprzedniego kroku, istnieje duże ryzyko, że poszczególne kroki są obecnie bardziej kosztowne niż korzyść. Kolejną wskazówki, że kroki są zbyt powiązane z argumentami, które nie są danymi, ale flagi sterujące przetwarzaniem. 
 
 * Przedwcześnie Optymalizacja zasobów obliczeniowych. Na przykład istnieje często kilka etapów przygotowywania danych, a jedna z nich często widzi "Niestety, to miejsce, w którym można użyć `MpiStep` do programowania równoległego, ale jest to miejsce, w którym można użyć `PythonScriptStep` z mniej zaawansowanym celem obliczeń , "i tak dalej. I może w długim czasie tworzyć szczegółowe kroki, takie jak to, które mogą okazać się wartościowa, zwłaszcza jeśli istnieje możliwość użycia zbuforowanych wyników zamiast zawsze ponownego obliczania. Ale potoki nie są przeznaczone do podstawiania dla modułu `multiprocessing`. 
 

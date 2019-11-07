@@ -1,6 +1,6 @@
 ---
-title: Kreator kopiowania usługi Azure Data Factory | Dokumentacja firmy Microsoft
-description: Dowiedz się więcej o sposobie używania Kreatora kopiowania usługi Azure Data Factory do kopiowania danych z obsługiwanych źródeł danych do ujścia.
+title: Kreator kopiowania Data Factory platformy Azure
+description: Informacje na temat używania Kreatora kopiowania Data Factory platformy Azure do kopiowania danych z obsługiwanych źródeł danych do ujścia.
 services: data-factory
 documentationcenter: ''
 author: linda33wj
@@ -14,81 +14,81 @@ ms.topic: conceptual
 ms.date: 01/22/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: d13e304b0d10e8bd34d306426f1f9164bcc6be94
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: b2ec8e2cc09b6deb236bd83cb5cca99fead97279
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60567677"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73683230"
 ---
-# <a name="azure-data-factory-copy-wizard"></a>Kreator kopiowania usługi Azure Data Factory
+# <a name="azure-data-factory-copy-wizard"></a>Kreator kopiowania Azure Data Factory
 > [!NOTE]
 > Ten artykuł dotyczy wersji 1 usługi Data Factory. 
 
-Kreatora kopiowania usługi Azure Data Factory ułatwia proces pozyskiwania danych, zwykle jest to pierwszy krok w scenariuszu integracji danych end-to-end. Podczas przechodzenia za pomocą Kreatora kopiowania usługi Azure Data Factory, nie musisz zrozumieć żadnych definicji JSON dla połączonej usługi, zestawy danych i potoki. Kreator automatycznie tworzy potok, aby skopiować dane z wybranego źródła danych w wybranym miejscu docelowym. Ponadto Kreator kopiowania ułatwia sprawdzanie poprawności danych w trakcie pozyskiwania w czasie tworzenia. Pozwala to zaoszczędzić czas, szczególnie gdy można są dane wprowadzane po raz pierwszy ze źródła danych. Aby uruchomić Kreatora kopiowania, kliknij przycisk **kopiowanie danych** kafelków na stronie głównej fabryki danych.
+Kreator kopiowania Azure Data Factory ułatwia proces pozyskiwania danych, który jest zazwyczaj pierwszym krokiem w kompleksowym scenariuszu integracji danych. Podczas przechodzenia przez Kreatora kopiowania Azure Data Factory nie trzeba zrozumieć żadnych definicji JSON dla połączonych usług, zestawów danych i potoków. Kreator automatycznie tworzy potok w celu skopiowania danych z wybranego źródła danych do wybranego miejsca docelowego. Ponadto Kreator kopiowania pomaga sprawdzić poprawność pozyskanych danych podczas tworzenia. Oszczędza to czas, szczególnie w przypadku pozyskiwania danych po raz pierwszy ze źródła danych. Aby uruchomić Kreatora kopiowania, kliknij kafelek **Kopiuj dane** na stronie głównej fabryki danych.
 
 ![Kreator kopiowania](./media/data-factory-copy-wizard/copy-data-wizard.png)
 
-## <a name="designed-for-big-data"></a>Przeznaczona dla danych big data
-Ten kreator umożliwia łatwe przenoszenie danych z wielu źródeł do miejsc docelowych w ciągu kilku minut. Po przejściu w Kreatorze potoku z działaniem kopiowania jest tworzony automatycznie, wraz z zależnych jednostek usługi Data Factory (połączone usług i zestawów danych). Żadne dodatkowe kroki są wymagane do utworzenia potoku.   
+## <a name="designed-for-big-data"></a>Zaprojektowana do obsługi danych Big Data
+Ten Kreator umożliwia łatwe przenoszenie danych z wielu źródeł do miejsc docelowych w ciągu kilku minut. Po przejściu przez kreatora zostanie automatycznie utworzony potok z działaniem kopiowania, wraz z jednostkami zależnymi Data Factory (połączone usługi i zestawy danych). Do utworzenia potoku nie są wymagane żadne dodatkowe kroki.   
 
 ![Wybieranie źródła danych](./media/data-factory-copy-wizard/select-data-source-page.png)
 
 > [!NOTE]
-> Aby uzyskać instrukcje krok po kroku instrukcje tworzenia przykładowego potoku w celu skopiowania danych z usługi Azure blob do tabeli usługi Azure SQL Database, zobacz [samouczku Kreator kopiowania](data-factory-copy-data-wizard-tutorial.md).
+> Aby uzyskać instrukcje krok po kroku dotyczące tworzenia przykładowego potoku do kopiowania danych z obiektu blob platformy Azure do tabeli Azure SQL Database, zobacz [samouczek Kreatora kopiowania](data-factory-copy-data-wizard-tutorial.md).
 >
 >
 
-Kreator zaprojektowano z danymi big data na uwadze od samego początku obsługę zróżnicowanych danych i typów obiektów. Można tworzyć potoków usługi Data Factory, które przenoszenia setek folderów, pliki lub tabele. Kreator obsługuje automatyczne danych w wersji zapoznawczej, przechwytywania schematu i mapowanie i filtrowania danych.
+Kreator został zaprojektowany z myślą o rozpoczęciu pracy z obsługą różnorodnych danych i typów obiektów. Można tworzyć potoki Data Factory, które przenoszą setki folderów, plików lub tabel. Kreator obsługuje automatyczne podglądy danych, przechwytywanie schematu i mapowanie oraz filtrowanie danych.
 
-## <a name="automatic-data-preview"></a>Automatyczne dane (wersja zapoznawcza)
-Możesz wyświetlić podgląd część dane z wybranego źródła danych, aby sprawdzić, czy dane mają zostać skopiowane. Ponadto jeśli źródło danych znajduje się w pliku tekstowym, Kreator kopiowania analizuje plik tekstowy, aby dowiedzieć się więcej wierszy i kolumn ograniczniki i schemat automatycznie.
+## <a name="automatic-data-preview"></a>Automatyczna wersja zapoznawcza danych
+Możesz wyświetlić podgląd części danych z wybranego źródła danych, aby sprawdzić, czy dane są co chcesz skopiować. Ponadto, jeśli dane źródłowe są w pliku tekstowym, Kreator kopiowania analizuje plik tekstowy, aby poznać ograniczniki wierszy i kolumn i automatycznie.
 
 ![Ustawienia formatu pliku](./media/data-factory-copy-wizard/file-format-settings.png)
 
 ## <a name="schema-capture-and-mapping"></a>Przechwytywanie schematu i mapowanie
-Schemat danych wejściowych nie może być zgodny ze schematem, danych wyjściowych, w niektórych przypadkach. W tym scenariuszu należy mapować kolumny z schematu źródła kolumn ze schematu docelowego.
+Schemat danych wejściowych może być niezgodny ze schematem danych wyjściowych w niektórych przypadkach. W tym scenariuszu należy zmapować kolumny ze schematu źródłowego do kolumn z schematu docelowego.
 
 > [!TIP]
-> Podczas kopiowania danych z programu SQL Server lub usługi Azure SQL Database do usługi Azure SQL Data Warehouse, jeśli tabela nie istnieje w magazynie docelowym, Data Factory obsługuje automatyczne tworzenie tabeli przy użyciu schematu źródła. Dowiedz się więcej z [przenoszenie danych do i z usługi Azure SQL Data Warehouse przy użyciu usługi Azure Data Factory](./data-factory-azure-sql-data-warehouse-connector.md).
+> W przypadku kopiowania danych z SQL Server lub Azure SQL Database do Azure SQL Data Warehouse, jeśli tabela nie istnieje w magazynie docelowym, Data Factory obsługuje tworzenie tabel przy użyciu schematu źródła. Dowiedz się więcej od [przenoszenia danych do i z Azure SQL Data Warehouse przy użyciu Azure Data Factory](./data-factory-azure-sql-data-warehouse-connector.md).
 >
 
-Użyj listy rozwijanej, aby wybrać kolumny z schematu źródła, aby zamapować do kolumny schematu docelowego. Kreator kopiowania próbuje zrozumieć swoje wzorzec mapowania kolumn. Ma to zastosowanie tego samego wzorca do pozostałych kolumn, dzięki czemu nie musisz wybrać każdej z kolumn pojedynczo, aby wykonać mapowanie schematu. Jeśli wolisz, można zastąpić te mapowania, za pomocą list rozwijanych mapowania kolumn jedno po drugim. Wzorzec staje się bardziej precyzyjne mapy większą liczbę kolumn. Kreator kopiowania stale aktualizuje wzorzec, a ostatecznie osiągnie prawo wzorzec mapowania kolumn, które chcesz osiągnąć.     
+Użyj listy rozwijanej, aby wybrać kolumnę ze schematu źródłowego do zmapowania do kolumny w schemacie docelowym. Kreator kopiowania próbuje zrozumieć wzorzec dla mapowania kolumn. Stosuje ten sam wzorzec do reszty kolumn, dzięki czemu nie trzeba wybierać każdej z kolumn pojedynczo, aby ukończyć mapowanie schematu. Jeśli wolisz, możesz zastąpić te mapowania przy użyciu list rozwijanych, aby mapować kolumny jeden według jednego. Wzorzec jest dokładniejszy podczas mapowania większej liczby kolumn. Kreator kopiowania ciągle aktualizuje wzorzec i ostatecznie osiągnie prawy wzorzec dla mapowania kolumn, które mają być osiągnięte.     
 
-![mapowanie schematu](./media/data-factory-copy-wizard/schema-mapping.png)
+![Mapowanie schematu](./media/data-factory-copy-wizard/schema-mapping.png)
 
 ## <a name="filtering-data"></a>Filtrowanie danych
-Można filtrować dane źródłowe, aby wybrać tylko dane, które muszą być kopiowane do magazynu danych ujścia. Filtrowanie zmniejsza ilość danych, które mają być kopiowane do magazynu danych ujścia i w związku z tym zwiększa przepływność operacji kopiowania. Oferuje elastyczny sposób, aby filtrować dane w relacyjnej bazie danych za pomocą języka zapytania SQL lub pliki w folderze obiektu blob platformy Azure przy użyciu [zmiennych i funkcji usługi fabryka danych](data-factory-functions-variables.md).   
+Można filtrować dane źródłowe, aby wybrać tylko te dane, które muszą zostać skopiowane do magazynu danych ujścia. Filtrowanie zmniejsza ilość danych do skopiowania do magazynu danych ujścia i w związku z tym zwiększa przepływność operacji kopiowania. Zapewnia elastyczny sposób filtrowania danych w relacyjnej bazie danych przy użyciu języka zapytań SQL lub plików w folderze obiektów blob platformy Azure przy użyciu [funkcji Data Factory i zmiennych](data-factory-functions-variables.md).   
 
 ### <a name="filtering-of-data-in-a-database"></a>Filtrowanie danych w bazie danych
-Poniższy zrzut ekranu przedstawia zapytania SQL za pomocą `Text.Format` funkcji i `WindowStart` zmiennej.
+Poniższy zrzut ekranu przedstawia zapytanie SQL przy użyciu funkcji `Text.Format` i zmiennej `WindowStart`.
 
-![Sprawdź poprawność wyrażenia](./media/data-factory-copy-wizard/validate-expressions.png)
+![Weryfikuj wyrażenia](./media/data-factory-copy-wizard/validate-expressions.png)
 
-### <a name="filtering-of-data-in-an-azure-blob-folder"></a>Filtrowanie danych w folderze obiektu blob platformy Azure
-Zmienne w ścieżce folderu służy do kopiowania danych z folderu, który jest określana w czasie wykonywania na podstawie [zmiennych systemowych](data-factory-functions-variables.md#data-factory-system-variables). Są obsługiwane zmienne: **{year}** , **{month}** , **{dzień}** , **{godzina}** , **{minuta}** i **{niestandardowych}** . Na przykład: inputfolder / {year} / {month} / {day}.
+### <a name="filtering-of-data-in-an-azure-blob-folder"></a>Filtrowanie danych w folderze obiektów blob platformy Azure
+W ścieżce folderu można używać zmiennych do kopiowania danych z folderu określonego w czasie wykonywania na podstawie [zmiennych systemowych](data-factory-functions-variables.md#data-factory-system-variables). Obsługiwane są następujące zmienne: **{Year}** , **{Month}** , **{Day}** , **{Hour}** , **{min}** i **{Custom}** . Na przykład: inputfolder/{Year}/{Month}/{Day}.
 
-Załóżmy, że należy wprowadzić folderów w następującym formacie:
+Załóżmy, że masz foldery wejściowe w następującym formacie:
 
     2016/03/01/01
     2016/03/01/02
     2016/03/01/03
     ...
 
-Kliknij przycisk **Przeglądaj** przycisku **pliku lub folderu**, przejdź do jednej z tych folderów (na przykład, 2016 -> 03 -> 01 -> 02) i kliknij przycisk **wybierz**. Powinien zostać wyświetlony `2016/03/01/02` w polu tekstowym. Teraz Zastąp **2016** z **{year}** , **03** z **{month}** , **01** z **{dzień}** , i **02** z **{godzina}** i naciśnij klawisz **kartę** klucza. Powinny zostać wyświetlone list rozwijanych, aby wybrać format dla tych czterech zmiennych:
+Kliknij przycisk **Przeglądaj** dla **pliku lub folderu**, przejdź do jednego z tych folderów (na przykład 2016-> 03-> 01-> 02), a następnie kliknij pozycję **Wybierz**. W polu tekstowym powinna zostać wyświetlona `2016/03/01/02`. Teraz Zastąp ciąg 2016 **{Year}** , **03** przez **{Month}** , **01** z **{Day}** i **02** z **{Hour}** , a następnie naciśnij klawisz **Tab** . Powinny pojawić się listy rozwijane, aby wybrać format dla tych czterech zmiennych:
 
-![Za pomocą zmiennych systemowych](./media/data-factory-copy-wizard/blob-standard-variables-in-folder-path.png)   
+![Używanie zmiennych systemowych](./media/data-factory-copy-wizard/blob-standard-variables-in-folder-path.png)   
 
-Jak pokazano na poniższym zrzucie ekranu, można również użyć **niestandardowe** zmiennej i wszystkie [obsługiwanych ciągów formatu](https://msdn.microsoft.com/library/8kb3ddd4.aspx). Aby wybrać folder o tej struktury, użyj **Przeglądaj** najpierw przycisk. Następnie zastąp wartość składającą się z **{niestandardowych}** i naciśnij klawisz **kartę** klawisz, aby zobaczyć pole tekstowe, w którym można wpisać w formacie ciągu.     
+Jak pokazano na poniższym zrzucie ekranu, można również użyć zmiennej **niestandardowej** i dowolnego [obsługiwanego ciągu formatu](https://msdn.microsoft.com/library/8kb3ddd4.aspx). Aby wybrać folder z tą strukturą, najpierw Użyj przycisku **przeglądania** . Następnie Zastąp wartość **{Custom}** , a następnie naciśnij klawisz **Tab** , aby zobaczyć pole tekstowe, w którym można wpisać ciąg formatu.     
 
-![Korzystanie ze zmienną niestandardową](./media/data-factory-copy-wizard/blob-custom-variables-in-folder-path.png)
+![Używanie zmiennej niestandardowej](./media/data-factory-copy-wizard/blob-custom-variables-in-folder-path.png)
 
-## <a name="scheduling-options"></a>Opcje harmonogramu
-Możesz uruchomić operacji kopiowania raz lub zgodnie z harmonogramem (co godzinę, codziennie, i tak dalej). Obie te opcje może służyć do całodobowej łączników w środowiskach, w tym w środowisku lokalnym, chmurze i lokalną kopię pulpitu.
+## <a name="scheduling-options"></a>Opcje planowania
+Operację kopiowania można wykonać raz lub zgodnie z harmonogramem (co godzinę, codziennie itd.). Obie te opcje mogą służyć do szerokiego zakresu łączników w różnych środowiskach, w tym lokalnej, chmury i kopii na komputerze lokalnym.
 
-Operacja jednorazowa kopia umożliwia przenoszenie danych ze źródła do miejsca docelowego tylko raz. Dotyczy to dane, dowolnego rozmiaru i dowolnego obsługiwanego formatu. Zaplanowaną kopię umożliwia kopiowanie danych w wyznaczonym cyklu. Ustawienia zaawansowane (np. Ponów próbę, limit czasu i alertami) umożliwiają skonfigurowanie zaplanowaną kopię.
+Jednorazowa operacja kopiowania umożliwia przenoszenie danych ze źródła do miejsca docelowego tylko raz. Ma to zastosowanie do danych o dowolnym rozmiarze i dowolnym obsługiwanym formacie. Zaplanowana kopia umożliwia kopiowanie danych zgodnie z określonym cyklem. Aby skonfigurować zaplanowaną kopię, można użyć zaawansowanych ustawień (takich jak ponowna próba, limit czasu i alerty).
 
-![Właściwości harmonogramu](./media/data-factory-copy-wizard/scheduling-properties.png)
+![Właściwości planowania](./media/data-factory-copy-wizard/scheduling-properties.png)
 
-## <a name="next-steps"></a>Kolejne kroki
-Aby uzyskać szybki Przewodnik umożliwia tworzenie potoku za pomocą działania kopiowania przy użyciu Kreatora kopiowania usługi Data Factory, zobacz [samouczka: Tworzenie potoku przy użyciu Kreatora kopiowania](data-factory-copy-data-wizard-tutorial.md).
+## <a name="next-steps"></a>Następne kroki
+Aby zapoznać się z krótkim przewodnikiem dotyczącym tworzenia potoku za pomocą działania kopiowania przy użyciu Kreatora kopiowania Data Factory, zobacz [Samouczek: Tworzenie potoku przy użyciu Kreatora kopiowania](data-factory-copy-data-wizard-tutorial.md).

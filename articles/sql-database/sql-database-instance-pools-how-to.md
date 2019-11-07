@@ -1,5 +1,5 @@
 ---
-title: Azure SQL Database pule wystąpień — Przewodnik (wersja zapoznawcza) | Microsoft Docs
+title: Instrukcje dotyczące Azure SQL Database pul wystąpień (wersja zapoznawcza)
 description: W tym artykule opisano sposób tworzenia pul wystąpień Azure SQL Database (wersja zapoznawcza) i zarządzania nimi.
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: bonova
 ms.author: bonova
 ms.reviewer: sstein, carlrab
 ms.date: 09/05/2019
-ms.openlocfilehash: 5862a54c92de7395ce42865ae32d453e926048d8
-ms.sourcegitcommit: 32242bf7144c98a7d357712e75b1aefcf93a40cc
+ms.openlocfilehash: 461de4da35905ed860fb2ed9d2c655b55b777683
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70294271"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73689736"
 ---
 # <a name="azure-sql-database-instance-pools-preview-how-to-guide"></a>Pule wystąpień Azure SQL Database (wersja zapoznawcza) — Przewodnik
 
@@ -28,7 +28,7 @@ W poniższej tabeli przedstawiono dostępne operacje związane z pulami wystąpi
 
 |Polecenie|Azure Portal|PowerShell|
 |:---|:---|:---|
-|Utwórz pulę wystąpień|Nie|Tak|
+|Tworzenie puli wystąpień|Nie|Tak|
 |Aktualizuj pulę wystąpień (ograniczoną liczbę właściwości)|Nie |Tak |
 |Sprawdź użycie i właściwości puli wystąpień|Nie|Tak |
 |Usuń pulę wystąpień|Nie|Tak|
@@ -41,7 +41,7 @@ W poniższej tabeli przedstawiono dostępne operacje związane z pulami wystąpi
 
 Dostępne [polecenia programu PowerShell](https://docs.microsoft.com/powershell/module/az.sql/)
 
-|Polecenia cmdlet |Opis |
+|Polecenie cmdlet |Opis |
 |:---|:---|
 |[New-AzSqlInstancePool](/powershell/module/az.sql/new-azsqlinstancepool/) | Tworzy pulę wystąpień Azure SQL Database. |
 |[Get-AzSqlInstancePool](/powershell/module/az.sql/get-azsqlinstancepool/) | Zwraca informacje o puli wystąpień usługi Azure SQL. |

@@ -1,5 +1,5 @@
 ---
-title: Kopiowanie danych z programu Dynamics AX przy użyciu Azure Data Factory | Microsoft Docs
+title: Kopiowanie danych z programu Dynamics AX przy użyciu Azure Data Factory
 description: Informacje o kopiowaniu danych z programu Dynamics AX do obsługiwanych magazynów danych ujścia przy użyciu działania kopiowania w potoku Azure Data Factory.
 services: data-factory
 documentationcenter: ''
@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 08/01/2019
 ms.author: jingwang
-ms.openlocfilehash: 02080388cdc6e408164de1eff208d19e4b5da60f
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: 07edc284c29ca209ee20e5de390e8126993f4ce3
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72935668"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73681021"
 ---
 # <a name="copy-data-from-dynamics-ax-by-using-azure-data-factory"></a>Kopiowanie danych z programu Dynamics AX przy użyciu Azure Data Factory
 
@@ -37,7 +37,7 @@ Ten łącznik systemu Dynamics AX obsługuje kopiowanie danych z systemu Dynamic
 >[!TIP]
 >Tego łącznika można również użyć do kopiowania danych z systemu **Dynamics 365 Finanse i operacje**. Zapoznaj się z metodą [obsługi](https://docs.microsoft.com/dynamics365/unified-operations/dev-itpro/data-entities/odata) i [uwierzytelniania](https://docs.microsoft.com/dynamics365/unified-operations/dev-itpro/data-entities/services-home-page#authentication)OData w usłudze Dynamics 365.
 
-## <a name="get-started"></a>Rozpocznij
+## <a name="get-started"></a>Rozpoczęcie pracy
 
 [!INCLUDE [data-factory-v2-connector-get-started](../../includes/data-factory-v2-connector-get-started.md)]
 
@@ -59,7 +59,7 @@ Aby użyć uwierzytelniania jednostki usługi, wykonaj następujące kroki:
 
 Dla połączonej usługi Dynamics AX są obsługiwane następujące właściwości:
 
-| Właściwość | Opis | Wymagane |
+| Właściwość | Opis | Wymagany |
 |:--- |:--- |:--- |
 | type | Właściwość **Type** musi być ustawiona na wartość **DynamicsAX**. |Tak |
 | url | Punkt końcowy OData usługi Dynamics AX (lub Dynamics 365 — Finanse i operacje). |Tak |
@@ -103,7 +103,7 @@ Aby zapoznać się z pełną listą sekcji i właściwości, które są dostępn
 
 Aby skopiować dane z systemu Dynamics AX, ustaw właściwość **Type** zestawu danych na **DynamicsAXResource**. Obsługiwane są następujące właściwości:
 
-| Właściwość | Opis | Wymagane |
+| Właściwość | Opis | Wymagany |
 |:--- |:--- |:--- |
 | type | Właściwość **Type** zestawu danych musi być ustawiona na wartość **DynamicsAXResource**. | Tak |
 | ścieżka | Ścieżka do jednostki usługi Dynamics AX OData. | Tak |
@@ -137,7 +137,7 @@ Aby zapoznać się z pełną listą sekcji i właściwości, które są dostępn
 
 Aby skopiować dane z systemu Dynamics AX, ustaw typ **źródła** w działaniu Kopiuj na **DynamicsAXSource**. W sekcji **Źródło** działania kopiowania są obsługiwane następujące właściwości:
 
-| Właściwość | Opis | Wymagane |
+| Właściwość | Opis | Wymagany |
 |:--- |:--- |:--- |
 | type | Właściwość **Type** źródła działania Copy musi być ustawiona na wartość **DynamicsAXSource**. | Tak |
 | query | Opcje zapytania OData dotyczące filtrowania danych. Przykład: `"?$select=Name,Description&$top=5"`.<br/><br/>**Uwaga**: Łącznik kopiuje dane ze połączonego adresu URL: `[URL specified in linked service]/[path specified in dataset][query specified in copy activity source]`. Aby uzyskać więcej informacji, zobacz [składniki URL usługi OData](https://www.odata.org/documentation/odata-version-3-0/url-conventions/). | Nie |

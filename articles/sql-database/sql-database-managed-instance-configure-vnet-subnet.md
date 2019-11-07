@@ -1,5 +1,5 @@
 ---
-title: Skonfiguruj istniejącą sieć wirtualną dla Azure SQL Database wystąpienia zarządzanego | Microsoft Docs
+title: Konfigurowanie istniejącej sieci wirtualnej dla Azure SQL Database wystąpienia zarządzanego
 description: W tym artykule opisano sposób konfigurowania istniejącej sieci wirtualnej i podsieci, w której można wdrożyć Azure SQL Database wystąpienie zarządzane.
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: srdan-bozovic-msft
 ms.author: srbozovi
 ms.reviewer: sstein, bonova, carlrab
 ms.date: 01/15/2019
-ms.openlocfilehash: 509a08705d87e8f789e26ebbcec295a31f99f416
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 0f6ababa9d25798f4b150c322d48d4c7af04a511
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68567642"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73689379"
 ---
 # <a name="configure-an-existing-virtual-network-for-azure-sql-database-managed-instance"></a>Konfigurowanie istniejącej sieci wirtualnej dla Azure SQL Database wystąpienia zarządzanego
 
@@ -52,9 +52,9 @@ Invoke-Command -ScriptBlock ([Scriptblock]::Create((iwr ($scriptUrlBase+'/prepar
 
 Skrypt przygotowuje podsieć w trzech krokach:
 
-1. Legalizacj Sprawdza poprawność wybranej sieci wirtualnej i podsieci pod kątem wymagań dotyczących sieci wystąpień zarządzanych.
-2. Sprawdzenia Przedstawia on użytkownikowi zestaw zmian, które należy wykonać w celu przygotowania podsieci do wdrożenia wystąpienia zarządzanego. Prosi również o zgodę.
-3. Przygotowane Poprawnie konfiguruje sieć wirtualną i podsieć.
+1. Weryfikuj: sprawdza poprawność wybranej sieci wirtualnej i podsieci pod kątem wymagań dotyczących sieci wystąpień zarządzanych.
+2. Potwierdź: pokazuje użytkownika zestaw zmian, które należy wykonać w celu przygotowania podsieci do wdrożenia wystąpienia zarządzanego. Prosi również o zgodę.
+3. Przygotuj: poprawnie konfiguruje sieć wirtualną i podsieć.
 
 ## <a name="next-steps"></a>Następne kroki
 

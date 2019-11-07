@@ -1,5 +1,5 @@
 ---
-title: 'Samouczek: Dodawanie Azure SQL Database pojedynczej bazy danych do grupy trybu failover | Microsoft Docs'
+title: 'Samouczek: Dodawanie Azure SQL Database pojedynczej bazy danych do grupy trybu failover '
 description: Dodaj Azure SQL Database pojedynczą bazę danych do grupy trybu failover przy użyciu Azure Portal, programu PowerShell lub interfejsu wiersza polecenia platformy Azure.
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: MashaMSFT
 ms.author: mathoma
 ms.reviewer: sstein, carlrab
 ms.date: 06/19/2019
-ms.openlocfilehash: 106351487980d2f76e9122bc7423114e65593b15
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: 022faa04db6f9699d5d80918087c62c69b0fb5fe
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72933241"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73687285"
 ---
 # <a name="tutorial-add-an-azure-sql-database-single-database-to-a-failover-group"></a>Samouczek: Dodawanie Azure SQL Database pojedynczej bazy danych do grupy trybu failover
 

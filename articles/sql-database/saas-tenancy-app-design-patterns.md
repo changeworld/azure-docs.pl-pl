@@ -1,5 +1,5 @@
 ---
-title: Wzorce SaaS z wieloma dzierżawcami — Azure SQL Database | Microsoft Docs
+title: 'Wzorce SaaS z wieloma dzierżawcami — Azure SQL Database '
 description: Zapoznaj się z wymaganiami i typowymi wzorcami architektury danych dla aplikacji bazy danych SaaS (Software as a Service), które działają w środowisku chmury platformy Azure.
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: MightyPen
 ms.author: genemi
 ms.reviewer: billgib, sstein
 ms.date: 01/25/2019
-ms.openlocfilehash: 8cbf0e45ac368f0d2dd1678984bd14392452e63a
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: ecbcf2cdfea2714e46d0c9cff4066befabddeeb8
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68570184"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73691930"
 ---
 # <a name="multi-tenant-saas-database-tenancy-patterns"></a>Wzorce dzierżawy bazy danych SaaS z wieloma dzierżawcami
 
@@ -32,8 +32,8 @@ W przypadku płatnej dzierżawy każdy dzierżawca otrzymuje dostęp do składni
 
 Termin *model dzierżawy* odnosi się do sposobu organizowania danych przechowywanych przez dzierżawców:
 
-- *Pojedyncza dzierżawa:* &nbsp; Każda baza danych przechowuje dane tylko z jednej dzierżawy.
-- *Wiele dzierżawców:* &nbsp; Każda baza danych przechowuje dane pochodzące z wielu różnych dzierżawców (z mechanizmami ochrony prywatności danych).
+- Z jedną dzierżawą *:* &nbsp; każda baza danych przechowuje dane tylko z jednej dzierżawy.
+- *Wielodostępność:* &nbsp; każda baza danych przechowuje dane pochodzące z wielu różnych dzierżawców (z mechanizmami ochrony prywatności danych).
 - Dostępne są również modele dzierżaw hybrydowej.
 
 ## <a name="b-how-to-choose-the-appropriate-tenancy-model"></a>B. Jak wybrać odpowiedni model dzierżawy
@@ -46,9 +46,9 @@ Ogólnie rzecz biorąc, model dzierżawy nie ma wpływu na funkcję aplikacji, a
     - Magazyn w agregacji.
     - Roboczych.
 
-- **Izolacja dzierżawy:** &nbsp; Izolacja i wydajność danych (czy obciążenie jednej dzierżawy wpływa na innych).
+- **Izolacja dzierżawy:** &nbsp; izolacja danych i wydajności (czy obciążenie jednej dzierżawy ma wpływ na innych).
 
-- **Koszt dla dzierżawy:** &nbsp; Koszty bazy danych.
+- **Koszt dla dzierżawy:** koszty bazy danych&nbsp;.
 
 - **Złożoność rozwoju:**
     - Zmiany w schemacie.
@@ -60,7 +60,7 @@ Ogólnie rzecz biorąc, model dzierżawy nie ma wpływu na funkcję aplikacji, a
     - Przywracanie dzierżawy.
     - Odzyskiwanie sprawności systemu po awarii.
 
-- **Szerszym**&nbsp; Łatwość obsługi dostosowań schematu, które są specyficzne dla konkretnych dzierżawców lub klasy dzierżawy.
+- **Szerszym:** &nbsp; łatwość obsługi dostosowań schematu, które są specyficzne dla konkretnych dzierżawców lub klasy dzierżawy.
 
 Dyskusja o dzierżawie koncentruje się na warstwie *danych* .  Należy jednak wziąć pod uwagę chwilę warstwy *aplikacji* .  Warstwa aplikacji jest traktowana jako jednostka monolityczna.  W przypadku dzielenia aplikacji na wiele małych składników wybór modelu dzierżawy może ulec zmianie.  Niektóre składniki mogą być traktowane inaczej niż inne osoby, które dotyczą zarówno usługi dzierżawy, jak i używanej platformy.
 
@@ -92,7 +92,7 @@ Podobnie jak w przypadku wzorca aplikacji autonomicznej, korzystanie z baz danyc
 
 W przypadku bazy danych na dzierżawcę dostosowanie schematu dla co najmniej jednego dzierżawy jest proste.  Dostawca aplikacji musi projektować procedury, aby dokładnie zarządzać dostosowaniami schematu w odpowiedniej skali.
 
-#### <a name="elastic-pools"></a>Elastyczne pule
+#### <a name="elastic-pools"></a>Pule elastyczne
 
 Po wdrożeniu baz danych w tej samej grupie zasobów można je grupować w pule elastyczne.  Pule zapewniają oszczędny sposób udostępniania zasobów w wielu bazach danych.  Ta opcja puli jest tańsza niż wymaganie, aby każda baza danych była wystarczająco duża, aby pomieścić szczytowe użycie.  Mimo że bazy danych w puli współużytkują dostęp do zasobów, można nadal uzyskać wysoką izolację wydajności.
 
@@ -125,9 +125,9 @@ Innym dostępnym wzorcem jest przechowywanie wielu dzierżawców w bazie danych 
 
 #### <a name="tenant-isolation-is-sacrificed"></a>Izolacja dzierżawy jest niedostępna
 
-*Data*&nbsp; Baza danych z wieloma dzierżawcami musi być niezbędna do izolacji dzierżawy.  Dane wielu dzierżawców są przechowywane razem w jednej bazie danych.  Podczas programowania upewnij się, że zapytania nigdy nie ujawniają danych z więcej niż jednej dzierżawy.  SQL Database obsługuje [zabezpieczenia na poziomie wierszy][docu-sql-svr-db-row-level-security-947w], które mogą wymusić, że dane zwrócone z zapytania zostaną objęte zakresem pojedynczej dzierżawy.
+*Dane:* &nbsp; baza danych z wieloma dzierżawcami musi być niezbędna do izolacji dzierżawy.  Dane wielu dzierżawców są przechowywane razem w jednej bazie danych.  Podczas programowania upewnij się, że zapytania nigdy nie ujawniają danych z więcej niż jednej dzierżawy.  SQL Database obsługuje [zabezpieczenia na poziomie wierszy][docu-sql-svr-db-row-level-security-947w], które mogą wymusić, że dane zwrócone z zapytania zostaną objęte zakresem pojedynczej dzierżawy.
 
-*Rozpatrywan*&nbsp; Baza danych z wieloma dzierżawcami udostępnia zasoby obliczeniowe i magazynowe we wszystkich dzierżawach.  Bazę danych jako całość można monitorować, aby upewnić się, że wykonuje zadowalająco.  Jednak system Azure nie ma wbudowanej metody monitorowania użycia tych zasobów ani zarządzania nimi przez indywidualną dzierżawę.  W związku z tym baza danych z wieloma dzierżawcami ma zwiększone ryzyko wystąpienia nieoczekiwanych obciążeń, w przypadku których obciążenie jednej dzierżawy ma wpływ na wydajność innych dzierżawców w tej samej bazie danych.  Dodatkowe monitorowanie na poziomie aplikacji może monitorować wydajność na poziomie dzierżawy.
+*Przetwarzanie:* &nbsp; baza danych z wieloma dzierżawcami udostępnia zasoby obliczeniowe i magazynowe we wszystkich dzierżawach.  Bazę danych jako całość można monitorować, aby upewnić się, że wykonuje zadowalająco.  Jednak system Azure nie ma wbudowanej metody monitorowania użycia tych zasobów ani zarządzania nimi przez indywidualną dzierżawę.  W związku z tym baza danych z wieloma dzierżawcami ma zwiększone ryzyko wystąpienia nieoczekiwanych obciążeń, w przypadku których obciążenie jednej dzierżawy ma wpływ na wydajność innych dzierżawców w tej samej bazie danych.  Dodatkowe monitorowanie na poziomie aplikacji może monitorować wydajność na poziomie dzierżawy.
 
 #### <a name="lower-cost"></a>Niższy koszt
 
@@ -135,7 +135,7 @@ Ogólnie rzecz biorąc, wielodostępne bazy danych mają najniższy koszt dla ka
 
 Dwie zmiany modelu bazy danych z wieloma dzierżawcami zostały omówione w poniższej sekcji, dzięki czemu model wielodostępowy podzielonej na fragmenty jest najbardziej elastyczny i skalowalny.
 
-## <a name="f-multi-tenant-app-with-a-single-multi-tenant-database"></a>F. Aplikacja wielodostępna z jedną bazą danych z wieloma dzierżawcami
+## <a name="f-multi-tenant-app-with-a-single-multi-tenant-database"></a>n. Aplikacja wielodostępna z jedną bazą danych z wieloma dzierżawcami
 
 Najprostszy wzorzec bazy danych z wieloma dzierżawcami używa pojedynczej bazy danych do hostowania danych dla wszystkich dzierżawców.  Po dodaniu większej liczby dzierżawców baza danych jest skalowana z większą ilością pamięci masowej i zasobów obliczeniowych.  Skalowanie w górę może być konieczne, chociaż zawsze istnieje ostateczny limit skalowania.  Jednak długo przed osiągnięciem tego limitu baza danych będzie nieporęczny do zarządzania.
 
@@ -165,7 +165,7 @@ W zależności od używanej metody fragmentowania, w schemacie bazy danych mogą
 
 Bazy danych z wieloma dzierżawcami podzielonej na fragmenty można umieścić w pulach elastycznych.  Ogólnie rzecz biorąc wiele baz danych o pojedynczej dzierżawie w puli jest tańsze niż wiele dzierżawców w kilku bazach danych z wieloma dzierżawami.  Bazy danych z wieloma dzierżawcami są korzystne, gdy istnieje duża liczba nieaktywnych dzierżawców.
 
-## <a name="h-hybrid-sharded-multi-tenant-database-model"></a>H. Model bazy danych hybrydowej podzielonej na fragmenty z wieloma dzierżawcami
+## <a name="h-hybrid-sharded-multi-tenant-database-model"></a>C. Model bazy danych hybrydowej podzielonej na fragmenty z wieloma dzierżawcami
 
 W modelu hybrydowym wszystkie bazy danych mają identyfikator dzierżawy w swoim schemacie.  Bazy danych są w stanie przechowywać więcej niż jedną dzierżawę, a bazy danych mogą być podzielonej na fragmenty.  Dlatego w sensie schematu są to wszystkie wielodostępne bazy danych.  Jednak niektóre z tych baz danych zawierają tylko jedną dzierżawę.  Niezależnie od ilości dzierżawców przechowywanych w danej bazie danych nie ma wpływu na schemat bazy danych.
 
@@ -185,12 +185,12 @@ Poniższa tabela zawiera podsumowanie różnic między głównymi modelami dzier
 
 | Miara | Aplikacja autonomiczna | Baza danych — na dzierżawcę | Podzielonej na fragmenty z wieloma dzierżawcami |
 | :---------- | :------------- | :------------------ | :------------------- |
-| Skalowanie | Średni<br />1 – 100s | Bardzo wysokie<br />1 – 100, 000 | Nieograniczona liczba<br />1-1 000, 000 |
-| Izolacja dzierżawy | Bardzo wysokie | Wysoka | Małą z wyjątkiem pojedynczej dzierżawy (to samo w przypadku MT DB). |
+| Skalowanie | Medium<br />1 – 100s | Bardzo wysoka<br />1 – 100, 000 | Nieograniczona liczba<br />1-1 000, 000 |
+| Izolacja dzierżawy | Bardzo wysoka | Wysoka | Małą z wyjątkiem pojedynczej dzierżawy (to samo w przypadku MT DB). |
 | Koszt bazy danych na dzierżawcę | Wysokowydajn ma rozmiar dla wartości szczytowych. | Małą używane pule. | Najniższa dla małych dzierżawców w MT baz danych. |
 | Monitorowanie wydajności i zarządzanie nimi | Tylko dla dzierżawy | Agregowanie i na dzierżawcę | Agreguj Chociaż jest dla dzierżawy tylko dla zmiennoprzecinkowych. |
 | Złożoność programowania | Małe | Małe | Średniookresow ze względu na fragmentowania. |
-| Złożoność operacyjna | Niska-wysoka. Indywidualnie proste i złożone na dużą skalę. | Low-Medium. Złożoność adresów wzorców na dużą skalę. | Niska-wysoka. Indywidualne zarządzanie dzierżawcą jest złożone. |
+| Złożoność operacyjna | Niska-wysoka. Indywidualnie proste i złożone na dużą skalę. | Niski poziom. Złożoność adresów wzorców na dużą skalę. | Niska-wysoka. Indywidualne zarządzanie dzierżawcą jest złożone. |
 | &nbsp; ||||
 
 ## <a name="next-steps"></a>Następne kroki

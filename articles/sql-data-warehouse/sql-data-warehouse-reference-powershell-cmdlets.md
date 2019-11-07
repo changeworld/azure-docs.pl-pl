@@ -1,6 +1,6 @@
 ---
-title: Polecenia cmdlet programu PowerShell dla usługi Azure SQL Data Warehouse
-description: Znajdź najważniejsze poleceń cmdlet programu PowerShell dla usługi Azure SQL Data Warehouse, w tym jak wstrzymać i wznowić bazy danych.
+title: Polecenia cmdlet programu PowerShell
+description: Znajdź najważniejsze polecenia cmdlet programu PowerShell dla Azure SQL Data Warehouse, w tym informacje na temat wstrzymania i wznowienia bazy danych.
 services: sql-data-warehouse
 author: kevinvngo
 manager: craigg
@@ -10,21 +10,22 @@ ms.subservice: manage
 ms.date: 04/17/2018
 ms.author: kevin
 ms.reviewer: igorstan
-ms.openlocfilehash: 095e66c6c5f75a27b1f0231dfe8cabfd4d741d18
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.custom: seo-lt-2019
+ms.openlocfilehash: b36a64bb82449ace7acc1de0b3c2bc7c5efebe70
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65205176"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73685559"
 ---
-# <a name="powershell-cmdlets-and-rest-apis-for-sql-data-warehouse"></a>Polecenia cmdlet programu PowerShell i interfejsów API REST usługi SQL Data Warehouse
-Wiele zadań administracyjnych SQL Data Warehouse mogą być zarządzane przy użyciu poleceń cmdlet programu Azure PowerShell lub interfejsów API REST.  Poniżej przedstawiono kilka przykładów sposobu używania poleceń programu PowerShell do automatyzacji typowych zadań w usłudze SQL Data Warehouse.  Aby uzyskać pewne dobre przykłady REST, zobacz artykuł [Zarządzanie skalowalności za pomocą architektury REST][Manage scalability with REST].
+# <a name="powershell-cmdlets-and-rest-apis-for-sql-data-warehouse"></a>Polecenia cmdlet programu PowerShell i interfejsy API REST dla SQL Data Warehouse
+Wiele zadań administracyjnych SQL Data Warehouse można zarządzać przy użyciu poleceń cmdlet Azure PowerShell lub interfejsów API REST.  Poniżej przedstawiono kilka przykładów użycia poleceń programu PowerShell do automatyzowania typowych zadań w SQL Data Warehouse.  Aby zapoznać się z niektórymi dobrymi przykładami REST, zobacz artykuł [Zarządzanie skalowalnością przy użyciu interfejsu REST][Manage scalability with REST].
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-## <a name="get-started-with-azure-powershell-cmdlets"></a>Wprowadzenie do poleceń cmdlet programu Azure PowerShell
+## <a name="get-started-with-azure-powershell-cmdlets"></a>Wprowadzenie do Azure PowerShell poleceń cmdlet
 1. Otwórz program Windows PowerShell.
-2. W wierszu polecenia programu PowerShell uruchom następujące polecenia, aby zarejestrować się w usłudze Azure Resource Manager i wybierz swoją subskrypcję.
+2. W wierszu polecenia programu PowerShell uruchom następujące polecenie, aby zalogować się do Azure Resource Manager i wybrać subskrypcję.
    
     ```powershell
     Connect-AzAccount
@@ -32,13 +33,13 @@ Wiele zadań administracyjnych SQL Data Warehouse mogą być zarządzane przy u�
     Select-AzSubscription -SubscriptionName "MySubscription"
     ```
 
-## <a name="pause-sql-data-warehouse-example"></a>Przykład magazynu danych SQL wstrzymania
-Wstrzymywanie bazy danych o nazwie "Database02" znajdującej się na serwerze o nazwie "Serwer01".  Serwer znajduje się w grupie zasobów platformy Azure o nazwie "ResourceGroup1."
+## <a name="pause-sql-data-warehouse-example"></a>Przykład wstrzymywania SQL Data Warehouse
+Wstrzymywanie bazy danych o nazwie "Database02" hostowanej na serwerze o nazwie "Serwer01".  Serwer należy do grupy zasobów platformy Azure o nazwie "ResourceGroup1".
 
 ```Powershell
 Suspend-AzSqlDatabase –ResourceGroupName "ResourceGroup1" –ServerName "Server01" –DatabaseName "Database02"
 ```
-Odmiana, w tym przykładzie powoduje przekazanie w potoku pobrany obiekt do [AzSqlDatabase Wstrzymaj][Suspend-AzSqlDatabase].  W rezultacie baza danych jest wstrzymany. Końcowe polecenie wyświetla wyniki.
+Odmiana, w tym przykładzie potok pobrano do [zawieszania-AzSqlDatabase][Suspend-AzSqlDatabase].  W związku z tym baza danych jest wstrzymana. Końcowe polecenie wyświetla wyniki.
 
 ```Powershell
 $database = Get-AzSqlDatabase –ResourceGroupName "ResourceGroup1" –ServerName "Server01" –DatabaseName "Database02"
@@ -46,14 +47,14 @@ $resultDatabase = $database | Suspend-AzSqlDatabase
 $resultDatabase
 ```
 
-## <a name="start-sql-data-warehouse-example"></a>Uruchom przykład magazynu danych SQL
-Wznów działanie bazy danych o nazwie "Database02" znajdującej się na serwerze o nazwie "Serwer01". Serwer znajduje się w grupie zasobów o nazwie "ResourceGroup1."
+## <a name="start-sql-data-warehouse-example"></a>Rozpocznij SQL Data Warehouse przykład
+Wznów działanie bazy danych o nazwie "Database02" hostowanej na serwerze o nazwie "Serwer01". Serwer jest zawarty w grupie zasobów o nazwie "ResourceGroup1".
 
 ```Powershell
 Resume-AzSqlDatabase –ResourceGroupName "ResourceGroup1" –ServerName "Server01" -DatabaseName "Database02"
 ```
 
-Odmiana, w tym przykładzie pobiera bazę danych o nazwie "Database02" z serwerem o nazwie "Serwer01", który jest zawarty w grupie zasobów o nazwie "ResourceGroup1." Przekazuje on pobrany obiekt do [AzSqlDatabase Wznów][Resume-AzSqlDatabase].
+Odmiana, w tym przykładzie pobiera bazę danych o nazwie "Database02" z serwera o nazwie "Serwer01", który znajduje się w grupie zasobów o nazwie "ResourceGroup1". Pobrano potok w celu [wznowienia-AzSqlDatabase][Resume-AzSqlDatabase].
 
 ```Powershell
 $database = Get-AzSqlDatabase –ResourceGroupName "ResourceGroup1" –ServerName "Server01" –DatabaseName "Database02"
@@ -61,12 +62,12 @@ $resultDatabase = $database | Resume-AzSqlDatabase
 ```
 
 > [!NOTE]
-> Pamiętaj, że jeśli serwer to foo.database.windows.net, użyj "foo", jako ServerName — polecenia cmdlet programu PowerShell.
+> Należy pamiętać, że jeśli serwer jest foo.database.windows.net, użyj "foo" jako-ServerName w poleceniach cmdlet programu PowerShell.
 > 
 > 
 
 ## <a name="other-supported-powershell-cmdlets"></a>Inne obsługiwane polecenia cmdlet programu PowerShell
-Te polecenia cmdlet programu PowerShell są obsługiwane za pomocą usługi Azure SQL Data Warehouse.
+Te polecenia cmdlet programu PowerShell są obsługiwane w Azure SQL Data Warehouse.
 
 * [Get-AzSqlDatabase][Get-AzSqlDatabase]
 * [Get-AzSqlDeletedDatabaseBackup][Get-AzSqlDeletedDatabaseBackup]
@@ -75,17 +76,17 @@ Te polecenia cmdlet programu PowerShell są obsługiwane za pomocą usługi Azur
 * [Remove-AzSqlDatabase][Remove-AzSqlDatabase]
 * [Restore-AzSqlDatabase][Restore-AzSqlDatabase]
 * [Resume-AzSqlDatabase][Resume-AzSqlDatabase]
-* [Select-AzSubscription][Select-AzSubscription]
+* [SELECT-AzSubscription][Select-AzSubscription]
 * [Set-AzSqlDatabase][Set-AzSqlDatabase]
 * [Suspend-AzSqlDatabase][Suspend-AzSqlDatabase]
 
-## <a name="next-steps"></a>Kolejne kroki
-Aby uzyskać więcej przykładów programu PowerShell zobacz:
+## <a name="next-steps"></a>Następne kroki
+Aby uzyskać więcej przykładów dla programu PowerShell, zobacz:
 
-* [Tworzenie magazynu danych SQL przy użyciu programu PowerShell][Create a SQL Data Warehouse using PowerShell]
+* [Tworzenie SQL Data Warehouse przy użyciu programu PowerShell][Create a SQL Data Warehouse using PowerShell]
 * [Przywracanie bazy danych][Database restore]
 
-Aby uzyskać inne zadania, które można zautomatyzować za pomocą programu PowerShell, zobacz [polecenia cmdlet usługi Azure SQL Database][Azure SQL Database Cmdlets]. Należy pamiętać, że nie wszystkie polecenia cmdlet usługi Azure SQL Database są obsługiwane w przypadku usługi Azure SQL Data Warehouse.  Aby uzyskać listę zadań, które można zautomatyzować za pomocą architektury REST, zobacz [operacje usługi Azure SQL Database][Operations for Azure SQL Database].
+Aby zapoznać się z innymi zadaniami, które można zautomatyzować za pomocą programu PowerShell, zobacz [Azure SQL Database polecenia cmdlet][Azure SQL Database Cmdlets]. Należy pamiętać, że nie wszystkie polecenia cmdlet Azure SQL Database są obsługiwane przez Azure SQL Data Warehouse.  Aby zapoznać się z listą zadań, które można zautomatyzować za pomocą usługi REST, zobacz [operacje dla Azure SQL Database][Operations for Azure SQL Database].
 
 <!--Image references-->
 

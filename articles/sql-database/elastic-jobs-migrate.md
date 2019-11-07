@@ -1,5 +1,5 @@
 ---
-title: Migrowanie do nowych zadań Elastic Database | Microsoft Docs
+title: 'Migrowanie do nowych zadań Elastic Database '
 description: Przeprowadź migrację do nowych zadań Elastic Database.
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: johnpaulkee
 ms.author: joke
 ms.reviewer: sstein
 ms.date: 03/13/2019
-ms.openlocfilehash: 9fa3444244cbd51c3f14abcfef5212a366cadbd2
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 2cba7ecb4be500a8f7007c8da009e03e6f33dfde
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68550552"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73692267"
 ---
 # <a name="migrate-to-the-new-elastic-database-jobs"></a>Migruj do nowego zadania Elastic Database
 
@@ -92,7 +92,7 @@ Use-AzureSqlJobConnection -CurrentAzureSubscription -Credential (Get-Credential)
 
 Po zainicjowaniu zarówno starych, jak i nowych poleceń cmdlet zadań elastycznych można migrować poświadczenia zadania, cele i zadania do nowej *bazy danych zadań*.
 
-### <a name="setup"></a>Konfiguracja
+### <a name="setup"></a>Konfigurowanie
 
 ```powershell
 $ErrorActionPreference = "Stop";
@@ -138,7 +138,7 @@ function Migrate-Credentials ($agent) {
 }
 ```
 
-Aby przeprowadzić migrację poświadczeń, wykonaj następujące polecenie, przechodząc `$agent` od wcześniejszego obiektu programu PowerShell.
+Aby przeprowadzić migrację poświadczeń, wykonaj następujące polecenie, przechodząc od wcześniejszego obiektu `$agent` PowerShell.
 
 ```powershell
 Migrate-Credentials $agent
@@ -368,7 +368,7 @@ function Setup-TargetGroup ($tgName, $agent) {
 
 Aby przeprowadzić migrację obiektów docelowych (serwerów, baz danych i kolekcji niestandardowych) do nowej bazy danych zadań, wykonaj polecenie cmdlet **migracji-TargetGroups** , aby wykonać następujące czynności:
 
-- Elementy docelowe poziomu głównego, które są serwerami i bazami danych, zostaną zmigrowane do nowej grupy docelowej\<o nazwie\>" \<(\>ServerName, DatabaseName)" zawierającej tylko element docelowy poziomu głównego.
+- Elementy docelowe poziomu głównego, które są serwerami i bazami danych, zostaną zmigrowane do nowej grupy docelowej o nazwie "(\<ServerName\>, \<databaseName\>)" zawierającej tylko element docelowy poziomu głównego.
 - Kolekcja niestandardowa zostanie zmigrowana do nowej grupy docelowej zawierającej wszystkie elementy docelowe elementów podrzędnych.
 
 ```powershell
@@ -564,7 +564,7 @@ function Setup-JobStep ($newJob, $job) {
 
 Aby migrować zadania, zawartość zadania, Wyzwalacze zadań i harmonogramy zadań do nowej bazy danych agenta zadań elastycznych, wykonaj polecenie cmdlet **migrowania zadań** w ramach agenta.
 
-- Zadania z wieloma wyzwalaczami z różnymi harmonogramami są rozdzielone na wiele zadań przy użyciu\<schematu\> nazewnictwa:\>"jobName (\<ScheduleName)".
+- Zadania z wieloma wyzwalaczami z różnymi harmonogramami są rozdzielone na wiele zadań z schematem nazewnictwa: "\<jobName\> (\<ScheduleName\>)".
 - Zawartość zadania jest migrowana do zadania przez dodanie domyślnego kroku zadania o nazwie JobStep z skojarzonym tekstem polecenia.
 - Zadania są domyślnie wyłączone, aby można było je sprawdzić przed ich włączeniem.
 

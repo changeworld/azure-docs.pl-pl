@@ -1,6 +1,6 @@
 ---
 title: Korzystanie z usługi sieci Web
-titleSuffix: Azure Machine Learning Studio (classic)
+titleSuffix: ML Studio (classic) Azure
 description: Po wdrożeniu usługi Machine Learning z poziomu Azure Machine Learning Studio (klasycznego) usługa sieci Web RESTFul może być używana jako usługa żądania-odpowiedzi w czasie rzeczywistym lub jako usługa wykonywania wsadowego.
 services: machine-learning
 ms.service: machine-learning
@@ -10,12 +10,12 @@ author: xiaoharper
 ms.author: amlstudiodocs
 ms.custom: seodec18
 ms.date: 06/02/2017
-ms.openlocfilehash: a5f73e9814adeb44c2838a1fd3bd9c9fd34d4de5
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: b955b274f3e96eab7e6075b0e966117c2871bbf8
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73493307"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73671434"
 ---
 # <a name="how-to-consume-an-azure-machine-learning-studio-classic-web-service"></a>Jak korzystać z usługi sieci Web Azure Machine Learning Studio (klasycznej)
 
@@ -24,7 +24,7 @@ Po wdrożeniu modelu predykcyjnego Azure Machine Learning Studio (klasyczny) jak
 Więcej informacji na temat sposobu tworzenia i wdrażania usługi sieci Web Machine Learning przy użyciu Machine Learning Studio (klasyczny) można znaleźć tutaj:
 
 * Aby zapoznać się z samouczkiem dotyczącym tworzenia eksperymentu w Machine Learning Studio (klasyczny), zobacz [Tworzenie pierwszego eksperymentu](create-experiment.md).
-* Aby uzyskać szczegółowe informacje na temat wdrażania usługi sieci Web, zobacz [wdrażanie usługi sieci web Machine Learning](publish-a-machine-learning-web-service.md).
+* Aby uzyskać szczegółowe informacje na temat wdrażania usługi sieci Web, zobacz [wdrażanie usługi sieci web Machine Learning](deploy-a-machine-learning-web-service.md).
 * Aby uzyskać więcej informacji na temat ogólnie Machine Learning, odwiedź [centrum dokumentacji Machine Learning](https://azure.microsoft.com/documentation/services/machine-learning/).
 
 
@@ -32,12 +32,12 @@ Więcej informacji na temat sposobu tworzenia i wdrażania usługi sieci Web Mac
 ## <a name="overview"></a>Omówienie
 W przypadku usługi sieci Web Azure Machine Learning zewnętrzna aplikacja komunikuje się z modelem oceniania Machine Learning przepływów pracy w czasie rzeczywistym. Wywołanie usługi sieci Web Machine Learning zwraca wyniki prognozowania do aplikacji zewnętrznej. Aby wykonać wywołanie usługi sieci Web Machine Learning, należy przekazać klucz interfejsu API, który jest tworzony podczas wdrażania przewidywania. Usługa sieci Web Machine Learning jest oparta na architekturze REST, popularnej architektury dla projektów programowania w sieci Web.
 
-Tnie klasycznej wersji Azure Machine Learning Studio ma dwa typy usług:
+Klasyczna wersja Azure Machine Learning Studio ma dwa typy usług:
 
 * Usługa Request-Response (RR) — małe opóźnienia i wysoce skalowalna usługa udostępniająca interfejs do modeli bezstanowych utworzonych i wdrożonych z Machine Learning Studio (klasyczny).
 * Usługa wykonywania wsadowego (BES) — asynchroniczna usługa służąca do oceniania partii rekordów danych.
 
-Aby uzyskać więcej informacji na temat Machine Learning usług sieci Web, zobacz [wdrażanie usługi sieci web Machine Learning](publish-a-machine-learning-web-service.md).
+Aby uzyskać więcej informacji na temat Machine Learning usług sieci Web, zobacz [wdrażanie usługi sieci web Machine Learning](deploy-a-machine-learning-web-service.md).
 
 ## <a name="get-an-authorization-key"></a>Pobieranie klucza autoryzacji
 Podczas wdrażania eksperymentu klucze interfejsu API są generowane dla usługi sieci Web. Klucze można pobrać z kilku lokalizacji.

@@ -1,5 +1,5 @@
 ---
-title: Skrypt programu PowerShell — Przekształcanie danych w chmurze przy użyciu Data Factory | Microsoft Docs
+title: 'Skrypt programu PowerShell — Przekształcanie danych w chmurze przy użyciu Data Factory '
 description: Ten skrypt programu PowerShell przekształca dane w chmurze przez uruchomienie programu Spark w klastrze Azure HDInsight Spark.
 author: djpmsft
 ms.author: daperlov
@@ -9,12 +9,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 09/12/2017
-ms.openlocfilehash: 973efe90ea1da68e4c4e4b0dbbb4c191be18213d
-ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
+ms.openlocfilehash: 53f64103819476e4efe918bd7a7be4ee2a1bcca3
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70140875"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73684308"
 ---
 # <a name="powershell-script---transform-data-in-cloud-using-azure-data-factory"></a>Skrypt programu PowerShell — Przekształcanie danych w chmurze przy użyciu Azure Data Factory
 
@@ -62,7 +62,7 @@ Ten przykładowy skrypt programu PowerShell tworzy potok, który przekształca d
 
 ### <a name="upload-the-input-file"></a>Przekazywanie pliku wejściowego
 1. Utwórz plik o nazwie **minecraftstory.txt** zawierający tekst. Program platformy Spark zlicza liczbę słów w tym tekście. 
-2. Utwórz podfolder o nazwie `inputfiles` `spark` w folderze kontenera obiektów BLOB. 
+2. Utwórz podfolder o nazwie `inputfiles` w folderze `spark` kontenera obiektów BLOB. 
 3. Przekaż `minecraftstory.txt` do podfolderu `inputfiles`. 
 
 ## <a name="sample-script"></a>Przykładowy skrypt

@@ -1,5 +1,5 @@
 ---
-title: Wyzwalacze i wykonywanie potoku w usłudze Azure Data Factory | Microsoft Docs
+title: Wyzwalacze i wykonywanie potoku w usłudze Azure Data Factory
 description: Ten artykuł zawiera informacje na temat wykonywania potoku w usłudze Azure Data Factory na żądanie lub przy użyciu wyzwalacza.
 services: data-factory
 documentationcenter: ''
@@ -11,12 +11,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 07/05/2018
-ms.openlocfilehash: adc7b65b4e079c55b9400b06603625971efc3ea3
-ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
+ms.openlocfilehash: 20a5a9c5513c165cd5add2e97f019a741dfd0b03
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73177679"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73681476"
 ---
 # <a name="pipeline-execution-and-triggers-in-azure-data-factory"></a>Wyzwalacze i wykonywanie potoku w usłudze Azure Data Factory
 > [!div class="op_single_selector" title1="Wybierz używaną wersję usługi Data Factory:"]
@@ -77,7 +77,7 @@ Na przykład załóżmy, że masz podstawowy potok o nazwie **copyPipeline**, kt
 W definicji JSON potok przyjmuje dwa parametry: **sourceBlobContainer** i **sinkBlobContainer**. Wartości tych parametrów są przekazywane w czasie uruchomienia.
 
 Możesz uruchomić potok ręcznie, używając jednej z następujących metod:
-- Zestaw SDK dla platformy .NET
+- Zestaw SDK .NET
 - Moduł programu Azure PowerShell
 - Interfejs API REST
 - Zestaw SDK dla języka Python
@@ -121,7 +121,7 @@ Parametry są przekazywane w treści ładunku żądania. W zestawie SDK platform
 
 Pełny przykład można znaleźć w artykule [Szybki start: tworzenie fabryki danych przy użyciu programu Azure PowerShell](quickstart-create-data-factory-powershell.md).
 
-### <a name="net-sdk"></a>Zestaw SDK dla platformy .NET
+### <a name="net-sdk"></a>Zestaw SDK .NET
 Następujące przykładowe wywołanie ilustruje, jak ręcznie uruchomić potok przy użyciu zestawu SDK platformy .NET:
 
 ```csharp
@@ -276,12 +276,12 @@ Poniższa tabela zawiera ogólne omówienie głównych elementów schematu odnos
 
 ### <a name="schema-defaults-limits-and-examples"></a>Wartości domyślne, limity i przykłady harmonogramów
 
-| Właściwość JSON | Typ | Wymagane | Wartość domyślna | Prawidłowe wartości | Przykład |
+| Właściwość JSON | Typ | Wymagany | Wartość domyślna | Prawidłowe wartości | Przykład |
 |:--- |:--- |:--- |:--- |:--- |:--- |
-| **startTime** | string | Tak | Brak | Daty i godziny ISO 8601 | `"startTime" : "2013-01-09T09:30:00-08:00"` |
+| **startTime** | ciąg | Tak | Brak | Daty i godziny ISO 8601 | `"startTime" : "2013-01-09T09:30:00-08:00"` |
 | **recurrence** | obiekt | Tak | Brak | Obiekt cyklu | `"recurrence" : { "frequency" : "monthly", "interval" : 1 }` |
 | **interval** | numer | Nie | 1 | Od 1 do 1000 | `"interval":10` |
-| **endTime** | string | Tak | Brak | Wartość daty i godziny reprezentująca godzinę w przyszłości | `"endTime" : "2013-02-09T09:30:00-08:00"` |
+| **endTime** | ciąg | Tak | Brak | Wartość daty i godziny reprezentująca godzinę w przyszłości | `"endTime" : "2013-02-09T09:30:00-08:00"` |
 | **schedule** | obiekt | Nie | Brak | Obiekt harmonogramu | `"schedule" : { "minute" : [30], "hour" : [8,17] }` |
 
 ### <a name="starttime-property"></a>Właściwość startTime

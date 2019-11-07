@@ -1,6 +1,6 @@
 ---
-title: Rozwiązywanie problemów z bramą zarządzania danymi | Dokumentacja firmy Microsoft
-description: Zawiera porady dotyczące rozwiązywania problemów związanych z bramą zarządzania danymi.
+title: Rozwiązywanie problemów z bramą Zarządzanie danymi
+description: Zawiera wskazówki dotyczące rozwiązywania problemów związanych z bramą Zarządzanie danymi.
 services: data-factory
 author: nabhishek
 manager: craigg
@@ -12,63 +12,63 @@ ms.topic: conceptual
 ms.date: 10/01/2017
 ms.author: abnarain
 robots: noindex
-ms.openlocfilehash: 0559d89bd691323a95713d518df05e58283cef39
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 34930061189c11c9cea9c2cd0feb2ede9aade74d
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61253761"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73682318"
 ---
 # <a name="troubleshoot-issues-with-using-data-management-gateway"></a>Rozwiązywanie problemów z używaniem bramy zarządzania danymi
-Ten artykuł zawiera informacje na temat rozwiązywania problemów z używaniem bramy zarządzania danymi.
+Ten artykuł zawiera informacje dotyczące rozwiązywania problemów z usługą Zarządzanie danymi Gateway.
 
 > [!NOTE]
-> Ten artykuł dotyczy wersji 1 usługi Azure Data Factory. Jeśli używasz bieżącą wersję usługi Data Factory, zobacz [może być samodzielnie hostowane środowisko integration runtime w usłudze Data Factory](../create-self-hosted-integration-runtime.md).
+> Ten artykuł dotyczy wersji 1 usługi Azure Data Factory. Jeśli używasz bieżącej wersji usługi Data Factory, zobacz [własne środowisko Integration Runtime w programie Data Factory](../create-self-hosted-integration-runtime.md).
 
-Zobacz [bramy zarządzania danymi](data-factory-data-management-gateway.md) artykuł, aby uzyskać szczegółowe informacje na temat bramy. Zobacz [przenoszenie danych między lokalizacją lokalną i chmurą](data-factory-move-data-between-onprem-and-cloud.md) artykułu przewodnik przenoszenia danych z lokalnej bazy danych programu SQL Server do usługi Microsoft Azure Blob storage przy użyciu bramy.
+Aby uzyskać szczegółowe informacje o bramie, zobacz artykuł dotyczący [bramy zarządzanie danymi](data-factory-data-management-gateway.md) . Zapoznaj się z artykułem [przenoszenie danych między środowiskiem lokalnym i chmurą](data-factory-move-data-between-onprem-and-cloud.md) , aby zapoznać się z przewodnikiem przenoszenia danych z lokalnej bazy danych SQL Server do Microsoft Azure usługi BLOB Storage przy użyciu bramy.
 
-## <a name="failed-to-install-or-register-gateway"></a>Nie udało się zainstalować lub zarejestrować bramę
-### <a name="1-problem"></a>1. Problem
-Widzisz ten komunikat o błędzie podczas instalowania i rejestrowania bramy, w szczególności podczas pobierania pliku instalacyjnego bramy.
+## <a name="failed-to-install-or-register-gateway"></a>Nie można zainstalować lub zarejestrować bramy
+### <a name="1-problem"></a>1. problem
+Ten komunikat o błędzie jest wyświetlany podczas instalowania i rejestrowania bramy, w odróżnieniu od pobrania pliku instalacyjnego bramy.
 
 `Unable to connect to the remote server". Please check your local settings (Error Code: 10003).`
 
 #### <a name="cause"></a>Przyczyna
-Maszyny, na którym chcesz zainstalować bramę udało się pobrać najnowszy plik instalacyjny bramy z Centrum pobierania, ze względu na problem z siecią.
+Na komputerze, na którym próbujesz zainstalować bramę, nie powiodło się pobranie najnowszego pliku instalacyjnego bramy z centrum pobierania z powodu problemu z siecią.
 
-#### <a name="resolution"></a>Rozwiązanie
-Sprawdź ustawienia serwera proxy zapory, aby zobaczyć, czy ustawienia blokować połączenia sieciowego z komputera w celu [Centrum pobierania](https://download.microsoft.com/)i zaktualizuj ustawienia odpowiednio.
+#### <a name="resolution"></a>Rozdzielczość
+Sprawdź ustawienia serwera proxy zapory, aby sprawdzić, czy ustawienia blokują połączenie sieciowe z komputera do [Centrum pobierania](https://download.microsoft.com/), i odpowiednio zaktualizuj ustawienia.
 
-Alternatywnie możesz pobrać plik instalacyjny najnowszej bramy z [Centrum pobierania](https://www.microsoft.com/download/details.aspx?id=39717) na innych komputerach, które mogą uzyskiwać dostęp do Centrum pobierania. Można następnie skopiuj plik Instalatora na komputerze-hoście bramy i uruchom go ręcznie, aby zainstalować i zaktualizować bramę.
+Alternatywnie można pobrać plik instalacyjny dla najnowszej bramy z [Centrum pobierania](https://www.microsoft.com/download/details.aspx?id=39717) na innych maszynach, które mogą uzyskać dostęp do centrum pobierania. Następnie można skopiować plik Instalatora na komputer hosta bramy i uruchomić go ręcznie, aby zainstalować i zaktualizować bramę.
 
-### <a name="2-problem"></a>2. Problem
-Zostanie wyświetlony ten błąd, gdy próbujesz zainstalować bramę, klikając pozycję **zainstalować bezpośrednio na tym komputerze** w witrynie Azure portal.
+### <a name="2-problem"></a>2. problem
+Ten błąd jest wyświetlany podczas próby zainstalowania bramy przez kliknięcie przycisku **Instaluj bezpośrednio na tym komputerze** w Azure Portal.
 
 `Error:  Abort installing a new gateway on this computer because this computer has an existing installed gateway and a computer without any installed gateway is required for installing a new gateway.`  
 
 #### <a name="cause"></a>Przyczyna
-Brama jest już zainstalowana na komputerze.
+Brama jest już zainstalowana na tym komputerze.
 
-#### <a name="resolution"></a>Rozwiązanie
-Odinstaluj istniejącą bramę na komputerze, a następnie kliknij przycisk **zainstalować bezpośrednio na tym komputerze** Połącz ponownie.
+#### <a name="resolution"></a>Rozdzielczość
+Odinstaluj istniejącą bramę na komputerze i ponownie kliknij link **Zainstaluj bezpośrednio na tym komputerze** .
 
-### <a name="3-problem"></a>3. Problem
+### <a name="3-problem"></a>3. problem
 Ten błąd może pojawić się podczas rejestrowania nowej bramy.
 
 `Error: The gateway has encountered an error during registration.`
 
 #### <a name="cause"></a>Przyczyna
-Możesz zobaczyć ten komunikat dla jednego z następujących powodów:
+Ten komunikat może zostać wyświetlony z jednego z następujących powodów:
 
 * Format klucza bramy jest nieprawidłowy.
-* Klucz brama została unieważniona.
-* Klucz bramy zostało wygenerowane z poziomu portalu.  
+* Klucz bramy został unieważniony.
+* Klucz bramy został ponownie wygenerowany z portalu.  
 
-#### <a name="resolution"></a>Rozwiązanie
-Sprawdź, czy używasz klucza prawego bramy z poziomu portalu. Jeśli to konieczne, ponownie wygenerować klucz i zarejestrować bramę przy użyciu klucza.
+#### <a name="resolution"></a>Rozdzielczość
+Sprawdź, czy korzystasz z odpowiedniego klucza bramy z portalu. W razie potrzeby Wygeneruj ponownie klucz i zarejestruj bramę przy użyciu klucza.
 
-### <a name="4-problem"></a>4. Problem
-Gdy rejestrujesz z bramy może zobaczysz następujący komunikat o błędzie.
+### <a name="4-problem"></a>4. problem
+Podczas rejestrowania bramy może zostać wyświetlony następujący komunikat o błędzie.
 
 `Error: The content or format of the gateway key "{gatewayKey}" is invalid, please go to azure portal to create one new gateway or regenerate the gateway key.`
 
@@ -77,211 +77,211 @@ Gdy rejestrujesz z bramy może zobaczysz następujący komunikat o błędzie.
 ![Zawartość lub format klucza jest nieprawidłowy](media/data-factory-troubleshoot-gateway-issues/invalid-format-gateway-key.png)
 
 #### <a name="cause"></a>Przyczyna
-Zawartość lub format klucza bramy wejściowe są niepoprawne. Jedną z przyczyn może być to, że tylko część klucz został skopiowany z portalu lub używasz nieprawidłowy klucz.
+Zawartość lub format klucza bramy wejściowej jest niepoprawny. Jedną z przyczyn może być skopiowanie tylko części klucza z portalu lub użycie nieprawidłowego klucza.
 
-#### <a name="resolution"></a>Rozwiązanie
+#### <a name="resolution"></a>Rozdzielczość
 Wygeneruj klucz bramy w portalu i użyj przycisku kopiowania, aby skopiować cały klucz. Następnie wklej go w tym oknie, aby zarejestrować bramę.
 
-### <a name="5-problem"></a>5. Problem
-Gdy rejestrujesz z bramy może zobaczysz następujący komunikat o błędzie.
+### <a name="5-problem"></a>5. problem
+Podczas rejestrowania bramy może zostać wyświetlony następujący komunikat o błędzie.
 
 `Error: The gateway key is invalid or empty. Specify a valid gateway key from the portal.`
 
 ![Klucz bramy jest nieprawidłowy lub pusty](media/data-factory-troubleshoot-gateway-issues/gateway-key-is-invalid-or-empty.png)
 
 #### <a name="cause"></a>Przyczyna
-Ponownie wygenerowano klucz bramy lub brama została usunięta w witrynie Azure portal. Również zdarzyć, jeśli nie jest najpóźniejsza instalacji bramy zarządzania danymi.
+Klucz bramy został wygenerowany ponownie lub Brama została usunięta z Azure Portal. Może się również zdarzyć, że konfiguracja bramy Zarządzanie danymi nie jest najnowsza.
 
-#### <a name="resolution"></a>Rozwiązanie
-Sprawdź ustawienia bramy zarządzania danymi jest najnowsza wersja, możesz znaleźć najnowszej wersji w programie Microsoft [Centrum pobierania](https://go.microsoft.com/fwlink/p/?LinkId=271260).
+#### <a name="resolution"></a>Rozdzielczość
+Sprawdź, czy konfiguracja bramy Zarządzanie danymi to Najnowsza wersja. Najnowsza wersja można znaleźć w [Centrum pobierania](https://go.microsoft.com/fwlink/p/?LinkId=271260)Microsoft.
 
-Jeśli konfiguracja jest bieżący / latest bramy nadal istnieje w portalu, to ponowne wygenerowanie klucza bramy w witrynie Azure portal użyj przycisku kopiowania, aby skopiować cały klucz i wklej go w tym oknie, aby zarejestrować bramę. W przeciwnym razie utwórz ponownie bramę i zacząć od początku.
+Jeśli konfiguracja jest aktualna/Najnowsza i nadal istnieje w portalu, ponownie Wygeneruj klucz bramy w Azure Portal i użyj przycisku kopiowania, aby skopiować cały klucz, a następnie wklej go w tym oknie, aby zarejestrować bramę. W przeciwnym razie należy ponownie utworzyć bramę i zacząć od nowa.
 
-### <a name="6-problem"></a>6. Problem
-Gdy rejestrujesz z bramy może zobaczysz następujący komunikat o błędzie.
+### <a name="6-problem"></a>6. problem
+Podczas rejestrowania bramy może zostać wyświetlony następujący komunikat o błędzie.
 
 `Error: Gateway has been online for a while, then shows “Gateway is not registered” with the status “Gateway key is invalid”`
 
 ![Klucz bramy jest nieprawidłowy lub pusty](media/data-factory-troubleshoot-gateway-issues/gateway-not-registered-key-invalid.png)
 
 #### <a name="cause"></a>Przyczyna
-Ten błąd może się zdarzyć, ponieważ brama została usunięta lub ponownie wygenerować klucz skojarzonej bramy.
+Ten błąd może wystąpić, ponieważ Brama została usunięta lub ponownie wygenerowano skojarzony klucz bramy.
 
-#### <a name="resolution"></a>Rozwiązanie
-Jeśli brama została usunięta, Utwórz ponownie bramę z poziomu portalu, kliknij przycisk **zarejestrować**, skopiuj klucz z portalu, wklej go i próbuje zarejestrować bramę.
+#### <a name="resolution"></a>Rozdzielczość
+Jeśli Brama została usunięta, ponownie utwórz bramę z portalu, kliknij pozycję **zarejestruj**, skopiuj klucz z portalu, wklej go i spróbuj zarejestrować bramę.
 
-Jeśli brama jest nadal istnieje, ale ponownie wygenerowano klucz, używania nowego klucza, aby zarejestrować bramę. Jeśli nie masz klucza, należy ponownie wygenerować klucz ponownie z portalu.
+Jeśli Brama nadal istnieje, ale jej klucz został wygenerowany ponownie, Użyj nowego klucza do zarejestrowania bramy. Jeśli nie masz klucza, ponownie Wygeneruj klucz w portalu.
 
-### <a name="7-problem"></a>7. Problem
-Zapisując one bramy może być konieczne wprowadź ścieżkę i hasło dla certyfikatu.
+### <a name="7-problem"></a>7. problem
+Gdy rejestrujesz bramę, może być konieczne podanie ścieżki i hasła do certyfikatu.
 
 ![Określ certyfikat](media/data-factory-troubleshoot-gateway-issues/specify-certificate.png)
 
 #### <a name="cause"></a>Przyczyna
-Brama została zarejestrowana na innych komputerach, przed. Podczas wstępnej rejestracji bramy certyfikat szyfrowania został skojarzony z bramą. Certyfikat może być własnym generowanych przez bramę lub dostarczone przez użytkownika.  Ten certyfikat jest używany do szyfrowania poświadczeń magazynu danych (usługę połączoną).  
+Brama została zarejestrowana na innych maszynach. Podczas początkowej rejestracji bramy certyfikat szyfrowania został skojarzony z bramą. Certyfikat może zostać wygenerowany samodzielnie przez bramę lub dostarczony przez użytkownika.  Ten certyfikat jest używany do szyfrowania poświadczeń magazynu danych (połączonej usługi).  
 
 ![Eksportowanie certyfikatu](media/data-factory-troubleshoot-gateway-issues/export-certificate.png)
 
-Podczas przywracania bramy na inny komputer hosta, Kreator rejestracji poprosi o podanie tego certyfikatu można odszyfrować poświadczeń wcześniej zaszyfrowany przy użyciu tego certyfikatu.  Bez tego certyfikatu nie można odszyfrować poświadczeń przez nową bramę i wykonania działania kolejnych kopii skojarzone z tej nowej bramy zakończy się niepowodzeniem.  
+Podczas przywracania bramy na innym komputerze-hoście, Kreator rejestracji pyta o ten certyfikat, aby odszyfrować poświadczenia wcześniej zaszyfrowane za pomocą tego certyfikatu.  Bez tego certyfikatu poświadczenia nie mogą zostać odszyfrowane przez nową bramę, a kolejne wykonania działania kopiowania skojarzone z tą nową bramą zakończą się niepowodzeniem.  
 
-#### <a name="resolution"></a>Rozwiązanie
-Jeśli wyeksportowano certyfikat poświadczeń z oryginalnej maszyny bramy przy użyciu **wyeksportować** znajdujący się na **ustawienia** kartę w danych Menedżera konfiguracji bramy zarządzania, należy użyć certyfikatu w tym miejscu.
+#### <a name="resolution"></a>Rozdzielczość
+Jeśli certyfikat poświadczeń został wyeksportowany z oryginalnej maszyny bramy przy użyciu przycisku **Eksportuj** na karcie **ustawienia** w zarządzanie danymi Configuration Manager bramy, użyj tego certyfikatu w tym miejscu.
 
-Nie można pominąć ten etap, w przypadku odzyskiwania bramy. Jeśli brakuje certyfikatu, musisz usunąć bramę z portalu i ponownie utwórz nową bramę.  Ponadto należy zaktualizować wszystkie połączone usługi, które są powiązane z bramą przez ponownego wprowadzania poświadczeń.
+Nie można pominąć tego etapu podczas odzyskiwania bramy. Jeśli brakuje certyfikatu, musisz usunąć bramę z portalu i ponownie utworzyć nową bramę.  Ponadto należy zaktualizować wszystkie połączone usługi, które są powiązane z bramą, ponownie wprowadzając swoje poświadczenia.
 
-### <a name="8-problem"></a>8. Problem
-Być może zobaczysz następujący komunikat o błędzie.
+### <a name="8-problem"></a>8. problem
+Może zostać wyświetlony następujący komunikat o błędzie.
 
 `Error: The remote server returned an error: (407) Proxy Authentication Required.`
 
 #### <a name="cause"></a>Przyczyna
-Ten błąd występuje, gdy brama znajduje się w środowisku, które wymaga dostępu do zasobów w Internecie lub hasło uwierzytelniania na serwerze proxy serwera proxy HTTP jest zmieniany, ale nie jest odpowiednio aktualizowana w bramie.
+Ten błąd występuje, gdy Brama znajduje się w środowisku, które wymaga serwera proxy HTTP w celu uzyskania dostępu do zasobów internetowych, lub hasło uwierzytelniania serwera proxy jest zmieniane, ale nie jest odpowiednio aktualizowane w bramie.
 
-#### <a name="resolution"></a>Rozwiązanie
-Postępuj zgodnie z instrukcjami w sekcji zagadnienia dotyczące serwera Proxy w tym artykule, a następnie skonfiguruj ustawienia serwera proxy przy użyciu danych Menedżera konfiguracji bramy zarządzania.
+#### <a name="resolution"></a>Rozdzielczość
+Postępuj zgodnie z instrukcjami w sekcji Uwagi dotyczące serwera proxy w tym artykule, a następnie skonfiguruj ustawienia serwera proxy za pomocą Configuration Manager Zarządzanie danymi bramy.
 
-## <a name="gateway-is-online-with-limited-functionality"></a>Brama jest w trybie online, z ograniczoną funkcjonalnością
-### <a name="1-problem"></a>1. Problem
-Zostanie wyświetlony stan bramy jako online, z ograniczoną funkcjonalnością.
+## <a name="gateway-is-online-with-limited-functionality"></a>Brama jest w trybie online z ograniczoną funkcjonalnością
+### <a name="1-problem"></a>1. problem
+Stan bramy jest wyświetlany jako online z ograniczoną funkcjonalnością.
 
 #### <a name="cause"></a>Przyczyna
-Zostanie wyświetlony stan bramy jako online z ograniczoną funkcjonalnością dla jednego z następujących powodów:
+Stan bramy jest wyświetlany w trybie online z ograniczoną funkcjonalnością z jednego z następujących powodów:
 
-* Bramy nie można połączyć z usługą w chmurze za pomocą usługi Azure Service Bus.
-* Usługi w chmurze nie można połączyć się z bramą za pośrednictwem usługi Service Bus.
+* Brama nie może nawiązać połączenia z usługą w chmurze za poorednictwem Azure Service Bus.
+* Usługa w chmurze nie może połączyć się z bramą za Service Bus.
 
-Gdy brama jest w trybie online, z ograniczoną funkcjonalnością, nie można użyć Kreatora kopiowania usługi Data Factory do tworzenia potoków danych na potrzeby kopiowania danych do lub z lokalnych magazynów danych. Obejść ten problem można użyć edytora usługi Data Factory w witrynie portal, programu Visual Studio lub programu Azure PowerShell.
+Gdy brama jest w trybie online z ograniczoną funkcjonalnością, może nie być możliwe użycie Kreatora kopiowania Data Factory do tworzenia potoków danych do kopiowania danych do lub z lokalnych magazynów danych. Jako obejście można użyć edytora Data Factory w portalu, Visual Studio lub Azure PowerShell.
 
-#### <a name="resolution"></a>Rozwiązanie
-Istnieje rozwiązanie tego problemu (online z ograniczoną funkcjonalnością) zależy od tego, czy brama nie może nawiązać połączenia z usługą w chmurze ani w inny sposób. Te rozwiązania można znaleźć w poniższych sekcjach.
+#### <a name="resolution"></a>Rozdzielczość
+Rozwiązanie tego problemu (online z ograniczoną funkcjonalnością) jest zależne od tego, czy brama nie może nawiązać połączenia z usługą w chmurze czy w inny sposób. Poniższe sekcje zawierają te rozwiązania.
 
-### <a name="2-problem"></a>2. Problem
-Zostanie wyświetlony następujący błąd.
+### <a name="2-problem"></a>2. problem
+Zobaczysz następujący błąd.
 
 `Error: Gateway cannot connect to cloud service through service bus`
 
-![Bramy nie można połączyć z usługą w chmurze](media/data-factory-troubleshoot-gateway-issues/gateway-cannot-connect-to-cloud-service.png)
+![Brama nie może nawiązać połączenia z usługą w chmurze](media/data-factory-troubleshoot-gateway-issues/gateway-cannot-connect-to-cloud-service.png)
 
 #### <a name="cause"></a>Przyczyna
-Bramy nie można połączyć z usługą w chmurze za pośrednictwem usługi Service Bus.
+Brama nie może nawiązać połączenia z usługą w chmurze za pomocą Service Bus.
 
-#### <a name="resolution"></a>Rozwiązanie
-Wykonaj następujące kroki, aby pobrać bramę przywrócić do trybu online:
+#### <a name="resolution"></a>Rozdzielczość
+Wykonaj następujące kroki, aby ponownie uzyskać dostęp do bramy w trybie online:
 
-1. Zezwalaj na adres IP reguły ruchu wychodzącego na maszynie bramy i zapory w firmie. Adresy IP można znaleźć w dzienniku zdarzeń Windows (identyfikator == 401): Próbowano uzyskać dostęp do gniazda w sposób zabroniony przez jego uprawnienia dostępu XX. XX. XX. XX:9350.
-1. Skonfiguruj ustawienia serwera proxy w bramie. Zobacz szczegółowe informacje w sekcji zagadnienia dotyczące serwera Proxy.
-1. Włącz porty wychodzące 5671 i 9350-9354 zaporę Windows na maszynie bramy i zapory w firmie. Zobacz, portów i sekcji zapory, aby uzyskać szczegółowe informacje. Ten krok jest opcjonalny, ale firma Microsoft zaleca wziąć pod uwagę wydajności.
+1. Zezwalaj na reguły wychodzące adresów IP na maszynie bramy i w zaporze firmowej. Adresy IP można znaleźć z dziennika zdarzeń systemu Windows (identyfikator = = 401): podjęto próbę uzyskania dostępu do gniazda w sposób zabroniony przez jego uprawnienia dostępu XX. XX. XX. XX: 9350.
+1. Skonfiguruj ustawienia serwera proxy na bramie. Szczegółowe informacje znajdują się w sekcji zagadnienia dotyczące serwerów proxy.
+1. Włącz porty wychodzące 5671 i 9350-9354 zarówno w zaporze systemu Windows na maszynie bramy, jak i w firmowej zaporze. Szczegółowe informacje znajdują się w sekcji porty i zapory. Ten krok jest opcjonalny, ale zalecamy jego użycie w celu uwzględnienia wydajności.
 
-### <a name="3-problem"></a>3. Problem
-Zostanie wyświetlony następujący błąd.
+### <a name="3-problem"></a>3. problem
+Zobaczysz następujący błąd.
 
 `Error: Cloud service cannot connect to gateway through service bus.`
 
 #### <a name="cause"></a>Przyczyna
-Błąd przejściowy w łączności sieciowej.
+Przejściowy błąd połączenia sieciowego.
 
-#### <a name="resolution"></a>Rozwiązanie
-Wykonaj następujące kroki, aby pobrać bramę przywrócić do trybu online:
+#### <a name="resolution"></a>Rozdzielczość
+Wykonaj następujące kroki, aby ponownie uzyskać dostęp do bramy w trybie online:
 
-1. Poczekaj kilka minut, połączenia zostaną automatycznie odzyskane po błędzie został usunięty.
+1. Poczekaj kilka minut, łączność zostanie automatycznie odzyskana po wystąpieniu błędu.
 1. Jeśli błąd będzie się powtarzać, uruchom ponownie usługę bramy.
 
-## <a name="failed-to-author-linked-service"></a>Nie można utworzyć połączonej usługi
+## <a name="failed-to-author-linked-service"></a>Tworzenie połączonej usługi nie powiodło się
 ### <a name="problem"></a>Problem
-Możesz zobaczyć następujący błąd podczas próby użycia Menedżera poświadczeń w portalu, wprowadź poświadczenia dla nowa połączona usługa lub zaktualizować poświadczenia dla istniejącej połączonej usługi.
+Ten błąd może wystąpić podczas próby użycia Menedżera poświadczeń w portalu do wprowadzania poświadczeń dla nowej połączonej usługi lub aktualizacji poświadczeń dla istniejącej połączonej usługi.
 
 `Error: The data store '<Server>/<Database>' cannot be reached. Check connection settings for the data source.`
 
-Gdy zostanie wyświetlony ten błąd, na stronie ustawień z danych Menedżera konfiguracji bramy zarządzania może wyglądać poniższym zrzucie ekranu.
+Po wyświetleniu tego błędu Strona Ustawienia Zarządzanie danymi bramy Configuration Manager może wyglądać podobnie jak na poniższym zrzucie ekranu.
 
 ![Nie można nawiązać połączenia z bazą danych](media/data-factory-troubleshoot-gateway-issues/database-cannot-be-reached.png)
 
 #### <a name="cause"></a>Przyczyna
-Certyfikat SSL mogą zostać utracone na maszynie bramy. Komputer z bramą, nie można załadować obecnie certyfikat, który jest używany do szyfrowania SSL. Można także napotkać komunikat o błędzie w dzienniku zdarzeń, który jest podobny do następującego.
+Certyfikat SSL mógł zostać utracony na maszynie bramy. Komputer bramy nie może załadować certyfikatu obecnie używanego do szyfrowania SSL. W dzienniku zdarzeń może zostać wyświetlony komunikat o błędzie podobny do następującego.
 
  `Unable to get the gateway settings from cloud service. Check the gateway key and the network connection. (Certificate with thumbprint cannot be loaded.)`
 
-#### <a name="resolution"></a>Rozwiązanie
+#### <a name="resolution"></a>Rozdzielczość
 Wykonaj następujące kroki, aby rozwiązać ten problem:
 
-1. Uruchom Menedżera konfiguracji bramy zarządzania danych.
+1. Uruchom Configuration Manager bramy Zarządzanie danymi.
 2. Przejdź do karty **Ustawienia**.  
-3. Kliknij przycisk **zmienić** przycisk, aby zmienić certyfikat SSL.
+3. Kliknij przycisk **Zmień** , aby zmienić certyfikat protokołu SSL.
 
-   ![Zmień przycisk certyfikat](media/data-factory-troubleshoot-gateway-issues/change-button-ssl-certificate.png)
-4. Wybierz nowy certyfikat jako certyfikatu SSL. Można użyć dowolnego certyfikatu SSL, który jest generowany przez Ciebie lub każdej organizacji.
+   ![Przycisk zmiany certyfikatu](media/data-factory-troubleshoot-gateway-issues/change-button-ssl-certificate.png)
+4. Wybierz nowy certyfikat jako certyfikat SSL. Możesz użyć dowolnego certyfikatu SSL, który jest generowany przez użytkownika lub dowolną organizację.
 
    ![Określ certyfikat](media/data-factory-troubleshoot-gateway-issues/specify-http-end-point.png)
 
-## <a name="copy-activity-fails"></a>Działanie kopiowania zakończy się niepowodzeniem.
+## <a name="copy-activity-fails"></a>Działanie kopiowania kończy się niepowodzeniem
 ### <a name="problem"></a>Problem
-Po skonfigurowaniu potoku w portalu, można zauważyć wystąpił następujący błąd "UserErrorFailedToConnectToSqlserver".
+Po skonfigurowaniu potoku w portalu można zauważyć następujący błąd "UserErrorFailedToConnectToSqlserver".
 
 `Error: Copy activity encountered a user error: ErrorCode=UserErrorFailedToConnectToSqlServer,'Type=Microsoft.DataTransfer.Common.Shared.HybridDeliveryException,Message=Cannot connect to SQL Server`
 
 #### <a name="cause"></a>Przyczyna
-Może to mieć kilka przyczyn i środki zaradcze zmienia się odpowiednio.
+Może się to zdarzyć z różnych powodów i środki zaradcze odpowiednio się różnią.
 
-#### <a name="resolution"></a>Rozwiązanie
-Zezwalaj na połączenia wychodzące TCP za pośrednictwem portu TCP/1433 po stronie klienta bramy zarządzania danymi, przed nawiązaniem połączenia z usługą SQL database.
+#### <a name="resolution"></a>Rozdzielczość
+Przed nawiązaniem połączenia z bazą danych SQL Zezwól na wychodzące połączenia TCP na porcie TCP/1433 po stronie klienta bramy Zarządzanie danymi.
 
-Jeśli docelowa baza danych jest bazą danych Azure SQL database, sprawdź ustawienia programu SQL Server zapory dla platformy Azure oraz.
+Jeśli docelowa baza danych jest bazą danych Azure SQL, Sprawdź również ustawienia SQL Server zapory dla platformy Azure.
 
-Zobacz następującą sekcję, aby przetestować połączenie z lokalnym magazynem danych.
+Zapoznaj się z poniższą sekcją, aby przetestować połączenie z lokalnym magazynem danych.
 
-## <a name="data-store-connection-or-driver-related-errors"></a>Połączenie magazynu danych lub błędy związane z sterownika
-Jeśli widzisz magazyn połączenia lub błędy związane z sterownik danych, wykonaj następujące czynności:
+## <a name="data-store-connection-or-driver-related-errors"></a>Połączenie z magazynem danych lub błędy związane z sterownikiem
+Jeśli widzisz błędy dotyczące połączenia z magazynem danych lub sterownika, wykonaj następujące czynności:
 
-1. Uruchom Menedżera konfiguracji bramy zarządzania danych na maszynie bramy.
-2. Przełącz się do **diagnostyki** kartę.
-3. W **Testuj połączenie**, Dodaj wartości grupy bramy.
-4. Kliknij przycisk **testu** aby zobaczyć, jeśli możesz połączyć się ze źródłem danych lokalnych z maszyny bramy przy użyciu informacji dotyczących połączenia oraz poświadczenia. Jeśli połączenie testowe nadal zakończy się niepowodzeniem po zainstalowaniu sterownika, uruchom bramę ponownie, aby wczytać najnowsze zmiany.
+1. Uruchom Configuration Manager bramy Zarządzanie danymi na maszynie bramy.
+2. Przejdź na kartę **Diagnostyka** .
+3. W obszarze **połączenie testowe**Dodaj wartości grupy bramy.
+4. Kliknij przycisk **Testuj** , aby sprawdzić, czy możesz nawiązać połączenie z lokalnym źródłem danych z maszyny bramy przy użyciu informacji o połączeniu i poświadczeń. Jeśli połączenie testowe nadal zakończy się niepowodzeniem po zainstalowaniu sterownika, uruchom bramę ponownie, aby wczytać najnowsze zmiany.
 
-![Testuj połączenie na karcie diagnostyki](media/data-factory-troubleshoot-gateway-issues/test-connection-in-diagnostics-tab.png)
+![Testuj połączenie na karcie Diagnostyka](media/data-factory-troubleshoot-gateway-issues/test-connection-in-diagnostics-tab.png)
 
 ## <a name="gateway-logs"></a>Dzienniki bramy
 ### <a name="send-gateway-logs-to-microsoft"></a>Wyślij dzienniki bramy do firmy Microsoft
-Przed kontaktem z Microsoft Support Aby uzyskać pomoc dotyczącą rozwiązywania problemów z bramą, może zostać wyświetlony o Udostępnij dzienniki bramy. Wraz z wydaniem bramy można udostępniać dzienniki wymagane bramy przy użyciu dwóch kliknięć przycisków w danych Menedżera konfiguracji bramy zarządzania.    
+Podczas kontaktowania się z pomoc techniczna firmy Microsoft, aby uzyskać pomoc dotyczącą rozwiązywania problemów z bramą, może zostać wyświetlony monit o udostępnienie dzienników bramy. Za pomocą wersji bramy można udostępniać wymagane dzienniki bramy przy użyciu dwóch kliknięć przycisku w Zarządzanie danymi Configuration Manager bramy.    
 
-1. Przełącz się do **diagnostyki** kartę w danych Menedżera konfiguracji bramy zarządzania.
+1. Przejdź do karty **Diagnostyka** w zarządzanie danymi Configuration Manager bramy.
 
-    ![Na karcie dane diagnostyki bramy zarządzania](media/data-factory-troubleshoot-gateway-issues/data-management-gateway-diagnostics-tab.png)
-2. Kliknij przycisk **Wyślij dzienniki** na wyświetlone następujące okno dialogowe.
+    ![Karta Diagnostyka Zarządzanie danymi Gateway](media/data-factory-troubleshoot-gateway-issues/data-management-gateway-diagnostics-tab.png)
+2. Kliknij pozycję **Wyślij dzienniki** , aby zobaczyć następujące okno dialogowe.
 
-    ![Dzienniki wysyłania bramy zarządzania danych](media/data-factory-troubleshoot-gateway-issues/data-management-gateway-send-logs-dialog.png)
-3. (Opcjonalnie) Kliknij przycisk **wyświetlanie dzienników** przejrzeć dzienniki zdarzeń podglądu.
-4. (Opcjonalnie) Kliknij przycisk **zachowania** Aby zapoznać się z firmy Microsoft w sieci web services — zasady zachowania poufności informacji.
-5. Gdy jesteś zadowolony z co zamierzasz przekazać, kliknij przycisk **Wyślij dzienniki** faktycznie wysyłać dzienniki z ostatnich siedmiu dni do firmy Microsoft do rozwiązywania problemów. Stan operacji wysyłania dzienników powinny Zobacz, jak pokazano na poniższym zrzucie ekranu.
+    ![Dzienniki wysyłania Zarządzanie danymi bramy](media/data-factory-troubleshoot-gateway-issues/data-management-gateway-send-logs-dialog.png)
+3. Obowiązkowe Kliknij przycisk **Wyświetl dzienniki** , aby przejrzeć dzienniki w Podglądzie zdarzeń.
+4. Obowiązkowe Kliknij pozycję **prywatność** , aby przejrzeć zasady zachowania poufności informacji w usługach sieci Web firmy Microsoft.
+5. Gdy jesteś zadowolony z tego, co zamierzasz przekazać, kliknij pozycję **Wyślij dzienniki** , aby faktycznie wysłać dzienniki z ostatnich siedmiu dni do firmy Microsoft w celu rozwiązywania problemów. Powinien zostać wyświetlony stan operacji wysyłania dzienników, jak pokazano na poniższym zrzucie ekranu.
 
-    ![Dane zarządzania bramy Wyślij dzienniki stanu](media/data-factory-troubleshoot-gateway-issues/data-management-gateway-send-logs-status.png)
+    ![Stan dzienników wysyłania Zarządzanie danymi bramy](media/data-factory-troubleshoot-gateway-issues/data-management-gateway-send-logs-status.png)
 6. Po zakończeniu operacji zobaczysz okno dialogowe, jak pokazano na poniższym zrzucie ekranu.
 
-    ![Dane zarządzania bramy Wyślij dzienniki stanu](media/data-factory-troubleshoot-gateway-issues/data-management-gateway-send-logs-result.png)
-7. Zapisz **identyfikator raportu** i udostępnić go innym Microsoft Support. Identyfikator raportu jest używana do lokalizowania dzienniki bramy, które przekazane do rozwiązywania problemów.  Identyfikator raportu jest również zapisywana w zdarzeniu podglądu.  Można go znaleźć, sprawdzając identyfikator zdarzenia "25" i sprawdź datę i godzinę.
+    ![Stan dzienników wysyłania Zarządzanie danymi bramy](media/data-factory-troubleshoot-gateway-issues/data-management-gateway-send-logs-result.png)
+7. Zapisz **Identyfikator raportu** i udostępnij go pomoc techniczna firmy Microsoft. Identyfikator raportu służy do lokalizowania dzienników bramy przekazanych w celu rozwiązywania problemów.  Identyfikator raportu jest również zapisywany w Podglądzie zdarzeń.  Można je znaleźć, przeglądając identyfikator zdarzenia "25" i sprawdzając datę i godzinę.
 
-    ![Dane zarządzania bramy Wyślij dzienniki identyfikator raportu](media/data-factory-troubleshoot-gateway-issues/data-management-gateway-send-logs-report-id.png)    
+    ![Identyfikator raportu wysyłania dzienników bramy Zarządzanie danymi](media/data-factory-troubleshoot-gateway-issues/data-management-gateway-send-logs-report-id.png)    
 
-### <a name="archive-gateway-logs-on-gateway-host-machine"></a>Dzienniki bramy archiwum na komputerze hosta bramy
-Istnieją sytuacje, w którym masz problemy z bramy i dzienniki bramy nie można udostępniać bezpośrednio:
+### <a name="archive-gateway-logs-on-gateway-host-machine"></a>Archiwizuj dzienniki bramy na maszynie hosta bramy
+Istnieją sytuacje, w których występują problemy z bramą i nie można udostępniać dzienników bramy bezpośrednio:
 
-* Ręcznie zainstaluj bramę i zarejestrować bramę.
-* Spróbuj zarejestrować bramę wygenerowano klucz w danych Menedżera konfiguracji bramy zarządzania.
-* Próby wysłania dzienników i nie można połączyć usługę bramy hosta.
+* Należy ręcznie zainstalować bramę i zarejestrować bramę.
+* Podjęto próbę zarejestrowania bramy z wygenerowanym kluczem w Zarządzanie danymi Configuration Manager bramy.
+* Podjęto próbę wysłania dzienników, a usługa hosta bramy nie może być podłączona.
 
-Dla tych scenariuszy można zapisać dzienniki bramy jako plik zip i udostępnić je w przypadku skontaktuj się z pomocą techniczną firmy Microsoft. Na przykład jeśli wystąpi błąd, gdy zarejestrujesz bramy jako pokazano na następującym zrzucie ekranu.   
+W tych scenariuszach można zapisać dzienniki bramy jako plik zip i udostępnić je podczas kontaktowania się z pomocą techniczną firmy Microsoft. Na przykład, jeśli wystąpi błąd podczas rejestrowania bramy, jak pokazano na poniższym zrzucie ekranu.   
 
-![Błąd rejestracji bramy zarządzania danych](media/data-factory-troubleshoot-gateway-issues/data-management-gateway-registration-error.png)
+![Błąd rejestracji bramy Zarządzanie danymi](media/data-factory-troubleshoot-gateway-issues/data-management-gateway-registration-error.png)
 
-Kliknij przycisk **Archiwizuj dzienniki bramy** link do zarchiwizowania i zapisywanie dzienników, a następnie Udostępnij plik zip pomocy technicznej firmy Microsoft.
+Kliknij link **archiwizuj dzienniki bramy** , aby zarchiwizować i zapisać dzienniki, a następnie udostępnić plik zip w pomocy technicznej firmy Microsoft.
 
-![Dzienniki bramy zarządzania w warstwie archiwum danych](media/data-factory-troubleshoot-gateway-issues/data-management-gateway-archive-logs.png)
+![Dzienniki archiwum Zarządzanie danymi Gateway](media/data-factory-troubleshoot-gateway-issues/data-management-gateway-archive-logs.png)
 
-### <a name="locate-gateway-logs"></a>Zlokalizuj dzienniki bramy
-Informacje szczegółowe bramy można znaleźć w dziennikach zdarzeń Windows.
+### <a name="locate-gateway-logs"></a>Lokalizowanie dzienników bramy
+Szczegółowe informacje dziennika bramy można znaleźć w dziennikach zdarzeń systemu Windows.
 
-1. Uruchom Windows **Podgląd zdarzeń**.
-2. Zlokalizuj dzienniki w **Dzienniki aplikacji i usług** > **bramy zarządzania danymi** folderu.
+1. Uruchom **Podgląd zdarzeń**systemu Windows.
+2. Zlokalizuj dzienniki w **dziennikach aplikacji i usług** > folderze **Zarządzanie danymi Gateway** .
 
-   Przy rozwiązywaniu problemów związanych z bramą, wyszukać zdarzenia na poziomie błędu w przeglądarce zdarzeń.
+   W przypadku rozwiązywania problemów związanych z bramą Znajdź zdarzenia poziomu błędu w Podglądzie zdarzeń.
 
-![Brama zarządzania danymi dzienniki w Podglądzie zdarzeń](media/data-factory-troubleshoot-gateway-issues/gateway-logs-event-viewer.png)
+![Dzienniki bramy Zarządzanie danymi w Podglądzie zdarzeń](media/data-factory-troubleshoot-gateway-issues/gateway-logs-event-viewer.png)

@@ -1,44 +1,32 @@
 ---
-title: Dostęp z wieloprotokołem do Azure Data Lake Storage (wersja zapoznawcza) | Microsoft Docs
+title: Dostęp przez wiele protokołów w Azure Data Lake Storage | Microsoft Docs
 description: Używaj interfejsów API obiektów blob i aplikacji, które używają interfejsów API obiektów blob z Azure Data Lake Storage Gen2.
 author: normesta
 ms.subservice: data-lake-storage-gen2
 ms.service: storage
 ms.topic: conceptual
-ms.date: 10/11/2019
+ms.date: 11/01/2019
 ms.author: normesta
 ms.reviewer: stewu
-ms.openlocfilehash: 6e3b368d1f5615c34a49b155d288d3c37c28bc26
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: f3e852d178a6720f8d567f4ecb042f0b83bcd56c
+ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72933138"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73583148"
 ---
-# <a name="multi-protocol-access-on-azure-data-lake-storage-preview"></a>Dostęp przez wiele protokołów w Azure Data Lake Storage (wersja zapoznawcza)
+# <a name="multi-protocol-access-on-azure-data-lake-storage"></a>Dostęp z wieloprotokołem do Azure Data Lake Storage
 
-Interfejsy API obiektów BLOB działają teraz z kontami, które mają hierarchiczną przestrzeń nazw. To odblokowuje cały ekosystem narzędzi, aplikacji i usług, a także wszystkie funkcje magazynu obiektów BLOB do kont, które mają hierarchiczną przestrzeń nazw.
+Interfejsy API obiektów BLOB działają teraz z kontami, które mają hierarchiczną przestrzeń nazw. Powoduje to odblokowanie ekosystemu narzędzi, aplikacji i usług, a także kilku funkcji magazynu obiektów BLOB dla kont, które mają hierarchiczną przestrzeń nazw.
 
 Do tej pory mogło być konieczne przechowywanie oddzielnych rozwiązań magazynu dla magazynu obiektów i magazynu analizy. Dzieje się tak, ponieważ Azure Data Lake Storage Gen2 miała ograniczoną obsługę ekosystemu. Miał także ograniczony dostęp do funkcji Blob service, takich jak rejestrowanie diagnostyczne. Pofragmentowane rozwiązanie magazynu jest trudne do utrzymania, ponieważ trzeba przenieść dane między kontami, aby osiągnąć różne scenariusze. Nie musisz już tego robić.
 
-> [!NOTE]
-> Dostęp do wieloprotokołowego Data Lake Storage jest w publicznej wersji zapoznawczej i jest dostępny we wszystkich regionach. Nie musisz rejestrować się w publicznej wersji zapoznawczej, ponieważ jest ona automatycznie dostępna dla wszystkich kont, które mają hierarchiczną przestrzeń nazw. Aby zapoznać się z ograniczeniami, zobacz artykuł [znane problemy](data-lake-storage-known-issues.md) .
-
-## <a name="use-the-entire-ecosystem-of-applications-tools-and-services"></a>Korzystaj z całego ekosystemu aplikacji, narzędzi i usług
-
-W przypadku dostępu z użyciem protokołu wieloprotokołowego do Data Lake Storage można korzystać ze wszystkich danych przy użyciu całego ekosystemu narzędzi, aplikacji i usług. Obejmuje to usługi platformy Azure, takie jak [Azure Stream Analytics](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-introduction), [IOT Hub](https://docs.microsoft.com/azure/iot-hub/), [Power BI](https://docs.microsoft.com/power-bi/desktop-data-sources)i wiele innych. Aby uzyskać pełną listę, zobacz [integrowanie Azure Data Lake Storage z usługami platformy Azure](data-lake-store-integrate-with-azure-services.md).
-
-Obejmuje to również narzędzia i aplikacje innych firm. Można wskazać te konta, które mają hierarchiczną przestrzeń nazw bez konieczności ich modyfikacji. Aplikacje te działają *podobnie jak* w przypadku wywoływania interfejsów API obiektów blob, ponieważ interfejsy API obiektów BLOB mogą teraz operować na danych na kontach z hierarchiczną przestrzenią nazw.
-
-> [!NOTE]
-> Aby zapoznać się z ograniczeniami, zobacz artykuł [znane problemy](data-lake-storage-known-issues.md) .
-
-## <a name="use-all-blob-storage-features"></a>Użyj wszystkich funkcji magazynu obiektów BLOB
+W przypadku dostępu z użyciem protokołu wieloprotokołowego do Data Lake Storage można korzystać z danych przy użyciu ekosystemu narzędzi, aplikacji i usług. Obejmuje to również narzędzia i aplikacje innych firm. Można wskazać te konta, które mają hierarchiczną przestrzeń nazw bez konieczności ich modyfikacji. Aplikacje te działają *podobnie jak* w przypadku wywoływania interfejsów API obiektów blob, ponieważ interfejsy API obiektów BLOB mogą teraz operować na danych na kontach z hierarchiczną przestrzenią nazw.
 
 Funkcje magazynu obiektów blob, takie jak [Rejestrowanie diagnostyki](../common/storage-analytics-logging.md), [warstwy dostępu](storage-blob-storage-tiers.md)i [zasady zarządzania cyklem życia magazynu obiektów BLOB](storage-lifecycle-management-concepts.md) , działają teraz z kontami, które mają hierarchiczną przestrzeń nazw. W związku z tym można włączyć hierarchiczne przestrzenie nazw na kontach magazynu obiektów Blob bez utraty dostępu do tych ważnych funkcji. 
 
 > [!NOTE]
-> Aby zapoznać się z ograniczeniami, zobacz artykuł [znane problemy](data-lake-storage-known-issues.md) .
+> Dostęp do wieloprotokołowy na Data Lake Storage jest ogólnie dostępny i jest dostępny we wszystkich regionach. Niektóre funkcje usług platformy Azure lub usługi BLOB Storage obsługiwane przez wieloprotokołowy dostęp pozostają w wersji zapoznawczej. Aby uzyskać więcej informacji, Zobacz tabele w poszczególnych sekcjach tego artykułu. 
 
 ## <a name="how-multi-protocol-access-on-data-lake-storage-works"></a>Jak działa dostęp przez wiele protokołów w usłudze Data Lake Storage
 
@@ -47,6 +35,55 @@ Interfejsy API obiektów blob i interfejsy API Data Lake Storage Gen2 mogą dzia
 ![Dostęp z wieloprotokołem do Data Lake Storage koncepcyjnych](./media/data-lake-storage-interop/interop-concept.png) 
 
 Istniejące narzędzia i aplikacje korzystające z interfejsu API obiektów BLOB uzyskują te korzyści automatycznie. Deweloperzy nie będą musieli ich modyfikować. Data Lake Storage Gen2 konsekwentnie stosuje katalogi i listy ACL na poziomie plików, niezależnie od protokołu używanego przez narzędzia i aplikacje do uzyskiwania dostępu do danych. 
+
+## <a name="blob-storage-feature-support"></a>Obsługa funkcji magazynu obiektów BLOB
+
+Dostęp do wielu protokołów w Data Lake Storage umożliwia korzystanie z większej liczby funkcji magazynu obiektów blob z Data Lake Storage. Ta tabela zawiera listę funkcji, które są włączane przez wieloprotokołowy dostęp do Data Lake Storage. 
+
+Elementy, które pojawiają się w tej tabeli, zmienią się w miarę upływu czasu, ponieważ obsługa funkcji usługi BLOB Storage będzie nadal większa. 
+
+> [!NOTE]
+> Mimo że dostęp oparty na protokole Data Lake Storage jest ogólnie dostępny, obsługa niektórych z tych funkcji pozostaje w wersji zapoznawczej. 
+
+|Funkcja magazynu obiektów BLOB | Poziom pomocy technicznej |
+|---|---|
+|[Warstwa dostępu chłodna](storage-blob-storage-tiers.md)|Ogólnie dostępna|
+|Zestawy SDK obiektów BLOB |Ogólnie dostępna|
+|[Program PowerShell](https://docs.microsoft.com/azure/storage/blobs/storage-quickstart-blobs-powershell) |Ogólnie dostępna|
+|[Interfejs wiersza polecenia](https://docs.microsoft.com/azure/storage/blobs/storage-quickstart-blobs-cli) |Ogólnie dostępna|
+|[Dzienniki diagnostyczne](../common/storage-analytics-logging.md)| Wersja zapoznawcza|
+|[Zasady zarządzania cyklem życia](storage-lifecycle-management-concepts.md)| Wersja zapoznawcza|
+|[Powiadomienia za pośrednictwem Azure Event Grid](data-lake-storage-events.md)|Wersja zapoznawcza|
+|[Warstwa dostępu Archiwum](storage-blob-storage-tiers.md)| Wersja zapoznawcza|
+|[blobfuse](storage-how-to-mount-container-linux.md)|Jeszcze nieobsługiwane|
+|[Niezmienny magazyn](storage-blob-immutable-storage.md)|Jeszcze nieobsługiwane|
+|[Migawki](storage-blob-snapshots.md)|Jeszcze nieobsługiwane|
+|[Usuwanie nietrwałe](storage-blob-soft-delete.md)|Jeszcze nieobsługiwane|
+|[Statyczne witryny sieci Web](storage-blob-static-website.md)|Jeszcze nieobsługiwane|
+
+Aby dowiedzieć się więcej o ogólnych znanych problemach i ograniczeniach dotyczących Azure Data Lake Storage Gen2, zobacz [znane problemy](data-lake-storage-known-issues.md).
+
+## <a name="azure-ecosystem-support"></a>Obsługa ekosystemów platformy Azure
+
+Dostęp do wielu protokołów w Data Lake Storage umożliwia również łączenie większej liczby usług platformy Azure z Data Lake Storage. Ta tabela zawiera listę usług włączonych przez wieloprotokołowy dostęp do Data Lake Storage. 
+
+Podobnie jak lista obsługiwanych funkcji magazynu obiektów blob, elementy wyświetlane w tej tabeli zmienią się w miarę upływu czasu, gdy obsługa usług platformy Azure zostanie powiększana. 
+
+> [!NOTE]
+> Mimo że dostęp oparty na protokole Data Lake Storage jest ogólnie dostępny, obsługa niektórych z tych usług pozostaje w wersji zapoznawczej. 
+
+|Usługa platformy Azure | Poziom pomocy technicznej |
+|---|---|
+|[Azure Data Box](data-lake-storage-migrate-on-premises-hdfs-cluster.md)|Ogólnie dostępna|
+|[Przechwytywanie Event Hubs platformy Azure](https://docs.microsoft.com/azure/event-hubs/event-hubs-capture-overview)|Ogólnie dostępna|
+|[Azure Stream Analytics](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-quick-create-portal)|Ogólnie dostępna|
+|[IoT Hub](https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-messages-d2c)|Ogólnie dostępna|
+|[Aplikacje logiki](https://azure.microsoft.com/services/logic-apps/)|Ogólnie dostępna|
+|[Usługa Azure Search](https://docs.microsoft.com/azure/search/search-blob-storage-integration)|Wersja zapoznawcza|
+
+Pełną listę obsługi ekosystemów platformy Azure dla Data Lake Storage Gen2 można znaleźć w temacie [integracja Azure Data Lake Storage z usługami platformy Azure](data-lake-storage-integrate-with-azure-services.md).
+
+Aby dowiedzieć się więcej o ogólnych znanych problemach i ograniczeniach dotyczących Azure Data Lake Storage Gen2, zobacz [znane problemy](data-lake-storage-known-issues.md).
 
 ## <a name="next-steps"></a>Następne kroki
 

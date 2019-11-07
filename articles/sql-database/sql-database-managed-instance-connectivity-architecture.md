@@ -1,5 +1,5 @@
 ---
-title: Architektura łączności dla wystąpienia zarządzanego w Azure SQL Database | Microsoft Docs
+title: Architektura łączności dla wystąpienia zarządzanego w Azure SQL Database
 description: Dowiedz się więcej o Azure SQL Database architekturze komunikacji i łączności wystąpienia zarządzanego oraz o tym, jak składniki kierują ruch do wystąpienia zarządzanego.
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: srdan-bozovic-msft
 ms.author: srbozovi
 ms.reviewer: sstein, bonova, carlrab
 ms.date: 04/16/2019
-ms.openlocfilehash: 7e32cb302322f7a80154a3f2a246d7d4f1743c09
-ms.sourcegitcommit: 961468fa0cfe650dc1bec87e032e648486f67651
+ms.openlocfilehash: 881f116988ae0c9a6a33c8454cd1e4012580bfab
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/10/2019
-ms.locfileid: "72249368"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73688204"
 ---
 # <a name="connectivity-architecture-for-a-managed-instance-in-azure-sql-database"></a>Architektura łączności dla wystąpienia zarządzanego w Azure SQL Database
 
@@ -66,7 +66,7 @@ Przyjrzyjmy się bardziej szczegółowo szczegółowe architektury łączności 
 
 ![Architektura łączności klastra wirtualnego](./media/managed-instance-connectivity-architecture/connectivityarch003.png)
 
-Klienci łączą się z wystąpieniem zarządzanym przy użyciu nazwy hosta, która ma postać `<mi_name>.<dns_zone>.database.windows.net`. Ta nazwa hosta jest rozpoznawana jako prywatny adres IP, mimo że jest zarejestrowana w publicznej strefie systemu nazw domen (DNS) i jest publicznie rozpoznawalna. @No__t-0 jest generowana automatycznie podczas tworzenia klastra. Jeśli nowo utworzony klaster obsługuje pomocnicze wystąpienie zarządzane, jego identyfikator strefy jest udostępniany klastrowi podstawowemu. Aby uzyskać więcej informacji, zobacz [Korzystanie z grup autotrybu failover w celu zapewnienia przezroczystej i skoordynowanej pracy w trybie failover wielu baz danych](sql-database-auto-failover-group.md##enabling-geo-replication-between-managed-instances-and-their-vnets).
+Klienci łączą się z wystąpieniem zarządzanym przy użyciu nazwy hosta, która ma `<mi_name>.<dns_zone>.database.windows.net`. Ta nazwa hosta jest rozpoznawana jako prywatny adres IP, mimo że jest zarejestrowana w publicznej strefie systemu nazw domen (DNS) i jest publicznie rozpoznawalna. `zone-id` jest generowana automatycznie podczas tworzenia klastra. Jeśli nowo utworzony klaster obsługuje pomocnicze wystąpienie zarządzane, jego identyfikator strefy jest udostępniany klastrowi podstawowemu. Aby uzyskać więcej informacji, zobacz [Korzystanie z grup autotrybu failover w celu zapewnienia przezroczystej i skoordynowanej pracy w trybie failover wielu baz danych](sql-database-auto-failover-group.md##enabling-geo-replication-between-managed-instances-and-their-vnets).
 
 Ten prywatny adres IP należy do wewnętrznego modułu równoważenia obciążenia wystąpienia zarządzanego. Moduł równoważenia obciążenia kieruje ruch do bramy wystąpienia zarządzanego. Ponieważ wiele wystąpień zarządzanych może działać w tym samym klastrze, brama używa nazwy hosta wystąpienia zarządzanego w celu przekierowania ruchu do odpowiedniej usługi aparatu SQL.
 
@@ -96,23 +96,23 @@ Wdróż wystąpienie zarządzane w dedykowanej podsieci w sieci wirtualnej. Pods
 
 ### <a name="mandatory-inbound-security-rules"></a>Obowiązkowe reguły zabezpieczeń dla ruchu przychodzącego
 
-| Nazwa       |Port                        |Protocol (Protokół)|Źródło           |Cel|Działanie|
+| Nazwa       |Port                        |Protokół|Element źródłowy           |Element docelowy|Akcja|
 |------------|----------------------------|--------|-----------------|-----------|------|
-|zarządzanie  |9000, 9003, 1438, 1440, 1452|TCP     |Dowolne              |MI PODSIEĆ  |Zezwól |
-|mi_subnet   |Dowolne                         |Dowolne     |MI PODSIEĆ        |MI PODSIEĆ  |Zezwól |
-|health_probe|Dowolne                         |Dowolne     |AzureLoadBalancer|MI PODSIEĆ  |Zezwól |
+|zarządzanie  |9000, 9003, 1438, 1440, 1452|TCP     |Dowolne              |MI PODSIEĆ  |Zezwalaj |
+|mi_subnet   |Dowolne                         |Dowolne     |MI PODSIEĆ        |MI PODSIEĆ  |Zezwalaj |
+|health_probe|Dowolne                         |Dowolne     |AzureLoadBalancer|MI PODSIEĆ  |Zezwalaj |
 
 ### <a name="mandatory-outbound-security-rules"></a>Obowiązkowe reguły zabezpieczeń dla ruchu wychodzącego
 
-| Nazwa       |Port          |Protocol (Protokół)|Źródło           |Cel|Działanie|
+| Nazwa       |Port          |Protokół|Element źródłowy           |Element docelowy|Akcja|
 |------------|--------------|--------|-----------------|-----------|------|
-|zarządzanie  |443, 12000    |TCP     |MI PODSIEĆ        |AzureCloud |Zezwól |
-|mi_subnet   |Dowolne           |Dowolne     |MI PODSIEĆ        |MI PODSIEĆ  |Zezwól |
+|zarządzanie  |443, 12000    |TCP     |MI PODSIEĆ        |AzureCloud |Zezwalaj |
+|mi_subnet   |Dowolne           |Dowolne     |MI PODSIEĆ        |MI PODSIEĆ  |Zezwalaj |
 
 > [!IMPORTANT]
 > Upewnij się, że istnieje tylko jedna Reguła ruchu przychodzącego dla portów 9000, 9003, 1438, 1440, 1452 i jednej reguły ruchu wychodzącego dla portów 80, 443, 12000. Inicjowanie obsługi administracyjnej wystąpienia zarządzanego przy użyciu wdrożeń Azure Resource Manager zakończy się niepowodzeniem, jeśli reguły ruchu przychodzącego i wychodzącego są konfigurowane osobno dla każdego portu. Jeśli te porty są w oddzielnych regułach, wdrożenie zakończy się niepowodzeniem z kodem błędu `VnetSubnetConflictWithIntendedPolicy`
 
-podsieć \* MI odnosi się do zakresu adresów IP podsieci w postaci 10. x. x. x/y. Te informacje można znaleźć w Azure Portal, we właściwościach podsieci.
+\* MI podsieć odnosi się do zakresu adresów IP podsieci w postaci 10. x. x. x/y. Te informacje można znaleźć w Azure Portal, we właściwościach podsieci.
 
 > [!IMPORTANT]
 > Chociaż wymagane reguły zabezpieczeń dla ruchu przychodzącego zezwalają na ruch z _dowolnego_ źródła na portach 9000, 9003, 1438, 1440 i 1452, te porty są chronione przez wbudowaną zaporę. Aby uzyskać więcej informacji, zobacz [Określanie adresu punktu końcowego zarządzania](sql-database-managed-instance-find-management-endpoint-ip-address.md).
@@ -251,20 +251,20 @@ Wdróż wystąpienie zarządzane w dedykowanej podsieci w sieci wirtualnej. Pods
 
 ### <a name="mandatory-inbound-security-rules-with-service-aided-subnet-configuration"></a>Obowiązkowe reguły zabezpieczeń dla ruchu przychodzącego z konfiguracją podsieci z obsługą usług 
 
-| Nazwa       |Port                        |Protocol (Protokół)|Źródło           |Cel|Działanie|
+| Nazwa       |Port                        |Protokół|Element źródłowy           |Element docelowy|Akcja|
 |------------|----------------------------|--------|-----------------|-----------|------|
-|zarządzanie  |9000, 9003, 1438, 1440, 1452|TCP     |Xmlmanagement    |MI PODSIEĆ  |Zezwól |
-|            |9000, 9003                  |TCP     |CorpnetSaw       |MI PODSIEĆ  |Zezwól |
-|            |9000, 9003                  |TCP     |65.55.188.0/24, 167.220.0.0/16, 131.107.0.0/16|MI PODSIEĆ  |Zezwól |
-|mi_subnet   |Dowolne                         |Dowolne     |MI PODSIEĆ        |MI PODSIEĆ  |Zezwól |
-|health_probe|Dowolne                         |Dowolne     |AzureLoadBalancer|MI PODSIEĆ  |Zezwól |
+|zarządzanie  |9000, 9003, 1438, 1440, 1452|TCP     |Xmlmanagement    |MI PODSIEĆ  |Zezwalaj |
+|            |9000, 9003                  |TCP     |CorpnetSaw       |MI PODSIEĆ  |Zezwalaj |
+|            |9000, 9003                  |TCP     |65.55.188.0/24, 167.220.0.0/16, 131.107.0.0/16|MI PODSIEĆ  |Zezwalaj |
+|mi_subnet   |Dowolne                         |Dowolne     |MI PODSIEĆ        |MI PODSIEĆ  |Zezwalaj |
+|health_probe|Dowolne                         |Dowolne     |AzureLoadBalancer|MI PODSIEĆ  |Zezwalaj |
 
 ### <a name="mandatory-outbound-security-rules-with-service-aided-subnet-configuration"></a>Obowiązkowe reguły zabezpieczeń dla ruchu wychodzącego z konfiguracją podsieci z obsługą usług 
 
-| Nazwa       |Port          |Protocol (Protokół)|Źródło           |Cel|Działanie|
+| Nazwa       |Port          |Protokół|Element źródłowy           |Element docelowy|Akcja|
 |------------|--------------|--------|-----------------|-----------|------|
-|zarządzanie  |443, 12000    |TCP     |MI PODSIEĆ        |AzureCloud |Zezwól |
-|mi_subnet   |Dowolne           |Dowolne     |MI PODSIEĆ        |MI PODSIEĆ  |Zezwól |
+|zarządzanie  |443, 12000    |TCP     |MI PODSIEĆ        |AzureCloud |Zezwalaj |
+|mi_subnet   |Dowolne           |Dowolne     |MI PODSIEĆ        |MI PODSIEĆ  |Zezwalaj |
 
 ### <a name="user-defined-routes-with-service-aided-subnet-configuration"></a>Trasy zdefiniowane przez użytkownika z konfiguracją podsieci z obsługą usług 
 
@@ -425,7 +425,7 @@ Wdróż wystąpienie zarządzane w dedykowanej podsieci w sieci wirtualnej. Pods
 |mi-216-220-208-20-skoku — Internet|216.220.208.0/20|Internet|
 ||||
 
-podsieć \* MI odnosi się do zakresu adresów IP podsieci w postaci 10. x. x. x/y. Te informacje można znaleźć w Azure Portal, we właściwościach podsieci.
+\* MI podsieć odnosi się do zakresu adresów IP podsieci w postaci 10. x. x. x/y. Te informacje można znaleźć w Azure Portal, we właściwościach podsieci.
 
 ## <a name="next-steps"></a>Następne kroki
 
@@ -436,4 +436,4 @@ podsieć \* MI odnosi się do zakresu adresów IP podsieci w postaci 10. x. x. x
   - Z [Azure Portal](sql-database-managed-instance-get-started.md).
   - Za pomocą [programu PowerShell](scripts/sql-database-create-configure-managed-instance-powershell.md).
   - Przy użyciu [szablonu Azure Resource Manager](https://azure.microsoft.com/resources/templates/101-sqlmi-new-vnet/).
-  - Przy użyciu [szablonu Azure Resource Manager (za pomocą serwera przesiadkowego, z uwzględnieniem programu SSMS)](https://azure.microsoft.com/en-us/resources/templates/201-sqlmi-new-vnet-w-jumpbox/). 
+  - Przy użyciu [szablonu Azure Resource Manager (za pomocą serwera przesiadkowego, z uwzględnieniem programu SSMS)](https://azure.microsoft.com/resources/templates/201-sqlmi-new-vnet-w-jumpbox/). 

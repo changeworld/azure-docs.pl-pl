@@ -1,32 +1,33 @@
 ---
-title: Zabezpieczenia na poziomie kolumny usługi Azure SQL Data Warehouse | Dokumentacja firmy Microsoft
-description: Zabezpieczenia na poziomie kolumny (CLS) umożliwiają klientom kontrolowanie dostępu do kolumny tabeli bazy danych na podstawie kontekstu wykonania przez użytkownika lub członkostwa w grupach. Zgodny ze specyfikacją upraszcza projektowanie i kodowanie zabezpieczeń w aplikacji. Zgodny ze specyfikacją umożliwia Implementowanie ograniczeń dla dostępu do kolumny.
+title: Zabezpieczenia na poziomie kolumny
+description: Zabezpieczenia na poziomie kolumny (CLS) umożliwiają klientom kontrolowanie dostępu do kolumn tabeli bazy danych na podstawie kontekstu wykonywania użytkownika lub ich przynależności do grupy. CLS upraszcza projektowanie i kodowanie zabezpieczeń w aplikacji. Specyfikacja CLS umożliwia implementowanie ograniczeń dostępu do kolumn.
 services: sql-data-warehouse
-author: KavithaJonnakuti
+author: julieMSFT
 manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
 ms.subservice: security
 ms.date: 04/02/2019
-ms.author: kavithaj
+ms.author: jrasnick
 ms.reviewer: igorstan, carlrab
-ms.openlocfilehash: aa91bd586e064239d0e05c754427947963c9ee3a
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.custom: seo-lt-2019
+ms.openlocfilehash: 605dfadaf4cd1686b124b120151e6a88a43f1a68
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61082810"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73693084"
 ---
 # <a name="column-level-security"></a>Zabezpieczenia na poziomie kolumny
-Zabezpieczenia na poziomie kolumny (CLS) umożliwiają klientom kontrolowanie dostępu do kolumny tabeli bazy danych na podstawie kontekstu wykonania przez użytkownika lub członkostwa w grupach.
+Zabezpieczenia na poziomie kolumny (CLS) umożliwiają klientom kontrolowanie dostępu do kolumn tabeli bazy danych na podstawie kontekstu wykonywania użytkownika lub ich przynależności do grupy.
 
 > [!VIDEO https://www.youtube.com/embed/OU_ESg0g8r8]
 
-Zgodny ze specyfikacją upraszcza projektowanie i kodowanie zabezpieczeń w aplikacji. Zgodny ze specyfikacją umożliwia zaimplementowanie ograniczeń w kolumnie dostępu w celu ochrony poufnych danych. Na przykład zapewnienie, że konkretni użytkownicy mogą uzyskać dostęp tylko niektóre kolumny tabeli, które są odpowiednie do ich działu. Logika ograniczeń dostępu jest znajduje się w warstwie bazy danych, a nie od danych w innej warstwie aplikacji. Mają zastosowanie ograniczenia dostępu do bazy danych, za każdym razem, gdy podejmowana jest próba tego dostępu do danych z dowolnej warstwy. To ograniczenie sprawia, że system zabezpieczeń bardziej niezawodnych i niezawodną przez zmniejszenie obszaru powierzchni ogólną systemu zabezpieczeń. Ponadto zgodne ze specyfikacją również eliminuje potrzebę wprowadzenie do widoków odfiltrować kolumny dla ograniczeń dostępu użytkowników.
+CLS upraszcza projektowanie i kodowanie zabezpieczeń w aplikacji. Specyfikacja CLS umożliwia implementowanie ograniczeń dostępu do kolumn w celu ochrony poufnych danych. Na przykład w celu zapewnienia, że określeni użytkownicy będą mieli dostęp tylko do niektórych kolumn tabeli odnoszących się do ich działu. Logika ograniczeń dostępu znajduje się w warstwie bazy danych, a nie na danych w innej warstwie aplikacji. Baza danych stosuje ograniczenia dostępu przy każdej próbie dostępu do danych z dowolnej warstwy. To ograniczenie sprawia, że system zabezpieczeń jest bardziej niezawodny i niezawodny poprzez zmniejszenie powierzchni ogólnego systemu zabezpieczeń. Ponadto CLS eliminuje również potrzebę wprowadzenia widoków do filtrowania kolumn w celu nakładania ograniczeń dostępu dla użytkowników.
 
-Można zaimplementować ze specyfikacją CLS przy użyciu [GRANT](https://docs.microsoft.com/sql/t-sql/statements/grant-transact-sql) instrukcję języka T-SQL. Z tego mechanizmu uwierzytelniania SQL i Azure Active Directory (AAD) są obsługiwane.
+Specyfikację CLS można zaimplementować przy użyciu instrukcji [Grant](https://docs.microsoft.com/sql/t-sql/statements/grant-transact-sql) języka T-SQL. Dzięki temu mechanizmowi obsługiwane jest uwierzytelnianie SQL i Azure Active Directory (AAD).
 
-![ze specyfikacją CLS](./media/column-level-security/cls.png)
+![ze](./media/column-level-security/cls.png)
 
 ## <a name="syntax"></a>Składnia
 
@@ -47,9 +48,9 @@ GRANT <permission> [ ,...n ] ON
 ```
 
 ## <a name="example"></a>Przykład
-Poniższy przykład pokazuje, jak uniemożliwić dostęp do kolumny "SSN" tabeli "Członkostwa" w "TestUser":
+Poniższy przykład pokazuje, jak ograniczyć dostęp "Użytkownik testowy" do kolumny "SSN" tabeli "Membership":
 
-Utwórz tabelę "Członkostwa" z kolumny numer PESEL, używany do przechowywania numery ubezpieczenia społecznego:
+Utwórz tabelę "Membership" z kolumną SSN służącą do przechowywania numerów ubezpieczenia społecznego:
 
 ```sql
 CREATE TABLE Membership
@@ -61,13 +62,13 @@ CREATE TABLE Membership
    Email varchar(100) NULL);
 ```
 
-"TestUser" Zezwalaj na dostęp do wszystkich kolumn z wyjątkiem SSN zawierające poufne dane:
+Zezwalaj Użytkownik testowy ' na dostęp do wszystkich kolumn z wyjątkiem kolumny SSN zawierającej poufne dane:
 
 ```sql
 GRANT SELECT ON Membership(MemberID, FirstName, LastName, Phone, Email) TO TestUser;
 ```
 
-Zapytania wykonywane zgodnie z "TestUser" zakończy się niepowodzeniem, jeśli zawierają one kolumny SSN:
+Zapytania wykonane jako "Użytkownik testowy" zakończą się niepowodzeniem, jeśli zawierają kolumnę SSN:
 
 ```sql
 SELECT * FROM Membership;
@@ -77,6 +78,6 @@ The SELECT permission was denied on the column 'SSN' of the object 'Membership',
 ```
 
 ## <a name="use-cases"></a>Przypadki użycia
-Kilka przykładów sposobu użycia ze specyfikacją CLS jest on już dzisiaj:
-- Dostawca usług finansowych umożliwia jedyne konto menedżerom na dostęp do numerów klienta ubezpieczenia społecznego (SSN), numerów telefonów i inne identyfikowalne dane osobowe (PII).
-- Dostawca opieki zdrowotnej umożliwia tylko lekarzy, jak i pielęgniarek mają mieć dostęp do poufnych rekordami medycznymi nie zezwalając działu rozliczeń do wyświetlenia tych danych.
+Kilka przykładów użycia CLS jest dzisiaj:
+- Firma Financial Services zezwala tylko menedżerom kont na dostęp do numerów PESEL (SSN) klienta, numerów telefonów i innych informacji umożliwiających identyfikację użytkownika.
+- Dostawca opieki zdrowotnej umożliwia tylko lekarzy i pielęgniarkom dostęp do poufnych rekordów medycznych bez zezwalania członkom działu rozliczeniowego na wyświetlanie tych danych.

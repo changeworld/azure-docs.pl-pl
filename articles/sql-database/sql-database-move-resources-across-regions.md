@@ -1,5 +1,5 @@
 ---
-title: Jak przenieść zasoby Azure SQL Database do innego regionu | Microsoft Docs
+title: Jak przenieść zasoby Azure SQL Database do innego regionu
 description: Dowiedz się, jak przenieść Azure SQL Database, elastyczną pulę usługi Azure SQL lub wystąpienie zarządzane Azure SQL do innego regionu.
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: MashaMSFT
 ms.author: mathoma
 ms.reviewer: carlrab
 ms.date: 06/25/2019
-ms.openlocfilehash: 2158d4120445de4c62461fb89555a1b73bc1e2b4
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 9e7cd6cb338de1d029d38ef08693a7b52f7cf15c
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68567162"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73687779"
 ---
 # <a name="how-to-move-azure-sql-resources-to-another-region"></a>Jak przenieść zasoby SQL platformy Azure do innego regionu
 
@@ -67,19 +67,19 @@ Ten artykuł zawiera ogólny przepływ pracy służący do przeniesienia zasobó
  
 ### <a name="monitor-the-preparation-process"></a>Monitorowanie procesu przygotowania
 
-Można okresowo wywołać [Get-AzSqlDatabaseFailoverGroup](/powershell/module/az.sql/get-azsqldatabasefailovergroup) , aby monitorować replikację baz danych z lokalizacji źródłowej do docelowej. Obiekt `Get-AzSqlDatabaseFailoverGroup` danych wyjściowych zawiera właściwość dla **ReplicationState**: 
+Można okresowo wywołać [Get-AzSqlDatabaseFailoverGroup](/powershell/module/az.sql/get-azsqldatabasefailovergroup) , aby monitorować replikację baz danych z lokalizacji źródłowej do docelowej. Obiekt danych wyjściowych `Get-AzSqlDatabaseFailoverGroup` zawiera właściwość dla **ReplicationState**: 
    - **ReplicationState = 2** (CATCH_UP) wskazuje, że baza danych jest zsynchronizowana i może być bezpiecznie przełączona w tryb failover. 
-   - **ReplicationState = 0** (Inicjator) wskazuje, że baza danych nie została jeszcze zainicjowana, a próba przełączenia w tryb failover zakończy się niepowodzeniem. 
+   - **ReplicationState = 0** (inicjator) wskazuje, że baza danych nie została jeszcze zainicjowana, a próba przełączenia w tryb failover zakończy się niepowodzeniem. 
 
 ### <a name="test-synchronization"></a>Synchronizacja testowa
 
-Gdy **ReplicationState** to `2`, Połącz się z każdą bazą danych lub podzbiorem baz danych przy `<fog-name>.secondary.database.windows.net` użyciu pomocniczego punktu końcowego i wykonaj dowolne zapytanie dotyczące baz danych w celu zapewnienia łączności, prawidłowej konfiguracji zabezpieczeń i danych replikacji. 
+Gdy **ReplicationState** jest `2`, Połącz się z każdą bazą danych lub podzbiorem baz danych przy użyciu pomocniczego punktu końcowego `<fog-name>.secondary.database.windows.net` i wykonaj dowolne zapytanie dotyczące baz danych, aby zapewnić łączność, właściwą konfigurację zabezpieczeń i replikację danych. 
 
 ### <a name="initiate-the-move"></a>Inicjowanie przenoszenia
 
-1. Połącz się z serwerem docelowym przy użyciu pomocniczego `<fog-name>.secondary.database.windows.net`punktu końcowego.
+1. Połącz się z serwerem docelowym przy użyciu pomocniczego punktu końcowego `<fog-name>.secondary.database.windows.net`.
 1. Aby przełączyć pomocnicze wystąpienie zarządzane z pełną synchronizacją, należy użyć [przełącznika-AzSqlDatabaseFailoverGroup](/powershell/module/az.sql/switch-azsqldatabasefailovergroup) . Ta operacja zakończy się powodzeniem lub zostanie wycofana. 
-1. Sprawdź, czy polecenie zostało pomyślnie zakończone przy użyciu `nslook up <fog-name>.secondary.database.windows.net` , aby upewnić się, że wpis CNAME DNS wskazuje na adres IP regionu docelowego. Jeśli polecenie Switch zakończy się niepowodzeniem, rekord CNAME nie zostanie zaktualizowany. 
+1. Sprawdź, czy polecenie zostało pomyślnie zakończone przy użyciu `nslook up <fog-name>.secondary.database.windows.net`, aby upewnić się, że wpis CNAME DNS wskazuje na adres IP regionu docelowego. Jeśli polecenie Switch zakończy się niepowodzeniem, rekord CNAME nie zostanie zaktualizowany. 
 
 ### <a name="remove-the-source-databases"></a>Usuń źródłowe bazy danych
 
@@ -102,7 +102,7 @@ Po zakończeniu przenoszenia Usuń zasoby w regionie źródłowym, aby uniknąć
 1. Jeśli inspekcja na poziomie bazy danych jest włączona, należy ją wyłączyć i włączyć inspekcję na poziomie serwera. Po przejściu w tryb failover Inspekcja na poziomie bazy danych będzie wymagała ruchu między regionami, co nie jest wymagane ani możliwe po przeniesieniu. 
 1. W przypadku inspekcji na poziomie serwera upewnij się, że:
     - Kontener magazynu, Log Analytics lub centrum zdarzeń z istniejącymi dziennikami inspekcji jest przenoszony do regionu docelowego.
-    - Konfiguracja inspekcji została skonfigurowana na serwerze docelowym. Aby uzyskać więcej informacji, zobacz Inspekcja usługi [SQL Database](sql-database-auditing.md).
+    - Konfiguracja inspekcji została skonfigurowana na serwerze docelowym. Aby uzyskać więcej informacji, zobacz [Inspekcja usługi SQL Database](sql-database-auditing.md).
 1. Jeśli wystąpienie ma zasady przechowywania długoterminowego (LTR), istniejące kopie zapasowe w tym miejscu pozostaną skojarzone z bieżącym serwerem. Ponieważ serwer docelowy jest inny, będzie można uzyskać dostęp do starszych kopii zapasowych LTR w regionie źródłowym przy użyciu serwera źródłowego, nawet jeśli serwer został usunięty. 
 
   > [!NOTE]
@@ -119,19 +119,19 @@ Po zakończeniu przenoszenia Usuń zasoby w regionie źródłowym, aby uniknąć
 
 ### <a name="monitor-the-preparation-process"></a>Monitorowanie procesu przygotowania
 
-Można okresowo wywołać [Get-AzSqlDatabaseFailoverGroup](/powershell/module/az.sql/get-azsqldatabasefailovergroup) , aby monitorować replikację baz danych z lokalizacji źródłowej do docelowej. Obiekt `Get-AzSqlDatabaseFailoverGroup` danych wyjściowych zawiera właściwość dla **ReplicationState**: 
+Można okresowo wywołać [Get-AzSqlDatabaseFailoverGroup](/powershell/module/az.sql/get-azsqldatabasefailovergroup) , aby monitorować replikację baz danych z lokalizacji źródłowej do docelowej. Obiekt danych wyjściowych `Get-AzSqlDatabaseFailoverGroup` zawiera właściwość dla **ReplicationState**: 
    - **ReplicationState = 2** (CATCH_UP) wskazuje, że baza danych jest zsynchronizowana i może być bezpiecznie przełączona w tryb failover. 
-   - **ReplicationState = 0** (Inicjator) wskazuje, że baza danych nie została jeszcze zainicjowana, a próba przełączenia w tryb failover zakończy się niepowodzeniem. 
+   - **ReplicationState = 0** (inicjator) wskazuje, że baza danych nie została jeszcze zainicjowana, a próba przełączenia w tryb failover zakończy się niepowodzeniem. 
 
 ### <a name="test-synchronization"></a>Synchronizacja testowa
  
-Gdy **ReplicationState** to `2`, Połącz się z każdą bazą danych lub podzbiorem baz danych przy `<fog-name>.secondary.database.windows.net` użyciu pomocniczego punktu końcowego i wykonaj dowolne zapytanie dotyczące baz danych w celu zapewnienia łączności, prawidłowej konfiguracji zabezpieczeń i danych replikacji. 
+Gdy **ReplicationState** jest `2`, Połącz się z każdą bazą danych lub podzbiorem baz danych przy użyciu pomocniczego punktu końcowego `<fog-name>.secondary.database.windows.net` i wykonaj dowolne zapytanie dotyczące baz danych, aby zapewnić łączność, właściwą konfigurację zabezpieczeń i replikację danych. 
 
 ### <a name="initiate-the-move"></a>Inicjowanie przenoszenia
  
-1. Połącz się z serwerem docelowym przy użyciu pomocniczego `<fog-name>.secondary.database.windows.net`punktu końcowego.
+1. Połącz się z serwerem docelowym przy użyciu pomocniczego punktu końcowego `<fog-name>.secondary.database.windows.net`.
 1. Aby przełączyć pomocnicze wystąpienie zarządzane z pełną synchronizacją, należy użyć [przełącznika-AzSqlDatabaseFailoverGroup](/powershell/module/az.sql/switch-azsqldatabasefailovergroup) . Ta operacja zakończy się powodzeniem lub zostanie wycofana. 
-1. Sprawdź, czy polecenie zostało pomyślnie zakończone przy użyciu `nslook up <fog-name>.secondary.database.windows.net` , aby upewnić się, że wpis CNAME DNS wskazuje na adres IP regionu docelowego. Jeśli polecenie Switch zakończy się niepowodzeniem, rekord CNAME nie zostanie zaktualizowany. 
+1. Sprawdź, czy polecenie zostało pomyślnie zakończone przy użyciu `nslook up <fog-name>.secondary.database.windows.net`, aby upewnić się, że wpis CNAME DNS wskazuje na adres IP regionu docelowego. Jeśli polecenie Switch zakończy się niepowodzeniem, rekord CNAME nie zostanie zaktualizowany. 
 
 ### <a name="remove-the-source-elastic-pools"></a>Usuń źródłowe pule elastyczne
  
@@ -166,19 +166,19 @@ Utwórz grupę trybu failover między każdym wystąpieniem źródłowym i odpow
  
 ### <a name="monitor-the-preparation-process"></a>Monitorowanie procesu przygotowania
 
-Można okresowo wywołać [Get-AzSqlDatabaseFailoverGroup](/powershell/module/az.sql/get-azsqldatabasefailovergroup?view=azps-2.3.2) , aby monitorować replikację baz danych z lokalizacji źródłowej do docelowej. Obiekt `Get-AzSqlDatabaseFailoverGroup` danych wyjściowych zawiera właściwość dla **ReplicationState**: 
+Można okresowo wywołać [Get-AzSqlDatabaseFailoverGroup](/powershell/module/az.sql/get-azsqldatabasefailovergroup?view=azps-2.3.2) , aby monitorować replikację baz danych z lokalizacji źródłowej do docelowej. Obiekt danych wyjściowych `Get-AzSqlDatabaseFailoverGroup` zawiera właściwość dla **ReplicationState**: 
    - **ReplicationState = 2** (CATCH_UP) wskazuje, że baza danych jest zsynchronizowana i może być bezpiecznie przełączona w tryb failover. 
-   - **ReplicationState = 0** (Inicjator) wskazuje, że baza danych nie została jeszcze zainicjowana, a próba przełączenia w tryb failover zakończy się niepowodzeniem. 
+   - **ReplicationState = 0** (inicjator) wskazuje, że baza danych nie została jeszcze zainicjowana, a próba przełączenia w tryb failover zakończy się niepowodzeniem. 
 
 ### <a name="test-synchronization"></a>Synchronizacja testowa
 
-Gdy **ReplicationState** to `2`, Połącz się z każdą bazą danych lub podzbiorem baz danych przy `<fog-name>.secondary.database.windows.net` użyciu pomocniczego punktu końcowego i wykonaj dowolne zapytanie dotyczące baz danych w celu zapewnienia łączności, prawidłowej konfiguracji zabezpieczeń i danych replikacji. 
+Gdy **ReplicationState** jest `2`, Połącz się z każdą bazą danych lub podzbiorem baz danych przy użyciu pomocniczego punktu końcowego `<fog-name>.secondary.database.windows.net` i wykonaj dowolne zapytanie dotyczące baz danych, aby zapewnić łączność, właściwą konfigurację zabezpieczeń i replikację danych. 
 
 ### <a name="initiate-the-move"></a>Inicjowanie przenoszenia 
 
-1. Połącz się z serwerem docelowym przy użyciu pomocniczego `<fog-name>.secondary.database.windows.net`punktu końcowego.
+1. Połącz się z serwerem docelowym przy użyciu pomocniczego punktu końcowego `<fog-name>.secondary.database.windows.net`.
 1. Aby przełączyć pomocnicze wystąpienie zarządzane z pełną synchronizacją, należy użyć [przełącznika-AzSqlDatabaseFailoverGroup](/powershell/module/az.sql/switch-azsqldatabasefailovergroup?view=azps-2.3.2) . Ta operacja zakończy się powodzeniem lub zostanie wycofana. 
-1. Sprawdź, czy polecenie zostało pomyślnie zakończone przy użyciu `nslook up <fog-name>.secondary.database.windows.net` , aby upewnić się, że wpis CNAME DNS wskazuje na adres IP regionu docelowego. Jeśli polecenie Switch zakończy się niepowodzeniem, rekord CNAME nie zostanie zaktualizowany. 
+1. Sprawdź, czy polecenie zostało pomyślnie zakończone przy użyciu `nslook up <fog-name>.secondary.database.windows.net`, aby upewnić się, że wpis CNAME DNS wskazuje na adres IP regionu docelowego. Jeśli polecenie Switch zakończy się niepowodzeniem, rekord CNAME nie zostanie zaktualizowany. 
 
 ### <a name="remove-the-source-managed-instances"></a>Usuń źródłowe wystąpienia zarządzane
 Po zakończeniu przenoszenia Usuń zasoby w regionie źródłowym, aby uniknąć niepotrzebnych opłat. 
@@ -187,7 +187,7 @@ Po zakończeniu przenoszenia Usuń zasoby w regionie źródłowym, aby uniknąć
 1. Usuń źródłowe wystąpienie zarządzane za pomocą polecenia [Remove-AzSqlInstance](/powershell/module/az.sql/remove-azsqlinstance). 
 1. Usuń dodatkowe zasoby z grupy zasobów, takie jak klaster wirtualny, Sieć wirtualna i Grupa zabezpieczeń. 
 
-## <a name="next-steps"></a>Kolejne kroki 
+## <a name="next-steps"></a>Następne kroki 
 
 [Zarządzaj](sql-database-manage-after-migration.md) Azure SQL Database po migracji. 
 

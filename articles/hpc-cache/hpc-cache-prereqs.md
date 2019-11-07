@@ -1,19 +1,19 @@
 ---
-title: Wymagania wstępne dotyczące usługi Azure HPC cache (wersja zapoznawcza)
+title: Wymagania wstępne dotyczące pamięci podręcznej platformy Azure HPC
 description: Wymagania wstępne dotyczące korzystania z pamięci podręcznej platformy Azure HPC
 author: ekpgh
 ms.service: hpc-cache
 ms.topic: conceptual
-ms.date: 10/01/2019
+ms.date: 10/30/2019
 ms.author: rohogue
-ms.openlocfilehash: cfaa8f94dbb836a61b7f024c9426625d874dc524
-ms.sourcegitcommit: d4c9821b31f5a12ab4cc60036fde00e7d8dc4421
+ms.openlocfilehash: ca7a12f45f8d907ee65df85e349883e4c14af47a
+ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/01/2019
-ms.locfileid: "71709973"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73582145"
 ---
-# <a name="prerequisites-for-azure-hpc-cache-preview"></a>Wymagania wstępne dotyczące usługi Azure HPC cache (wersja zapoznawcza)
+# <a name="prerequisites-for-azure-hpc-cache"></a>Wymagania wstępne dotyczące usługi Azure HPC cache
 
 Przed rozpoczęciem korzystania z Azure Portal tworzenia nowej pamięci podręcznej platformy Azure HPC upewnij się, że środowisko spełnia te wymagania.
 
@@ -22,7 +22,7 @@ Przed rozpoczęciem korzystania z Azure Portal tworzenia nowej pamięci podręcz
 Zalecana jest płatna subskrypcja.
 
 > [!NOTE]
-> W wersji zapoznawczej zespół pamięci podręcznej platformy Azure HPC musi dodać subskrypcję do listy dostępu, zanim będzie można jej użyć do utworzenia wystąpienia pamięci podręcznej. Ta procedura pomaga zapewnić, że każdy klient uzyskuje czas odpowiedzi o wysokiej jakości z ich pamięci podręcznej testów. Wypełnij [ten formularz](https://aka.ms/onboard-hpc-cache) , aby zażądać dostępu.
+> W ciągu kilku pierwszych miesięcy zespołu pamięci podręcznej platformy Azure HPC należy dodać subskrypcję do listy dostępu, zanim będzie można jej użyć do utworzenia wystąpienia pamięci podręcznej. Ta procedura pomaga zapewnić, że każdy klient uzyskuje wysoką jakość odpowiedzi z pamięci podręcznej. Wypełnij [ten formularz](https://aka.ms/onboard-hpc-cache) , aby zażądać dostępu.
 
 ## <a name="network-infrastructure"></a>Infrastruktura sieciowa
 
@@ -86,7 +86,7 @@ Aby utworzyć zgodne konto magazynu, użyj następujących ustawień:
 * Warstwa dostępu (domyślna): **gorąca**
 
 Dobrym sposobem jest użycie konta magazynu w tej samej lokalizacji co pamięć podręczna.
-<!-- need to clarify location - same region or same resource group or same virtual network? -->
+<!-- clarify location - same region or same resource group or same virtual network? -->
 
 Należy również udzielić aplikacji pamięci podręcznej dostępu do konta usługi Azure Storage. Postępuj zgodnie z opisem w temacie [Dodawanie miejsc docelowych](hpc-cache-add-storage.md#add-the-access-control-roles-to-your-account) w celu przyznania pamięci podręcznej współautor roli dostępu do konta magazynu i obiektu blob magazynu. Jeśli nie jesteś właścicielem konta magazynu, jego właścicielem jest ten krok.
 

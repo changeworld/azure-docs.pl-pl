@@ -1,44 +1,44 @@
 ---
-title: Konfigurowanie usługi Azure Media Clipper lokalizacji | Dokumentacja firmy Microsoft
-description: Więcej informacji na temat usługi Azure Media Clipper obsługiwane języki i obsługi lokalizacji
+title: Konfigurowanie lokalizacji usługi Azure Media Clipper | Microsoft Docs
+description: Dowiedz się więcej na temat obsługiwanych języków i obsługi lokalizacji w usłudze Azure Media Clipper
 services: media-services
-keywords: clip;subclip;encoding;media
-author: dbgeorge
-manager: jasonsue
-ms.author: dwgeo
+keywords: Clip; subclip; kodowanie; nośnik
+author: Juliako
+manager: femila
+ms.author: juliako
 ms.date: 03/14/2019
 ms.topic: article
 ms.service: media-services
-ms.openlocfilehash: 41fd483a0b78619db6d018cf4b2ab7933a7c3031
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 96ffdfe5e6b3e913bd5596dd624e35afcaecfabe
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61465800"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73685031"
 ---
 # <a name="configure-localization"></a>Konfigurowanie lokalizacji 
 
-Usługa Azure Media Clipper jest dostępna w językach w 18. Aby ustawić język widżet, należy zdefiniować `language` parametr podczas inicjowania. Przekaż w ciągu kodu żądany język z następującej listy:
-- Chiński (uproszczony): nazwy zh-hans
-- Chiński (tradycyjny): zh-hant
-- Czeski: cs
-- Holenderski, Flemish: nl
+Usługa Azure Media Clipper jest dostępna w 18 językach. Aby ustawić język widżetu, należy zdefiniować parametr `language` podczas inicjowania. Przekaż żądany ciąg kodu języka z następującej listy:
+- Chiński (uproszczony): zh-Hans
+- Chiński (tradycyjny): zh-Hant
+- Czeski: CS
+- Holenderski, Flemish: NL
 - Angielski: pl
 - Francuski: fr
-- Niemiecki: Niemcy
-- Węgierski: hu
-- Włoski: go
-- Japoński: Japonia
-- Koreański: ko
+- Niemiecki: de
+- Węgierski: HU
+- Włoski: IT
+- Japoński: ja
+- Koreański: Ko
 - Polski: pl
 - Portugalski (Brazylia): pt-br
 - Portugalski (Portugalia): pt-pt
 - Rosyjski: ru
 - Hiszpański: es
-- Szwedzki: sv
-- Turecki: tr
+- Szwedzki: SV
+- Turecki: TR
 
-Określanie niestandardowego słownika lub rozszerzyć pewne domyślnego słownika, należy zdefiniować `languages` lub `extraLanguages` parametru, odpowiednio. Przekaż słownika niestandardowego przy użyciu następującego formatu JSON:
+Aby ustawić słownik języka niestandardowego lub zwiększyć domyślny słownik języka, należy odpowiednio zdefiniować `languages` lub `extraLanguages` parametru. Przekaż słownik niestandardowy przy użyciu następującego formatu JSON:
 
 ```javascript
 {
@@ -50,7 +50,7 @@ Określanie niestandardowego słownika lub rozszerzyć pewne domyślnego słowni
 }
 ```
 
-Na przykład poniższy przykład definiuje zlokalizowane ciągi w języku angielskim:
+Na przykład poniższy przykład definiuje zlokalizowane ciągi angielskie:
 
 ```javascript
 {
@@ -139,8 +139,8 @@ Na przykład poniższy przykład definiuje zlokalizowane ciągi w języku angiel
 }
 ```
 
-## <a name="next-steps"></a>Kolejne kroki
-Zobacz następne kroki konfigurowania usługi Azure Media Clipper:
-- [Trwa ładowanie zasobów do usługi Azure Media Clipper](media-services-azure-media-clipper-load-assets.md)
+## <a name="next-steps"></a>Następne kroki
+Zapoznaj się z kolejnymi krokami dotyczącymi konfigurowania usługi Azure Media Clipper:
+- [Ładowanie zasobów do usługi Azure Media Clipper](media-services-azure-media-clipper-load-assets.md)
 - [Konfigurowanie niestandardowych skrótów klawiaturowych](media-services-azure-media-clipper-keyboard-shortcuts.md)
-- [Przesyłanie zadań przycinania z Clipper](media-services-azure-media-clipper-submit-job.md)
+- [Przesyłanie zadań przycinania z programu Clipper](media-services-azure-media-clipper-submit-job.md)

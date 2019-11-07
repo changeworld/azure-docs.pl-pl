@@ -1,6 +1,6 @@
 ---
-title: Informacje o wersji bramy zarządzania danymi | Dokumentacja firmy Microsoft
-description: Danych bramy zarządzania tory — informacje o wersji
+title: Informacje o wersji bramy zarządzania danymi
+description: Informacje o wersji tory bramy Zarządzanie danymi
 services: data-factory
 author: nabhishek
 manager: craigg
@@ -12,126 +12,126 @@ ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: abnarain
 robots: noindex
-ms.openlocfilehash: 865bfdae199bca7ebee888be527db239d34511d1
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: bb89ed08b05f9a8f271ceee400bc609881e7048d
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60486468"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73682582"
 ---
 # <a name="release-notes-for-data-management-gateway"></a>Informacje o wersji bramy zarządzania danymi
 > [!NOTE]
-> Ten artykuł dotyczy wersji 1 usługi Data Factory. Jeśli używasz bieżącą wersję usługi Data Factory, zobacz [może być samodzielnie hostowane środowisko IR w wersji 2](../create-self-hosted-integration-runtime.md).
+> Ten artykuł dotyczy wersji 1 usługi Data Factory. Jeśli używasz bieżącej wersji usługi Data Factory, zobacz [własne środowisko Integration Runtime w wersji 2](../create-self-hosted-integration-runtime.md).
 
-Jednym z wyzwań integracji danych nowoczesnych jest przenoszenie danych do i ze środowiska lokalnego do chmury. Data Factory sprawia, że dzięki integracji z programem bramy zarządzania danymi, która jest zainstalowanie środowiska lokalnego do włączenia hybrydowe przenoszenie danych agenta.
+Jednym z wyzwań związanych z integracją nowoczesnych danych jest przeniesienie danych do i z lokalizacji lokalnej do chmury. Data Factory zapewnia tę integrację z bramą Zarządzanie danymi, która jest agentem, który można zainstalować lokalnie, aby umożliwić przenoszenie danych hybrydowych.
 
-Zobacz następujące artykuły, aby uzyskać szczegółowe informacje na temat bramy zarządzania danymi i jak z niego korzystać:
+Zobacz następujące artykuły, aby uzyskać szczegółowe informacje na temat bramy Zarządzanie danymi i korzystania z niej:
 
 *  [Brama zarządzania danymi](data-factory-data-management-gateway.md)
-*  [Przenoszenie danych lokalnie i w chmurze przy użyciu usługi Azure Data Factory](data-factory-move-data-between-onprem-and-cloud.md)
+*  [Przenoszenie danych między środowiskiem lokalnym i chmurą przy użyciu Azure Data Factory](data-factory-move-data-between-onprem-and-cloud.md)
 
 
 ## <a name="current-version"></a>BIEŻĄCA WERSJA 
-Firma Microsoft ma więcej zachowuje informacje o wersji w tym miejscu. Uzyskaj najnowsze informacje o wersji [tutaj](https://go.microsoft.com/fwlink/?linkid=853077)
+Nie utrzymujemy jeszcze informacji o wersji. Pobierz najnowsze informacje o wersji [tutaj](https://go.microsoft.com/fwlink/?linkid=853077)
 
 
 
 
-## <a name="earlier-versions"></a>Wcześniejszych wersjach
+## <a name="earlier-versions"></a>Wcześniejsze wersje
 ## <a name="21063477"></a>2.10.6347.7
-### <a name="enhancements-"></a>Ulepszenia —
-- Możesz dodać wpisy DNS do listy dozwolonych adresów usługi Service bus, a nie umieszczania na białej liście wszystkie adresy IP platformy Azure z zapory (jeśli jest to konieczne). Możesz znaleźć odpowiedniego wpisu DNS w witrynie Azure portal (Data Factory -> "Utwórz i wdróż" -> "Bram" -> "adresów serviceUrls" (w formacie JSON)
-- Łącznik systemu plików HDFS obsługuje teraz publicznego certyfikatu z podpisem własnym, umożliwiając Pomiń sprawdzanie poprawności protokołu SSL.
-- Poprawiono: Problem z bramą w trybie offline podczas aktualizacji (z powodu zegara)
+### <a name="enhancements-"></a>Usprawni
+- Możesz dodać wpisy DNS do usługi dozwolonych Service Bus, a nie listy dozwolonych wszystkie adresy IP platformy Azure z zapory (jeśli to konieczne). Odpowiedni wpis DNS można znaleźć na Azure Portal (Tworzenie i wdrażanie bram "->" "->" w formacie JSON (Data Factory >).
+- Łącznik HDFS obsługuje teraz certyfikat publiczny z podpisem własnym przez umożliwienie pominięcia weryfikacji protokołu SSL.
+- Naprawiono: problem z bramą w trybie offline podczas aktualizacji (ze względu na przechylenie zegara)
 
 
 ## <a name="2963132"></a>2.9.6313.2
-### <a name="enhancements-"></a>Ulepszenia —
--   Możesz dodać wpisy DNS do listy dozwolonych, Service Bus, a nie umieszczania na białej liście wszystkie adresy IP platformy Azure z zapory (jeśli jest to konieczne). W tym miejscu więcej szczegółów.
--   Teraz możesz skopiować dane do/z bloku pojedynczego obiektu blob do 4.75 TB, który jest maksymalny obsługiwany rozmiar wynoszący blokowych obiektów blob. (wcześniej limit było 195 GB).
--   Poprawiono: Limit pamięci problem podczas rozpakowywania kilka małych plików podczas działania kopiowania.
--   Poprawiono: Indeks poza zakresem problem podczas kopiowania z bazy danych Documentdb do lokalnego programu SQL Server z funkcją idempotentności.
--   Poprawiono: Skrypt czyszczący SQL nie działa z programu SQL Server w środowisku lokalnym za pomocą Kreatora kopiowania.
--   Poprawiono: Nazwa kolumny ze spacją na końcu nie działa w działaniu kopiowania.
+### <a name="enhancements-"></a>Usprawni
+-   Możesz dodać wpisy DNS do dozwolonych Service Bus, a nie listy dozwolonych wszystkie adresy IP platformy Azure z zapory (jeśli to konieczne). Więcej informacji znajdziesz tutaj.
+-   Teraz można kopiować dane do/z pojedynczego bloku obiektów BLOB o rozmiarze do 4,75 TB, czyli maksymalnego obsługiwanego rozmiaru blokowego obiektu BLOB. (wcześniejszy limit to 195 GB).
+-   Rozwiązano: problem z brakiem pamięci podczas rozpakowywania kilku małych plików podczas działania kopiowania.
+-   Naprawiono: problem z zakresem podczas kopiowania z bazy danych dokumentów do SQL Server lokalnego przy użyciu funkcji idempotentności.
+-   Naprawiono: skrypt czyszczący SQL nie działa z lokalnym SQL Serverm Kreatora kopiowania.
+-   Naprawiono: Nazwa kolumny ze spacją nie działa w działaniu kopiowania.
 
 ## <a name="28662833"></a>2.8.66283.3
-### <a name="enhancements-"></a>Ulepszenia —
-- Poprawiono: Wydać z brakującymi poświadczeń na ponowny rozruch maszyny bramy.
-- Poprawiono: Problem z rejestracją podczas bramy przywrócić dane przy użyciu pliku kopii zapasowej.
+### <a name="enhancements-"></a>Usprawni
+- Naprawiono: problem z brakującymi poświadczeniami na ponownym uruchomieniu maszyny bramy.
+- Naprawiono: problem z rejestracją podczas przywracania bramy przy użyciu pliku kopii zapasowej.
 
 
 ## <a name="2762401"></a>2.7.6240.1
-### <a name="enhancements-"></a>Ulepszenia —
-- Poprawiono: Nieprawidłowy odczyt o wartości null wartość dziesiętną od firmy Oracle jako źródło.
+### <a name="enhancements-"></a>Usprawni
+- Naprawiono: nieprawidłowy odczyt dziesiętnej wartości null z bazy danych Oracle jako źródło.
 
 ## <a name="2661922"></a>2.6.6192.2
 ### <a name="whats-new"></a>Co nowego
-- Klienci mogą przekazać opinię dotyczącą rejestrowania środowiska bramy.
-- Obsługa nowego formatu kompresji: ZIP (Deflate)
+- Klienci mogą przekazać opinie dotyczące środowiska rejestracji bramy.
+- Obsługa nowego formatu kompresji: ZIP (Wklęśnięcie)
 
-### <a name="enhancements-"></a>Ulepszenia —
-- Wzrost wydajności dla Oracle ujścia, źródłowy system plików HDFS.
-- Poprawki dla bramy automatycznej aktualizacji, równoległe przetwarzanie pojemność bramy.
+### <a name="enhancements-"></a>Usprawni
+- Poprawa wydajności dla usługi Oracle sink i systemu plików HDFS.
+- Poprawka błędów automatycznej aktualizacji bramy, wydajność przetwarzania równoległego bramy.
 
 
 ## <a name="2561641"></a>2.5.6164.1
-### <a name="enhancements"></a>Ulepszenia
-- Ulepszone i są bardziej niezawodne bramy rejestracji środowiska — teraz można śledzić stan postępu podczas procesu rejestracji bramy, co sprawia, że rejestracja środowisko zwiększyć szybkość reakcji.
-- Poprawę bramy przywrócić procesu — możesz można jednak nadal odzyskać bramy, nawet jeśli nie masz bramy plik kopii zapasowej za pomocą tej aktualizacji. Będzie to wymagać zresetowania poświadczeń połączonej usługi w portalu.
-- Naprawienie usterki.
+### <a name="enhancements"></a>Usprawni
+- Udoskonalone i bardziej niezawodne rejestracje bramy — teraz można śledzić stan postępu podczas procesu rejestracji bramy, co sprawia, że proces rejestracji jest większy.
+- Poprawa procesu przywracania bramy — nadal możesz odzyskać bramę, nawet jeśli nie masz pliku kopii zapasowej bramy z tą aktualizacją. Wymaga to zresetowania poświadczeń połączonej usługi w portalu.
+- Poprawka błędu.
 
 ## <a name="2461511"></a>2.4.6151.1
 
 ### <a name="whats-new"></a>Co nowego
 
-- Teraz można przechowywać lokalnie poświadczenia źródła danych. Poświadczenia są szyfrowane. Poświadczenia źródła danych można odzyskać i przywrócić, przy użyciu pliku kopii zapasowej, który można eksportować z istniejącej bramy, a wszystkie lokalne.
+- Teraz można przechowywać poświadczenia źródła danych lokalnie. Poświadczenia są szyfrowane. Poświadczenia źródła danych mogą być odzyskiwane i przywracane przy użyciu pliku kopii zapasowej, który można wyeksportować z istniejącej bramy, lokalnie.
 
-### <a name="enhancements-"></a>Ulepszenia —
+### <a name="enhancements-"></a>Usprawni
 
-- Ulepszone i są bardziej niezawodne środowisko rejestracji bramy.
-- Obsługa automatycznego wykrywania konfiguracji QuoteChar format tekstu w kreatorze kopiowania i zwiększania dokładności wykrywania ogólny format.
+- Udoskonalone i bardziej niezawodne środowisko rejestracji bramy.
+- Obsługa automatycznego wykrywania konfiguracji QuoteChar dla formatu tekstu w Kreatorze kopiowania oraz poprawa dokładności wykrywania w całym formacie.
 
 ## <a name="2361002"></a>2.3.6100.2
 
-- Obsługuje właściwości firstRowAsHeader oraz SkipLineCount automatyczne wykrywanie w kreatorze kopiowania dla plików tekstowych w systemie plików lokalnych i systemu plików HDFS.
-- Ulepszenia stabilności połączenia sieciowego między bramą i Service Bus
+- Obsługa automatycznego wykrywania użycia i SkipLineCount w Kreatorze kopiowania plików tekstowych w lokalnym systemie plików i HDFS.
+- Zwiększ stabilność połączenia sieciowego między bramą a Service Bus
 - Kilka poprawek błędów
 
 
 ## <a name="2260721"></a>2.2.6072.1
 
-*  Obsługuje ustawienie serwera proxy HTTP dla bramy przy użyciu Menedżera konfiguracji bramy. Jeśli skonfigurowano, obiektów Blob platformy Azure, Azure Table, usługa Azure Data Lake i baza danych Documentdb są dostępne za pośrednictwem serwera proxy HTTP.
-*  Obsługuje nagłówek obsługi TextFormat podczas kopiowania danych z/do obiektów Blob platformy Azure, Azure Data Lake Store, System plików lokalnych i w środowisku lokalnym systemem plików HDFS.
-*  Obsługuje kopiowanie danych z Uzupełnialnych obiektów Blob i stronicowych obiektów Blob oraz już obsługiwanych blokowych obiektów Blob.
-*  Wprowadza nowy stan bramy **Online (ograniczone)** , co oznacza, że główne funkcje bramy działa z wyjątkiem obsługi operacji interaktywnych kreatora kopiowania.
+*  Obsługuje Ustawianie serwera proxy HTTP dla bramy przy użyciu Configuration Manager bramy. W przypadku skonfigurowania usługi Azure Blob, Azure Table, Azure Data Lake i Document DB są dostępne za pośrednictwem serwera proxy HTTP.
+*  Obsługuje obsługę nagłówków dla TextFormat podczas kopiowania danych z/do obiektów blob platformy Azure, Azure Data Lake Store, lokalnego systemu plików i lokalnych systemów HDFS.
+*  Obsługuje kopiowanie danych z dołączanego obiektu BLOB i stronicowego obiektu BLOB wraz z już obsługiwanym blokowym obiektem BLOB.
+*  Wprowadza nowy stan bramy **online (z ograniczeniami)** , który wskazuje, że główne funkcje bramy działają z wyjątkiem obsługi interakcyjnej operacji Kreatora kopiowania.
 *  Zwiększa niezawodność rejestracji bramy przy użyciu klucza rejestracji.
 
 ## <a name="216040"></a>2.1.6040.
 
-*  Sterownik bazy danych DB2 znajduje się do pakietu instalacyjnego bramy teraz. Nie trzeba instalować jej oddzielnie.
-*  Sterownik bazy danych DB2 obsługuje teraz z/OS i bazy danych DB2 for mam (AS / 400) wraz z już obsługuje platform (Linux, Unix lub Windows).
-*  Obsługuje używanie usługi Azure Cosmos DB jako źródła lub miejsca docelowego dla magazynów danych w środowisku lokalnym
-*  Obsługuje kopiowanie danych z/na zimno/gorąca obiektu blob magazynu wraz z konta magazynu ogólnego przeznaczenia już obsługiwane.
-*  Zezwala na połączenia z serwerem SQL w środowisku lokalnym za pośrednictwem bramy przy użyciu uprawnień logowania zdalnego.  
+*  Sterownik DB2 jest teraz dołączony do pakietu instalacyjnego bramy. Nie trzeba instalować jej oddzielnie.
+*  Sterownik DB2 obsługuje teraz systemy z/OS i DB2 dla i (jako/400) wraz z już obsługiwanymi platformami (Linux, UNIX i Windows).
+*  Obsługuje używanie Azure Cosmos DB jako źródła lub lokalizacji docelowej lokalnych magazynów danych
+*  Obsługuje kopiowanie danych z/do zimnego/gorącego magazynu obiektów BLOB wraz z już obsługiwanym kontem magazynu ogólnego przeznaczenia.
+*  Umożliwia nawiązanie połączenia z lokalnym SQL Server za pośrednictwem bramy z uprawnieniami zdalnego logowania.  
 
 ## <a name="2060131"></a>2.0.6013.1
 
-*  Można wybrać język/kulturę do użycia dla bramy podczas instalacji ręcznej.
+*  Podczas instalacji ręcznej można wybrać język/kulturę, która będzie używana przez bramę.
 
-*  Brama nie działa zgodnie z oczekiwaniami, możesz wysłać dzienniki bramy z ostatnich siedmiu dni do firmy Microsoft w celu ułatwienia rozwiązywania problemów tego problemu. Jeśli brama nie jest podłączony do usługi w chmurze, można zapisać i archiwizuj dzienniki bramy.  
+*  Gdy brama nie działa zgodnie z oczekiwaniami, można wysłać dzienniki bramy z ostatnich siedmiu dni do firmy Microsoft w celu ułatwienia rozwiązywania problemów. Jeśli Brama nie jest połączona z usługą w chmurze, możesz zapisać i zarchiwizować dzienniki bramy.  
 
 *  Ulepszenia interfejsu użytkownika dla Menedżera konfiguracji bramy:
 
-    *  Stan bramy należy zwiększyć wykrywalność na karcie Narzędzia główne.
+    *  Zwiększ widoczność stanu bramy na karcie Narzędzia główne.
 
-    *  Formanty zreorganizowane i uproszczone.
+    *  Reorganizowane i uproszczone kontrolki.
 
-    *  Możesz skopiować dane z magazynu przy użyciu [narzędzia do kopiowania niekorzystające z kodu](data-factory-copy-data-wizard-tutorial.md). Zobacz [kopiowania etapowego](data-factory-copy-activity-performance.md#staged-copy) Aby uzyskać szczegółowe informacje na ten temat ogólnie rzecz biorąc funkcji.
-*  Możesz użyć bramy zarządzania danymi transferu danych przychodzących danych bezpośrednio z lokalną bazą danych programu SQL Server do usługi Azure Machine Learning.
+    *  Dane można kopiować z magazynu za pomocą narzędzia do [kopiowania bez kodu](data-factory-copy-data-wizard-tutorial.md). Więcej informacji o tej funkcji znajduje się w sekcji [przygotowane kopie](data-factory-copy-activity-performance.md#staged-copy) .
+*  Usługi Zarządzanie danymi Gateway można używać do transferowania danych bezpośrednio z lokalnej SQL Server bazy danych do Azure Machine Learning.
 
 *  Ulepszenia wydajności
 
-    * Zwiększ wydajność na wyświetlanie schematu/Preview dla programu SQL Server w narzędzia do kopiowania niekorzystające z kodu.
+    * Zwiększ wydajność wyświetlania schematu/podglądu w odniesieniu do SQL Server w narzędziu do kopiowania bez kodu.
 
 ## <a name="11259531"></a>1.12.5953.1
 
@@ -139,15 +139,15 @@ Firma Microsoft ma więcej zachowuje informacje o wersji w tym miejscu. Uzyskaj 
 
 ## <a name="11159181"></a>1.11.5918.1
 
-*  Maksymalny rozmiar dziennika zdarzeń bramy została zwiększona z 1 MB do 40 MB.
+*  Maksymalny rozmiar dziennika zdarzeń bramy został zwiększony z 1 MB do 40 MB.
 
-*  Okno dialogowe z ostrzeżeniem jest wyświetlany w przypadku, gdy ponowne uruchomienie jest wymagane podczas automatycznej aktualizacji bramy. Można uruchomić bezpośrednio, następnie lub później.
+*  Wyświetli się okno dialogowe ostrzeżenia, jeśli podczas aktualizacji bramy jest wymagane ponowne uruchomienie komputera. Możesz wybrać opcję ponownego uruchomienia w prawo lub w późniejszym czasie.
 
-*  W przypadku, gdy aktualizacje automatyczne nie powiedzie się, Instalator bramy ponawia próbę automatycznego aktualizowania maksymalnie trzy razy w.
+*  W przypadku niepowodzenia automatycznego aktualizowania Instalator bramy ponawia próbę automatycznego zaktualizowania.
 
 *  Ulepszenia wydajności
 
-    * Zwiększ wydajność ładowania dużych tabel z lokalnego serwera w scenariuszu kopii niekorzystające z kodu.
+    * Zwiększ wydajność ładowania dużych tabel z serwera lokalnego w scenariuszu kopiowania bez kodu.
 
 *  Poprawki błędów
 
@@ -159,18 +159,18 @@ Firma Microsoft ma więcej zachowuje informacje o wersji w tym miejscu. Uzyskaj 
 
 ## <a name="1958652"></a>1.9.5865.2
 
-*  Zero touch automatycznej aktualizacji funkcji
-*  Nowa ikona na pasku zadań za pomocą wskaźniki stanu bramy
-*  Możliwość "Aktualizuj teraz" od klienta
-*  Możliwość ustawienia czasu harmonogram aktualizacji
-*  Skrypt programu PowerShell do przełączania Autoaktualizacja wł. / wył.
+*  Możliwość zerowej aktualizacji dotykowej
+*  Ikona nowego paska zadań ze wskaźnikami stanu bramy
+*  Możliwość "aktualizacji teraz" z klienta
+*  Możliwość ustawienia czasu harmonogramu aktualizacji
+*  Skrypt programu PowerShell służący do przełączania lub wyłączania autoaktualizacji
 *  Obsługa formatu JSON  
 *  Ulepszenia wydajności
 *  Poprawki błędów
 
 ## <a name="1858221"></a>1.8.5822.1
 
-*  Ulepszenia dotyczące rozwiązywania problemów
+*  Ulepszanie środowiska rozwiązywania problemów
 *  Ulepszenia wydajności
 *  Poprawki błędów
 
@@ -186,7 +186,7 @@ Firma Microsoft ma więcej zachowuje informacje o wersji w tym miejscu. Uzyskaj 
 
 ### <a name="1657351"></a>1.6.5735.1
 
-*  Obsługa środowiska lokalnego systemu plików HDFS źródło/ujście
+*  Obsługa lokalnego źródła/ujścia systemu plików HDFS
 *  Ulepszenia wydajności
 *  Poprawki błędów
 
@@ -197,62 +197,62 @@ Firma Microsoft ma więcej zachowuje informacje o wersji w tym miejscu. Uzyskaj 
 
 ### <a name="1656761"></a>1.6.5676.1
 
-*  Narzędzia diagnostyczne pomocy technicznej programu Configuration Manager
-*  Kolumny tabeli pomocy technicznej w przypadku tabelarycznych źródeł danych usługi Azure Data Factory
-*  Obsługa SQL data Warehouse dla usługi Azure Data Factory
-*  Obsługa Reclusive BlobSource i źródle danych Azure Data Factory
-*  Obsługiwana CopyBehavior — MergeFiles PreserveHierarchy i FlattenHierarchy BlobSink oraz FileSink kopią binarne dla usługi Azure Data Factory
-*  Działanie kopiowania, Raportowanie postępu dla usługi Azure Data Factory obsługuje
-*  Sprawdzanie poprawności połączenia źródła danych pomocy technicznej dla usługi Azure Data Factory
+*  Obsługa narzędzi diagnostycznych na Configuration Manager
+*  Obsługa kolumn tabeli dla tabelarycznych źródeł danych dla Azure Data Factory
+*  Obsługa usługi SQL DW dla Azure Data Factory
+*  Obsługa reclusive w BlobSource i FileSource dla Azure Data Factory
+*  Obsługa CopyBehavior — MergeFiles, PreserveHierarchy i FlattenHierarchy in wartość blobsink i FileSink z kopią binarną dla Azure Data Factory
+*  Obsługa postępu raportowania działania kopiowania dla Azure Data Factory
+*  Obsługa weryfikacji łączności ze źródłem danych dla Azure Data Factory
 *  Poprawki błędów
 
 ### <a name="1656721"></a>1.6.5672.1
 
-*  Nazwa tabeli pomocy technicznej dla źródła danych ODBC usługi Azure Data Factory
+*  Nazwa tabeli obsługi dla źródła danych ODBC dla Azure Data Factory
 *  Ulepszenia wydajności
 *  Poprawki błędów
 
 ### <a name="1656581"></a>1.6.5658.1
 
-*  Plik pomocy technicznej ujścia usługi Azure Data Factory
-*  Obsługa zachowania hierarchii w kopia binarna usługi Azure Data Factory
-*  Obsługa idempotentności działania kopiowania z usługi Azure Data Factory
+*  Obsługa ujścia plików dla Azure Data Factory
+*  Obsługa zachowywania hierarchii w kopii binarnej dla Azure Data Factory
+*  Obsługa idempotentności działania kopiowania dla Azure Data Factory
 *  Poprawki błędów
 
 ### <a name="1656401"></a>1.6.5640.1
 
-*  Obsługa 3 większą liczbą źródeł danych usługi Azure Data Factory (ODBC, OData, system plików HDFS)
-*  Obsługa znaku cudzysłowu w analizator plików csv usługi Azure Data Factory
-*  Obsługi kompresji (BZip2)
+*  Obsługa 3 dodatkowych źródeł danych dla Azure Data Factory (ODBC, OData, HDFS)
+*  Obsługa znaku cudzysłowu w analizatorze CSV dla Azure Data Factory
+*  Obsługa kompresji (BZip2)
 *  Poprawki błędów
 
 ### <a name="1556121"></a>1.5.5612.1
 
-*  Obsługa pięciu relacyjnych baz danych usługi Azure Data Factory (MySQL, PostgreSQL, DB2, Teradata i Sybase)
-*  Obsługi kompresji (Gzip i Deflate)
+*  Obsługa pięciu relacyjnych baz danych dla Azure Data Factory (MySQL, PostgreSQL, DB2, Teradata i Sybase)
+*  Obsługa kompresji (gzip i Wklęśnięcie)
 *  Ulepszenia wydajności
 *  Poprawki błędów
 
 ### <a name="1455491"></a>1.4.5549.1
 
-*  Dodaj obsługę źródeł danych programu Oracle dla usługi Azure Data Factory
+*  Dodaj obsługę programu Oracle Data Source dla Azure Data Factory
 *  Ulepszenia wydajności
 *  Poprawki błędów
 
 ### <a name="1454921"></a>1.4.5492.1
 
-*  Ujednolicone plik binarny, który obsługuje usługi Microsoft Azure Data Factory i Office 365 w usłudze Power BI
-*  Uściślij procesu interfejs użytkownika konfiguracji i rejestracji
-*  Usługa Azure Data Factory — usługa Azure przychodzący i wychodzący pomocy technicznej dla źródła danych programu SQL Server
+*  Ujednolicone dane binarne obsługujące Data Factory Microsoft Azure i usługi Power BI Office 365
+*  Udoskonalanie interfejsu użytkownika konfiguracji i procesu rejestracji
+*  Azure Data Factory — obsługa ruchu przychodzącego i wychodzącego platformy Azure dla SQL Server źródła danych
 
 ### <a name="1253031"></a>1.2.5303.1
 
-*  Rozwiązać problem limitu czasu, aby obsługiwać więcej połączeń źródeł danych czasochłonne.
+*  Rozwiąż problem z limitem czasu, aby obsłużyć więcej czasochłonnych połączeń ze źródłami danych.
 
 ### <a name="1155268"></a>1.1.5526.8
 
-*  Wymaga programu .NET Framework 4.5.1 jako warunek wstępny, podczas instalacji.
+*  Wymaga .NET Framework 4.5.1 jako warunek wstępny podczas instalacji.
 
 ### <a name="1051442"></a>1.0.5144.2
 
-*  Brak zmian, które wpływają na scenariusze usługi Azure Data Factory.
+*  Brak zmian, które mają wpływ na Azure Data Factorye scenariusze.

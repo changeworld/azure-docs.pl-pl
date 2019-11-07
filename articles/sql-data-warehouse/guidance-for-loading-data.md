@@ -1,5 +1,5 @@
 ---
-title: Najlepsze rozwiązania dotyczące ładowania danych — usługa Azure SQL Data Warehouse | Microsoft Docs
+title: Najlepsze rozwiązania dotyczące ładowania danych
 description: Zalecenia dotyczące ładowania danych do usługi Azure SQL Data Warehouse i optymalizacji wydajności tego procesu.
 services: sql-data-warehouse
 author: kevinvngo
@@ -10,13 +10,13 @@ ms.subservice: load-data
 ms.date: 08/08/2019
 ms.author: kevin
 ms.reviewer: igorstan
-ms.custom: seoapril2019
-ms.openlocfilehash: a1433139695eb59fa3fd721852fae3181b8f892b
-ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
+ms.custom: seo-lt-2019
+ms.openlocfilehash: 01bb53488bf63f32d2bae804e4844400a7fd2d31
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68882476"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73686100"
 ---
 # <a name="best-practices-for-loading-data-into-azure-sql-data-warehouse"></a>Najlepsze rozwiązania dotyczące ładowania danych do usługi Azure SQL Data Warehouse
 
@@ -105,7 +105,7 @@ Jeśli w ciągu dnia wykonujesz kilka tysięcy lub więcej wstawień, utwórz pa
 
 ## <a name="creating-statistics-after-the-load"></a>Tworzenie statystyk po załadowaniu
 
-Aby poprawić wydajność zapytań, należy utworzyć statystyki dla wszystkich kolumn wszystkich tabel po pierwszym załadowaniu danych, a następnie po każdej istotnej zmianie danych.  Można to zrobić ręcznie lub włączyć funkcję AutoCreate [Statistics](https://docs.microsoft.com/azure/sql-data-warehouse/sql-data-warehouse-tables-statistics#automatic-creation-of-statistic).
+Aby poprawić wydajność zapytań, należy utworzyć statystyki dla wszystkich kolumn wszystkich tabel po pierwszym załadowaniu danych, a następnie po każdej istotnej zmianie danych.  Można to zrobić ręcznie lub włączyć funkcję [AutoCreate Statistics](https://docs.microsoft.com/azure/sql-data-warehouse/sql-data-warehouse-tables-statistics#automatic-creation-of-statistic).
 
 Aby zapoznać się ze szczegółowym opisem statystyk, zobacz temat [Statystyki](sql-data-warehouse-tables-statistics.md). Poniższy przykład pokazuje, jak ręcznie utworzyć statystyki dla pięciu kolumn tabeli Customer_Speed.
 

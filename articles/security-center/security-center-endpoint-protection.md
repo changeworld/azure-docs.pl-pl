@@ -1,5 +1,5 @@
 ---
-title: Odnajdywanie rozwiązań programu Endpoint Protection i Ocena kondycji w Azure Security Center | Microsoft Docs
+title: Zalecenia dotyczące programu Endpoint Protection w centrach zabezpieczeń Azure
 description: Sposób odnajdywania i identyfikowania rozwiązań programu Endpoint Protection w dobrej kondycji.
 services: security-center
 documentationcenter: na
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/08/2019
 ms.author: memildin
-ms.openlocfilehash: 8de0caa5db4a7e1d97c7d6c055bcb01fed635821
-ms.sourcegitcommit: 8a717170b04df64bd1ddd521e899ac7749627350
-ms.translationtype: MT
+ms.openlocfilehash: dad8c6173495d11abd6c9f5babb4ef8bc789e4ce
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/23/2019
-ms.locfileid: "71202257"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73686421"
 ---
 # <a name="endpoint-protection-assessment-and-recommendations-in-azure-security-center"></a>Ocena i zalecenia dotyczące programu Endpoint Protection w Azure Security Center
 
@@ -29,29 +29,29 @@ Azure Security Center zapewnia oceny kondycji [obsługiwanych](https://docs.micr
 
 ## <a name="windows-defender"></a>Windows Defender
 
-* Security Center zaleca się **"Zainstaluj rozwiązania programu Endpoint Protection na maszynie wirtualnej" w** przypadku uruchamiania [Get-MpComputerStatus](https://docs.microsoft.com/powershell/module/defender/get-mpcomputerstatus?view=win10-ps) , a **wynikiem jest AMServiceEnabled: False**
+* W Security Center zalecane jest **"Instalowanie rozwiązań programu Endpoint Protection na maszynie wirtualnej"** po uruchomieniu [Get-MpComputerStatus](https://docs.microsoft.com/powershell/module/defender/get-mpcomputerstatus?view=win10-ps) , a wynikiem jest **AMServiceEnabled: false**
 
 * Security Center zaleca **"Rozwiązywanie problemów z kondycją programu Endpoint Protection na maszynach" w** przypadku uruchamiania [Get-MpComputerStatus](https://docs.microsoft.com/powershell/module/defender/get-mpcomputerstatus?view=win10-ps) i dowolnego z następujących wystąpień:
 
   * Każda z następujących właściwości ma wartość false:
 
-     **AMServiceEnabled**
+    **AMServiceEnabled**
 
-     **AntispywareEnabled**
+    **AntispywareEnabled**
 
-     **RealTimeProtectionEnabled**
+    **RealTimeProtectionEnabled**
 
-     **BehaviorMonitorEnabled**
+    **BehaviorMonitorEnabled**
 
-     **IoavProtectionEnabled**
+    **IoavProtectionEnabled**
 
-     **OnAccessProtectionEnabled**
+    **OnAccessProtectionEnabled**
 
   * Jeśli jedna lub obie następujące właściwości mają wartość 7 lub więcej.
 
-     **AntispywareSignatureAge**
+    **AntispywareSignatureAge**
 
-     **AntivirusSignatureAge**
+    **AntivirusSignatureAge**
 
 ## <a name="microsoft-system-center-endpoint-protection"></a>Program Microsoft System Center Endpoint Protection
 
@@ -61,23 +61,23 @@ Azure Security Center zapewnia oceny kondycji [obsługiwanych](https://docs.micr
 
     * Co najmniej jedna z następujących właściwości ma wartość false:
 
-       **AMServiceEnabled**
+            **AMServiceEnabled**
+
+            **AntispywareEnabled**
     
-       **AntispywareEnabled**
+            **RealTimeProtectionEnabled**
     
-       **RealTimeProtectionEnabled**
+            **BehaviorMonitorEnabled**
     
-       **BehaviorMonitorEnabled**
+            **IoavProtectionEnabled**
     
-       **IoavProtectionEnabled**
-    
-       **OnAccessProtectionEnabled**
+            **OnAccessProtectionEnabled**
           
     * Jeśli co najmniej jedna z poniższych aktualizacji podpisu jest większa lub równa 7. 
 
-       **AntispywareSignatureAge**
+            **AntispywareSignatureAge**
     
-       **AntivirusSignatureAge**
+            **AntivirusSignatureAge**
 
 ## <a name="trend-micro"></a>Trend Micro
 
@@ -102,17 +102,17 @@ Lub
 
 Security Center zaleca **"Rozwiązywanie problemów z kondycją programu Endpoint Protection na swoich maszynach" w** przypadku braku spełnienia następujących testów:
 
-* Sprawdź wersję firmy Symantec > = 12:  Lokalizacja rejestru: **HKLM: \ Software\Symantec\Symantec Endpoint Protection\CurrentVersion "-value" PRODUCTVERSION "**
+* Sprawdź wersję firmy Symantec > = 12: Lokalizacja rejestru: **HKLM: \ Software\Symantec\Symantec Endpoint Protection\CurrentVersion "-value" ProductVersion "**
 
-* Sprawdź stan ochrony w czasie rzeczywistym: **HKLM: \ Software\Wow6432Node\Symantec\Symantec punkt końcowy Protection\AV\Storages\Filesystem\RealTimeScan\OnOff = = 1**
+* Sprawdzanie stanu ochrony w czasie rzeczywistym: **HKLM: \ Software\Wow6432Node\Symantec\Symantec Endpoint Protection\AV\Storages\Filesystem\RealTimeScan\OnOff = = 1**
 
 * Sprawdź stan aktualizacji sygnatury: **HKLM\Software\Symantec\Symantec Endpoint Protection\CurrentVersion\public-opstate\LatestVirusDefsDate < = 7 dni**
 
 * Sprawdź stan pełnego skanowania: **HKLM: \ Software\Symantec\Symantec Endpoint Protection\CurrentVersion\public-opstate\LastSuccessfulScanDateTime < = 7 dni**
 
-* Znajdź ścieżkę numeru wersji sygnatury do wersji sygnatury dla firmy Symantec 12: **Ścieżki rejestru + "CurrentVersion\SharedDefs" — wartość "SRTSP"** 
+* Znajdź ścieżkę numeru wersji sygnatury do wersji sygnatury dla firmy Symantec 12: **ścieżki rejestru + "CurrentVersion\SharedDefs"-value "SRTSP"** 
 
-* Ścieżka do wersji sygnatury dla firmy Symantec 14: **Ścieżki rejestru + "CurrentVersion\SharedDefs\SDSDefs" — wartość "SRTSP"**
+* Ścieżka do wersji sygnatury dla firmy Symantec 14: **ścieżki rejestru + "CurrentVersion\SharedDefs\SDSDefs"-value "SRTSP"**
 
 Ścieżki rejestru:
 
@@ -129,7 +129,7 @@ Security Center zaleca się **"Zainstaluj rozwiązania programu Endpoint Protect
 
 Security Center zaleca **"Rozwiązywanie problemów z kondycją programu Endpoint Protection na swoich maszynach" w** przypadku braku spełnienia następujących testów:
 
-* Wersja programu McAfee: **HKLM: \ SOFTWARE\McAfee\Endpoint\AV\ProductVersion > = 10**
+* Wersja McAfee: **HKLM: \ SOFTWARE\McAfee\Endpoint\AV\ProductVersion > = 10**
 
 * Znajdź wersję podpisu: **HKLM: \ Software\McAfee\AVSolution\DS\DS-Value "dwContentMajorVersion"**
 
@@ -143,7 +143,7 @@ Security Center zaleca się **"Zainstaluj rozwiązania programu Endpoint Protect
 
 - Wyjście z **/opt/iSEC/ENS/threatprevention/bin/isecav** plików 
 
-- **"/opt/iSEC/ENS/threatprevention/bin/isecav--Version"** dane wyjściowe: **McAfee Name = McAfee Endpoint Security dla ochrony przed zagrożeniami w systemie Linux i wersji McAfee > = 10**
+- **"/opt/iSEC/ENS/threatprevention/bin/isecav--Version"** Output to: **McAfee Name = McAfee Endpoint Security dla ochrony przed zagrożeniami w systemie Linux i wersji McAfee > = 10**
 
 Security Center zaleca **"Rozwiązywanie problemów z kondycją programu Endpoint Protection na swoich maszynach" w** przypadku braku spełnienia następujących testów:
 
@@ -163,23 +163,22 @@ Security Center zaleca się **"Zainstaluj rozwiązania programu Endpoint Protect
 
 Security Center zaleca **"Rozwiązywanie problemów z kondycją programu Endpoint Protection na swoich maszynach" w** przypadku braku spełnienia następujących testów:
 
-- **"/opt/Sophos-AV/bin/savlog--maxAge = 7 | grep-i "zaplanowane skanowanie. ukończono\* "| ogon-1"** , zwraca wartość   
+- **"/opt/Sophos-AV/bin/savlog--maxAge = 7 | grep-i "zaplanowane skanowanie.\* ukończono "| tail-1 "** zwraca wartość
 
-- **"/opt/Sophos-AV/bin/savlog--maxAge = 7 | Zakończono skanowanie grep** "| tail-1 "zwraca wartość   
+- **"/opt/Sophos-AV/bin/savlog--maxAge = 7 | Zakończono skanowanie grep** "| tail-1 "zwraca wartość
 
 - **"/opt/Sophos-AV/bin/savdstatus--LastUpdate"** zwraca LastUpdate, które powinny być < = 7 dni 
 
 - **"/opt/Sophos-AV/bin/savdstatus-v"** jest równa **"skanowanie w trakcie dostępu jest uruchomione"** 
 
-- **"/opt/Sophos-AV/bin/savconfig Get LiveProtection"** zwraca włączone  
+- **"/opt/Sophos-AV/bin/savconfig Get LiveProtection"** zwraca włączone
 
-## <a name="troubleshoot-and-support"></a>Rozwiązywanie problemów i pomocy technicznej
+## <a name="troubleshoot-and-support"></a>Rozwiązywanie problemów i pomoc techniczna
 
 ### <a name="troubleshoot"></a>Rozwiązywanie problemów
 
-Dzienniki rozszerzeń programu Microsoft chroniące przed złośliwym oprogramowaniem są dostępne pod adresem:  
-**%Systemdrive%\WindowsAzure\Logs\Plugins\Microsoft.Azure.Security.IaaSAntimalware (lub PaaSAntimalware) \1.5.5.x (wersja #) \CommandExecution.log**
+Dzienniki rozszerzeń programu Microsoft chroniące przed złośliwym kodem są dostępne pod adresem: **%SYSTEMDRIVE%\WindowsAzure\Logs\Plugins\Microsoft.Azure.Security.IaaSAntimalware (lub PaaSAntimalware) \1.5.5.x (wersja #) \CommandExecution.log**
 
 ### <a name="support"></a>Pomoc techniczna
 
-Aby uzyskać pomoc, skontaktuj się z ekspertami platformy Azure na [forach MSDN i Stack Overflow](https://azure.microsoft.com/support/forums/). Lub plik zdarzenia pomocy technicznej platformy Azure. Przejdź do [witryny pomocy technicznej platformy Azure](https://azure.microsoft.com/support/options/) i wybierz Uzyskaj pomoc techniczną. Aby uzyskać informacje o korzystaniu z pomocy technicznej platformy Azure, przeczytaj [pomocy technicznej Microsoft Azure — często zadawane pytania](https://azure.microsoft.com/support/faq/).
+Aby uzyskać pomoc, skontaktuj się z ekspertami platformy Azure na [forach MSDN i Stack Overflow](https://azure.microsoft.com/support/forums/). Lub plik zdarzenia pomocy technicznej platformy Azure. Przejdź do [witryny pomocy technicznej systemu Azure](https://azure.microsoft.com/support/options/) i wybierz pozycję Uzyskaj pomoc techniczną. Aby uzyskać informacje o korzystaniu z pomocy technicznej platformy Azure, przeczytaj temat [Microsoft Azure support — często zadawane pytania](https://azure.microsoft.com/support/faq/).
