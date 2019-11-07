@@ -30,6 +30,8 @@
                   href: hpc-cache-ingest-msrsync.md
                 - name: Wypełnianie pamięci podręcznej przy użyciu ręcznego kopiowania plików
                   href: hpc-cache-ingest-manual.md
+        - name: Edytowanie lokalizacji docelowych magazynu
+          href: hpc-cache-edit-storage.md
     - name: Łączenie z pamięcią podręczną
       href: hpc-cache-mount.md
     - name: Zarządzanie pamięcią podręczną

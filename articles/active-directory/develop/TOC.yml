@@ -436,7 +436,7 @@
                   href: msal-js-prompt-behavior.md
             - name: Biblioteka MSAL dla systemów iOS i macOS
               items:
-                - name: Biblioteka uwierzytelniania firmy Microsoft dla systemów iOS i macOS — różnice
+                - name: Różnice w bibliotece MSAL dla systemów iOS i macOS
                   href: msal-differences-ios-macos.md
                 - name: Konfigurowanie pęku kluczy
                   href: howto-v2-keychain-objc.md

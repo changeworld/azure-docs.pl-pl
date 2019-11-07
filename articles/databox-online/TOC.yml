@@ -1,4 +1,4 @@
-- name: Dokumentacja usługi Azure Data Box — transfer danych w trybie online
+- name: Dokumentacja rozwiązań Azure Stack Edge i Data Box Gateway
   href: /azure/databox-online/
   expanded: true
 - name: Data Box Gateway
@@ -57,11 +57,11 @@
           href: data-box-gateway-1905-release-notes.md
         - name: Ogólna dostępność
           href: data-box-gateway-release-notes.md
-- name: Data Box Edge
+- name: Azure Stack Edge
   items:
     - name: Omówienie
       items:
-        - name: Co to jest usługa Azure Data Box Edge?
+        - name: Co to jest rozwiązanie Azure Stack Edge?
           href: data-box-edge-overview.md
     - name: Samouczki
       items:
@@ -125,9 +125,9 @@
           href: data-box-gateway-release-notes.md
 - name: Zasoby
   items:
-    - name: 'Przykłady modułu języka C# usługi Data Box Edge (.NET)'
+    - name: 'Azure Stack Edge — przykłady modułów języka C# (.NET)'
       href: 'https://azure.microsoft.com/resources/samples/data-box-edge-csharp-modules/'
-    - name: Produkt Data Box Edge/Gateway
+    - name: Produkt Azure Stack Edge/Data Box Gateway
       href: 'https://azure.microsoft.com/services/storage/databox/edge/'
     - name: Cennik
       href: 'https://azure.microsoft.com/pricing/details/storage/databox/edge/'

@@ -1,10 +1,10 @@
-### YamlMime:YamlDocument
-documentType: LandingData
+### YamlMime:Landing
 title: Dokumentacja funkcji wyszukiwania niestandardowego Bing
+summary: Dowiedz się, jak utworzyć środowisko wyszukiwania niestandardowego za pomocą portalu i interfejsu API wyszukiwania niestandardowego Bing.
 metadata:
-  title: 'Dokumentacja interfejsu API wyszukiwania niestandardowego Bing — samouczki, przewodniki Szybki start i dokumentacja interfejsu API'
+  title: Dokumentacja interfejsu API wyszukiwania niestandardowego Bing — samouczki, przewodniki Szybki start i dokumentacja interfejsu API
   titleSuffix: Azure Cognitive Services
-  description: 'Dowiedz się, jak utworzyć środowisko wyszukiwania niestandardowego za pomocą portalu i interfejsu API wyszukiwania niestandardowego Bing'
+  description: Utwórz wystąpienie wyszukiwania dotyczące interesujących Cię tematów za pomocą interfejsu API wyszukiwania niestandardowego Bing. Określ domeny i strony internetowe do przeszukania oraz dopasuj rankingi wyszukiwania, aby w pełni dostosować swoje środowisko wyszukiwania.
   services: cognitive-services
   author: aahill
   manager: nitinme
@@ -12,72 +12,94 @@ metadata:
   ms.service: cognitive-services
   ms.subservice: bing-custom-search
   ms.topic: landing-page
-  ms.date: 07/25/2019
+  ms.date: 10/31/2019
   ms.author: aahill
-abstract:
-  description: 'Utwórz wystąpienie wyszukiwania dotyczące interesujących Cię tematów za pomocą interfejsu API wyszukiwania niestandardowego Bing. Określ domeny i strony internetowe do przeszukania oraz dopasuj rankingi wyszukiwania, aby w pełni dostosować swoje środowisko wyszukiwania.'
-sections:
-  - items:
-      - type: list
-        style: cards
-        className: cardsM
-        columns: 3
-        items:
-          - href: /azure/cognitive-services/bing-custom-search/overview
-            html: <p>Poznaj interfejs API wyszukiwania niestandardowego Bing</p>
-            image:
-              src: ../media/index/i_overview.svg
-            title: Co to jest interfejs API wyszukiwania niestandardowego Bing?
-          - href: /azure/cognitive-services/bing-custom-search/quick-start
-            html: '<p>Dowiedz się, jak dostosować swoje środowisko wyszukiwania, aby utworzyć niestandardowy widok Internetu.</p>'
-            image:
-              src: ../media/index/i_guidelines.svg
-            title: Tworzenie niestandardowego wystąpienia wyszukiwania Bing
-          - href: /azure/cognitive-services/bing-custom-search/hosted-ui
-            html: '<p>Dowiedz się, jak łatwo integrować hostowany interfejs użytkownika ze stronami i aplikacjami internetowymi.</p>'
-            image:
-              src: ../media/index/i_guidelines.svg
-            title: Konfigurowanie środowiska hostowanego interfejsu użytkownika
-  - title: 5-minutowe przewodniki Szybki start
-    items:
-      - type: paragraph
-        text: 'Widok niestandardowy w Internecie można przeszukiwać, używając języków:'
-      - type: list
-        style: icon48
-        items:
-          - image:
-              src: media/logo_Csharp.svg
-            href: sdk-csharp-quick-start
-            text: 'C&#35;'
-          - image:
-              src: media/logo_java.svg
-            href: call-endpoint-java
-            text: Java
-          - image:
-              src: media/logo_nodejs.svg
-            href: call-endpoint-nodejs
-            text: Node.js
-          - image:
-              src: media/logo_python.svg
-            href: call-endpoint-python
-            text: Python
-  - title: Samouczek krok po kroku
-    items:
-      - type: paragraph
-        text: 'Dowiedz się, jak opracowywać aplikacje przy użyciu interfejsu API wyszukiwania niestandardowego Bing:'
-      - type: paragraph
-        text: <a href="tutorials/custom-search-web-page">Tworzenie strony internetowej z funkcją wyszukiwania niestandardowego</a>
-  - title: Dokumentacja
-    items:
-      - type: list
-        style: cards
-        className: cardsD
-        items:
-          - title: Interfejsy API
-            html: '<p><a href="https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-custom-search-api-v7-reference">Interfejs API wyszukiwania niestandardowego w wersji 7</a></p> <p><a href="https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-custom-autosuggest-api-v7-reference">Interfejs API niestandardowego automatycznego sugerowania w wersji 7</a></p> <p><a href="https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-custom-images-api-v7-reference">Interfejs API niestandardowego wyszukiwania obrazów w wersji 7</a></p> <p><a href="https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-custom-videos-api-v7-reference">Interfejs API niestandardowego wyszukiwania wideo w wersji 7</a></p>'
-          - title: Zestawy SDK
-            html: '<p><a href="https://docs.microsoft.com/dotnet/api/overview/azure/cognitiveservices/client/bingcustomsearch?view=azure-dotnet">.NET</a></p> <p><a href="https://docs.microsoft.com/java/api/overview/azure/cognitiveservices/client/bingcustomsearch?view=azure-java-stable">Java — wyszukiwanie niestandardowe</a></p> <p><a href="https://docs.microsoft.com/java/api/overview/azure/cognitiveservices/client/bingcustomimagesearch?view=azure-java-stable">Java — niestandardowe wyszukiwanie obrazów</a></p> <p><a href="https://docs.microsoft.com/python/api/overview/azure/cognitiveservices/customsearch?view=azure-python">Python</a></p> <p><a href="https://docs.microsoft.com/javascript/api/azure-cognitiveservices-customsearch?view=azure-node-latest">Node.js</a></p> <p><a href="https://godoc.org/github.com/Azure/azure-sdk-for-go/services/cognitiveservices/v1.0/customsearch">Go — wyszukiwanie niestandardowe</a></p> <p><a href="https://godoc.org/github.com/Azure/azure-sdk-for-go/services/cognitiveservices/v1.0/customimagesearch">Go — niestandardowe wyszukiwanie obrazów</a></p>'
-          - title: PowerShell
-            html: '<p><a href="https://docs.microsoft.com/powershell/module/az.cognitiveservices/#cognitive_services">Azure PowerShell</a></p>'
-          - title: Interfejs wiersza polecenia
-            html: '<p><a href="https://docs.microsoft.com/cli/azure/cognitiveservices?view=azure-cli-latest">Interfejs wiersza polecenia platformy Azure</a></p>'
+  ms.openlocfilehash: fc2435fabc73ad344461b04a339135e22d173191
+  ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+  ms.translationtype: HT
+  ms.contentlocale: pl-PL
+  ms.lasthandoff: 11/04/2019
+  ms.locfileid: "73580111"
+landingContent:
+- title: Informacje o interfejsie API wyszukiwania niestandardowego Bing
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Co to jest interfejs API wyszukiwania niestandardowego Bing?
+      url: overview.md
+    - text: Porównanie aplikacji wyszukiwania Bing
+      url: ../bing-web-search/bing-api-comparison.md
+- title: Integrowanie widoku niestandardowego sieci Web
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: Konfigurowanie wystąpienia wyszukiwania niestandardowego
+      url: define-your-custom-view.md
+    - text: Pobieranie wyników wyszukiwania obrazów
+      url: get-images-from-instance.md
+    - text: Pobieranie wyników wyszukiwania wideo
+      url: get-videos-from-instance.md
+    - text: Wywoływanie wystąpienia wyszukiwania niestandardowego
+      url: search-your-custom-view.md
+    - text: Stronicowanie wyników wyszukiwania
+      url: ../bing-web-search/paging-search-results.md
+    - text: Obsługa wyróżniania trafień
+      url: ../bing-web-search/hit-highlighting.md
+    - text: Konfigurowanie i integrowanie hostowanego interfejsu użytkownika
+      url: hosted-ui.md
+    - text: Definiowanie niestandardowych sugestii automatycznych
+      url: define-custom-suggestions.md
+    - text: Udostępnianie wystąpienia wyszukiwania niestandardowego
+      url: share-your-custom-search.md
+- title: Dokumentacja zestawu SDK
+  linkLists:
+  - linkListType: reference
+    links:
+    - text: .NET
+      url: https://docs.microsoft.com/dotnet/api/overview/azure/cognitiveservices/client/bingcustomsearch?view=azure-dotnet
+    - text: Python
+      url: https://docs.microsoft.com/python/api/overview/azure/cognitiveservices/customsearch?view=azure-python
+    - text: Go — wyszukiwanie niestandardowe
+      url: https://godoc.org/github.com/Azure/azure-sdk-for-go/services/cognitiveservices/v1.0/customsearch
+    - text: Go — obraz niestandardowy
+      url: https://godoc.org/github.com/Azure/azure-sdk-for-go/services/cognitiveservices/v1.0/customimagesearch
+    - text: Java — wyszukiwanie niestandardowe
+      url: https://docs.microsoft.com/java/api/overview/azure/cognitiveservices/client/bingcustomsearch?view=azure-java-stable
+    - text: Java — niestandardowe wyszukiwanie obrazów
+      url: https://docs.microsoft.com/java/api/overview/azure/cognitiveservices/client/bingcustomimagesearch?view=azure-java-stable
+    - text: Node.js
+      url: https://docs.microsoft.com/javascript/api/azure-cognitiveservices-customsearch?view=azure-node-latest
+    - text: Azure PowerShell
+      url: https://docs.microsoft.com/powershell/module/az.cognitiveservices/#cognitive_services
+    - text: Interfejs wiersza polecenia platformy Azure
+      url: /cli/azure/cognitiveservices#az-cognitiveservices-list
+- title: Pobieranie wyników wyszukiwania niestandardowego z sieci Web
+  linkLists:
+  - linkListType: get-started
+    links:
+    - text: Tworzenie wystąpienia wyszukiwania niestandardowego
+      url: quick-start.md
+  - linkListType: quickstart
+    links:
+    - text: Przy użyciu języka C#
+      url: sdk-csharp-quick-start.md
+    - text: Korzystanie z języka Python
+      url: sdk-python-quickstart.md
+    - text: Korzystanie z języka Java
+      url: sdk-java-quickstart.md
+  - linkListType: tutorial
+    links:
+    - text: Tworzenie strony internetowej z funkcją wyszukiwania niestandardowego
+      url: tutorials/custom-search-web-page.md
+- title: Dokumentacja interfejsu API REST
+  linkLists:
+  - linkListType: reference
+    links:
+    - text: Interfejs API REST wyszukiwania niestandardowego w wersji 7
+      url: https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-custom-search-api-v7-reference
+    - text: Interfejs API REST niestandardowego sugerowania automatycznego w wersji 7
+      url: https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-custom-autosuggest-api-v7-reference
+    - text: Interfejs API REST niestandardowego wyszukiwania obrazów w wersji 7
+      url: https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-custom-images-api-v7-reference
+    - text: Interfejs API REST niestandardowego wyszukiwania wideo w wersji 7
+      url: https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-custom-videos-api-v7-reference

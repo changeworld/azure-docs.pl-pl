@@ -91,7 +91,7 @@
           href: how-to/run-dev-spaces-windows-containers.md
         - name: Używanie rozwiązania traefik w przypadku niestandardowego ruchu przychodzącego i ruchu HTTPS
           href: how-to/ingress-https-traefik.md
-        - name: Korzystanie z funkcji Azure Dev Spaces Connect (wersja zapoznawcza)
+        - name: Łączenie komputera deweloperskiego z klastrem AKS (wersja zapoznawcza)
           href: how-to/connect.md
     - name: Rozwiązywanie problemów
       href: troubleshooting.md

@@ -7,17 +7,21 @@
 - name: Przewodniki Szybki start
   expanded: true
   items:
-    - name: Ustawianie i pobieranie wpisu tajnego — interfejs wiersza polecenia
+    - name: Interfejs wiersza polecenia
       href: quick-create-cli.md
-    - name: Ustawianie i pobieranie wpisu tajnego — PowerShell
+    - name: PowerShell
       href: quick-create-powershell.md
-    - name: Ustawianie i pobieranie wpisu tajnego — portal
+    - name: Portal
       href: quick-create-portal.md
-    - name: Ustawianie i pobieranie wpisu tajnego — .NET
+    - name: Python
+      href: quick-create-python.md
+    - name: .NET (zestaw SDK w wersji 4)
       href: quick-create-net.md
-    - name: Ustawianie i pobieranie wpisu tajnego — Node.js
+    - name: .NET (zestaw SDK w wersji 3)
+      href: quick-create-net-v3.md
+    - name: Node.js
       href: quick-create-node.md
-    - name: Ustawianie i pobieranie wpisu tajnego — szablon
+    - name: Szablon usługi Azure Resource Manager
       displayName: 'resource manager, resource manager template, arm'
       href: quick-create-template.md
 - name: Samouczki

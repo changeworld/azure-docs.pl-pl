@@ -518,6 +518,8 @@
           href: data-movement-security-considerations.md
         - name: Przechowywanie poświadczeń w usłudze Azure Key Vault
           href: store-credentials-in-key-vault.md
+        - name: Używanie wpisów tajnych usługi Azure Key Vault w działaniach potoku
+          href: how-to-use-azure-key-vault-secrets-pipeline-activities.md
         - name: Szyfrowanie poświadczeń dla środowiska Integration Runtime (Self-hosted)
           href: encrypt-credentials-self-hosted-integration-runtime.md
         - name: Tożsamość zarządzana dla usługi Data Factory

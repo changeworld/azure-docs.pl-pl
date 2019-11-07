@@ -39,6 +39,8 @@
       href: security-overview.md
     - name: Routing
       href: virtual-networks-udr-overview.md
+    - name: Tagi usługi
+      href: service-tags-overview.md
     - name: Punkty końcowe usługi
       href: virtual-network-service-endpoints-overview.md
     - name: Zasady punktów końcowych usługi
@@ -65,6 +67,8 @@
       href: ipv6-public-ip-address-prefix.md
     - name: Ochrona przed atakami DDOS
       href: ddos-protection-overview.md
+    - name: Rozszerzenie podsieci
+      href: subnet-extension.md
     - name: Współdziałanie łączności z zapleczem
       items:
         - name: Wstęp i konfiguracja testu
@@ -297,6 +301,8 @@
           href: diagnose-network-routing-problem.md
         - name: Testowanie przepływności
           href: virtual-network-bandwidth-testing.md
+        - name: Testowanie opóźnienia sieci maszyn wirtualnych
+          href: virtual-network-test-latency.md
         - name: Nie można usunąć sieci wirtualnych
           href: virtual-network-troubleshoot-cannot-delete-vnet.md
         - name: Problemy z łącznością między maszynami wirtualnymi

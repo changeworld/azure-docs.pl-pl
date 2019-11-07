@@ -5,7 +5,7 @@
   items:
     - name: Co to jest zarządzanie aplikacjami w chmurze i logowanie jednokrotne?
       href: what-is-application-management.md
-    - name: Co to jest automatyczna aprowizacja użytkowników?
+    - name: Co to jest aprowizowanie aplikacji?
       href: user-provisioning.md
     - name: Co to jest serwer proxy aplikacji dla aplikacji lokalnych?
       href: what-is-application-proxy.md
@@ -17,7 +17,7 @@
       href: view-applications-portal.md
 - name: Samouczki
   items:
-    - name: Samouczki aplikacji SaaS
+    - name: 'Zintegrowane aplikacje z galerii (np. usługi ServiceNow, Salesforce, Dropbox)'
       href: /azure/active-directory/saas-apps/
     - name: Dodawanie aplikacji lokalnej za pomocą serwera proxy aplikacji
       href: application-proxy-add-on-premises-application.md
@@ -66,12 +66,12 @@
               href: howto-saml-token-encryption.md
             - name: Portale użytkowników końcowych
               href: end-user-experiences.md
-    - name: Automatyczna aprowizacja użytkowników
+    - name: Aprowizowanie aplikacji (SCIM)
       items:
-        - name: Planowanie wdrożenia automatycznego aprowizowania użytkowników
-          href: plan-auto-user-provisioning.md
         - name: Automatyczna aprowizacja w aplikacjach obsługujących standard SCIM
           href: use-scim-to-provision-users-and-groups.md
+        - name: Planowanie wdrożenia automatycznego aprowizowania użytkowników
+          href: plan-auto-user-provisioning.md
     - name: Serwer proxy aplikacji dla aplikacji lokalnych
       items:
         - name: Serwer proxy aplikacji
@@ -223,23 +223,21 @@
                   href: access-panel-extension-problem-installing.md
                 - name: Błąd podczas używania dostępu do aplikacji samoobsługowej
                   href: access-panel-troubleshoot-self-service-access.md
-    - name: Automatyczna aprowizacja użytkowników
+    - name: Aprowizowanie aplikacji (SCIM)
       items:
         - name: Konfigurowanie aprowizacji użytkowników
           items:
-            - name: Aprowizacja użytkowników dla aplikacji z galerii
+            - name: Aprowizowanie automatyczne a ręczne
               href: application-provisioning-config-how-to.md
-            - name: Włączanie automatycznej aprowizacji użytkowników dla aplikacji wielodostępnych
-              href: isv-automatic-provisioning-multi-tenant-apps.md
             - name: Konfigurowanie automatycznej aprowizacji użytkowników
               href: configure-automatic-user-provisioning-portal.md
-            - name: Dostosowywanie aplikacji atrybutów
+            - name: Dostosowywanie mapowań atrybutów
               href: Customize-application-attributes.md
-            - name: Filtry określania zakresu
+            - name: Określanie zakresu użytkowników lub grup do aprowizacji
               href: define-conditional-rules-for-provisioning-user-accounts.md
             - name: Pomijanie usuwania dla użytkowników spoza zakresu
               href: skip-out-of-scope-deletions.md
-            - name: Sprawdzanie stanu aprowizacji
+            - name: Monitorowanie stanu i wydajności aprowizacji
               href: application-provisioning-when-will-provisioning-finish-specific-user.md
             - name: Raportowanie na temat automatycznej aprowizacji użytkowników
               href: check-status-user-account-provisioning.md
@@ -249,20 +247,20 @@
           items:
             - name: Rozwiązywanie problemów z aprowizowaniem użytkowników
               href: application-provisioning-config-problem.md
-            - name: Stan kwarantanny
+            - name: Problem z autoryzacją (nie można zapisać poświadczeń administratora)
+              href: application-provisioning-config-problem-storage-limit.md
+            - name: Użytkownicy nie są aprowizowani
+              href: application-provisioning-config-problem-no-users-provisioned.md
+            - name: Aprowizowani są nieprawidłowi użytkownicy
+              href: application-provisioning-config-problem-wrong-users-provisioned.md
+            - name: Zadanie aprowizacji w kwarantannie
               href: application-provisioning-quarantine-status.md
+            - name: Brak atrybutu źródłowego
+              href: user-provisioning-sync-attributes-for-mapping.md
+            - name: Zadanie aprowizacji działa wolno
+              href: application-provisioning-when-will-provisioning-finish.md
             - name: Dzienniki aprowizowania
               href: /azure/active-directory/reports-monitoring/concept-provisioning-logs?context=azure/active-directory/manage-apps/context/manage-apps-context
-            - name: Synchronizowanie atrybutu mapowania — aplikacja z galerii
-              href: user-provisioning-sync-attributes-for-mapping.md
-            - name: Długie godziny — aplikacja z galerii
-              href: application-provisioning-when-will-provisioning-finish.md
-            - name: Problem podczas zapisywania poświadczeń administratora podczas konfigurowania aplikacji z galerii do aprowizacji użytkowników
-              href: application-provisioning-config-problem-storage-limit.md
-            - name: Użytkownicy nie są aprowizowani — aplikacja z galerii
-              href: application-provisioning-config-problem-no-users-provisioned.md
-            - name: Aprowizowano niewłaściwych użytkowników — aplikacja z galerii
-              href: application-provisioning-config-problem-wrong-users-provisioned.md
     - name: Serwer proxy aplikacji dla aplikacji lokalnych
       items:
         - name: Konfigurowanie łączników
@@ -357,10 +355,12 @@
               href: application-proxy-understand-cors-issues.md
 - name: Dokumentacja
   items:
-    - name: Automatyczna aprowizacja użytkowników
+    - name: Aprowizowanie aplikacji (SCIM)
       items:
         - name: Pisanie wyrażeń do mapowania atrybutów
           href: functions-for-customizing-application-data.md
+        - name: Wybór metody aprowizacji
+          href: isv-automatic-provisioning-multi-tenant-apps.md
     - name: Agent aprowizacji programu Azure AD Connect
       items:
         - name: Historia wersji agenta aprowizacji

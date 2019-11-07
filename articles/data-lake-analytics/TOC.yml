@@ -121,11 +121,17 @@
     - name: Informacje o platformie Apache Spark dla deweloperów języka U-SQL
       items:
         - name: Informacje o platformie Apache Spark dla deweloperów języka U-SQL
-          href: data-lake-analytics-understand-spark-for-usql-developers.md
+          href: understand-spark-for-usql-developers.md
         - name: Omówienie formatów danych platformy Apache Spark
-          href: data-lake-analytics-understand-spark-data-formats.md
+          href: understand-spark-data-formats.md
         - name: Omówienie pojęć związanych z kodem platformy Apache Spark
-          href: data-lake-analytics-understand-spark-code-concepts.md
+          href: understand-spark-code-concepts.md
+    - name: Rozwiązywanie problemów z zadaniami U-SQL
+      items:
+        - name: Rozwiązywanie problemów z błędami czasu wykonywania w języku U-SQL
+          href: runtime-troubleshoot.md
+        - name: Rozwiązywanie problemów z uaktualnieniem platformy .NET
+          href: dotnet-upgrade-troubleshoot.md
 - name: Dokumentacja
   items:
     - name: Azure PowerShell

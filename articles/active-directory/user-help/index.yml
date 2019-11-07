@@ -12,12 +12,12 @@ metadata:
   author: eross-msft
   ms.author: lizross
   ms.date: 08/26/2019
-  ms.openlocfilehash: 96fd0f6612b6c91ce4021b50ffe121b571a5032b
-  ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+  ms.openlocfilehash: c60b536c43b8a82a46ef9176eb077b212da529c0
+  ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
   ms.translationtype: HT
   ms.contentlocale: pl-PL
-  ms.lasthandoff: 10/30/2019
-  ms.locfileid: "73161000"
+  ms.lasthandoff: 11/04/2019
+  ms.locfileid: "73574211"
 landingContent:
 - title: Konfigurowanie aplikacji Microsoft Authenticator używanie jej
   linkLists:
@@ -73,18 +73,20 @@ landingContent:
       url: security-info-add-update-methods-overview.md
     - text: Dodawanie informacji podczas logowania
       url: security-info-setup-signin.md
-- title: Zarządzanie informacjami w portalu Mój profil (wersja zapoznawcza)
+- title: Zarządzanie informacjami w portalu Moje konto
   linkLists:
   - linkListType: overview
     links:
-    - text: Co to jest portal Mój profil (wersja zapoznawcza)?
-      url: myprofile-portal-overview.md
+    - text: Co to jest portal Moje konto?
+      url: my-account-portal-overview.md
   - linkListType: how-to-guide
     links:
-    - text: Zarządzanie swoimi organizacjami
-      url: myprofile-portal-organizations-page.md
     - text: Zarządzanie swoimi połączonymi urządzeniami
-      url: myprofile-portal-devices-page.md
+      url: my-account-portal-devices-page.md
+    - text: Zarządzanie swoimi organizacjami
+      url: my-account-portal-organizations-page.md
+    - text: Wyświetlanie ostatniej aktywności logowania
+      url: my-account-portal-sign-ins-page.md
 - title: Resetowanie hasła
   linkLists:
   - linkListType: overview

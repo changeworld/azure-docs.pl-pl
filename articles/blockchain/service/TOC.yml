@@ -57,6 +57,8 @@
       href: data-manager-portal.md
     - name: Konfigurowanie menedżera danych — interfejs wiersza polecenia
       href: data-manager-cli.md
+    - name: Publikowanie danych w usłudze Cosmos DB
+      href: data-manager-cosmosdb.md
 - name: Zasoby
   items:
     - name: Interfejs API REST łańcucha bloków

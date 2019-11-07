@@ -295,7 +295,7 @@
                 - name: Wyjątki
                   href: app/asp-net-exceptions.md
                 - name: Ślady dzienników
-                  href: app/java-trace-logs.md
+                  href: app/asp-net-trace-logs.md
                 - name: Metryki systemu UNIX
                   href: app/java-collectd.md
                 - name: Zależności
@@ -318,6 +318,8 @@
                   href: app/opencensus-python.md
                 - name: Zależności
                   href: app/opencensus-python-dependency.md
+                - name: Żądania
+                  href: app/opencensus-python-request.md
             - name: Strony sieci Web
               items:
                 - name: Język JavaScript po stronie klienta
@@ -593,26 +595,39 @@
         - name: Dzienniki zasobów
           items:
             - name: Omówienie
+              displayname: Resource logs
               href: platform/resource-logs-overview.md
             - name: Zbieranie dzienników w usłudze Azure Monitor
+              displayname: Resource logs
               href: platform/resource-logs-collect-workspace.md
             - name: Archiwizowanie w magazynie
+              displayname: Resource logs
               href: platform/resource-logs-collect-storage.md
             - name: Przesyłanie strumieniowe do usługi Event Hubs
+              displayname: Resource logs
               href: platform/resource-logs-stream-event-hubs.md
         - name: Dziennik aktywności
           items:
             - name: Omówienie
+              displayname: Activity log
               href: platform/activity-logs-overview.md
+            - name: Zbieranie danych przy użyciu ustawienia diagnostycznego
+              displayname: Activity log
+              href: platform/diagnostic-settings-subscription.md
             - name: Wyświetlanie i pobieranie
+              displayname: Activity log
               href: platform/activity-log-view.md
             - name: Zbieranie i analizowanie
+              displayname: Activity log
               href: platform/activity-log-collect.md
             - name: Zbieranie w wielu dzierżawach
+              displayname: Activity log
               href: platform/activity-log-collect-tenants.md
             - name: Eksportowanie
+              displayname: Activity log
               href: platform/activity-log-export.md
             - name: Schemat
+              displayname: Activity log
               href: platform/activity-log-schema.md
         - name: Ustawienia diagnostyczne
           items:
@@ -621,6 +636,7 @@
             - name: Tworzenie ustawienia diagnostycznego przy użyciu usługi Resource Manager
               href: platform/diagnostic-settings-template.md
             - name: Zmiana na format magazynu obiektów blob
+              displayname: Diagnostic settings
               href: platform/resource-logs-blob-format.md
         - name: Przesyłanie strumieniowe danych do usługi Event Hubs
           href: platform/stream-monitoring-data-event-hubs.md

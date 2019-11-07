@@ -12,12 +12,12 @@ metadata:
   author: normesta
   ms.author: normesta
   ms.date: 08/20/2019
-  ms.openlocfilehash: 3bc4bf920f4c780f0b73cdd75e62d8aff77b3c94
-  ms.sourcegitcommit: 23389df08a9f4cab1f3bb0f474c0e5ba31923f12
+  ms.openlocfilehash: f3e1abc46b79953d5a6d44abe4e7a5cecfa256be
+  ms.sourcegitcommit: 359930a9387dd3d15d39abd97ad2b8cb69b8c18b
   ms.translationtype: HT
   ms.contentlocale: pl-PL
-  ms.lasthandoff: 09/10/2019
-  ms.locfileid: "70875575"
+  ms.lasthandoff: 11/06/2019
+  ms.locfileid: "73646819"
 landingContent:
 - title: Informacje o usłudze Blob Storage
   linkLists:
@@ -29,9 +29,9 @@ landingContent:
   linkLists:
   - linkListType: quickstart
     links:
-    - text: Korzystanie z witryny Azure Portal
+    - text: Przekazywanie i pobieranie obiektów blob oraz wyświetlanie ich listy — portal
       url: storage-quickstart-blobs-portal.md
-    - text: Korzystanie z eksploratora usługi Storage
+    - text: Zarządzanie obiektami blob za pomocą Eksploratora usługi Storage
       url: storage-quickstart-blobs-storage-explorer.md
   - linkListType: concept
     links:
@@ -47,6 +47,14 @@ landingContent:
       url: storage-blob-create-account-block-blob.md
     - text: Konfigurowanie domeny niestandardowej
       url: storage-custom-domain-name.md
+- title: Wyszukiwanie i analizowanie danych obiektów blob
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: Korzystanie z AI w celu zrozumienia danych obiektów blob
+      url: ../../search/search-blob-ai-integration.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
+    - text: Przeszukiwanie zawartości obiektu blob
+      url: ../../search/search-blob-storage-integration.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
 - title: Analiza i szczegółowe informacje
   linkLists:
   - linkListType: overview

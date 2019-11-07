@@ -41,7 +41,7 @@
         - name: Działania i kontekst funkcji
           href: concepts-features.md
           displayName: 'action, context, feature, namespace, JSON, best practice, set, ID, guid, event id,'
-        - name: Aktywna nauka
+        - name: Zdarzenia aktywne i nieaktywne
           href: concept-active-learning.md
           displayName: 'active, inactive'
         - name: Nagrody

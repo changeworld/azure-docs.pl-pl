@@ -6,12 +6,12 @@ ms.author: dacoulte
 ms.date: 08/09/2019
 ms.topic: sample
 ms.service: blueprints
-ms.openlocfilehash: 0c33c0832590fdfd4fe78a1645ef1b0e3e391163
-ms.sourcegitcommit: fa5ce8924930f56bcac17f6c2a359c1a5b9660c9
+ms.openlocfilehash: bf4b79dbb3da15605dc4362b5f0578a457886316
+ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/31/2019
-ms.locfileid: "73200574"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73581374"
 ---
 # <a name="overview-of-the-cis-microsoft-azure-foundations-benchmark-blueprint-sample"></a>Omówienie przykładu strategii CIS Microsoft Azure Foundations Benchmark
 
@@ -19,16 +19,16 @@ Przykład strategii CIS Microsoft Azure Foundations Benchmark ułatwia zapewnien
 
 ## <a name="recommendation-mapping"></a>Mapowanie zaleceń
 
-Sekcja mapowania rekomendacji udostępnia szczegóły dotyczące zasad uwzględnionych w tej strategii oraz tego, w jaki sposób te zasady odnoszą się do różnych zaleceń we wzorcu CIS Microsoft Azure Foundations Benchmark.
-Po przypisaniu do architektury zasoby są oceniane przez usługę Azure Policy pod względem braku zgodności z przypisanymi zasadami. Aby uzyskać więcej informacji, zobacz [Azure Policy](../../../policy/overview.md).
+Sekcja mapowania zaleceń udostępnia szczegóły dotyczące zasad uwzględnionych w tej strategii oraz tego, w jaki sposób te zasady odnoszą się do różnych zaleceń we wzorcu CIS Microsoft Azure Foundations Benchmark w wersji 1.1.0. Po przypisaniu do architektury zasoby są oceniane przez usługę Azure Policy pod względem braku zgodności z przypisanymi zasadami. Aby uzyskać więcej informacji, zobacz [Azure Policy](../../../policy/overview.md).
 
 ## <a name="next-steps"></a>Następne kroki
 
 Zapoznano się z omówieniem przykładu strategii CIS Microsoft Azure Foundations Benchmark.
-Następnie przejdź do następującego artykułu, aby dowiedzieć się więcej na temat mapowania zaleceń:
+Następnie przejdź do następujących artykułów, aby dowiedzieć się więcej o mapowaniu zaleceń:
 
 > [!div class="nextstepaction"]
-> [Strategia CIS Microsoft Azure Foundations Benchmark — mapowanie rekomendacji](./control-mapping.md)
+> [Strategia CIS Microsoft Azure Foundations Benchmark — mapowanie zaleceń](./control-mapping.md)
+> [Przykład strategii CIS Microsoft Azure Foundations Benchmark — kroki wdrażania](./deploy.md)
 
 Dodatkowe artykuły na temat strategii i sposobu ich używania:
 

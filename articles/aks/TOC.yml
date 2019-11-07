@@ -345,6 +345,8 @@
           maintainContext: true
         - name: Moduł uruchamiania centrum wdrażania
           href: deployment-center-launcher.md
+        - name: Usługa GitHub Actions dla platformy Kubernetes
+          href: ../aks/kubernetes-action.md
     - name: Rozwiązywanie problemów
       items:
         - name: Typowe problemy

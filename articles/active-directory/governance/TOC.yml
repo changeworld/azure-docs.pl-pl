@@ -84,6 +84,14 @@
               href: entitlement-management-request-access.md
     - name: Przeglądy dostępu
       items:
+        - name: Pakiety dostępu
+          items:
+            - name: Tworzenie przeglądu dostępu
+              href: entitlement-management-access-reviews-create.md
+            - name: Przegląd dostępu
+              href: entitlement-management-access-reviews-review-access.md
+            - name: Przegląd dostępu dla siebie
+              href: entitlement-management-access-reviews-self-review.md
         - name: Grupy i aplikacje
           items:
             - name: Tworzenie przeglądu dostępu

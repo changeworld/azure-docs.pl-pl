@@ -174,7 +174,7 @@
 - name: Błędy rozruchu
   href: boot-error-troubleshoot.md
   items:
-    - name: Błąd rozruchu maszyny wirtualnej platformy Azure
+    - name: Ratunkowy tryb GRUB
       href: troubleshoot-vm-boot-error.md
     - name: Diagnostyka rozruchu
       href: boot-diagnostics.md

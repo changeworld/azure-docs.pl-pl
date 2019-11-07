@@ -12,12 +12,12 @@ metadata:
   title: Dokumentacja usługi Personalizacja
   titleSuffix: Azure Cognitive Services
   description: Usługa Personalizacja platformy Azure to chmurowa usługa interfejsu API, która pozwala wybrać najlepsze środowiska dla użytkowników na podstawie ich zachowania w czasie rzeczywistym.
-  ms.openlocfilehash: f3ba5f5eef7885896d774fd8aab35784cfb6465e
-  ms.sourcegitcommit: 4f7dce56b6e3e3c901ce91115e0c8b7aab26fb72
+  ms.openlocfilehash: 19736d881400a311964920f5669a0e9423891f9e
+  ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
   ms.translationtype: HT
   ms.contentlocale: pl-PL
-  ms.lasthandoff: 10/04/2019
-  ms.locfileid: "71950036"
+  ms.lasthandoff: 11/05/2019
+  ms.locfileid: "73604200"
 landingContent:
 - title: Informacje o usłudze Personalizacja
   linkLists:
@@ -97,7 +97,7 @@ landingContent:
       url: concepts-exploration.md
     - text: Funkcje, działanie i kontekst
       url: concepts-features.md
-    - text: Aktywna nauka
+    - text: Zdarzenia aktywne i nieaktywne
       url: concept-active-learning.md
     - text: Nagrody
       url: concept-rewards.md
@@ -107,7 +107,7 @@ landingContent:
     links:
     - text: Ulepszanie pętli za pomocą ocen w trybie offline
       url: concepts-offline-evaluation.md
-    - text: Aktywna nauka
+    - text: Zdarzenia aktywne i nieaktywne
       url: concept-active-learning.md
     - text: Skalowalność i wydajność
       url: concepts-scalability-performance.md

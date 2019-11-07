@@ -31,6 +31,8 @@
       href: publish-marketplace-app.md
     - name: Tworzenie aplikacji zarządzanych za pomocą dostawcy niestandardowego
       href: tutorial-create-managed-app-with-custom-provider.md
+    - name: Dołączanie zasobów za pomocą dostawców niestandardowych
+      href: tutorial-custom-providers-resource-onboarding.md
 - name: Przykłady
   items:
     - name: Interfejs wiersza polecenia platformy Azure
@@ -45,6 +47,10 @@
       href: custom-providers-overview.md
     - name: Wyświetlanie artefaktu definicji
       href: concepts-view-definition.md
+    - name: Artefakt definicji roli
+      href: concepts-custom-role-definition.md
+    - name: Dołączanie zasobów
+      href: concepts-custom-providers-resourceonboarding.md
 - name: Przewodniki z instrukcjami
   items:
     - name: Dostawcy niestandardowi

@@ -88,10 +88,6 @@
           href: ingest-data-logstash.md
         - name: Kopiowanie danych za pomocą usługi Azure Data Factory
           href: data-factory-load-data.md
-    - name: Wdrażanie
-      items:
-        - name: Zadanie metodyki DevOps
-          href: devops.md
     - name: Zapytania o dane
       items:
         - name: Pisanie zapytań
@@ -136,6 +132,8 @@
           href: tableau.md
         - name: Sisense
           href: sisense.md
+        - name: Redash
+          href: redash.md
     - name: Zarządzanie
       items:
         - name: Klaster
@@ -166,6 +164,10 @@
               href: delete-data.md
             - name: Obsługa zduplikowanych danych
               href: dealing-with-duplicates.md
+    - name: Wdrażanie
+      items:
+        - name: Wdrażanie klastra w sieci wirtualnej
+          href: vnet-deployment.md
     - name: Monitorowanie
       items:
         - name: Monitorowanie pozyskiwania przy użyciu dzienników diagnostycznych
@@ -186,6 +188,8 @@
           href: connect-from-databricks.md
         - name: Analizowanie danych w rozwiązaniach Jupyter Notebooks i Kqlmagic
           href: kqlmagic.md
+        - name: Azure Pipelines
+          href: devops.md
     - name: Rozwiązywanie problemów
       items:
         - name: Tworzenie klastra
@@ -220,9 +224,13 @@
           href: 'https://social.msdn.microsoft.com/Forums/en-US/home?forum=AzureKusto'
     - name: Opinia dotycząca produktu
       href: 'https://aka.ms/adefeedback'
-    - name: Cennik
-      href: 'https://azure.microsoft.com/pricing/details/data-explorer/'
-    - name: Narzędzie do szacowania kosztów
-      href: 'https://aka.ms/adecostestimator'
+    - name: Ceny i rozliczanie
+      items:
+        - name: Strona cennika
+          href: 'https://azure.microsoft.com/pricing/details/data-explorer/'
+        - name: Narzędzie do szacowania kosztów
+          href: 'https://aka.ms/adecostestimator'
+        - name: Pojemność zarezerwowana
+          href: pricing-reserved-capacity.md
     - name: Aktualizacje usług
       href: 'https://azure.microsoft.com/updates/?product=data-explorer'

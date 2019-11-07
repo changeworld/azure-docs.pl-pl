@@ -97,6 +97,8 @@
           href: stream-analytics-power-bi-dashboard.md
         - name: Zatrzymywanie lub usuwanie zadania
           href: stream-analytics-clean-up-your-job.md
+        - name: Kopiowanie lub tworzenie kopii zapasowej zadania
+          href: copy-job.md
         - name: Parowanie zadań w celu zwiększenia niezawodności
           href: stream-analytics-job-reliability.md
         - name: Uwierzytelnianie przy użyciu tożsamości zarządzanej — dane wyjściowe usługi ADLS Gen 1

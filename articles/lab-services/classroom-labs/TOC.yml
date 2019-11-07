@@ -52,6 +52,8 @@
       items:
         - name: Tworzenie laboratoriów na potrzeby zajęć i zarządzanie nimi
           href: how-to-manage-classroom-labs.md
+        - name: Korzystanie z pulpitu nawigacyjnego
+          href: use-dashboard.md
         - name: 'Konfigurowanie, dostosowywanie i publikowanie szablonów'
           href: how-to-create-manage-template.md
         - name: Konfigurowanie puli maszyn wirtualnych i zarządzanie nią
@@ -80,6 +82,8 @@
   items:
     - name: Interfejs API REST
       href: 'https://docs.microsoft.com/rest/api/labservices/'
+    - name: Moduł programu PowerShell Az.LabServices (wersja zapoznawcza)
+      href: reference-powershell-module.md
 - name: Zasoby
   items:
     - name: Aktualizacje platformy Azure

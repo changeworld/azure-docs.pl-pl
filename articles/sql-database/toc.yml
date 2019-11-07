@@ -502,6 +502,8 @@
           href: sql-database-elastic-pool-failover-group-tutorial.md
         - name: Konfigurowanie zabezpieczeń
           href: sql-database-security-tutorial.md
+        - name: Strumieniowe przesyłanie danych za pomocą usługi Stream Analytics
+          href: sql-database-stream-analytics.md
     - name: Pojęcia
       items:
         - name: Zasoby pojedynczej bazy danych
