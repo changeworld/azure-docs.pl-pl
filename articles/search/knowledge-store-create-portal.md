@@ -8,12 +8,12 @@ ms.author: v-lilei
 ms.service: cognitive-search
 ms.topic: quickstart
 ms.date: 11/04/2019
-ms.openlocfilehash: 16dd63e22182dedb4af97c2ef6238e6628778467
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 689b5aa0cd8a5fb310925b2c52baeec6860af0d5
+ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73485175"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73607081"
 ---
 # <a name="quickstart-create-an-azure-cognitive-search-knowledge-store-in-the-azure-portal"></a>Szybki Start: Tworzenie sklepu z bazami danych Azure Wyszukiwanie poznawcze w Azure Portal
 
@@ -87,7 +87,7 @@ W tym kroku kreatora utworzysz zestawu umiejętności z wzbogacaniem umiejętno�
 1. Rozwiń węzeł **Attach Cognitive Services**. Wartość **bezpłatna (ograniczone wzbogacania)** jest domyślnie zaznaczona. Możesz użyć tego zasobu, ponieważ liczba rekordów w HotelReviews-Free. CSV to 19, a ten bezpłatny zasób umożliwia maksymalnie 20 transakcji dziennie.
 1. Rozwiń węzeł **Dodawanie umiejętności poznawczych**.
 1. W obszarze **Nazwa zestawu umiejętności**wprowadź `hotel-reviews-ss`.
-1. W **polu Źródło danych**wybierz pozycję **reviews_text*.
+1. W **polu Źródło danych**wybierz pozycję **reviews_text**.
 1. Aby uzyskać **poziom szczegółowości wzbogacenia**, wybierz pozycję **strony (fragmenty: 5000 znaków).**
 1. Wybierz następujące umiejętności poznawcze:
     + **Wyodrębnianie kluczowych fraz**

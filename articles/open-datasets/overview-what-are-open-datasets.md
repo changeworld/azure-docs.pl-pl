@@ -7,12 +7,12 @@ ms.topic: overview
 author: cjgronlund
 ms.author: cgronlun
 ms.date: 11/04/2019
-ms.openlocfilehash: b8633bd91abc1f336870158f54d75829ed5cf6a0
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
-ms.translationtype: HT
+ms.openlocfilehash: fd5697f9c325dc4ad866c333ce1b20e008ebfa24
+ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73496583"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73606156"
 ---
 # <a name="what-are-azure-open-datasets-and-how-can-you-use-them"></a>Co to są otwarte zestawy danych platformy Azure i jak można z nich korzystać?
 
@@ -25,7 +25,7 @@ Zestawy danych obejmują dane z domeny publicznej na potrzeby pogodowych, spisu,
 ## <a name="curated-prepared-datasets"></a>Nadzorowane, przygotowane zestawy danych
 Nadzorowane otwieranie publicznych zestawów danych w systemie Azure otwartych zestawów danych jest zoptymalizowane pod kątem użycia w przepływach pracy uczenia maszynowego. 
 
-Naukowcy danych często spędzają większością czasu na oczyszczenie i przygotowanie danych do zaawansowanej analizy. Otwarte zestawy danych są kopiowane do chmury platformy Azure i wstępnie przetworzone w celu zaoszczędzenia czasu. W regularnych odstępach czasu dane są pobierane ze źródeł, takich jak połączenie FTP z krajowym administracją oceaniczną i ciśnieniem atmosferycznym (NOAA), przeanalizowane w formacie strukturalnym, a następnie wzbogacone odpowiednio o funkcje, takie jak kod pocztowy lub lokalizacja Najbliższa stacja pogody.
+Naukowcy danych często spędzają większością czasu na oczyszczenie i przygotowanie danych do zaawansowanej analizy. Otwarte zestawy danych są kopiowane do chmury platformy Azure i wstępnie przetworzone w celu zaoszczędzenia czasu. W regularnych odstępach czasu dane są pobierane ze źródeł, takich jak połączenie FTP z krajowym administracją oceaniczną i ciśnieniem atmosferycznym (NOAA). Następnie dane są analizowane w formacie strukturalnym, a następnie wzbogacone odpowiednio o funkcje, takie jak kod pocztowy lub lokalizacja najbliższej stacji pogodowej.
 
 Zestawy danych są współhostowane z obliczeniami w chmurze na platformie Azure, co ułatwia dostęp i manipulowanie.  
 
@@ -57,5 +57,5 @@ Jeśli nie możesz znaleźć żądanych danych, Wyślij do nas wiadomość e-mai
 
 ## <a name="next-steps"></a>Następne kroki
 * [Przykładowy Notes](samples.md)
-* [Samouczek: Modelowanie regresji z danymi o taksówkach](tutorial-opendatasets-automl.md)
+* [Samouczek: Modelowanie regresji z danymi o taksówkach](/azure/machine-learning/service/tutorial-auto-train-models?context=azure/open-datasets/context/open-datasets-context)
 * [Zestaw SDK języka Python dla otwartych zestawów danych](/python/api/azureml-opendatasets/?view=azure-ml-py)

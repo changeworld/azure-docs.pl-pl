@@ -1,6 +1,6 @@
 ---
-title: Wprowadzenie do usługi Data Factory — usługi integracji danych | Microsoft Docs
-description: 'Co to jest Azure Data Factory: usługa integracji danych w chmurze, która służy do aranżacji i automatyzacji przenoszenia i przekształcania danych.'
+title: Wprowadzenie do Data Factory, usługi integracji danych
+description: 'Dowiedz się, czym jest usługa Azure Data Factory: usługa integracji danych w chmurze, która służy do aranżacji i automatyzacji przenoszenia i przekształcania danych.'
 services: data-factory
 documentationcenter: ''
 author: djpmsft
@@ -12,12 +12,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: overview
 ms.date: 01/22/2018
-ms.openlocfilehash: 2e508839cd343820a36cc715ebde0f47c2ac4ab1
-ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
+ms.openlocfilehash: 30578f204ff05443de82015627d67d3d4d357dce
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70139521"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73666798"
 ---
 # <a name="introduction-to-azure-data-factory"></a>Wprowadzenie do usługi Azure Data Factory 
 > [!div class="op_single_selector" title1="Wybierz używaną wersję usługi Data Factory:"]
@@ -92,7 +92,7 @@ Działanie kopiowania w usłudze Data Factory kopiuje dane z magazynu danych źr
 
 Aby uzyskać więcej informacji, zobacz [Move data by using Copy Activity (Przenoszenie danych za pomocą działania kopiowania)](data-factory-data-movement-activities.md).
 
-### <a name="data-transformation-activities"></a>Działania dotyczące przekształcania danych
+### <a name="data-transformation-activities"></a>Działania związane z transformacją danych
 [!INCLUDE [data-factory-transformation-activities](../../../includes/data-factory-transformation-activities.md)]
 
 Aby uzyskać więcej informacji, zobacz [Move data by using Copy Activity (Przenoszenie danych za pomocą działania kopiowania)](data-factory-data-transformation-activities.md).

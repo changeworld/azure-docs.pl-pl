@@ -7,22 +7,22 @@ manager: jeconnoc
 keywords: ''
 ms.service: azure-functions
 ms.topic: overview
-ms.date: 08/31/2019
+ms.date: 11/02/2019
 ms.author: azfuncdf
-ms.openlocfilehash: e3a83730e47686e9d4757f057d2e8da4629fdd7a
-ms.sourcegitcommit: 9dec0358e5da3ceb0d0e9e234615456c850550f6
+ms.openlocfilehash: 1a9ad16d6ecd7e75848ca1ea56e6238ee3b29c2d
+ms.sourcegitcommit: b2fb32ae73b12cf2d180e6e4ffffa13a31aa4c6f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/14/2019
-ms.locfileid: "72312136"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73614962"
 ---
-# <a name="entity-functions-preview"></a>Funkcje jednostki (wersja zapoznawcza)
+# <a name="entity-functions"></a>Funkcje jednostki
 
 Funkcje Entity definiują operacje umożliwiające odczytywanie i aktualizowanie małych fragmentów stanu, znanych jako *jednostek trwałych*. Podobnie jak funkcje programu Orchestrator, funkcje jednostki są funkcjami o specjalnym typie wyzwalacza, *wyzwalaczem jednostki*. W przeciwieństwie do funkcji programu Orchestrator, funkcja Entity Functions zarządza stanem jednostki jawnie, a nie niejawnie reprezentującą stan za pośrednictwem przepływu sterowania.
 Jednostki zapewniają metodę skalowania aplikacji przez dystrybucję pracy w wielu jednostkach, z których każdy ma stanowy rozmiar.
 
 > [!NOTE]
-> Funkcje jednostki i powiązane funkcje są dostępne tylko w Durable Functions 2,0 i nowszych. Funkcje jednostki są obecnie w publicznej wersji zapoznawczej.
+> Funkcje jednostki i powiązane funkcje są dostępne tylko w Durable Functions 2,0 i nowszych.
 
 ## <a name="general-concepts"></a>Pojęcia ogólne
 
@@ -36,7 +36,7 @@ Do jednostek uzyskuje się dostęp za pośrednictwem unikatowego identyfikatora,
 * **Nazwa jednostki**: Nazwa identyfikująca typ jednostki (na przykład "licznik"). Ta nazwa musi być zgodna z nazwą funkcji jednostki implementującej jednostkę. Wielkość liter nie jest uwzględniana.
 * **Klucz jednostki**: ciąg, który jednoznacznie identyfikuje jednostkę między wszystkimi innymi jednostkami o tej samej nazwie (na przykład identyfikator GUID).
 
-Na przykład funkcja jednostki *licznika* może być używana do przechowywania wyników w grze online. Każde wystąpienie gry będzie miało unikatowy identyfikator jednostki, taki jak `@Counter@Game1`, `@Counter@Game2` i tak dalej. Wszystkie operacje przeznaczone dla określonej jednostki wymagają określenia identyfikatora jednostki jako parametru.
+Na przykład funkcja jednostki *licznika* może być używana do przechowywania wyników w grze online. Każde wystąpienie gry będzie miało unikatowy identyfikator jednostki, taki jak `@Counter@Game1`, `@Counter@Game2`i tak dalej. Wszystkie operacje przeznaczone dla określonej jednostki wymagają określenia identyfikatora jednostki jako parametru.
 
 ### <a name="entity-operations"></a>Operacje jednostki ###
 
@@ -58,9 +58,9 @@ Obecnie oferujemy dwa oddzielne interfejsy API do definiowania jednostek.
 
 **Składnia oparta na klasie** , w której jednostki i operacje są reprezentowane przez klasy i metody. Ta składnia daje łatwiejszy do odczytu kod i umożliwia wywoływanie operacji w sposób bezpieczny dla typu. Składnia oparta na klasie jest tylko cienką warstwą na podstawie składni opartej na funkcjach, tak aby obie warianty mogły być używane zamiennie w tej samej aplikacji.
 
-### <a name="example-function-based-syntax"></a>Przykład: Składnia oparta na funkcjach
+### <a name="example-function-based-syntax---c"></a>Przykład: Składnia oparta na funkcjach-C#
 
-Poniższy kod jest przykładem prostej jednostki *licznika* wdrożonej jako funkcja trwała. Ta funkcja definiuje trzy operacje, `add`, `reset` i `get`, z których każda działa na stanie liczby całkowitej.
+Poniższy kod jest przykładem prostej jednostki *licznika* wdrożonej jako funkcja trwała. Ta funkcja definiuje trzy operacje, `add`, `reset`i `get`, z których każda działa na stanie liczby całkowitej.
 
 ```csharp
 [FunctionName("Counter")]
@@ -83,7 +83,7 @@ public static void Counter([EntityTrigger] IDurableEntityContext ctx)
 
 Aby uzyskać więcej informacji na temat składni opartej na funkcjach i korzystania z niej, zobacz [składnia oparta na funkcjach](durable-functions-dotnet-entities.md#function-based-syntax).
 
-### <a name="example-class-based-syntax"></a>Przykład: Składnia oparta na klasie
+### <a name="example-class-based-syntax---c"></a>Przykład: Składnia oparta na klasie —C#
 
 Poniższy przykład jest równoważną implementacją jednostki `Counter` przy użyciu klas i metod.
 
@@ -106,9 +106,48 @@ public class Counter
 }
 ```
 
-Stan tej jednostki jest obiekt typu `Counter`, który zawiera pole przechowujące bieżącą wartość licznika. Aby zachować ten obiekt w magazynie, jest on serializowany i deserializowany przez bibliotekę [JSON.NET](https://www.newtonsoft.com/json) . 
+Stan tej jednostki jest obiektem typu `Counter`, który zawiera pole przechowujące bieżącą wartość licznika. Aby zachować ten obiekt w magazynie, jest on serializowany i deserializowany przez bibliotekę [JSON.NET](https://www.newtonsoft.com/json) . 
 
 Aby uzyskać więcej informacji na temat składni opartej na klasie i korzystania z niej, zobacz [Definiowanie klas jednostek](durable-functions-dotnet-entities.md#defining-entity-classes).
+
+### <a name="example-javascript-entity"></a>Przykład: obiekt JavaScript
+
+Trwałe jednostki są dostępne w języku JavaScript, począwszy od wersji **1.3.0** pakietu `durable-functions` npm. Poniższy kod jest obiektem *licznika* zaimplementowanym jako funkcja trwała zapisywana w języku JavaScript.
+
+**Function. JSON**
+```json
+{
+  "bindings": [
+    {
+      "name": "context",
+      "type": "entityTrigger",
+      "direction": "in"
+    }
+  ],
+  "disabled": false
+}
+```
+
+**index. js**
+```javascript
+const df = require("durable-functions");
+
+module.exports = df.entity(function(context) {
+    const currentValue = context.df.getState(() => 0);
+    switch (context.df.operationName) {
+        case "add":
+            const amount = context.df.getInput();
+            context.df.setState(currentValue + amount);
+            break;
+        case "reset":
+            context.df.setState(0);
+            break;
+        case "get":
+            context.df.return(currentValue);
+            break;
+    }
+});
+```
 
 ## <a name="accessing-entities"></a>Uzyskiwanie dostępu do jednostek
 
@@ -145,6 +184,16 @@ public static Task Run(
 }
 ```
 
+```javascript
+const df = require("durable-functions");
+
+module.exports = async function (context) {
+    const client = df.getClient(context);
+    const entityId = new df.EntityId("Counter", "myCounter");
+    await context.df.signalEntity(entityId, "add", 1);
+};
+```
+
 Termin " *sygnał* " oznacza, że wywołanie interfejsu API jednostki jest jednokierunkowe i asynchroniczne. Nie jest możliwe, aby *Funkcja klienta* wiedziała, kiedy jednostka przetworzyła operację. Ponadto funkcja klienta nie może obserwować żadnych wartości wyników ani wyjątków. 
 
 ### <a name="example-client-reads-an-entity-state"></a>Przykład: klient odczytuje stan jednostki
@@ -163,6 +212,16 @@ public static async Task<HttpResponseMessage> Run(
 }
 ```
 
+```javascript
+const df = require("durable-functions");
+
+module.exports = async function (context) {
+    const client = df.getClient(context);
+    const entityId = new df.EntityId("Counter", "myCounter");
+    return context.df.readEntityState(entityId);
+};
+```
+
 Zapytania o stan jednostki są wysyłane do magazynu trwałego śledzenia i zwracają ostatnio *utrwalony* stan jednostki. Ten stan jest zawsze "przydzielony", oznacza to, że nigdy nie jest tymczasowy stan pośredni przyjęty w trakcie wykonywania operacji. Jednak jest możliwe, że ten stan jest nieodświeżony w porównaniu do stanu w pamięci obiektu. Tylko aranżacje mogą odczytywać stan w pamięci jednostki, zgodnie z opisem w następnej sekcji.
 
 ### <a name="example-orchestration-signals-and-calls-an-entity"></a>Przykład: sygnały aranżacji i wywołania jednostki
@@ -176,7 +235,7 @@ public static async Task Run(
 {
     var entityId = new EntityId(nameof(Counter), "myCounter");
 
-   // Two-way call to the entity which returns a value - awaits the response
+    // Two-way call to the entity which returns a value - awaits the response
     int currentValue = await context.CallEntityAsync<int>(entityId, "Get");
     if (currentValue < 10)
     {
@@ -184,6 +243,21 @@ public static async Task Run(
         context.SignalEntity(entityId, "Add", 1);
     }
 }
+```
+
+```javascript
+const df = require("durable-functions");
+
+module.exports = df.orchestrator(function*(context){
+    const entityId = new df.EntityId("Counter", "myCounter");
+
+    // Two-way call to the entity which returns a value - awaits the response
+    currentValue = yield context.df.callEntity(entityId, "get");
+    if (currentValue < 10) {
+        // One-way signal to the entity which updates the value - does not await a response
+        yield context.df.signalEntity(entityId, "add", 1);
+    }
+});
 ```
 
 Tylko aranżacje mogą wywołać jednostki i uzyskać odpowiedź, co może być wartością zwracaną lub wyjątkiem. Funkcje klienta korzystające z [powiązania klienta](durable-functions-bindings.md#entity-client) mogą jedynie *sygnalizować* jednostki.
@@ -198,87 +272,38 @@ Na przykład można zmodyfikować powyższy przykład jednostki licznika, aby wy
 
 ```csharp
    case "add":
+        var currentValue = ctx.GetState<int>();
         var amount = ctx.GetInput<int>();
         if (currentValue < 100 && currentValue + amount >= 100)
         {
             ctx.SignalEntity(new EntityId("MonitorEntity", ""), "milestone-reached", ctx.EntityKey);
         }
-        currentValue += amount;
+
+        ctx.SetState(currentValue + amount);
         break;
 ```
 
-W poniższym fragmencie kodu pokazano, jak dołączyć wstrzykiwaną usługę do klasy Entity.
-
-```csharp
-public class HttpEntity
-{
-    private readonly HttpClient client;
-
-    public HttpEntity(IHttpClientFactory factory)
-    {
-        this.client = factory.CreateClient();
-    }
-
-    public async Task<int> GetAsync(string url)
-    {
-        using (var response = await this.client.GetAsync(url))
-        {
-            return (int)response.StatusCode;
+```javascript
+    case "add":
+        const amount = context.df.getInput();
+        if (currentValue < 100 && currentValue + amount >= 100) {
+            const entityId = new df.EntityId("MonitorEntity", "");
+            context.df.signalEntity(entityId, "milestone-reached", context.df.instanceId);
         }
-    }
-
-    // The function entry point must be declared static
-    [FunctionName(nameof(HttpEntity))]
-    public static Task Run([EntityTrigger] IDurableEntityContext ctx)
-        => ctx.DispatchAsync<HttpEntity>();
-}
+        context.df.setState(currentValue + amount);
+        break;
 ```
-
-> [!NOTE]
-> W przeciwieństwie do używania iniekcji konstruktora w zwykłych Azure Functions .NET, Metoda punktu wejścia funkcji dla jednostek opartych na klasie *musi* być zadeklarowana `static`. Deklarowanie niestatycznego punktu wejścia funkcji może spowodować konflikty między normalnym inicjatorem obiektu Azure Functions i inicjatorem obiektów trwałe jednostki.
-
-### <a name="bindings-in-entity-classes-net"></a>Powiązania w klasach jednostek (.NET)
-
-W przeciwieństwie do funkcji regularnych, metody klasy jednostek nie mają bezpośredniego dostępu do powiązań wejściowych i wyjściowych. Zamiast tego, dane wiążące muszą być przechwytywane w deklaracji funkcji punktu wejścia, a następnie przekazywać do metody `DispatchAsync<T>`. Wszystkie obiekty przenoszone do `DispatchAsync<T>` będą automatycznie przesyłane do konstruktora klasy jednostki jako argument.
-
-Poniższy przykład pokazuje, jak odwołanie `CloudBlobContainer` z [powiązania danych wejściowych obiektu BLOB](../functions-bindings-storage-blob.md#input) może zostać udostępnione dla jednostki opartej na klasie.
-
-```csharp
-public class BlobBackedEntity
-{
-    private readonly CloudBlobContainer container;
-
-    public BlobBackedEntity(CloudBlobContainer container)
-    {
-        this.container = container;
-    }
-
-    // ... entity methods can use this.container in their implementations ...
-    
-    [FunctionName(nameof(BlobBackedEntity))]
-    public static Task Run(
-        [EntityTrigger] IDurableEntityContext context,
-        [Blob("my-container", FileAccess.Read)] CloudBlobContainer container)
-    {
-        // passing the binding object as a parameter makes it available to the
-        // entity class constructor
-        return context.DispatchAsync<BlobBackedEntity>(container);
-    }
-}
-```
-
-Aby uzyskać więcej informacji na temat powiązań w Azure Functions, zapoznaj się z dokumentacją [Azure Functions wyzwalacze i powiązania](../functions-triggers-bindings.md) .
 
 ## <a name="entity-coordination"></a>Koordynacja jednostek
 
 Mogą wystąpić sytuacje, w których trzeba skoordynować operacje w wielu jednostkach. Na przykład w aplikacji bankowej mogą istnieć jednostki reprezentujące poszczególne konta bankowe. W przypadku przenoszenia funduszy z jednego konta do innego należy upewnić się, że konto _źródłowe_ ma wystarczające środki i że aktualizacje zarówno dla konta _źródłowego_ , jak i _docelowego_ są wykonywane w sposób spójny.
 
-### <a name="example-transfer-funds"></a>Przykład: transfer środków
+### <a name="example-transfer-funds-c"></a>Przykład: transfer funduszy (C#)
 
-Poniższy przykładowy kod transferuje fundusze między dwiema jednostkami _kont_ przy użyciu funkcji programu Orchestrator. Koordynacja aktualizacji jednostek wymaga użycia metody `LockAsync` do utworzenia _sekcji krytycznej_ w aranżacji:
+Poniższy przykładowy kod transferuje fundusze między dwiema jednostkami _kont_ przy użyciu funkcji programu Orchestrator. Koordynacja aktualizacji jednostek wymaga użycia metody `LockAsync`, aby utworzyć _sekcję krytyczną_ w aranżacji:
 
 > [!NOTE]
-> Dla uproszczenia w tym przykładzie użyto zdefiniowanej wcześniej jednostki `Counter`. Jednak w rzeczywistej aplikacji lepiej jest zdefiniować bardziej szczegółową jednostkę `BankAccount`.
+> Dla uproszczenia w tym przykładzie użyto wcześniej zdefiniowanej jednostki `Counter`. Jednak w rzeczywistej aplikacji lepiej jest zdefiniować bardziej szczegółową jednostkę `BankAccount`.
 
 ```csharp
 // This is a method called by an orchestrator function
@@ -320,16 +345,16 @@ public static async Task<bool> TransferFundsAsync(
 }
 ```
 
-W programie .NET `LockAsync` zwraca `IDisposable`, które kończą sekcję krytyczną po usunięciu. Ten @no__t wynik-0 może być używany razem z blokiem `using` w celu uzyskania składniowej reprezentacji sekcji krytycznej.
+W programie .NET `LockAsync` zwraca `IDisposable`, który powoduje zakończenie sekcji krytycznej po usunięciu. Ten `IDisposable` wynik może być używany razem z blokiem `using`, aby uzyskać składniową reprezentację sekcji krytycznej.
 
-W poprzednim przykładzie funkcja programu Orchestrator przesłała fundusze z jednostki _źródłowej_ do jednostki _docelowej_ . Metoda `LockAsync` zablokowała zarówno jednostkę _źródłową_ , jak i _docelową_ . Ten blok zapewnia, że żaden inny klient nie może wykonać zapytania lub zmodyfikować stanu jednego z kont do momentu, gdy logika aranżacji nie zakończyła _sekcji krytycznej_ na końcu instrukcji `using`. Skutecznie uniemożliwia to przekroczenie możliwości przeprojektowania z konta _źródłowego_ .
+W poprzednim przykładzie funkcja programu Orchestrator przesłała fundusze z jednostki _źródłowej_ do jednostki _docelowej_ . Metoda `LockAsync` zablokowana zarówno dla jednostki konta _źródłowego_ , jak i _docelowego_ . To blokowanie zapewnia, że żaden inny klient nie może wykonać zapytania lub zmodyfikować stanu jednego z kont, dopóki logika aranżacji nie zakończyła _sekcji krytycznej_ na końcu instrukcji `using`. Takie zachowanie zapobiega możliwości przekroczenia liczby projektów z konta _źródłowego_ .
 
 > [!NOTE] 
 > Gdy aranżacja kończy się (zwykle lub z powodu błędu), wszelkie krytyczne sekcje w toku są niejawnie zakończone i wszystkie blokady są zwalniane.
 
 ### <a name="critical-section-behavior"></a>Zachowanie sekcji krytycznej
 
-Metoda `LockAsync` tworzy _sekcję krytyczną_ w aranżacji. Te _krytyczne sekcje_ uniemożliwiają innym aranżacjom wprowadzanie nakładających się zmian do określonego zestawu jednostek. Wewnętrznie interfejs API `LockAsync` wysyła operacje "Lock" do jednostek i zwraca, gdy odbierze komunikat odpowiedzi "lockd" z każdej z tych samych jednostek. *Blokady* i *odblokowywanie* to wbudowane operacje obsługiwane przez wszystkie jednostki.
+Metoda `LockAsync` tworzy _sekcję krytyczną_ w aranżacji. Te _krytyczne sekcje_ uniemożliwiają innym aranżacjom wprowadzanie nakładających się zmian do określonego zestawu jednostek. Wewnętrznie interfejs API `LockAsync` wysyła do jednostek operacje "Lock" i zwraca, gdy odbierze komunikat odpowiedzi "lockd" z każdej z tych samych jednostek. *Blokady* i *odblokowywanie* to wbudowane operacje obsługiwane przez wszystkie jednostki.
 
 Nie można wykonywać operacji z innych klientów w jednostce, gdy jest ona w stanie zablokowanym. Takie zachowanie zapewnia, że tylko jedno wystąpienie aranżacji może blokować jednostkę jednocześnie. Jeśli obiekt wywołujący podejmie próbę wywołania operacji na jednostce, gdy jest ona zablokowana przez aranżację, ta operacja zostanie umieszczona w *kolejce oczekujących operacji*. Żadne oczekujące operacje nie zostaną przetworzone do momentu, gdy organizacja holdingowa zwolni blokadę.
 
@@ -350,7 +375,7 @@ W przeciwieństwie do elementów podstawowych blokowania niskiego poziomu w wię
 * Sekcje krytyczne nie mogą wywoływać tej samej jednostki przy użyciu wielu wywołań równoległych.
 * Sekcje krytyczne mogą sygnalizować tylko jednostki, które nie zostały zablokowane.
 
-Wszelkie naruszenia tych reguł powodują wystąpienie błędu czasu wykonywania (takie jak `LockingRulesViolationException` w środowisku .NET), które zawiera komunikat z wyjaśnieniem, jaka reguła została przerwana.
+Wszelkie naruszenia tych reguł powodują wystąpienie błędu czasu wykonywania (na przykład `LockingRulesViolationException` w programie .NET), które zawiera komunikat z wyjaśnieniem, jaka reguła została przerwana.
 
 ## <a name="comparison-with-virtual-actors"></a>Porównanie z aktorami wirtualnymi
 

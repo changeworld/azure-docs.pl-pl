@@ -1,32 +1,38 @@
 ---
-title: 'Szybki Start: uruchamianie aplikacji przy użyciu chmury wiosennej platformy Azure Maven'
+title: 'Szybki Start: uruchamianie aplikacji przy użyciu usługi Maven — chmura Wiosenna Azure'
 description: Uruchamianie przykładowej aplikacji przy użyciu Maven
-services: spring-cloud
-author: v-vasuke
-manager: jeconnoc
-editor: ''
+author: jpconnock
 ms.service: spring-cloud
 ms.topic: quickstart
-ms.date: 10/05/2019
-ms.author: v-vasuke
-ms.openlocfilehash: ce07d43a289cf527664b120dd832cf832fb2b05e
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
-ms.translationtype: MT
+ms.date: 11/04/2019
+ms.author: jeconnoc
+ms.openlocfilehash: 440dac3ff26c838458f91e453e2c62fc0953d4f6
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73161401"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73686190"
 ---
-# <a name="quickstart-launch-an-azure-spring-cloud-app-by-using-the-maven-plug-in"></a>Szybki Start: uruchamianie aplikacji w chmurze ze sprężyną na platformie Azure przy użyciu wtyczki Maven
+# <a name="quickstart-launch-an-azure-spring-cloud-app-using-the-maven-plug-in"></a>Szybki Start: uruchamianie aplikacji w chmurze ze sprężyną na platformie Azure przy użyciu wtyczki Maven
 
-Dzięki usłudze Azure wiosny Cloud Maven można łatwo tworzyć i aktualizować aplikacje usług w chmurze platformy Azure. Dzięki wstępnemu definiowaniu konfiguracji można wdrażać aplikacje w istniejącej usłudze w chmurze platformy Azure. W tym artykule przedstawiono tę funkcję za pomocą przykładowej aplikacji o nazwie PiggyMetrics.
+Korzystając z wtyczki usługi Azure wiosennej w chmurze Maven, możesz łatwo tworzyć i aktualizować aplikacje w chmurze platformy Azure. Dzięki wstępnemu definiowaniu konfiguracji można wdrażać aplikacje w istniejącej usłudze w chmurze platformy Azure. W tym artykule przedstawiono tę funkcję za pomocą przykładowej aplikacji o nazwie PiggyMetrics.
+
+Postępując zgodnie z tym przewodnikiem Szybki Start, dowiesz się, jak:
+
+> [!div class="checklist"]
+> * Inicjowanie obsługi administracyjnej wystąpienia usługi
+> * Konfigurowanie serwera konfiguracji dla wystąpienia
+> * Lokalne klonowanie i kompilowanie aplikacji mikrousług
+> * Wdróż każdą mikrousługę
+> * Przypisywanie publicznego punktu końcowego aplikacji
 
 >[!Note]
-> Przed rozpoczęciem pracy z tym przewodnikiem Szybki Start upewnij się, że Twoja subskrypcja platformy Azure ma dostęp do chmury wiosennej platformy Azure. Jako usługa w wersji zapoznawczej zachęcamy Cię do skontaktowania się z nami, aby można było dodać subskrypcję do listy dozwolonych. Jeśli chcesz poznać możliwości chmury Azure wiosny, Wypełnij i prześlij [chmurę Azure wiosennej (prywatna wersja zapoznawcza) — forma zainteresowania](https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbR-LA2geqX-ZLhi-Ado1LD3tUNDk2VFpGUzYwVEJNVkhLRlcwNkZFUFZEUS4u). Chociaż chmura Wiosenna platformy Azure jest dostępna w wersji zapoznawczej, firma Microsoft oferuje ograniczoną pomoc techniczną bez umowy SLA.  Aby uzyskać więcej informacji na temat pomocy technicznej w przypadku wersji zapoznawczych, zapoznaj się z tematem [często zadawanych pytań](https://azure.microsoft.com/support/faq/).
+> > Chmura Wiosenna platformy Azure jest obecnie oferowana jako publiczna wersja zapoznawcza. Oferty publicznej wersji zapoznawczej umożliwiają klientom eksperymentowanie z nowymi funkcjami przed ich oficjalną wersją.  Funkcje i usługi publicznej wersji zapoznawczej nie są przeznaczone do użytku produkcyjnego.  Aby uzyskać więcej informacji na temat pomocy technicznej w przypadku wersji zapoznawczych, Zapisz [support Request](https://docs.microsoft.com/azure/azure-supportability/how-to-create-azure-support-request).
 
 >[!TIP]
 > Azure Cloud Shell to bezpłatna interaktywna powłoka, której można użyć do uruchomienia poleceń z tego artykułu. Ma ona popularne narzędzia platformy Azure preinstalowane, w tym najnowsze wersje narzędzia Git, zestawu Java Development Kit (JDK), Maven i interfejsu wiersza polecenia platformy Azure. Jeśli logujesz się do subskrypcji platformy Azure, uruchom [Azure Cloud Shell](https://shell.azure.com). Aby uzyskać więcej informacji, zobacz [omówienie Azure Cloud Shell](../cloud-shell/overview.md).
 
-Aby ukończyć ten przewodnik Szybki Start:
+Aby ukończyć ten przewodnik Szybki start:
 
 1. [Zainstaluj oprogramowanie Git](https://git-scm.com/).
 2. [Zainstaluj program JDK 8](https://docs.microsoft.com/java/azure/jdk/?view=azure-java-stable).
@@ -39,32 +45,39 @@ Aby ukończyć ten przewodnik Szybki Start:
 Zainstaluj rozszerzenie chmury wiosennej platformy Azure dla interfejsu wiersza polecenia platformy Azure przy użyciu następującego polecenia:
 
 ```Azure CLI
-az extension add -y --source https://azureclitemp.blob.core.windows.net/spring-cloud/spring_cloud-0.1.0-py2.py3-none-any.whl
+az extension add --name spring-cloud
 ```
 
 ## <a name="provision-a-service-instance-on-the-azure-portal"></a>Inicjowanie obsługi administracyjnej wystąpienia usługi na Azure Portal
 
-1. W przeglądarce sieci Web Otwórz [Azure Portal](https://portal.azure.com)i zaloguj się na swoim koncie.
+1. W przeglądarce sieci Web Otwórz [ten link do chmury Azure wiosny w Azure Portal](https://ms.portal.azure.com/#create/Microsoft.AppPlatform)i zaloguj się na swoim koncie.
 
-1. Wyszukaj, a następnie wybierz pozycję **chmura sprężynowa platformy Azure**. 
-1. Na stronie Przegląd wybierz pozycję **Utwórz**, a następnie wykonaj następujące czynności:  
+1. Wybierz pozycję **Utwórz** na stronie **Przegląd** , aby otworzyć okno dialogowe tworzenia.
 
-    a. W polu **nazwa usługi** Określ nazwę wystąpienia usługi. Nazwa musi mieć długość od 4 do 32 znaków i może zawierać tylko małe litery, cyfry i łączniki. Pierwszy znak nazwy usługi musi być literą, a ostatni znak musi być literą lub cyfrą.  
+1. Podaj **szczegóły projektu** dla przykładowej aplikacji w następujący sposób:
 
-    b. Z listy rozwijanej **subskrypcja** wybierz subskrypcję, dla której chcesz naliczać opłaty za ten zasób. Upewnij się, że ta subskrypcja została dodana do listy dozwolonych w chmurze Azure wiosennej.  
+    1. Wybierz **subskrypcję** , z którą aplikacja zostanie skojarzona.
+    1. Wybierz lub Utwórz grupę zasobów dla aplikacji. Zalecamy utworzenie nowej grupy zasobów.  W poniższym przykładzie pokazano nową grupę zasobów o nazwie `myspringservice`.
+    1. Podaj nazwę nowej usługi w chmurze Azure wiosennej.  Nazwa musi mieć długość od 4 do 32 znaków i może zawierać tylko małe litery, cyfry i łączniki. Pierwszy znak nazwy usługi musi być literą, a ostatni znak musi być literą lub cyfrą.  Usługa w poniższym przykładzie ma nazwę `contosospringcloud`.
+    1. Wybierz lokalizację aplikacji z dostępnych opcji.  W tym przykładzie wybieramy `East US`.
+    1. Wybierz pozycję **Przegląd + Utwórz** , aby przejrzeć Podsumowanie nowej usługi.  Jeśli wszystko wygląda poprawnie, wybierz pozycję **Utwórz**.
 
-    d. W polu **Grupa zasobów** Utwórz nową grupę zasobów. Najlepszym rozwiązaniem jest utworzenie grup zasobów dla nowych zasobów.  
+    > [!div class="mx-imgBorder"]
+    > ![wybierz pozycję Recenzja + Utwórz](media/maven-qs-review-create.jpg)
 
-    d. Z listy rozwijanej **Lokalizacja** wybierz lokalizację wystąpienia usługi. Obecnie obsługiwane lokalizacje to Wschodnie stany USA, zachodnie stany USA 2, Europa Zachodnia i Azja Południowo-Wschodnia.
-    
-Wdrożenie usługi wymaga około 5 minut. Po wdrożeniu usługi zostanie wyświetlona strona **przeglądu** wystąpienia usługi.
+Wdrożenie usługi wymaga około 5 minut. Po wdrożeniu usługi wybierz pozycję **Przejdź do zasobu** , a zostanie wyświetlona strona **Omówienie** wystąpienia usługi.
 
 ## <a name="set-up-your-configuration-server"></a>Konfigurowanie serwera konfiguracji
 
 1. Na stronie **Przegląd** usługi wybierz opcję **serwer konfiguracji**.
 1. W sekcji **repozytorium domyślne** Ustaw **identyfikator URI** na **https://github.com/Azure-Samples/piggymetrics** , ustaw wartość **etykieta** na **config**, a następnie wybierz pozycję **Zastosuj** , aby zapisać zmiany.
 
+    > [!div class="mx-imgBorder"]
+    > ![zdefiniować i zastosować ustawienia konfiguracji](media/maven-qs-apply-config.jpg)
+
 ## <a name="clone-and-build-the-sample-application-repository"></a>Klonowanie i kompilowanie przykładowego repozytorium aplikacji
+
+1. Uruchom [Azure Cloud Shell](https://shell.azure.com).
 
 1. Sklonuj repozytorium git, uruchamiając następujące polecenie:
 
@@ -75,37 +88,19 @@ Wdrożenie usługi wymaga około 5 minut. Po wdrożeniu usługi zostanie wyświe
 1. Zmień katalog i skompiluj projekt, uruchamiając następujące polecenie:
 
     ```azurecli
-    cd PiggyMetrics
+    cd piggymetrics
     mvn clean package -DskipTests
     ```
 
-## <a name="generate-and-deploy-the-azure-spring-cloud-configuration"></a>Generowanie i wdrażanie konfiguracji chmury wiosennej na platformie Azure
+## <a name="generate-configurations-and-deploy-to-the-azure-spring-cloud"></a>Generuj konfiguracje i wdrażaj je w chmurze Azure wiosennej
 
-1. Aby umożliwić Maven współpracują z chmurą Azure wiosną, Dodaj następujący kod do pliku *pliku pom. XML* lub *Settings. XML* .
-
-    ```xml
-    <pluginRepositories>
-      <pluginRepository>
-        <id>maven.snapshots</id>
-        <name>Maven Central Snapshot Repository</name>
-        <url>https://oss.sonatype.org/content/repositories/snapshots/</url>
-        <releases>
-          <enabled>false</enabled>
-        </releases>
-        <snapshots>
-          <enabled>true</enabled>
-        </snapshots>
-      </pluginRepository>
-    </pluginRepositories>
-    ```
-
-1. Wygeneruj konfigurację, uruchamiając następujące polecenie:
+1. Wygeneruj konfiguracje, uruchamiając następujące polecenie w folderze głównym PiggyMetrics zawierającym pliku pom nadrzędny:
 
     ```azurecli
-    mvn com.microsoft.azure:azure-spring-cloud-maven-plugin:0.1.0-SNAPSHOT:config
+    mvn com.microsoft.azure:azure-spring-cloud-maven-plugin:1.0.0:config
     ```
 
-    a. Wybierz moduły `gateway`, `auth-service` i `account-service`.
+    a. Wybierz moduły `gateway`,`auth-service`i `account-service`.
 
     b. Wybierz subskrypcję i klaster usługi w chmurze Azure wiosennej.
 
@@ -113,17 +108,18 @@ Wdrożenie usługi wymaga około 5 minut. Po wdrożeniu usługi zostanie wyświe
     
     d. Potwierdź konfigurację.
 
-1. Wdróż aplikacje za pomocą następującego polecenia:
+1. PLIKU pom zawiera teraz zależności i konfiguracje wtyczki. Wdróż aplikacje za pomocą następującego polecenia:
 
    ```azurecli
-   mvn com.microsoft.azure:azure-spring-cloud-maven-plugin:0.1.0-SNAPSHOT:deploy
+   mvn azure-spring-cloud:deploy
    ```
 
-1. Dostęp do usługi PiggyMetrics można uzyskać przy użyciu adresu URL podanego w danych wyjściowych poprzedniego polecenia.
+1. Po zakończeniu wdrażania możesz uzyskać dostęp do PiggyMetrics przy użyciu adresu URL podanego w danych wyjściowych z poprzedniego polecenia.
 
 ## <a name="next-steps"></a>Następne kroki
 
 W tym przewodniku szybki start wdrożono aplikację w chmurze ze sprężyną z repozytorium Maven. Aby dowiedzieć się więcej na temat chmury Azure wiosennej, przejdź do samouczka dotyczącego przygotowywania aplikacji do wdrożenia.
 
 > [!div class="nextstepaction"]
-> [Przygotowywanie aplikacji w chmurze platformy Azure pod kątem wdrożenia](spring-cloud-tutorial-prepare-app-deployment.md)
+> [Przygotuj aplikację w chmurze platformy Azure do wdrożenia](spring-cloud-tutorial-prepare-app-deployment.md)
+> [Dowiedz się więcej o wtyczkach Maven dla platformy Azure](https://github.com/microsoft/azure-maven-plugin)

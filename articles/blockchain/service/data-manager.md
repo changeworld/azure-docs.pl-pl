@@ -5,15 +5,15 @@ services: azure-blockchain
 author: PatAltimore
 ms.author: patricka
 ms.date: 11/04/2019
-ms.topic: article
+ms.topic: overview
 ms.service: azure-blockchain
 ms.reviewer: chroyal
-ms.openlocfilehash: e5fc38767d6127e341e257c23411d23b739d0362
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
-ms.translationtype: HT
+ms.openlocfilehash: 94534d9b98f6c93d1d439775d3269df71f587ca4
+ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 11/04/2019
-ms.locfileid: "73518244"
+ms.locfileid: "73577484"
 ---
 # <a name="what-is-blockchain-data-manager-for-azure-blockchain-service"></a>Co to jest łańcucha bloków Data Manager dla usługi Azure łańcucha bloków Service?
 
@@ -29,7 +29,7 @@ W większości scenariuszy łańcucha bloków w przedsiębiorstwie, Księga ła�
 
 Każde wystąpienie Data Manager łańcucha bloków nawiązuje połączenie z jednym węzłem transakcji elementu członkowskiego usługi Azure łańcucha bloków. Tylko użytkownicy z dostępem do węzła transakcji mogą utworzyć połączenie zapewniające odpowiednią kontrolę dostępu do danych klienta. Wystąpienie Data Manager łańcucha bloków niezawodnie przechwytuje wszystkie nieprzetworzone dane nieprzetworzonych danych i nieprzetworzonych transakcji z węzła transakcji oraz może skalować do obsługi obciążeń przedsiębiorstwa.
 
-## <a name="transform"></a>Przekształcanie
+## <a name="transform"></a>Przekształcaj
 
 Za pomocą łańcucha bloków Data Manager można zdekodować zdarzenie i stan właściwości przez skonfigurowanie aplikacji inteligentnych kontraktów w łańcucha bloków Data Manager. Aby dodać kontrakt inteligentny, należy podać ABI kontraktu i kod bajtowy. Łańcucha bloków Data Manager używa artefaktów kontraktu inteligentnego do dekodowania i odnajdywania adresów kontraktu. Po dodaniu aplikacji łańcucha bloków do wystąpienia łańcucha bloków Data Manager dynamicznie odnajduje adres kontraktu inteligentnego w przypadku wdrożenia kontraktu inteligentnego w ramach konsorcjum i wysyła zdekodowane zdarzenie i stan właściwości do skonfigurowanych miejsc docelowych.
 

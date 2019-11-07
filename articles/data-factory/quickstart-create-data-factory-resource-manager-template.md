@@ -1,5 +1,5 @@
 ---
-title: Tworzenie fabryki danych na platformie Azure przy użyciu szablonu usługi Resource Manager | Microsoft Docs
+title: Tworzenie fabryki danych Azure przy użyciu szablonu Menedżer zasobów
 description: W tym samouczku przedstawiono tworzenie przykładowego potoku usługi Azure Data Factory przy użyciu szablonu usługi Azure Resource Manager.
 services: data-factory
 documentationcenter: ''
@@ -11,12 +11,12 @@ ms.date: 02/20/2019
 author: djpmsft
 ms.author: daperlov
 manager: craigg
-ms.openlocfilehash: 8766ff461227a749a432771dfe7dbe96a291109a
-ms.sourcegitcommit: a819209a7c293078ff5377dee266fa76fd20902c
+ms.openlocfilehash: 6bba764060c243417711205083bf02f84a68fed1
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/16/2019
-ms.locfileid: "71008704"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73684512"
 ---
 # <a name="tutorial-create-an-azure-data-factory-using-azure-resource-manager-template"></a>Samouczek: tworzenie fabryki danych na platformie Azure przy użyciu szablonu usługi Azure Resource Manager
 
@@ -24,20 +24,20 @@ ms.locfileid: "71008704"
 > * [Wersja 1](v1/data-factory-build-your-first-pipeline-using-arm.md)
 > * [Bieżąca wersja](quickstart-create-data-factory-resource-manager-template.md)
 
-W tym przewodniku Szybki start wyjaśniono, jak skorzystać z szablonu usługi Azure Resource Manager w celu utworzenia fabryki danych na platformie Azure. Potok tworzony w tej fabryce danych **kopiuje** dane z jednego folderu do innego folderu w usłudze Azure Blob Storage. Aby zapoznać się z samouczkiem dotyczącym **przekształcania** danych przy użyciu usługi Azure Data Factory, zobacz [Tutorial: Transform data using Spark](transform-data-using-spark.md) (Samouczek: przekształcanie danych przy użyciu platformy Spark).
+W tym przewodniku Szybki start wyjaśniono, jak skorzystać z szablonu usługi Azure Resource Manager w celu utworzenia fabryki danych na platformie Azure. Potok tworzony w tej fabryce danych **kopiuje** dane z jednego folderu do innego folderu w usłudze Azure Blob Storage. Aby zapoznać się z samouczkiem dotyczącym **przekształcania** danych za pomocą usługi Azure Data Factory, zobacz [Tutorial: Transform data using Spark (Samouczek: Przekształcanie danych przy użyciu usługi Spark)](transform-data-using-spark.md).
 
 > [!NOTE]
 > Ten artykuł nie zawiera szczegółowego wprowadzenia do usługi Data Factory. Aby zapoznać się z wprowadzeniem do usługi Azure Data Factory, zobacz [Wprowadzenie do usługi Azure Data Factory](introduction.md).
 
 [!INCLUDE [data-factory-quickstart-prerequisites](../../includes/data-factory-quickstart-prerequisites.md)]
 
-### <a name="azure-powershell"></a>Azure PowerShell
+### <a name="azure-powershell"></a>Program Azure PowerShell
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 Zainstaluj najnowsze moduły programu Azure PowerShell, wykonując instrukcje podane w temacie [Instalowanie i konfigurowanie programu Azure PowerShell](/powershell/azure/install-Az-ps).
 
-## <a name="resource-manager-templates"></a>Szablony usługi Resource Manager
+## <a name="resource-manager-templates"></a>Szablony Menedżera zasobów
 
 Ogólne informacje na temat szablonów usługi Azure Resource Manager zawiera temat [Tworzenie szablonów usługi Azure Resource Manager](../azure-resource-manager/resource-group-authoring-templates.md).
 
@@ -288,7 +288,7 @@ Utwórz plik JSON o nazwie **ADFTutorialARM-Parameters.json** zawierający param
 
 > [!IMPORTANT]
 > - Określ nazwę i klucz konta usługi Azure Storage w pliku parametrów za pomocą parametrów **storageAccountName** i **storageAccountKey**. W tym magazynie obiektów blob platformy Azure utworzono kontener adftutorial i przekazano przykładowy plik (emp.txt) do folderu wejściowego.
-> - Za pomocą parametru **dataFactoryName** określ nazwę fabryki danych unikatową w skali globalnej, Na przykład: ARMTutorialFactoryJohnDoe11282017.
+> - Za pomocą parametru **dataFactoryName** określ nazwę fabryki danych unikatową w skali globalnej, na przykład: ARMTutorialFactoryJohnDoe11282017.
 > - Za pomocą parametru **triggerStartTime** podaj bieżący dzień w formacie: `2019-09-08T00:00:00`.
 > - Za pomocą parametru **triggerEndTime** podaj kolejny dzień w formacie: `2019-09-09T00:00:00`. Możesz również sprawdzić bieżącą godzinę w strefie UTC i określić czas zakończenia za godzinę lub dwie. Jeśli na przykład bieżąca godzina w strefie UTC to 1:32, podaj wartość `2019-09-09:03:00:00` jako czas zakończenia. W tym przypadku wyzwalacz uruchomi potok dwukrotnie (o godz. 2:00 i 3:00).
 
@@ -435,16 +435,16 @@ Wdrożony wyzwalacz jest w stanie zatrzymanym. Jednym z metod uruchomienia wyzwa
 
 3. Na stronie Fabryka danych kliknij kafelek **tworzenie & monitor** .
 
-4. **Na stronie Wprowadzenie** wybierz **kartę Monitorowanie**.  ![Monitorowanie uruchomienia potoku](media/doc-common-process/get-started-page-monitor-button.png)
+4. **Na stronie Wprowadzenie** wybierz **kartę Monitorowanie**.  ![uruchomienie potoku monitorowania](media/doc-common-process/get-started-page-monitor-button.png)
 
     > [!IMPORTANT]
-    > Wyświetlane uruchomienia potoku są ustawione tylko na pełne godziny (na przykład: 4:00, 5:00, 6:00 itp.). Kliknij przycisk **Odśwież** na pasku narzędzi, aby odświeżyć listę po upływie kolejnej godziny.
+    > Wyświetlane uruchomienia potoku są ustawione tylko na pełne godziny (na przykład: 4:00, 5:00, 6:00 itd.). Kliknij przycisk **Odśwież** na pasku narzędzi, aby odświeżyć listę po upływie kolejnej godziny.
 
 5. Kliknij link **Wyświetl uruchomienia działania** w kolumnie **Akcje** .
 
     ![Link akcji potoku](media/quickstart-create-data-factory-resource-manager-template/pipeline-actions-link.png)
 
-6. Zostaną wyświetlone uruchomienia działania skojarzone z uruchomieniem potoku. W tym przewodniku Szybki start potok ma tylko jedno działanie typu: Kopiowanie. Widać uruchomienie tego działania.
+6. Zostaną wyświetlone uruchomienia działania skojarzone z uruchomieniem potoku. W tym przewodniku Szybki start potok ma tylko jedno działanie typu Kopiowanie. Widać uruchomienie tego działania.
 
     ![Uruchomienia działania](media/quickstart-create-data-factory-resource-manager-template/activity-runs.png)
 7. Kliknij link **dane wyjściowe** w kolumnie akcje. Dane wyjściowe operacji kopiowania zostaną wyświetlone w oknie **Dane wyjściowe**. Kliknij przycisk Maksymalizuj, aby wyświetlić pełne dane wyjściowe. Zmaksymalizowane okno możesz przywrócić lub zamknąć.

@@ -1,28 +1,27 @@
 ---
 title: Szybki start — tworzenie maszyny wirtualnej z systemem Linux w witrynie Azure Portal | Microsoft Docs
-description: Z tego przewodnika Szybki start dowiesz się, jak utworzyć maszynę wirtualną z systemem Linux w witrynie Azure Portal
+description: W tym przewodniku szybki start dowiesz się, jak utworzyć maszynę wirtualną z systemem Linux przy użyciu Azure Portal.
 services: virtual-machines-linux
 documentationcenter: virtual-machines
 author: cynthn
 manager: gwallace
 editor: tysonn
 tags: azure-resource-manager
-ms.assetid: ''
 ms.service: virtual-machines-linux
 ms.topic: quickstart
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 8/20/2019
+ms.date: 11/05/2019
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 0c05eb59c42700394f755f226405f16a47edc73c
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 8dbe8e43122fb7fa00129dec0d9961bd70e5a784
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70091552"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73693324"
 ---
-# <a name="quickstart-create-a-linux-virtual-machine-in-the-azure-portal"></a>Szybki start: Utwórz maszynę wirtualną z systemem Linux w Azure Portal
+# <a name="quickstart-create-a-linux-virtual-machine-in-the-azure-portal"></a>Szybki start: tworzenie maszyny wirtualnej z systemem Linux w witrynie Azure Portal
 
 Maszyny wirtualne platformy Azure można utworzyć za pomocą witryny Azure Portal. Azure Portal to oparty na przeglądarce interfejs użytkownika służący do tworzenia zasobów platformy Azure. W tym przewodniku szybki start pokazano, jak za pomocą Azure Portal wdrożyć maszynę wirtualną z systemem Linux przy użyciu programu Ubuntu 18,04 LTS. Aby zobaczyć działanie maszyny wirtualnej, połączysz się z nią za pomocą protokołu SSH i zainstalujesz serwer internetowy NGINX.
 
@@ -36,29 +35,28 @@ Otwórz powłokę Bash i użyj polecenia [ssh-keygen](https://www.ssh.com/ssh/ke
 
 
 1. Zaloguj się w witrynie [Azure Portal](https://portal.azure.com).
-1. W menu w górnej części strony wybierz `>_` ikonę, aby otworzyć Cloud Shell.
+1. W menu w górnej części strony wybierz ikonę `>_`, aby otworzyć Cloud Shell.
 1. Upewnij się, że CloudShell mówi **bash** w lewym górnym rogu. Jeśli mówi programu PowerShell, Użyj listy rozwijanej, aby wybrać **bash** , a następnie wybierz pozycję **Potwierdź** , aby przejść do powłoki bash.
-1. Wpisz `ssh-keygen -t rsa -b 2048` , aby utworzyć klucz SSH. 
+1. Wpisz `ssh-keygen -t rsa -b 2048`, aby utworzyć klucz SSH. 
 1. Zostanie wyświetlony monit o wprowadzenie pliku, w którym ma zostać zapisana para kluczy. Naciśnij klawisz **Enter** , aby zapisać w lokalizacji domyślnej, na liście w nawiasach. 
 1. Zostanie wyświetlony monit o podanie hasła. Możesz wpisać hasło dla klucza SSH lub nacisnąć klawisz **Enter** , aby kontynuować bez hasła.
-1. Polecenie generuje klucze publiczne i prywatne z domyślną `id_rsa` nazwą w `~/.ssh directory`. `ssh-keygen` Polecenie zwraca pełną ścieżkę do klucza publicznego. Użyj ścieżki do klucza publicznego, aby wyświetlić jej zawartość `cat` za pomocą wpisywania. `cat ~/.ssh/id_rsa.pub`
+1. Polecenie `ssh-keygen` generuje klucze publiczne i prywatne z domyślną nazwą `id_rsa` w `~/.ssh directory`. Polecenie zwraca pełną ścieżkę do klucza publicznego. Użyj ścieżki do klucza publicznego, aby wyświetlić jej zawartość za pomocą `cat`, wpisując `cat ~/.ssh/id_rsa.pub`.
 1. Skopiuj dane wyjściowe tego polecenia i Zapisz je w dalszej części tego artykułu. Jest to Twój klucz publiczny, który będzie potrzebny podczas konfigurowania konta administratora, aby zalogować się do maszyny wirtualnej.
 
-## <a name="sign-in-to-azure"></a>Logowanie do platformy Azure
+## <a name="sign-in-to-azure"></a>Zaloguj się w usłudze Azure
 
 Zaloguj się do [Azure Portal](https://portal.azure.com) , jeśli jeszcze tego nie zrobiono.
 
 ## <a name="create-virtual-machine"></a>Tworzenie maszyny wirtualnej
 
-1. Wybierz pozycję **Utwórz zasób** w lewym górnym rogu okna witryny Azure Portal.
-
-1. W obszarze **popularne**wybierz pozycję **Ubuntu Server 18,04 LTS**.
-
-1. Na karcie **Podstawowe**, w obszarze **Szczegóły projektu**, upewnij się, że wybrano poprawną subskrypcję, a następnie wybierz opcję **Utwórz nową** w obszarze **Grupa zasobów**. Wpisz nazwę *zasobu* grupy zasobów, a następnie wybierz przycisk **OK**. 
+1. Wpisz **maszyny wirtualne** w wyszukiwaniu.
+1. W obszarze **usługi**wybierz pozycję **maszyny wirtualne**.
+1. Na stronie **maszyny wirtualne** wybierz pozycję **Dodaj**. Zostanie otwarta strona **Tworzenie maszyny wirtualnej** .
+1. Na karcie **Podstawowe**, w obszarze **Szczegóły projektu**, upewnij się, że wybrano poprawną subskrypcję, a następnie wybierz opcję **Utwórz nową** grupę zasobów. Wpisz nazwę *zasobu* . *. 
 
     ![Tworzenie nowej grupy zasobów dla maszyny wirtualnej](./media/quick-create-portal/project-details.png)
 
-1. W obszarze **Szczegóły wystąpienia** wpisz *myVM* w polu **Nazwa maszyny wirtualnej** i wybierz *Wschodnie stany USA* w polu **Region**. Inne wartości pozostaw domyślne.
+1. W obszarze **szczegóły wystąpienia**wpisz *myVM* dla **nazwy maszyny wirtualnej**, wybierz *Wschodnie stany USA* dla **regionu**i wybierz *Ubuntu 18,04 LTS* dla Twojego **obrazu**. Inne wartości pozostaw domyślne.
 
     ![Sekcja Szczegóły wystąpienia](./media/quick-create-portal/instance-details.png)
 
@@ -91,9 +89,9 @@ Utwórz połączenie SSH z maszyną wirtualną.
     ssh azureuser@10.111.12.123
     ```
 
-3. Korzystając z tej samej powłoki bash, która została użyta do utworzenia pary kluczy SSH (możesz ponownie otworzyć Cloud Shell, `>_` zaznaczając polecenie lub https://shell.azure.com/bash) przechodząc do lokalizacji, Wklej w tym poleceniu połączenie SSH, aby utworzyć sesję SSH).
+3. Korzystając z tej samej powłoki bash, która została użyta do utworzenia pary kluczy SSH (możesz ponownie otworzyć Cloud Shell, wybierając `>_` lub przechodząc do https://shell.azure.com/bash), Wklej polecenie połączenia SSH do powłoki, aby utworzyć sesję SSH.
 
-## <a name="install-web-server"></a>Instalowanie serwera internetowego
+## <a name="install-web-server"></a>Instalowanie serwera sieci Web
 
 Aby zobaczyć działanie maszyny wirtualnej, zainstaluj serwer internetowy NGINX. Z poziomu sesji SSH zaktualizuj źródła pakietu, a następnie zainstaluj najnowszą wersję pakietu NGINX.
 

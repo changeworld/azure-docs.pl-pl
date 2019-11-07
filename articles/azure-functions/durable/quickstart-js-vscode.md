@@ -11,16 +11,18 @@ ms.topic: quickstart
 ms.date: 11/07/2018
 ms.author: glenga
 ms.reviewer: azfuncdf, cotresne
-ms.openlocfilehash: b47e828f3b8d760594cb04ba40ceaa7248050c52
-ms.sourcegitcommit: f3f4ec75b74124c2b4e827c29b49ae6b94adbbb7
+ms.openlocfilehash: 1a1586124a1cfb05f2b7c4e9c3b0070170447b96
+ms.sourcegitcommit: b2fb32ae73b12cf2d180e6e4ffffa13a31aa4c6f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/12/2019
-ms.locfileid: "70933469"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73614567"
 ---
 # <a name="create-your-first-durable-function-in-javascript"></a>Tworzenie pierwszej funkcji trwałej w języku Java Script
 
 *Durable Functions* to rozszerzenie usługi [Azure Functions](../functions-overview.md) umożliwiające zapisywanie funkcji stanowych w środowisku bezserwerowym. Rozszerzenie zarządza stanem, punktami kontrolnymi i ponownym uruchamianiem.
+
+[!INCLUDE [v1-note](../../../includes/functions-durable-v1-tutorial-note.md)]
 
 W tym artykule przedstawiono użycie rozszerzenia programu Visual Studio Code dla usługi Azure Functions w celu lokalnego utworzenia i przetestowania funkcji trwałej „hello world”.  Ta funkcja będzie aranżować i łączyć w łańcuchy wywołania do innych funkcji. Kod funkcji zostanie następnie opublikowany na platformie Azure.
 
@@ -56,9 +58,9 @@ Teraz utworzysz trzy funkcje potrzebne do rozpoczęcia pracy z Durable Functions
 
 Najpierw należy utworzyć funkcję wyzwalaną przez protokół HTTP, która rozpoczyna aranżację funkcji trwałej.
 
-1. Z obszaru *Azure: Funkcja, wybierz ikonę **Utwórz funkcję.***
+1. Na *platformie Azure: funkcje*wybierz ikonę **Utwórz funkcję** .
 
-    ![Utwórz funkcję](./media/quickstart-js-vscode/create-function.png)
+    ![Tworzenie funkcji](./media/quickstart-js-vscode/create-function.png)
 
 2. Wybierz folder z projektem aplikacji funkcji i wybierz szablon Durable Functions funkcji **http Starter** .
 
@@ -74,9 +76,9 @@ Teraz utworzyliśmy punkt wejścia do naszej funkcji trwałej. Dodajmy orkiestra
 
 Teraz utworzymy koordynatora do współdziałania z funkcjami działania.
 
-1. Z obszaru *Azure: Funkcja, wybierz ikonę **Utwórz funkcję.***
+1. Na *platformie Azure: funkcje*wybierz ikonę **Utwórz funkcję** .
 
-    ![Utwórz funkcję](./media/quickstart-js-vscode/create-function.png)
+    ![Tworzenie funkcji](./media/quickstart-js-vscode/create-function.png)
 
 2. Wybierz folder z projektem aplikacji funkcji i wybierz szablon funkcji **Durable Functions programu Orchestrator** . Pozostaw nazwę domyślną "DurableFunctionsOrchestrator"
 
@@ -88,9 +90,9 @@ Dodaliśmy orkiestrator w celu koordynowania funkcji działania. Dodajmy teraz f
 
 Teraz utworzymy funkcję działania, która faktycznie przeprowadzi pracę rozwiązania.
 
-1. Z obszaru *Azure: Funkcja, wybierz ikonę **Utwórz funkcję.***
+1. Na *platformie Azure: funkcje*wybierz ikonę **Utwórz funkcję** .
 
-    ![Utwórz funkcję](./media/quickstart-js-vscode/create-function.png)
+    ![Tworzenie funkcji](./media/quickstart-js-vscode/create-function.png)
 
 2. Wybierz folder z projektem aplikacji funkcji i wybierz szablon funkcji **działania Durable Functions** . Pozostaw nazwę domyślną "Hello".
 
@@ -102,14 +104,14 @@ Dodaliśmy już wszystkie składniki potrzebne do rozpoczęcia aranżacji i utwo
 
 Podstawowe narzędzia usługi Azure Functions umożliwiają uruchamianie projektu usługi Azure Functions na lokalnym komputerze deweloperskim. Monit o zainstalowanie tych narzędzi pojawia się przy pierwszym uruchomieniu funkcji w programie Visual Studio Code.
 
-1. Na komputerze z systemem Windows uruchom emulator usługi Azure Storage i upewnij się, że właściwość **AzureWebJobsStorage** pliku *Local. Settings. JSON* jest ustawiona na `UseDevelopmentStorage=true`wartość.
+1. Na komputerze z systemem Windows uruchom emulator usługi Azure Storage i upewnij się, że właściwość **AzureWebJobsStorage** pliku *Local. Settings. JSON* jest ustawiona na wartość `UseDevelopmentStorage=true`.
 
-    W przypadku emulatora magazynu 5,8 upewnij się, że właściwość **AzureWebJobsSecretStorageType** lokalnego. Settings. JSON jest ustawiona `files`na wartość. Na komputerze Mac lub Linux należy ustawić właściwość **AzureWebJobsStorage** na parametry połączenia istniejącego konta usługi Azure Storage. W dalszej części tego artykułu utworzysz konto magazynu.
+    W przypadku emulatora magazynu 5,8 upewnij się, że właściwość **AzureWebJobsSecretStorageType** lokalnego. Settings. JSON ma wartość `files`. Na komputerze Mac lub Linux należy ustawić właściwość **AzureWebJobsStorage** na parametry połączenia istniejącego konta usługi Azure Storage. W dalszej części tego artykułu utworzysz konto magazynu.
 
 2. Aby przetestować funkcję, ustaw punkt przerwania w kodzie funkcji, a następnie naciśnij klawisz F5, aby uruchomić projekt aplikacji funkcji. Dane wyjściowe z pakietu Core Tools są wyświetlane na panelu **terminalu**. Jeśli po raz pierwszy używasz funkcji trwałych, jest instalowane rozszerzenie Durable Functions, a kompilacja może potrwać kilka sekund.
 
     > [!NOTE]
-    > Rozszerzenie Durable Functions języka JavaScript wymaga wersji **1.7.0** lub większej rozszerzenia **Microsoft.Azure.WebJobs.Extensions.DurableTask**. Uruchom następujące polecenie z folderu głównego aplikacji Azure Functions, aby zainstalować rozszerzenie Durable Functions`func extensions install -p Microsoft.Azure.WebJobs.Extensions.DurableTask -v 1.7.0`
+    > Rozszerzenie Durable Functions języka JavaScript wymaga wersji **1.7.0** lub większej rozszerzenia **Microsoft.Azure.WebJobs.Extensions.DurableTask**. Uruchom następujące polecenie z folderu głównego aplikacji Azure Functions, aby zainstalować rozszerzenie Durable Functions `func extensions install -p Microsoft.Azure.WebJobs.Extensions.DurableTask -v 1.7.0`
 
 3. W panelu **terminalu** skopiuj punkt końcowy adresu URL funkcji wyzwalanej przez protokół HTTP.
 
@@ -121,7 +123,7 @@ Podstawowe narzędzia usługi Azure Functions umożliwiają uruchamianie projekt
 
    Odpowiedź to początkowy wynik z funkcji HTTP informujący o pomyślnym uruchomieniu aranżacji trwałej. Nie jest to jeszcze końcowy wynik aranżacji. Odpowiedź zawiera kilka przydatnych adresów URL. Na razie wykonajmy zapytanie o stan aranżacji.
 
-6. Skopiuj wartość `statusQueryGetUri` adresu URL i wklej ją na pasku adresu przeglądarki i wykonaj żądanie. Możesz również nadal korzystać z programu Poster w celu wystawienia żądania GET.
+6. Skopiuj wartość adresu URL dla `statusQueryGetUri` i wklej ją na pasku adresu przeglądarki i wykonaj żądanie. Możesz również nadal korzystać z programu Poster w celu wystawienia żądania GET.
 
    Żądanie wykona zapytanie o stan wystąpienia aranżacji. Powinna zostać wyświetlona ostateczna odpowiedź, która pokazuje, że wystąpienie zostało zakończone i zawiera dane wyjściowe lub wyniki funkcji trwałej. Wygląda na to: 
 

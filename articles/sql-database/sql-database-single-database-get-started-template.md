@@ -1,5 +1,5 @@
 ---
-title: 'Azure Resource Manager: Tworzenie pojedynczej bazy danych — usługa Azure SQL Database | Microsoft Docs'
+title: 'Azure Resource Manager: Tworzenie pojedynczej bazy danych — Azure SQL Database '
 description: Utwórz pojedynczą bazę danych w Azure SQL Database przy użyciu szablonu Azure Resource Manager.
 services: sql-database
 ms.service: sql-database
@@ -11,14 +11,14 @@ author: mumian
 ms.author: jgao
 ms.reviewer: carlrab
 ms.date: 06/28/2019
-ms.openlocfilehash: f3e9bb0e9a2c4c58a205798441ddc2208019e7d2
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 3c46dbe5cac4407eda8b4198613eda1c1742ed35
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68566566"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73687207"
 ---
-# <a name="quickstart-create-a-single-database-in-azure-sql-database-using-the-azure-resource-manager-template"></a>Szybki start: Tworzenie pojedynczej bazy danych w Azure SQL Database przy użyciu szablonu Azure Resource Manager
+# <a name="quickstart-create-a-single-database-in-azure-sql-database-using-the-azure-resource-manager-template"></a>Szybki Start: Tworzenie pojedynczej bazy danych w Azure SQL Database przy użyciu szablonu Azure Resource Manager
 
 Tworzenie [pojedynczej bazy danych](sql-database-single-database.md) to najszybsza i najprostsza opcja wdrażania w przypadku tworzenia bazy danych w usłudze Azure SQL Database. W tym przewodniku szybki start pokazano, jak utworzyć pojedynczą bazę danych przy użyciu szablonu Azure Resource Manager. Aby uzyskać więcej informacji, zobacz [dokumentację Azure Resource Manager](/azure/azure-resource-manager/).
 

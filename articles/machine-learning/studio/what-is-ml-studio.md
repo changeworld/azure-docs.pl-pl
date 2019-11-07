@@ -11,12 +11,12 @@ ms.service: machine-learning
 ms.subservice: studio
 ms.topic: overview
 ms.date: 10/17/2019
-ms.openlocfilehash: 327bc40e5989cc3bca148f415113de32b19a7022
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 325278ee0222070ce7c02c1d72961f0431284677
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73500127"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73670544"
 ---
 # <a name="what-is-machine-learning-studio-classic"></a>Co to jest Machine Learning Studio (klasyczny)?
 
@@ -107,7 +107,7 @@ Moduł może zawierać zestaw parametrów, za pomocą których można konfigurow
 Aby uzyskać pomoc dotyczącą przechodzenia przez dużą bibliotekę dostępnych algorytmów uczenia maszynowego, zobacz [jak wybrać algorytmy dla Microsoft Azure Machine Learning Studio (klasyczne)](algorithm-choice.md).
 
 ## <a name="deploying-a-predictive-analytics-web-service"></a>Wdrażanie usługi sieci Web analizy predykcyjnej
-Gdy model analizy predykcyjnej jest gotowy, możesz go wdrożyć jako usługę sieci Web bezpośrednio z poziomu Machine Learning Studio (klasyczne). Aby uzyskać więcej informacji na temat tego procesu, zobacz [wdrażanie usługi sieci web Azure Machine Learning](publish-a-machine-learning-web-service.md).
+Gdy model analizy predykcyjnej jest gotowy, możesz go wdrożyć jako usługę sieci Web bezpośrednio z poziomu Machine Learning Studio (klasyczne). Aby uzyskać więcej informacji na temat tego procesu, zobacz [wdrażanie usługi sieci web Azure Machine Learning](deploy-a-machine-learning-web-service.md).
 
 ## <a name="next-steps"></a>Następne kroki
 Podstaw analizy predykcyjnej i uczenia maszynowego możesz się nauczyć, korzystając z [przewodnika Szybki start krok po kroku](create-experiment.md), a także [rozwijając przykłady](sample-experiments.md).
