@@ -10,12 +10,12 @@ keywords: Azure Automation, DSC, PowerShell, Konfiguracja żądanego stanu, zarz
 ms.date: 11/04/2019
 ms.custom: mvc
 ms.topic: quickstart
-ms.openlocfilehash: 91d8ddf7d8051baeb42ceb58673c93555908f03a
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: ddade9472517d080d01b04c853db9dd1848fe0f3
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73501974"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73668472"
 ---
 # <a name="quickstart-connect-machines-to-azure-using-azure-arc-for-servers---powershell"></a>Szybki Start: łączenie maszyn z platformą Azure przy użyciu usługi Azure ARC dla serwerów — PowerShell
 
@@ -198,6 +198,29 @@ Aby rozłączyć maszynę z usługi Azure ARC dla serwerów, należy wykonać dw
 
 1. Wybierz maszynę w [portalu](https://aka.ms/hybridmachineportal), kliknij wielokropek (`...`), a następnie wybierz pozycję **Usuń**.
 1. Odinstaluj agenta z komputera.
+
+   W systemie Windows możesz odinstalować agenta za pomocą panelu sterowania "Aplikacje & funkcje".
+  
+  ![Aplikacje & funkcje](./media/quickstart-onboard/apps-and-features.png)
+
+   Jeśli chcesz, aby skrypt został odinstalowany, możesz użyć poniższego przykładu, który pobiera **PackageID** i odinstalowuje agenta przy użyciu `msiexec /X`.
+
+   Poszukaj w kluczu rejestru `HKEY_LOCAL_MACHINE\Software\Microsoft\Windows\CurrentVersion\Uninstall` i Znajdź **PackageID**. Następnie można odinstalować agenta za pomocą `msiexec`.
+
+   W poniższym przykładzie przedstawiono Odinstalowywanie agenta.
+
+   ```powershell
+   Get-ChildItem -Path HKLM:\Software\Microsoft\Windows\CurrentVersion\Uninstall | `
+   Get-ItemProperty | `
+   Where-Object {$_.DisplayName -eq "Azure Connected Machine Agent"} | `
+   ForEach-Object {MsiExec.exe /Quiet /X "$($_.PsChildName)"}
+   ```
+
+   W systemie Linux wykonaj następujące polecenie, aby odinstalować agenta.
+
+   ```bash
+   sudo apt purge hybridagent
+   ```
 
 ## <a name="next-steps"></a>Następne kroki
 

@@ -4,14 +4,15 @@ description: Samouczek szablonu aplikacji do zarządzania magazynem inteligentny
 author: KishorIoT
 ms.author: nandab
 ms.service: iot-central
+ms.subservice: iot-central-retail
 ms.topic: overview
 ms.date: 10/20/2019
-ms.openlocfilehash: 7c8b2379ccb7562a79077df026a7083831e5415b
-ms.sourcegitcommit: d47a30e54c5c9e65255f7ef3f7194a07931c27df
+ms.openlocfilehash: 8360db3e31899dc7ca0a2b502d0036358f0858d6
+ms.sourcegitcommit: b2fb32ae73b12cf2d180e6e4ffffa13a31aa4c6f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/29/2019
-ms.locfileid: "73027259"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73615228"
 ---
 # <a name="tutorial-deploy-and-walk-through-a-smart-inventory-management-application-template"></a>Samouczek: wdrażanie i przechodzenie przez szablon aplikacji do zarządzania magazynem inteligentnym
 
@@ -89,7 +90,7 @@ Wybierz kartę reguły, aby wyświetlić dwie różne reguły, które istnieją 
 > [!div class="mx-imgBorder"]
 > ![pulpitu nawigacyjnego zarządzania magazynem inteligentnym](./media/tutorial-iot-central-smart-inventory-management/smart_inventory_management_rules.png)
 
-## <a name="jobs"></a>Stanowiska
+## <a name="jobs"></a>Zadania
 Wybierz kartę zadania, aby zobaczyć pięć różnych zadań, które istnieją w ramach tego szablonu aplikacji: można wykorzystać funkcję zadań do wykonywania operacji na całym rozwiązaniu. W tym miejscu zadania zarządzania spisem używają poleceń urządzenia & bliźniaczym możliwością wykonywania zadań takich jak,
    * Wyłączanie czytników na całej bramie
    * Modyfikowanie progu telemetrii między 

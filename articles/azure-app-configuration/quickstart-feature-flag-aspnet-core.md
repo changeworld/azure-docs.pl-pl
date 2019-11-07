@@ -14,12 +14,12 @@ ms.tgt_pltfrm: ASP.NET Core
 ms.workload: tbd
 ms.date: 04/19/2019
 ms.author: yegu
-ms.openlocfilehash: c4faa29e092c7cbb550bca1daa87ce369bf03a14
-ms.sourcegitcommit: b45ee7acf4f26ef2c09300ff2dba2eaa90e09bc7
+ms.openlocfilehash: 1a3d917775f6ba5b0b7f62d19de2b970a8b36838
+ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73099541"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73571219"
 ---
 # <a name="quickstart-add-feature-flags-to-an-aspnet-core-app"></a>Szybki Start: Dodawanie flag funkcji do aplikacji ASP.NET Core
 
@@ -81,7 +81,7 @@ Dodaj do projektu [Narzędzie do zarządzania kluczami tajnymi](https://docs.mic
 
 ## <a name="connect-to-an-app-configuration-store"></a>Nawiązywanie połączenia z magazynem konfiguracji aplikacji
 
-1. Dodaj odwołanie do `Microsoft.Azure.AppConfiguration.AspNetCore` i pakietów NuGet `Microsoft.FeatureManagement.AspNetCore`, uruchamiając następujące polecenia:
+1. Dodaj odwołanie do `Microsoft.Azure.AppConfiguration.AspNetCore` i `Microsoft.FeatureManagement.AspNetCore` pakietów NuGet, uruchamiając następujące polecenia:
 
     ```
     dotnet add package Microsoft.Azure.AppConfiguration.AspNetCore --version 2.0.0-preview-009470001-12
@@ -117,9 +117,9 @@ Dodaj do projektu [Narzędzie do zarządzania kluczami tajnymi](https://docs.mic
 1. Zaktualizuj metodę `CreateWebHostBuilder`, aby użyć konfiguracji aplikacji przez wywołanie metody `config.AddAzureAppConfiguration()`.
     
     > [!IMPORTANT]
-    > `CreateHostBuilder` zastępuje `CreateWebHostBuilder` w programie .NET Core 3,0.  Wybierz poprawną składnię opartą na Twoim środowisku.
+    > `CreateHostBuilder` zastępuje `CreateWebHostBuilder` na platformie .NET Core 3,0.  Wybierz poprawną składnię opartą na Twoim środowisku.
 
-    ### <a name="update-createwebhostbuilder-for-net-core-2x"></a>Aktualizacja `CreateWebHostBuilder` dla platformy .NET Core 2. x
+    ### <a name="update-createwebhostbuilder-for-net-core-2x"></a>Aktualizacja `CreateWebHostBuilder` dla programu .NET Core 2. x
 
     ```csharp
     public static IWebHostBuilder CreateWebHostBuilder(string[] args) =>
@@ -127,12 +127,15 @@ Dodaj do projektu [Narzędzie do zarządzania kluczami tajnymi](https://docs.mic
             .ConfigureAppConfiguration((hostingContext, config) =>
             {
                 var settings = config.Build();
-                config.AddAzureAppConfiguration(settings["ConnectionStrings:AppConfig"]);
+                config.AddAzureAppConfiguration(options => {
+                    options.Connect(settings["ConnectionStrings:AppConfig"])
+                            .UseFeatureFlags();
+                });
             })
             .UseStartup<Startup>();
     ```
 
-    ### <a name="update-createhostbuilder-for-net-core-3x"></a>Aktualizacja `CreateHostBuilder` dla platformy .NET Core 3. x
+    ### <a name="update-createhostbuilder-for-net-core-3x"></a>Aktualizacja `CreateHostBuilder` dla programu .NET Core 3. x
 
     ```csharp
     public static IHostBuilder CreateHostBuilder(string[] args) =>
@@ -141,7 +144,8 @@ Dodaj do projektu [Narzędzie do zarządzania kluczami tajnymi](https://docs.mic
         webBuilder.ConfigureAppConfiguration((hostingContext, config) =>
         {
             var settings = config.Build();
-            config.AddAzureAppConfiguration(settings["ConnectionStrings:AppConfig"]);
+            config.AddAzureAppConfiguration(settings["ConnectionStrings:AppConfig"])
+                .UseFeatureFlags();
         })
         .UseStartup<Startup>());
     ```
@@ -153,7 +157,7 @@ Dodaj do projektu [Narzędzie do zarządzania kluczami tajnymi](https://docs.mic
     using Microsoft.FeatureManagement;
     ```
 
-1. Zaktualizuj metodę `ConfigureServices` w celu dodania obsługi flagi funkcji przez wywołanie metody `services.AddFeatureManagement()`. Opcjonalnie możesz dołączyć dowolny filtr, który ma być używany z flagami funkcji przez wywołanie `services.AddFeatureFilter<FilterType>()`:
+1. Zaktualizuj metodę `ConfigureServices`, aby dodać obsługę flagi funkcji, wywołując metodę `services.AddFeatureManagement()`. Opcjonalnie możesz dołączyć dowolny filtr, który ma być używany z flagami funkcji przez wywołanie `services.AddFeatureFilter<FilterType>()`:
 
     ```csharp
     public void ConfigureServices(IServiceCollection services)
@@ -162,7 +166,7 @@ Dodaj do projektu [Narzędzie do zarządzania kluczami tajnymi](https://docs.mic
     }
     ```
 
-1. Zaktualizuj metodę `Configure`, aby dodać oprogramowanie pośredniczące, aby umożliwić odświeżanie wartości flagi funkcji w cyklicznym interwale, podczas gdy aplikacja sieci Web ASP.NET Core nadal otrzymuje żądania.
+1. Zaktualizuj metodę `Configure`, aby dodać oprogramowanie pośredniczące, aby umożliwić odświeżanie wartości flagi funkcji w cyklicznym interwale, gdy aplikacja sieci Web ASP.NET Core nadal otrzymuje żądania.
 
     ```csharp
     public void Configure(IApplicationBuilder app, IHostingEnvironment env)
@@ -276,7 +280,7 @@ Dodaj do projektu [Narzędzie do zarządzania kluczami tajnymi](https://docs.mic
 
     ![Lokalne uruchamianie aplikacji z przewodnika Szybki start](./media/quickstarts/aspnet-core-feature-flag-local-before.png)
 
-1. Zaloguj się do [portalu Azure](https://portal.azure.com). Wybierz pozycję **wszystkie zasoby**, a następnie wybierz wystąpienie magazynu konfiguracji aplikacji utworzone w ramach przewodnika Szybki Start.
+1. Zaloguj się w witrynie [Azure Portal](https://portal.azure.com). Wybierz pozycję **wszystkie zasoby**, a następnie wybierz wystąpienie magazynu konfiguracji aplikacji utworzone w ramach przewodnika Szybki Start.
 
 1. Wybierz pozycję **Menedżer funkcji**, a następnie Zmień stan klucza **beta** **na:**
 

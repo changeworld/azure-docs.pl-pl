@@ -1,5 +1,5 @@
 ---
-title: 'Szybki start: Azure Security Center — dołączanie komputerów z systemem Linux do usługi Security Center | Microsoft Docs'
+title: Dołączanie komputerów z systemem Linux do Azure Security Center | Microsoft Docs
 description: Ten przewodnik Szybki start przedstawia sposób dołączania komputerów z systemem Linux do usługi Security Center.
 services: security-center
 documentationcenter: na
@@ -14,14 +14,14 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/02/2018
 ms.author: memildin
-ms.openlocfilehash: 82ce466f12acef529b5e45e5dd94c64b94be0f7e
-ms.sourcegitcommit: 8a717170b04df64bd1ddd521e899ac7749627350
+ms.openlocfilehash: 9f49b858a23d0a1f58505d9f9971a31e8c9167e9
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/23/2019
-ms.locfileid: "71202885"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73664493"
 ---
-# <a name="quickstart-onboard-linux-computers-to-azure-security-center"></a>Szybki start: Dołączanie komputerów z systemem Linux do usługi Azure Security Center
+# <a name="quickstart-onboard-linux-computers-to-azure-security-center"></a>Szybki start: dołączanie komputerów z systemem Linux do usługi Azure Security Center
 Po dodaniu subskrypcji platformy Azure możesz włączyć Security Center dla zasobów systemu Linux działających poza platformą Azure, na przykład lokalnie lub w innych chmurach, udostępniając agenta. Agent jest nazywany Microsoft Monitoring Agent (MMA), ale jest również znany jako agent pakietu OMS.
 
 Ten przewodnik Szybki Start przedstawia sposób instalowania agenta na komputerze z systemem Linux.
@@ -33,13 +33,13 @@ Musisz korzystać z warstwy cenowej Standardowa usługi Security Center przed ro
 
 ## <a name="add-new-linux-computer"></a>Dodawanie nowego komputera z systemem Linux
 
-1. Zaloguj się do [Azure Portal](https://azure.microsoft.com/features/azure-portal/).
+1. Zaloguj się w witrynie [Azure Portal](https://azure.microsoft.com/features/azure-portal/).
 2. W menu platformy **Microsoft Azure** wybierz pozycję **Security Center**. Zostanie otwarte okno **Security Center — Przegląd**.
 
    ![Security Center — Przegląd][2]
 
 3. W menu głównym usługi Security Center wybierz pozycję **Wprowadzenie**.
-4. Wybierz kartę **Rozpoczęcie pracy**. ![Rozpoczęcie pracy][3]
+4. Wybierz kartę **wprowadzenie** . ![wprowadzenie][3]
 
 5. Kliknij przycisk **Konfiguruj** w obszarze **Dodaj nowe komputery spoza platformy Azure**, zostanie wyświetlona lista obszarów roboczych usługi Log Analytics. Jeśli ma to zastosowanie, lista zawiera domyślny obszar roboczy utworzony przez usługę Security Center po włączeniu automatycznej aprowizacji. Wybierz ten obszar roboczy lub inny obszar roboczy, którego chcesz użyć.
 
@@ -56,7 +56,7 @@ Musisz korzystać z warstwy cenowej Standardowa usługi Security Center przed ro
 
    ![Instalowanie agenta][5]
 
-Dzienniki dla agenta można znaleźć na stronie: *Identyfikator obszaru roboczego\</var/opt/Microsoft/omsagent/>/log/*
+Dzienniki dla agenta można znaleźć pod adresem: */var/opt/microsoft/omsagent/\<obszarze roboczym >/log/*
 
   ![Dzienniki agenta][6]
 

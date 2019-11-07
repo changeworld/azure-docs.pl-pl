@@ -4,14 +4,15 @@ description: Samouczek szablonu aplikacji Digital Distribution Center dla IoT Ce
 author: KishorIoT
 ms.author: nandab
 ms.service: iot-central
+ms.subservice: iot-central-retail
 ms.topic: overview
 ms.date: 10/20/2019
-ms.openlocfilehash: 3abedb2e2e8cd2ede8e148a68a63672f28f931bb
-ms.sourcegitcommit: d47a30e54c5c9e65255f7ef3f7194a07931c27df
+ms.openlocfilehash: 1965cc17f3d58932321c3ff14c99a962830d07b4
+ms.sourcegitcommit: b2fb32ae73b12cf2d180e6e4ffffa13a31aa4c6f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/29/2019
-ms.locfileid: "73026188"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73615251"
 ---
 # <a name="tutorial-deploy-and-walk-through-a-digital-distribution-center-application-template"></a>Samouczek: wdrażanie i przechodzenie przez szablon aplikacji centrum dystrybucji cyfrowej
 
@@ -94,7 +95,7 @@ Wybierz kartę reguły, aby wyświetlić dwie różne reguły, które istnieją 
 > [!div class="mx-imgBorder"]
 > ![centrum dystrybucji cyfrowej](./media/tutorial-iot-central-ddc/ddc-rules.png)
 
-## <a name="jobs"></a>Stanowiska
+## <a name="jobs"></a>Zadania
 Wybierz kartę zadania, aby zobaczyć pięć różnych zadań, które istnieją w ramach tego szablonu aplikacji: można wykorzystać funkcję zadań do wykonywania operacji na całym rozwiązaniu. W tym miejscu zadania centrum dystrybucji cyfrowej służą do wykonywania zadań, takich jak, & z użyciem technologii bliźniaczych.
    * Kalibrowanie aparatu przed zainicjowaniem wykrywania pakietu 
    * okresowe aktualizowanie oprogramowania układowego aparatu

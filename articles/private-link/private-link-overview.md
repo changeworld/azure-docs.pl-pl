@@ -5,14 +5,14 @@ services: private-link
 author: KumudD
 ms.service: private-link
 ms.topic: overview
-ms.date: 09/16/2019
+ms.date: 11/04/2019
 ms.author: kumud
-ms.openlocfilehash: 9e6206e6f7e09ebe03659eb6e515a9b26d3469bd
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
-ms.translationtype: HT
+ms.openlocfilehash: aa176cb5ffc67ebba826cf13a1a66608301af5e5
+ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73475934"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73601528"
 ---
 # <a name="what-is-azure-private-link-preview"></a>Co to jest łącze prywatne platformy Azure? (Wersja zapoznawcza)
 Link prywatny platformy Azure umożliwia dostęp do usług Azure PaaS Services (na przykład Azure Storage, Azure Cosmos DB i SQL Database) oraz hostowanych usług klienta i partnerskich platformy Azure za pośrednictwem [prywatnego punktu końcowego](private-endpoint-overview.md) w sieci wirtualnej. Ruch między siecią wirtualną a usługą odbywa się za pośrednictwem sieci szkieletowej firmy Microsoft, eliminując ekspozycję z publicznego Internetu. Możesz również utworzyć własną [prywatną usługę linku](private-link-service-overview.md) w sieci wirtualnej (VNET) i dostarczyć ją prywatnie do klientów. Środowisko instalacji i użycia korzystające z prywatnego linku platformy Azure jest spójne w przypadku usługi Azure PaaS, należącej do klienta i udostępnionych usług partnerskich.
@@ -40,12 +40,12 @@ Połączenie prywatne platformy Azure zapewnia następujące korzyści:
 
 |Scenariusz  |Obsługiwane usługi   |Dostępne regiony | Stan   |
 |---------|---------|---------|---------|
-|Prywatne łącze dla usług należących do klienta|Usługi linków prywatnych w tle usługa Load Balancer w warstwie Standardowa |Zachodnio-środkowe stany USA; WestUS Południowo-środkowe stany USA; Wschodnie stany USA; Północno-środkowe stany USA  |  Wersja zapoznawcza  |
-|Link prywatny dla usług Azure PaaS Services   | Azure Storage        |  Wschodnie stany USA, zachodnie stany USA, zachodnio-środkowe stany USA       | Wersja zapoznawcza         |
-|  | Usługa Azure Data Lake Storage 2. generacji        |  Wschodnie stany USA, zachodnie stany USA, zachodnio-środkowe stany USA       | Wersja zapoznawcza         |
-|  |  Azure SQL Database         | Zachodnio-środkowe stany USA; WestUS Południowo-środkowe stany USA; Wschodnie stany USA; Północno-środkowe stany USA      |   Wersja zapoznawcza      |
-||Azure SQL Data Warehouse| Zachodnio-środkowe stany USA; WestUS Południowo-środkowe stany USA; Wschodnie stany USA; Północno-środkowe stany USA |Wersja zapoznawcza|
-||Azure Cosmos DB| Zachodnio-środkowe stany USA; WestUS EastUS Północno-środkowe stany USA; Wschód a 2; Zachodnie 2 |Wersja zapoznawcza|
+|Prywatne łącze dla usług należących do klienta|Usługi linków prywatnych w tle usługa Load Balancer w warstwie Standardowa | Wszystkie regiony publiczne  |  Wersja zapoznawcza  |
+|Link prywatny dla usług Azure PaaS Services   | Azure Storage        |  Wszystkie regiony publiczne      | Wersja zapoznawcza         |
+|  | Usługa Azure Data Lake Storage 2. generacji        |  Wszystkie regiony publiczne      | Wersja zapoznawcza         |
+|  |  Azure SQL Database         | Wszystkie regiony publiczne      |   Wersja zapoznawcza      |
+||Azure SQL Data Warehouse| Wszystkie regiony publiczne |Wersja zapoznawcza|
+||Azure Cosmos DB| Zachodnio-środkowe stany USA, zachodnie stany USA |Wersja zapoznawcza|
 
 Aby zapoznać się z najbardziej aktualnymi powiadomieniami, zapoznaj się ze [stroną usługi Azure Virtual Network Updates](https://azure.microsoft.com/updates/?product=virtual-network).
 

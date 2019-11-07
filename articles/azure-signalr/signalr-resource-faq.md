@@ -6,12 +6,12 @@ ms.service: signalr
 ms.topic: overview
 ms.date: 03/01/2019
 ms.author: zhshang
-ms.openlocfilehash: e9e41ffa335aa95b139a5d5658424c1c5915b569
-ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
+ms.openlocfilehash: 771124d0b8ca15bf72501fdeff8c31d0a43050b8
+ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/30/2019
-ms.locfileid: "64914962"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73578687"
 ---
 # <a name="azure-signalr-service-faq"></a>Azure SignalR Service — FAQ
 
@@ -52,14 +52,14 @@ Jeśli sygnały pulsu nie są odbierane przez określony czas, serwer aplikacji 
 
 ## <a name="why-does-my-custom-iuseridprovider-throw-exception-when-switching-from-aspnet-core-signalr--sdk-to-azure-signalr-service-sdk"></a>Dlaczego mój niestandardowy `IUserIdProvider` zgłasza wyjątek w przypadku przejścia z zestawu SDK biblioteki SignalR dla platformy ASP.NET Core do zestawu SDK usługi Azure SignalR Service?
 
-Przy wywoływaniu `IUserIdProvider` parametr `HubConnectionContext context` dla zestawu SDK biblioteki SignalR dla platformy ASP.NET Core jest inny niż dla zestawu SDK usługi Azure SignalR Service.
+Przy wywoływaniu `HubConnectionContext context` parametr `IUserIdProvider` dla zestawu SDK biblioteki SignalR dla platformy ASP.NET Core jest inny niż dla zestawu SDK usługi Azure SignalR Service.
 
 W bibliotece SignalR platformy ASP.NET Core parametr `HubConnectionContext context` zawiera kontekst z prawidłowymi wartościami dla wszystkich właściwości połączenia fizycznego klienta.
 
 W zestawie SDK usługi Azure SignalR Service parametr `HubConnectionContext context` zawiera kontekst połączenia logicznego klienta. Fizyczne połączenie klienta jest podłączone do wystąpienia usługi SignalR Service, dlatego udostępniana jest tylko ograniczona liczba właściwości.
 
 Obecnie tylko parametry `HubConnectionContext.GetHttpContext()` i `HubConnectionContext.User` są dostępne.
-Kod źródłowy można sprawdzić [tutaj](https://github.com/Azure/azure-signalr/blob/kevinzha/faq/src/Microsoft.Azure.SignalR/ServiceHubConnectionContext.cs).
+Kod źródłowy można sprawdzić [tutaj](https://github.com/Azure/azure-signalr/blob/dev/src/Microsoft.Azure.SignalR/HubHost/ServiceHubConnectionContext.cs).
 
 ## <a name="can-i-configure-the-transports-available-in-signalr-service-as-configuring-it-on-server-side-with-aspnet-core-signalr-for-example-disable-websocket-transport"></a>Czy mogę skonfigurować transport dostępny w usłudze SignalR Service poprzez skonfigurowanie go po stronie serwera przy użyciu biblioteki SignalR platformy ASP.NET Core? Na przykład wyłączyć transport WebSocket?
 

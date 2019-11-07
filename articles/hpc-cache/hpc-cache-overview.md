@@ -1,19 +1,19 @@
 ---
-title: Omówienie wersji zapoznawczej pamięci podręcznej Azure HPC
+title: Omówienie usługi Azure HPC cache
 description: Opisuje pamięć podręczną platformy Azure HPC, rozwiązanie dostępu do pliku do obliczeń o wysokiej wydajności
 author: ekpgh
 ms.service: hpc-cache
 ms.topic: overview
-ms.date: 09/24/2019
+ms.date: 10/30/2019
 ms.author: rohogue
-ms.openlocfilehash: bfbbcd2d7d1bb44e260bedda54ca38ed6860ea67
-ms.sourcegitcommit: 1c2659ab26619658799442a6e7604f3c66307a89
+ms.openlocfilehash: 2a008d22de5df8d091e868153205697b4bb343ee
+ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/10/2019
-ms.locfileid: "72254483"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73582124"
 ---
-# <a name="what-is-azure-hpc-cache-preview"></a>Co to jest usługa Azure HPC Cache? (Wersja zapoznawcza)
+# <a name="what-is-azure-hpc-cache"></a>Co to jest usługa Azure HPC Cache?
 
 Pamięć podręczna Azure HPC umożliwia przyspieszenie dostępu do danych na potrzeby zadań obliczeniowych o wysokiej wydajności (HPC). Buforowanie plików na platformie Azure powoduje, że pamięć podręczna Azure HPC zapewnia skalowalność przetwarzania w chmurze w istniejącym przepływie pracy. Tej usługi można używać nawet w przypadku przepływów pracy, w których dane są przechowywane w łączach sieci WAN, takich jak w lokalnym środowisku magazynu (NAS) podłączonym do sieci centrum danych.
 
@@ -53,14 +53,18 @@ Pamięć podręczna Azure HPC jest dostępna w następujących regionach platfor
 * Wschodnie stany USA 2
 * Europa Północna
 * Europa Zachodnia
-* Azja Południowo-wschodnia
+* Azja Południowo-Wschodnia
+* Sydney
 * Zachodnie stany USA 2
+* Korea Środkowa
 
 Aby uzyskać najnowsze informacje o dostępności, należy zapoznać się ze [stroną produktu Azure HPC cache](https://azure.microsoft.com/services/hpc-cache) .
 
-## <a name="preview-availability"></a>Podgląd dostępności
+## <a name="service-availability"></a>Dostępność usług
 
-Publiczna wersja zapoznawcza pamięci podręcznej platformy Azure HPC jest ograniczona do zapewnienia jakości usług. Zażądaj dostępu, wypełniając [ten formularz](https://aka.ms/onboard-hpc-cache). Po dodaniu subskrypcji do listy dostępu można utworzyć pamięci podręczne testów.
+Musisz zażądać dostępu dla każdej subskrypcji, która będzie używana z pamięcią podręczną platformy Azure HPC. To ograniczenie pomaga zapewnić jakość usługi w początkowych miesiącach dostępności ogólnej.
+
+Zażądaj dostępu, wypełniając [ten formularz](https://aka.ms/onboard-hpc-cache). Po dodaniu subskrypcji do listy dostępu można utworzyć pamięci podręczne.
 
 ## <a name="next-steps"></a>Następne kroki
 

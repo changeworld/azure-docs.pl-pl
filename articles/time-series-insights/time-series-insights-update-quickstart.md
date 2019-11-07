@@ -10,12 +10,12 @@ ms.topic: quickstart
 ms.workload: big-data
 ms.custom: mvc seodec18
 ms.date: 10/24/2019
-ms.openlocfilehash: da0c4d6cd4b923033761a275e93c5a4d8a184647
-ms.sourcegitcommit: 92d42c04e0585a353668067910b1a6afaf07c709
+ms.openlocfilehash: 25d6d1aa1cf7db0f448ec22ed7b5c84d840af3f5
+ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/28/2019
-ms.locfileid: "72991052"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73579649"
 ---
 # <a name="quickstart-explore-the-azure-time-series-insights-preview-demo-environment"></a>Szybki Start: Eksplorowanie środowiska demonstracyjnego w wersji zapoznawczej Azure Time Series Insights
 
@@ -30,7 +30,7 @@ W tym przewodniku szybki start dowiesz się, jak używać Time Series Insights, 
 
 ## <a name="explore-the-time-series-insights-explorer-in-a-demo-environment"></a>Poznawanie eksploratora usługi Time Series Insights w środowisku pokazowym
 
-W Eksploratorze Time Series Insights w wersji zapoznawczej przedstawiono dane historyczne i główne przyczyny analizy. Aby rozpocząć:
+W Eksploratorze Time Series Insights w wersji zapoznawczej przedstawiono dane historyczne i analizę głównych przyczyn. Aby rozpocząć:
 
 1. Przejdź do środowiska [demonstracyjnego farmy wiatrów firmy Contoso](https://insights.timeseries.azure.com/preview/samples) .  
 
@@ -71,22 +71,22 @@ W Eksploratorze Time Series Insights w wersji zapoznawczej przedstawiono dane hi
 
       [![poszukaj wzorców historycznych](media/v2-update-quickstart/quickstart-five.png)](media/v2-update-quickstart/quickstart-five.png#lightbox)
 
-Korzystając z Time Series Insights i naszej telemetrii czujnika, wykryliśmy długoterminowy i problematyczny trend ukryty w danych historycznych. Dzięki tym nowym szczegółowym informacjom możemy:
+Korzystając z Time Series Insights i danych telemetrycznych czujnika, wykryliśmy długoterminowy trend ukryty w danych historycznych. Dzięki tym nowym szczegółowym informacjom możemy:
 
 * Wyjaśnij, co się stało.
 * Rozwiąż problem.
-* Umieść doskonałe systemy powiadomień o alertach.
+* Umieść lepsze systemy powiadomień o alertach.
 
 ## <a name="root-cause-analysis"></a>Analiza głównej przyczyny
 
-1. Niektóre scenariusze wymagają zaawansowanej analizy, aby odkryć drobne wskazówki dotyczące danych. Wybierz Windmill **W6** w dniu **6/25**.
+1. Niektóre scenariusze wymagają zaawansowanej analizy, aby odkryć wskazówki dotyczące danych. Wybierz Windmill **W6** w dniu **6/25**.
 
     1. Zmień zakres widoku na **6/1/17 20:00:00.00 do 7/1/17 20:00:00.00 (UTC)** .
     1. Wybierz pozycję **contoso roślina 1** > **W6** > **bezpieczeństwo systemu** > **VoltageActuatorSwitchWarning**.
 
        [![zmienić zakres widoku i wybrać W6](media/v2-update-quickstart/quickstart-six.png)](media/v2-update-quickstart/quickstart-six.png#lightbox)
 
-1. To ostrzeżenie wskazuje na problem z napięciem wyjściowym generatora. Ogólne dane wyjściowe mocy generatora działają w ramach normalnych parametrów w bieżącym interwale. Przez zwiększenie naszego interwału okazuje się, że kolejny wzór zostanie spowodowany. Nieznaczny element docelowy jest oczywisty.
+1. Ostrzeżenie wskazuje na problem z napięciem z generatora. Ogólne dane wyjściowe mocy generatora są w normalnych parametrach w bieżącym interwale. Zwiększając nasz interwał, zobaczymy inny wzorzec. Inicjał jest oczywisty.
 
     1. Usuń czujnik **VoltageActuatorSwitchWarning** .
     1. Wybierz **system generatora** > **ActivePower**.
@@ -117,9 +117,9 @@ Korzystając z Time Series Insights i naszej telemetrii czujnika, wykryliśmy d�
 
 ## <a name="clean-up-resources"></a>Oczyszczanie zasobów
 
-Po ukończeniu samouczka Wyczyść utworzone zasoby:
+Po zakończeniu przewodnika Szybki Start Wyczyść utworzone zasoby:
 
-1. W menu po lewej stronie w [Azure Portal](https://portal.azure.com)wybierz pozycję **wszystkie zasoby**, Znajdź Azure Time Series Insights grupę zasobów.
+1. Z menu po lewej stronie w obszarze [Azure Portal](https://portal.azure.com)wybierz pozycję **wszystkie zasoby**i Znajdź Azure Time Series Insights grupę zasobów.
 1. Usuń całą grupę zasobów (i wszystkie znajdujące się w niej zasoby), wybierając pozycję **Usuń** lub Usuń osobno każdy zasób.
 
 ## <a name="next-steps"></a>Następne kroki
@@ -129,7 +129,7 @@ Wszystko jest gotowe do utworzenia własnego środowiska Time Series Insights w 
 > [!div class="nextstepaction"]
 > [Planowanie środowiska usługi Time Series Insights w wersji zapoznawczej](time-series-insights-update-plan.md)
 
-Dowiedz się, jak nawigować po demonstracji i jej funkcjach:
+Dowiedz się, jak korzystać z demonstracji i jej funkcji:
 
 > [!div class="nextstepaction"]
 > [Eksplorator Time Series Insights w wersji zapoznawczej](time-series-insights-update-explorer.md)

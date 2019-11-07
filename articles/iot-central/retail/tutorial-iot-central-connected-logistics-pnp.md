@@ -4,14 +4,15 @@ description: Samouczek dotyczący połączonego szablonu aplikacji logistycznej 
 author: KishorIoT
 ms.author: nandab
 ms.service: iot-central
+ms.subservice: iot-central-retail
 ms.topic: overview
 ms.date: 10/20/2019
-ms.openlocfilehash: 0fc9291fcb17d6200b32bb04a0a3ffeed5dea713
-ms.sourcegitcommit: d47a30e54c5c9e65255f7ef3f7194a07931c27df
+ms.openlocfilehash: 9d55eca3df8897650f78a6bd85b649349c806e95
+ms.sourcegitcommit: b2fb32ae73b12cf2d180e6e4ffffa13a31aa4c6f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/29/2019
-ms.locfileid: "73027332"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73615267"
 ---
 # <a name="tutorial-deploy-and-walk-through-a-connected-logistics-application-template"></a>Samouczek: wdrażanie i przechodzenie przez połączony szablon aplikacji logistycznej
 
@@ -88,7 +89,7 @@ Wybierz kartę reguły, aby wyświetlić dwie różne reguły, które istnieją 
 > [!div class="mx-imgBorder"]
 > ![połączonego pulpitu nawigacyjnego logistyki](./media/tutorial-iot-central-connected-logistics/connected-logistics-rules.png)
 
-## <a name="jobs"></a>Stanowiska
+## <a name="jobs"></a>Zadania
 Wybierz kartę zadania, aby zobaczyć pięć różnych zadań, które istnieją w ramach tego szablonu aplikacji:
 
 > [!div class="mx-imgBorder"]

@@ -4,15 +4,15 @@ description: Ten artykuł zawiera omówienie zapory aplikacji sieci Web (WAF) na
 services: web-application-firewall
 author: vhorne
 ms.service: web-application-firewall
-ms.date: 10/16/2019
+ms.date: 11/05/2019
 ms.author: victorh
 ms.topic: overview
-ms.openlocfilehash: 3cc0af122143d2ee702f1f16ee26c010befa1155
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
-ms.translationtype: HT
+ms.openlocfilehash: 6d073648dc908cbbe40962f7ba079abcfe85ce45
+ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73502345"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73607307"
 ---
 # <a name="azure-web-application-firewall-on-azure-application-gateway"></a>Zapora aplikacji sieci Web platformy Azure na platformie Azure Application Gateway
 
@@ -20,10 +20,10 @@ Zapora aplikacji sieci Web platformy Azure (WAF) na platformie Azure Application
 
 WAF na Application Gateway opiera się na [podstawowym zestawie reguł (KSR)](https://www.owasp.org/index.php/Category:OWASP_ModSecurity_Core_Rule_Set_Project) 3,1, 3,0 lub 2.2.9 z projektu Open Web Application Security (OWASP). WAF automatycznie aktualizuje, aby uwzględnić ochronę przed nowymi lukami w zabezpieczeniach, bez konieczności dodatkowej konfiguracji. 
 
-Wszystkie funkcje WAF wymienione poniżej istnieją w zasadach WAF. Można utworzyć dowolną liczbę zasad i można je skojarzyć z Application Gateway, do poszczególnych odbiorników lub do reguł routingu opartych na ścieżce na Application Gateway. W ten sposób można mieć osobne zasady dla każdej witryny za Application Gateway w razie potrzeby. Aby uzyskać więcej informacji na temat zasad WAFymi, zobacz [Tworzenie zasad WAF](create-waf-policy-ag.md).
+Wszystkie funkcje WAF wymienione poniżej istnieją w zasadach WAF. Można utworzyć wiele zasad i można je skojarzyć z Application Gateway, do poszczególnych odbiorników lub regułami routingu opartymi na ścieżce na Application Gateway. W ten sposób można mieć osobne zasady dla każdej witryny za Application Gateway w razie potrzeby. Aby uzyskać więcej informacji na temat zasad WAFymi, zobacz [Tworzenie zasad WAF](create-waf-policy-ag.md).
 
    > [!NOTE]
-   > Zasady WAF dla poszczególnych witryn i identyfikatorów URI są dostępne w publicznej wersji zapoznawczej. Oznacza to, że ta funkcja podlega dodatkowym warunkom użytkowania firmy Microsoft. Aby uzyskać więcej informacji, zobacz [Uzupełniające warunki korzystania z wersji zapoznawczych platformy Microsoft Azure](https://azure.microsoft.com/en-us/support/legal/preview-supplemental-terms/).
+   > Zasady WAF dla poszczególnych witryn i identyfikatorów URI są dostępne w publicznej wersji zapoznawczej. Oznacza to, że ta funkcja podlega dodatkowym warunkom użytkowania firmy Microsoft. Aby uzyskać więcej informacji, zobacz [Uzupełniające warunki korzystania z wersji zapoznawczych platformy Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 ![Application Gateway diagram WAF](../media/ag-overview/waf1.png)
 
@@ -39,9 +39,11 @@ W tej sekcji opisano podstawowe korzyści, które WAF na Application Gateway.
 
 * Ochrona aplikacji sieci Web przed lukami w zabezpieczeniach i atakami w sieci Web bez konieczności modyfikowania kodu zaplecza.
 
-* Ochrona wielu aplikacji sieci Web w tym samym czasie. Wystąpienie Application Gateway może obsługiwać do 100 witryn sieci Web, które są chronione przez zaporę aplikacji internetowej.
+* Ochrona wielu aplikacji sieci Web w tym samym czasie. Wystąpienie Application Gateway może obsługiwać do 40 witryn sieci Web, które są chronione przez zaporę aplikacji internetowej.
 
-* Ochrona aplikacji sieci Web przed złośliwym botów z zestawem reguł reputacji adresów IP
+* Tworzenie niestandardowych zasad WAF dla różnych lokacji w tym samym WAF 
+
+* Ochrona aplikacji sieci Web przed złośliwym botów z zestawem reguł reputacji adresów IP (wersja zapoznawcza)
 
 ### <a name="monitoring"></a>Monitorowanie
 
@@ -51,9 +53,11 @@ W tej sekcji opisano podstawowe korzyści, które WAF na Application Gateway.
 
 ### <a name="customization"></a>Dostosowywanie
 
-* Można dostosować reguły WAF i grupy reguł, aby spełniały wymagania aplikacji i wyeliminować fałszywe pozytywne.
+* Dostosuj reguły WAF i grupy reguł, aby spełniały wymagania aplikacji i wyeliminować fałszywe pozytywne.
 
-* Można skojarzyć zasady WAFymi dla każdej witryny za WAF, aby umożliwić konfigurację specyficzną dla lokacji
+* Skojarz zasady WAF z lokacjami za WAF, aby umożliwić konfigurację specyficzną dla lokacji
+
+* Tworzenie reguł niestandardowych w celu dostosowania ich do potrzeb aplikacji
 
 ## <a name="features"></a>Funkcje
 
@@ -62,10 +66,13 @@ W tej sekcji opisano podstawowe korzyści, które WAF na Application Gateway.
 - Ochrona przed innymi typowymi atakami sieci Web, takimi jak iniekcja poleceń, mycie żądań HTTP, dzielenie odpowiedzi HTTP i zdalne Dołączanie plików.
 - Ochrona przed naruszeniami protokołu HTTP.
 - Ochrona przed anomaliami protokołu HTTP, takimi jak brak agenta użytkownika hosta i akceptowanie nagłówków.
-- Ochrona przed botów, przeszukiwarkami i skanerami.
+- Ochrona przed przeszukiwarkami i skanerami.
 - Wykrywanie typowych niezwiązanych konfiguracji aplikacji (np. Apache i IIS).
 - Konfigurowalne limity rozmiaru żądań z dolną i górną granicą.
 - Listy wykluczeń pozwalają pominąć niektóre atrybuty żądania z oceny WAF. Typowym przykładem są tokeny wstawione Active Directory, które są używane dla pól uwierzytelniania lub hasła.
+- Utwórz reguły niestandardowe, aby odpowiadały określonym potrzebom aplikacji.
+- Ruch w filtrach geograficznych, aby zezwalać na dostęp do aplikacji lub blokować je w niektórych krajach. (wersja zapoznawcza)
+- Chroń aplikacje przed botów za pomocą zestawu reguł ograniczenia bot. (wersja zapoznawcza)
 
 ## <a name="waf-policy"></a>Zasady WAF
 
@@ -79,7 +86,7 @@ Aby uzyskać więcej informacji, zobacz reguły [i reguły dotyczące reguł KSR
 
 ### <a name="custom-rules"></a>Reguły niestandardowe
 
-Application Gateway również obsługiwać reguły niestandardowe. Za pomocą reguł niestandardowych można utworzyć własne reguły, które są oceniane dla każdego żądania, które przechodzi przez WAF. Reguły te mają wyższy priorytet niż pozostałe reguły w zarządzanych zestawach reguł. W przypadku spełnienia zestawu warunków akcja jest podejmowana do zezwalania lub blokowania. 
+Application Gateway obsługuje także reguły niestandardowe. Za pomocą reguł niestandardowych można utworzyć własne reguły, które są oceniane dla każdego żądania, które przechodzi przez WAF. Reguły te mają wyższy priorytet niż pozostałe reguły w zarządzanych zestawach reguł. W przypadku spełnienia zestawu warunków akcja jest podejmowana do zezwalania lub blokowania. 
 
 Aby uzyskać więcej informacji, zobacz [reguły niestandardowe dla Application Gateway.](custom-waf-rules-overview.md)
 
@@ -138,6 +145,15 @@ Dzienniki Application Gateway są zintegrowane z [Azure monitor](../../azure-mon
 
 ![Okno przeglądu Security Center](../media/ag-overview/figure1.png)
 
+#### <a name="azure-sentinel"></a>Azure Sentinel
+
+Microsoft Azure wskaźnikiem wydajności jest skalowalne i natywne rozwiązanie do zarządzania zdarzeniami zabezpieczeń (SIEM) i o (Security Orchestration). Platforma Azure — wskaźnik przedstawia inteligentne rozwiązania w zakresie zabezpieczeń i analizy zagrożeń w całym przedsiębiorstwie, zapewniając jedno rozwiązanie do wykrywania alertów, widoczności zagrożeń, aktywnego polowania i reagowania na zagrożenia.
+
+Korzystając z wbudowanego skoroszytu WAF zdarzeń zapory platformy Azure, możesz zapoznać się z omówieniem zdarzeń zabezpieczeń w WAF. Obejmuje to zdarzenia, dopasowane i zablokowane reguły oraz wszystkie inne, które są rejestrowane w dziennikach zapory. Zobacz więcej na temat rejestrowania poniżej. 
+
+
+![Wskaźnik](../media/ag-overview/sentinel.png)
+
 #### <a name="logging"></a>Rejestrowanie
 
 Application Gateway WAF udostępnia szczegółowe raporty dotyczące każdego wykrytego zagrożenia. Rejestrowanie jest zintegrowane z dziennikami Diagnostyka Azure. Alerty są rejestrowane w formacie JSON. Te dzienniki można zintegrować z [dziennikami Azure monitor](../../azure-monitor/insights/azure-networking-analytics.md).
@@ -186,4 +202,8 @@ Modele cen są różne dla jednostek SKU WAF_v1 i WAF_v2. Aby dowiedzieć się w
 
 ## <a name="next-steps"></a>Następne kroki
 
+- Rozpocznij od [utworzenia zasad WAFymi](create-waf-policy-ag.md)
+- Dowiedz się więcej o [regułach zarządzanych przez WAF](application-gateway-crs-rulegroups-rules.md)
+- Dowiedz się więcej na temat [reguł niestandardowych](custom-waf-rules-overview.md)
 - Dowiedz się więcej o [zaporze aplikacji sieci Web na platformie Azure — drzwi](../afds/afds-overview.md)
+

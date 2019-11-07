@@ -8,14 +8,14 @@ ms.topic: overview
 ms.service: iot-central
 services: iot-central
 manager: abjork
-ms.openlocfilehash: aaf591bcc75521cb83d8c74f5220d37f77f1f349
-ms.sourcegitcommit: d47a30e54c5c9e65255f7ef3f7194a07931c27df
+ms.openlocfilehash: 8c7d2481fe3ef361386bacc652d87744c1c790bb
+ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/29/2019
-ms.locfileid: "73027653"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73581503"
 ---
-# <a name="build-energy-solutions-with-iot-central"></a>Tworzenie rozwiązań energetycznych za pomocą IoT Central 
+# <a name="build-energy-solutions-with-iot-central"></a>Tworzenie rozwiązań dla branży energetycznej za pomocą usługi IoT Central 
 
 [!INCLUDE [iot-central-pnp-original](../../../includes/iot-central-pnp-original-note.md)]
 
@@ -40,8 +40,8 @@ Możesz bezpłatnie wypróbować [aplikację do monitorowania mierników intelig
 
 Po wdrożeniu aplikacji zobaczysz dane symulowanego miernika na pulpicie nawigacyjnym, jak pokazano na poniższej ilustracji. Ten szablon to przykładowa aplikacja, którą można łatwo rozciągnąć i dostosować do określonych przypadków użycia.
 
-[!div class="mx-imgBorder"]
-![pulpit nawigacyjny aplikacji mierników inteligentnych](media/overview-iot-central-energy/smart-meter-app-dashboard.png)
+> [!div class="mx-imgBorder"]
+> ![pulpit nawigacyjny aplikacji mierników inteligentnych](media/overview-iot-central-energy/smart-meter-app-dashboard.png)
 
 
 ## <a name="what-is-the-solar-panel-monitoring-application"></a>Co to jest aplikacja monitorująca panel słoneczny?

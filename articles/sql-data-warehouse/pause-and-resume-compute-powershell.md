@@ -1,5 +1,5 @@
 ---
-title: 'Szybki start: Wstrzymywanie i wznawianie obliczeń w programie Azure SQL Data Warehouse — PowerShell | Microsoft Docs'
+title: 'Szybki Start: Wstrzymywanie & wznawiania obliczeń — PowerShell '
 description: Użyj programu PowerShell, aby wstrzymać obliczenia w Azure SQL Data Warehouse w celu oszczędności kosztów. Wznów obliczanie, gdy wszystko jest gotowe do korzystania z magazynu danych.
 services: sql-data-warehouse
 author: kevinvngo
@@ -10,14 +10,15 @@ ms.subservice: manage
 ms.date: 03/20/2019
 ms.author: kevin
 ms.reviewer: igorstan
-ms.openlocfilehash: da9c3d42919bba6ce04fc54bafc2fb5d245379f5
-ms.sourcegitcommit: f176e5bb926476ec8f9e2a2829bda48d510fbed7
+ms.custom: seo-lt-2019
+ms.openlocfilehash: 2ad83e51a11e08373f2132e861ec1c8f3ac20458
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70306090"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73686015"
 ---
-# <a name="quickstart-pause-and-resume-compute-in-azure-sql-data-warehouse-with-azure-powershell"></a>Szybki start: Wstrzymywanie i wznawianie obliczeń w Azure SQL Data Warehouse z Azure PowerShell
+# <a name="quickstart-pause-and-resume-compute-in-azure-sql-data-warehouse-with-azure-powershell"></a>Szybki Start: Wstrzymywanie i wznawianie obliczeń w Azure SQL Data Warehouse z Azure PowerShell
 
 Użyj programu PowerShell, aby wstrzymać obliczenia w Azure SQL Data Warehouse w celu oszczędności kosztów. [Wznów Obliczanie](sql-data-warehouse-manage-compute-overview.md) , gdy wszystko jest gotowe do korzystania z magazynu danych.
 

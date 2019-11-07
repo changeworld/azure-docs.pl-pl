@@ -1,5 +1,5 @@
 ---
-title: Co to jest Windows Virtual Desktop?  — Azure
+title: Co to jest Windows Virtual Desktop? — Azure
 description: Omówienie pulpitu wirtualnego systemu Windows.
 services: virtual-desktop
 author: Heidilohr
@@ -7,12 +7,12 @@ ms.service: virtual-desktop
 ms.topic: overview
 ms.date: 08/07/2019
 ms.author: helohr
-ms.openlocfilehash: e1ae0501e2a558967b7d53229dc629e035c5e067
-ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
+ms.openlocfilehash: 058cf516fd8d10cef1e1c93e5493f8c19bdc679d
+ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/18/2019
-ms.locfileid: "72597898"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73607483"
 ---
 # <a name="what-is-windows-virtual-desktop"></a>Co to jest Windows Virtual Desktop? 
 
@@ -74,7 +74,7 @@ Aby zapewnić obsługę pulpitu wirtualnego systemu Windows, Twoja infrastruktur
 
 * [Azure Active Directory](https://docs.microsoft.com/azure/active-directory/)
 * Active Directory systemu Windows Server synchronizacja z Azure Active Directory. Można to zrobić w następujący sposób:
-  * Program Azure AD Connect
+  * Azure AD Connect
   * Usługi domenowe Azure AD
      >[!NOTE]
      >Jeśli używasz Azure AD Domain Services, użytkownicy muszą pochodzić z Azure Active Directory. W tej chwili nie jest obsługiwane używanie Azure AD Domain Services z użytkownikami z systemem Windows Server AD.

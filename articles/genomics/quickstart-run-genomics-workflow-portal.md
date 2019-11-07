@@ -1,5 +1,5 @@
 ---
-title: 'Szybki Start: uruchamianie przepływu pracy'
+title: 'Szybki Start: uruchamianie przepływu pracy — Microsoft Genomics'
 description: Ten poradnik Szybki start opisuje sposób ładowania danych wejściowych do usługi Azure Blob Storage oraz uruchamiania przepływu pracy za pośrednictwem usługi Microsoft Genomics.
 services: genomics
 author: grhuynh
@@ -8,14 +8,14 @@ ms.author: grhuynh
 ms.service: genomics
 ms.topic: quickstart
 ms.date: 01/11/2019
-ms.openlocfilehash: e7c90cc0ce85f2a90cc2ddc2cd086fd2626f4d96
-ms.sourcegitcommit: 961468fa0cfe650dc1bec87e032e648486f67651
+ms.openlocfilehash: 5a84c5a8af4d11f3ff2a03c228475154f98b8744
+ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/10/2019
-ms.locfileid: "72248539"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73606132"
 ---
-# <a name="quickstart-run-a-workflow-through-the-microsoft-genomics-service"></a>Szybki start: Uruchamianie przepływu pracy w usłudze Microsoft Genomics
+# <a name="quickstart-run-a-workflow-through-the-microsoft-genomics-service"></a>Szybki start: Uruchamianie przepływu za pośrednictwem usługi Microsoft Genomics
 
 Ten poradnik Szybki start opisuje sposób ładowania danych wejściowych do usługi Azure Blob Storage oraz uruchamiania przepływu pracy za pośrednictwem usługi Microsoft Genomics. Microsoft Genomics to skalowalna, bezpieczna usługa umożliwiająca dodatkową analizę zapewniającą szybkie przetwarzanie genomów, począwszy od pierwotnych operacji odczytywania i tworzenia dopasowanych operacji odczytywania i wywołań odmian. 
 
@@ -30,7 +30,7 @@ Aby uzyskać więcej informacji o usłudze Microsoft Genomics, zobacz [Co to jes
 
 Aby utworzyć konto usługi Microsoft Genomics, przejdź do witryny [Azure Portal](https://portal.azure.com/#create/Microsoft.Genomics). Jeśli nie masz jeszcze subskrypcji platformy Azure, utwórz ją przed utworzeniem konta usługi Microsoft Genomics. 
 
-![Usługa Microsoft Genomics w witrynie Azure Portal](./media/quickstart-run-genomics-workflow-portal/genomics-create-blade.png "Usługa Microsoft Genomics w witrynie Azure Portal")
+![Microsoft Genomics na Azure Portal](./media/quickstart-run-genomics-workflow-portal/genomics-create-blade.png "Microsoft Genomics na Azure Portal")
 
 
 
@@ -47,7 +47,7 @@ Skonfiguruj konto usługi Genomics w sposób pokazany na wcześniejszej ilustrac
 
 
 Możesz kliknąć opcję Powiadomienia na górnym pasku menu, aby monitorować proces wdrażania.
-![Powiadomienia w usłudze Microsoft Genomics](./media/quickstart-run-genomics-workflow-portal/genomics-notifications-box.png "Powiadomienia w usłudze Microsoft Genomics")
+![Powiadomienia Microsoft Genomics](./media/quickstart-run-genomics-workflow-portal/genomics-notifications-box.png "MPowiadomienia iblioteki genomiki ")
 
 
 
@@ -90,13 +90,13 @@ Możesz zainstalować te pakiety przy użyciu modułu `pip`, procedury `easy_ins
 Aby przetestować klienta usługi Microsoft Genomics, pobierz plik konfiguracji z konta usługi Genomics. Przejdź do konta usługi Genomics, klikając pozycję **Wszystkie usługi** w lewym górnym rogu, filtrując i wybierając opcję konta usługi Genomics.
 
 
-![Filtrowanie pod kątem usługi Microsoft Genomics w witrynie Azure Portal](./media/quickstart-run-genomics-workflow-portal/genomics-filter-box.png "Filtrowanie pod kątem usługi Microsoft Genomics w witrynie Azure Portal")
+![Filtruj dla Microsoft Genomics na Azure Portal](./media/quickstart-run-genomics-workflow-portal/genomics-filter-box.png "Filtruj dla Microsoft Genomics na Azure Portal")
 
 
 
 Wybierz utworzone konto usługi Genomics, przejdź do pozycji **Klucze dostępu** i pobierz plik konfiguracji.
 
-![Pobieranie pliku konfiguracji z usługi Microsoft Genomics](./media/quickstart-run-genomics-workflow-portal/genomics-mygenomicsaccount-box.png "Pobieranie pliku konfiguracji z usługi Microsoft Genomics")
+![Pobierz plik konfiguracji z Microsoft Genomics](./media/quickstart-run-genomics-workflow-portal/genomics-mygenomicsaccount-box.png "Pobierz plik konfiguracji z Microsoft Genomics")
 
 
 Przetestuj działanie klienta Microsoft Genomics Python przy użyciu następującego polecenia:
@@ -121,8 +121,8 @@ Skonfiguruj konto usługi Storage w sposób pokazany na wcześniejszej ilustracj
  |Grupa zasobów       | MyResourceGroup       |  Możesz wybrać tę samą grupę zasobów co w przypadku konta usługi Genomics. Prawidłowe nazwy grup zasobów opisano w artykule [Reguły nazewnictwa](https://docs.microsoft.com/azure/architecture/best-practices/naming-conventions) |
  |Nazwa konta magazynu         | MyStorageAccount     |Wybierz unikatowy identyfikator konta. Aby uzyskać informacje o prawidłowych nazwach, zobacz [Reguły nazewnictwa](https://docs.microsoft.com/azure/architecture/best-practices/naming-conventions) |
  |Lokalizacja                  | Zachodnie stany USA 2                  | Użyj tej samej lokalizacji co Twoje konto usługi Genomics, aby zredukować opłaty za ruch wychodzący i zmniejszyć opóźnienia.  | 
- |Wydajność                  | Standardowa (Standard)                   | Wartość domyślna to Standardowa. Aby uzyskać więcej szczegółowych informacji o kontach magazynu w warstwie Standardowa i Premium, zobacz [Wprowadzenie do usługi Microsoft Azure Storage](https://docs.microsoft.com/azure/storage/common/storage-introduction)    |
- |Rodzaj konta       | Magazyn obiektów Blob       |  Magazyn obiektów blob może być 2–5 razy szybszy od konta ogólnego przeznaczenia w przypadku pobierania i przekazywania. |
+ |Wydajność                  | Standardowa                   | Wartość domyślna to Standardowa. Aby uzyskać więcej szczegółowych informacji o kontach magazynu w warstwie Standardowa i Premium, zobacz [Wprowadzenie do usługi Microsoft Azure Storage](https://docs.microsoft.com/azure/storage/common/storage-introduction)    |
+ |Rodzaj konta       | Blob Storage       |  Magazyn obiektów blob może być 2–5 razy szybszy od konta ogólnego przeznaczenia w przypadku pobierania i przekazywania. |
  |Replikacja                  | Magazyn lokalnie nadmiarowy                  | Magazyn lokalnie nadmiarowy replikuje dane w centrum danych w regionie, w którym utworzono konto magazynu. Aby uzyskać więcej informacji, zobacz [Replikacja usługi Azure Storage](https://docs.microsoft.com/azure/storage/common/storage-redundancy)    |
  |Warstwa dostępu                  | Gorąca                   | Gorąca warstwa dostępu oznacza, że dostęp do obiektów na koncie magazynu będzie uzyskiwany częściej.    |
 
@@ -149,7 +149,7 @@ Aby uruchomić przepływ pracy za pośrednictwem usługi Microsoft Genomics, edy
 Otwórz plik config.txt pobrany z konta usługi Genomics. Sekcje, które należy określić, to klucz subskrypcji oraz sześć elementów w dolnej części, nazwa konta magazynu, klucz i nazwa kontenera dla danych wejściowych i wyjściowych. Możesz znaleźć te informacje, przechodząc w portalu do sekcji **Klucze dostępu** konta magazynu lub bezpośrednio z poziomu Eksploratora usługi Azure Storage.  
 
 
-![Konfiguracja usługi Genomics](./media/quickstart-run-genomics-workflow-portal/genomics-config.png "Konfiguracja usługi Genomics")
+![Konfiguracja genomiki](./media/quickstart-run-genomics-workflow-portal/genomics-config.png "Konfiguracja genomiki")
 
 
 Jeśli chcesz uruchomić GATK4, ustaw parametr `process_name` na `gatk4`.

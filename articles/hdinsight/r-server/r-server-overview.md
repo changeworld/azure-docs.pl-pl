@@ -8,12 +8,12 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: overview
 ms.date: 06/12/2019
-ms.openlocfilehash: bd9b9edde0f4c5e3bea6e31342298f2df5a2b5fe
-ms.sourcegitcommit: 3486e2d4eb02d06475f26fbdc321e8f5090a7fac
+ms.openlocfilehash: 782c860ca50c1ef12eda1ec33f29c5103b396349
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/31/2019
-ms.locfileid: "73241869"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73665284"
 ---
 # <a name="what-is-ml-services-in-azure-hdinsight"></a>Co to jest usługa ML w usłudze Azure HDInsight
 
@@ -23,7 +23,7 @@ Usługi ML w usłudze HDInsight zapewniają najnowsze możliwości analizy opart
 
 Węzeł brzegowy klastra zapewnia wygodne miejsce do łączenia się z klastrem i uruchamiania skryptów języka R. W węźle brzegowym można uruchamiać równoległe funkcje rozproszone skalowania na wielu rdzeniach serwera węzła brzegowego. Można je również uruchamiać w węzłach klastra przy użyciu mapy usługi Hadoop skalowania w celu zmniejszenia lub Apache Spark kontekstów obliczeniowych.
 
-Modele lub przewidywania powstałe w wyniku analizy mogą być pobierane do użytku lokalnego. Mogą również działać w innym miejscu na platformie Azure, w szczególności za pomocą [usługi sieci web](../../machine-learning/studio/publish-a-machine-learning-web-service.md) [Azure Machine Learning Studio (klasycznej)](https://studio.azureml.net) .
+Modele lub przewidywania powstałe w wyniku analizy mogą być pobierane do użytku lokalnego. Mogą również działać w innym miejscu na platformie Azure, w szczególności za pomocą [usługi sieci web](../../machine-learning/studio/deploy-a-machine-learning-web-service.md) [Azure Machine Learning Studio (klasycznej)](https://studio.azureml.net) .
 
 ## <a name="get-started-with-ml-services-on-hdinsight"></a>Wprowadzenie do usługi l Services w usłudze HDInsight
 

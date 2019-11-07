@@ -8,12 +8,12 @@ ms.date: 10/11/2019
 ms.author: normesta
 ms.reviewer: jamesbak
 ms.subservice: data-lake-storage-gen2
-ms.openlocfilehash: d843e288297db656cca6e2a07f2e1f3322ebfa89
-ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
+ms.openlocfilehash: 99863f68c20a2f95dfc744e13a977bf3ccbbf639
+ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/13/2019
-ms.locfileid: "72299656"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73580427"
 ---
 # <a name="introduction-to-azure-data-lake-storage-gen2"></a>Wprowadzenie do Azure Data Lake Storage Gen2
 
@@ -43,7 +43,7 @@ W przeszłości Analiza oparta na chmurze musiała być naruszona w obszarach wy
 
 -   **Koszt ekonomiczny**: Data Lake Storage Gen2 oferuje niską wydajność magazynu i transakcji. W miarę jak dane są przenoszone przez pełny cykl życia, opłaty są naliczane przy użyciu wbudowanych funkcji, takich jak [cykl życia usługi Azure Blob Storage](storage-lifecycle-management-concepts.md).
 
--   **Zoptymalizowany sterownik**: Sterownik ABFS jest [zoptymalizowany pod](data-lake-storage-abfs-driver.md) kątem analizy danych Big Data. Odpowiednie interfejsy API REST są nadane przez punkt końcowy `dfs.core.windows.net`.
+-   **Zoptymalizowany sterownik**: Sterownik ABFS jest [zoptymalizowany pod](data-lake-storage-abfs-driver.md) kątem analizy danych Big Data. Odpowiednie interfejsy API REST są przyłączone do `dfs.core.windows.net`punktu końcowego.
 
 ### <a name="scalability"></a>Skalowalność
 
@@ -83,7 +83,7 @@ Kilka platform Open Source obsługuje Data Lake Storage Gen2. Te platformy są w
 
 ## <a name="supported-azure-services"></a>Obsługiwane usługi platformy Azure
 
-Data Lake Storage Gen2 obsługuje kilka usług platformy Azure, których można użyć do pozyskiwania danych, wykonywania analiz i tworzenia reprezentacji wizualnych. Aby zapoznać się z listą obsługiwanych usług platformy Azure, zobacz [integrowanie Azure Data Lake Storage z usługami platformy Azure](data-lake-store-integrate-with-azure-services.md).
+Data Lake Storage Gen2 obsługuje kilka usług platformy Azure, których można użyć do pozyskiwania danych, wykonywania analiz i tworzenia reprezentacji wizualnych. Aby zapoznać się z listą obsługiwanych usług platformy Azure, zobacz [integrowanie Azure Data Lake Storage z usługami platformy Azure](data-lake-storage-integrate-with-azure-services.md).
 
 ## <a name="next-steps"></a>Następne kroki
 
@@ -92,4 +92,4 @@ W poniższych artykułach opisano niektóre główne koncepcje Data Lake Storage
 - [Hierarchiczna przestrzeń nazw](data-lake-storage-namespace.md)
 - [Tworzenie konta magazynu](data-lake-storage-quickstart-create-account.md)
 - [Dostęp z wieloprotokołem do Azure Data Lake Storage](data-lake-storage-multi-protocol-access.md)
-- [Integruj Azure Data Lake Storage z usługami platformy Azure](data-lake-store-integrate-with-azure-services.md);
+- [Integruj Azure Data Lake Storage z usługami platformy Azure](data-lake-storage-integrate-with-azure-services.md);
