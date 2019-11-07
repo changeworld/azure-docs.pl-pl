@@ -10,12 +10,12 @@ keywords: Azure Automation, DSC, PowerShell, Konfiguracja żądanego stanu, zarz
 ms.date: 11/04/2019
 ms.custom: mvc
 ms.topic: overview
-ms.openlocfilehash: 0178f27c39c065399208e7fc5afe7352ba4f8e30
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
-ms.translationtype: HT
+ms.openlocfilehash: 57dbfa0c2063c2059955294ccc1337bb76b72614
+ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73502002"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73606086"
 ---
 # <a name="what-is-azure-arc-for-servers"></a>Co to jest usługa Azure ARC dla serwerów
 
@@ -83,7 +83,7 @@ Zapoznaj się z sekcją [Konfiguracja serwera proxy](quickstart-onboard-powershe
 
 ## <a name="register-the-required-resource-providers"></a>Rejestrowanie wymaganych dostawców zasobów
 
-Po zatwierdzeniu rejestracji flagi funkcji należy zarejestrować wymaganych dostawców zasobów.
+Aby można było korzystać z usługi Azure ARC dla serwerów, należy zarejestrować wymaganych dostawców zasobów.
 
 * **Microsoft. HybridCompute**
 * **Microsoft. GuestConfiguration**

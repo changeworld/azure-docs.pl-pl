@@ -1,5 +1,5 @@
 ---
-title: 'Szybki start: Azure Security Center — dołączanie komputerów z systemem Windows do usługi Security Center | Microsoft Docs'
+title: Dołączanie komputerów z systemem Windows do usługi Azure Security Center
 description: Ten przewodnik Szybki start przedstawia sposób aprowizowania agenta Microsoft Monitoring Agent na komputerze z systemem Windows.
 services: security-center
 documentationcenter: na
@@ -14,14 +14,14 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/3/2018
 ms.author: memildin
-ms.openlocfilehash: 46fffc40b315109c348247ac09f02f9bb8dbb3b7
-ms.sourcegitcommit: 8a717170b04df64bd1ddd521e899ac7749627350
+ms.openlocfilehash: 417d8379d019a9ef0da41638cba4a1f9cb7b8bc2
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/23/2019
-ms.locfileid: "71202803"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73686505"
 ---
-# <a name="quickstart-onboard-windows-computers-to-azure-security-center"></a>Szybki start: Dołączanie komputerów z systemem Windows do usługi Azure Security Center
+# <a name="quickstart-onboard-windows-computers-to-azure-security-center"></a>Szybki start: dołączanie komputerów z systemem Windows do usługi Azure Security Center
 Po dołączeniu subskrypcji platformy Azure możesz włączyć usługę Security Center dla zasobów uruchomionych poza platformą Azure, np. lokalnych lub znajdujących się w innych chmurach, aprowizując agenta Microsoft Monitoring Agent.
 
 Ten przewodnik Szybki start przedstawia sposób instalowania agenta Microsoft Monitoring Agent na komputerze z systemem Windows.
@@ -33,7 +33,7 @@ Musisz korzystać z warstwy cenowej Standardowa usługi Security Center przed ro
 
 ## <a name="add-new-windows-computer"></a>Dodawanie nowego komputera z systemem Windows
 
-1. Zaloguj się do [Azure Portal](https://azure.microsoft.com/features/azure-portal/).
+1. Zaloguj się w witrynie [Azure Portal](https://azure.microsoft.com/features/azure-portal/).
 2. W menu platformy **Microsoft Azure** wybierz pozycję **Security Center**. Zostanie otwarte okno **Security Center — Przegląd**.
 
    ![Security Center — Przegląd][2]
@@ -41,7 +41,7 @@ Musisz korzystać z warstwy cenowej Standardowa usługi Security Center przed ro
 3. W menu głównym usługi Security Center wybierz pozycję **Wprowadzenie**.
 4. Wybierz kartę **Rozpoczęcie pracy**.
 
-   ![Rozpoczęcie pracy][3]
+   ![Rozpocznij][3]
 
 5. Kliknij przycisk **Konfiguruj** w obszarze **Dodaj nowe komputery spoza platformy Azure**. Zostanie wyświetlona lista obszarów roboczych usługi Log Analytics. Jeśli ma to zastosowanie, lista zawiera domyślny obszar roboczy utworzony przez usługę Security Center po włączeniu automatycznej aprowizacji. Wybierz ten obszar roboczy lub inny obszar roboczy, którego chcesz użyć.
 
@@ -64,7 +64,7 @@ Teraz musisz zainstalować pobrany plik na komputerze docelowym.
 4. Na stronie **Folder docelowy** zmień lub pozostaw domyślny folder instalacji, a następnie wybierz pozycję **Dalej**.
 5. Na stronie **Opcje instalacji agenta** wybierz połączenie agenta z usługą Azure Log Analytics, a następnie wybierz pozycję **Dalej**.
 6. Na stronie **Azure Log Analytics** wklej **identyfikator obszaru roboczego** i **klucz obszaru roboczego (klucz podstawowy)** skopiowany do Notatnika w ramach poprzedniej procedury.
-7. Jeśli komputer powinien wysyłać raporty do obszaru roboczego usługi Log Analytics w chmurze Azure dla instytucji rządowych, wybierz pozycję **Azure — instytucje rządowe USA** z listy rozwijanej **Azure Cloud**.  Jeśli komputer musi komunikować się z usługą Log Analytics za pośrednictwem serwera proxy, wybierz pozycję **Zaawansowane** i podaj adres URL i numer portu serwera proxy.
+7. Jeśli komputer powinien wysyłać raporty do obszaru roboczego usługi Log Analytics w chmurze Azure dla instytucji rządowych, wybierz pozycję **Azure — instytucje rządowe USA** z listy rozwijanej **Azure Cloud**. Jeśli komputer musi komunikować się z usługą Log Analytics za pośrednictwem serwera proxy, wybierz pozycję **Zaawansowane** i podaj adres URL i numer portu serwera proxy.
 8. Po zdefiniowaniu niezbędnych ustawień konfiguracji wybierz pozycję **Dalej**.
 
    ![Instalowanie agenta][5]

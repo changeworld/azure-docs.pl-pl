@@ -1,5 +1,5 @@
 ---
-title: Porównanie bieżącej wersji usługi Azure Data Factory z wersją 1 usługi Data Factory | Microsoft Docs
+title: Porównanie bieżącej wersji usługi Azure Data Factory z wersją 1 usługi Data Factory
 description: Ten artykuł zawiera porównanie bieżącej wersji usługi Azure Data Factory z wersją 1 usługi Azure Data Factory.
 services: data-factory
 documentationcenter: ''
@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.topic: overview
 ms.date: 04/09/2018
 ms.author: makromer
-ms.openlocfilehash: 4cdb517e644d55504bfdafbd3bacdfd4bfa0b36c
-ms.sourcegitcommit: 75a56915dce1c538dc7a921beb4a5305e79d3c7a
+ms.openlocfilehash: cab4f156aa1fb2fa4d3b122377be1b28337f15a9
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/24/2019
-ms.locfileid: "68479300"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73681588"
 ---
 # <a name="compare-azure-data-factory-with-data-factory-version-1"></a>Porównanie bieżącej wersji usługi Azure Data Factory z wersją 1 usługi Data Factory
 Ten artykuł zawiera porównanie bieżącej wersji usługi Data Factory z wersją 1 usługi Data Factory. Aby zapoznać się z wprowadzeniem do bieżącej wersji usługi Data Factory, zobacz [Wprowadzenie do usługi Data Factory](introduction.md). Aby zapoznać się z wprowadzeniem do wersji 1 usługi Data Factory, zobacz [Wprowadzenie do usługi Azure Data Factory](v1/data-factory-introduction.md). 
@@ -24,7 +24,7 @@ Ten artykuł zawiera porównanie bieżącej wersji usługi Data Factory z wersj�
 ## <a name="feature-comparison"></a>Porównanie funkcji
 Poniższa tabela zawiera porównanie funkcji bieżącej wersji usługi Data Factory oraz funkcji wersji 1 usługi Data Factory. 
 
-| Cecha | Wersja 1 | Bieżąca wersja | 
+| Funkcja | Wersja 1 | Bieżąca wersja | 
 | ------- | --------- | --------- | 
 | Zestawy danych | Nazwany widok danych odwołujący się do danych, które mają być używane w działaniach jako dane wejściowe lub wyjściowe. Zestawy danych identyfikują dane w różnych magazynach danych, takich jak tabele, pliki, foldery i dokumenty. Na przykład zestaw danych obiektów blob platformy Azure określa kontener obiektów blob i folder w usłudze Azure Blob Storage, z których działanie ma odczytywać dane.<br/><br/>**Dostępność** definiuje model tworzenia wycinków okien przetwarzania dla zestawu danych (na przykład co godzinę, codziennie itd.). | Zestawy danych są takie same w bieżącej wersji. Nie trzeba jednak definiować harmonogramów **dostępności** dla zestawów danych. Można zdefiniować zasób wyzwalający, który może planować potoki z paradygmatu harmonogramu zegarowego. Aby uzyskać więcej informacji, zobacz [Triggers](concepts-pipeline-execution-triggers.md#triggers) (Wyzwalacze) i [Datasets](concepts-datasets-linked-services.md) (Zestawy danych). | 
 | Połączone usługi | Połączone usługi działają podobnie do parametrów połączenia, umożliwiając definiowanie informacji dla usługi Data Factory, które są niezbędne do nawiązywania połączeń z zasobami zewnętrznymi. | Połączone usługi są takie same jak w usłudze Data Factory w wersji 1, ale z nową właściwością **connectVia** do korzystania ze środowiska obliczeniowego Integration Runtime bieżącej wersji usługi Data Factory. Aby uzyskać więcej informacji, zobacz [Infrastruktura Integration Runtime w usłudze Azure Data Factory](concepts-integration-runtime.md) i [Linked service properties for Azure Blob Storage](connector-azure-blob-storage.md#linked-service-properties) (Właściwości usługi połączonej dla usługi Azure Blob Storage). |
@@ -118,7 +118,7 @@ Aby uzyskać więcej informacji, zobacz [Difference between custom activity in D
 
 - **.NET SDK**: zestaw .NET SDK został zaktualizowany w bieżącej wersji.
 
-- **PowerShell**: polecenia cmdlet programu PowerShell zostały zaktualizowane w bieżącej wersji. Polecenia cmdlet w bieżącej wersji zawierają w nazwie ciąg **DataFactoryV2**, na przykład: Get-AzDataFactoryV2. 
+- **PowerShell**: polecenia cmdlet programu PowerShell zostały zaktualizowane w bieżącej wersji. Polecenia cmdlet dla bieżącej wersji mają **nazwie datafactoryv2** w nazwie, na przykład: Get-AzDataFactoryV2. 
 
 - **Python SDK**: ten zestaw SDK jest nowym składnikiem w bieżącej wersji.
 
@@ -131,7 +131,7 @@ Zestawy SDK, które zostały zaktualizowane w bieżącej wersji, nie są zgodne 
 | &nbsp; | Wersja 2 | Wersja 1 |
 | ------ | -- | -- | 
 | Azure Portal | [Tak](quickstart-create-data-factory-portal.md) | Nie |
-| Azure PowerShell | [Tak](quickstart-create-data-factory-powershell.md) | [Tak](data-factory-build-your-first-pipeline-using-powershell.md) |
+| Program Azure PowerShell | [Tak](quickstart-create-data-factory-powershell.md) | [Tak](data-factory-build-your-first-pipeline-using-powershell.md) |
 | Zestaw SDK .NET | [Tak](quickstart-create-data-factory-dot-net.md) | [Tak](data-factory-build-your-first-pipeline-using-vs.md) |
 | Interfejs API REST | [Tak](quickstart-create-data-factory-rest-api.md) | [Tak](data-factory-build-your-first-pipeline-using-rest-api.md) |
 | Zestaw SDK dla języka Python | [Tak](quickstart-create-data-factory-python.md) | Nie |
@@ -146,4 +146,4 @@ W bieżącej wersji można także monitorować fabryki danych za pomocą usługi
 
 
 ## <a name="next-steps"></a>Następne kroki
-Dowiedz się, jak utworzyć fabrykę danych, wykonując instrukcje krok po kroku zamieszczone w następujących przewodnikach Szybki start: [PowerShell](quickstart-create-data-factory-powershell.md), [.NET](quickstart-create-data-factory-dot-net.md), [Python](quickstart-create-data-factory-python.md), [REST API](quickstart-create-data-factory-rest-api.md). 
+Dowiedz się, jak utworzyć fabrykę danych, wykonując instrukcje krok po kroku zamieszczone w przewodnikach Szybki start dotyczących [programu PowerShell](quickstart-create-data-factory-powershell.md), [platformy .NET](quickstart-create-data-factory-dot-net.md), [języka Python](quickstart-create-data-factory-python.md) i [interfejsu API REST](quickstart-create-data-factory-rest-api.md). 

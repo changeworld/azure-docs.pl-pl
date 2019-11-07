@@ -1,5 +1,5 @@
 ---
-title: Azure Security Center przewodniku szybki start — dołączanie Azure Stack maszyn wirtualnych do Security Center | Microsoft Docs
+title: Dołączanie Azure Stack maszyn wirtualnych do Azure Security Center
 description: Ten przewodnik Szybki Start przedstawia sposób aprowizacji rozszerzenia maszyny wirtualnej Azure Monitor, aktualizacji i zarządzania konfiguracją na maszynach wirtualnych Azure Stack.
 services: security-center
 documentationcenter: na
@@ -14,14 +14,14 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 04/02/2019
 ms.author: fiseraci
-ms.openlocfilehash: 1772fd34a2d79b725b2b5ccaa66adb0b251b7e1d
-ms.sourcegitcommit: 8a717170b04df64bd1ddd521e899ac7749627350
+ms.openlocfilehash: c186dcb2d7d7d423f5c001bdb4d3f3503beebd9c
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/23/2019
-ms.locfileid: "71202852"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73686527"
 ---
-# <a name="quickstart--onboard-your-azure-stack-virtual-machines-to-security-center"></a>Szybki start:  Dołączanie Azure Stack maszyn wirtualnych do Security Center
+# <a name="quickstart-onboard-your-azure-stack-virtual-machines-to-security-center"></a>Szybki Start: dołączanie Azure Stack maszyn wirtualnych do Security Center
 Po dołączeniu subskrypcji platformy Azure można włączyć Security Center, aby chronić maszyny wirtualne uruchomione w Azure Stack przez dodanie rozszerzenia maszyny wirtualnej **Azure monitor, aktualizacji i zarządzania konfiguracją** z Azure Stack transakcji.
 
 W tym przewodniku szybki start przedstawiono sposób dodawania rozszerzenia maszyny wirtualnej **Azure monitor, aktualizacji i zarządzania konfiguracją** na maszynie wirtualnej (systemy Linux i Windows są obsługiwane) w systemie Azure Stack.
@@ -33,7 +33,7 @@ Przed rozpoczęciem tego przewodnika Szybki Start musisz mieć subskrypcję plat
 
 ## <a name="select-your-workspace-in-azure-security-center"></a>Wybierz obszar roboczy w Azure Security Center
 
-1. Zaloguj się do [Azure Portal](https://azure.microsoft.com/features/azure-portal/).
+1. Zaloguj się w witrynie [Azure Portal](https://azure.microsoft.com/features/azure-portal/).
 2. W menu platformy **Microsoft Azure** wybierz pozycję **Security Center**. Zostanie otwarte okno **Security Center — Przegląd**. 
 
    ![Security Center — Przegląd][2]
@@ -41,7 +41,7 @@ Przed rozpoczęciem tego przewodnika Szybki Start musisz mieć subskrypcję plat
 3. W menu głównym usługi Security Center wybierz pozycję **Wprowadzenie**.
 4. Wybierz kartę **Rozpoczęcie pracy**.
 
-   ![Rozpoczęcie pracy][3]
+   ![Rozpocznij][3]
 
 5. Kliknij przycisk **Konfiguruj** w obszarze **Dodaj nowe komputery spoza platformy Azure**. Zostanie wyświetlona lista obszarów roboczych usługi Log Analytics. Jeśli ma to zastosowanie, lista zawiera domyślny obszar roboczy utworzony przez usługę Security Center po włączeniu automatycznej aprowizacji. Wybierz ten obszar roboczy lub inny obszar roboczy, do którego maszyna wirtualna Azure Stack ma raportować dane zabezpieczeń.
 
@@ -69,7 +69,7 @@ Należy teraz dodać rozszerzenie maszyny wirtualnej **Azure monitor, aktualizac
 > Jeśli nie widzisz rozszerzenia **Azure monitor, aktualizacji i zarządzania konfiguracją** na liście w portalu Marketplace, skontaktuj się z operatorem Azure Stack, aby go udostępnić.
 
 6. W bloku konfiguracja **rozszerzenia instalacji** wklej **Identyfikator obszaru roboczego** i **klucz obszaru roboczego (klucz podstawowy)** skopiowane do Notatnika w poprzedniej procedurze.
-7.  Po wprowadzeniu niezbędnych ustawień konfiguracji kliknij przycisk **OK**.
+7. Po wprowadzeniu niezbędnych ustawień konfiguracji kliknij przycisk **OK**.
 8. Po zakończeniu instalacji rozszerzenia jego stan zostanie wyświetlony po **pomyślnym zainicjowaniu obsługi administracyjnej**. Pojawienie się maszyny wirtualnej w portalu Security Center może potrwać do godziny.
 
 Aby uzyskać więcej informacji na temat instalowania i konfigurowania agenta dla systemu Windows, zobacz [łączenie komputerów z systemem Windows](../azure-monitor/platform/agent-windows.md#install-the-agent-using-setup-wizard).

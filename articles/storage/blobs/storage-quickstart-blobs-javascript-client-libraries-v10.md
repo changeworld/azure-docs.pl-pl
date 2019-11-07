@@ -2,19 +2,19 @@
 title: Szybki Start — Tworzenie obiektu BLOB w usłudze Azure Storage przy użyciu języków JavaScript i HTML w przeglądarce
 description: Dowiedz się, jak przekazywać, wyświetlać i usuwać obiekty blob przy użyciu języka JavaScript na stronie HTML.
 services: storage
-author: KarlErickson
+author: mhopkins-msft
 ms.custom: mvc
 ms.service: storage
-ms.author: karler
+ms.author: mhopkins
 ms.date: 08/29/2019
 ms.topic: quickstart
 ms.subservice: blobs
-ms.openlocfilehash: de21791e1ae11554f7a57c17c3935c0993bea1f9
-ms.sourcegitcommit: d47a30e54c5c9e65255f7ef3f7194a07931c27df
+ms.openlocfilehash: 3eb6f68a443e29a7d4c7b4dedad38783f838dee5
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/29/2019
-ms.locfileid: "73025364"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73686671"
 ---
 <!-- Customer intent: As a web application developer I want to interface with Azure Blob storage entirely on the client so that I can build a SPA application that is able to upload and delete files on blob storage. -->
 

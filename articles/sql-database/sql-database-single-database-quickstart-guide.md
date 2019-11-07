@@ -1,5 +1,5 @@
 ---
-title: Szybki start — pojedyncze bazy danych w usłudze Azure SQL Database | Microsoft Docs
+title: Szybki Start — pojedyncze bazy danych w Azure SQL Database
 description: Dowiedz się, jak szybko rozpocząć pracę z pojedynczymi bazami danych w usłudze Azure SQL Database
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: carlr
 ms.date: 07/29/2019
-ms.openlocfilehash: 45b0b2bc7a2ef5c3cb6ca801668f7b5be7c8ac73
-ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
+ms.openlocfilehash: 279d0a2016bc3323632651db256c43121d388412
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68639994"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73687157"
 ---
 # <a name="getting-started-with-single-databases-in-azure-sql-database"></a>Wprowadzenie do pojedynczych baz danych w usłudze Azure SQL Database
 
@@ -51,7 +51,7 @@ Poniższe moduły Microsoft Learn mogą pomóc Ci bezpłatnie poznać Azure SQL 
 - [Opracowywanie i Konfigurowanie aplikacji ASP.NET, która wysyła zapytanie do Azure SQL Database](https://docs.microsoft.com/learn/modules/develop-app-that-queries-azure-sql/)
 - [Zabezpieczanie Azure SQL Database](https://docs.microsoft.com/learn/modules/secure-your-azure-sql-database/)
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 - Przejrzyj [ogólną listę funkcji obsługiwanych w usłudze Azure SQL Database](sql-database-features.md).
 - Dowiedz się, jak [lepiej zabezpieczyć bazę danych](sql-database-security-tutorial.md).

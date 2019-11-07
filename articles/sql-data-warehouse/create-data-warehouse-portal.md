@@ -1,5 +1,5 @@
 ---
-title: 'Szybki start: Tworzenie i wykonywanie zapytań Azure SQL Data Warehouse-Azure Portal | Microsoft Docs'
+title: 'Szybki Start: Tworzenie i wysyłanie zapytań do magazynu danych — Azure Portal'
 description: Utwórz i zbadaj magazyn danych za pomocą Azure SQL Data Warehouse w Azure Portal.
 services: sql-data-warehouse
 author: XiaoyuMSFT
@@ -10,15 +10,15 @@ ms.subservice: development
 ms.date: 05/28/2019
 ms.author: xiaoyul
 ms.reviewer: igorstan
-ms.custom: sqlfreshmay19
-ms.openlocfilehash: 83475af3cfdd83e718243d80b84599d53716a5d5
-ms.sourcegitcommit: aebe5a10fa828733bbfb95296d400f4bc579533c
+ms.custom: seo-lt-2019
+ms.openlocfilehash: 5acd9688f5029c2a62243254f06160b9907797dd
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/05/2019
-ms.locfileid: "70375837"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73686215"
 ---
-# <a name="quickstart-create-and-query-an-azure-sql-data-warehouse-in-the-azure-portal"></a>Szybki start: Utwórz i zbadaj Azure SQL Data Warehouse w Azure Portal
+# <a name="quickstart-create-and-query-an-azure-sql-data-warehouse-in-the-azure-portal"></a>Szybki Start: Tworzenie i wykonywanie zapytań dotyczących Azure SQL Data Warehouse w Azure Portal
 
 Szybko Twórz i badaj Azure SQL Data Warehouse przy użyciu Azure Portal.
 
@@ -37,7 +37,7 @@ Zaloguj się w witrynie [Azure Portal](https://portal.azure.com/).
 
 ## <a name="create-a-data-warehouse"></a>Tworzenie magazynu danych
 
-Azure SQL Data Warehouse jest tworzony ze zdefiniowanym zestawem [zasobów obliczeniowych](memory-and-concurrency-limits.md). Baza danych jest tworzona w [grupie zasobów platformy Azure](../azure-resource-manager/resource-group-overview.md) oraz na [serwerze logicznym SQL platformy Azure](../sql-database/sql-database-logical-servers.md). 
+Azure SQL Data Warehouse jest tworzony ze zdefiniowanym zestawem [zasobów obliczeniowych](memory-concurrency-limits.md). Baza danych jest tworzona w [grupie zasobów platformy Azure](../azure-resource-manager/resource-group-overview.md) oraz na [serwerze logicznym SQL platformy Azure](../sql-database/sql-database-logical-servers.md). 
 
 Wykonaj następujące kroki, aby utworzyć SQL Data Warehouse zawierający przykładowe dane AdventureWorksDW. 
 
@@ -67,12 +67,12 @@ Wykonaj następujące kroki, aby utworzyć SQL Data Warehouse zawierający przyk
     | **Nazwa serwera** | Dowolna nazwa unikatowa w skali globalnej | Prawidłowe nazwy serwera opisano w artykule [Naming rules and restrictions](https://docs.microsoft.com/azure/architecture/best-practices/naming-conventions) (Reguły i ograniczenia nazewnictwa). |
     | **Identyfikator logowania administratora serwera** | Dowolna prawidłowa nazwa | Prawidłowe nazwy identyfikatorów logowania opisano w artykule [Database Identifiers](https://docs.microsoft.com/sql/relational-databases/databases/database-identifiers) (Identyfikatory baz danych).|
     | **Hasło** | Dowolne prawidłowe hasło | Hasło musi mieć co najmniej osiem znaków i musi zawierać znaki z trzech z następujących kategorii: wielkie litery, małe litery, cyfry i znaki inne niż alfanumeryczne. |
-    | **Location** | Dowolna prawidłowa lokalizacja | Aby uzyskać informacje na temat regionów, zobacz temat [Regiony platformy Azure](https://azure.microsoft.com/regions/). |
+    | **Lokalizacja** | Dowolna prawidłowa lokalizacja | Aby uzyskać informacje na temat regionów, zobacz temat [Regiony systemu Azure](https://azure.microsoft.com/regions/). |
     ||||
 
     ![tworzenie serwera bazy danych](media/load-data-from-azure-blob-storage-using-polybase/create-database-server.png)
 
-5. Kliknij przycisk **wybierz**.
+5. Kliknij pozycję **Wybierz**.
 
 6. Kliknij pozycję **poziom wydajności** , aby określić konfigurację wydajności hurtowni danych.
 
@@ -80,7 +80,7 @@ Wykonaj następujące kroki, aby utworzyć SQL Data Warehouse zawierający przyk
 
     ![konfigurowanie wydajności](media/load-data-from-azure-blob-storage-using-polybase/configure-performance.png)
 
-8. Kliknij przycisk **zastosować**.
+8. Kliknij przycisk **Zastosuj**.
 
 9. Po ukończeniu formularza SQL Data Warehouse kliknij przycisk **Utwórz** , aby zainicjować obsługę administracyjną bazy danych. Aprowizacja zajmuje kilka minut.
 
@@ -113,7 +113,7 @@ Usługa SQL Data Warehouse tworzy zaporę na poziomie serwera. Ta zapora uniemo�
 
 1. Aby dodać bieżący adres IP do nowej reguły zapory, kliknij pozycję **Dodaj adres IP klienta** na pasku narzędzi. Reguła zapory może otworzyć port 1433 dla pojedynczego adresu IP lub zakresu adresów IP.
 
-1. Kliknij polecenie **Zapisz**. Dla bieżącego adresu IP zostanie utworzona reguła zapory na poziomie serwera otwierająca port 1433 na serwerze logicznym.
+1. Kliknij pozycję **Zapisz**. Dla bieżącego adresu IP zostanie utworzona reguła zapory na poziomie serwera otwierająca port 1433 na serwerze logicznym.
 
 1. Kliknij przycisk **OK**, a następnie zamknij stronę **Ustawienia zapory**.
 
@@ -144,8 +144,8 @@ W tej sekcji używany jest program [SQL Server Management Studio](/sql/ssms/down
    | :------ | :-------------- | :---------- |
    | Typ serwera | Aparat bazy danych | Ta wartość jest wymagana |
    | Nazwa serwera | W pełni kwalifikowana nazwa serwera | Oto przykład: **mynewserver-20180430.Database.Windows.NET**. |
-   | Authentication | Uwierzytelnianie serwera SQL | Uwierzytelnianie SQL to jedyny typ uwierzytelniania skonfigurowany w tym samouczku. |
-   | Zaloguj | Konto administratora serwera | Konto określone podczas tworzenia serwera. |
+   | Authentication | Uwierzytelnianie programu SQL Server | Uwierzytelnianie SQL to jedyny typ uwierzytelniania skonfigurowany w tym samouczku. |
+   | Zaloguj się | Konto administratora serwera | Konto określone podczas tworzenia serwera. |
    | Hasło | Hasło konta administratora serwera | Hasło określone podczas tworzenia serwera. |
    ||||
 
@@ -168,7 +168,7 @@ Usługa SQL Data Warehouse używa T-SQL jako języka zapytań. Aby otworzyć okn
     SELECT * FROM sys.databases
     ```
 
-3. Kliknij przycisk **Execute** (Wykonaj). W wynikach zapytania są widoczne dwie bazy danych: **master** i **mySampleDataWarehouse**.
+3. Kliknij polecenie **Execute** (Wykonaj). W wynikach zapytania są widoczne dwie bazy danych: **master** i **mySampleDataWarehouse**.
 
     ![Wykonywanie zapytań kierowanych do baz danych](media/create-data-warehouse-portal/query-databases.png)
 
