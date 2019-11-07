@@ -8,12 +8,12 @@ ms.service: cosmos-db
 ms.subservice: cosmosdb-cassandra
 ms.topic: overview
 ms.date: 09/24/2018
-ms.openlocfilehash: 53c71afc38e7b122a0ae1d066460b8df91132963
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
-ms.translationtype: MT
+ms.openlocfilehash: 0e1a8e47534073f64075540d74d6195abc304fa2
+ms.sourcegitcommit: 6c2c97445f5d44c5b5974a5beb51a8733b0c2be7
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73152265"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73621476"
 ---
 # <a name="apache-cassandra-features-supported-by-azure-cosmos-db-cassandra-api"></a>Funkcje bazy danych Apache Cassandra obsługiwane przez interfejs API Cassandra usługi Azure Cosmos DB 
 
@@ -96,13 +96,13 @@ Interfejs API Cassandra usługi Azure Cosmos DB obsługuje następujące funkcje
 
 ## <a name="cassandra-api-limits"></a>Limity interfejs API Cassandra
 
-Interfejs API Cassandra usługi Azure Cosmos DB nie ma żadnych ograniczeń dotyczących rozmiaru danych przechowywanych w tabeli. Można przechowywać setki terabajtów lub petabajtów danych przy zapewnieniu uznania limitów klucza partycji. Podobnie każdy odpowiednik jednostki lub wiersza nie ma żadnych ograniczeń dotyczących liczby kolumn, jednak łączny rozmiar jednostki nie powinien przekraczać 2 MB. Dane na klucz partycji nie mogą być dłuższe niż 10 GB, podobnie jak w przypadku wszystkich innych interfejsów API.
+Interfejs API Cassandra usługi Azure Cosmos DB nie ma żadnych ograniczeń dotyczących rozmiaru danych przechowywanych w tabeli. Można przechowywać setki terabajtów lub petabajtów danych przy zapewnieniu uznania limitów klucza partycji. Podobnie każdy odpowiednik jednostki lub wiersza nie ma żadnych limitów liczby kolumn. Jednak łączny rozmiar jednostki nie powinien przekraczać 2 MB. Dane na klucz partycji nie mogą być dłuższe niż 10 GB, podobnie jak w przypadku wszystkich innych interfejsów API.
 
 ## <a name="tools"></a>Narzędzia 
 
 Interfejs API Cassandra usługi Azure Cosmos DB to platforma usług zarządzanych. Nie wymaga żadnego narzutu związanego z zarządzaniem ani narzędzi, takich jak moduł odzyskiwania pamięci, wirtualna maszyna Java (JVM) i narzędzie nodetool do zarządzania klastrem. Obsługuje narzędzia, takie jak cqlsh, korzystające ze zgodności binarnej z językiem CQL w wersji 4. 
 
-* Eksplorator danych witryny Azure Portal, metryki, dzienniki diagnostyczne, program PowerShell i interfejsu wiersza polecenia są innymi obsługiwanymi mechanizmami do zarządzania kontem.
+* Azure Portal Eksplorator danych, metryki, Diagnostyka dzienników, program PowerShell i interfejs wiersza polecenia są innymi obsługiwanymi mechanizmami do zarządzania kontem.
 
 ## <a name="cql-shell"></a>Powłoka CQL  
 
@@ -136,11 +136,12 @@ Usługa Azure Cosmos DB obsługuje następujące polecenia bazy danych na kontac
 * USE 
 * INSERT 
 * SELECT 
-* AKTUALIZACJA 
+* UPDATE 
 * BATCH — obsługiwane są tylko polecenia nierejestrowane 
 * DELETE
 
-Wszystkie operacje CRUD wykonywane za poorednictwem zgodnego z CQLV4 zestaw SDK zwróci dodatkowe informacje na temat błędu, zużyte jednostki żądania. Polecenia Delete i Update muszą być obsługiwane z uwzględnieniem nadzoru zasobów, aby zapewnić prawidłowe korzystanie z zainicjowanej przepływności. 
+Wszystkie operacje CRUD, które są wykonywane za pomocą zestawu SDK zgodnego z CQL v4, zwracają dodatkowe informacje na temat liczby użytych jednostek błędu i żądania. Polecenia DELETE i UPDATE powinny być obsługiwane przez zarządzanie zasobami, które są brane pod uwagę w celu zapewnienia najbardziej wydajnego wykorzystania alokowanej przepływności.
+
 * Uwaga: jeśli wartość gc_grace_seconds została określona, musi być równa zero.
 
 ```csharp
@@ -165,9 +166,9 @@ Azure Cosmos DB obsługuje kontrolę dostępu opartą na rolach (RBAC) na potrze
 
 ## <a name="keyspace-and-table-options"></a>Opcje przestrzeni kluczy i tabeli
 
-Opcje dla nazwy regionu, klasy, replication_factor i centrum danych w poleceniu "Utwórz przestrzeń kluczy" są obecnie ignorowane. System używa podstawowej metody replikacji [dystrybucji](global-dist-under-the-hood.md) Azure Cosmos DB, aby dodać regiony. Jeśli potrzebujesz obecności danych między regionami, możesz ją włączyć na poziomie konta przy użyciu programu PowerShell, interfejsu wiersza polecenia lub portalu, aby dowiedzieć się więcej, zobacz artykuł [jak dodać regiony](how-to-manage-database-account.md#addremove-regions-from-your-database-account) . Nie można wyłączyć Durable_writes, ponieważ Azure Cosmos DB gwarantuje, że każdy zapis jest trwały. W każdym regionie Azure Cosmos DB replikuje dane w zestawie replik, który składa się z 4 replik i nie można zmodyfikować tej [konfiguracji](global-dist-under-the-hood.md) zestawu replik.
+Opcje dla nazwy regionu, klasy, replication_factor i centrum danych w poleceniu "Utwórz przestrzeń kluczy" są obecnie ignorowane. System używa podstawowej metody replikacji [dystrybucji](global-dist-under-the-hood.md) Azure Cosmos DB, aby dodać regiony. Jeśli potrzebujesz obecności danych między regionami, możesz ją włączyć na poziomie konta przy użyciu programu PowerShell, interfejsu wiersza polecenia lub portalu, aby dowiedzieć się więcej, zobacz artykuł [jak dodać regiony](how-to-manage-database-account.md#addremove-regions-from-your-database-account) . Nie można wyłączyć Durable_writes, ponieważ Azure Cosmos DB gwarantuje, że każdy zapis jest trwały. W każdym regionie Azure Cosmos DB replikuje dane przez zestaw replik składający się z czterech replik i nie można zmodyfikować tej [konfiguracji](global-dist-under-the-hood.md) zestawu replik.
  
-Wszystkie opcje są ignorowane podczas tworzenia tabeli, z wyjątkiem gc_grace_seconds, które powinny mieć wartość zero.
+Wszystkie opcje są ignorowane podczas tworzenia tabeli, z wyjątkiem gc_grace_seconds, która powinna mieć wartość zero.
 Przestrzeń kluczy i tabela mają dodatkową opcję o nazwie "cosmosdb_provisioned_throughput" o minimalnej wartości 400 RU/s. Przepływność przestrzeni kluczy umożliwia udostępnianie przepływności w wielu tabelach i jest przydatne w scenariuszach, gdy wszystkie tabele nie korzystają z zainicjowanej przepływności. Polecenie ALTER TABLE umożliwia zmianę zainicjowanej przepływności w regionach. 
 
 ```

@@ -3,15 +3,15 @@ title: 'Szybki Start: uruchamianie aplikacji w chmurze wiosny z poziomu kodu źr
 description: Dowiedz się, jak uruchomić aplikację w chmurze ze sprężyną Azure bezpośrednio z poziomu kodu źródłowego
 author: jpconnock
 ms.service: spring-cloud
-ms.topic: conceptual
+ms.topic: quickstart
 ms.date: 10/30/2019
 ms.author: jeconnoc
-ms.openlocfilehash: 573baa242c06868326568a82bc358e136f1ece2c
-ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
-ms.translationtype: MT
+ms.openlocfilehash: 524fa18dfd4c47e699ba6b9d5d7a98bbbaaf5c72
+ms.sourcegitcommit: 359930a9387dd3d15d39abd97ad2b8cb69b8c18b
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73177958"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73646770"
 ---
 # <a name="launch-your-spring-cloud-application-from-source-code"></a>Uruchamianie aplikacji w chmurze wiosny z poziomu kodu źródłowego
 
@@ -31,7 +31,7 @@ Postępując zgodnie z tym przewodnikiem Szybki Start, dowiesz się, jak:
 ## <a name="prerequisites"></a>Wymagania wstępne
 
 >[!Note]
-> Przed rozpoczęciem pracy z tym przewodnikiem Szybki Start upewnij się, że Twoja subskrypcja platformy Azure ma dostęp do chmury wiosennej platformy Azure.  Jako usługa w wersji zapoznawczej prosimy o skontaktowanie się z nami, aby można było dodać subskrypcję do listy dozwolonych.  Jeśli chcesz poznać możliwości chmury Azure wiosennej, [Wypełnij ten formularz](https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbR-LA2geqX-ZLhi-Ado1LD3tUNDk2VFpGUzYwVEJNVkhLRlcwNkZFUFZEUS4u).  Chociaż chmura Wiosenna platformy Azure jest dostępna w wersji zapoznawczej, firma Microsoft oferuje ograniczoną pomoc techniczną bez umowy SLA.  Aby uzyskać więcej informacji na temat pomocy technicznej w przypadku wersji zapoznawczych, zapoznaj się z tematem [często zadawanych pytań](https://azure.microsoft.com/support/faq/).
+> Chmura Wiosenna platformy Azure jest obecnie oferowana jako publiczna wersja zapoznawcza. Oferty publicznej wersji zapoznawczej umożliwiają klientom eksperymentowanie z nowymi funkcjami przed ich oficjalną wersją.  Funkcje i usługi publicznej wersji zapoznawczej nie są przeznaczone do użytku produkcyjnego.  Aby uzyskać więcej informacji na temat pomocy technicznej w przypadku wersji zapoznawczych, Zapisz [support Request](https://docs.microsoft.com/azure/azure-supportability/how-to-create-azure-support-request).
 
 Przed rozpoczęciem upewnij się, że Twoja subskrypcja platformy Azure ma wymagane zależności:
 
@@ -49,7 +49,7 @@ Przed rozpoczęciem upewnij się, że Twoja subskrypcja platformy Azure ma wymag
 Zainstaluj rozszerzenie chmury wiosennej platformy Azure dla interfejsu wiersza polecenia platformy Azure przy użyciu następującego polecenia
 
 ```Azure CLI
-az extension add -y --source https://azureclitemp.blob.core.windows.net/spring-cloud/spring_cloud-0.1.0-py2.py3-none-any.whl
+az extension add --name spring-cloud
 ```
 
 ## <a name="provision-a-service-instance-using-the-azure-cli"></a>Inicjowanie obsługi administracyjnej wystąpienia usługi za pomocą interfejsu wiersza polecenia platformy Azure

@@ -1,5 +1,5 @@
 ---
-title: 'Szybki start: skalowanie w poziomie zasobów obliczeniowych w usłudze Azure SQL Data Warehouse — PowerShell | Microsoft Docs'
+title: 'Szybki Start: skalowanie obliczeniowe — PowerShell '
 description: Skalowanie zasobów obliczeniowych w usłudze Azure SQL Data Warehouse za pomocą programu PowerShell. Skalowanie zasobów obliczeniowych w poziomie zapewnia lepszą wydajność, a zmniejszenie ich skali pozwala ograniczyć koszty.
 services: sql-data-warehouse
 author: Antvgski
@@ -10,14 +10,15 @@ ms.subservice: implement
 ms.date: 04/17/2018
 ms.author: anvang
 ms.reviewer: igorstan
-ms.openlocfilehash: 37b5f0a989bb76a9a40529cd11944de40a164156
-ms.sourcegitcommit: f176e5bb926476ec8f9e2a2829bda48d510fbed7
+ms.custom: seo-lt-2019
+ms.openlocfilehash: f4c2087052e4c3b4fac4d27bb4ecdc2ebf8a42f6
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70306227"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73692968"
 ---
-# <a name="quickstart-scale-compute-in-azure-sql-data-warehouse-in-azure-powershell"></a>Szybki start: Skalowanie obliczeniowe w Azure SQL Data Warehouse w Azure PowerShell
+# <a name="quickstart-scale-compute-in-azure-sql-data-warehouse-in-azure-powershell"></a>Szybki Start: skalowanie zasobów obliczeniowych w Azure SQL Data Warehouse w Azure PowerShell
 
 Skalowanie obliczeniowe w Azure SQL Data Warehouse przy użyciu Azure PowerShell. [Skalowanie zasobów obliczeniowych w poziomie](sql-data-warehouse-manage-compute-overview.md) zapewnia lepszą wydajność, a zmniejszenie ich skali pozwala ograniczyć koszty.
 

@@ -1,6 +1,6 @@
 ---
 title: 'Szybki Start: Tworzenie eksperymentu do nauki o danych'
-titleSuffix: Azure Machine Learning Studio (classic)
+titleSuffix: ML Studio (classic) Azure
 description: Ten przewodnik Szybki start z dziedziny uczenia maszynowego przeprowadzi Cię przez łatwy eksperyment dotyczący nauki o danych. Będziemy prognozować cenę samochodu, używając algorytmu regresji.
 services: machine-learning
 ms.service: machine-learning
@@ -10,12 +10,12 @@ author: xiaoharper
 ms.author: amlstudiodocs
 ms.custom: seodec18
 ms.date: 02/06/2019
-ms.openlocfilehash: c95954bbe96b947312a952ebaab4e6bfc2b2f5a8
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 99cc453387ed32c4d7cbba31c1fec2ff24a8255f
+ms.sourcegitcommit: 6c2c97445f5d44c5b5974a5beb51a8733b0c2be7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73493280"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73621891"
 ---
 # <a name="quickstart-create-your-first-data-science-experiment-in-azure-machine-learning-studio-classic"></a>Szybki Start: Tworzenie pierwszego eksperymentu do nauki o danych w Azure Machine Learning Studio (klasyczny)
 

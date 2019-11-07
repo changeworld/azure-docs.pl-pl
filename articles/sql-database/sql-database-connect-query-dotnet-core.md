@@ -1,5 +1,5 @@
 ---
-title: Korzystanie z platformy .NET Core do wykonywania zapytań w usłudze Azure SQL Database | Microsoft Docs
+title: Użyj platformy .NET Core do wykonywania zapytań Azure SQL Database
 description: W tym temacie przedstawiono sposób wykorzystania platformy .NET Core do utworzenia programu, który nawiązuje połączenie z bazą danych Azure SQL Database i wykonuje zapytania za pomocą instrukcji języka Transact-SQL.
 services: sql-database
 ms.service: sql-database
@@ -11,14 +11,14 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 07/29/2019
-ms.openlocfilehash: 1c6fdc6f6d2e642db8b57745573260c819c6c307
-ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
+ms.openlocfilehash: e605b4255d61ff0cb6402b40b099449f0fbafa7a
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68640927"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73690993"
 ---
-# <a name="quickstart-use-net-core-c-to-query-an-azure-sql-database"></a>Szybki start: Korzystanie z platformy .NET Core (C#) do wykonywania zapytań w bazie danych Azure SQL Database
+# <a name="quickstart-use-net-core-c-to-query-an-azure-sql-database"></a>Szybki start: korzystanie z platformy .NET Core (C#) do wykonywania zapytań w bazie danych Azure SQL Database
 
 W tym przewodniku Szybki start użyjesz platformy [.NET Core](https://www.microsoft.com/net/) i kodu C# do nawiązania połączenia z bazą danych Azure SQL Database. Następnie uruchomisz instrukcję języka Transact-SQL w celu wykonania zapytania na danych.
 
@@ -33,12 +33,12 @@ W celu skorzystania z tego samouczka potrzebne są następujące elementy:
 
   || Pojedyncza baza danych | Wystąpienie zarządzane |
   |:--- |:--- |:---|
-  | Create| [Portal](sql-database-single-database-get-started.md) | [Portal](sql-database-managed-instance-get-started.md) |
+  | Tworzenie| [Portal](sql-database-single-database-get-started.md) | [Portal](sql-database-managed-instance-get-started.md) |
   || [Interfejs wiersza polecenia](scripts/sql-database-create-and-configure-database-cli.md) | [Interfejs wiersza polecenia](https://medium.com/azure-sqldb-managed-instance/working-with-sql-managed-instance-using-azure-cli-611795fe0b44) |
   || [Program PowerShell](scripts/sql-database-create-and-configure-database-powershell.md) | [Program PowerShell](scripts/sql-database-create-configure-managed-instance-powershell.md) |
-  | Konfigurowanie | [Reguła zapory bazująca na adresach IP na poziomie serwera](sql-database-server-level-firewall-rule.md)| [Łączność z maszyny wirtualnej](sql-database-managed-instance-configure-vm.md)|
+  | Konfiguracja | [Reguła zapory bazująca na adresach IP na poziomie serwera](sql-database-server-level-firewall-rule.md)| [Łączność z maszyny wirtualnej](sql-database-managed-instance-configure-vm.md)|
   |||[Łączność ze środowiska lokalnego](sql-database-managed-instance-configure-p2s.md)
-  |Ładuj dane|Ładowanie bazy danych Adventure Works na potrzeby samouczka Szybki start|[Przywracanie bazy danych Wide World Importers](sql-database-managed-instance-get-started-restore.md)
+  |Ładowanie danych|Ładowanie bazy danych Adventure Works na potrzeby samouczka Szybki start|[Przywracanie bazy danych Wide World Importers](sql-database-managed-instance-get-started-restore.md)
   |||Przywróć lub zaimportuj Adventure Works z pliku [BACPAC](sql-database-import.md) z usługi [GitHub](https://github.com/Microsoft/sql-server-samples/tree/master/samples/databases/adventure-works)|
   |||
 
@@ -194,7 +194,7 @@ namespace sqltest
    ```
 3. Wybierz klawisz **Enter**, aby zamknąć okno aplikacji.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 - [Rozpoczynanie pracy z platformą .NET Core w systemie Windows/Linux/macOS przy użyciu wiersza polecenia](/dotnet/core/tutorials/using-with-xplat-cli).
 - Dowiedz się, jak [uzyskać połączenie i wykonywać zapytania bazy danych Azure SQL Database przy użyciu platformy .NET i programu Visual Studio](sql-database-connect-query-dotnet-visual-studio.md).  

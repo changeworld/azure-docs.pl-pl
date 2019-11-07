@@ -1,5 +1,5 @@
 ---
-title: Korzystanie z języka Go do wykonywania zapytań w bazie danych Azure SQL Database | Microsoft Docs
+title: Użyj przejdź do Azure SQL Database kwerendy
 description: Użyj języka Go do utworzenia programu, który nawiązuje połączenie z bazą danych Azure SQL Database i za pomocą instrukcji języka Transact-SQL wykonuje zapytania oraz modyfikuje dane.
 services: sql-database
 ms.service: sql-database
@@ -11,14 +11,14 @@ author: David-Engel
 ms.author: craigg
 ms.reviewer: MightyPen
 ms.date: 02/12/2019
-ms.openlocfilehash: baa43a93ff0c1e814478bdc195b2fd525d4dbbf3
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 510f5e0fe62043d592306d2d689174c0d87e129d
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68569253"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73690959"
 ---
-# <a name="quickstart-use-golang-to-query-an-azure-sql-database"></a>Szybki start: korzystanie z języka Golang do wykonywania zapytań w bazie danych Azure SQL Database
+# <a name="quickstart-use-golang-to-query-an-azure-sql-database"></a>Szybki Start: używanie golang do wykonywania zapytań w bazie danych Azure SQL
 
 W tym przewodniku Szybki start użyjesz języka programowania [Golang](https://godoc.org/github.com/denisenkom/go-mssqldb) do nawiązania połączenia z bazą danych Azure SQL Database. Następnie uruchomisz instrukcje języka Transact-SQL (T-SQL), aby wykonać zapytanie i zmodyfikować dane. [Golang](https://golang.org/) jest językiem programowania typu „open source”, który umożliwia łatwe tworzenie prostego, niezawodnego i wydajnego oprogramowania.  
 
@@ -30,12 +30,12 @@ Do ukończenia tego samouczka niezbędne są następujące elementy:
 
   || Pojedyncza baza danych | Wystąpienie zarządzane |
   |:--- |:--- |:---|
-  | Create| [Portal](sql-database-single-database-get-started.md) | [Portal](sql-database-managed-instance-get-started.md) |
+  | Tworzenie| [Portal](sql-database-single-database-get-started.md) | [Portal](sql-database-managed-instance-get-started.md) |
   || [Interfejs wiersza polecenia](scripts/sql-database-create-and-configure-database-cli.md) | [Interfejs wiersza polecenia](https://medium.com/azure-sqldb-managed-instance/working-with-sql-managed-instance-using-azure-cli-611795fe0b44) |
   || [Program PowerShell](scripts/sql-database-create-and-configure-database-powershell.md) | [Program PowerShell](scripts/sql-database-create-configure-managed-instance-powershell.md) |
-  | Konfigurowanie | [Reguła zapory bazująca na adresach IP na poziomie serwera](sql-database-server-level-firewall-rule.md)| [Łączność z maszyny wirtualnej](sql-database-managed-instance-configure-vm.md)|
+  | Konfiguracja | [Reguła zapory bazująca na adresach IP na poziomie serwera](sql-database-server-level-firewall-rule.md)| [Łączność z maszyny wirtualnej](sql-database-managed-instance-configure-vm.md)|
   |||[Łączność ze środowiska lokalnego](sql-database-managed-instance-configure-p2s.md)
-  |Ładuj dane|Ładowanie bazy danych Adventure Works na potrzeby samouczka Szybki start|[Przywracanie bazy danych Wide World Importers](sql-database-managed-instance-get-started-restore.md)
+  |Ładowanie danych|Ładowanie bazy danych Adventure Works na potrzeby samouczka Szybki start|[Przywracanie bazy danych Wide World Importers](sql-database-managed-instance-get-started-restore.md)
   |||Przywróć lub zaimportuj Adventure Works z pliku [BACPAC](sql-database-import.md) z usługi [GitHub](https://github.com/Microsoft/sql-server-samples/tree/master/samples/databases/adventure-works)|
   |||
 
@@ -44,9 +44,9 @@ Do ukończenia tego samouczka niezbędne są następujące elementy:
 
 - Zainstalowany język Golang i związane z nim oprogramowanie dla systemu operacyjnego:
 
-  - **MacOS**: zainstaluj oprogramowanie Homebrew i GoLang. Zobacz [Krok 1.2](https://www.microsoft.com/sql-server/developer-get-started/go/mac/).
-  - **Ubuntu**:  zainstaluj oprogramowanie GoLang. Zobacz [Krok 1.2](https://www.microsoft.com/sql-server/developer-get-started/go/ubuntu/).
-  - **Windows**: zainstaluj oprogramowanie GoLang. Zobacz [Krok 1.2](https://www.microsoft.com/sql-server/developer-get-started/go/windows/).
+  - **MacOS**: Zainstaluj oprogramowania Homebrew i golang. Zobacz [Krok 1.2](https://www.microsoft.com/sql-server/developer-get-started/go/mac/).
+  - **Ubuntu**: Zainstaluj golang. Zobacz [Krok 1.2](https://www.microsoft.com/sql-server/developer-get-started/go/ubuntu/).
+  - **Windows**: Zainstaluj golang. Zobacz [Krok 1.2](https://www.microsoft.com/sql-server/developer-get-started/go/windows/).
 
 ## <a name="get-sql-server-connection-information"></a>Uzyskiwanie informacji o połączeniu z serwerem SQL
 

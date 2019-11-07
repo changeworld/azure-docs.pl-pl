@@ -1,5 +1,5 @@
 ---
-title: Tworzenie funkcji wyzwalanej przez protokół HTTP na platformie Azure
+title: Tworzenie wyzwalanej przez protokół HTTP funkcji języka Python na platformie Azure
 description: Dowiedz się, jak utworzyć pierwszą funkcję języka Python na platformie Azure przy użyciu narzędzi Azure Functions Core Tools i interfejsu wiersza polecenia platformy Azure.
 author: ggailey777
 ms.author: glenga
@@ -9,14 +9,14 @@ ms.service: azure-functions
 ms.custom: mvc
 ms.devlang: python
 manager: gwallace
-ms.openlocfilehash: f2602e5a13f83090291656e7062c74c245bc6568
-ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
+ms.openlocfilehash: 791348088d909785b36934c3b9a2ae00fc0acbb7
+ms.sourcegitcommit: 6c2c97445f5d44c5b5974a5beb51a8733b0c2be7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "72693346"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73622048"
 ---
-# <a name="create-an-http-triggered-function-in-azure"></a>Tworzenie funkcji wyzwalanej przez protokół HTTP na platformie Azure
+# <a name="create-an-http-triggered-python-function-in-azure"></a>Tworzenie wyzwalanej przez protokół HTTP funkcji języka Python na platformie Azure
 
 W tym artykule pokazano, jak za pomocą narzędzi wiersza polecenia utworzyć projekt w języku Python, który działa w Azure Functions. Utworzysz również funkcję, która jest wyzwalana przez żądanie HTTP. Na koniec opublikujesz projekt do uruchamiania jako [Funkcja bezserwerowa](functions-scale.md#consumption-plan) na platformie Azure.
 
@@ -105,7 +105,7 @@ Te polecenia tworzą podfolder o nazwie _HttpTrigger_. Zawiera następujące pli
 
     Każde powiązanie wymaga kierunku, typu i unikatowej nazwy. Wyzwalacz HTTP ma powiązanie wejściowe typu [`httpTrigger`](functions-bindings-http-webhook.md#trigger) i dane wyjściowe powiązania typu [`http`](functions-bindings-http-webhook.md#output).
 
-* *\_ \_init \_ \_. PR*: plik skryptu, który jest funkcją wyzwalaną przez protokół http. Zauważ, że ten skrypt ma domyślne `main()`. Dane HTTP z wyzwalacza są przekazywane do funkcji przy użyciu `req` o nazwie `binding parameter`. @No__t_0, który jest zdefiniowany w funkcji Function. JSON, jest wystąpieniem [klasy Azure. Functions. HttpRequest](/python/api/azure-functions/azure.functions.httprequest). 
+* *\_\_init\_\_. PR*: plik skryptu, który jest funkcją wyzwalaną przez protokół http. Zauważ, że ten skrypt ma domyślne `main()`. Dane HTTP z wyzwalacza są przekazywane do funkcji przy użyciu `req` o nazwie `binding parameter`. `req`, który jest zdefiniowany w funkcji Function. JSON, jest wystąpieniem [klasy Azure. Functions. HttpRequest](/python/api/azure-functions/azure.functions.httprequest). 
 
     Obiekt zwracany, zdefiniowany jako `$return` w *funkcji Function. JSON*, jest wystąpieniem [klasy Azure. Functions. HttpResponse](/python/api/azure-functions/azure.functions.httpresponse). Aby dowiedzieć się więcej, zobacz [Azure Functions wyzwalacze i powiązania HTTP](functions-bindings-http-webhook.md).
 

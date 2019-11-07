@@ -1,5 +1,5 @@
 ---
-title: Korzystanie z języka PHP do wykonywania zapytań w bazie danych Azure SQL Database | Microsoft Docs
+title: Używanie języka PHP do wykonywania zapytań w usłudze Azure SQL Database
 description: Sposób użycia języka PHP do utworzenia programu, który nawiązuje połączenie z bazą danych Azure SQL Database i wykonuje zapytania za pomocą instrukcji języka T-SQL.
 services: sql-database
 ms.service: sql-database
@@ -10,14 +10,14 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: v-masebo
 ms.date: 02/12/2019
-ms.openlocfilehash: a7da65438ffd7db6c43cf2ede7cc52378af056f1
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: c1c576becc0390a2cb0dfb083755be4e7c772c59
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68569216"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73690942"
 ---
-# <a name="quickstart-use-php-to-query-an-azure-sql-database"></a>Szybki start: Korzystanie z języka PHP do wykonywania zapytań w bazie danych Azure SQL Database
+# <a name="quickstart-use-php-to-query-an-azure-sql-database"></a>Szybki start: korzystanie z języka PHP do wykonywania zapytań w bazie danych Azure SQL Database
 
 W tym przewodniku Szybki start przedstawiono sposób nawiązywania połączeń z bazą danych Azure SQL Database za pomocą języka [PHP](https://php.net/manual/en/intro-whatis.php). Następnie można użyć instrukcji języka T-SQL w celu wykonywania zapytań o dane.
 
@@ -29,12 +29,12 @@ Aby ukończyć ten przykład, upewnij się, że dysponujesz następującymi elem
 
   || Pojedyncza baza danych | Wystąpienie zarządzane |
   |:--- |:--- |:---|
-  | Create| [Portal](sql-database-single-database-get-started.md) | [Portal](sql-database-managed-instance-get-started.md) |
+  | Tworzenie| [Portal](sql-database-single-database-get-started.md) | [Portal](sql-database-managed-instance-get-started.md) |
   || [Interfejs wiersza polecenia](scripts/sql-database-create-and-configure-database-cli.md) | [Interfejs wiersza polecenia](https://medium.com/azure-sqldb-managed-instance/working-with-sql-managed-instance-using-azure-cli-611795fe0b44) |
   || [Program PowerShell](scripts/sql-database-create-and-configure-database-powershell.md) | [Program PowerShell](scripts/sql-database-create-configure-managed-instance-powershell.md) |
-  | Konfigurowanie | [Reguła zapory bazująca na adresach IP na poziomie serwera](sql-database-server-level-firewall-rule.md)| [Łączność z maszyny wirtualnej](sql-database-managed-instance-configure-vm.md)|
+  | Konfiguracja | [Reguła zapory bazująca na adresach IP na poziomie serwera](sql-database-server-level-firewall-rule.md)| [Łączność z maszyny wirtualnej](sql-database-managed-instance-configure-vm.md)|
   |||[Łączność ze środowiska lokalnego](sql-database-managed-instance-configure-p2s.md)
-  |Ładuj dane|Ładowanie bazy danych Adventure Works na potrzeby samouczka Szybki start|[Przywracanie bazy danych Wide World Importers](sql-database-managed-instance-get-started-restore.md)
+  |Ładowanie danych|Ładowanie bazy danych Adventure Works na potrzeby samouczka Szybki start|[Przywracanie bazy danych Wide World Importers](sql-database-managed-instance-get-started-restore.md)
   |||Przywróć lub zaimportuj Adventure Works z pliku [BACPAC](sql-database-import.md) z usługi [GitHub](https://github.com/Microsoft/sql-server-samples/tree/master/samples/databases/adventure-works)|
   |||
 
@@ -108,4 +108,4 @@ Uzyskaj parametry połączenia potrzebne do nawiązania połączenia z bazą dan
 
 - [Zgłaszanie problemów/zadawanie pytań](https://github.com/Microsoft/msphpsql/issues)
 
-- [Przykład logiki ponowień: nawiązywanie połączeń odpornych na błędy z bazą danych SQL za pomocą języka PHP](/sql/connect/php/step-4-connect-resiliently-to-sql-with-php).
+- [Przykład logiki ponowień: nawiązywanie połączeń odpornych na błędy z bazą danych SQL za pomocą języka PHP](/sql/connect/php/step-4-connect-resiliently-to-sql-with-php)

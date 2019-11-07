@@ -1,5 +1,5 @@
 ---
-title: 'Szybki start: Wstrzymywanie i wznawianie obliczeń w Azure SQL Data Warehouse-Azure Portal | Microsoft Docs'
+title: 'Szybki Start: Wstrzymywanie & wznawianie obliczeń Azure Portal '
 description: Użyj Azure Portal, aby wstrzymać obliczenia w Azure SQL Data Warehouse w celu oszczędności kosztów. Wznów obliczanie, gdy wszystko jest gotowe do korzystania z magazynu danych.
 services: sql-data-warehouse
 author: kevinvngo
@@ -10,14 +10,15 @@ ms.subservice: manage
 ms.date: 04/18/2018
 ms.author: kevin
 ms.reviewer: igorstan
-ms.openlocfilehash: 46fb1fc6455cd35d8bb1eaf0a1b7ee499f5c1caf
-ms.sourcegitcommit: 5ded08785546f4a687c2f76b2b871bbe802e7dae
+ms.custom: seo-lt-2019
+ms.openlocfilehash: 14f66f71948f75a723c9fdbed7490d54c2c3e2b2
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69574891"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73693000"
 ---
-# <a name="quickstart-pause-and-resume-compute-for-an-azure-sql-data-warehouse-in-the-azure-portal"></a>Szybki start: Wstrzymywanie i wznawianie obliczeń dla Azure SQL Data Warehouse w Azure Portal
+# <a name="quickstart-pause-and-resume-compute-for-an-azure-sql-data-warehouse-in-the-azure-portal"></a>Szybki Start: Wstrzymywanie i wznawianie obliczeń dla Azure SQL Data Warehouse w Azure Portal
 
 Użyj Azure Portal, aby wstrzymać obliczenia w Azure SQL Data Warehouse w celu oszczędności kosztów. [Wznów Obliczanie](sql-data-warehouse-manage-compute-overview.md) , gdy wszystko jest gotowe do korzystania z magazynu danych.
 
@@ -47,7 +48,7 @@ Wykonaj następujące kroki, aby wstrzymać SQL Data Warehouse.
 5. Zostanie wyświetlone pytanie z prośbą o potwierdzenie, czy chcesz kontynuować. Kliknij przycisk **Yes** (Tak).
 6. Poczekaj chwilę, a następnie sprawdź, czy **stan** jest **wstrzymywany**.
 
-    ![Wstrzymywanie](media/pause-and-resume-compute-portal/pausing.png)
+    ![Wstrzymuj](media/pause-and-resume-compute-portal/pausing.png)
 
 7. Po zakończeniu operacji wstrzymania stan jest **wstrzymany** i przycisk opcji jest **uruchamiany**.
 8. Zasoby obliczeniowe dla hurtowni danych są teraz w trybie offline. Nie zostanie naliczona opłata za obliczenia, dopóki usługa nie zostanie wznowiona.

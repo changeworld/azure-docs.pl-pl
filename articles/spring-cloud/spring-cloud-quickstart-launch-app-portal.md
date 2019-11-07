@@ -1,26 +1,23 @@
 ---
-title: Uruchamianie aplikacji w chmurze ze sprężyną Azure przy użyciu Azure Portal
+title: 'Szybki Start: uruchamianie aplikacji w chmurze ze sprężyną na platformie Azure przy użyciu Azure Portal'
 description: Wdróż przykładową aplikację w chmurze Azure wiosennej przy użyciu Azure Portal.
-services: spring-cloud
-author: v-vasuke
-manager: jeconnoc
-editor: ''
+author: jpconnock
 ms.service: spring-cloud
 ms.topic: quickstart
-ms.date: 10/04/2019
-ms.author: v-vasuke
-ms.openlocfilehash: 87826b4c898f67873c2ec8188b934abd467c8a5b
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
-ms.translationtype: MT
+ms.date: 11/4/2019
+ms.author: jeconnoc
+ms.openlocfilehash: ab2950ed85d2409cd81ea562ec977c0eee2f6bab
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73162814"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73693138"
 ---
 # <a name="quickstart-launch-an-azure-spring-cloud-application-using-the-azure-portal"></a>Szybki Start: uruchamianie aplikacji w chmurze ze sprężyną na platformie Azure przy użyciu Azure Portal
 
 Chmura sprężynowa platformy Azure umożliwia łatwe uruchamianie aplikacji mikrousług opartych na chmurze na platformie Azure.
 
-W tym przewodniku szybki start przedstawiono sposób wdrażania istniejącej aplikacji ze sprężyną w chmurze na platformie Azure. [Poniżej znajduje się link](https://github.com/Azure-Samples/PiggyMetrics) do kodu przykładowej aplikacji użytej w tym samouczku. Po zakończeniu udostępniona Przykładowa aplikacja będzie dostępna w trybie online i będzie gotowa do zarządzania za pośrednictwem Azure Portal.
+W tym przewodniku szybki start przedstawiono sposób wdrażania istniejącej aplikacji ze sprężyną w chmurze na platformie Azure.  Kod przykładowej aplikacji użyty w tym samouczku można znaleźć w naszym [repozytorium przykładów usługi GitHub](https://github.com/Azure-Samples/PiggyMetrics). Po zakończeniu udostępniona Przykładowa aplikacja będzie dostępna w trybie online i będzie gotowa do zarządzania za pośrednictwem Azure Portal.
 
 Postępując zgodnie z tym przewodnikiem Szybki Start, dowiesz się, jak:
 
@@ -34,12 +31,12 @@ Postępując zgodnie z tym przewodnikiem Szybki Start, dowiesz się, jak:
 ## <a name="prerequisites"></a>Wymagania wstępne
 
 >[!Note]
-> Przed rozpoczęciem pracy z tym przewodnikiem Szybki Start upewnij się, że Twoja subskrypcja platformy Azure ma dostęp do chmury wiosennej platformy Azure.  Jako usługa w wersji zapoznawczej poprosimy klientów o skontaktowanie się z nami, aby można było dodać subskrypcję do listy dozwolonych.  Jeśli chcesz poznać możliwości chmury Azure wiosny, Wypełnij i prześlij [chmurę Azure wiosennej (prywatna wersja zapoznawcza) — forma zainteresowania](https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbR-LA2geqX-ZLhi-Ado1LD3tUNDk2VFpGUzYwVEJNVkhLRlcwNkZFUFZEUS4u). Chociaż chmura Wiosenna platformy Azure jest dostępna w wersji zapoznawczej, firma Microsoft oferuje ograniczoną pomoc techniczną bez umowy SLA.  Aby uzyskać więcej informacji na temat pomocy technicznej w przypadku wersji zapoznawczych, zapoznaj się z tematem [często zadawanych pytań](https://azure.microsoft.com/support/faq/).
+> Chmura Wiosenna platformy Azure jest obecnie oferowana jako publiczna wersja zapoznawcza. Oferty publicznej wersji zapoznawczej umożliwiają klientom eksperymentowanie z nowymi funkcjami przed ich oficjalną wersją.  Funkcje i usługi publicznej wersji zapoznawczej nie są przeznaczone do użytku produkcyjnego.  Aby uzyskać więcej informacji na temat pomocy technicznej w przypadku wersji zapoznawczych, Zapisz [support Request](https://docs.microsoft.com/azure/azure-supportability/how-to-create-azure-support-request).
 
 >[!TIP]
 > Usługa Azure Cloud Shell to bezpłatna interaktywna powłoka, której możesz używać do wykonywania kroków opisanych w tym artykule.  Zawiera ona popularne narzędzia platformy Azure preinstalowane, w tym najnowsze wersje usług git, JDK, Maven i interfejsu wiersza polecenia platformy Azure. Jeśli logujesz się do subskrypcji platformy Azure, uruchom [Azure Cloud Shell](https://shell.azure.com) z Shell.Azure.com.  Więcej informacji na temat Azure Cloud Shell można znaleźć w [dokumentacji](../cloud-shell/overview.md) .
 
-Aby ukończyć ten przewodnik Szybki Start:
+Aby ukończyć ten przewodnik Szybki start:
 
 1. [Zainstaluj oprogramowanie Git](https://git-scm.com/)
 2. [Zainstaluj program JDK 8](https://docs.microsoft.com/java/azure/jdk/?view=azure-java-stable)
@@ -52,16 +49,14 @@ Aby ukończyć ten przewodnik Szybki Start:
 Zainstaluj rozszerzenie chmury wiosennej platformy Azure dla interfejsu wiersza polecenia platformy Azure przy użyciu następującego polecenia
 
 ```Azure CLI
-az extension add -y --source https://azureclitemp.blob.core.windows.net/spring-cloud/spring_cloud-0.1.0-py2.py3-none-any.whl
+az extension add --name spring-cloud
 ```
 
 ## <a name="provision-a-service-instance-on-the-azure-portal"></a>Inicjowanie obsługi administracyjnej wystąpienia usługi na Azure Portal
 
-1. W przeglądarce sieci Web Otwórz [ten link do chmury wiosennej platformy Azure w Azure Portal](https://ms.portal.azure.com/?microsoft_azure_marketplace_ItemHideKey=AppPlatformExtension#blade/Microsoft_Azure_Marketplace/MarketplaceOffersBlade/selectedMenuItemId/home/searchQuery/Azure%20Spring%20Cloud).
+1. W przeglądarce sieci Web Otwórz [ten link do chmury wiosennej platformy Azure w Azure Portal](https://ms.portal.azure.com/#create/Microsoft.AppPlatform).
 
-    ![Zrzut ekranu przedstawiający Portal ASC](media/spring-cloud-quickstart-launch-app-portal/goto-portal.png)
-
-1. Wybierz pozycję **chmura ze sprężyną Azure** , aby przejść do strony przegląd. Następnie wybierz przycisk **Utwórz** , aby rozpocząć.
+1. Wybierz pozycję **chmura ze sprężyną Azure** , aby przejść do strony przegląd. Wybierz przycisk **Utwórz** , aby rozpocząć.
 
 1. Wypełnij formularz, biorąc pod uwagę następujące wytyczne:
     - Nazwa usługi: Określ nazwę wystąpienia usługi.  Nazwa musi mieć długość od 4 do 32 znaków i może zawierać tylko małe litery, cyfry i łączniki.  Pierwszy znak nazwy usługi musi być literą, a ostatni znak musi być literą lub cyfrą.
@@ -77,26 +72,28 @@ Wdrożenie usługi wymaga około 5 minut.  Po jego wdrożeniu zostanie wyświetl
 
 1. W sekcji **repozytorium domyślne** ustaw wartość **Identyfikator URI** na "https\://GitHub.com/Azure-Samples/piggymetrics", ustaw wartość **etykieta** na "config", a następnie wybierz pozycję **Zastosuj** , aby zapisać zmiany.
 
-    ![Zrzut ekranu przedstawiający Portal ASC](media/spring-cloud-quickstart-launch-app-portal/portal-config.png)
+    ![Zrzut ekranu przedstawiający Portal ASC](media/spring-cloud-tutorial-config-server/portal-config-server.png)
 
 ## <a name="build-and-deploy-microservice-applications"></a>Kompilowanie i wdrażanie aplikacji mikrousług
 
-1. Otwórz okno polecenia i uruchom następujące polecenie, aby sklonować przykładowe repozytorium aplikacji na maszynę lokalną.
+1. Otwórz [usługę Azure Cloudshell](https://shell.azure.com) i Sklonuj repozytorium przykładowej aplikacji na komputerze lokalnym.  W tym miejscu najpierw tworzymy tymczasowy katalog o nazwie `source-code` przed sklonowaniem aplikacji.
 
-    ```cli
+    ```azurecli
+    mkdir source-code
+    cd source-code
     git clone https://github.com/Azure-Samples/piggymetrics
     ```
 
-1. Skompiluj projekt, uruchamiając poniższe polecenie.
+1. Kompiluj sklonowany pakiet.
 
-    ```cli
-    cd PiggyMetrics
+    ```azurecli
+    cd piggymetrics
     mvn clean package -DskipTests
     ```
 
 1. Zaloguj się do interfejsu wiersza polecenia platformy Azure i ustaw aktywną subskrypcję.
 
-    ```cli
+    ```azurecli
     # Login to Azure CLI
     az login
 
@@ -121,9 +118,9 @@ Wdrożenie usługi wymaga około 5 minut.  Po jego wdrożeniu zostanie wyświetl
     az spring-cloud app deploy -n gateway --jar-path ./gateway/target/gateway.jar
     ```
 
-1. Postępując zgodnie z tym samym wzorcem, Utwórz aplikacje `account-service` i `auth-service` i Wdróż ich pliki JAR.
+1. W tym samym wzorcu Utwórz `account-service` i `auth-service` aplikacje i Wdróż pliki JAR.
 
-    ```cli
+    ```azurecli
     az spring-cloud app create -n account-service
     az spring-cloud app deploy -n account-service --jar-path ./account-service/target/account-service.jar
     az spring-cloud app create -n auth-service
@@ -135,8 +132,10 @@ Wdrożenie usługi wymaga około 5 minut.  Po jego wdrożeniu zostanie wyświetl
 ## <a name="assign-a-public-endpoint-to-gateway"></a>Przypisywanie publicznego punktu końcowego do bramy
 
 1. Otwórz kartę **aplikacje** w menu po lewej stronie.
-2. Wybierz aplikację `gateway`, aby wyświetlić stronę **Przegląd** .
-3. Wybierz pozycję **Przypisz domenę** , aby przypisać publiczny punkt końcowy do bramy. Może to potrwać kilka minut.
+
+1. Wybierz aplikację `gateway`, aby wyświetlić stronę **Przegląd** .
+
+1. Wybierz pozycję **Przypisz domenę** , aby przypisać publiczny punkt końcowy do bramy. Może to potrwać kilka minut.
 
     ![Zrzut ekranu przedstawiający Portal ASC](media/spring-cloud-quickstart-launch-app-portal/portal-endpoint.png)
 

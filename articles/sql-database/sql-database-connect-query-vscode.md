@@ -1,5 +1,5 @@
 ---
-title: 'VS Code: nawiązywanie połączenia i wykonywanie zapytań dotyczących danych w bazie danych Azure SQL Database | Microsoft Docs'
+title: 'VS Code: łączenie i wykonywanie zapytań dotyczących danych w Azure SQL Database '
 description: Dowiedz się, jak łączyć się z bazą danych SQL Database na platformie Azure przy użyciu programu Visual Studio Code. Następnie uruchom instrukcje Transact-SQL (T-SQL), aby wykonać zapytanie i edytować dane.
 keywords: nawiązywanie połączenia z bazą danych SQL
 services: sql-database
@@ -12,14 +12,14 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 03/25/2019
-ms.openlocfilehash: d8f12e699c17787d897a7f5ed23eccdbf3659921
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 20de97e9da7fc70e6712aedb76352db1b5748192
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68569142"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73690880"
 ---
-# <a name="quickstart-use-visual-studio-code-to-connect-and-query-an-azure-sql-database"></a>Szybki start: używanie programu Visual Studio Code do nawiązywania połączenia i wysyłania zapytań dotyczących danych w bazie danych Azure SQL Database
+# <a name="quickstart-use-visual-studio-code-to-connect-and-query-an-azure-sql-database"></a>Szybki Start: używanie Visual Studio Code do nawiązywania połączenia i wysyłania zapytań do Azure SQL Database
 
 [Visual Studio Code](https://code.visualstudio.com/docs) jest graficznym edytorem kodu dla systemów Linux, macOS i Windows. Obsługuje rozszerzenia, w tym [rozszerzenie mssql](https://aka.ms/mssql-marketplace), używane do wysyłania zapytań do programów Microsoft SQL Server oraz usług Azure SQL Database i SQL Data Warehouse. W tym przewodniku Szybki start użyjesz edytora Visual Studio Code w celu nawiązania połączenia z bazą danych Azure SQL Database, a następnie uruchomisz instrukcje języka Transact-SQL, aby wysyłać zapytania o dane, a także wstawiać, aktualizować i usuwać dane.
 
@@ -29,19 +29,19 @@ ms.locfileid: "68569142"
 
   || Pojedyncza baza danych | Wystąpienie zarządzane |
   |:--- |:--- |:---|
-  | Create| [Portal](sql-database-single-database-get-started.md) | [Portal](sql-database-managed-instance-get-started.md) |
+  | Tworzenie| [Portal](sql-database-single-database-get-started.md) | [Portal](sql-database-managed-instance-get-started.md) |
   || [Interfejs wiersza polecenia](scripts/sql-database-create-and-configure-database-cli.md) | [Interfejs wiersza polecenia](https://medium.com/azure-sqldb-managed-instance/working-with-sql-managed-instance-using-azure-cli-611795fe0b44) |
   || [Program PowerShell](scripts/sql-database-create-and-configure-database-powershell.md) | [Program PowerShell](scripts/sql-database-create-configure-managed-instance-powershell.md) |
-  | Konfigurowanie | [Reguła zapory bazująca na adresach IP na poziomie serwera](sql-database-server-level-firewall-rule.md)| [Łączność z maszyny wirtualnej](sql-database-managed-instance-configure-vm.md)|
+  | Konfiguracja | [Reguła zapory bazująca na adresach IP na poziomie serwera](sql-database-server-level-firewall-rule.md)| [Łączność z maszyny wirtualnej](sql-database-managed-instance-configure-vm.md)|
   |||[Łączność ze środowiska lokalnego](sql-database-managed-instance-configure-p2s.md)
-  |Ładuj dane|Ładowanie bazy danych Adventure Works na potrzeby samouczka Szybki start|[Przywracanie bazy danych Wide World Importers](sql-database-managed-instance-get-started-restore.md)
+  |Ładowanie danych|Ładowanie bazy danych Adventure Works na potrzeby samouczka Szybki start|[Przywracanie bazy danych Wide World Importers](sql-database-managed-instance-get-started-restore.md)
   |||Przywróć lub zaimportuj Adventure Works z pliku [BACPAC](sql-database-import.md) z usługi [GitHub](https://github.com/Microsoft/sql-server-samples/tree/master/samples/databases/adventure-works)|
   |||
 
   > [!IMPORTANT]
   > Skrypty zamieszczone w tym artykule korzystają z bazy danych Adventure Works. Za pomocą wystąpienia zarządzanego należy zaimportować bazę danych Adventure Works do bazy danych wystąpienia lub zmodyfikować skrypty znajdujące się w tym artykule, aby korzystały z bazy danych Wide World Importers.
 
-## <a name="install-visual-studio-code"></a>Zainstaluj kod programu Visual Studio
+## <a name="install-visual-studio-code"></a>Instalowanie programu Visual Studio Code
 
 Upewnij się, że masz zainstalowaną najnowszą wersję programu [Visual Studio Code](https://code.visualstudio.com/Download) i załadowane [rozszerzenie mssql](https://aka.ms/mssql-marketplace). Aby uzyskać wskazówki dotyczące instalacji rozszerzenia mssql, zobacz artykuły [Install VS Code](https://docs.microsoft.com/sql/linux/sql-server-linux-develop-use-vscode#install-and-start-visual-studio-code) (Instalacja programu VS Code) i [mssql for Visual Studio Code](https://marketplace.visualstudio.com/items?itemName=ms-mssql.mssql) (Rozszerzenie mssql dla programu Visual Studio Code).
 
@@ -138,7 +138,7 @@ Uruchom następującą instrukcję [SELECT](https://msdn.microsoft.com/library/m
 
 Uruchom następującą instrukcję [INSERT](https://msdn.microsoft.com/library/ms174335.aspx) języka Transact-SQL, aby dodać nowy produkt do tabeli `SalesLT.Product`.
 
-1. Wpisz to zapytanie w miejsce poprzedniego.
+1. Zastąp poprzednie zapytanie tym.
 
    ```sql
    INSERT INTO [SalesLT].[Product]
@@ -176,7 +176,7 @@ Uruchom następującą instrukcję [UPDATE](https://msdn.microsoft.com/library/m
 
 2. Naciśnij klawisze **Ctrl**+**Shift**+**E**, aby zaktualizować określony wiersz w tabeli `Product`.
 
-## <a name="delete-data"></a>Usuń dane
+## <a name="delete-data"></a>Usuwanie danych
 
 Uruchom następującą instrukcję [DELETE](https://docs.microsoft.com/sql/t-sql/statements/delete-transact-sql) języka Transact-SQL, aby usunąć nowy produkt.
 
@@ -191,6 +191,6 @@ Uruchom następującą instrukcję [DELETE](https://docs.microsoft.com/sql/t-sql
 
 ## <a name="next-steps"></a>Następne kroki
 
-- Aby nawiązywać połączenia i wykonywać zapytania przy użyciu programu SQL Server Management Studio, zobacz [Szybki start: Azure SQL Database: używanie programu SQL Server Management Studio do nawiązywania połączenia i wykonywania zapytań dotyczących danych](sql-database-connect-query-ssms.md).
-- Aby nawiązywać połączenia i wykonywać zapytania przy użyciu witryny Azure Portal, zobacz [Szybki start: witryna Azure Portal: używanie edytora zapytań SQL do nawiązywania połączenia i wykonywania zapytań o dane](sql-database-connect-query-portal.md).
+- Aby nawiązać połączenie i wykonać zapytanie przy użyciu SQL Server Management Studio, zobacz [Szybki Start: użyj SQL Server Management Studio, aby nawiązać połączenie z danymi Azure SQL Database i zapytań](sql-database-connect-query-ssms.md).
+- Aby nawiązać połączenie i wykonać zapytanie przy użyciu Azure Portal, zobacz [Szybki Start: Użyj edytora zapytań SQL w Azure Portal, aby nawiązać połączenie i wykonać zapytania dotyczące danych](sql-database-connect-query-portal.md).
 - Aby zapoznać się z artykułem w magazynie MSDN dotyczącym programu Visual Studio Code, zobacz temat [Create a database IDE with MSSQL extension blog post](https://msdn.microsoft.com/magazine/mt809115) (Tworzenie bazy danych w środowisku IDE, korzystając z wpisu na blogu dotyczącym rozszerzenia MSSQL).

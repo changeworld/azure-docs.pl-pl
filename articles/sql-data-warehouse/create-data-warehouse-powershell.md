@@ -1,5 +1,5 @@
 ---
-title: 'Szybki start: Tworzenie Azure SQL Data Warehouse — Azure PowerShell | Microsoft Docs'
+title: 'Szybki Start: Tworzenie magazynu — Azure PowerShell'
 description: Szybko Utwórz SQL Database serwer logiczny, regułę zapory na poziomie serwera i magazyn danych z Azure PowerShell.
 services: sql-data-warehouse
 author: XiaoyuMSFT
@@ -10,14 +10,15 @@ ms.subservice: development
 ms.date: 4/11/2019
 ms.author: xiaoyul
 ms.reviewer: igorstan
-ms.openlocfilehash: f5ee4227b0aeb53be4512dafc91f814468b50c12
-ms.sourcegitcommit: 5ded08785546f4a687c2f76b2b871bbe802e7dae
+ms.custom: seo-lt-2019
+ms.openlocfilehash: cfc427b11944cb81d8bc3d12d13668d53be698b7
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69574905"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73693096"
 ---
-# <a name="quickstart-create-and-query-an-azure-sql-data-warehouse-with-azure-powershell"></a>Szybki start: Tworzenie i wykonywanie zapytań o Azure SQL Data Warehouse przy użyciu Azure PowerShell
+# <a name="quickstart-create-and-query-an-azure-sql-data-warehouse-with-azure-powershell"></a>Szybki Start: Tworzenie i wykonywanie zapytań do Azure SQL Data Warehouse za pomocą Azure PowerShell
 
 Szybko Utwórz Azure SQL Data Warehouse przy użyciu Azure PowerShell.
 
@@ -28,7 +29,7 @@ Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpł
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-## <a name="sign-in-to-azure"></a>Logowanie do platformy Azure
+## <a name="sign-in-to-azure"></a>Zaloguj się w usłudze Azure
 
 Zaloguj się do subskrypcji platformy Azure za pomocą polecenia [Connect-AzAccount](/powershell/module/az.accounts/connect-azaccount) i postępuj zgodnie z instrukcjami wyświetlanymi na ekranie.
 
@@ -79,7 +80,7 @@ New-AzResourceGroup -Name $resourcegroupname -Location $location
 ```
 ## <a name="create-a-logical-server"></a>Tworzenie serwera logicznego
 
-Utwórz [serwer logiczny Azure SQL](../sql-database/sql-database-logical-servers.md) przy użyciu polecenia [New-AzSqlServer](/powershell/module/az.sql/new-azsqlserver) . Serwer logiczny zawiera grupę baz danych zarządzanych jako grupa. Poniższy przykład tworzy losowo nazwany serwer w grupie zasobów przy użyciu administratora o nazwie `ServerAdmin` i `ChangeYourAdminPassword1`hasła. Zastąp te wstępnie zdefiniowane wartości zgodnie z potrzebami.
+Utwórz [serwer logiczny Azure SQL](../sql-database/sql-database-logical-servers.md) przy użyciu polecenia [New-AzSqlServer](/powershell/module/az.sql/new-azsqlserver) . Serwer logiczny zawiera grupę baz danych zarządzanych jako grupa. W poniższym przykładzie tworzony jest losowo nazwany serwer w grupie zasobów z użytkownikiem administracyjnym o nazwie `ServerAdmin` i hasłem `ChangeYourAdminPassword1`. Zastąp te wstępnie zdefiniowane wartości zgodnie z potrzebami.
 
 ```powershell
 New-AzSqlServer -ResourceGroupName $resourcegroupname `
@@ -119,16 +120,16 @@ New-AzSqlDatabase `
 
 Wymagane parametry:
 
-* **RequestedServiceObjectiveName**: Ilość żądanych [jednostek magazynu danych](what-is-a-data-warehouse-unit-dwu-cdwu.md) . Zwiększenie tej kwoty zwiększa koszt obliczeń. Aby uzyskać listę obsługiwanych wartości, zobacz [limity pamięci i współbieżności](memory-and-concurrency-limits.md).
-* **DatabaseName**: Nazwa tworzonego SQL Data Warehouse.
+* **RequestedServiceObjectiveName**: ilość żądanych [jednostek magazynu danych](what-is-a-data-warehouse-unit-dwu-cdwu.md) . Zwiększenie tej kwoty zwiększa koszt obliczeń. Aby uzyskać listę obsługiwanych wartości, zobacz [limity pamięci i współbieżności] pamięć-współbieżność-limits.md).
+* **DatabaseName**: nazwa tworzonego SQL Data Warehouse.
 * **Servername**: Nazwa serwera, który jest używany do tworzenia.
 * **ResourceGroupName**: Grupa zasobów, której używasz. Aby znaleźć grupy zasobów dostępne w ramach subskrypcji, użyj polecenia cmdlet Get-AzureResource.
-* **Wersja**: Aby utworzyć SQL Data Warehouse, musi być "DataWarehouse".
+* **Edition**: musi mieć wartość „DataWarehouse”, aby utworzyć magazyn SQL Data Warehouse.
 
 Opcjonalne parametry:
 
-- Typ **sortowania**: Domyślne sortowanie, jeśli nie zostanie określone, jest SQL_Latin1_General_CP1_CI_AS. Nie można zmienić sortowania w bazie danych.
-- **MaxSizeBytes**: Domyślny maksymalny rozmiar bazy danych to 240TB. Maksymalny rozmiar ogranicza dane magazynu wierszy. Istnieje nieograniczony magazyn dla danych kolumnowych.
+- **CollationName**: sortowanie domyślne, gdy sortowanie nie jest określone, to COLLATE SQL_Latin1_General_CP1_CI_AS. Nie można zmienić sortowania w bazie danych.
+- **MaxSizeBytes**: domyślny maksymalny rozmiar bazy danych to 240TB. Maksymalny rozmiar ogranicza dane magazynu wierszy. Istnieje nieograniczony magazyn dla danych kolumnowych.
 
 Aby uzyskać więcej informacji na temat opcji parametrów, zobacz polecenie [New-AzSqlDatabase](/powershell/module/az.sql/new-azsqldatabase).
 

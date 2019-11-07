@@ -6,12 +6,12 @@ ms.author: dacoulte
 ms.date: 10/21/2019
 ms.topic: quickstart
 ms.service: resource-graph
-ms.openlocfilehash: abee722e725b55933d7ff1acdcd1e9a2e701502b
-ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
+ms.openlocfilehash: 14615d596c1b673a234ccef541fecfbfce9d5f27
+ms.sourcegitcommit: 6c2c97445f5d44c5b5974a5beb51a8733b0c2be7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/22/2019
-ms.locfileid: "72752144"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73622602"
 ---
 # <a name="quickstart-run-your-first-resource-graph-query-using-azure-resource-graph-explorer"></a>Szybki Start: uruchamianie pierwszego zapytania grafu zasobów przy użyciu Eksploratora Azure Resource Graph
 
@@ -27,19 +27,19 @@ Otwórz [Azure Portal](https://portal.azure.com) , aby znaleźć i użyć Eksplo
 
 1. W okienku po lewej stronie wybierz pozycję **Wszystkie usługi**. Wyszukaj i wybierz pozycję **Eksplorator grafów zasobów**.
 
-1. W części **kwerenda 1** okna wprowadź zapytanie `Resources | project name, type | limit 5` i wybierz polecenie **Uruchom zapytanie**.
+1. W części **kwerenda 1** okna wprowadź `Resources | project name, type | limit 5` kwerendy i wybierz pozycję **Uruchom zapytanie**.
 
    > [!NOTE]
-   > Ponieważ w tym przykładzie zapytania nie określono modyfikatora sortowania, takiego jak `order by`, uruchomienie tego zapytania wiele razy może spowodować, że zostanie wyznaczony inny zestaw zasobów dla każdego żądania.
+   > Ponieważ ten przykład zapytania nie zawiera modyfikatora sortowania, takiego jak `order by`, uruchomienie tego zapytania wiele razy może spowodować, że zostanie wyznaczony inny zestaw zasobów dla każdego żądania.
 
 1. Zapoznaj się z odpowiedzią zapytania na karcie **wyniki** . Wybierz kartę **komunikaty** , aby wyświetlić szczegółowe informacje o zapytaniu, w tym liczbę wyników i czas trwania zapytania. Błędy, jeśli istnieją, są wyświetlane na tej karcie.
 
-1. Zaktualizuj zapytanie do `order by` Właściwość **name** : `Resources | project name, type | limit 5 | order by name asc`. Następnie wybierz pozycję **Uruchom zapytanie**.
+1. Zaktualizuj zapytanie, aby `order by` Właściwość **name** : `Resources | project name, type | limit 5 | order by name asc`. Następnie wybierz pozycję **Uruchom zapytanie**.
 
    > [!NOTE]
    > Tak samo jak w przypadku pierwszego zapytania, wielokrotne uruchomienie tego zapytania prawdopodobnie zwróci inny zestaw zasobów dla każdego żądania. Kolejność poleceń zapytania jest ważna. W tym przykładzie polecenie `order by` następuje po poleceniu `limit`. Spowoduje to najpierw ograniczenie wyników zapytania, a następnie ich uporządkowanie.
 
-1. Zaktualizuj zapytanie do pierwszej `order by` Właściwość **name** , a następnie `limit` do pięciu pierwszych wyników: `Resources | project name, type | order by name asc | limit 5`. Następnie wybierz pozycję **Uruchom zapytanie**.
+1. Zaktualizuj zapytanie, aby najpierw `order by` Właściwość **name** , a następnie `limit` do pięciu pierwszych wyników: `Resources | project name, type | order by name asc | limit 5`. Następnie wybierz pozycję **Uruchom zapytanie**.
 
 Gdy ostateczne zapytanie jest uruchamiane kilka razy, przy założeniu, że żadne zmiany w środowisku nie są zmieniane, zwrócone wyniki są spójne i oczekiwane przez właściwość **name** , ale nadal są ograniczone do pięciu pierwszych wyników.
 
@@ -47,8 +47,8 @@ Gdy ostateczne zapytanie jest uruchamiane kilka razy, przy założeniu, że żad
 
 Przeglądarka schematów znajduje się w lewym okienku Eksploratora grafów zasobów. Ta lista zasobów zawiera wszystkie _typy_ zasobów platformy Azure, które są obsługiwane przez usługę Azure Resource Graph i które istnieją w dzierżawie, do której masz dostęp. Rozszerzanie typu zasobu lub podwłaściwości pokazuje właściwości podrzędne, których można użyć do utworzenia kwerendy wykresu zasobów.
 
-Wybór typu zasobu miejsca `where type =="<resource type>"` do pola zapytania. Wybranie jednej z właściwości podrzędnych powoduje dodanie `where <propertyName> == "INSERT_VALUE_HERE"` do pola zapytania.
-Przeglądarka schematów to doskonały sposób odnajdywania właściwości do użycia w zapytaniach. Pamiętaj, aby zastąpić _wstaw \_VALUE \_HERE_ własnymi wartościami, Dostosuj zapytanie o warunki, operatory i funkcje, aby osiągnąć zamierzone wyniki.
+Wybór typu zasobu powoduje umieszczenie `where type =="<resource type>"` w polu zapytania. Wybranie jednej z właściwości podrzędnych powoduje dodanie `where <propertyName> == "INSERT_VALUE_HERE"` do pola zapytania.
+Przeglądarka schematów to doskonały sposób odnajdywania właściwości do użycia w zapytaniach. Pamiętaj, aby zamienić _wartość wstaw\_\_tym miejscu_ na własną wartość, Dostosuj zapytanie o warunki, operatory i funkcje, aby osiągnąć zamierzone wyniki.
 
 ## <a name="create-a-chart-from-the-resource-graph-query"></a>Tworzenie wykresu na podstawie zapytania wykresu zasobów
 
@@ -91,11 +91,11 @@ Aby przedstawić przykłady zapytań dotyczących wykresów zasobów i jak możn
 
 - [Eksplorator grafów zasobów — przykładowy pulpit nawigacyjny #1](https://github.com/Azure-Samples/Governance/blob/master/src/resource-graph/portal-dashboards/sample-1/resourcegraphexplorer-sample-1.json)
 
-  [obraz ![Example dla przykładowego pulpitu nawigacyjnego #1](./media/arge-sample1-small.png)](./media/arge-sample1-large.png#lightbox)
+  [Przykładowy przykład obrazu ![dla przykładowego pulpitu nawigacyjnego #1](./media/arge-sample1-small.png)](./media/arge-sample1-large.png#lightbox)
 
 - [Eksplorator grafów zasobów — przykładowy pulpit nawigacyjny #2](https://github.com/Azure-Samples/Governance/blob/master/src/resource-graph/portal-dashboards/sample-2/resourcegraphexplorer-sample-2.json)
 
-  [obraz ![Example dla przykładowego pulpitu nawigacyjnego #2](./media/arge-sample2-small.png)](./media/arge-sample2-large.png#lightbox)
+  [Przykładowy przykład obrazu ![dla przykładowego pulpitu nawigacyjnego #2](./media/arge-sample2-small.png)](./media/arge-sample2-large.png#lightbox)
 
 > [!NOTE]
 > Liczniki i wykresy w powyższym przykładowym zrzucie ekranu nawigacyjnego będą się różnić w zależności od środowiska platformy Azure.
@@ -120,9 +120,9 @@ Jeśli chcesz usunąć przykładowe pulpity nawigacyjne grafu zasobów ze środo
 
 ## <a name="next-steps"></a>Następne kroki
 
-- Uzyskaj więcej informacji na temat [języka zapytań](./concepts/query-language.md)
-- Dowiedz się, jak [eksplorować zasoby](./concepts/explore-resources.md)
-- Uruchamianie pierwszego zapytania za pomocą [interfejsu wiersza polecenia platformy Azure](first-query-azurecli.md)
-- Zobacz przykłady [zapytań dla początkujących](./samples/starter.md)
-- Zobacz przykłady [zapytań zaawansowanych](./samples/advanced.md)
-- Podziel się opinią na platformie [UserVoice](https://feedback.azure.com/forums/915958-azure-governance)
+- Uzyskaj więcej informacji na temat [języka zapytań](./concepts/query-language.md).
+- Dowiedz się więcej o sposobach [eksplorowania zasobów](./concepts/explore-resources.md).
+- Uruchom pierwsze zapytanie przy użyciu [interfejsu wiersza polecenia platformy Azure](first-query-azurecli.md).
+- Zobacz przykłady [początkowych zapytań](./samples/starter.md).
+- Zobacz przykłady [zaawansowanych zapytań](./samples/advanced.md).
+- Prześlij opinię na temat usługi [UserVoice](https://feedback.azure.com/forums/915958-azure-governance).

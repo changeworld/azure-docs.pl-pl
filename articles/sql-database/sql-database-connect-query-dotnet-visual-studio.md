@@ -1,5 +1,5 @@
 ---
-title: Korzystanie z programu Visual Studio oraz platformy .NET i języka C# w celu wykonywania zapytań w bazie danych Azure SQL Database |Microsoft Docs
+title: Korzystanie z programu Visual Studio z C# platformą .NET i wykonywanie zapytań do Azure SQL Database
 description: Użycie programu Visual Studio do tworzenia aplikacji w języku C# łączącej się z bazą danych Azure SQL Database i wykonującej w niej zapytania za pomocą instrukcji w języku Transact-SQL.
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 03/25/2019
-ms.openlocfilehash: 3ed11d2b1628cecc0696e4c37135cfc7d2190de5
-ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
+ms.openlocfilehash: 42b7f553d88e130e0958bd38e4e5ff308b74e81f
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/18/2019
-ms.locfileid: "72597923"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73690982"
 ---
 # <a name="quickstart-use-net-and-c-in-visual-studio-to-connect-to-and-query-an-azure-sql-database"></a>Szybki Start: korzystanie z C# platformy .NET i programu Visual Studio w celu nawiązania połączenia z bazą danych Azure SQL i wykonywania w niej zapytań
 
@@ -30,7 +30,7 @@ Aby ukończyć ten przewodnik Szybki Start, musisz spełnić następujące warun
 
   || Pojedyncza baza danych | Wystąpienie zarządzane |
   |:--- |:--- |:---|
-  | Create| [Portal](sql-database-single-database-get-started.md) | [Portal](sql-database-managed-instance-get-started.md) |
+  | Tworzenie| [Portal](sql-database-single-database-get-started.md) | [Portal](sql-database-managed-instance-get-started.md) |
   || [Interfejs wiersza polecenia](scripts/sql-database-create-and-configure-database-cli.md) | [Interfejs wiersza polecenia](https://medium.com/azure-sqldb-managed-instance/working-with-sql-managed-instance-using-azure-cli-611795fe0b44) |
   || [Program PowerShell](scripts/sql-database-create-and-configure-database-powershell.md) | [Program PowerShell](scripts/sql-database-create-configure-managed-instance-powershell.md) |
   | Konfiguracja | [Reguła zapory bazująca na adresach IP na poziomie serwera](sql-database-server-level-firewall-rule.md)| [Łączność z maszyny wirtualnej](sql-database-managed-instance-configure-vm.md)|
@@ -48,7 +48,7 @@ Aby ukończyć ten przewodnik Szybki Start, musisz spełnić następujące warun
 
 Uzyskaj parametry połączenia potrzebne do nawiązania połączenia z bazą danych Azure SQL Database. W następnych procedurach będą potrzebne w pełni kwalifikowana nazwa serwera lub nazwa hosta, nazwa bazy danych i informacje logowania.
 
-1. Zaloguj się do [portalu Azure](https://portal.azure.com/).
+1. Zaloguj się w witrynie [Azure Portal](https://portal.azure.com/).
 
 2. Otwórz stronę **Bazy danych SQL** lub **Wystąpienia zarządzane SQL**.
 
@@ -72,7 +72,7 @@ Uzyskaj parametry połączenia potrzebne do nawiązania połączenia z bazą dan
    
 1. Po zakończeniu instalacji można zamknąć **Menedżera pakietów NuGet**. 
    
-1. W edytorze kodu zastąp zawartość **Program.cs** następującym kodem. Zastąp wartości dla `<server>`, `<username>`, `<password>` i `<database>`.
+1. W edytorze kodu zastąp zawartość **Program.cs** następującym kodem. Zastąp wartości dla `<server>`, `<username>`, `<password>`i `<database>`.
    
    >[!IMPORTANT]
    >Kod w tym przykładzie używa przykładowych danych AdventureWorksLT, które można wybrać jako źródło podczas tworzenia bazy danych. Jeśli baza danych zawiera różne dane, w zapytaniu SELECT należy użyć tabel z własnej bazy danych. 

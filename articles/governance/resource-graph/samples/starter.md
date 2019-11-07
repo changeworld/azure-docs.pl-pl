@@ -6,12 +6,12 @@ ms.author: dacoulte
 ms.date: 10/21/2019
 ms.topic: quickstart
 ms.service: resource-graph
-ms.openlocfilehash: c2a8c60502aeb75173371d40475b5d2875417791
-ms.sourcegitcommit: ec2b75b1fc667c4e893686dbd8e119e7c757333a
+ms.openlocfilehash: 7eef353f45d0387a45fbf8180bc49cae7975dfa9
+ms.sourcegitcommit: 6c2c97445f5d44c5b5974a5beb51a8733b0c2be7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72808638"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73622501"
 ---
 # <a name="starter-resource-graph-queries"></a>Zapytania usługi Resource Graph dla początkujących
 
@@ -72,7 +72,7 @@ Search-AzGraph -Query "Resources | summarize count()"
 
 ## <a name="a-namecount-keyvaults-count-key-vault-resources"></a><a name="count-keyvaults" />liczby zasobów magazynu kluczy
 
-To zapytanie używa wartości `count` zamiast `summarize` do zliczenia liczby zwracanych rekordów. Tylko magazyny kluczy są uwzględniane w liczniku.
+To zapytanie używa `count`, a nie `summarize` do zliczenia liczby zwróconych rekordów. Tylko magazyny kluczy są uwzględniane w liczniku.
 
 ```kusto
 Resources
@@ -534,6 +534,6 @@ Search-AzGraph -Query "Resources | where type =~ 'microsoft.network/networksecur
 
 ## <a name="next-steps"></a>Następne kroki
 
-- Dowiedz się więcej o [języku zapytań](../concepts/query-language.md)
-- Dowiedz się, jak [eksplorować zasoby](../concepts/explore-resources.md)
-- Zobacz przykłady [zapytań zaawansowanych](advanced.md)
+- Dowiedz się więcej o [języku zapytań](../concepts/query-language.md).
+- Dowiedz się więcej o sposobach [eksplorowania zasobów](../concepts/explore-resources.md).
+- Zobacz przykłady [zaawansowanych zapytań](advanced.md).
