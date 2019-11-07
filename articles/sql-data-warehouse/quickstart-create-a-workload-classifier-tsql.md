@@ -1,5 +1,5 @@
 ---
-title: 'Szybki start: Tworzenie klasyfikatora obciążeń — T-SQL | Microsoft Docs'
+title: 'Szybki Start: Tworzenie klasyfikatora obciążeń — T-SQL '
 description: Użyj języka T-SQL, aby utworzyć klasyfikator obciążeń o wysokiej ważności.
 services: sql-data-warehouse
 author: ronortloff
@@ -10,14 +10,14 @@ ms.subservice: workload-management
 ms.date: 05/01/2019
 ms.author: rortloff
 ms.reviewer: jrasnick
-ms.openlocfilehash: ea2e0a3bb55d16c0b413b114fca9da7f95f5c053
-ms.sourcegitcommit: 5ded08785546f4a687c2f76b2b871bbe802e7dae
+ms.openlocfilehash: 1375605b6dab385b53af9212023767003e686e60
+ms.sourcegitcommit: 359930a9387dd3d15d39abd97ad2b8cb69b8c18b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69574868"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73646293"
 ---
-# <a name="quickstart-create-a-workload-classifier-using-t-sql"></a>Szybki start: Tworzenie klasyfikatora obciążeń przy użyciu języka T-SQL
+# <a name="quickstart-create-a-workload-classifier-using-t-sql"></a>Szybki Start: Tworzenie klasyfikatora obciążeń przy użyciu języka T-SQL
 
 W tym przewodniku szybki start utworzysz klasyfikator obciążeń o wysokiej ważności dla DYREKTORa w organizacji. Ten klasyfikator obciążeń umożliwi zajęcie przez dyrektorów naczelnych pierwszeństwa przed innymi zapytaniami o niższej ważności kolejki.
 
@@ -38,7 +38,7 @@ Zaloguj się w witrynie [Azure Portal](https://portal.azure.com/).
 
 ## <a name="create-login-for-theceo"></a>Utwórz nazwę logowania dla TheCEO
 
-Utwórz nazwę logowania SQL Server uwierzytelnienia w `master` bazie danych przy użyciu polecenia [CREATE LOGIN](/sql/t-sql/statements/create-login-transact-sql) for "TheCEO".
+Utwórz SQL Server Logowanie do uwierzytelniania w bazie danych `master` przy użyciu polecenia [CREATE LOGIN](/sql/t-sql/statements/create-login-transact-sql) for "TheCEO".
 
 ```sql
 IF NOT EXISTS (SELECT * FROM sys.sql_logins WHERE name = 'TheCEO')
@@ -97,7 +97,7 @@ Wykonaj następujące kroki, aby wyczyścić zasoby.
 
     ![Oczyszczanie zasobów](media/load-data-from-azure-blob-storage-using-polybase/clean-up-resources.png)
 
-2. Aby wstrzymać obliczenia, wybierz przycisk Wstrzymaj. Gdy magazyn danych jest wstrzymany, zobaczysz przycisk **Uruchom**.  Aby wznowić obliczenia, wybierz pozycję **Uruchom**.
+2. Aby wstrzymać obliczenia, wybierz przycisk **Wstrzymaj** . Gdy magazyn danych jest wstrzymany, zobaczysz przycisk **Uruchom**.  Aby wznowić obliczenia, wybierz pozycję **Uruchom**.
 
 3. Aby usunąć magazyn danych, aby nie naliczać opłat za zasoby obliczeniowe i magazynowanie, wybierz pozycję **Usuń**.
 

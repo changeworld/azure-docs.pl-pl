@@ -11,12 +11,12 @@ ms.topic: quickstart
 ms.date: 06/25/2019
 ms.author: glenga
 ms.custom: mvc, devcenter
-ms.openlocfilehash: 52f682f7c7f06056be122b33d27592a55a01be94
-ms.sourcegitcommit: ee61ec9b09c8c87e7dfc72ef47175d934e6019cc
+ms.openlocfilehash: fbde3c939a23e4023c0403c27433717a11762b08
+ms.sourcegitcommit: 6c2c97445f5d44c5b5974a5beb51a8733b0c2be7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70744073"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73622054"
 ---
 # <a name="create-your-first-function-using-visual-studio-code"></a>Tworzenie pierwszej funkcji przy użyciu programu Visual Studio Code
 
@@ -26,7 +26,7 @@ W tym artykule dowiesz się, jak użyć [Rozszerzenie usługi Azure Functions dl
 
 ![Kod usługi Azure Functions w projekcie programu Visual Studio](./media/functions-create-first-function-vs-code/functions-vscode-intro.png)
 
-Rozszerzenie obsługuje C#obecnie funkcje, JavaScript, Java i Python. Kroki opisane w tym artykule i artykule, które są zgodne z obsługą C# języka JavaScript i funkcji. Aby dowiedzieć się, jak używać Visual Studio Code do tworzenia i publikowania funkcji języka Python, zobacz [Deploy Python to Azure Functions](https://code.visualstudio.com/docs/python/tutorial-azure-functions). Aby dowiedzieć się, jak używać Visual Studio Code do tworzenia i publikowania funkcji programu PowerShell, zobacz [Tworzenie pierwszej funkcji programu PowerShell na platformie Azure](functions-create-first-function-powershell.md). 
+Rozszerzenie obsługuje C#obecnie funkcje, JavaScript, Java i Python. Kroki opisane w tym artykule i artykule, które są zgodne z obsługą C# języka JavaScript i funkcji. Aby dowiedzieć się, jak używać Visual Studio Code do tworzenia i publikowania funkcji języka Python, zobacz [Tworzenie i wdrażanie bezserwerowego Azure Functions w języku Python z Visual Studio Code](/azure/python/tutorial-vs-code-serverless-python-01). Aby dowiedzieć się, jak używać Visual Studio Code do tworzenia i publikowania funkcji programu PowerShell, zobacz [Tworzenie pierwszej funkcji programu PowerShell na platformie Azure](functions-create-first-function-powershell.md). 
 
 Rozszerzenie jest aktualnie dostępne w wersji zapoznawczej. Aby dowiedzieć się więcej, zobacz stronę [Rozszerzenie usługi Azure Functions dla programu Visual Studio Code].
 
@@ -43,9 +43,9 @@ Aby ukończyć ten przewodnik Szybki start:
     | Język | Wymaganie |
     | -------- | --------- |
     | **C#** | [C#rozszerzenia](https://marketplace.visualstudio.com/items?itemName=ms-vscode.csharp)  |
-    | **JavaScript** | [Node.js](https://nodejs.org/)<sup>*</sup> | 
+    | **JavaScript** | <sup>*</sup> [Node. js](https://nodejs.org/) | 
  
-    <sup>*</sup>Aktywne wersje LTS LTS i Maintenance (zalecane 8.11.1 i 10.14.1).
+    <sup>*</sup> Aktywne wersje LTS LTS i Maintenance (zalecane 8.11.1 i 10.14.1).
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 

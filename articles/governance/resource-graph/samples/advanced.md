@@ -6,12 +6,12 @@ ms.author: dacoulte
 ms.date: 10/21/2019
 ms.topic: quickstart
 ms.service: resource-graph
-ms.openlocfilehash: 9701aa5d924e82d26ad373f8c94d0391a4dc6ba2
-ms.sourcegitcommit: be8e2e0a3eb2ad49ed5b996461d4bff7cba8a837
+ms.openlocfilehash: 6310e13508c1c789c410f1954a2ac0dbf480a2b8
+ms.sourcegitcommit: 6c2c97445f5d44c5b5974a5beb51a8733b0c2be7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72800161"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73622522"
 ---
 # <a name="advanced-resource-graph-queries"></a>Zaawansowane zapytania usługi Resource Graph
 
@@ -104,7 +104,7 @@ Search-AzGraph -Query "Resources | where type=~ 'microsoft.compute/virtualmachin
 
 ## <a name="a-nameremove-column-remove-columns-from-results"></a><a name="remove-column" />usunąć kolumn z wyników
 
-Następujące zapytanie używa `summarize` do zliczania zasobów według subskrypcji, `join`, aby połączyć je z informacjami o subskrypcji z tabeli _ResourceContainers_ , a następnie `project-away`, aby usunąć niektóre kolumny.
+Następujące zapytanie używa `summarize` do zliczania zasobów według subskrypcji `join`, aby połączyć je z informacjami o subskrypcji z tabeli _ResourceContainers_ , a następnie `project-away` usunąć niektóre kolumny.
 
 ```kusto
 Resources
@@ -208,7 +208,7 @@ Search-AzGraph -Query "Resources | where type =~ 'microsoft.compute/virtualmachi
 
 ## <a name="a-namemvexpand-cosmosdb-list-cosmos-db-with-specific-write-locations"></a><a name="mvexpand-cosmosdb" />listy Cosmos DB z określonymi lokalizacjami zapisu
 
-Następujące limity zapytania dotyczące Cosmos DB zasobów, używają `mv-expand` do rozwijania zbioru właściwości dla **właściwości. writeLocations**, a następnie pól specyficznych dla projektu i bardziej ograniczone wyniki do **właściwości. writeLocations. LocationName** wartości pasuje do elementu "Wschodnie stany USA" lub "zachodnie stany USA".
+Następujące limity zapytania do Cosmos DB zasobów, używają `mv-expand` do rozwijania zbioru właściwości dla **właściwości. writeLocations**, a następnie pól określonych dla projektu i bardziej ograniczone wyniki do **właściwości. writeLocations. LocationName** wartości pasuje do elementu "Wschodnie stany USA" lub "zachodnie stany USA".
 
 ```kusto
 Resources
@@ -242,7 +242,7 @@ Search-AzGraph -Query "Resources | where type =~ 'microsoft.documentdb/databasea
 
 ## <a name="a-namejoin-key-vault-with-subscription-name"></a><a name="join" />Magazyn kluczy z nazwą subskrypcji
 
-Następujące zapytanie pokazuje złożone użycie `join`. Zapytanie ogranicza przyłączoną tabelę do zasobów subskrypcji i z `project`, aby uwzględnić tylko oryginalny identyfikator _subskrypcji_ pola i _nazwę pola Nazwa_ zmieniona na _SubName_. Zmiana nazwy pola unika `join` dodanie go jako _Name1_ , ponieważ pole już istnieje w obszarze _zasoby_. Oryginalna tabela jest filtrowana z `where`, a poniższe `project` zawierają kolumny z obu tabel. Wynikiem zapytania jest pojedynczy magazyn kluczy zawierający typ, nazwę magazynu kluczy oraz nazwę subskrypcji, w której znajduje się.
+Poniższe zapytanie pokazuje złożone użycie `join`. Zapytanie ogranicza przyłączoną tabelę do zasobów subskrypcji i z `project`, aby uwzględnić tylko oryginalny identyfikator _subskrypcji_ pola i _nazwę pola Nazwa_ zmieniona na _SubName_. Zmiana nazwy pola unika `join` dodawania go jako _Name1_ , ponieważ pole już istnieje w obszarze _zasoby_. Oryginalna tabela jest filtrowana z `where`, a poniższe `project` zawierają kolumny z obu tabel. Wynikiem zapytania jest pojedynczy magazyn kluczy zawierający typ, nazwę magazynu kluczy oraz nazwę subskrypcji, w której znajduje się.
 
 ```kusto
 Resources
@@ -274,7 +274,7 @@ Search-AzGraph -Query "Resources | join (ResourceContainers | where type=='micro
 
 ## <a name="a-namejoin-sql-list-sql-databases-and-their-elastic-pools"></a><a name="join-sql" />listy baz danych SQL i ich pul elastycznych
 
-Następujące zapytanie używa **leftouter** `join` do łączenia zasobów SQL Database i powiązanych z nimi pul elastycznych, jeśli są one dostępne.
+Następujące zapytanie używa **leftouter** `join` do łączenia SQL Database zasobów i powiązanych pul elastycznych, jeśli są one dostępne.
 
 ```kusto
 Resources
@@ -310,7 +310,7 @@ Search-AzGraph -Query "Resources | where type =~ 'microsoft.sql/servers/database
 
 ## <a name="a-namejoin-vmpip-list-virtual-machines-with-their-network-interface-and-public-ip"></a><a name="join-vmpip" />listy maszyn wirtualnych z interfejsem sieciowym i publicznym adresem IP
 
-To zapytanie używa dwóch **leftouter** `join` poleceń do łączenia z maszynami wirtualnymi, powiązanymi interfejsami sieciowymi oraz wszelkimi publicznymi adresami IP związanymi z tymi interfejsami sieciowymi.
+To zapytanie używa dwóch **leftouter** `join` polecenia do łączenia maszyn wirtualnych, powiązanych z nimi interfejsów sieciowych oraz wszelkich publicznych adresów IP związanych z tymi interfejsami sieciowymi.
 
 ```kusto
 Resources
@@ -340,7 +340,7 @@ on publicIpId
 # <a name="azure-clitabazure-cli"></a>[Interfejs wiersza polecenia platformy Azure](#tab/azure-cli)
 
 ```azurecli-interactive
-azure graph query -q "Resources | where type =~ 'microsoft.compute/virtualmachines' | extend nics=array_length(properties.networkProfile.networkInterfaces) | mvexpand nic=properties.networkProfile.networkInterfaces | where nics == 1 or nic.properties.primary =~ 'true' or isempty(nic) | project vmId = id, vmName = name, vmSize=tostring(properties.hardwareProfile.vmSize), nicId = tostring(nic.id) | join kind=leftouter ( Resources | where type =~ 'microsoft.network/networkinterfaces' | extend ipConfigsCount=array_length(properties.ipConfigurations) | mvexpand ipconfig=properties.ipConfigurations | where ipConfigsCount == 1 or ipconfig.properties.primary =~ 'true' | project nicId = id, publicIpId = tostring(ipconfig.properties.publicIPAddress.id)) on nicId | project-away nicId1 | summarize by vmId, vmName, vmSize, nicId, publicIpId | join kind=leftouter ( Resources | where type =~ 'microsoft.network/publicipaddresses' | project publicIpId = id, publicIpAddress = properties.ipAddress) on publicIpId | project-away publicIpId1"
+az graph query -q "Resources | where type =~ 'microsoft.compute/virtualmachines' | extend nics=array_length(properties.networkProfile.networkInterfaces) | mvexpand nic=properties.networkProfile.networkInterfaces | where nics == 1 or nic.properties.primary =~ 'true' or isempty(nic) | project vmId = id, vmName = name, vmSize=tostring(properties.hardwareProfile.vmSize), nicId = tostring(nic.id) | join kind=leftouter ( Resources | where type =~ 'microsoft.network/networkinterfaces' | extend ipConfigsCount=array_length(properties.ipConfigurations) | mvexpand ipconfig=properties.ipConfigurations | where ipConfigsCount == 1 or ipconfig.properties.primary =~ 'true' | project nicId = id, publicIpId = tostring(ipconfig.properties.publicIPAddress.id)) on nicId | project-away nicId1 | summarize by vmId, vmName, vmSize, nicId, publicIpId | join kind=leftouter ( Resources | where type =~ 'microsoft.network/publicipaddresses' | project publicIpId = id, publicIpAddress = properties.ipAddress) on publicIpId | project-away publicIpId1"
 ```
 
 # <a name="azure-powershelltabazure-powershell"></a>[Azure PowerShell](#tab/azure-powershell)
@@ -441,6 +441,6 @@ Search-AzGraph -Query "limit 1" -Include DisplayNames
 
 ## <a name="next-steps"></a>Następne kroki
 
-- Zobacz przykłady [zapytań dla początkujących](starter.md)
-- Dowiedz się więcej o [języku zapytań](../concepts/query-language.md)
-- Dowiedz się, jak [eksplorować zasoby](../concepts/explore-resources.md)
+- Zobacz przykłady [początkowych zapytań](starter.md).
+- Dowiedz się więcej o [języku zapytań](../concepts/query-language.md).
+- Dowiedz się więcej o sposobach [eksplorowania zasobów](../concepts/explore-resources.md).

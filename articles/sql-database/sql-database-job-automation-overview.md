@@ -1,5 +1,5 @@
 ---
-title: Automatyzacja zadań usług Azure SQL | Microsoft Docs
+title: Automatyzacja zadań w usłudze Azure SQL
 description: Za pomocą funkcji automatyzacji zadań możesz uruchamiać skrypty Transact-SQL (T-SQL) w zestawie co najmniej jednej bazy danych Azure SQL Database
 services: sql-database
 ms.service: sql-database
@@ -10,12 +10,12 @@ author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: carlr
 ms.date: 01/25/2019
-ms.openlocfilehash: 432580017cec548b7ecd7cf766aa8f5cdb2253cc
-ms.sourcegitcommit: 8e1fb03a9c3ad0fc3fd4d6c111598aa74e0b9bd4
+ms.openlocfilehash: bbef299271618dc672daea17249f29866e75c430
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70113595"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73689672"
 ---
 # <a name="automate-management-tasks-using-database-jobs"></a>Automatyzowanie zadań zarządzania za pomocą zadań bazy danych
 
@@ -50,7 +50,7 @@ Warto zauważyć kilka różnic między agentem SQL (dostępnym lokalnie i w ram
 
 |  |Zadania elastyczne  |Agent SQL |
 |---------|---------|---------|
-|Scope     |  Dowolna liczba baz danych Azure SQL Database i/lub magazynów danych w tej samej chmurze platformy Azure jako agent zadań. Elementy docelowe mogą znajdować się na różnych serwerach usługi SQL Database oraz w różnych subskrypcjach i/lub regionach. <br><br>Grupy docelowe mogą składać się z pojedynczych baz danych lub hurtowni danych albo wszystkich baz danych na serwerze, w puli lub w mapie fragmentów (wyliczanych dynamicznie w czasie wykonywania zadania). | Dowolna pojedyncza baza danych w tym samym wystąpieniu programu SQL Server jako agent SQL. |
+|Zakres     |  Dowolna liczba baz danych Azure SQL Database i/lub magazynów danych w tej samej chmurze platformy Azure jako agent zadań. Elementy docelowe mogą znajdować się na różnych serwerach usługi SQL Database oraz w różnych subskrypcjach i/lub regionach. <br><br>Grupy docelowe mogą składać się z pojedynczych baz danych lub hurtowni danych albo wszystkich baz danych na serwerze, w puli lub w mapie fragmentów (wyliczanych dynamicznie w czasie wykonywania zadania). | Dowolna pojedyncza baza danych w tym samym wystąpieniu programu SQL Server jako agent SQL. |
 |Obsługiwane interfejsy API i narzędzia     |  Witryna Azure Portal, program PowerShell, język T-SQL, usługa Azure Resource Manager      |   Język T-SQL, program SQL Server Management Studio (SSMS)     |
 
 ## <a name="sql-agent-jobs"></a>Zadania agenta SQL
@@ -212,7 +212,7 @@ Podczas tworzenia agenta zadań ma miejsce tworzenie schematu, tabel i roli o na
 
 |Nazwa roli  |Uprawnienia do schematu „jobs”  |Uprawnienia do schematu „jobs_internal”  |
 |---------|---------|---------|
-|**jobs_reader**     |    WYBIERZ     |    Brak     |
+|**jobs_reader**     |    SELECT     |    Brak     |
 
 > [!IMPORTANT]
 > Przed udzieleniem dostępu do *bazy danych zadań* na poziomie administratora bazy danych rozważ konsekwencje takiego działania w zakresie zabezpieczeń. Złośliwy użytkownik z uprawnieniami do tworzenia lub edytowania zadań może utworzyć lub edytować zadanie korzystające z przechowywanych poświadczeń do nawiązywania połączenia z kontrolowaną przez niego bazą danych, co może mu umożliwić określenie hasła poświadczeń.
@@ -263,7 +263,7 @@ Każdy krok zadania określa skrypt T-SQL do wykonania, co najmniej jedną grup�
 
 Wyniki wykonywania kroków zadania w każdej docelowej bazie danych są szczegółowo rejestrowane, a dane wyjściowe skryptu mogą zostać przechwycone w określonej tabeli. Możesz określić bazę danych, aby zapisać wszystkie dane zwrócone z zadania.
 
-#### <a name="job-history"></a>Historia zadania
+#### <a name="job-history"></a>Historia zadań
 
 Historia wykonywania zadań jest przechowywana w *bazie danych zadań*. Zadanie oczyszczania systemu czyści historię wykonywania, która jest starsza niż 45 dni. Aby usunąć historię, która ma mniej niż 45 dni, wywołaj procedurę składowaną **sp_purge_history** w *bazie danych zadań*.
 

@@ -1,5 +1,5 @@
 ---
-title: Korzystanie z języka Ruby do wykonywania zapytań w usłudze Azure SQL Database | Microsoft Docs
+title: Używanie języka Ruby do wykonywania zapytań Azure SQL Database
 description: W tym temacie przedstawiono sposób użycia języka Ruby do utworzenia programu, który nawiązuje połączenie z usługą Azure SQL Database i wykonuje zapytania za pomocą instrukcji języka Transact-SQL.
 services: sql-database
 ms.service: sql-database
@@ -11,14 +11,14 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 03/25/2019
-ms.openlocfilehash: 5b47ddc2d865108e03b3c649536bfaa700e4a59d
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: ecfdfa8930858eb02e993688a3ea1a78d2d7fe5f
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68569113"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73690909"
 ---
-# <a name="quickstart-use-ruby-to-query-an-azure-sql-database"></a>Szybki start: Korzystanie z języka Ruby do wykonywania zapytań w bazie danych Azure SQL Database
+# <a name="quickstart-use-ruby-to-query-an-azure-sql-database"></a>Szybki start: korzystanie z języka Ruby do wykonywania zapytań w bazie danych Azure SQL Database
 
 W tym przewodniku Szybki start pokazano, jak używać języka [Ruby](https://www.ruby-lang.org) w celu nawiązywania połączenia z usługą Azure SQL Database i wysyłać zapytania o dane, korzystając z instrukcji Transact-SQL.
 
@@ -30,12 +30,12 @@ Do wykonania kroków tego przewodnika Szybki start niezbędne jest spełnienie n
 
   || Pojedyncza baza danych | Wystąpienie zarządzane |
   |:--- |:--- |:---|
-  | Create| [Portal](sql-database-single-database-get-started.md) | [Portal](sql-database-managed-instance-get-started.md) |
+  | Tworzenie| [Portal](sql-database-single-database-get-started.md) | [Portal](sql-database-managed-instance-get-started.md) |
   || [Interfejs wiersza polecenia](scripts/sql-database-create-and-configure-database-cli.md) | [Interfejs wiersza polecenia](https://medium.com/azure-sqldb-managed-instance/working-with-sql-managed-instance-using-azure-cli-611795fe0b44) |
   || [Program PowerShell](scripts/sql-database-create-and-configure-database-powershell.md) | [Program PowerShell](scripts/sql-database-create-configure-managed-instance-powershell.md) |
-  | Konfigurowanie | [Reguła zapory bazująca na adresach IP na poziomie serwera](sql-database-server-level-firewall-rule.md)| [Łączność z maszyny wirtualnej](sql-database-managed-instance-configure-vm.md)|
+  | Konfiguracja | [Reguła zapory bazująca na adresach IP na poziomie serwera](sql-database-server-level-firewall-rule.md)| [Łączność z maszyny wirtualnej](sql-database-managed-instance-configure-vm.md)|
   |||[Łączność ze środowiska lokalnego](sql-database-managed-instance-configure-p2s.md)
-  |Ładuj dane|Ładowanie bazy danych Adventure Works na potrzeby samouczka Szybki start|[Przywracanie bazy danych Wide World Importers](sql-database-managed-instance-get-started-restore.md)
+  |Ładowanie danych|Ładowanie bazy danych Adventure Works na potrzeby samouczka Szybki start|[Przywracanie bazy danych Wide World Importers](sql-database-managed-instance-get-started-restore.md)
   |||Przywróć lub zaimportuj Adventure Works z pliku [BACPAC](sql-database-import.md) z usługi [GitHub](https://github.com/Microsoft/sql-server-samples/tree/master/samples/databases/adventure-works)|
   |||
 
@@ -44,11 +44,11 @@ Do wykonania kroków tego przewodnika Szybki start niezbędne jest spełnienie n
   
 - Oprogramowanie związane z językiem Ruby dla Twojego systemu operacyjnego:
   
-  - **MacOS**: zainstaluj pakiet Homebrew, oprogramowanie rbenv i ruby-build, język Ruby, pakiet FreeTDS i pakiet TinyTDS. Zobacz kroki 1.2, 1.3, 1.4, 1.5 i 2.1 w temacie [Create Ruby apps using SQL Server on macOS](https://www.microsoft.com/sql-server/developer-get-started/ruby/mac/) (Tworzenie aplikacji języka Ruby przy użyciu programu SQL Server w systemie macOS).
+  - **MacOS**: Zainstaluj oprogramowania homebrew, oprogramowanie rbenv i Ruby-Build, Ruby, FreeTDS i funkcji tinytds. Zobacz kroki 1.2, 1.3, 1.4, 1.5 i 2.1 w temacie [Create Ruby apps using SQL Server on macOS](https://www.microsoft.com/sql-server/developer-get-started/ruby/mac/) (Tworzenie aplikacji języka Ruby przy użyciu programu SQL Server w systemie macOS).
   
-  - **Ubuntu**: zainstaluj wstępnie wymagane oprogramowanie, oprogramowanie rbenv i ruby-build, język Ruby, pakiet FreeTDS i pakiet TinyTDS. Zobacz kroki 1.2, 1.3, 1.4, 1.5 i 2.1 w temacie [Create Ruby apps using SQL Server on Ubuntu](https://www.microsoft.com/sql-server/developer-get-started/ruby/ubuntu/) (Tworzenie aplikacji języka Ruby przy użyciu programu SQL Server w systemie Ubuntu).
+  - **Ubuntu**: Zainstaluj wymagania wstępne dla języka Ruby, oprogramowanie rbenv i Ruby-Build, Ruby, FreeTDS i funkcji tinytds. Zobacz kroki 1.2, 1.3, 1.4, 1.5 i 2.1 w temacie [Create Ruby apps using SQL Server on Ubuntu](https://www.microsoft.com/sql-server/developer-get-started/ruby/ubuntu/) (Tworzenie aplikacji języka Ruby przy użyciu programu SQL Server w systemie Ubuntu).
   
-  - **Windows**: zainstaluj język Ruby, zestaw Ruby Devkit i pakiet TinyTDS. Zobacz [Configure development environment for Ruby development](/sql/connect/ruby/step-1-configure-development-environment-for-ruby-development) (Konfigurowanie środowiska programistycznego pod kątem programowania w języku Ruby).
+  - **Windows**: Zainstaluj Ruby, Ruby Devkit i funkcji tinytds. Zobacz [Configure development environment for Ruby development](/sql/connect/ruby/step-1-configure-development-environment-for-ruby-development) (Konfigurowanie środowiska programistycznego pod kątem programowania w języku Ruby).
 
 ## <a name="get-sql-server-connection-information"></a>Uzyskiwanie informacji o połączeniu z serwerem SQL
 

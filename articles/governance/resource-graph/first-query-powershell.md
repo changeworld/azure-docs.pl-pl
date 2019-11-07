@@ -6,12 +6,12 @@ ms.author: dacoulte
 ms.date: 10/18/2019
 ms.topic: quickstart
 ms.service: resource-graph
-ms.openlocfilehash: a7d65d975d43a63a38863721273debab46115045
-ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
+ms.openlocfilehash: 9e41ca2e7c6d789b3d18fa98c4845118fa6538ef
+ms.sourcegitcommit: 6c2c97445f5d44c5b5974a5beb51a8733b0c2be7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72389721"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73622549"
 ---
 # <a name="quickstart-run-your-first-resource-graph-query-using-azure-powershell"></a>Szybki Start: uruchamianie pierwszego zapytania grafu zasobów przy użyciu Azure PowerShell
 
@@ -87,7 +87,7 @@ Teraz, gdy moduł programu Azure PowerShell został dodany do Twojego wybranego 
 Gdy końcowe zapytanie zostanie uruchomione wielokrotnie, zakładając, że nic się nie zmieniło w Twoim środowisku, zwrócone wyniki będą spójne i zgodne z oczekiwaniami — uporządkowane według właściwości **Name**, ale nadal ograniczone do pięciu pierwszych wyników.
 
 > [!NOTE]
-> Jeśli zapytanie nie zwraca wyników z subskrypcji, do której już masz dostęp, należy zauważyć, że `Search-AzGraph` polecenie cmdlet domyślnie ma subskrypcje w kontekście domyślnym. Aby wyświetlić listę identyfikatorów subskrypcji, które są częścią domyślnego kontekstu, uruchom tę `(Get-AzContext).Account.ExtendedProperties.Subscriptions` Jeśli chcesz przeszukać wszystkie subskrypcje, do których masz dostęp, możesz ustawić PSDefaultParameterValues dla `Search-AzGraph` polecenia cmdlet, uruchamiając `$PSDefaultParameterValues=@{"Search-AzGraph:Subscription"= $(Get-AzSubscription).ID}`
+> Jeśli zapytanie nie zwraca wyników z subskrypcji, do której już masz dostęp, należy zauważyć, że `Search-AzGraph` polecenie cmdlet domyślnie ma subskrypcje w domyślnym kontekście. Aby wyświetlić listę identyfikatorów subskrypcji, które są częścią kontekstu domyślnego, uruchom tę `(Get-AzContext).Account.ExtendedProperties.Subscriptions` Jeśli chcesz przeszukać wszystkie subskrypcje, do których masz dostęp, możesz ustawić PSDefaultParameterValues dla `Search-AzGraph` polecenia cmdlet, uruchamiając `$PSDefaultParameterValues=@{"Search-AzGraph:Subscription"= $(Get-AzSubscription).ID}`
    
 ## <a name="clean-up-resources"></a>Oczyszczanie zasobów
 
@@ -106,9 +106,10 @@ Uninstall-Module -Name 'Az.ResourceGraph'
 
 ## <a name="next-steps"></a>Następne kroki
 
-- Uzyskaj więcej informacji na temat [języka zapytań](./concepts/query-language.md)
-- Dowiedz się, jak [eksplorować zasoby](./concepts/explore-resources.md)
-- Uruchamianie pierwszego zapytania za pomocą [interfejsu wiersza polecenia platformy Azure](first-query-azurecli.md)
-- Zobacz przykłady [zapytań dla początkujących](./samples/starter.md)
-- Zobacz przykłady [zapytań zaawansowanych](./samples/advanced.md)
-- Podziel się opinią na platformie [UserVoice](https://feedback.azure.com/forums/915958-azure-governance)
+- Uzyskaj więcej informacji na temat [języka zapytań](./concepts/query-language.md).
+- Dowiedz się więcej o sposobach [eksplorowania zasobów](./concepts/explore-resources.md).
+- Uruchom pierwsze zapytanie przy użyciu [Azure Portal](first-query-portal.md).
+- Uruchom pierwsze zapytanie przy użyciu [interfejsu wiersza polecenia platformy Azure](first-query-azurecli.md).
+- Zobacz przykłady [początkowych zapytań](./samples/starter.md).
+- Zobacz przykłady [zaawansowanych zapytań](./samples/advanced.md).
+- Prześlij opinię na temat usługi [UserVoice](https://feedback.azure.com/forums/915958-azure-governance).

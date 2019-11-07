@@ -1,5 +1,5 @@
 ---
-title: Integracja kontroli źródła | Microsoft Docs
+title: Integracja kontroli źródła
 description: Środowisko DevOps Database klasy korporacyjnej dla SQL Data Warehouse z integracją natywnej kontroli źródła przy użyciu Azure Repos (git i GitHub).
 services: sql-data-warehouse
 author: kevinvngo
@@ -10,12 +10,12 @@ ms.subservice: integration
 ms.date: 08/23/2019
 ms.author: kevin
 ms.reviewer: igorstan
-ms.openlocfilehash: 10a10882efe05ef9e6bb86e54fcfcf8c5d73d225
-ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
+ms.openlocfilehash: 82d366b3f807e21e3531da00da78520fed90bc66
+ms.sourcegitcommit: 359930a9387dd3d15d39abd97ad2b8cb69b8c18b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "70098744"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73645257"
 ---
 # <a name="source-control-integration-for-azure-sql-data-warehouse"></a>Integracja kontroli źródła dla Azure SQL Data Warehouse
 
@@ -37,7 +37,7 @@ W tym samouczku opisano sposób integrowania projektu bazy danych SQL Server Dat
 
    ![Zarządzanie połączeniami](media/sql-data-warehouse-source-control-integration/2-manage-connections.png "Zarządzanie połączeniami")
 
-   ![Połączenie](media/sql-data-warehouse-source-control-integration/3-connect.png "Łączenie")
+   ![Połączenie](media/sql-data-warehouse-source-control-integration/3-connect.png "Połączenie")
 
 3. Klonowanie repozytorium repozytorium platformy Azure z projektu na komputerze lokalnym
 
