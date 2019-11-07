@@ -8,22 +8,22 @@ ms.topic: quickstart
 ms.service: iot-pnp
 services: iot-pnp
 ms.custom: mvc
-ms.openlocfilehash: 6e5e08df444f66f2c5500d968c805552d20901c5
-ms.sourcegitcommit: 65131f6188a02efe1704d92f0fd473b21c760d08
+ms.openlocfilehash: 654ebc6f40e6c365e9abf406ff19cd7269539dd8
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/10/2019
-ms.locfileid: "70861208"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73682217"
 ---
-# <a name="quickstart-use-a-device-capability-model-to-create-an-iot-plug-and-play-device"></a>Szybki start: Tworzenie urządzenia Plug and Play IoT przy użyciu modelu możliwości urządzenia
+# <a name="quickstart-use-a-device-capability-model-to-create-an-iot-plug-and-play-preview-device-windows"></a>Szybki Start: korzystanie z modelu możliwości urządzenia do tworzenia urządzenia w wersji zapoznawczej IoT Plug and Play (Windows)
 
-_Model możliwości urządzenia_ (DCM) opisuje możliwości urządzenia Plug and Play IoT. DCM jest często skojarzony z jednostką SKU produktu. Możliwości zdefiniowane w DCM są zorganizowane w interfejsy wielokrotnego użytku. Można wygenerować kod urządzenia szkieletowego na podstawie DCM. W tym przewodniku szybki start pokazano, jak za pomocą usługi VS Code utworzyć urządzenie usługi IoT Plug and Play przy użyciu DCM.
+_Model możliwości urządzenia_ (DCM) opisuje możliwości urządzenia Plug and Play IoT. DCM jest często skojarzony z jednostką SKU produktu. Możliwości zdefiniowane w DCM są zorganizowane w interfejsy wielokrotnego użytku. Można wygenerować kod urządzenia szkieletowego na podstawie DCM. W tym przewodniku szybki start pokazano, jak używać usługi VS Code w systemie Windows do tworzenia urządzeń Plug and Play IoT przy użyciu DCM.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
 Aby ukończyć ten przewodnik Szybki Start, musisz zainstalować następujące oprogramowanie na komputerze lokalnym:
 
-* [Visual Studio (Community, Professional lub Enterprise)](https://visualstudio.microsoft.com/downloads/) — upewnij się, że podczas instalowania programu Visual Studio dołączysz składnik **Menedżera pakietów NuGet** i **Programowanie aplikacji C++ klasycznych** .
+* [Narzędzia kompilacji dla programu Visual Studio](https://visualstudio.microsoft.com/thank-you-downloading-visual-studio/?sku=BuildTools&rel=16) z  **C++ narzędziami kompilacji** i obciążeniami **składników Menedżera pakietów NuGet** . Lub jeśli masz już [program Visual Studio (Community, Professional lub Enterprise)](https://visualstudio.microsoft.com/downloads/) 2019, 2017 lub 2015 z zainstalowanymi takimi samymi obciążeniami.
 * [Git](https://git-scm.com/download/).
 * [CMAKE](https://cmake.org/download/).
 * [Program Visual Studio Code](https://code.visualstudio.com/)
@@ -77,41 +77,57 @@ Uruchom następujące polecenia, aby uzyskać _Parametry połączenia usługi Io
 az iot hub show-connection-string --hub-name [YourIoTHubName] --output table
 ```
 
+Zanotuj parametry połączenia urządzenia, które wyglądają następująco:
+
+```json
+HostName={YourIoTHubName}.azure-devices.net;DeviceId=MyCDevice;SharedAccessKey={YourSharedAccessKey}
+```
+
+Ta wartość zostanie użyta w dalszej części przewodnika Szybki Start.
+
 ## <a name="prepare-the-development-environment"></a>Przygotowywanie środowiska deweloperskiego
 
 ### <a name="get-azure-iot-device-sdk-for-c"></a>Pobierz zestaw SDK urządzeń Azure IoT dla języka C
 
-W tym przewodniku szybki start przygotowano środowisko programistyczne, którego można użyć do klonowania i kompilowania zestawu SDK urządzeń usługi Azure IoT C.
+W tym przewodniku szybki start przygotujesz środowisko programistyczne, instalując zestaw SDK urządzeń Azure IoT C za pośrednictwem [Vcpkg](https://github.com/microsoft/vcpkg).
 
-1. Otwórz wiersz polecenia. Wykonaj następujące polecenie, aby sklonować repozytorium GitHub [zestawu SDK języka C usługi IoT Azure](https://github.com/Azure/azure-iot-sdk-c):
+1. Otwórz wiersz polecenia. Wykonaj następujące polecenie, aby zainstalować Vcpkg:
 
     ```cmd/sh
-    git clone https://github.com/Azure/azure-iot-sdk-c --recursive -b public-preview
+    git clone https://github.com/Microsoft/vcpkg.git
+    cd vcpkg
+
+    .\bootstrap-vcpkg.bat
     ```
 
-    Należy się spodziewać, że ukończenie operacji potrwa kilka minut.
-
-1. `pnp_app` Utwórz podkatalog w katalogu głównym lokalnego klonu repozytorium. Ten folder służy do plików modelu urządzenia i szczątkowego kodu urządzenia.
+    Następnie, aby podłączyć [integrację](https://github.com/microsoft/vcpkg/blob/master/docs/users/integration.md)obejmującą wiele użytkowników, uruchom polecenie (Uwaga: wymaga od administratora przy pierwszym użyciu):
 
     ```cmd/sh
-    cd azure-iot-sdk-c
-    mkdir pnp_app
+    .\vcpkg.exe integrate install
+    ```
+
+1. Zainstaluj zestaw SDK urządzeń usługi Azure IoT C Vcpkg:
+
+    ```cmd/sh
+    .\vcpkg.exe install azure-iot-sdk-c[public-preview,use_prov_client]
     ```
 
 ## <a name="author-your-model"></a>Tworzenie modelu
 
 W tym przewodniku szybki start użyjesz istniejącego modelu możliwości przykładowego urządzenia i skojarzonych interfejsów.
 
-1. Pobierz przykładowy [model możliwości urządzenia](https://github.com/Azure/IoTPlugandPlay/blob/master/samples/SampleDevice.capabilitymodel.json) i [interfejs](https://github.com/Azure/IoTPlugandPlay/blob/master/samples/EnvironmentalSensor.interface.json) i Zapisz pliki w `pnp_app` folderze.
+1. Utwórz katalog `pnp_app` na dysku lokalnym.
+
+1. Pobierz przykładowy [model możliwości urządzenia](https://github.com/Azure/IoTPlugandPlay/blob/master/samples/SampleDevice.capabilitymodel.json) i [interfejs](https://github.com/Azure/IoTPlugandPlay/blob/master/samples/EnvironmentalSensor.interface.json) i zapisz pliki w folderze `pnp_app`.
 
     > [!TIP]
     > Aby pobrać plik z usługi GitHub, przejdź do pliku, kliknij prawym przyciskiem myszy pozycję **RAW**, a następnie wybierz pozycję **Zapisz łącze jako**.
 
-1. Otwórz `pnp_app` folder z vs Code. Pliki można wyświetlić przy użyciu funkcji IntelliSense:
+1. Otwórz `pnp_app` folder z VS Code. Pliki można wyświetlić przy użyciu funkcji IntelliSense:
 
     ![Model możliwości urządzenia](media/quickstart-create-pnp-device/dcm.png)
 
-1. W pobranych plikach Zastąp `<YOUR_COMPANY_NAME_HERE>` `@id` pola i `schema` unikatowymi wartościami. Używaj tylko znaków a-z, A-Z, 0-9 i znaku podkreślenia. Aby uzyskać więcej informacji, zobacz [Format identyfikatora cyfrowego przędzy](https://github.com/Azure/IoTPlugandPlay/tree/master/DTDL#digital-twin-identifier-format).
+1. W pobranych plikach Zastąp `<YOUR_COMPANY_NAME_HERE>` w polach `@id` i `schema` z unikatową wartością. Używaj tylko znaków a-z, A-Z, 0-9 i znaku podkreślenia. Aby uzyskać więcej informacji, zobacz [Format identyfikatora cyfrowego przędzy](https://github.com/Azure/IoTPlugandPlay/tree/master/DTDL#digital-twin-identifier-format).
 
 ## <a name="generate-the-c-code-stub"></a>Generuj procedurę tworzenia kodu w języku C
 
@@ -120,7 +136,7 @@ Teraz masz już DCM i powiązane z nim interfejsy, można wygenerować kod urzą
 1. Po otwarciu folderu z plikami DCM Użyj **kombinacji klawiszy Ctrl + Shift + P** , aby otworzyć paletę poleceń, wprowadź **Plug and Play IoT**i wybierz pozycję **Generuj procedurę tworzenia kodu urządzenia**.
 
     > [!NOTE]
-    > Przy pierwszym użyciu narzędzia generatora kodu Plug and Play IoT trwa kilka sekund.
+    > Przy pierwszym użyciu interfejsu wiersza polecenia IoT Plug and Play CodeGen można pobrać i zainstalować automatycznie kilka sekund.
 
 1. Wybierz plik DCM, którego chcesz użyć do wygenerowania szczątkowego kodu urządzenia.
 
@@ -128,38 +144,42 @@ Teraz masz już DCM i powiązane z nim interfejsy, można wygenerować kod urzą
 
 1. Wybierz **ANSI C** jako język.
 
-1. Wybierz **projekt CMAKE** jako typ projektu.
-
 1. Wybierz pozycję **przez IoT Hub parametry połączenia urządzenia** jako metodę połączenia.
 
+1. Wybierz **projekt CMAKE w systemie Windows** jako szablon projektu.
+
+1. Wybierz pozycję **Via Vcpkg** , aby uwzględnić zestaw SDK urządzeń.
+
 1. VS Code otwiera nowe okno z wygenerowanymi plikami zastępczymi kodu urządzenia.
-    ![Kod urządzenia](media/quickstart-create-pnp-device/device-code.png)
+    ![](media/quickstart-create-pnp-device/device-code.png) kod urządzenia
 
 ## <a name="build-the-code"></a>Kompilowanie kod
 
-Zestaw SDK urządzenia służy do tworzenia wygenerowanej klasy urządzenia. Utworzona Aplikacja symuluje urządzenie, które nawiązuje połączenie z usługą IoT Hub. Aplikacja wysyła dane telemetryczne i właściwości oraz odbiera polecenia.
+Utworzoną procedurę tworzenia kodu urządzenia tworzy się wraz z zestawem SDK urządzeń. Utworzona Aplikacja symuluje urządzenie, które nawiązuje połączenie z usługą IoT Hub. Aplikacja wysyła dane telemetryczne i właściwości oraz odbiera polecenia.
 
-1. W vs Code Otwórz `CMakeLists.txt` w folderze głównym zestawu SDK urządzeń.
-
-1. Dodaj poniższy wiersz w dolnej części `CMakeLists.txt` pliku, aby uwzględnić folder zastępczy kodu urządzenia podczas kompilowania:
-
-    ```txt
-    add_subdirectory(pnp_app/sample_device)
-    ```
-
-1. Utwórz podkatalog CMAKE w folderze głównym zestawu SDK urządzeń i przejdź do tego folderu:
+1. Utwórz podkatalog `cmake` w folderze `sample_device` i przejdź do tego folderu:
 
     ```cmd\sh
     mkdir cmake
     cd cmake
     ```
 
-1. Uruchom następujące polecenia, aby skompilować zestaw SDK urządzeń i wygenerowany skrót kodu:
+1. Uruchom następujące polecenia, aby utworzyć wytworzoną procedurę tworzenia kodu:
 
     ```cmd\sh
-    cmake .. -Duse_prov_client=ON -Dhsm_type_symm_key:BOOL=ON
-    cmake --build . -- /m /p:Configuration=Release
+    cmake .. -G "Visual Studio 16 2019" -A Win32 -Duse_prov_client=ON -Dhsm_type_symm_key:BOOL=ON -DCMAKE_TOOLCHAIN_FILE="{directory of your Vcpkg repo}\scripts\buildsystems\vcpkg.cmake"
+
+    cmake --build .
     ```
+    
+    > [!NOTE]
+    > Jeśli używasz programu Visual Studio 2017 lub 2015, musisz określić Generator CMake na podstawie używanych narzędzi kompilacji:
+    >```cmd\sh
+    ># Either
+    >cmake .. -G "Visual Studio 15 2017" -Duse_prov_client=ON -Dhsm_type_symm_key:BOOL=ON -DCMAKE_TOOLCHAIN_FILE="{directory of your Vcpkg repo}\scripts\buildsystems\vcpkg.cmake"
+    ># or
+    >cmake .. -G "Visual Studio 14 2015" -Duse_prov_client=ON -Dhsm_type_symm_key:BOOL=ON -DCMAKE_TOOLCHAIN_FILE="{directory of your Vcpkg repo}\scripts\buildsystems\vcpkg.cmake"
+    >```
 
     > [!NOTE]
     > Jeśli CMAKE nie może znaleźć C++ kompilatora, podczas uruchamiania poprzedniego polecenia pojawiają się błędy kompilacji. Jeśli tak się stanie, spróbuj uruchomić to polecenie w [wierszu polecenia programu Visual Studio](https://docs.microsoft.com/dotnet/framework/tools/developer-command-prompt-for-vs).
@@ -167,8 +187,7 @@ Zestaw SDK urządzenia służy do tworzenia wygenerowanej klasy urządzenia. Utw
 1. Po pomyślnym zakończeniu kompilacji Uruchom aplikację przekazującą parametry połączenia urządzenia usługi IoT Hub jako parametr.
 
     ```cmd\sh
-    cd azure-iot-sdk-c\cmake\pnp_app\sample_device\Release\
-    sample_device.exe "[IoT Hub device connection string]"
+    .\Debug\sample_device.exe "[IoT Hub device connection string]"
     ```
 
 1. Aplikacja urządzenia uruchamia wysyłanie danych do IoT Hub.
@@ -181,9 +200,9 @@ Zestaw SDK urządzenia służy do tworzenia wygenerowanej klasy urządzenia. Utw
 
 Aby sprawdzić poprawność kodu urządzenia za pomocą programu **Azure IoT Explorer**, należy opublikować pliki w repozytorium modeli.
 
-1. Po otwarciu folderu z plikami DCM Użyj **kombinacji klawiszy Ctrl + Shift + P** , aby otworzyć paletę poleceń, wpisz i **wybierz pozycję IoT Plug & Play: Prześlij pliki do repozytorium**modeli.
+1. Po otwarciu folderu z plikami DCM Użyj **kombinacji klawiszy Ctrl + Shift + P** , aby otworzyć paletę poleceń, wpisz i wybierz pozycję **IoT plug & Play: Prześlij pliki do repozytorium modeli**.
 
-1. Wybierz `SampleDevice.capabilitymodel.json` pozycję `EnvironmentalSensor.interface.json` i.
+1. Wybierz `SampleDevice.capabilitymodel.json` i `EnvironmentalSensor.interface.json` pliki.
 
 1. Wprowadź parametry połączenia repozytorium modelu firmy.
 
@@ -193,7 +212,7 @@ Aby sprawdzić poprawność kodu urządzenia za pomocą programu **Azure IoT Exp
 1. W oknie danych wyjściowych i powiadomieniu VS Code można sprawdzić, czy pliki zostały pomyślnie opublikowane.
 
     > [!NOTE]
-    > W przypadku wystąpienia błędów podczas publikowania plików modelu urządzenia można spróbować użyć polecenia **IoT Plug and Play: Wyloguj repozytorium** modeli, aby się wylogować, i wykonaj kroki ponownie.
+    > W przypadku wystąpienia błędów podczas publikowania plików modelu urządzenia można spróbować użyć polecenia **IoT Plug and Play: Wyloguj repozytorium modeli** , aby się wylogować, i wykonaj kroki ponownie.
 
 ### <a name="use-the-azure-iot-explorer-to-validate-the-code"></a>Sprawdzanie poprawności kodu za pomocą programu Azure IoT Explorer
 
@@ -217,8 +236,9 @@ Aby sprawdzić poprawność kodu urządzenia za pomocą programu **Azure IoT Exp
 
 1. Wybierz stronę **właściwości (zapisywalne)** , aby wyświetlić właściwości do zapisu, które można zaktualizować.
 
-1. Rozwiń węzeł **Nazwa**właściwości, Aktualizuj przy użyciu nowej nazwy i wybierz opcję **Aktualizuj modyfikowalną Właściwość**. 
-2. Aby zobaczyć, że nowa nazwa jest wyświetlana w kolumnie **Właściwość raportowana** , kliknij przycisk **Odśwież** w górnej części strony.
+1. Rozwiń węzeł **Nazwa**właściwości, Aktualizuj przy użyciu nowej nazwy i wybierz opcję **Aktualizuj modyfikowalną Właściwość**.
+
+1. Aby zobaczyć, że nowa nazwa jest wyświetlana w kolumnie **Właściwość raportowana** , kliknij przycisk **Odśwież** w górnej części strony.
 
 1. Wybierz stronę **polecenia** , aby wyświetlić wszystkie polecenia obsługiwane przez urządzenie.
 
