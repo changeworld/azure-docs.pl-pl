@@ -1,5 +1,5 @@
 ---
-title: Projektowanie rozwiązań odzyskiwania po awarii — Azure SQL Database
+title: Projektowanie rozwiązań odzyskiwania po awarii
 description: Dowiedz się, jak zaprojektować rozwiązanie w chmurze na potrzeby odzyskiwania po awarii, wybierając odpowiedni wzorzec trybu failover.
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: anosov1960
 ms.author: sashan
 ms.reviewer: carlrab
 ms.date: 01/25/2019
-ms.openlocfilehash: 535397dcf32a617038ab4bef4ec7aa227f4563b1
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 4eeaa187142a6d0d97b12f685ebc455f3844606f
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73690652"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73825870"
 ---
 # <a name="disaster-recovery-strategies-for-applications-using-sql-database-elastic-pools"></a>Strategie odzyskiwania po awarii dla aplikacji korzystających z SQL Database pul elastycznych
 

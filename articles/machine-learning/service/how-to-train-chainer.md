@@ -1,5 +1,5 @@
 ---
-title: Uczenie sieci neuronowych uczenie głębokie z modułem łańcucha
+title: Uczenie modeli łańcucha uczenia głębokiego
 titleSuffix: Azure Machine Learning
 description: Dowiedz się, jak uruchamiać skrypty szkoleniowe PyTorch na skalę przedsiębiorstwa Azure Machine Learning przy użyciu klasy szacowania w łańcuchu kluczy.  Przykładowy skrypt klasyfikuje obrazy cyfr pisanych ręcznie, aby utworzyć sieć neuronowych uczenia głębokiego przy użyciu biblioteki języka Python w łańcuchu, która działa w oparciu o numpy.
 services: machine-learning
@@ -10,12 +10,12 @@ ms.author: maxluk
 author: maxluk
 ms.reviewer: sdgilley
 ms.date: 08/02/2019
-ms.openlocfilehash: 8427bd8532895e95de82a6ed577052971f15a25d
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: bfe44e552618dfbee13e8c85ef424f52d4b7ae5f
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73584505"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73814992"
 ---
 # <a name="train-and-register-chainer-models-at-scale-with-azure-machine-learning"></a>Uczenie i rejestrowanie modeli łańcucha na dużą skalę za pomocą Azure Machine Learning
 [!INCLUDE [applies-to-skus](../../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -83,7 +83,7 @@ os.makedirs(project_folder, exist_ok=True)
 
 W tym samouczku skrypt szkoleniowy **chainer_mnist. PR** został już udostępniony. W tym celu należy mieć możliwość wykonania dowolnego niestandardowego skryptu szkoleniowego i uruchomienia go z platformą Azure ML bez konieczności modyfikowania kodu.
 
-Aby korzystać z funkcji śledzenia i metryk platformy Azure ML, Dodaj niewielką ilość kodu platformy Azure ML w skrypcie szkoleniowym.  Skrypt szkoleniowy **chainer_mnist. PR** pokazuje, jak rejestrować pewne metryki do przebiegu w usłudze Azure ml przy użyciu obiektu `Run` w skrypcie.
+Aby korzystać z funkcji śledzenia i metryk platformy Azure ML, Dodaj niewielką ilość kodu platformy Azure ML w skrypcie szkoleniowym.  Skrypt szkoleniowy **chainer_mnist. PR** pokazuje, w jaki sposób rejestrować niektóre metryki w ramach uruchomienia usługi Azure ml przy użyciu obiektu `Run` w skrypcie.
 
 Dostarczony skrypt szkoleniowy używa przykładowych danych z funkcji `datasets.mnist.get_mnist` łańcucha.  W przypadku własnych danych może być konieczne wykonanie kroków takich jak [przekazywanie zestawu danych i skryptów](how-to-train-keras.md#data-upload) w celu udostępnienia danych podczas szkoleń.
 

@@ -4,15 +4,16 @@ description: Wyjaśnia, jak zarejestrować maszynę wirtualną na podstawie wirt
 services: Azure, Marketplace, Cloud Partner Portal,
 author: v-miclar
 ms.service: marketplace
+ms.subservice: partnercenter-marketplace-publisher
 ms.topic: article
 ms.date: 11/29/2018
 ms.author: pabutler
-ms.openlocfilehash: c27605d2f9b87a9d4ba3d2326c0ce7ad437d3441
-ms.sourcegitcommit: 6794fb51b58d2a7eb6475c9456d55eb1267f8d40
+ms.openlocfilehash: 4adc6f716050e2d792e0a5c022972e4340d2846a
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70240995"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73823110"
 ---
 # <a name="create-certificates-for-azure-key-vault"></a>Tworzenie certyfikatów dla Azure Key Vault
 
@@ -32,7 +33,7 @@ Do tej pracy można użyć nowej lub istniejącej grupy zasobów platformy Azure
 
 Edytuj i uruchom poniższy skrypt programu Azure PowerShell, aby utworzyć plik certyfikatu (pfx) w folderze lokalnym.  Należy zastąpić wartości następujących parametrów:
 
-|  **Parametr**        |   **Opis**                                                               |
+|  **Konstruktora**        |   **Opis**                                                               |
 |  -------------        |   ---------------                                                               |
 | `$certroopath` | Folder lokalny, w którym ma zostać zapisany plik PFX  |
 | `$location`    | Jedna z lokalizacji geograficznych platformy Azure w warstwie Standardowa  |
@@ -76,9 +77,9 @@ Edytuj i uruchom poniższy skrypt programu Azure PowerShell, aby utworzyć plik 
 
 ## <a name="create-the-key-vault"></a>Tworzenie magazynu kluczy
 
-Skopiuj zawartość [szablonu wdrożenia magazynu kluczy](./cpp-key-vault-deploy-template.md) do pliku na komputerze lokalnym. (w przykładowym skrypcie poniżej znajduje się `C:\certLocation\keyvault.json`ten zasób).  Edytuj i uruchom poniższy skrypt programu Azure PowerShell, aby utworzyć wystąpienie Azure Key Vault i skojarzoną grupę zasobów.  Należy zastąpić wartości następujących parametrów:
+Skopiuj zawartość [szablonu wdrożenia magazynu kluczy](./cpp-key-vault-deploy-template.md) do pliku na komputerze lokalnym. (w poniższym przykładzie skryptu ten zasób jest `C:\certLocation\keyvault.json`).  Edytuj i uruchom poniższy skrypt programu Azure PowerShell, aby utworzyć wystąpienie Azure Key Vault i skojarzoną grupę zasobów.  Należy zastąpić wartości następujących parametrów:
 
-|  **Parametr**        |   **Opis**                                                               |
+|  **Konstruktora**        |   **Opis**                                                               |
 |  -------------        |   ---------------                                                               |
 | `$postfix`            | Dowolny ciąg liczbowy dołączony do identyfikatorów wdrożenia                     |
 | `$rgName`             | Nazwa grupy zasobów platformy Azure (RG) do utworzenia                                        |
@@ -205,7 +206,7 @@ Teraz można przechowywać certyfikaty znajdujące się w pliku PFX do nowego ma
             echo $certpassword
             $jsonObjectBytes = [System.Text.Encoding]::UTF8.GetBytes($jsonObject)
             $jsonEncoded = [System.Convert]::ToBase64String($jsonObjectBytes)
-            $secret = ConvertTo-SecureString -String $jsonEncoded -AsPlainText –Force
+            $secret = ConvertTo-SecureString -String $jsonEncoded -AsPlainText -Force
             $objAzureKeyVaultSecret=Set-AzureKeyVaultSecret -VaultName $kvname -Name "ISVSecret$postfix" -SecretValue $secret
             echo $objAzureKeyVaultSecret.Id 
     

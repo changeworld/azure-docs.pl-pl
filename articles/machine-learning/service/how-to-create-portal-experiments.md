@@ -1,5 +1,5 @@
 ---
-title: Używanie interfejsu zautomatyzowanej sieci platformy Azure do uczenia & wdrażania modeli
+title: Kompiluj & Wdrażaj zautomatyzowane modele ML
 titleSuffix: Azure Machine Learning
 description: Twórz i wdrażaj automatyczne eksperymenty uczenia maszynowego w programie Azure Machine Learning Studio oraz zarządzaj nimi.
 services: machine-learning
@@ -11,12 +11,12 @@ author: tsikiksr
 manager: cgronlun
 ms.reviewer: nibaccam
 ms.date: 11/04/2019
-ms.openlocfilehash: e1bb84c142fb24086cf6c11a7b1070bdd29ae3f2
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: 25e775cf7bfd415768144b28ab2ca6989f360edd
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73581318"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73818489"
 ---
 # <a name="create-explore-and-deploy-automated-machine-learning-experiments-with-azure-machine-learning-studio"></a>Twórz, eksploruj i wdrażaj zautomatyzowane eksperymenty uczenia maszynowego za pomocą programu Azure Machine Learning Studio
 [!INCLUDE [applies-to-skus](../../../includes/aml-applies-to-enterprise-sku.md)]
@@ -215,7 +215,7 @@ Automatyczna ML pomaga wdrożyć model bez pisania kodu:
     >[!Important]
     > Nazwy plików muszą mieć długość 32 znaków i muszą zaczynać się i kończyć znakiem alfanumerycznym. Może zawierać łączniki, podkreślenia, kropki i znaki alfanumeryczne między. Spacje są niedozwolone.
 
-    Menu *Zaawansowane* oferuje domyślne funkcje wdrażania, takie jak zbieranie danych i ustawienia wykorzystania zasobów. Jeśli chcesz przesłonić te ustawienia domyślne, zrób to w menu.
+    Menu *Zaawansowane* oferuje domyślne funkcje wdrażania, takie jak [gromadzenie danych](how-to-enable-app-insights.md) i ustawienia wykorzystania zasobów. Jeśli chcesz przesłonić te ustawienia domyślne, zrób to w menu.
 
 1. Wybierz pozycję **Wdróż**. Wdrożenie może potrwać około 20 minut.
 

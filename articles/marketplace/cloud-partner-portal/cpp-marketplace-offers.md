@@ -4,15 +4,16 @@ description: Tworzenie ofert platformy Azure i usługi AppSource Marketplace ora
 services: Azure, AppSource, Marketplace, Cloud Partner Portal,
 author: v-miclar
 ms.service: marketplace
+ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 03/27/2019
 ms.author: pabutler
-ms.openlocfilehash: 746b1b51d593b21bdf85bca4eeb75c135196093a
-ms.sourcegitcommit: dd69b3cda2d722b7aecce5b9bd3eb9b7fbf9dc0a
+ms.openlocfilehash: f1e561e84daed6c24ca0d9b7832af3d975082e25
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/12/2019
-ms.locfileid: "70962852"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73818756"
 ---
 # <a name="azure-and-appsource-marketplace-offers"></a>Oferty dotyczące platformy Azure i usługi AppSource Marketplace
 
@@ -34,7 +35,7 @@ Proces tworzenia nowej oferty różni się znacznie w różnych typach oferty, n
 
 ## <a name="test-drive"></a>Wersja testowa
 
-*Test Drive* to funkcja portalu Marketplace, która zapewnia klientom "Wypróbuj przed zakupem" opcję demonstracyjną dla każdej oferty, tak aby była włączona.  Możliwości dysku testowego są ograniczone do następującego podzestawu typów ofert: [Aplikacje platformy Azure](./azure-applications/cpp-azure-app-offer.md), [Dynamics 365 Business Central](../cloud-partner-portal-orig/cpp-business-central-offer.md), [Dynamics 365 do zaangażowania klientów](./dyn365ce/cpp-customer-engagement-offer.md), [Dynamics 365 dla finansów i operacji](../cloud-partner-portal-orig/cpp-dynamics-365-operations-offer.md), [aplikacji SaaS](./saas-app/cpp-saas-offer.md)oraz [maszyn wirtualnych](./virtual-machine/cpp-virtual-machine-offer.md).  Ta funkcja wymaga, aby Wydawca utworzył szablon dysku testowego dostosowany do jego oferty.  Aby uzyskać więcej informacji, zobacz sekcję [dysk testowy](./test-drive/what-is-test-drive.md).
+*Test Drive* to funkcja portalu Marketplace, która zapewnia klientom "Wypróbuj przed zakupem" opcję demonstracyjną dla każdej oferty, tak aby była włączona.  Możliwości dysku testowego są ograniczone do następujących podzestawów typów ofert: [aplikacje platformy Azure](./azure-applications/cpp-azure-app-offer.md), [Dynamics 365 Business Central](../cloud-partner-portal-orig/cpp-business-central-offer.md), [Dynamics 365 dla zaangażowania klientów](./dyn365ce/cpp-customer-engagement-offer.md), [Dynamics 365 dla finansów i operacji](../cloud-partner-portal-orig/cpp-dynamics-365-operations-offer.md), [SaaS aplikacje](./saas-app/cpp-saas-offer.md)i [maszyny wirtualne](./virtual-machine/cpp-virtual-machine-offer.md).  Ta funkcja wymaga, aby Wydawca utworzył szablon dysku testowego dostosowany do jego oferty.  Aby uzyskać więcej informacji, zobacz sekcję [dysk testowy](./test-drive/what-is-test-drive.md).
 
 Możesz przeglądać istniejące oferty portalu Marketplace, które mają demonstrację dysku testowego, stosując [Filtr dysku testowego](https://azuremarketplace.microsoft.com/marketplace/apps?filters=test-drive). 
 
@@ -43,11 +44,11 @@ Możesz przeglądać istniejące oferty portalu Marketplace, które mają demons
 
 W poniższej tabeli wymieniono bieżące typy ofert obsługiwane przez [Portal Cloud partner](https://cloudpartner.azure.com).  Dla każdego typu oferty zawiera listę rynków, w których oferta może być wymieniona, a także ogólny opis technologii rozwiązania oferty.
 
-|                Typ oferty                |  Marketplace  |   Opis                                                           |
+|                Typ oferty                |  Portal Marketplace  |   Opis                                                           |
 |                ----------                |  -----------  |   -----------                                                           |
 | [Aplikacja platformy Azure](./azure-applications/cpp-azure-app-offer.md) | Azure | Rozwiązanie składa się z co najmniej jednej maszyny wirtualnej, opcjonalnie niestandardowego kodu platformy Azure wdrożonego za pomocą szablonu usługi Azure Resource Manager.  Wdrożenie może być przez klienta przez szablon rozwiązania lub zarządzane przez wydawcę. Ten typ służy do zapewniania większej elastyczności niż podany typ oferty maszyny wirtualnej.  |
-| [Usługa doradcza](./consulting-services/cloud-partner-portal-consulting-services-publishing-offer.md) | jedn | Konsultanci wykwalifikowany przez firmę Microsoft mogą wystawiać swoje usługi specyficzne dla domeny w witrynie Azure Marketplace lub AppSource.  Ich wiedza pomaga klientom w ocenie ich problemów oraz tworzeniu i wdrażaniu właściwych rozwiązań w celu spełnienia celów firmy.  |
-| [Kontener](./containers/cpp-containers-offer.md)  | Azure | Rozwiązanie to obraz kontenera platformy Docker, który został zainicjowany jako usługa oparta na Kubernetes lub Azure Container Instances. |
+| [Usługa doradcza](./consulting-services/cloud-partner-portal-consulting-services-publishing-offer.md) | Jedn | Konsultanci wykwalifikowany przez firmę Microsoft mogą wystawiać swoje usługi specyficzne dla domeny w witrynie Azure Marketplace lub AppSource.  Ich wiedza pomaga klientom w ocenie ich problemów oraz tworzeniu i wdrażaniu właściwych rozwiązań w celu spełnienia celów firmy.  |
+| [Wbudowane](./containers/cpp-containers-offer.md)  | Azure | Rozwiązanie to obraz kontenera platformy Docker, który został zainicjowany jako usługa oparta na Kubernetes lub Azure Container Instances. |
 | [Dynamics 365 Business Central](../cloud-partner-portal-orig/cpp-business-central-offer.md) | AppSource | Pakiet, który rozszerza ten plan zasobów przedsiębiorstwa (ERP) i system zarządzania przedsiębiorstwem. |
 | [Dynamics 365 dla zaangażowania klienta](./dyn365ce/cpp-customer-engagement-offer.md) | AppSource | Pakiet, który rozszerza ten system zarządzania zasobami klienta (CRM) za pomocą usług sprzedaży, usług, projektu i modułów usługi Field Service  |
 | [Dynamics 365 dla finansów i operacji](../cloud-partner-portal-orig/cpp-dynamics-365-operations-offer.md) | AppSource | Pakiet rozszerzający tę usługę Enterprise Resource Planning (ERP), która obsługuje zaawansowane funkcje finansów, operacji, produkcji i łańcucha dostaw |

@@ -4,15 +4,16 @@ description: Przewodnik dotyczący definiowania i publikowania oferty usługi ko
 services: Azure, Marketplace, Cloud Partner Portal,
 author: qianw211
 ms.service: marketplace
+ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 11/30/2018
 ms.author: pabutler
-ms.openlocfilehash: 6c75664e558602429250420f1896b75a74546e67
-ms.sourcegitcommit: b03516d245c90bca8ffac59eb1db522a098fb5e4
+ms.openlocfilehash: 506b34281ba8ab5b669c87b4699fb8b138c8734a
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/19/2019
-ms.locfileid: "71145458"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73819191"
 ---
 # <a name="azure-and-dynamics-365-consulting-service-offer"></a>Oferta usług konsultingowych Azure i Dynamics 365
 
@@ -38,7 +39,7 @@ W tej sekcji opisano elementy publikowania oferty usługi konsultingowej. Publik
     - Dynamics 365 dla operacji finansowych & 
     - Dynamics 365 Business Central 
     - Power BI 
-    - Aplikacje PowerApp
+    - PowerApps
 - [Utwórz nową ofertę](./cpp-consulting-service-create-offer.md) zawierającą kroki wymagane do utworzenia wpisu oferty usługi konsultingowej przy użyciu Portal Cloud Partner:
     - [Zdefiniuj ustawienia oferty](./cpp-consulting-service-define-offer-settings.md).
     - [Wprowadź szczegóły witryny Marketplace i zdecyduj, czy chcesz publikować w witrynie Azure Portal, czy w witrynie AppSource.](./cpp-consulting-service-storefront-details.md)

@@ -8,12 +8,12 @@ ms.author: grhuynh
 ms.service: genomics
 ms.topic: quickstart
 ms.date: 01/11/2019
-ms.openlocfilehash: 5a84c5a8af4d11f3ff2a03c228475154f98b8744
-ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
+ms.openlocfilehash: 47043b9f4416ec61cf25ea92504c0c653b7d5408
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73606132"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73819199"
 ---
 # <a name="quickstart-run-a-workflow-through-the-microsoft-genomics-service"></a>Szybki start: Uruchamianie przepływu za pośrednictwem usługi Microsoft Genomics
 
@@ -39,8 +39,8 @@ Skonfiguruj konto usługi Genomics w sposób pokazany na wcześniejszej ilustrac
  |**Ustawienie**          |  **Sugerowana wartość**  | **Opis pola** |
  |:-------------       |:-------------         |:----------            |
  |Subskrypcja         | Nazwa subskrypcji użytkownika|Jest to jednostka rozliczeniowa usług platformy Azure — aby uzyskać szczegółowe informacje o subskrypcji, zobacz [Subskrypcje](https://account.azure.com/Subscriptions) |      
- |Grupa zasobów       | MyResourceGroup       |  Grupy zasobów umożliwiają grupowanie wielu zasobów platformy Azure (konto magazynu, konto usługi Genomics itp.) w jednej grupie, co upraszcza zarządzanie. Aby uzyskać więcej informacji, zobacz [Grupy zasobów](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview#resource-groups). Prawidłowe nazwy grup zasobów opisano w artykule [Reguły nazewnictwa](https://docs.microsoft.com/azure/architecture/best-practices/naming-conventions) |
- |Nazwa konta         | MyGenomicsAccount     |Wybierz unikatowy identyfikator konta. Aby uzyskać informacje o prawidłowych nazwach, zobacz [Reguły nazewnictwa](https://docs.microsoft.com/azure/architecture/best-practices/naming-conventions) |
+ |Grupa zasobów       | MyResourceGroup       |  Grupy zasobów umożliwiają grupowanie wielu zasobów platformy Azure (konto magazynu, konto usługi Genomics itp.) w jednej grupie, co upraszcza zarządzanie. Aby uzyskać więcej informacji, zobacz [Grupy zasobów](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview#resource-groups). Prawidłowe nazwy grup zasobów opisano w artykule [Reguły nazewnictwa](/azure/cloud-adoption-framework/ready/azure-best-practices/naming-and-tagging) |
+ |Nazwa konta         | MyGenomicsAccount     |Wybierz unikatowy identyfikator konta. Aby uzyskać informacje o prawidłowych nazwach, zobacz [Reguły nazewnictwa](/azure/cloud-adoption-framework/ready/azure-best-practices/naming-and-tagging) |
  |Lokalizacja                   | Zachodnie stany USA 2                    |    Usługa jest dostępna w regionach: Zachodnie stany USA 2, Europa Zachodnia i Azja Południowo-Wschodnia |
 
 
@@ -118,8 +118,8 @@ Skonfiguruj konto usługi Storage w sposób pokazany na wcześniejszej ilustracj
  |**Ustawienie**          |  **Sugerowana wartość**  | **Opis pola** |
  |:-------------------------       |:-------------         |:----------            |
  |Subskrypcja         | Twoja subskrypcja platformy Azure |Aby uzyskać szczegółowe informacje o subskrypcji, zobacz [Subskrypcje](https://account.azure.com/Subscriptions) |      
- |Grupa zasobów       | MyResourceGroup       |  Możesz wybrać tę samą grupę zasobów co w przypadku konta usługi Genomics. Prawidłowe nazwy grup zasobów opisano w artykule [Reguły nazewnictwa](https://docs.microsoft.com/azure/architecture/best-practices/naming-conventions) |
- |Nazwa konta magazynu         | MyStorageAccount     |Wybierz unikatowy identyfikator konta. Aby uzyskać informacje o prawidłowych nazwach, zobacz [Reguły nazewnictwa](https://docs.microsoft.com/azure/architecture/best-practices/naming-conventions) |
+ |Grupa zasobów       | MyResourceGroup       |  Możesz wybrać tę samą grupę zasobów co w przypadku konta usługi Genomics. Prawidłowe nazwy grup zasobów opisano w artykule [Reguły nazewnictwa](/azure/cloud-adoption-framework/ready/azure-best-practices/naming-and-tagging) |
+ |Nazwa konta magazynu         | MyStorageAccount     |Wybierz unikatowy identyfikator konta. Aby uzyskać informacje o prawidłowych nazwach, zobacz [Reguły nazewnictwa](/azure/cloud-adoption-framework/ready/azure-best-practices/naming-and-tagging) |
  |Lokalizacja                  | Zachodnie stany USA 2                  | Użyj tej samej lokalizacji co Twoje konto usługi Genomics, aby zredukować opłaty za ruch wychodzący i zmniejszyć opóźnienia.  | 
  |Wydajność                  | Standardowa                   | Wartość domyślna to Standardowa. Aby uzyskać więcej szczegółowych informacji o kontach magazynu w warstwie Standardowa i Premium, zobacz [Wprowadzenie do usługi Microsoft Azure Storage](https://docs.microsoft.com/azure/storage/common/storage-introduction)    |
  |Rodzaj konta       | Blob Storage       |  Magazyn obiektów blob może być 2–5 razy szybszy od konta ogólnego przeznaczenia w przypadku pobierania i przekazywania. |

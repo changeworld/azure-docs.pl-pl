@@ -1,5 +1,5 @@
 ---
-title: Zdarzenia rozszerzone w SQL Database
+title: Rozszerzone zdarzenia
 description: Opisuje zdarzenia rozszerzone (XEvents) w Azure SQL Database oraz sposób różnicowania sesji zdarzeń w przypadku sesji zdarzeń w Microsoft SQL Server.
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: MightyPen
 ms.author: genemi
 ms.reviewer: jrasnik
 ms.date: 12/19/2018
-ms.openlocfilehash: 64cfcd9451416a6eb35301268b285bd00cf0cad4
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: cab5b5baf318eb9eadc398ce525e0de716d0df2d
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73686783"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73822300"
 ---
 # <a name="extended-events-in-sql-database"></a>Zdarzenia rozszerzone w SQL Database
 [!INCLUDE [sql-database-xevents-selectors-1-include](../../includes/sql-database-xevents-selectors-1-include.md)]
@@ -89,7 +89,7 @@ Funkcja zdarzeń rozszerzonych jest obsługiwana przez kilka [widoków wykazu](h
 | **sys. database_event_session_targets** |Zwraca wiersz dla każdego obiektu docelowego zdarzenia dla sesji zdarzeń. |
 | **sys. database_event_sessions** |Zwraca wiersz dla każdej sesji zdarzeń w bazie danych SQL Database. |
 
-W Microsoft SQL Server podobne widoki wykazu mają nazwy, które obejmują *. serwer\_* zamiast *. baza danych\_* . Wzorzec nazwy jest taki jak **sys. server_event_%** .
+W Microsoft SQL Server podobne widoki wykazu mają nazwy, które obejmują *. serwer\_* zamiast *. baza danych\_* . Wzorzec nazwy jest podobny do wykazu **sys. server_event_%** .
 
 ## <a name="new-dynamic-management-views-dmvshttpsmsdnmicrosoftcomlibraryms188754aspx"></a>Nowe dynamiczne widoki zarządzania [(widoków DMV)](https://msdn.microsoft.com/library/ms188754.aspx)
 
@@ -97,23 +97,23 @@ Azure SQL Database ma [dynamiczne widoki zarządzania (widoków DMV)](https://ms
 
 | Nazwa DMV | Opis |
 |:--- |:--- |
-| **sys. DM _xe_database_session_event_actions** |Zwraca informacje o akcjach sesji zdarzeń. |
-| **sys. DM _xe_database_session_events** |Zwraca informacje o zdarzeniach sesji. |
-| **sys. DM _xe_database_session_object_columns** |Pokazuje wartości konfiguracji dla obiektów, które są powiązane z sesją. |
-| **sys. DM _xe_database_session_targets** |Zwraca informacje o celach docelowych sesji. |
-| **sys. DM _xe_database_sessions** |Zwraca wiersz dla każdej sesji zdarzeń, który jest objęty zakresem bieżącej bazy danych. |
+| **sys. dm_xe_database_session_event_actions** |Zwraca informacje o akcjach sesji zdarzeń. |
+| **sys. dm_xe_database_session_events** |Zwraca informacje o zdarzeniach sesji. |
+| **sys. dm_xe_database_session_object_columns** |Pokazuje wartości konfiguracji dla obiektów, które są powiązane z sesją. |
+| **sys. dm_xe_database_session_targets** |Zwraca informacje o celach docelowych sesji. |
+| **sys. dm_xe_database_sessions** |Zwraca wiersz dla każdej sesji zdarzeń, który jest objęty zakresem bieżącej bazy danych. |
 
 W Microsoft SQL Server podobne widoki wykazu są nazwane bez *bazy danych\_* część nazwy, na przykład:
 
-- **sys. DM _xe_sessions**, zamiast nazwy<br/>**sys. DM _xe_database_sessions**.
+- **sys. dm_xe_sessions**, a nie nazwa<br/>**sys. dm_xe_database_sessions**.
 
 ### <a name="dmvs-common-to-both"></a>Widoków DMV wspólne dla obu
 W przypadku zdarzeń rozszerzonych istnieją dodatkowe widoków DMV, które są wspólne dla obu Azure SQL Database i Microsoft SQL Server:
 
-- **sys. DM _xe_map_values**
-- **sys. DM _xe_object_columns**
-- **sys. DM _xe_objects**
-- **sys. DM _xe_packages**
+- **sys. dm_xe_map_values**
+- **sys. dm_xe_object_columns**
+- **sys. dm_xe_objects**
+- **sys. dm_xe_packages**
 
   <a name="sqlfindseventsactionstargets" id="sqlfindseventsactionstargets"></a>
 
@@ -186,7 +186,7 @@ Jeśli zostanie wyświetlony komunikat o błędzie informujący, że maksymalna 
 
 W **celu przechowywania danych w obiektach** BLOB usługi Azure Storage może wystąpić opóźnienie sieci lub błędy. Inne zdarzenia w SQL Database mogą być opóźnione podczas oczekiwania na zakończenie komunikacji sieciowej. To opóźnienie może spowolnić obciążenie.
 
-- Aby zmniejszyć ryzyko związane z wydajnością, należy unikać ustawiania opcji **EVENT_RETENTION_MODE** na **NO_EVENT_LOSS** w definicjach sesji zdarzeń.
+- Aby zmniejszyć ryzyko związane z wydajnością, należy unikać ustawiania opcji **EVENT_RETENTION_MODE** , aby **NO_EVENT_LOSS** w definicjach sesji zdarzeń.
 
 ## <a name="related-links"></a>Powiązane linki
 

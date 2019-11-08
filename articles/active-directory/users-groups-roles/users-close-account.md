@@ -1,5 +1,5 @@
 ---
-title: Zamknij konto służbowe w niezarządzanym katalogu — Azure Active Directory | Microsoft Docs
+title: Zamknij konto służbowe w niezarządzanym katalogu usługi Azure AD
 description: Jak zamknąć konto służbowe w niezarządzanym Azure Active Directory.
 services: active-directory
 author: rolyon
@@ -13,12 +13,12 @@ ms.author: rolyon
 ms.reviewer: ''
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0da4c6b1c1434dae564ab4876a3ab3f341a87097
-ms.sourcegitcommit: a3a40ad60b8ecd8dbaf7f756091a419b1fe3208e
+ms.openlocfilehash: 3c101c0ef7932151e675c5c514ac558e6e0f94b2
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/21/2019
-ms.locfileid: "69891953"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73815720"
 ---
 # <a name="close-your-work-or-school-account-in-an-unmanaged-directory"></a>Zamknij konto służbowe w niezarządzanym katalogu
 
@@ -32,14 +32,14 @@ Użytkownicy w niezarządzanym katalogu są często tworzeniu podczas tworzenia 
 
 Przed zamknięciem konta należy potwierdzić następujące elementy:
 
-* Upewnij się, że jesteś użytkownikiem niezarządzanego katalogu usługi Azure AD. Nie można zamknąć konta, jeśli użytkownik należy do katalogu zarządzanego. Jeśli należysz do katalogu zarządzanego i chcesz zamknąć konto, musisz skontaktować się z administratorem. Aby uzyskać informacje na temat sposobu ustalania, czy należysz do niezarządzanego katalogu, zobacz [Usuwanie użytkownika z](https://docs.microsoft.com/flow/gdpr-dsr-delete#delete-the-user-from-unmanaged-tenant)niezarządzanej dzierżawy.
+* Upewnij się, że jesteś użytkownikiem niezarządzanego katalogu usługi Azure AD. Nie można zamknąć konta, jeśli użytkownik należy do katalogu zarządzanego. Jeśli należysz do katalogu zarządzanego i chcesz zamknąć konto, musisz skontaktować się z administratorem. Aby uzyskać informacje na temat sposobu ustalania, czy należysz do niezarządzanego katalogu, zobacz [Usuwanie użytkownika z niezarządzanej dzierżawy](https://docs.microsoft.com/flow/gdpr-dsr-delete#delete-the-user-from-unmanaged-tenant).
 
 * Zapisz wszystkie dane, które chcesz zachować. Informacje o sposobach przesyłania żądania eksportu znajdują się w temacie [Uzyskiwanie dostępu do dzienników generowanych przez system i eksportowanie ich dla niezarządzanych dzierżawców](https://docs.microsoft.com/power-platform/admin/powerapps-gdpr-dsr-guide-systemlogs#accessing-and-exporting-system-generated-logs-for-unmanaged-tenants).
 
 > [!WARNING]
 > Zamykanie konta jest nieodwracalne. Po zamknięciu konta zostaną usunięte wszystkie dane osobowe. Nie będziesz już mieć dostępu do Twojego konta i danych skojarzonych z Twoim kontem.
 
-## <a name="close-your-account"></a>Zamknij swoje konto
+## <a name="close-your-account"></a>Zamknij konto
 
 Aby zamknąć niezarządzane konto służbowe, wykonaj następujące czynności:
 

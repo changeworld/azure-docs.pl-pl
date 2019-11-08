@@ -8,12 +8,12 @@ ms.service: digital-twins
 services: digital-twins
 ms.topic: conceptual
 ms.date: 10/27/2019
-ms.openlocfilehash: 5df8bb0ba0323692bddf94ae2888e8fcf1ad24a9
-ms.sourcegitcommit: f7f70c9bd6c2253860e346245d6e2d8a85e8a91b
+ms.openlocfilehash: b0c3d72085e008524811f479ccbdeec013e26c4c
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73063266"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73822243"
 ---
 # <a name="how-to-use-azure-digital-twins-management-apis"></a>Jak używać interfejsów API usługi Azure Digital bliźniaczych reprezentacji Management
 
@@ -116,4 +116,4 @@ Aby poznać typowe wzorce zapytań interfejsu API, przeczytaj artykuł [jak wyko
 
 Aby dowiedzieć się więcej na temat punktów końcowych interfejsu API, zobacz [jak używać programu Digital bliźniaczych reprezentacji Swagger](./how-to-use-swagger.md).
 
-Aby przejrzeć składnię OData i dostępne operatory porównania, Odczytaj [Operatory porównania OData w Azure Search](../search/search-query-odata-comparison-operators.md).
+Aby przejrzeć składnię OData i dostępne operatory porównania, Odczytaj [Operatory porównania OData na platformie Azure wyszukiwanie poznawcze](../search/search-query-odata-comparison-operators.md).

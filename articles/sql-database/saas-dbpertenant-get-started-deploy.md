@@ -1,5 +1,5 @@
 ---
-title: Samouczek SaaS bazy danych na dzierżawcę — Azure SQL Database
+title: Samouczek SaaS bazy danych na dzierżawcę
 description: Wdróż i Eksploruj wielodostępną aplikację Wingtip biletów SaaS, która demonstruje wzorzec bazy danych na dzierżawcę i inne wzorce SaaS przy użyciu Azure SQL Database.
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: MightyPen
 ms.author: genemi
 ms.reviewer: sstein
 ms.date: 01/25/2019
-ms.openlocfilehash: b271c4bbf942bee70c4995ee04ec370591d4f67d
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 31f712f80ee2492e4bbaec99bd093d46f9d04e6d
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73692189"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73823996"
 ---
 # <a name="deploy-and-explore-a-multitenant-saas-app-that-uses-the-database-per-tenant-pattern-with-sql-database"></a>Wdróż i Eksploruj wielodostępną aplikację SaaS, która używa wzorca bazy danych na dzierżawcę z SQL Database
 
@@ -180,7 +180,7 @@ Jeśli chcesz kontrolować i monitorować zadania w tle, użyj następujących p
 
     - Domyślnie zadania w tle są uruchamiane przez 120 minut.
     - Każde zadanie powoduje obciążenie oparte na PROCESORAch w jednej bazie danych dzierżawy przez wykonanie *sp_CpuLoadGenerator*. Intensywność i czas trwania obciążenia różnią się w zależności od `$DemoScenario`.
-    - pętle *sp_CpuLoadGenerator* wokół instrukcji SELECT języka SQL, która powoduje duże obciążenie procesora CPU. Przedział czasu między problemami wybierz różni się w zależności od wartości parametrów w celu utworzenia kontrolowanego obciążenia procesora CPU. Poziomy obciążenia i interwały są losowe w celu symulowania bardziej realistycznych obciążeń.
+    - *sp_CpuLoadGenerator* pętle wokół instrukcji SELECT języka SQL, która powoduje duże obciążenie procesora CPU. Przedział czasu między problemami wybierz różni się w zależności od wartości parametrów w celu utworzenia kontrolowanego obciążenia procesora CPU. Poziomy obciążenia i interwały są losowe w celu symulowania bardziej realistycznych obciążeń.
     - Ten plik SQL jest przechowywany w obszarze *WingtipTenantDB\\dbo\\StoredProcedures\\* .
 
 4. Jeśli `$OneTime = $false`, generator obciążenia uruchamia zadania w tle, a następnie kontynuuje działanie. Co 10 sekund monitoruje je pod kątem wszystkich nowych dzierżawców, których obsługa administracyjna została zainicjowana. Jeśli ustawisz `$OneTime = $true`, LoadGenerator uruchamia zadania w tle, a następnie przestaje działać na pierwszym planie. Na potrzeby tego samouczka pozostaw `$OneTime = $false`.

@@ -4,15 +4,16 @@ description: Przegląd sposobu śledzenia użycia klienta w rozwiązaniach w por
 services: Azure, Marketplace, Compute, Storage, Networking, Blockchain, Security
 author: yijenj
 ms.service: marketplace
+ms.subservice: partnercenter-marketplace-publisher
 ms.topic: article
 ms.date: 9/23/2019
 ms.author: pabutler
-ms.openlocfilehash: c077b93b887482dda5ae127bb3dbaec71b2ea11b
-ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
+ms.openlocfilehash: c84f5538d2f553a713b52aa795a10acddac9aff8
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71260080"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73819886"
 ---
 # <a name="azure-partner-customer-usage-attribution"></a>Udział partnera w zakresie użycia platformy Azure przez klienta
 
@@ -22,9 +23,9 @@ Firma Microsoft oferuje teraz metodę ułatwiającą partnerom lepsze śledzenie
 
 Jako partner firmy Microsoft możesz skojarzyć użycie platformy Azure z dowolnymi zasobami platformy Azure, które zostały wdrożone w imieniu klienta. Skojarzenie można utworzyć za pośrednictwem portalu Azure Marketplace, repozytorium szybkiego startu, prywatnych repozytoriów GitHub i jednej z nich. Przypisanie użycia klienta obsługuje trzy opcje wdrażania:
 
-- Szablony Azure Resource Manager: Partnerzy mogą używać szablonów Menedżer zasobów, aby wdrożyć usługi platformy Azure w celu uruchomienia oprogramowania partnera. Partnerzy mogą utworzyć szablon Menedżer zasobów, aby zdefiniować infrastrukturę i konfigurację rozwiązania platformy Azure. Szablon Menedżer zasobów umożliwia klientom wdrażanie rozwiązania w całym cyklu życia. Możesz mieć pewność, że zasoby są wdrażane w spójnym stanie.
-- Interfejsy API Azure Resource Manager: Partnerzy mogą wywoływać interfejsy API Menedżer zasobów bezpośrednio, aby wdrożyć szablon Menedżer zasobów lub wygenerować wywołania interfejsu API w celu bezpośredniego udostępnienia usług platformy Azure.
-- Terraform Partnerzy mogą użyć programu Cloud Orchestrator, takiego jak Terraform, aby wdrożyć szablon Menedżer zasobów lub bezpośrednio wdrożyć usługi platformy Azure.
+- Szablony Azure Resource Manager: partnerzy mogą używać szablonów Menedżer zasobów do wdrażania usług platformy Azure w celu uruchamiania oprogramowania partnera. Partnerzy mogą utworzyć szablon Menedżer zasobów, aby zdefiniować infrastrukturę i konfigurację rozwiązania platformy Azure. Szablon Menedżer zasobów umożliwia klientom wdrażanie rozwiązania w całym cyklu życia. Możesz mieć pewność, że zasoby są wdrażane w spójnym stanie.
+- Interfejsy API Azure Resource Manager: partnerzy mogą wywoływać interfejsy API Menedżer zasobów bezpośrednio, aby wdrożyć szablon Menedżer zasobów lub wygenerować wywołania interfejsu API w celu bezpośredniego udostępnienia usług platformy Azure.
+- Terraform: partnerzy mogą używać programu Cloud Orchestrator, takiego jak Terraform, do wdrażania szablonu Menedżer zasobów lub bezpośrednio wdrażać usługi platformy Azure.
 
 Przypisanie użycia klienta dotyczy nowego wdrożenia i nie obsługuje tagowania istniejących już wdrożonych zasobów.
 
@@ -33,7 +34,7 @@ W [aplikacji platformy Azure](https://docs.microsoft.com/azure/marketplace/cloud
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-## <a name="use-resource-manager-templates"></a>Używanie szablonów usługi Resource Manager
+## <a name="use-resource-manager-templates"></a>Używanie szablonów Menedżera zasobów
 Wiele rozwiązań partnerskich jest wdrażanych w ramach subskrypcji klienta przy użyciu szablonów Menedżer zasobów. Jeśli masz szablon Menedżer zasobów, który jest dostępny w portalu Azure Marketplace, w witrynie GitHub lub w ramach przewodnika Szybki Start, proces modyfikowania szablonu w celu włączenia przypisywania użycia klienta powinien być prosty do przodu.
 
 Aby uzyskać więcej informacji na temat tworzenia i publikowania szablonów rozwiązań, zobacz
@@ -99,7 +100,7 @@ Aby włączyć przypisanie użycia klienta, podczas projektowania wywołań inte
 > [!Note]
 > Format ciągu jest ważny. Jeśli prefiks **identyfikatora PID** nie jest uwzględniony, nie jest możliwe wykonywanie zapytań dotyczących danych. Różne zestawy SDK śledzą się inaczej. Aby zaimplementować tę metodę, zapoznaj się z podejściem do pomocy technicznej i śledzenia dla preferowanego zestawu Azure SDK.
 
-#### <a name="example-the-python-sdk"></a>Przykład: Zestaw SDK języka Python
+#### <a name="example-the-python-sdk"></a>Przykład: zestaw SDK języka Python
 
 Dla języka Python Użyj atrybutu **config** . Możesz dodać atrybut tylko do UserAgent. Oto przykład:
 
@@ -127,9 +128,9 @@ Aby uzyskać więcej informacji, zobacz [Azure SDK dla języka go](https://docs.
 
 ## <a name="use-terraform"></a>Użyj Terraform
 
-Pomoc techniczna dla programu Terraform jest dostępna za pomocą wersji 1.21.0 dostawcy platformy [https://github.com/terraform-providers/terraform-provider-azurerm/blob/master/CHANGELOG.md#1210-january-11-2019](https://github.com/terraform-providers/terraform-provider-azurerm/blob/master/CHANGELOG.md#1210-january-11-2019)Azure:.  Ta pomoc techniczna dotyczy wszystkich partnerów, którzy wdrażają swoje rozwiązania za pośrednictwem usługi Terraform, oraz wszystkich zasobów wdrożonych i naliczanych przez dostawcę platformy Azure (w wersji 1.21.0 lub nowszej).
+Pomoc techniczna dla usługi Terraform jest dostępna za pomocą wersji 1.21.0 dostawcy platformy Azure: [https://github.com/terraform-providers/terraform-provider-azurerm/blob/master/CHANGELOG.md#1210-january-11-2019](https://github.com/terraform-providers/terraform-provider-azurerm/blob/master/CHANGELOG.md#1210-january-11-2019).  Ta pomoc techniczna dotyczy wszystkich partnerów, którzy wdrażają swoje rozwiązania za pośrednictwem usługi Terraform, oraz wszystkich zasobów wdrożonych i naliczanych przez dostawcę platformy Azure (w wersji 1.21.0 lub nowszej).
 
-Dostawca platformy Azure dla Terraform dodał nowe pole opcjonalne o nazwie [*partner_id*](https://www.terraform.io/docs/providers/azurerm/#partner_id) , które określa identyfikator GUID śledzenia, który jest używany dla danego rozwiązania. Wartość tego pola może być również źródłem ze zmiennej środowiskowej *ARM_PARTNER_ID* .
+Dostawca platformy Azure dla Terraform dodał nowe pole opcjonalne o nazwie [*partner_id*](https://www.terraform.io/docs/providers/azurerm/#partner_id) , w którym można określić identyfikator GUID śledzenia, który jest używany dla danego rozwiązania. Wartość tego pola może być również źródłem *ARM_PARTNER_ID* zmiennej środowiskowej.
 
 ```
 provider "azurerm" {
@@ -137,7 +138,7 @@ provider "azurerm" {
           client_id = "xxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
           ……
           # new stuff for ISV attribution
-          partner_id = “xxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"}
+          partner_id = "xxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"}
 ```
 Partnerzy, którzy chcą wdrożyć wdrożenie za pośrednictwem Terraform, muszą wykonać następujące czynności:
 
@@ -240,21 +241,21 @@ Wybierz pozycję śledzony szablon na liście rozwijanej Typ powiązania partner
 
 ## <a name="notify-your-customers"></a>Powiadamiaj klientów
 
-Partnerzy powinni poinformować klientów o wdrożeniach korzystających z przypisywania użycia przez klienta. Firma Microsoft zgłasza do partnera użycie platformy Azure skojarzone z tymi wdrożeniami. Poniższe przykłady obejmują zawartość, której można użyć do powiadamiania klientów o tych wdrożeniach. W przykładach Zastąp \<> partnera nazwą swojej firmy. Partnerzy powinni upewnić się, że powiadomienia są wyrównane do zasad zachowania poufności danych i ich zbierania, w tym opcji dla klientów, które mają być wykluczone ze śledzenia.
+Partnerzy powinni poinformować klientów o wdrożeniach korzystających z przypisywania użycia przez klienta. Firma Microsoft zgłasza do partnera użycie platformy Azure skojarzone z tymi wdrożeniami. Poniższe przykłady obejmują zawartość, której można użyć do powiadamiania klientów o tych wdrożeniach. W przykładach Zastąp \<PARTNER > nazwą swojej firmy. Partnerzy powinni upewnić się, że powiadomienia są wyrównane do zasad zachowania poufności danych i ich zbierania, w tym opcji dla klientów, które mają być wykluczone ze śledzenia.
 
 ### <a name="notification-for-resource-manager-template-deployments"></a>Powiadomienie dotyczące wdrożeń szablonów Menedżer zasobów
 
-Po wdrożeniu tego szablonu firma Microsoft może zidentyfikować instalację \<partnera > oprogramowania przy użyciu wdrożonych zasobów platformy Azure. Firma Microsoft może skorelować zasoby platformy Azure, które są używane do obsługi oprogramowania. Firma Microsoft zbiera te informacje, aby zapewnić najlepsze środowisko dla swoich produktów i prowadzić działalność biznesową. Dane są zbierane i podlegają zasadom zachowania poufności informacji firmy Microsoft, które można znaleźć https://www.microsoft.com/trustcenter w witrynie.
+Po wdrożeniu tego szablonu firma Microsoft może zidentyfikować instalację \<partnera > oprogramowania przy użyciu wdrożonych zasobów platformy Azure. Firma Microsoft może skorelować zasoby platformy Azure, które są używane do obsługi oprogramowania. Firma Microsoft zbiera te informacje, aby zapewnić najlepsze środowisko dla swoich produktów i prowadzić działalność biznesową. Dane są zbierane i podlegają zasadom zachowania poufności informacji firmy Microsoft, które można znaleźć w https://www.microsoft.com/trustcenter.
 
 ### <a name="notification-for-sdk-or-api-deployments"></a>Powiadomienie o wdrożeniach zestawu SDK lub interfejsu API
 
-Po wdrożeniu \<oprogramowania partnerskiego > Firma Microsoft może zidentyfikować \<instalację oprogramowania partnerskiego > przy użyciu wdrożonych zasobów platformy Azure. Firma Microsoft może skorelować zasoby platformy Azure, które są używane do obsługi oprogramowania. Firma Microsoft zbiera te informacje, aby zapewnić najlepsze środowisko dla swoich produktów i prowadzić działalność biznesową. Dane są zbierane i podlegają zasadom zachowania poufności informacji firmy Microsoft, które można znaleźć https://www.microsoft.com/trustcenter w witrynie.
+W przypadku wdrażania oprogramowania \<PARTNER > Firma Microsoft może zidentyfikować instalację >go oprogramowania partnerskiego programu \<PARTNER przy użyciu wdrożonych zasobów platformy Azure. Firma Microsoft może skorelować zasoby platformy Azure, które są używane do obsługi oprogramowania. Firma Microsoft zbiera te informacje, aby zapewnić najlepsze środowisko dla swoich produktów i prowadzić działalność biznesową. Dane są zbierane i podlegają zasadom zachowania poufności informacji firmy Microsoft, które można znaleźć w https://www.microsoft.com/trustcenter.
 
 ## <a name="get-support"></a>Uzyskiwanie pomocy technicznej
 
 Istnieją dwa kanały pomocy technicznej w zależności od występujących problemów.
 
-W przypadku wystąpienia jakichkolwiek problemów w centrum partnerskim, takich jak wyświetlanie raportu dotyczącego użycia klienta lub logowanie, Utwórz żądanie pomocy technicznej z zespołem pomocy technicznej Centrum partnerskiego tutaj:[https://partner.microsoft.com/support](https://partner.microsoft.com/support)
+W przypadku wystąpienia jakichkolwiek problemów w centrum partnerskim, takich jak wyświetlanie raportu dotyczącego użycia klienta lub zalogowanie się, Utwórz żądanie pomocy technicznej z zespołem pomocy technicznej Centrum partnerskiego tutaj: [https://partner.microsoft.com/support](https://partner.microsoft.com/support)
 
 ![](./media/marketplace-publishers-guide/partner-center-log-in-support.png)
 
@@ -273,7 +274,7 @@ Jeśli potrzebujesz pomocy w ogólnym przypisywaniu do portalu Marketplace i/lub
 
 1. Wybierz pozycję **Uruchom żądanie**.
 
-1. Na następnej stronie Wprowadź wymagane wartości. Wybierz **nadal**.
+1. Na następnej stronie Wprowadź wymagane wartości. Wybierz przycisk **Kontynuuj**.
 
 1. Na następnej stronie Wprowadź wymagane wartości.
 
@@ -288,7 +289,7 @@ Możesz również otrzymywać wskazówki techniczne od doradcy technicznej partn
 
 ### <a name="how-to-submit-a-technical-consultation-request"></a>Jak przesłać żądanie konsultacji technicznych
 
-1. Odwiedź [https://aka.ms/TechnicalJourney](https://aka.ms/TechnicalJourney)stronę.
+1. Odwiedź [https://aka.ms/TechnicalJourney](https://aka.ms/TechnicalJourney).
 1. Wybierz pozycję Infrastruktura i zarządzanie chmurą, a nowa strona zostanie otwarta, aby wyświetlić drogę techniczną.
 1. W obszarze usługi wdrażania kliknij przycisk Prześlij żądanie.
 1. Zaloguj się przy użyciu konta MSA (MPN) lub usługi AAD (konto pulpitu nawigacyjnego partnera). na podstawie poświadczeń logowania zostanie otwarty formularz żądania online:
@@ -297,7 +298,7 @@ Możesz również otrzymywać wskazówki techniczne od doradcy technicznej partn
     * Wprowadź tytuł i opis problemu (Podaj jak najwięcej szczegółów).
 1. Kliknij przycisk Prześlij
 
-Wyświetl instrukcje krok po kroku dotyczące zrzutów ekranu pod adresem [https://aka.ms/TechConsultInstructions](https://aka.ms/TechConsultInstructions).
+Wyświetl instrukcje krok po kroku dotyczące zrzutów ekranu w [https://aka.ms/TechConsultInstructions](https://aka.ms/TechConsultInstructions).
 
 ### <a name="whats-next"></a>Co dalej
 
@@ -331,7 +332,7 @@ Formularz generatora GUID usługi Azure Storage jest gwarantowany do wygenerowan
 
 **Czy można użyć prywatnego, niestandardowego wirtualnego dysku twardego dla oferty szablonu rozwiązania w portalu Azure Marketplace?**
 
-Nie. Obraz maszyny wirtualnej musi pochodzić z portalu Azure Marketplace, patrz: [https://docs.microsoft.com/azure/marketplace/marketplace-virtual-machines](https://docs.microsoft.com/azure/marketplace/marketplace-virtual-machines).
+Nie. Obraz maszyny wirtualnej musi pochodzić z portalu Azure Marketplace, zobacz: [https://docs.microsoft.com/azure/marketplace/marketplace-virtual-machines](https://docs.microsoft.com/azure/marketplace/marketplace-virtual-machines).
 
 Możesz utworzyć ofertę maszyny wirtualnej w portalu Marketplace przy użyciu niestandardowego wirtualnego dysku twardego i oznaczyć ją jako prywatną, tak aby nikt nie mógł go zobaczyć. Następnie odwołuje się do tej maszyny wirtualnej w szablonie rozwiązania.
 

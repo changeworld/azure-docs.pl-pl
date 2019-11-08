@@ -1,5 +1,5 @@
 ---
-title: Oszczędność kosztów Azure SQL Database rdzeni wirtualnych
+title: Oszczędność kosztów
 description: Dowiedz się, jak kupić Azure SQL Database zarezerwowaną pojemność, aby zaoszczędzić na kosztach obliczeniowych.
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: anosov1960
 ms.author: sashan
 ms.reviewer: sstein, carlrab
 ms.date: 08/29/2019
-ms.openlocfilehash: 70e274d765b409d4024155f8553ba92200598394
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 52a3665da99ca9885c57db1a2779dc6ce4dbec21
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73687529"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73821174"
 ---
 # <a name="save-costs-for-sql-database-compute-resources-with-azure-sql-database-reserved-capacity"></a>Oszczędność kosztów SQL Database zasobów obliczeniowych z zastrzeżoną pojemnością Azure SQL Database
 

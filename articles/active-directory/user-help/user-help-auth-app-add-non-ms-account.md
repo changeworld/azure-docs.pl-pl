@@ -1,5 +1,5 @@
 ---
-title: Dodaj konta inne niż Microsoft do aplikacji Microsoft Authenticator Azure Active Directory | Microsoft Docs
+title: Dodawanie niekonto Microsoft do aplikacji uwierzytelniania — Azure AD
 description: Jak dodać konta inne niż firmy Microsoft, takie jak Google, Facebook lub GitHub, do aplikacji Microsoft Authenticator na potrzeby weryfikacji dwuskładnikowej.
 services: active-directory
 author: eross-msft
@@ -12,12 +12,12 @@ ms.date: 01/24/2019
 ms.author: lizross
 ms.reviewer: olhaun
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e1521d2b3d47667466636a1ac15f107826e40942
-ms.sourcegitcommit: 124c3112b94c951535e0be20a751150b79289594
+ms.openlocfilehash: 62d866e9bf543577887ee99173a52202fcfec632
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/10/2019
-ms.locfileid: "68942926"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73803664"
 ---
 # <a name="add-your-non-microsoft-accounts"></a>Dodawanie kont innych niż Microsoft
 
@@ -70,10 +70,10 @@ Dodaj swoje konto Google, włączając weryfikację dwuskładnikową, a następn
 
 6. Wybierz pozycję **dalej** na stronie **Konfigurowanie uwierzytelniania** na komputerze, wpisz sześciocyfrowy kod weryfikacyjny podany w aplikacji dla konta Google, a następnie wybierz pozycję **Weryfikuj**.
 
-7. Twoje konto zostało zweryfikowane i możesz wybrać pozycję **gotowe** , aby zamknąć stronę **Konfigurowanie uwierzytelniania** wystawcy.
+7. Twoje konto zostało zweryfikowane i możesz wybrać pozycję **gotowe** , aby zamknąć stronę **Konfigurowanie uwierzytelniania wystawcy** .
 
     >[!NOTE]
-    >Aby uzyskać więcej informacji na temat weryfikacji dwuskładnikowej i konta Google, zobacz temat [Włączanie weryfikacji 2-etapowej](https://support.google.com/accounts/answer/185839) i Dowiedz [się więcej o weryfikacji](https://www.google.com/landing/2step/help.html)dwuetapowej.
+    >Aby uzyskać więcej informacji na temat weryfikacji dwuskładnikowej i konta Google, zobacz temat [Włączanie weryfikacji 2-etapowej](https://support.google.com/accounts/answer/185839) i [Dowiedz się więcej o weryfikacji dwuetapowej](https://www.google.com/landing/2step/help.html).
 
 ## <a name="add-your-facebook-account"></a>Dodawanie konta w serwisie Facebook
 
@@ -81,13 +81,13 @@ Dodaj swoje konto w usłudze Facebook, włączając weryfikację dwuskładnikow�
 
 ### <a name="turn-on-two-factor-verification"></a>Włącz weryfikację dwuskładnikową
 
-1. Na komputerze otwórz serwis Facebook, wybierz menu rozwijane w prawym górnym rogu, a następnie przejdź do pozycji **Ustawienia** > **zabezpieczenia i zaloguj**się.
+1. Na komputerze otwórz serwis Facebook, wybierz menu rozwijane w prawym górnym rogu, a następnie przejdź do pozycji **ustawienia** > **zabezpieczenia i logowanie**.
 
     Zostanie wyświetlona strona **zabezpieczenia i logowanie** .
 
-2. Przejdź do opcji **Użyj uwierzytelniania** dwuskładnikowego w sekcji **uwierzytelnianie** dwuskładnikowe, a następnie wybierz pozycję **Edytuj**.
+2. Przejdź do opcji **Użyj uwierzytelniania dwuskładnikowego** w sekcji **uwierzytelnianie dwuskładnikowe** , a następnie wybierz pozycję **Edytuj**.
 
-    Zostanie wyświetlona strona **uwierzytelnianie** dwuskładnikowe.
+    Zostanie wyświetlona strona **uwierzytelnianie dwuskładnikowe** .
 
 3. Wybierz pozycję **Włącz**.
 
@@ -99,7 +99,7 @@ Dodaj swoje konto w usłudze Facebook, włączając weryfikację dwuskładnikow�
 
 2. Otwórz aplikację Microsoft Authenticator, wybierz pozycję **Dodaj konto** z ikony **Dostosowywanie i kontrola** w prawym górnym rogu, a następnie wybierz pozycję **inne konto (Google, Facebook itp.)** .
 
-3. Użyj aparatu urządzenia, aby zeskanować kod QR ze strony **uwierzytelniania** dwuetapowego na komputerze.
+3. Użyj aparatu urządzenia, aby zeskanować kod QR ze strony **uwierzytelniania dwuetapowego** na komputerze.
 
     >[!Note]
     >Jeśli aparat nie działa prawidłowo, można ręcznie wprowadzić kod QR i adres URL.
@@ -108,7 +108,7 @@ Dodaj swoje konto w usłudze Facebook, włączając weryfikację dwuskładnikow�
 
     W celu zapewnienia dodatkowych zabezpieczeń kod weryfikacyjny zmienia się co 30 sekund, uniemożliwiając komuś wielokrotne użycie kodu.
 
-5. Wybierz pozycję **dalej** na stronie **uwierzytelniania** dwuskładnikowego na komputerze, a następnie wpisz sześciocyfrowy kod weryfikacyjny podany w aplikacji dla Twojego konta w serwisie Facebook.
+5. Wybierz pozycję **dalej** na stronie **uwierzytelniania dwuskładnikowego** na komputerze, a następnie wpisz sześciocyfrowy kod weryfikacyjny podany w aplikacji dla Twojego konta w serwisie Facebook.
 
     Twoje konto zostało zweryfikowane i możesz teraz użyć aplikacji, aby zweryfikować swoje konto.
 
@@ -123,19 +123,19 @@ Dodaj konto usługi GitHub, włączając weryfikację dwuskładnikową, a nastę
 
 1. Na komputerze otwórz witrynę GitHub, wybierz swój obraz z prawego górnego rogu, a następnie wybierz pozycję **Ustawienia**.
 
-    Zostanie wyświetlona strona **uwierzytelnianie** dwuskładnikowe.
+    Zostanie wyświetlona strona **uwierzytelnianie dwuskładnikowe** .
 
-2. Na pasku bocznym **Ustawienia osobiste** wybierz pozycję **zabezpieczenia** , a następnie wybierz pozycję **Włącz uwierzytelnianie** dwuskładnikowe w obszarze **uwierzytelnianie** dwuskładnikowe.
+2. Na pasku bocznym **Ustawienia osobiste** wybierz pozycję **zabezpieczenia** , a następnie wybierz pozycję **Włącz uwierzytelnianie dwuskładnikowe** w obszarze **uwierzytelnianie dwuskładnikowe** .
 
 ### <a name="add-your-github-account-to-the-app"></a>Dodawanie konta usługi GitHub do aplikacji
 
-1. Na stronie **uwierzytelnianie** dwuskładnikowe na komputerze wybierz pozycję **Konfiguruj przy użyciu aplikacji**.
+1. Na stronie **uwierzytelnianie dwuskładnikowe** na komputerze wybierz pozycję **Konfiguruj przy użyciu aplikacji**.
 
 2. Zapisz kody odzyskiwania, aby móc wrócić do konta, Jeśli utracisz dostęp, a następnie wybierz przycisk **dalej**. 
 
     Możesz zapisać swoje kody, pobierając je na urządzenie, drukując twardą kopię lub kopiując je do narzędzia Menedżera haseł.
 
-3. Na stronie **uwierzytelnianie** dwuskładnikowe wybierz pozycję **Konfiguruj przy użyciu aplikacji**.
+3. Na stronie **uwierzytelnianie dwuskładnikowe** wybierz pozycję **Konfiguruj przy użyciu aplikacji**.
 
     Strona zmieni się, aby wyświetlić kod QR. Nie zamykaj tej strony.
 
@@ -150,7 +150,7 @@ Dodaj konto usługi GitHub, włączając weryfikację dwuskładnikową, a nastę
     Na stronie **konta** aplikacji jest wyświetlana nazwa konta i sześciocyfrowy kod weryfikacyjny. W celu zapewnienia dodatkowych zabezpieczeń kod weryfikacyjny zmienia się co 30 sekund, uniemożliwiając komuś wielokrotne użycie kodu.
 
     >[!NOTE]
-    >Aby uzyskać więcej informacji na temat weryfikacji dwuskładnikowej i konta usługi GitHub, zobacz [Informacje o uwierzytelnianiu](https://help.github.com/articles/about-two-factor-authentication/)dwuskładnikowym.
+    >Aby uzyskać więcej informacji na temat weryfikacji dwuskładnikowej i konta usługi GitHub, zobacz [Informacje o uwierzytelnianiu dwuskładnikowym](https://help.github.com/articles/about-two-factor-authentication/).
 
 ## <a name="add-your-amazon-account"></a>Dodawanie konta Amazon
 
@@ -187,12 +187,12 @@ Dodaj konto Amazon, włączając weryfikację dwuskładnikową, a następnie dod
 
 10. Na stronie **Dodaj metodę weryfikacji kopii zapasowej** na komputerze wpisz sześciocyfrowy kod weryfikacyjny dostarczony przez metodę weryfikacji kopii zapasowej dla konta Amazon, a następnie wybierz pozycję **Weryfikuj kod i Kontynuuj**.
 
-11. Na **prawie gotowe** strony Zdecyduj, czy komputer ma być zaufanym urządzeniem, a następnie wybierz **go. Włącz weryfikację**dwuetapową.
+11. Na **prawie gotowe** strony Zdecyduj, czy komputer ma być zaufanym urządzeniem, a następnie wybierz **go. Włącz weryfikację dwuetapową**.
 
     Zostanie wyświetlona strona **Zaawansowane ustawienia zabezpieczeń** zawierająca zaktualizowane dane weryfikacji dwuskładnikowej.
 
     >[!NOTE]
-    >Aby uzyskać więcej informacji na temat weryfikacji dwuskładnikowej i konta Amazon, zobacz [Informacje o weryfikacji](https://www.amazon.com/gp/help/customer/display.html?nodeId=201596330) dwuetapowej i zalogowaniu [się przy użyciu weryfikacji](https://www.amazon.com/gp/help/customer/display.html?nodeId=201962440)dwuetapowej.
+    >Aby uzyskać więcej informacji na temat weryfikacji dwuskładnikowej i konta Amazon, zobacz [Informacje o weryfikacji dwuetapowej](https://www.amazon.com/gp/help/customer/display.html?nodeId=201596330) i [zalogowaniu się przy użyciu weryfikacji dwuetapowej](https://www.amazon.com/gp/help/customer/display.html?nodeId=201962440).
 
 ## <a name="next-steps"></a>Następne kroki
 

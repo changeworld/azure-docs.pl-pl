@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 00d0067fe51efef8efffe31860e16f4530adf3ac
-ms.sourcegitcommit: 47b00a15ef112c8b513046c668a33e20fd3b3119
+ms.openlocfilehash: 1ae2f87a3719853f4a91cb8ba801be6d578597d3
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69972366"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73825679"
 ---
 # <a name="shrink-a-cloudsimple-private-cloud"></a>Zmniejsz chmurę prywatną CloudSimple
 
@@ -26,11 +26,11 @@ Aby zmniejszyć chmurę prywatną, należy spełnić następujące warunki.  Kla
 * Klaster vSphere musi mieć trzy węzły.  Nie można zmniejszyć klastra z tylko trzema węzłami.
 * Łączny zużyty magazyn nie powinien przekraczać całkowitej pojemności po zmniejszeniu poziomu klastra. 
 
-## <a name="sign-in-to-azure"></a>Logowanie do platformy Azure
+## <a name="sign-in-to-azure"></a>Zaloguj się w usłudze Azure
 
 Zaloguj się do witryny Azure Portal pod adresem [https://portal.azure.com](https://portal.azure.com).
 
-## <a name="shrink-a-private-cloud"></a>Zmniejsz chmurę prywatną
+## <a name="shrink-a-private-cloud"></a>Zmniejszanie chmury prywatnej
 
 1. [Dostęp do portalu CloudSimple](access-cloudsimple-portal.md).
 
@@ -53,6 +53,10 @@ Zaloguj się do witryny Azure Portal pod adresem [https://portal.azure.com](http
 8. Kliknij pozycję **Prześlij** , aby zmniejszyć chmurę prywatną.
 
 Rozpocznie się zmniejszanie chmury prywatnej.  Postęp można monitorować w zadaniach.  Proces zmniejszania może potrwać kilka godzin w zależności od danych, które muszą zostać ponownie zsynchronizowane w sieci vSAN.
+
+> [!NOTE]
+> Jeśli zmniejszasz chmurę prywatną przez usunięcie ostatniego lub jedynego klastra w centrum danych, centrum danych nie zostanie usunięte.  
+
 
 ## <a name="next-steps"></a>Następne kroki
 

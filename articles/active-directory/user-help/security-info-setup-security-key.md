@@ -1,5 +1,5 @@
 ---
-title: Skonfiguruj informacje zabezpieczające, aby użyć klucza zabezpieczeń (wersja zapoznawcza) — Azure Active Directory | Microsoft Docs
+title: Konfigurowanie informacji o zabezpieczeniach (wersja zapoznawcza) dla klucza zabezpieczeń — Azure AD
 description: Jak skonfigurować informacje zabezpieczające, aby zweryfikować Twoją tożsamość przy użyciu klucza zabezpieczeń szybkiej tożsamości online (FIDO2).
 services: active-directory
 author: eross-msft
@@ -12,14 +12,14 @@ ms.topic: conceptual
 ms.date: 07/18/2019
 ms.author: lizross
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 47ae7de87efd787b7d3cba14a33688c4b29637e6
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.openlocfilehash: a9d86d594f0918e6a9ffed49142a81a0f7834e86
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73160709"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73803784"
 ---
-# <a name="set-up-security-info-to-use-a-security-key-preview"></a>Skonfiguruj informacje zabezpieczające, aby użyć klucza zabezpieczeń (wersja zapoznawcza)
+# <a name="set-up-security-info-preview-for-a-security-key"></a>Skonfiguruj informacje zabezpieczające (wersja zapoznawcza) dla klucza zabezpieczeń
 
 Kluczy zabezpieczeń można używać jako metody logowania bezhasło w organizacji. Klucz zabezpieczeń to urządzenie fizyczne, które jest używane z unikatowym numerem PIN do logowania się do konta służbowego. Ponieważ klucze zabezpieczeń wymagają posiadania urządzenia fizycznego i czegoś tylko ty, jest on traktowany jako silniejszy Metoda uwierzytelniania niż nazwa użytkownika i hasło.
 

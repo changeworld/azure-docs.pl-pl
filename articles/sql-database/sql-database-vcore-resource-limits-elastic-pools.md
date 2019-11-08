@@ -1,5 +1,5 @@
 ---
-title: Azure SQL Database limity zasobów rdzeń wirtualny — pule elastyczne | Microsoft Docs
+title: Limity zasobów rdzeń wirtualny — pule elastyczne
 description: Na tej stronie opisano niektóre typowe limity zasobów rdzeń wirtualny dla pul elastycznych w Azure SQL Database.
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: oslake
 ms.author: moslake
 ms.reviewer: carlrab, sstein
 ms.date: 11/04/2019
-ms.openlocfilehash: 65c2bfe4d79f5b7d468999143524b96b60f0efaf
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: f356b9d248ac9c5f0bcfaaeeb37b43d958eaa528
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73495989"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73822374"
 ---
 # <a name="resource-limits-for-elastic-pools-using-the-vcore-purchasing-model"></a>Limity zasobów dla pul elastycznych przy użyciu modelu zakupu rdzeń wirtualny
 
@@ -226,7 +226,7 @@ Możesz ustawić warstwę usług, rozmiar obliczeń i ilość miejsca do magazyn
 |Pamięć (GB)|81,6|91,8|102|122,4|163,2|204|
 |Maksymalna liczba baz danych na pulę|100|100|100|100|100|100|
 |Obsługa magazynu kolumn|Nie dotyczy|Nie dotyczy|Nie dotyczy|Nie dotyczy|Nie dotyczy|Nie dotyczy|
-|Magazyn OLTP w pamięci (GB)|7|8|9,5|11|20|36|
+|Magazyn OLTP w pamięci (GB)|7|8|9.5|11|20|36|
 |Typ magazynu|Lokalny dysk SSD|Lokalny dysk SSD|Lokalny dysk SSD|Lokalny dysk SSD|Lokalny dysk SSD|Lokalny dysk SSD|
 |Maksymalny rozmiar danych (GB)|650|650|650|650|1024|1024|
 |Maksymalny rozmiar dziennika (GB)|195|195|195|195|307|307|
@@ -340,7 +340,7 @@ Jeśli wszystkie rdzeni wirtualnych puli elastycznej są zajęte, każda baza da
 W poniższej tabeli opisano właściwości dla baz danych w puli.
 
 > [!NOTE]
-> Limity zasobów poszczególnych baz danych w pulach elastycznych są generalnie takie same jak w przypadku pojedynczych baz danych poza pulami o tym samym rozmiarze obliczeniowym. Na przykład maksymalna liczba współbieżnych procesów roboczych dla bazy danych GP_Gen4_1 to 200 procesów roboczych. W związku z tym Maksymalna liczba współbieżnych procesów roboczych dla bazy danych w puli GP_Gen4_1 to również 200 procesów roboczych. Należy pamiętać, że łączna liczba współbieżnych procesów roboczych w puli GP_Gen4_1 to 210.
+> Limity zasobów poszczególnych baz danych w pulach elastycznych są generalnie takie same jak w przypadku pojedynczych baz danych poza pulami o tym samym rozmiarze obliczeniowym. Na przykład maksymalna liczba współbieżnych procesów roboczych dla bazy danych GP_Gen4_1 to 200 procesów roboczych. W związku z tym Maksymalna liczba współbieżnych procesów roboczych dla bazy danych w puli GP_Gen4_1 to również 200 procesów roboczych. Należy pamiętać, że łączna liczba współbieżnych procesów roboczych w puli GP_Gen4_1 wynosi 210.
 
 | Właściwość | Opis |
 |:--- |:--- |

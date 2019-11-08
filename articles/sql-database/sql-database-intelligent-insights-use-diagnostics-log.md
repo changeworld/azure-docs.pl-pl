@@ -1,5 +1,5 @@
 ---
-title: Dziennik diagnostyki wydajności Intelligent Insights Azure SQL Database
+title: Dziennik diagnostyki wydajności Intelligent Insights
 description: Intelligent Insights zapewnia dziennik diagnostyczny Azure SQL Database problemów z wydajnością
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: danimir
 ms.author: danil
 ms.reviewer: jrasnik, carlrab
 ms.date: 12/19/2018
-ms.openlocfilehash: 86381f5670f09b5e6a215793dc1ea4eab7ecbb8e
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 9ed2cc8bfb10d916218417a7dd27010638d2a927
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73689697"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73810280"
 ---
 # <a name="use-the-intelligent-insights-azure-sql-database-performance-diagnostics-log"></a>Korzystanie z dziennika diagnostyki wydajności Azure SQL Database Intelligent Insights
 
@@ -40,9 +40,9 @@ Nagłówek dziennika jest typowy i składa się z sygnatury czasowej (TimeGenera
 
 Właściwość Identyfikacja problemu (issueId_d) umożliwia unikatowe Śledzenie problemów z wydajnością do momentu rozwiązania problemu. Wiele rekordów zdarzeń w stanie raportowania dziennika tego samego problemu będzie mieć ten sam identyfikator problemu.
 
-Wraz z IDENTYFIKATORem problemu dziennik diagnostyczny zgłasza sygnatury czasowe uruchomienia (intervalStartTime_t) i końca (intervalEndTme_t) określone zdarzenie związane z problemem, który jest raportowany w dzienniku diagnostyki.
+Wraz z IDENTYFIKATORem problemu dziennik diagnostyczny zgłasza sygnatury czasowe uruchamiania (intervalStartTime_t) i końca (intervalEndTme_t) określonego zdarzenia związanego z problemem raportowanym w dzienniku diagnostyki.
 
-Właściwość elastycznej puli (elasticPoolName_s) wskazuje pulę elastyczną, do której należy baza danych, do której należy problem. Jeśli baza danych nie jest częścią puli elastycznej, ta właściwość nie ma wartości. Baza danych, w której wykryto problem, jest ujawniana we właściwości Nazwa bazy danych (databaseName_s).
+Właściwość puli elastycznej (elasticPoolName_s) wskazuje, do której puli elastycznej znajduje się baza danych, do której należy problem. Jeśli baza danych nie jest częścią puli elastycznej, ta właściwość nie ma wartości. Baza danych, w której wykryto problem, jest ujawniana w właściwości Nazwa bazy danych (databaseName_s).
 
 ```json
 "intervalStartTime_t": "2017-9-25 11:00", // start of the issue reported time stamp
@@ -126,7 +126,7 @@ Właściwość DurationIncreaseSeconds dostarcza jednostkę miary w sekundach. J
 
 ## <a name="root-cause-analysis-and-improvement-recommendations"></a>Zalecenia dotyczące analizy głównej przyczyny i ulepszeń
 
-Ostatnia część dziennika wydajności Intelligent Insights odnosi się do zautomatyzowanej analizy głównej przyczyny problemu z obniżeniem wydajności. Informacje są wyświetlane w otaczające przyjaznym dla ludzi w właściwości głównej przyczyny analizy (rootCauseAnalysis_s). Zalecenia dotyczące ulepszeń są zawarte w dzienniku, jeśli jest to możliwe.
+Ostatnia część dziennika wydajności Intelligent Insights odnosi się do zautomatyzowanej analizy głównej przyczyny problemu z obniżeniem wydajności. Informacje są wyświetlane w otaczające przyjaznym dla ludzi w właściwości analiza przyczyny głównej (rootCauseAnalysis_s). Zalecenia dotyczące ulepszeń są zawarte w dzienniku, jeśli jest to możliwe.
 
 ```json
 // example of reported root cause analysis of the detected performance issue, in a human-readable format

@@ -1,45 +1,46 @@
 ---
-title: Maszyna wirtualna kartę Pomoc techniczna w portalu Cloud Partner portalu Azure Marketplace
-description: W tym artykule opisano kartę Pomoc techniczna używanego podczas tworzenia oferty maszyny Wirtualnej portalu Azure Marketplace.
+title: Karta Obsługa maszyn wirtualnych w portal Cloud Partner dla portalu Azure Marketplace
+description: Opisuje kartę Pomoc techniczna służącą do tworzenia oferty maszyny wirtualnej portalu Azure Marketplace.
 services: Azure, Marketplace, Cloud Partner Portal,
 author: v-miclar
 ms.service: marketplace
+ms.subservice: partnercenter-marketplace-publisher
 ms.topic: article
 ms.date: 04/25/2019
 ms.author: pabutler
-ms.openlocfilehash: 9763c8d520b8736d8f7d7bc5db81b75762cb98f9
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: fcf7a51e69e901ae04b29c4fb621d401d170d2f1
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64938208"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73808799"
 ---
-# <a name="virtual-machine-support-tab"></a>Maszyna wirtualna kartę Pomoc techniczna
+# <a name="virtual-machine-support-tab"></a>Karta Obsługa maszyn wirtualnych
 
-**Obsługuje** karcie **nowa oferta** strony umożliwia podanie technicznych i użytkownika, zasoby pomocy technicznej oferty.  Jest ona podzielony na trzy obszary: **Inżynierów**, **techniczną**, i **obsługuje adresy URL**.
+Karta **Pomoc techniczna** **nowej oferty** umożliwia zapewnienie obsługi zasobów dla oferty technicznej i użytkowników.  Jest podzielony na trzy obszary: **Inżynieria**, **Obsługa klienta**i **adresy URL pomocy technicznej**.
 
-![Kartę Pomoc techniczna w formularzu nowa oferta dla maszyn wirtualnych](./media/publishvm_012.png)
+![Karta pomoc techniczna w nowym formularzu oferty dla maszyn wirtualnych](./media/publishvm_012.png)
 
 ## <a name="field-values"></a>Wartości pól
 
-W poniższej tabeli opisano przeznaczenie i zawartość tych pól. Wymagane pola są wskazanych przez znak gwiazdki (*).
+W poniższej tabeli opisano przeznaczenie i zawartość tych pól. Wymagane pola są indicted przez gwiazdkę (*).
 
 |         Pole                 |       Opis                                                        |
 |        -------                |       ------------                                                       |
-| *Kontakt techniczny*     | Służy jako technicznych skontaktuj się z między firmami Microsoft i organizacji | 
-| **Nazwa\***                | Nazwa osoby lub grupy, która służy jako technical/inżynierów pomocy technicznej     |
-| **Adres e-mail\***               | Adres e-mail tego kontaktu Technical Preview                                      |
-| **Telefon\***               | Numer telefonu, aby uzyskać pomoc techniczną                                           |
-| *Dział obsługi klienta*        | Odbiera biletami pomocy technicznej otwierane przez klientów w ramach platformy Azure |
-| **Nazwa\***                | Nazwa osoby lub grupy, która służy jako dział obsługi klienta                  |
-| **Adres e-mail\***               | Adres e-mail pomocy technicznej klienta                                            |
-| **Telefon\***               | Numer telefonu pomocy technicznej dla klienta                                            |
-| *Adresy URL pomocy technicznej*            | Obsługa witryn, które firma Microsoft będzie używać swoich klientów otwierania biletów pomocy technicznej |
-| **Publiczna platforma Azure**          | Adres URL witryny pomocy technicznej usługi publiczny internet                                         |
-| **Chmura platformy Azure dla instytucji rządowych**| Adres URL witryny obsługi chmury dla instytucji rządowych                                        |
+| *Kontakt inżynieryjny*     | Służy jako kontakt techniczny między firmą Microsoft a organizacją | 
+| **Nazwa\***                | Nazwa osoby lub grupy, która służy jako pomoc techniczna/Inżynieria     |
+| **\* e-mail**               | Adres e-mail tego kontaktu technicznego                                      |
+| **\* telefonu**               | Numer telefonu pomocy technicznej                                           |
+| *Obsługa klienta*        | Odbiera bilety pomocy technicznej otwarte przez klientów na platformie Azure |
+| **Nazwa\***                | Nazwa osoby lub grupy, która służy jako obsługa klienta                  |
+| **\* e-mail**               | Adres e-mail pomocy technicznej                                            |
+| **\* telefonu**               | Numer telefonu do obsługi klienta                                            |
+| *Adresy URL pomocy technicznej*            | Witryny pomocy technicznej używane przez firmę Microsoft, gdy klienci otworzą bilety pomocy technicznej |
+| **Publiczna platforma Azure**          | Adres URL publicznej witryny internetowej pomocy technicznej                                         |
+| **Azure Government Cloud**| Adres URL witryny pomocy technicznej chmury dla instytucji rządowych                                        |
 |  |  |
 
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
-Następnie sfinalizować Jeśli jeszcze tego nie zrobiono doen tak, Twoje [maszyny wirtualnej, zasoby techniczne](./cpp-create-technical-assets.md).
+Jeśli jeszcze tego nie doen, Zakończ swoje [zasoby techniczne maszyny wirtualnej](./cpp-create-technical-assets.md).

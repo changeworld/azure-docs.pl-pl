@@ -1,5 +1,5 @@
 ---
-title: Automatyczne dostrajanie powiadomień e-mail — Przewodnik Azure SQL Database
+title: Automatyczne dostrajanie powiadomień e-mail — Przewodnik
 description: Włącz powiadomienia e-mail dla Azure SQL Database automatycznego dostrajania zapytań.
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: danimir
 ms.author: danil
 ms.reviewer: jrasnik, carlrab
 ms.date: 06/03/2019
-ms.openlocfilehash: e1478ab6abc9705a67f2d47bc076d3c2fe54ccd4
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: b48c37a6e607d121416ebae4d74e58f39670b79a
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73691144"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73821925"
 ---
 # <a name="email-notifications-for-automatic-tuning"></a>Powiadomienia e-mail dotyczące dostrajania automatycznego
 

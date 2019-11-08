@@ -1,126 +1,127 @@
 ---
-title: StoreFront — szczegóły dotyczące aplikacji Power BI oferują | Portal Azure Marketplace
-description: Skonfiguruj szczegóły Storefront pola dla oferty aplikacji Power BI dla Microsoft AppSource Marketplace.
+title: Szczegóły witryny sklepu dla oferty Power BI aplikacji | Portal Azure Marketplace
+description: Skonfiguruj pola szczegółów witryny Marketplace dla oferty Power BIej aplikacji dla Microsoft AppSource rynku.
 services: Azure, AppSource, Marketplace, Cloud Partner Portal, Power BI
 author: v-miclar
 ms.service: marketplace
+ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 04/24/2019
 ms.author: pabutler
-ms.openlocfilehash: 0816e7a7add430a65af9b3948aa8626f9567053a
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 309b2eb33c594b5233c547e3bf45a49aa3a25678
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64942621"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73817660"
 ---
-# <a name="power-bi-app-storefront-details-tab"></a>Karta Szczegóły Storefront programu Power BI aplikacji
+# <a name="power-bi-app-storefront-details-tab"></a>Karta Szczegóły witryny sklepu Power BI App
 
-Na **nowa oferta** stronie **szczegóły Storefront** kartę, aby podać informacje marketingu, sprzedaży i prawnych dla potencjalnych klientów. Na tej karcie można również skonfigurować zarządzanie dla potencjalnych klientów, które generuje w portalu Azure Marketplace. Ta długich fragmentów jest podzielony na sześć sekcji: **Szczegóły oferty**, **szczegółowe informacje dotyczące listy**, **marketingowych artefaktów**, **prawne**, **techniczną**i **Zarządzanie potencjalnymi**.  Znak gwiazdki (*) na końcu etykietę pola oznacza, że pole jest wymagane.
+Na stronie **Nowa oferta** Skorzystaj z karty **szczegóły sklepu** , aby podać informacje marketingowe, sprzedażowe i prawne dla potencjalnych klientów. Na tej karcie można również skonfigurować zarządzanie dla potencjalnych klientów, które generują w witrynie Azure Marketplace. Ten długi formularz jest podzielony na sześć sekcji: **szczegóły oferty**, **szczegóły listy**, **artefakty marketingowe**, **Pomoc techniczna** **i** **Zarządzanie potencjalnymi**klientami.  Gwiazdka (*) na końcu etykiety pola oznacza, że pole jest wymagane.
 
 
-## <a name="offer-details-section"></a>Sekcja szczegóły oferty
+## <a name="offer-details-section"></a>Sekcja szczegółów oferty
 
-W **szczegółach oferty** sekcji, należy wprowadzić ogólne informacje o ofercie usługi AppSource.
+W sekcji **szczegóły oferty** wprowadź ogólne informacje o ofercie AppSource.
 
-![Sekcja szczegóły oferty karty Szczegóły sklepu](./media/offer-details-section.png)
+![Sekcja Szczegóły oferty na karcie Szczegóły witryny sklepu](./media/offer-details-section.png)
 
-Poniższa tabela zawiera więcej informacji na temat tych pól. Wymagane pola są wskazanych przez znak gwiazdki (*).  
+Poniższa tabela zawiera więcej informacji na temat tych pól. Wymagane pola są indicted przez gwiazdkę (*).  
 
 |   Pole               |   Opis                                                                           |
 |-----------------------|-----------------------------------------------------------------------------------------|
-| **Podsumowanie oferty\***     | BRIEF: cel aplikacji przy użyciu maksymalnie 100 znaków.                             |
-| **Opis oferty\*** | Opis aplikacji, przy użyciu znaków do 3000. To pole obsługuje prosty format HTML. |
+| **\* podsumowania oferty**     | Krótki cel aplikacji przy użyciu maksymalnie 100 znaków.                             |
+| **Opis oferty\*** | Opis aplikacji, przy użyciu do 3 000 znaków. To pole obsługuje proste formatowanie HTML. |
 |   |    |
 
 
-## <a name="listing-details-section"></a>Szczegółowe informacje o ofercie
+## <a name="listing-details-section"></a>Sekcja szczegółów listy
 
-**Wyświetlanie szczegółów** sekcji zbiera informacje o kontekście swojej aplikacji: branżach, w których jest ona zwykle używana, kategorię aplikacji, zgodne produkty i skojarzone wyszukiwane terminy.
+Sekcja **szczegóły listy** zawiera informacje o kontekście aplikacji: branże, w których są zwykle używane, Kategoria aplikacji, zgodne produkty i powiązane warunki wyszukiwania.
 
-![Wyświetlanie szczegółów części karty Szczegóły sklepu](./media/listing-details-section.png)
+![Sekcja Szczegóły listy na karcie Szczegóły witryny sklepu](./media/listing-details-section.png)
 
-Aby wypełnić pola w tej sekcji, skorzystaj z poniższej tabeli.  Wymagane pola są wskazanych przez znak gwiazdki (*).
+Aby wypełnić pola w tej sekcji, Skorzystaj z poniższej tabeli.  Wymagane pola są indicted przez gwiazdkę (*).
  
 |   Pole                                  |   Opis                                                        |
 | --------------                           | ---------------------                                                |
-| **Branże**                           | Wybierz branżę, gdzie aplikacja znajdzie się najlepiej. Jeśli aplikacja odnosi się do wielu branżach, pozostaw to pole puste.      |
-| **Kategorie\***                           | Wybierz maksymalnie trzy kategorie, które odnoszą się do aplikacji.     |
-| **Link Pomoc dla aplikacji\***               | Podaj adres URL do strony, która oferuje pomoc online dla aplikacji.           |
-| **Produkty, których Twoja aplikacja współpracuje ze (maksymalna liczba 3)** | Wybierz **New** plus, aby utworzyć pole tekstowe. W polu wprowadź nazwę produktu, który Twoja aplikacja współpracuje ze. Wyświetl listę produktów do trzech.       |
-| **Słowa kluczowe (maksymalna liczba 3)**              | Wprowadź maksymalnie trzech słów kluczowych, które użytkownicy prawdopodobnie będzie używany do wyszukiwania dla aplikacji w usłudze AppSource. Na przykład, jeśli aplikacja nosi nazwę "Moja aplikacja wysyłanie wiadomości E-mail", słowa kluczowe może być **wiadomości e-mail**, **korespondencyjny**, i **aplikacji poczty**. |
+| **Branże**                           | Wybierz branżę, w której aplikacja najlepiej pasuje. Jeśli aplikacja odnosi się do wielu branż, pozostaw to pole puste.      |
+| **Kategorie\***                           | Wybierz maksymalnie trzy kategorie, które odnoszą się do Twojej aplikacji.     |
+| **Link pomocy dla aplikacji\***               | Podaj adres URL strony, która oferuje pomoc online dotyczącą aplikacji.           |
+| **Produkty działające z aplikacją (maksymalnie 3)** | Wybierz **Nowy** znak plus, aby utworzyć pole tekstowe. W polu Wprowadź nazwę produktu, z którym działa aplikacja. Wystaw na trzy produkty.       |
+| **Słowa kluczowe wyszukiwania (maks. 3)**              | Wprowadź do trzech słów kluczowych, których użytkownicy będą prawdopodobnie używać do wyszukiwania aplikacji w AppSource. Jeśli na przykład aplikacja jest nazywana "moją aplikacją poczty E-mail", słowa kluczowe mogą być **wiadomościami e-mail**, **adresami**i **aplikacjami poczty**. |
 |  |  |
 
 
-## <a name="marketing-artifacts-section"></a>Sekcja artefaktów marketingu
+## <a name="marketing-artifacts-section"></a>Sekcja artefaktów marketingowych
 
-W **marketingu artefaktów** sekcji, znakowania przekazywania i materiałów, aby wyświetlić w usłudze AppSource marketingowych.  Ta sekcja jest podzielona na cztery podsekcje: **Logo**, **wideo**, **dokumenty**, i **zrzuty ekranu**. Logo i zrzuty ekranu są jedynymi wymagane marketingowych artefaktów. Jednak najlepszym odwołania klienta, zaleca się dodawania filmów wideo i dokumentów, jak również.
+W sekcji **artefakty marketingowe** Przekaż materiał do prezentowania i materiały marketingowe do wyświetlenia w witrynie AppSource.  Ta sekcja jest podzielona na cztery podsekcje: **logo**, **klipy wideo**, **dokumenty**i **zrzuty ekranu**. Logo i zrzuty ekranu są jedynymi wymaganymi artefaktami marketingowymi. Jednak w przypadku najlepszych odwołań klientów zalecamy również dodanie filmów wideo i dokumentów.
 
-![Marketing artefaktów części karty Szczegóły sklepu](./media/marketing-artifacts-section.png)
+![Sekcja dotyczącej artefaktów marketingowych na karcie Szczegóły witryny sklepu](./media/marketing-artifacts-section.png)
 
-Aby wypełnić pola w tej sekcji, skorzystaj z poniższej tabeli. Wymagane pola są wskazanych przez znak gwiazdki (*).
+Aby wypełnić pola w tej sekcji, Skorzystaj z poniższej tabeli. Wymagane pola są indicted przez gwiazdkę (*).
  
 |    Pole                             |    Opis                                                    |
 |   -----------                        |    -------------                                                  |
-| *Logos*                              |                                                                   |
-| **Logo oferty (w formacie png, 48 x 48)\***   | Przekaż logo do wyświetlenia w ramach przeglądu aplikacji lub w wynikach wyszukiwania w aplikacji. Usługa AppSource obsługuje tylko format PNG, z dokładnością do 48 x 48 pikseli.  |
-| **Logo oferty (w formacie png, 216 x 216)\*** | Przekaż logo do wyświetlania na stronie szczegółów aplikacji.  Usługa AppSource obsługuje tylko format PNG, z dokładnością do 216 x 216 pikseli.  |
+| *Graficznych*                              |                                                                   |
+| **Logo oferty (format PNG, 48x48)\***   | Przekaż logo do wyświetlania w przeglądzie aplikacji lub w wynikach wyszukiwania aplikacji. AppSource obsługuje tylko format PNG z rozdzielczością 48 x 48 pikseli.  |
+| **Logo oferty (format PNG, 216x216)\*** | Przekaż logo, które ma być wyświetlane na stronie szczegółów aplikacji.  AppSource obsługuje tylko format PNG z rozdzielczością 216 x 216 pikseli.  |
 | *Filmy wideo*                             |                                                                   |
-| **Nazwa**                             | Wprowadź nazwę swojej aplikacji lub tytuł.                                          |
-| **Adres URL**                              | Wprowadź adres URL filmu wideo hostowanego w usłudze YouTube lub Vimeo.                              |
-| **Miniatura**                        | Dodaj obraz miniatury aplikacji.  Usługa AppSource obsługuje tylko format PNG, o rozdzielczości 1280 x 720 pikseli.   |
-| *Dokumenty*                          | Dodaj trzy dokumenty do wyświetlenia w usłudze AppSource, w obszarze **więcej** nagłówka.  |
-| **Nazwa**                             | Wprowadź nazwę lub tytuł dokumentu pomocniczych.                              |
+| **Nazwa**                             | Wprowadź nazwę lub tytuł swojej aplikacji.                                          |
+| **Adres URL**                              | Wprowadź adres URL wideo hostowanego w serwisie YouTube lub Vimeo.                              |
+| **Miniaturk**                        | Dodaj obraz miniatury aplikacji.  AppSource obsługuje tylko format PNG z rozdzielczością 1280 x 720 pikseli.   |
+| *Secret*                          | Dodaj maksymalnie trzy dokumenty, które mają być wyświetlane na AppSource, w sekcji **Dowiedz się więcej** .  |
+| **Nazwa**                             | Wprowadź nazwę lub tytuł dokumentu pomocniczego.                              |
 | **Plik**                             | Przekaż plik PDF.                             |
-| *Zrzuty ekranu\**                      | Dodaj do pięciu zrzuty ekranu.                        |
-| **Nazwa**                             | Wprowadź nazwę lub tytuł zrzut ekranu.                                       |
-| **Obraz**                            | Przekaż zrzut ekranu PNG. Jego rozwiązanie musi być 1280 x 720 pikseli.  | 
+| *Zrzuty ekranu\**                      | Dodaj maksymalnie pięć zrzutów ekranu.                        |
+| **Nazwa**                             | Wprowadź nazwę lub tytuł zrzutu ekranu.                                       |
+| **Obraz**                            | Przekaż zrzut ekranu PNG. Jego rozdzielczość musi wynosić 1280 x 720 pikseli.  | 
 |   |   |
 
-Logo, możesz przekazać do [portalu Cloud Partner](https://cloudpartner.azure.com) powinien *nie*:
+Logo, które chcesz przekazać [](https://cloudpartner.azure.com) do Portal Cloud partner *nie*powinno:
 
-- Użyj gradientu. Wygląd i działanie logo powinna być stała.
-- Obejmują nazwę swojej firmy, marką lub inny tekst. 
-- Rozciągnięty.
+- Użyj gradientu. Wygląd i działanie logo powinny być płaskie.
+- Dołącz nazwę firmy, nazwę marki lub inny tekst. 
+- Wygląd rozciągnięty.
 
-## <a name="legal-section"></a>Sekcja prawne
+## <a name="legal-section"></a>Sekcja prawna
 
-W **prawne** sekcji, podaj dwa dokumenty prawne wymagane dla każdej oferty: Twoje zasady ochrony prywatności i warunki użytkowania.
+W sekcji informacje **prawne** Podaj dwa dokumenty prawne wymagane dla każdej oferty: zasady ochrony prywatności i warunki użytkowania.
 
-![Prawne części karty Szczegóły sklepu](./media/legal-section.png)
+![Sekcja prawna na karcie Szczegóły witryny sklepu](./media/legal-section.png)
 
-Aby wypełnić pola w tej sekcji, skorzystaj z poniższej tabeli:
+Aby wypełnić pola w tej sekcji, Skorzystaj z poniższej tabeli:
 
 |   Pole                |   Opis                           |
 |------------------------|--------------------------------------   |
-| **Adres URL zasad ochrony prywatności\*** | Adres URL zasad zachowania opublikowane       |
-| **Warunki użytkowania\***       | Użyj zasad, sformatowane jako zwykły tekst lub HTML prosty     |
+| **Adres URL zasad ochrony prywatności\*** | Adres URL dla opublikowanych zasad ochrony prywatności       |
+| **Warunki użytkowania\***       | Zasady użytkowania, sformatowane jako zwykły tekst lub prosty kod HTML     |
 |  |  |
 
 
 ## <a name="customer-support-section"></a>Sekcja obsługi klienta
 
-W **obsługi klienta** sekcji, podaj **URL pomocy technicznej** strony pomocy technicznej online klienta.  Na tej stronie powinno dostarczyć wiele opcji kontaktu, takie jak telefon, poczty e-mail i Czat na żywo. 
+W sekcji **Obsługa klienta** Podaj **adres URL pomocy** technicznej dla strony pomocy technicznej online.  Na tej stronie powinna być dostępna wiele opcji kontaktowych, takich jak telefon, poczta e-mail i czat na żywo. 
 
 
-## <a name="lead-management-section"></a>Prowadzić sekcji Zarządzanie
+## <a name="lead-management-section"></a>Sekcja zarządzanie potencjalnymi klientami
 
-W **prowadzić zarządzania** sekcji skonfigurować system, aby zebrać potencjalnych klientów, które generują Twoich ofert w usłudze AppSource. Aby wybrać opcje magazynu dla potencjalnych klientów, skorzystaj z poniższej tabeli:
+W sekcji **Zarządzanie potencjalnymi klientami** Skonfiguruj system w celu zebrania potencjalnych klientów, którzy wygenerują oferty AppSource. Aby wybrać opcje magazynu dla potencjalnych klientów, Skorzystaj z następującej tabeli:
 
-|    Pole               |   Prowadzić docelowego                               |
+|    Pole               |   Miejsce docelowe potencjalnego klienta                               |
 |------------------------|--------------------------------------            |
-|  **Brak**              | Zbieraj nie potencjalnych klientów. Jest to opcja domyślna.  |
-| **Obiekt Blob platformy Azure (przestarzałe)** | Określ [usługi Azure Blob storage](https://docs.microsoft.com/azure/storage/blobs/storage-blobs-overview) przy użyciu nazwy kontenera i parametry połączenia.  Ten wybór jest przestarzały. Użyj **Azure Table** zamiast tego.  |
-| **Tabela platformy Azure**        | Określ [usługi Azure Table storage](https://docs.microsoft.com/azure/cosmos-db/table-storage-overview) przy użyciu parametrów połączenia.  |
-| **Dynamics CRM Online** | Określ [Dynamics 365](https://dynamics.microsoft.com/) przy użyciu poświadczeń adresu URL i uwierzytelniania. |
-| **Punkt końcowy HTTPS**     | Określ punkt końcowy HTTPS za pomocą ładunek JSON.   |
-| **Marketo**            | Określ [Marketo](https://www.marketo.com/) wystąpienia przy użyciu Identyfikatora, identyfikator munchkin i identyfikator formularza.   |
-| **Salesforce**         | Określ [Salesforce](https://www.salesforce.com/) przy użyciu identyfikatora obiektu. |
+|  **Dawaj**              | Nie Zbieraj żadnych potencjalnych klientów. Jest to opcja domyślna.  |
+| **Obiekt blob platformy Azure (przestarzałe)** | Określ [Magazyn obiektów blob platformy Azure](https://docs.microsoft.com/azure/storage/blobs/storage-blobs-overview) przy użyciu nazwy kontenera i parametrów połączenia.  Ten wybór jest przestarzały. Zamiast tego użyj **tabeli platformy Azure** .  |
+| **Tabela platformy Azure**        | Określ [usługę Azure Table Storage](https://docs.microsoft.com/azure/cosmos-db/table-storage-overview) przy użyciu parametrów połączenia.  |
+| **Dynamics CRM Online** | Określ wartość [Dynamics 365](https://dynamics.microsoft.com/) przy użyciu adresu URL i poświadczeń uwierzytelniania. |
+| **Punkt końcowy HTTPS**     | Określ punkt końcowy HTTPS za pomocą ładunku JSON.   |
+| **Marketo**            | Określ wystąpienie usługi [Marketo](https://www.marketo.com/) , używając identyfikatora serwera, identyfikatora Munchkin i identyfikatora formularza.   |
+| **Salesforce**         | Określ usługi [Salesforce](https://www.salesforce.com/) przy użyciu identyfikatora obiektu. |
 |  |  |
 
-Po opublikowaniu oferty połączenia potencjalny klient zostanie zweryfikowana, i potencjalnego klienta test jest automatycznie przesyłany do określonej lokalizacji docelowej. Ciągłe zarządzanie informacjami o potencjalnych klientów i natychmiast zaktualizuj ustawienia, aby odzwierciedlić bieżący architektury zarządzania klienta.
+Po opublikowaniu oferty połączenie z liderem jest sprawdzane, a klient testowy jest automatycznie wysyłany do określonego miejsca docelowego. Ciągłe zarządzanie informacjami o potencjalnym kliencie i natychmiastowe aktualizowanie ustawień w celu odzwierciedlenia bieżącej architektury zarządzania klientami.
 
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
-Na [kontakty](./cpp-contacts-tab.md) kartę, podaj technicznych i użytkownika, zasoby pomocy technicznej oferty.
+Na karcie [kontakty](./cpp-contacts-tab.md) Podaj zasoby techniczne i pomoc techniczną dla swojej oferty.

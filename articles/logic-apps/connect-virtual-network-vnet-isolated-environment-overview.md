@@ -8,13 +8,13 @@ author: ecfan
 ms.author: estfan
 ms.reviewer: klam, LADocs
 ms.topic: article
-ms.date: 11/06/2019
-ms.openlocfilehash: adb89c04a83bbfbd5bddd5c23b0fa88019a88991
-ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
+ms.date: 11/08/2019
+ms.openlocfilehash: da68cfe504332ed6641c52322f0df0d2efd95997
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73721387"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73820673"
 ---
 # <a name="access-to-azure-virtual-network-resources-from-azure-logic-apps-by-using-integration-service-environments-ises"></a>Dostęp do zasobów platformy Azure Virtual Network z Azure Logic Apps przy użyciu środowisk usługi integracji (ISEs)
 
@@ -108,8 +108,8 @@ W przypadku systemów lokalnych, które są połączone z siecią wirtualną pla
 
 * Łącznik ISE z etykietą dla tego systemu
 
-  > [!IMPORTANT]
-  > Aby korzystać z uwierzytelniania systemu Windows za pomocą łącznika SQL Server, należy użyć [lokalnej bramy danych](../logic-apps/logic-apps-gateway-install.md). Łącznik SQL Server nie obsługuje uwierzytelniania systemu Windows dla aplikacji logiki w ISE.
+  > [!NOTE]
+  > Aby użyć uwierzytelniania systemu Windows za pomocą łącznika SQL Server w [środowisku usługi integracji (ISE)](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md), użyj wersji innej niż ISE łącznika z [lokalną bramą danych](../logic-apps/logic-apps-gateway-install.md). ISE wersja nie obsługuje uwierzytelniania systemu Windows.
 
 * Łącznik niestandardowy
 

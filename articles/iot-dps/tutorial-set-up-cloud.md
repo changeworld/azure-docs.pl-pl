@@ -9,12 +9,12 @@ ms.service: iot-dps
 services: iot-dps
 manager: philmea
 ms.custom: mvc
-ms.openlocfilehash: 8f06d3f033a2bf5907dc2ee324359bef0eb247d0
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: HT
+ms.openlocfilehash: 41689b7596c9da350a9e0fec619e49d332a36d5b
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60953530"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73826193"
 ---
 # <a name="configure-cloud-resources-for-device-provisioning-with-the-iot-hub-device-provisioning-service"></a>Konfigurowanie zasobów w chmurze pod kątem aprowizowania urządzeń za pomocą usługi IoT Hub Device Provisioning
 
@@ -48,8 +48,8 @@ Wykonaj następujące kroki, aby utworzyć nowe wystąpienie usługi Device Prov
    | ------------ | ------------------ | ------------------------------------------------- | 
    | **Nazwa** | Dowolna unikatowa nazwa | -- | 
    | **Subskrypcja** | Twoja subskrypcja  | Aby uzyskać szczegółowe informacje o subskrypcjach, zobacz [Subskrypcje](https://account.windowsazure.com/Subscriptions). |
-   | **Grupa zasobów** | myResourceGroup | Prawidłowe nazwy grup zasobów opisano w artykule [Naming rules and restrictions](https://docs.microsoft.com/azure/architecture/best-practices/naming-conventions) (Reguły i ograniczenia nazewnictwa). |
-   | **Lokalizacja** | Dowolna prawidłowa lokalizacja | Aby uzyskać informacje na temat regionów, zobacz temat [Regiony platformy Azure](https://azure.microsoft.com/regions/). |   
+   | **Grupa zasobów** | myResourceGroup | Prawidłowe nazwy grup zasobów opisano w artykule [Naming rules and restrictions](/azure/cloud-adoption-framework/ready/azure-best-practices/naming-and-tagging) (Reguły i ograniczenia nazewnictwa). |
+   | **Lokalizacja** | Dowolna prawidłowa lokalizacja | Aby uzyskać informacje na temat regionów, zobacz temat [Regiony systemu Azure](https://azure.microsoft.com/regions/). |   
 
    ![Wprowadzanie podstawowych informacji o usłudze Device Provisioning Service w portalu](./media/tutorial-set-up-cloud/create-iot-dps-portal.png)
 
@@ -77,27 +77,27 @@ Następnym krokiem jest połączenie usługi Device Provisioning z centrum IoT w
 
 2. Na stronie Usługa Device Provisioning kliknij pozycję **Połączone centra IoT Hub**.
 
-3. Kliknij pozycję **Add** (Dodaj).
+3. Kliknij pozycję **Dodaj**.
 
 4. Na stronie **Dodawanie linku do centrum IoT Hub** podaj następujące informacje i kliknij przycisk **Zapisz**:
 
-    * **Subskrypcja:** Upewnij się, że jest zaznaczona opcja subskrypcji, która zawiera usługę IoT hub. Istnieje możliwość utworzenia linku do centrum IoT, które znajduje się innej subskrypcji.
+    * **Subskrypcja:** upewnij się, że wybrano subskrypcję, która zawiera centrum IoT. Istnieje możliwość utworzenia linku do centrum IoT, które znajduje się innej subskrypcji.
 
-    * **Usługa IoT hub:** Wybierz nazwę Centrum IoT hub, który chcesz połączyć z tym wystąpieniem usługi Device Provisioning.
+    * **Centrum IoT:** wybierz nazwę centrum IoT, które ma zostać połączone z tym wystąpieniem usługi Device Provisioning.
 
-    * **Zasady dostępu:** Wybierz **iothubowner** jako poświadczenia na potrzeby ustanawiania łącza do usługi IoT hub.
+    * **Zasady dostępu:** wybierz **iothubowner** jako poświadczenia używane do nawiązania połączenia z centrum IoT.
 
    ![Tworzenie powiązania nazwy centrum z usługą Device Provisioning Service w portalu](./media/tutorial-set-up-cloud/link-iot-hub-to-dps-portal.png)
 
 ## <a name="set-the-allocation-policy-on-the-device-provisioning-service"></a>Ustawienie zasad alokacji w usłudze Device Provisioning
 
-Zasady alokacji to ustawienie IoT Hub Device Provisioning Service, która określa sposób przypisywania urządzeń do usługi IoT hub. Są obsługiwane trzy zasady alokacji: 
+Zasada alokacji jest ustawieniem IoT Hub Device Provisioning Service, które określa sposób przypisywania urządzeń do centrum IoT Hub. Są obsługiwane trzy zasady alokacji: 
 
-1. **Najmniejsze opóźnienie**: Urządzenia są aprowizowane do Centrum IoT z uwzględnieniem Centrum z najmniejszym opóźnieniem do urządzenia.
+1. **Najmniejsze opóźnienie**: urządzenia są aprowizowane do centrum IoT z uwzględnieniem centrum z najmniejszym opóźnieniem do urządzenia.
 
-2. **Dystrybucja z równymi wagami** (ustawienie domyślne): Połączone centra IoT Hub jest jednakowo prawdopodobna, urządzeń, które mu udostępnionych. Jest to ustawienie domyślne. W przypadku aprowizowania urządzeń tylko do jednego centrum IoT można pozostawić to ustawienie. 
+2. **Dystrybucja z równymi wagami** (domyślnie): aprowizacja do każdego z połączonych centrów IoT jest jednakowo prawdopodobna. Jest to ustawienie domyślne. W przypadku aprowizowania urządzeń tylko do jednego centrum IoT można pozostawić to ustawienie. 
 
-3. **Konfiguracja statyczna za pośrednictwem listy rejestracji**: Określenie żądanego Centrum IoT na liście rejestracji ma wyższy priorytet niż zasady alokacji poziomu usługi Device Provisioning.
+3. **Konfiguracja statyczna za pośrednictwem listy rejestracji**: określenie żądanego centrum IoT na liście rejestracji ma wyższy priorytet niż zasady alokacji na poziomie usługi Device Provisioning.
 
 Aby ustawić zasady alokacji, na stronie Usługa Device Provisioning kliknij pozycję **Zarządzanie zasadami alokacji**. Upewnij się, że dla zasad alokacji ustawiono wartość **Dystrybucja z równymi wagami** (wartość domyślną). Jeśli wprowadzisz zmiany, kliknij polecenie **Zapisz**, gdy wszystko będzie gotowe.
 
@@ -111,7 +111,7 @@ Inne samouczki w tej kolekcji zależą od tego samouczka. Jeśli planujesz konty
 
 2. W witrynie Azure Portal w menu po lewej stronie kliknij pozycję **Wszystkie zasoby**, a następnie wybierz swoje centrum IoT. U góry strony **Wszystkie zasoby** kliknij polecenie **Usuń**.
  
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 W niniejszym samouczku zawarto informacje na temat wykonywania następujących czynności:
 

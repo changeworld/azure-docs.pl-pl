@@ -1,5 +1,5 @@
 ---
-title: Uwierzytelnianie Azure Active Directory — Azure SQL
+title: Usługa Azure Active Directory
 description: Dowiedz się, jak używać Azure Active Directory do uwierzytelniania za pomocą SQL Database, wystąpienia zarządzanego i SQL Data Warehouse
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: GithubMirek
 ms.author: mireks
 ms.reviewer: vanto, carlrab
 ms.date: 02/20/2019
-ms.openlocfilehash: 4516f75d80345312a6ca3b6dac3e5156d7e239e8
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: e0eeb48490c869c4a3b46bfd71fca72e0ab1c2ff
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73691370"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73816535"
 ---
 # <a name="use-azure-active-directory-authentication-for-authentication-with-sql"></a>Używanie uwierzytelniania Azure Active Directory na potrzeby uwierzytelniania przy użyciu programu SQL Server
 
@@ -137,7 +137,7 @@ Następujące metody uwierzytelniania są obsługiwane dla podmiotów zabezpiecz
 - Zalecamy ustawienie limitu czasu połączenia na 30 sekund.   
 - SQL Server 2016 Management Studio i SQL Server Data Tools for Visual Studio 2015 (wersja 14.0.60311.1 kwietnia 2016 lub nowszy) obsługuje Azure Active Directory uwierzytelnianie. (Uwierzytelnianie usługi Azure AD jest obsługiwane przez **.NET Framework dostawca danych dla programu SqlServer**; co najmniej w wersji .NET Framework 4,6). W związku z tym najnowsze wersje tych narzędzi i aplikacji warstwy danych (DAC i. BACPAC) może korzystać z uwierzytelniania usługi Azure AD.   
 - Począwszy od wersji 15.0.1, [narzędzia sqlcmd](/sql/tools/sqlcmd-utility) i obsługi [narzędzia bcp](/sql/tools/bcp-utility) Active Directory interakcyjnego uwierzytelniania przy użyciu usługi MFA.
-- Narzędzia SQL Server Data Tools for Visual Studio 2015 wymagają co najmniej wersji 2016 z kwietnia (wersja za14.0.60311.1na). Obecnie użytkownicy usługi Azure AD nie są wyświetlani w SSDT Eksplorator obiektów. Aby obejść ten element, Wyświetl użytkowników w pliku [sys. database_principals](https://msdn.microsoft.com/library/ms187328.aspx).   
+- Narzędzia SQL Server Data Tools for Visual Studio 2015 wymagają co najmniej wersji 2016 z kwietnia (wersja za14.0.60311.1na). Obecnie użytkownicy usługi Azure AD nie są wyświetlani w SSDT Eksplorator obiektów. Aby obejść ten element, Wyświetl użytkowników w obszarze [sys. database_principals](https://msdn.microsoft.com/library/ms187328.aspx).   
 - [Sterownik Microsoft JDBC 6,0 dla SQL Server](https://www.microsoft.com/download/details.aspx?id=11774) obsługuje uwierzytelnianie w usłudze Azure AD. Ponadto zobacz [Ustawianie właściwości połączenia](https://msdn.microsoft.com/library/ms378988.aspx).   
 - Nie można uwierzytelnić przy użyciu uwierzytelniania usługi Azure AD.   
 - Uwierzytelnianie usługi Azure AD jest obsługiwane dla SQL Database przez Azure Portal **importowania bazy danych** i **eksportowania baz danych** . Importowanie i eksportowanie przy użyciu uwierzytelniania usługi Azure AD jest również obsługiwane przez polecenie programu PowerShell.   

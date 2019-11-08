@@ -5,26 +5,27 @@ services: Azure, Marketplace, Cloud Partner Portal,
 author: pbutlerm
 manager: Ricardo.Villalobos
 ms.service: marketplace
+ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 09/13/2018
 ms.author: pabutler
-ms.openlocfilehash: a6b2a7981452b47a3992b6c0efee286878e143fb
-ms.sourcegitcommit: dd69b3cda2d722b7aecce5b9bd3eb9b7fbf9dc0a
+ms.openlocfilehash: d47a67be157f71a30a6ae155790ed78a78fd6743
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/12/2019
-ms.locfileid: "70962897"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73814646"
 ---
 <a name="web-analytics"></a>Analiza sieci Web
 =============
 
 Ten artykuł zawiera instrukcje dotyczące uczenia się i używania analizy sieci Web w celu najlepszego rozwoju firmy. Obecnie ta karta Insights jest dostępna dla dowolnych ofert AppSource.
 
-Po skompilowaniu i opublikowaniu oferty następnym etapem podróży jest śledzenie i mierzenie jego\' sukcesu. Dzięki funkcji **Web Analytics**mogliśmy dowiedzieć się, jak dobrze każda z ofert działa w portalu Marketplace. Aby rozpocząć podróż, przejdź do strony usługi Insights po lewej stronie portal Cloud Partner, aby wyświetlić kartę nowe analizy.
+Po skompilowaniu i opublikowaniu oferty następnym etapem podróży jest śledzenie i mierzenie sukcesu\'. Dzięki funkcji **Web Analytics**mogliśmy dowiedzieć się, jak dobrze każda z ofert działa w portalu Marketplace. Aby rozpocząć podróż, przejdź do strony usługi Insights po lewej stronie portal Cloud Partner, aby wyświetlić kartę nowe analizy.
 
 ![Strona usługi Webanalytics](./media/si-getting-started/WebAnalytics1.png)
 
-Zostanie wyświetlony rozbudowany pulpit nawigacyjny dla identyfikatora wydawcy, który został utworzony za pomocą firmy Microsoft Power BI i będzie można zobaczyć wszystkie dane\' z ofert, które są odświeżane codziennie.
+Zobaczysz rozbudowany pulpit nawigacyjny dla identyfikatora wydawcy, który został utworzony za pomocą firmy Microsoft Power BI i umożliwi wyświetlenie poszczególnych ofert\' danych odświeżanych codziennie.
 
 <a name="microsoft-campaigns"></a>**Kampanie firmy Microsoft**
 -----------------------
@@ -41,23 +42,23 @@ Istnieją dwa sposoby generowania własnych kampanii.
 
 1. Dodaj do adresu URL parametr zapytania **mktcmpid** , który opisuje, co to jest kampania oraz na jakie dane/wydarzenie pochodzą od tych klientów.
 
-Na przykład można użyć:<https://appsource.microsoft.com/product/dynamics-365/contoso.offername?mktcmpid=NewCampaign>
+Na przykład można użyć: <https://appsource.microsoft.com/product/dynamics-365/contoso.offername?mktcmpid=NewCampaign>
 
 1. (Zaawansowane): Użyj jednego z naszych obsługiwanych, ogólnych identyfikatorów kampanii w adresie URL. Chcemy, aby dodaliśmy do nich dodatkowe Tagi ref, które należy użyć, dlatego firma Microsoft obsługuje Konwencję, aby automatycznie rozpoznawać te dodatkowe Tagi:
     
-    1. **Kampania UTM\_**
+    1. **UTM\_kampania**
     2. **Źródło\_UTM**
     3. **umieszczone**
     4. **SRC**
 
-Na przykład można użyć:<https://appsource.microsoft.com/product/dynamics-365/contoso.offername?utm_campaign=NewCampaign>
+Na przykład można użyć: <https://appsource.microsoft.com/product/dynamics-365/contoso.offername?utm_campaign=NewCampaign>
 
 Możesz wybrać kombinację wielu tych identyfikatorów kampanii, aby dodatkowo identyfikować wiele źródeł, które będą napędzać daną kampanię, taką jak miejsce, z którego pochodzi klient (poczta e-mail, blog, Źródło mediów społecznościowych itp.).
 
-Przykład:
+Na przykład:
 
-1. Odwołujący biuletyn:<https://appsource.microsoft.com/product/dynamics-365/contoso.offername?mktcmpid=NewCampaign&src=newsletter>
-2. Odwołujący serwis LinkedIn:<https://appsource.microsoft.com/product/dynamics-365/contoso.offername?mktcmpid=NewCampaign&src=LinkedIn>
+1. Odwołujący biuletyn: <https://appsource.microsoft.com/product/dynamics-365/contoso.offername?mktcmpid=NewCampaign&src=newsletter>
+2. Odwołujący serwis LinkedIn: <https://appsource.microsoft.com/product/dynamics-365/contoso.offername?mktcmpid=NewCampaign&src=LinkedIn>
 
 ### <a name="ensuring-campaigns-pass-through-all-your-pages"></a>**Zapewnienie, że kampanie przechodzą przez wszystkie strony**
 
@@ -65,13 +66,13 @@ Może istnieć scenariusz, w którym kampanie zawierają pośrednią stronę, do
 
 Oto przykład:
 
-1. Pracownicy działu marketingu kupowają reklamy od firmy\'Google w celu kierowania ruchu do strony <https://contoso.com>docelowej. Ta strona docelowa \"zawiera link Wypróbuj\" produkt, do <https://appsource.com>którego się odnosi.
-2. Użytkownik klika pozycję AD i grunty na stronie docelowej firmy\'.
+1. Pracownicy działu marketingu kupowają reklamy z usługi Google w celu kierowania ruchu do firmy\'<https://contoso.com>stronie docelowej. Ta strona docelowa zawiera \"spróbuj użyć linku\" produktu, który prowadzi do <https://appsource.com>.
+2. Użytkownik klika pozycję AD i grunty na stronie docelowej\'s firmy.
     1.  Adres URL odwołania = google.com
-    2.  Adres URL strony docelowej =<https://contoso.com/?utm_campaign=MyCampaignAdName&utm_source=MySourceAdName>
-3. Użytkownik klika \"link Wypróbuj produkt\" i przechodzi do AppSource.
-    1. Adres URL odwołania =<https://contoso.com/?utm_campaign=MyCampaignAdName&utm_source=MySourceAdName>
-    2. Adres URL strony docelowej (**upewnij się, że ten\_adres URL ma\_UTM kampanię i źródło UTM dodane do tego adresu URL**) = [ https://appsource.microsoft.com/product/dynamics-365/contoso.offername? **UTM\_ kampania = MyCampaignAdName & UTM\_ Source = MySourceAdName** ](https://appsource.microsoft.com/product/dynamics-365/contoso.offername?utm_campaign=MyCampaignAdName&utm_source=MySourceAdName)
+    2.  Adres URL strony docelowej = <https://contoso.com/?utm_campaign=MyCampaignAdName&utm_source=MySourceAdName>
+3. Użytkownik klika \"Wypróbuj mój produkt\" link i przechodzi do AppSource.
+    1. Adres URL odwołania = <https://contoso.com/?utm_campaign=MyCampaignAdName&utm_source=MySourceAdName>
+    2. Adres URL strony docelowej (**upewnij się, że ten adres URL ma utm\_kampanię i UTM źródło\_dodane do tego adresu URL**) = [https://appsource.microsoft.com/product/dynamics-365/contoso.offername?**UTM\_kampania = MyCampaignAdName & UTM\_Source = MySourceAdName** ](https://appsource.microsoft.com/product/dynamics-365/contoso.offername?utm_campaign=MyCampaignAdName&utm_source=MySourceAdName)
 
 <a name="how-to-evaluate-the-success-of-a-campaign"></a>Jak oszacować sukces kampanii
 -----------------------------------------
@@ -92,7 +93,7 @@ Podobnie jak pokazujemy stopień konwersji całej oferty, na tym wykresie można
 
 ![WebAnalytics4](./media/si-getting-started/WebAnalytics4.png)
 
-Podobnie jak w przypadku domen klientów, ten wykres umożliwia wyświetlenie dystrybucji danych na kampanię, do której użytkownicy znajdują się w portalu Marketplace. \_Nokampania oznacza, że klient nie miał identyfikatora kampanii w adresie URL podczas przechodzenia do portalu Marketplace.
+Podobnie jak w przypadku domen klientów, ten wykres umożliwia wyświetlenie dystrybucji danych na kampanię, do której użytkownicy znajdują się w portalu Marketplace. \_nokampania oznacza, że klient nie miał identyfikatora kampanii w adresie URL podczas przechodzenia do portalu Marketplace.
 
 <a name="next-steps"></a>**Następne kroki**
 --------------

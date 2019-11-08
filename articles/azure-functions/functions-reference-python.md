@@ -13,12 +13,12 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 04/16/2018
 ms.author: glenga
-ms.openlocfilehash: 97b954ee5e00c13211a3b2a2254b6d34bccb780c
-ms.sourcegitcommit: 9a4296c56beca63430fcc8f92e453b2ab068cc62
+ms.openlocfilehash: e0e649045e3efe488804fd37c030fe01991ad232
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/20/2019
-ms.locfileid: "72674945"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73803622"
 ---
 # <a name="azure-functions-python-developer-guide"></a>Przewodnik dewelopera w języku Python Azure Functions
 
@@ -30,7 +30,7 @@ Przykładowe projekty funkcji autonomicznych w języku Python znajdują się w s
 
 Azure Functions oczekuje, że funkcja będzie metodą bezstanową w skrypcie języka Python, która przetwarza dane wejściowe i generuje dane wyjściowe. Domyślnie środowisko uruchomieniowe oczekuje metody, która ma być zaimplementowana jako metoda globalna o nazwie `main()` w pliku `__init__.py`. Można również [określić alternatywny punkt wejścia](#alternate-entry-point).
 
-Dane z wyzwalaczy i powiązań są powiązane z funkcją za pośrednictwem atrybutów metody przy użyciu właściwości `name` zdefiniowanej w pliku *Function. JSON* . Na przykład, _Funkcja. JSON_ poniżej opisuje prostą funkcję wyzwalaną przez żądanie HTTP o nazwie `req`:
+Dane z wyzwalaczy i powiązań są powiązane z funkcją za pośrednictwem atrybutów metod przy użyciu właściwości `name` zdefiniowanej w pliku *Function. JSON* . Na przykład, _Funkcja. JSON_ poniżej opisuje prostą funkcję wyzwalaną przez żądanie HTTP o nazwie `req`:
 
 ```json
 {
@@ -182,7 +182,7 @@ Dane wyjściowe można wyrazić zarówno w wartości zwracanej, jak i wyjściowy
 
 Aby użyć wartości zwracanej przez funkcję jako wartości powiązania danych wyjściowych, właściwość `name` powiązania powinna być ustawiona na `$return` w `function.json`.
 
-Aby wygenerować wiele danych wyjściowych, należy użyć metody `set()` dostarczonej przez interfejs [`azure.functions.Out`](/python/api/azure-functions/azure.functions.out?view=azure-python) do przypisania wartości do powiązania. Na przykład następująca funkcja może wypchnąć komunikat do kolejki i zwrócić odpowiedź HTTP.
+Aby wygenerować wiele danych wyjściowych, użyj metody `set()` dostarczonej przez interfejs [`azure.functions.Out`](/python/api/azure-functions/azure.functions.out?view=azure-python) do przypisania wartości do powiązania. Na przykład następująca funkcja może wypchnąć komunikat do kolejki i zwrócić odpowiedź HTTP.
 
 ```json
 {
@@ -250,7 +250,7 @@ Aby dowiedzieć się więcej o rejestrowaniu, zobacz [Monitor Azure Functions](f
 
 ## <a name="http-trigger-and-bindings"></a>Wyzwalacz i powiązania HTTP
 
-Wyzwalacz HTTP jest zdefiniowany w pliku Function. Jan. @No__t_0 powiązania musi być zgodna z nazwanym parametrem w funkcji. W poprzednich przykładach nazwa powiązania `req` jest używana. Ten parametr jest obiektem [HttpRequest] i zwracany jest obiekt [HttpResponse] .
+Wyzwalacz HTTP jest zdefiniowany w pliku Function. Jan. `name` powiązania musi być zgodna z nazwanym parametrem w funkcji. W poprzednich przykładach jest używana nazwa powiązania `req`. Ten parametr jest obiektem [HttpRequest] i zwracany jest obiekt [HttpResponse] .
 
 Z obiektu [HttpRequest] można uzyskać nagłówki żądań, parametry zapytania, parametry tras i treść wiadomości. 
 
@@ -278,7 +278,7 @@ def main(req: func.HttpRequest) -> func.HttpResponse:
         )
 ```
 
-W tej funkcji wartość parametru zapytania `name` jest uzyskiwana z parametru `params` obiektu [HttpRequest] . Treść komunikatu zakodowanego w formacie JSON jest odczytywana przy użyciu metody `get_json`. 
+W tej funkcji wartość parametru zapytania `name` jest uzyskiwana z `params` parametr obiektu [HttpRequest] . Treść komunikatu zakodowanego w formacie JSON jest odczytywana przy użyciu metody `get_json`. 
 
 Analogicznie, można ustawić `status_code` i `headers` dla komunikatu odpowiedzi w zwracanym obiekcie [HttpResponse] .
 
@@ -382,7 +382,7 @@ W przypadku programowania lokalnego ustawienia aplikacji są [przechowywane w pl
 
 Obecnie Azure Functions obsługuje tylko język Python 3.6. x (oficjalna dystrybucja CPython).
 
-Podczas programowania lokalnego przy użyciu Azure Functions Core Tools lub Visual Studio Code Dodaj nazwy i wersje wymaganych pakietów do pliku `requirements.txt` i zainstaluj je przy użyciu `pip`.
+Podczas programowania lokalnego przy użyciu Azure Functions Core Tools lub Visual Studio Code Dodaj nazwy i wersje wymaganych pakietów do pliku `requirements.txt` i zainstaluj je za pomocą `pip`.
 
 Na przykład można użyć poniższego pliku wymagań i polecenia PIP, aby zainstalować pakiet `requests` z PyPI.
 
@@ -406,7 +406,7 @@ Zarówno [Azure Functions Core Tools](functions-run-local.md#v2) , jak i [rozsze
 func azure functionapp publish <app name>
 ```
 
-Jeśli chcesz skompilować aplikację lokalnie, a nie na platformie Azure, [Zainstaluj platformę Docker](https://docs.docker.com/install/) na komputerze lokalnym i uruchom następujące polecenie, aby opublikować przy użyciu [Azure Functions Core Tools](functions-run-local.md#v2) (Func). Pamiętaj, aby zastąpić `<app name>` nazwą swojej aplikacji funkcji na platformie Azure. 
+Jeśli chcesz skompilować aplikację lokalnie, a nie na platformie Azure, [Zainstaluj platformę Docker](https://docs.docker.com/install/) na komputerze lokalnym i uruchom następujące polecenie, aby opublikować przy użyciu [Azure Functions Core Tools](functions-run-local.md#v2) (Func). Pamiętaj, aby zastąpić `<app name>` nazwą aplikacji funkcji na platformie Azure. 
 
 ```bash
 func azure functionapp publish <app name> --build-native-deps
@@ -418,7 +418,7 @@ Aby skompilować zależności i publikować przy użyciu systemu ciągłego dost
 
 ## <a name="unit-testing"></a>Testowanie jednostkowe
 
-Funkcje w języku Python można testować podobnie jak w przypadku innych kodów języka Python przy użyciu standardowych platform testowania. W przypadku większości powiązań można utworzyć obiekt wejściowy imitacji, tworząc wystąpienie odpowiedniej klasy z pakietu `azure.functions`. Ponieważ pakiet [`azure.functions`](https://pypi.org/project/azure-functions/) nie jest natychmiast dostępny, należy go zainstalować za pośrednictwem pliku `requirements.txt`, zgodnie z opisem w powyższej sekcji dotyczącej [wersji i zarządzania pakietami języka Python](#python-version-and-package-management) .
+Funkcje w języku Python można testować podobnie jak w przypadku innych kodów języka Python przy użyciu standardowych platform testowania. W przypadku większości powiązań można utworzyć obiekt wejściowy makiety, tworząc wystąpienie odpowiedniej klasy z pakietu `azure.functions`. Ponieważ pakiet [`azure.functions`](https://pypi.org/project/azure-functions/) nie jest natychmiast dostępny, pamiętaj, aby go zainstalować za pośrednictwem pliku `requirements.txt`, zgodnie z opisem w sekcji dotyczącej [wersji i zarządzania pakietami języka Python](#python-version-and-package-management) powyżej.
 
 Na przykład poniżej znajduje się przykładowy test funkcji wyzwalanej przez protokół HTTP:
 
@@ -533,6 +533,27 @@ class TestFunction(unittest.TestCase):
             'msg body: test',
         )
 ```
+## <a name="temporary-files"></a>Pliki tymczasowe
+
+Metoda `tempfile.gettempdir()` zwraca tymczasowy folder, który w systemie Linux jest `/tmp`. Aplikacja może używać tego katalogu do przechowywania plików tymczasowych generowanych i używanych przez funkcje podczas wykonywania. 
+
+> [!IMPORTANT]
+> Pliki zapisywane w katalogu tymczasowym nie są gwarantowane zachowywania się między wywołaniami. Podczas skalowania w poziomie pliki tymczasowe nie są współdzielone między wystąpieniami. 
+
+Poniższy przykład tworzy nazwany plik tymczasowy w katalogu tymczasowym (`/tmp`):
+
+```python
+import logging
+import azure.functions as func
+import tempfile
+from os import listdir
+
+#---
+   tempFilePath = tempfile.gettempdir()   
+   fp = tempfile.NamedTemporaryFile()     
+   fp.write(b'Hello world!')              
+   filesDirListInTemp = listdir(tempFilePath)     
+```   
 
 ## <a name="known-issues-and-faq"></a>Znane problemy i często zadawane pytania
 

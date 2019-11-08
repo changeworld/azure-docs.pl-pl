@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/28/2019
 ms.author: barclayn
-ms.openlocfilehash: fc72c59721a6f244806bf229ebded1e66341a04d
-ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
+ms.openlocfilehash: 7558ad2e5a4404db140daff89171af92c6072ef6
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73177694"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73805974"
 ---
 # <a name="security-best-practices-for-iaas-workloads-in-azure"></a>Najlepsze rozwiązania dotyczące zabezpieczeń dla obciążeń IaaS na platformie Azure
 W tym artykule opisano najlepsze rozwiązania w zakresie zabezpieczeń dotyczące maszyn wirtualnych i systemów operacyjnych.
@@ -68,7 +68,7 @@ Jeśli maszyna wirtualna uruchamia krytyczne aplikacje, które muszą mieć wyso
 Zestaw dostępności jest grupą logiczną, której można użyć na platformie Azure, aby upewnić się, że zasoby maszyny wirtualnej, które znajdują się w niej, są od siebie odizolowane, gdy zostaną wdrożone w centrum danych platformy Azure. System Azure zapewnia, że maszyny wirtualne, które są umieszczane w zestawie dostępności, są uruchamiane na wielu serwerach fizycznych, w stojakach obliczeniowych, jednostkach magazynowych i przełącznikach sieciowych. Jeśli wystąpi awaria sprzętu lub oprogramowania platformy Azure, ma to zastosowanie tylko do podzbioru maszyn wirtualnych, a ogólna aplikacja będzie nadal dostępna dla klientów. Zestawy dostępności są istotną funkcją do tworzenia niezawodnych rozwiązań w chmurze.
 
 ## <a name="protect-against-malware"></a>Chroń się przed złośliwym oprogramowaniem
-Należy zainstalować ochronę przed złośliwym oprogramowaniem, aby ułatwić identyfikowanie i usuwanie wirusów, programów szpiegujących i innego złośliwego oprogramowania. Można zainstalować [oprogramowanie Microsoft chroniące przed złośliwym kodem](antimalware.md) lub rozwiązanie Endpoint Protection partnera firmy Microsoft ([Trend Micro](https://help.deepsecurity.trendmicro.com/azure-marketplace-getting-started-with-deep-security.html), [Symantec](https://www.symantec.com/products), [McAfee](https://www.mcafee.com/us/products.aspx), [Windows Defender](https://www.microsoft.com/en-us/search?q=Windows+defender+endpoint+protection&rtc=1)i [System Center Endpoint Protection](https://www.microsoft.com/en-us/search?q=System+Center+endpoint+protection&rtc=1)).
+Należy zainstalować ochronę przed złośliwym oprogramowaniem, aby ułatwić identyfikowanie i usuwanie wirusów, programów szpiegujących i innego złośliwego oprogramowania. Można zainstalować [oprogramowanie Microsoft chroniące przed złośliwym kodem](antimalware.md) lub rozwiązanie Endpoint Protection partnera firmy Microsoft ([Trend Micro](https://help.deepsecurity.trendmicro.com/azure-marketplace-getting-started-with-deep-security.html), [Symantec](https://www.symantec.com/products), [McAfee](https://www.mcafee.com/us/products.aspx), [Windows Defender](https://www.microsoft.com/windows/comprehensive-security)i [System Center Endpoint Protection](/configmgr/protect/deploy-use/endpoint-protection)).
 
 Oprogramowanie chroniące przed złośliwym oprogramowaniem firmy Microsoft oferuje takie funkcje jak ochrona w czasie rzeczywistym, zaplanowane skanowanie, korygowanie złośliwego oprogramowania, aktualizacje sygnatur, aktualizacje aparatu, raportowanie przykładów i zbieranie zdarzeń wykluczania. W przypadku środowisk, które są hostowane niezależnie od środowiska produkcyjnego, można użyć rozszerzenia chroniącego przed złośliwym kodem, aby chronić maszyny wirtualne i usługi w chmurze.
 

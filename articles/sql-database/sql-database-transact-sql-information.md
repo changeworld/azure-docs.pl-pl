@@ -1,5 +1,5 @@
 ---
-title: Rozpoznawanie różnic w języku T-SQL — migracja Azure SQL Database
+title: Rozpoznawanie różnic w języku T-SQL — migracja
 description: Instrukcje języka Transact-SQL, które nie są w pełni obsługiwane w usłudze Azure SQL Database
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 12/03/2018
-ms.openlocfilehash: edb978e27621cbc0df66ab32ba7472629c3f8bd1
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 15c661a1ef917dcf73b5a86cd450c94a35b08c88
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73686927"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73822494"
 ---
 # <a name="resolving-transact-sql-differences-during-migration-to-sql-database"></a>Rozwiązywanie różnic w języku Transact-SQL podczas migracji do SQL Database
 

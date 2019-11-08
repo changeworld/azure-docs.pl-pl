@@ -4,15 +4,16 @@ description: Odpowiedzi na często zadawane pytania dotyczące portalu Azure Mar
 services: Azure, Marketplace, Compute, Storage, Networking, Blockchain, Security
 author: qianw211
 ms.service: marketplace
+ms.subservice: partnercenter-marketplace-publisher
 ms.topic: article
 ms.date: 10/4/2019
 ms.author: ellacroi
-ms.openlocfilehash: c24f956a7aeb68fe6b0325705a9e7dab8e70b063
-ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
+ms.openlocfilehash: 300f1783c1c514a6cc49d700c2741be85e69c3e8
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72330236"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73822983"
 ---
 # <a name="microsoft-commercial-marketplace-faqs"></a>Microsoft Commercial Marketplace — często zadawane pytania
 
@@ -35,9 +36,9 @@ Portal Azure Marketplace jest przeznaczony dla informatyków i deweloperów chmu
 Witryna Azure Marketplace oferuje rozwiązania i usługi techniczne utworzone przez firmę Microsoft i jej partnerów w celu zwiększenia możliwości produktów i usług platformy Azure. Katalog rozwiązań obejmuje kilka kategorii, w tym:
 
 * podstawowe systemy operacyjne
-* databases
-* zabezpieczenia
-* tożsamość
+* bazy danych
+* security
+* identity
 * sieć
 * łańcucha bloków
 * narzędzia deweloperskie
@@ -117,7 +118,7 @@ Subskrypcja platformy Azure jest dołączona do cen rozwiązań niezależnych do
 
 *Ciąż*
 
-+ *Bezpłatnie:* Bezpłatna jednostka SKU. Opłaty za licencje na oprogramowanie lub użycie oferty nie są naliczane.
++ *Bezpłatny:* wersja bezpłatna. Opłaty za licencje na oprogramowanie lub użycie oferty nie są naliczane.
 
 + *Bezpłatna wersja próbna oprogramowania:* Oferta bezpłatna przez ograniczony okres. Za korzystanie z licencji na oprogramowanie wydawcy nie jest naliczana opłata za użycie w okresie próbnym. Po wygaśnięciu zostanie automatycznie przekonwertowane na płatną ofertę na podstawie standardowych stawek wystawionych przez wydawcę.
 
@@ -127,7 +128,7 @@ Subskrypcja platformy Azure jest dołączona do cen rozwiązań niezależnych do
 
 + *Dla użytkownika:* Opłaty za subskrypcje SaaS są naliczane według poszczególnych użytkowników, które są rozliczane miesięcznie lub rocznie. 
 
-Szczegóły cennika dotyczące oferty można znaleźć na stronie szczegółów rozwiązania w [https://azure.microsoft.com/pricing/](https://azure.microsoft.com/pricing/) lub w [Azure Portal].
+Szczegóły cennika dotyczące oferty można znaleźć na stronie szczegółów rozwiązania na [https://azure.microsoft.com/pricing/](https://azure.microsoft.com/pricing/) lub w [Azure Portal].
 
 > [!Note]
 > Z wyjątkiem opłat miesięcznych opłaty za użycie platformy Azure są stosowane do wszystkich modeli cenowych, o ile nie określono inaczej.
@@ -224,7 +225,7 @@ Skontaktuj się z dostawcą wydawcy, aby uzyskać pomoc techniczną dotyczącą 
 
 **Do kogo mogę się skontaktować w celu uzyskania pomocy technicznej dotyczącej rozliczeń/pytań dotyczących rozwiązań innych firm zakupionych w witrynie Marketplace?**
 
-Skontaktuj się pomoc techniczna firmy Microsoft w [pomocy technicznej platformy Azure](https://support.microsoft.com/getsupport?oaspworkflow=start_1.0.0.0&wf=0&wfname=productselection&prid=16230&forceorigin=esmc&ccsid=636694515623707953).
+Skontaktuj się z pomocą techniczną firmy Microsoft w witrynie [pomocy technicznej platformy Azure](https://support.microsoft.com/getsupport?oaspworkflow=start_1.0.0.0&wf=0&wfname=productselection&prid=16230&forceorigin=esmc&ccsid=636694515623707953).
 
 **Z kim się skontaktować, jeśli mam pytania dotyczące cen lub warunków rozwiązań partnerskich sprzedawanych w portalu Azure Marketplace?**
 
@@ -246,7 +247,7 @@ Anulowane licencje będą podlegać zasadom dotyczącym zwrotu znalezionym w ram
 
 **Czy zwroty są obsługiwane w przypadku ofert opartych na zużyciu?**
 
-Wszelkie opłaty na podstawie zużycia — niezależnie od tego, czy są to co godzinę maszyn wirtualnych czy mierników niestandardowych — nie są zwracane za pośrednictwem anulowania. Po przeprowadzeniu konsumpcji opłaty są przetwarzane przez platformę handlową firmy Microsoft i wszelkie kwestie dotyczące jakości usług, w których żądanie zwrotu będzie obsługiwane bezpośrednio poza systemami firmy Microsoft między wydawcą a klientem. Oferty, które obsługują stałą stawkę Plus, są zgodne ze standardowymi zasadami zwrotu opłat za stawki ryczałtowe.
+Wszelkie opłaty na podstawie zużycia — czy są to co godzinę maszyn wirtualnych czy mierników niestandardowych — nie są zwracane za pośrednictwem anulowania. Po przeprowadzeniu konsumpcji opłaty są przetwarzane przez platformę handlową firmy Microsoft i wszelkie kwestie dotyczące jakości usług, w których żądanie zwrotu będzie obsługiwane bezpośrednio poza systemami firmy Microsoft między wydawcą a klientem. Oferty, które obsługują stałą stawkę Plus, są zgodne ze standardowymi zasadami zwrotu opłat za stawki ryczałtowe.
 
 **Czy jest możliwe zmiana planów w połowie okresu?**
 
@@ -267,7 +268,7 @@ Nie, zasady biznesowe są spójne w witrynie Azure Marketplace i Microsoft AppSo
 
 **Co to jest Portal Azure Marketplace?**
 
-[Portal Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace) to rynek aplikacji i usług online. Klienci (głównie informatycy i deweloperzy) mogą odkrywać i kupować rozwiązania oprogramowania w chmurze skompilowane przy użyciu systemu lub dla platformy Azure. Jego katalog zawiera ponad 8 000 list, takich jak bloki konstrukcyjne platformy Azure, takie jak Virtual Machines (maszyny wirtualne), interfejsy API, szablony rozwiązań, aplikacje SaaS i oferty usługi konsultingowej.
+Witryna [Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace) to platforma handlowa dla aplikacji i usług online. Klienci (głównie informatycy i deweloperzy) mogą odkrywać i kupować rozwiązania oprogramowania w chmurze skompilowane przy użyciu systemu lub dla platformy Azure. Jego katalog zawiera ponad 8 000 list, takich jak bloki konstrukcyjne platformy Azure, takie jak Virtual Machines (maszyny wirtualne), interfejsy API, szablony rozwiązań, aplikacje SaaS i oferty usługi konsultingowej.
 
 Portal Azure Marketplace to punkt początkowy dla wszystkich wspólnych działań Microsoft go-to-Market.  Skupiamy się na pomocy partnerów w celu uzyskania większej liczby klientów. Możesz publikować nowe listy, a także korzystać z portalu Azure Marketplace, aby przeprowadzać kampanie związane z generowaniem promocyjnym i popytem, wykonywać wspólne działania dotyczące sprzedaży/marketingu w firmie Microsoft.
 
@@ -285,7 +286,7 @@ Portal Azure Marketplace udostępnia partnerom firmy Microsoft rynek na potrzeby
 
 Partnerzy firmy Microsoft mogą wybrać miejsce publikowania na podstawie docelowych odbiorców.
 
-Firma Microsoft oferuje dwa odrębne witryny w chmurze Marketplace — Azure Marketplace i AppSource. Te witryny sklepu umożliwiają klientom wyszukiwanie, testowanie i kupowanie aplikacji oraz usług w chmurze. Każda witryna sklepu obsługuje unikatowe potrzeby klientów i umożliwia partnerom firmy Microsoft kierowanie swoich rozwiązań lub usług na podstawie docelowych odbiorców.
+Firma Microsoft udostępnia dwie odrębne witryny portalu w chmurze — Azure Marketplace i AppSource. Te witryny sklepu umożliwiają klientom wyszukiwanie, testowanie i kupowanie aplikacji oraz usług w chmurze. Każda witryna sklepu obsługuje unikatowe potrzeby klientów i umożliwia partnerom firmy Microsoft kierowanie swoich rozwiązań lub usług na podstawie docelowych odbiorców.
 
 Wybierz [Portal Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps) przeznaczony dla informatyków i deweloperów oraz użytkowników technicznych.
 
@@ -372,7 +373,7 @@ Aby uzyskać więcej informacji, zobacz [usuwanie oferty](./cloud-partner-portal
 
 *Aplikacje usługi O365:*
 
-1.  Zaloguj się do <https://sellerdashboard.microsoft.com> przy użyciu konta dev.
+1.  Zaloguj się, aby <https://sellerdashboard.microsoft.com> przy użyciu konta dev.
 1.  Wycofaj dodatek.
 
     > [!NOTE]

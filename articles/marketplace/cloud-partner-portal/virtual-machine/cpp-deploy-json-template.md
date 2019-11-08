@@ -1,22 +1,23 @@
 ---
 title: Szablon wdrożenia wirtualnego dysku twardego platformy Azure | Portal Azure Marketplace
-description: Wyświetla listę szablonów usługi Azure Resource Manager wymagane do wdrażania nowej maszyny wirtualnej platformy Azure z użytkownika wirtualnego dysku twardego.
+description: Zawiera listę Azure Resource Manager szablonu wymaganego do wdrożenia nowej maszyny wirtualnej platformy Azure na podstawie wirtualnego dysku twardego użytkownika.
 services: Azure, Marketplace, Cloud Partner Portal,
 author: v-miclar
 ms.service: marketplace
+ms.subservice: partnercenter-marketplace-publisher
 ms.topic: article
 ms.date: 11/29/2018
 ms.author: pabutler
-ms.openlocfilehash: 73f53f72d4db88bc0487999165d25fc952cf4a20
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: ddaf9213980e666ea69c700ad26b9db52886c9cb
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64938270"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73821412"
 ---
 # <a name="virtual-hard-disk-deployment-template"></a>Szablon wdrożenia wirtualnego dysku twardego 
 
-Następujący szablon usługi Azure Resource Manager definiuje nowe wystąpienie maszyny wirtualnej (VM) platformy Azure utworzone na podstawie lokalnego wirtualnego dysku twardego (VHD).  Ten szablon jest używany w artykule [wdrożyć Maszynę wirtualną platformy Azure przez użytkownika wirtualnego dysku twardego](./cpp-deploy-vm-user-image.md). 
+Poniższy szablon Azure Resource Manager definiuje nowe wystąpienie maszyny wirtualnej platformy Azure utworzone na podstawie lokalnego wirtualnego dysku twardego (VHD).  Ten szablon jest używany w artykule [Wdrażanie maszyny wirtualnej platformy Azure z dysku VHD użytkownika](./cpp-deploy-vm-user-image.md). 
 
 ```json
 {

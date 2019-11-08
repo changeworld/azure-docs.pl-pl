@@ -1,20 +1,21 @@
 ---
-title: Migrowanie SQL Server lokalnych użytkowników i grup systemu Windows do Azure SQL Database wystąpienia zarządzanego przy użyciu składni języka T-SQL
+title: Migrowanie użytkowników i grup programu SQL ServerWindows do wystąpienia zarządzanego przy użyciu języka T-SQL
 description: Informacje na temat migrowania SQL Server lokalnych użytkowników i grup systemu Windows do wystąpienia zarządzanego
 services: sql-database
 ms.service: sql-database
 ms.subservice: security
+ms.custom: seo-lt-2019
 ms.topic: tutorial
 author: GitHubMirek
 ms.author: mireks
 ms.reviewer: vanto
 ms.date: 10/30/2019
-ms.openlocfilehash: 079d684b56625b8327a94a1bfef222cb93572bd3
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 3ed4e4b1d37a9705378281ca74b53a6b60713d97
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73686748"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73807174"
 ---
 # <a name="tutorial-migrate-sql-server-on-premises-windows-users-and-groups-to-azure-sql-database-managed-instance-using-t-sql-ddl-syntax"></a>Samouczek: Migrowanie SQL Server lokalnych użytkowników i grup systemu Windows do Azure SQL Database wystąpienia zarządzanego przy użyciu składni języka T-SQL
 

@@ -1,68 +1,69 @@
 ---
-title: Karta Marketplace maszyny wirtualnej w portalu Cloud Partner portalu Azure Marketplace
-description: W tym artykule opisano kartę Marketplace używanego podczas tworzenia oferty maszyny Wirtualnej portalu Azure Marketplace.
+title: Karta Marketplace maszyny wirtualnej w portal Cloud Partner portalu Azure Marketplace
+description: Opisuje kartę Marketplace używaną podczas tworzenia oferty maszyny wirtualnej portalu Azure Marketplace.
 services: Azure, Marketplace, Cloud Partner Portal, virtual machine
 author: v-miclar
 ms.service: marketplace
+ms.subservice: partnercenter-marketplace-publisher
 ms.topic: article
 ms.date: 04/25/2019
 ms.author: pabutler
-ms.openlocfilehash: d9b259ba93be369658638d034f109a3a6ba4c4a4
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 9bc3c375c5111c144b6b137ca547875225aba58f
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64938184"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73824463"
 ---
 # <a name="virtual-machine-marketplace-tab"></a>Karta Marketplace maszyny wirtualnej
 
-**Marketplace** karcie **nowa oferta** strony umożliwia udostępnianie potencjalnych klientów. marketingu, sprzedaży i prawne informacji i umowy i zarządzanie potencjalnymi klientami wygenerowany na podstawie Portal Marketplace. Ta długich fragmentów jest podzielony na cztery sekcje: **Omówienie**, **marketingowych artefaktów**, **Zarządzanie potencjalnymi**, i **prawne**.
+Na karcie **Marketplace** na stronie **Nowa oferta** można zapewnić potencjalnym klientom potencjalną obsługę marketingową, sprzedażową i informacje prawne oraz umowy oraz zarządzać klientami wygenerowanymi w portalu Marketplace. Ten długi formularz jest podzielony na cztery sekcje: **Omówienie**, **artefakty marketingowe**, **Zarządzanie potencjalnymi klientami**i warunki **prawne**.
 
 
-## <a name="overview-section"></a>Sekcja — Omówienie
-W tej sekcji należy wprowadzić ogólne informacje o ofercie Azure Marketplace.  Dołączonych gwiazdki (*) na nazwę pola wskazuje, że jest wymagane.
+## <a name="overview-section"></a>Sekcja Omówienie
+W tej sekcji wprowadzasz ogólne informacje o ofercie portalu Azure Marketplace.  Dołączona gwiazdka (*) w nazwie pola wskazuje, że jest to wymagane.
 
-![Omówienie części karty witryny Marketplace dla maszyn wirtualnych](./media/publishvm_008.png)
+![Sekcja Przegląd karty Marketplace dla maszyn wirtualnych](./media/publishvm_008.png)
 
-W poniższej tabeli opisano przeznaczenie i zawartość tych pól. Wymagane pola są wskazanych przez znak gwiazdki (*).
+W poniższej tabeli opisano przeznaczenie i zawartość tych pól. Wymagane pola są indicted przez gwiazdkę (*).
 
 |  **Pole**                |     **Opis**                                                          |
 |  ---------                |     ---------------                                                          |
-| **Tytuł\***                 | Tytuł oferty, często długie, posiadanie nazwy. Ten tytuł będą wyróżniane w portalu marketplace.  Składać z maksymalnie 50 znaków. |
-| **Podsumowanie\***               | Krótki opis przeznaczenia lub funkcja rozwiązania.  Składać z maksymalnie 100 znaków. |
-| **Długie podsumowanie\***          | Cel lub funkcja rozwiązania.  Maksymalna długość 256 znaków. |
-| **Opis elementu\***           | Opis rozwiązania.  Maksymalną długość znaków 3000 obsługuje prosty format HTML. |
-| **Kanał odsprzedawców dostawcy usług Kryptograficznych Microsoft\*** | Dostawcy rozwiązań (CSP) partnera kanału zoptymalizowany pod kątem w chmurze jest teraz dostępna.  Zobacz [dostawców rozwiązań w chmurze](../../cloud-solution-providers.md) więcej informacji na temat marketingowych oferty za pośrednictwem programu Microsoft CSP partner kanałów. |
-| **Identyfikator marketingu\***  | Unikatowy adres URL, aby skojarzyć tę ofertę, obejmują zazwyczaj organizacji i nazwę rozwiązania, maksymalnej długości 50 znaków.  Na przykład: <br/> `https://azuremarketplace.microsoft.com/marketplace/apps/contoso.sampleApp`  |
-| **Identyfikatory subskrypcji (wersja zapoznawcza)\*** | Dodaj jeden do 100 identyfikatorów subskrypcji podglądy. Te subskrypcje biały na liście mają dostęp do tej oferty, po opublikowaniu, zanim usługa zostanie wprowadzona na żywo. |
-| **Przydatne linki**          | Dodaj adresy URL do przekazywania, informacje o wersji, często zadawane pytania i tak dalej. |
-| **Sugerowane kategorie (maks. 5)\*** | Wielokrotnego wyboru biznesowe i techniczne kategorie, które oferują może być najlepiej skojarzony.  Maksymalnie pięciu dozwolone.  |
+| **\* tytułu**                 | Tytuł oferty, często długi, formalna nazwa. Ten tytuł zostanie wyświetlony w widocznym miejscu w portalu Marketplace.  Maksymalna długość 50 znaków. |
+| **\* podsumowania**               | Krótki cel lub funkcja rozwiązania.  Maksymalna długość 100 znaków. |
+| **Długi\* podsumowujący**          | Cel lub funkcja rozwiązania.  Maksymalna długość 256 znaków. |
+| **\* opisu**           | Opis rozwiązania.  Maksymalna długość 3000 znaków, obsługuje proste formatowanie HTML. |
+| **\* kanału odsprzedawcy dostawcy Microsoft CSP** | Niedostępność kanału partnera dostawcy rozwiązań w chmurze (CSP) jest teraz dostępna.  Zobacz [dostawcy rozwiązań w chmurze](../../cloud-solution-providers.md) , aby uzyskać więcej informacji na temat marketingu oferty przez kanały partnerskie programu Microsoft CSP. |
+| **\* identyfikatora marketingu**  | Unikatowy adres URL do skojarzenia z ofertą zwykle zawiera nazwę organizacji i rozwiązania, maksymalną długość 50 znaków.  Na przykład: <br/> `https://azuremarketplace.microsoft.com/marketplace/apps/contoso.sampleApp`  |
+| **Zapodgląd identyfikatorów subskrypcji\*** | Dodaj jeden do 100 identyfikatorów subskrypcji dla recenzentów. Te białe subskrypcje będą miały dostęp do oferty po jej opublikowaniu. |
+| **Przydatne linki**          | Dodaj adresy URL do dokumentów, informacji o wersji, często zadawanych pytań i tak dalej. |
+| **Sugerowane kategorie (maksymalnie 5)\*** | Można z nich najlepiej skojarzyć wiele wybranych kategorii branżowych i technicznych.  Maksymalnie pięć dozwolonych.  |
 |  |  |
 
 
-## <a name="marketing-artifacts-section"></a>Sekcja artefaktów marketingu
+## <a name="marketing-artifacts-section"></a>Sekcja artefaktów marketingowych
 
-Ta druga sekcja odbywa się w trzech podsekcje: **Logo**, **zrzut ekranu**, i **wideo**. Logo są jedynymi wymagane marketingowych artefaktów, jednak wszystkie są zdecydowanie zaleca się najlepsze odwołania klienta. 
+Druga sekcja jest podzielona na trzy podsekcje: **logo**, **zrzut ekranu**i **wideo**. Logo są jedynymi wymaganymi artefaktami marketingowymi, ale wszystkie są zdecydowanie zalecane w przypadku najlepszych odwołań klientów. 
 
-![Marketing artefaktów części karty portalu Marketplace w formularzu nowa oferta dla maszyn wirtualnych](./media/publishvm_009.png)
+![Sekcja dotycząca artefaktów marketingowych na karcie Marketplace w nowej postaci dla maszyn wirtualnych](./media/publishvm_009.png)
 
-W poniższej tabeli opisano przeznaczenie i zawartość tych pól. Wymagane pola są wskazanych przez znak gwiazdki (*).
+W poniższej tabeli opisano przeznaczenie i zawartość tych pól. Wymagane pola są indicted przez gwiazdkę (*).
 
 |  **Pole**                |     **Opis**                                                          |
 |  ---------                |     ---------------                                                          |
-| *Logos*  |  |
-| **Małe\***                 | Mapa bitowa .ico 40 x 40 pikseli                                                      |
-| **Średni\***                | Mapa bitowa .ico 90 x 90 pikseli                                                      |
-| **Duże\***                 | Mapa bitowa .ico 115 x 115 pikseli                                                   |
-| **Szerokie\***                  | Mapa bitowa .ico 255 x 115 pikseli                                                    |
-| **Element Hero**                  | 815 x 290 mapy bitowej.  Opcjonalne, jednak po przekazany, nie można usunąć ikonę elementu hero. |
-| *Zrzuty ekranu*  | Opcjonalne, ale maksymalnie pięć zrzuty ekranu na jednostki SKU. |
+| *Graficznych*  |  |
+| **Małe\***                 | Mapa bitowa 40x40 pikseli. ico                                                      |
+| **Średni\***                | Mapa bitowa 90x90 pikseli. ico                                                      |
+| **Duże\***                 | Mapa bitowa 115x115 pikseli. ico                                                   |
+| **Szerokie\***                  | Mapa bitowa 255x115 pikseli. ico                                                    |
+| **Hero**                  | Mapa bitowa 815x290.  Opcjonalne, ale nie można usunąć ikony Hero. |
+| *Zrzutów*  | Opcjonalne, ale maksymalnie pięć zrzutów ekranu na jednostkę SKU. |
 | **Nazwa**                  | Nazwa lub tytuł <!-- TODO - max char length? none specified in UI -->                               |
-| **Obraz**                 | Obraz przechwytywania ekranie, 533 x 324 pikseli                                         |
+| **Obraz**                 | Obraz przechwytywania ekranu, 533x324 piksel                                         |
 | *Filmy wideo*  |  |
 | **Nazwa**                  | Nazwa lub tytuł  <!-- TODO - max char length? -->                              |
-| **Link**                  | Adres URL filmu wideo, w serwisie YouTube lub Vimeo                                        |
-| **Miniatura**             | 533 x 324 mapy bitowej                                                               |
+| **Link**                  | Adres URL wideo, hostowany w serwisie YouTube lub Vimeo                                        |
+| **Miniaturk**             | Mapa bitowa 533x324                                                               |
 |   |   |
 
 ### <a name="logo-guidelines"></a>Wytyczne dotyczące logo
@@ -70,62 +71,62 @@ W poniższej tabeli opisano przeznaczenie i zawartość tych pól. Wymagane pola
 <!-- TD: It seems like this section could be better located in some common area, maybe an AMP Marketing/Design section 
 +1 this should all be in a common area and referenced from here to that location.-->
 
-Wszystkie logo, które są przekazywane do portalu Cloud Partner powinien postępuj zgodnie z wytycznymi:
+Wszystkie logo przekazane do portal Cloud Partner powinny postępować zgodnie z wytycznymi:
 
-*  Projekt platformy Azure ma prostą paletę kolorów. Niskich numer podstawowy i pomocniczy kolory na logo.
-*  Kolory motywu w witrynie Azure Portal są białe i czarne. W związku z tym należy unikać te kolory jako kolor tła logo usługi. Użyj niektóre koloru, która spowodowałaby wprowadzenie Twoje logo widocznym w witrynie Azure portal. Zalecamy proste kolory podstawowe. Następnie korzystając z przezroczystym tłem, upewnij się, że logo/tekstu nie są białe lub czarne lub niebieski.
-*  Nie należy używać gradientu tła na logo.
-*  Należy unikać wprowadzania tekstu — nawet Twoja firma lub marką — na logo. Wygląd i działanie logo powinno być "płaską" i unikać gradientów.
-*  Nie rozciąganie logo.
+*  Projekt platformy Azure ma prostą paletę kolorów. Zachowaj niewielką liczbę kolorów podstawowych i pomocniczych w logo.
+*  Kolory motywu Azure Portal są białe i czarne. W związku z tym Unikaj używania tych kolorów jako koloru tła logo. Użyj pewnego koloru, który sprawia, że logo będzie widoczne w Azure Portal. Zalecamy proste kolory podstawowe. Jeśli używasz przezroczystego tła, upewnij się, że logo/tekst nie są białe lub czarne lub niebieskie.
+*  Nie używaj tła gradientu w logo.
+*  Unikaj umieszczania tekstu — nawet nazwy firmy lub marki — w logo. Wygląd i zachowanie logo powinny być "płaskie" i nie powinno się unikać gradientów.
+*  Nie rozciągaj logo.
 
 #### <a name="hero-logo"></a>Logo Duży obraz
 
-Logo usługi Hero jest opcjonalna. Jednak po przekazaniu plików nie można usunąć ikonę elementu hero.  Ikona logo Hero powinien postępuj zgodnie z wytycznymi:
+Logo Hero jest opcjonalne; Po przekazaniu nie można usunąć ikony Hero.  Ikona logo Hero powinna być zgodna z wytycznymi:
 
-*  Czarny, biały i przezroczyste tło nie są dozwolone dla elementu hero ikon.
-*  Należy unikać wszelkich jasny kolor jako tło ikony elementów hero.  Nazwa wyświetlana wydawcy, tytuł plan i ofertę, długie podsumowanie są wyświetlane w kolorze białym czcionki, a musi być na tle.
-*  Należy unikać używania większość tekstu podczas projektowania hero logo.  Nazwa wydawcy, tytuł planu, oferty długie Podsumowanie i przycisk Utwórz są osadzone programowo wewnątrz ikonę hero po listy oferty. 
-* Obejmują nieużywane prostokąt, po prawej stronie ikona hero, rozmiar 415 x 100 pikseli i przesunięcia 370 pikseli od lewej strony.  
+*  Czarne, białe i przezroczyste tła nie są dozwolone dla ikon Hero.
+*  Należy unikać używania dowolnego koloru jasnego jako tła ikony Hero.  Nazwa wyświetlana wydawcy, tytuł planu i długi podsumowanie oferty są wyświetlane w białym kolorze czcionki i muszą zostać wystawione w tle.
+*  Unikaj używania większości tekstu podczas projektowania logo Hero.  Nazwa wydawcy, tytuł planu, podsumowanie oferty długiej i przycisk Utwórz są osadzane programowo wewnątrz ikony Hero, gdy lista oferty. 
+* Dołącz nieużywany prostokąt po prawej stronie ikony Hero o rozmiarze 415x100 pikseli i przesunięciu 370 pikseli z lewej strony.  
 
-Na przykład następująca ikona hero dotyczy usługi Azure Container Service.  <!-- TD: It would be nice to have the raw bitmap, e.g.before and after embedding. -->
+Na przykład następująca ikona Hero jest dla Azure Container Service.  <!-- TD: It would be nice to have the raw bitmap, e.g.before and after embedding. -->
 
-![Przykład ikony hero dla usługi Azure Container Service](./media/publishvm_010.png)
-
-
-### <a name="marketing-information-example"></a>Przykład — informacje o marketingu 
-
-Poniższa ilustracja pokazuje, jak marketing informacji jest wyświetlana na stronie głównej produktu Microsoft Windows Server.
-
-![Przykładowa strona produktu firmy Microsoft w systemie Windows Server](./media/publishvm_011.png)
+![Przykładowa ikona Hero dla Azure Container Service](./media/publishvm_010.png)
 
 
-## <a name="lead-management-section"></a>Prowadzić sekcji Zarządzanie
+### <a name="marketing-information-example"></a>Przykład informacji marketingowych 
 
-Trzecia sekcja umożliwia klientom zbieranie potencjalnych klientów jest generowany na podstawie Twoich ofert w portalu Azure Marketplace. Oferuje następujące opcje magazynu (z listy rozwijanej) informacje o potencjalnych klientach.
+Na poniższej ilustracji przedstawiono sposób wyświetlania informacji marketingowych na stronie głównej produktu Microsoft Windows Server.
 
-* **Brak** — ustawienie domyślne, informacje o potencjalnym kliencie nie są zbierane.
-* Tabela platformy Azure — zapisywane w tabeli platformy Azure, określona przez ciąg połączenia.
-* Dynamics CRM Online — zapisane [Microsoft Dynamics 365 Online](https://dynamics.microsoft.com/) wystąpienia, określonego przez adres URL i uwierzytelniania poświadczeń.
-* Punkt końcowy HTTPS - zapisywane w określonym punkcie końcowym HTTPS jako ładunek JSON.
-* Marketo - zapisywane do określonego [Marketo](https://www.marketo.com/) wystąpienia, określonego przez identyfikator serwera, identyfikator munchkin i identyfikator formularza.
-* SalesForce — zapisane [Salesforce](https://www.salesforce.com/) określona baza danych, za pomocą identyfikatora obiektu.
+![Przykładowa strona produktu dla systemu Microsoft Windows Server](./media/publishvm_011.png)
 
-Po pomyślnym opublikowaniu oferty, połączenia potencjalny klient zostanie zweryfikowana, i potencjalnego klienta testowego jest automatycznie przesyłany do skonfigurowanego miejsca docelowego. Informacje o potencjalnych klientów powinny być stale zarządzane i te ustawienia powinny być na bieżąco aktualizowane przy każdym zmian do architektury zarządzania klienta.
+
+## <a name="lead-management-section"></a>Sekcja zarządzanie potencjalnymi klientami
+
+Trzecia sekcja umożliwia zbieranie potencjalnych klientów wygenerowanych z ofert portalu Azure Marketplace. Oferuje on następujące opcje magazynu (z listy rozwijanej) dla informacji o potencjalnych klientach.
+
+* **Brak** — nie są zbierane informacje o kliencie domyślnym.
+* Tabela Azure — zapisywana w tabeli platformy Azure określona przez parametry połączenia.
+* Dynamics CRM Online — Zapisano w wystąpieniu usługi [Microsoft Dynamics 365 online](https://dynamics.microsoft.com/) , określonym przez adres URL i poświadczenia uwierzytelniania.
+* Punkt końcowy HTTPS — zapisany w określonym punkcie końcowym HTTPS jako ładunek JSON.
+* Program Market — zapisany w określonym wystąpieniu programu [Marketo](https://www.marketo.com/) , określony przez identyfikator serwera, identyfikator Munchkin i identyfikator formularza.
+* Salesforce — zapisywana w bazie danych [usług Salesforce](https://www.salesforce.com/) , określona przez identyfikator obiektu.
+
+Po pomyślnym opublikowaniu oferty połączenie z liderem zostanie sprawdzone i klient testowy zostanie automatycznie wysłany do skonfigurowanego miejsca docelowego. Informacje o potencjalnych klientach powinny być ciągle zarządzane, a te ustawienia należy natychmiast zaktualizować, gdy zostaną wprowadzone zmiany w architekturze zarządzania klientami.
 
 <!-- TD: For more info, see [Need a topic on lead information and processing that mimics the Appendix of the VM Pub Guide]. -->
 
-## <a name="legal-section"></a>Sekcja prawne
+## <a name="legal-section"></a>Sekcja prawna
 
-Ta ostatnia sekcja umożliwia podanie wymagane dokumenty prawne wymagane dla każdej oferty.  
+W tej ostatniej sekcji można podać wymagane dokumenty prawne wymagane dla każdej oferty.  
 
 |  **Pole**                    |     **Opis**                                        |
 |  ---------                    |     ---------------                                        |
-| **Adres URL zasad ochrony prywatności\***      | Adres URL do zasad zachowania opublikowane                          |
-| **Użyj standardowej umowy?\***  |   |
-| **Warunki użytkowania\***            | zasady jako zwykły tekst lub HTML proste.                       |
+| **Adres URL zasad ochrony prywatności\***      | Adres URL dla opublikowanych zasad ochrony prywatności                          |
+| **Używać standardowej umowy?\***  |   |
+| **Warunki użytkowania\***            | zasady jako zwykły tekst lub prosty kod HTML.                       |
 |  |  |
 
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
-W ciągu następnych [obsługuje](./cpp-support-tab.md) karcie podaje się technicznych i użytkownika zasoby pomocy technicznej oferty.
+Na następnej karcie [Pomoc techniczna](./cpp-support-tab.md) zapewnisz klientom pomoc techniczną dla Twojej oferty.

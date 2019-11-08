@@ -4,15 +4,16 @@ description: Oto jak dołączyć do programu Business Applications ISV Connect.
 services: Azure Marketplace, Cloud Partner Portal
 author: qianw211
 ms.service: marketplace
+ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 7/12/2019
 ms.author: evansma
-ms.openlocfilehash: 349998b53378d00b6524f94578aa11642321d691
-ms.sourcegitcommit: 7a6d8e841a12052f1ddfe483d1c9b313f21ae9e6
+ms.openlocfilehash: 4a47886176b704cc3bc36cc9fa85d1d3faee4c58
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70182564"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73819151"
 ---
 # <a name="microsoft-business-applications-independent-software-vendor-isv-connect-program-onboarding-guide"></a>Przewodnik dołączania programu Microsoft Business Applications niezależnych dostawców oprogramowania (ISV)
 
@@ -25,7 +26,7 @@ Aby zarejestrować się i korzystać ze wszystkich korzyści związanych z zapew
 
 - [Skonfiguruj konto Centrum partnerskiego firmy Microsoft](#set-up-your-microsoft-partner-center-account).
 - [Zaakceptuj uzupełnienie Business Applications](#accept-the-business-applications-isv-program-addendum).
-- [Skonfiguruj informacje o](#set-up-your-billing-information)rozliczeniach.
+- [Skonfiguruj informacje o rozliczeniach](#set-up-your-billing-information).
 - [Zatwierdź swoją aplikację](#recertify-your-application).
 
 > [!IMPORTANT]
@@ -71,13 +72,13 @@ Następnie skonfiguruj informacje dotyczące rozliczeń dla programu Business Ap
 
 2. Wybierz ikonę *Ustawienia* (koła zębate) i wybierz pozycję **Ustawienia dewelopera**.
 
-3. W obszarze *konta*wybierz pozycję **profil**rozliczeń.
+3. W obszarze *konta*wybierz pozycję **profil rozliczeń**.
 
 4. Przejrzyj podstawowe informacje kontaktowe i rozliczeń, które są wypełniane przez firmę prawną i wprowadź niezbędne aktualizacje.
 
 5. Podaj ustawienia identyfikator podatkowy/NIP, jeśli ma zastosowanie.
 
-6. Wybierz **Zapisz** Aby zapisać zmiany.
+6. Wybierz pozycję **Zapisz** , aby zapisać zmiany.
 
 W dowolnym momencie możesz zaktualizować profil rozliczeń, ale nie można później zmienić *nazwy firmy* i *kraju* adres rozliczeniowy.
 

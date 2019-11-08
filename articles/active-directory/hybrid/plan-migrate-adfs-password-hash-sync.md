@@ -12,12 +12,12 @@ ms.date: 05/31/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 23ba9b06c9a3e6025d7227493713fe9187fba233
-ms.sourcegitcommit: 12de9c927bc63868168056c39ccaa16d44cdc646
+ms.openlocfilehash: 9603cdf11373891aaa3541330cb7f65c09352496
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72514893"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73818903"
 ---
 # <a name="migrate-from-federation-to-password-hash-synchronization-for-azure-active-directory"></a>Migruj z Federacji do synchronizacji skrótów haseł dla Azure Active Directory
 
@@ -161,7 +161,7 @@ Aby uzyskać więcej informacji o warunku **lokalizacji** w dostępie warunkowym
 
 Po dołączeniu urządzenia do usługi Azure AD można utworzyć reguły dostępu warunkowego, które wymuszają, aby urządzenia spełniały standardy dostępu do zabezpieczeń i zgodności. Ponadto użytkownicy mogą logować się do urządzenia przy użyciu konta służbowego lub szkolnego, a nie konta osobistego. W przypadku korzystania z hybrydowych urządzeń przyłączonych do usługi Azure AD można przyłączyć Active Directory urządzenia przyłączone do domeny do usługi Azure AD. Środowisko federacyjne mogło zostać skonfigurowane do korzystania z tej funkcji.
 
-Aby zapewnić, że sprzężenie hybrydowe będzie nadal działało w przypadku urządzeń przyłączonych do domeny po przekonwertowaniu domen na synchronizację skrótów haseł dla klientów z systemem Windows 10, musisz użyć opcji Azure AD Connect urządzenia, aby wypełnić punkt połączenia usługi, a następnie zsynchronizować aktywny Konta komputerów katalogu z usługą Azure AD. 
+Aby zapewnić, że sprzężenie hybrydowe będzie nadal działało w przypadku urządzeń, które są przyłączone do domeny po konwersji domen na synchronizację skrótów haseł dla klientów z systemem Windows 10, należy użyć opcji Azure AD Connect urządzenia do synchronizowania Active Directory komputera konta usługi Azure AD. 
 
 W przypadku kont komputerów z systemem Windows 8 i Windows 7 sprzężenie hybrydowe używa bezproblemowego logowania jednokrotnego do zarejestrowania komputera w usłudze Azure AD. Nie musisz synchronizować kont komputerów z systemem Windows 8 i Windows 7, takich jak w przypadku urządzeń z systemem Windows 10. Należy jednak wdrożyć zaktualizowany plik workplacejoin. exe (za pośrednictwem pliku msi) na klientach z systemami Windows 8 i Windows 7, aby mogli zarejestrować się przy użyciu bezproblemowego logowania jednokrotnego. [Pobierz plik msi](https://www.microsoft.com/download/details.aspx?id=53554).
 
@@ -263,7 +263,7 @@ Rozwiązywanie problemów można znaleźć w temacie [Rozwiązywanie problemów 
 
 Aby urządzenia używały bezproblemowego logowania jednokrotnego, należy dodać adres URL usługi Azure AD do ustawień strefy intranetowej użytkowników przy użyciu zasad grupy w Active Directory.
 
-Domyślnie przeglądarki sieci Web automatycznie obliczają poprawną strefę, Internet lub intranet, z adresu URL. Na przykład **http: \/ \/contoso/** Maps do strefy intranet i **http: \/ \/intranet. contoso.com** Maps do strefy Internet (ponieważ adres URL zawiera kropkę). Przeglądarki wysyłają bilety Kerberos do punktu końcowego w chmurze, takiego jak adres URL usługi Azure AD, tylko wtedy, gdy jawnie dodasz adres URL do strefy intranetowej przeglądarki.
+Domyślnie przeglądarki sieci Web automatycznie obliczają poprawną strefę, Internet lub intranet, z adresu URL. Na przykład **http:\/\/contoso/** Maps ze strefą intranetową i **http:\/\/intranet.contoso.com** mapowania do strefy Internet (ponieważ adres URL zawiera kropkę). Przeglądarki wysyłają bilety Kerberos do punktu końcowego w chmurze, takiego jak adres URL usługi Azure AD, tylko wtedy, gdy jawnie dodasz adres URL do strefy intranetowej przeglądarki.
 
 Wykonaj kroki, aby [wdrożyć](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnect-sso-quick-start) wymagane zmiany na urządzeniach.
 
@@ -313,7 +313,7 @@ Najpierw Zmień metodę logowania:
    > [!IMPORTANT]
    > W tym momencie wszystkie domeny federacyjne zmienią się na uwierzytelnianie zarządzane. Synchronizacja skrótów haseł jest nową metodą uwierzytelniania.
 
-7. W portalu usługi Azure AD wybierz pozycję **Azure Active Directory**  > **Azure AD Connect**.
+7. W portalu usługi Azure AD wybierz pozycję **Azure Active Directory** > **Azure AD Connect**.
 8. Sprawdź te ustawienia:
    * Wartość **federacyjna** została **wyłączona**.
    * **Bezproblemowe logowanie jednokrotne** jest ustawione na **włączone**.
@@ -335,9 +335,9 @@ Użyj tej opcji, jeśli nie skonfigurowano wstępnie domen federacyjnych przy u�
 3. Na stronie **Połącz z usługą Azure AD** wprowadź nazwę użytkownika i hasło dla konta administratora globalnego.
 4. Na stronie **logowania użytkownika** wybierz przycisk **Synchronizacja skrótów haseł** . Wybierz pozycję **Włącz logowanie jednokrotne**, a następnie wybierz pozycję **dalej**.
 
-   Przed włączeniem synchronizacji skrótów haseł: ![Screenshot, na którym jest wyświetlana opcja nie Konfiguruj na stronie logowania użytkownika ](media/plan-migrate-adfs-password-hash-sync/migrating-adfs-to-phs_image12.png)<br />
+   Przed włączeniem synchronizacji skrótów haseł: ![zrzut ekranu, na którym jest wyświetlana opcja nie Konfiguruj na stronie logowania użytkownika](media/plan-migrate-adfs-password-hash-sync/migrating-adfs-to-phs_image12.png)<br />
 
-   Po włączeniu synchronizacji skrótów haseł: ![Screenshot, które pokazują nowe opcje na stronie logowania użytkownika ](media/plan-migrate-adfs-password-hash-sync/migrating-adfs-to-phs_image13.png)<br />
+   Po włączeniu synchronizacji skrótów haseł: zrzut ekranu ![, który zawiera nowe opcje na stronie logowania użytkownika](media/plan-migrate-adfs-password-hash-sync/migrating-adfs-to-phs_image13.png)<br />
    
    > [!NOTE]
    > Począwszy od Azure AD Connect wersja 1.1.880.0, pole wyboru **bezproblemowego logowania jednokrotnego** jest domyślnie zaznaczone.
@@ -353,7 +353,7 @@ Użyj tej opcji, jeśli nie skonfigurowano wstępnie domen federacyjnych przy u�
 
 6. Na stronie **gotowy do skonfigurowania** upewnij się, że jest zaznaczone pole wyboru **Rozpocznij proces synchronizacji po zakończeniu konfiguracji** . Następnie wybierz pozycję **Konfiguruj**.
 
-   ![Screenshot, na którym jest wyświetlany przycisk Konfiguruj na stronie gotowy do konfiguracji ](media/plan-migrate-adfs-password-hash-sync/migrating-adfs-to-phs_image15.png)<br />
+   ![zrzut ekranu, który pokazuje przycisk Konfiguruj na stronie gotowy do konfiguracji](media/plan-migrate-adfs-password-hash-sync/migrating-adfs-to-phs_image15.png)<br />
    Po wybraniu przycisku **Konfiguruj** bezproblemowo logowanie jest konfigurowane zgodnie z opisem w poprzednim kroku. Konfiguracja synchronizacji skrótów haseł nie jest modyfikowana, ponieważ została włączona wcześniej.
 
    > [!IMPORTANT]
@@ -382,7 +382,7 @@ Ukończ konwersję przy użyciu modułu Azure AD PowerShell:
    Set-MsolDomainAuthentication -Authentication Managed -DomainName <domain name>
    ```
 
-3. W portalu usługi Azure AD wybierz pozycję **Azure Active Directory**  > **Azure AD Connect**.
+3. W portalu usługi Azure AD wybierz pozycję **Azure Active Directory** > **Azure AD Connect**.
 4. Sprawdź, czy domena została przekonwertowana na zarządzane, uruchamiając następujące polecenie:
 
    ``` PowerShell
@@ -400,7 +400,7 @@ Gdy dzierżawca używa tożsamości federacyjnej, użytkownicy zostali przekiero
 Aby przetestować synchronizację skrótów haseł:
 
 1. Otwórz program Internet Explorer w trybie InPrivate, aby bezproblemowe logowanie jednokrotne nie zalogować Cię automatycznie.
-2. Przejdź do strony logowania do programu Office 365 ([ https://portal.office.com](https://portal.office.com/)).
+2. Przejdź do strony logowania do programu Office 365 ([https://portal.office.com](https://portal.office.com/)).
 3. Wprowadź nazwę UPN użytkownika, a następnie wybierz przycisk **dalej**. Upewnij się, że wprowadzasz nazwę UPN użytkownika hybrydowego, który został zsynchronizowany z wystąpienia lokalnego Active Directory i kto wcześniej użył uwierzytelniania federacyjnego. Strona, na której zostanie wprowadzona nazwa użytkownika i hasło:
 
    ![Zrzut ekranu przedstawiający stronę logowania, w której wprowadzasz nazwę użytkownika](media/plan-migrate-adfs-password-hash-sync/migrating-adfs-to-phs_image18.png)
@@ -417,8 +417,8 @@ Aby przetestować synchronizację skrótów haseł:
 1. Zaloguj się na komputerze przyłączonym do domeny, który jest połączony z siecią firmową.
 2. W programie Internet Explorer lub Chrome przejdź do jednego z następujących adresów URL (Zastąp ciąg "contoso" domeną):
 
-   * https: \/ \/myapps. microsoft.com/contoso.com
-   * https: \/ \/myapps. microsoft.com/contoso.onmicrosoft.com
+   * https:\/\/myapps.microsoft.com/contoso.com
+   * https:\/\/myapps.microsoft.com/contoso.onmicrosoft.com
 
    Użytkownik zostanie krótko przekierowany do strony logowania usługi Azure AD, która wyświetla komunikat "próba zalogowania". Użytkownik nie jest monitowany o podanie nazwy użytkownika lub hasła.<br />
 

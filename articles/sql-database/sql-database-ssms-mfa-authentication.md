@@ -1,9 +1,10 @@
 ---
-title: Korzystanie z uwierzytelniania wieloskładnikowego usługi AAD z użyciem Azure SQL Database i Azure SQL Data Warehouse
+title: Korzystanie z uwierzytelniania wieloskładnikowego usługi AAD
 description: Azure SQL Database i Azure SQL Data Warehouse obsługują połączenia z SQL Server Management Studio (SSMS) przy użyciu Active Directory uniwersalnego uwierzytelniania.
 services: sql-database
 ms.service: sql-database
 ms.subservice: security
+titleSuffix: Azure SQL Database and SQL Data Warehouse
 ms.custom: seoapril2019
 ms.devlang: ''
 ms.topic: conceptual
@@ -11,12 +12,12 @@ author: GithubMirek
 ms.author: mireks
 ms.reviewer: vanto
 ms.date: 10/08/2018
-ms.openlocfilehash: d9d391c1496102d38e9da767ad26b408860ca682
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 7183193f3639ea809c6e7aa19af7844bd134111e
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73687083"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73820904"
 ---
 # <a name="using-multi-factor-aad-authentication-with-azure-sql-database-and-azure-sql-data-warehouse-ssms-support-for-mfa"></a>Korzystanie z uwierzytelniania wieloskładnikowego usługi AAD z użyciem Azure SQL Database i Azure SQL Data Warehouse (Obsługa programu SSMS dla usługi MFA)
 Azure SQL Database i Azure SQL Data Warehouse obsługują połączenia z SQL Server Management Studio (SSMS) przy użyciu *Active Directory uniwersalnego uwierzytelniania*. W tym artykule omówiono różnice między różnymi opcjami uwierzytelniania, a także ograniczenia związane z uwierzytelnianiem uniwersalnym. 

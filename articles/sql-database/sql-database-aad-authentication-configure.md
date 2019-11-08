@@ -1,5 +1,5 @@
 ---
-title: Konfigurowanie uwierzytelniania Azure Active Directory — SQL
+title: Konfigurowanie uwierzytelniania usługi Azure Active Directory
 description: Dowiedz się, jak nawiązać połączenie z SQL Database, wystąpieniem zarządzanym i SQL Data Warehouse przy użyciu uwierzytelniania Azure Active Directory — po skonfigurowaniu usługi Azure AD.
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: GithubMirek
 ms.author: mireks
 ms.reviewer: vanto, carlrab
 ms.date: 11/06/2019
-ms.openlocfilehash: d23fcb781f5eddd71d5ddce9344d988d2e323611
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 48334d8ce266ddcc92e4d2b27634db3d8c9f1bc9
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73691392"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73816792"
 ---
 # <a name="configure-and-manage-azure-active-directory-authentication-with-sql"></a>Konfigurowanie i Zarządzanie uwierzytelnianiem Azure Active Directory przy użyciu programu SQL
 
@@ -46,7 +46,7 @@ Aby uzyskać więcej informacji, zobacz tematy [Integrating your on-premises ide
 
 ## <a name="create-an-azure-ad-administrator-for-azure-sql-server"></a>Tworzenie administratora usługi Azure AD dla programu Azure SQL Server
 
-Każdy serwer SQL platformy Azure (który hostuje SQL Database lub SQL Data Warehouse) jest uruchamiany przy użyciu jednego konta administratora serwera, które jest administratorem całego serwera SQL Azure. Należy utworzyć drugiego administratora SQL Server, który jest kontem usługi Azure AD. Ten podmiot zabezpieczeń jest tworzony jako użytkownik zawartej bazy danych w bazie danych Master. Administratorzy serwera są członkami roli **db_owner** w każdej bazie danych użytkownika i wprowadzają każdą bazę danych użytkownika jako użytkownika **dbo** . Więcej informacji o kontach administratorów serwera znajduje się [w temacie Zarządzanie bazami danych i nazwami logowania w Azure SQL Database](sql-database-manage-logins.md).
+Każdy serwer SQL platformy Azure (który hostuje SQL Database lub SQL Data Warehouse) jest uruchamiany przy użyciu jednego konta administratora serwera, które jest administratorem całego serwera SQL Azure. Należy utworzyć drugiego administratora SQL Server, który jest kontem usługi Azure AD. Ten podmiot zabezpieczeń jest tworzony jako użytkownik zawartej bazy danych w bazie danych Master. Jako administratorzy konta administratorów serwera są członkami roli **db_owner** w każdej bazie danych użytkownika, a następnie wprowadź każdą bazę danych użytkownika jako użytkownika **dbo** . Więcej informacji o kontach administratorów serwera znajduje się [w temacie Zarządzanie bazami danych i nazwami logowania w Azure SQL Database](sql-database-manage-logins.md).
 
 W przypadku korzystania z Azure Active Directory z replikacją geograficzną administrator Azure Active Directory musi być skonfigurowany zarówno dla serwera podstawowego, jak i pomocniczego. Jeśli serwer nie ma Azure Active Directory administrator, wówczas Azure Active Directory logowania i użytkownicy otrzymają komunikat o błędzie "nie można nawiązać połączenia" z serwerem.
 

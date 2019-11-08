@@ -4,15 +4,16 @@ description: Skonfiguruj zarządzanie liderem w tabeli platformy Azure.
 services: Azure, Marketplace, commercial marketplace, Partner Center
 author: qianw211
 ms.service: marketplace
+ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 07/30/2019
 ms.author: evansma
-ms.openlocfilehash: 7151be3ac9f55825fd2e9dde35c9afda6a30726a
-ms.sourcegitcommit: d3dced0ff3ba8e78d003060d9dafb56763184d69
+ms.openlocfilehash: 9b24e6eb714c531b49ba08591bf4ed33d0f10101
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69902639"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73812337"
 ---
 # <a name="configure-lead-management-using-an-azure-table"></a>Konfigurowanie zarządzania liderem za pomocą tabeli platformy Azure
 
@@ -96,7 +97,7 @@ W następnym zestawie kroków zostanie nawiązane połączenie z tabelą platfor
 
     * *Nazwa połączenia* — Podaj zrozumiałą nazwę połączenia, które tworzysz między tym przepływem a tabelą platformy Azure.
     * *Nazwa konta magazynu* — Podaj nazwę konta magazynu dla swojej tabeli platformy Azure. Tę wartość można znaleźć na stronie **klucze dostępu** konta magazynu.
-    * *Współużytkowany klucz magazynu* — podaj wartość klucza dla konta magazynu dla swojej tabeli platformy Azure. Tę wartość można znaleźć na stronie **klucze dostępu** konta magazynu.
+    * *Współużytkowany klucz magazynu* — podaj wartość klucza dla konta magazynu w tabeli platformy Azure. Tę wartość można znaleźć na stronie **klucze dostępu** konta magazynu.
 
         ![Azure Table Storage.](./media/commercial-marketplace-lead-management-instructions-azure-table/azure-table-storage.png)
 
@@ -106,7 +107,7 @@ W następnym zestawie kroków zostanie nawiązane połączenie z tabelą platfor
 
             ![Jednostki pobierania tabeli platformy Azure.](./media/commercial-marketplace-lead-management-instructions-azure-table/azure-table-get-entities.png)
 
-        * *Zapytanie filtru* — zaznacz to pole i wklej tę funkcję do pola:`Timestamp gt datetime'@{body('Get_past_time')}'`
+        * *Filtruj zapytanie* — zaznacz to pole i wklej tę funkcję do pola: `Timestamp gt datetime'@{body('Get_past_time')}'`
 
             ![Pobieranie jednostek przez tabelę platformy Azure — filtr querry.](./media/commercial-marketplace-lead-management-instructions-azure-table/azure-table-get-entities-filter-query.png)
 
@@ -145,8 +146,8 @@ W następnych kilku krokach skonfigurujesz akcję do wykonania w oparciu o wynik
 19. W oknie **Office 365 Outlook** podaj informacje dla następujących pól:
 
     1. Wprowadź adres e-mail dla wszystkich użytkowników, którzy otrzymają to powiadomienie.
-    1. **Podmiot** — Podaj temat wiadomości e-mail. Przykład: Nowi potencjalni klienci!
-    1. **Treść** — Dodaj tekst, który ma zostać uwzględniony w każdej wiadomości e-mail (opcjonalnie), a następnie wklej w `body('Get_entities')?['value']`treści.
+    1. **Podmiot** — Podaj temat wiadomości e-mail. Na przykład: Nowi potencjalni klienci!
+    1. **Treść** — Dodaj tekst, który ma zostać uwzględniony w każdej wiadomości e-mail (opcjonalnie), a następnie wklej w `body('Get_entities')?['value']`treść.
 
     >[!Note]
     >Do treści tej wiadomości e-mail można wstawić dodatkowe statyczne lub dynamiczne punkty danych.

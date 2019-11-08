@@ -1,57 +1,58 @@
 ---
-title: Tworzenie stroną docelową w witrynie Azure Marketplace | Azure
-description: Dowiedz się, jak utworzyć strona docelowa w portalu Azure Marketplace i Microsoft AppSource dla wydawcy aplikacji i usługi.
+title: Tworzenie strony docelowej w portalu Azure Marketplace | Azure
+description: Dowiedz się, jak utworzyć stronę docelową w witrynie Azure Marketplace i Microsoft AppSource dla wydawców aplikacji i usług.
 services: Azure, Marketplace, Compute, Storage, Networking, Blockchain, Security
 author: jm-aditi-ms
 manager: pabutler
 ms.service: marketplace
+ms.subservice: partnercenter-marketplace-publisher
 ms.topic: article
 ms.date: 06/04/2018
 ms.author: ellacroi
-ms.openlocfilehash: 1b3f987ff54a4b5eeeb1034d1e99302d0d6d43d6
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: cf7d15ba375faf7dfb38bf5f691799875f2dd6e1
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64935608"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73819826"
 ---
-# <a name="build-your-landing-page"></a>Stroną docelową kompilacji
+# <a name="build-your-landing-page"></a>Tworzenie strony docelowej
 
-Strona docelowa, w witrynie sieci Web firmy jest bramy z działania związane z generowaniem popytu do Twojej listy w [portalu Azure Marketplace](https://azuremarketplace.microsoft.com).
+Strona docelowa w firmowej witrynie sieci Web jest bramą z działań związanych z generowaniem popytu do Twojej aukcji w [portalu Azure Marketplace](https://azuremarketplace.microsoft.com).
 
-Rozpocznij od zidentyfikowania celów. Dla rozwiązań Wybierz klientów docelowych i akcji, która spowoduje przejście klientów. Rozwiązanie może obejmować następujące działania:
-*   Testuj rozwiązanie
-*   Pobierz teraz to rozwiązanie
+Zacznij od identyfikowania celów. W przypadku rozwiązań wybierz klienta docelowego i akcję podejmowaną przez klienta. Twoje rozwiązanie może obejmować następujące działania:
+*   Testowanie rozwiązania
+*   Uzyskaj rozwiązanie teraz
 
-W kilku taktyk marketingu mogą odwoływać się stroną docelową. Można na przykład następująca taktyka marketingowe: 
-*   Events
+Możesz odwoływać się do strony docelowej w wielu taktykęach marketingowych. Możliwe jest użycie następujących taktykę marketingowych: 
+*   Zdarzenia
 *   Transmisje internetowe
 *   Media społecznościowe
 *   Oficjalne dokumenty
-*   Sesje techniczne
-*   Informacje prasowe
+*   Sesje szkolenia technicznego
+*   Wersje prasowe
 
-Bardziej spójny jesteś w swojej komunikatów i wywołania do akcji, łatwiej jest dla swoich klientów znaleźć rozwiązania.
+Im bardziej spójny jest Twój komunikat i w wywołaniu do działania, łatwiejszym rozwiązaniem dla klientów jest znalezienie Twojego rozwiązania.
 
-## <a name="recommendations"></a>Zalecenia
+## <a name="recommendations"></a>Polecane elementy
 
-W przypadku kampanii gotowy plan, należy utworzyć stroną docelową w portalu Marketplace. W poniższej tabeli opisano sposoby może pomóc zmaksymalizować efektywność stroną docelową: 
+Jeśli masz gotowy plan kampanii, Utwórz stronę docelową w portalu Marketplace. W poniższej tabeli opisano sposoby maksymalizowania skuteczności strony docelowej: 
 
-| Najlepsze rozwiązania | Należy unikać |
+| Najlepsze rozwiązania | Ominąć |
 |:--- |:--- |
-| **Jaki problem klientów rozwiązuje rozwiązania i jak praca za pomocą usługi Azure** | Nie komunikuje się z metod, w którym rozwiązania współdziałają z platformą Azure. |
-| **Tworzenie krótkich, łatwa do zapamiętania adresów URL** | Przy użyciu długich adresów URL. Długich adresów URL nie są do zapamiętania i są trudne do zlokalizowania. |
-| **Dodaj odpowiednie zawartości wizualnej, takich jak wideo z opinią klienta lub architektury rozwiązania** | Przy użyciu zbyt dużej ilości tekstu powoduje to ignorowanie zawartości i Zatrzymaj eksplorację.|
-| **Utworzyć czytelne wezwania do akcji do kierowania osoby odwiedzające stronę katalogu witryny Marketplace** | Na stronie, o zbyt wiele łączy lub akcji. |
-| **Umieść swoje wezwanie do działania w nagłówku lub wyraźnie nakreślonego sekcji** | Osadzanie łączy do Twojej listy w portalu Marketplace w akapicie tekstu. |
-| **Zbadaj najlepsze słowa kluczowe i zoptymalizować strony wyszukiwania** | Przy założeniu, że nazwa produktu generuje wyższe rankingów wyszukiwania. |
-| **Użyj słowa kluczowe występujące w kampanii reklamowych** | We właściwości w sieci web przy użyciu wielu innych słów kluczowych rozmywa inwestycji reklamy. |
-| **Umieszczenie nazwy odpowiednich produktów i słów kluczowych "powyżej zwijania"** | Tworzenie użytkowników Przewinięcie w celu wyświetlenia produktu lub rozwiązania, które są zaprezentować. |
-| **Weryfikacja rozwiązania zgodnie z Microsoft znakowania wytycznych, takie jak certyfikat platformy Azure za pomocą obraz marką** | Przy użyciu obrazów marki firmy Microsoft, która nie jest zatwierdzona. |
+| **Zapoznaj się z informacjami o problemie związanym z klientem i sposobami korzystania z platformy Azure** | Nie komunikuje się, w jaki sposób rozwiązanie współpracuje z platformą Azure. |
+| **Utwórz krótki, łatwy w obsłudze adresy URL** | Używanie długich adresów URL. Długie adresy URL nie są zapamiętane i trudno je zlokalizować. |
+| **Dodawanie odpowiedniej zawartości wizualnej, takiej jak wideo z opiniami klientów lub Architektura rozwiązania** | Użycie zbyt dużej ilości tekstu powoduje, że klienci zignorują Twoją zawartość i zatrzymują Eksplorowanie.|
+| **Utwórz jednoznaczne wywołanie akcji, aby skierować odwiedzających stronę wykazu witryny Marketplace** | Za dużo linków lub akcji na stronie. |
+| **Umieść wywołanie do akcji w nagłówku lub w jasno wyznaczonym obszarze** | Osadzenie linków do listy w portalu Marketplace w akapicie tekstu. |
+| **Zbadaj najlepsze słowa kluczowe i zoptymalizuj stronę do wyszukiwania** | Przy założeniu, że nazwa produktu generuje wyższe klasyfikacje wyszukiwania. |
+| **Używaj słów kluczowych z kampanii reklamowych** | Używanie wielu różnych słów kluczowych we właściwościach sieci Web rozcieńcza inwestycje reklamowe. |
+| **Umieść odpowiednie nazwy produktów i słowa kluczowe "powyżej zgięcia"** | Umożliwienie użytkownikom przewijania do widocznych produktów lub rozwiązań. |
+| **Korzystaj z obrazów markowych, aby zweryfikować swoje rozwiązanie zgodnie ze wskazówkami dotyczącymi oznakowania firmy Microsoft, takimi jak certyfikat platformy Azure** | Korzystanie z obrazów marki firmy Microsoft, które nie są zatwierdzone. |
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
-*   Aby uzyskać więcej informacji na temat znaczek certyfikatu platformy Azure, zobacz [wytycznymi certyfikatu platformy Microsoft Azure](https://azure.microsoft.com/support/legal/marketplace/certified-guidelines).
-*   Aby uzyskać więcej zasobów dotyczących znakowaniu zobacz [Brand Central](https://microsoft.sharepoint.com/teams/brandcentral).
-*   Aby uzyskać więcej informacji o narzędziu Logo konstruktora, zobacz [konstruktora Logo](https://logobuilder.partner.microsoft.com).
-*   Przegląd [działa jak program Microsoft Partner program](https://partner.microsoft.com/membership/how-it-works).
+*   Aby uzyskać więcej informacji na temat identyfikatora certyfikatu platformy Azure, zobacz [Microsoft Azure wytyczne dotyczące certyfikowanych](https://azure.microsoft.com/support/legal/marketplace/certified-guidelines)usług.
+*   Aby uzyskać więcej zasobów dotyczących znakowania, zobacz [Marka środkowe](https://microsoft.sharepoint.com/teams/brandcentral).
+*   Aby uzyskać więcej informacji na temat narzędzia logo Builder, zobacz [logo Builder](https://logobuilder.partner.microsoft.com).
+*   Przejrzyj, [jak działa program partnerski firmy Microsoft](https://partner.microsoft.com/membership/how-it-works).

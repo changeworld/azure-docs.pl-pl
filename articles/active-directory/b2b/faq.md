@@ -1,125 +1,131 @@
 ---
-title: Współpraca B2B — często zadawane pytania — usługi Azure Active Directory | Dokumentacja firmy Microsoft
-description: Uzyskaj odpowiedzi na często zadawane pytania dotyczące współpracy B2B usługi Azure Active Directory.
+title: Często zadawane pytania dotyczące współpracy B2B — Azure Active Directory | Microsoft Docs
+description: Uzyskaj odpowiedzi na często zadawane pytania dotyczące Azure Active Directory współpracy B2B.
 services: active-directory
 ms.service: active-directory
 ms.subservice: B2B
 ms.topic: reference
-ms.date: 04/10/2019
+ms.date: 11/07/2019
 ms.author: mimart
 author: msmimart
 manager: celestedg
 ms.reviewer: mal
 ms.custom: it-pro, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 523f1adc94870f79d198366059f33ad52f5dad68
-ms.sourcegitcommit: 2d3b1d7653c6c585e9423cf41658de0c68d883fa
+ms.openlocfilehash: 2fd72aea9087b03dcd5c6072676e8f98e7cfc1ee
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/20/2019
-ms.locfileid: "67293072"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73816447"
 ---
-# <a name="azure-active-directory-b2b-collaboration-faqs"></a>Współpraca B2B usługi Active Directory Azure — często zadawane pytania
+# <a name="azure-active-directory-b2b-collaboration-faqs"></a>Azure Active Directory często zadawane pytania dotyczące współpracy B2B
 
-Te często zadawane pytania (FAQ) dotyczące współpracy w usłudze Azure Active Directory (Azure AD) business-to-business (B2B) są okresowo aktualizowane, aby uwzględnić nowe tematy.
+Te często zadawane pytania dotyczące współpracy między firmami (AD-i Business-to-biznesowe) w ramach programu Azure Active Directory (Azure Active Directory) są okresowo aktualizowane w celu uwzględnienia nowych tematów.
 
-### <a name="can-we-customize-our-sign-in-page-so-its-more-intuitive-for-our-b2b-collaboration-guest-users"></a>Dlatego jest bardziej intuicyjne dla naszych użytkowników gości współpracy B2B możemy dostosować naszą stronę logowania?
-Oczywiście! Zobacz nasze [wpis w blogu o tej funkcji](https://blogs.technet.microsoft.com/enterprisemobility/2017/04/07/improving-the-branding-logic-of-azure-ad-login-pages/). Aby uzyskać więcej informacji o tym, jak dostosować stronę logowania Twojej organizacji, zobacz [dodać znakowanie firmowe do Zaloguj się i strony panelu dostępu](../fundamentals/customize-branding.md).
+### <a name="can-we-customize-our-sign-in-page-so-its-more-intuitive-for-our-b2b-collaboration-guest-users"></a>Czy mogę dostosować naszą stronę logowania, aby była bardziej intuicyjna dla naszych użytkowników-Gości współpracy B2B?
+KONIECZN! Zapoznaj się z naszym [wpisem w blogu dotyczącym tej funkcji](https://blogs.technet.microsoft.com/enterprisemobility/2017/04/07/improving-the-branding-logic-of-azure-ad-login-pages/). Aby uzyskać więcej informacji na temat sposobu dostosowywania strony logowania w organizacji, zobacz [Dodawanie znakowania firmowego do stron logowania i panelu dostępu](../fundamentals/customize-branding.md).
 
-### <a name="can-b2b-collaboration-users-access-sharepoint-online-and-onedrive"></a>Użytkowników we współpracy B2B dostęp do usługi SharePoint Online i OneDrive?
-Tak. Jednak jest możliwość wyszukiwania dla istniejących użytkowników-gości w usłudze SharePoint Online przy użyciu selektora osób **poza** domyślnie. Aby włączyć opcję, aby wyszukać istniejących użytkowników-gości, ustaw **ShowPeoplePickerSuggestionsForGuestUsers** do **na**. Możesz włączyć następujące ustawienie na poziomie dzierżawy lub na poziomie zbioru witryn. To ustawienie można zmienić za pomocą polecenia cmdlet Set-SPOTenant i SPOSite zestawu. Z tych poleceń cmdlet elementy członkowskie można wyszukiwać wszystkich istniejących użytkowników-gości w katalogu. Zmiany w zakresie dzierżawy nie wpływają na witryn usługi SharePoint Online, które już zostały udostępnione.
+### <a name="can-b2b-collaboration-users-access-sharepoint-online-and-onedrive"></a>Czy użytkownicy współpracy B2B mogą uzyskiwać dostęp do usług SharePoint Online i OneDrive?
+Tak. Jednak możliwość wyszukiwania istniejących użytkowników-Gości w usłudze SharePoint Online przy użyciu selektora osób jest domyślnie **wyłączona** . Aby włączyć opcję wyszukiwania istniejących użytkowników-Gości, ustaw wartość **ShowPeoplePickerSuggestionsForGuestUsers** na **włączone**. To ustawienie można włączyć na poziomie dzierżawy lub na poziomie zbioru witryn. To ustawienie można zmienić za pomocą poleceń cmdlet Set-SPOTenant i Set-SPOSite. Za pomocą tych poleceń cmdlet członkowie mogą przeszukiwać wszystkich istniejących użytkowników-Gości w katalogu. Zmiany w zakresie dzierżawy nie wpływają na witryny usługi SharePoint Online, które zostały już zainicjowane.
 
-### <a name="is-the-csv-upload-feature-still-supported"></a>Jest funkcja przekazywania pliku CSV są nadal obsługiwane?
-Tak. Aby uzyskać więcej informacji o korzystaniu z funkcji przekazywania plików CSV, zobacz [tego przykładu z programu PowerShell](code-samples.md).
+### <a name="is-the-csv-upload-feature-still-supported"></a>Czy funkcja przekazywania woluminów CSV jest nadal obsługiwana?
+Tak. Aby uzyskać więcej informacji na temat korzystania z funkcji przekazywania plików CSV, zobacz [ten przykład programu PowerShell](code-samples.md).
 
-### <a name="how-can-i-customize-my-invitation-emails"></a>Jak dostosować wiadomości e-mail z zaproszeniem
-Prawie wszystko, co o procesie zapraszającej można dostosować za pomocą [zaproszenie B2B interfejsów API](customize-invitation-api.md).
+### <a name="how-can-i-customize-my-invitation-emails"></a>Jak mogę dostosować moje wiadomości e-mail z zaproszeniem?
+Niemal wszystko o procesie zapraszania można dostosować za pomocą [interfejsów API zaproszenia B2B](customize-invitation-api.md).
 
-### <a name="can-guest-users-reset-their-multi-factor-authentication-method"></a>Użytkownicy-goście, można zresetować swoje metody uwierzytelniania wieloskładnikowego?
-Tak. Użytkownicy-goście mogą resetować swoje metody uwierzytelniania wieloskładnikowego tak samo jak regularne użytkowników.
+### <a name="can-guest-users-reset-their-multi-factor-authentication-method"></a>Czy użytkownicy-Goście mogą zresetować swoją metodę uwierzytelniania wieloskładnikowego?
+Tak. Użytkownicy-Goście mogą resetować swoje metody uwierzytelniania wieloskładnikowego w taki sam sposób, jak w przypadku zwykłych użytkowników.
 
-### <a name="which-organization-is-responsible-for-multi-factor-authentication-licenses"></a>Której organizacji jest odpowiedzialny za licencje na usługę uwierzytelnianie wieloskładnikowe?
-Organizacji zapraszającej jest przeprowadzane uwierzytelnianie wieloskładnikowe. Organizacji zapraszającej musisz upewnić się, że organizacja charakteryzuje się wystarczającą liczbę licencji dla użytkowników B2B, którzy korzystają z uwierzytelniania Multi-Factor Authentication.
+### <a name="which-organization-is-responsible-for-multi-factor-authentication-licenses"></a>Która organizacja jest odpowiedzialna za licencje usługi uwierzytelniania wieloskładnikowego?
+Zapraszana organizacja wykonuje uwierzytelnianie wieloskładnikowe. Organizacja zapraszania musi upewnić się, że organizacja ma wystarczającą liczbę licencji dla użytkowników B2B korzystających z uwierzytelniania wieloskładnikowego.
 
-### <a name="what-if-a-partner-organization-already-has-multi-factor-authentication-set-up-can-we-trust-their-multi-factor-authentication-and-not-use-our-own-multi-factor-authentication"></a>Co zrobić, jeśli w organizacji partnera, który jest już ma skonfigurować uwierzytelnianie wieloskładnikowe? Można możemy zaufania uwierzytelniania wieloskładnikowego i nie używać własną usługę uwierzytelnianie wieloskładnikowe?
-Ta funkcja nie jest obecnie obsługiwana. Jeśli dostęp do zasobów organizacji wymaga uwierzytelniania wieloskładnikowego, organizacji partnera należy zarejestrować dla uwierzytelniania wieloskładnikowego w Twojej (zapraszanie) organizacji.
+### <a name="what-if-a-partner-organization-already-has-multi-factor-authentication-set-up-can-we-trust-their-multi-factor-authentication-and-not-use-our-own-multi-factor-authentication"></a>Co zrobić, jeśli w organizacji partnerskiej jest już skonfigurowane uwierzytelnianie wieloskładnikowe? Czy można zaufać usłudze uwierzytelniania wieloskładnikowego i nie używać własnego uwierzytelniania wieloskładnikowego?
+Ta funkcja nie jest obecnie obsługiwana. Jeśli dostęp do zasobów organizacji wymaga uwierzytelniania wieloskładnikowego, organizacja partnerska będzie potrzebować rejestracji w usłudze uwierzytelniania wieloskładnikowego w organizacji (zapraszanie).
 
-### <a name="how-can-i-use-delayed-invitations"></a>Jak używać opóźnione zaproszenia?
-Organizacja chcieć dodają użytkowników we współpracy B2B, udostępnić je do aplikacji, zgodnie z potrzebami, a następnie Wyślij zaproszenia. Zaproszenie współpracy B2B interfejs API umożliwia dostosowywanie przepływu pracy przy dołączaniu.
+### <a name="how-can-i-use-delayed-invitations"></a>Jak mogę używać opóźnionych zaproszeń?
+Organizacja może chcieć dodać użytkowników współpracy B2B, udostępnić aplikacje w razie potrzeby, a następnie wysłać zaproszenia. Możesz użyć interfejsu API zaproszenia do współpracy B2B, aby dostosować przepływ pracy do dołączania.
 
-### <a name="can-i-make-guest-users-visible-in-the-exchange-global-address-list"></a>Czy mogę utworzyć użytkowników-gości widoczne w globalnej listy adresowej Exchange?
-Tak. Gość obiekty nie są widoczne w Twojej organizacji globalnej liście adresowej (GAL) domyślnie, ale można użyć programu PowerShell usługi Azure Active Directory, aby stały się widoczne. Zobacz [mogę sprawdzić, że obiekty gościa widoczna na globalnej liście adresowej?](https://docs.microsoft.com/office365/admin/create-groups/manage-guest-access-in-groups#can-i-make-guest-objects-visible-in-the-global-address-list)
+### <a name="can-i-make-guest-users-visible-in-the-exchange-global-address-list"></a>Czy można sprawić, aby użytkownicy-Goście widoczni na globalnej liście adresów programu Exchange?
+Tak. Obiekty gościa nie są domyślnie widoczne na globalnej liście adresowej organizacji, ale można użyć programu Azure Active Directory PowerShell, aby je wyświetlić. Zobacz [, czy obiekty gościa są widoczne na globalnej liście adresów?](https://docs.microsoft.com/office365/admin/create-groups/manage-guest-access-in-groups#can-i-make-guest-objects-visible-in-the-global-address-list)
 
-### <a name="can-i-make-a-guest-user-a-limited-administrator"></a>Można utworzyć użytkownika-gościa ograniczony administrator?
-Naturalnie. Aby uzyskać więcej informacji, zobacz [dodawania użytkowników-gości do roli](add-guest-to-role.md).
+### <a name="can-i-make-a-guest-user-a-limited-administrator"></a>Czy mogę utworzyć użytkownika-gościa z ograniczonym administratorem?
+Naturalnie. Aby uzyskać więcej informacji, zobacz [Dodawanie użytkowników-Gości do roli](add-guest-to-role.md).
 
-### <a name="does-azure-ad-b2b-collaboration-allow-b2b-users-to-access-the-azure-portal"></a>Współpraca B2B w usłudze Azure AD pozwala użytkownikom B2B dostępu witryny Azure portal?
-Chyba że użytkownik przypisany do roli administratora ograniczone, użytkowników we współpracy B2B nie wymagają dostępu do witryny Azure portal. Jednak użytkowników we współpracy B2B, którzy mają przypisaną rolę ograniczony administrator może uzyskać dostęp do portalu. Ponadto jeśli użytkownika gościa, który nie jest przypisany jeden z tych ról Administrator uzyskuje dostęp do portalu, użytkownik może być mogli korzystać z niektórych części środowiska. Rola użytkownika gościa ma niektóre uprawnienia w katalogu.
+### <a name="does-azure-ad-b2b-collaboration-allow-b2b-users-to-access-the-azure-portal"></a>Czy współpraca B2B w usłudze Azure AD umożliwia użytkownikom B2B dostęp do Azure Portal?
+Jeśli użytkownik nie ma przypisanej roli administratora z ograniczonym dostępem, użytkownicy współpracy B2B nie będą potrzebowali dostępu do Azure Portal. Jednak użytkownicy współpracy B2B, którzy mają przypisaną rolę ograniczonego administratora, mogą uzyskać dostęp do portalu. Ponadto, jeśli użytkownik-Gość, który nie ma przypisanej jednej z tych ról administratora, uzyskuje dostęp do portalu, może uzyskać dostęp do niektórych części tego środowiska. Rola użytkownika-Gość ma pewne uprawnienia w katalogu.
 
-### <a name="can-i-block-access-to-the-azure-portal-for-guest-users"></a>Czy można zablokować dostęp do witryny Azure portal dla użytkowników-gości?
-Tak! Po skonfigurowaniu tych zasad, należy zachować ostrożność uniknąć przypadkowego blokowanie dostępu do członków i administratorów.
-Aby zablokować dostęp użytkownika-gościa do [witryny Azure portal](https://portal.azure.com), użyj zasad dostępu warunkowego w interfejsie API modelu klasycznym wdrożeniu platformy Windows Azure:
-1. Modyfikowanie **wszyscy użytkownicy** grupy tak, aby zawierała tylko elementy członkowskie.
-   ![Zrzut ekranu przedstawiający grupa Wszyscy użytkownicy, których UserType nie jest równy gościa](media/faq/modify-all-users-group.png)
-2. Utwórz grupę dynamiczną, która zawiera użytkowników-gości.
-   ![Zrzut ekranu przedstawiający nową grupę Wszyscy użytkownicy-goście](media/faq/group-with-guest-users.png)
-3. Skonfigurowanie zasad dostępu warunkowego do Blokuj użytkowników-gości z dostęp do portalu, jak pokazano w poniższym klipie wideo:
-  
-   > [!VIDEO https://channel9.msdn.com/Blogs/Azure/b2b-block-guest-user/Player] 
+### <a name="can-i-block-access-to-the-azure-portal-for-guest-users"></a>Czy mogę zablokować dostęp do Azure Portal dla użytkowników-Gości?
 
-### <a name="does-azure-ad-b2b-collaboration-support-multi-factor-authentication-and-consumer-email-accounts"></a>Współpraca B2B w usłudze Azure AD obsługuje uwierzytelnianie wieloskładnikowe i konta poczty e-mail odbiorcy?
-Tak. Oba konta e-mail uwierzytelniania i konsumentów usługi Multi-Factor Authentication są obsługiwane dla współpracy B2B usługi Azure AD.
+Tak! Można utworzyć zasady dostępu warunkowego, które blokują dostęp do Azure Portal wszystkim Gościom i użytkownikom zewnętrznym. Podczas konfigurowania tych zasad należy zachować ostrożność, aby zapobiec przypadkowemu zablokowaniu dostępu do członków i administratorów.
 
-### <a name="do-you-support-password-reset-for-azure-ad-b2b-collaboration-users"></a>Resetowanie haseł dla użytkowników współpracy B2B usługi Azure AD są obsługiwane?
-Jeśli dzierżawa usługi Azure AD jest katalogu macierzystego użytkownika, możesz [resetowania hasła użytkownika](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-users-reset-password-azure-portal) w witrynie Azure portal. Jednak bezpośrednio nie można zresetować hasła dla użytkownika gościa, który zaloguje się za pomocą konta, które jest zarządzane przez innego dostawcę tożsamości katalogu lub zewnętrznej usługi Azure AD. Tylko użytkownik-Gość lub administratora w katalogu macierzystym użytkownika może zresetować hasło. Poniżej przedstawiono kilka przykładów, jak działa dla użytkowników-gości Resetowanie hasła:
+1. Zaloguj się do [Azure Portal](https://portal.azure.com/) jako administrator zabezpieczeń lub administrator dostępu warunkowego.
+2. W witrynie Azure Portal wybierz pozycję **Azure Active Directory**. 
+3. W obszarze **Zarządzaj**wybierz pozycję **zabezpieczenia**.
+4. W obszarze **Ochrona**wybierz pozycję **dostęp warunkowy**. Wybierz pozycję **nowe zasady**.
+5. Na **nowej** stronie, w polu tekstowym **Nazwa** wprowadź nazwę zasad (na przykład "Blokuj Gościom dostęp do portalu").
+6. W obszarze **przypisania**wybierz pozycję **Użytkownicy i grupy**.
+7. Na karcie **Dołącz** wybierz **pozycję Użytkownicy i grupy**, a następnie wybierz pozycję **Wszyscy użytkownicy i Goście (wersja zapoznawcza)** .
+9. Wybierz pozycję **Done** (Gotowe).
+10. Na stronie **Nowy** w sekcji **przypisania** wybierz pozycję **aplikacje w chmurze lub akcje**.
+11. Na stronie **aplikacje lub akcje w chmurze** wybierz **pozycję Wybierz aplikacje**, a następnie wybierz **pozycję Wybierz**.
+12. Na stronie **Wybieranie** wybierz pozycję **Microsoft Azure Management**, a następnie wybierz pozycję **Wybierz**.
+13. Na stronie **aplikacje lub akcje w chmurze** wybierz pozycję **gotowe**.
+
+### <a name="does-azure-ad-b2b-collaboration-support-multi-factor-authentication-and-consumer-email-accounts"></a>Czy współpraca B2B w usłudze Azure AD obsługuje uwierzytelnianie wieloskładnikowe i konta konsumentów poczty e-mail?
+Tak. Usługa Azure AD B2B obsługuje funkcje uwierzytelniania wieloskładnikowego i konsumenckiej poczty e-mail.
+
+### <a name="do-you-support-password-reset-for-azure-ad-b2b-collaboration-users"></a>Czy jest obsługiwane resetowanie haseł dla użytkowników współpracy B2B usługi Azure AD?
+Jeśli Twoja dzierżawa usługi Azure AD jest katalogiem macierzystym dla użytkownika, możesz [zresetować hasło użytkownika](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-users-reset-password-azure-portal) z Azure Portal. Ale nie można bezpośrednio zresetować hasła dla użytkownika-gościa, który loguje się przy użyciu konta, które jest zarządzane przez innego katalogu usługi Azure AD lub zewnętrzny dostawca tożsamości. Hasło może zresetować tylko użytkownik-Gość lub administrator w katalogu macierzystym użytkownika. Poniżej przedstawiono kilka przykładów działania resetowania haseł dla użytkowników-Gości:
  
-* Użytkowników-gości, którzy Zaloguj się przy użyciu konta Microsoft (na przykład guestuser@live.com) mogą resetować swoje hasła przy użyciu konta Microsoft, Samoobsługowe resetowanie haseł (SSPR). Zobacz [jak zresetować hasło do konta Microsoft](https://support.microsoft.com/help/4026971/microsoft-account-how-to-reset-your-password).
-* Użytkowników-gości, którzy zarejestrują się przy użyciu konta Google lub innego zewnętrznego dostawcy tożsamości mogą resetować swoje hasła przy użyciu metody funkcji samoobsługowego resetowania HASEŁ jego dostawcy tożsamości. Na przykład gościa za pomocą konta Google guestuser@gmail.com mogą zresetować swoje hasło, postępując zgodnie z instrukcjami wyświetlanymi w [zmiany lub resetowania hasła](https://support.google.com/accounts/answer/41078).
-* Jeśli dzierżawa tożsamości jest just-in-time (JIT) lub "wirusowego" dzierżawy (co oznacza, że jest oddzielnym niezarządzanej dzierżawy platformy Azure), tylko użytkownik-Gość mogą zresetować swoje hasło. Czasami organizacji będzie [przejęcie zarządzania wirusowe dzierżaw](https://docs.microsoft.com/azure/active-directory/users-groups-roles/domains-admin-takeover) które są tworzone, gdy pracownicy korzystają ich służbowe adresy e-mail, aby się zarejestrować dla usług. Po organizacji ma utworzyć niezbędnej dzierżawy, tylko przez administratorów w organizacji można zresetować hasła użytkownika lub włączyć funkcji samoobsługowego resetowania HASEŁ. W razie potrzeby jako organizacji zapraszającej można usunąć konta gościa z katalogu i ponownie wysłać zaproszenia.
-* Jeśli w katalogu macierzystym użytkownika gościa jest dzierżawą usługi Azure AD, możesz zresetować hasła użytkownika. Na przykład możesz być może został utworzony przez użytkownika lub zsynchronizować użytkownika z usługi Active Directory w środowisku lokalnym i ustawić ich UserType do gościa. Ponieważ ten użytkownik jest umieszczone w katalogu, możesz zresetować swoje hasło w witrynie Azure portal.
+* Użytkownicy-Goście, którzy logują się za pomocą konto Microsoft (na przykład guestuser@live.com) mogą zresetować swoje hasła przy użyciu funkcji konto Microsoft samoobsługowego resetowania hasła (SSPR). Zobacz [jak zresetować hasło konto Microsoft](https://support.microsoft.com/help/4026971/microsoft-account-how-to-reset-your-password).
+* Użytkownicy-Goście, którzy logują się za pomocą konta Google lub innego dostawcy tożsamości zewnętrznych, mogą resetować swoje hasła przy użyciu metody SSPR dostawcy tożsamości. Na przykład użytkownik-Gość z kontem Google guestuser@gmail.com może zresetować swoje hasło, postępując zgodnie z instrukcjami w temacie [zmiana lub Resetowanie hasła](https://support.google.com/accounts/answer/41078).
+* Jeśli dzierżawa tożsamości jest dzierżawą just-in-Time (JIT) lub "wirusowym" (co oznacza, że jest to oddzielna, niezarządzana dzierżawa platformy Azure), tylko użytkownik-Gość może zresetować swoje hasło. Czasami organizacja zajmie się [zarządzaniem wirusami](https://docs.microsoft.com/azure/active-directory/users-groups-roles/domains-admin-takeover) , które są tworzone, gdy pracownicy używają służbowych adresów e-mail do rejestracji w usłudze. Gdy organizacja zajmie się wirusową dzierżawą, tylko administrator w tej organizacji może zresetować hasło użytkownika lub włączyć SSPR. Jeśli to konieczne, jako zapraszana organizacja możesz usunąć konto użytkownika-gościa z katalogu i ponownie wysłać zaproszenie.
+* Jeśli katalog macierzysty użytkownika gościa jest dzierżawą usługi Azure AD, możesz zresetować hasło użytkownika. Można na przykład utworzyć użytkownika lub zsynchronizować użytkownika z lokalnej Active Directory i ustawić dla nich wartość UserType na gość. Ponieważ ten użytkownik znajduje się w katalogu, możesz zresetować swoje hasło z Azure Portal.
 
-### <a name="does-microsoft-dynamics-365-provide-online-support-for-azure-ad-b2b-collaboration"></a>Microsoft Dynamics 365 oferuje pomocy online do współpracy B2B usługi Azure AD?
-Tak, Dynamics 365 (online) obsługuje współpracy B2B usługi Azure AD. Aby uzyskać więcej informacji, zobacz artykuł Dynamics 365 [zaprosić użytkowników przy użyciu funkcji współpracy B2B usługi Azure AD](https://docs.microsoft.com/dynamics365/customer-engagement/admin/invite-users-azure-active-directory-b2b-collaboration).
+### <a name="does-microsoft-dynamics-365-provide-online-support-for-azure-ad-b2b-collaboration"></a>Czy firma Microsoft Dynamics 365 zapewnia pomoc techniczną online dla współpracy B2B usługi Azure AD?
+Tak, Dynamics 365 (online) obsługuje funkcję współpracy B2B usługi Azure AD. Aby uzyskać więcej informacji, zobacz artykuł Dynamics 365 [Zapraszanie użytkowników za pomocą funkcji współpracy B2B usługi Azure AD](https://docs.microsoft.com/dynamics365/customer-engagement/admin/invite-users-azure-active-directory-b2b-collaboration).
 
-### <a name="what-is-the-lifetime-of-an-initial-password-for-a-newly-created-b2b-collaboration-user"></a>Co to jest okres istnienia początkowe hasło dla nowo utworzonego użytkownika współpracy B2B?
-Usługa Azure AD ma stały zestaw znaków, siły hasła i konta wymagania blokady, które stosuje się jednakowo do wszystkich usługi Azure AD w chmurze kont użytkowników. Konta użytkowników w chmurze są kontami, które nie są Sfederowane z użyciem innego dostawcy tożsamości, takich jak 
+### <a name="what-is-the-lifetime-of-an-initial-password-for-a-newly-created-b2b-collaboration-user"></a>Jaki jest okres istnienia początkowego hasła dla nowo utworzonego użytkownika współpracy B2B?
+Usługa Azure AD ma stały zestaw znaków, siłę hasła i wymagania dotyczące blokady konta, które są stosowane jednocześnie do wszystkich kont użytkowników w chmurze usługi Azure AD. Konta użytkowników w chmurze to konta, które nie są federacyjne przy użyciu innego dostawcy tożsamości, takie jak 
 * Konto Microsoft
 * Facebook
-* Active Directory Federation Services
-* Innej dzierżawy w chmurze (na potrzeby współpracy B2B)
+* Usługi Active Directory Federation Services
+* Inna dzierżawa w chmurze (na potrzeby współpracy B2B)
 
-W przypadku kont federacyjnych zasady haseł zależy od zasad, które są stosowane w dzierżawy w środowisku lokalnym i ustawienia konta Microsoft użytkownika.
+W przypadku kont federacyjnych zasady haseł są zależne od zasad, które są stosowane w lokalnej dzierżawie i ustawieniach konto Microsoft użytkownika.
 
-### <a name="an-organization-might-want-to-have-different-experiences-in-their-applications-for-tenant-users-and-guest-users-is-there-standard-guidance-for-this-is-the-presence-of-the-identity-provider-claim-the-correct-model-to-use"></a>Organizacja może być wskazane różnych doświadczeń w swoich aplikacjach dla użytkowników dzierżawy i użytkowników-gości. Czy istnieje standardowa wskazówki dotyczące to? Jest obecność dostawcy tożsamości oświadczeń poprawny model używany?
-Użytkownik-Gość można użyć dowolnego dostawcy tożsamości do uwierzytelniania. Aby uzyskać więcej informacji, zobacz [właściwości użytkownika współpracy B2B](user-properties.md). Użyj **UserType** właściwości w celu określenia środowisko użytkownika. **UserType** oświadczenia nie jest obecnie uwzględnionym w tokenie. Aplikacje powinny używać interfejsu API programu Graph do wysyłania zapytań o katalog dla użytkownika i UserType.
+### <a name="an-organization-might-want-to-have-different-experiences-in-their-applications-for-tenant-users-and-guest-users-is-there-standard-guidance-for-this-is-the-presence-of-the-identity-provider-claim-the-correct-model-to-use"></a>Organizacja może chcieć mieć różne środowiska w swoich aplikacjach dla użytkowników dzierżawy i użytkowników-Gości. Czy istnieją standardowe wskazówki dotyczące tego? Czy obecność dostawcy tożsamości może zatwierdzić właściwy model do użycia?
+Użytkownik-gość może użyć dowolnego dostawcy tożsamości w celu uwierzytelnienia. Aby uzyskać więcej informacji, zobacz [właściwości użytkownika współpracy B2B](user-properties.md). Użyj właściwości **UserType** , aby określić środowisko użytkownika. W tokenie nie znajduje się obecnie oświadczenia **UserType** . Aplikacje powinny używać interfejs API programu Graph do wysyłania zapytań do katalogu dla użytkownika oraz do uzyskiwania elementu UserType.
 
-### <a name="where-can-i-find-a-b2b-collaboration-community-to-share-solutions-and-to-submit-ideas"></a>Gdzie mogę znaleźć udostępnianie rozwiązań i przesyłaj pomysły społeczność współpracy B2B?
-Stale słuchamy opinii, aby poprawić współpracę B2B. Udostępnij użytkownikowi scenariuszy, najlepsze rozwiązania i co Ci się podoba współpracy B2B usługi Azure AD. Dołącz do dyskusji w [społeczności technicznej firmy Microsoft](https://techcommunity.microsoft.com/t5/Azure-Active-Directory-B2B/bd-p/AzureAD_B2b).
+### <a name="where-can-i-find-a-b2b-collaboration-community-to-share-solutions-and-to-submit-ideas"></a>Gdzie mogę znaleźć społeczność współpracy B2B do udostępniania rozwiązań i przesyłania pomysłów?
+Nieustannie nawiązujemy nam nasłuchiwanie opinii, aby poprawić współpracę B2B. Podziel się scenariuszami użytkownika, najlepszymi rozwiązaniami i zapoznaj się z informacjami o współpracy B2B w usłudze Azure AD. Dołącz do dyskusji w [społeczności technicznej firmy Microsoft](https://techcommunity.microsoft.com/t5/Azure-Active-Directory-B2B/bd-p/AzureAD_B2b).
  
-Zachęcamy także do przesyłania Twoje pomysły i głosuj na przyszłych funkcji w [pomysły współpracy B2B](https://techcommunity.microsoft.com/t5/Azure-Active-Directory-B2B-Ideas/idb-p/AzureAD_B2B_Ideas).
+Zapraszamy również Cię do przesyłania swoich pomysłów i głosu dla przyszłych funkcji w [pomysłach współpracy B2B](https://techcommunity.microsoft.com/t5/Azure-Active-Directory-B2B-Ideas/idb-p/AzureAD_B2B_Ideas).
 
-### <a name="can-we-send-an-invitation-that-is-automatically-redeemed-so-that-the-user-is-just-ready-to-go-or-does-the-user-always-have-to-click-through-to-the-redemption-url"></a>Tak, aby użytkownik po prostu "gotowe" możemy wysłać zaproszenie, który jest automatycznie zrealizowany? Lub użytkownik zawsze należy kliknąć na adres URL realizacji?
-Może zapraszać innych użytkowników w organizacji partnera przy użyciu interfejsu użytkownika, skryptów programu PowerShell lub interfejsów API. Następnie możesz wysłać użytkownik-Gość bezpośredni link do udostępnionej aplikacji. W większości przypadków jest już trzeba otworzyć wiadomości e-mail z zaproszeniem i kliknij adres URL realizacji. Zobacz [realizacja zaproszenia współpracy B2B usługi Azure Active Directory](redemption-experience.md).
+### <a name="can-we-send-an-invitation-that-is-automatically-redeemed-so-that-the-user-is-just-ready-to-go-or-does-the-user-always-have-to-click-through-to-the-redemption-url"></a>Czy można wysłać zaproszenie, które jest automatycznie zrealizowane, aby użytkownik miał po prostu "gotowe do użycia"? Lub czy użytkownik zawsze musi klikać w adresie URL wykupu?
+Możesz zapraszać innych użytkowników w organizacji partnerskiej za pomocą interfejsu użytkownika, skryptów programu PowerShell lub interfejsów API. Następnie można wysłać użytkownikowi gość bezpośredni link do udostępnionej aplikacji. W większości przypadków nie trzeba już otwierać zaproszenia e-mail i klikać adres URL realizacji. Zobacz [Azure Active Directory realizacji zaproszeń do współpracy B2B](redemption-experience.md).
 
-### <a name="how-does-b2b-collaboration-work-when-the-invited-partner-is-using-federation-to-add-their-own-on-premises-authentication"></a>Współpraca B2B działanie partnerów zaproszonych korzysta federacyjnych można dodać własny mechanizm uwierzytelniania w środowisku lokalnym?
-Jeśli partner ma dzierżawę usługi Azure AD, sfederowaną infrastruktury uwierzytelniania w środowisku lokalnym, lokalne logowanie jednokrotne (SSO) automatycznie uzyskuje się. Jeśli partner nie ma dzierżawę usługi Azure AD, zostanie utworzone konto usługi Azure AD dla nowych użytkowników. 
+### <a name="how-does-b2b-collaboration-work-when-the-invited-partner-is-using-federation-to-add-their-own-on-premises-authentication"></a>Jak działa współpraca B2B, gdy zaproszony partner korzysta z Federacji, aby dodać własne uwierzytelnianie lokalne?
+Jeśli partner ma dzierżawcę usługi Azure AD, który jest federacyjny dla lokalnej infrastruktury uwierzytelniania, zostanie automatycznie zrealizowane lokalne Logowanie jednokrotne. Jeśli partner nie ma dzierżawy usługi Azure AD, tworzone jest konto usługi Azure AD dla nowych użytkowników. 
 
-### <a name="i-thought-azure-ad-b2b-didnt-accept-gmailcom-and-outlookcom-email-addresses-and-that-b2c-was-used-for-those-kinds-of-accounts"></a>Po próbie B2B usługi Azure AD nie zaakceptował gmail.com i outlook.com adresy e-mail i że B2C został użyty podczas tych rodzajów kont?
-Zostaną usunięte z różnicami B2B i firma klient (B2C) współpracy, zgodnie z którą tożsamości są obsługiwane. Tożsamość używana jest powód, dla wybór między używaniem B2B przy użyciu usługi B2C. Aby dowiedzieć się, jak wybranie opcji usługi współpracy, zobacz [współpracy porównania B2B i B2C w usłudze Azure Active Directory](compare-with-b2c.md).
+### <a name="i-thought-azure-ad-b2b-didnt-accept-gmailcom-and-outlookcom-email-addresses-and-that-b2c-was-used-for-those-kinds-of-accounts"></a>Uważam, że usługa Azure AD B2B nie akceptuje adresów e-mail gmail.com i outlook.com, a B2C została użyta dla tych rodzajów kont?
+Usuwamy różnice między współpracy B2B i Business-to-Consumer (B2C) pod względem tego, które tożsamości są obsługiwane. Użyta tożsamość nie jest dobrym powodem do wyboru między korzystaniem z usługi B2B lub B2C. Aby uzyskać informacje na temat wybierania opcji współpracy, zobacz [porównanie współpracy B2B i B2C w Azure Active Directory](compare-with-b2c.md).
 
-### <a name="what-applications-and-services-support-azure-b2b-guest-users"></a>Jakie aplikacje i usługi obsługują użytkowników-gości B2B w usłudze Azure?
-Wszystkimi aplikacjami platformy Azure zintegrowanych z usługą AD może obsługiwać użytkowników-gości B2B w usłudze Azure, ale punkt końcowy skonfigurowany jako dzierżawca musi zostać użyty do uwierzytelniania użytkowników-gości. Być może trzeba będzie również [Dostosowywanie oświadczeń](claims-mapping.md) w tokenie SAML, wydawanego po użytkownik-Gość przeprowadza uwierzytelnianie do aplikacji. 
+### <a name="what-applications-and-services-support-azure-b2b-guest-users"></a>Jakie aplikacje i usługi obsługują użytkowników systemu Azure B2B?
+Wszystkie aplikacje zintegrowane z usługą Azure AD mogą obsługiwać użytkowników Gości systemu Azure B2B, ale muszą używać punktu końcowego skonfigurowanego jako dzierżawca do uwierzytelniania użytkowników-Gości. Może być również konieczne [dostosowanie oświadczeń](claims-mapping.md) w tokenie SAML, które są wydawane, gdy użytkownik-Gość uwierzytelnia się w aplikacji. 
 
-### <a name="can-we-force-multi-factor-authentication-for-b2b-guest-users-if-our-partners-dont-have-multi-factor-authentication"></a>Nasi partnerzy braku uwierzytelniania wieloskładnikowego możemy wymusić uwierzytelnianie wieloskładnikowe dla użytkowników-gości B2B?
+### <a name="can-we-force-multi-factor-authentication-for-b2b-guest-users-if-our-partners-dont-have-multi-factor-authentication"></a>Czy firma Microsoft może wymusić uwierzytelnianie wieloskładnikowe dla użytkowników Gości B2B, jeśli partnerzy nie mają uwierzytelniania wieloskładnikowego?
 Tak. Aby uzyskać więcej informacji, zobacz [dostęp warunkowy dla użytkowników współpracy B2B](conditional-access.md).
 
-### <a name="in-sharepoint-you-can-define-an-allow-or-deny-list-for-external-users-can-we-do-this-in-azure"></a>W programie SharePoint można zdefiniować listę "Zezwalaj" lub "odmowa" dla użytkowników zewnętrznych. Możemy to zrobić na platformie Azure?
-Tak. Platforma Azure obsługuje współpracy B2B usługi AD list zezwalania i odmowy dla. 
+### <a name="in-sharepoint-you-can-define-an-allow-or-deny-list-for-external-users-can-we-do-this-in-azure"></a>W programie SharePoint można zdefiniować listę "Zezwalaj" lub "Odmów" dla użytkowników zewnętrznych. Czy możemy to zrobić na platformie Azure?
+Tak. Współpraca B2B w usłudze Azure AD obsługuje listy dozwolonych list i Odmów. 
 
-### <a name="what-licenses-do-we-need-to-use-azure-ad-b2b"></a>Jakie licencje musimy użyć usługi Azure AD B2B?
-Aby uzyskać informacje o licencjach, aby Twoja organizacja musi korzystać z usługi Azure AD B2B, zobacz [współpracy B2B usługi Azure Active Directory, wskazówki dotyczące licencjonowania](licensing-guidance.md).
+### <a name="what-licenses-do-we-need-to-use-azure-ad-b2b"></a>Jakich licencji potrzebujemy do korzystania z usługi Azure AD B2B?
+Aby uzyskać informacje o licencjach wymaganych przez organizację do korzystania z usługi Azure AD B2B, zobacz [Azure Active Directory wskazówki dotyczące licencjonowania współpracy B2B](licensing-guidance.md).
 
-### <a name="next-steps"></a>Kolejne kroki
+### <a name="next-steps"></a>Następne kroki
 
 - [Czym jest współpraca B2B w usłudze Azure AD?](what-is-b2b.md)
 

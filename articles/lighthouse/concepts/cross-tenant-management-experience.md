@@ -4,15 +4,15 @@ description: Zarządzanie zasobami delegowanymi przez platformę Azure umożliwi
 author: JnHs
 ms.service: lighthouse
 ms.author: jenhayes
-ms.date: 10/24/2019
+ms.date: 11/7/2019
 ms.topic: overview
 manager: carmonm
-ms.openlocfilehash: eb4ec10755b7ca2227623ba0842d2b1175635594
-ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
+ms.openlocfilehash: 182970cc39d200c37264a93d5e1b70c8839e5ef7
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72901811"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73825821"
 ---
 # <a name="cross-tenant-management-experiences"></a>Środowiska zarządzania wieloma dzierżawami
 
@@ -46,6 +46,11 @@ Udostępniamy również interfejsy API do wykonywania zadań zarządzania zasoba
 ## <a name="enhanced-services-and-scenarios"></a>Ulepszone usługi i scenariusze
 
 Większość zadań i usług można wykonać w odniesieniu do zasobów delegowanych między zarządzanymi dzierżawcami. Poniżej przedstawiono niektóre kluczowe scenariusze, w których zarządzanie wieloma dzierżawcami może być skuteczne.
+
+[Usługa Azure ARC dla serwerów (wersja zapoznawcza)](https://docs.microsoft.com/azure/azure-arc/servers/overview):
+
+- [Łączenie maszyn z systemem Windows Server lub Linux poza platformą Azure](https://docs.microsoft.com/azure/azure-arc/servers/quickstart-onboard-portal) z delegowanymi subskrypcjami i/lub grupami zasobów na platformie Azure
+- Zarządzanie połączonymi maszynami przy użyciu konstrukcji platformy Azure, takich jak Azure Policy i tagowanie
 
 [Azure Automation](https://docs.microsoft.com/azure/automation/):
 

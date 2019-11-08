@@ -1,5 +1,5 @@
 ---
-title: Uczenie modeli uczenia maszynowego za pomocą scikit — uczenie się
+title: Uczenie scikit — uczenie modeli uczenia maszynowego
 titleSuffix: Azure Machine Learning
 description: Dowiedz się, jak uruchamiać scikite skrypty szkoleniowe na skalę przedsiębiorstwa przy użyciu klasy skryptu sklearn szacowania firmy Azure Machine Learning. Przykładowe skrypty klasyfikują obrazy kwiatów z przesłoną w celu utworzenia modelu uczenia maszynowego na podstawie zestawu danych Iris scikit.
 services: machine-learning
@@ -10,12 +10,12 @@ ms.author: maxluk
 author: maxluk
 ms.date: 08/02/2019
 ms.custom: seodec18
-ms.openlocfilehash: ed93eff6c137e125c2bc1707de441dc9971d6f3f
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: ea466486509c4b5dadc48ef830c9f05ec42ab5b3
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73584461"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73814856"
 ---
 # <a name="build-scikit-learn-models-at-scale-with-azure-machine-learning"></a>Kompiluj scikit — Poznaj modele na dużą skalę dzięki Azure Machine Learning
 [!INCLUDE [applies-to-skus](../../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -89,7 +89,7 @@ exp = Experiment(workspace=ws, name='sklearn-iris')
 
 W tym samouczku skrypt szkoleniowy **train_iris. PR** został już udostępniony. W tym celu należy mieć możliwość wykonania dowolnego niestandardowego skryptu szkoleniowego i uruchomienia go z platformą Azure ML bez konieczności modyfikowania kodu.
 
-Aby korzystać z funkcji śledzenia i metryk platformy Azure ML, Dodaj niewielką ilość kodu platformy Azure ML w skrypcie szkoleniowym.  Skrypt szkoleniowy **train_iris. PR** pokazuje, jak rejestrować pewne metryki do przebiegu w usłudze Azure ml przy użyciu obiektu `Run` w skrypcie.
+Aby korzystać z funkcji śledzenia i metryk platformy Azure ML, Dodaj niewielką ilość kodu platformy Azure ML w skrypcie szkoleniowym.  Skrypt szkoleniowy **train_iris. PR** pokazuje, w jaki sposób rejestrować niektóre metryki w ramach uruchomienia usługi Azure ml przy użyciu obiektu `Run` w skrypcie.
 
 Podany skrypt szkoleniowy używa przykładowych danych z funkcji `iris = datasets.load_iris()`.  W przypadku własnych danych może być konieczne wykonanie kroków takich jak [przekazywanie zestawu danych i skryptów](how-to-train-keras.md#data-upload) w celu udostępnienia danych podczas szkoleń.
 

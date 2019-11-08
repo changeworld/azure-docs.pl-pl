@@ -10,12 +10,12 @@ ms.subservice: custom-vision
 ms.topic: conceptual
 ms.date: 02/19/2019
 ms.author: anroth
-ms.openlocfilehash: 5c583270428a459f500ae0e220592805fd1bf454
-ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
+ms.openlocfilehash: 0a2b48a6c046150f6e685ecda0c0d765342e0194
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73718893"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73818951"
 ---
 # <a name="how-to-move-your-limited-trial-project-to-azure"></a>Jak przenieść projekt ograniczonej wersji próbnej na platformę Azure
 
@@ -46,7 +46,7 @@ Z pojedynczym zasobem można skojarzyć wiele projektów. Dostępne są bardziej
 
 ## <a name="find-your-limited-trial-project-information"></a>Znajdź ograniczone informacje o projekcie wersji próbnej
 
-Aby przenieść projekt, musisz mieć _Identyfikator projektu_ i _klucz szkoleniowy_ dla projektu, który próbujesz zmigrować. Jeśli nie masz tych informacji, odwiedź stronę [https://limitedtrial.customvision.ai/projects](https://limitedtrial.customvision.ai/projects) , aby uzyskać identyfikator i klucz dla każdego projektu. 
+Aby przenieść projekt, musisz mieć _Identyfikator projektu_ i _klucz szkoleniowy_ dla projektu, który próbujesz zmigrować. Jeśli nie masz tych informacji, odwiedź stronę [https://www.customvision.ai/projects](https://www.customvision.ai/projects) , aby uzyskać identyfikator i klucz dla każdego projektu. 
 
 ## <a name="use-the-python-sample-code-to-copy-your-project-to-azure"></a>Używanie przykładowego kodu w języku Python do kopiowania projektu na platformę Azure
 

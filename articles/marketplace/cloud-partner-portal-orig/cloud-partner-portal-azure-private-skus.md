@@ -4,15 +4,16 @@ description: Jak używać prywatnych jednostek SKU do zarządzania dostępności
 services: Azure, Marketplace, Cloud Partner Portal,
 author: dan-wesley
 ms.service: marketplace
+ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 08/15/2019
 ms.author: pabutler
-ms.openlocfilehash: 940b50cf4a04abacd4d7be2104dd97fb8b3db736
-ms.sourcegitcommit: 7c5a2a3068e5330b77f3c6738d6de1e03d3c3b7d
+ms.openlocfilehash: eb6eac5eafaeea239bfaf9cf2aface3db659dd57
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70883116"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73818831"
 ---
 <a name="private-skus-and-plans"></a>Prywatne jednostki SKU i plany
 ============
@@ -98,7 +99,7 @@ Jeśli używasz interfejsu API i nie chcesz zachować pliku CSV, możesz zarząd
 
 ###  <a name="managing-subscriptions-with-the-api"></a>Zarządzanie subskrypcjami przy użyciu interfejsu API
 
-Za pomocą interfejsu API można przekazać wolumin CSV lub zarządzać odbiorcami bezpośrednio (bez użycia woluminu CSV). Ogólnie rzecz biorąc wystarczy pobrać ofertę, zaktualizować `restrictedAudience` obiekt, a następnie przesłać te zmiany z powrotem do oferty w celu dodania lub usunięcia członków grupy odbiorców.
+Za pomocą interfejsu API można przekazać wolumin CSV lub zarządzać odbiorcami bezpośrednio (bez użycia woluminu CSV). Ogólnie rzecz biorąc wystarczy pobrać ofertę, zaktualizować obiekt `restrictedAudience`, a następnie przesłać te zmiany z powrotem do oferty w celu dodania lub usunięcia członków grupy odbiorców.
 
 Oto jak programowo zaktualizować listę odbiorców:
 
@@ -134,9 +135,9 @@ Oto jak programowo zaktualizować listę odbiorców:
 
     b. W razie konieczności Dodaj lub Usuń subskrypcje w pobranym pliku CSV.
 
-    c. Przekaż zaktualizowany plik CSV do lokalizacji, takiej jak [Azure Blob Storage](../../storage/blobs/storage-blobs-overview.md) lub [OneDrive](https://onedrive.live.com), i Utwórz link tylko do odczytu do pliku. Będzie to Twój nowy *adresie sasurl*.
+    d. Przekaż zaktualizowany plik CSV do lokalizacji, takiej jak [Azure Blob Storage](../../storage/blobs/storage-blobs-overview.md) lub [OneDrive](https://onedrive.live.com), i Utwórz link tylko do odczytu do pliku. Będzie to Twój nowy *adresie sasurl*.
 
-    d. Zaktualizuj klucz przy użyciu nowego *adresie sasurl.* `restrictedAudience.uploadedCsvUri`
+    d. Zaktualizuj klucz `restrictedAudience.uploadedCsvUri` przy użyciu nowego *adresie sasurl*.
 
     **Jeśli ręcznie wprowadzisz oryginalną listę subskrypcji dla swojej prywatnej oferty z portal Cloud Partner:**
 
@@ -156,7 +157,7 @@ Oto jak programowo zaktualizować listę odbiorców:
         ]}
     ```
 
-    a. Dla każdego obiektu odbiorcy z ograniczeniami Dodaj lub Usuń wpisy na `restrictedAudience.manualEntries` liście zgodnie z wymaganiami.
+    a. Dla każdego obiektu odbiorcy z ograniczeniami Dodaj lub Usuń wpisy z listy `restrictedAudience.manualEntries` w razie potrzeby.
 
 4. Po zakończeniu aktualizacji wszystkich obiektów *restrictedAudience* dla każdej jednostki SKU prywatnej oferty należy [zaktualizować ofertę](cloud-partner-portal-api-creating-offer.md):
 

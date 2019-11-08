@@ -1,5 +1,5 @@
 ---
-title: Wprowadzenie z tabelami czasowymi w Azure SQL Database
+title: Wprowadzenie z tabelami czasowymi
 description: Dowiedz się, jak rozpocząć korzystanie z tabel danych czasowych w Azure SQL Database.
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: bonova
 ms.author: bonova
 ms.reviewer: carlrab
 ms.date: 06/26/2019
-ms.openlocfilehash: 44a5589357301f979bb094579626e1c02e582846
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 98fd2658f3fbcb0e7e29114d29f8dc6ed39eedf2
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73686984"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73820719"
 ---
 # <a name="getting-started-with-temporal-tables-in-azure-sql-database"></a>Wprowadzenie z tabelami czasowymi w Azure SQL Database
 
@@ -49,7 +49,7 @@ W SSDT wybierz szablon "dane czasowe (systemowo z systemem)" podczas dodawania n
 
 ![SSDTNewTable](./media/sql-database-temporal-tables/AzureTemporal3.png)
 
-Możesz również utworzyć tabelę danych czasowych, określając bezpośrednio instrukcje języka Transact-SQL, jak pokazano w poniższym przykładzie. Należy zauważyć, że obowiązkowe elementy każdej tabeli danych CZASowych to definicja okresu i klauzula SYSTEM_VERSIONING z odwołaniem do innej tabeli użytkownika, w której będą przechowywane historyczne wersje wierszy:
+Możesz również utworzyć tabelę danych czasowych, określając bezpośrednio instrukcje języka Transact-SQL, jak pokazano w poniższym przykładzie. Należy zauważyć, że obowiązkowe elementy każdej tabeli danych CZASowych to definicja okresu i klauzula SYSTEM_VERSIONING z odwołaniem do innej tabeli użytkownika, w której będą przechowywane wersje wierszy historycznych:
 
 ```
 CREATE TABLE WebsiteUserInfo 
@@ -120,7 +120,7 @@ Należy zauważyć, że zapytanie Update nie musi znać dokładnego czasu podcza
 ![TemporalArchitecture](./media/sql-database-temporal-tables/AzureTemporal5.png)
 
 ## <a name="step-3-perform-historical-data-analysis"></a>Krok 3. wykonywanie analizy danych historycznych
-Teraz, gdy jest włączone okresowe wersje systemu, analiza danych historycznych jest tylko jedną kwerendą od użytkownika. W tym artykule przedstawimy kilka przykładów dotyczących typowych scenariuszy analizy — aby poznać wszystkie szczegóły, zapoznaj się z różnymi opcjami wprowadzonymi za pomocą klauzuli [for SYSTEM_TIME](https://msdn.microsoft.com/library/dn935015.aspx#Anchor_3) .
+Teraz, gdy jest włączone okresowe wersje systemu, analiza danych historycznych jest tylko jedną kwerendą od użytkownika. W tym artykule przedstawimy kilka przykładów dotyczących typowych scenariuszy analizy — aby poznać wszystkie szczegóły, zapoznaj się z różnymi opcjami wprowadzonymi za pomocą klauzuli [FOR SYSTEM_TIME](https://msdn.microsoft.com/library/dn935015.aspx#Anchor_3) .
 
 Aby zobaczyć 10 najważniejszych użytkowników zamówionych przez liczbę odwiedzonych stron sieci Web w ciągu godziny temu, uruchom następujące zapytanie:
 

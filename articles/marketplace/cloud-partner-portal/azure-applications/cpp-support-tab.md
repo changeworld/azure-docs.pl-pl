@@ -1,44 +1,45 @@
 ---
 title: Konfigurowanie obsługi aplikacji platformy Azure | Portal Azure Marketplace
-description: Konfigurowanie aplikacji platformy Azure obsługi oferty w portalu Azure Marketplace.
+description: Skonfiguruj obsługę aplikacji platformy Azure na potrzeby oferty w witrynie Azure Marketplace.
 services: Azure, Marketplace, Cloud Partner Portal,
 author: dan-wesley
 ms.service: marketplace
+ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 04/23/2019
 ms.author: pabutler
-ms.openlocfilehash: 37c6a36afaad1e10d5075a207b35920531d6ace2
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: b6616f4caed3483af9e23c7d5d1326478213f6f0
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64943256"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73818184"
 ---
-# <a name="azure-application-support-tab"></a>Kartę Pomoc techniczna aplikacji platformy Azure
+# <a name="azure-application-support-tab"></a>Karta Obsługa aplikacji platformy Azure
 
-Aby zapewnić informacje o pomocy technicznej inżynierów i klientów, należy użyć kartę Pomoc techniczna.
+Skorzystaj z karty pomoc techniczna, aby dostarczyć informacje o inżynierii i pomocy technicznej.
  
-## <a name="identify-contacts-and-websites"></a>Identyfikowanie kontakty i witryn sieci Web
+## <a name="identify-contacts-and-websites"></a>Identyfikowanie kontaktów i witryn sieci Web
 
-Umożliwia następnym zrzucie ekranu jako wskazówki Podaj wymagane informacje. Wszystkie nazwy pól dołączany czerwoną gwiazdką (*), należy wykonać.
+Użyj następnego przechwytywania ekranu jako przewodnika, aby podać wymagane informacje. Wszystkie nazwy pól dołączone do czerwonej gwiazdki (*) muszą zostać wykonane.
 
-  ![Formularz pomocy technicznej w celu skorzystania z oferty](./media/azureapp-support-tab.png)
+  ![Formularz pomocy technicznej dla oferty](./media/azureapp-support-tab.png)
 
-1. W obszarze **kontakt techniczny**, podaj informacje dla następujących pól:
+1. W obszarze **kontakt inżynieryjny**podaj informacje o następujących polach:
 
-   - **Nazwa\***  — wprowadź nazwę kontakt techniczny aplikacji. Kontakt otrzyma komunikacji techniczne firmy Microsoft.
-   - **Adres e-mail\***  — wprowadź adres e-mail kontakt techniczny.
-   - **Telefon\***  — wprowadź numer telefonu kontakt techniczny.
+   - **Nazwa\*** — wprowadź nazwę kontaktu inżynierowego dla swojej aplikacji. Ten kontakt otrzyma wiadomość techniczną od firmy Microsoft.
+   - **\*e-mail** — wprowadź adres e-mail kontaktu inżynieryjnego.
+   - **\*telefonu** — wprowadź numer telefonu kontaktu inżynieryjnego.
   
-2. W obszarze **pomocy technicznej, skontaktuj się z pomocą**, podaj informacje dla następujących pól:
+2. W obszarze **kontakt z pomocą techniczną**podaj informacje dla następujących pól:
 
-   - **Nazwa\***  — wprowadź nazwę kontaktu, pomocy technicznej dla aplikacji. Kontakt będą otrzymywać informacji dotyczących pomocy technicznej firmy Microsoft.
-   - **Adres e-mail\***  — wprowadź adres e-mail kontaktu pomocy technicznej dla aplikacji.
-   - **Telefon\***  — wprowadź numer telefonu kontaktu pomocy technicznej.
+   - **Nazwa\*** — wprowadź nazwę kontaktu z pomocą techniczną dla aplikacji. Ten kontakt będzie otrzymywać informacje dotyczące pomocy technicznej od firmy Microsoft.
+   - **\*e-mail** — wprowadź adres e-mail osoby kontaktowej pomocy technicznej dla swojej aplikacji.
+   - **\*telefonu** — wprowadź numer telefonu kontaktu z pomocą techniczną.
  
-3. W obszarze **obsługuje adresy URL**, Podaj adresy URL odpowiedniej pomocy technicznej, które firma Microsoft będzie używać swoich klientów otwierania biletów pomocy technicznej. Te adresy URL będą publiczna platforma Azure albo chmura platformy Azure dla instytucji rządowych.
-4. Wybierz **Zapisz** po zakończeniu.
+3. W obszarze **adresy URL pomocy technicznej**podaj odpowiednie adresy URL pomocy technicznej, które firma Microsoft będzie używać, gdy klienci otworzą bilety pomocy technicznej. Te adresy URL będą dotyczyć publicznej platformy Azure lub chmury Azure Governmentej.
+4. Po zakończeniu wybierz pozycję **Zapisz** .
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 [Publikowanie oferty aplikacji platformy Azure](./cpp-publish-offer.md)

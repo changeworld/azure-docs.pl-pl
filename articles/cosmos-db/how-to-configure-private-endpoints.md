@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.author: thweiss
-ms.openlocfilehash: 6602a47a9d1d34b04f37c6b65a3c3f84cd60c845
-ms.sourcegitcommit: 018e3b40e212915ed7a77258ac2a8e3a660aaef8
-ms.translationtype: HT
+ms.openlocfilehash: 34b54459629560ba80e6a38d10edbab32ea44778
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73796082"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73820151"
 ---
 # <a name="configure-azure-private-link-for-an-azure-cosmos-account-preview"></a>Konfigurowanie prywatnego linku platformy Azure dla konta usługi Azure Cosmos (wersja zapoznawcza)
 
@@ -330,9 +330,9 @@ Po wdrożeniu szablonu prywatne adresy IP są zastrzeżone w podsieci. Reguła z
 
 ## <a name="configure-custom-dns"></a>Konfigurowanie niestandardowego systemu DNS
 
-W trakcie korzystania z wersji zapoznawczej linku prywatnego należy używać prywatnej usługi DNS w podsieci, w której został utworzony prywatny punkt końcowy. I skonfiguruj punkty końcowe tak, aby każdy prywatny adres IP był mapowany na wpis DNS (Sprawdź Właściwość "nazwy FQDN" w odpowiedzi pokazanej powyżej).
+Należy używać prywatnej usługi DNS w podsieci, w której został utworzony prywatny punkt końcowy. I skonfiguruj punkty końcowe tak, aby każdy prywatny adres IP był mapowany na wpis DNS (Sprawdź Właściwość "nazwy FQDN" w odpowiedzi pokazanej powyżej).
 
-Podczas tworzenia prywatnego punktu końcowego można zintegrować go z prywatną strefą DNS na platformie Azure. Jeśli zdecydujesz się nie zintegrować prywatnego punktu końcowego z prywatną strefą DNS na platformie Azure i zamiast tego użyć niestandardowego serwera DNS, musisz skonfigurować system DNS w celu dodania nowego rekordu DNS dla prywatnego adresu IP odpowiadającego nowemu regionowi.
+Podczas tworzenia prywatnego punktu końcowego można zintegrować go z prywatną strefą DNS na platformie Azure. Jeśli zdecydujesz się nie zintegrować prywatnego punktu końcowego z prywatną strefą DNS na platformie Azure i zamiast tego użyć niestandardowego serwera DNS, musisz skonfigurować system DNS do dodawania rekordów DNS dla wszystkich prywatnych adresów IP zarezerwowanych dla prywatnego punktu końcowego.
 
 ## <a name="firewall-configuration-with-private-link"></a>Konfiguracja zapory za pomocą linku prywatnego
 
@@ -374,19 +374,19 @@ Rekordy DNS w prywatnej strefie DNS nie są usuwane automatycznie po usunięciu 
 
 W przypadku korzystania z prywatnego linku do konta usługi Azure Cosmos stosowane są następujące ograniczenia:
 
+* Obsługa linków prywatnych dla kont usługi Azure Cosmos i sieci wirtualnych jest dostępna tylko w określonych regionach. Aby zapoznać się z listą obsługiwanych regionów, zobacz sekcję [dostępne regiony](../private-link/private-link-overview.md#availability) w artykule dotyczącym łącza prywatnego. **Aby można było utworzyć prywatny punkt końcowy, zarówno konto sieci wirtualnej, jak i usługa Azure Cosmos powinny znajdować się w obsługiwanych regionach**.
+
 * W przypadku używania linków prywatnych z kontem usługi Azure Cosmos przy użyciu połączenia trybu bezpośredniego można korzystać tylko z protokołu TCP. Protokół HTTP nie jest jeszcze obsługiwany
 
 * W przypadku korzystania z interfejsu API Azure Cosmos DB dla kont MongoDB prywatny punkt końcowy jest obsługiwany tylko dla kont na serwerze w wersji 3,6 (czyli kont korzystających z punktu końcowego w formacie `*.mongo.cosmos.azure.com`). Link prywatny nie jest obsługiwany w przypadku kont na serwerze w wersji 3,2 (czyli kontach korzystających z punktu końcowego w formacie `*.documents.azure.com`). Aby użyć linku prywatnego, należy przeprowadzić migrację starych kont do nowej wersji.
 
 * W przypadku korzystania z interfejsu API Azure Cosmos DB dla kont MongoDB z linkiem prywatnym nie można używać narzędzi takich jak Robo 3T, Studio 3T, Mongoose itd. Punkt końcowy może mieć obsługę linku prywatnego tylko wtedy, gdy jest określony parametr nazwa_aplikacji =<account name>. Na przykład: replicaSet = globaldb & nazwa_aplikacji = mydbaccountname. Ponieważ te narzędzia nie przekazują nazwy aplikacji w parametrach połączenia do usługi, dlatego nie można używać linku prywatnego. Można jednak nadal uzyskiwać dostęp do tych kont ze sterownikami zestawu SDK w wersji 3,6.
 
-* Obsługa linków prywatnych dla kont usługi Azure Cosmos i sieci wirtualnych jest dostępna tylko w określonych regionach. Aby zapoznać się z listą obsługiwanych regionów, zobacz sekcję [dostępne regiony](../private-link/private-link-overview.md#availability) w artykule dotyczącym łącza prywatnego. **Aby można było utworzyć prywatny punkt końcowy, zarówno konto sieci wirtualnej, jak i usługa Azure Cosmos powinny znajdować się w obsługiwanych regionach**.
-
 * Nie można przenieść ani usunąć sieci wirtualnej, jeśli zawiera ona link prywatny.
 
 * Nie można usunąć konta usługi Azure Cosmos, jeśli jest ono dołączone do prywatnego punktu końcowego.
 
-* Konta usługi Azure Cosmos nie można przełączyć w tryb failover do regionu, który nie jest zamapowany na wszystkie dołączone do niego prywatne punkty końcowe. Aby uzyskać więcej informacji, zobacz Dodawanie lub usuwanie regionów w poprzedniej sekcji.
+* Nie można przełączyć konta usługi Azure Cosmos do trybu failover w regionie, który nie jest zamapowany na wszystkie prywatne punkty końcowe dołączone do tego konta. Aby uzyskać więcej informacji, zobacz Dodawanie lub usuwanie regionów w poprzedniej sekcji.
 
 * Administratorowi sieci należy udzielić co najmniej uprawnienia "*/PrivateEndpointConnectionsApproval" w zakresie konta usługi Azure Cosmos przez administratora w celu utworzenia automatycznie zatwierdzonych prywatnych punktów końcowych.
 

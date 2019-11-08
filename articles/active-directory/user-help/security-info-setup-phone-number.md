@@ -1,5 +1,5 @@
 ---
-title: Skonfiguruj informacje zabezpieczające (wersja zapoznawcza), aby korzystać z połączeń telefonicznych — Azure Active Directory | Microsoft Docs
+title: Skonfiguruj informacje zabezpieczające (wersja zapoznawcza) dla połączeń telefonicznych — Azure AD
 description: Jak skonfigurować informacje zabezpieczające, aby zweryfikować Twoją tożsamość przy użyciu połączeń telefonicznych.
 services: active-directory
 author: eross-msft
@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.date: 02/13/2019
 ms.author: lizross
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b28330f8e81efbb496fb30a14e8ae10415ded27f
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.openlocfilehash: a5dc5ec06e60112e69a31d1ce4c69e698576609f
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73160745"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73803800"
 ---
 # <a name="set-up-security-info-preview-to-use-phone-calls"></a>Skonfiguruj informacje zabezpieczające (wersja zapoznawcza), aby korzystać z połączeń telefonicznych
 
@@ -90,7 +90,7 @@ Jeśli chcesz, aby wywołania telefoniczne były metodą domyślną używaną po
 
     ![Zmień link dla domyślnej metody logowania](media/security-info/securityinfo-myprofile-phonetext-defaultchange.png)
 
-2. Wybierz pozycję **telefon-call ( *_your_phone_number_* )** z listy rozwijanej dostępne metody, a następnie wybierz pozycję **Potwierdź**.
+2. Wybierz pozycję **telefon-połączenie ( *_your_phone_number_* )** z listy rozwijanej dostępne metody, a następnie wybierz pozycję **Potwierdź**.
 
     ![Wybierz metodę logowania domyślnego](media/security-info/securityinfo-myprofile-phonecall-changeddefault.png)
 

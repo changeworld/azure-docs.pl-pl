@@ -4,15 +4,16 @@ description: Skonfiguruj zarządzanie potencjalnymi klientami dla programu Marke
 services: Azure, Marketplace, commercial marketplace, Partner Center
 author: qianw211
 ms.service: marketplace
+ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 08/01/2019
 ms.author: evansma
-ms.openlocfilehash: 9470a593f5db564689a0b26601a201874c215aa2
-ms.sourcegitcommit: d3dced0ff3ba8e78d003060d9dafb56763184d69
+ms.openlocfilehash: 8d13e8c3aeabf6d3fdea80ffddbae47b80adc139
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69902093"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73812134"
 ---
 # <a name="configure-lead-management-in-marketo"></a>Konfigurowanie zarządzania potencjalnymi klientami w programie Marketo
 
@@ -22,16 +23,16 @@ W tym artykule opisano, jak skonfigurować system CRM dla programu Marketo, aby 
 
 1. Zaloguj się do programu Marketo.
 2. Wybierz pozycję **projekt Studio**.
-    ![Marketo Design Studio](./media/commercial-marketplace-lead-management-instructions-marketo/marketo-1.png)
+    ![projekt Market](./media/commercial-marketplace-lead-management-instructions-marketo/marketo-1.png)
 
 3.  Wybierz pozycję **nowy formularz**.
-    ![Nowy formularz dla programu Marketo](./media/commercial-marketplace-lead-management-instructions-marketo/marketo-2.png)
+    nowy formularz ![Market](./media/commercial-marketplace-lead-management-instructions-marketo/marketo-2.png)
 
 4.  Wypełnij wymagane pola w nowym formularzu, a następnie wybierz pozycję **Utwórz**.
-    ![Nowy formularz dla programu Marketo](./media/commercial-marketplace-lead-management-instructions-marketo/marketo-3.png)
+    ![Marketo Utwórz nowy formularz](./media/commercial-marketplace-lead-management-instructions-marketo/marketo-3.png)
 
 5.  W polu Szczegóły pola wybierz pozycję **Zakończ**.
-    ![Formularz zakończenia programu Marketo](./media/commercial-marketplace-lead-management-instructions-marketo/marketo-4.png)
+    formularz zakończenia ![Marketa](./media/commercial-marketplace-lead-management-instructions-marketo/marketo-4.png)
 
 6.  Zatwierdź i Zamknij.
 

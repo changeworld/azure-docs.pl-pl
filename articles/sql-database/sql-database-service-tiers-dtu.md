@@ -1,5 +1,5 @@
 ---
-title: 'Azure SQL Database warstwy usług — model zakupu oparty na jednostkach DTU '
+title: Warstwy usług — model zakupu oparty na jednostkach DTU
 description: Informacje o warstwach usług w modelu zakupu opartego na jednostkach DTU dla baz danych o pojedynczej i puli w celu zapewnienia rozmiarów zasobów obliczeniowych i magazynowych.
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: carlrab
 ms.date: 09/06/2019
-ms.openlocfilehash: 43f4f9e0d1e5f33dde32e5274dddf9d17776db21
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 6d4c9dd08f2d00bc12f041748cc78363c9abecbd
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73687302"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73822520"
 ---
 # <a name="service-tiers-in-the-dtu-based-purchase-model"></a>Warstwy usług w modelu zakupu opartego na jednostkach DTU
 

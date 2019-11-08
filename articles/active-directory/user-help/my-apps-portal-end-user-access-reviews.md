@@ -1,5 +1,5 @@
 ---
-title: Przeprowadź przegląd dostępu z portalu Moje aplikacje — Azure Active Directory | Microsoft Docs
+title: Przeprowadzanie przeglądu dostępu z portalu Moje aplikacje — Azure AD
 description: Dowiedz się, jak wyświetlać i zarządzać dostępem zabezpieczeń dla aplikacji i grup w organizacji.
 services: active-directory
 author: eross-msft
@@ -13,12 +13,12 @@ ms.author: lizross
 ms.reviewer: kasimpso
 ms.custom: user-help, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6681720fc7c0fe04c99bf7957be14865c663dd67
-ms.sourcegitcommit: 04ec7b5fa7a92a4eb72fca6c6cb617be35d30d0c
+ms.openlocfilehash: bf803027aac7c62ea500d1af104ae3234fadf8b5
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/22/2019
-ms.locfileid: "68383147"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73804040"
 ---
 # <a name="perform-an-access-review-from-the-my-apps-portal"></a>Przeprowadzanie przeglądu dostępu z poziomu portalu Moje aplikacje
 
@@ -40,7 +40,7 @@ Jeśli administrator udzielił Ci uprawnień do wykonywania własnych przegląd�
 
 1. Zaloguj się do konta służbowego.
 
-2. Otwórz przeglądarkę internetową i przejdź do https://myapps.microsoft.com lub Użyj linku dostarczonego przez organizację. Na przykład może nastąpić przekierowanie do dostosowanej strony organizacji, https://myapps.microsoft.com/contoso.com na przykład.
+2. Otwórz przeglądarkę internetową i przejdź do https://myapps.microsoft.comlub Użyj linku dostarczonego przez organizację. Na przykład może nastąpić przekierowanie do dostosowanej strony organizacji, takiej jak https://myapps.microsoft.com/contoso.com.
 
     Zostanie wyświetlona strona **aplikacje** przedstawiająca wszystkie aplikacje oparte na chmurze należące do organizacji i dostępne do użycia.
 
@@ -65,14 +65,14 @@ Jeśli administrator udzielił Ci uprawnień do wykonywania własnych przegląd�
 
     ![Strona przeglądu dostępu pokazująca pole przyczyna z przykładowym tekstem](media/my-apps-portal/my-apps-portal-perform-access-reviews-reason-box.png)
 
-7. Wybierz **przesłać**.
+7. Wybierz pozycję **Prześlij**.
 
     Przegląd dostępu zostanie zakończony i wrócisz do portalu **My Apps** .
 
     >[!Note]
     >Dostęp można zmienić w dowolnym momencie do momentu zakończenia okresu przeglądu dostępu. Jeśli usuniesz swój dostęp do aplikacji lub grupy, nie zostanie on natychmiast usunięty. Usunięcie odbywa się po zakończeniu okresu przeglądu dostępu lub gdy administrator zamknie przegląd.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 - [Dostęp do aplikacji i korzystanie z nich w portalu My Apps](my-apps-portal-end-user-access.md).
 

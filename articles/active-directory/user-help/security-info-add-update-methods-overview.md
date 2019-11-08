@@ -1,6 +1,6 @@
 ---
-title: Omówienie zmiany metod i informacji zabezpieczających (wersja zapoznawcza) — Azure Active Directory | Microsoft Docs
-description: Dowiedzieć się, jak dodawać, aktualizować i usuwać metody informacji zabezpieczających na potrzeby weryfikacji dwuskładnikowej i samoobsługowego resetowania hasła.
+title: Omówienie zmiany informacji zabezpieczających (wersja zapoznawcza) — Azure AD
+description: Linki do artykułów na temat dodawania, aktualizowania i usuwania metod informacji zabezpieczających na potrzeby weryfikacji dwuskładnikowej oraz samoobsługowego resetowania hasła.
 services: active-directory
 author: eross-msft
 manager: daveba
@@ -12,12 +12,12 @@ ms.topic: overview
 ms.date: 02/13/2019
 ms.author: lizross
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3bcef64c8bf8c2b52e5cc5d954de933d830ba4c1
-ms.sourcegitcommit: 04ec7b5fa7a92a4eb72fca6c6cb617be35d30d0c
+ms.openlocfilehash: 3b781cd30bc5f63199ef9bff45670fa618e2ca17
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/22/2019
-ms.locfileid: "68382888"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73803823"
 ---
 # <a name="overview-about-changing-your-security-info-preview-methods-and-information"></a>Omówienie modyfikowania metod i danych informacji zabezpieczających (wersja zapoznawcza)
 

@@ -1,50 +1,51 @@
 ---
 title: Tworzenie oferty maszyny wirtualnej w portalu Azure Marketplace
-description: Listy czynności wymagane do utworzenia nowej maszyny wirtualnej (VM) oferują usługi w portalu Azure Marketplace.
+description: Zawiera listę kroków wymaganych do utworzenia nowej oferty maszyny wirtualnej w portalu Azure Marketplace.
 services: Azure, Marketplace, Cloud Partner Portal,
 author: v-miclar
 ms.service: marketplace
+ms.subservice: partnercenter-marketplace-publisher
 ms.topic: article
 ms.date: 10/19/2018
 ms.author: pabutler
-ms.openlocfilehash: 4cd635c6f664a5260b79e62ea72bbb86fc4e1e4f
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 1e10bd22b91b51fb811601e49fad06d8f8b30127
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64938354"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73817098"
 ---
-# <a name="create-virtual-machine-offer"></a>Tworzenie oferty maszyny wirtualnej
+# <a name="create-virtual-machine-offer"></a>Utwórz ofertę maszyny wirtualnej
 
-W tej sekcji przedstawiono kroki wymagane do utworzenia nowego żądania oferty maszyny wirtualnej (VM) w portalu Azure Marketplace.  Każdy oferta pojawia się jako własny element w witrynie Azure Marketplace i jest skojarzony z przynajmniej jednej jednostki SKU.  Oferty maszyny Wirtualnej składa się z następujących grup zasobów i usługi pomocnicze: 
+W tej sekcji przedstawiono kroki wymagane do utworzenia nowego żądania oferty maszyny wirtualnej w witrynie Azure Marketplace.  Każda oferta pojawia się jako jej własna jednostka w portalu Azure Marketplace i jest skojarzona z co najmniej jedną jednostką SKU.  Oferta maszyny wirtualnej składa się z następujących grup zasobów i usług pomocniczych: 
 
-![Zasoby dla oferty maszyny Wirtualnej](./media/publishvm_002.png)
+![Zasoby dla oferty maszyny wirtualnej](./media/publishvm_002.png)
 
-gdzie:
+miejscu
 
-|  **Grupy zasobów**   |  **Opis**  |
+|  **Grupa zasobów**   |  **Opis**  |
 |  ---------------   |  ---------------  |
-|    Jednostki SKU            |  Od najmniejszych możliwych do zakupienia jednostka oferty. Jednej oferty (produktu klasy) może mieć wielu jednostek SKU skojarzony z nim, aby odróżnić obsługiwanych funkcji, typy obrazów maszyn wirtualnych i modelami rozliczeń. |
-|  Portal Marketplace       | Zawiera marketingu, prawne i prowadzić zarządzania zasobami i specyfikacji.  <ul><li> Marketing zasoby obejmują oferty nazwę, opis i logo</li> <li> Zasoby prawne zawierają zasady zachowania poufności informacji, warunki użytkowania i inne dokumenty prawne</li>  <li> Włącza zasady zarządzania prowadzić można określić sposób obsługi potencjalnych klientów z poziomu portalu Azure Marketplace przez użytkownika końcowego.</li> </ul> |
-| Pomoc techniczna            | Zawiera informacje dotyczące kontaktu i zasady pomocy technicznej |
-| Wersja testowa         | Definiuje zasoby, które umożliwiają użytkownikom końcowym przetestować oferty przed ich do zakupu |
+|    SKU            |  Najmniejsza jednostka jednostek oferty. Z jedną ofertą (Klasa produktu) może być skojarzonych wiele jednostek SKU, aby można było rozróżnić obsługiwane funkcje, typy obrazów maszyn wirtualnych i modele rozliczeń. |
+|  Portal Marketplace       | Zawiera zasoby i specyfikacje zarządzania marketingiem, prawną i liderem.  <ul><li> Zasoby marketingowe obejmują nazwę oferty, opis i logo</li> <li> Zasoby prawne obejmują zasady ochrony prywatności, warunki użytkowania i inne dokumenty prawne</li>  <li> Zasady zarządzania potencjalnymi klientami umożliwiają określenie sposobu obsługi potencjalnych klientów z poziomu portalu użytkowników końcowych platformy Azure Marketplace.</li> </ul> |
+| Pomoc techniczna            | Zawiera informacje o kontakcie i zasadach |
+| Wersja testowa         | Definiuje zasoby, które umożliwiają użytkownikom końcowym testowanie oferty przed ich zakupieniem |
 |  |  |
 
 
-## <a name="new-offer-form"></a>Nowy formularz oferty
+## <a name="new-offer-form"></a>Formularz nowej oferty
 
-Raz swojego konta w [portalu Cloud Partner](https://cloudpartner.azure.com/), kliknij przycisk **+ nowa oferta** element na pasku menu po lewej stronie. Wynikowy menu, kliknij pozycję **maszyn wirtualnych** do wyświetlenia **nowa oferta** formularza i rozpocząć proces Definiowanie zasobów dla nowej oferty maszyny Wirtualnej. 
+Po zalogowaniu się do [Portal Cloud partner](https://cloudpartner.azure.com/)kliknij pozycję **+ nowy element oferty** na lewym pasku menu. W menu wyniki kliknij pozycję **Virtual Machines** , aby wyświetlić nowy formularz **oferty** i rozpocząć proces definiowania zasobów dla nowej oferty maszyny wirtualnej. 
 <!-- not all publishers see corevm or azure apps test, you need to be whitelisted to see them. we should hide those in these images. -->
 
-![Wybór interfejsu użytkownika oferty nowej maszyny wirtualnej](./media/publishvm_003.png)
+![Wybór interfejsu użytkownika dla nowej maszyny wirtualnej](./media/publishvm_003.png)
 
 > [!WARNING]
-> Jeśli **maszyn wirtualnych** opcja nie jest wyświetlany lub nie jest włączona, a następnie Twoje konto nie ma uprawnień do utworzenia tego typu oferty.  Sprawdź, czy zostały spełnione wszystkie [wymagania wstępne](./cpp-prerequisites.md) dla tego typu oferty, w tym rejestrowanie dla konta dewelopera.
+> Jeśli opcja **Virtual Machines** nie jest wyświetlana lub nie jest włączona, Twoje konto nie ma uprawnień do tworzenia tego typu oferty.  Upewnij się, że spełniono wszystkie [wymagania wstępne](./cpp-prerequisites.md) dla tego typu oferty, w tym rejestrowanie dla konta dewelopera.
 
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
-Kolejnych tematach w tej sekcji duplikatów kart w **nowa oferta** strony (w przypadku typu oferty maszyny Wirtualnej).  Każdy artykuł wyjaśnia, jak karta skojarzony służy do definiowania grup zasobów i usługi pomocnicze dla Twojej nowej oferty maszyny Wirtualnej.
+W kolejnych tematach w tej sekcji są dublowane karty na **nowej stronie oferty** (dla typu oferty maszyny wirtualnej).  W każdym artykule wyjaśniono, jak za pomocą skojarzonej karty definiować grupy zasobów i usługi pomocnicze dla nowej oferty maszyn wirtualnych.
 
 - [Karta ustawień oferty](./cpp-offer-settings-tab.md)
 - [Karta jednostek SKU](./cpp-skus-tab.md)

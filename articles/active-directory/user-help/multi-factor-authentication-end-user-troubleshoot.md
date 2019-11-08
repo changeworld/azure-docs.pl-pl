@@ -1,5 +1,5 @@
 ---
-title: Rozwiązywanie typowych problemów z weryfikacją dwuskładnikową — Azure Active Directory | Microsoft Docs
+title: Rozwiązywanie typowych problemów z weryfikacją dwuskładnikowym — usługa Azure AD
 description: Dowiedz się więcej na temat możliwych rozwiązań niektórych typowych problemów z weryfikacją dwuetapową.
 services: active-directory
 author: eross-msft
@@ -13,12 +13,12 @@ ms.date: 10/28/2019
 ms.author: lizross
 ms.reviewer: kexia
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: bb510755e7cc163af8ff0cb2c8699e1d2dd04d7f
-ms.sourcegitcommit: 38251963cf3b8c9373929e071b50fd9049942b37
+ms.openlocfilehash: f8d226d61f4b67541a6991fef3a435b4cfff500f
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/29/2019
-ms.locfileid: "73043220"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73805298"
 ---
 # <a name="troubleshoot-common-two-factor-verification-problems"></a>Rozwiązywanie typowych problemów z weryfikacją dwuskładnikową
 
@@ -104,7 +104,7 @@ Jeśli używasz weryfikacji dwuetapowej przy użyciu konta służbowego (na przy
 
 Jeśli wykonano te kroki, ale nadal występują problemy, skontaktuj się z działem pomocy technicznej w celu uzyskania pomocy.
 
-## <a name="related-articles"></a>Pokrewne artykuły:
+## <a name="related-articles"></a>Pokrewne artykuły
 
 - [Zarządzanie ustawieniami metody weryfikacji dwuskładnikowej](multi-factor-authentication-end-user-manage-settings.md)
 

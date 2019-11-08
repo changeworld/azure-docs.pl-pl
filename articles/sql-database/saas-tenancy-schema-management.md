@@ -1,5 +1,5 @@
 ---
-title: Zarządzanie schematem Azure SQL Database w aplikacji z jedną dzierżawą
+title: Zarządzanie schematem w aplikacji z jedną dzierżawą
 description: Zarządzanie schematami dla wielu dzierżawców w aplikacji z jedną dzierżawą, która używa Azure SQL Database
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: billgib
 ms.date: 09/19/2018
-ms.openlocfilehash: 32460feebeb55b2639a237db32dbc3923ba27171
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: b6802d97b964b8863f6c2fce0cebfe16782b46fe
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73691840"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73822013"
 ---
 # <a name="manage-schema-in-a-saas-application-using-the-database-per-tenant-pattern-with-azure-sql-database"></a>Zarządzanie schematem w aplikacji SaaS przy użyciu wzorca bazy danych na dzierżawcę z Azure SQL Database
  

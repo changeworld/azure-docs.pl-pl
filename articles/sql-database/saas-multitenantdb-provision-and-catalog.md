@@ -1,5 +1,5 @@
 ---
-title: Udostępnianie w usłudze Azure SaaS z wieloma dzierżawcami
+title: Inicjowanie obsługi administracyjnej w ramach usługi SaaS z wieloma dzierżawcami
 description: Dowiedz się, jak udostępniać i katalogować nowe dzierżawy w Azure SQL Database aplikacji SaaS z wieloma dzierżawcami
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: MightyPen
 ms.author: genemi
 ms.reviewer: billgib,andrela,stein
 ms.date: 09/24/2018
-ms.openlocfilehash: f829c0d734838de42a82343876cefa007dcca04d
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: cae0b2730a9426b183dc330a18a76122ac87cc66
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73692014"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73817924"
 ---
 # <a name="provision-and-catalog-new-tenants-in-a-saas-application-using-a-sharded-multi-tenant-azure-sql-database"></a>Udostępnianie i katalogowanie nowych dzierżawców w aplikacji SaaS przy użyciu wielodostępnej usługi Azure SQL Database podzielonej na fragmenty
 
@@ -168,7 +168,7 @@ Aby zrozumieć, w jaki sposób aplikacja Wingtip implementuje nowe udostępniani
 
 4. Po zatrzymaniu wykonywania skryptu w punkcie przerwania naciśnij klawisz **F11** , aby wkroczyć do kodu.
 
-   ![Rozpocząć](media/saas-multitenantdb-provision-and-catalog/debug.png)
+   ![rozpocząć](media/saas-multitenantdb-provision-and-catalog/debug.png)
 
 5. Śledź wykonywanie skryptu przy użyciu opcji menu **Debuguj** , **F10** i **F11**, aby przekroczyć lub użyć funkcji o nazwie.
 

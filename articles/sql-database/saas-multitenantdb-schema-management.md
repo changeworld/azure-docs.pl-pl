@@ -1,5 +1,5 @@
 ---
-title: Zarządzanie schematem Azure SQL Database w aplikacji z wieloma dzierżawcami
+title: Zarządzanie schematem w aplikacji z wieloma dzierżawcami
 description: Zarządzanie schematami wielu dzierżaw w aplikacji z wieloma dzierżawami, która korzysta z usługi Azure SQL Database
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: MightyPen
 ms.author: genemi
 ms.reviewer: billgib, sstein
 ms.date: 12/18/2018
-ms.openlocfilehash: a4838e571c6dc678fba470ef7f1026388f55d444
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 6f660426c41b37dd27438c28cbf603bdbf1e58b3
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73691983"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73822117"
 ---
 # <a name="manage-schema-in-a-saas-application-that-uses-sharded-multi-tenant-sql-databases"></a>Zarządzanie schematem w aplikacji SaaS używającej podzielonej na fragmenty wielodostępnych baz danych SQL
 

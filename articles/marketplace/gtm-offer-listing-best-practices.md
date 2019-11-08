@@ -4,15 +4,16 @@ description: Usługi dotyczące platformy "przejdź do platformy" — w tej sekc
 services: Azure, Marketplace, Compute, Storage, Networking, Blockchain, Security
 author: qianw211
 ms.service: marketplace
+ms.subservice: partnercenter-marketplace-publisher
 ms.topic: article
 ms.date: 12/21/2018
 ms.author: ellacroi
-ms.openlocfilehash: 9f55abf85803adf0f52bbfa445b9f3e489c9448b
-ms.sourcegitcommit: 8e271271cd8c1434b4254862ef96f52a5a9567fb
+ms.openlocfilehash: 439617c07b8059860c6d412cc60d56d4ac8c36a5
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72821056"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73818661"
 ---
 # <a name="offer-listing-best-practices"></a>Najlepsze rozwiązania dotyczące ofert
 
@@ -21,7 +22,7 @@ Tabele w tej sekcji zawierają sugestie dotyczące tworzenia i angażowania ofer
 ## <a name="storefront-offer-details"></a>Szczegóły oferty witryny sklepu
 | Ustawienie witryny sklepu | Najlepsze rozwiązania |
 |:--- |:--- |  
-| Nazwa oferty | Podaj silny tytuł:<br> <ul> <li> Nazwa aplikacji powinna komunikować się z podstawową wartością dla klientów. </li> <li> Dołącz słowa kluczowe wyszukiwania w tytule aplikacji, aby uzyskać wyższą klasyfikację w wynikach wyszukiwania. </li> </ul> Postępuj zgodnie z formatem ustawiania tytułu dla aukcji usługi konsultingowej:<br>[Nazwa oferty: [Duration] [typ oferty] (na przykład *Contoso: implementacja 2-tygodniowa*) <br><br> Przestrzeganie wytycznych dotyczących marki:<br>Po odniesieniu do znaków towarowych firmy Microsoft i nazw oprogramowania, produktów i usług firmy Microsoft postępuj zgodnie z informacjami o znakach [towarowych firmy Microsoft](https://www.microsoft.com/en-us/legal/intellectualproperty/trademarks/usage/general.aspx) i innych istotnych wytycznych dotyczących produktów. |
+| Offer Name | Podaj silny tytuł:<br> <ul> <li> Nazwa aplikacji powinna komunikować się z podstawową wartością dla klientów. </li> <li> Dołącz słowa kluczowe wyszukiwania w tytule aplikacji, aby uzyskać wyższą klasyfikację w wynikach wyszukiwania. </li> </ul> Postępuj zgodnie z formatem ustawiania tytułu dla aukcji usługi konsultingowej:<br>[Nazwa oferty: [Duration] [typ oferty] (na przykład *Contoso: implementacja 2-tygodniowa*) <br><br> Przestrzeganie wytycznych dotyczących marki:<br>Po odniesieniu do znaków towarowych firmy Microsoft i nazw oprogramowania, produktów i usług firmy Microsoft postępuj zgodnie z informacjami o znakach [towarowych firmy Microsoft](https://www.microsoft.com/en-us/legal/intellectualproperty/trademarks/usage/general.aspx) i innych istotnych wytycznych dotyczących produktów. |
 | Opis oferty | Podaj opis niejawnej oferty:<br> <ul> <li> Jasno opisz swoją wartość oferty w pierwszych kilku zdaniach opisu. </li> <li> Należy pamiętać, że pierwsze niektóre zdania mogą być wyświetlane w wynikach wyszukiwania. </li> <li> Nie należy polegać na funkcjach i funkcjach, aby sprzedawać produkt. Zamiast tego należy skoncentrować się na dostarczanej wartości. </li> <li> Korzystaj z specyficznych dla branży słownictwa lub takich słów, jak to możliwe.</li> <li> Ponadto aukcje usług konsultingowych muszą jasno określać usługę profesjonalną, którą zapewniasz. </li></ul> Podstawowe składniki Twojej pozycji wartości powinny zawierać następujące informacje:<ul><li>Opis produktu.</li><li>Typ użytkownika, który korzysta z produktu.</li><li>Klienci muszą lub cierpili adresy produktów.</li></ul> |
 
 ## <a name="storefront-listing-details"></a>Szczegóły listy witryny sklepu
@@ -45,7 +46,7 @@ Możesz wybrać maksymalnie dwie kategorie i dwie podkategorie dla oferty. Kateg
 | Dystrybucja    | \* Sprzedaż hurtowa <br> \* Wysyłka pakietu & paczki |
 | Edukacja     | \* Wyższe Edukacja <br> \* Podstawowe & Edukacja dodatkowa/K-12 <br> \* Biblioteki & Muzea |
 | Usługi finansowe     | \* Rynki kapitałowe & Bank <br> \* Ubezpieczenie |
-| Administracja    | \* Podwyższenie & obrony (używane do nazywania bezpieczeństwa narodowego i publicznego) <br> \* Bezpieczeństwo publiczne & sprawiedliwości <br> \* Rząd cywilny |
+| Instytucje rządowe    | \* Podwyższenie & obrony (używane do nazywania bezpieczeństwa narodowego i publicznego) <br> \* Bezpieczeństwo publiczne & sprawiedliwości <br> \* Rząd cywilny |
 | Opieka zdrowotna (używana do nazywania kondycji)   | \* Płatnik kondycji <br> \* Dostawca kondycji <br> \* Środki farmaceutyczne |
 | Produkcyjny & zasoby (używane do wywoływania produkcji)   | \* Chemical & Agrochemical <br> \* Produkcja dyskretna <br> \* Energia |
 | Towary konsumenckie detaliczne & (używane do nazywania detalicznego)  | \* Towary konsumenckie <br> \* Sprzedawcy detaliczni |

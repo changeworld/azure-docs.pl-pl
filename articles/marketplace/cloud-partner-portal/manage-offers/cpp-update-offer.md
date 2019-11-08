@@ -1,129 +1,130 @@
 ---
-title: Aktualizowanie oferty w witrynie marketplace | Portal Azure Marketplace
-description: Aktualizacja oferty na platformie Azure i usługi AppSource rynków przy użyciu portalu Cloud Partner
+title: Aktualizowanie ofert portalu Marketplace | Portal Azure Marketplace
+description: Aktualizuj oferty na platformie Azure i AppSource Marketplace przy użyciu portal Cloud Partner
 services: Azure, AppSource, Marketplace, Cloud Partner Portal,
 author: v-miclar
 ms.service: marketplace
+ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 01/11/2019
 ms.author: pabutler
-ms.openlocfilehash: 73e2812c678dca7e21089ee9cc091db756d7e25a
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: b3f579dbdc943b2380c9de3dde6b2ebf4754d4d1
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64942337"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73826727"
 ---
-# <a name="update-azure-marketplace-and-appsource-offers"></a>Aktualizowanie oferty w portalu Azure Marketplace i AppSource
+# <a name="update-azure-marketplace-and-appsource-offers"></a>Aktualizowanie ofert Azure Marketplace i AppSource
 
-Istnieją różne rodzaje aktualizacje, które można zastosować do swojej oferty po jej opublikowaniu.  [Portalu Cloud Partner](https://cloudpartner.azure.com/) pomaga w prawidłowo modyfikowanie atrybutów oferty, w tym:
+Istnieją różne rodzaje aktualizacji, które można zastosować do oferty po jej opublikowaniu.  [Portal Cloud partner](https://cloudpartner.azure.com/) pomaga w prawidłowym modyfikowaniu atrybutów oferty, w tym:
 
--  Dodawanie nowej wersji obrazu lub pakietu maszynę wirtualną (VM) na istniejących jednostek SKU
--  Zmienianie regionów, którego jednostka SKU jest dostępna w
+-  Dodawanie nowego obrazu maszyny wirtualnej lub wersji pakietu do istniejącej jednostki SKU
+-  Zmiany regionów, w których jest dostępna jednostka SKU
 -  Dodawanie nowych jednostek SKU
--  Aktualizowanie metadanych witryny marketplace dla oferty lub jednostki SKU 
--  Trwa aktualizowanie cennik płatności oferuje
+-  Aktualizowanie metadanych witryny Marketplace dla ofert lub jednostek SKU 
+-  Aktualizowanie cen w ofertach z opcją płatność zgodnie z rzeczywistym użyciem
 
-Portal udostępnia również funkcje, takie jak możliwość porównanie funkcji i wyświetlić historię funkcji dla oferty, które są pomocne w zarządzaniu zmianami.  Po zmodyfikowaniu ofertę lub jednostki SKU go należy ponownie opublikować przed zmian "na żywo".  W tym artykule przedstawiono różne aspekty aktualizowanie oferty w portalu marketplace.
+Portal zawiera również funkcje, takie jak możliwość porównywania funkcji i wyświetlania historii funkcji oferty, które ułatwiają zarządzanie zmianami.  Po zmodyfikowaniu oferty lub jednostki SKU należy ją ponownie opublikować przed wprowadzeniem zmian na żywo.  W tym artykule omówiono różne aspekty aktualizowania oferty portalu Marketplace.
 
-## <a name="unpermitted-changes-to-an-offersku"></a>Niedozwolonej zmiany oferty/jednostki SKU
+## <a name="unpermitted-changes-to-an-offersku"></a>Niedozwolone zmiany w ofercie/jednostce SKU
 
-Istnieją pewne atrybuty oferty lub jednostki SKU, która nie może być modyfikowany po opublikowaniu w portalu marketplace.  Odpowiednie pola są wyłączone w **edytora** karty portalu, na przykład:  
+Istnieją pewne atrybuty oferty lub jednostki SKU, które nie mogą być modyfikowane po opublikowaniu jej w portalu Marketplace.  Odpowiednie pola są wyłączone na karcie **Edytor** portalu, na przykład:  
 
-- Oferują one ID i identyfikator wydawcy
+- Identyfikator oferty i identyfikator wydawcy
 - IDENTYFIKATOR JEDNOSTKI SKU 
-- Liczba istniejących jednostek SKU na dysku danych
-- Rozliczenia i licencji zmiany modelu istniejących jednostek SKU
-- Wersja — tagi, na przykład: `1.0.1`
+- Liczba dysków danych istniejących jednostek SKU
+- Zmiany modelu rozliczeń/licencji istniejących jednostek SKU
+- Tagi wersji, na przykład: `1.0.1`
 
 
 ## <a name="common-update-operations"></a>Typowe operacje aktualizacji
 
-Poniższe sekcje opisują sposób wykonywania niektórych większość operacji aktualizacji.  Te operacje nie są dostępne dla wszystkich typów ofert.  Użytkownik musi zalogować się do portalu Cloud Partner można uruchomić dowolne z tych operacji.
+W poniższych sekcjach opisano sposób wykonywania niektórych operacji aktualizacji.  Te operacje nie są dostępne dla wszystkich typów ofert.  Musisz zalogować się do portal Cloud Partner, aby uruchomić dowolną z tych operacji.
 
 
-### <a name="update-offer-contacts"></a>Aktualizowanie kontaktów oferty
+### <a name="update-offer-contacts"></a>Aktualizuj kontakty oferty
 
-Wykonaj następujące kroki, aby zaktualizować kontaktów pomocy technicznej oferty.
-1. W **oferuje wszystkie** wybierz ofertę.
-2. Wybierz **kontakty** kartę. Aktualizowanie kontaktów.
+Wykonaj poniższe kroki, aby zaktualizować kontakty pomocy technicznej dla swojej oferty.
+1. Na stronie **wszystkie oferty** wybierz ofertę.
+2. Wybierz kartę **kontakty** . Zaktualizuj kontakty.
 3. Wybierz ikonę **Zapisz**.
-4. Wybierz **Publikuj** aby rozpocząć proces publikowania.
+4. Wybierz pozycję **Publikuj** , aby rozpocząć proces publikowania.
 
 
-### <a name="change-regions-an-offer-or-sku-is-available-in"></a>Zmień regiony, które oferty lub jednostki SKU jest dostępna w
+### <a name="change-regions-an-offer-or-sku-is-available-in"></a>Zmień regiony oferta lub jednostka SKU jest dostępna w programie
 
-Wraz z upływem czasu można udostępnić ofertę/jednostkę SKU w większej liczbie regionów.
-Alternatywnie możesz polegająca na wyłączeniu obsługi oferty/jednostki SKU w danym regionie.
-Aby zaimplementować te zmiany, wykonaj poniższe kroki.
+W miarę upływu czasu możesz chcieć, aby oferta/jednostka SKU była dostępna w większej liczbie regionów.
+Alternatywnie możesz chcieć zatrzymać obsługę oferty/jednostki SKU w danym regionie.
+Aby zaimplementować te zmiany, wykonaj następujące czynności.
 
-1. W **wszystkich ofert** strony, Znajdź tej oferty, które chcesz zaktualizować.
+1. Na stronie **wszystkie oferty** Znajdź ofertę, którą chcesz zaktualizować.
 
-W przypadku ofert portalu Azure Marketplace:
+Oferty w witrynie Azure Marketplace:
 
-1. Wybierz **jednostki SKU** kartę.  Wybierz jednostkę SKU, aby zmodyfikować.
-1. Kliknij przycisk **Wybierz kraje** przycisku w obszarze **dostępności Kraj/Region** pola.
-1. W oknie dialogowym dostępności regionu należy dodać lub usunąć regiony tej jednostki SKU.
+1. Wybierz kartę **jednostki SKU** .  Wybierz jednostkę SKU do zmodyfikowania.
+1. Kliknij przycisk **Wybierz kraje** w polu **dostępność kraju/regionu** .
+1. W oknie dialogowym dostępność regionu Dodaj lub Usuń regiony dla tej jednostki SKU.
 
-W przypadku ofert usługi AppSource:
+Oferty AppSource:
 
-1. Wybierz **szczegóły Storefront** kartę.
-1. Obok pozycji **obsługiwane kraje/regiony** etykietę, kliknij przycisk **obsługiwane kraje/regiony**. 
-1. W oknie dialogowym obsługiwane kraje/regiony Dodawanie lub usuwanie regionów dla tej oferty.
+1. Wybierz kartę **szczegóły witryny sklepu** .
+1. Obok etykiety **Obsługiwane kraje/regiony** kliknij pozycję **Obsługiwane kraje/regiony**. 
+1. W oknie dialogowym Obsługiwane kraje/regiony Dodaj lub Usuń regiony dla tej oferty.
 
-Dla każdej witryny marketplace:
+Dla każdej witryny Marketplace:
 
-1. Kliknij przycisk **Publikuj** aby rozpocząć proces publikowania. 
+1. Kliknij przycisk **Opublikuj** , aby rozpocząć proces publikowania. 
 
-Jeśli jednostka SKU jest wykonywane w nowym regionie, masz możliwość określenia ceny dla tego konkretnego regionu za pośrednictwem **Eksport danych ceny** funkcji. W przypadku dodawania ponownie region, który wcześniej był dostępny, nie można zaktualizować, cennik, ponieważ zmianie cen nie są dozwolone.
-
-
-### <a name="add-a-new-sku"></a>Dodawanie nowej jednostki SKU 
-
-Aby udostępnić nowej jednostki SKU dla istniejącej oferty, należy użyć następujące czynności:
-
-1. W **wszystkich ofert** strony, Znajdź oferty.
-3. W obszarze **jednostki SKU** formularza, kliknij przycisk **Dodawanie nowej jednostki SKU** i podaj **identyfikator jednostki SKU** w oknie podręcznym.
-4. Wykonaj pozostałe kroki szczegółowo opisane w [publikowanie oferty maszyny wirtualnej](../virtual-machine/cpp-publish-offer.md).
-5. Kliknij przycisk **Publikuj** aby rozpocząć proces publikowania.
+Jeśli jednostka SKU jest dostępna w nowym regionie, istnieje możliwość określenia cen dla danego regionu za pośrednictwem funkcji **Eksportuj dane cenowe** . W przypadku dodawania wcześniej dostępnego regionu nie można zaktualizować jego cen, ponieważ zmiany cen są niedozwolone.
 
 
-### <a name="update-offer-marketplace-assets"></a>Aktualizowanie zasobów portalu marketplace oferty
+### <a name="add-a-new-sku"></a>Dodaj nową jednostkę SKU 
 
-Może być scenariuszach, gdzie należy zaktualizować w portalu marketplace, na podstawie tekstu i obrazów zasoby, takie Twoje logo firmy oferują opis itd. Wykonaj następujące kroki, aby zaktualizować te zasoby.
+Aby udostępnić nową jednostkę SKU dla istniejącej oferty, wykonaj następujące czynności:
 
-1. W **wszystkich ofert** strony, Znajdź swoją ofertę. 
-2. Wybierz **Marketplace** karcie, a następnie postępuj zgodnie z instrukcjami w swojej ofercie *kartę Marketplace* tematu.
-3. Kliknij przycisk **Publikuj** aby rozpocząć proces publikowania.
+1. Na stronie **wszystkie oferty** Znajdź ofertę.
+3. W formularzu **jednostki SKU** kliknij pozycję **Dodaj nową jednostkę SKU** i podaj **Identyfikator jednostki SKU** w oknie podręcznym.
+4. Wykonaj pozostałe kroki opisane w temacie [Publikowanie oferty maszyny wirtualnej](../virtual-machine/cpp-publish-offer.md).
+5. Kliknij przycisk **Opublikuj** , aby rozpocząć proces publikowania.
 
 
-### <a name="update-pricing-on-published-offers"></a>Aktualizacja cen na opublikowane oferty
+### <a name="update-offer-marketplace-assets"></a>Aktualizowanie zasobów witryny Marketplace z ofertą
 
-Po opublikowaniu oferty zgodnie z rzeczywistym użyciem nie może zwiększyć cena istniejących jednostek SKU.  Zamiast tego należy utworzyć jednostki SKU w ramach tej samej oferty usuwanie starych jednostek SKU i ponownie opublikować ofertę. Może obniżyć cenę na poprzednio opublikowanych ofert. Aby zmniejszyć oferta:
+Możesz mieć scenariusze, w których należy zaktualizować zasoby tekstowe i graficzne na rynku, takie jak logo firmy, opis oferty itp. Aby zaktualizować te zasoby, wykonaj następujące czynności.
 
-1. Wybierz jednostkę SKU, dla którego chcesz zmniejszyć ceny.
-2. Należy ustawić niższej cenie przez ten sam mechanizm, który pierwotnie używana: bezpośrednio w portalu, interfejsu użytkownika lub z arkusza kalkulacyjnego importu/eksportu.
+1. Na stronie **wszystkie oferty** Znajdź swoją ofertę. 
+2. Wybierz kartę **Marketplace** i postępuj zgodnie z instrukcjami wyświetlanymi na *karcie Marketplace* Twojej oferty.
+3. Kliknij przycisk **Opublikuj** , aby rozpocząć proces publikowania.
+
+
+### <a name="update-pricing-on-published-offers"></a>Aktualizowanie cen dla opublikowanych ofert
+
+Po opublikowaniu oferty z opcją płatność zgodnie z rzeczywistym użyciem nie można zwiększyć ceny istniejącej jednostki SKU.  Zamiast tego należy utworzyć jednostkę SKU w ramach tej samej oferty, usunąć starą jednostkę SKU, a następnie ponownie opublikować ofertę. Możesz obniżyć cenę z wcześniej opublikowanych ofert. Aby zmniejszyć cenę oferty:
+
+1. Wybierz jednostkę SKU, dla której chcesz obniżyć Cennik.
+2. Niższą cenę należy ustawić zgodnie z pierwotnie używanym mechanizmem: bezpośrednio w interfejsie użytkownika portalu lub za pomocą arkusza importowania/eksportowania.
 3. Kliknij pozycję **Zapisz**.
-4. Kliknij przycisk **Publikuj** aby rozpocząć proces publikowania.
+4. Kliknij przycisk **Opublikuj** , aby rozpocząć proces publikowania.
 
-Ceny są widoczne dla nowych klientów, po jest aktywna, w portalu marketplace i wszyscy nowi klienci będą następnie wina nowe pogorszyła.  W przypadku istniejących klientów spadek cen maszynie wirtualnej jest odzwierciedlana wstecznie rozpoczęcia okresu rozliczeniowego, w którym się skuteczne spadek cen.  Jeśli zostały one już zafakturowane cykl, w którym wystąpił spadek, otrzymają zwrot pieniędzy podczas następnego cyklu rozliczeniowego dla pokrycia obniżonej cenie.
+Cennik jest widoczny dla nowych klientów, gdy jest on aktywny w portalu Marketplace, a wszyscy nowi klienci będą obciążani nową obniżoną cenę.  W przypadku istniejących klientów spadek cen został odzwierciedlony z mocą wsteczną od początku okresu rozliczeniowego, w którym spadek cen stał się skuteczny.  Jeśli opłaty za cykl zostały już rozliczone w okresie, w którym nastąpiła spadek cen, otrzymają refundację w następnym okresie rozliczeniowym, aby uwzględnić obniżoną cenę.
 
 
-## <a name="compare-feature"></a>Porównanie funkcji
+## <a name="compare-feature"></a>Porównaj funkcję
 
-Po wprowadzeniu zmian w ramach oferty opublikowane, możesz użyć *porównania* funkcji inspekcji zmian. Korzystanie z tej funkcji:
+Po wprowadzeniu zmian w opublikowanej ofercie można użyć funkcji *porównania* , aby przeprowadzić inspekcję zmian. Aby korzystać z tej funkcji:
 
-1. W dowolnym momencie procesu edycji, możesz kliknąć pozycję **porównania** znajdujący się w **edytora** karcie oferty.
-2. W oknie porównania Wyświetla side-by-side wersje zapisane zmiany tej oferty w porównaniu z oferty w portalu marketplace. 
+1. W dowolnym momencie procesu edycji można kliknąć przycisk **PORÓWNAJ** na karcie **Edytor** oferty.
+2. W oknie porównania są wyświetlane bezpośrednie wersje zapisanych zmian w tej ofercie w porównaniu do oferty portalu Marketplace. 
 
-![Porównanie oferty przycisku w karcie edytora](./media/offer-compare-button.png)
+![Przycisk porównania oferty na karcie Edytor](./media/offer-compare-button.png)
 
 
 ## <a name="history-of-publishing-actions"></a>Historia akcji publikowania
 
-Zaznacz, aby wyświetlić historyczne działania publikowania **historii** karcie po lewej stronie pionowy pasek menu z portalu Cloud Partner.  Strona historii zapewnia elastyczne filtrowanie według pewne cechy i obsługuje kolejność kolumn.  Każde zdarzenie publikowania jest oznaczony sygnaturą czasową.  Aby uzyskać więcej informacji, zobacz [strony historii inspekcji](../portal-tour/cpp-history-page.md).
+Aby wyświetlić historyczne działanie publikowania, wybierz kartę **historia** na pasku menu po lewej stronie Portal Cloud partner.  Strona Historia zawiera elastyczne filtrowanie według kilku cech i obsługuje porządkowanie kolumn.  Każde zdarzenie publikowania ma sygnaturę czasową.  Aby uzyskać więcej informacji, zobacz [stronę Historia inspekcji](../portal-tour/cpp-history-page.md).
 
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
-Można również użyć portalu Cloud Partner, aby [usuwanie opublikowane jednostki SKU lub zamieszczanie ofert](./cpp-delete-offer.md).
+Możesz również użyć portal Cloud Partner, aby [usunąć opublikowaną jednostkę SKU lub ofertę](./cpp-delete-offer.md).

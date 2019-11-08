@@ -15,12 +15,12 @@ ms.workload: identity
 ms.date: 09/25/2019
 ms.author: abpati
 ms.custom: aaddev
-ms.openlocfilehash: 254a1fd8644015de33855e13f78ab122d28f1e35
-ms.sourcegitcommit: 8e271271cd8c1434b4254862ef96f52a5a9567fb
+ms.openlocfilehash: d9349391ad9af1a4ec1c84b586f825f3f7632ff8
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72817113"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73815749"
 ---
 # <a name="quickstart-add-sign-in-with-microsoft-to-a-python-web-app"></a>Szybki Start: Dodawanie logowania z firmą Microsoft do aplikacji sieci Web w języku Python
 
@@ -66,7 +66,7 @@ Do uruchomienia tego przykładu potrzebne są:
 > 1. Po wyświetleniu strony **Rejestrowanie aplikacji** podaj informacje dotyczące rejestracji aplikacji:
 >      - W sekcji **Nazwa** podaj znaczącą nazwę aplikacji, która będzie wyświetlana użytkownikom aplikacji, na przykład `python-webapp`.
 >      - W obszarze **Obsługiwane typy kont** wybierz pozycję **Konta w dowolnym katalogu organizacyjnym i konta osobiste Microsoft**.
->      - W sekcji **Identyfikator URI przekierowania** , na liście rozwijanej Wybierz platformę **sieci Web** , a następnie ustaw wartość na `http://localhost:5000/getAToken`.
+>      - W obszarze **Identyfikator URI przekierowania** , na liście rozwijanej Wybierz platformę **sieci Web** , a następnie ustaw wartość na `http://localhost:5000/getAToken`.
 >      - Wybierz pozycję **Zarejestruj**. Na stronie **Przegląd** aplikacji Zanotuj wartość **identyfikatora aplikacji (klienta)** do późniejszego użycia.
 > 1. W menu po lewej stronie wybierz pozycję **certyfikaty & wpisy tajne** i kliknij pozycję **Nowy wpis tajny klienta** w sekcji wpisy **tajne klienta** :
 >
@@ -74,6 +74,13 @@ Do uruchomienia tego przykładu potrzebne są:
 >      - Wybierz kluczowy czas trwania wynoszący **1 rok**.
 >      - Po kliknięciu przycisku **Dodaj**zostanie wyświetlona wartość klucza.
 >      - Skopiuj wartość klucza. Będzie potrzebny później.
+> 1. Wybierz sekcję **uprawnienia interfejsu API**
+>
+>      - Kliknij przycisk **Dodaj uprawnienia** , a następnie
+>      - Upewnij się, że karta **Microsoft API** została wybrana
+>      - W sekcji *najczęściej używane interfejsy API firmy Microsoft* kliknij pozycję **Microsoft Graph**
+>      - W sekcji **uprawnienia delegowane** upewnij się, że są zaznaczone odpowiednie uprawnienia: **User. ReadBasic. All**. W razie potrzeby użyj pola wyszukiwania.
+>      - Wybierz przycisk **Dodaj uprawnienia**
 >
 > [!div class="sxs-lookup" renderon="portal"]
 >
@@ -83,9 +90,10 @@ Do uruchomienia tego przykładu potrzebne są:
 >
 > 1. Dodaj adres URL odpowiedzi jako `http://localhost:5000/getAToken`.
 > 1. Utwórz klucz tajny klienta.
+> 1. Microsoft Graph Dodaj uprawnienie ReadBasic użytkownika interfejsu API. wszystkie delegowane uprawnienia.
 >
 > > [!div renderon="portal" id="makechanges" class="nextstepaction"]
-> > [Wprowadź tę zmianę automatycznie]()
+> > [Wprowadź zmiany automatycznie]()
 > > [!div id="appconfigured" class="alert alert-info"]
 > > ![Already configured](media/quickstart-v2-aspnet-webapp/green-check.png) (Już skonfigurowano) Twoja aplikacja została skonfigurowana za pomocą tego atrybutu
 
@@ -106,7 +114,7 @@ AUTHORITY = "https://login.microsoftonline.com/Enter_the_Tenant_Name_Here"
 ```
 
 > [!div renderon="docs"]
-> Miejsce:
+> Gdzie:
 >
 > - `Enter_the_Application_Id_here` jest identyfikatorem dla zarejestrowanej aplikacji.
 > - `Enter_the_Client_Secret_Here` — jest **kluczem tajnym klienta** utworzonym w **certyfikatach & wpisy tajne** dla zarejestrowanej aplikacji.
@@ -126,24 +134,24 @@ AUTHORITY = "https://login.microsoftonline.com/Enter_the_Tenant_Name_Here"
    python app.py
    ```
    > [!IMPORTANT]
-   > Aplikacja w tym przewodniku Szybki start używa klucza tajnego klienta do identyfikowania się jako klienta poufnego. Ponieważ klucz tajny klienta jest dodawany jako zwykły tekst w plikach projektu, ze względów bezpieczeństwa zaleca się używanie certyfikatu zamiast klucza tajnego klienta, zanim będzie można uznać aplikację za produkcyjną. Aby uzyskać więcej informacji na temat korzystania z certyfikatu, zobacz [te instrukcje](https://docs.microsoft.com/en-us/azure/active-directory/develop/active-directory-certificate-credentials).
+   > Aplikacja w tym przewodniku Szybki start używa klucza tajnego klienta do identyfikowania się jako klienta poufnego. Ponieważ klucz tajny klienta jest dodawany jako zwykły tekst w plikach projektu, ze względów bezpieczeństwa zaleca się używanie certyfikatu zamiast klucza tajnego klienta, zanim będzie można uznać aplikację za produkcyjną. Aby uzyskać więcej informacji na temat korzystania z certyfikatu, zobacz [te instrukcje](https://docs.microsoft.com/azure/active-directory/develop/active-directory-certificate-credentials).
 
-   ## <a name="more-information"></a>Więcej informacji
+## <a name="more-information"></a>Więcej informacji
 
-   ### <a name="getting-msal"></a>Pobieranie MSAL
-   MSAL to biblioteka służąca do logowania użytkowników i żądania tokenów używanych w celu uzyskania dostępu do interfejsu API chronionego przez platformę tożsamości firmy Microsoft.
-   Możesz dodać MSAL Python do aplikacji przy użyciu narzędzia PIP.
+### <a name="getting-msal"></a>Pobieranie MSAL
+MSAL to biblioteka służąca do logowania użytkowników i żądania tokenów używanych w celu uzyskania dostępu do interfejsu API chronionego przez platformę tożsamości firmy Microsoft.
+Możesz dodać MSAL Python do aplikacji przy użyciu narzędzia PIP.
 
-   ```Shell
-   pip install msal
-   ```
+```Shell
+pip install msal
+```
 
-   ### <a name="msal-initialization"></a>Inicjowanie biblioteki MSAL
-   Można dodać odwołanie do MSAL Python, dodając następujący kod na początku pliku, w którym będzie używany MSAL:
+### <a name="msal-initialization"></a>Inicjowanie biblioteki MSAL
+Można dodać odwołanie do MSAL Python, dodając następujący kod na początku pliku, w którym będzie używany MSAL:
 
-   ```Python
-   import msal
-   ```
+```Python
+import msal
+```
 
 ## <a name="next-steps"></a>Następne kroki
 

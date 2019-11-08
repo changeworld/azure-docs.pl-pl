@@ -1,6 +1,6 @@
 ---
-title: Usługa Azure Active Directory dostępu warunkowego często zadawane pytania | Dokumentacja firmy Microsoft
-description: Uzyskaj odpowiedzi na często zadawane pytania dotyczące dostępu warunkowego w usłudze Azure Active Directory.
+title: Azure Active Directory często zadawane pytania dotyczące dostępu warunkowego | Microsoft Docs
+description: Uzyskaj odpowiedzi na często zadawane pytania dotyczące dostępu warunkowego w Azure Active Directory.
 services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
@@ -11,51 +11,51 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ad0494868c494b488a238a81e504c58552813907
-ms.sourcegitcommit: 79496a96e8bd064e951004d474f05e26bada6fa0
+ms.openlocfilehash: b2cc562f155fe3b84e5d28b2e0e22d50238d480c
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/02/2019
-ms.locfileid: "67508972"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73816212"
 ---
-# <a name="azure-active-directory-conditional-access-faqs"></a>Często zadawane pytania usługi Azure Active Directory dostępu warunkowego
+# <a name="azure-active-directory-conditional-access-faqs"></a>Azure Active Directory często zadawane pytania dotyczące dostępu warunkowego
 
-## <a name="which-applications-work-with-conditional-access-policies"></a>Aplikacji, które współpracuje z zasad dostępu warunkowego?
+## <a name="which-applications-work-with-conditional-access-policies"></a>Które aplikacje współpracują z zasadami dostępu warunkowego?
 
-Aby uzyskać informacje o aplikacjach, które działają z zasadami dostępu warunkowego, zobacz [aplikacji i przeglądarki, korzystających z zasad dostępu warunkowego w usłudze Azure Active Directory](technical-reference.md).
+Aby uzyskać informacje o aplikacjach, które współpracują z zasadami dostępu warunkowego, zobacz [aplikacje i przeglądarki korzystające z reguł dostępu warunkowego w programie Azure Active Directory](technical-reference.md).
 
-## <a name="are-conditional-access-policies-enforced-for-b2b-collaboration-and-guest-users"></a>Zasady dostępu warunkowego obowiązują do współpracy B2B i użytkowników (gości)?
+## <a name="are-conditional-access-policies-enforced-for-b2b-collaboration-and-guest-users"></a>Czy zasady dostępu warunkowego są wymuszane dla użytkowników współpracy B2B i Gości?
 
-Zasady są wymuszane dla użytkowników współpracy, business-to-business (B2B). Jednak w niektórych przypadkach użytkownik może nie móc spełnia wymagania zasad. Na przykład organizacja użytkownika-gościa może nie obsługiwać uwierzytelnianie wieloskładnikowe. 
+Zasady są wymuszane dla użytkowników współpracy między firmami (B2B). Jednak w niektórych przypadkach użytkownik może nie być w stanie spełnić wymagań zasad. Na przykład organizacja użytkownika-gościa może nie obsługiwać uwierzytelniania wieloskładnikowego. 
 
-## <a name="does-a-sharepoint-online-policy-also-apply-to-onedrive-for-business"></a>Czy zasad usługi SharePoint Online dotyczy również do usługi OneDrive dla firm?
+## <a name="does-a-sharepoint-online-policy-also-apply-to-onedrive-for-business"></a>Czy zasady usługi SharePoint Online mają zastosowanie również w usłudze OneDrive dla firm?
 
-Tak. Zasady usługi SharePoint Online ma zastosowanie również do usługi OneDrive dla firm.
+Tak. Zasady SharePoint Online dotyczą również usługi OneDrive dla firm.
 
-## <a name="why-cant-i-set-a-policy-on-client-apps-like-word-or-outlook"></a>Dlaczego nie można ustawić zasady dla aplikacji klienckich, takich jak Word lub Outlook?
+## <a name="why-cant-i-set-a-policy-directly-on-client-apps-like-word-or-outlook"></a>Dlaczego nie mogę ustawić zasad bezpośrednio w aplikacjach klienckich, takich jak Word czy Outlook?
 
-Zasady dostępu warunkowego Ustawia wymagania dotyczące dostępu do usługi. Wymuszeniu sytuacji uwierzytelniania dla danej usługi. Nie ustawiono zasad bezpośrednio w aplikacji klienckiej. Zamiast tego jest stosowane, gdy klient wywołuje usługę. Na przykład zestaw zasad w programie SharePoint dotyczy klientów wywołujących programu SharePoint. Zestaw zasad w Exchange ma zastosowanie do programu Outlook.
+Zasady dostępu warunkowego określają wymagania dotyczące uzyskiwania dostępu do usługi. Jest wymuszany, gdy następuje uwierzytelnianie w usłudze. Zasady nie są ustawiane bezpośrednio w aplikacji klienckiej. Zamiast tego jest stosowany, gdy klient wywołuje usługę. Na przykład zestaw zasad w programie SharePoint ma zastosowanie do klientów wywołujących program SharePoint. Zestaw zasad dla programu Exchange ma zastosowanie do programu Outlook.
 
-## <a name="does-a-conditional-access-policy-apply-to-service-accounts"></a>Zasady dostępu warunkowego ma zastosowania do kont usługi?
+## <a name="does-a-conditional-access-policy-apply-to-service-accounts"></a>Czy zasady dostępu warunkowego są stosowane do kont usług?
 
-Zastosuj zasady dostępu warunkowego do wszystkich kont użytkowników. Obejmuje to konta użytkowników, które są używane jako konta usług. Często konta usługi, które uruchamia instalacji nienadzorowanej nie może spełnić wymagań zasad dostępu warunkowego. Na przykład uwierzytelnianie wieloskładnikowe może być wymagane. Konta usług mogą być wykluczone z zasad za pomocą ustawienia zarządzania zasad dostępu warunkowego. 
+Zasady dostępu warunkowego są stosowane do wszystkich kont użytkowników. Obejmuje to konta użytkowników, które są używane jako konta usług. Często konto usługi z nienadzorowanym systemem nie spełnia wymagań zasad dostępu warunkowego. Na przykład może być wymagane uwierzytelnianie wieloskładnikowe. Konta usług można wykluczać z zasad przy użyciu ustawień zarządzania zasadami dostępu warunkowego. 
 
-## <a name="are-graph-apis-available-for-configuring-conditional-access-policies"></a>Interfejsy API programu Graph są dostępne do konfigurowania zasad dostępu warunkowego?
+## <a name="are-graph-apis-available-for-configuring-conditional-access-policies"></a>Czy są dostępne interfejsy API programu Graph do konfigurowania zasad dostępu warunkowego?
 
-Aktualnie nie. 
+Obecnie nie. 
 
-## <a name="what-is-the-default-exclusion-policy-for-unsupported-device-platforms"></a>Co to jest domyślne zasady wykluczania dla platform nieobsługiwanego urządzenia?
+## <a name="what-is-the-default-exclusion-policy-for-unsupported-device-platforms"></a>Jakie są domyślne zasady wykluczania dla nieobsługiwanych platform urządzeń?
 
-Obecnie zasady dostępu warunkowego selektywnie są wymuszane dla użytkowników systemu iOS i android. Aplikacje na innych platformach domyślnie nie dotyczy zasad dostępu warunkowego dla systemu iOS i android. Administrator dzierżawy można wybrać opcję zastąpienia globalnych zasad, aby uniemożliwić dostęp do użytkowników na platformach, które nie są obsługiwane.
+Obecnie zasady dostępu warunkowego są wykonywane wybiórczo dla użytkowników urządzeń z systemem iOS lub Android. Aplikacje na innych platformach urządzeń są domyślnie nieobjęte zasadami dostępu warunkowego dla urządzeń z systemami iOS i Android. Administrator dzierżawy może zdecydować się na zastąpienie zasad globalnych, aby nie zezwalać na dostęp do użytkowników na platformach, które nie są obsługiwane.
 
-## <a name="how-do-conditional-access-policies-work-for-microsoft-teams"></a>Jak działają zasady dostępu warunkowego dla Microsoft Teams
+## <a name="how-do-conditional-access-policies-work-for-microsoft-teams"></a>Jak działają zasady dostępu warunkowego dla usługi Microsoft Teams?
 
-Microsoft Teams zależy od intensywnie usługi Exchange Online i SharePoint Online dla podstawowych scenariuszy wydajności, takich jak spotkania, kalendarze i udostępnianie plików. Zasady dostępu warunkowego, które są ustawione dla tych aplikacji w chmurze dotyczy Microsoft Teams po użytkownik zalogował bezpośrednio do Microsoft Teams.
+Usługa Microsoft Teams opiera się na usłudze Exchange Online i SharePoint Online w przypadku podstawowych scenariuszy produktywności, takich jak spotkania, kalendarze i udostępnianie plików. Zasady dostępu warunkowego, które są ustawione dla tych aplikacji w chmurze, mają zastosowanie do programu Microsoft Teams, gdy użytkownik loguje się bezpośrednio do usługi Microsoft Teams.
 
-Microsoft Teams także jest obsługiwany oddzielnie jako aplikacja w chmurze w ramach zasad usługi Azure Active Directory dostępu warunkowego. Zasady dostępu warunkowego, które są ustawione dla aplikacji w chmurze dotyczy Microsoft Teams, gdy użytkownik loguje się. Jednak bez prawidłowe zasady na inne aplikacje, takie jak Exchange Online i SharePoint Online użytkownicy mogą nadal mieć możliwość bezpośrednio dostęp do tych zasobów.
+Usługa Microsoft Teams jest również obsługiwana osobno jako aplikacja w chmurze w ramach Azure Active Directory zasad dostępu warunkowego. Zasady dostępu warunkowego ustawione dla aplikacji w chmurze mają zastosowanie do programu Microsoft Teams po zalogowaniu się użytkownika. Jednak bez poprawnych zasad w innych aplikacjach, takich jak usługa Exchange Online i użytkownicy usługi SharePoint Online, nadal będą mogli bezpośrednio uzyskiwać dostęp do tych zasobów.
 
-Klienci stacjonarni Microsoft Teams dla Windows i komputerów Mac obsługuje nowoczesnego uwierzytelniania. Nowoczesne uwierzytelniane umożliwia logowanie oparte na Azure Active Directory Authentication Library (ADAL) dla aplikacji klienckich Microsoft Office na różnych platformach.
+Klienci stacjonarni Microsoft Teams dla systemów Windows i Mac obsługują nowoczesne uwierzytelnianie. Nowoczesne uwierzytelnianie umożliwia logowanie oparte na bibliotece uwierzytelniania Azure Active Directory (ADAL) do Microsoft Office aplikacji klienckich na różnych platformach.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
-- Aby skonfigurować zasady dostępu warunkowego dla danego środowiska, zobacz [najlepsze rozwiązania dotyczące dostępu warunkowego w usłudze Azure Active Directory](best-practices.md). 
+- Aby skonfigurować zasady dostępu warunkowego dla środowiska, zapoznaj się z [najlepszymi rozwiązaniami dotyczącymi dostępu warunkowego w Azure Active Directory](best-practices.md). 

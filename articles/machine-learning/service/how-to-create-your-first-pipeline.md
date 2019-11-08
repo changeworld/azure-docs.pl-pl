@@ -11,12 +11,12 @@ ms.author: sanpil
 author: sanpil
 ms.date: 08/09/2019
 ms.custom: seodec18
-ms.openlocfilehash: a092647f9772aafdf610ee9a5ba85ded17d50def
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: 3dc439c352bb3e6e56fae4b83d783da94720bfe1
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73577707"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73818413"
 ---
 # <a name="create-and-run-machine-learning-pipelines-with-azure-machine-learning-sdk"></a>Tworzenie i uruchamianie potoków uczenia maszynowego za pomocą zestawu SDK Azure Machine Learning
 [!INCLUDE [applies-to-skus](../../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -166,7 +166,7 @@ Aby dołączyć Azure Databricks jako element docelowy obliczeń, podaj następu
 
 * __Nazwa obliczeniowa datakostek__: nazwa, która ma zostać przypisana do tego zasobu obliczeniowego.
 * __Nazwa obszaru roboczego elementów datakostki__: Nazwa obszaru roboczego Azure Databricks.
-* __Token dostępu do datakostki__: token dostępu używany do uwierzytelniania w Azure Databricks. Aby wygenerować token dostępu, zobacz dokument [uwierzytelniania](https://docs.azuredatabricks.net/api/latest/authentication.html) .
+* __Token dostępu do datakostki__: token dostępu używany do uwierzytelniania w Azure Databricks. Aby wygenerować token dostępu, zobacz dokument [uwierzytelniania](https://docs.azuredatabricks.net/dev-tools/api/latest/authentication.html) .
 
 Poniższy kod ilustruje sposób dołączania Azure Databricks jako obiektu docelowego obliczeń przy użyciu zestawu SDK Azure Machine Learning:
 
@@ -437,7 +437,7 @@ Można ją ponownie włączyć z `p.enable()`. Aby uzyskać więcej informacji, 
 
 Aby zoptymalizować i dostosować zachowanie potoków, można wykonać kilka czynności związanych z buforowaniem i wielokrotnym użyciem. Można na przykład wybrać następujące opcje:
 + Wyłącz **domyślne ponowne użycie kroku uruchamiania etapu** przez ustawienie `allow_reuse=False` podczas [definiowania kroku](https://docs.microsoft.com/python/api/azureml-pipeline-steps/?view=azure-ml-py). Ponowne użycie jest kluczem przy użyciu potoków w środowisku współpracy, ponieważ wyeliminowanie niepotrzebnych uruchomień zapewnia elastyczność. Można jednak zrezygnować z ponownego użycia.
-+ **Rozszerzenie mieszania wykraczające poza skrypt**, aby również zawierać ścieżkę bezwzględną lub względną do pliku katalog_źródłowy do innych plików i katalogów przy użyciu `hash_paths=['<file or directory']` 
++ **Rozszerzenie mieszania wykraczające poza skrypt**, aby również zawierać ścieżkę bezwzględną lub względną do source_directory do innych plików i katalogów przy użyciu `hash_paths=['<file or directory']` 
 + **Wymuś ponowne wygenerowanie danych wyjściowych dla wszystkich kroków w przebiegu** z `pipeline_run = exp.submit(pipeline, regenerate_outputs=False)`
 
 Domyślnie `allow_reuse` dla kroków jest włączona i tylko plik głównego skryptu jest tworzony przy użyciu skrótu. Tak więc, jeśli skrypt dla danego kroku pozostaje taki sam (`script_name`, dane wejściowe i parametry), dane wyjściowe wykonywane w poprzednim kroku są ponownie używane, zadanie nie zostanie przesłane do obliczenia, a wyniki z poprzedniego przebiegu są natychmiast dostępne do następnego kroku.  

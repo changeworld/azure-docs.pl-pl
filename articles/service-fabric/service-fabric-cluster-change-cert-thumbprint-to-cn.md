@@ -13,12 +13,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 09/06/2019
 ms.author: atsenthi
-ms.openlocfilehash: 3618339349d618b371a40d3b37ebc30192c067ca
-ms.sourcegitcommit: a4b5d31b113f520fcd43624dd57be677d10fc1c0
+ms.openlocfilehash: 25aaad02cf8c90c67e87d49553a02cacf033281f
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70764821"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73819470"
 ---
 # <a name="change-cluster-from-certificate-thumbprint-to-common-name"></a>Zmień klaster z odcisku palca certyfikatu na nazwę pospolitą
 Dwa certyfikaty nie mogą mieć tego samego odcisku palca, co utrudnia zarzucanie certyfikatów klastra lub zarządzanie nimi. Jednak wiele certyfikatów może mieć taką samą nazwę pospolitą lub podmiot.  Przełączenie wdrożonego klastra z używania odcisków palca certyfikatu na używanie nazw pospolitych certyfikatów sprawia, że zarządzanie certyfikatami jest znacznie prostsze. W tym artykule opisano, jak zaktualizować uruchomiony klaster Service Fabric, aby używał nazwy pospolitej certyfikatu zamiast odcisku palca certyfikatu.
@@ -128,7 +128,7 @@ Następnie otwórz plik szablonu w edytorze tekstów i wprowadź trzy aktualizac
 
     Rozważ również usunięcie *certificateThumbprint*, w którym nie można już odwoływać się do szablonu Menedżer zasobów.
 
-2. W zasobie **Microsoft. COMPUTE/virtualMachineScaleSets** zaktualizuj rozszerzenie maszyny wirtualnej tak, aby używało nazwy pospolitej w ustawieniach certyfikatu zamiast odcisku palca.  We->**właściwościach**->rozszerzeń virtualMachineProfileextensionProfilesCertificates,Add->->-> `"commonNames": ["[parameters('certificateCommonName')]"],` i Usuń `"thumbprint": "[parameters('certificateThumbprint')]",`.
+2. W zasobie **Microsoft. COMPUTE/virtualMachineScaleSets** zaktualizuj rozszerzenie maszyny wirtualnej tak, aby używało nazwy pospolitej w ustawieniach certyfikatu zamiast odcisku palca.  W **virtualMachineProfile**->**extensionProfile**->**rozszerzenia**->**właściwości**->**Ustawienia**->**certyfikatu**, Dodaj `"commonNames": ["[parameters('certificateCommonName')]"],` i Usuń `"thumbprint": "[parameters('certificateThumbprint')]",`.
     ```json
         "virtualMachineProfile": {
         "extensionProfile": {
@@ -188,6 +188,8 @@ Następnie otwórz plik szablonu w edytorze tekstów i wprowadź trzy aktualizac
             },
         ...
     ```
+
+Aby uzyskać dodatkowe informacje [, zobacz Zmiana klastra z odcisku palca certyfikatu na nazwę pospolitą.](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-change-cert-thumbprint-to-cn)
 
 ## <a name="deploy-the-updated-template"></a>Wdróż zaktualizowany szablon
 Wdróż ponownie zaktualizowany szablon po wprowadzeniu zmian.

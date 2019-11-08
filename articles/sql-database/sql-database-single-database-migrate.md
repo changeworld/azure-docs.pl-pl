@@ -1,5 +1,5 @@
 ---
-title: SQL Server migrację bazy danych do bazy danych z jedną/pulą w Azure SQL Database
+title: SQL Server migrację bazy danych do bazy danych z jedną/pulą
 description: Dowiedz się, jak informacje o SQL Server migracji bazy danych do pojedynczej bazy danych lub elastycznej puli w programie Azure SQL Database.
 keywords: migracja bazy danych,migracja bazy danych programu sql server,narzędzia migracji bazy danych,migracja bazy danych,migracja bazy danych sql
 services: sql-database
@@ -12,12 +12,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: carlrab
 ms.date: 02/11/2019
-ms.openlocfilehash: 67030d14670ccc51c89a04863f8b39ab6a9bb183
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: df1ef21da43bc74809bd9fd71b5dde3906cdb343
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73687185"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73820971"
 ---
 # <a name="sql-server-database-migration-to-azure-sql-database"></a>SQL Server migrację bazy danych do Azure SQL Database
 

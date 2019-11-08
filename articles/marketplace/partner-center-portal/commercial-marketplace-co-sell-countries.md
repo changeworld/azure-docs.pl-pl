@@ -5,14 +5,15 @@ author: qianw211
 manager: evansma
 ms.author: v-qiwe
 ms.service: marketplace
+ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 08/27/2019
-ms.openlocfilehash: 1c3227c89a6355c99cf31b48720dd022de8aae4a
-ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
+ms.openlocfilehash: dc27756cd231bc744e539321af7884cc85ca1e9a
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70076097"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73812928"
 ---
 # <a name="co-sell-country-and-region-codes"></a>Kody krajów i regionów współpracujących
 
@@ -30,11 +31,11 @@ Jeśli kontakt obejmuje więcej niż jeden kraj/region, wprowadź każdy z dwóc
 | Afganistan                         | AF        |
 | Wyspy Alandzkie                       | OŚ        |
 | Albania                             | AL        |
-| Algeria                             | DZ        |
+| Algieria                             | DZ        |
 | Samoa Amerykańskie                      | AS        |
 | Andora                             | AD        |
 | Angola                              | AO        |
-| Antarktyka                          | AQ        |
+| Antarktyda                          | AQ        |
 | Antigua i Barbuda                 | AG        |
 | Argentyna                           | AR        |
 | Armenia                             | AM        |
@@ -58,7 +59,7 @@ Jeśli kontakt obejmuje więcej niż jeden kraj/region, wprowadź każdy z dwóc
 | Botswana                            | BW        |
 | Wyspa Bouveta                       | BV        |
 | Brazylia                              | BR        |
-| Brytyjskie Terytorium Oceanu Indyjskiego      | We/wy        |
+| Brytyjskie Terytorium Oceanu Indyjskiego      | /        |
 | Brytyjskie Wyspy Dziewicze              | VG        |
 | Brunei                              | BN        |
 | Bułgaria                            | BG        |
@@ -67,29 +68,29 @@ Jeśli kontakt obejmuje więcej niż jeden kraj/region, wprowadź każdy z dwóc
 | Wyspy Zielonego Przylądka                          | CV        |
 | Kambodża                            | KH        |
 | Kamerun                            | CM        |
-| Kanada                              | Urząd certyfikacji        |
+| Kanada                              | CA        |
 | Kajmany                      | KY        |
 | Republika Środkowoafrykańska            | CF        |
 | Czad                                | BADAŃ        |
-| Czechy                             | CZ        |
+| Czechia                             | CZ        |
 | Chile                               | CL        |
 | Chiny                               | CN        |
 | Wyspa Bożego Narodzenia                    | CX        |
 | Wyspy Kokosowe (Keelinga)             | CC        |
 | Kolumbia                            | CO        |
 | Komory                             | KILOMETR        |
-| Kongo                               | CG        |
-| Kongo (DRK)                         | Dysk CD        |
-| Wyspy Cooka                        | WKRĘT        |
+| Konga                               | CG        |
+| Kongo (DRK)                         | CD        |
+| Wyspy Cooka                        | Wkręt        |
 | Kostaryka                          | CR        |
-| Wybrzeże Kości Słoniowej                       | Ciągła integracja        |
+| Côte d’Ivoire                       | CI        |
 | Chorwacja                             | HR        |
 | Kuba                                | CU        |
 | Curaçao                             | CW        |
 | Cypr                              | CY        |
 | Dania                             | DK        |
 | Dżibuti                            | DJ        |
-| Dominika                            | DYNAMICZNEJ        |
+| Mini                            | DYNAMICZNEJ        |
 | Republika Dominikańska                  | DO        |
 | Ekwador                             | EC        |
 | Egipt                               | EG        |
@@ -107,7 +108,7 @@ Jeśli kontakt obejmuje więcej niż jeden kraj/region, wprowadź każdy z dwóc
 | Polinezja Francuska                    | PF        |
 | Francuskie Terytoria Południowe         | TF        |
 | Gabon                               | Ogólna dostępność        |
-| Gambia                              | GM        |
+| Przybrzeżn                              | GM        |
 | Gruzja                             | GE        |
 | Niemcy                             | DE        |
 | Ghana                               | GH        |
@@ -123,39 +124,39 @@ Jeśli kontakt obejmuje więcej niż jeden kraj/region, wprowadź każdy z dwóc
 | Gwinea Bissau                       | GW        |
 | Gujana                              | GY        |
 | Haiti                               | HT        |
-| Wyspy Heard i McDonalda   | HM        |
+| Wyspy Heard i McDonald   | HM        |
 | Honduras                            | HN        |
-| SRA Hongkong                       | HK        |
+| Hongkong SAR                       | HK        |
 | Węgry                             | HU        |
 | Islandia                             | IS        |
 | Indie                               | IN        |
-| Indonezja                           | id        |
+| Indonezja                           | ID        |
 | Iran                                | IR        |
 | Irak                                | IQ        |
 | Irlandia                             | IE        |
-| Wyspa Man                         | Wiadomości błyskawiczne        |
+| Wyspa Man                         | WIADOMOŚCI błyskawicznych        |
 | Izrael                              | IL        |
-| Włochy                               | it        |
-| Jamaica                             | JM        |
+| Włochy                               | IT        |
+| Jamajka                             | JM        |
 | Japonia                               | JP        |
 | Jersey                              | JE        |
 | Jordania                              | JO        |
-| Kazakhstan                          | KZ        |
-| Kenya                               | KE        |
+| Kazachstan                          | KZ        |
+| Kenia                               | KE        |
 | Kiribati                            | KI        |
 | Korea Południowa (południe)                       | KR        |
 | Kuwejt                              | KW        |
-| Kyrgyzstan                          | KG        |
+| Kirgistan                          | KG        |
 | Laos                                | LA        |
 | Łotwa                              | LV        |
 | Liban                             | LB        |
-| Lesoto                             | LS        |
+| Lesotho                             | LS        |
 | Liberia                             | LR        |
-| Libya                               | LY        |
+| Libia                               | LY        |
 | Liechtenstein                       | LI        |
 | Litwa                           | LT        |
 | Luksemburg                          | LU        |
-| SRA Makau                           | MO        |
+| Makau SAR                           | MO        |
 | Madagaskar                          | MG        |
 | Malawi                              | MW        |
 | Malezja                            | MY        |
@@ -166,17 +167,17 @@ Jeśli kontakt obejmuje więcej niż jeden kraj/region, wprowadź każdy z dwóc
 | Martynika                          | MQ        |
 | Mauretania                          | MR        |
 | Mauritius                           | MU        |
-| Wyspa Majotta                             | YT        |
+| Majotta                             | YT        |
 | Meksyk                              | MX        |
 | Mikronezja                          | FM        |
-| Republika Mołdowy                             | MD        |
-| Monaco                              | MC        |
+| Mołdawia                             | MD        |
+| Monako                              | ROLĘ        |
 | Mongolia                            | MN        |
-| Czarnogóra                          | ME        |
-| Montserrat                          | MS        |
+| Czarnogóra                          | Pamiętaj        |
+| Montserrat                          | ARIAL        |
 | Maroko                             | MA        |
 | Mozambik                          | MZ        |
-| Mjanma                             | MM        |
+| Myanmar                             | MM        |
 | Namibia                             | Nie dotyczy        |
 | Nauru                               | NR        |
 | Nepal                               | NP        |
@@ -188,9 +189,9 @@ Jeśli kontakt obejmuje więcej niż jeden kraj/region, wprowadź każdy z dwóc
 | Nigeria                             | NG        |
 | Niue                                | NU        |
 | Wyspa Norfolk                      | OZNACZONA        |
-| Koreańska Republika Ludowo-Demokratyczna                         | KP        |
+| Korea Północna                         | KP        |
 | Mariany Północne            | BIEGŁ        |
-| Macedonia Północna                     | MK        |
+| Północna Macedonia                     | MK        |
 | Norwegia                              | NO        |
 | Oman                                | OM        |
 | Pakistan                            | PK        |
@@ -206,17 +207,17 @@ Jeśli kontakt obejmuje więcej niż jeden kraj/region, wprowadź każdy z dwóc
 | Portugalia                            | PT        |
 | Portoryko                         | PR        |
 | Katar                               | QA        |
-| Réunion                             | RE        |
+| Reunion                             | RE        |
 | Rumunia                             | RO        |
 | Rosja                              | RU        |
-| Ruanda                              | RW        |
+| Rwanda                              | RW        |
 | Saint Barthélemy                    | BL        |
 | Saint Kitts i Nevis               | KN        |
 | Saint Lucia                         | LC        |
 | Saint-Martin                        | CZĘSTOTLIWOŚCI        |
-| Saint Pierre i Miquelon           | PM        |
-| Saint Vincent i Grenadyny    | Klaster wirtualny        |
-| Samoa                               | WS        |
+| Saint-Pierre i Miquelon           | PM        |
+| Saint Vincent i Grenadyny    | VC        |
+| Zachodniego                               | WS        |
 | San Marino                          | SPRZEDAŻY        |
 | Wyspy Świętego Tomasza i Książęca               | miejsce        |
 | Arabia Saudyjska                        | SA        |
@@ -230,12 +231,12 @@ Jeśli kontakt obejmuje więcej niż jeden kraj/region, wprowadź każdy z dwóc
 | Słowenia                            | SI        |
 | Wyspy Salomona                     | SB        |
 | Somalia                             | SO        |
-| RPA                        | ZA        |
+| Republika Południowej Afryki                        | ZA        |
 | Wyspy Georgia Południowa i Sandwich Południowy | GS    |
-| Sudan Południowy                         | SS        |
+| Sudan południowy                         | SS        |
 | Hiszpania                               | ES        |
 | Sri Lanka                           | LK        |
-| Wyspa Świętej Heleny, Wyspa Wniebowstąpienia i Tristan da Cunha | POK     |
+| Święta Helena, Wyspa Wniebowstąpienia, Tristan da Cunha | POK     |
 | Sudan                               | SD        |
 | Surinam                            | SR        |
 | Svalbard                            | SJ        |
@@ -246,29 +247,29 @@ Jeśli kontakt obejmuje więcej niż jeden kraj/region, wprowadź każdy z dwóc
 | Tadżykistan                          | TJ        |
 | Tanzania                            | TZ        |
 | Tajlandia                            | TH        |
-| Timor-Leste                         | PRZEŁĄCZNIK        |
+| Timor — Wschodni                         | Przełącznik        |
 | Togo                                | TG        |
 | Tokelau                             | TK        |
 | Tonga                               | DO        |
-| Trinidad i Tobago                 | TT        |
+| Trynidad i Tobago                 | TT        |
 | Tunezja                             | TN        |
 | Turcja                              | TR        |
 | Turkmenistan                        | ®        |
 | Wyspy Turks i Caicos            | TC        |
-| Tuvalu                              | TV        |
+| Tuvalu                              | GRAŃ        |
 | Uganda                              | UG        |
 | Ukraina                             | UA        |
 | Zjednoczone Emiraty Arabskie                | AE        |
-| Zjednoczone Królestwo                      | GB        |
+| Wielka Brytania                      | GB        |
 | Stany Zjednoczone                       | USA        |
 | Urugwaj                             | UY        |
-| Federalna Odległe wyspy               | UM        |
-| Federalna Wyspy Dziewicze                 | VI        |
+| Odległe wyspy Stanów Zjednoczonych               | UM        |
+| Wyspy Dziewicze Stanów Zjednoczonych                 | VI        |
 | Uzbekistan                          | UZ        |
 | Vanuatu                             | VU        |
 | Watykan                        | VA        |
 | Wenezuela                           | VE        |
-| Vietnam                             | VN        |
+| Wietnam                             | VN        |
 | Wallis i Futuna                   | WF        |
 | Jemen                               | YE        |
 | Zambia                              | ZM        |

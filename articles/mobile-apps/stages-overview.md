@@ -7,12 +7,12 @@ ms.service: vs-appcenter
 ms.topic: article
 ms.date: 10/22/2019
 ms.author: emalani
-ms.openlocfilehash: 8ce032a6ad10b22bed5d266bb23fe81846e8a072
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.openlocfilehash: 6349f90eeacaedb03db4d6e91902fea69a8d0dae
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72795850"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73818013"
 ---
 # <a name="different-stages-in-mobile-application-development"></a>Różne etapy opracowywania aplikacji mobilnych
 Tworzenie aplikacji mobilnej obejmuje wiele etapów, a deweloperzy mogą łatwo korzystać z usług, narzędzi i technologii firmy Microsoft, aby tworzyć aplikacje mobilne o wysokiej klasy.
@@ -35,6 +35,6 @@ Deweloperzy tworzący aplikacje mobilne i skoncentrowane na chmurze mogą korzys
 
 ## <a name="additional-services"></a>Usługi dodatkowe
 Istnieje wiele usług platformy Azure, które mogą być używane w zależności od typu i rodzaju kompilowanej aplikacji.
-  - Azure Search do wyszukiwania wszystkich typów danych wewnętrznych przy użyciu szybkiego wykonywania zapytań.
+  - Usługa Azure Wyszukiwanie poznawcze do wyszukiwania wszystkich typów danych wewnętrznych przy użyciu szybkiego wykonywania zapytań.
   - Platforma Azure Cognitive Services do używania sztucznej analizy w aplikacji.
   - Usługa Azure sygnalizująca, aby umożliwić komunikację w czasie rzeczywistym w aplikacji.

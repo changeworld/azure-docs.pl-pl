@@ -1,19 +1,20 @@
 ---
-title: Rozwiązywanie problemów z łącznością z usługą Microsoft Azure SQL Database | Microsoft Docs
+title: Rozwiązywanie problemów z łącznością
 description: Opisuje sposób rozwiązywania problemów z łącznością w programie Azure SQL Database.
 services: sql-database
 ms.service: sql-database
 ms.topic: troubleshooting
+ms.custom: seo-lt-2019
 author: v-miegge
 ms.author: ramakoni
 ms.reviewer: ''
 ms.date: 09/27/2019
-ms.openlocfilehash: 9de6d85e1fc54d60f999cfa18665067b3998a432
-ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
+ms.openlocfilehash: 20988296b5eac7152c53abd6d238043288feacc8
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72390666"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73807270"
 ---
 # <a name="troubleshooting-connectivity-issues-with-microsoft-azure-sql-database"></a>Rozwiązywanie problemów z łącznością z usługą Microsoft Azure SQL Database
 
@@ -28,9 +29,9 @@ Gdy nawiązywanie połączenia z usługą Azure SQL Database nie powiedzie się,
 Aby rozwiązać ten problem:
 
 1. Sprawdź [pulpit nawigacyjny usługi Microsoft Azure](https://status.azure.com/status) pod kątem znanych awarii. 
-2. Jeśli nie ma znanego przerwy w działaniu, przejdź do [witryny sieci Web pomocy technicznej Microsoft Azure](http://azure.microsoft.com/support/options) , aby otworzyć sprawę pomocy technicznej.
+2. Jeśli nie ma znanego przerwy w działaniu, przejdź do [witryny sieci Web pomocy technicznej Microsoft Azure](https://azure.microsoft.com/support/options) , aby otworzyć sprawę pomocy technicznej.
 
-Aby uzyskać więcej informacji, zobacz [Rozwiązywanie problemów z błędem "baza danych na serwerze jest obecnie niedostępna"](https://docs.microsoft.com/azure/sql-database/sql-database-troubleshoot-common-connection-issues#troubleshoot-transient-errors).
+Aby uzyskać więcej informacji, zobacz [Rozwiązywanie problemów z błędem "baza danych na serwerze jest obecnie niedostępna"](sql-database-troubleshoot-common-connection-issues.md#troubleshoot-transient-errors).
 
 ## <a name="a-network-related-or-instance-specific-error-occurred-while-establishing-a-connection-to-sql-server"></a>Wystąpił błąd związany z siecią lub wystąpieniem podczas ustanawiania połączenia z SQL Server
 
@@ -188,7 +189,7 @@ Aby obejść ten problem, wypróbuj jedną z następujących metod:
   > [!NOTE]
   > Jest to minimalistyczny podejście, które może nie rozwiązać problemu.
 
-  1. Uruchom następujące zapytanie SQL, aby sprawdzić widok [sys. DM _exec_requests](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-exec-requests-transact-sql) , aby wyświetlić wszystkie żądania blokowania:
+  1. Uruchom następujące zapytanie SQL, aby sprawdzić widok [sys. dm_exec_requests](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-exec-requests-transact-sql) , aby wyświetlić wszystkie żądania blokowania:
 
              ```
              SELECT * FROM dm_exec_requests
@@ -197,7 +198,7 @@ Aby obejść ten problem, wypróbuj jedną z następujących metod:
   2. Określ **bufor wejściowy** dla bloku głównego.
   3. Dostrajanie zapytania bloku nagłówkowego.
 
-    Aby uzyskać szczegółową procedurę rozwiązywania problemów, zobacz [czy moje zapytanie działa prawidłowo w chmurze?](http://blogs.msdn.com/b/sqlblog/archive/2013/11/01/is-my-query-running-fine-in-the-cloud.aspx).
+    Aby uzyskać szczegółową procedurę rozwiązywania problemów, zobacz [czy moje zapytanie działa prawidłowo w chmurze?](https://blogs.msdn.com/b/sqlblog/archive/2013/11/01/is-my-query-running-fine-in-the-cloud.aspx).
 
 * Jeśli baza danych konsekwentnie osiągnie swój limit, niezależnie od blokowania i długotrwałych zapytań, należy rozważyć uaktualnienie do jednej z nowych wersji w wersji zapoznawczej (takiej jak [Wersja Standard lub Premium](https://azure.microsoft.com/pricing/details/sql-database/)).
 
@@ -265,7 +266,7 @@ Poniższe kroki mogą pomóc w obejść problemu lub zapewnieniu dodatkowych opc
 
 Jeśli ten błąd wystąpi wielokrotnie, spróbuj rozwiązać problem, wykonując następujące czynności: 
 
-1. Sprawdź widok sys. DM _exec_requests, aby wyświetlić wszystkie otwarte sesje, które mają wysoką wartość dla kolumny total_elapsed_time. Wykonaj to sprawdzenie, uruchamiając następujący skrypt SQL:
+1. Sprawdź widok sys. dm_exec_requests, aby wyświetlić otwarte sesje o dużej wartości dla kolumny total_elapsed_time. Wykonaj to sprawdzenie, uruchamiając następujący skrypt SQL:
 
    ```
    SELECT * FROM dm_exec_requests
@@ -275,7 +276,7 @@ Jeśli ten błąd wystąpi wielokrotnie, spróbuj rozwiązać problem, wykonują
 
 Należy również rozważyć przetwarzanie wsadowe zapytań. Aby uzyskać informacje na temat tworzenia pakietów wsadowych, zobacz [jak używać usługi Batch w celu ulepszania SQL Database aplikacji](https://docs.microsoft.com/azure/sql-database/sql-database-use-batching-to-improve-performance).
 
-Aby uzyskać szczegółową procedurę rozwiązywania problemów, zobacz [czy moje zapytanie działa prawidłowo w chmurze?](http://blogs.msdn.com/b/sqlblog/archive/2013/11/01/is-my-query-running-fine-in-the-cloud.aspx).
+Aby uzyskać szczegółową procedurę rozwiązywania problemów, zobacz [czy moje zapytanie działa prawidłowo w chmurze?](https://blogs.msdn.com/b/sqlblog/archive/2013/11/01/is-my-query-running-fine-in-the-cloud.aspx).
 
 ### <a name="error-40551-the-session-has-been-terminated-because-of-excessive-tempdb-usage"></a>Błąd 40551: sesja została przerwana z powodu nadmiernego użycia bazy danych TEMPDB
 
@@ -311,7 +312,7 @@ Aby rozwiązać ten problem, wypróbuj poniższe metody:
 
 Aby obejść ten problem, spróbuj zoptymalizować zapytanie.
 
-Aby uzyskać szczegółową procedurę rozwiązywania problemów, zobacz [czy moje zapytanie działa prawidłowo w chmurze?](http://blogs.msdn.com/b/sqlblog/archive/2013/11/01/is-my-query-running-fine-in-the-cloud.aspx).
+Aby uzyskać szczegółową procedurę rozwiązywania problemów, zobacz [czy moje zapytanie działa prawidłowo w chmurze?](https://blogs.msdn.com/b/sqlblog/archive/2013/11/01/is-my-query-running-fine-in-the-cloud.aspx).
 
 
 ### <a name="cannot-open-database-master-requested-by-the-login-the-login-failed"></a>Nie można otworzyć bazy danych "Master" żądanej przez nazwę logowania. Logowanie nie powiodło się.
@@ -336,7 +337,7 @@ System.Data.SqlClient.SqlConnection.TryOpen(TaskCompletionSource`1 retry)
 ClientConnectionId:<Client connection ID>
 ```
 
-Gdy wyjątek jest wyzwalany przez problemy z kwerendą, zobaczysz stos wywołań podobny do poniższego (należy zwrócić uwagę na odwołanie do klasy **SqlCommand** ). W tej sytuacji [Dostosuj swoje zapytania](http://blogs.msdn.com/b/sqlblog/archive/2013/11/01/is-my-query-running-fine-in-the-cloud.aspx).
+Gdy wyjątek jest wyzwalany przez problemy z kwerendą, zobaczysz stos wywołań podobny do poniższego (należy zwrócić uwagę na odwołanie do klasy **SqlCommand** ). W tej sytuacji [Dostosuj swoje zapytania](https://blogs.msdn.com/b/sqlblog/archive/2013/11/01/is-my-query-running-fine-in-the-cloud.aspx).
 
 ```
   at System.Data.SqlClient.SqlCommand.ExecuteReader()
@@ -364,7 +365,7 @@ Zobacz [pobieranie SQL Server informacji o połączeniu](https://docs.microsoft.
 
 5. Najlepszym rozwiązaniem jest upewnienie się, że logika ponowienia jest na miejscu. Aby uzyskać więcej informacji o logice ponowień, zobacz [Rozwiązywanie błędów przejściowych i błędy połączeń w SQL Database](https://docs.microsoft.com/azure/sql-database/sql-database-connectivity-issues).
 
-Jeśli te kroki nie rozwiążą problemu, spróbuj zebrać więcej danych, a następnie skontaktuj się z pomocą techniczną. Jeśli aplikacja jest usługą w chmurze, Włącz rejestrowanie. Ten krok zwraca sygnaturę czasową UTC błędu. Ponadto usługa SQL Azure zwraca identyfikator śledzenia. [Usługi pomocy technicznej firmy Microsoft](http://azure.microsoft.com/support/options/) mogą korzystać z tych informacji. 
+Jeśli te kroki nie rozwiążą problemu, spróbuj zebrać więcej danych, a następnie skontaktuj się z pomocą techniczną. Jeśli aplikacja jest usługą w chmurze, Włącz rejestrowanie. Ten krok zwraca sygnaturę czasową UTC błędu. Ponadto usługa SQL Azure zwraca identyfikator śledzenia. [Usługi pomocy technicznej firmy Microsoft](https://azure.microsoft.com/support/options/) mogą korzystać z tych informacji. 
 
 Aby uzyskać więcej informacji na temat włączania rejestrowania, zobacz [Włączanie rejestrowania diagnostycznego dla aplikacji w Azure App Service](https://azure.microsoft.com/documentation/articles/web-sites-enable-diagnostic-log/).
 

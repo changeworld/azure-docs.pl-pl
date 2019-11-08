@@ -1,32 +1,33 @@
 ---
 title: Jednostki SKU dla obrazu kontenerów platformy Azure | Portal Azure Marketplace
-description: Skonfiguruj jednostki SKU dla usługi Azure container.
+description: Skonfiguruj jednostki SKU dla kontenera platformy Azure.
 services: Azure, Marketplace, Cloud Partner Portal,
 author: dan-wesley
 ms.service: marketplace
+ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 04/24/2019
 ms.author: pabutler
-ms.openlocfilehash: 6953329bfabe99fc4bb28f2494cb412ba9cbbba0
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 5b69eea8ad7fd4c62925b50434b653118890e280
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64942912"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73823145"
 ---
-# <a name="container-skus-tab"></a>Kontener jednostek SKU kartę
+# <a name="container-skus-tab"></a>Karta jednostki SKU kontenera
 
-**Jednostki SKU** karcie **nowa oferta** strona pozwala na tworzenie jednego lub więcej jednostek SKU i kojarzyć je z nowej oferty.  Różne jednostki SKU służy do rozróżnienia rozwiązania przez zestawy funkcji, modelami rozliczeń lub innych cech.
+Karta **jednostki SKU** nowej strony **oferty** umożliwia utworzenie co najmniej jednej jednostki SKU i skojarzenie ich z nową ofertą.  Możesz użyć różnych jednostek SKU do rozróżnienia rozwiązania przez zestawy funkcji, modele rozliczeń lub inne cechy.
 
 ## <a name="sku-settings"></a>Ustawienia jednostki SKU
 
-Po rozpoczęciu tworzenia nowej oferty, nie ma żadnych jednostek SKU skojarzone z ofertą. Aby utworzyć nowe jednostki SKU, wykonaj następujące kroki:
+Po rozpoczęciu tworzenia nowej oferty nie ma żadnych jednostek SKU skojarzonych z ofertą. Aby utworzyć nową jednostkę SKU, wykonaj następujące kroki:
 
-1. Na karcie jednostki SKU wybierz **nowej jednostki SKU**
+1. Na karcie jednostki SKU wybierz pozycję **Nowa jednostka SKU**
 
-   ![Nowy wiersz w jednostce SKU](./media/containers-sku-settings.png)
+   ![Nowy monit jednostki SKU](./media/containers-sku-settings.png)
 
-2. Podaj wymagane informacje jednostki SKU i kontenera. Każda jednostka SKU odnosi się do obrazu kontenera. Istnieją dwie części do jednostki SKU:
+2. Podaj wymaganą jednostkę SKU i informacje o kontenerze. Każda jednostka SKU odpowiada obrazowi kontenera. Istnieją dwie części jednostki SKU:
 
     -   Metadane jednostki SKU
     -   Metadane kontenera
@@ -34,43 +35,43 @@ Po rozpoczęciu tworzenia nowej oferty, nie ma żadnych jednostek SKU skojarzone
 
 ### <a name="sku-metadata"></a>Metadane jednostki SKU
 
-Metadane jednostki SKU zawierają storefront wyświetlanych informacji dla listy kontenera.
+Metadane jednostki SKU zawierają informacje o wyświetlaniu w sklepie dla listy kontenerów.
 
 ![Metadane jednostki SKU](./media/containers-sku-details.png)
 
 
 ### <a name="container-metadata"></a>Metadane kontenera
 
-Metadane kontenera zawierają informacje o odwołaniu swojego repozytorium obrazów w usłudze Azure Container Registry (ACR). Portal Azure Marketplace kopiuje ten obraz do rejestru specyficzne dla portalu Marketplace, publiczna, a następnie udostępnia obraz dostępne dla klientów po certyfikacji. Wszystkie żądania od użytkownika platformy Azure z obrazu kontenera w witrynie Azure Marketplace są obsługiwane z rejestru publicznego w witrynie Marketplace, nie rejestru Azure container Registry.
+Metadane kontenera zawierają informacje referencyjne dotyczące szczegółów repozytorium obrazów w Azure Container Registry (ACR). Witryna Azure Marketplace kopiuje ten obraz do specyficznego dla witryny Marketplace rejestru publicznego, a następnie udostępnia go klientom po certyfikacji. Wszystkie żądania od użytkownika platformy Azure korzystające z obrazu kontenera portalu Azure Marketplace są udostępniane z publicznego rejestru portalu Marketplace, a nie ACR.
 
 ![Metadane kontenera](./media/containers-image-repository.png)
     
-**Szczegółów repozytorium obrazów** na poprzednim ekranie przechwytywania zawiera następujące pola.  Wymagane pola są wskazanych przez znak gwiazdki (*).
+**Szczegóły repozytorium obrazu** w poprzednim przechwyceniu ekranu zawierają następujące pola.  Wymagane pola są indicted przez gwiazdkę (*).
 
--   **Identyfikator subskrypcji\***  — identyfikator subskrypcji platformy Azure, gdzie rekordu ACR jest obecny.
--   **Nazwa grupy zasobów\***  — Nazwa grupy zasobów usługi ACR.
--   **Nazwa rejestru\***  — Nazwa rekordu ACR.
--   **Nazwa repozytorium\***  — Nazwa repozytorium. Po ustawieniu tej nazwy, nie można zmienić tę wartość. Użyj unikatowej nazwy, aby uniknąć konfliktów z innymi ofertami na Twoim koncie.
--   **Nazwa użytkownika\***  -username (nazwa użytkownika administratora) skojarzone z obrazem usługi ACR.
--   **Hasło\***  -hasło skojarzone z obrazem usługi ACR.
+-   **Identyfikator subskrypcji\*** — Identyfikator subskrypcji platformy Azure, w którym znajduje się ACR.
+-   **Nazwa grupy zasobów\*** — nazwa grupy zasobów ACR.
+-   **Nazwa rejestru\*** — nazwa ACR.
+-   **Nazwa repozytorium\*** — Nazwa repozytorium. Po ustawieniu tej nazwy nie można zmienić tej wartości. Użyj unikatowej nazwy, aby uniknąć konfliktu z innymi ofertami na Twoim koncie.
+-   **Nazwa użytkownika\*** — nazwa użytkownika (nazwa użytkownika administratora) skojarzona z obrazem ACR.
+-   **Hasło\*** — hasło skojarzone z obrazem ACR.
 
     >[!NOTE]
-    >Nazwa użytkownika i hasło są wymagane, aby upewnić się, że partnerzy mają dostęp do usługi ACR, o których wspomniano w procesie publikowania.
+    >Wymagana jest nazwa użytkownika i hasło, aby zapewnić partnerom dostęp do ACR wspomnianego w procesie publikacji.
 
 
 ### <a name="image-version"></a>Wersja obrazu
 
-Podczas publikowania obrazu kontenera, możesz podać jeden lub więcej tagów obrazu i skróty służące SHA.
+Podczas publikowania obrazu kontenera można podać jeden lub więcej tagów obrazu i algorytmy SHA.
 
-**Obraz znacznika\* lub skrótu**
+**\* znacznika obrazu lub skrótu**
  
-- Tego tagu lub skrótu musi zawierać `latest` znacznikiem i wersji (na przykład, rozpoczynając od `xx.xx.xx-` gdzie xx jest liczbą). Powinny one być [manifestu tagi](https://github.com/estesp/manifest-tool) do wielu platform docelowych. Wszystkie tagi, które odwołuje się tag manifestu również musi zostać dodany, dzięki czemu możemy przekazać je. 
-- Można dodać kilka wersji kontenerów przy użyciu tagów. Manifest wszystkie tagi (z wyjątkiem `latest`) musi rozpoczynać się albo `X.Y-` lub `X.Y.Z-` gdzie X, Y, Z są liczbami całkowitymi. <br/> Na przykład jeśli `latest` tag wskazuje `1.0.1-linux-x64`, `1.0.1-linux-arm32`, i `1.0.1-windows-arm32`, te znaczniki, które muszą zostać dodane w tym miejscu.
+- Ten tag lub skrót muszą zawierać tag `latest` i tag wersji (na przykład, rozpoczynając od `xx.xx.xx-`, gdzie XX jest liczbą). Powinny one być [tagami manifestu](https://github.com/estesp/manifest-tool) dla wielu platform docelowych. Wszystkie Tagi, do których odwołuje się tag manifestu, również muszą zostać dodane, aby można było je przekazać. 
+- Możesz dodać kilka wersji kontenera przy użyciu tagów. Wszystkie Tagi manifestu (z wyjątkiem `latest`) muszą zaczynać się od `X.Y-` lub `X.Y.Z-` gdzie X, Y, Z są liczbami całkowitymi. <br/> Na przykład jeśli tag `latest` wskazuje `1.0.1-linux-x64`, `1.0.1-linux-arm32`i `1.0.1-windows-arm32`, Tagi te należy dodać w tym miejscu.
 
 >[!NOTE]
->Pamiętaj, aby dodać **tag testowy** w obrazie, dzięki czemu można zidentyfikować obrazu podczas testowania.
+>Pamiętaj, aby dodać **tag testowy** do obrazu, aby można było zidentyfikować obraz podczas testowania.
 
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
-Użyj [kartę Marketplace](./cpp-marketplace-tab.md) utworzyć portalu marketplace opis oferty. 
+Skorzystaj z [karty Marketplace](./cpp-marketplace-tab.md) , aby utworzyć opis witryny Marketplace dla swojej oferty. 

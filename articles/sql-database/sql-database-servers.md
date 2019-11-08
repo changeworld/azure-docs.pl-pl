@@ -1,5 +1,5 @@
 ---
-title: Serwery Azure SQL Database
+title: Serwery
 description: Dowiedz się więcej na temat serwerów Azure SQL Database i zarządzania nimi.
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 03/12/2019
-ms.openlocfilehash: 8ebe08f37255743578cbc3dd44f7d84d79b9d17a
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: a3ad3314b8a18ec6a63b5d51bc7d8b3f9d7a6260
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73687410"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73818283"
 ---
 # <a name="azure-sql-database-servers-and-their-management"></a>Serwery Azure SQL Database i ich zarządzanie
 
@@ -153,7 +153,7 @@ Aby utworzyć i zarządzać programem Azure SQL Server, bazami danych i zaporami
 |[ALTER DATABASE (Azure SQL Data Warehouse)](/sql/t-sql/statements/alter-database-azure-sql-data-warehouse)|Modyfikuje Azure SQL Data Warehouse.|
 |[DROP DATABASE (Transact-SQL)](/sql/t-sql/statements/drop-database-transact-sql)|Usuwa bazę danych.|
 |[sys. database_service_objectives (Azure SQL Database)](/sql/relational-databases/system-catalog-views/sys-database-service-objectives-azure-sql-database)|Zwraca wersję (warstwę usług), cel usługi (warstwę cenową) i nazwę puli elastycznej (jeśli istnieje) dla usługi Azure SQL Database lub Azure SQL Data Warehouse. Jeśli użytkownik jest zalogowany do bazy danych Master na serwerze Azure SQL Database, zwraca informacje o wszystkich bazach danych. W przypadku Azure SQL Data Warehouse należy nawiązać połączenie z bazą danych Master.|
-|[sys. DM _db_resource_stats (Azure SQL Database)](/sql/relational-databases/system-dynamic-management-views/sys-dm-db-resource-stats-azure-sql-database)| Zwraca użycie procesora CPU, operacji we/wy i pamięci dla bazy danych Azure SQL Database. Jeden wiersz istnieje przez co 15 sekund, nawet jeśli w bazie danych nie ma żadnych działań.|
+|[sys. dm_db_resource_stats (Azure SQL Database)](/sql/relational-databases/system-dynamic-management-views/sys-dm-db-resource-stats-azure-sql-database)| Zwraca użycie procesora CPU, operacji we/wy i pamięci dla bazy danych Azure SQL Database. Jeden wiersz istnieje przez co 15 sekund, nawet jeśli w bazie danych nie ma żadnych działań.|
 |[sys. resource_stats (Azure SQL Database)](/sql/relational-databases/system-catalog-views/sys-resource-stats-azure-sql-database)|Zwraca dane użycia procesora CPU i magazynu dla Azure SQL Database. Dane są zbierane i agregowane w ciągu pięciu minut.|
 |[sys. database_connection_stats (Azure SQL Database)](/sql/relational-databases/system-catalog-views/sys-database-connection-stats-azure-sql-database)|Zawiera dane statystyczne dotyczące zdarzeń łączności z bazą danych SQL Database, które zawierają omówienie sukcesów i niepowodzeń połączeń z bazą danych. |
 |[sys. event_log (Azure SQL Database)](/sql/relational-databases/system-catalog-views/sys-event-log-azure-sql-database)|Zwraca pomyślne Azure SQL Database połączenia z bazą danych, błędy połączeń i zakleszczenie. Te informacje służą do śledzenia i rozwiązywania problemów z działaniem bazy danych za pomocą SQL Database.|

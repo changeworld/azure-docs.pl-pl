@@ -1,5 +1,5 @@
 ---
-title: Kontrolki zabezpieczeń dla Azure SQL Database
+title: Mechanizmy zabezpieczeń
 description: Lista kontrolna kontroli zabezpieczeń dla oceny Azure SQL Database
 services: sql-database
 author: msmbaldwin
@@ -8,12 +8,12 @@ ms.service: load-balancer
 ms.topic: conceptual
 ms.date: 09/04/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 77ff55389bac53d8719d86b4ac77f281415af49f
-ms.sourcegitcommit: 7c5a2a3068e5330b77f3c6738d6de1e03d3c3b7d
+ms.openlocfilehash: 58070cab1221b9d9585784d82cf1a48afcedb8af
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70886747"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73802841"
 ---
 # <a name="security-controls-for-azure-sql-database"></a>Kontrolki zabezpieczeń dla Azure SQL Database
 
@@ -45,13 +45,13 @@ SQL Database obejmuje zarówno [jedną bazę danych](sql-database-single-index.y
 | Kontrola zabezpieczeń | Tak/Nie | Uwagi|
 |---|---|--|
 | Authentication| Tak | Azure Active Directory (Azure AD) |
-| Authorization| Tak | Brak |
+| Autoryzacja| Tak | Brak |
 
 ## <a name="data-protection"></a>Ochrona danych
 
 | Kontrola zabezpieczeń | Tak/Nie | Uwagi |
 |---|---|--|
-| Szyfrowanie po stronie serwera w czasie spoczynku: Klucze zarządzane przez firmę Microsoft | Tak | Nazywane "szyfrowaniem w użyciu", zgodnie z opisem w artykule [Always Encrypted](sql-database-always-encrypted.md). Szyfrowanie po stronie serwera używa [przezroczystego szyfrowania danych](transparent-data-encryption-azure-sql.md).|
+| Szyfrowanie po stronie serwera w czasie spoczynku: klucze zarządzane przez firmę Microsoft | Tak | Nazywane "szyfrowaniem w użyciu", zgodnie z opisem w artykule [Always Encrypted](sql-database-always-encrypted.md). Szyfrowanie po stronie serwera używa [przezroczystego szyfrowania danych](transparent-data-encryption-azure-sql.md).|
 | Szyfrowanie podczas przesyłania:<ul><li>Szyfrowanie ExpressRoute platformy Azure</li><li>Szyfrowanie w sieci wirtualnej</li><li>Szyfrowanie między sieciami wirtualnymi</ul>| Tak | Przy użyciu protokołu HTTPS. |
 | Obsługa kluczy szyfrowania, taka jak CMK lub BYOK| Tak | Oferowana jest obsługa klucza zarządzanego przez usługę i zarządzane przez klienta. Ten drugi jest oferowany w [Azure Key Vault](../key-vault/index.yml). |
 | Szyfrowanie na poziomie kolumny udostępniane przez usługi danych platformy Azure| Tak | Za [Always Encrypted](sql-database-always-encrypted.md). |
@@ -67,7 +67,7 @@ SQL Database obejmuje zarówno [jedną bazę danych](sql-database-single-index.y
 
 | Kontrola zabezpieczeń | Tak/Nie | Uwagi|
 |---|---|--|
-| Prewencyjne: Ocena luk w zabezpieczeniach | Tak | Zapoznaj się z tematem usługa oceny luk w zabezpieczeniach w [usłudze SQL Database](sql-vulnerability-assessment.md). |
+| Prewencyjne: Ocena luk w zabezpieczeniach | Tak | Zapoznaj się z tematem [Usługa oceny luk w zabezpieczeniach w usłudze SQL Database](sql-vulnerability-assessment.md). |
 | Prewencyjne: odnajdywanie i Klasyfikacja danych  | Tak | Zobacz [Azure SQL Database i SQL Data Warehouse odnajdywania danych & klasyfikację](sql-database-data-discovery-and-classification.md). |
 | Wykrywanie: wykrywanie zagrożeń | Tak | Zobacz [zaawansowaną ochronę przed zagrożeniami dla Azure SQL Database](sql-database-threat-detection-overview.md). |
 

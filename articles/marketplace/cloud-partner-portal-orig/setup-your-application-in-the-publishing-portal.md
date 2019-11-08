@@ -1,124 +1,125 @@
 ---
-title: Instalowanie aplikacji w portalu wydawców
-description: Instrukcje w sposób konfigurowania aplikacji w portalu wydawców w chmurze.
+title: Konfigurowanie aplikacji w portalu wydawców
+description: Instrukcje dotyczące sposobu konfigurowania aplikacji w portalu publikowania w chmurze.
 services: Azure, Marketplace, Cloud Partner Portal,
 author: pbutlerm
 manager: Ricardo.Villalobos
 ms.service: marketplace
+ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 09/13/2018
 ms.author: pabutler
-ms.openlocfilehash: 6da80bd3b5fe487a44400f4f3c21e8fa49da75d4
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 1bf89f94d91e0d809428cf8098db0fb37afdb47a
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64943556"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73814676"
 ---
-# <a name="setup-your-application-in-the-publishing-portal"></a>Instalowanie aplikacji w portalu wydawców
+# <a name="setup-your-application-in-the-publishing-portal"></a>Konfigurowanie aplikacji w portalu wydawców
 
-Teraz można przystąpić do konfigurowania aplikacji w portalu wydawców.
+Teraz możesz przystąpić do konfigurowania aplikacji w portalu wydawców.
 
 ## <a name="login-and-create-a-new-offer"></a>Zaloguj się i Utwórz nową ofertę
 
-1. Zaloguj się do [portalu dla partnerów w chmurze](https://cloudpartner.azure.com/).
-2. Na pasku nawigacyjnym po lewej stronie kliknij pozycję "+ nowe oferty" i wybierz pozycję "Dynamics 365 for Customer Engagement."
+1. Zaloguj się do [Portal Cloud partner](https://cloudpartner.azure.com/).
+2. Na pasku nawigacyjnym po lewej stronie kliknij pozycję "+ Nowa oferta" i wybierz pozycję "Dynamics 365 dla zaangażowania klienta".
 
-![Wybierając nową ofertę](./media/CRMScreenShot14.png)
+![Wybieranie nowej oferty](./media/CRMScreenShot14.png)
 
-1. Nowa oferta "Editor" widok jest teraz otwarte i jesteśmy gotowi rozpocząć tworzenie.
+1. Widok nowej oferty "Edytor" jest teraz otwarty i wszystko jest gotowe do rozpoczęcia tworzenia.
 
-![Nowy ekran oferty](./media/CRMScreenShot15.png)
+![Ekran nowej oferty](./media/CRMScreenShot15.png)
 
-1. "Form", które muszą być wypełnione są widoczne po lewej stronie w widoku "Editor". Każdy "form" zawiera zestaw pól, które mają zostać wypełnione. Wymagane pola są oznaczone czerwoną gwiazdką (\*).
+1. "Formularze", które muszą zostać wypełnione, są widoczne po lewej stronie w widoku "Edytor". Każdy "formularz" składa się z zestawu pól, które mają zostać wypełnione. Wymagane pola są oznaczone czerwoną gwiazdką (\*).
 
-Istnieją cztery główne formularze na potrzeby tworzenia Dynamics 365 Customer Engagement oferty
+Istnieją cztery główne formularze do tworzenia oferty Dynamics 365 na potrzeby zaangażowania klienta
 
 * Ustawienia oferty
 * Informacje techniczne
-* Szczegóły sklepu
+* Szczegóły witryny dotyczącej Sklepu
 * Kontakty
 
 ## <a name="fill-out-the-offer-settings-form"></a>Wypełnij formularz ustawień oferty
 
-Formularz ustawień oferty jest podstawowej postaci, aby określić ustawienia oferty. Poniżej opisano różne pola.
+Formularz ustawienia oferty jest podstawową formą, aby określić ustawienia oferty. Poniżej opisano różne pola.
 
 ### <a name="offer-id"></a>Identyfikator oferty
 
-Jest to unikatowy identyfikator oferty w ramach profilu wydawcy. Ten identyfikator będzie widoczny w adresach URL produktu. Może składać się tylko z małych znaków alfanumerycznych i łączników (-). Identyfikator nie może kończyć się kreską i nie może przekraczać 50 znaków. To pole jest zablokowane, gdy oferty przechodzi na żywo.
+To jest unikatowy identyfikator oferty w ramach profilu wydawcy. Ten identyfikator będzie widoczny w adresach URL produktów. Może składać się tylko z małych znaków alfanumerycznych i łączników (-). Identyfikator nie może kończyć się znakiem kreski i może zawierać maksymalnie 50 znaków. To pole jest zablokowane po przeprowadzeniu oferty.
 
-na przykład, jeśli Wydawca **"contoso"** wydawców tworzy oferty z Identyfikatorem oferty **"Przykładowy WebApp"** , pojawi się w usłudze AppSource, jako "https:\//appsource.microsoft.com/marketplace/apps/contoso.sample-WebApp?tab=Overview"
+na przykład jeśli wydawcy **"contoso"** tworzą ofertę o identyfikatorze oferty **"Sample-webapp"** , zostanie ona wyświetlona w AppSource jako "https:\//AppSource.Microsoft.com/Marketplace/Apps/contoso.sample-webapp?Tab=Overview"
 
-### <a name="publisher-id"></a>Identyfikator wydawcy
+### <a name="publisher-id"></a>IDENTYFIKATOR wydawcy
 
-Tej listy rozwijanej można wybrać profil wydawcy, który chcesz opublikować tę ofertę, w obszarze. To pole jest zablokowane, gdy oferty przechodzi na żywo.
+Ta lista rozwijana umożliwia wybranie profilu wydawcy, w ramach którego ma zostać opublikowana oferta. To pole jest zablokowane po przeprowadzeniu oferty.
 
-### <a name="name"></a>Name (Nazwa)
+### <a name="name"></a>Nazwa
 
-Jest to nazwa wyświetlana oferty. Jest to nazwa, która będzie wyświetlana w [AppSource](https://appsource.microsoft.com/). Może zawierać maksymalnie 50 znaków.
+To jest nazwa wyświetlana oferty. To jest nazwa, która będzie wyświetlana w [AppSource](https://appsource.microsoft.com/). Może zawierać maksymalnie 50 znaków.
 
-Kliknij przycisk "Zapisz", aby zapisać postęp. Następnym krokiem powinno być, aby dodać informacje techniczne dla oferty.
+Kliknij przycisk "Zapisz", aby zapisać postęp. Następnym krokiem jest dodanie informacji technicznych do oferty.
 
-## <a name="fill-out-the-technical-info-form"></a>Wypełnij formularz informacje techniczne
+## <a name="fill-out-the-technical-info-form"></a>Wypełnij formularz informacji technicznych
 
 
-Formularz informacji technicznych jest, gdzie możesz wypełni informacje charakterystyczne do usługi Dynamics 365 Customer Engagement rozwiązania. Kursor będzie wyświetlane z większą ilością informacji. Zobacz przykład poniżej.
+Formularz informacje techniczne polega na tym, że zapełnisz informacje specyficzne dla rozwiązania do zaangażowania klienta na usługi Dynamics 365. Umieszczenie wskaźnika myszy na stronie zawiera więcej informacji. Zobacz przykład poniżej.
 
-![Ekran informacje techniczne](./media/CRMScreenShot16.png)
+![Ekran informacji technicznych](./media/CRMScreenShot16.png)
 
 ### <a name="application-info"></a>Informacje o aplikacji
 
-Większość wydawców spowoduje, że te pola z wartościami domyślnymi, użytkownik nie, nie, a pusty adres URL konfiguracji aplikacji, zgodnie z powyższym zrzucie ekranu.
+Większość wydawców pozostawi te pola z wartościami domyślnymi, User, no, no i pustym adresem URL konfiguracji aplikacji, tak jak na poniższym zrzucie ekranu.
 
-### <a name="crm-package"></a>Pakiet aplikacji CRM
+### <a name="crm-package"></a>Pakiet CRM
 
-![Informacje o pakiecie aplikacji CRM](./media/CRMScreenShot17.png)
+![Informacje o pakiecie CRM](./media/CRMScreenShot17.png)
 
-Oto wyjaśnienia dla tych pól:
+Oto wyjaśnienie tych pól:
 
-* Nazwa pliku pakietu: Nazwa pliku utworzonego w kroku powyżej podczas tworzenia pliku zip, który jest CRM pakietu usługi AppSource. W powyższym przykładzie jest "Microsoft\_SamplePackage.zip".
-* Adres URL lokalizacji pakietu: Jest to adres URL konta usługi Azure Storage, która zawiera nazwę pliku pakietu, które są wymienione powyżej. Jest to adres URL utworzony w kroku 9 sekcji powyżej.
-* Plik pakietu jest więcej niż jeden pakiet crm: Wybierz pozycję Tak, **tylko** jeśli są obsługiwanie wielu wersji programu crm przy użyciu różnych pakietach. Dla większości partnerów są to "No". Jeśli wybierzesz tak, musisz utworzyć pakiety usługi AppSource dla każdej wersji rozwiązania. _Uwaga: NIE jest to pytanie Jeśli masz wiele **zip** plików. Jeśli masz wiele plików solution.zip, ale tylko jedna wersja, należy nadal wybrać "Nie." Narzędzia pakietu zostanie wyświetlone są ze sobą automatycznie._
+* Nazwa pliku pakietu: nazwa pliku utworzona w powyższym kroku podczas tworzenia pliku zip, który jest pakietem CRM AppSource. W powyższym przykładzie jest to "Microsoft\_SamplePackage. zip".
+* Adres URL lokalizacji pakietu: jest to adres URL konta usługi Azure Storage, które zawiera nazwę pliku pakietu określoną powyżej. Jest to adres URL utworzony w kroku 9 sekcji powyżej.
+* Czy w pliku pakietu znajduje się więcej niż jeden pakiet CRM: wybierz opcję tak **tylko** wtedy, gdy obsługujesz wiele wersji programu CRM z różnymi pakietami. W przypadku większości partnerów nie będzie to miało znaczenia. Jeśli wybierzesz opcję tak, musisz utworzyć pakiety AppSource dla każdej wersji rozwiązania. _Uwaga: nie jest to pytanie, czy masz wiele plików **zip** . Jeśli masz wiele plików. zip rozwiązania, ale tylko jedną wersję, nadal nie należy wybierać opcji "nie". Narzędzie pakowanie spowoduje automatyczne przełączenie tych samych._
 
 ### <a name="crm-package-availability"></a>Dostępność pakietu CRM
 
-W tej sekcji należy wybrać jakie regiony CRM, pakiet zostanie udostępniona w celu. Aby uzyskać informacje na które CRM regiony obsługi którego kraje/regiony, zobacz łącze: [https://o365datacentermap.azurewebsites.net/](https://o365datacentermap.azurewebsites.net/)
+W tej sekcji Wybierz regiony programu CRM, do których zostanie udostępniony pakiet. Aby uzyskać informacje na temat tego, które regiony programu CRM stanowią kraje/regiony, zobacz link: [https://o365datacentermap.azurewebsites.net/](https://o365datacentermap.azurewebsites.net/)
 
-Uwaga: Wdrażanie w Niemczech "Suwerennych i chmura rządowa USA" suwerennych wymaga uprawnień specjalnych i sprawdzanie poprawności podczas certyfikacji
+Uwaga: wdrożenie do Niemiec "suwerenne i US Gov Cloud" suwerenne wymaga specjalnych uprawnień i weryfikacji podczas certyfikacji
 
-## <a name="storefront-details"></a>Szczegóły sklepu
+## <a name="storefront-details"></a>Szczegóły witryny dotyczącej Sklepu
 
 ### <a name="offer-summary"></a>Podsumowanie oferty
 
-Jest to podsumowanie Twoja oferta korzyści. Pojawi się na stronie wyszukiwania swojej oferty. Należy się z maksymalnie 100 znaków.
+To jest podsumowanie propozycji wartości oferty. Zostanie ona wyświetlona na stronie wyszukiwania Twojej oferty. Powinna zawierać maksymalnie 100 znaków.
 
 ### <a name="offer-description"></a>Opis oferty
 
-Jest to opis, który będzie wyświetlany na stronie szczegółów aplikacji. Maksymalna dozwolona wartość to 1300 znaków
+Jest to opis, który będzie wyświetlany na stronie szczegółów aplikacji. Maksymalna dozwolona liczba znaków to 1300
 
 ### <a name="industries"></a>Branże
 
-Wybierz branżę, który aplikacji najlepiej jest wyrównany do. Jeśli aplikacja ma odnosi się do wielu branżach, można pozostawić to puste.
+Wybierz branżę, do której aplikacja jest Najlepsza. Jeśli aplikacja odnosi się do wielu branż, możesz pozostawić to pole puste.
 
-### <a name="categories"></a>Categories
+### <a name="categories"></a>Kategorie
 
-Wybierz kategorie, które są istotne dla twojej aplikacji. Wybierz więcej niż 3.
+Wybierz kategorie, które są odpowiednie dla Twojej aplikacji. Wybierz maksymalnie 3.
 
 ### <a name="app-type"></a>Typ aplikacji
 
-Wybierz typ wersji próbnej, która umożliwi Twojej aplikacji w usłudze AppSource. "Bezpłatnej" oznacza, że Twoja aplikacja jest bezpłatna. "Wersja próbna" oznacza, że klienci mogą wypróbować aplikację przez krótki okres w usłudze AppSource. "Żądanie dotyczące wersji próbnej" nie jest obsługiwana dla Dynamics 365 Customer Engagement aplikacji. Nie należy zaznaczać tej opcji.
+Wybierz typ wersji próbnej, która będzie włączana przez aplikację w usłudze AppSource. "Bezpłatnie" oznacza, że Twoja aplikacja jest bezpłatna. "Wersja próbna" oznacza, że klienci mogą wypróbować aplikację przez krótki okres w AppSource. "Żądanie dla wersji próbnej" nie jest obsługiwane dla programu Dynamics 365 dla aplikacji do zaangażowania klientów. Nie wybieraj tej opcji.
 
-### <a name="help-link-for-your-app"></a>Link Pomoc dla aplikacji
+### <a name="help-link-for-your-app"></a>Link pomocy dla aplikacji
 
-Wprowadź adres URL do strony, która ma powiązane informacje pomocy dla swojej aplikacji.
+Wprowadź adres URL strony, która zawiera informacje dotyczące pomocy dotyczącej aplikacji.
 
 ### <a name="supported-countriesregions"></a>Obsługiwane kraje/regiony
 
-To pole określa krajów/regionów, w których Twoja oferta będzie dostępna dla wersji próbnej.
+To pole określa kraje/regiony, w których oferta będzie dostępna do wersji próbnej.
 
 ### <a name="supported-languages"></a>Obsługiwane języki
 
-Wybierz języki, które obsługuje aplikacja. Jeśli aplikacja obsługuje dodatkowe języki, które nie znajdują się na tej liście, w dalszym ciągu opublikować ofertę i wiadomość e-mail na adres: [ appsource@microsoft.com ](mailto:appsource@microsoft.com) aby dać nam znać.
+Wybierz języki obsługiwane przez aplikację. Jeśli Twoja aplikacja obsługuje dodatkowe języki, które nie znajdują się na tej liście, Kontynuuj publikowanie oferty i Wyślij wiadomość e-mail na adres: [appsource@microsoft.com](mailto:appsource@microsoft.com) , aby poinformować nas o tym.
 
 ### <a name="app-version"></a>Wersja aplikacji
 
@@ -128,63 +129,63 @@ Wprowadź numer wersji aplikacji
 
 Wprowadź datę wydania aplikacji
 
-### <a name="products-your-app-works-with-max-3"></a>Produkty, których Twoja aplikacja współpracuje ze (maksymalna liczba 3)
+### <a name="products-your-app-works-with-max-3"></a>Produkty działające z aplikacją (maksymalnie 3)
 
-Specyficzne produkty, których Twoja aplikacja współpracuje ze. Listę można wyświetlić maksymalnie trzy produkty. Aby wyświetlić listę produktów, kliknij znak plus (obok nowy), a nowe pole tekstowe Otwórz zostanie utworzona dla Ciebie, wprowadź nazwę produktu, który Twoja aplikacja współpracuje ze.
+Specyficzne dla listy produkty, z którymi działa Twoja aplikacja. Można wyświetlić listę maksymalnie trzech produktów. Aby wyświetlić listę produktów, kliknij znak plus (obok pozycji nowy) i nowe pole tekstowe otwarte zostanie utworzone, aby wprowadzić nazwę produktu, z którym działa aplikacja.
 
-### <a name="search-keywords-max-3"></a>Słowa kluczowe (maksymalna liczba 3)
+### <a name="search-keywords-max-3"></a>Słowa kluczowe wyszukiwania (maks. 3)
 
-Usługa AppSource umożliwia klientowi wyszukiwanie na podstawie słów kluczowych. Można wprowadzić zbiór słów kluczowych, dla których aplikacja będzie widoczna dla klientów.
+AppSource umożliwia klientowi wyszukiwanie na podstawie słów kluczowych. Można wprowadzić zestaw słów kluczowych, dla których aplikacja będzie pokazywana klientom.
 
-Na przykład jeśli aplikacja jest "Mój wysyłanie wiadomości E-mail usługi" wiadomości E-mail, korespondencji, wiadomości E-mail może być kilka słów kluczowych. Wybór słów, które użytkownicy prawdopodobnie będzie używany do wyszukiwania dla aplikacji w polu wyszukiwania w usłudze AppSource.
+Na przykład jeśli aplikacja to wiadomości e-mail "Moje usługi poczty E-mail", adresowanie, usługa poczty może być słowami kluczowymi. Wybierz wyrazy, które użytkownicy będą prawdopodobnie używać do wyszukiwania aplikacji w polu wyszukiwania AppSource.
 
-### <a name="hide-key"></a>Ukrywanie klucza
+### <a name="hide-key"></a>Ukryj klucz
 
-Jest to klucz, który zostanie połączony z oferty wersji zapoznawczej adres URL, aby je ukryć z widoku publicznego. Nie jest hasłem. Można wprowadzić dowolny ciąg, w tym miejscu.
+Jest to klucz, który zostanie połączony z adresem URL wersji zapoznawczej oferty, aby ukryć go z widoku publicznego. Nie jest to hasło. W tym miejscu możesz wprowadzić dowolny ciąg.
 
-### <a name="offer-logo-png-format-48x48"></a>Logo oferty (w formacie png, 48 x 48)
+### <a name="offer-logo-png-format-48x48"></a>Logo oferty (format PNG, 48x48)
 
-To będzie wyświetlane na stronie wyszukiwania Twojej aplikacji. **Dozwolone jest tylko format png.** Przekazywanie obrazu png z rozpoznawaniem 48PX\*48PX
+Zostanie ona wyświetlona na stronie wyszukiwania Twojej aplikacji. **Dozwolony jest tylko format PNG.** Przekaż obraz PNG z rozdzielczością 48PX\*48PX
 
-### <a name="offer-logo-png-format-216x216"></a>Logo oferty (w formacie png, 216 x 216)
+### <a name="offer-logo-png-format-216x216"></a>Logo oferty (format PNG, 216x216)
 
-To będą wyświetlane na stronie szczegółów aplikacji. **Dozwolone jest tylko format png.** Przekazywanie obrazu png z rozpoznawaniem 216PX\*216PX
+Zostanie ona wyświetlona na stronie szczegółów aplikacji. **Dozwolony jest tylko format PNG.** Przekaż obraz PNG z rozdzielczością 216PX\*216PX
 
 ### <a name="videos"></a>Filmy wideo
 
-Możesz przekazać maksymalnie cztery filmów wideo. Dla każdego filmu wideo, który chcesz przekazać należy podać nazwę wideo, adres URL (w usłudze YouTube lub Vimeo tylko) i miniatury do skojarzenia z filmu wideo. Miniatura musi być w formacie png, a musi być 1280PX\*720PX. Aby dodać nowe wideo, kliknij znak plus. Thumbnail(s) filmów wideo będzie wyświetlany na stronie szczegółów Twojej aplikacji.
+Można przekazać maksymalnie cztery wideo. Dla każdego wideo, które chcesz przekazać, musisz podać nazwę wideo, adres URL (tylko w usłudze YouTube lub Vimeo) i miniaturę, aby skojarzyć z filmem wideo. Miniatura musi być w formacie PNG i musi być 1280PX\*720PX. Aby dodać nowe wideo, kliknij znak plus. Miniatury wideo pojawią się na stronie szczegółów aplikacji.
 
 ### <a name="documents"></a>Dokumenty
 
-Możesz przekazać maksymalnie trzy dokumenty w formacie PDF. Dla każdego dokumentu, który chcesz przekazać musisz podać nazwę dokumentu i Przekaż dokument. Dokument musi być w formacie pdf.
+Można przekazać maksymalnie trzy dokumenty w formacie PDF. Dla każdego dokumentu, który ma zostać przekazany, należy podać nazwę dokumentu i przekazać go. Dokument musi być w formacie PDF.
 
-Aby dodać nowe dokumenty, kliknij znak plus
+Aby dodać nowe dokumenty, kliknij znak plusa
 
 ### <a name="screenshots"></a>Zrzuty ekranu
 
-Oto zrzuty ekranu, który będzie wyświetlany na stronie szczegółów AppSource dla aplikacji.
+Są to zrzuty ekranu, które pojawią się na stronie szczegółów AppSource aplikacji.
 
 ### <a name="privacy-policy"></a>Zasady ochrony prywatności
 
-Wprowadź adres URL do swojej aplikacji, zasady zachowania poufności informacji
+Wprowadź adres URL do zasad zachowania poufności informacji aplikacji
 
 ### <a name="terms-of-use"></a>Warunki użytkowania
 
-Wprowadź warunki użytkowania Twojej aplikacji. Klienci usługi AppSource są proszeni o zaakceptowanie tych warunków, zanim użytkownik podejmie próbę aplikacji
+Wprowadź warunki użytkowania aplikacji. Aby móc wypróbować aplikację, klienci AppSource muszą zaakceptować te warunki
 
 ### <a name="support-url"></a>Adres URL pomocy technicznej
 
 Wprowadź adres URL pomocy technicznej dla aplikacji.
 
-### <a name="lead-destination"></a>Prowadzić docelowego
+### <a name="lead-destination"></a>Miejsce docelowe potencjalnego klienta
 
-Wybierz system CRM, gdzie można prowadzić będą przechowywane. Należy wybrać to "Usługi Azure Table", jeśli masz jedną z następujących systemów CRM: Salesforce, Marketo, Microsoft Dynamics CRM. System CRM, tutaj jest, gdzie będzie zapisywać szczegóły użytkownicy końcowi, którzy spróbują aplikacji w usłudze AppSource (potencjalnych klientów). W zależności od systemu CRM, którą wybierzesz kliknij odpowiedni adres URL poniżej informacje na temat sposobu ukończenia kolejny zbiór pól
+Wybierz system CRM, w którym ma zostać zapisany potencjalny klient. Wybierz pozycję "Azure Table" tutaj, jeśli masz jeden z następujących systemów CRM: Salesforce, Marketo, Microsoft Dynamics CRM. System CRM wybierany w tym miejscu to miejsce, w którym zostaną zapisane szczegółowe informacje o użytkownikach końcowych, którzy próbują wykonać swoją aplikację w witrynie AppSource (potencjalni klienci) W zależności od wybranego systemu CRM kliknij odpowiedni adres URL poniżej, aby uzyskać informacje na temat sposobu wykonania następnego zestawu pól.
 
 * [Tabela platformy Azure](./cloud-partner-portal-lead-management-instructions-azure-table.md)
 * [Marketo](./cloud-partner-portal-lead-management-instructions-marketo.md)
-* [Microsoft Dynamics CRM](./cloud-partner-portal-lead-management-instructions-dynamics.md)
+* [Program Microsoft Dynamics CRM](./cloud-partner-portal-lead-management-instructions-dynamics.md)
 * [Salesforce](./cloud-partner-portal-lead-management-instructions-salesforce.md)
 
-## <a name="storefront-details"></a>Szczegóły sklepu
+## <a name="storefront-details"></a>Szczegóły witryny dotyczącej Sklepu
 
-Szczegółowe dane kontaktowe są używane tylko do komunikacji wewnętrznej między partnerem i firmą Microsoft. Uwaga: Należy użyć adresu e-mail, który jest monitorowany w tych polach. Firma Microsoft użyje tej wiadomości e-mail do komunikowania się z Tobą na swoje postępy w nauce publikowanie w usłudze AppSource. Adres URL pomocy technicznej będą widoczne dla klientów.
+Szczegóły kontaktu są używane do komunikacji wewnętrznej między partnerem i firmą Microsoft. Uwaga: ważne jest, aby użyć adresu e-mail, który jest monitorowany w tych polach. Będziemy używać tej wiadomości e-mail do komunikowania się z twoją pracą w trakcie publikowania w usłudze AppSource. Tylko adres URL pomocy technicznej będzie widoczny dla klientów.

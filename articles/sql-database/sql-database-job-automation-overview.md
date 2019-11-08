@@ -1,5 +1,5 @@
 ---
-title: Automatyzacja zadań w usłudze Azure SQL
+title: Automatyzacja zadań
 description: Za pomocą funkcji automatyzacji zadań możesz uruchamiać skrypty Transact-SQL (T-SQL) w zestawie co najmniej jednej bazy danych Azure SQL Database
 services: sql-database
 ms.service: sql-database
@@ -10,12 +10,12 @@ author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: carlr
 ms.date: 01/25/2019
-ms.openlocfilehash: bbef299271618dc672daea17249f29866e75c430
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: c2548bb4537d17a3dab94d5476c743e2a70faad0
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73689672"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73810090"
 ---
 # <a name="automate-management-tasks-using-database-jobs"></a>Automatyzowanie zadań zarządzania za pomocą zadań bazy danych
 
@@ -39,7 +39,7 @@ Istnieje kilka scenariuszy, w których można używać funkcji automatyzacji zad
   - Twórz zadania, które replikują zmiany wprowadzone w bazach danych do innych baz danych, lub Zbieraj aktualizacje wprowadzone w zdalnych bazach danych i stosują zmiany w bazie danych.
   - Tworzenie zadań polegających na ładowaniu zadań z lub do baz danych przy użyciu usług SQL Server Integration Services (SSIS).
 
-## <a name="overview"></a>Przegląd
+## <a name="overview"></a>Omówienie
 
 W usłudze Azure SQL Database są dostępne następujące technologie planowania zadań:
 
@@ -263,7 +263,7 @@ Każdy krok zadania określa skrypt T-SQL do wykonania, co najmniej jedną grup�
 
 Wyniki wykonywania kroków zadania w każdej docelowej bazie danych są szczegółowo rejestrowane, a dane wyjściowe skryptu mogą zostać przechwycone w określonej tabeli. Możesz określić bazę danych, aby zapisać wszystkie dane zwrócone z zadania.
 
-#### <a name="job-history"></a>Historia zadań
+#### <a name="job-history"></a>Historia zadania
 
 Historia wykonywania zadań jest przechowywana w *bazie danych zadań*. Zadanie oczyszczania systemu czyści historię wykonywania, która jest starsza niż 45 dni. Aby usunąć historię, która ma mniej niż 45 dni, wywołaj procedurę składowaną **sp_purge_history** w *bazie danych zadań*.
 

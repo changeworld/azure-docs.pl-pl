@@ -1,5 +1,5 @@
 ---
-title: 'Indeksowane wideo, aplikacja Azure SaaS SQL '
+title: Film wideo aplikacji SQL SaaS
 description: Ten artykuł indeksuje różne punkty czasu w naszym wideo 81 minut na temat projektu aplikacji SaaS DB — od konferencji zapłonowej w dniu 11 października 2017. Możesz przejść do części, która Cię interesuje. Opisano co najmniej 3 wzorce. Funkcje platformy Azure, które upraszczają programowanie i zarządzanie, zostały opisane poniżej.
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: MightyPen
 ms.author: genemi
 ms.reviewer: billgib, sstein
 ms.date: 12/18/2018
-ms.openlocfilehash: 3d9b9c5af1994e2d0b3fd8f720def06489f3669d
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 0194d99a10eb34ecd8ad10fa0a1509baf8436381
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73691919"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73818477"
 ---
 # <a name="video-indexed-and-annotated-for-multi-tenant-saas-app-using-azure-sql-database"></a>Wideo indeksowane i adnotacje dla wielodostępnej aplikacji SaaS przy użyciu Azure SQL Database
 

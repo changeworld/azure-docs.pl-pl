@@ -5,14 +5,15 @@ author: JnHs
 manager: evansma
 ms.author: jenhayes
 ms.service: marketplace
+ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 10/04/2019
-ms.openlocfilehash: f3b2a976dc6b2b9e91f046a7f69e3057a7af7d0e
-ms.sourcegitcommit: 8e271271cd8c1434b4254862ef96f52a5a9567fb
+ms.openlocfilehash: 4708f2e0d6d4aadba228b82cf07e0a7f58b8f68a
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72816987"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73825603"
 ---
 # <a name="create-a-new-dynamics-365-for-operations-offer"></a>Utwórz nową ofertę Dynamics 365 dla operacji
 
@@ -32,7 +33,7 @@ Wybierz przycisk **+ Nowa oferta** , a następnie wybierz element menu **Dynamic
 
 ### <a name="offer-id-and-alias"></a>Identyfikator oferty i alias
 
-- **Identyfikator oferty**: unikatowy identyfikator dla każdej oferty na Twoim koncie. Ten identyfikator będzie widoczny dla klientów w adresie URL dla oferty witryny Marketplace i szablonów Azure Resource Manager (jeśli dotyczy). Identyfikator oferty musi zawierać małe litery alfanumeryczne (w tym łączniki i znaki podkreślenia, ale nie odstępy). Jest to ograniczone do 50 znaków i nie można go zmienić po wybraniu opcji **Utwórz**.  Jeśli na przykład wprowadzisz polecenie *test-Offer-1* tutaj, adres URL oferty będzie `https://azuremarketplace.microsoft.com/marketplace/../test-offer-1`.
+- **Identyfikator oferty**: unikatowy identyfikator dla każdej oferty na Twoim koncie. Ten identyfikator będzie widoczny dla klientów w adresie URL dla oferty witryny Marketplace i szablonów Azure Resource Manager (jeśli dotyczy). Identyfikator oferty musi zawierać małe litery alfanumeryczne (w tym łączniki i znaki podkreślenia, ale nie odstępy). Jest to ograniczone do 50 znaków i nie można go zmienić po wybraniu opcji **Utwórz**.  Jeśli na przykład wprowadzisz polecenie *test-Offer-1* tutaj, adres URL oferty zostanie `https://azuremarketplace.microsoft.com/marketplace/../test-offer-1`.
 
 - **Alias oferty**: nazwa używana do odwoływania się do oferty w centrum partnerskim. Ta nazwa nie będzie używana w portalu Marketplace i różni się od nazwy oferty i innych wartości, które będą widoczne dla klientów. Tej wartości nie można zmienić po wybraniu opcji **Utwórz**.
 
@@ -200,7 +201,7 @@ Obraz Hero jest opcjonalny. Jeśli postanowisz jeden, musi on mierzyć 815 x 290
 
 Dodaj zrzuty ekranu pokazujące, jak działa Twoja oferta. Wymagany jest co najmniej jeden zrzut ekranu i można dodać maksymalnie pięć. Wszystkie zrzuty ekranu muszą mieć 1280 x 720 pikseli.
 
-#### <a name="videos"></a>Filmy
+#### <a name="videos"></a>Filmy wideo
 
 Opcjonalnie możesz dodać do czterech filmów wideo, które demonstrują Twoją ofertę. Te filmy wideo powinny być hostowane w usłudze YouTube i/lub Vimeo. Dla każdej z nich wprowadź nazwę filmu wideo, jego adres URL i obraz miniatury filmu wideo (1280 x 720 pikseli)
 
@@ -316,7 +317,7 @@ Aby wdrożyć dysk testowy w Twoim imieniu, Utwórz i podaj oddzielną, unikatow
 
 - **Identyfikator subskrypcji platformy Azure** (wymagany dla Azure Resource Manager i aplikacji logiki): Wprowadź identyfikator subskrypcji, aby udzielić dostępu do usług konta platformy Azure na potrzeby raportowania użycia zasobów i rozliczeń. Zalecamy [utworzenie oddzielnej subskrypcji platformy Azure](https://docs.microsoft.com/azure/billing/billing-create-subscription) , która ma być używana na potrzeby dysków testowych, jeśli jeszcze jej nie masz. Identyfikator subskrypcji platformy Azure można znaleźć, logując się do [Azure Portal](https://portal.azure.com/) i przechodząc do karty **subskrypcje** w menu po lewej stronie. Wybranie karty spowoduje wyświetlenie identyfikatora subskrypcji (np. "a83645ac-1234-5ab6-6789-1h234g764ghty").
 
-- **Identyfikator dzierżawy usługi Azure AD** (wymagany): wprowadź [Identyfikator dzierżawy](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#get-values-for-signing-in)usługi Azure Active Directory (AD). Aby znaleźć ten identyfikator, zaloguj się do [Azure Portal](https://portal.azure.com/), wybierz kartę Active Directory w menu po lewej stronie, wybierz pozycję **Właściwości** , a następnie wyszukaj numer **identyfikatora katalogu** na liście (np. 50c464d3-4930-494c-963c-1e951d15360e). Możesz również wyszukać identyfikator dzierżawy w organizacji przy użyciu adresu URL nazwy domeny: [https://www.whatismytenantid.com](https://www.whatismytenantid.com).
+- **Identyfikator dzierżawy usługi Azure AD** (wymagany): wprowadź [Identyfikator dzierżawy](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#get-values-for-signing-in)usługi Azure Active Directory (AD). Aby znaleźć ten identyfikator, zaloguj się do [Azure Portal](https://portal.azure.com/), wybierz kartę Active Directory w menu po lewej stronie, wybierz pozycję **Właściwości** , a następnie wyszukaj numer **identyfikatora katalogu** na liście (np. 50c464d3-4930-494c-963c-1e951d15360e). Możesz również wyszukać identyfikator dzierżawy w organizacji przy użyciu adresu URL nazwy domeny w: [https://www.whatismytenantid.com](https://www.whatismytenantid.com).
 
 - **Nazwa dzierżawy usługi Azure AD** (wymagana dla dynamicznego 365): wprowadź nazwę Azure Active Directory (AD). Aby znaleźć tę nazwę, zaloguj się do [Azure Portal](https://portal.azure.com/), w prawym górnym rogu nazwa dzierżawy zostanie wyświetlona w polu Nazwa konta.
 
@@ -359,7 +360,7 @@ Wybierz opcję **tak** , jeśli rozwiązanie umożliwia korzystanie z lokalnych 
 
 Odpowiedź **tak** , jeśli tekst w rozwiązaniu można przetłumaczyć na inne języki. W przeciwnym razie wybierz pozycję **nie**.
 
-## <a name="publish"></a>Publikuj
+## <a name="publish"></a>Publikowanie
 
 ### <a name="submit-offer-to-preview"></a>Prześlij ofertę do wersji zapoznawczej
 
@@ -370,7 +371,7 @@ Jeśli ta oferta jest publikowana po raz pierwszy, możesz:
 - Zobacz stan ukończenia dla każdej sekcji oferty.
     - *Nie uruchomiono* — oznacza, że sekcja nie została dotknięcia i należy ją ukończyć.
     - *Niekompletne* — oznacza, że sekcja zawiera błędy, które muszą zostać naprawione lub wymaga podania więcej informacji. Wróć do sekcji i zaktualizuj ją.
-    - *Zakończone* — oznacza, że sekcja została ukończona, wszystkie wymagane dane zostały dostarczone i nie występują żadne błędy. Wszystkie sekcje oferty muszą być w stanie kompletnym, zanim będzie możliwe przesłanie oferty.
+    - *Gotowe* — oznacza, że sekcja została ukończona, wszystkie wymagane dane zostały dostarczone i nie występują żadne błędy. Wszystkie sekcje oferty muszą być w stanie kompletnym, zanim będzie możliwe przesłanie oferty.
 - W sekcji **uwagi dotyczące certyfikacji** Podaj instrukcje dotyczące testowania dla zespołu certyfikacji, aby upewnić się, że aplikacja została prawidłowo przetestowana, a także dodatkowe uwagi przydatne do poznania aplikacji.
 - Prześlij ofertę do opublikowania, wybierając pozycję **Prześlij**. Wyślemy Ci wiadomość e-mail z prośbą o udostępnienie wersji zapoznawczej oferty, którą można przejrzeć i zatwierdzić. Musisz wrócić do Centrum partnerskiego i wybrać pozycję **Przejdź na żywo** , aby uzyskać ofertę opublikowania oferty na publiczną (lub w przypadku prywatnej oferty dla odbiorców prywatnych).
 

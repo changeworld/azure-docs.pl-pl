@@ -12,12 +12,12 @@ ms.topic: article
 ms.date: 10/21/2019
 ms.author: juliako
 ms.custom: seodec18
-ms.openlocfilehash: 574b1591669cc32ce30677cad5158e13b944486f
-ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
+ms.openlocfilehash: 0c263e1353a07ca388ea9a7fb48ebcf99be07fc1
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/22/2019
-ms.locfileid: "72750199"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73820634"
 ---
 # <a name="developing-with-media-services-v3-apis"></a>Programowanie przy użyciu interfejsów API Media Services v3
 
@@ -75,7 +75,7 @@ Nazwy zasobów w usłudze Azure Media Services w wersji 3 (na przykład Zasoby, 
 
 Nazwy zasobów usługi Media Services nie mogą zawierać znaków „<”, „>”, „%”, „&”, „:”, „&#92;”, „?”, „/”, „*”, „+”, „.”, pojedynczych cudzysłowów ani żadnych znaków sterujących. Wszystkie inne znaki są dozwolone. Maksymalna długość nazwy zasobu to 260 znaków. 
 
-Aby uzyskać więcej informacji na temat nazewnictwa w usłudze Azure Resource Manager, zobacz [Wymagania w zakresie nazewnictwa](https://github.com/Azure/azure-resource-manager-rpc/blob/master/v1.0/resource-api-reference.md#arguments-for-crud-on-resource) i [Konwencje nazewnictwa](https://docs.microsoft.com/azure/architecture/best-practices/naming-conventions).
+Aby uzyskać więcej informacji na temat nazewnictwa w usłudze Azure Resource Manager, zobacz [Wymagania w zakresie nazewnictwa](https://github.com/Azure/azure-resource-manager-rpc/blob/master/v1.0/resource-api-reference.md#arguments-for-crud-on-resource) i [Konwencje nazewnictwa](/azure/cloud-adoption-framework/ready/azure-best-practices/naming-and-tagging).
 
 ### <a name="names-of-filesblobs-within-an-asset"></a>Nazwy plików/obiektów BLOB w obrębie elementu zawartości
 
@@ -117,7 +117,7 @@ Tylko jedna długotrwała operacja jest obsługiwana dla danego zdarzenia na ży
 > [!NOTE]
 > Nie ma gwarancji, że zestawy SDK Azure Media Services V3 są bezpieczne wątkowo. Podczas tworzenia aplikacji wielowątkowej należy dodać własną logikę synchronizacji wątków, aby chronić klienta lub użyć nowego obiektu AzureMediaServicesClient na wątek. Należy również zachować ostrożność w przypadku problemów z wielowątkowością wprowadzanych przez obiekty opcjonalne dostarczone przez kod klientowi (na przykład wystąpienie HttpClient w programie .NET).
 
-|SDK|Informacje ogólne|
+|SDK|Dokumentacja|
 |---|---|
 |[Zestaw SDK platformy .NET](https://aka.ms/ams-v3-dotnet-sdk)|[Dokumentacja platformy .NET](https://aka.ms/ams-v3-dotnet-ref)|
 |[Zestaw SDK Java](https://aka.ms/ams-v3-java-sdk)|[Dokumentacja języka Java](https://aka.ms/ams-v3-java-ref)|
@@ -126,12 +126,12 @@ Tylko jedna długotrwała operacja jest obsługiwana dla danego zdarzenia na ży
 |[Zestaw SDK dla języka Go](https://aka.ms/ams-v3-go-sdk) |[Dokumentacja języka Go](https://aka.ms/ams-v3-go-ref)|
 |[Zestaw SDK dla języka Ruby](https://aka.ms/ams-v3-ruby-sdk)||
 
-### <a name="see-also"></a>Zobacz także
+### <a name="see-also"></a>Zobacz też
 
 - [EventGrid .NET SDK zawierający zdarzenia usługi Media Service](https://www.nuget.org/packages/Microsoft.Azure.EventGrid/)
 - [Definicje zdarzeń Media Services](https://github.com/Azure/azure-rest-api-specs/blob/master/specification/eventgrid/data-plane/Microsoft.Media/stable/2018-01-01/MediaServices.json)
 
-## <a name="azure-media-services-explorer"></a>Eksplorator usługi Azure Media Services
+## <a name="azure-media-services-explorer"></a>Azure Media Services Explorer
 
 [Azure Media Services Explorer](https://github.com/Azure/Azure-Media-Services-Explorer) to narzędzie dostępne dla użytkowników systemu Windows, którzy chcą dowiedzieć się więcej o usłudze Media Services. Narzędzie AMSE to aplikacja Winforms/C# obsługująca przekazywanie, pobieranie, kodowanie oraz przesyłanie strumieniowe wideo na żądanie i na żywo zawartości za pomocą usługi Media Services. Narzędzie AMSE jest przeznaczone dla klientów, którzy chcą przetestować usługę Media Services bez konieczności pisania jakiegokolwiek kodu. Kod AMSE jest dostarczany jako zasób dla klientów, którzy chcą tworzyć aplikacje za pomocą usługi Media Services.
 
@@ -145,7 +145,7 @@ Zobacz [filtrowanie, porządkowanie, stronicowanie jednostek Azure Media Service
 
 Zapoznaj się z artykułem [community Azure Media Services](media-services-community.md) , aby zobaczyć różne sposoby zadawania pytań, przekazać Opinie i uzyskać aktualizacje dotyczące Media Services.
 
-## <a name="see-also"></a>Zobacz także
+## <a name="see-also"></a>Zobacz też
 
 [Interfejs wiersza polecenia platformy Azure](https://docs.microsoft.com/cli/azure/ams?view=azure-cli-latest)
 

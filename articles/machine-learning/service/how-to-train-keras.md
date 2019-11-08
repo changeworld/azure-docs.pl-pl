@@ -1,5 +1,5 @@
 ---
-title: Uczenie sieci neuronowych uczenie głębokie z Keras
+title: Uczenie modeli Keras uczenia głębokiego
 titleSuffix: Azure Machine Learning
 description: Dowiedz się, jak nauczyć i zarejestrować model klasyfikacji sieci Keras głębokiej neuronowych uruchomiony na TensorFlow przy użyciu Azure Machine Learning.
 services: machine-learning
@@ -11,12 +11,12 @@ author: maxluk
 ms.reviewer: peterlu
 ms.date: 08/01/2019
 ms.custom: seodec18
-ms.openlocfilehash: 42a824863766b5d4d91d9eaa3dad1012f5019f63
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: c6a6af6d32e0664e66696523f53ac81cd921609e
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73584494"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73814868"
 ---
 # <a name="train-and-register-a-keras-classification-model-with-azure-machine-learning"></a>Uczenie i rejestrowanie modelu klasyfikacji Keras przy użyciu Azure Machine Learning
 [!INCLUDE [applies-to-skus](../../../includes/aml-applies-to-basic-enterprise-sku.md)]

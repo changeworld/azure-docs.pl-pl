@@ -13,18 +13,18 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/20/2019
 ms.author: juliako
-ms.openlocfilehash: 2b8553c4c4b27e70eb5e4aeff447da9526c4ed1e
-ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
+ms.openlocfilehash: d38b11b8fc4351c6b074ccfdf47df06a71e0a0a4
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/18/2019
-ms.locfileid: "72598293"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73823969"
 ---
 # <a name="migrate-from-media-indexer-and-media-indexer-2-to-video-indexer"></a>Migrowanie z Media Indexer i Media Indexer 2 do Video Indexer
 
 Procesor multimediów [Azure Media Indexer](media-services-index-content.md) zostanie wycofany 1 października 2020. [Azure Media Indexer 2 wersji zapoznawczej](media-services-process-content-with-indexer2.md) procesorów multimediów zostanie wycofana 1 stycznia 2020.  [Azure Media Services Video Indexer](https://docs.microsoft.com/azure/media-services/video-indexer/) zastępuje te starsze procesory nośników.
 
-Video Indexer Azure Media Services jest oparta na Azure Media Analytics, Azure Search, Cognitive Services (np. interfejs API rozpoznawania twarzy, Microsoft translator, interfejs API przetwarzania obrazów i Custom Speech Service). Umożliwia wyodrębnianie szczegółowych informacji z plików wideo przy użyciu modeli wideo i audio usługi Video Indexer. Aby dowiedzieć się, jakie scenariusze Video Indexer mogą być używane w programie, jakie funkcje oferują i jak zacząć, zobacz [Video Indexer modele wideo i audio](../video-indexer/video-indexer-overview.md). 
+Azure Media Services Video Indexer jest oparta na Azure Media Analytics, Wyszukiwanie poznawcze platformy Azure, Cognitive Services (np. interfejs API rozpoznawania twarzy, Microsoft translator, interfejs API przetwarzania obrazów i Custom Speech Service). Umożliwia wyodrębnianie szczegółowych informacji z plików wideo przy użyciu modeli wideo i audio usługi Video Indexer. Aby dowiedzieć się, jakie scenariusze Video Indexer mogą być używane w programie, jakie funkcje oferują i jak zacząć, zobacz [Video Indexer modele wideo i audio](../video-indexer/video-indexer-overview.md). 
 
 Można wyodrębnić szczegółowe informacje z plików wideo i audio, korzystając z [ustawień domyślnych programu Azure Media Services v3 Analyzer](../latest/analyzing-video-audio-files-concept.md) lub bezpośrednio przy użyciu [interfejsów API Video Indexer](https://api-portal.videoindexer.ai/). Obecnie istnieje nakładanie się między funkcjami oferowanymi przez interfejsy API Video Indexer i interfejsy API Media Services v3.
 
@@ -50,7 +50,7 @@ Interfejs API programu Azure Media Services v3 umożliwia wyodrębnienie szczeg�
 
 **AudioAnalyzerPreset** umożliwia wyodrębnienie wielu szczegółowych informacji audio z pliku audio lub wideo. Dane wyjściowe obejmują plik VTT lub TTML dla transkrypcji audio i pliku JSON (ze wszystkimi dodatkowymi spostrzeżeniami w usłudze audio). Szczegółowe informacje o danych audio obejmują słowa kluczowe, indeksowanie głośników i analizę tonacji mowy. AudioAnalyzerPreset obsługuje również wykrywanie języka dla określonych języków. Aby uzyskać szczegółowe informacje, zobacz [transformacje](https://docs.microsoft.com/rest/api/media/transforms/createorupdate#audioanalyzerpreset).
 
-### <a name="get-started"></a>Rozpocznij
+### <a name="get-started"></a>Rozpoczęcie pracy
 
 Aby rozpocząć, zobacz:
 

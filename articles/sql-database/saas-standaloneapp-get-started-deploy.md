@@ -1,5 +1,5 @@
 ---
-title: Samouczek SaaS z jedną dzierżawą — Azure SQL Database
+title: Samouczek SaaS z jedną dzierżawą
 description: Wdróż i Eksploruj autonomiczną aplikację SaaS z jedną dzierżawą, która używa Azure SQL Database.
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: MightyPen
 ms.author: genemi
 ms.reviewer: sstein
 ms.date: 11/07/2018
-ms.openlocfilehash: df9c3913851055f1bb477264cf5a7486f79b56b0
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: e3afc8aa58551b995070ffaca978c8e7c8454da3
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73691959"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73822135"
 ---
 # <a name="deploy-and-explore-a-standalone-single-tenant-application-that-uses-azure-sql-database"></a>Wdróż i Eksploruj autonomiczną aplikację z jedną dzierżawą, która używa Azure SQL Database
 

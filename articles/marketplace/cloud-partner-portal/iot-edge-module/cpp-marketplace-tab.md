@@ -1,102 +1,103 @@
 ---
-title: Opis witryny Marketplace dla modułu usługi Azure IoT Edge | Portal Azure Marketplace
-description: Utwórz opis witryny marketplace moduł usługi IoT Edge.
+title: Opis witryny Marketplace dla modułu Azure IoT Edge | Portal Azure Marketplace
+description: Utwórz opis portalu Marketplace dla modułu IoT Edge.
 services: Azure, Marketplace, Cloud Partner Portal,
 author: dan-wesley
 ms.service: marketplace
+ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 04/24/2019
 ms.author: pabutler
-ms.openlocfilehash: aa0c908e18233926965d8dc3cd1b474f876b8dda
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 57bae42eb44c174657e59fa8b017da2931ae681b
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64942428"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73814599"
 ---
-# <a name="iot-edge-module-marketplace-tab"></a>Kartę Marketplace moduł usługi IoT Edge
+# <a name="iot-edge-module-marketplace-tab"></a>Karta Marketplace modułu IoT Edge Portal
 
-**Marketplace** karcie **nowa oferta** strony umożliwia udostępnianie potencjalnych klientów. marketingu, sprzedaży i prawne informacji i umowy i zarządzanie potencjalnymi klientami wygenerowany na podstawie Portal Marketplace. Ta długich fragmentów jest podzielony na cztery sekcje: **Omówienie**, **marketingowych artefaktów**, **Zarządzanie potencjalnymi**, i **prawne**.
+Na karcie **Marketplace** na stronie **Nowa oferta** można zapewnić potencjalnym klientom potencjalną obsługę marketingową, sprzedażową i informacje prawne oraz umowy oraz zarządzać klientami wygenerowanymi w portalu Marketplace. Ten długi formularz jest podzielony na cztery sekcje: **Omówienie**, **artefakty marketingowe**, **Zarządzanie potencjalnymi klientami**i warunki **prawne**.
 
 
 ## <a name="overview"></a>Omówienie
 
-W tej sekcji należy wprowadzić ogólne informacje o ofercie Azure Marketplace.  Znak gwiazdki (*) dodanym na końcu nazwy pola wskazuje, że jest to wymagane.
+W tej sekcji wprowadzasz ogólne informacje o ofercie portalu Azure Marketplace.  Gwiazdka (*) dołączona do nazwy pola wskazuje, że jest to wymagane.
 
-![Omówienie części karty portalu Marketplace w formularzu nowa oferta dla modułów usługi IoT Edge](./media/iot-edge-module-marketplace-tab-overview.png)
+![Sekcja Przegląd karty Marketplace w nowej formie dla modułów IoT Edge](./media/iot-edge-module-marketplace-tab-overview.png)
 
-W poniższej tabeli opisano przeznaczenie i zawartość tych pól. Wymagane pola są wskazanych przez znak gwiazdki (*).
+W poniższej tabeli opisano przeznaczenie i zawartość tych pól. Wymagane pola są indicted przez gwiazdkę (*).
 
 |  **Pole**                |     **Opis**                                                          |
 |  ---------                |     ---------------                                                          |
-| **Tytuł\***                 | Tytuł oferty. Będzie ona wyświetlana ważnej w portalu marketplace.  Składać z maksymalnie 50 znaków. <!--ADD PICTURE IN ACTION-->|
-| **Podsumowanie\***               | Krótkie podsumowanie oferty. Składać z maksymalnie 100 znaków. <!--ADD PICTURE IN ACTION-->|
-| **Długie podsumowanie\***          | Już podsumowanie ofertę (chociaż może być taka sama jak **podsumowania**).  Maksymalna długość 256 znaków. <!--ADD PICTURE IN ACTION-->|
-| **Opis elementu\***           | Opis oferty.  Maksymalną długość znaków 3000 obsługuje prosty format HTML.<br/> Musi on zawierać *minimalne wymagania sprzętowe* akapitu na dole. Na przykład: <br/> <p><u>Minimalne wymagania sprzętowe:</u> X64 systemu Linux i OS arm32, 1 GB pamięci RAM, 500 Mb pamięci masowej</p>
-| **Identyfikator marketingu\***  | Unikatowy adres URL, aby skojarzyć tę ofertę, obejmują zazwyczaj organizacji i nazwę rozwiązania, maksymalnej długości 50 znaków.  Na przykład: <br/> `https://azuremarketplace.microsoft.com/marketplace/apps/contoso.sampleIoTEdgeModule`  |
-| **Identyfikatory subskrypcji (wersja zapoznawcza)** | Dodaj jeden do 100 identyfikatorów subskrypcji podglądy. Te subskrypcje biały na liście mają dostęp do tej oferty, po opublikowaniu, zanim usługa zostanie wprowadzona na żywo. |
-| **Przydatne linki**          | Wielokrotnego wyboru biznesowe i techniczne kategorie, które oferują może być najlepiej skojarzony.  Maksymalnie 10 dozwolone. Upewnij się dodać co najmniej jedno łącze do dokumentacji i jedno połączenie zgodne z urządzeniem usługi IoT Edge [Azure IoT — wykaz urządzeń](https://catalog.azureiotsolutions.com/). |
-| **Sugerowane kategorie\*** | Wybierz maksymalnie pięć kategorii. Będą one wyświetlane na stronie szczegółów produktu. Na stronach Przeglądaj wszystkie moduły usługi IoT Edge zostaną wyświetlone w obszarze *Internet of Things \> moduł usługi IoT Edge* kategorii.|
+| **\* tytułu**                 | Tytuł oferty. Zostanie ona wyświetlona w widocznym miejscu w portalu Marketplace.  Maksymalna długość 50 znaków. <!--ADD PICTURE IN ACTION-->|
+| **\* podsumowania**               | Krótkie podsumowanie oferty. Maksymalna długość 100 znaków. <!--ADD PICTURE IN ACTION-->|
+| **Długi\* podsumowujący**          | Dłuższe podsumowanie oferty (chociaż może być takie samo, jak w przypadku **podsumowania**).  Maksymalna długość 256 znaków. <!--ADD PICTURE IN ACTION-->|
+| **\* opisu**           | Opis oferty.  Maksymalna długość 3000 znaków, obsługuje proste formatowanie HTML.<br/> W dolnej części musi znajdować się akapit o *minimalnych wymaganiach dotyczących sprzętu* . na przykład: <br/> <p><u>Minimalne wymagania sprzętowe:</u> Linux x64 i arm32 OS, 1 GB pamięci RAM, 500 MB magazynu</p>
+| **\* identyfikatora marketingu**  | Unikatowy adres URL do skojarzenia z ofertą zwykle zawiera nazwę organizacji i rozwiązania, maksymalną długość 50 znaków.  Na przykład: <br/> `https://azuremarketplace.microsoft.com/marketplace/apps/contoso.sampleIoTEdgeModule`  |
+| **Podgląd identyfikatorów subskrypcji** | Dodaj jeden do 100 identyfikatorów subskrypcji dla recenzentów. Te białe subskrypcje będą miały dostęp do oferty po jej opublikowaniu. |
+| **Przydatne linki**          | Można z nich najlepiej skojarzyć wiele wybranych kategorii branżowych i technicznych.  Maksymalnie 10 dozwolonych. Upewnij się, że dodano co najmniej jeden link do dokumentacji i jeden link do zgodnych urządzeń IoT Edge z [wykazu urządzeń usługi Azure IoT](https://catalog.azureiotsolutions.com/). |
+| **Sugerowane kategorie\*** | Wybierz maksymalnie pięć kategorii. Zostaną one wyświetlone na stronie szczegółów produktu. Na stronach przeglądania wszystkie moduły IoT Edge są wyświetlane w kategorii *moduł Internet rzeczy \> IoT Edge* .|
 |  |  |
 
 
 ### <a name="offer-example"></a>Przykład oferty
 
- W poniższych przykładach pokazano sposób oferty **tytuł**, **Podsumowanie**, **opis**, **logo**, i **zrzutyekranu** pola są wyświetlane w różnych widokach.
+ W poniższych przykładach pokazano, jak pola **tytuł**oferty, **Podsumowanie**, **Opis**, **logo**i **zrzuty ekranu** pojawiają się w różnych widokach.
 
  
-#### <a name="on-the-azure-marketplace-website"></a>W witrynie Azure Marketplace:
+#### <a name="on-the-azure-marketplace-website"></a>W witrynie sieci Web portalu Azure Marketplace:
 
 - Podczas przeglądania oferty:
 
-    ![Jak oferty w witrynie marketplace są wyświetlane w witrynie Azure Marketplace — przejście](./media/iot-edge-module-ampdotcom-card.png)
+    ![Jak są wyświetlane oferty z witryny Marketplace w witrynie sieci Web portalu Azure Marketplace — przeglądanie](./media/iot-edge-module-ampdotcom-card.png)
 
-- Przyglądając się szczegóły oferty:
+- Podczas przeglądania szczegółów oferty:
 
-    ![Jak moduł usługi IoT Edge zostaną wyświetlone podczas wyszukiwania szczegóły produktu w witrynie sieci Web](./media/iot-edge-module-ampdotcom-pdp.png)
+    ![Jak moduł IoT Edge jest wyświetlany podczas wyszukiwania szczegółów produktu w witrynie sieci Web](./media/iot-edge-module-ampdotcom-pdp.png)
 
 
-#### <a name="on-the-azure-portal-website"></a>W witrynie Azure portal:
+#### <a name="on-the-azure-portal-website"></a>W witrynie Azure Portal:
 
 - Podczas przeglądania oferty:
 
-    ![Jak moduł usługi IoT Edge zostaną wyświetlone podczas przeglądania portalu Azure #1](./media/iot-edge-module-portal-browse.png)
+    ![Jak moduł IoT Edge jest wyświetlany podczas przeglądania Azure Portal #1](./media/iot-edge-module-portal-browse.png)
 
-    ![Jak moduł usługi IoT Edge zostaną wyświetlone podczas przeglądania portalu Azure #2](./media/iot-edge-module-portal-product-picker.png)
+    ![Jak moduł IoT Edge jest wyświetlany podczas przeglądania Azure Portal #2](./media/iot-edge-module-portal-product-picker.png)
 
-- Podczas wyszukiwania dla oferty:
+- Podczas wyszukiwania oferty:
 
-    ![Jak moduł usługi IoT Edge zostaną wyświetlone podczas wyszukiwania w witrynie Azure portal](./media/iot-edge-module-portal-search.png)
+    ![Jak moduł IoT Edge jest wyświetlany podczas wyszukiwania Azure Portal](./media/iot-edge-module-portal-search.png)
 
-- Przyglądając się szczegóły oferty:
+- Podczas przeglądania szczegółów oferty:
 
-    ![Jak moduł usługi IoT Edge zostaną wyświetlone podczas wyszukiwania szczegóły produktu w portalu](./media/iot-edge-module-portal-pdp.png)
+    ![Jak moduł IoT Edge jest wyświetlany podczas wyszukiwania szczegółów produktu w portalu](./media/iot-edge-module-portal-pdp.png)
 
 
-## <a name="marketing-artifacts"></a>Marketing artefaktów
+## <a name="marketing-artifacts"></a>Artefakty marketingowe
 
-Ta sekcja zawiera następujące podsekcje: **Logo**, **zrzut ekranu**, i **wideo**. 
+Ta sekcja zawiera następujące podsekcje: **logo**, **zrzut ekranu**i **wideo**. 
 
 >[!Note]
->Logo są jedynymi wymagane marketingowych artefaktów, jednak wszystkie są zdecydowanie zaleca się najlepsze odwołania klienta.
+>Logo są jedynymi wymaganymi artefaktami marketingowymi, ale wszystkie są zdecydowanie zalecane w przypadku najlepszych odwołań klientów.
 
-![Marketing artefaktów części karty portalu Marketplace w formularzu nowa oferta dla maszyn wirtualnych](./media/publishvm_009.png)
+![Sekcja dotycząca artefaktów marketingowych na karcie Marketplace w nowej postaci dla maszyn wirtualnych](./media/publishvm_009.png)
 
 |  **Pole**                |     **Opis**                                                          |
 |  ---------                |     ---------------                                                          |
-| *Logos*  | Zobacz, że przechwytuje poprzedni ekran, aby zobaczyć, jak i gdzie będą używane z logo.  |
-| **Małe\***                 | format PNG 40 x 40 pikseli                                                     |
-| **Średni\***                | format PNG 90 x 90 pikseli                                                     |
-| **Duże\***                 | format PNG 115 x 115 pikseli                                                  |
-| **Szerokie\***                  | format PNG 255 x 115 pikseli                                                   |
-| **Element Hero**                  | format PNG 815 x 290 pikseli.  Opcjonalne, jednak po przekazany, nie można usunąć ikonę elementu hero. |
-| *Zrzuty ekranu*  | Zrzuty ekranu są wyświetlane na stronie szczegółów produktu. Są one dobrym sposobem na wizualne przedstawianie działanie modułu usługi IoT Edge i sposób jej działania. Można wyświetlić diagramy architektury, lub użyj ilustracje wielkości liter dla wystąpienia. Opcjonalne, ale maksymalnie pięć zrzuty ekranu na jednostki SKU. |
-| **Nazwa**                  | Nazwa lub tytuł. Składać z maksymalnie 100 znaków.                             |
-| **Obraz**                 | Obraz przechwytywania ekranie, format PNG 533 x 324 pikseli                               |
-| *Filmy wideo*  | Filmy wideo są wyświetlane na stronie szczegółów produktu. Są one dobrym sposobem na wizualne przedstawianie działanie modułu usługi IoT Edge i sposób jej działania. |
-| **Nazwa**                  | Nazwa lub tytuł. Składać z maksymalnie 100 znaków.                             |
-| **Link**                  | Adres URL filmu wideo, w serwisie YouTube lub Vimeo                                        |
-| **Miniatura**             | format PNG 533 x 324 pikseli                                                     |
+| *Graficznych*  | Zobacz poprzednie przechwycenia ekranu, aby zobaczyć, jak i gdzie będą używane logo.  |
+| **Małe\***                 | Format PNG 40x40 pikseli                                                     |
+| **Średni\***                | Format PNG 90x90 pikseli                                                     |
+| **Duże\***                 | Format PNG 115x115 pikseli                                                  |
+| **Szerokie\***                  | Format PNG 255x115 pikseli                                                   |
+| **Hero**                  | Format PNG 815x290 pikseli.  Opcjonalne, ale nie można usunąć ikony Hero. |
+| *Zrzutów*  | Zrzuty ekranu są wyświetlane na stronie ze szczegółowymi informacjami o produkcie. Są one dobrym sposobem na wizualne komunikowanie się modułu IoT Edge i sposobu jego działania. Na przykład można wyświetlić diagramy architektury lub ilustracje przypadków użycia. Opcjonalne, ale maksymalnie pięć zrzutów ekranu na jednostkę SKU. |
+| **Nazwa**                  | Nazwa lub tytuł. Maksymalna długość 100 znaków.                             |
+| **Obraz**                 | Obraz przechwytywania ekranu, format 533x324 pikseli                               |
+| *Filmy wideo*  | Filmy wideo są wyświetlane na stronie szczegółów produktu. Są one dobrym sposobem na wizualne komunikowanie się modułu IoT Edge i sposobu jego działania. |
+| **Nazwa**                  | Nazwa lub tytuł. Maksymalna długość 100 znaków.                             |
+| **Link**                  | Adres URL wideo, hostowany w serwisie YouTube lub Vimeo                                        |
+| **Miniaturk**             | Format PNG 533x324 pikseli                                                     |
 |  |  |
 
 
@@ -105,28 +106,28 @@ Ta sekcja zawiera następujące podsekcje: **Logo**, **zrzut ekranu**, i **wideo
 <!-- It seems like this section could be better located in some common area, maybe an AMP Marketing/Design section 
 +1 this should all be in a common area and referenced from here to that location.-->
 
-Wszystkie logo, które są przekazywane do portalu Cloud Partner powinien postępuj zgodnie z wytycznymi:
+Wszystkie logo przekazane do portal Cloud Partner powinny postępować zgodnie z wytycznymi:
 
-*  Projekt platformy Azure ma prostą paletę kolorów. Niskich numer podstawowy i pomocniczy kolory na logo.
-*  Kolory motywu w witrynie Azure Portal są białe i czarne. Należy unikać używania tych kolorów jako kolor tła dla Twojego logo. Użyj koloru, który spowoduje, że Twoje logo widocznym w witrynie Azure portal. Zalecamy proste kolory podstawowe. Jeśli korzystasz z przezroczystym tłem, upewnij się, że logo/tekstu nie są białe, black lub niebieski.
-*  Nie używaj gradientu tła na logo.
-*  Należy unikać wprowadzania tekstu — nawet Twoja firma lub marką — na logo. Wygląd i działanie logo powinno być "płaską" i unikać gradientów.
-*  Nie rozciąganie logo.
+*  Projekt platformy Azure ma prostą paletę kolorów. Zachowaj niewielką liczbę kolorów podstawowych i pomocniczych w logo.
+*  Kolory motywu w witrynie Azure Portal są białe i czarne. Należy unikać używania tych kolorów jako koloru tła logo. Użyj koloru, który spowoduje, że logo zostanie uwidocznione w Azure Portal. Zalecamy proste kolory podstawowe. Jeśli używasz przezroczystego tła, upewnij się, że logo/tekst nie są białe, czarne lub niebieskie.
+*  Nie używaj tła gradientu w logo.
+*  Unikaj umieszczania tekstu — nawet nazwy firmy lub marki — w logo. Wygląd i zachowanie logo powinny być "płaskie" i nie powinno się unikać gradientów.
+*  Nie rozciągaj logo.
 
 
 #### <a name="hero-logo"></a>Logo Duży obraz
 
-Logo usługi Hero jest opcjonalne.
+Logo Hero jest opcjonalne.
 
 >[!Important]
->Po przekazaniu Hero logo, nie można usunąć.
+>Po przekazaniu logo Hero nie można go usunąć.
 
-Użyj następujących wytycznych dotyczących Hero logo: 
+W przypadku logo Hero należy stosować następujące wytyczne: 
 
-*  Czarny, biały i przezroczyste tło nie są dozwolone.
-*  Należy unikać używania żadnych jasny kolor tła logo.  Nazwa wyświetlana wydawcy, plan tytuł oferty długie podsumowanie są wyświetlane w kolorze białym czcionki i musi być na tle.
-*  Należy unikać większość tekstu podczas projektowania logo. Nazwa wydawcy, tytuł planu, oferty długie Podsumowanie i przycisk Utwórz są osadzane programowo wewnątrz logo gdy oferty na liście. 
-* Obejmują nieużywane miejsce prostokątny po prawej stronie logo usługi hero. To puste miejsce jest 415 x 100 pikseli i przesunięcie od lewej w 370 pikseli.  
+*  Czarne, białe i przezroczyste tła są niedozwolone.
+*  Należy unikać używania żadnego jasnego koloru jako tła logo.  Nazwa wyświetlana wydawcy, tytuł planu i długi podsumowanie oferty są wyświetlane w białym kolorze czcionki i muszą zostać wystawione w tle.
+*  Unikaj używania większości tekstu podczas projektowania logo. Nazwa wydawcy, tytuł planu, podsumowanie oferty długiej i przycisk Utwórz są osadzane programowo w logo, gdy zostanie wyświetlona. 
+* Uwzględnij nieużywane prostokątne miejsce po prawej stronie logo Hero. Puste miejsce to 415x100 pikseli i przesunięcie od lewej do 370 pikseli.  
 
 <!-- P2: woudl be nice to also have an picture int he context of iot edge of the hero image
 As an example, the following hero icon is for the Azure Container Service.
@@ -137,19 +138,19 @@ As an example, the following hero icon is for the Azure Container Service.
 
 ## <a name="lead-management"></a>Zarządzanie potencjalnymi klientami
 
-Ta sekcja umożliwia skonfigurować opcje pobierania klient prowadzi wygenerowany z Twoich ofert w portalu Azure Marketplace. Można wybrać następujące opcje magazynu z listy rozwijanej.
+Ta sekcja umożliwia skonfigurowanie opcji zbierania potencjalnych klientów wygenerowanych z ofert portalu Azure Marketplace. Z listy rozwijanej można wybrać następujące opcje magazynu.
 
-* **Brak** — ustawienie domyślne, informacje o potencjalnym kliencie nie są zbierane.
-* Tabela platformy Azure — zapisywane w tabeli platformy Azure, określona przez ciąg połączenia.
-* Dynamics CRM Online — zapisane [Microsoft Dynamics 365 Online](https://dynamics.microsoft.com/) wystąpienia, określonego przez adres URL i uwierzytelniania poświadczeń.
-* Punkt końcowy HTTPS - zapisywane w określonym punkcie końcowym HTTPS jako ładunek JSON.
-* Marketo - zapisywane do określonego [Marketo](https://www.marketo.com/) wystąpienia, określonego przez identyfikator serwera, identyfikator munchkin i identyfikator formularza.
-* SalesForce — zapisane [Salesforce](https://www.salesforce.com/) określona baza danych, za pomocą identyfikatora obiektu.
+* **Brak** — nie są zbierane informacje o kliencie domyślnym.
+* Tabela Azure — zapisywana w tabeli platformy Azure określona przez parametry połączenia.
+* Dynamics CRM Online — Zapisano w wystąpieniu usługi [Microsoft Dynamics 365 online](https://dynamics.microsoft.com/) , określonym przez adres URL i poświadczenia uwierzytelniania.
+* Punkt końcowy HTTPS — zapisany w określonym punkcie końcowym HTTPS jako ładunek JSON.
+* Program Market — zapisany w określonym wystąpieniu programu [Marketo](https://www.marketo.com/) , określony przez identyfikator serwera, identyfikator Munchkin i identyfikator formularza.
+* Salesforce — zapisywana w bazie danych [usług Salesforce](https://www.salesforce.com/) , określona przez identyfikator obiektu.
 
-Po pomyślnym opublikowaniu oferty, zweryfikowaniu połączenia potencjalnych klientów i potencjalnego klienta test jest automatycznie przesyłany do miejsca docelowego, który został skonfigurowany. 
+Po pomyślnym opublikowaniu oferty zostanie zweryfikowane połączenie z liderem i klient testowy zostanie automatycznie wysłany do skonfigurowanego miejsca docelowego. 
 
 >[!Note]
->Informacje o potencjalnych klientów powinny być stale zarządzane i te ustawienia powinny być na bieżąco aktualizowane przy każdym zmian do architektury zarządzania klienta.
+>Informacje o potencjalnych klientach powinny być ciągle zarządzane, a te ustawienia należy natychmiast zaktualizować, gdy zostaną wprowadzone zmiany w architekturze zarządzania klientami.
 
 <!-- there is missing some marketing imagess
 1. inside azure portal the wide logo/regular logo
@@ -160,16 +161,16 @@ Po pomyślnym opublikowaniu oferty, zweryfikowaniu połączenia potencjalnych kl
 
 ## <a name="legal"></a>Informacje prawne
 
-Ta sekcja umożliwia dostarczanie dwa dokumenty prawne, które są wymagane dla każdej oferty: Zasady ochrony prywatności i warunki użytkowania.
+Ta sekcja pozwala udostępnić dwa dokumenty prawne wymagane dla każdej oferty: zasady ochrony prywatności i warunki użytkowania.
 
 |  **Pole**                    |     **Opis**                                                          |
 |  ---------                    |     ---------------                                                          |
-| **Adres URL zasad ochrony prywatności\***      | Adres URL do zasad zachowania opublikowane                                            |
-| **Użyj standardowych Constract\***  | Określa, czy użyć standardowego szablonu umowy firmy Microsoft.  Aby uzyskać więcej informacji, zobacz [standardowej umowy](https://docs.microsoft.com/azure/marketplace/standard-contract).   |
-| **Warunki użytkowania\***            | *Warunki użytkowania* jako inline proste HTML lub link do Twoich przesłanych warunków strony     |
+| **Adres URL zasad ochrony prywatności\***      | Adres URL dla opublikowanych zasad ochrony prywatności                                            |
+| **Użyj standardowego Constract\***  | Czy używać standardowego szablonu umowy Microsoft.  Aby uzyskać więcej informacji, zobacz temat [Enterprise Contract](https://docs.microsoft.com/azure/marketplace/standard-contract).   |
+| **Warunki użytkowania\***            | *Warunki użytkowania* jako wbudowany prosty kod HTML lub łącze do strony ogłoszonych warunków użytkowania     |
 |  |  |
 
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
-Użyj [obsługuje](./cpp-support-tab.md) kartę, aby zapewnić technicznych i użytkownika, zasoby pomocy technicznej oferty.
+Skorzystaj z karty [Pomoc techniczna](./cpp-support-tab.md) , aby udostępnić zasoby techniczne i pomoc techniczną dla swojej oferty.

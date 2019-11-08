@@ -1,5 +1,5 @@
 ---
-title: Magazyn zapytań operacyjnych w Azure SQL Database
+title: Działanie magazynu zapytań
 description: Dowiedz się, jak obsługiwać magazyn zapytań w Azure SQL Database
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: bonova
 ms.author: bonova
 ms.reviewer: jrasnik, carlrab
 ms.date: 12/19/2018
-ms.openlocfilehash: b4f999818fe3b3517ee3fb48c22e616ee50f2d88
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: fa60992c85e69143bfd65cc1a1f420ed85c8fd93
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68567147"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73802767"
 ---
 # <a name="operating-the-query-store-in-azure-sql-database"></a>Działanie magazynu zapytań w Azure SQL Database
 
@@ -31,20 +31,20 @@ Magazyn zapytań jest [dostępny globalnie](https://azure.microsoft.com/updates/
 
 Ta sekcja zawiera opis optymalnych ustawień domyślnych konfiguracji, które zostały zaprojektowane w celu zapewnienia niezawodnej obsługi magazynu zapytań i funkcji zależnych, takich jak [SQL Database Advisor i pulpit nawigacyjny wydajności](https://azure.microsoft.com/updates/sqldatabaseadvisorga/). Konfiguracja domyślna jest zoptymalizowana pod kątem ciągłej zbierania danych, czyli minimalnej czasu poświęcanego na Stany wyłączone/READ_ONLY.
 
-| Konfigurowanie | Opis | Domyślny | Komentarz |
+| Konfiguracja | Opis | Domyślne | Komentarz |
 | --- | --- | --- | --- |
 | MAX_STORAGE_SIZE_MB |Określa limit przestrzeni danych, którą magazyn zapytań może wykonać w ramach bazy danych klienta |100 |Wymuszane dla nowych baz danych |
 | INTERVAL_LENGTH_MINUTES |Definiuje rozmiar przedziału czasu, w którym zbierane statystyki środowiska uruchomieniowego dla planów zapytania są agregowane i utrwalane. Każdy aktywny plan zapytania ma co najwyżej jeden wiersz w danym okresie zdefiniowanym przy użyciu tej konfiguracji |60 |Wymuszane dla nowych baz danych |
 | STALE_QUERY_THRESHOLD_DAYS |Zasady oczyszczania oparte na czasie, które sterują okresem przechowywania utrwalonych statystyk środowiska uruchomieniowego i nieaktywnych zapytań |30 |Wymuszone dla nowych baz danych i baz danych z poprzednią wartością domyślną (367) |
-| SIZE_BASED_CLEANUP_MODE |Określa, czy automatyczne czyszczenie danych ma miejsce, gdy rozmiar danych magazynu zapytań zbliża się do limitu |AUTOMATYCZNIE |Wymuszane dla wszystkich baz danych |
-| QUERY_CAPTURE_MODE |Określa, czy są śledzone wszystkie zapytania lub tylko podzbiór zapytań |AUTOMATYCZNIE |Wymuszane dla wszystkich baz danych |
+| SIZE_BASED_CLEANUP_MODE |Określa, czy automatyczne czyszczenie danych ma miejsce, gdy rozmiar danych magazynu zapytań zbliża się do limitu |Automatycznie |Wymuszane dla wszystkich baz danych |
+| QUERY_CAPTURE_MODE |Określa, czy są śledzone wszystkie zapytania lub tylko podzbiór zapytań |Automatycznie |Wymuszane dla wszystkich baz danych |
 | FLUSH_INTERVAL_SECONDS |Określa maksymalny okres, w którym przechwycone statystyki środowiska uruchomieniowego są przechowywane w pamięci, przed przeprowadzeniem opróżniania na dysk |900 |Wymuszane dla nowych baz danych |
 |  | | | |
 
 > [!IMPORTANT]
 > Te wartości domyślne są automatycznie stosowane w końcowym etapie aktywacji magazynu zapytań we wszystkich bazach danych Azure SQL (patrz Poprzednia ważna Uwaga). Po tym znaczeniu Azure SQL Database nie zmienią wartości konfiguracyjnych ustawionych przez klientów, o ile nie wpłyną one negatywnie na podstawowe obciążenie lub niezawodne operacje magazynu zapytań.
 
-Jeśli chcesz pozostać w ustawieniach niestandardowych, użyj [opcji ALTER DATABASE with Query Store](https://msdn.microsoft.com/library/bb522682.aspx) , aby przywrócić konfigurację do poprzedniego stanu. Zapoznaj się z najlepszymi rozwiązaniami dotyczącymi [magazynu zapytań,](https://msdn.microsoft.com/library/mt604821.aspx) aby dowiedzieć się, jak najlepiej wybrać optymalne parametry konfiguracji.
+Jeśli chcesz pozostać w ustawieniach niestandardowych, użyj [opcji ALTER DATABASE with Query Store](https://msdn.microsoft.com/library/bb522682.aspx) , aby przywrócić konfigurację do poprzedniego stanu. Zapoznaj się [z najlepszymi rozwiązaniami dotyczącymi magazynu zapytań,](https://msdn.microsoft.com/library/mt604821.aspx) aby dowiedzieć się, jak najlepiej wybrać optymalne parametry konfiguracji.
 
 ## <a name="next-steps"></a>Następne kroki
 

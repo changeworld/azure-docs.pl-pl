@@ -5,14 +5,15 @@ author: ChJenk
 manager: evansma
 ms.author: v-chjen
 ms.service: marketplace
+ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 05/30/2019
-ms.openlocfilehash: 9cefdc9354560ac5b7f3789cde2408a4c255c186
-ms.sourcegitcommit: 532335f703ac7f6e1d2cc1b155c69fc258816ede
+ms.openlocfilehash: f2cb1907557c2440a5a94c0f4799eac95a8cf507
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70191762"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73827860"
 ---
 # <a name="update-an-existing-offer-in-the-commercial-marketplace"></a>Aktualizowanie istniejącej oferty w komercyjnej witrynie Marketplace
 
@@ -30,12 +31,12 @@ Gdy wszystko będzie gotowe do opublikowania zaktualizowanej oferty, wybierz poz
 
 
 - Zobacz stan ukończenia dla sekcji zaktualizowanej oferty: 
-    - **Nieopublikowane zmiany**: Sekcja została zaktualizowana i została ukończona. Wszystkie wymagane dane zostały dostarczone, a aktualizacje nie zostały wprowadzone.
-    - **Niekompletne**: Aktualizacje wprowadzone w sekcji wprowadziły błędy, które muszą zostać naprawione lub wymagają podania więcej informacji.
+    - **Nieopublikowane zmiany**: sekcja została zaktualizowana i została ukończona. Wszystkie wymagane dane zostały dostarczone, a aktualizacje nie zostały wprowadzone.
+    - **Niekompletne**: aktualizacje wprowadzone w sekcji wprowadziły błędy, które muszą zostać naprawione lub wymagają podania więcej informacji.
 - Podaj dodatkowe informacje dla zespołu testowania certyfikacji, aby upewnić się, że testowanie przebiega bezproblemowo.
 - Prześlij zaktualizowaną ofertę opublikowania, wybierając pozycję **Prześlij**.  Wyślemy wiadomość e-mail, gdy wersja zapoznawcza zaktualizowanej oferty będzie dostępna do przeglądu i wylogowania.
 
-**WAŻNE**: Zapoznaj się z podglądem oferty, gdy będzie ona dostępna, a następnie wybierz pozycję **Przejdź na żywo** , aby opublikować zaktualizowaną ofertę dla wybranych odbiorców (publicznych lub prywatnych).
+**Ważne**: musisz przejrzeć wersję zapoznawczą oferty, gdy będzie ona dostępna, a następnie wybrać pozycję **Przejdź na żywo** , aby opublikować zaktualizowaną ofertę dla wybranych odbiorców (publicznych lub prywatnych).
 
 ## <a name="update-a-plan-within-an-existing-offer"></a>Aktualizowanie planu w ramach istniejącej oferty
 

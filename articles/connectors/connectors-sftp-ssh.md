@@ -10,12 +10,12 @@ ms.reviewer: divswa, klam, LADocs
 ms.topic: article
 ms.date: 06/18/2019
 tags: connectors
-ms.openlocfilehash: 33c6007ebc429bb0d95d702ae9b90f9ac411a88c
-ms.sourcegitcommit: 8bae7afb0011a98e82cbd76c50bc9f08be9ebe06
+ms.openlocfilehash: a48ba0d2d691314a1ca7c91ac7ae27b62fbb379b
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/01/2019
-ms.locfileid: "71695193"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73825237"
 ---
 # <a name="monitor-create-and-manage-sftp-files-by-using-ssh-and-azure-logic-apps"></a>Monitorowanie i tworzenie plików SFTP oraz zarządzanie nimi za pomocą protokołów SSH i Azure Logic Apps
 
@@ -31,7 +31,7 @@ Można użyć wyzwalaczy, które monitorują zdarzenia na serwerze SFTP i udost�
 
 Aby uzyskać różnice między łącznikiem protokołu SFTP-SSH a łącznikiem SFTP, zapoznaj się z sekcją [porównanie protokołu SFTP-SSH i SFTP](#comparison) w dalszej części tego tematu.
 
-## <a name="limits"></a>Ograniczeń
+## <a name="limits"></a>Limity
 
 * Domyślnie działania protokołu SFTP-SSH mogą odczytywać lub zapisywać pliki, które są *1 GB lub mniejsze* , ale tylko w przypadku fragmentów *15 MB* naraz. Aby obsłużyć pliki o rozmiarze większym niż 15 MB, operacje SFTP-SSH obsługują [fragmenty komunikatów](../logic-apps/logic-apps-handle-large-messages.md), z wyjątkiem akcji Kopiuj plik, która może obsługiwać tylko 15 MB plików. Akcja **Pobierz zawartość pliku** niejawnie używa fragmentacji komunikatów.
 
@@ -49,7 +49,7 @@ Poniżej przedstawiono inne kluczowe różnice między łącznikiem SFTP-SSH a �
 
 * Używa [biblioteki SSH.NET](https://github.com/sshnet/SSH.NET), która jest biblioteką Secure Shell (SSH), która obsługuje platformę .NET.
 
-* Domyślnie działania protokołu SFTP-SSH mogą odczytywać lub zapisywać pliki, które są *1 GB lub mniejsze* , ale tylko w przypadku fragmentów *15 MB* naraz. Aby obsłużyć pliki o rozmiarze większym niż 15 MB, w akcjach SFTP-SSH można używać [fragmentów komunikatów](../logic-apps/logic-apps-handle-large-messages.md). Jednak akcja Kopiuj plik obsługuje tylko 15 MB plików, ponieważ ta akcja nie obsługuje fragmentacji komunikatów. Protokół SFTP-SSH nie obsługuje fragmentów.
+* Domyślnie działania protokołu SFTP-SSH mogą odczytywać lub zapisywać pliki, które są *1 GB lub mniejsze* , ale tylko w przypadku fragmentów *15 MB* naraz. Aby obsłużyć pliki o rozmiarze większym niż 15 MB, w akcjach SFTP-SSH można używać [fragmentów komunikatów](../logic-apps/logic-apps-handle-large-messages.md). Do przekazywania dużych plików wymagane są również uprawnienia do odczytu i zapisu. Jednak akcja Kopiuj plik obsługuje tylko 15 MB plików, ponieważ ta akcja nie obsługuje fragmentacji komunikatów. Protokół SFTP-SSH nie obsługuje fragmentów.
 
 * Udostępnia akcję **Utwórz folder** , która tworzy folder w określonej ścieżce na serwerze SFTP.
 
@@ -59,9 +59,9 @@ Poniżej przedstawiono inne kluczowe różnice między łącznikiem SFTP-SSH a �
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-* Subskrypcja platformy Azure. Jeśli nie masz subskrypcji platformy Azure, [zarejestruj się, aby skorzystać z bezpłatnego konta platformy Azure](https://azure.microsoft.com/free/).
+* Subskrypcja platformy Azure. Jeśli nie masz subskrypcji platformy Azure, [zarejestruj się w celu założenia bezpłatnego konta platformy Azure](https://azure.microsoft.com/free/).
 
-* Adres serwera SFTP i poświadczenia konta, które umożliwiają aplikacji logiki dostęp do Twojego konta SFTP. Wymagany jest również dostęp do prywatnego klucza SSH oraz hasła prywatnego klucza SSH.
+* Adres serwera SFTP i poświadczenia konta, które umożliwiają aplikacji logiki dostęp do Twojego konta SFTP. Wymagany jest również dostęp do prywatnego klucza SSH oraz hasła prywatnego klucza SSH. Aby można było używać fragmentów podczas przekazywania dużych plików, wymagane są uprawnienia do odczytu i zapisu.
 
   > [!IMPORTANT]
   >
@@ -86,8 +86,8 @@ Protokół SFTP-SSH wyzwalacze działają przez sondowanie systemu plików SFTP 
 
 | Klient SFTP | Akcja |
 |-------------|--------|
-| WinSCP | Przejdź do **opcji opcje** > **Preferencje** > **Transfer** > **Edytuj** > **Zachowaj sygnaturę czasową** > **Wyłącz** |
-| FileZilla | Przejdź do **transferu** > **Zachowaj sygnatury czasowe transferowanych plików** > **Wyłącz** |
+| WinSCP | Przejdź do **opcji opcje** > **preferencje** > **transfer** > **edycja** > **Zachowaj sygnaturę czasową** > **Wyłącz** |
+| FileZilla | Przejdź do obszaru **Transfer** > **zachować sygnatury czasowe transferowanych plików** > **wyłączyć** |
 |||
 
 Gdy wyzwalacz odnajdzie nowy plik, wyzwalacz sprawdza, czy nowy plik jest zakończony i nie jest częściowo zapisany. Na przykład plik może mieć zmiany w toku, gdy wyzwalacz sprawdza serwer plików. Aby uniknąć powrotu częściowo zapisywanego pliku, wyzwalacz odnotowuje sygnaturę czasową dla pliku, który ma ostatnio wprowadzone zmiany, ale nie zwraca natychmiast tego pliku. Wyzwalacz zwraca plik tylko wtedy, gdy ponownie sonduje serwer. Czasami takie zachowanie może spowodować opóźnienie, który jest maksymalnie dwa razy interwał sondowania wyzwalacza.
@@ -138,7 +138,7 @@ Jeśli klucz prywatny jest w formacie pobierania, który używa rozszerzenia naz
 
 1. W przypadku pustych aplikacji logiki w polu wyszukiwania wprowadź ciąg "SFTP SSH" jako filtr. Na liście Wyzwalacze wybierz wyzwalacz, który chcesz.
 
-   —lub—
+   — lub —
 
    W przypadku istniejących aplikacji logiki w ostatnim kroku, w którym chcesz dodać akcję, wybierz pozycję **nowy krok**. W polu wyszukiwania wprowadź ciąg "SFTP SSH" jako filtr. Na liście Akcje wybierz żądaną akcję.
 
@@ -180,7 +180,7 @@ Ten wyzwalacz uruchamia przepływ pracy aplikacji logiki, gdy na serwerze SFTP z
 
 Ta akcja pobiera zawartość z pliku na serwerze SFTP. Na przykład można dodać wyzwalacz z poprzedniego przykładu i warunek, który musi spełniać zawartość pliku. Jeśli warunek ma wartość true, Akcja, która pobiera zawartość, może zostać uruchomiona.
 
-## <a name="connector-reference"></a>Odwołanie do łącznika
+## <a name="connector-reference"></a>Dokumentacja łączników
 
 Aby uzyskać szczegółowe informacje techniczne na temat wyzwalaczy, akcji i limitów, które są opisane w opisie OpenAPI łącznika (dawniej Swagger), przejrzyj [stronę odwołania](/connectors/sftpconnector/)łącznika.
 

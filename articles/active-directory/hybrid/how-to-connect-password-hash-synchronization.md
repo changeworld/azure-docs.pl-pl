@@ -15,12 +15,12 @@ ms.author: billmath
 search.appverid:
 - MET150
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1d8caafe312c123a9d572e9a5f4c5cf64a05f7ea
-ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
+ms.openlocfilehash: ac1b75536e092203490a390860a1cead7ac333b7
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73721043"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73817976"
 ---
 # <a name="implement-password-hash-synchronization-with-azure-ad-connect-sync"></a>Implementowanie synchronizacji skrótów haseł z synchronizacją Azure AD Connect
 Ten artykuł zawiera informacje potrzebne do synchronizacji haseł użytkowników z wystąpienia lokalnego Active Directory do wystąpienia Azure Active Directory opartego na chmurze (Azure AD).
@@ -100,7 +100,7 @@ Gdy *EnforceCloudPasswordPolicyForPasswordSyncedUsers* jest wyłączone (jest to
 
 Aby włączyć funkcję EnforceCloudPasswordPolicyForPasswordSyncedUsers, uruchom następujące polecenie przy użyciu modułu MSOnline PowerShell:
 
-`Set-MsolDirSyncFeature -Feature EnforceCloudPasswordPolicyForPasswordSyncedUsers  $true`
+`Set-MsolDirSyncFeature -Feature EnforceCloudPasswordPolicyForPasswordSyncedUsers -Enable $true`
 
 Po włączeniu usługa Azure AD nie przechodzi do każdego synchronizowanego użytkownika w celu usunięcia wartości `DisablePasswordExpiration` z atrybutu PasswordPolicies. Zamiast tego wartość jest ustawiana na `None` podczas następnej synchronizacji haseł dla każdego użytkownika po kolejnym zmianie hasła w lokalnej usłudze AD.  
 

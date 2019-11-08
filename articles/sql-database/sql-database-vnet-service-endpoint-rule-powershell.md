@@ -1,5 +1,5 @@
 ---
-title: 'Program PowerShell dla punktów końcowych sieci wirtualnych i reguły dla jednej i puli baz danych w usłudze Azure SQL '
+title: Program PowerShell dla punktów końcowych sieci wirtualnych i reguł dla baz danych z pojedynczym i pulą
 description: Udostępnia skrypty programu PowerShell do tworzenia punktów końcowych usługi wirtualnych i zarządzania nimi dla Azure SQL Database i SQL Data Warehouse.
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: rohitnayakmsft
 ms.author: rohitna
 ms.reviewer: genemi, vanto
 ms.date: 03/12/2019
-ms.openlocfilehash: 0f3c44d705cb3d8b6ff2d855686394d9e9f1575e
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 5c8f46c9066ad4ef0caac0fb19645b6e4b1cf846
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73686853"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73822404"
 ---
 # <a name="powershell--create-a-virtual-service-endpoint-and-vnet-rule-for-sql"></a>PowerShell: Tworzenie punktu końcowego usługi wirtualnej i reguły sieci wirtualnej dla serwera SQL
 

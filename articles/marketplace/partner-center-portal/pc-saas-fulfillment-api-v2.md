@@ -4,15 +4,16 @@ description: W tym artykule wyjaśniono, jak utworzyć i zarządzać ofertą Saa
 services: Azure, Marketplace, Cloud Partner Portal,
 author: qianw211
 ms.service: marketplace
+ms.subservice: partnercenter-marketplace-publisher
 ms.topic: reference
 ms.date: 10/18/2019
 ms.author: evansma
-ms.openlocfilehash: b1ec40485e775b7e50b5f7d82014aef77f14fb3e
-ms.sourcegitcommit: d47a30e54c5c9e65255f7ef3f7194a07931c27df
+ms.openlocfilehash: 4c73a59352422626ec3c6012607009995479d0cc
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/29/2019
-ms.locfileid: "73025286"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73816601"
 ---
 # <a name="saas-fulfillment-apis-version-2"></a>Interfejsy API realizacji SaaS w wersji 2 
 
@@ -29,7 +30,7 @@ Usługa Azure SaaS zarządza całym cyklem życia zakupu subskrypcji SaaS. Używ
 
 W poniższej tabeli wymieniono Stany aprowizacji dla subskrypcji SaaS, w tym opis i diagram sekwencji dla każdego (jeśli dotyczy). 
 
-#### <a name="provisioning"></a>Inicjowanie obsługi administracyjnej
+#### <a name="provisioning"></a>Inicjowanie obsługi
 
 Gdy klient inicjuje zakup, partner otrzymuje te informacje w kodzie autoryzacji na stronie internetowej klienta, która używa parametru adresu URL. Przykładem jest `https://contoso.com/signup?token=..`, natomiast adres URL strony docelowej w centrum partnerskim jest `https://contoso.com/signup`. Kod autoryzacji może być zweryfikowany i wymieniany w celu uzyskania szczegółowych informacji o usłudze aprowizacji, wywołując interfejs API rozpoznawania.  Po zakończeniu aprowizacji usługi SaaS usługa wysyła wywołanie aktywacji, aby sygnalizować zakończenie realizacji i rozliczenie klienta. 
 
@@ -70,7 +71,7 @@ Ten stan wskazuje, że płatność klienta nie została odebrana. Zgodnie z zasa
 Subskrypcje docierają do tego stanu w odpowiedzi na jawne żądanie klienta lub niepłaty opłat. Oczekiwanie od partnera polega na tym, że dane klienta są przechowywane na żądanie przez określoną liczbę dni, a następnie usuwane. 
 
 
-## <a name="api-reference"></a>Dokumentacja interfejsów API
+## <a name="api-reference"></a>Dokumentacja interfejsu API
 
 Ta sekcja dotyczy *interfejsu API subskrypcji* SaaS i *interfejsu API operacji*.  Wartość parametru `api-version` dla interfejsów API w wersji 2 jest `2018-08-31`.  
 
@@ -111,7 +112,7 @@ Rozwiązywanie punktu końcowego umożliwia wydawcy rozpoznanie tokenu witryny M
 |  Content-Type      | `application/json` |
 |  x-MS-identyfikator żądania    |  Unikatowa wartość ciągu służąca do śledzenia żądania od klienta, najlepiej identyfikatora GUID. Jeśli ta wartość nie zostanie podana, zostanie wygenerowana i podana w nagłówkach odpowiedzi. |
 |  x-MS-identyfikator korelacji |  Unikatowa wartość ciągu dla operacji na kliencie. Ten parametr umożliwia skorelowanie wszystkich zdarzeń z operacji klienta ze zdarzeniami po stronie serwera. Jeśli ta wartość nie zostanie podana, zostanie wygenerowana i podana w nagłówkach odpowiedzi.  |
-|  Zgody     |  [Pobierz token okaziciela sieci Web JSON (JWT)](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/saas-app/cpp-saas-registration#get-a-token-based-on-the-azure-ad-app). Na przykład: "`Bearer <access_token>`". |
+|  zgody     |  [Pobierz token okaziciela sieci Web JSON (JWT)](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/saas-app/cpp-saas-registration#get-a-token-based-on-the-azure-ad-app). Na przykład: "`Bearer <access_token>`". |
 |  x-MS-Marketplace-token  |  Parametr zapytania tokenu w adresie URL, gdy użytkownik jest przekierowywany do witryny sieci Web partnera SaaS z platformy Azure (na przykład: `https://contoso.com/signup?token=..`). *Uwaga:* Adres URL dekoduje wartość tokenu z przeglądarki przed jej użyciem.  |
 
 *Kody odpowiedzi:*
@@ -160,7 +161,7 @@ Interfejs API subskrypcji obsługuje następujące operacje HTTPS: **Get**, **po
 
 Wyświetla wszystkie subskrypcje SaaS wydawcy.
 
-##### <a name="getbrhttpsmarketplaceapimicrosoftcomapisaassubscriptionsapi-versionapiversion"></a>Pobierz<br>`https://marketplaceapi.microsoft.com/api/saas/subscriptions?api-version=<ApiVersion>`
+##### <a name="getbrhttpsmarketplaceapimicrosoftcomapisaassubscriptionsapi-versionapiversion"></a>Get<br>`https://marketplaceapi.microsoft.com/api/saas/subscriptions?api-version=<ApiVersion>`
 
 *Parametry zapytania:*
 
@@ -175,7 +176,7 @@ Wyświetla wszystkie subskrypcje SaaS wydawcy.
 | Content-Type       |  `application/json`  |
 | x-MS-identyfikator żądania     |  Unikatowa wartość ciągu służąca do śledzenia żądania od klienta, najlepiej identyfikatora GUID. Jeśli ta wartość nie zostanie podana, zostanie wygenerowana i podana w nagłówkach odpowiedzi. |
 | x-MS-identyfikator korelacji |  Unikatowa wartość ciągu dla operacji na kliencie. Ten parametr umożliwia skorelowanie wszystkich zdarzeń z operacji klienta ze zdarzeniami po stronie serwera. Jeśli ta wartość nie zostanie podana, zostanie wygenerowana i podana w nagłówkach odpowiedzi.  |
-| Zgody      |  [Pobierz token okaziciela sieci Web JSON (JWT)](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/saas-app/cpp-saas-registration#get-a-token-based-on-the-azure-ad-app). Na przykład: "`Bearer <access_token>`".  |
+| zgody      |  [Pobierz token okaziciela sieci Web JSON (JWT)](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/saas-app/cpp-saas-registration#get-a-token-based-on-the-azure-ad-app). Na przykład: "`Bearer <access_token>`".  |
 
 *Kody odpowiedzi:*
 
@@ -212,7 +213,7 @@ Pobiera wydawcę i odpowiednie subskrypcje dla wszystkich ofert wydawcy na podst
               "Read" // Possible Values: Read, Update, Delete.
           ], // Indicates operations allowed on the SaaS subscription. For CSP-initiated purchases, this will always be Read.
           "sessionMode": "None", // Possible Values: None, DryRun (Dry Run indicates all transactions run as Test-Mode in the commerce stack)
-          "isFreeTrial": "true", // true – the customer subscription is currently in free trial, false – the customer subscription is not currently in free trial.
+          "isFreeTrial": "true", // true - the customer subscription is currently in free trial, false - the customer subscription is not currently in free trial.
           "saasSubscriptionStatus": "Subscribed" // Indicates the status of the operation: [NotStarted, PendingFulfillmentStart, Subscribed, Suspended, Unsubscribed]
       }
   ],
@@ -250,7 +251,7 @@ I dla rzeczywistego interfejsu API: <br>
               "Read" // Possible Values: Read, Update, Delete.
           ], // Indicates operations allowed on the SaaS subscription. For CSP-initiated purchases, this will always be Read.
           "sessionMode": "None", // Possible Values: None, DryRun (Dry Run indicates all transactions run as Test-Mode in the commerce stack)
-          "isFreeTrial": true, // true – the customer subscription is currently in free trial, false – the customer subscription is not currently in free trial.(optional field – default false)
+          "isFreeTrial": true, // true - the customer subscription is currently in free trial, false - the customer subscription is not currently in free trial.(optional field - default false)
           "isTest": false, //indicating whether the current subscription is a test asset
           "sandboxType": "None", // Possible Values: None, Csp (Csp sandbox purchase)
           "saasSubscriptionStatus": "Subscribed" // Indicates the status of the operation: [NotStarted, PendingFulfillmentStart, Subscribed, Suspended, Unsubscribed]
@@ -280,7 +281,7 @@ Wewnętrzny błąd serwera.
 
 Pobiera określoną subskrypcję SaaS. To wywołanie służy do uzyskiwania informacji o licencji i planowania informacji.
 
-##### <a name="getbr-httpsmarketplaceapimicrosoftcomapisaassubscriptionssubscriptionidapi-versionapiversion"></a>Pobierz<br> `https://marketplaceapi.microsoft.com/api/saas/subscriptions/<subscriptionId?api-version=<ApiVersion>`
+##### <a name="getbr-httpsmarketplaceapimicrosoftcomapisaassubscriptionssubscriptionidapi-versionapiversion"></a>Get<br> `https://marketplaceapi.microsoft.com/api/saas/subscriptions/<subscriptionId?api-version=<ApiVersion>`
 
 *Parametry zapytania:*
 
@@ -296,7 +297,7 @@ Pobiera określoną subskrypcję SaaS. To wywołanie służy do uzyskiwania info
 |  Content-Type      |  `application/json`  |
 |  x-MS-identyfikator żądania    |  Unikatowa wartość ciągu służąca do śledzenia żądania od klienta, najlepiej identyfikatora GUID. Jeśli ta wartość nie zostanie podana, zostanie wygenerowana i podana w nagłówkach odpowiedzi. |
 |  x-MS-identyfikator korelacji |  Unikatowa wartość ciągu dla operacji na kliencie. Ten parametr umożliwia skorelowanie wszystkich zdarzeń z operacji klienta ze zdarzeniami po stronie serwera. Jeśli ta wartość nie zostanie podana, zostanie wygenerowana i podana w nagłówkach odpowiedzi.  |
-|  Zgody     |  [Pobierz token okaziciela sieci Web JSON (JWT)](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/saas-app/cpp-saas-registration#get-a-token-based-on-the-azure-ad-app). Na przykład: "`Bearer <access_token>`".  |
+|  zgody     |  [Pobierz token okaziciela sieci Web JSON (JWT)](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/saas-app/cpp-saas-registration#get-a-token-based-on-the-azure-ad-app). Na przykład: "`Bearer <access_token>`".  |
 
 *Kody odpowiedzi:*
 
@@ -320,7 +321,7 @@ Response Body:
           },
         "allowedCustomerOperations": ["Read"], // Indicates operations allowed on the SaaS subscription. For CSP-initiated purchases, this will always be Read.
         "sessionMode": "None", // Dry Run indicates all transactions run as Test-Mode in the commerce stack
-        "isFreeTrial": "true", // true – customer subscription is currently in free trial, false – customer subscription is not currently in free trial.
+        "isFreeTrial": "true", // true - customer subscription is currently in free trial, false - customer subscription is not currently in free trial.
         "status": "Subscribed", // Indicates the status of the operation.
           "term": { //This gives the free trial term start and end date
             "startDate": "2019-05-31",
@@ -351,7 +352,7 @@ Wewnętrzny błąd serwera.<br>
 
 Użyj tego wywołania, aby dowiedzieć się, czy istnieją oferty prywatne lub publiczne dla bieżącego wydawcy.
 
-##### <a name="getbr-httpsmarketplaceapimicrosoftcomapisaassubscriptionssubscriptionidlistavailableplansapi-versionapiversion"></a>Pobierz<br> `https://marketplaceapi.microsoft.com/api/saas/subscriptions/<subscriptionId>/listAvailablePlans?api-version=<ApiVersion>`
+##### <a name="getbr-httpsmarketplaceapimicrosoftcomapisaassubscriptionssubscriptionidlistavailableplansapi-versionapiversion"></a>Get<br> `https://marketplaceapi.microsoft.com/api/saas/subscriptions/<subscriptionId>/listAvailablePlans?api-version=<ApiVersion>`
 
 *Parametry zapytania:*
 
@@ -366,7 +367,7 @@ Użyj tego wywołania, aby dowiedzieć się, czy istnieją oferty prywatne lub p
 |   Content-Type     |  `application/json` |
 |   x-MS-identyfikator żądania   |   Unikatowa wartość ciągu służąca do śledzenia żądania od klienta, najlepiej identyfikatora GUID. Jeśli ta wartość nie zostanie podana, zostanie wygenerowana i podana w nagłówkach odpowiedzi. |
 |  x-MS-identyfikator korelacji  | Unikatowa wartość ciągu dla operacji na kliencie. Ten parametr umożliwia skorelowanie wszystkich zdarzeń z operacji klienta ze zdarzeniami po stronie serwera. Jeśli ta wartość nie zostanie podana, zostanie wygenerowana i podana w nagłówkach odpowiedzi. |
-|  Zgody     |  [Pobierz token okaziciela sieci Web JSON (JWT)](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/saas-app/cpp-saas-registration#get-a-token-based-on-the-azure-ad-app).  Na przykład: "`Bearer <access_token>`". |
+|  zgody     |  [Pobierz token okaziciela sieci Web JSON (JWT)](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/saas-app/cpp-saas-registration#get-a-token-based-on-the-azure-ad-app).  Na przykład: "`Bearer <access_token>`". |
 
 *Kody odpowiedzi:*
 
@@ -418,7 +419,7 @@ Wewnętrzny błąd serwera.<br>
 |  Content-Type      | `application/json`  |
 |  x-MS-identyfikator żądania    | Unikatowa wartość ciągu służąca do śledzenia żądania od klienta, najlepiej identyfikatora GUID. Jeśli ta wartość nie zostanie podana, zostanie wygenerowana i podana w nagłówkach odpowiedzi.  |
 |  x-MS-identyfikator korelacji  | Unikatowa wartość ciągu dla operacji na kliencie. Ten ciąg skorelowany ze wszystkimi zdarzeniami z operacji klienta ze zdarzeniami po stronie serwera. Jeśli ta wartość nie zostanie podana, zostanie wygenerowana i podana w nagłówkach odpowiedzi.  |
-|  Zgody     |  [Pobierz token okaziciela sieci Web JSON (JWT)](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/saas-app/cpp-saas-registration#get-a-token-based-on-the-azure-ad-app).  Na przykład: "`Bearer <access_token>`". |
+|  zgody     |  [Pobierz token okaziciela sieci Web JSON (JWT)](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/saas-app/cpp-saas-registration#get-a-token-based-on-the-azure-ad-app).  Na przykład: "`Bearer <access_token>`". |
 
 *Ładunek żądania:*
 
@@ -475,7 +476,7 @@ Zaktualizuj plan w ramach subskrypcji.
 |  Content-Type      | `application/json` |
 |  x-MS-identyfikator żądania    |   Unikatowa wartość ciągu służąca do śledzenia żądania od klienta, najlepiej identyfikatora GUID. Jeśli ta wartość nie zostanie podana, zostanie wygenerowana i podana w nagłówkach odpowiedzi.  |
 |  x-MS-identyfikator korelacji  |  Unikatowa wartość ciągu dla operacji na kliencie. Ten parametr umożliwia skorelowanie wszystkich zdarzeń z operacji klienta ze zdarzeniami po stronie serwera. Jeśli ta wartość nie zostanie podana, zostanie wygenerowana i podana w nagłówkach odpowiedzi.    |
-| Zgody      |  [Pobierz token okaziciela sieci Web JSON (JWT)](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/saas-app/cpp-saas-registration#get-a-token-based-on-the-azure-ad-app).  Na przykład: "`Bearer <access_token>`".  |
+| zgody      |  [Pobierz token okaziciela sieci Web JSON (JWT)](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/saas-app/cpp-saas-registration#get-a-token-based-on-the-azure-ad-app).  Na przykład: "`Bearer <access_token>`".  |
 
 *Ładunek żądania:*
 
@@ -541,7 +542,7 @@ Zaktualizuj ilość w ramach subskrypcji.
 |  Content-Type      | `application/json` |
 |  x-MS-identyfikator żądania    |   Unikatowa wartość ciągu służąca do śledzenia żądania od klienta, najlepiej identyfikatora GUID. Jeśli ta wartość nie zostanie podana, zostanie wygenerowana i podana w nagłówkach odpowiedzi.  |
 |  x-MS-identyfikator korelacji  |  Unikatowa wartość ciągu dla operacji na kliencie. Ten parametr umożliwia skorelowanie wszystkich zdarzeń z operacji klienta ze zdarzeniami po stronie serwera. Jeśli ta wartość nie zostanie podana, zostanie wygenerowana i podana w nagłówkach odpowiedzi.    |
-| Zgody      |  [Pobierz token okaziciela sieci Web JSON (JWT)](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/saas-app/cpp-saas-registration#get-a-token-based-on-the-azure-ad-app).  Na przykład: "`Bearer <access_token>`".  |
+| zgody      |  [Pobierz token okaziciela sieci Web JSON (JWT)](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/saas-app/cpp-saas-registration#get-a-token-based-on-the-azure-ad-app).  Na przykład: "`Bearer <access_token>`".  |
 
 *Ładunek żądania:*
 
@@ -592,7 +593,7 @@ Wewnętrzny błąd serwera.
 
 Anuluj subskrypcję i Usuń określoną subskrypcję.
 
-##### <a name="deletebr-httpsmarketplaceapimicrosoftcomapisaassubscriptionssubscriptionid-api-versionapiversion"></a>Usuń<br> `https://marketplaceapi.microsoft.com/api/saas/subscriptions/<subscriptionId> ?api-version=<ApiVersion>`
+##### <a name="deletebr-httpsmarketplaceapimicrosoftcomapisaassubscriptionssubscriptionid-api-versionapiversion"></a>Usuwanie<br> `https://marketplaceapi.microsoft.com/api/saas/subscriptions/<subscriptionId> ?api-version=<ApiVersion>`
 
 *Parametry zapytania:*
 
@@ -608,7 +609,7 @@ Anuluj subskrypcję i Usuń określoną subskrypcję.
 |   Content-Type     |  `application/json` |
 |  x-MS-identyfikator żądania    |   Unikatowa wartość ciągu służąca do śledzenia żądania od klienta, najlepiej identyfikatora GUID. Jeśli ta wartość nie zostanie podana, zostanie wygenerowana i podana w nagłówkach odpowiedzi.   |
 |  x-MS-identyfikator korelacji  |  Unikatowa wartość ciągu dla operacji na kliencie. Ten parametr umożliwia skorelowanie wszystkich zdarzeń z operacji klienta ze zdarzeniami po stronie serwera. Jeśli ta wartość nie zostanie podana, zostanie wygenerowana i podana w nagłówkach odpowiedzi.   |
-|  Zgody     |  [Pobierz token okaziciela sieci Web JSON (JWT)](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/saas-app/cpp-saas-registration#get-a-token-based-on-the-azure-ad-app).  Na przykład: "`Bearer <access_token>`".  |
+|  zgody     |  [Pobierz token okaziciela sieci Web JSON (JWT)](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/saas-app/cpp-saas-registration#get-a-token-based-on-the-azure-ad-app).  Na przykład: "`Bearer <access_token>`".  |
 
 *Kody odpowiedzi:*
 
@@ -645,7 +646,7 @@ Interfejs API operacji obsługuje następujące poprawki i pobiera operacje.
 
 Wyświetla listę zaległych operacji dla bieżącego wydawcy. 
 
-##### <a name="getbr-httpsmarketplaceapimicrosoftcomapisaassubscriptionssubscriptionidoperationsapi-versionapiversion"></a>Pobierz<br> `https://marketplaceapi.microsoft.com/api/saas/subscriptions/<subscriptionId>/operations?api-version=<ApiVersion>`
+##### <a name="getbr-httpsmarketplaceapimicrosoftcomapisaassubscriptionssubscriptionidoperationsapi-versionapiversion"></a>Get<br> `https://marketplaceapi.microsoft.com/api/saas/subscriptions/<subscriptionId>/operations?api-version=<ApiVersion>`
 
 *Parametry zapytania:*
 
@@ -661,7 +662,7 @@ Wyświetla listę zaległych operacji dla bieżącego wydawcy.
 |   Content-Type     |  `application/json` |
 |  x-MS-identyfikator żądania    |  Unikatowa wartość ciągu służąca do śledzenia żądania od klienta, najlepiej identyfikatora GUID. Jeśli ta wartość nie zostanie podana, zostanie wygenerowana i podana w nagłówkach odpowiedzi.  |
 |  x-MS-identyfikator korelacji |  Unikatowa wartość ciągu dla operacji na kliencie. Ten parametr umożliwia skorelowanie wszystkich zdarzeń z operacji klienta ze zdarzeniami po stronie serwera. Jeśli ta wartość nie zostanie podana, zostanie wygenerowana i podana w nagłówkach odpowiedzi.  |
-|  Zgody     |  [Pobierz token okaziciela sieci Web JSON (JWT)](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/saas-app/cpp-saas-registration#get-a-token-based-on-the-azure-ad-app).  Na przykład: "`Bearer <access_token>`".  |
+|  zgody     |  [Pobierz token okaziciela sieci Web JSON (JWT)](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/saas-app/cpp-saas-registration#get-a-token-based-on-the-azure-ad-app).  Na przykład: "`Bearer <access_token>`".  |
 
 *Kody odpowiedzi:*
 
@@ -709,7 +710,7 @@ Wewnętrzny błąd serwera.
 
 Umożliwia wydawcy śledzenie stanu określonej wyzwalanej operacji asynchronicznej (takiej jak `Subscribe`, `Unsubscribe`, `ChangePlan`lub `ChangeQuantity`).
 
-##### <a name="getbr-httpsmarketplaceapimicrosoftcomapisaassubscriptionssubscriptionidoperationsoperationidapi-versionapiversion"></a>Pobierz<br> `https://marketplaceapi.microsoft.com/api/saas/subscriptions/<subscriptionId>/operations/<operationId>?api-version=<ApiVersion>`
+##### <a name="getbr-httpsmarketplaceapimicrosoftcomapisaassubscriptionssubscriptionidoperationsoperationidapi-versionapiversion"></a>Get<br> `https://marketplaceapi.microsoft.com/api/saas/subscriptions/<subscriptionId>/operations/<operationId>?api-version=<ApiVersion>`
 
 *Parametry zapytania:*
 
@@ -724,7 +725,7 @@ Umożliwia wydawcy śledzenie stanu określonej wyzwalanej operacji asynchronicz
 |  Content-Type      |  `application/json`   |
 |  x-MS-identyfikator żądania    |   Unikatowa wartość ciągu służąca do śledzenia żądania od klienta, najlepiej identyfikatora GUID. Jeśli ta wartość nie zostanie podana, zostanie wygenerowana i podana w nagłówkach odpowiedzi.  |
 |  x-MS-identyfikator korelacji |  Unikatowa wartość ciągu dla operacji na kliencie. Ten parametr umożliwia skorelowanie wszystkich zdarzeń z operacji klienta ze zdarzeniami po stronie serwera. Jeśli ta wartość nie zostanie podana, zostanie wygenerowana i podana w nagłówkach odpowiedzi.  |
-|  Zgody     |  [Pobierz token okaziciela sieci Web JSON (JWT)](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/saas-app/cpp-saas-registration#get-a-token-based-on-the-azure-ad-app). Na przykład: "`Bearer <access_token>`".  |
+|  zgody     |  [Pobierz token okaziciela sieci Web JSON (JWT)](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/saas-app/cpp-saas-registration#get-a-token-based-on-the-azure-ad-app). Na przykład: "`Bearer <access_token>`".  |
 
 *Kody odpowiedzi:*<br>
 
@@ -788,7 +789,7 @@ Zaktualizuj stan operacji, aby wskazać powodzenie lub niepowodzenie przy użyci
 |   Content-Type     | `application/json`   |
 |   x-MS-identyfikator żądania   |   Unikatowa wartość ciągu służąca do śledzenia żądania od klienta, najlepiej identyfikatora GUID. Jeśli ta wartość nie zostanie podana, zostanie wygenerowana i podana w nagłówkach odpowiedzi. |
 |  x-MS-identyfikator korelacji |  Unikatowa wartość ciągu dla operacji na kliencie. Ten parametr umożliwia skorelowanie wszystkich zdarzeń z operacji klienta ze zdarzeniami po stronie serwera. Jeśli ta wartość nie zostanie podana, zostanie wygenerowana i podana w nagłówkach odpowiedzi. |
-|  Zgody     |  [Pobierz token okaziciela sieci Web JSON (JWT)](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/saas-app/cpp-saas-registration#get-a-token-based-on-the-azure-ad-app).  Na przykład: "`Bearer <access_token>`".  |
+|  zgody     |  [Pobierz token okaziciela sieci Web JSON (JWT)](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/saas-app/cpp-saas-registration#get-a-token-based-on-the-azure-ad-app).  Na przykład: "`Bearer <access_token>`".  |
 
 *Ładunek żądania:*
 
@@ -839,7 +840,7 @@ Wydawca musi zaimplementować element webhook w tej usłudze SaaS, aby aktywnie 
   "id": "<this is a GUID operation id, you can call operations API with this to get status>",
   "activityId": "<this is a Guid correlation id>",
   "subscriptionId": "<Guid to uniquely identify this resource>",
-  "publisherId": "<this is the publisher’s name>",
+  "publisherId": "<this is the publisher's name>",
   "offerId": "<this is the offer name>",
   "planId": "<this is the plan id>",
   "quantity": "<the number of seats, will be null if not per-seat saas offer>",

@@ -5,14 +5,15 @@ author: qianw211
 manager: evansma
 ms.author: v-qiwe
 ms.service: marketplace
+ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 08/27/2019
-ms.openlocfilehash: 7364bc41a67d8651c91745a8763fff62fee722fe
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.openlocfilehash: 027a35db9fcb6c0e95be5da276f673b9295ad436
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72784812"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73812718"
 ---
 # <a name="co-sell-option-in-partner-center"></a>Opcja współsprzedawana w centrum partnerskim
 
@@ -33,7 +34,7 @@ Wybierz typ oferty:
 | **Typ oferty**    | **Opis**  |
 | :------------------- | :-------------------|
 | Urządzenie | Oferta, która obejmuje tworzenie i sprzedawanie sprzętu od producenta urządzenia. |
-| IP | Aplikacje lub inne materiały z prawem autorskim licencjonowane na użytek klienta. Na przykład: Program CRM, który może być licencjonowany i instalowany lokalnie. |
+| Adres IP | Aplikacje lub inne materiały z prawem autorskim licencjonowane na użytek klienta. Na przykład: Program CRM, który może być licencjonowany i instalowany lokalnie. |
 | Usługa | Praktyczne doświadczenie dla konkretnego projektu jednorazowego, często dostarczane przez konsultantów. Na przykład: Konfigurowanie bazy danych klienta dla klienta programu (przy użyciu klienta przy założeniu, że jest on odpowiedzialny za obsługę bazy danych po dostarczeniu). |
 | Usługa zarządzana | Praktyczne doświadczenie w odniesieniu do projektu opartego na chmurze, zwykle w sposób ciągły. Przykład: dostarczenie platformy i narzędzi do uruchamiania bazy danych w trybie online z trwającym zarządzaniem udostępnianym przez dostawcę usług zarządzanych. |
 

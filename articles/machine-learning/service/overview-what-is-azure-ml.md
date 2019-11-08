@@ -8,12 +8,12 @@ ms.topic: overview
 author: j-martens
 ms.author: jmartens
 ms.date: 11/04/2019
-ms.openlocfilehash: 9399353cb676ef4525e81229cf3920fd9d7e3aaf
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 7e07419115a6e9709879c71dfac1234408bda0ee
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73684925"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73824074"
 ---
 # <a name="what-is-azure-machine-learning"></a>Co to jest usługa Azure Machine Learning?
 
@@ -44,7 +44,7 @@ Azure Machine Learning udostępnia wszystkie narzędzia dla deweloperów i anali
 
 + Notesy Jupyter: Użyj naszych [przykładowych notesów](https://aka.ms/aml-notebooks) lub Utwórz własne notesy, aby korzystać z naszego <a href="https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py" target="_blank">zestawu SDK dla</a> przykładów języka Python dla uczenia maszynowego. 
 
-+ Skrypty i notesy języka r, w których używasz <a href="https://azure.github.io/azureml-sdk-for-r/reference/index.html on" target="_blank">zestawu SDK dla języka r</a> , do pisania własnego kodu lub korzystania z modułów r w projektancie.
++ Skrypty i notesy języka r, w których używasz <a href="https://azure.github.io/azureml-sdk-for-r/reference/index.html" target="_blank">zestawu SDK dla języka r</a> , do pisania własnego kodu lub korzystania z modułów r w projektancie.
 
 + [Visual Studio Code rozszerzenie](how-to-vscode-tools.md)
 

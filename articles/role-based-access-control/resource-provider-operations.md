@@ -13,12 +13,12 @@ ms.workload: identity
 ms.date: 09/25/2019
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: 6360c7ea5bfdfb2d348cc843288655ed904e6c74
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: ca9b0289fbc8dd01427de38e0e7b30eec266bb12
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73580790"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73818592"
 ---
 # <a name="azure-resource-manager-resource-provider-operations"></a>Operacje dostawcy zasobów Azure Resource Manager
 
@@ -4778,8 +4778,8 @@ Operacje dostawcy zasobów są zawsze rozwijane. Aby uzyskać najnowsze operacje
 > | Akcja | Microsoft. Search/searchServices/Delete | Usuwa usługę wyszukiwania. |
 > | Akcja | Microsoft. Search/searchServices/deleteQueryKey/Delete | Usuwa klucz zapytania. |
 > | Akcja | Microsoft. Search/searchServices/listAdminKeys/Action | Odczytuje klucze administratora. |
-> | Akcja | Microsoft. Search/searchServices/listQueryKeys/Action | Zwraca listę kluczy interfejsu API zapytania dla danej usługi Azure Search. |
-> | Akcja | Microsoft. Search/searchServices/listQueryKeys/Read | Zwraca listę kluczy interfejsu API zapytania dla danej usługi Azure Search. |
+> | Akcja | Microsoft. Search/searchServices/listQueryKeys/Action | Zwraca listę kluczy interfejsu API zapytania dla danej usługi Wyszukiwanie poznawcze platformy Azure. |
+> | Akcja | Microsoft. Search/searchServices/listQueryKeys/Read | Zwraca listę kluczy interfejsu API zapytania dla danej usługi Wyszukiwanie poznawcze platformy Azure. |
 > | Akcja | Microsoft. Search/searchServices/Read | Odczytuje usługę wyszukiwania. |
 > | Akcja | Microsoft. Search/searchServices/regenerateAdminKey/Action | Generuje ponownie klucz administratora. |
 > | Akcja | Microsoft. Search/searchServices/Start/akcja | Uruchamia usługę wyszukiwania. |
@@ -6010,7 +6010,7 @@ Operacje dostawcy zasobów są zawsze rozwijane. Aby uzyskać najnowsze operacje
 > | Akcja | Microsoft. Web/Sites/hostnamebindings/odczyt | Pobierz powiązania Web Apps nazwy hosta. |
 > | Akcja | Microsoft. Web/Sites/hostnamebindings/Write | Aktualizowanie powiązań nazwy hosta Web Apps. |
 > | Akcja | Microsoft. Web/Sites/hostruntime/Functions/Keys/odczyt | Pobierz Web Apps klucze funkcji Hostruntime. |
-> | Akcja | Microsoft. Web/Sites/hostruntime/Host/_master/odczyt | Pobierz klucz główny aplikacja funkcji dla operacji administracyjnych |
+> | Akcja | Microsoft. Web/Sites/hostruntime/Host/_master/Read | Pobierz klucz główny aplikacja funkcji dla operacji administracyjnych |
 > | Akcja | Microsoft. Web/Sites/hostruntime/Host/akcja | Wykonywanie akcji środowiska uruchomieniowego aplikacja funkcji, takich jak wyzwalacze synchronizacji, Dodawanie funkcji, wywoływanie funkcji, funkcje Delete itd. |
 > | Akcja | Microsoft. Web/Sites/hostruntime/Host/odczyt | Pobierz Web Apps hosta Hostruntime. |
 > | Akcja | Microsoft. Web/Sites/hybridconnection/Delete | Usuń połączenie hybrydowe Web Apps. |

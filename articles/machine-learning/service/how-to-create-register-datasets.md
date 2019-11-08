@@ -1,7 +1,7 @@
 ---
-title: Tworzenie zestawów danych w celu uzyskania dostępu do dane za pomocą platformy Azure
+title: Tworzenie Azure Machine Learningych zestawów danych w celu uzyskiwania do nich dostępu
 titleSuffix: Azure Machine Learning
-description: Dowiedz się, jak tworzyć zestawy danych z różnych źródeł i rejestrować zestawy danych w obszarze roboczym.
+description: Dowiedz się, jak tworzyć zestawy danych Azure Machine Learning, aby uzyskać dostęp do Twoich operacji w przypadku przebiegów eksperymentów usługi Machine Learning.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -11,18 +11,18 @@ author: MayMSFT
 manager: cgronlun
 ms.reviewer: nibaccam
 ms.date: 11/04/2019
-ms.openlocfilehash: 1379085e410ddf119ae4ed1fe45389f00eb1b2a5
-ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
+ms.openlocfilehash: 51102962879b43d4ef3ae8662d7c3136bc7441d9
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73716591"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73818438"
 ---
-# <a name="create-and-access-datasets-in-azure-machine-learning"></a>Tworzenie zestawów danych i uzyskiwanie do nich dostępu w Azure Machine Learning
+# <a name="create-azure-machine-learning-datasets"></a>Tworzenie zestawów danych Azure Machine Learning
 
 [!INCLUDE [aml-applies-to-basic-enterprise-sku](../../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
-W tym artykule dowiesz się, jak utworzyć Azure Machine Learning zestawy danych (wersja zapoznawcza) i jak uzyskać dostęp do informacji z lokalnych lub zdalnych eksperymentów.
+W tym artykule opisano sposób tworzenia Azure Machine Learning zestawów danych w celu uzyskania dostępu do danych dla eksperymentów lokalnych lub zdalnych.
 
 Za pomocą Azure Machine Learning zestawów danych można:
 
@@ -43,7 +43,7 @@ Aby tworzyć zestawy danych i korzystać z nich, potrzebne są:
 * [Zestaw Azure Machine Learning SDK dla języka Python](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py), który obejmuje pakiet usługi Azure DataSets.
 
 > [!NOTE]
-> Niektóre klasy zestawu danych (wersja zapoznawcza) mają zależności w pakiecie [Azure preprodukcyjnym](https://docs.microsoft.com/python/api/azureml-dataprep/?view=azure-ml-py) . W przypadku użytkowników systemu Linux te klasy są obsługiwane tylko w następujących dystrybucjach: Red Hat Enterprise Linux, Ubuntu, Fedora i CentOS.
+> Niektóre klasy zestawu danych mają zależności w pakiecie [Azure preprodukcyjnym](https://docs.microsoft.com/python/api/azureml-dataprep/?view=azure-ml-py) . W przypadku użytkowników systemu Linux te klasy są obsługiwane tylko w następujących dystrybucjach: Red Hat Enterprise Linux, Ubuntu, Fedora i CentOS.
 
 ## <a name="dataset-types"></a>Typy zestawów danych
 

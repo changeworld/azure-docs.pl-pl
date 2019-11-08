@@ -17,12 +17,12 @@ ms.date: 08/08/2019
 ms.author: chadam
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 931f2fbe5798966c41378d9b401dcd59cafc5cca
-ms.sourcegitcommit: 8e271271cd8c1434b4254862ef96f52a5a9567fb
+ms.openlocfilehash: 9bb7114611ce5c7eabb8124ad11db64d50e12946
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72820875"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73809820"
 ---
 # <a name="sign-in-activity-report-error-codes"></a>Kody błędów raportów działań związanych z logowaniem 
 
@@ -127,6 +127,7 @@ Możesz również programowo uzyskać dostęp do danych logowania przy użyciu [
 |50177|Test zewnętrzny nie jest obsługiwany w przypadku użytkowników przekazujących.|
 |50178|Kontrolka sesji nie jest obsługiwana w przypadku użytkowników przekazujących.|
 |50180|Wymagane jest zintegrowane uwierzytelnianie systemu Windows. Włącz dzierżawę dla bezproblemowego logowania jednokrotnego.|
+|50181|Błąd związany z uwierzytelnianiem OTP podczas logowania. |
 |50201|Ten komunikat przerwania monitu zostanie wyświetlony użytkownikowi podczas logowania, jeśli do użytkownika mają zostać dostarczone dodatkowe informacje.|
 |51001|Nie ma wskazówki domeny z lokalnym identyfikatorem zabezpieczeń lokalnej nazwy użytkownika.|
 |51004|Konto użytkownika nie istnieje w katalogu.|

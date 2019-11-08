@@ -1,5 +1,5 @@
 ---
-title: Skonfiguruj zaawansowaną ochronę przed zagrożeniami — Azure SQL Database wystąpienia zarządzanego
+title: Skonfiguruj zaawansowaną ochronę przed zagrożeniami — wystąpienie zarządzane
 description: Zaawansowana ochrona przed zagrożeniami wykrywa nietypowe działania bazy danych wskazujące na potencjalne zagrożenia bezpieczeństwa bazy danych w wystąpieniu zarządzanym.
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: rmatchoro
 ms.author: ronmat
 ms.reviewer: vanto
 ms.date: 08/05/2019
-ms.openlocfilehash: 8e419031c34a693bac7ab9f9825c24576e80ba14
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 69292a934af8b8777f11ab58ed3fe306abf8b408
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73687885"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73822553"
 ---
 # <a name="configure-advanced-threat-protection-in-azure-sql-database-managed-instance"></a>Skonfiguruj zaawansowaną ochronę przed zagrożeniami w Azure SQL Database wystąpieniu zarządzanym
 

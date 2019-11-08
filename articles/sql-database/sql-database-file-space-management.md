@@ -1,5 +1,5 @@
 ---
-title: Azure SQL Database Zarządzanie przestrzenią plików z jednym/pulą baz danych | Microsoft Docs
+title: Zarządzanie przestrzenią plików z pojedynczym/pulą baz danych
 description: Na tej stronie opisano sposób zarządzania przestrzenią plików z pojedynczymi bazami danych w puli w Azure SQL Database i przedstawiono przykłady kodu służące do określenia, czy należy zmniejszyć jedną lub bazę danych w puli, oraz jak wykonać operację zmniejszania bazy danych.
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: oslake
 ms.author: moslake
 ms.reviewer: jrasnick, carlrab
 ms.date: 03/12/2019
-ms.openlocfilehash: c92ffb6aa6db9c77a859661115d54ff63ea02401
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: a8fe58313bce6e9a21b07aa095672ec35ce572d2
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68568208"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73803053"
 ---
 # <a name="manage-file-space-for-single-and-pooled-databases-in-azure-sql-database"></a>Zarządzanie obszarem plików dla jednej i puli baz danych w Azure SQL Database
 
@@ -44,7 +44,7 @@ Monitorowanie użycia miejsca na pliki i zmniejszania plików danych może być 
 Większość metryk miejsca do magazynowania wyświetlana w Azure Portal i następujące interfejsy API mierzą tylko rozmiar użytych stron danych:
 
 - Interfejsy API metryk opartych na Azure Resource Managerach, w tym PowerShell [Get-Metrics](https://docs.microsoft.com/powershell/module/az.monitor/get-azmetric)
-- T-SQL: [sys. DM _db_resource_stats](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-db-resource-stats-azure-sql-database)
+- T-SQL: [sys. dm_db_resource_stats](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-db-resource-stats-azure-sql-database)
 
 Jednak poniższe interfejsy API mierzą również rozmiar miejsca przydzieloną dla baz danych i pul elastycznych:
 
@@ -53,7 +53,7 @@ Jednak poniższe interfejsy API mierzą również rozmiar miejsca przydzieloną 
 
 ### <a name="shrinking-data-files"></a>Zmniejszanie plików danych
 
-Usługa SQL Database nie zmniejsza automatycznie plików danych w celu odzyskiwania nieużywanych przyznanych miejsc ze względu na potencjalny wpływ na wydajność bazy danych.  Jednak klienci mogą zmniejszać pliki danych za pośrednictwem samoobsługowego wyboru, wykonując kroki opisane w artykule Odzyskiwanie nieużywanych przydzielonego [miejsca](#reclaim-unused-allocated-space).
+Usługa SQL Database nie zmniejsza automatycznie plików danych w celu odzyskiwania nieużywanych przyznanych miejsc ze względu na potencjalny wpływ na wydajność bazy danych.  Jednak klienci mogą zmniejszać pliki danych za pośrednictwem samoobsługowego wyboru, wykonując kroki opisane w artykule [odzyskiwanie nieużywanych przydzielonego miejsca](#reclaim-unused-allocated-space).
 
 > [!NOTE]
 > W przeciwieństwie do plików danych usługa SQL Database automatycznie zmniejsza pliki dziennika, ponieważ ta operacja nie ma wpływu na wydajność bazy danych. 
@@ -234,7 +234,7 @@ Aby uzyskać więcej informacji na temat tego polecenia, zobacz [SHRINKDATABASE]
 
 ### <a name="auto-shrink"></a>Autozmniejszanie
 
-Alternatywnie można włączyć funkcję autozmniejszania dla bazy danych.  Funkcja autozmniejszania zmniejsza złożoność zarządzania plikami i mniej wpływa na wydajność bazy `SHRINKDATABASE` danych `SHRINKFILE`niż lub.  Funkcja autozmniejszania może być szczególnie przydatna do zarządzania elastycznymi pulami z wieloma bazami danych.  Jednak funkcja autozmniejszania może być mniej skuteczna podczas odzyskiwania przestrzeni plików niż `SHRINKDATABASE` i `SHRINKFILE`.
+Alternatywnie można włączyć funkcję autozmniejszania dla bazy danych.  Funkcja autozmniejszania zmniejsza złożoność zarządzania plikami i mniej wpływa na wydajność bazy danych niż `SHRINKDATABASE` lub `SHRINKFILE`.  Funkcja autozmniejszania może być szczególnie przydatna do zarządzania elastycznymi pulami z wieloma bazami danych.  Jednak funkcja autozmniejszania może być mniej skuteczna podczas odzyskiwania przestrzeni plików niż `SHRINKDATABASE` i `SHRINKFILE`.
 Aby włączyć funkcję autozmniejszania, zmodyfikuj nazwę bazy danych w poniższym poleceniu.
 
 
@@ -256,5 +256,5 @@ Po usunięciu plików danych bazy danych indeksy mogą stać się pofragmentowan
   - [Limity zasobów dla pojedynczych baz danych korzystających z modelu zakupu opartego na jednostkach DTU](sql-database-dtu-resource-limits-single-databases.md)
   - [Azure SQL Database limity modelu zakupu opartego na rdzeń wirtualny dla pul elastycznych](sql-database-vcore-resource-limits-elastic-pools.md)
   - [Limity zasobów dla pul elastycznych przy użyciu modelu zakupu opartego na jednostkach DTU](sql-database-dtu-resource-limits-elastic-pools.md)
-- Aby uzyskać więcej informacji o `SHRINKDATABASE` poleceniu, zobacz [SHRINKDATABASE](https://docs.microsoft.com/sql/t-sql/database-console-commands/dbcc-shrinkdatabase-transact-sql). 
+- Aby uzyskać więcej informacji na temat polecenia `SHRINKDATABASE`, zobacz [SHRINKDATABASE](https://docs.microsoft.com/sql/t-sql/database-console-commands/dbcc-shrinkdatabase-transact-sql). 
 - Aby uzyskać więcej informacji na temat fragmentacji i odbudowywania indeksów, zobacz [Reorganizowanie i](https://docs.microsoft.com/sql/relational-databases/indexes/reorganize-and-rebuild-indexes)ponowne kompilowanie indeksów.

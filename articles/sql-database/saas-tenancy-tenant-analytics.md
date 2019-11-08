@@ -1,5 +1,5 @@
 ---
-title: Uruchamianie analizy obejmującej wiele dzierżawców przy użyciu wyodrębnionych danych | Microsoft Docs
+title: Analiza wielu dzierżawców z użyciem wyodrębnionych danych
 description: Zapytania analizy obejmującej wiele dzierżawców korzystające z danych wyodrębnionych z wielu baz danych Azure SQL Database w aplikacji pojedynczej dzierżawy.
 services: sql-database
 ms.service: sql-database
@@ -11,18 +11,18 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: anjangsh,billgib,genemi
 ms.date: 12/18/2018
-ms.openlocfilehash: 2c24a87377eb4b893cbcae1b9a36522e586a6d56
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: c589d9619da8b5150d0fb4752625571c48393552
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68570151"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73826377"
 ---
 # <a name="cross-tenant-analytics-using-extracted-data---single-tenant-app"></a>Analiza wielu dzierżawców przy użyciu wyodrębnionych aplikacji z jedną dzierżawą
  
 W tym samouczku przedstawiono kompletny scenariusz analizy dla implementacji pojedynczej dzierżawy. W tym scenariuszu pokazano, jak analiza może umożliwić firmom podejmowanie szybkich decyzji. Korzystając z danych wyodrębnionych z każdej bazy danych dzierżawy, można używać analiz do uzyskiwania wglądu w zachowanie dzierżawy, w tym ich używania przykładowych biletów Wingtip SaaS aplikacji. Ten scenariusz obejmuje trzy kroki: 
 
-1.  **Wyodrębnij** dane z każdej bazy danych dzierżawy i załaduj je do sklepu analitycznego.
+1.  **Wyodrębnij** dane z każdej bazy danych dzierżawy i **Załaduj** je do sklepu analitycznego.
 2.  **Przekształć wyodrębnione dane** na potrzeby przetwarzania analizy.
 3.  Skorzystaj z narzędzi **analizy biznesowej** , aby narysować przydatne informacje, które mogą posłużyć do podejmowania decyzji. 
 
@@ -54,7 +54,7 @@ Przy użyciu centralnych tabel faktów i wymiarów umożliwia wydajne przetwarza
  
 ![architectureOverView](media/saas-tenancy-tenant-analytics/StarSchema.png)
 
-Na koniec w sklepie Analytics jest wysyłana kwerenda **przy użyciu usługi** Power BI w celu wyróżnienia szczegółowych informacji na temat zachowania dzierżawy i korzystania z aplikacji biletów Wingtip. Uruchamiasz zapytania, które:
+Na koniec w sklepie Analytics jest wysyłana kwerenda **przy użyciu usługi Power BI w celu** wyróżnienia szczegółowych informacji na temat zachowania dzierżawy i korzystania z aplikacji biletów Wingtip. Uruchamiasz zapytania, które:
  
 - Pokaż względną popularność każdego miejsca
 - Wyróżnij wzorce w sprzedaży biletów dla różnych zdarzeń
@@ -62,24 +62,24 @@ Na koniec w sklepie Analytics jest wysyłana kwerenda **przy użyciu usługi** P
 
 Zrozumienie, w jaki sposób każda dzierżawa korzysta z usługi, jest używana do eksplorowania opcji zarabiając usługi i ulepszania usługi, aby ułatwić dzierżawcom. Ten samouczek zawiera podstawowe przykłady rodzaju szczegółowych informacji, które mogą być wydobyć z danych dzierżawy.
 
-## <a name="setup"></a>Konfiguracja
+## <a name="setup"></a>Konfigurowanie
 
 ### <a name="prerequisites"></a>Wymagania wstępne
 
 Do wykonania zadań opisanych w tym samouczku niezbędne jest spełnienie następujących wymagań wstępnych:
 
 - Wdrożono bazę danych SaaS biletów Wingtip na aplikację dzierżawców. Aby wdrożyć program w mniej niż pięć minut, zobacz [wdrażanie i eksplorowanie aplikacji Wingtip SaaS](saas-dbpertenant-get-started-deploy.md)
-- W witrynie GitHub są pobierane Wingtip bilety bazy danych SaaS i [kod źródłowy](https://github.com/Microsoft/WingtipTicketsSaaS-DbPerTenant/) aplikacji. Zobacz instrukcje pobierania. Pamiętaj, aby *odblokować plik zip* przed wyodrębnieniem jego zawartości. Zapoznaj się [](saas-tenancy-wingtip-app-guidance-tips.md) z ogólnymi wskazówkami dotyczącymi kroków pobierania i odblokowywania Wingtip biletów SaaS.
+- W witrynie GitHub są pobierane Wingtip bilety bazy danych SaaS i [kod źródłowy](https://github.com/Microsoft/WingtipTicketsSaaS-DbPerTenant/) aplikacji. Zobacz instrukcje pobierania. Pamiętaj, aby *odblokować plik zip* przed wyodrębnieniem jego zawartości. Zapoznaj się z [ogólnymi wskazówkami](saas-tenancy-wingtip-app-guidance-tips.md) dotyczącymi kroków pobierania i odblokowywania Wingtip biletów SaaS.
 - Power BI Desktop jest zainstalowany. [Pobierz Power BI Desktop](https://powerbi.microsoft.com/downloads/)
 - Partia dodatkowych dzierżawców została zainicjowana, zapoznaj się z [**samouczkiem Inicjowanie obsługi dzierżaw**](saas-dbpertenant-provision-and-catalog.md).
-- Utworzono konto zadania i bazę danych konta zadania. Zapoznaj się z odpowiednimi krokami w samouczku dotyczącym [**zarządzania schematami**](saas-tenancy-schema-management.md#create-a-job-agent-database-and-new-job-agent).
+- Utworzono konto zadania i bazę danych konta zadania. Zapoznaj się z odpowiednimi krokami w [**samouczku dotyczącym zarządzania schematami**](saas-tenancy-schema-management.md#create-a-job-agent-database-and-new-job-agent).
 
 ### <a name="create-data-for-the-demo"></a>Utwórz dane dla pokazu
 
 W tym samouczku analiza jest wykonywana na danych sprzedaży biletów. W bieżącym kroku są generowane dane biletów dla wszystkich dzierżawców.  Później te dane są wyodrębniane do analizy. *Upewnij się, że masz zainicjowaną partię dzierżawców zgodnie z wcześniejszym opisem, aby uzyskać zrozumiałą ilość danych*. Wystarczająco duże ilości danych mogą uwidaczniać różne wzorce zakupów biletów.
 
 1. W programie PowerShell ISE Otwórz pozycję *. ..\Learning Modules\Operational Analytics\Tenant Analytics\Demo-TenantAnalytics.ps1*i Ustaw następującą wartość:
-    - $DemoScenario = **1** bilety zakupu dla zdarzeń we wszystkich miejscu
+    - **$DemoScenario** = **1** bilety zakupu dla zdarzeń we wszystkich miejscu
 2. Naciśnij klawisz **F5** , aby uruchomić skrypt i utworzyć historię zakupów biletów dla każdego zdarzenia w każdym miejscu.  Skrypt jest uruchamiany przez kilka minut na wygenerowanie dziesiątek tysięcy biletów.
 
 ### <a name="deploy-the-analytics-store"></a>Wdrażanie sklepu analitycznego
@@ -90,17 +90,17 @@ W poniższych krokach zostanie wdrożony magazyn analityczny o nazwie **tenantan
 2. Ustaw zmienną $DemoScenario w skrypcie, aby pasowała do wybranego sklepu analitycznego:
     - Aby użyć bazy danych SQL bez magazynu kolumn, ustaw **$DemoScenario** = **2**
     - Aby użyć bazy danych SQL z magazynem kolumn, ustaw **$DemoScenario** = **3**  
-3. Naciśnij klawisz **F5** , aby uruchomić skrypt demonstracyjny (wywołujący skrypt *Deploy\<-TenantAnalytics XX >. ps1* ), który tworzy magazyn analizy dzierżawców. 
+3. Naciśnij klawisz **F5** , aby uruchomić skrypt demonstracyjny (wywołujący skrypt *Deploy-TenantAnalytics\<XX >. ps1* ), który tworzy magazyn analizy dzierżawców. 
 
-Teraz, gdy aplikacja została wdrożona i uzupełniona o interesujące dane dzierżawy, użyj [SQL Server Management Studio (SSMS)](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms) do połączenia **tenants1-DPT&lt;-&gt; User** i **Catalog-DPT&lt;-User&gt;** serwery używające nazwy logowania = *Developer*, Password = *P\@ssword1*. Zobacz [samouczek wprowadzający](saas-dbpertenant-wingtip-app-overview.md) , aby uzyskać więcej wskazówek.
+Teraz, gdy aplikacja została wdrożona i uzupełniona o interesujące dane dzierżawy, użyj [SQL Server Management Studio (SSMS)](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms) do połączenia&gt;użytkownika i **katalogu DPT** - **&lt;DPT** -&lt;użytkownika&gt;przy użyciu Login = *Developer*, Password = *P\@ssword1*. Zobacz [samouczek wprowadzający](saas-dbpertenant-wingtip-app-overview.md) , aby uzyskać więcej wskazówek.
 
 ![architectureOverView](media/saas-tenancy-tenant-analytics/ssmsSignIn.png)
 
 W Eksplorator obiektów wykonaj następujące czynności:
 
-1. Rozwiń serwer *tenants1-DPT-&lt;User&gt;*  .
+1. Rozwiń serwer *&gt;tenants1-DPT-&lt;użytkownika* .
 2. Rozwiń węzeł bazy danych i Zobacz listę baz danych dzierżaw.
-3. Rozwiń węzeł *katalog-DPT-&lt;użytkownika&gt;*  .
+3. Rozwiń węzeł *Catalog-DPT-&lt;User&gt;* Server.
 4. Sprawdź, czy jest widoczny magazyn analizy i baza danych jobaccount.
 
 Zobacz następujące elementy bazy danych w narzędziu SSMS Eksplorator obiektów, rozszerzając węzeł sklepu Analytics:
@@ -115,11 +115,11 @@ Zobacz następujące elementy bazy danych w narzędziu SSMS Eksplorator obiektó
 
 ### <a name="create-target-groups"></a>Tworzenie grup docelowych 
 
-Przed kontynuowaniem upewnij się, że wdrożono konto zadania i bazę danych jobaccount. W następnym zestawie kroków zadania elastyczne są używane do wyodrębniania danych z każdej bazy danych dzierżawy oraz do przechowywania danych w sklepie analitycznym. Następnie drugie zadanie shreds dane i zapisuje je w tabelach w schemacie gwiazdy. Te dwa zadania są uruchamiane w odniesieniu do dwóch różnych grup docelowych, a mianowicie dzierżawców i grupy **analizy**. Zadanie wyodrębniania działa w odniesieniu do grupy dzierżawców, która zawiera wszystkie bazy danych dzierżaw. Zadanie shredding jest uruchamiane względem grupy analiz, która zawiera tylko magazyn analityczny. Utwórz grupy docelowe, wykonując następujące czynności:
+Przed kontynuowaniem upewnij się, że wdrożono konto zadania i bazę danych jobaccount. W następnym zestawie kroków zadania elastyczne są używane do wyodrębniania danych z każdej bazy danych dzierżawy oraz do przechowywania danych w sklepie analitycznym. Następnie drugie zadanie shreds dane i zapisuje je w tabelach w schemacie gwiazdy. Te dwa zadania są uruchamiane w odniesieniu do dwóch różnych grup docelowych, a mianowicie **dzierżawców** i grupy **analizy**. Zadanie wyodrębniania działa w odniesieniu do grupy dzierżawców, która zawiera wszystkie bazy danych dzierżaw. Zadanie shredding jest uruchamiane względem grupy analiz, która zawiera tylko magazyn analityczny. Utwórz grupy docelowe, wykonując następujące czynności:
 
-1. W programie SSMS Nawiąż połączenie z bazą danych **jobaccount** w katalogu-&lt;DPT&gt;-User.
+1. W programie SSMS Nawiąż połączenie z bazą danych **jobaccount** w katalogu dpt użytkownika&lt;&gt;.
 2. W programie SSMS Otwórz pozycję *. ..\Learning Modules\Operational Analytics\Tenant Analytics \ TargetGroups. SQL* 
-3. Zmodyfikuj zmienną w górnej części skryptu, zastępując `<User>` ją wartością użytkownika używaną podczas wdrażania aplikacji Wingtip SaaS. @User
+3. Zmodyfikuj zmienną @User w górnej części skryptu, zastępując `<User>` wartością użytkownika używaną podczas wdrażania aplikacji Wingtip SaaS.
 4. Naciśnij klawisz **F5** , aby uruchomić skrypt, który tworzy dwie grupy docelowe.
 
 ### <a name="extract-raw-data-from-all-tenants"></a>Wyodrębnij dane pierwotne ze wszystkich dzierżawców
@@ -131,9 +131,9 @@ Szczegółowe modyfikacje danych mogą występować częściej dla danych *bilet
 
 Każde zadanie wyodrębnia swoje dane i zapisuje je w sklepie analitycznym. Oddzielne zadanie shreds wyodrębnione dane do programu gwiazdy Analytics-Schema.
 
-1. W programie SSMS Nawiąż połączenie z bazą danych **jobaccount** w katalogu DPT&lt;-&gt; User Server.
+1. W programie SSMS Nawiąż połączenie z bazą danych **jobaccount** w katalogu DPT&gt;-&lt;użytkownika.
 2. W programie SSMS Otwórz pozycję *. ..\Learning Modules\Operational Analytics\Tenant Analytics\ExtractTickets.SQL*.
-3. Zmodyfikuj @User u góry skryptu i Zastąp `<User>` ciąg nazwą użytkownika używaną podczas wdrażania aplikacji Wingtip SaaS 
+3. Zmodyfikuj @User w górnej części skryptu i Zastąp `<User>` nazwą użytkownika używaną podczas wdrażania aplikacji Wingtip SaaS 
 4. Naciśnij klawisz F5, aby uruchomić skrypt, który tworzy i uruchamia zadanie wyodrębniające bilety i dane klientów z każdej bazy danych dzierżaw. Zadanie zapisuje dane w sklepie analizy.
 5. Wykonaj zapytanie dotyczące tabeli TicketsRawData w bazie danych tenantanalytics, aby upewnić się, że tabela została wypełniona informacjami o biletach ze wszystkich dzierżawców.
 
@@ -151,11 +151,11 @@ Następnym krokiem jest Shred wyodrębnionych nieprzetworzonych danych do zestaw
 
 W tej części samouczka zdefiniujesz i uruchomisz zadanie, które scala wyodrębnione dane pierwotne z danymi w tabelach schematu gwiazdy. Po zakończeniu zadania scalania dane pierwotne zostaną usunięte, pozostawiając tabele gotowe do wypełnienia przez następne zadanie wyodrębnienia danych dzierżawy.
 
-1. W programie SSMS Nawiąż połączenie z bazą danych **jobaccount** w katalogu-&lt;DPT&gt;-User.
+1. W programie SSMS Nawiąż połączenie z bazą danych **jobaccount** w katalogu dpt użytkownika&lt;&gt;.
 2. W programie SSMS Otwórz pozycję *. ..\Learning Modules\Operational Analytics\Tenant Analytics\ShredRawExtractedData.SQL*.
 3. Naciśnij klawisz **F5** , aby uruchomić skrypt w celu zdefiniowania zadania, które wywołuje procedurę składowaną sp_ShredRawExtractedData w sklepie analizy.
 4. Poczekaj, aż zadanie zostanie pomyślnie uruchomione.
-    - Sprawdź kolumnę **cykl życia** w tabeli jobs. jobs_execution dla stanu zadania. Przed kontynuowaniem upewnij się, że zadanie zakończyło **się pomyślnie** . Pomyślne uruchomienie wyświetla dane podobne do poniższego wykresu:
+    - Sprawdź kolumnę **cykl życia** zadania. jobs_execution tabeli dla stanu zadania. Przed kontynuowaniem upewnij się, że zadanie **zakończyło się pomyślnie** . Pomyślne uruchomienie wyświetla dane podobne do poniższego wykresu:
 
 ![shredding](media/saas-tenancy-tenant-analytics/shreddingJob.PNG)
 
@@ -168,17 +168,17 @@ Dane w tabeli ze schematem gwiazdy zawierają wszystkie dane sprzedaży biletów
 Wykonaj następujące kroki, aby nawiązać połączenie z usługą Power BI i zaimportować utworzone wcześniej widoki:
 
 1. Uruchom Power BI pulpicie.
-2. Na Wstążce Narzędzia główne wybierz pozycję **Pobierz dane**, a następnie wybierz pozycję **więcej...** w menu.
+2. Na Wstążce Narzędzia główne wybierz pozycję **Pobierz dane**, a następnie wybierz pozycję **więcej...** z menu.
 3. W oknie **pobieranie danych** wybierz pozycję Azure SQL Database.
-4. W oknie Logowanie do bazy danych wprowadź nazwę serwera (Catalog-DPT-&lt;User&gt;. Database.Windows.NET). Wybierz pozycję **Importuj** dla **trybu łączności danych**, a następnie kliknij przycisk OK. 
+4. W oknie Logowanie do bazy danych wprowadź nazwę serwera (Catalog-DPT-&lt;User&gt;. database.windows.net). Wybierz pozycję **Importuj** dla **trybu łączności danych**, a następnie kliknij przycisk OK. 
 
     ![signinpowerbi](./media/saas-tenancy-tenant-analytics/powerBISignIn.PNG)
 
-5. W lewym okienku wybierz pozycję **baza danych** , a następnie wprowadź nazwę użytkownika = *deweloper*i wprowadź hasło *=\@P ssword1*. Kliknij przycisk **Połącz**.  
+5. W lewym okienku wybierz pozycję **baza danych** , a następnie wprowadź nazwę użytkownika = *deweloper*i wprowadź hasło = *P\@ssword1*. Kliknij przycisk **Połącz**.  
 
     ![databasesignin](./media/saas-tenancy-tenant-analytics/databaseSignIn.PNG)
 
-6. W okienku **Nawigator** w obszarze baza danych analizy wybierz tabele ze schematem gwiazdy: Fact_Tickets, Dim_Events, Dim_Venues, Dim_Customers i dim_Dates. Następnie wybierzpozycję Załaduj. 
+6. W okienku **Nawigator** w obszarze baza danych analizy wybierz tabele ze schematem gwiazdy: fact_Tickets, dim_Events, dim_Venues, dim_Customers i dim_Dates. Następnie wybierz pozycję **Załaduj**. 
 
 Gratulacje! Dane zostały pomyślnie załadowane do Power BI. Teraz możesz zacząć Eksplorowanie interesujących wizualizacji, aby ułatwić uzyskanie wglądu w dzierżawy. Następnym zapoznaj się z tematem, w jaki sposób analiza może pozwolić na zapewnienie zaleceń opartych na danych w zespole biznesowym biletów Wingtip. Zalecenia mogą pomóc zoptymalizować model biznesowy i obsługę klienta.
 
@@ -208,7 +208,7 @@ Powyższy wykres z korytarzem z firmy Contoso wspólnie pokazuje, że Mad — sz
 
 Szczegółowe informacje na temat wzorców sprzedaży biletów mogą prowadzić do Wingtip biletów, aby zoptymalizować model biznesowy. Zamiast naliczania wszystkich dzierżawców w równym stopniu, prawdopodobnie Wingtip powinny wprowadzać warstwy usług o różnych rozmiarach obliczeniowych. Większą liczbą miejsc, które muszą sprzedawać więcej biletów dziennie, może być oferowana wyższa warstwa z wyższą umową dotyczącą poziomu usług (SLA). Te miejsca mogą mieć swoje bazy danych umieszczane w puli z wyższymi limitami zasobów dla poszczególnych baz danych. Każda warstwa usług może mieć co godzinę alokację sprzedaży przy użyciu dodatkowych opłat naliczanych za przekroczenie przydziału. Większe miejsca, w których okresowe rozbicie sprzedaży byłyby korzystne dla wyższych warstw, a bilety Wingtip mogą wydajnie Zarabiaj swoją usługę.
 
-Tymczasem niektórzy Wingtip bilety, z których klienci mogą się zapewnić, aby sprzedać wystarczającą liczbę biletów, aby uzasadnić koszt usługi. W tych informacjach można zwiększyć sprzedaż biletów w przypadku niedopełnienia miejsc. Wyższa sprzedaż mogłaby zwiększyć postrzeganą wartość usługi. Kliknij prawym przyciskiem myszy pozycję fact_Tickets i wybierz pozycję **Nowa miara**. Wprowadź następujące wyrażenie dla nowej miary o nazwie **AverageTicketsSold**:
+Tymczasem niektórzy Wingtip bilety, z których klienci mogą się zapewnić, aby sprzedać wystarczającą liczbę biletów, aby uzasadnić koszt usługi. W tych informacjach można zwiększyć sprzedaż biletów w przypadku niedopełnienia miejsc. Wyższa sprzedaż mogłaby zwiększyć postrzeganą wartość usługi. Kliknij prawym przyciskiem myszy fact_Tickets i wybierz pozycję **Nowa miara**. Wprowadź następujące wyrażenie dla nowej miary o nazwie **AverageTicketsSold**:
 
 ```
 AverageTicketsSold = AVERAGEX( SUMMARIZE( TableName, TableName[Venue Name] ), CALCULATE( SUM(TableName[Tickets Sold] ) ) )
@@ -224,7 +224,7 @@ Wcześniej można było pogłębić analizę, aby odkryć, że sprzedaż biletó
 
 Zaobserwowano trendy w danych dzierżawcy z aplikacji WingTip. Można z nich naSaaSać inne sposoby, aby aplikacja mogła informować decyzje biznesowe dotyczące dostawców aplikacji. Dostawcy mogą lepiej zaspokojyć potrzeby swoich dzierżawców. Miejmy nadzieję ten samouczek zawiera narzędzia niezbędne do przeprowadzenia analizy danych dzierżawy, aby umożliwić firmom podejmowanie decyzji opartych na danych.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 W niniejszym samouczku zawarto informacje na temat wykonywania następujących czynności:
 

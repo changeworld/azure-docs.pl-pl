@@ -1,5 +1,5 @@
 ---
-title: Aktualizowanie informacji o grupach z portalu Moje aplikacje — Azure Active Directory | Microsoft Docs
+title: Aktualizowanie informacji o grupach w portalu Moje aplikacje — Azure AD
 description: Dowiedz się, jak wyświetlać i aktualizować informacje związane z grupami, w tym wyświetlanie własnych grup, tworzenie nowych grup, wyświetlanie grup, do których należysz, i dołączanie do dowolnych grup, które nie są już częścią.
 services: active-directory
 author: eross-msft
@@ -13,14 +13,14 @@ ms.author: lizross
 ms.reviewer: kasimpso
 ms.custom: user-help, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a11b43d040dec838de350c23614ae42b6756ec6e
-ms.sourcegitcommit: 04ec7b5fa7a92a4eb72fca6c6cb617be35d30d0c
+ms.openlocfilehash: aa251ee361af12ecf3fef3c7cd437fa06c1cea52
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/22/2019
-ms.locfileid: "68383170"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73803919"
 ---
-# <a name="update-your-groups-info-from-the-my-apps-portal"></a>Aktualizowanie informacji o grupach z portalu My Apps
+# <a name="update-your-groups-info-on-the-my-apps-portal"></a>Aktualizowanie informacji o grupach w portalu Moje aplikacje
 
 Możesz użyć swojego konta służbowego z portalem **Moje aplikacje** oparte na sieci Web, aby wyświetlać i uruchamiać wiele aplikacji opartych na chmurze w organizacji, aktualizować niektóre informacje o profilu i koncie, wyświetlać informacje o **grupach** i wykonywać  **przeglądy dostępu** do aplikacji i grup. Jeśli nie masz dostępu do portalu **Moje aplikacje** , musisz skontaktować się z pomocą techniczną, aby uzyskać odpowiednie uprawnienia.
 
@@ -41,7 +41,7 @@ Jeśli administrator udzielił Ci uprawnień do wyświetlania kafelka **grupy** 
 
 1. Zaloguj się do konta służbowego.
 
-2. Otwórz przeglądarkę internetową i przejdź do https://myapps.microsoft.com lub Użyj linku dostarczonego przez organizację. Na przykład może nastąpić przekierowanie do dostosowanej strony organizacji, https://myapps.microsoft.com/contoso.com na przykład.
+2. Otwórz przeglądarkę internetową i przejdź do https://myapps.microsoft.comlub Użyj linku dostarczonego przez organizację. Na przykład może nastąpić przekierowanie do dostosowanej strony organizacji, takiej jak https://myapps.microsoft.com/contoso.com.
 
     Zostanie wyświetlona strona **aplikacje** przedstawiająca wszystkie aplikacje oparte na chmurze należące do organizacji i dostępne do użycia.
 
@@ -69,7 +69,7 @@ Jeśli administrator udzielił Ci uprawnień do wyświetlania kafelka **grupy** 
 
     - **Dołącz do grupy.** Dołącz do istniejącej grupy, dla której nie jesteś jeszcze członkiem z **grup, w** których prowadzisz. Aby uzyskać szczegółowe instrukcje, zobacz sekcję [Przyłącz do istniejącej grupy](#join-an-existing-group).
 
-## <a name="create-a-new-group"></a>Utwórz nową grupę
+## <a name="create-a-new-group"></a>Tworzenie nowej grupy
 
 1. Na stronie **grupy** wybierz pozycję **Utwórz grupę** w obszarze **grupy I własne** .
 
@@ -83,7 +83,7 @@ Jeśli administrator udzielił Ci uprawnień do wyświetlania kafelka **grupy** 
 
         - **Bezpieczeństwo.** Używany do zarządzania dostępem członków i komputerów do udostępnionych zasobów dla grupy użytkowników. Na przykład można utworzyć grupę zabezpieczeń dla konkretnych zasad zabezpieczeń. W ten sposób można jednocześnie udzielić zestawu uprawnień wszystkim członkom zamiast udzielania uprawnień każdemu członkowi osobno.
 
-        - **Office 365.** Zapewnia możliwości współpracy przez udostępnienie członkom współużytkowanej skrzynki pocztowej, kalendarza, plików, witryny programu SharePoint i innych. Ta opcja umożliwia także udzielenie dostępu do grupy osobom spoza organizacji.
+        - **Pakiet Office 365.** Zapewnia możliwości współpracy przez udostępnienie członkom współużytkowanej skrzynki pocztowej, kalendarza, plików, witryny programu SharePoint i innych. Ta opcja umożliwia także udzielenie dostępu do grupy osobom spoza organizacji.
 
     - **Nazwa grupy.** Dodaj nazwę grupy, która ma znaczenie i którą łatwo zapamiętać.
 
@@ -101,7 +101,7 @@ Po utworzeniu grupy można edytować jej szczegóły, w tym aktualizując dowoln
 
 ### <a name="to-edit-your-details"></a>Aby edytować szczegóły
 
-1. Wybierz grupę, którą chcesz edytować, na stronie **grupy** , a następnie wybierz pozycję **Edytuj szczegóły** na *&lt;stronie Group_Name&gt;* .
+1. Wybierz grupę, którą chcesz edytować, na stronie **grupy** , a następnie wybierz pozycję **Edytuj szczegóły** na stronie *&lt;Group_Name&gt;* .
 
     Zostanie wyświetlone okno **Edytuj szczegóły** i można zaktualizować informacje dodane podczas pierwszego tworzenia grupy.
 
@@ -113,7 +113,7 @@ Możesz dodawać lub usuwać elementy członkowskie dla dowolnych własnych grup
 
 ### <a name="to-add-or-remove-a-member"></a>Aby dodać lub usunąć członka
 
-1. Wybierz grupę, do której chcesz dodać członków, a następnie wybierz **+** ją *&lt;na stronie Group_Name&gt;* .
+1. Wybierz grupę, do której chcesz dodać członków, a następnie wybierz pozycję **+** na stronie *&lt;Group_Name&gt;* .
 
     ![Dodawanie elementu członkowskiego grupy z wyróżnionym znakiem +](media/my-apps-portal/my-apps-portal-add-member-link.png)
 
@@ -123,7 +123,7 @@ Możesz dodawać lub usuwać elementy członkowskie dla dowolnych własnych grup
 
     Zaproszenie jest wysyłane do nowego członka, aby rozpocząć dostęp do aplikacji w organizacji.
 
-3. Jeśli element członkowski został dodany przez pomyłkę lub jeśli członek opuścił organizację, możesz usunąć element członkowski, wybierając pozycję **Usuń element członkowski** obok nazwy elementu członkowskiego na *&lt;stronie Group_Name&gt;* .
+3. Jeśli element członkowski został dodany przez pomyłkę lub jeśli członek opuścił organizację, możesz usunąć element członkowski, wybierając pozycję **Usuń element członkowski** obok nazwy elementu członkowskiego na stronie *&lt;Group_Name&gt;* .
 
     ![Usuń element członkowski z wyróżnionym linkiem usuwania](media/my-apps-portal/my-apps-portal-remove-member-link.png)
 
@@ -147,7 +147,7 @@ W dowolnym momencie możesz usunąć dowolną własną grupę. Jeśli jednak usu
 
 ### <a name="to-delete-the-group"></a>Aby usunąć grupę
 
-1. Wybierz grupę, którą chcesz trwale usunąć, a następnie wybierz pozycję **Usuń grupę** na *&lt;stronie Group_Name&gt;* .
+1. Wybierz grupę, którą chcesz trwale usunąć, a następnie wybierz pozycję **Usuń grupę** na stronie *&lt;Group_Name&gt;* .
 
     ![Strona < Group_name > z wyróżnionym linkiem Usuń grupę](media/my-apps-portal/my-apps-portal-delete-group-link.png)
 
@@ -171,7 +171,7 @@ Możesz dołączyć już istniejącą grupę ze strony **grupy** .
 
     Jeśli grupa wymaga zatwierdzenia członkostwa w grupie, użytkownik zostanie poproszony o podanie uzasadnienia biznesowego, w którym należy dołączyć do grupy, a następnie wybrać pozycję **Żądaj**. Jeśli grupa nie wymaga zatwierdzenia, zostanie natychmiast dodana jako element członkowski, a grupa pojawia się na liście Twoich **grup** .
 
-3. Jeśli dołączysz grupę przez pomyłkę lub jeśli nie musisz już jej częścią, możesz wybrać nazwę grupy na stronie Dołączanie **grup** , a następnie wybrać pozycję **Opuść grupę**.
+3. Jeśli dołączysz grupę przez pomyłkę lub jeśli nie musisz już jej częścią, możesz wybrać nazwę grupy na stronie **dołączanie grup** , a następnie wybrać pozycję **Opuść grupę**.
 
     ![Strona Dołącz grupy z wyróżnionym przyciskiem Opuść grupę](media/my-apps-portal/my-apps-portal-leave-group-link.png)    
 

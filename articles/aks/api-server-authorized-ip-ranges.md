@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 11/05/2019
 ms.author: mlearned
-ms.openlocfilehash: 558c04be77f911f40be9e8880950d1670a3c169e
-ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
-ms.translationtype: HT
+ms.openlocfilehash: aa0cf1ef3f758d7aba4639d779bde90249d039cb
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73747748"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73815672"
 ---
 # <a name="secure-access-to-the-api-server-using-authorized-ip-address-ranges-in-azure-kubernetes-service-aks"></a>Bezpieczny dostęp do serwera interfejsu API za pomocą zakresów autoryzowanych adresów IP w usłudze Azure Kubernetes Service (AKS)
 
@@ -25,17 +25,9 @@ W tym artykule pokazano, jak używać zakresów adresów IP autoryzowanych przez
 
 ## <a name="before-you-begin"></a>Przed rozpoczęciem
 
-W tym artykule przyjęto założenie, że pracujesz z klastrami korzystającymi z [korzystającą wtyczki kubenet][kubenet].  W przypadku klastrów opartych na [interfejsie Azure Container Network Interface (CNI)][cni-networking] nie będzie potrzebna tabela tras wymagana do zabezpieczenia dostępu.  Należy ręcznie utworzyć tabelę tras.  Aby uzyskać więcej informacji na temat zarządzania tabelami tras, zobacz [Tworzenie, zmienianie lub usuwanie tabeli tras][route-tables].
-
 Zakres adresów IP autoryzowanych przez serwer API działa tylko w przypadku nowych klastrów AKS utworzonych przez Ciebie. W tym artykule opisano sposób tworzenia klastra AKS przy użyciu interfejsu wiersza polecenia platformy Azure.
 
 Wymagany jest interfejs wiersza polecenia platformy Azure w wersji 2.0.76 lub nowszej. Uruchom polecenie  `az --version`, aby dowiedzieć się, jaka wersja jest używana. Jeśli konieczne jest zainstalowanie lub uaktualnienie, zobacz [Instalowanie interfejsu wiersza polecenia platformy Azure][install-azure-cli].
-
-## <a name="limitations"></a>Ograniczenia
-
-Podczas konfigurowania zakresów autoryzowanych adresów IP serwera interfejsu API obowiązują następujące ograniczenia:
-
-* Obecnie nie można używać Azure Dev Spaces, ponieważ komunikacja z serwerem interfejsu API jest również blokowana.
 
 ## <a name="overview-of-api-server-authorized-ip-ranges"></a>Przegląd zakresów adresów IP autoryzowanych serwerów interfejsu API
 
@@ -69,6 +61,7 @@ az aks create \
 > Należy dodać te zakresy do listy dozwolonych:
 > - Publiczny adres IP zapory
 > - Każdy zakres reprezentujący sieci, z których będziesz administrować klastrem
+> - Jeśli używasz Azure Dev Spaces w klastrze AKS, musisz zezwolić na [dodatkowe zakresy w zależności od regionu][dev-spaces-ranges].
 
 ### <a name="specify-the-outbound-ips-for-the-standard-sku-load-balancer"></a>Określ wychodzące adresy IP dla usługi równoważenia obciążenia standardowej jednostki SKU
 
@@ -141,6 +134,7 @@ Aby uzyskać więcej informacji, zobacz [pojęcia dotyczące zabezpieczeń aplik
 
 <!-- LINKS - external -->
 [cni-networking]: https://github.com/Azure/azure-container-networking/blob/master/docs/cni.md
+[dev-spaces-ranges]: https://github.com/Azure/dev-spaces/tree/master/public-ips
 [kubenet]: https://kubernetes.io/docs/concepts/extend-kubernetes/compute-storage-net/network-plugins/#kubenet
 
 <!-- LINKS - internal -->

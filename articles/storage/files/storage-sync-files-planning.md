@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 10/24/2019
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 698702e24f1f6dfc6b94b75de77c08156832e566
-ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
+ms.openlocfilehash: e1f7aeb5615c1a22c1970f118c24c996ac936870
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73177846"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73826818"
 ---
 # <a name="planning-for-an-azure-file-sync-deployment"></a>Planowanie wdrażania usługi Azure File Sync
 Użyj Azure File Sync, aby scentralizować udziały plików w organizacji w Azure Files, utrzymując elastyczność, wydajność i zgodność lokalnego serwera plików. Funkcja Azure File Sync przekształca system Windows Server w szybką pamięć podręczną udziału plików platformy Azure. Możesz użyć dowolnego protokołu, który jest dostępny w systemie Windows Server, aby uzyskać dostęp do danych lokalnie, w tym SMB, NFS i FTPS. Na całym świecie możesz mieć dowolną liczbę pamięci podręcznych.
@@ -73,7 +73,7 @@ Przed wdrożeniem Azure File Sync należy ocenić, czy jest on zgodny z systemem
 
 Polecenie cmdlet do oceny można zainstalować, instalując moduł AZ PowerShell module, który można zainstalować, postępując zgodnie z instrukcjami tutaj: [Install and configure Azure PowerShell](https://docs.microsoft.com/powershell/azure/install-Az-ps).
 
-#### <a name="usage"></a>Użycie  
+#### <a name="usage"></a>Sposób użycia  
 Narzędzie do oceny można wywołać na kilka różnych sposobów: można wykonać testy systemowe, zestawy danych lub oba te elementy. Aby przeprowadzić testy systemu i zestawu danych: 
 
 ```powershell
@@ -143,7 +143,7 @@ Aby wyświetlić wyniki w formacie CSV:
 |-|-|
 | plik Desktop. ini | Plik specyficzny dla systemu |
 | ethumbs. DB $ | Plik tymczasowy dla miniatur |
-| \* ~$. \* | Plik tymczasowy pakietu Office |
+| \*~$.\* | Plik tymczasowy pakietu Office |
 | \*. tmp | Plik tymczasowy |
 | \*. LACCDB | Plik blokowania dostępu do bazy danych|
 | 635D02A9D91C401B97884B82B3BCDAEA.* | Plik synchronizacji wewnętrznej|
@@ -158,7 +158,7 @@ Usługa Windows Server Failover Clustering jest obsługiwana przez Azure File Sy
 > Aby synchronizacja działała poprawnie, Agent Azure File Sync musi być zainstalowany na każdym węźle w klastrze trybu failover.
 
 ### <a name="data-deduplication"></a>Deduplikacja danych
-**5.0.2.0 wersja agenta lub nowsza**   
+**Windows server 2016 i Windows server 2019**   
 Funkcja deduplikacji danych jest obsługiwana na woluminach z włączoną obsługą warstw w chmurze w systemie Windows Server 2016. Włączenie deduplikacji danych na woluminie z włączonym obsługą usług Cloud Storage umożliwia przechowywanie w pamięci podręcznej większej liczby plików bez udostępniania większej ilości miejsca w magazynie. 
 
 Po włączeniu deduplikacji danych na woluminie z włączonym obsługą obsługi warstw w chmurze pliki zoptymalizowane pod kątem deduplikacji w lokalizacji punktu końcowego serwera będą warstwowo podobne do normalnego pliku na podstawie ustawień zasad dotyczących warstw chmurowych. Po przeprowadzeniu warstwowych plików zoptymalizowanych pod kątem deduplikacji zadanie odzyskiwania pamięci deduplikacji danych zostanie automatycznie uruchomione w celu odtworzenia miejsca na dysku przez usunięcie niepotrzebnych fragmentów, do których nie odwołują się już inne pliki w woluminie.
@@ -168,8 +168,8 @@ Zwróć uwagę, że oszczędności woluminu dotyczą tylko serwera programu; Two
 > [!Note]  
 > Deduplikacja danych i Obsługa warstw w chmurze nie są obecnie obsługiwane na tym samym woluminie na serwerze 2019 z powodu błędu, który zostanie rozwiązany w przyszłej aktualizacji.
 
-**Windows Server 2012 R2 lub starsze wersje agenta**  
-W przypadku woluminów, które nie mają włączonej obsługi warstw w chmurze, Azure File Sync obsługuje funkcję deduplikacji danych systemu Windows Server na woluminie.
+**System Windows Server 2012 R2**  
+Azure File Sync nie obsługuje deduplikacji danych i warstw w chmurze na tym samym woluminie. Jeśli Deduplikacja danych jest włączona w woluminie, Obsługa warstw w chmurze musi być wyłączona. 
 
 **Uwagi**
 - Jeśli Deduplikacja danych jest zainstalowana przed zainstalowaniem agenta Azure File Sync, ponowne uruchomienie jest wymagane do obsługi deduplikacji danych i warstw w chmurze na tym samym woluminie.
@@ -211,7 +211,7 @@ Korzystanie z programu Sysprep na serwerze, na którym zainstalowano agenta Azur
 Jeśli Obsługa warstw w chmurze jest włączona w punkcie końcowym serwera, pliki, które są warstwami, są pomijane i nie są indeksowane przez funkcję wyszukiwania systemu Windows. Pliki niewarstwowe są indeksowane prawidłowo.
 
 ### <a name="antivirus-solutions"></a>Rozwiązania antywirusowe
-Ponieważ oprogramowanie antywirusowe działa przez skanowanie plików pod kątem znanego złośliwego kodu, produkt antywirusowy może powodować odwoływanie się do plików warstwowych. W wersji 4,0 i powyżej agenta Azure File Sync pliki warstwowe mają ustawiony atrybut Secure Windows FILE_ATTRIBUTE_RECALL_ON_DATA_ACCESS. Firma Microsoft zaleca zapoznanie się z dostawcą oprogramowania, aby dowiedzieć się, jak skonfigurować swoje rozwiązanie, aby pominąć odczytywanie plików z tym zestawem atrybutów (wiele do nich jest automatycznie). 
+Ponieważ oprogramowanie antywirusowe działa przez skanowanie plików pod kątem znanego złośliwego kodu, produkt antywirusowy może powodować odwoływanie się do plików warstwowych. W wersji 4,0 i większej od agenta Azure File Sync pliki warstwowe mają ustawiony atrybut Secure Windows FILE_ATTRIBUTE_RECALL_ON_DATA_ACCESS. Firma Microsoft zaleca zapoznanie się z dostawcą oprogramowania, aby dowiedzieć się, jak skonfigurować swoje rozwiązanie, aby pominąć odczytywanie plików z tym zestawem atrybutów (wiele do nich jest automatycznie). 
 
 Wewnętrzne rozwiązania firmy Microsoft dotyczące oprogramowania antywirusowego, Windows Defender i System Center Endpoint Protection (SCEP) automatycznie pomijają odczytywanie plików, które mają ten zestaw atrybutów. Przetestowano i zidentyfikowano jeden drobny problem: po dodaniu serwera do istniejącej grupy synchronizacji pliki o rozmiarze mniejszym niż 800 bajtów są ponownie wywoływane (pobrane) na nowym serwerze. Te pliki pozostaną na nowym serwerze i nie zostaną warstwowe, ponieważ nie spełniają wymagań dotyczących rozmiaru warstwowego (> KB).
 
@@ -244,7 +244,7 @@ Ogólnie rzecz biorąc Azure File Sync powinien obsługiwać współdziałanie z
 ### <a name="other-hierarchical-storage-management-hsm-solutions"></a>Inne rozwiązania do zarządzania magazynem hierarchicznym (HSM)
 W przypadku Azure File Sync nie należy używać innych rozwiązań modułu HSM.
 
-## <a name="region-availability"></a>Dostępność w poszczególnych regionach
+## <a name="region-availability"></a>Dostępność w danym regionie
 Azure File Sync jest dostępna tylko w następujących regionach:
 
 | Region | Lokalizacja centrum danych |
@@ -253,7 +253,7 @@ Azure File Sync jest dostępna tylko w następujących regionach:
 | Australia Południowo-Wschodnia | Stan Wiktoria |
 | Brazylia Południowa | Sao Paulo (stan) |
 | Kanada Środkowa | Toronto |
-| Kanada Wschodnia | Quebec |
+| Kanada Wschodnia | Miasto Quebec |
 | Indie Środkowe | Pune |
 | Środkowe stany USA | Iowa |
 | Azja Wschodnia | Hongkong SAR |
@@ -265,22 +265,22 @@ Azure File Sync jest dostępna tylko w następujących regionach:
 | Korea Południowa | Pusan |
 | Japonia Wschodnia | Tokyo, Saitama |
 | Japonia Zachodnia | Osaka |
-| Północno-środkowe stany USA | Illinois |
+| Środkowo-północne stany USA | Illinois |
 | Europa Północna | Irlandia |
 | Północna Republika Południowej Afryki | Johannesburg |
 | Zachodnia Republika Południowej Afryki * | Kapsztad |
-| Południowo-środkowe stany USA | Teksas |
+| Środkowo-południowe stany USA | Teksas |
 | Indie Południowe | Chennai |
 | Azja Południowo-Wschodnia | Singapur |
 | Południowe Zjednoczone Królestwo | Londyn |
 | Zachodnie Zjednoczone Królestwo | Cardiff |
-| US Gov Arizona | Arizona |
-| US Gov Teksas | Teksas |
-| US Gov Wirginia | Wirginia |
+| Administracja USA — Arizona | Arizona |
+| Administracja USA — Teksas | Teksas |
+| Administracja USA — Wirginia | Wirginia |
 | Północne Zjednoczone Emiraty Arabskie | Dubaj |
 | Środkowe Zjednoczone Emiraty Arabskie * | Abu Zabi |
 | Europa Zachodnia | Holandia |
-| Zachodnio-środkowe stany USA | Wyoming |
+| Środkowo-zachodnie stany USA | Wyoming |
 | Zachodnie stany USA | Kalifornia |
 | Zachodnie stany USA 2 | Waszyngton |
 
@@ -300,7 +300,7 @@ Aby zapewnić obsługę integracji trybu failover między magazynem geograficzni
 |---------------------|--------------------|
 | Australia Wschodnia      | Australia Południowo-Wschodnia|
 | Australia Południowo-Wschodnia | Australia Wschodnia     |
-| Brazylia Południowa        | Południowo-środkowe stany USA   |
+| Brazylia Południowa        | Środkowo-południowe stany USA   |
 | Kanada Środkowa      | Kanada Wschodnia        |
 | Kanada Wschodnia         | Kanada Środkowa     |
 | Indie Środkowe       | Indie Południowe        |
@@ -315,21 +315,21 @@ Aby zapewnić obsługę integracji trybu failover między magazynem geograficzni
 | Korea Środkowa       | Korea Południowa        |
 | Korea Południowa         | Korea Środkowa      |
 | Europa Północna        | Europa Zachodnia        |
-| Północno-środkowe stany USA    | Południowo-środkowe stany USA   |
+| Środkowo-północne stany USA    | Środkowo-południowe stany USA   |
 | Północna Republika Południowej Afryki  | Północna Republika Południowej Afryki  |
 | Północna Republika Południowej Afryki   | Północna Republika Południowej Afryki |
-| Południowo-środkowe stany USA    | Północno-środkowe stany USA   |
+| Środkowo-południowe stany USA    | Środkowo-północne stany USA   |
 | Indie Południowe         | Indie Środkowe      |
 | Azja Południowo-Wschodnia      | Azja Wschodnia          |
 | Południowe Zjednoczone Królestwo            | Zachodnie Zjednoczone Królestwo            |
 | Zachodnie Zjednoczone Królestwo             | Południowe Zjednoczone Królestwo           |
-| US Gov Arizona      | US Gov Teksas       |
-| US Gov Iowa         | US Gov Wirginia    |
-| US Gov Wirginia      | US Gov Teksas       |
+| Administracja USA — Arizona      | Administracja USA — Teksas       |
+| US Gov Iowa         | Administracja USA — Wirginia    |
+| Administracja USA — Wirginia      | Administracja USA — Teksas       |
 | Europa Zachodnia         | Europa Północna       |
-| Zachodnio-środkowe stany USA     | Zachodnie stany USA 2          |
+| Środkowo-zachodnie stany USA     | Zachodnie stany USA 2          |
 | Zachodnie stany USA             | Wschodnie stany USA            |
-| Zachodnie stany USA 2           | Zachodnio-środkowe stany USA    |
+| Zachodnie stany USA 2           | Środkowo-zachodnie stany USA    |
 
 ## <a name="azure-file-sync-agent-update-policy"></a>Zasady aktualizacji agenta usługi Azure File Sync
 [!INCLUDE [storage-sync-files-agent-update-policy](../../../includes/storage-sync-files-agent-update-policy.md)]

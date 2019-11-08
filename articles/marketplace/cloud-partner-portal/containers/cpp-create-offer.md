@@ -1,39 +1,40 @@
 ---
-title: Utwórz ofertę Azure Containers | Portal Azure Marketplace
-description: Jak opublikować nową ofertę kontenerów w portalu Marketplace...
+title: Tworzenie oferty kontenerów platformy Azure | Portal Azure Marketplace
+description: Jak opublikować nową ofertę kontenera dla portalu Marketplace.
 services: Azure, Marketplace, Cloud Partner Portal,
 author: dan-wesley
 ms.service: marketplace
+ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 11/01/2018
 ms.author: pabutler
-ms.openlocfilehash: 1a0a2bd9132ba5d018bc5d45699c052d10c30162
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: a9766f234b074fd259eeb7bcc184573e21e390a7
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64942672"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73823217"
 ---
-# <a name="create-a-new-container-offer-with-the-cloud-partner-portal"></a>Tworzenie nowej oferty kontenera za pomocą portalu Cloud Partner
+# <a name="create-a-new-container-offer-with-the-cloud-partner-portal"></a>Utwórz nową ofertę kontenera z portal Cloud Partner
 
-W tym artykule opisano, jak tworzyć i publikować wpis oferty kontenera dla witryny Azure Marketplace. Każdy oferta pojawia się jako własny element w witrynie Azure Marketplace i jest skojarzony z przynajmniej jednej jednostki SKU.  Z oferty opartej na kontenerze składa się z następujących grup zasobów i usługi pomocnicze:
+W tym artykule opisano sposób tworzenia i publikowania wpisu oferty kontenera dla portalu Azure Marketplace. Każda oferta pojawia się jako jej własna jednostka w portalu Azure Marketplace i jest skojarzona z co najmniej jedną jednostką SKU.  Oferta kontenera składa się z następujących grup zasobów i usług pomocniczych:
 
-|  **Grupy zasobów**   |  **Opis**  |
+|  **Grupa zasobów**   |  **Opis**  |
 |  ---------------   |  ---------------  |
-|    Jednostki SKU            |  Najmniejszy możliwy do wdrożenia jednostka oferty. Jednej oferty (produktu klasy) może mieć wielu jednostek SKU, skojarzone z ofertą. Jednostki SKU służy do rozróżnienia między obsługiwane funkcje i modelami rozliczeń. |
-|  Portal Marketplace       | Zawiera marketingu, prawne i prowadzić zarządzania zasobami i specyfikacji.  <ul><li> Marketing zasoby obejmują oferty nazwę, opis i logo</li> <li> Zasoby prawne zawierają zasady zachowania poufności informacji, warunki użytkowania i inne dokumenty prawne</li>  <li> Włącza zasady zarządzania prowadzić można określić sposób obsługi potencjalnych klientów z poziomu portalu Azure Marketplace przez użytkownika końcowego.</li> </ul> |
-| Pomoc techniczna            | Zawiera informacje dotyczące kontaktu i zasady pomocy technicznej |
+|    SKU            |  Najmniejsza dostępna jednostka oferty. Pojedyncza oferta (Klasa produktu) może mieć wiele jednostek SKU skojarzonych z ofertą. Jednostek SKU można użyć do rozróżnienia między obsługiwanymi funkcjami i modelami rozliczeń. |
+|  Portal Marketplace       | Zawiera zasoby i specyfikacje zarządzania marketingiem, prawną i liderem.  <ul><li> Zasoby marketingowe obejmują nazwę oferty, opis i logo</li> <li> Zasoby prawne obejmują zasady ochrony prywatności, warunki użytkowania i inne dokumenty prawne</li>  <li> Zasady zarządzania potencjalnymi klientami umożliwiają określenie sposobu obsługi potencjalnych klientów z poziomu portalu użytkowników końcowych platformy Azure Marketplace.</li> </ul> |
+| Pomoc techniczna            | Zawiera informacje o kontakcie i zasadach |
 
 
-## <a name="new-offer-form"></a>Nowy formularz oferty 
+## <a name="new-offer-form"></a>Formularz nowej oferty 
 
-Zaloguj się do [portalu Cloud Partner](https://cloudpartner.azure.com/), a następnie wybierz pozycję **+ nowa oferta** na pasku menu po lewej stronie. Na nowe oferty menu, wybierz **kontenery** do wyświetlenia **nowa oferta** formularza i rozpocząć proces Definiowanie zasobów dla nowej oferty kontenera.
+Zaloguj się do [Portal Cloud partner](https://cloudpartner.azure.com/), a następnie wybierz pozycję **+ Nowa oferta** na pasku menu po lewej stronie. W menu Nowa oferta wybierz pozycję **kontenery** , aby wyświetlić **nowy formularz oferty** i rozpocząć proces definiowania zasobów dla nowej oferty kontenera.
 
-![Wybierz opcję kontenerów na potrzeby nowej oferty](./media/azure-container-offer.png)
+![Opcja wybierania kontenerów dla nowej oferty](./media/azure-container-offer.png)
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
-**Nowa oferta** strona Typ oferty kontener zawiera zbiór kart i pola formularza, które będziesz używać do tworzenia nowej oferty. Każda z następujących artykułów wyjaśnia, jak karta służy do definiowania grup zasobów i usługi pomocnicze nowej oferty kontenera.
+**Nowa strona oferty** typu oferta kontenera zawiera zestaw kart i pól formularza, które będą używane do tworzenia nowej oferty. W każdym z poniższych artykułów wyjaśniono, jak za pomocą karty definiować grupy zasobów i usługi pomocnicze dla nowej oferty kontenera.
 
 - [Karta ustawień oferty](./cpp-offer-settings-tab.md)
 - [Karta jednostek SKU](./cpp-skus-tab.md)

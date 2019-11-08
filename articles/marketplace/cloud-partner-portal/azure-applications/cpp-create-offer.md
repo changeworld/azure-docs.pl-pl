@@ -4,29 +4,30 @@ description: Jak opublikować nową ofertę aplikacji platformy Azure w portalu 
 services: Azure, Marketplace, Cloud Partner Portal,
 author: dan-wesley
 ms.service: marketplace
+ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 12/14/2018
 ms.author: pabutler
-ms.openlocfilehash: 2eed5ed60d5aed7fb537e886f39b97dfc8257f19
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 173e371c97ed2ab281bd7badae29f253e1e3e1f8
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64943002"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73827637"
 ---
 # <a name="create-an-azure-application-offer"></a>Tworzenie oferty aplikacji platformy Azure
 
-W tym artykule opisano, jak tworzyć i publikować wpis oferty aplikacji platformy Azure w portalu Azure Marketplace. Każdy oferta pojawia się jako własny element w witrynie Azure Marketplace i składa się z następujących grup zasobów i usługi pomocnicze: szczegóły jednostek SKU, marketing artefaktów, oferty i informacje dotyczące pomocy technicznej.
+W tym artykule opisano sposób tworzenia i publikowania wpisu oferty aplikacji platformy Azure dla portalu Azure Marketplace. Każda oferta pojawia się jako jej własna jednostka w portalu Azure Marketplace i składa się z następujących grup zasobów i usług pomocniczych: Szczegóły oferty, jednostki SKU, artefakty marketingowe i informacje o pomocy technicznej.
 
-## <a name="new-offer-form"></a>Nowy formularz oferty
+## <a name="new-offer-form"></a>Formularz nowej oferty
 
-Zaloguj się do [portalu Cloud Partner](https://cloudpartner.azure.com/), a następnie wybierz pozycję **+ nowa oferta** na pasku menu po lewej stronie. Na nowe oferty menu, wybierz **Azure Applications** do wyświetlenia **nowa oferta** formularza i rozpocząć proces Definiowanie zasobów dla nowej oferty.
+Zaloguj się do [Portal Cloud partner](https://cloudpartner.azure.com/), a następnie wybierz pozycję **+ Nowa oferta** na pasku menu po lewej stronie. W menu Nowa oferta wybierz pozycję **aplikacje platformy Azure** , aby wyświetlić **nowy formularz oferty** i rozpocząć proces definiowania zasobów dla nowej oferty.
 
-![Nowy formularz oferty](./media/azure-new-managedapp-offer.png)
+![Formularz nowej oferty](./media/azure-new-managedapp-offer.png)
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
-Na stronie Nowa oferta zawiera zbiór kart i pola formularza, które będziesz używać do tworzenia nowej oferty. W poniższych artykułach opisano sposób definiowania grup zasobów i usługi pomocnicze nowej oferty.
+Nowa strona oferty zawiera zestaw kart i pól formularza, które będą używane do tworzenia nowej oferty. W poniższych artykułach wyjaśniono, jak definiować grupy zasobów i usługi pomocnicze dla nowej oferty.
 
 * [Karta ustawień oferty](./cpp-offer-settings-tab.md)
 * [Karta jednostek SKU](./cpp-skus-tab.md)

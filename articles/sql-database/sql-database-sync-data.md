@@ -1,5 +1,5 @@
 ---
-title: SQL Data Sync platformy Azure
+title: Synchronizacja danych
 description: To omówienie zawiera wprowadzenie do usługi Azure SQL Data Sync
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: allenwux
 ms.author: xiwu
 ms.reviewer: carlrab
 ms.date: 08/20/2019
-ms.openlocfilehash: 925977edf267510399dc631f0d0efe5fc1941803
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: d69378b2e791732fb478a66f226c6269e2c515f3
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73687057"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73820821"
 ---
 # <a name="sync-data-across-multiple-cloud-and-on-premises-databases-with-sql-data-sync"></a>Synchronizuj dane między wieloma bazami danych w chmurze i lokalnymi przy użyciu SQL Data Sync
 
@@ -67,7 +67,7 @@ Grupa synchronizacji ma następujące właściwości:
 
 ## <a name="how-does-data-sync-work"></a>Jak działa synchronizacja danych
 
-- **Śledzenie zmian danych:** Synchronizacja danych śledzi zmiany przy użyciu wyzwalaczy INSERT, Update i DELETE. Zmiany są rejestrowane w tabeli bocznej w bazie danych użytkownika. Należy pamiętać, że BULK INSERT domyślnie nie uruchamia wyzwalaczy. Jeśli FIRE_TRIGGERS nie jest określony, żadne wyzwalacze wstawiania nie są wykonywane. Dodaj opcję FIRE_TRIGGERS, aby synchronizacja danych mogła śledzić te operacje wstawiania. 
+- **Śledzenie zmian danych:** Synchronizacja danych śledzi zmiany przy użyciu wyzwalaczy INSERT, Update i DELETE. Zmiany są rejestrowane w tabeli bocznej w bazie danych użytkownika. Należy pamiętać, że BULK INSERT domyślnie nie uruchamia wyzwalaczy. Jeśli nie określono FIRE_TRIGGERS, żadne wyzwalacze wstawiania nie są wykonywane. Dodaj opcję FIRE_TRIGGERS, aby synchronizacja danych mogła śledzić te operacje wstawiania. 
 - **Synchronizowanie danych:** Synchronizacja danych została zaprojektowana w modelu gwiazdy. Koncentrator synchronizuje się z każdym członkiem indywidualnie. Zmiany z centrum są pobierane do elementu członkowskiego, a następnie zmiany z elementu członkowskiego są przekazywane do centrum.
 - **Rozwiązywanie konfliktów:** Synchronizacja danych oferuje dwie opcje rozwiązywania konfliktów, *centrum WINS* lub *członka usługi WINS*.
   - W przypadku wybrania *usługi Hub WINS*zmiany w centrum zawsze zastępują zmiany w elemencie członkowskim.

@@ -4,22 +4,23 @@ description: W tym artykule wyjaśniono, jak utworzyć zasoby techniczne dla ofe
 services: Azure, Marketplace, Cloud Partner Portal,
 author: pbutlerm
 ms.service: marketplace
+ms.subservice: partnercenter-marketplace-publisher
 ms.topic: article
 ms.date: 08/20/2018
 ms.author: pabutler
-ms.openlocfilehash: c1ef00f846dfad76629b0603ab79fba17249417c
-ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
+ms.openlocfilehash: 45d0ff5b7b3fea1566b13b61bd01cc17da61e4b3
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "71224521"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73824514"
 ---
 # <a name="create-technical-assets-for-a-virtual-machine-offer"></a>Utwórz zasoby techniczne dla oferty maszyny wirtualnej
 
 Ta sekcja zawiera szczegółowe instrukcje dotyczące tworzenia i konfigurowania zasobów technicznych dla oferty maszyny wirtualnej (VM) dla witryny Azure Marketplace.  Maszyna wirtualna zawiera dwa składniki: wirtualny dysk twardy (VHD) rozwiązania i opcjonalne skojarzone dyski danych.  
 
 - *Wirtualne dyski twarde (VHD)* , zawierające system operacyjny i rozwiązanie, które zostaną wdrożone w ramach oferty portalu Azure Marketplace. Proces przygotowywania dysku VHD różni się w zależności od tego, czy jest to maszyna wirtualna oparta na systemie Linux, Windows, czy niestandardowa.
-- *Dyski z danymi* reprezentują dedykowany magazyn trwały dla maszyny wirtualnej. *Nie* należy używać dysku VHD rozwiązania (na przykład `C:` dysku) do przechowywania informacji trwałych.
+- *Dyski z danymi* reprezentują dedykowany magazyn trwały dla maszyny wirtualnej. *Nie* należy używać wirtualnego dysku twardego rozwiązania (na przykład dysku `C:`) do przechowywania informacji trwałych.
 
 Obraz maszyny wirtualnej zawiera dysk z systemem operacyjnym i co najmniej jeden dysk z danymi. Na dysku jest wymagany jeden wirtualny dysk twardy. Nawet puste dyski danych wymagają utworzenia dysku VHD.
 Musisz skonfigurować system operacyjny maszyny wirtualnej, rozmiar maszyny wirtualnej, porty do otwarcia oraz do 15 dołączonych dysków danych.
@@ -52,9 +53,9 @@ Ponadto zalecamy Dodawanie następujących narzędzi do środowiska deweloperski
 
 -   [Azure Storage Explorer](https://docs.microsoft.com/azure/vs-azure-tools-storage-manage-with-storage-explorer)
 -   [Visual Studio Code](https://code.visualstudio.com/)
-    *   Rozszerzenia [Narzędzia Azure Resource Manager](https://marketplace.visualstudio.com/items?itemName=msazurermtools.azurerm-vscode-tools)
-    *   Rozszerzenia [Beautify](https://marketplace.visualstudio.com/items?itemName=HookyQR.beautify)
-    *   Rozszerzenia [Prettify JSON](https://marketplace.visualstudio.com/items?itemName=mohsen1.prettify-json)
+    *   Rozszerzenie: [narzędzia Azure Resource Manager](https://marketplace.visualstudio.com/items?itemName=msazurermtools.azurerm-vscode-tools)
+    *   Rozszerzenie: [Beautify](https://marketplace.visualstudio.com/items?itemName=HookyQR.beautify)
+    *   Rozszerzenie: [PRETTIFY JSON](https://marketplace.visualstudio.com/items?itemName=mohsen1.prettify-json)
 
 Sugerujemy również przeglądanie dostępnych narzędzi na stronie [usługi Azure narzędzia deweloperskie](https://azure.microsoft.com/tools/) i, jeśli używasz programu Visual Studio, [Visual Studio Marketplace](https://marketplace.visualstudio.com/).
 

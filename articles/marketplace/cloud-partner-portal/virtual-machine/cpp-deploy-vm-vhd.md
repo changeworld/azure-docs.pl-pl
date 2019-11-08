@@ -4,15 +4,16 @@ description: Wyjaśnia, jak zarejestrować maszynę wirtualną na podstawie wirt
 services: Azure, Marketplace, Cloud Partner Portal,
 author: qianw211
 ms.service: marketplace
+ms.subservice: partnercenter-marketplace-publisher
 ms.topic: article
 ms.date: 08/08/2019
 ms.author: evansma
-ms.openlocfilehash: 1aa946c813de41423d4fb2ba5b3aa5274db90f39
-ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
+ms.openlocfilehash: 797c258c963d0daec32a8f9ac7c4e0665dc465d3
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68934964"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73813411"
 ---
 # <a name="deploy-a-vm-from-your-vhds"></a>Wdróż maszynę wirtualną na podstawie Twoich dysków VHD
 
@@ -49,33 +50,33 @@ Po wdrożeniu maszyny wirtualnej możesz przeprowadzić [certyfikowanie obrazu m
    ![Kompiluj szablon wdrożenia wirtualnego dysku twardego w Azure Portal](./media/publishvm_021.png)
 
 1. Skopiuj i wklej ten [szablon JSON](./cpp-deploy-json-template.md) do edytora, a następnie kliknij przycisk **Zapisz**. <br/>
-   ![Zapisz szablon wdrożenia wirtualnego dysku twardego w Azure Portal](./media/publishvm_022.png)
+   ![zapisać szablon wdrożenia wirtualnego dysku twardego w programie Azure Portal](./media/publishvm_022.png)
 
 1. Podaj wartości parametrów dla wyświetlanych stron właściwości **wdrożenia niestandardowego** .
 
    <table> <tr> <td valign="top"> <img src="./media/publishvm_023.png" alt="Custom deployment property page 1"> </td> <td valign="top"> <img src="./media/publishvm_024.png" alt="Custom deployment property page 2"> </td> </tr> </table> <br/> 
 
-   |  **Parametr**              |   **Opis**                                                            |
+   |  **Konstruktora**              |   **Opis**                                                            |
    |  -------------              |   ---------------                                                            |
    | Nazwa konta magazynu użytkownika   | Nazwa konta magazynu, w którym znajduje się uogólniony wirtualny dysk twardy                    |
    | Nazwa kontenera magazynu użytkownika | Nazwa kontenera, w którym znajduje się uogólniony wirtualny dysk twardy                          |
    | Nazwa DNS dla publicznego adresu IP      | Nazwa DNS publicznego adresu IP. Nazwa DNS jest maszyną wirtualną, która zostanie zdefiniowana w witrynie Azure Portal po wdrożeniu oferty.  |
    | Nazwa użytkownika administratora             | Nazwa użytkownika konta administratora dla nowej maszyny wirtualnej                                  |
    | Hasło administratora              | Hasło konta administratora dla nowej maszyny wirtualnej                                  |
-   | Typ systemu operacyjnego                     | System operacyjny maszyny wirtualnej `Windows` : \|`Linux`                                    |
+   | Typ systemu operacyjnego                     | System operacyjny maszyny wirtualnej: `Windows` \| `Linux`                                    |
    | Identyfikator subskrypcji             | Identyfikator wybranej subskrypcji                                      |
-   | Location                    | Lokalizacja geograficzna wdrożenia                                        |
-   | Rozmiar maszyny wirtualnej                     | [Rozmiar maszyny wirtualnej platformy Azure](https://docs.microsoft.com/azure/virtual-machines/windows/sizes), na przykład`Standard_A2` |
+   | Lokalizacja                    | Lokalizacja geograficzna wdrożenia                                        |
+   | Rozmiar maszyny wirtualnej                     | [Rozmiar maszyny wirtualnej platformy Azure](https://docs.microsoft.com/azure/virtual-machines/windows/sizes), na przykład `Standard_A2` |
    | Nazwa publicznego adresu IP      | Nazwa publicznego adresu IP                                               |
-   | Nazwa maszyny Wirtualnej                     | Nazwa nowej maszyny wirtualnej                                                           |
-   | Nazwa sieci wirtualnej        | Nazwa sieci wirtualnej używanej przez MASZYNę wirtualną                                   |
+   | Nazwa maszyny wirtualnej                     | Nazwa nowej maszyny wirtualnej                                                           |
+   | Nazwa Virtual Network        | Nazwa sieci wirtualnej używanej przez MASZYNę wirtualną                                   |
    | Nazwa karty sieciowej                    | Nazwa karty sieciowej z uruchomioną siecią wirtualną               |
    | ADRES URL WIRTUALNEGO DYSKU TWARDEGO                     | Pełny adres URL dysku VHD systemu operacyjnego                                                     |
    |  |  |
             
 1. Po podaniu tych wartości kliknij pozycję **Kup**. 
 
-Platforma Azure rozpocznie wdrażanie: tworzy nową maszynę wirtualną z określonym niezarządzanym wirtualnym dyskiem twardym w określonej ścieżce konta magazynu.  Postęp można śledzić w Azure Portal, klikając pozycję **Virtual Machines** po lewej stronie portalu.  Po utworzeniu maszyny wirtualnej stan zmieni się z `Starting` na. `Running` 
+Platforma Azure rozpocznie wdrażanie: tworzy nową maszynę wirtualną z określonym niezarządzanym wirtualnym dyskiem twardym w określonej ścieżce konta magazynu.  Postęp można śledzić w Azure Portal, klikając pozycję **Virtual Machines** po lewej stronie portalu.  Po utworzeniu maszyny wirtualnej stan zmieni się z `Starting` na `Running`. 
 
 
 ### <a name="deploy-a-vm-from-powershell"></a>Wdrażanie maszyny wirtualnej przy użyciu programu PowerShell

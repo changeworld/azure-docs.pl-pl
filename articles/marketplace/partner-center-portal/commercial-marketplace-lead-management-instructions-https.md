@@ -4,19 +4,20 @@ description: Skonfiguruj zarządzanie potencjalnymi klientami dla punktu końcow
 services: Azure, Marketplace, commercial marketplace, Partner Center
 author: qianw211
 ms.service: marketplace
+ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 07/31/2019
 ms.author: evansma
-ms.openlocfilehash: 6a34bdcab5a13af682515bbae96e9a1800ccc37f
-ms.sourcegitcommit: d3dced0ff3ba8e78d003060d9dafb56763184d69
+ms.openlocfilehash: 83efb9cfd1ee7464a334ebc4064dbfaa20ab30de
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69902197"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73812287"
 ---
 # <a name="configure-lead-management-using-an-https-endpoint"></a>Konfigurowanie zarządzania liderem za pomocą punktu końcowego HTTPS
 
-Jeśli system zarządzania relacjami z klientami (CRM) nie jest jawnie obsługiwany w centrum partnerskim na potrzeby otrzymywania potencjalnych klientów w witrynie Azure Marketplace i AppSource, można użyć punktu końcowego HTTPS w usłudze MS Flow, aby obsłużyć te potencjalni klienci. Za pomocą punktu końcowego HTTPS te potencjalni klienci mogą być wysyłane jako powiadomienia e-mail lub mogą być zapisywane w systemie zarządzania relacjami z klientami (CRM) obsługiwanym przez program MS Flow. Instrukcje zawarte w tym artykule przeprowadzą Cię przez proces podstawowy w celu utworzenia nowego przepływu przy użyciu Microsoft Flow, który spowoduje wygenerowanie adresu URL POST protokołu HTTP, który zostanie wprowadzony do portalu wydawców w polu **adres URL punktu końcowego** usługi zarządzania potencjalnymi > https. Uwzględniono również instrukcje dotyczące sposobu testowania przepływu za pomocą narzędzia o nazwie Poster, które można znaleźć [](https://www.getpostman.com/downloads/) w trybie online.
+Jeśli system zarządzania relacjami z klientami (CRM) nie jest jawnie obsługiwany w centrum partnerskim na potrzeby otrzymywania potencjalnych klientów w witrynie Azure Marketplace i AppSource, można użyć punktu końcowego HTTPS w usłudze MS Flow, aby obsłużyć te potencjalni klienci. Za pomocą punktu końcowego HTTPS te potencjalni klienci mogą być wysyłane jako powiadomienia e-mail lub mogą być zapisywane w systemie zarządzania relacjami z klientami (CRM) obsługiwanym przez program MS Flow. Instrukcje zawarte w tym artykule przeprowadzą Cię przez proces podstawowy w celu utworzenia nowego przepływu przy użyciu Microsoft Flow, który spowoduje wygenerowanie adresu URL POST protokołu HTTP, który zostanie wprowadzony do portalu wydawców w polu **adres URL punktu końcowego** usługi zarządzania potencjalnymi > https. Uwzględniono również instrukcje dotyczące sposobu testowania przepływu za pomocą narzędzia o nazwie [Poster](https://www.getpostman.com/downloads/) , które można znaleźć w trybie online.
 
 ## <a name="create-a-flow-using-microsoft-flow"></a>Tworzenie przepływu przy użyciu Microsoft Flow
 
@@ -33,7 +34,7 @@ Jeśli system zarządzania relacjami z klientami (CRM) nie jest jawnie obsługiw
     ![Kompiluj zautomatyzowany przepływ — Pomiń](./media/commercial-marketplace-lead-management-instructions-https/build-automated-flow.png)
 
 5. W polu **Wyszukaj łączniki i wyzwalacze** wpisz "Request" (żądanie), aby znaleźć łącznik żądania.
-6. Wobszarze Wyzwalacze wybierz opcję **po odebraniu żądania HTTP**. 
+6. W obszarze *wyzwalacze*wybierz opcję **po odebraniu żądania HTTP**. 
 
     ![Łącznik żądań — wyzwalacze](./media/commercial-marketplace-lead-management-instructions-https/request-connector.png)
 
@@ -106,7 +107,7 @@ Jeśli system zarządzania relacjami z klientami (CRM) nie jest jawnie obsługiw
 ### <a name="to-connect-to-a-crm-system"></a>Aby nawiązać połączenie z systemem CRM
 
 1. Wybierz pozycję **+ nowy krok**.
-2. Wybierz dowolnie wybrany system CRM, wyszukując w nim łączniki *i akcje wyszukiwania*, a następnie wybierz je w sekcji *działania* z akcją, aby utworzyć nowy rekord. Na poniższym zrzucie ekranu przedstawiono **Dynamics 365 — Utwórz** nowy rekord jako przykład.
+2. Wybierz dowolnie wybrany system CRM, wyszukując w nim *łączniki i akcje wyszukiwania*, a następnie wybierz je w sekcji *działania* z akcją, aby utworzyć nowy rekord. Na poniższym zrzucie ekranu przedstawiono **Dynamics 365 — Utwórz** nowy rekord jako przykład.
 
     ![Utwórz nowy rekord](./media/commercial-marketplace-lead-management-instructions-https/create-new-record.png)
 
@@ -150,13 +151,13 @@ Jeśli system zarządzania relacjami z klientami (CRM) nie jest jawnie obsługiw
 
 5. Wybierz pozycję **Zapisz** , aby zakończyć przepływ. Adres URL POST protokołu HTTP jest tworzony i jest dostępny w oknie *po odebraniu żądania HTTP* . Skopiuj ten adres URL przy użyciu kontrolki Kopiuj znajdującej się po prawej stronie adresu URL POST protokołu HTTP — jest to ważne, aby nie przerzucać żadnej części całego adresu URL. Zapisz ten adres URL, ponieważ będzie on potrzebny podczas konfigurowania zarządzania liderem w portalu wydawców.
 
-   ![Adres URL żądania HTTP POST ](./media/commercial-marketplace-lead-management-instructions-https/http-post-url.png)
+   ![ADRES URL POST PROTOKOŁU HTTP ](./media/commercial-marketplace-lead-management-instructions-https/http-post-url.png)
 
 ### <a name="testing"></a>Testowanie
 
-Możesz sprawdzić, czy wszystko działa zgodnie z oczekiwaniami, wykonując następujące kroki przy użyciu narzędzia [](https://app.getpostman.com/app/download/win64)o nazwie Poster, które można pobrać w trybie online. Jest on dostępny dla systemu Windows. 
+Możesz sprawdzić, czy wszystko działa zgodnie z oczekiwaniami, wykonując następujące kroki przy użyciu narzędzia o nazwie [Poster](https://app.getpostman.com/app/download/win64), które można pobrać w trybie online. Jest on dostępny dla systemu Windows. 
 
-1. Uruchom aplikację Poster i wybierz pozycję **nowe** > **żądanie** , aby skonfigurować narzędzie testowe. 
+1. Uruchom aplikację Poster i wybierz pozycję **nowe** **żądanie** > , aby skonfigurować narzędzie testowe. 
 
    ![Żądanie instalacji narzędzia testowego](./media/commercial-marketplace-lead-management-instructions-https/postman-request.png)
 

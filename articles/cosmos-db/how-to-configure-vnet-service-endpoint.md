@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 09/28/2019
 ms.author: mjbrown
-ms.openlocfilehash: 1c81045408a948820c8b9fef56e2c7d69cd39e08
-ms.sourcegitcommit: 80da36d4df7991628fd5a3df4b3aa92d55cc5ade
+ms.openlocfilehash: c399bed803145659bae1863e9e0b919f33254627
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71811914"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73820214"
 ---
 # <a name="configure-access-from-virtual-networks-vnet"></a>Konfigurowanie dostępu z sieci wirtualnych (VNet)
 
@@ -52,7 +52,7 @@ W poniższych sekcjach opisano sposób konfigurowania punktu końcowego usługi 
 > Aby włączyć punkty końcowe usługi sieci wirtualnej, wymagane są następujące uprawnienia do subskrypcji:
 >   * Subskrypcja z siecią wirtualną: współautor sieci
 >   * Subskrypcja przy użyciu konta Azure Cosmos DB: współautor konta DocumentDB
->   * Jeśli Twoja sieć wirtualna i konto Azure Cosmos DB znajdują się w różnych subskrypcjach, upewnij się, że subskrypcja z siecią wirtualną ma także zarejestrowanego dostawcę zasobów `Microsoft.DocumentDB`. Aby zarejestrować dostawcę zasobów, zobacz artykuł [dostawcy zasobów platformy Azure i typy](../azure-resource-manager/resource-manager-supported-services.md) artykułów.
+>   * Jeśli Twoja sieć wirtualna i konto Azure Cosmos DB znajdują się w różnych subskrypcjach, upewnij się, że subskrypcja z siecią wirtualną ma także zarejestrowaną `Microsoft.DocumentDB` dostawcę zasobów. Aby zarejestrować dostawcę zasobów, zobacz artykuł [dostawcy zasobów platformy Azure i typy](../azure-resource-manager/resource-manager-supported-services.md) artykułów.
 
 Poniżej przedstawiono wskazówki dotyczące rejestrowania subskrypcji przy użyciu dostawcy zasobów.
 
@@ -68,7 +68,7 @@ Poniżej przedstawiono wskazówki dotyczące rejestrowania subskrypcji przy uży
 
    ![Wybierz sieć wirtualną i podsieć dla nowej sieci wirtualnej](./media/how-to-configure-vnet-service-endpoint/choose-subnet-and-vnet-new-vnet.png)
 
-Jeśli Twoje konto Azure Cosmos DB jest używane przez inne usługi platformy Azure, takie jak Azure Search, lub dostęp do usług Stream Analytics lub Power BI, zezwolisz na dostęp poprzez wybranie opcji **Akceptuj połączenia z poziomu globalnych centrów danych platformy Azure**.
+Jeśli konto Azure Cosmos DB jest używane przez inne usługi platformy Azure, takie jak Azure Wyszukiwanie poznawcze lub dostęp za pośrednictwem usług Stream Analytics lub Power BI, zezwolisz na dostęp poprzez wybranie opcji **Akceptuj połączenia z poziomu globalnych centrów danych platformy Azure**.
 
 Aby mieć pewność, że masz dostęp do metryk Azure Cosmos DB z poziomu portalu, musisz włączyć opcję **Zezwalaj na dostęp z poziomu Azure Portal** . Aby dowiedzieć się więcej na temat tych opcji, zobacz artykuł [Konfigurowanie zapory IP](how-to-configure-firewall.md) . Po włączeniu dostępu wybierz pozycję **Zapisz** , aby zapisać ustawienia.
 
@@ -310,7 +310,7 @@ Gdy punkt końcowy usługi dla konta Azure Cosmos DB jest włączony dla podsiec
      -Name $acctName
    ```
 
-1. Zainicjuj zmienne, aby użyć ich później. Skonfiguruj wszystkie zmienne z istniejącej definicji konta. Dodaj listę ACL sieci wirtualnej do wszystkich kont Azure Cosmos DB, do których uzyskuje się dostęp z podsieci z flagą `ignoreMissingVNetServiceEndpoint`.
+1. Zainicjuj zmienne, aby użyć ich później. Skonfiguruj wszystkie zmienne z istniejącej definicji konta. Dodaj listę ACL sieci wirtualnej do wszystkich kont Azure Cosmos DB, do których uzyskiwany jest dostęp z podsieci z flagą `ignoreMissingVNetServiceEndpoint`.
 
    ```powershell
    $locations = @()

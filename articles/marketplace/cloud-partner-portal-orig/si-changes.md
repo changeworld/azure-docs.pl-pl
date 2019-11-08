@@ -1,58 +1,59 @@
 ---
-title: Sprzedawcy szczegółowe informacje o wersji
-description: Zawiera informacje na temat zmian sprzedawcy wgląd w szczegółowe dane.
+title: Informacje o wersji dla sprzedającego
+description: Zawiera informacje o zmianach wprowadzonych w funkcji sprzedającego szczegółowe dane.
 services: Azure, Marketplace, Cloud Partner Portal,
 author: v-miclar
 ms.service: marketplace
+ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 3/3/2019
 ms.author: pabutler
-ms.openlocfilehash: c6e9e4fe672c7e171ed4b1cd60655f9e71a562e6
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 4f7e461241793b27d838c04311509f43932df291
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64943122"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73808954"
 ---
-# <a name="seller-insights-release-notes"></a>Sprzedawcy szczegółowe informacje o wersji 
+# <a name="seller-insights-release-notes"></a>Informacje o wersji dla sprzedającego 
 
-(Data wydania: 1 marca 2019 r.)
+(Data wydania: 1 marca 2019)
 
-Ten artykuł zawiera informacje na temat zmian z tą funkcją sprzedawcy wgląd w [portalu Cloud Partner](https://cloudpartner.azure.com/#insights).
+Ten artykuł zawiera informacje o zmianach w funkcji sprzedającego Insights w [Portal Cloud partner](https://cloudpartner.azure.com/#insights).
 
-## <a name="release-highlights-for-march-1-2019"></a>Najważniejsze informacje o wersji dla 1 marca 2019 r.
+## <a name="release-highlights-for-march-1-2019"></a>Najważniejsze informacje o wersji 1 marca 2019
 
-* *Trend klienta* dodawane do podsumowania
-* *Pierwszych pięć klientów* na podsumowanie odzwierciedlać wszystkich subskrypcji platformy Azure przez klienta
-* *Znormalizowane trendów użycia i aktywne Trend zamówienia* na podsumowanie została przeniesiona do obszaru *miesięczne zamówienia na pierwszy rzut oka*
-* *Informacje dotyczące wypłat raport uzgadniania* zaktualizowane
-* *Pierwszych pięć klientów* na informacje dotyczące wypłat odzwierciedlać wszystkich subskrypcji platformy Azure przez klienta
-* *Raport użycia* aktualizowane przy użyciu Identyfikatora klienta
-* *Klientów na stanowisku* na zamówień i użycie odzwierciedla wszystkich subskrypcji platformy Azure przez klienta
-
-
-(Data wydania: 28 lipca 2018 r.)
-
-## <a name="release-highlights-for-july-28-2018"></a>Najważniejsze informacje o wersji dla 28 lipca 2018 r.
+* *Trend klienta* został dodany do podsumowania
+* *Pięć najważniejszych klientów* z podsumowaniem odzwierciedla wszystkie subskrypcje platformy Azure, dla których klient ma
+* Trend *znormalizowanego użycia & trendu aktywnych zamówień* na podstawie podsumowania w *kolejności miesięcznej*
+* Zaktualizowany *raport uzgadniania wypłaty*
+* *Pięć najważniejszych klientów* z wypłatami odzwierciedla wszystkie subskrypcje platformy Azure, dla których klient ma
+* Zaktualizowano *raport użycia* o identyfikatorze klienta
+* Status *klienta* w przypadku zamówień & użycie odzwierciedla wszystkie subskrypcje platformy Azure, dla których klient ma
 
 
--   *Szacowane ceny* udostępnić widok opłat klienta waluty skutki konwersji.
--   *Prognozowane wypłaty* podać wcześniej wgląd w potencjalne wypłaty.
--  *Użycie odwołania identyfikatory* udostępnianie danych wierność między użycia przez klientów i zamówień wypłaty
--   *Użycie dokładnością* zapewnia większą szczegółowość i lepszy wgląd w użycie klienta.
+(Data wydania: 28 lipca 2018)
+
+## <a name="release-highlights-for-july-28-2018"></a>Najważniejsze wersje dla 28 lipca 2018
 
 
-### <a name="changes-to-data-structure-and-taxonomy"></a>Zmiany struktury danych i taksonomii
+-   *Szacowane ceny* zapewniają koszty klientów z uwzględnieniem konsekwencji konwersji walut.
+-   *Prognozowane wypłaty* przedstawiają wcześniejszy wgląd w potencjalne wypłaty.
+-  *Identyfikatory odwołań użycia* zapewniają wierność danych między użyciem klienta i zamówieniami z wypłatami
+-   *Użycie na dziennym ziarnie* zapewnia większy stopień szczegółowości i lepszy wgląd w użycie klientów.
 
-Poniższa tabela zawiera listę metryk, które zostały dodane lub znaczne zmiany w tej wersji. 
+
+### <a name="changes-to-data-structure-and-taxonomy"></a>Zmiany struktury i taksonomii danych
+
+Poniższa tabela zawiera listę metryk, które zostały dodane lub znacząco zmienione w tej wersji. 
 
 | **Nowy termin**                   |    **Definicja**                                                             |
 |--------------------------------|  ---------------------------------------------------------------------------- |
 | Cena (DW)                     | Cena jednostki użycia dla danej jednostki SKU (w walucie klienta).       |
-| Szacowana opłata rozszerzone (DW) | Szacowany rozszerzonej opłaty za ilość jednostek użycia dla danej jednostki SKU (w walucie klienta). Ta wartość nie może być dokładne z powodu błędów zaokrąglania lub obcięcie.   |
-| Wydawca waluty (PC)        | Preferowane przez wydawcę, aby uzyskać informacje dotyczące wypłat Waluta.                               |
-| Szacowana cena (PC)           | Szacowana cena jednostki użycia dla danej jednostki SKU opartej na konwersji walutowych użycia Data jest obliczana (w walucie wydawcy). Ta wartość nie może być dokładne z powodu błędów zaokrąglania lub obcięcie.   |
-| Szacowana opłata rozszerzone (PC) | Szacowany rozszerzonej opłaty za ilość jednostek użycia dla danej jednostki SKU opartej na konwersji walutowych użycia Data jest obliczana (w walucie wydawcy). Ta wartość nie może być dokładne z powodu błędów zaokrąglania lub obcięcie. |
-| Informacje dotyczące wypłat szacowany (PC)          | Szacowany płatności za ilość jednostek użycia dla danej jednostki SKU na podstawie walutowych konwersja na datę, użycie jest obliczane (w walucie wydawcy). Ta wartość nie może być dokładne z powodu błędów zaokrąglania lub obcięcie.   |
-| Odwołanie do użycia                | Identyfikator dla jednego lub więcej dni użycia przez klientów dla danej jednostki SKU, skojarzone z wpisem w raporcie informacje dotyczące wypłat. |
+| Szacowana opłata rozszerzona (DW) | Szacowana rozszerzona opłata za liczbę jednostek użytkowania dla danej jednostki SKU (w walucie klienta). Ta wartość nie może być dokładna ze względu na błędy zaokrągleń lub obcinania.   |
+| Waluta wydawcy (komputer)        | Waluta wypłaty przez wydawcę.                               |
+| Szacowana cena (komputer)           | Szacowana cena jednostki użycia dla danej jednostki SKU opartej na konwersji wymiany walut na użycie jest obliczana (w walucie wydawcy). Ta wartość nie może być dokładna ze względu na błędy zaokrągleń lub obcinania.   |
+| Szacowana opłata rozszerzona (komputer) | Szacowana rozszerzona opłata za liczbę jednostek użytkowania dla danej jednostki SKU w oparciu o konwersję wymiany na użycie jest obliczana (w walucie wydawcy). Ta wartość nie może być dokładna ze względu na błędy zaokrągleń lub obcinania. |
+| Szacowana wypłata (komputer)          | Szacowana płatność za liczbę jednostek użytkowania dla danej jednostki SKU na podstawie konwersji wymiany walut w dniu, w którym obliczono użycie (w walucie wydawcy). Ta wartość nie może być dokładna ze względu na błędy zaokrągleń lub obcinania.   |
+| Informacje o użyciu                | Identyfikator dla co najmniej jednego dnia użycia klienta dla danej jednostki SKU skojarzonej z wpisem w raporcie wypłaty. |
 |  |  |

@@ -48,16 +48,6 @@
       href: front-door-url-rewrite.md
     - name: Przekierowywanie adresów URL
       href: front-door-url-redirect.md
-    - name: Zapora aplikacji internetowej
-      items:
-        - name: Omówienie
-          href: waf-overview.md
-        - name: Reguły niestandardowe
-          href: waf-front-door-custom-rules.md
-        - name: Ustawienia zasad
-          href: waf-front-door-policy-settings.md
-        - name: Monitorowanie i rejestrowanie
-          href: waf-front-door-monitor.md
 - name: Przewodniki z instrukcjami
   items:
     - name: Przekierowywanie ruchu
@@ -74,26 +64,10 @@
           href: front-door-troubleshoot-routing.md
         - name: Dozwolone urzędy certyfikacji
           href: front-door-troubleshoot-allowed-ca.md
-    - name: Konfigurowanie zapory aplikacji internetowej
-      items:
-        - name: Konfigurowanie zasad zapory aplikacji internetowej — portal
-          href: waf-front-door-create-portal.md
-        - name: Konfigurowanie zasad zapory aplikacji internetowej — Azure PowerShell
-          href: waf-front-door-custom-rules-powershell.md
-        - name: Konfigurowanie ochrony przed botami
-          href: waf-front-door-policy-configure-bot-protection.md
-        - name: Konfigurowanie niestandardowego kodu odpowiedzi
-          href: waf-front-door-configure-custom-response-code.md
-        - name: Konfigurowanie ograniczeń adresów IP
-          href: waf-front-door-configure-ip-restriction.md
-        - name: Konfigurowanie limitu szybkości — Azure PowerShell
-          href: waf-front-door-rate-limit-powershell.md
 - name: Często zadawane pytania
   items:
     - name: Często zadawane pytania na temat usługi Front Door
       href: front-door-faq.md
-    - name: Często zadawane pytania na temat zapory aplikacji internetowej
-      href: waf-faq.md
 - name: Dokumentacja
   items:
     - name: Interfejs wiersza polecenia platformy Azure

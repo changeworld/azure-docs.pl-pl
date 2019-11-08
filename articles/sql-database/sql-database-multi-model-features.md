@@ -1,5 +1,5 @@
 ---
-title: Azure SQL Database możliwości modelu wielomodelowego
+title: Możliwości wielu modeli
 description: Azure SQL Database umożliwia współpracę z wieloma modelami danych w tej samej bazie danych.
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: ''
 ms.date: 12/17/2018
-ms.openlocfilehash: 0d59db65e940cab12dccaeeacc9083eb7fbba20e
-ms.sourcegitcommit: 018e3b40e212915ed7a77258ac2a8e3a660aaef8
-ms.translationtype: HT
+ms.openlocfilehash: 2e8519fa8d96b7fe016b9da4ba84ce481a57d94e
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73795762"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73802814"
 ---
 # <a name="multi-model-capabilities-of-azure-sql-database"></a>Możliwości wielomodelowe Azure SQL Database
 
@@ -74,7 +74,7 @@ Azure SQL Database umożliwia łatwe korzystanie z danych JSON i integrację baz
 
 ![Funkcje JSON](./media/sql-database-json-features/image_1.png)
 
-W przypadku tekstu JSON można wyodrębnić dane z pliku JSON lub sprawdzić, czy format JSON jest poprawnie sformatowany przy użyciu wbudowanych funkcji [JSON_VALUE](https://msdn.microsoft.com/library/dn921898.aspx), [JSON_QUERY](https://msdn.microsoft.com/library/dn921884.aspx)i [isjson](https://msdn.microsoft.com/library/dn921896.aspx). Funkcja [JSON_MODIFY](https://msdn.microsoft.com/library/dn921892.aspx) umożliwia zaktualizowanie wartości w postaci tekstu JSON. Aby uzyskać bardziej zaawansowane zapytania i analizę, funkcja [OPENJSON](https://msdn.microsoft.com/library/dn921885.aspx) może przekształcić tablicę obiektów JSON w zestaw wierszy. Wszystkie zapytania SQL można wykonać na zwracanym zestawie wyników. Na koniec istnieje klauzula [for JSON](https://msdn.microsoft.com/library/dn921882.aspx) , która umożliwia formatowanie danych przechowywanych w tabelach relacyjnych jako tekstu JSON.
+W przypadku tekstu JSON można wyodrębnić dane z pliku JSON lub sprawdzić, czy format JSON jest prawidłowo sformatowany przy użyciu wbudowanych funkcji [JSON_VALUE](https://msdn.microsoft.com/library/dn921898.aspx), [JSON_QUERY](https://msdn.microsoft.com/library/dn921884.aspx)i [isjson](https://msdn.microsoft.com/library/dn921896.aspx). Funkcja [JSON_MODIFY](https://msdn.microsoft.com/library/dn921892.aspx) umożliwia zaktualizowanie wartości wewnątrz tekstu JSON. Aby uzyskać bardziej zaawansowane zapytania i analizę, funkcja [OPENJSON](https://msdn.microsoft.com/library/dn921885.aspx) może przekształcić tablicę obiektów JSON w zestaw wierszy. Wszystkie zapytania SQL można wykonać na zwracanym zestawie wyników. Na koniec istnieje klauzula [for JSON](https://msdn.microsoft.com/library/dn921882.aspx) , która umożliwia formatowanie danych przechowywanych w tabelach relacyjnych jako tekstu JSON.
 
 Aby uzyskać więcej informacji, zobacz [jak korzystać z danych JSON w usłudze azure SQL Database](sql-database-json-features.md).
 [JSON](https://docs.microsoft.com/sql/relational-databases/json/json-data-sql-server) to podstawowa funkcja aparatu bazy danych SQL Server, dzięki czemu można znaleźć więcej informacji na temat funkcji JSON.

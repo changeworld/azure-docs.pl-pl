@@ -1,42 +1,43 @@
 ---
-title: Ustawienia portalu Marketplace obrazu kontenerów platformy Azure | Portal Azure Marketplace
-description: Skonfiguruj ustawienia witryny marketplace dla usługi Azure container.
+title: Ustawienia witryny Marketplace dla obrazu kontenerów platformy Azure | Portal Azure Marketplace
+description: Skonfiguruj ustawienia witryny Marketplace dla kontenera platformy Azure.
 services: Azure, Marketplace, Cloud Partner Portal,
 author: dan-wesley
 ms.service: marketplace
+ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 04/24/2019
 ms.author: pabutler
-ms.openlocfilehash: f2d735662fcd177f64d1ebc71a25b7d7629db3ce
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 8d7c930f3adcfb4b4d092cc909bf4468ced3271f
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64942658"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73823205"
 ---
-# <a name="container-marketplace-tab"></a>Karta Marketplace kontenera
+# <a name="container-marketplace-tab"></a>Karta witryna Marketplace kontenera
 
-**Marketplace** karcie **nowa oferta** strony umożliwia udostępnianie potencjalnych klientów. marketingu, sprzedaży i prawne informacji i umowy i zarządzanie potencjalnymi klientami wygenerowany na podstawie Portal Marketplace. Dodaj swoją zawartość, specyficzne dla obrotu **Przegląd** sekcji.
+Na karcie **Marketplace** na stronie **Nowa oferta** można zapewnić potencjalnym klientom potencjalną obsługę marketingową, sprzedażową i informacje prawne oraz umowy oraz zarządzać klientami wygenerowanymi w portalu Marketplace. Dodaj zawartość specyficzną dla marketingu do sekcji **Przegląd** .
 
 ## <a name="overview"></a>Omówienie
 
-W tej sekcji należy wprowadzić ogólne informacje o ofercie Azure Marketplace.  Znak gwiazdki (*) dodanym na końcu nazwy pola wskazuje, że jest to wymagane.
+W tej sekcji wprowadzasz ogólne informacje o ofercie portalu Azure Marketplace.  Gwiazdka (*) dołączona do nazwy pola wskazuje, że jest to wymagane.
 
-![Informacje portalu Marketplace](./media/containers-marketplace-tab.png)
+![Informacje o witrynie Marketplace](./media/containers-marketplace-tab.png)
 
-W poniższej tabeli opisano przeznaczenie i zawartość tych pól. Wymagane pola są wskazanych przez znak gwiazdki (*).
+W poniższej tabeli opisano przeznaczenie i zawartość tych pól. Wymagane pola są indicted przez gwiazdkę (*).
 
 |    Pole                  |       Opis                                                            |
 |  ---------                |     ---------------                                                          |
-| **Tytuł\***                 | Tytuł oferty. Będzie ona wyświetlana ważnej w portalu marketplace.  Maksymalna długość to 50 znaków. |
-| **Podsumowanie\***               | Krótkie podsumowanie oferty. Maksymalna długość wynosi 100 znaków. |
-| **Długie podsumowanie\***          | Już podsumowanie ofertę (chociaż może być taka sama jak **podsumowania**).  Maksymalna długość wynosi 256 znaków. |
-| **Opis elementu\***           | Opis oferty.  Maksymalna długość to 3000 znaków, obsługuje prosty formatowanie HTML.
-| **Identyfikator marketingu**  | Unikatowy adres URL do powiązania z tej oferty, które zwykle obejmują nazwę organizacji i rozwiązania. Maksymalna długość to 50 znaków.   |
-| **Identyfikatory subskrypcji (wersja zapoznawcza)\*** | Dodaj jeden do 100 identyfikatorów subskrypcji podglądy. Te subskrypcje biały na liście mają dostęp do tej oferty, po opublikowaniu, zanim usługa zostanie wprowadzona na żywo. |
+| **\* tytułu**                 | Tytuł oferty. Zostanie ona wyświetlona w widocznym miejscu w portalu Marketplace.  Maksymalna długość to 50 znaków. |
+| **\* podsumowania**               | Krótkie podsumowanie oferty. Maksymalna długość to 100 znaków. |
+| **Długi\* podsumowujący**          | Dłuższe podsumowanie oferty (chociaż może być takie samo, jak w przypadku **podsumowania**).  Maksymalna długość to 256 znaków. |
+| **\* opisu**           | Opis oferty.  Maksymalna długość to 3000 znaków, obsługuje proste formatowanie HTML.
+| **Identyfikator marketingu**  | Unikatowy adres URL do skojarzenia z ofertą, który zwykle zawiera nazwę organizacji i rozwiązania. Maksymalna długość to 50 znaków.   |
+| **Zapodgląd identyfikatorów subskrypcji\*** | Dodaj jeden do 100 identyfikatorów subskrypcji dla recenzentów. Te białe subskrypcje będą miały dostęp do oferty po jej opublikowaniu. |
 |  |  |
 
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
-Użyj [obsługuje](./cpp-support-tab.md) kartę, aby zapewnić technicznych i użytkownika, zasoby pomocy technicznej oferty.
+Skorzystaj z karty [Pomoc techniczna](./cpp-support-tab.md) , aby udostępnić zasoby techniczne i pomoc techniczną dla swojej oferty.

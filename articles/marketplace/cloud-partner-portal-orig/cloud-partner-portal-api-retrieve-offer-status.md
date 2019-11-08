@@ -1,18 +1,19 @@
 ---
-title: Pobieranie stanu oferty | Portal Azure Marketplace
-description: Interfejs API pobiera bieżący stan oferty.
+title: Pobierz stan oferty | Portal Azure Marketplace
+description: Interfejs API Pobiera bieżący stan oferty.
 services: Azure, Marketplace, Cloud Partner Portal,
 author: v-miclar
 ms.service: marketplace
+ms.subservice: partnercenter-marketplace-publisher
 ms.topic: reference
 ms.date: 09/13/2018
 ms.author: pabutler
-ms.openlocfilehash: 26ee8b5b1879c505f8200671558fe065ace068a3
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 5ce546d79497f462f6c262de738036d7e3a30226
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64935457"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73819667"
 ---
 <a name="retrieve-offer-status"></a>Pobieranie stanu oferty 
 =====================
@@ -26,16 +27,16 @@ Pobiera bieżący stan oferty.
 
 |  **Nazwa**       |   **Opis**                            |  **Typ danych** |
 |  -------------  |  ------------------------------------------  |  ------------  |
-|  publisherId    | Identyfikator wydawcy, na przykład `Contoso`  |     String     |
-|  offerId        | Identyfikator GUID, który unikatowo identyfikuje oferty      |     String     |
-|  api-version    | Najnowszą wersję interfejsu API                        |     Date       |
+|  publisherId    | Identyfikator wydawcy, na przykład `Contoso`  |     Ciąg     |
+|  OfferId        | Identyfikator GUID, który jednoznacznie identyfikuje ofertę      |     Ciąg     |
+|  wersja interfejsu API    | Najnowsza wersja interfejsu API                        |     Date       |
 |  |  |
 
 
-<a name="header"></a>nagłówek
+<a name="header"></a>Nagłówek
 ------
 
-|  Name (Nazwa)           |  Wartość               |
+|  Nazwa           |  Wartość               |
 |  -------------  | -------------------  |
 |  Content-Type   |  `application/json`  |
 |  Autoryzacja  | `Bearer YOUR_TOKEN`  |
@@ -124,29 +125,29 @@ Pobiera bieżący stan oferty.
 
 |  **Nazwa**             |    **Opis**                                                                             |
 | --------------------  |   -------------------------------------------------------------------------------------------- |
-|  status               | Stan oferty. Aby uzyskać listę możliwych wartości, zobacz [status oferty](#offer-status) poniżej. |
-|  z chmury do urządzenia             | Tablica komunikatów skojarzonych z tej oferty                                                    |
-|  kroki                | Tablica czynności, które oferty przechodzi przez podczas publikowania oferty                      |
-|  estimatedTimeFrame   | Szacowany czas, jaki zajęłoby w celu ukończenia tego kroku, w formacie przyjazne                       |
+|  status               | Stan oferty. Aby uzyskać listę możliwych wartości, zobacz temat [status oferty](#offer-status) poniżej. |
+|  z chmury do urządzenia             | Tablica komunikatów skojarzonych z ofertą                                                    |
+|  kroki                | Tablica kroków, przez jaką oferta przechodzi w ramach publikacji oferty                      |
+|  estimatedTimeFrame   | Oszacowanie czasu, jaki mógłby wykonać ten krok, w przyjaznym formacie                       |
 |  id                   | Identyfikator kroku                                                                         |
-|  stepName             | Nazwa kroku                                                                               |
+|  krokname             | Nazwa kroku                                                                               |
 |  description          | Opis kroku                                                                        |
-|  status               | Stan kroku. Aby uzyskać listę możliwych wartości, zobacz [krok stan](#step-status) poniżej.    |
-|  z chmury do urządzenia             | Tablica komunikatów związane z kroku                                                          |
-|  processPercentage    | Procent ukończenia kroku                                                              |
-|  previewLinks         | *Aktualnie nie zaimplementowane*                                                                    |
-|  liveLinks            | *Aktualnie nie zaimplementowane*                                                                    |
-|  notificationEmails   | Rozdzielana przecinkami lista adresów e-mail, aby otrzymywać powiadomienia o postępie operacji        |
+|  status               | Stan kroku. Aby uzyskać listę możliwych wartości, zobacz [Step status](#step-status) poniżej.    |
+|  z chmury do urządzenia             | Tablica komunikatów dotyczących kroku                                                          |
+|  processPercentage    | Procent wykonania kroku                                                              |
+|  previewLinks         | *Obecnie nie zaimplementowane*                                                                    |
+|  liveLinks            | *Obecnie nie zaimplementowane*                                                                    |
+|  notificationEmails   | Rozdzielana przecinkami lista adresów e-mail, które mają być powiadamiane o postępie operacji        |
 |  |  |
 
 
-### <a name="response-status-codes"></a>Kody stanów odpowiedzi
+### <a name="response-status-codes"></a>Kody stanu odpowiedzi
 
-| **Kod** |   **Opis**                                                                                 |
+| **Kodu** |   **Opis**                                                                                 |
 | -------  |   ----------------------------------------------------------------------------------------------- |
-|  200     |  `OK` Żądanie zostało pomyślnie przetworzone i bieżący stan oferta została zwrócona. |
-|  400     | `Bad/Malformed request` -Treść odpowiedzi błędu może zawierać więcej informacji.                 |
-|  404     | `Not found` -Określonej jednostki nie istnieje.                                                |
+|  200     |  `OK` — żądanie zostało pomyślnie przetworzone i został zwrócony bieżący stan oferty. |
+|  400     | `Bad/Malformed request` — treść odpowiedzi błędu może zawierać więcej informacji.                 |
+|  404     | `Not found` — określona jednostka nie istnieje.                                                |
 |  |  |
 
 
@@ -154,13 +155,13 @@ Pobiera bieżący stan oferty.
 
 |  **Nazwa**                    |    **Opis**                                       |
 |  --------------------------  |  ------------------------------------------------------  |
-|  NeverPublished              | Nigdy nie został opublikowany oferty.                          |
-|  NotStarted                  | Oferta jest nowy i nie jest uruchomiona.                            |
-|  WaitingForPublisherReview   | Oferty oczekuje na zatwierdzenie wydawcy.                 |
-|  Działanie                     | Przesłania oferty jest przetwarzana.                     |
-|  Powodzenie                   | Przesłania oferty zakończeniu przetwarzania.               |
-|  Anulowane                    | Przesyłanie oferta została anulowana.                           |
-|  Niepowodzenie                      | Wprowadzenie oferty nie powiodło się.                                 |
+|  NeverPublished              | Oferta nie została nigdy opublikowana.                          |
+|  NotStarted                  | Oferta jest nowa i nie została uruchomiona.                            |
+|  WaitingForPublisherReview   | Oferta oczekuje na zatwierdzenie przez wydawcę.                 |
+|  Działanie                     | Przesyłanie oferty jest przetwarzane.                     |
+|  Powodzenie                   | Przesyłanie oferty zostało zakończone.               |
+|  Anulowane                    | Przesyłanie oferty zostało anulowane.                           |
+|  Niepowodzenie                      | Nie można przesłać oferty.                                 |
 |  |  |
 
 
@@ -168,12 +169,12 @@ Pobiera bieżący stan oferty.
 
 |  **Nazwa**                    |    **Opis**                           |
 |  -------------------------   |  ------------------------------------------  |
-|  NotStarted                  | Krok nie została uruchomiona.                        |
-|  W toku                  | Etap jest uruchomiony.                             |
-|  WaitingForPublisherReview   | Krok oczekuje na zatwierdzenie wydawcy.      |
-|  WaitingForApproval          | Krok czeka, aż proces zatwierdzania.        |
-|  Zablokowane                     | Krok jest zablokowany.                             |
-|  Odrzucone                    | Krok został odrzucony.                            |
+|  NotStarted                  | Krok nie został uruchomiony.                        |
+|  Toku                  | Krok jest uruchomiony.                             |
+|  WaitingForPublisherReview   | Krok oczekuje na zatwierdzenie przez wydawcę.      |
+|  WaitingForApproval          | Krok oczekuje na zatwierdzenie procesu.        |
+|  Blokada                     | Krok jest zablokowany.                             |
+|  Odrzucono                    | Krok został odrzucony.                            |
 |  Zakończ                    | Krok został ukończony.                            |
-|  Anulowane                    | Krok zostało anulowane.                           |
+|  Anulowane                    | Krok został anulowany.                           |
 |  |  |

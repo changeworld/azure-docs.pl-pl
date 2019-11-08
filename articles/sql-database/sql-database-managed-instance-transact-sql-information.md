@@ -1,5 +1,5 @@
 ---
-title: Azure SQL Database różnice T-SQL wystąpienia zarządzanego
+title: Różnice T-SQL wystąpienia zarządzanego
 description: W tym artykule omówiono różnice w języku T-SQL między wystąpieniem zarządzanym w Azure SQL Database i SQL Server
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ ms.author: jovanpop
 ms.reviewer: sstein, carlrab, bonova
 ms.date: 11/04/2019
 ms.custom: seoapril2019
-ms.openlocfilehash: 5efa52da0005d0b98820c648dfe7c8489bc39076
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 3518404b76625e2557aaefdc6ab5ad7353683984
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73687867"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73823324"
 ---
 # <a name="managed-instance-t-sql-differences-limitations-and-known-issues"></a>Różnice w języku T-SQL wystąpienia zarządzanego, ograniczenia i znane problemy
 
@@ -149,7 +149,7 @@ Wystąpienie zarządzane nie może uzyskać dostępu do plików, więc nie możn
 - Ustawienie identyfikatora logowania usługi Azure AD zamapowanego na grupę usługi Azure AD jako właściciel bazy danych nie jest obsługiwane.
 - Personifikacja podmiotów zabezpieczeń na poziomie serwera usługi Azure AD przy użyciu innych podmiotów zabezpieczeń usługi Azure AD jest obsługiwana, takich jak klauzula [EXECUTE AS](/sql/t-sql/statements/execute-as-transact-sql) . Ograniczenia wykonywania jako są następujące:
 
-  - Wartość Uruchom jako użytkownik nie jest obsługiwana dla użytkowników usługi Azure AD, gdy nazwa jest inna niż nazwa logowania. Przykładem jest to, że użytkownik jest tworzony przy użyciu składni CREATE USER [myAadUser] FROM LOGIN [john@contoso.com], a Personifikacja jest podejmowana przy użyciu polecenia EXEC AS USER = _myAadUser_. Podczas tworzenia **użytkownika** z poziomu podmiotu zabezpieczeń serwera usługi Azure AD (login) należy określić wartość nazwa_użytkownika jako taką samą Login_name z **logowania**.
+  - Wartość Uruchom jako użytkownik nie jest obsługiwana dla użytkowników usługi Azure AD, gdy nazwa jest inna niż nazwa logowania. Przykładem jest to, że użytkownik jest tworzony przy użyciu składni CREATE USER [myAadUser] FROM LOGIN [john@contoso.com], a Personifikacja jest podejmowana przy użyciu polecenia EXEC AS USER = _myAadUser_. Podczas tworzenia **użytkownika** z poziomu podmiotu zabezpieczeń serwera usługi Azure AD (login) Określ user_name jako ten sam Login_name z **nazwy logowania**.
   - Tylko podmioty zabezpieczeń na poziomie SQL Server (logowania) będące częścią roli `sysadmin` mogą wykonywać następujące operacje, które są przeznaczone dla podmiotów zabezpieczeń usługi Azure AD:
 
     - EXECUTE AS USER
@@ -161,7 +161,7 @@ Wystąpienie zarządzane nie może uzyskać dostępu do plików, więc nie możn
     - Wyeksportuj bazę danych z wystąpienia zarządzanego i zaimportuj ją do SQL Database w ramach tej samej domeny usługi Azure AD. 
     - Wyeksportuj bazę danych z SQL Database i zaimportuj do wystąpienia zarządzanego w ramach tej samej domeny usługi Azure AD.
     - Wyeksportuj bazę danych z wystąpienia zarządzanego i zaimportuj do SQL Server (wersja 2012 lub nowsza).
-      - W tej konfiguracji wszyscy użytkownicy usługi Azure AD są utworzeni jako podmioty zabezpieczeń bazy danych SQL (Użytkownicy) bez logowania. Typ użytkowników jest wymieniony jako SQL (widoczny jako SQL_USER w pliku sys. database_principals). Ich uprawnienia i role pozostają w metadanych bazy danych SQL Server i mogą być używane do personifikacji. Nie można ich jednak używać do uzyskiwania dostępu do SQL Server i logowania się do nich przy użyciu swoich poświadczeń.
+      - W tej konfiguracji wszyscy użytkownicy usługi Azure AD są utworzeni jako podmioty zabezpieczeń bazy danych SQL (Użytkownicy) bez logowania. Typ użytkowników jest wymieniony jako SQL (widoczny jako SQL_USER w tabeli sys. database_principals). Ich uprawnienia i role pozostają w metadanych bazy danych SQL Server i mogą być używane do personifikacji. Nie można ich jednak używać do uzyskiwania dostępu do SQL Server i logowania się do nich przy użyciu swoich poświadczeń.
 
 - Tylko główna nazwa logowania na poziomie serwera, która jest tworzona przez proces aprowizacji wystąpienia zarządzanego, członkowie ról serwera, takie jak `securityadmin` lub `sysadmin`, lub inne logowania z uprawnieniem ALTER ANY LOGIN na poziomie serwera mogą utworzyć serwer usługi Azure AD podmioty zabezpieczeń (Logins) w bazie danych Master dla wystąpienia zarządzanego.
 - Jeśli nazwa logowania jest podmiotem SQL, tylko nazwy logowania należące do roli `sysadmin` mogą używać polecenia CREATE do tworzenia logowań dla konta usługi Azure AD.
@@ -170,11 +170,11 @@ Wystąpienie zarządzane nie może uzyskać dostępu do plików, więc nie możn
 - Mogą nakładać się nazwy główne (logowania) serwera usługi Azure AD z kontem administratora usługi Azure AD. Nazwy główne (Logins) serwera usługi Azure AD mają pierwszeństwo przed administratorem usługi Azure AD po rozwiązaniu podmiotu zabezpieczeń i zastosowaniu uprawnień do wystąpienia zarządzanego.
 - Podczas uwierzytelniania następująca sekwencja jest stosowana w celu rozwiązania uwierzytelniania podmiotu zabezpieczeń:
 
-    1. Jeśli konto usługi Azure AD istnieje jako bezpośrednio zamapowane do podmiotu zabezpieczeń serwera usługi Azure AD (login), który znajduje się w pliku sys. server_principals jako "E", Udziel dostępu i Zastosuj uprawnienia podmiotu zabezpieczeń serwera usługi Azure AD.
-    2. Jeśli konto usługi Azure AD jest członkiem grupy usługi Azure AD, która jest zamapowana do podmiotu zabezpieczeń serwera usługi Azure AD (login), który znajduje się w pliku sys. server_principals jako typ "X", Udziel dostępu i Zastosuj uprawnienia do logowania do grupy usługi Azure AD.
+    1. Jeśli konto usługi Azure AD istnieje jako bezpośrednio zamapowane do podmiotu zabezpieczeń serwera usługi Azure AD (login), który znajduje się w pliku sys. server_principals jako typ "E", Udziel dostępu i Zastosuj uprawnienia podmiotu zabezpieczeń serwera usługi Azure AD.
+    2. Jeśli konto usługi Azure AD jest członkiem grupy usługi Azure AD mapowanej do podmiotu zabezpieczeń serwera usługi Azure AD (logowanie), która znajduje się w pliku sys. server_principals jako typ "X", Udziel dostępu i Zastosuj uprawnienia do logowania do grupy usługi Azure AD.
     3. Jeśli konto usługi Azure AD jest specjalnym skonfigurowanym przez portal administratorem usługi Azure AD dla wystąpienia zarządzanego, które nie istnieje w widokach systemu wystąpienia zarządzanego, Zastosuj specjalne uprawnienia do administratora usługi Azure AD dla wystąpienia zarządzanego (starsza wersja).
     4. Jeśli konto usługi Azure AD istnieje jako bezpośrednio zamapowane do użytkownika usługi Azure AD w bazie danych, która jest obecna w pliku sys. database_principals jako typ "E", Udziel dostępu i Zastosuj uprawnienia użytkownika usługi Azure AD Database.
-    5. Jeśli konto usługi Azure AD jest członkiem grupy usługi Azure AD, która jest zamapowana do użytkownika usługi Azure AD w bazie danych, która jest obecna w pliku sys. database_principals jako typ "X", Udziel dostępu i Zastosuj uprawnienia do logowania do grupy usługi Azure AD.
+    5. Jeśli konto usługi Azure AD jest członkiem grupy usługi Azure AD, która jest zamapowana do użytkownika usługi Azure AD w bazie danych, która jest obecna w tabeli sys. database_principals jako typ "X", Udziel dostępu i Zastosuj uprawnienia do logowania do grupy usługi Azure AD.
     6. W przypadku zamapowania identyfikatora logowania usługi Azure AD na konto użytkownika usługi Azure AD lub konto grupy usługi Azure AD, które jest rozpoznawane przez użytkownika, który uwierzytelnia się, zostaną zastosowane wszystkie uprawnienia z tej nazwy logowania usługi Azure AD.
 
 ### <a name="service-key-and-service-master-key"></a>Klucz usługi i klucz główny usługi
@@ -345,7 +345,7 @@ Nieudokumentowane instrukcje DBCC, które są włączone w SQL Server nie są ob
 
 - Obsługiwana jest tylko ograniczona liczba globalnych flag śledzenia. `Trace flags` na poziomie sesji nie są obsługiwane. Zobacz [flagi śledzenia](/sql/t-sql/database-console-commands/dbcc-traceon-trace-flags-transact-sql).
 - [Polecenia DBCC TRACEOFF](/sql/t-sql/database-console-commands/dbcc-traceoff-transact-sql) i [DBCC TRACEON](/sql/t-sql/database-console-commands/dbcc-traceon-transact-sql) współpracują z ograniczoną liczbą globalnych flag śledzenia.
-- [Polecenia DBCC CHECKDB](/sql/t-sql/database-console-commands/dbcc-checkdb-transact-sql) z opcjami REPAIR_ALLOW_DATA_LOSS, REPAIR_FAST i REPAIR_REBUILD nie mogą być używane, ponieważ nie można ustawić bazy danych w trybie `SINGLE_USER` — Zobacz temat [ALTER DATABASE — różnice](#alter-database-statement). Potencjalne uszkodzenia bazy danych są obsługiwane przez zespół pomocy technicznej systemu Azure. Skontaktuj się z pomocą techniczną platformy Azure, jeśli obserwowanie się z uszkodzeniem bazy danych, które powinny zostać naprawione.
+- [Polecenia DBCC CHECKDB](/sql/t-sql/database-console-commands/dbcc-checkdb-transact-sql) z opcjami REPAIR_ALLOW_DATA_LOSS, REPAIR_FAST i REPAIR_REBUILD nie można użyć, ponieważ nie można ustawić bazy danych w trybie `SINGLE_USER` — Zobacz temat [ALTER DATABASE — różnice](#alter-database-statement). Potencjalne uszkodzenia bazy danych są obsługiwane przez zespół pomocy technicznej systemu Azure. Skontaktuj się z pomocą techniczną platformy Azure, jeśli obserwowanie się z uszkodzeniem bazy danych, które powinny zostać naprawione.
 
 ### <a name="distributed-transactions"></a>Transakcje rozproszone
 
@@ -355,8 +355,8 @@ Usługi MSDTC i [transakcje elastyczne](sql-database-elastic-transactions-overvi
 
 Niektóre elementy docelowe specyficzne dla systemu Windows dla zdarzeń rozszerzonych (XEvents) nie są obsługiwane:
 
-- Element docelowy `etw_classic_sync` nie jest obsługiwany. Przechowywanie plików `.xel` w usłudze Azure Blob Storage. Zobacz [element docelowy etw_classic_sync](/sql/relational-databases/extended-events/targets-for-extended-events-in-sql-server#etw_classic_sync_target-target).
-- Element docelowy `event_file` nie jest obsługiwany. Przechowywanie plików `.xel` w usłudze Azure Blob Storage. Zobacz [element docelowy event_file](/sql/relational-databases/extended-events/targets-for-extended-events-in-sql-server#event_file-target).
+- Element docelowy `etw_classic_sync` nie jest obsługiwany. Przechowywanie plików `.xel` w usłudze Azure Blob Storage. Zobacz [etw_classic_sync cel](/sql/relational-databases/extended-events/targets-for-extended-events-in-sql-server#etw_classic_sync_target-target).
+- Element docelowy `event_file` nie jest obsługiwany. Przechowywanie plików `.xel` w usłudze Azure Blob Storage. Zobacz [event_file cel](/sql/relational-databases/extended-events/targets-for-extended-events-in-sql-server#event_file-target).
 
 ### <a name="external-libraries"></a>Biblioteki zewnętrzne
 
@@ -458,7 +458,7 @@ Jeśli replikacja jest włączona w bazie danych w [grupie trybu failover](sql-d
   - `FROM DISK`/`TAPE`/Backup urządzenie nie jest obsługiwane.
   - Zestawy kopii zapasowych nie są obsługiwane.
 - Opcje `WITH` nie są obsługiwane, takie jak brak `DIFFERENTIAL` lub `STATS`.
-- `ASYNC RESTORE`: Przywracanie jest kontynuowane nawet w przypadku przerwania połączenia z klientem. Jeśli połączenie zostało porzucone, można sprawdzić stan operacji przywracania w widoku `sys.dm_operation_status` oraz utworzyć i usunąć bazę danych. Zobacz sekcję [sys. DM _operation_status](/sql/relational-databases/system-dynamic-management-views/sys-dm-operation-status-azure-sql-database). 
+- `ASYNC RESTORE`: Przywracanie jest kontynuowane nawet w przypadku przerwania połączenia z klientem. Jeśli połączenie zostało porzucone, można sprawdzić stan operacji przywracania w widoku `sys.dm_operation_status` oraz utworzyć i usunąć bazę danych. Zobacz sekcję [sys. dm_operation_status](/sql/relational-databases/system-dynamic-management-views/sys-dm-operation-status-azure-sql-database). 
 
 Następujące opcje bazy danych są ustawiane lub zastępowane i nie można ich zmienić później: 
 
@@ -494,7 +494,7 @@ Broker usług dla wielu wystąpień nie jest obsługiwany:
 ### <a name="stored-procedures-functions-and-triggers"></a>Procedury składowane, funkcje i wyzwalacze
 
 - `NATIVE_COMPILATION` nie jest obsługiwana w warstwie Ogólnego przeznaczenia.
-- Następujące opcje [procedury sp_configure](/sql/relational-databases/system-stored-procedures/sp-configure-transact-sql) nie są obsługiwane: 
+- Następujące opcje [sp_configure](/sql/relational-databases/system-stored-procedures/sp-configure-transact-sql) nie są obsługiwane: 
   - `allow polybase export`
   - `allow updates`
   - `filestream_access_level`

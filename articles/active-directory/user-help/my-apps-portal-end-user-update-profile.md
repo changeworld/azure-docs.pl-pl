@@ -1,5 +1,5 @@
 ---
-title: Aktualizowanie informacji o profilu i koncie z portalu Moje aplikacje — Azure Active Directory | Microsoft Docs
+title: Aktualizowanie profilu i konta w portalu Moje aplikacje — Azure AD
 description: Dowiedz się, jak zaktualizować profil i informacje o koncie służbowym, w tym o zmianie hasła, włączaniu resetowania hasła, aktualizowaniu metod weryfikacji zabezpieczeń, wyświetlaniu zasad użytkowania w organizacji i wylogowaniu z wszędzie tam, gdzie zarejestrowano Cię przy użyciu konta służbowego.
 services: active-directory
 author: eross-msft
@@ -13,14 +13,14 @@ ms.author: lizross
 ms.reviewer: kasimpso
 ms.custom: user-help, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 40cf8e16e08db67c36009435758db36797518d96
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.openlocfilehash: 4416b35d2e2204cec2a9ffe2f50e92983d6204c0
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73160752"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73820380"
 ---
-# <a name="update-your-profile-and-account-info-from-the-my-apps-portal"></a>Aktualizowanie informacji o profilu i koncie z portalu My Apps
+# <a name="update-your-profile-and-account-info-on-the-my-apps-portal"></a>Aktualizowanie informacji o profilu i koncie w portalu My Apps
 
 Możesz użyć swojego konta służbowego z portalem **Moje aplikacje** oparte na sieci Web, aby wyświetlać i uruchamiać wiele aplikacji opartych na chmurze w organizacji, aktualizować niektóre informacje o profilu i koncie, wyświetlać informacje o **grupach** i wykonywać  **przeglądy dostępu** do aplikacji i grup. Jeśli nie masz dostępu do portalu **Moje aplikacje** , musisz skontaktować się z pomocą techniczną, aby uzyskać odpowiednie uprawnienia.
 

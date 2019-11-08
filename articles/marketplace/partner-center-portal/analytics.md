@@ -5,14 +5,15 @@ author: ChJenk
 manager: evansma
 ms.author: v-chjen
 ms.service: marketplace
+ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 10/14/2019
-ms.openlocfilehash: 593d43339961ab4576081aaa18a8d68716e40e9b
-ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
+ms.openlocfilehash: 2b1d3167828f2c2c49bb22580222fbd0e54d31d8
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72332130"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73813190"
 ---
 # <a name="analytics-for-the-commercial-marketplace-in-partner-center"></a>Analiza komercyjnego portalu Marketplace w centrum partnerskim
 
@@ -23,7 +24,7 @@ Aby uzyskać dostęp do narzędzi do analiz Centrum partnerskiego, Otwórz pulpi
 |**Pulpit nawigacyjny**|**Wyświetlana zawartość**|
 |:---|:---|
 |[Podsumowanie](#summary-dashboard)|Wykresy, trendy i wartości zagregowanych danych, które podsumowują aktywność witryny Marketplace dla ofert|
-|[Zamówienie](#orders-dashboard)|Informacje o zamówieniach w formacie graficznym i do pobrania|
+|[Zamówienia](#orders-dashboard)|Informacje o zamówieniach w formacie graficznym i do pobrania|
 |[Klientów](#customer-dashboard)|Informacje o klientach, w tym trendy wzrostu, prezentowane w formacie graficznym i do pobrania|
 |[Proces](#downloads-dashboard)|Lista żądań pobierania w ciągu ostatnich 30 dni|
 |[Oceny i przeglądy](#ratings-and-reviews)| Informacje o ocenach i przeglądach sprzedanych przez klientów w przypadku ofert, które zostały nabyte.
@@ -233,59 +234,59 @@ Otrzymasz powiadomienie wyskakujące i wiadomość e-mail zawierającą link **d
 
 ### <a name="dictionary-of-data-terms"></a>Słownik terminów dotyczących danych
 
-| Nazwa atrybutu | Raporty | Definicja|
+| Nazwa atrybutu | Reports | Definicja|
 |---|---|---|
 | Typ licencji platformy Azure | Klient, zamówienie | Typ umowy licencyjnej używanej przez klientów do kupowania platformy Azure. Znany również jako kanał |
 | Typ licencji platformy Azure: dostawca rozwiązań w chmurze | Klient, zamówienie | Klient końcowy nabywa platformę Azure i ofertę portalu Marketplace za pomocą swojego dostawcy rozwiązań w chmurze, który działa jako odsprzedawca.|
 | Typ licencji platformy Azure: Enterprise | Klient, zamówienie | Klient końcowy nabywa platformę Azure i ofertę w portalu Marketplace za pomocą Umowa Enterprise podpisanej bezpośrednio w firmie Microsoft.|
 | Typ licencji platformy Azure: przedsiębiorstwo przez odsprzedawcę  | Klient, zamówienie | Klient końcowy nabywa platformę Azure i ofertę portalu Marketplace przez odsprzedawcę, który ułatwia ich Umowa Enterprise firmie Microsoft.|  |
 | Typ licencji platformy Azure: płatność zgodnie z rzeczywistym użyciem| Klient, zamówienie | Klient końcowy nabywa platformę Azure i ofertę Marketplace w ramach umowy "płatność zgodnie z rzeczywistym użyciem" podpisanej bezpośrednio z firmą Microsoft.||
-| Nazwa wystąpienia chmury| Zamów| Microsoft Cloud, w którym wystąpiło wdrożenie maszyny wirtualnej.||
-| Nazwa wystąpienia chmury: globalna Azure| Zamów| Publiczna globalna chmura firmy Microsoft.|| |
-| Nazwa wystąpienia chmury: Azure Government | Zamów| Specyficzne dla instytucji rządowe chmury firmy Microsoft dla jednego z następujących rządów: Chiny, Niemcy lub Stany Zjednoczone Ameryki.| |
-| Miasto klienta| Dział| Nazwa miasta podana przez klienta. Miasto może być inne niż miasto w subskrypcji platformy Azure klienta.||
-| Język komunikacji klienta  | Dział| Język preferowany przez klienta do komunikacji.||
+| Nazwa wystąpienia chmury| Zamówienie| Microsoft Cloud, w którym wystąpiło wdrożenie maszyny wirtualnej.||
+| Nazwa wystąpienia chmury: globalna Azure| Zamówienie| Publiczna globalna chmura firmy Microsoft.|| |
+| Nazwa wystąpienia chmury: Azure Government | Zamówienie| Specyficzne dla instytucji rządowe chmury firmy Microsoft dla jednego z następujących rządów: Chiny, Niemcy lub Stany Zjednoczone Ameryki.| |
+| Miasto klienta| Klient| Nazwa miasta podana przez klienta. Miasto może być inne niż miasto w subskrypcji platformy Azure klienta.||
+| Język komunikacji klienta  | Klient| Język preferowany przez klienta do komunikacji.||
 | Nazwa firmy klienta | Klient, zamówienie | Nazwa firmy podana przez klienta. Nazwa może różnić się od miasta w subskrypcji platformy Azure klienta.|  |
 | Kraj klienta | Klient, zamówienie | Nazwa kraju podana przez klienta. Kraj może być inny niż kraj w subskrypcji platformy Azure klienta.|  |
-| Adres E-mail klienta| Dział| Adres e-mail dostarczony przez klienta końcowego. Adres e-mail może różnić się od adresu e-mail w subskrypcji platformy Azure klienta.||
-| Imię klienta| Dział| Nazwa podana przez klienta. Nazwa może różnić się od nazwy podanej w subskrypcji platformy Azure klienta.| |
+| Adres E-mail klienta| Klient| Adres e-mail dostarczony przez klienta końcowego. Adres e-mail może różnić się od adresu e-mail w subskrypcji platformy Azure klienta.||
+| Imię klienta| Klient| Nazwa podana przez klienta. Nazwa może różnić się od nazwy podanej w subskrypcji platformy Azure klienta.| |
 | Identyfikator klienta | Klient, zamówienie | Unikatowy identyfikator przypisany do klienta. Klient może mieć zero lub więcej subskrypcji portalu Azure Marketplace.|  |
-| Kod pocztowy klienta  | Dział| Kod pocztowy dostarczony przez klienta. Kod może być inny niż kod pocztowy podany w subskrypcji platformy Azure klienta.| |
-| Stan klienta| Dział| Stan (adres) dostarczony przez klienta. Stan może być inny niż stan podany w subskrypcji platformy Azure klienta.| |
-| Data pozyskania| Dział| Pierwszy dzień zakupionej oferty przez klienta.| |
-| Data utraty| Dział| Ostatnia data anulowania ostatniego zakupionej oferty przez klienta.||
-| Jest nowym klientem  | Zamów| Wartość będzie identyfikować nowego klienta przejmującego jedną lub większą liczbę ofert po raz pierwszy (lub nie). Wartość będzie równa "yes", jeśli w ramach tego samego miesiąca kalendarzowego dla "Data pozyskania". Wartość będzie równa "No", jeśli klient kupił dowolne oferty przed zgłoszonym miesiącem kalendarzowym. |
-| Jest jednostką SKU wersji zapoznawczej| Zamów| Wartość będzie informować o tym, czy jest oznaczona jako wersja zapoznawcza. Wartość będzie równa "yes", jeśli jednostka SKU została odpowiednio oznaczona, a tylko subskrypcje platformy Azure autoryzowane przez użytkownika, można wdrożyć i korzystać z tego obrazu. Wartość będzie równa "No", jeśli jednostka SKU nie została zidentyfikowana jako "wersja zapoznawcza".  |
-| Czy kontakt promocyjny jest wybierany| Dział| Ta wartość informuje o tym, czy klient aktywnie zabrał w celu skontaktowania się z wydawcami. W tej chwili nie prezentujemy opcji klientom, dlatego w całej tablicy podano wartość "No". Po wdrożeniu tej funkcji rozpocznie się aktualizowanie.|
-| Typ licencji Marketplace| Zamów| Metoda rozliczeń oferty portalu Marketplace.||
-| Typ licencji Marketplace: rozliczane za pomocą platformy Azure| Zamów| Firma Microsoft jest Twoim agentem dla tej oferty w witrynie Marketplace i wekslom klientów w Twoim imieniu. (Karta kredytowa PAYG lub faktura w przedsiębiorstwie)||
-| Typ licencji Marketplace: korzystanie z własnej licencji | Zamów| Maszyna wirtualna wymaga klucza licencji dostarczonego przez klienta do wdrożenia. Firma Microsoft nie rozliczy klientów za korzystanie z oferty w ten sposób w portalu Marketplace.||
-| Typ licencji Marketplace: bezpłatnie| Zamów| Oferta jest konfigurowana bezpłatnie dla wszystkich użytkowników. Firma Microsoft nie rozliczy klientów za użycie tej oferty.||
-| Typ licencji Marketplace: Firma Microsoft jako odsprzedawca  | Zamów| Firma Microsoft jest odsprzedawcą dla tej oferty portalu Marketplace.|  |
+| Kod pocztowy klienta  | Klient| Kod pocztowy dostarczony przez klienta. Kod może być inny niż kod pocztowy podany w subskrypcji platformy Azure klienta.| |
+| Stan klienta| Klient| Stan (adres) dostarczony przez klienta. Stan może być inny niż stan podany w subskrypcji platformy Azure klienta.| |
+| Data pozyskania| Klient| Pierwszy dzień zakupionej oferty przez klienta.| |
+| Data utraty| Klient| Ostatnia data anulowania ostatniego zakupionej oferty przez klienta.||
+| Jest nowym klientem  | Zamówienie| Wartość będzie identyfikować nowego klienta przejmującego jedną lub większą liczbę ofert po raz pierwszy (lub nie). Wartość będzie równa "yes", jeśli w ramach tego samego miesiąca kalendarzowego dla "Data pozyskania". Wartość będzie równa "No", jeśli klient kupił dowolne oferty przed zgłoszonym miesiącem kalendarzowym. |
+| Jest jednostką SKU wersji zapoznawczej| Zamówienie| Wartość będzie informować o tym, czy jest oznaczona jako wersja zapoznawcza. Wartość będzie równa "yes", jeśli jednostka SKU została odpowiednio oznaczona, a tylko subskrypcje platformy Azure autoryzowane przez użytkownika, można wdrożyć i korzystać z tego obrazu. Wartość będzie równa "No", jeśli jednostka SKU nie została zidentyfikowana jako "wersja zapoznawcza".  |
+| Czy kontakt promocyjny jest wybierany| Klient| Ta wartość informuje o tym, czy klient aktywnie zabrał w celu skontaktowania się z wydawcami. W tej chwili nie prezentujemy opcji klientom, dlatego w całej tablicy podano wartość "No". Po wdrożeniu tej funkcji rozpocznie się aktualizowanie.|
+| Typ licencji Marketplace| Zamówienie| Metoda rozliczeń oferty portalu Marketplace.||
+| Typ licencji Marketplace: rozliczane za pomocą platformy Azure| Zamówienie| Firma Microsoft jest Twoim agentem dla tej oferty w witrynie Marketplace i wekslom klientów w Twoim imieniu. (Karta kredytowa PAYG lub faktura w przedsiębiorstwie)||
+| Typ licencji Marketplace: korzystanie z własnej licencji | Zamówienie| Maszyna wirtualna wymaga klucza licencji dostarczonego przez klienta do wdrożenia. Firma Microsoft nie rozliczy klientów za korzystanie z oferty w ten sposób w portalu Marketplace.||
+| Typ licencji Marketplace: bezpłatnie| Zamówienie| Oferta jest konfigurowana bezpłatnie dla wszystkich użytkowników. Firma Microsoft nie rozliczy klientów za użycie tej oferty.||
+| Typ licencji Marketplace: Firma Microsoft jako odsprzedawca  | Zamówienie| Firma Microsoft jest odsprzedawcą dla tej oferty portalu Marketplace.|  |
 | Identyfikator subskrypcji witryny Marketplace | Klient, zamówienie | Unikatowy identyfikator skojarzony z subskrypcją platformy Azure używany przez klienta do zakupu oferty portalu Marketplace. Identyfikator był dawniej identyfikatorem GUID subskrypcji platformy Azure.||
-| Nazwa oferty  | Zamów| Nazwa oferty portalu Marketplace.|| |
-| Typ oferty  | Zamów| Typ oferty Microsoft Marketplace.|||
+| Offer Name  | Zamówienie| Nazwa oferty portalu Marketplace.|| |
+| Typ oferty  | Zamówienie| Typ oferty Microsoft Marketplace.|||
 | Typ oferty: aplikacja zarządzana  | Porządek | Użyj usługi Azure App: Managed App — typ oferty, jeśli są wymagane następujące warunki: wdrażasz rozwiązanie oparte na subskrypcji dla klienta przy użyciu maszyny wirtualnej lub całego rozwiązania opartego na IaaS. Ty lub Twój klient wymaga, aby rozwiązanie było zarządzane przez partnera. |
 | Typ oferty: aplikacja platformy Azure| Porządek | Użyj typu oferty szablonu rozwiązania aplikacji platformy Azure, gdy rozwiązanie wymaga dodatkowego wdrożenia i automatyzacji konfiguracji poza prostą maszyną wirtualną.||
-| Typ oferty: usługa konsultingowa| Zamów| Usługi doradcze w witrynie Azure Marketplace umożliwiają łączenie klientów z usługami w celu wspierania i zwiększania użycia platformy Azure.| |
-| Typ oferty: kontener | Zamów| Użyj typu oferty kontenera, gdy rozwiązanie jest obrazem kontenera Docker, który został zainicjowany jako usługa kontenera platformy Azure oparta na Kubernetes.||
-| Typ oferty: Dynamics 365 Business Central| Zamów| Użyj tego typu oferty, jeśli Twoje rozwiązanie jest zintegrowane z usługą Dynamics 365 dla finansów i operacji| |
-| Typ oferty: Dynamics 365 dla zaangażowania klienta | Zamów| Użyj tego typu oferty, jeśli Twoje rozwiązanie jest zintegrowane z usługą Dynamics 365 na potrzeby zaangażowania klientów.||
-| Typ oferty: moduł IoT Edge | Zamów| Moduły Azure IoT Edge są najmniejszymi jednostkami obliczeniowymi zarządzanymi przez IoT Edge i mogą zawierać usługi firmy Microsoft (takie jak Azure Stream Analytics), usługi innych firm lub własny kod specyficzny dla rozwiązania. |
-| Typ oferty: aplikacja Power BI | Zamów| Użyj typu oferty aplikacji Power BI podczas wdrażania aplikacji zintegrowanej z Power BI.|  |
-| Typ oferty: aplikacja SaaS| Zamów| Użyj typu oferty aplikacji SaaS, aby umożliwić klientowi kupowanie rozwiązań technicznych opartych na SaaS, w ramach subskrypcji.||
-| Typ oferty: maszyna wirtualna | Zamów| Podczas wdrażania urządzenia wirtualnego w ramach subskrypcji skojarzonej z klientem Użyj typu oferty maszyny wirtualnej.||
-| Typ oferty: rozszerzenie Visual Studio Marketplace  | Zamów| Typ oferty dostępny wcześniej dla deweloperów rozszerzenia usługi Azure DevOps. Przechodzenie do przodu deweloperów rozszerzeń platformy Azure DevOps może sprzedawać swoje rozszerzenia bezpośrednio klientom. Oferty rozszerzeń można skonfigurować jako płatne lub w tym okres próbny. |
-| Data anulowania zamówienia| Zamów| Data anulowania zamówienia witryny Marketplace.||
-| Identyfikator zamówienia| Zamów| Unikatowy identyfikator zamówienia klienta usługi portalu Marketplace. Oferty oparte na użyciu maszyny wirtualnej nie są skojarzone z kolejnością.| |
-| Zamówienie daty zakupu| Zamów| Data utworzenia zamówienia witryny Marketplace.|||
-| Stan zamówienia| Zamów| Stan zamówienia witryny Marketplace w momencie ostatniego odświeżenia danych.|     |
-| Stan zamówienia: aktywny  | Zamów| Klient kupił zamówienie i nie anulował jego zamówienia.|         |
-| Stan zamówienia: anulowane | Zamów| Klient kupił wcześniej zamówienie, a następnie anulował jego zamówienie.||
-| Adres E-mail dostawcy| Dział| Adres e-mail dostawcy, który jest powiązany z relacją między firmą Microsoft a klientem końcowym. Jeśli klient jest przedsiębiorstwem do odsprzedawcy, będzie to odsprzedawca. Jeśli jest używany dostawca rozwiązań w chmurze (CSP), będzie to dostawca usług kryptograficznych.|
-| Nazwa dostawcy| Dział| Nazwa dostawcy występującego w relacji między firmą Microsoft a klientem końcowym. Jeśli klient jest przedsiębiorstwem do odsprzedawcy, będzie to odsprzedawca. Jeśli jest używany dostawca rozwiązań w chmurze (CSP), będzie to dostawca usług kryptograficznych.|
-| JSZ| Zamów| Nazwa jednostki SKU zdefiniowana podczas publikowania. Oferta może mieć wiele jednostek SKU, ale jednostka SKU może być skojarzona tylko z jedną ofertą.||
-| Data zakończenia okresu próbnego| Zamów| Data zakończenia okresu próbnego dla tego zamówienia lub zostanie ona zakończona.||
+| Typ oferty: usługa konsultingowa| Zamówienie| Usługi doradcze w witrynie Azure Marketplace umożliwiają łączenie klientów z usługami w celu wspierania i zwiększania użycia platformy Azure.| |
+| Typ oferty: kontener | Zamówienie| Użyj typu oferty kontenera, gdy rozwiązanie jest obrazem kontenera Docker, który został zainicjowany jako usługa kontenera platformy Azure oparta na Kubernetes.||
+| Typ oferty: Dynamics 365 Business Central| Zamówienie| Użyj tego typu oferty, jeśli Twoje rozwiązanie jest zintegrowane z usługą Dynamics 365 dla finansów i operacji| |
+| Typ oferty: Dynamics 365 dla zaangażowania klienta | Zamówienie| Użyj tego typu oferty, jeśli Twoje rozwiązanie jest zintegrowane z usługą Dynamics 365 na potrzeby zaangażowania klientów.||
+| Typ oferty: moduł IoT Edge | Zamówienie| Moduły Azure IoT Edge są najmniejszymi jednostkami obliczeniowymi zarządzanymi przez IoT Edge i mogą zawierać usługi firmy Microsoft (takie jak Azure Stream Analytics), usługi innych firm lub własny kod specyficzny dla rozwiązania. |
+| Typ oferty: aplikacja Power BI | Zamówienie| Użyj typu oferty aplikacji Power BI podczas wdrażania aplikacji zintegrowanej z Power BI.|  |
+| Typ oferty: aplikacja SaaS| Zamówienie| Użyj typu oferty aplikacji SaaS, aby umożliwić klientowi kupowanie rozwiązań technicznych opartych na SaaS, w ramach subskrypcji.||
+| Typ oferty: maszyna wirtualna | Zamówienie| Podczas wdrażania urządzenia wirtualnego w ramach subskrypcji skojarzonej z klientem Użyj typu oferty maszyny wirtualnej.||
+| Typ oferty: rozszerzenie Visual Studio Marketplace  | Zamówienie| Typ oferty dostępny wcześniej dla deweloperów rozszerzenia usługi Azure DevOps. Przechodzenie do przodu deweloperów rozszerzeń platformy Azure DevOps może sprzedawać swoje rozszerzenia bezpośrednio klientom. Oferty rozszerzeń można skonfigurować jako płatne lub w tym okres próbny. |
+| Data anulowania zamówienia| Zamówienie| Data anulowania zamówienia witryny Marketplace.||
+| Identyfikator zamówienia| Zamówienie| Unikatowy identyfikator zamówienia klienta usługi portalu Marketplace. Oferty oparte na użyciu maszyny wirtualnej nie są skojarzone z kolejnością.| |
+| Zamówienie daty zakupu| Zamówienie| Data utworzenia zamówienia witryny Marketplace.|||
+| Stan zamówienia| Zamówienie| Stan zamówienia witryny Marketplace w momencie ostatniego odświeżenia danych.|     |
+| Stan zamówienia: aktywny  | Zamówienie| Klient kupił zamówienie i nie anulował jego zamówienia.|         |
+| Stan zamówienia: anulowane | Zamówienie| Klient kupił wcześniej zamówienie, a następnie anulował jego zamówienie.||
+| Adres E-mail dostawcy| Klient| Adres e-mail dostawcy, który jest powiązany z relacją między firmą Microsoft a klientem końcowym. Jeśli klient jest przedsiębiorstwem do odsprzedawcy, będzie to odsprzedawca. Jeśli jest używany dostawca rozwiązań w chmurze (CSP), będzie to dostawca usług kryptograficznych.|
+| Nazwa dostawcy| Klient| Nazwa dostawcy występującego w relacji między firmą Microsoft a klientem końcowym. Jeśli klient jest przedsiębiorstwem do odsprzedawcy, będzie to odsprzedawca. Jeśli jest używany dostawca rozwiązań w chmurze (CSP), będzie to dostawca usług kryptograficznych.|
+| SKU| Zamówienie| Nazwa jednostki SKU zdefiniowana podczas publikowania. Oferta może mieć wiele jednostek SKU, ale jednostka SKU może być skojarzona tylko z jedną ofertą.||
+| Data zakończenia okresu próbnego| Zamówienie| Data zakończenia okresu próbnego dla tego zamówienia lub zostanie ona zakończona.||
 
 ## <a name="ratings-and-reviews"></a>Oceny i przeglądy
 

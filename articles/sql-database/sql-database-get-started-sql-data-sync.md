@@ -1,5 +1,5 @@
 ---
-title: Konfigurowanie usługi Azure SQL Data Sync
+title: Konfigurowanie synchronizacji danych
 description: W tym samouczku przedstawiono sposób konfigurowania usługi Azure SQL Data Sync
 services: sql-database
 ms.service: sql-database
@@ -7,16 +7,16 @@ ms.subservice: data-movement
 ms.custom: ''
 ms.devlang: ''
 ms.topic: conceptual
-author: allenwux
-ms.author: xiwu
+author: stevestein
+ms.author: sstein
 ms.reviewer: carlrab
 ms.date: 01/14/2019
-ms.openlocfilehash: 082721ef1436d0b6668016aca29870016038af86
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 315d65b635f34847d0310e6b6adf03e20f2afd45
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73689998"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73807523"
 ---
 # <a name="tutorial-set-up-sql-data-sync-between-azure-sql-database-and-sql-server-on-premises"></a>Samouczek: Konfigurowanie SQL Data Sync między Azure SQL Database i SQL Server lokalnie
 
@@ -124,7 +124,7 @@ W sekcji **baza danych elementu członkowskiego** opcjonalnie Dodaj SQL Server l
         ![Wprowadź klucz agenta i poświadczenia serwera](media/sql-database-get-started-sql-data-sync/datasync-preview-agent-enterkey.png)
 
         > [!NOTE]
-        > Jeśli wystąpi błąd zapory, Utwórz regułę zapory na platformie Azure, aby zezwalać na ruch przychodzący z komputera SQL Server. Regułę można utworzyć ręcznie w portalu lub w SQL Server Management Studio (SSMS). W programie SSMS Połącz się z centralną bazą danych na platformie Azure, wprowadzając jej nazwę < hub_database_name >. Database. Windows. NET.
+        > Jeśli wystąpi błąd zapory, Utwórz regułę zapory na platformie Azure, aby zezwalać na ruch przychodzący z komputera SQL Server. Regułę można utworzyć ręcznie w portalu lub w SQL Server Management Studio (SSMS). W programie SSMS Połącz się z centralną bazą danych na platformie Azure, wprowadzając jej nazwę jako < hub_database_name >. Database. Windows. NET.
 
     1. Wybierz pozycję **zarejestruj** , aby zarejestrować bazę danych SQL Server z agentem. Zostanie otwarte okno dialogowe **konfiguracja SQL Server** .
 
@@ -145,7 +145,7 @@ W sekcji **baza danych elementu członkowskiego** opcjonalnie Dodaj SQL Server l
 1. Wybierz **przycisk OK** , aby zamknąć stronę **Wybierz bazę danych** . Następnie wybierz przycisk **OK** , aby zamknąć stronę **Konfiguruj lokalną** i zaczekaj na utworzenie i wdrożenie nowej synchronizacji elementu członkowskiego. Na koniec wybierz **przycisk OK** , aby zamknąć stronę **Wybieranie elementów członkowskich synchronizacji** .
 
 > [!NOTE]
-> Aby nawiązać połączenie z usługą SQL Data Sync i agentem lokalnym, Dodaj nazwę użytkownika do roli *DataSync_Executor*. Synchronizacja danych tworzy tę rolę w wystąpieniu SQL Server.
+> Aby nawiązać połączenie z usługą SQL Data Sync i agentem lokalnym, Dodaj nazwę użytkownika do *DataSync_Executor*roli. Synchronizacja danych tworzy tę rolę w wystąpieniu SQL Server.
 
 ## <a name="configure-sync-group"></a>Konfiguruj grupę synchronizacji
 

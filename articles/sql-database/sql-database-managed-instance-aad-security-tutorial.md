@@ -1,5 +1,5 @@
 ---
-title: Azure SQL Database zabezpieczenia wystąpienia zarządzanego przy użyciu podmiotów zabezpieczeń serwera usługi Azure AD (logowania)
+title: Zabezpieczenia wystąpienia zarządzanego z podmiotami zabezpieczeń serwera usługi Azure AD (logowania)
 description: Informacje na temat technik i funkcji umożliwiających zabezpieczenie wystąpienia zarządzanego w usłudze Azure SQL Database oraz korzystania z jednostek usługi (identyfikatorów logowania) serwera Azure AD
 services: sql-database
 ms.service: sql-database
@@ -9,12 +9,12 @@ author: GitHubMirek
 ms.author: mireks
 ms.reviewer: vanto
 ms.date: 11/06/2019
-ms.openlocfilehash: 4816b59c56f10a20f74777ad1badc11b59a599d1
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: bd65a21c2aa21643c76966410931949db7d17ad6
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73689460"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73822790"
 ---
 # <a name="tutorial-managed-instance-security-in-azure-sql-database-using-azure-ad-server-principals-logins"></a>Samouczek: zabezpieczenia wystąpienia zarządzanego w Azure SQL Database przy użyciu podmiotów zabezpieczeń serwera usługi Azure AD (nazwy logowania)
 

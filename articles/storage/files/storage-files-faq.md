@@ -7,12 +7,12 @@ ms.date: 07/30/2019
 ms.author: rogarana
 ms.subservice: files
 ms.topic: conceptual
-ms.openlocfilehash: 6fecd143055da2829ac49cee4f50d448a37a6e1b
-ms.sourcegitcommit: 12de9c927bc63868168056c39ccaa16d44cdc646
+ms.openlocfilehash: 6526f27177b5fb8640deb5302d8cb3aa4acf1a97
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72514891"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73824275"
 ---
 # <a name="frequently-asked-questions-faq-about-azure-files"></a>Często zadawane pytania dotyczące Azure Files
 [Azure Files](storage-files-introduction.md) oferuje w pełni zarządzane udziały plików w chmurze, które są dostępne za pośrednictwem standardowego [protokołu bloku komunikatów serwera (SMB)](https://msdn.microsoft.com/library/windows/desktop/aa365233.aspx). Udziały plików platformy Azure można instalować jednocześnie w chmurze lub lokalnych wdrożeniach systemów Windows, Linux i macOS. Możesz również buforować udziały plików platformy Azure na maszynach z systemem Windows Server, używając Azure File Sync, aby szybko uzyskać dostęp do miejsca, w którym są używane dane.
@@ -81,7 +81,7 @@ W tym artykule znajdują się odpowiedzi na często zadawane pytania dotyczące 
   **naprawdę chcę zobaczyć konkretną funkcję dodaną do Azure Files. Czy można je dodać?**  
     Zespół Azure Files ma na celu wysłuchanie wszelkich opinii na temat naszej usługi. Zagłosuj na żądania funkcji w witrynie [Azure Files UserVoice](https://feedback.azure.com/forums/217298-storage/category/180670-files)! Czekamy na poszukiwanie wielu nowych funkcji.
 
-## <a name="azure-file-sync"></a>Usługa Azure File Sync
+## <a name="azure-file-sync"></a>Azure File Sync
 
 * <a id="afs-region-availability"></a>
   **jakie regiony są obsługiwane dla Azure File Sync?**  
@@ -98,7 +98,7 @@ W tym artykule znajdują się odpowiedzi na często zadawane pytania dotyczące 
 * <a id="afs-conflict-resolution"></a>**Jeśli ten sam plik zostanie zmieniony na dwóch serwerach w tym samym czasie, co się dzieje?**  
     Azure File Sync korzysta z prostej strategii rozwiązywania konfliktów: zachowujemy zmiany w plikach, które są zmieniane na dwóch serwerach w tym samym czasie. Ostatnio zapisywana zmiana zachowuje oryginalną nazwę pliku. Starszy plik zawiera maszynę "Źródło" i numer konfliktu dołączony do nazwy. Jest on zgodny z tą taksonomią: 
    
-    \<FileNameWithoutExtension \> - \<MachineName \> \[ -# \]. \<ext \>  
+    \<FileNameWithoutExtension\>-\<MachineName\>\[-#\].\>\<EXT  
 
     Na przykład pierwszy konflikt CompanyReport. docx stanie się CompanyReport-CentralServer. docx, jeśli CentralServer jest miejsce, w którym wystąpił starszy zapis. Drugi konflikt zostałby nazwany CompanyReport-CentralServer-1. docx. Azure File Sync obsługuje pliki konfliktów 100 na plik. Po osiągnięciu maksymalnej liczby plików konfliktów plik nie zostanie zsynchronizowany, dopóki liczba plików konfliktów nie będzie mniejsza niż 100.
 
@@ -131,15 +131,15 @@ W tym artykule znajdują się odpowiedzi na często zadawane pytania dotyczące 
   * plik Desktop. ini
   * kciuki. DB
   * ehThumbs. DB
-  * \* ~$. \*
+  * \*~$.\*
   * \*. LACCDB
   * \*. tmp
-  * 635D02A9D91C401B97884B82B3BCDAEA. \*
+  * 635D02A9D91C401B97884B82B3BCDAEA.\*
 
     Następujące foldery są również Domyślnie wykluczone:
 
   * Informacje o woluminie \System
-  * \$RECYCLE. OKREŚLONEJ
+  * odzyskanie \$. OKREŚLONEJ
   * \SyncShareState
 
 * <a id="afs-os-support"></a>
@@ -174,7 +174,7 @@ W tym artykule znajdują się odpowiedzi na często zadawane pytania dotyczące 
 
     Azure Files oferuje dwa dodatkowe sposoby zarządzania kontrolą dostępu:
 
-    - Sygnatury dostępu współdzielonego (SAS) mogą być używane do generowania tokenów z określonymi uprawnieniami, które są prawidłowe przez określony przedział czasu. Na przykład można wygenerować token z dostępem tylko do odczytu do określonego pliku o 10-minutowym wygaśnięciu. Każda osoba, która posiada token, gdy token jest ważny, ma dostęp tylko do odczytu do tego pliku przez 10 minut. Obecnie klucze sygnatur dostępu współdzielonego są obsługiwane tylko za pośrednictwem interfejsu API REST lub bibliotek klienckich. Udział plików platformy Azure należy zainstalować za pośrednictwem protokołu SMB przy użyciu kluczy konta magazynu.
+    - Sygnatury dostępu współdzielonego (SAS) mogą być używane do generowania tokenów z określonymi uprawnieniami, które są prawidłowe przez określony przedział czasu. Na przykład można wygenerować token z dostępem tylko do odczytu do określonego pliku o 10-minutowym wygaśnięciu. Każda osoba, która posiada token, gdy token jest ważny, ma dostęp tylko do odczytu do tego pliku przez 10 minut. Klucze sygnatury dostępu współdzielonego są obsługiwane tylko za pośrednictwem interfejsu API REST lub bibliotek klienckich. Udział plików platformy Azure należy zainstalować za pośrednictwem protokołu SMB przy użyciu kluczy konta magazynu.
 
     - Azure File Sync zachowuje i replikuje wszystkie poufne listy kontroli dostępu lub listy DACL (niezależnie od tego, czy Active Directory lub lokalne) wszystkie punkty końcowe serwera, do których jest synchronizowana. Ponieważ system Windows Server może już być uwierzytelniany przy użyciu Active Directory, Azure File Sync jest efektywną opcją zatrzymania, dopóki nie zostanie wypełniona pełna obsługa uwierzytelniania opartego na Active Directory i obsługi list ACL.
     
@@ -186,7 +186,7 @@ W tym artykule znajdują się odpowiedzi na często zadawane pytania dotyczące 
     Nie, ten scenariusz nie jest obsługiwany.
 
 * <a id="ad-support-rest-apis"></a>
- istnieją**interfejsy API REST obsługujące pobieranie/Ustawianie/kopiowanie katalogów/plików list ACL systemu plików NTFS?**
+istnieją **interfejsy API REST obsługujące pobieranie/Ustawianie/kopiowanie katalogów/plików list ACL systemu plików NTFS?**
 
     Obecnie nie obsługujemy interfejsów API REST w celu pobierania, ustawiania lub kopiowania list ACL systemu plików NTFS dla katalogów lub plików.
 
@@ -221,7 +221,7 @@ W tym artykule znajdują się odpowiedzi na często zadawane pytania dotyczące 
     Sygnatury dostępu współdzielonego umożliwiają generowanie tokenów z określonymi uprawnieniami, które są prawidłowe przez określony przedział czasu. Na przykład można wygenerować token, który zapewnia dostęp tylko do odczytu do określonego pliku, przez określony czas. Każdy posiadacz adresu URL może uzyskać dostęp do pliku bezpośrednio z dowolnej przeglądarki sieci Web, gdy token jest prawidłowy. Możesz łatwo wygenerować klucz sygnatury dostępu współdzielonego z interfejsu użytkownika, takiego jak Eksplorator usługi Storage.
 
 * <a id="file-level-permissions"></a>
- czy**można określić uprawnienia tylko do odczytu lub tylko do zapisu w folderach w ramach udziału?**  
+czy **można określić uprawnienia tylko do odczytu lub tylko do zapisu w folderach w ramach udziału?**  
 
     W przypadku zainstalowania udziału plików przy użyciu protokołu SMB nie ma uprawnień na poziomie folderów. Jeśli jednak utworzysz sygnaturę dostępu współdzielonego za pomocą interfejsu API REST lub bibliotek klienckich, możesz określić uprawnienia tylko do odczytu lub tylko do zapisu w folderach w udziale.
 
@@ -252,7 +252,7 @@ W tym artykule znajdują się odpowiedzi na często zadawane pytania dotyczące 
 
     Udział plików można zainstalować przy użyciu protokołu SMB, jeśli jest otwarty port 445 (ruch wychodzący TCP), a klient obsługuje protokół SMB 3,0 (na przykład jeśli używasz systemu Windows 10 lub Windows Server 2016). Jeśli port 445 jest blokowany przez zasady organizacji lub przez usługodawcę internetowego, możesz użyć Azure File Sync, aby uzyskać dostęp do udziału plików platformy Azure.
 
-## <a name="backup"></a>Backup
+## <a name="backup"></a>Tworzenie kopii zapasowych
 * <a id="backup-share"></a>
 **Jak mogę utworzyć kopię zapasową udziału plików platformy Azure?**  
     Można użyć okresowych [migawek udziałów](storage-snapshots-files.md) do ochrony przed przypadkowym usunięciem. Można również użyć narzędzia do tworzenia kopii zapasowych AzCopy, Robocopy lub innych firm, które umożliwia utworzenie kopii zapasowej zainstalowanego udziału plików. Azure Backup oferuje kopię zapasową Azure Files. Dowiedz się więcej [na temat tworzenia kopii zapasowych udziałów plików platformy Azure przez Azure Backup](https://docs.microsoft.com/azure/backup/backup-azure-files).
@@ -301,7 +301,7 @@ W tym artykule znajdują się odpowiedzi na często zadawane pytania dotyczące 
 
 ### <a name="manage-share-snapshots"></a>Zarządzanie migawkami udziałów
 * <a id="browse-snapshots-linux"></a>
- mogę**przeglądać moje migawki udostępniania z systemu Linux?**  
+mogę **przeglądać moje migawki udostępniania z systemu Linux?**  
     Za pomocą interfejsu wiersza polecenia platformy Azure można tworzyć, wyświetlać, przeglądać i przywracać migawki udziałów w systemie Linux.
 
 * <a id="copy-snapshots-to-other-storage-account"></a>
@@ -319,7 +319,7 @@ W tym artykule znajdują się odpowiedzi na często zadawane pytania dotyczące 
   
 ### <a name="clean-up-share-snapshots"></a>Czyszczenie migawek udziałów
 * <a id="delete-share-keep-snapshots"></a>
- mogę**usunąć mój udział, ale nie usunąć moich migawek udostępniania?**  
+mogę **usunąć mój udział, ale nie usunąć moich migawek udostępniania?**  
     Jeśli masz aktywne migawki udziałów w udziale, nie możesz usunąć Twojego udziału. Możesz użyć interfejsu API, aby usunąć migawki udziałów wraz z udziałem. Można również usunąć zarówno migawki udziału, jak i udział w Azure Portal.
 
 * <a id="delete-share-with-snapshots"></a>
@@ -374,7 +374,7 @@ W tym artykule znajdują się odpowiedzi na często zadawane pytania dotyczące 
 
 * <a id="rest-rename"></a>
 **czy istnieje operacja zmiany nazwy w interfejsie API REST?**  
-    Obecnie nie.
+    Nie w tej chwili.
 
 * <a id="nested-shares"></a>
 **można skonfigurować udziały zagnieżdżone? Innymi słowy, udział w udziale?**  
@@ -384,7 +384,7 @@ W tym artykule znajdują się odpowiedzi na często zadawane pytania dotyczące 
 **Jak mogę użyć Azure Files z IBM MQ?**  
     Firma IBM wydała dokument, który pomaga klientom firmy IBM MQ skonfigurować Azure Files z usługą firmy IBM. Aby uzyskać więcej informacji, zobacz [jak skonfigurować usługę zarządzania wieloma wystąpieniami programu IBM MQ z usługą Microsoft Azure Files](https://github.com/ibm-messaging/mq-azure/wiki/How-to-setup-IBM-MQ-Multi-instance-queue-manager-with-Microsoft-Azure-File-Service).
 
-## <a name="see-also"></a>Zobacz także
+## <a name="see-also"></a>Zobacz też
 * [Rozwiązywanie problemów Azure Files w systemie Windows](storage-troubleshoot-windows-file-connection-problems.md)
 * [Rozwiązywanie problemów Azure Files w systemie Linux](storage-troubleshoot-linux-file-connection-problems.md)
 * [Rozwiązywanie problemów z usługą Azure File Sync](storage-sync-files-troubleshoot.md)

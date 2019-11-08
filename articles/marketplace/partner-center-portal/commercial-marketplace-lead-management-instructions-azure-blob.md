@@ -4,15 +4,16 @@ description: Konfigurowanie zarządzania liderem dla obiektów blob platformy Az
 services: Azure, Marketplace, commercial marketplace, Partner Center
 author: qianw211
 ms.service: marketplace
+ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 7/30/2019
 ms.author: evansma
-ms.openlocfilehash: c67855422808f5ec4c81242edcece4e447f2f44f
-ms.sourcegitcommit: d3dced0ff3ba8e78d003060d9dafb56763184d69
+ms.openlocfilehash: 5da4e0ab315b3f66a477b816f6fc5d27de7aa339
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69902366"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73812368"
 ---
 # <a name="lead-management-instructions-for-azure-blob"></a>Instrukcje dotyczące zarządzania potencjalnymi klientami dla obiektów blob platformy Azure
 
@@ -80,8 +81,8 @@ Gdy wszystko jest gotowe do skonfigurowania informacji dotyczących zarządzania
 
 4. Podaj **nazwę kontenera** i **Parametry połączenia konta magazynu** , które zostały uzyskane z poniższych instrukcji.
 
-    * Przykład nazwy kontenera:`marketplaceleadcontainer`
-    * Przykład parametrów połączenia konta magazynu: `DefaultEndpointsProtocol=https;AccountName=myAccountName;AccountKey=myAccountKey;EndpointSuffix=core.windows.net`![Szczegóły połączenia](./media/commercial-marketplace-lead-management-instructions-azure-blob/connection-details.png) 
+    * Przykład nazwy kontenera: `marketplaceleadcontainer`
+    * Przykład parametrów połączenia konta magazynu: `DefaultEndpointsProtocol=https;AccountName=myAccountName;AccountKey=myAccountKey;EndpointSuffix=core.windows.net` ![szczegóły połączenia](./media/commercial-marketplace-lead-management-instructions-azure-blob/connection-details.png) 
 
 5. Wybierz pozycję **Zapisz**.
 

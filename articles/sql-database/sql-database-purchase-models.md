@@ -1,5 +1,5 @@
 ---
-title: 'Azure SQL Database modeli zakupu '
+title: Modele zakupów
 description: Poznaj modele zakupów dostępne dla Azure SQL Database.
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: carlrab
 ms.date: 04/26/2019
-ms.openlocfilehash: 48537ec4c62410565d32350b1e3a11bbc7a2ca6e
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: be223245c634b8e38dc5e4c89df4c265c22c0b57
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73687561"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73821260"
 ---
 # <a name="choose-between-the-vcore-and-the-dtu-purchasing-models"></a>Wybierz między rdzeń wirtualny i modelami zakupów jednostek DTU
 
@@ -125,7 +125,7 @@ Można dodać dodatkowe jednostek eDTU do istniejącej puli bez przestoju bazy d
 
 ### <a name="determine-the-number-of-dtus-needed-by-a-workload"></a>Określanie liczby DTU wymaganych przez obciążenie
 
-Jeśli chcesz przeprowadzić migrację istniejącego lokalnego lub SQL Server obciążenia maszyny wirtualnej do Azure SQL Database, użyj [kalkulatora jednostek DTU](https://dtucalculator.azurewebsites.net/) , aby przybliżyć wymaganą liczbę DTU. W przypadku istniejącego obciążenia Azure SQL Database należy użyć [szczegółowych informacji o wydajności zapytań](sql-database-query-performance.md) , aby zrozumieć użycie zasobów bazy danych (DTU) i uzyskać dokładniejszy wgląd w optymalizację obciążeń. Dynamiczny widok zarządzania [sys. DM _db_ resource_stats](https://msdn.microsoft.com/library/dn800981.aspx) (DMV) umożliwia wyświetlenie zużycia zasobów w ciągu ostatniej godziny. Widok wykazu [sys. resource_stats](https://msdn.microsoft.com/library/dn269979.aspx) przedstawia użycie zasobów w ciągu ostatnich 14 dni, ale przy niższej wierności średniej z pięciu minut.
+Jeśli chcesz przeprowadzić migrację istniejącego lokalnego lub SQL Server obciążenia maszyny wirtualnej do Azure SQL Database, użyj [kalkulatora jednostek DTU](https://dtucalculator.azurewebsites.net/) , aby przybliżyć wymaganą liczbę DTU. W przypadku istniejącego obciążenia Azure SQL Database należy użyć [szczegółowych informacji o wydajności zapytań](sql-database-query-performance.md) , aby zrozumieć użycie zasobów bazy danych (DTU) i uzyskać dokładniejszy wgląd w optymalizację obciążeń. [Sys. dm_db_ resource_stats](https://msdn.microsoft.com/library/dn800981.aspx) dynamiczny widok zarządzania (DMV) umożliwia wyświetlenie zużycia zasobów w ciągu ostatniej godziny. Widok wykazu [sys. resource_stats](https://msdn.microsoft.com/library/dn269979.aspx) przedstawia użycie zasobów w ciągu ostatnich 14 dni, ale przy niższej wierności średniej z pięciu minut.
 
 ### <a name="workloads-that-benefit-from-an-elastic-pool-of-resources"></a>Obciążenia, które korzystają z elastycznej puli zasobów
 

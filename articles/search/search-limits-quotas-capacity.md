@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: d70812779d392cc4555c91599fad37c2d2c68ba5
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.openlocfilehash: d5d621ec9eccca56c4e4e9075b6e9cca75c05c98
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72793576"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73818576"
 ---
 # <a name="service-limits-in-azure-cognitive-search"></a>Limity usługi w usłudze Azure Wyszukiwanie poznawcze
 
@@ -46,18 +46,20 @@ Maksymalne limity dotyczące magazynu, obciążeń i ilości indeksów, dokument
 
 ## <a name="index-limits"></a>Limity indeksu
 
-| Zasób | Bezpłatnie | Podstawowa&nbsp;<sup>1</sup>  | S1 | S2 | S3 | &nbsp;HD S3 | L1 | L2 |
+| Zasób | Bezpłatna | Podstawowa&nbsp;<sup>1</sup>  | S1 | S2 | S3 | &nbsp;HD S3 | L1 | L2 |
 | -------- | ---- | ------------------- | --- | --- | --- | --- | --- | --- |
 | Maksymalna liczba indeksów |3 |5 lub 15 |50 |200 |200 |1000 na partycję lub 3000 na usługę |10 |10 |
 | Maksymalna liczba prostych pól na indeks |1000 |100 |1000 |1000 |1000 |1000 |1000 |1000 |
 | Maksymalna liczba złożonych pól kolekcji na indeks |40 |40 |40 |40 |40 |40 |40 |40 |
-| Maksymalna liczba elementów we wszystkich złożonych kolekcjach na dokument |3000 |3000 |3000 |3000 |3000 |3000 |3000 |3000 |
+| Maksymalna liczba elementów we wszystkich złożonych kolekcjach na dokument&nbsp;<sup>2</sup> |3000 |3000 |3000 |3000 |3000 |3000 |3000 |3000 |
 | Maksymalna głębokość pól złożonych |10 |10 |10 |10 |10 |10 |10 |10 |
 | Maksymalna liczba [sugestii](https://docs.microsoft.com/rest/api/searchservice/suggesters) na indeks |1 |1 |1 |1 |1 |1 |1 |1 |
 | Maksymalna liczba [profilów oceniania](https://docs.microsoft.com/rest/api/searchservice/add-scoring-profiles-to-a-search-index) na indeks |100 |100 |100 |100 |100 |100 |100 |100 |
 | Maksymalna liczba funkcji na profil |8 |8 |8 |8 |8 |8 |8 |8 |
 
 <sup>1</sup> podstawowe usługi utworzone przed grudnia 2017 mają niższe limity (5 zamiast 15) w indeksach. Warstwa Podstawowa jest jedyną jednostką SKU z niższym limitem 100 pól na indeks.
+
+<sup>2</sup> posiadanie bardzo dużej liczby elementów w złożonych kolekcjach dla dokumentu powoduje obecnie duże wykorzystanie magazynu. Jest to znany problem. W międzyczasie limit 3000 jest bezpieczny górną granicą dla wszystkich warstw usług. Ten limit jest wymuszany tylko w przypadku operacji indeksowania, które wykorzystują najwcześniejszą ogólnie dostępną wersję interfejsu API, która obsługuje złożone pola typu (`2019-05-06`). Aby nie przerywać klientów, którzy mogą korzystać z wcześniejszych wersji programu Preview API (które obsługują pola typu złożonego), nie będzie wymuszany ten limit dla operacji indeksowania korzystających z tych wersji programu Preview API. Należy pamiętać, że wersji zapoznawczej interfejsu API nie można używać w scenariuszach produkcyjnych, a firma Microsoft zaleca klientom przejście do najnowszej wersji interfejsu API o wysokiej dostępności.
 
 <a name="document-limits"></a>
 
@@ -79,13 +81,13 @@ Jeśli portal wskazuje limit dokumentu, usługa została utworzona przed późny
 + Azja Wschodnia
 + Indie Środkowe
 + Japonia Zachodnia
-+ Zachodnio-środkowe stany USA
++ Środkowo-zachodnie stany USA
 
 W przypadku usług objętych limitami dokumentu obowiązują następujące maksymalne limity:
 
-|  Bezpłatnie | Basic | S1 | S2 | S3 | &nbsp;HD S3 |
+|  Bezpłatna | Podstawowa | S1 | S2 | S3 | &nbsp;HD S3 |
 |-------|-------|----|----|----|-------|
-|  10 000 |1 @ no__t_0_ mln |15 mln na partycję lub 180 mln na usługę |60 mln na partycję lub 720 mln na usługę |120 mln na partycję lub 1,4 mld na usługę |1 mln na indeks lub 200 mln na partycję |
+|  10 000 |1&nbsp;mln |15 mln na partycję lub 180 mln na usługę |60 mln na partycję lub 720 mln na usługę |120 mln na partycję lub 1,4 mld na usługę |1 mln na indeks lub 200 mln na partycję |
 
 Jeśli usługa ma limity, które blokują, Utwórz nową usługę i ponownie Opublikuj całą zawartość do tej usługi. Nie istnieje mechanizm bezproblemowego ponownego inicjowania obsługi administracyjnej usługi na nowym sprzęcie w tle.
 
@@ -108,15 +110,15 @@ Maksymalne czasy działania są dostępne w celu zapewnienia równowagi i stabil
 
 | Zasób | Bezpłatna&nbsp;<sup>1</sup> | Podstawowa&nbsp;<sup>2</sup>| S1 | S2 | S3 | S3&nbsp;HD&nbsp;<sup>3</sup>|L1 |L2 |
 | -------- | ----------------- | ----------------- | --- | --- | --- | --- | --- | --- |
-| Maksymalna liczba indeksatorów |3 |5 lub 15|50 |200 |200 |ND |10 |10 |
-| Maksymalna liczba źródeł danych |3 |5 lub 15 |50 |200 |200 |ND |10 |10 |
-| Maksymalna umiejętności <sup>4</sup> |3 |5 lub 15 |50 |200 |200 |ND |10 |10 |
-| Maksymalne ładowanie indeksowania na wywołanie |10 000 dokumentów |Ograniczone tylko przez maksymalną liczbę dokumentów |Ograniczone tylko przez maksymalną liczbę dokumentów |Ograniczone tylko przez maksymalną liczbę dokumentów |Ograniczone tylko przez maksymalną liczbę dokumentów |ND |Bez ograniczeń |Bez ograniczeń |
+| Maksymalna liczba indeksatorów |3 |5 lub 15|50 |200 |200 |Nie dotyczy |10 |10 |
+| Maksymalna liczba źródeł danych |3 |5 lub 15 |50 |200 |200 |Nie dotyczy |10 |10 |
+| Maksymalna umiejętności <sup>4</sup> |3 |5 lub 15 |50 |200 |200 |Nie dotyczy |10 |10 |
+| Maksymalne ładowanie indeksowania na wywołanie |10 000 dokumentów |Ograniczone tylko przez maksymalną liczbę dokumentów |Ograniczone tylko przez maksymalną liczbę dokumentów |Ograniczone tylko przez maksymalną liczbę dokumentów |Ograniczone tylko przez maksymalną liczbę dokumentów |Nie dotyczy |Bez ograniczeń |Bez ograniczeń |
 | Minimalny harmonogram | 5 minut |5 minut |5 minut |5 minut |5 minut |5 minut |5 minut | 5 minut |
-| Maksymalny czas działania <sup>5</sup> | 1-3 minut |24 godziny |24 godziny |24 godziny |24 godziny |ND  |24 godziny |24 godziny |
-| Maksymalny czas działania dla umiejętności wyszukiwania poznawczego lub indeksowania obiektów BLOB za pomocą analizy obrazów <sup>5</sup> | 3-10 minut |2 godziny |2 godziny |2 godziny |2 godziny |ND  |2 godziny |2 godziny |
-| Indeksator obiektów blob: maksymalny rozmiar obiektu BLOB, MB |16 |16 |128 |256 |256 |ND  |256 |256 |
-| Indeksator obiektów blob: Maksymalna liczba znaków zawartości wyodrębnionych z obiektu BLOB |32 000 |64 000 |4 no__t_0_ mln |4 no__t_0_ mln |4 no__t_0_ mln |ND |4 no__t_0_ mln |4 no__t_0_ mln |
+| Maksymalny czas działania <sup>5</sup> | 1-3 minut |24 godziny |24 godziny |24 godziny |24 godziny |Nie dotyczy  |24 godziny |24 godziny |
+| Maksymalny czas działania dla umiejętności wyszukiwania poznawczego lub indeksowania obiektów BLOB za pomocą analizy obrazów <sup>5</sup> | 3-10 minut |2 godziny |2 godziny |2 godziny |2 godziny |Nie dotyczy  |2 godziny |2 godziny |
+| Indeksator obiektów blob: maksymalny rozmiar obiektu BLOB, MB |16 |16 |128 |256 |256 |Nie dotyczy  |256 |256 |
+| Indeksator obiektów blob: Maksymalna liczba znaków zawartości wyodrębnionych z obiektu BLOB |32 000 |64 000 |4&nbsp;mln |4&nbsp;mln |4&nbsp;mln |Nie dotyczy |4&nbsp;mln |4&nbsp;mln |
 
 <sup>1</sup> bezpłatne usługi mają maksymalny czas wykonywania indeksatora wynoszący 3 minuty dla źródeł obiektów blob i 1 minuty dla wszystkich innych źródeł danych. W przypadku indeksowania AI, które wywołuje Cognitive Services, bezpłatne usługi są ograniczone do 20 bezpłatnych transakcji dziennie, gdzie transakcja jest definiowana jako dokument, który został pomyślnie przeszedł przez potok wzbogacania.
 
@@ -128,11 +130,14 @@ Maksymalne czasy działania są dostępne w celu zapewnienia równowagi i stabil
 
 <sup>5</sup> obciążeń wyszukiwania poznawczego i analizy obrazów w indeksie obiektów blob platformy Azure mają krótsze czasy działania niż zwykłe indeksowanie tekstu. Analiza obrazów i przetwarzanie języka naturalnego są intensywnie pracochłonne i zużywają nieproporcjonalne ilości dostępnej mocy obliczeniowej. Czas działania został zmniejszony w celu nadania innym zadania w kolejce możliwości uruchomienia.  
 
+> [!NOTE]
+> Jak określono w [limitach indeksu](#index-limits), indeksatory będą również wymuszać górny limit 3000 elementów we wszystkich złożonych kolekcjach dla każdego dokumentu, rozpoczynając od najnowszej wersji interfejsu API platformy GA, która obsługuje typy złożone (`2019-05-06`). Oznacza to, że jeśli utworzono indeksator z poprzednią wersją interfejsu API, nie będzie to możliwe. Aby zachować maksymalną zgodność, indeksator, który został utworzony przy użyciu wcześniejszej wersji interfejsu API, a następnie zaktualizowany przy użyciu wersji interfejsu API `2019-05-06` lub nowszej, będzie nadal **wykluczony** z limitów. Klienci powinni mieć świadomość niekorzystnego wpływu na bardzo duże złożone kolekcje (jak wspomniano wcześniej) i zdecydowanie zaleca się utworzenie nowych indeksatorów z najnowszą wersją interfejsu API w wersji GA.
+
 ## <a name="synonym-limits"></a>Limity synonimów
 
 Maksymalna liczba dozwolonych map synonimów jest różna w zależności od warstwy cenowej. Każda reguła może mieć do 20 rozszerzeń, gdzie rozwinięcie jest terminem equivalvent. Na przykład podaną "Cat", skojarzenie z "Kitty", "Feline" i "Felis" (rodzaj dla kotów) będzie liczona jako 3 rozszerzenia.
 
-| Zasób | Bezpłatnie | Basic | S1 | S2 | S3 | S3 — HD |L1 | L2 |
+| Zasób | Bezpłatna | Podstawowa | S1 | S2 | S3 | S3 — HD |L1 | L2 |
 | -------- | -----|------ |----|----|----|-------|---|----|
 | Maksymalne mapy synonimów |3 |3|5 |10 |20 |20 | 10 | 10 |
 | Maksymalna liczba reguł na mapę |5000 |20000|20000 |20000 |20000 |20000 | 20000 | 20000  |

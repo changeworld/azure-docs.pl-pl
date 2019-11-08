@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 12/04/2018
-ms.openlocfilehash: 3b1fa6ab046845e2fd95e8d4b5611ca2f5d12562
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 83d24d45d7628a2e02068c8757fa6568d6d3fc37
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73690085"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73823472"
 ---
 # <a name="using-elastic-database-client-library-with-dapper"></a>Korzystanie z biblioteki klienta Elastic Database z Dapper
 Ten dokument jest przeznaczony dla deweloperów, którzy korzystają z usługi Dapper do kompilowania aplikacji, ale również chcą korzystać z [narzędzi elastycznych baz danych](sql-database-elastic-scale-introduction.md) w celu tworzenia aplikacji, które implementują fragmentowania w celu skalowania w poziomie warstwy danych.  W tym dokumencie przedstawiono zmiany w aplikacjach opartych na Dapper, które są niezbędne do integracji z narzędziami Elastic Database. Naszym fokusem jest tworzenie Elastic Database fragmentu Management i Routing zależny od danych za pomocą Dapper. 

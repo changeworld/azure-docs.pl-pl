@@ -1,5 +1,5 @@
 ---
-title: OdAzure SQL Database Premium RS warstwy usług
+title: Wycofanie warstwy usług Premium RS
 description: Warstwa usługi Premium RS jest wycofywana, a jej obsługa kończy się — Zobacz opcje migracji.
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: carlrab
 ms.date: 02/07/2019
-ms.openlocfilehash: 688fd3fdefb54fc25d5236277c85dd4262df5f34
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: f00ecd19877ba6236bde5de73d450967abc1fe15
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73687229"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73821043"
 ---
 # <a name="azure-sql-database-premium-rs-service-tier-preview-is-being-retired---options-for-migration"></a>Azure SQL Database Premium RS warstwy usług (wersja zapoznawcza) jest wycofywana-opcje migracji
 

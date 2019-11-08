@@ -1,22 +1,22 @@
 ---
-title: 'Uruchamianie zapytań analitycznych dla baz danych dzierżaw przy użyciu Azure SQL Data Warehouse '
+title: Uruchamianie zapytań analitycznych dla baz danych dzierżawy
 description: Zapytania analizy obejmującej wiele dzierżawców korzystające z danych wyodrębnionych z Azure SQL Database, SQL Data Warehouse, Azure Data Factory lub Power BI.
 services: sql-database
 ms.service: sql-database
 ms.subservice: scenario
-ms.custom: ''
+ms.custom: seo-lt-2019
 ms.devlang: ''
 ms.topic: conceptual
 author: anumjs
 ms.author: anjangsh
 ms.reviewer: MightyPen, sstein
 ms.date: 12/18/2018
-ms.openlocfilehash: f4a89029d7ed90f1a2406dcf0f8046a1c651353f
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 4791cd3a6b6f72c5d9ee4ca828d66b0d361f356c
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73691875"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73816783"
 ---
 # <a name="explore-saas-analytics-with-azure-sql-database-sql-data-warehouse-data-factory-and-power-bi"></a>Eksploruj SaaS Analytics przy użyciu Azure SQL Database, SQL Data Warehouse, Data Factory i Power BI
 
@@ -143,11 +143,11 @@ Na stronie Przegląd przejdź do karty **autor** w lewym panelu i sprawdź, czy 
 
 Trzy zagnieżdżone potoki to: SQLDBToDW, dbcopy i TableCopy.
 
-**Potok 1 — SQLDBToDW** wyszukuje nazwy baz danych dzierżaw przechowywanych w bazie danych wykazu (nazwa tabeli: [__ShardManagement]. [ ShardsGlobal]) i dla każdej bazy danych dzierżawcy wykonuje potok **dbcopy** . Po zakończeniu dostarczony schemat procedury składowanej **sp_TransformExtractedData** jest wykonywany. Ta procedura składowana przekształca dane załadowane w tabelach przemieszczania i wypełnia tabele schematu gwiazdy.
+**Potok 1 — SQLDBToDW** wyszukuje nazwy baz danych dzierżaw przechowywanych w bazie danych wykazu (nazwa tabeli: [__ShardManagement]. [ ShardsGlobal]) i dla każdej bazy danych dzierżawcy wykonuje potok **dbcopy** . Po zakończeniu podane **sp_TransformExtractedData** schemat procedury składowanej jest wykonywany. Ta procedura składowana przekształca dane załadowane w tabelach przemieszczania i wypełnia tabele schematu gwiazdy.
 
 **Potok 2 — dbcopy** wyszukuje nazwy tabel źródłowych i kolumn z pliku konfiguracji przechowywanego w magazynie obiektów BLOB.  Potok **TableCopy** jest następnie uruchamiany dla każdej z czterech tabel: TicketFacts, CustomerFacts, EventFacts i VenueFacts. Działanie **[foreach](https://docs.microsoft.com/azure/data-factory/control-flow-for-each-activity)** jest wykonywane równolegle dla wszystkich 20 baz danych. ADF umożliwia równoległe uruchamianie maksymalnie 20 iteracji pętli. Rozważ utworzenie wielu potoków dla większej liczby baz danych.    
 
-**Potok 3 — TableCopy** używa numerów wersji wierszy w SQL Database (_rowversion_) do identyfikowania wierszy, które zostały zmienione lub zaktualizowane. To działanie wyszukuje początkową i końcową wersję wiersza w celu wyodrębnienia wierszy z tabel źródłowych. Tabela **CopyTracker** przechowywana w każdej bazie danych dzierżawy śledzi ostatni wiersz wyodrębniony z każdej tabeli źródłowej w każdym uruchomieniu. Nowe lub zmienione wiersze są kopiowane do odpowiednich tabel przemieszczania w hurtowni danych: **raw_Tickets**, **raw_Customers**, **raw_Venues**i **raw_Events**. Na koniec Ostatnia wersja wiersza jest zapisywana w tabeli **CopyTracker** , która będzie używana jako początkowa wersja wiersza dla następnej wyodrębniania. 
+**Potok 3 — TableCopy** używa numerów wersji wierszy w SQL Database (_rowversion_) do identyfikowania wierszy, które zostały zmienione lub zaktualizowane. To działanie wyszukuje początkową i końcową wersję wiersza w celu wyodrębnienia wierszy z tabel źródłowych. Tabela **CopyTracker** przechowywana w każdej bazie danych dzierżawy śledzi ostatni wiersz wyodrębniony z każdej tabeli źródłowej w każdym uruchomieniu. Nowe lub zmienione wiersze są kopiowane do odpowiednich tabel przejściowych w magazynie danych: **raw_Tickets**, **raw_Customers**, **raw_Venues**i **raw_Events**. Na koniec Ostatnia wersja wiersza jest zapisywana w tabeli **CopyTracker** , która będzie używana jako początkowa wersja wiersza dla następnej wyodrębniania. 
 
 Istnieją również trzy sparametryzowane połączone usługi, które łączą fabrykę danych z źródłowymi bazami danych SQL, docelowymi SQL Data Warehouse i pośrednim magazynem obiektów BLOB. Na karcie **autor** kliknij pozycję **połączenia** , aby poznać połączone usługi, jak pokazano na poniższej ilustracji:
 
@@ -158,7 +158,7 @@ Odpowiadające trzem połączonym usługom istnieją trzy zestawy danych, które
 ### <a name="data-warehouse-pattern-overview"></a>Wzorzec magazynu danych — przegląd
 SQL Data Warehouse jest używany jako magazyn analityczny do przeprowadzania agregacji danych dzierżawy. W tym przykładzie baza jest używana do ładowania danych do magazynu danych SQL. Dane pierwotne są ładowane do tabel przemieszczania, które mają kolumnę tożsamości, aby śledzić wiersze, które zostały przekształcone w tabele schematu gwiazdy. Na poniższej ilustracji przedstawiono wzorzec ładowania: ![loadingpattern](media/saas-tenancy-tenant-analytics/loadingpattern.JPG)
 
-W tym przykładzie użyto wolno zmieniającego się tabel wymiarów typu 1 (SCD). Każdy wymiar ma klucz zastępczy zdefiniowany przy użyciu kolumny tożsamości. Najlepszym rozwiązaniem jest wstępne wypełnienie tabeli wymiarów daty w celu zaoszczędzenia czasu. W przypadku innych tabel wymiarów CREATE TABLE jako wybrane... (CTAS) służy do tworzenia tymczasowej tabeli zawierającej istniejące zmodyfikowane i niemodyfikowane wiersze wraz z kluczami zastępczymi. Jest to realizowane z IDENTITY_INSERT = ON. Nowe wiersze są następnie wstawiane do tabeli z IDENTITY_INSERT = OFF. W celu zapewnienia łatwego wycofywania Nazwa istniejącej tabeli wymiarów jest zmieniana, a nazwa tabeli tymczasowej zostanie zmieniona, aby stała się nową tabelą wymiarów. Przed każdym uruchomieniem, stara tabela wymiarów zostanie usunięta.
+W tym przykładzie użyto wolno zmieniającego się tabel wymiarów typu 1 (SCD). Każdy wymiar ma klucz zastępczy zdefiniowany przy użyciu kolumny tożsamości. Najlepszym rozwiązaniem jest wstępne wypełnienie tabeli wymiarów daty w celu zaoszczędzenia czasu. W przypadku innych tabel wymiarów CREATE TABLE jako wybrane... (CTAS) służy do tworzenia tymczasowej tabeli zawierającej istniejące zmodyfikowane i niemodyfikowane wiersze wraz z kluczami zastępczymi. Jest to realizowane z IDENTITY_INSERT = ON. Nowe wiersze są następnie wstawiane do tabeli przy użyciu IDENTITY_INSERT = OFF. W celu zapewnienia łatwego wycofywania Nazwa istniejącej tabeli wymiarów jest zmieniana, a nazwa tabeli tymczasowej zostanie zmieniona, aby stała się nową tabelą wymiarów. Przed każdym uruchomieniem, stara tabela wymiarów zostanie usunięta.
 
 Tabele wymiarów są ładowane przed tabelą faktów. Ta kolejność zapewnia, że dla każdego dochodzącego faktu wszystkie wymiary, do których istnieją odwołania, już istnieją. Po załadowaniu faktów klucz biznesowy dla każdego odpowiadającego wymiaru jest dopasowywany, a odpowiednie klucze zastępcze są dodawane do każdego faktu.
 
@@ -228,7 +228,7 @@ Ten wykres łącznej sprzedaży biletów w czasie dla korytarza wspólnie Contos
 
 Szczegółowe informacje na temat wzorców sprzedaży biletów mogą prowadzić do Wingtip biletów, aby zoptymalizować model biznesowy. Zamiast naliczania wszystkich dzierżawców w równym stopniu, prawdopodobnie Wingtip powinny wprowadzać warstwy usług o różnych rozmiarach obliczeniowych. Większą liczbą miejsc, które muszą sprzedawać więcej biletów dziennie, może być oferowana wyższa warstwa z wyższą umową dotyczącą poziomu usług (SLA). Te miejsca mogą mieć swoje bazy danych umieszczane w puli z wyższymi limitami zasobów dla poszczególnych baz danych. Każda warstwa usług może mieć co godzinę alokację sprzedaży przy użyciu dodatkowych opłat naliczanych za przekroczenie przydziału. Większe miejsca, w których okresowe rozbicie sprzedaży byłyby korzystne dla wyższych warstw, a bilety Wingtip mogą wydajnie Zarabiaj swoją usługę.
 
-Tymczasem niektórzy Wingtip bilety, z których klienci mogą się zapewnić, aby sprzedać wystarczającą liczbę biletów, aby uzasadnić koszt usługi. W tych informacjach można zwiększyć sprzedaż biletów w przypadku niedopełnienia miejsc. Wyższa sprzedaż mogłaby zwiększyć postrzeganą wartość usługi. Kliknij prawym przyciskiem myszy pozycję fact_Tickets i wybierz pozycję **Nowa miara**. Wprowadź następujące wyrażenie dla nowej miary o nazwie **AverageTicketsSold**:
+Tymczasem niektórzy Wingtip bilety, z których klienci mogą się zapewnić, aby sprzedać wystarczającą liczbę biletów, aby uzasadnić koszt usługi. W tych informacjach można zwiększyć sprzedaż biletów w przypadku niedopełnienia miejsc. Wyższa sprzedaż mogłaby zwiększyć postrzeganą wartość usługi. Kliknij prawym przyciskiem myszy fact_Tickets i wybierz pozycję **Nowa miara**. Wprowadź następujące wyrażenie dla nowej miary o nazwie **AverageTicketsSold**:
 
 ```
 AverageTicketsSold = DIVIDE(DIVIDE(COUNTROWS(fact_Tickets),DISTINCT(dim_Venues[VenueCapacity]))*100, COUNTROWS(dim_Events))

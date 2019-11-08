@@ -1,85 +1,86 @@
 ---
-title: Aktualizowanie istniejącej oferty Azure Containers | Portal Azure Marketplace
-description: Jak zaktualizować istniejące oferty kontenera w witrynie Azure Marketplace.
+title: Aktualizowanie istniejącej oferty kontenerów platformy Azure | Portal Azure Marketplace
+description: Jak zaktualizować istniejącą ofertę kontenera w witrynie Azure Marketplace.
 services: Azure, Marketplace, Cloud Partner Portal,
 author: dan-wesley
 ms.service: marketplace
+ms.subservice: partnercenter-marketplace-publisher
 ms.topic: article
 ms.date: 11/01/2018
 ms.author: pabutler
-ms.openlocfilehash: 0e0db961dec69880eff6ef640e9210af6fcbc978
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 40cd375b11eb5b7ad5943fea9839b6339a7d002f
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64942593"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73823088"
 ---
 # <a name="update-an-existing-container-offer"></a>Aktualizowanie istniejącej oferty kontenera
 
-Ten artykuł przeprowadzi różne aspekty aktualizowanie oferty kontenera [portalu Cloud Partner](https://cloudpartner.azure.com/).
+W tym artykule opisano różne aspekty aktualizowania oferty kontenera w [Portal Cloud partner](https://cloudpartner.azure.com/).
 
-Istnieje kilka powodów dlaczego warto zaktualizować oferty, takich jak:
+Istnieje kilka powodów, dla których warto zaktualizować ofertę, na przykład:
 
--  Dodawanie nowej wersji obrazu kontenera do istniejącej jednostki SKU.
+-  Dodawanie nowej wersji obrazu kontenera do istniejących jednostek SKU.
 -  Dodawanie nowych jednostek SKU.
--  Aktualizowanie metadanych portalu marketplace oferty lub poszczególne jednostki SKU.
+-  Aktualizowanie metadanych witryny Marketplace dla oferty lub poszczególnych jednostek SKU.
 
-Aby pomóc w tych zmian, portal zapewnia **porównania** i **historii** funkcji.  
+Aby ułatwić Ci modyfikację, Portal udostępnia funkcje **porównania** i **historii** .  
 
 
-## <a name="unpermitted-changes-to-a-container-offer-or-sku"></a>Niedozwolonej zmiany do skorzystania z oferty kontenera lub jednostki SKU
+## <a name="unpermitted-changes-to-a-container-offer-or-sku"></a>Niedozwolone zmiany w ofercie kontenera lub jednostce SKU
 
-Istnieją atrybuty oferty kontenera lub jednostki SKU, nie można jej zmienić po oferta jest dostępna na żywo w witrynie Azure Marketplace. Nie można zmienić następujące ustawienia:
+Istnieją atrybuty oferty kontenera lub jednostki SKU, których nie można zmienić po zakończeniu oferty w witrynie Azure Marketplace. Nie można zmienić następujących ustawień:
 
--  **Identyfikator oferty** i **Identyfikatora wydawcy** oferty
+-  **Identyfikator oferty** i **identyfikator wydawcy** oferty
 -  **Identyfikator jednostki SKU** istniejących jednostek SKU
--  Wersja — tagi, na przykład: `1.0.1`
--  Model rozliczeń/licencji zmian do istniejących jednostek SKU
+-  Tagi wersji, na przykład: `1.0.1`
+-  Zmiany modelu rozliczeń/licencji na istniejące jednostki SKU
 
 ## <a name="common-update-operations"></a>Typowe operacje aktualizacji
 
-Następujące operacje aktualizacji są powszechne.
+Następujące operacje aktualizacji są wspólne.
 
-### <a name="update-container-image-version-for-a-sku"></a>Zaktualizuj wersję obrazu kontenera dla jednostki SKU
+### <a name="update-container-image-version-for-a-sku"></a>Aktualizowanie wersji obrazu kontenera dla jednostki SKU
 
-Jest to częsty problem w postaci obrazu kontenera do być okresowo aktualizowane za pomocą poprawek zabezpieczeń, dodatkowe funkcje i tak dalej. W tym scenariuszu chcesz zaktualizować obraz kontenera, który odwołuje się do danej jednostki SKU wykonując następujące kroki:
+Często obraz kontenera jest okresowo aktualizowany za pomocą poprawek zabezpieczeń, dodatkowych funkcji i tak dalej. W tym scenariuszu należy zaktualizować obraz kontenera, do którego odwołuje się jednostka SKU, wykonując następujące czynności:
 
-1. Zaloguj się do [portalu dla partnerów w chmurze](https://cloudpartner.azure.com/).
-2. W obszarze **wszystkich ofert**, odnaleźć oferty, o których chcesz zaktualizować.
-3. W **jednostki SKU** , a następnie wybierz jednostki SKU powiązanej z obrazu kontenera do zaktualizowania.
-4. W obszarze **obraz kontenera**, wybierz opcję **+ nowa wersja obrazu** Aby dodać nowy obraz kontenera.
-5. Podaj nowy kontener **obraz wersji**. Wersja obrazu musi postępuj zgodnie z tym samym wytycznym tagów w poprzednich wersjach. Wersja tagi powinny mieć postać X.Y.Z, gdzie X, Y i Z są liczbami całkowitymi. Sprawdź, czy nowa wersja, którą podasz jest większa niż wszystkie poprzednie wersje.
-6. Wybierz **Publikuj** można uruchomić przepływu pracy, aby opublikować nową wersję obrazu kontenera w portalu Azure Marketplace.
+1. Zaloguj się do [Portal Cloud partner](https://cloudpartner.azure.com/).
+2. W obszarze **wszystkie oferty**Znajdź ofertę, którą chcesz zaktualizować.
+3. Na karcie **jednostki SKU** wybierz jednostkę SKU skojarzoną z obrazem kontenera do zaktualizowania.
+4. W obszarze **obraz kontenera**wybierz pozycję **+ Nowa wersja obrazu** , aby dodać nowy obraz kontenera.
+5. Podaj nowe **wersje obrazów**kontenerów. Wersja obrazu musi być zgodna z tymi samymi wskazówkami dotyczącymi tagów, co w poprzednich wersjach. Tagi wersji powinny mieć postać X. Y. Z, gdzie X, Y i Z są liczbami całkowitymi. Sprawdź, czy wprowadzona nowa wersja jest nowsza niż wszystkie poprzednie wersje.
+6. Wybierz pozycję **Publikuj** , aby uruchomić przepływ pracy w celu opublikowania nowej wersji obrazu kontenera w witrynie Azure Marketplace.
 
-### <a name="add-a-new-sku"></a>Dodawanie nowej jednostki SKU
+### <a name="add-a-new-sku"></a>Dodaj nową jednostkę SKU
 
-Wykonaj następujące kroki, aby udostępnić nowej jednostki SKU oferty:
+Wykonaj następujące kroki, aby udostępnić nową jednostkę SKU dla oferty:
 
-1. Zaloguj się do [portalu dla partnerów w chmurze](https://cloudpartner.azure.com/).
-2. W obszarze **wszystkich ofert**, odnaleźć oferty, o których chcesz zaktualizować.
-3. W obszarze **jednostki SKU** zaznacz **Dodawanie nowej jednostki SKU** i podaj **identyfikator jednostki SKU** w oknie podręcznym.
-4. Ponownie opublikować kontener, korzystając z procedury opisanej w [oferty kontenera Publikuj](./cpp-publish-offer.md).
-5. Wybierz **Publikuj** można uruchomić przepływu pracy, aby opublikować nowe jednostki SKU.
+1. Zaloguj się do [Portal Cloud partner](https://cloudpartner.azure.com/).
+2. W obszarze **wszystkie oferty**Znajdź ofertę, którą chcesz zaktualizować.
+3. Na karcie **jednostki SKU** wybierz pozycję **Dodaj nową jednostkę SKU** i podaj **Identyfikator jednostki SKU** w oknie podręcznym.
+4. Opublikuj ponownie kontener przy użyciu kroków opisanych w [sekcji Publikowanie kontenera](./cpp-publish-offer.md).
+5. Wybierz pozycję **Publikuj** , aby uruchomić przepływ pracy w celu opublikowania nowej jednostki SKU.
 
-### <a name="update-offer-marketplace-metadata"></a>Zaktualizowanie metadanych portalu marketplace oferty
+### <a name="update-offer-marketplace-metadata"></a>Aktualizowanie metadanych witryny Marketplace z ofertą
 
-Wykonaj następujące kroki, aby zaktualizować metadane marketplace skojarzone z ofertą. (Na przykład: firmy nazwy, logo i itp.)
+Wykonaj następujące kroki, aby zaktualizować metadane portalu Marketplace skojarzone z ofertą. (Na przykład: Nazwa firmy, logo i itp.)
 
-1. Zaloguj się do [portalu dla partnerów w chmurze](https://cloudpartner.azure.com/).
-2. W obszarze **wszystkich ofert**, odnaleźć oferty, czy chcesz zaktualizować.
-3. Przejdź do **Marketplace** kartę. Postępuj zgodnie z instrukcjami w [oferty kontenera Publikuj](./cpp-publish-offer.md) oferują artykuł, aby wprowadzić zmiany metadanych.
-4. Wybierz **Publikuj** można uruchomić przepływu pracy, aby opublikować zmiany.
+1. Zaloguj się do [Portal Cloud partner](https://cloudpartner.azure.com/).
+2. W obszarze **wszystkie oferty**Znajdź ofertę, którą chcesz zaktualizować.
+3. Przejdź do karty **Marketplace** . Aby wprowadzić zmiany metadanych, Skorzystaj z instrukcji zawartych w artykule [Publikowanie oferty publikacji](./cpp-publish-offer.md) .
+4. Wybierz pozycję **Publikuj** , aby uruchomić przepływ pracy w celu opublikowania zmian.
 
-## <a name="compare-feature"></a>Porównanie funkcji
+## <a name="compare-feature"></a>Porównaj funkcję
 
-Po wprowadzeniu zmian do opublikowane oferty, możesz użyć **porównania** funkcję inspekcji, które zostały wprowadzone zmiany.
+Po wprowadzeniu zmian w opublikowanej ofercie można użyć funkcji **porównania** , aby przeprowadzić inspekcję wprowadzonych zmian.
 
 ### <a name="to-use-the-compare-feature"></a>Aby użyć funkcji porównania:
 
-1. W dowolnym momencie procesu edycji wybierz Porównaj oferty.
-2. Obejrzyj wersje side-by-side marketingu zasoby i metadanych.
+1. W dowolnym momencie procesu edycji wybierz pozycję Porównaj z ofertą.
+2. Zobacz obok siebie wersje zasobów i metadanych marketingowych.
 
 
 ## <a name="history-of-publishing-actions"></a>Historia akcji publikowania
 
-Aby wyświetlić działań historycznych w publikacji, wybierz **historii** kartę na lewym pasku nawigacyjnym menu paska z portalu Cloud Partner. Możesz zobaczyć akcje oznaczony sygnaturą czasową wykonywane w okresie istnienia Twoich ofert w portalu Azure Marketplace.
+Aby wyświetlić historyczne działanie publikowania, wybierz kartę **historia** na pasku menu nawigacji po lewej stronie Portal Cloud partner. Możesz zobaczyć działania z sygnaturami czasowymi podejmowane w okresie istnienia ofert portalu Azure Marketplace.

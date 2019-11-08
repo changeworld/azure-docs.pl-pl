@@ -1,23 +1,24 @@
 ---
-title: Pobierz operacje interfejsu API | Portal Azure Marketplace
-description: Pobiera wszystkie operacje, w ramach oferty lub w celu uzyskania określoną operację na określony identyfikator operationId.
+title: Pobieranie interfejsu API operacji | Portal Azure Marketplace
+description: Pobiera wszystkie operacje z oferty lub w celu uzyskania określonej operacji dla określonego operationId.
 services: Azure, Marketplace, Cloud Partner Portal,
 author: v-miclar
 ms.service: marketplace
+ms.subservice: partnercenter-marketplace-publisher
 ms.topic: reference
 ms.date: 09/14/2018
 ms.author: pabutler
-ms.openlocfilehash: 1fbcc1d50dbc4488c4123be64e85de612233ccc3
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: c3eb77744d61322ca0aed20bb2b3f486cc02ac70
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64935775"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73819591"
 ---
 <a name="retrieve-operations"></a>Pobieranie operacji
 ===================
 
-Pobiera wszystkie operacje, w ramach oferty lub w celu uzyskania określoną operację na określony identyfikator operationId. Klient może używać parametrów zapytania do filtrowania długotrwałych operacji.
+Pobiera wszystkie operacje z oferty lub w celu uzyskania określonej operacji dla określonego operationId. Klient może użyć parametrów zapytania, aby odfiltrować uruchomione operacje.
 
 ``` https
 
@@ -33,15 +34,15 @@ Pobiera wszystkie operacje, w ramach oferty lub w celu uzyskania określoną ope
 
 |  **Nazwa**          |      **Opis**                                                                                           | **Typ danych** |
 |  ----------------  |     --------------------------------------------------------------------------------------------------------   |  -----------  |
-|  publisherId       |  Identyfikator wydawcy, na przykład `Contoso`                                                                   |  String       |
-|  offerId           |  Identyfikator oferty                                                                                              |  String       |
-|  operationId       |  Identyfikator GUID, który unikatowo identyfikuje operacji w przypadku oferty. Identyfikatorowi operationId może zostać pobrane za pomocą tego interfejsu API i jest także zwracany w nagłówku HTTP w odpowiedzi na wszelkie długotrwałej operacji, takich jak [publikacji oferty](./cloud-partner-portal-api-publish-offer.md) interfejsu API.  |   Guid   |
-|  filteredStatus    | Parametr opcjonalny zapytania używane do filtrowania według stanu (na przykład `running`) w zbiorze zwróconym przez ten interfejs API.  |   String |
-|  api-version       | Najnowszą wersję interfejsu API                                                                                           |    Date      |
+|  publisherId       |  Identyfikator wydawcy, na przykład `Contoso`                                                                   |  Ciąg       |
+|  OfferId           |  Identyfikator oferty                                                                                              |  Ciąg       |
+|  operationId       |  Identyfikator GUID, który jednoznacznie identyfikuje operację na ofercie. OperationId może zostać pobrany za pomocą tego interfejsu API i jest również zwracany w nagłówku HTTP odpowiedzi dla dowolnej długotrwałej operacji, takiej jak interfejs API [oferty publikacji](./cloud-partner-portal-api-publish-offer.md) .  |   Identyfikator GUID   |
+|  filteredStatus    | Opcjonalny parametr zapytania używany do filtrowania według stanu (na przykład `running`) w kolekcji zwróconej przez ten interfejs API.  |   Ciąg |
+|  wersja interfejsu API       | Najnowsza wersja interfejsu API                                                                                           |    Date      |
 |  |  |  |
 
 
-<a name="header"></a>nagłówek
+<a name="header"></a>Nagłówek
 ------
 
 |  **Nazwa**          |  **Wartość**           |
@@ -81,7 +82,7 @@ Pobiera wszystkie operacje, w ramach oferty lub w celu uzyskania określoną ope
     ]
 ```
 
-#### <a name="get-operation"></a>Operacja pobrania
+#### <a name="get-operation"></a>Pobierz operację
 
 ``` json
     [
@@ -178,21 +179,21 @@ Pobiera wszystkie operacje, w ramach oferty lub w celu uzyskania określoną ope
 
 |  **Nazwa**                    |  **Opis**                                                                                  |
 |  --------------------        |  ------------------------------------------------------------------------------------------------ |
-|  id                          | Identyfikator GUID, który unikatowo identyfikuje operację                                                       |
-|  submissionType              | Określa typ operacji zgłaszane dla tej oferty, na przykład `Publish/GGoLive`      |
-|  createdDateTime             | Daty/godziny UTC utworzenia operacji                                                       |
-|  lastActionDateTime          | Daty/godziny UTC po ostatniej aktualizacji zostało zrobione na operację                                       |
-|  status                      | Stan operacji, albo `not started` \| `running` \| `failed` \| `completed`. Tylko jedna operacja może mieć stan `running` w danym momencie. |
-|  error                       | Komunikat o błędzie w przypadku operacji zakończonych niepowodzeniem                                                               |
+|  id                          | Identyfikator GUID, który jednoznacznie identyfikuje operację                                                       |
+|  submisja              | Identyfikuje typ operacji raportowanej dla oferty, na przykład `Publish/GGoLive`      |
+|  createdDateTime             | UTC DateTime podczas tworzenia operacji                                                       |
+|  lastActionDateTime          | Data i godzina UTC ostatniej aktualizacji dla operacji                                       |
+|  status                      | Stan operacji, `not started` \| `running` \| `failed` \| `completed`. Tylko jedna operacja może mieć `running` stanu. |
+|  error                       | Komunikat o błędzie dla operacji zakończonych niepowodzeniem                                                               |
 |  |  |
 
 
-### <a name="response-status-codes"></a>Kody stanów odpowiedzi
+### <a name="response-status-codes"></a>Kody stanu odpowiedzi
 
-| **Kod**  |   **Opis**                                                                                  |
+| **Kodu**  |   **Opis**                                                                                  |
 |  -------- |   -------------------------------------------------------------------------------------------------|
-|  200      | `OK` Żądanie zostało pomyślnie przetworzone i operacje żądane zostały zwrócone.        |
-|  400      | `Bad/Malformed request` -Treść odpowiedzi błędu może zawierać więcej informacji.                    |
-|  403      | `Forbidden` -Klient nie ma dostępu do określonego obszaru nazw.                          |
-|  404      | `Not found` -Określonej jednostki nie istnieje.                                                 |
+|  200      | `OK` — żądanie zostało pomyślnie przetworzone i zostały zwrócone żądane operacje.        |
+|  400      | `Bad/Malformed request` — treść odpowiedzi błędu może zawierać więcej informacji.                    |
+|  403      | `Forbidden` — klient nie ma dostępu do określonego obszaru nazw.                          |
+|  404      | `Not found` — określona jednostka nie istnieje.                                                 |
 |  |  |

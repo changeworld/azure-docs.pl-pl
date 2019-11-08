@@ -1,5 +1,5 @@
 ---
-title: 'Azure SQL Database Service — Omówienie modelu rdzeń wirtualny '
+title: Rdzeń wirtualny model — Omówienie
 description: Model zakupów rdzeń wirtualny umożliwia niezależne skalowanie zasobów obliczeniowych i magazynu, dopasowanie wydajności lokalnej i optymalizację cen.
 services: sql-database
 ms.service: sql-database
@@ -9,12 +9,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: sashan, moslake, carlrab
 ms.date: 11/04/2019
-ms.openlocfilehash: 4795e709e1f43ebd952e37e36e2dc81a428dd539
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: b9de02bf0836727ac88b78194641238621e87a79
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73687252"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73821059"
 ---
 # <a name="vcore-model-overview"></a>Rdzeń wirtualny model — Omówienie
 

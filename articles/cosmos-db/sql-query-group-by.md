@@ -6,20 +6,20 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 10/11/2019
 ms.author: tisande
-ms.openlocfilehash: d92e24836a0eb5757de9bbdb516be290456deb7f
-ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
+ms.openlocfilehash: e41e81457421bfe27e3c0313fc06e39e6df4cdce
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72333263"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73819105"
 ---
 # <a name="group-by-clause-in-azure-cosmos-db"></a>Klauzula GROUP BY w Azure Cosmos DB
 
 Klauzula GROUP BY dzieli wyniki zapytania zgodnie z wartościami jednej lub więcej określonych właściwości.
 
 > [!NOTE]
-> Azure Cosmos DB obecnie obsługuje grupowanie według [zestawu .NET SDK 3,3](https://www.nuget.org/packages/Microsoft.Azure.Cosmos/3.3.0) lub nowszego.
-> Obsługa innych zestawów SDK języka i witryny Azure Portal nie jest obecnie dostępna, ale jest planowana.
+> Azure Cosmos DB obecnie obsługuje grupowanie według zestawu .NET SDK 3,3 i nowszego oraz zestawu JavaScript SDK 3,4 lub nowszego.
+> Obsługa innych zestawów SDK języka nie jest obecnie dostępna, ale jest planowana.
 
 ## <a name="syntax"></a>Składnia
 
@@ -173,6 +173,6 @@ Wyniki są następujące:
 
 ## <a name="next-steps"></a>Następne kroki
 
-- [Rozpoczęcie pracy](sql-query-getting-started.md)
+- [Wprowadzenie](sql-query-getting-started.md)
 - [SELECT — klauzula](sql-query-select.md)
 - [Funkcje agregujące](sql-query-aggregates.md)

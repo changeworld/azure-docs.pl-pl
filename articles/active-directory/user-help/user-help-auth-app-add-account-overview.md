@@ -1,6 +1,6 @@
 ---
-title: Omówienie dodawania kont do aplikacji Microsoft Authenticator — Azure Active Directory | Microsoft Docs
-description: Omówienie sposobu dodawania służbowych i osobistych kont w aplikacji Microsoft Authenticator na potrzeby weryfikacji dwuskładnikowej.
+title: Omówienie dodawania kont do aplikacji uwierzytelniania — Azure AD
+description: Linki do zawartości dotyczące sposobu dodawania kont służbowych i osobistych do aplikacji Microsoft Authenticator na potrzeby weryfikacji dwuskładnikowej.
 services: active-directory
 author: eross-msft
 manager: daveba
@@ -12,12 +12,12 @@ ms.topic: overview
 ms.date: 01/24/2019
 ms.author: lizross
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d16699729e62953cb2369f39ecfe759aab663caf
-ms.sourcegitcommit: 04ec7b5fa7a92a4eb72fca6c6cb617be35d30d0c
+ms.openlocfilehash: 16244be7dee9faaa15105f9dc0ac6c074230d243
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/22/2019
-ms.locfileid: "68382653"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73820278"
 ---
 # <a name="overview-about-adding-accounts-to-the-microsoft-authenticator-app"></a>Omówienie dodawania kont do aplikacji Microsoft Authenticator
 
@@ -43,7 +43,7 @@ Weryfikację dwuskładnikową możesz włączyć dla wielu kont, których używa
 | Konta służbowe | Konto służbowe udostępnione Ci przez organizację, na przykład alain@contoso.com. |
 | Konta osobiste | Konta Microsoft i inne niż Microsoft otwarte osobiście przez użytkownika, takie jak konta Outlook.com, Xbox LIVE, Google, Facebook i inne. |
 
-## <a name="in-this-section"></a>W tej sekcji
+## <a name="articles-about-how-to-add-different-accounts"></a>Artykuły dotyczące dodawania różnych kont
 
 | Artykuł |Opis |
 | ------|------------|

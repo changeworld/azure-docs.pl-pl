@@ -1,31 +1,32 @@
 ---
-title: Wszystkie oferty strony dla portalu Azure Marketplace
-description: Przegląd wszystkich oferuje strony w portalu Cloud Partner portalu Azure Marketplace.
+title: Strona wszystkie oferty dla portalu Azure Marketplace
+description: Omówienie strony wszystkie oferty w portal Cloud Partner portalu Azure Marketplace.
 services: Azure, Marketplace, Cloud Partner Portal,
 author: v-miclar
 ms.service: marketplace
+ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 11/12/2018
 ms.author: pabutler
-ms.openlocfilehash: d674cc154dd46704051c3c75ca2589dfd7a9ca4c
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: cb67ac44ee73d4d8074b577b2157f5846f451210
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64942128"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73821584"
 ---
 # <a name="all-offers-page"></a>Strona ze wszystkimi ofertami
 
-[ **Wszystkich ofert** ](https://cloudpartner.azure.com/#alloffers) strony umożliwia partnerom wyświetlić listę utworzonych ofert, łącznie z ich nazwy, typu, wydawcy i bieżący stan.  Można określić parametry do filtrowania wyników.   W obszarze stanu w dolnej części strony wyświetla liczbę agregacji i strony i pozwala na przechodzenie między stronami listy. Wybranie oferty na tej liście spowoduje wyświetlenie tej oferty w edytorze skojarzone oferty. 
+Strona [**wszystkie oferty**](https://cloudpartner.azure.com/#alloffers) umożliwia partnerom Wyświetlanie listy utworzonych ofert, w tym ich nazwy, typu, wydawcy i bieżącego stanu.  Możesz określić ciąg, aby przefiltrować wyniki.   Obszar stanu w dolnej części strony zawiera wartości zagregowane i liczby stron oraz umożliwia nawigowanie między stronami listy. Wybranie oferty na tej liście spowoduje wyświetlenie tej oferty w odpowiednim edytorze oferty. 
 
 
 ## <a name="example-page"></a>Przykładowa strona
 
-Na poniższej ilustracji przedstawiono **wszystkich ofert** strona jest filtrowana na ciąg `Contoso`.
+Na poniższej ilustracji przedstawiono stronę **wszystkie oferty** odfiltrowana na `Contoso`ciągu.
 
 ![Strona ze wszystkimi ofertami](./media/all-offers-page1.png)
 
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
-Wyświetla następny element paska menu nawigacji [strony zatwierdzeń](./cpp-approvals-page.md), które zawiera listę zatwierdzonych oferty.  Zatwierdzone oferty są już opublikowane lub opublikowane w trakcie.
+Następny pasek menu nawigacji przedstawia [stronę zatwierdzenia](./cpp-approvals-page.md), która zawiera listę zatwierdzonych ofert.  Zatwierdzone oferty są już opublikowane lub w trakcie ich publikacji.

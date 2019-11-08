@@ -4,15 +4,16 @@ description: Wyjaśnia, jak uzyskać identyfikator URI sygnatury dostępu wspó�
 services: Azure, Marketplace, Cloud Partner Portal,
 author: pbutlerm
 ms.service: marketplace
+ms.subservice: partnercenter-marketplace-publisher
 ms.topic: article
 ms.date: 10/19/2018
 ms.author: pabutler
-ms.openlocfilehash: c242fbcd19187abb608ca80a49d04dae195bd7c6
-ms.sourcegitcommit: 0576bcb894031eb9e7ddb919e241e2e3c42f291d
+ms.openlocfilehash: dda074d81857247a922eb7a179b33aa2593e5bf8
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72374376"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73824472"
 ---
 # <a name="get-shared-access-signature-uri-for-your-vm-image"></a>Uzyskiwanie identyfikatora URI sygnatury dostępu współdzielonego dla obrazu maszyny wirtualnej
 
@@ -21,7 +22,7 @@ Podczas procesu publikowania należy podać jednolity identyfikator zasobów (UR
 Podczas generowania identyfikatorów URI sygnatury dostępu współdzielonego dla wirtualnych dysków twardych należy przestrzegać następujących wymagań:
 
 - Obsługiwane są tylko niezarządzane wirtualne dyski twarde.
-- uprawnienia `List` i `Read` są wystarczające. *Nie* zapewniają dostępu `Write` lub `Delete`.
+- uprawnienia `List` i `Read`są wystarczające. *Nie* udostępniaj `Write` ani `Delete` dostępu.
 - Czas trwania dostępu (*Data wygaśnięcia*) powinien mieć co najmniej trzy tygodnie od momentu utworzenia identyfikatora URI SAS.
 - Aby zabezpieczyć przed odchyleniami czasu UTC, ustaw datę rozpoczęcia na jeden dzień przed bieżącą datą. Na przykład, jeśli bieżąca data to 6 października 2014, wybierz pozycję 10/5/2014.
 
@@ -38,7 +39,7 @@ Adres URL sygnatury dostępu współdzielonego można wygenerować na dwa typowe
 Wykonaj poniższe kroki, aby wygenerować identyfikator URI sygnatury dostępu współdzielonego za pomocą interfejsu wiersza polecenia platformy Azure.
 
 1. Pobierz i zainstaluj [interfejs wiersza polecenia Microsoft Azure](https://azure.microsoft.com/documentation/articles/xplat-cli-install/).  Wersje są dostępne dla systemów Windows, macOS i różnych dystrybucje systemu Linux. 
-2. Utwórz plik programu PowerShell (rozszerzenie pliku `.ps1`), Skopiuj poniższy kod, a następnie zapisz go lokalnie.
+2. Utwórz plik programu PowerShell (rozszerzenie pliku`.ps1`), Skopiuj poniższy kod, a następnie zapisz go lokalnie.
 
    ``` powershell
    az storage container generate-sas --connection-string 'DefaultEndpointsProtocol=https;AccountName=<account-name>;AccountKey=<account-key>;EndpointSuffix=core.windows.net' --name <vhd-name> --permissions rl --start '<start-date>' --expiry '<expiry-date>'
@@ -75,7 +76,7 @@ Wykonaj poniższe kroki, aby wygenerować identyfikator URI sygnatury dostępu w
 
     `<blob-service-endpoint-url>` + `/vhds/` + `<vhd-name>?` + `<sas-connection-string>`
 
-    Na przykład jeśli nazwa przypadku jest `TestRGVM2.vhd`, otrzymany identyfikator URI sygnatury dostępu współdzielonego będzie:
+    Na przykład jeśli nazwa przypadku jest `TestRGVM2.vhd`, powstaje identyfikator URI sygnatury dostępu współdzielonego:
 
     `https://catech123.blob.core.windows.net/vhds/TestRGVM2.vhd?st=2018-05-06T07%3A00%3A00Z&se=2019-08-02T07%3A00%3A00Z&sp=rl&sv=2017-04-17&sr=c&sig=wnEw9RfVKeSmVgqDfsDvC9IHhis4x0fc9Hu%2FW4yvBxk%3D`
 
@@ -112,7 +113,7 @@ Wykonaj następujące kroki, aby wygenerować identyfikator URI sygnatury dostę
 
     `<blob-service-endpoint-url>` + `/vhds/` + `<vhd-name>?` + `<sas-connection-string>`
 
-    Na przykład jeśli nazwa przypadku jest `TestRGVM2.vhd`, otrzymany identyfikator URI sygnatury dostępu współdzielonego będzie:
+    Na przykład jeśli nazwa przypadku jest `TestRGVM2.vhd`, powstaje identyfikator URI sygnatury dostępu współdzielonego:
 
     `https://catech123.blob.core.windows.net/vhds/TestRGVM2.vhd?st=2018-05-06T07%3A00%3A00Z&se=2019-08-02T07%3A00%3A00Z&sp=rl&sv=2017-04-17&sr=c&sig=wnEw9RfVKeSmVgqDfsDvC9IHhis4x0fc9Hu%2FW4yvBxk%3D`
 
@@ -124,8 +125,8 @@ Powtórz te kroki dla każdego wirtualnego dysku twardego w jednostkach SKU, kt�
 Przejrzyj i sprawdź każdy wygenerowany identyfikator URI SYGNATURy dostępu współdzielonego, korzystając z poniższej listy kontrolnej.  Sprawdź, czy:
 - Identyfikator URI ma postać: `<blob-service-endpoint-url>` + `/vhds/` + `<vhd-name>?` + `<sas-connection-string>`
 - Identyfikator URI zawiera nazwę pliku obrazu VHD, w tym rozszerzenie nazwy pliku ". VHD".
-- W kierunku środka identyfikatora URI pojawia się `sp=rl`. Ten ciąg wskazuje, że określono dostęp `Read` i `List`.
-- Po tym momencie zostanie również wyświetlona `sr=c`. Ten ciąg wskazuje, że jest określony dostęp na poziomie kontenera.
+- W kierunku środka identyfikatora URI pojawia się `sp=rl`. Ten ciąg wskazuje, że określono `Read` i `List` dostępu.
+- Po tym momencie `sr=c` również pojawić się. Ten ciąg wskazuje, że jest określony dostęp na poziomie kontenera.
 - Skopiuj i wklej identyfikator URI do przeglądarki, aby rozpocząć pobieranie skojarzonego obiektu BLOB.  (Można anulować operację przed ukończeniem pobierania).
 
 
