@@ -7,12 +7,12 @@ ms.service: expressroute
 ms.topic: conceptual
 ms.date: 10/22/2019
 ms.author: cherylmc
-ms.openlocfilehash: 36cd1bfebe4e5379a1c8cfc551c8e003459ebf5c
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.openlocfilehash: 081c448ff09148668dbe5e244e80421a47d77152
+ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73162451"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73748277"
 ---
 # <a name="configure-macsec-on-expressroute-direct-ports"></a>Konfigurowanie MACsec na portach Direct ExpressRoute
 
@@ -28,7 +28,7 @@ Przed rozpoczęciem konfiguracji Potwierdź następujące kwestie:
 
 ### <a name="working-with-azure-powershell"></a>Praca z Azure PowerShell
 
-[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+[!INCLUDE [updated-for-az](../../includes/hybrid-az-ps.md)]
 
 [!INCLUDE [expressroute-cloudshell](../../includes/expressroute-cloudshell-powershell-about.md)]
 
@@ -47,7 +47,7 @@ Aby rozpocząć konfigurację, zaloguj się do konta platformy Azure i wybierz s
     $keyVault = New-AzKeyVault -Name "your_key_vault_name" -ResourceGroupName "your_resource_group" -Location "resource_location" -EnableSoftDelete 
     ```
 
-    Jeśli masz już Magazyn kluczy lub grupę zasobów, możesz użyć ich ponownie. Należy jednak pamiętać o włączeniu [funkcji **usuwania nietrwałego** ](https://docs.microsoft.com/en-us/azure/key-vault/key-vault-ovw-soft-delete) w istniejącym magazynie kluczy. Jeśli nie włączono usuwania nietrwałego, można użyć następujących poleceń, aby je włączyć:
+    Jeśli masz już Magazyn kluczy lub grupę zasobów, możesz użyć ich ponownie. Należy jednak pamiętać o włączeniu [funkcji **usuwania nietrwałego** ](../key-vault/key-vault-ovw-soft-delete.md) w istniejącym magazynie kluczy. Jeśli nie włączono usuwania nietrwałego, można użyć następujących poleceń, aby je włączyć:
 
     ```azurepowershell-interactive
     ($resource = Get-AzResource -ResourceId (Get-AzKeyVault -VaultName "your_existing_keyvault").ResourceId).Properties | Add-Member -MemberType "NoteProperty" -Name "enableSoftDelete" -Value "true"

@@ -1,7 +1,7 @@
 ---
 title: Wynik pewności — QnA Maker
 titleSuffix: Azure Cognitive Services
-description: Współczynnik ufności wskazuje ufności padnie odpowiednie dopasowania dla zapytania danego użytkownika.
+description: Wynik pewności wskazuje, że odpowiedź jest właściwym dopasowaniem dla danego zapytania użytkownika.
 services: cognitive-services
 author: diberry
 manager: nitinme
@@ -11,51 +11,51 @@ ms.topic: conceptual
 ms.date: 08/30/2019
 ms.author: diberry
 ms.custom: seodec18
-ms.openlocfilehash: 14339a61e48866d51089db9a0008a3de982b1710
-ms.sourcegitcommit: 32242bf7144c98a7d357712e75b1aefcf93a40cc
-ms.translationtype: MT
+ms.openlocfilehash: 4e6d86cb3fa304c8e85e7d0ff4a2810be1dc75af
+ms.sourcegitcommit: 018e3b40e212915ed7a77258ac2a8e3a660aaef8
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70277109"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73794946"
 ---
-# <a name="confidence-score-of-a-qna-maker-knowledge-base"></a>Współczynnik ufności z bazy wiedzy usługi QnA Maker
-Jeśli kwerenda użytkownika są dopasowywane do wiedzy, narzędzie QnA Maker zwraca odpowiednich odpowiedzi, wraz z współczynnik ufności. Ten wynik wskazuje ufności padnie odpowiednie dopasowania dla zapytania danego użytkownika. 
+# <a name="confidence-score-of-a-qna-maker-knowledge-base"></a>Wynik pewności QnA Maker bazy wiedzy
+Gdy zapytanie użytkownika jest dopasowane do bazy wiedzy, QnA Maker zwraca odpowiednie odpowiedzi wraz z oceną ufności. Ten wynik wskazuje, że odpowiedź jest odpowiednim dopasowaniem dla danego zapytania użytkownika. 
 
-Współczynnik ufności jest liczbą z zakresu od 0 do 100. Wynikiem 100 prawdopodobnie jest dokładne dopasowanie, podczas gdy wynik 0 oznacza, że, które można odnaleźć pasującego odpowiedzi. Im większy wynik - większą pewnością w odpowiedzi na pytanie. Dla danego zapytania może istnieć wiele odpowiedzi zwrócony. W takim przypadku odpowiedzi są zwracane w kolejności malejących współczynnik ufności.
+Wynik pewności jest liczbą z zakresu od 0 do 100. Wynik 100 prawdopodobnie pasuje do dokładnego, a wynik 0 oznacza, że nie znaleziono zgodnej odpowiedzi. Im wyższy wynik — tym większy poziom zaufania odpowiedzi. Dla danego zapytania można zwrócić wiele odpowiedzi. W takim przypadku odpowiedzi są zwracane w kolejności zmniejszania wyniku zaufania.
 
-W poniższym przykładzie widać jedną jednostkę pytań i odpowiedzi, przy użyciu 2 pytania. 
-
-
-![Przykładowy pary pytań i odpowiedzi](../media/qnamaker-concepts-confidencescore/ranker-example-qna.png)
-
-Powyższe przykładowe-mogą spodziewać się wyniki, takie jak zakres wynik przykładowe poniżej — dla różnych typów kwerend użytkowników:
+W poniższym przykładzie można zobaczyć jedną jednostkę QnA z 2 pytaniami. 
 
 
-![Oceniania zakresu wynik](../media/qnamaker-concepts-confidencescore/ranker-score-range.png)
+![Przykładowa para QnA](../media/qnamaker-concepts-confidencescore/ranker-example-qna.png)
+
+Dla powyższego przykładu — możesz oczekiwać wyników, takich jak przykładowy zakres wyników poniżej — dla różnych typów zapytań użytkowników:
 
 
-Poniższa tabela wskazuje typowe ufności skojarzone dla danego wynik.
+![Zakres oceny rangi](../media/qnamaker-concepts-confidencescore/ranker-score-range.png)
 
-|Wartość|Co oznacza wynik|Przykładowe zapytanie|
+
+Poniższa tabela wskazuje typowe zaufanie skojarzone z danym wynikiem.
+
+|Wartość wyniku|Znaczenie oceny|Przykładowe zapytanie|
 |--|--|--|
-|90 - 100|A niemal dokładne dopasowanie użytkownika zapytania i zapytania KB|"Moje zmiany nie są aktualizowane w KB po opublikowaniu"|
-|> 70|O dużej pewności — zwykle prawidłowej odpowiedzi, który całkowicie odpowiada na zapytania użytkownika|"Opublikowany bazę wiedzy, ale nie jest aktualizowany."|
-|50 - 70|Średnie obaw — zwykle stosunkowo dobrej odpowiedź, którą należy odpowiedzieć na głównym celem kwerenda użytkownika|"Należy zapisywać Moje aktualizacje przed mogę opublikować moje bazy wiedzy?"|
-|30 – 50|Niski obaw — zazwyczaj powiązane odpowiedzi, który częściowo odpowiedzi użytkownika intencji|"Czego zapisywanie i pociągu?"|
-|< 30|Bardzo małe obaw — zwykle nie odpowiada na kwerendy użytkownika, ale ma pewne dopasowania słów i fraz |"Gdzie można dodać synonimy do bazę wiedzy"|
-|0|Brak dopasowania, więc nie zostanie zwrócona odpowiedź.|"Ile usługa kosztuje"|
+|90 – 100|Niemal dokładne dopasowanie zapytania użytkownika i pytania bazy wiedzy|"Moje zmiany nie są aktualizowane w KB po opublikowaniu"|
+|> 70|Wysoki poziom pewności — zazwyczaj dobrą odpowiedzią, która całkowicie odpowiada na zapytanie użytkownika|"Opublikowano moją KB, ale nie jest ona aktualizowana"|
+|50 – 70|Średni poziom pewności — zwykle dość dobry odpowiedź, która powinna odpowiedzieć na główne intencje kwerendy użytkownika|"Czy warto zapisać moje aktualizacje przed opublikowaniem artykułu KB?"|
+|30 - 50|Niski poziom pewności — zwykle powiązana odpowiedź, która częściowo odpowiada na intencję użytkownika|"Do czego służy usługa zapisywania i uczenie?"|
+|< 30|Bardzo niski poziom pewności — zazwyczaj nie odpowiada na kwerendę użytkownika, ale zawiera pasujące wyrazy lub frazy |"Gdzie można dodać synonimy do mojej KB"|
+|0|Brak dopasowania, więc odpowiedź nie jest zwracana.|"Ile kosztuje usługa"|
 
-## <a name="choose-a-score-threshold"></a>Wybierz ocenę wartości progowej
-Powyższej tabeli przedstawiono wyniki, które oczekują na większości artykułów bazy wiedzy. Jednak ponieważ każda baza wiedzy różni się od siebie i ma różne typy słów, intencje i cele — zalecamy przetestowanie i wybranie progu, który najlepiej działa. Domyślnie próg jest ustawiany na 0, tak aby wszystkie możliwe odpowiedzi są zwracane. Zalecany próg, który powinien być dla większości artykułów bazy wiedzy, wynosi **50**.
+## <a name="choose-a-score-threshold"></a>Wybierz próg oceny
+W powyższej tabeli przedstawiono wyniki, które są oczekiwane w większości artykułów bazy wiedzy. Jednak ponieważ każda baza wiedzy różni się od siebie i ma różne typy słów, intencje i cele — zalecamy przetestowanie i wybranie progu, który najlepiej działa. Domyślnie próg jest ustawiany na 0, tak aby wszystkie możliwe odpowiedzi są zwracane. Zalecany próg, który powinien być dla większości artykułów bazy wiedzy, wynosi **50**.
 
-Wybierając próg, należy pamiętać, równowagę między dokładności i pokrycia i dostosować próg zgodnie z wymaganiami.
+Podczas wybierania progu należy wziąć pod uwagę równowagę między dokładnością i pokryciem, a także dostosować wartość progową w zależności od wymagań.
 
-- Jeśli **dokładność** (lub dokładności) jest niezwykle ważne dla danego scenariusza, a następnie zwiększ próg. Dzięki temu za każdym razem, aby zwrócić odpowiedź, będzie znacznie więcej CONFIDENT, wielkości i znacznie większe szanse na czy szukasz użytkowników odpowiedzi. W takim przypadku może się to zakończyć opuszczania więcej pytań, bez odpowiedzi. *Na przykład:* Jeśli wprowadzisz wartość progową **70**, możesz pominąć niektóre polubienia niejednoznaczne przykłady "co to jest zapisywanie i szkolenie?".
+- Jeśli **dokładność** (lub precyzja) jest ważniejsze dla danego scenariusza, zwiększ wartość progową. Dzięki temu za każdym razem, gdy zwracasz odpowiedź, będzie to znacznie trudniejsze rozwiązanie, a znacznie bardziej prawdopodobnie jest to odpowiedź dla użytkowników. W takim przypadku można zakończyć opuszczanie dalszych pytań bez odpowiedzi. *Na przykład:* Jeśli wprowadzisz próg **70**, możesz pominąć niektóre niejednoznaczne przykłady polubimy "co to jest zapisywanie i uczenie?".
 
-- Jeśli **pokrycia** (lub odwołania) jest bardziej ważne — i chcesz odpowiedzieć jak najwięcej pytań do odpowiedzi najszybciej, nawet w przypadku częściowej relacji do użytkownika pytanie - ZMNIEJSZYSZ wartość progową. Oznacza to, że może być więcej przypadków, gdy odpowiedź nie odpowiada na kwerendy rzeczywistego użytkownika, ale zapewnia nieco powiązane odpowiedzi. *Na przykład:* w przypadku progu **30**można udzielić odpowiedzi na zapytania, takie jak "gdzie mogę edytować moją KB?".
+- Jeśli **pokrycie** (lub odwołanie) jest ważniejsze i chcesz odpowiedzieć na tyle, na ile to możliwe, nawet jeśli istnieje tylko część relacji z pytaniem użytkownika, Obniż wartość progu. Oznacza to, że może wystąpić więcej przypadków, w których odpowiedź nie odpowiada rzeczywistej kwerendzie użytkownika, ale podaje nieco inną odpowiedź. *Na przykład:* w przypadku progu **30**można udzielić odpowiedzi na zapytania, takie jak "gdzie mogę edytować moją KB?".
 
 > [!NOTE]
-> Nowsze wersje usługi QnA Maker obejmują udoskonalenia w zakresie logiki oceniania i mogą mieć wpływ na próg. Ilekroć, zaktualizuj usługę, upewnij się, testowanie i dostosować wartość progową, jeśli to konieczne. Wersję pytań i odpowiedzi usługi można sprawdzić [tutaj](https://www.qnamaker.ai/UserSettings)i zobacz, jak uzyskać najnowsze aktualizacje [tutaj](../How-To/set-up-qnamaker-service-azure.md#get-the-latest-runtime-updates).
+> Nowsze wersje QnA Maker obejmują ulepszenia logiki oceniania i mogą wpływać na wartość progową. Za każdym razem, gdy aktualizujesz usługę, pamiętaj o przetestowaniu i dostosowaniu progu, jeśli jest to konieczne. W [tym miejscu](https://www.qnamaker.ai/UserSettings)możesz sprawdzić wersję usługi QNA, a także zapoznać się z artykułem jak uzyskać najnowsze aktualizacje w [tym miejscu](../How-To/set-up-qnamaker-service-azure.md#get-the-latest-runtime-updates).
 
 ## <a name="set-threshold"></a>Ustaw próg 
 
@@ -63,41 +63,41 @@ Ustaw ocenę wartości progowej jako właściwość [treści JSON interfejsu API
 
 W środowisku bot należy ustawić wynik jako część obiektu options z [C#](../how-to/metadata-generateanswer-usage.md?#use-qna-maker-with-a-bot-in-c) lub [Node. js](../how-to/metadata-generateanswer-usage.md?#use-qna-maker-with-a-bot-in-nodejs).
 
-## <a name="improve-confidence-scores"></a>Poprawić wyniki ufności
-Aby poprawić współczynnik ufności z określonej odpowiedzi na zapytanie użytkownika, można dodać zapytania użytkownika do bazy wiedzy knowledge base, jako alternatywnej pytanie na odpowiedź. Można również użyć [zmian wyrazów](https://docs.microsoft.com/rest/api/cognitiveservices/qnamaker/alterations/replace) bez uwzględniania wielkości liter, aby dodać synonimy do słów kluczowych w KB.
+## <a name="improve-confidence-scores"></a>Popraw wyniki pewności
+Aby poprawić wynik pewności konkretnej odpowiedzi dla kwerendy użytkownika, można dodać zapytanie użytkownika do bazy wiedzy jako alternatywne pytanie dotyczące tej odpowiedzi. Można również użyć [zmian wyrazów](https://docs.microsoft.com/rest/api/cognitiveservices/qnamaker/alterations/replace) bez uwzględniania wielkości liter, aby dodać synonimy do słów kluczowych w KB.
 
 
-## <a name="similar-confidence-scores"></a>Podobne wyniki ufności
-Wiele odpowiedzi mają podobne współczynnik ufności, jest prawdopodobne, że zapytanie było zbyt ogólne i w związku z tym dopasowane z równym prawdopodobieństwem przy użyciu wielu odpowiedzi. Spróbuj struktury usługi znacznie lepiej, tak, aby każda jednostka pytań i odpowiedzi ma różne opcje.
+## <a name="similar-confidence-scores"></a>Podobne oceny pewności
+Gdy wiele odpowiedzi ma podobny wynik zaufania, istnieje prawdopodobieństwo, że zapytanie jest zbyt ogólne i dlatego dopasowane z równym prawdopodobieństwem z wieloma odpowiedziami. Spróbuj zapewnić większą strukturę bazami, tak aby każda jednostka QnA miała odrębny cel.
 
 
-## <a name="confidence-score-differences"></a>Różnice ocena ufności
-Współczynnik ufności odpowiedzi mogą ulec zmianie w nieznaczny między testu i opublikowanej wersji w bazie wiedzy knowledge base, nawet jeśli zawartość jest taka sama. Jest to spowodowane zawartości testu i opublikowane wiedzy znajdują się w różnych indeksów usługi Azure Search. Po opublikowaniu bazy wiedzy zawartość pytania i odpowiedzi bazy wiedzy przechodzi z indeksu testu do indeksu produkcyjnego w usłudze Azure Search. Zobacz, jak działa operacja [publikowania](../Quickstarts/create-publish-knowledge-base.md#publish-the-knowledge-base) .
+## <a name="confidence-score-differences"></a>Różnice oceny ufności
+Wynik zaufania odpowiedzi może zmienić się nieznaczny między testem a opublikowaną wersją bazy wiedzy, nawet jeśli zawartość jest taka sama. Wynika to z faktu, że zawartość testu i opublikowanej bazy wiedzy znajdują się w różnych indeksach Wyszukiwanie poznawcze platformy Azure. Po opublikowaniu bazy wiedzy zawartość pytania i odpowiedzi bazy wiedzy przechodzi z indeksu testu do indeksu produkcyjnego w usłudze Azure Search. Zobacz, jak działa operacja [publikowania](../Quickstarts/create-publish-knowledge-base.md#publish-the-knowledge-base) .
 
-Jeśli masz bazę wiedzy w różnych regionach, każdy region używa własnego indeksu Azure Search. Ponieważ są używane różne indeksy, wyniki nie będą dokładnie takie same. 
-
-
-## <a name="no-match-found"></a>Nie znaleziono dopasowań
-Po znalezieniu niezgodności dobre, oceniania współczynnik ufności 0.0, lub "None" jest zwracany, a odpowiedź domyślną jest "Dobrą niezgodności w w bazie wiedzy". Można zastąpić tę [domyślną odpowiedź](#change-default-answer) w bot lub kod aplikacji wywołujący punkt końcowy. Alternatywnie można również ustawić odpowiedzi zastąpienie na platformie Azure i spowoduje to zmianę domyślnego dla wszystkich baz wiedzy wdrożone w określonej usługi QnA Maker.
-
-## <a name="change-default-answer"></a>Zmień domyślny odpowiedzi
-
-1. Przejdź do [witryny Azure portal](https://portal.azure.com) i przejdź do grupy zasobów, która reprezentuje utworzonej usługi QnA Maker.
-
-2. Kliknij, aby otworzyć **usługi App Service**.
-
-    ![W witrynie Azure portal dostęp do usługi App service dotyczące usługi QnA Maker](../media/qnamaker-concepts-confidencescore/set-default-response.png)
-
-3. Kliknij pozycję **ustawienia aplikacji** i edytować **DefaultAnswer** pole odpowiedź domyślną. Kliknij pozycję **Zapisz**.
-
-    ![Wybierz ustawienia aplikacji, a następnie edytuj DefaultAnswer dotyczące usługi QnA Maker](../media/qnamaker-concepts-confidencescore/change-response.png)
-
-4. Uruchom ponownie usługi App service
-
-    ![Po zmianie DefaultAnswer, uruchom ponownie usługi QnA Maker usługi App Service](../media/qnamaker-faq/qnamaker-appservice-restart.png)
+Jeśli masz bazę wiedzy w różnych regionach, każdy region używa własnego indeksu Wyszukiwanie poznawcze platformy Azure. Ponieważ są używane różne indeksy, wyniki nie będą dokładnie takie same. 
 
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="no-match-found"></a>Nie znaleziono dopasowania
+Gdy nie zostanie znalezione żadne dobre dopasowanie przez rangę, zwracana jest Ocena zaufania 0,0 lub "none", a domyślna odpowiedź to "brak dobrego dopasowania znalezionych w KB". Można zastąpić tę [domyślną odpowiedź](#change-default-answer) w bot lub kod aplikacji wywołujący punkt końcowy. Alternatywnie można również ustawić odpowiedź zastąpień na platformie Azure i zmienić wartość domyślną dla wszystkich baz wiedzy wdrożonych w określonej usłudze QnA Maker.
+
+## <a name="change-default-answer"></a>Zmień odpowiedź domyślną
+
+1. Przejdź do [Azure Portal](https://portal.azure.com) i przejdź do grupy zasobów, która reprezentuje utworzoną usługę QNA Maker.
+
+2. Kliknij, aby otworzyć **App Service**.
+
+    ![W Azure Portal uzyskaj dostęp do usługi App Service dla QnA Maker](../media/qnamaker-concepts-confidencescore/set-default-response.png)
+
+3. Kliknij pozycję **Ustawienia aplikacji** i Zmień pole **DefaultAnswer** na żądaną domyślną odpowiedź. Kliknij pozycję **Zapisz**.
+
+    ![Wybierz pozycję Ustawienia aplikacji, a następnie Edytuj DefaultAnswer QnA Maker](../media/qnamaker-concepts-confidencescore/change-response.png)
+
+4. Uruchom ponownie usługę App Service
+
+    ![Po zmianie DefaultAnswer należy ponownie uruchomić QnA Maker appService](../media/qnamaker-faq/qnamaker-appservice-restart.png)
+
+
+## <a name="next-steps"></a>Następne kroki
 > [!div class="nextstepaction"]
-> [Źródła danych obsługiwane](./data-sources-supported.md)
+> [Obsługiwane źródła danych](./data-sources-supported.md)
 

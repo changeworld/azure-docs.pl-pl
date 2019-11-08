@@ -6,7 +6,7 @@ documentationcenter: ''
 author: v-miegge
 manager: dcscontentpm
 editor: ''
-tags: ''
+tags: virtual-machines
 ms.service: virtual-machines
 ms.topic: troubleshooting
 ms.workload: infrastructure-services
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.devlang: azurecli
 ms.date: 09/10/2019
 ms.author: v-miegge
-ms.openlocfilehash: 56e420f9641638bfa79ff077be73132b00b934ab
-ms.sourcegitcommit: 0576bcb894031eb9e7ddb919e241e2e3c42f291d
+ms.openlocfilehash: 49fdfde402938ce8d0ee1b141a47e68c99c502e7
+ms.sourcegitcommit: 018e3b40e212915ed7a77258ac2a8e3a660aaef8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "71132093"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73796199"
 ---
 # <a name="repair-a-linux-vm-by-using-the-azure-virtual-machine-repair-commands"></a>Naprawianie maszyny wirtualnej z systemem Linux za pomocą poleceń naprawiania maszyny wirtualnej platformy Azure
 
@@ -54,13 +54,13 @@ Aby uzyskać dodatkową dokumentację i instrukcje, zobacz [AZ VM Repair](https:
 
    Jeśli wolisz zainstalować interfejs wiersza polecenia i korzystać z niego lokalnie, ten przewodnik Szybki start wymaga interfejsu wiersza polecenia platformy Azure w wersji 2.0.30 lub nowszej. Uruchom polecenie ``az --version``, aby dowiedzieć się, jaka wersja jest używana. Jeśli musisz zainstalować lub uaktualnić interfejs wiersza polecenia platformy Azure, zobacz [Instalowanie interfejsu wiersza polecenia platformy Azure](https://docs.microsoft.com/cli/azure/install-azure-cli).
 
-2. Jeśli po raz pierwszy użyto poleceń `az vm repair`, Dodaj rozszerzenie interfejsu wiersza polecenia maszyny wirtualnej do naprawy.
+2. Jeśli używasz poleceń `az vm repair` po raz pierwszy, Dodaj rozszerzenie interfejsu wiersza polecenia maszyny wirtualnej do naprawy.
 
    ```azurecli-interactive
    az extension add -n vm-repair
    ```
 
-   Jeśli wcześniej użyto poleceń `az vm repair`, Zastosuj wszystkie aktualizacje rozszerzenia VM-Repair.
+   Jeśli wcześniej użyto poleceń `az vm repair`, zastosuj wszelkie aktualizacje rozszerzenia VM-Repair.
 
    ```azurecli-interactive
    az extension update -n vm-repair

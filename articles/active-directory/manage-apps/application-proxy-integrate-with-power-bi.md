@@ -16,12 +16,12 @@ ms.author: mimart
 ms.reviewer: japere
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2148d6ea869a87571008c1f84c5b1000d4030bbb
-ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
+ms.openlocfilehash: 845ffda22cae9464870786cc5997b9f5521c03e1
+ms.sourcegitcommit: 018e3b40e212915ed7a77258ac2a8e3a660aaef8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73175936"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73795623"
 ---
 # <a name="enable-remote-access-to-power-bi-mobile-with-azure-ad-application-proxy"></a>Włączanie dostępu zdalnego do Power BI Mobile przy użyciu usługi Azure serwer proxy aplikacji usługi Azure AD
 
@@ -82,7 +82,7 @@ Aby uzyskać więcej informacji, zobacz [ograniczone delegowanie protokołu Kerb
 Teraz możesz przystąpić do konfigurowania serwer proxy aplikacji usługi Azure AD platformy Azure.
 
 1. Publikowanie usług raportów za pomocą serwera proxy aplikacji z następującymi ustawieniami. Aby uzyskać instrukcje krok po kroku dotyczące publikowania aplikacji za pomocą serwera proxy aplikacji, zobacz [publikowanie aplikacji przy użyciu usługi Azure serwer proxy aplikacji usługi Azure AD](application-proxy-add-on-premises-application.md#add-an-on-premises-app-to-azure-ad).
-   - **Wewnętrzny adres URL**: wprowadź adres URL serwera raportów, który łącznik może dotrzeć do sieci firmowej. Upewnij się, że ten adres URL jest dostępny z serwera, na którym jest zainstalowany łącznik. Najlepszym rozwiązaniem jest użycie domeny najwyższego poziomu, takiej jak `https://servername/`, aby uniknąć problemów z ścieżkami podrzędnymi (na przykład `https://servername/reports/` i `https://servername/reportserver/`), które nie zostały opublikowane za pośrednictwem serwera proxy aplikacji.
+   - **Wewnętrzny adres URL**: wprowadź adres URL serwera raportów, który łącznik może dotrzeć do sieci firmowej. Upewnij się, że ten adres URL jest dostępny z serwera, na którym jest zainstalowany łącznik. Najlepszym rozwiązaniem jest użycie domeny najwyższego poziomu, takiej jak `https://servername/`, aby uniknąć problemów z podścieżkami opublikowanymi za pośrednictwem serwera proxy aplikacji. Na przykład użyj `https://servername/`, a nie `https://servername/reports/` lub `https://servername/reportserver/`.
      > [!NOTE]
      > Zalecamy używanie bezpiecznego połączenia HTTPS z serwerem raportów. Aby uzyskać informacje na temat sposobu, zobacz [Konfigurowanie połączeń SSL na serwerze raportów w trybie macierzystym](https://docs.microsoft.com/sql/reporting-services/security/configure-ssl-connections-on-a-native-mode-report-server?view=sql-server-2017) .
    - **Zewnętrzny adres URL**: wprowadź publiczny adres URL, z którym zostanie nawiązane połączenie Power BI aplikacji mobilnej. Na przykład może wyglądać tak jak `https://reports.contoso.com`, jeśli jest używana domena niestandardowa. Aby użyć domeny niestandardowej, Przekaż certyfikat dla domeny i wskaż rekord DNS jako domyślną domenę msappproxy.net dla aplikacji. Aby uzyskać szczegółowe instrukcje, zobacz [Praca z domenami niestandardowymi w usłudze Azure serwer proxy aplikacji usługi Azure AD](application-proxy-configure-custom-domain.md).

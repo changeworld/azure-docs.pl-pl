@@ -5,14 +5,14 @@ services: application-gateway
 author: caya
 ms.service: application-gateway
 ms.topic: article
-ms.date: 10/22/2019
+ms.date: 11/4/2019
 ms.author: caya
-ms.openlocfilehash: 045fb54956e78e826b06dc1c56c29e1c7bd430bd
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: dec43a4d7eb5a9546fcd77cce972b93542ea3b10
+ms.sourcegitcommit: 018e3b40e212915ed7a77258ac2a8e3a660aaef8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73513421"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73795953"
 ---
 # <a name="install-an-application-gateway-ingress-controller-agic-using-an-existing-application-gateway"></a>Zainstaluj Application Gateway kontroler transferu danych przychodzących (AGIC) przy użyciu istniejącej Application Gateway
 
@@ -72,7 +72,7 @@ AGIC komunikuje się z serwerem interfejsu API Kubernetes i Azure Resource Manag
 
 ## <a name="set-up-aad-pod-identity"></a>Skonfiguruj tożsamość usługi AAD pod
 
-[Tożsamość usługi AAD pod](https://github.com/Azure/aad-pod-identity) jest kontrolerem podobnym do AGIC, który również działa na AKS. Wiąże się ona z tożsamościami Azure Active Directory Kubernetes. Tożsamość jest wymagana dla aplikacji w Kubernetes pod, aby można było komunikować się z innymi składnikami platformy Azure. W konkretnym przypadku należy uzyskać autoryzację dla AGIC pod, aby umożliwić żądanie HTTP do usługi [ARM](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview).
+[Tożsamość usługi AAD pod](https://github.com/Azure/aad-pod-identity) jest kontrolerem podobnym do AGIC, który również działa na AKS. Wiąże się ona z tożsamościami Azure Active Directory Kubernetes. Tożsamość jest wymagana dla aplikacji w Kubernetes pod, aby można było komunikować się z innymi składnikami platformy Azure. W konkretnym przypadku wymagana jest autoryzacja AGIC pod względem żądania HTTP do usługi [ARM](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview).
 
 Postępuj zgodnie z [instrukcjami dotyczącymi instalacji tożsamości usługi AAD pod](https://github.com/Azure/aad-pod-identity#deploy-the-azure-aad-identity-infra) , aby dodać ten składnik do AKS.
 
@@ -244,9 +244,9 @@ Przed włączeniem tego ustawienia __Wykonaj kopię zapasową konfiguracji Appli
 Pobrany plik zip będzie zawierał szablony JSON, bash i skrypty programu PowerShell, których można użyć do przywracania Application Gateway
 
 ### <a name="example-scenario"></a>Przykładowy scenariusz
-Przyjrzyjmy się Application Gateway urojonym, który zarządza ruchem dla 2 witryn sieci Web:
+Przyjrzyjmy się Application Gateway urojonym, który zarządza ruchem dla dwóch witryn sieci Web:
   - `dev.contoso.com` — hostowana na nowym AKS przy użyciu Application Gateway i AGIC
-  - `prod.contoso.com` — hostowana na [zestawie skalowania maszynowego na platformie Azure wirtualnych](https://azure.microsoft.com/services/virtual-machine-scale-sets/)
+  - `prod.contoso.com` — hostowana w [zestawie skalowania maszyn wirtualnych platformy Azure](https://azure.microsoft.com/services/virtual-machine-scale-sets/)
 
 Z ustawieniami domyślnymi AGIC zakłada, że ma 100% Application Gateway własności. AGIC zastępuje wszystkie konfiguracje bramy App Gateway. Jeśli udało nam się ręcznie utworzyć odbiornik dla `prod.contoso.com` (na Application Gateway) bez definiowania go w Kubernetes, AGIC usunie konfigurację `prod.contoso.com` w ciągu kilku sekund.
 
