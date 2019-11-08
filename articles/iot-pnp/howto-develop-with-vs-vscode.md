@@ -8,14 +8,14 @@ ms.topic: conceptual
 ms.service: iot-pnp
 services: iot-pnp
 ms.custom: mvc
-ms.openlocfilehash: 7bb4e507df24f50238197b738fd54e6b5c1d05ee
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
-ms.translationtype: HT
+ms.openlocfilehash: 6ce5a93cdd44af7f199d59d459daa46b4adb0719
+ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73571175"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73748038"
 ---
-# <a name="use-azure-iot-tools-for-visual-studio-code"></a>Korzystanie z narzędzi Azure IoT Tools for Visual Studio Code
+# <a name="use-visual-studio-and-visual-studio-code-to-build-iot-plug-and-play-devices"></a>Tworzenie urządzeń Plug and Play IoT za pomocą programu Visual Studio i Visual Studio Code
 
 Narzędzia Azure IoT Tools for Visual Studio Code zapewniają zintegrowane środowisko do tworzenia modeli możliwości urządzeń (DCM) i interfejsów, publikowania w repozytoriach modeli i generowania szkieletowego kodu C w celu zaimplementowania aplikacji urządzenia.
 

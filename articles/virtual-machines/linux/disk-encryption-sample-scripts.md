@@ -7,18 +7,18 @@ ms.topic: article
 ms.author: mbaldwin
 ms.date: 08/06/2019
 ms.custom: seodec18
-ms.openlocfilehash: 088ca5c20b0681cdd36da1b8a187873399aa32c6
-ms.sourcegitcommit: 7c2dba9bd9ef700b1ea4799260f0ad7ee919ff3b
+ms.openlocfilehash: b034bad8661e93cbf5797c93739f1db3a64626f0
+ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71828458"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73748911"
 ---
 # <a name="azure-disk-encryption-sample-scripts"></a>Azure Disk Encryption przykładowe skrypty 
 
 Ten artykuł zawiera przykładowe skrypty do przygotowywania wstępnie zaszyfrowanych dysków VHD i innych zadań.
 
-[!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
+ 
 
 ## <a name="sample-powershell-scripts-for-azure-disk-encryption"></a>Przykładowe skrypty programu PowerShell dla Azure Disk Encryption 
 
@@ -44,11 +44,11 @@ W poniższej tabeli przedstawiono parametry, których można użyć w skrypcie p
 
 |Parametr|Opis|Wypełnione?|
 |------|------|------|
-|$resourceGroupName| Nazwa grupy zasobów, do której należy Magazyn kluczy.  Jeśli jeszcze nie istnieje, zostanie utworzona nowa grupa zasobów o tej nazwie.| Oznacza|
-|$keyVaultName|Nazwa magazynu kluczy, w którym mają zostać umieszczone klucze szyfrowania. Nowy magazyn o tej nazwie zostanie utworzony, jeśli taki nie istnieje.| Oznacza|
-|$location|Lokalizacja magazynu kluczy. Upewnij się, że magazyn kluczy i maszyny wirtualne, które mają być szyfrowane, znajdują się w tej samej lokalizacji. Pobierz listę lokalizacji z `Get-AzLocation`.|Oznacza|
-|$subscriptionId|Identyfikator subskrypcji platformy Azure, która ma zostać użyta.  Identyfikator subskrypcji można uzyskać z `Get-AzSubscription`.|Oznacza|
-|$aadAppName|Nazwa aplikacji usługi Azure AD, która będzie używana do zapisywania wpisów tajnych w magazynie kluczy. Nowa aplikacja o tej nazwie zostanie utworzona, jeśli taka nie istnieje. Jeśli ta aplikacja już istnieje, Przekaż parametr aadClientSecret do skryptu.|False|
+|$resourceGroupName| Nazwa grupy zasobów, do której należy Magazyn kluczy.  Jeśli jeszcze nie istnieje, zostanie utworzona nowa grupa zasobów o tej nazwie.| True|
+|$keyVaultName|Nazwa magazynu kluczy, w którym mają zostać umieszczone klucze szyfrowania. Nowy magazyn o tej nazwie zostanie utworzony, jeśli taki nie istnieje.| True|
+|$location|Lokalizacja magazynu kluczy. Upewnij się, że magazyn kluczy i maszyny wirtualne, które mają być szyfrowane, znajdują się w tej samej lokalizacji. Pobierz listę lokalizacji za pomocą polecenia `Get-AzLocation`.|True|
+|$subscriptionId|Identyfikator subskrypcji platformy Azure, która ma zostać użyta.  Możesz pobrać identyfikator subskrypcji za pomocą polecenia `Get-AzSubscription`.|True|
+|$aadAppName|Nazwa aplikacji usługi Azure AD, która będzie używana do zapisywania wpisów tajnych w magazynie kluczy. Jeśli taka aplikacja nie istnieje, zostanie utworzona nowa aplikacja o podanej nazwie. Jeśli ta aplikacja już istnieje, Przekaż parametr aadClientSecret do skryptu.|False|
 |$aadClientSecret|Wpis tajny klienta aplikacji usługi Azure AD, który został utworzony wcześniej.|False|
 |$keyEncryptionKeyName|Nazwa opcjonalnego klucza szyfrowania klucza w magazynie kluczy. Nowy klucz o tej nazwie zostanie utworzony, jeśli taki nie istnieje.|False|
 
@@ -131,7 +131,7 @@ Postęp szyfrowania systemu operacyjnego można monitorować na trzy sposoby:
     ```
   Po osiągnięciu przez maszynę wirtualną "rozpoczęto szyfrowanie dysku systemu operacyjnego, zajmie od 40 do 50 minut na maszynie wirtualnej z magazynem w warstwie Premium.
 
-  Z powodu [problemu #388](https://github.com/Azure/WALinuxAgent/issues/388) w WALinuxAgent, `OsVolumeEncrypted` i `DataVolumesEncrypted` są wyświetlane jako `Unknown` w niektórych dystrybucjach. W programie WALinuxAgent w wersji 2.1.5 lub nowszej ten problem został rozwiązany automatycznie. Jeśli widzisz `Unknown` w danych wyjściowych, możesz zweryfikować stan szyfrowania dysku przy użyciu Azure Resource Explorer.
+  Z powodu [problemu #388](https://github.com/Azure/WALinuxAgent/issues/388) w WALinuxAgent, `OsVolumeEncrypted` i `DataVolumesEncrypted` wyświetlane jako `Unknown` w niektórych dystrybucjach. W programie WALinuxAgent w wersji 2.1.5 lub nowszej ten problem został rozwiązany automatycznie. Jeśli w danych wyjściowych zostanie wyświetlony `Unknown`, można sprawdzić stan szyfrowania dysku przy użyciu Azure Resource Explorer.
 
   Przejdź do [Azure Resource Explorer](https://resources.azure.com/), a następnie rozwiń tę hierarchię w panelu wyboru po lewej stronie:
 
@@ -151,7 +151,7 @@ Postęp szyfrowania systemu operacyjnego można monitorować na trzy sposoby:
 
   ![Widok wystąpienia maszyny wirtualnej](./media/disk-encryption/vm-instanceview.png)
 
-* Spójrz na [diagnostykę rozruchu](https://azure.microsoft.com/blog/boot-diagnostics-for-virtual-machines-v2/). Komunikaty z rozszerzenia ADE powinny być poprzedzone prefiksem `[AzureDiskEncryption]`.
+* Spójrz na [diagnostykę rozruchu](https://azure.microsoft.com/blog/boot-diagnostics-for-virtual-machines-v2/). Komunikaty z rozszerzenia ADE powinny być poprzedzone `[AzureDiskEncryption]`.
 
 * Zaloguj się do maszyny wirtualnej za pośrednictwem protokołu SSH i Pobierz dziennik rozszerzeń z:
 
@@ -226,7 +226,7 @@ Skonfiguruj szyfrowanie do pracy z platformą Azure, wykonując następujące cz
     fi
    ```
 
-2. Zmień konfigurację Crypt w */etc/crypttab*. Powinien wyglądać następująco:
+2. Zmień konfigurację Crypt w */etc/crypttab*. Powinny wyglądać następująco:
    ```
     xxx_crypt uuid=xxxxxxxxxxxxxxxxxxxxx none luks,discard,keyscript=/usr/local/sbin/azure_crypt_key.sh
     ```
@@ -243,7 +243,7 @@ Skonfiguruj szyfrowanie do pracy z platformą Azure, wykonując następujące cz
     nls_utf8
     nls_iso8859-1
    ```
-6. Uruchom `update-initramfs -u -k all`, aby zaktualizować initramfs, aby zastosować `keyscript`.
+6. Uruchom `update-initramfs -u -k all`, aby zaktualizować initramfs, aby zmiany `keyscript` zaczęły obowiązywać.
 
 7. Teraz można anulować obsługę administracyjną maszyny wirtualnej.
 
@@ -251,7 +251,7 @@ Skonfiguruj szyfrowanie do pracy z platformą Azure, wykonując następujące cz
 
 8. Przejdź do następnego kroku i przekaż dysk VHD na platformę Azure.
 
-### <a name="opensuse-132"></a>openSUSE 13.2
+### <a name="opensuse-132"></a>openSUSE 13,2
 Aby skonfigurować szyfrowanie podczas instalacji dystrybucji, wykonaj następujące czynności:
 1. Podczas partycjonowania dysków wybierz pozycję **Szyfruj grupę woluminów**, a następnie wprowadź hasło. Jest to hasło, które zostanie przekazane do magazynu kluczy.
 
@@ -527,7 +527,7 @@ Przed przekazaniem wpisu tajnego do magazynu kluczy można opcjonalnie go zaszyf
     $secretUrl = $response.id
 ```
 
-Użyj `$KeyEncryptionKey` i `$secretUrl` w następnym kroku, aby [dołączyć dysk systemu operacyjnego za pomocą KEK](#using-a-kek).
+Użyj `$KeyEncryptionKey` i `$secretUrl` w następnym kroku w celu [dołączenia dysku systemu operacyjnego za pomocą KEK](#using-a-kek).
 
 ##  <a name="specify-a-secret-url-when-you-attach-an-os-disk"></a>Określ tajny adres URL podczas dołączania dysku systemu operacyjnego
 
@@ -545,7 +545,7 @@ Podczas dołączania dysku systemu operacyjnego należy przekazać `$secretUrl`.
             -DiskEncryptionKeyUrl $SecretUrl
 ```
 ### <a name="using-a-kek"></a>Korzystanie z KEK
-Po dołączeniu dysku systemu operacyjnego należy przekazać `$KeyEncryptionKey` i `$secretUrl`. Ten adres URL został wygenerowany w sekcji "klucz tajny szyfrowania dysku zaszyfrowany za pomocą KEK".
+Po dołączeniu dysku systemu operacyjnego Przekaż `$KeyEncryptionKey` i `$secretUrl`. Ten adres URL został wygenerowany w sekcji "klucz tajny szyfrowania dysku zaszyfrowany za pomocą KEK".
 ```powershell
     Set-AzVMOSDisk `
             -VM $VirtualMachine `

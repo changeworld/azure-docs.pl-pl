@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: article
 ms.date: 09/17/2018
 ms.author: cynthn
-ms.openlocfilehash: 30e5a7e5953c56ff452b992370e8225ca103abba
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 016b53660499b86de13855cfa994c84d6d9bc702
+ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70079699"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73749506"
 ---
 # <a name="create-a-vm-from-a-managed-image"></a>Tworzenie maszyny wirtualnej na podstawie zarządzanego obrazu
 
@@ -43,11 +43,11 @@ Przed utworzeniem nowej maszyny wirtualnej należy [utworzyć zarządzany obraz 
 
 Za pomocą programu PowerShell można utworzyć maszynę wirtualną na podstawie obrazu przy użyciu uproszczonego parametru ustawianego dla polecenia cmdlet [New-AzVm](https://docs.microsoft.com/powershell/module/az.compute/new-azvm) . Obraz musi znajdować się w tej samej grupie zasobów, w której zostanie utworzona maszyna wirtualna.
 
-[!INCLUDE [updated-for-az.md](../../../includes/updated-for-az.md)]
+ 
 
 Uproszczony zestaw parametrów dla [New-AzVm](https://docs.microsoft.com/powershell/module/az.compute/new-azvm) wymaga podania nazwy, grupy zasobów i nazwy obrazu w celu utworzenia maszyny wirtualnej na podstawie obrazu. Funkcja New-AzVm będzie używać wartości parametru **-name** jako nazwy wszystkich zasobów, które tworzy automatycznie. W tym przykładzie udostępniamy bardziej szczegółowe nazwy dla każdego z zasobów, ale umożliwiają automatyczne tworzenie ich przez polecenie cmdlet. Możesz również utworzyć zasoby wcześniej, takie jak sieć wirtualna, i przekazać nazwę zasobu do polecenia cmdlet. Funkcja New-AzVm będzie używać istniejących zasobów, jeśli można je znaleźć według ich nazwy.
 
-Poniższy przykład tworzy maszynę wirtualną o nazwie *myVMFromImage*w grupie zasobów zasobu webresources z obrazu o nazwie Moja *obraz*. 
+Poniższy przykład tworzy maszynę wirtualną o nazwie *myVMFromImage*w grupie zasobów zasobu *webresources* z obrazu o nazwie Moja *obraz*. 
 
 
 ```azurepowershell-interactive

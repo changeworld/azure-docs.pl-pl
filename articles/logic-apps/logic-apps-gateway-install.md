@@ -8,13 +8,13 @@ author: ecfan
 ms.author: estfan
 ms.reviewer: arthii, LADocs
 ms.topic: article
-ms.date: 10/18/2019
-ms.openlocfilehash: d515982dc2937b660de75ee723cebe39b33bec7d
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.date: 11/06/2019
+ms.openlocfilehash: a8deb7933bb19745bbe4c3b3a209c19c9cc712bd
+ms.sourcegitcommit: 018e3b40e212915ed7a77258ac2a8e3a660aaef8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73580866"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73796307"
 ---
 # <a name="install-on-premises-data-gateway-for-azure-logic-apps"></a>Zainstaluj lokalną bramę danych dla Azure Logic Apps
 
@@ -33,9 +33,9 @@ W tym artykule pokazano, jak pobrać, zainstalować i skonfigurować lokalną br
 
 * Konto i subskrypcja platformy Azure. Jeśli nie masz konta platformy Azure z subskrypcją, [zarejestruj się, aby skorzystać z bezpłatnego konta platformy Azure](https://azure.microsoft.com/free/).
 
-  * Aby zainstalować bramę na komputerze lokalnym i zarządzać nią, należy użyć tego samego konta platformy Azure.
+  * Twoje konto platformy Azure musi należeć do jednej [dzierżawy lub katalogu usługi Azure Active Directory (Azure AD)](../active-directory/fundamentals/active-directory-whatis.md#terminology). Aby zainstalować bramę na komputerze lokalnym i administrować nią, należy użyć tego samego konta platformy Azure.
 
-    Podczas instalacji bramy możesz zalogować się przy użyciu konta platformy Azure, które łączy instalację bramy z kontem platformy Azure i tylko z tym kontem. Później w Azure Portal należy użyć tego samego konta platformy Azure do utworzenia zasobu bramy platformy Azure, który rejestruje i zgłasza instalację bramy. W Azure Logic Apps lokalne wyzwalacze i akcje używają zasobu bramy do łączenia się z lokalnymi źródłami danych.
+  * Podczas instalacji bramy możesz zalogować się przy użyciu konta platformy Azure, które łączy instalację bramy z kontem platformy Azure i tylko z tym kontem. Później w Azure Portal należy użyć tego samego konta platformy Azure i dzierżawy usługi Azure AD podczas tworzenia zasobu bramy platformy Azure, który rejestruje i zgłasza instalację bramy. W Azure Logic Apps lokalne wyzwalacze i akcje używają zasobu bramy do łączenia się z lokalnymi źródłami danych.
 
     > [!NOTE]
     > Do siebie można połączyć tylko jedną instalację bramy i jeden zasób bramy platformy Azure. Nie można połączyć tej samej instalacji bramy z wieloma kontami platformy Azure lub zasobami bramy platformy Azure. Konto platformy Azure może jednak łączyć się z wieloma instalacjami bramy i zasobami bramy platformy Azure. W lokalnym wyzwalaczu lub akcji możesz wybrać spośród różnych subskrypcji platformy Azure, a następnie wybrać skojarzony zasób bramy.

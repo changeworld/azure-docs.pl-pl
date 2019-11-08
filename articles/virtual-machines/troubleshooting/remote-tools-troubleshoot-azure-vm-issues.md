@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.devlang: azurecli
 ms.date: 01/11/2018
 ms.author: delhan
-ms.openlocfilehash: 70d777fe2e939c1871bc318eed439214fd3e3f60
-ms.sourcegitcommit: 116bc6a75e501b7bba85e750b336f2af4ad29f5a
+ms.openlocfilehash: fab1e0b6f3b01446baed974b4be9b7295af4f837
+ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/20/2019
-ms.locfileid: "71155744"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73749721"
 ---
 # <a name="use-remote-tools-to-troubleshoot-azure-vm-issues"></a>Rozwiązywanie problemów z MASZYNami wirtualnymi platformy Azure za pomocą narzędzi zdalnych
 
@@ -39,7 +39,7 @@ psexec \\<computer>-u user -s cmd
 
 >[!Note]
 >* Polecenie musi być uruchamiane na komputerze znajdującym się w tej samej sieci wirtualnej.
->* Aby zastąpić \<> komputera, można użyć adresu DIP lub nazwy hosta.
+>* Aby zastąpić \<komputera >, można użyć adresu DIP lub nazwy hosta.
 >* Parametr-s sprawdza, czy polecenie jest wywoływane przy użyciu konta systemowego (uprawnienia administratora).
 >* PsExec używa portów TCP 135 i 445. W związku z tym dwa porty muszą być otwarte na zaporze.
 
@@ -91,7 +91,7 @@ Set-AzureVMCustomScriptExtension "CustomScriptExtension" -VM $vm -StorageAccount
 
 ### <a name="for-v2-vms"></a>Dla maszyn wirtualnych v2
 
-[!INCLUDE [updated-for-az.md](../../../includes/updated-for-az.md)]
+ 
 
 ```powershell
 #Setup the basic variables
@@ -213,7 +213,7 @@ Invoke-Command -ComputerName "<<COMPUTERNAME>" -ScriptBlock {"<<SCRIPT BLOCK>>"}
 
 1. Z poziomu innej maszyny wirtualnej w tej samej sieci wirtualnej Otwórz Edytor rejestru (regedit. exe).
 
-2. Wybierz pozycję **plik** >**Połącz rejestr sieciowy**.
+2. Wybierz kolejno pozycje **plik** >**Połącz rejestr sieciowy**.
 
    ![Opcja zdalna](./media/remote-tools-troubleshoot-azure-vm-issues/remote-registry.png) 
 

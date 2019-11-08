@@ -1,6 +1,6 @@
 ---
 title: 'Azure Backup: odzyskiwanie plików i folderów z kopii zapasowej maszyny wirtualnej platformy Azure'
-description: Odzyskiwanie plików z punktu odzyskiwania maszyny wirtualnej platformy Azure
+description: W tym artykule dowiesz się, jak odzyskiwać pliki i foldery z punktu odzyskiwania maszyny wirtualnej platformy Azure.
 ms.reviewer: pullabhk
 author: dcurwin
 manager: carmonm
@@ -9,12 +9,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 03/01/2019
 ms.author: dacurwin
-ms.openlocfilehash: df8e309ecb2a81205684c60076015f79ac8c4c8f
-ms.sourcegitcommit: b1c94635078a53eb558d0eb276a5faca1020f835
+ms.openlocfilehash: c6b49e794011d915f8cd7b29e6317e80391f2675
+ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/27/2019
-ms.locfileid: "72968483"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73747369"
 ---
 # <a name="recover-files-from-azure-virtual-machine-backup"></a>Odzyskiwanie plików z kopii zapasowej maszyny wirtualnej platformy Azure
 
@@ -189,7 +189,7 @@ W poniższej tabeli przedstawiono zgodność między systemami operacyjnymi serw
 | Windows Server 2016    | Windows 10 |
 | Windows Server 2012 R2 | Windows 8.1 |
 | Windows Server 2012    | Windows 8  |
-| Windows Server 2008 R2 | Windows 7   |
+| Windows Server 2008 R2 | Windows 7   |
 
 ### <a name="for-linux-os"></a>Dla systemu operacyjnego Linux
 
@@ -215,14 +215,14 @@ Skrypt wymaga również, aby składniki Python i bash były bezpiecznie wykonywa
 |Składnik | Wersja  |
 | --------------- | ---- |
 | bash | 4 i nowsze |
-| Python | 2.6.6 i nowsze  |
+| python | 2.6.6 i nowsze  |
 | Protokół | 1,2 powinna być obsługiwana  |
 
 ## <a name="file-recovery-from-virtual-machine-backups-having-large-disks"></a>Odzyskiwanie plików z kopii zapasowych maszyn wirtualnych z dużymi dyskami
 
 W tej sekcji wyjaśniono, jak przeprowadzić odzyskiwanie plików z kopii zapasowych maszyn wirtualnych platformy Azure, których liczba dysków jest > 16, a każdy rozmiar dysku to > 4 TB.
 
-Ponieważ proces odzyskiwania plików dołącza wszystkie dyski z kopii zapasowej, w przypadku dużej liczby dysków (> 16) lub dużych dysków (> 4 TB każdego) zalecane są następujące punkty akcji.
+Ponieważ proces odzyskiwania plików dołącza wszystkie dyski z kopii zapasowej, w przypadku użycia dużej liczby dysków (> 16) lub dużych dysków (> 4 TB) zalecane są następujące punkty akcji:
 
 - Zachowaj oddzielny serwer przywracania (maszyny wirtualne D2v3 maszyny wirtualnej platformy Azure) do odzyskiwania plików. Można użyć tylko odzyskiwania plików, a następnie wyłączyć, gdy nie jest to wymagane. Przywracanie na oryginalnej maszynie nie jest zalecane, ponieważ ma znaczący wpływ na maszynę wirtualną.
 - Następnie uruchom skrypt jeden raz, aby sprawdzić, czy operacja odzyskiwania plików powiodła się.
@@ -261,7 +261,7 @@ Jeśli występują problemy podczas odzyskiwania plików z maszyn wirtualnych, z
 | Specyficzne dla systemu Linux: nie można wyświetlić żądanych woluminów | System operacyjny maszyny, na której jest uruchamiany skrypt, może nie rozpoznać podstawowego systemu plików chronionej maszyny wirtualnej | Sprawdź, czy punkt odzyskiwania jest spójny pod kątem awarii lub spójny z plikiem. Jeśli plik jest spójny, uruchom skrypt na innym komputerze, którego system operacyjny rozpozna system plików chronionej maszyny wirtualnej |
 | Specyficzne dla systemu Windows: nie można wyświetlić żądanych woluminów | Dyski mogły zostać dołączone, ale nie skonfigurowano woluminów | Na ekranie Zarządzanie dyskami Zidentyfikuj dodatkowe dyski związane z punktem odzyskiwania. Jeśli którykolwiek z tych dysków jest w stanie offline, spróbuj przełączyć je w tryb online, klikając dysk prawym przyciskiem myszy, a następnie kliknij pozycję "online".|
 
-## <a name="security"></a>Zabezpieczenia
+## <a name="security"></a>Bezpieczeństwo
 
 W tej sekcji omówiono różne miary zabezpieczeń związane z wdrażaniem odzyskiwania plików z kopii zapasowych maszyn wirtualnych platformy Azure, dzięki czemu użytkownicy mają świadomość aspektów zabezpieczeń funkcji.
 

@@ -7,21 +7,26 @@ manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
 ms.subservice: load-data
-ms.date: 07/28/2019
+ms.date: 11/07/2019
 ms.author: kevin
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
-ms.openlocfilehash: a23b785d7699022f8508d3ca90d0ff0f60d6a5c7
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
-ms.translationtype: HT
+ms.openlocfilehash: 9220bf0cf94eaae6ddc945e83deac2a6041158d2
+ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73686132"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73748508"
 ---
-# <a name="designing-a-polybase-data-loading-strategy-for-azure-sql-data-warehouse"></a>Projektowanie strategii ładowania danych podstawowych dla Azure SQL Data Warehouse
+# <a name="data-loading-strategies-for-azure-sql-data-warehouse"></a>Strategie ładowania danych dla Azure SQL Data Warehouse
 
-Tradycyjne magazyny danych SMP używają procesu wyodrębniania, przekształcania i ładowania (ETL) do ładowania danych. Azure SQL Data Warehouse to architektura wysoce równoległego przetwarzania (MPP), która korzysta z skalowalności i elastyczności zasobów obliczeniowych i magazynu. Wykorzystanie procesu wyodrębniania, ładowania i przekształcania (ELT) może korzystać z funkcji MPP i wyeliminować zasoby konieczne do przekształcenia danych przed ich załadowaniem. Chociaż SQL Data Warehouse obsługuje wiele metod ładowania, w tym opcje inne niż podstawowe, takie jak BCP i SQL docelowa elementu BulkCopy API, najszybszym i najbardziej skalowalnym sposobem ładowania danych jest użycie bazy.  Baza kodu jest technologią, która uzyskuje dostęp do danych zewnętrznych przechowywanych w usłudze Azure Blob Storage lub Azure Data Lake Store za pośrednictwem języka T-SQL.
+Tradycyjne magazyny danych SMP używają procesu wyodrębniania, transformacji i ładowania (ETL) do ładowania danych. Azure SQL Data Warehouse to architektura wysoce równoległego przetwarzania (MPP), która korzysta z skalowalności i elastyczności zasobów obliczeniowych i magazynu. Wykorzystanie procesu wyodrębniania, ładowania i przekształcania (ELT) może korzystać z funkcji MPP i wyeliminować zasoby konieczne do przekształcenia danych przed ich załadowaniem. Chociaż SQL Data Warehouse obsługuje wiele metod ładowania, w tym popularne opcje SQL Server, takie jak BCP i interfejs API usługi SQL docelowa elementu BulkCopy, najszybszym i najbardziej skalowalnym sposobem ładowania danych jest użycie podstawowych tabel zewnętrznych i [instrukcji Copy](/sql/t-sql/statements/copy-into-transact-sql?view=azure-sqldw-latest) (wersja zapoznawcza).  Korzystając z instrukcji Base i COPY, można uzyskać dostęp do zewnętrznych danych przechowywanych w usłudze Azure Blob Storage lub Azure Data Lake Store za pośrednictwem języka T-SQL. Aby zapewnić największą elastyczność podczas ładowania do SQL Data Warehouse, zalecamy użycie instrukcji COPY. 
 
+> [!NOTE]  
+> Instrukcja COPY jest obecnie w publicznej wersji zapoznawczej. Aby przekazać opinię, Wyślij wiadomość e-mail na następującą listę dystrybucyjną: sqldwcopypreview@service.microsoft.com.
+>
+        
+ 
 > [!VIDEO https://www.youtube.com/embed/l9-wP7OdhDk]
 
 
@@ -29,28 +34,54 @@ Tradycyjne magazyny danych SMP używają procesu wyodrębniania, przekształcani
 
 Wyodrębnij, Załaduj i Przekształć (ELT) to proces polegający na tym, że dane są wyodrębniane z systemu źródłowego, ładowane do magazynu danych, a następnie przekształcane. 
 
-Podstawowe kroki w celu wdrożenia wielopodstawowe ELT dla SQL Data Warehouse są następujące:
+Podstawowe kroki implementowania ELT dla SQL Data Warehouse są następujące:
 
 1. Wyodrębnij dane źródłowe do plików tekstowych.
 2. Wydziel dane do usługi Azure Blob Storage lub Azure Data Lake Store.
 3. Przygotuj dane do załadowania.
-4. Załaduj dane do tabel przemieszczania SQL Data Warehouse przy użyciu bazy danych. 
+4. Załaduj dane do tabel przemieszczania SQL Data Warehouse z użyciem polecenia Base lub COPY. 
 5. Przekształć dane.
 6. Wstaw dane do tabel produkcyjnych.
 
 
-Aby zapoznać się z samouczkiem ładowania, zobacz [Korzystanie z bazy danych w celu załadowania z magazynu obiektów blob platformy Azure do Azure SQL Data Warehouse](load-data-from-azure-blob-storage-using-polybase.md).
+Aby zapoznać się z samouczkiem dotyczącym ładowania wieloczęściowego, zobacz [Korzystanie z bazy danych w celu załadowania z magazynu obiektów blob platformy Azure do Azure SQL Data Warehouse](load-data-from-azure-blob-storage-using-polybase.md).
 
 Aby uzyskać więcej informacji, zobacz Blog dotyczący [ładowania wzorców](https://blogs.msdn.microsoft.com/sqlcat/20../../azure-sql-data-warehouse-loading-patterns-and-strategies/). 
 
 
 ## <a name="1-extract-the-source-data-into-text-files"></a>1. Wyodrębnij dane źródłowe do plików tekstowych
 
-Pobieranie danych z systemu źródłowego zależy od lokalizacji magazynu.  Celem jest przeniesienie danych do obsługiwanych, rozdzielonych plików tekstowych. 
+Pobieranie danych z systemu źródłowego zależy od lokalizacji magazynu.  Celem jest przeniesienie danych do formatu Base i SKOPIOWAnie obsługiwanego tekstu lub plików CSV. 
 
-### <a name="polybase-external-file-formats"></a>Podstawowe formaty plików zewnętrznych
+### <a name="polybase-and-copy-external-file-formats"></a>Zewnętrzne i kopiowanie formatów plików zewnętrznych
 
-Baza danych ładuje dane z rozdzielanych plików tekstowych UTF-8 i UTF-16. Oprócz rozdzielanych plików tekstowych są one ładowane z plików z formatami usługi Hadoop, ORC i Parquet. Baza danych może również ładować dane ze strumienia gzip i plików skompresowanych. Baza danych nie obsługuje obecnie rozszerzonego formatu ASCII, stałej szerokości ani formatów zagnieżdżonych, takich jak WinZip, JSON i XML. Jeśli eksportujesz z SQL Server, możesz użyć [narzędzia wiersza polecenia BCP](/sql/tools/bcp-utility) , aby wyeksportować dane do rozdzielanych plików tekstowych. Mapowanie typu danych Parquet na SQL DW jest następujące:
+Korzystając z instrukcji Base i COPY, można ładować dane z rozdzielonych plików tekstowych lub CSV z kodowaniem UTF-8 i UTF-16. Oprócz rozdzielonych plików tekstowych lub CSV, są one ładowane z formatów plików Hadoop, takich jak ORC i Parquet. Instrukcje Base i COPY mogą również ładować dane z skompresowanych plików gzip i przyciągania. Rozszerzony format ASCII, stała szerokość i zagnieżdżone formaty, takie jak WinZip lub XML, nie są obsługiwane. Jeśli eksportujesz z SQL Server, możesz użyć [narzędzia wiersza polecenia BCP](/sql/tools/bcp-utility?view=azure-sqldw-latest) , aby wyeksportować dane do rozdzielanych plików tekstowych. 
+
+## <a name="2-land-the-data-into-azure-blob-storage-or-azure-data-lake-store"></a>2. wyląduj dane do usługi Azure Blob Storage lub Azure Data Lake Store
+
+Aby wystawić dane w usłudze Azure Storage, można przenieść je do [usługi Azure Blob Storage](../storage/blobs/storage-blobs-introduction.md) lub [Azure Data Lake Store Gen2](../data-lake-store/data-lake-store-overview.md). W każdej lokalizacji dane powinny być przechowywane w plikach tekstowych. Instrukcji Base i COPY można załadować z jednej z lokalizacji.
+
+Narzędzia i usługi, których można użyć do przenoszenia danych do usługi Azure Storage:
+
+- Usługa [Azure ExpressRoute](../expressroute/expressroute-introduction.md) zwiększa przepustowość sieci, wydajność i przewidywalność. ExpressRoute to usługa, która przekierowuje dane za pomocą dedykowanego połączenia prywatnego z platformą Azure. Połączenia ExpressRoute nie kierują danych za pomocą publicznego Internetu. Połączenia oferują większą niezawodność, większe szybkości, krótsze opóźnienia oraz lepsze zabezpieczenia niż typowe połączenia przez publiczny Internet.
+- [Narzędzie AzCopy](../storage/common/storage-moving-data.md) przenosi dane do usługi Azure Storage za pośrednictwem publicznego Internetu. To działa, jeśli rozmiar danych jest mniejszy niż 10 TB. Aby przeprowadzić regularne ładowanie w programie AZCopy, przetestuj szybkość sieci, aby sprawdzić, czy jest ona akceptowalna. 
+- [Azure Data Factory (ADF)](../data-factory/introduction.md) zawiera bramę, którą można zainstalować na serwerze lokalnym. Następnie możesz utworzyć potok, aby przenieść dane z serwera lokalnego do usługi Azure Storage. Aby użyć Data Factory z SQL Data Warehouse, zobacz [ładowanie danych do SQL Data Warehouse](/azure/data-factory/load-azure-sql-data-warehouse).
+
+
+## <a name="3-prepare-the-data-for-loading"></a>3. Przygotuj dane do załadowania
+
+Może być konieczne przygotowanie i oczyszczenie danych na koncie magazynu przed załadowaniem go do SQL Data Warehouse. Przygotowanie danych można wykonać, gdy dane są przechowywane w źródle, podczas eksportowania danych do plików tekstowych lub po utworzeniu danych w usłudze Azure Storage.  Najłatwiej pracujesz z danymi tak wcześnie w procesie, jak to możliwe.  
+
+### <a name="define-external-tables"></a>Definiowanie tabel zewnętrznych
+
+Jeśli korzystasz z bazy danych Base, musisz zdefiniować tabele zewnętrzne przed załadowaniem. Tabele zewnętrzne nie są wymagane przez instrukcję COPY. Baza danych używa tabel zewnętrznych w celu definiowania i uzyskiwania dostępu do nich w usłudze Azure Storage. Tabela zewnętrzna jest podobna do widoku bazy danych. Tabela zewnętrzna zawiera schemat tabeli i wskazuje dane przechowywane poza magazynem danych. 
+
+Definiowanie tabel zewnętrznych obejmuje określenie źródła danych, formatu plików tekstowych i definicji tabeli. Informacje o składni języka T-SQL, które są potrzebne, są następujące:
+- [UTWÓRZ ZEWNĘTRZNE ŹRÓDŁO DANYCH](/sql/t-sql/statements/create-external-data-source-transact-sql?view=azure-sqldw-latest)
+- [CREATE EXTERNAL FILE FORMAT](/sql/t-sql/statements/create-external-file-format-transact-sql?view=azure-sqldw-latest)
+- [TWORZENIE TABELI ZEWNĘTRZNEJ](/sql/t-sql/statements/create-external-table-transact-sql?view=azure-sqldw-latest)
+
+Podczas ładowania Parquet mapowanie typu danych za pomocą programu SQL DW to:
 
 | **Parquet — typ danych** |                      **Typ danych SQL**                       |
 | :-------------------: | :----------------------------------------------------------: |
@@ -77,35 +108,11 @@ Baza danych ładuje dane z rozdzielanych plików tekstowych UTF-8 i UTF-16. Opr�
 |       date            |                             date                             |
 |        decimal        |                            decimal                           |
 
-## <a name="2-land-the-data-into-azure-blob-storage-or-azure-data-lake-store"></a>2. wyląduj dane do usługi Azure Blob Storage lub Azure Data Lake Store
-
-Aby wystawić dane w usłudze Azure Storage, można przenieść je do [usługi Azure Blob Storage](../storage/blobs/storage-blobs-introduction.md) lub [Azure Data Lake Store](../data-lake-store/data-lake-store-overview.md). W każdej lokalizacji dane powinny być przechowywane w plikach tekstowych. Baza Base może ładować z jednej lokalizacji.
-
-Narzędzia i usługi, których można użyć do przenoszenia danych do usługi Azure Storage:
-
-- Usługa [Azure ExpressRoute](../expressroute/expressroute-introduction.md) zwiększa przepustowość sieci, wydajność i przewidywalność. ExpressRoute to usługa, która przekierowuje dane za pomocą dedykowanego połączenia prywatnego z platformą Azure. Połączenia ExpressRoute nie kierują danych za pomocą publicznego Internetu. Połączenia oferują większą niezawodność, większe szybkości, krótsze opóźnienia oraz lepsze zabezpieczenia niż typowe połączenia przez publiczny Internet.
-- [Narzędzie AzCopy](../storage/common/storage-moving-data.md) przenosi dane do usługi Azure Storage za pośrednictwem publicznego Internetu. To działa, jeśli rozmiar danych jest mniejszy niż 10 TB. Aby przeprowadzić regularne ładowanie w programie AZCopy, przetestuj szybkość sieci, aby sprawdzić, czy jest ona akceptowalna. 
-- [Azure Data Factory (ADF)](../data-factory/introduction.md) zawiera bramę, którą można zainstalować na serwerze lokalnym. Następnie możesz utworzyć potok, aby przenieść dane z serwera lokalnego do usługi Azure Storage. Aby użyć Data Factory z SQL Data Warehouse, zobacz [ładowanie danych do SQL Data Warehouse](/azure/data-factory/load-azure-sql-data-warehouse).
-
-
-## <a name="3-prepare-the-data-for-loading"></a>3. Przygotuj dane do załadowania
-
-Może być konieczne przygotowanie i oczyszczenie danych na koncie magazynu przed załadowaniem go do SQL Data Warehouse. Przygotowanie danych można wykonać, gdy dane są przechowywane w źródle, podczas eksportowania danych do plików tekstowych lub po utworzeniu danych w usłudze Azure Storage.  Najłatwiej pracujesz z danymi tak wcześnie w procesie, jak to możliwe.  
-
-### <a name="define-external-tables"></a>Definiowanie tabel zewnętrznych
-
-Przed załadowaniem danych należy zdefiniować tabele zewnętrzne w magazynie danych. Baza danych używa tabel zewnętrznych w celu definiowania i uzyskiwania dostępu do nich w usłudze Azure Storage. Tabela zewnętrzna jest podobna do widoku bazy danych. Tabela zewnętrzna zawiera schemat tabeli i wskazuje dane przechowywane poza magazynem danych. 
-
-Definiowanie tabel zewnętrznych obejmuje określenie źródła danych, formatu plików tekstowych i definicji tabeli. Oto tematy dotyczące składni języka T-SQL, które będą potrzebne:
-- [UTWÓRZ ZEWNĘTRZNE ŹRÓDŁO DANYCH](/sql/t-sql/statements/create-external-data-source-transact-sql)
-- [CREATE EXTERNAL FILE FORMAT](/sql/t-sql/statements/create-external-file-format-transact-sql)
-- [TWORZENIE TABELI ZEWNĘTRZNEJ](/sql/t-sql/statements/create-external-table-transact-sql)
-
 Aby zapoznać się z przykładem tworzenia obiektów zewnętrznych, zobacz krok [Tworzenie tabel zewnętrznych](load-data-from-azure-blob-storage-using-polybase.md#create-external-tables-for-the-sample-data) w samouczku ładowania.
 
 ### <a name="format-text-files"></a>Formatowanie plików tekstowych
 
-Po zdefiniowaniu obiektów zewnętrznych należy wyrównać wiersze plików tekstowych z tabelą zewnętrzną i definicją formatu pliku. Dane w każdym wierszu pliku tekstowego muszą być wyrównane z definicją tabeli.
+W przypadku korzystania z bazy Base, zdefiniowane obiekty zewnętrzne muszą wyrównać wiersze plików tekstowych z definicją tabeli zewnętrznej i formatu pliku. Dane w każdym wierszu pliku tekstowego muszą być wyrównane z definicją tabeli.
 Aby sformatować pliki tekstowe:
 
 - Jeśli dane pochodzą z nierelacyjnego źródła, należy przekształcić je w wiersze i kolumny. Niezależnie od tego, czy dane pochodzą ze źródła relacyjnego, czy nierelacyjnego, dane muszą zostać przekształcone w celu dopasowania z definicjami kolumn dla tabeli, do której mają zostać załadowane dane. 
@@ -113,22 +120,22 @@ Aby sformatować pliki tekstowe:
 - Oddziel pola w pliku tekstowym z terminatorem.  Upewnij się, że używasz znaku lub sekwencji znaków, która nie została znaleziona w danych źródłowych. Użyj terminatora określonego przy użyciu parametru [Create External File Format](/sql/t-sql/statements/create-external-file-format-transact-sql).
 
 
-## <a name="4-load-the-data-into-sql-data-warehouse-staging-tables-using-polybase"></a>4. Załaduj dane do tabel przemieszczania SQL Data Warehouse przy użyciu bazy danych
+## <a name="4-load-the-data-into-sql-data-warehouse-staging-tables-using-polybase-or-the-copy-statement"></a>4. Załaduj dane do tabel przemieszczania SQL Data Warehouse przy użyciu bazy danych lub instrukcji COPY
 
-Najlepszym rozwiązaniem jest załadowanie danych do tabeli przejściowej. Tabele przemieszczania umożliwiają obsługę błędów bez zakłócania pracy z tabelami produkcyjnymi. Tabela przemieszczania daje również możliwość użycia SQL Data Warehouse MPP na potrzeby transformacji danych przed wstawieniem danych do tabel produkcyjnych.
+Najlepszym rozwiązaniem jest załadowanie danych do tabeli przejściowej. Tabele przemieszczania umożliwiają obsługę błędów bez zakłócania pracy z tabelami produkcyjnymi. Tabela przemieszczania daje również możliwość użycia SQL Data Warehouse MPP na potrzeby transformacji danych przed wstawieniem danych do tabel produkcyjnych. Tabela musi być wstępnie utworzona podczas ładowania do tabeli przemieszczania z KOPIą.
 
-### <a name="options-for-loading-with-polybase"></a>Opcje ładowania z bazą
+### <a name="options-for-loading-with-polybase-and-copy-statement"></a>Opcje ładowania z użyciem instrukcji Base i COPY
 
 Aby załadować dane za pomocą bazy danych Base, można użyć dowolnej z następujących opcji ładowania:
 
 - Baza danych w języku [T-SQL](load-data-from-azure-blob-storage-using-polybase.md) działa prawidłowo, gdy dane są przechowywane w usłudze Azure Blob storage lub Azure Data Lake Store. Zapewnia ona największą kontrolę nad procesem ładowania, ale wymaga również zdefiniowania zewnętrznych obiektów danych. Inne metody definiują te obiekty w tle podczas mapowania tabel źródłowych do tabel docelowych.  Aby zorganizować obciążenia T-SQL, można użyć Azure Data Factory, SSIS lub Azure Functions. 
 - [Baza](/sql/integration-services/load-data-to-sql-data-warehouse) danych programu SSIS działa dobrze, gdy dane źródłowe są w SQL Server, SQL Server lokalnie lub w chmurze. Program SSIS definiuje mapowania tabeli źródłowej do docelowej, a także organizuje obciążenie. Jeśli masz już pakiety SSIS, możesz zmodyfikować pakiety, aby współpracowały z nowym miejscem docelowym magazynu danych. 
-- [Baza z Azure Data Factory (ADF)](sql-data-warehouse-load-with-data-factory.md) to inne narzędzie aranżacji.  Definiuje potok i planuje zadania. 
+- [Instrukcja "Base" i "Copy" z Azure Data Factory (ADF)](sql-data-warehouse-load-with-data-factory.md) to inne narzędzie aranżacji.  Definiuje potok i planuje zadania. 
 - [Baza danych z Azure Databricks](../azure-databricks/databricks-extract-load-sql-data-warehouse.md) transferuje dane z tabeli SQL Data Warehouse do Databases dataframes i/lub zapisuje dane z ramki Databases do tabeli SQL Data Warehouse przy użyciu bazy danych.
 
-### <a name="non-polybase-loading-options"></a>Opcje ładowania inne niż podstawowe
+### <a name="other-loading-options"></a>Inne opcje ładowania
 
-Jeśli dane nie są zgodne z bazą danych, można użyć narzędzia [BCP](/sql/tools/bcp-utility) lub [interfejsu API SqlBulkCopy](https://msdn.microsoft.com/library/system.data.sqlclient.sqlbulkcopy.aspx). BCP ładuje się bezpośrednio do SQL Data Warehouse bez przechodzenia przez usługę Azure Blob Storage i jest przeznaczony tylko do małych obciążeń. Należy pamiętać, że wydajność ładowania tych opcji jest znacznie mniejsza niż baza Base. 
+Oprócz instrukcji Base i COPY można użyć narzędzia [BCP](/sql/tools/bcp-utility?view=azure-sqldw-latest) lub [interfejsu API SqlBulkCopy](https://msdn.microsoft.com/library/system.data.sqlclient.sqlbulkcopy.aspx). BCP ładuje się bezpośrednio do SQL Data Warehouse bez przechodzenia przez usługę Azure Blob Storage i jest przeznaczony tylko do małych obciążeń. Należy pamiętać, że wydajność ładowania tych opcji jest mniejsza niż baza i instrukcja COPY. 
 
 
 ## <a name="5-transform-the-data"></a>5. Przekształć dane

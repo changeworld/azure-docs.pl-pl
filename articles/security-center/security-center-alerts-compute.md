@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/05/2019
 ms.author: memildin
-ms.openlocfilehash: d705174f46ba38f37ae8cce9839c2d1f63ab6bf8
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
-ms.translationtype: HT
+ms.openlocfilehash: 6b6acb0ae1452795fe02906779b920e4b41f9a55
+ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73664269"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73748392"
 ---
 # <a name="threat-detection-for-cloud-native-computing-in-azure-security-center"></a>Wykrywanie zagrożeń w przypadku natywnego przetwarzania danych w chmurze w Azure Security Center
 
@@ -66,7 +66,7 @@ Wykrywamy zagrożenia na różnych poziomach:
     >[!NOTE]
     > Jeśli zdecydujesz się nie instalować agentów na hostach, będziesz otrzymywać tylko podzbiór korzyści i alertów dotyczących wykrywania zagrożeń. Nadal będziesz otrzymywać alerty dotyczące analizy sieci i komunikacji ze złośliwymi serwerami.
 
-* Na **poziomie klastra AKS**monitorowanie wykrywania zagrożeń opiera się na analizie dzienników inspekcji Kubernetes. Aby włączyć monitorowanie **bez wykorzystania agentów** , Dodaj opcję Kubernetes do subskrypcji na stronie **ustawień & cenowej** (zobacz [Cennik](security-center-pricing.md)). Aby generować alerty na tym poziomie, Security Center monitoruje usługi zarządzane przez AKS przy użyciu dzienników pobranych przez AKS. Przykłady zdarzeń na tym poziomie obejmują uwidocznione pulpity nawigacyjne Kubernetes, tworzenie uprzywilejowanych ról i tworzenie poufnych instalacji. 
+* Na **poziomie klastra AKS**monitorowanie wykrywania zagrożeń opiera się na analizie dzienników inspekcji Kubernetes. Aby włączyć monitorowanie **bez wykorzystania agentów** , Dodaj opcję Kubernetes do subskrypcji na stronie **ustawień & cenowej** (zobacz [Cennik](security-center-pricing.md)). Aby generować alerty na tym poziomie, Security Center monitoruje usługi zarządzane przez AKS przy użyciu dzienników pobranych przez AKS. Przykłady zdarzeń na tym poziomie obejmują uwidocznione pulpity nawigacyjne Kubernetes, tworzenie uprzywilejowanych ról i tworzenie poufnych instalacji.
 
     >[!NOTE]
     > Security Center generuje alerty wykrywania dla akcji i wdrożeń usługi Azure Kubernetes, które występują po włączeniu opcji Kubernetes w ustawieniach subskrypcji. 

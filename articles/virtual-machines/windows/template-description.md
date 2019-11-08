@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: article
 ms.date: 01/03/2019
 ms.author: cynthn
-ms.openlocfilehash: 23519edb61df23c97dfd2162d6cabea6b7fa5d38
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: afbf77014ece981568d4123db7820a2fa0a8f60d
+ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70101769"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73749110"
 ---
 # <a name="virtual-machines-in-an-azure-resource-manager-template"></a>Maszyny wirtualne w szablonie Azure Resource Manager
 
@@ -27,7 +27,7 @@ W tym artykule opisano aspekty szablonu Azure Resource Manager, który ma zastos
 
 [W galerii](https://azure.microsoft.com/documentation/templates/?term=VM) znajduje się wiele szablonów obejmujących zasób maszyny wirtualnej. Nie wszystkie elementy, które mogą zostać uwzględnione w szablonie, zostały opisane tutaj.
 
-[!INCLUDE [updated-for-az.md](../../../includes/updated-for-az.md)]
+ 
 
 W tym przykładzie przedstawiono typową sekcję zasobów szablonu służącą do tworzenia określonej liczby maszyn wirtualnych:
 
@@ -454,7 +454,7 @@ Jeśli chcesz wiedzieć o stanie zasobów we wdrożeniu, Wyświetl grupę zasob�
 
 ![Pobierz informacje o wdrożeniu](./media/template-description/virtual-machines-deployment-info.png)
     
-Nie jest to problem, aby użyć tego samego szablonu do tworzenia zasobów lub aktualizowania istniejących zasobów. Korzystając z poleceń do wdrażania szablonów, możesz powiedzieć, który [tryb](../../resource-group-template-deploy.md) ma być używany. Tryb można ustawić na wartość kompletna lub **przyrostowa**. Domyślnie są to aktualizacje przyrostowe. Należy zachować ostrożność w przypadku korzystania z trybu kompletnego, ponieważ można przypadkowo usunąć zasoby. Po ustawieniu trybu na **ukończone**, Menedżer zasobów usuwa wszystkie zasoby w grupie zasobów, które nie znajdują się w szablonie.
+Nie jest to problem, aby użyć tego samego szablonu do tworzenia zasobów lub aktualizowania istniejących zasobów. Korzystając z poleceń do wdrażania szablonów, możesz powiedzieć, który [tryb](../../resource-group-template-deploy.md) ma być używany. Tryb można ustawić na wartość **kompletna** lub **przyrostowa**. Domyślnie są to aktualizacje przyrostowe. Należy zachować ostrożność w przypadku korzystania z trybu **kompletnego** , ponieważ można przypadkowo usunąć zasoby. Po ustawieniu trybu na **ukończone**, Menedżer zasobów usuwa wszystkie zasoby w grupie zasobów, które nie znajdują się w szablonie.
 
 ## <a name="next-steps"></a>Następne kroki
 

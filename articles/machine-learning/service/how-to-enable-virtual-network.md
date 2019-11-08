@@ -10,12 +10,12 @@ ms.reviewer: larryfr
 ms.author: aashishb
 author: aashishb
 ms.date: 10/25/2019
-ms.openlocfilehash: 2559a3cbd786c737b316a860e9c75434c6c719a4
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: e5dee838df2a60bf2038f2c7d2b1cc5958354d29
+ms.sourcegitcommit: 018e3b40e212915ed7a77258ac2a8e3a660aaef8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73576573"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73796765"
 ---
 # <a name="secure-azure-ml-experimentation-and-inference-jobs-within-an-azure-virtual-network"></a>Zabezpieczanie zadań eksperymentowania i wnioskowania usługi Azure ML w ramach Virtual Network platformy Azure
 [!INCLUDE [applies-to-skus](../../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -63,7 +63,7 @@ Aby użyć konta usługi Azure Storage dla obszaru roboczego w sieci wirtualnej,
     - W obszarze __sieci wirtualne__wybierz łącze __Dodaj istniejące sieci wirtualne__ . Ta akcja powoduje dodanie sieci wirtualnej, w której znajdują się obliczenia (zobacz krok 1).
 
         > [!IMPORTANT]
-        > Konto magazynu musi znajdować się w tej samej sieci wirtualnej co maszyny wirtualne lub klastry notesu używane do uczenia lub wnioskowania.
+        > Konto magazynu musi znajdować się w tej samej sieci wirtualnej co klastry używane do uczenia lub wnioskowania.
 
     - Zaznacz pole wyboru __Zezwalaj zaufanym usługom firmy Microsoft na dostęp do tego konta magazynu__ .
 
@@ -108,7 +108,7 @@ Aby korzystać z funkcji eksperymentowania Azure Machine Learning z Azure Key Va
 
 ## <a name="use-a-machine-learning-compute"></a>Użyj środowisko obliczeniowe usługi Machine Learning
 
-Aby można było użyć maszyny wirtualnej Azure Machine Learning notesu lub klastra obliczeniowego w sieci wirtualnej, należy spełnić następujące wymagania dotyczące sieci:
+Aby użyć Azure Machine Learning klastra obliczeniowego w sieci wirtualnej, należy spełnić następujące wymagania dotyczące sieci:
 
 > [!div class="checklist"]
 > * Sieć wirtualna musi znajdować się w tej samej subskrypcji i regionie co obszar roboczy Azure Machine Learning.
@@ -246,27 +246,6 @@ Po zakończeniu procesu tworzenia nauczysz model przy użyciu klastra w eksperym
 
 <a id="vmorhdi"></a>
 
-### <a name="create-a-compute-instance-in-a-virtual-network"></a>Tworzenie wystąpienia obliczeniowego w sieci wirtualnej
-
-Utwórz wystąpienie obliczeniowe Azure Machine Learning w sieci wirtualnej. Aby utworzyć wystąpienie obliczeniowe, wykonaj następujące czynności:
-
-1. W obszarze roboczym wybierz pozycję **obliczenia** w okienku po lewej stronie.
-
-1. Na karcie wystąpienia obliczeniowe wybierz pozycję **Nowy** , aby rozpocząć tworzenie nowego wystąpienia obliczeniowego.
-
-1. Ustaw wartość pola Nazwa obliczania i rozmiar maszyny wirtualnej, a następnie Włącz/Wyłącz dostęp SSH.
-
-1. Aby skonfigurować to wystąpienie obliczeniowe do korzystania z sieci wirtualnej, wykonaj następujące czynności:
-
-    a. Wybierz pozycję **Ustawienia zaawansowane**.
-
-    b. Z listy rozwijanej  **grupy zasobów** wybierz grupę zasobów zawierającą sieć wirtualną.
-
-    d. Z listy rozwijanej  **sieci wirtualnej** wybierz sieć wirtualną, która zawiera podsieć.
-
-    d. Z listy rozwijanej  **podsieci** wybierz podsieć, która ma zostać użyta.
-
-1. Wybierz pozycję **Utwórz** , aby udostępnić wystąpienie obliczeniowe wewnątrz sieci wirtualnej.
 
 ## <a name="use-a-virtual-machine-or-hdinsight-cluster"></a>Korzystanie z maszyny wirtualnej lub klastra usługi HDInsight
 

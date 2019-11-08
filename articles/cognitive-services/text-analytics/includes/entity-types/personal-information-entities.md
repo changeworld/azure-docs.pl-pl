@@ -8,33 +8,14 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 10/21/2019
 ms.author: aahi
-ms.openlocfilehash: 6e46d58b3f1ef33902ab44043e954d9718d865af
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 3aa4da9a9cf3d1d4b664e81f1fd18f2b225d731d
+ms.sourcegitcommit: 018e3b40e212915ed7a77258ac2a8e3a660aaef8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73508046"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73800036"
 ---
 ## <a name="personal-information-entity-types"></a>Typy jednostek informacji osobistych:
-
-### <a name="person"></a>Person (Osoba)
-Rozpoznawane nazwy i inne osoby w tekście.
-Języki:
-* Publiczna wersja zapoznawcza: `English`
-
-| Nazwa podtypu | Opis             |
-|--------------|-------------------------|
-| Nie dotyczy          | Rozpoznane nazwy, na przykład `Bill Gates`, `Marie Curie` |
-
-### <a name="organization"></a>Organizacja  
-
-Uznawane organizacje, korporacje, agencje i inne grupy osób. Na przykład: firmy, grupy polityczne, zespoły muzyczne, trefle sportowe, instytucje rządowe i organizacje publiczne. Narodowe i religijne nie są uwzględnione w tym typie jednostki. Języki: 
-
-* Publiczna wersja zapoznawcza: `English`
-
-| Nazwa podtypu | Opis                                                                                      |
-|--------------|--------------------------------------------------------------------------------------------------|
-| Nie dotyczy          | organizacje, na przykład `Microsoft`, `NASA` `National Oceanic and Atmospheric Administration` |
 
 ### <a name="phone-number"></a>Numer telefonu
 

@@ -8,12 +8,12 @@ ms.service: container-registry
 ms.topic: article
 ms.date: 10/31/2019
 ms.author: danlep
-ms.openlocfilehash: dbfadea9bc05614108333ef5a046e11b5280cc68
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
-ms.translationtype: HT
+ms.openlocfilehash: 7b9d220ac7e507513458eab6b55276b3aa434739
+ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73588436"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73742751"
 ---
 # <a name="repository-scoped-permissions-in-azure-container-registry"></a>Uprawnienia w zakresie repozytorium w Azure Container Registry 
 
@@ -28,9 +28,8 @@ Zobacz [Informacje o uprawnieniach do zakresu repozytorium](#about-repository-sc
 
 ## <a name="preview-limitations"></a>Ograniczenia wersji zapoznawczej
 
-* Ta funkcja jest dostępna tylko w rejestrze kontenera w **warstwie Premium** . Aby uzyskać informacje na temat warstw usługi Registry, zobacz [Azure Container Registry SKU](container-registry-skus.md).
+* Ta funkcja jest dostępna tylko w rejestrze kontenera w **warstwie Premium** . Aby uzyskać informacje o warstwach i ograniczeniach usługi Registry, zobacz [Azure Container Registry SKU](container-registry-skus.md).
 * Obecnie nie można przypisać uprawnień do zakresu repozytorium do obiektu Azure Active Directory, takiego jak nazwa główna usługi lub tożsamość zarządzana.
-* Rejestr umożliwia maksymalnie 20 000 mapowań zakresu i 20 000 tokenów.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 

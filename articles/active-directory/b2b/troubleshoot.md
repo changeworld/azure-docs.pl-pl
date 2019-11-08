@@ -4,20 +4,23 @@ description: Rozwiązywanie typowych problemów związanych z Azure Active Direc
 services: active-directory
 ms.service: active-directory
 ms.subservice: B2B
-ms.topic: conceptual
+ms.topic: troubleshooting
 ms.date: 05/25/2017
+tags: active-directory
 ms.author: mimart
 author: v-miegge
-manager: celestedg
+manager: dcscontentpm
 ms.reviewer: mal
-ms.custom: it-pro, seo-update-azuread-jan
+ms.custom:
+- it-pro
+- seo-update-azuread-jan"
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f91ddee8668316df69c98ed14fbcabcb06b6da82
-ms.sourcegitcommit: 909ca340773b7b6db87d3fb60d1978136d2a96b0
+ms.openlocfilehash: 6449644f98280d75363f737be11f8e8b824cab36
+ms.sourcegitcommit: 018e3b40e212915ed7a77258ac2a8e3a660aaef8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/13/2019
-ms.locfileid: "70983397"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73795181"
 ---
 # <a name="troubleshooting-azure-active-directory-b2b-collaboration"></a>Rozwiązywanie problemów Azure Active Directory współpracy B2B
 
@@ -43,7 +46,7 @@ Jeśli ostatnio zmodyfikowano te ustawienia lub przypisano do użytkownika rolę
 
 ## <a name="the-user-that-i-invited-is-receiving-an-error-during-redemption"></a>Użytkownik, który zaprosił, otrzymuje błąd podczas realizacji
 
-Typowe błędy:
+Typowe błędy obejmują:
 
 ### <a name="invitees-admin-has-disallowed-emailverified-users-from-being-created-in-their-tenant"></a>Administrator osoby zaproszonej nie zezwolił na tworzenie EmailVerified użytkowników w swojej dzierżawie
 
@@ -59,7 +62,7 @@ Aby rozwiązać ten problem, administrator użytkownika zewnętrznego musi zsync
 
 ## <a name="how-does--which-is-not-normally-a-valid-character-sync-with-azure-ad"></a>Jak "\#", który nie jest zwykle prawidłowym znakiem, jest synchronizowany z usługą Azure AD?
 
-"\#" jest zastrzeżonym znakiem w UPN dla współpracy z usługą Azure AD B2B lub użytkownikami zewnętrznymi, ponieważ user@contoso.com zaproszone konto zmieni się na user_contoso@fabrikam.onmicrosoft.com. com # EXT #. \# Z tego względu nazwy UPN pochodzące z lokalnego nie mogą zalogować się do Azure Portal. 
+"\#" jest zastrzeżonym znakiem w UPN dla współpracy z usługą Azure AD B2B lub użytkownikami zewnętrznymi, ponieważ zaproszonym kontem user@contoso.com zostaje user_contoso. com # EXT #@fabrikam.onmicrosoft.com. W związku z tym \# w Upnch pochodzących z lokalnego nie może zalogować się do Azure Portal. 
 
 ## <a name="i-receive-an-error-when-adding-external-users-to-a-synchronized-group"></a>Wystąpił błąd podczas dodawania użytkowników zewnętrznych do zsynchronizowanej grupy
 
@@ -67,7 +70,7 @@ Użytkowników zewnętrznych można dodawać tylko do grup "Assigned" lub "Secur
 
 ## <a name="my-external-user-did-not-receive-an-email-to-redeem"></a>Mój użytkownik zewnętrzny nie otrzymał wiadomości e-mail do zrealizowania
 
-Zapraszanie powinno sprawdzić swój filtr usługodawcy internetowego lub spamu, aby upewnić się, że dozwolony jest następujący adres:Invites@microsoft.com
+Zapraszanie powinno sprawdzić swój filtr usługodawcy internetowego lub spamu, aby upewnić się, że dozwolony jest następujący adres: Invites@microsoft.com
 
 ## <a name="i-notice-that-the-custom-message-does-not-get-included-with-invitation-messages-at-times"></a>Zauważ, że wiadomość niestandardowa nie jest dołączona do wiadomości z zaproszeniem w czasie
 

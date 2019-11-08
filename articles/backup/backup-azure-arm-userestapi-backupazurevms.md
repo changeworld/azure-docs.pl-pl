@@ -1,6 +1,6 @@
 ---
 title: 'Azure Backup: Tworzenie kopii zapasowych maszyn wirtualnych platformy Azure przy użyciu interfejsu API REST'
-description: Zarządzanie operacjami tworzenia kopii zapasowej maszyny wirtualnej platformy Azure przy użyciu interfejsu API REST
+description: W tym artykule dowiesz się, jak konfigurować i inicjować operacje tworzenia kopii zapasowej maszyny wirtualnej platformy Azure przy użyciu interfejsu API REST oraz zarządzać nimi.
 ms.reviewer: pullabhk
 author: dcurwin
 manager: carmonm
@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 08/03/2018
 ms.author: dacurwin
 ms.assetid: b80b3a41-87bf-49ca-8ef2-68e43c04c1a3
-ms.openlocfilehash: 837401256aa264a527e2323b055713f4bd8e8d1c
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
-ms.translationtype: HT
+ms.openlocfilehash: 901ae66281e1d68474304a4f5456a0163fcb6f2a
+ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73671684"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73747615"
 ---
 # <a name="back-up-an-azure-vm-using-azure-backup-via-rest-api"></a>Tworzenie kopii zapasowej maszyny wirtualnej platformy Azure przy użyciu Azure Backup za pośrednictwem interfejsu API REST
 
@@ -108,13 +108,13 @@ GET https://management.azure.com/Subscriptions/{subscriptionId}/resourceGroups/{
 
 Identyfikator URI *Get* zawiera wszystkie wymagane parametry. Żadna dodatkowa treść żądania nie jest wymagana.
 
-##### <a name="responses-1"></a>Reagowani
+#### <a name="responses-1"></a>Reagowani
 
 |Nazwa  |Typ  |Opis  |
 |---------|---------|---------|
 |200 OK     | [WorkloadProtectableItemResourceList](https://docs.microsoft.com/rest/api/backup/backupprotectableitems/list#workloadprotectableitemresourcelist)        |       OK |
 
-##### <a name="example-responses-1"></a>Przykładowe odpowiedzi
+#### <a name="example-responses-1"></a>Przykładowe odpowiedzi
 
 Po przesłaniu żądania *Get* zostanie zwrócona odpowiedź 200 (ok).
 
@@ -329,7 +329,7 @@ Zwraca dwie odpowiedzi: 202 (zaakceptowane), gdy tworzona jest inna operacja, a 
 |---------|---------|---------|
 |202 zaakceptowane     |         |     Przyjmować    |
 
-##### <a name="example-responses-3"></a>Przykładowe odpowiedzi
+#### <a name="example-responses-3"></a>Przykładowe odpowiedzi
 
 Po przesłaniu żądania *post* do kopii zapasowej na żądanie początkowa odpowiedź to 202 (zaakceptowana) z nagłówkiem lokalizacji lub z nagłówkiem Azure-Async-header.
 
@@ -454,7 +454,7 @@ Zwraca dwie odpowiedzi: 202 (zaakceptowane), gdy tworzona jest inna operacja, a 
 
 [Przywróć dane z kopii zapasowej maszyny wirtualnej platformy Azure](backup-azure-arm-userestapi-restoreazurevms.md).
 
-Aby uzyskać więcej informacji na temat Azure Backup interfejsów API REST, zapoznaj się z następującymi dokumentami:
+Aby uzyskać więcej informacji na temat Azure Backup interfejsów API REST, zobacz następujące dokumenty:
 
 - [Interfejs API REST dostawcy usługi Azure Recovery Services](/rest/api/recoveryservices/)
 - [Rozpoczynanie pracy z interfejsem API REST platformy Azure](/rest/api/azure/)

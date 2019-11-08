@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: article
 ms.date: 06/16/2016
 ms.author: kasing
-ms.openlocfilehash: f7f57a43697a9376062bdd3baa2d5f7333bf4a7f
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 25091e8e58fbdba908fb00ece3cd2d3d296c5ab1
+ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70100159"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73749057"
 ---
 # <a name="setting-up-winrm-access-for-virtual-machines-in-azure-resource-manager"></a>Konfigurowanie dostępu do usługi WinRM dla Virtual Machines w Azure Resource Manager
 
@@ -31,16 +31,16 @@ Poniżej przedstawiono kroki, które należy wykonać, aby skonfigurować maszyn
 4. Pobierz adres URL certyfikatu z podpisem własnym w Key Vault
 5. Odwoływanie się do adresu URL certyfikatów z podpisem własnym podczas tworzenia maszyny wirtualnej
 
-[!INCLUDE [updated-for-az.md](../../../includes/updated-for-az.md)]
+ 
 
-## <a name="step-1-create-a-key-vault"></a>Krok 1: Tworzenie magazynu kluczy
+## <a name="step-1-create-a-key-vault"></a>Krok 1. Tworzenie Key Vault
 Możesz użyć poniższego polecenia, aby utworzyć Key Vault
 
 ```
 New-AzKeyVault -VaultName "<vault-name>" -ResourceGroupName "<rg-name>" -Location "<vault-location>" -EnabledForDeployment -EnabledForTemplateDeployment
 ```
 
-## <a name="step-2-create-a-self-signed-certificate"></a>Krok 2: Tworzenie certyfikatu z podpisem własnym
+## <a name="step-2-create-a-self-signed-certificate"></a>Krok 2. Tworzenie certyfikatu z podpisem własnym
 Możesz utworzyć certyfikat z podpisem własnym za pomocą tego skryptu programu PowerShell
 
 ```
@@ -55,7 +55,7 @@ $password = Read-Host -Prompt "Please enter the certificate password." -AsSecure
 Export-PfxCertificate -Cert $cert -FilePath ".\$certificateName.pfx" -Password $password
 ```
 
-## <a name="step-3-upload-your-self-signed-certificate-to-the-key-vault"></a>Krok 3: Przekaż certyfikat z podpisem własnym do Key Vault
+## <a name="step-3-upload-your-self-signed-certificate-to-the-key-vault"></a>Krok 3. Przekaż certyfikat z podpisem własnym do Key Vault
 Przed przekazaniem certyfikatu do Key Vault utworzonego w kroku 1 musi on zostać przekonwertowany do formatu dostawcy zasobów Microsoft. COMPUTE. Poniższy skrypt programu PowerShell umożliwi wykonanie tej czynności
 
 ```
@@ -78,11 +78,11 @@ $secret = ConvertTo-SecureString -String $jsonEncoded -AsPlainText –Force
 Set-AzKeyVaultSecret -VaultName "<vault name>" -Name "<secret name>" -SecretValue $secret
 ```
 
-## <a name="step-4-get-the-url-for-your-self-signed-certificate-in-the-key-vault"></a>Krok 4: Pobierz adres URL certyfikatu z podpisem własnym w Key Vault
+## <a name="step-4-get-the-url-for-your-self-signed-certificate-in-the-key-vault"></a>Krok 4. pobieranie adresu URL certyfikatu z podpisem własnym w Key Vault
 Dostawca zasobów Microsoft. COMPUTE wymaga adresu URL dla wpisu tajnego w Key Vault podczas aprowizacji maszyny wirtualnej. Umożliwia to pobranie klucza tajnego dostawcy zasobów Microsoft. COMPUTE i utworzenie równoważnego certyfikatu na maszynie wirtualnej.
 
 > [!NOTE]
-> Adres URL klucza tajnego musi zawierać również wersję. Przykładowy adres URL wygląda jak poniżej https:\//contosovault.Vault.Azure.NET:443/Secrets/contososecret/01h9db0df2cd4300a20ence585a6s7ve
+> Adres URL klucza tajnego musi zawierać również wersję. Przykładowy adres URL wygląda jak poniżej https:\//contosovault.vault.azure.net:443/secrets/contososecret/01h9db0df2cd4300a20ence585a6s7ve
 
 #### <a name="templates"></a>Szablony
 Możesz uzyskać link do adresu URL w szablonie przy użyciu poniższego kodu
@@ -94,7 +94,7 @@ Ten adres URL można uzyskać przy użyciu poniższego polecenia programu PowerS
 
     $secretURL = (Get-AzKeyVaultSecret -VaultName "<vault name>" -Name "<secret name>").Id
 
-## <a name="step-5-reference-your-self-signed-certificates-url-while-creating-a-vm"></a>Krok 5. Odwoływanie się do adresu URL certyfikatów z podpisem własnym podczas tworzenia maszyny wirtualnej
+## <a name="step-5-reference-your-self-signed-certificates-url-while-creating-a-vm"></a>Krok 5. odwoływanie się do adresu URL certyfikatów z podpisem własnym podczas tworzenia maszyny wirtualnej
 #### <a name="azure-resource-manager-templates"></a>Szablony Azure Resource Manager
 Podczas tworzenia maszyny wirtualnej za pomocą szablonów do certyfikatu jest przywoływana sekcja wpisy tajne i usługa winRM w następujący sposób:
 
@@ -143,13 +143,13 @@ Kod źródłowy tego szablonu można znaleźć w witrynie [GitHub](https://githu
     $CertificateStore = "My"
     $vm = Add-AzVMSecret -VM $vm -SourceVaultId $sourceVaultId -CertificateStore $CertificateStore -CertificateUrl $secretURL
 
-## <a name="step-6-connecting-to-the-vm"></a>Krok 6: Łączenie z maszyną wirtualną
+## <a name="step-6-connecting-to-the-vm"></a>Krok 6. Nawiązywanie połączenia z maszyną wirtualną
 Przed nawiązaniem połączenia z maszyną wirtualną należy upewnić się, że komputer jest skonfigurowany do zdalnego zarządzania usługą WinRM. Uruchom program PowerShell jako administrator i uruchom poniższe polecenie, aby upewnić się, że jest skonfigurowane.
 
     Enable-PSRemoting -Force
 
 > [!NOTE]
-> Może być konieczne upewnienie się, że usługa WinRM działa, jeśli powyższe nie działa. Można to zrobić za pomocą polecenia`Get-Service WinRM`
+> Może być konieczne upewnienie się, że usługa WinRM działa, jeśli powyższe nie działa. Można to zrobić za pomocą `Get-Service WinRM`
 > 
 > 
 

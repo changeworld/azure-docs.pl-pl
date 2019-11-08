@@ -7,18 +7,18 @@ ms.topic: article
 ms.author: mbaldwin
 ms.date: 08/06/2019
 ms.custom: seodec18
-ms.openlocfilehash: 6874372d64fdbb667a23f2ded37a68cd68e32993
-ms.sourcegitcommit: 824e3d971490b0272e06f2b8b3fe98bbf7bfcb7f
+ms.openlocfilehash: 50addbec1717c7bb76a248053dd889b09441f6f6
+ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/10/2019
-ms.locfileid: "72245086"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73749469"
 ---
 # <a name="azure-disk-encryption-sample-scripts"></a>Azure Disk Encryption przykładowe skrypty 
 
 Ten artykuł zawiera przykładowe skrypty do przygotowywania wstępnie zaszyfrowanych dysków VHD i innych zadań.
 
-[!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
+ 
 
 ## <a name="list-vms-and-secrets"></a>Wyświetlanie listy maszyn wirtualnych i wpisów tajnych
 
@@ -50,7 +50,7 @@ W poniższej tabeli przedstawiono parametry, których można użyć w skrypcie p
 |$aadClientSecret|Wpis tajny klienta aplikacji usługi Azure AD, który został utworzony wcześniej.|False|
 |$keyEncryptionKeyName|Nazwa opcjonalnego klucza szyfrowania klucza w magazynie kluczy. Nowy klucz o tej nazwie zostanie utworzony, jeśli taki nie istnieje.|False|
 
-## <a name="resource-manager-templates"></a>Szablony Menedżera zasobów
+## <a name="resource-manager-templates"></a>Szablony usługi Resource Manager
 
 ### <a name="encrypt-or-decrypt-vms-without-an-azure-ad-app"></a>Szyfrowanie lub odszyfrowywanie maszyn wirtualnych bez aplikacji usługi Azure AD
 
@@ -68,7 +68,7 @@ W poniższej tabeli przedstawiono parametry, których można użyć w skrypcie p
 Poniższe sekcje są niezbędne do przygotowania wstępnie zaszyfrowanego wirtualnego dysku twardego systemu Windows na potrzeby wdrożenia jako zaszyfrowanego wirtualnego dysku twardego w usłudze Azure IaaS. Korzystając z tych informacji, przygotuj i uruchom nową maszynę wirtualną systemu Windows (VHD) na Azure Site Recovery lub na platformie Azure. Aby uzyskać więcej informacji na temat przygotowywania i przekazywania dysku VHD, zobacz [przekazywanie uogólnionego wirtualnego dysku twardego i używanie go do tworzenia nowych maszyn wirtualnych na platformie Azure](upload-generalized-managed.md).
 
 ### <a name="update-group-policy-to-allow-non-tpm-for-os-protection"></a>Aktualizowanie zasad grupy, aby umożliwić ochronę systemu operacyjnego bez modułu TPM
-Skonfiguruj ustawienia zasady grupy funkcji BitLocker **szyfrowanie dysków funkcją BitLocker**, które znajdują się w obszarze **zasady komputera lokalnego** > **konfiguracja komputera** > **Szablony administracyjne** > **Windows Składniki**. Zmień to ustawienie na **dyski systemu operacyjnego** > **Wymagaj dodatkowego uwierzytelniania przy uruchamianiu** > **Zezwalaj na używanie funkcji BitLocker bez zgodnego modułu TPM**, jak pokazano na poniższym rysunku:
+Skonfiguruj ustawienia zasady grupy funkcji BitLocker **szyfrowanie dysków funkcją BitLocker**, które znajdują się w obszarze **zasady komputera lokalnego** > **Konfiguracja komputera** > **Szablony administracyjne** > **systemu Windows Składniki**. Zmień to ustawienie na **dyski systemu operacyjnego** , > **wymagać dodatkowego uwierzytelniania przy uruchamianiu** > **zezwolić na używanie funkcji BitLocker bez zgodnego modułu TPM**, jak pokazano na poniższym rysunku:
 
 ![Ochrona przed złośliwym kodem zapewniana przez Microsoft na platformie Azure](../media/disk-encryption/disk-encryption-fig8.png)
 
@@ -81,13 +81,13 @@ W przypadku systemu Windows Server 2008 R2 Użyj następującego polecenia:
 
     ServerManagerCmd -install BitLockers
 
-### <a name="prepare-the-os-volume-for-bitlocker-by-using-bdehdcfg"></a>Przygotowanie woluminu systemu operacyjnego na potrzeby funkcji BitLocker przy użyciu `bdehdcfg`
+### <a name="prepare-the-os-volume-for-bitlocker-by-using-bdehdcfg"></a>Przygotuj wolumin systemu operacyjnego na potrzeby funkcji BitLocker przy użyciu `bdehdcfg`
 Aby skompresować partycję systemu operacyjnego i przygotować maszynę do obsługi funkcji BitLocker, należy w razie potrzeby wykonać [BdeHdCfg](https://docs.microsoft.com/windows/security/information-protection/bitlocker/bitlocker-basic-deployment) :
 
     bdehdcfg -target c: shrink -quiet 
 
 ### <a name="protect-the-os-volume-by-using-bitlocker"></a>Ochrona woluminu systemu operacyjnego za pomocą funkcji BitLocker
-Użyj polecenia [`manage-bde`](https://technet.microsoft.com/library/ff829849.aspx) , aby włączyć szyfrowanie na woluminie rozruchowym przy użyciu funkcji ochrony klucza zewnętrznego. Umieść również klucz zewnętrzny (plik. klucz szyfrowania bloków) na dysku zewnętrznym lub woluminie. Szyfrowanie jest włączone w woluminie systemowym/rozruchowym po następnym ponownym uruchomieniu.
+Użyj [`manage-bde`](https://technet.microsoft.com/library/ff829849.aspx) polecenia, aby włączyć szyfrowanie na woluminie rozruchowym przy użyciu funkcji ochrony klucza zewnętrznego. Umieść również klucz zewnętrzny (plik. klucz szyfrowania bloków) na dysku zewnętrznym lub woluminie. Szyfrowanie jest włączone w woluminie systemowym/rozruchowym po następnym ponownym uruchomieniu.
 
     manage-bde -on %systemdrive% -sk [ExternalDriveOrVolume]
     reboot
@@ -231,7 +231,7 @@ Przed przekazaniem wpisu tajnego do magazynu kluczy można opcjonalnie go zaszyf
     $secretUrl = $response.id
 ```
 
-Użyj `$KeyEncryptionKey` i `$secretUrl` w następnym kroku, aby [dołączyć dysk systemu operacyjnego za pomocą KEK](#using-a-kek).
+Użyj `$KeyEncryptionKey` i `$secretUrl` w następnym kroku w celu [dołączenia dysku systemu operacyjnego za pomocą KEK](#using-a-kek).
 
 ##  <a name="specify-a-secret-url-when-you-attach-an-os-disk"></a>Określ tajny adres URL podczas dołączania dysku systemu operacyjnego
 
@@ -249,7 +249,7 @@ Podczas dołączania dysku systemu operacyjnego należy przekazać `$secretUrl`.
             -DiskEncryptionKeyUrl $SecretUrl
 ```
 ### <a name="using-a-kek"></a>Korzystanie z KEK
-Po dołączeniu dysku systemu operacyjnego należy przekazać `$KeyEncryptionKey` i `$secretUrl`. Ten adres URL został wygenerowany w sekcji "klucz tajny szyfrowania dysku zaszyfrowany za pomocą KEK".
+Po dołączeniu dysku systemu operacyjnego Przekaż `$KeyEncryptionKey` i `$secretUrl`. Ten adres URL został wygenerowany w sekcji "klucz tajny szyfrowania dysku zaszyfrowany za pomocą KEK".
 ```powershell
     Set-AzVMOSDisk `
             -VM $VirtualMachine `

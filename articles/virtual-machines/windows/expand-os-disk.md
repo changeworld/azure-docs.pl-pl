@@ -15,12 +15,12 @@ ms.workload: infrastructure-services
 ms.date: 07/05/2018
 ms.author: kirpas
 ms.subservice: disks
-ms.openlocfilehash: 692046070ffc04942a5d8a73825f6cb59e462f8b
-ms.sourcegitcommit: b03516d245c90bca8ffac59eb1db522a098fb5e4
+ms.openlocfilehash: 12fa8cb09a9864b49c9368462ae3d5ca1d88f2c9
+ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/19/2019
-ms.locfileid: "71147207"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73749414"
 ---
 # <a name="how-to-expand-the-os-drive-of-a-virtual-machine"></a>Jak rozszerzyć dysk systemu operacyjnego maszyny wirtualnej
 
@@ -37,7 +37,7 @@ Podczas tworzenia nowej maszyny wirtualnej w grupie zasobów przez wdrożenie ob
 > 
 
 
-[!INCLUDE [updated-for-az.md](../../../includes/updated-for-az.md)]
+ 
 
 
 ## <a name="resize-a-managed-disk"></a>Zmiana rozmiaru dysku zarządzanego
@@ -207,11 +207,11 @@ Po rozwinięciu dysku dla maszyny wirtualnej należy przejść do systemu operac
 
 2.  Otwórz wiersz polecenia i wpisz **diskpart**.
 
-2.  W wierszu polecenia **narzędzia DiskPart** wpisz `list volume`polecenie. Zanotuj wolumin, który chcesz zwiększyć.
+2.  W wierszu polecenia **narzędzia DiskPart** wpisz `list volume`. Zanotuj wolumin, który chcesz zwiększyć.
 
-3.  W wierszu polecenia **narzędzia DiskPart** wpisz `select volume <volumenumber>`polecenie. Spowoduje to wybranie *volumenumber* woluminu, który ma zostać rozbudowany do ciągłego, pustego miejsca na tym samym dysku.
+3.  W wierszu polecenia **narzędzia DiskPart** wpisz `select volume <volumenumber>`. Spowoduje to wybranie *volumenumber* woluminu, który ma zostać rozbudowany do ciągłego, pustego miejsca na tym samym dysku.
 
-4.  W wierszu polecenia **narzędzia DiskPart** wpisz `extend [size=<size>]`polecenie. Spowoduje to rozszerzenie wybranego woluminu o *rozmiar* w megabajtach (MB).
+4.  W wierszu polecenia **narzędzia DiskPart** wpisz `extend [size=<size>]`. Spowoduje to rozszerzenie wybranego woluminu o *rozmiar* w megabajtach (MB).
 
 
 ## <a name="next-steps"></a>Następne kroki

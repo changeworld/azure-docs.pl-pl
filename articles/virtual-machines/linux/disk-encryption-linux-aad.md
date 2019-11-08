@@ -7,12 +7,12 @@ ms.topic: article
 ms.author: mbaldwin
 ms.date: 03/15/2019
 ms.custom: seodec18
-ms.openlocfilehash: 853b1308edb55257495c0aed52710cfe23008203
-ms.sourcegitcommit: 7c2dba9bd9ef700b1ea4799260f0ad7ee919ff3b
+ms.openlocfilehash: 35d14599ca9a7abdad88603deeb8431f77e92a92
+ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71828487"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73748937"
 ---
 # <a name="enable-azure-disk-encryption-with-azure-ad-on-linux-vms-previous-release"></a>Włączanie Azure Disk Encryption z usługą Azure AD na maszynach wirtualnych z systemem Linux (poprzednia wersja)
 
@@ -33,7 +33,7 @@ Utwórz [migawkę](snapshot-copy-managed-disk.md) i/lub wykonaj kopię zapasową
 > - W przypadku szyfrowania woluminów systemu operacyjnego Linux maszyna wirtualna powinna być uważana za niedostępną. Zdecydowanie zalecamy uniknięcie logowania przy użyciu protokołu SSH, gdy szyfrowanie jest w toku, aby uniknąć problemów z blokowaniem otwartych plików, do których konieczne będzie uzyskanie dostępu podczas procesu szyfrowania. Aby sprawdzić postęp, można użyć poleceń [Get-AzVMDiskEncryptionStatus](/powershell/module/az.compute/get-azvmdiskencryptionstatus) lub [szyfrowania maszyny wirtualnej](/cli/azure/vm/encryption#az-vm-encryption-show) . Ten proces może potrwać kilka godzin w przypadku woluminu systemu operacyjnego 30 GB, a także dodatkowy czas na szyfrowanie woluminów danych. Czas szyfrowania woluminu danych będzie proporcjonalny do rozmiaru i ilości woluminów danych, chyba że zostanie użyta opcja Szyfruj cały format. 
  > - Wyłączanie szyfrowania na maszynach wirtualnych z systemem Linux jest obsługiwane tylko dla woluminów danych. Nie jest obsługiwany na woluminach danych lub systemu operacyjnego, jeśli wolumin systemu operacyjnego został zaszyfrowany.  
 
-[!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
+ 
 
 ## <a name="bkmk_RunningLinux"></a> Włączanie szyfrowania na istniejącej lub URUCHOMIONEJ maszynie wirtualnej z systemem IaaS Linux
 
@@ -46,7 +46,7 @@ W tym scenariuszu można włączyć szyfrowanie przy użyciu szablonu Menedżer 
 >
 
 ### <a name="bkmk_RunningLinuxCLI"> </a>Włączanie szyfrowania na istniejącej lub URUCHOMIONEJ maszynie wirtualnej z systemem Linux przy użyciu interfejsu wiersza polecenia platformy Azure 
-Szyfrowanie dysków można włączyć na zaszyfrowanym wirtualnym dysku twardym, instalując narzędzie wiersza polecenia [platformy Azure 2,0](/cli/azure) i korzystając z niego. Możesz użyć jej w przeglądarce z [Azure Cloud shellem](../../cloud-shell/overview.md)lub zainstalować ją na maszynie lokalnej i używać jej w dowolnej sesji programu PowerShell. Aby włączyć szyfrowanie na istniejących lub uruchomionych maszynach wirtualnych z systemem IaaS Linux na platformie Azure, użyj następujących poleceń interfejsu wiersza polecenia:
+Szyfrowanie dysków można włączyć na zaszyfrowanym wirtualnym dysku twardym, instalując narzędzie wiersza polecenia [platformy Azure 2,0](/cli/azure) i korzystając z niego. Można go również używać w przeglądarce z usługą [Azure Cloud Shell](../../cloud-shell/overview.md) albo można go zainstalować na maszynie lokalnej i używać w dowolnej sesji programu PowerShell. Aby włączyć szyfrowanie na istniejących lub uruchomionych maszynach wirtualnych z systemem IaaS Linux na platformie Azure, użyj następujących poleceń interfejsu wiersza polecenia:
 
 Użyj polecenia [AZ VM Encryption Enable](/cli/azure/vm/encryption#az-vm-encryption-enable) , aby włączyć szyfrowanie na uruchomionej maszynie wirtualnej IaaS na platformie Azure.
 
@@ -146,12 +146,12 @@ W poniższej tabeli wymieniono Menedżer zasobów parametry szablonu dla istniej
 | --- | --- |
 | AADClientID | Identyfikator klienta aplikacji usługi Azure AD, który ma uprawnienia do zapisywania wpisów tajnych w magazynie kluczy. |
 | AADClientSecret | Klucz tajny klienta aplikacji usługi Azure AD, który ma uprawnienia do zapisywania wpisów tajnych w magazynie kluczy. |
-| Nazwakluczamagazynu | Nazwa magazynu kluczy, do którego ma zostać przekazany klucz. Możesz uzyskać go za pomocą polecenia interfejsu CLI platformy Azure `az keyvault show --name "MySecureVault" --query KVresourceGroup`. |
+| Nazwakluczamagazynu | Nazwa magazynu kluczy, do którego ma zostać przekazany klucz. Możesz uzyskać go za pomocą polecenia interfejsu wiersza poleceń platformy Azure `az keyvault show --name "MySecureVault" --query KVresourceGroup`. |
 |  keyEncryptionKeyURL | Adres URL klucza szyfrowania klucza używany do szyfrowania wygenerowanego klucza. Ten parametr jest opcjonalny w przypadku wybrania opcji **nokek** na liście rozwijanej UseExistingKek. Jeśli wybierzesz pozycję **KEK** na liście rozwijanej UseExistingKek, musisz wprowadzić wartość _keyEncryptionKeyURL_ . |
 | liczba woluminów | Typ woluminu, na którym jest wykonywana operacja szyfrowania. Prawidłowe obsługiwane wartości to _system operacyjny_ lub _wszystkie_ (zobacz temat obsługiwane dystrybucje systemu Linux i ich wersje dla systemów operacyjnych i danych w sekcji wymagań wstępnych wcześniej). |
 | sequenceVersion | Wersja sekwencji operacji funkcji BitLocker. Zwiększ ten numer wersji za każdym razem, gdy na tej samej maszynie wirtualnej jest wykonywana operacja szyfrowania dysku. |
 | vmName | Nazwa maszyny wirtualnej, na której ma zostać wykonana operacja szyfrowania. |
-| danym | Wpisz silne hasło jako klucz szyfrowania danych. |
+| hasło | Wpisz silne hasło jako klucz szyfrowania danych. |
 
 
 
@@ -333,7 +333,7 @@ Szyfrowanie można wyłączyć przy użyciu Azure PowerShell, interfejsu wiersza
      az vm encryption disable --name "MySecureVM" --resource-group "MyVirtualMachineResourceGroup" --volume-type [ALL, DATA, OS]
      ```
 - **Wyłącz szyfrowanie przy użyciu szablonu Menedżer zasobów:** Aby wyłączyć szyfrowanie, użyj szablonu [wyłącz szyfrowanie w uruchomionym szablonie maszyny wirtualnej systemu Linux](https://aka.ms/decrypt-linuxvm) .
-     1. Kliknij pozycję **Wdróż na platformie Azure**.
+     1. Kliknij przycisk **Wdrażaj na platformie Azure**.
      2. Wybierz subskrypcję, grupę zasobów, lokalizację, maszynę wirtualną, warunki prawne i umowę.
      3.  Kliknij przycisk **Kup** , aby wyłączyć szyfrowanie dysków na działającej maszynie wirtualnej z systemem Windows. 
 

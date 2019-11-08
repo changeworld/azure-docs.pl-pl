@@ -11,14 +11,14 @@ ms.service: api-management
 ms.workload: mobile
 ms.tgt_pltfrm: na
 ms.topic: article
-ms.date: 06/26/2019
+ms.date: 11/06/2019
 ms.author: apimpm
-ms.openlocfilehash: 0bf52b45bc315874c58be50bccbffa49090d554d
-ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
+ms.openlocfilehash: 88ef235d47a548ce426eaa2e8a8a56fb9dcb01d2
+ms.sourcegitcommit: 018e3b40e212915ed7a77258ac2a8e3a660aaef8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/13/2019
-ms.locfileid: "72294346"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73796037"
 ---
 # <a name="api-import-restrictions-and-known-issues"></a>Ograniczenia importu interfejsu API i znane problemy
 
@@ -33,13 +33,15 @@ Jeśli otrzymujesz błędy podczas importowania dokumentu OpenAPI, upewnij się,
 ### <a name="open-api-general"> </a>Ogólne
 
 -   Wymagane parametry w ścieżce i zapytaniu muszą mieć unikatowe nazwy. (W OpenAPI Nazwa parametru musi być unikatowa w obrębie lokalizacji, na przykład Path, Query, header. Jednakże w API Management zezwalamy na rozróżnienie operacji przy użyciu parametrów Path i Query (które nie są obsługiwane przez OpenAPI). Dlatego wymagamy, aby nazwy parametrów były unikatowe w ramach całego szablonu adresu URL.
--   wskaźniki **\$ref** nie mogą odwoływać się do plików zewnętrznych.
+-   wskaźniki **ref\$** nie mogą odwoływać się do plików zewnętrznych.
 -   **ścieżki x-MS** i **x-Server** są jedynymi obsługiwanymi rozszerzeniami.
 -   Rozszerzenia niestandardowe są ignorowane podczas importowania i nie są zapisywane ani zachowywane do eksportu.
 -   **Rekursja** — API Management nie obsługuje definicji zdefiniowanych cyklicznie (na przykład schematów odnoszących się do siebie).
 -   Adres URL pliku źródłowego (jeśli jest dostępny) jest stosowany do względnych adresów URL serwera.
 -   Definicje zabezpieczeń zostały zignorowane.
 -   Wbudowane definicje schematu dla operacji interfejsu API nie są obsługiwane. Definicje schematu są zdefiniowane w zakresie interfejsu API i można do nich odwoływać się w zakresach żądań lub odpowiedzi operacji interfejsu API.
+-   Określony parametr adresu URL musi być częścią szablonu adresu URL.
+-   **Tworzy** słowo kluczowe, które OPISUJE typy MIME zwracane przez interfejs API, nie jest obsługiwane. 
 
 ### <a name="open-api-v2"> </a>Openapi wersja 2
 

@@ -7,12 +7,12 @@ services: site-recovery
 ms.topic: conceptual
 ms.date: 08/22/2019
 ms.author: raynew
-ms.openlocfilehash: d835eda044c2a6d1e0e7c678073711e45fde7395
-ms.sourcegitcommit: 47b00a15ef112c8b513046c668a33e20fd3b3119
+ms.openlocfilehash: a70400a1d0c710b939b4dd6d157cb06e729f53cb
+ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69972141"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73747823"
 ---
 # <a name="about-site-recovery-components-configuration-process-master-target"></a>Informacje o składnikach Site Recovery (Konfiguracja, proces, główny cel)
 
@@ -27,7 +27,7 @@ W przypadku odzyskiwania po awarii lokalnych maszyn wirtualnych programu VMware 
 **Komponentów**  | Na komputerze serwera konfiguracji są uruchamiane wszystkie lokalne składniki Site Recovery, takie jak serwer konfiguracji, serwer przetwarzania oraz główny serwer docelowy.<br/><br/> Po skonfigurowaniu serwera konfiguracji wszystkie składniki są instalowane automatycznie. | [Przeczytaj](vmware-azure-common-questions.md#configuration-server) często zadawane pytania dotyczące serwera konfiguracji.
 **Rola** | Serwer konfiguracji służy do koordynowania komunikacji między środowiskiem lokalnym i platformą Azure oraz do zarządzania replikacją danych. | Dowiedz się więcej o architekturze odzyskiwania po awarii dla oprogramowania [VMware](vmware-azure-architecture.md) i [serwera fizycznego](physical-azure-architecture.md) na platformie Azure.
 **Wymagania dotyczące oprogramowania VMware** | W przypadku odzyskiwania po awarii lokalnych maszyn wirtualnych programu VMware należy zainstalować i uruchomić serwer konfiguracji jako lokalną maszynę wirtualną VMware o wysokiej dostępności. | [Dowiedz się więcej o](vmware-azure-deploy-configuration-server.md#prerequisites) wymaganiach wstępnych.
-**Wdrożenie VMware** | Zalecamy wdrożenie serwera konfiguracji przy użyciu pobranego szablonu komórki jajowe. Ta metoda zapewnia prosty sposób konfigurowania serwera konfiguracji, który jest zgodny ze wszystkimi wymaganiami i wymaganiami wstępnymi.<br/><br/> Jeśli z jakiegoś powodu nie można wdrożyć maszyny wirtualnej VMware przy użyciu szablonu komórki jajowe, można ręcznie skonfigurować maszyny z serwerem konfiguracji, zgodnie z poniższym opisem w przypadku odzyskiwania po awarii maszyny fizycznej. | [Wdróż](vmware-azure-deploy-configuration-server.md#deployment-of-configuration-server-through-ova-template) z szablonem komórki jajowe.
+**Wdrożenie VMware** | Zalecamy wdrożenie serwera konfiguracji przy użyciu pobranego szablonu komórki jajowe. Ta metoda zapewnia prosty sposób konfigurowania serwera konfiguracji, który jest zgodny ze wszystkimi wymaganiami i wymaganiami wstępnymi.<br/><br/> Jeśli z jakiegoś powodu nie można wdrożyć maszyny wirtualnej VMware przy użyciu szablonu komórki jajowe, można ręcznie skonfigurować maszyny z serwerem konfiguracji, zgodnie z poniższym opisem w przypadku odzyskiwania po awarii maszyny fizycznej. | [Wdróż](vmware-azure-deploy-configuration-server.md#deploy-a-configuration-server-through-an-ova-template) z szablonem komórki jajowe.
 **Wymagania dotyczące serwera fizycznego** | W przypadku odzyskiwania po awarii na lokalnych serwerach fizycznych należy ręcznie wdrożyć serwer konfiguracji. | [Dowiedz się więcej o](physical-azure-set-up-source.md#prerequisites) wymaganiach wstępnych.
 **Wdrożenie serwera fizycznego** | Jeśli nie można go zainstalować jako maszyny wirtualnej VMware, można ją zainstalować na serwerze fizycznym. | [Wdróż](physical-azure-set-up-source.md#set-up-the-source-environment) ręcznie serwer konfiguracji.
 
@@ -51,5 +51,5 @@ Główny serwer docelowy służy do obsługi replikacji danych podczas powrotu p
 
 
 ## <a name="next-steps"></a>Następne kroki
-- Zapoznaj [](vmware-azure-architecture.md) się z architekturą odzyskiwania po awarii maszyn wirtualnych VMware i serwerów fizycznych.
-- Zapoznaj się z [wymaganiami i](vmware-physical-azure-support-matrix.md) wymaganiami wstępnymi dotyczącymi odzyskiwania po awarii maszyn wirtualnych VMware i serwerów fizycznych na platformie Azure. 
+- Zapoznaj się z [architekturą](vmware-azure-architecture.md) odzyskiwania po awarii maszyn wirtualnych VMware i serwerów fizycznych.
+- Zapoznaj się z [wymaganiami i wymaganiami wstępnymi](vmware-physical-azure-support-matrix.md) dotyczącymi odzyskiwania po awarii maszyn wirtualnych VMware i serwerów fizycznych na platformie Azure. 

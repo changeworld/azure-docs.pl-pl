@@ -8,13 +8,13 @@ author: ecfan
 ms.author: estfan
 ms.reviewer: arthii, LADocs
 ms.topic: article
-ms.date: 10/18/2019
-ms.openlocfilehash: 49ed6eedf55a8a3c0faa2fa1ff60b9894af78285
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.date: 11/06/2019
+ms.openlocfilehash: e0354f96036cce968e6b6909a18f97ff48347eda
+ms.sourcegitcommit: 018e3b40e212915ed7a77258ac2a8e3a660aaef8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73580854"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73796251"
 ---
 # <a name="connect-to-on-premises-data-sources-from-azure-logic-apps"></a>Nawiązywanie połączenia z lokalnymi źródłami danych z Azure Logic Apps
 
@@ -57,7 +57,7 @@ Azure Logic Apps obsługuje operacje odczytu i zapisu za pomocą bramy danych. J
 
 * [Lokalna Brama danych została już zainstalowana na komputerze lokalnym](../logic-apps/logic-apps-gateway-install.md).
 
-* Masz to [samo konto i subskrypcję platformy Azure](../logic-apps/logic-apps-gateway-install.md#requirements) , które zostało użyte podczas instalowania tej bramy danych.
+* Korzystasz z tego [samego konta i subskrypcji platformy Azure](../logic-apps/logic-apps-gateway-install.md#requirements) , która została użyta podczas instalowania tej bramy danych. To konto platformy Azure musi należeć do jednej [dzierżawy lub katalogu usługi Azure Active Directory (Azure AD)](../active-directory/fundamentals/active-directory-whatis.md#terminology).
 
 * Instalacja bramy nie została już zarejestrowana i nie została przejęta przez inny zasób bramy platformy Azure.
 
@@ -87,7 +87,7 @@ Po zainstalowaniu bramy na komputerze lokalnym Utwórz zasób platformy Azure dl
    | **Subskrypcja** | Wybierz subskrypcję platformy Azure dla konta platformy Azure, która była używana na potrzeby instalacji bramy. Domyślna subskrypcja jest oparta na koncie platformy Azure użytym do zalogowania się. |
    | **Grupa zasobów** | [Grupa zasobów platformy Azure](../azure-resource-manager/resource-group-overview.md) , której chcesz użyć |
    | **Lokalizacja** | Ten sam region lub lokalizacja, która została wybrana dla usługi bramy w chmurze podczas [instalacji bramy](../logic-apps/logic-apps-gateway-install.md). W przeciwnym razie instalacja bramy nie zostanie wyświetlona na liście **Nazwa instalacji** . Lokalizacja aplikacji logiki może różnić się od lokalizacji zasobów bramy. |
-   | **Nazwa instalacji** | Wybierz instalację bramy, która zostanie wyświetlona na liście tylko wtedy, gdy spełnione są następujące warunki: <p><p>-Znajduje się w tym samym regionie co zasób bramy, który chcesz utworzyć <br>-Odłączenie do innego zasobu bramy platformy Azure <br>— Połączony z tym samym kontem platformy Azure, którego używasz do tworzenia zasobu bramy <p><p>Aby uzyskać więcej informacji, zobacz sekcję [często zadawane pytania](#faq) . |
+   | **Nazwa instalacji** | Wybierz instalację bramy, która zostanie wyświetlona na liście tylko wtedy, gdy spełnione są następujące warunki: <p><p>-Instalacja bramy używa tego samego regionu co zasób bramy, który chcesz utworzyć. <br>-Instalacja bramy nie jest połączona z innym zasobem bramy platformy Azure. <br>-Instalacja bramy jest połączona z tym samym kontem platformy Azure, które jest używane do tworzenia zasobu bramy. <br>— Twoje konto platformy Azure należy do pojedynczej [dzierżawy usługi Azure Active Directory (Azure AD) lub katalogu](../active-directory/fundamentals/active-directory-whatis.md#terminology) i jest to samo konto, które było używane podczas instalacji bramy. <p><p>Aby uzyskać więcej informacji, zobacz sekcję [często zadawane pytania](#faq) . |
    |||
 
    Oto przykład, w którym jest wyświetlana instalacja bramy znajdująca się w tym samym regionie, co zasób bramy i jest połączona z tym samym kontem platformy Azure:
@@ -164,7 +164,7 @@ Aby utworzyć inny zasób bramy, Połącz instalację bramy z innym zasobem bram
 **P**: Dlaczego nie jest wyświetlana żadna instalacja bramy podczas tworzenia zasobu bramy na platformie Azure? <br/>
 Odp.: ten problem może wystąpić **z**następujących powodów:
 
-* Twoje konto platformy Azure musi być tym samym kontem, które jest połączone z instalacją bramy na komputerze lokalnym. Sprawdź, czy zalogowano się do Azure Portal z taką samą tożsamością, która jest połączona z instalacją bramy.
+* Twoje konto platformy Azure musi być tym samym kontem, które jest połączone z instalacją bramy na komputerze lokalnym. Sprawdź, czy zalogowano się do Azure Portal z taką samą tożsamością, która jest połączona z instalacją bramy. Upewnij się również, że Twoje konto platformy Azure należy do pojedynczej [dzierżawy usługi Azure AD lub](../active-directory/fundamentals/active-directory-whatis.md#terminology) katalogu i jest ustawiony na tę samą dzierżawę usługi Azure AD, która została użyta podczas instalacji bramy.
 
 * Instalacja zasobu bramy i bramy musi być używana w tym samym regionie. Jednak lokalizacja aplikacji logiki może różnić się od lokalizacji zasobów bramy.
 

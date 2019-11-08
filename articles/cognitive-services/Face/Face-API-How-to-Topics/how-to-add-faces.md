@@ -1,7 +1,7 @@
 ---
-title: 'Przykład: Dodaj twarze na grupie — interfejs API rozpoznawania twarzy'
+title: 'Przykład: Dodawanie twarzy do elementu Person-interfejs API rozpoznawania twarzy'
 titleSuffix: Azure Cognitive Services
-description: Dodawanie twarzy na obrazach za pomocą interfejsu API rozpoznawania twarzy.
+description: W tym przewodniku pokazano, jak dodać dużą liczbę osób i twarzy do obiektu osoby tworzącej usługę Azure Cognitive Services interfejs API rozpoznawania twarzy.
 services: cognitive-services
 author: SteveMSFT
 manager: nitinme
@@ -10,25 +10,25 @@ ms.subservice: face-api
 ms.topic: sample
 ms.date: 04/10/2019
 ms.author: sbowles
-ms.openlocfilehash: 0415dcae08c188c1758150c4b8b0df4dee014ce6
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: 2f8a6272b02aea5948be79ddf72d105c4f72bb33
+ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67448600"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73744245"
 ---
-# <a name="add-faces-to-a-persongroup"></a>Dodaj twarze na grupie
+# <a name="add-faces-to-a-persongroup"></a>Dodawanie twarzy do osoby
 
-Ten przewodnik pokazuje, jak dodać dużą liczbę osoby i twarzy do obiektu grupie. Tej samej strategii dotyczy także LargePersonGroup FaceList i LargeFaceList obiektów. W tym przykładzie są zapisywane C# za pomocą biblioteki klienta usługi Azure Cognitive Services powierzchni interfejsu API platformy .NET.
+W tym przewodniku pokazano, jak dodać dużą liczbę osób i twarzy do obiektu. Ta sama strategia dotyczy również obiektów LargePersonGroup, FaceList i LargeFaceList. Ten przykład jest zapisywana C# przy użyciu usługi Azure Cognitive Services interfejs API rozpoznawania twarzy bibliotece klienckiej platformy .NET.
 
-## <a name="step-1-initialization"></a>Krok 1: Inicjalizacja
+## <a name="step-1-initialization"></a>Krok 1: Inicjowanie
 
-Poniższy kod deklaruje kilka zmiennych i implementuje dodawania funkcji pomocnika, aby zaplanować twarz żądań:
+Poniższy kod deklaruje kilka zmiennych i implementuje funkcję pomocnika, aby zaplanować żądania dodania do niej:
 
 - `PersonCount` jest łączną liczbą osób.
 - `CallLimitPerSecond` jest maksymalną liczbą wywołań na sekundę, zgodnie z warstwą subskrypcji.
 - `_timeStampQueue` jest kolejką do rejestrowania znaczników czasu żądań.
-- `await WaitCallLimitPerSecondAsync()` czeka, dopóki nie jest prawidłową wysłać następne żądanie.
+- `await WaitCallLimitPerSecondAsync()` czeka na wysłanie kolejnego żądania.
 
 ```csharp
 const int PersonCount = 10000;
@@ -60,7 +60,7 @@ static async Task WaitCallLimitPerSecondAsync()
 
 ## <a name="step-2-authorize-the-api-call"></a>Krok 2: Autoryzowanie wywołania interfejsu API
 
-Korzystając z biblioteki klienta, należy przekazać swój klucz subskrypcji do konstruktora **FaceClient** klasy. Na przykład:
+W przypadku korzystania z biblioteki klienta należy przekazać klucz subskrypcji do konstruktora klasy **FaceClient** . Na przykład:
 
 ```csharp
 private readonly IFaceClient faceClient = new FaceClient(
@@ -68,9 +68,9 @@ private readonly IFaceClient faceClient = new FaceClient(
     new System.Net.Http.DelegatingHandler[] { });
 ```
 
-Aby uzyskać klucz subskrypcji, przejdź do portalu Azure Marketplace w witrynie Azure portal. Aby uzyskać więcej informacji, zobacz [subskrypcje](https://www.microsoft.com/cognitive-services/sign-up).
+Aby uzyskać klucz subskrypcji, przejdź do witryny Azure Marketplace z poziomu Azure Portal. Aby uzyskać więcej informacji, zobacz [subskrypcje](https://www.microsoft.com/cognitive-services/sign-up).
 
-## <a name="step-3-create-the-persongroup"></a>Krok 3: Tworzenie elementu PersonGroup
+## <a name="step-3-create-the-persongroup"></a>Krok 3: Tworzenie obiektu PersonGroup
 
 Tworzony jest obiekt PersonGroup o nazwie „MyPersonGroup” w celu zapisania osób.
 Czas żądania jest umieszczany w kolejce `_timeStampQueue` w celu zapewnienia ogólnej walidacji.
@@ -82,9 +82,9 @@ _timeStampQueue.Enqueue(DateTime.UtcNow);
 await faceClient.LargePersonGroup.CreateAsync(personGroupId, personGroupName);
 ```
 
-## <a name="step-4-create-the-persons-for-the-persongroup"></a>Krok 4: Tworzenie osób w grupie
+## <a name="step-4-create-the-persons-for-the-persongroup"></a>Krok 4. Tworzenie osób dla osoby
 
-Osoby są tworzone jednocześnie, a `await WaitCallLimitPerSecondAsync()` jest również stosowane w celu uniknięcia przekroczenia limitu wywołania.
+Osoby są tworzone współbieżnie, a `await WaitCallLimitPerSecondAsync()` są również stosowane w celu uniknięcia przekroczenia limitu wywołań.
 
 ```csharp
 CreatePersonResult[] persons = new CreatePersonResult[PersonCount];
@@ -97,10 +97,10 @@ Parallel.For(0, PersonCount, async i =>
 });
 ```
 
-## <a name="step-5-add-faces-to-the-persons"></a>Krok 5. Dodawanie twarzy do osób
+## <a name="step-5-add-faces-to-the-persons"></a>Krok 5: Dodawanie twarzy do osób
 
-Możliwość współbieżnego przetwarzania powierzchnie, dodawane do różnych osób. Powierzchnie, dodawane do jednej osoby określone są przetwarzane sekwencyjnie.
-Ponownie `await WaitCallLimitPerSecondAsync()` jest wywoływana, aby upewnić się, że częstotliwość żądanie znajduje się w zakresie ograniczenia.
+Powierzchnie dodawane do różnych osób są przetwarzane współbieżnie. Powierzchnie dodane dla jednej konkretnej osoby są przetwarzane sekwencyjnie.
+Ponownie `await WaitCallLimitPerSecondAsync()` jest wywoływana w celu zapewnienia, że częstotliwość żądań jest w zakresie ograniczeń.
 
 ```csharp
 Parallel.For(0, PersonCount, async i =>
@@ -122,21 +122,21 @@ Parallel.For(0, PersonCount, async i =>
 
 ## <a name="summary"></a>Podsumowanie
 
-W tym przewodniku przedstawiono proces tworzenia grupie z ogromną liczbą osoby i twarzy. Kilka przypomnień:
+W tym przewodniku przedstawiono proces tworzenia przez siebie osób z dużą liczbą osób i twarzy. Kilka przypomnień:
 
-- Strategia ta dotyczy również na liście twarzy i LargePersonGroups.
-- Dodawanie lub usuwanie twarzy do różnych liście twarzy lub osobom LargePersonGroups są przetwarzane równolegle.
-- Dodawanie lub usuwanie twarzy do jednego określonego FaceList lub osobą w LargePersonGroup są wykonywane sekwencyjnie.
-- Dla uproszczenia sposób obsługi wyjątków potencjalnych zostanie pominięty, w tym przewodniku. Jeśli chcesz zwiększyć niezawodność więcej, mają zastosowanie zasady ponawiania właściwe.
+- Ta strategia ma zastosowanie również do FaceLists i LargePersonGroups.
+- Dodawanie lub usuwanie twarzy do różnych FaceListsów lub osób w LargePersonGroups jest przetwarzanych współbieżnie.
+- Dodawanie lub usuwanie twarzy do jednego określonego FaceListu lub osoby w LargePersonGroup jest wykonywane sekwencyjnie.
+- Dla uproszczenia, jak obsłużyć potencjalny wyjątek, został pominięty w tym przewodniku. Jeśli chcesz zwiększyć niezawodność, zastosuj odpowiednie zasady ponawiania.
 
-Następujące funkcje zostały wyjaśnione i przedstawione w artykule:
+Objaśniono i przedstawiono następujące funkcje:
 
-- Tworzenie grup osób przy użyciu [grupie — Tworzenie](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395244) interfejsu API.
-- Utwórz osoby za pomocą [osoba grupie - utworzyć](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f3039523c) interfejsu API.
-- Dodawanie twarzy do osoby za pomocą [grupie osoba — Dodaj twarzy](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f3039523b) interfejsu API.
+- Utwórz grup osób wynosi przy użyciu interfejsu API [tworzenia użytkowników](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395244) .
+- Utwórz osoby za pomocą interfejsu API [osoba-tworzenie](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f3039523c) .
+- Dodaj twarze do osób przy użyciu interfejsu API [dodawania twarzy osoby](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f3039523b) z danej osoby.
 
-## <a name="related-topics"></a>Tematy pokrewne
+## <a name="related-topics"></a>Powiązane tematy
 
 - [Identyfikowanie twarzy na obrazie](HowtoIdentifyFacesinImage.md)
 - [Wykrywanie twarzy na obrazie](HowtoDetectFacesinImage.md)
-- [Użyj funkcji na dużą skalę](how-to-use-large-scale.md)
+- [Korzystanie z funkcji dużej skali](how-to-use-large-scale.md)

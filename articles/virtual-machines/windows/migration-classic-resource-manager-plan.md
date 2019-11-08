@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: article
 ms.date: 04/01/2017
 ms.author: kasing
-ms.openlocfilehash: aa36051f65936f25e4f2cc3bf03619b0f66ce5a6
-ms.sourcegitcommit: 19a821fc95da830437873d9d8e6626ffc5e0e9d6
+ms.openlocfilehash: 840d7b9534124a4fcc93962e8329dc6ce2bdf1a4
+ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70165304"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73749347"
 ---
 # <a name="planning-for-migration-of-iaas-resources-from-classic-to-azure-resource-manager"></a>Planowanie migracji zasobów IaaS z klasycznej do Azure Resource Manager
 Chociaż Azure Resource Manager oferuje wiele niezwykłych funkcji, ważne jest zaplanowanie podróży migracji, aby upewnić się, że elementy są bezproblemowo. Czas wydatków na planowanie zapewnia niespotykanie problemów podczas wykonywania działań migracji.
@@ -31,7 +31,7 @@ Istnieją cztery ogólne etapy podróży migracji:<br>
 
 ![Etapy migracji](../media/virtual-machines-windows-migration-classic-resource-manager/plan-labtest-migrate-beyond.png)
 
-## <a name="plan"></a>Plan
+## <a name="plan"></a>Planowanie
 
 ### <a name="technical-considerations-and-tradeoffs"></a>Zagadnienia techniczne i kompromisy
 
@@ -40,7 +40,7 @@ W zależności od wielkości wymagań technicznych, lokalizacje geograficzne i p
 1. Dlaczego Azure Resource Manager być wymagana w organizacji?  Jakie są przyczyny biznesowe migracji?
 2. Jakie są przyczyny techniczne Azure Resource Manager?  Co (jeśli istnieją) dodatkowe usługi platformy Azure chcesz wykorzystać?
 3. Która aplikacja (lub zestawy maszyn wirtualnych) jest dołączona do migracji?
-4. Które scenariusze są obsługiwane przez interfejs API migracji?  Zapoznaj się z nieobsługiwanymi [funkcjami i konfiguracjami](migration-classic-resource-manager-overview.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json#unsupported-features-and-configurations).
+4. Które scenariusze są obsługiwane przez interfejs API migracji?  Zapoznaj się z [nieobsługiwanymi funkcjami i konfiguracjami](migration-classic-resource-manager-overview.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json#unsupported-features-and-configurations).
 5. Czy zespoły operacyjne będą teraz obsługiwać aplikacje/maszyny wirtualne w klasycznym i Azure Resource Manager?
 6. Jak (Jeśli w ogóle) Azure Resource Manager zmieniać procesów wdrożenia maszyny wirtualnej, zarządzania, monitorowania i raportowania?  Czy należy zaktualizować skrypty wdrażania?
 7. Co to jest plan komunikacji dotyczący zgłaszania udziałowców (użytkowników końcowych, właścicieli aplikacji i właścicieli infrastruktury)?
@@ -65,7 +65,7 @@ Pomyślni klienci mają szczegółowe plany, w których omawiane są opisane pow
 ### <a name="pitfalls-to-avoid"></a>Pułapek, aby uniknąć
 
 - Niepowodzenie planu.  Kroki technologiczne tej migracji są sprawdzone, a wyniki są przewidywalne.
-- Założenie, że interfejs API migracji obsługiwanej przez platformę będzie uwzględniać wszystkie scenariusze. Zapoznaj się z nieobsługiwanymi [funkcjami i konfiguracjami](migration-classic-resource-manager-overview.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json#unsupported-features-and-configurations) , aby zrozumieć, jakie scenariusze są obsługiwane.
+- Założenie, że interfejs API migracji obsługiwanej przez platformę będzie uwzględniać wszystkie scenariusze. Zapoznaj się z [nieobsługiwanymi funkcjami i konfiguracjami](migration-classic-resource-manager-overview.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json#unsupported-features-and-configurations) , aby zrozumieć, jakie scenariusze są obsługiwane.
 - Nie należy planować potencjalnej awarii aplikacji dla użytkowników końcowych.  Zaplanuj wystarczającą liczbę buforów, aby odpowiednio ostrzec użytkowników końcowych o potencjalnie niedostępnym czasie aplikacji.
 
 
@@ -85,16 +85,16 @@ Pomyślni klienci mają szczegółowe plany, w których omawiane są opisane pow
 
 ### <a name="patterns-of-success"></a>Wzorce sukcesu
 
-W wielu większych migracjach wykryto następujące problemy. Nie jest to pełna lista i należy zapoznać się z nieobsługiwanymi [funkcjami i konfiguracjami](migration-classic-resource-manager-overview.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json#unsupported-features-and-configurations) , aby uzyskać więcej szczegółów.  Te problemy techniczne mogą wystąpić lub mogą nie występować, ale w przypadku ich rozwiązania przed podjęciem próby migracji zapewni to bezproblemowe działanie.
+W wielu większych migracjach wykryto następujące problemy. Nie jest to pełna lista i należy zapoznać się z [nieobsługiwanymi funkcjami i konfiguracjami](migration-classic-resource-manager-overview.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json#unsupported-features-and-configurations) , aby uzyskać więcej szczegółów.  Te problemy techniczne mogą wystąpić lub mogą nie występować, ale w przypadku ich rozwiązania przed podjęciem próby migracji zapewni to bezproblemowe działanie.
 
-- **Wykonaj walidację/przygotowanie/przerwanie przebiegu suchego** — jest to najważniejszy krok, aby upewnić się, że klasyczne Azure Resource Manager migracji zakończyło się pomyślnie. Interfejs API migracji ma trzy główne kroki: Sprawdź poprawność, przygotuj i zatwierdź. Sprawdzanie poprawności spowoduje odczytanie stanu środowiska klasycznego i zwrócenie wyniku wszystkich problemów. Ponieważ jednak niektóre problemy mogą występować w stosie Azure Resource Manager, walidacja nie będzie przechwytywać wszystkiego. Następnym krokiem w procesie migracji, przygotowanie pomoże Ci uwidocznić te problemy. Przygotuj spowoduje przeniesienie metadanych z klasycznego do Azure Resource Manager, ale nie spowoduje to zatwierdzeń przenoszenia i nie spowoduje usunięcia ani zmiany elementów po stronie klasycznej. Przebieg suchy obejmuje przygotowywanie migracji, a następnie przerywanie (**bez zatwierdzania**) przygotowania do migracji. Celem sprawdzenia poprawności/przygotowania/przerwania przebiegu suchego jest wyświetlenie wszystkich metadanych w stosie Azure Resource Manager, sprawdzenie go (*programowo lub w portalu*) i sprawdzenie, czy wszystko jest poprawnie migrowane i działa przez problemy techniczne.  Zapewni to również czas trwania migracji, aby można było odpowiednio zaplanować przestoje.  Weryfikacja/przygotowanie/przerwanie nie powoduje przestoju użytkownika; w związku z tym nie zakłóca użycia aplikacji.
+- **Wykonaj walidację/przygotowanie/przerwanie przebiegu suchego** — jest to najważniejszy krok, aby upewnić się, że klasyczne Azure Resource Manager migracji zakończyło się pomyślnie. Interfejs API migracji ma trzy główne kroki: Weryfikuj, przygotuj i zatwierdź. Sprawdzanie poprawności spowoduje odczytanie stanu środowiska klasycznego i zwrócenie wyniku wszystkich problemów. Ponieważ jednak niektóre problemy mogą występować w stosie Azure Resource Manager, walidacja nie będzie przechwytywać wszystkiego. Następnym krokiem w procesie migracji, przygotowanie pomoże Ci uwidocznić te problemy. Przygotuj spowoduje przeniesienie metadanych z klasycznego do Azure Resource Manager, ale nie spowoduje to zatwierdzeń przenoszenia i nie spowoduje usunięcia ani zmiany elementów po stronie klasycznej. Przebieg suchy obejmuje przygotowywanie migracji, a następnie przerywanie (**bez zatwierdzania**) przygotowania do migracji. Celem sprawdzenia poprawności/przygotowania/przerwania przebiegu suchego jest wyświetlenie wszystkich metadanych w stosie Azure Resource Manager, sprawdzenie go (*programowo lub w portalu*) i sprawdzenie, czy wszystko jest poprawnie migrowane i działa przez problemy techniczne.  Zapewni to również czas trwania migracji, aby można było odpowiednio zaplanować przestoje.  Weryfikacja/przygotowanie/przerwanie nie powoduje przestoju użytkownika; w związku z tym nie zakłóca użycia aplikacji.
   - Poniższe elementy będą musiały zostać rozwiązane przed uruchomieniem suchego, ale przeprowadzony test przebiegu będzie również bezpiecznie opróżniał te kroki przygotowania, jeśli zostaną pominięte. Podczas migracji przedsiębiorstwa znaleźliśmy suchy przebieg, który jest bezpiecznym i niecennym sposobem zapewnienia gotowości do migracji.
   - Gdy jest uruchomiona Metoda przygotowywania, płaszczyzna kontroli (operacje zarządzania platformy Azure) zostanie zablokowana dla całej sieci wirtualnej, dlatego nie można wprowadzać zmian w metadanych maszyny wirtualnej podczas walidacji/przygotowywania/przerywania.  Ale w przeciwnym razie nie wpłynie to na żadną funkcję aplikacji (RD, Usage VM itp.).  Użytkownicy maszyn wirtualnych nie będą wiedzieli, że przebiegi suche są wykonywane.
 
-- **Obwody usługi Express Route i sieci VPN**. Obecnie nie można migrować bram Express Gateway z linkami autoryzacji bez przestojów. Aby obejść ten temat, zobacz Migrowanie obwodów usługi [ExpressRoute i skojarzonych sieci wirtualnych z klasycznego modelu wdrażania do Menedżer zasobów](../../expressroute/expressroute-migration-classic-resource-manager.md).
+- **Obwody usługi Express Route i sieci VPN**. Obecnie nie można migrować bram Express Gateway z linkami autoryzacji bez przestojów. Aby obejść ten temat, zobacz [Migrowanie obwodów usługi ExpressRoute i skojarzonych sieci wirtualnych z klasycznego modelu wdrażania do Menedżer zasobów](../../expressroute/expressroute-migration-classic-resource-manager.md).
 
 - **Rozszerzenia** maszyn wirtualnych — rozszerzenia maszyny wirtualnej mogą być jednym z największych przeszkody do migracji uruchomionych maszyn wirtualnych. Korygowanie rozszerzeń maszyn wirtualnych może potrwać do 1-2 dni, więc należy odpowiednio zaplanować.  Działający Agent platformy Azure jest wymagany do raportowania stanu rozszerzenia maszyny wirtualnej z uruchomionymi maszynami wirtualnymi. Jeśli stan jest nieprawidłowy dla uruchomionej maszyny wirtualnej, spowoduje to zatrzymanie migracji. Sam Agent nie musi znajdować się w kolejności roboczej, aby umożliwić migrację, ale jeśli rozszerzenia istnieją na maszynie wirtualnej, do przechodzenia do przodu będzie potrzebna zarówno Agent roboczy, jak i wychodzące połączenie internetowe (z systemem DNS).
-  - Jeśli podczas migracji nastąpi utrata łączności z serwerem DNS, wszystkie rozszerzenia maszyn wirtualnych z wyjątkiem BGInfo w wersji 1. \* należy najpierw usunąć z każdej maszyny wirtualnej przed przygotowaniem migracji, a następnie ponownie dodać z powrotem do maszyny wirtualnej po przeprowadzeniu migracji Azure Resource Manager.  **Jest to tylko w przypadku maszyn wirtualnych, na których działa program.**  Jeśli maszyny wirtualne zostaną zatrzymane bez przydziału, nie trzeba usuwać rozszerzeń maszyn wirtualnych.
+  - Jeśli podczas migracji nastąpi utrata łączności z serwerem DNS, wszystkie rozszerzenia maszyn wirtualnych z wyjątkiem BGInfo w wersji 1.\* należy najpierw usunąć z każdej maszyny wirtualnej przed przygotowaniem migracji, a następnie ponownie dodać z powrotem do maszyny wirtualnej po przeprowadzeniu migracji Azure Resource Manager.  **Jest to tylko w przypadku maszyn wirtualnych, na których działa program.**  Jeśli maszyny wirtualne zostaną zatrzymane bez przydziału, nie trzeba usuwać rozszerzeń maszyn wirtualnych.
 
   > [!NOTE]
   > Wiele rozszerzeń, takich jak diagnostyka platformy Azure i monitorowanie usługi Security Center, zostanie ponownie zainstalowane po migracji, więc usunięcie ich nie jest problemem.
@@ -131,34 +131,34 @@ W wielu większych migracjach wykryto następujące problemy. Nie jest to pełna
 
     Bieżące przydziały Azure Resource Manager można sprawdzić przy użyciu następujących poleceń z najnowszą wersją Azure PowerShell.
     
-    [!INCLUDE [updated-for-az.md](../../../includes/updated-for-az.md)]
+     
 
-    **Obliczenia** *(Rdzenie, zestawy dostępności)*
+    **Obliczenia** *(rdzenie, zestawy dostępności)*
 
     ```powershell
     Get-AzVMUsage -Location <azure-region>
     ```
 
-    **Sieć** *(Sieci wirtualne, statyczne publiczne adresy IP, publiczne adresy IP, sieciowe grupy zabezpieczeń, interfejsy sieciowe, moduły równoważenia obciążenia, tabele tras)*
+    **Sieć** *(sieci wirtualne, statyczne publiczne adresy IP, publiczne adresy IP, sieciowe grupy zabezpieczeń, interfejsy sieciowe, moduły równoważenia obciążenia, tabele tras)*
 
     ```powershell
     Get-AzUsage /subscriptions/<subscription-id>/providers/Microsoft.Network/locations/<azure-region> -ApiVersion 2016-03-30 | Format-Table
     ```
 
-    **Magazyn** *(Konto magazynu)*
+    **Magazyn** *(konto magazynu)*
 
     ```powershell
     Get-AzStorageUsage
     ```
 
-- **Limity ograniczania interfejsu API Azure Resource Manager** — Jeśli masz wystarczająco dużo środowiska (np.). > maszyny wirtualne 400 w sieci wirtualnej), można napotkać domyślne limity ograniczania liczby interfejsów API dla operacji `1200 writes/hour`zapisu (obecnie) w Azure Resource Manager. Przed rozpoczęciem migracji należy zgłosić bilet pomocy technicznej w celu zwiększenia tego limitu dla subskrypcji.
+- **Limity ograniczania interfejsu API Azure Resource Manager** — Jeśli masz wystarczająco dużo środowiska (np.). > maszyny wirtualne 400 w sieci wirtualnej), można napotkać domyślne limity ograniczania liczby interfejsów API dla operacji zapisu (obecnie `1200 writes/hour`) w Azure Resource Manager. Przed rozpoczęciem migracji należy zgłosić bilet pomocy technicznej w celu zwiększenia tego limitu dla subskrypcji.
 
 
-- **Przekroczono limit czasu inicjowania obsługi administracyjnej stanu maszyny wirtualnej** — Jeśli dowolna maszyna wirtualna `provisioning timed out`ma stan, należy ją rozwiązać przed migracją. Jedynym sposobem, aby to zrobić, jest wyłączenie aprowizacji lub ponowne Inicjowanie obsługi administracyjnej maszyny wirtualnej (usuń ją, Zachowaj dysk i Utwórz ponownie maszynę wirtualną).
+- **Przekroczono limit czasu inicjowania obsługi administracyjnej stanu maszyny wirtualnej** — Jeśli dowolna maszyna wirtualna ma stan `provisioning timed out`, należy ją rozwiązać przed migracją. Jedynym sposobem, aby to zrobić, jest wyłączenie aprowizacji lub ponowne Inicjowanie obsługi administracyjnej maszyny wirtualnej (usuń ją, Zachowaj dysk i Utwórz ponownie maszynę wirtualną).
 
-- **Stan maszyny wirtualnej RoleStateUnknown** — jeśli migracja zostanie zatrzymana ze `role state unknown` względu na komunikat o błędzie, zbadaj maszynę wirtualną za pomocą portalu i upewnij się, że jest uruchomiona. Ten błąd zwykle oddala się od siebie (bez konieczności korygowania) po kilku minutach i jest często typem przejściowym często widocznym podczas wykonywania maszyny `start` `stop` `restart` wirtualnej, operacji. **Zalecane rozwiązanie:** ponownie spróbuj przeprowadzić migrację po kilku minutach.
+- **Stan maszyny wirtualnej RoleStateUnknown** — jeśli migracja zostanie zatrzymana ze względu na komunikat o błędzie `role state unknown`, ZBADAj maszynę wirtualną za pomocą portalu i upewnij się, że jest uruchomiona. Ten błąd zwykle oddala się od siebie (bez konieczności korygowania) po kilku minutach i jest często typem przejściowym często widocznym podczas `start`maszyny wirtualnej, `stop``restart` operacji. **Zalecane rozwiązanie:** ponownie spróbuj przeprowadzić migrację po kilku minutach.
 
-- **Klaster sieci szkieletowej nie istnieje** — w niektórych przypadkach nie można migrować niektórych maszyn wirtualnych z różnych przyczyn nieparzystych. Jednym z tych znanych przypadków jest to, że maszyna wirtualna została niedawno utworzona (w ciągu ostatniego tygodnia lub tak) i wystąpiła w przypadku klastra platformy Azure, który nie jest jeszcze wyposażony dla obciążeń Azure Resource Manager.  Zostanie wyświetlony komunikat o błędzie informujący `fabric cluster does not exist` o tym, że nie można migrować maszyny wirtualnej. Oczekiwanie na kilka dni będzie zazwyczaj rozwiązywać ten konkretny problem, ponieważ klaster wkrótce uzyska Azure Resource Manager włączony. Jednak jedno natychmiastowe obejście to `stop-deallocate` maszyna wirtualna, a następnie kontynuowanie migracji i uruchomienie maszyny wirtualnej w Azure Resource Manager po migracji.
+- **Klaster sieci szkieletowej nie istnieje** — w niektórych przypadkach nie można migrować niektórych maszyn wirtualnych z różnych przyczyn nieparzystych. Jednym z tych znanych przypadków jest to, że maszyna wirtualna została niedawno utworzona (w ciągu ostatniego tygodnia lub tak) i wystąpiła w przypadku klastra platformy Azure, który nie jest jeszcze wyposażony dla obciążeń Azure Resource Manager.  Zostanie wyświetlony komunikat o błędzie z informacją `fabric cluster does not exist` i nie można migrować maszyny wirtualnej. Oczekiwanie na kilka dni będzie zazwyczaj rozwiązywać ten konkretny problem, ponieważ klaster wkrótce uzyska Azure Resource Manager włączony. Jednak natychmiastowe obejście ma na celu `stop-deallocate` maszyny wirtualnej, a następnie kontynuowanie migracji i rozpoczęcie tworzenia kopii zapasowej maszyny wirtualnej w Azure Resource Manager po migracji.
 
 ### <a name="pitfalls-to-avoid"></a>Pułapek, aby uniknąć
 

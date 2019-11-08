@@ -7,13 +7,13 @@ ms.author: mamccrea
 ms.reviewer: jasonh
 ms.service: azure-databricks
 ms.topic: conceptual
-ms.date: 04/02/2019
-ms.openlocfilehash: 773ffe264446e6a4d9ef2e88634e4f2c9b8aeb45
-ms.sourcegitcommit: f272ba8ecdbc126d22a596863d49e55bc7b22d37
+ms.date: 11/07/2019
+ms.openlocfilehash: 460079248e6cbd939c36b84f94cac41dce4dda2b
+ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/11/2019
-ms.locfileid: "72273984"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73747664"
 ---
 # <a name="tutorial-query-a-sql-server-linux-docker-container-in-a-virtual-network-from-an-azure-databricks-notebook"></a>Samouczek: wykonywanie zapytania dotyczącego kontenera Docker SQL Server Linux w sieci wirtualnej z notesu Azure Databricks
 
@@ -36,13 +36,13 @@ Ten samouczek zawiera informacje na temat wykonywania następujących czynności
 
 * Pobierz program [SQL Server Management Studio (SSMS)](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms?view=sql-server-2017).
 
-## <a name="create-a-linux-virtual-machine"></a>Utwórz maszynę wirtualną z systemem Linux
+## <a name="create-a-linux-virtual-machine"></a>Tworzenie maszyny wirtualnej z systemem Linux
 
 1. W Azure Portal wybierz ikonę **Virtual Machines**. Następnie wybierz pozycję **+ Dodaj**.
 
     ![Dodaj nową maszynę wirtualną platformy Azure](./media/vnet-injection-sql-server/add-virtual-machine.png)
 
-2. Na karcie **podstawowe** wybierz pozycję Ubuntu Server 16,04 LTS. Zmień rozmiar maszyny wirtualnej na B1ms, która ma jedną procesorów wirtualnych vCPU i 2 GB pamięci RAM. Minimalne wymaganie dla kontenera Docker SQL Server systemu Linux to 2 GB. Wybierz nazwę użytkownika i hasło administratora.
+2. Na karcie **podstawowe** wybierz pozycję Ubuntu Server 18,04 LTS i Zmień rozmiar maszyny wirtualnej na B2s. Wybierz nazwę użytkownika i hasło administratora.
 
     ![Karta podstawy nowej konfiguracji maszyny wirtualnej](./media/vnet-injection-sql-server/create-virtual-machine-basics.png)
 
@@ -64,11 +64,11 @@ Ten samouczek zawiera informacje na temat wykonywania następujących czynności
     
     |Ustawienie|Sugerowana wartość|Opis|
     |-------|---------------|-----------|
-    |Źródło|Adresy IP|Adresy IP określają, że ruch przychodzący z określonego źródłowego adresu IP będzie dozwolony lub odrzucany przez tę regułę.|
-    |Źródłowe adresy IP|< publicznego adresu IP @ no__t-0|Wprowadź publiczny adres IP. Publiczny adres IP można znaleźć, odwiedzając [Bing.com](https://www.bing.com/) i wyszukując pozycję **"mój adres IP"** .|
+    |Element źródłowy|Adresy IP|Adresy IP określają, że ruch przychodzący z określonego źródłowego adresu IP będzie dozwolony lub odrzucany przez tę regułę.|
+    |Źródłowe adresy IP|< publicznego adresu IP\>|Wprowadź publiczny adres IP. Publiczny adres IP można znaleźć, odwiedzając [Bing.com](https://www.bing.com/) i wyszukując pozycję **"mój adres IP"** .|
     |Zakresy portów źródłowych|*|Zezwalaj na ruch z dowolnego portu.|
-    |Cel|Adresy IP|Adresy IP określają, że ruch wychodzący dla określonego źródłowego adresu IP będzie dozwolony lub odrzucany przez tę regułę.|
-    |Docelowe adresy IP|< publicznego adresu IP maszyny wirtualnej @ no__t-0|Wprowadź publiczny adres IP maszyny wirtualnej. Ten temat można znaleźć na stronie **Przegląd** swojej maszyny wirtualnej.|
+    |Element docelowy|Adresy IP|Adresy IP określają, że ruch wychodzący dla określonego źródłowego adresu IP będzie dozwolony lub odrzucany przez tę regułę.|
+    |Docelowe adresy IP|<\> publicznego adresu IP maszyny wirtualnej|Wprowadź publiczny adres IP maszyny wirtualnej. Ten temat można znaleźć na stronie **Przegląd** swojej maszyny wirtualnej.|
     |Zakresy portów docelowych|22|Otwórz port 22 dla protokołu SSH.|
     |Priorytet|290|Nadaj regule priorytet.|
     |Nazwa|SSH-datakostki — samouczek — VM|Nadaj regule nazwę.|
@@ -80,11 +80,10 @@ Ten samouczek zawiera informacje na temat wykonywania następujących czynności
 
     |Ustawienie|Sugerowana wartość|Opis|
     |-------|---------------|-----------|
-    |Źródło|Adresy IP|Adresy IP określają, że ruch przychodzący z określonego źródłowego adresu IP będzie dozwolony lub odrzucany przez tę regułę.|
-    |Źródłowe adresy IP|10.179.0.0/16|Wprowadź zakres adresów dla sieci wirtualnej.|
+    |Element źródłowy|Dowolne|Źródło określa, że ruch przychodzący z określonego źródłowego adresu IP będzie dozwolony lub odrzucany przez tę regułę.|
     |Zakresy portów źródłowych|*|Zezwalaj na ruch z dowolnego portu.|
-    |Cel|Adresy IP|Adresy IP określają, że ruch wychodzący dla określonego źródłowego adresu IP będzie dozwolony lub odrzucany przez tę regułę.|
-    |Docelowe adresy IP|< publicznego adresu IP maszyny wirtualnej @ no__t-0|Wprowadź publiczny adres IP maszyny wirtualnej. Ten temat można znaleźć na stronie **Przegląd** swojej maszyny wirtualnej.|
+    |Element docelowy|Adresy IP|Adresy IP określają, że ruch wychodzący dla określonego źródłowego adresu IP będzie dozwolony lub odrzucany przez tę regułę.|
+    |Docelowe adresy IP|<\> publicznego adresu IP maszyny wirtualnej|Wprowadź publiczny adres IP maszyny wirtualnej. Ten temat można znaleźć na stronie **Przegląd** swojej maszyny wirtualnej.|
     |Zakresy portów docelowych|1433|Otwórz port 22 dla SQL Server.|
     |Priorytet|300|Nadaj regule priorytet.|
     |Nazwa|SQL — datakostki — samouczek — VM|Nadaj regule nazwę.|

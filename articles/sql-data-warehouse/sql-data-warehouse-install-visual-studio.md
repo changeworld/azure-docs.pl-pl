@@ -9,15 +9,15 @@ manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
 ms.subservice: development
-ms.date: 10/17/2019
+ms.date: 11/06/2019
 ms.author: kevin
 ms.reviewer: igorstan
-ms.openlocfilehash: caf4a3efbfafcdb10a8834c213b2469e30296501
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
-ms.translationtype: HT
+ms.openlocfilehash: 96d66e6190732d88ba9a33094b6c27bbadfd4aae
+ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73692677"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73747808"
 ---
 # <a name="getting-started-with-visual-studio-2019-for-sql-data-warehouse"></a>Wprowadzenie do programu Visual Studio 2019 dla SQL Data Warehouse
 Visual Studio **2019** SQL Server Data Tools (SSDT) to pojedyncze narzędzie, które umożliwia wykonywanie następujących czynności:
@@ -29,14 +29,8 @@ Visual Studio **2019** SQL Server Data Tools (SSDT) to pojedyncze narzędzie, kt
 - Zintegruj projekt bazy danych z systemami kontroli źródła, takimi jak Git, za pomocą Azure Repos
 - Konfigurowanie potoków ciągłej integracji i wdrażania z serwerami automatyzacji, takimi jak Azure DevOps
 
-> [!NOTE]
-> Obecnie projekty bazy danych programu Visual Studio SSDT są w wersji zapoznawczej. Aby otrzymywać okresowe aktualizacje dotyczące tej funkcji, zapoznaj się z usługą [UserVoice].
-
-## <a name="install-visual-studio-2019-preview"></a>Zainstaluj program Visual Studio 2019 Preview
+## <a name="install-visual-studio-2019"></a>Zainstaluj program Visual Studio 2019
 Zobacz [Pobierz program Visual Studio 2019][] , aby pobrać i zainstalować program visual Studio **16,3 lub nowszy**. Podczas instalacji wybierz obciążenie magazynu i przetwarzania danych. Instalacja autonomiczna SSDT nie jest już wymagana w programie Visual Studio 2019.
-
-## <a name="reporting-issues-with-ssdt-visual-studio-2019-preview"></a>Raportowanie problemów z programem SSDT Visual Studio 2019 (wersja zapoznawcza)
-Aby zgłosić problemy podczas korzystania z programu SSDT z SQL Data Warehouse, Wyślij pocztą e-mail następującą listę dystrybucyjną e-mail: <sqldwssdtpreview@service.microsoft.com>
 
 ## <a name="next-steps"></a>Następne kroki
 Teraz, gdy masz najnowszą wersję programu SSDT, możesz [nawiązać połączenie][connect] z SQL Data Warehouse.

@@ -1,6 +1,6 @@
 ---
 title: Używanie programu PowerShell do tworzenia kopii zapasowych systemu Windows Server na platformie Azure
-description: Dowiedz się, jak wdrażać Azure Backup i zarządzać nimi przy użyciu programu PowerShell
+description: W tym artykule dowiesz się, jak używać programu PowerShell do konfigurowania Azure Backup w systemie Windows Server lub kliencie systemu Windows oraz zarządzania kopiami zapasowymi i odzyskiwaniem.
 ms.reviewer: shivamg
 author: dcurwin
 manager: carmonm
@@ -8,18 +8,19 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 08/20/2019
 ms.author: dacurwin
-ms.openlocfilehash: d65da05ea2b24e3820d9a6fde31b3d4a5c72dbd1
-ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
+ms.openlocfilehash: 78b83eb725da09dc98df05865ba4d41c505f0f4c
+ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "69656751"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73747262"
 ---
 # <a name="deploy-and-manage-backup-to-azure-for-windows-serverwindows-client-using-powershell"></a>Wdrażanie kopii zapasowych systemu Windows Server/Windows Client na platformie Azure i zarządzanie nimi przy użyciu programu PowerShell
 
 W tym artykule przedstawiono sposób użycia programu PowerShell do konfigurowania Azure Backup w systemie Windows Server lub kliencie systemu Windows oraz zarządzania kopiami zapasowymi i odzyskiwaniem.
 
-## <a name="install-azure-powershell"></a>Zainstaluj program Azure PowerShell
+## <a name="install-azure-powershell"></a>Instalowanie programu Azure PowerShell
+
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 Aby rozpocząć, [Zainstaluj najnowszą wersję programu PowerShell](/powershell/azure/install-az-ps).
@@ -78,7 +79,6 @@ SubscriptionId    : 1234-567f-8910-abc
 Properties        : Microsoft.Azure.Commands.RecoveryServices.ARSVaultProperties
 ```
 
-
 [!INCLUDE [backup-upgrade-mars-agent.md](../../includes/backup-upgrade-mars-agent.md)]
 
 ## <a name="installing-the-azure-backup-agent"></a>Instalowanie agenta Azure Backup
@@ -102,9 +102,9 @@ MARSAgentInstaller.exe /q
 
 Spowoduje to zainstalowanie agenta ze wszystkimi opcjami domyślnymi. Instalacja trwa kilka minut w tle. Jeśli nie określisz opcji */Nu* , zostanie otwarte okno **Windows Update** po zakończeniu instalacji, aby sprawdzić dostępność aktualizacji. Po zainstalowaniu Agent zostanie wyświetlony na liście zainstalowanych programów.
 
-Aby wyświetlić listę zainstalowanych programów, przejdź do pozycji **panel** > sterowania**programy** > **programy i funkcje**.
+Aby wyświetlić listę zainstalowanych programów, przejdź do pozycji **Panel sterowania** > **programy** > **programy i funkcje**.
 
-![Agent jest zainstalowany](./media/backup-client-automation/installed-agent-listing.png)
+![Agent zainstalowany](./media/backup-client-automation/installed-agent-listing.png)
 
 ### <a name="installation-options"></a>Opcje instalacji
 
@@ -116,14 +116,14 @@ MARSAgentInstaller.exe /?
 
 Dostępne opcje to:
 
-| Opcja | Szczegóły | Domyślny |
+| Opcja | Szczegóły | Domyślne |
 | --- | --- | --- |
-| /q |Instalacja cicha |- |
+| parametru |Instalacja cicha |- |
 | /p: "Location" |Ścieżka do folderu instalacji agenta Azure Backup. |C:\Program Files\Microsoft Azure Recovery Services Agent |
 | /s: "lokalizacja" |Ścieżka do folderu pamięci podręcznej dla agenta Azure Backup. |C:\Program Files\Microsoft Azure Recovery Services Agent\Scratch |
-| /m |Zezwól na Microsoft Update |- |
+| parametr |Zezwól na Microsoft Update |- |
 | /nu |Nie sprawdzaj, czy są aktualizacje po zakończeniu instalacji |- |
-| /d |Odinstalowuje agenta Microsoft Azure Recovery Services |- |
+| parametr |Odinstalowuje agenta Microsoft Azure Recovery Services |- |
 | /pH Generuj dyrektywę |Adres hosta serwera proxy |- |
 | /po |Numer portu hosta serwera proxy |- |
 | /pu |Nazwa użytkownika hosta serwera proxy |- |
@@ -151,7 +151,7 @@ $CredsFilename = Get-AzRecoveryServicesVaultSettingsFile -Certificate $certifica
 ```
 
 Na komputerze klienckim z systemem Windows Server lub Windows uruchom polecenie cmdlet [Start-OBRegistration](https://technet.microsoft.com/library/hh770398%28v=wps.630%29.aspx) , aby zarejestrować maszynę w magazynie.
-To i inne polecenia cmdlet używane do tworzenia kopii zapasowych są z modułu MSONLINE, który został dodany przez AgentInstaller Mars w ramach procesu instalacji.
+To i inne polecenia cmdlet używane do tworzenia kopii zapasowych pochodzą z modułu MSONLINE, który został dodany przez AgentInstaller Mars w ramach procesu instalacji.
 
 Instalator agenta nie aktualizuje $Env:P zmiennej SModulePath. Oznacza to, że automatyczne ładowanie modułu kończy się niepowodzeniem. Aby rozwiązać ten problem, można wykonać następujące czynności:
 
@@ -188,7 +188,7 @@ Machine registration succeeded.
 
 Gdy łączność komputera z systemem Windows z Internetem odbywa się za pośrednictwem serwera proxy, ustawienia serwera proxy mogą być również udostępniane agentowi. W tym przykładzie nie ma serwera proxy, dlatego wszystkie informacje związane z serwerem proxy są wyraźnie wyczyszczone.
 
-Użycie przepustowości może być również kontrolowane za pomocą opcji `work hour bandwidth` i `non-work hour bandwidth` dla danego zestawu dni tygodnia.
+Użycie przepustowości może być również kontrolowane z opcjami `work hour bandwidth` i `non-work hour bandwidth` dla danego zestawu dni tygodnia.
 
 Ustawianie informacji o serwerze proxy i przepustowości odbywa się przy użyciu polecenia cmdlet [Set-OBMachineSetting](https://technet.microsoft.com/library/hh770409%28v=wps.630%29.aspx) :
 
@@ -212,7 +212,7 @@ Server properties updated successfully.
 
 Dane kopii zapasowej wysyłane do Azure Backup są szyfrowane w celu ochrony poufności danych. Hasło szyfrowania to "hasło" do odszyfrowania danych w momencie przywracania.
 
-Należy wygenerować zabezpieczający numer PIN, wybierając pozycję **Generuj**, w obszarze**Właściwości** >  **Ustawienia** > **zabezpieczenia numer PIN** w sekcji **Magazyn Recovery Services** w Azure Portal. Następnie użyj tego polecenia jako `generatedPIN` w poleceniu:
+Należy wygenerować zabezpieczający numer PIN, wybierając pozycję **Generuj**, w obszarze **ustawienia** > **Właściwości** > **zabezpieczenia numeru PIN** w sekcji **Magazyn Recovery Services** Azure Portal. Następnie użyj tego `generatedPIN` w poleceniu:
 
 ```powershell
 $PassPhrase = ConvertTo-SecureString -String "Complex!123_STRING" -AsPlainText -Force
@@ -246,10 +246,10 @@ W tym momencie zasady są puste i potrzebne są inne polecenia cmdlet do definio
 
 ### <a name="configuring-the-backup-schedule"></a>Konfigurowanie harmonogramu tworzenia kopii zapasowych
 
-Pierwsze z trzech części zasad jest harmonogramem tworzenia kopii zapasowych, który jest tworzony przy użyciu polecenia cmdlet [New-OBSchedule](https://technet.microsoft.com/library/hh770401) . Harmonogram tworzenia kopii zapasowych określa, kiedy należy wykonać kopie zapasowe. Podczas tworzenia harmonogramu należy określić 2 parametry wejściowe:
+Pierwszy z trzech części zasad jest harmonogramem tworzenia kopii zapasowych, który jest tworzony przy użyciu polecenia cmdlet [New-OBSchedule](https://technet.microsoft.com/library/hh770401) . Harmonogram tworzenia kopii zapasowych określa, kiedy należy wykonać kopie zapasowe. Podczas tworzenia harmonogramu należy określić dwa parametry wejściowe:
 
 * **Dni tygodnia** , w których ma zostać uruchomiona kopia zapasowa. Zadanie tworzenia kopii zapasowej można uruchomić tylko z jednego dnia lub każdego dnia tygodnia lub dowolnej kombinacji między nimi.
-* **Godzina, o** której ma zostać wykonana kopia zapasowa. Można zdefiniować maksymalnie 3 różne razy dziennie, gdy zostanie wyzwolona kopia zapasowa.
+* **Godzina, o** której ma zostać wykonana kopia zapasowa. Można zdefiniować maksymalnie trzy razy dziennie podczas tworzenia kopii zapasowej.
 
 Na przykład można skonfigurować zasady tworzenia kopii zapasowych, które są uruchamiane o godzinie 16:00 w każdą sobotę i niedzielę.
 
@@ -266,9 +266,10 @@ Set-OBSchedule -Policy $NewPolicy -Schedule $Schedule
 ```Output
 BackupSchedule : 4:00 PM Saturday, Sunday, Every 1 week(s) DsList : PolicyName : RetentionPolicy : State : New PolicyState : Valid
 ```
+
 ### <a name="configuring-a-retention-policy"></a>Konfigurowanie zasad przechowywania
 
-Zasady przechowywania określają, jak długo punkty odzyskiwania utworzone na podstawie zadań kopii zapasowej są zachowywane. Podczas tworzenia nowych zasad przechowywania przy użyciu polecenia cmdlet [New-OBRetentionPolicy](https://technet.microsoft.com/library/hh770425) możesz określić liczbę dni, przez jaką punkty odzyskiwania kopii zapasowych mają być przechowywane w Azure Backup. W poniższym przykładzie ustawiono zasady przechowywania wynoszące 7 dni.
+Zasady przechowywania określają, jak długo punkty odzyskiwania utworzone na podstawie zadań kopii zapasowej są zachowywane. Podczas tworzenia nowych zasad przechowywania przy użyciu polecenia cmdlet [New-OBRetentionPolicy](https://technet.microsoft.com/library/hh770425) możesz określić liczbę dni, przez jaką punkty odzyskiwania kopii zapasowych mają być przechowywane w Azure Backup. W poniższym przykładzie ustawiono zasady przechowywania wynoszące siedem dni.
 
 ```powershell
 $RetentionPolicy = New-OBRetentionPolicy -RetentionDays 7
@@ -300,9 +301,10 @@ RetentionPolicy : Retention Days : 7
 State           : New
 PolicyState     : Valid
 ```
+
 ### <a name="including-and-excluding-files-to-be-backed-up"></a>Uwzględnianie i wykluczanie plików, których kopia zapasowa ma zostać utworzona
 
-`OBFileSpec` Obiekt definiuje pliki do uwzględnienia i wykluczone w kopii zapasowej. Jest to zestaw reguł określających zakres chronionych plików i folderów na komputerze. Istnieje wiele reguł dołączania lub wykluczania plików, które są wymagane i kojarzą je z zasadami. Podczas tworzenia nowego obiektu OBFileSpec można:
+Obiekt `OBFileSpec` definiuje pliki, które mają być uwzględnione i wykluczone w kopii zapasowej. Jest to zestaw reguł określających zakres chronionych plików i folderów na komputerze. Istnieje wiele reguł dołączania lub wykluczania plików, które są wymagane i kojarzą je z zasadami. Podczas tworzenia nowego obiektu OBFileSpec można:
 
 * Określ pliki i foldery do uwzględnienia
 * Określ pliki i foldery, które mają zostać wykluczone
@@ -403,11 +405,13 @@ RetentionPolicy : Retention Days : 7
 State           : New
 PolicyState     : Valid
 ```
+
 ## <a name="back-up-windows-server-system-state-in-mabs-agent"></a>Tworzenie kopii zapasowej stanu systemu Windows Server w agencie serwera usługi MAB
 
 W tej sekcji omówiono polecenie programu PowerShell służące do konfigurowania stanu systemu w agencie serwera usługi MAB
 
 ### <a name="schedule"></a>Harmonogram
+
 ```powershell
 $sched = New-OBSchedule -DaysOfWeek Sunday,Monday,Tuesday,Wednesday,Thursday,Friday,Saturday -TimesOfDay 2:00
 ```
@@ -432,7 +436,7 @@ Get-OBSystemStatePolicy
 
 ### <a name="applying-the-policy"></a>Stosowanie zasad
 
-Teraz obiekt Policy został ukończony i ma skojarzony Harmonogram kopii zapasowych, zasady przechowywania oraz listę plików dołączania/wykluczania. Te zasady można teraz przystąpić do Azure Backup. Przed zastosowaniem nowo utworzonych zasad upewnij się, że nie ma żadnych istniejących zasad kopii zapasowych skojarzonych z serwerem przy użyciu polecenia cmdlet [Remove-OBPolicy](https://technet.microsoft.com/library/hh770415) . Usunięcie zasad spowoduje wyświetlenie monitu o potwierdzenie. Aby pominąć potwierdzenie, użyj `-Confirm:$false` flagi z poleceniem cmdlet.
+Teraz obiekt Policy został ukończony i ma skojarzony Harmonogram kopii zapasowych, zasady przechowywania oraz listę plików dołączania/wykluczania. Te zasady można teraz przystąpić do Azure Backup. Przed zastosowaniem nowo utworzonych zasad upewnij się, że nie ma żadnych istniejących zasad kopii zapasowych skojarzonych z serwerem za pomocą polecenia cmdlet [Remove-OBPolicy](https://technet.microsoft.com/library/hh770415) . Usunięcie zasad spowoduje wyświetlenie monitu o potwierdzenie. Aby pominąć potwierdzenie, Użyj flagi `-Confirm:$false` z poleceniem cmdlet.
 
 ```powershell
 Get-OBPolicy | Remove-OBPolicy
@@ -442,7 +446,7 @@ Get-OBPolicy | Remove-OBPolicy
 Microsoft Azure Backup Are you sure you want to remove this backup policy? This will delete all the backed up data. [Y] Yes [A] Yes to All [N] No [L] No to All [S] Suspend [?] Help (default is "Y"):
 ```
 
-Zatwierdzanie obiektu zasad odbywa się przy użyciu polecenia cmdlet [Set-OBPolicy](https://technet.microsoft.com/library/hh770421) . Spowoduje to również poproszenie o potwierdzenie. Aby pominąć potwierdzenie, użyj `-Confirm:$false` flagi z poleceniem cmdlet.
+Zatwierdzanie obiektu zasad odbywa się przy użyciu polecenia cmdlet [Set-OBPolicy](https://technet.microsoft.com/library/hh770421) . Spowoduje to również poproszenie o potwierdzenie. Aby pominąć potwierdzenie, Użyj flagi `-Confirm:$false` z poleceniem cmdlet.
 
 ```powershell
 Set-OBPolicy -Policy $NewPolicy
@@ -628,9 +632,9 @@ Obiekt `$Rps` jest tablicą punktów kopii zapasowych. Pierwszy element jest ost
 
 ### <a name="choosing-an-item-to-restore"></a>Wybieranie elementu do przywrócenia
 
-Aby zidentyfikować dokładny plik lub folder do przywrócenia, należy rekursywnie użyć polecenia cmdlet [Get-OBRecoverableItem](https://technet.microsoft.com/library/hh770399.aspx) . W ten sposób hierarchia folderów może być przeglądana wyłącznie przy `Get-OBRecoverableItem`użyciu programu.
+Aby zidentyfikować dokładny plik lub folder do przywrócenia, należy rekursywnie użyć polecenia cmdlet [Get-OBRecoverableItem](https://technet.microsoft.com/library/hh770399.aspx) . W ten sposób hierarchia folderów może być przeglądana wyłącznie przy użyciu `Get-OBRecoverableItem`.
 
-W tym przykładzie, jeśli chcemy przywrócić plik finanse *. xls* możemy odnieść się do niego przy użyciu obiektu `$FilesFolders[1]`.
+Jeśli w tym przykładzie chcemy przywrócić plik *finanse* , można odwoływać się do niego przy użyciu `$FilesFolders[1]`obiektu.
 
 ```powershell
 $FilesFolders = Get-OBRecoverableItem $Rps[0]
@@ -679,7 +683,7 @@ ItemSize : 96256
 ItemLastModifiedTime : 21-Jun-14 6:43:02 AM
 ```
 
-Możesz również wyszukać elementy do przywrócenia przy użyciu ```Get-OBRecoverableItem``` polecenia cmdlet. W naszym przykładzie, aby wyszukać *finanse. xls* możemy uzyskać dojście do pliku, uruchamiając następujące polecenie:
+Możesz również wyszukać elementy do przywrócenia za pomocą polecenia cmdlet ```Get-OBRecoverableItem```. W naszym przykładzie, aby wyszukać *finanse. xls* możemy uzyskać dojście do pliku, uruchamiając następujące polecenie:
 
 ```powershell
 $Item = Get-OBRecoverableItem -RecoveryPoint $Rps[0] -Location "D:\MyData" -SearchString "finance*"
@@ -693,7 +697,7 @@ Aby wyzwolić proces przywracania, najpierw musimy określić opcje odzyskiwania
 $RecoveryOption = New-OBRecoveryOption -DestinationPath "C:\temp" -OverwriteType Skip
 ```
 
-Teraz Wyzwól proces przywracania za pomocą polecenia [Start-OBRecovery](https://technet.microsoft.com/library/hh770402.aspx) wybranego `$Item` z danych wyjściowych `Get-OBRecoverableItem` polecenia cmdlet:
+Teraz Wyzwól proces przywracania za pomocą polecenia [Start-OBRecovery](https://technet.microsoft.com/library/hh770402.aspx) na wybranej `$Item` z danych wyjściowych polecenia cmdlet `Get-OBRecoverableItem`:
 
 ```powershell
 Start-OBRecovery -RecoverableItem $Item -RecoveryOption $RecoveryOption
@@ -770,7 +774,7 @@ Invoke-Command -Session $Session -Script { param($D, $A) Start-Process -FilePath
 
 ## <a name="next-steps"></a>Następne kroki
 
-Aby uzyskać więcej informacji na temat Azure Backup dla systemu Windows Server/klienta, zobacz
+Aby uzyskać więcej informacji na temat Azure Backup dla systemu Windows Server/klienta:
 
 * [Wprowadzenie do usługi Azure Backup](backup-introduction-to-azure-backup.md)
 * [Tworzenie kopii zapasowych serwerów z systemem Windows](backup-configure-vault.md)

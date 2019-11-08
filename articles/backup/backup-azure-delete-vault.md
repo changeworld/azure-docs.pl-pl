@@ -1,23 +1,22 @@
 ---
 title: Usuwanie magazynu Recovery Services Microsoft Azure Backup
-description: W tym artykule opisano sposób usuwania magazynu Recovery Services Microsoft Azure Backup.
+description: W tym artykule dowiesz się, jak usunąć zależności, a następnie usunąć magazyn Microsoft Azure Backup Recovery Services (MARS).
 author: dcurwin
 manager: carmonm
 ms.service: backup
 ms.topic: conceptual
 ms.date: 09/20/2019
 ms.author: dacurwin
-ms.openlocfilehash: ae8421ca9e3705d697e9638e80fc61f853ff9d28
-ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
+ms.openlocfilehash: 469d6532449df8327389b8117904b078d9340e5b
+ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "72028283"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73747573"
 ---
 # <a name="delete-an-azure-backup-recovery-services-vault"></a>Usuwanie magazynu Recovery Services Azure Backup
 
 W tym artykule opisano sposób usuwania magazynu Microsoft [Azure Backup](backup-overview.md) Recovery Services (MARS). Zawiera instrukcje dotyczące usuwania zależności, a następnie usuwania magazynu.
-
 
 ## <a name="before-you-start"></a>Przed rozpoczęciem
 
@@ -33,7 +32,7 @@ Nie można usunąć magazynu Recovery Services z zależnościami, takimi jak ser
 
   ![Usuń błąd serwera chronionego.](./media/backup-azure-delete-vault/error-message.jpg)
 
-- Jeśli pojawi się komunikat ostrzegawczy, elementy kopii zapasowej znajdują się w stanie nietrwałego usunięcia, a użytkownik będzie musiał odczekać, aż zostanie trwale usunięty. Aby uzyskać więcej informacji, zapoznaj się z tym [artykułem](https://aka.ms/SoftDeleteCloudWorkloads).
+- Jeśli pojawi się komunikat ostrzegawczy, elementy kopii zapasowej znajdują się w stanie nietrwałego usunięcia, a użytkownik będzie musiał czekać na ich trwałe usunięcie. Więcej informacji znajduje się w [tym](https://aka.ms/SoftDeleteCloudWorkloads) artykule.
 
    ![Usuń błąd magazynu.](./media/backup-azure-delete-vault/error-message-soft-delete.png)
   
@@ -46,7 +45,6 @@ Mam lokalne maszyny, które są chronione za pomocą serwera usługi MAB (Micros
 Mam chronione elementy w chmurze (na przykład maszyna wirtualna laaS lub udział Azure Files)  | Wykonaj kroki opisane w temacie [usuwanie chronionych elementów w chmurze](#delete-protected-items-in-the-cloud)
 Mam chronione elementy zarówno lokalnie, jak i w chmurze | Wykonaj kroki we wszystkich następujących sekcjach w następującej kolejności: <br> 1. [Usuń chronione elementy w chmurze](#delete-protected-items-in-the-cloud)<br> 2. [Usuń elementy kopii zapasowej z konsoli zarządzania Mars](#delete-backup-items-from-the-mars-management-console) . <br> 3. [Usuń elementy kopii zapasowej z konsoli zarządzania serwera usługi MAB](#delete-backup-items-from-the-mabs-management-console)
 Nie mam żadnych chronionych elementów lokalnie lub w chmurze; Mimo to nadal otrzymuję błąd usuwania magazynu | Wykonaj kroki opisane w temacie [Usuwanie magazynu Recovery Services przy użyciu Azure Resource Manager](#delete-the-recovery-services-vault-by-using-azure-resource-manager)
-
 
 ## <a name="delete-protected-items-in-the-cloud"></a>Usuwanie chronionych elementów w chmurze
 
@@ -64,12 +62,12 @@ Aby zatrzymać ochronę i usunąć dane kopii zapasowej, wykonaj następujące c
 
         ![Okienko Zatrzymaj tworzenie kopii zapasowej.](./media/backup-azure-delete-vault/stop-backup-item.png)
 
-    - Jeśli zostanie wyświetlone okienko **Usuń dane kopii zapasowej** , wprowadź nazwę elementu kopii zapasowej (w tym polu jest rozróżniana wielkość liter), a następnie wybierz przyczynę z menu rozwijanego. Wprowadź swoje komentarze, jeśli masz. Następnie wybierz pozycję **Usuń**. 
+    - Jeśli zostanie wyświetlone okienko **Usuń dane kopii zapasowej** , wprowadź nazwę elementu kopii zapasowej (w tym polu jest rozróżniana wielkość liter), a następnie wybierz przyczynę z menu rozwijanego. Wprowadź swoje komentarze, jeśli masz. Następnie wybierz pozycję **Usuń**.
 
          ![Okienko Usuń dane kopii zapasowej.](./media/backup-azure-delete-vault/stop-backup-blade-delete-backup-data.png)
 
-5. Sprawdź ikonę **powiadomienia** : ![The ikona powiadomienia. ](./media/backup-azure-delete-vault/messages.png) Po zakończeniu procesu usługa wyświetli następujący komunikat: *Zatrzymywanie tworzenia kopii zapasowej i usuwanie danych kopii zapasowej dla elementu "* kopia zapasowa *"* . *Pomyślnie ukończono operację*.
-6. Wybierz pozycję **Odśwież** w menu **elementy kopii zapasowej** , aby upewnić się, że element kopii zapasowej został usunięty.
+3. Sprawdź ikonę **powiadomienia** : ![ikonę powiadomienia.](./media/backup-azure-delete-vault/messages.png) Po zakończeniu procesu usługa wyświetli następujący komunikat: *Zatrzymywanie tworzenia kopii zapasowej i usuwanie danych kopii zapasowej dla elementu "* kopia zapasowa *"* . *Pomyślnie ukończono operację*.
+4. Wybierz pozycję **Odśwież** w menu **elementy kopii zapasowej** , aby upewnić się, że element kopii zapasowej został usunięty.
 
       ![Strona Usuń elementy kopii zapasowej.](./media/backup-azure-delete-vault/empty-items-list.png)
 
@@ -80,12 +78,11 @@ Najpierw zapoznaj się z sekcją **[przed rozpoczęciem](#before-you-start)** , 
 1. W menu pulpitu nawigacyjnego magazynu wybierz pozycję **infrastruktura zapasowa**.
 2. W zależności od scenariusza lokalnego wybierz jedną z następujących opcji:
 
-      - W przypadku usługi MARS wybierz pozycję **chronione serwery** , a następnie **Azure Backup agenta**. Następnie wybierz serwer, który chcesz usunąć. 
+      - W przypadku usługi MARS wybierz pozycję **chronione serwery** , a następnie **Azure Backup agenta**. Następnie wybierz serwer, który chcesz usunąć.
 
         ![W przypadku usługi MARS wybierz swój magazyn, aby otworzyć jego pulpit nawigacyjny.](./media/backup-azure-delete-vault/identify-protected-servers.png)
 
-      - W przypadku serwera usługi MAB lub DPM wybierz pozycję **serwery zarządzania kopiami zapasowymi**. Następnie wybierz serwer, który chcesz usunąć. 
-
+      - W przypadku serwera usługi MAB lub DPM wybierz pozycję **serwery zarządzania kopiami zapasowymi**. Następnie wybierz serwer, który chcesz usunąć.
 
           ![W obszarze serwera usługi MAB wybierz swój magazyn, aby otworzyć jego pulpit nawigacyjny.](./media/backup-azure-delete-vault/delete-backup-management-servers.png)
 
@@ -101,15 +98,13 @@ Najpierw zapoznaj się z sekcją **[przed rozpoczęciem](#before-you-start)** , 
 
 4. Zaznacz pole wyboru wyrażanie zgody, a następnie wybierz pozycję **Usuń**.
 
-
-5. Sprawdź ikonę **powiadomienia** ![delete ](./media/backup-azure-delete-vault/messages.png) danych kopii zapasowej. Po zakończeniu operacji usługa wyświetli komunikat: *Zatrzymywanie tworzenia kopii zapasowej i usuwanie danych kopii zapasowej dla elementu "kopia zapasowa".* *Pomyślnie ukończono operację*.
+5. Sprawdź ikonę **powiadomienia** ![Usuń dane kopii zapasowej](./media/backup-azure-delete-vault/messages.png). Po zakończeniu operacji usługa wyświetli komunikat: *Zatrzymywanie tworzenia kopii zapasowej i usuwanie danych kopii zapasowej dla elementu "kopia zapasowa".* *Pomyślnie ukończono operację*.
 6. Wybierz pozycję **Odśwież** w menu **elementy kopii zapasowej** , aby upewnić się, że element kopii zapasowej został usunięty.
 
 Po zakończeniu tego procesu można usunąć elementy kopii zapasowej z konsoli zarządzania programu:
-    
-   - [Usuwanie elementów kopii zapasowej z konsoli zarządzania MARS](#delete-backup-items-from-the-mars-management-console)
-    - [Usuwanie elementów kopii zapasowej z konsoli zarządzania serwera usługi MAB](#delete-backup-items-from-the-mabs-management-console)
 
+- [Usuwanie elementów kopii zapasowej z konsoli zarządzania MARS](#delete-backup-items-from-the-mars-management-console)
+- [Usuwanie elementów kopii zapasowej z konsoli zarządzania serwera usługi MAB](#delete-backup-items-from-the-mabs-management-console)
 
 ### <a name="delete-backup-items-from-the-mars-management-console"></a>Usuwanie elementów kopii zapasowej z konsoli zarządzania MARS
 
@@ -139,11 +134,12 @@ Po usunięciu lokalnych elementów kopii zapasowej wykonaj kolejne kroki z porta
 Istnieją dwie metody, których można użyć do usunięcia elementów kopii zapasowej z konsoli zarządzania serwera usługi MAB.
 
 #### <a name="method-1"></a>Metoda 1
+
 Aby zatrzymać ochronę i usunąć dane kopii zapasowej, wykonaj następujące czynności:
 
-1.  Otwórz Konsola administratora programu DPM a następnie na pasku nawigacyjnym wybierz pozycję **Ochrona** .
-2.  W okienku wyświetlania wybierz członka grupy ochrony, który chcesz usunąć. Kliknij prawym przyciskiem myszy, aby wybrać opcję **Zatrzymaj ochronę grup członków** .
-3.  W oknie dialogowym **Zatrzymywanie ochrony** wybierz pozycję **Usuń chronione dane**, a następnie zaznacz pole wyboru **Usuń magazyn online** . Następnie wybierz pozycję **Zatrzymaj ochronę**.
+1. Otwórz Konsola administratora programu DPM a następnie na pasku nawigacyjnym wybierz pozycję **Ochrona** .
+2. W okienku wyświetlania wybierz członka grupy ochrony, który chcesz usunąć. Kliknij prawym przyciskiem myszy, aby wybrać opcję **Zatrzymaj ochronę grup członków** .
+3. W oknie dialogowym **Zatrzymywanie ochrony** wybierz pozycję **Usuń chronione dane**, a następnie zaznacz pole wyboru **Usuń magazyn online** . Następnie wybierz pozycję **Zatrzymaj ochronę**.
 
     ![Wybierz pozycję Usuń chronione dane z okienka zatrzymywanie ochrony.](./media/backup-azure-delete-vault/delete-storage-online.png)
 
@@ -158,12 +154,12 @@ Aby zatrzymać ochronę i usunąć dane kopii zapasowej, wykonaj następujące c
     ![Usuń magazyn online.](./media/backup-azure-delete-vault/remove-replica-on-disk-and-online.png)
 
 #### <a name="method-2"></a>Metoda 2
+
 Otwórz konsolę **zarządzania serwera usługi MAB** . W obszarze **Wybierz metodę ochrony danych**wyczyść pole wyboru **Chcę chronić w trybie online** .
 
   ![Wybierz metodę ochrony danych.](./media/backup-azure-delete-vault/data-protection-method.png)
 
 Po usunięciu lokalnych elementów kopii zapasowej wykonaj kolejne kroki z portalu.
-
 
 ## <a name="delete-the-recovery-services-vault"></a>Usuwanie magazynu usługi Recovery Services
 
@@ -185,71 +181,73 @@ Aby zatrzymać ochronę i usunąć dane kopii zapasowej:
 - Jeśli używasz programu SQL w ramach kopii zapasowych maszyn wirtualnych platformy Azure i włączono funkcję autoochrony dla wystąpień programu SQL Server, należy najpierw wyłączyć ochronę autoprotection.
 
     ```PowerShell
-        Disable-AzRecoveryServicesBackupAutoProtection 
-           [-InputItem] <ProtectableItemBase> 
-           [-BackupManagementType] <BackupManagementType> 
-           [-WorkloadType] <WorkloadType> 
-           [-PassThru] 
-           [-VaultId <String>] 
-           [-DefaultProfile <IAzureContextContainer>] 
-           [-WhatIf] 
-           [-Confirm] 
-           [<CommonParameters>] 
+        Disable-AzRecoveryServicesBackupAutoProtection
+           [-InputItem] <ProtectableItemBase>
+           [-BackupManagementType] <BackupManagementType>
+           [-WorkloadType] <WorkloadType>
+           [-PassThru]
+           [-VaultId <String>]
+           [-DefaultProfile <IAzureContextContainer>]
+           [-WhatIf]
+           [-Confirm]
+           [<CommonParameters>]
     ```
 
-  [Dowiedz się więcej](https://docs.microsoft.com/powershell/module/az.recoveryservices/disable-azrecoveryservicesbackupautoprotection?view=azps-2.6.0) na temat wyłączania ochrony dla elementu chronionego przez Azure Backup 
+  [Dowiedz się więcej](https://docs.microsoft.com/powershell/module/az.recoveryservices/disable-azrecoveryservicesbackupautoprotection?view=azps-2.6.0) na temat wyłączania ochrony dla elementu chronionego Azure Backup.
 
 - Zatrzymaj ochronę i Usuń dane dla wszystkich elementów chronionych przez kopię zapasową w chmurze (np. Maszyna wirtualna w laaS, udział plików platformy Azure itp.):
 
     ```PowerShell
-       Disable-AzRecoveryServicesBackupProtection 
-       [-Item] <ItemBase> 
-       [-RemoveRecoveryPoints] 
-       [-Force] 
-       [-VaultId <String>] 
-       [-DefaultProfile <IAzureContextContainer>] 
-       [-WhatIf] 
-       [-Confirm] 
-       [<CommonParameters>] 
+       Disable-AzRecoveryServicesBackupProtection
+       [-Item] <ItemBase>
+       [-RemoveRecoveryPoints]
+       [-Force]
+       [-VaultId <String>]
+       [-DefaultProfile <IAzureContextContainer>]
+       [-WhatIf]
+       [-Confirm]
+       [<CommonParameters>]
     ```
-    [Dowiedz się więcej](https://docs.microsoft.com/powershell/module/az.recoveryservices/disable-azrecoveryservicesbackupprotection?view=azps-2.6.0&viewFallbackFrom=azps-2.5.0)  about wyłącza ochronę dla elementu chronionego przez kopię zapasową. 
+
+    [Dowiedz się więcej](https://docs.microsoft.com/powershell/module/az.recoveryservices/disable-azrecoveryservicesbackupprotection?view=azps-2.6.0&viewFallbackFrom=azps-2.5.0) wyłączyć ochronę dla elementu chronionego przez kopię zapasową.
 
 - W przypadku plików i folderów lokalnych chronionych przy użyciu agenta Azure Backup (MARS) kopii zapasowej na platformie Azure Użyj następującego polecenia programu PowerShell, aby usunąć kopię zapasową danych z każdego modułu MARS PowerShell:
 
-    ```
+    ```powershell
     Get-OBPolicy | Remove-OBPolicy -DeleteBackup -SecurityPIN <Security Pin>
     ```
 
-    Opublikuj, który zostanie wyświetlony następujący monit:
-     
-    *Microsoft Azure Backup czy na pewno chcesz usunąć te zasady kopii zapasowych? Usunięte dane kopii zapasowej będą przechowywane przez 14 dni. Po upływie tego czasu dane kopii zapasowej zostaną trwale usunięte.  <br/> [Y] tak [A] tak dla wszystkich [N] nie [L] nie do wszystkich [S] zawieszania [?] Pomoc (wartość domyślna to "Y"):*
+    Opublikuj, gdzie zostanie wyświetlony następujący monit:
 
+    *Microsoft Azure Backup czy na pewno chcesz usunąć te zasady kopii zapasowych? Usunięte dane kopii zapasowej będą przechowywane przez 14 dni. Po upływie tego czasu dane kopii zapasowej zostaną trwale usunięte. <br/> [Y] tak [A] tak dla wszystkich [N] nie [L] nie do wszystkich [S] zawieszania [?] Pomoc (wartość domyślna to "Y"):*
 
 - W przypadku maszyn lokalnych chronionych przy użyciu serwera usługi MAB (Microsoft Azure Backup Server) lub DPM do platformy Azure (System Center Data Protection Manager) Użyj następującego polecenia, aby usunąć kopię zapasową danych na platformie Azure.
 
-    ```
-    Get-OBPolicy | Remove-OBPolicy -DeleteBackup -SecurityPIN <Security Pin> 
+    ```powershell
+    Get-OBPolicy | Remove-OBPolicy -DeleteBackup -SecurityPIN <Security Pin>
     ```
 
-    Opublikuj, który zostanie wyświetlony następujący monit: 
-         
-   *Microsoft Azure Backup czy na pewno chcesz usunąć te zasady kopii zapasowych? Usunięte dane kopii zapasowej będą przechowywane przez 14 dni. Po upływie tego czasu dane kopii zapasowej zostaną trwale usunięte.  <br/> [Y] tak [A] tak dla wszystkich [N] nie [L] nie do wszystkich [S] zawieszania [?] Pomoc (wartość domyślna to "Y"):*
+    Opublikuj, gdzie zostanie wyświetlony następujący monit:
 
-Po usunięciu kopii zapasowej danych, należy wyrejestrować wszystkie kontenery lokalne i serwery zarządzania. 
+   *Microsoft Azure Backup* Czy na pewno chcesz usunąć te zasady kopii zapasowych? Usunięte dane kopii zapasowej będą przechowywane przez 14 dni. Po upływie tego czasu dane kopii zapasowej zostaną trwale usunięte. <br/>
+   [T] tak [A] tak dla wszystkich [N] nie [L] nie do wszystkich [S] zawieszania [?] Pomoc (wartość domyślna to "Y"):*
+
+Po usunięciu kopii zapasowej danych, należy wyrejestrować wszystkie kontenery lokalne i serwery zarządzania.
 
 - W przypadku plików i folderów lokalnych chronionych przy użyciu agenta Azure Backup (MARS) tworzenie kopii zapasowej na platformie Azure:
 
     ```PowerShell
-    Unregister-AzRecoveryServicesBackupContainer 
-              [-Container] <ContainerBase> 
-              [-PassThru] 
-              [-VaultId <String>] 
-              [-DefaultProfile <IAzureContextContainer>] 
-              [-WhatIf] 
-              [-Confirm] 
-              [<CommonParameters>] 
+    Unregister-AzRecoveryServicesBackupContainer
+              [-Container] <ContainerBase>
+              [-PassThru]
+              [-VaultId <String>]
+              [-DefaultProfile <IAzureContextContainer>]
+              [-WhatIf]
+              [-Confirm]
+              [<CommonParameters>]
     ```
-    [Dowiedz się więcej](https://docs.microsoft.com/powershell/module/az.recoveryservices/unregister-azrecoveryservicesbackupcontainer?view=azps-2.6.0) o usuwaniu rejestracji systemu Windows Server lub innego kontenera z magazynu. 
+
+    [Dowiedz się więcej](https://docs.microsoft.com/powershell/module/az.recoveryservices/unregister-azrecoveryservicesbackupcontainer?view=azps-2.6.0) o usuwaniu rejestracji systemu Windows Server lub innego kontenera z magazynu.
 
 - W przypadku maszyn lokalnych chronionych przy użyciu serwera usługi MAB (Microsoft Azure Backup Server) lub DPM do platformy Azure (System Center Data Protection Manage:
 
@@ -266,57 +264,57 @@ Po usunięciu kopii zapasowej danych, należy wyrejestrować wszystkie kontenery
 
     [Dowiedz się więcej](https://docs.microsoft.com/powershell/module/az.recoveryservices/unregister-azrecoveryservicesbackupcontainer?view=azps-2.6.0) o wyrejestrowaniu kontenera zarządzania kopiami zapasowymi z magazynu.
 
-Po trwałym usunięciu danych kopii zapasowej i wyrejestrowaniu wszystkich kontenerów, należy usunąć magazyn. 
+Po trwałym usunięciu danych kopii zapasowej i wyrejestrowaniu wszystkich kontenerów, należy usunąć magazyn.
 
-Aby usunąć magazyn Recovery Services: 
+Aby usunąć magazyn Recovery Services:
 
    ```PowerShell
-       Remove-AzRecoveryServicesVault 
-      -Vault <ARSVault> 
-      [-DefaultProfile <IAzureContextContainer>] 
-      [-WhatIf] 
-      [-Confirm] 
-      [<CommonParameters>]        
+       Remove-AzRecoveryServicesVault
+      -Vault <ARSVault>
+      [-DefaultProfile <IAzureContextContainer>]
+      [-WhatIf]
+      [-Confirm]
+      [<CommonParameters>]
    ```
 
-[Dowiedz się więcej](https://docs.microsoft.com/powershell/module/az.recoveryservices/remove-azrecoveryservicesvault) na temat usuwania magazynu usługi Recovery Services. 
+[Dowiedz się więcej](https://docs.microsoft.com/powershell/module/az.recoveryservices/remove-azrecoveryservicesvault) na temat usuwania magazynu usługi Recovery Services.
 
 ## <a name="delete-the-recovery-services-vault-by-using-cli"></a>Usuwanie magazynu Recovery Services przy użyciu interfejsu wiersza polecenia
 
 Najpierw zapoznaj się z sekcją **[przed rozpoczęciem](#before-you-start)** , aby poznać zależności i proces usuwania magazynu.
 
 > [!NOTE]
-> Obecnie Azure Backup interfejs wiersza polecenia obsługuje zarządzanie tylko kopiami zapasowymi maszyny wirtualnej platformy Azure, więc następujące polecenie usuwania magazynu działa tylko wtedy, gdy magazyn zawiera kopie zapasowe maszyn wirtualnych platformy Azure. Nie można usunąć magazynu przy użyciu interfejsu wiersza polecenia Azure Backup, jeśli magazyn zawiera element kopii zapasowej typu innego niż maszyny wirtualne platformy Azure. 
+> Obecnie Azure Backup interfejs wiersza polecenia obsługuje zarządzanie tylko kopiami zapasowymi maszyny wirtualnej platformy Azure, więc następujące polecenie usuwania magazynu działa tylko wtedy, gdy magazyn zawiera kopie zapasowe maszyn wirtualnych platformy Azure. Nie można usunąć magazynu przy użyciu interfejsu wiersza polecenia Azure Backup, jeśli magazyn zawiera element kopii zapasowej typu innego niż maszyny wirtualne platformy Azure.
 
-Aby usunąć istniejący magazyn usługi Recovery Services, wykonaj następujące czynności: 
+Aby usunąć istniejący magazyn usługi Recovery Services, wykonaj następujące czynności:
 
-- Aby zatrzymać ochronę i usunąć dane kopii zapasowej 
-
-    ```CLI
-    az backup protection disable --container-name 
-                             --item-name 
-                             [--delete-backup-data {false, true}] 
-                             [--ids] 
-                             [--resource-group] 
-                             [--subscription] 
-                             [--vault-name] 
-                             [--yes] 
-    ```
-
-    Aby uzyskać więcej informacji, zapoznaj się z tym [artykułem](/cli/azure/backup/protection#az-backup-protection-disable). 
-
-- Usuń istniejący magazyn usług Recovery Services: 
+- Aby zatrzymać ochronę i usunąć dane kopii zapasowej
 
     ```CLI
-    az backup vault delete [--force] 
-                       [--ids] 
-                       [--name] 
-                       [--resource-group] 
-                       [--subscription] 
-                       [--yes] 
+    az backup protection disable --container-name
+                             --item-name
+                             [--delete-backup-data {false, true}]
+                             [--ids]
+                             [--resource-group]
+                             [--subscription]
+                             [--vault-name]
+                             [--yes]
     ```
 
-    Aby uzyskać więcej informacji, zapoznaj się z tym [artykułem](https://docs.microsoft.com/cli/azure/backup/vault?view=azure-cli-latest) 
+    Aby uzyskać więcej informacji, zobacz ten [artykuł](/cli/azure/backup/protection#az-backup-protection-disable).
+
+- Usuń istniejący magazyn usług Recovery Services:
+
+    ```CLI
+    az backup vault delete [--force]
+                       [--ids]
+                       [--name]
+                       [--resource-group]
+                       [--subscription]
+                       [--yes]
+    ```
+
+    Aby uzyskać więcej informacji, zobacz ten [artykuł](https://docs.microsoft.com/cli/azure/backup/vault?view=azure-cli-latest)
 
 ## <a name="delete-the-recovery-services-vault-by-using-azure-resource-manager"></a>Usuwanie magazynu Recovery Services przy użyciu Azure Resource Manager
 
@@ -335,7 +333,7 @@ Ta opcja usuwania magazynu Recovery Services jest zalecana tylko wtedy, gdy wszy
 
 3. W Azure Portal Zbierz Identyfikator subskrypcji i nazwę grupy zasobów dla magazynu, który chcesz usunąć.
 
-Więcej informacji na temat polecenia ARMClient można znaleźć w [pliku Readme ARMClient](https://github.com/projectkudu/ARMClient/blob/master/README.md).
+Aby uzyskać więcej informacji na temat polecenia ARMClient, zobacz [plik Readme ARMClient](https://github.com/projectkudu/ARMClient/blob/master/README.md).
 
 ### <a name="use-the-azure-resource-manager-client-to-delete-a-recovery-services-vault"></a>Usuwanie magazynu Recovery Services przy użyciu klienta Azure Resource Manager
 
@@ -344,6 +342,7 @@ Więcej informacji na temat polecenia ARMClient można znaleźć w [pliku Readme
    ```azurepowershell
    ARMClient.exe delete /subscriptions/<subscriptionID>/resourceGroups/<resourcegroupname>/providers/Microsoft.RecoveryServices/vaults/<recovery services vault name>?api-version=2015-03-15
    ```
+
 2. Jeśli magazyn nie jest pusty, zostanie wyświetlony następujący komunikat o błędzie: *nie można usunąć magazynu, ponieważ w tym magazynie znajdują się zasoby.* Aby usunąć chroniony element lub kontener w ramach magazynu, uruchom następujące polecenie:
 
    ```azurepowershell
@@ -351,7 +350,6 @@ Więcej informacji na temat polecenia ARMClient można znaleźć w [pliku Readme
    ```
 
 3. W Azure Portal upewnij się, że magazyn został usunięty.
-
 
 ## <a name="next-steps"></a>Następne kroki
 

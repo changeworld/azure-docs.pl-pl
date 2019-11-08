@@ -1,6 +1,6 @@
 ---
-title: Microsoft Azure StorSimple Data Manager w interfejsie użytkownika | Dokumentacja firmy Microsoft
-description: Opisuje sposób używania interfejsu użytkownika dla usługi StorSimple Data Manager
+title: Microsoft Azure StorSimple Data Manager interfejs użytkownika | Microsoft Docs
+description: Opisuje sposób używania interfejsu użytkownika usługi StorSimple Data Manager
 services: storsimple
 documentationcenter: NA
 author: alkohli
@@ -14,152 +14,152 @@ ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 01/16/2018
 ms.author: alkohli
-ms.openlocfilehash: fa897b4b77f7f5869eab2ba2e7db9afbd84febfa
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 3a87b4c07d2e961d9876fb44c6584f37ad9246df
+ms.sourcegitcommit: 018e3b40e212915ed7a77258ac2a8e3a660aaef8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60631502"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73796642"
 ---
-# <a name="manage-the-storsimple-data-manager-service-in-azure-portal"></a>Zarządzanie usługą StorSimple Data Manager w witrynie Azure portal
+# <a name="manage-the-storsimple-data-manager-service-in-azure-portal"></a>Zarządzanie usługą StorSimple Data Manager w programie Azure Portal
 
-W tym artykule wyjaśniono, jak można użyć interfejsu użytkownika usługi StorSimple Data Manager do przekształcania danych znajdujących się na urządzeniach z serii StorSimple 8000. Przekształcone dane mogą być następnie używane przez inne usługi platformy Azure, takich jak Azure Media Services, Azure HDInsight, Azure Machine Learning i Azure Search.
+W tym artykule wyjaśniono, jak można użyć interfejsu użytkownika StorSimple Data Manager, aby przekształcić dane znajdujące się na urządzeniach z serii StorSimple 8000. Przekształcone dane mogą być następnie używane przez inne usługi platformy Azure, takie jak Azure Media Services, Azure HDInsight, Azure Machine Learning i Azure Wyszukiwanie poznawcze.
 
 
-## <a name="use-storsimple-data-transformation"></a>Użyj przekształcania danych w usłudze StorSimple
+## <a name="use-storsimple-data-transformation"></a>Używanie transformacji danych StorSimple
 
-Usługa StorSimple Data Manager jest zasobów w ramach danych, które zostanie uruchomiony, przekształcania. Usługa Data Transformation umożliwia przekształcanie danych z formatu usługi StorSimple do natywnego formatu obiektów blob lub Azure Files. Do przekształcania danych StorSimple w formacie natywnym, należy określić szczegóły dotyczące urządzenia serii StorSimple 8000 oraz interesujących, który chcesz przekształcić danych.
+StorSimple Data Manager jest zasobem, w ramach którego tworzone jest wystąpienie transformacji danych. Usługa przekształcania danych umożliwia przekształcanie danych z formatu StorSimple na natywny format w obiektach Blob lub Azure Files. Aby przekształcić dane natywnego formatu StorSimple, należy określić szczegóły dotyczące urządzenia z serii StorSimple 8000 i danych interesujących, które mają być przekształcone.
 
-### <a name="create-a-storsimple-data-manager-service"></a>Utwórz usługę StorSimple Data Manager
+### <a name="create-a-storsimple-data-manager-service"></a>Tworzenie usługi StorSimple Data Manager
 
-Wykonaj poniższe kroki, aby utworzyć usługę StorSimple Data Manager.
+Wykonaj następujące kroki, aby utworzyć usługę StorSimple Data Manager.
 
 1. Użyj poświadczeń konta Microsoft, aby zalogować się do witryny [Azure Portal](https://portal.azure.com/).
 
-2. Kliknij przycisk **+ Utwórz zasób** i wyszukiwania usługi StorSimple Data Manager.
+2. Kliknij pozycję **+ Utwórz zasób** i Wyszukaj StorSimple Data Manager.
 
-    ![Utwórz usługę StorSimple Data Manager 1](./media/storsimple-data-manager-ui/create-service-1.png)
+    ![Tworzenie usługi StorSimple Data Manager 1](./media/storsimple-data-manager-ui/create-service-1.png)
 
-3. Usługa StorSimple Data Manager a następnie kliknij przycisk **Utwórz**.
+3. Kliknij StorSimple Data Manager a następnie kliknij przycisk **Utwórz**.
     
-    ![Utwórz usługę StorSimple Data Manager 2](./media/storsimple-data-manager-ui/create-service-3.png)
+    ![Tworzenie usługi StorSimple Data Manager 2](./media/storsimple-data-manager-ui/create-service-3.png)
 
-3. Dla nowej usługi określ następujące ustawienia:
+3. Dla nowej usługi Określ następujące elementy:
 
-   1. Podaj unikatową **nazwa usługi** dla usługi StorSimple Data Manager. To jest przyjazna nazwa, która może służyć do identyfikowania usługi. Nazwa może zawierać od 3 do 24 znaków, które mogą być literami, cyframi i łącznikami. Nazwa musi zaczynać i kończyć się literą lub cyfrą.
+   1. Podaj unikatową **nazwę usługi** dla StorSimple Data Manager. To jest przyjazna nazwa, która może służyć do identyfikowania usługi. Nazwa może zawierać od 3 do 24 znaków, które mogą być literami, cyframi i łącznikami. Nazwa musi zaczynać i kończyć się literą lub cyfrą.
 
-   2. Wybierz **subskrypcji** z listy rozwijanej. Subskrypcja jest połączona z kontem rozliczeniowym. To pole jest wypełniane automatycznie (i nie można wybierać) Jeśli masz tylko jedną subskrypcję.
+   2. Wybierz **subskrypcję** z listy rozwijanej. Subskrypcja jest połączona z kontem rozliczeniowym. To pole jest wypełniane automatycznie (i nie można go wybierać), jeśli masz tylko jedną subskrypcję.
 
    3. Wybierz istniejącą grupę zasobów lub Utwórz nową grupę. Aby uzyskać więcej informacji, zobacz [Grupy zasobów na platformie Azure](https://azure.microsoft.com/documentation/articles/virtual-machines-windows-infrastructure-resource-groups-guidelines/).
 
-   4. Określ **lokalizacji** dla Twojej usługi, która zawiera wszystkie konta magazynu i usługi StorSimple Data Manager. Usługi Menedżer urządzeń StorSimple, usługi Data Manager i skojarzonego konta magazynu powinny być w obsługiwanych regionach.
+   4. Określ **lokalizację** usługi, która przechowuje Twoje konta magazynu i usługę StorSimple Data Manager. Usługa StorSimple Menedżer urządzeń, Usługa Data Manager i skojarzone konto magazynu powinny znajdować się w obsługiwanych regionach.
     
-   5. Aby uzyskać link do tej usługi na pulpicie nawigacyjnym, wybierz **Przypnij do pulpitu nawigacyjnego**.
+   5. Aby uzyskać link do tej usługi na pulpicie nawigacyjnym, wybierz pozycję **Przypnij do pulpitu nawigacyjnego**.
     
-   6. Kliknij pozycję **Utwórz**.
+   6. Kliknij przycisk **Utwórz**.
 
-      ![Utwórz usługę StorSimple Data Manager 3](./media/storsimple-data-manager-ui/create-service-4.png)
+      ![Tworzenie usługi StorSimple Data Manager 3](./media/storsimple-data-manager-ui/create-service-4.png)
 
-Tworzenie usługi potrwa kilka minut. Zostanie wyświetlone powiadomienie po pomyślnym utworzeniu usługi i Nowa usługa jest wyświetlana.
+Tworzenie usługi potrwa kilka minut. Po pomyślnym utworzeniu usługi zobaczysz powiadomienie i zostanie wyświetlona nowa usługa.
 
-### <a name="create-a-data-transformation-job-definition"></a>Utwórz definicję zadania przekształcania danych
+### <a name="create-a-data-transformation-job-definition"></a>Tworzenie definicji zadania transformacji danych
 
-W ramach usługi StorSimple Data Manager musisz utworzyć definicję zadania przekształcania danych. Definicja zadania określa szczegółowych danych StorSimple, która Cię interesuje przeniesienie do konta magazynu w formacie natywnym. Po utworzeniu definicji zadania, następnie można uruchomić to zadanie ponownie ze środowiskiem uruchomieniowym w różnych ustawień.
+W ramach usługi StorSimple Data Manager należy utworzyć definicję zadania transformacji danych. Definicja zadania określa szczegóły StorSimple danych, które użytkownik chce przenieść do konta magazynu w formacie natywnym. Po utworzeniu definicji zadania można uruchomić to zadanie ponownie z innymi ustawieniami środowiska uruchomieniowego.
 
-Wykonaj poniższe kroki, aby utworzyć definicję zadania.
+Wykonaj następujące kroki, aby utworzyć definicję zadania.
 
-1. Przejdź do usługi, który został utworzony. Przejdź do **zarządzania > definicje zadań**.
+1. Przejdź do utworzonej usługi. Przejdź do obszaru **zarządzanie > definicjami zadań**.
 
-2. Kliknij przycisk **+ definicji zadania**.
+2. Kliknij pozycję **+ Definicja zadania**.
 
-    ![Kliknij pozycję + definicja zadania](./media/storsimple-data-manager-ui/create-job-definition-1.png)
+    ![Kliknij pozycję + Definicja zadania](./media/storsimple-data-manager-ui/create-job-definition-1.png)
 
-3. Podaj nazwę dla definicji zadania. Nazwa może zawierać od 3 do 63 znaków. Nazwa może zawierać wielkie i małe litery, cyfry i łączniki.
+3. Podaj nazwę dla definicji zadania. Nazwa może mieć długość od 3 do 63 znaków. Nazwa może zawierać wielkie i małe litery, cyfry i łączniki.
 
-4. Określ lokalizację, w którym działa zadanie. Ta lokalizacja może być inny niż lokalizacji, w której wdrożona usługa.
+4. Określ lokalizację, w której działa zadanie. Ta lokalizacja może różnić się od lokalizacji, w której została wdrożona usługa.
 
-5. Kliknij przycisk **źródła** określić repozytorium źródła danych.
+5. Kliknij pozycję **Źródło** , aby określić repozytorium danych źródłowych.
 
-    ![Konfigurowanie repozytorium danych źródła](./media/storsimple-data-manager-ui/create-job-definition-2.png)
+    ![Konfiguruj repozytorium danych źródłowych](./media/storsimple-data-manager-ui/create-job-definition-2.png)
 
-6. Ponieważ jest to nowa usługa Data Manager, są skonfigurowane żadnych repozytoriów danych. W **Konfigurowanie źródła danych**, określ szczegółów urządzenia serii StorSimple 8000 oraz interesujących danych.
+6. Ponieważ jest to nowa usługa Data Manager, żadne repozytoria danych nie są konfigurowane. W obszarze **Konfiguruj źródło danych**Określ szczegóły urządzenia z serii StorSimple 8000 i interesujące Cię dane.
 
-   Aby dodać Menedżera urządzeń StorSimple jako repozytorium danych, kliknij przycisk **Dodaj nowe** w liście rozwijanej repozytorium danych, a następnie kliknij przycisk **Dodaj repozytorium danych**.
+   Aby dodać StorSimple Menedżer urządzeń jako repozytorium danych, kliknij pozycję **Dodaj nowe** na liście rozwijanej repozytorium danych, a następnie kliknij pozycję **Dodaj repozytorium danych**.
 
-    ![Dodawanie nowego repozytorium danych](./media/storsimple-data-manager-ui/create-job-definition-3.png)
+    ![Dodaj nowe repozytorium danych](./media/storsimple-data-manager-ui/create-job-definition-3.png)
   
-   1. Wybierz **serii StorSimple 8000 Menedżera** jako typ repozytorium danych.
+   1. Wybierz pozycję **StorSimple 8000 Series Manager** jako typ repozytorium danych.
     
-   2. Wprowadź przyjazną nazwę dla repozytorium źródła danych.
+   2. Wprowadź przyjazną nazwę dla repozytorium danych źródłowych.
     
-   3. Z listy rozwijanej wybierz subskrypcję skojarzoną z usługi Menedżer urządzeń StorSimple.
+   3. Z listy rozwijanej wybierz subskrypcję skojarzoną z usługą StorSimple Menedżer urządzeń.
     
-   4. Podaj nazwę Menedżer urządzeń StorSimple dla **zasobów**.
+   4. Podaj nazwę Menedżer urządzeń StorSimple dla **zasobu**.
 
-   5. Wprowadź **szyfrowania danych usługi** klucza dla usługi Menedżer urządzeń StorSimple. 
+   5. Wprowadź klucz **szyfrowania danych usługi** dla usługi StorSimple Menedżer urządzeń. 
 
-      ![Konfigurowanie repozytorium danych źródła 1](./media/storsimple-data-manager-ui/create-job-definition-4.png)
+      ![Skonfiguruj repozytorium danych źródłowych 1](./media/storsimple-data-manager-ui/create-job-definition-4.png)
 
-      Kliknij przycisk **OK** po zakończeniu. Spowoduje to zapisanie repozytorium danych. Ponowne użycie tego Menedżera urządzeń StorSimple w innych definicjach zadań bez konieczności ponownego wprowadzania tych parametrów. Zajmuje kilka sekund po kliknięciu **OK** repozytorium danych nowo utworzone źródło pojawienie się na liście rozwijanej.
+      Po zakończeniu kliknij przycisk **OK** . Spowoduje to zapisanie repozytorium danych. Ponownie Użyj tego StorSimple Menedżer urządzeń w innych definicjach zadań bez konieczności ponownego wprowadzania tych parametrów. Po kliknięciu przycisku **OK** dla nowo utworzonego repozytorium danych źródłowych do wyświetlenia na liście rozwijanej trwa kilka sekund.
 
-7. Z listy rozwijanej dla **repozytorium danych prognostycznych**, wybierz repozytorium danych został utworzony. 
+7. Z listy rozwijanej dla **repozytorium danych**wybierz utworzone repozytorium danych. 
 
-   1. Wprowadź nazwę urządzenia StorSimple 8000 series, zawierający potrzebne dane.
+   1. Wprowadź nazwę urządzenia z serii StorSimple 8000, które zawiera interesujące Cię dane.
 
-   2. Określ nazwę woluminu, znajdującej się na urządzeniu StorSimple, które ma Twoje dane.
+   2. Określ nazwę woluminu znajdującego się na urządzeniu StorSimple, które ma Twoje dane zainteresowania.
 
-   3. W **filtru** podsekcję, wprowadź katalogu głównego, który zawiera dane zainteresowanie _\MyRootDirectory\Data_ formatu. Litery dysków takie _\C:\Data_ nie są obsługiwane. Można również dodać wszelkie filtry pliku.
+   3. W podsekcji **filtru** wprowadź katalog główny zawierający Twoje dane interesujące w formacie _\MyRootDirectory\Data_ . Litery dysków takie jak _\c: \data_ nie są obsługiwane. W tym miejscu możesz również dodać dowolne filtry plików.
 
-   4. Działa usługa przekształcania danych na dane, które wypchnięty na platformie Azure przy użyciu migawek. Po uruchomieniu tego zadania, można wybrać utworzyć kopię zapasową za każdym razem, gdy to zadanie zostanie uruchomione (nad najnowszych danych) lub za pomocą ostatniej kopii zapasowej istniejącej w chmurze (Jeśli pracujesz nad niektórych danych archiwalnych).
+   4. Usługa przekształcania danych działa na danych, które są wypychane do platformy Azure za pośrednictwem migawek. Po uruchomieniu tego zadania możesz wybrać opcję tworzenia kopii zapasowej za każdym razem, gdy to zadanie zostanie uruchomione (w celu wykonania najnowszych danych) lub Użyj ostatniej istniejącej kopii zapasowej w chmurze (Jeśli pracujesz nad niektórymi archiwizowanymi danymi).
 
    5. Kliknij przycisk **OK**.
 
-      ![Konfigurowanie repozytorium danych źródła 2](./media/storsimple-data-manager-ui/create-job-definition-8.png)
+      ![Konfigurowanie repozytorium danych źródłowych 2](./media/storsimple-data-manager-ui/create-job-definition-8.png)
 
-8. Następnie konieczne jest skonfigurowanie repozytorium danych docelowych. Wybieranie kont magazynu, aby umieścić pliki do obiektów blob w ramach tego konta. Z listy rozwijanej wybierz **Dodaj nowe** i następnie **konfigurowania ustawień**.
+8. Następnie należy skonfigurować docelowe repozytorium danych. Wybierz pozycję konta magazynu, aby umieścić pliki w obiektach Blob na tym koncie. Z listy rozwijanej wybierz pozycję **Dodaj nowe** , a następnie **Skonfiguruj ustawienia**.
 
-9. Wybierz typ repozytorium docelowym, który chcesz dodać, a inne parametry skojarzone z repozytorium.
+9. Wybierz typ repozytorium docelowego, które chcesz dodać, oraz inne parametry skojarzone z repozytorium.
 
-    Jeśli wybierzesz docelowy typ konta magazynu, można określić przyjazną nazwę subskrypcji (wybierz taki sam jak usługi lub inne) oraz konto magazynu.
-        ![Konfigurowanie repozytorium danych 1](./media/storsimple-data-manager-ui/create-job-definition-10.png)
+    W przypadku wybrania miejsca docelowego typu konta magazynu można określić przyjazną nazwę, subskrypcję (wybrać tę samą opcję co w przypadku usługi lub innego) oraz konto magazynu.
+        ![skonfigurować repozytorium danych docelowych 1](./media/storsimple-data-manager-ui/create-job-definition-10.png)
 
-    Gdy zadanie zostanie uruchomione, zostanie utworzona kolejka magazynu. Jest ona wypełniana przy użyciu komunikatów dotyczących przekształconych obiektów blob, gdy będą gotowe. Nazwa tej kolejki jest taka sama jak nazwa definicji zadania.
+    Kolejka magazynu jest tworzona, gdy zadanie zostanie uruchomione. Jest ona wypełniana przy użyciu komunikatów dotyczących przekształconych obiektów blob, gdy będą gotowe. Nazwa tej kolejki jest taka sama jak nazwa definicji zadania.
     
-10. Po dodaniu repozytorium danych, poczekaj kilka minut.
+10. Po dodaniu repozytorium danych odczekaj kilka minut.
     
-    1. Wybierz repozytorium utworzone jako miejsce docelowe z listy rozwijanej w **nazwa konta docelowego**.
+    1. Wybierz utworzone repozytorium jako element docelowy z listy rozwijanej w polu **nazwa konta docelowego**.
 
-    2. Wybierz typ magazynu jako obiekty BLOB i plików. Określ nazwę kontenera magazynu, w którym znajduje się przekształcone dane. Kliknij przycisk **OK**.
+    2. Wybierz typ magazynu jako obiekty blob lub pliki. Określ nazwę kontenera magazynu, w którym znajdują się przekształcone dane. Kliknij przycisk **OK**.
 
-        ![Konfigurowanie docelowego konta magazynu dla repozytorium danych](./media/storsimple-data-manager-ui/create-job-definition-16.png)
+        ![Skonfiguruj docelowe konto magazynu repozytorium danych](./media/storsimple-data-manager-ui/create-job-definition-16.png)
 
-11. Możesz również sprawdzić możliwość przedstawienia szacowany czas trwania zadania przed uruchomieniem zadania. Kliknij przycisk **OK** do tworzenia definicji zadania. Definicja zadania zostało zakończone. Możesz użyć tej definicji zadania, wiele razy przy użyciu interfejsu użytkownika, przy użyciu środowiskiem uruchomieniowym w różnych ustawień.
+11. Możesz również zaznaczyć opcję, aby przedstawić oszacowanie czasu trwania zadania przed uruchomieniem zadania. Kliknij przycisk **OK** , aby utworzyć definicję zadania. Twoja definicja zadania została ukończona. Ta definicja zadania może być używana wiele razy za pośrednictwem interfejsu użytkownika z różnymi ustawieniami środowiska uruchomieniowego.
 
-    ![Definicja ukończonego zadania](./media/storsimple-data-manager-ui/create-job-definition-13.png)
+    ![Ukończ definicję zadania](./media/storsimple-data-manager-ui/create-job-definition-13.png)
 
-    Definicja nowo utworzonego zadania jest dodawany do listy definicji zadań dla tej usługi.
+    Nowo utworzona Definicja zadania zostanie dodana do listy definicji zadań dla tej usługi.
 
 ### <a name="run-the-job-definition"></a>Uruchom definicję zadania
 
-Zawsze, gdy potrzebujesz przenieść dane z rozwiązania StorSimple do konta magazynu, który określono w definicji zadania, należy ją uruchomić. W czasie wykonywania niektóre parametry można określić inaczej. Dostępne są następujące czynności:
+Za każdym razem, gdy zachodzi potrzeba przeniesienia danych z StorSimple na konto magazynu określone w definicji zadania, należy je uruchomić. W czasie wykonywania niektóre parametry można określić inaczej. Kroki są następujące:
 
-1. Wybierz swoją usługę StorSimple Data Manager i przejdź do **zarządzania > definicje zadań**. Wybierz, a następnie kliknij przycisk definicji zadania, które chcesz uruchomić.
+1. Wybierz usługę StorSimple Data Manager i przejdź do pozycji **zarządzanie > Definicje zadań**. Wybierz i kliknij definicję zadania, która ma zostać uruchomiona.
      
-     ![Uruchamianie zadania Uruchom 1](./media/storsimple-data-manager-ui/start-job-run1.png)
+     ![Uruchom zadanie 1](./media/storsimple-data-manager-ui/start-job-run1.png)
 
 2. Kliknij przycisk **Uruchom teraz**.
      
-     ![Uruchamianie zadania, uruchom 2](./media/storsimple-data-manager-ui/start-job-run2.png)
+     ![Uruchom zadanie 2](./media/storsimple-data-manager-ui/start-job-run2.png)
 
-3. Kliknij przycisk **parametrów uruchomieniowych** Aby zmodyfikować ustawienia, które możesz chcieć zmienić wykonywania tego zadania. Kliknij przycisk **OK** a następnie kliknij przycisk **Uruchom** do uruchomienia zadania.
+3. Kliknij pozycję **Parametry uruchomieniowe** , aby zmodyfikować wszystkie ustawienia, które mogą zostać zmienione dla tego uruchomienia zadania. Kliknij przycisk **OK** , a następnie kliknij przycisk **Uruchom** , aby uruchomić zadanie.
 
-    ![Uruchamianie zadania uruchamiania 3](./media/storsimple-data-manager-ui/start-job-run3.png)
+    ![Uruchom zadanie Uruchom jako 3](./media/storsimple-data-manager-ui/start-job-run3.png)
 
-4. Aby monitorować tego zadania, przejdź do **zadania** w sieci usługi StorSimple Data Manager. Oprócz monitorowania w **zadań** bloku można również wykrywać w kolejce magazynu, gdy komunikat zostanie dodany za każdym razem, gdy plik zostanie przeniesiony z rozwiązania StorSimple do konta magazynu.
+4. Aby monitorować to zadanie, przejdź do obszaru **zadania** w StorSimple Data Manager. Oprócz monitorowania w bloku **zadania** można także nasłuchiwać kolejki magazynu, do której wiadomość jest dodawana za każdym razem, gdy plik zostanie przeniesiony z StorSimple na konto magazynu.
 
-    ![Uruchamianie zadania uruchamiania 4](./media/storsimple-data-manager-ui/start-job-run4.png)
+    ![Uruchom zadanie 4](./media/storsimple-data-manager-ui/start-job-run4.png)
 
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
-[Użycie zestawu SDK platformy .NET w celu uruchomienia zadań usługi StorSimple Data Manager](storsimple-data-manager-dotnet-jobs.md).
+[Użyj zestawu SDK platformy .NET, aby uruchomić zadania StorSimple Data Manager](storsimple-data-manager-dotnet-jobs.md).

@@ -15,19 +15,19 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: troubleshooting
 ms.date: 03/23/2018
 ms.author: akjosh
-ms.openlocfilehash: 0a88c1e4d357f2919635e36a223e79b0407c0b8b
-ms.sourcegitcommit: f2771ec28b7d2d937eef81223980da8ea1a6a531
+ms.openlocfilehash: d3ad0e6d88ed849074989dc36698c01209921449
+ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/20/2019
-ms.locfileid: "71168746"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73749679"
 ---
 # <a name="troubleshoot-remote-desktop-connections-to-an-azure-virtual-machine"></a>Rozwiązywanie problemów z połączeniami Pulpit zdalny z maszyną wirtualną platformy Azure
 Połączenie RDP (Remote Desktop Protocol) z maszyną wirtualną platformy Azure bazującą na systemie Windows może ulec awarii z wielu powodów, uniemożliwiając uzyskanie dostępu do maszyny wirtualnej. Ten problem może być związany z usługą pulpitu zdalnego na maszynie wirtualnej, połączeniem sieciowym lub klientem pulpitu zdalnego na komputerze hosta. W tym artykule przedstawiono kilka typowych metod rozwiązywania problemów z połączeniami RDP. 
 
-Jeśli potrzebujesz więcej pomocy w dowolnym punkcie tego artykułu, możesz skontaktować się z ekspertami platformy Azure na [forach MSDN i Stack Overflow](https://azure.microsoft.com/support/forums/). Alternatywnie mogą zgłaszać zdarzenia pomocy technicznej platformy Azure. Przejdź do [witryny pomocy technicznej systemu Azure](https://azure.microsoft.com/support/options/) i wybierz pozycję **Uzyskaj pomoc techniczną**.
+Jeśli potrzebujesz więcej pomocy w dowolnym punkcie tego artykułu, możesz skontaktować się z ekspertami platformy Azure na [forach MSDN i Stack Overflow](https://azure.microsoft.com/support/forums/). Alternatywnie możesz zaplikować zdarzenie pomocy technicznej platformy Azure. Przejdź do [witryny pomocy technicznej systemu Azure](https://azure.microsoft.com/support/options/) i wybierz pozycję **Uzyskaj pomoc techniczną**.
 
-[!INCLUDE [updated-for-az.md](../../../includes/updated-for-az.md)]
+ 
 
 <a id="quickfixrdp"></a>
 
@@ -86,7 +86,7 @@ Po każdym kroku rozwiązywania problemów spróbuj ponownie nawiązać połącz
     ![Zresetuj poświadczenia użytkownika w Azure Portal](./media/troubleshoot-rdp-connection/reset-password.png)
 7. **Uruchom ponownie maszynę wirtualną**. Ten krok rozwiązywania problemów może rozwiązać wszelkie podstawowe problemy związane z maszyną wirtualną.
    
-    Wybierz maszynę wirtualną w Azure Portal i kliknij kartę **Przegląd** . Kliknij przycisk **Uruchom ponownie** :
+    Wybierz maszynę wirtualną w Azure Portal i kliknij kartę **Przegląd** . kliknij przycisk **Uruchom ponownie** :
    
     ![Uruchom ponownie maszynę wirtualną w Azure Portal](./media/troubleshoot-rdp-connection/restart-vm.png)
 8. **Wdróż ponownie maszynę wirtualną**. Ten krok rozwiązywania problemów polega na ponownym wdrożeniu maszyny wirtualnej na innym hoście na platformie Azure w celu poprawienia wszystkich podstawowych problemów z platformą lub siecią.
@@ -106,16 +106,16 @@ Jeśli nadal występują problemy z protokołem RDP, możesz [otworzyć żądani
 ## <a name="troubleshoot-using-azure-powershell"></a>Rozwiązywanie problemów przy użyciu Azure PowerShell
 Jeśli jeszcze tego nie zrobiono, [Zainstaluj i skonfiguruj najnowszą Azure PowerShell](/powershell/azure/overview).
 
-W poniższych przykładach użyto zmiennych, `myResourceGroup`takich `myVM`jak, `myVMAccessExtension`, i. Zastąp te nazwy zmiennych i lokalizacje własnymi wartościami.
+W poniższych przykładach użyto zmiennych, takich jak `myResourceGroup`, `myVM`i `myVMAccessExtension`. Zastąp te nazwy zmiennych i lokalizacje własnymi wartościami.
 
 > [!NOTE]
-> Należy zresetować poświadczenia użytkownika i konfigurację protokołu RDP przy użyciu polecenia cmdlet [Set-AzVMAccessExtension](https://docs.microsoft.com/powershell/module/az.compute/set-azvmaccessextension) programu PowerShell. W poniższych przykładach `myVMAccessExtension` to nazwa określona jako część procesu. Jeśli wcześniej pracowałeś z VMAccessAgent, możesz uzyskać nazwę istniejącego rozszerzenia za pomocą polecenia `Get-AzVM -ResourceGroupName "myResourceGroup" -Name "myVM"` , aby sprawdzić właściwości maszyny wirtualnej. Aby wyświetlić nazwę, zapoznaj się z sekcją "rozszerzenia" w danych wyjściowych.
+> Należy zresetować poświadczenia użytkownika i konfigurację protokołu RDP przy użyciu polecenia cmdlet [Set-AzVMAccessExtension](https://docs.microsoft.com/powershell/module/az.compute/set-azvmaccessextension) programu PowerShell. W poniższych przykładach `myVMAccessExtension` to nazwa określona jako część procesu. Jeśli wcześniej pracowałeś z VMAccessAgent, możesz uzyskać nazwę istniejącego rozszerzenia za pomocą `Get-AzVM -ResourceGroupName "myResourceGroup" -Name "myVM"`, aby sprawdzić właściwości maszyny wirtualnej. Aby wyświetlić nazwę, zapoznaj się z sekcją "rozszerzenia" w danych wyjściowych.
 
 Po każdym kroku rozwiązywania problemów spróbuj ponownie nawiązać połączenie z maszyną wirtualną. Jeśli nadal nie można nawiązać połączenia, wypróbuj następny krok.
 
 1. **Zresetuj połączenie RDP**. Ten krok rozwiązywania problemów Resetuje konfigurację RDP, gdy połączenia zdalne są wyłączone lub reguły zapory systemu Windows blokują protokół RDP.
    
-    W poniższym przykładzie zostanie zresetowane połączenie RDP na maszynie wirtualnej o `myVM` nazwie `WestUS` w lokalizacji i w grupie zasobów o nazwie `myResourceGroup`:
+    W poniższym przykładzie zostanie zresetowane połączenie RDP na maszynie wirtualnej o nazwie `myVM` w lokalizacji `WestUS` i w grupie zasobów o nazwie `myResourceGroup`:
    
     ```powershell
     Set-AzVMAccessExtension -ResourceGroupName "myResourceGroup" `
@@ -123,7 +123,7 @@ Po każdym kroku rozwiązywania problemów spróbuj ponownie nawiązać połącz
     ```
 2. **Sprawdź reguły sieciowej grupy zabezpieczeń**. Ten krok rozwiązywania problemów sprawdza, czy masz regułę w sieciowej grupie zabezpieczeń, aby zezwolić na ruch RDP. Domyślnym portem protokołu RDP jest port TCP 3389. Reguła zezwalająca na ruch RDP może nie zostać utworzona automatycznie podczas tworzenia maszyny wirtualnej.
    
-    Najpierw Przypisz do `$rules` zmiennej wszystkie dane konfiguracyjne dla sieciowej grupy zabezpieczeń. Poniższy przykład pobiera informacje o sieciowej grupie zabezpieczeń o nazwie `myNetworkSecurityGroup` w grupie zasobów o nazwie: `myResourceGroup`
+    Najpierw Przypisz wszystkie dane konfiguracyjne dla sieciowej grupy zabezpieczeń do zmiennej `$rules`. Poniższy przykład pobiera informacje o sieciowej grupie zabezpieczeń o nazwie `myNetworkSecurityGroup` w grupie zasobów o nazwie `myResourceGroup`:
    
     ```powershell
     $rules = Get-AzNetworkSecurityGroup -ResourceGroupName "myResourceGroup" `
@@ -136,7 +136,7 @@ Po każdym kroku rozwiązywania problemów spróbuj ponownie nawiązać połącz
     $rules.SecurityRules
     ```
    
-    Poniższy przykład pokazuje prawidłową regułę zabezpieczeń, która zezwala na ruch RDP. `Protocol`Możesz zobaczyć `DestinationPortRange` ,,`Direction`,i są poprawnie skonfigurowane: `Access`
+    Poniższy przykład pokazuje prawidłową regułę zabezpieczeń, która zezwala na ruch RDP. `Protocol`, `DestinationPortRange`, `Access`i `Direction` są poprawnie skonfigurowane:
    
     ```powershell
     Name                     : default-allow-rdp
@@ -157,13 +157,13 @@ Po każdym kroku rozwiązywania problemów spróbuj ponownie nawiązać połącz
     Jeśli nie masz reguły, która zezwala na ruch RDP, [Utwórz regułę sieciowej grupy zabezpieczeń](../windows/nsg-quickstart-powershell.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json). Zezwalaj na port TCP 3389.
 3. **Zresetuj poświadczenia użytkownika**. Ten krok rozwiązywania problemów resetuje hasło do konta administratora lokalnego określonego w przypadku braku pewności lub zapomniane poświadczenia.
    
-    Najpierw określ nazwę użytkownika i nowe hasło, przypisując poświadczenia do `$cred` zmiennej w następujący sposób:
+    Najpierw określ nazwę użytkownika i nowe hasło, przypisując poświadczenia do zmiennej `$cred` w następujący sposób:
    
     ```powershell
     $cred=Get-Credential
     ```
    
-    Teraz zaktualizuj poświadczenia na maszynie wirtualnej. Poniższy przykład aktualizuje poświadczenia na maszynie wirtualnej o nazwie `myVM` `WestUS` w lokalizacji i w grupie zasobów o nazwie `myResourceGroup`:
+    Teraz zaktualizuj poświadczenia na maszynie wirtualnej. Poniższy przykład aktualizuje poświadczenia na maszynie wirtualnej o nazwie `myVM` w lokalizacji `WestUS` i w grupie zasobów o nazwie `myResourceGroup`:
    
     ```powershell
     Set-AzVMAccessExtension -ResourceGroupName "myResourceGroup" `
@@ -173,14 +173,14 @@ Po każdym kroku rozwiązywania problemów spróbuj ponownie nawiązać połącz
     ```
 4. **Uruchom ponownie maszynę wirtualną**. Ten krok rozwiązywania problemów może rozwiązać wszelkie podstawowe problemy związane z maszyną wirtualną.
    
-    Poniższy przykład powoduje ponowne uruchomienie maszyny wirtualnej `myVM` o nazwie w grupie zasobów `myResourceGroup`o nazwie:
+    Poniższy przykład powoduje ponowne uruchomienie maszyny wirtualnej o nazwie `myVM` w grupie zasobów o nazwie `myResourceGroup`:
    
     ```powershell
     Restart-AzVM -ResourceGroup "myResourceGroup" -Name "myVM"
     ```
 5. **Wdróż ponownie maszynę wirtualną**. Ten krok rozwiązywania problemów polega na ponownym wdrożeniu maszyny wirtualnej na innym hoście na platformie Azure w celu poprawienia wszystkich podstawowych problemów z platformą lub siecią.
    
-    Poniższy przykład ponownie wdraża maszynę wirtualną o nazwie `myVM` `WestUS` w lokalizacji i w grupie zasobów o nazwie `myResourceGroup`:
+    Poniższy przykład ponownie wdraża maszynę wirtualną o nazwie `myVM` w lokalizacji `WestUS` i w grupie zasobów o nazwie `myResourceGroup`:
    
     ```powershell
     Set-AzVM -Redeploy -ResourceGroupName "myResourceGroup" -Name "myVM"
@@ -224,7 +224,7 @@ Po każdym kroku rozwiązywania problemów spróbuj ponownie nawiązać połącz
     ![Zresetuj poświadczenia użytkownika w Azure Portal](./media/troubleshoot-rdp-connection/classic-reset-password.png)
 6. **Uruchom ponownie maszynę wirtualną**. Ten krok rozwiązywania problemów może rozwiązać wszelkie podstawowe problemy związane z maszyną wirtualną.
    
-    Wybierz maszynę wirtualną w Azure Portal i kliknij kartę **Przegląd** . Kliknij przycisk **Uruchom ponownie** :
+    Wybierz maszynę wirtualną w Azure Portal i kliknij kartę **Przegląd** . kliknij przycisk **Uruchom ponownie** :
    
     ![Uruchom ponownie maszynę wirtualną w Azure Portal](./media/troubleshoot-rdp-connection/classic-restart-vm.png)
 
@@ -237,7 +237,7 @@ Podczas próby nawiązania połączenia z maszyną wirtualną za pośrednictwem 
 
 * [Sesja zdalna została rozłączona z powodu braku dostępnych serwerów licencji pulpit zdalny w celu udostępnienia licencji](troubleshoot-specific-rdp-errors.md#rdplicense).
 * [Pulpit zdalny nie może znaleźć komputera "name"](troubleshoot-specific-rdp-errors.md#rdpname).
-* [Wystąpił błąd uwierzytelniania. Nie można skontaktować się](troubleshoot-specific-rdp-errors.md#rdpauth)z urzędem zabezpieczeń lokalnych.
+* [Wystąpił błąd uwierzytelniania. Nie można skontaktować się z urzędem zabezpieczeń lokalnych](troubleshoot-specific-rdp-errors.md#rdpauth).
 * [Błąd zabezpieczeń systemu Windows: Twoje poświadczenia nie działają](troubleshoot-specific-rdp-errors.md#wincred).
 * [Ten komputer nie może nawiązać połączenia z komputerem zdalnym](troubleshoot-specific-rdp-errors.md#rdpconnect).
 

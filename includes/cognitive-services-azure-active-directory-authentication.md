@@ -4,17 +4,18 @@ ms.author: erhopf
 ms.service: cognitive-services
 ms.topic: include
 ms.date: 07/23/2019
-ms.openlocfilehash: 3a6807cc204a5f8a6957bb03cf4dcbaf3611c17c
-ms.sourcegitcommit: b03516d245c90bca8ffac59eb1db522a098fb5e4
+ms.openlocfilehash: b9f84385e49fcf5f101b7ce642b0a82e3a4b9388
+ms.sourcegitcommit: 018e3b40e212915ed7a77258ac2a8e3a660aaef8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/19/2019
-ms.locfileid: "71148465"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73800038"
 ---
 ## <a name="authenticate-with-azure-active-directory"></a>Uwierzytelnianie za pomocą usługi Azure Active Directory
 
 > [!IMPORTANT]
-> Obecnie **tylko** interfejs API przetwarzania obrazów, interfejs API rozpoznawania twarzy, interfejs API analizy tekstu i czytnik immersyjny obsługują uwierzytelnianie przy użyciu usługi Azure Active Directory (AAD).
+> 1. Obecnie **tylko** interfejs API przetwarzania obrazów, interfejs API rozpoznawania twarzy, interfejs API analizy tekstu, czytniki immersyjny, aparat rozpoznawania nietypowego wykrywania i wszystkie usługi Bing, z wyjątkiem wyszukiwanie niestandardowe Bing obsługa uwierzytelniania przy użyciu Azure Active Directory (AAD).
+> 2. Uwierzytelnianie w usłudze AAD musi być zawsze używane razem z niestandardową nazwą domeny podrzędnej zasobu platformy Azure. [Regionalne punkty końcowe](https://docs.microsoft.com/en-us/azure/cognitive-services/cognitive-services-custom-subdomains#is-there-a-list-of-regional-endpoints) nie obsługują uwierzytelniania usługi AAD.
 
 W poprzednich sekcjach pokazano, jak uwierzytelniać się w usłudze Azure Cognitive Services przy użyciu pojedynczego lub wielousługowego klucza subskrypcji. Chociaż te klucze zapewniają szybką i łatwą ścieżkę do rozpoczęcia programowania, są one krótkie w bardziej złożonych scenariuszach, które wymagają kontroli dostępu opartej na rolach. Spójrzmy na to, co jest wymagane do uwierzytelniania za pomocą usługi Azure Active Directory (AAD).
 
@@ -22,7 +23,7 @@ W poniższych sekcjach użyjesz środowiska Azure Cloud Shell lub interfejsu wie
 
 ### <a name="create-a-resource-with-a-custom-subdomain"></a>Tworzenie zasobu z poddomeną niestandardową
 
-Pierwszym krokiem jest utworzenie niestandardowej domeny podrzędnej.
+Pierwszym krokiem jest utworzenie niestandardowej domeny podrzędnej. Jeśli chcesz użyć istniejącego zasobu Cognitive Services, który nie ma niestandardowej nazwy domeny podrzędnej, postępuj zgodnie z instrukcjami w temacie [Cognitive Services Custom subpoddomens](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-custom-subdomains#how-does-this-impact-existing-resources) , aby włączyć niestandardową domenę poddomenową dla zasobu.
 
 1. Zacznij od otworzenia Azure Cloud Shell. następnie [Wybierz subskrypcję](https://docs.microsoft.com/powershell/module/servicemanagement/azure/select-azuresubscription?view=azuresmps-4.0.0#description):
 

@@ -9,12 +9,12 @@ ms.service: service-bus-messaging
 ms.topic: article
 ms.date: 01/23/2019
 ms.author: aschhab
-ms.openlocfilehash: 80809afc9f2a8e8da2f6adecfe916141c4cd3e45
-ms.sourcegitcommit: 9a699d7408023d3736961745c753ca3cec708f23
+ms.openlocfilehash: 8a2a704f39aa678be819a7297b30f8926e414e56
+ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68278338"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73748454"
 ---
 # <a name="service-bus-faq"></a>Service Bus — często zadawane pytania
 
@@ -51,7 +51,7 @@ Za pomocą następujących protokołów można Azure Service Bus wysyłać i odb
 
 Zapoznaj się z poniższą tabelą dla portów wychodzących, które należy otworzyć, aby używać tych protokołów do komunikowania się z usługą Azure Event Hubs. 
 
-| Protocol | Porty | Szczegóły | 
+| Protokół | Porty | Szczegóły | 
 | -------- | ----- | ------- | 
 | AMQP | 5671 i 5672 | Zobacz [Przewodnik po protokole AMQP](service-bus-amqp-protocol-guide.md) | 
 | SBMP | 9350 do 9354 | Zobacz [tryb łączności](/dotnet/api/microsoft.servicebus.connectivitymode?view=azure-dotnet) |
@@ -74,7 +74,7 @@ Jeśli używasz nadmiarowości strefy dla przestrzeni nazw, musisz wykonać kilk
     ```
     nslookup <yournamespace>.servicebus.windows.net
     ```
-2. Zanotuj nazwę w sekcji Nieautorytatywna **odpowiedź** , która znajduje się w jednym z następujących formatów: 
+2. Zanotuj nazwę w sekcji **Nieautorytatywna odpowiedź** , która znajduje się w jednym z następujących formatów: 
 
     ```
     <name>-s1.servicebus.windows.net
@@ -112,6 +112,13 @@ Wszystkie transfery danych w danym regionie świadczenia usługi Azure są udost
 ### <a name="does-service-bus-charge-for-storage"></a>Czy Service Bus opłaty za magazyn?
 Nie, Service Bus nie nalicza opłat za magazyn. Jednak limit przydziału ogranicza maksymalną ilość danych, które mogą być utrwalane dla kolejki/tematu. Zobacz następne często zadawane pytania.
 
+### <a name="i-have-a-service-bus-standard-namespace-why-do-i-see-charges-under-resource-group-system"></a>Mam Service Bus przestrzeni nazw w warstwie Standardowa. Dlaczego widzę opłaty w ramach grupy zasobów "$system"?
+Azure Service Bus ostatnio uaktualnione składniki rozliczeń. W związku z tym, jeśli masz Service Bus przestrzeni nazw w warstwie Standardowa, możesz zobaczyć elementy wiersza dla zasobu "/subscriptions/< azure_subscription_id >/resourceGroups/$system/providers/Microsoft.ServiceBus/namespaces/$system" w grupie zasobów "$ System ".
+
+Opłaty te przedstawiają podstawową opłatę za subskrypcję platformy Azure, która udostępnia Service Bus standardową przestrzeń nazw. 
+
+Należy pamiętać, że nie są to nowe opłaty, czyli te, które istniały w poprzednim modelu rozliczeń. Jedyną zmianą jest to, że są one teraz wymienione w obszarze "$system". Jest to realizowane z powodu unikatowego w nowym systemie rozliczeniowym, w którym grupy są naliczane opłaty za poziom subskrypcji, nie są powiązane z określonym zasobem w ramach identyfikatora zasobu "$system".
+
 ## <a name="quotas"></a>Przydziały
 
 Aby uzyskać listę limitów Service Bus i przydziałów, zobacz [Omówienie przydziałów Service Bus][Quotas overview].
@@ -121,20 +128,20 @@ Domyślnie dla każdej usługi w chmurze firma Microsoft ustawia zagregowany mie
 
 Firma Microsoft zastrzega sobie prawo do wyłączenia konta klienta, które przekroczyło przydziały użycia w danym miesiącu, powiadomienia e-mail są wysyłane i wiele prób skontaktowania się z klientem przed podjęciem jakichkolwiek działań. Klienci przekraczający te przydziały są w dalszym ciągu odpowiedzialni za opłaty, które przekraczają limity.
 
-Podobnie jak w przypadku innych usług na platformie Azure, Service Bus wymusza zestaw określonych przydziałów w celu zapewnienia uczciwego użycia zasobów. Więcej informacji na temat tych przydziałów można znaleźć w temacie [Service Bus][Quotas overview]przydziałów.
+Podobnie jak w przypadku innych usług na platformie Azure, Service Bus wymusza zestaw określonych przydziałów w celu zapewnienia uczciwego użycia zasobów. Więcej informacji na temat tych przydziałów można znaleźć w temacie [Service Bus przydziałów][Quotas overview].
 
 ### <a name="how-to-handle-messages-of-size--1-mb"></a>Jak obsługiwać komunikaty o rozmiarze > 1 MB?
 Usługi Service Bus Messaging (kolejki i tematy/subskrypcje) umożliwiają aplikacji wysyłanie komunikatów o rozmiarze do 256 KB (warstwa standardowa) lub 1 MB (warstwa Premium). Jeśli pracujesz z komunikatami o rozmiarze większym niż 1 MB, użyj wzorca sprawdzania roszczeń opisanego w [tym wpisie w blogu](https://www.serverless360.com/blog/deal-with-large-service-bus-messages-using-claim-check-pattern).
 
 ## <a name="troubleshooting"></a>Rozwiązywanie problemów
 ### <a name="why-am-i-not-able-to-create-a-namespace-after-deleting-it-from-another-subscription"></a>Dlaczego nie mogę utworzyć przestrzeni nazw po usunięciu jej z innej subskrypcji? 
-Po usunięciu przestrzeni nazw z subskrypcji poczekaj 4 godziny, a następnie utwórz ją z tą samą nazwą w innej subskrypcji. W przeciwnym razie może zostać wyświetlony następujący komunikat o błędzie `Namespace already exists`:. 
+Po usunięciu przestrzeni nazw z subskrypcji poczekaj 4 godziny, a następnie utwórz ją z tą samą nazwą w innej subskrypcji. W przeciwnym razie może zostać wyświetlony następujący komunikat o błędzie: `Namespace already exists`. 
 
 ### <a name="what-are-some-of-the-exceptions-generated-by-azure-service-bus-apis-and-their-suggested-actions"></a>Jakie są wyjątki generowane przez interfejsy API Azure Service Bus i ich sugerowane akcje?
 Listę możliwych wyjątków Service Bus można znaleźć w temacie [wyjątki — Omówienie][Exceptions overview].
 
 ### <a name="what-is-a-shared-access-signature-and-which-languages-support-generating-a-signature"></a>Co to jest sygnatura dostępu współdzielonego i które Języki obsługują generowanie podpisu?
-Sygnatury dostępu współdzielonego są mechanizmem uwierzytelniania opartym na bezpiecznych skrótach i identyfikatorach URI SHA-256. Aby uzyskać informacje o sposobach generowania własnych podpisów w Node. js, PHP, Java, Python i C#, zobacz artykuł dotyczący [sygnatur dostępu][Shared Access Signatures] współdzielonego.
+Sygnatury dostępu współdzielonego są mechanizmem uwierzytelniania opartym na bezpiecznych skrótach i identyfikatorach URI SHA-256. Aby uzyskać informacje o sposobach generowania własnych podpisów w Node. js, PHP, Java, Python i C#, zobacz artykuł dotyczący [sygnatur dostępu współdzielonego][Shared Access Signatures] .
 
 ## <a name="subscription-and-namespace-management"></a>Zarządzanie subskrypcjami i przestrzenią nazw
 ### <a name="how-do-i-migrate-a-namespace-to-another-azure-subscription"></a>Jak mogę zmigrować przestrzeni nazw do innej subskrypcji platformy Azure?

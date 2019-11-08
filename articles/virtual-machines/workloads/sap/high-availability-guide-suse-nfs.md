@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 03/15/2019
 ms.author: sedusch
-ms.openlocfilehash: 0e4daaa3417ce349111fbc811be36a4615058c76
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
-ms.translationtype: MT
+ms.openlocfilehash: 771a20ccf1c34958308d58dafb6fb01e36bb408a
+ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72791723"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73749027"
 ---
 # <a name="high-availability-for-nfs-on-azure-vms-on-suse-linux-enterprise-server"></a>Wysoka dostępność systemu plików NFS na maszynach wirtualnych platformy Azure na SUSE Linux Enterprise Server
 
@@ -78,7 +78,7 @@ Najpierw przeczytaj następujące informacje i dokumenty SAP
 * [SUSE Linux Enterprise Server for SAP Applications 12 SP3 — wskazówki dotyczące najlepszych rozwiązań][sles-for-sap-bp]
 * [Informacje o wersji w programie SUSE High Availability Extension 12 SP3][suse-ha-12sp3-relnotes]
 
-## <a name="overview"></a>Przegląd
+## <a name="overview"></a>Omówienie
 
 Aby zapewnić wysoką dostępność, rozwiązanie SAP NetWeaver wymaga serwera NFS. Serwer NFS jest skonfigurowany w osobnym klastrze i może być używany przez wiele systemów SAP.
 
@@ -94,7 +94,7 @@ Serwer NFS używa dedykowanej wirtualnej nazwy hosta i wirtualnych adresów IP d
 * Port sondy
   * Port 61000 dla NW1
   * Port 61001 dla NW2
-* Reguły LoadBalancing
+* Reguły LoadBalancing (Jeśli korzystasz z podstawowego modułu równoważenia obciążenia)
   * 2049 TCP dla NW1
   * 2049 UDP dla NW1
   * 2049 TCP dla NW2
@@ -136,48 +136,85 @@ Najpierw należy utworzyć maszyny wirtualne dla tego klastra systemu plików NF
    Używane są SLES for SAP Applications 12 SP3 (BYOS)  
    Wybierz utworzony wcześniej zestaw dostępności  
 1. Dodaj jeden dysk danych dla każdego systemu SAP do obu maszyn wirtualnych.
-1. Tworzenie Load Balancer (wewnętrzny)  
-   1. Utwórz adresy IP frontonu
-      1. Adres IP 10.0.0.4 dla NW1
-         1. Otwórz moduł równoważenia obciążenia, wybierz pozycję Pula adresów IP frontonu, a następnie kliknij przycisk Dodaj.
-         1. Wprowadź nazwę nowej puli adresów IP frontonu (na przykład **NW1-fronton**)
-         1. Ustaw przypisanie na static i wprowadź adres IP (na przykład **10.0.0.4**)
-         1. Kliknij przycisk OK.
-      1. Adres IP 10.0.0.5 dla NW2
-         * Powtórz powyższe kroki dla NW2
-   1. Tworzenie pul zaplecza
-      1. Połączono z podstawowymi interfejsami sieciowymi wszystkich maszyn wirtualnych, które powinny być częścią klastra NFS dla NW1
-         1. Otwórz moduł równoważenia obciążenia, wybierz pozycję Pule zaplecza, a następnie kliknij przycisk Dodaj.
-         1. Wprowadź nazwę nowej puli zaplecza (na przykład **NW1-zaplecza**)
-         1. Kliknij pozycję Dodaj maszynę wirtualną
-         1. Wybierz utworzony wcześniej zestaw dostępności
-         1. Wybierz Maszyny wirtualne klastra NFS
-         1. Kliknij przycisk OK.
-      1. Połączono z podstawowymi interfejsami sieciowymi wszystkich maszyn wirtualnych, które powinny być częścią klastra NFS dla NW2
-         * Powtórz powyższe kroki, aby utworzyć pulę zaplecza dla NW2
-   1. Tworzenie sond kondycji
-      1. Port 61000 dla NW1
-         1. Otwórz moduł równoważenia obciążenia, wybierz pozycję sondy kondycji, a następnie kliknij przycisk Dodaj.
-         1. Wprowadź nazwę nowej sondy kondycji (na przykład **NW1-HP**)
-         1. Wybierz pozycję TCP jako protokół, port 610**00**, Zachowaj interwał 5 i próg złej kondycji 2
-         1. Kliknij przycisk OK.
-      1. Port 61001 dla NW2
-         * Powtórz powyższe kroki, aby utworzyć sondę kondycji dla NW2
-   1. Reguły LoadBalancing
-      1. 2049 TCP dla NW1
+1. Utwórz Load Balancer (wewnętrzny). Zalecamy użycie [standardowej usługi równoważenia obciążenia](https://docs.microsoft.com/azure/load-balancer/load-balancer-standard-overview).  
+   1. Postępuj zgodnie z poniższymi instrukcjami, aby utworzyć standardowy moduł równoważenia obciążenia:
+      1. Utwórz adresy IP frontonu
+         1. Adres IP 10.0.0.4 dla NW1
+            1. Otwórz moduł równoważenia obciążenia, wybierz pozycję Pula adresów IP frontonu, a następnie kliknij przycisk Dodaj.
+            1. Wprowadź nazwę nowej puli adresów IP frontonu (na przykład **NW1-fronton**)
+            1. Ustaw przypisanie na static i wprowadź adres IP (na przykład **10.0.0.4**)
+            1. Kliknij przycisk OK.
+         1. Adres IP 10.0.0.5 dla NW2
+            * Powtórz powyższe kroki dla NW2
+      1. Tworzenie pul zaplecza
+         1. Połączono z podstawowymi interfejsami sieciowymi wszystkich maszyn wirtualnych, które powinny być częścią klastra NFS dla NW1
+            1. Otwórz moduł równoważenia obciążenia, wybierz pozycję Pule zaplecza, a następnie kliknij przycisk Dodaj.
+            1. Wprowadź nazwę nowej puli zaplecza (na przykład **NW1-zaplecza**)
+            1. Wybierz Virtual Network
+            1. Kliknij pozycję Dodaj maszynę wirtualną
+            1. Wybierz Maszyny wirtualne klastra NFS i ich adresy IP.
+            1. Kliknij pozycję Add (Dodaj).
+         1. Połączono z podstawowymi interfejsami sieciowymi wszystkich maszyn wirtualnych, które powinny być częścią klastra NFS dla NW2
+            * Powtórz powyższe kroki, aby utworzyć pulę zaplecza dla NW2
+      1. Tworzenie sond kondycji
+         1. Port 61000 dla NW1
+            1. Otwórz moduł równoważenia obciążenia, wybierz pozycję sondy kondycji, a następnie kliknij przycisk Dodaj.
+            1. Wprowadź nazwę nowej sondy kondycji (na przykład **NW1-HP**)
+            1. Wybierz pozycję TCP jako protokół, port 610**00**, Zachowaj interwał 5 i próg złej kondycji 2
+            1. Kliknij przycisk OK.
+         1. Port 61001 dla NW2
+            * Powtórz powyższe kroki, aby utworzyć sondę kondycji dla NW2
+      1. Reguły LoadBalancing
          1. Otwórz moduł równoważenia obciążenia, wybierz pozycję reguły równoważenia obciążenia i kliknij przycisk Dodaj.
-         1. Wprowadź nazwę nowej reguły modułu równoważenia obciążenia (na przykład **NW1-lb-2049**)
-         1. Wybierz adres IP frontonu, pulę zaplecza i sondę kondycji utworzoną wcześniej (na przykład **NW1-fronton**)
-         1. Utrzymywanie protokołu **TCP**, wprowadź port **2049**
+         1. Wprowadź nazwę nowej reguły modułu równoważenia obciążenia (na przykład **NW1-lb**)
+         1. Wybierz adres IP frontonu, pulę zaplecza i sondę kondycji utworzoną wcześniej (na przykład **NW1-frontonu**. **NW1 — zaplecze** i **NW1 — HP**)
+         1. Wybierz pozycję **porty ha**.
          1. Zwiększ limit czasu bezczynności do 30 minut
          1. **Upewnij się, że włączono zmiennoprzecinkowy adres IP**
          1. Kliknij przycisk OK.
-      1. 2049 UDP dla NW1
-         * Powtórz powyższe kroki dla portów 2049 i UDP dla NW1
-      1. 2049 TCP dla NW2
-         * Powtórz powyższe kroki dla portów 2049 i TCP dla NW2
-      1. 2049 UDP dla NW2
-         * Powtórz powyższe kroki dla portów 2049 i UDP dla NW2
+         * Powtórz powyższe kroki, aby utworzyć regułę równoważenia obciążenia dla NW2
+   1. Alternatywnie, jeśli scenariusz wymaga podstawowego modułu równoważenia obciążenia, wykonaj następujące instrukcje:
+      1. Utwórz adresy IP frontonu
+         1. Adres IP 10.0.0.4 dla NW1
+            1. Otwórz moduł równoważenia obciążenia, wybierz pozycję Pula adresów IP frontonu, a następnie kliknij przycisk Dodaj.
+            1. Wprowadź nazwę nowej puli adresów IP frontonu (na przykład **NW1-fronton**)
+            1. Ustaw przypisanie na static i wprowadź adres IP (na przykład **10.0.0.4**)
+            1. Kliknij przycisk OK.
+         1. Adres IP 10.0.0.5 dla NW2
+            * Powtórz powyższe kroki dla NW2
+      1. Tworzenie pul zaplecza
+         1. Połączono z podstawowymi interfejsami sieciowymi wszystkich maszyn wirtualnych, które powinny być częścią klastra NFS dla NW1
+            1. Otwórz moduł równoważenia obciążenia, wybierz pozycję Pule zaplecza, a następnie kliknij przycisk Dodaj.
+            1. Wprowadź nazwę nowej puli zaplecza (na przykład **NW1-zaplecza**)
+            1. Kliknij pozycję Dodaj maszynę wirtualną
+            1. Wybierz utworzony wcześniej zestaw dostępności
+            1. Wybierz Maszyny wirtualne klastra NFS
+            1. Kliknij przycisk OK.
+         1. Połączono z podstawowymi interfejsami sieciowymi wszystkich maszyn wirtualnych, które powinny być częścią klastra NFS dla NW2
+            * Powtórz powyższe kroki, aby utworzyć pulę zaplecza dla NW2
+      1. Tworzenie sond kondycji
+         1. Port 61000 dla NW1
+            1. Otwórz moduł równoważenia obciążenia, wybierz pozycję sondy kondycji, a następnie kliknij przycisk Dodaj.
+            1. Wprowadź nazwę nowej sondy kondycji (na przykład **NW1-HP**)
+            1. Wybierz pozycję TCP jako protokół, port 610**00**, Zachowaj interwał 5 i próg złej kondycji 2
+            1. Kliknij przycisk OK.
+         1. Port 61001 dla NW2
+            * Powtórz powyższe kroki, aby utworzyć sondę kondycji dla NW2
+      1. Reguły LoadBalancing
+         1. 2049 TCP dla NW1
+            1. Otwórz moduł równoważenia obciążenia, wybierz pozycję reguły równoważenia obciążenia i kliknij przycisk Dodaj.
+            1. Wprowadź nazwę nowej reguły modułu równoważenia obciążenia (na przykład **NW1-lb-2049**)
+            1. Wybierz adres IP frontonu, pulę zaplecza i sondę kondycji utworzoną wcześniej (na przykład **NW1-fronton**)
+            1. Utrzymywanie protokołu **TCP**, wprowadź port **2049**
+            1. Zwiększ limit czasu bezczynności do 30 minut
+            1. **Upewnij się, że włączono zmiennoprzecinkowy adres IP**
+            1. Kliknij przycisk OK.
+         1. 2049 UDP dla NW1
+            * Powtórz powyższe kroki dla portów 2049 i UDP dla NW1
+         1. 2049 TCP dla NW2
+            * Powtórz powyższe kroki dla portów 2049 i TCP dla NW2
+         1. 2049 UDP dla NW2
+            * Powtórz powyższe kroki dla portów 2049 i UDP dla NW2
 
 > [!IMPORTANT]
 > Nie należy włączać sygnatur czasowych protokołu TCP na maszynach wirtualnych platformy Azure umieszczonych za Azure Load Balancer. Włączenie sygnatur czasowych protokołu TCP spowoduje niepowodzenie sond kondycji. Ustaw parametr **net. IPv4. TCP _timestamps** na **0**. Aby uzyskać szczegółowe informacje, zobacz [sondy kondycji Load Balancer](https://docs.microsoft.com/azure/load-balancer/load-balancer-custom-probe-overview).

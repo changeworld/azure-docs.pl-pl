@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 09/25/2019
 ms.author: diberry
 ms.custom: seodec18
-ms.openlocfilehash: 52d4efaba25dcede3322586d05fceb4d166f51e3
-ms.sourcegitcommit: c2e7595a2966e84dc10afb9a22b74400c4b500ed
+ms.openlocfilehash: 1cb5af13bdd309c762337e64ecde8538afc756b0
+ms.sourcegitcommit: 018e3b40e212915ed7a77258ac2a8e3a660aaef8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/05/2019
-ms.locfileid: "71973802"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73794844"
 ---
 # <a name="knowledge-base-lifecycle-in-qna-maker"></a>Cykl życia bazy wiedzy w QnA Maker
 QnA Maker uczy się najlepiej w iteracyjnym cyklu zmian modelu, wypowiedź przykładów, publikowania i zbierania danych z zapytań punktów końcowych. 
@@ -35,7 +35,7 @@ Baza wiedzy jest gotowa do testowania, gdy zostanie wypełniona zawartością, z
 
 Ta ścisła pętla test-Update jest kontynuowana, dopóki wyniki nie zostaną spełnione. Dowiedz się, jak [przetestować bazę wiedzy](../How-To/test-knowledge-base.md).
 
-W przypadku dużych artykułów bazy wiedzy Użyj testów automatycznych z [interfejsem API generateAnswer](../how-to/metadata-generateanswer-usage.md#get-answer-predictions-with-the-generateanswer-api) i właściwością treści `isTest`, która wysyła zapytanie do bazy wiedzy `test`, zamiast opublikowanej bazy wiedzy. 
+W przypadku dużych artykułów bazy wiedzy Użyj testów automatycznych z [interfejsem API generateAnswer](../how-to/metadata-generateanswer-usage.md#get-answer-predictions-with-the-generateanswer-api) i właściwością treści `isTest`, która wysyła zapytanie do bazy wiedzy `test` zamiast opublikowanej bazy wiedzy. 
 
 ```json
 {
@@ -47,11 +47,11 @@ W przypadku dużych artykułów bazy wiedzy Użyj testów automatycznych z [inte
 ```
 
 ## <a name="publish-the-knowledge-base"></a>Publikowanie bazy wiedzy
-Po zakończeniu testowania bazy wiedzy możesz ją opublikować. Publikowanie powoduje wypchnięcie najnowszej wersji przetestowanej bazy wiedzy na dedykowany indeks Azure Search reprezentujący **opublikowaną** bazę wiedzy. Zostanie również utworzony punkt końcowy, który można wywoływać w aplikacji lub czatbocie.
+Po zakończeniu testowania bazy wiedzy możesz ją opublikować. Opublikowanie powoduje wypchnięcie najnowszej wersji przetestowanej bazy wiedzy na dedykowany indeks Wyszukiwanie poznawcze platformy Azure reprezentujący **opublikowaną** bazę wiedzy. Zostanie również utworzony punkt końcowy, który można wywoływać w aplikacji lub czatbocie.
 
 W ten sposób wszelkie zmiany wprowadzone w wersji testowej bazy wiedzy nie mają wpływu na opublikowaną wersję, która może znajdować się w aplikacji produkcyjnej.
 
-Każdy z tych baz wiedzy może być przeznaczony do testowania osobno. Korzystając z interfejsów API, można wskazać wersję testową bazy wiedzy z właściwością treści `isTest` w wywołaniu generateAnswer.
+Każdy z tych baz wiedzy może być przeznaczony do testowania osobno. Korzystając z interfejsów API, można wskazać wersję testową bazy wiedzy z właściwością `isTest` treści w wywołaniu generateAnswer.
 
 Dowiedz się, jak [opublikować bazę wiedzy](../Quickstarts/create-publish-knowledge-base.md#publish-the-knowledge-base).
 

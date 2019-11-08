@@ -12,18 +12,18 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 08/23/2019
 ms.author: genli
-ms.openlocfilehash: b0b8528a8eaf5cab22bb2482bd60e760d8bf5e3d
-ms.sourcegitcommit: ca359c0c2dd7a0229f73ba11a690e3384d198f40
+ms.openlocfilehash: 80fd91106530c0150a85d508b24041b2263da925
+ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71058110"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73749665"
 ---
 # <a name="bitlocker-boot-errors-on-an-azure-vm"></a>Błędy rozruchu funkcji BitLocker na maszynie wirtualnej platformy Azure
 
  W tym artykule opisano błędy funkcji BitLocker, które mogą wystąpić podczas uruchamiania maszyny wirtualnej z systemem Windows w Microsoft Azure.
 
-[!INCLUDE [updated-for-az.md](../../../includes/updated-for-az.md)]
+ 
 
 ## <a name="symptom"></a>Objaw
 
@@ -31,7 +31,7 @@ ms.locfileid: "71058110"
 
 - Podłącz sterownik USB, który ma klucz funkcji BitLocker
 
-- Jesteś zablokowany. Wprowadź klucz odzyskiwania, aby ponownie rozpocząć (układ klawiatury: US) nieprawidłowe informacje logowania zostały zbyt wiele razy, więc komputer został zablokowany do ochrony prywatności. Aby pobrać klucz odzyskiwania, przejdź do https://windows.microsoft.com/recoverykeyfaq innego komputera lub urządzenia przenośnego. W razie potrzeby, identyfikator klucza to XXXXXXX. Możesz też zresetować komputer.
+- Jesteś zablokowany. Wprowadź klucz odzyskiwania, aby ponownie rozpocząć (układ klawiatury: US) nieprawidłowe informacje logowania zostały zbyt wiele razy, więc komputer został zablokowany, aby chronić Twoją prywatność. Aby pobrać klucz odzyskiwania, przejdź do https://windows.microsoft.com/recoverykeyfaq z innego komputera lub urządzenia przenośnego. W razie potrzeby, identyfikator klucza to XXXXXXX. Możesz też zresetować komputer.
 
 - Wprowadź hasło, aby odblokować ten dysk [] naciśnij klawisz Insert, aby zobaczyć hasło podczas wpisywania.
 - Wprowadź klucz odzyskiwania Załaduj klucz odzyskiwania z urządzenia USB.
@@ -46,8 +46,8 @@ Aby rozwiązać ten problem, Zatrzymaj i Cofnij przydział maszyny wirtualnej, a
 
 Jeśli ta metoda nie rozwiąże problemu, wykonaj następujące kroki, aby ręcznie przywrócić plik klucz szyfrowania bloków:
 
-1. Utwórz migawkę dysku systemowego, której dotyczy dana maszyna wirtualna, jako kopię zapasową. Aby uzyskać więcej informacji, zobacz [Tworzenie migawki dysku](../windows/snapshot-copy-managed-disk.md).
-2. [Dołącz dysk systemu do odzyskiwania maszyny Wirtualnej](troubleshoot-recovery-disks-portal-windows.md). Aby uruchomić polecenie [manage-bde](https://docs.microsoft.com/windows-server/administration/windows-commands/manage-bde) w kroku 7, funkcja **szyfrowanie dysków funkcją BitLocker** musi być włączona na maszynie wirtualnej odzyskiwania.
+1. Utwórz migawkę dysku systemowego, której dotyczy dana maszyna wirtualna, jako kopię zapasową. Aby uzyskać więcej informacji, zobacz [migawka dysku](../windows/snapshot-copy-managed-disk.md).
+2. [Dołącz dysk systemowy do maszyny wirtualnej odzyskiwania](troubleshoot-recovery-disks-portal-windows.md). Aby uruchomić polecenie [manage-bde](https://docs.microsoft.com/windows-server/administration/windows-commands/manage-bde) w kroku 7, funkcja **szyfrowanie dysków funkcją BitLocker** musi być włączona na maszynie wirtualnej odzyskiwania.
 
     Po dołączeniu dysku zarządzanego może zostać wyświetlony komunikat o błędzie "zawiera ustawienia szyfrowania i w związku z tym nie można go użyć jako dysku danych". W takiej sytuacji uruchom następujący skrypt, aby spróbować ponownie dołączyć dysk:
 
@@ -107,7 +107,7 @@ Jeśli ta metoda nie rozwiąże problemu, wykonaj następujące kroki, aby ręcz
 
     Teraz, gdy masz nazwę pliku klucz szyfrowania bloków dla dysku, musisz utworzyć wpis tajny-File-Name. Plik klucz szyfrowania bloków do odblokowania dysku.
 
-6.  Pobierz plik klucz szyfrowania bloków na dysk odzyskiwania. Poniższy przykład zapisuje plik klucz szyfrowania bloków do folderu C:\BEK. Upewnij się, że `C:\BEK\` ścieżka istnieje przed uruchomieniem skryptów.
+6.  Pobierz plik klucz szyfrowania bloków na dysk odzyskiwania. Poniższy przykład zapisuje plik klucz szyfrowania bloków do folderu C:\BEK. Upewnij się, że ścieżka `C:\BEK\` istnieje przed uruchomieniem skryptów.
 
     ```powershell
     $vault = "myKeyVault"
@@ -271,15 +271,15 @@ W przypadku scenariusza klucz szyfrowania klucza wykonaj następujące czynnośc
                     manage-bde -off F:
 ## <a name="script-troubleshooting"></a>Rozwiązywanie problemów z skryptami
 
-**Błąd: Nie można załadować pliku lub zestawu**
+**Błąd: nie można załadować pliku lub zestawu**
 
 Ten błąd występuje, ponieważ ścieżki zestawów ADAL są nieprawidłowe. Jeśli polecenie AZ module jest zainstalowane tylko dla bieżącego użytkownika, zestawy ADAL będą zlokalizowane w `C:\Users\<username>\Documents\WindowsPowerShell\Modules\Az.Accounts\<version>`.
 
-Możesz również wyszukać `Az.Accounts` folder, aby znaleźć poprawną ścieżkę.
+Możesz również wyszukać folder `Az.Accounts`, aby znaleźć poprawną ścieżkę.
 
-**Błąd: Parametr Get-AzKeyVaultSecret lub Get-AzKeyVaultSecret nie jest rozpoznawany jako nazwa polecenia cmdlet**
+**Błąd: polecenie Get-AzKeyVaultSecret lub Get-AzKeyVaultSecret nie jest rozpoznawane jako nazwa polecenia cmdlet**
 
-Jeśli używasz starego modułu AZ PowerShell, musisz zmienić te dwa polecenia na `Get-AzureKeyVaultSecret` i. `Get-AzureKeyVaultSecret`
+Jeśli używasz starego modułu AZ PowerShell, musisz zmienić te dwa polecenia, aby `Get-AzureKeyVaultSecret` i `Get-AzureKeyVaultSecret`.
 
 **Przykłady parametrów**
 

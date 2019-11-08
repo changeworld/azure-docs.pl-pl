@@ -1,6 +1,6 @@
 ---
-title: Przypisywanie ról katalogu użytkownikom — usługi Azure Active Directory | Dokumentacja firmy Microsoft
-description: Instrukcje dotyczące sposobu przypisywania ról administratora i użytkowników niebędących administratorami dla użytkowników w usłudze Azure Active Directory.
+title: Przypisywanie ról katalogów do użytkowników — Azure Active Directory | Microsoft Docs
+description: Instrukcje dotyczące sposobu przypisywania ról administratora i niebędących administratorami do użytkowników z Azure Active Directory.
 services: active-directory
 author: msaburnley
 manager: daveba
@@ -13,58 +13,60 @@ ms.author: ajburnle
 ms.reviewer: jeffsta
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2247b7678573594c4929bd33747fffb91203f457
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: d071ff071c13637b15479d86a699d0b368119196
+ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68561789"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73742600"
 ---
-# <a name="assign-administrator-and-non-administrator-roles-to-users-with-azure-active-directory"></a>Przypisywanie ról administratora i użytkowników niebędących administratorami do użytkowników z usługą Azure Active Directory
-Jeśli użytkownik w organizacji wymaga uprawnień do zarządzania zasobami usługi Azure Active Directory (Azure AD), należy przypisać użytkownika odpowiednią rolę w usłudze Azure AD oparty na czynności użytkownika wymaga uprawnień do wykonania.
+# <a name="assign-administrator-and-non-administrator-roles-to-users-with-azure-active-directory"></a>Przypisywanie ról administratorów i niebędących administratorami do użytkowników z Azure Active Directory
+Jeśli użytkownik w organizacji wymaga uprawnień do zarządzania zasobami usługi Azure Active Directory (Azure AD), należy przypisać użytkownikowi odpowiednią rolę w usłudze Azure AD na podstawie akcji wymaganych przez użytkownika do wykonania.
 
-Aby uzyskać więcej informacji na temat dostępnych ról, zobacz [przypisywanie ról administratorów w usłudze Azure Active Directory](../users-groups-roles/directory-assign-admin-roles.md). Aby uzyskać więcej informacji na temat dodawania użytkowników, zobacz [Dodawanie nowych użytkowników do usługi Azure Active Directory](add-users-azure-active-directory.md).
+Aby uzyskać więcej informacji na temat dostępnych ról, zobacz [Przypisywanie ról administratorów w Azure Active Directory](../users-groups-roles/directory-assign-admin-roles.md). Aby uzyskać więcej informacji na temat dodawania użytkowników, zobacz [Dodawanie nowych użytkowników do Azure Active Directory](add-users-azure-active-directory.md).
 
 ## <a name="assign-roles"></a>Przypisywanie ról
-Typowym sposobem przypisać role usługi Azure AD do użytkownika znajduje się na **roli w katalogu** strony dla użytkownika.
+Typowym sposobem przypisywania ról usługi Azure AD do użytkownika jest strona **roli katalogu** dla użytkownika.
 
-Można także przypisać ról za pomocą Privileged Identity Management (PIM). Aby uzyskać szczegółowe informacje o sposobie używania usługi PIM, zobacz [Privileged Identity Management](https://docs.microsoft.com/azure/active-directory/privileged-identity-management).
+Role można także przypisywać przy użyciu Privileged Identity Management (PIM). Aby uzyskać szczegółowe informacje na temat korzystania z usługi PIM, zobacz [Privileged Identity Management](https://docs.microsoft.com/azure/active-directory/privileged-identity-management).
 
-### <a name="to-assign-a-role-to-a-user"></a>Aby przypisać rolę użytkownikowi
+### <a name="to-assign-a-role-to-a-user"></a>Aby przypisać rolę do użytkownika
 1. Zaloguj się w witrynie [Azure Portal](https://portal.azure.com/) przy użyciu konta administratora globalnego dla katalogu.
 
-2. Wybierz **usługi Azure Active Directory**, wybierz opcję **użytkowników**, a następnie wyszukaj i wybierz użytkownika pobierania przypisania roli. Na przykład _Alain Charon_.
+2. Wybierz pozycję **Azure Active Directory**, wybierz pozycję **Użytkownicy**, a następnie wyszukaj i wybierz użytkownika pobierającego przypisanie roli. Na przykład _Alain Charon_.
 
-3. Na **Alain Charon — profil** wybierz opcję **roli w katalogu**.
+      ![Strona wszyscy użytkownicy — Wybieranie użytkownika](media/active-directory-users-assign-role-azure-portal/directory-role-select-user.png)
 
-    **Alain Charon - rola katalogu** zostanie wyświetlona strona.
+3. Na stronie **Alain Charon — profil** wybierz pozycję **przypisane role**.
 
-4. Wybierz **Dodaj rolę**, wybierz rolę do przypisania do Alain (na przykład _administrator aplikacji_), a następnie wybierz **wybierz**.
+    Zostanie wyświetlona strona **rola usługi Alain Charon** .
 
-    ![Strona Role katalogu, wyświetlanie wybranej roli](media/active-directory-users-assign-role-azure-portal/directory-role-select-role.png)
+4. Wybierz pozycję **Dodaj przypisanie**, wybierz rolę, która ma zostać przypisana do Alain (na przykład _administrator aplikacji_), a następnie wybierz **pozycję Wybierz**.
 
-    Rola administrator aplikacji jest przypisywana do Alain Charon i pojawia się w **Alain Charon - rola katalogu** strony.
+    ![Strona przypisane role — wyświetlana została wybrana rola](media/active-directory-users-assign-role-azure-portal/directory-role-select-role.png)
+
+    Rola Administrator aplikacji jest przypisywana do Alain Charon i pojawia się na stronie **roli Charon Alain-Directory** .
 
 ## <a name="remove-a-role-assignment"></a>Usuwanie przypisania roli
-Jeśli musisz usunąć przypisania roli z danych użytkownika, możesz również zrobić z **Alain Charon - rola katalogu** strony.
+Jeśli musisz usunąć przypisanie roli z użytkownika, możesz to zrobić również na stronie **roli Alain Charon-Directory** .
 
-### <a name="to-remove-a-role-assignment-from-a-user"></a>Usuwanie przypisania roli użytkownika
+### <a name="to-remove-a-role-assignment-from-a-user"></a>Aby usunąć przypisanie roli z użytkownika
 
-1. Wybierz **usługi Azure Active Directory**, wybierz opcję **użytkowników**, a następnie wyszukaj i wybierz użytkownika pobierania przypisania roli usunięty. Na przykład _Alain Charon_.
+1. Wybierz pozycję **Azure Active Directory**, wybierz pozycję **Użytkownicy**, a następnie wyszukaj i wybierz użytkownika, który usunął przypisanie roli. Na przykład _Alain Charon_.
 
-2. Wybierz **roli w katalogu**, wybierz opcję **administrator aplikacji**, a następnie wybierz pozycję **Usuń rolę**.
+2. Wybierz pozycję **przypisane role**, wybierz pozycję **administrator aplikacji**, a następnie wybierz pozycję **Usuń przypisanie**.
 
-    ![Strona Role katalogu, wyświetlanie wybranej roli i opcji Usuń](media/active-directory-users-assign-role-azure-portal/directory-role-remove-role.png)
+    ![Strona przypisane role, która wyświetla wybraną rolę i opcję Usuń](media/active-directory-users-assign-role-azure-portal/directory-role-remove-role.png)
 
-    Rola administrator aplikacji zostanie usunięty z Alain Charon i nie będzie już wyświetlany na **Alain Charon - rola katalogu** strony.
+    Rola Administrator aplikacji jest usuwana z Alain Charon i nie jest już wyświetlana na stronie **roli Charon Alain-Directory** .
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 - [Dodawanie lub usuwanie użytkowników](add-users-azure-active-directory.md)
 
-- [Dodać lub zmienić informacje o profilu](active-directory-users-profile-azure-portal.md)
+- [Dodawanie lub zmiana informacji o profilu](active-directory-users-profile-azure-portal.md)
 
 - [Dodawanie użytkowników-gości z innego katalogu](../b2b/what-is-b2b.md)
 
-Lub można wykonywać inne zadania zarządzania użytkownika, takich jak przypisanie delegatów, przy użyciu zasad oraz udostępnianie kont użytkowników. Aby uzyskać więcej informacji na temat innych dostępnych akcji, zobacz [dokumentacja zarządzania użytkownika usługi Azure Active Directory](../users-groups-roles/index.yml).
+Można też wykonywać inne zadania zarządzania użytkownikami, takie jak przypisywanie delegatów, korzystanie z zasad i udostępnianie kont użytkowników. Aby uzyskać więcej informacji na temat innych dostępnych akcji, zobacz [Azure Active Directory dokumentacja dotycząca zarządzania użytkownikami](../users-groups-roles/index.yml).
 
 

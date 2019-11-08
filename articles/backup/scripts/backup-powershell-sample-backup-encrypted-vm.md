@@ -1,6 +1,6 @@
 ---
 title: Przykładowy skrypt Azure PowerShell — tworzenie kopii zapasowej maszyny wirtualnej platformy Azure
-description: Przykładowy skrypt programu Azure PowerShell — tworzenie kopii zapasowej maszyny wirtualnej platformy Azure
+description: W tym artykule dowiesz się, jak za pomocą przykładowego skryptu Azure PowerShell utworzyć kopię zapasową maszyny wirtualnej platformy Azure.
 author: dcurwin
 manager: carmonm
 ms.service: backup
@@ -8,12 +8,12 @@ ms.topic: sample
 ms.date: 03/05/2019
 ms.author: dacurwin
 ms.custom: mvc
-ms.openlocfilehash: 1e5e705d7e9ca6587c9836603db05978d7f04d4d
-ms.sourcegitcommit: b1c94635078a53eb558d0eb276a5faca1020f835
+ms.openlocfilehash: fe2fa6d77f7ec59ef73ac0e8779dcfbd660c0680
+ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/27/2019
-ms.locfileid: "72968826"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73747126"
 ---
 # <a name="back-up-an-encrypted-azure-virtual-machine-with-powershell"></a>Tworzenie zaszyfrowanej kopii zapasowej maszyny wirtualnej platformy Azure za pomocą programu PowerShell
 

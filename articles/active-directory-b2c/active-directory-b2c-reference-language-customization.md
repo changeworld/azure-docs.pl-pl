@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 08/13/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: bced7a4b994172a1a2076149d6f25adb39c99b54
-ms.sourcegitcommit: fe50db9c686d14eec75819f52a8e8d30d8ea725b
+ms.openlocfilehash: 62d75267421d1f7587f136ea1e76f7c4b4341a37
+ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/14/2019
-ms.locfileid: "69015563"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73742656"
 ---
 # <a name="language-customization-in-azure-active-directory-b2c"></a>Dostosowanie języka w Azure Active Directory B2C
 
@@ -23,13 +23,13 @@ Dostosowanie języka w programie Azure Active Directory B2C (Azure AD B2C) umoż
 
 ## <a name="how-language-customization-works"></a>Jak działa dostosowanie języka
 
-Za pomocą dostosowywania języka można wybrać Języki, w których przepływ użytkownika jest dostępny. Po włączeniu funkcji można podać parametr ciągu zapytania, `ui_locales`z poziomu aplikacji. Gdy wywołasz się do Azure AD B2C, Strona zostanie przetłumaczona na wskazane ustawienia regionalne. Ten typ konfiguracji zapewnia pełną kontrolę nad językami w przepływie użytkownika i ignoruje ustawienia języka w przeglądarce klienta.
+Za pomocą dostosowywania języka można wybrać Języki, w których przepływ użytkownika jest dostępny. Po włączeniu funkcji można podać parametr ciągu zapytania, `ui_locales`z aplikacji. Gdy wywołasz się do Azure AD B2C, Strona zostanie przetłumaczona na wskazane ustawienia regionalne. Ten typ konfiguracji zapewnia pełną kontrolę nad językami w przepływie użytkownika i ignoruje ustawienia języka w przeglądarce klienta.
 
-Użytkownik może nie potrzebować tego poziomu kontroli nad językami, które widzi klient. Jeśli nie podano `ui_locales` parametru, środowisko klienta jest podyktowane ustawieniami przeglądarki. Można nadal kontrolować Języki, do których przepływ użytkownika jest tłumaczony przez dodanie go jako obsługiwanego języka. Jeśli w przeglądarce klienta ustawiono język, który nie ma być obsługiwany, w zamian zostanie wyświetlony język wybrany jako domyślny w obsługiwanych kulturach.
+Użytkownik może nie potrzebować tego poziomu kontroli nad językami, które widzi klient. Jeśli nie podano parametru `ui_locales`, środowisko klienta zależy od ustawień przeglądarki. Można nadal kontrolować Języki, do których przepływ użytkownika jest tłumaczony przez dodanie go jako obsługiwanego języka. Jeśli w przeglądarce klienta ustawiono język, który nie ma być obsługiwany, w zamian zostanie wyświetlony język wybrany jako domyślny w obsługiwanych kulturach.
 
-* **określony język interfejsu użytkownika**: Po włączeniu dostosowywania języka przepływ użytkownika zostanie przetłumaczony na język, który został określony w tym miejscu.
-* **Język żądany w przeglądarce**: Jeśli żaden `ui_locales` parametr nie został określony, przepływ użytkownika jest tłumaczony na język żądany w przeglądarce, *Jeśli język jest obsługiwany*.
-* **Język domyślny zasad**: Jeśli w przeglądarce nie określono języka lub określono taki, który nie jest obsługiwany, przepływ użytkownika jest tłumaczony na język domyślny przepływu użytkownika.
+* **interfejs użytkownika — określony język**: po włączeniu dostosowywania języka przepływ użytkownika zostanie przetłumaczony na język, który jest określony w tym miejscu.
+* **Język żądany w przeglądarce**: Jeśli nie określono `ui_locales` parametru, przepływ użytkownika zostanie przetłumaczony na język żądany w przeglądarce, *Jeśli język jest obsługiwany*.
+* **Język domyślny dla zasad**: Jeśli w przeglądarce nie określono języka lub określono taki, który nie jest obsługiwany, przepływ użytkownika zostanie przetłumaczony na domyślny język przepływu użytkownika.
 
 > [!NOTE]
 > Jeśli używasz niestandardowych atrybutów użytkownika, musisz podać własne tłumaczenia. Aby uzyskać więcej informacji, zobacz [Dostosowywanie ciągów](#customize-your-strings).
@@ -38,7 +38,7 @@ Użytkownik może nie potrzebować tego poziomu kontroli nad językami, które w
 
 Zasady, które zostały utworzone przed ogólnym udostępnieniem dostosowania języka, muszą najpierw włączyć tę funkcję. Zasady i przepływy użytkowników utworzone po włączeniu dostosowywania języka są domyślnie włączone.
 
-Po włączeniu dostosowywania języka w przepływie użytkownika można kontrolować język przepływu użytkownika, dodając `ui_locales` parametr.
+Po włączeniu dostosowywania języka w przepływie użytkownika można kontrolować język przepływu użytkownika, dodając parametr `ui_locales`.
 
 1. W dzierżawie Azure AD B2C wybierz pozycję **przepływy użytkownika**.
 1. Kliknij przepływ użytkownika, który chcesz włączyć dla tłumaczeń.
@@ -47,7 +47,7 @@ Po włączeniu dostosowywania języka w przepływie użytkownika można kontrolo
 
 ## <a name="select-which-languages-in-your-user-flow-are-enabled"></a>Wybierz Języki, w których przepływ użytkownika jest włączony
 
-Zezwól na tłumaczenie zestawu języków dla przepływu użytkownika na żądanie w przeglądarce bez `ui_locales` parametru.
+Włączenie zestawu języków dla przepływu użytkownika do tłumaczenia na żądanie przeglądarki bez parametru `ui_locales`.
 
 1. Upewnij się, że przepływ użytkownika ma włączone dostosowanie języka z poprzednich instrukcji.
 1. Na stronie **Języki** dla przepływu użytkownika wybierz język, który ma być obsługiwany.
@@ -55,7 +55,7 @@ Zezwól na tłumaczenie zestawu języków dla przepływu użytkownika na żądan
 1. Wybierz pozycję **Zapisz** w górnej części okienka właściwości.
 
 >[!NOTE]
->`ui_locales` Jeśli parametr nie zostanie podany, Strona zostanie przetłumaczona na język przeglądarki klienta tylko wtedy, gdy jest włączona.
+>Jeśli parametr `ui_locales` nie zostanie podany, Strona zostanie przetłumaczona na język przeglądarki klienta tylko wtedy, gdy jest włączona.
 >
 
 ## <a name="customize-your-strings"></a>Dostosowywanie ciągów
@@ -72,13 +72,13 @@ Te kroki zapewniają plik JSON, którego można użyć do rozpoczęcia edytowani
 ### <a name="change-any-string-on-the-page"></a>Zmień dowolny ciąg na stronie
 
 1. Otwórz plik JSON pobrany z poprzednich instrukcji w edytorze JSON.
-1. Znajdź element, który chcesz zmienić. Możesz znaleźć `StringId` ciąg, którego szukasz, lub poszukać `Value` atrybutu, który ma zostać zmieniony.
-1. `Value` Zaktualizuj atrybut o dane, które mają być wyświetlane.
-1. Dla każdego ciągu, który chcesz zmienić, przejdź `Override` do. `true`
+1. Znajdź element, który chcesz zmienić. Możesz znaleźć `StringId` ciągu, którego szukasz, lub poszukać atrybutu `Value`, który chcesz zmienić.
+1. Zaktualizuj atrybut `Value` za pomocą tego, co ma być wyświetlane.
+1. Dla każdego ciągu, który chcesz zmienić, Zmień `Override` na `true`.
 1. Zapisz plik i przekaż zmiany. (Formant przekazywania można znaleźć w tym samym miejscu, w którym został pobrany plik JSON).
 
 > [!IMPORTANT]
-> Jeśli musisz przesłonić ciąg, upewnij się, że wartość jest `Override` ustawiona na `true`. Jeśli wartość nie zostanie zmieniona, wpis zostanie zignorowany.
+> Jeśli zachodzi potrzeba przesłonięcia ciągu, należy ustawić wartość `Override` na `true`. Jeśli wartość nie zostanie zmieniona, wpis zostanie zignorowany.
 
 ### <a name="change-extension-attributes"></a>Zmień atrybuty rozszerzenia
 
@@ -98,13 +98,13 @@ Jeśli chcesz zmienić ciąg dla niestandardowego atrybutu użytkownika lub chce
 }
 ```
 
-Zamień `<ExtensionAttribute>` na nazwę niestandardowego atrybutu użytkownika.
+Zastąp `<ExtensionAttribute>` nazwą niestandardowego atrybutu użytkownika.
 
-Zamień `<ExtensionAttributeValue>` na nowy ciąg, który ma być wyświetlany.
+Zastąp `<ExtensionAttributeValue>` nowym ciągiem, który ma być wyświetlany.
 
 ### <a name="provide-a-list-of-values-by-using-localizedcollections"></a>Podaj listę wartości za pomocą LocalizedCollections
 
-Jeśli chcesz podać listę wartości odpowiedzi, musisz utworzyć `LocalizedCollections` atrybut. `LocalizedCollections`jest tablicą `Name` par i `Value` . Kolejność dla elementów będzie kolejność, w jakiej są wyświetlane. Aby dodać `LocalizedCollections`, użyj następującego formatu:
+Jeśli chcesz podać listę wartości odpowiedzi, musisz utworzyć atrybut `LocalizedCollections`. `LocalizedCollections` jest tablicą par `Name` i `Value`. Kolejność dla elementów będzie kolejność, w jakiej są wyświetlane. Aby dodać `LocalizedCollections`, użyj następującego formatu:
 
 ```JSON
 {
@@ -128,9 +128,9 @@ Jeśli chcesz podać listę wartości odpowiedzi, musisz utworzyć `LocalizedCol
 }
 ```
 
-* `ElementId`jest atrybutem użytkownika, do `LocalizedCollections` którego ten atrybut jest odpowiedzią.
-* `Name`jest wartością pokazywaną użytkownikowi.
-* `Value`to co jest zwracane w ramach żądania, gdy ta opcja jest zaznaczona.
+* `ElementId` jest atrybutem użytkownika, do którego odnosi się ten atrybut `LocalizedCollections`.
+* `Name` jest wartością pokazywaną użytkownikowi.
+* `Value` jest zwracana w ramach żądania, gdy ta opcja jest zaznaczona.
 
 ### <a name="upload-your-changes"></a>Przekaż zmiany
 
@@ -145,15 +145,15 @@ Zmiany są zapisywane automatycznie w przepływie użytkownika.
 
 ## <a name="customize-the-page-ui-by-using-language-customization"></a>Dostosowywanie interfejsu użytkownika strony przy użyciu dostosowywania języka
 
-Istnieją dwa sposoby lokalizowania zawartości HTML. Jednym ze sposobów jest włączenie [dostosowywania języka](active-directory-b2c-reference-language-customization.md). Włączenie tej funkcji pozwala Azure AD B2C do przesyłania dalej parametru `ui-locales`Connect OpenID Connect do punktu końcowego. Na serwerze zawartości można użyć tego parametru, aby zapewnić dostosowane strony HTML, które są specyficzne dla języka.
+Istnieją dwa sposoby lokalizowania zawartości HTML. Jednym ze sposobów jest włączenie [dostosowywania języka](active-directory-b2c-reference-language-customization.md). Włączenie tej funkcji umożliwia Azure AD B2C do przesyłania dalej parametru Connect OpenID Connect `ui-locales`do punktu końcowego. Na serwerze zawartości można użyć tego parametru, aby zapewnić dostosowane strony HTML, które są specyficzne dla języka.
 
-Alternatywnie można ściągnąć zawartość z różnych miejsc na podstawie ustawień regionalnych, które są używane. W punkcie końcowym z obsługą mechanizmu CORS można skonfigurować strukturę folderów, aby hostować zawartość dla określonych języków. Jeśli używasz wartości `{Culture:RFC5646}`wieloznacznej, nastąpi wywołanie odpowiedniej metody. Załóżmy na przykład, że jest to identyfikator URI strony niestandardowej:
+Alternatywnie można ściągnąć zawartość z różnych miejsc na podstawie ustawień regionalnych, które są używane. W punkcie końcowym z obsługą mechanizmu CORS można skonfigurować strukturę folderów, aby hostować zawartość dla określonych języków. Jeśli używasz wartości wieloznacznej `{Culture:RFC5646}`, nastąpi wywołanie tego samego. Załóżmy na przykład, że jest to identyfikator URI strony niestandardowej:
 
 ```
 https://wingtiptoysb2c.blob.core.windows.net/{Culture:RFC5646}/wingtip/unified.html
 ```
 
-Możesz załadować stronę w `fr`. Gdy Strona pobiera zawartość HTML i CSS, pobiera z:
+Stronę można załadować w `fr`. Gdy Strona pobiera zawartość HTML i CSS, pobiera z:
 
 ```
 https://wingtiptoysb2c.blob.core.windows.net/fr/wingtip/unified.html
@@ -191,7 +191,7 @@ Firma Microsoft obecnie nie obsługuje języków pisanych od prawej do lewej. Mo
 
 ### <a name="social-identity-provider-translations"></a>Tłumaczenia dostawcy tożsamości społecznościowej
 
-Firma Microsoft udostępnia `ui_locales` parametr OIDC na potrzeby logowania do sieci społecznościowych. Jednak niektórzy dostawcy tożsamości społecznościowych, w tym Facebook i Google, nie honorli.
+Firma Microsoft udostępnia parametr `ui_locales` OIDC do logowania do sieci społecznościowych. Jednak niektórzy dostawcy tożsamości społecznościowych, w tym Facebook i Google, nie honorli.
 
 ### <a name="browser-behavior"></a>Zachowanie przeglądarki
 
@@ -203,56 +203,56 @@ Azure AD B2C obejmuje obsługę następujących języków. Języki przepływu u�
 
 | Język              | Kod języka | Przepływy użytkowników         | Powiadomienia usługi MFA  |
 |-----------------------| :-----------: | :----------------: | :----------------: |
-| Arabski                | ty            | y                | :heavy_check_mark: |
-| Bułgarski             | BG            | y                | :heavy_check_mark: |
-| Bengalski                | bn            | :heavy_check_mark: | y                |
-| Kataloński               | urzędu certyfikacji            | y                | :heavy_check_mark: |
-| Czeski                 | cs            | :heavy_check_mark: | :heavy_check_mark: |
-| Duński                | da            | :heavy_check_mark: | :heavy_check_mark: |
-| niemiecki                | de            | :heavy_check_mark: | :heavy_check_mark: |
-| Grecki                 | el            | :heavy_check_mark: | :heavy_check_mark: |
-| Angielski               | pl-PL            | :heavy_check_mark: | :heavy_check_mark: |
-| Hiszpański               | es            | :heavy_check_mark: | :heavy_check_mark: |
-| Estoński              | staw            | y                | :heavy_check_mark: |
-| Baskijski                | Europejska            | y                | :heavy_check_mark: |
-| Fiński               | fi            | :heavy_check_mark: | :heavy_check_mark: |
-| Francuski                | fr            | :heavy_check_mark: | :heavy_check_mark: |
-| Galicyjski              | GL            | y                | :heavy_check_mark: |
-| Gudżarati              | gu            | :heavy_check_mark: | y                |
-| Hebrajski                | Przewodniczący            | y                | :heavy_check_mark: |
-| Hindi                 | hi            | :heavy_check_mark: | :heavy_check_mark: |
-| Chorwacki              | godz.            | :heavy_check_mark: | :heavy_check_mark: |
-| Węgierski             | hu            | :heavy_check_mark: | :heavy_check_mark: |
-| Indonezyjski            | id            | y                | :heavy_check_mark: |
-| Włoski               | it            | :heavy_check_mark: | :heavy_check_mark: |
-| Japoński              | ja            | :heavy_check_mark: | :heavy_check_mark: |
-| Kazachski                | kk            | y                | :heavy_check_mark: |
-| Kannada               | kn            | :heavy_check_mark: | y                |
-| Koreański                | ko            | :heavy_check_mark: | :heavy_check_mark: |
-| Litewski            | przelew            | y                | :heavy_check_mark: |
-| Łotewski               | lv            | y                | :heavy_check_mark: |
-| Malajalam             | ml            | :heavy_check_mark: | y                |
-| Marathi               | mr            | :heavy_check_mark: | y                |
-| Malajski                 | ms            | :heavy_check_mark: | :heavy_check_mark: |
-| Norweski (Bokmal)      | nb            | :heavy_check_mark: | y                |
-| Holenderski                 | nl            | :heavy_check_mark: | :heavy_check_mark: |
-| Norweski             | nie            | y                | :heavy_check_mark: |
-| Pendżabski               | pa            | :heavy_check_mark: | y                |
-| Polski                | pl            | :heavy_check_mark: | :heavy_check_mark: |
-| Portugalski (Brazylia)   | pt-br         | :heavy_check_mark: | :heavy_check_mark: |
-| Portugalski (Portugalia) | pt-pt         | :heavy_check_mark: | :heavy_check_mark: |
-| Rumuński              | ro            | :heavy_check_mark: | :heavy_check_mark: |
-| Rosyjski               | ru            | :heavy_check_mark: | :heavy_check_mark: |
-| Słowacki                | SK            | :heavy_check_mark: | :heavy_check_mark: |
-| Słoweński             | sl            | y                | :heavy_check_mark: |
-| Serbski — Cyrylica    | Wirtualizacja SR-cryl-CS    | y                | :heavy_check_mark: |
-| Serbski (łaciński)       | Wirtualizacja sr-latn-cs    | y                | :heavy_check_mark: |
-| Szwedzki               | sv            | :heavy_check_mark: | :heavy_check_mark: |
-| Tamilski                 | ta            | :heavy_check_mark: | y                |
-| Telugu                | Usuń            | :heavy_check_mark: | y                |
-| Tajlandzki                  | .            | :heavy_check_mark: | :heavy_check_mark: |
-| Turecki               | zdawczy            | :heavy_check_mark: | :heavy_check_mark: |
-| Ukraiński             | Zjednoczone Królestwo            | y                | :heavy_check_mark: |
-| Wietnamski            | vi            | y                | :heavy_check_mark: |
-| Chiński (uproszczony)  | zh-Hans       | :heavy_check_mark: | :heavy_check_mark: |
-| Chiński — tradycyjny | zh-Hant       | :heavy_check_mark: | :heavy_check_mark: |
+| Arabski                | ty            | ![nie](media/active-directory-b2c-reference-language-customization/no.png) | ![tak](media/active-directory-b2c-reference-language-customization/yes.png) |
+| Bułgarski             | BG            | ![nie](media/active-directory-b2c-reference-language-customization/no.png) | ![tak](media/active-directory-b2c-reference-language-customization/yes.png) |
+| Języku                | mld USD            | ![tak](media/active-directory-b2c-reference-language-customization/yes.png) | ![nie](media/active-directory-b2c-reference-language-customization/no.png) |
+| Kataloński               | urzędu certyfikacji            | ![nie](media/active-directory-b2c-reference-language-customization/no.png) | ![tak](media/active-directory-b2c-reference-language-customization/yes.png) |
+| Czeski                 | cs            | ![tak](media/active-directory-b2c-reference-language-customization/yes.png) | ![tak](media/active-directory-b2c-reference-language-customization/yes.png) |
+| Duński                | da            | ![tak](media/active-directory-b2c-reference-language-customization/yes.png) | ![tak](media/active-directory-b2c-reference-language-customization/yes.png) |
+| Niemiecki                | de            | ![tak](media/active-directory-b2c-reference-language-customization/yes.png) | ![tak](media/active-directory-b2c-reference-language-customization/yes.png) |
+| Grecki                 | el            | ![tak](media/active-directory-b2c-reference-language-customization/yes.png) | ![tak](media/active-directory-b2c-reference-language-customization/yes.png) |
+| Polski               | pl            | ![tak](media/active-directory-b2c-reference-language-customization/yes.png) | ![tak](media/active-directory-b2c-reference-language-customization/yes.png) |
+| Hiszpański               | es            | ![tak](media/active-directory-b2c-reference-language-customization/yes.png) | ![tak](media/active-directory-b2c-reference-language-customization/yes.png) |
+| Estoński              | staw            | ![nie](media/active-directory-b2c-reference-language-customization/no.png) | ![tak](media/active-directory-b2c-reference-language-customization/yes.png) |
+| Baskijski                | Europejska            | ![nie](media/active-directory-b2c-reference-language-customization/no.png) | ![tak](media/active-directory-b2c-reference-language-customization/yes.png) |
+| Fiński               | fi            | ![tak](media/active-directory-b2c-reference-language-customization/yes.png) | ![tak](media/active-directory-b2c-reference-language-customization/yes.png) |
+| Francuski                | fr            | ![tak](media/active-directory-b2c-reference-language-customization/yes.png) | ![tak](media/active-directory-b2c-reference-language-customization/yes.png) |
+| Galicyjski              | GL            | ![nie](media/active-directory-b2c-reference-language-customization/no.png) | ![tak](media/active-directory-b2c-reference-language-customization/yes.png) |
+| Gudżarati              | gu            | ![tak](media/active-directory-b2c-reference-language-customization/yes.png) | ![nie](media/active-directory-b2c-reference-language-customization/no.png) |
+| Hebrajski                | Przewodniczący            | ![nie](media/active-directory-b2c-reference-language-customization/no.png) | ![tak](media/active-directory-b2c-reference-language-customization/yes.png) |
+| Hindi                 | Cześć            | ![tak](media/active-directory-b2c-reference-language-customization/yes.png) | ![tak](media/active-directory-b2c-reference-language-customization/yes.png) |
+| Chorwacki              | wysoki            | ![tak](media/active-directory-b2c-reference-language-customization/yes.png) | ![tak](media/active-directory-b2c-reference-language-customization/yes.png) |
+| Węgierski             | hu            | ![tak](media/active-directory-b2c-reference-language-customization/yes.png) | ![tak](media/active-directory-b2c-reference-language-customization/yes.png) |
+| Indonezyjski            | id            | ![nie](media/active-directory-b2c-reference-language-customization/no.png) | ![tak](media/active-directory-b2c-reference-language-customization/yes.png) |
+| Włoski               | it            | ![tak](media/active-directory-b2c-reference-language-customization/yes.png) | ![tak](media/active-directory-b2c-reference-language-customization/yes.png) |
+| Japoński              | ja            | ![tak](media/active-directory-b2c-reference-language-customization/yes.png) | ![tak](media/active-directory-b2c-reference-language-customization/yes.png) |
+| Kazachski                | kk            | ![nie](media/active-directory-b2c-reference-language-customization/no.png) | ![tak](media/active-directory-b2c-reference-language-customization/yes.png) |
+| Kannada               | kN            | ![tak](media/active-directory-b2c-reference-language-customization/yes.png) | ![nie](media/active-directory-b2c-reference-language-customization/no.png) |
+| Koreański                | ko            | ![tak](media/active-directory-b2c-reference-language-customization/yes.png) | ![tak](media/active-directory-b2c-reference-language-customization/yes.png) |
+| Litewski            | przelew            | ![nie](media/active-directory-b2c-reference-language-customization/no.png) | ![tak](media/active-directory-b2c-reference-language-customization/yes.png) |
+| Łotewski               | LV            | ![nie](media/active-directory-b2c-reference-language-customization/no.png) | ![tak](media/active-directory-b2c-reference-language-customization/yes.png) |
+| Malayalam             | ml            | ![tak](media/active-directory-b2c-reference-language-customization/yes.png) | ![nie](media/active-directory-b2c-reference-language-customization/no.png) |
+| Marathi               | Pan            | ![tak](media/active-directory-b2c-reference-language-customization/yes.png) | ![nie](media/active-directory-b2c-reference-language-customization/no.png) |
+| Malajski                 | Arial            | ![tak](media/active-directory-b2c-reference-language-customization/yes.png) | ![tak](media/active-directory-b2c-reference-language-customization/yes.png) |
+| Norweski (Bokmal)      | nb            | ![tak](media/active-directory-b2c-reference-language-customization/yes.png) | ![nie](media/active-directory-b2c-reference-language-customization/no.png) |
+| Holenderski                 | nl            | ![tak](media/active-directory-b2c-reference-language-customization/yes.png) | ![tak](media/active-directory-b2c-reference-language-customization/yes.png) |
+| Norweski             | nie            | ![nie](media/active-directory-b2c-reference-language-customization/no.png) | ![tak](media/active-directory-b2c-reference-language-customization/yes.png) |
+| Pendżabski               | biur            | ![tak](media/active-directory-b2c-reference-language-customization/yes.png) | ![nie](media/active-directory-b2c-reference-language-customization/no.png) |
+| Polski                | pl            | ![tak](media/active-directory-b2c-reference-language-customization/yes.png) | ![tak](media/active-directory-b2c-reference-language-customization/yes.png) |
+| Portugalski (Brazylia)   | pt-br         | ![tak](media/active-directory-b2c-reference-language-customization/yes.png) | ![tak](media/active-directory-b2c-reference-language-customization/yes.png) |
+| Portugalski (Portugalia) | pt-pt         | ![tak](media/active-directory-b2c-reference-language-customization/yes.png) | ![tak](media/active-directory-b2c-reference-language-customization/yes.png) |
+| Rumuński              | ro            | ![tak](media/active-directory-b2c-reference-language-customization/yes.png) | ![tak](media/active-directory-b2c-reference-language-customization/yes.png) |
+| Rosyjski               | ru            | ![tak](media/active-directory-b2c-reference-language-customization/yes.png) | ![tak](media/active-directory-b2c-reference-language-customization/yes.png) |
+| Słowacki                | SK            | ![tak](media/active-directory-b2c-reference-language-customization/yes.png) | ![tak](media/active-directory-b2c-reference-language-customization/yes.png) |
+| Słoweński             | SL            | ![nie](media/active-directory-b2c-reference-language-customization/no.png) | ![tak](media/active-directory-b2c-reference-language-customization/yes.png) |
+| Serbski — Cyrylica    | Wirtualizacja SR-cryl-CS    | ![nie](media/active-directory-b2c-reference-language-customization/no.png) | ![tak](media/active-directory-b2c-reference-language-customization/yes.png) |
+| Serbski (łaciński)       | Wirtualizacja sr-latn-cs    | ![nie](media/active-directory-b2c-reference-language-customization/no.png) | ![tak](media/active-directory-b2c-reference-language-customization/yes.png) |
+| Szwedzki               | sv            | ![tak](media/active-directory-b2c-reference-language-customization/yes.png) | ![tak](media/active-directory-b2c-reference-language-customization/yes.png) |
+| Tamilski                 | Ta            | ![tak](media/active-directory-b2c-reference-language-customization/yes.png) | ![nie](media/active-directory-b2c-reference-language-customization/no.png) |
+| Telugu                | Usuń            | ![tak](media/active-directory-b2c-reference-language-customization/yes.png) | ![nie](media/active-directory-b2c-reference-language-customization/no.png) |
+| Tajski                  | th            | ![tak](media/active-directory-b2c-reference-language-customization/yes.png) | ![tak](media/active-directory-b2c-reference-language-customization/yes.png) |
+| Turecki               | zdawczy            | ![tak](media/active-directory-b2c-reference-language-customization/yes.png) | ![tak](media/active-directory-b2c-reference-language-customization/yes.png) |
+| Ukraiński             | Południowe Zjednoczone Królestwo            | ![nie](media/active-directory-b2c-reference-language-customization/no.png) | ![tak](media/active-directory-b2c-reference-language-customization/yes.png) |
+| Wietnamski            | VI            | ![nie](media/active-directory-b2c-reference-language-customization/no.png) | ![tak](media/active-directory-b2c-reference-language-customization/yes.png) |
+| Chiński (uproszczony)  | zh-Hans       | ![tak](media/active-directory-b2c-reference-language-customization/yes.png) | ![tak](media/active-directory-b2c-reference-language-customization/yes.png) |
+| Chiński (tradycyjny) | zh-Hant       | ![tak](media/active-directory-b2c-reference-language-customization/yes.png) | ![tak](media/active-directory-b2c-reference-language-customization/yes.png) |

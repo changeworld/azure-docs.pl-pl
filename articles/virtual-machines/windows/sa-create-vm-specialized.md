@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 05/23/2017
 ms.author: cynthn
 ROBOTS: NOINDEX
-ms.openlocfilehash: cc3c1d9352d9df44a51a917700c656055b8b8361
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: cdbf55aae52cec9df1ba34cbeb34c67b8e5fc5d0
+ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70088627"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73749187"
 ---
 # <a name="create-a-vm-from-a-specialized-vhd-in-a-storage-account"></a>Tworzenie maszyny wirtualnej na podstawie wyspecjalizowanego wirtualnego dysku twardego na koncie magazynu
 
@@ -30,10 +30,10 @@ Dostępne są dwie opcje:
 * [Przekazywanie wirtualnego dysku twardego](sa-create-vm-specialized.md#option-1-upload-a-specialized-vhd)
 * [Kopiowanie wirtualnego dysku twardego istniejącej maszyny wirtualnej platformy Azure](sa-create-vm-specialized.md#option-2-copy-the-vhd-from-an-existing-azure-vm)
 
-[!INCLUDE [updated-for-az.md](../../../includes/updated-for-az.md)]
+ 
 
 
-## <a name="option-1-upload-a-specialized-vhd"></a>Option 1: Przekazywanie wyspecjalizowanego wirtualnego dysku twardego
+## <a name="option-1-upload-a-specialized-vhd"></a>Opcja 1: przekazywanie wyspecjalizowanego wirtualnego dysku twardego
 
 Wirtualny dysk twardy można przekazać z wyspecjalizowanej maszyny wirtualnej utworzonej przy użyciu lokalnego narzędzia do wirtualizacji, takiego jak funkcja Hyper-V, lub maszyny wirtualnej wyeksportowanej z innej chmury.
 
@@ -78,7 +78,7 @@ Jeśli musisz utworzyć konto magazynu, wykonaj następujące czynności:
     ```
    
 ### <a name="upload-the-vhd-to-your-storage-account"></a>Przekazywanie wirtualnego dysku twardego do konta magazynu
-Użyj polecenia cmdlet [Add-AzVhd](https://docs.microsoft.com/powershell/module/az.compute/add-azvhd) , aby przekazać obraz do kontenera na koncie magazynu. Ten przykład przekazuje plik **myVHD. VHD** z `"C:\Users\Public\Documents\Virtual hard disks\"` do konta magazynu o nazwie **mojekontomagazynu** w grupie zasobów zasobu. Plik zostanie umieszczony w kontenerze o nazwie Moja kontener, a nowa nazwa pliku będzie **myUploadedVHD. VHD**.
+Użyj polecenia cmdlet [Add-AzVhd](https://docs.microsoft.com/powershell/module/az.compute/add-azvhd) , aby przekazać obraz do kontenera na koncie magazynu. Ten przykład przekazuje plik **myVHD. VHD** z `"C:\Users\Public\Documents\Virtual hard disks\"` do konta magazynu o nazwie **mojekontomagazynu** w **grupie zasobów zasobu** . Plik zostanie umieszczony w kontenerze o nazwie Moja **kontener, a nowa** nazwa pliku będzie **myUploadedVHD. VHD**.
 
 ```powershell
 $rgName = "myResourceGroup"
@@ -105,7 +105,7 @@ C:\Users\Public\Doc...  https://mystorageaccount.blob.core.windows.net/mycontain
 W zależności od połączenia sieciowego i rozmiaru pliku VHD, wykonanie tego polecenia może potrwać trochę czasu.
 
 
-## <a name="option-2-copy-the-vhd-from-an-existing-azure-vm"></a>Opcja 2: Kopiowanie wirtualnego dysku twardego z istniejącej maszyny wirtualnej platformy Azure
+## <a name="option-2-copy-the-vhd-from-an-existing-azure-vm"></a>Opcja 2: kopiowanie wirtualnego dysku twardego z istniejącej maszyny wirtualnej platformy Azure
 
 Wirtualny dysk twardy można skopiować do innego konta magazynu w celu użycia podczas tworzenia nowej, zduplikowanej maszyny wirtualnej.
 
@@ -118,22 +118,22 @@ Upewnij się, że:
 ### <a name="deallocate-the-vm"></a>Cofanie przydziału maszyny wirtualnej
 Cofnij przydział maszyny wirtualnej, co zwalnia dysk VHD do skopiowania. 
 
-* **Portal**: Kliknij pozycję **maszyny** > wirtualne**myVM** > Zatrzymaj
-* Program **PowerShell**: Aby zatrzymać (cofnąć przydział) maszynę wirtualną o nazwie **myVM** w grupie zasobów,należy użyć elementu [stop-AzVM](https://docs.microsoft.com/powershell/module/az.compute/stop-azvm) .
+* **Portal**: kliknij kolejno pozycje **maszyny wirtualne** > **myVM** > Zatrzymaj
+* **PowerShell**: Użyj polecenia [stop-AzVM](https://docs.microsoft.com/powershell/module/az.compute/stop-azvm) , aby zatrzymać (cofnąć przydział) maszynę wirtualną o nazwie **myVM** **w grupie zasobów**.
 
 ```powershell
 Stop-AzVM -ResourceGroupName myResourceGroup -Name myVM
 ```
 
-**Stan** maszyny wirtualnej w Azure Portal zmiany z zatrzymane na zatrzymane **(cofnięto przydział)** .
+**Stan** maszyny wirtualnej w Azure Portal zmiany z **zatrzymane** na **zatrzymane (cofnięto przydział)** .
 
 ### <a name="get-the-storage-account-urls"></a>Pobierz adresy URL konta magazynu
-Potrzebujesz adresów URL źródłowych i docelowych kont magazynu. Adresy URL wyglądają następująco `https://<storageaccount>.blob.core.windows.net/<containerName>/`:. Jeśli znasz już konto magazynu i nazwę kontenera, możesz po prostu zastąpić informacje w nawiasach, aby utworzyć adres URL. 
+Potrzebujesz adresów URL źródłowych i docelowych kont magazynu. Adresy URL wyglądają następująco: `https://<storageaccount>.blob.core.windows.net/<containerName>/`. Jeśli znasz już konto magazynu i nazwę kontenera, możesz po prostu zastąpić informacje w nawiasach, aby utworzyć adres URL. 
 
 Aby uzyskać adres URL, można użyć Azure Portal lub programu Azure PowerShell:
 
-* **Portal**:  > **Kliknij pozycję**dlawszystkich >  usługMagazyn > konta magazynu**obiekty blob** i plik wirtualnego dysku twardego prawdopodobnie znajduje się w kontenerze VHD **>** . Kliknij pozycję **Właściwości** dla kontenera i skopiuj tekst z etykietą **adres URL**. Potrzebne będą adresy URL zarówno kontenera źródłowego, jak i docelowego. 
-* Program **PowerShell**: Użyj [Get-AzVM](https://docs.microsoft.com/powershell/module/az.compute/get-azvm) , aby uzyskać informacje o maszynie wirtualnej o nazwie **myVM** w grupiezasobów Grupa zasobu. W wynikach zapoznaj się z sekcją **profil magazynu** dla **identyfikatora URI dysku VHD**. Pierwsza część identyfikatora URI jest adresem URL kontenera, a ostatnią częścią jest nazwa wirtualnego dysku twardego systemu operacyjnego dla maszyny wirtualnej.
+* **Portal**: kliknij **>** dla **wszystkich usług** > **konta magazynu** > *konto magazynu* > **obiektów BLOB** , a źródłowy plik VHD prawdopodobnie znajduje się w kontenerze **VHD** . Kliknij pozycję **Właściwości** dla kontenera i skopiuj tekst z etykietą **adres URL**. Potrzebne będą adresy URL zarówno kontenera źródłowego, jak i docelowego. 
+* **PowerShell**: należy użyć polecenia [Get-AzVM](https://docs.microsoft.com/powershell/module/az.compute/get-azvm) , aby uzyskać informacje o maszynie wirtualnej o nazwie **myVM** **w grupie zasobów**. W wynikach zapoznaj się z sekcją **profil magazynu** dla **identyfikatora URI dysku VHD**. Pierwsza część identyfikatora URI jest adresem URL kontenera, a ostatnią częścią jest nazwa wirtualnego dysku twardego systemu operacyjnego dla maszyny wirtualnej.
 
 ```powershell
 Get-AzVM -ResourceGroupName "myResourceGroup" -Name "myVM"
@@ -142,8 +142,8 @@ Get-AzVM -ResourceGroupName "myResourceGroup" -Name "myVM"
 ## <a name="get-the-storage-access-keys"></a>Pobierz klucze dostępu do magazynu
 Znajdź klucze dostępu dla konta magazynu źródłowego i docelowego. Aby uzyskać więcej informacji o kluczach dostępu, zobacz [Informacje o kontach usługi Azure Storage](../../storage/common/storage-create-storage-account.md).
 
-* **Portal**: Kliknij kolejno pozycje **wszystkie usługi** > **konta** > magazyn**klucze dostępu do** *konta* > . Skopiuj klucz oznaczony jako **Klucz1**.
-* Program **PowerShell**: Skorzystaj z [Get-AzStorageAccountKey](https://docs.microsoft.com/powershell/module/az.storage/get-azstorageaccountkey) , aby uzyskać klucz magazynu dla konta magazynu **mojekontomagazynu** w grupie zasobów. Skopiuj klucz o nazwie **Klucz1**.
+* **Portal**: kliknij kolejno pozycje **wszystkie usługi** > **konta magazynu** > *konto magazynu* > **klucze dostępu**. Skopiuj klucz oznaczony jako **Klucz1**.
+* **PowerShell**: należy użyć polecenia [Get-AzStorageAccountKey](https://docs.microsoft.com/powershell/module/az.storage/get-azstorageaccountkey) , aby uzyskać klucz magazynu dla konta magazynu **mojekontomagazynu** **w grupie zasobów**. Skopiuj klucz o nazwie **Klucz1**.
 
 ```powershell
 Get-AzStorageAccountKey -Name mystorageaccount -ResourceGroupName myResourceGroup
@@ -154,7 +154,7 @@ Można kopiować pliki między kontami magazynu za pomocą AzCopy. Jeśli konten
 
 Aby użyć AzCopy, Otwórz wiersz polecenia na komputerze lokalnym i przejdź do folderu, w którym zainstalowano AzCopy. Będzie wyglądać podobnie do *C:\Program Files (x86) \Microsoft SDKs\Azure\AzCopy*. 
 
-Aby skopiować wszystkie pliki w kontenerze, należy użyć przełącznika **/s** . Może to służyć do kopiowania wirtualnego dysku twardego systemu operacyjnego i wszystkich dysków danych, jeśli znajdują się w tym samym kontenerze. W tym przykładzie przedstawiono sposób kopiowania wszystkich plików z kontenera **mysourcecontainer** na koncie magazynu **mysourcestorageaccount** do kontenera **mydestinationcontainer** na koncie magazynu **mydestinationstorageaccount** . Zastąp nazwy kont magazynu i kontenerów własnymi. Zamień `<sourceStorageAccountKey1>` i`<destinationStorageAccountKey1>` z własnymi kluczami.
+Aby skopiować wszystkie pliki w kontenerze, należy użyć przełącznika **/s** . Może to służyć do kopiowania wirtualnego dysku twardego systemu operacyjnego i wszystkich dysków danych, jeśli znajdują się w tym samym kontenerze. W tym przykładzie przedstawiono sposób kopiowania wszystkich plików z kontenera **mysourcecontainer** na koncie magazynu **mysourcestorageaccount** do kontenera **mydestinationcontainer** na koncie magazynu **mydestinationstorageaccount** . Zastąp nazwy kont magazynu i kontenerów własnymi. Zastąp `<sourceStorageAccountKey1>` i `<destinationStorageAccountKey1>` własnymi kluczami.
 
 ```
 AzCopy /Source:https://mysourcestorageaccount.blob.core.windows.net/mysourcecontainer `
@@ -196,7 +196,7 @@ Należy utworzyć sieć i inne zasoby maszyn wirtualnych, które będą używane
 
 Utworzyć sieć wirtualną i podsieć [sieci wirtualnej](../../virtual-network/virtual-networks-overview.md).
 
-1. Utwórz podsieć. Ten przykład tworzy podsieć o nazwie Moja podsieć, w grupiezasobów Grupa zasobu i ustawia prefiks adresu podsieci na **10.0.0.0/24**.
+1. Utwórz podsieć. Ten przykład tworzy podsieć o nazwie Moja **podsieć** **, w grupie zasobów**Grupa zasobu i ustawia prefiks adresu podsieci na **10.0.0.0/24**.
    
     ```powershell
     $rgName = "myResourceGroup"
@@ -265,7 +265,7 @@ $vm = Add-AzVMNetworkInterface -VM $vmConfig -Id $nic.Id
     
 ### <a name="configure-the-os-disk"></a>Konfigurowanie dysku systemu operacyjnego
 
-1. Ustaw identyfikator URI przekazanego lub skopiowanego wirtualnego dysku twardego. W tym przykładzie plik VHD o nazwie **myOsDisk. VHD** jest przechowywany na koncie magazynu o nazwie **mojekontomagazynu** w kontenerze o nazwie.
+1. Ustaw identyfikator URI przekazanego lub skopiowanego wirtualnego dysku twardego. W tym przykładzie plik VHD o nazwie **myOsDisk. VHD** jest przechowywany na koncie magazynu o nazwie **mojekontomagazynu** w kontenerze o nazwie **.**
 
     ```powershell
     $osDiskUri = "https://myStorageAccount.blob.core.windows.net/myContainer/myOsDisk.vhd"
@@ -306,7 +306,7 @@ RequestId IsSuccessStatusCode StatusCode ReasonPhrase
 ```
 
 ### <a name="verify-that-the-vm-was-created"></a>Sprawdź, czy maszyna wirtualna została utworzona
-Nowo utworzona maszyna wirtualna powinna zostać wyświetlona w [Azure Portal](https://portal.azure.com)w obszarze **wszystkie usługi** > **maszyny wirtualne**lub przy użyciu następujących poleceń programu PowerShell:
+Nowo utworzona maszyna wirtualna powinna zostać wyświetlona w [Azure Portal](https://portal.azure.com)w obszarze **wszystkie usługi** > **maszyn wirtualnych**lub przy użyciu następujących poleceń programu PowerShell:
 
 ```powershell
 $vmList = Get-AzVM -ResourceGroupName $rgName

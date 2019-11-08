@@ -5,14 +5,14 @@ services: application-gateway
 author: caya
 ms.service: application-gateway
 ms.topic: article
-ms.date: 10/23/2019
+ms.date: 11/4/2019
 ms.author: caya
-ms.openlocfilehash: cb1a403888f8dca78d1af7395095aa2bac39935e
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: adacd805e736524fd7956c4bbc0ad402980b4cd0
+ms.sourcegitcommit: 018e3b40e212915ed7a77258ac2a8e3a660aaef8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73513577"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73795991"
 ---
 # <a name="enable-cookie-based-affinity-with-an-application-gateway"></a>Włącz koligację opartą na plikach cookie przy użyciu Application Gateway
 Zgodnie z opisem w [dokumentacji usługi Azure Application Gateway](https://docs.microsoft.com/azure/application-gateway/application-gateway-components#http-settings)Application Gateway obsługuje koligację opartą na plikach cookie, co oznacza, że może kierować kolejny ruch z sesji użytkownika do tego samego serwera w celu przetworzenia.

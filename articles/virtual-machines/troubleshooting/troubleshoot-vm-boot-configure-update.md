@@ -13,18 +13,18 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: article
 ms.date: 09/18/2018
 ms.author: delhan
-ms.openlocfilehash: 4263afe33caa4d6471848c8e7dbf9bc1eeec4bee
-ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
+ms.openlocfilehash: da45e24898bc3b5aead250077af69a61bdb33bab
+ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72332527"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73749641"
 ---
 # <a name="vm-startup-is-stuck-on-getting-windows-ready-dont-turn-off-your-computer-in-azure"></a>Uruchamianie maszyny wirtualnej jest zablokowane na "Trwa przygotowywanie systemu Windows. Nie wyłączaj komputera "na platformie Azure
 
 W tym artykule opisano ekrany "Przygotowywanie" i "Przygotowywanie systemu Windows", które mogą wystąpić podczas uruchamiania maszyny wirtualnej z systemem Windows w Microsoft Azure. Zawiera instrukcje ułatwiające zbieranie danych dla biletu pomocy technicznej.
 
-[!INCLUDE [updated-for-az.md](../../../includes/updated-for-az.md)]
+ 
 
 ## <a name="symptoms"></a>Objawy
 
@@ -100,7 +100,7 @@ Aby włączyć dziennik zrzutów i konsolę szeregową, uruchom następujący sk
 3. [Odłącz dysk systemu operacyjnego, a następnie ponownie Dołącz dysk systemu operacyjnego do maszyny wirtualnej, której to dotyczy](../windows/troubleshoot-recovery-disks-portal.md).
 4. Uruchom maszynę wirtualną i uzyskaj dostęp do konsoli szeregowej.
 5. Wybierz pozycję **Wyślij niemaskowane przerwanie (NMI)** w celu wyzwolenia zrzutu pamięci.
-    ![the — informacje o tym, gdzie wysyłać przerwanie bez maskowania @ no__t-1
+    ![obraz informacji o tym, gdzie wysyłać przerwania bez maskowania](./media/troubleshoot-vm-configure-update-boot/run-nmi.png)
 6. Ponownie Dołącz dysk systemu operacyjnego do maszyny wirtualnej odzyskiwania, Zbierz plik zrzutu.
 
 ## <a name="contact-microsoft-support"></a>Skontaktuj się z pomocą techniczną firmy Microsoft

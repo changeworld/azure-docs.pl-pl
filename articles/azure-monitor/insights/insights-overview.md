@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 05/22/2019
-ms.openlocfilehash: 3abf3d562b9ca4d6fc9907c065dbaf9a52d58c5f
-ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
+ms.openlocfilehash: 81d82ce79130513a2827090a98bfef192c9d7829
+ms.sourcegitcommit: 018e3b40e212915ed7a77258ac2a8e3a660aaef8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72555347"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73795719"
 ---
 # <a name="overview-of-insights-in-azure-monitor"></a>Przegląd szczegółowych informacji w Azure Monitor
 Szczegółowe informacje zapewniają dostosowane środowisko monitorowania dla określonych aplikacji i usług. Przechowują one dane na [platformie danych Azure monitor](../platform/data-platform.md) i korzystają z innych funkcji Azure monitor do analizy i tworzenia alertów, ale mogą zbierać dodatkowe dane i zapewniać unikatowe środowisko użytkownika w Azure Portal. Uzyskaj dostęp do szczegółowych informacji z sekcji **Insights** w menu Azure Monitor w Azure Portal.
@@ -26,12 +26,12 @@ Zobacz [co to jest Application Insights?](../app/app-insights-overview.md).
 
 ![Application Insights](media/insights-overview/app-insights.png)
 
-## <a name="azure-monitor-for-containers"></a>Azure Monitor kontenerów
+## <a name="azure-monitor-for-containers"></a>Usługa Azure Monitor dla kontenerów
 Azure Monitor dla kontenerów monitoruje wydajność obciążeń kontenera wdrożonych w ramach Azure Container Instances lub zarządzanych klastrów Kubernetes hostowanych w usłudze Azure Kubernetes Service (AKS). Monitorowanie kontenerów ma krytyczne znaczenie, szczególnie w przypadku korzystania z klastra produkcyjnego w odpowiedniej skali z wieloma aplikacjami.
 
 Zapoznaj się z tematem [Azure monitor for Containers — Omówienie](../insights/container-insights-overview.md).
 
-![Azure Monitor kontenerów](media/insights-overview/container-insights.png)
+![Usługa Azure Monitor dla kontenerów](media/insights-overview/container-insights.png)
 
 ## <a name="azure-monitor-for-resource-groups-preview"></a>Azure Monitor dla grup zasobów (wersja zapoznawcza)
 Azure Monitor dla grup zasobów ułatwia Klasyfikacja i diagnozowanie problemów występujących w poszczególnych zasobach, a także w kontekście kondycji i wydajności grupy zasobów jako całości.
@@ -46,6 +46,11 @@ Azure Monitor dla maszyn wirtualnych monitoruje maszyny wirtualne platformy Azur
 Zobacz [co to jest Azure monitor dla maszyn wirtualnych?](vminsights-overview.md)
 
 ![Usługa Azure Monitor dla maszyn wirtualnych](media/insights-overview/vm-insights.png)
+
+## <a name="azure-monitor-for-network-preview"></a>Azure Monitor sieci (wersja zapoznawcza)
+Azure Monitor dla sieci zapewnia kompleksowy wgląd w kondycję i metryki dla wszystkich zasobów sieciowych. Funkcja wyszukiwania zaawansowanego pomaga identyfikować zależności zasobów i umożliwiać scenariusze, takie jak identyfikowanie zasobów, które obsługują witrynę sieci Web, przez zwykłe wyszukiwanie nazwy witryny sieci Web.
+
+![Azure Monitor sieci](media/insights-overview/network-insights.png)
 
 ## <a name="next-steps"></a>Następne kroki
 * Dowiedz się więcej o [platformie danych Azure monitor](../platform/data-platform.md) wykorzystywanej przez usługi Insights.

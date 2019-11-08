@@ -1,6 +1,6 @@
 ---
 title: Rozwiązywanie problemów z agentem Azure Backup
-description: Rozwiązywanie problemów z instalacją i rejestracją agenta Azure Backup
+description: W tym artykule dowiesz się, jak rozwiązywać problemy z instalacją i rejestracją agenta Azure Backup.
 ms.reviewer: saurse
 author: dcurwin
 manager: carmonm
@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 07/15/2019
 ms.author: dacurwin
-ms.openlocfilehash: 2ff5d760579c31c4bd11252e09da1cbb94576229
-ms.sourcegitcommit: 0f54f1b067f588d50f787fbfac50854a3a64fff7
+ms.openlocfilehash: a59ac45d157f8674374c894a280e51392038524b
+ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/12/2019
-ms.locfileid: "68954658"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73747415"
 ---
 # <a name="troubleshoot-the-microsoft-azure-recovery-services-mars-agent"></a>Rozwiązywanie problemów z agentem Microsoft Azure Recovery Services (MARS)
 
@@ -41,15 +41,16 @@ Zalecamy sprawdzenie następujących danych przed rozpoczęciem rozwiązywania p
 
 ## <a name="invalid-vault-credentials-provided"></a>Podano nieprawidłowe poświadczenia magazynu
 
-**Komunikat o błędzie**: Podano nieprawidłowe poświadczenia magazynu. Plik jest uszkodzony lub nie ma najnowszych poświadczeń skojarzonych z usługą odzyskiwania. (IDENTYFIKATOR: 34513)
+**Komunikat o błędzie**: podano nieprawidłowe poświadczenia magazynu. Plik jest uszkodzony lub nie ma najnowszych poświadczeń skojarzonych z usługą odzyskiwania. (IDENTYFIKATOR: 34513)
 
 | Przyczyna | Zalecane akcje |
 | ---     | ---    |
 | **Poświadczenia magazynu są nieprawidłowe** <br/> <br/> Pliki poświadczeń magazynu mogą być uszkodzone lub mogły wygasnąć. (Na przykład mogły zostać pobrane ponad 48 godzin przed upływem czasu rejestracji).| Pobierz nowe poświadczenia z magazynu Recovery Services w Azure Portal. (Zobacz krok 6 w sekcji [pobieranie agenta Mars](https://docs.microsoft.com/azure/backup/backup-configure-vault#download-the-mars-agent) ). Następnie wykonaj następujące kroki: <ul><li> Jeśli zainstalowano już i zarejestrowano usługę MARS, Otwórz konsolę MMC agent Microsoft Azure Backup, a następnie wybierz pozycję **zarejestruj serwer** w okienku **Akcje** , aby zakończyć rejestrację przy użyciu nowych poświadczeń. <br/> <li> Jeśli nowa instalacja nie powiedzie się, spróbuj zainstalować ją ponownie przy użyciu nowych poświadczeń.</ul> **Uwaga**: Jeśli pobrano wiele plików poświadczeń magazynu, tylko najnowszy plik jest ważny przez następne 48 godzin. Zalecamy pobranie nowego pliku poświadczeń magazynu.
-| **Serwer proxy/zapora blokuje rejestrację** <br/>lub <br/>**Brak łączności z Internetem** <br/><br/> Jeśli komputer lub serwer proxy ma ograniczoną łączność z Internetem i nie masz dostępu do wymaganych adresów URL, rejestracja zakończy się niepowodzeniem.| Wykonaj następujące czynności:<br/> <ul><li> Pracuj z zespołem IT, aby upewnić się, że system ma łączność z Internetem.<li> Jeśli nie masz serwera proxy, upewnij się, że opcja proxy nie jest zaznaczona podczas rejestrowania agenta. [Sprawdź ustawienia serwera proxy](#verifying-proxy-settings-for-windows).<li> Jeśli masz zaporę/serwer proxy, skontaktuj się z zespołem sieci, aby upewnić się, że te adresy URL i adresy IP mają dostęp:<br/> <br> **Adresy**<br> `www.msftncsi.com` <br> .Microsoft.com <br> .WindowsAzure.com <br> .microsoftonline.com <br> .windows.net <br>**Adresy IP**<br>  20.190.128.0/18 <br>  40.126.0.0/18 <br/></ul></ul>Spróbuj zarejestrować się ponownie po wykonaniu powyższych kroków rozwiązywania problemów.
-| **Oprogramowanie antywirusowe blokuje rejestrację** | Jeśli na serwerze jest zainstalowane oprogramowanie antywirusowe, należy dodać niezbędne reguły wykluczania do skanowania oprogramowania antywirusowego dla tych plików i folderów: <br/><ul> <li> Pliku cbengine. exe <li> CSC.exe<li> Folder tymczasowy. Domyślna lokalizacja to C:\Program Files\Microsoft Azure Recovery Services Agent\Scratch. <li> Folder bin w katalogu C:\Program Files\Microsoft Azure Recovery Services Agent\Bin.
+| **Serwer proxy/zapora blokuje rejestrację** <br/>lub <br/>**Brak łączności z Internetem** <br/><br/> Jeśli komputer lub serwer proxy ma ograniczoną łączność z Internetem i nie masz dostępu do wymaganych adresów URL, rejestracja zakończy się niepowodzeniem.| Wykonaj następujące kroki:<br/> <ul><li> Pracuj z zespołem IT, aby upewnić się, że system ma łączność z Internetem.<li> Jeśli nie masz serwera proxy, upewnij się, że opcja proxy nie jest zaznaczona podczas rejestrowania agenta. [Sprawdź ustawienia serwera proxy](#verifying-proxy-settings-for-windows).<li> Jeśli masz zaporę/serwer proxy, skontaktuj się z zespołem sieci, aby upewnić się, że te adresy URL i adresy IP mają dostęp:<br/> <br> **Adresy**<br> `www.msftncsi.com` <br> .Microsoft.com <br> .WindowsAzure.com <br> .microsoftonline.com <br> .windows.net <br>**Adresy IP**<br>  20.190.128.0/18 <br>  40.126.0.0/18 <br/></ul></ul>Spróbuj zarejestrować się ponownie po wykonaniu powyższych kroków rozwiązywania problemów.
+| **Oprogramowanie antywirusowe blokuje rejestrację** | Jeśli na serwerze jest zainstalowane oprogramowanie antywirusowe, należy dodać niezbędne reguły wykluczania do skanowania oprogramowania antywirusowego dla tych plików i folderów: <br/><ul> <li> Pliku cbengine. exe <li> CSC. exe<li> Folder tymczasowy. Domyślna lokalizacja to C:\Program Files\Microsoft Azure Recovery Services Agent\Scratch. <li> Folder bin w katalogu C:\Program Files\Microsoft Azure Recovery Services Agent\Bin.
 
 ### <a name="additional-recommendations"></a>Dodatkowe zalecenia
+
 - Przejdź do C:/Windows/Temp i sprawdź, czy istnieje więcej plików niż 60 000 lub 65 000 z rozszerzeniem. tmp. Jeśli istnieją, usuń te pliki.
 - Upewnij się, że data i godzina komputera są zgodne z lokalną strefą czasową.
 - Upewnij się, że [te lokacje](backup-configure-vault.md#verify-internet-access) są dodawane do zaufanych witryn programu Internet Explorer.
@@ -57,10 +58,10 @@ Zalecamy sprawdzenie następujących danych przed rozpoczęciem rozwiązywania p
 ### <a name="verifying-proxy-settings-for-windows"></a>Weryfikowanie ustawień serwera proxy dla systemu Windows
 
 1. Pobierz PsExec ze strony [Sysinternals](https://docs.microsoft.com/sysinternals/downloads/psexec) .
-1. Uruchom `psexec -i -s "c:\Program Files\Internet Explorer\iexplore.exe"` polecenie w wierszu polecenia z podwyższonym poziomem uprawnień.
+1. Uruchom `psexec -i -s "c:\Program Files\Internet Explorer\iexplore.exe"` z wiersza polecenia z podwyższonym poziomem uprawnień.
 
    To polecenie spowoduje otwarcie programu Internet Explorer.
-1. Przejdź do pozycji **Narzędzia** > **Opcje** > internetowe**połączenia** > **sieci LAN**.
+1. Przejdź do pozycji **narzędzia** > **Opcje internetowe** > **połączenia** > **Ustawienia sieci LAN**.
 1. Sprawdź ustawienia serwera proxy dla konta System.
 1. Jeśli nie skonfigurowano serwera proxy i podano szczegóły serwera proxy, Usuń szczegóły.
 1. Jeśli skonfigurowano serwer proxy, a szczegóły serwera proxy są niepoprawne, upewnij się, że **adres IP serwera proxy** i szczegóły **portu** są poprawne.
@@ -76,8 +77,7 @@ Zalecamy sprawdzenie następujących danych przed rozpoczęciem rozwiązywania p
 
 | Błąd  | Możliwa przyczyna | Zalecane akcje |
 | ---     | ---     | ---    |
-| <br /><ul><li>Agent usługi odzyskiwania Microsoft Azure nie mógł nawiązać połączenia z Microsoft Azure Backup. (IDENTYFIKATOR: 100050) Sprawdź ustawienia sieci i upewnij się, że możesz nawiązać połączenie z Internetem.<li>(407) wymagane jest uwierzytelnianie serwera proxy. |Serwer proxy blokuje połączenie. |  <ul><li>W programie Internet Explorer przejdź do pozycji **Narzędzia** > **Opcje** > internetowe**zabezpieczenia** > **internetowe Internet**. Wybierz pozycję **Poziom niestandardowy** i przewiń w dół do sekcji **Pobieranie pliku** . Wybierz **Włącz**.<p>Może być również konieczne dodanie adresów [URL i adresów IP](backup-configure-vault.md#verify-internet-access) do zaufanych witryn w programie Internet Explorer.<li>Zmień ustawienia tak, aby korzystały z serwera proxy. Następnie podaj szczegóły serwera proxy.<li> Jeśli maszyna ma ograniczony dostęp do Internetu, upewnij się, że ustawienia zapory na komputerze lub serwerze proxy zezwalają na te [adresy URL i adresy IP](backup-configure-vault.md#verify-internet-access). <li>Jeśli na serwerze jest zainstalowane oprogramowanie antywirusowe, Wyklucz te pliki ze skanowania antywirusowego: <ul><li>Pliku cbengine. exe (zamiast DPMRA. exe).<li>CSC. exe (powiązane z .NET Framework). Dla każdej wersji .NET Framework zainstalowanej na serwerze istnieje plik CSC. exe. Wyklucz pliki CSC. exe dla wszystkich wersji .NET Framework na serwerze, którego to dotyczy. <li>Folder tymczasowy lub lokalizacja pamięci podręcznej. <br>Domyślna lokalizacja folderu tymczasowego lub ścieżki pamięci podręcznej to C:\Program Files\Microsoft Azure Recovery Services Agent\Scratch.<li>Folder bin w katalogu C:\Program Files\Microsoft Azure Recovery Services Agent\Bin.
-
+| <br /><ul><li>Agent usługi odzyskiwania Microsoft Azure nie mógł nawiązać połączenia z Microsoft Azure Backup. (IDENTYFIKATOR: 100050) Sprawdź ustawienia sieci i upewnij się, że możesz nawiązać połączenie z Internetem.<li>(407) wymagane jest uwierzytelnianie serwera proxy. |Serwer proxy blokuje połączenie. |  <ul><li>W programie Internet Explorer przejdź do pozycji **narzędzia** > **Opcje internetowe** > **zabezpieczenia** > **Internet**. Wybierz pozycję **Poziom niestandardowy** i przewiń w dół do sekcji **Pobieranie pliku** . Wybierz pozycję **Włącz**.<p>Może być również konieczne dodanie adresów [URL i adresów IP](backup-configure-vault.md#verify-internet-access) do zaufanych witryn w programie Internet Explorer.<li>Zmień ustawienia tak, aby korzystały z serwera proxy. Następnie podaj szczegóły serwera proxy.<li> Jeśli maszyna ma ograniczony dostęp do Internetu, upewnij się, że ustawienia zapory na komputerze lub serwerze proxy zezwalają na te [adresy URL i adresy IP](backup-configure-vault.md#verify-internet-access). <li>Jeśli na serwerze jest zainstalowane oprogramowanie antywirusowe, Wyklucz te pliki ze skanowania antywirusowego: <ul><li>Pliku cbengine. exe (zamiast DPMRA. exe).<li>CSC. exe (powiązane z .NET Framework). Dla każdej wersji .NET Framework zainstalowanej na serwerze istnieje plik CSC. exe. Wyklucz pliki CSC. exe dla wszystkich wersji .NET Framework na serwerze, którego to dotyczy. <li>Folder tymczasowy lub lokalizacja pamięci podręcznej. <br>Domyślna lokalizacja folderu tymczasowego lub ścieżki pamięci podręcznej to C:\Program Files\Microsoft Azure Recovery Services Agent\Scratch.<li>Folder bin w katalogu C:\Program Files\Microsoft Azure Recovery Services Agent\Bin.
 
 ## <a name="failed-to-set-the-encryption-key-for-secure-backups"></a>Nie można ustawić klucza szyfrowania dla bezpiecznych kopii zapasowych
 
@@ -89,7 +89,7 @@ Zalecamy sprawdzenie następujących danych przed rozpoczęciem rozwiązywania p
 
 | Błąd  | Możliwe przyczyny | Zalecane akcje |
 |---------|---------|---------|
-|<br />Aktywacja nie została pomyślnie ukończona. Bieżąca operacja nie powiodła się z powodu wewnętrznego błędu usługi [0x1FC07]. Spróbuj ponownie wykonać operację po pewnym czasie. Jeśli problem będzie nadal występować, skontaktuj się z pomocą techniczną firmy Microsoft.     | <li> Folder tymczasowy znajduje się na woluminie, na którym nie ma wystarczającej ilości miejsca. <li> Folder tymczasowy został niepoprawnie przeniesiony. <li> Brak pliku OnlineBackup. KEK.         | <li>Uaktualnij do [najnowszej wersji](https://aka.ms/azurebackup_agent) agenta Mars.<li>Przenieś folder tymczasowy lub lokalizację pamięci podręcznej na wolumin z ilością wolnego miejsca wynoszącą od 5% do 10% całkowitego rozmiaru danych kopii zapasowej. Aby prawidłowo przenieść lokalizację pamięci podręcznej, zapoznaj się z instrukcjami w [temacie typowe pytania dotyczące tworzenia kopii zapasowych plików i folderów](https://docs.microsoft.com/azure/backup/backup-azure-file-folder-backup-faq#manage-the-backup-cache-folder).<li> Upewnij się, że plik OnlineBackup. KEK jest obecny. <br>*Domyślną lokalizacją folderu tymczasowego lub ścieżką pamięci podręcznej jest C:\Program Files\Microsoft Azure Recovery Services Agent\Scratch*.        |
+|<br />Aktywacja nie została pomyślnie ukończona. Bieżąca operacja nie powiodła się z powodu wewnętrznego błędu usługi [0x1FC07]. Spróbuj ponownie wykonać operację po pewnym czasie. Jeśli problem będzie się powtarzać, skontaktuj się z pomocą techniczną firmy Microsoft.     | <li> Folder tymczasowy znajduje się na woluminie, na którym nie ma wystarczającej ilości miejsca. <li> Folder tymczasowy został niepoprawnie przeniesiony. <li> Brak pliku OnlineBackup. KEK.         | <li>Uaktualnij do [najnowszej wersji](https://aka.ms/azurebackup_agent) agenta Mars.<li>Przenieś folder tymczasowy lub lokalizację pamięci podręcznej na wolumin z ilością wolnego miejsca wynoszącą od 5% do 10% całkowitego rozmiaru danych kopii zapasowej. Aby prawidłowo przenieść lokalizację pamięci podręcznej, zapoznaj się z instrukcjami w [temacie typowe pytania dotyczące tworzenia kopii zapasowych plików i folderów](https://docs.microsoft.com/azure/backup/backup-azure-file-folder-backup-faq#manage-the-backup-cache-folder).<li> Upewnij się, że plik OnlineBackup. KEK jest obecny. <br>*Domyślną lokalizacją folderu tymczasowego lub ścieżką pamięci podręcznej jest C:\Program Files\Microsoft Azure Recovery Services Agent\Scratch*.        |
 
 ## <a name="encryption-passphrase-not-correctly-configured"></a>Hasło szyfrowania nie zostało prawidłowo skonfigurowane
 
@@ -97,8 +97,8 @@ Zalecamy sprawdzenie następujących danych przed rozpoczęciem rozwiązywania p
 |---------|---------|---------|
 | <br />Błąd 34506. Hasło szyfrowania zapisane na tym komputerze nie jest prawidłowo skonfigurowane.    | <li> Folder tymczasowy znajduje się na woluminie, na którym nie ma wystarczającej ilości miejsca. <li> Folder tymczasowy został niepoprawnie przeniesiony. <li> Brak pliku OnlineBackup. KEK.        | <li>Uaktualnij do [najnowszej wersji](https://aka.ms/azurebackup_agent) agenta Mars.<li>Przenieś folder tymczasowy lub lokalizację pamięci podręcznej na wolumin z ilością wolnego miejsca wynoszącą od 5% do 10% całkowitego rozmiaru danych kopii zapasowej. Aby prawidłowo przenieść lokalizację pamięci podręcznej, zapoznaj się z instrukcjami w [temacie typowe pytania dotyczące tworzenia kopii zapasowych plików i folderów](https://docs.microsoft.com/azure/backup/backup-azure-file-folder-backup-faq#manage-the-backup-cache-folder).<li> Upewnij się, że plik OnlineBackup. KEK jest obecny. <br>*Domyślną lokalizacją folderu tymczasowego lub ścieżką pamięci podręcznej jest C:\Program Files\Microsoft Azure Recovery Services Agent\Scratch*.         |
 
-
 ## <a name="backups-dont-run-according-to-schedule"></a>Kopie zapasowe nie są uruchamiane zgodnie z harmonogramem
+
 Jeśli zaplanowane kopie zapasowe nie są wyzwalane automatycznie, ale ręczne kopie zapasowe działają prawidłowo, spróbuj wykonać następujące czynności:
 
 - Upewnij się, że harmonogram kopii zapasowych systemu Windows Server nie powoduje konfliktu z harmonogramem tworzenia kopii zapasowych plików i folderów platformy Azure.
@@ -111,15 +111,15 @@ Jeśli zaplanowane kopie zapasowe nie są wyzwalane automatycznie, ale ręczne k
 
 - Upewnij się, że konto użytkownika wybrane do uruchamiania zadania jest grupą **system** lub **Administratorzy lokalni** na serwerze. Aby sprawdzić konto użytkownika, przejdź do karty **Ogólne** i Sprawdź opcje **zabezpieczeń** .
 
-- Upewnij się, że na serwerze jest zainstalowany program PowerShell 3,0 lub nowszy. Aby sprawdzić wersję programu PowerShell, Uruchom to polecenie i sprawdź, czy `Major` numer wersji to 3 lub nowszy:
+- Upewnij się, że na serwerze jest zainstalowany program PowerShell 3,0 lub nowszy. Aby sprawdzić wersję programu PowerShell, Uruchom to polecenie i sprawdź, czy `Major` numer wersji to 3 lub nowsze:
 
   `$PSVersionTable.PSVersion`
 
-- Upewnij się, że `PSMODULEPATH` Ta ścieżka jest częścią zmiennej środowiskowej:
+- Upewnij się, że ta ścieżka jest częścią zmiennej środowiskowej `PSMODULEPATH`:
 
   `<MARS agent installation path>\Microsoft Azure Recovery Services Agent\bin\Modules\MSOnlineBackup`
 
-- Jeśli zasady wykonywania programu PowerShell dla `LocalMachine` programu mają ustawioną wartość ograniczone, polecenie cmdlet programu PowerShell wyzwalające zadanie tworzenia kopii zapasowej może zakończyć się niepowodzeniem. Uruchom te polecenia w trybie podniesionych uprawnień, aby sprawdzić i ustawić zasady wykonywania `Unrestricted` na `RemoteSigned`albo:
+- Jeśli zasady wykonywania programu PowerShell dla `LocalMachine` są ustawione na wartość ograniczone, polecenie cmdlet programu PowerShell wyzwalające zadanie tworzenia kopii zapasowej może zakończyć się niepowodzeniem. Uruchom te polecenia w trybie podniesionych uprawnień, aby sprawdzić i ustawić zasady wykonywania na wartość `Unrestricted` lub `RemoteSigned`:
 
   `PS C:\WINDOWS\system32> Get-ExecutionPolicy -List`
 
@@ -132,39 +132,36 @@ Jeśli zaplanowane kopie zapasowe nie są wyzwalane automatycznie, ale ręczne k
 
      Jeśli na maszynie istnieje już folder MSOnlineBackup, wklej do niego pliki lub Zastąp wszystkie istniejące pliki.
 
-
 > [!TIP]
 > Aby zapewnić spójność zmian, należy ponownie uruchomić serwer po wykonaniu powyższych kroków.
-
 
 ## <a name="troubleshoot-restore-problems"></a>Rozwiązywanie problemów z przywracaniem
 
 Azure Backup może nie pomyślnie zainstalować woluminu odzyskiwania, nawet po kilku minutach. Podczas procesu mogą pojawić się komunikaty o błędach. Aby rozpocząć odzyskiwanie normalnie, wykonaj następujące czynności:
 
-1.  Anuluj proces instalacji, jeśli jest uruchomiony przez kilka minut.
+1. Anuluj proces instalacji, jeśli jest uruchomiony przez kilka minut.
 
-2.  Sprawdź, czy masz najnowszą wersję agenta kopii zapasowej. Aby sprawdzić wersję, w okienku **Akcje** konsoli Mars wybierz pozycję **Informacje o Microsoft Azure Recovery Services agencie**. Upewnij się, że numer **wersji** jest równy lub większy niż wersja wymieniona w [tym artykule](https://go.microsoft.com/fwlink/?linkid=229525). Wybierz ten link [, aby pobrać najnowszą wersję](https://go.microsoft.com/fwLink/?LinkID=288905).
+2. Sprawdź, czy masz najnowszą wersję agenta kopii zapasowej. Aby sprawdzić wersję, w okienku **Akcje** konsoli Mars wybierz pozycję **Informacje o Microsoft Azure Recovery Services agencie**. Upewnij się, że numer **wersji** jest równy lub większy niż wersja wymieniona w [tym artykule](https://go.microsoft.com/fwlink/?linkid=229525). Wybierz ten link [, aby pobrać najnowszą wersję](https://go.microsoft.com/fwLink/?LinkID=288905).
 
-3.  Przejdź do pozycji **Menedżer urządzeń** > **Storage controllers** i Znajdź inicjatora **iSCSI firmy Microsoft**. Jeśli go wyszukasz, przejdź bezpośrednio do kroku 7.
+3. Przejdź do pozycji **Menedżer urządzeń** > **Storage controllers** i Znajdź **inicjatora iSCSI firmy Microsoft**. Jeśli go wyszukasz, przejdź bezpośrednio do kroku 7.
 
-4.  Jeśli nie możesz znaleźć usługi inicjatora iSCSI firmy Microsoft, spróbuj znaleźć wpis w obszarze **Menedżer urządzeń** > **Kontrolery magazynu** o nazwie nieznane **urządzenie** z identyfikatorem sprzętu **ROOT\ISCSIPRT**.
+4. Jeśli nie możesz znaleźć usługi inicjatora iSCSI firmy Microsoft, spróbuj znaleźć wpis w obszarze **Menedżer urządzeń** > **Kontrolery magazynu** o nazwie **nieznane urządzenie** z identyfikatorem sprzętu **ROOT\ISCSIPRT**.
 
-5.  Kliknij prawym przyciskiem myszy pozycję **nieznane urządzenie** i wybierz polecenie **Aktualizuj oprogramowanie sterownika**.
+5. Kliknij prawym przyciskiem myszy pozycję **nieznane urządzenie** i wybierz polecenie **Aktualizuj oprogramowanie sterownika**.
 
-6.  Zaktualizuj sterownik, wybierając opcję **automatycznego wyszukiwania zaktualizowanego oprogramowania sterownika**. Ta aktualizacja powinna zmienić **nieznane urządzenie** na **inicjatora iSCSI firmy Microsoft**:
+6. Zaktualizuj sterownik, wybierając opcję **automatycznego wyszukiwania zaktualizowanego oprogramowania sterownika**. Ta aktualizacja powinna zmienić **nieznane urządzenie** na **inicjatora iSCSI firmy Microsoft**:
 
     ![Zrzut ekranu przedstawiający Azure Backup Menedżer urządzeń z wyróżnionymi kontrolerami magazynu](./media/backup-azure-restore-windows-server/UnknowniSCSIDevice.png)
 
-7.  Przejdź do usługi **Menedżera** > zadań **(lokalnego)**  > **Usługa inicjatora iSCSI firmy Microsoft**:
+7. Przejdź do pozycji **Menedżer zadań** > **Services (local)**  > **Usługa inicjatora iSCSI firmy Microsoft**:
 
     ![Zrzut ekranu Azure Backup Menedżera zadań z wyróżnionymi usługami (lokalnymi)](./media/backup-azure-restore-windows-server/MicrosoftInitiatorServiceRunning.png)
 
-8.  Uruchom ponownie usługę inicjatora iSCSI firmy Microsoft. Aby to zrobić, kliknij prawym przyciskiem myszy usługę i wybierz polecenie **Zatrzymaj**. Następnie kliknij ponownie prawym przyciskiem myszy i wybierz polecenie **Uruchom**.
+8. Uruchom ponownie usługę inicjatora iSCSI firmy Microsoft. Aby to zrobić, kliknij prawym przyciskiem myszy usługę i wybierz polecenie **Zatrzymaj**. Następnie kliknij ponownie prawym przyciskiem myszy i wybierz polecenie **Uruchom**.
 
-9.  Ponów próbę odzyskiwania przy użyciu funkcji [natychmiastowego przywracania](backup-instant-restore-capability.md).
+9. Ponów próbę odzyskiwania przy użyciu funkcji [natychmiastowego przywracania](backup-instant-restore-capability.md).
 
 Jeśli odzyskiwanie nadal kończy się niepowodzeniem, należy ponownie uruchomić serwer lub klienta. Jeśli nie chcesz ponownie uruchamiać programu lub jeśli odzyskiwanie nadal kończy się niepowodzeniem nawet po ponownym uruchomieniu serwera, spróbuj wykonać [odzyskiwanie z innego komputera](backup-azure-restore-windows-server.md#use-instant-restore-to-restore-data-to-an-alternate-machine).
-
 
 ## <a name="troubleshoot-cache-problems"></a>Rozwiązywanie problemów z pamięcią podręczną
 
@@ -181,47 +178,52 @@ W przypadku operacji agenta MARS do pomyślnego przeprowadzenia w folderze pami�
 - [Upewnij się, że nie istnieją żadne inne procesy (np. oprogramowanie antywirusowe) ograniczające dostęp do folderu pamięci podręcznej](#another-process-or-antivirus-software-blocking-access-to-cache-folder)
 
 ### <a name="increase-shadow-copy-storage"></a>Zwiększ magazyn kopii w tle
+
 Operacje tworzenia kopii zapasowej mogą zakończyć się niepowodzeniem, jeśli brakuje miejsca do magazynowania kopii w tle wymaganego do ochrony źródła danych. Aby rozwiązać ten problem, Zwiększ ilość miejsca do magazynowania kopii w tle na chronionym woluminie, korzystając z usługi vssadmin, jak pokazano poniżej:
+
 - Sprawdź bieżące miejsce do magazynowania w tle z wiersza polecenia z podwyższonym poziomem uprawnień:<br/>
   `vssadmin List ShadowStorage /For=[Volume letter]:`
 - Zwiększ ilość miejsca w magazynie w tle przy użyciu poniższego polecenia:<br/>
   `vssadmin Resize ShadowStorage /On=[Volume letter]: /For=[Volume letter]: /Maxsize=[size]`
 
 ### <a name="another-process-or-antivirus-software-blocking-access-to-cache-folder"></a>Inny proces lub program antywirusowy blokujący dostęp do folderu pamięci podręcznej
+
 Jeśli na serwerze jest zainstalowane oprogramowanie antywirusowe, należy dodać niezbędne reguły wykluczania do skanowania oprogramowania antywirusowego dla tych plików i folderów:  
+
 - Folder tymczasowy. Domyślna lokalizacja to C:\Program Files\Microsoft Azure Recovery Services Agent\Scratch
 - Folder bin w katalogu C:\Program Files\Microsoft Azure Recovery Services Agent\Bin
 - Pliku cbengine. exe
-- CSC.exe
+- CSC. exe
 
 ## <a name="common-issues"></a>Typowe problemy
+
 W tej sekcji opisano typowe błędy występujące podczas korzystania z agenta MARS.
 
 ### <a name="salchecksumstoreinitializationfailed"></a>SalChecksumStoreInitializationFailed
 
 Komunikat o błędzie | Zalecana akcja |
 -- | --
-Agent Microsoft Azure Recovery Services nie mógł uzyskać dostępu do sumy kontrolnej kopii zapasowej przechowywanej w lokalizacji tymczasowej | Aby rozwiązać ten problem, wykonaj poniższe czynności i ponownie uruchom serwer <br/> - [Sprawdź, czy istnieje program antywirusowy lub inne procesy blokujące pliki lokalizacji tymczasowej](#another-process-or-antivirus-software-blocking-access-to-cache-folder)<br/> - [Sprawdź, czy lokalizacja tymczasowa jest prawidłowa i dostępna dla agenta Mars.](backup-azure-file-folder-backup-faq.md#how-to-check-if-scratch-folder-is-valid-and-accessible)
+Agent usługi Microsoft Azure Recovery Services nie mógł uzyskać dostępu do sumy kontrolnej kopii zapasowej przechowywanej w lokalizacji tymczasowej | Aby rozwiązać ten problem, wykonaj poniższe czynności i ponownie uruchom serwer <br/> - [sprawdzić, czy istnieje program antywirusowy lub inne procesy blokujące pliki lokalizacji tymczasowej](#another-process-or-antivirus-software-blocking-access-to-cache-folder)<br/> - [sprawdzić, czy lokalizacja tymczasowa jest prawidłowa i dostępna dla agenta Mars.](backup-azure-file-folder-backup-faq.md#how-to-check-if-scratch-folder-is-valid-and-accessible)
 
 ### <a name="salvhdinitializationerror"></a>SalVhdInitializationError
 
 Komunikat o błędzie | Zalecana akcja |
 -- | --
-Agent Microsoft Azure Recovery Services nie mógł uzyskać dostępu do lokalizacji tymczasowej w celu zainicjowania wirtualnego dysku twardego | Aby rozwiązać ten problem, wykonaj poniższe czynności i ponownie uruchom serwer <br/> - [Sprawdź, czy istnieje program antywirusowy lub inne procesy blokujące pliki lokalizacji tymczasowej](#another-process-or-antivirus-software-blocking-access-to-cache-folder)<br/> - [Sprawdź, czy lokalizacja tymczasowa jest prawidłowa i dostępna dla agenta Mars.](backup-azure-file-folder-backup-faq.md#how-to-check-if-scratch-folder-is-valid-and-accessible)
+Agent usługi Microsoft Azure Recovery Services nie mógł uzyskać dostępu do lokalizacji tymczasowej w celu zainicjowania wirtualnego dysku twardego | Aby rozwiązać ten problem, wykonaj poniższe czynności i ponownie uruchom serwer <br/> - [sprawdzić, czy istnieje program antywirusowy lub inne procesy blokujące pliki lokalizacji tymczasowej](#another-process-or-antivirus-software-blocking-access-to-cache-folder)<br/> - [sprawdzić, czy lokalizacja tymczasowa jest prawidłowa i dostępna dla agenta Mars.](backup-azure-file-folder-backup-faq.md#how-to-check-if-scratch-folder-is-valid-and-accessible)
 
 ### <a name="sallowdiskspace"></a>SalLowDiskSpace
 
 Komunikat o błędzie | Zalecana akcja |
 -- | --
-Tworzenie kopii zapasowej nie powiodło się z powodu niewystarczającej ilości miejsca w magazynie, w której znajduje się folder | Aby rozwiązać ten problem, sprawdź poniższe kroki i spróbuj ponownie wykonać operację:<br/>- [Upewnij się, że Agent MARS jest najnowszy](https://go.microsoft.com/fwlink/?linkid=229525&clcid=0x409)<br/> - [Weryfikowanie i rozwiązywanie problemów z magazynem, które wpływają na miejsce na kopie zapasowe](#pre-requisites)
+Tworzenie kopii zapasowej nie powiodło się z powodu niewystarczającej ilości miejsca w magazynie, w której znajduje się folder | Aby rozwiązać ten problem, sprawdź poniższe kroki i spróbuj ponownie wykonać operację:<br/>- [zapewnić, że Agent Mars jest najnowszy](https://go.microsoft.com/fwlink/?linkid=229525&clcid=0x409)<br/> - [Weryfikuj i rozwiązuj problemy z magazynem, które wpływają na miejsce na pliki tymczasowe kopii zapasowej](#pre-requisites)
 
 ### <a name="salbitmaperror"></a>SalBitmapError
 
 Komunikat o błędzie | Zalecana akcja |
 -- | --
-Nie można odnaleźć zmian w pliku. Taka sytuacja może mieć różne przyczyny. Ponów próbę wykonania operacji | Aby rozwiązać ten problem, sprawdź poniższe kroki i spróbuj ponownie wykonać operację:<br/> - [Upewnij się, że Agent MARS jest najnowszy](https://go.microsoft.com/fwlink/?linkid=229525&clcid=0x409) <br/> - [Weryfikowanie i rozwiązywanie problemów z magazynem, które wpływają na miejsce na kopie zapasowe](#pre-requisites)
-
+Nie można odnaleźć zmian w pliku. Taka sytuacja może mieć różne przyczyny. Ponów próbę wykonania operacji | Aby rozwiązać ten problem, sprawdź poniższe kroki i spróbuj ponownie wykonać operację:<br/> - [zapewnić, że Agent Mars jest najnowszy](https://go.microsoft.com/fwlink/?linkid=229525&clcid=0x409) <br/> - [Weryfikuj i rozwiązuj problemy z magazynem, które wpływają na miejsce na pliki tymczasowe kopii zapasowej](#pre-requisites)
 
 ## <a name="next-steps"></a>Następne kroki
-* Uzyskaj więcej informacji na temat [tworzenia kopii zapasowej systemu Windows Server z agentem Azure Backup](tutorial-backup-windows-server-to-azure.md).
-* Jeśli chcesz przywrócić kopię zapasową, zobacz [Przywracanie plików do maszyny z systemem Windows](backup-azure-restore-windows-server.md).
+
+- Uzyskaj więcej informacji na temat [tworzenia kopii zapasowej systemu Windows Server z agentem Azure Backup](tutorial-backup-windows-server-to-azure.md).
+- Jeśli chcesz przywrócić kopię zapasową, zobacz [Przywracanie plików do maszyny z systemem Windows](backup-azure-restore-windows-server.md).

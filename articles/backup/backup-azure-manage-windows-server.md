@@ -1,18 +1,18 @@
 ---
 title: Zarządzanie magazynami i serwerami usługi Azure Recovery Services
-description: Zarządzanie zadaniami i alertami w magazynie usługi Azure Recovery Services.
+description: W tym artykule dowiesz się, jak monitorować magazyny Recovery Services i zarządzać nimi za pomocą pulpitu nawigacyjnego Omówienie magazynu Recovery Services.
 author: dcurwin
 manager: carmonm
 ms.service: backup
 ms.topic: conceptual
 ms.date: 07/08/2019
 ms.author: dacurwin
-ms.openlocfilehash: 7e7312f942103125217c1f61ae8fe8007a49529b
-ms.sourcegitcommit: 0f54f1b067f588d50f787fbfac50854a3a64fff7
+ms.openlocfilehash: a86af57f49b91615cc453946b0b5d51d22f2d163
+ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/12/2019
-ms.locfileid: "68954758"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73747444"
 ---
 # <a name="monitor-and-manage-recovery-services-vaults"></a>Monitorowanie magazynów usługi Recovery Services i zarządzanie nimi
 
@@ -23,7 +23,6 @@ W tym artykule wyjaśniono, jak za pomocą pulpitu nawigacyjnego **Omówienie** 
 Wymagania wstępne dotyczące tego artykułu są następujące: subskrypcja platformy Azure, magazyn Recovery Services i istnieje co najmniej jeden element kopii zapasowej skonfigurowany dla magazynu.
 
 [!INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-rm-include.md)]
-
 
 ## <a name="open-a-recovery-services-vault"></a>Otwórz magazyn Recovery Services
 
@@ -37,7 +36,7 @@ Aby monitorować alerty lub wyświetlać dane zarządzania dotyczące magazynu R
 
 3. W oknie dialogowym **wszystkie usługi** wpisz **Recovery Services**. Po rozpoczęciu pisania zawartość listy jest filtrowana w oparciu o wpisywane dane. Gdy zostanie wyświetlona opcja **magazyny Recovery Services** , kliknij ją, aby otworzyć listę magazynów Recovery Services w ramach subskrypcji.
 
-    ![Tworzenie magazynu usługi Recovery Services — krok 1](./media/backup-azure-manage-windows-server/list-of-rs-vaults.png) <br/>
+    ![Tworzenie magazynu Usług odzyskiwania — krok 1](./media/backup-azure-manage-windows-server/list-of-rs-vaults.png) <br/>
 
 4. Z listy magazynów kliknij magazyn, aby otworzyć jego pulpit nawigacyjny **przeglądu** .
 
@@ -51,7 +50,7 @@ Pulpit nawigacyjny **Omówienie** magazynu Recovery Services zawiera kafelki dot
 
 ![Tworzenie kopii zapasowych zadań pulpitu nawigacyjnego](./media/backup-azure-manage-windows-server/monitor-dashboard-tiles-warning.png)
 
-Sekcja monitorowanie zawiera wyniki wstępnie zdefiniowanych alertów **kopii zapasowych** i zapytań **zadań tworzenia kopii zapasowych** . Kafelki monitorowania udostępniają aktualne informacje dotyczące:
+Sekcja monitorowanie zawiera wyniki wstępnie zdefiniowanych **alertów kopii zapasowych** i zapytań **zadań tworzenia kopii zapasowych** . Kafelki monitorowania udostępniają aktualne informacje dotyczące:
 
 * Alerty krytyczne i ostrzeżenia dla zadań tworzenia kopii zapasowej (w ciągu ostatnich 24 godzin)
 * Sprawdzenie stanu wstępnego na potrzeby maszyn wirtualnych platformy Azure — Aby uzyskać pełne informacje na temat stanu przed sprawdzeniem, zapoznaj się z [blogiem dotyczącym tworzenia kopii zapasowej w usłudze Backup](https://azure.microsoft.com/blog/azure-vm-backup-pre-checks/).
@@ -66,7 +65,7 @@ Kliknij kafelki (z wyjątkiem magazynu kopii zapasowych), aby otworzyć menu sko
 
 ![Menu alertów kopii zapasowej odfiltrowane pod kątem alertów krytycznych](./media/backup-azure-manage-windows-server/critical-backup-alerts.png)
 
-Menu alerty kopii zapasowej na powyższym obrazie jest filtrowane według: Stan jest aktywny, ważność ma krytyczne znaczenie, a czas to ostatnie 24 godziny.
+Menu alerty kopii zapasowej na powyższym obrazie jest filtrowane według: stan jest aktywny, ważność ma krytyczne znaczenie, a czas to ostatnie 24 godziny.
 
 ## <a name="manage-backup-alerts"></a>Zarządzanie alertami kopii zapasowych
 
@@ -84,9 +83,9 @@ Na liście alerty kopii zapasowej są wyświetlane wybrane informacje dotyczące
 
 | Poziom alertu | Zdarzenia, które generują alerty |
 | ----------- | ----------- |
-| Krytyczny | Alerty krytyczne są odbierane w programie: Zadania tworzenia kopii zapasowej kończą się niepowodzeniem, zadania odzyskiwania kończą się niepowodzeniem i po zatrzymaniu ochrony na serwerze, ale zachowują dane.|
-| Ostrzeżenie | Alerty ostrzegawcze są wyświetlane, gdy: Zadania tworzenia kopii zapasowej zostały zakończone z ostrzeżeniami, na przykład w przypadku, gdy nie utworzono kopii zapasowej mniej niż 100 plików ze względu na problemy z uszkodzeniem lub gdy kopia zapasowa jest większa niż 1 000 000 plików). |
-| Informacyjny | Obecnie żadne alerty informacyjne nie są używane. |
+| Krytyczny | Alerty krytyczne są wyświetlane, gdy: zadania tworzenia kopii zapasowej kończą się niepowodzeniem, zadania odzyskiwania kończą się niepowodzeniem i po zatrzymaniu ochrony na serwerze, zachowując dane.|
+| Ostrzeżenie | Alerty ostrzegawcze są odbierane, gdy: zadania tworzenia kopii zapasowej zostały zakończone z ostrzeżeniami, na przykład gdy nie jest tworzona kopia zapasowa mniej niż 100 plików z powodu problemów z uszkodzeniem lub po pomyślnym wykonaniu kopii zapasowej więcej niż 1 000 000 plików). |
+| Informacyjne | Obecnie żadne alerty informacyjne nie są używane. |
 
 ### <a name="viewing-alert-details"></a>Wyświetlanie szczegółów alertu
 
@@ -99,9 +98,9 @@ Domyślnie wszystkie szczegóły, z wyjątkiem **ostatniego wystąpienia czasu**
 * Alerty
 * Element kopii zapasowej
 * Serwer chroniony
-* severity
-* Duration
-* Godzina utworzenia
+* Ważność
+* Czas trwania
+* Czas utworzenia
 * Stan
 * Ostatni czas wystąpienia
 
@@ -147,7 +146,7 @@ Skonfiguruj powiadomienia, aby generować wiadomości e-mail w przypadku wystąp
 
 Domyślnie powiadomienia E-mail są **włączone**. Kliknij przycisk **wył** ., aby zatrzymać powiadomienia e-mail.
 
-W obszarze kontrola powiadamiania wybierz opcję **na alert** , jeśli nie chcesz grupować lub nie masz wielu elementów, które mogą generować alerty. Każdy alert powoduje jedno powiadomienie (ustawienie domyślne), a wiadomość e-mail dotycząca rozwiązania jest wysyłana natychmiast.
+W obszarze kontrola **powiadamiania** wybierz opcję **na alert** , jeśli nie chcesz grupować lub nie masz wielu elementów, które mogą generować alerty. Każdy alert powoduje jedno powiadomienie (ustawienie domyślne), a wiadomość e-mail dotycząca rozwiązania jest wysyłana natychmiast.
 
 W przypadku wybrania opcji **Podsumowanie godzinowe**zostanie wysłana wiadomość e-mail z informacją o nierozwiązanych alertach wygenerowanych w ciągu ostatniej godziny. Wiadomość e-mail dotycząca rozwiązania jest wysyłana po upływie godziny.
 
@@ -220,10 +219,10 @@ Typ elementu to typ zarządzania kopiami zapasowymi chronionego wystąpienia. Is
 Można wyświetlić jedną operację lub wszystkie operacje. Nie można wybrać dwóch lub trzech operacji. Dostępne są następujące operacje:
 
 * Wszystkie operacje
-* Zarejestruj
+* Zarejestruj subskrypcję
 * Konfigurowanie kopii zapasowych
-* Tworzenie kopii zapasowej
-* Przywróć
+* Tworzenie kopii zapasowych
+* Przywracanie
 * Wyłącz kopię zapasową
 * Usuwanie danych kopii zapasowej
 
@@ -232,11 +231,11 @@ Można wyświetlić jedną operację lub wszystkie operacje. Nie można wybrać 
 Możesz wyświetlić wszystkie stany lub jeden z nich. Nie można wybrać dwóch lub trzech stanów. Dostępne są następujące stany:
 
 * Wszystkie Stany
-* Ukończone
+* Zakończone
 * W toku
 * Niepowodzenie
 * Anulowane
-* Zakończone z ostrzeżeniami
+* Ukończono z ostrzeżeniami
 
 #### <a name="start-time"></a>Godzina rozpoczęcia
 
@@ -259,22 +258,22 @@ Kafelek magazyn kopii zapasowych na pulpicie nawigacyjnym pokazuje Magazyn używ
 * Użycie magazynu LRS w chmurze skojarzone z magazynem
 * Użycie magazynu GRS w chmurze skojarzone z magazynem
 
-
 ## <a name="troubleshooting-monitoring-issues"></a>Rozwiązywanie problemów z monitorowaniem
 
 **Problem:** Zadania i/lub alerty z agenta Azure Backup nie są wyświetlane w portalu.
 
-**Kroki rozwiązywania problemów:** Proces, ```OBRecoveryServicesManagementAgent```, wysyła dane zadania i alertu do usługi Azure Backup. Czasami ten proces może zostać zablokowany lub zamknięty.
+**Kroki rozwiązywania problemów:** Proces ```OBRecoveryServicesManagementAgent```, wysyła dane zadania i alertu do usługi Azure Backup. Czasami ten proces może zostać zablokowany lub zamknięty.
 
-1. Aby sprawdzić, czy proces nie działa, Otwórz **Menedżera zadań**i sprawdź ```OBRecoveryServicesManagementAgent``` , czy jest uruchomiony.
+1. Aby sprawdzić, czy proces nie działa, Otwórz **Menedżera zadań**i sprawdź, czy ```OBRecoveryServicesManagementAgent``` jest uruchomiony.
 
 2. Jeśli proces nie jest uruchomiony, Otwórz **Panel sterowania**i Przeglądaj listę usług. Uruchom lub Uruchom ponownie **Microsoft Azure Recovery Services agenta zarządzania**.
 
     Aby uzyskać więcej informacji, Przejrzyj dzienniki pod adresem:<br/>
-   `<AzureBackup_agent_install_folder>\Microsoft Azure Recovery Services Agent\Temp\GatewayProvider*`Na przykład:<br/>
+   `<AzureBackup_agent_install_folder>\Microsoft Azure Recovery Services Agent\Temp\GatewayProvider*` na przykład:<br/>
    `C:\Program Files\Microsoft Azure Recovery Services Agent\Temp\GatewayProvider0.errlog`
 
 ## <a name="next-steps"></a>Następne kroki
+
 * [Przywracanie systemu Windows Server lub klienta systemu Windows z platformy Azure](backup-azure-restore-windows-server.md)
 * Aby dowiedzieć się więcej na temat Azure Backup, zobacz [omówienie Azure Backup](backup-introduction-to-azure-backup.md)
 * Odwiedź [Forum Azure Backup](https://go.microsoft.com/fwlink/p/?LinkId=290933)

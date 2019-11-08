@@ -13,18 +13,18 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: article
 ms.date: 12/15/2015
 ms.author: saurabh
-ms.openlocfilehash: 771064774371e71c0664918790b296c156ed1c1f
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 547de4862081b56bf627c3a00564ce6564f2ad09
+ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70084789"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73750089"
 ---
 # <a name="use-powershell-to-enable-azure-diagnostics-in-a-virtual-machine-running-windows"></a>Używanie programu PowerShell do uruchamiania narzędzia Diagnostyka Azure na maszynie wirtualnej systemu Windows
 
 Diagnostyka Azure jest możliwością platformy Azure, która umożliwia zbieranie danych diagnostycznych we wdrożonej aplikacji. Można użyć rozszerzenia diagnostyki do zbierania danych diagnostycznych, takich jak Dzienniki aplikacji lub liczniki wydajności, z maszyny wirtualnej platformy Azure z systemem Windows. 
 
-[!INCLUDE [updated-for-az.md](../../../includes/updated-for-az.md)]
+ 
 
 ## <a name="enable-the-diagnostics-extension-if-you-use-the-resource-manager-deployment-model"></a>Włącz rozszerzenie diagnostyki, jeśli używasz modelu wdrażania Menedżer zasobów
 Rozszerzenie diagnostyki można włączyć podczas tworzenia maszyny wirtualnej z systemem Windows za pomocą modelu wdrażania Azure Resource Manager, dodając konfigurację rozszerzenia do szablonu Menedżer zasobów. Zobacz [Tworzenie maszyny wirtualnej z systemem Windows przy użyciu monitorowania i diagnostyki przy użyciu szablonu Azure Resource Manager](diagnostics-template.md).
@@ -80,10 +80,10 @@ Poniższy kod XML może służyć do publicznej konfiguracji diagnostyki z powy�
 
 Należy zaktualizować konfigurację, aby uwzględnić następujące elementy:
 
-* Atrybut *ResourceID* elementu Metrics należy zaktualizować przy użyciu identyfikatora zasobu maszyny wirtualnej.
+* Atrybut *ResourceID* elementu **Metrics** należy zaktualizować przy użyciu identyfikatora zasobu maszyny wirtualnej.
   
   * Identyfikator zasobu można utworzyć przy użyciu następującego wzorca: "*Identyfikator subskrypcji/subscriptions/{dla subskrypcji z maszyną wirtualną*}/ResourceGroups/{*nazwę tej usługi dla maszyny wirtualnej*}/Providers/Microsoft.COMPUTE/virtualMachines/{ *Nazwa maszyny wirtualnej*} ".
-  * Na przykład jeśli Identyfikator subskrypcji dla subskrypcji, w której uruchomiono maszynę wirtualną, to **11111111-1111-1111-1111-111111111111**, nazwa grupy zasobów dla grupy zasobów jest grupą zasobów, a nazwa maszyny wirtualnej to **MyWindowsVM**, a następnie wartość parametru *ResourceID* to:
+  * Na przykład jeśli Identyfikator subskrypcji dla subskrypcji, w której uruchomiono maszynę **wirtualną, to** **11111111-1111-1111-1111-111111111111**, nazwa grupy zasobów dla grupy zasobów jest grupą zasobów, a nazwa maszyny wirtualnej to **MyWindowsVM**, a następnie wartość parametru *ResourceID* to:
     
       ```xml
       <Metrics resourceId="/subscriptions/11111111-1111-1111-1111-111111111111/resourceGroups/MyResourceGroup/providers/Microsoft.Compute/virtualMachines/MyWindowsVM" >

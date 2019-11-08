@@ -1,6 +1,6 @@
 ---
 title: 'Przewodnik Szybki Start: Tworzenie biblioteki klienckiej dla języka Python | Microsoft Docs'
-description: Rozpocznij pracę z biblioteką klienta programu Front dla języka Python...
+description: Ten artykuł pomoże Ci rozpocząć pracę z biblioteką klienta programu Front for Python w celu wykrycia, znalezienia podobnej, identyfikacji, sprawdzenia i innych.
 services: cognitive-services
 author: PatrickFarley
 manager: nitinme
@@ -9,12 +9,12 @@ ms.subservice: face-api
 ms.topic: quickstart
 ms.date: 07/26/2019
 ms.author: pafarley
-ms.openlocfilehash: b265ec68039f03c09d45c9605965de8ce0baba99
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: 9728ff86de8561c463886847494ecc4c1c007851
+ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72935872"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73743197"
 ---
 # <a name="quickstart-face-client-library-for-python"></a>Przewodnik Szybki Start: Tworzenie biblioteki klienckiej dla języka Python
 
@@ -29,7 +29,7 @@ Użyj biblioteki klienta programu Front dla języka Python, aby:
 * Weryfikuj twarze
 * Utwórz migawkę migracji danych
 
-[Dokumentacja referencyjna](https://docs.microsoft.com/python/api/azure-cognitiveservices-vision-face/?view=azure-python) | [kod źródłowy biblioteki](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/cognitiveservices/azure-cognitiveservices-vision-face) | [pakiet (PiPy)](https://pypi.org/project/azure-cognitiveservices-vision-face/) | [przykładów](https://docs.microsoft.com/samples/browse/?products=azure&term=face)
+[Dokumentacja referencyjna](https://docs.microsoft.com/python/api/azure-cognitiveservices-vision-face/?view=azure-python) |  | pakietu [kodu źródłowego biblioteki](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/cognitiveservices/azure-cognitiveservices-vision-face) [(PiPy)](https://pypi.org/project/azure-cognitiveservices-vision-face/) [ | ](https://docs.microsoft.com/samples/browse/?products=azure&term=face)
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
@@ -53,7 +53,7 @@ Utwórz nowy skrypt w języku Python&mdash;*QuickStart-File.py*, na przykład. N
 
 [!code-python[](~/cognitive-services-quickstart-code/python/Face/FaceQuickstart.py?name=snippet_imports)]
 
-Następnie utwórz zmienne dla punktu końcowego i klucza usługi Azure Resource. Może zajść potrzeba zmiany pierwszej części punktu końcowego (`westus`), aby dopasować ją do subskrypcji.
+Następnie utwórz zmienne dla punktu końcowego i klucza usługi Azure Resource. Może zajść potrzeba zmiany pierwszej części punktu końcowego (`westus`), aby była zgodna z subskrypcją.
 
 [!code-python[](~/cognitive-services-quickstart-code/python/Face/FaceQuickstart.py?name=snippet_subvars)]
 
@@ -147,7 +147,7 @@ Poniższy kod tworzy obiekt **Person** z trzema różnymi obiektami **osób** . 
 
 Aby wykonać czynności opisane w tym scenariuszu, należy zapisać następujące obrazy w katalogu głównym projektu: https://github.com/Azure-Samples/cognitive-services-sample-data-files/tree/master/Face/images.
 
-Ta grupa obrazów zawiera trzy zestawy obrazów kroju odpowiadających trzem różnym osobom. Kod określi trzy obiekty **osób** i skojarzy je z plikami obrazów, które zaczynają się od `woman`, `man` i `child`.
+Ta grupa obrazów zawiera trzy zestawy obrazów kroju odpowiadających trzem różnym osobom. Kod określi trzy obiekty **osób** i skojarzy je z plikami obrazów, które zaczynają się od `woman`, `man`i `child`.
 
 Po skonfigurowaniu obrazów Zdefiniuj etykietę w górnej części skryptu **dla obiektu, który utworzysz** .
 

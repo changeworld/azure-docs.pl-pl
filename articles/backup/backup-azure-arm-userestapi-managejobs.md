@@ -1,6 +1,6 @@
 ---
 title: 'Azure Backup: Zarządzanie zadaniami tworzenia kopii zapasowej przy użyciu interfejsu API REST'
-description: Zarządzanie zadaniami tworzenia kopii zapasowej i przywracania Azure Backup przy użyciu interfejsu API REST
+description: W tym artykule dowiesz się, jak śledzić i zarządzać zadaniami tworzenia kopii zapasowych i przywracania Azure Backup przy użyciu interfejsu API REST.
 ms.reviewer: pullabhk
 author: dcurwin
 manager: carmonm
@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 08/03/2018
 ms.author: dacurwin
 ms.assetid: b234533e-ac51-4482-9452-d97444f98b38
-ms.openlocfilehash: b10283c2946d01101b941d53b6bf03be3a12e99e
-ms.sourcegitcommit: 0f54f1b067f588d50f787fbfac50854a3a64fff7
+ms.openlocfilehash: c0ce79c68b9d9cf11ea20c2d6469f4240fb38a95
+ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/12/2019
-ms.locfileid: "68954909"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73747546"
 ---
 # <a name="track-backup-and-restore-jobs-using-rest-api"></a>Śledzenie zadań tworzenia kopii zapasowej i przywracania za pomocą interfejsu API REST
 
@@ -23,7 +23,7 @@ Usługa Azure Backup wyzwala zadania uruchamiane w tle w różnych scenariuszach
 
 ## <a name="fetch-job-information-from-operations"></a>Pobieranie informacji o zadaniu z operacji
 
-Operacja, taka jak wyzwalanie kopii zapasowej, zawsze zwróci identyfikator zadania. Na przykład: Ostateczną odpowiedzią [operacji interfejsu API Rest tworzenia kopii zapasowej wyzwalacza](backup-azure-arm-userestapi-backupazurevms.md#example-responses-3) jest następująca:
+Operacja, taka jak wyzwalanie kopii zapasowej, zawsze zwróci identyfikator zadania. Na przykład: końcowa odpowiedź [operacji interfejsu API REST wykonywania kopii zapasowej wyzwalacza](backup-azure-arm-userestapi-backupazurevms.md#example-responses-3) jest następująca:
 
 ```http
 {
@@ -47,17 +47,17 @@ Zadanie kopii zapasowej maszyny wirtualnej platformy Azure jest identyfikowane w
 GET https://management.azure.com/Subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/backupJobs/{jobName}?api-version=2017-07-01
 ```
 
-`{jobName}` Jest to "jobId" wymienione powyżej. Odpowiedź jest zawsze 200 OK z polem "status" wskazującą bieżący stan zadania. Po "zakończeniu" lub "CompletedWithWarnings" w sekcji "extendedInfo" znajduje się więcej informacji o zadaniu.
+`{jobName}` to "jobId" wymienione powyżej. Odpowiedź jest zawsze 200 OK z polem "status" wskazującą bieżący stan zadania. Po "zakończeniu" lub "CompletedWithWarnings" w sekcji "extendedInfo" znajduje się więcej informacji o zadaniu.
 
 ### <a name="response"></a>Odpowiedź
 
-|Name (Nazwa)  |Typ  |Opis  |
+|Nazwa  |Typ  |Opis  |
 |---------|---------|---------|
 |200 OK     | [JobResource](https://docs.microsoft.com/rest/api/backup/jobdetails/get#jobresource)        | OK        |
 
 #### <a name="example-response"></a>Przykładowa odpowiedź
 
-Po przesłaniu identyfikatora URI zostanie zwrócona odpowiedź 200 (OK).
+Po przesłaniu *identyfikatora URI zostanie* zwrócona odpowiedź 200 (ok).
 
 ```http
 HTTP/1.1 200 OK

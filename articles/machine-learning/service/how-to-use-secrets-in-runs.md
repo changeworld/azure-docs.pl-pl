@@ -11,23 +11,23 @@ ms.subservice: core
 ms.topic: conceptual
 ms.date: 08/23/2019
 ms.custom: seodec18
-ms.openlocfilehash: c0d696e3fc060a2779eba7d7e895397ea3245383
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: e2074cec65ea4c1df803999c6a995f73ea4227ee
+ms.sourcegitcommit: 018e3b40e212915ed7a77258ac2a8e3a660aaef8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73489271"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73796687"
 ---
 # <a name="use-secrets-in-training-runs"></a>Korzystanie z wpisów tajnych w przebiegach szkoleniowych
 [!INCLUDE [applies-to-skus](../../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
 W tym artykule dowiesz się, jak korzystać z wpisów tajnych w programie szkoleniowym w sposób bezpieczny. Na przykład aby połączyć się z zewnętrzną bazą danych w celu wykonywania zapytań dotyczących danych szkoleniowych, należy przekazać nazwę użytkownika i hasło do zdalnego kontekstu uruchomienia. Kodowanie takich wartości do skryptów szkoleniowych w postaci zwykłego tekstu jest niebezpieczne, ponieważ uwidacznia wpis tajny. 
 
-Zamiast tego Obszar roboczy usługi Azure Machine Learning ma [Azure Key Vault](https://docs.microsoft.com/azure/key-vault/key-vault-overview) jako skojarzony zasób. Ten Key Vault może służyć do bezpiecznego przekazywania kluczy tajnych do zdalnego uruchamiania za pomocą zestawu interfejsów API w Azure Machine Learning SDK języka Python
+Zamiast tego Obszar roboczy usługi Azure Machine Learning ma [Azure Key Vault](https://docs.microsoft.com/azure/key-vault/key-vault-overview) jako skojarzony zasób. Ten Key Vault może służyć do bezpiecznego przekazywania kluczy tajnych do zdalnego uruchamiania za pomocą zestawu interfejsów API w Azure Machine Learning SDK języka Python.
 
 Podstawowym przepływem korzystania z kluczy tajnych jest:
- 1. Na komputerze lokalnym Zaloguj się do platformy Azure i Połącz się z obszarem roboczym
- 2. Na komputerze lokalnym Ustaw klucz tajny w obszarze roboczym Key Vault
+ 1. Na komputerze lokalnym Zaloguj się do platformy Azure i Połącz się z obszarem roboczym.
+ 2. Na komputerze lokalnym Ustaw klucz tajny w obszarze roboczym Key Vault.
  3. Prześlij zdalne uruchomienie.
  4. W ramach uruchomienia zdalnego Pobierz klucz tajny z wartości klucza i użyj go.
 
@@ -47,13 +47,13 @@ keyvault.set_secret(name="mysecret", value = my_secret)
 
 Nie należy umieszczać wartości tajnych w kodzie języka Python, ponieważ jest ona niezabezpieczona, aby można było ją zapisać w pliku jako zwykły tekst. Zamiast tego należy uzyskać wartość klucza tajnego ze zmiennej środowiskowej, na przykład Azure DevOps Build Secret lub z interakcyjnych danych wejściowych użytkownika.
 
-Można wyświetlić listę wpisów tajnych za pomocą metody [list_secrets](https://docs.microsoft.com/python/api/azureml-core/azureml.core.keyvault.keyvault?view=azure-ml-py#set-secret-name--value-) . Metoda __set_secret__ aktualizuje wartość klucza tajnego, jeśli nazwa już istnieje.
+Można wyświetlić listę wpisów tajnych za pomocą metody [list_secrets](https://docs.microsoft.com/python/api/azureml-core/azureml.core.keyvault.keyvault?view=azure-ml-py#list-secrets--) . Metoda __set_secret__ aktualizuje wartość klucza tajnego, jeśli nazwa już istnieje.
 
 ## <a name="get-secrets"></a>Pobierz wpisy tajne
 
 W kodzie lokalnym można użyć [magazynu kluczy. Pobierz metodę _secret](https://docs.microsoft.com/python/api/azureml-core/azureml.core.keyvault.keyvault?view=azure-ml-py#get-secret-name-) , aby uzyskać wartość klucza tajnego według nazwy.
 
-W przebiegach przesłano za pomocą [eksperymentu. Prześlij](https://docs.microsoft.com/python/api/azureml-core/azureml.core.experiment.experiment?view=azure-ml-py#submit-config--tags-none----kwargs-), użyj metody [Run. Get _secret](https://docs.microsoft.com/python/api/azureml-core/azureml.core.run.run?view=azure-ml-py#get-secret-name-) . Ze względu na to, że przesłany przebieg jest świadomy swojego obszaru roboczego, ta metoda skrótów tworzy Tworzenie wystąpienia obszaru roboczego i zwraca wartość tajną bezpośrednio.
+W przebiegach przesłano za pomocą [eksperymentu. Prześlij](https://docs.microsoft.com/python/api/azureml-core/azureml.core.experiment.experiment?view=azure-ml-py#submit-config--tags-none----kwargs-), użyj metody [Run. Get _secret](https://docs.microsoft.com/python/api/azureml-core/azureml.core.run.run?view=azure-ml-py#get-secret-name-) . Ze względu na to, że przesłany przebieg ma świadomość swojego obszaru roboczego, ta metoda skrótów tworzy Tworzenie wystąpienia obszaru roboczego i zwraca wartość tajną bezpośrednio.
 
 ```python
 # Code in submitted run

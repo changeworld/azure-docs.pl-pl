@@ -10,12 +10,12 @@ ms.subservice: qna-maker
 ms.topic: quickstart
 ms.date: 10/14/2019
 ms.author: diberry
-ms.openlocfilehash: 5d807f185a8cdb181093d37dac35ee2e467fdba9
-ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
+ms.openlocfilehash: 8ce35156cd772487c4787f2f5fb99feb1225826f
+ms.sourcegitcommit: 018e3b40e212915ed7a77258ac2a8e3a660aaef8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72328092"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73794203"
 ---
 # <a name="quickstart-create-train-and-publish-your-qna-maker-knowledge-base"></a>Szybki Start: Tworzenie, uczenie i publikowanie bazy wiedzy QnA Maker
 
@@ -25,7 +25,7 @@ Uwzględnij osobowość chit-chat, aby Twoja wiedza była bardziej interesująca
 
 [!INCLUDE [Custom subdomains notice](../../../../includes/cognitive-services-custom-subdomains-note.md)]
 
-## <a name="prerequisite"></a>Warunek wstępny
+## <a name="prerequisite"></a>Wymagania wstępne
 
 > [!div class="checklist"]
 > * Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpłatne konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
@@ -67,11 +67,11 @@ Uwzględnij osobowość chit-chat, aby Twoja wiedza była bardziej interesująca
 
 1. Dodaj odpowiedź sformatowaną z uwzględnieniem _promocji_:
 
-    ` * Azure QnA Maker service\n* Azure Search\n* Azure web app\n* Azure app plan`
+    ` * Azure QnA Maker service\n* Azure Cognitive Search\n* Azure web app\n* Azure app plan`
 
     ![ Dodaj pytanie jako tekst i odpowiedź sformatowaną z uwzględnieniem promocji.](../media/qnamaker-create-publish-knowledge-base/add-question-and-answer.png)
 
-    Symbol promocji `*` jest używany dla punktów punktorów. @No__t-0 jest używany dla nowego wiersza.  
+    Symbol promocji, `*`jest używany dla punktów punktorów. `\n` jest używany w nowym wierszu.  
 
     Na stronie **Edytuj** zostanie wyświetlona wartość promocji. Gdy używasz panelu **testowego** później, zobaczysz poprawność wyświetlana w promocji. 
 

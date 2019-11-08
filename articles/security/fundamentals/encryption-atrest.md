@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/25/2019
 ms.author: barclayn
-ms.openlocfilehash: 0fddabc7973fbea147de9f3b6e6da5556407030c
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: fc3c7ea2f0060fc6ab20fa821c9e45d6e5173d4f
+ms.sourcegitcommit: 018e3b40e212915ed7a77258ac2a8e3a660aaef8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73498459"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73795798"
 ---
 # <a name="azure-data-encryption-at-rest"></a>Szyfrowanie danych platformy Azure — w spoczynku
 
@@ -61,7 +61,7 @@ Jak opisano wcześniej, celem szyfrowania w czasie spoczynku jest to, że dane u
 
 ![Składniki](./media/encryption-atrest/azure-security-encryption-atrest-fig1.png)
 
-### <a name="azure-key-vault"></a>Azure Key Vault
+### <a name="azure-key-vault"></a>W usłudze Azure Key Vault
 
 Lokalizacją przechowywania kluczy szyfrowania i kontroli dostępu do tych kluczy jest centralne szyfrowanie w modelu Rest. Klucze muszą być wysoce zabezpieczone, ale mogą być zarządzane przez określonych użytkowników i dostępne dla określonych usług. W przypadku usług Azure Azure Key Vault jest zalecanym rozwiązaniem magazynu kluczy i oferuje wspólne środowisko zarządzania w ramach usług. Klucze są przechowywane i zarządzane w magazynach kluczy, a dostęp do magazynu kluczy można udzielić użytkownikom lub usługom. Azure Key Vault obsługuje tworzenie kluczy lub importowanie kluczy klienta do użytku w scenariuszach z kluczami szyfrowania zarządzanymi przez klienta.
 
@@ -262,7 +262,7 @@ Szyfrowanie po stronie klienta Azure SQL Database danych jest obsługiwane za po
 |----------------------------------|--------------------|-----------------------------------------|--------------------|
 |                                  | **Po stronie serwera przy użyciu klucza zarządzanego przez usługę**     | **Po stronie serwera przy użyciu klucza zarządzanego przez klienta**             | **Po stronie klienta przy użyciu klucza zarządzanego przez klienta**      |
 | **AI i Machine Learning**      |                    |                    |                    |
-| Usługa Azure Search                     | Tak                | Wersja zapoznawcza            | -                  |
+| Azure Cognitive Search                     | Tak                | Wersja zapoznawcza            | -                  |
 | Azure Machine Learning   | Tak                | -                  | -                  |
 | Azure Machine Learning Studio    | Tak                | Wersja zapoznawcza, RSA 2048-bit | -               |
 | Power BI                         | Tak                | Wersja zapoznawcza, RSA 2048-bit | -                  |
@@ -283,7 +283,7 @@ Szyfrowanie po stronie klienta Azure SQL Database danych jest obsługiwane za po
 | Zestaw skalowania maszyn wirtualnych        | Tak                | Tak, RSA 2048-bit  | -                  |
 | SAP HANA                         | Tak                | Tak, RSA 2048-bit  | -                  |
 | **Bazy danych**                    |                    |                    |                    |
-| Program SQL Server na maszynach wirtualnych   | Tak                | Tak, RSA 2048-bit  | Tak                |
+| Program SQL Server w usłudze Virtual Machines   | Tak                | Tak, RSA 2048-bit  | Tak                |
 | Azure SQL Database               | Tak                | Tak, RSA 2048-bit  | Tak                |
 | Azure SQL Database MariaDB   | Tak                | -                  | -                  |
 | Azure SQL Database dla programu MySQL     | Tak                | -                  | -                  |
@@ -303,7 +303,7 @@ Szyfrowanie po stronie klienta Azure SQL Database danych jest obsługiwane za po
 | Event Grid                       | Tak                | -                  | -                  |
 | API Management                   | Tak                | -                  | -                  |
 | **Usługi IoT**                 |                    |                    |                    |
-| IoT Hub                          | Tak                | -                  | Tak                |
+| Usługa IoT Hub                          | Tak                | -                  | Tak                |
 | **Zarządzanie i nadzór**    |                    |                    |                    |
 | Azure Site Recovery              | Tak                | Tak, RSA 2048-bit  | Tak                |
 | **Multimedialny**                        |                    |                    |                    |
@@ -316,7 +316,7 @@ Szyfrowanie po stronie klienta Azure SQL Database danych jest obsługiwane za po
 | Queue Storage                    | Tak                | -                  | Tak                |
 | Avere vFXT                       | Tak                | -                  | -                  |
 | Azure NetApp Files               | Tak                | -                  | -                  |
-| Magazyn archiwum                  | Tak                | Tak, RSA 2048-bit  | -                  |
+| Archive Storage                  | Tak                | Tak, RSA 2048-bit  | -                  |
 | Magazyn StorSimple                       | Tak                | Tak, RSA 2048-bit  | Tak                |
 | Azure Backup                     | Tak                | -                  | Tak                |
 | Data Box                         | Tak                | -                  | Tak                |

@@ -6,19 +6,19 @@ ms.author: kirillg
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 3e2d9b892ad42563b481a0b1fe6a468daefad672
-ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
-ms.translationtype: HT
+ms.openlocfilehash: e0c3c88119c3d064326442881854920b411f5ed4
+ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73606423"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73748373"
 ---
 # <a name="create-azure-cosmos-containers-and-databases-in-autopilot-mode-preview"></a>Tworzenie kontenerów i baz danych usługi Azure Cosmos w trybie autopilotażu (wersja zapoznawcza)
 
 Azure Cosmos DB pozwala na inicjowanie obsługi przepływności w kontenerach w trybie ręcznym lub autopilotażowym. W tym artykule opisano zalety i przypadki użycia trybu autopilotażu.
 
 > [!NOTE]
-> Tryb autopilotażu jest obecnie dostępny w publicznej wersji zapoznawczej.
+> Tryb autopilotażu jest obecnie dostępny w publicznej wersji zapoznawczej. Aby włączyć funkcję autopilotażu dla konta usługi Azure Cosmos, zobacz sekcję [Włączanie autopilotażu](#enable-autopilot) w tym artykule. Funkcję autopilotażu można włączyć tylko dla nowych baz danych i kontenerów, ale nie jest ona dostępna dla istniejących kontenerów i baz danych.
 
 Oprócz ręcznego inicjowania obsługi przepływności można teraz skonfigurować kontenery usługi Azure Cosmos w trybie autopilotażu. Kontenery usługi Azure Cosmos i bazy danych skonfigurowane w trybie automatycznego pilotażu będą **automatycznie i natychmiast skalować zainicjowaną przepływność na podstawie potrzeb aplikacji bez naruszenia umowy SLA.**
 
@@ -68,7 +68,7 @@ Rozwiązania dotyczące poprzednich problemów nie tylko wymagają dużego czasu
 | **Cennik** | Ręcznie aprowizacji RU/s na godzinę. | W przypadku kont z jednym regionem zapisu płacisz za przepływność używaną co godzinę przy użyciu częstotliwości autopilotażowej RU/s na godzinę. <br/><br/>W przypadku kont z wieloma regionami zapisu nie ma dodatkowej opłaty za autopilotaż. Opłata jest naliczana za przepływność użyta co godzinę przy użyciu tego samego kursu wieloskładnikowego RU/s na godzinę. |
 | **Najlepiej dopasowane do typów obciążeń** |  Przewidywalne i stabilne obciążenia|   Nieprzewidywalne obciążenia i zmienne  |
 
-## <a name="enable-autopilot-from-azure-portal"></a>Włącz autopilotaż z Azure Portal
+## <a name="a-idenable-autopilot-enable-autopilot-from-azure-portal"></a><a id="enable-autopilot"> włączyć autopilotaż z Azure Portal
 
 Możesz wypróbować autopilotaż na kontach usługi Azure Cosmos, włączając w Azure Portal. Wykonaj następujące kroki, aby włączyć opcję autopilotaż:
 

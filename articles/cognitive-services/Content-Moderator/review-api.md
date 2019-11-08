@@ -1,7 +1,7 @@
 ---
 title: Koncepcje przeglądów, przepływów pracy i zadań — Content Moderator
 titleSuffix: Azure Cognitive Services
-description: Poznaj przeglądy, przepływy pracy i zadania
+description: Ten artykuł zawiera informacje o podstawowych pojęciach dotyczących narzędzia do przeglądu. przeglądy, przepływy pracy i zadania.
 services: cognitive-services
 author: PatrickFarley
 manager: nitinme
@@ -10,12 +10,12 @@ ms.subservice: content-moderator
 ms.topic: conceptual
 ms.date: 03/14/2019
 ms.author: pafarley
-ms.openlocfilehash: 917636c8ae339e06321c169979611f74276ca523
-ms.sourcegitcommit: 38251963cf3b8c9373929e071b50fd9049942b37
+ms.openlocfilehash: 1aba86efb9ea76fbf060e80b47f9f2f6cdf8ee71
+ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/29/2019
-ms.locfileid: "73044000"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73744428"
 ---
 # <a name="content-moderation-reviews-workflows-and-jobs"></a>Przeglądy, przepływy pracy i zadania moderowania zawartości
 
@@ -35,7 +35,7 @@ Przepływ pracy to dostosowany do chmury filtr dla zawartości. Przepływy pracy
 
 ### <a name="view-workflows"></a>Wyświetl przepływy pracy
 
-Aby wyświetlić istniejące przepływy pracy, przejdź do [narzędzia przeglądu](https://contentmoderator.cognitive.microsoft.com/) i wybierz pozycję **Ustawienia**  > **przepływy pracy**.
+Aby wyświetlić istniejące przepływy pracy, przejdź do [narzędzia przeglądu](https://contentmoderator.cognitive.microsoft.com/) i wybierz pozycję **Ustawienia** > **przepływy pracy**.
 
 ![Domyślny przepływ pracy](images/default-workflow-listed.PNG)
 
@@ -66,7 +66,7 @@ Przepływy pracy można całkowicie opisać jako ciągi JSON, co sprawia, że s�
 
 Aby rozpocząć tworzenie i używanie przepływów pracy, [Zobacz przewodnik po](./review-tool-user-guide/workflows.md) [interfejsie API REST](./try-review-api-workflow.md) , aby dowiedzieć się, jak to zrobić programowo.
 
-## <a name="jobs"></a>Stanowiska
+## <a name="jobs"></a>Zadania
 
 Zadanie moderowania służy jako rodzaj otoki dla funkcji moderowania zawartości, przepływów pracy i przeglądów. Zadanie skanuje zawartość przy użyciu interfejsu API moderowania obrazu Content Moderator lub interfejsu API moderowania tekstu, a następnie sprawdza go pod kątem określonego przepływu pracy. W oparciu o wyniki przepływu pracy może to spowodować, że nie można utworzyć przeglądu zawartości w [narzędziu do przeglądu](./review-tool-user-guide/human-in-the-loop.md). Podczas gdy zarówno przeglądy, jak i przepływy pracy można tworzyć i konfigurować przy użyciu odpowiednich interfejsów API, interfejs API zadań pozwala uzyskać szczegółowy raport dotyczący całego procesu (który można wysłać do określonego punktu końcowego wywołania zwrotnego).
 

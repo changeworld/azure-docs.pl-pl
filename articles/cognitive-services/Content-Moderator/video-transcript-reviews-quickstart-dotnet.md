@@ -1,7 +1,7 @@
 ---
 title: Tworzenie przeglądów transkrypcji wideo przy użyciu platformy .NET Content Moderator
 titleSuffix: Azure Cognitive Services
-description: Tworzenie przeglądów transkrypcji wideo przy użyciu zestawu Content Moderator SDK dla platformy .NET
+description: Dowiedz się, jak utworzyć przeglądy transkrypcji wideo przy użyciu zestawu Azure Cognitive Services Content Moderator SDK dla platformy .NET.
 services: cognitive-services
 author: PatrickFarley
 manager: nitinme
@@ -10,12 +10,12 @@ ms.subservice: content-moderator
 ms.topic: conceptual
 ms.date: 10/24/2019
 ms.author: pafarley
-ms.openlocfilehash: ea1b8af69402aade370725f3a4dfdee4b5595ce6
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: b2d763454b86570b57a16fb9ae2107a2a2bcd23d
+ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72931649"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73744379"
 ---
 # <a name="create-video-transcript-reviews-using-net"></a>Tworzenie przeglądów transkrypcji wideo przy użyciu platformy .NET
 
@@ -144,7 +144,7 @@ Utwórz recenzję wideo za pomocą **ContentModeratorClient. Reviews. CreateVide
 **CreateVideoReviews** ma następujące wymagane parametry:
 1. Ciąg zawierający typ MIME, który powinien mieć wartość "Application/JSON". 
 1. Nazwa zespołu Content Moderator.
-1. Obiekt **IList \<CreateVideoReviewsBodyItem >** . Każdy obiekt **CreateVideoReviewsBodyItem** reprezentuje przegląd wideo. Ten przewodnik Szybki Start tworzy jeden przegląd w danym momencie.
+1. Obiekt **IList\<CreateVideoReviewsBodyItem >** . Każdy obiekt **CreateVideoReviewsBodyItem** reprezentuje przegląd wideo. Ten przewodnik Szybki Start tworzy jeden przegląd w danym momencie.
 
 **CreateVideoReviewsBodyItem** ma kilka właściwości. Należy ustawić co najmniej następujące właściwości:
 - **Zawartość**. Adres URL filmu wideo, który ma zostać sprawdzony.
@@ -152,7 +152,7 @@ Utwórz recenzję wideo za pomocą **ContentModeratorClient. Reviews. CreateVide
 - **Stan**. Ustaw wartość na "unopublikowałd". Jeśli go nie ustawisz, zostanie on ustawiony jako "Oczekujący", co oznacza, że przegląd wideo jest publikowany i oczekuje na weryfikację przez człowieka. Po opublikowaniu recenzji wideo nie można już dodawać do niej ramek wideo, transkrypcji ani moderowania transkrypcji.
 
 > [!NOTE]
-> **CreateVideoReviews** zwraca element IList > \<string. Każdy z tych ciągów zawiera identyfikator dla recenzji wideo. Identyfikatory te są identyfikatorami GUID i nie są takie same jak wartość właściwości **identyfikatorze** .
+> **CreateVideoReviews** zwraca element IList\<ciąg >. Każdy z tych ciągów zawiera identyfikator dla recenzji wideo. Identyfikatory te są identyfikatorami GUID i nie są takie same jak wartość właściwości **identyfikatorze** .
 
 Dodaj następującą definicję metody do VideoReviews przestrzeni nazw, programu klasy.
 
@@ -192,7 +192,7 @@ private static string CreateReview(ContentModeratorClient client, string id, str
 > [!NOTE]
 > Klucz usługi Content Moderator ma limit szybkości wyrażany w żądaniach na sekundę (RPS). Po przekroczeniu tego limitu zestaw SDK zgłasza wyjątek z kodem błędu 429.
 >
-> Limit klucza warstwy bezpłatnej wynosi 1 RPS.
+> Limit klucza warstwy bezpłatnej wynosi 1 RPS.
 
 ## <a name="add-transcript-to-video-review"></a>Dodawanie transkrypcji do przeglądu wideo
 
@@ -234,15 +234,15 @@ Oprócz dodawania transkrypcji do przeglądu wideo, można również dodać wyni
 1. Ciąg zawierający typ MIME, który powinien mieć wartość "Application/JSON". 
 1. Nazwa zespołu Content Moderator.
 1. Identyfikator przeglądu wideo zwrócony przez **CreateVideoReviews**.
-1. > 0TranscriptModerationBodyItem. **TranscriptModerationBodyItem** ma następujące właściwości:
-1. **Warunki**. > 0TranscriptModerationBodyItemTermsItem. **TranscriptModerationBodyItemTermsItem** ma następujące właściwości:
+1. Element IList\<TranscriptModerationBodyItem >. **TranscriptModerationBodyItem** ma następujące właściwości:
+1. **Warunki**. Element IList\<TranscriptModerationBodyItemTermsItem >. **TranscriptModerationBodyItemTermsItem** ma następujące właściwości:
 1. **Indeks**. Indeks warunku liczony od zera.
 1. **Termin**. Ciąg, który zawiera termin.
 1. **Sygnatura czasowa**. Ciąg zawierający w sekundach czas w transkrypcji, w którym znajdują się warunki.
 
 Transkrypcja musi być w formacie WebVTT. Aby uzyskać więcej informacji, zobacz [WebVTT: format danych wideo w sieci Web](https://www.w3.org/TR/webvtt1/).
 
-Dodaj następującą definicję metody do VideoTranscriptReviews przestrzeni nazw, programu klasy. Ta metoda przesyła transkrypcję do metody **ContentModeratorClient. Textłagodzenie. ScreenText** . Tłumaczy również wynik na element IList \<TranscriptModerationBodyItem > i przesyła do **AddVideoTranscriptModerationResult**.
+Dodaj następującą definicję metody do VideoTranscriptReviews przestrzeni nazw, programu klasy. Ta metoda przesyła transkrypcję do metody **ContentModeratorClient. Textłagodzenie. ScreenText** . Tłumaczy również wynik na element IList\<TranscriptModerationBodyItem > i przesyła do **AddVideoTranscriptModerationResult**.
 
 ```csharp
 /// <summary>
@@ -366,7 +366,7 @@ Press any key to close the application.
 
 ## <a name="navigate-to-your-video-transcript-review"></a>Przejdź do przeglądu transkrypcji wideo
 
-Przejdź do przeglądu transkrypcji wideo w narzędziu Content Moderator recenzja na ekranie **przegląd** >**wideo** >**transkrypcji** .
+Przejdź do przeglądu transkrypcji wideo w narzędziu Content Moderator recenzja na ekranie **przegląd**>**wideo**>**transkrypcji** .
 
 Zobaczysz następujące funkcje:
 - Dwa wiersze dodanego transkrypcji

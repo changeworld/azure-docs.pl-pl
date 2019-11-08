@@ -10,12 +10,12 @@ ms.service: billing
 ms.topic: article
 ms.date: 05/30/2019
 ms.author: byvinyal
-ms.openlocfilehash: 71e4b62ddcb3f144b49b99e6ba95a47971d3f4bb
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
-ms.translationtype: MT
+ms.openlocfilehash: 12e9367ca9e330806af4c7cc5db626edddff5c25
+ms.sourcegitcommit: 018e3b40e212915ed7a77258ac2a8e3a660aaef8
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73476885"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73795251"
 ---
 # <a name="azure-subscription-and-service-limits-quotas-and-constraints"></a>Limity subskrypcji i usługi Azure, przydziały i ograniczenia
 Ten dokument zawiera listę najbardziej typowych limitów Microsoft Azure, które są również czasami nazywane przydziałami. Ten dokument nie obejmuje obecnie wszystkich usług platformy Azure. Wraz z upływem czasu lista zostanie rozszerzona i zaktualizowana w celu objęcia dodatkowych usług.
@@ -48,6 +48,7 @@ Na poniższej liście limitów Nowa tabela odzwierciedla wszelkie różnice w li
 * [Automation](#automation-limits)
 * [Azure Cache for Redis](#azure-cache-for-redis-limits)
 * [Azure Cloud Services](#azure-cloud-services-limits)
+* [Wyszukiwanie poznawcze platformy Azure](#azure-cognitive-search-limits)
 * [Azure Cognitive Services](#azure-cognitive-services-limits)
 * [Azure Cosmos DB](#azure-cosmos-db-limits)
 * [Azure Database for MySQL](#azure-database-for-mysql)
@@ -60,7 +61,6 @@ Na poniższej liście limitów Nowa tabela odzwierciedla wszelkie różnice w li
 * [Azure Maps](#azure-maps-limits)
 * [Azure Monitor](#azure-monitor-limits)
 * [Azure Policy](#azure-policy-limits)
-* [Usługa Azure Search](#azure-search-limits)
 * [Usługa sygnałów platformy Azure](#azure-signalr-service-limits)
 * [Tworzenie kopii zapasowych](#backup-limits)
 * [Batch](#batch-limits)
@@ -270,7 +270,7 @@ Aby uzyskać Azure Database for MySQL limitów, zobacz [ograniczenia w Azure Dat
 ### <a name="azure-database-for-postgresql"></a>Azure Database for PostgreSQL
 Aby uzyskać Azure Database for PostgreSQL limitów, zobacz [ograniczenia w Azure Database for PostgreSQL](postgresql/concepts-limits.md).
 
-### <a name="azure-search-limits"></a>Limity Azure Search
+### <a name="azure-cognitive-search-limits"></a>Limity Wyszukiwanie poznawcze platformy Azure
 Warstwy cenowe określają pojemność i limity usługi wyszukiwania. Warstwy obejmują:
 
 * **Bezpłatna** usługa wielodostępna, współdzielona z innymi subskrybentami platformy Azure, jest przeznaczona do oceny i małych projektów deweloperskich.
@@ -285,7 +285,7 @@ Warstwy cenowe określają pojemność i limity usługi wyszukiwania. Warstwy ob
 
 [!INCLUDE [azure-search-limits-per-service](../includes/azure-search-limits-per-service.md)]
 
-Aby dowiedzieć się więcej na temat limitów na bardziej szczegółowym poziomie, takich jak rozmiar dokumentu, zapytania na sekundę, klucze, żądania i odpowiedzi, zobacz [limity usługi w Azure Search](search/search-limits-quotas-capacity.md).
+Aby dowiedzieć się więcej na temat limitów na bardziej szczegółowym poziomie, takich jak rozmiar dokumentu, zapytania na sekundę, klucze, żądania i odpowiedzi, zobacz [limity usługi w usłudze Azure wyszukiwanie poznawcze](search/search-limits-quotas-capacity.md).
 
 ### <a name="media-services-limits"></a>Limity Media Services
 [!INCLUDE [azure-mediaservices-limits](../includes/azure-mediaservices-limits.md)]

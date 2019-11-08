@@ -7,12 +7,12 @@ ms.topic: article
 ms.author: mbaldwin
 ms.date: 08/06/2019
 ms.custom: seodec18
-ms.openlocfilehash: 026b5d219bee34dd846990d54e691039d1c6e458
-ms.sourcegitcommit: 824e3d971490b0272e06f2b8b3fe98bbf7bfcb7f
+ms.openlocfilehash: 0d4e76f4d02b0287770243bfddf995a19f90d232
+ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/10/2019
-ms.locfileid: "72245073"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73749448"
 ---
 # <a name="azure-disk-encryption-troubleshooting-guide"></a>Przewodnik rozwiązywania problemów Azure Disk Encryption
 
@@ -24,13 +24,13 @@ Przed wykonaniem poniższych czynności należy najpierw upewnić się, że masz
 - [Wymagania dotyczące zasad grupy](disk-encryption-overview.md#group-policy-requirements)
 - [Wymagania dotyczące magazynu kluczy szyfrowania](disk-encryption-overview.md#encryption-key-storage-requirements)
 
-[!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
+ 
 
 ## <a name="troubleshooting-azure-disk-encryption-behind-a-firewall"></a>Rozwiązywanie problemów Azure Disk Encryption za zaporą
 
 Gdy łączność jest ograniczona przez ustawienia zapory, wymagania serwera proxy lub sieciowej grupy zabezpieczeń (sieciowej grupy zabezpieczeń), zdolność rozszerzenia do wykonywania wymaganych zadań może być zakłócona. Zakłócenia te mogą spowodować komunikaty o stanie, takie jak "stan rozszerzenia nie jest dostępny na maszynie wirtualnej". W oczekiwanych scenariuszach szyfrowanie nie powiedzie się. Poniższe sekcje zawierają kilka typowych problemów z zaporą, które mogą być zbadane.
 
-### <a name="network-security-groups"></a>Sieciowe grupy zabezpieczeń
+### <a name="network-security-groups"></a>Grupy zabezpieczeń sieci
 Wszystkie ustawienia sieciowej grupy zabezpieczeń, które są stosowane, muszą nadal zezwalać, aby punkt końcowy spełniał udokumentowane [wymagania wstępne](disk-encryption-overview.md#networking-requirements) konfiguracji sieci na potrzeby szyfrowania dysku.
 
 ### <a name="azure-key-vault-behind-a-firewall"></a>Azure Key Vault za zaporą
