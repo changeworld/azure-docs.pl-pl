@@ -487,6 +487,8 @@
                   href: service-fabric-application-secret-management-windows.md
                 - name: Konfigurowanie certyfikatu szyfrowania i szyfrowanie wpisów tajnych w systemie Linux
                   href: service-fabric-application-secret-management-linux.md
+                - name: Bezpieczne przechowywanie wpisów tajnych za pomocą funkcji KeyVaultReference (wersja zapoznawcza)
+                  href: service-fabric-keyvault-references.md
             - name: Konfigurowanie zwrotnego serwera proxy na potrzeby bezpiecznej komunikacji
               href: service-fabric-reverseproxy-configure-secure-communication.md
             - name: Uruchamianie skryptu uruchamiania usługi za pomocą użytkownika lokalnego lub konta systemowego
