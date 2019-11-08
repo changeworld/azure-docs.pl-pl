@@ -17,12 +17,12 @@ ms.workload: identity
 ms.date: 04/11/2019
 ms.author: nacanuma
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ad79ee0fd1d421c7e869424ccb8daa595e51a970
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.openlocfilehash: 5ca9a8b87713508a581a833f60fbe863fd93919a
+ms.sourcegitcommit: 018e3b40e212915ed7a77258ac2a8e3a660aaef8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73149411"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73795611"
 ---
 # <a name="quickstart-sign-in-users-and-get-an-access-token-in-a-javascript-spa"></a>Szybki Start: Logowanie użytkowników i uzyskiwanie tokenu dostępu w usłudze JavaScript SPA
 
@@ -80,12 +80,11 @@ Wybierz opcję odpowiednią dla Twojego środowiska programistycznego:
 
 * Obowiązkowe Aby uruchomić projekt z serwerem IIS, [Pobierz projekt programu Visual Studio](https://github.com/Azure-Samples/active-directory-javascript-graphapi-v2/archive/vsquickstart.zip). Wyodrębnij plik zip do folderu lokalnego (na przykład *C:\Azure-Samples*).
 
-#### <a name="step-3-configure-your-javascript-app"></a>Krok 3. Konfigurowanie aplikacji JavaScript
-
 > [!div renderon="docs"]
+> #### <a name="step-3-configure-your-javascript-app"></a>Krok 3. Konfigurowanie aplikacji JavaScript
 > W folderze *JavaScriptSPA* Edytuj *plik index. html*i ustaw wartości `clientID` i `authority` w obszarze `msalConfig`.
 
-> [!div class="sxs-lookup" renderon="portal"]
+> [!div renderon="docs"]
 > W folderze *JavaScriptSPA* Edytuj *plik index. html*i Zastąp `msalConfig` następującym kodem:
 
 ```javascript
@@ -102,14 +101,10 @@ var msalConfig = {
 };
 
 ```
-> [!div renderon="portal"]
-> > [!NOTE]
-> > Ten przewodnik Szybki Start obsługuje Enter_the_Supported_Account_Info_Here.
-
 
 > [!div renderon="docs"]
 >
-> Miejsce:
+> Gdzie:
 > - *\<Enter_the_Application_Id_here >* to **Identyfikator aplikacji (klienta)** dla zarejestrowanej aplikacji.
 > - *\<Enter_the_Tenant_info_here >* jest ustawiona na jedną z następujących opcji:
 >    - Jeśli aplikacja obsługuje *konta w tym katalogu organizacyjnym*, Zastąp tę wartość **identyfikatorem dzierżawy** lub **nazwą dzierżawy** (na przykład *contoso.Microsoft.com*).
@@ -120,7 +115,12 @@ var msalConfig = {
 > > Aby znaleźć wartości **Identyfikator aplikacji (klienta)** , **Identyfikator katalogu (dzierżawy)** i **Obsługiwane typy kont**, przejdź do strony **Przegląd** w witrynie Azure Portal.
 >
 
-#### <a name="step-4-run-the-project"></a>Krok 4. uruchamianie projektu
+> [!div class="sxs-lookup" renderon="portal"]
+> #### <a name="step-3-your-app-is-configured-and-ready-to-run"></a>Krok 3. Twoja aplikacja jest skonfigurowana i gotowa do uruchomienia
+> Twój projekt został skonfigurowany z wartościami właściwości aplikacji. 
+
+> [!div renderon="docs"]
+> #### <a name="step-4-run-the-project"></a>Krok 4. uruchamianie projektu
 
 * Jeśli używasz środowiska [Node. js](https://nodejs.org/en/download/):
 

@@ -1,22 +1,20 @@
 ---
-title: Plan Azure Functions Premium (wersja zapoznawcza) | Microsoft Docs
+title: Plan Premium usługi Azure Functions
 description: Szczegóły i opcje konfiguracji (Sieć wirtualna, brak nieograniczonego czasu wykonywania) dla planu Azure Functions Premium.
-services: functions
 author: jeffhollan
-manager: jeconnoc
-ms.assetid: ''
+manager: gwallace
 ms.service: azure-functions
 ms.topic: conceptual
-ms.date: 4/11/2019
+ms.date: 10/16/2019
 ms.author: jehollan
-ms.openlocfilehash: ce83d521d5bc986be7bb24ef874f1f0e1051e3ae
-ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
+ms.openlocfilehash: 8cda3ce85e6e7e9d5d7787406eb3b9785c1f7724
+ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/22/2019
-ms.locfileid: "72755410"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73719032"
 ---
-# <a name="azure-functions-premium-plan-preview"></a>Plan Azure Functions Premium (wersja zapoznawcza)
+# <a name="azure-functions-premium-plan"></a>Plan Premium usługi Azure Functions
 
 Plan Azure Functions Premium to opcja hostingu dla aplikacji funkcji. Plan Premium oferuje funkcje, takie jak łączność sieci wirtualnej, sprzęt zimnego startu i Premium.  Wiele aplikacji funkcji można wdrożyć w tym samym planie Premium, a plan umożliwia skonfigurowanie rozmiaru wystąpienia obliczeniowego, rozmiaru planu bazowego i maksymalnego rozmiaru planu.  Aby zapoznać się z porównaniem planu Premium i innych typów planów i hostingu, zobacz [Funkcja skalowanie i opcje hostingu](functions-scale.md).
 
@@ -59,7 +57,7 @@ az resource update -g <resource_group> -n <function_app_name>/config/web --set p
 
 Azure Functions wdrożone w planie Premium wykorzystuje [nową integrację sieci wirtualnej dla usługi Web Apps](../app-service/web-sites-integrate-with-vnet.md).  Po skonfigurowaniu aplikacja może komunikować się z zasobami w sieci wirtualnej lub zabezpieczonymi za pośrednictwem punktów końcowych usługi.  Ograniczenia adresów IP są również dostępne w aplikacji w celu ograniczenia ruchu przychodzącego.
 
-Podczas przypisywania podsieci do aplikacji funkcji w planie Premium potrzebna jest podsieć z wystarczającą liczbą adresów IP dla każdego potencjalnego wystąpienia. Chociaż maksymalna liczba wystąpień może się różnić w wersji zapoznawczej, wymagamy bloku IP z co najmniej 100 dostępnych adresów.
+Podczas przypisywania podsieci do aplikacji funkcji w planie Premium potrzebna jest podsieć z wystarczającą liczbą adresów IP dla każdego potencjalnego wystąpienia. Wymagamy bloku IP z co najmniej 100 dostępnych adresów.
 
 Aby uzyskać więcej informacji, zobacz [Integrowanie aplikacji funkcji z siecią wirtualną](functions-create-vnet.md).
 
@@ -71,11 +69,9 @@ Dodatkowe wystąpienia obliczeniowe są automatycznie dodawane do aplikacji przy
 
 Azure Functions w planie zużycia są ograniczone do 10 minut w przypadku pojedynczego wykonania.  W planie Premium wartość czasu trwania przebiegu jest domyślnie równa 30 minut, aby uniemożliwić przemijające wykonania. Można jednak [zmodyfikować konfigurację pliku host. JSON](./functions-host-json.md#functiontimeout) w taki sposób, aby nie były one powiązane z aplikacjami planu Premium.
 
-W wersji zapoznawczej czas trwania nie jest gwarantowany w ciągu ostatnich 12 minut i będzie miał najlepszą szansę uruchomienia ponad 30 minut, jeśli Twoja aplikacja nie będzie skalowana poza minimalną liczbą procesów roboczych.
-
 ## <a name="plan-and-sku-settings"></a>Ustawienia planu i jednostki SKU
 
-Podczas tworzenia planu można skonfigurować dwa ustawienia: minimalną liczbę wystąpień (lub rozmiar planu) i maksymalny limit.  Minimalne wystąpienia planu Premium to 1, a maksymalna liczba serii w wersji zapoznawczej to 20.  Minimalna liczba wystąpień jest zarezerwowana i zawsze uruchomiona.
+Podczas tworzenia planu można skonfigurować dwa ustawienia: minimalną liczbę wystąpień (lub rozmiar planu) i maksymalny limit.  Minimalna liczba wystąpień jest zarezerwowana i zawsze uruchomiona.
 
 > [!IMPORTANT]
 > Opłaty są naliczane za każde wystąpienie przydzieloną w minimalnej liczbie wystąpień niezależnie od tego, czy funkcje są wykonywane, czy nie.
@@ -94,7 +90,7 @@ az resource update -g <resource_group> -n <premium_plan_name> --set properties.m
 
 Podczas tworzenia lub skalowania planu można wybrać jeden z trzech rozmiarów wystąpień.  Opłaty zostaną naliczone za łączną liczbę rdzeni i zużywaną pamięć na sekundę.  Aplikacja może automatycznie skalować w poziomie do wielu wystąpień stosownie do potrzeb.  
 
-|JSZ|Rdzenie|Pamięć|Usługa Storage|
+|SKU|Rdzenie|Memory (Pamięć)|Magazyn|
 |--|--|--|--|
 |EP1|1|3,5 GB|250 GB|
 |EP2|2|7GB|250 GB|
@@ -102,15 +98,15 @@ Podczas tworzenia lub skalowania planu można wybrać jeden z trzech rozmiarów 
 
 ## <a name="regions"></a>Regiony
 
-Poniżej znajdują się obecnie obsługiwane regiony dla publicznej wersji zapoznawczej dla każdego systemu operacyjnego.
+Poniżej znajdują się obecnie obsługiwane regiony dla każdego systemu operacyjnego.
 
 |Region| Windows | Linux |
 |--| -- | -- |
-|Australia Środkowa| ✔ * | |
-|Australia Środkowa 2| ✔ * | |
+|Australia Środkowa| ✔<sup>1</sup> | |
+|Australia Środkowa 2| ✔<sup>1</sup> | |
 |Australia Wschodnia| ✔ | |
 |Australia Południowo-Wschodnia | ✔ | ✔ |
-|Brazylia Południowa| ✔ * * |  |
+|Brazylia Południowa| ✔<sup>2</sup> |  |
 |Kanada Środkowa| ✔ |  |
 |Środkowe stany USA| ✔ |  |
 |Azja Wschodnia| ✔ |  |
@@ -120,9 +116,9 @@ Poniżej znajdują się obecnie obsługiwane regiony dla publicznej wersji zapoz
 |Japonia Wschodnia| ✔ | ✔ |
 |Japonia Zachodnia| ✔ | |
 |Korea Środkowa| ✔ |  |
-|Północno-środkowe stany USA| ✔ |  |
+|Środkowo-północne stany USA| ✔ |  |
 |Europa Północna| ✔ | ✔ |
-|Południowo-środkowe stany USA| ✔ |  |
+|Środkowo-południowe stany USA| ✔ |  |
 |Indie Południowe | ✔ | |
 |Azja Południowo-Wschodnia| ✔ | ✔ |
 |Południowe Zjednoczone Królestwo| ✔ | |
@@ -130,14 +126,11 @@ Poniżej znajdują się obecnie obsługiwane regiony dla publicznej wersji zapoz
 |Europa Zachodnia| ✔ | ✔ |
 |Indie Zachodnie| ✔ |  |
 |Zachodnie stany USA| ✔ | ✔ |
+|Zachodnie stany USA 2| ✔ |  |
 
-\* maksymalna skala w poziomie ograniczona do 20 wystąpień
+<sup>1</sup> Maksymalna skalowanie w poziomie jest ograniczone do 20 wystąpień.  
+<sup>2</sup> Maksymalna wartość skalowania w poziomie ograniczona do 60 wystąpień.
 
-\** Maksymalna długość skalowania w poziomie ograniczona do 60 wystąpień
-
-## <a name="known-issues"></a>Znane problemy
-
-Stan znanych problemów z [publicznej wersji zapoznawczej można śledzić w witrynie GitHub](https://github.com/Azure/Azure-Functions/wiki/Premium-plan-known-issues).
 
 ## <a name="next-steps"></a>Następne kroki
 

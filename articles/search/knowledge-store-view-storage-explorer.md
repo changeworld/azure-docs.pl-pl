@@ -1,34 +1,34 @@
 ---
-title: Wyświetlanie sklepu z bazami danych za pomocą Eksplorator usługi Storage
+title: Wyświetlanie magazynu wiedzy (wersja zapoznawcza) za pomocą Eksplorator usługi Storage
 titleSuffix: Azure Cognitive Search
-description: Przeglądaj i Analizuj Wyszukiwanie poznawcze sklepu z bazami danych platformy Azure, korzystając z Eksplorator usługi Storage Azure Portal.
+description: Przeglądaj i Analizuj Wyszukiwanie poznawcze sklepu z bazami danych platformy Azure, korzystając z Eksplorator usługi Storage Azure Portal. Magazyn wiedzy jest obecnie w publicznej wersji zapoznawczej.
 manager: nitinme
 author: lisaleib
 ms.author: v-lilei
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 9ba11b69a51a5bc563764a7e75189bed67cb2ac6
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
-ms.translationtype: HT
+ms.openlocfilehash: e3ea879a419aa14d3a6693e23f4f120aca8d9d51
+ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73484993"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73720052"
 ---
 # <a name="view-a-knowledge-store-with-storage-explorer"></a>Wyświetlanie sklepu z bazami danych za pomocą Eksplorator usługi Storage
 
-> [!Note]
-> Magazyn wiedzy jest w wersji zapoznawczej i nie powinien być używany w środowisku produkcyjnym. Ta funkcja jest dostępna w portalu i [interfejsie API REST usługi Search w wersji 2019-05-06 — wersja zapoznawcza](search-api-preview.md) . W tej chwili nie ma obsługi zestawu SDK platformy .NET.
->
+> [!IMPORTANT] 
+> Magazyn wiedzy jest obecnie w publicznej wersji zapoznawczej. Funkcje wersji zapoznawczej są dostępne bez umowy dotyczącej poziomu usług i nie są zalecane w przypadku obciążeń produkcyjnych. Aby uzyskać więcej informacji, zobacz [Uzupełniające warunki korzystania z wersji zapoznawczych platformy Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/). [Interfejs API REST w wersji 2019-05-06 — wersja zapoznawcza](search-api-preview.md) zapewnia funkcje w wersji zapoznawczej. Dostępna jest obecnie ograniczona obsługa portalu i nie ma obsługi zestawu SDK platformy .NET.
+
 W tym artykule przedstawiono przykład sposobu nawiązywania połączenia z magazynem wiedzy i eksplorowania go przy użyciu Eksplorator usługi Storage w Azure Portal.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-+ Wykonaj kroki opisane w temacie [Tworzenie magazynu wiedzy w Azure Portal](knowledge-store-create-portal.md) , aby utworzyć przykładowy magazyn wiedzy używany w tym instruktażu.
++ Postępuj zgodnie z instrukcjami w temacie [Tworzenie sklepu z bazami danych w Azure Portal](knowledge-store-create-portal.md) lub [Utwórz magazyn wiedzy Azure wyszukiwanie poznawcze przy użyciu opcji REST](knowledge-store-create-rest.md) , aby utworzyć przykładowy magazyn wiedzy użyty w tym instruktażu.
 
 + Potrzebna będzie również nazwa konta usługi Azure Storage, które zostało użyte do utworzenia magazynu wiedzy, wraz z jego kluczem dostępu z poziomu Azure Portal.
 
-## <a name="view-edit-and-query-a-knowledge-store-in-storage-explorer"></a>Wyświetlaj, Edytuj i badaj magazyn wiedzy w Eksplorator usługi Storage
+## <a name="view-edit-and-query-a-knowledge-store-in-storage-explorer"></a>Wyświetlanie, edytowanie i tworzenie zapytań dotyczących sklepu z bazami danych w Eksplorator usługi Storage
 
 1. W Azure Portal [Otwórz konto magazynu](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Storage%2storageAccounts/) używane do tworzenia sklepu z bazami danych.
 

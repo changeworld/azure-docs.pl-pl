@@ -1,6 +1,6 @@
 ---
-title: 'Szybki Start: jak używać tematów Azure Service Bus w języku Python'
-description: 'Szybki Start: informacje dotyczące korzystania z Azure Service Bus tematów i subskrypcji w języku Python.'
+title: 'Szybki Start: korzystanie z Azure Service Bus tematów i subskrypcji w języku Python'
+description: Dowiedz się, jak używać tematów i subskrypcji Azure Service Bus w języku Python.
 services: service-bus-messaging
 documentationcenter: python
 author: axisc
@@ -14,57 +14,56 @@ ms.devlang: python
 ms.topic: quickstart
 ms.date: 11/05/2019
 ms.author: aschhab
-ms.openlocfilehash: 8f7d47879a025742dbca6a5cafa634899e60ee68
-ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
+ms.openlocfilehash: 94a49b31139947c6323ab391b78ecd03ee911e0a
+ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 11/07/2019
-ms.locfileid: "73719179"
+ms.locfileid: "73748493"
 ---
-# <a name="quickstart-how-to-use-service-bus-topics-and-subscriptions-with-python"></a>Szybki Start: jak używać tematów Service Bus i subskrypcji w języku Python
+# <a name="quickstart-use-service-bus-topics-and-subscriptions-with-python"></a>Szybki Start: korzystanie z Service Bus tematów i subskrypcji w języku Python
 
 [!INCLUDE [service-bus-selector-topics](../../includes/service-bus-selector-topics.md)]
 
-W tym artykule opisano sposób używania tematów i subskrypcji usługi Service Bus. Przykłady są zapisywane w języku Python i używają [pakietu SDK języka Python platformy Azure][Azure Python package]. Omówione scenariusze obejmują:
+W tym artykule opisano sposób korzystania z języka Python z tematami i subskrypcjami Azure Service Bus. Przykłady używają pakietu [Azure Python SDK][Azure Python package] , aby: 
 
-- Tworzenie tematów i subskrypcji 
-- Tworzenie filtrów subskrypcji 
-- Wysyłanie komunikatów do tematu 
-- Otrzymywanie komunikatów z subskrypcji
+- Tworzenie tematów i subskrypcji tematów
+- Tworzenie filtrów i reguł subskrypcji
+- Wysyłanie komunikatów do tematów 
+- Odbieranie komunikatów z subskrypcji
 - Usuwanie tematów i subskrypcji
 
 ## <a name="prerequisites"></a>Wymagania wstępne
-1. Subskrypcja platformy Azure. Do ukończenia tego samouczka jest potrzebne konto platformy Azure. Możesz aktywować korzyści dla [subskrybentów programu Visual Studio lub MSDN](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/?WT.mc_id=A85619ABF) lub utworzyć [bezpłatne konto](https://azure.microsoft.com/free/?WT.mc_id=A85619ABF).
-2. Wykonaj kroki opisane w [przewodniku szybki start: użyj Azure Portal, aby utworzyć temat Service Bus i subskrypcje w temacie](service-bus-quickstart-topics-subscriptions-portal.md) w celu utworzenia **przestrzeni nazw** Service Bus i pobrania **parametrów połączenia**.
+- Subskrypcja platformy Azure. Możesz aktywować korzyści dla [subskrybentów programu Visual Studio lub MSDN](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/?WT.mc_id=A85619ABF) lub utworzyć [bezpłatne konto](https://azure.microsoft.com/free/?WT.mc_id=A85619ABF).
+- Przestrzeń nazw Service Bus utworzona przez wykonanie kroków opisanych w [sekcji szybki start: użyj Azure Portal, aby utworzyć temat Service Bus i subskrypcje](service-bus-quickstart-topics-subscriptions-portal.md). Skopiuj nazwę przestrzeni nazw, nazwę klucza dostępu współdzielonego i wartość klucza podstawowego z ekranu **zasad dostępu współdzielonego** do użycia w dalszej części tego przewodnika Szybki Start. 
+- Program Python 3.4 x lub nowszy z zainstalowanym pakietem [SDK języka Python platformy Azure][Azure Python package] . Aby uzyskać więcej informacji, zobacz [Przewodnik instalacji języka Python](/azure/python/python-sdk-azure-install).
 
-    > [!NOTE]
-    > W tym przewodniku szybki start utworzysz **temat** i **subskrypcję** tematu przy użyciu języka **Python** . 
-3. Zainstaluj [pakiet platformy Azure][Azure Python package]w języku Python. Zobacz [Przewodnik instalacji języka Python](/azure/python/python-sdk-azure-install).
+## <a name="create-a-servicebusservice-object"></a>Tworzenie obiektu ServiceBusService
 
-## <a name="create-a-topic"></a>Tworzenie tematu
-
-Obiekt **ServiceBusService** umożliwia współpracę z tematami. Dodaj następujący kod w górnej części każdego pliku języka Python, do którego chcesz programowo uzyskać dostęp Service Bus:
+Obiekt **ServiceBusService** umożliwia korzystanie z tematów i subskrypcji z tematami. Aby programowo uzyskać dostęp do Service Bus, Dodaj następujący wiersz w górnej części pliku języka Python:
 
 ```python
 from azure.servicebus.control_client import ServiceBusService, Message, Topic, Rule, DEFAULT_RULE_NAME
 ```
 
-Poniższy kod tworzy obiekt **ServiceBusService** . Zastąp `mynamespace`, `sharedaccesskeyname`i `sharedaccesskey` rzeczywistą przestrzenią nazw, nazwą klucza sygnatury dostępu współdzielonego (SAS) i wartością klucza.
+Dodaj następujący kod, aby utworzyć obiekt **ServiceBusService** . Zastąp `<namespace>`, `<sharedaccesskeyname>`i `<sharedaccesskeyvalue>` nazwą przestrzeni nazw Service Bus, nazwą klucza sygnatury dostępu współdzielonego (SAS) i wartością klucza podstawowego. Te wartości można znaleźć w obszarze **zasady dostępu współdzielonego** w przestrzeni nazw Service Bus w [Azure Portal][Azure portal].
 
 ```python
 bus_service = ServiceBusService(
-    service_namespace='mynamespace',
-    shared_access_key_name='sharedaccesskeyname',
-    shared_access_key_value='sharedaccesskey')
+    service_namespace='<namespace>',
+    shared_access_key_name='<sharedaccesskeyname>',
+    shared_access_key_value='<sharedaccesskeyvalue>')
 ```
 
-Można uzyskać wartości dla nazwy i wartości klucza sygnatury dostępu współdzielonego z [Azure Portal][Azure portal].
+## <a name="create-a-topic"></a>Tworzenie tematu
+
+Poniższy kod używa metody `create_topic` do utworzenia tematu Service Bus o nazwie `mytopic`z ustawieniami domyślnymi:
 
 ```python
 bus_service.create_topic('mytopic')
 ```
 
-Metoda `create_topic` obsługuje również dodatkowe opcje, które umożliwiają przesłonięcie domyślnych ustawień tematu, takich jak czas wygaśnięcia komunikatów lub maksymalny rozmiar tematu. W poniższym przykładzie ustawiono maksymalny rozmiar tematu do 5 GB, a wartość czasu wygaśnięcia (TTL) wynosi jedna minuta:
+Możesz użyć opcji tematu, aby przesłonić domyślne ustawienia tematu, takie jak czas wygaśnięcia komunikatu (TTL) lub maksymalny rozmiar tematu. Poniższy przykład tworzy temat o nazwie `mytopic` z maksymalnym rozmiarem tematu wynoszącym 5 GB i domyślnym czasem wygaśnięcia komunikatu o pojedynczej minucie:
 
 ```python
 topic_options = Topic()
@@ -76,134 +75,127 @@ bus_service.create_topic('mytopic', topic_options)
 
 ## <a name="create-subscriptions"></a>Tworzenie subskrypcji
 
-Subskrypcje dotyczące tematów również są tworzone za pomocą obiektu **ServiceBusService** . Subskrypcje mają nazwę i mogą mieć opcjonalny filtr, który ogranicza zestaw komunikatów dostarczonych do kolejki wirtualnej subskrypcji.
-
-> [!NOTE]
-> Domyślnie subskrypcje są trwałe i będą nadal istnieć do momentu, aż zostaną usunięte lub temat, do którego subskrybujesz.
-> 
-> Subskrypcje mogą być automatycznie usuwane przez ustawienie [Właściwości auto_delete_on_idle](https://docs.microsoft.com/python/api/azure-mgmt-servicebus/azure.mgmt.servicebus.models.sbsubscription?view=azure-python).
-
-### <a name="create-a-subscription-with-the-default-matchall-filter"></a>Tworzenie subskrypcji z filtrem domyślnym (MatchAll)
-
-Jeśli podczas tworzenia nowej subskrypcji nie zostanie określony żaden filtr, zostanie użyty filtr **MatchAll** (domyślnie). Gdy filtr **MatchAll** jest używany, wszystkie komunikaty opublikowane w temacie są umieszczane w kolejce wirtualnej subskrypcji. Poniższy przykład tworzy subskrypcję o nazwie `AllMessages` i używa domyślnego filtru **MatchAll** .
+Możesz również użyć obiektu **ServiceBusService** , aby utworzyć subskrypcje do tematów. Subskrypcja może mieć filtr, aby ograniczyć zestaw komunikatów dostarczonych do jego kolejki wirtualnej. Jeśli nie określisz filtru, nowe subskrypcje będą używały domyślnego filtru **MatchAll** , który umieści wszystkie komunikaty opublikowane w temacie do kolejki wirtualnej subskrypcji. Poniższy przykład tworzy subskrypcję `mytopic` o nazwie `AllMessages`, która używa filtru **MatchAll** :
 
 ```python
 bus_service.create_subscription('mytopic', 'AllMessages')
 ```
 
-### <a name="create-subscriptions-with-filters"></a>Tworzenie subskrypcji z filtrami
+### <a name="use-filters-with-subscriptions"></a>Używanie filtrów z subskrypcjami
 
-Można również zdefiniować filtry, które umożliwiają określenie, które komunikaty wysyłane do tematu powinny być wyświetlane w ramach subskrypcji określonego tematu.
+Użyj metody `create_rule` obiektu **ServiceBusService** , aby odfiltrować komunikaty, które są wyświetlane w ramach subskrypcji. Możesz określić reguły podczas tworzenia subskrypcji lub dodać reguły do istniejących subskrypcji.
 
-Najbardziej elastycznym typem filtru obsługiwanym przez subskrypcje jest obiekt **sqlfilter**, który IMPLEMENTUJE podzestaw standardu SQL92. Filtry SQL działają na właściwościach komunikatów, które są publikowane do tematu. Aby uzyskać więcej informacji na temat wyrażeń, które mogą być używane z filtrem SQL, zobacz składnię [SqlFilter.SqlExpression][SqlFilter.SqlExpression].
+Najbardziej elastycznym typem filtru jest **xmlfilter**, który używa podzestawu SQL-92. Filtry SQL działają na podstawie właściwości komunikatów opublikowanych w temacie. Aby uzyskać więcej informacji na temat wyrażeń, których można używać z filtrem SQL, zobacz składnię [sqlfilter. sqlexpression][SqlFilter.SqlExpression] .
 
-Filtry do subskrypcji można dodać przy użyciu metody **tworzenia reguły\_** obiektu **ServiceBusService** . Ta metoda umożliwia dodanie nowych filtrów do istniejącej subskrypcji.
+Ponieważ domyślny filtr **MatchAll** jest automatycznie stosowany do wszystkich nowych subskrypcji, należy usunąć go z subskrypcji, które mają być filtrowane, lub **MatchAll** przesłonić wszystkie inne określone filtry. Można usunąć regułę domyślną przy użyciu metody `delete_rule` obiektu **ServiceBusService** .
 
-> [!NOTE]
-> Ponieważ domyślny filtr jest automatycznie stosowany do wszystkich nowych subskrypcji, należy najpierw usunąć filtr domyślny lub **MatchAll** zastępuje wszystkie inne filtry, które można określić. Można usunąć regułę domyślną przy użyciu metody `delete_rule` obiektu **ServiceBusService** .
-> 
-> 
-
-Poniższy przykład tworzy subskrypcję o nazwie `HighMessages` przy użyciu elementu **sqlfilter** , który wybiera tylko komunikaty o niestandardowej właściwości `messagenumber` większej niż 3:
+Poniższy przykład tworzy subskrypcję `mytopic` nazwanego `HighMessages`z regułą **sqlfilter** o nazwie `HighMessageFilter`. Reguła `HighMessageFilter` wybiera tylko komunikaty o niestandardowej właściwości `messageposition` większej niż 3:
 
 ```python
 bus_service.create_subscription('mytopic', 'HighMessages')
 
 rule = Rule()
 rule.filter_type = 'SqlFilter'
-rule.filter_expression = 'messagenumber > 3'
+rule.filter_expression = 'messageposition > 3'
 
 bus_service.create_rule('mytopic', 'HighMessages', 'HighMessageFilter', rule)
 bus_service.delete_rule('mytopic', 'HighMessages', DEFAULT_RULE_NAME)
 ```
 
-Podobnie Poniższy przykład tworzy subskrypcję o nazwie `LowMessages` z obiektem **sqlfilter** , który wybiera tylko komunikaty o właściwości `messagenumber` mniejszej lub równej 3:
+Poniższy przykład tworzy subskrypcję `mytopic` nazwanego `LowMessages`z regułą **sqlfilter** o nazwie `LowMessageFilter`. Reguła `LowMessageFilter` wybiera tylko komunikaty o właściwości `messageposition` mniejszej lub równej 3:
 
 ```python
 bus_service.create_subscription('mytopic', 'LowMessages')
 
 rule = Rule()
 rule.filter_type = 'SqlFilter'
-rule.filter_expression = 'messagenumber <= 3'
+rule.filter_expression = 'messageposition <= 3'
 
 bus_service.create_rule('mytopic', 'LowMessages', 'LowMessageFilter', rule)
 bus_service.delete_rule('mytopic', 'LowMessages', DEFAULT_RULE_NAME)
 ```
 
-Teraz, gdy wiadomość jest wysyłana do `mytopic` jest ona zawsze dostarczana do odbiorców, którzy zasubskrybują subskrypcję tematu **AllMessages** , i wybiórczo dostarczane do odbiorników subskrybowanych w temacie **HighMessages** i **LowMessages** subskrypcje (w zależności od zawartości wiadomości).
+W przypadku `AllMessages`, `HighMessages`i `LowMessages` wszystko w efekcie komunikaty wysyłane do `mytopic` są zawsze dostarczane do odbiorców subskrypcji `AllMessages`. Komunikaty są również selektywnie dostarczane do `HighMessages` lub subskrypcji `LowMessages`, w zależności od wartości właściwości `messageposition` komunikatu. 
 
 ## <a name="send-messages-to-a-topic"></a>Wysyłanie komunikatów do tematu
 
-Aby wysłać komunikat do Service Bus tematu, aplikacja musi używać metody `send_topic_message` obiektu **ServiceBusService** .
+Aplikacje używają metody `send_topic_message` obiektu **ServiceBusService** do wysyłania komunikatów do Service Bus temacie.
 
-W poniższym przykładzie pokazano, jak wysłać pięć wiadomości testowych do `mytopic`. Wartość właściwości `messagenumber` każdego komunikatu różni się w zależności od iteracji pętli (określa, które subskrypcje otrzymują ją):
+Poniższy przykład wysyła pięć wiadomości testowych do tematu `mytopic`. Wartość właściwości Custom `messageposition` jest zależna od iteracji pętli i określa, które subskrypcje odbierają wiadomości. 
 
 ```python
 for i in range(5):
     msg = Message('Msg {0}'.format(i).encode('utf-8'),
-                  custom_properties={'messagenumber': i})
+                  custom_properties={'messageposition': i})
     bus_service.send_topic_message('mytopic', msg)
 ```
 
-Tematy usługi Service Bus obsługują maksymalny rozmiar komunikatu 256 KB w [warstwie Standardowa](service-bus-premium-messaging.md) i 1 MB w [warstwie Premium](service-bus-premium-messaging.md). Nagłówek, który zawiera standardowe i niestandardowe właściwości aplikacji, może mieć maksymalny rozmiar 64 KB. Nie ma żadnego limitu liczby komunikatów w temacie, ale jest ograniczenie całkowitego rozmiaru komunikatów przechowywanych przez temat. Rozmiar tematu jest definiowany w czasie tworzenia, z górnym limitem 5 GB. Aby uzyskać więcej informacji na temat przydziałów, zobacz [Service Bus przydziały][Service Bus quotas].
+### <a name="message-size-limits-and-quotas"></a>Limity rozmiaru komunikatów i przydziały
+
+Tematy usługi Service Bus obsługują maksymalny rozmiar komunikatu 256 KB w [warstwie Standardowa](service-bus-premium-messaging.md) i 1 MB w [warstwie Premium](service-bus-premium-messaging.md). Nagłówek, który zawiera standardowe i niestandardowe właściwości aplikacji, może mieć maksymalny rozmiar 64 KB. Nie ma żadnego limitu liczby komunikatów, które mogą być przechowywane w temacie, ale istnieje limit całkowitego rozmiaru komunikatów, które zawiera temat. Możesz zdefiniować rozmiar tematu podczas tworzenia z górnym limitem wynoszącym 5 GB. 
+
+Aby uzyskać więcej informacji na temat przydziałów, zobacz [Service Bus przydziały][Service Bus quotas].
 
 ## <a name="receive-messages-from-a-subscription"></a>Odbieranie komunikatów z subskrypcji
 
-Komunikaty są odbierane z subskrypcji przy użyciu metody `receive_subscription_message` w obiekcie **ServiceBusService** :
+Aplikacje używają metody `receive_subscription_message` w obiekcie **ServiceBusService** do odbierania komunikatów z subskrypcji. Poniższy przykład odbiera komunikaty z subskrypcji `LowMessages` i usuwa je podczas ich odczytywania:
 
 ```python
-msg = bus_service.receive_subscription_message(
-    'mytopic', 'LowMessages', peek_lock=False)
+msg = bus_service.receive_subscription_message('mytopic', 'LowMessages', peek_lock=False)
 print(msg.body)
 ```
 
-Komunikaty są usuwane z subskrypcji, ponieważ są odczytywane, gdy parametr `peek_lock` ma **wartość FAŁSZ**. Można odczytać (wgląd) i zablokować komunikat bez usuwania go z kolejki, ustawiając parametr `peek_lock` na **true**.
+Opcjonalny `peek_lock` parametr `receive_subscription_message` określa, czy Service Bus usuwać wiadomości z subskrypcji podczas ich odczytywania. Domyślnym trybem otrzymywania wiadomości jest *PeekLock*lub `peek_lock` ustawiona na **wartość true**, która odczytuje (dokonuje wglądu) i blokuje komunikaty bez usuwania ich z subskrypcji. Każdy komunikat musi zostać jawnie ukończony, aby usunąć go z subskrypcji.
 
-Zachowanie odczytu i usunięcia komunikatu w ramach operacji odbierania jest najprostszym modelem i najlepiej sprawdza się w scenariuszach, w których aplikacja może tolerować nieprzetwarzanie komunikatu w przypadku wystąpienia błędu. Aby zrozumieć to zachowanie, rozważ scenariusz, w którym odbiorca wystawia żądanie odebrania, a następnie ulega awarii przed jego przetworzeniem. Ponieważ Service Bus oznaczył komunikat jako używany, wtedy, gdy aplikacja zostanie ponownie uruchomiona i rozpocznie korzystanie z komunikatów, zostanie pominięty komunikat, który był używany przed awarią.
+Aby usunąć wiadomości z subskrypcji podczas ich odczytywania, można ustawić **wartość false**dla parametru `peek_lock`, tak jak w poprzednim przykładzie. Usuwanie komunikatów w ramach operacji odbierania jest najprostszym modelem i działa prawidłowo, jeśli aplikacja może tolerować brakujące komunikaty w przypadku wystąpienia błędu. Aby zrozumieć to zachowanie, Rozważmy scenariusz, w którym aplikacja wystawia żądanie odebrania, a następnie uległa awarii przed jego przetworzeniem. Jeśli wiadomość została usunięta podczas odbierania, gdy aplikacja zostanie ponownie uruchomiona i rozpocznie korzystanie z komunikatów, nie dotarła do niej komunikat otrzymany przed awarią.
 
-Jeśli parametr `peek_lock` ma **wartość true**, odbieranie staje się operacją dwuetapową, co umożliwia obsługę aplikacji, które nie mogą tolerować brakujących komunikatów. Gdy usługa Service Bus odbiera żądanie, znajduje następny komunikat do wykorzystania, blokuje go w celu uniemożliwienia innym klientom odebrania go i zwraca go do aplikacji. Gdy aplikacja zakończy przetwarzanie komunikatu (lub zapisuje ją w sposób niezawodny w przyszłości), kończy drugi etap procesu odbierania przez wywołanie `delete` metody dla obiektu **Message** . Metoda `delete` oznacza komunikat jako używany i usuwa go z subskrypcji.
+Jeśli aplikacja nie może tolerować pominiętych komunikatów, odbieranie zostanie operacją dwuetapową. PeekLock wyszukuje następny komunikat do użycia, blokuje go, aby uniemożliwić innym konsumentom otrzymywanie go i zwraca do aplikacji. Po przetworzeniu lub przechowywaniu komunikatu aplikacja wykonuje drugi etap procesu odbierania, wywołując metodę `complete` dla obiektu **Message** .  Metoda `complete` oznacza komunikat jako używany i usuwa go z subskrypcji.
+
+Poniższy przykład ilustruje scenariusz blokady wglądu:
 
 ```python
 msg = bus_service.receive_subscription_message('mytopic', 'LowMessages', peek_lock=True)
 if msg.body is not None:
-print(msg.body)
-msg.delete()
+    print(msg.body)
+    msg.complete()
 ```
 
-## <a name="how-to-handle-application-crashes-and-unreadable-messages"></a>Sposób obsługi awarii aplikacji i komunikatów niemożliwych do odczytania
+## <a name="handle-application-crashes-and-unreadable-messages"></a>Obsługa awarii aplikacji i nieczytelnych wiadomości
 
-Usługa Service Bus zapewnia funkcję ułatwiającą bezpieczne odzyskiwanie w razie błędów w aplikacji lub trudności z przetwarzaniem komunikatu. Jeśli aplikacja odbiornika nie może przetworzyć komunikatu z jakiegoś powodu, może wywołać metodę `unlock` obiektu **Message** . Ta metoda powoduje, że Service Bus odblokowania wiadomości w ramach subskrypcji i udostępnienie jej do ponownego odebrania przez tę samą aplikację lub przez inną aplikację, która korzysta z aplikacji.
+Usługa Service Bus zapewnia funkcję ułatwiającą bezpieczne odzyskiwanie w razie błędów w aplikacji lub trudności z przetwarzaniem komunikatu. Jeśli aplikacja odbiornika nie może przetworzyć komunikatu z jakiegoś powodu, może wywołać metodę `unlock` obiektu **Message** . Service Bus odblokowywanie komunikatu w ramach subskrypcji i udostępnienie go do ponownego odebrania przez tę samą lub inną aplikację, która korzysta z aplikacji.
 
-Istnieje również limit czasu skojarzony z komunikatem zablokowanym w ramach subskrypcji i jeśli aplikacja nie może przetworzyć komunikatu przed upływem limitu czasu blokady (na przykład jeśli awaria aplikacji), Service Bus odblokować komunikat automatycznie i sprawia, że jest on dostępny do ponownego odebrania.
+Istnieje również limit czasu dla komunikatów zablokowanych w ramach subskrypcji. Jeśli aplikacja nie może przetworzyć komunikatu przed upływem limitu czasu blokady, na przykład w przypadku awarii aplikacji Service Bus odblokowywanie komunikatu automatycznie i udostępnienie go do ponownego odebrania.
 
-W przypadku awarii aplikacji po przetworzeniu komunikatu, ale przed wywołaniem metody `delete`, komunikat zostanie ponownie dostarczony do aplikacji po jej ponownym uruchomieniu. Takie zachowanie jest często wywoływane. Co najmniej raz przetwarzanie\*; oznacza to, że każdy komunikat jest przetwarzany co najmniej raz, ale w pewnych sytuacjach może zostać ponownie dostarczony ten sam komunikat. Jeśli scenariusz nie toleruje dwukrotnego przetwarzania, deweloperzy aplikacji powinni dodać dodatkową logikę do swojej aplikacji w celu obsługi dwukrotnego dostarczania komunikatów. W tym celu można użyć właściwości **MessageID** komunikatu, która pozostaje stała między kolejnymi próbami dostarczenia.
+Jeśli aplikacja ulegnie awarii po przetworzeniu komunikatu, ale przed wywołaniem metody `complete`, komunikat zostanie ponownie dostarczony do aplikacji po jej ponownym uruchomieniu. Takie zachowanie jest często nazywane *przetwarzaniem co najmniej raz*. Każdy komunikat jest przetwarzany co najmniej raz, ale w pewnych sytuacjach może zostać ponownie dostarczony ten sam komunikat. Jeśli w scenariuszu nie można tolerować zduplikowanego przetwarzania, można użyć właściwości **MessageID** komunikatu, która pozostaje stała między próbami dostarczenia, aby obsłużyć zduplikowane dostarczanie komunikatów. 
 
 ## <a name="delete-topics-and-subscriptions"></a>Usuwanie tematów i subskrypcji
 
-Tematy i subskrypcje są trwałe, chyba że [Właściwość auto_delete_on_idle](https://docs.microsoft.com/python/api/azure-mgmt-servicebus/azure.mgmt.servicebus.models.sbsubscription?view=azure-python) jest ustawiona. Można je usunąć za pomocą [Azure Portal][Azure portal] lub programowo. Poniższy przykład pokazuje, jak usunąć temat o nazwie `mytopic`:
+Aby usunąć tematy i subskrypcje, użyj [Azure Portal][Azure portal] lub metody `delete_topic`. Poniższy kod usuwa temat o nazwie `mytopic`:
 
 ```python
 bus_service.delete_topic('mytopic')
 ```
 
-Usunięcie tematu powoduje również usunięcie subskrypcji, które są zarejestrowane z tematem. Subskrypcje mogą być również usuwane niezależnie. Poniższy kod przedstawia sposób usuwania subskrypcji o nazwie `HighMessages` z tematu `mytopic`:
+Usunięcie tematu powoduje usunięcie wszystkich subskrypcji do tematu. Subskrypcje można także usuwać niezależnie. Poniższy kod usuwa subskrypcję o nazwie `HighMessages` z tematu `mytopic`:
 
 ```python
 bus_service.delete_subscription('mytopic', 'HighMessages')
 ```
 
-> [!NOTE]
-> Za pomocą [eksploratora Service Bus](https://github.com/paolosalvatori/ServiceBusExplorer/)można zarządzać zasobami Service Bus. Eksplorator Service Bus umożliwia użytkownikom łączenie się z przestrzenią nazw Service Bus i administrowanie jednostkami obsługi komunikatów w prosty sposób. Narzędzie zapewnia zaawansowane funkcje, takie jak funkcja importowania/eksportowania lub możliwość testowania tematów, kolejek, subskrypcji, usług przekazywania, centrów powiadomień i centrów zdarzeń. 
+Domyślnie tematy i subskrypcje są trwałe i istnieją dopiero po ich usunięciu. Aby automatycznie usuwać subskrypcje po upływie określonego czasu, można ustawić parametr [auto_delete_on_idle](https://docs.microsoft.com/python/api/azure-mgmt-servicebus/azure.mgmt.servicebus.models.sbsubscription?view=azure-python) dla subskrypcji. 
+
+> [!TIP]
+> Za pomocą [eksploratora Service Bus](https://github.com/paolosalvatori/ServiceBusExplorer/)można zarządzać zasobami Service Bus. Service Bus Explorer umożliwia łączenie się z przestrzenią nazw Service Bus i łatwe administrowanie jednostkami obsługi komunikatów. Narzędzie zapewnia zaawansowane funkcje, takie jak funkcje importu/eksportu i możliwość testowania tematów, kolejek, subskrypcji, usług przekazywania, centrów powiadomień i centrów zdarzeń. 
 
 ## <a name="next-steps"></a>Następne kroki
 
-Teraz, gdy znasz już podstawy Service Bus tematów, Skorzystaj z poniższych linków, aby dowiedzieć się więcej.
+Teraz, gdy znasz już podstawy Service Bus tematów, Skorzystaj z poniższych linków, aby dowiedzieć się więcej:
 
-* Zobacz [kolejki, tematy i subskrypcje][Queues, topics, and subscriptions].
-* Odwołanie do elementu [sqlfilter. sqlexpression][SqlFilter.SqlExpression].
+* [Kolejki, tematy i subskrypcje][Queues, topics, and subscriptions]
+* [Sqlfilter. sqlexpression][SqlFilter.SqlExpression] Reference
 
 [Azure portal]: https://portal.azure.com
-[Azure Python package]: https://pypi.python.org/pypi/azure  
+[Azure Python package]: https://pypi.python.org/pypi/azure
 [Queues, topics, and subscriptions]: service-bus-queues-topics-subscriptions.md
 [SqlFilter.SqlExpression]: service-bus-messaging-sql-filter.md
 [Service Bus quotas]: service-bus-quotas.md 

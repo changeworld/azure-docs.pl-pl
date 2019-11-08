@@ -7,12 +7,12 @@ ms.topic: overview
 ms.date: 11/05/2019
 ms.author: raynew
 ms.custom: mvc
-ms.openlocfilehash: eadfc4e302f4445e8e0d5105aeac4361328cb259
-ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
+ms.openlocfilehash: 8b1e716e482c49ceba0c600aaba30fe276bdb74d
+ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 11/07/2019
-ms.locfileid: "73715457"
+ms.locfileid: "73748007"
 ---
 # <a name="about-azure-migrate"></a>Informacje o usłudze Azure Migrate
 
@@ -44,16 +44,16 @@ Oprócz natywnych narzędzi platformy Azure Azure Migrate integruje się z innym
 
 **NIEZALEŻNEGO dostawcy oprogramowania** | **Funkcja**
 --- | ---
-[Carbonite](https://www.carbonite.com/globalassets/files/datasheets/carb-migrate4azure-microsoft-ds.pdf) | Migrate (Migracja)
-[Cloudamize](https://www.cloudamize.com/platform) | Ocena 
-[Technologia najmu](https://www.corenttech.com/AzureMigrate/) | Ocenianie i migrowanie
-[Urządzenie 42](https://docs.device42.com/) | Ocena
-[Lakeside](https://go.microsoft.com/fwlink/?linkid=2104908) | Ocena
-[Stojaki](https://go.microsoft.com/fwlink/?linkid=2102735) | Migrate (Migracja)
-[Platforma turbonomic](https://learn.turbonomic.com/azure-migrate-portal-free-trial) | Ocena
-[UnifyCloud](https://www.cloudatlasinc.com/cloudrecon/) | Ocena
+[Carbonite](https://www.carbonite.com/globalassets/files/datasheets/carb-migrate4azure-microsoft-ds.pdf) | Migrowanie serwerów
+[Cloudamize](https://www.cloudamize.com/platform) | Ocenianie serwerów
+[Technologia najmu](https://www.corenttech.com/AzureMigrate/) | Ocenianie i Migrowanie serwerów
+[Urządzenie 42](https://docs.device42.com/) | Ocenianie serwerów
+[Lakeside](https://go.microsoft.com/fwlink/?linkid=2104908) | Ocena infrastruktury VDI
+[Stojaki](https://go.microsoft.com/fwlink/?linkid=2102735) | Migrowanie serwerów
+[Platforma turbonomic](https://learn.turbonomic.com/azure-migrate-portal-free-trial) | Ocenianie serwerów
+[UnifyCloud](https://www.cloudatlasinc.com/cloudrecon/) | Ocenianie serwerów i baz danych
 
-## <a name="tool-integration"></a>Integracja narzędzi
+## <a name="azure-tool-integration"></a>Integracja narzędzi platformy Azure
 
 Tabela zawiera podsumowanie innych narzędzi, które są zintegrowane w Azure Migrate.
 
@@ -112,7 +112,7 @@ Azure Migrate integruje się z Azure Database Migration Service (DMS) w celu mig
 ## <a name="movere"></a>Movere
 
  
-Środowisko przenoszenia jest platformą SaaS, która zwiększa analizę biznesową przez dokładne prezentowanie całego środowiska IT w jednym dniu. Gdy organizacje rosną, zmieniają i optymalizują cyfrowo, rozwiązanie zapewnia przedsiębiorstwom pewność, że muszą mieć wgląd i kontrolę nad swoimi środowiskami niezależnie od platformy, aplikacji lub lokalizacji geograficznej. Produkt przenoszenia został [uzyskany](https:/azure.microsoft.com/blog/microsoft-acquires-movere-to-help-customers-unlock-cloud-innovation-with-seamless-migration-tools) przez firmę Microsoft i nie jest już sprzedawany jako oferta samodzielna.  Program do przenoszenia jest dostępny w ramach oceny rozwiązań firmy Microsoft i programów ekonomii chmur. [Dowiedz się więcej](https://www.movere.io) o obszarze przenoszenia. Jeśli masz pytania, prześlij je do: movereq@microsoft.com lub skontaktuj się z przedstawicielem firmy Microsoft.
+Środowisko przenoszenia jest platformą SaaS, która zwiększa analizę biznesową przez dokładne prezentowanie całego środowiska IT w jednym dniu. Gdy organizacje rosną, zmieniają i optymalizują cyfrowo, rozwiązanie zapewnia przedsiębiorstwom pewność, że muszą mieć wgląd i kontrolę nad swoimi środowiskami niezależnie od platformy, aplikacji lub lokalizacji geograficznej. Produkt przenoszenia został [uzyskany](https://azure.microsoft.com/blog/microsoft-acquires-movere-to-help-customers-unlock-cloud-innovation-with-seamless-migration-tools/) przez firmę Microsoft i nie jest już sprzedawany jako oferta samodzielna.  Program do przenoszenia jest dostępny w ramach oceny rozwiązań firmy Microsoft i programów ekonomii chmur. [Dowiedz się więcej](https://www.movere.io) o obszarze przenoszenia. Jeśli masz pytania, prześlij je do: movereq@microsoft.com lub skontaktuj się z przedstawicielem firmy Microsoft.
 
 Zachęcamy również do Azure Migrate, naszej wbudowanej usługi migracji. Azure Migrate udostępnia centralne centrum upraszczające migrację do chmury. Funkcja centrum oferuje kompleksową obsługę różnych obciążeń, w tym serwerów fizycznych i wirtualnych, baz danych i aplikacji. Kompleksowa widoczność ułatwia śledzenie postępu w zakresie odnajdywania, oceny i migracji. W przypadku narzędzi platformy Azure i partnera niezależnego dostawcy oprogramowania Azure Migrate również zawiera szeroką gamę funkcji, w tym odnajdywanie serwerów wirtualnych i fizycznych, oparte na wydajności właściwe ustalanie rozmiarów, planowanie kosztów, oceny oparte na imporcie i aplikacja bez wykorzystania agentów analiza zależności. Jeśli szukasz pomocy eksperta, firma Microsoft ma wykwalifikowany [dostawca usług zarządzanych przez ekspertów platformy Azure](https://azure.microsoft.com/partners) , który poprowadzi Cię przez proces podróży. Zapoznaj się z [witryną sieci web Azure Migrate](https://azure.microsoft.com/services/azure-migrate/). 
  
