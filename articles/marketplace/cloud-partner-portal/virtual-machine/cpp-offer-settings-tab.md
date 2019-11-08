@@ -1,40 +1,41 @@
 ---
-title: Karta Ustawienia oferty maszyny wirtualnej w portalu Cloud Partner portalu Azure Marketplace
-description: W tym artykule opisano na karcie Ustawienia oferują używanego podczas tworzenia oferty maszyny Wirtualnej portalu Azure Marketplace.
+title: Karta Ustawienia oferty maszyny wirtualnej w portal Cloud Partner portalu Azure Marketplace
+description: Opisuje kartę Ustawienia oferty używane podczas tworzenia oferty maszyny wirtualnej portalu Azure Marketplace.
 services: Azure, Marketplace, Cloud Partner Portal, virtual machine
 author: v-miclar
 ms.service: marketplace
+ms.subservice: partnercenter-marketplace-publisher
 ms.topic: article
 ms.date: 04/25/2019
 ms.author: pabutler
-ms.openlocfilehash: d361b6b8b08f9556cd57215ebdf82c1bf69d372d
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 6f7b90f6b02999869026db24836091233692143c
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64938152"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73824440"
 ---
 # <a name="virtual-machine-offer-settings-tab"></a>Karta Ustawienia oferty maszyny wirtualnej
 
-**Nowa oferta** zostanie otwarta strona maszyn wirtualnych na pierwszej karcie o nazwie **oferują ustawienia**.  
+**Nowa strona oferty** dla maszyn wirtualnych otwiera się na pierwszej karcie o nazwie **Ustawienia oferty**.  
 
 ![Nowa strona oferty dla maszyn wirtualnych](./media/publishvm_004.png)
 
 
-## <a name="offer-settings-fields"></a>Oferta ustawienia pola
+## <a name="offer-settings-fields"></a>Pola ustawień oferty
 
-W **oferują ustawienia** kartę, należy podać następujące pola.  Dołączonych gwiazdki (*) na nazwę pola wskazuje, że jest wymagane. 
+Na karcie **Ustawienia oferty** musisz podać następujące pola.  Dołączona gwiazdka (*) w nazwie pola wskazuje, że jest to wymagane. 
 
 |  **Pole**       |     **Opis**                                                          |
 |  ---------       |     ---------------                                                          |
-| **Identyfikator oferty\***   | Unikatowy identyfikator (w ramach profilu wydawcy) dla tej oferty. Ten identyfikator będzie widoczny w adresach URL produktu, szablony usługi Azure Resource Manager, i zgłasza rozliczeń. Jego ma maksymalnej długości 50 znaków i może zawierać tylko składa się z małe znaki alfanumeryczne i łączniki (-), ale nie może kończyć się kreską. W tym polu nie można zmienić po oferty przechodzi na żywo. <br> Na przykład, jeśli Contoso publikuje ofertę z identyfikator oferty **maszyny wirtualnej na przykład**, jest przypisany adres URL witryny Marketplace Azure `https://azuremarketplace.microsoft.com/marketplace/apps/contoso.sample-vm?tab=Overview` . |
-| **Publisher\***  | Unikatowy identyfikator organizacji w witrynie Azure Marketplace. Ofert użytkownika powinna być skojarzona z Twojego identyfikatora wydawcy. Nie można zmodyfikować tej wartości, po zapisaniu tej oferty. |
-| **Nazwa\***       | Nazwa wyświetlana oferty. Będzie wyświetlana w portalu Azure Marketplace i w portalu Cloud Partner. Może zawierać maksymalnie 50 znaków. W tym miejscu są wskazówki do uwzględnienia rozpoznawalną nazwę markę produktu. Nie dołączaj tutaj nazwę organizacji, chyba że jest, jak jest sprzedawane. Jeśli są marketingu tej oferty w ramach innych witryn sieci Web i publikacji, upewnij się, że nazwa jest dokładnie taka sama we wszystkich publikacjach. |
+| **Identyfikator oferty\***   | Unikatowy identyfikator (w ramach profilu wydawcy) oferty. Ten identyfikator będzie widoczny w adresach URL produktów, szablonach Azure Resource Manager i raportach dotyczących rozliczeń. Ma maksymalną długość 50 znaków, może składać się tylko z małych znaków alfanumerycznych i kresek (-), ale nie może kończyć się znakiem kreski. Nie można zmienić tego pola po zakończeniu oferty. <br> Na przykład, jeśli firma Contoso publikuje ofertę z IDENTYFIKATORem oferty **przykładem-VM**, przypiszemy adres URL witryny Azure Marketplace `https://azuremarketplace.microsoft.com/marketplace/apps/contoso.sample-vm?tab=Overview`. |
+| **\* wydawcy**  | Unikatowy identyfikator organizacji w witrynie Azure Marketplace. Wszystkie oferty powinny być skojarzone z IDENTYFIKATORem wydawcy. Nie można zmodyfikować tej wartości po zapisaniu oferty. |
+| **Nazwa\***       | Nazwa wyświetlana oferty. Ta nazwa będzie wyświetlana w witrynie Azure Marketplace i w portal Cloud Partner. Może zawierać maksymalnie 50 znaków. Wskazówki tutaj zawierają rozpoznawalną nazwę marki dla danego produktu. Nie dodawaj tutaj nazwy organizacji, chyba że jest to marketingowe. W przypadku wprowadzania tej oferty w innych witrynach sieci Web i publikacjach upewnij się, że nazwa jest dokładnie taka sama dla wszystkich publikacji. |
 |   |   |
  
-Kliknij przycisk **Zapisz** po wprowadzonych wszystkie pola. 
+Po podaniu wszystkich pól kliknij przycisk **Zapisz** . 
 
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
-Następna karta dodasz [jednostki SKU](./cpp-skus-tab.md) oferty.
+Na następnej karcie dodasz [jednostki SKU](./cpp-skus-tab.md) do oferty.

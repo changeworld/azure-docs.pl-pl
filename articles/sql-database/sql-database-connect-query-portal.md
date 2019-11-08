@@ -1,5 +1,5 @@
 ---
-title: 'Azure Portal: Azure SQL Database zapytań przy użyciu edytora zapytań '
+title: 'Azure Portal: zapytanie przy użyciu edytora zapytań'
 description: Dowiedz się, jak nawiązać połączenie z bazą danych SQL w witrynie Azure Portal za pomocą edytora zapytań SQL. Następnie uruchom instrukcje Transact-SQL (T-SQL), aby wykonać zapytanie i edytować dane.
 keywords: połącz z bazą danych sql, azure portal, portal, edytor zapytań
 services: sql-database
@@ -12,12 +12,12 @@ author: Ninarn
 ms.author: ninarn
 ms.reviewer: carlrab
 ms.date: 10/24/2019
-ms.openlocfilehash: 75882b13341c7fc373de141ba12f8806cb106906
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 3990d7ec63c312d38168fe76269e1a920f1a6817
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73690928"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73827110"
 ---
 # <a name="quickstart-use-the-azure-portals-sql-query-editor-to-connect-and-query-data"></a>Szybki Start: używanie Edytora zapytań SQL Azure Portal do łączenia i wykonywania zapytań dotyczących danych
 
@@ -34,7 +34,7 @@ Do ukończenia tego samouczka niezbędne są następujące elementy:
   | Tworzenie| [Portal](sql-database-single-database-get-started.md) |
   || [Interfejs wiersza polecenia](scripts/sql-database-create-and-configure-database-cli.md) |
   || [Program PowerShell](scripts/sql-database-create-and-configure-database-powershell.md) |
-  | Konfiguracja | [Reguła zapory bazująca na adresach IP na poziomie serwera](sql-database-server-level-firewall-rule.md)|
+  | Konfigurowanie | [Reguła zapory bazująca na adresach IP na poziomie serwera](sql-database-server-level-firewall-rule.md)|
   |||
 
 > [!NOTE]

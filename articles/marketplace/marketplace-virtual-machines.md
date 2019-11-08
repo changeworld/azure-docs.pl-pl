@@ -1,76 +1,77 @@
 ---
-title: Oferty maszyny wirtualnej publikowania Przewodnik po portalu Azure Marketplace
-description: W tym artykule opisano wymagania aby opublikować maszynę wirtualną i bezpłatnej wersji próbnej oprogramowania do wdrożenia w portalu Marketplace.
+title: Przewodnik publikowania oferty maszyny wirtualnej dla witryny Azure Marketplace
+description: W tym artykule opisano wymagania dotyczące publikowania maszyny wirtualnej i bezpłatnej wersji próbnej oprogramowania do wdrożenia z portalu Marketplace.
 services: Azure, Marketplace, Compute, Storage, Networking, Blockchain, Security
 author: ellacroi
 ms.service: marketplace
+ms.subservice: partnercenter-marketplace-publisher
 ms.topic: article
 ms.date: 07/09/2018
 ms.author: ellacroi
-ms.openlocfilehash: ccb6fc9c522e8d05d0184fc5e248d070efb9921d
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 0f2047501b6c57b2bb98ff7e3c56498417644324
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64937739"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73818991"
 ---
-# <a name="virtual-machine-offer-publishing-guide"></a>Oferty maszyny wirtualnej Podręcznik publikowania
+# <a name="virtual-machine-offer-publishing-guide"></a>Przewodnik publikowania oferty maszyny wirtualnej
 
-Obrazy maszyn wirtualnych są jednym z głównych sposobów publikowania rozwiązania w portalu Azure Marketplace. Użyj tego przewodnika, aby poznać wymagania dla tej oferty. 
+Obrazy maszyn wirtualnych to jeden z głównych sposobów publikowania rozwiązania w portalu Azure Marketplace. Skorzystaj z tego przewodnika, aby poznać wymagania dotyczące tej oferty. 
 
-Są to oferty transakcji, które są wdrożone i rozliczane za pośrednictwem portalu Marketplace. Wywołanie akcji, które użytkownik będzie widział jest "Pobierz teraz."
+Są to oferty transakcji, które są wdrażane i rozliczane za pomocą witryny Marketplace. Wywołanie akcji, którą widzi użytkownik, to "Pobierz teraz".
 
 ## <a name="free-trial"></a>Bezpłatna wersja próbna 
 
-Można rozmieścić dla użytkowników przetestować ofertę, uzyskując dostęp do licencji na oprogramowanie ograniczony czas, korzystając z modelu rozliczania Bring Your Own License (BYOL). Poniżej przedstawiono wymagania dotyczące wdrożenia tej oferty. 
+W celu przetestowania oferty przez użytkowników z ograniczonymi licencjami na oprogramowanie należy skorzystać w przypadku korzystania z modelu rozliczeń własnych licencji (BYOL). Poniżej przedstawiono wymagania dotyczące wdrażania tej oferty. 
 
 |Wymagania  |Szczegóły  |
 |---------|---------|
-|Okres bezpłatnej wersji próbnej i wersja próbna     |   Klienci mogą bezpłatnie wypróbować aplikację przez ograniczony czas. Klienci są Uwaga konieczne uiszczanie wszelkich opłat licencji lub subskrypcji oferty. Klienci nie są wymagane do zapłacenia za podstawowych produktów firmy Microsoft lub usługi. Wszystkie opcje wersji próbnej są wdrażane do subskrypcji platformy Azure. Masz wyłączną kontrolę nad optymalizację kosztów i zarządzania. Możesz wybrać bezpłatnej wersji próbnej lub interaktywne pokaz. Niezależnie od tego, możesz wybrać Twoja bezpłatna wersja próbna musi zapewnić klientom przez wstępnie określony czas, aby wypróbować ofertę bez ponoszenia dodatkowych kosztów.|
-|Można je łatwo konfigurować, gotowych do użycia rozwiązanie    |  Aplikacja musi być łatwo i szybko skonfigurować i skonfigurować.       |
-|Dostępność / czas pracy    |    Twoja aplikacja SaaS lub platformy musi mieć czas działania co najmniej 99,9%.     |
-|Usługa Azure Active Directory     |    Oferty muszą zezwalać na, że usługi Azure Active Directory (Azure AD) federacyjnego logowania jednokrotnego (SSO) (Azure AD Federacyjna usługa rejestracji Jednokrotnej), za zgodą włączone.     |
+|Bezpłatny okres próbny i środowisko próbne     |   Klienci mogą bezpłatnie próbować korzystać z aplikacji przez ograniczony czas. Klient musi zwrócić uwagę na opłaty za licencję lub subskrypcję oferty. Klienci nie muszą zapłacenia za dany produkt lub usługę pierwszej firmy Microsoft. Wszystkie opcje wersji próbnej są wdrażane w ramach subskrypcji platformy Azure. Użytkownik ma wyłączną kontrolę nad optymalizacją kosztów i zarządzaniem. Możesz wybrać bezpłatną wersję próbną lub pokaz interaktywny. Niezależnie od tego, co zostało wybrane, bezpłatna wersja próbna musi zapewniać klientom wstępnie ustalony czas na wypróbowanie oferty bez dodatkowych kosztów.|
+|Łatwe do skonfigurowania rozwiązanie gotowe do użycia    |  Twoja aplikacja musi być prosta i szybka konfiguracja i konfiguracja.       |
+|Dostępność/czas pracy    |    Twoja aplikacja SaaS lub platforma musi mieć czas przestoju wynoszącą co najmniej 99,9% czasu.     |
+|Usługa Azure Active Directory     |    Twoja oferta musi zezwalać na Azure Active Directory (Azure AD) federacyjne Logowanie jednokrotne (SSO) (Logowanie jednokrotne usługi Azure AD) z włączoną opcją zgody.     |
 
 ## <a name="test-drive"></a>Wersja testowa
 
-Możesz wdrożyć co najmniej jednej maszyny wirtualnej za pomocą infrastructure-as-a-service (IaaS) lub aplikacji software-as-a-service (SaaS). Przewodnik po zaletą wersji testowej, opcja publikowania jest automatyczne Inicjowanie obsługi maszyny wirtualnej lub całe rozwiązanie, które są prowadzone przez u partnera. Wersji testowej umożliwia oprogramowania ewaluacyjnego bez ponoszenia dodatkowych kosztów do klienta. Klient nie musi być istniejącym klientem platformy Azure zapoznawanie się z wersji próbnej środowiska. 
+Wdrażasz co najmniej jedną maszynę wirtualną za pomocą aplikacji typu "infrastruktura jako usługa" (IaaS) lub "oprogramowanie jako usługa" (SaaS). Zaletą opcji publikowania wersji testowej jest automatyczne Inicjowanie obsługi maszyny wirtualnej lub całego rozwiązania z przewodnikiem obsługiwanym przez partnera. Na dysku testowym jest dostępna Ocena bez dodatkowych kosztów dla klienta. Klient nie musi być istniejącym klientem platformy Azure, aby móc współpracować z wersją próbną. 
 
-Skontaktuj się z nami pod adresem [amp testdrive](mailto:amp-testdrive@microsoft.com) na rozpoczęcie pracy. 
+Skontaktuj się z nami pod adresem [amp-testdrive](mailto:amp-testdrive@microsoft.com) , aby rozpocząć pracę. 
 
 |Wymagania  |Szczegóły |
 |---------|---------|
-| Aplikacja portalu Marketplace   |    Co najmniej jednej maszyny wirtualnej za pomocą modelu IaaS lub infrastrukturą SaaS.      |
+| Masz aplikację Marketplace   |    Co najmniej jedna maszyna wirtualna za poorednictwem IaaS lub SaaS.      |
 
 ## <a name="interactive-demo"></a>Interaktywna demonstracja
 
-Możesz podać środowisko z przewodnikiem rozwiązania klientom za pomocą interaktywny pokaz. Zaletą interaktywna demonstracja opcja publikowania jest, podaj wersję próbną interfejsu bez skomplikowane inicjowania obsługi administracyjnej złożone rozwiązania. 
+W przypadku korzystania z rozwiązania z przewodnikiem dla klientów możesz skorzystać z interaktywnej prezentacji. Zaletą opcji publikowania interaktywnej demonstracyjnej jest udostępnienie wersji próbnej bez skomplikowanej aprowizacji złożonego rozwiązania. 
 
-## <a name="virtual-machine-offer"></a>Oferty maszyny wirtualnej
+## <a name="virtual-machine-offer"></a>Oferta maszyny wirtualnej
 
-Podczas wdrażania urządzenia wirtualnego subskrypcji skojarzonych z klientem, należy użyć typu oferty maszyny wirtualnej. Maszyny wirtualne są w pełni commerce włączone za pomocą zgodnie z rzeczywistym użyciem lub bring-your-own-license (BYOL) Modele licencjonowania. Firma Microsoft obsługuje transakcji handlowych i rozlicza klienta w Twoim imieniu. Możesz skorzystać z zalet przy użyciu relacji instrument preferowanego między klienta i firmy Microsoft, w tym wszelkich umów Enterprise Agreement.
+Podczas wdrażania urządzenia wirtualnego w ramach subskrypcji skojarzonej z klientem Użyj typu oferty maszyny wirtualnej. Maszyny wirtualne są w pełni włączane, korzystając z modeli licencjonowania płatność zgodnie z rzeczywistym użyciem lub BYOL. Firma Microsoft hostuje transakcję handlową i rozlicza klienta w Twoim imieniu. Korzyści wynikające z korzystania z preferowanej relacji płatności między klientem i firmą Microsoft, w tym dowolnymi umowami Enterprise Agreement.
 
 > [!NOTE]
-> W tej chwili zobowiązań pieniężnych związane z umową Enterprise Agreement mogą służyć względem użycia platformy Azure, maszyny wirtualnej, ale nie w odniesieniu do opłat za oprogramowanie.  
+> W tym momencie zobowiązania pieniężne związane z Umowa Enterprise mogą być używane w odniesieniu do użycia platformy Azure przez maszynę wirtualną, ale nie do opłat za Licencjonowanie oprogramowania.  
 > 
 > [!NOTE]
-> Jesteś w stanie ograniczyć odnajdywanie i wdrażanie maszyny wirtualnej do określonej grupy klientów przez publikowanie obrazu i cennik oferty prywatne. Oferty prywatne odblokowywanie możliwości tworzenia ekskluzywne oferty dla najbliższej klientów i oferuje dostosowane oprogramowanie i warunki. Warunki niestandardowe umożliwiają wyróżnienia różnych scenariuszy, w tym prowadzone przez pole zajmuje specjalne ceny i warunki oraz wczesny dostęp do ograniczonej wersji oprogramowania. Oferty prywatne Włącz Cię jednak do wypróbowania konkretne informacje o cenach lub produktów, które mają ograniczony zestaw klientów przez utworzenie nowej jednostki SKU o te szczegóły.  
-> *   Aby uzyskać więcej informacji na temat oferty prywatne, odwiedź stronę oferty prywatne w portalu Azure Marketplace strony znajduje się w [azure.microsoft.com/blog/private-offers-on-azure-marketplace](https://azure.microsoft.com/blog/private-offers-on-azure-marketplace).  
+> Możesz ograniczyć odnajdywanie i wdrażanie maszyny wirtualnej do określonego zestawu klientów, publikując obraz i ceny jako ofertę prywatną. W ofertach prywatnych można odblokować możliwość tworzenia ofert wyłącznych dla najbliższych klientów i oferowania niestandardowych programów oraz warunków. Dostosowane warunki umożliwiają wyróżnianie różnorodnych scenariuszy, w tym w przypadku, gdy użytkownik korzysta z wyspecjalizowanych cen i warunków oraz wczesnego dostępu do ograniczonej wersji oprogramowania. Oferty prywatne umożliwiają podanie określonych cen lub produktów do ograniczonego zestawu klientów przez utworzenie nowej jednostki SKU z tymi szczegółami.  
+> *   Aby uzyskać więcej informacji o ofertach prywatnych, odwiedź stronę oferty prywatne w witrynie Azure Marketplace w witrynie [Azure.Microsoft.com/blog/Private-offers-on-Azure-Marketplace](https://azure.microsoft.com/blog/private-offers-on-azure-marketplace).  
 
 | Wymaganie | Szczegóły |  
 |:--- |:--- | 
-| Rozliczeń oraz metod pomiarów | Maszyna wirtualna musi obsługiwać comiesięcznym rozliczeniem BYOL i płatność za rzeczywiste użycie. |  
-| Wirtualny dysk twardy (VHD) zgodnych z platformą Azure | Maszyny wirtualne muszą zostać skompilowane na systemie Windows lub Linux. <ul> <li>Aby uzyskać więcej informacji na temat tworzenia wirtualnego dysku twardego systemu Linux, zobacz [dystrybucje systemu Linux zalecanych dla na platformie Azure](https://docs.microsoft.com/azure/virtual-machines/linux/endorsed-distros).</li> <li>Aby uzyskać więcej informacji na temat tworzenia wirtualnego dysku twardego Windows, zobacz [utworzyć wirtualny dysk twardy zgodnych z platformą Azure](./cloud-partner-portal/virtual-machine/cpp-create-vhd.md).</li> </ul> |  
+| Rozliczenia i pomiary | Maszyna wirtualna musi obsługiwać miesięczne rozliczenie BYOL lub płatność zgodnie z rzeczywistym użyciem. |  
+| Wirtualny dysk twardy (VHD) zgodny z platformą Azure | Maszyny wirtualne muszą być wbudowane w system Windows lub Linux. <ul> <li>Aby uzyskać więcej informacji na temat tworzenia wirtualnego dysku twardego z systemem Linux, zobacz [dystrybucje systemu Linux zatwierdzone na platformie Azure](https://docs.microsoft.com/azure/virtual-machines/linux/endorsed-distros).</li> <li>Aby uzyskać więcej informacji na temat tworzenia wirtualnego dysku twardego systemu Windows, zobacz [Tworzenie dysku VHD zgodnego z platformą Azure](./cloud-partner-portal/virtual-machine/cpp-create-vhd.md).</li> </ul> |  
 
 >[!Note]
->Dostawcy rozwiązań (CSP) partnera kanału zoptymalizowany pod kątem w chmurze jest teraz dostępna.  Zobacz [dostawców rozwiązań w chmurze](./cloud-solution-providers.md) więcej informacji na temat marketingowych oferty za pośrednictwem programu Microsoft CSP partner kanałów.
+>Niedostępność kanału partnera dostawcy rozwiązań w chmurze (CSP) jest teraz dostępna.  Zobacz [dostawcy rozwiązań w chmurze](./cloud-solution-providers.md) , aby uzyskać więcej informacji na temat marketingu oferty przez kanały partnerskie programu Microsoft CSP.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
-Jeśli użytkownik jeszcze tego nie zrobiono, 
+Jeśli jeszcze tego nie zrobiono, 
 
-- [Zarejestruj](https://azuremarketplace.microsoft.com/sell) w portalu marketplace.
+- [Zarejestruj](https://azuremarketplace.microsoft.com/sell) się w portalu Marketplace.
 
-Jeśli jesteś zarejestrowanym i tworzysz nową ofertę czy działa na podstawie istniejącego
+Jeśli jesteś zarejestrowanym użytkownikiem i tworzysz nową ofertę lub pracujesz nad istniejącym,
 
-- [Zaloguj się do portalu Cloud Partner](https://cloudpartner.azure.com) do utworzenia lub zakończyć oferty.
-- Zobacz [oferty maszyny wirtualnej](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/virtual-machine/cpp-virtual-machine-offer) Aby uzyskać więcej informacji.
+- [Zaloguj się do Portal Cloud partner](https://cloudpartner.azure.com) , aby utworzyć lub zakończyć swoją ofertę.
+- Aby uzyskać więcej informacji, zobacz temat [Oferta maszyny wirtualnej](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/virtual-machine/cpp-virtual-machine-offer) .

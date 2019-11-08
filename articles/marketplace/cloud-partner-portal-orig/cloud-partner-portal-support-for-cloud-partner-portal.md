@@ -1,60 +1,61 @@
 ---
-title: Obsługa portalu Cloud Partner | Portal Azure Marketplace
-description: Uzyskaj pomoc techniczną w portalu Cloud Partner.
+title: Obsługa portal Cloud Partner | Portal Azure Marketplace
+description: Uzyskaj pomoc techniczną w portal Cloud Partner.
 services: Azure, Marketplace, Cloud Partner Portal,
 author: dan-wesley
 ms.service: marketplace
+ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 09/17/2018
 ms.author: pabutler
-ms.openlocfilehash: 35a5a4c4cfdbfa26ea00f0f4d76f91f9f76a1ca5
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 30fc0ea4a8baba4f0677c9cceb12a7887d205f21
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64935377"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73827668"
 ---
-# <a name="get-support-for-cloud-partner-portal"></a>Uzyskaj pomoc techniczną dla portalu Cloud Partner
+# <a name="get-support-for-cloud-partner-portal"></a>Uzyskaj pomoc techniczną dotyczącą portal Cloud Partner
 
-Firma Microsoft udostępnia obsługę szerokiej gamy produktów i usług.
-Zapewnienie, że zapytanie znajdzie zespołem pomocy technicznej w prawo ważne jest, aby zapewnić odpowiednie i terminowe odpowiedź. Należy rozważyć następujące scenariusze, które powinny pomóc w kierować zapytania do odpowiedniego zespołu:
+Firma Microsoft zapewnia pomoc techniczną dla wielu różnych produktów i usług.
+Upewnienie się, że zapytanie znajdzie odpowiedniego zespołu pomocy technicznej, jest ważne, aby zapewnić odpowiednią i terminową odpowiedź. Należy wziąć pod uwagę następujące scenariusze, które powinny pomóc w kierowaniu zapytania do odpowiedniego zespołu:
 
--   Jeśli jesteś wydawcą i pytania klienta, poproś klienta do żądania pomocy technicznej za pomocą łącza pomocy technicznej na [witryny Azure Portal](https://portal.azure.com/)
+-   Jeśli jesteś wydawcą i masz pytania od klienta, poproś klienta o zażądanie pomocy technicznej za pomocą linków pomocy technicznej w witrynie [Azure Portal](https://portal.azure.com/)
 
--   Jeśli jesteś wydawcą i masz pytanie dotyczące aplikacji lub usługi, należy przejrzeć poniższe kroki, aby otworzyć bilet pomocy technicznej.
+-   Jeśli jesteś wydawcą i masz pytanie dotyczące Twojej aplikacji lub usługi, zapoznaj się z poniższymi instrukcjami, aby otworzyć bilet pomocy technicznej.
 
 ## <a name="to-open-a-support-ticket"></a>Aby otworzyć bilet pomocy technicznej
 
-1. Przejdź do [portalu Cloud Partner](https://cloudpartner.azure.com/) i zaloguj się przy użyciu swojego konta firmowego lub szkolnego.
+1. Przejdź do [Portal Cloud partner](https://cloudpartner.azure.com/) i zaloguj się przy użyciu konta służbowego.
 
-2. W prawym górnym menu w prawej części strony wybierz **pomocy** , a następnie wybierz ikonę **pomocy technicznej**.
+2. W górnym menu znajdującym się po prawej stronie strony wybierz ikonę **Pomoc** , a następnie wybierz pozycję **Pomoc techniczna**.
 
 ![support1](./media/cloud-partner-portal-support-for-cloud-partner-portal/support1.png)
 
 
-1. Na **utworzenia zdarzenia**, zidentyfikuj **typ problemu** i **kategorii**.
+1. Na stronie **Tworzenie zdarzenia**Zidentyfikuj **typ problemu** i **kategorię**.
 
 
 ![support2](./media/cloud-partner-portal-support-for-cloud-partner-portal/support2.png)
 
 
-1. Wybierz **żądanie uruchomienia**.
+1. Wybierz pozycję **Uruchom żądanie**.
 
-1. Podaj informacje kontaktowe i opisz problem. Opisz problem jako w pełni jak to możliwe. Podaj wszystkie pliki (na przykład przechwytywania ekranu, opisy błędów lub danych śledzenia sieci), które mogą być pomocne w rozwiązywaniu problemów.
+1. Podaj informacje kontaktowe i opisz problem. Opisz problem jak w pełni jak to możliwe. Podaj wszystkie pliki (na przykład przechwycenia ekranu, opisy błędów lub ślady sieci), które mogą być pomocne w rozwiązaniu problemu.
 
 ![support3](./media/cloud-partner-portal-support-for-cloud-partner-portal/support3.png)
 
-1. Wybierz **przesyłania** do tworzenia biletu.
+1. Wybierz pozycję **Prześlij** , aby utworzyć bilet.
 
-### <a name="support-followup"></a>Kolejna pomocy technicznej
+### <a name="support-followup"></a>Monit o pomoc techniczną
 
-Utworzymy otrzymanie biletu w ciągu 24 godzin i przypisać problem, priorytetu i wagi. Nasze specjalny zespół inżynierów pomocy technicznej pomoże z jego rozwiązania, zgodnie z naszych czasów odpowiedzi umowy dotyczącej poziomu usług. 
+Potwierdzimy otrzymanie biletu w ciągu 24 godzin i przypiszesz mu priorytet i ważność. Nasz dedykowany zespół inżynierów pomocy technicznej będzie pomagać w rozwiązywaniu problemów zgodnie z naszymi Umowa dotycząca poziomu usług czas odpowiedzi. 
 
-Następnym zrzucie ekranu przedstawiono informacje dotyczące incydentu, jaki Państwo otrzymają jako potwierdzenie z pomocy technicznej firmy Microsoft.
+Przechwytywanie następnego ekranu pokazuje informacje o zdarzeniu, które otrzymasz jako potwierdzenie z pomocy technicznej firmy Microsoft.
 
 ![support4](./media/cloud-partner-portal-support-for-cloud-partner-portal/support4.png)
 
 
--   Jeśli zachodzi potrzeba opowie nam o swoim problemie, Odpowiedz do wiadomości e-mail odebrane przez czas pomocy technicznej i firma Microsoft może zaplanować czas, aby porozmawiać na.
+-   Jeśli musisz skontaktować się z nami o swoim problemie, Odpowiedz na wiadomość e-mail, którą otrzymasz, i Zaplanuj czas na rozmowę z Tobą.
 
--   Możesz wyświetlić postęp na swój problem w dowolnym czasie przez wybrane **widok zdarzenie online** linku na poprzednim zrzucie ekranu.
+-   Postęp problemu można wyświetlić w dowolnym momencie, wybierając łącze **Wyświetl zdarzenie online** widoczne w poprzednim przechwyceniu ekranu.

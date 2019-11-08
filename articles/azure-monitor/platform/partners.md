@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: rboucher
 ms.author: robb
 ms.date: 03/14/2019
-ms.openlocfilehash: d4a16fc3d4c29b1e270fa088af75d287a81180c0
-ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
+ms.openlocfilehash: 04dcdbe6854a386f7edaa04aa9c2912789122a31
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72552062"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73827457"
 ---
 # <a name="azure-monitor-partner-integrations"></a>Azure Monitor integracje partnerów
 
@@ -267,5 +267,5 @@ Usługa Turbonomic automatyzuje obciążenia dla chmur hybrydowych, jednocześni
 [solarwinds-doc]: https://www.solarwinds.com/topics/azure-monitoring "Dokumentacja SolarWinds."
 [splunk-doc]: https://github.com/Microsoft/AzureMonitorAddonForSplunk/wiki/Azure-Monitor-Addon-For-Splunk "Dokumentacja Splunk."
 [sumologic-doc]: https://www.sumologic.com/azure "Dokumentacja SumoLogic."
-[turbonomic-doc]: https://turbonomic.com/solutions/technologies/azure-cloud/ "Platforma turbonomic wprowadzenie."
+[turbonomic-doc]: https://turbonomic.com/ "Platforma turbonomic wprowadzenie."
 

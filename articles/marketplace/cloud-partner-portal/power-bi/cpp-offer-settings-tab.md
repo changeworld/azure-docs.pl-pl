@@ -1,38 +1,39 @@
 ---
-title: Ustawienia dla oferty aplikacji Power BI oferty | Portal Azure Marketplace
-description: Skonfiguruj ustawienia oferty dla oferty aplikacji Power BI w portalu Marketplace Microsoft AppSource.
+title: Ustawienia oferty dla oferty aplikacji Power BI | Portal Azure Marketplace
+description: Skonfiguruj ustawienia oferty dla oferty aplikacji Power BI dla witryny Microsoft AppSource Marketplace.
 services: Azure, AppSource, Marketplace, Cloud Partner Portal, Power BI
 author: v-miclar
 ms.service: marketplace
+ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 04/24/2019
 ms.author: pabutler
-ms.openlocfilehash: be2c2b4f5d9461aa0fdc6dde89931ed4b6418ced
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: ca326b10a0707d5e4b1a5f05dccc303c9ec28269
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64943465"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73822676"
 ---
-# <a name="power-bi-apps-offer-settings-tab"></a>Karta Ustawienia oferty aplikacji Power BI zasilania
+# <a name="power-bi-apps-offer-settings-tab"></a>Karta Ustawienia oferty aplikacji Power BI
 
-Po otwarciu **nowa oferta** stronie dla aplikacji usługi, najpierw zobacz **oferują ustawienia** kartę. Na tej karcie możesz podać identyfikatorów podstawowych i nazwę dla oferty. Znak gwiazdki (*) wskazuje wymagane pole.
+Po otwarciu nowej strony **oferty** dla aplikacji usługi, najpierw zobaczysz kartę **Ustawienia oferty** . Na tej karcie Podaj identyfikatory podstawowe i nazwę oferty. Gwiazdka (*) wskazuje pole wymagane.
 
 ![Karta ustawień oferty](./media/offer-settings-tab.png)
 
 
-## <a name="offer-settings-fields"></a>Oferta ustawienia pola 
+## <a name="offer-settings-fields"></a>Pola ustawień oferty 
 
-Na **oferują ustawienia** kartę, należy wprowadzić informacje w następujących wymaganych pól. Wymagane pola są wskazanych przez znak gwiazdki (*).
+Na karcie **Ustawienia oferty** musisz wprowadzić informacje w następujących wymaganych polach. Wymagane pola są indicted przez gwiazdkę (*).
 
 |  Pole        |  Opis                                                               |
 |---------------|----------------------------------------------------------------------------|
-| **Identyfikator oferty\***  | Unikatowy identyfikator (w ramach profilu wydawcy) dla tej oferty. Ten identyfikator będzie widoczny w adresach URL produktu, szablony usługi Azure Resource Manager, i zgłasza rozliczeń. Maksymalna długość to 50 znaków. Może zawierać tylko małe znaki alfanumeryczne i łączniki (-). Nie może kończyć się kreską. Nie można zmienić tego identyfikatora, po oferty przechodzi na żywo. Jeśli Contoso publikuje ofertę z identyfikator oferty `sample-SvcApp`, oferty jest przypisany adres URL usługi AppSource `https://appsource.microsoft.com/marketplace/apps/contoso.sample-SvcApp`.      |
-| **Publisher\*** | Unikatowy identyfikator organizacji z [AppSource](https://appsource.microsoft.com). Ofert użytkownika powinna być skojarzona z Twojego identyfikatora wydawcy. Nie można zmienić tej wartości, po zapisaniu tej oferty.                         |
-| **Nazwa\***      | Nazwa wyświetlana oferty. Ta nazwa będzie wyświetlana w usłudze AppSource i w portalu Cloud Partner. Maksymalna długość to 50 znaków. Użyj nazwy marki rozpoznawalne na produkt. Nie dołączaj tutaj nazwę organizacji, chyba że aplikacja jest sprzedawane o tej nazwie. Jeśli udostępniasz tej oferty w innych witryn sieci Web i publikacji, należy użyć takiej samej nazwie w wszystkie publikacje typu.    <br/>Jeśli zostanie wydana oferty w okresie wersji zapoznawczej dla aplikacji usługi Power BI, Dodaj parametry `(Preview)` na końcu nazwy aplikacji, takich jak to: `Sample Scv App (Preview)`. |
+| **Identyfikator oferty\***  | Unikatowy identyfikator (w ramach profilu wydawcy) oferty. Ten identyfikator będzie widoczny w adresach URL produktów, szablonach Azure Resource Manager i raportach dotyczących rozliczeń. Maksymalna długość to 50 znaków. Może zawierać tylko małe znaki alfanumeryczne i łączniki (-). Nie może kończyć się kreską. Nie można zmienić tego identyfikatora po przejściu oferty na żywo. Jeśli firma Contoso opublikuje ofertę o IDENTYFIKATORze oferty `sample-SvcApp`, do oferty zostanie przypisany adres URL AppSource `https://appsource.microsoft.com/marketplace/apps/contoso.sample-SvcApp`.      |
+| **\* wydawcy** | Unikatowy identyfikator organizacji w [AppSource](https://appsource.microsoft.com). Wszystkie oferty powinny być skojarzone z IDENTYFIKATORem wydawcy. Tej wartości nie można zmienić po zapisaniu oferty.                         |
+| **Nazwa\***      | Nazwa wyświetlana oferty. Ta nazwa będzie wyświetlana w AppSource i na portal Cloud Partner. Maksymalna długość to 50 znaków. Użyj nazwy marki, która jest rozpoznawana jako produkt. Nie dodawaj tutaj nazwy organizacji, chyba że aplikacja zostanie wprowadzona na rynek. Jeśli udostępniasz tę ofertę w innych witrynach sieci Web i publikacjach, Użyj tej samej nazwy we wszystkich publikacjach.    <br/>W przypadku wydania oferty w okresie zapoznawczym dla aplikacji Power BI należy dodać ciąg `(Preview)` na końcu nazwy aplikacji, na przykład: `Sample Scv App (Preview)`. |
 |     |     |
 
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
-Na następnej karcie należy podać [informacje techniczne](./cpp-technical-info-tab.md) oferty.
+Na następnej karcie określisz [Informacje techniczne](./cpp-technical-info-tab.md) dla swojej oferty.

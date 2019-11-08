@@ -7,12 +7,12 @@ ms.service: expressroute
 ms.topic: conceptual
 ms.date: 11/05/2019
 ms.author: sukishen
-ms.openlocfilehash: 83c3c72ad189720b8f0aa554b7804b55f3488b83
-ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
-ms.translationtype: HT
+ms.openlocfilehash: 3151d72c0e74e7eb694ef2bdd5737f65992fe905
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73747948"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73824377"
 ---
 # <a name="about-azure-networking-msp-partners"></a>Informacje o partnerach MSP sieci platformy Azure
 
@@ -50,7 +50,7 @@ Skorzystaj z linków w tej sekcji, aby uzyskać więcej informacji na temat zarz
 |[Cloud Services oncore]( https://www.oncore.cloud/services/ue-for-expressroute/)|Tak|Tak||||
 |[Orixcom]( https://www.orixcom.com/cloud-solutions/)|Tak|Tak||||
 |[Sejong Telecom](https://www.sejongtelecom.net/en/pages/service/cloud_ms)|Tak|Tak||||
-|[Tata Communications](https://www.tatacommunications.com/about/our-alliances/microsoft-alliance/)|Tak|Tak||||
+|[Tata Communications](https://www.tatacommunications.com/about/our-alliances/microsoft-alliance/)|Tak|Tak|Tak|Tak||
 |[TCTS](https://www.tatacommunications-ts.com/index.php)|Tak|Tak|Tak|||
 |[Mahindra Tech](https://networkservices.techmahindra.com/pages/default.aspx)|Tak||||Tak|
 |[Vandis](https://www.vandis.com/microsoft-azure-practice/)|Tak|Tak|Tak|||

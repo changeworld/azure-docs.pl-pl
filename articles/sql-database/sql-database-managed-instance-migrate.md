@@ -1,22 +1,22 @@
 ---
-title: Migrowanie bazy danych z wystąpienia SQL Server do wystąpienia zarządzanego Azure SQL Database
+title: Migrowanie z SQL Server do wystąpienia zarządzanego
 description: Dowiedz się, jak przeprowadzić migrację bazy danych z wystąpienia SQL Server do wystąpienia zarządzanego przez Azure SQL Database.
 services: sql-database
 ms.service: sql-database
 ms.subservice: migration
-ms.custom: ''
+ms.custom: seo-lt-2019
 ms.devlang: ''
 ms.topic: conceptual
 author: bonova
 ms.author: bonova
 ms.reviewer: douglas, carlrab
 ms.date: 07/11/2019
-ms.openlocfilehash: 228b22d9d283fe8c23cbf7a82036b7f3782cbf25
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 802dfa7e3b2d0b9deac957662ac1e7604d085fd9
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73687994"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73828074"
 ---
 # <a name="sql-server-instance-migration-to-azure-sql-database-managed-instance"></a>SQL Server migracji wystąpień do Azure SQL Database wystąpienia zarządzanego
 
@@ -68,7 +68,7 @@ Linia bazowa wydajności to zestaw parametrów, takich jak średnie/maksymalne u
 Niektóre parametry, które należy zmierzyć w wystąpieniu SQL Server, to: 
 - [Monitoruj użycie procesora CPU w wystąpieniu SQL Server](https://techcommunity.microsoft.com/t5/Azure-SQL-Database/Monitor-CPU-usage-on-SQL-Server/ba-p/680777#M131) i zarejestruj średnie i szczytowe użycie procesora CPU.
 - [Monitoruj użycie pamięci w wystąpieniu SQL Server](https://docs.microsoft.com/sql/relational-databases/performance-monitor/monitor-memory-usage) i określ ilość pamięci używanej przez różne składniki, takie jak pula buforów, pamięć podręczna planu, pula magazynu kolumn, przetwarzanie [OLTP w pamięci](https://docs.microsoft.com/sql/relational-databases/in-memory-oltp/monitor-and-troubleshoot-memory-usage?view=sql-server-2017)itp. Ponadto należy znaleźć wartości średnie i szczytowe licznika wydajności stron pamięci na stronie.
-- Monitoruj użycie operacji we/wy dysku na źródłowym wystąpieniu SQL Server przy użyciu widoku [sys. DM _io_virtual_file_stats](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-io-virtual-file-stats-transact-sql) widok lub [liczniki wydajności](https://docs.microsoft.com/sql/relational-databases/performance-monitor/monitor-disk-usage).
+- Monitoruj użycie operacji we/wy dysku na źródłowym wystąpieniu SQL Server przy użyciu wykazu [sys. dm_io_virtual_file_stats](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-io-virtual-file-stats-transact-sql) widoku lub [liczników wydajności](https://docs.microsoft.com/sql/relational-databases/performance-monitor/monitor-disk-usage).
 - Monitoruj obciążenia i wydajność zapytań lub wystąpienie SQL Server, badając dynamiczne widoki zarządzania lub magazyn zapytań w przypadku migrowania z wersji SQL Server 2016 lub nowszego. Zidentyfikuj średni czas trwania i użycie procesora przez najważniejsze zapytania w obciążeniu, aby porównać je z kwerendami uruchomionymi w wystąpieniu zarządzanym.
 
 > [!Note]

@@ -1,5 +1,5 @@
 ---
-title: Aktywna replikacja geograficzna — Azure SQL Database
+title: Aktywna replikacja geograficzna
 description: Użyj aktywnej replikacji geograficznej, aby utworzyć odczytane pomocnicze bazy danych poszczególnych baz danych w tym samym lub różnych centrach danych (region).
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: anosov1960
 ms.author: sashan
 ms.reviewer: mathoma, carlrab
 ms.date: 07/09/2019
-ms.openlocfilehash: 74cbb9fa5a00b287746afd92fe74f50bfa19110b
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 33697fd8d3b0c6faea423026e1462834c6b1ef4c
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73691322"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73822655"
 ---
 # <a name="creating-and-using-active-geo-replication"></a>Tworzenie i używanie aktywnej replikacji geograficznej
 
@@ -48,7 +48,7 @@ Aktywna replikacja geograficzna korzysta z technologii [Always On](https://docs.
 > [!NOTE]
 > Jeśli wystąpi awaria sieci między dwoma regionami, ponawiamy próbę co 10 sekund, aby ponownie ustanowić połączenia.
 > [!IMPORTANT]
-> W celu zagwarantowania, że krytyczna zmiana podstawowej bazy danych jest replikowana na pomocniczą przed przełączeniem w tryb failover, można wymusić synchronizację, aby zapewnić replikację krytycznych zmian (na przykład aktualizacje haseł). Wymuszona synchronizacja ma wpływ na wydajność, ponieważ blokuje wątek wywołujący do momentu replikowania wszystkich zatwierdzonych transakcji. Aby uzyskać szczegółowe informacje, zobacz [sp_wait_for_database_copy_sync](https://docs.microsoft.com/sql/relational-databases/system-stored-procedures/active-geo-replication-sp-wait-for-database-copy-sync). Aby monitorować opóźnienie replikacji między podstawową bazą danych i lokacją geograficzną, zobacz [sys. DM _geo_replication_link_status](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-geo-replication-link-status-azure-sql-database).
+> W celu zagwarantowania, że krytyczna zmiana podstawowej bazy danych jest replikowana na pomocniczą przed przełączeniem w tryb failover, można wymusić synchronizację, aby zapewnić replikację krytycznych zmian (na przykład aktualizacje haseł). Wymuszona synchronizacja ma wpływ na wydajność, ponieważ blokuje wątek wywołujący do momentu replikowania wszystkich zatwierdzonych transakcji. Aby uzyskać szczegółowe informacje, zobacz [sp_wait_for_database_copy_sync](https://docs.microsoft.com/sql/relational-databases/system-stored-procedures/active-geo-replication-sp-wait-for-database-copy-sync). Aby monitorować opóźnienie replikacji między podstawową bazą danych i lokacją geograficzną, zobacz sekcję [sys. dm_geo_replication_link_status](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-geo-replication-link-status-azure-sql-database).
 
 Na poniższej ilustracji przedstawiono przykład aktywnej replikacji geograficznej skonfigurowanej przy użyciu podstawowego w regionie Północno-środkowe stany USA i dodatkowe w regionie Południowo-środkowe stany USA.
 
@@ -120,7 +120,7 @@ Podstawowa i pomocnicza baza danych muszą mieć tę samą warstwę usług. Zdec
 > Opublikowany cel RPO = 5 s nie może zostać zagwarantowany, chyba że pomocnicza baza danych jest skonfigurowana z tym samym rozmiarem obliczeniowym co podstawowy. 
 
 
-Jeśli zdecydujesz się na utworzenie pomocniczej o mniejszym rozmiarze obliczeniowym, wykres procentowy operacji we/wy dziennika na Azure Portal zapewnia dobry sposób oszacowania minimalnego rozmiaru obliczeniowego pomocniczego, który jest wymagany do utrzymania obciążenia replikacji. Na przykład jeśli podstawową bazą danych jest P6 (1000 jednostek DTU), a jej procent operacji we/wy dziennika to 50%, pomocnicza wartość musi być równa co najmniej P4 (500 jednostek DTU). Możesz również pobrać dane we/wy dziennika za pomocą widoków [sys. resource_stats](/sql/relational-databases/system-catalog-views/sys-resource-stats-azure-sql-database) lub [sys. DM _db_resource_stats](/sql/relational-databases/system-dynamic-management-views/sys-dm-db-resource-stats-azure-sql-database) Database.  Ograniczanie przepływności jest raportowane jako stan oczekiwania HADR_THROTTLE_LOG_RATE_MISMATCHED_SLO w widokach [sys. DM _exec_requests](/sql/relational-databases/system-dynamic-management-views/sys-dm-exec-requests-transact-sql) i [sys. DM _os_wait_stats](/sql/relational-databases/system-dynamic-management-views/sys-dm-os-wait-stats-transact-sql) . 
+Jeśli zdecydujesz się na utworzenie pomocniczej o mniejszym rozmiarze obliczeniowym, wykres procentowy operacji we/wy dziennika na Azure Portal zapewnia dobry sposób oszacowania minimalnego rozmiaru obliczeniowego pomocniczego, który jest wymagany do utrzymania obciążenia replikacji. Na przykład jeśli podstawową bazą danych jest P6 (1000 jednostek DTU), a jej procent operacji we/wy dziennika to 50%, pomocnicza wartość musi być równa co najmniej P4 (500 jednostek DTU). Możesz również pobrać dane dziennika operacji we/wy przy użyciu widoku [sys. resource_stats](/sql/relational-databases/system-catalog-views/sys-resource-stats-azure-sql-database) lub [sys. dm_db_resource_stats](/sql/relational-databases/system-dynamic-management-views/sys-dm-db-resource-stats-azure-sql-database) bazy danych.  Ograniczanie przepływności jest zgłaszane jako HADR_THROTTLE_LOG_RATE_MISMATCHED_SLO stanu oczekiwania w widokach bazy danych [sys. dm_exec_requests](/sql/relational-databases/system-dynamic-management-views/sys-dm-exec-requests-transact-sql) i [sys. dm_os_wait_stats](/sql/relational-databases/system-dynamic-management-views/sys-dm-os-wait-stats-transact-sql) . 
 
 Aby uzyskać więcej informacji na temat rozmiarów obliczeń SQL Database, zobacz [co to są SQL Database warstwy usług](sql-database-purchase-models.md).
 
@@ -143,19 +143,19 @@ Możesz uaktualnić lub obniżyć podstawową bazę danych do innego rozmiaru ob
 
 ## <a name="preventing-the-loss-of-critical-data"></a>Zapobieganie utracie danych o kluczowym znaczeniu
 
-Ze względu na duże opóźnienie sieci rozległej, ciągła kopia używa mechanizmu replikacji asynchronicznej. Replikacja asynchroniczna powoduje nieuniknięcie utraty danych w przypadku wystąpienia błędu. Jednak niektóre aplikacje mogą nie wymagać utraty danych. Aby chronić te aktualizacje krytyczne, Deweloper aplikacji może wywoływać procedurę systemu [sp_wait_for_database_copy_sync](/sql/relational-databases/system-stored-procedures/active-geo-replication-sp-wait-for-database-copy-sync) natychmiast po zatwierdzeniu transakcji. Wywołanie **sp_wait_for_database_copy_sync** blokuje wątek wywołujący do momentu przekazania ostatniej zatwierdzonej transakcji do pomocniczej bazy danych. Jednak nie czeka na odtworzenie i zatwierdzenie wysłanych transakcji na serwerze pomocniczym. **sp_wait_for_database_copy_sync** jest objęty zakresem określonego linku ciągłego kopiowania. Każdy użytkownik z uprawnieniami do nawiązywania połączenia z podstawową bazą danych może wywoływać tę procedurę.
+Ze względu na duże opóźnienie sieci rozległej, ciągła kopia używa mechanizmu replikacji asynchronicznej. Replikacja asynchroniczna powoduje nieuniknięcie utraty danych w przypadku wystąpienia błędu. Jednak niektóre aplikacje mogą nie wymagać utraty danych. Aby chronić te aktualizacje krytyczne, Deweloper aplikacji może wywoływać procedurę systemu [sp_wait_for_database_copy_sync](/sql/relational-databases/system-stored-procedures/active-geo-replication-sp-wait-for-database-copy-sync) natychmiast po zatwierdzeniu transakcji. Wywołanie **sp_wait_for_database_copy_sync** blokuje wątek wywołujący do momentu przekazania ostatniej zatwierdzonej transakcji do pomocniczej bazy danych. Jednak nie czeka na odtworzenie i zatwierdzenie wysłanych transakcji na serwerze pomocniczym. **sp_wait_for_database_copy_sync** jest objęty zakresem do określonego linku ciągłego kopiowania. Każdy użytkownik z uprawnieniami do nawiązywania połączenia z podstawową bazą danych może wywoływać tę procedurę.
 
 > [!NOTE]
-> **sp_wait_for_database_copy_sync** zapobiega utracie danych po przejściu w tryb failover, ale nie gwarantuje pełnej synchronizacji dostępu do odczytu. Opóźnienie spowodowane przez wywołanie procedury **sp_wait_for_database_copy_sync** może być istotne i zależy od rozmiaru dziennika transakcji w czasie wywołania.
+> **sp_wait_for_database_copy_sync** zapobiega utracie danych po przejściu w tryb failover, ale nie gwarantuje pełnej synchronizacji dostępu do odczytu. Opóźnienie spowodowane przez **sp_wait_for_database_copy_sync** wywołanie procedury może być istotne i zależy od rozmiaru dziennika transakcji w czasie wywołania.
 
 ## <a name="monitoring-geo-replication-lag"></a>Monitorowanie opóźnienia replikacji geograficznej
 
-Aby monitorować zwłokę w odniesieniu do celu punktu odzyskiwania, należy użyć kolumny *replication_lag_sec* w [tabeli sys. DM _geo_replication_link_status](/sql/relational-databases/system-dynamic-management-views/sys-dm-geo-replication-link-status-azure-sql-database) w podstawowej bazie danych. Pokazuje zwłokę w sekundach między transakcjami zakontraktowanymi na serwerze podstawowym i trwałymi na serwerze pomocniczym. Na przykład Jeśli wartość opóźnienia wynosi 1 sekunda, oznacza to, że w tym momencie w przypadku wystąpienia podstawowego ma wpływ przestoju i zostanie zainicjowany tryb failover, 1 sekunda najnowszych przejść nie zostanie zapisana. 
+Aby monitorować opóźnienie w odniesieniu do celu punktu odzyskiwania, użyj kolumny *replication_lag_sec* wykazu [sys. dm_geo_replication_link_status](/sql/relational-databases/system-dynamic-management-views/sys-dm-geo-replication-link-status-azure-sql-database) w podstawowej bazie danych. Pokazuje zwłokę w sekundach między transakcjami zakontraktowanymi na serwerze podstawowym i trwałymi na serwerze pomocniczym. Na przykład Jeśli wartość opóźnienia wynosi 1 sekunda, oznacza to, że w tym momencie w przypadku wystąpienia podstawowego ma wpływ przestoju i zostanie zainicjowany tryb failover, 1 sekunda najnowszych przejść nie zostanie zapisana. 
 
-Aby zmierzyć zwłokę w odniesieniu do zmian w podstawowej bazie danych, która została zastosowana na serwerze pomocniczym, czyli dostępna do odczytu z pomocniczego programu, należy porównać czas *last_commit* w pomocniczej bazie danych z tą samą wartością w podstawowej bazie danych.
+Aby zmierzyć zwłokę w odniesieniu do zmian w podstawowej bazie danych, która została zastosowana na serwerze pomocniczym, czyli dostępna do odczytu z pomocniczego programu, należy porównać *last_commit* czasie w pomocniczej bazie danych z tą samą wartością w podstawowej bazie danych.
 
 > [!NOTE]
-> Czasami *replication_lag_sec* w podstawowej bazie danych ma wartość null, co oznacza, że podstawowa nie wie, jak daleko jest pomocnicza.   Jest to zwykle wykonywane po ponownym uruchomieniu procesu i powinien być warunkiem przejściowym. Rozważ wysłanie alertu do aplikacji, jeśli *replication_lag_sec* zwraca wartość null przez dłuższy czas. Wskazuje to, że pomocnicza baza danych nie może komunikować się z serwerem podstawowym ze względu na trwały błąd łączności. Istnieją także warunki, które mogą spowodować, że różnica między czasem *last_commit* na serwerze pomocniczym a podstawową bazą danych będzie duża. Na przykład Jeśli zatwierdzenie zostanie wykonane na serwerze podstawowym po długim okresie bez zmian, różnica przeskoczy do dużej wartości przed szybkim powracaniem do zera. Rozważ użycie warunku błędu, gdy różnica między tymi dwiema wartościami pozostanie duża przez długi czas.
+> Czasami *replication_lag_sec* w podstawowej bazie danych ma wartość null, co oznacza, że podstawowa obecnie nie wie, jak daleko jest pomocnicza.   Jest to zwykle wykonywane po ponownym uruchomieniu procesu i powinien być warunkiem przejściowym. Rozważ wysłanie alertu do aplikacji, jeśli *replication_lag_sec* zwraca wartość null przez dłuższy czas. Wskazuje to, że pomocnicza baza danych nie może komunikować się z serwerem podstawowym ze względu na trwały błąd łączności. Istnieją również warunki, które mogą spowodować, że różnica między *last_commit* czas na pomocniczym a podstawową bazę danych będzie duża. Na przykład Jeśli zatwierdzenie zostanie wykonane na serwerze podstawowym po długim okresie bez zmian, różnica przeskoczy do dużej wartości przed szybkim powracaniem do zera. Rozważ użycie warunku błędu, gdy różnica między tymi dwiema wartościami pozostanie duża przez długi czas.
 
 
 ## <a name="programmatically-managing-active-geo-replication"></a>Programowe zarządzanie aktywną replikacją geograficzną
@@ -170,11 +170,11 @@ Jak wspomniano wcześniej, aktywna replikacja geograficzna może być również 
 | Polecenie | Opis |
 | --- | --- |
 | [ALTER DATABASE](https://docs.microsoft.com/sql/t-sql/statements/alter-database-transact-sql?view=azuresqldb-current) |Użyj argumentu Dodaj dodatkową na serwerze, aby utworzyć pomocniczą bazę danych dla istniejącej bazy danych i rozpocząć replikację danych |
-| [ALTER DATABASE](https://docs.microsoft.com/sql/t-sql/statements/alter-database-transact-sql?view=azuresqldb-current) |Użycie trybu FAILOVER lub FORCE_FAILOVER_ALLOW_DATA_LOSS w celu przełączenia pomocniczej bazy danych jako głównej w celu zainicjowania trybu failover |
+| [ALTER DATABASE](https://docs.microsoft.com/sql/t-sql/statements/alter-database-transact-sql?view=azuresqldb-current) |Użyj trybu FAILOVER lub FORCE_FAILOVER_ALLOW_DATA_LOSS, aby przełączyć pomocniczą bazę danych jako główną w celu zainicjowania trybu failover |
 | [ALTER DATABASE](https://docs.microsoft.com/sql/t-sql/statements/alter-database-transact-sql?view=azuresqldb-current) |Użyj Usuń POMOCNICZy serwer na serwerze, aby zakończyć replikację danych między SQL Database a określoną pomocniczą bazą danych. |
-| [_replication_links geograficzna](/sql/relational-databases/system-dynamic-management-views/sys-geo-replication-links-azure-sql-database) |Zwraca informacje o wszystkich istniejących łączach replikacji dla każdej bazy danych na serwerze Azure SQL Database. |
-| [sys. DM _geo_replication_link_status](/sql/relational-databases/system-dynamic-management-views/sys-dm-geo-replication-link-status-azure-sql-database) |Pobiera czas ostatniej replikacji, ostatnie opóźnienie replikacji oraz inne informacje o łączu replikacji danej bazy danych SQL. |
-| [sys. DM _operation_status](/sql/relational-databases/system-dynamic-management-views/sys-dm-operation-status-azure-sql-database) |Przedstawia stan wszystkich operacji bazy danych, w tym stan łączy replikacji. |
+| [sys. geo_replication_links](/sql/relational-databases/system-dynamic-management-views/sys-geo-replication-links-azure-sql-database) |Zwraca informacje o wszystkich istniejących łączach replikacji dla każdej bazy danych na serwerze Azure SQL Database. |
+| [sys. dm_geo_replication_link_status](/sql/relational-databases/system-dynamic-management-views/sys-dm-geo-replication-link-status-azure-sql-database) |Pobiera czas ostatniej replikacji, ostatnie opóźnienie replikacji oraz inne informacje o łączu replikacji danej bazy danych SQL. |
+| [sys. dm_operation_status](/sql/relational-databases/system-dynamic-management-views/sys-dm-operation-status-azure-sql-database) |Przedstawia stan wszystkich operacji bazy danych, w tym stan łączy replikacji. |
 | [sp_wait_for_database_copy_sync](/sql/relational-databases/system-stored-procedures/active-geo-replication-sp-wait-for-database-copy-sync) |powoduje, że aplikacja czeka, aż wszystkie zatwierdzone transakcje zostaną zreplikowane i potwierdzone przez aktywną pomocniczą bazę danych. |
 |  | |
 
@@ -204,8 +204,8 @@ Jak wspomniano wcześniej, aktywna replikacja geograficzna może być również 
 | [Pobieranie lub aktualizowanie stanu bazy danych](https://docs.microsoft.com/rest/api/sql/databases/createorupdate) |Zwraca stan podczas operacji tworzenia. |
 | [Ustaw pomocniczą bazę danych jako podstawową (planowana praca w trybie failover)](https://docs.microsoft.com/rest/api/sql/replicationlinks/failover) |Ustawia pomocniczą bazę danych jako podstawową przez przechodzenie w tryb failover z bieżącej podstawowej bazy danych. **Ta opcja nie jest obsługiwana w przypadku wystąpienia zarządzanego.**|
 | [Ustaw pomocniczą bazę danych jako podstawową (nieplanowaną pracę w trybie failover)](https://docs.microsoft.com/rest/api/sql/replicationlinks/failoverallowdataloss) |Ustawia pomocniczą bazę danych jako podstawową przez przechodzenie w tryb failover z bieżącej podstawowej bazy danych. Ta operacja może spowodować utratę danych. **Ta opcja nie jest obsługiwana w przypadku wystąpienia zarządzanego.**|
-| [Pobierz łącze replikacji](https://docs.microsoft.com/rest/api/sql/replicationlinks/get) |Pobiera określone łącze replikacji dla danej bazy danych SQL w ramach powiązania z replikacją geograficzną. Pobiera informacje widoczne w widoku wykazu sys. geo _replication_links. **Ta opcja nie jest obsługiwana w przypadku wystąpienia zarządzanego.**|
-| [Linki replikacji — lista według bazy danych](https://docs.microsoft.com/rest/api/sql/replicationlinks/listbydatabase) | Pobiera wszystkie linki replikacji dla danej bazy danych SQL w ramach powiązania z replikacją geograficzną. Pobiera informacje widoczne w widoku wykazu sys. geo _replication_links. |
+| [Pobierz łącze replikacji](https://docs.microsoft.com/rest/api/sql/replicationlinks/get) |Pobiera określone łącze replikacji dla danej bazy danych SQL w ramach powiązania z replikacją geograficzną. Pobiera informacje widoczne w widoku wykazu sys. geo_replication_links. **Ta opcja nie jest obsługiwana w przypadku wystąpienia zarządzanego.**|
+| [Linki replikacji — lista według bazy danych](https://docs.microsoft.com/rest/api/sql/replicationlinks/listbydatabase) | Pobiera wszystkie linki replikacji dla danej bazy danych SQL w ramach powiązania z replikacją geograficzną. Pobiera informacje widoczne w widoku wykazu sys. geo_replication_links. |
 | [Usuń łącze replikacji](https://docs.microsoft.com/rest/api/sql/replicationlinks/delete) | Usuwa łącze replikacji bazy danych. Nie można wykonać operacji w trybie failover. |
 |  | |
 

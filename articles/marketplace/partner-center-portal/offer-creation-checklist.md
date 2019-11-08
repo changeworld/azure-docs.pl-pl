@@ -5,14 +5,15 @@ author: qianw211
 manager: evansma
 ms.author: v-qiwe
 ms.service: marketplace
+ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 08/14/2019
-ms.openlocfilehash: 66c28039f9126ed9e3f56c3ac15b1b3d82279b64
-ms.sourcegitcommit: 18061d0ea18ce2c2ac10652685323c6728fe8d5f
+ms.openlocfilehash: 1643a1e309ecc2bcfc440e3553fcffef54cfb038
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/15/2019
-ms.locfileid: "69036379"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73824623"
 ---
 # <a name="saas-offer-creation-checklist"></a>Lista kontrolna tworzenia oferty SaaS
 
@@ -20,7 +21,7 @@ Proces tworzenia oferty SaaS przeprowadzi Cię przez wiele stron. Poniżej znajd
 
 Elementy wymagane do podania lub określenia są wymienione poniżej. Niektóre obszary są opcjonalne lub mają podane wartości domyślne, które można zmienić zgodnie z potrzebami. Nie musisz już korzystać z tych sekcji w podanej kolejności.
 
-| **Element**    | **Cel**  |
+| **Element**    | **Przeznaczenie**  |
 | :---------- | :-------------------|
 | [**Nowa oferta — modalne**](#new-offer-modal) | Zbiera informacje o tożsamości oferty.  |
 | [Strona konfiguracji oferty](#offer-setup-page) | Umożliwia korzystanie z kluczowych funkcji i wybór sposobu sprzedaży oferty przez firmę Microsoft.  |
@@ -43,7 +44,7 @@ Pierwsze fragmenty informacji, które należy podać, są IDENTYFIKATORem i alia
 | **Nazwa pola**    | **Uwagi**   |  
 | :---------------- | :-----------| 
 | Identyfikator oferty  | Wymagane, nie można zmienić po utworzeniu. Maks. 50 znaków i musi zawierać tylko małe litery, znaki alfanumeryczne, łączniki i podkreślenia. |
-| Alias oferty  | Wymagana. |
+| Alias oferty  | Wymagany. |
 
 ## <a name="offer-setup-page"></a>Strona konfiguracji oferty
 
@@ -51,14 +52,14 @@ Na stronie Konfiguracja oferty możesz wybrać różne kanały i sprzedawać ruc
 
 | **Nazwa pola**    | **Uwagi**   | 
 | :---------------- | :-----------|  
-| Czy chcesz sprzedawać w firmie Microsoft?  | Wymagana. Domyślne: Tak |
-| Jak chcesz, aby potencjalni klienci mogli współdziałać z listą ofert? (Wywołanie do akcji)  | Wymagane, jeśli nie sprzedajesz przez firmę Microsoft. Domyślne: Bezpłatna wersja próbna, opcje: "Pobierz teraz", "bezpłatna wersja próbna", "kontakt ze mną". |
+| Czy chcesz sprzedawać w firmie Microsoft?  | Wymagany. Wartość domyślna: tak |
+| Jak chcesz, aby potencjalni klienci mogli współdziałać z listą ofert? (Wywołanie do akcji)  | Wymagane, jeśli nie sprzedajesz przez firmę Microsoft. Domyślnie: bezpłatna wersja próbna, opcje: "Pobierz teraz", "bezpłatna wersja próbna", "kontakt ze mną". |
 | Adres URL wersji próbnej  | Wymagany, jeśli wybrano opcję "bezpłatna wersja próbna", ponieważ sposób, w jaki klienci powinni korzystać z listy ofert. |
 | Adres URL oferty  | Wymagane, jeśli wybrano opcję "Pobierz teraz", ponieważ sposób, w jaki klienci powinni korzystać z listy ofert |
-| Kanały  | Opcjonalny. Domyślne: Nie zabrałeś do kanału dostawcy CSP (odsprzedawcy).  |
-| Wersja testowa | Opcjonalny. Domyślne: Brak włączonego dysku testowego.  |
-| Typ dysku testowego | Wymagane, jeśli włączono dysk testowy. Domyślne: Niczego nie wybrano. Opcje: Azure Resource Manager, Dynamics 365 for Business Central, Dynamics 365 for Customer Engagement, Dynamics 365 for Operations, Logic App, Power BI.  |
-| Zarządzanie potencjalnymi klientami — łączenie z systemem CRM | Wymagane, jeśli sprzedajesz przez firmę Microsoft lub jeśli lista zawiera oferty "kontakt ze mną". Wartość domyślna: brak połączonego systemu CRM. Opcje programu CRM: Azure Table, Azure Blob, Dynamics CRM Online, HTTPs, punkt końcowy, Marketo, Salesforce  |
+| Kanały  | Opcjonalny. Wartość domyślna: nie została wybrana w kanale CSP (odsprzedawcy).  |
+| Wersja testowa | Opcjonalny. Wartość domyślna: brak włączonego dysku testowego.  |
+| Typ dysku testowego | Wymagane, jeśli włączono dysk testowy. Wartość domyślna: Brak zaznaczenia. Opcje: Azure Resource Manager, Dynamics 365 dla firm Central, Dynamics 365 do zaangażowania klienta, Dynamics 365 for Operations, Logic App Power BI.  |
+| Zarządzanie potencjalnymi klientami — nawiązywanie połączenia z systemem CRM | Wymagane, jeśli sprzedajesz przez firmę Microsoft lub jeśli lista zawiera oferty "kontakt ze mną". Wartość domyślna: brak połączonego systemu CRM. Opcje programu CRM: tabela Azure, obiekt blob platformy Azure, Dynamics CRM Online, HTTPs, punkt końcowy, Marketo, Salesforce  |
 
 ## <a name="properties-page"></a>Strona właściwości
 
@@ -66,10 +67,10 @@ Na stronie właściwości można zdefiniować kategorie i branże używane do gr
 
 | **Nazwa pola**    | **Uwagi**   | 
 | :---------------- | :-----------|  
-| Kategoria i Podkategoria | Wymagane wartości 1 i maks. 3. Domyślne: Niczego nie wybrano. |
-| Branże i podbranże | Opcjonalny. Maksymalna 2 branże L1 i maksymalna 2 podbranża w ramach każdej branży L1, domyślna: Nie wybrano żadnego |
-| Wersja aplikacji  | Opcjonalny. Domyślne: Brak. |
-| Użyj kontraktu standardowego  | Opcjonalna. Domyślnie: nie wybrano.  | |
+| Kategoria i Podkategoria | Wymagane wartości 1 i maks. 3. Wartość domyślna: Brak zaznaczenia. |
+| Branże i podbranże | Opcjonalny. maksymalnie 2 branże L1 i 2 podbranże w ramach każdej branży L1, domyślnie: brak wybranych |
+| Wersja aplikacji  | Opcjonalny. Wartość domyślna: Brak. |
+| Użyj kontraktu standardowego  | Opcjonalny. Domyślnie: nie wybrano.  | |
 | Warunki użytkowania  | Wymagane, jeśli nie wybrano kontraktu standardowego.  |
 
 ## <a name="offer-listing-page"></a>Strona z listą ofert
@@ -78,21 +79,21 @@ Na stronie lista znajduje się tekst i obrazy widoczne dla klientów podczas wy�
 
 | **Nazwa pola**    | **Uwagi**   |
 | :---------------- | :-----------| 
-| Name  | Wymagane, maks. 50 znaków. |
+| Nazwa  | Wymagane, maks. 50 znaków. |
 | Podsumowanie  | Wymagane, maks. 100 znaków. | 
 | Opis  | Wymagane, maks. 3000 znaków. |
 | Instrukcje Wprowadzenie  | Wymagane, maks. 3000 znaków. |
 | Instrukcje Wprowadzenie  | Wymagane, maks. 3000 znaków. |
 | Wyszukaj słowa kluczowe  | Opcjonalne, zalecane, maksymalnie 3 słowa kluczowe. |
-| Adres URL zasad ochrony prywatności  | Wymagana. |
-| Adres URL materiałów marketingowych programu CSP  | Opcjonalna. |
-| Przydatne linki tytuł + adres URL  | Opcjonalna. |
+| Adres URL zasad ochrony prywatności  | Wymagany. |
+| Adres URL materiałów marketingowych programu CSP  | Opcjonalny. |
+| Przydatne linki tytuł + adres URL  | Opcjonalny. |
 | Dokument pomocniczy tytuł + plik  | Wymagane, minimum 1 i 3. Musi być formatem pliku PDF. |
 | Zrzuty ekranu  | Wymagany, minimalny 1 zrzut ekranu i maksymalnie 5; co najmniej cztery zalecane. Musi mieć 1280 X 720 w formacie PNG. |
-| Logo Sklepu (małe, średnie, duże, szerokie, Hero)  | Małe (48 X 48) i duże (216 X 216) wymagane; inne rozmiary opcjonalne, ale zalecane: Średnia (90 x 90), Wide (255 x 115), Hero (815 x 290). Musi być w formacie PNG. |
+| Logo Sklepu (małe, średnie, duże, szerokie, Hero)  | Małe (48 X 48) i duże (216 X 216) wymagane; inne rozmiary opcjonalne, ale zalecane: Średni (90 x 90), szeroki (255 x 115), Hero (815 x 290). Musi być w formacie PNG. |
 | Nazwa wideo + URL + miniatura  | Opcjonalne, zalecane, maksymalnie 4 wideo. Miniatura musi mieć 1280 x 720 w formacie PNG. Wideo musi być hostowane w serwisie YouTube lub Vimeo. |
 | Kontakty (program CSP, inżynieria, pomoc techniczna)  | Wymagana osoba kontaktu inżynieryjnego i pomocy technicznej (nazwisko, adres e-mail i numer telefonu); Program CSP kontaktuje się z opcjonalnym, ale zalecanym. |
-| Adres URL pomocy technicznej  | Wymagane. |
+| Adres URL pomocy technicznej  | Wymagany. |
 
 ## <a name="preview-page"></a>Strona podglądu
 
@@ -120,7 +121,7 @@ Pierwsze informacje, które należy podać, to nazwa i identyfikator planu. Ta s
 | **Nazwa pola**    | **Uwagi**   |  
 | :---------------- | :-----------| 
 | Identyfikator planu  | Wymagane, jeśli sprzedajesz przez firmę Microsoft. Nie można go zmienić po utworzeniu. Maks. 50 znaków i musi zawierać tylko małe litery, znaki alfanumeryczne, łączniki i podkreślenia. |
-| Nazwa planu  | Wymagane, jeśli sprzedajesz przez firmę Microsoft. Musi być unikatowa we wszystkich planach oferty. Maks. 50 znaków. |
+| Plan Name  | Wymagane, jeśli sprzedajesz przez firmę Microsoft. Musi być unikatowa we wszystkich planach oferty. Maks. 50 znaków. |
 
 ## <a name="plan-listing-page"></a>Strona aukcji planu
 
@@ -137,11 +138,11 @@ Na stronie planowanie cen i dostępności można zdefiniować charakterystykę b
 | **Nazwa pola**    | **Uwagi**   | 
 | :---------------- | :-----------| 
 | Dostępność na rynku  | Wymagane, minimum 1 i maks. 141. |
-| Model cen  | Wymagane. Domyślne: Stała stawka. Opcje: Stała stawka na użytkownika. |
+| Model cen  | Wymagany. Wartość domyślna: stawka płaska. Opcje: stawka ryczałtowa na użytkownika. |
 | Minimalna i Maksymalna liczba stanowisk  | Opcjonalne, dostępne tylko wtedy, gdy wybrano model cenowy oparty na miejscu. |
-| Okres rozliczeniowy  | Wymagany. Domyślne: Miesięczne. Opcje: Miesięczny, roczny. |
+| Okres rozliczeniowy  | Wymagany. Wartość domyślna: co miesiąc. Opcje: co miesiąc, roczna. |
 | Cena  | Wymagany USD miesięcznie, w przypadku wybrania miesięcznego okresu rozliczeniowego; lub USD na rok, jeśli wybrano roczny okres rozliczeniowy. |
-| Planowanie odbiorców  | Opcjonalna. Domyślne: Plan publiczny. Opcje: Publiczne, prywatne według identyfikatora dzierżawy |
+| Planowanie odbiorców  | Opcjonalny. Domyślne: plan publiczny. Opcje: publiczne, prywatne według identyfikatora dzierżawy |
 | Odbiorcy planu z ograniczeniami (identyfikator dzierżawy + opis)  | Wymagane, jeśli wybrano plan prywatny. Minimalna 1 i maksymalna 10 identyfikatorów dzierżawy, jeśli wprowadzono ją ręcznie. Max 20000, jeśli Importuj plik CSV. |
 
 ## <a name="test-drive-listing-page"></a>Strona listy dysków testowych
@@ -150,8 +151,8 @@ Dostępne tylko wtedy, gdy wybrano opcję zaoferowania dysku testowego dla ofert
 
 | **Nazwa pola**    | **Uwagi**   | 
 | :---------------- | :-----------| 
-| Opis  | Wymagane. |
-| Ręczna nazwa użytkownika + plik  | Wymagany, maks. 1 doc. Musi być w formacie PDF. |
+| Opis  | Wymagany. |
+| Ręczna nazwa użytkownika + plik  | Wymagany, maksymalny 1 dokument doc. musi być w formacie PDF. |
 | Nazwa wideo, adres URL i miniatura  | Opcjonalne, zalecane. Miniatura musi być 533 x 324 w formacie JPGP lub PNG. Wideo musi być hostowane w serwisie YouTube lub Vimeo. |
 
 ## <a name="review-and-publish-page"></a>Przeglądanie i publikowanie strony

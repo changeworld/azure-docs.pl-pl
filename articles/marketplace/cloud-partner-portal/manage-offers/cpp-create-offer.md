@@ -1,61 +1,62 @@
 ---
-title: Tworzenie oferty w witrynie Marketplace | Portal Azure Marketplace
-description: Tworzenie oferty na platformie Azure i usługi AppSource rynków przy użyciu portalu Cloud Partner
+title: Tworzenie ofert w witrynie Marketplace | Portal Azure Marketplace
+description: Twórz oferty na platformie Azure i AppSource Marketplace przy użyciu portal Cloud Partner
 services: Azure, AppSource, Marketplace, Cloud Partner Portal,
 author: v-miclar
 ms.service: marketplace
+ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 01/10/2019
 ms.author: pabutler
-ms.openlocfilehash: cc0d8e68578500d4fa5f1b167790d60c8f7c5067
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 4aa4e154c99f20963485a98d1a21af4ae2b7a1b1
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64942155"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73828100"
 ---
-# <a name="create-azure-marketplace-and-appsource-offers"></a>Tworzenie oferty w portalu Azure Marketplace i AppSource
+# <a name="create-azure-marketplace-and-appsource-offers"></a>Tworzenie ofert w witrynie Azure Marketplace i AppSource
 
-Jeden z podstawowego celu portalu Cloud Partner jest umożliwienie wydawców do tworzenia (a następnie opublikować) oferuje platforma Microsoft Azure i usługi AppSource rynków.  Ta operacja zawsze zaczyna się od wybierania typu odpowiednią ofertę z [nowe oferty menu](../portal-tour/cpp-new-offer-menu.md).  W odpowiedzi odpowiednie **nowa oferta** strona jest wyświetlana dla tego typu oferty.  Na przykład na poniższej ilustracji przedstawiono domyślne **nowa oferta** strony dla typu aplikacji platformy Azure.
+Jednym z podstawowych celów portal Cloud Partner jest umożliwienie wydawcom tworzenia (a następnie publikowania) ofert na Microsoft Azure i AppSource Marketplace.  Ta operacja zawsze zaczyna się od wybrania żądanego typu oferty z [menu nowe oferty](../portal-tour/cpp-new-offer-menu.md).  W odpowiedzi zostanie wyświetlona odpowiednia **Nowa strona oferty** dla tego typu oferty.  Na przykład na poniższej ilustracji przedstawiono domyślną nową stronę **oferty** dla typu aplikacji platformy Azure.
 
 ![Nowa strona domyślna oferty](./media/new-offer-page.png)
 
-Dostępne są dwie opcje kartę na pasku menu poziome wyświetlany w górnej części tej strony: 
-- **Edytor** karcie — umożliwia wprowadzania informacji i przekazywania zasobów dla nowego wystąpienia oferty.  Ta karta jest wyświetlana domyślnie.
-- **Stan** — zawiera stan publikowania oraz wyświetla wszelkie problemy weryfikacji i przeglądu. 
+Dostępne są dwie opcje tabulacji w poziomym pasku menu wyświetlanym w górnej części tej strony: 
+- Karta **Edytor** — włącza wprowadzanie informacji i przekazywanie zasobów dla nowego wystąpienia oferty.  Ta karta jest wyświetlana domyślnie.
+- Karta **stan** — udostępnia stan publikowania i zawiera listę wszelkich problemów z walidacją i przeglądaniem. 
 
-Po utworzeniu oferty, możesz użyć **edytora** kartę, aby wprowadzić informacje o tej ofercie. 
+Podczas tworzenia oferty należy użyć karty **Edytor** , aby wprowadzić informacje o tej ofercie. 
 
-## <a name="editing-operations"></a>Operacji edycji
+## <a name="editing-operations"></a>Edytowanie operacji
 
-Poziomym pasku narzędzi znajduje się nad obszarem danych wejściowych zawiera następujące przyciski:
+Poziomy pasek narzędzi znajdujący się powyżej obszaru wprowadzania danych wyświetla następujące przyciski:
 
 |   Button    |   Przeznaczenie                                                          |
 |   ------    |  --------                                                          |
-| **Zapisz**    | Zapisuje bieżące zmiany danych.  Należy ręcznie Zapisz zmiany, zanim przejdziesz do innej strony lub wszystkie zmiany zostaną utracone. | 
-| **Odrzuć** | Odrzuca wszystkie ostatnie zmiany danych (ponieważ jest to ostatnia zapisywania)             |
-| **Compare** | Porównuje stan aktualną ofertę opublikowane oferty.  Włączone tylko po pomyślnym opublikowaniu oferty.  |
-| **Publikowanie** | Rozpoczyna się proces publikowania dla tej oferty                       |
-| **Usuwanie**  | Po jego utworzeniu, ale zanim został opublikowany, powoduje usunięcie tej oferty. |
+| **Pisał**    | Zapisuje wszystkie ostatnie zmiany wpisów danych.  Zmiany należy zapisywać ręcznie przed przechodzeniem ze strony lub utracisz zmiany. | 
+| **Odrzucone** | Odrzuca ostatnie zmiany wpisów danych (od momentu ostatniego zapisu)             |
+| **Porównaniu** | Porównuje stan bieżącej oferty z opublikowaną ofertą.  Włączone tylko po pomyślnym opublikowaniu oferty.  |
+| **Publikowanie** | Rozpoczyna proces publikowania dla tej oferty                       |
+| **Usuwanie**  | Usuwa tę ofertę po jej utworzeniu, ale przed jej opublikowaniem. |
 |   |   |
 
 
-## <a name="editing-tabs"></a>Edytowanie karty
+## <a name="editing-tabs"></a>Edytowanie kart
 
-Podczas tworzenia oferty, dostarczasz danych wymaganych i opcjonalnych na każdej karcie znajduje się w lewej kolumnie pionowy **nowa oferta** strony.  Kontrolek interfejsu użytkownika standardowego — takie jak pola tekstowe, menu rozwijane i pola wyboru — zbierania danych są wyświetlane.  Mimo że w określonej kolekcji kart edycji zależy od typu oferty, Poniższa lista zawiera niektóre popularne karty.
+Podczas tworzenia oferty podawane są wymagane i opcjonalne dane na każdej karcie, która znajduje się w pionowej kolumnie z lewej strony **nowej oferty** .  Standardowe formanty interfejsu użytkownika — takie jak pola tekstowe, menu rozwijane i pola wyboru — są wyświetlane na potrzeby zbierania danych.  Chociaż określona kolekcja kart edycji zależy od typu oferty, w poniższej tabeli wymieniono niektóre typowe karty.
 
 |      Nazwa karty       |   Przeznaczenie                                                            |
 |      --------       |   -------                                                            |
-| **Ustawienia oferty**  | Zbiera dane o ofercie i wydawcy informacji o tożsamości.                    |
-| **Jednostki SKU**            | Definiuje właściwości techniczne i biznesowe, dla każdej wersji jednostkę magazynową (SKU) oferty |
-| **Test Drive**      | Dla tych typów, które obsługują to opcjonalna funkcja definiuje pokaz oferty.  Aby uzyskać więcej informacji, zobacz [co to jest wersja testowa?](../test-drive/what-is-test-drive.md)  |
-| **Portal Marketplace** lub **sklepu** | Gromadzi informacje o ciągi tekstowe, dokumenty i obrazy, używany do tworzenia listy oferty w portalu marketplace |
-| **Pomoc techniczna**         | Zbiera informacje kontaktowe klienta, inżynieria i pomocy technicznej online  |
+| **Ustawienia oferty**  | Zbiera informacje o ofercie i tożsamości wydawcy.                    |
+| **Jednostki SKU**            | Definiuje cechy techniczne i biznesowe dla każdej wersji jednostki składowania (SKU) oferty |
+| **Wersja testowa**      | Dla tych typów, które obsługują tę opcjonalną funkcję, definiuje demonstrację oferty.  Aby uzyskać więcej informacji, zobacz [co to jest dysk testowy?](../test-drive/what-is-test-drive.md)  |
+| Portal **Marketplace** lub **witryna sklepu** | Zbiera ciągi tekstowe, dokumenty i obrazy używane do wyświetlania oferty w portalu Marketplace |
+| **Pomoc techniczna**         | Gromadzi informacje kontaktowe dla klientów, inżynierów i pomocy technicznej online  |
 |  |  |
 
-Zawartość karty o podobnej nazwie, mogą się różnić między typami inną ofertę.  Szczegóły specyficzne dla oferty z tych kart można znaleźć w sekcji "Tworzenie oferta" dla każdego typu oferty.
+Zawartość kart o podobnej nazwie może się różnić między różnymi typami oferty.  Szczegółowe informacje o ofercie tych kart są podane w sekcji "Tworzenie oferty" dla każdego typu oferty.
 
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
-Po utworzeniu i zapisaniu oferty i przed lub po jej opublikowaniu, możesz [wyświetlić ich stan](./cpp-view-status-offer.md).
+Po utworzeniu i zapisaniu oferty oraz przed lub po jej opublikowaniu można [wyświetlić jej stan](./cpp-view-status-offer.md).

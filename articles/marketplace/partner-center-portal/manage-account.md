@@ -5,14 +5,15 @@ author: ChJenk
 manager: evansma
 ms.author: parthp
 ms.service: marketplace
+ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 08/30/2019
-ms.openlocfilehash: c28469e15841e2675c20868b74cf044159c4e9ca
-ms.sourcegitcommit: 267a9f62af9795698e1958a038feb7ff79e77909
+ms.openlocfilehash: 2962f6c5032ba317f9eb8f10c2abddb566aad904
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70259190"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73825518"
 ---
 # <a name="how-to-manage-your-commercial-marketplace-account-in-partner-center"></a>Jak zarządzać kontem komercyjnej witryny Marketplace w centrum partnerskim 
 
@@ -48,12 +49,12 @@ Ustawienia konta znajdują się w prawym górnym rogu [pulpitu nawigacyjnego por
 ![Menu Ustawienia konta w centrum partnerskim](./media/dashboard-developer-settings.png)
 
 Wewnątrz **ustawień konta**będzie można wyświetlić:
-- **Szczegóły konta**: Typ konta i stan konta
+- **Szczegóły konta**: typ konta i stan konta
 - **Identyfikatory wydawcy**: Identyfikator sprzedawcy, identyfikator użytkownika, identyfikator wydawcy, dzierżawy usługi Azure AD itd.
 - **Informacje kontaktowe**: Nazwa wyświetlana wydawcy, nazwa kontaktu sprzedającego, adres e-mail, numer telefonu i adres
-- **Szczegóły finansowe**: Status wypłaty, profil podatkowy i stan wstrzymania
-- **Urządzenia**: Wszystkie urządzenia testowe skojarzone z Twoim kontem
-- **Identyfikatory GUID śledzenia**: Wszystkie identyfikatory GUID śledzenia są skojarzone z Twoim kontem
+- **Szczegóły finansowe**: konto wypłaty, profil podatkowy i stan wstrzymania
+- **Urządzenia**: wszystkie urządzenia testowe skojarzone z Twoim kontem
+- **Identyfikatory GUID śledzenia**: wszystkie identyfikatory GUID śledzenia są skojarzone z Twoim kontem
 
 ### <a name="account-details"></a>Szczegóły konta
 
@@ -83,8 +84,8 @@ Aby skonfigurować konto wypłaty, należy **skojarzyć Twoje konto Microsoft**:
 3. Aby zakończyć konfigurowanie konta wypłaty, zaloguj się całkowicie z Centrum partnerskiego, a następnie zaloguj się ponownie przy użyciu konta Microsoft (a nie konta służbowego). 
 
 Teraz, gdy Twoje konto Microsoft jest skojarzone, aby dodać konto płatne, należy:
-- **Wybierz formę płatności**: Konto bankowe lub system PayPal
-- **Dodaj informacje o płatności**: Może to obejmować wybranie typu konta (sprawdzanie lub oszczędności), wprowadzenie nazwy posiadacza konta, numeru konta oraz numeru banku, adresu rozliczenia, numeru telefonu lub adresu e-mail w systemie PayPal. \* Aby uzyskać więcej informacji na temat korzystania z systemu PayPal jako formy płatności konta i dowiedzieć się, czy jest ona obsługiwana w regionie rynku, zobacz [Informacje o systemie PayPal](https://docs.microsoft.com/windows/uwp/publish/setting-up-your-payout-account-and-tax-forms#paypal-info).
+- **Wybierz formę płatności**: konto bankowe lub PayPal
+- **Dodawanie informacji o płatności**: może to obejmować wybranie typu konta (sprawdzanie lub oszczędności), wprowadzenie nazwy, numeru konta i numeru rozliczeniowego, adres rozliczeniowy, numer telefonu lub adres E-mail w systemie PayPal. \* Aby uzyskać więcej informacji na temat korzystania z systemu PayPal jako formy płatności konta i dowiedzieć się, czy jest ona obsługiwana w regionie rynku, zobacz [Informacje o systemie PayPal](https://docs.microsoft.com/windows/uwp/publish/setting-up-your-payout-account-and-tax-forms#paypal-info).
 
 > [!IMPORTANT]
 > Zmiana konta wypłaty może opóźniać płatności o jeden cykl płatności. To opóźnienie występuje, ponieważ musimy zweryfikować zmianę konta, tak jak w przypadku pierwszej konfiguracji konta wypłaty. Po zweryfikowaniu konta będziesz nadal otrzymywać opłaty za pełną kwotę. Wszelkie płatności z tytułu bieżącego cyklu płatności zostaną dodane do kolejnego.  
@@ -149,7 +150,7 @@ Aby uzyskać więcej informacji, zobacz [Śledzenie użycia klientów platformy 
 
 Centrum partnerskie wykorzystuje [Azure Active Directory](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-whatis) (Azure AD) do dostępu do konta i zarządzania przez wiele użytkowników. Usługa Azure AD Twojej organizacji jest automatycznie skojarzona z kontem Centrum partnerskiego w ramach procesu rejestracji. 
 
-## <a name="manage-users"></a>Zarządzaj użytkownikami
+## <a name="manage-users"></a>Zarządzanie użytkownikami
 
 Sekcja **Użytkownicy** Centrum partnerskiego (w obszarze **Ustawienia konta**) umożliwia korzystanie z usługi Azure AD do zarządzania użytkownikami, grupami i aplikacjami usługi Azure AD, które mają dostęp do Twojego konta Centrum partnerskiego. Aby zarządzać użytkownikami, musisz się zalogować za pomocą [konta służbowego](./company-work-accounts.md) (skojarzonej dzierżawy usługi Azure AD). Aby zarządzać użytkownikami w ramach innego konta służbowego/dzierżawy, musisz wylogować się, a następnie ponownie zalogować się jako użytkownik z uprawnieniami **Menedżera** dla tego konta służbowego/dzierżawy. 
 
@@ -223,7 +224,7 @@ Jeśli jeden z użytkowników musi zmienić hasło, może to zrobić, jeśli pod
 3.  Zostanie wyświetlona strona potwierdzenia przedstawiająca informacje logowania dla użytkownika, w tym hasło tymczasowe. Pamiętaj, aby wydrukować lub skopiować te informacje i udostępnić je użytkownikowi, ponieważ nie będzie można uzyskać dostępu do hasła tymczasowego po opuszczeniu tej strony.
 
 
-## <a name="manage-groups"></a>Zarządzaj grupami
+## <a name="manage-groups"></a>Zarządzanie grupami
 
 Grupy umożliwiają jednoczesne kontrolowanie wielu ról użytkowników i uprawnień.
 
@@ -339,9 +340,9 @@ Aby utworzyć nową dzierżawę usługi Azure AD przy użyciu konta Centrum part
 
 1.  Na stronie **dzierżawców** (w obszarze **Ustawienia konta**) wybierz pozycję **Utwórz nową dzierżawę usługi Azure AD**.
 2. Wprowadź informacje o katalogu dla nowej usługi Azure AD:
-    - **Nazwa domeny**: Unikatowa nazwa, która będzie używana dla domeny usługi Azure AD wraz z ". onmicrosoft.com". Na przykład, jeśli wprowadzono "przykład", domena usługi Azure AD będzie "example.onmicrosoft.com".
-    - **Kontaktowy adres e-mail**: Adres e-mail, na który można skontaktować się z Tobą w razie potrzeby.
-    - **Informacje o koncie użytkownika administratora globalnego**: Imię, nazwisko, nazwa użytkownika i hasło, które mają być używane dla nowego konta administratora globalnego.
+    - **Nazwa domeny**: unikatowa nazwa, która będzie używana dla domeny usługi Azure AD wraz z ". onmicrosoft.com". Na przykład, jeśli wprowadzono "przykład", domena usługi Azure AD będzie "example.onmicrosoft.com".
+    - **Kontaktowy adres e-mail**: w razie potrzeby można skontaktować się z Tobą w sprawie Twojego konta.
+    - **Informacje o koncie użytkownika administratora globalnego**: imię i nazwisko, nazwisko, nazwę użytkownika i hasło, które mają być używane dla nowego konta administratora globalnego.
 3. Wybierz pozycję **Utwórz** , aby potwierdzić nowe informacje o domenie i koncie.
 4. Zaloguj się przy użyciu nowej nazwy użytkownika i hasła administratora globalnego usługi Azure AD, aby rozpocząć [Dodawanie użytkowników i zarządzanie nimi](#manage-users).
 

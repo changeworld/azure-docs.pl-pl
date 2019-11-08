@@ -7,13 +7,13 @@ ms.service: logic-apps
 ms.topic: include
 ms.author: estfan
 ms.custom: include file
-ms.date: 05/15/2018
-ms.openlocfilehash: d60d7727e0674298fa6da7e7330221318da23efd
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.date: 11/08/2019
+ms.openlocfilehash: 0be29f6f541aa58e57eb665ebaf29e35f42865e4
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73161616"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73826314"
 ---
 * Jeśli używasz Azure SQL Database, postępuj zgodnie z instrukcjami w sekcji [Połącz z Azure SQL Database](#connect-azure-sql-db).
 
@@ -44,7 +44,9 @@ Gdy wyzwalacz SQL lub akcja monituje o informacje o połączeniu, wykonaj nastę
 
 ### <a name="connect-to-sql-server"></a>Ustanawianie połączenia z programem SQL Server
 
-Gdy wyzwalacz SQL lub akcja monituje o informacje o połączeniu, wykonaj następujące kroki, które działają dla obu wyzwalaczy i akcji. Jednak przed rozpoczęciem upewnij się, że już [skonfigurowano lokalną bramę danych](https://docs.microsoft.com/azure/logic-apps/logic-apps-gateway-connection). W przeciwnym razie Brama nie będzie wyświetlana na liście bramy podczas tworzenia połączenia.
+Gdy wyzwalacz SQL lub akcja monituje o informacje o połączeniu, wykonaj następujące kroki, które działają dla obu wyzwalaczy i akcji. W przypadku scenariuszy, które wymagają zainstalowania lokalnej [bramy danych](https://docs.microsoft.com/azure/logic-apps/logic-apps-gateway-install) na komputerze lokalnym i [utworzenia zasobu usługi Azure Data Gateway](https://docs.microsoft.com/azure/logic-apps/logic-apps-gateway-connection), należy najpierw wykonać te wymagania. W przeciwnym razie zasób bramy nie będzie wyświetlany na liście bram podczas tworzenia połączenia.
+
+Ponadto aby użyć uwierzytelniania systemu Windows z łącznikiem SQL Server w [środowisku usługi integracji (ISE)](https://docs.microsoft.com/azure/logic-apps/connect-virtual-network-vnet-isolated-environment-overview), użyj wersji ISE łącznika i lokalnej bramy danych. ISE wersja nie obsługuje uwierzytelniania systemu Windows.
 
 1. W obszarze **Nazwa połączenia**Utwórz nazwę połączenia.
 

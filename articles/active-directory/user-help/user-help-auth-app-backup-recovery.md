@@ -1,5 +1,5 @@
 ---
-title: Tworzenie kopii zapasowych i odzyskiwanie przy użyciu aplikacji Microsoft Authenticator Azure Active Directory | Microsoft Docs
+title: Tworzenie kopii zapasowej i odzyskiwanie przy użyciu aplikacji Microsoft Authenticator — usługa Azure AD
 description: Dowiedz się, jak utworzyć kopię zapasową i odzyskać poświadczenia konta przy użyciu aplikacji Microsoft Authenticator.
 services: active-directory
 author: eross-msft
@@ -12,12 +12,12 @@ ms.date: 08/22/2019
 ms.author: lizross
 ms.reviewer: olhaun
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4b4e45fbe6533832765e90e5cf244f0dcbcf0b72
-ms.sourcegitcommit: 94ee81a728f1d55d71827ea356ed9847943f7397
+ms.openlocfilehash: 2404dd443c1e3ede1d3ad5a81888e9f805edb810
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/26/2019
-ms.locfileid: "70035124"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73820259"
 ---
 # <a name="backup-and-recover-account-credentials-with-the-microsoft-authenticator-app"></a>Tworzenie kopii zapasowej i odzyskiwanie poświadczeń konta za pomocą aplikacji Microsoft Authenticator
 
@@ -96,7 +96,7 @@ W przypadku osobistych kont Microsoft można potwierdzić swoją tożsamość, w
 
     ![Aplikacja Microsoft Authenticator, pokazująca dostępne konta z powiązanymi strzałkami listy rozwijanej](./media/user-help-auth-app-backup-recovery/backup-and-recovery-additional-accts.png)
 
-2. Wybierz opcję **Skanuj kod QR do**odzyskania, a następnie Zeskanuj kod QR.
+2. Wybierz opcję **Skanuj kod QR do odzyskania**, a następnie Zeskanuj kod QR.
 
     ![Aplikacja Microsoft Authenticator, dzięki której można skanować kod QR](./media/user-help-auth-app-backup-recovery/backup-and-recovery-scan-qr-code.png)
 
@@ -125,7 +125,7 @@ Istnieje kilka powodów, dla których kopia zapasowa może być niedostępna:
 
 Teraz, po wykonaniu kopii zapasowej i odzyskaniu poświadczeń konta na nowym urządzeniu, możesz nadal używać aplikacji Microsoft Authenticator, aby zweryfikować swoją tożsamość. Aby uzyskać więcej informacji, zobacz [Logowanie do kont przy użyciu aplikacji Microsoft Authenticator](user-help-sign-in.md).
 
-## <a name="related-articles"></a>Pokrewne artykuły:
+## <a name="related-articles"></a>Pokrewne artykuły
 
 - [Co to jest aplikacja Microsoft Authenticator?](user-help-auth-app-overview.md)
 

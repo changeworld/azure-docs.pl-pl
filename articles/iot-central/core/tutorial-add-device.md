@@ -1,6 +1,6 @@
 ---
 title: Dodawanie rzeczywistego urządzenia do aplikacji usługi Azure IoT Central | Microsoft Docs
-description: Jako operator możesz dodać rzeczywiste urządzenie do aplikacji usługi Azure IoT Central.
+description: Dowiedz się, jak dodać i skonfigurować rzeczywiste urządzenie w aplikacji IoT Central platformy Azure. Możesz również poznać kod na rzeczywistym urządzeniu.
 author: sandeeppujar
 ms.author: sandeepu
 ms.date: 08/23/2019
@@ -9,12 +9,12 @@ ms.service: iot-central
 services: iot-central
 ms.custom: mvc
 manager: peterpr
-ms.openlocfilehash: 1f7afde7a5c4f3553cde40e4b179d056b8caee9b
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: fce5be4d059d7b3698f1e76a4ec6ff46c4ce3c0b
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72956208"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73824606"
 ---
 # <a name="tutorial-add-a-real-device-to-your-azure-iot-central-application"></a>Samouczek: dodawanie rzeczywistego urządzenia do aplikacji usługi Azure IoT Central
 
@@ -40,7 +40,7 @@ Ten samouczek zawiera informacje na temat wykonywania następujących czynności
 
 Przed rozpoczęciem, Konstruktor powinien ukończyć co najmniej pierwszy samouczek konstruktora, aby utworzyć aplikację usługi Azure IoT Central: [Zdefiniuj nowy typ urządzenia](tutorial-define-device-type.md) (wymagane)
 
-Zainstaluj program [Node. js](https://nodejs.org/) w wersji 8.0.0 lub nowszej na komputerze deweloperskim. Aby sprawdzić swoją wersję, można uruchomić `node --version` w wierszu polecenia. Oprogramowanie Node.js jest dostępne dla różnych systemów operacyjnych.
+Zainstaluj program [Node. js](https://nodejs.org/) w wersji 8.0.0 lub nowszej na komputerze deweloperskim. Aby sprawdzić swoją wersję, możesz uruchomić `node --version` w wierszu polecenia. Oprogramowanie Node.js jest dostępne dla różnych systemów operacyjnych.
 
 ## <a name="add-a-real-device"></a>Dodawanie rzeczywistego urządzenia
 
@@ -52,7 +52,7 @@ Aby dodać rzeczywiste urządzenie do aplikacji, należy użyć szablonu urządz
 
    **Device Explorer** przedstawia szablon urządzenia z **warunkiem podłączonego powietrza** oraz symulowane urządzenie. Podczas tworzenia szablonu urządzenia IoT Central automatycznie tworzy symulowane urządzenie.
 
-2. Zwróć uwagę, że szablon urządzenia z **warunkiem załączonego powietrza** to ten, który został wybrany w **Device Explorer**. Aby rozpocząć łączenie urządzenia z warunkiem środowiska AIR, które używa tego szablonu, wybierz **+** , a następnie pozycję **prawdziwe**:
+2. Zwróć uwagę, że szablon urządzenia z **warunkiem załączonego powietrza** to ten, który został wybrany w **Device Explorer**. Aby rozpocząć łączenie urządzenia z warunkiem środowiska AIR, które używa tego szablonu, wybierz pozycję **+** , a następnie kliknij pozycję **prawdziwe**:
 
    ![Rozpoczynanie dodawania nowego rzeczywistego połączonego klimatyzatora](media/tutorial-add-device/newreal.png)
 
@@ -80,9 +80,9 @@ Przykładowy kod w tym artykule został zapisany w języku [Node. js](https://no
 
 * nawiązuje połączenie z aplikacją usługi Azure IoT Central,
 * wysłania danych telemetrycznych temperatury jako połączony klimatyzator;
-* wysyła właściwości urządzenia do aplikacji usługi Azure IoT Central;
+* wysłania właściwości urządzenia do aplikacji usługi Azure IoT Central;
 * wysłania odpowiedzi do operatora, który użył ustawienia **Ustaw temperaturę**.
-* obsługuje polecenie Echo z poziomu aplikacji usługi Azure IoT Central.
+* obsługi polecenia Echo z poziomu aplikacji usługi Azure IoT Central.
 
 Artykuły wymienione w sekcji [następne kroki](#next-steps) zawierają więcej kompletnych przykładów i są wyświetlane w innych językach programowania. Aby uzyskać więcej informacji na temat sposobu, w jaki urządzenia łączą się z usługą Azure IoT Central, patrz artykuł [Łączność urządzeń](concepts-connectivity.md).
 
@@ -133,7 +133,7 @@ W poniższej procedurze pokazano, jak przygotować przykład dla oprogramowania 
     var ProvisioningDeviceClient = require('azure-iot-provisioning-device').ProvisioningDeviceClient;
     ```
 
-1. Dodaj następujące deklaracje zmiennych do pliku. Zastąp symbole zastępcze `{your Scope ID}`, `{your Device ID}` i `{your Primary Key}` z zanotowanymi wcześniej informacjami o połączeniu z urządzeniem:
+1. Dodaj następujące deklaracje zmiennych do pliku. Zastąp symbole zastępcze `{your Scope ID}`, `{your Device ID}`i `{your Primary Key}` z zanotowanymi wcześniej informacjami o połączeniu z urządzeniem:
 
     ```javascript
     var provisioningHost = 'global.azure-devices-provisioning.net';
@@ -154,9 +154,9 @@ W poprzedniej sekcji utworzono szkielet środowiska Node. js dla aplikacji urzą
 
 * nawiązuje połączenie z aplikacją usługi Azure IoT Central,
 * wysyła dane telemetryczne do aplikacji usługi Azure IoT Central,
-* wysyła właściwości urządzenia do aplikacji usługi Azure IoT Central;
+* wysłania właściwości urządzenia do aplikacji usługi Azure IoT Central;
 * odbiera ustawienia z aplikacji usługi Azure IoT Central.
-* obsługuje polecenie Echo z poziomu aplikacji usługi Azure IoT Central.
+* obsługi polecenia Echo z poziomu aplikacji usługi Azure IoT Central.
 
 1. Aby wysyłać dane telemetryczne temperatury do aplikacji usługi Azure IoT Central, dodaj następujący kod do pliku **ConnectedAirConditioner.js**:
 

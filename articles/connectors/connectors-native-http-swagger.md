@@ -8,14 +8,14 @@ author: ecfan
 ms.author: estfan
 ms.reviewer: klam, LADocs
 ms.topic: conceptual
-ms.date: 07/05/2019
+ms.date: 11/01/2019
 tags: connectors
-ms.openlocfilehash: 663ef16511269dd61a6567d6570f3445b7da6447
-ms.sourcegitcommit: be8e2e0a3eb2ad49ed5b996461d4bff7cba8a837
+ms.openlocfilehash: 030401623a61e7fcff40187f522309255482647f
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72804245"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73824816"
 ---
 # <a name="call-rest-endpoints-by-using-azure-logic-apps"></a>Wywoływanie punktów końcowych REST przy użyciu Azure Logic Apps
 
@@ -25,7 +25,7 @@ Za pomocą [Azure Logic Apps](../logic-apps/logic-apps-overview.md) i wbudowaneg
 
 * Subskrypcja platformy Azure. Jeśli nie masz subskrypcji platformy Azure, [zarejestruj się w celu założenia bezpłatnego konta platformy Azure](https://azure.microsoft.com/free/).
 
-* Adres URL pliku struktury Swagger, który opisuje docelowy punkt końcowy REST
+* Adres URL pliku struktury Swagger (nie OpenAPI), który opisuje docelowy punkt końcowy REST
 
   Zwykle punkt końcowy REST musi spełniać te kryteria, aby łącznik działał:
 
@@ -45,7 +45,7 @@ Za pomocą [Azure Logic Apps](../logic-apps/logic-apps-overview.md) i wbudowaneg
 
 Ten wbudowany wyzwalacz wysyła żądanie HTTP do adresu URL pliku struktury Swagger opisującego interfejs API REST i zwraca odpowiedź zawierającą zawartość tego pliku.
 
-1. Zaloguj się do [portalu Azure](https://portal.azure.com). Otwórz pustą aplikację logiki w Projektancie aplikacji logiki.
+1. Zaloguj się w witrynie [Azure Portal](https://portal.azure.com). Otwórz pustą aplikację logiki w Projektancie aplikacji logiki.
 
 1. W projektancie w polu wyszukiwania wprowadź ciąg "Swagger" jako filtr. Z listy **wyzwalacze** Wybierz wyzwalacz **http + Swagger** .
 
@@ -81,7 +81,7 @@ Ten wbudowany wyzwalacz wysyła żądanie HTTP do adresu URL pliku struktury Swa
 
 Ta wbudowana akcja wysyła żądanie HTTP do adresu URL pliku struktury Swagger opisującego interfejs API REST i zwraca odpowiedź zawierającą zawartość tego pliku.
 
-1. Zaloguj się do [portalu Azure](https://portal.azure.com). Otwórz aplikację logiki w Projektancie aplikacji logiki.
+1. Zaloguj się w witrynie [Azure Portal](https://portal.azure.com). Otwórz aplikację logiki w Projektancie aplikacji logiki.
 
 1. W kroku, w którym chcesz dodać akcję protokołu HTTP + Swagger, wybierz pozycję **nowy krok**.
 
@@ -150,7 +150,7 @@ Poniżej znajduje się więcej informacji na temat danych wyjściowych wyzwalacz
 
 | Nazwa właściwości | Typ | Opis |
 |---------------|------|-------------|
-| Nagłówka | obiekt | Nagłówki żądania |
+| nagłówka | obiekt | Nagłówki żądania |
 | jednostce | obiekt | Obiekt JSON | Obiekt z zawartością treści z żądania |
 | kod stanu | int | Kod stanu z żądania |
 |||

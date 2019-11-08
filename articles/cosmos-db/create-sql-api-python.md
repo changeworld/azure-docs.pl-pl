@@ -12,12 +12,12 @@ ms.custom:
 - seodec18
 - seo-javascript-september2019
 - seo-python-october2019
-ms.openlocfilehash: 92175e3b9776f90bd50e356a700b2a2d475c8a85
-ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
+ms.openlocfilehash: 82426c0093550864b421d7acc35780c4173895a8
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73602454"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73824735"
 ---
 # <a name="quickstart-build-a-python-application-using-an-azure-cosmos-db-sql-api-account"></a>Szybki Start: Tworzenie aplikacji w języku Python przy użyciu Azure Cosmos DB konta interfejsu API SQL
 
@@ -39,7 +39,7 @@ Ten przewodnik Szybki Start używa wersji 4 [zestawu SDK języka Python](https:/
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-* Środowisko [Python 3,6](https://www.python.org/downloads/)z `python` pliku wykonywalnego dostępnego w `PATH`.
+* Środowisko [Python 3.6 +](https://www.python.org/downloads/)z `python` pliku wykonywalnego dostępnego w `PATH`.
 * [Visual Studio Code](https://code.visualstudio.com/)
 * [Rozszerzenie języka Python dla programu Visual Studio Code](https://marketplace.visualstudio.com/items?itemName=ms-python.python#overview)
 
@@ -154,7 +154,7 @@ Wszystkie poniższe fragmenty kodu pochodzą z pliku `cosmos_get_started.py`.
 5. Uruchom następujące polecenie, aby zainstalować pakiet azure-cosmos. 
 
     ```python
-    pip3 install azure-cosmos==4.0.0b5
+    pip install --pre azure-cosmos
     ```
 
     Jeśli podczas próby zainstalowania pakietu azure-cosmos zostanie wyświetlony błąd odmowy dostępu, będzie trzeba [uruchomić program VS Code jako administrator](https://stackoverflow.com/questions/37700536/visual-studio-code-terminal-how-to-run-a-command-with-administrator-rights).

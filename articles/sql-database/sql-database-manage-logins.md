@@ -1,5 +1,5 @@
 ---
-title: Logowania i użytkownicy usługi Azure SQL
+title: Nazwy logowania i użytkownicy
 description: Dowiedz się więcej na temat SQL Database i SQL Data Warehouse zarządzania zabezpieczeniami, w tym, jak zarządzać dostępem do bazy danych i zabezpieczeniami logowania za pomocą konta głównego na poziomie serwera.
 keywords: zabezpieczenia bazy danych sql, zarządzanie zabezpieczeniami bazy danych, zabezpieczenia logowania, zabezpieczenia bazy danych, dostęp do bazy danych
 services: sql-database
@@ -12,12 +12,12 @@ author: VanMSFT
 ms.author: vanto
 ms.reviewer: carlrab
 ms.date: 03/26/2019
-ms.openlocfilehash: 501df95b80bd651020fa044970f6bc701959a6a5
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: a33c653199ae21b551acadfb4503eae029ddc5e4
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73689483"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73822828"
 ---
 # <a name="controlling-and-granting-database-access-to-sql-database-and-sql-data-warehouse"></a>Kontrolowanie i udzielanie dostępu do bazy danych do SQL Database i SQL Data Warehouse
 
@@ -140,7 +140,7 @@ Początkowo tylko jeden z administratorów lub jeden z właścicieli bazy danych
 GRANT ALTER ANY USER TO Mary;
 ```
 
-Aby zapewnić dodatkowym użytkownikom pełną kontrolę nad bazą danych, nadaj im członkom stałej roli bazy danych **db_owner** .
+Aby zapewnić dodatkowym użytkownikom pełną kontrolę nad bazą danych, nadaj im członkom **db_owner** stałą rolę bazy danych.
 
 W Azure SQL Database Użyj instrukcji `ALTER ROLE`.
 

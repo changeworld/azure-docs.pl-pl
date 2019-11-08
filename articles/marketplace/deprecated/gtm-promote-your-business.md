@@ -4,15 +4,16 @@ description: Usługi na rynku — wydawcy mogą dowiedzieć się, jak promować 
 services: Azure, Marketplace, Compute, Storage, Networking, Blockchain, Security
 author: qianw211
 ms.service: marketplace
+ms.subservice: partnercenter-marketplace-publisher
 ms.topic: article
 ms.date: 01/12/2019
 ms.author: ellacroi
-ms.openlocfilehash: 9549e40ea3b79c356867c2fe36dc336e69795c8b
-ms.sourcegitcommit: dd69b3cda2d722b7aecce5b9bd3eb9b7fbf9dc0a
+ms.openlocfilehash: d1ac8963e673044e1d3ca3a0163df065097e12be
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/12/2019
-ms.locfileid: "70962837"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73825950"
 ---
 # <a name="promote-your-business-with-microsoft"></a>Promowanie swojej firmy we współpracy z firmą Microsoft
 
@@ -36,6 +37,6 @@ Aby podwyższyć poziom oferty lub aplikacji oraz uzyskać dostęp do większej 
 
 Aby dowiedzieć się więcej o usługach GTM Marketplace, przejdź do [usługi go-to-Market](https://partner.microsoft.com/reach-customers/gtm).
 
-Zaloguj się do [portalu Cloud Partner](https://cloudpartner.azure.com) tworzenie i konfigurowanie swojej oferty.
+Zaloguj się do [Portal Cloud partner](https://cloudpartner.azure.com) , aby utworzyć i skonfigurować ofertę.
 
 ---

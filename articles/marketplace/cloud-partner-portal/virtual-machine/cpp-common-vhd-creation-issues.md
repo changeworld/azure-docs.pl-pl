@@ -4,16 +4,17 @@ description: Często zadawane pytania dotyczące tworzenia dysków VHD i związa
 services: Azure Marketplace
 author: HannibalSII
 ms.service: marketplace
+ms.subservice: partnercenter-marketplace-publisher
 ms.topic: article
 ms.date: 10/02/2018
 ms.author: hascipio
 ms.reviewer: v-divte; v-miclar
-ms.openlocfilehash: bb7e62138dbefdd8ff4933ef10602986a5da2bf6
-ms.sourcegitcommit: de47a27defce58b10ef998e8991a2294175d2098
+ms.openlocfilehash: 1d4224d8f1f735ecef3d4551e3032b916e81dc3c
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/15/2019
-ms.locfileid: "67874995"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73826616"
 ---
 # <a name="common-issues-during-vhd-creation-faq"></a>Typowe problemy podczas tworzenia dysku VHD (FAQ)
 
@@ -67,7 +68,7 @@ Tak, jeśli jest hostowana na platformie Azure.  Platforma Azure przypisuje unik
 
 ## <a name="in-a-vm-how-do-you-manage-the-custom-script-extension-in-the-startup-task"></a>Jak zarządzać rozszerzeniem niestandardowego skryptu w ramach maszyny wirtualnej?
 
-W poniższym artykule szczegółowo opisano sposób używania niestandardowego rozszerzenia skryptu przy użyciu modułu Azure PowerShell, szablonów Azure Resource Manager i szczegółów dotyczących rozwiązywania problemów w systemach Windows: [Niestandardowe rozszerzenie skryptu dla systemu Windows](https://azure.microsoft.com/documentation/articles/virtual-machines-windows-extensions-customscript/)
+W poniższym artykule szczegółowo opisano sposób używania niestandardowego rozszerzenia skryptu przy użyciu modułu Azure PowerShell, szablonów Azure Resource Manager i szczegółów dotyczących rozwiązywania problemów w systemach Windows: [rozszerzenie niestandardowego skryptu dla systemu Windows](https://azure.microsoft.com/documentation/articles/virtual-machines-windows-extensions-customscript/)
 
 
 ## <a name="are-32-bit-applications-or-services-supported-in-the-azure-marketplace"></a>Czy obsługiwane są 32-bitowe aplikacje lub usługi w portalu Azure Marketplace?

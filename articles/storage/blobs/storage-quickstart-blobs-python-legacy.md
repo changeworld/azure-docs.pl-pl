@@ -1,6 +1,6 @@
 ---
-title: 'Szybki Start: Tworzenie obiektu BLOB w usłudze Azure Blob Storage za pomocą języka Python'
-description: Ten przewodnik Szybki start przedstawia tworzenie konta magazynu i kontenera w magazynie obiektów (blob). Następnie przy użyciu biblioteki klienta języka Python przekażesz obiekt blob do usługi Azure Storage, pobierzesz obiekt blob i wyświetlisz listę obiektów blob w kontenerze.
+title: 'Szybki Start: Biblioteka kliencka usługi Azure Blob Storage wersja 2.1 dla języka Python'
+description: Ten przewodnik Szybki start przedstawia tworzenie konta magazynu i kontenera w magazynie obiektów (blob). Następnie użyj biblioteki klienta usługi Storage w wersji 2.1 dla języka Python, aby przekazać obiekt BLOB do magazynu Azure, pobrać obiekt BLOB i wyświetlić listę obiektów BLOB w kontenerze.
 author: mhopkins-msft
 ms.author: mhopkins
 ms.date: 09/11/2019
@@ -8,14 +8,14 @@ ms.service: storage
 ms.subservice: blobs
 ms.topic: quickstart
 ms.custom: seo-python-october2019
-ms.openlocfilehash: 8a3f8b5f8944552c92ac5a1c1d5fb2eabffad2c9
-ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
+ms.openlocfilehash: 606c7d1fd012052a22afeef906bbe9df4c63a76b
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73608743"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73825296"
 ---
-# <a name="quickstart-upload-download-and-list-blobs-in-azure-blob-storage-with-python"></a>Szybki Start: przekazywanie, pobieranie i wyświetlanie listy obiektów BLOB w usłudze Azure Blob Storage za pomocą języka Python
+# <a name="quickstart-azure-blob-storage-client-library-v21-for-python"></a>Szybki Start: Biblioteka kliencka usługi Azure Blob Storage wersja 2.1 dla języka Python
 
 W tym artykule opisano użycie języka Python do przekazywania, pobierania i wyświetlania listy blokowych obiektów BLOB w kontenerze w usłudze Azure Blob Storage. Obiekty blob są po prostu obiektami, które mogą przechowywać duże ilości danych tekstowych lub binarnych, w tym obrazy, dokumenty, multimedia strumieniowe i dane archiwalne. Obiekty blob w usłudze Azure Storage różnią się od udziałów plików, tabel bez schematu i kolejek komunikatów.  Aby uzyskać więcej informacji, zobacz [wprowadzenie do usługi Azure Storage](/azure/storage/common/storage-introduction).
 
@@ -97,7 +97,7 @@ Przykładowy program tworzy plik testowy w folderze *dokumenty* , przekazuje pli
 
 1. Przed kontynuowaniem przejdź do folderu *dokumenty* i sprawdź, czy są dwa pliki.
 
-    * *QuickStart_\<uniwersalnie unikatowy identyfikator\>*
+    * *QuickStart_\<uniwersalnym identyfikatorem unikatowym\>*
     * *QuickStart_\<uniwersalnie unikatowy identyfikator\>_DOWNLOADED*
 
 1. Możesz je otworzyć i sprawdzić, czy są takie same.
@@ -145,7 +145,7 @@ Usługa Blob Storage obsługuje blokowe, uzupełnialne i stronicowe obiekty blob
 
 Aby przekazać plik do obiektu blob, uzyskaj pełną ścieżkę pliku, łącząc nazwę katalogu i nazwę pliku na dysku lokalnym. Następnie możesz przekazać plik do określonej ścieżki przy użyciu metody `create_blob_from_path`. 
 
-Przykładowy kod tworzy plik lokalny, którego system używa do przekazywania i pobierania, przechowując plik, przekazywany przez system jako *full_path_to_file* i nazwę obiektu BLOB jako *local_file_name*. Ten przykład przekazuje plik do kontenera o nazwie `quickstartblobs`:
+Przykładowy kod tworzy plik lokalny, którego system używa do przekazywania i pobierania, przechowując plik przekazywany przez system jako *full_path_to_file* i nazwę obiektu blob jako *local_file_name*. Ten przykład przekazuje plik do kontenera o nazwie `quickstartblobs`:
 
 ```python
 # Create a file in Documents to test the upload and download.

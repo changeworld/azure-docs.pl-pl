@@ -1,22 +1,22 @@
 ---
-title: 'Szybki Start: Biblioteka kliencka usługi Azure Blob Storage dla zestawu Java SDK V8'
-description: Utwórz konto magazynu i kontener w magazynie obiektów (blob). Następnie użyj biblioteki klienta usługi Azure Storage dla zestawu Java SDK V8, aby przekazać obiekt BLOB do usługi Azure Storage, pobrać obiekt BLOB i wyświetlić listę obiektów BLOB w kontenerze.
+title: 'Szybki Start: Biblioteka kliencka usługi Azure Blob Storage V8 dla języka Java'
+description: Utwórz konto magazynu i kontener w magazynie obiektów (blob). Następnie przekaż obiekt BLOB do usługi Azure Storage za pomocą biblioteki klienta usługi Azure Storage V8, Pobierz obiekt BLOB i Wyświetl listę obiektów BLOB w kontenerze.
 author: mhopkins-msft
 ms.author: mhopkins
 ms.date: 10/05/2019
 ms.service: storage
 ms.subservice: blobs
 ms.topic: conceptual
-ms.openlocfilehash: 404599ade960d43ef2cb86777fb41701ce96e11b
-ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
+ms.openlocfilehash: a6c4380e44d705e551bc96746a809c57aa02ac5b
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73609127"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73825374"
 ---
-# <a name="quickstart-azure-blob-storage-client-library-for-java-sdk-v8"></a>Szybki Start: Biblioteka kliencka usługi Azure Blob Storage dla zestawu Java SDK V8
+# <a name="quickstart-azure-blob-storage-client-library-v8-for-java"></a>Szybki Start: Biblioteka kliencka usługi Azure Blob Storage V8 dla języka Java
 
-Rozpocznij pracę z biblioteką kliencką Blob Storage platformy Azure dla języka Java. Usługa Azure Blob Storage to rozwiązanie magazynu obiektów firmy Microsoft dla chmury. Postępuj zgodnie z instrukcjami, aby zainstalować pakiet, i wypróbuj przykładowy kod dla podstawowych zadań. Usługa Blob Storage jest zoptymalizowana pod kątem przechowywania olbrzymich ilości danych bez struktury.
+Rozpocznij pracę z biblioteką klienta usługi Azure Blob Storage V8 for Java. Usługa Azure Blob Storage to rozwiązanie magazynu obiektów firmy Microsoft dla chmury. Postępuj zgodnie z instrukcjami, aby zainstalować pakiet, i wypróbuj przykładowy kod dla podstawowych zadań. Usługa Blob Storage jest zoptymalizowana pod kątem przechowywania olbrzymich ilości danych bez struktury.
 
 Użyj biblioteki klienta Blob Storage platformy Azure dla języka Java, aby:
 

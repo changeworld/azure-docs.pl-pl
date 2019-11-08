@@ -1,38 +1,39 @@
 ---
-title: Zarządzanie programem Azure i oferty w portalu Marketplace w usłudze AppSource | Portal Azure Marketplace
-description: Zarządzanie oferty na platformie Azure i usługi AppSource rynków
+title: Zarządzanie ofertami platformy Azure i AppSource Marketplace | Portal Azure Marketplace
+description: Zarządzanie ofertami na platformie Azure i AppSource Marketplace
 services: Azure, AppSource, Marketplace, Cloud Partner Portal,
 author: v-miclar
 ms.service: marketplace
+ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 01/09/2019
 ms.author: pabutler
-ms.openlocfilehash: 8a03ce94971d704aa38c1be5d7cfbb3c24bd2f82
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 9bbbad0434cf0e3b27d985b10bd0552d1fb4315a
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64943356"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73826750"
 ---
-# <a name="manage-azure-and-appsource-marketplace-offers"></a>Zarządzanie ofertami platformy Azure i usługi AppSource w portalu Marketplace
+# <a name="manage-azure-and-appsource-marketplace-offers"></a>Zarządzanie ofertami platformy Azure i AppSource Marketplace
 
-Ta sekcja wprowadza ogólnych operacji, które umożliwiają zarządzanie ofertami dla platformy Azure i usługi AppSource rynków.  Na przykład pokazuje, jak używać [portalu Cloud Partner](https://cloudpartner.azure.com/) można tworzyć i publikować oferty w portalu marketplace.  W tej sekcji wyjaśniono również problemów technicznych, które są wspólne dla większości typów ofert, takie jak oparte na tekście i zasoby obrazów.
+Ta sekcja zawiera wprowadzenie do ogólnych operacji związanych z zarządzaniem ofertami dla rynków platformy Azure i AppSource.  Na przykład wyjaśnia, jak za pomocą [Portal Cloud partner](https://cloudpartner.azure.com/) utworzyć i opublikować ofertę w portalu Marketplace.  W tej części opisano również problemy techniczne, które są wspólne dla większości typów ofert, takich jak zasoby tekstowe i obrazy.
 
 
-## <a name="standard-offer-operations"></a>Standardowa oferta operations
+## <a name="standard-offer-operations"></a>Standardowe operacje oferty
 
-Cloud Partner Portal umożliwia wydawcy wykonywać następujące podstawowe operacje w ramach oferty.
+Portal Cloud Partner umożliwia wydawcy wykonywanie następujących podstawowych operacji na ofercie.
 
 |     Operacja      |  Opis                                           |
 |     ---------      |  -----------                                           |
-| [Tworzenie oferty](./cpp-create-offer.md)   | Tworzy wpis oczekujące oferty w repozytorium dołączania, ale nie automatycznie publikuje go do portalu Microsoft marketplace | 
-| [Wyświetlanie stanu oferty](./cpp-view-status-offer.md)   | Zawiera informacje o stanie publikacji oferty.  Istnieje wiele miejsc w witrynie portal, w którym jest wyświetlana informacje o stanie. |
-| [Publikowanie oferty](./cpp-publish-offer.md) | Sprawdza poprawność, a następnie publikuje wpis ukończone oferty odpowiedniego portalu Microsoft Marketplace.  Oferta jest określane jako *live*. |
-| [Aktualizowanie oferty](./cpp-update-offer.md)   | Umożliwia modyfikowanie niektórych właściwości istniejącej oferty.  Dotyczy zarówno oczekujące, jak i opublikowanych ofert. |
-| [Usuwanie oferty](./cpp-delete-offer.md)   | Usuwa oferty istniejących oczekujące lub na żywo.  | 
+| [Tworzenie oferty](./cpp-create-offer.md)   | Tworzy wpis oczekującej oferty w repozytorium dołączania, ale nie publikuje go automatycznie w witrynie Microsoft Marketplace | 
+| [Wyświetlanie stanu oferty](./cpp-view-status-offer.md)   | Zapewnia stan publikowania oferty.  W portalu znajduje się wiele miejsc, w których są wyświetlane informacje o stanie. |
+| [Publikowanie oferty](./cpp-publish-offer.md) | Sprawdza poprawność, a następnie zapisuje gotowy wpis oferty w odpowiednim portalu Microsoft Marketplace.  Oferta jest następnie określana jako na *żywo*. |
+| [Aktualizowanie oferty](./cpp-update-offer.md)   | Umożliwia modyfikację niektórych cech istniejącej oferty.  Dotyczy ofert oczekujących i opublikowanych. |
+| [Usuwanie oferty](./cpp-delete-offer.md)   | Usuwa istniejącą ofertę oczekującą lub na żywo.  | 
 |  |  |
   
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
-Jeśli nie jesteś zaznajomiony z możliwościami i interfejs użytkownika portalu Cloud Partner, zobacz sekcję [Cloud Partner Portal Tour](../portal-tour/cpp-portal-tour.md).  Następnie Dowiedz się więcej o [Tworzenie oferty](./cpp-create-offer.md).
+Jeśli nie znasz możliwości i interfejsu użytkownika portal Cloud Partner, zapoznaj się z sekcją [Portal Cloud partner Przewodnik](../portal-tour/cpp-portal-tour.md).  Następnie Dowiedz się więcej [na temat tworzenia oferty](./cpp-create-offer.md).

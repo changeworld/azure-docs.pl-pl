@@ -1,5 +1,5 @@
 ---
-title: Praca z danymi JSON w Azure SQL Database
+title: Praca z danymi w formacie JSON
 description: Azure SQL Database umożliwia analizowanie, wykonywanie zapytań i formatowanie danych w notacji JavaScript Object Notation (JSON).
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: ''
 ms.date: 01/15/2019
-ms.openlocfilehash: 2fe760e3792b5540b18946fd9dbcc5d571b50ee9
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 958d937ad85fd62249c7ce3f0e0ab2f8cc1d1b80
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73689646"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73819943"
 ---
 # <a name="getting-started-with-json-features-in-azure-sql-database"></a>Wprowadzenie do funkcji JSON w Azure SQL Database
 Azure SQL Database umożliwia analizowanie i wykonywanie zapytań o dane reprezentowane w formacie JavaScript Object Notation [(JSON)](https://www.json.org/) i eksportowanie danych relacyjnych jako tekstu JSON. W Azure SQL Database są dostępne następujące scenariusze JSON:
@@ -145,7 +145,7 @@ Funkcja JSON_VALUE wyodrębnia wartość z tekstu JSON przechowywanego w kolumni
 
 Funkcja JSON_QUERY jest podobna do JSON_VALUE. W przeciwieństwie do JSON_VALUE, ta funkcja wyodrębnia złożone obiekty podrzędne, takie jak tablice lub obiekty, które są umieszczane w tekście JSON.
 
-Funkcja JSON_MODIFY umożliwia określenie ścieżki wartości w tekście JSON, która ma zostać zaktualizowana, a także nowej wartości, która spowoduje zastąpienie Starego. W ten sposób można łatwo aktualizować tekst JSON bez konieczności przeanalizowania całej struktury.
+Funkcja JSON_MODIFY pozwala określić ścieżkę wartości w tekście JSON, która ma zostać zaktualizowana, a także nową wartość, która spowoduje zastąpienie Starego. W ten sposób można łatwo aktualizować tekst JSON bez konieczności przeanalizowania całej struktury.
 
 Ponieważ kod JSON jest przechowywany w tekście standardowym, nie ma gwarancji, że wartości przechowywane w kolumnach tekstowych są poprawnie sformatowane. Można sprawdzić, czy tekst przechowywany w kolumnie JSON jest poprawnie sformatowany przy użyciu standardowych ograniczeń check Azure SQL Database i funkcji isjson:
 

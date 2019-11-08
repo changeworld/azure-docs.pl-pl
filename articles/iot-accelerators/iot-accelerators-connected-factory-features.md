@@ -1,6 +1,6 @@
 ---
-title: Połączone funkcje rozwiązania fabryki — Azure | Dokumentacja firmy Microsoft
-description: Omówienie funkcji połączonej fabryki wstępnie skonfigurowanego rozwiązania.
+title: Funkcje rozwiązania połączonej fabryki — Azure | Microsoft Docs
+description: W tym artykule opisano Omówienie funkcji wstępnie skonfigurowanego rozwiązania połączonej fabryki, takie jak pulpit nawigacyjny, reguły i alerty w chmurze.
 author: dominicbetts
 manager: timlt
 ms.service: iot-accelerators
@@ -8,28 +8,28 @@ services: iot-accelerators
 ms.topic: conceptual
 ms.date: 06/10/2019
 ms.author: dobett
-ms.openlocfilehash: 2a11640959a8c7fdd0d238aba92698eb47934969
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: c868aa0f1c2449ccf163523c9ded25a31d1d84c4
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67080445"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73820111"
 ---
-# <a name="what-is-connected-factory-iot-solution-accelerator"></a>Co to jest akcelerator rozwiązań IoT połączona fabryka?
+# <a name="what-is-connected-factory-iot-solution-accelerator"></a>Co to jest Akcelerator rozwiązania do podłączenia fabryki IoT?
 
-Połączona fabryka jest implementacja architektury referencyjnej przemysłowego Internetu rzeczy Azure firmy Microsoft na rozwiązanie typu open source w pakiecie. Służy jako punkt wyjścia do komercyjnego produktu. Można wdrożyć wstępnie skompilowanych wersji rozwiązania połączonej fabryki do subskrypcji platformy Azure z [akceleratorów rozwiązań Azure IoT](https://www.azureiotsolutions.com/#solutions/types/CF).
+Połączona fabryka to implementacja architektury referencyjnej platformy Azure przemysłowego firmy Microsoft, spakowana jako rozwiązanie typu "open source". Można go użyć jako punktu wyjścia dla produktu komercyjnego. Możesz wdrożyć wstępnie utworzoną wersję rozwiązania połączonej fabryki w ramach subskrypcji platformy Azure z [akceleratorów rozwiązań usługi Azure IoT](https://www.azureiotsolutions.com/#solutions/types/CF).
 
 ![Pulpit nawigacyjny rozwiązania połączonej fabryki](./media/iot-accelerators-connected-factory-features/dashboard.png)
 
-Akcelerator rozwiązania połączonej fabryki [kod jest dostępny w witrynie GitHub](https://github.com/Azure/azure-iot-connected-factory).
+Kod akceleratora rozwiązania połączonej fabryki [jest dostępny w serwisie GitHub](https://github.com/Azure/azure-iot-connected-factory).
 
 Połączona fabryka obejmuje następujące funkcje:
 
 ## <a name="industrial-device-interoperability"></a>Współdziałanie urządzeń przemysłowych
 
 - Połącz zasoby przemysłowe z interfejsem OPC UA.
-- Użyj symulowanych linii produkcyjnych (działają serwery OPC UA w kontenerach platformy Docker), aby wyświetlić na żywo dane telemetryczne z nich.
-- Przeglądaj modelu informacji OPC UA serwerów OPC UA z pulpitu nawigacyjnego w chmurze.
+- Aby wyświetlić dane telemetryczne na żywo, użyj symulowanych linii produkcyjnych (z uruchomionymi serwerami OPC UA w kontenerach platformy Docker).
+- Przeglądaj model informacyjny OPC UA serwerów OPC UA z poziomu pulpitu nawigacyjnego w chmurze.
 
 ## <a name="remote-management"></a>Zdalne zarządzanie
 
@@ -38,31 +38,31 @@ Połączona fabryka obejmuje następujące funkcje:
 
 ## <a name="cloud-dashboard"></a>Pulpit nawigacyjny w chmurze
 
-- Wyświetl podgląd danych telemetrycznych bezpośrednio na pulpicie nawigacyjnym chmury.
+- Wyświetl podglądy danych telemetrycznych bezpośrednio na pulpicie nawigacyjnym w chmurze.
 - Wyświetlaj trendy danych telemetrycznych i twórz korelacje za pomocą pulpitu nawigacyjnego eksploratora usługi Time Series Insights.
-- Zobacz obliczone ogólnej wydajności sprzętu (OEE) i kluczowe wskaźniki wydajności (KPI) z pulpitu nawigacyjnego w chmurze.
-- Widok zasobów przemysłowych hierarchie w topologii drzewa, a także na mapie.
-- Wyświetlanie, użytkownik potwierdza i Zamknij alerty z pulpitu nawigacyjnego chmury.
+- Zobacz obliczona ogólna wydajność sprzętu (OEE) i kluczowe wskaźniki wydajności (KPI) na pulpicie nawigacyjnym chmury.
+- Wyświetl hierarchie zasobów przemysłowych w topologii drzewa, a także na mapie interaktywnej.
+- Wyświetlanie, Potwierdzanie i zamykanie alertów z poziomu pulpitu nawigacyjnego w chmurze.
 
 ## <a name="azure-time-series-insights"></a>Azure Time Series Insights
 
-- [Usługa Azure Time Series Insights](../time-series-insights/time-series-insights-overview.md) zaprojektowano pod kątem przechowywania, wizualizacji i wykonywania zapytań dużych ilości danych szeregów czasowych. Połączona fabryka wykorzystuje tej usługi.
-- Połączona fabryka integruje się z tym usługa, dzięki czemu można wykonać głębokie, w czasie rzeczywistym analizy danych urządzenia.
+- [Azure Time Series Insights](../time-series-insights/time-series-insights-overview.md) jest skompilowany do przechowywania, wizualizowania i wykonywania zapytań dotyczących dużych ilości danych szeregów czasowych. Połączona fabryka korzysta z tej usługi.
+- Połączona fabryka integruje się z tą usługą, umożliwiając przeprowadzanie dokładnej analizy danych urządzenia w czasie rzeczywistym.
 
 ## <a name="rules-and-alerts"></a>Reguły i alerty
 
-[Konfigurowanie reguł alertów opartych na próg](iot-accelerators-connected-factory-configure.md).
+[Skonfiguruj reguły oparte na progach dla alertów](iot-accelerators-connected-factory-configure.md).
 
 ## <a name="end-to-end-security"></a>Kompleksowe zabezpieczenia
 
 - Konfiguruj uprawnienia zabezpieczeń dla użytkowników korzystających z kontroli dostępu opartej na rolach.
-- End-to-end szyfrowania jest implementowany przy użyciu uwierzytelniania serwera OPC UA (przy użyciu certyfikatów X.509), a także tokenów zabezpieczających.
+- Kompleksowe szyfrowanie jest implementowane przy użyciu uwierzytelniania OPC UA (przy użyciu certyfikatów X. 509) oraz tokenów zabezpieczających.
 
-## <a name="customizability"></a>Dostosowywalności
+## <a name="customizability"></a>Szerszym
 
-- Dostosowywanie rozwiązania, aby spełniało określone wymagania biznesowe.
-- Pełne rozwiązanie — kod źródłowy dostępny w witrynie GitHub. Zobacz [połączonej fabryki wstępnie skonfigurowanego rozwiązania](https://github.com/Azure/azure-iot-connected-factory) repozytorium.
+- Dostosuj rozwiązanie pod kątem spełnienia określonych wymagań firmy.
+- Pełny kod źródłowy, dostępny w serwisie GitHub. Zobacz repozytorium [wstępnie skonfigurowanego rozwiązania połączonej fabryki](https://github.com/Azure/azure-iot-connected-factory) .
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
-Aby dowiedzieć się więcej na temat akcelerator rozwiązania połączonej fabryki, zobacz samouczek Szybki Start [spróbuj oparte na chmurze rozwiązanie do zarządzania przemysłowych urządzeń IoT](quickstart-connected-factory-deploy.md).
+Aby dowiedzieć się więcej na temat akceleratora połączonej fabryki, zobacz Przewodnik Szybki Start [dotyczący rozwiązania do zarządzania urządzeniami z systemem IoT w chmurze](quickstart-connected-factory-deploy.md).

@@ -4,15 +4,16 @@ description: Wyjaśnia trzy metody określania cen ofert maszyn wirtualnych.
 services: Azure, Marketplace, Cloud Partner Portal,
 author: v-miclar
 ms.service: marketplace
+ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 09/13/2018
 ms.author: pabutler
-ms.openlocfilehash: e398b43e679fb6420c2256e77d34359ae537ac1c
-ms.sourcegitcommit: 10251d2a134c37c00f0ec10e0da4a3dffa436fb3
+ms.openlocfilehash: c7ea5afeb46c30837c2ae53e871bb64f5d8cf292
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/13/2019
-ms.locfileid: "67868742"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73827336"
 ---
 <a name="pricing-for-virtual-machine-offers"></a>Cennik ofert maszyn wirtualnych
 ==================================
@@ -69,7 +70,7 @@ Cennik jest specyficzny dla każdej kombinacji regionów i podstawowych. Każdy 
 <a name="per-core-pricing"></a>Cennik na rdzeń
 ----------------
 
-W takim przypadku wydawcy określają jedną cenę w USD dla swojej jednostki SKU, a wszystkie inne ceny są generowane automatycznie. Cena za rdzeń jest określona w pojedynczym  parametrze żądania.
+W takim przypadku wydawcy określają jedną cenę w USD dla swojej jednostki SKU, a wszystkie inne ceny są generowane automatycznie. Cena za rdzeń jest określona w **pojedynczym** parametrze żądania.
 
 ``` json
      "virtualMachinePricing": 
@@ -106,14 +107,14 @@ Wydawca może również przekazać swój arkusz cen do tymczasowej lokalizacji p
 Wydawca maszyn wirtualnych został powiadomiony 2 lipca 2019 o dodawaniu nowych cen dla nowych rozmiarów maszyn wirtualnych platformy Azure (na podstawie liczby rdzeni).  Nowe ceny są dla wielkości rdzeni 10, 44, 48, 60, 120, 208 i 416.  W przypadku istniejącej maszyny wirtualnej nowe ceny dla tych rozmiarów rdzeni zostały automatycznie obliczone na podstawie bieżących cen.  Wydawcy mają do 1 sierpnia 2019 w celu przejrzenia dodatkowych cen i wprowadzenia wymaganych zmian.  Po tej dacie, jeśli nie została jeszcze ponownie opublikowana przez wydawcę, automatycznie obliczone ceny dla tych nowych rozmiarów podstawowych zaczną obowiązywać.
 
 
-<a name="regions"></a>Regions
+<a name="regions"></a>Regiony
 -------
 
 W poniższej tabeli przedstawiono różne regiony, które można określić dla dostosowywanych podstawowych cen i ich kodów walutowych.
 
 | **Region** | **Nazwa**             | **Kod waluty** |
 |------------|----------------------|-------------------|
-| DZ         | Algeria              | DZD               |
+| DZ         | Algieria              | DZD               |
 | AR         | Argentyna            | ARS               |
 | AU         | Australia            | AUD               |
 | AT         | Austria              | EUR               |
@@ -124,7 +125,7 @@ W poniższej tabeli przedstawiono różne regiony, które można określić dla 
 | BG         | Bułgaria             | BGN               |
 | CA         | Kanada               | CAD               |
 | CL         | Chile                | CLP               |
-| CO         | Kolumbia             | COP               |
+| CO         | Kolumbia             | WPROWADZANE               |
 | CR         | Kostaryka           | CRC               |
 | HR         | Chorwacja              | HRK               |
 | CY         | Cypr               | EUR               |
@@ -140,18 +141,18 @@ W poniższej tabeli przedstawiono różne regiony, które można określić dla 
 | DE         | Niemcy              | EUR               |
 | GR         | Grecja               | EUR               |
 | GT         | Gwatemala            | GTQ               |
-| HK         | SRA Hongkong        | HKD               |
+| HK         | Hongkong SAR        | HKD               |
 | HU         | Węgry              | HUF               |
-| IS         | Islandia              | ISK               |
+| IS         | Islandia              | Alokacja               |
 | IN         | Indie                | INR               |
-| id         | Indonezja            | IDR               |
+| ID         | Indonezja            | IDR               |
 | IE         | Irlandia              | EUR               |
 | IL         | Izrael               | ILS               |
 | IT         | Włochy                | EUR               |
 | JP         | Japonia                | JPY               |
 | JO         | Jordania               | JOD               |
-| KZ         | Kazakhstan           | KZT               |
-| KE         | Kenya                | KES               |
+| KZ         | Kazachstan           | KZT               |
+| KE         | Kenia                | KES               |
 | KR         | Korea                | KRW               |
 | KW         | Kuwejt               | KWD               |
 | LV         | Łotwa               | EUR               |
@@ -162,8 +163,8 @@ W poniższej tabeli przedstawiono różne regiony, które można określić dla 
 | MY         | Malezja             | MYR               |
 | MT         | Malta                | EUR               |
 | MX         | Meksyk               | MXN               |
-| ME         | Czarnogóra           | EUR               |
-| MA         | Maroko              | MAD               |
+| Pamiętaj         | Czarnogóra           | EUR               |
+| MA         | Maroko              | Mad —               |
 | NL         | Holandia          | EUR               |
 | NZ         | Nowa Zelandia          | NZD               |
 | NG         | Nigeria              | NGN               |
@@ -178,7 +179,7 @@ W poniższej tabeli przedstawiono różne regiony, które można określić dla 
 | PT         | Portugalia             | EUR               |
 | PR         | Portoryko          | USD               |
 | QA         | Katar                | QAR               |
-| RO         | Rumunia              | PIOTR               |
+| RO         | Rumunia              | Piotr               |
 | RU         | Rosja               | RUB               |
 | SA         | Arabia Saudyjska         | SAR               |
 | RS         | Serbia               | RSD               |
@@ -192,12 +193,12 @@ W poniższej tabeli przedstawiono różne regiony, które można określić dla 
 | CH         | Szwajcaria          | CHF               |
 | TW         | Tajwan               | TWD               |
 | TH         | Tajlandia             | THB               |
-| TT         | Trynidad i Tobago  | TTD               |
+| TT         | Trynidad i Tobago  | DOCELOWY               |
 | TN         | Tunezja              | TND               |
 | TR         | Turcja               | TRY               |
 | UA         | Ukraina              | UAH               |
 | AE         | Zjednoczone Emiraty Arabskie | EUR               |
-| GB         | Zjednoczone Królestwo       | GBP               |
+| GB         | Wielka Brytania       | GBP               |
 | USA         | Stany Zjednoczone        | USD               |
 | UY         | Urugwaj              | UYU               |
 | VE         | Wenezuela            | USD               |

@@ -1,5 +1,5 @@
 ---
-title: Eksportowanie pojedynczej lub puli bazy danych Azure SQL Database do pliku BACPAC
+title: Eksportowanie pojedynczej bazy danych lub puli do pliku BACPAC
 description: Eksportowanie bazy danych Azure SQL Database do pliku BACPAC przy użyciu Azure Portal
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: carlrab
 ms.date: 07/16/2019
-ms.openlocfilehash: f3f6071d42d77ffa07dd27080b1bc18d7bbc6952
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: b96d2e69b757774afe177341caffe2f3cbf00e2b
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73690071"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73823449"
 ---
 # <a name="export-an-azure-sql-database-to-a-bacpac-file"></a>Eksportowanie bazy danych Azure SQL Database do pliku BACPAC
 
@@ -32,7 +32,7 @@ W przypadku konieczności eksportowania bazy danych na potrzeby archiwizacji lub
 
   - Tymczasowe zwiększenie rozmiaru obliczeń.
   - Zastąp wszystkie działania odczytu i zapisu podczas eksportowania.
-  - Użyj [indeksu klastrowanego](https://msdn.microsoft.com/library/ms190457.aspx) z wartościami innymi niż null dla wszystkich dużych tabel. Bez indeksów klastrowanych eksport może zakończyć się niepowodzeniem, jeśli trwa dłużej niż 6-12 godzin. Wynika to z faktu, że usługa Export musi ukończyć skanowanie tabeli, aby spróbować wyeksportować całą tabelę. Dobrym sposobem ustalenia, czy tabele są zoptymalizowane pod kątem eksportu, jest uruchomienie **polecenia DBCC SHOW_STATISTICS** i upewnienie się, że *RANGE_HI_KEY* nie ma wartości null i jej wartość ma dobry rozkład. Aby uzyskać szczegółowe informacje, zobacz [DBCC SHOW_STATISTICS](https://msdn.microsoft.com/library/ms174384.aspx).
+  - Użyj [indeksu klastrowanego](https://msdn.microsoft.com/library/ms190457.aspx) z wartościami innymi niż null dla wszystkich dużych tabel. Bez indeksów klastrowanych eksport może zakończyć się niepowodzeniem, jeśli trwa dłużej niż 6-12 godzin. Wynika to z faktu, że usługa Export musi ukończyć skanowanie tabeli, aby spróbować wyeksportować całą tabelę. Dobrym sposobem na ustalenie, czy tabele są zoptymalizowane pod kątem eksportu, jest uruchomienie **polecenia DBCC SHOW_STATISTICS** i upewnienie się, że *RANGE_HI_KEY* nie ma wartości null i jej wartość ma dobry rozkład. Aby uzyskać szczegółowe informacje, zobacz [DBCC SHOW_STATISTICS](https://msdn.microsoft.com/library/ms174384.aspx).
 
 > [!NOTE]
 > BACPACs nie są przeznaczone do użycia na potrzeby operacji tworzenia kopii zapasowych i przywracania. Azure SQL Database automatycznie tworzy kopie zapasowe dla każdej bazy danych użytkownika. Aby uzyskać szczegółowe informacje, zobacz [Omówienie ciągłości](sql-database-business-continuity.md) działania i [SQL Database kopii zapasowych](sql-database-automated-backups.md).

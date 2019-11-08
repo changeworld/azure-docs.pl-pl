@@ -1,5 +1,5 @@
 ---
-title: Jak zwiększyć wydajność Azure SQL Database aplikacji za pomocą tworzenia pakietów wsadowych
+title: Jak zwiększyć wydajność aplikacji za pomocą tworzenia pakietów wsadowych
 description: Temat zawiera dowody, że przetwarzanie wsadowe operacji bazy danych znacznie zwiększa szybkość i skalowalność aplikacji Azure SQL Database. Chociaż te techniki wsadowe działają dla dowolnej SQL Server bazy danych, fokus artykułu znajduje się na platformie Azure.
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: genemi
 ms.date: 01/25/2019
-ms.openlocfilehash: 3d18f5b77d08a55bd06656a72cbc02c040b6f127
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 175ba6b4e65b4a6e276dbfb586e210027a6cd9b3
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68566248"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73822419"
 ---
 # <a name="how-to-use-batching-to-improve-sql-database-application-performance"></a>Jak zwiększyć wydajność SQL Database aplikacji za pomocą tworzenia pakietów wsadowych
 
@@ -124,9 +124,9 @@ W poprzednim przykładzie pokazano, że można dodać transakcję lokalną do do
 
 Aby uzyskać więcej informacji o transakcjach w programie ADO.NET, zobacz [lokalne transakcje w ADO.NET](https://docs.microsoft.com/dotnet/framework/data/adonet/local-transactions).
 
-### <a name="table-valued-parameters"></a>Parametry z wartościami przechowywanymi w tabeli
+### <a name="table-valued-parameters"></a>parametry z wartościami przechowywanymi w tabeli
 
-Parametry z wartościami przechowywanymi w tabeli obsługują typy tabel zdefiniowane przez użytkownika jako parametry w instrukcjach języka Transact-SQL, procedurach składowanych i funkcjach. Ta technika wsadowa po stronie klienta umożliwia wysyłanie wielu wierszy danych w ramach parametru z wartościami przechowywanymi w tabeli. Aby użyć parametrów z wartościami przechowywanymi w tabeli, należy najpierw zdefiniować typ tabeli. Poniższa instrukcja języka Transact-SQL tworzy typ tabeli onazwie webtabletype.
+Parametry z wartościami przechowywanymi w tabeli obsługują typy tabel zdefiniowane przez użytkownika jako parametry w instrukcjach języka Transact-SQL, procedurach składowanych i funkcjach. Ta technika wsadowa po stronie klienta umożliwia wysyłanie wielu wierszy danych w ramach parametru z wartościami przechowywanymi w tabeli. Aby użyć parametrów z wartościami przechowywanymi w tabeli, należy najpierw zdefiniować typ tabeli. Poniższa instrukcja języka Transact-SQL tworzy typ tabeli o nazwie **Webtabletype**.
 
 ```sql
     CREATE TYPE MyTableType AS TABLE 
@@ -167,7 +167,7 @@ using (SqlConnection connection = new SqlConnection(CloudConfigurationManager.Ge
 }
 ```
 
-W poprzednim przykładzie obiekt SqlCommand wstawia wiersze z parametru z wartościami przechowywanymi w tabeli,  **\@TestTvp**. Wcześniej utworzony obiekt **DataTable** jest przypisany do tego parametru za pomocą metody **SqlCommand. Parameters. Add** . Przetwarzanie wsadowe operacji wstawiania w jednym wywołaniu znacznie zwiększa wydajność nad wstawianiem sekwencyjnym.
+W poprzednim przykładzie obiekt **SqlCommand** wstawia wiersze z parametru z wartościami przechowywanymi w tabeli **\@TestTvp**. Wcześniej utworzony obiekt **DataTable** jest przypisany do tego parametru za pomocą metody **SqlCommand. Parameters. Add** . Przetwarzanie wsadowe operacji wstawiania w jednym wywołaniu znacznie zwiększa wydajność nad wstawianiem sekwencyjnym.
 
 Aby dodatkowo poprawić poprzedni przykład, użyj procedury składowanej zamiast polecenia tekstowego. Poniższe polecenie języka Transact-SQL tworzy procedurę składowaną, która przyjmuje **SimpleTestTableType** parametr z wartościami przechowywanymi w tabeli.
 
@@ -229,7 +229,7 @@ using (SqlConnection connection = new SqlConnection(CloudConfigurationManager.Ge
 }
 ```
 
-Istnieją przypadki, w których kopie zbiorcze są preferowane za pośrednictwem parametrów z wartościami przechowywanymi w tabeli. Zobacz tabelę porównawczą parametrów z wartościami przechowywanymi w tabeli, a BULK INSERT operacji w parametrach z [wartościami przechowywanymi w tabeli](https://msdn.microsoft.com/library/bb510489.aspx).
+Istnieją przypadki, w których kopie zbiorcze są preferowane za pośrednictwem parametrów z wartościami przechowywanymi w tabeli. Zobacz tabelę porównawczą parametrów z wartościami przechowywanymi w tabeli, a BULK INSERT operacji w [parametrach z wartościami przechowywanymi w tabeli](https://msdn.microsoft.com/library/bb510489.aspx).
 
 Poniższe wyniki testu ad hoc przedstawiają wydajność przetwarzania wsadowego za pomocą **SqlBulkCopy** w milisekundach.
 
@@ -299,7 +299,7 @@ Klasa **DataAdapter** pozwala modyfikować obiekt **DataSet** , a następnie prz
 
 Entity Framework obecnie nie obsługuje przetwarzania wsadowego. Różni deweloperzy w społeczności próbują przedstawić obejścia, takie jak zastąpienie metody **metody SaveChanges** . Jednak rozwiązania są zwykle złożone i dostosowane do aplikacji i modelu danych. Projekt Entity Framework CodePlex ma obecnie stronę dyskusji na tym żądaniu funkcji. Aby wyświetlić tę dyskusję, zobacz [Design uwagi dotyczące spotkania — 2 sierpnia 2012](https://entityframework.codeplex.com/wikipage?title=Design%20Meeting%20Notes%20-%20August%202%2c%202012).
 
-### <a name="xml"></a>XML
+### <a name="xml"></a>DOKUMENT
 
 W celu zapewnienia kompletności należy zwrócić uwagę na informacje dotyczące XML jako strategię przetwarzania wsadowego. Jednak użycie kodu XML nie ma żadnych korzyści w porównaniu z innymi metodami i kilkoma wadami. Podejście jest podobne do parametrów z wartościami przechowywanymi w tabeli, ale plik XML lub ciąg jest przesyłany do procedury składowanej zamiast tabeli zdefiniowanej przez użytkownika. Procedura składowana analizuje polecenia w procedurze składowanej.
 
@@ -321,11 +321,11 @@ W zależności od architektury przetwarzanie wsadowe może stanowić kompromis m
 
 Ze względu na te kompromisy należy oszacować typ operacji wykonywanych przez użytkownika. Przetwarzaj wsadowo bardziej agresywnie (większe partie i dłuższy czas w systemie Windows), które mają mniej krytyczne dane.
 
-### <a name="batch-size"></a>Rozmiar partii
+### <a name="batch-size"></a>Rozmiar wsadu
 
 W naszych testach zwykle nie ma możliwości dzielenia dużych partii na mniejsze fragmenty. W rzeczywistości ta częściowa część często spowodowało wolniejszą wydajność niż przesyłanie pojedynczej dużej partii. Rozważmy na przykład scenariusz, w którym chcesz wstawić 1000 wierszy. W poniższej tabeli pokazano, jak długo należy używać parametrów z wartościami przechowywanymi w tabeli do wstawiania wierszy 1000 w przypadku dzielenia na mniejsze partie.
 
-| Rozmiar partii | Iteracji | Parametry z wartościami przechowywanymi w tabeli (MS) |
+| Rozmiar wsadu | Iteracji | Parametry z wartościami przechowywanymi w tabeli (MS) |
 | --- | --- | --- |
 | 1000 |1 |347 |
 | 500 |2 |355 |
@@ -388,7 +388,7 @@ Chociaż istnieją pewne scenariusze, które są oczywistym kandydatem do tworze
 
 Rozważmy na przykład aplikację sieci Web, która śledzi historię przeglądania poszczególnych użytkowników. Na każdym żądaniu strony aplikacja może nawiązać połączenie z bazą danych, aby zarejestrować widok strony użytkownika. Jednak wyższą wydajność i skalowalność można osiągnąć, buforując działania nawigacyjne użytkowników, a następnie wysyłając je do bazy danych w partiach. Można wyzwolić aktualizację bazy danych według czasu, który upłynął i/lub rozmiar buforu. Na przykład reguła może określić, że partia powinna być przetwarzana po 20 sekundach lub gdy bufor osiągnie 1000 elementów.
 
-Poniższy przykład kodu używa reaktywnych [rozszerzeń-RX](https://msdn.microsoft.com/data/gg577609) , aby przetwarzać zdarzenia buforowane wywoływane przez klasę monitorowania. Po osiągnięciu lub przekroczeniu limitu czasu buforu dane użytkownika są wysyłane do bazy danych za pomocą parametru z wartościami przechowywanymi w tabeli.
+Poniższy przykład kodu używa [reaktywnych rozszerzeń-RX](https://msdn.microsoft.com/data/gg577609) , aby przetwarzać zdarzenia buforowane wywoływane przez klasę monitorowania. Po osiągnięciu lub przekroczeniu limitu czasu buforu dane użytkownika są wysyłane do bazy danych za pomocą parametru z wartościami przechowywanymi w tabeli.
 
 Poniższe klasy NavHistoryData modelują szczegóły nawigacji użytkownika. Zawiera podstawowe informacje, takie jak identyfikator użytkownika, dostęp do adresu URL i czas dostępu.
 
@@ -403,7 +403,7 @@ public class NavHistoryData
 }
 ```
 
-Klasa NavHistoryDataMonitor jest odpowiedzialna za buforowanie danych nawigacyjnych użytkownika w bazie danych. Zawiera metodę RecordUserNavigationEntry, która reaguje przez podnoszenie zdarzenia dodaniu. Poniższy kod przedstawia logikę konstruktora, która używa RX do tworzenia kolekcji zauważalnej na podstawie zdarzenia. Następnie subskrybuje tę kolekcję dostrzegalną za pomocą metody bufora. Przeciążenie określa, że bufor ma być wysyłany co 20 sekund lub 1000 wpisów.
+Klasa NavHistoryDataMonitor jest odpowiedzialna za buforowanie danych nawigacyjnych użytkownika w bazie danych. Zawiera metodę RecordUserNavigationEntry, która reaguje przez podnoszenie zdarzenia **dodaniu** . Poniższy kod przedstawia logikę konstruktora, która używa RX do tworzenia kolekcji zauważalnej na podstawie zdarzenia. Następnie subskrybuje tę kolekcję dostrzegalną za pomocą metody bufora. Przeciążenie określa, że bufor ma być wysyłany co 20 sekund lub 1000 wpisów.
 
 ```csharp
 public NavHistoryDataMonitor()
@@ -484,7 +484,7 @@ Aby użyć tej klasy buforowania, aplikacja tworzy statyczny obiekt NavHistoryDa
 
 ### <a name="master-detail"></a>Szczegóły wzorca
 
-Parametry z wartościami przechowywanymi w tabeli są przydatne w przypadku prostych scenariuszy wstawiania. Jednak może być trudniejsze do wstawiania wsadowego obejmujących więcej niż jedną tabelę. Scenariusz "wzorzec/szczegóły" jest dobrym przykładem. Tabela główna identyfikuje jednostkę podstawową. Co najmniej jedna tabela szczegółów przechowuje więcej danych o jednostce. W tym scenariuszu relacje klucza obcego wymuszają związek szczegółów z unikatową jednostką główną. Rozważ uproszczoną wersję tabeli PurchaseOrder i skojarzonej z nią tabeli OrderDetail. Następujące Transact-SQL tworzy tabelę PurchaseOrder z czterema kolumnami: IDZamówienia, DataZamówienia, CustomerID i status.
+Parametry z wartościami przechowywanymi w tabeli są przydatne w przypadku prostych scenariuszy wstawiania. Jednak może być trudniejsze do wstawiania wsadowego obejmujących więcej niż jedną tabelę. Scenariusz "wzorzec/szczegóły" jest dobrym przykładem. Tabela główna identyfikuje jednostkę podstawową. Co najmniej jedna tabela szczegółów przechowuje więcej danych o jednostce. W tym scenariuszu relacje klucza obcego wymuszają związek szczegółów z unikatową jednostką główną. Rozważ uproszczoną wersję tabeli PurchaseOrder i skojarzonej z nią tabeli OrderDetail. Poniższe polecenie języka Transact-SQL tworzy tabelę PurchaseOrder z czterema kolumnami: IDZamówienia, DataZamówienia, CustomerID i status.
 
 ```sql
 CREATE TABLE [dbo].[PurchaseOrder](
@@ -496,7 +496,7 @@ CONSTRAINT [PrimaryKey_PurchaseOrder]
 PRIMARY KEY CLUSTERED ( [OrderID] ASC ))
 ```
 
-Każde zamówienie zawiera jeden lub więcej zakupów produktów. Te informacje są przechwytywane w tabeli PurchaseOrderDetail. Następujące Transact-SQL tworzy tabelę PurchaseOrderDetail z pięcioma kolumnami: IDZamówienia, OrderDetailID, ProductID, CenaJednostkowa i OrderQty.
+Każde zamówienie zawiera jeden lub więcej zakupów produktów. Te informacje są przechwytywane w tabeli PurchaseOrderDetail. Poniższe polecenie języka Transact-SQL tworzy tabelę PurchaseOrderDetail z pięcioma kolumnami: IDZamówienia, OrderDetailID, ProductID, CenaJednostkowa i OrderQty.
 
 ```sql
 CREATE TABLE [dbo].[PurchaseOrderDetail](
@@ -580,9 +580,9 @@ JOIN @IdentityLink L ON L.SubmittedKey = D.OrderID;
 GO
 ```
 
-W tym przykładzie w tabeli zdefiniowanej @IdentityLink lokalnie są przechowywane rzeczywiste wartości IDZamówienia z nowo wstawionych wierszy. Te identyfikatory kolejności różnią się od wartości tymczasowych IDZamówienia w parametrach @details i z @orders wartościami przechowywanymi w tabeli. Z @IdentityLink tego powodu tabela łączy wartości IDZamówienia @orders z parametru do rzeczywistych wartości IDZamówienia dla nowych wierszy w tabeli PurchaseOrder. Po wykonaniu tego kroku @IdentityLink tabela może ułatwić Wstawianie szczegółów zamówienia z rzeczywistym identyfikatorem IDZamówienia, który spełnia warunek ograniczenia klucza obcego.
+W tym przykładzie w tabeli zdefiniowanej lokalnie @IdentityLink są przechowywane rzeczywiste wartości IDZamówienia z nowo wstawionych wierszy. Te identyfikatory kolejności różnią się od wartości tymczasowych IDZamówienia w @orders i @details parametrów z wartościami przechowywanymi w tabeli. Z tego powodu tabela @IdentityLink następnie łączy wartości IDZamówienia z parametru @orders do rzeczywistych wartości IDZamówienia dla nowych wierszy w tabeli PurchaseOrder. Po wykonaniu tego kroku tabela @IdentityLink może ułatwić Wstawianie szczegółów zamówienia z rzeczywistym identyfikatorem IDZamówienia, który spełnia warunek ograniczenia klucza obcego.
 
-Ta procedura składowana może być używana z kodu lub z innych wywołań Transact-SQL. Zobacz sekcję parametry z wartościami przechowywanymi w tabeli tego dokumentu dla przykładu kodu. W poniższym języku Transact-SQL pokazano, jak wywołać sp_InsertOrdersBatch.
+Ta procedura składowana może być używana z kodu lub z innych wywołań Transact-SQL. Zobacz sekcję parametry z wartościami przechowywanymi w tabeli tego dokumentu dla przykładu kodu. Poniższe instrukcje języka Transact-SQL pokazują, jak wywołać sp_InsertOrdersBatch.
 
 ```sql
 declare @orders as PurchaseOrderTableType
@@ -635,7 +635,7 @@ CREATE TYPE EmployeeTableType AS TABLE
 GO
 ```
 
-Następnie Utwórz procedurę składowaną lub napisz kod, który używa instrukcji MERGE do wykonania aktualizacji i wstawienia. W poniższym przykładzie używa się instrukcji Merge dla parametru @employeesz wartościami przechowywanymi w tabeli, typu EmployeeTableType. Zawartość @employees tabeli nie jest wyświetlana w tym miejscu.
+Następnie Utwórz procedurę składowaną lub napisz kod, który używa instrukcji MERGE do wykonania aktualizacji i wstawienia. Poniższy przykład używa instrukcji MERGE dla parametru z wartościami przechowywanymi w tabeli, @employeestypu EmployeeTableType. Zawartość tabeli @employees nie jest wyświetlana w tym miejscu.
 
 ```sql
 MERGE Employee AS target
@@ -674,7 +674,7 @@ Poniższa lista zawiera podsumowanie zaleceń dotyczących przetwarzania wsadowe
 * Unikaj równoległego wykonywania partii, które działają w pojedynczej tabeli w jednej bazie danych. W przypadku wybrania opcji dzielenia pojedynczej partii między wiele wątków roboczych należy uruchomić testy w celu określenia idealnej liczby wątków. Po nieokreślonym progu większa liczba wątków zmniejszy wydajność, a nie zwiększy go.
 * Należy rozważyć buforowanie według rozmiaru i godziny w celu zaimplementowania przetwarzania wsadowego w celu uzyskania większej liczby scenariuszy.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
-Ten artykuł koncentruje się na tym, jak techniki projektowania i kodowania bazy danych związane z przetwarzaniem wsadowym mogą poprawić wydajność i skalowalność aplikacji. Jest to tylko jeden czynnik w ogólnej strategii. Aby uzyskać więcej informacji na temat zwiększania wydajności i skalowalności, zobacz [Azure SQL Database wskazówki dotyczące wydajności dla pojedynczych baz danych](sql-database-performance-guidance.md) oraz zagadnienia dotyczące [cen i wydajności dla puli elastycznej](sql-database-elastic-pool-guidance.md).
+Ten artykuł koncentruje się na tym, jak techniki projektowania i kodowania bazy danych związane z przetwarzaniem wsadowym mogą poprawić wydajność i skalowalność aplikacji. Jest to tylko jeden czynnik w ogólnej strategii. Aby uzyskać więcej informacji na temat zwiększania wydajności i skalowalności, zobacz [Azure SQL Database wskazówki dotyczące wydajności dla pojedynczych baz danych](sql-database-performance-guidance.md) oraz [zagadnienia dotyczące cen i wydajności dla puli elastycznej](sql-database-elastic-pool-guidance.md).
 
