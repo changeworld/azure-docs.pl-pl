@@ -5,14 +5,14 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: conceptual
-ms.date: 06/20/2019
+ms.date: 11/06/2019
 ms.author: tamram
-ms.openlocfilehash: 60104496006e790887dd9c4b3e4c3196e0ef6444
-ms.sourcegitcommit: 2d9a9079dd0a701b4bbe7289e8126a167cfcb450
+ms.openlocfilehash: 3c01cc870b20c8256b215eb700548e6cd69ad0d5
+ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/29/2019
-ms.locfileid: "71671372"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73748986"
 ---
 # <a name="manage-storage-account-settings-in-the-azure-portal"></a>Zarządzanie ustawieniami konta magazynu w Azure Portal
 
@@ -24,7 +24,7 @@ Usługa Azure Storage obsługuje autoryzację Azure Active Directory dla magazyn
 
 Ustawienia **kontroli dostępu** w Azure Portal umożliwiają prostą metodę przypisywania ról RBAC do użytkowników, grup, podmiotów usługi i zarządzanych tożsamości. Aby uzyskać więcej informacji na temat przypisywania ról RBAC, zobacz [Zarządzanie prawami dostępu do danych obiektów blob i kolejek przy użyciu RBAC](storage-auth-aad-rbac.md).
 
-## <a name="tags"></a>`Tags`
+## <a name="tags"></a>Tagi
 
 Usługa Azure Storage obsługuje Azure Resource Manager Tagi do organizowania zasobów platformy Azure przy użyciu dostosowanej taksonomii. Możesz zastosować Tagi do kont magazynu, aby można było grupować je w ramach subskrypcji w sposób logiczny.
 
@@ -32,7 +32,7 @@ W przypadku kont magazynu nazwa tagu jest ograniczona do 128 znaków, a wartoś�
 
 Aby uzyskać więcej informacji, zobacz [Używanie tagów do organizowania zasobów platformy Azure](../../azure-resource-manager/resource-group-using-tags.md).
 
-## <a name="access-keys"></a>Klucze dostępu
+## <a name="access-keys"></a>Klawisze dostępu
 
 Podczas tworzenia konta magazynu platforma Azure generuje 2 512-bitowe klucze dostępu do konta magazynu. Te klucze mogą służyć do autoryzacji dostępu do konta magazynu za pośrednictwem klucza współużytkowanego. Możesz obrócić i ponownie wygenerować klucze bez przerw w działaniu aplikacji, a firma Microsoft zaleca, aby to zrobić regularnie.
 

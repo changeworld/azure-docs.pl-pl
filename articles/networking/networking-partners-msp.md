@@ -7,12 +7,12 @@ ms.service: expressroute
 ms.topic: conceptual
 ms.date: 11/05/2019
 ms.author: sukishen
-ms.openlocfilehash: 089d54a2aae288511a283dfb28b03efa34c33b53
-ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
+ms.openlocfilehash: 83c3c72ad189720b8f0aa554b7804b55f3488b83
+ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
 ms.translationtype: HT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 11/07/2019
-ms.locfileid: "73715444"
+ms.locfileid: "73747948"
 ---
 # <a name="about-azure-networking-msp-partners"></a>Informacje o partnerach MSP sieci platformy Azure
 
@@ -28,7 +28,7 @@ Klienci mogą kupić oferty usług zarządzanych przez MSP w portalu Azure Marke
 
 Skorzystaj z linków w tej sekcji, aby uzyskać więcej informacji na temat zarządzanych usług sieciowych w chmurze oferowanych przez partnerów MSP dla sieci platformy Azure. Jeśli partner usług sieci w chmurze nie jest wymieniony w poniższej sekcji, skontaktuj się z nami. Mogą skontaktować się z nami, wysyłając wiadomość e-mail na adres ManagedVirtualWAN@microsoft.com. 
 
-| **MSP** | **Usługi transformacji sieci w chmurze** | **Zarządzane ExpressRoute** | **Zarządzana wirtualna sieć WAN** | **Zarządzana Zapora** |**Obliczenia krawędzi zarządzanej sieci** |
+| **MSP** | **Usługi transformacji sieci w chmurze** | **Zarządzane ExpressRoute** | **Zarządzana wirtualna sieć WAN** | **Zarządzane usługi zabezpieczeń sieci** |**Obliczenia krawędzi zarządzanej sieci** |
 | ---| ---| ---| ---| ---| ---|
 |[Amdocs](https://www.amdocs.com/)|||||Tak|
 |[ANS — Grupa UK](https://www.ans.co.uk/)|Tak|Tak||||

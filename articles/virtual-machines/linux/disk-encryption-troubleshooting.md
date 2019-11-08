@@ -7,12 +7,12 @@ ms.topic: article
 ms.author: mbaldwin
 ms.date: 08/06/2019
 ms.custom: seodec18
-ms.openlocfilehash: 864c806f146d7da4e45cc2b58159e5cad23364f8
-ms.sourcegitcommit: 7c2dba9bd9ef700b1ea4799260f0ad7ee919ff3b
+ms.openlocfilehash: c1e96a3acf2a576e0656afb3abea9dd787bf989a
+ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71828726"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73750053"
 ---
 # <a name="azure-disk-encryption-troubleshooting-guide"></a>Przewodnik rozwiązywania problemów Azure Disk Encryption
 
@@ -24,7 +24,7 @@ Przed wykonaniem poniższych czynności należy najpierw upewnić się, że masz
 - [Wymagania dotyczące sieci](disk-encryption-overview.md#networking-requirements)
 - [Wymagania dotyczące magazynu kluczy szyfrowania](disk-encryption-overview.md#encryption-key-storage-requirements)
 
-[!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
+ 
 
 ## <a name="troubleshooting-linux-os-disk-encryption"></a>Rozwiązywanie problemów z szyfrowaniem dysków systemu operacyjnego Linux
 
@@ -98,7 +98,7 @@ Przed kolejną próbą należy ponownie oszacować charakterystykę maszyny wirt
 
 Gdy łączność jest ograniczona przez ustawienia zapory, wymagania serwera proxy lub sieciowej grupy zabezpieczeń (sieciowej grupy zabezpieczeń), zdolność rozszerzenia do wykonywania wymaganych zadań może być zakłócona. Zakłócenia te mogą spowodować komunikaty o stanie, takie jak "stan rozszerzenia nie jest dostępny na maszynie wirtualnej". W oczekiwanych scenariuszach szyfrowanie nie powiedzie się. Poniższe sekcje zawierają kilka typowych problemów z zaporą, które mogą być zbadane.
 
-### <a name="network-security-groups"></a>Sieciowe grupy zabezpieczeń
+### <a name="network-security-groups"></a>Grupy zabezpieczeń sieci
 Wszystkie ustawienia sieciowej grupy zabezpieczeń, które są stosowane, muszą nadal zezwalać, aby punkt końcowy spełniał udokumentowane [wymagania wstępne](disk-encryption-overview.md#networking-requirements) konfiguracji sieci na potrzeby szyfrowania dysku.
 
 ### <a name="azure-key-vault-behind-a-firewall"></a>Azure Key Vault za zaporą
