@@ -39,7 +39,7 @@
           href: container-registry-tutorial-deploy-update.md
 - name: Pojęcia
   items:
-    - name: Jednostki SKU rejestru kontenerów
+    - name: Jednostki SKU i limity usługi Container Registry
       href: container-registry-skus.md
     - name: 'Rejestry, repozytoria i obrazy'
       href: container-registry-concepts.md
@@ -75,8 +75,6 @@
               href: container-registry-retention-policy.md
             - name: Automatyczne przeczyszczanie tagów i manifestów (wersja zapoznawcza)
               href: container-registry-auto-purge.md
-        - name: Uaktualnianie rejestru klasycznego
-          href: container-registry-upgrade.md
         - name: Używanie elementów webhook rekordów ACR
           href: container-registry-webhook.md
         - name: Repozytoria formularzy Helm (wersja zapoznawcza)

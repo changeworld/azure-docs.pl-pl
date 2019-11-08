@@ -1,0 +1,40 @@
+- name: Omówienie
+  items:
+    - name: Co to jest projekt FarmBeats?
+      href: overview.md
+- name: Samouczki
+  expanded: true
+  items:
+    - name: Generowanie mapy wilgotności gleby
+      href: generate-soil-moisture-map.md
+    - name: Pozyskiwanie historycznych danych telemetrycznych
+      href: ingest-historical-telemetry-data.md
+- name: Pojęcia
+  items:
+    - name: Wzorce integracji
+      href: integration-patterns.md
+    - name: Integracja z partnerami obsługującymi czujniki
+      href: sensor-partner-integration.md
+    - name: Integracja z partnerami obsługującymi obrazy
+      href: imagery-partner-integration.md
+- name: Przewodniki z instrukcjami
+  items:
+    - name: Wdrażanie projektu FarmBeats
+      href: prepare-for-deployment.md
+    - name: Zarządzanie farmami
+      href: manage-farms.md
+    - name: Pobieranie danych czujników
+      href: get-sensor-data-from-sensor-partner.md
+    - name: Generowanie map
+      href: generate-maps.md
+    - name: Konfigurowanie reguł i zarządzanie alertami
+      href: configure-rules-alerts.md
+    - name: Pobieranie obrazów z dronów
+      href: get-drone-imagery.md
+- name: Rozwiązywanie problemów
+  items:
+    - name: Rozwiązywanie problemów z projektem FarmBeats
+      href: troubleshoot-project-farmbeats.md
+- name: Dokumentacja
+  items: null
+  href: references-for-farmbeats.md

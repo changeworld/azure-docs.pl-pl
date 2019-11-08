@@ -1,0 +1,53 @@
+### YamlMime:Hub
+title: Dokumentacja rozwiązań branżowych dla platformy Azure
+summary: Dowiedz się, jak używać platformy Azure do tworzenia rozwiązań dla typowych przypadków użycia w branżach.
+brand: azure
+metadata:
+  title: Dokumentacja rozwiązań branżowych dla platformy Azure
+  description: Dowiedz się, jak używać platformy Azure do tworzenia rozwiązań dla typowych przypadków użycia w branżach.
+  ms.service: azure-industry
+  ms.topic: hub-page
+  ms.collection: collection
+  author: DCtheGeek
+  ms.author: dacoulte
+  ms.date: 11/04/2019
+  ms.openlocfilehash: 2777093db7486f17cf19b45db08bbd0168a4e2a8
+  ms.sourcegitcommit: 018e3b40e212915ed7a77258ac2a8e3a660aaef8
+  ms.translationtype: HT
+  ms.contentlocale: pl-PL
+  ms.lasthandoff: 11/07/2019
+  ms.locfileid: "73797078"
+highlightedContent:
+  items:
+  - title: Azure FarmBeats
+    itemType: overview
+    url: ./agriculture/overview.md
+  - title: Forum społeczności
+    itemType: concept
+    url: https://aka.ms/FarmBeatsMSDN
+  - title: UserVoice (opinie)
+    itemType: get-started
+    url: https://aka.ms/FarmBeatsForum
+productDirectory:
+  title: Obszary rozwiązań branżowych
+  items:
+  - title: Azure FarmBeats
+    imageSrc: ../media/index/industry-agriculture-farmbeats.svg
+    summary: Szybkie tworzenie cyfrowych rozwiązań dla rolnictwa w chmurze.
+    url: ./agriculture/overview.md
+  - title: Usługi finansowe
+    imageSrc: ../media/index/industry-financial.png
+    summary: Rozwiązania i przypadki użycia dla branży usług finansowych.
+    url: /azure/industry-marketing/financial/
+  - title: Usługi opieki zdrowotnej
+    imageSrc: ../media/index/industry-health.png
+    summary: Rozwiązania i przypadki użycia dla branży opieki zdrowotnej i nauk przyrodniczych.
+    url: /azure/industry-marketing/health/
+  - title: Produkcja
+    imageSrc: ../media/index/industry-manufacturing.png
+    summary: Rozwiązania i przypadki użycia dla branży produkcyjnej.
+    url: /azure/industry-marketing/manufacturing/
+  - title: Sprzedaż detaliczna
+    imageSrc: ../media/index/industry-retail.png
+    summary: Rozwiązania i przypadki użycia dla branży handlu detalicznego.
+    url: /azure/industry-marketing/retail/

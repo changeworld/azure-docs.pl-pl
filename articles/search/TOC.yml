@@ -119,7 +119,7 @@
           href: search-security-trimming-for-azure-search.md
         - name: Filtrowanie według tożsamości usługi AAD
           href: search-security-trimming-for-azure-search-with-aad.md
-        - name: Zarządzanie kluczami szyfrowania (wersja zapoznawcza)
+        - name: Zarządzanie kluczami szyfrowania
           href: search-security-manage-encryption-keys.md
     - name: Opracowywanie zawartości
       items:
@@ -253,7 +253,7 @@
           href: cognitive-search-concept-troubleshooting.md
         - name: Linki do dokumentacji
           href: cognitive-search-resources-documentation.md
-        - name: Magazyn wiedzy (wersja zapoznawcza)
+        - name: Magazyn wiedzy
           items:
             - name: Tworzenie przy użyciu rozwiązań REST i Postman
               href: knowledge-store-create-rest.md
@@ -277,7 +277,7 @@
           href: query-simple-syntax.md
         - name: Pełna składnia zapytań Lucene
           href: query-lucene-syntax.md
-        - name: moreLikeThis (wersja zapoznawcza)
+        - name: Parametr zapytań moreLikeThis
           href: search-more-like-this.md
     - name: Stosowanie filtrów
       items:

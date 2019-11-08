@@ -247,6 +247,8 @@
                   href: ../common/storage-analytics-logging.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
         - name: Obsługa zdarzeń
           href: storage-blob-event-overview.md
+        - name: Źródło zmian
+          href: storage-blob-change-feed.md
         - name: Cechy stronicowego obiektu blob
           href: storage-blob-pageblob-overview.md
         - name: Statyczne witryny internetowe
@@ -374,8 +376,8 @@
           href: storage-custom-domain-name.md
         - name: Kierowanie zdarzeń do niestandardowego punktu końcowego
           href: storage-blob-event-quickstart.md
-        - name: Przeszukiwanie magazynu obiektów blob za pomocą usługi Azure Search
-          href: ../../search/search-blob-storage-integration.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
+        - name: Dzienniki źródła zmian procesu
+          href: storage-blob-change-feed-how-to.md
         - name: Transfer danych
           items:
             - name: Narzędzie AzCopy
@@ -432,24 +434,24 @@
           href: /cli/azure/storage
         - name: .NET
           items:
-            - name: 'Obiekty blob, kolejki i pliki'
-              href: /dotnet/api/overview/azure/storage/client
+            - name: Obiekty blob (wersja 12.x)
+              href: /dotnet/api/azure.storage.blobs
             - name: Przenoszenie danych
               href: /dotnet/api/microsoft.azure.storage.datamovement
             - name: Dostawca zasobów magazynu
               href: /dotnet/api/overview/azure/storage/management
         - name: Java
           items:
-            - name: 'Obiekty blob, kolejki i pliki (wersja 12.x — zapoznawcza)'
-              href: 'https://azure.github.io/azure-sdk-for-java/track2reports/index.html'
-            - name: 'Obiekty blob, kolejki i pliki (wersja 8)'
-              href: 'https://docs.microsoft.com/java/api/overview/azure/storage?view=azure-java-legacy'
+            - name: Obiekty blob (wersja 12.x)
+              href: 'https://azuresdkdocs.blob.core.windows.net/$web/java/azure-storage-blob/12.0.0/index.html'
+            - name: Obiekty blob (wersja 8.x)
+              href: /java/api/com.microsoft.azure.storage.blob
             - name: Dostawca zasobów magazynu
               href: /java/api/overview/azure/storage/management
-        - name: Node.js
-          href: /javascript/api/overview/azure/storage
-        - name: Python
-          href: /python/api/overview/azure/storage
+        - name: JavaScript (wersja 12.x)
+          href: /javascript/api/@azure/storage-blob/?view=azure-node-preview
+        - name: Python (wersja 12.x)
+          href: /python/api/azure-storage-blob/
         - name: REST
           items:
             - name: 'Obiekty blob, kolejki, tabele i pliki'
@@ -702,7 +704,6 @@
             - name: Ustawianie uprawnień na poziomie pliku i katalogu
               href: ../blobs/data-lake-storage-how-to-set-permissions-storage-explorer.md
         - name: Optymalizowanie wydajności
-          href: ../blobs/data-lake-storage-use-power-bi.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
           items:
             - name: Omówienie
               href: ../blobs/data-lake-storage-performance-tuning-guidance.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
@@ -729,6 +730,7 @@
         - name: Używanie z interfejsem wiersza polecenia systemu plików usługi Hadoop
           href: ../blobs/data-lake-storage-use-hdfs-data-lake-storage.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
         - name: Używanie z usługą Power BI
+          href: ../blobs/data-lake-storage-use-power-bi.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
     - name: Dokumentacja
       items:
         - name: PowerShell
@@ -737,20 +739,24 @@
           href: /cli/azure/storage
         - name: .NET
           items:
-            - name: 'Obiekty blob, kolejki, tabele i pliki'
-              href: /dotnet/api/overview/azure/storage/client
+            - name: Obiekty blob (wersja 12.x)
+              href: /dotnet/api/azure.storage.blobs
             - name: Przenoszenie danych
               href: /dotnet/api/microsoft.azure.storage.datamovement
-            - name: Resource Manager
+            - name: Dostawca zasobów magazynu
               href: /dotnet/api/overview/azure/storage/management
         - name: Java
           items:
-            - name: 'Obiekty blob, kolejki i pliki (wersja 12.x — zapoznawcza)'
-              href: 'https://azure.github.io/azure-sdk-for-java/track2reports/index.html'
-            - name: 'Obiekty blob, kolejki i pliki (wersja 8)'
-              href: 'https://docs.microsoft.com/java/api/overview/azure/storage?view=azure-java-legacy'
+            - name: Obiekty blob (wersja 12.x)
+              href: 'https://azuresdkdocs.blob.core.windows.net/$web/java/azure-storage-blob/12.0.0/index.html'
+            - name: Obiekty blob (wersja 8.x)
+              href: /java/api/com.microsoft.azure.storage.blob
             - name: Dostawca zasobów magazynu
               href: /java/api/overview/azure/storage/management
+        - name: JavaScript (wersja 12.x)
+          href: /javascript/api/@azure/storage-blob/?view=azure-node-preview
+        - name: Python (wersja 12.x)
+          href: /python/api/azure-storage-blob/
         - name: REST
           items:
             - name: 'Obiekty blob, kolejki, tabele i pliki'

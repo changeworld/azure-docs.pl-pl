@@ -2,7 +2,7 @@
 title: Dokumentacja usługi Azure Machine Learning
 summary: Usługa Azure Machine Learning oferuje interfejsy internetowe i zestawy SDK, dzięki czemu możesz szybko trenować i wdrażać modele i potoki uczenia maszynowego na dużą skalę. Korzystaj z tych możliwości za pośrednictwem platform typu open source języka Python, takich jak PyTorch, TensorFlow i scikit-learn.
 metadata:
-  title: Dokumentacja usługi Machine Learning — Azure
+  title: Dokumentacja usługi Azure Machine Learning
   description: Usługa Azure Machine Learning oferuje interfejsy internetowe i zestawy SDK, aby umożliwić szybkie trenowanie i wdrażanie modeli i potoków uczenia maszynowego na dużą skalę. Korzystaj z tych możliwości za pośrednictwem platform typu open source języka Python, takich jak PyTorch, TensorFlow i scikit-learn.
   services: machine-learning
   ms.service: machine-learning
@@ -12,12 +12,12 @@ metadata:
   author: j-martens
   ms.author: jmartens
   ms.date: 10/29/2019
-  ms.openlocfilehash: 3459782fc0cad6767889d7377fcbfeaf00e99b1e
-  ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+  ms.openlocfilehash: c6b0b67f206ec335a5e30098dd75b7e71db5770f
+  ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
   ms.translationtype: HT
   ms.contentlocale: pl-PL
-  ms.lasthandoff: 11/04/2019
-  ms.locfileid: "73580656"
+  ms.lasthandoff: 11/08/2019
+  ms.locfileid: "73828110"
 landingContent:
 - title: Rozpoczynanie pracy z usługą Azure ML
   linkLists:
@@ -97,7 +97,9 @@ landingContent:
       url: service/how-to-consume-web-service.md
     - text: Przewidywanie wsadowe
       url: service/how-to-run-batch-predictions.md
-- title: Eksplorowanie szczegółowej dokumentacji
+    - text: Kompleksowe przykłady (GitHub)
+      url: https://github.com/microsoft/MLOps
+- title: Przejdź do dokumentacji
   linkLists:
   - linkListType: reference
     links:
@@ -109,3 +111,7 @@ landingContent:
       url: https://docs.microsoft.com/cli/azure/ext/azure-cli-ml/ml?view=azure-cli-latest
     - text: Moduły i algorytmy projektanta
       url: algorithm-module-reference/module-reference.md
+    - text: Interfejs API REST
+      url: https://docs.microsoft.com/rest/api/azureml/
+    - text: Architektury referencyjne sztucznej inteligencji (GitHub)
+      url: https://github.com/Microsoft/AI

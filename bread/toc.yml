@@ -516,6 +516,13 @@
     - name: Interfejs API platformy Azure dla standardu FHIR
       tocHref: /azure/healthcare-apis
       topicHref: /azure/healthcare-apis
+    - name: Rozwiązania branżowe dla platformy Azure
+      tocHref: /azure/industry
+      topicHref: /azure/industry
+      items:
+        - name: Azure FarmBeats
+          tocHref: /azure/industry/agriculture
+          topicHref: /azure/industry/agriculture
     - name: Jenkins
       tocHref: /azure/jenkins/
       topicHref: /azure/jenkins/

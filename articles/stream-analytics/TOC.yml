@@ -107,6 +107,8 @@
           href: sql-reference-data.md
         - name: Uwierzytelnianie przy użyciu tożsamości zarządzanej — dane wyjściowe obiektów blob
           href: blob-output-managed-identity.md
+        - name: Uwierzytelnianie przy użyciu tożsamości zarządzanej — Power BI
+          href: powerbi-output-managed-identity.md
     - name: Tworzenie rozwiązań
       items:
         - name: Analiza tonacji w usłudze Twitter
