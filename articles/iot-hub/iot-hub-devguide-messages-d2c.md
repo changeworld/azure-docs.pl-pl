@@ -8,12 +8,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 05/15/2019
 ms.author: asrastog
-ms.openlocfilehash: e4f1797d600a226eb152a464efe4da8ddbdb6207
-ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
-ms.translationtype: HT
+ms.openlocfilehash: ff50d972ad9590fb70dbcf67e21f8b5dc8c32fad
+ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73606225"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73748056"
 ---
 # <a name="use-iot-hub-message-routing-to-send-device-to-cloud-messages-to-different-endpoints"></a>Używanie routingu komunikatów IoT Hub do wysyłania komunikatów z urządzenia do chmury do różnych punktów końcowych
 
@@ -57,7 +57,7 @@ IoT Hub partie komunikatów i zapisuje dane w magazynie, gdy partia osiągnie ok
 
 Licencjobiorca może korzystać z dowolnej konwencji nazewnictwa plików, jednak należy używać wszystkich wymienionych tokenów. IoT Hub będzie zapisywać do pustego obiektu BLOB, jeśli nie ma danych do zapisania.
 
-Zalecamy przeprowadzenie rejestracji kontenerów magazynu, a następnie iterację w nich, aby upewnić się, że wszystkie kontenery są odczytywane bez wprowadzania jakichkolwiek założeń partycji. Zakres partycji może ulec zmianie podczas pracy w [trybie failover zainicjowanej przez firmę Microsoft](iot-hub-ha-dr.md#microsoft-initiated-failover) lub IoT Hub [ręcznej pracy awaryjnej](iot-hub-ha-dr.md#manual-failover). Aby wyliczyć listę obiektów blob, można użyć [interfejsu API listy obiektów BLOB](https://docs.microsoft.com/rest/api/storageservices/list-blobs) . Zapoznaj się z poniższym przykładem.
+Zalecamy utworzenie listy obiektów blob lub plików, a następnie ich iterację, aby upewnić się, że wszystkie obiekty blob lub pliki są odczytywane bez założeń partycji. Zakres partycji może ulec zmianie podczas pracy w [trybie failover zainicjowanej przez firmę Microsoft](iot-hub-ha-dr.md#microsoft-initiated-failover) lub IoT Hub [ręcznej pracy awaryjnej](iot-hub-ha-dr.md#manual-failover). Korzystając z [interfejsu API listy obiektów BLOB](https://docs.microsoft.com/rest/api/storageservices/list-blobs) , można wyliczyć listę obiektów blob lub [listę interfejsów API ADLS Gen2](https://docs.microsoft.com/rest/api/storageservices/datalakestoragegen2/path/list) dla listy plików. Zapoznaj się z poniższym przykładem.
 
 ```csharp
 public void ListBlobsInContainer(string containerName, string iothub)

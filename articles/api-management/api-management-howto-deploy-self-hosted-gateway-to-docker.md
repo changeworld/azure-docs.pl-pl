@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 10/31/2019
 ms.author: apimpm
-ms.openlocfilehash: bfb012116f74e451f9479c8c65057e5c8405bbb4
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: fc7e0f7e4e0e80a030a437bc4f0f13360595f32e
+ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73513785"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73747693"
 ---
 # <a name="deploy-an-azure-api-management-self-hosted-gateway-to-docker"></a>Wdrażanie bramy samohostowanej na platformie Azure API Management w usłudze Docker
 
@@ -31,6 +31,9 @@ W tym artykule przedstawiono kroki wdrażania samodzielnej bramy usługi Azure A
 - Wykonaj procedury przedstawione w następującym przewodniku Szybki start: [Tworzenie wystąpienia usługi Azure API Management](get-started-create-service-instance.md)
 - Utwórz środowisko platformy Docker. Platforma [Docker dla komputerów stacjonarnych](https://www.docker.com/products/docker-desktop) jest dobrą opcją do celów deweloperskich i testowych. Zapoznaj się z [dokumentacją platformy Docker](https://docs.docker.com) , aby uzyskać informacje na temat wszystkich wersji platformy Docker, ich funkcji oraz kompleksowej dokumentacji dotyczącej platformy Docker.
 - [Inicjowanie obsługi administracyjnej zasobu bramy w wystąpieniu API Management](api-management-howto-provision-self-hosted-gateway.md)
+
+> [!NOTE]
+> Brama samoobsługowa jest spakowana jako kontener platformy Docker oparty na systemie Linux.
 
 ## <a name="deploy-the-self-hosted-gateway-to-docker"></a>Wdrażanie bramy samohostowanej na platformie Docker
 
@@ -63,4 +66,5 @@ CONTAINER ID        IMAGE                                                 COMMAN
 
 ## <a name="next-steps"></a>Następne kroki
 
-* Aby dowiedzieć się więcej na temat bramy samoobsługowej, zobacz temat [usługa Azure API Management](self-hosted-gateway-overview.md) samodzielna Brama — Omówienie
+* Aby dowiedzieć się więcej na temat bramy samoobsługowej, zobacz [Omówienie usługi Azure API Management Brama](self-hosted-gateway-overview.md)samodzielna.
+* [Skonfiguruj niestandardową nazwę domeny dla bramy samohostowanej](api-management-howto-configure-custom-domain-gateway.md).

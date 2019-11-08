@@ -1,96 +1,96 @@
 ---
-title: Planowanie wydajności i skalowania dla odzyskiwania po awarii programu VMware na platformę Azure za pomocą usługi Azure Site Recovery | Dokumentacja firmy Microsoft
-description: W tym artykule ułatwiają planowanie wydajności i skalowania podczas konfigurowania odzyskiwania po awarii maszyn wirtualnych programu VMware na platformę Azure za pomocą usługi Azure Site Recovery.
+title: Planowanie pojemności i skalowanie na potrzeby odzyskiwania po awarii oprogramowania VMware na platformie Azure przy użyciu Azure Site Recovery | Microsoft Docs
+description: Ten artykuł ułatwia planowanie pojemności i skalowania podczas konfigurowania odzyskiwania po awarii maszyn wirtualnych VMware na platformie Azure przy użyciu Azure Site Recovery.
 author: nsoneji
 manager: garavd
 ms.service: site-recovery
 ms.date: 4/9/2019
 ms.topic: conceptual
 ms.author: ramamill
-ms.openlocfilehash: 9a77b3982d8aed6ae694c32baecd7ae194c51724
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 0bf1b34295d827124198206e743bc21d5f7eb904
+ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64924844"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73747901"
 ---
-# <a name="plan-capacity-and-scaling-for-vmware-disaster-recovery-to-azure"></a>Planowanie wydajności i skalowanie na potrzeby odzyskiwania po awarii programu VMware na platformę Azure
+# <a name="plan-capacity-and-scaling-for-vmware-disaster-recovery-to-azure"></a>Planowanie pojemności i skalowanie na potrzeby odzyskiwania po awarii oprogramowania VMware na platformę Azure
 
-W tym artykule umożliwiają planowanie pojemności i skalowania podczas replikowania lokalnych maszyn wirtualnych z programu VMware i serwerów fizycznych na platformę Azure za pomocą [usługi Azure Site Recovery](site-recovery-overview.md).
+Ten artykuł służy do planowania pojemności i skalowania w przypadku replikowania lokalnych maszyn wirtualnych VMware i serwerów fizycznych na platformę Azure przy użyciu [Azure Site Recovery](site-recovery-overview.md).
 
-## <a name="how-do-i-start-capacity-planning"></a>Jak rozpocząć planowanie pojemności
+## <a name="how-do-i-start-capacity-planning"></a>Jak mogę rozpocząć planowanie pojemności?
 
-Aby dowiedzieć się więcej na temat wymagań dotyczących infrastruktury usługi Azure Site Recovery, należy zebrać informacje o środowisku replikacji, uruchamiając [planista wdrażania usługi Azure Site Recovery](https://aka.ms/asr-deployment-planner-doc) potrzeby replikacji oprogramowania VMware. Aby uzyskać więcej informacji, zobacz [Planisty wdrożenia o Site Recovery dla oprogramowania VMware na platformę Azure](site-recovery-deployment-planner.md). 
+Aby dowiedzieć się więcej o wymaganiach dotyczących infrastruktury Azure Site Recovery, Zbierz informacje o środowisku replikacji, uruchamiając [planista wdrażania usługi Azure Site Recovery](https://aka.ms/asr-deployment-planner-doc) na potrzeby replikacji oprogramowania VMware. Aby uzyskać więcej informacji, zobacz [Informacje o Site Recovery planista wdrażania dla oprogramowania VMware na platformie Azure](site-recovery-deployment-planner.md). 
 
-Planista wdrażania usługi Site Recovery udostępnia raport, który zawiera pełne informacje na temat zgodnych i niezgodnych maszyn wirtualnych, dysków na maszynę Wirtualną, a współczynnik zmian danych na dysku. Narzędzie jest także podsumowanie wymagania dotyczące przepustowości sieci w celu spełnienia docelowego cel punktu odzyskiwania i infrastruktury platformy Azure, które są wymagane do pomyślnej replikacji i testowania trybu failover.
+Site Recovery Planista wdrażania zawiera raport, który zawiera pełne informacje o zgodnych i niezgodnych maszynach wirtualnych, dyskach na maszynę wirtualną oraz o postępach danych na dysku. Narzędzie podsumowuje także wymagania dotyczące przepustowości sieci w celu spełnienia docelowego celu punktu odzyskiwania i infrastruktury platformy Azure, która jest wymagana do pomyślnej replikacji i testowego przejścia w tryb failover.
 
-## <a name="capacity-considerations"></a>Zagadnienia dotyczące wydajności
+## <a name="capacity-considerations"></a>Zagadnienia dotyczące pojemności
 
 Składnik | Szczegóły
 --- | ---
-**Replikacja** | **Maksymalna dziennych zmian**: Chronione maszyny można użyć tylko jeden serwer przetwarzania. Serwer pojedynczego procesu może obsługiwać dzienny zmiany szybkości do 2 TB. Dlatego 2 TB jest maksymalny Dzienny współczynnik zmian danych, która jest obsługiwana dla chronionej maszyny.<br /><br /> **Maksymalna przepływność**: Replikowanej maszyny mogą należeć do jednego konta magazynu na platformie Azure. Standardowe konto usługi Azure Storage może obsługiwać maksymalnie 20 000 żądań na sekundę. Zaleca się ograniczenie liczby operacji wejścia/wyjścia na sekundę (IOPS) na maszynie źródłowej do 20 000. Na przykład jeśli masz maszyny źródłowej, która ma pięć dysków, a każdy dysk generuje 120 operacje We/Wy (8 K rozmiar) na maszynie źródłowej, maszyna źródłowa jest w ramach limitu 500 operacji We/Wy dysku platformy Azure. (Liczba kont magazynu wymagana jest równa maszyny źródłowej łączna liczba operacji We/Wy, podzielona przez 20 000).
-**Serwer konfiguracji** | Serwer konfiguracji musi być w stanie obsłużyć dzienną wydajność współczynnika zmian we wszystkich obciążeń uruchomionych na chronionych maszynach. Maszyna konfiguracji musi mieć wystarczającą przepustowość, aby stale replikować dane do usługi Azure Storage.<br /><br /> Najlepszym rozwiązaniem jest umieścić serwer konfiguracji na tej samej sieci i segment sieci LAN, jak na komputerach, które mają być chronione. Serwer konfiguracji można umieścić w innej sieci, ale maszyn, które mają być chronione, powinni mieć wgląd sieci 3 warstwy.<br /><br /> Zalecenia dotyczące rozmiaru serwera konfiguracji są podsumowane w tabeli w poniższej sekcji.
-**Serwer przetwarzania** | Pierwszy serwer przetwarzania jest instalowany domyślnie na serwerze konfiguracji. Można wdrażać dodatkowych serwerów przetwarzania do skalowania środowiska. <br /><br /> Serwer przetwarzania odbiera dane replikacji z chronionych maszyn. Serwer przetwarzania optymalizuje dane przy użyciu pamięci podręcznej, kompresji i szyfrowania. Następnie serwer przetwarzania wysyła dane do platformy Azure. Maszyna serwera przetwarzania musi mieć wystarczające zasoby do wykonywania tych zadań.<br /><br /> Serwer przetwarzania korzysta z pamięci podręcznej opartej na dyskach. Do obsługi zmian danych, które są przechowywane w przypadku wąskich gardeł lub awaria wystąpienia, należy użyć dysku oddzielne pamięci podręcznej 600 GB lub więcej.
+**Replikacja** | **Maksymalny dzienny współczynnik zmian**: komputer chroniony może korzystać tylko z jednego serwera przetwarzania. Pojedynczy serwer przetwarzania może obsłużyć dziennie do 2 TB zmian. W związku z tym 2 TB jest maksymalną dzienną szybkością zmiany danych obsługiwaną przez maszynę chronioną.<br /><br /> **Maksymalna przepływność**: replikowana maszyna może należeć do jednego konta magazynu na platformie Azure. Standardowe konto usługi Azure Storage może obsłużyć maksymalnie 20 000 żądań na sekundę. Zalecamy ograniczenie liczby operacji wejścia/wyjścia na sekundę (IOPS) na maszynę źródłową do 20 000. Na przykład jeśli masz maszynę źródłową, która ma pięć dysków, a każdy dysk generuje 120 operacji we/wy (8 KB rozmiaru) na maszynie źródłowej, maszyna źródłowa jest w limicie liczby operacji we/wy dysku na dysk (500). (Liczba wymaganych kont magazynu jest równa łącznej liczbie operacji we/wy maszyny źródłowej podzielonej przez 20 000).
+**Serwer konfiguracji** | Serwer konfiguracji musi być w stanie obsługiwać dzienną szybkość zmiany wydajności dla wszystkich obciążeń uruchomionych na chronionych maszynach. Komputer konfiguracji musi mieć wystarczającą przepustowość, aby ciągle replikować dane do usługi Azure Storage.<br /><br /> Najlepszym rozwiązaniem jest umieszczenie serwera konfiguracji w tej samej sieci i segmencie LAN co maszyny, które mają być chronione. Serwer konfiguracji można umieścić w innej sieci, ale maszyny, które mają być chronione, powinny mieć widoczność sieci w warstwie 3.<br /><br /> Zalecenia dotyczące rozmiaru serwera konfiguracji zostały podsumowane w tabeli w następującej sekcji.
+**Serwer przetwarzania** | Pierwszy serwer przetwarzania jest instalowany domyślnie na serwerze konfiguracji. Można wdrożyć dodatkowe serwery przetwarzania w celu skalowania środowiska. <br /><br /> Serwer przetwarzania otrzymuje dane replikacji z chronionych maszyn. Serwer przetwarzania optymalizuje dane przy użyciu pamięci podręcznej, kompresji i szyfrowania. Następnie serwer przetwarzania wysyła dane do platformy Azure. Komputer serwera przetwarzania musi mieć wystarczającą ilość zasobów do wykonania tych zadań.<br /><br /> Serwer przetwarzania korzysta z pamięci podręcznej opartej na dyskach. Użyj oddzielnego dysku pamięci podręcznej o 600 GB lub więcej, aby obsłużyć zmiany danych, które są przechowywane, jeśli wystąpi wąskie gardło lub awaria sieci.
 
-## <a name="size-recommendations-for-the-configuration-server-and-inbuilt-process-server"></a>Zalecenia dotyczące rozmiaru serwera konfiguracji i wbudowanych serwera przetwarzania
+## <a name="size-recommendations-for-the-configuration-server-and-inbuilt-process-server"></a>Zalecenia dotyczące rozmiaru serwera konfiguracji i serwera przetwarzania skompilowanego
 
-Serwera konfiguracji, który korzysta z serwerem przetwarzania wbudowanych chronić obciążenia może obsługiwać maksymalnie 200 maszyn wirtualnych, w oparciu o następujące konfiguracje:
+Serwer konfiguracji, który korzysta z skompilowanego serwera przetwarzania do ochrony obciążenia, może obsłużyć do 200 maszyn wirtualnych w oparciu o następujące konfiguracje:
 
-Procesor CPU | Memory (Pamięć) | Rozmiar dysku w pamięci podręcznej | Współczynnik zmian danych | Chronione maszyny
+Procesor CPU | Memory (Pamięć) | Rozmiar dysku pamięci podręcznej | Szybkość zmian danych | Chronione maszyny
 --- | --- | --- | --- | ---
-8 wirtualnych procesorów CPU (2 sockets * 4 rdzenie \@ 2,5 GHz) | 16 GB | 300 GB | 500 GB lub mniej | Umożliwia replikowanie maszyn mniej niż 100.
-12 procesorów wirtualnych Vcpu (2 sockets * 6 rdzeni \@ 2,5 GHz) | 18 GB | 600 GB | 501 GB do 1 TB | Umożliwia replikowanie maszyn 100-150.
-16 procesorów wirtualnych Vcpu (2 sockets * 8 rdzeni \@ 2,5 GHz) | 32 GB | 1 TB | > 1 TB do 2 TB | Umożliwia replikowanie maszyn 151 do 200.
-Wdrażanie z innego serwera konfiguracji za pomocą [szablonu pakietu OVF](vmware-azure-deploy-configuration-server.md#deployment-of-configuration-server-through-ova-template). | | | | Jeśli replikujesz ponad 200 maszyn, należy wdrożyć nowy serwer konfiguracji.
-Wdrażanie drugiego [serwera przetwarzania](vmware-azure-set-up-process-server-scale.md#download-installation-file). | | | >2 TB| Wdrażanie nowego serwera przetwarzania skalowalnego w poziomie, jeśli całkowity Dzienny współczynnik zmian danych jest większa niż 2 TB.
+8 procesorów wirtualnych vCPU (2 gniazda * 4 rdzenie \@ 2,5 GHz) | 16 GB | 300 GB | 500 GB lub mniej | Służy do replikowania mniej niż 100 maszyn.
+12 procesorów wirtualnych vCPU (2 gniazda * 6 rdzeni \@ 2,5 GHz) | 18 GB | 600 GB | 501 GB do 1 TB | Służy do replikowania 100 do 150 maszyn.
+16 procesorów wirtualnych vCPU (2 gniazda * 8 rdzeni \@ 2,5 GHz) | 32 GB | 1 TB | > 1 TB do 2 TB | Służy do replikowania 151 do 200 maszyn.
+Wdróż inny serwer konfiguracji przy użyciu [szablonu OVF](vmware-azure-deploy-configuration-server.md#deploy-a-configuration-server-through-an-ova-template). | | | | Wdróż nowy serwer konfiguracji, jeśli wykonujesz replikację więcej niż 200 maszyn.
+Wdróż inny [serwer przetwarzania](vmware-azure-set-up-process-server-scale.md#download-installation-file). | | | > 2 TB| Wdróż nowy serwer przetwarzania skalowalnego w poziomie, jeśli ogólna liczba codziennych zmian danych jest większa niż 2 TB.
 
 W tych konfiguracjach:
 
-* Każda maszyna źródłowa ma trzy dyski 100 GB.
-* Użyliśmy porównawczych magazyn ośmiu dysków sygnatury dostępu współdzielonego o wielkości 10 tys. obr/min za pomocą macierzy RAID 10 dla miar dysk pamięci podręcznej.
+* Każda maszyna źródłowa ma trzy dyski o pojemności 100 GB każdego z nich.
+* W przypadku pomiarów dyskowych pamięci podręcznej użyto macierzy magazynowych o ośmiu dyskach sygnatury dostępu współdzielonego 10 K/min.
 
 ## <a name="size-recommendations-for-the-process-server"></a>Zalecenia dotyczące rozmiaru serwera przetwarzania
 
-Serwer przetwarzania jest składnikiem, który obsługuje replikację danych w usłudze Azure Site Recovery. Jeśli dziennych zmian jest większa niż 2 TB, należy dodać serwerów przetwarzania skalowalnego w poziomie w celu obsługi obciążenia replikacji. Aby skalować, możesz wykonywać następujące czynności:
+Serwer przetwarzania to składnik, który obsługuje replikację danych w Azure Site Recovery. Jeśli dzienny współczynnik zmian jest większy niż 2 TB, należy dodać serwery przetwarzania skalowalnego w poziomie w celu obsługi obciążenia replikacji. Aby skalować w poziomie, możesz:
 
-* Zwiększ liczbę serwerów konfiguracji, wdrażania przy użyciu [szablonu pakietu OVF](vmware-azure-deploy-configuration-server.md#deployment-of-configuration-server-through-ova-template). Na przykład można chronić maksymalnie 400 maszyn przy użyciu dwóch serwerów konfiguracji.
-* Dodaj [serwerów przetwarzania skalowalnego w poziomie](vmware-azure-set-up-process-server-scale.md#download-installation-file). Użyj serwerów przetwarzania skalowalnego w poziomie do obsługi ruchu związanego z replikacją zamiast (lub oprócz) na serwerze konfiguracji.
+* Zwiększ liczbę serwerów konfiguracji przez wdrożenie przy użyciu [szablonu OVF](vmware-azure-deploy-configuration-server.md#deploy-a-configuration-server-through-an-ova-template). Można na przykład chronić do 400 maszyn przy użyciu dwóch serwerów konfiguracji.
+* Dodawanie [serwerów przetwarzania skalowalnego](vmware-azure-set-up-process-server-scale.md#download-installation-file)w poziomie. Używaj skalowalnych w poziomie serwerów procesów do obsługi ruchu związanego z replikacją zamiast (lub oprócz) serwera konfiguracji.
 
-W poniższej tabeli opisano w tym scenariuszu:
+W poniższej tabeli opisano ten scenariusz:
 
-* Konfigurowania serwera przetwarzania skalowalnego w poziomie.
-* Skonfigurowano chronionych maszyn wirtualnych używających serwera przetwarzania skalowalnego w poziomie.
-* Każda maszyna chronionego źródła ma trzy dyski 100 GB.
+* Skonfiguruj serwer przetwarzania skalowalny w poziomie.
+* Chronione maszyny wirtualne można skonfigurować tak, aby korzystały z serwera przetwarzania skalowalnego w poziomie.
+* Każda chroniona maszyna źródłowa ma trzy dyski o pojemności 100 GB każdego z nich.
 
-Dodatkowym serwerze przetwarzania | Rozmiar dysku w pamięci podręcznej | Współczynnik zmian danych | Chronione maszyny
+Dodatkowy serwer przetwarzania | Rozmiar dysku pamięci podręcznej | Szybkość zmian danych | Chronione maszyny
 --- | --- | --- | ---
-4 Vcpu (2 sockets * 2 rdzenie \@ 2,5 GHz), 8 GB pamięci | 300 GB | 250 GB lub mniej | Umożliwia replikowanie maszyn 85 lub mniej.
-8 wirtualnych procesorów CPU (2 sockets * 4 rdzenie \@ 2,5 GHz), 12 GB pamięci RAM | 600 GB | 251 GB do 1 TB | Umożliwia replikowanie maszyn 86-150.
-12 procesorów wirtualnych Vcpu (2 sockets * 6 rdzeni \@ 2,5 GHz) 24 GB pamięci | 1 TB | > 1 TB do 2 TB | Umożliwia replikowanie maszyn 151 do 225.
+4 procesorów wirtualnych vCPU (2 gniazda * 2 rdzenie \@ 2,5 GHz), 8 GB pamięci | 300 GB | 250 GB lub mniej | Służy do replikowania 85 lub mniej maszyn.
+8 procesorów wirtualnych vCPU (2 gniazda * 4 rdzenie \@ 2,5 GHz), 12 GB pamięci | 600 GB | 251 GB do 1 TB | Służy do replikowania 86 do 150 maszyn.
+12 procesorów wirtualnych vCPU (2 gniazda * 6 rdzeni \@ 2,5 GHz) 24 GB pamięci | 1 TB | > 1 TB do 2 TB | Służy do replikowania 151 do 225 maszyn.
 
-Jak skalować serwery w zależy od preferencjami dla modelu, skalowanie w pionie lub poziomie. Skalowanie w górę, wdrażanie kilka serwerów wysokiej klasy konfiguracji i serwerów przetwarzania. Aby skalować w poziomie, należy wdrożyć więcej serwerów, które mają mniej zasobów. Na przykład jeśli chcesz chronić 200 maszyn z ogólną Dzienny współczynnik zmian danych o rozmiarze 1,5 TB, może potrwać, jedną z następujących czynności:
+Sposób skalowania serwerów zależy od preferencji dla modelu skalowania w górę lub w poziomie. Aby skalować w górę, wdróż kilka serwerów konfiguracji wysokiej klasy i serwerów przetwarzania. Aby skalować w poziomie, wdróż więcej serwerów z mniejszą ilością zasobów. Na przykład jeśli chcesz chronić maszyny 200 z ogólną częstotliwością dziennej zmiany danych wynoszącą 1,5 TB, możesz wykonać jedną z następujących czynności:
 
-* Skonfiguruj serwer pojedynczego procesu (16 vCPU, 24 GB pamięci RAM).
-* Należy skonfigurować dwa serwery przetwarzania, (2 x 8 procesorów vCPU, 2 * 12 GB pamięci RAM).
+* Skonfiguruj pojedynczy serwer przetwarzania (16 vCPU, 24 GB pamięci RAM).
+* Skonfiguruj dwa serwery przetwarzania (2 x 8 vCPU, 2 * 12 GB pamięci RAM).
 
-## <a name="control-network-bandwidth"></a>Sterowania przepustowością sieci
+## <a name="control-network-bandwidth"></a>Sterowanie przepustowością sieci
 
-Po użyciu [planista wdrażania usługi Site Recovery](site-recovery-deployment-planner.md) do obliczania przepustowości, należy dla replikacji (Replikacja początkowa i przyrostowa), masz kilka opcji umożliwiających kontrolę przepustowości, który służy do Replikacja:
+Po użyciu [Planista wdrażania Site Recovery](site-recovery-deployment-planner.md) , aby obliczyć przepustowość potrzebną do replikacji (replikacja początkowa, a następnie Delta), istnieje kilka opcji kontrolowania przepustowości używanej na potrzeby replikacji:
 
-* **Ograniczanie przepustowości**: Ruch VMware są replikowane do platformy Azure przechodzi przez serwer określonego procesu. Możesz ograniczyć przepustowość na maszynach, które działają jako serwerów przetwarzania.
-* **Mają wpływ na przepustowość**: Może mieć wpływ na przepustowość, która jest używana do replikacji przy użyciu kilku kluczy rejestru:
-  * **HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows Azure Backup\Replication\UploadThreadsPerVM** wartość rejestru określa liczbę wątków, które są używane do transferu danych (Replikacja początkowa lub przyrostowa) dysku. Wyższa wartość zwiększa przepustowość sieci, która jest używana do replikacji.
-  * **HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows Azure Backup\Replication\DownloadThreadsPerVM** wartość rejestru określa liczbę wątków, które są używane do transferu danych podczas powrotu po awarii.
+* **Ograniczanie przepustowości**: ruch VMware replikowany do platformy Azure odbywa się za pomocą określonego serwera przetwarzania. Przepustowość można ograniczyć na maszynach, na których działają jako serwery przetwarzania.
+* **Wpływ na przepustowość**: można mieć wpływ na przepustowość używaną do replikacji przy użyciu kilku kluczy rejestru:
+  * Wartość rejestru **HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows platformy Azure Backup\Replication\UploadThreadsPerVM** określa liczbę wątków używanych na potrzeby transferu danych (replikacja początkowa lub różnicowa) dysku. Wyższa wartość zwiększa przepustowość sieci używaną podczas replikacji.
+  * Wartość rejestru **HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows usługi Azure Backup\Replication\DownloadThreadsPerVM** określa liczbę wątków, które są używane na potrzeby transferu danych podczas powrotu po awarii.
 
 ### <a name="throttle-bandwidth"></a>Ograniczanie przepustowości
 
-1. Otwórz przystawkę MMC usługi Azure Backup na komputerze, którego używasz jako serwera przetwarzania. Domyślnie skrót do usługi Backup jest dostępny na pulpicie lub w następującym folderze: Agent\bin C:\Program Files\Microsoft Azure Recovery Services.
-2. W przystawce, wybierz **Zmień właściwości**.
+1. Otwórz przystawkę MMC Azure Backup na komputerze używanym jako serwer przetwarzania. Domyślnie skrót do kopii zapasowej jest dostępny na pulpicie lub w następującym folderze: C:\Program Files\Microsoft Azure Recovery Services Agent\bin.
+2. W przystawce wybierz pozycję **Zmień właściwości**.
 
-    ![Zrzut ekranu przedstawiający Azure Backup programu MMC przystawki możliwość zmiany właściwości](./media/site-recovery-vmware-to-azure/throttle1.png)
-3. Na **ograniczania** zaznacz **włączyć internetowe ograniczanie użycia przepustowości dla operacji tworzenia kopii zapasowej**. Ustaw limity dla pracy i innych niż godziny pracy. Prawidłowe zakresy są od 512 KB/s do 1,023 MB/s.
+    ![Zrzut ekranu opcji przystawka MMC Azure Backup, aby zmienić właściwości](./media/site-recovery-vmware-to-azure/throttle1.png)
+3. Na karcie **ograniczanie** wybierz pozycję **Włącz ograniczenie przepustowości Internetu dla operacji tworzenia kopii zapasowej**. Ustaw limity dla godzin pracy i czasu wolnego. Prawidłowe zakresy są z zakresu od 512 KB/s do 1 023 MB/s.
 
-    ![Zrzut ekranu przedstawiający okno dialogowe właściwości kopia zapasowa Azure](./media/site-recovery-vmware-to-azure/throttle2.png)
+    ![Zrzut ekranu przedstawiający okno dialogowe właściwości Azure Backup](./media/site-recovery-vmware-to-azure/throttle2.png)
 
 Możesz też użyć polecenia cmdlet [Set-OBMachineSetting](https://technet.microsoft.com/library/hh770409.aspx), aby ustawić ograniczanie przepływności. Oto przykład:
 
@@ -100,74 +100,74 @@ Możesz też użyć polecenia cmdlet [Set-OBMachineSetting](https://technet.micr
 
 **Set-OBMachineSetting -NoThrottle** wskazuje, że ograniczanie przepływności nie jest wymagane.
 
-### <a name="alter-the-network-bandwidth-for-a-vm"></a>Instrukcja ALTER przepustowość sieci dla maszyny Wirtualnej
+### <a name="alter-the-network-bandwidth-for-a-vm"></a>Zmiana przepustowości sieci dla maszyny wirtualnej
 
-1. W rejestrze maszyny Wirtualnej, przejdź do **HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows Azure Backup\Replication**.
-   * Aby zmienić przepustowość wykorzystywaną przez ruch na dysk replikujący, zmodyfikuj wartość **UploadThreadsPerVM**. Utwórz klucz, jeśli nie istnieje.
-   * Aby zmienić przepustowości dla ruchu powrotu po awarii z platformy Azure, zmodyfikuj wartość **DownloadThreadsPerVM**.
-2. Wartością domyślną dla każdego klucza jest **4**. W sieci „o nadmiarowych zasobach” należy zmienić wartości domyślne tych kluczy rejestru. Wartość maksymalna, możesz użyć **32**. Monitoruj ruch, aby zoptymalizować tę wartość.
+1. W rejestrze maszyny wirtualnej przejdź do obszaru **HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows Azure Backup\Replication**.
+   * Aby zmienić ruch związany z przepustowością na dysku replikacji, należy zmodyfikować wartość **UploadThreadsPerVM**. Utwórz klucz, jeśli nie istnieje.
+   * Aby zmienić przepustowość dla ruchu powrotu po awarii z platformy Azure, zmodyfikuj wartość **DownloadThreadsPerVM**.
+2. Wartość domyślna dla każdego klucza to **4**. W sieci „o nadmiarowych zasobach” należy zmienić wartości domyślne tych kluczy rejestru. Maksymalna wartość, której można użyć, to **32**. Monitoruj ruch, aby zoptymalizować tę wartość.
 
-## <a name="set-up-the-site-recovery-infrastructure-to-protect-more-than-500-vms"></a>Konfigurowanie infrastruktury Site Recovery, aby chronić więcej niż 500 maszyn wirtualnych
+## <a name="set-up-the-site-recovery-infrastructure-to-protect-more-than-500-vms"></a>Konfigurowanie infrastruktury Site Recovery do ochrony ponad 500 maszyn wirtualnych
 
-Przed skonfigurowaniem infrastruktura usługi Site Recovery dostęp do środowiska, aby zmierzyć od następujących czynników: zgodnych maszyn wirtualnych, dzienny współczynnik zmian danych, wymagana przepustowość sieci punktu odzyskiwania, aby uzyskać liczbę Site Recovery składniki, które są wymagane, a czas potrzebny do ukończenia replikacji początkowej. Wykonanie poniższych kroków w celu zebrania wymaganych informacji:
+Przed skonfigurowaniem infrastruktury Site Recovery należy uzyskać dostęp do środowiska w celu zmierzenia następujących czynników: zgodnych maszyn wirtualnych, dziennego współczynnika zmian danych, wymaganej przepustowości sieci dla punktu odzyskiwania, który ma zostać osiągnięty, liczby Site Recovery wymagane składniki i czas potrzebny do ukończenia replikacji początkowej. Wykonaj następujące kroki, aby zebrać wymagane informacje:
 
-1. W celu mierzenia tych parametrów, należy uruchomić planista wdrażania usługi Site Recovery w środowisku. Aby uzyskać pomocne wskazówki, zobacz [Planisty wdrożenia o Site Recovery dla oprogramowania VMware na platformę Azure](site-recovery-deployment-planner.md).
-2. Wdrażanie serwera konfiguracji, który spełnia [zalecenia dotyczące serwera konfiguracji rozmiaru](site-recovery-plan-capacity-vmware.md#size-recommendations-for-the-configuration-server-and-inbuilt-process-server). Jeśli obciążenie produkcyjne przekracza 650 maszyn wirtualnych, należy wdrożyć innym serwerze konfiguracji.
-3. Oparte na mierzonego dziennych zmian danych, wdrażanie [serwerów przetwarzania skalowalnego w poziomie](vmware-azure-set-up-process-server-scale.md#download-installation-file) za pomocą [rozmiar wytycznych](site-recovery-plan-capacity-vmware.md#size-recommendations-for-the-process-server).
-4. Jeśli spodziewasz się, że szybkość dysku maszyny wirtualnej przekracza 2 MB/s zmian danych, upewnij się, korzystać z dysków zarządzanych w warstwie premium. Planista wdrażania usługi Site Recovery jest uruchamiany dla określonego przedziału czasu. Szczytowe współczynnik zmian danych w innym czasie nie zostaną przechwycone w raporcie.
-5. [Ustaw przepustowość sieci](site-recovery-plan-capacity-vmware.md#control-network-bandwidth) oparte na cel punktu odzyskiwania chcesz osiągnąć.
-6. Po skonfigurowaniu infrastruktury włączyć odzyskiwanie po awarii dla obciążenia. Aby dowiedzieć się więcej, zobacz temat [Konfigurowanie środowiska źródłowego dla oprogramowania VMware do platformy Azure replikacji](vmware-azure-set-up-source.md).
+1. Aby zmierzyć te parametry, należy uruchomić Site Recovery Planista wdrażania w danym środowisku. Aby uzyskać przydatne wskazówki, zobacz [Informacje o Site Recovery planista wdrażania dla oprogramowania VMware na platformie Azure](site-recovery-deployment-planner.md).
+2. Wdróż serwer konfiguracji, który spełnia wymagania [dotyczące rozmiaru serwera konfiguracji](site-recovery-plan-capacity-vmware.md#size-recommendations-for-the-configuration-server-and-inbuilt-process-server). Jeśli obciążenie produkcyjne przekracza 650 maszyn wirtualnych, wdróż inny serwer konfiguracji.
+3. W oparciu o mierzoną liczbę codziennych zmian danych Wdróż [serwery przetwarzania skalowalne](vmware-azure-set-up-process-server-scale.md#download-installation-file) w poziomie za pomocą pomocy [dotyczącej wytycznych dotyczących rozmiaru](site-recovery-plan-capacity-vmware.md#size-recommendations-for-the-process-server).
+4. Jeśli spodziewasz się, że szybkość zmian danych maszyny wirtualnej dysku przekroczy 2 MB/s, upewnij się, że używasz dysków zarządzanych w warstwie Premium. Site Recovery Planista wdrażania uruchamiany przez określony przedział czasu. Szczytowy współczynnik zmian danych w innych przypadkach może nie być przechwytywany w raporcie.
+5. [Ustaw przepustowość sieci](site-recovery-plan-capacity-vmware.md#control-network-bandwidth) na podstawie celu punktu odzyskiwania, który ma zostać osiągnięty.
+6. Po skonfigurowaniu infrastruktury Włącz odzyskiwanie awaryjne dla obciążenia. Aby dowiedzieć się, jak to zrobić, zobacz [Konfigurowanie środowiska źródłowego na potrzeby replikacji oprogramowania VMware do platformy Azure](vmware-azure-set-up-source.md).
 
 ## <a name="deploy-additional-process-servers"></a>Wdrażanie dodatkowych serwerów przetwarzania
 
-Możesz skalować wdrożenie ponad 200 maszyn źródłowych lub masz łącznie codziennie współczynnik więcej niż 2 TB do zmian danych, należy dodać serwerów przetwarzania do obsługi natężenia ruchu. Rozszerzyliśmy produktu w wersji 9.24 zapewnienie [alerty serwera przetwarzania](vmware-physical-azure-monitor-process-server.md#process-server-alerts) o tym, kiedy do skonfigurowania serwera przetwarzania skalowalnego w poziomie. [Konfigurowanie serwera przetwarzania](vmware-azure-set-up-process-server-scale.md) ochrony maszyny źródłowej lub [Równoważenie obciążenia](vmware-azure-manage-process-server.md#move-vms-to-balance-the-process-server-load).
+W przypadku skalowania wdrożenia poza 200 maszynami źródłowymi lub w przypadku całkowitego dziennego współczynnika zmian wynoszącego więcej niż 2 TB, należy dodać serwery przetwarzania do obsługi natężenia ruchu. Ulepszono produkt w wersji 9,24, aby zapewnić [alerty serwera przetwarzania](vmware-physical-azure-monitor-process-server.md#process-server-alerts) podczas konfigurowania serwera przetwarzania skalowalnego w poziomie. [Skonfiguruj serwer przetwarzania](vmware-azure-set-up-process-server-scale.md) w celu ochrony nowych maszyn źródłowych lub [Zrównoważ obciążenie](vmware-azure-manage-process-server.md#move-vms-to-balance-the-process-server-load).
 
-### <a name="migrate-machines-to-use-the-new-process-server"></a>Migrowanie maszyn do użycia nowego serwera przetwarzania
+### <a name="migrate-machines-to-use-the-new-process-server"></a>Migrowanie maszyn w celu korzystania z nowego serwera przetwarzania
 
-1. Wybierz **ustawienia** > **serwerów Site Recovery**. Wybierz serwer configuration server, a następnie rozwiń **przetwarzania serwerów**.
+1. Wybierz pozycję **ustawienia** > **serwery Site Recovery**. Wybierz serwer konfiguracji, a następnie rozwiń węzeł **serwery przetwarzania**.
 
-    ![Zrzut ekranu przedstawiający okno dialogowe serwera przetwarzania](./media/site-recovery-vmware-to-azure/migrate-ps2.png)
-2. Kliknij prawym przyciskiem myszy serwer przetwarzania, obecnie w użyciu, a następnie wybierz **przełącznika**.
+    ![Zrzut ekranu przedstawiający okno dialogowe serwer przetwarzania](./media/site-recovery-vmware-to-azure/migrate-ps2.png)
+2. Kliknij prawym przyciskiem myszy aktualnie używany serwer przetwarzania, a następnie wybierz polecenie **Przełącz**.
 
-    ![Zrzut ekranu przedstawiający okno dialogowe konfiguracji serwera](./media/site-recovery-vmware-to-azure/migrate-ps3.png)
-3. W **wybierz docelowy serwer przetwarzania**, wybierz nowego serwera przetwarzania, którego chcesz użyć. Następnie wybierz maszyny wirtualne, które będzie obsługiwać serwer. Aby uzyskać informacje o serwerze, wybierz ikonę informacji. Aby ułatwić ładowanie decyzje, jest wyświetlana średnia miejsca, które są wymagane do replikowania każdej wybranej maszyny wirtualnej do nowego serwera przetwarzania. Kliknij znacznik wyboru, aby rozpocząć replikowanie do nowego serwera przetwarzania.
+    ![Zrzut ekranu przedstawiający okno dialogowe serwer konfiguracji](./media/site-recovery-vmware-to-azure/migrate-ps3.png)
+3. Na stronie **Wybierz docelowy serwer przetwarzania**wybierz nowy serwer przetwarzania, którego chcesz użyć. Następnie wybierz maszyny wirtualne, które będą obsługiwane przez serwer. Aby uzyskać informacje o serwerze, wybierz ikonę informacji. Aby ułatwić podejmowanie decyzji dotyczących obciążenia, zostanie wyświetlony średni obszar, który jest wymagany do replikowania każdej wybranej maszyny wirtualnej na nowy serwer przetwarzania. Zaznacz znacznik wyboru, aby rozpocząć replikację do nowego serwera przetwarzania.
 
-## <a name="deploy-additional-master-target-servers"></a>Wdrażanie dodatkowych główne serwery docelowe
+## <a name="deploy-additional-master-target-servers"></a>Wdrażanie dodatkowych głównych serwerów docelowych
 
-W następujących scenariuszach wymaganych jest więcej niż jeden główny serwer docelowy:
+W następujących scenariuszach jest wymagany więcej niż jeden główny serwer docelowy:
 
-*   Chcesz chronić maszyny wirtualnej z systemem Linux.
-*   Główny serwer docelowy dostępne na serwerze konfiguracji nie ma dostępu do magazynu danych maszyny wirtualnej.
-*   Łączna liczba dysków na głównym serwerze docelowym (liczba dyski lokalne na serwerze), a także liczbę dysków, które ma być chroniony, jest większa niż 60 dysków.
+*   Chcesz chronić maszynę wirtualną z systemem Linux.
+*   Główny serwer docelowy dostępny na serwerze konfiguracji nie ma dostępu do magazynu danych maszyny wirtualnej.
+*   Łączna liczba dysków na głównym serwerze docelowym (liczba dysków lokalnych na serwerze i liczba dysków, które mają być objęte ochroną) jest większa niż 60 dysków.
 
-Aby dowiedzieć się, jak dodać serwer główny serwer docelowy dla maszyny wirtualnej z systemem Linux, zobacz [instalowanie Linux główny serwer docelowy do powrotu po awarii](vmware-azure-install-linux-master-target.md).
+Aby dowiedzieć się, jak dodać główny serwer docelowy dla maszyny wirtualnej opartej na systemie Linux, zobacz [Instalowanie głównego serwera docelowego systemu Linux na potrzeby powrotu po awarii](vmware-azure-install-linux-master-target.md).
 
-Aby dodać serwer główny serwer docelowy dla maszyny wirtualnej z systemem Windows:
+Aby dodać główny serwer docelowy dla maszyny wirtualnej z systemem Windows:
 
-1. Przejdź do **magazyn usługi Recovery Services** > **infrastruktura usługi Site Recovery** > **serwery konfiguracji**.
-2. Wybierz serwer konfiguracji, a następnie wybierz pozycję **główny serwer docelowy**.
+1. Przejdź do **magazynu Recovery Services** > **infrastruktury Site Recovery** > **serwery konfiguracji**.
+2. Wybierz wymagany serwer konfiguracji, a następnie wybierz opcję **główny serwer docelowy**.
 
-    ![Zrzut ekranu przedstawiający przycisk dodawania głównego serwera docelowego](media/site-recovery-plan-capacity-vmware/add-master-target-server.png)
-3. Pobierz plik instalacyjny ujednoliconego, a następnie uruchom plik na maszynie Wirtualnej, aby skonfigurować główny serwer docelowy.
-4. Wybierz **głównego elementu docelowego instalacji** > **dalej**.
+    ![Zrzut ekranu przedstawiający przycisk Dodaj główny serwer docelowy](media/site-recovery-plan-capacity-vmware/add-master-target-server.png)
+3. Pobierz plik ujednoliconej konfiguracji, a następnie uruchom plik na maszynie wirtualnej, aby skonfigurować główny serwer docelowy.
+4. Wybierz pozycję **Zainstaluj główny serwer docelowy** > **dalej**.
 
-    ![Zrzut ekranu pokazujący, wybierając opcję głównego elementu docelowego instalacji](media/site-recovery-plan-capacity-vmware/choose-MT.PNG)
-5. Wybierz domyślną lokalizację instalacji, a następnie wybierz **zainstalować**.
+    ![Zrzut ekranu, który pokazuje Wybieranie opcji instalacji głównego serwera docelowego](media/site-recovery-plan-capacity-vmware/choose-MT.PNG)
+5. Wybierz domyślną lokalizację instalacji, a następnie wybierz pozycję **Zainstaluj**.
 
      ![Zrzut ekranu pokazujący domyślną lokalizację instalacji](media/site-recovery-plan-capacity-vmware/MT-installation.PNG)
-6. Aby zarejestrować głównego elementu docelowego z serwerem konfiguracji, zaznacz opcję **przejść do konfiguracji**.
+6. Aby zarejestrować główny element docelowy na serwerze konfiguracji, wybierz pozycję **Kontynuuj do konfiguracji**.
 
-    ![Zrzut ekranu pokazujący przejdź do opcji konfiguracji, przycisk](media/site-recovery-plan-capacity-vmware/MT-proceed-configuration.PNG)
-7. Wprowadź adres IP serwera konfiguracji, a następnie wprowadź hasło. Aby dowiedzieć się, jak wygenerować hasła, zobacz [wygenerować hasło serwera konfiguracji](vmware-azure-manage-configuration-server.md#generate-configuration-server-passphrase). 
+    ![Zrzut ekranu pokazujący przycisk przechodzenie do konfiguracji](media/site-recovery-plan-capacity-vmware/MT-proceed-configuration.PNG)
+7. Wprowadź adres IP serwera konfiguracji, a następnie wprowadź hasło. Aby dowiedzieć się, jak wygenerować hasło, zobacz [generowanie hasła serwera konfiguracji](vmware-azure-manage-configuration-server.md#generate-configuration-server-passphrase). 
 
-    ![Zrzut ekranu przedstawiający miejsce wprowadzania adresu IP i hasła dla serwera konfiguracji](media/site-recovery-plan-capacity-vmware/cs-ip-passphrase.PNG)
-8. Wybierz pozycję **Zarejestruj**. Po zakończeniu rejestracji wybierz **Zakończ**.
+    ![Zrzut ekranu pokazujący, gdzie wprowadzić adres IP i hasło dla serwera konfiguracji](media/site-recovery-plan-capacity-vmware/cs-ip-passphrase.PNG)
+8. Wybierz pozycję **Zarejestruj**. Po zakończeniu rejestracji wybierz pozycję **Zakończ**.
 
-Po pomyślnym zakończeniu rejestracji serwer znajduje się w witrynie Azure portal pod **magazyn usługi Recovery Services** > **infrastruktura usługi Site Recovery**  >   **Serwery konfiguracji**, na serwerach głównego elementu docelowego serwera konfiguracji.
+Po pomyślnym zakończeniu rejestracji serwer jest wymieniony w Azure Portal w **magazynie Recovery Services** > **Site Recovery infrastruktura** > **serwerów konfiguracji**, na głównych serwerach docelowych serwer konfiguracji.
 
  > [!NOTE]
- > Pobierz najnowszą wersję [głównego elementu docelowego ujednoliconej konfiguracji w pliku serwera Windows](https://aka.ms/latestmobsvc).
+ > Pobierz najnowszą wersję [ujednoliconego pliku instalacji głównego serwera docelowego dla systemu Windows](https://aka.ms/latestmobsvc).
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
-Pobierz i uruchom [planista wdrażania usługi Site Recovery](https://aka.ms/asr-deployment-planner).
+Pobierz i uruchom [Site Recovery planista wdrażania](https://aka.ms/asr-deployment-planner).

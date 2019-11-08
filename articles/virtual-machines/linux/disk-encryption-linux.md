@@ -7,12 +7,12 @@ ms.topic: article
 ms.author: mbaldwin
 ms.date: 08/06/2019
 ms.custom: seodec18
-ms.openlocfilehash: 0a1515144f340938cddfd5ca9f2ac4803bcb3f77
-ms.sourcegitcommit: 42748f80351b336b7a5b6335786096da49febf6a
+ms.openlocfilehash: 2e7646d2f84696d0b04183d8d06b96405909de87
+ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/09/2019
-ms.locfileid: "72174719"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73750042"
 ---
 # <a name="azure-disk-encryption-scenarios-on-linux-vms"></a>Scenariusze Azure Disk Encryption na maszynach wirtualnych z systemem Linux
 
@@ -42,7 +42,7 @@ Azure Disk Encryption można włączać i zarządzać nimi za pomocą [interfejs
 
 Interfejs wiersza polecenia [platformy azure 2,0](/cli/azure) to narzędzie z wierszem poleceń do zarządzania zasobami platformy Azure. Interfejs wiersza polecenia jest przeznaczony do elastycznego wykonywania zapytań dotyczących danych, obsługuje długotrwałe operacje jako procesy nieblokujące i ułatwiają wykonywanie skryptów. Możesz zainstalować ją lokalnie, wykonując kroki opisane w temacie [Instalowanie interfejsu wiersza polecenia platformy Azure](/cli/azure/install-azure-cli?view=azure-cli-latest).
 
-[!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
+ 
 
 Aby [zalogować się do konta platformy Azure za pomocą interfejsu wiersza polecenia platformy Azure](/cli/azure/authenticate-azure-cli), użyj polecenia [AZ login](/cli/azure/reference-index?view=azure-cli-latest#az-login) .
 
@@ -102,7 +102,7 @@ W tym scenariuszu można włączyć szyfrowanie przy użyciu szablonu Menedżer 
 
 ### <a name="enable-encryption-on-an-existing-or-running-linux-vm-using-azure-cli"></a>Włączanie szyfrowania na istniejącej lub uruchomionej maszynie wirtualnej z systemem Linux przy użyciu interfejsu wiersza polecenia platformy Azure 
 
-Szyfrowanie dysków można włączyć na zaszyfrowanym wirtualnym dysku twardym, instalując narzędzie wiersza polecenia [platformy Azure](/cli/azure/?view=azure-cli-latest) i korzystając z niego. Możesz użyć jej w przeglądarce z [Azure Cloud shellem](../../cloud-shell/overview.md)lub zainstalować ją na maszynie lokalnej i używać jej w dowolnej sesji programu PowerShell. Aby włączyć szyfrowanie na istniejących lub uruchomionych maszynach wirtualnych z systemem Linux na platformie Azure, użyj następujących poleceń interfejsu wiersza polecenia:
+Szyfrowanie dysków można włączyć na zaszyfrowanym wirtualnym dysku twardym, instalując narzędzie wiersza polecenia [platformy Azure](/cli/azure/?view=azure-cli-latest) i korzystając z niego. Można go również używać w przeglądarce z usługą [Azure Cloud Shell](../../cloud-shell/overview.md) albo można go zainstalować na maszynie lokalnej i używać w dowolnej sesji programu PowerShell. Aby włączyć szyfrowanie na istniejących lub uruchomionych maszynach wirtualnych z systemem Linux na platformie Azure, użyj następujących poleceń interfejsu wiersza polecenia:
 
 Użyj polecenia [AZ VM Encryption Enable](/cli/azure/vm/encryption?view=azure-cli-latest#az-vm-encryption-show) , aby włączyć szyfrowanie na uruchomionej maszynie wirtualnej na platformie Azure.
 
@@ -196,13 +196,13 @@ W poniższej tabeli wymieniono Menedżer zasobów parametry szablonu dla istniej
 | Parametr | Opis |
 | --- | --- |
 | vmName | Nazwa maszyny wirtualnej do uruchomienia operacji szyfrowania. |
-| Nazwakluczamagazynu | Nazwa magazynu kluczy, do którego ma zostać przekazany klucz szyfrowania. Można go pobrać za pomocą polecenia cmdlet `(Get-AzKeyVault -ResourceGroupName <MyKeyVaultResourceGroupName>). Vaultname` lub interfejsu CLI platformy Azure `az keyvault list --resource-group "MyKeyVaultResourceGroupName"`.|
+| Nazwakluczamagazynu | Nazwa magazynu kluczy, do którego ma zostać przekazany klucz szyfrowania. Można to zrobić za pomocą polecenia cmdlet `(Get-AzKeyVault -ResourceGroupName <MyKeyVaultResourceGroupName>). Vaultname` lub `az keyvault list --resource-group "MyKeyVaultResourceGroupName"`wiersza poleceń platformy Azure.|
 | keyVaultResourceGroup | Nazwa grupy zasobów zawierającej Magazyn kluczy. |
 |  keyEncryptionKeyURL | Adres URL klucza szyfrowania klucza używany do szyfrowania klucza szyfrowania. Ten parametr jest opcjonalny w przypadku wybrania opcji **nokek** na liście rozwijanej UseExistingKek. Jeśli wybierzesz pozycję **KEK** na liście rozwijanej UseExistingKek, musisz wprowadzić wartość _keyEncryptionKeyURL_ . |
 | liczba woluminów | Typ woluminu, na którym jest wykonywana operacja szyfrowania. Prawidłowe wartości to _system operacyjny_, _dane_i _wszystkie_. 
 | forceUpdateTag | Przekazuj unikatową wartość, taką jak identyfikator GUID za każdym razem, gdy operacja musi zostać wymuszona. |
 | resizeOSDisk | Należy zmienić rozmiar partycji systemu operacyjnego w celu zajmowania całego wirtualnego dysku twardego systemu operacyjnego przed podziałem woluminu systemowego. |
-| lokalizacja | Lokalizacja dla wszystkich zasobów. |
+| location | Lokalizacja dla wszystkich zasobów. |
 
 
 ## <a name="use-encryptformatall-feature-for-data-disks-on-linux-vms"></a>Korzystanie z funkcji EncryptFormatAll w przypadku dysków z danymi na maszynach wirtualnych z systemem Linux
@@ -382,7 +382,7 @@ Szyfrowanie można wyłączyć przy użyciu Azure PowerShell, interfejsu wiersza
      az vm encryption disable --name "MySecureVM" --resource-group "MyVirtualMachineResourceGroup" --volume-type [ALL, DATA, OS]
      ```
 - **Wyłącz szyfrowanie przy użyciu szablonu Menedżer zasobów:** Aby wyłączyć szyfrowanie, użyj szablonu [wyłącz szyfrowanie w uruchomionym szablonie maszyny wirtualnej systemu Linux](https://github.com/Azure/azure-quickstart-templates/tree/master/201-decrypt-running-linux-vm-without-aad) .
-     1. Kliknij pozycję **Wdróż na platformie Azure**.
+     1. Kliknij przycisk **Wdrażaj na platformie Azure**.
      2. Wybierz subskrypcję, grupę zasobów, lokalizację, maszynę wirtualną, warunki prawne i umowę.
 
 ## <a name="unsupported-scenarios"></a>Nieobsługiwane scenariusze
@@ -403,5 +403,5 @@ Azure Disk Encryption nie działa w następujących scenariuszach, funkcjach i t
 ## <a name="next-steps"></a>Następne kroki
 
 - [Przegląd Azure Disk Encryption](disk-encryption-overview.md)
-- [Azure Disk Encryption przykładowe skrypty](disk-encryption-sample-scripts.md)
-- [Rozwiązywanie problemów Azure Disk Encryption](disk-encryption-troubleshooting.md)
+- [Przykładowe skrypty usługi Azure Disk Encryption](disk-encryption-sample-scripts.md)
+- [Rozwiązywanie problemów z usługą Azure Disk Encryption](disk-encryption-troubleshooting.md)

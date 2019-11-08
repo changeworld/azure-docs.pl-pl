@@ -3,20 +3,21 @@ author: alkohli
 ms.service: databox
 ms.subservice: heavy
 ms.topic: include
-ms.date: 05/21/2019
+ms.date: 11/05/2019
 ms.author: alkohli
-ms.openlocfilehash: b159ec8620fa8c93e4917f73be9b9898e1b4fbcc
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 16647b6a13e64073ab570d36a8a380d0e36bd855
+ms.sourcegitcommit: 359930a9387dd3d15d39abd97ad2b8cb69b8c18b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66244585"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73800011"
 ---
-- Nie należy kopiować pliki bezpośrednio z precreated udziałów. Należy utworzyć folder w udziale, a następnie skopiuj pliki do tego folderu.
-- Folder w węźle *StorageAccount_BlockBlob* i *StorageAccount_PageBlob* jest kontenerem. Na przykład kontenery są tworzone jako *StorageAccount_BlockBlob/kontenera* i *StorageAccount_PageBlob/kontenera*.
-- Każdy folder utworzone bezpośrednio w ramach *StorageAccount_AzureFiles* jest tłumaczony na udział plików platformy Azure.
-- Jeśli masz istniejący obiekt platformy Azure (np. obiekt blob lub pliku) w chmurze o tej samej nazwie jako obiektu, które są kopiowane urządzenia Data Box spowoduje zastąpienie plików w chmurze.
-- Każdy plik zapisywane *StorageAccount_BlockBlob* i *StorageAccount_PageBlob* akcji jest przekazywany jako blokowe obiekty blob i stronicowych obiektów blob odpowiednio.
-- Magazyn obiektów blob platformy Azure nie obsługuje katalogów. Jeśli utworzysz folder w węźle *StorageAccount_BlockBlob* folder, a następnie foldery wirtualne, które są tworzone w nazwie obiektu blob. Dla usługi Azure Files jest zachowywana na strukturę katalogu.
-- Dowolne puste hierarchii katalogów (bez żadnych plików) utworzone w ramach *StorageAccount_BlockBlob* i *StorageAccount_PageBlob* folderów nie jest przekazany.
-- Jeśli występują błędy podczas przekazywania danych na platformie Azure, w dzienniku błędów jest tworzony w docelowym koncie magazynu. Ścieżka do tego dziennika błędów jest dostępna po zakończeniu przekazywania i przejrzeć dziennik podjęcia akcji naprawczej. Nie należy usuwać dane ze źródła bez weryfikowania przekazane dane.
+- Nie należy kopiować plików bezpośrednio do żadnego ze współtworzonych udziałów. Należy utworzyć folder w udziale, a następnie skopiować pliki do tego folderu.
+- Folder w *StorageAccount_BlockBlob* i *StorageAccount_PageBlob* jest kontenerem. Na przykład kontenery są tworzone jako *StorageAccount_BlockBlob/Container* i *StorageAccount_PageBlob/Container*.
+- Każdy folder utworzony bezpośrednio w obszarze *StorageAccount_AzureFiles* jest tłumaczony na udział plików platformy Azure.
+- Jeśli masz istniejący obiekt platformy Azure (np. obiekt BLOB lub plik) w chmurze o takiej samej nazwie jak kopiowany obiekt, urządzenie Data Box zastąpi plik w chmurze.
+- Każdy plik zapisany w udziałach *StorageAccount_BlockBlob* i *StorageAccount_PageBlob* jest przekazywany jako blokowy obiekt BLOB i stronicowy obiekt BLOB.
+- Usługa Azure Blob Storage nie obsługuje katalogów. Jeśli utworzysz folder w folderze *StorageAccount_BlockBlob* , w nazwie obiektu BLOB zostaną utworzone foldery wirtualne. W przypadku Azure Files zachowywana jest rzeczywista struktura katalogów.
+- Nie przekazano żadnych pustych hierarchii katalogów (bez żadnych plików) utworzonych w folderach *StorageAccount_BlockBlob* i *StorageAccount_PageBlob* .
+- Jeśli wystąpią błędy podczas przekazywania danych do platformy Azure, na docelowym koncie magazynu zostanie utworzony dziennik błędów. Ścieżka do tego dziennika błędów jest dostępna po zakończeniu przekazywania i można przejrzeć dziennik, aby podjąć działania naprawcze. Nie usuwaj danych ze źródła bez weryfikowania przekazanych danych.
+- Metadane plików i uprawnienia NTFS nie są zachowywane, gdy dane są przekazywane do Azure Files. Na przykład *ostatni zmodyfikowany atrybut* plików nie będzie przechowywany podczas kopiowania danych.
