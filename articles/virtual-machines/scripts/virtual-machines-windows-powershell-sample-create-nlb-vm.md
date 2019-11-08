@@ -15,12 +15,12 @@ ms.workload: infrastructure
 ms.date: 06/05/2017
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 2238f223f22ee43e7afd8b5162fb16cb16a2adf4
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 92f437a175228ab75287bdbcf6da31b2786bcbd4
+ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70090754"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73748710"
 ---
 # <a name="load-balance-traffic-between-highly-available-virtual-machines"></a>Równoważenie obciążenia ruchu między wysoko dostępnymi maszynami wirtualnymi
 
@@ -30,7 +30,7 @@ Ten przykładowy skrypt umożliwia utworzenie wszystkich elementów potrzebnych 
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 
-[!INCLUDE [updated-for-az.md](../../../includes/updated-for-az.md)]
+ 
 
 ## <a name="sample-script"></a>Przykładowy skrypt
 
@@ -68,7 +68,7 @@ Ten skrypt używa następujących poleceń w celu utworzenia wdrożenia. Każda 
 | [New-AzVM](https://docs.microsoft.com/powershell/module/az.compute/new-azvm) | Tworzy maszynę wirtualną. |
 |[Remove-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/remove-azresourcegroup) | Usuwa grupę zasobów i wszystkie zasoby w niej zawarte. |
 
-Możesz również tworzyć maszyny wirtualne przy użyciu własnego niestandardowego obrazu zarządzanego. W konfiguracji `Set-AzVMSourceImage` maszyny wirtualnej `-Id` `-VM` Użyj parametrów i zamiast `-PublisherName`, `-Offer` ,`-Skus`i .`-Version`
+Możesz również tworzyć maszyny wirtualne przy użyciu własnego niestandardowego obrazu zarządzanego. W konfiguracji maszyny wirtualnej dla `Set-AzVMSourceImage` użyć parametrów `-Id` i `-VM` zamiast `-PublisherName`, `-Offer`, `-Skus`i `-Version`.
 
 Przykładowo można utworzyć konfigurację maszyny wirtualnej:
 

@@ -9,12 +9,12 @@ ms.service: cognitive-services
 ms.topic: conceptual
 ms.date: 08/22/2019
 ms.author: diberry
-ms.openlocfilehash: b0345773956a0adc5c7f403195c496a3ea5e6fd6
-ms.sourcegitcommit: 6d2a147a7e729f05d65ea4735b880c005f62530f
+ms.openlocfilehash: 48bac68b518706cf3a23d2283da7cda49846e0a7
+ms.sourcegitcommit: 018e3b40e212915ed7a77258ac2a8e3a660aaef8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69982339"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73795827"
 ---
 # <a name="cognitive-services-and-machine-learning"></a>Usługi Cognitive Services i uczenie maszynowe
 
@@ -22,13 +22,13 @@ Cognitive Services zapewnia możliwości uczenia maszynowego w celu rozwiązywan
 
 [Cognitive Services](welcome.md) jest grupą usług, z których każda obsługuje różne, uogólnione funkcje prognozowania. Usługi są podzielone na różne kategorie, aby pomóc w znalezieniu odpowiedniej usługi. 
 
-|Kategoria usługi|Cel|
+|Kategoria usługi|Przeznaczenie|
 |--|--|
-|[Ustępu](https://azure.microsoft.com/services/cognitive-services/directory/decision/)|Tworzenie aplikacji wyświetlających rekomendacje pozwalające skuteczniej podejmować lepsze decyzje.|
-|[Język](https://azure.microsoft.com/services/cognitive-services/directory/lang/)|Zezwól aplikacjom na przetwarzanie języka naturalnego za pomocą wstępnie skompilowanych skryptów, Oceń tonacji i Dowiedz się, jak rozpoznać, czego chcą użytkownicy.|
-|[Wyszukiwanie](https://azure.microsoft.com/services/cognitive-services/directory/search/)|Dodaj interfejsy API wyszukiwania Bing do aplikacji i Wykorzystaj możliwość rozdzielania miliardów stron sieci Web, obrazów, filmów wideo i wiadomości za pomocą jednego wywołania interfejsu API.|
+|[Ustępu](https://azure.microsoft.com/services/cognitive-services/directory/decision/)|Twórz aplikacje wyświetlające rekomendacje pozwalające skuteczniej podejmować lepsze decyzje.|
+|[Język](https://azure.microsoft.com/services/cognitive-services/directory/lang/)|Umożliwiaj aplikacjom przetwarzanie języka naturalnego za pomocą wbudowanych skryptów, ocenianie tonacji i uczenie się rozpoznawania potrzeb użytkowników.|
+|[Wyszukiwanie](https://azure.microsoft.com/services/cognitive-services/directory/search/)|Dodawaj interfejsy API wyszukiwania Bing do aplikacji i wykorzystuj możliwości przeczesywania miliardów stron internetowych, obrazów, wideo i wiadomości za pomocą jednego wywołania interfejsu API.|
 |[Narzędzia](https://azure.microsoft.com/services/cognitive-services/directory/speech/)|Konwertuj mowę na tekst i tekst na naturalnie brzmiącą mowę. Tłumacz jeden język na inny oraz włącz weryfikację i rozpoznawanie osoby mówiącej.|
-|[Wizja](https://azure.microsoft.com/services/cognitive-services/directory/vision/)|Rozpoznawaj, identyfikuj, podpisuj, indeksuj i moderuj swoje zdjęcia, klipy wideo i zawartość elektronicznego pisma odręcznego.|
+|[Została](https://azure.microsoft.com/services/cognitive-services/directory/vision/)|Rozpoznawaj, identyfikuj, podpisuj, indeksuj i moderuj swoje zdjęcia, klipy wideo i zawartość elektronicznego pisma odręcznego.|
 ||||
 
 Użyj Cognitive Services, gdy:
@@ -89,19 +89,19 @@ Aby można było utworzyć skuteczny model, usługa może potrzebować danych w 
 
 Następujące dane klasyfikują poszczególne usługi według rodzaju danych, które umożliwia lub wymaga.
 
-|Usługa Cognitive Service|Nie są wymagane żadne dane szkoleniowe|Podajesz niektóre lub wszystkie dane szkoleniowe|Zbieranie danych w czasie rzeczywistym lub niemal w czasie rzeczywistym|
+|Usługa poznawcze|Nie są wymagane żadne dane szkoleniowe|Podajesz niektóre lub wszystkie dane szkoleniowe|Zbieranie danych w czasie rzeczywistym lub niemal w czasie rzeczywistym|
 |--|--|--|--|
 |[Wykrywacz anomalii](./Anomaly-Detector/overview.md)|x|x|x|
-|Szukaj za pomocą wyszukiwarki Bing |x|||
+|Wyszukiwanie Bing |x|||
 |[Przetwarzanie obrazów](./Computer-vision/Home.md)|x|||
 |[Content Moderator](./Content-Moderator/overview.md)|x||x|
 |[Custom Vision](./Custom-Vision-Service/home.md)||x||
-|[Twarzy](./Face/Overview.md)|x|x||
+|[Stoi](./Face/Overview.md)|x|x||
 |[Aparat rozpoznawania formularzy](./form-recognizer/overview.md)||x||
 |[Czytnik immersyjny](./immersive-reader/overview.md)|x|||
 |[Aparat rozpoznawania atramentu](./Ink-recognizer/overview.md)|x|x||
 |[Language Understanding (LUIS)](./LUIS/what-is-luis.md)||x||
-|[Personalizacja](./personalizer/what-is-personalizer.md)|x*|x*|x|
+|[Personalizacja](./personalizer/what-is-personalizer.md)|y|y|x|
 |[QnA Maker](./QnAMaker/Overview/overview.md)||x||
 |[Aparat rozpoznawania osoby mówiącej](./speaker-recognition/home.md)||x||
 |[Zamiana tekstu na mowę (TTS)](speech-service/text-to-speech.md)|x|x||
@@ -117,9 +117,9 @@ Następujące dane klasyfikują poszczególne usługi według rodzaju danych, kt
  
 Usługi są używane w dowolnej aplikacji, która może tworzyć interfejsy API REST lub wywołania zestawu SDK. Przykładami aplikacji są: Web Sites, botów, Virtual lub Mixed Reality, Desktop i Mobile. 
 
-## <a name="how-is-cognitive-search-related-to-cognitive-services"></a>Jak działa wyszukiwanie poznawcze dotyczące Cognitive Services?
+## <a name="how-is-azure-cognitive-search-related-to-cognitive-services"></a>Jak usługa Azure Wyszukiwanie poznawcze związana z Cognitive Services?
 
-[Azure Search](../search/search-what-is-azure-search.md) używa Cognitive Services do udostępnienia tej funkcji. Cognitive Services są udostępniane w Azure Search za poorednictwem [wbudowanych umiejętności](../search/cognitive-search-predefined-skills.md) , które zawijają poszczególne interfejsy API. Możesz użyć bezpłatnego zasobu do przewodników, ale zaplanować tworzenie i dołączanie [zasobów](../search/cognitive-search-attach-cognitive-services.md) płatnych dla większych woluminów.
+[Azure wyszukiwanie poznawcze](../search/search-what-is-azure-search.md) to oddzielna usługa wyszukiwania w chmurze, która opcjonalnie używa Cognitive Services do dodawania obrazów i przetwarzania języka naturalnego do indeksowania obciążeń. Cognitive Services jest udostępniana w usłudze Azure Wyszukiwanie poznawcze za pomocą [wbudowanych umiejętności](../search/cognitive-search-predefined-skills.md) , które zawijają poszczególne interfejsy API. Możesz użyć bezpłatnego zasobu do przewodników, ale zaplanować tworzenie i dołączanie [zasobów](../search/cognitive-search-attach-cognitive-services.md) płatnych dla większych woluminów.
 
 ## <a name="how-can-you-use-cognitive-services"></a>Jak można używać Cognitive Services?
 
@@ -127,7 +127,7 @@ Każda usługa zawiera informacje o danych. Można łączyć usługi ze sobą w 
 
 Cognitive Services, które udostępniają eksportowane modele dla innych narzędzi uczenia maszynowego:
 
-|Usługa Cognitive Service|Informacje o modelu|
+|Usługa poznawcze|Informacje o modelu|
 |--|--|
 |[Custom Vision](./custom-vision-service/home.md)|[Export](./Custom-Vision-Service/export-model-python.md) for Tensorflow for Android, CoreML for IOS11, ONNX for Windows ml|
 
@@ -139,7 +139,7 @@ Cognitive Services, które udostępniają eksportowane modele dla innych narzęd
 ## <a name="next-steps"></a>Następne kroki
 
 * Utwórz konto usługi poznawczej w [Azure Portal](cognitive-services-apis-create-account.md) lub przy użyciu [interfejsu wiersza polecenia platformy Azure](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account-cli).
-* Dowiedz się [](authentication.md) , jak uwierzytelniać się w usłudze poznawczej.
+* Dowiedz się, jak [uwierzytelniać](authentication.md) się w usłudze poznawczej.
 * [Rejestrowanie diagnostyczne](diagnostic-logging.md) służy do identyfikowania problemów i debugowania. 
-* Wdróż usługę poznawczej w kontenerze platformy [](cognitive-services-container-support.md)Docker.
+* Wdróż usługę poznawczej w [kontenerze](cognitive-services-container-support.md)platformy Docker.
 * Bądź na bieżąco z [aktualizacjami usług](https://azure.microsoft.com/updates/?product=cognitive-services).

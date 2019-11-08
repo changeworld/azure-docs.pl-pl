@@ -6,6 +6,7 @@ documentationcenter: na
 author: v-miegge
 manager: dcscontentpm
 editor: ''
+tags: virtual-network
 ms.assetid: 1a3d1e84-f793-41b4-aa04-774a7e8f7719
 ms.service: virtual-network
 ms.devlang: na
@@ -14,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 08/28/2019
 ms.author: kaushika
-ms.openlocfilehash: 0898a65323957cbab4c2ab5278e9970cf0c16a90
-ms.sourcegitcommit: 3fa4384af35c64f6674f40e0d4128e1274083487
+ms.openlocfilehash: 1fddbe908ccebc1384dcccde0810366f1a6d5da7
+ms.sourcegitcommit: 018e3b40e212915ed7a77258ac2a8e3a660aaef8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/24/2019
-ms.locfileid: "71219238"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73796238"
 ---
 # <a name="troubleshoot-virtual-network-peering-issues"></a>Rozwiązywanie problemów dotyczących komunikacji równorzędnej sieci wirtualnych
 
@@ -66,11 +67,11 @@ Aby skonfigurować wirtualne sieci równorzędne dla sieci wirtualnych w różny
 
 ### <a name="for-a-site-to-site-connection-or-an-expressroute-connection"></a>Dla połączenia typu lokacja-lokacja lub połączenia ExpressRoute
 
-Wykonaj kroki opisane w temacie: [Skonfiguruj tranzyt bramy sieci VPN dla komunikacji równorzędnej sieci wirtualnej](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-peering-gateway-transit?toc=/azure/virtual-network/toc.json).
+Wykonaj kroki opisane w temacie: [Konfigurowanie tranzytu bramy sieci VPN dla komunikacji równorzędnej sieci wirtualnej](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-peering-gateway-transit?toc=/azure/virtual-network/toc.json).
 
 ### <a name="for-point-to-site-connections"></a>Dla połączeń punkt-lokacja
 
-1. Wykonaj kroki opisane w temacie: [Skonfiguruj tranzyt bramy sieci VPN dla komunikacji równorzędnej sieci wirtualnej](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-peering-gateway-transit?toc=/azure/virtual-network/toc.json).
+1. Wykonaj kroki opisane w temacie: [Konfigurowanie tranzytu bramy sieci VPN dla komunikacji równorzędnej sieci wirtualnej](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-peering-gateway-transit?toc=/azure/virtual-network/toc.json).
 2. Po nawiązaniu lub zmianie komunikacji równorzędnej sieci wirtualnej Pobierz i zainstaluj ponownie pakiet punkt-lokacja, aby klienci punkt-lokacja uzyskali zaktualizowane trasy do sieci wirtualnej szprych.
 
 ## <a name="configure-virtual-network-peering-with-hub-spoke-topology-virtual-network"></a>Konfigurowanie komunikacji równorzędnej sieci wirtualnej z siecią wirtualną topologii gwiazdy
@@ -126,7 +127,7 @@ Aby rozwiązać ten problem:
    1. Rozpocznij śledzenie sieci na docelowej maszynie wirtualnej. Dla systemu Windows można użyć **narzędzia Netsh**. W przypadku systemu Linux Użyj **TCPDump**.
    2. Uruchom **TcpPing** lub **PsPing** ze źródła do docelowego adresu IP.
 
-      Jest to przykład polecenia **TcpPing** :`tcping64.exe -t <destination VM address> 3389`
+      Jest to przykład polecenia **TcpPing** : `tcping64.exe -t <destination VM address> 3389`
 
    3. Po zakończeniu **TcpPing** Zatrzymaj śledzenie sieci w miejscu docelowym.
    4. Jeśli pakiety dotarły ze źródła, nie ma problemu z siecią. Aby zlokalizować problem z konfiguracją, należy przeanalizować zarówno zaporę maszyny wirtualnej, jak i aplikację nasłuchującą na tym porcie.
@@ -226,7 +227,7 @@ Aby uzyskać więcej informacji zobacz następujące artykuły:
 
 Aby rozwiązać ten problem, zobacz [Tworzenie komunikacji równorzędnej — interfejs wiersza polecenia platformy Azure](https://docs.microsoft.com/azure/virtual-network/create-peering-different-subscriptions#cli).
 
-### <a name="not-connected"></a>Nie połączono
+### <a name="not-connected"></a>Brak połączenia
 
 Aby rozwiązać ten problem, Usuń komunikację równorzędną z obu sieci wirtualnych, a następnie utwórz je ponownie.
 

@@ -1,18 +1,18 @@
 ---
 title: Tworzenie kopii zapasowej maszyny wirtualnej platformy Azure z ustawień maszyny wirtualnej za pomocą Azure Backup
-description: Dowiedz się, jak utworzyć kopię zapasową maszyny wirtualnej platformy Azure za pomocą usługi Azure Backup
+description: W tym artykule dowiesz się, jak utworzyć kopię zapasową pojedynczej maszyny wirtualnej platformy Azure lub wielu maszyn wirtualnych platformy Azure z usługą Azure Backup.
 author: dcurwin
 manager: carmonm
 ms.service: backup
 ms.topic: conceptual
 ms.date: 06/13/2019
 ms.author: dacurwin
-ms.openlocfilehash: cfbec94a2922995eed546d526c1f469e2ea54118
-ms.sourcegitcommit: b1c94635078a53eb558d0eb276a5faca1020f835
+ms.openlocfilehash: 232c027ef60a031df53f2439586a0ae459ab67d5
+ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/27/2019
-ms.locfileid: "72969046"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73747239"
 ---
 # <a name="back-up-an-azure-vm-from-the-vm-settings"></a>Tworzenie kopii zapasowej maszyny wirtualnej platformy Azure z ustawień maszyny wirtualnej
 
@@ -35,7 +35,7 @@ Aby utworzyć kopię zapasową maszyn wirtualnych platformy Azure, Azure Backup 
 
 ## <a name="back-up-from-azure-vm-settings"></a>Tworzenie kopii zapasowej z ustawień maszyny wirtualnej platformy Azure
 
-1. Zaloguj się do [portalu Azure](https://portal.azure.com/).
+1. Zaloguj się w witrynie [Azure Portal](https://portal.azure.com/).
 2. Kliknij pozycję **wszystkie usługi** i w obszarze filtr wpisz polecenie **maszyny wirtualne**, a następnie kliknij pozycję **maszyny wirtualne**.
 3. Z listy maszyn wirtualnych wybierz maszynę wirtualną, dla której chcesz utworzyć kopię zapasową.
 4. W menu maszyny wirtualnej kliknij pozycję **kopia zapasowa**.

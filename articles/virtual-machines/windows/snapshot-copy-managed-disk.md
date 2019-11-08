@@ -14,12 +14,12 @@ ms.topic: article
 ms.date: 10/08/2018
 ms.author: rogarana
 ms.subservice: disks
-ms.openlocfilehash: 76110fa04441540875e65c8bc056fc21555c5db6
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 74ef55fe9a0a6603bd43d68b6b8557dce1bca921
+ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70102279"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73749151"
 ---
 # <a name="create-a-snapshot"></a>Tworzenie migawki
 
@@ -43,7 +43,7 @@ Jeśli zamierzasz utworzyć nową maszynę wirtualną przy użyciu migawki, zale
 
 Poniższe kroki pokazują, jak skopiować dysk VHD, utworzyć konfigurację migawki i wykonać migawkę dysku za pomocą polecenia cmdlet [New-AzSnapshot](https://docs.microsoft.com/powershell/module/az.compute/new-azsnapshot) . 
 
-[!INCLUDE [updated-for-az.md](../../../includes/updated-for-az.md)]
+ 
 
 1. Ustaw niektóre parametry: 
 
@@ -72,7 +72,7 @@ Poniższe kroki pokazują, jak skopiować dysk VHD, utworzyć konfigurację miga
    ```
    
    > [!NOTE]
-   > Jeśli chcesz przechowywać migawkę w magazynie odpornym na strefy, utwórz ją w regionie, który obsługuje [strefy dostępności](../../availability-zones/az-overview.md) i Uwzględnij `-SkuName Standard_ZRS` parametr.   
+   > Jeśli chcesz przechowywać migawkę w magazynie odpornym na strefy, utwórz ją w regionie, który obsługuje [strefy dostępności](../../availability-zones/az-overview.md) i Uwzględnij parametr `-SkuName Standard_ZRS`.   
    
 4. Zrób migawkę:
 

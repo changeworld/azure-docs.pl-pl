@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 09/26/2019
 ms.author: diberry
 ms.custom: seodec18
-ms.openlocfilehash: 51d21dca1d8a5223e67cb7ea8489800989cff55c
-ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
+ms.openlocfilehash: 7e98fd089ce8ec1285232840a40bb42ac5b81446
+ms.sourcegitcommit: 018e3b40e212915ed7a77258ac2a8e3a660aaef8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/08/2019
-ms.locfileid: "72026033"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73795440"
 ---
 # <a name="troubleshooting-for-qna-maker"></a>Rozwiązywanie problemów dotyczących QnA Maker
 
@@ -121,9 +121,9 @@ Odśwież usługę App Service, gdy ikona przestroga znajduje się obok wartośc
 
 ### <a name="i-deleted-my-existing-search-service-how-can-i-fix-this"></a>Usunięto istniejącą usługę wyszukiwania. Jak można to naprawić?
 
-Jeśli usuniesz indeks Azure Search, operacja jest końcowa i nie będzie można odzyskać indeksu. 
+Jeśli usuniesz indeks usługi Azure Wyszukiwanie poznawcze, operacja jest końcowa i nie będzie można odzyskać indeksu. 
 
-### <a name="i-deleted-my-testkb-index-in-my-search-service-how-can-i-fix-this"></a>Usunięto indeks `testkb` w usłudze wyszukiwania. Jak można to naprawić? 
+### <a name="i-deleted-my-testkb-index-in-my-search-service-how-can-i-fix-this"></a>Mój indeks `testkb` został usunięty w usłudze wyszukiwania. Jak można to naprawić? 
 
 Nie można odzyskać starych danych. Utwórz nowy zasób QnA Maker i ponownie utwórz bazę wiedzy.
 
@@ -131,15 +131,15 @@ Nie można odzyskać starych danych. Utwórz nowy zasób QnA Maker i ponownie ut
 
 Odśwież klucze punktów końcowych, jeśli podejrzewasz, że zostały naruszone.
 
-### <a name="can-i-use-the-same-azure-search-resource-for-knowledge-bases-using-multiple-languages"></a>Czy można używać tego samego zasobu Azure Search dla baz wiedzy przy użyciu wielu języków?
+### <a name="can-i-use-the-same-azure-cognitive-search-resource-for-knowledge-bases-using-multiple-languages"></a>Czy można używać tego samego zasobu Wyszukiwanie poznawcze platformy Azure dla baz wiedzy przy użyciu wielu języków?
 
 Aby korzystać z wielu języków i wielu baz wiedzy, użytkownik musi utworzyć zasób QnA Maker dla każdego języka. Spowoduje to utworzenie oddzielnej usługi Azure Search dla każdego języka. Mieszanie różnych baz wiedzy w ramach jednej usługi Azure Search spowoduje spadek wydajności wyników.
 
-### <a name="how-can-i-change-the-name-of-the-azure-search-resource-used-by-qna-maker"></a>Jak mogę zmienić nazwę zasobu Azure Search używanego przez QnA Maker?
+### <a name="how-can-i-change-the-name-of-the-azure-cognitive-search-resource-used-by-qna-maker"></a>Jak mogę zmienić nazwę zasobu usługi Azure Wyszukiwanie poznawcze używanego przez QnA Maker?
 
-Nazwa zasobu Azure Search to QnA Maker nazwa zasobu z niektórymi losowymi literami dołączanymi na końcu. Dzięki temu trudno jest rozróżnić wiele zasobów wyszukiwania dla QnA Maker. Utwórz oddzielną usługę Azure Search (nazywaj ją w sposób, w jaki chcesz) i połącz ją z usługą QnA. Kroki są podobne do kroków, które należy wykonać, aby [uaktualnić usługę Azure Search](How-To/set-up-qnamaker-service-azure.md#upgrade-the-azure-search-service).
+Nazwa zasobu usługi Azure Wyszukiwanie poznawcze to nazwa zasobu QnA Maker z kilkoma losowymi literami dołączanymi na końcu. Dzięki temu trudno jest rozróżnić wiele zasobów wyszukiwania dla QnA Maker. Utwórz oddzielną usługę wyszukiwania (nazywaną w pożądany sposób) i połącz ją z usługą QnA. Kroki są podobne do kroków, które należy wykonać, aby [uaktualnić usługę Azure Search](How-To/set-up-qnamaker-service-azure.md#upgrade-the-azure-cognitive-search-service).
 
-### <a name="when-qna-maker-returns-runtime-core-is-not-initialized-how-do-i-fix-it"></a>Gdy QnA Maker zwraca `Runtime core is not initialized,` jak rozwiązać ten problem?
+### <a name="when-qna-maker-returns-runtime-core-is-not-initialized-how-do-i-fix-it"></a>Kiedy QnA Maker zwraca `Runtime core is not initialized,` jak rozwiązać ten problem?
 
 Miejsce na dysku dla usługi App Service może być pełne. Procedura naprawy miejsca na dysku:
 

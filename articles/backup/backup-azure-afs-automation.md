@@ -1,6 +1,6 @@
 ---
 title: Tworzenie kopii zapasowych i przywracanie Azure Files przy użyciu Azure Backup i programu PowerShell
-description: Tworzenie kopii zapasowych i przywracanie Azure Files przy użyciu Azure Backup i programu PowerShell.
+description: W tym artykule dowiesz się, jak utworzyć kopię zapasową i przywrócić Azure Files przy użyciu usługi Azure Backup i programu PowerShell.
 author: dcurwin
 manager: carmonm
 ms.service: backup
@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 08/20/2019
 ms.author: dacurwin
 ms.reviewer: pullabhk
-ms.openlocfilehash: bfaecc5fe9fbbd68ba0f138b7b40b2507d729635
-ms.sourcegitcommit: b1c94635078a53eb558d0eb276a5faca1020f835
+ms.openlocfilehash: 491e27f85d00ce512995a63e43b9e248798e5d0f
+ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/27/2019
-ms.locfileid: "72968634"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73747631"
 ---
 # <a name="back-up-and-restore-azure-files-with-powershell"></a>Tworzenie kopii zapasowych i przywracanie Azure Files przy użyciu programu PowerShell
 
@@ -22,6 +22,7 @@ W tym artykule opisano sposób użycia Azure PowerShell do tworzenia kopii zapas
 W tym samouczku wyjaśniono:
 
 > [!div class="checklist"]
+>
 > * Skonfiguruj program PowerShell i zarejestruj dostawcę usługi Azure Recovery Services.
 > * Utwórz magazyn usługi Recovery Services.
 > * Skonfiguruj kopię zapasową udziału plików platformy Azure.
@@ -87,7 +88,7 @@ Skonfiguruj program PowerShell w następujący sposób:
 
 9. W danych wyjściowych polecenia Sprawdź, czy **RegistrationState** zmiany zostały **zarejestrowane**. Jeśli nie, uruchom ponownie polecenie cmdlet **register-AzResourceProvider** .
 
-## <a name="create-a-recovery-services-vault"></a>Tworzenie magazynu usługi Recovery Services
+## <a name="create-a-recovery-services-vault"></a>Tworzenie magazynu Usług odzyskiwania
 
 Magazyn Recovery Services jest zasobem Menedżer zasobów, dlatego należy umieścić go w grupie zasobów. Można użyć istniejącej grupy zasobów lub można utworzyć grupę zasobów za pomocą polecenia cmdlet **New-AzResourceGroup** . Podczas tworzenia grupy zasobów należy określić nazwę i lokalizację grupy zasobów.
 

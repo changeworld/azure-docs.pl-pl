@@ -1,7 +1,7 @@
 ---
 title: Konfigurowanie usługi QnA Maker — QnA Maker
 titleSuffix: Azure Cognitive Services
-description: Przed utworzeniem żadnych baz wiedzy usługi QnA Maker, należy najpierw skonfigurować usługa QnA Maker na platformie Azure. Każda osoba mająca autoryzacji do tworzenia nowych zasobów w ramach subskrypcji można skonfigurować usługę QnA Maker.
+description: Przed utworzeniem jakichkolwiek QnA Maker baz wiedzy należy najpierw skonfigurować usługę QnA Maker na platformie Azure. Każda osoba z autoryzacją do tworzenia nowych zasobów w ramach subskrypcji może skonfigurować usługę QnA Maker.
 services: cognitive-services
 author: diberry
 manager: nitinme
@@ -11,16 +11,16 @@ ms.topic: conceptual
 ms.date: 09/13/2019
 ms.author: diberry
 ms.custom: seodec18
-ms.openlocfilehash: a2b467eed010edbb842d536bd8f6e3f4107fcea8
-ms.sourcegitcommit: 909ca340773b7b6db87d3fb60d1978136d2a96b0
+ms.openlocfilehash: 6d52062561e3f08a214f3e191706583edc844786
+ms.sourcegitcommit: 018e3b40e212915ed7a77258ac2a8e3a660aaef8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/13/2019
-ms.locfileid: "70984361"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73794211"
 ---
 # <a name="manage-qna-maker-resources"></a>Zarządzanie zasobami QnA Maker
 
-Przed utworzeniem żadnych baz wiedzy usługi QnA Maker, należy najpierw skonfigurować usługa QnA Maker na platformie Azure. Każda osoba mająca autoryzacji do tworzenia nowych zasobów w ramach subskrypcji można skonfigurować usługę QnA Maker.
+Przed utworzeniem jakichkolwiek QnA Maker baz wiedzy należy najpierw skonfigurować usługę QnA Maker na platformie Azure. Każda osoba z autoryzacją do tworzenia nowych zasobów w ramach subskrypcji może skonfigurować usługę QnA Maker.
 
 ## <a name="types-of-keys-in-qna-maker"></a>Typy kluczy w QnA Maker
 
@@ -28,12 +28,12 @@ Usługa QnA Maker obsługuje dwa rodzaje kluczy: **klucze subskrypcji** i **kluc
 
 ![Zarządzanie kluczami](../media/qnamaker-how-to-key-management/key-management.png)
 
-|Name|Location|Cel|
+|Nazwa|Lokalizacja|Przeznaczenie|
 |--|--|--|
 |Klucz subskrypcji|[Azure Portal](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)|Te klucze są używane w celu uzyskania dostępu do [interfejsów API usługi zarządzania QNA Maker](https://go.microsoft.com/fwlink/?linkid=2092179). Te interfejsy API umożliwiają edytowanie pytań i odpowiedzi w bazie wiedzy oraz publikowanie bazy wiedzy. Te klucze są tworzone podczas tworzenia nowej usługi QnA Maker.<br><br>Znajdź te klucze w zasobie **Cognitive Services** na stronie **klucze** .|
 |Klucz punktu końcowego|[Portal QnA Maker](http://www.qnamaker.ai)|Te klucze są używane w celu uzyskania dostępu do opublikowanego punktu końcowego bazy wiedzy w celu uzyskania odpowiedzi na pytanie użytkownika. Ten punkt końcowy jest zazwyczaj używany w bot rozmowy lub w kodzie aplikacji klienta, który nawiązuje połączenie z usługą QnA Maker. Te klucze są tworzone podczas publikowania bazy wiedzy QnA Maker.<br><br>Te klucze znajdują się na stronie **ustawień usługi** . Znajdź Tę stronę w menu użytkownika w prawym górnym rogu strony z menu rozwijanego.|
 
-## <a name="create-a-new-qna-maker-service"></a>Utwórz nową usługę QnA Maker
+## <a name="create-a-new-qna-maker-service"></a>Tworzenie nowej usługi QnA Maker
 
 Ta procedura służy do tworzenia zasobów platformy Azure wymaganych do zarządzania zawartością bazy wiedzy. Po wykonaniu tych kroków znajdują się klucze _subskrypcji_ na stronie **klucze** dla zasobu w Azure Portal.
 
@@ -41,7 +41,7 @@ Ta procedura służy do tworzenia zasobów platformy Azure wymaganych do zarząd
 
 1. Wybierz pozycję **Utwórz** po przeczytaniu warunków i postanowień:
 
-    ![Utwórz nową usługę QnA Maker](../media/qnamaker-how-to-setup-service/create-new-resource-button.png)
+    ![Tworzenie nowej usługi QnA Maker](../media/qnamaker-how-to-setup-service/create-new-resource-button.png)
 
 1. W **QNA Maker**wybierz odpowiednie warstwy i regiony:
 
@@ -52,16 +52,16 @@ Ta procedura służy do tworzenia zasobów platformy Azure wymaganych do zarząd
     * Wybierz **warstwę cenową** dla usług zarządzania QNA Maker (Portal i interfejsy API zarządzania). Zobacz [więcej szczegółowych informacji o cenach jednostki SKU](https://aka.ms/qnamaker-pricing).
     * Utwórz nową **grupę zasobów** (zalecane) lub Użyj istniejącej grupy, w której ma zostać wdrożony ten zasób QNA Maker. QnA Maker tworzy kilka zasobów platformy Azure. Podczas tworzenia grupy zasobów do przechowywania tych zasobów można łatwo znajdować i usuwać te zasoby oraz nimi zarządzać według nazwy grupy zasobów.
     * Wybierz **lokalizację grupy zasobów**.
-    * Wybierz **warstwa cenowa wyszukiwania** usługi Azure Search. Jeśli opcja warstwy Bezpłatna jest niedostępna (jest wyszarzona), oznacza to, że masz już bezpłatną warstwę Azure Search wdrożoną w ramach subskrypcji. W takim przypadku należy zacząć od warstwy Azure Search podstawowa. Zobacz [szczegóły cennika Azure Search](https://azure.microsoft.com/pricing/details/search/).
-    * Wybierz **lokalizację wyszukiwania** , w której mają zostać wdrożone Azure Search dane. Ograniczenia dotyczące tego, gdzie muszą być przechowywane dane klienta, ułatwiają określenie lokalizacji wybranej dla Azure Search.
+    * Wybierz **warstwę cenową wyszukiwania** usługi Azure wyszukiwanie poznawcze. Jeśli opcja warstwy Bezpłatna jest niedostępna (jest wyszarzona), oznacza to, że masz już bezpłatną usługę wdrożoną w ramach subskrypcji. W takim przypadku należy zacząć od warstwy Podstawowa. Zobacz [szczegóły cennika usługi Azure wyszukiwanie poznawcze](https://azure.microsoft.com/pricing/details/search/).
+    * Wybierz **lokalizację wyszukiwania** , w której mają zostać wdrożone indeksy wyszukiwanie poznawcze platformy Azure. Ograniczenia dotyczące lokalizacji, w której dane klienta muszą być przechowywane, ułatwiają określenie wybranej opcji Wyszukiwanie poznawcze platformy Azure.
     * W polu **Nazwa aplikacji** wprowadź nazwę wystąpienia Azure App Service.
-    * Domyślnie App Service domyślnie warstwą Standard (S1). Plan można zmienić po utworzeniu. Dowiedz się więcej o [cenach App Service](https://azure.microsoft.com/pricing/details/app-service/).
+    * Domyślnie App Service domyślnie warstwą Standard (S1). Plan można zmienić po jego utworzeniu. Dowiedz się więcej o [cenach App Service](https://azure.microsoft.com/pricing/details/app-service/).
     * Wybierz **lokalizację witryny sieci Web** , w której zostanie wdrożona App Service.
 
         > [!NOTE]
         > **Lokalizacja wyszukiwania** może się różnić od **lokalizacji witryny sieci Web**.
 
-    * Zdecyduj, czy chcesz włączyć **Application Insights**. Jeśli **usługi Application Insights** jest włączona, narzędzie QnA Maker gromadzi dane telemetryczne w ruchu, dzienniki czatu i błędów.
+    * Zdecyduj, czy chcesz włączyć **Application Insights**. Jeśli **Application Insights** jest włączona, QNA Maker zbiera dane telemetryczne dotyczące ruchu, dzienników rozmowy i błędów.
     * Wybierz **lokalizację usługi App Insights** , w której zostanie wdrożony zasób Application Insights.
     * Aby uzyskać środki oszczędnościowe, możesz [udostępnić](#share-existing-services-with-qna-maker) kilka zasobów platformy Azure utworzonych dla QNA Maker. 
 
@@ -69,7 +69,7 @@ Ta procedura służy do tworzenia zasobów platformy Azure wymaganych do zarząd
 
 1. Po zakończeniu wdrażania zostaną wyświetlone następujące zasoby utworzone w ramach subskrypcji:
 
-   ![Nowa usługa QnA Maker utworzony zasób](../media/qnamaker-how-to-setup-service/resources-created.png)
+   ![Zasób utworzył nową usługę QnA Maker](../media/qnamaker-how-to-setup-service/resources-created.png)
 
     Zasób z typem _Cognitive Services_ ma Twoje klucze _subskrypcji_ .
 
@@ -79,7 +79,7 @@ Klucze subskrypcji można wyświetlić i zresetować z poziomu Azure Portal, w k
 
 1. Przejdź do zasobu QnA Maker w Azure Portal i wybierz zasób, który ma _Cognitive Services_ typ:
 
-    ![Lista zasobów usługi QnA Maker](../media/qnamaker-how-to-key-management/qnamaker-resource-list.png)
+    ![Lista zasobów QnA Maker](../media/qnamaker-how-to-key-management/qnamaker-resource-list.png)
 
 2. Przejdź do **klawiszy**:
 
@@ -89,7 +89,7 @@ Klucze subskrypcji można wyświetlić i zresetować z poziomu Azure Portal, w k
 
 Punkt końcowy znajduje się w tym samym regionie, w którym znajduje się zasób, ponieważ klucze punktów końcowych są używane do wywołania bazy wiedzy.
 
-Klucze punkt końcowy, można zarządzać przy użyciu [portalu narzędzia QnA Maker](https://qnamaker.ai).
+Kluczami punktów końcowych można zarządzać z poziomu [portalu QNA Maker](https://qnamaker.ai).
 
 1. Zaloguj się do [portalu QNA Maker](https://qnamaker.ai), przejdź do swojego profilu, a następnie wybierz pozycję **Ustawienia usługi**:
 
@@ -106,13 +106,13 @@ Klucze punkt końcowy, można zarządzać przy użyciu [portalu narzędzia QnA M
 
 QnA Maker tworzy kilka zasobów platformy Azure. Aby ograniczyć zarządzanie i korzystać z zalet udostępniania kosztów, Skorzystaj z poniższej tabeli, aby zrozumieć, co można i czego nie można udostępnić:
 
-|Usługa|Udostępnij|Reason|
+|Usługa|Udostępnianie|Przyczyna|
 |--|--|--|
 |Cognitive Services|X|Niemożliwa przez projekt|
 |Plan usługi App Service|✔|Stałe miejsce na dysku przydzielono dla planu App Service. Jeśli inne aplikacje, które współużytkują ten sam plan App Service, użyją znacznego miejsca na dysku, wystąpienie App Service QnAMaker napotka problemy.|
 |App Service|X|Niemożliwa przez projekt|
 |Application Insights|✔|Mogą być udostępniane|
-|Usługa wyszukiwania|✔|1. `testkb` jest zarezerwowaną nazwą usługi QnAMaker. nie może być używana przez inne osoby.<br>2. Mapa synonimów o nazwie `synonym-map` jest zarezerwowana dla usługi QnAMaker.<br>3. Liczba opublikowanych baz wiedzy jest ograniczona przez warstwę usługi wyszukiwania. Jeśli dostępne są wolne indeksy, można z nich korzystać inne usługi.|
+|Search Service|✔|1. `testkb` jest zarezerwowaną nazwą usługi QnAMaker. nie mogą być używane przez inne osoby.<br>2. Mapa synonimów o nazwie `synonym-map` jest zarezerwowana dla usługi QnAMaker.<br>3. liczba opublikowanych baz wiedzy jest ograniczona przez warstwę usługi wyszukiwania. Jeśli dostępne są wolne indeksy, można z nich korzystać inne usługi.|
 
 Dowiedz się więcej na temat [usługi App Service](../../../app-service/index.yml) i [usługi wyszukiwania](../../../search/index.yml).
 
@@ -124,11 +124,11 @@ Jeśli utworzysz usługę QnA za pomocą szablonów Azure Resource Manager, moż
 
 ## <a name="upgrade-qna-maker"></a>QnA Maker uaktualniania
 
-|Uaktualnienie|Reason|
+|Uaktualnienie|Przyczyna|
 |--|--|
 |[Uaktualnij](#upgrade-qna-maker-sku) Jednostka SKU zarządzania QnA Maker|Chcesz uzyskać więcej pytań i odpowiedzi w bazie wiedzy.|
 |[Uaktualnij](#upgrade-app-service) Jednostka SKU App Service|Baza wiedzy musi obtworzyć więcej żądań z aplikacji klienckiej, takich jak rozmowa bot.|
-|[Uaktualnij](#upgrade-the-azure-search-service) Usługa Azure Search|Planowane jest posiadanie wielu baz wiedzy.|
+|[Uaktualnij](#upgrade-the-azure-cognitive-search-service) Usługa Wyszukiwanie poznawcze platformy Azure|Planowane jest posiadanie wielu baz wiedzy.|
 
 
 ### <a name="upgrade-qna-maker-sku"></a>Uaktualnij QnA Maker jednostki SKU
@@ -145,7 +145,7 @@ Aby uaktualnić jednostkę SKU zarządzania QnA Maker:
 
     ![Cennik QnA Maker](../media/qnamaker-how-to-upgrade-qnamaker/qnamaker-pricing-page.png)
 
-### <a name="upgrade-app-service"></a>Uaktualnij usługę App Service
+### <a name="upgrade-app-service"></a>App Service uaktualniania
 
  Gdy baza wiedzy musi obpracować więcej żądań z aplikacji klienckiej, należy uaktualnić warstwę cenową App Service.
 
@@ -155,9 +155,9 @@ Przejdź do zasobu App Service w Azure Portal i wybierz opcję **Skaluj w górę
 
 ![QnA Maker skalowanie App Service](../media/qnamaker-how-to-upgrade-qnamaker/qnamaker-appservice-scale.png)
 
-### <a name="upgrade-the-azure-search-service"></a>Uaktualnianie usługi Azure Search
+### <a name="upgrade-the-azure-cognitive-search-service"></a>Uaktualnianie usługi Azure Wyszukiwanie poznawcze
 
-Jeśli planujesz posiadanie wielu baz wiedzy, Uaktualnij warstwę cenową usługi Azure Search Service.
+Jeśli planujesz posiadanie wielu baz wiedzy, Uaktualnij warstwę cenową usługi Azure Wyszukiwanie poznawcze Service.
 
 Obecnie nie można przeprowadzić uaktualnienia w miejscu jednostki SKU usługi Azure Search. Można jednak utworzyć nowy zasób usługi Azure Search z odpowiednią jednostką SKU, przywrócić dane do nowego zasobu, a następnie połączyć je z stosem QnA Maker. W tym celu wykonaj następujące kroki:
 
@@ -185,13 +185,13 @@ Obecnie nie można przeprowadzić uaktualnienia w miejscu jednostki SKU usługi 
 
 ## <a name="get-the-latest-runtime-updates"></a>Pobierz najnowsze aktualizacje środowiska uruchomieniowego
 
-Środowisko uruchomieniowe QnAMaker jest częścią wystąpienia Azure App Service, które jest wdrażane podczas [tworzenia usługi QnAMaker](./set-up-qnamaker-service-azure.md) w Azure Portal. Aktualizacje są okresowo wprowadzane do środowiska uruchomieniowego. Wystąpienie App Service QnA Maker jest w trybie aktualizacji z kwietnia 2019 (wersja 5 +). Ta aktualizacja została zaprojektowana tak, aby zadbać o brak przestojów podczas uaktualniania.
+Środowisko uruchomieniowe QnAMaker jest częścią wystąpienia Azure App Service, które jest wdrażane podczas [tworzenia usługi QnAMaker](./set-up-qnamaker-service-azure.md) w Azure Portal. Aktualizacje są wykonywane okresowo dla środowiska uruchomieniowego. Wystąpienie App Service QnA Maker jest w trybie aktualizacji z kwietnia 2019 (wersja 5 +). Ta aktualizacja została zaprojektowana tak, aby zadbać o brak przestojów podczas uaktualniania.
 
 Bieżącą wersję można sprawdzić pod adresem https://www.qnamaker.ai/UserSettings. Jeśli wersja jest starsza niż wersja 5. x, należy ponownie uruchomić App Service, aby zastosować najnowsze aktualizacje:
 
 1. Przejdź do usługi QnAMaker (Grupa zasobów) w [Azure Portal](https://portal.azure.com).
 
-    ![Grupa zasobów platformy QnAMaker Azure](../media/qnamaker-how-to-troubleshoot/qnamaker-azure-resourcegroup.png)
+    ![QnAMaker grupę zasobów platformy Azure](../media/qnamaker-how-to-troubleshoot/qnamaker-azure-resourcegroup.png)
 
 1. Wybierz wystąpienie App Service i Otwórz sekcję **Przegląd** .
 

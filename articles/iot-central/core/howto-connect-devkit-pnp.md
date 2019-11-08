@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: jeffya
-ms.openlocfilehash: b7d2e1b08653cb8023ef6a5190ab53ecc3d568a6
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: de394a98f78b0bdb7cdf090de5c052cc761aa92d
+ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72951512"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73748591"
 ---
 # <a name="connect-an-mxchip-iot-devkit-device-to-your-azure-iot-central-application"></a>Łączenie urządzenia zestawu deweloperskiego IoT DevKit z aplikacją usługi Azure IoT Central
 
@@ -29,12 +29,12 @@ W tym artykule poznasz następujące informacje:
 
 Aby wykonać kroki opisane w tym artykule, potrzebne są następujące zasoby:
 
-1. [Urządzenie DevKit](https://aka.ms/iot-devkit-purchase).
-1. Aplikacja IoT Central utworzona na podstawie szablonu **aplikacji w wersji zapoznawczej** . Możesz wykonać kroki opisane w temacie [Tworzenie aplikacji IoT Plug and Play](./quick-deploy-iot-central-pnp.md?toc=/azure/iot-central-pnp/toc.json&bc=/azure/iot-central-pnp/breadcrumb/toc.json).
+- [Urządzenie DevKit](https://aka.ms/iot-devkit-purchase).
+- Aplikacja IoT Central utworzona na podstawie szablonu **aplikacji w wersji zapoznawczej** . Możesz wykonać kroki opisane w temacie [Tworzenie aplikacji IoT Plug and Play](./quick-deploy-iot-central-pnp.md?toc=/azure/iot-central-pnp/toc.json&bc=/azure/iot-central-pnp/breadcrumb/toc.json).
 
 ## <a name="get-device-connection-details"></a>Pobierz szczegóły połączenia z urządzeniem
 
-W aplikacji IoT Central platformy Azure wybierz kartę **Administracja** i wybierz pozycję **połączenie z urządzeniem**. Zanotuj **zakres identyfikatorów** i **klucz podstawowy**.
+W aplikacji IoT Central platformy Azure wybierz kartę **Administracja** i wybierz pozycję **połączenie z urządzeniem**. Zanotuj **Identyfikator zakresu** i **klucz podstawowy** (w linku **Wyświetl klucze** ). Upewnij się, że **Funkcja autozatwierdzania** jest włączona.
 
 ![Szczegóły połączenia z grupą urządzeń](media/howto-connect-devkit-pnp/device-group-connection-details.png)
 
@@ -61,7 +61,7 @@ W aplikacji IoT Central platformy Azure wybierz kartę **Administracja** i wybie
 
     - Nazwa sieci Wi-Fi (SSID).
     - Hasło sieciowe sieci Wi-Fi.
-    - Szczegóły połączenia: **Identyfikator urządzenia** , który można wybrać, oraz **zakres identyfikatorów** i **klucz podstawowy grupy SAS** zostały wcześniej wykonane.
+    - Szczegóły połączenia: **Identyfikator urządzenia** , który można wybrać, oraz klucz podstawowy **identyfikatora zakresu** i **sygnatury dostępu współdzielonego grupy** , które zostały wcześniej wykonane.
 
     > [!NOTE]
     > Obecnie DevKit IoT może łączyć się tylko z 2,4 GHz Wi-Fi, 5 GHz nie jest obsługiwany z powodu ograniczeń sprzętowych.
@@ -82,11 +82,11 @@ Ten krok umożliwia wyświetlenie danych telemetrycznych w aplikacji IoT Central
 
 W aplikacji IoT Central wybierz kartę **urządzenia** , wybierz urządzenie, które zostało dodane. Na karcie **Omówienie** można wyświetlić dane telemetryczne z urządzenia DevKit:
 
-   ![Omówienie urządzenia IoT Central](media/howto-connect-devkit-pnp/mxchip-overview-page.png)
+![Omówienie urządzenia IoT Central](media/howto-connect-devkit-pnp/mxchip-overview-page.png)
 
 ## <a name="review-the-code"></a>Przeglądanie kodu
 
-Aby przejrzeć kod lub zmodyfikować go i skompilować, przejdź do [przykładów kodu](https://docs.microsoft.com/samples/azure-samples/mxchip-iot-devkit-pnp/sample/).
+Aby przejrzeć kod lub zmodyfikować go i skompilować, przejdź do repozytorium usługi [zestawu deweloperskiego IoT DevKit przykładowego kodu](https://github.com/MXCHIP/IoTDevKit/tree/master/pnp)w usłudze GitHub.
 
 ## <a name="next-steps"></a>Następne kroki
 

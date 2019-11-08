@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 06/12/2018
 ms.author: robreed
-ms.openlocfilehash: e2faf444aa411f0e60f1b5c7b1f811abc2f6b63a
-ms.sourcegitcommit: 42748f80351b336b7a5b6335786096da49febf6a
+ms.openlocfilehash: 1825f9f0f5d525c0129341d800ca5949136ae633
+ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/09/2019
-ms.locfileid: "72176688"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73750074"
 ---
 # <a name="dsc-extension-for-linux-microsoftostcextensionsdscforlinux"></a>Rozszerzenie DSC dla systemu Linux (Microsoft. OSTCExtensions. DSCForLinux)
 
@@ -35,7 +35,7 @@ Rozszerzenie DSCForLinux jest publikowane i obsługiwane przez firmę Microsoft.
 - Instalowanie niestandardowych modułów DSC na maszynie wirtualnej z systemem Linux (Install ExtensionAction)
 - Usuwanie niestandardowych modułów DSC do maszyny wirtualnej z systemem Linux (Usuń ExtensionAction)
 
-[!INCLUDE [updated-for-az.md](../../../includes/updated-for-az.md)]
+ 
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
@@ -64,7 +64,7 @@ Oto wszystkie obsługiwane parametry konfiguracji publicznej:
 * `NodeConfigurationName`: (opcjonalnie, String) nazwa konfiguracji węzła do zastosowania.
 * `RefreshFrequencyMins`: (opcjonalnie, int) określa, jak często (w minutach) próbuje uzyskać konfigurację z serwera ściągania. 
        Jeśli konfiguracja na serwerze ściągania różni się od bieżącej w węźle docelowym, zostanie ona skopiowana do oczekującego magazynu i zastosowana.
-* `ConfigurationMode`: (opcjonalnie, ciąg) określa sposób zastosowania konfiguracji przez DSC. Prawidłowe wartości to: ApplyOnly, ApplyAndMonitor, ApplyAndAutoCorrect.
+* `ConfigurationMode`: (opcjonalnie, ciąg) określa, jak Konfiguracja DSC powinna stosować konfigurację. Prawidłowe wartości to: ApplyOnly, ApplyAndMonitor, ApplyAndAutoCorrect.
 * `ConfigurationModeFrequencyMins`: (opcjonalnie, int) określa, jak często (w minutach) DSC zapewnia, że konfiguracja jest w żądanym stanie.
 
 > [!NOTE]
@@ -75,10 +75,10 @@ Oto wszystkie obsługiwane parametry konfiguracji publicznej:
 
 Poniżej przedstawiono wszystkie obsługiwane parametry konfiguracji chronionej:
 
-* `StorageAccountName`: (opcjonalnie, ciąg) nazwa konta magazynu, które zawiera plik
+* `StorageAccountName`: (opcjonalnie, String) nazwa konta magazynu, które zawiera plik
 * `StorageAccountKey`: (opcjonalnie, ciąg) klucz konta magazynu, który zawiera plik
-* `RegistrationUrl`: (opcjonalnie, ciąg) adres URL konta Azure Automation
-* `RegistrationKey`: (opcjonalny, ciąg) klucz dostępu konta Azure Automation
+* `RegistrationUrl`: (opcjonalnie, String) adres URL konta Azure Automation
+* `RegistrationKey`: (opcjonalny, String) klucz dostępu konta Azure Automation
 
 
 ## <a name="scenarios"></a>Scenariusze
@@ -288,7 +288,7 @@ Aby uzyskać więcej informacji na temat szablonu Azure Resource Manager, odwied
 ### <a name="21-using-azure-cliazure-cli"></a>2,1. Korzystanie z [**interfejsu wiersza polecenia platformy Azure**] [Azure-CLI]
 Przed wdrożeniem rozszerzenia DSCForLinux należy skonfigurować `public.json` i `protected.json`, zgodnie z różnymi scenariuszami w sekcji 3.
 
-#### <a name="211-classic"></a>pkt. Klasyczny
+#### <a name="211-classic"></a>pkt. Wdrożenie klasyczne
 Tryb klasyczny jest również nazywany trybem zarządzania usługami platformy Azure. Aby przełączyć się do niego, należy uruchomić:
 ```
 $ azure config mode asm

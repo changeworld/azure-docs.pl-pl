@@ -10,12 +10,12 @@ ms.subservice: text-analytics
 ms.topic: overview
 ms.date: 08/26/2019
 ms.author: aahi
-ms.openlocfilehash: 8c5df8461c74d48c0712ab1947e29813e7e1ea3f
-ms.sourcegitcommit: 94ee81a728f1d55d71827ea356ed9847943f7397
-ms.translationtype: MT
+ms.openlocfilehash: 3b616ac76d2b7fca0d83db2b17b0978bbb249e45
+ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/26/2019
-ms.locfileid: "70032674"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73742709"
 ---
 # <a name="what-is-the-text-analytics-api"></a>Czym jest interfejs API analizy tekstu?
 
@@ -25,7 +25,7 @@ Interfejs API jest częścią usług [Azure Cognitive Services](https://docs.mic
 
 > [!VIDEO https://channel9.msdn.com/Shows/AI-Show/Understanding-Text-using-Cognitive-Services/player]
 
-Analiza tekstu może oznaczać różne elementy, ale w Cognitive Services interfejs API analizy tekstu oferuje cztery typy analiz, jak opisano poniżej. Tych funkcji można używać z interfejsem [API REST](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-V2-1/)lub z biblioteką kliencką [dla platform .NET](quickstarts/csharp.md), [Python](quickstarts/python-sdk.md), [Node. js](quickstarts/nodejs-sdk.md), [go](quickstarts/go-sdk.md)lub [Ruby](quickstarts/ruby-sdk.md).
+Analiza tekstu może oznaczać różne elementy, ale w Cognitive Services interfejs API analizy tekstu oferuje cztery typy analiz, jak opisano poniżej. Tych funkcji można używać z [interfejsem API REST](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-V2-1/)lub z [biblioteką klienta](quickstarts/text-analytics-sdk.md)programu.
 
 ## <a name="sentiment-analysis"></a>Analiza tonacji
 Użyj [analizy tonacji](how-tos/text-analytics-how-to-sentiment-analysis.md) , aby dowiedzieć się, co klienci uważają za swoją markę lub temat, analizując nieprzetworzony tekst w celu uzyskania wskazówek dotyczących pozytywnych lub negatywnych tonacji. Ten interfejs API zwraca ocenę tonacji od 0 do 1 dla każdego dokumentu, przy czym 1 oznacza najbardziej pozytywną tonację.<br /> Modele analizy są wstępnie szkolone przy użyciu rozbudowanych technologii z zakresu treści tekstu oraz naturalnego języka firmy Microsoft. W przypadku [wybranych języków](text-analytics-supported-languages.md) interfejs API może przeanalizować i ocenić dowolny podany nieprzetworzony tekst, zwracając wyniki bezpośrednio do aplikacji wywołującej.
@@ -36,7 +36,7 @@ Automatycznie [Wyodrębniaj kluczowe frazy](how-tos/text-analytics-how-to-keywor
 ## <a name="language-detection"></a>Wykrywanie języka
 Możesz [wykryć język, w którym wprowadzany jest tekst wejściowy](how-tos/text-analytics-how-to-language-detection.md) , i zgłosić jeden kod języka dla każdego dokumentu przesłanego na żądanie w szerokim zakresie języków, wariantów, dialektach i niektórych językach regionalnych/kulturowych. Kod języka jest powiązany z oceną, co wskazuje siłę oceny.
 
-## <a name="named-entity-recognition"></a>Rozpoznawanie jednostek nazwanych
+## <a name="named-entity-recognition"></a>Rozpoznawanie jednostek znaku
 [Zidentyfikuj i Kategoryzuj jednostki](how-tos/text-analytics-how-to-entity-linking.md) w tekście jako osoby, miejsca, organizacje, daty/godziny, ilości, wartości procentowe, waluty i nie tylko. Dobrze znane jednostki są również rozpoznawane i łączone z większą ilością informacji w Internecie.
 
 ## <a name="use-containers"></a>Korzystanie z kontenerów
@@ -83,7 +83,7 @@ Ta sekcja została przeniesiona do oddzielnego artykułu, aby zapewnić lepszą 
 
 Wszystkie punkty końcowe interfejsu API analizy tekstu akceptują dane w postaci nieprzetworzonego tekstu. Aktualne ograniczenie to 5120 znaków dla każdego dokumentu; jeśli chcesz przeanalizować większe dokumenty, możesz podzielić je na mniejsze części.
 
-| Limit | Value |
+| Limit | Wartość |
 |------------------------|---------------|
 | Maksymalny rozmiar pojedynczego dokumentu | 5120 znaków, mierzone przy użyciu funkcji [`StringInfo.LengthInTextElements`](https://docs.microsoft.com/dotnet/api/system.globalization.stringinfo.lengthintextelements). |
 | Maksymalny rozmiar całego żądania | 1 MB |
@@ -110,10 +110,10 @@ Interfejs API analizy tekstu używa kodowania Unicode na potrzeby przedstawiania
 
 + [Utwórz zasób platformy Azure](../cognitive-services-apis-create-account.md) dla analiza tekstu, aby uzyskać klucz i punkt końcowy dla aplikacji.
 
-+ [Szybki Start](quickstarts/csharp.md) to przewodnik po wywołaniach interfejsu API REST napisanych w języku C#. Dowiedz się, jak przesyłać tekst, wybierać analizę oraz wyświetlać wyniki przy użyciu minimalnej ilości kodu. Jeśli wolisz, możesz zacząć korzystać z [przewodnika Szybki](quickstarts/python.md) Start dla języka Python.
++ [Szybki Start](quickstarts/text-analytics-sdk.md) to przewodnik po wywołaniach interfejsu API REST napisanych w języku C#. Dowiedz się, jak przesyłać tekst, wybierać analizę oraz wyświetlać wyniki przy użyciu minimalnej ilości kodu. Jeśli wolisz, możesz zacząć korzystać z [przewodnika Szybki](quickstarts/python.md) Start dla języka Python.
 
 + Aby uzyskać informacje o nowych wersjach i funkcjach [, zobacz co nowego w interfejs API analizy tekstu](whats-new.md) .
 
-+ Dig w nieco bardziej szczegółowym samouczku dotyczącym [analizy tonacji](https://docs.microsoft.com/azure/azure-databricks/databricks-sentiment-analysis-cognitive-services) przy użyciu Azure Databricks.
++ Dig w nieco bardziej szczegółowym [samouczku dotyczącym analizy tonacji](https://docs.microsoft.com/azure/azure-databricks/databricks-sentiment-analysis-cognitive-services) przy użyciu Azure Databricks.
 
 + Zapoznaj się z naszą listą wpisów w blogu i Dowiedz się więcej na temat korzystania z interfejs API analizy tekstu z innymi narzędziami i technologiami na naszej [stronie zawartości społeczności zewnętrznej &](text-analytics-resource-external-community.md).

@@ -1,6 +1,6 @@
 ---
 title: Używanie Azure Backup Server do tworzenia kopii zapasowych obciążeń na platformie Azure
-description: Użyj Azure Backup Server do ochrony lub tworzenia kopii zapasowych obciążeń do Azure Portal.
+description: W tym artykule dowiesz się, jak przygotować środowisko do ochrony i tworzenia kopii zapasowych obciążeń przy użyciu Microsoft Azure Backup Server (serwera usługi MAB).
 ms.reviewer: kasinh
 author: dcurwin
 manager: carmonm
@@ -8,16 +8,17 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 11/13/2018
 ms.author: dacurwin
-ms.openlocfilehash: 7a0f1f7dd79be250370fa97096a0cbf6dfc7f637
-ms.sourcegitcommit: 387da88b8262368c1b67fffea58fe881308db1c2
+ms.openlocfilehash: 789cc1d835024babb2482b2601503dbaf7247fc2
+ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/07/2019
-ms.locfileid: "71982852"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73747426"
 ---
 # <a name="install-and-upgrade-azure-backup-server"></a>Instalowanie i uaktualnianie Azure Backup Server
 
 > [!div class="op_single_selector"]
+>
 > * [Azure Backup Server](backup-azure-microsoft-azure-backup.md)
 > * [SCDPM](backup-azure-dpm-introduction.md)
 >
@@ -55,21 +56,21 @@ Ochrona obciążeń za pomocą Azure Backup Server ma wiele wszystkie szczegół
 
 Jeśli nie chcesz uruchamiać serwera podstawowego na platformie Azure, możesz uruchomić serwer programu na maszynie wirtualnej funkcji Hyper-V, maszynie wirtualnej VMware lub hoście fizycznym. Zalecane minimalne wymagania dotyczące sprzętu serwerowego są dwa rdzenie i 8 GB pamięci RAM. Obsługiwane systemy operacyjne są wymienione w poniższej tabeli:
 
-| System operacyjny | Platforma | Magazyn |
+| System operacyjny | Platforma | SKU |
 |:--- | --- |:--- |
-| System Windows Server 2019 |64-bitowe |Standard, Datacenter, Essentials |
-| Windows Server 2016 i najnowsze dodatki Service Pack |64-bitowe |Standard, Datacenter, Essentials  |
-
+| Windows Server 2019 |64-bitowa |Standard, Datacenter, Essentials |
+| Windows Server 2016 i najnowsze dodatki Service Pack |64-bitowa |Standard, Datacenter, Essentials  |
 
 Magazyn programu DPM można deduplikowany przy użyciu funkcji deduplikacji systemu Windows Server. Dowiedz się więcej na temat tego [, jak program DPM i Deduplikacja](https://technet.microsoft.com/library/dn891438.aspx) współpracują ze sobą w przypadku wdrożenia na maszynach wirtualnych funkcji Hyper
 
 > [!NOTE]
 > Azure Backup Server jest przeznaczony do działania na dedykowanym, wyznaczonym do tego celu serwerze. Nie można zainstalować Azure Backup Server na:
-> - Komputer z systemem jako kontroler domeny
-> - Komputer, na którym jest zainstalowana rola serwera aplikacji
-> - Komputer, który jest serwerem zarządzania programu System Center Operations Manager
-> - Komputer, na którym jest uruchomiony program Exchange Server
-> - Komputer, który jest węzłem klastra
+>
+> * Komputer działa jako kontroler domeny
+> * Komputer, na którym jest zainstalowana rola serwera aplikacji
+> * Komputer, który jest serwerem zarządzania programu System Center Operations Manager
+> * Komputer, na którym jest uruchomiony program Exchange Server
+> * Komputer, który jest węzłem klastra
 
 Zawsze dołączaj Azure Backup Server do domeny. Jeśli planujesz przeniesienie serwera do innej domeny, najpierw zainstaluj Azure Backup Server a następnie Przyłącz serwer do nowej domeny. Przeniesienie istniejącej maszyny Azure Backup Server do nowej domeny po wdrożeniu nie jest *obsługiwane*.
 
@@ -77,40 +78,40 @@ Niezależnie od tego, czy dane kopii zapasowej są wysyłane do platformy Azure,
 
 [!INCLUDE [backup-create-rs-vault.md](../../includes/backup-create-rs-vault.md)]
 
-### <a name="set-storage-replication"></a>Ustaw replikację magazynu
+### <a name="set-storage-replication"></a>Konfigurowanie replikacji magazynu
 
-Opcja replikacja magazynu pozwala wybrać magazyn Geograficznie nadmiarowy i Magazyn lokalnie nadmiarowy. Domyślnie magazyny Recovery Services korzystają z magazynu geograficznie nadmiarowego. Jeśli magazyn jest magazynem podstawowym, pozostaw opcję magazynu ustawioną na magazyn Geograficznie nadmiarowy. Wybierz pozycję Magazyn lokalnie nadmiarowy, jeśli chcesz skorzystać z tańszej opcji, która nie jest całkowicie trwała. Więcej informacji na temat opcji magazynu [geograficznie nadmiarowego](../storage/common/storage-redundancy-grs.md) i [lokalnie nadmiarowego](../storage/common/storage-redundancy-lrs.md) przechowywania można znaleźć w artykule [Omówienie replikacji usługi Azure Storage](../storage/common/storage-redundancy.md).
+Dla opcji replikacji magazynu można wybrać magazynowanie nadmiarowe geograficznie lub lokalnie. Domyślnie magazyny Recovery Services korzystają z magazynu geograficznie nadmiarowego. Jeśli magazyn jest magazynem podstawowym, pozostaw opcję magazynu ustawioną na magazyn Geograficznie nadmiarowy. Wybierz magazyn lokalnie nadmiarowy, jeśli chcesz skorzystać z tańszej, ale mniej trwałej opcji. Więcej informacji o opcjach magazynu [geograficznie nadmiarowego](../storage/common/storage-redundancy-grs.md) i [lokalnie nadmiarowego](../storage/common/storage-redundancy-lrs.md) można znaleźć w temacie [Azure Storage replication overview](../storage/common/storage-redundancy.md) (Omówienie replikacji usługi Azure Storage).
 
-Aby edytować ustawienie replikacji magazynu:
+Aby edytować ustawienia replikacji magazynu:
 
-1. W bloku **Recovery Services magazynów** kliknij nowy magazyn. W sekcji **Ustawienia** kliknij pozycję **Właściwości**.
+1. W bloku **Magazyny usług Recovery Services** kliknij nowy magazyn. W sekcji **Ustawienia** kliknij pozycję **Właściwości**.
 2. W obszarze **Właściwości**, w obszarze **Konfiguracja kopii zapasowej**, kliknij przycisk **Aktualizuj**.
 
 3. Wybierz typ replikacji magazynu i kliknij przycisk **Zapisz**.
 
-     ![Ustaw konfigurację magazynu dla nowego magazynu](./media/backup-try-azure-backup-in-10-mins/recovery-services-vault-backup-configuration.png)
+     ![Ustawianie konfiguracji przechowywania dla nowego magazynu](./media/backup-try-azure-backup-in-10-mins/recovery-services-vault-backup-configuration.png)
 
 ## <a name="software-package"></a>Pakiet oprogramowania
 
 ### <a name="downloading-the-software-package"></a>Pobieranie pakietu oprogramowania
 
-1. Zaloguj się do [Azure Portal](https://portal.azure.com/).
+1. Zaloguj się w witrynie [Azure Portal](https://portal.azure.com/).
 2. Jeśli masz już otwarty magazyn Recovery Services, przejdź do kroku 3. Jeśli nie masz otwartego magazynu Recovery Services, ale znajdują się one w Azure Portal, w menu głównym kliknij przycisk **Przeglądaj**.
 
-   * Na liście zasobów wpisz **Recovery Services**.
-   * Po rozpoczęciu wpisywania lista zostanie odfiltrowana na podstawie danych wejściowych. Gdy widzisz **Recovery Services magazynów**, kliknij ją.
+   * Na liście zasobów wpisz **Usługi odzyskiwania**.
+   * Po rozpoczęciu pisania zawartość listy będzie filtrowana w oparciu o wpisywane dane. Po wyświetleniu pozycji **Magazyny Usług odzyskiwania** kliknij ją.
 
-     ![Utwórz magazyn Recovery Services krok 1](./media/backup-azure-microsoft-azure-backup/open-recovery-services-vault.png)
+     ![Tworzenie magazynu Usług odzyskiwania — krok 1](./media/backup-azure-microsoft-azure-backup/open-recovery-services-vault.png)
 
-     Zostanie wyświetlona lista magazynów Recovery Services.
-   * Z listy Recovery Services magazynów wybierz magazyn.
+     Zostanie wyświetlona lista magazynów Usług odzyskiwania.
+   * Wybierz magazyn z listy magazynów Usług odzyskiwania.
 
-     Zostanie otwarty wybrany pulpit nawigacyjny magazynu.
+     Zostanie otwarty pulpit nawigacyjny wybranego magazynu.
 
-     ![Otwórz blok magazynu](./media/backup-azure-microsoft-azure-backup/vault-dashboard.png)
+     ![Otwarcie bloku magazynu](./media/backup-azure-microsoft-azure-backup/vault-dashboard.png)
 3. Domyślnie zostanie otwarty blok **Ustawienia** . Jeśli jest zamknięte, kliknij pozycję **Ustawienia** , aby otworzyć blok ustawienia.
 
-    ![Otwórz blok magazynu](./media/backup-azure-microsoft-azure-backup/vault-setting.png)
+    ![Otwarcie bloku magazynu](./media/backup-azure-microsoft-azure-backup/vault-setting.png)
 4. Kliknij pozycję **kopia zapasowa** , aby otworzyć Kreatora wprowadzenie.
 
     ![Wprowadzenie do kopii zapasowej](./media/backup-azure-microsoft-azure-backup/getting-started-backup.png)
@@ -182,11 +183,11 @@ Po zakończeniu procesu wyodrębniania zaznacz pole wyboru, aby uruchomić świe
 
     W przypadku korzystania z własnego wystąpienia programu SQL 2017 należy ręcznie skonfigurować usługi SSRS. Po skonfigurowaniu usług SSRS upewnij się, że właściwość *IsInitialized* usług SSRS ma *wartość true*. Gdy ta wartość jest równa true, serwera usługi MAB zakłada, że usługa SSRS jest już skonfigurowana i pominie konfigurację usług SSRS.
 
-    W przypadku konfiguracji usług SSRS należy użyć następujących wartości: 
-    - Konto usługi: "Użyj wbudowanego konta" powinno być usługą sieciową
-    - Adres URL usługi sieci Web: "katalog wirtualny" powinien być ReportServer_ @ no__t-0
-    - Baza danych: DatabaseName powinna być ReportServer $ <SQLInstanceName>
-    - Adres URL portalu sieci Web: "katalog wirtualny" powinien być Reports_ @ no__t-0
+    W przypadku konfiguracji usług SSRS należy użyć następujących wartości:
+    * Konto usługi: "Użyj wbudowanego konta" powinno być usługą sieciową
+    * Adres URL usługi sieci Web: "katalog wirtualny" powinien być ReportServer_<SQLInstanceName>
+    * Baza danych: DatabaseName powinna być ReportServer $<SQLInstanceName>
+    * Adres URL portalu sieci Web: "katalog wirtualny" powinien być Reports_<SQLInstanceName>
 
     [Dowiedz się więcej](https://docs.microsoft.com/sql/reporting-services/report-server/configure-and-administer-a-report-server-ssrs-native-mode?view=sql-server-2017) o konfiguracji usług SSRS.
 
@@ -238,7 +239,7 @@ SERWERA usługi MAB używa agenta ochrony programu System Center Data Protection
 
 W poniższych sekcjach opisano sposób aktualizowania agentów ochrony dla komputerów klienckich.
 
-1. W konsola administratora serwera kopii zapasowej wybierz pozycję **zarządzanie** > **agentów**.
+1. W konsola administratora serwer zapasowy wybierz pozycję **zarządzanie** > **agenci**.
 
 2. W okienku wyświetlania wybierz komputery klienckie, dla których chcesz zaktualizować agenta ochrony.
 
@@ -257,10 +258,10 @@ W poniższych sekcjach opisano sposób aktualizowania agentów ochrony dla kompu
 
 Poniżej przedstawiono kroki, które należy wykonać, jeśli chcesz przenieść serwera usługi MAB do nowego serwera, zachowując magazyn. Można to zrobić tylko wtedy, gdy wszystkie dane są na Nowoczesny magazyn kopii zapasowych.
 
-
   > [!IMPORTANT]
-  > - Nazwa nowego serwera musi być taka sama jak nazwa oryginalnego wystąpienia Azure Backup Server. Nie można zmienić nazwy nowego wystąpienia Azure Backup Server, jeśli chcesz użyć poprzedniej puli magazynów i bazy danych serwera usługi MAB (DPMDB), aby zachować punkty odzyskiwania.
-  > - Musisz mieć kopię zapasową bazy danych serwera usługi MAB (DPMDB). Musisz przywrócić bazę danych.
+  >
+  > * Nazwa nowego serwera musi być taka sama jak nazwa oryginalnego wystąpienia Azure Backup Server. Nie można zmienić nazwy nowego wystąpienia Azure Backup Server, jeśli chcesz użyć poprzedniej puli magazynów i bazy danych serwera usługi MAB (DPMDB), aby zachować punkty odzyskiwania.
+  > * Musisz mieć kopię zapasową bazy danych serwera usługi MAB (DPMDB). Musisz przywrócić bazę danych.
 
 1. W okienku wyświetlania wybierz komputery klienckie, dla których chcesz zaktualizować agenta ochrony.
 2. Zamknij oryginalny serwer usługi Azure Backup lub Wyłącz sieć.
@@ -273,7 +274,7 @@ Poniżej przedstawiono kroki, które należy wykonać, jeśli chcesz przenieść
 9. Z poziomu bazy danych SQL Przywróć DPMDB
 10. Z poziomu wiersza polecenia administratora na nowym dysku CD Server do Microsoft Azure Backup lokalizacji instalacji i folderu bin
 
-    Przykład ścieżki: C:\Windows\System32 > CD "c:\Program Files\Microsoft Azure Backup\DPM\DPM\bin @ no__t-0
+    Przykład ścieżki: C:\Windows\System32 > CD "c:\Program Files\Microsoft Azure Backup\DPM\DPM\bin\"
 
 11. Do usługi Azure Backup, uruchom polecenie DPMSYNC-SYNC
 
@@ -287,24 +288,24 @@ W tym samym czasie subskrypcja platformy Azure musi być w dobrej kondycji. Aby 
 
 Po uzyskaniu informacji o stanie łączności z platformą Azure i subskrypcji platformy Azure Możesz użyć poniższej tabeli, aby dowiedzieć się, jak to miało wpływ na oferowane funkcje tworzenia kopii zapasowej/przywracania.
 
-| Stan łączności | Subskrypcja platformy Azure | Tworzenie kopii zapasowej w systemie Azure | Utwórz kopię zapasową na dysku | Przywróć z platformy Azure | Przywróć z dysku |
+| Stan łączności | Subskrypcja platformy Azure | Tworzenie kopii zapasowej na platformie Azure | Utwórz kopię zapasową na dysku | Przywróć z platformy Azure | Przywracanie z dysku |
 | --- | --- | --- | --- | --- | --- |
-| Łączona |Wyprzedzeni |Występować |Występować |Występować |Występować |
-| Łączona |Przeterminowanych |Zatrzymany |Zatrzymany |Występować |Występować |
-| Łączona |Anulowanie aprowizacji |Zatrzymany |Zatrzymany |Zatrzymane i usunięte punkty odzyskiwania platformy Azure |Zatrzymany |
-| Utracono łączność > 15 dni |Wyprzedzeni |Zatrzymany |Zatrzymany |Występować |Występować |
-| Utracono łączność > 15 dni |Przeterminowanych |Zatrzymany |Zatrzymany |Występować |Występować |
-| Utracono łączność > 15 dni |Anulowanie aprowizacji |Zatrzymany |Zatrzymany |Zatrzymane i usunięte punkty odzyskiwania platformy Azure |Zatrzymany |
+| Połączone |Aktywne |Występować |Występować |Występować |Występować |
+| Połączone |Wygasłe |Zatrzymano |Zatrzymano |Występować |Występować |
+| Połączone |Anulowanie aprowizacji |Zatrzymano |Zatrzymano |Zatrzymane i usunięte punkty odzyskiwania platformy Azure |Zatrzymano |
+| Utracono łączność > 15 dni |Aktywne |Zatrzymano |Zatrzymano |Występować |Występować |
+| Utracono łączność > 15 dni |Wygasłe |Zatrzymano |Zatrzymano |Występować |Występować |
+| Utracono łączność > 15 dni |Anulowanie aprowizacji |Zatrzymano |Zatrzymano |Zatrzymane i usunięte punkty odzyskiwania platformy Azure |Zatrzymano |
 
 ### <a name="recovering-from-loss-of-connectivity"></a>Odzyskiwanie po utracie łączności
 
 Jeśli masz zaporę lub serwer proxy, który uniemożliwia dostęp do platformy Azure, musisz zezwolić na następujące adresy domeny w profilu zapory/serwera proxy:
 
 * `http://www.msftncsi.com/ncsi.txt`
-* \*. Microsoft.com
-* \*. WindowsAzure.com
-* @no__t — 0.microsoftonline.com
-* @no__t — 0.windows.net
+* \*.Microsoft.com
+* \*.WindowsAzure.com
+* \*.microsoftonline.com
+* \*.windows.net
 
 Po przywróceniu łączności z platformą Azure do maszyny Azure Backup Server operacje, które można wykonać, są określane przez stan subskrypcji platformy Azure. Powyższa tabela zawiera szczegółowe informacje o operacjach dozwolonych, gdy maszyna jest "połączona".
 

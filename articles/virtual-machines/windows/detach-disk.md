@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 07/17/2018
 ms.author: cynthn
 ms.subservice: disks
-ms.openlocfilehash: efbb6ccef9096ed89f6ccd16f8d3b37c9a97b278
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: de33ed80055c26870a29b4c4393a9072ec8dda5e
+ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70103213"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73749475"
 ---
 # <a name="how-to-detach-a-data-disk-from-a-windows-virtual-machine"></a>Jak odłączyć dysk danych z maszyny wirtualnej z systemem Windows
 
@@ -31,13 +31,13 @@ Gdy już nie potrzebujesz dysku danych dołączonego do maszyny wirtualnej, moż
 
 Jeśli chcesz użyć danych znajdujących się na tym dysku, możesz dołączyć go ponownie do tej samej lub innej maszyny wirtualnej.
 
-[!INCLUDE [updated-for-az.md](../../../includes/updated-for-az.md)]
+ 
 
 ## <a name="detach-a-data-disk-using-powershell"></a>Odłączanie dysku danych przy użyciu programu PowerShell
 
 Możesz *gorąco* usuwanie dysku danych przy użyciu programu PowerShell, ale przed odłączeniem go od maszyny wirtualnej nie trzeba aktywnie używać dysku.
 
-W tym przykładzie usuniemy dysk o nazwie **myVM** z maszyny wirtualnej z grupy zasobów. Najpierw należy usunąć dysk przy użyciu polecenia cmdlet [Remove-AzVMDataDisk](https://docs.microsoft.com/powershell/module/az.compute/remove-azvmdatadisk) . Następnie należy zaktualizować stan maszyny wirtualnej za pomocą polecenia cmdlet [Update-AzVM](https://docs.microsoft.com/powershell/module/az.compute/update-azvm) , aby ukończyć proces usuwania dysku z danymi.
+W tym przykładzie usuniemy **dysk o nazwie** **myVM** z maszyny wirtualnej z **grupy zasobów.** Najpierw należy usunąć dysk przy użyciu polecenia cmdlet [Remove-AzVMDataDisk](https://docs.microsoft.com/powershell/module/az.compute/remove-azvmdatadisk) . Następnie należy zaktualizować stan maszyny wirtualnej za pomocą polecenia cmdlet [Update-AzVM](https://docs.microsoft.com/powershell/module/az.compute/update-azvm) , aby ukończyć proces usuwania dysku z danymi.
 
 ```azurepowershell-interactive
 $VirtualMachine = Get-AzVM -ResourceGroupName "myResourceGroup" -Name "myVM"
@@ -53,7 +53,7 @@ Dysk pozostaje w magazynie, ale nie jest już dołączony do maszyny wirtualnej.
 2. Wybierz maszynę wirtualną z dyskiem danych, który chcesz odłączyć, a następnie kliknij przycisk **Zatrzymaj** , aby usunąć przydział maszyny wirtualnej.
 3. W okienku maszyna wirtualna wybierz pozycję **dyski**.
 4. W górnej części okienka **dyski** wybierz pozycję **Edytuj**.
-5. W okienku **dyski** z prawej strony dysku z danymi, które chcesz odłączyć, kliknij ![przycisk Odłącz obraz](./media/detach-disk/detach.png) przycisku Odłącz.
+5. W okienku **dyski** z prawej strony dysku z danymi, który ma zostać odłączony, kliknij przycisk odłączania obrazu przycisku ![Odłącz](./media/detach-disk/detach.png).
 5. Po usunięciu dysku kliknij pozycję **Zapisz** w górnej części okienka.
 6. W okienku maszyna wirtualna kliknij pozycję **Przegląd** , a następnie kliknij przycisk **Uruchom** w górnej części okienka, aby ponownie uruchomić maszynę wirtualną.
 

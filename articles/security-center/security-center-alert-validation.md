@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/04/2019
 ms.author: memildin
-ms.openlocfilehash: d3ea0adb4adf88e557ca360799836555cb90078e
-ms.sourcegitcommit: 3f8017692169bd75483eefa96c225d45cd497f06
+ms.openlocfilehash: 709ac3a9f5e7cf0bd13a6e387f0b80caf2608fe0
+ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73520946"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73748461"
 ---
 # <a name="alert-validation-eicar-test-file-in-azure-security-center"></a>Walidacja alertu (plik testowy EICAR) w Azure Security Center
 Ten dokument zawiera informacje dotyczące sposobu weryfikacji systemu pod kątem prawidłowej konfiguracji alertów usługi Azure Security Center.
@@ -33,7 +33,7 @@ Aby uzyskać więcej informacji, zobacz [alerty zabezpieczeń w Security Center]
 * [Linux](#validate-linux)
 * [Kubernetes](#validate-kubernetes)
 
-## Weryfikowanie alertów na maszynie wirtualnej z systemem Windows<a name="validate-windows"></a>
+## Weryfikowanie alertów na maszynach wirtualnych z systemem Windows<a name="validate-windows"></a>
 
 Po zainstalowaniu agenta Security Center na komputerze wykonaj następujące kroki na komputerze, na którym ma zostać zaatakowany zasób alertu:
 
@@ -46,7 +46,7 @@ Po zainstalowaniu agenta Security Center na komputerze wykonaj następujące kro
 >
 >```reg add "HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\policies\system\Audit" /f /v "ProcessCreationIncludeCmdLine_Enabled"```
 
-## Weryfikowanie alertów na maszynie wirtualnej z systemem Linux<a name="validate-linux"></a>
+## Weryfikowanie alertów na maszynach wirtualnych z systemem Linux<a name="validate-linux"></a>
 
 Po zainstalowaniu agenta Security Center na komputerze wykonaj następujące kroki na komputerze, na którym ma zostać zaatakowany zasób alertu:
 1. Skopiuj plik wykonywalny do wygodnej lokalizacji i zmień jego nazwę na **/asc_alerttest_662jfi039n**, na przykład:

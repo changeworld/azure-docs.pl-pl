@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 07/05/2016
 ms.author: memccror
-ms.openlocfilehash: 8270d17d998b27a067eb91a517a7c5fdfd23becd
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: f6f3a4be21eee6a9e07a4ae11a530dd9dd50c81c
+ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70101847"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73749162"
 ---
 # <a name="how-to-tag-a-windows-virtual-machine-in-azure"></a>Jak oznaczyć maszynę wirtualną z systemem Windows na platformie Azure
 W tym artykule opisano różne sposoby tagowania maszyny wirtualnej z systemem Windows na platformie Azure za pomocą modelu wdrażania Menedżer zasobów. Tagi to zdefiniowane przez użytkownika pary klucz/wartość, które mogą być umieszczone bezpośrednio w ramach zasobu lub grupy zasobów. Platforma Azure obsługuje obecnie do 15 tagów na zasób i grupę zasobów. Tagi mogą być umieszczane na zasobie w momencie tworzenia lub dodawane do istniejącego zasobu. Należy pamiętać, że Tagi są obsługiwane tylko dla zasobów utworzonych za pośrednictwem modelu wdrażania Menedżer zasobów. Jeśli chcesz oznaczyć maszynę wirtualną z systemem Linux, zobacz [jak oznaczyć maszynę wirtualną z systemem Linux na platformie Azure](../linux/tag.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
@@ -29,9 +29,9 @@ W tym artykule opisano różne sposoby tagowania maszyny wirtualnej z systemem W
 ## <a name="tagging-with-powershell"></a>Tagowanie przy użyciu programu PowerShell
 Aby tworzyć, dodawać i usuwać Tagi za pomocą programu PowerShell, należy najpierw skonfigurować [środowisko programu PowerShell przy użyciu Azure Resource Manager][PowerShell environment with Azure Resource Manager]. Po zakończeniu instalacji możesz umieścić znaczniki w zasobach obliczeniowych, sieci i magazynu podczas tworzenia lub po utworzeniu zasobu za pośrednictwem programu PowerShell. Ten artykuł koncentruje się na wyświetlaniu i edytowaniu tagów umieszczonych w Virtual Machines.
 
-[!INCLUDE [updated-for-az.md](../../../includes/updated-for-az.md)]
+ 
 
-Najpierw przejdź do maszyny wirtualnej za pomocą `Get-AzVM` polecenia cmdlet.
+Najpierw przejdź do maszyny wirtualnej za pomocą polecenia cmdlet `Get-AzVM`.
 
         PS C:\> Get-AzVM -ResourceGroupName "MyResourceGroup" -Name "MyTestVM"
 
@@ -44,9 +44,9 @@ Jeśli maszyna wirtualna zawiera już Tagi, zobaczysz wszystkie Tagi w zasobie:
                 "Environment": "Production"
                }
 
-Jeśli chcesz dodać tagi za pomocą programu PowerShell, możesz użyć `Set-AzResource` polecenia. Uwaga w przypadku aktualizowania tagów za pomocą programu PowerShell Tagi są aktualizowane jako całość. Dlatego jeśli dodajesz jeden tag do zasobu, który ma już Tagi, musisz uwzględnić wszystkie Tagi, które mają zostać umieszczone w zasobie. Poniżej znajduje się przykład dodawania dodatkowych tagów do zasobu za pomocą poleceń cmdlet programu PowerShell.
+Jeśli chcesz dodać tagi za pomocą programu PowerShell, możesz użyć polecenia `Set-AzResource`. Uwaga w przypadku aktualizowania tagów za pomocą programu PowerShell Tagi są aktualizowane jako całość. Dlatego jeśli dodajesz jeden tag do zasobu, który ma już Tagi, musisz uwzględnić wszystkie Tagi, które mają zostać umieszczone w zasobie. Poniżej znajduje się przykład dodawania dodatkowych tagów do zasobu za pomocą poleceń cmdlet programu PowerShell.
 
-To pierwsze polecenie cmdlet ustawia wszystkie znaczniki umieszczone w *MyTestVM* do zmiennej *$Tags* przy użyciu `Get-AzResource` właściwości i. `Tags`
+To pierwsze polecenie cmdlet ustawia wszystkie znaczniki umieszczone w *MyTestVM* do zmiennej *$Tags* przy użyciu właściwości `Get-AzResource` i `Tags`.
 
         PS C:\> $tags = (Get-AzResource -ResourceGroupName MyResourceGroup -Name MyTestVM).Tags
 
@@ -63,7 +63,7 @@ Drugie polecenie wyświetla Tagi dla danej zmiennej.
     Environment   Production
 ```
 
-Trzecie polecenie dodaje dodatkowy tag do zmiennej *$Tags* . Zwróć uwagę na użycie, **+=** aby dołączyć nową parę klucz/wartość do listy *$Tags* .
+Trzecie polecenie dodaje dodatkowy tag do zmiennej *$Tags* . Zwróć uwagę na użycie **+=** , aby dołączyć nową parę klucz/wartość do listy *$Tags* .
 
         PS C:\> $tags += @{Location="MyLocation"}
 
@@ -71,7 +71,7 @@ Czwarte polecenie ustawia wszystkie Tagi zdefiniowane w zmiennej *$Tags* dla dan
 
         PS C:\> Set-AzResource -ResourceGroupName MyResourceGroup -Name MyTestVM -ResourceType "Microsoft.Compute/VirtualMachines" -Tag $tags
 
-Piąte polecenie wyświetla wszystkie Tagi w zasobie. Jak widać, *Lokalizacja* jest teraz definiowana jako tag z elementem weblocation jako wartość.
+Piąte polecenie wyświetla wszystkie Tagi w zasobie. Jak widać, *Lokalizacja* jest teraz definiowana jako tag z elementem *weblocation* jako wartość.
 
 ```
     PS C:\> (Get-AzResource -ResourceGroupName MyResourceGroup -Name MyTestVM).Tags

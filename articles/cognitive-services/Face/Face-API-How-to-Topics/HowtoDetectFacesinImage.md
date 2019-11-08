@@ -1,7 +1,7 @@
 ---
 title: Wykrywaj twarze w obrazie interfejs API rozpoznawania twarzy
 titleSuffix: Azure Cognitive Services
-description: Dowiedz się, jak używać różnych danych zwracanych przez funkcję wykrywania kroju.
+description: W tym przewodniku przedstawiono sposób korzystania z wykrywania czołowego w celu wyodrębnienia atrybutów, takich jak płeć, wiek lub ułożenie z danego obrazu.
 services: cognitive-services
 author: SteveMSFT
 manager: nitinme
@@ -10,12 +10,12 @@ ms.subservice: face-api
 ms.topic: conceptual
 ms.date: 04/18/2019
 ms.author: sbowles
-ms.openlocfilehash: 07089def3290d6d64919ad2551de7584646cc681
-ms.sourcegitcommit: f176e5bb926476ec8f9e2a2829bda48d510fbed7
+ms.openlocfilehash: 9b66231d995ffb6980ce36852115c571cd102681
+ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70306632"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73744283"
 ---
 # <a name="get-face-detection-data"></a>Pobieranie danych wykrywania kroju
 
@@ -27,9 +27,9 @@ W tym przewodniku pokazano, jak:
 - Zapoznaj się z lokalizacjami różnych punktów orientacyjnych, na przykład uczniów, nos i jamy ustnej.
 - Odgadnięcie płci, wieku, rozpoznawania emocji i innych atrybutów wykrytej czołowej.
 
-## <a name="setup"></a>Konfiguracja
+## <a name="setup"></a>Konfigurowanie
 
-W tym przewodniku przyjęto założenie [](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.vision.face.faceclient?view=azure-dotnet) , że został już `faceClient`skonstruowany obiekt FaceClient o nazwie z kluczem subskrypcji i adresem URL punktu końcowego. W tym miejscu możesz użyć funkcji wykrywania kroju przez wywołanie [DetectWithUrlAsync](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.vision.face.faceoperationsextensions.detectwithurlasync?view=azure-dotnet), która jest używana w tym przewodniku, lub [DetectWithStreamAsync](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.vision.face.faceoperationsextensions.detectwithstreamasync?view=azure-dotnet). Aby uzyskać instrukcje dotyczące sposobu konfigurowania tej funkcji, wykonaj jedną z przewodników Szybki Start.
+W tym przewodniku przyjęto założenie, że został już skonstruowany obiekt [FaceClient](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.vision.face.faceclient?view=azure-dotnet) o nazwie `faceClient`z kluczem subskrypcji i adresem URL punktu końcowego. W tym miejscu możesz użyć funkcji wykrywania kroju przez wywołanie [DetectWithUrlAsync](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.vision.face.faceoperationsextensions.detectwithurlasync?view=azure-dotnet), która jest używana w tym przewodniku, lub [DetectWithStreamAsync](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.vision.face.faceoperationsextensions.detectwithstreamasync?view=azure-dotnet). Aby uzyskać instrukcje dotyczące sposobu konfigurowania tej funkcji, wykonaj jedną z przewodników Szybki Start.
 
 Ten przewodnik koncentruje się na konkretnych wywołaniach wykrywania, takich jak argumenty, które można przekazać, i co można zrobić z zwracanymi danymi. Zalecamy, aby wykonywać zapytania dotyczące tylko potrzebnych funkcji. Każda operacja zajmuje dodatkowy czas.
 
@@ -144,10 +144,10 @@ Aby dowiedzieć się więcej na temat każdego z atrybutów, zobacz Przewodnik d
 
 W tym przewodniku przedstawiono sposób użycia różnych funkcji wykrywania czołowego. Następnie Zintegruj te funkcje z aplikacją, postępując zgodnie z szczegółowym samouczkiem.
 
-- [Samouczek: Tworzenie aplikacji WPF do wyświetlania danych o kroju w obrazie](../Tutorials/FaceAPIinCSharpTutorial.md)
+- [Samouczek: Tworzenie aplikacji WPF do wyświetlania danych kroju w obrazie](../Tutorials/FaceAPIinCSharpTutorial.md)
 - [Samouczek: Tworzenie aplikacji dla systemu Android na potrzeby wykrywania i klatek ramek w obrazie](../Tutorials/FaceAPIinJavaForAndroidTutorial.md)
 
-## <a name="related-topics"></a>Tematy pokrewne
+## <a name="related-topics"></a>Powiązane tematy
 
 - [Dokumentacja referencyjna (REST)](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395236)
 - [Dokumentacja referencyjna (zestaw SDK dla platformy .NET)](https://docs.microsoft.com/dotnet/api/overview/azure/cognitiveservices/client/faceapi?view=azure-dotnet)

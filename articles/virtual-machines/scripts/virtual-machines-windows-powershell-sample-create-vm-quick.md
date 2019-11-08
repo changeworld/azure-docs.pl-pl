@@ -15,12 +15,12 @@ ms.workload: infrastructure
 ms.date: 12/12/2017
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: dbb0a0821b6a2c7465a518577e18d45488c1e7b4
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: a4a3b767cfcfd73eab86e51140205cc86fe8e838
+ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70090553"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73748668"
 ---
 # <a name="create-a-virtual-machine-with-powershell"></a>Tworzenie maszyny wirtualnej za pomocą programu PowerShell
 
@@ -28,7 +28,7 @@ Ten skrypt tworzy maszynę wirtualną platformy Azure z systemem Windows Server 
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 
-[!INCLUDE [updated-for-az.md](../../../includes/updated-for-az.md)]
+ 
 
 ## <a name="sample-script"></a>Przykładowy skrypt
 

@@ -7,23 +7,23 @@ ms.topic: article
 ms.date: 10/09/2019
 ms.author: pabouwer
 zone_pivot_groups: client-operating-system
-ms.openlocfilehash: ec8250f6cdb44af3c99c1d34d1f14fbd2209aac0
-ms.sourcegitcommit: f29fec8ec945921cc3a89a6e7086127cc1bc1759
+ms.openlocfilehash: f70052a62152a20f808c1e491a663d1406fbd407
+ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72530097"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73747714"
 ---
 # <a name="install-linkerd-in-azure-kubernetes-service-aks"></a>Instalowanie konsolidatora w usłudze Azure Kubernetes Service (AKS)
 
 [Konsolidator][linkerd-github] jest siatką usługi Open Source i [CNCFą do inkubacji projektu][linkerd-cncf]. Konsolidator jest siatką usługi Ultralight, która udostępnia funkcje, które obejmują zarządzanie ruchem, tożsamość usługi i bezpieczeństwo, niezawodność i możliwości przestrzegania. Aby uzyskać więcej informacji na temat konsolidatora, zapoznaj się [z oficjalną][linkerd-faq] i dołączoną dokumentacją [architektury][linkerd-architecture] .
 
-W tym artykule opisano sposób instalowania konsolidatora. @No__t_0 dane binarne klienta konsolidatora są instalowane na komputerze klienckim, a wbudowane składniki są instalowane w klastrze Kubernetes na AKS.
+W tym artykule opisano sposób instalowania konsolidatora. `linkerd` dane binarne klienta konsolidatora są instalowane na komputerze klienckim, a wbudowane składniki są instalowane w klastrze Kubernetes na AKS.
 
 > [!NOTE]
-> Te instrukcje odwołują się do konsolidatora `stable-2.6.0` wersji.
+> Te instrukcje odwołują się do konsolidatora `stable-2.6.0`wersji.
 >
-> @No__t_0 konsolidatora można uruchomić w odniesieniu do wersji Kubernetes `1.13+`. Dodatkowe wersje systemów stabilnych i brzegowych można znaleźć w wersjach [z konsolidatorem GitHub][linkerd-github-releases].
+> `stable-2.6.x` konsolidatora można uruchomić w odniesieniu do wersji Kubernetes `1.13+`. Dodatkowe wersje systemów stabilnych i brzegowych można znaleźć w wersjach [z konsolidatorem GitHub][linkerd-github-releases].
 
 W tym artykule omówiono sposób wykonywania następujących zadań:
 
@@ -248,7 +248,7 @@ Opening Linkerd dashboard in the default browser
 > [!WARNING]
 > Usunięcie konsolidatora z działającego systemu może skutkować problemami związanymi z ruchem między usługami. Upewnij się, że zostały wprowadzone przepisy dotyczące systemu, aby nadal działały prawidłowo bez konsolidatora przed kontynuowaniem.
 
-Najpierw musisz usunąć serwery proxy płaszczyzny danych. Usuń wszystkie automatyczne [Adnotacje][linkerd-automatic-proxy-injection] iniekcji serwera proxy z przestrzeni nazw obciążeń i Wycofaj wdrożenia obciążeń. Obciążenia nie powinny już mieć żadnych powiązanych składników płaszczyzny danych.
+Najpierw musisz usunąć serwery proxy płaszczyzny danych. Usuń wszystkie automatyczne [Adnotacje][linkerd-automatic-proxy-injection] iniekcji serwera proxy z przestrzeni nazw obciążeń i wdrażaj wdrożenia obciążeń. Obciążenia nie powinny już mieć żadnych powiązanych składników płaszczyzny danych.
 
 Na koniec Usuń płaszczyznę kontroli w następujący sposób:
 

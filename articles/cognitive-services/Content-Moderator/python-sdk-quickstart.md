@@ -1,7 +1,7 @@
 ---
 title: 'Szybki Start: Content Moderatora Biblioteka kliencka dla języka Python | Microsoft Docs'
 titleSuffix: Azure Cognitive Services
-description: Rozpocznij pracę z biblioteką klienta Content Moderator dla języka Python.
+description: Dowiedz się, jak rozpocząć pracę z biblioteką kliencką Content Moderator Cognitive Services platformy Azure dla języka Python.
 services: cognitive-services
 author: PatrickFarley
 manager: nitinme
@@ -10,12 +10,12 @@ ms.subservice: content-moderator
 ms.topic: quickstart
 ms.date: 10/25/2019
 ms.author: pafarley
-ms.openlocfilehash: 28c70e7d226e8f4b2458234e1f14754cdbb1825c
-ms.sourcegitcommit: 38251963cf3b8c9373929e071b50fd9049942b37
+ms.openlocfilehash: 3978b4ec302bf4dd2390f2390c967ca6e12e67d5
+ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/29/2019
-ms.locfileid: "73044030"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73744408"
 ---
 # <a name="quickstart-content-moderator-client-library-for-python"></a>Szybki Start: Content Moderatora Biblioteka kliencka dla języka Python
 
@@ -29,7 +29,7 @@ Użyj biblioteki klienta Content Moderator dla języka Python, aby:
 * [Używanie niestandardowej listy obrazów](#use-a-custom-image-list)
 * [Utwórz recenzję](#create-a-review)
 
-[Dokumentacja referencyjna](https://docs.microsoft.com/python/api/overview/azure/cognitiveservices/contentmoderator?view=azure-python) | [kod źródłowy biblioteki](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/cognitiveservices/azure-cognitiveservices-vision-contentmoderator) | [pakiet (PiPy)](https://pypi.org/project/azure-cognitiveservices-vision-contentmoderator/) | [przykładów](https://github.com/Azure-Samples/cognitive-services-python-sdk-samples)
+[Dokumentacja referencyjna](https://docs.microsoft.com/python/api/overview/azure/cognitiveservices/contentmoderator?view=azure-python) |  | pakietu [kodu źródłowego biblioteki](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/cognitiveservices/azure-cognitiveservices-vision-contentmoderator) [(PiPy)](https://pypi.org/project/azure-cognitiveservices-vision-contentmoderator/) [ | ](https://github.com/Azure-Samples/cognitive-services-python-sdk-samples)
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 

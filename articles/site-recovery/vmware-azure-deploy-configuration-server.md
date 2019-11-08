@@ -8,23 +8,23 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 10/15/2019
 ms.author: ramamill
-ms.openlocfilehash: f5fe49130742d116775b75f17c726b56150c574f
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.openlocfilehash: 92b51b3955833bac6f87457a19e4d6359600a25a
+ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72792350"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73747826"
 ---
 # <a name="deploy-a-configuration-server"></a>Wdrażanie serwera konfiguracji
 
-Lokalny serwer konfiguracji jest wdrażany w przypadku używania [Azure Site Recovery](site-recovery-overview.md) na potrzeby odzyskiwania po awarii maszyn wirtualnych VMware i serwerów fizycznych na platformę Azure. Serwer konfiguracji koordynuje komunikację między lokalnym programem VMware i platformą Azure. Umożliwia również zarządzanie replikacją danych. W tym artykule przedstawiono kroki niezbędne do wdrożenia serwera konfiguracji w przypadku replikowania maszyn wirtualnych VMware na platformę Azure. [Postępuj zgodnie z tym artykułem](physical-azure-set-up-source.md) , jeśli musisz skonfigurować serwer konfiguracji do replikacji serwera fizycznego.
+Lokalny serwer konfiguracji jest wdrażany w przypadku używania [Azure Site Recovery](site-recovery-overview.md) na potrzeby odzyskiwania po awarii maszyn wirtualnych VMware i serwerów fizycznych na platformę Azure. Serwer konfiguracji koordynuje komunikację między lokalnym programem VMware i platformą Azure. Umożliwia również zarządzanie replikacją danych. W tym artykule przedstawiono kroki niezbędne do wdrożenia serwera konfiguracji w przypadku replikowania maszyn wirtualnych VMware na platformę Azure. Jeśli trzeba skonfigurować serwer konfiguracji do replikacji serwera fizycznego, zobacz [Konfigurowanie serwera konfiguracji na potrzeby odzyskiwania po awarii serwerów fizycznych na platformę Azure](physical-azure-set-up-source.md).
 
 > [!TIP]
-> W [tym miejscu](vmware-azure-architecture.md)możesz dowiedzieć się więcej o roli serwera konfiguracji w ramach architektury Azure Site Recovery.
+> Aby dowiedzieć się więcej o roli serwera konfiguracji w ramach architektury Azure Site Recovery, zobacz [Architektura odzyskiwania po awarii oprogramowania VMware na platformę Azure](vmware-azure-architecture.md).
 
-## <a name="deployment-of-configuration-server-through-ova-template"></a>Wdrażanie serwera konfiguracji za poorednictwem szablonu komórki jajowe
+## <a name="deploy-a-configuration-server-through-an-ova-template"></a>Wdrażanie serwera konfiguracji za pomocą szablonu komórki jajowe
 
-Serwer konfiguracji należy skonfigurować jako maszynę wirtualną VMware o wysokiej dostępności z niektórymi minimalnymi wymaganiami dotyczącymi sprzętu i wielkości. W celu dogodnej i łatwej wdrażania Site Recovery zapewnia do pobrania szablon komórki jajowe (Open Virtualization) służący do konfigurowania serwera konfiguracji, który spełnia wszystkie wymagane wymagania wymienione poniżej.
+Serwer konfiguracji należy skonfigurować jako maszynę wirtualną VMware o wysokiej dostępności z niektórymi minimalnymi wymaganiami dotyczącymi sprzętu i wielkości. W przypadku wygodnego i łatwego wdrożenia Site Recovery udostępnia szablon do pobrania aplikacja Open Virtualization (komórki jajowe) do skonfigurowania serwera konfiguracji, który spełnia wszystkie wymagane wymagania wymienione w tym miejscu.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
@@ -34,68 +34,67 @@ Poniżej przedstawiono podsumowanie minimalnych wymagań sprzętowych dotyczący
 
 ## <a name="azure-active-directory-permission-requirements"></a>Wymagania dotyczące uprawnień Azure Active Directory
 
-Użytkownik musi mieć **jeden z następujących** uprawnień ustawionych w usłudze AAD (Azure Active Directory), aby zarejestrować serwer konfiguracji za pomocą usług Azure Site Recovery Services.
+Użytkownik musi mieć jeden z następujących uprawnień ustawionych w Azure Active Directory (Azure AD), aby zarejestrować serwer konfiguracji za pomocą usług Azure Site Recovery Services.
 
-1. Aby można było utworzyć aplikację, użytkownik powinien mieć rolę "Deweloper aplikacji".
-    - Aby sprawdzić, zaloguj się do Azure Portal</br>
-    - Przejdź do Azure Active Directory > ról i administratorów</br>
-    - Sprawdź, czy rola "Deweloper aplikacji" jest przypisana do użytkownika. W przeciwnym razie należy użyć użytkownika z tym uprawnieniem lub skontaktować się z [administratorem, aby włączyć uprawnienie](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-users-assign-role-azure-portal#assign-roles).
+1. Użytkownik musi mieć rolę dewelopera aplikacji, aby utworzyć aplikację.
+    - Aby sprawdzić, zaloguj się do Azure Portal.</br>
+    - Przejdź do **Azure Active Directory** > **ról i administratorów**.</br>
+    - Sprawdź, czy rola dewelopera aplikacji jest przypisana do użytkownika. W przeciwnym razie należy użyć użytkownika z tym uprawnieniem lub skontaktować się z [administratorem, aby włączyć uprawnienie](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-users-assign-role-azure-portal#assign-roles).
     
-2. Jeśli nie można przypisać roli dewelopera aplikacji, upewnij się, że flaga "użytkownik może zarejestrować aplikację" została ustawiona jako true dla użytkownika w celu utworzenia tożsamości. Aby włączyć powyższe uprawnienia,
-    - Zaloguj się w witrynie Azure Portal
-    - Przejdź do Azure Active Directory > ustawień użytkownika
-    - W obszarze * * Rejestracje aplikacji "użytkownicy mogą rejestrować aplikacje" należy wybrać opcję "tak".
+2. Jeśli nie można przypisać roli dewelopera aplikacji, upewnij się, że flaga **Użytkownicy mogą rejestrować aplikacje** **, tak aby** użytkownik mógł utworzyć tożsamość. Aby włączyć te uprawnienia:
+    - Zaloguj się do Portalu Azure.
+    - Przejdź do pozycji **Azure Active Directory** > **Ustawienia użytkownika**.
+    - Wobszarze rejestracje aplikacji **Użytkownicy mogą rejestrować aplikacje**, a następnie wybrać opcję **tak**.
 
-      ![AAD_application_permission](media/vmware-azure-deploy-configuration-server/AAD_application_permission.png)
+      ![Azure AD_application_permission](media/vmware-azure-deploy-configuration-server/AAD_application_permission.png)
 
 > [!NOTE]
-> Active Directory Federation Services (ADFS) **nie jest obsługiwana**. Użyj konta zarządzanego za pomocą [Azure Active Directory](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-whatis).
+> Active Directory Federation Services *nie jest obsługiwana*. Użyj konta zarządzanego za pomocą [Azure Active Directory](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-whatis).
 
 ## <a name="download-the-template"></a>Pobieranie szablonu
 
 1. W magazynie przejdź do pozycji **Przygotowanie infrastruktury** > **Źródłowa**.
 2. W obszarze **Przygotowywanie źródła** wybierz pozycję **+Serwer konfiguracji**.
 3. W obszarze **Dodawanie serwera** sprawdź, czy w sekcji **Typ serwera** jest widoczna pozycja **Serwer konfiguracji dla oprogramowania VMware**.
-4. Pobierz szablon Open Virtualization Application (komórki jajowe) dla serwera konfiguracji.
+4. Pobierz szablon komórki jajowe dla serwera konfiguracji.
 
    > [!TIP]
    >Możesz również pobrać najnowszą wersję szablonu serwera konfiguracji bezpośrednio z [Centrum pobierania Microsoft](https://aka.ms/asrconfigurationserver).
 
 > [!NOTE]
-> Licencja udostępniona z szablonem komórki jajowe to licencja ewaluacyjna ważna przez 180 dni. Opublikuj ten okres, aby klient mógł aktywować system Windows przy użyciu licencji z licencją.
+> Licencja udostępniona z szablonem komórki jajowe to licencja ewaluacyjna, która jest ważna przez 180 dni. Po upływie tego czasu musisz uzyskać licencję.
 
 ## <a name="import-the-template-in-vmware"></a>Importowanie szablonu do programu VMware
 
 1. Zaloguj się do serwera VMware vCenter lub hosta vSphere ESXi przy użyciu klienta VMware vSphere.
-2. W menu **File** (Plik) wybierz pozycję **Deploy OVF Template** (Wdróż szablon OVF), aby uruchomić kreatora wdrażania szablonu OVF.
+2. W menu **plik** wybierz polecenie **Wdróż szablon OVF** , aby uruchomić kreatora **wdrażania szablonu OVF** .
 
-     ![Szablon OVF](./media/vmware-azure-deploy-configuration-server/vcenter-wizard.png)
+     ![Wdróż szablon OVF](./media/vmware-azure-deploy-configuration-server/vcenter-wizard.png)
 
-3. W obszarze **Wybierz źródło**wprowadź lokalizację pobranego OVF.
-4. W obszarze **szczegóły przeglądu**wybierz pozycję **dalej**.
-5. W obszarze **Wybierz nazwę i folder** i **Wybierz pozycję Konfiguracja**, zaakceptuj ustawienia domyślne.
-6. Na stronie **Wybierz magazyn** dla najlepszej wydajności wybierz pozycję **Thick Provision Eager Zeroed** w sekcji **Wybierz format dysku wirtualnego**. Użycie opcji alokowania elastycznego może mieć wpływ na wydajność serwera konfiguracji.
+3. Na stronie **Select source** (Wybierz źródło) wprowadź lokalizację pobranego szablonu OVF.
+4. Na stronie **Review details** (Przejrzyj szczegóły) wybierz pozycję **Next** (Dalej).
+5. Na stronach **Select name and folder** (Wybierz nazwę i folder) oraz **Select configuration** (Wybierz konfigurację) zaakceptuj ustawienia domyślne.
+6. Aby uzyskać najlepszą wydajność, na stronie **Select storage** (Wybierz magazyn) wybierz pozycję **Thick Provision Eager Zeroed** w sekcji **Select virtual disk format** (Wybierz format dysku wirtualnego). Użycie opcji alokowania elastycznego może wpłynąć na wydajność serwera konfiguracji.
 7. Na pozostałych stronach kreatora zaakceptuj ustawienia domyślne.
-8. Na stronie **Gotowe do ukończenia**:
+8. Na stronie **Ready to complete** (Gotowe do ukończenia):
 
     * Aby skonfigurować maszynę wirtualną przy użyciu ustawień domyślnych, wybierz pozycje **Włącz po wdrożeniu** > **Zakończ**.
-
     * Aby dodać dodatkowy interfejs sieciowy, wyczyść pole wyboru **Włącz po wdrożeniu**, a następnie wybierz pozycję **Zakończ**. Domyślnie szablon serwera konfiguracji jest wdrażany z jedną kartą sieciową. Kolejne karty sieciowe można dodać po wdrożeniu.
 
 > [!IMPORTANT]
-> Nie zmieniaj konfiguracji zasobów (pamięć/rdzenie/ograniczenie procesora), Modyfikuj/Usuń zainstalowane usługi lub pliki na serwerze konfiguracji po wdrożeniu. Będzie to miało wpływ na rejestrację serwera konfiguracji przy użyciu usług platformy Azure i wydajności serwera konfiguracji.
+> Nie należy zmieniać konfiguracji zasobów, takich jak pamięć, rdzenie i ograniczenia procesora CPU, ani modyfikować ani usuwać zainstalowanych usług lub plików na serwerze konfiguracji po wdrożeniu. Te typy zmian wpływają na rejestrację serwera konfiguracji przy użyciu usług platformy Azure i wydajności serwera konfiguracji.
 
 ## <a name="add-an-additional-adapter"></a>Dodawanie karty sieciowej
 
 > [!NOTE]
-> Dwie karty sieciowe są wymagane, jeśli planujesz zachować adresy IP maszyn źródłowych w trybie failover, a następnie powrócić do trybu powrotu po awarii do lokalizacji lokalnej. Jedna karta sieciowa zostanie połączona z maszynami źródłowymi, a druga karta sieciowa będzie używana do łączności z platformą Azure.
+> Dwie karty sieciowe są wymagane, jeśli planujesz zachować adresy IP maszyn źródłowych w trybie failover, a później chcesz wrócić do trybu lokalnego. Jedna karta sieciowa jest połączona z maszynami źródłowymi, a druga karta sieciowa jest używana na potrzeby łączności z platformą Azure.
 
 Jeśli chcesz dodać dodatkową kartę sieciową do serwera konfiguracji, Dodaj ją przed zarejestrowaniem serwera w magazynie. Po zarejestrowaniu nie można dodawać kart sieciowych.
 
 1. Kliknij prawym przyciskiem myszy maszynę wirtualną na liście w kliencie vSphere, a następnie wybierz pozycję **Edytuj ustawienia**.
 2. Na stronie **Hardware** (Sprzęt) wybierz pozycje **Add** > **Ethernet Adapter** (Dodaj, Karta Ethernet). Następnie wybierz przycisk **Dalej**.
 3. Wybierz typ karty i sieć.
-4. Aby połączyć wirtualną kartę sieciową po włączeniu maszyny wirtualnej, wybierz pozycję **Połącz przy zasilaniu**. Następnie wybierz pozycję **Next** > **Zakończ** > **OK**.
+4. Aby połączyć wirtualną kartę sieciową po włączeniu maszyny wirtualnej, wybierz pozycję **Połącz przy zasilaniu**. Następnie wybierz przycisk **dalej** > **Zakończ** > **OK**.
 
 ## <a name="register-the-configuration-server-with-azure-site-recovery-services"></a>Rejestrowanie serwera konfiguracji przy użyciu usług Azure Site Recovery Services
 
@@ -106,85 +105,85 @@ Jeśli chcesz dodać dodatkową kartę sieciową do serwera konfiguracji, Dodaj 
 5. Wprowadź nazwę używaną do zarejestrowania serwera konfiguracji w usłudze Site Recovery. Następnie wybierz przycisk **Dalej**.
 6. Narzędzie sprawdza, czy maszyna wirtualna może połączyć się z platformą Azure. Po nawiązaniu połączenia wybierz pozycję **Zaloguj się**, aby zalogować się do subskrypcji platformy Azure.</br>
     a. Użyte poświadczenia muszą zapewniać dostęp do magazynu, w którym chcesz zarejestrować serwer konfiguracji.</br>
-    b. Upewnij się, że wybrane konto użytkownika ma uprawnienia do tworzenia aplikacji na platformie Azure. Aby włączyć wymagane uprawnienia, postępuj zgodnie z wytycznymi podanymi [tutaj](#azure-active-directory-permission-requirements).
+    b. Upewnij się, że wybrane konto użytkownika ma uprawnienia do tworzenia aplikacji na platformie Azure. Aby włączyć wymagane uprawnienia, postępuj zgodnie z zaleceniami w sekcji [Azure Active Directory wymagania dotyczące uprawnień](#azure-active-directory-permission-requirements).
 7. Narzędzie wykonuje pewne zadania konfiguracyjne, a następnie wywołuje ponowne uruchomienie.
-8. Ponownie zaloguj się do maszyny. Kreator zarządzania serwerem konfiguracji jest uruchamiany **automatycznie** w ciągu kilku sekund.
+8. Ponownie zaloguj się do maszyny. Kreator zarządzania serwerem konfiguracji jest uruchamiany automatycznie w ciągu kilku sekund.
 
 ### <a name="configure-settings"></a>Konfigurowanie ustawień
 
-1. W Kreatorze zarządzania serwerem konfiguracji wybierz pozycję **Instalacja łączność**. Z listy rozwijanej wybierz najpierw kartę sieciową używaną przez serwer przetwarzania w celu odnajdywania i instalacji wypychanej usługi mobilności na maszynach źródłowych, a następnie wybierz kartę sieciową używaną przez serwer konfiguracji do łączności z platformą Azure. Następnie wybierz pozycję **Zapisz**. Po skonfigurowaniu tego ustawienia nie można go zmienić. Zdecydowanie zaleca się, aby nie zmieniać adresu IP serwera konfiguracji. Upewnij się, że adres IP przypisany do serwera konfiguracji to STATYCZNy adres IP, a nie adres IP serwera DHCP.
-2. W obszarze **Wybierz magazyn Recovery Services**Zaloguj się do Microsoft Azure z poświadczeniami używanymi w **kroku 6** z "[rejestrowanie serwera konfiguracji z usługami Azure Site Recovery Services](#register-the-configuration-server-with-azure-site-recovery-services)".
+1. W Kreatorze zarządzania serwerem konfiguracji wybierz pozycję **Instalacja łączność**. W polu rozwijanym najpierw wybierz kartę sieciową, która jest wykorzystywana przez serwer przetwarzania wbudowanego do odnajdywania i wypychania instalacji usługi mobilności na maszynach źródłowych. Następnie wybierz kartę sieciową używaną przez serwer konfiguracji do łączności z platformą Azure. Wybierz pozycję **Zapisz**. Po skonfigurowaniu tego ustawienia nie można go zmienić. Nie zmieniaj adresu IP serwera konfiguracji. Upewnij się, że adres IP przypisany do serwera konfiguracji to statyczny adres IP, a nie adres IP serwera DHCP.
+2. Na stronie **Wybierz magazyn Recovery Services**Zaloguj się do Microsoft Azure przy użyciu poświadczeń użytych w kroku 6 [rejestracji serwera konfiguracji z usługami Azure Site Recovery Services](#register-the-configuration-server-with-azure-site-recovery-services).
 3. Po zalogowaniu wybierz swoją subskrypcję platformy Azure i odpowiednią grupę zasobów i magazyn.
 
     > [!NOTE]
-    > Po zarejestrowaniu nie ma możliwości zmiany magazynu usługi Recovery Services.
-    > Zmiana magazynu usługi Recovery Services wymaga usunięcia skojarzenia z serwerem konfiguracji z bieżącego magazynu, a replikacja wszystkich chronionych maszyn wirtualnych na serwerze konfiguracji zostanie zatrzymana. Dowiedz się [więcej](vmware-azure-manage-configuration-server.md#register-a-configuration-server-with-a-different-vault).
+    > Po rejestracji nie ma możliwości zmiany magazynu usługi Recovery Services.
+    > Zmiana magazynu usługi Recovery Services wymaga usunięcia skojarzenia z serwerem konfiguracji z bieżącego magazynu, a replikacja wszystkich chronionych maszyn wirtualnych na serwerze konfiguracji jest zatrzymana. Aby dowiedzieć się więcej, zobacz [Zarządzanie serwerem konfiguracji na potrzeby odzyskiwania po awarii maszyny wirtualnej VMware](vmware-azure-manage-configuration-server.md#register-a-configuration-server-with-a-different-vault).
 
-4. W obszarze **Instalowanie oprogramowania innych**firm,
+4. Na stronie **Instalowanie oprogramowania innych**firm:
 
     |Scenariusz   |Kroki do wykonania  |
     |---------|---------|
-    |Czy można pobrać & zainstalować MySQL ręcznie?     |  Tak. Pobierz aplikację MySQL & Umieść ją w folderze **C:\Temp\ASRSetup**, a następnie zainstaluj ręcznie. Teraz po zaakceptowaniu warunków > kliknij pozycję **Pobierz i zainstaluj**, Portal jest *już zainstalowany*. Możesz przejść do następnego kroku.       |
-    |Czy mogę uniknąć pobierania programu MySQL online?     |   Tak. Umieść aplikację instalatora MySQL w folderze **C:\Temp\ASRSetup**. Zaakceptuj warunki > kliknij pozycję **Pobierz i zainstaluj**, Portal użyje Instalatora dodanego przez Ciebie i zainstaluje aplikację. Możesz przejść do następnego kroku po instalacji.    |
-    |Chcę pobrać & zainstalować MySQL przez Azure Site Recovery     |  Zaakceptuj umowę licencyjną & kliknij pozycję **Pobierz i zainstaluj**. Następnie można przejść do kolejnego kroku po instalacji.       |
+    |Czy można pobrać i zainstalować MySQL ręcznie?     |  Tak. Pobierz aplikację MySQL, umieść ją w folderze **C:\Temp\ASRSetup**, a następnie zainstaluj ręcznie. Po zaakceptowaniu warunków i wybraniu opcji **Pobierz i zainstaluj**Portal jest *już zainstalowany*. Możesz przejść do następnego kroku.       |
+    |Czy mogę uniknąć pobierania programu MySQL online?     |   Tak. Umieść aplikację instalatora MySQL w folderze **C:\Temp\ASRSetup**. Zaakceptuj warunki, wybierz pozycję **Pobierz i zainstaluj**, a Portal użyje Instalatora dodanego w celu zainstalowania aplikacji. Po zakończeniu instalacji przejdź do następnego kroku.    |
+    |Chcę pobrać i zainstalować MySQL za Azure Site Recovery.    |  Zaakceptuj umowę licencyjną, a następnie wybierz pozycję **Pobierz i zainstaluj**. Po zakończeniu instalacji przejdź do następnego kroku.       |
 
-5. W obszarze **Weryfikowanie konfiguracji urządzenia** zostaną zweryfikowane wymagania wstępne, a następnie będzie można kontynuować.
-6. W obszarze **Skonfiguruj poświadczenia serwera vCenter Server/vSphere ESXi** wprowadź nazwę FQDN bądź adres IP serwera vCenter lub hosta vSphere, na którym znajdują się maszyny wirtualne, które chcesz replikować. Wprowadź port, na którym nasłuchuje serwer. Wprowadź przyjazną nazwę, która ma być używana dla serwera VMware w magazynie.
-7. Wprowadź poświadczenia, za pomocą których serwer konfiguracji będzie łączył się z serwerem VMware. Przy użyciu tych poświadczeń usługa Site Recovery automatycznie odnajduje maszyny wirtualne VMware dostępne do replikacji. Wybierz pozycję **Dodaj**, a następnie **Kontynuuj**. Podane tutaj poświadczenia zostały zapisane lokalnie.
-8. W obszarze **Konfiguruj poświadczenia maszyny wirtualnej**wprowadź nazwę użytkownika i hasło maszyn wirtualnych, aby automatycznie zainstalować usługę mobilności podczas replikacji. W przypadku maszyn z **systemem Windows** konto musi mieć uprawnienia administratora lokalnego na maszynach, które mają być replikowane. W przypadku systemu **Linux**Podaj szczegóły konta głównego.
+5. Przed kontynuowaniem **Sprawdź poprawność konfiguracji urządzenia**. wymagania wstępne są weryfikowane.
+6. Na stronie **Konfigurowanie serwera vCenter Server/VSphere ESXi**wprowadź nazwę FQDN lub adres IP serwera vCenter lub hosta vSphere, na którym znajdują się maszyny wirtualne, które chcesz replikować. Wprowadź port, na którym nasłuchuje serwer. Wprowadź przyjazną nazwę, która ma być używana dla serwera VMware w magazynie.
+7. Wprowadź poświadczenia, za pomocą których serwer konfiguracji będzie łączył się z serwerem VMware. Przy użyciu tych poświadczeń usługa Site Recovery automatycznie odnajduje maszyny wirtualne VMware dostępne do replikacji. Wybierz pozycję **dodaj** > **Kontynuuj**. Podane tutaj poświadczenia zostały zapisane lokalnie.
+8. W obszarze **Skonfiguruj poświadczenia maszyny wirtualnej**wprowadź nazwę użytkownika i hasło maszyn wirtualnych, aby automatycznie zainstalować usługę mobilności podczas replikacji. W przypadku maszyn z **systemem Windows** konto musi mieć uprawnienia administratora lokalnego na maszynach, które mają być replikowane. W przypadku systemu **Linux**Podaj szczegóły konta głównego.
 9. Aby ukończyć rejestrację, wybierz pozycję **Zakończ konfigurację**.
-10. Po zakończeniu rejestracji Otwórz Azure Portal, sprawdź, czy serwer konfiguracji i serwer VMware znajdują się na liście **Recovery Services magazynu** > **Zarządzaj** > **Site Recovery infrastruktura** > **Konfiguracja Serwery**.
+10. Po zakończeniu rejestracji Otwórz Azure Portal i sprawdź, czy serwer konfiguracji i serwer VMware znajdują się na liście **Recovery Services magazynu** > **Zarządzanie** > **Site Recovery infrastrukturą** >  **Serwery konfiguracji**.
 
 ## <a name="upgrade-the-configuration-server"></a>Uaktualnij serwer konfiguracji
 
-Aby uaktualnić serwer konfiguracji do najnowszej wersji, wykonaj następujące [kroki](vmware-azure-manage-configuration-server.md#upgrade-the-configuration-server). Szczegółowe instrukcje dotyczące uaktualniania wszystkich składników Site Recovery można znaleźć w temacie [Service Update Management](service-updates-how-to.md).
+Aby uaktualnić serwer konfiguracji do najnowszej wersji, zobacz [Zarządzanie serwerem konfiguracji na potrzeby odzyskiwania po awarii maszyny wirtualnej VMware](vmware-azure-manage-configuration-server.md#upgrade-the-configuration-server). Aby uzyskać instrukcje dotyczące uaktualniania wszystkich składników Site Recovery, zobacz [aktualizacje usługi w programie Site Recovery](service-updates-how-to.md).
 
 ## <a name="manage-the-configuration-server"></a>Zarządzanie serwerem konfiguracji
 
-Aby uniknąć przerw w trwającej replikacji, upewnij się, że adres IP serwera konfiguracji nie zmienia się po zarejestrowaniu serwera konfiguracji w magazynie. Więcej informacji o typowych zadaniach zarządzania serwerem konfiguracji można znaleźć [tutaj](vmware-azure-manage-configuration-server.md).
+Aby uniknąć przerw w trwającej replikacji, należy się upewnić, że adres IP serwera konfiguracji nie zmienia się po zarejestrowaniu serwera konfiguracji w magazynie. Aby dowiedzieć się więcej na temat typowych zadań zarządzania serwerem konfiguracji, zobacz [Zarządzanie serwerem konfiguracji na potrzeby odzyskiwania po awarii maszyny wirtualnej VMware](vmware-azure-manage-configuration-server.md).
 
-## <a name="faq"></a>Często zadawane pytania
+## <a name="faqs"></a>Często zadawane pytania
 
-1. Jak długo licencja podana na serwerze konfiguracji wdrożona za pomocą OVF jest prawidłowa? Co się stanie, jeśli nie ponownie aktywuję licencji?
+* Jak długo licencja podana na serwerze konfiguracji została wdrożona za pomocą OVF? Co się stanie, jeśli nie ponownie aktywuję licencji?
 
-    Licencja udostępniona z szablonem komórki jajowe to licencja ewaluacyjna ważna przez 180 dni. Przed wygaśnięciem należy aktywować licencję. W przeciwnym razie może to spowodować częste zamknięcie serwera konfiguracji i w efekcie przeszkodę na działania replikacji. Aby uzyskać więcej informacji, zobacz artykuł dotyczący [zarządzania licencją serwera konfiguracji](vmware-azure-manage-configuration-server.md#update-windows-license).
+    Licencja udostępniona z szablonem komórki jajowe to licencja ewaluacyjna ważna przez 180 dni. Przed wygaśnięciem należy aktywować licencję. W przeciwnym razie może to powodować częste zamykanie serwera konfiguracji i powodować przeszkodę w działaniach związanych z replikacją. Aby uzyskać więcej informacji, zobacz [Zarządzanie serwerem konfiguracji na potrzeby odzyskiwania po awarii maszyny wirtualnej VMware](vmware-azure-manage-configuration-server.md#update-windows-license).
 
-2. Czy mogę użyć maszyny wirtualnej, na której zainstalowano serwer konfiguracji, w różnych celach?
+* Czy mogę użyć maszyny wirtualnej, na której jest zainstalowany serwer konfiguracji w różnych celach?
 
-    **Nie**, zalecamy korzystanie z maszyny wirtualnej wyłącznie do celów związanych z serwerem konfiguracji. Upewnij się, że wszystkie specyfikacje wymienione w [wymaganiach wstępnych](#prerequisites) mają na celu wydajne zarządzanie odzyskiwaniem po awarii.
-3. Czy mogę przełączyć magazyn już zarejestrowany na serwerze konfiguracji przy użyciu nowo utworzonego magazynu?
+    Nie. Użyj maszyny wirtualnej wyłącznie do celów serwera konfiguracji. Upewnij się, że wszystkie specyfikacje wymienione w [wymaganiach wstępnych](#prerequisites) są zgodne z efektywnym zarządzaniem odzyskiwaniem po awarii.
+* Czy mogę przełączyć magazyn już zarejestrowany na serwerze konfiguracji przy użyciu nowo utworzonego magazynu?
 
-    **Nie**, gdy magazyn jest zarejestrowany na serwerze konfiguracji, nie można go zmienić.
-4. Czy można używać tego samego serwera konfiguracji do ochrony maszyn fizycznych i wirtualnych?
+    Nie. Po zarejestrowaniu magazynu na serwerze konfiguracji nie można go zmienić.
+* Czy można używać tego samego serwera konfiguracji do ochrony maszyn fizycznych i wirtualnych?
 
-    **Tak**. ten sam serwer konfiguracji może służyć do replikowania maszyn fizycznych i wirtualnych. Maszyna fizyczna może jednak się odwrócić tylko do maszyny wirtualnej VMware.
-5. Jaki jest cel serwera konfiguracji i gdzie jest używany?
+    Tak. Ten sam serwer konfiguracji może służyć do replikowania maszyn fizycznych i wirtualnych. Jednak maszyna fizyczna może się nie powracać do maszyny wirtualnej VMware.
+* Co to jest cel serwera konfiguracji i gdzie jest używany?
 
-    Aby dowiedzieć się więcej o programie Configuration Server i jego funkcjach, zapoznaj się z tematem [Architektura replikacji VMware do platformy Azure](vmware-azure-architecture.md) .
-6. Gdzie mogę znaleźć najnowszą wersję serwera konfiguracji?
+    Aby dowiedzieć się więcej o serwerze konfiguracji i jego funkcjach, zobacz [Architektura replikacji oprogramowania VMware do platformy Azure](vmware-azure-architecture.md).
+* Gdzie mogę znaleźć najnowszą wersję serwera konfiguracji?
 
-    Aby uzyskać instrukcje dotyczące uaktualniania serwera konfiguracji za pomocą portalu, zobacz [uaktualnianie serwera konfiguracji](vmware-azure-manage-configuration-server.md#upgrade-the-configuration-server). Szczegółowe instrukcje dotyczące uaktualniania wszystkich składników Site Recovery można znaleźć [tutaj](https://aka.ms/asr_how_to_upgrade).
-7. Gdzie można pobrać hasło dla serwera konfiguracji?
+    Aby uzyskać instrukcje dotyczące uaktualniania serwera konfiguracji za pomocą portalu, zobacz [uaktualnianie serwera konfiguracji](vmware-azure-manage-configuration-server.md#upgrade-the-configuration-server). Aby uzyskać instrukcje dotyczące uaktualniania wszystkich składników Site Recovery, zobacz [aktualizacje usługi w programie Site Recovery](https://aka.ms/asr_how_to_upgrade).
+* Gdzie można pobrać hasło dla serwera konfiguracji?
 
-    Zapoznaj się z [tym artykułem](vmware-azure-manage-configuration-server.md#generate-configuration-server-passphrase) , aby pobrać hasło.
-8. Czy mogę zmienić hasło?
+    Aby pobrać hasło, zobacz [Zarządzanie serwerem konfiguracji na potrzeby odzyskiwania po awarii maszyny wirtualnej VMware](vmware-azure-manage-configuration-server.md#generate-configuration-server-passphrase).
+* Czy mogę zmienić hasło?
 
-    **Nie**, **stanowczo zalecamy, aby nie zmieniać hasła** serwera konfiguracji. Zmiany hasła przerywają replikację chronionych maszyn i prowadzą do krytycznego stanu kondycji.
-9. Gdzie można pobrać klucze rejestracji magazynu?
+    Nie. Nie zmieniaj hasła serwera konfiguracji. Zmiana hasła przerywa replikację chronionych maszyn i prowadzi do krytycznego stanu kondycji.
+* Gdzie można pobrać klucze rejestracji magazynu?
 
-    W **magazynie Recovery Services** **Zarządzaj** > **Site Recovery infrastrukturą** > **serwerów konfiguracji**. W obszarze serwery wybierz pozycję **Pobierz klucz rejestracji** , aby pobrać plik poświadczeń magazynu.
-10. Czy można sklonować istniejący serwer konfiguracji i używać go do organizowania replikacji?
+    W obszarze **magazyn Recovery Services**wybierz pozycję **Zarządzaj** > **Site Recovery infrastruktury** > **serwery konfiguracji**. W obszarze **serwery**wybierz pozycję **Pobierz klucz rejestracji** , aby pobrać plik poświadczeń magazynu.
+* Czy można sklonować istniejący serwer konfiguracji i używać go do organizowania replikacji?
 
-    **Nie**, użycie sklonowanego składnika serwera konfiguracji nie jest obsługiwane. Klon serwera przetwarzania skalowalnego w poziomie jest również nieobsługiwanym scenariuszem. Klonowanie składników Site Recovery wpływa na bieżące replikacje.
+    Nie. Użycie sklonowanego składnika serwera konfiguracji nie jest obsługiwane. Klonowanie serwera przetwarzania skalowalnego w poziomie jest również nieobsługiwanym scenariuszem. Klonowanie składników Site Recovery ma wpływ na trwającą replikację.
 
-11. Czy mogę zmienić adres IP serwera konfiguracji?
+* Czy mogę zmienić adres IP serwera konfiguracji?
 
-    **Nie**. zdecydowanie zaleca się, aby nie zmieniać adresu IP serwera konfiguracji. Upewnij się, że wszystkie adresy IP przypisane do serwera konfiguracji to statyczne adresy IP, a nie adresy IP DHCP.
-12. Czy mogę skonfigurować serwer konfiguracji na platformie Azure?
+    Nie. Nie zmieniaj adresu IP serwera konfiguracji. Upewnij się, że wszystkie adresy IP przypisane do serwera konfiguracji to statyczne adresy IP, a nie adresy IP DHCP.
+* Czy mogę skonfigurować serwer konfiguracji na platformie Azure?
 
-    Zaleca się skonfigurowanie serwera konfiguracji w środowisku lokalnym z bezpośrednim wglądem w szczegółowe dane przy użyciu programu v-Center i zminimalizowanie opóźnień transferu danych. Zaplanowane kopie zapasowe serwera konfiguracji można wykonać na potrzeby [powrotu po awarii](vmware-azure-manage-configuration-server.md#failback-requirements).
+    Skonfiguruj serwer konfiguracji w środowisku lokalnym, korzystając z bezpośredniego wglądu w dane za pomocą programu v-Center i minimalizując opóźnienia transferu danych. Zaplanowane kopie zapasowe serwera konfiguracji można wykonać na potrzeby [powrotu po awarii](vmware-azure-manage-configuration-server.md#failback-requirements).
 
-Aby uzyskać więcej często zadawanych pytań na temat serwera konfiguracji, zapoznaj się z naszą [dokumentacją dotyczącą typowych pytań dotyczących serwera konfiguracji](vmware-azure-common-questions.md#configuration-server) .
+Aby uzyskać więcej często zadawanych pytań na temat serwerów konfiguracji, zobacz [często zadawane pytania dotyczące serwera konfiguracji](vmware-azure-common-questions.md#configuration-server).
 
 ## <a name="troubleshoot-deployment-issues"></a>Rozwiązywanie problemów dotyczących wdrożenia
 

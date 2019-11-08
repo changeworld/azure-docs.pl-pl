@@ -1,6 +1,6 @@
 ---
 title: 'Azure Backup: Przywracanie maszyn wirtualnych platformy Azure przy użyciu interfejsu API REST'
-description: Zarządzanie operacjami przywracania kopii zapasowej maszyny wirtualnej platformy Azure przy użyciu interfejsu API REST
+description: W tym artykule dowiesz się, jak zarządzać operacjami przywracania kopii zapasowej maszyny wirtualnej platformy Azure przy użyciu interfejsu API REST.
 ms.reviewer: pullabhk
 author: dcurwin
 manager: carmonm
@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 09/12/2018
 ms.author: dacurwin
 ms.assetid: b8487516-7ac5-4435-9680-674d9ecf5642
-ms.openlocfilehash: bdbceec2f1d0a900ffdb392d8a0505ce11419036
-ms.sourcegitcommit: 0f54f1b067f588d50f787fbfac50854a3a64fff7
+ms.openlocfilehash: 364b6ab589cc0fa50953a71d55adeccc79462eed
+ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/12/2019
-ms.locfileid: "68954905"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73747531"
 ---
 # <a name="restore-azure-virtual-machines-using-rest-api"></a>Przywracanie maszyn wirtualnych platformy Azure przy użyciu interfejsu API REST
 
@@ -31,19 +31,19 @@ Dostępne punkty odzyskiwania elementu kopii zapasowej można wyświetlić za po
 GET https://management.azure.com/Subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/backupFabrics/{fabricName}/protectionContainers/{containerName}/protectedItems/{protectedItemName}/recoveryPoints?api-version=2016-12-01
 ```
 
-I są tak skonstruowane w [tym miejscu.](backup-azure-arm-userestapi-backupazurevms.md#example-responses-1) `{containerName}` `{protectedItemName}` `{fabricName}`to "Azure".
+`{containerName}` i `{protectedItemName}` są tak skonstruowane w [tym miejscu](backup-azure-arm-userestapi-backupazurevms.md#example-responses-1). `{fabricName}` to "Azure".
 
 Identyfikator URI *Get* zawiera wszystkie wymagane parametry. Nie ma potrzeby dodatkowej treści żądania
 
-### <a name="responses"></a>Responses
+### <a name="responses"></a>Odpowiedzi
 
-|Name (Nazwa)  |Typ  |Opis  |
+|Nazwa  |Typ  |Opis  |
 |---------|---------|---------|
 |200 OK     |   [RecoveryPointResourceList](https://docs.microsoft.com/rest/api/backup/recoverypoints/list#recoverypointresourcelist)      |       OK  |
 
 #### <a name="example-response"></a>Przykładowa odpowiedź
 
-Po przesłaniu identyfikatora URI zostanie zwrócona odpowiedź 200 (OK).
+Po przesłaniu *identyfikatora URI zostanie* zwrócona odpowiedź 200 (ok).
 
 ```http
 HTTP/1.1 200 OK
@@ -119,7 +119,7 @@ X-Powered-By: ASP.NET
 ......
 ```
 
-Punkt odzyskiwania jest identyfikowany z `{name}` polem w powyższej odpowiedzi.
+Punkt odzyskiwania jest identyfikowany za pomocą pola `{name}` w powyższej odpowiedzi.
 
 ## <a name="restore-disks"></a>Przywróć dyski
 
@@ -131,13 +131,13 @@ Wyzwalanie dysków przywracania to żądanie *post* . Aby dowiedzieć się więc
 POST https://management.azure.com/Subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/backupFabrics/{fabricName}/protectionContainers/{containerName}/protectedItems/{protectedItemName}/recoveryPoints/{recoveryPointId}/restore?api-version=2016-12-01
 ```
 
-I są tak skonstruowane w [tym miejscu.](backup-azure-arm-userestapi-backupazurevms.md#example-responses-1) `{containerName}` `{protectedItemName}` `{fabricName}`to "Azure", a `{recoveryPointId}` to `{name}` pole jest polem punktu odzyskiwania wymienionego [powyżej](#example-response).
+`{containerName}` i `{protectedItemName}` są tak skonstruowane w [tym miejscu](backup-azure-arm-userestapi-backupazurevms.md#example-responses-1). `{fabricName}` to "Azure", a `{recoveryPointId}` to pole `{name}` w punkcie odzyskiwania wymienionym [powyżej](#example-response).
 
 ### <a name="create-request-body"></a>Utwórz treść żądania
 
 Aby wyzwolić przywracanie dysku z kopii zapasowej maszyny wirtualnej platformy Azure, poniżej przedstawiono składniki treści żądania.
 
-|Name (Nazwa)  |Typ  |Opis  |
+|Nazwa  |Typ  |Opis  |
 |---------|---------|---------|
 |properties     | [IaaSVMRestoreRequest](https://docs.microsoft.com/rest/api/backup/restores/trigger#iaasvmrestorerequest)        |    RestoreRequestResourceProperties     |
 
@@ -167,17 +167,17 @@ Następująca treść żądania definiuje właściwości wymagane do wyzwolenia 
 
 ### <a name="response"></a>Odpowiedź
 
-Wyzwalanie dysku przywracania jest operacją asynchroniczną [](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-async-operations). Oznacza to, że ta operacja tworzy kolejną operację, która musi być śledzona oddzielnie.
+Wyzwalanie dysku przywracania jest [operacją asynchroniczną](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-async-operations). Oznacza to, że ta operacja tworzy kolejną operację, która musi być śledzona oddzielnie.
 
-Zwraca dwie odpowiedzi: 202 (zaakceptowane) podczas tworzenia innej operacji, a następnie 200 (OK) po zakończeniu tej operacji.
+Zwraca dwie odpowiedzi: 202 (zaakceptowane), gdy tworzona jest inna operacja, a następnie 200 (OK) po zakończeniu tej operacji.
 
-|Name (Nazwa)  |Typ  |Opis  |
+|Nazwa  |Typ  |Opis  |
 |---------|---------|---------|
-|202 zaakceptowane     |         |     Zaakceptowany    |
+|202 zaakceptowane     |         |     Przyjmować    |
 
 #### <a name="example-responses"></a>Przykładowe odpowiedzi
 
-Po przesłaniu identyfikatora URI dla wyzwalania dysków przywracania początkowa odpowiedź to 202 (zaakceptowane) z nagłówkiem lokalizacji lub z nagłówkiem Azure-Async-header.
+*Po przesłaniu identyfikatora URI* dla wyzwalania dysków przywracania początkowa odpowiedź to 202 (zaakceptowane) z nagłówkiem lokalizacji lub z nagłówkiem Azure-Async-header.
 
 ```http
 HTTP/1.1 202 Accepted
@@ -284,4 +284,4 @@ Odpowiedź powinna być obsługiwana w taki sam sposób, jak [wyjaśniono powyż
 Aby uzyskać więcej informacji na temat Azure Backup interfejsów API REST, zobacz następujące dokumenty:
 
 - [Interfejs API REST dostawcy usługi Azure Recovery Services](/rest/api/recoveryservices/)
-- [Wprowadzenie do interfejsu API REST platformy Azure](/rest/api/azure/)
+- [Rozpoczynanie pracy z interfejsem API REST platformy Azure](/rest/api/azure/)

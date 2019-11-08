@@ -1,6 +1,6 @@
 ---
 title: Odzyskiwanie plików z platformy Azure na serwer z systemem Windows
-description: Ten samouczek zawiera szczegółowy opis odzyskiwania elementów z platformy Azure na serwer z systemem Windows.
+description: W tym samouczku dowiesz się, jak używać agenta Microsoft Azure Recovery Services Agent (MARS) do odzyskiwania elementów z platformy Azure do systemu Windows Server.
 author: dcurwin
 manager: carmonm
 ms.service: backup
@@ -8,27 +8,28 @@ ms.topic: tutorial
 ms.date: 02/14/2018
 ms.author: dacurwin
 ms.custom: mvc
-ms.openlocfilehash: e03c085a9671ba84d3af63da658f749f09ebcdef
-ms.sourcegitcommit: d470d4e295bf29a4acf7836ece2f10dabe8e6db2
+ms.openlocfilehash: a0945c70b271d5213e8eb5b6adbd768ec390f40b
+ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/02/2019
-ms.locfileid: "70210072"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73746933"
 ---
 # <a name="recover-files-from-azure-to-a-windows-server"></a>Odzyskiwanie plików z platformy Azure na serwer z systemem Windows
 
 Usługa Azure Backup umożliwia odzyskiwanie wybranych elementów z kopii zapasowych serwera z systemem Windows. Odzyskiwanie pojedynczych plików to przydatny sposób szybkiego przywracania przypadkowo usuniętych plików. W tym samouczku opisano, jak przy użyciu agenta usługi Microsoft Azure Recovery Services (MARS) odzyskać elementy z kopii zapasowych utworzonych uprzednio na platformie Azure. Ten samouczek zawiera informacje na temat wykonywania następujących czynności:
 
 > [!div class="checklist"]
-> * Rozpoczynanie odzyskiwana pojedynczych plików 
-> * Wybieranie punktu odzyskiwania 
+>
+> * Rozpoczynanie odzyskiwana pojedynczych plików
+> * Wybieranie punktu odzyskiwania
 > * Przywracanie elementów z punktu odzyskiwania
 
 W tym samouczku założono, że wykonano już czynności opisane w temacie [Tworzenie kopii zapasowej serwerów z systemem Windows na platformie Azure](backup-configure-vault.md) i utworzono co najmniej jedną kopię zapasową plików z serwera z systemem Windows na platformie Azure.
 
 ## <a name="initiate-recovery-of-individual-items"></a>Rozpoczynanie odzyskiwana pojedynczych plików
 
-Wraz z agentem usługi Microsoft Azure Recovery Services (MARS) jest instalowany przydatny kreator Microsoft Azure Backup oparty na interfejsie użytkownika. Kreator Microsoft Azure Backup współdziała z agentem usługi MARS w celu pobrania danych kopii zapasowej z punktów odzyskiwania przechowywanych na platformie Azure. Przy użyciu kreatora Microsoft Azure Backup możesz zidentyfikować pliki lub foldery, które chcesz przywrócić na serwer z systemem Windows. 
+Wraz z agentem usługi Microsoft Azure Recovery Services (MARS) jest instalowany przydatny kreator Microsoft Azure Backup oparty na interfejsie użytkownika. Kreator Microsoft Azure Backup współdziała z agentem usługi MARS w celu pobrania danych kopii zapasowej z punktów odzyskiwania przechowywanych na platformie Azure. Przy użyciu kreatora Microsoft Azure Backup możesz zidentyfikować pliki lub foldery, które chcesz przywrócić na serwer z systemem Windows.
 
 1. Otwórz przystawkę **Microsoft Azure Backup**. Aby go znaleźć, wyszukaj na maszynie łańcuch **Microsoft Azure Backup**.
 
@@ -41,16 +42,16 @@ Wraz z agentem usługi Microsoft Azure Recovery Services (MARS) jest instalowany
 3. Na stronie **Wprowadzenie** wybierz pozycję **Ten serwer (nazwa serwera)** i kliknij przycisk **Dalej**.
 
 4. Na stronie **Wybierz tryb odzyskiwania** wybierz pozycję **Pojedyncze pliki i foldery**, a następnie kliknij przycisk **Dalej**, aby rozpocząć proces wyboru punktu odzyskiwania.
- 
+
 5. Na stronie **Wybierz wolumin i datę** wybierz wolumin zawierający pliki lub foldery, które chcesz przywrócić, a następnie kliknij przycisk **Zainstaluj**. Wybierz datę, a następnie wybierz z menu rozwijanego godzinę odpowiadającą wybranemu punktowi odzyskiwania. **Pogrubioną czcionką** są wyróżnione daty, dla których jest dostępny co najmniej jeden punkt odzyskiwania.
 
     ![Oczekiwanie na kopię zapasową](./media/tutorial-backup-restore-files-windows-server/mars-select-date.png)
- 
+
     Po kliknięciu przycisku **Zainstaluj** usługa Azure Backup udostępnia punkt odzyskiwania jako dysk. Możesz przeglądać pliki na dysku i odzyskiwać je.
 
 ## <a name="restore-items-from-a-recovery-point"></a>Przywracanie elementów z punktu odzyskiwania
 
-1. Po zainstalowaniu woluminu odzyskiwania kliknij przycisk **Przeglądaj**, aby otworzyć Eksploratora Windows i znaleźć pliki i foldery, które chcesz odzyskać. 
+1. Po zainstalowaniu woluminu odzyskiwania kliknij przycisk **Przeglądaj**, aby otworzyć Eksploratora Windows i znaleźć pliki i foldery, które chcesz odzyskać.
 
     ![Oczekiwanie na kopię zapasową](./media/tutorial-backup-restore-files-windows-server/mars-browse-recover.png)
 
@@ -60,11 +61,11 @@ Wraz z agentem usługi Microsoft Azure Recovery Services (MARS) jest instalowany
 
     ![Oczekiwanie na kopię zapasową](./media/tutorial-backup-restore-files-windows-server/mars-final.png)
 
-3. Po zakończeniu przywracania plików i/lub folderów kliknij przycisk **Odinstaluj** na stronie **Przeglądanie i odzyskiwanie plików** w **Kreatorze odzyskiwania danych**. 
+3. Po zakończeniu przywracania plików i/lub folderów kliknij przycisk **Odinstaluj** na stronie **Przeglądanie i odzyskiwanie plików** w **Kreatorze odzyskiwania danych**.
 
     ![Oczekiwanie na kopię zapasową](./media/tutorial-backup-restore-files-windows-server/unmount-and-confirm.png)
 
-4.  Kliknij przycisk **Tak**, aby potwierdzić, że chcesz odinstalować wolumin.
+4. Kliknij przycisk **Tak**, aby potwierdzić, że chcesz odinstalować wolumin.
 
     Po odinstalowaniu migawki zobaczysz komunikat **Ukończono zadanie** w okienku **Zadania** w konsoli agenta.
 

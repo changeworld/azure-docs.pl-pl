@@ -1,6 +1,6 @@
 ---
-title: 'Resetowanie obwodu nie powiodło się — ExpressRoute: Program PowerShell: Azure | Microsoft Docs'
-description: Ten artykuł pomoże Ci zresetować obwodu usługi ExpressRoute, która jest w stanie niepowodzenia.
+title: 'Resetowanie obwodu zakończonego niepowodzeniem — ExpressRoute: PowerShell: Azure | Microsoft Docs'
+description: Ten artykuł pomaga zresetować obwód ExpressRoute, który jest w stanie niepowodzenia.
 services: expressroute
 author: anzaman
 ms.service: expressroute
@@ -8,20 +8,20 @@ ms.topic: article
 ms.date: 11/28/2018
 ms.author: anzaman
 ms.custom: seodec18
-ms.openlocfilehash: f6fd8e5f0e5730e55fa5bbe13f74be796dd6a4cb
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: deeb1c65cae7e3a5b42230dbda1ad8efa717ba0b
+ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66115839"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73748105"
 ---
-# <a name="reset-a-failed-expressroute-circuit"></a>Resetowanie obwodu usługi ExpressRoute nie powiodło się
+# <a name="reset-a-failed-expressroute-circuit"></a>Zresetuj niepowodzenie obwodu ExpressRoute
 
-Podczas operacji na obwód usługi ExpressRoute nie zostanie ukończone pomyślnie, obwód może przejść do stanu "failed". Ten artykuł pomoże Ci Resetowanie obwodu ExpressRoute systemu Azure nie powiodło się.
+Gdy operacja w obwodzie obwodu ExpressRoute nie zostanie zakończona pomyślnie, obwód może przejść do stanu "Niepowodzenie". Ten artykuł pomaga zresetować niepowodzenie obwodu usługi Azure ExpressRoute.
 
-[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+[!INCLUDE [updated-for-az](../../includes/hybrid-az-ps.md)]
 
-## <a name="reset-a-circuit"></a>Resetowanie obwodu
+## <a name="reset-a-circuit"></a>Zresetuj obwód
 
 1. Zainstaluj najnowszą wersję poleceń cmdlet programu PowerShell usługi Azure Resource Manager. Aby uzyskać więcej informacji, zobacz [Instalowanie i konfigurowanie programu Azure PowerShell](/powershell/azure/install-az-ps).
 
@@ -40,7 +40,7 @@ Podczas operacji na obwód usługi ExpressRoute nie zostanie ukończone pomyśln
    ```azurepowershell-interactive
    Select-AzSubscription -SubscriptionName "Replace_with_your_subscription_name"
    ```
-5. Uruchom następujące polecenia, aby Resetowanie obwodu, która jest w stanie niepowodzenia:
+5. Uruchom następujące polecenia, aby zresetować obwód, który jest w stanie niepowodzenia:
 
    ```azurepowershell-interactive
    $ckt = Get-AzExpressRouteCircuit -Name "ExpressRouteARMCircuit" -ResourceGroupName "ExpressRouteResourceGroup"
@@ -48,8 +48,8 @@ Podczas operacji na obwód usługi ExpressRoute nie zostanie ukończone pomyśln
    Set-AzExpressRouteCircuit -ExpressRouteCircuit $ckt
    ```
 
-Obwód powinien być teraz w dobrej kondycji. Otwórz bilet pomocy technicznej za pomocą [pomocy technicznej firmy Microsoft](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) Jeśli obwód jest nadal w stanie niepowodzenia.
+Obwód powinien teraz być w dobrej kondycji. Otwórz bilet pomocy technicznej w ramach [pomocy technicznej firmy Microsoft](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) , jeśli obwód nadal jest w stanie awarii.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
-Otwórz bilet pomocy technicznej za pomocą [pomocy technicznej firmy Microsoft](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) Jeśli nadal występują problemy.
+Otwórz bilet pomocy technicznej w [pomocy technicznej firmy Microsoft](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) , jeśli nadal występują problemy.

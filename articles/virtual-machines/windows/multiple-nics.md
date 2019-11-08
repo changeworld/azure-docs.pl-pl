@@ -13,21 +13,21 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 09/26/2017
 ms.author: cynthn
-ms.openlocfilehash: d10844a52505331418e3bc4e9b36d00a5a7e7b6f
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: f7f4e65253e0fc160da4d343115e9115abfab808
+ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70102628"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73749313"
 ---
 # <a name="create-and-manage-a-windows-virtual-machine-that-has-multiple-nics"></a>Tworzenie maszyny wirtualnej z systemem Windows i zarządzanie nią z wieloma kartami sieciowymi
 Maszyny wirtualne na platformie Azure mogą mieć dołączone do nich wiele kart interfejsów sieci wirtualnej (nic). Typowym scenariuszem jest posiadanie różnych podsieci na potrzeby łączności frontonu i zaplecza. Można skojarzyć wiele kart sieciowych na maszynie wirtualnej z wieloma podsieciami, ale te podsieci muszą znajdować się w tej samej sieci wirtualnej (vNet). W tym artykule szczegółowo opisano sposób tworzenia maszyny wirtualnej, do której dołączono wiele kart sieciowych. Dowiesz się również, jak dodawać i usuwać karty sieciowe z istniejącej maszyny wirtualnej. Różne [rozmiary maszyn wirtualnych](sizes.md) obsługują różną liczbę kart sieciowych, dlatego należy odpowiednio zmienić rozmiar maszyny wirtualnej.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-W poniższych przykładach Zastąp przykładowe nazwy parametrów własnymi wartościami. Przykładowe nazwy parametrów obejmują: *MyVnet*, i *myVM*.
+W poniższych przykładach Zastąp przykładowe nazwy parametrów własnymi wartościami. Przykładowe nazwy *parametrów obejmują:* *MyVnet*, i *myVM*.
 
-[!INCLUDE [updated-for-az.md](../../../includes/updated-for-az.md)]
+ 
 
 ## <a name="create-a-vm-with-multiple-nics"></a>Tworzenie maszyny wirtualnej z wieloma kartami sieciowymi
 Najpierw utwórz grupę zasobów. Poniższy przykład tworzy grupę zasobów o nazwie Moja *zasobów* w lokalizacji *Wschodnie* :
@@ -81,7 +81,7 @@ Zwykle należy również utworzyć [sieciową grupę zabezpieczeń](../../virtua
 ### <a name="create-the-virtual-machine"></a>Tworzenie maszyny wirtualnej
 Teraz zacznij tworzyć konfigurację maszyny wirtualnej. Każdy rozmiar maszyny wirtualnej ma limit łącznej liczby kart sieciowych, które można dodać do maszyny wirtualnej. Aby uzyskać więcej informacji, zobacz [rozmiary maszyn wirtualnych z systemem Windows](sizes.md).
 
-1. Skonfiguruj poświadczenia maszyny wirtualnej do `$cred` zmiennej w następujący sposób:
+1. Skonfiguruj poświadczenia maszyny wirtualnej w zmiennej `$cred` w następujący sposób:
 
     ```powershell
     $cred = Get-Credential
@@ -109,7 +109,7 @@ Teraz zacznij tworzyć konfigurację maszyny wirtualnej. Każdy rozmiar maszyny 
         -Version "latest"
    ```
 
-4. Dołącz dwie utworzone wcześniej karty sieciowe z dodatkiem [Add-AzVMNetworkInterface](https://docs.microsoft.com/powershell/module/az.compute/add-azvmnetworkinterface):
+4. Dołącz dwie utworzone wcześniej karty sieciowe z [dodatkiem Add-AzVMNetworkInterface](https://docs.microsoft.com/powershell/module/az.compute/add-azvmnetworkinterface):
 
     ```powershell
     $vmConfig = Add-AzVMNetworkInterface -VM $vmConfig -Id $myNic1.Id -Primary
@@ -139,7 +139,7 @@ Aby dodać wirtualną kartę sieciową do istniejącej maszyny wirtualnej, Cofni
     $vm = Get-AzVm -Name "myVM" -ResourceGroupName "myResourceGroup"
     ```
 
-3. Poniższy przykład tworzy wirtualną kartę sieciową z [nowym-AzNetworkInterface](https://docs.microsoft.com/powershell/module/az.network/new-aznetworkinterface) o nazwie *myNic3* , która jest dołączona do *mySubnetBackEnd*. Wirtualna karta sieciowa jest następnie dołączona do maszyny wirtualnej o nazwie *myVM* w usłudze *resourceName* z dodatkiem [Add-AzVMNetworkInterface](https://docs.microsoft.com/powershell/module/az.compute/add-azvmnetworkinterface):
+3. Poniższy przykład tworzy wirtualną kartę sieciową z [nowym-AzNetworkInterface](https://docs.microsoft.com/powershell/module/az.network/new-aznetworkinterface) o nazwie *myNic3* , która jest dołączona do *mySubnetBackEnd*. Wirtualna karta sieciowa jest następnie dołączona do maszyny wirtualnej o nazwie *myVM* w usłudze *resourceName* z [dodatkiem Add-AzVMNetworkInterface](https://docs.microsoft.com/powershell/module/az.compute/add-azvmnetworkinterface):
 
     ```powershell
     # Get info for the back end subnet
@@ -204,7 +204,7 @@ Aby usunąć wirtualną kartę sieciową z istniejącej maszyny wirtualnej, Cofn
     $nicId = (Get-AzNetworkInterface -ResourceGroupName "myResourceGroup" -Name "myNic3").Id   
     ```
 
-4. Usuń kartę sieciową za pomocą polecenie [Remove-AzVMNetworkInterface](https://docs.microsoft.com/powershell/module/az.compute/remove-azvmnetworkinterface) , a następnie zaktualizuj maszynę wirtualną za pomocą polecenie [Update-AzVm](https://docs.microsoft.com/powershell/module/az.compute/update-azvm). Poniższy przykład usuwa *myNic3* jako uzyskany `$nicId` w poprzednim kroku:
+4. Usuń kartę sieciową za pomocą polecenie [Remove-AzVMNetworkInterface](https://docs.microsoft.com/powershell/module/az.compute/remove-azvmnetworkinterface) , a następnie zaktualizuj maszynę wirtualną za pomocą polecenie [Update-AzVm](https://docs.microsoft.com/powershell/module/az.compute/update-azvm). Poniższy przykład usuwa *myNic3* w sposób uzyskany przez `$nicId` w poprzednim kroku:
 
     ```powershell
     Remove-AzVMNetworkInterface -VM $vm -NetworkInterfaceIDs $nicId | `
@@ -229,7 +229,7 @@ Szablony Azure Resource Manager umożliwiają tworzenie wielu wystąpień zasobu
 
 Aby uzyskać więcej informacji, zobacz [Tworzenie wielu wystąpień przy *użyciu kopii*](../../resource-group-create-multiple.md). 
 
-Można również użyć `copyIndex()` do dołączenia numeru do nazwy zasobu. Następnie można utworzyć *myNic1*, *MyNic2* i tak dalej. Poniższy kod przedstawia przykład dołączania wartości indeksu:
+Możesz również użyć `copyIndex()`, aby dołączyć liczbę do nazwy zasobu. Następnie można utworzyć *myNic1*, *MyNic2* i tak dalej. Poniższy kod przedstawia przykład dołączania wartości indeksu:
 
 ```json
 "name": "[concat('myNic', copyIndex())]", 
@@ -243,7 +243,7 @@ Aby dodać trasy dla pomocniczych kart sieciowych do systemu operacyjnego, wykon
 
 Platforma Azure przypisuje bramę domyślną do pierwszego (podstawowego) interfejsu sieciowego dołączonego do maszyny wirtualnej. Platforma Azure domyślnie nie przypisuje domyślnej bramy do dodatkowych interfejsów sieciowych dołączonych do maszyny wirtualnej. Dlatego domyślnie nie można komunikować się z zasobami poza podsiecią, w której znajduje się dodatkowy interfejs sieciowy. Dodatkowe interfejsy sieciowe mogą jednak komunikować się z zasobami poza ich podsiecią, mimo że kroki umożliwiające komunikację są różne dla różnych systemów operacyjnych.
 
-1. W wierszu polecenia systemu Windows uruchom `route print` polecenie, które zwraca dane wyjściowe podobne do następujących danych wyjściowych dla maszyny wirtualnej z dwoma podłączonymi interfejsami sieciowymi:
+1. W wierszu polecenia systemu Windows uruchom polecenie `route print`, które zwraca dane wyjściowe podobne do następujących danych wyjściowych dla maszyny wirtualnej z dwoma podłączonymi interfejsami sieciowymi:
 
     ```
     ===========================================================================
@@ -255,7 +255,7 @@ Platforma Azure przypisuje bramę domyślną do pierwszego (podstawowego) interf
  
     W tym przykładzie **Microsoft Hyper-V karcie sieciowej #4** (interfejs 7) to pomocniczy interfejs sieciowy, do którego nie jest przypisana Brama domyślna.
 
-2. W wierszu polecenia Uruchom `ipconfig` polecenie, aby sprawdzić, który adres IP jest przypisany do pomocniczego interfejsu sieciowego. W tym przykładzie 192.168.2.4 jest przypisany do interfejsu 7. Dla pomocniczego interfejsu sieciowego nie jest zwracany żaden adres bramy domyślnej.
+2. W wierszu polecenia Uruchom polecenie `ipconfig`, aby sprawdzić, który adres IP jest przypisany do pomocniczego interfejsu sieciowego. W tym przykładzie 192.168.2.4 jest przypisany do interfejsu 7. Dla pomocniczego interfejsu sieciowego nie jest zwracany żaden adres bramy domyślnej.
 
 3. Aby skierować cały ruch przeznaczony dla adresów spoza podsieci pomocniczego interfejsu sieciowego do bramy podsieci, uruchom następujące polecenie:
 
@@ -281,7 +281,7 @@ Platforma Azure przypisuje bramę domyślną do pierwszego (podstawowego) interf
       netsh advfirewall firewall add rule name=Allow-ping protocol=icmpv4 dir=in action=allow
       ```
   
-5. Aby potwierdzić, że dodana trasa znajduje się w tabeli tras, wprowadź `route print` polecenie, które zwraca dane wyjściowe podobne do następującego tekstu:
+5. Aby potwierdzić, że dodana trasa znajduje się w tabeli tras, wprowadź polecenie `route print`, które zwraca dane wyjściowe podobne do następującego tekstu:
 
     ```
     ===========================================================================

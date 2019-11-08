@@ -1,6 +1,6 @@
 ---
 title: Kontrolki zabezpieczeń dla Azure Backup
-description: Lista kontrolna kontroli zabezpieczeń dla oceny Azure Backup
+description: Dowiedz się więcej o kontrolkach zabezpieczeń używanych w usłudze Azure Backup. Te kontrolki ułatwiają zapobieganie wykrywaniu luk w zabezpieczeniach, wykrywanie ich i reagowanie na nie.
 ms.reviewer: mbaldwin
 author: dcurwin
 manager: carmonm
@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 09/23/2019
 ms.author: dacurwin
-ms.openlocfilehash: 8170022a3ee4b4b65e8da0d9e5a2f8464675d08f
-ms.sourcegitcommit: f29fec8ec945921cc3a89a6e7086127cc1bc1759
+ms.openlocfilehash: 9d7bb2e9ea2d2cf9cce6c4f6d3b4f3346e7ce363
+ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72528107"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73747152"
 ---
 # <a name="security-controls-for-azure-backup"></a>Kontrolki zabezpieczeń dla Azure Backup
 
@@ -34,7 +34,7 @@ W tym artykule opisano kontrolki zabezpieczeń wbudowane w Azure Backup.
 
 | Kontrola zabezpieczeń | Tak/Nie | Uwagi| | Dokumentacja
 |---|---|--|
-| Pomoc techniczna dotycząca monitorowania platformy Azure (log Analytics, App Insights itp.)| Tak | Log Analytics jest obsługiwana za pośrednictwem dzienników zasobów. Aby uzyskać więcej informacji, zobacz [monitorowanie Azure Backup chronionych obciążeń przy użyciu log Analytics](https://azure.microsoft.com/blog/monitor-all-azure-backup-protected-workloads-using-log-analytics/) . |  |
+| Pomoc techniczna dotycząca monitorowania platformy Azure (log Analytics, App Insights itp.)| Tak | Log Analytics jest obsługiwana za pośrednictwem dzienników zasobów. Aby uzyskać więcej informacji, zobacz [monitorowanie Azure Backup chronionych obciążeń przy użyciu log Analytics](https://azure.microsoft.com/blog/monitor-all-azure-backup-protected-workloads-using-log-analytics/). |  |
 | Rejestrowanie i inspekcja płaszczyzny kontroli i zarządzania| Tak | Wszystkie akcje wyzwalane przez klienta z Azure Portal są rejestrowane w dziennikach aktywności. |  |
 | Rejestrowanie i inspekcja płaszczyzny danych| Nie | Nie można bezpośrednio połączyć Azure Backup płaszczyzny danych.  |  |
 
@@ -42,8 +42,8 @@ W tym artykule opisano kontrolki zabezpieczeń wbudowane w Azure Backup.
 
 | Kontrola zabezpieczeń | Tak/Nie | Uwagi| | Dokumentacja
 |---|---|--|
-| Uwierzytelnianie| Tak | Uwierzytelnianie odbywa się za Azure Active Directory. |  |
-| Autoryzacja| Tak | Są używane wbudowane role RBAC klienta. Aby uzyskać więcej informacji, zobacz temat [używanie Access Control opartych na rolach w celu zarządzania Azure Backup punktów odzyskiwania](/azure/backup/backup-rbac-rs-vault) . |  |
+| Authentication| Tak | Uwierzytelnianie odbywa się za Azure Active Directory. |  |
+| Autoryzacja| Tak | Są używane wbudowane role RBAC klienta. Aby uzyskać więcej informacji, zobacz [używanie Access Control opartej na rolach w celu zarządzania Azure Backup punktów odzyskiwania](/azure/backup/backup-rbac-rs-vault). |  |
 
 ## <a name="data-protection"></a>Ochrona danych
 

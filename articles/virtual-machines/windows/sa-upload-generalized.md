@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 05/18/2017
 ms.author: cynthn
 ROBOTS: NOINDEX
-ms.openlocfilehash: ac1572a75a3310afb9d0e0a34c6751ed12d839f9
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 24ed7b75dfa8cb09c530a3f4a896aa9ff9aa92b5
+ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70102441"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73749179"
 ---
 # <a name="upload-a-generalized-vhd-to-azure-to-create-a-new-vm"></a>Przekaż uogólniony wirtualny dysk twardy do platformy Azure, aby utworzyć nową maszynę wirtualną
 
@@ -30,7 +30,7 @@ Jeśli chcesz utworzyć maszynę wirtualną na podstawie wyspecjalizowanego wirt
 
 W tym temacie omówiono korzystanie z kont magazynu, ale zalecamy, aby klienci przechodzą do korzystania z Managed Disks zamiast tego. Aby zapoznać się z kompletnymi krokami przygotowywania, przekazywania i tworzenia nowej maszyny wirtualnej przy użyciu dysków zarządzanych, zobacz [Tworzenie nowej maszyny wirtualnej na podstawie uogólnionego wirtualnego dysku twardego przekazanego do platformy Azure przy użyciu Managed disks](upload-generalized-managed.md).
 
-[!INCLUDE [updated-for-az.md](../../../includes/updated-for-az.md)]
+ 
 
 ## <a name="prepare-the-vm"></a>Przygotowywanie maszyny wirtualnej
 
@@ -45,7 +45,7 @@ W tej sekcji pokazano, jak uogólnić maszynę wirtualną z systemem Windows w c
 Upewnij się, że role serwera uruchomione na komputerze są obsługiwane przez program Sysprep. Aby uzyskać więcej informacji, zobacz [Obsługa narzędzia Sysprep dla ról serwera](https://msdn.microsoft.com/windows/hardware/commercialize/manufacture/desktop/sysprep-support-for-server-roles)
 
 > [!IMPORTANT]
-> Jeśli używasz programu Sysprep przed przekazaniem wirtualnego dysku twardego do platformy Azure po raz pierwszy, upewnij się, że [maszyna wirtualna](prepare-for-upload-vhd-image.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) została przygotowana przed uruchomieniem narzędzia Sysprep. 
+> Jeśli używasz programu Sysprep przed przekazaniem wirtualnego dysku twardego do platformy Azure po raz pierwszy, upewnij się, że [maszyna wirtualna została przygotowana](prepare-for-upload-vhd-image.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) przed uruchomieniem narzędzia Sysprep. 
 > 
 > 
 
@@ -81,7 +81,7 @@ Jeśli nie masz jeszcze zainstalowanego programu PowerShell w wersji 1,4 lub now
     ```powershell
     Get-AzSubscription
     ```
-3. Ustaw poprawną subskrypcję przy użyciu identyfikatora subskrypcji. Zamień `<subscriptionID>` na identyfikator poprawnej subskrypcji.
+3. Ustaw poprawną subskrypcję przy użyciu identyfikatora subskrypcji. Zastąp `<subscriptionID>` IDENTYFIKATORem poprawnej subskrypcji.
    
     ```powershell
     Select-AzSubscription -SubscriptionId "<subscriptionID>"
@@ -121,7 +121,7 @@ Jeśli musisz utworzyć konto magazynu, wykonaj następujące czynności:
  
 ### <a name="start-the-upload"></a>Rozpocznij przekazywanie 
 
-Użyj polecenia cmdlet [Add-AzVhd](https://docs.microsoft.com/powershell/module/az.compute/add-azvhd) , aby przekazać obraz do kontenera na koncie magazynu. Ten przykład przekazuje plik **myVHD. VHD** z `"C:\Users\Public\Documents\Virtual hard disks\"` do konta magazynu o nazwie **mojekontomagazynu** w grupie zasobów zasobu. Plik zostanie umieszczony w kontenerze o nazwie Moja kontener, a nowa nazwa pliku będzie **myUploadedVHD. VHD**.
+Użyj polecenia cmdlet [Add-AzVhd](https://docs.microsoft.com/powershell/module/az.compute/add-azvhd) , aby przekazać obraz do kontenera na koncie magazynu. Ten przykład przekazuje plik **myVHD. VHD** z `"C:\Users\Public\Documents\Virtual hard disks\"` do konta magazynu o nazwie **mojekontomagazynu** w **grupie zasobów zasobu** . Plik zostanie umieszczony w kontenerze o nazwie Moja **kontener, a nowa** nazwa pliku będzie **myUploadedVHD. VHD**.
 
 ```powershell
 $rgName = "myResourceGroup"
@@ -148,13 +148,13 @@ C:\Users\Public\Doc...  https://mystorageaccount.blob.core.windows.net/mycontain
 W zależności od połączenia sieciowego i rozmiaru pliku VHD, wykonanie tego polecenia może potrwać trochę czasu.
 
 
-## <a name="create-a-new-vm"></a>Utwórz nową maszynę wirtualną 
+## <a name="create-a-new-vm"></a>Utworzenie nowej maszyny wirtualnej. 
 
 Możesz teraz użyć przekazanego wirtualnego dysku twardego do utworzenia nowej maszyny wirtualnej. 
 
 ### <a name="set-the-uri-of-the-vhd"></a>Ustawianie identyfikatora URI wirtualnego dysku twardego
 
-Identyfikator URI używanego wirtualnego dysku twardego ma format: https://**mojekontomagazynu**. blob.Core.Windows.NET/er/**MyVhdName**. VHD. W tym przykładzie wirtualny dysk twardy o nazwie **myVHD** znajduje się na koncie magazynu **mojekontomagazynu** wkontenerze.
+Identyfikator URI używanego wirtualnego dysku twardego ma format: https://**mojekontomagazynu** **. blob.Core.Windows.NET/er**/**MyVhdName**. VHD. W tym przykładzie wirtualny dysk twardy o nazwie **myVHD** znajduje się na koncie magazynu **mojekontomagazynu** w **kontenerze**.
 
 ```powershell
 $imageURI = "https://mystorageaccount.blob.core.windows.net/mycontainer/myVhd.vhd"
@@ -164,7 +164,7 @@ $imageURI = "https://mystorageaccount.blob.core.windows.net/mycontainer/myVhd.vh
 ### <a name="create-a-virtual-network"></a>Tworzenie sieci wirtualnej
 Utworzyć sieć wirtualną i podsieć [sieci wirtualnej](../../virtual-network/virtual-networks-overview.md).
 
-1. Utwórz podsieć. Poniższy przykład tworzy podsieć o nazwie Moja podsieć w grupie zasobów Grupa zasobu z prefiksem adresu **10.0.0.0/24**.  
+1. Utwórz podsieć. Poniższy przykład tworzy podsieć o nazwie Moja **podsieć** **w grupie zasobów Grupa zasobu z** prefiksem adresu **10.0.0.0/24**.  
    
     ```powershell
     $rgName = "myResourceGroup"
