@@ -1,6 +1,6 @@
 ---
-title: Projektowanie tabel usługi Azure Cosmos DB do obsługi skalowania i wydajności
-description: 'Przewodnik po projektowaniu tabel usługi Azure Storage: Projektowanie skalowalnych i wydajnych tabel w usłudze Azure Cosmos DB i Azure Storage Table'
+title: Projektowanie tabel Azure Cosmos DB do obsługi skalowania i wydajności
+description: 'Przewodnik dotyczący projektowania tabeli usługi Azure Storage: projektowanie skalowalnych i wydajnych tabel w Azure Cosmos DB i tabeli usługi Azure Storage'
 ms.service: cosmos-db
 ms.subservice: cosmosdb-table
 ms.topic: conceptual
@@ -8,30 +8,30 @@ ms.date: 05/21/2019
 author: wmengmsft
 ms.author: wmeng
 ms.custom: seodec18
-ms.openlocfilehash: 0812828f8d7c0be38fb03c06f4a10019e2ed153c
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: 499ac3a394339ebb07c36abeaaa761de22927941
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67447300"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73827770"
 ---
-# <a name="azure-storage-table-design-guide-designing-scalable-and-performant-tables"></a>Przewodnik po projektowaniu tabel usługi Azure Storage: Projektowanie skalowalnych i wydajnych tabel
+# <a name="azure-storage-table-design-guide-designing-scalable-and-performant-tables"></a>Przewodnik dotyczący projektowania tabeli usługi Azure Storage: projektowanie skalowalnych i wydajnych tabel
 
 [!INCLUDE [storage-table-cosmos-db-tip-include](../../includes/storage-table-cosmos-db-tip-include.md)]
 
-Projektowanie skalowalnych i wydajnych tabel, które należy wziąć pod uwagę wiele czynników, takich jak wydajność, skalowalność i kosztów. Jeśli wcześniej zostały tak zaprojektowane schematów dla relacyjnych baz danych, tych zagadnień będzie znane, ale istnieją pewne podobieństwa między modelu magazynu usługi Azure Table i modeli relacyjnych, są również istotne różnice w wielu. Różnice te zwykle prowadzić do różnych projektów, który może wyglądać counter-intuitive lub jest on nieprawidłowy komuś zapoznać się z relacyjnych baz danych, ale Jeśli projektujesz do magazynu klucz wartość NoSQL, takie jak usługa Azure Table ułatwiających wiedział. Wiele różnice w zakresie projektowania odzwierciedlają fakt, że usługa Table jest przeznaczona do obsługi aplikacji w skali chmury, zawierające miliardów jednostek ze (wiersze w terminologii relacyjnej bazy danych) danych lub w przypadku zestawów danych, który musi obsługiwać dużo transakcji woluminy: w związku z tym, musisz inaczej przemyśleć sposób przechowywania danych i zrozumienie sposobu działania usługi tabel. Dobrze zaprojektowana magazyn danych NoSQL, można włączyć rozwiązania do skalowania znacznie bardziej (i przy niskich kosztach) niż w przypadku rozwiązania, który korzysta z relacyjnej bazy danych. Ten przewodnik ułatwi Ci następujące tematy.  
+Aby zaprojektować skalowalne i wydajne tabele, należy wziąć pod uwagę różne czynniki, takie jak wydajność, skalowalność i koszt. Jeśli wcześniej zaprojektowano schematy dla relacyjnych baz danych, te zagadnienia będą znane użytkownikowi, ale chociaż istnieją różne podobieństwa między modelem magazynu Table service platformy Azure i modeli relacyjnych, istnieją także liczne istotne różnice. Te różnice zwykle prowadzą do różnych projektów, które mogą wyglądać na intuicyjny lub niewłaściwy dla kogoś znającego relacyjne bazy danych, ale w przypadku projektowania dla magazynu NoSQL klucz/wartość, takiego jak Table service platformy Azure. Wiele z różnic w projekcie odzwierciedla fakt, że Table service jest zaprojektowana do obsługi aplikacji w skali chmury, które mogą zawierać miliardy jednostek (wiersze w terminologii relacyjnej bazy danych) lub zestawy danych, które muszą obsługiwać wysoką transakcję woluminy: w związku z tym należy myśleć o sposobie przechowywania danych i zrozumieniu sposobu działania Table service. Dobrze zaprojektowany magazyn danych NoSQL umożliwia skalowanie znacznie bardziej wydajnych rozwiązań (i niższych kosztów) niż rozwiązanie korzystające z relacyjnej bazy danych. Ten przewodnik pomoże Ci w zapewnieniu tego tematu.  
 
-## <a name="about-the-azure-table-service"></a>O usłudze Azure Table
-W tej sekcji opisano niektóre z kluczowymi funkcjami usługi Table service, które są szczególnie istotne, aby projektowanie pod kątem wydajności i skalowalności. Jeśli jesteś nowym użytkownikiem usługi Azure Storage i Table service, najpierw zapoznaj się z [wprowadzenie do usługi Microsoft Azure Storage](../storage/common/storage-introduction.md) i [Rozpoczynanie pracy z usługą Azure Table Storage przy użyciu platformy .NET](table-storage-how-to-use-dotnet.md) przed odczytaniem w dalszej części tego artykułu. . Chociaż ten przewodnik koncentruje się na usłudze Table service, będzie ona zawierała pewne dyskusję na temat usługi Azure, kolejek i obiektów Blob i jak można wykorzystać je wraz z usługi tabel w rozwiązaniu.  
+## <a name="about-the-azure-table-service"></a>Informacje o Table service platformy Azure
+W tej sekcji omówiono niektóre kluczowe funkcje Table service, które są szczególnie przydatne podczas projektowania pod kątem wydajności i skalowalności. Jeśli dopiero zaczynasz korzystać z usługi Azure Storage i Table service, najpierw Przeczytaj [wprowadzenie do Microsoft Azure Storage](../storage/common/storage-introduction.md) i [Zacznij korzystać z platformy Azure Table Storage przy użyciu platformy .NET](table-storage-how-to-use-dotnet.md) przed przeczytaniem pozostałej części tego artykułu. Chociaż ten przewodnik znajduje się na Table service, będzie on zawierał kilka dyskusji na temat usługi Azure Queue i BLOB Services oraz jak można ich używać wraz z Table service w rozwiązaniu.  
 
-Co to jest usługa Table service? Zgodnie z oczekiwaniami z nazwy, usłudze Table service używa formacie tabelarycznym do przechowywania danych. W terminologii każdy wiersz w tabeli reprezentuje jednostkę, a kolumny przechowywać różne właściwości tej jednostki. Każda jednostka ma parę kluczy, umożliwiającą jej jednoznaczną identyfikację i kolumnę sygnatur czasowych, używanymi przez usługę tabeli do śledzenia w jednostki został ostatnio zaktualizowany (jest automatycznie dodawane pole znacznika czasu i nie można ręcznie zastąpić sygnaturę czasową z dowolną wartością). Usługa Table service używa ostatniej modyfikacji sygnatura czasowa (LMT) do zarządzania optymistycznej współbieżności.  
+Co to jest Table service? Zgodnie z oczekiwaniami, Table service używa formatu tabelarycznego do przechowywania danych. W standardowej terminologii każdy wiersz tabeli reprezentuje jednostkę, a kolumny przechowują różne właściwości tej jednostki. Każda jednostka ma parę kluczy do unikatowego identyfikowania, a kolumna sygnatury czasowej, której używa Table service do śledzenia czasu ostatniej aktualizacji jednostki (pole sygnatury czasowej jest dodawane automatycznie i nie można ręcznie nadpisać sygnatury czasowej z dowolną wartością). Table service używa tego ostatniej modyfikacji sygnatury czasowej (LMT) w celu zarządzania optymistyczną współbieżność.  
 
 > [!NOTE]
-> Operacje interfejsu API REST usługi Table również zwracać **ETag** wartość, która pochodzi od ostatniej modyfikacji sygnatura czasowa (LMT). W tym dokumencie można zauważyć terminy, element ETag i LMT zamiennie, ponieważ odnoszą się do tych samych danych.  
+> Operacje interfejsu API REST Table service zwracają również wartość **ETag** , która pochodzi od ostatniej modyfikacji sygnatury czasowej (LMT). W tym dokumencie zobaczysz elementy ETag i LMT zamiennie, ponieważ odwołują się do tych samych danych bazowych.  
 > 
 > 
 
-Poniższy przykład pokazuje wzór prostej tabeli do przechowywania podmiotów pracowników i działu. Wiele z przykładów pokazanych w dalszej części tego przewodnika są oparte na tego prostego projektu.  
+W poniższym przykładzie przedstawiono prosty projekt tabeli do przechowywania jednostek pracowników i działów. Wiele przykładów przedstawionych w dalszej części tego przewodnika jest opartych na tym prostym projekcie.  
 
 <table>
 <tr>
@@ -53,8 +53,8 @@ Poniższy przykład pokazuje wzór prostej tabeli do przechowywania podmiotów p
 <th>Email</th>
 </tr>
 <tr>
-<td>Don</td>
-<td>Hall</td>
+<td>Nie</td>
+<td>Parter</td>
 <td>34</td>
 <td>donh@contoso.com</td>
 </tr>
@@ -73,7 +73,7 @@ Poniższy przykład pokazuje wzór prostej tabeli do przechowywania podmiotów p
 <th>Email</th>
 </tr>
 <tr>
-<td>Cze</td>
+<td>Lip</td>
 <td>Cao</td>
 <td>47</td>
 <td>junc@contoso.com</td>
@@ -87,7 +87,7 @@ Poniższy przykład pokazuje wzór prostej tabeli do przechowywania podmiotów p
 <td>
 <table>
 <tr>
-<th>Nazwa działu</th>
+<th>DepartmentName</th>
 <th>EmployeeCount</th>
 </tr>
 <tr>
@@ -98,7 +98,7 @@ Poniższy przykład pokazuje wzór prostej tabeli do przechowywania podmiotów p
 </td>
 </tr>
 <tr>
-<td>Sprzedaż</td>
+<td>Sales</td>
 <td>00010</td>
 <td>2014-08-22T00:50:44Z</td>
 <td>
@@ -121,668 +121,668 @@ Poniższy przykład pokazuje wzór prostej tabeli do przechowywania podmiotów p
 </table>
 
 
-Do tej pory ten projekt jest podobny do tabeli w relacyjnej bazie danych przy użyciu podstawowych różnic obowiązkowe kolumn i możliwość przechowywania wielu typów jednostek w tej samej tabeli. Ponadto poszczególne właściwości zdefiniowanych przez użytkownika, takie jak **FirstName** lub **wiek** ma typ danych, takie jak liczba całkowita lub ciąg, po prostu, takich jak kolumny w relacyjnej bazie danych. Mimo że w przeciwieństwie do relacyjnej bazy danych bez schematu charakter usługi Table service oznacza właściwości nie wymagają tych samych danych, wpisz dla każdej jednostki. Aby złożone typy danych są przechowywane w pojedynczej właściwości, należy użyć serializacji formatu JSON lub XML. Aby uzyskać więcej informacji na temat usługi, takie jak obsługiwane typy danych w tabelach, zakresów dat obsługiwanych, zasady nazewnictwa i ograniczeń związanych z rozmiarem, zobacz [opis modelu danych usługi Table Service](https://msdn.microsoft.com/library/azure/dd179338.aspx).
+Do tej pory ten projekt wygląda podobnie do tabeli w relacyjnej bazie danych, a kluczowe różnice są obowiązkowymi kolumnami i możliwość przechowywania wielu typów jednostek w tej samej tabeli. Ponadto każda Właściwość zdefiniowana przez użytkownika, taka jak **FirstName** lub **Age** ma typ danych, na przykład liczba całkowita lub ciąg, podobnie jak kolumna w relacyjnej bazie danych. Chociaż w przeciwieństwie do relacyjnej bazy danych, charakter bez schematu Table service oznacza, że właściwość nie musi mieć tego samego typu danych dla każdej jednostki. Aby przechowywać złożone typy danych w pojedynczej właściwości, należy użyć serializowanego formatu, takiego jak JSON lub XML. Aby uzyskać więcej informacji na temat usługi Table Service, takiej jak obsługiwane typy danych, obsługiwane zakresy dat, reguły nazewnictwa i ograniczenia rozmiaru, zobacz [Omówienie modelu danych usługi Table Service](https://msdn.microsoft.com/library/azure/dd179338.aspx).
 
-Jak będzie widać, wybór **PartitionKey** i **RowKey** ma podstawowe znaczenie dla projektu dobre tabeli. Każda jednostka przechowywana w tabeli musi mieć unikatową kombinację **PartitionKey** i **RowKey**. Podobnie jak w przypadku kluczy w tabeli relacyjnej bazy danych, **PartitionKey** i **RowKey** wartości są indeksowane, aby utworzyć indeks klastrowany, która umożliwia szybkie wyszukania; w usłudze Table service tworzy jednak żadnego indeksy pomocnicze, dzięki czemu są one tylko dwie właściwości indeksowane (wzorców opisanym w dalszej części widoczna jest jak obejść to ograniczenie widoczna).  
+Jak zobaczysz, wybór **PartitionKey** i **RowKey** jest podstawą dla dobrego projektu tabeli. Każda jednostka przechowywana w tabeli musi mieć unikatową kombinację **PartitionKey** i **RowKey**. Podobnie jak w przypadku kluczy w tabeli relacyjnej bazy danych, wartości **PartitionKey** i **RowKey** są indeksowane, aby utworzyć klastrowany indeks, który umożliwia szybkie wyszukiwanie; jednak Table service nie tworzy żadnych indeksów pomocniczych, więc są to jedyne właściwości indeksowane (niektóre z opisanych poniżej wzorców pokazują, jak można obejść to oczywiste ograniczenie).  
 
-Tabeli składa się z co najmniej jedną partycję, bo pozwoli zauważyć wiele decyzji projektowych, wprowadzone. zostanie ona wokół wybierając odpowiedni **PartitionKey** i **RowKey** zoptymalizować swoje rozwiązanie. To rozwiązanie może zawierać tylko pojedynczą tabelę, która zawiera wszystkie jednostki podzielony na partycje, ale zazwyczaj rozwiązanie będzie zawierać wiele tabel. Tabele ułatwiają logicznie organizowanie jednostek, ułatwiają zarządzanie dostępem do danych za pomocą listy kontroli dostępu i może usunąć całą tabelę przy użyciu operacji pojedynczy magazyn.  
+Tabela składa się z co najmniej jednej partycji, w miarę jak zobaczysz, że wiele podjętych decyzji projektowych będzie wokół wyboru odpowiednich **PartitionKey** i **RowKey** w celu zoptymalizowania rozwiązania. Rozwiązanie może zawierać tylko jedną tabelę zawierającą wszystkie jednostki zorganizowane w partycje, ale zazwyczaj rozwiązanie będzie zawierać wiele tabel. Tabele ułatwiają logiczne organizowanie jednostek, ułatwiają zarządzanie dostępem do danych przy użyciu list kontroli dostępu, a także usuwanie całej tabeli przy użyciu jednej operacji magazynu.  
 
 ### <a name="table-partitions"></a>Partycje tabel
-Nazwa konta, nazwę tabeli i **PartitionKey** razem identyfikują partycji w ramach usługi magazynu, w której przechowuje jednostki w usłudze table service. A także bycie częścią schematu adresowania dla jednostek, partycje zdefiniować zakres transakcji (zobacz [transakcji grup jednostek](#entity-group-transactions) poniżej), i stanowią podstawę jak jest skalowana w usłudze table service. Aby uzyskać więcej informacji o partycji, zobacz [usługi Azure Storage dotyczące skalowalności i cele wydajności](../storage/common/storage-scalability-targets.md).  
+Nazwa konta, nazwa tabeli i **PartitionKey** wspólnie identyfikują partycję w ramach usługi magazynu, w której usługa Table przechowuje jednostkę. Jak również część schematu adresowania dla jednostek, partycje definiują zakres dla transakcji (zobacz [transakcje grupy jednostek](#entity-group-transactions) poniżej) i stanowią podstawę skalowania usługi Table Service. Aby uzyskać więcej informacji o partycjach, zobacz [cele dotyczące skalowalności i wydajności usługi Azure Storage](../storage/common/storage-scalability-targets.md).  
 
-W usłudze Table service oddzielnego węzła usługi jeden lub więcej zakończą się partycji i skali usługi przez dynamiczne równoważenie obciążenia partycji na węzłach. Jeśli węzeł ma pod obciążeniem, usłudze table service można *podziału* zakresu partycji obsługiwanych przez ten węzeł na różnych węzłach; gdy zmniejszenia ruchu, usługa może *scalania* zakresu partycji z węzłów cichy na jednym węźle.  
+W Table service poszczególne usługi węzłów są co najmniej jedną kompletną partycją i usługą skalowania przez dynamiczne partycje równoważenia obciążenia między węzłami. Jeśli węzeł jest w obciążeniu, usługa Table Service może *podzielić* zakres partycji objętych przez ten węzeł na różne węzły; Po nawrocie ruchu usługa może *scalić* zakresy partycji z cichych węzłów z powrotem do jednego węzła.  
 
-Aby uzyskać więcej informacji na temat szczegółami wewnętrznymi usługi Table service, a w szczególności w jaki sposób usługa zarządza partycjami, zobacz dokument [usługi Microsoft Azure Storage: Usługi magazynu w chmurze o wysokiej dostępności przy użyciu silnej spójności](https://blogs.msdn.com/b/windowsazurestorage/archive/2011/11/20/windows-azure-storage-a-highly-available-cloud-storage-service-with-strong-consistency.aspx).  
+Aby uzyskać więcej informacji o wewnętrznych szczegółach Table service, a w szczególności o tym, jak usługa zarządza partycjami, zobacz dokument [Microsoft Azure Storage: usługa magazynu w chmurze o wysokiej dostępności z silną spójnością](https://blogs.msdn.com/b/windowsazurestorage/archive/2011/11/20/windows-azure-storage-a-highly-available-cloud-storage-service-with-strong-consistency.aspx).  
 
 ### <a name="entity-group-transactions"></a>Transakcje grupy jednostek
-W usłudze Table service transakcji grup jednostek (EGTs) są tylko wbudowanego mechanizmu do wykonywania niepodzielnych aktualizacje w wielu jednostkach. EGTs są również nazywane *partii transakcji* w dokumentacji. EGTs może działać tylko na jednostek przechowywanych w tej samej partycji (udział ten sam klucz partycji w danej tabeli), więc potrzebujesz atomic transakcyjnych zachowanie w wielu jednostkach, należy się upewnić, że te jednostki są w tej samej partycji. Jest to często Przyczyna zachowaniem typów jednostek w tej samej tabeli (i partycji), a nie przy użyciu wielu tabel dla jednostek różnych typów. Pojedynczy EGT może operować na co najwyżej 100 jednostek.  Jeśli prześlesz wielu jednoczesnych EGTs do przetwarzania, jest ważne, aby upewnić się, że te EGTs nie działają na jednostek, które są wspólne w EGTs, ponieważ w przeciwnym razie przetwarzania może być opóźniony w.
+W Table service, transakcje grupy jednostek (EGTs) są jedynym wbudowanym mechanizmem do wykonywania niepodzielnych aktualizacji w wielu jednostkach. EGTs są również nazywane *transakcjami wsadowymi* w niektórych dokumentach. EGTs może działać tylko na jednostkach przechowywanych w tej samej partycji (należy udostępnić ten sam klucz partycji w danej tabeli), więc w dowolnym momencie potrzebujesz niepodzielnych zachowań transakcyjnych dla wielu jednostek, aby zapewnić, że te jednostki znajdują się w tej samej partycji. Jest to często powód, aby zachować wiele typów jednostek w tej samej tabeli (i partycji), a nie używać wielu tabel dla różnych typów jednostek. Pojedynczy EGT może działać na maksymalnie 100 jednostkach.  Jeśli przesyłasz wiele współbieżnych EGTs do przetwarzania, należy upewnić się, że te EGTs nie działają na jednostkach, które są wspólne dla EGTs, ponieważ przetwarzanie w przeciwnym razie może być opóźnione.
 
-EGTs również wprowadzać potencjalnych kompromis umożliwiające ocenę w projekcie: przy użyciu więcej partycji spowoduje zwiększenie skalowalności aplikacji, ponieważ platforma Azure oferuje dodatkowe możliwości dla równoważenia obciążenia żądań między węzłami, ale może ograniczać możliwości aplikację można wykonywać transakcje niepodzielne i obsługa silnej spójności danych. Ponadto, są cele skalowalności określonego na poziomie partycję, która może ograniczać przepływności można oczekiwać, że dla pojedynczego węzła transakcji: Aby uzyskać więcej informacji na temat cele skalowalności dla konta usługi Azure storage i table service, zobacz [Cele wydajności i skalowalności usługi azure Storage](../storage/common/storage-scalability-targets.md). Kolejnych sekcjach tego przewodnika omówiono różne projektowania strategii, które ułatwiają zarządzanie wad i zalet, taką jak ta i omówić najlepszy sposób, aby wybrać klucz partycji, na podstawie określonych wymagań aplikacji klienckiej.  
+EGTs również wprowadza potencjalne rozwiązanie do szacowania w projekcie: użycie większej liczby partycji spowoduje zwiększenie skalowalności aplikacji, ponieważ platforma Azure ma więcej możliwości w przypadku żądań równoważenia obciążenia w różnych węzłach, ale może to ograniczyć możliwości Twoja aplikacja do wykonywania transakcji niepodzielnych i zachowania silnej spójności danych. Ponadto istnieją konkretne cele skalowalności na poziomie partycji, która może ograniczyć przepływność transakcji, które można oczekiwać dla jednego węzła: Aby uzyskać więcej informacji o skalowalności dla kont usługi Azure Storage i usłudze Table Service, zobacz [Cele dotyczące skalowalności i wydajności usługi Azure Storage](../storage/common/storage-scalability-targets.md). W kolejnych sekcjach tego przewodnika omówiono różne strategie projektowania, które ułatwiają zarządzanie niektórymi potrzebami, takimi jak ten, i omawiamy najlepszy wybór klucza partycji na podstawie określonych wymagań aplikacji klienckiej.  
 
-### <a name="capacity-considerations"></a>Zagadnienia dotyczące wydajności
-Poniższa tabela zawiera niektóre z kluczowych wartości pod uwagę podczas projektowania rozwiązania usługi tabeli:  
+### <a name="capacity-considerations"></a>Zagadnienia dotyczące pojemności
+Poniższa tabela zawiera kilka najważniejszych wartości, które należy znać podczas projektowania rozwiązania Table service:  
 
-| Całkowita pojemność konta usługi Azure storage | 500 TB |
+| Łączna pojemność konta usługi Azure Storage | 500 TB |
 | --- | --- |
-| Liczba tabel na koncie usługi Azure storage |Ograniczone tylko przez pojemność konta magazynu |
-| Liczba partycji w tabeli |Ograniczone tylko przez pojemność konta magazynu |
-| Liczba jednostek w partycji |Ograniczone tylko przez pojemność konta magazynu |
-| Rozmiar pojedynczą jednostkę |Do 1 MB, maksymalnie 255 właściwości (w tym **PartitionKey**, **RowKey**, i **sygnatura czasowa**) |
-| Rozmiar **PartitionKey** |Ciąg do 1 KB rozmiaru |
-| Rozmiar **RowKey** |Ciąg do 1 KB rozmiaru |
-| Rozmiar transakcji grup jednostek |Transakcja może zawierać co najwyżej 100 jednostek i ładunek musi być mniejszy niż 4 MB. EGT można aktualizować tylko jednostki jeden raz. |
+| Liczba tabel na koncie usługi Azure Storage |Ograniczone tylko pojemności konta magazynu |
+| Liczba partycji w tabeli |Ograniczone tylko pojemności konta magazynu |
+| Liczba jednostek w partycji |Ograniczone tylko pojemności konta magazynu |
+| Rozmiar pojedynczej jednostki |Do 1 MB i maksymalnie 255 właściwości (łącznie z **PartitionKey**, **RowKey**i **sygnaturą czasową**) |
+| Rozmiar **PartitionKey** |Ciąg o rozmiarze do 1 KB |
+| Rozmiar **RowKey** |Ciąg o rozmiarze do 1 KB |
+| Rozmiar transakcji grupy jednostek |Transakcja może obejmować maksymalnie 100 jednostek, a ładunek musi mieć rozmiar mniejszy niż 4 MB. Element EGT może aktualizować tylko raz jednostkę. |
 
 Aby uzyskać więcej informacji, zobacz [Understanding the Table Service Data Model (Omówienie modelu danych usługi Table Service)](https://msdn.microsoft.com/library/azure/dd179338.aspx).  
 
 ### <a name="cost-considerations"></a>Kwestie związane z kosztami
-Magazyn tabel jest względnie niedrogie ulepszenie, ale powinien zawierać szacowane koszty użycia pojemności i liczba transakcji jako część oceny dowolnego rozwiązania, które korzysta z usługi tabel. Jednak w wielu scenariuszach nieznormalizowany lub zduplikowane dane są przechowywane w celu poprawy wydajności i skalowalności rozwiązania jest prawidłowy podejście do wykonania. Aby uzyskać więcej informacji o cenach, zobacz [cennik usługi Azure Storage](https://azure.microsoft.com/pricing/details/storage/).  
+Magazyn tabel jest stosunkowo niedrogie, ale należy uwzględnić oszacowania kosztów zarówno w przypadku użycia pojemności, jak i liczby transakcji w ramach oceny dowolnego rozwiązania, które używa Table service. Jednak w wielu scenariuszach przechowywanie nieznormalizowanych lub zduplikowanych danych w celu poprawienia wydajności lub skalowalności rozwiązania jest prawidłowym podejściem do wykonania. Aby uzyskać więcej informacji o cenach, zobacz [Cennik usługi Azure Storage](https://azure.microsoft.com/pricing/details/storage/).  
 
 ## <a name="guidelines-for-table-design"></a>Wytyczne dotyczące projektu tabel
-Te listy podsumowanie niektórych kluczowych wytyczne, które należy mieć na uwadze podczas projektowania tabel, a ten przewodnik pozwala sprostać je wszystkie w bardziej szczegółowo w dalszej części w. Te wytyczne są różne od wytyczne, które należy zwykle wykonać dla relacyjnych baz danych.  
+Te listy zawierają podsumowanie najważniejszych wytycznych, które należy wziąć pod uwagę podczas projektowania tabel. w tym przewodniku opisano je wszystkie w dalszej części artykułu. Wytyczne te różnią się od wytycznych, które zwykle są stosowane w przypadku projektowania relacyjnej bazy danych.  
 
-Projektowania rozwiązania usługi tabeli jako *odczytu* efektywne:
+Projektowanie rozwiązania Table service w celu uzyskania efektywnego *odczytu* :
 
-* ***Projektowanie pod kątem wykonywania zapytania w odczycie aplikacji.*** Podczas projektowania tabel wziąć pod uwagę zapytań (szczególnie opóźnienia poufnych z nich), które będą wykonywane przed zaplanowaniem jak spowoduje zaktualizowanie jednostki. Skutkuje to zazwyczaj wydajne i wydajne rozwiązanie.  
-* ***Należy określić zarówno właściwości PartitionKey i RowKey w zapytaniach.*** *Polecenie zapytania* np. są to najbardziej wydajne zapytania usługi tabeli.  
-* ***Rozważ przechowywanie duplikatów kopii jednostki.*** Magazyn tabel jest magazynem tania dlatego należy rozważyć przechowywanie tego samego obiektu wiele razy (przy użyciu różnych kluczy) umożliwiające wydajniejszych zapytań.  
-* ***Należy wziąć pod uwagę denormalizing danych.*** Magazyn tabel jest magazynem tania zatem należy wziąć pod uwagę denormalizing danych. Na przykład przechowywać podsumowania jednostki tak, aby zapytania dla danych zagregowanych wystarczy dostęp do pojedynczej jednostki.  
-* ***Użyj wartości klucza złożonego.*** To tylko klucze masz **PartitionKey** i **RowKey**. Aby włączyć alternatywnego kluczem dostępu do ścieżki do jednostek, na przykład użyć wartości klucza złożonego.  
-* ***Użyj projekcji zapytań.*** Można zmniejszyć ilość danych, który transferu za pośrednictwem sieci przy użyciu kwerend wybierających tylko pola, które są potrzebne.  
+* ***Projekt do wykonywania zapytań w aplikacjach z dużym obciążeniem.*** Podczas projektowania tabel należy zastanowić się nad zapytaniami (zwłaszcza z uwzględnieniem opóźnień), które zostaną wykonane przed zawieszeniem się, jak należy zaktualizować jednostki. Zwykle jest to wydajne i wydajne rozwiązanie.  
+* ***W zapytaniach Określ zarówno PartitionKey, jak i RowKey.*** *Zapytania punktowe* , takie jak te, to najbardziej wydajne zapytania dotyczące usługi Table Service.  
+* ***Rozważ przechowywanie zduplikowanych kopii jednostek.*** Magazyn tabel jest tani, dlatego należy rozważyć przechowywanie tej samej jednostki wielokrotnie (z różnymi kluczami) w celu umożliwienia wydajniejszych zapytań.  
+* ***Rozważ wyprowadzenie denormalizacji danych.*** Magazyn tabel jest tani, dlatego należy rozważyć denormalizację danych. Na przykład, przechowuj jednostki podsumowujące, tak aby zapytania dotyczące danych agregowanych musieli uzyskać dostęp do pojedynczej jednostki.  
+* ***Użyj wartości klucza złożonego.*** Jedyne klucze są **PartitionKey** i **RowKey**. Na przykład użyj wartości klucza złożonego, aby włączyć alternatywne ścieżki dostępu do jednostek.  
+* ***Użyj projekcji zapytania.*** Możesz zmniejszyć ilość danych przesyłanych przez sieć za pomocą zapytań, które wybierają tylko potrzebne pola.  
 
-Projektowania rozwiązania usługi tabeli jako *zapisu* efektywne:  
+Projektowanie rozwiązania Table service do wydajnego *zapisu* :  
 
-* ***Nie należy tworzyć partycje gorąca.*** Wybierz klucze, które umożliwiają żądań rozkłada się na wielu partycjach w dowolnym momencie.  
-* ***Należy unikać skoków ruchu.*** Smooth ruch za pośrednictwem uzasadnionym czasie i uniknąć skoków ruchu.
-* ***Nie musi utworzyć oddzielną tabelę dla każdego typu jednostki.*** Transakcje niepodzielne jest stosowanie różnych typów jednostek, tych typów jednostek można przechowywać w jednej partycji w tej samej tabeli.
-* ***Należy wziąć pod uwagę maksymalną przepływność, którą należy osiągnąć.*** Należy wiedzieć o wartości docelowe skalowalności usługi tabel i upewnij się, że projekt nie spowoduje przekroczenie je.  
+* ***Nie twórz partycji aktywnych.*** Wybierz klucze, które umożliwiają rozproszenie żądań w wielu partycjach w dowolnym momencie.  
+* ***Unikaj wzrostu ruchu.*** Wygładź ruch w rozsądnym czasie i unikaj wzrostu ruchu.
+* ***Niekoniecznie utwórz oddzielną tabelę dla każdego typu jednostki.*** Gdy wymagane są transakcje niepodzielne między typami jednostek, można przechowywać te wiele typów jednostek w tej samej partycji w tej samej tabeli.
+* ***Należy wziąć pod uwagę maksymalną przepływność, która ma zostać osiągnięta.*** Należy pamiętać o obiektach docelowych skalowalności Table service i upewnić się, że projekt nie spowoduje przekroczenia ich.  
 
-Ponieważ w tym przewodniku zobaczysz przykładów, które praktycznego wdrożenia wszystkich tych zasad.  
+Po przeczytaniu tego przewodnika zobaczysz przykłady, które stosują wszystkie te zasady do ćwiczeń.  
 
 ## <a name="design-for-querying"></a>Projektowanie pod kątem wykonywania zapytań
-Rozwiązania usługi tabeli mogą być odczytywane znaczne wykorzystanie mocy, intensywnie zapisu lub zmieszanie dwóch. Ta sekcja koncentruje się na warto pamiętać podczas projektowania usługi Table service, aby efektywnie obsługiwać operacje odczytu. Zazwyczaj projekt, że obsługuje operacje odczytu efektywnie również jest wydajne dla operacji zapisu. Jednak istnieją pewne dodatkowe zagadnienia dotyczące pamiętać podczas projektowania do obsługi operacji zapisu, omówiona w następnej sekcji [projektowanie pod kątem modyfikacji danych](#design-for-data-modification).
+Rozwiązania Table service mogą być bardzo czasochłonne, duże ilościowe lub mieszane. Ta sekcja koncentruje się na zagadnieniach, które należy wziąć pod uwagę podczas projektowania Table service w celu wydajnej obsługi operacji odczytu. Zwykle projekt obsługujący operacje odczytu wydajnie jest również wydajny w przypadku operacji zapisu. Istnieją jednak dodatkowe zagadnienia, które należy wziąć pod uwagę podczas projektowania, aby obsługiwały operacje zapisu, omówione w następnej sekcji [projekt do modyfikacji danych](#design-for-data-modification).
 
-Dobry punkt wyjścia dla projektowania rozwiązania usługi tabeli umożliwienie wydajnego odczytywania danych jest "jakie zapytania mojej aplikacji należy wykonać, aby pobrać dane, których potrzebuje z usługi tabel?"  
+Dobrym punktem początkowym do projektowania rozwiązania Table service, aby umożliwić odczytywanie danych w sposób efektywny, jest zaproszenie "jakie zapytania należy wykonać moja aplikacja, aby pobrać potrzebne dane z Table service?".  
 
 > [!NOTE]
-> Z usługą Table jest ważne, aby pobrać projekt poprawne na początku ponieważ jest trudne i kosztowna później zmienić. Na przykład w relacyjnej bazie danych jest często można rozwiązać problemy z wydajnością — wystarczy dodawania indeksów do istniejącej bazy danych: nie jest opcją w usłudze tabel.  
+> Mając Table service, ważne jest, aby projekt został skorygowany z góry, ponieważ jest trudny i kosztowny do jego późniejszej zmiany. Na przykład w relacyjnej bazie danych często możliwe jest rozwiązanie problemów z wydajnością po prostu przez dodanie indeksów do istniejącej bazy danych: nie jest to opcja z Table service.  
 > 
 > 
 
-Ta sekcja koncentruje się na kluczowych zagadnień, które należy rozwiązać podczas projektowania tabel dla zapytań. Tematy omówione w tej sekcji obejmują:
+W tej sekcji omówiono kluczowe problemy, które należy rozwiązać podczas projektowania tabel do wykonywania zapytań. Tematy omówione w tej sekcji obejmują:
 
-* [Jak wybór właściwości PartitionKey i RowKey ma wpływ na wydajność zapytań](#how-your-choice-of-partitionkey-and-rowkey-impacts-query-performance)
+* [Jak wybór PartitionKey i RowKey wpływa na wydajność zapytań](#how-your-choice-of-partitionkey-and-rowkey-impacts-query-performance)
 * [Wybieranie odpowiedniego PartitionKey](#choosing-an-appropriate-partitionkey)
-* [Optymalizowanie zapytań dotyczących Table service](#optimizing-queries-for-the-table-service)
-* [Sortowanie danych w usłudze Table service](#sorting-data-in-the-table-service)
+* [Optymalizowanie zapytań dla Table service](#optimizing-queries-for-the-table-service)
+* [Sortowanie danych w Table service](#sorting-data-in-the-table-service)
 
-### <a name="how-your-choice-of-partitionkey-and-rowkey-impacts-query-performance"></a>Jak wybór właściwości PartitionKey i RowKey ma wpływ na wydajność zapytań
-W poniższych przykładach założono, usłudze table service zapisuje jednostek pracownika o następującej strukturze (Pomiń Większość przykładów **sygnatura czasowa** właściwości dla jasności):  
+### <a name="how-your-choice-of-partitionkey-and-rowkey-impacts-query-performance"></a>Jak wybór PartitionKey i RowKey wpływa na wydajność zapytań
+W poniższych przykładach przyjęto założenie, że usługa Table Service zapisuje jednostki pracowników przy użyciu następującej struktury (większość przykładów pomija Właściwość **timestamp** dla jasności):  
 
 | *Nazwa kolumny* | *Typ danych* |
 | --- | --- |
-| **PartitionKey** (nazwa działu) |Ciąg |
+| **PartitionKey** (Nazwa działu) |Ciąg |
 | **RowKey** (identyfikator pracownika) |Ciąg |
 | **Imię** |Ciąg |
 | **Nazwisko** |Ciąg |
-| **Wiek** |Liczba całkowita |
-| **EmailAddress** |String |
+| **Ważności** |Liczba całkowita |
+| **EmailAddress** |Ciąg |
 
-Wcześniej Omówienie usługi Azure Table sekcji opisano niektóre z kluczowymi funkcjami usługi Azure Table service, które mają bezpośredni wpływ na projektowanie pod kątem zapytań. Wynikiem tych ogólne wytyczne dotyczące projektowania zapytań usługi tabeli. Składnia filtru użyte w poniższych przykładach jest z usługi tabel interfejsu API REST, aby uzyskać więcej informacji, zobacz [wykonywanie zapytań dotyczących jednostek](https://msdn.microsoft.com/library/azure/dd179421.aspx).  
+W poprzedniej sekcji usługi Azure Table service Overview opisano niektóre kluczowe funkcje Table service platformy Azure, które mają bezpośredni wpływ na projektowanie zapytań. Poniżej przedstawiono ogólne wytyczne dotyczące projektowania zapytań Table service. Składnia filtru użyta w poniższych przykładach pochodzi z interfejsu API REST Table service, aby uzyskać więcej informacji, zobacz temat [jednostki zapytań](https://msdn.microsoft.com/library/azure/dd179421.aspx).  
 
-* A ***kwerendy punktu*** jest najbardziej efektywny sposób wyszukiwania, aby użyć i jest zalecana służący do wyszukiwania mocno obciążające lub wyszukiwania, wymagających najmniejszego opóźnienia. W przypadku takiego zapytania umożliwia wydajne Znajdź pojedynczą jednostkę, określając zarówno indeksy **PartitionKey** i **RowKey** wartości. Na przykład: $filter = (PartitionKey eq "Sprzedaż") i (RowKey eq '2')  
-* Po drugie, najlepiej jest ***kwerendy zakresu*** , który używa **PartitionKey** i filtry na szeroką gamę **RowKey** wartości do zwrócenia więcej niż jedną jednostkę. **PartitionKey** wartość określa określonej partycji i **RowKey** wartości identyfikują podzestawu jednostek w partycji. Na przykład: $filter = PartitionKey eq "Sprzedaż i RowKey ge" i RowKey lt t "  
-* Trzeci najlepiej ***skanowania partycji*** , który używa **PartitionKey** i filtry na inną właściwość klucza i który może zwrócić więcej niż jedną jednostkę. **PartitionKey** wartość określa określonej partycji, a właściwość wartości wybranych dla podzestawu jednostek w partycji. Na przykład: $filter = PartitionKey eq "Sprzedaż" i LastName eq 'Smith'  
-* A ***skanowanie tabeli*** nie obejmuje **PartitionKey** jest nieefektywne, ponieważ wszystkie partycje, które tworzą tabelę z kolei do żadnych zgodnych jednostek wyszukiwania. Zostanie przeprowadzone skanowanie tabeli, niezależnie od tego, czy filtr używa **RowKey**. Na przykład: $filter = LastName eq "Kowalski"  
-* Azure zapytań magazynu tabel, które zwracają wiele jednostek zwraca je posortowane w **PartitionKey** i **RowKey** zamówienia. Aby uniknąć konieczności uciekania się jednostki w obiekcie klienta, wybierz opcję **RowKey** definiujący najbardziej typowe kolejność sortowania. Wyniki zapytania zwracana przez interfejs API tabeli platformy Azure w usłudze Azure Cosmos DB nie są sortowane według klucza partycji i klucza wiersza. Aby uzyskać szczegółową listę różnic między funkcjami, zobacz [różnice między interfejsu Table API usługi Azure Cosmos DB i Azure Table storage](faq.md#where-is-table-api-not-identical-with-azure-table-storage-behavior).
+* ***Zapytanie punktowe*** jest najbardziej wydajnym wyszukiwaniem do użycia i jest zalecane do użycia w odnośnikach lub wyszukiwaniach o wysokim poziomie, które wymagają najmniejszego opóźnienia. Takie zapytanie może służyć do wydajnego lokalizowania pojedynczej jednostki przez określenie wartości **PartitionKey** i **RowKey** . Na przykład: $filter = (PartitionKey EQ "Sales") i (RowKey EQ "2")  
+* Druga Najlepsza to ***zapytanie zakresowe*** używające **PartitionKey** i filtrów dla zakresu wartości **RowKey** , aby zwrócić więcej niż jedną jednostkę. Wartość **PartitionKey** identyfikuje konkretną partycję, a wartości **RowKey** identyfikują podzestaw jednostek w tej partycji. Na przykład: $filter = PartitionKey EQ "Sales" i RowKey GE "i RowKey lt"  
+* Trzecia Najlepsza to ***skanowanie partycji*** korzystające z **PartitionKey** i filtrów dla innej właściwości niebędącej kluczem, które może zwrócić więcej niż jedną jednostkę. Wartość **PartitionKey** identyfikuje konkretną partycję, a wartości właściwości wybierają podzbiór jednostek w tej partycji. Na przykład: $filter = PartitionKey EQ "Sales" i LastName EQ "Kowalski"  
+* ***Skanowanie tabeli*** nie zawiera **PartitionKey** i jest niewydajne, ponieważ przeszukuje wszystkie partycje, które składają się na tabelę, z uwzględnieniem dowolnych pasujących jednostek. Przeprowadzi skanowanie tabeli niezależnie od tego, czy filtr używa **RowKey**. Na przykład: $filter = LastName EQ "Nowak"  
+* Zapytania Table Storage platformy Azure zwracające wiele jednostek zwracają je posortowane w kolejności **PartitionKey** i **RowKey** . Aby uniknąć tworzenia jednostek w kliencie, wybierz **RowKey** , który definiuje najbardziej typowy porządek sortowania. Wyniki zapytania zwrócone przez interfejs API tabel platformy Azure w Azure Cosmos DB nie są posortowane według klucza partycji lub klucza wiersza. Aby uzyskać szczegółową listę różnic między funkcjami, zobacz [różnice między interfejs API tabel w Azure Cosmos DB i Azure Table Storage](faq.md#where-is-table-api-not-identical-with-azure-table-storage-behavior).
 
-Za pomocą "**lub**" Aby określić filtr oparty na **RowKey** wartości wyniki podczas skanowania partycji i nie jest traktowana jako zapytanie zakresu. W związku z tym, należy unikać zapytań, które używają filtrów, takich jak: $filter = PartitionKey eq "Sales" oraz (RowKey eq "121" lub RowKey eq "322")  
+Użycie "**lub**" do określenia filtru opartego na wartościach **RowKey** powoduje skanowanie partycji i nie jest traktowane jako zapytanie o zakres. W związku z tym należy unikać zapytań, które używają filtrów takich jak: $filter = PartitionKey EQ "Sales" i (RowKey EQ "121" lub RowKey EQ "322")  
 
-Przykłady kodu po stronie klienta, które można wykonać wydajne zapytania za pomocą biblioteki klienta magazynu zobacz:  
+Aby zapoznać się z przykładami kodu po stronie klienta, które używają biblioteki klienta usługi Storage do wykonywania wydajnych zapytań, zobacz:  
 
-* [Wykonywanie kwerendy punktu, przy użyciu biblioteki klienta magazynu](#executing-a-point-query-using-the-storage-client-library)
-* [Trwa pobieranie wielu jednostek za pomocą LINQ](#retrieving-multiple-entities-using-linq)
+* [Wykonywanie zapytania punktu przy użyciu biblioteki klienta usługi Storage](#executing-a-point-query-using-the-storage-client-library)
+* [Pobieranie wielu jednostek przy użyciu LINQ](#retrieving-multiple-entities-using-linq)
 * [Projekcja po stronie serwera](#server-side-projection)  
 
-Aby zapoznać się z przykładami kodu po stronie klienta, który może obsługiwać wiele typów jednostek przechowywanych w tej samej tabeli zobacz:  
+Aby zapoznać się z przykładami kodu po stronie klienta, które mogą obsługiwać wiele typów jednostek przechowywanych w tej samej tabeli, zobacz:  
 
-* [Praca z typami encji heterogenicznych](#working-with-heterogeneous-entity-types)  
+* [Praca z heterogenicznymi typami jednostek](#working-with-heterogeneous-entity-types)  
 
 ### <a name="choosing-an-appropriate-partitionkey"></a>Wybieranie odpowiedniego PartitionKey
-Wybór **PartitionKey** powinien równoważyć potrzeby włączyć EGTs (w celu zapewnienia spójności) wymaganiem, aby rozprowadzić jednostek na wiele partycji (w celu zapewnienia skalowalne rozwiązanie).  
+Wybór **PartitionKey** powinien zrównoważyć potrzebę umożliwienia używania EGTs (w celu zapewnienia spójności) przed wymaganiem dystrybucji jednostek na wielu partycjach (aby zapewnić skalowalne rozwiązanie).  
 
-Jeden extreme wszystkich jednostek można przechowywać w jednej partycji, ale to może ograniczać skalowalność rozwiązania i uniemożliwi usłudze table service mogli wysyłać żądania równoważenia obciążenia. Y. można przechowywać jednej jednostki w jednej partycji, byłoby wysoce skalowalna i umożliwiająca usłudze table service, aby wysyłać żądania równoważenia obciążenia, ale która może uniemożliwić przy użyciu transakcji grup jednostek.  
+Z jednej najwyższej klasy można przechowywać wszystkie jednostki w jednej partycji, ale może to ograniczyć skalowalność rozwiązania i uniemożliwić usłudze tabel możliwość równoważenia obciążenia żądań. Z drugiej najwyższej wartości można przechowywać jedną jednostkę na partycję, która byłaby wysoce skalowalna, co umożliwia usłudze tabel Równoważenie obciążenia żądań, ale uniemożliwi korzystanie z transakcji grupy jednostek.  
 
-Idealna **PartitionKey** jeden, który umożliwia wydajne zapytania i ma wystarczającą partycji, aby upewnić się, Twoje rozwiązanie jest skalowalna. Zazwyczaj znajdziesz, że obiekty odpowiednie właściwości, która dystrybuuje jednostek na partycji wystarczającą.
+Idealny **PartitionKey** to taki, który umożliwia korzystanie z wydajnych zapytań i zawiera wystarczające partycje, aby zapewnić skalowalność rozwiązania. Zazwyczaj można stwierdzić, że jednostki będą mieć odpowiednią właściwość, która dystrybuuje jednostki w wystarczającej partycji.
 
 > [!NOTE]
-> Na przykład w systemie, która przechowuje informacje dotyczące użytkowników lub pracowników, nazwa użytkownika może być dobrym PartitionKey. Może mieć kilka jednostek, korzystających z danego identyfikatora użytkownika jako klucza partycji. Każda jednostka, która przechowuje dane o użytkowniku są pogrupowane w jednej partycji, a więc te jednostki są dostępne za pośrednictwem transakcji grup jednostek, przy zachowaniu o wysokim stopniu skalowalności.
+> Na przykład w systemie, w którym są przechowywane informacje o użytkownikach lub pracownikach, UserID może być dobry PartitionKey. Może istnieć kilka jednostek, które używają danego identyfikatora użytkownika jako klucza partycji. Każda jednostka, która przechowuje dane dotyczące użytkownika, jest zgrupowana w jedną partycję, więc te jednostki są dostępne za pośrednictwem transakcji grupy jednostek, przy czym nadal są wysoce skalowalne.
 > 
 > 
 
-Istnieją pewne dodatkowe zagadnienia dotyczące w wybranym **PartitionKey** wydania jak będzie Wstawianie, aktualizowanie i usuwanie jednostek: zobacz sekcję [projektowanie pod kątem modyfikacji danych](#design-for-data-modification) poniżej.  
+Dostępne są dodatkowe zagadnienia dotyczące wyboru **PartitionKey** , które odnoszą się do sposobu wstawiania, aktualizowania i usuwania jednostek: Zobacz sekcję [dotyczącą modyfikacji danych](#design-for-data-modification) poniżej.  
 
-### <a name="optimizing-queries-for-the-table-service"></a>Optymalizowanie zapytań dotyczących Table service
-Usługa Table service automatycznie indeksuje jednostek za pomocą **PartitionKey** i **RowKey** wartości jeden indeks klastrowany, dlatego Przyczyna, wskazujące zapytania są najbardziej wydajne do użycia. Istnieją jednak żadne indeksy innych niż na indeks klastrowany w **PartitionKey** i **RowKey**.
+### <a name="optimizing-queries-for-the-table-service"></a>Optymalizowanie zapytań dla Table service
+Table service automatycznie indeksuje jednostki przy użyciu wartości **PartitionKey** i **RowKey** w pojedynczym indeksie klastrowanym, w związku z czym przyczyny tego zapytania są najbardziej wydajne. Jednak żadne indeksy nie są inne niż w indeksie klastrowanym w **PartitionKey** i **RowKey**.
 
-Wiele projektów musi spełniać wymagania, aby włączyć wyszukiwanie jednostek na podstawie wielu kryteriów. Na przykład Lokalizowanie jednostek pracowników opartych na adres e-mail, identyfikator pracownika lub nazwisko. Następujących wzorów w określonej sekcji [wzorce projektowe oparte na tabeli](#table-design-patterns) rozwiązać tego rodzaju wymagań oraz opisano sposoby obejścia faktów, usłudze Table service nie zapewnia indeksów pomocniczych:  
+Wiele projektów musi spełniać wymagania, aby umożliwić wyszukiwanie jednostek na podstawie wielu kryteriów. Na przykład lokalizowanie jednostek pracowników na podstawie poczty e-mail, identyfikatora pracownika lub nazwiska. [Wzorce projektowe tabeli](#table-design-patterns) sekcji, które dotyczą tych typów wymagań i opisują sposoby obejścia tego faktu, że Table Service nie udostępniają indeksów pomocniczych:  
 
-* [Wzorzec pomocniczy indeks partycji wewnątrz](#intra-partition-secondary-index-pattern) -Store wielu kopii każdej jednostki przy użyciu różnych **RowKey** wartości (w tej samej partycji), aby włączyć szybkie i efektywne wyszukiwania i naprzemienny porządek sortowania przy użyciu różnych **RowKey** wartości.  
-* [Wzorzec pomocniczy indeks partycji między](#inter-partition-secondary-index-pattern) -Store wielu kopii każdej jednostki przy użyciu różnych **RowKey** wartości w oddzielnych partycji lub w oddzielnych tabelach umożliwiające szybkie i wydajne wyszukiwania i sortowania zamówień za pomocą różnych **RowKey** wartości.  
-* [Wzorzec jednostek indeksu](#index-entities-pattern) — Obsługa jednostki indeksu umożliwiające wydajne wyszukiwanie, które zwracają listę jednostek.  
+* [Wzorzec indeksu pomocniczego wewnątrz partycji](#intra-partition-secondary-index-pattern) — przechowywanie wielu kopii każdej jednostki przy użyciu różnych wartości **RowKey** (w tej samej partycji), aby umożliwić szybkie i wydajne wyszukiwanie oraz alternatywne zamówienia sortowania przy użyciu różnych wartości **RowKey** .  
+* [Wzorzec indeksu pomocniczego między partycjami](#inter-partition-secondary-index-pattern) — przechowywanie wielu kopii każdej jednostki przy użyciu różnych wartości **RowKey** w oddzielnych partycjach lub w oddzielnych tabelach w celu szybkiego i efektywnego wyszukiwania oraz alternatywnych zamówień sortowania przy użyciu różnych  **RowKey** wartości.  
+* [Indeks jednostek indeksu](#index-entities-pattern) — utrzymuje jednostki indeksu, aby umożliwić efektywne wyszukiwanie, które zwracają listy jednostek.  
 
-### <a name="sorting-data-in-the-table-service"></a>Sortowanie danych w usłudze Table service
+### <a name="sorting-data-in-the-table-service"></a>Sortowanie danych w Table service
 
-Wyniki zapytania, zwracane przez usługę tabeli są sortowane w kolejności rosnącej na podstawie **PartitionKey** a następnie według **RowKey**.
+Wyniki zapytania zwrócone przez Table service są sortowane w kolejności rosnącej na podstawie **PartitionKey** , a następnie według **RowKey**.
 
 > [!NOTE]
-> Wyniki zapytania zwracana przez interfejs API tabeli platformy Azure w usłudze Azure Cosmos DB nie są sortowane według klucza partycji i klucza wiersza. Aby uzyskać szczegółową listę różnic między funkcjami, zobacz [różnice między interfejsu Table API usługi Azure Cosmos DB i Azure Table storage](faq.md#where-is-table-api-not-identical-with-azure-table-storage-behavior).
+> Wyniki zapytania zwrócone przez interfejs API tabel platformy Azure w Azure Cosmos DB nie są posortowane według klucza partycji lub klucza wiersza. Aby uzyskać szczegółową listę różnic między funkcjami, zobacz [różnice między interfejs API tabel w Azure Cosmos DB i Azure Table Storage](faq.md#where-is-table-api-not-identical-with-azure-table-storage-behavior).
 
-Kluczy w tabeli usługi Azure Storage są wartości typu ciąg i aby zapewnić poprawne sortowanie wartości liczbowych, należy przekonwertować je na stałej długości i uzupełniania zer. Na przykład, jeśli wartość identyfikatora pracowników jest używany jako **RowKey** jest liczbą całkowitą, należy przekonwertować identyfikator pracownika **123** do **00000123**. 
+Klucze w tabeli usługi Azure Storage to wartości ciągów i aby zapewnić prawidłowe sortowanie wartości liczbowych, należy przekonwertować je na stałą długość i uzupełnić je zerami. Na przykład jeśli wartość identyfikatora pracownika, która jest używana jako **RowKey** , jest wartością całkowitą, należy przekonwertować pracownika o identyfikatorze **123** do **00000123**. 
 
-Wiele aplikacji ma wymagania dotyczące korzystania z danych w różnych zleceniach sortowane: na przykład sortowanie pracowników według nazwy lub dołączenie do daty. Następujących wzorów w określonej sekcji [wzorce projektowe oparte na tabeli](#table-design-patterns) rozwiązać jak alternatywny porządek sortowania dla jednostki:  
+Wiele aplikacji ma wymagania dotyczące korzystania z danych posortowanych w różnych zamówieniach: na przykład sortowanie pracowników według nazwy lub dołączanie daty. Następujące wzorce w [wzorach projektu tabeli](#table-design-patterns) sekcji przedstawiają sposób alternatywnych zamówień sortowania dla jednostek:  
 
-* [Wzorzec pomocniczy indeks partycji wewnątrz](#intra-partition-secondary-index-pattern) - Store wiele kopii poszczególnych jednostek przy użyciu różnych wartości RowKey (w tej samej partycji), aby umożliwić szybkie i efektywne wyszukiwania i sortowania są porządkowane przy użyciu różnych wartości RowKey.  
-* [Wzorzec pomocniczy indeks partycji między](#inter-partition-secondary-index-pattern) - Store wiele kopii poszczególnych jednostek przy użyciu różnych wartości RowKey w oddzielnych partycjach w oddzielnych tabelach, aby umożliwić szybkie i efektywne wyszukiwania i sortowania są porządkowane przy użyciu różnych wartości RowKey .
-* [Wzorzec ogona dziennika](#log-tail-pattern) — pobieranie *n* ostatnio dodany do partycji przy użyciu jednostek **RowKey** wartość, która sortuje w odwrotnej daty i porządku czasowym.  
+* [Wzorzec indeksu pomocniczego wewnątrz partycji](#intra-partition-secondary-index-pattern) — przechowywanie wielu kopii każdej jednostki przy użyciu różnych wartości RowKey (w tej samej partycji), aby umożliwić szybkie i wydajne wyszukiwanie oraz alternatywne zamówienia sortowania przy użyciu różnych wartości RowKey.  
+* [Wzorzec indeksu pomocniczego między partycjami](#inter-partition-secondary-index-pattern) — przechowywanie wielu kopii każdej jednostki przy użyciu różnych wartości RowKey w oddzielnych partycjach w oddzielnych tabelach, aby umożliwić szybkie i wydajne wyszukiwanie oraz alternatywne zamówienia sortowania przy użyciu różnych wartości RowKey.
+* [Wzorzec końca dziennika](#log-tail-pattern) — pobranie *n* jednostek, które zostały ostatnio dodane do partycji przy użyciu wartości **RowKey** , która jest sortowana w odwrotnej kolejności daty i godziny.  
 
 ## <a name="design-for-data-modification"></a>Projektowanie pod kątem modyfikacji danych
-Ta sekcja koncentruje się na informacjach dotyczących projektowania optymalizacji operacji wstawiania, aktualizacji i usuwa. W niektórych przypadkach konieczne będzie oceniać kompromisu między projekty, które optymalizują do wykonywania zapytań względem projektów, które Optymalizuj pod kątem modyfikacji danych, podobnie jak w projektach dla relacyjnych baz danych (mimo że techniki projektowania wad i zalet zarządzania są inne w przypadku relacyjnej bazy danych). Sekcja [wzorce projektowe oparte na tabeli](#table-design-patterns) opisuje niektóre wzorce szczegółowego projektowania usługi Table i opisano niektóre z tych wad. W praktyce znajdziesz, że wiele projektów, zoptymalizowane pod kątem zapytań jednostki również działać dobrze w przypadku modyfikowania jednostek.  
+Ta sekcja koncentruje się na zagadnieniach projektowych dotyczących optymalizacji operacji wstawiania, aktualizacji i usuwania. W niektórych przypadkach należy oszacować różnice między projektami, które optymalizują się w celu wykonywania zapytań dotyczących projektów, które optymalizują się pod kątem modyfikacji danych, tak samo jak w przypadku projektów relacyjnych baz danych (chociaż techniki zarządzania zasobami projektu są inne w relacyjnej bazie danych). W sekcjach [wzorów projektowania tabeli](#table-design-patterns) opisano niektóre szczegółowe wzorce projektowe dla Table Service i wyróżniono niektóre z nich. W ramach tego problemu okaże się, że wiele projektów zoptymalizowanych pod kątem wykonywania zapytań dotyczących jednostek również dobrze sprawdza się w przypadku modyfikowania jednostek.  
 
-### <a name="optimizing-the-performance-of-insert-update-and-delete-operations"></a>Optymalizacja wydajności INSERT, aktualizowania i usuwania działań
-Aby zaktualizować lub usunąć jednostkę, musi mieć możliwość identyfikację za pomocą **PartitionKey** i **RowKey** wartości. W związku z tym wybór **PartitionKey** i **RowKey** modyfikowanie jednostek powinno postępuj zgodnie z podobne kryteria z wybranymi do obsługi zapytań o punkt, ponieważ chcesz zidentyfikować jednostki jako najbardziej wydajny sposób. Czy chcesz użyć nieefektywne skanowanie za pomocą partycji lub tabeli, aby zlokalizować jednostki w celu odnajdywania **PartitionKey** i **RowKey** wartości, musisz zaktualizować lub usunąć go.  
+### <a name="optimizing-the-performance-of-insert-update-and-delete-operations"></a>Optymalizowanie wydajności operacji wstawiania, aktualizowania i usuwania
+Aby zaktualizować lub usunąć jednostkę, musi być możliwe jej zidentyfikowanie przy użyciu wartości **PartitionKey** i **RowKey** . W związku z tym wybór opcji **PartitionKey** i **RowKey** w celu zmodyfikowania jednostek powinien spełniać podobne kryteria, aby obsługiwały zapytania dotyczące punktów, ponieważ chcemy identyfikować jednostki tak efektywnie, jak to możliwe. Nie chcesz korzystać z niewydajnej partycji lub skanowania tabeli, aby zlokalizować jednostkę w celu odnalezienia wartości **PartitionKey** i **RowKey** , które należy zaktualizować lub usunąć.  
 
-Następujących wzorów w określonej sekcji [wzorce projektowe oparte na tabeli](#table-design-patterns) adresów, optymalizacji wydajności lub usługi insert, update, a operacje usuwania:  
+Następujące wzorce w [wzorach projektu tabeli](#table-design-patterns) sekcji dotyczą optymalizacji wydajności lub operacji wstawiania, aktualizowania i usuwania:  
 
-* [Duża Usuń wzorzec](#high-volume-delete-pattern) -Włącz usuwanie dużej liczby jednostek, przechowując wszystkie jednostki do usunięcia jednoczesnych w ich własnych osobnej tabeli; jednostki możesz usunąć przez usunięcie tabeli.  
-* [Wzorzec serii danych](#data-series-pattern) -Store serii kompletne dane w pojedynczej jednostki, aby zminimalizować liczbę żądań wprowadzeniu.  
-* [Wzorzec szerokiego jednostek](#wide-entities-pattern) — korzystanie z wielu jednostek fizycznych do przechowywania jednostek logicznych z więcej niż 252 właściwości.  
-* [Wzorzec dużych jednostek](#large-entities-pattern) — usługa blob storage do przechowywania wartości właściwości dużych.  
+* [Duże Usuwanie woluminu wzorzec](#high-volume-delete-pattern) — umożliwia usunięcie dużej liczby jednostek przez zapisanie wszystkich jednostek do jednoczesnego usunięcia w oddzielnej tabeli. obiekty można usunąć, usuwając tabelę.  
+* [Wzorzec serii danych](#data-series-pattern) — Przechowaj kompletne serie danych w pojedynczej jednostce, aby zminimalizować liczbę wysyłanych żądań.  
+* [Wzorzec szerokiej jednostki](#wide-entities-pattern) — używanie wielu jednostek fizycznych do przechowywania jednostek logicznych z więcej niż 252 właściwościami.  
+* [Wzorzec dużych jednostek](#large-entities-pattern) — Użyj magazynu obiektów BLOB do przechowywania dużych wartości właściwości.  
 
-### <a name="ensuring-consistency-in-your-stored-entities"></a>Zapewnienie spójności w jednostkach składowanych
-Kluczowym czynnikiem, który ma wpływ na wybór klucze na potrzeby optymalizacji modyfikacji danych jest sposób zapewnienia spójności za pomocą transakcji niepodzielnej. EGT można używać tylko do wykonywania operacji jednostek przechowywanych w tej samej partycji.  
+### <a name="ensuring-consistency-in-your-stored-entities"></a>Zapewnianie spójności przechowywanych jednostek
+Drugim czynnikiem, który ma wpływ na wybór kluczy do optymalizacji modyfikacji danych, jest sposób zapewnienia spójności przy użyciu transakcji niepodzielnych. Elementu EGT można używać tylko do obsługi jednostek przechowywanych w tej samej partycji.  
 
-Następujących wzorów w określonej sekcji [wzorce projektowe oparte na tabeli](#table-design-patterns) adresów, zarządzanie spójności:  
+W poniższych wzorcach [wzorców projektu tabeli](#table-design-patterns) sekcji adres zarządzania spójnością:  
 
-* [Wzorzec pomocniczy indeks partycji wewnątrz](#intra-partition-secondary-index-pattern) -Store wielu kopii każdej jednostki przy użyciu różnych **RowKey** wartości (w tej samej partycji), aby włączyć szybkie i efektywne wyszukiwania i naprzemienny porządek sortowania przy użyciu różnych **RowKey** wartości.  
-* [Wzorzec pomocniczy indeks partycji między](#inter-partition-secondary-index-pattern) - Store wiele kopii poszczególnych jednostek za pomocą różnych wartości RowKey w oddzielnych partycjach lub w oddzielnych tabelach umożliwiają szybkie i efektywne wyszukiwania i sortowania są porządkowane przy użyciu różnych **RowKey** wartości.  
-* [Wzorzec transakcji ostatecznie spójną](#eventually-consistent-transactions-pattern) -Włącz ostatecznie spójne zachowanie całej granice partycji lub granice system magazynu za pomocą kolejek systemu Azure.
-* [Wzorzec jednostek indeksu](#index-entities-pattern) — Obsługa jednostki indeksu umożliwiające wydajne wyszukiwanie, które zwracają listę jednostek.  
-* [Wzorzec denormalizacja](#denormalization-pattern) — łączenie pokrewnych danych ze sobą w pojedynczej jednostki, aby umożliwić pobieranie wszystkich potrzebnych danych przy użyciu zapytania pojedynczy punkt.  
-* [Wzorzec serii danych](#data-series-pattern) -Store serii kompletne dane w pojedynczej jednostki, aby zminimalizować liczbę żądań wprowadzeniu.  
+* [Wzorzec indeksu pomocniczego wewnątrz partycji](#intra-partition-secondary-index-pattern) — przechowywanie wielu kopii każdej jednostki przy użyciu różnych wartości **RowKey** (w tej samej partycji), aby umożliwić szybkie i wydajne wyszukiwanie oraz alternatywne zamówienia sortowania przy użyciu różnych wartości **RowKey** .  
+* [Wzorzec indeksu pomocniczego między partycjami](#inter-partition-secondary-index-pattern) — przechowywanie wielu kopii każdej jednostki przy użyciu różnych wartości RowKey w oddzielnych partycjach lub w oddzielnych tabelach w celu szybkiego i efektywnego wyszukiwania oraz alternatywnych zamówień sortowania przy użyciu różnych **RowKey** wartością.  
+* [Wzorzec ostatecznie spójnych transakcji](#eventually-consistent-transactions-pattern) — Włącz ostatecznie spójne zachowanie między granicami partycji lub granicami systemu magazynu za pomocą kolejek platformy Azure.
+* [Indeks jednostek indeksu](#index-entities-pattern) — utrzymuje jednostki indeksu, aby umożliwić efektywne wyszukiwanie, które zwracają listy jednostek.  
+* [Wzorzec denormalizacji](#denormalization-pattern) — połącz powiązane dane ze sobą w pojedynczej jednostce, aby umożliwić pobieranie wszystkich potrzebnych danych przy użyciu pojedynczego punktu zapytania.  
+* [Wzorzec serii danych](#data-series-pattern) — Przechowaj kompletne serie danych w pojedynczej jednostce, aby zminimalizować liczbę wysyłanych żądań.  
 
-Aby uzyskać informacje o transakcji grup jednostek, zobacz sekcję [transakcji grup jednostek](#entity-group-transactions).  
+Informacje o transakcjach grupy jednostek można znaleźć w sekcji dotyczącej [transakcji grupy jednostek](#entity-group-transactions).  
 
-### <a name="ensuring-your-design-for-efficient-modifications-facilitates-efficient-queries"></a>Zapewnienie projekt pod kątem efektywnego modyfikacje ułatwia wydajne zapytania
-Projektowanie pod kątem wydajne tworzenie zapytań powoduje efektywne modyfikacje, ale w wielu przypadkach zawsze powinni sprawdzić, czy to w przypadku określonego scenariusza. Niektóre wzorce w sekcji [wzorce projektowe oparte na tabeli](#table-design-patterns) jawnie oceny kompromis między wykonywania zapytań i modyfikowania obiektów, a użytkownik powinien zawsze wziąć pod uwagę liczbę każdego typu operacji.  
+### <a name="ensuring-your-design-for-efficient-modifications-facilitates-efficient-queries"></a>Zagwarantowanie, że projekt do wydajnej modyfikacji ułatwia wykonywanie wydajnych zapytań
+W wielu przypadkach projekt do wydajnego wykonywania zapytań umożliwia wydajne modyfikacje, ale zawsze należy sprawdzić, czy jest to przypadek dla konkretnego scenariusza. Niektóre wzorce w [wzorach projektu tabeli](#table-design-patterns) w sekcji jawnie szacują kompromisy między wykonywaniem zapytań i modyfikowaniem jednostek, a zawsze należy wziąć pod uwagę liczbę poszczególnych typów operacji.  
 
-Następujących wzorów w określonej sekcji [wzorce projektowe oparte na tabeli](#table-design-patterns) kompromis między projektowanie pod kątem wydajne zapytania i projektowanie pod kątem modyfikacji danych wydajne rozwiązania:  
+Poniższe wzorce w sekcjach [projektowanie projektowe](#table-design-patterns) , które stanowią rozróżnienia między projektowaniem pod kątem wydajnych zapytań i projektowaniem do wydajnej modyfikacji danych:  
 
-* [Wzorca klucza złożonego](#compound-key-pattern) — Użyj złożone **RowKey** wartości, aby włączyć klienta w celu wyszukania powiązanych danych, za pomocą zapytania pojedynczy punkt.  
-* [Wzorzec ogona dziennika](#log-tail-pattern) — pobieranie *n* ostatnio dodany do partycji przy użyciu jednostek **RowKey** wartość, która sortuje w odwrotnej daty i porządku czasowym.  
+* [Wzorzec klucza złożonego](#compound-key-pattern) — Użyj złożonych wartości **RowKey** , aby umożliwić klientowi wyszukiwanie powiązanych danych za pomocą pojedynczego punktu zapytania.  
+* [Wzorzec końca dziennika](#log-tail-pattern) — pobranie *n* jednostek, które zostały ostatnio dodane do partycji przy użyciu wartości **RowKey** , która jest sortowana w odwrotnej kolejności daty i godziny.  
 
-## <a name="encrypting-table-data"></a>Szyfrowanie danych w tabeli
-Biblioteka klienta .NET Azure Storage obsługuje szyfrowanie właściwości jednostki ciągu wstawiania i zamienianie operacji. Zaszyfrowane ciągi są przechowywane w usłudze jako właściwości binarnych i są konwertowane do ciągów po odszyfrowywania.    
+## <a name="encrypting-table-data"></a>Szyfrowanie danych tabeli
+Biblioteka klienta usługi Azure Storage dla platformy .NET obsługuje szyfrowanie właściwości jednostki ciągów dla operacji wstawiania i zamieniania. Zaszyfrowane ciągi są przechowywane w usłudze jako właściwości binarne i są konwertowane z powrotem do ciągów po odszyfrowaniu.    
 
-W przypadku tabel, oprócz zasad szyfrowania użytkownicy muszą określić właściwości, które mają być szyfrowane. Można to zrobić, albo określając atrybutu [EncryptProperty] (dla jednostki POCO, które wynikają z TableEntity) lub szyfrowania mechanizmu rozwiązywania konfliktów w opcji żądania. Mechanizm rozpoznawania szyfrowania jest delegat, który przyjmuje klucza partycji, klucz wiersza i nazwę właściwości i zwraca wartość Boolean wskazującą, czy mają być szyfrowane tej właściwości. Podczas szyfrowania biblioteki klienckiej użyje tych informacji do określania, czy właściwości mają być szyfrowane podczas zapisu w sieci. Delegat udostępnia także możliwości logiki wokół jak zaszyfrowane właściwości. (Na przykład, jeśli X, następnie szyfrować właściwość A; w przeciwnym razie szyfrowanie właściwości, A i B.) Nie jest konieczne może przekazać tę informację podczas odczytywania lub podczas badania jednostki.
+W przypadku tabel oprócz zasad szyfrowania użytkownicy muszą określić właściwości, które mają być szyfrowane. Można to zrobić przez określenie atrybutu [EncryptProperty] (dla jednostek POCO, które pochodzą z klasy tableentity) lub mechanizmu rozwiązywania konfliktów w opcjach żądania. Program rozpoznawania szyfrowania jest delegatem, który pobiera klucz partycji, klucz wiersza i nazwę właściwości i zwraca wartość logiczną wskazującą, czy ta właściwość powinna być szyfrowana. Podczas szyfrowania Biblioteka kliencka będzie używać tych informacji do decydowania, czy właściwość powinna być szyfrowana podczas zapisywania w sieci. Delegat udostępnia również możliwość logiki dotyczącej sposobu szyfrowania właściwości. (Na przykład, jeśli X, wówczas Zaszyfruj Właściwość A; w przeciwnym razie Szyfruj właściwości a i B). Nie trzeba podawać tych informacji podczas odczytywania lub wykonywania zapytań dotyczących jednostek.
 
-Scalanie nie jest obecnie obsługiwane. Ponieważ podzbiór właściwości może być zaszyfrowany wcześniej przy użyciu innego klucza, po prostu scalanie nowych właściwości i aktualizowanie metadanych spowoduje utratę danych. Scalanie albo wymaga wywołań usługi dodatkowe odczytać wstępnie istniejącej jednostki usługi lub przy użyciu nowego klucza dla właściwości, które nie są odpowiednie dla ze względu na wydajność.     
+Scalanie nie jest obecnie obsługiwane. Ponieważ podzbiór właściwości mógł zostać zaszyfrowany wcześniej przy użyciu innego klucza, po prostu scalanie nowych właściwości i aktualizowanie metadanych spowoduje utratę danych. Scalanie wymaga wykonania dodatkowych wywołań usługi do odczytu istniejącej jednostki z usługi lub użycia nowego klucza dla każdej właściwości, co nie jest odpowiednie ze względu na wydajność.     
 
-Aby uzyskać informacje o szyfrowaniu danych w tabeli, zobacz [szyfrowanie po stronie klienta i usługi Azure Key Vault dla usługi Microsoft Azure Storage](../storage/common/storage-client-side-encryption.md).  
+Aby uzyskać informacje na temat szyfrowania danych tabeli, zobacz [szyfrowanie po stronie klienta i Azure Key Vault Microsoft Azure Storage](../storage/common/storage-client-side-encryption.md).  
 
 ## <a name="modeling-relationships"></a>Modelowanie relacji
-Tworzenie modeli domeny jest krokiem w projekcie złożonych systemów. Zazwyczaj używasz procesie modelowania do identyfikowania jednostek i relacji między nimi jako sposób na zrozumienie domeny biznesowej i natychmiastowego informowania projektu systemu. Ta sekcja koncentruje się na sposób niektóre popularne typy relacji w modeli domeny do projektów usługi tabeli translacji. Proces mapowanie logiczny model danych do fizycznego opartych na NoSQL — model danych różni się od używanej podczas projektowania relacyjnej bazy danych. Projektowania relacyjnych baz danych zwykle zakłada proces normalizacji danych zoptymalizowana pod kątem minimalizując nadmiarowość — i deklaratywne możliwości zapytań, zapewniający abstrakcję jak implementacja jak baza danych działa.  
+Tworzenie modeli domen to kluczowy etap projektowania złożonych systemów. Zazwyczaj proces modelowania jest używany do identyfikowania jednostek i relacji między nimi w celu zrozumienia domeny biznesowej i poinformowania o projekcie systemu. Ta sekcja koncentruje się na sposobach przekształcania niektórych typowych typów relacji znalezionych w modelach domen na projekty dla Table service. Proces mapowania z logicznego modelu danych na fizyczny model danych oparty na NoSQL różni się od tego, który jest używany podczas projektowania relacyjnej bazy danych. Projekt relacyjnych baz danych zazwyczaj przyjmuje proces normalizacji danych zoptymalizowany pod kątem minimalizowania nadmiarowości — oraz możliwość wykonywania zapytań deklaratywnych, która stanowi streszczenie sposobu działania bazy danych.  
 
 ### <a name="one-to-many-relationships"></a>Relacje jeden do wielu
-Relacje jeden do wielu między obiektami domeny biznesowej często występują: na przykład jednego działu ma wielu pracowników. Istnieje kilka sposobów, aby zaimplementować relacji jeden do wielu w usłudze Table service każdego z zalet i wad, które mogą być istotne dla konkretnego scenariusza.  
+Relacja jeden do wielu między obiektami domeny biznesowej występuje często: na przykład jeden dział ma wielu pracowników. Istnieje kilka sposobów implementacji relacji jeden-do-wielu w Table service każdy ze specjalistami i wadami, które mogą mieć zastosowanie w konkretnym scenariuszu.  
 
-Rozważmy przykład dużych przedsiębiorstw wielonarodowym dziesiątki tysięcy działów i jednostki pracowników, gdzie każdy dział ma wielu pracowników i każdego pracownika, jako skojarzone z określonym dziale. Jednym z podejść jest do przechowywania działu oddzielne i pracowników jednostki, takie jak te:  
+Rozważmy przykład dużej firmy wielonarodowej z dziesiątki tysięcy działów i jednostek pracowników, gdzie każdy dział ma wielu pracowników i każdego pracownika jako skojarzony z jednym określonym działem. Jednym z metod jest przechowywanie oddzielnych jednostek działu i pracowników, takich jak następujące:  
 
-![Dział i pracownik jednostki][1]
+![Jednostka działu i pracownika][1]
 
-Ten przykład przedstawia niejawnych relacji jeden do wielu między typami, na podstawie **PartitionKey** wartości. Każdy dział może mieć wielu pracowników.  
+Ten przykład pokazuje niejawną relację "jeden do wielu" między typami opartymi na wartości **PartitionKey** . Każdy dział może mieć wielu pracowników.  
 
-Ten przykład pokazuje także jednostki działu i jego jednostek powiązanych pracowników w tej samej partycji. Można korzystać z różnych partycji, tabel lub kont magazynu nawet dla typów innej jednostki.  
+Ten przykład pokazuje również jednostkę działu i powiązane jednostki pracowników w tej samej partycji. Można użyć różnych partycji, tabel, a nawet kont magazynu dla różnych typów jednostek.  
 
-Alternatywnym podejściem jest zdenormalizowanie danych i przechowywać tylko jednostki pracowników z działu nieznormalizowany danych, jak pokazano w poniższym przykładzie. W tym scenariuszu to nieznormalizowanym podejściu nie może być najlepiej, jeśli masz wymaganie, aby można było zmienić szczegóły kierownik działu, ponieważ w tym celu należy zaktualizować każdy pracownik działu.  
+Alternatywnym podejściem jest denormalizowanie danych i przechowywanie tylko jednostek pracowników z nieznormalizowanymi danymi działu, jak pokazano w poniższym przykładzie. W tym konkretnym scenariuszu takie nieznormalizowane podejście może nie być najlepszym rozwiązaniem, jeśli istnieje wymóg, aby można było zmienić szczegóły menedżera działu, ponieważ w tym celu należy zaktualizować każdego pracownika w dziale.  
 
-![Jednostka pracownika][2]
+![Jednostka Employee][2]
 
-Aby uzyskać więcej informacji, zobacz [wzorzec Denormalizacja](#denormalization-pattern) później w tym przewodniku.  
+Aby uzyskać więcej informacji, zobacz [wzorzec denormalizacji](#denormalization-pattern) w dalszej części tego przewodnika.  
 
-Poniższa tabela zawiera podsumowanie zalet i wad każdej z metod opisanych powyżej do przechowywania pracowników i obiektów działu, które mają relacje jeden do wielu. Należy również rozważyć, jak często chcą wykonywać różne operacje: może być akceptowalne, aby projekt, który zawiera kosztowna operacja, jeśli ta operacja odbywa się tylko rzadko.  
+Poniższa tabela zawiera podsumowanie specjalistów i wad każdego z podejść przedstawionych powyżej do przechowywania jednostek pracowników i działów, które mają relację jeden do wielu. Należy również wziąć pod uwagę, jak często mają być wykonywane różne operacje: może być możliwe posiadanie projektu, który obejmuje kosztowną operację, jeśli ta operacja jest wykonywana tylko rzadko.  
 
 <table>
 <tr>
-<th>Podejście</th>
-<th>Specjaliści</th>
+<th>Wynosi</th>
+<th>Formaty</th>
 <th>Wady</th>
 </tr>
 <tr>
-<td>Oddziel typów jednostek, tę samą partycję, w tej samej tabeli</td>
+<td>Oddzielne typy jednostek, ta sama partycja, ta sama tabela</td>
 <td>
 <ul>
-<li>Należy zaktualizować jednostki działu, przy użyciu jednej operacji.</li>
-<li>EGT służy do zapewniania spójności, jeśli masz wymaganie, aby zmodyfikować jednostki działu zawsze wtedy, gdy użytkownik aktualizacji/insert/usuwania jednostki pracowników. Na przykład, jeśli to Ty masz liczba pracowników działów dla każdego działu.</li>
+<li>Można zaktualizować jednostkę działu przy użyciu jednej operacji.</li>
+<li>Można użyć EGT, aby zachować spójność, jeśli istnieje potrzeba modyfikacji jednostki działu przy każdej aktualizacji/wstawieniu/usunięciu jednostki pracownika. Na przykład w przypadku utrzymania liczby pracowników działu dla poszczególnych działów.</li>
 </ul>
 </td>
 <td>
 <ul>
-<li>Może być konieczne pobrać jednostki działu, w przypadku niektórych działań klienta i pracownika.</li>
-<li>Magazyn — liczba operacji pojawiają się w tej samej partycji. Na woluminach dużo transakcji może to spowodować punkt największej aktywności.</li>
-<li>Nie można przenieść pracownika nowy dział przy użyciu EGT.</li>
-</ul>
-</td>
-</tr>
-<tr>
-<td>Typy osobne jednostki, różne partycje lub tabele lub konta magazynu</td>
-<td>
-<ul>
-<li>Należy zaktualizować jednostki działu lub pracowników przy użyciu jednej operacji.</li>
-<li>Na woluminach dużo transakcji może to pomóc rozłożenie obciążenia na więcej partycji.</li>
-</ul>
-</td>
-<td>
-<ul>
-<li>Może być konieczne pobrać jednostki działu, w przypadku niektórych działań klienta i pracownika.</li>
-<li>Nie można użyć EGTs, aby zachować spójność po użytkownik aktualizacji/insert/delete pracownika i zaktualizuj dział. Na przykład aktualizowanie liczba pracowników w jednostce działu.</li>
-<li>Nie można przenieść pracownika nowy dział przy użyciu EGT.</li>
+<li>Może być konieczne pobranie pracownika i jednostki działu dla niektórych działań klientów.</li>
+<li>Operacje magazynu są wykonywane w tej samej partycji. W przypadku dużych ilości transakcji może to spowodować powstanie punktu aktywnego.</li>
+<li>Nie można przenieść pracownika do nowego działu przy użyciu EGT.</li>
 </ul>
 </td>
 </tr>
 <tr>
-<td>Denormalizowanie w pojedynczej jednostki typu</td>
+<td>Oddzielne typy jednostek, różne partycje lub tabele lub konta magazynu</td>
 <td>
 <ul>
-<li>Możesz pobrać wszystkie informacje potrzebne przy użyciu pojedynczego żądania.</li>
+<li>Można zaktualizować jednostkę działu lub jednostkę pracownika przy użyciu jednej operacji.</li>
+<li>W przypadku dużych ilości transakcji może to ułatwić rozproszenie obciążenia na więcej partycji.</li>
 </ul>
 </td>
 <td>
 <ul>
-<li>Może to być drogie w utrzymaniu spójności, jeśli konieczne zaktualizowanie informacji działu (wymagałoby to zaktualizowania wszystkich pracowników działu).</li>
+<li>Może być konieczne pobranie pracownika i jednostki działu dla niektórych działań klientów.</li>
+<li>Nie można użyć EGTs, aby zachować spójność podczas aktualizowania/wstawiania/usuwania pracownika i aktualizowania działu. Na przykład w jednostce działu można aktualizować liczbę pracowników.</li>
+<li>Nie można przenieść pracownika do nowego działu przy użyciu EGT.</li>
+</ul>
+</td>
+</tr>
+<tr>
+<td>Denormalizowanie do typu pojedynczej jednostki</td>
+<td>
+<ul>
+<li>Wszystkie potrzebne informacje można pobrać przy użyciu pojedynczego żądania.</li>
+</ul>
+</td>
+<td>
+<ul>
+<li>Zachowanie spójności może być kosztowne, jeśli trzeba zaktualizować informacje działu (wymaga to zaktualizowania wszystkich pracowników w dziale).</li>
 </ul>
 </td>
 </tr>
 </table>
 
-Jak wybrać między te opcje, a które z zalet i wad są najbardziej istotne, zależy od Twoich scenariuszy określonej aplikacji. Na przykład jak często należy możesz modyfikować jednostek działu; czy wszystkie zapytania pracowników muszą dodatkowe informacje dla działu; jak blisko czy limitów skalowalności na partycji lub konta magazynu?  
+Wybór między tymi opcjami oraz to, które z zalet i wad są najbardziej znaczące, zależy od konkretnych scenariuszy aplikacji. Na przykład jak często modyfikujesz jednostki działu; wszystkie zapytania pracowników potrzebują dodatkowych informacji działu; jak blisko ograniczeń skalowalności w partycjach lub na koncie magazynu?  
 
 ### <a name="one-to-one-relationships"></a>Relacje jeden do jednego
-Modeli domeny może zawierać jeden do jednego relacje między jednostkami. Musisz zaimplementować relacja jeden do jednego w usłudze Table service, należy także wybrać jak połączyć dwie jednostki powiązane, gdy trzeba pobrać ich obu. Ten link może być niejawne, zależnie od Konwencji w wartościach klucza lub jawne, przechowując link w formie **PartitionKey** i **RowKey** wartości w każdej jednostki do jego powiązanej jednostki. Aby uzyskać omówienie tego, czy należy przechowywać powiązanych jednostek w tej samej partycji, zobacz sekcję [jeden do wielu relacji](#one-to-many-relationships).  
+Modele domeny mogą zawierać relacje jeden do jednego między jednostkami. Jeśli zachodzi potrzeba zaimplementowania relacji jeden-do-jednego w Table service, należy również wybrać, jak połączyć dwie powiązane jednostki, gdy trzeba je pobrać. Ten link może być niejawny, na podstawie Konwencji w wartościach klucza lub jawnie przez przechowywanie linku w postaci wartości **PartitionKey** i **RowKey** w każdej jednostce względem powiązanej jednostki. Aby zapoznać się z omówieniem, czy należy przechowywać powiązane jednostki w tej samej partycji, zobacz [relacje jeden do wielu](#one-to-many-relationships).  
 
-Dostępne są również istotne informacje dotyczące implementacji, które mogą prowadzić do zaimplementowania relacji jeden do jednego w usłudze Table service:  
+Istnieją także uwagi dotyczące implementacji, które mogą prowadzić do wdrożenia relacji jeden-do-jednego w Table service:  
 
-* Obsługa dużych jednostek (Aby uzyskać więcej informacji, zobacz [dużych jednostek wzorzec](#large-entities-pattern)).  
-* Implementowanie kontroli dostępu (Aby uzyskać więcej informacji, zobacz [kontrolowanie dostępu przy użyciu sygnatury dostępu współdzielonego](#controlling-access-with-shared-access-signatures)).  
+* Obsługa dużych jednostek (Aby uzyskać więcej informacji, zobacz [wzorzec dużych jednostek](#large-entities-pattern)).  
+* Implementowanie kontroli dostępu (Aby uzyskać więcej informacji, zobacz [kontrolowanie dostępu za pomocą sygnatur dostępu współdzielonego](#controlling-access-with-shared-access-signatures)).  
 
 ### <a name="join-in-the-client"></a>Dołącz do klienta
-Mimo że istnieją sposoby relacje modelu w usłudze Table service, należy nie zapominać, że dwie główne przyczyny za pomocą usługi Table jest skalowalność i wydajność. Jeśli okaże się, że są modelowania wiele relacji, które negatywnie wpłynąć na wydajność i skalowalność rozwiązania, należy poprosić samodzielnie Jeśli jest niezbędne do utworzenia relacji danych w projekcie tabeli. Można Uproszczenie projektowania i poprawy skalowalności i wydajności rozwiązania, jeśli zezwolisz aplikacji klienckiej wykonać wszelkie niezbędne sprzężenia.  
+Chociaż istnieją metody do modelowania relacji w Table service, nie należy zapominać, że dwa podstawowe przyczyny używania Table service są skalowalne i wydajnościowe. Jeśli okaże się, że modelowanie ma wiele relacji, które naruszają wydajność i skalowalność rozwiązania, należy poproszony o to, jeśli konieczne jest skompilowanie wszystkich relacji danych w projekcie tabeli. Może być możliwe uproszczenie projektowania i zwiększenie skalowalności i wydajności rozwiązania, Jeśli zezwolisz aplikacji klienckiej na wykonywanie dowolnych koniecznych sprzężeń.  
 
-Na przykład jeśli masz małe tabele, które zawierają dane, która nie zmienia się często, następnie można pobrać te dane jeden raz i Buforuj go na komputerze klienckim. To uniknąć wielokrotnego natężenie ruchu do pobrania tych samych danych. W przykładach, które mają przyjrzeliśmy się w tym przewodniku zbiór działów w organizacji małych prawdopodobnie jest mały i zmienić rzadko co dobrym kandydatem do danych, które aplikacja kliencka może pobrać raz i pamięci podręcznej jako dane wyszukiwania.  
+Na przykład jeśli masz małe tabele zawierające dane, które nie zmieniają się często, możesz pobrać te dane raz i umieścić je w pamięci podręcznej na kliencie. Może to uniknąć powtarzanych roundtrip, aby pobrać te same dane. W przykładach, które zostały opisane w tym przewodniku, zestaw działów w małej organizacji może być niewielki i często zmieniany, dzięki czemu jest to dobry kandydat dla danych, które aplikacja kliencka może pobrać raz i buforować jako dane wyszukiwania.  
 
 ### <a name="inheritance-relationships"></a>Relacje dziedziczenia
-Jeśli Twoja aplikacja kliencka korzysta z zestawu klas, które stanowią część relacji dziedziczenia do reprezentowania jednostek biznesowych, można łatwo utrwalić tych jednostek w usłudze Table service. Na przykład może być przedstawiony poniżej zestaw klas zdefiniowanych w aplikacji klienckiej gdzie **osoby** jest klasą abstrakcyjną.
+Jeśli aplikacja kliencka korzysta z zestawu klas, które stanowią część relacji dziedziczenia reprezentującej jednostki biznesowe, można łatwo utrzymać te jednostki w Table service. Na przykład w aplikacji klienckiej można określić następujący zestaw klas, gdzie **osoba** jest klasą abstrakcyjną.
 
 ![Diagram ER relacji dziedziczenia][3]
 
-Jednak można utrwalić wystąpieniami dwóch klas konkretnych w usłudze Table service, za pomocą pojedynczej tabeli osoby za pomocą jednostek w tym wyglądał następująco:  
+Można utrzymywać wystąpienia dwóch konkretnych klas w Table service przy użyciu pojedynczej tabeli osób, która będzie wyglądać następująco:  
 
-![Diagram jednostki Klient i jednostki pracownika][4]
+![Diagram jednostki klienta i jednostki pracownika][4]
 
-Aby uzyskać więcej informacji na temat pracy z wieloma typami jednostki w tej samej tabeli, w kodzie klienta, zobacz sekcję [Praca z typami encji heterogenicznych](#working-with-heterogeneous-entity-types) później w tym przewodniku. Zapewnia to przykłady sposobu rozpoznaje typ jednostki w kodzie klienta.  
+Więcej informacji o pracy z wieloma typami jednostek w tej samej tabeli w kodzie klienta znajduje się w sekcji [Praca z typami jednostek heterogenicznych](#working-with-heterogeneous-entity-types) w dalszej części tego przewodnika. Zawiera przykłady sposobu rozpoznawania typu jednostki w kodzie klienta.  
 
-## <a name="table-design-patterns"></a>Wzorce projektowe oparte na tabelę
-W poprzednich sekcjach wiesz, że niektóre szczegółowe dyskusje na temat sposobu optymalizacji układ tabeli dla obu podczas pobierania danych jednostki przy użyciu zapytań i wstawiania, aktualizowania i usuwania danych dotyczących jednostki. W tej sekcji opisano niektóre wzorce, które są przeznaczone do użycia z rozwiązaniami usługi tabeli. Ponadto zobaczysz, jak praktycznie rozwiązać niektóre problemy i charakterystyczne kompromisowe zgłoszone wcześniej w tym przewodniku. Poniższy diagram przedstawia relacje między różnych wzorców:  
+## <a name="table-design-patterns"></a>Wzorce projektowe tabeli
+W poprzednich sekcjach pojawiły się pewne szczegółowe dyskusje na temat optymalizowania projektu tabeli na potrzeby pobierania danych jednostki przy użyciu zapytań oraz wstawiania, aktualizowania i usuwania danych jednostki. W tej sekcji opisano niektóre wzorce, które są odpowiednie do użycia z rozwiązaniami Table service. Ponadto zobaczysz, jak można praktycznie rozwiązać niektóre problemy i wady, które zostały wcześniej zgłoszone w tym przewodniku. Poniższy diagram podsumowuje relacje między różnymi wzorcami:  
 
-![Obraz przedstawiający wzorce projektowe oparte na tabelę][5]
+![Obraz wzorców projektu tabeli][5]
 
-Mapa wzorzec powyżej wyróżnia niektórych relacji między (niebieski) wzorce i niezalecane wzorce (kolor pomarańczowy), które są opisane w tym przewodniku. Oczywiście istnieje wiele wzorców, które są warte biorąc pod uwagę. Na przykład jednego z kluczowych scenariuszy dla usługi Table Service jest użycie [użycia wzorca zmaterializowanego widoku](https://msdn.microsoft.com/library/azure/dn589782.aspx) z [podział odpowiedzialności polecenia w zapytania (CQRS)](https://msdn.microsoft.com/library/azure/jj554200.aspx) wzorca.  
+Powyższa Mapa wzorca podświetla niektóre relacje między wzorcami (Blue) i antywzorców (pomarańczowy), które są opisane w tym przewodniku. Istnieją oczywiście wiele innych wzorców, które warto wziąć pod uwagę. Na przykład jeden z najważniejszych scenariuszy usługi Table Service to użycie [wzorca widoku materiałowego](https://msdn.microsoft.com/library/azure/dn589782.aspx) z wzorca [podziału odpowiedzialności (CQRS)](https://msdn.microsoft.com/library/azure/jj554200.aspx) .  
 
-### <a name="intra-partition-secondary-index-pattern"></a>Wzorzec indeks pomocniczy wewnątrz partycji
-Store wielu kopii każdej jednostki przy użyciu różnych **RowKey** wartości (w tej samej partycji) Włącz szybkie i efektywne wyszukiwań naprzemienny porządek sortowania przy użyciu różnych **RowKey** wartości. Aktualizacje między kopie mogą być przechowywane na spójne przy użyciu EGTs.  
+### <a name="intra-partition-secondary-index-pattern"></a>Wzorzec indeksu pomocniczego wewnątrz partycji
+Przechowuj wiele kopii każdej jednostki przy użyciu różnych wartości **RowKey** (w tej samej partycji), aby umożliwić szybkie i wydajne wyszukiwanie oraz alternatywne zamówienia sortowania przy użyciu różnych wartości **RowKey** . Aktualizacje między kopiami można utrzymywać spójnie przy użyciu EGTs.  
 
 #### <a name="context-and-problem"></a>Kontekst i problem
-Usługa Table service automatycznie indeksuje jednostki przy użyciu **PartitionKey** i **RowKey** wartości. Dzięki temu aplikacja kliencka można pobrać jednostki wydajnie za pomocą tych wartości. Na przykład przy użyciu struktury tabeli pokazano poniżej, aplikacja kliencka można użyć kwerendy punktu można pobrać jednostki poszczególnych pracowników przy użyciu nazwy działu i identyfikator ( **PartitionKey** i **RowKey**  wartości). Klienta można także pobrać jednostki posortowanych według identyfikatorów pracowników w ramach każdego działu.
+Table service automatycznie indeksuje jednostki przy użyciu wartości **PartitionKey** i **RowKey** . Dzięki temu aplikacja kliencka może efektywnie pobrać jednostkę przy użyciu tych wartości. Na przykład przy użyciu struktury tabeli pokazanej poniżej, aplikacja kliencka może użyć zapytania punkt do pobrania indywidualnej jednostki pracownika przy użyciu nazwy działu i identyfikatora pracownika (wartości **PartitionKey** i **RowKey** ). Klient może również pobrać jednostki posortowane według identyfikatora pracownika w poszczególnych działach.
 
-![Jednostka pracownika][6]
+![Jednostka Employee][6]
 
-Jeśli chcesz także być w stanie znaleźć jednostki pracowników na podstawie wartości innej właściwości, takie jak adres e-mail musi być znaleźć dopasowania mniej wydajne rozwiązanie skanowania partycji. Jest to spowodowane Usługa tabeli nie zapewnia indeksów pomocniczych. Ponadto, nie ma opcji żądania listy pracowników posortowane w kolejności innej niż **RowKey** zamówienia.  
+Jeśli chcesz również znaleźć jednostkę pracownika na podstawie wartości innej właściwości, takiej jak adres e-mail, musisz użyć mniej wydajnego skanowania partycji, aby znaleźć dopasowanie. Wynika to z faktu, że usługa Table Service nie udostępnia indeksów pomocniczych. Ponadto nie ma możliwości zażądania listy pracowników posortowanych w innej kolejności niż kolejność **RowKey** .  
 
 #### <a name="solution"></a>Rozwiązanie
-Aby obejść braku indeksów pomocniczych, można przechowywać wiele kopii każdej jednostki z każdą kopią przy użyciu innego **RowKey** wartości. Jeśli przechowujesz jednostki ze strukturami, pokazano poniżej, pozwala na efektywne pobieranie jednostek pracowników na podstawie identyfikatora wiadomości e-mail adres lub pracowników. Prefiks wartości **RowKey**, "empid_" i "email_" pozwalają na wykonywanie zapytań dla jednego pracownika lub szeroką gamę pracowników przy użyciu zakresu adresów e-mail lub identyfikatory pracownika.  
+Aby obejść brak indeksów pomocniczych, można przechowywać wiele kopii poszczególnych jednostek z każdą kopią przy użyciu innej wartości **RowKey** . Jeśli przechowujesz jednostkę z poniższymi strukturami, możesz efektywnie pobrać jednostki pracowników na podstawie adresu e-mail lub identyfikatora pracownika. Wartości prefiksów **RowKey**"empid_" i "email_" umożliwiają wykonywanie zapytań dotyczących jednego pracownika lub zakresu pracowników przy użyciu zakresu adresów e-mail lub identyfikatorów pracowników.  
 
-![Pracownik jednostki ze zróżnicowanymi wartościami RowKey][7]
+![Jednostka pracownika z różnymi wartościami RowKey][7]
 
-Następujące kryteria filtrowania dwóch (jeden wyszukiwanie według identyfikatora pracowników i jeden wyszukiwanie według adresu e-mail), zarówno Określ zapytań o punkt:  
+Poniższe dwa kryteria filtrowania (jeden wyszukiwany według identyfikatora pracownika i jeden z nich w adresie e-mail) określają kwerendy punktowe:  
 
-* $filter = (PartitionKey eq "Sprzedaż") i (RowKey eq "empid_000223")  
-* $filter = (PartitionKey eq "Sprzedaż") i (RowKey eq 'email_jonesj@contoso.com")  
+* $filter = (PartitionKey EQ "Sales") i (RowKey EQ "empid_000223")  
+* $filter = (PartitionKey EQ "Sales") i (RowKey EQ "email_jonesj@contoso.com")  
 
-Po wykonaniu zapytania dotyczącego zakresu jednostek pracowników, można określić zakres posortowane w kolejności identyfikator pracownika lub posortowane w kolejności adres poczty e-mail przy użyciu zapytań dotyczących jednostek, używając odpowiedniego prefiksu w zakresie **RowKey**.  
+W przypadku wykonywania zapytań dotyczących zakresu jednostek pracowników można określić zakres posortowany w kolejności identyfikatorów pracowników lub zakres posortowany w kolejności adresów e-mail przez wyszukanie jednostek z odpowiednim prefiksem w **RowKey**.  
 
-* Aby znaleźć wszyscy pracownicy działu sprzedaży, identyfikator pracownika używany zakres 000100 do 000199: $filter = (PartitionKey eq "Sprzedaż") i (RowKey ge "empid_000100") i (RowKey le "empid_000199")  
-* Aby znaleźć wszyscy pracownicy działu sprzedaży przy użyciu adresu e-mail, rozpoczynając od litery "" Użyj: $filter = (PartitionKey eq "Sprzedaż") i (RowKey ge "email_a") i (RowKey lt "email_b")  
+* Aby znaleźć wszystkich pracowników działu sprzedaży z identyfikatorem pracownika z zakresu od 000100 do 000199, użyj: $filter = (PartitionKey EQ "Sales") i (RowKey GE "empid_000100") i (RowKey Le "empid_000199")  
+* Aby znaleźć wszystkich pracowników działu sprzedaży przy użyciu adresu e-mail rozpoczynającego się od litery "a", użyj: $filter = (PartitionKey EQ "Sales") i (RowKey GE "email_a") i (RowKey lt "email_b")  
   
-  Składnia filtru używanych w powyższych przykładach jest z usługi tabel interfejsu API REST, aby uzyskać więcej informacji, zobacz [wykonywanie zapytań dotyczących jednostek](https://msdn.microsoft.com/library/azure/dd179421.aspx).  
+  Składnia filtru użyta w powyższych przykładach pochodzi z interfejsu API REST Table service, aby uzyskać więcej informacji, zobacz temat [jednostki zapytań](https://msdn.microsoft.com/library/azure/dd179421.aspx).  
 
 #### <a name="issues-and-considerations"></a>Problemy i kwestie do rozważenia
 Podczas podejmowania decyzji o sposobie wdrożenia tego wzorca należy rozważyć następujące punkty:  
 
-* Magazyn tabel jest stosunkowo tania do użycia, więc obciążenie koszt przechowywania zduplikowanych danych, nie powinien być głównym problemem. Jednak należy zawsze należy przeprowadzić ocenę koszt projektu, w zależności od wymagań przewidywanych i dodawać tylko zduplikowane jednostki do obsługi zapytań, których będą wykonywane przez aplikację kliencką.  
-* Ponieważ jednostki indeks pomocniczy są przechowywane w tej samej partycji co oryginalne jednostek, należy upewnić się, przekracza cele skalowalności dla poszczególnych partycji.  
-* Możesz zachować swoje zduplikowanych wpisów zgodne ze sobą przy użyciu EGTs niepodzielne zaktualizować dwie kopie jednostki. Oznacza to, że należy przechowywać wszystkie kopie jednostki w tej samej partycji. Aby uzyskać więcej informacji, zobacz sekcję [przy użyciu transakcji grup jednostek](#entity-group-transactions).  
-* Wartość **RowKey** musi być unikatowa dla każdej jednostki. Rozważ użycie wartości klucza złożonego.  
-* Wypełnienie wartości liczbowe w **RowKey** (na przykład identyfikator pracownika 000223), pozwala rozwiązać, sortowanie i filtrowanie na podstawie górną i dolną.  
-* Nie zawsze należy zduplikowane właściwości jednostki. Na przykład, jeśli adresem zapytania wyszukujące jednostek opartego na poczcie e-mail **RowKey** nigdy nie potrzebować wiek pracownika, te jednostki może mieć następującą strukturę:
+* Użycie magazynu tabel jest stosunkowo niedrogie, więc obciążenie kosztem przechowywania zduplikowanych danych nie powinno być istotnym problemem. Należy jednak zawsze oszacować koszt projektu w oparciu o przewidywane wymagania dotyczące magazynu i dodawać tylko zduplikowane jednostki do obsługi zapytań, które będą wykonywane w aplikacji klienckiej.  
+* Ponieważ pomocnicze jednostki indeksu są przechowywane w tej samej partycji co oryginalne jednostki, należy upewnić się, że elementy docelowe skalowalności dla pojedynczej partycji nie zostaną przekroczone.  
+* Zduplikowane jednostki można zachować spójnie ze sobą za pomocą EGTs, aby zaktualizować dwie kopie jednostki jako niepodzielne. Oznacza to, że należy przechowywać wszystkie kopie jednostki w tej samej partycji. Aby uzyskać więcej informacji, zobacz sekcję [Korzystanie z transakcji grupy jednostek](#entity-group-transactions).  
+* Wartość używana dla **RowKey** musi być unikatowa dla każdej jednostki. Rozważ użycie wartości klucza złożonego.  
+* Uzupełnienie wartości liczbowych w **RowKey** (na przykład identyfikator pracownika 000223) umożliwia poprawne sortowanie i filtrowanie na podstawie górnych i dolnych granic.  
+* Nie trzeba duplikować wszystkich właściwości obiektu. Na przykład jeśli zapytania wyszukujące jednostki przy użyciu adresu e-mail w **RowKey** nigdy nie potrzebują wieku pracownika, te jednostki mogą mieć następującą strukturę:
 
-![Jednostka pracownika][8]
+![Jednostka Employee][8]
 
-* Zazwyczaj lepiej do przechowywania zduplikowanych danych i upewnij się, pobrać wszystkie dane potrzebne za pomocą jednego zapytania, niż Aby użyć jednego zapytania, aby zlokalizować jednostki, a drugi do wyszukiwania danych wymagane jest.  
+* Zazwyczaj lepszym rozwiązaniem jest przechowywanie zduplikowanych danych i upewnienie się, że można pobrać wszystkie potrzebne dane za pomocą pojedynczego zapytania, niż w celu znalezienia jednostki i drugiej, aby wyszukać wymagane dane.  
 
 #### <a name="when-to-use-this-pattern"></a>Kiedy używać tego wzorca
-Użyj tego wzorca, gdy Twoja aplikacja kliencka musi pobrać jednostki przy użyciu szeregu różnych kluczy, gdy Twój klient musi pobrać jednostki w poszczególnych kolejności sortowania, a w przypadku, gdy zidentyfikuje każdej jednostki przy użyciu różnych unikatowe wartości. Jednak należy się upewnić, że nie przekraczają limitów skalowalności partycji podczas przeprowadzania wyszukiwania jednostki przy użyciu różnych **RowKey** wartości.  
+Użyj tego wzorca, gdy aplikacja kliencka musi pobrać jednostki przy użyciu różnych kluczy, gdy klient musi pobrać jednostki w różnych zamówieniach sortowania i gdzie można zidentyfikować poszczególne jednostki przy użyciu różnych unikatowych wartości. Należy jednak pamiętać, że nie przekracza limitów skalowalności partycji podczas przeprowadzania wyszukiwania jednostek przy użyciu różnych wartości **RowKey** .  
 
 #### <a name="related-patterns-and-guidance"></a>Powiązane wzorce i wskazówki
 Podczas implementowania tego wzorca mogą być istotne następujące wzorce i wskazówki:  
 
-* [Komunikacja między partycji wzorzec indeks pomocniczy](#inter-partition-secondary-index-pattern)
-* [Wzorzec klucza złożona (c)](#compound-key-pattern)
+* [Wzorzec indeksu pomocniczego między partycjami](#inter-partition-secondary-index-pattern)
+* [Wzorzec klucza złożonego](#compound-key-pattern)
 * [Transakcje grupy jednostek](#entity-group-transactions)
-* [Praca z typami encji heterogenicznych](#working-with-heterogeneous-entity-types)
+* [Praca z heterogenicznymi typami jednostek](#working-with-heterogeneous-entity-types)
 
-### <a name="inter-partition-secondary-index-pattern"></a>Komunikacja między partycji wzorzec indeks pomocniczy
-Store wielu kopii każdej jednostki przy użyciu różnych **RowKey** wartości w oddzielnych partycji lub w oddzielnych tabele, aby włączyć szybkie i efektywne wyszukiwania i naprzemienny porządek sortowania przy użyciu różnych **RowKey**wartości.  
+### <a name="inter-partition-secondary-index-pattern"></a>Wzorzec indeksu pomocniczego między partycjami
+Przechowuj wiele kopii każdej jednostki przy użyciu różnych wartości **RowKey** w oddzielnych partycjach lub w oddzielnych tabelach, aby włączyć szybkie i wydajne wyszukiwania oraz alternatywne zamówienia sortowania przy użyciu różnych wartości **RowKey** .  
 
 #### <a name="context-and-problem"></a>Kontekst i problem
-Usługa Table service automatycznie indeksuje jednostki przy użyciu **PartitionKey** i **RowKey** wartości. Dzięki temu aplikacja kliencka można pobrać jednostki wydajnie za pomocą tych wartości. Na przykład przy użyciu struktury tabeli pokazano poniżej, aplikacja kliencka można użyć kwerendy punktu można pobrać jednostki poszczególnych pracowników przy użyciu nazwy działu i identyfikator ( **PartitionKey** i **RowKey**  wartości). Klienta można także pobrać jednostki posortowanych według identyfikatorów pracowników w ramach każdego działu.  
+Table service automatycznie indeksuje jednostki przy użyciu wartości **PartitionKey** i **RowKey** . Dzięki temu aplikacja kliencka może efektywnie pobrać jednostkę przy użyciu tych wartości. Na przykład przy użyciu struktury tabeli pokazanej poniżej, aplikacja kliencka może użyć zapytania punkt do pobrania indywidualnej jednostki pracownika przy użyciu nazwy działu i identyfikatora pracownika (wartości **PartitionKey** i **RowKey** ). Klient może również pobrać jednostki posortowane według identyfikatora pracownika w poszczególnych działach.  
 
-![Jednostka pracownika][9]
+![Jednostka Employee][9]
 
-Jeśli chcesz także być w stanie znaleźć jednostki pracowników na podstawie wartości innej właściwości, takie jak adres e-mail musi być znaleźć dopasowania mniej wydajne rozwiązanie skanowania partycji. Jest to spowodowane Usługa tabeli nie zapewnia indeksów pomocniczych. Ponadto, nie ma opcji żądania listy pracowników posortowane w kolejności innej niż **RowKey** zamówienia.  
+Jeśli chcesz również znaleźć jednostkę pracownika na podstawie wartości innej właściwości, takiej jak adres e-mail, musisz użyć mniej wydajnego skanowania partycji, aby znaleźć dopasowanie. Wynika to z faktu, że usługa Table Service nie udostępnia indeksów pomocniczych. Ponadto nie ma możliwości zażądania listy pracowników posortowanych w innej kolejności niż kolejność **RowKey** .  
 
-Są przewidywania dużej liczby transakcji względem tych jednostek i chcesz zminimalizować ryzyko ograniczania klienta szybkości usługi tabeli.  
+Przewidujesz dużą liczbę transakcji w odniesieniu do tych jednostek i chcesz zminimalizować ryzyko związane z Table service szybkością ograniczającą klienta.  
 
 #### <a name="solution"></a>Rozwiązanie
-Aby obejść braku indeksów pomocniczych, można przechowywać wiele kopii każdej jednostki z każdego kopiowania za pomocą różnych **PartitionKey** i **RowKey** wartości. Jeśli przechowujesz jednostki ze strukturami, pokazano poniżej, pozwala na efektywne pobieranie jednostek pracowników na podstawie identyfikatora wiadomości e-mail adres lub pracowników. Prefiks wartości **PartitionKey**, "empid_" i "email_" pozwala na zidentyfikowanie indeksu, której chcesz użyć dla zapytania.  
+Aby obejść brak indeksów pomocniczych, można przechowywać wiele kopii każdej jednostki przy użyciu różnych wartości **PartitionKey** i **RowKey** . Jeśli przechowujesz jednostkę z poniższymi strukturami, możesz efektywnie pobrać jednostki pracowników na podstawie adresu e-mail lub identyfikatora pracownika. Wartości prefiksów **PartitionKey**"empid_" i "email_" umożliwiają zidentyfikowanie indeksu, który ma być używany w zapytaniu.  
 
-![Jednostka pracownika o podstawowy indeks i jednostki pracownika o indeks pomocniczy][10]
+![Jednostka pracownika z indeksem podstawowym i jednostką pracownika z indeksem pomocniczym][10]
 
-Następujące kryteria filtrowania dwóch (jeden wyszukiwanie według identyfikatora pracowników i jeden wyszukiwanie według adresu e-mail), zarówno Określ zapytań o punkt:  
+Poniższe dwa kryteria filtrowania (jeden wyszukiwany według identyfikatora pracownika i jeden z nich w adresie e-mail) określają kwerendy punktowe:  
 
-* $filter = (PartitionKey eq ' empid_Sales") i (RowKey eq"000223")
-* $filter = (PartitionKey eq ' email_Sales") i (RowKey eq 'jonesj@contoso.com")  
+* $filter = (PartitionKey EQ "empid_Sales") i (RowKey EQ "000223")
+* $filter = (PartitionKey EQ "email_Sales") i (RowKey EQ "jonesj@contoso.com")  
 
-Po wykonaniu zapytania dotyczącego zakresu jednostek pracowników, można określić zakres posortowane w kolejności identyfikator pracownika lub posortowane w kolejności adres poczty e-mail przy użyciu zapytań dotyczących jednostek, używając odpowiedniego prefiksu w zakresie **RowKey**.  
+W przypadku wykonywania zapytań dotyczących zakresu jednostek pracowników można określić zakres posortowany w kolejności identyfikatorów pracowników lub zakres posortowany w kolejności adresów e-mail przez wyszukanie jednostek z odpowiednim prefiksem w **RowKey**.  
 
-* Aby znaleźć wszyscy pracownicy działu sprzedaży o identyfikatorze pracowników w zakresie **000100** do **000199** sortowane mogli oni skorzystać identyfikator pracownika: $filter = (PartitionKey eq ' empid_Sales") i (RowKey ge"000100") i (RowKey le "000199")  
-* Aby znaleźć wszyscy pracownicy działu sprzedaży za pomocą adresu e-mail, który rozpoczyna się od "" posortowanych w wiadomości e-mail adres mogli oni skorzystać: $filter = (PartitionKey eq ' email_Sales") i (RowKey ge"") i (RowKey lt"b")  
+* Aby znaleźć wszystkich pracowników działu sprzedaży z identyfikatorem pracownika z zakresu od **000100** do **000199** posortowanego w kolejności identyfikatorów pracowników: $Filter = (PartitionKey EQ "empid_Sales") i (RowKey GE "000100") i (RowKey Le "000199")  
+* Aby znaleźć wszystkich pracowników działu sprzedaży przy użyciu adresu e-mail rozpoczynającego się od "a" posortowanego w kolejności adresów e-mail Użyj: $filter = (PartitionKey EQ "email_Sales") i (RowKey GE "a") i (RowKey lt "b")  
 
-Należy zauważyć, że składnia filtru używanych w powyższych przykładach jest z usługi tabel interfejsu API REST, aby uzyskać więcej informacji, zobacz [wykonywanie zapytań dotyczących jednostek](https://msdn.microsoft.com/library/azure/dd179421.aspx).  
+Należy zauważyć, że składnia filtru użyta w powyższych przykładach pochodzi z interfejsu API REST Table service, aby uzyskać więcej informacji, zobacz temat [jednostki zapytań](https://msdn.microsoft.com/library/azure/dd179421.aspx).  
 
 #### <a name="issues-and-considerations"></a>Problemy i kwestie do rozważenia
 Podczas podejmowania decyzji o sposobie wdrożenia tego wzorca należy rozważyć następujące punkty:  
 
-* Możesz zachować swoje zduplikowanych wpisów ostatecznie spójną ze sobą przy użyciu [wzorzec transakcji ostatecznie spójną](#eventually-consistent-transactions-pattern) do zachowania jednostek podstawowych i pomocniczych indeksu.  
-* Magazyn tabel jest stosunkowo tania do użycia, więc obciążenie koszt przechowywania zduplikowanych danych, nie powinien być głównym problemem. Jednak należy zawsze należy przeprowadzić ocenę koszt projektu, w zależności od wymagań przewidywanych i dodawać tylko zduplikowane jednostki do obsługi zapytań, których będą wykonywane przez aplikację kliencką.  
-* Wartość **RowKey** musi być unikatowa dla każdej jednostki. Rozważ użycie wartości klucza złożonego.  
-* Wypełnienie wartości liczbowe w **RowKey** (na przykład identyfikator pracownika 000223), pozwala rozwiązać, sortowanie i filtrowanie na podstawie górną i dolną.  
-* Nie zawsze należy zduplikowane właściwości jednostki. Na przykład jeśli zapytania wyszukiwania tej jednostki przy użyciu wiadomości e-mail adresów w **RowKey** nigdy nie potrzebować wiek pracownika, te jednostki może mieć następującą strukturę:
+* Zduplikowane jednostki można zachować ze sobą spójnie, korzystając ze [wzorca ostatecznie spójnych transakcji](#eventually-consistent-transactions-pattern) , aby zachować jednostki indeksu podstawowego i pomocniczego.  
+* Użycie magazynu tabel jest stosunkowo niedrogie, więc obciążenie kosztem przechowywania zduplikowanych danych nie powinno być istotnym problemem. Należy jednak zawsze oszacować koszt projektu w oparciu o przewidywane wymagania dotyczące magazynu i dodawać tylko zduplikowane jednostki do obsługi zapytań, które będą wykonywane w aplikacji klienckiej.  
+* Wartość używana dla **RowKey** musi być unikatowa dla każdej jednostki. Rozważ użycie wartości klucza złożonego.  
+* Uzupełnienie wartości liczbowych w **RowKey** (na przykład identyfikator pracownika 000223) umożliwia poprawne sortowanie i filtrowanie na podstawie górnych i dolnych granic.  
+* Nie trzeba duplikować wszystkich właściwości obiektu. Na przykład jeśli zapytania, które przeszukują jednostki przy użyciu adresu e-mail w **RowKey** , nigdy nie potrzebują wieku pracownika, te jednostki mogą mieć następującą strukturę:
   
-  ![Jednostka pracownika o indeks pomocniczy][11]
-* Zazwyczaj lepiej do przechowywania zduplikowanych danych i upewnij się, że można pobrać wszystkie dane potrzebne przy użyciu pojedynczego zapytania niż Aby użyć jednego zapytania, aby zlokalizować jednostki za pomocą pomocniczy indeks i umożliwia wyszukiwanie wymagane dane w podstawowy indeks jest.  
+  ![Jednostka pracownika z dodatkowym indeksem][11]
+* Zazwyczaj lepszym rozwiązaniem jest przechowywanie zduplikowanych danych i upewnienie się, że można pobrać wszystkie potrzebne dane za pomocą pojedynczego zapytania niż w celu wyszukania jednostki przy użyciu pomocniczego indeksu i innego do przeszukiwania wymaganych danych w indeksie podstawowym.  
 
 #### <a name="when-to-use-this-pattern"></a>Kiedy używać tego wzorca
-Użyj tego wzorca, gdy Twoja aplikacja kliencka musi pobrać jednostki przy użyciu szeregu różnych kluczy, gdy Twój klient musi pobrać jednostki w poszczególnych kolejności sortowania, a w przypadku, gdy zidentyfikuje każdej jednostki przy użyciu różnych unikatowe wartości. Użyj tego wzorca, gdy użytkownik chce uniknąć przekroczenia limitów skalowalności partycji podczas przeprowadzania wyszukiwania jednostki przy użyciu różnych **RowKey** wartości.  
+Użyj tego wzorca, gdy aplikacja kliencka musi pobrać jednostki przy użyciu różnych kluczy, gdy klient musi pobrać jednostki w różnych zamówieniach sortowania i gdzie można zidentyfikować poszczególne jednostki przy użyciu różnych unikatowych wartości. Użyj tego wzorca, jeśli chcesz uniknąć przekroczenia limitów skalowalności partycji podczas przeprowadzania wyszukiwania jednostek przy użyciu różnych wartości **RowKey** .  
 
 #### <a name="related-patterns-and-guidance"></a>Powiązane wzorce i wskazówki
 Podczas implementowania tego wzorca mogą być istotne następujące wzorce i wskazówki:  
 
-* [Wzorzec transakcji ostatecznie spójną](#eventually-consistent-transactions-pattern)  
-* [Wzorzec indeks pomocniczy wewnątrz partycji](#intra-partition-secondary-index-pattern)  
-* [Wzorzec klucza złożona (c)](#compound-key-pattern)  
+* [Wzorzec ostatecznie spójnych transakcji](#eventually-consistent-transactions-pattern)  
+* [Wzorzec indeksu pomocniczego wewnątrz partycji](#intra-partition-secondary-index-pattern)  
+* [Wzorzec klucza złożonego](#compound-key-pattern)  
 * [Transakcje grupy jednostek](#entity-group-transactions)  
-* [Praca z typami encji heterogenicznych](#working-with-heterogeneous-entity-types)  
+* [Praca z heterogenicznymi typami jednostek](#working-with-heterogeneous-entity-types)  
 
-### <a name="eventually-consistent-transactions-pattern"></a>Wzorzec transakcji ostatecznie spójną
-Włącz ostatecznie spójne zachowanie całej granice partycji lub granice system magazynu za pomocą kolejek systemu Azure.  
+### <a name="eventually-consistent-transactions-pattern"></a>Wzorzec ostatecznie spójnych transakcji
+Włącz ostatecznie spójne zachowanie między granicami partycji lub granicami systemu magazynu za pomocą kolejek platformy Azure.  
 
 #### <a name="context-and-problem"></a>Kontekst i problem
-EGTs Włącz transakcje niepodzielne w wielu jednostkach, które współużytkują ten sam klucz partycji. Względu na wydajność i skalowalność, możesz zdecydować o do przechowywania obiektów, które mają wymagań spójności w oddzielnych partycjach lub w systemie magazynu oddzielne: w takiej sytuacji EGTs nie można użyć, aby zachować spójność. Na przykład może być wymagane, aby zachować spójność między:  
+EGTs Włącz transakcję niepodzielną w wielu jednostkach, które współużytkują ten sam klucz partycji. Ze względu na wydajność i skalowalność można zdecydować się na przechowywanie jednostek, które mają wymagania spójności w oddzielnych partycjach lub w osobnym systemie magazynu: w takiej sytuacji nie można użyć EGTs do zachowania spójności. Na przykład może istnieć wymóg zachowania spójności ostatecznej między:  
 
-* Jednostki przechowywane w dwóch różnych partycji w tej samej tabeli, w różnych tabelach lub w różnych kontach magazynu.  
-* Jednostki przechowywane w usłudze Table service i obiektów blob przechowywanych w usłudze obiektów Blob.  
-* Jednostki przechowywane w usłudze Table service i pliku w systemie plików.  
-* Magazyn jednostki w usłudze Table service jeszcze indeksowane, za pomocą usługi Azure Search.  
+* Jednostki przechowywane w dwóch różnych partycjach w tej samej tabeli, w różnych tabelach lub na różnych kontach magazynu.  
+* Jednostka przechowywana w Table service i obiekt BLOB przechowywany w Blob service.  
+* Jednostka przechowywana w Table service i pliku w systemie plików.  
+* Magazyn jednostek w Table service nie został jeszcze zindeksowany przy użyciu usługi Azure Wyszukiwanie poznawcze.  
 
 #### <a name="solution"></a>Rozwiązanie
-Za pomocą kolejek systemu Azure, można zaimplementować rozwiązanie, które zapewnia spójność ostateczną dwa lub więcej partycji lub systemów magazynowania.
-Aby zilustrować to podejście, zakłada się, że masz wymaganie, aby można było archiwum starych jednostek pracownika. Starych jednostek pracowników badane są tabele rzadko i powinny być wykluczone z żadnych działań, które zajmują się obecnie pracowników. Aby zaimplementować ten wymóg przechowywania zatrudnionych pracowników w **bieżącego** tabeli i starego pracowników w **archiwum** tabeli. Archiwizowanie pracownika, musisz usunąć jednostkę z **bieżącego** tabeli, a następnie Dodaj jednostkę którą chcesz **archiwum** tabeli, ale nie można użyć EGT wykonywać te dwie operacje. Aby uniknąć ryzyka, że błąd spowoduje, że jednostki się pojawiać w obu lub ani tabel, operacja archiwizacji musi być ostatecznie spójny. Poniższy diagram sekwencji przedstawia kroki opisane w tej operacji. Więcej szczegółów znajduje się dla ścieżki wyjątku poniżej tekst.  
+Korzystając z kolejek platformy Azure, można zaimplementować rozwiązanie, które zapewnia spójność ostateczną na co najmniej dwóch partycjach lub systemach magazynowania.
+Aby zilustrować to podejście, Załóżmy, że wymagane jest umożliwienie archiwizowania starych jednostek pracowników. Stare jednostki pracowników są rzadko badane i powinny być wykluczone z wszelkich działań, które zajmują się bieżącymi pracownikami. Aby zaimplementować to wymaganie, należy przechowywać aktywnych pracowników w **bieżącej** tabeli i starych pracowników w tabeli **archiwum** . Archiwizowanie pracownika wymaga usunięcia jednostki z **bieżącej** tabeli i dodania jednostki do tabeli **archiwum** , ale nie można użyć EGT do wykonania tych dwóch operacji. Aby uniknąć ryzyka, że błąd powoduje, że jednostka pojawia się w obu tabelach lub żadnej z nich, operacja archiwizowania musi być ostatecznie spójna. Poniższy diagram sekwencji przedstawia kroki tej operacji. Więcej szczegółów na temat ścieżek wyjątków znajduje się w tekście poniżej.  
 
-![Diagram rozwiązania w celu zachowania spójności ostatecznej][12]
+![Diagram rozwiązania na potrzeby spójności ostatecznej][12]
 
-Klient inicjuje operację archiwum, umieszczając komunikat w kolejce platformy Azure, w tym przykładzie do archiwizacji pracowników #456. Rola procesu roboczego sonduje kolejkę dla nowych komunikatów; gdy zostanie znaleziony, odczytuje komunikat i pozostawia kopię ukryte w kolejce. Rola procesu roboczego obok pobiera kopię obiektu z **bieżącego** tabeli, wstawia kopię w **archiwum** tabeli, a następnie usuwa oryginalny z **bieżącego** tabeli. Na koniec Jeśli nie wystąpiły błędy z poprzednich kroków, rola procesu roboczego usuwa ukryty komunikat z kolejki.  
+Klient inicjuje operację archiwizowania, umieszczając komunikat w kolejce platformy Azure, w tym przykładzie, aby zarchiwizować #456 pracownika. Rola procesu roboczego sonduje kolejkę pod kątem nowych komunikatów; gdy go znajdzie, odczytuje komunikat i pozostawia ukrytą kopię w kolejce. Następnie rola proces roboczy pobiera kopię jednostki z **bieżącej** tabeli, wstawia kopię w tabeli **archiwum** , a następnie usuwa oryginalną z **bieżącej** tabeli. Na koniec w przypadku braku błędów z poprzednich kroków rola proces roboczy usuwa ukryty komunikat z kolejki.  
 
-W tym przykładzie kroku 4 wstawia pracowników do **archiwum** tabeli. Można go dodać pracownika do obiektu blob w usłudze obiektów Blob lub pliku w systemie plików.  
+W tym przykładzie krok 4 wstawia pracownika do tabeli **archiwum** . Może dodać pracownika do obiektu BLOB w Blob service lub pliku w systemie plików.  
 
 #### <a name="recovering-from-failures"></a>Odzyskiwanie po awarii
-Ważne jest, że operacje w krokach **4** i **5** musi być *idempotentne* w przypadku, gdy rola procesu roboczego musi ponownie uruchomić operację archiwum. Jeśli używasz usługi Table w kroku **4** należy użyć operacji "wstawić lub Zastąp"; kroku **5** należy używać "usunąć, jeśli istnieje" operacji w bibliotece klienta, którego używasz. Jeśli używasz innego systemu magazynowania, należy użyć odpowiedniej idempotentna operacja.  
+Należy pamiętać, że operacje w krokach **4** i **5** muszą być *idempotentne* w przypadku, gdy rola proces roboczy wymaga ponownego uruchomienia operacji archiwizowania. Jeśli używasz Table service, w kroku **4** należy użyć operacji INSERT lub Replace. w kroku **5** należy użyć operacji "Usuń Jeśli istnieje" w używanej bibliotece klienckiej. W przypadku korzystania z innego systemu magazynu należy użyć odpowiedniej operacji idempotentne.  
 
-Jeśli rola procesu roboczego nigdy nie ukończy kroku **6**, a następnie po upływie limitu czasu pojawi się komunikat w kolejce, gotowe do roli procesu roboczego spróbować ponownie przetworzyć go. Rola procesu roboczego można sprawdzić, ile razy komunikat w kolejce został czytać i, jeśli to konieczne, Flaga jest komunikat "skażone" dla badania, wysyłając je do oddzielnej kolejki. Aby uzyskać więcej informacji na temat odczytywania komunikatów z kolejki i sprawdzanie liczby usuwania z kolejki, zobacz [pobierania komunikatów](https://msdn.microsoft.com/library/azure/dd179474.aspx).  
+Jeśli rola proces roboczy nigdy nie kończy krok **6**, po upływie limitu czasu komunikat pojawi się ponownie w kolejce gotowej do przetworzenia przez rolę procesu roboczego. Rola proces roboczy może sprawdzić, ile razy wiadomość w kolejce została odczytana i w razie potrzeby flagą jest komunikat "Trująca" w celu zbadania przez wysłanie go do oddzielnej kolejki. Aby uzyskać więcej informacji o odczytywaniu komunikatów w kolejce i sprawdzaniu liczby odgałęzień, zobacz [pobieranie komunikatów](https://msdn.microsoft.com/library/azure/dd179474.aspx).  
 
-Błędy w usługach tabela i kolejka są błędami przejściowymi, a Twoja aplikacja kliencka powinna zawierać logikę ponawiania odpowiednie do ich obsługi.  
+Niektóre błędy usług tabel i kolejek są błędami przejściowymi, a aplikacja kliencka powinna zawierać odpowiednią logikę ponawiania, aby je obsłużyć.  
 
 #### <a name="issues-and-considerations"></a>Problemy i kwestie do rozważenia
 Podczas podejmowania decyzji o sposobie wdrożenia tego wzorca należy rozważyć następujące punkty:  
 
-* To rozwiązanie nie wymaga izolacji transakcji. Na przykład, klient może odczytać **bieżącego** i **archiwum** tabel, gdy rola procesu roboczego zostało między krokami **4** i **5**i zobacz niespójne widok danych. Dane będą zgodne po pewnym czasie.  
-* Należy się upewnić, że kroki 4 i 5 są idempotentne, w celu zapewnienia spójności ostatecznej.  
+* To rozwiązanie nie zapewnia izolacji transakcji. Na przykład klient może odczytać **bieżące** i **archiwalne** tabele, gdy rola proces roboczy przeprowadzono między krokami **4** i **5**, i wyświetlić niespójny widok danych. Dane będą ostatecznie spójne.  
+* Musisz się upewnić, że kroki 4 i 5 są idempotentne w celu zapewnienia spójności ostatecznej.  
 * Możesz skalować rozwiązanie przy użyciu wielu kolejek i wystąpień roli procesu roboczego.  
 
 #### <a name="when-to-use-this-pattern"></a>Kiedy używać tego wzorca
-Użyj tego wzorca, gdy użytkownik chce zagwarantować spójność między jednostkami, które istnieją w różnych partycjach lub tabel. Możesz rozszerzyć tego wzorca, aby zapewnić spójność ostateczną dla operacji w usłudze Table service i usługi obiektów Blob i innych niż - usługi Azure Storage źródeł danych, takich jak bazy danych lub systemu plików.  
+Użyj tego wzorca, jeśli chcesz zagwarantowania ostatecznej spójności między jednostkami, które istnieją w różnych partycjach lub tabelach. Ten wzorzec można rozwinąć, aby zapewnić spójność ostateczną operacji dla Table service i Blob service i innych źródeł danych niezwiązanych z usługą Azure Storage, takich jak baza danych lub system plików.  
 
 #### <a name="related-patterns-and-guidance"></a>Powiązane wzorce i wskazówki
 Podczas implementowania tego wzorca mogą być istotne następujące wzorce i wskazówki:  
 
 * [Transakcje grupy jednostek](#entity-group-transactions)  
-* [Scalanie lub zastępowanie](#merge-or-replace)  
+* [Scal lub Zamień](#merge-or-replace)  
 
 > [!NOTE]
-> Jeśli izolacji transakcji ważne jest, aby rozwiązanie, należy rozważyć przeprojektowanie tabel w celu umożliwienia używania EGTs.  
+> Jeśli izolacja transakcji jest ważna dla Twojego rozwiązania, należy rozważyć przeprojektowanie tabel, aby umożliwić korzystanie z EGTs.  
 > 
 > 
 
 ### <a name="index-entities-pattern"></a>Wzorzec jednostek indeksu
-Obsługa jednostki indeksu umożliwiające wydajne wyszukiwanie, które zwracają listę jednostek.  
+Zachowaj jednostki indeksu, aby włączyć wydajne wyszukiwania zwracające listy jednostek.  
 
 #### <a name="context-and-problem"></a>Kontekst i problem
-Usługa Table service automatycznie indeksuje jednostki przy użyciu **PartitionKey** i **RowKey** wartości. Dzięki temu aplikacja kliencka w celu pobrania jednostki wydajnie za pomocą kwerendy punktu. Na przykład przy użyciu struktury tabeli pokazano poniżej, aplikacja kliencka pozwala na efektywne pobieranie jednostki poszczególnych pracowników przy użyciu nazwy działu i identyfikator ( **PartitionKey** i **RowKey**).  
+Table service automatycznie indeksuje jednostki przy użyciu wartości **PartitionKey** i **RowKey** . Dzięki temu aplikacja kliencka może efektywnie pobrać jednostkę przy użyciu zapytania punktowego. Na przykład przy użyciu struktury tabeli pokazanej poniżej, aplikacja kliencka może efektywnie pobrać konkretną jednostkę pracownika przy użyciu nazwy działu i identyfikatora pracownika ( **PartitionKey** i **RowKey**).  
 
-![Jednostka pracownika][13]
+![Jednostka Employee][13]
 
-Jeśli chcesz również będzie można go pobrać listę jednostek pracowników na podstawie wartości innej właściwości nie jest unikatowa, takie jak nazwisko, musi być znaleźć dopasowań, a nie przy użyciu indeksu, aby wyszukać bezpośrednio mniej wydajne rozwiązanie skanowania partycji. Jest to spowodowane Usługa tabeli nie zapewnia indeksów pomocniczych.  
+Jeśli chcesz również uzyskać listę jednostek pracowników na podstawie wartości innej nieunikatowej właściwości, takiej jak jej nazwisko, musisz użyć mniej wydajnego skanowania partycji, aby znaleźć dopasowania zamiast używać indeksu do bezpośredniego wyszukiwania. Wynika to z faktu, że usługa Table Service nie udostępnia indeksów pomocniczych.  
 
 #### <a name="solution"></a>Rozwiązanie
-Umożliwia wyszukiwanie według nazwiska ze strukturą entity powyżej, musisz utrzymywać listę identyfikatorów pracownika. Jeśli chcesz pobrać jednostki pracownika o określonej nazwie ostatniego, takich jak Jones, należy w pierwszej kolejności zlokalizować listę identyfikatorów pracowników dla pracowników z Jones jako swoje nazwisko, a następnie pobrać tych jednostek pracownika. Istnieją trzy główne opcje przechowywania listy identyfikatorów pracowników:  
+Aby włączyć wyszukiwanie według nazwiska przy użyciu struktury jednostki pokazanej powyżej, należy zachować listy identyfikatorów pracowników. Jeśli chcesz pobrać jednostki pracownika z określoną nazwiskiem, np. Nowak, należy najpierw znaleźć listę identyfikatorów pracowników dla pracowników, którzy mają nazwisko Kowalski, a następnie pobrać te jednostki pracowników. Istnieją trzy główne opcje przechowywania list identyfikatorów pracowników:  
 
-* Użyj usługi blob storage.  
-* Utwórz jednostki indeksu w jednej partycji jako jednostki pracownika.  
+* Użyj magazynu obiektów BLOB.  
+* Utwórz jednostki indeksu w tej samej partycji co jednostki pracownika.  
 * Utwórz jednostki indeksu w oddzielnej partycji lub tabeli.  
 
-<u>Opcja #1: Usługa blob storage</u>  
+<u>Opcja #1: Użyj magazynu obiektów BLOB</u>  
 
-Pierwszej opcji Tworzenie obiektu blob dla każdego unikatowy nazwisko i w każdym magazynie obiektów blob listę **PartitionKey** (dział) i **RowKey** (identyfikator pracownika) wartości dla pracowników, które mają ten nazwisko. Podczas dodawania lub usuwania pracownika, należy się upewnić, że zawartości odpowiedniego obiektu blob jest ostatecznie spójny z jednostkami pracownika.  
+Dla pierwszej opcji utworzysz obiekt BLOB dla każdego unikatowej nazwy, a w każdym z nich znajduje się lista wartości **PartitionKey** (dział) i **RowKey** (identyfikator pracownika) dla pracowników, którzy mają tę ostatnią nazwę. Po dodaniu lub usunięciu pracownika należy upewnić się, że zawartość odpowiedniego obiektu BLOB jest ostatecznie spójna z jednostkami pracowników.  
 
-<u>Opcja #2.</u> Tworzenie jednostek indeksu w jednej partycji  
+<u>#2 opcji:</u> Utwórz jednostki indeksu w tej samej partycji  
 
-Druga opcja można użyć jednostki indeksu, zawierające następujące dane:  
+Dla drugiej opcji Użyj obiektów index, które przechowują następujące dane:  
 
-![Jednostka pracownika o ciąg zawierający listę identyfikatorów pracowników o takiej samej nazwie ostatniego][14]
+![Jednostka pracownika z ciągiem zawierającym listę identyfikatorów pracowników o tej samej nazwie][14]
 
-**EmployeeIDs** właściwość zawiera listę identyfikatorów pracowników dla pracowników z nazwisko przechowywane w **RowKey**.  
+Właściwość **idpracownikas** zawiera listę identyfikatorów pracowników dla pracowników, których nazwisko jest przechowywane w **RowKey**.  
 
-Następujące kroki przedstawiają procesu, które należy wykonać podczas korzystania z drugą opcję dodawania nowego pracownika. W tym przykładzie dodamy pracownika z identyfikatorem 000152 i nazwisko Jones działu sprzedaży:  
+Poniższe kroki przedstawiają proces, który należy wykonać, gdy dodajesz nowego pracownika, jeśli używasz drugiej opcji. W tym przykładzie dodajemy pracownika o identyfikatorze 000152 i nazwisko Nowak w dziale sprzedaży:  
 
-1. Pobrać jednostki indeksu z **PartitionKey** wartość "Sprzedaż" i **RowKey** wartość "Kowalski". Zapisz element ETag to jednostki do użycia w kroku 2.  
-2. Tworzenie jednostki transakcji grupy (czyli operacji zbiorczej), która wstawia nową jednostkę pracowników (**PartitionKey** wartość "Sprzedaż" i **RowKey** wartość "000152") i aktualizuje jednostki indeksu (**PartitionKey** wartość "Sprzedaż" i **RowKey** wartość "Kowalski") przez dodanie nowego identyfikatora pracowników do listy w polu EmployeeIDs. Aby uzyskać więcej informacji na temat transakcji grup jednostek, zobacz [transakcji grup jednostek](#entity-group-transactions).  
-3. Jeśli transakcji grup jednostek zakończy się niepowodzeniem z powodu błędu optymistycznej współbieżności (ktoś inny zmodyfikował jednostki index), należy zacząć od początku w kroku 1 ponownie.  
+1. Pobierz jednostkę indeksu z wartością **PartitionKey** "Sales" i wartością **RowKey** "Nowak". Zapisz element ETag tej jednostki do użycia w kroku 2.  
+2. Utwórz transakcję grupy jednostek (czyli operację wsadową), która wstawia nową jednostkę pracownika (**PartitionKey** wartość "Sales" i **RowKey** Value "000152"), a następnie aktualizuje jednostkę indeksu (wartość**PartitionKey** "Sales" i **RowKey** wartość "Nowak") przez dodanie nowego identyfikatora pracownika do listy w polu idpracownikas. Aby uzyskać więcej informacji o transakcjach grupy jednostek, zobacz [transakcje grupy jednostek](#entity-group-transactions).  
+3. Jeśli transakcja grupy jednostek kończy się niepowodzeniem z powodu błędu współbieżności optymistycznej (ktoś inny zmodyfikował jednostkę indeksu), należy ponownie zacząć od początku krok 1.  
 
-Można użyć podejście podobne do usuwania pracownika, korzystając z pierwszej opcji. Zmiana nazwisko pracownika jest nieco bardziej skomplikowane, ponieważ będą potrzebne do wykonania transakcji grupy jednostki, która aktualizuje trzech jednostek: jednostki pracowników, jednostki indeksu dla starego nazwisko i jednostki indeksu dla nowe nazwisko. Każda jednostka musi pobrać przed wprowadzeniem jakichkolwiek zmian w celu pobrania wartości element ETag, które następnie służy do przeprowadzania aktualizacji za pomocą optymistycznej współbieżności.  
+Jeśli używasz drugiej opcji, możesz użyć podobnej metody do usuwania pracownika. Zmiana nazwiska pracownika jest nieco bardziej złożona, ponieważ należy wykonać transakcję grupy jednostek, która aktualizuje trzy jednostki: jednostki pracownika, jednostki indeksu dla starej nazwy i jednostki indeksu dla nowej nazwy. Każdą jednostkę należy pobrać przed wprowadzeniem jakichkolwiek zmian w celu pobrania wartości ETag, których można użyć do przeprowadzenia aktualizacji przy użyciu optymistycznej współbieżności.  
 
-Poniższe kroki opisują proces, który należy wykonać w przypadku konieczności wyszukania wszystkich pracowników z danym nazwisko w dziale, korzystając z drugą opcją. W tym przykładzie firma Microsoft jest wyszukanie wszystkich pracowników z nazwisko Jones działu sprzedaży:  
+Poniższe kroki przedstawiają proces, który należy wykonać, gdy konieczne jest wyszukanie wszystkich pracowników z daną ostatnią nazwą w dziale, jeśli używasz drugiej opcji. W tym przykładzie szukamy wszystkich pracowników o nazwisku Nowak w dziale sprzedaży:  
 
-1. Pobrać jednostki indeksu z **PartitionKey** wartość "Sprzedaż" i **RowKey** wartość "Kowalski".  
-2. Przeanalizować listy identyfikatorów w polu EmployeeIDs pracowników.  
-3. Aby uzyskać dodatkowe informacje na temat każdego z tych pracowników (na przykład ich adresów e-mail), pobrać każdej jednostki pracowników przy użyciu **PartitionKey** wartość "Sprzedaż" i **RowKey** wartości z kolekcji Lista pracowników, który został uzyskany w kroku 2.  
+1. Pobierz jednostkę indeksu z wartością **PartitionKey** "Sales" i wartością **RowKey** "Nowak".  
+2. Przeanalizuj listę identyfikatorów pracowników w polu Idpracownikas.  
+3. Jeśli potrzebujesz dodatkowych informacji na temat każdego z tych pracowników (takich jak adresy e-mail), Pobierz każdą jednostkę pracownika przy użyciu wartości **PartitionKey** "Sales" i wartości **RowKey** z listy pracowników uzyskanych w kroku 2.  
 
-<u>Opcja #3:</u> Tworzenie indeksu jednostek w oddzielnej partycji lub tabeli  
+<u>#3 opcji:</u> Tworzenie jednostek indeksu w oddzielnej partycji lub tabeli  
 
-Trzecia opcja można użyć jednostki indeksu, zawierające następujące dane:  
+Dla trzeciej opcji Użyj obiektów index, które przechowują następujące dane:  
 
-![Jednostka pracownika o ciąg zawierający listę identyfikatorów pracowników o takiej samej nazwie ostatniego][15]
+![Jednostka pracownika z ciągiem zawierającym listę identyfikatorów pracowników o tej samej nazwie][15]
 
-**EmployeeIDs** właściwość zawiera listę identyfikatorów pracowników dla pracowników z nazwisko przechowywane w **RowKey**.  
+Właściwość **idpracownikas** zawiera listę identyfikatorów pracowników dla pracowników, których nazwisko jest przechowywane w **RowKey**.  
 
-Trzecia opcja EGTs nie można użyć do zapewniania spójności, ponieważ jednostki indeksu znajdują się w oddzielnej partycji z jednostek pracownika. Należy upewnić się, że jednostki indeksu są ostatecznie spójny z jednostkami pracownika.  
+Z trzecią opcją nie można używać EGTs, aby zachować spójność, ponieważ jednostki indeksu znajdują się w oddzielnej partycji od jednostek pracowników. Należy upewnić się, że jednostki indeksu są ostatecznie spójne z jednostkami pracowników.  
 
 #### <a name="issues-and-considerations"></a>Problemy i kwestie do rozważenia
 Podczas podejmowania decyzji o sposobie wdrożenia tego wzorca należy rozważyć następujące punkty:  
 
-* To rozwiązanie wymaga co najmniej dwóch zapytań do pobierania zgodnych jednostek: jeden do wykonywania zapytań jednostki indeks, aby uzyskać listę **RowKey** wartości i zapytania, aby pobrać każdej jednostki na liście.  
-* Biorąc pod uwagę, że poszczególne jednostki ma maksymalnym rozmiarze 1 MB, opcja #2 i opcję #3 w rozwiązaniu założono, czy lista identyfikatorów pracowników dla dowolnej podanej nazwy ostatniego nigdy nie jest większa niż 1 MB. W przypadku może być większa niż 1 MB — na listę identyfikatorów pracowników, użyj opcji #1 i przechowywać dane indeksu w usłudze blob storage.  
-* W przypadku użycia opcji #2 (przy użyciu EGTs obsługiwać Dodawanie i usuwanie pracowników i zmiana jego nazwisko) należy ocenić, jeśli wielkość transakcji będzie podejście limity skalowalności w danej partycji. Jeśli jest to możliwe, należy rozważyć ostatecznie spójną rozwiązanie (opcja #1 lub #3) używa kolejek do obsługi żądań aktualizacji, która umożliwia przechowywanie jednostek indeksu w oddzielnej partycji z jednostek pracownika.  
-* Opcja #2, w tym rozwiązaniu założono, że można wyszukiwać według nazwiska w dziale: na przykład chcesz pobrać listę pracownikom nazwisko Jones w dziale sprzedaży. Jeśli chcesz można było wyszukać wszystkich pracowników z nazwisko Jones w całej organizacji, użyj opcji #1 lub opcja #3.
-* Możesz zaimplementować rozwiązanie oparte na kolejce zapewnia spójność ostateczną (zobacz [wzorzec transakcji ostatecznie spójną](#eventually-consistent-transactions-pattern) Aby uzyskać więcej informacji).  
+* To rozwiązanie wymaga co najmniej dwóch zapytań, aby pobrać pasujące jednostki: jeden do zapytania o jednostki indeksu w celu uzyskania listy wartości **RowKey** , a następnie wysyła zapytanie w celu pobrania każdej jednostki na liście.  
+* Mając na względzie, że indywidualna jednostka ma maksymalny rozmiar 1 MB, #2 opcji i #3 opcji w rozwiązaniu założono, że lista identyfikatorów pracowników dla danego nazwiska nie jest nigdy większa niż 1 MB. Jeśli lista identyfikatorów pracowników może mieć rozmiar większy niż 1 MB, użyj opcji #1 i Zapisz dane indeksu w usłudze BLOB Storage.  
+* Jeśli używasz opcji #2 (za pomocą EGTs, aby obsługiwać Dodawanie i usuwanie pracowników oraz zmieniać nazwisko pracownika), należy sprawdzić, czy liczba transakcji zbliża się do ograniczeń skalowalności w danej partycji. W takim przypadku należy wziąć pod uwagę ostatecznie spójne rozwiązanie (opcja #1 lub #3 opcji), które korzysta z kolejek do obsługi żądań aktualizacji i umożliwia przechowywanie jednostek indeksu w oddzielnej partycji od jednostek pracowników.  
+* Opcja #2 w tym rozwiązaniu założono, że chcesz wyszukać według nazwiska w ramach działu: na przykład chcesz pobrać listę pracowników o nazwisku Kowalski w dziale sprzedaży. Jeśli chcesz mieć możliwość wyszukania wszystkich pracowników o nazwisku Nowak w całej organizacji, użyj opcji #1 lub #3 opcji.
+* Możesz zaimplementować rozwiązanie oparte na kolejce, które zapewnia spójność ostateczną (Aby uzyskać więcej informacji, zobacz [wzorzec spójnych transakcji](#eventually-consistent-transactions-pattern) ).  
 
 #### <a name="when-to-use-this-pattern"></a>Kiedy używać tego wzorca
-Użyj tego wzorca, gdy chcesz wyszukać zestaw jednostek, mających wspólne wartość właściwości, na przykład wszystkich pracowników z nazwisko Jones.  
+Użyj tego wzorca, jeśli chcesz wyszukać zestaw jednostek, które współużytkują wspólną wartość właściwości, takich jak wszyscy pracownicy o nazwisku Nowak.  
 
 #### <a name="related-patterns-and-guidance"></a>Powiązane wzorce i wskazówki
 Podczas implementowania tego wzorca mogą być istotne następujące wzorce i wskazówki:  
 
-* [Wzorzec klucza złożona (c)](#compound-key-pattern)  
-* [Wzorzec transakcji ostatecznie spójną](#eventually-consistent-transactions-pattern)  
+* [Wzorzec klucza złożonego](#compound-key-pattern)  
+* [Wzorzec ostatecznie spójnych transakcji](#eventually-consistent-transactions-pattern)  
 * [Transakcje grupy jednostek](#entity-group-transactions)  
-* [Praca z typami encji heterogenicznych](#working-with-heterogeneous-entity-types)  
+* [Praca z heterogenicznymi typami jednostek](#working-with-heterogeneous-entity-types)  
 
-### <a name="denormalization-pattern"></a>Wzorzec denormalizacja
-Ze sobą łączyć powiązanych danych w jednej jednostce umożliwiają można pobrać wszystkie dane potrzebne przy użyciu zapytania pojedynczy punkt.  
+### <a name="denormalization-pattern"></a>Wzorzec denormalizacji
+Połącz powiązane dane razem w pojedynczej jednostce, aby umożliwić pobieranie wszystkich potrzebnych danych przy użyciu zapytania pojedynczego punktu.  
 
 #### <a name="context-and-problem"></a>Kontekst i problem
-W relacyjnej bazie danych zazwyczaj normalizacji danych, aby usunąć zduplikowane wynikiem zapytań, które pobierają dane z wielu tabel. Jeśli użytkownik normalizować dane w tabelach platformy Azure, upewnij się wiele rund od klienta do serwera w celu pobrania danych powiązanych. Na przykład struktura tabeli poniżej możesz wymaga dwóch wystąpień komunikacji dwustronnej można pobrać szczegółów dla działu: jeden do pobierania jednostki działu, która zawiera identyfikator menedżera, a następnie kolejnego żądania można pobrać szczegółów Menedżera w jednostce pracownika.  
+W relacyjnej bazie danych zazwyczaj normalizuje dane w celu usunięcia duplikatów, co powoduje, że zapytania pobierające dane z wielu tabel. Jeśli normalizuje dane w tabelach platformy Azure, musisz wykonać wiele rund z klienta do serwera, aby pobrać powiązane dane. Na przykład w przypadku struktury tabeli pokazanej poniżej potrzebne są dwie rundy, aby pobrać szczegóły działu: jeden do pobrania jednostki działu, która zawiera identyfikator Menedżera, a następnie inne żądanie pobrania szczegółów kierownika w jednostce pracownika.  
 
-![Dział a pracownika][16]
+![Jednostka działu i jednostka Employee][16]
 
 #### <a name="solution"></a>Rozwiązanie
-Zamiast przechowywać dane w dwóch oddzielnych jednostkach, zdenormalizowanie danych i przechowywać kopię szczegółach menedżera w jednostce działu. Na przykład:  
+Zamiast przechowywania danych w dwóch osobnych jednostkach, należy deznormalizować dane i zachować kopię szczegółów kierownika w jednostce działu. Na przykład:  
 
-![Jednostki działu nieznormalizowany i połączone][17]
+![Nieznormalizowana i połączona jednostka działu][17]
 
-Z jednostkami działu przechowywane z tymi właściwościami można teraz pobierać wszystkie szczegóły potrzebne o dział przy użyciu kwerendy punktu.  
+Za pomocą jednostek działu przechowywanych z tymi właściwościami można teraz pobrać wszystkie szczegóły potrzebne do działu przy użyciu zapytania punkt.  
 
 #### <a name="issues-and-considerations"></a>Problemy i kwestie do rozważenia
 Podczas podejmowania decyzji o sposobie wdrożenia tego wzorca należy rozważyć następujące punkty:  
 
-* Istnieje pewien koszt obciążenie związanych z przechowywaniem niektóre dane w dwa razy. Korzyści w zakresie wydajności (wynikające z mniejszą liczbą żądań do usługi storage) zwykle przewyższa brzegowych wzrost kosztów magazynowania (i ten koszt jest częściowo przesunięcie poprzez zmniejszenie liczby transakcji wymagane w celu pobrania szczegółów dotyczących dział ).  
-* Należy zachować spójność dwie jednostki, które przechowują informacje o menedżerów. Problem spójności może obsługiwać za pomocą EGTs do zaktualizowania wielu jednostek w ramach jednej transakcji niepodzielnej: w tym przypadku jednostki działu i jednostki pracowników działu Menedżera są przechowywane w tej samej partycji.  
+* Istnieje kilka kosztów związanych z magazynowaniem danych. Korzyść wydajności (wynikająca z mniejszej liczby żądań do usługi magazynu) zazwyczaj zmniejsza krańcowy wzrost kosztów magazynowania (a koszt jest częściowo przesunięty o zmniejszenie liczby transakcji wymaganych do pobrania szczegółów działu) ).  
+* Należy zachować spójność dwóch jednostek, które przechowują informacje o menedżerach. Problem ze spójnością można obsłużyć, korzystając z EGTs do aktualizowania wielu jednostek w jednej transakcji niepodzielnej: w tym przypadku jednostka działu i Jednostka pracownika dla menedżera działu są przechowywane w tej samej partycji.  
 
 #### <a name="when-to-use-this-pattern"></a>Kiedy używać tego wzorca
-Użyj tego wzorca, gdy potrzebujesz często do wyszukania powiązanych informacji. Ten wzorzec pozwala zmniejszyć liczbę zapytań, które należy wprowadzić klienta, aby pobierać dane, które wymaga.  
+Użyj tego wzorca, gdy często potrzebujesz wyszukać powiązane informacje. Ten wzorzec zmniejsza liczbę zapytań, które klient musi wykonać, aby pobrać wymagane dane.  
 
 #### <a name="related-patterns-and-guidance"></a>Powiązane wzorce i wskazówki
 Podczas implementowania tego wzorca mogą być istotne następujące wzorce i wskazówki:  
 
-* [Wzorzec klucza złożona (c)](#compound-key-pattern)  
+* [Wzorzec klucza złożonego](#compound-key-pattern)  
 * [Transakcje grupy jednostek](#entity-group-transactions)  
-* [Praca z typami encji heterogenicznych](#working-with-heterogeneous-entity-types)
+* [Praca z heterogenicznymi typami jednostek](#working-with-heterogeneous-entity-types)
 
-### <a name="compound-key-pattern"></a>Wzorzec klucza złożona (c)
-Użyj złożone **RowKey** wartości, aby włączyć klienta do wyszukiwania danych powiązane z zapytaniem pojedynczy punkt.  
+### <a name="compound-key-pattern"></a>Wzorzec klucza złożonego
+Użyj złożonych wartości **RowKey** , aby umożliwić klientowi wyszukiwanie powiązanych danych za pomocą zapytania z pojedynczym punktem.  
 
 #### <a name="context-and-problem"></a>Kontekst i problem
-W relacyjnej bazie danych jest naturalnym zwrócić powiązane elementy danych do klienta w ramach pojedynczego zapytania za pomocą sprzężeń w zapytaniach. Identyfikator pracownika może na przykład użyć, aby wyszukać listę powiązanych jednostek, które zawierają wydajności i przeglądać dane dla tego pracownika.  
+W relacyjnej bazie danych można używać sprzężeń w zapytaniach, aby zwrócić powiązane fragmenty danych do klienta w jednym zapytaniu. Na przykład możesz użyć identyfikatora pracownika, aby wyszukać listę powiązanych jednostek, które zawierają dane dotyczące wydajności i przeglądu dla tego pracownika.  
 
-Przyjęto założenie, że pracownik jednostki będą przechowywane w usłudze tabeli przy użyciu następującej struktury:  
+Załóżmy, że w Table service są przechowywane jednostki pracowników, korzystając z następującej struktury:  
 
-![Jednostka pracownika][18]
+![Jednostka Employee][18]
 
-Należy również do przechowywania danych historycznych dotyczących przeglądów i wydajności dla każdego roku, w których pracownik pracował dla Twojej organizacji i muszą mieć możliwość dostępu do tych informacji przez rok. Jedną z opcji jest, aby utworzyć inną tabelę, która przechowuje jednostki o następującej strukturze:  
+Musisz również przechowywać dane historyczne dotyczące przeglądów i wydajności dla każdego roku, dla których pracownik pracował w organizacji, i musisz mieć dostęp do tych informacji według roku. Jedną z opcji jest utworzenie innej tabeli, która przechowuje jednostki o następującej strukturze:  
 
-![Jednostka Recenzja pracownika][19]
+![Jednostka przeglądu pracownika][19]
 
-Zwróć uwagę, w tym podejściu użytkownik może zdecydować o zduplikowane niektórych informacji (takich jak imię i nazwisko) w nowej jednostce umożliwiają pobranie danych za pomocą pojedynczego żądania. Nie można jednak obsługa silnej spójności, ponieważ EGT nie można użyć do zaktualizowania niepodzielne dwie jednostki.  
+Należy zauważyć, że w tym podejściu można zdecydować się na zduplikowanie niektórych informacji (takich jak imię i nazwisko) w nowej jednostce, aby umożliwić pobieranie danych za pomocą pojedynczego żądania. Nie można jednak zachować silnej spójności, ponieważ nie można użyć EGT do aktualizowania dwóch jednostek.  
 
 #### <a name="solution"></a>Rozwiązanie
-Store nowy typ jednostki w oryginalnej tabeli za pomocą jednostek o następującej strukturze:  
+Zapisz nowy typ jednostki w oryginalnej tabeli przy użyciu jednostek o następującej strukturze:  
 
-![Jednostki pracowników przy użyciu klucza złożonego][20]
+![Jednostka pracownika z kluczem złożonym][20]
 
-Zwróć uwagę sposób, w jaki **RowKey** jest teraz klucza złożonego składa się z identyfikator pracownika i roku przeglądanie danych, która umożliwia pobieranie wydajność pracowników i przeglądanie danych z pojedynczego żądania dla pojedynczej jednostki.  
+Zwróć uwagę na to, jak **RowKey** jest teraz kluczem złożonym składającym się z identyfikatora pracownika i roku danych przeglądu, który umożliwia pobieranie wydajności pracownika i przeglądanie danych za pomocą pojedynczego żądania dla jednej jednostki.  
 
-Poniższy przykład przedstawia, jak pobrać przeglądanie danych dla danego pracownika (na przykład 000123 pracownik działu sprzedaży):  
+Poniższy przykład przedstawia, w jaki sposób można pobrać wszystkie dane dotyczące przeglądu określonego pracownika (na przykład Employee 000123 w dziale sprzedaży):  
 
-$filter = (PartitionKey eq "Sprzedaż") i (RowKey ge "empid_000123") i (RowKey lt "empid_000124") & $select = RowKey, ocena menedżera, ocena elementów równorzędnych, komentarze  
+$filter = (PartitionKey EQ "Sales") i (RowKey GE "empid_000123") i (RowKey lt "empid_000124") & $select = RowKey, klasyfikacja Menedżera, klasyfikacja elementu równorzędnego, Komentarze  
 
 #### <a name="issues-and-considerations"></a>Problemy i kwestie do rozważenia
 Podczas podejmowania decyzji o sposobie wdrożenia tego wzorca należy rozważyć następujące punkty:  
 
-* Należy użyć odpowiedniego separatora, który ułatwia analizowanie **RowKey** wartość: na przykład **000123_2012**.  
-* Tę jednostkę będą również przechowywane w tej samej partycji, co inne jednostki, które zawierają dane dotyczące tych samych pracownika, co oznacza, że używasz EGTs utrzymanie wysokiego poziomu spójności.
-* Należy rozważyć, jak często będą zapytań danych, aby ustalić, czy ten wzorzec jest odpowiedni.  Na przykład jeśli będzie dostęp rzadko przeglądanie danych i danych o pracownikach głównego często warto przechowywać je jako osobne jednostki.  
+* Należy użyć odpowiedniego znaku separatora, który ułatwia przeanalizowanie wartości **RowKey** : na przykład **000123_2012**.  
+* Ta jednostka jest również przechowywana w tej samej partycji co inne jednostki, które zawierają powiązane dane dla tego samego pracownika, co oznacza, że można użyć EGTs do utrzymania silnej spójności.
+* Należy zastanowić się, jak często będą wykonywane zapytania o dane, aby określić, czy ten wzorzec jest odpowiedni.  Na przykład, jeśli będziesz uzyskiwać dostęp do danych przeglądu rzadko, a główne dane pracowników często powinny być przechowywane jako osobne jednostki.  
 
 #### <a name="when-to-use-this-pattern"></a>Kiedy używać tego wzorca
-Użyj tego wzorca, gdy chcesz przechować jeden lub więcej powiązanych jednostek to zapytanie można często.  
+Tego wzorca należy używać, gdy konieczne jest przechowywanie co najmniej jednej powiązanej jednostki.  
 
 #### <a name="related-patterns-and-guidance"></a>Powiązane wzorce i wskazówki
 Podczas implementowania tego wzorca mogą być istotne następujące wzorce i wskazówki:  
 
 * [Transakcje grupy jednostek](#entity-group-transactions)  
-* [Praca z typami encji heterogenicznych](#working-with-heterogeneous-entity-types)  
-* [Wzorzec transakcji ostatecznie spójną](#eventually-consistent-transactions-pattern)  
+* [Praca z heterogenicznymi typami jednostek](#working-with-heterogeneous-entity-types)  
+* [Wzorzec ostatecznie spójnych transakcji](#eventually-consistent-transactions-pattern)  
 
-### <a name="log-tail-pattern"></a>Wzorzec ogona dziennika
-Pobieranie *n* ostatnio dodany do partycji przy użyciu jednostek **RowKey** wartość, która sortuje w odwrotnej daty i porządku czasowym.  
+### <a name="log-tail-pattern"></a>Wzorzec końca dziennika
+Pobierz *n* obiektów ostatnio dodanych do partycji przy użyciu wartości **RowKey** , która jest sortowana w odwrotnej kolejności daty i godziny.  
 
 > [!NOTE]
-> Wyniki zapytania, zwracana przez interfejs API tabeli platformy Azure w usłudze Azure Cosmos DB nie są sortowane według klucza partycji i klucza wiersza. W związku z tym ten wzorzec jest odpowiednia dla usługi Azure Table Storage, a nie usługi Azure Cosmos DB. Aby uzyskać szczegółową listę różnic między funkcjami, zobacz [różnice interfejsu API tabel w usłudze Azure Cosmos DB i Azure Table Storage](faq.md#where-is-table-api-not-identical-with-azure-table-storage-behavior).
+> Wyniki zapytania zwrócone przez interfejs API tabel platformy Azure w Azure Cosmos DB nie są posortowane według klucza partycji lub klucza wiersza. W ten sposób ten wzorzec jest odpowiedni dla Table Storage platformy Azure, a nie Azure Cosmos DB. Aby uzyskać szczegółową listę różnic między funkcjami, zobacz [różnice między interfejs API tabel w Azure Cosmos DB i Table Storage platformy Azure](faq.md#where-is-table-api-not-identical-with-azure-table-storage-behavior).
 
 #### <a name="context-and-problem"></a>Kontekst i problem
-Typowym wymogiem jest będzie można go pobrać ostatnio utworzone jednostki, na przykład dziesięć ostatnich wydatków oświadczenia złożone przez pracownika. Tabela zapytania pomocy technicznej **$top** operację, aby powrócić do pierwszego zapytania *n* jednostki z zestawu: istnieje żadna operacja równoważne zapytania do zwrócenia ostatnie n jednostki w zestawie.  
+Typowym wymaganiem jest możliwość pobrania ostatnio utworzonych jednostek, na przykład dziesięciu ostatnich oświadczeń wydatków przesłanych przez pracownika. Zapytania tabeli obsługują **$Top** operacji zapytania, aby zwrócić pierwsze *n* jednostek z zestawu: nie istnieje równoważna operacja zapytania, która nie zwraca ostatnich n jednostek w zestawie.  
 
 #### <a name="solution"></a>Rozwiązanie
-Store jednostki przy użyciu **RowKey** że naturalnie sortuje w kolejności odwrotnej daty/godziny przy użyciu więc najnowszy wpis jest zawsze pierwszej tabeli.  
+Przechowuj jednostki przy użyciu **RowKey** , który w sposób naturalny sortuje w odwrotnej kolejności daty/godziny przy użyciu, tak aby najnowszy wpis był zawsze pierwszym z nich w tabeli.  
 
-Na przykład aby można było pobrać dziesięć ostatnich oświadczenia wydatków przesłane przez pracownika, służy wartość odwrotnej osi pochodzi od bieżącej daty/godziny. Poniższy przykładowy kod języka C# zawiera jeden ze sposobów tworzenia odpowiednią wartość "odwrócony znaczników" dla **RowKey** która sortuje od najnowszych do najstarszych:  
+Na przykład, aby można było pobrać dziesięć najnowszych oświadczeń wydatków przedstawionych przez pracownika, można użyć wartości odwróconej osi pochodnej od bieżącej daty/godziny. Poniższy C# przykład kodu przedstawia jeden ze sposobów tworzenia odpowiednich "odwróconych" znaczników dla **RowKey** , które są sortowane od najnowszych do najstarszych:  
 
 `string invertedTicks = string.Format("{0:D19}", DateTime.MaxValue.Ticks - DateTime.UtcNow.Ticks);`  
 
-Możesz wrócić do wartość Data / czas, używając następującego kodu:  
+Można wrócić do wartości daty i godziny przy użyciu następującego kodu:  
 
 `DateTime dt = new DateTime(DateTime.MaxValue.Ticks - Int64.Parse(invertedTicks));`  
 
-Zapytanie dotyczące tabeli wygląda następująco:  
+Zapytanie tabeli wygląda następująco:  
 
 `https://myaccount.table.core.windows.net/EmployeeExpense(PartitionKey='empid')?$top=10`  
 
 #### <a name="issues-and-considerations"></a>Problemy i kwestie do rozważenia
 Podczas podejmowania decyzji o sposobie wdrożenia tego wzorca należy rozważyć następujące punkty:  
 
-* Należy konsoli wartość odwrotnej osi z wiodącymi zerami w celu zapewnienia, że wartość ciągu Sortuje zgodnie z oczekiwaniami.  
-* Należy pamiętać o cele skalowalności na poziomie partycji. Należy zachować ostrożność nie należy tworzyć partycje aktywny.  
+* Aby zapewnić, że wartość ciągu będzie sortowana zgodnie z oczekiwaniami, należy uzupełnić wartość odwrotnej osi.  
+* Należy pamiętać o obiektach docelowych skalowalności na poziomie partycji. Należy zachować ostrożność, aby nie tworzyć partycji punktu aktywnego.  
 
 #### <a name="when-to-use-this-pattern"></a>Kiedy używać tego wzorca
-Użyj tego wzorca, gdy potrzebujesz dostępu do jednostek w kolejności odwrotnej daty/godziny lub konieczność dostęp do ostatnio dodanych jednostek.  
+Użyj tego wzorca, gdy musisz uzyskać dostęp do jednostek w odwrotnej kolejności daty/godziny lub gdy potrzebujesz dostępu do ostatnio dodanych jednostek.  
 
 #### <a name="related-patterns-and-guidance"></a>Powiązane wzorce i wskazówki
 Podczas implementowania tego wzorca mogą być istotne następujące wzorce i wskazówki:  
 
-* [Dołączana / dołączanie wzorzec niezalecane](#prepend-append-anti-pattern)  
-* [Pobieranie jednostki](#retrieving-entities)  
+* [Poprzedź/Dołącz Antywzorzec](#prepend-append-anti-pattern)  
+* [Pobieranie jednostek](#retrieving-entities)  
 
-### <a name="high-volume-delete-pattern"></a>Wzorzec usuwania duża
-Włącz usuwanie dużej liczby jednostek, przechowując wszystkie jednostki do usunięcia jednoczesnych w ich własnych osobnej tabeli; jednostki można usunąć przez usunięcie tabeli.  
+### <a name="high-volume-delete-pattern"></a>Wzorzec usuwania dużych ilości
+Włącz usuwanie dużej liczby jednostek przez przechowywanie wszystkich jednostek do jednoczesnego usuwania w ich własnej osobnej tabeli; obiekty można usunąć, usuwając tabelę.  
 
 #### <a name="context-and-problem"></a>Kontekst i problem
-Wiele aplikacji, Usuń stare dane, nie musi już być dostępne dla aplikacji klienckich, lub aplikacja ma zarchiwizować na innym urządzeniu pamięci masowej. Zazwyczaj zidentyfikować te dane według daty: na przykład masz wymagania do usuwania rekordów z wszystkich żądań logowania, które są starsze niż 60 dni.  
+Wiele aplikacji usuwa stare dane, które nie muszą już być dostępne dla aplikacji klienckiej, lub że aplikacja została zarchiwizowana na innym nośniku magazynowania. Dane te są zwykle identyfikowane przez datę: na przykład, istnieje wymóg usuwania rekordów wszystkich żądań logowania, które są starsze niż 60 dni.  
 
-Jeden projekt możliwe jest użycie datę i godzinę w żądaniu logowania **RowKey**:  
+Jednym z możliwych wzorów jest użycie daty i godziny żądania logowania w **RowKey**:  
 
-![Jednostki próba logowania][21]
+![Jednostka próby zalogowania][21]
 
-W tym podejściu unika obszarów nadmiernej aktywności partycji, ponieważ aplikacja może wstawiania i usuwania logowania jednostki dla każdego użytkownika w oddzielnej partycji. Jednak takie podejście może być kosztowna i czasochłonna Jeśli masz dużą liczbę jednostek, ponieważ najpierw skanowanie tabeli, aby zidentyfikować wszystkie jednostki do usunięcia, a następnie należy usunąć stare jednostki. Można zmniejszyć liczby rund do serwera, wymagane, aby usunąć stare jednostek, przetwarzanie wsadowe wielu żądań delete służących do EGTs.  
+To podejście pozwala uniknąć hotspotów partycji, ponieważ aplikacja może wstawiać i usuwać jednostki logowania dla każdego użytkownika w oddzielnej partycji. Jednak takie podejście może być kosztowne i czasochłonne, jeśli masz dużą liczbę jednostek, ponieważ najpierw należy przeprowadzić skanowanie tabeli w celu zidentyfikowania wszystkich jednostek do usunięcia, a następnie usunąć każdą starą jednostkę. Można zmniejszyć liczbę operacji okrężnych do serwera wymaganego do usunięcia starych jednostek przez przetwarzanie wsadowe wielu żądań Delete do EGTs.  
 
 #### <a name="solution"></a>Rozwiązanie
-Dla każdego dnia prób logowania, należy użyć osobnej tabeli. Powyżej projektu jednostki można użyć, aby uniknąć obszarów aktywności, gdy wstawiasz jednostek i usuwania starych jednostek jest teraz po prostu pytanie usunięcia każdego dnia w jednej tabeli (operacją pojedynczy magazyn) zamiast Znajdowanie i usuwanie setki i tysiące osoby znaki w jednostkach każdego dnia.  
+Użyj oddzielnej tabeli dla każdego dnia prób logowania. Możesz użyć powyższego projektu jednostki, aby uniknąć hotspotów podczas wstawiania jednostek, a usunięcie starych jednostek jest teraz już pytaniem o usunięcie jednej tabeli codziennie (pojedynczej operacji magazynu) zamiast znajdowania i usuwania setek i tysięcy pojedynczych Każdy dzień w jednostkach.  
 
 #### <a name="issues-and-considerations"></a>Problemy i kwestie do rozważenia
 Podczas podejmowania decyzji o sposobie wdrożenia tego wzorca należy rozważyć następujące punkty:  
 
-* Projekt obsługuje inne sposoby, aplikacja będzie używać danych, takie jak wyszukiwanie określonych jednostek, łączenie z innymi danych lub generowania agregują informacje?  
-* Projekt uniknąć punktów aktywnych, wstawiając nowych jednostek?  
-* Oczekiwane opóźnienie, jeśli chcesz ponownie użyć tej samej nazwy tabeli po jego usunięciu. Zaleca się zawsze używać nazw unikatowej tabeli.  
-* Oczekiwać, że niektóre szybkości przy pierwszym użyciu nową tabelę Table service uczy się wzorców dostępu i dystrybuuje partycji na węzłach. Należy rozważyć, jak często należy utworzyć nowe tabele.  
+* Czy projekt obsługuje inne sposoby używania danych przez aplikację, takich jak wyszukiwanie konkretnych jednostek, łączenie z innymi danymi lub generowanie zagregowanych informacji?  
+* Czy projekt nie pozwala na aktywne plamy podczas wstawiania nowych jednostek?  
+* Należy spodziewać się opóźnienia, jeśli chcesz użyć tej samej nazwy tabeli po jej usunięciu. Lepiej jest zawsze używać unikatowych nazw tabel.  
+* Należy spodziewać się pewnej szybkości ograniczania przy pierwszym użyciu nowej tabeli, podczas gdy Table service nauczy wzorców dostępu i dystrybuuje partycje między węzłami. Należy zastanowić się, jak często należy utworzyć nowe tabele.  
 
 #### <a name="when-to-use-this-pattern"></a>Kiedy używać tego wzorca
-Użyj tego wzorca, jeśli masz dużą liczbę jednostek, które należy usunąć w tym samym czasie.  
+Tego wzorca należy używać w przypadku dużej ilości jednostek, które należy usunąć w tym samym czasie.  
 
 #### <a name="related-patterns-and-guidance"></a>Powiązane wzorce i wskazówki
 Podczas implementowania tego wzorca mogą być istotne następujące wzorce i wskazówki:  
@@ -791,168 +791,168 @@ Podczas implementowania tego wzorca mogą być istotne następujące wzorce i ws
 * [Modyfikowanie jednostek](#modifying-entities)  
 
 ### <a name="data-series-pattern"></a>Wzorzec serii danych
-Seria kompletne dane Store w pojedynczą jednostkę, aby zminimalizować liczbę żądań, które wprowadzasz.  
+Przechowuj kompletne serie danych w jednej jednostce, aby zminimalizować liczbę żądań, które należy wykonać.  
 
 #### <a name="context-and-problem"></a>Kontekst i problem
-Typowy scenariusz polega na dla aplikacji, aby przechowywać serię danych, które zazwyczaj musi pobrać wszystkie na raz. Na przykład aplikacja może rejestrować liczbę komunikatów wiadomości Błyskawicznych każdemu pracownikowi wysyła co godzinę, a następnie te informacje służą do wykreślenia liczbę komunikatów każdego użytkownika wysłanych w ciągu poprzednich 24 godzin. Jeden projekt może być przechowywanie podmioty 24 dla każdego pracownika:  
+Typowy scenariusz polega na tym, że aplikacja przechowuje serię danych, które zazwyczaj muszą zostać pobrane jednocześnie. Na przykład aplikacja może rejestrować liczbę wiadomości BŁYSKAWICZNych wysyłanych przez każdego pracownika co godzinę, a następnie użyć tych informacji do wykreślania liczby komunikatów wysyłanych przez każdego użytkownika w ciągu ostatnich 24 godzin. Jednym z projektów może być przechowywanie 24 jednostek dla każdego pracownika:  
 
-![Jednostki statystyki komunikatów][22]
+![Jednostka statystyk komunikatów][22]
 
-W tym projekcie można łatwo zlokalizować i aktualizować jednostki do zaktualizowania dla każdego pracownika, zawsze wtedy, gdy aplikacja musi zaktualizować wartość licznika komunikatów. Jednak aby pobrać informacje do wykreślenia wykresu aktywności w poprzednich 24 godzin, możesz pobrać jednostki 24.  
+Dzięki temu projektowi można łatwo zlokalizować i zaktualizować jednostkę do aktualizacji dla każdego pracownika, gdy aplikacja musi zaktualizować wartość liczby komunikatów. Aby jednak pobrać informacje w celu wykreślenia wykresu aktywności przez poprzednie 24 godziny, należy pobrać 24 jednostki.  
 
 #### <a name="solution"></a>Rozwiązanie
-Za pomocą następujących projektowych osobne właściwości do przechowywania liczba komunikatów dla każdej godziny:  
+Użyj następującego projektu z osobną właściwością do przechowywania liczby komunikatów dla każdej godziny:  
 
-![Jednostki statystyki komunikatów z właściwościami rozdzielonych][23]
+![Jednostka statystyk komunikatów z oddzielonymi właściwościami][23]
 
-W tym projekcie można użyć operacji scalania, można zaktualizować liczba komunikatów dla pracownika określonej godziny. Teraz możesz pobrać wszystkie informacje potrzebne do wykreślenia wykresu przy użyciu żądania dla pojedynczej jednostki.  
+W tym projekcie możesz użyć operacji scalania, aby zaktualizować liczbę komunikatów dla pracownika przez określoną godzinę. Teraz można pobrać wszystkie informacje potrzebne do wykreślenia wykresu przy użyciu żądania dla pojedynczej jednostki.  
 
 #### <a name="issues-and-considerations"></a>Problemy i kwestie do rozważenia
 Podczas podejmowania decyzji o sposobie wdrożenia tego wzorca należy rozważyć następujące punkty:  
 
-* Jeśli serii kompletne dane nie mieści się w pojedynczej jednostki (jednostka może mieć maksymalnie 252 właściwości), należy korzystać z magazynu danych alternatywne, np. obiekt blob.  
-* Jeśli masz wielu klientów jednocześnie aktualizowania jednostki, musisz użyć **ETag** na potrzeby optymistycznej współbieżności. Jeśli masz wielu klientów, może wystąpić wysokiej rywalizacji o zasoby.  
+* Jeśli kompletna seria danych nie mieści się w pojedynczej jednostce (jednostka może mieć do 252 właściwości), użyj alternatywnego magazynu danych, takiego jak obiekt BLOB.  
+* Jeśli wielu klientów jednocześnie aktualizuje jednostkę, należy użyć elementu **ETag** do zaimplementowania optymistycznej współbieżności. Jeśli masz wielu klientów, może wystąpić wysoka rywalizacja.  
 
 #### <a name="when-to-use-this-pattern"></a>Kiedy używać tego wzorca
-Użyj tego wzorca, gdy trzeba zaktualizować i pobrania serii danych skojarzonych z pojedynczą jednostkę.  
+Użyj tego wzorca, gdy musisz zaktualizować i pobrać serie danych skojarzone z konkretną jednostką.  
 
 #### <a name="related-patterns-and-guidance"></a>Powiązane wzorce i wskazówki
 Podczas implementowania tego wzorca mogą być istotne następujące wzorce i wskazówki:  
 
 * [Wzorzec dużych jednostek](#large-entities-pattern)  
-* [Scalanie lub zastępowanie](#merge-or-replace)  
-* [Wzorzec transakcji ostatecznie spójną](#eventually-consistent-transactions-pattern) (Jeśli przechowujesz serii danych w obiekcie blob)  
+* [Scal lub Zamień](#merge-or-replace)  
+* [Wzorzec z ostatecznie spójnymi transakcjami](#eventually-consistent-transactions-pattern) (Jeśli przechowujesz serie danych w obiekcie BLOB)  
 
-### <a name="wide-entities-pattern"></a>Wzorzec szerokiego jednostek
-Wiele jednostek fizycznych umożliwiają przechowywanie jednostek logicznych z więcej niż 252 właściwości.  
+### <a name="wide-entities-pattern"></a>Wzorzec szerokiej jednostki
+Użyj wielu jednostek fizycznych do przechowywania jednostek logicznych z więcej niż 252 właściwościami.  
 
 #### <a name="context-and-problem"></a>Kontekst i problem
-Poszczególne jednostki może mieć maksymalnie 252 właściwości (z wyjątkiem właściwości systemowe obowiązkowy) i nie można zapisać więcej niż 1 MB danych w sumie. W relacyjnej bazie danych zazwyczaj otrzymamy round jakiekolwiek ograniczenia dotyczące rozmiaru wiersz, dodając nową tabelę i wymuszanie 1-do-1 relację między nimi.  
+Pojedyncza jednostka może mieć nie więcej niż 252 właściwości (z wyłączeniem obowiązkowych właściwości systemu) i nie może zawierać więcej niż 1 MB danych. W relacyjnej bazie danych zwykle uzyskuje się zaokrąglanie wszelkich limitów rozmiaru wiersza przez dodanie nowej tabeli i wymuszenie relacji 1-do-jednego między nimi.  
 
 #### <a name="solution"></a>Rozwiązanie
-Usługa Table service można przechowywać wiele jednostek do reprezentowania obiekt pojedynczego dużych firm z ponad 252 właściwości. Na przykład jeśli chcesz przechowywać liczbę wiadomości Błyskawicznych komunikatów wysyłanych przez każdego pracownika w ciągu ostatnich 365 dni, można użyć następujących projekt, który wykorzystuje dwie jednostki z różnymi schematami:  
+Za pomocą Table service można przechowywać wiele jednostek do reprezentowania pojedynczego dużego obiektu biznesowego, który ma więcej niż 252 właściwości. Na przykład jeśli chcesz przechowywać liczbę wiadomości BŁYSKAWICZNych wysyłanych przez każdego pracownika przez ostatnie 365 dni, możesz użyć następującego projektu, który używa dwóch jednostek z różnymi schematami:  
 
-![Jednostka statystyki wiadomości o Rowkey 01 i komunikat jednostki stanu z Rowkey 02][24]
+![Jednostka statystyki komunikatu z Rowkey 01 i jednostką stanu komunikatu z Rowkey 02][24]
 
-Jeśli musisz wprowadzić zmianę, która wymaga zaktualizowania obu jednostek, aby były ze sobą zsynchronizowane, można użyć EGT. W przeciwnym razie można użyć operacji scalania pojedynczego można zaktualizować liczba komunikatów dla określonego dnia. Aby pobrać wszystkie dane dla poszczególnych pracowników musi pobrać obie jednostki, można to zrobić za pomocą dwóch żądania wydajne, które używają zarówno **PartitionKey** i **RowKey** wartości.  
+Jeśli musisz wprowadzić zmianę, która wymaga aktualizacji obu jednostek, aby zachować ich synchronizację ze sobą, możesz użyć EGT. W przeciwnym razie można użyć pojedynczej operacji scalania, aby zaktualizować liczbę komunikatów w określonym dniu. Aby pobrać wszystkie dane dla danego pracownika, należy pobrać obie jednostki, które można wykonać przy użyciu dwóch wydajnych żądań, które używają zarówno **PartitionKey** , jak i wartości **RowKey** .  
 
 #### <a name="issues-and-considerations"></a>Problemy i kwestie do rozważenia
 Podczas podejmowania decyzji o sposobie wdrożenia tego wzorca należy rozważyć następujące punkty:  
 
-* Trwa pobieranie całą jednostkę logiczną obejmuje co najmniej dwie transakcje magazynu: jedną do pobrania każda jednostka fizyczna.  
+* Pobieranie kompletnej jednostki logicznej obejmuje co najmniej dwie transakcje magazynu: jeden do pobrania każdej jednostki fizycznej.  
 
 #### <a name="when-to-use-this-pattern"></a>Kiedy używać tego wzorca
-Użyj tego wzorca, gdy konieczne przechowywanie podmioty, których rozmiar lub liczbę właściwości przekracza limit pojedynczą jednostkę w usłudze Table service.  
+Użyj tego wzorca, gdy potrzebujesz przechowywać jednostki, których rozmiar lub liczba właściwości przekraczają limity dla poszczególnych jednostek w Table service.  
 
 #### <a name="related-patterns-and-guidance"></a>Powiązane wzorce i wskazówki
 Podczas implementowania tego wzorca mogą być istotne następujące wzorce i wskazówki:  
 
 * [Transakcje grupy jednostek](#entity-group-transactions)
-* [Scalanie lub zastępowanie](#merge-or-replace)
+* [Scal lub Zamień](#merge-or-replace)
 
 ### <a name="large-entities-pattern"></a>Wzorzec dużych jednostek
-Użyj usługi blob storage do przechowywania wartości właściwości dużych.  
+Przechowywanie dużych wartości właściwości przy użyciu magazynu obiektów BLOB.  
 
 #### <a name="context-and-problem"></a>Kontekst i problem
-Poszczególne jednostki nie można przechowywać więcej niż 1 MB danych, w sumie. Jeśli jeden lub kilka właściwości przechowywać wartości, które powodują całkowity rozmiar jednostki przekracza tę wartość, nie można zapisać całej jednostki w usłudze Table service.  
+Pojedyncza jednostka nie może przechowywać więcej niż 1 MB danych. Jeśli jedna lub kilka właściwości magazynu wartości, które powodują, że całkowity rozmiar jednostki przekracza tę wartość, nie można zapisać całej jednostki w Table service.  
 
 #### <a name="solution"></a>Rozwiązanie
-Jeśli jednostka przekracza 1 MB rozmiar, ponieważ co najmniej jedna właściwość zawiera dużą ilość danych, możesz przechowywać dane w usłudze obiektów Blob i następnie zapisać adres obiektu blob w właściwości w obiekcie. Na przykład można przechowywać zdjęcia pracownika w usłudze blob storage i przechowywać łącze do zdjęć w **zdjęcie** właściwości jednostki pracowników:  
+Jeśli rozmiar jednostki przekracza 1 MB, ponieważ co najmniej jedna z właściwości zawiera dużą ilość danych, można przechowywać dane w Blob service a następnie przechowywać adres obiektu BLOB we właściwości w jednostce. Na przykład można przechowywać zdjęcie pracownika w usłudze BLOB Storage i przechowywać link do zdjęcia we właściwości **Fotografia** jednostki pracownika:  
 
-![Jednostki pracowników przy użyciu parametrów, zdjęcia, wskazując do magazynu obiektów blob][25]
+![Jednostka pracownika z ciągiem dla fotografii wskazujących na magazyn obiektów BLOB][25]
 
 #### <a name="issues-and-considerations"></a>Problemy i kwestie do rozważenia
 Podczas podejmowania decyzji o sposobie wdrożenia tego wzorca należy rozważyć następujące punkty:  
 
-* Aby zachować spójność między jednostki w usłudze Table service i danych w usłudze obiektów Blob, należy użyć [wzorzec transakcji ostatecznie spójną](#eventually-consistent-transactions-pattern) do zachowania jednostek.
-* Pobieranie całą jednostkę obejmuje co najmniej dwie transakcje magazynowe: jeden do pobierania jednostki, a drugi do pobierania danych obiektów blob.  
+* Aby zachować spójność ostateczną między jednostką w Table service i danymi w Blob service, użyj [wzorca stałego spójnych transakcji](#eventually-consistent-transactions-pattern) do obsługi jednostek.
+* Pobieranie kompletnej jednostki obejmuje co najmniej dwie transakcje magazynu: jeden do pobrania jednostki i jeden w celu pobrania danych obiektów BLOB.  
 
 #### <a name="when-to-use-this-pattern"></a>Kiedy używać tego wzorca
-Użyj tego wzorca, gdy trzeba przechowywanie podmioty, których rozmiar przekracza limit pojedynczą jednostkę w usłudze Table service.  
+Użyj tego wzorca, jeśli chcesz przechowywać jednostki, których rozmiar przekracza limity dla pojedynczej jednostki w Table service.  
 
 #### <a name="related-patterns-and-guidance"></a>Powiązane wzorce i wskazówki
 Podczas implementowania tego wzorca mogą być istotne następujące wzorce i wskazówki:  
 
-* [Wzorzec transakcji ostatecznie spójną](#eventually-consistent-transactions-pattern)  
-* [Wzorzec szerokiego jednostek](#wide-entities-pattern)
+* [Wzorzec ostatecznie spójnych transakcji](#eventually-consistent-transactions-pattern)  
+* [Wzorzec szerokiej jednostki](#wide-entities-pattern)
 
 <a name="prepend-append-anti-pattern"></a>
 
-### <a name="prependappend-anti-pattern"></a>Dołączana/dołączanie zapobieganie wzorzec
-Zwiększa skalowalność, jeśli masz dużą liczbę operacji wstawienia przez rozłożenie operacje wstawiania na wielu partycjach.  
+### <a name="prependappend-anti-pattern"></a>Poprzedź/Dołącz Antywzorzec
+Zwiększenie skalowalności w przypadku dużej ilości operacji wstawiania poprzez rozłożenie operacji wstawiania na wiele partycji.  
 
 #### <a name="context-and-problem"></a>Kontekst i problem
-Dołączenie lub dołączanie jednostek do jednostki przechowywanej zwykle powoduje w aplikacji, dodając nowe jednostki do partycji pierwszej lub ostatniej sekwencji partycji. W takim przypadku wszystkie operacje wstawiania w danym momencie pojawiają się w tej samej partycji, tworzenie informacji o hotspotach, który uniemożliwia równoważenia obciążenia w usłudze table service wstawia w wielu węzłach i prawdopodobnie jest przyczyną trafień cele skalowalności dla aplikacji partycja. Na przykład, jeśli masz aplikację, dzienniki sieci i zasobów dostęp przez pracowników, następnie struktury jednostki, jak pokazano poniżej może spowodować partycji bieżącej godziny staje się aktywny, jeśli wielkość transakcji osiągnie tę docelową skalowalność dla poszczególnych partycji:  
+Oczekiwanie na lub dołączenie jednostek do przechowywanych jednostek zwykle powoduje, że aplikacja dodaje nowe jednostki do pierwszej lub ostatniej partycji sekwencji partycji. W takim przypadku wszystkie operacje wstawiania w dowolnym momencie odbywają się w tej samej partycji, co powoduje utworzenie hotspotu, który uniemożliwia użycie usługi tabeli w ramach równoważenia obciążenia w wielu węzłach, i może spowodować, że aplikacja osiągnie elementy docelowe skalowalności dla podzielić. Na przykład jeśli masz aplikację, która rejestruje dostęp do sieci i zasobów przez pracowników, wówczas struktura jednostki, jak pokazano poniżej, może spowodować, że partycja bieżącej godziny staje się punktem aktywny, jeśli ilość transakcji osiągnie miejsce docelowe skalowalności dla pojedyncza partycja:  
 
-![Jednostka pracownika][26]
+![Jednostka Employee][26]
 
 #### <a name="solution"></a>Rozwiązanie
-Z następującej struktury jednostki alternatywnych pozwala uniknąć punkt aktywny na żadnej określonej partycji jako zdarzenia z dzienników aplikacji:  
+Następująca alternatywna Struktura jednostek pozwala uniknąć hotspotu na określonej partycji, gdy aplikacja rejestruje zdarzenia:  
 
-![Jednostka pracownika o RowKey łączenia rok, miesiąc, dzień, godzinę i Identyfikatora zdarzenia][27]
+![Jednostka pracownika z RowKeyą, która składa się z roku, miesiąca, dnia, godziny i identyfikatora zdarzenia][27]
 
-Powiadomienie z tym przykładem sposobu zarówno **PartitionKey** i **RowKey** są klucze złożone. **PartitionKey** używa identyfikatora dziale i pracowników do dystrybucji rejestrowanie na wielu partycjach.  
+Zwróć uwagę, że w tym przykładzie zarówno **PartitionKey** , jak i **RowKey** są kluczami złożonymi. **PartitionKey** używa zarówno identyfikatora działu, jak i pracownika do dystrybuowania rejestrowania między wieloma partycjami.  
 
 #### <a name="issues-and-considerations"></a>Problemy i kwestie do rozważenia
 Podczas podejmowania decyzji o sposobie wdrożenia tego wzorca należy rozważyć następujące punkty:  
 
-* Alternatywne struktury klucza, który pozwala uniknąć tworzenia partycji w warstwie gorąca na operacje wstawiania efektywnie obsługuje zapytania, który sprawia, że Twoja aplikacja kliencka?  
-* Przewidywane ilości transakcji oznacza że prawdopodobnie osiągnąć cele skalowalności dla poszczególnych partycji i ograniczona przez usługę storage?  
+* Czy struktura klucza alternatywnego, która pozwala uniknąć tworzenia aktywnych partycji w przypadku wstawiania efektywnie obsługuje zapytania, które udostępnia aplikacja kliencka?  
+* Czy Przewidywana ilość transakcji oznacza, że najkorzystniej osiągniesz cele skalowalności dla danej partycji i zostanie ona ograniczona przez usługę magazynu?  
 
 #### <a name="when-to-use-this-pattern"></a>Kiedy używać tego wzorca
-Należy unikać prepend/dołączanie wzorzec zapobieganie po skutkować ograniczania za usługi storage, gdy uzyskujesz dostęp do gorącą partycją szybkości ilości transakcji.  
+Należy unikać dodawania lub dołączania antywzorców, gdy ilość transakcji prawdopodobnie spowoduje ograniczenie szybkości przez usługę magazynu podczas uzyskiwania dostępu do partycji aktywnej.  
 
 #### <a name="related-patterns-and-guidance"></a>Powiązane wzorce i wskazówki
 Podczas implementowania tego wzorca mogą być istotne następujące wzorce i wskazówki:  
 
-* [Wzorzec klucza złożona (c)](#compound-key-pattern)  
-* [Wzorzec ogona dziennika](#log-tail-pattern)  
+* [Wzorzec klucza złożonego](#compound-key-pattern)  
+* [Wzorzec końca dziennika](#log-tail-pattern)  
 * [Modyfikowanie jednostek](#modifying-entities)  
 
-### <a name="log-data-anti-pattern"></a>Wzorzec ochrony danych dziennika
-Zazwyczaj należy użyć usługi obiektów Blob zamiast usługi tabel do przechowywania danych dziennika.  
+### <a name="log-data-anti-pattern"></a>Antywzorzec danych dziennika
+Zazwyczaj należy używać Blob service zamiast Table service do przechowywania danych dziennika.  
 
 #### <a name="context-and-problem"></a>Kontekst i problem
-Typowy przypadek użycia, danych dziennika jest pobrać wybór przyrostu wpisów dziennika dla zakresu określonej daty/godziny: na przykład chcesz odnaleźć wszystkich błędów i krytycznych wiadomości o zarejestrowane przez aplikację między 15:04 i 15:06 w określonym dniu. Czy chcesz umożliwia określenia partycji, Zapisz dziennik jednostek do daty i godziny komunikatu dziennika: wyniki w warstwie gorąca partycji, ponieważ w dowolnym momencie wszystkie jednostki dziennika będą współużytkować ten sam **PartitionKey** wartości (zobacz sekcja [Prepend/dołączanie zapobieganie wzorzec](#prepend-append-anti-pattern)). Na przykład poniższy schemat jednostki dla komunikatu dziennika powoduje gorącą partycją ponieważ aplikacja zapisuje wszystkie komunikaty dziennika do partycji dla bieżącej daty i godziny:  
+Typowym przypadkiem użycia danych dziennika jest pobranie wybranych wpisów dziennika dla określonego zakresu dat/godzin: na przykład, chcesz znaleźć wszystkie komunikaty o błędach i krytyczne, które zostały zarejestrowane przez aplikację między 15:04 i 15:06 w określonym dniu. Nie chcesz używać daty i godziny komunikatu dziennika w celu określenia partycji, do której zapisywane są jednostki dziennika: spowoduje to, że w danym momencie wszystkie jednostki dziennika będą współużytkować tę samą wartość **PartitionKey** (patrz poprzednia sekcja [/ Dołącz ciąg antywzorców](#prepend-append-anti-pattern)). Na przykład poniższy schemat jednostki dla komunikatu dziennika tworzy partycję gorącą, ponieważ aplikacja zapisuje wszystkie komunikaty dziennika na partycji dla bieżącej daty i godziny:  
 
-![Jednostka wiadomości dziennika][28]
+![Jednostka komunikatu dziennika][28]
 
-W tym przykładzie **RowKey** zawiera datę i godzinę komunikatu dziennika, aby upewnić się, że komunikaty dziennika są przechowywane, sortowane w kolejności daty/godziny oraz identyfikator komunikatu w przypadku, gdy wiele komunikatów dziennika udostępnianie tej samej daty i godziny.  
+W tym przykładzie **RowKey** obejmuje datę i godzinę komunikatu dziennika, aby upewnić się, że komunikaty dziennika są przechowywane w kolejności daty/godziny i zawiera identyfikator komunikatu w przypadku, gdy wiele komunikatów dziennika ma taką samą datę i godzinę.  
 
-Innym rozwiązaniem jest użycie **PartitionKey** temu, że aplikacja zapisuje komunikaty w wielu partycjach. Na przykład źródło komunikatu dziennika umożliwia rozłożenie wiadomości na wielu partycjach, można użyć następującego schematu jednostki:  
+Innym podejściem jest użycie **PartitionKey** , która zapewnia, że aplikacja zapisuje komunikaty w różnych partycjach. Na przykład, jeśli źródło komunikatu dziennika zapewnia sposób dystrybucji komunikatów w wielu partycjach, można użyć następującego schematu jednostki:  
 
-![Jednostka wiadomości dziennika][29]
+![Jednostka komunikatu dziennika][29]
 
-Problem z tym schemacie jest jednak, że można pobrać wszystkie komunikaty dziennika dla zakresu określonej godzinie wyszukiwanie wszystkich partycji w tabeli.
+Jednak problem z tym schematem polega na tym, że pobranie wszystkich komunikatów dziennika dla określonego przedziału czasu wymaga przeszukania każdej partycji w tabeli.
 
 #### <a name="solution"></a>Rozwiązanie
-Wcześniejsze wyróżnione problem próby Table service służy do przechowywania wpisów dziennika i sugerowane dwóm niezadowalające, projekty. Jedno rozwiązanie, które doprowadziły do gorącą partycją o ryzyku niską wydajnością, zapisywanie komunikatów dziennika; inne rozwiązanie w wyniku zapytania niskiej wydajności ze względu na konieczność skanowania wszystkich partycji w tabeli, aby pobrać komunikaty dziennika dla zakresu określonej godzinie. Usługa blob storage oferuje lepsze rozwiązania dla tego typu scenariusza i jest to, jak usługa Azure Storage Analytics magazyny danych dzienników są zbierane.  
+W poprzedniej sekcji został wyróżniony problem polegający na tym, że próba użycia Table service do przechowywania wpisów dziennika i sugerowanych dwóch, niezadowalających projektów. Jedno rozwiązanie prowadzi do gorącej partycji z ryzykiem, w którym są zapisywane komunikaty dziennika zapisu wydajności. inne rozwiązanie spowodowało niską wydajność zapytań, ponieważ wymaga skanowania każdej partycji w tabeli w celu pobrania komunikatów dziennika dla określonego przedziału czasu. Magazyn obiektów BLOB oferuje lepsze rozwiązanie tego typu, dlatego w analityka magazynu platformy Azure są przechowywane zbierane dane dziennika.  
 
-W tej sekcji opisano, jak usługa Storage Analytics przechowuje dane dzienników w magazynie obiektów blob jako ilustrację tego podejścia do przechowywania danych, które zazwyczaj zapytania według zakresu.  
+W tej sekcji opisano sposób, w jaki analityka magazynu przechowuje dane dziennika w usłudze BLOB Storage jako ilustrację tego podejścia do przechowywania danych, które są zwykle wykonywane przez wiele zapytań.  
 
-Usługa Storage Analytics przechowuje komunikaty w dzienniku w formacie rozdzielanym w wielu obiektów blob. Rozdzielany format ułatwia aplikacji klienckiej do analizowania danych w komunikacie dziennika.  
+Analityka magazynu przechowuje komunikaty dzienników w formacie rozdzielanym w wielu obiektach Blob. Format rozdzielany ułatwia aplikacji klienckiej analizowanie danych w komunikacie dziennika.  
 
-Usługa Storage Analytics używa konwencji nazewnictwa dla obiektów blob, które umożliwia lokalizowanie obiektu blob (lub obiektów blob), zawierające komunikaty dziennika, dla których potrzebujesz. Na przykład obiekt blob o nazwie "queue/2014/07/31/1800/000001.log" zawiera komunikaty dziennika, które odnoszą się do usługi kolejki, godzinę, począwszy od 18:00 dnia 31 lipca 2014. "000001" oznacza, że jest pierwszy plik dziennika dla tego okresu. Usługa Storage Analytics rejestruje także sygnatury czasowe komunikatów dziennika imię i nazwisko, przechowywane w pliku metadanych obiektu blob w ramach. Interfejs API umożliwia magazynu obiektów blob, zlokalizuj obiektów blob w kontenerze na podstawie prefiksu nazwy: Aby znaleźć wszystkie obiekty BLOB, które zawierają dane dziennika w kolejce na godzinę, począwszy od 18:00, możesz użyć prefiksu "kolejki/2014/07/31/1800."  
+Analityka magazynu używa konwencji nazewnictwa obiektów blob, które umożliwiają znalezienie obiektów BLOB (lub obiektów BLOB) zawierających komunikaty dziennika, dla których odbywa się wyszukiwanie. Na przykład obiekt BLOB o nazwie "queue/2014/07/31/1800/000001. log" zawiera komunikaty dziennika, które odnoszą się do usługi kolejki przez godzinę, rozpoczynając od 18:00 31 lipca 2014. "000001" wskazuje, że jest to pierwszy plik dziennika dla tego okresu. Analityka magazynu rejestruje także sygnatury czasowe pierwszych i ostatnich komunikatów dziennika przechowywanych w pliku w ramach metadanych obiektu BLOB. Interfejs API usługi BLOB Storage umożliwia lokalizowanie obiektów BLOB w kontenerze na podstawie prefiksu nazwy: aby zlokalizować wszystkie obiekty blob zawierające dane dziennika kolejki dla godziny rozpoczynającej się o 18:00, można użyć prefiksu "queue/2014/07/31/1800".  
 
-Storage Analytics buforów rejestrowania komunikatów wewnętrznie i następnie okresowo zaktualizować odpowiedniego obiektu blob lub tworzy nową grupę za pomocą najnowszego wsadu wpisy dziennika. Zmniejsza to liczbę operacji zapisu, które należy wykonać na usługę blob Service.  
+Analityka magazynu buforuje komunikaty dzienników wewnętrznie, a następnie okresowo aktualizuje odpowiedni obiekt BLOB lub tworzy nowy z najnowszymi partiami wpisów dziennika. Pozwala to zmniejszyć liczbę zapisów, które muszą zostać wykonane w usłudze BLOB Service.  
 
-Przed zaimplementowaniem podobnego rozwiązania w swojej aplikacji, należy wziąć pod uwagę sposób zarządzania kompromis między niezawodności (zapisywania każdy wpis dziennika do magazynu obiektów blob, jak to się dzieje) oraz kosztu i skalowalności (buforowanie aktualizacje w aplikacji i zapisywanie ich do usługi blob storage w partiach).  
+Jeśli wdrażasz podobne rozwiązanie w swojej aplikacji, musisz wziąć pod uwagę sposób zarządzania wymianą zapasową między niezawodnością (zapisanie każdego wpisu dziennika do magazynu obiektów BLOB) i obniżeniem kosztów i skalowalności (buforowanie aktualizacji w aplikacji i zapisywanie je do magazynu obiektów BLOB w partiach).  
 
 #### <a name="issues-and-considerations"></a>Problemy i kwestie do rozważenia
-Podczas podejmowania decyzji o sposobie przechowywania danych dziennika, należy rozważyć następujące kwestie:  
+Podczas decydowania o sposobie przechowywania danych dzienników należy wziąć pod uwagę następujące kwestie:  
 
-* Jeśli tworzysz projektowaniu tabel, która pozwala uniknąć potencjalnych partycje gorąca, może się okazać, że nie masz dostępu do danych dziennika wydajnie.  
+* W przypadku utworzenia projektu tabeli, który pozwala uniknąć potencjalnych partycji, może się okazać, że nie można wydajnie uzyskać dostępu do danych dziennika.  
 * Aby przetwarzać dane dziennika, klient często musi załadować wiele rekordów.  
-* Mimo, że dane dziennika często mają strukturę, magazynu obiektów blob może być lepszym rozwiązaniem.  
+* Mimo że dane dziennika są często strukturalne, usługa BLOB Storage może być lepszym rozwiązaniem.  
 
 ### <a name="implementation-considerations"></a>Istotne informacje dotyczące implementacji
-W tej sekcji omówiono niektóre zagadnienia, mieć na uwadze podczas implementowania wzorców opisanych w poprzednich sekcjach. Większość w tej sekcji używa przykłady napisane w języku C#, korzystających z biblioteki klienta usługi Storage (wersja 4.3.0 w czasie pisania).  
+W tej sekcji omówiono niektóre zagadnienia, które należy wziąć pod uwagę podczas implementowania wzorców opisanych w poprzednich sekcjach. W większości tej sekcji są używane przykłady napisane C# przy użyciu biblioteki klienta magazynu (wersja 4.3.0 w momencie pisania).  
 
-### <a name="retrieving-entities"></a>Pobieranie jednostki
-Zgodnie z opisem w sekcji [projektowanie pod kątem zapytań](#design-for-querying), najbardziej wydajny zapytanie jest zapytaniem punktu. Jednak w niektórych scenariuszach może być konieczne pobieranie wielu jednostek. W tej sekcji opisano niektóre typowe sposoby pobierania jednostki przy użyciu biblioteki klienta usługi Storage.  
+### <a name="retrieving-entities"></a>Pobieranie jednostek
+Jak opisano w temacie [projekt sekcji dotyczącej wykonywania zapytań](#design-for-querying), najbardziej wydajnym zapytaniem jest zapytanie punktowe. Jednak w niektórych scenariuszach może być konieczne pobranie wielu jednostek. W tej sekcji opisano niektóre typowe podejścia do pobierania jednostek przy użyciu biblioteki klienta usługi Storage.  
 
-#### <a name="executing-a-point-query-using-the-storage-client-library"></a>Wykonywanie kwerendy punktu, przy użyciu biblioteki klienta magazynu
-Najprostszym sposobem wykonania kwerendy punktu jest użycie **pobrać** tabelę operacji, jak pokazano w poniższym C# fragmentu kodu, które pobiera jednostki z **PartitionKey** wartości "Sprzedaż" i  **RowKey** wartości "212":  
+#### <a name="executing-a-point-query-using-the-storage-client-library"></a>Wykonywanie zapytania punktu przy użyciu biblioteki klienta usługi Storage
+Najprostszym sposobem wykonania zapytania punktu jest użycie operacji **Pobierz** tabelę, jak pokazano w poniższym C# fragmencie kodu, który pobiera jednostkę z **PartitionKey** wartości "Sales" i **RowKey** wartość "212":  
 
 ```csharp
 TableOperation retrieveOperation = TableOperation.Retrieve<EmployeeEntity>("Sales", "212");
@@ -964,10 +964,10 @@ if (retrieveResult.Result != null)
 }  
 ```
 
-Zwróć uwagę, jak w tym przykładzie oczekuje, że jednostka pobiera typu **EmployeeEntity**.  
+Zwróć uwagę, jak w tym przykładzie oczekiwana jest jednostka pobierana z typu **EmployeeEntity**.  
 
-#### <a name="retrieving-multiple-entities-using-linq"></a>Trwa pobieranie wielu jednostek za pomocą LINQ
-Możesz pobrać wiele jednostek przy użyciu LINQ za pomocą biblioteki klienta usługi Storage i określając zapytanie o **gdzie** klauzuli. Aby uniknąć skanowanie tabeli, zawsze powinna zawierać **PartitionKey** wartości w klauzuli where klauzuli i jeśli to możliwe **RowKey** wartość, aby uniknąć skanowanie tabeli i partycji. Usługa table service obsługuje ograniczony zestaw operatory porównania (większa, większa niż lub równe mniej niż, mniejsze lub równe, równe i nie równa się), aby użyć w klauzuli where — klauzula. Poniższy fragment kodu języka C# znajduje wszystkich pracowników, którego ostatnie nazwa rozpoczyna się od ciągu "B" (przy założeniu, że **RowKey** przechowuje nazwisko) używanych w dziale sprzedaży (zakładając, że **PartitionKey** przechowuje Nazwa działu):  
+#### <a name="retrieving-multiple-entities-using-linq"></a>Pobieranie wielu jednostek przy użyciu LINQ
+Można pobrać wiele jednostek przy użyciu LINQ z biblioteką klienta usługi Storage i określić zapytanie z klauzulą **WHERE** . Aby uniknąć skanowania tabeli, należy zawsze uwzględnić wartość **PartitionKey** w klauzuli WHERE, a jeśli to możliwe, wartość **RowKey** w celu uniknięcia skanowania tabeli i partycji. Usługa Table Service obsługuje ograniczony zbiór operatorów porównania (większe niż, większe niż lub równe, mniejsze niż, mniejsze niż lub równe, równe i nierówne) do użycia w klauzuli WHERE. Poniższy C# fragment kodu znajduje wszystkich pracowników, których nazwisko zaczyna się od "B" (przy założeniu, że **RowKey** przechowuje nazwisko) w dziale sprzedaży (przy założeniu, że **PartitionKey** przechowuje nazwę działu):  
 
 ```csharp
 TableQuery<EmployeeEntity> employeeQuery = employeeTable.CreateQuery<EmployeeEntity>();
@@ -979,9 +979,9 @@ var query = (from employee in employeeQuery
 var employees = query.Execute();  
 ```
 
-Zwróć uwagę, jak zapytanie określa zarówno **RowKey** i **PartitionKey** zapewniające lepszą wydajność.  
+Zwróć uwagę, jak zapytanie określa zarówno **RowKey** , jak i **PartitionKey** , aby zapewnić lepszą wydajność.  
 
-Poniższy przykład kodu pokazuje równoważne funkcje przy użyciu interfejsu API fluent (Aby uzyskać więcej informacji na temat płynnych interfejsów API ogólnie rzecz biorąc, zobacz [najlepsze rozwiązania dotyczące projektowania interfejs Fluent API](https://visualstudiomagazine.com/articles/2013/12/01/best-practices-for-designing-a-fluent-api.aspx)):  
+Poniższy przykładowy kod przedstawia równoważne funkcje przy użyciu interfejsu API Fluent (Aby uzyskać więcej informacji na temat interfejsów API Fluent ogólnie, zobacz [najlepsze rozwiązania dotyczące projektowania interfejsu API Fluent](https://visualstudiomagazine.com/articles/2013/12/01/best-practices-for-designing-a-fluent-api.aspx)):  
 
 ```csharp
 TableQuery<EmployeeEntity> employeeQuery = new TableQuery<EmployeeEntity>().Where(
@@ -1001,18 +1001,18 @@ var employees = employeeTable.ExecuteQuery(employeeQuery);
 ```
 
 > [!NOTE]
-> Przykład zagnieżdżony wielu **CombineFilters** metody służące do dołączania trzech warunków filtrowania.  
+> Przykład zagnieżdża wiele metod **CombineFilters** , aby uwzględnić trzy warunki filtru.  
 > 
 > 
 
-#### <a name="retrieving-large-numbers-of-entities-from-a-query"></a>Trwa pobieranie dużej liczby obiektów z kwerendy
-Optymalne zapytanie zwraca pojedynczą jednostkę na podstawie **PartitionKey** wartość i **RowKey** wartości. Jednak w niektórych scenariuszach może być wymagane do zwrócenia wielu jednostek z jednej partycji lub nawet od liczby partycji.  
+#### <a name="retrieving-large-numbers-of-entities-from-a-query"></a>Pobieranie dużej liczby jednostek z zapytania
+Optymalne zapytanie zwraca indywidualną jednostkę na podstawie wartości **PartitionKey** i wartości **RowKey** . Jednak w niektórych scenariuszach może istnieć wymóg zwrócenia wielu jednostek z tej samej partycji lub nawet z wielu partycji.  
 
-W takich scenariuszach, należy zawsze w pełni przetestować wydajność aplikacji.  
+Należy zawsze w pełni przetestować wydajność aplikacji w takich scenariuszach.  
 
-Zapytanie względem usługi tabeli może zwrócić więcej niż 1000 jednostek w tym samym czasie i może być wykonywane przez maksymalnie pięć sekund. Jeśli zestaw wyników zawiera więcej niż 1000 jednostek, jeśli zapytanie nie została ukończona w ciągu pięciu sekund lub zapytanie przecina granicę partycji, usłudze Table service zwraca token kontynuacji, aby umożliwić aplikacji klienckiej zażądać następnego zestawu jednostek. Aby uzyskać więcej informacji na temat sposobu kontynuacji tokenów pracy, zobacz [limit czasu zapytania i dzielenia na strony](https://msdn.microsoft.com/library/azure/dd135718.aspx).  
+Zapytanie dotyczące usługi Table Service może zwrócić maksymalnie 1 000 jednostek jednocześnie i może być wykonywane przez maksymalnie pięć sekund. Jeśli zestaw wyników zawiera więcej niż 1 000 jednostek, jeśli zapytanie nie zostało ukończone w ciągu pięciu sekund lub jeśli zapytanie przecina granicę partycji, Table service zwraca token kontynuacji, aby umożliwić aplikacji klienckiej żądanie następnego zestawu jednostek. Aby uzyskać więcej informacji na temat działania tokenów kontynuacji, zobacz [limit czasu zapytania i podział na strony](https://msdn.microsoft.com/library/azure/dd135718.aspx).  
 
-Jeśli używasz biblioteki klienta usługi Storage go automatycznie obsługiwać tokenów kontynuacji dla Ciebie jako zwraca jednostki z usługi tabel. Poniższy przykład kodu C# automatycznie przy użyciu biblioteki klienta usługi Storage obsługuje tokeny kontynuacji, jeśli usługa table service zwraca je w odpowiedzi:  
+Jeśli używasz biblioteki klienta usługi Storage, może ona automatycznie obsługiwać tokeny kontynuacji, ponieważ zwraca jednostki z Table service. Następujący C# przykładowy kod korzystający z biblioteki klienta usługi Storage automatycznie obsługuje tokeny kontynuacji, jeśli usługa tabeli zwróci je w odpowiedzi:  
 
 ```csharp
 string filter = TableQuery.GenerateFilterCondition(
@@ -1027,7 +1027,7 @@ foreach (var emp in employees)
 }  
 ```
 
-Poniższy kod C# obsługuje tokeny kontynuacji jawnie:  
+Poniższy C# kod obsługuje jawnie tokeny kontynuacji:  
 
 ```csharp
 string filter = TableQuery.GenerateFilterCondition(
@@ -1049,25 +1049,25 @@ do
 } while (continuationToken != null);  
 ```
 
-Korzystając z kontynuacji tokenów jawnie, można kontrolować, kiedy aplikacja pobiera następny segment danych. Na przykład, jeśli Twoja aplikacja kliencka pozwala użytkownikom na stronie za pośrednictwem jednostki przechowywane w tabeli, użytkownik może zadecydować o stronie za pośrednictwem wszystkich jednostek, które są pobierane przez zapytanie, dzięki czemu aplikacja używa się tylko token kontynuacji do pobrania następnej segmentu, gdy użytkownik miał zakończył stronicować wszystkich jednostek w bieżącym segmencie. Takie podejście ma kilka zalet:  
+Używając jawnie tokenów kontynuacji, można kontrolować, kiedy aplikacja pobiera następny segment danych. Na przykład, jeśli aplikacja kliencka umożliwia użytkownikom przechodzenie przez jednostki przechowywane w tabeli, użytkownik może zrezygnować ze strony przez wszystkie jednostki pobrane przez zapytanie, tak aby aplikacja korzystała z tokenu kontynuacji do pobierania następnego segmentu, gdy użytkownik zakończył stronicowanie przez wszystkie jednostki w bieżącym segmencie. Takie podejście ma kilka zalet:  
 
-* Umożliwia ograniczenie ilości danych, które można pobrać z usługi tabel i Przenieś za pośrednictwem sieci.  
-* Umożliwia wykonywanie asynchronicznych operacji We/Wy na platformie .NET.  
-* Pozwala ona do serializacji token kontynuacji w magazynie trwałym, aby można było kontynuować na wypadek awarii aplikacji.  
+* Umożliwia ograniczenie ilości danych do pobrania z Table service i przechodzenie przez sieć.  
+* Umożliwia wykonywanie asynchronicznych operacji we/wy na platformie .NET.  
+* Umożliwia ona Serializowanie tokenu kontynuacji do magazynu trwałego, dzięki czemu można kontynuować w przypadku awarii aplikacji.  
 
 > [!NOTE]
-> Token kontynuacji zwykle zwraca segment zawierający 1000 jednostek, chociaż może być mniej. Dotyczy to także ograniczyć liczbę wpisów zapytanie zwraca przy użyciu **zająć** do zwrócenia pierwsze n jednostek spełniających podane kryteria wyszukiwania: table service może zwrócić segment zawierający mniej niż n jednostki wraz z programem token kontynuacji, aby umożliwić pobieranie pozostałych jednostek.  
+> Token kontynuacji zwykle zwraca segment zawierający 1 000 jednostek, chociaż może być mniej. Ma to również wpływ na liczbę wpisów zwracanych przez zapytanie przy użyciu funkcji **Take** , aby zwrócić pierwsze n jednostek, które pasują do kryteriów wyszukiwania: usługa Table może zwrócić segment zawierający mniej niż n jednostek wraz z tokenem kontynuacji, aby umożliwia pobranie pozostałych jednostek.  
 > 
 > 
 
-Poniższy kod C# pokazuje sposób modyfikowania liczby jednostek zwróconych w segmencie:  
+Poniższy C# kod pokazuje, jak zmodyfikować liczbę jednostek zwróconych wewnątrz segmentu:  
 
 ```csharp
 employeeQuery.TakeCount = 50;  
 ```
 
 #### <a name="server-side-projection"></a>Projekcja po stronie serwera
-Pojedynczy element może mieć maksymalnie 255 właściwości i mieć rozmiar maksymalnie 1 MB. Gdy odpytać tabelę i pobieranie jednostek, mogą nie być potrzebne wszystkie właściwości i uniknąć przesyłania danych niepotrzebnie (w celu zmniejszenia opóźnień i kosztów). Projekcja po stronie serwera umożliwia transfer tylko właściwości, których potrzebujesz. Poniższy przykład pobiera tylko **E-mail** właściwości (wraz z **PartitionKey**, **RowKey**, **sygnatura czasowa**i **ETag**) z jednostek wybranych przez zapytanie.  
+Jedna jednostka może mieć do 255 właściwości i mieć rozmiar maksymalnie 1 MB. Podczas wykonywania zapytania dotyczącego tabeli i pobierania jednostek mogą nie być potrzebne wszystkie właściwości i mogą uniknąć niepotrzebnych transferów danych (aby pomóc w zmniejszeniu opóźnień i kosztów). Możesz użyć projekcji po stronie serwera, aby przetransferować tylko potrzebne właściwości. Poniższy przykład pobiera tylko właściwość **poczty e-mail** (wraz z **PartitionKey**, **RowKey**, **timestamp**i **ETag**) z jednostek wybranych przez zapytanie.  
 
 ```csharp
 string filter = TableQuery.GenerateFilterCondition(
@@ -1083,30 +1083,30 @@ foreach (var e in entities)
 }  
 ```
 
-Zwróć uwagę sposób, w jaki **RowKey** wartość jest dostępna, nawet jeśli nie zostało uwzględnione w listy właściwości do pobrania.  
+Zauważ, że wartość **RowKey** jest dostępna, nawet jeśli nie została uwzględniona na liście właściwości do pobrania.  
 
 ### <a name="modifying-entities"></a>Modyfikowanie jednostek
-Biblioteki klienta usługi Storage umożliwia modyfikowanie jednostek przechowywanych w usłudze tabeli, wstawianie, usuwanie i aktualizowanie jednostek. EGTs Umożliwia wsadowe wielu operacji wstawiania, aktualizacji i operacje usuwania razem w celu zmniejszenia liczby rund wymagane i zwiększa wydajność rozwiązania.  
+Biblioteka klienta usługi Storage umożliwia modyfikowanie jednostek przechowywanych w usłudze Table Service przez wstawianie, usuwanie i aktualizowanie jednostek. Za pomocą EGTs można wsadowo wiele operacji wstawiania, aktualizacji i usuwania, aby zmniejszyć liczbę wymaganych podróży i zwiększyć wydajność rozwiązania.  
 
-Wyjątki zgłaszane, gdy biblioteka klienta magazynu EGT zwykle obejmują indeks jednostki, który spowodował partii nie powiedzie się. Jest to przydatne podczas debugowania kodu korzystającego z EGTs.  
+Wyjątki zgłaszane, gdy biblioteka klienta magazynu wykonuje EGT zazwyczaj zawiera indeks jednostki, która spowodowała niepowodzenie wykonywania partii. Jest to przydatne w przypadku debugowania kodu korzystającego z EGTs.  
 
-Należy również rozważyć, jak projekt wpływa na sposób Twoja aplikacja kliencka obsługi operacji współbieżności i aktualizacji.  
+Należy również rozważyć, jak projekt ma wpływ na sposób, w jaki Twoja aplikacja kliencka obsługuje operacje współbieżności i aktualizacji.  
 
 #### <a name="managing-concurrency"></a>Zarządzanie współbieżnością
-Domyślnie usługa table service implementuje optymistycznej współbieżności testy na poziomie poszczególnych jednostek dla **Wstaw**, **scalania**, i **Usuń** operacji, mimo że go jest możliwe, aby klient wymusić uruchomienia usługi tabeli, aby pominąć te testy. Aby uzyskać więcej informacji na temat sposobu zarządzania współbieżności w usłudze table service, zobacz [Zarządzanie współbieżnością w Microsoft Azure Storage](../storage/common/storage-concurrency.md).  
+Domyślnie usługa Table Service implementuje optymistyczne kontrole współbieżności na poziomie poszczególnych jednostek dla operacji **wstawiania**, **scalania**i **usuwania** , chociaż jest możliwe, aby klient wymusił ominięcie tych elementów przez usługę Table Service szuka. Aby uzyskać więcej informacji o tym, jak usługa Table zarządza współbieżnością, zobacz [Zarządzanie współbieżnością w Microsoft Azure Storage](../storage/common/storage-concurrency.md).  
 
-#### <a name="merge-or-replace"></a>Scalanie lub zastępowanie
-**Zastąp** metody **TableOperation** klasy zawsze zastępuje całą jednostkę w usłudze Table service. Jeśli nie ma właściwości w żądaniu w jednostki przechowywanej istnieje tę właściwość, żądanie usuwa tę właściwość z jednostki przechowywanej. Jeśli nie chcesz jawnie usunąć właściwość z jednostki przechowywanej musi zawierać dla każdej właściwości w żądaniu.  
+#### <a name="merge-or-replace"></a>Scal lub Zamień
+Metoda **replace** klasy **TableOperation** zawsze zastępuje kompletną jednostkę w Table Service. Jeśli nie dołączysz właściwości w żądaniu, gdy ta właściwość istnieje w przechowywanej jednostce, żądanie usunie tę właściwość z przechowywanej jednostki. Jeśli nie chcesz usunąć właściwości jawnie z przechowywanej jednostki, musisz dołączyć każdą właściwość w żądaniu.  
 
-Możesz użyć **scalania** metody **TableOperation** klasy, aby zmniejszyć ilość danych przesyłanych do usługi Table zaktualizować jednostkę. **Scalania** metoda zastępuje wszystkie właściwości w jednostki przechowywanej wartości właściwości z jednostki zawarty w żądaniu, i pozostawienie bez zmian żadnych właściwości przechowywanych jednostki, które nie są uwzględnione w żądaniu. Jest to przydatne, jeśli masz dużych jednostek i wymaga tylko zaktualizowania niewielkiej liczby właściwości w żądaniu.  
+Można użyć metody **merge** klasy **TableOperation** , aby zmniejszyć ilość danych wysyłanych do Table Service, gdy chcesz zaktualizować jednostkę. Metoda **merge** zastępuje wszystkie właściwości w przechowywanej jednostce wartościami właściwości z jednostki zawartej w żądaniu, ale pozostawia nienaruszone właściwości w jednostce przechowywanej, które nie są uwzględnione w żądaniu. Jest to przydatne, jeśli masz duże jednostki i potrzebujesz jedynie zaktualizować niewielką liczbę właściwości w żądaniu.  
 
 > [!NOTE]
-> **Zastąp** i **scalania** metody się nie powieść, jeśli jednostka nie istnieje. Alternatywnie, można użyć **InsertOrReplace** i **InsertOrMerge** metody, które Utwórz nową jednostkę, jeśli nie istnieje.  
+> Metody **replace** i **merge** kończą się niepowodzeniem, jeśli jednostka nie istnieje. Alternatywnie można użyć metod **InsertOrReplace** i **InsertOrMerge** , które tworzą nową jednostkę, jeśli nie istnieje.  
 > 
 > 
 
-### <a name="working-with-heterogeneous-entity-types"></a>Praca z typami encji heterogenicznych
-Table service to *bez schematu* magazynu tabel, oznacza to, że pojedynczej tabeli można przechowywać jednostki wiele typów, zapewniając elastyczność w projekcie. W poniższym przykładzie pokazano tabelę przechowywania pracownika i działu jednostki:  
+### <a name="working-with-heterogeneous-entity-types"></a>Praca z heterogenicznymi typami jednostek
+Table service to magazyn tabel bez *schematu* , który oznacza, że pojedyncza tabela może przechowywać jednostki wielu typów zapewniające dużą elastyczność w projekcie. Poniższy przykład ilustruje tabelę przechowującą jednostki pracownika i działu:  
 
 <table>
 <tr>
@@ -1162,7 +1162,7 @@ Table service to *bez schematu* magazynu tabel, oznacza to, że pojedynczej tabe
 <td>
 <table>
 <tr>
-<th>Nazwa działu</th>
+<th>DepartmentName</th>
 <th>EmployeeCount</th>
 </tr>
 <tr>
@@ -1195,10 +1195,10 @@ Table service to *bez schematu* magazynu tabel, oznacza to, że pojedynczej tabe
 </tr>
 </table>
 
-Każda jednostka może nadal mieć **PartitionKey**, **RowKey**, i **sygnatura czasowa** wartości, ale mogą mieć dowolny zbiór właściwości. Ponadto nie ma nic do wskazać typ jednostki, jeśli nie chcesz przechowywać tych informacji w jakimś miejscu. Dostępne są dwie opcje do identyfikowania typu jednostki:  
+Każda jednostka musi nadal mieć wartości **PartitionKey**, **RowKey**i **timestamp** , ale może mieć dowolny zestaw właściwości. Ponadto nie ma nic do wskazania typu jednostki, chyba że użytkownik zdecyduje się przechowywać te informacje w innym miejscu. Dostępne są dwie opcje identyfikacji typu jednostki:  
 
-* Dodaj typ jednostki do **RowKey** (albo ewentualnego **PartitionKey**). Na przykład **EMPLOYEE_000123** lub **DEPARTMENT_SALES** jako **RowKey** wartości.  
-* Aby zarejestrować typ jednostki, jak pokazano w poniższej tabeli, należy użyć oddzielnych właściwości.  
+* Dołącz typ jednostki do **RowKey** (lub prawdopodobnie **PartitionKey**). Na przykład **EMPLOYEE_000123** lub **DEPARTMENT_SALES** jako wartości **RowKey** .  
+* Użyj oddzielnej właściwości, aby zarejestrować typ jednostki, jak pokazano w poniższej tabeli.  
 
 <table>
 <tr>
@@ -1214,14 +1214,14 @@ Każda jednostka może nadal mieć **PartitionKey**, **RowKey**, i **sygnatura c
 <td>
 <table>
 <tr>
-<th>Typ entityType</th>
+<th>Elementy</th>
 <th>FirstName</th>
 <th>LastName</th>
 <th>Wiek</th>
 <th>Email</th>
 </tr>
 <tr>
-<td>Pracownik</td>
+<td>Zatrudnion</td>
 <td></td>
 <td></td>
 <td></td>
@@ -1236,14 +1236,14 @@ Każda jednostka może nadal mieć **PartitionKey**, **RowKey**, i **sygnatura c
 <td>
 <table>
 <tr>
-<th>Typ entityType</th>
+<th>Elementy</th>
 <th>FirstName</th>
 <th>LastName</th>
 <th>Wiek</th>
 <th>Email</th>
 </tr>
 <tr>
-<td>Pracownik</td>
+<td>Zatrudnion</td>
 <td></td>
 <td></td>
 <td></td>
@@ -1258,8 +1258,8 @@ Każda jednostka może nadal mieć **PartitionKey**, **RowKey**, i **sygnatura c
 <td>
 <table>
 <tr>
-<th>Typ entityType</th>
-<th>Nazwa działu</th>
+<th>Elementy</th>
+<th>DepartmentName</th>
 <th>EmployeeCount</th>
 </tr>
 <tr>
@@ -1277,14 +1277,14 @@ Każda jednostka może nadal mieć **PartitionKey**, **RowKey**, i **sygnatura c
 <td>
 <table>
 <tr>
-<th>Typ entityType</th>
+<th>Elementy</th>
 <th>FirstName</th>
 <th>LastName</th>
 <th>Wiek</th>
 <th>Email</th>
 </tr>
 <tr>
-<td>Pracownik</td>
+<td>Zatrudnion</td>
 <td></td>
 <td></td>
 <td></td>
@@ -1295,23 +1295,23 @@ Każda jednostka może nadal mieć **PartitionKey**, **RowKey**, i **sygnatura c
 </tr>
 </table>
 
-Pierwsza opcja AS jednostki wpisz, aby **RowKey**, jest przydatne, jeśli istnieje możliwość, że dwie jednostki o różnych typach może mieć taką samą wartość klucza. Grup jednostek z tego samego typu, ze sobą w partycji.  
+Pierwsza opcja, w zależności od typu obiektu do **RowKey**, jest przydatna, jeśli istnieje możliwość, że dwie jednostki różnych typów mogą mieć taką samą wartość klucza. Grupuje również jednostki tego samego typu razem w partycji.  
 
-Techniki opisane w tej sekcji są szczególnie istotne w dyskusji [relacje dziedziczenia](#inheritance-relationships) we wcześniejszej części tego przewodnika, w sekcji modelowanie relacji.  
+Techniki omówione w tej sekcji są szczególnie istotne dla [relacji dziedziczenia](#inheritance-relationships) dyskusji wcześniej w tym przewodniku w sekcji relacje modelowania.  
 
 > [!NOTE]
-> Należy rozważyć, w tym numer wersji w wartości typu jednostki, aby umożliwić aplikacjom klienckim ewoluować obiektów POCO i pracy z różnymi wersjami.  
+> Należy rozważyć uwzględnienie numeru wersji w wartości typ jednostki, aby umożliwić aplikacjom klienckim rozwijanie obiektów POCO i współpracują z różnymi wersjami.  
 > 
 > 
 
-W pozostałej części tej sekcji opisano niektóre z funkcji w bibliotece klienta usługi Storage, które ułatwiają pracę z wieloma typami jednostki w tej samej tabeli.  
+W pozostałej części tej sekcji opisano niektóre funkcje w bibliotece klienta magazynu, które ułatwiają pracę z wieloma typami jednostek w tej samej tabeli.  
 
-#### <a name="retrieving-heterogeneous-entity-types"></a>Trwa pobieranie typów jednostek heterogenicznych
-Jeśli używasz biblioteki klienta usługi Storage są trzy opcje do pracy z wieloma typami encji.  
+#### <a name="retrieving-heterogeneous-entity-types"></a>Pobieranie typów jednostek heterogenicznych
+W przypadku korzystania z biblioteki klienta usługi Storage dostępne są trzy opcje pracy z wieloma typami jednostek.  
 
-Jeśli jest znany typ jednostki przechowywane z określonym **RowKey** i **PartitionKey** wartości, a następnie po pobraniu jednostki, jak pokazano w poprzednich dwóch przykładach, można określić typu jednostki, Pobieranie jednostki typu **EmployeeEntity**: [Wykonywanie kwerendy punktu, przy użyciu biblioteki klienta magazynu](#executing-a-point-query-using-the-storage-client-library) i [Pobieranie wielu jednostek za pomocą LINQ](#retrieving-multiple-entities-using-linq).  
+Jeśli znasz typ jednostki przechowywanej przy użyciu określonych wartości **RowKey** i **PartitionKey** , możesz określić typ jednostki podczas pobierania jednostki, jak pokazano w poprzednich dwóch przykładach, które pobierają jednostki typu **EmployeeEntity** : [Wykonywanie zapytania punktowego przy użyciu biblioteki klienta magazynu](#executing-a-point-query-using-the-storage-client-library) i [pobieranie wielu jednostek przy użyciu LINQ](#retrieving-multiple-entities-using-linq).  
 
-Drugą opcją jest użycie **DynamicTableEntity** typu (zbiór właściwości) zamiast konkretny typ jednostki POCO (Ta opcja może również zwiększyć wydajność, ponieważ nie ma potrzeby do serializacji i deserializacji jednostki do typów .NET). Poniższy kod C# potencjalnie pobiera wielu jednostek o różnych typach z tabeli, ale zwraca wszystkie jednostki jako **DynamicTableEntity** wystąpień. Następnie używa **EntityType** właściwości, aby określić typ każdego obiektu:  
+Druga opcja to użycie typu **dynamictableentity lub** (zbiór właściwości) zamiast konkretnego typu jednostki poco (Ta opcja może również zwiększyć wydajność, ponieważ nie ma potrzeby serializacji i deserializacji jednostki do typów .NET). Poniższy C# kod potencjalnie pobiera wiele jednostek różnych typów z tabeli, ale zwraca wszystkie jednostki jako wystąpienia **dynamictableentity lub** . Następnie używa właściwości **EntityType** do określenia typu każdej jednostki:  
 
 ```csharp
 string filter = TableQuery.CombineFilters(
@@ -1344,9 +1344,9 @@ if (e.Properties.TryGetValue("EntityType", out entityTypeProperty))
 }  
 ```
 
-Aby uzyskać inne właściwości, należy użyć **TryGetValue** metody **właściwości** właściwość **DynamicTableEntity** klasy.  
+Aby pobrać inne właściwości, należy użyć metody **TryGetValue** we właściwości **Właściwości** klasy **dynamictableentity lub** .  
 
-Trzecia opcja to się połączyć przy użyciu **DynamicTableEntity** typu i **EntityResolver** wystąpienia. Dzięki temu można prowadzić do wielu typów POCO tego samego zapytania. W tym przykładzie **EntityResolver** używa delegata **EntityType** właściwości do rozróżniania między dwoma rodzajami jednostki, która zwraca kwerendy. **Rozwiązać** metoda używa **rozpoznawania** delegata, aby rozwiązać **DynamicTableEntity** wystąpień do **TableEntity** wystąpień.  
+Trzecia opcja polega na połączeniu przy użyciu typu **dynamictableentity lub** i wystąpienia **EntityResolver** . Pozwala to na rozpoznanie wielu typów POCO w tym samym zapytaniu. W tym przykładzie delegat **EntityResolver** używa właściwości **EntityType** do rozróżnienia między dwoma typami jednostek, które zwraca zapytanie. Metoda **Rozwiązuj** używa delegata programu **rozpoznawania nazw** do rozwiązywania wystąpień **dynamictableentity lub** z wystąpieniami **klasy tableentity** .  
 
 ```csharp
 EntityResolver<TableEntity> resolver = (pk, rk, ts, props, etag) =>
@@ -1390,8 +1390,8 @@ foreach (var e in entities)
 }  
 ```
 
-#### <a name="modifying-heterogeneous-entity-types"></a>Modyfikowanie jednostek heterogenicznych typów
-Nie trzeba znać typ jednostki, aby go usunąć, i zawsze znasz typ jednostki po wstawieniu go. Można jednak użyć **DynamicTableEntity** typu, aby zaktualizować jednostkę, nie wiedząc o tym jej typ i bez użycia klasą jednostki POCO. Poniższy przykładowy kod umożliwia pobranie pojedynczej jednostki i sprawdza **EmployeeCount** istnieje właściwość przed aktualizacją.  
+#### <a name="modifying-heterogeneous-entity-types"></a>Modyfikowanie typów jednostek heterogenicznych
+Nie musisz znać typu jednostki, aby ją usunąć, i zawsze znasz typ jednostki podczas jej wstawiania. Można jednak użyć typu **dynamictableentity lub** do zaktualizowania jednostki bez znajomości jej typu i bez użycia klasy jednostki poco. Poniższy przykład kodu pobiera pojedynczą jednostkę i sprawdza, czy właściwość **EmployeeCount** istnieje przed jej aktualizacją.  
 
 ```csharp
 TableResult result =
@@ -1409,24 +1409,24 @@ countProperty.Int32Value += 1;
 employeeTable.Execute(TableOperation.Merge(department));  
 ```
 
-### <a name="controlling-access-with-shared-access-signatures"></a>Kontrolowanie dostępu przy użyciu sygnatury dostępu współdzielonego
-Tokeny sygnatury dostępu współdzielonego (SAS) można użyć, aby umożliwić aplikacjom klienckim zmodyfikować (i wykonywanie zapytań) jednostek tablic bezpośrednio, bez konieczności uwierzytelniania bezpośrednio z usługą table. Zwykle istnieją trzy główne zalety za pomocą sygnatury dostępu Współdzielonego w Twojej aplikacji:  
+### <a name="controlling-access-with-shared-access-signatures"></a>Kontrolowanie dostępu za pomocą sygnatur dostępu współdzielonego
+Można użyć tokenów sygnatury dostępu współdzielonego (SAS), aby umożliwić aplikacjom klienckim modyfikowanie (i zapytanie) jednostek tabeli bezpośrednio bez konieczności uwierzytelniania bezpośrednio w usłudze Table Service. Zazwyczaj istnieją trzy główne korzyści związane z używaniem sygnatury dostępu współdzielonego w aplikacji:  
 
-* Nie trzeba rozpowszechniać klucz konta magazynu, platformę niezabezpieczone (na przykład urządzenie przenośne) w celu umożliwienia tego urządzenia do dostępu i modyfikowania obiektów w usłudze Table service.  
-* Można odciążyć niektóre czynności, które role sieć web i proces roboczy wykonywania związanych z zarządzaniem jednostek na urządzeniach klienckich, takich jak na komputerach użytkowników końcowych i urządzeniach przenośnych.  
-* Możesz przypisać ograniczone i czas ograniczony zestaw uprawnień do klienta (na przykład zezwalając na dostęp tylko do odczytu, do określonych zasobów).  
+* Nie jest konieczne dystrybuowanie klucza konta magazynu do niezabezpieczonej platformy (na przykład urządzenia przenośnego) w celu umożliwienia temu urządzeniu dostępu do jednostek w Table service i modyfikowania ich.  
+* Można odciążyć część pracy wykonywanej przez role sieci Web i proces roboczy w celu zarządzania jednostkami na urządzeniach klienckich, takich jak komputery użytkowników końcowych i urządzenia przenośne.  
+* Do klienta można przypisać ograniczony i bezterminowy zestaw uprawnień (na przykład Zezwalanie na dostęp tylko do odczytu do określonych zasobów).  
 
-Aby uzyskać więcej informacji na temat używania tokenów sygnatur dostępu Współdzielonego z usługą tabeli, zobacz [przy użyciu dostępu współdzielonego Signatures (SAS)](../storage/common/storage-dotnet-shared-access-signature-part-1.md).  
+Aby uzyskać więcej informacji na temat używania tokenów SAS z Table service, zobacz [using Shared Access Signatures (SAS)](../storage/common/storage-dotnet-shared-access-signature-part-1.md).  
 
-Jednakże nadal należy wygenerować tokeny sygnatur dostępu Współdzielonego, określającymi udzielenie aplikacji klienckiej jednostek w usłudze table service: to zrobić w środowisku zawierającym bezpiecznego dostępu do kluczy konta magazynu. Zazwyczaj używasz rola sieć web lub procesu roboczego do generowania tokenów sygnatur dostępu Współdzielonego i dostarczaj je na potrzeby aplikacji klienckich, które muszą mieć dostęp do jednostek. Ponieważ jest nadal obciążenie związane z generowania i dostarczania tokeny sygnatur dostępu Współdzielonego do klientów, należy rozważyć, jak najlepiej Aby zmniejszyć to obciążenie, szczególnie w przypadku dużej liczby scenariuszy.  
+Należy jednak nadal generować tokeny sygnatury dostępu współdzielonego, które przydzielą aplikację kliencką jednostkom w usłudze Table Service: Zrób to w środowisku, które ma bezpieczny dostęp do kluczy konta magazynu. Zwykle w celu wygenerowania tokenów SAS i dostarczenia ich do aplikacji klienckich, które wymagają dostępu do jednostek, należy użyć roli sieci Web lub procesu roboczego. Ze względu na to, że nadal występują obciążenia związane z generowaniem i dostarczaniem tokenów SAS klientom, należy wziąć pod uwagę, jak najlepiej zredukować ten koszt, szczególnie w scenariuszach o dużej pojemności.  
 
-Istnieje możliwość wygenerowania tokenu sygnatury dostępu Współdzielonego, która udziela dostępu do podzestawu jednostek w tabeli. Domyślnie, możesz utworzyć token sygnatury dostępu Współdzielonego dla całej tabeli, jednak istnieje również możliwość określenia, czy token sygnatury dostępu Współdzielonego udzielić dostępu do jednej szeroką gamę **PartitionKey** wartości lub zakres **PartitionKey** i **RowKey** wartości. Możesz wybrać do generowania tokenów sygnatur dostępu Współdzielonego dla poszczególnych użytkowników systemu w taki sposób, że każdy użytkownik tokenu sygnatury dostępu Współdzielonego tylko umożliwia im dostęp do ich własnych jednostek w usłudze table service.  
+Istnieje możliwość wygenerowania tokenu SAS, który udziela dostępu do podzbioru jednostek w tabeli. Domyślnie można utworzyć token sygnatury dostępu współdzielonego dla całej tabeli, ale można również określić, że token SAS udziela dostępu do zakresu wartości **PartitionKey** lub zakresu wartości **PartitionKey** i **RowKey** . Można generować tokeny sygnatury dostępu współdzielonego dla poszczególnych użytkowników systemu w taki sposób, aby token SAS każdego użytkownika zezwalał na dostęp do ich własnych jednostek w usłudze Table Service.  
 
 ### <a name="asynchronous-and-parallel-operations"></a>Operacje asynchroniczne i równoległe
-Podana rozpraszania żądań na wielu partycjach możesz zwiększyć szybkość reakcji przepływność i klienta, za pomocą asynchronicznego lub równoległego zapytań.
-Na przykład Niewykluczone, że wystąpienia roli co najmniej dwóch procesu roboczego uzyskiwania dostępu do tabel równolegle. Możesz używać ról procesów roboczych indywidualnych, które odpowiada za określonych zestawów partycji lub po prostu ma wiele wystąpienia roli procesu roboczego, każdy mogli korzystać z wszystkich partycji w tabeli.  
+Pod warunkiem, że są rozłożone żądania na wielu partycjach, można zwiększyć przepływność i czas odpowiedzi klienta przy użyciu zapytań asynchronicznych lub równoległych.
+Na przykład może istnieć co najmniej dwa wystąpienia roli procesu roboczego, które uzyskują dostęp do tabel równolegle. Mogą istnieć poszczególne role procesów roboczych odpowiedzialne za określone zestawy partycji lub po prostu ma wiele wystąpień roli procesu roboczego, z których każdy może uzyskać dostęp do wszystkich partycji w tabeli.  
 
-W ramach wystąpienie klienta może zwiększyć przepływność, wykonując operacje magazynu asynchronicznie. Biblioteki klienta usługi Storage ułatwia pisanie zapytania asynchroniczne i modyfikacji. Na przykład możesz zacząć od metody synchronicznej, który pobiera wszystkie jednostki w partycji, jak pokazano w poniższym kodzie języka C#:  
+W ramach wystąpienia klienta można zwiększyć przepływność przez wykonywanie operacji magazynu asynchronicznie. Biblioteka klienta magazynu ułatwia pisanie asynchronicznych zapytań i modyfikacji. Na przykład możesz zacząć od metody synchronicznej, która pobiera wszystkie jednostki w partycji, jak pokazano w poniższym C# kodzie:  
 
 ```csharp
 private static void ManyEntitiesQuery(CloudTable employeeTable, string department)
@@ -1451,7 +1451,7 @@ private static void ManyEntitiesQuery(CloudTable employeeTable, string departmen
 }  
 ```
 
-Można łatwo modyfikować ten kod, tak aby zapytanie jest uruchamiane asynchronicznie, w następujący sposób:  
+Możesz łatwo zmodyfikować ten kod, aby zapytanie zostało uruchomione asynchronicznie w następujący sposób:  
 
 ```csharp
 private static async Task ManyEntitiesQueryAsync(CloudTable employeeTable, string department)
@@ -1475,16 +1475,16 @@ private static async Task ManyEntitiesQueryAsync(CloudTable employeeTable, strin
 }  
 ```
 
-W tym przykładzie asynchronicznych można wyświetlić następujące zmiany z wersji synchronicznego:  
+W tym przykładzie asynchronicznym można zobaczyć następujące zmiany w wersji synchronicznej:  
 
-* Podpis metody zawiera teraz **async** modyfikator i zwraca **zadań** wystąpienia.  
-* Zamiast wywoływać metodę **ExecuteSegmented** wywołuje metodę, aby pobrać wyniki, metoda teraz **ExecuteSegmentedAsync** metody i używa **await** modyfikatora Pobierz wyniki asynchronicznie.  
+* Sygnatura metody obejmuje teraz modyfikator **Async** i zwraca wystąpienie **zadania** .  
+* Zamiast wywoływania metody **ExecuteSegmented** w celu pobierania wyników metoda wywołuje teraz metodę **ExecuteSegmentedAsync** i używa modyfikatora **await** , aby pobrać wyniki asynchronicznie.  
 
-Aplikacja kliencka tę metodę można wywołać wiele razy (z różnymi wartościami dla **działu** parametru), a każda kwerenda zostanie uruchomiony w oddzielnym wątku.  
+Aplikacja kliencka może wywołać tę metodę wiele razy (z różnymi wartościami dla parametru **działu** ), a każde zapytanie zostanie uruchomione w osobnym wątku.  
 
-Nie ma wersji asynchronicznej z **Execute** method in Class metoda **TableQuery** klasy, ponieważ **IEnumerable** interfejs nie obsługuje asynchroniczne wyliczenia.  
+Brak asynchronicznej wersji metody **Execute** w klasie **TableQuery** , ponieważ interfejs **IEnumerable** nie obsługuje asynchronicznego wyliczania.  
 
-Można także wstawianie, aktualizowanie i usuwanie jednostek asynchronicznie. Poniższy przykład C# pokazuje prosty, synchronicznej metody Wstawianie lub zastępowanie jednostki pracowników:  
+Można także wstawiać, aktualizować i usuwać jednostki asynchronicznie. Poniższy C# przykład pokazuje prostą, synchroniczną metodę wstawiania lub zastępowania jednostki pracownika:  
 
 ```csharp
 private static void SimpleEmployeeUpsert(CloudTable employeeTable,
@@ -1496,7 +1496,7 @@ private static void SimpleEmployeeUpsert(CloudTable employeeTable,
 }  
 ```
 
-Można łatwo modyfikować ten kod, tak aby aktualizacja jest uruchamiane asynchronicznie, w następujący sposób:  
+Możesz łatwo zmodyfikować ten kod, aby aktualizacja działała asynchronicznie w następujący sposób:  
 
 ```csharp
 private static async Task SimpleEmployeeUpsertAsync(CloudTable employeeTable,
@@ -1508,17 +1508,17 @@ private static async Task SimpleEmployeeUpsertAsync(CloudTable employeeTable,
 }  
 ```
 
-W tym przykładzie asynchronicznych można wyświetlić następujące zmiany z wersji synchronicznego:  
+W tym przykładzie asynchronicznym można zobaczyć następujące zmiany w wersji synchronicznej:  
 
-* Podpis metody zawiera teraz **async** modyfikator i zwraca **zadań** wystąpienia.  
-* Zamiast wywoływać metodę **Execute** wywołuje metodę, aby zaktualizować jednostki, metoda teraz **ExecuteAsync** metody i używa **await** modyfikator do pobierania wyników asynchronicznie.  
+* Sygnatura metody obejmuje teraz modyfikator **Async** i zwraca wystąpienie **zadania** .  
+* Zamiast wywoływania metody **Execute** w celu zaktualizowania jednostki, metoda wywołuje teraz metodę **wywoływanie ExecuteAsync** i używa modyfikatora **await** do pobierania wyników asynchronicznie.  
 
-Aplikacja kliencka można wywołać wiele metod asynchronicznych, takich jak ta, a następnie uruchomi każdego wywołania metody w oddzielnym wątku.  
+Aplikacja kliencka może wywoływać wiele metod asynchronicznych, takich jak ta, i każde wywołanie metody zostanie uruchomione w osobnym wątku.  
 
-### <a name="credits"></a>Napisy końcowe
-Chcielibyśmy podziękować następujących członków zespołu platformy Azure dla swojego wkładu: Dominic Betts, firma Jason Hogg, Jean Ghanem, Jai Haridas, Jeff Irwin, i vamshidhar Kommineni, Vinay Shah i Serdar Ozler także Tom Hollander z DX firmy Microsoft. 
+### <a name="credits"></a>Środki
+Chcemy podziękowanie następującym członkom zespołu platformy Azure w celu ich udostępnienia: Dominic Betts, Jason Hogg, Jean Ghanem, Jai Haridas, Jan Irwin, Vamshidhar Kommineni, Vinay Shah i Serdar Ozler, jak i Tomasz Hollander from Microsoft DX. 
 
-Chcielibyśmy także podziękować następujące MVPs firmy Microsoft dla swoich opinii podczas cykli przeglądu: Papirov Igora i Edward Bakker.
+Będziemy również podziękowanie następujące informacje na temat programu Microsoft MVP, aby uzyskać cenną opinię w ramach cyklu przeglądu: Igora Papirov i Edward Bakker.
 
 [1]: ./media/storage-table-design-guide/storage-table-design-IMAGE01.png
 [2]: ./media/storage-table-design-guide/storage-table-design-IMAGE02.png

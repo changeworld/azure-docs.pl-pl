@@ -5,14 +5,15 @@ author: qianw211
 manager: evansma
 ms.author: v-qiwe
 ms.service: marketplace
+ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 07/11/2019
-ms.openlocfilehash: b324d3b9dca710dca6f5f99ad50ce4d973a42d2a
-ms.sourcegitcommit: 10251d2a134c37c00f0ec10e0da4a3dffa436fb3
+ms.openlocfilehash: 2f8aa41604ac176181252fb7b30cdeb2f039d10f
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/13/2019
-ms.locfileid: "67869549"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73822873"
 ---
 # <a name="saas-fulfillment-apis---faq"></a>Interfejsy API realizacji SaaS — często zadawane pytania
 
@@ -38,7 +39,7 @@ Podczas subskrybowania oferty SaaS użytkownik wyraził zgodę na płatność za
 
 ### <a name="how-are-you-notified-when-a-user-subscribes-to-your-saas-offer"></a>Jak otrzymasz powiadomienie, gdy użytkownik zasubskrybuje ofertę usługi SaaS?
 
-Po zasubskrybowaniu oferty użytkownik platformy Azure może odnaleźć wszystkie oferty na platformie Azure i zarządzać nimi. Domyślnie stan nowo zasubskrybowanej oferty SaaS to "Provisioning **, oczekiwanie na realizację"** . W tym stanie użytkownikowi systemu Azure zostanie wyświetlony monit z akcją **"Skonfiguruj konto"** , aby przejść do środowiska zarządzania subskrypcją usługi SaaS w Azure Portal.
+Po zasubskrybowaniu oferty użytkownik platformy Azure może odnaleźć wszystkie oferty na platformie Azure i zarządzać nimi. Domyślnie stan nowo zasubskrybowanej oferty SaaS to **"Provisioning, oczekiwanie na realizację"** . W tym stanie użytkownikowi systemu Azure zostanie wyświetlony monit z akcją **"Skonfiguruj konto"** , aby przejść do środowiska zarządzania subskrypcją usługi SaaS w Azure Portal.
 
 Gdy użytkownik kliknie przycisk **"Konfiguruj konto"** , zostanie przekierowany do witryny sieci Web usługi SaaS. Adres URL, do którego się odnosi, jest dostarczany przez wydawcę w momencie opublikowania oferty. Ta strona jest nazywana stroną docelową wydawcy. Użytkownicy platformy Azure powinni mieć możliwość zalogowania się na SaaS stronie docelowej na podstawie istniejących poświadczeń usługi AAD na platformie Azure.
 
@@ -50,7 +51,7 @@ Zobacz dokument [interfejsu API realizacji SaaS](https://docs.microsoft.com/azur
 
 ### <a name="how-do-you-know-the-saas-offer-to-which-the-user-subscribes-in-azure"></a>Jak poznać ofertę SaaS, do której użytkownik subskrybuje platformę Azure?
 
-Odpowiedź do `Resolve` interfejsu API zawiera informacje o ofercie i planie powiązane z subskrypcją usługi SaaS.
+Odpowiedź do interfejsu API `Resolve` zawiera informacje o ofercie i planie skojarzone z subskrypcją usługi SaaS.
 
 ### <a name="how-can-the-azure-user-change-the-plan-associated-with-this-azure-subscription"></a>Jak użytkownik platformy Azure może zmienić plan skojarzony z tą subskrypcją platformy Azure?
 

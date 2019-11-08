@@ -1,5 +1,5 @@
 ---
-title: Skonfiguruj publiczny punkt końcowy Azure SQL Database wystąpienia zarządzanego
+title: Konfigurowanie publicznego wystąpienia zarządzanego przez punkt końcowy
 description: Dowiedz się, jak skonfigurować publiczny punkt końcowy dla wystąpienia zarządzanego
 services: sql-database
 ms.service: sql-database
@@ -10,12 +10,12 @@ author: srdan-bozovic-msft
 ms.author: srbozovi
 ms.reviewer: vanto, carlrab
 ms.date: 05/07/2019
-ms.openlocfilehash: 6f953e4c549619a30564bdb061e98761474174c3
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: a35176770a3100a288ad3da52cd89870e0110f63
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73687968"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73828030"
 ---
 # <a name="configure-public-endpoint-in-azure-sql-database-managed-instance"></a>Skonfiguruj publiczny punkt końcowy w Azure SQL Database wystąpieniu zarządzanym
 

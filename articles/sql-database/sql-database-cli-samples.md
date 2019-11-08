@@ -1,5 +1,5 @@
 ---
-title: Przykłady skryptów interfejsu wiersza polecenia platformy Azure dla SQL Database
+title: Przykłady skryptów interfejsu wiersza polecenia platformy Azure
 description: Przykłady skryptów interfejsu wiersza polecenia platformy Azure służących do tworzenia serwerów, pul elastycznych, baz danych i zapór usługi Azure SQL Database oraz zarządzania nimi.
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 02/03/2019
-ms.openlocfilehash: eab72474ed81e7be1decca57d7a2639455dd2cb5
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 023651d61f891c5a73eee234a14306add838bf98
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73691061"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73821842"
 ---
 # <a name="azure-cli-samples-for-azure-sql-database"></a>Przykłady interfejsu wiersza polecenia platformy Azure dla bazy danych Azure SQL Database
 

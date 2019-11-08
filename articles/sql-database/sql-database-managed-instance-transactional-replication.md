@@ -1,5 +1,5 @@
 ---
-title: Replikacja transakcyjna z Azure SQL Database "
+title: Replikacja transakcyjna
 description: Dowiedz się więcej o używaniu SQL Server replikacji transakcyjnej z pojedynczymi bazami danych w puli i wystąpieniami w Azure SQL Database.
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: MashaMSFT
 ms.author: mathoma
 ms.reviewer: carlrab
 ms.date: 02/08/2019
-ms.openlocfilehash: 016b4f2ee191443cf608af18d1be6a94b6d53a39
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: a57d1c85384204c26e75f7138b9514f2b3297bef
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73687830"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73823307"
 ---
 # <a name="transactional-replication-with-single-pooled-and-instance-databases-in-azure-sql-database"></a>Replikacja transakcyjna z pojedynczymi, w puli i wystąpieniami baz danych w Azure SQL Database
 
@@ -74,7 +74,7 @@ Istnieją różne [typy replikacji](https://docs.microsoft.com/sql/relational-da
 | &nbsp; | &nbsp; | &nbsp; |
 
   >[!NOTE]
-  > - Próba skonfigurowania replikacji przy użyciu starszej wersji może spowodować wystąpienie błędu MSSQL_REPL20084 (proces nie może połączyć się z subskrybentem) i MSSQ_REPL40532 (nie można otworzyć serwera \<nazwy > żądanym przez nazwę logowania. Logowanie nie powiodło się.
+  > - Próba skonfigurowania replikacji przy użyciu starszej wersji może spowodować wystąpienie błędu MSSQL_REPL20084 (proces nie mógł nawiązać połączenia z subskrybentem) i MSSQ_REPL40532 (nie można otworzyć \<nazwy serwera > żądanego podczas logowania. Logowanie nie powiodło się.
   > - Aby korzystać ze wszystkich funkcji Azure SQL Database, musisz używać najnowszych wersji narzędzi [SQL Server Management Studio (SSMS)](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms) i [SQL Server Data Tools (SSDT)](https://docs.microsoft.com/sql/ssdt/download-sql-server-data-tools-ssdt).
   
   ### <a name="supportability-matrix-for-instance-databases-and-on-premises-systems"></a>Macierz obsługi dla baz danych wystąpień i systemów lokalnych

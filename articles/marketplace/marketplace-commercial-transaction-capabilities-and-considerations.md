@@ -5,15 +5,16 @@ services: Azure, Marketplace, Compute, Storage, Networking, Transact Offer Type
 author: yijenj
 manager: nuno costa
 ms.service: marketplace
+ms.subservice: partnercenter-marketplace-publisher
 ms.topic: article
 ms.date: 10/29/2018
 ms.author: pabutler
-ms.openlocfilehash: f6f409c42c7ffa5639315e71ff565f9c672e227c
-ms.sourcegitcommit: 32242bf7144c98a7d357712e75b1aefcf93a40cc
+ms.openlocfilehash: 9aa41e63c275737874d57ba016e297a64f3eb124
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70279740"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73823016"
 ---
 # <a name="commercial-marketplace-transaction-capabilities-and-considerations"></a>Komercyjne możliwości i zagadnienia dotyczące transakcji w witrynie Marketplace
 
@@ -40,7 +41,7 @@ Oprócz opcji publikowania listy i wersji próbnej opcja publikacji Transact jes
 
 W przypadku korzystania z opcji publikowania Transact firma Microsoft umożliwia sprzedaż oprogramowania innych firm oraz wdrażanie niektórych typów ofert do subskrypcji platformy Azure klienta. W przypadku wybrania modelu rozliczeń i typu oferty Wydawca musi rozważyć rozliczenie opłat za infrastrukturę oraz własne opłaty za korzystanie z licencjonowania oprogramowania.
 
-Opcja publikowania Transact jest obecnie obsługiwana dla następujących typów ofert: Virtual Machines, aplikacje platformy Azure i aplikacje SaaS.
+Opcja publikowania Transact jest obecnie obsługiwana dla następujących typów ofert: Virtual Machines, aplikacji platformy Azure i aplikacji SaaS.
 
 
 ![[Obsługa transakcji w przedsiębiorstwie w portalu Azure Marketplace]](./media/marketplace-publishers-guide/Transact-enterprise-deals.png)
@@ -59,13 +60,13 @@ W przypadku aplikacji SaaS Wydawca musi uwzględnić opłaty za użycie infrastr
 
 W zależności od używanej opcji transakcji można przedstawić opłaty za licencję na oprogramowanie wydawcy w następujący sposób:  
 
-* Bezpłatne: Brak opłat za licencje na oprogramowanie. 
+* Bezpłatna: Brak opłat za licencje na oprogramowanie. 
 
-* Bring your own license (BYOL): Wszelkie stosowne opłaty za licencje na oprogramowanie są zarządzane bezpośrednio przez wydawcę i klienta. Firma Microsoft przechodzi wyłącznie przez opłaty za użycie infrastruktury platformy Azure. (Tylko aplikacje dla Virtual Machines i platformy Azure).
+* Bring your own license (BYOL): wszelkie stosowne opłaty za licencje na oprogramowanie są zarządzane bezpośrednio przez wydawcę i klienta. Firma Microsoft przechodzi wyłącznie przez opłaty za użycie infrastruktury platformy Azure. (Tylko aplikacje dla Virtual Machines i platformy Azure).
 
-* Płatność zgodnie z rzeczywistym użyciem: Opłaty za licencję na oprogramowanie są prezentowane jako stawka cenowa za godzinę (vCPU) na podstawie używanej infrastruktury platformy Azure. Dotyczy to tylko aplikacji Virtual Machines i platformy Azure.
+* Płatność zgodnie z rzeczywistym użyciem: opłaty za licencje na oprogramowanie są prezentowane jako stawka cenowa za godzinę (vCPU) na podstawie używanej infrastruktury platformy Azure. Dotyczy to tylko aplikacji Virtual Machines i platformy Azure.
 
-* • Cennik subskrypcji: Opłaty za licencję na oprogramowanie są prezentowane jako opłata miesięczna lub roczna. jest naliczana cena cykliczna jako stała stawka lub za stanowisko. Dotyczy to tylko aplikacji SaaS i aplikacji platformy Azure zarządzanych przez aplikacje.
+* • Cennik subskrypcji: opłaty za licencje na oprogramowanie są prezentowane jako comiesięczne lub roczne, opłata cykliczna jest naliczana jako stała stawka lub za stanowisko. Dotyczy to tylko aplikacji SaaS i aplikacji zarządzanych przez aplikacje platformy Azure.
 
 * Bezpłatna wersja próbna oprogramowania: Brak opłat za licencje na oprogramowanie przez 30 dni lub 90 dni.
 
@@ -93,7 +94,7 @@ Ta opcja umożliwia korzystanie z wyższych lub niższych cen niż publicznie do
 
 ### <a name="examples"></a>Przykłady
 
-**Pay-As-You-Go** 
+**Płatność zgodnie z rzeczywistym użyciem** 
 
 * Jeśli włączysz opcję płatność zgodnie z rzeczywistym użyciem, będziesz mieć poniższą strukturę kosztów.
 
@@ -141,8 +142,8 @@ Ta opcja musi być skonfigurowana do sprzedaży za pomocą firmy Microsoft i mo�
 
 |Rachunki firmy Microsoft  | $100,00 miesięcznie  |
 |---------|---------|
-|Firma Microsoft płaci 80% kosztu licencji <br> \*Firma Microsoft płaci 90% kosztu licencji dla wszystkich zakwalifikowanych aplikacji SaaS   |   $80,00 miesięcznie <br> \*$90,00 miesięcznie    |
-|Firma Microsoft utrzymuje 20% kosztów licencji <br> \*Firma Microsoft utrzymuje 10% kosztów licencji na wszystkie kwalifikowane aplikacje SaaS.  |  $20,00 miesięcznie <br> \*$10,00     |
+|Firma Microsoft płaci 80% kosztu licencji <br> \* firma Microsoft płaci 90% kosztu licencji dla zakwalifikowanych aplikacji SaaS   |   $80,00 miesięcznie <br> \* $90,00 miesięcznie    |
+|Firma Microsoft utrzymuje 20% kosztów licencji <br> \* firma Microsoft przechowuje 10% kosztu licencji dla zakwalifikowanych aplikacji SaaS.  |  $20,00 miesięcznie <br> \* $10,00     |
 
 * **Zmniejszona opłata za usługę Marketplace:** W przypadku niektórych produktów SaaS opublikowanych na naszej komercyjnej witrynie Marketplace firma Microsoft obniży opłatę za usługę Marketplace z 20% (zgodnie z opisem w umowie Microsoft Publisher) do 10%.  Aby produkt mógł kwalifikować się, co najmniej jeden z Twoich produktów musi być wyznaczone przez firmę Microsoft jako gotowy do użycia w przypadku współsprzedażowego adresu IP lub do współsprzedawanego adresu IP. Aby otrzymać obniżoną opłatę za usługę Marketplace w danym miesiącu, należy spełnić co najmniej pięć (5) dni roboczych przed końcem poprzedniego miesiąca kalendarzowego. Zmniejszona opłata za usługę Marketplace nie będzie stosowana do maszyn wirtualnych, zarządzanych aplikacji ani innych produktów udostępnianych za pośrednictwem komercyjnej witryny Marketplace.  Ta zmniejszona opłata za usługę Marketplace będzie dostępna dla kwalifikujących się ofert, a opłaty licencyjne zebrane przez firmę Microsoft od 1 maja 2019 do 30 czerwca 2020.  Po upływie tego czasu opłata za usługę portalu Marketplace powróci do normalnej kwoty.
 
@@ -233,11 +234,11 @@ Opcja publikowania Transact jest dostępna tylko dla następujących typów ofer
 
 Wybierz opcję bezpłatna, Przenieś własną licencję lub model z płatność zgodnie z rzeczywistym użyciem, a także jako jednostki SKU zdefiniowane na poziomie oferty. Na rachunku na platformie Azure klienta firma Microsoft przedstawia opłaty za licencję na oprogramowanie wydawcy niezależnie od opłat związanych z infrastrukturą platformy Azure. Opłaty za infrastrukturę platformy Azure są oparte na oprogramowaniu wydawcy.
 
-**Aplikacje platformy Azure: Szablon rozwiązania lub zarządzana aplikacja** 
+**Aplikacje platformy Azure: szablon rozwiązania lub zarządzana aplikacja** 
 
 Należy udostępnić co najmniej jedną maszynę wirtualną i pobrać sumę cen maszyn wirtualnych. W przypadku aplikacji zarządzanych w ramach jednego planu można wybrać jako model cenowy miesięczną subskrypcję ryczałtową, a zamiast cennika maszyny wirtualnej. W niektórych przypadkach opłaty za użycie infrastruktury platformy Azure są przesyłane do klienta oddzielnie od opłat za licencje na oprogramowanie, ale w tej samej zestawie rozliczeń. Jednak w przypadku skonfigurowania oferty zarządzanej aplikacji dla dostawców niezależnego dostawcy oprogramowania zasoby platformy Azure są rozliczane dla wydawcy, a klient otrzymuje stałą opłatę obejmującą koszt infrastruktury, licencje na oprogramowanie i usługi zarządzania.
 
 ## <a name="next-steps"></a>Następne kroki
 
-* Należy przejrzeć wymagania kwalifikacyjne w opcje publikowania przez sekcję typ oferty w celu sfinalizowania wyborem i konfiguracją, oferty.
-* Przejrzyj wzorców publikowania w sklepie przykłady w sposób swoje rozwiązanie mapowania typu oferty i konfiguracji.
+* Zapoznaj się z wymaganiami dotyczącymi kwalifikacji w sekcji Opcje publikowania według typu oferty, aby zakończyć wybór i konfigurację oferty.
+* Zapoznaj się z wzorcem publikowania według witryny sklepu, aby zapoznać się z przykładami dotyczącymi sposobu mapowania rozwiązania na typ oferty i konfigurację.

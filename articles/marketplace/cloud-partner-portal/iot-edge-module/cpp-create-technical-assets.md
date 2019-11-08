@@ -1,141 +1,142 @@
 ---
-title: Utwórz moduł usługi Azure IoT Edge, zasoby techniczne | Portal Azure Marketplace
-description: Utwórz zasoby techniczne dla modułu usługi IoT Edge.
+title: Utwórz zasoby techniczne modułu Azure IoT Edge | Portal Azure Marketplace
+description: Utwórz zasoby techniczne dla modułu IoT Edge.
 services: Azure, Marketplace, Cloud Partner Portal,
 author: dan-wesley
 ms.service: marketplace
+ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 10/18/2018
 ms.author: pabutler
-ms.openlocfilehash: 9f40e2272388e6f467b8c3d0b01a6639bf652e80
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 57bc2f789836a7d3453004cdacc59029c4b24129
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64942386"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73827618"
 ---
-# <a name="prepare-your-iot-edge-module-technical-assets"></a>Przygotowanie modułu usługi IoT Edge, zasoby techniczne
+# <a name="prepare-your-iot-edge-module-technical-assets"></a>Przygotuj zasoby techniczne modułu IoT Edge
 
-W tym artykule opisano wymagania, które zasoby techniczne moduł usługi IoT Edge, które muszą spełniać zanim został opublikowany w witrynie Azure Marketplace.
+W tym artykule opisano wymagania, które zasoby techniczne modułu IoT Edge muszą spełnić przed opublikowaniem w witrynie Azure Marketplace.
 
-## <a name="understanding-iot-edge-modules-and-getting-started"></a>Opis modułów usługi IoT Edge i wprowadzenie
+## <a name="understanding-iot-edge-modules-and-getting-started"></a>Zrozumienie IoT Edge modułów i wprowadzenie
 
-Moduł usługi IoT Edge to kontener zgodnego z platformą Docker, który wprowadził do uruchamiania na urządzeniu usługi IoT Edge.
+Moduł IoT Edge jest kontenerem zgodnym z platformą Docker, który jest uruchamiany na urządzeniu IoT Edge.
 
-- Aby dowiedzieć się więcej na temat moduły usługi IoT Edge, zobacz [modułów Omówienie usługi Azure IoT Edge](https://docs.microsoft.com/azure/iot-edge/iot-edge-modules).
-- Wprowadzenie do tworzenia modułu usługi IoT Edge, zobacz [wymagania i narzędzia do tworzenia modułów usługi IoT Edge](https://docs.microsoft.com/azure/iot-edge/module-development).
+- Aby dowiedzieć się więcej na temat modułów IoT Edge, zobacz [Opis modułów Azure IoT Edge](https://docs.microsoft.com/azure/iot-edge/iot-edge-modules).
+- Aby rozpocząć pracę z rozwojem modułu IoT Edge, zobacz temat [wymagania i narzędzia do opracowywania modułów IoT Edge](https://docs.microsoft.com/azure/iot-edge/module-development).
 
 ## <a name="technical-requirements"></a>Wymagania techniczne
 
-Muszą być spełnione następujące wymagania techniczne w kolejności dla modułu usługi IoT Edge certyfikowane i opublikowania w portalu Azure Marketplace.
+Aby moduł IoT Edge mógł być certyfikowany i publikowany w portalu Azure Marketplace, muszą zostać spełnione następujące wymagania techniczne.
 
 ### <a name="platform-support"></a>Obsługa platform
 
-Moduł usługi IoT Edge musi być spełniony jeden z następujących opcji platformy.
+Moduł IoT Edge musi obsługiwać jedną z następujących opcji platformy.
 
-#### <a name="tier-1-platforms-supported-by-iot-edge"></a>Warstwa 1 wsparcia platform obsługiwanych przez usługi IoT Edge
+#### <a name="tier-1-platforms-supported-by-iot-edge"></a>Platformy warstwy 1 obsługiwane przez IoT Edge
 
-Obsługa wszystkich platform warstwy 1 obsługiwanych przez usługi IoT Edge (zarejestrowane w [pomocy technicznej usługi Azure IoT Edge](https://docs.microsoft.com/azure/iot-edge/support)). Zaleca się tej opcji, ponieważ zapewnia lepsze środowisko klienta. Moduły spełniające te kryteria będą pokazywane. Moduł przy użyciu tej opcji platformy musi:
+Obsługa wszystkich platform warstwy 1 obsługiwanych przez IoT Edge (zgodnie z zapisaniem w [Azure IoT Edge support](https://docs.microsoft.com/azure/iot-edge/support)). Zalecamy użycie tej opcji, ponieważ oferuje ona lepszy komfort obsługi klienta. Zostaną zaprezentowane moduły spełniające te kryteria. Moduł korzystający z tej opcji platformy musi:
 
-- Podaj `latest` znacznikiem i wersji (na przykład `1.0.1`) manifestu tagi utworzonych za pomocą usługi GitHub, które są [narzędzia manifestu](https://github.com/estesp/manifest-tool).
-- Użyj [kartę Marketplace](./cpp-marketplace-tab.md) dodać link do [zgodne usługi IoT Edge certyfikowanych urządzeń](https://aka.ms/iot-edge-certified). Ten link jest rozpoznawana jako `https://aka.ms/iot-edge-certified`, witryny sieci Web, gdzie klienci mogą przeglądać lub wyszukiwać certyfikowanych urządzeń. Ta witryna sieci Web jest także znana jako [IoT Edge z certyfikatem platformy Azure](https://catalog.azureiotsolutions.com/) — wykaz urządzeń.
+- Podaj tag `latest` i tag wersji (na przykład `1.0.1`), które są tagami manifestu utworzonymi przy użyciu [narzędzia manifestu](https://github.com/estesp/manifest-tool)GitHub.
+- Skorzystaj z [karty Marketplace](./cpp-marketplace-tab.md) , aby dodać łącze do [zgodnego IoT Edge certyfikowanych urządzeń](https://aka.ms/iot-edge-certified). Ten link jest rozpoznawany jako `https://aka.ms/iot-edge-certified`, witryna sieci Web, w której klienci mogą przeglądać lub wyszukiwać certyfikowane urządzenia. Ta witryna sieci Web jest również znana jako [Azure IoT Edge wykaz certyfikowanych](https://catalog.azureiotsolutions.com/) urządzeń.
 
-#### <a name="a-subset-of-tier-1-platforms-supported-by-iot-edge"></a>Podzbiór platformach warstwy 1 obsługiwanych przez usługi IoT Edge
+#### <a name="a-subset-of-tier-1-platforms-supported-by-iot-edge"></a>Podzbiór platform warstwy 1 obsługiwanych przez IoT Edge
   
-Obsługuje podzbiór (co najmniej jeden) platformach warstwy 1 obsługiwanych przez usługi IoT Edge (zarejestrowane w [pomocy technicznej usługi Azure IoT Edge](https://docs.microsoft.com/azure/iot-edge/support)). Moduł przy użyciu tej opcji platformy musi:
+Obsługa podzestawu (co najmniej jednej) platform warstwy 1 obsługiwanej przez IoT Edge (zgodnie z zarejestrowaniem w [Azure IoT Edge support](https://docs.microsoft.com/azure/iot-edge/support)). Moduł korzystający z tej opcji platformy musi:
 
-- Podaj `latest` znacznikiem i wersji (na przykład `1.0.1`) manifestu tagi utworzonych za pomocą usługi GitHub, które są [narzędzia manifestu](https://github.com/estesp/manifest-tool) Jeśli więcej niż jedną platformę jest obsługiwana. Tagi manifestu są opcjonalne tylko, gdy jedna platforma jest obsługiwana.
-- Użyj [kartę Marketplace](./cpp-marketplace-tab.md) się podanie linku do co najmniej jedno urządzenie usługi IoT Edge w [IoT Edge z certyfikatem platformy Azure](https://catalog.azureiotsolutions.com/) — wykaz urządzeń.
+- Podaj tag `latest` i tag wersji (na przykład `1.0.1`), które są tagami manifestu utworzonymi przy użyciu [narzędzia manifestu](https://github.com/estesp/manifest-tool) GitHub, jeśli obsługiwana jest więcej niż jedna platforma. Tagi manifestu są opcjonalne tylko wtedy, gdy jedna platforma jest obsługiwana.
+- Skorzystaj z [karty Marketplace](./cpp-marketplace-tab.md) , aby udostępnić link do co najmniej jednego urządzenia IoT Edge w katalogu [Azure IoT Edge certyfikowane](https://catalog.azureiotsolutions.com/) urządzenia.
 
 ### <a name="device-dimensions"></a>Wymiary urządzenia
 
-Wymiary modułu usługi IoT Edge (Procesora/pamięci RAM/Storage/GPU/itp.) na urządzeniach usługi IoT Edge docelowych musi spełniać następujące wymagania:
+Wymiary modułu IoT Edge (procesor CPU/pamięć RAM/magazyn/procesor GPU/itp.) na urządzeniach przeznaczonych IoT Edge muszą spełniać następujące wymagania:
 
-- Moduł musi **działają z co najmniej jeden certyfikat usługi IoT Edge** urządzenia w [IoT Edge z certyfikatem platformy Azure](https://catalog.azureiotsolutions.com/) — wykaz urządzeń.
-- **Minimalne wymagania sprzętowe** musi zostać udokumentowana jako ostatni akapit w opisie oferty (w obszarze [kartę Marketplace](./cpp-marketplace-tab.md)). Opcjonalnie możesz także wyświetlić listę zalecane wymagania sprzętowe jeśli różnią się znacznie. Na przykład dodaj następującą sekcję na końcu opis oferty:
+- Moduł musi **współpracować z co najmniej jednym IoT Edge certyfikowanym** urządzeniem w katalogu [Azure IoT Edge certyfikowanych](https://catalog.azureiotsolutions.com/) urządzeń.
+- **Minimalne wymagania sprzętowe** muszą być udokumentowane jako ostatni akapit w opisie oferty (na [karcie Marketplace](./cpp-marketplace-tab.md)). Opcjonalnie można również wyświetlić zalecane wymagania sprzętowe, jeśli różnią się one znacznie. Na przykład Dodaj następującą sekcję na końcu opisu oferty:
 
   ```html
     <p><u>Minimum hardware requirements:</u> Linux x64 and arm32  OS, 1GB of RAM, 500 Mb of storage</p>
   ```
 
-### <a name="configuration"></a>Konfigurowanie
+### <a name="configuration"></a>Konfiguracja
 
-Zawiera on również domyślne ustawienia konfiguracji, aby wdrożenie na urządzeniu usługi IoT Edge tak proste, jak to możliwe. Kontener może również obejmować SDK IoT Edge modułu celu umożliwienia komunikacji z Centrum IoT i edgeHub.
+Zawiera również domyślne ustawienia konfiguracji, które umożliwiają wdrożenie na urządzeniu IoT Edge, jak to możliwe. Kontener może również zawierać zestaw SDK modułu IoT Edge, aby umożliwić komunikację z edgeHub i IoT Hub.
 
 #### <a name="default-configuration"></a>Konfiguracja domyślna
 
-Moduły usługi IoT Edge, musi być w stanie uruchomić przy użyciu ustawień domyślnych w [jednostki SKU na karcie portalu Cloud Partner](./cpp-skus-tab.md). Dostępne są następujące ustawienia domyślne:
+Moduły IoT Edge muszą mieć możliwość uruchamiania z ustawieniami domyślnymi dostępnymi na [karcie jednostki SKU portalu Cloud partner](./cpp-skus-tab.md). Dostępne są następujące ustawienia domyślne:
 
-- Domyślne **trasy**
-- Domyślne **bliźniaczej reprezentacji żądane właściwości**
-- Domyślne **zmiennych środowiskowych**
-- Domyślne **CreateOptions, można żądań**
+- **Trasy** domyślne
+- Domyślne **Właściwości przędzy**
+- Domyślne **zmienne środowiskowe**
+- Domyślne **Opcje**
 
-W scenariuszu, gdzie wymagane dla wartości domyślnej parametru nie ma sensu (np. adres IP serwera klienta) Dodaj parametr z wartością domyślną. Ta wartość jest ujęta w nawiasy kwadratowe i napisane wielkimi literami. W tym przykładzie należy skonfigurować następującą zmienną środowiskową domyślne:
+W scenariuszu, w którym parametr wymagany dla wartości domyślnej nie ma sensu (na przykład adres IP serwera klienta), należy dodać parametr jako wartość domyślną. Ta wartość jest ujęta w nawiasy klamrowe i wielkie litery. W tym przykładzie skonfigurowano następującą domyślną zmienną środowiskową:
 
 ```
     ServerIPAddress = <MY_SERVER_IP_ADDRESS>
 ```
 
-#### <a name="configuration-documentation"></a>Dokumentacja konfiguracji
+#### <a name="configuration-documentation"></a>Dokumentacja dotycząca konfiguracji
 
-Wszystkie ustawienia konfiguracji modułu usługi IoT Edge, muszą być wyraźnie udokumentowane (jak korzystać z jego trasy, bliźniacza reprezentacja żądane właściwości, zmienne środowiskowe, CreateOptions, można żądań i tak dalej.) Podaj link do dokumentacji lub dokumentacji musi być częścią opis oferty/jednostki sku.
+Wszystkie ustawienia konfiguracji modułu IoT Edge muszą być jasno udokumentowane (jak używać tras, pożądanych właściwości, zmiennych środowiskowych, opcji i tak dalej). Podaj link do dokumentacji lub dokumentacja musi być częścią opisu oferty/jednostki SKU.
 
-### <a name="tags-and-versioning"></a>Znaczniki i przechowywania wersji
+### <a name="tags-and-versioning"></a>Znaczniki i przechowywanie wersji
 
-Musi umożliwiać klientom w łatwy sposób Wdrażaj modułu i automatycznie pobierać aktualizacje z witryny marketplace (w przypadku scenariusza dla deweloperów.) Również muszą być w stanie używać, i Zablokuj dokładnie wersji, które zostały przetestowane (w scenariuszu produkcji.)
+Klienci muszą być w stanie łatwo wdrożyć moduł i automatycznie pobierać aktualizacje z portalu Marketplace (w scenariuszu dla deweloperów). Muszą oni również mieć możliwość użycia i zablokowania dokładnej wersji, które zostały przetestowane (w scenariuszu produkcyjnym).
 
-Aby spełnić oczekiwania tych klientów i zostaną opublikowane w portalu marketplace, moduły usługi IoT Edge musi spełniać następujące wymagania:
+W celu spełnienia oczekiwań klientów i ich opublikowania w portalu Marketplace moduły IoT Edge muszą spełniać następujące wymagania:
 
-- Dołączenie manifestu `latest` tag, który wskazuje najnowszej wersji na wszystkich obsługiwanych platformach.
-- Tagi wersji musi być w postaci X.Y.Z, gdzie X, Y i Z są liczbami całkowitymi.
-- Obejmują tagu "wersja", takie jak `1.0.1`, który wskazuje na określonej wersji na wszystkich obsługiwanych platformach.
-- Nie aktualizuj tagi "wersja", takie jak `1.0.1`, ponieważ muszą być niezmienialne.
+- Dołącz tag `latest` manifestu, który wskazuje najnowszą wersję na wszystkich obsługiwanych platformach.
+- Tagi wersji muszą mieć postać X. Y. Z, gdzie X, Y i Z są liczbami całkowitymi.
+- Dołącz tag "Version", taki jak `1.0.1`, który wskazuje określoną wersję na wszystkich obsługiwanych platformach.
+- Nie należy aktualizować tagów "Version", takich jak `1.0.1`, ponieważ muszą one być niezmienne.
 
 >[!Note]
->Opcjonalnie, przechowywanie wersji może zawierać tagi "Uaktualnianie z wersji", takich jak `2.0` i `1.0`. Obejmuje to obsługę, obsługa wielu wersji głównych równolegle.
+>Opcjonalnie, przechowywanie wersji może obejmować Tagi "wersja stopniowa", takie jak `2.0` i `1.0`. Obsługuje to jednocześnie obsługę wielu głównych wersji.
 
 ### <a name="telemetry"></a>Telemetria
 
-Modułów przy użyciu zestawu SDK usługi IoT moduł musi równa identyfikator unikatowy moduł `PublisherId.OfferId.SkuId` celów telemetrii. Unikatowy identyfikator umożliwia w portalu Azure Marketplace zidentyfikować liczbę wystąpień modułu, które są uruchomione.
+Moduły korzystające z zestawu SDK modułu IoT muszą ustawić unikatowy identyfikator modułu, aby `PublisherId.OfferId.SkuId` na potrzeby telemetrii. Unikatowy identyfikator umożliwia korzystanie z portalu Azure Marketplace w celu zidentyfikowania liczby wystąpień modułów, które są uruchomione.
 
- Umożliwia ustawienie następujących metod z zestawami SDK IoT moduł `ProductInfo` do tego identyfikatora:
+ Użyj następujących metod z zestawów SDK modułu IoT, aby ustawić `ProductInfo` tego identyfikatora:
 
 - [C\#](https://docs.microsoft.com/dotnet/api/microsoft.azure.devices.client.deviceclient.productinfo?view=azure-dotnet#Microsoft_Azure_Devices_Client_DeviceClient_ProductInfo) 
 - [C](https://github.com/Azure/azure-iot-sdk-c/blob/master/doc/Iothub_sdk_options.md)
 - [Python](https://github.com/Azure/azure-iot-sdk-c/blob/master/doc/Iothub_sdk_options.md)
 - [Java](https://docs.microsoft.com/java/api/com.microsoft.azure.sdk.iot.device.productinfo?view=azure-java-stable)
 
-Dla modułów, które nie korzystają z zestawu SDK modułu IoT mniej dokładne informacje są dostępne za pośrednictwem portalu Cloud Partner, takie jak liczba plików do pobrania.
+W przypadku modułów, które nie używają zestawu SDK modułu IoT, mniej dokładne szczegółowe informacje są dostępne za pomocą portal Cloud Partner takich jak Liczba pobrań.
 
 ### <a name="security"></a>Bezpieczeństwo
 
-Moduły usługi IoT Edge musisz poprosić o najniższych uprawnieniach dostępu do hosta, jak to możliwe. [Uprzywilejowany modułów](https://docs.docker.com/engine/reference/run/#runtime-privilege-and-linux-capabilities) należy unikać.
+Moduły IoT Edge muszą od możliwie najmniejszych uprawnień uzyskać dostęp do hosta. Należy unikać [uprzywilejowanych modułów](https://docs.docker.com/engine/reference/run/#runtime-privilege-and-linux-capabilities) .
 
-### <a name="module-iot-sdk"></a>Moduł zestawu SDK usługi IoT
+### <a name="module-iot-sdk"></a>Zestaw SDK modułu IoT
 
-Łącznie z zestawu SDK usługi IoT moduł nie jest wymaganiem wstępnym dla certyfikacji. Jednak w tym Module zestawu SDK usługi IoT oferują lepsze środowisko użytkownika. Na przykład, aby obsługiwać routing lub wysyłanie komunikatów do chmury.
+Uwzględnienie zestawu SDK modułu IoT nie jest wymaganiem wstępnym certyfikacji. Jednak w tym zestaw SDK modułu IoT może zapewnić lepszy komfort pracy użytkowników. Na przykład w celu obsługi routingu lub wysyłania komunikatów do chmury.
 
-Zestaw SDK modułu IoT jest wymagany do Pobierz dane telemetryczne dotyczące liczby uruchomionych wystąpień modułu.
+Zestaw SDK modułu IoT jest wymagany do pobrania danych telemetrycznych dotyczących liczby uruchomionych wystąpień modułu.
 
 
-## <a name="recertification-process"></a>Certyfikacja procesu
+## <a name="recertification-process"></a>Proces recertyfikacji
 
 <!-- Add legal time windows-->
-Partnerzy otrzymasz powiadomienie zawsze wtedy, gdy istnieje istotną zmianę, która wpływa na ich moduły, takie jak:
+Partnerzy otrzymają powiadomienie, gdy istnieje istotna zmiana wpływająca na moduły, na przykład:
 
-- Warstwa 1 systemu operacyjnego/arch matryca obsługi replikacji serwera obsługiwanych przez usługi IoT Edge
-- Moduł IoT SDK
-- Środowisko uruchomieniowe usługi IoT Edge
-- Wytyczne dotyczące certyfikacji dla modułu usługi IoT Edge
+- Macierz obsługi systemu operacyjnego warstwy 1/Arch obsługiwana przez IoT Edge
+- Zestaw SDK modułu IoT
+- Środowisko uruchomieniowe IoT Edge
+- Wytyczne dotyczące certyfikacji modułu IoT Edge
 
-Partnerzy będą musieli zaktualizować ich modułów i ponownie certyfikując je przy użyciu narzędzia portalu Cloud Partner.
+Partnerzy będą musieli zaktualizować swoje moduły i zatwierdzili je za pomocą narzędzia portal Cloud Partner.
 
-## <a name="host-your-iot-edge-module-in-an-azure-container-registry"></a>Hostowanie modułu usługi IoT Edge w usługi Azure Container Registry
+## <a name="host-your-iot-edge-module-in-an-azure-container-registry"></a>Hostowanie modułu IoT Edge w Azure Container Registry
 
-Aby przekazać modułu usługi IoT Edge do portalu Cloud Partner, najpierw musisz hostować go w [usługi Azure Container Registry](https://azure.microsoft.com/services/container-registry/) (ACR). Moduł musi zawierać wszystkie tagi, które chcesz opublikować, w tym znaczniki obrazów odwołuje się tag manifestu.
+Aby przekazać moduł IoT Edge do portal Cloud Partner, musisz najpierw hostować go w [Azure Container Registry](https://azure.microsoft.com/services/container-registry/) (ACR). Moduł musi zawierać wszystkie Tagi, które mają zostać opublikowane, w tym Tagi obrazu, do których odwołuje się tag manifestu.
 
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
-- [Utwórz ofertę moduł usługi IoT Edge](./cpp-create-offer.md)
+- [Tworzenie oferty modułu IoT Edge](./cpp-create-offer.md)

@@ -1,5 +1,5 @@
 ---
-title: 'Wzorce SaaS z wieloma dzierżawcami — Azure SQL Database '
+title: Wzorce SaaS z wieloma dzierżawcami
 description: Zapoznaj się z wymaganiami i typowymi wzorcami architektury danych dla aplikacji bazy danych SaaS (Software as a Service), które działają w środowisku chmury platformy Azure.
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: MightyPen
 ms.author: genemi
 ms.reviewer: billgib, sstein
 ms.date: 01/25/2019
-ms.openlocfilehash: ecbcf2cdfea2714e46d0c9cff4066befabddeeb8
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: ad7bd660ee685b490fb79c7e63fd3c5fce557977
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73691930"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73822056"
 ---
 # <a name="multi-tenant-saas-database-tenancy-patterns"></a>Wzorce dzierżawy bazy danych SaaS z wieloma dzierżawcami
 
@@ -135,7 +135,7 @@ Ogólnie rzecz biorąc, wielodostępne bazy danych mają najniższy koszt dla ka
 
 Dwie zmiany modelu bazy danych z wieloma dzierżawcami zostały omówione w poniższej sekcji, dzięki czemu model wielodostępowy podzielonej na fragmenty jest najbardziej elastyczny i skalowalny.
 
-## <a name="f-multi-tenant-app-with-a-single-multi-tenant-database"></a>n. Aplikacja wielodostępna z jedną bazą danych z wieloma dzierżawcami
+## <a name="f-multi-tenant-app-with-a-single-multi-tenant-database"></a>N. Aplikacja wielodostępna z jedną bazą danych z wieloma dzierżawcami
 
 Najprostszy wzorzec bazy danych z wieloma dzierżawcami używa pojedynczej bazy danych do hostowania danych dla wszystkich dzierżawców.  Po dodaniu większej liczby dzierżawców baza danych jest skalowana z większą ilością pamięci masowej i zasobów obliczeniowych.  Skalowanie w górę może być konieczne, chociaż zawsze istnieje ostateczny limit skalowania.  Jednak długo przed osiągnięciem tego limitu baza danych będzie nieporęczny do zarządzania.
 

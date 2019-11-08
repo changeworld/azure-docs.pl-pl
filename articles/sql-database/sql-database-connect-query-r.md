@@ -1,5 +1,5 @@
 ---
-title: Używanie języka R z Machine Learning Services do wykonywania zapytań Azure SQL Database
+title: Używanie języka R z Machine Learning Services do wykonywania zapytań
 titleSuffix: Azure SQL Database Machine Learning Services (preview)
 description: W tym artykule pokazano, jak używać skryptu języka R z usługą Azure SQL Database Machine Learning Services do nawiązywania połączeń z bazą danych Azure SQL i wykonywania zapytań przy użyciu instrukcji języka Transact-SQL.
 services: sql-database
@@ -13,14 +13,14 @@ ms.author: garye
 ms.reviewer: davidph, carlrab
 manager: cgronlun
 ms.date: 05/29/2019
-ms.openlocfilehash: ff38346a9b3bd14db51383c116240b030d3ee42a
-ms.sourcegitcommit: f5cc71cbb9969c681a991aa4a39f1120571a6c2e
+ms.openlocfilehash: a54b538247f81ea3bb0ea70a2af374158bd9e2ff
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68514857"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73826971"
 ---
-# <a name="quickstart-use-r-with-machine-learning-services-to-query-an-azure-sql-database-preview"></a>Szybki start: Używanie języka R z Machine Learning Services do wykonywania zapytań w bazie danych Azure SQL Database (wersja zapoznawcza)
+# <a name="quickstart-use-r-with-machine-learning-services-to-query-an-azure-sql-database-preview"></a>Szybki Start: używanie języka R z Machine Learning Services do wykonywania zapytań w bazie danych Azure SQL Database (wersja zapoznawcza)
 
 Ten przewodnik Szybki Start przedstawia sposób używania [języka R](https://www.r-project.org/) z usługą Machine Learning Services do nawiązywania połączeń z bazą danych Azure SQL i używania instrukcji języka Transact-SQL do wykonywania zapytań dotyczących danych. Machine Learning Services to funkcja Azure SQL Database używana do wykonywania skryptów języka R w bazie danych. Aby uzyskać więcej informacji, zobacz [Azure SQL Database Machine Learning Services przy użyciu języka R (wersja zapoznawcza)](sql-database-machine-learning-services-overview.md).
 
@@ -47,11 +47,11 @@ Aby ukończyć ten przewodnik Szybki start, upewnij się, że dysponujesz nastę
 
   || Pojedyncza baza danych |
   |:--- |:--- |
-  | Create| [Portal](sql-database-single-database-get-started.md) |
+  | Tworzenie| [Portal](sql-database-single-database-get-started.md) |
   || [Interfejs wiersza polecenia](scripts/sql-database-create-and-configure-database-cli.md) |
   || [Program PowerShell](scripts/sql-database-create-and-configure-database-powershell.md) |
   | Konfigurowanie | [Reguła zapory bazująca na adresach IP na poziomie serwera](sql-database-server-level-firewall-rule.md) |
-  | Ładuj dane | Ładowanie bazy danych Adventure Works na potrzeby samouczka Szybki start |
+  | Ładowanie danych | Ładowanie bazy danych Adventure Works na potrzeby samouczka Szybki start |
   |||
 
   > [!NOTE]
@@ -80,11 +80,11 @@ Uzyskaj parametry połączenia potrzebne do nawiązania połączenia z bazą dan
 
 1. Otwórz program **SQL Server Management Studio** i nawiąż połączenie z usługą SQL Database.
 
-   Jeśli potrzebujesz pomocy przy nawiązywaniu połączenia [, zobacz Szybki Start: Używanie programu SQL Server Management Studio do nawiązywania połączenia i wykonywania zapytań dotyczących danych w bazie danych Azure SQL Database](sql-database-connect-query-ssms.md).
+   Jeśli potrzebujesz pomocy przy nawiązywaniu połączenia, zobacz [Szybki Start: użyj SQL Server Management Studio, aby nawiązać połączenie i wysłać zapytanie do bazy danych Azure SQL](sql-database-connect-query-ssms.md).
 
-1. Przekaż kompletny skrypt języka R do procedury składowanej [sp_execute_external_script](https://docs.microsoft.com/sql/relational-databases/system-stored-procedures/sp-execute-external-script-transact-sql) .
+1. Przekaż kompletny skrypt języka R do [sp_execute_external_script](https://docs.microsoft.com/sql/relational-databases/system-stored-procedures/sp-execute-external-script-transact-sql) procedury składowanej.
 
-   Skrypt jest przesyłany przez `@script` argument. Wszystkie elementy wewnątrz `@script` argumentu muszą być prawidłowym kodem R.
+   Skrypt jest przesyłany za pomocą argumentu `@script`. Wszystkie elementy wewnątrz argumentu `@script` muszą być prawidłowym kodem R.
    
    >[!IMPORTANT]
    >Kod w tym przykładzie używa przykładowych danych AdventureWorksLT, które można wybrać jako źródło podczas tworzenia bazy danych. Jeśli baza danych zawiera różne dane, w zapytaniu SELECT należy użyć tabel z własnej bazy danych. 
@@ -101,7 +101,7 @@ Uzyskaj parametry połączenia potrzebne do nawiązania połączenia z bazą dan
 
 ## <a name="run-the-code"></a>Uruchamianie kodu
 
-1. Wykonaj procedurę składowaną [sp_execute_external_script](https://docs.microsoft.com/sql/relational-databases/system-stored-procedures/sp-execute-external-script-transact-sql) .
+1. Wykonaj [sp_execute_external_script](https://docs.microsoft.com/sql/relational-databases/system-stored-procedures/sp-execute-external-script-transact-sql) procedury składowanej.
 
 1. Sprawdź, czy pierwsze 20 wierszy kategorii/produktu jest zwracanych w oknie **komunikaty** .
 

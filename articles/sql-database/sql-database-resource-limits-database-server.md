@@ -1,5 +1,5 @@
 ---
-title: Limity zasobów serwera Azure SQL Database
+title: Limity zasobów serwera
 description: Ten artykuł zawiera omówienie limitów zasobów serwera Azure SQL Database dla pojedynczych baz danych i pul elastycznych. Zawiera również informacje dotyczące tego, co się dzieje po osiągnięciu lub przekroczeniu limitów zasobów.
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: sashan,moslake,josack
 ms.date: 04/18/2019
-ms.openlocfilehash: b358e69df1df579e91a9098c120c7e6b4e3f2ead
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 907fc89c0d9af01865037f650c407edd97e96645
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73687483"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73821139"
 ---
 # <a name="sql-database-resource-limits-for-azure-sql-database-server"></a>Limity zasobów SQL Database dla serwera Azure SQL Database
 
@@ -88,7 +88,7 @@ Ponieważ rekordy dziennika są generowane, każda operacja jest oceniana i ocen
 
 Rzeczywiste stawki za generowanie dzienników nałożone w czasie wykonywania mogą również mieć wpływ na mechanizmy przesyłania opinii, tymczasowo zmniejszając dopuszczalne stawki dzienników, dzięki czemu system może być stabilny. Zarządzanie miejscem w pliku dziennika, unikanie uruchamiania w warunkach wolnego miejsca w dzienniku i mechanizmów replikacji grupy dostępności może tymczasowo obniżyć ogólne limity systemu. 
 
-Współczynnik dziennika: kształtowanie ruchu gubernatora jest przedstawiane przez następujące typy oczekiwania (uwidocznione w pliku [sys. DM _db_wait_stats](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-db-wait-stats-azure-sql-database) DMV):
+Współczynnik dziennika: kształtowanie ruchu gubernatora jest przedstawiane przy użyciu następujących typów oczekiwania (uwidocznionych w [tabeli sys. dm_db_wait_stats](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-db-wait-stats-azure-sql-database) DMV):
 
 | Typ oczekiwania | Uwagi |
 | :--- | :--- |

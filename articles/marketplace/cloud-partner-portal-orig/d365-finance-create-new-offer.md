@@ -4,15 +4,16 @@ description: Przestarzałe i połączone z odpowiednimi artykułami komputera; "
 services: Azure, Marketplace, Cloud Partner Portal,
 author: ChJenk
 ms.service: marketplace
+ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 09/18/2019
 ms.author: pabutler
-ms.openlocfilehash: 165406f2cf7ad6087febebdfdc67896527d23961
-ms.sourcegitcommit: 1c9858eef5557a864a769c0a386d3c36ffc93ce4
+ms.openlocfilehash: 3af4479bf12b68dffa711637b3513bb69e855e09
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71105587"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73820080"
 ---
 # <a name="how-to-create-your-new-microsoft-dynamics-365-business-central-offer"></a>Jak utworzyć nową ofertę Microsoft Dynamics 365 Business Central
 

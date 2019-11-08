@@ -8,12 +8,12 @@ ms.service: storage
 ms.subservice: blobs
 ms.topic: conceptual
 ms.reviewer: clausjor
-ms.openlocfilehash: 5ba2255cfe0d5c4220ec2215ac837649af1ba896
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 4593ee875f98e2c9f2f9406f8b9d4146e06a573d
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73521178"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73825443"
 ---
 # <a name="azure-blob-storage-hot-cool-and-archive-access-tiers"></a>Azure Blob Storage: warstwy dostępu gorąca, chłodna i archiwalna
 
@@ -59,7 +59,7 @@ Warstwa dostępu chłodna ma niższe koszty magazynowania i wyższe koszty dost�
 
 ## <a name="archive-access-tier"></a>Warstwa dostępu Archiwum
 
-Warstwa dostępu archiwalnego ma najniższy koszt magazynowania. Jednak ma wyższy koszt pobierania danych w porównaniu do warstw gorąca i chłodna. Pobieranie danych w warstwie archiwum może potrwać kilka godzin. Dane muszą znajdować się w warstwie archiwum przez co najmniej 180 dni lub podlegają opłacie za wczesne usunięcie.
+Warstwa dostępu archiwalnego ma najniższy koszt magazynowania. Jednak ma wyższy koszt pobierania danych w porównaniu do warstw gorąca i chłodna. Pobieranie danych w warstwie archiwum może potrwać kilka godzin. Dane muszą pozostać w warstwie archiwum przez co najmniej 180 dni lub podlegają opłacie za wczesne usunięcie.
 
 Gdy obiekt BLOB znajduje się w magazynie archiwum, dane obiektów BLOB są w trybie offline i nie można ich odczytywać, kopiować, zastępować ani modyfikować. Nie można wykonać migawek obiektu BLOB w magazynie archiwum. Jednak metadane obiektu BLOB pozostają w trybie online i są dostępne, umożliwiając wyświetlenie listy obiektów blob i jego właściwości. W przypadku obiektów BLOB w archiwum jedynymi prawidłowymi operacjami są GetBlobProperties, GetBlobMetadata, ListBlobs, SetBlobTier i DeleteBlob.
 

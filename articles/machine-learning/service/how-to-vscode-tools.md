@@ -1,5 +1,5 @@
 ---
-title: Używanie Visual Studio Code do uczenia maszynowego
+title: Azure Machine Learning w Visual Studio Code
 titleSuffix: Azure Machine Learning
 description: Dowiedz się, jak zainstalować Azure Machine Learning Visual Studio Code i utworzyć eksperyment w Azure Machine Learning.
 services: machine-learning
@@ -10,12 +10,12 @@ ms.author: jimgries
 author: greazer
 ms.date: 09/20/2019
 ms.custom: seodec18
-ms.openlocfilehash: df23c41629dfe86058f0f2fb6602e85fd5a6d494
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: dd85f3a495b90b3a1dc9d3f021d3600496792759
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73489290"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73824349"
 ---
 # <a name="get-started-with-azure-machine-learning-for-visual-studio-code"></a>Wprowadzenie do Azure Machine Learning dla Visual Studio Code
 

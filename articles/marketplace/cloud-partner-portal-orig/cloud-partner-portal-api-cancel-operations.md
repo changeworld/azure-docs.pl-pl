@@ -1,24 +1,25 @@
 ---
-title: Anuluj operację interfejsu API | Portal Azure Marketplace
-description: Anulowanie operacji.
+title: Anuluj interfejs API operacji | Portal Azure Marketplace
+description: Anuluj operacje.
 services: Azure, Marketplace, Cloud Partner Portal,
 author: v-miclar
 ms.service: marketplace
+ms.subservice: partnercenter-marketplace-publisher
 ms.topic: reference
 ms.date: 09/13/2018
 ms.author: pabutler
-ms.openlocfilehash: 70ffd13be4ba934b423e3bb5344eea0a9c36886c
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 374425dbd2abacb2114b5792d7476bc341fa353a
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64935561"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73819782"
 ---
 # <a name="cancel-operation"></a>Anuluj operację 
 
-Ten interfejs API anuluje bieżącą operację w przypadku oferty. Użyj [pobrać operacje interfejsu API](./cloud-partner-portal-api-retrieve-operations.md) można pobrać `operationId` do przekazania do tego interfejsu API. Anulowanie jest zwykle Operacja synchroniczna, jednak w niektórych scenariuszach złożonych nową operację może być konieczne anulowanie istniejącą grupę. W tym przypadku treści odpowiedzi HTTP zawiera lokalizacji operacji, które mają być używane do wykonywania zapytań stanu.
+Ten interfejs API anuluje aktualnie wykonywaną operację na ofercie. Użyj [interfejsu API pobierania operacji](./cloud-partner-portal-api-retrieve-operations.md) , aby uzyskać `operationId` do przekazania do tego interfejsu API. Anulowanie jest zazwyczaj operacją synchroniczną, ale w niektórych złożonych scenariuszach może być wymagana Nowa operacja, aby anulować istniejącą operację. W takim przypadku treść odpowiedzi HTTP zawiera lokalizację operacji, która powinna być używana do wykonywania zapytań o stan.
 
-Możesz podać rozdzielana przecinkami lista adresów e-mail z żądaniem, a interfejs API powiadomi te adresy o postępie operacji.
+Możesz podać rozdzieloną przecinkami listę adresów e-mail z żądaniem, a interfejs API powiadomi te adresy o postępie operacji.
 
   `POST https://cloudpartner.azure.com/api/publishers/<publisherId>/offers/<offerId>/cancel?api-version=2017-10-31`
 
@@ -27,19 +28,19 @@ Możesz podać rozdzielana przecinkami lista adresów e-mail z żądaniem, a int
 
 |  **Nazwa**    |      **Opis**                                  |    **Typ danych**  |
 | ------------ |     ----------------                                  |     -----------   |
-| publisherId  |  Identyfikator wydawcy, na przykład `contoso`         |   String          |
-| offerId      |  Identyfikator oferty                                     |   String          |
-| api-version  |  Bieżąca wersja interfejsu API                               |    Date           |
+| publisherId  |  Identyfikator wydawcy, na przykład `contoso`         |   Ciąg          |
+| OfferId      |  Identyfikator oferty                                     |   Ciąg          |
+| wersja interfejsu API  |  Bieżąca wersja interfejsu API                               |    Date           |
 |  |  |  |
 
 
-<a name="header"></a>nagłówek
+<a name="header"></a>Nagłówek
 ------
 
 |  **Nazwa**              |  **Wartość**         |
 |  ---------             |  ----------        |
 |  Content-Type          |  application/json  |
-|  Autoryzacja         |  TOKEN YOUR elementu nośnego |
+|  Autoryzacja         |  Okaziciela — TOKEN |
 |  |  |
 
 
@@ -60,7 +61,7 @@ Możesz podać rozdzielana przecinkami lista adresów e-mail z żądaniem, a int
 
 |  **Nazwa**                |  **Opis**                                               |
 |  --------                |  ---------------                                               |
-|  powiadomienia e-mail     | Lista identyfikatorów, aby otrzymywać powiadomienia o postępie operację publikowania e-mail rozdzielone przecinkami. |
+|  powiadomienie — wiadomości e-mail     | Rozdzielana przecinkami lista identyfikatorów e-mail do powiadamiania o postępie operacji publikowania. |
 |  |  |
 
 
@@ -73,17 +74,17 @@ Możesz podać rozdzielana przecinkami lista adresów e-mail z żądaniem, a int
 
 |  **Nazwa**             |    **Wartość**                       |
 |  ---------            |    ----------                      |
-| Operacja lokalizacji    | Adres URL, które mogą być przeszukiwane w celu określenia stanu bieżącej operacji. |
+| Lokalizacja operacji    | Adres URL, do którego można wykonać zapytanie w celu określenia bieżącego stanu operacji. |
 |  |  |
 
 
-### <a name="response-status-codes"></a>Kody stanów odpowiedzi
+### <a name="response-status-codes"></a>Kody stanu odpowiedzi
 
-| **Kod**  |  **Opis**                                                                       |
+| **Kodu**  |  **Opis**                                                                       |
 |  ------   |  ------------------------------------------------------------------------               |
 |  200      | Ok. Żądanie zostało pomyślnie przetworzone i operacja została anulowana synchronicznie. |
-|  202      | Zaakceptowane. Żądanie zostało pomyślnie przetworzone i operacji jest w trakcie anulowania. Lokalizacja operacja anulowania jest zwracany w nagłówku odpowiedzi. |
-|  400      | Żądanie nieprawidłowego/Malformed. Treść odpowiedzi błędu może dostarczyć dodatkowych informacji.  |
+|  202      | Przyjmować. Żądanie zostało pomyślnie przetworzone i trwa proces anulowania operacji. Lokalizacja operacji anulowania jest zwracana w nagłówku odpowiedzi. |
+|  400      | Nieprawidłowe lub źle sformułowane żądanie. Treść odpowiedzi na błąd może dostarczyć więcej informacji.  |
 |  403      | Dostęp zabroniony. Klient nie ma dostępu do przestrzeni nazw określonej w żądaniu. |
-|  404      | Nie można odnaleźć. Określonej jednostki nie istnieje. |
+|  404      | Nie znaleziono. Określona jednostka nie istnieje. |
 |  |  |

@@ -4,15 +4,16 @@ description: Konfigurowanie zarządzania liderem w usłudze Azure Table Storage.
 services: Azure, Marketplace, Cloud Partner Portal,
 author: v-miclar
 ms.service: marketplace
+ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 05/22/2019
 ms.author: pabutler
-ms.openlocfilehash: a53ed93813215655c4a165faa0bce36d9249e8e6
-ms.sourcegitcommit: 920ad23613a9504212aac2bfbd24a7c3de15d549
+ms.openlocfilehash: 21105d72ccd288faf0fed58019e67afe2e1c9d01
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/15/2019
-ms.locfileid: "68227897"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73825267"
 ---
 # <a name="lead-management-instructions-for-table-storage"></a>Instrukcje dotyczące zarządzania potencjalnymi klientami dla usługi Table Storage
 
@@ -27,11 +28,11 @@ W tym artykule opisano sposób konfigurowania usługi Azure Table Storage w celu
     1. W okienku **Nowy** wybierz pozycję **Magazyn**. Lista **Proponowana** zostanie otwarta po prawej stronie.
     1. Wybierz pozycję **konto magazynu**. Następnie postępuj zgodnie z instrukcjami w obszarze [Tworzenie konta magazynu](https://docs.microsoft.com/azure/storage/common/storage-quickstart-create-account?tabs=azure-portal).
 
-    ![Tworzenie konta usługi Azure storage](./media/cloud-partner-portal-lead-management-instructions-azure-table/azurestoragecreate.png)
+    ![Tworzenie konta usługi Azure Storage](./media/cloud-partner-portal-lead-management-instructions-azure-table/azurestoragecreate.png)
 
     Aby uzyskać więcej informacji na temat kont magazynu, zobacz [samouczki szybkiego startu](https://docs.microsoft.com/azure/storage/). Aby uzyskać informacje o cenach, zobacz [Cennik usługi Azure Storage](https://azure.microsoft.com/pricing/details/storage/).
 
-1. Zaczekaj na zainicjowanie obsługi konta magazynu, co zazwyczaj trwa kilka minut. Następnie uzyskaj dostęp do konta ze strony głównej Azure Portal: Wybierz pozycję **Zobacz wszystkie zasoby** lub **wszystkie zasoby** w okienku nawigacji.
+1. Zaczekaj na zainicjowanie obsługi konta magazynu, co zazwyczaj trwa kilka minut. Następnie uzyskaj dostęp do konta ze strony głównej Azure Portal: wybierz pozycję **Zobacz wszystkie zasoby** lub **wszystkie zasoby** w okienku nawigacji.
 
     ![Dostęp do konta usługi Azure Storage](./media/cloud-partner-portal-lead-management-instructions-azure-table/azure-storage-access.png)
 
@@ -64,8 +65,8 @@ Ten przykład pokazuje, jak utworzyć przepływ podstawowy. Przepływ automatycz
    ![Utwórz nowy przepływ z pustego](./media/cloud-partner-portal-lead-management-instructions-azure-table/msflow-create-from-blank.png)
 
 1. Na stronie wyszukiwanie łączników i wyzwalaczy wybierz pozycję **wyzwalacze**.
-1. W obszarze Wyzwalacze wybierz pozycję **cykl**.
-1. W oknie **cykl** należy zachować domyślne ustawienie wartości **1** dla interwału . Z listy rozwijanej **częstotliwość** wybierz pozycję **godzina**.
+1. W obszarze **wyzwalacze**wybierz pozycję **cykl**.
+1. W oknie **cykl** należy zachować domyślne ustawienie wartości **1** dla **interwału**. Z listy rozwijanej **częstotliwość** wybierz pozycję **godzina**.
 
    >[!NOTE] 
    >Ten przykład używa interwału jednogodzinnego. Można jednak wybrać interwał i częstotliwość, które najlepiej odpowiadają potrzebom biznesowym.
@@ -84,7 +85,7 @@ Ten przykład pokazuje, jak utworzyć przepływ podstawowy. Przepływ automatycz
     ![Ustawianie interwału czasu pobierania](./media/cloud-partner-portal-lead-management-instructions-azure-table/msflow-getpast-time.png)
 
     >[!TIP] 
-    >W dowolnym momencie możesz sprawdzić swój przepływ, aby sprawdzić, czy każdy krok jest prawidłowo skonfigurowany: Wybierz pozycję **moduł sprawdzania przepływu** z paska menu przepływ.
+    >Możesz sprawdzić swój przepływ w dowolnym momencie, aby sprawdzić, czy każdy krok jest prawidłowo skonfigurowany: wybierz pozycję **moduł sprawdzania przepływu** z paska menu przepływ.
 
 W następnym zestawie kroków zostanie nawiązane połączenie z tabelą magazynową i skonfigurowanie logiki przetwarzania w celu obsługi nowych potencjalnych klientów.
 
@@ -96,7 +97,7 @@ W następnym zestawie kroków zostanie nawiązane połączenie z tabelą magazyn
 
      ![Wybierz niestandardową wartość dla nazwy tabeli platformy Azure](./media/cloud-partner-portal-lead-management-instructions-azure-table/msflow-getentities-table-name.png)
 
-   - **Zapytanie filtru**: Po zaznaczeniu tego pola w oknie podręcznym zostanie wyświetlona ikona **Pobierz czas** . Wybierz **poprzedni czas** , aby użyć tej wartości jako sygnatury czasowej do filtrowania zapytania. Lub można wkleić następującą funkcję do pola:
+   - **Zapytanie filtru**: po zaznaczeniu tego pola w oknie podręcznym zostanie wyświetlona ikona **uzyskaj czas** ostatniej. Wybierz **poprzedni czas** , aby użyć tej wartości jako sygnatury czasowej do filtrowania zapytania. Lub można wkleić następującą funkcję do pola:
    
       `CreatedTime Timestamp gt datetime'@{body('Get_past_time')}'` 
 
@@ -132,8 +133,8 @@ W następnym zestawie kroków zostanie nawiązane połączenie z tabelą magazyn
    1. W oknie **wysyłanie wiadomości e-mail** wprowadź informacje w następujących polach:
 
       - **Do**: adres e-mail dla wszystkich użytkowników, którzy otrzymają powiadomienie.
-      - **Temat**: temat wiadomości e-mail. Na przykład: *Nowi potencjalni klienci!*
-      - **Treść**: tekst, który ma zostać uwzględniony w każdej wiadomości e-mail (opcjonalnie). Również wklej `body('Get_entities')?['value']` jako funkcję, aby wstawić informacje o potencjalnym kliencie.
+      - **Temat**: temat wiadomości e-mail. Na przykład: *nowi potencjalni klienci!*
+      - **Treść**: tekst, który ma zostać uwzględniony w każdej wiadomości e-mail (opcjonalnie). Ponadto Wklej w `body('Get_entities')?['value']` jako funkcję, aby wstawić informacje o potencjalnym kliencie.
 
         >[!NOTE] 
         >W treści wiadomości e-mail można wstawić dodatkowe statyczne lub dynamiczne punkty danych.
@@ -144,9 +145,9 @@ W następnym zestawie kroków zostanie nawiązane połączenie z tabelą magazyn
 
     Na poniższej ilustracji przedstawiono przykład sposobu, w jaki powinien wyglądać końcowy przepływ.
 
-    [![Sekwencja przepływu końcowego](./media/cloud-partner-portal-lead-management-instructions-azure-table/msflow-end-to-end-thmb.png)](./media/cloud-partner-portal-lead-management-instructions-azure-table/msflow-end-to-end.png)
+    [![końcowym sekwencji przepływów](./media/cloud-partner-portal-lead-management-instructions-azure-table/msflow-end-to-end-thmb.png)](./media/cloud-partner-portal-lead-management-instructions-azure-table/msflow-end-to-end.png)
 
-    (*Wybierz obraz, aby go*powiększyć).
+    (*Wybierz obraz, aby go powiększyć).*
 
 ### <a name="manage-your-flow"></a>Zarządzanie przepływem
 

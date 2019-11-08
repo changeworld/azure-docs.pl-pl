@@ -1,7 +1,7 @@
 ---
-title: Wykrywanie dryfowania danych (wersja zapoznawcza) na wdrożeniach AKS
+title: Wykrywanie dryfowania danych na wdrożeniach AKS
 titleSuffix: Azure Machine Learning
-description: Wykrywaj dryfy danych w ramach wdrożonych modeli usługi Azure Kubernetes w Azure Machine Learning.
+description: Wykrywaj dryfy danych (wersja zapoznawcza) w ramach wdrożonych modeli usługi Azure Kubernetes w Azure Machine Learning.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -10,12 +10,12 @@ ms.reviewer: jmartens
 ms.author: copeters
 author: cody-dkdc
 ms.date: 11/04/2019
-ms.openlocfilehash: 24b1c22d9badc58360b0355bb4ef89017db27f06
-ms.sourcegitcommit: 018e3b40e212915ed7a77258ac2a8e3a660aaef8
-ms.translationtype: HT
+ms.openlocfilehash: 9ac1c5cb25d6b2ad396c2caed74942988a723a0e
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73796738"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73824253"
 ---
 # <a name="detect-data-drift-preview-on-models-deployed-to-azure-kubernetes-service-aks"></a>Wykrywaj dryfowanie danych (wersja zapoznawcza) dla modeli wdrożonych w usłudze Azure Kubernetes Service (AKS)
 [!INCLUDE [applies-to-skus](../../../includes/aml-applies-to-enterprise-sku.md)]
@@ -98,7 +98,7 @@ print('Details of Datadrift Object:\n{}'.format(datadrift))
 
 ## <a name="submit-a-datadriftdetector-run"></a>Prześlij DataDriftDetector uruchomienie
 
-Po skonfigurowaniu obiektu `DataDriftDetector` można przesłać [dane dotyczące przebiegu](https://docs.microsoft.com/python/api/azureml-contrib-datadrift/azureml.contrib.datadrift.datadriftdetector%28class%29?view=azure-ml-py#run-target-date--services--compute-target-name-none--create-compute-target-false--feature-list-none--drift-threshold-none-) w danym dniu dla modelu. W ramach przebiegu należy włączyć alerty DataDriftDetector przez ustawienie parametru `drift_threshold`. Jeśli [datadrift_coefficient](#metrics) znajduje się powyżej danego `drift_threshold`, zostanie wysłana wiadomość e-mail.
+Po skonfigurowaniu obiektu `DataDriftDetector` można przesłać [dane dotyczące przebiegu](https://docs.microsoft.com/python/api/azureml-contrib-datadrift/azureml.contrib.datadrift.datadriftdetector%28class%29?view=azure-ml-py#run-target-date--services--compute-target-name-none--create-compute-target-false--feature-list-none--drift-threshold-none-) w danym dniu dla modelu. W ramach przebiegu należy włączyć alerty DataDriftDetector przez ustawienie parametru `drift_threshold`. Jeśli [datadrift_coefficient](#metrics) znajduje się powyżej podanej `drift_threshold`, zostanie wysłana wiadomość e-mail.
 
 ```python
 # adhoc run today
