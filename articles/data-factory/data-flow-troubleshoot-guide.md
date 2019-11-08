@@ -1,5 +1,5 @@
 ---
-title: Rozwiązywanie problemów z przepływami danych Azure Data Factory | Microsoft Docs
+title: Rozwiązywanie problemów z przepływami danych Azure Data Factory
 description: Dowiedz się, jak rozwiązywać problemy z przepływem danych w Azure Data Factory.
 services: data-factory
 author: kromerm
@@ -7,12 +7,12 @@ ms.service: data-factory
 ms.topic: troubleshooting
 ms.date: 10/08/2019
 ms.author: makromer
-ms.openlocfilehash: 53c38af2208be6bb7cdb794ad0403456613f2df6
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 1b2309ec71cb3d43f4e5a39b80db593ab201c614
+ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73486177"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73721351"
 ---
 # <a name="troubleshoot-azure-data-factory-data-flows"></a>Rozwiązywanie problemów z przepływami danych Azure Data Factory
 
@@ -75,6 +75,15 @@ W tym artykule przedstawiono typowe metody rozwiązywania problemów z przepływ
 - **Przyczyna**: pole z przepływu danych mapuje do kolumny w bazie danych SQL jest wystarczająco szerokie, aby można było zapisać tę wartość, powodując zgłoszenie tego błędu przez sterownik SQL
 
 - **Rozwiązanie**: można zmniejszyć długość danych dla kolumn ciągów przy użyciu ```left()``` w kolumnie pochodnej lub zaimplementować [wzorzec "wiersz błędu".](how-to-data-flow-error-rows.md)
+
+### <a name="error-message-since-spark-23-the-queries-from-raw-jsoncsv-files-are-disallowed-when-the-referenced-columns-only-include-the-internal-corrupt-record-column"></a>Komunikat o błędzie: w przypadku platformy Spark 2,3 zapytania z nieprzetworzonych plików JSON/CSV są niedozwolone, gdy kolumny, do których istnieją odwołania, zawierają tylko wewnętrzną kolumnę rekordu uszkodzony. 
+
+- **Objawy**: nie powiodło się odczytywanie ze źródła JSON
+
+- **Przyczyna**: podczas odczytywania ze źródła danych JSON z pojedynczym dokumentem w wielu zagnieżdżonych wierszach, ADF za pośrednictwem platformy Spark, nie można określić, gdzie zaczyna się nowy dokument i czy poprzedni dokument zostanie zakończony.
+
+- **Rozwiązanie**: na transformacji źródłowej, która korzysta z zestawu danych JSON, rozwiń pozycję "Ustawienia JSON" i Włącz opcję "pojedynczy dokument".
+
 
 ## <a name="general-troubleshooting-guidance"></a>Ogólne wskazówki dotyczące rozwiązywania problemów
 

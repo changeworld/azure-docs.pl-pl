@@ -1,6 +1,6 @@
 ---
 title: 'Szybki Start: korzystanie z kolejek Azure Service Bus w języku Python'
-description: 'Szybki Start: informacje na temat korzystania z kolejek Azure Service Bus z poziomu języka Python.'
+description: Dowiedz się, jak używać kolejek Azure Service Bus przy użyciu języka Python.
 services: service-bus-messaging
 documentationcenter: python
 author: axisc
@@ -15,88 +15,83 @@ ms.topic: quickstart
 ms.date: 11/05/2019
 ms.author: aschhab
 ms.custom: seo-python-october2019
-ms.openlocfilehash: 4319299eabb57451e3a25a69196a63094f66ab9b
-ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
+ms.openlocfilehash: d0f579fcd82860380f1aaa651a61c0259d075a0d
+ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 11/07/2019
-ms.locfileid: "73721626"
+ms.locfileid: "73748533"
 ---
 # <a name="quickstart-use-azure-service-bus-queues-with-python"></a>Szybki Start: korzystanie z kolejek Azure Service Bus w języku Python
 
 [!INCLUDE [service-bus-selector-queues](../../includes/service-bus-selector-queues.md)]
 
-W ramach tego samouczka nauczysz się tworzyć aplikacje języka Python do wysyłania komunikatów do i odbierania komunikatów z kolejki Service Bus. 
+W tym artykule pokazano, jak za pomocą języka Python tworzyć, wysyłać wiadomości do i odbierać komunikaty z kolejek Azure Service Bus. 
+
+Aby uzyskać więcej informacji na temat bibliotek Azure Service Bus Python, zobacz [biblioteki Service Bus dla języka Python](/python/api/overview/azure/servicebus?view=azure-python).
 
 ## <a name="prerequisites"></a>Wymagania wstępne
-1. Subskrypcja platformy Azure. Do ukończenia tego samouczka jest potrzebne konto platformy Azure. Możesz aktywować korzyści dla [subskrybentów MSDN](https://azure.microsoft.com/pricing/member-offers/credit-for-visual-studio-subscribers/?WT.mc_id=A85619ABF) lub utworzyć [bezpłatne konto](https://azure.microsoft.com/free/?WT.mc_id=A85619ABF).
-2. Wykonaj czynności opisane w [Azure Portal Użyj, aby utworzyć artykuł kolejki Service Bus](service-bus-quickstart-portal.md) .
-    1. Zapoznaj się z krótkim omówieniem **kolejek**Service Bus. 
-    2. Utwórz **przestrzeń nazw**Service Bus. 
-    3. Pobierz **Parametry połączenia**. 
-
-        > [!NOTE]
-        > W tym samouczku utworzysz **kolejkę** w przestrzeni nazw Service Bus przy użyciu języka Python. 
-1. Zainstaluj Język Python lub [pakiet Azure Service Bus Python][Python Azure Service Bus package], zapoznaj się z [Podręcznikiem instalacji języka Python](/azure/python/python-sdk-azure-install). Zapoznaj się z pełną dokumentacją Service Bus Python SDK [tutaj](/python/api/overview/azure/servicebus?view=azure-python).
+- Subskrypcja platformy Azure. Możesz aktywować korzyści dla [subskrybentów programu Visual Studio lub MSDN](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/?WT.mc_id=A85619ABF) lub utworzyć [bezpłatne konto](https://azure.microsoft.com/free/?WT.mc_id=A85619ABF).
+- Przestrzeń nazw Service Bus utworzona przez wykonanie kroków opisanych w [sekcji szybki start: użyj Azure Portal, aby utworzyć temat Service Bus i subskrypcje](service-bus-quickstart-topics-subscriptions-portal.md). Skopiuj podstawowe parametry połączenia z ekranu **zasad dostępu współdzielonego** do użycia w dalszej części tego artykułu. 
+- Język Python 3.4 x lub nowszy z zainstalowanym pakietem [Azure Service Bus języka Python][Python Azure Service Bus package] . Aby uzyskać więcej informacji, zobacz [Przewodnik instalacji języka Python](/azure/python/python-sdk-azure-install). 
 
 ## <a name="create-a-queue"></a>Tworzenie kolejki
-Obiekt **ServiceBusClient** umożliwia korzystanie z kolejek. Dodaj następujący kod w górnej części każdego pliku języka Python, do którego chcesz programowo uzyskać dostęp Service Bus:
+
+Obiekt **ServiceBusClient** umożliwia korzystanie z kolejek. Aby programowo uzyskać dostęp do Service Bus, Dodaj następujący wiersz w górnej części pliku języka Python:
 
 ```python
 from azure.servicebus import ServiceBusClient
 ```
 
-Poniższy kod tworzy obiekt **ServiceBusClient** . Zastąp `<CONNECTION STRING>` elementem ConnectionString ServiceBus.
+Dodaj następujący kod, aby utworzyć obiekt **ServiceBusClient** . Zastąp `<connectionstring>` poService Bus podstawową wartością parametrów połączenia. Tę wartość można znaleźć w obszarze **zasady dostępu współdzielonego** w przestrzeni nazw Service Bus w [Azure Portal][Azure portal].
 
 ```python
-sb_client = ServiceBusClient.from_connection_string('<CONNECTION STRING>')
+sb_client = ServiceBusClient.from_connection_string('<connectionstring>')
 ```
 
-Wartości nazwy i wartości klucza sygnatury dostępu współdzielonego można znaleźć w [Azure Portal][Azure portal] informacji o połączeniu lub w okienku **Właściwości** programu Visual Studio podczas wybierania przestrzeni nazw Service Bus w Eksplorator serwera (jak pokazano w poprzedniej sekcji).
+Poniższy kod używa metody `create_queue` **ServiceBusClient** , aby utworzyć kolejkę o nazwie `taskqueue` z ustawieniami domyślnymi:
 
 ```python
 sb_client.create_queue("taskqueue")
 ```
 
-Metoda `create_queue` obsługuje również dodatkowe opcje, które umożliwiają przesłonięcie domyślnych ustawień kolejki, takich jak czas wygaśnięcia komunikatu (TTL) lub maksymalny rozmiar kolejki. Poniższy przykład ustawia maksymalny rozmiar kolejki na 5 GB, a wartość czasu wygaśnięcia na 1 minutę:
+Możesz użyć opcji, aby przesłonić domyślne ustawienia kolejki, takie jak czas wygaśnięcia komunikatu (TTL) lub maksymalny rozmiar tematu. Poniższy kod tworzy kolejkę o nazwie `taskqueue` z maksymalnym rozmiarem kolejki wynoszącym 5 GB i wartością TTL równą 1 minucie:
 
 ```python
 sb_client.create_queue("taskqueue", max_size_in_megabytes=5120,
                        default_message_time_to_live=datetime.timedelta(minutes=1))
 ```
 
-Aby uzyskać więcej informacji, zobacz [Azure Service Bus Dokumentacja języka Python](/python/api/overview/azure/servicebus?view=azure-python).
-
 ## <a name="send-messages-to-a-queue"></a>Wysyłanie komunikatów do kolejki
-Aby wysłać komunikat do kolejki Service Bus, aplikacja wywołuje metodę `send` na obiekcie `ServiceBusClient`.
 
-Poniższy przykład pokazuje, jak wysłać wiadomość testową do kolejki o nazwie `taskqueue` przy użyciu `send_queue_message`:
+Aby wysłać komunikat do kolejki Service Bus, aplikacja wywołuje metodę `send` na obiekcie **ServiceBusClient** . Poniższy przykład kodu tworzy klienta kolejki i wysyła wiadomość testową do kolejki `taskqueue`. Zastąp `<connectionstring>` poService Bus podstawową wartością parametrów połączenia. 
 
 ```python
 from azure.servicebus import QueueClient, Message
 
 # Create the QueueClient
-queue_client = QueueClient.from_connection_string(
-    "<CONNECTION STRING>", "<QUEUE NAME>")
+queue_client = QueueClient.from_connection_string("<connectionstring>", "taskqueue")
 
 # Send a test message to the queue
 msg = Message(b'Test Message')
 queue_client.send(msg)
 ```
 
-Kolejki usługi Service Bus obsługują maksymalny rozmiar komunikatu 256 KB w [warstwie Standardowa](service-bus-premium-messaging.md) i 1 MB w [warstwie Premium](service-bus-premium-messaging.md). Nagłówek, który zawiera standardowe i niestandardowe właściwości aplikacji, może mieć maksymalny rozmiar 64 KB. Nie ma żadnego limitu liczby komunikatów w kolejce, ale jest ograniczenie całkowitego rozmiaru komunikatów przechowywanych przez kolejkę. Ten rozmiar kolejki jest definiowany w czasie tworzenia, z górnym limitem 5 GB. Aby uzyskać więcej informacji na temat przydziałów, zobacz [Service Bus przydziały][Service Bus quotas].
+### <a name="message-size-limits-and-quotas"></a>Limity rozmiaru komunikatów i przydziały
 
-Aby uzyskać więcej informacji, zobacz [Azure Service Bus Dokumentacja języka Python](/python/api/overview/azure/servicebus?view=azure-python).
+Kolejki usługi Service Bus obsługują maksymalny rozmiar komunikatu 256 KB w [warstwie Standardowa](service-bus-premium-messaging.md) i 1 MB w [warstwie Premium](service-bus-premium-messaging.md). Nagłówek, który zawiera standardowe i niestandardowe właściwości aplikacji, może mieć maksymalny rozmiar 64 KB. Nie ma żadnego limitu liczby komunikatów, które mogą być przechowywane w kolejce, ale istnieje limit całkowitego rozmiaru komunikatów, które zawiera kolejka. Można zdefiniować rozmiar kolejki w czasie tworzenia, z górnym limitem wynoszącym 5 GB. 
+
+Aby uzyskać więcej informacji na temat przydziałów, zobacz [Service Bus przydziały][Service Bus quotas].
 
 ## <a name="receive-messages-from-a-queue"></a>Odbieranie komunikatów z kolejki
-Komunikaty są odbierane z kolejki przy użyciu metody `get_receiver` na obiekcie `ServiceBusService`:
+
+Klient kolejki otrzymuje komunikaty z kolejki przy użyciu metody `get_receiver` w obiekcie **ServiceBusClient** . Poniższy przykład kodu tworzy klienta kolejki i odbiera komunikat z kolejki `taskqueue`. Zastąp `<connectionstring>` poService Bus podstawową wartością parametrów połączenia. 
 
 ```python
 from azure.servicebus import QueueClient, Message
 
 # Create the QueueClient
-queue_client = QueueClient.from_connection_string(
-    "<CONNECTION STRING>", "<QUEUE NAME>")
+queue_client = QueueClient.from_connection_string("<connectionstring>", "taskqueue")
 
 # Receive the message from the queue
 with queue_client.get_receiver() as queue_receiver:
@@ -106,36 +101,30 @@ with queue_client.get_receiver() as queue_receiver:
         message.complete()
 ```
 
-Aby uzyskać więcej informacji, zobacz [Azure Service Bus Dokumentacja języka Python](/python/api/overview/azure/servicebus?view=azure-python).
+### <a name="use-the-peek_lock-parameter"></a>Użyj parametru peek_lock
 
+Opcjonalny `peek_lock` parametr `get_receiver` określa, czy Service Bus usuwa wiadomości z kolejki podczas ich odczytywania. Domyślnym trybem otrzymywania wiadomości jest *PeekLock*lub `peek_lock` ustawiona na **wartość true**, która odczytuje (dokonuje wglądu) i blokuje komunikaty bez usuwania ich z kolejki. Każdy komunikat musi zostać jawnie ukończony, aby usunąć go z kolejki.
 
-Komunikaty są usuwane z kolejki, ponieważ są odczytywane, gdy parametr `peek_lock` ma **wartość FAŁSZ**. Można odczytać (wgląd) i zablokować komunikat bez usuwania go z kolejki, ustawiając parametr `peek_lock` na **true**.
+Aby usunąć wiadomości z kolejki podczas ich odczytywania, można ustawić `peek_lock` parametr `get_receiver` na **false**. Usuwanie komunikatów w ramach operacji odbierania jest najprostszym modelem, ale działa tylko wtedy, gdy aplikacja może tolerować brakujące komunikaty w przypadku wystąpienia błędu. Aby zrozumieć to zachowanie, rozważ scenariusz, w którym odbiorca wysyła żądanie odebrania, a następnie ulega awarii przed jego przetworzeniem. Jeśli wiadomość została usunięta podczas odbierania, gdy aplikacja zostanie ponownie uruchomiona i rozpocznie korzystanie z komunikatów, nie dotarła do niej komunikat otrzymany przed awarią.
 
-Zachowanie odczytu i usunięcia komunikatu w ramach operacji odbierania jest najprostszym modelem i najlepiej sprawdza się w scenariuszach, w których aplikacja może tolerować nieprzetwarzanie komunikatu w przypadku awarii. Aby to zrozumieć, rozważmy scenariusz, w którym konsument wystawia żądanie odbioru, a następnie ulega awarii przed jego przetworzeniem. Ponieważ Service Bus oznaczył komunikat jako używany, a następnie aplikacja zostanie ponownie uruchomiona i rozpocznie korzystanie z komunikatów, zostanie pominięta wiadomość, która była używana przed awarią.
+Jeśli aplikacja nie może tolerować pominiętych komunikatów, odbieranie jest operacją dwuetapową. PeekLock wyszukuje następny komunikat do użycia, blokuje go, aby uniemożliwić innym konsumentom otrzymywanie go i zwraca do aplikacji. Po przetworzeniu lub przechowywaniu komunikatu aplikacja wykonuje drugi etap procesu odbierania, wywołując metodę `complete` dla obiektu **Message** .  Metoda `complete` oznacza komunikat jako używany i usuwa go z kolejki.
 
-Jeśli parametr `peek_lock` ma **wartość true**, odbieranie staje się operacją dwuetapową, co umożliwia obsługę aplikacji, które nie mogą tolerować brakujących komunikatów. Gdy usługa Service Bus odbiera żądanie, znajduje następny komunikat do wykorzystania, blokuje go w celu uniemożliwienia innym klientom odebrania go i zwraca go do aplikacji. Gdy aplikacja zakończy przetwarzanie komunikatu (lub zapisuje ją w sposób niegodny w przyszłości), kończy drugi etap procesu odbierania przez wywołanie metody **delete** dla obiektu **Message** . Metoda **delete** oznaczy komunikat jako używany i usuń go z kolejki.
+## <a name="handle-application-crashes-and-unreadable-messages"></a>Obsługa awarii aplikacji i nieczytelnych wiadomości
 
-```python
-msg.delete()
-```
+Usługa Service Bus zapewnia funkcję ułatwiającą bezpieczne odzyskiwanie w razie błędów w aplikacji lub trudności z przetwarzaniem komunikatu. Jeśli aplikacja odbiornika nie może przetworzyć komunikatu z jakiegoś powodu, może wywołać metodę `unlock` obiektu **Message** . Service Bus odblokowywanie komunikatu w kolejce i udostępnienie go do ponownego odebrania przez tę samą lub inną aplikację.
 
-## <a name="how-to-handle-application-crashes-and-unreadable-messages"></a>Sposób obsługi awarii aplikacji i komunikatów niemożliwych do odczytania
-Usługa Service Bus zapewnia funkcję ułatwiającą bezpieczne odzyskiwanie w razie błędów w aplikacji lub trudności z przetwarzaniem komunikatu. Jeśli aplikacja odbiornika nie może przetworzyć komunikatu z jakiegoś powodu, może wywołać metodę **Unlock** dla obiektu **Message** . Spowoduje to Service Bus odblokowanie komunikatu w kolejce i udostępnienie go do odebrania przez tę samą aplikację wykorzystującą lub przez inną aplikację, która korzysta z aplikacji.
+Istnieje również limit czasu dla komunikatów zablokowanych w kolejce. Jeśli aplikacja nie może przetworzyć komunikatu przed upływem limitu czasu blokady, na przykład w przypadku awarii aplikacji Service Bus odblokowywanie komunikatu automatycznie i udostępnienie go do ponownego odebrania.
 
-Istnieje również limit czasu skojarzony z komunikatem zablokowanym w kolejce i jeśli aplikacja nie może przetworzyć komunikatu przed upływem limitu czasu blokady (na przykład jeśli aplikacja ulega awarii), Service Bus automatycznie zamknie komunikat i ustawi go dostępne do ponownego odebrania.
+Jeśli aplikacja ulegnie awarii po przetworzeniu komunikatu, ale przed wywołaniem metody `complete`, komunikat zostanie ponownie dostarczony do aplikacji po jej ponownym uruchomieniu. Takie zachowanie jest często nazywane *przetwarzaniem co najmniej raz*. Każdy komunikat jest przetwarzany co najmniej raz, ale w pewnych sytuacjach może zostać ponownie dostarczony ten sam komunikat. Jeśli w scenariuszu nie można tolerować zduplikowanego przetwarzania, można użyć właściwości **MessageID** komunikatu, która pozostaje stała między próbami dostarczenia, aby obsłużyć zduplikowane dostarczanie komunikatów. 
 
-W przypadku awarii aplikacji po przetworzeniu komunikatu, ale przed wywołaniem metody **delete** komunikat zostanie ponownie dostarczony do aplikacji po jej ponownym uruchomieniu. Jest to często nazywane **co najmniej raz, co**oznacza, że każdy komunikat zostanie przetworzony co najmniej jeden raz, ale w pewnych sytuacjach ten sam komunikat może zostać ponownie dostarczony. Jeśli scenariusz nie toleruje dwukrotnego przetwarzania, deweloperzy aplikacji powinni dodać dodatkową logikę do swojej aplikacji w celu obsługi dwukrotnego dostarczania komunikatów. Jest to często osiągane przy użyciu właściwości **MessageId** komunikatu, która pozostaje niezmienna między kolejnymi próbami dostarczenia.
-
-> [!NOTE]
-> Za pomocą [eksploratora Service Bus](https://github.com/paolosalvatori/ServiceBusExplorer/)można zarządzać zasobami Service Bus. Eksplorator Service Bus umożliwia użytkownikom łączenie się z przestrzenią nazw Service Bus i administrowanie jednostkami obsługi komunikatów w prosty sposób. Narzędzie zapewnia zaawansowane funkcje, takie jak funkcja importowania/eksportowania lub możliwość testowania tematów, kolejek, subskrypcji, usług przekazywania, centrów powiadomień i centrów zdarzeń. 
+> [!TIP]
+> Za pomocą [eksploratora Service Bus](https://github.com/paolosalvatori/ServiceBusExplorer/)można zarządzać zasobami Service Bus. Service Bus Explorer umożliwia łączenie się z przestrzenią nazw Service Bus i łatwe administrowanie jednostkami obsługi komunikatów. Narzędzie zapewnia zaawansowane funkcje, takie jak funkcje importu/eksportu i możliwość testowania tematów, kolejek, subskrypcji, usług przekazywania, centrów powiadomień i centrów zdarzeń.
 
 ## <a name="next-steps"></a>Następne kroki
-Teraz, gdy znasz już podstawy Service Busych kolejek, zobacz te artykuły, aby dowiedzieć się więcej.
 
-* [Kolejki, tematy i subskrypcje][Queues, topics, and subscriptions]
+Teraz, gdy znasz już podstawy Service Busych kolejek, zobacz sekcję [kolejki, tematy i subskrypcje][Queues, topics, and subscriptions] , aby dowiedzieć się więcej.
 
 [Azure portal]: https://portal.azure.com
 [Python Azure Service Bus package]: https://pypi.python.org/pypi/azure-servicebus  
 [Queues, topics, and subscriptions]: service-bus-queues-topics-subscriptions.md
 [Service Bus quotas]: service-bus-quotas.md
-

@@ -9,69 +9,72 @@ ms.devlang: rest-api
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: f0224905f8d3872aca9055a77c8182cb2cac67cb
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.openlocfilehash: 41da5b59c7d9429a068ecd483aa96edb1141b727
+ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72793805"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73719949"
 ---
 # <a name="how-to-index-cosmos-db-data-using-an-indexer-in-azure-cognitive-search"></a>Jak indeksować Cosmos DB danych przy użyciu indeksatora na platformie Azure Wyszukiwanie poznawcze 
 
-> [!Note]
-> Obsługa interfejsu API MongoDB jest w wersji zapoznawczej i nie jest przeznaczona do użycia w środowisku produkcyjnym. [Interfejs API REST w wersji 2019-05-06 — wersja zapoznawcza](search-api-preview.md) zawiera tę funkcję. W tej chwili nie ma obsługi portalu lub zestawu SDK platformy .NET.
->
+> [!IMPORTANT] 
 > Interfejs API SQL jest ogólnie dostępny.
+> Obsługa interfejsu API MongoDB, interfejsu API Gremlin i obsługi interfejs API Cassandra są obecnie dostępne w publicznej wersji zapoznawczej. Funkcje wersji zapoznawczej są dostępne bez umowy dotyczącej poziomu usług i nie są zalecane w przypadku obciążeń produkcyjnych. Aby uzyskać więcej informacji, zobacz [Uzupełniające warunki korzystania z wersji zapoznawczych platformy Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/). Możesz zażądać dostępu do wersji zapoznawczych, wypełniając [ten formularz](https://aka.ms/azure-cognitive-search/indexer-preview). [Interfejs API REST w wersji 2019-05-06 — wersja zapoznawcza](search-api-preview.md) zapewnia funkcje w wersji zapoznawczej. Dostępna jest obecnie ograniczona obsługa portalu i nie ma obsługi zestawu SDK platformy .NET.
 
 W tym artykule opisano sposób konfigurowania [indeksatora](search-indexer-overview.md) Azure Cosmos DB w celu wyodrębnienia zawartości i przeszukiwania jej w usłudze Azure wyszukiwanie poznawcze. Ten przepływ pracy tworzy indeks Wyszukiwanie poznawcze platformy Azure i ładuje go z istniejącym tekstem wyodrębnionym z Azure Cosmos DB. 
 
 Ze względu na to, że terminologia może być myląca, warto zauważyć, że [Azure Cosmos DB indeksowania](https://docs.microsoft.com/azure/cosmos-db/index-overview) i [indeksowanie wyszukiwanie poznawcze platformy Azure](search-what-is-an-index.md) to różne operacje, unikatowe dla każdej usługi. Przed rozpoczęciem indeksowania usługi Azure Wyszukiwanie poznawcze baza danych Azure Cosmos DB musi już istnieć i zawierać dane.
 
-Za pomocą [portalu](#cosmos-indexer-portal), interfejsów API REST lub zestawu .NET SDK można indeksować zawartość Cosmos. Indeksator Cosmos DB w usłudze Azure Wyszukiwanie poznawcze umożliwia przeszukiwanie [elementów Cosmos platformy Azure](https://docs.microsoft.com/azure/cosmos-db/databases-containers-items#azure-cosmos-items) , do których można uzyskać dostęp za pomocą tych protokołów:
+Indeksator Cosmos DB w usłudze Azure Wyszukiwanie poznawcze umożliwia przeszukiwanie [Azure Cosmos DB elementów](https://docs.microsoft.com/azure/cosmos-db/databases-containers-items#azure-cosmos-items) dostępnych za pomocą różnych protokołów.
 
-* [INTERFEJS API SQL](https://docs.microsoft.com/azure/cosmos-db/sql-api-query-reference) 
-* [Interfejs API MongoDB (wersja zapoznawcza)](https://docs.microsoft.com/azure/cosmos-db/mongodb-introduction)
++ W przypadku [interfejsu SQL API](https://docs.microsoft.com/azure/cosmos-db/sql-api-query-reference), który jest ogólnie dostępny, można użyć [portalu](#cosmos-indexer-portal), [interfejsu API REST](https://docs.microsoft.com/rest/api/searchservice/indexer-operations)lub [zestawu .NET SDK](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.indexer?view=azure-dotnet).
+
++ W [przypadku interfejsu API MongoDB (wersja zapoznawcza)](https://docs.microsoft.com/azure/cosmos-db/mongodb-introduction) i [interfejsu API Gremlin (wersja zapoznawcza)](https://docs.microsoft.com/azure/cosmos-db/graph-introduction)można użyć [portalu](#cosmos-indexer-portal) lub [interfejsu API REST w wersji 2019-05-06-Preview](search-api-preview.md) w wywołaniu [tworzenia indeksatora (REST)](https://docs.microsoft.com/rest/api/searchservice/create-indexer) w celu utworzenia indeksatora.
+
++ W przypadku [interfejs API Cassandra (wersja zapoznawcza)](https://docs.microsoft.com/azure/cosmos-db/cassandra-introduction)można używać tylko [interfejsu API REST w wersji 2019-05-06-Preview](search-api-preview.md) w wywołaniu [tworzenia indeksatora (REST)](https://docs.microsoft.com/rest/api/searchservice/create-indexer) .
+
 
 > [!Note]
-> Głos użytkownika ma istniejące elementy do obsługi dodatkowych interfejsów API. Możesz odłożyć głos na Cosmos interfejsy API, które chcesz zobaczyć jako obsługiwane w usłudze Azure Wyszukiwanie poznawcze: [interfejs API tabel](https://feedback.azure.com/forums/263029-azure-search/suggestions/32759746-azure-search-should-be-able-to-index-cosmos-db-tab), [interfejs API programu Graph](https://feedback.azure.com/forums/263029-azure-search/suggestions/13285011-add-graph-databases-to-your-data-sources-eg-neo4) [interfejs API Apache Cassandra](https://feedback.azure.com/forums/263029-azure-search/suggestions/32857525-indexer-crawler-for-apache-cassandra-api-in-azu).
+> Możesz odłożyć głos na głos użytkownika dla [interfejs API tabel](https://feedback.azure.com/forums/263029-azure-search/suggestions/32759746-azure-search-should-be-able-to-index-cosmos-db-tab) , jeśli chcesz go zobaczyć na platformie Azure wyszukiwanie poznawcze.
 >
 
 <a name="cosmos-indexer-portal"></a>
 
 ## <a name="use-the-portal"></a>Używanie portalu
 
-Najprostszym sposobem indeksowania elementów usługi Azure Cosmos jest użycie Kreatora w [Azure Portal](https://portal.azure.com/). Poprzez próbkowanie danych i odczytywanie metadanych w kontenerze Kreator [**importowania danych**](search-import-data-portal.md) w usłudze Azure wyszukiwanie poznawcze może utworzyć domyślny indeks, zmapować pola źródłowe na docelowe pola indeksu i załadować indeks w ramach jednej operacji. W zależności od rozmiaru i stopnia złożoności danych źródłowych można mieć indeks wyszukiwania pełnotekstowego w ciągu kilku minut.
+> [!Note]
+> Portal obsługuje obecnie interfejs API SQL i interfejs API MongoDB (wersja zapoznawcza).
+
+Najprostszym sposobem indeksowania Azure Cosmos DB elementów jest użycie Kreatora w [Azure Portal](https://portal.azure.com/). Poprzez próbkowanie danych i odczytywanie metadanych w kontenerze Kreator [**importowania danych**](search-import-data-portal.md) w usłudze Azure wyszukiwanie poznawcze może utworzyć domyślny indeks, zmapować pola źródłowe na docelowe pola indeksu i załadować indeks w ramach jednej operacji. W zależności od rozmiaru i stopnia złożoności danych źródłowych można mieć indeks wyszukiwania pełnotekstowego w ciągu kilku minut.
 
 Zalecamy korzystanie z tej samej subskrypcji platformy Azure dla usługi Azure Wyszukiwanie poznawcze i Azure Cosmos DB, najlepiej w tym samym regionie.
 
 ### <a name="1---prepare-source-data"></a>1 — Przygotowywanie danych źródłowych
 
-Należy mieć konto Cosmos, bazę danych Cosmos platformy Azure zamapowane na interfejs API SQL lub interfejs API MongoDB oraz kontener dokumentów JSON. 
+Należy mieć konto Cosmos DB, Azure Cosmos DB bazę danych zamapowane na interfejs API SQL, interfejs API MongoDB (wersja zapoznawcza) lub interfejs API Gremlin (wersja zapoznawcza) oraz zawartość bazy danych.
 
 Upewnij się, że baza danych Cosmos DB zawiera dane. [Kreator importu danych](search-import-data-portal.md) odczytuje metadane i wykonuje próbkowanie danych w celu wywnioskowania schematu indeksu, ale również ładuje dane z Cosmos DB. Jeśli brakuje danych, Kreator zatrzymał się z powodu błędu "błąd podczas wykrywania schematu indeksu ze źródła danych: nie można utworzyć indeksu prototypu, ponieważ źródło danych" emptycollection "nie zwróciło żadnych danych".
 
 ### <a name="2---start-import-data-wizard"></a>2 — Uruchom Kreatora importu danych
 
-Kreatora można [uruchomić](search-import-data-portal.md) z poziomu paska poleceń na stronie usługi Azure wyszukiwanie poznawcze lub klikając pozycję **Dodaj wyszukiwanie poznawcze platformy Azure** w sekcji **Ustawienia** okienka nawigacji po lewej stronie konta magazynu.
+Kreatora można [uruchomić](search-import-data-portal.md) z poziomu paska poleceń na stronie usługi Azure wyszukiwanie poznawcze lub w przypadku nawiązywania połączenia z Cosmos DB interfejsem API SQL można kliknąć pozycję **Dodaj wyszukiwanie poznawcze platformy Azure** w sekcji **Ustawienia** w pozostałej części konta Cosmos DB okienko nawigacji.
 
    ![Importuj dane — polecenie w portalu](./media/search-import-data-portal/import-data-cmd2.png "Uruchamianie kreatora importu danych")
 
 ### <a name="3---set-the-data-source"></a>3 — Ustawianie źródła danych
 
-> [!NOTE] 
-> Obecnie nie można tworzyć ani edytować źródeł danych **MongoDB** za pomocą Azure Portal lub zestawu .NET SDK. **Można** jednak monitorować historię wykonywania indeksatorów MongoDB w portalu.
-
 Na stronie **Źródło danych** Źródło musi być **Cosmos DB**z następującymi specyfikacjami:
 
 + **Nazwa** to nazwa obiektu źródła danych. Po utworzeniu można wybrać go dla innych obciążeń.
 
-+ **Konto Cosmos DB** powinno być podstawowym lub pomocniczym ciągiem połączenia z Cosmos DB, z `AccountEndpoint` i `AccountKey`. Konto określa, czy dane są rzutowane jako interfejs API SQL lub interfejs API usługi Mongo DB
++ **Konto Cosmos DB** powinno być podstawowym lub pomocniczym ciągiem połączenia z Cosmos DB, z `AccountEndpoint` i `AccountKey`. W przypadku kolekcji MongoDB Dodaj **rodzaju interfejsu API = MongoDB** do końca parametrów połączenia i oddziel go od parametrów połączenia średnikami. Aby uzyskać informacje na temat interfejsu API Gremlin i interfejs API Cassandra, użyj instrukcji dotyczących [interfejsu API REST](#cosmosdb-indexer-rest).
 
 + **Baza danych** jest istniejącą bazą danych z konta. 
 
 + **Kolekcja** jest kontenerem dokumentów. Aby importowanie powiodło się, muszą istnieć dokumenty. 
 
-+ **Zapytanie** może być puste, jeśli chcesz uzyskać wszystkie dokumenty, w przeciwnym razie możesz wprowadzić zapytanie, które wybierze podzestaw dokumentu. 
++ **Zapytanie** może być puste, jeśli chcesz uzyskać wszystkie dokumenty, w przeciwnym razie możesz wprowadzić zapytanie, które wybierze podzestaw dokumentu. **Zapytanie** jest dostępne tylko dla interfejsu API SQL.
 
    ![Cosmos DB definicję źródła danych](media/search-howto-index-cosmosdb/cosmosdb-datasource.png "Cosmos DB definicję źródła danych")
 
@@ -120,11 +123,12 @@ Po zakończeniu indeksowania można użyć [Eksploratora wyszukiwania](search-ex
 
 ## <a name="use-rest-apis"></a>Używanie interfejsów API REST
 
-Za pomocą interfejsu API REST można indeksować Azure Cosmos DB dane, wykonując trzy części przepływu pracy wspólne dla wszystkich indeksatorów na platformie Azure Wyszukiwanie poznawcze: tworzenie źródła danych, tworzenie indeksu i tworzenie indeksatora. Wyodrębnianie danych z magazynu Cosmos odbywa się po przesłaniu żądania utworzenia indeksatora. Po zakończeniu tego żądania będzie miał indeks queryable. 
+Za pomocą interfejsu API REST można indeksować Azure Cosmos DB dane, wykonując trzy części przepływu pracy wspólne dla wszystkich indeksatorów na platformie Azure Wyszukiwanie poznawcze: tworzenie źródła danych, tworzenie indeksu i tworzenie indeksatora. Wyodrębnianie danych z Cosmos DB występuje po przesłaniu żądania utworzenia indeksatora. Po zakończeniu tego żądania będzie miał indeks queryable. 
 
-Jeśli oceniasz MongoDB, musisz użyć `api-version=2019-05-06-Preview` REST, aby utworzyć źródło danych.
+> [!NOTE]
+> W przypadku indeksowania danych z Cosmos DB interfejsu API Gremlin lub Cosmos DB interfejs API Cassandra musisz najpierw zażądać dostępu do zapoznawczych wersji zapoznawczych, wypełniając [ten formularz](https://aka.ms/azure-cognitive-search/indexer-preview). Po przetworzeniu żądania otrzymasz instrukcje dotyczące korzystania z [interfejsu API REST w wersji 2019-05-06-Preview](search-api-preview.md) w celu utworzenia źródła danych.
 
-Na koncie Cosmos DB możesz wybrać, czy kolekcja ma automatycznie indeksować wszystkie dokumenty. Domyślnie wszystkie dokumenty są indeksowane automatycznie, ale można wyłączyć automatyczne indeksowanie. Gdy indeksowanie jest wyłączone, do dokumentów można uzyskać dostęp tylko za pośrednictwem własnych linków lub zapytań przy użyciu identyfikatora dokumentu. Usługa Azure Wyszukiwanie poznawcze wymaga włączenia Cosmos DB automatycznego indeksowania w kolekcji, która będzie indeksowana przez usługę Azure Wyszukiwanie poznawcze. 
+Wcześniej w tym artykule opisano, że [Azure Cosmos DB indeksowania](https://docs.microsoft.com/azure/cosmos-db/index-overview) i indeksowania indeksowania [Wyszukiwanie poznawcze na platformie Azure](search-what-is-an-index.md) są różne operacje. W przypadku Cosmos DB indeksowania domyślnie wszystkie dokumenty są automatycznie indeksowane z wyjątkiem interfejs API Cassandra. Jeśli wyłączysz automatyczne indeksowanie, dostęp do dokumentów można uzyskać tylko za pośrednictwem własnych linków lub zapytań przy użyciu identyfikatora dokumentu. Funkcja indeksowania Wyszukiwanie poznawcze platformy Azure Cosmos DB wymaga włączenia automatycznego indeksowania w kolekcji, która będzie indeksowana przez usługę Azure Wyszukiwanie poznawcze. Podczas tworzenia rejestracji w usłudze Cosmos DB interfejs API Cassandra Indexer Preview zostaną podane instrukcje dotyczące konfiguracji Cosmos DB indeksowania.
 
 > [!WARNING]
 > Azure Cosmos DB to Kolejna generacja DocumentDB. Wcześniej z interfejsem API w wersji **2017-11-11** , można użyć składni `documentdb`. Oznacza to, że można określić typ źródła danych jako `cosmosdb` lub `documentdb`. Począwszy od interfejsu API w wersji **2019-05-06** , interfejsy API i portal usługi Azure wyszukiwanie poznawcze obsługują tylko składnię `cosmosdb`, jak opisano w tym artykule. Oznacza to, że typ źródła danych musi `cosmosdb`, jeśli chcesz połączyć się z punktem końcowym Cosmos DB.
@@ -176,8 +180,8 @@ Treść żądania zawiera definicję źródła danych, która powinna zawierać 
 |---------|-------------|
 | **Nazwij** | Wymagany. Wybierz dowolną nazwę reprezentującą obiekt źródła danych. |
 |**type**| Wymagany. Musi być `cosmosdb`. |
-|**uwierzytelniające** | Wymagany. Musi być Cosmos DB parametrami połączenia.<br/>W przypadku kolekcji SQL parametry połączenia mają następujący format: `AccountEndpoint=<Cosmos DB endpoint url>;AccountKey=<Cosmos DB auth key>;Database=<Cosmos DB database id>`<br/>W przypadku kolekcji MongoDB Dodaj **rodzaju interfejsu API = MongoDB** do parametrów połączenia:<br/>`AccountEndpoint=<Cosmos DB endpoint url>;AccountKey=<Cosmos DB auth key>;Database=<Cosmos DB database id>;ApiKind=MongoDb`<br/>Należy unikać numerów portów w adresie URL punktu końcowego. Jeśli dołączysz numer portu, usługa Azure Wyszukiwanie poznawcze nie będzie w stanie indeksować bazy danych Azure Cosmos DB.|
-| **wbudowane** | Zawiera następujące elementy: <br/>**Nazwa**: wymagane. Określ identyfikator kolekcji baz danych do indeksowania.<br/>**zapytanie**: opcjonalne. Możesz określić zapytanie, aby spłaszczyć dowolny dokument JSON do prostego schematu, który usługa Azure Wyszukiwanie poznawcze może indeksować.<br/>W przypadku kolekcji MongoDB zapytania nie są obsługiwane. |
+|**uwierzytelniające** | Wymagany. Musi być Cosmos DB parametrami połączenia.<br/>W przypadku kolekcji SQL parametry połączenia mają następujący format: `AccountEndpoint=<Cosmos DB endpoint url>;AccountKey=<Cosmos DB auth key>;Database=<Cosmos DB database id>`<br/><br/>W przypadku kolekcji MongoDB Dodaj **rodzaju interfejsu API = MongoDB** do parametrów połączenia:<br/>`AccountEndpoint=<Cosmos DB endpoint url>;AccountKey=<Cosmos DB auth key>;Database=<Cosmos DB database id>;ApiKind=MongoDb`<br/><br/>[Aby uzyskać](https://aka.ms/azure-cognitive-search/indexer-preview) dostęp do wersji zapoznawczej i zapoznać się z informacjami na temat sposobu formatowania poświadczeń, w przypadku wykresów Gremlin i tabel Cassandra.<br/><br/>Należy unikać numerów portów w adresie URL punktu końcowego. Jeśli dołączysz numer portu, usługa Azure Wyszukiwanie poznawcze nie będzie w stanie indeksować bazy danych Azure Cosmos DB.|
+| **wbudowane** | Zawiera następujące elementy: <br/>**Nazwa**: wymagane. Określ identyfikator kolekcji baz danych do indeksowania.<br/>**zapytanie**: opcjonalne. Możesz określić zapytanie, aby spłaszczyć dowolny dokument JSON do prostego schematu, który usługa Azure Wyszukiwanie poznawcze może indeksować.<br/>W przypadku interfejsu API MongoDB, interfejsu API Gremlin i interfejs API Cassandra zapytania nie są obsługiwane. |
 | **dataChangeDetectionPolicy** | Rekomendowane. Zobacz sekcję [indeksowanie zmienionych dokumentów](#DataChangeDetectionPolicy) .|
 |**dataDeletionDetectionPolicy** | Opcjonalny. Zobacz sekcję [indeksowanie usuniętych dokumentów](#DataDeletionDetectionPolicy) .|
 
@@ -185,7 +189,7 @@ Treść żądania zawiera definicję źródła danych, która powinna zawierać 
 Możesz określić zapytanie SQL do spłaszczania zagnieżdżonych właściwości lub tablic, właściwości JSON projektu i przefiltrować dane, które mają być indeksowane. 
 
 > [!WARNING]
-> Zapytania niestandardowe nie są obsługiwane dla kolekcji **MongoDB** : parametr `container.query` musi mieć wartość null lub być pominięty. Jeśli musisz użyć zapytania niestandardowego, poinformuj nas o [głosowaniu użytkownika](https://feedback.azure.com/forums/263029-azure-search).
+> Zapytania niestandardowe nie są obsługiwane w przypadku **interfejsu API MongoDB**, **interfejsu api Gremlin**i **interfejs API Cassandra**: parametr `container.query` musi mieć wartość null lub być pominięty. Jeśli musisz użyć zapytania niestandardowego, poinformuj nas o [głosowaniu użytkownika](https://feedback.azure.com/forums/263029-azure-search).
 
 Przykładowy dokument:
 
@@ -246,7 +250,7 @@ Zapytanie spłaszczone tablicy:
 Upewnij się, że schemat indeksu docelowego jest zgodny ze schematem źródłowych dokumentów JSON lub danymi wyjściowymi projekcji zapytań niestandardowych.
 
 > [!NOTE]
-> W przypadku kolekcji partycjonowanych domyślnym kluczem dokumentu jest Azure Cosmos DB `_rid` właściwości, które usługa Azure Wyszukiwanie poznawcze automatycznie zmienia nazwę na `rid`, ponieważ nazwy pól nie mogą rozpoczynać się od znaku undescore. Ponadto Azure Cosmos DB `_rid` wartości zawierają znaki, które są nieprawidłowe w usłudze Azure Wyszukiwanie poznawcze Keys. Z tego powodu wartości `_rid` są zakodowane w formacie base64.
+> W przypadku kolekcji partycjonowanych domyślnym kluczem dokumentu jest Azure Cosmos DB `_rid` właściwości, które usługa Azure Wyszukiwanie poznawcze automatycznie zmienia nazwę na `rid`, ponieważ nazwy pól nie mogą zaczynać się od znaku podkreślenia. Ponadto Azure Cosmos DB `_rid` wartości zawierają znaki, które są nieprawidłowe w usłudze Azure Wyszukiwanie poznawcze Keys. Z tego powodu wartości `_rid` są zakodowane w formacie base64.
 > 
 > W przypadku kolekcji MongoDB platforma Azure Wyszukiwanie poznawcze automatycznie zmienia nazwę właściwości `_id` na `doc_id`.  
 
@@ -260,7 +264,7 @@ Upewnij się, że schemat indeksu docelowego jest zgodny ze schematem źródłow
 | Tablice typów pierwotnych, na przykład ["a", "b", "c"] |Collection(Edm.String) |
 | Ciągi, które wyglądają jak daty |EDM. DateTimeOffset, EDM. String |
 | Obiekty GEOJSON, na przykład {"Type": "Point", "współrzędne": [Long, lat]} |Edm.GeographyPoint |
-| Inne obiekty JSON |ND |
+| Inne obiekty JSON |Nie dotyczy |
 
 ### <a name="4---configure-and-run-the-indexer"></a>4 — Konfigurowanie i uruchamianie indeksatora
 
@@ -281,7 +285,7 @@ Ten indeksator działa co dwie godziny (interwał harmonogramu jest ustawiony na
 
 Aby uzyskać więcej informacji na temat interfejsu API tworzenia indeksatora, zapoznaj się z tematem [Tworzenie indeksatora](https://docs.microsoft.com/rest/api/searchservice/create-indexer).
 
-Więcej informacji o definiowaniu harmonogramów indeksatorów znajduje się w temacie [jak zaplanować indeksatory dla platformy Azure wyszukiwanie poznawcze](search-howto-schedule-indexers.md).
+Aby uzyskać więcej informacji o definiowaniu harmonogramów indeksatora, zobacz [How to Scheduler indeksators for Azure wyszukiwanie poznawcze](search-howto-schedule-indexers.md).
 
 ## <a name="use-net"></a>Korzystanie z platformy .NET
 

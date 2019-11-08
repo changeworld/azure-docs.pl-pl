@@ -1,7 +1,7 @@
 ---
 title: Eksportuj model do urządzeń przenośnych Custom Vision Service
 titleSuffix: Azure Cognitive Services
-description: Dowiedz się, jak wyeksportować model do użycia podczas tworzenia aplikacji mobilnych.
+description: W tym artykule opisano sposób eksportowania modelu do użycia podczas tworzenia aplikacji mobilnych lub uruchamiania lokalnego na potrzeby klasyfikacji w czasie rzeczywistym.
 services: cognitive-services
 author: anrothMSFT
 manager: nitinme
@@ -10,49 +10,55 @@ ms.subservice: custom-vision
 ms.topic: conceptual
 ms.date: 03/21/2019
 ms.author: anroth
-ms.openlocfilehash: 554a392a7f815a6e646927f137b1e6c2856099bd
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: f734f4f1a11f57b759615e7a9ce2cd2f7f8028fb
+ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68561088"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73718956"
 ---
 # <a name="export-your-model-for-use-with-mobile-devices"></a>Eksportowanie modelu do użytku z urządzeniami przenośnymi
 
 Custom Vision Service zezwala na eksportowanie klasyfikatorów do trybu offline. Możesz osadzić wyeksportowany klasyfikator w aplikacji i uruchomić ją lokalnie na urządzeniu na potrzeby klasyfikacji w czasie rzeczywistym.
+
+## <a name="export-options"></a>Opcje eksportu
 
 Custom Vision Service obsługuje następujące eksporty:
 
 * __Tensorflow__ dla __systemu Android__.
 * __CoreML__ dla __iOS11__.
 * __ONNX__ dla __systemu Windows ml__.
-* __Kontener__systemu Windows lub Linux. Kontener zawiera model Tensorflow i kod usługi do korzystania z interfejsu API Custom Vision Service. 
+* __[Vision Developer Kit](https://azure.github.io/Vision-AI-DevKit-Pages/)__ .
+* __Kontener platformy Docker__ dla systemu Windows, Linux lub architektury ARM. Kontener zawiera model Tensorflow i kod usługi do korzystania z interfejsu API Custom Vision.
 
 > [!IMPORTANT]
-> Custom Vision Service eksportuje  tylko domeny kompaktowe. Modele generowane przez domeny kompaktowe są zoptymalizowane pod kątem ograniczeń klasyfikacji w czasie rzeczywistym na urządzeniach przenośnych. Klasyfikatory skompilowane z kompaktową domeną mogą być nieco mniej dokładne niż domena standardowa z taką samą ilością danych szkoleniowych.
+> Custom Vision Service eksportuje tylko domeny __kompaktowe__ . Modele generowane przez domeny kompaktowe są zoptymalizowane pod kątem ograniczeń klasyfikacji w czasie rzeczywistym na urządzeniach przenośnych. Klasyfikatory skompilowane z kompaktową domeną mogą być nieco mniej dokładne niż domena standardowa z taką samą ilością danych szkoleniowych.
 >
-> Aby uzyskać informacje na temat ulepszania klasyfikatorów, zobacz ulepszanie dokumentu [klasyfikatora](getting-started-improving-your-classifier.md) .
+> Aby uzyskać informacje na temat ulepszania klasyfikatorów, zobacz [ulepszanie dokumentu klasyfikatora](getting-started-improving-your-classifier.md) .
 
 ## <a name="convert-to-a-compact-domain"></a>Konwertuj na kompaktową domenę
 
 > [!NOTE]
-> Kroki opisane w tej sekcji mają zastosowanie tylko wtedy, gdy masz istniejący klasyfikator, który nie jest ustawiony na kompaktową domenę.
+> Kroki opisane w tej sekcji mają zastosowanie tylko wtedy, gdy masz istniejący model, który nie jest ustawiony na kompaktową domenę.
 
-Aby skonwertować domenę istniejącego klasyfikatora, wykonaj następujące czynności:
+Aby skonwertować domenę istniejącego modelu, wykonaj następujące czynności:
 
-1. Na [stronie](https://customvision.ai)niestandardowa wizja wybierz ikonę __główną__ , aby wyświetlić listę projektów. Możesz również użyć, [https://customvision.ai/projects](https://customvision.ai/projects) aby zobaczyć swoje projekty.
+1. W [witrynie sieci Web programu Custom Vision](https://customvision.ai)wybierz ikonę __Home__ , aby wyświetlić listę projektów.
 
     ![Obraz przedstawiający ikonę główną i listę projektów](./media/export-your-model/projects-list.png)
 
-2. Wybierz projekt, a następnie wybierz ikonę __koła zębatego__ w prawym górnym rogu strony.
+1. Wybierz projekt, a następnie wybierz ikonę __koła zębatego__ w prawym górnym rogu strony.
 
     ![Obraz ikony koła zębatego](./media/export-your-model/gear-icon.png)
 
-3. W sekcji __domeny__ wybierz kompaktową domenę  . Wybierz pozycję __Zapisz zmiany__ , aby zapisać zmiany.
+1. W sekcji __domeny__ wybierz jedną z domen __kompaktowych__ . Wybierz pozycję __Zapisz zmiany__ , aby zapisać zmiany. 
+
+    > [!NOTE]
+    > W przypadku zestawu SDK programu Vision AI należy utworzyć projekt z __ogólną (kompaktową)__ domeną i należy określić opcję " **Vision AI Kit** " w sekcji **możliwości eksportu** .
 
     ![Obraz wyboru domen](./media/export-your-model/domains.png)
 
-4. W górnej części strony wybierz pozycję uczenie  , aby ponownie przeprowadzić szkolenie przy użyciu nowej domeny.
+1. W górnej części strony wybierz pozycję __uczenie__ , aby ponownie przeprowadzić szkolenie przy użyciu nowej domeny.
 
 ## <a name="export-your-model"></a>Eksportowanie modelu
 
@@ -65,7 +71,7 @@ Aby wyeksportować model po przekształceniu, wykonaj następujące czynności:
     > [!TIP]
     > Jeśli wpis __eksportu__ nie jest dostępny, wybrana iteracja nie korzysta z domeny kompaktowej. Użyj sekcji __iteracje__ na tej stronie, aby wybrać iterację korzystającą z domeny kompaktowej, a następnie wybierz pozycję __Eksportuj__.
 
-2. Wybierz format eksportu, a następnie wybierz pozycję __Eksportuj__ , aby pobrać model.
+1. Wybierz żądany format eksportu, a następnie wybierz pozycję __Eksportuj__ , aby pobrać model.
 
 ## <a name="next-steps"></a>Następne kroki
 

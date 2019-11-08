@@ -5,15 +5,15 @@ services: virtual-machines
 author: roygara
 ms.service: virtual-machines
 ms.topic: include
-ms.date: 05/06/2019
+ms.date: 11/06/2019
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: f041381534dfe59036ce1b9d91792f9e78d0dace
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 7ceff623c6559ef5e929d6d5bff9e07cca9039d2
+ms.sourcegitcommit: 018e3b40e212915ed7a77258ac2a8e3a660aaef8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73523454"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73796286"
 ---
 ## <a name="benefits-of-managed-disks"></a>Zalety dysków zarządzanych
 
@@ -55,7 +55,7 @@ Dyski zarządzane oferują dwa różne rodzaje szyfrowania. Pierwszy jest szyfro
 
 ### <a name="server-side-encryption"></a>Szyfrowanie po stronie serwera
 
-[Szyfrowanie po stronie serwera platformy Azure](../articles/storage/common/storage-service-encryption.md) zapewnia szyfrowanie w czasie spoczynku i zabezpiecza dane zgodnie z zobowiązaniami dotyczącymi bezpieczeństwa i zgodności w organizacji. Szyfrowanie po stronie serwera jest domyślnie włączone dla wszystkich dysków zarządzanych, migawek i obrazów we wszystkich regionach, w których są dostępne usługi Managed Disks. Aby uzyskać więcej informacji, odwiedź [stronę Managed disks często zadawanych pytań](../articles/virtual-machines/windows/faq-for-disks.md#managed-disks-and-storage-service-encryption) .
+[Szyfrowanie po stronie serwera platformy Azure](../articles/virtual-machines/windows/disk-encryption.md) zapewnia szyfrowanie w czasie spoczynku i zabezpiecza dane zgodnie z zobowiązaniami dotyczącymi bezpieczeństwa i zgodności w organizacji. Szyfrowanie po stronie serwera jest domyślnie włączone dla wszystkich dysków zarządzanych, migawek i obrazów we wszystkich regionach, w których są dostępne usługi Managed Disks. Możesz zezwolić na platformę Azure do zarządzania kluczami, które są kluczami zarządzanymi przez platformę, lub samodzielnie nimi zarządzać. Klucze te są kluczami zarządzanymi przez klienta (wersja zapoznawcza). Aby uzyskać więcej informacji, odwiedź [stronę Managed disks często zadawanych pytań](../articles/virtual-machines/windows/faq-for-disks.md#managed-disks-and-storage-service-encryption) .
 
 ### <a name="azure-disk-encryption"></a>Usługa Azure Disk Encryption
 
@@ -85,7 +85,7 @@ Każda maszyna wirtualna zawiera dysk tymczasowy, który nie jest dyskiem zarzą
 
 Migawka dysku zarządzanego jest tylko do odczytu pełna kopia dysku zarządzanego, która jest domyślnie przechowywana jako standardowy dysk zarządzany. Za pomocą migawek można tworzyć kopie zapasowe dysków zarządzanych w dowolnym momencie. Te migawki istnieją niezależnie od dysku źródłowego i mogą być używane do tworzenia nowych dysków zarządzanych. 
 
-Migawki są rozliczane na podstawie użytego rozmiaru. Na przykład, jeśli utworzysz migawkę dysku zarządzanego o pojemności 64 GiB i rzeczywistej używanej wielkości danych wynoszącej 10 GiB, ta migawka jest naliczana tylko za użyty rozmiar danych wynoszący 10 GiB. Używany rozmiar migawek można zobaczyć, przeglądając [raport użycia platformy Azure](https://docs.microsoft.com/en-us/azure/billing/billing-understand-your-bill). Na przykład jeśli używany rozmiar danych migawki to 10 GiB, Raport **dziennego** użycia będzie zawierał 10 GIB/(31 dni) = 0,3226 jako ilość zużytą.
+Migawki są rozliczane na podstawie użytego rozmiaru. Na przykład, jeśli utworzysz migawkę dysku zarządzanego o pojemności 64 GiB i rzeczywistej używanej wielkości danych wynoszącej 10 GiB, ta migawka jest naliczana tylko za użyty rozmiar danych wynoszący 10 GiB. Używany rozmiar migawek można zobaczyć, przeglądając [raport użycia platformy Azure](https://docs.microsoft.com/azure/billing/billing-understand-your-bill). Na przykład jeśli używany rozmiar danych migawki to 10 GiB, Raport **dziennego** użycia będzie zawierał 10 GIB/(31 dni) = 0,3226 jako ilość zużytą.
 
 Aby dowiedzieć się więcej na temat tworzenia migawek dla dysków zarządzanych, zobacz następujące zasoby:
 
