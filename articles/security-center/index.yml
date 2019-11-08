@@ -6,18 +6,17 @@ metadata:
   description: Zacznij korzystać z usługi Security Center i dowiedz się, jak zabezpieczać obciążenia oraz ograniczać ryzyko, wykrywać ataki i reagować na nie, korzystając z przewodników Szybki start i samouczków.
   services: security-center
   ms.service: security-center
-  ms.subservice: subservice
   ms.topic: landing-page
   ms.collection: collection
   author: memildin
   ms.author: memildin
   ms.date: 11/04/2019
-  ms.openlocfilehash: 8174498a5cc94eca0883102c95b543630cd37fdf
-  ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
+  ms.openlocfilehash: 33c2d287219f8005063af746f0b6d6448b1a4ef7
+  ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
   ms.translationtype: HT
   ms.contentlocale: pl-PL
-  ms.lasthandoff: 11/05/2019
-  ms.locfileid: "73607502"
+  ms.lasthandoff: 11/08/2019
+  ms.locfileid: "73824804"
 landingContent:
 - title: Informacje o usłudze Security Center
   linkLists:

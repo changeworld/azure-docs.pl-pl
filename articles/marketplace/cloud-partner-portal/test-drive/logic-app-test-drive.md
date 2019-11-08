@@ -1,147 +1,148 @@
 ---
-title: Wersja testowa aplikacji logiki | Portal Azure Marketplace
-description: Wyjaśnia sposób tworzenia ich wersji testowej, łączącego z wystąpienia programu Dynamics AX/CRM lub innych zasobów poza po prostu Azure.
+title: Dysk testowy aplikacji logiki | Portal Azure Marketplace
+description: Wyjaśnia, jak skompilować swój dysk testowy, który łączy się z wystąpieniem programu Dynamics AX/CRM lub innym zasobem poza platformą Azure.
 services: Azure, Marketplace, Cloud Partner Portal,
 author: pbutlerm
 ms.service: marketplace
+ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 09/13/2018
 ms.author: pabutler
-ms.openlocfilehash: 3dc5642541f411acc93301f6bb9828e901aba449
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 87170344f7467770829cbd8ba7d8936a9e39c0cc
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64940004"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73824601"
 ---
-<a name="logic-app-test-drive"></a>Wersja testowa aplikacji logiki
+<a name="logic-app-test-drive"></a>Dysk testowy aplikacji logiki
 ====================
 
-Ten artykuł jest dla wydawców, którzy z opisem oferty w usłudze AppSource i chcesz utworzyć ich wersji testowej, łączącego z wystąpienia programu Dynamics AX/CRM lub innych zasobów poza po prostu platformy Azure.
+Ten artykuł jest przeznaczony dla wydawców, którzy mają swoją ofertę w witrynie AppSource, i chcą skompilować swój dysk testowy, który łączy się z wystąpieniem programu Dynamics AX/CRM lub innym zasobem poza platformą Azure.
 
-<a name="how-to-build-a-logic-app-test-drive"></a>Jak utworzyć wersję testową aplikacji logiki
+<a name="how-to-build-a-logic-app-test-drive"></a>Jak utworzyć dysk testowy aplikacji logiki
 -----------------------------------
 
-Testowanie dokumentacji dysku dla wersji testowych aplikację logiki obecnie jest nadal w witrynie GitHub [operacji](https://github.com/Microsoft/AppSource/blob/master/Setup-your-Azure-subscription-for-Dynamics365-Operations-Test-Drives.md) i [zaangażowania użytkowników](https://github.com/Microsoft/AppSource/wiki/Setting-up-Test-Drives-for-Dynamics-365-app)Przejdź miejsca, aby dowiedzieć się więcej.
+Dokumentacja dotycząca dysków testowych dla usługi Logic App test Drives jest obecnie dostępna w serwisie GitHub na potrzeby [operacji](https://github.com/Microsoft/AppSource/blob/master/Setup-your-Azure-subscription-for-Dynamics365-Operations-Test-Drives.md) i [zaangażowania klientów](https://github.com/Microsoft/AppSource/wiki/Setting-up-Test-Drives-for-Dynamics-365-app). Aby dowiedzieć się więcej, przejdź na stronę.
 
-<a name="how-to-publish-a-test-drive"></a>Jak opublikować wersję testową
+<a name="how-to-publish-a-test-drive"></a>Jak opublikować dysk testowy
 ---------------------------
 
-Teraz, gdy masz utworzone wersji testowej, w tej sekcji przedstawiono wszystkie pola wymagane opublikowanie wersji testowej.
+Teraz, gdy masz już skompilowany dysk testowy, w tej sekcji omówiono wszystkie pola wymagane do pomyślnego opublikowania dysku testowego.
 
-![Włącz tę funkcję w wersji testowej](./media/azure-resource-manager-test-drive/howtopub1.png)
+![Włącz funkcję Test Drive](./media/azure-resource-manager-test-drive/howtopub1.png)
 
-Pole pierwszy i najważniejszy jest do wyświetlania i ukrywania ma testu formularza, wszystkie wymagane pola są prezentowane służących do wypełniania. Po wybraniu **nie** formularza zostanie wyłączona, a Jeśli publikujesz za pomocą wersji testowej wyłączone wersji testowej zostanie usunięta ze środowiska produkcyjnego.
+Pierwsze i najważniejsze pole polega na przełączeniu, czy chcesz, aby test formularza ze wszystkimi wymaganymi polami został przedstawiony do wypełnienia. Po wybraniu opcji **nie** formularz zostanie wyłączony, a w przypadku ponownego opublikowania z wyłączonym dyskiem testowym dysk testowy zostanie usunięty z produkcji.
 
-*Uwaga*: Jeśli ma żadnych testów dyski są aktywnie używane przez użytkowników, tych wersji testowych będzie nadal działać do momentu wygaśnięcia ich sesji.
+*Uwaga*: Jeśli wszystkie dyski testowe są używane w sposób aktywny przez użytkowników, te dyski testowe będą nadal działać do momentu wygaśnięcia sesji.
 
 ### <a name="details"></a>Szczegóły
 
-Następnej sekcji, aby wypełnić to oferują szczegółowe informacje o wersji testowej.
+Następna sekcja do wypełnienia to szczegółowe informacje o ofercie dotyczącej wersji testowej.
 
 ![Szczegóły sterownika testu](./media/azure-resource-manager-test-drive/howtopub2.png)
 
-**Opis —** *[wymagane pole]* jest to, gdzie wpisać opis główny o nowościach w wersji testowej. Klient będzie przejdź tutaj, aby odczytać scenariusze, jakie wersji testowej będzie obejmował dotyczących produktu. 
+**Opis —** *[pole wymagane]* to miejsce, w którym napiszesz główny opis dotyczący tego, co znajduje się na dysku testowym. Klient będzie miał tu miejsce, aby zapoznać się z scenariuszami, które będą obejmowały Twój produkt. 
 
-**Podręcznik użytkownika -** *[wymagane pole]* to szczegółowe wskazówki dotyczące środowiska wersji testowej. Spowoduje to otwarcie siedziba klienta i zapoznać się z dokładnie co chcesz zrobić w całym ich wersji testowej. Jest ważne, że ta zawartość jest łatwy do zrozumienia i postępuj zgodnie z! (Musi być plikiem PDF)
+**Podręcznik użytkownika —** *[pole wymagane]* jest to szczegółowy przewodnik po środowisku testowym. Klient otworzy ten element i będzie mógł zapoznać się z dokładnie tym, co chcesz zrobić w całej wersji testowej. Ważne jest, aby zawartość tego programu była łatwa do zrozumienia i wykonania. (Musi być plikiem PDF)
 
-**Testowanie dysku demonstracyjny materiał wideo —** \[zalecane\] podobny do podręcznika użytkownika, najlepiej jest uwzględnienie Samouczek wideo dla środowiska wersji testowej. Klient będzie oczekiwał w tym wcześniejsze lub w trakcie ich wersji testowej i zapoznać się z dokładnie co chcesz zrobić w całym ich wersji testowej. Jest ważne, że ta zawartość jest łatwy do zrozumienia i postępuj zgodnie z!
+**Film wideo demonstracyjnej wersji testowej —** \[zalecane\] podobne do podręcznika użytkownika. najlepiej jest dodać samouczek wideo dotyczący środowiska testowego. Klient będzie oglądać ten element przed lub w trakcie jego testowania i może przeszukiwać dokładnie te elementy, które mają być wykonywane na całym dysku testowym. Ważne jest, aby zawartość tego programu była łatwa do zrozumienia i wykonania.
 
 - **Nazwa** — tytuł filmu wideo
-- **Link** -musi być adresem URL osadzonego serwisu YouTube lub Vimeo. Przykład wprowadzenie adresu url osadzonego znajduje się poniżej:
-- **Miniatura** -musi być obrazem o wysokiej jakości pikseli (533 x 324). Zalecane jest wykonanie zrzutu część środowiska wersji testowej w tym miejscu.
+- **Link** — musi być OSADZONYM adresem URL z usługi YouTube lub Vimeo. Przykład dotyczący sposobu uzyskiwania osadzonego adresu URL jest następujący:
+- **Miniatura** — musi być pikseli obrazu o wysokiej jakości (533x324). Zalecane jest przełączenie zrzutu ekranu na część środowiska testowego.
 
-Poniżej przedstawiono, jak te pola wyświetlane dla klientów podczas ich wersji testowej.
+Poniżej przedstawiono sposób wyświetlania tych pól dla klienta w środowisku testowym.
 
-![Test stacji pola wygląd i działanie](./media/azure-resource-manager-test-drive/howtopub4.png)
+![Sprawdzanie i działanie pól na dysku testowym](./media/azure-resource-manager-test-drive/howtopub4.png)
 
-### <a name="technical-configuration"></a>Pomoc konfiguracji
+### <a name="technical-configuration"></a>Konfiguracja techniczna
 
-Jest następnej sekcji, aby wypełnić, którym można skonfigurować aplikację logiki dysku testu i zdefiniuj sposób specjalnie wersji testowej wystąpienia pracy.
+Następna sekcja do wypełnienia to miejsce, w którym konfigurujesz aplikację logiki dysku testowego i definiujesz, w jaki sposób konkretne wystąpienia testów są wykonywane.
 
-![Konfiguracja techniczne dysku testu](./media/azure-resource-manager-test-drive/howtopub5_logicapp.png)
+![Testuj konfigurację techniczną](./media/azure-resource-manager-test-drive/howtopub5_logicapp.png)
 
-- **Region** -  *[wymagane pole]* regionu, możesz wybrać to, gdzie wybierz wdrożonym zasobów aplikacji logiki dysku testu w.
+- **Region** -  *[pole wymagane]* wybrany region to miejsce, w którym można wybrać lokalizację, w której są wdrażane zasoby aplikacji logiki dysku testowego.
 
-    *Uwaga:* Jeśli Twoja aplikacja logiki ma zasoby niestandardowe, które są przechowywane w regionie, upewnij się, że ten region wybrany w tym miejscu. Najlepszym sposobem, w tym celu jest **pełni wdrażanie aplikacji logiki lokalnie w Twojej subskrypcji platformy Azure w portalu i sprawdź, czy działa** przed napisaniem go tutaj.
+    *Uwaga:* Jeśli aplikacja logiki ma zasoby niestandardowe, które są przechowywane w regionie, upewnij się, że w tym miejscu wybrano region. Najlepszym sposobem jest w **pełni wdrażanie aplikacji logiki lokalnie w ramach subskrypcji platformy Azure w portalu i upewnienie się, że działa** przed zapisaniem jej w tym miejscu.
 
-- **Maksymalna współbieżnych wersji testowych** -  *[wymagane pole]* wystąpień z numer dysku testów, które są już wdrożone i Oczekiwanie na dostęp do wybranego regionu. Klienci mogą uzyskać dostęp natychmiast wersji testowych, a nie musisz czekać, aż do wdrożenia.
+- **Maksymalna liczba współbieżnych dysków testowych** -  *[pole wymagane]* liczbę wystąpień testowych, które są już wdrożone i oczekują na dostęp w wybranym regionie. Klienci mogą natychmiast uzyskać dostęp do tych dysków testowych zamiast czekać na wdrożenie.
 
-    *Uwaga:* Jeśli używasz seminarium w sieci Web/class, którego wszystkich uczniów, aby wypróbować wersję testową liczbę N, zaleca się publikowanie N liczby wystąpień w warstwie gorąca, a następnie drugi raz klasy jest ponad ponownie opublikować do Twojej normalną liczbę wystąpień w warstwie gorąca.
+    *Uwaga:* Jeśli korzystasz z seminarium internetowe/klasy, w której chcesz, aby wszyscy N studentów mogli korzystać z wersji testowej, zaleca się opublikowanie z N liczbami aktywnych wystąpień, a następnie, gdy Klasa jest w trybie failover w celu ponownego opublikowania w normalnej liczbie aktywnych wystąpień.
 
-- **Dysk czas trwania testu (godziny) —** *[wymagane pole]* czas trwania ile wersji testowej pozostaną aktywne w \# godzin. Wersji testowej kończy się automatycznie po zakończeniu tego okresu.
+- **Czas trwania dysku testowego (w godzinach) —** *[pole wymagane]* czas trwania okresu, przez który Stacja testowa pozostanie aktywna, w \# godzinach. Po upływie tego czasu test kończy się automatycznie.
 
-- **Nazwa grupy zasobów platformy Azure —** *[wymagane pole]* zapisu w Nazwa grupy zasobów, w którym usługi Logic App testu dyski są zapisywane.
+- **Nazwa grupy zasobów platformy Azure —** *[pole wymagane]* wpisz nazwę grupy zasobów, w której są zapisywane dyski testowe aplikacji logiki.
 
-- **Przypisz nazwę aplikacji logiki —** *[wymagane pole]* zapisu w logice aplikacji, która umożliwia przypisywanie użytkownika w wersji testowej, zanim klient pobiera ją, zapisać nazwę tej aplikacji logiki. Upewnij się, że plik został zapisany w grupie zasobów powyżej.
+- **Przypisywanie nazwy aplikacji logiki —** *[pole wymagane]* zapis w aplikacji logiki, która jest używana do przypisywania użytkownika na dysku testowym przed jego pobraniem przez klienta, należy napisać tutaj nazwę tej aplikacji logiki. Upewnij się, że ten plik jest zapisany w powyższej grupie zasobów.
 
-- **Anulowanie aprowizacji Nazwa aplikacji logiki —** *[wymagane pole]* zapisu w nazwie aplikacji logiki anulować wszystkie zasoby utworzone w wersji testowej. Upewnij się, że plik został zapisany w grupie zasobów powyżej.
+- Cofanie aprowizacji **nazwy aplikacji logiki —** *[pole wymagane]* zapis w nazwie aplikacji logiki w celu anulowania aprowizacji wszystkich zasobów utworzonych na dysku testowym. Upewnij się, że ten plik jest zapisany w powyższej grupie zasobów.
 
-- **Dostęp do informacji -** *[wymagane pole]* po klient pobiera ich wersji testowej, uzyskiwanie dostępu do informacji są prezentowane do nich. Te instrukcje są przeznaczone do udostępniania parametry wyjściowe przydatne szablonu Menedżera zasobów testowych z dysku. Aby uwzględnić parametry wyjściowe, należy użyć podwójnego nawiasów klamrowych (na przykład **{{outputname}}** ), a ich zostanie wstawiony poprawnie w lokalizacji. (Formatowanie ciągu HTML zaleca się tutaj do renderowania frontonu).
+- **Informacje o dostępie —** *[pole wymagane]* po otrzymaniu przez klienta dysku testowego są dla nich widoczne informacje o dostępie. Te instrukcje mają na celu udostępnienie przydatnych parametrów wyjściowych na dysku testowym Menedżer zasobów szablonu. Aby uwzględnić parametry wyjściowe, należy użyć podwójnych nawiasów klamrowych (na przykład **{{outputName}}** ), które zostaną poprawnie wstawione w lokalizacji. (W tym miejscu zalecane jest formatowanie ciągu HTML do renderowania w frontonie).
 
-### <a name="test-drive-deployment-subscription-details"></a>Szczegóły subskrypcji wdrożenia dysku testu
+### <a name="test-drive-deployment-subscription-details"></a>Szczegóły subskrypcji wdrożenia dysku testowego
 
-Sekcji końcowej, aby wypełnić ma mieć możliwość wdrażania wersji testowych automatycznie, łącząc subskrypcji platformy Azure i usługi Azure Active Directory (AD).
+Ostatnia sekcja do wypełnienia polega na automatycznym wdrożeniu dysków testowych przez połączenie subskrypcji platformy Azure i usługi Azure Active Directory (AD).
 
-![Wdrażanie wersji subskrypcji Szczegóły testu](./media/azure-resource-manager-test-drive/subdetails1.png)
+![Szczegóły subskrypcji wdrożenia dysku testowego](./media/azure-resource-manager-test-drive/subdetails1.png)
 
-**Identyfikator subskrypcji platformy Azure** *[wymagane pole]* spowoduje to przydzielenie dostępu do usług platformy Azure i witryny Azure portal. Subskrypcja jest, gdzie raportowania użycia zasobów i usługi są rozliczane. Jeśli nie masz jeszcze **oddzielnych** subskrypcji platformy Azure dla wersji testowych tylko, przejdź dalej i utworzyć. Identyfikatory subskrypcji platformy Azure można znaleźć, logując się do witryny Azure portal i przechodząc do subskrypcji, w menu po lewej stronie.
+**Identyfikator subskrypcji platformy Azure** *[pole wymagane]* pozwala to na dostęp do usług platformy Azure i Azure Portal. Subskrypcja polega na tym, że raportowane jest użycie zasobów, a usługi są rozliczane. Jeśli nie masz jeszcze **oddzielnej** subskrypcji platformy Azure dla dysków testowych, przejdź dalej i utwórz ją. Identyfikatory subskrypcji platformy Azure można znaleźć, logując się do Azure Portal i przechodząc do subskrypcji w menu po lewej stronie.
 (Przykład: "a83645ac-1234-5ab6-6789-1h234g764ghty")
 
 ![Subskrypcje platformy Azure](./media/azure-resource-manager-test-drive/subdetails2.png)
 
-**Identyfikator dzierżawy usługi Azure AD** *[wymagane pole]* Jeśli masz już dostępną identyfikator dzierżawy go poniżej można znaleźć we właściwościach -\> identyfikator katalogu.
+**Identyfikator dzierżawy usługi Azure AD** *[pole wymagane]* Jeśli masz już dostępny identyfikator dzierżawy, możesz go znaleźć poniżej we właściwościach\> identyfikator katalogu.
 
 ![Usługa Azure Active Directory](./media/azure-resource-manager-test-drive/subdetails3.png)
 
-W przeciwnym razie należy utworzyć nową dzierżawę usługi Azure Active Directory.
+W przeciwnym razie Utwórz nową dzierżawę w Azure Active Directory.
 
-![Ekran właściwości w usłudze Azure Active Directory](./media/azure-resource-manager-test-drive/subdetails4.png)
+![Ekran właściwości Azure Active Directory](./media/azure-resource-manager-test-drive/subdetails4.png)
 
-! Usługa Azure Active Directory](./media/azure-resource-manager-test-drive/subdetails5.png)
+! Azure Active Directory] (./Media/Azure-Resource-Manager-Test-Drive/subdetails5.png)
 
-![Dzierżawy usługi Azure Active Directory](./media/azure-resource-manager-test-drive/subdetails6.png)
+![Dzierżawy Azure Active Directory](./media/azure-resource-manager-test-drive/subdetails6.png)
 
-**Identyfikator aplikacji w usłudze Azure AD** *[wymagane pole]* następnym krokiem jest tworzenie i rejestrowanie nowej aplikacji. Ta aplikacja będzie służy do wykonywania operacji w ramach wystąpienia wersji testowej.
+**Identyfikator aplikacja usługi Azure AD** *[pole wymagane]* następnym krokiem jest utworzenie i zarejestrowanie nowej aplikacji. Ta aplikacja zostanie użyta do wykonania operacji w wystąpieniu dysku testowego.
 
-1. Przejdź do katalogu nowo utworzonego lub już istniejących w katalogu, a następnie wybierz pozycję usługi Azure Active directory w okienku filtrów.
-2. Wyszukaj "Rejestracje aplikacji" i kliknij przycisk "Dodaj"
+1. Przejdź do nowo utworzonego katalogu lub już istniejącego katalogu i wybierz pozycję Azure Active Directory w okienku Filtr.
+2. Wyszukaj ciąg "Rejestracje aplikacji" i kliknij pozycję "Dodaj"
 3. Podaj nazwę aplikacji.
-4. Wybierz typ jako "aplikacja sieci Web / interfejs API"
-5. Wprowadzić dowolną wartość w polu adres URL logowania, zdobyliśmy\'t można za pomocą tego pola.
+4. Wybierz typ as "Web App/API"
+5. Podaj dowolną wartość w adresie URL logowania,\'t używać tego pola.
 6. Kliknij przycisk Utwórz.
-7. Po utworzeniu aplikacji przejdź do właściwości -\> ustaw ją jako wielodostępne, a następnie kliknij przycisk Zapisz.
+7. Po utworzeniu aplikacji przejdź do pozycji właściwości —\> Ustaw aplikację jako wielodostępną i naciśnij pozycję Zapisz.
 
-Kliknij pozycję Zapisz. Ostatnim krokiem jest identyfikator aplikacji dla tej aplikacji zarejestrowanych i wklej go w tym polu wersji testowej.
+Kliknij pozycję Zapisz. Ostatnim krokiem jest pobranie identyfikatora aplikacji dla tej zarejestrowanej aplikacji i wklejenie go w polu Test Drive tutaj.
 
 ![Identyfikator aplikacji usługi Azure Active Directory](./media/azure-resource-manager-test-drive/subdetails7.png)
 
-Biorąc pod uwagę używamy aplikacji do wdrożenia do subskrypcji, musimy dodać aplikację jako współautora w subskrypcji. Instrukcje te są jak poniżej:
+Przy użyciu aplikacji do wdrożenia w ramach subskrypcji musimy dodać aplikację jako współautora subskrypcji. Poniższe instrukcje są następujące:
 
-1. Przejdź do bloku subskrypcje i wybierz odpowiednią subskrypcję, którego używasz do testowej.
-1. Kliknij przycisk **kontrola dostępu (IAM)** .
-1. Kliknij przycisk **przypisań ról** kartę.  ![Usługa Azure Active Directory, dodając nową jednostkę kontroli dostępu](./media/azure-resource-manager-test-drive/SetupSub7_1.jpg)
-1. Kliknij przycisk **Dodaj przypisanie roli**.
-1. Ustaw rolę **Współautor**.
-1. Wpisz nazwę aplikacji usługi Azure AD, a następnie wybierz aplikację, aby przypisać rolę.
-    ![Uprawnienia usługi Active Directory platformy Azure](./media/azure-resource-manager-test-drive/SetupSub7_2.jpg)
+1. Przejdź do bloku subskrypcje i wybierz odpowiednią subskrypcję, która jest używana tylko dla wersji testowej.
+1. Kliknij pozycję **Kontrola dostępu (IAM)** .
+1. Kliknij kartę **przypisania ról** .  ![Azure Active Directory, Dodawanie nowej Access Control głównej](./media/azure-resource-manager-test-drive/SetupSub7_1.jpg)
+1. Kliknij pozycję **Dodaj przypisanie roli**.
+1. Ustaw rolę jako **współautor**.
+1. Wpisz nazwę aplikacji usługi Azure AD i wybierz aplikację, w której ma zostać przypisana rola.
+    ![uprawnień Azure Active Directory](./media/azure-resource-manager-test-drive/SetupSub7_2.jpg)
 1. Kliknij pozycję **Zapisz**.
 
-**Klucz aplikacji w usłudze Azure AD —** *[wymagane pole]* końcowego pole jest do generowania klucza uwierzytelniania. W obszarze klucze Dodaj opis klucza, ustaw czas nigdy nie wygasa, następnie wybierz pozycję Zapisz. Jest **ważne** pozwala uniknąć wygasłe klucza, co spowoduje przerwanie wersji testowej w środowisku produkcyjnym. Skopiuj tę wartość i wklej go do wymagane pole wersji testowej.
+**Klucz aplikacja usługi Azure AD-** *[pole wymagane]* końcowe pole ma generować klucz uwierzytelniania. W obszarze klucze Dodaj Opis klucza, ustaw czas trwania, aby nigdy nie wygaśnie, a następnie wybierz pozycję Zapisz. **Ważne** jest, aby uniknąć posiadania klucza wygasłego, co spowoduje uszkodzenie dysku testowego w środowisku produkcyjnym. Skopiuj tę wartość i wklej ją do wymaganego pola Test Drive.
 
-![Usługa Azure Active Directory klucze sekcji](./media/azure-resource-manager-test-drive/subdetails8.png)
+![Sekcja kluczy Azure Active Directory](./media/azure-resource-manager-test-drive/subdetails8.png)
 
 > [!CAUTION]
-> Nie można użyć wersji zapoznawczej rejestracji w aplikacji Azure, ponieważ nie generuje obecnie klucz zakodowane w formacie base64.
+> Nie można użyć wersji zapoznawczej rejestracji aplikacji platformy Azure, ponieważ nie generuje ona obecnie klucza zakodowanego algorytmem Base64.
 
 
-<a name="next-steps"></a>Kolejne kroki
+<a name="next-steps"></a>Następne kroki
 ----------
 
-Teraz, gdy wszystkich pól wersji testowej wypełnione przejść i **ponownie opublikować** oferty. Po wersji testowej został przekazany proces certyfikacji, należy go dokładnie przetestować środowiska klienta w **Podgląd** oferty. Uruchom wersję testową w interfejsie użytkownika, a następnie sprawdź, czy wersji testowych są w pełni wdrażany prawidłowo.
+Teraz, gdy masz wszystkie wypełnione pola dysku testowego, przejdź przez i **ponownie Opublikuj** swoją ofertę. Gdy Twój test przeszedł proces certyfikacji, należy zapoznać się z obszernym testem środowiska klienta w **wersji zapoznawczej** oferty. Uruchom test w interfejsie użytkownika i sprawdź, czy dyski testowe są w pełni wdrożone prawidłowo.
 
-Jest to należy zwrócić uwagę, czy nie powoduje usunięcia dowolnej części wersji testowej jako są udostępnione dla klientów, więc wersji testowej usługi będzie automatycznie wyczyścić te grupy zasobów po zakończeniu z nim pracy klienta.
+Należy pamiętać, że nie usuwasz żadnej części dysku testowego, ponieważ są one inicjowane dla klientów, więc Usługa dysków testowych automatycznie wyczyści te grupy zasobów po zakończeniu działania klienta.
 
-Gdy masz doświadczenie z ofertą użytkownika (wersja zapoznawcza), nadszedł czas na **emisji na żywo**! Gdy oferta została publikowanych w podwójnego wyboru całe środowisko typu end to end jest proces ostateczny Przegląd, od firmy Microsoft. Jeśli z jakiegoś powodu odrzucenia pobiera oferty firma Microsoft będzie wysyłał powiadomienie do inżynierów skontaktuj się z ofertą wyjaśniający, co będzie potrzebne do rozwiązania.
+Gdy będziesz mieć doświadczenie z ofertą wersji zapoznawczej, teraz możesz **przejść na żywo**. Po opublikowaniu oferty od firmy Microsoft jest dostępny końcowy proces przeglądu, który umożliwia dokładne sprawdzenie całego środowiska. Jeśli z jakiegoś powodu oferta zostanie odrzucona, wyślemy powiadomienie do osoby kontaktowej inżyniera o swojej ofercie wyjaśniającej, co będzie musiało zostać naprawione.
 
-Jeśli masz więcej pytań, czego szukasz poradę dotyczącą rozwiązywania problemów lub mają być łatwiejsza, wersji testowej, przejdź do [— często zadawane pytania, rozwiązywanie problemów i najlepsze rozwiązania](./marketing-and-best-practices.md).
+Jeśli masz więcej pytań, szukasz porad dotyczących rozwiązywania problemów lub chcesz, aby test został pomyślnie przeszedł, przejdź do [sekcji często zadawane pytania, rozwiązywanie problemów, & najlepsze rozwiązania](./marketing-and-best-practices.md).

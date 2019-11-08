@@ -1,5 +1,5 @@
 ---
-title: Konfigurowanie zabezpieczeń Azure SQL Database na potrzeby odzyskiwania po awarii
+title: Konfigurowanie zabezpieczeń na potrzeby odzyskiwania po awarii
 description: Zapoznaj się z zagadnieniami dotyczącymi zabezpieczeń w zakresie konfigurowania zabezpieczeń i zarządzania nimi po przywróceniu bazy danych lub przejściu do trybu failover na serwerze pomocniczym.
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: anosov1960
 ms.author: sashan
 ms.reviewer: mathoma, carlrab
 ms.date: 12/18/2018
-ms.openlocfilehash: 3c08ba1a37d7b0d16042d6496c27e0de8d070b75
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 9d628583168883276e67d9e2f2fcafdce292769e
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73689973"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73807492"
 ---
 # <a name="configure-and-manage-azure-sql-database-security-for-geo-restore-or-failover"></a>Konfigurowanie zabezpieczeń Azure SQL Database i zarządzanie nimi na potrzeby przywracania geograficznego lub przełączenia w tryb failover
 

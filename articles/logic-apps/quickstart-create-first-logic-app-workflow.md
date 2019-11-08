@@ -1,6 +1,6 @@
 ---
 title: Tworzenie pierwszego zautomatyzowanego przepływu pracy — Azure Logic Apps
-description: Szybki Start — Tworzenie pierwszego zautomatyzowanego zadania przy użyciu Azure Logic Apps na potrzeby rozwiązań integracji systemu i integracji aplikacji w przedsiębiorstwie (EAI)
+description: Szybki Start — Tworzenie pierwszego zautomatyzowanego przepływu pracy przy użyciu Azure Logic Apps na potrzeby rozwiązań integracji systemu i integracji aplikacji w przedsiębiorstwie (EAI)
 services: logic-apps
 ms.service: logic-apps
 ms.suite: integration
@@ -11,20 +11,20 @@ ms.reviewer: klam, LADocs
 ms.topic: quickstart
 ms.custom: mvc
 ms.date: 10/20/2019
-ms.openlocfilehash: d5ac23da7b4460211100f1140c24f6ed28ab3e39
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: b6222747e352f446dab33314729f7f697e328909
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73584341"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73824906"
 ---
-# <a name="quickstart-create-your-first-automated-workflow-with-azure-logic-apps---azure-portal"></a>Szybki start: tworzenie pierwszego zautomatyzowanego przepływu pracy za pomocą usługi Azure Logic Apps — witryna Azure Portal
+# <a name="quickstart-create-your-first-workflow-by-using-azure-logic-apps---azure-portal"></a>Szybki Start: Tworzenie pierwszego przepływu pracy przy użyciu Azure Logic Apps-Azure Portal
 
-W tym przewodniku Szybki start wyjaśniono, jak utworzyć pierwszy zautomatyzowany przepływ pracy za pomocą usługi [Azure Logic Apps](../logic-apps/logic-apps-overview.md). W tym artykule opisano, jak utworzyć aplikację logiki regularnie sprawdzającą kanał informacyjny RSS witryny internetowej pod kątem nowych elementów. Jeśli istnieją nowe elementy, aplikacja logiki wysyła wiadomość e-mail dotyczącą każdego elementu. Po ukończeniu aplikacja logiki będzie ogólnie wyglądać jak ten przepływ pracy:
+W tym przewodniku szybki start przedstawiono podstawowe ogólne pojęcia związane z tworzeniem pierwszego przepływu pracy przy użyciu [Azure Logic Apps](../logic-apps/logic-apps-overview.md), takich jak tworzenie pustej aplikacji logiki, Dodawanie wyzwalacza i akcji, a następnie testowanie aplikacji logiki. W tym przewodniku szybki start utworzysz aplikację logiki, która regularnie sprawdza kanał informacyjny RSS witryny sieci Web pod kątem nowych elementów. Jeśli istnieją nowe elementy, aplikacja logiki wysyła wiadomość e-mail dotyczącą każdego elementu. Po ukończeniu aplikacja logiki będzie ogólnie wyglądać jak ten przepływ pracy:
 
 ![Przykładowy przepływ pracy aplikacji logiki wysokiego poziomu](./media/quickstart-create-first-logic-app-workflow/quickstart-workflow-overview.png)
 
-Aby skorzystać z tego przewodnika Szybki Start, musisz mieć konto e-mail od dostawcy, który jest obsługiwany przez Azure Logic Apps, na przykład Office 365 Outlook, Outlook.com lub gmail. W przypadku innych dostawców [przejrzyj tę listę łączników](https://docs.microsoft.com/connectors/). Ta aplikacja logiki korzysta z konta Office 365 Outlook. Jeśli używasz innego konta e-mail, ogólne kroki są takie same, ale interfejs użytkownika może się nieco różnić.
+W tym scenariuszu wymagane jest konto e-mail z usługi obsługiwanej przez Azure Logic Apps, na przykład Office 365 Outlook, Outlook.com lub gmail. W przypadku innych obsługiwanych usług poczty e-mail [Przejrzyj listę łączników tutaj](https://docs.microsoft.com/connectors/). W tym przykładzie aplikacja logiki używa pakietu Office 365 Outlook. Jeśli używasz innej usługi poczty e-mail, ogólne kroki są takie same, ale interfejs użytkownika może się nieco różnić.
 
 Jeśli nie masz subskrypcji platformy Azure, [zarejestruj się w celu założenia bezpłatnego konta platformy Azure](https://azure.microsoft.com/free/).
 
@@ -42,7 +42,7 @@ Zaloguj się do [witryny Azure Portal](https://portal.azure.com) przy użyciu po
 
    ![Dodaj nową aplikację logiki](./media/quickstart-create-first-logic-app-workflow/add-new-logic-app.png)
 
-1. W okienku aplikacja logiki podaj szczegółowe informacje o aplikacji logiki, jak pokazano poniżej. Po zakończeniu wybierz pozycję **Utwórz**.
+1. W okienku **aplikacja logiki** podaj szczegółowe informacje o aplikacji logiki, jak pokazano poniżej. Po zakończeniu wybierz pozycję **Utwórz**.
 
    ![Podaj szczegóły nowej aplikacji logiki](./media/quickstart-create-first-logic-app-workflow/create-logic-app-settings.png)
 
@@ -69,11 +69,11 @@ Następnie dodaj [wyzwalacz](../logic-apps/logic-apps-overview.md#logic-app-conc
 
 <a name="add-rss-trigger"></a>
 
-## <a name="check-rss-feed-with-a-trigger"></a>Sprawdzanie kanału informacyjnego RSS za pomocą wyzwalacza
+## <a name="add-the-rss-trigger"></a>Dodawanie wyzwalacza RSS
 
 1. W **Projektancie aplikacji logiki**, w polu wyszukiwania zaznacz **wszystko**.
 
-1. W polu wyszukiwania wpisz `rss`. Z listy Wyzwalacze wybierz ten wyzwalacz: **po opublikowaniu elementu kanału informacyjnego**.
+1. W polu wyszukiwania wprowadź `rss`, aby znaleźć łącznik RSS. Z listy Wyzwalacze wybierz wyzwalacz, **gdy element kanału informacyjnego jest publikowany** .
 
    ![Wybierz wyzwalacz "gdy element kanału informacyjnego jest opublikowany"](./media/quickstart-create-first-logic-app-workflow/add-rss-trigger-new-feed-item.png)
 
@@ -90,7 +90,7 @@ Następnie dodaj [wyzwalacz](../logic-apps/logic-apps-overview.md#logic-app-conc
 
    Interwał i częstotliwość określają harmonogram wyzwalacza aplikacji logiki. Ta aplikacja logiki sprawdza kanał informacyjny co minutę.
 
-1. Aby na razie ukryć szczegóły wyzwalacza, kliknij wewnątrz jego paska tytułu.
+1. Aby teraz zwinąć szczegóły wyzwalacza, kliknij wewnątrz paska tytułu wyzwalacza.
 
    ![Zwiń kształt aplikacji logiki, aby ukryć szczegóły](./media/quickstart-create-first-logic-app-workflow/collapse-trigger-shape.png)
 
@@ -98,7 +98,7 @@ Następnie dodaj [wyzwalacz](../logic-apps/logic-apps-overview.md#logic-app-conc
 
 Twoja aplikacja logiki jest już aktywna, ale nie robi niczego poza sprawdzaniem źródła danych RSS. Dodaj więc akcję reagującą na aktywowanie wyzwalacza.
 
-## <a name="send-email-with-an-action"></a>Wysyłanie wiadomości e-mail za pomocą akcji
+## <a name="add-the-send-email-action"></a>Dodaj akcję "Wyślij wiadomość e-mail"
 
 Teraz Dodaj [akcję](../logic-apps/logic-apps-overview.md#logic-app-concepts) , która wysyła wiadomość e-mail po pojawieniu się nowego elementu w kanale informacyjnym RSS.
 
@@ -108,7 +108,7 @@ Teraz Dodaj [akcję](../logic-apps/logic-apps-overview.md#logic-app-concepts) , 
 
 1. W obszarze **Wybierz akcję** i pole wyszukiwania wybierz pozycję **wszystkie**.
 
-1. W polu wyszukiwania wpisz `send an email`. Z listy akcji wybierz akcję „wyślij wiadomość e-mail” dla odpowiedniego dostawcy poczty e-mail.
+1. W polu wyszukiwania wprowadź `send an email`, aby znaleźć łączniki, które oferują tę akcję. Z listy Akcje wybierz akcję "Wyślij wiadomość e-mail" dla usługi poczty e-mail, której chcesz użyć. W tym przykładzie jest używany łącznik Office 365 Outlook, który ma akcję **Wyślij wiadomość e-mail** .
 
    ![Wybierz akcję "Wyślij wiadomość e-mail" dla pakietu Office 365 Outlook](./media/quickstart-create-first-logic-app-workflow/add-action-send-email.png)
 
@@ -117,7 +117,15 @@ Teraz Dodaj [akcję](../logic-apps/logic-apps-overview.md#logic-app-concepts) , 
    * Dla kont służbowych platformy Azure wybierz pozycję Office 365 Outlook.
    * Dla osobistych kont Microsoft wybierz pozycję Outlook.com.
 
-1. Jeśli pojawi się prośba o podanie poświadczeń, zaloguj się do swojego konta e-mail, aby usługa Logic Apps utworzyła połączenie z tym kontem e-mail.
+1. Jeśli wybrany łącznik poczty e-mail będzie monitował o uwierzytelnienie tożsamości, wykonaj ten krok teraz, aby utworzyć połączenie między aplikacją logiki a usługą poczty e-mail.
+
+   > [!NOTE]
+   > W tym konkretnym przykładzie ręcznie uwierzytelniasz swoją tożsamość. Jednak łączniki, które wymagają uwierzytelniania, różnią się w typach uwierzytelniania, które są przez nie obsługiwane. Dostępne są również opcje konfigurowania sposobu obsługi uwierzytelniania. Na przykład w przypadku używania szablonów Azure Resource Manager do wdrożenia można Sparametryzuj i zabezpieczyć dane wejściowe, które chcesz zmienić często lub łatwo, na przykład informacje o połączeniu. Aby uzyskać więcej informacji, zobacz następujące tematy:
+   >
+   > * [Parametry szablonu dla wdrożenia](../logic-apps/logic-apps-azure-resource-manager-templates-overview.md#template-parameters)
+   > * [Autoryzuj połączenia OAuth](../logic-apps/logic-apps-deploy-azure-resource-manager-templates.md#authorize-oauth-connections)
+   > * [Uwierzytelnianie dostępu za pomocą tożsamości zarządzanych](../logic-apps/create-managed-service-identity.md)
+   > * [Uwierzytelnianie połączeń dla wdrożenia aplikacji logiki](../logic-apps/logic-apps-azure-resource-manager-templates-overview.md#authenticate-connections)
 
 1. W obszarze akcji **Wyślij wiadomość e-mail** podaj dane, które powinny znaleźć się w wiadomości e-mail.
 

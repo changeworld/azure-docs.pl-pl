@@ -1,5 +1,5 @@
 ---
-title: Bezserwerowa usługa Azure SQL Database
+title: Praca bezserwerowa
 description: W tym artykule opisano nową warstwę obliczeniową bez serwera i porównuje ją z istniejącą zainicjowaną warstwą obliczeniową
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: moslake
 ms.author: moslake
 ms.reviewer: sstein, carlrab
 ms.date: 11/04/2019
-ms.openlocfilehash: fcd79182e046d94f9e67acecebd5cf6a45f2706f
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: fecc394080f54f023529ed2da8c9690c38c1da08
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73687385"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73818274"
 ---
 # <a name="azure-sql-database-serverless"></a>Bezserwerowa usługa Azure SQL Database
 
@@ -322,7 +322,7 @@ Cena jednostkowa rdzeń wirtualny jest kosztem za rdzeń wirtualny na sekundę. 
 
 Kwota naliczanych obliczeń jest uwidaczniana przez następującą metrykę:
 
-- **Metric**: App_cpu_billed (rdzeń wirtualny s)
+- **Metryka**: App_cpu_billed (rdzeń wirtualny s)
 - **Definicja**: max (min rdzeni wirtualnych, rdzeni wirtualnychd, min pamięci gb * 1/3, użyto pamięci gb * 1/3)
 - **Częstotliwość raportowania**: na minutę
 

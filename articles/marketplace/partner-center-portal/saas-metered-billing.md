@@ -5,14 +5,15 @@ author: qianw211
 manager: evansma
 ms.author: v-qiwe
 ms.service: marketplace
+ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 07/10/2019
-ms.openlocfilehash: a244e4f7ac406fecd4c053b39a5e9a9cb6ecab2c
-ms.sourcegitcommit: 1c9858eef5557a864a769c0a386d3c36ffc93ce4
+ms.openlocfilehash: 54b59cfecbbba6b71cf301aa4872892825d4b675
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71105494"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73827930"
 ---
 # <a name="metered-billing-using-the-marketplace-metering-service"></a>Naliczanie opłat za pomocą usługi pomiaru Marketplace
 
@@ -72,8 +73,8 @@ Wymiary rozliczeń są współużytkowane przez wszystkie plany oferty.  Niektó
 
 Atrybuty definiujące sam wymiar są współużytkowane przez wszystkie plany oferty.  Przed opublikowaniem oferty zmiany wprowadzone do tych atrybutów z kontekstu dowolnego planu wpłyną na definicję wymiaru we wszystkich planach.  Po opublikowaniu oferty te atrybuty nie będą już edytowalne.  Te atrybuty są następujące:
 
-* Identyfikator
-* Name
+* Identyfikatora
+* Nazwa
 * Jednostka miary
 
 Inne atrybuty wymiaru są specyficzne dla każdego planu i mogą mieć różne wartości z planu do zaplanowania.  Przed opublikowaniem planu można edytować te wartości, których dotyczy tylko ten plan.  Po opublikowaniu planu te atrybuty nie będą już edytowalne.  Te atrybuty są następujące:
@@ -102,8 +103,8 @@ Ponieważ wymiar używany z usługą pomiaru w portalu Marketplace reprezentuje 
   
 Po opublikowaniu oferty z wymiarem nie można już zmieniać szczegółów na poziomie oferty dla tego wymiaru:
 
-* Identyfikator
-* Name
+* Identyfikatora
+* Nazwa
 * Jednostka miary
 
 Po opublikowaniu planu nie można już zmieniać szczegółów na poziomie planu:
@@ -127,7 +128,7 @@ Jeśli masz jedną z następujących czynności, możesz otworzyć bilet pomocy 
 
 Wykonaj poniższe kroki, aby przesłać bilet pomocy technicznej:
 
-1. Przejdź do [strony pomocy technicznej](https://support.microsoft.com/supportforbusiness/productselection?sapId=48734891-ee9a-5d77-bf29-82bf8d8111ff). Pierwsze niektóre menu rozwijane są wypełniane automatycznie. Aby uzyskać pomoc techniczną, zidentyfikuj rodzinę produktów jako **usługi w chmurze i online**, czyli produkt jako wydawcę w **portalu Marketplace**.  Nie zmieniaj wstępnie wypełnionego menu rozwijanego.
+1. Przejdź do [strony pomocy technicznej](https://support.microsoft.com/supportforbusiness/productselection?sapId=48734891-ee9a-5d77-bf29-82bf8d8111ff). Pierwsze niektóre menu rozwijane są wypełniane automatycznie. Aby uzyskać pomoc techniczną, zidentyfikuj rodzinę produktów jako **usługi w chmurze i online**, czyli produkt jako **wydawcę w portalu Marketplace**.  Nie zmieniaj wstępnie wypełnionego menu rozwijanego.
 2. W obszarze "Wybierz wersję produktu" Wybierz pozycję **zarządzanie ofertami na żywo**.
 3. W obszarze "Wybierz kategorię, która najlepiej opisz problem", wybierz pozycję **aplikacje SaaS**.
 4. W obszarze "Wybierz problem, który najlepiej opisuje problem" Wybierz pozycję **naliczanie opłat**.

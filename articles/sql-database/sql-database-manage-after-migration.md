@@ -1,5 +1,5 @@
 ---
-title: Zarządzanie bazami danych o pojedynczej i puli po migracji Azure SQL Database
+title: Zarządzanie bazami danych o pojedynczej i puli po migracji
 description: Dowiedz się, jak zarządzać bazą danych po migracji do Azure SQL Database.
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: joesackmsft
 ms.author: josack
 ms.reviewer: sstein
 ms.date: 02/13/2019
-ms.openlocfilehash: d92b4b99e6ae6a7a07174e59d7cf3c9766c0eabf
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 16855bb218ba3ae4d221cb1329410c7848aab2c5
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73689523"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73818962"
 ---
 # <a name="new-dba-in-the-cloud--managing-your-single-and-pooled-databases-in-azure-sql-database"></a>Nowa usługa DBA w chmurze — zarządzanie bazami danych z jednym i pulą w puli w Azure SQL Database
 
@@ -272,7 +272,7 @@ Na tym wykresie można także skonfigurować alerty według zasobu. Te alerty um
 
 #### <a name="dynamic-management-views"></a>Dynamiczne widoki zarządzania
 
-Można wykonać zapytanie dotyczące dynamicznego widoku zarządzania [sys. DM _db_resource_stats](/sql/relational-databases/system-dynamic-management-views/sys-dm-db-resource-stats-azure-sql-database) , aby zwracała historię statystyk zużycia zasobów z ostatniej godziny i widoku wykazu systemu [sys. resource_stats](/sql/relational-databases/system-catalog-views/sys-resource-stats-azure-sql-database) w celu zwrócenia historii dla ostatnich 14 dni.
+Można wykonać zapytanie dotyczące widoku dynamicznego zarządzania [sys. dm_db_resource_stats](/sql/relational-databases/system-dynamic-management-views/sys-dm-db-resource-stats-azure-sql-database) , aby przywrócić historię statystyk zużycia zasobów z ostatniej godziny i widoku wykazu systemu [sys. resource_stats](/sql/relational-databases/system-catalog-views/sys-resource-stats-azure-sql-database) w celu zwrócenia historii dla ostatnich 14 dni.
 
 #### <a name="query-performance-insight"></a>Szczegółowe informacje o wydajności zapytań
 
@@ -292,7 +292,7 @@ Podejście do rozwiązywania problemów z wydajnością może znacząco korzysta
 
 W przypadku rozwiązywania problemów z wydajnością ważne jest, aby określić, czy jest to tylko aplikacja, czy baza danych, która ma wpływ na wydajność aplikacji. Często problem z wydajnością znajduje się w warstwie aplikacji. Może to być architektura lub wzorzec dostępu do danych. Rozważmy na przykład, że masz aplikację rozmawiania, która jest wrażliwa na opóźnienia sieci. W takim przypadku aplikacja pogorszy się, ponieważ wystąpi wiele krótkich żądań przechodzących ("rozmawiających") między aplikacją a serwerem i w sieci o przeciążonym obciążeniu. Aby poprawić wydajność w tym przypadku, można użyć [zapytań wsadowych](sql-database-performance-guidance.md#batch-queries). Korzystanie z partii pomaga w nieznacznie, ponieważ teraz Twoje żądania są przetwarzane w partii. w ten sposób można w ten sposób skrócić czas oczekiwania na rozbicie i poprawić wydajność aplikacji.
 
-Ponadto jeśli zauważysz spadek ogólnej wydajności bazy danych, możesz monitorować dynamiczne widoki [sys. DM _db_resource_stats](/sql/relational-databases/system-dynamic-management-views/sys-dm-db-resource-stats-azure-sql-database) i [sys. resource_stats](/sql/relational-databases/system-catalog-views/sys-resource-stats-azure-sql-database) , aby zrozumieć użycie procesora CPU, operacji we/wy i pamięci. Może to mieć wpływ na wydajność, ponieważ baza danych jest Starved zasobów. Może być konieczna zmiana rozmiaru i/lub warstwy usługi na podstawie rosnących i zmniejszających się wymagań dotyczących obciążenia.
+Ponadto, jeśli zauważysz spadek ogólnej wydajności bazy danych, możesz monitorować [sys. dm_db_resource_stats](/sql/relational-databases/system-dynamic-management-views/sys-dm-db-resource-stats-azure-sql-database) i [sys. resource_stats](/sql/relational-databases/system-catalog-views/sys-resource-stats-azure-sql-database) dynamiczne widoki zarządzania w celu zrozumienia zużycia procesora CPU, operacji we/wy i pamięci. Może to mieć wpływ na wydajność, ponieważ baza danych jest Starved zasobów. Może być konieczna zmiana rozmiaru i/lub warstwy usługi na podstawie rosnących i zmniejszających się wymagań dotyczących obciążenia.
 
 Aby uzyskać kompleksowy zestaw zaleceń dotyczących dostrajania problemów z wydajnością, zobacz: [dostrajanie bazy danych](sql-database-performance-guidance.md#tune-your-database).
 

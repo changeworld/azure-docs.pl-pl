@@ -8,12 +8,12 @@ ms.service: digital-twins
 services: digital-twins
 ms.topic: conceptual
 ms.date: 10/02/2019
-ms.openlocfilehash: e7516fffb4aa8806062655e39c591e4691e779b1
-ms.sourcegitcommit: 7868d1c40f6feb1abcafbffcddca952438a3472d
+ms.openlocfilehash: 9a5e060d6248d3144720930fe960e0a371a73d6e
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/04/2019
-ms.locfileid: "71959111"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73822269"
 ---
 # <a name="egress-and-endpoints"></a>Wyjście i punkty końcowe
 
@@ -49,19 +49,19 @@ Zdarzenia są wysyłane przez obiekty IoT (takie jak urządzenia i czujniki) do 
 
 | Atrybut | Typ | Opis |
 | --- | --- | --- |
-| identyfikator | string | Unikatowy identyfikator zdarzenia. |
-| Temat | string | Ścieżka zdefiniowana przez program Publisher do tematu zdarzenia. |
-| dane | object | Dane zdarzenia specyficzne dla dostawcy zasobów. |
-| Klasę | string | Jeden z zarejestrowanych typów zdarzeń dla tego źródła zdarzeń. |
-| eventTime | string | Czas generowania zdarzenia na podstawie czasu UTC dostawcy. |
-| wersja | string | Wersja schematu obiektu danych. Wydawca definiuje wersję schematu. |
-| metadataVersion | string | Wersja schematu metadanych zdarzenia. Event Grid definiuje schemat właściwości najwyższego poziomu. Event Grid udostępnia tę wartość. |
-| rozdziału | string | Pełna ścieżka zasobu do źródła zdarzeń. To pole nie umożliwia zapisu. Event Grid udostępnia tę wartość. |
+| id | ciąg | Unikatowy identyfikator zdarzenia. |
+| Temat | ciąg | Ścieżka zdefiniowana przez program Publisher do tematu zdarzenia. |
+| Data | obiekt | Dane zdarzenia specyficzne dla dostawcy zasobów. |
+| eventType | ciąg | Jeden z zarejestrowanych typów zdarzeń dla tego źródła zdarzeń. |
+| eventTime | ciąg | Czas generowania zdarzenia na podstawie czasu UTC dostawcy. |
+| dataVersion | ciąg | Wersja schematu obiektu danych. Wydawca definiuje wersję schematu. |
+| metadataVersion | ciąg | Wersja schematu metadanych zdarzenia. Event Grid definiuje schemat właściwości najwyższego poziomu. Event Grid udostępnia tę wartość. |
+| temat | ciąg | Pełna ścieżka zasobu do źródła zdarzeń. To pole nie umożliwia zapisu. Event Grid udostępnia tę wartość. |
 
 Aby uzyskać więcej informacji o schemacie zdarzeń Event Grid:
 
 - Przejrzyj [Informacje o schemacie zdarzenia Azure Event Grid](../event-grid/event-schema.md).
-- Przeczytaj [Informacje o zestawie SDK środowiska Node. js w usłudze Azure EventGrid](https://docs.microsoft.com/javascript/api/azure-eventgrid/eventgridevent?view=azure-node-latest).
+- Przeczytaj [Informacje o zestawie SDK środowiska Node. js w usłudze Azure EventGrid](https://docs.microsoft.com/javascript/api/@azure/eventgrid/eventgridevent?view=azure-node-latest).
 
 ## <a name="event-types"></a>Typy zdarzeń
 
@@ -90,7 +90,7 @@ Formaty zdarzeń dla każdego typu zdarzenia są opisane w poniższych podsekcja
 - Czujnik
 - SensorBlobMetadata
 - SensorExtendedProperty
-- Miejsce
+- Przestrzeń kosmiczna
 - SpaceBlobMetadata
 - SpaceExtendedProperty
 - SpaceResource

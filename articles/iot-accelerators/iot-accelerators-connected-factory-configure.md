@@ -1,6 +1,6 @@
 ---
-title: Konfigurowanie topologii połączonej fabryki — Azure | Dokumentacja firmy Microsoft
-description: Jak skonfigurować topologię akcelerator rozwiązania połączonej fabryki.
+title: Konfigurowanie topologii połączonej fabryki — Azure | Microsoft Docs
+description: W tym artykule opisano sposób konfigurowania akceleratora rozwiązania połączonej fabryki, w tym jego topologii.
 author: dominicbetts
 manager: timlt
 ms.service: iot-accelerators
@@ -8,64 +8,64 @@ services: iot-accelerators
 ms.topic: conceptual
 ms.date: 12/12/2017
 ms.author: dobett
-ms.openlocfilehash: 3ddbf5832424cdafad2c29254f51754203c7f079
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: 5fa3d4d4fdfa0dd81cd8ab8772ffb3903dda289f
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67428315"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73820130"
 ---
-# <a name="configure-the-connected-factory-solution-accelerator"></a>Konfigurowanie akcelerator rozwiązania połączonej fabryki
+# <a name="configure-the-connected-factory-solution-accelerator"></a>Skonfiguruj Akcelerator rozwiązania połączonej fabryki
 
-Akcelerator rozwiązania połączonej fabryki pokazano symulowane pulpit nawigacyjny dla fikcyjnej firmy Contoso. To firma dysponuje fabryki globalnie w wielu lokalizacjach globalnego.
+Akcelerator rozwiązania połączonej fabryki pokazuje symulowany pulpit nawigacyjny dla fikcyjnej firmy Contoso. Ta firma ma fabryki w wielu globalnych lokalizacjach globalnie.
 
-W tym artykule używa Contoso jako przykład opisujący sposób konfigurowania topologii rozwiązania połączonej fabryki.
+W tym artykule zawarto informacje dotyczące sposobu konfigurowania topologii rozwiązania połączonej fabryki przy użyciu firmy Contoso.
 
-## <a name="simulated-factories-configuration"></a>Konfiguracja symulowanej fabryki
+## <a name="simulated-factories-configuration"></a>Konfiguracja symulowanych fabryk
 
-Każda fabryka Contoso ma linii produkcyjnych, które składają się z trzech stacji. Każda stacja jest prawdziwy serwer OPC UA z określoną rolą:
+Każda fabryka firmy Contoso ma linie produkcyjne, które składają się z trzech stacji. Każda stacja jest rzeczywistym serwerem OPC UA z określoną rolą:
 
-* Stanowisku montażowym
-* Test stacji
-* Pakowania
+* Stacja montażowa
+* Stacja testowa
+* Stacja pakowania
 
-Te serwery OPC UA ma węzły OPC UA i [wydawca OPC](overview-opc-publisher.md) wysyła wartości te węzły do połączonej fabryki. Obejmuje to:
+Te serwery OPC UA mają węzły OPC UA i [OPC Publisher](overview-opc-publisher.md) wysyłają wartości tych węzłów do połączonej fabryki. Obejmuje to:
 
-* Bieżący stan operacyjny takie jak bieżące zużycie energii.
-* Informacje o produkcji, takie jak liczba produktów utworzone.
+* Bieżący stan operacyjny, na przykład bieżące zużycie mocy.
+* Informacje o produkcji, takie jak liczba produkowanych produktów.
 
-Aby przejść do topologii fabryka Contoso z globalny widok w dół do widoku poziomu stacji, można użyć pulpitu nawigacyjnego. Pulpit nawigacyjny połączonej fabryki umożliwia:
+Możesz użyć pulpitu nawigacyjnego do przejścia do topologii fabryki firmy Contoso z widoku globalnego w dół do widoku poziomu stacji. Pulpit nawigacyjny połączonej fabryki umożliwia:
 
-* Wizualizacja wartości ogólnej wydajności sprzętu i kluczowych wskaźników wydajności dla każdej warstwy w topologii.
-* Wizualizacja bieżące wartości węzły OPC UA na stacjach.
-* Agregacja wartości ogólnej wydajności sprzętu i kluczowych wskaźników wydajności z poziomu stacji na poziomie globalnym.
-* Wizualizacja i akcje do wykonania, jeśli wartości określone progi alertów.
+* Wizualizacja wyników OEE i KPI dla każdej warstwy w topologii.
+* Wizualizacja bieżących wartości węzłów OPC UA na stacjach.
+* Agregacja wartości OEE i wskaźnika KPI z poziomu stacji do poziomu globalnego.
+* Wizualizacja alertów i akcji do wykonania, jeśli wartości osiągną określone progi.
 
-## <a name="connected-factory-topology"></a>Topologia usługi połączonej fabryki
+## <a name="connected-factory-topology"></a>Topologia połączonej fabryki
 
-Topologia fabryki, linii produkcyjnych i stacje są hierarchiczne:
+Topologia fabryk, linii produkcyjnych i stacji jest hierarchiczna:
 
 * Globalny poziom ma węzły fabryki jako elementy podrzędne.
-* Fabryk mieć węzły linii produkcyjnej jako elementy podrzędne.
-* Linii produkcyjnych mieć węzły stacji jako elementy podrzędne.
-* Stacje (serwerów OPC UA) ma węzły OPC UA jako elementy podrzędne.
+* Fabryki mają węzły linii produkcyjnej jako elementy podrzędne.
+* Linie produkcyjne mają węzły stacji jako elementy podrzędne.
+* Stacje (serwery OPC UA) mają węzły OPC UA jako elementy podrzędne.
 
-Każdy węzeł w topologii ma wspólny zbiór właściwości, które definiują:
+Każdy węzeł w topologii ma wspólny zestaw właściwości, które definiują:
 
-* Unikatowy identyfikator dla węzła topologii.
+* Unikatowy identyfikator węzła topologii.
 * Nazwa.
 * Opis.
 * Obraz.
 * Elementy podrzędne węzła topologii.
-* Co najmniej docelowego i maksymalne wartości dla wartości ogólnej wydajności sprzętu i kluczowych wskaźników wydajności i alertów akcje do wykonania.
+* Minimalne, docelowe i maksymalne wartości dla OEE i wskaźników KPI oraz akcje alertów do wykonania.
 
 ## <a name="topology-configuration-file"></a>Plik konfiguracji topologii
 
-Aby skonfigurować właściwości opisanych w poprzedniej sekcji, rozwiązania połączonej fabryki korzysta z pliku konfiguracji o nazwie [ContosoTopologyDescription.json](https://github.com/Azure/azure-iot-connected-factory/blob/master/WebApp/Contoso/Topology/ContosoTopologyDescription.json).
+Aby skonfigurować właściwości wymienione w poprzedniej sekcji, rozwiązanie połączonej fabryki używa pliku konfiguracji o nazwie [ContosoTopologyDescription. JSON](https://github.com/Azure/azure-iot-connected-factory/blob/master/WebApp/Contoso/Topology/ContosoTopologyDescription.json).
 
-Ten plik można znaleźć w kodzie źródłowym rozwiązania w `WebApp/Contoso/Topology` folderu.
+Ten plik można znaleźć w kodzie źródłowym rozwiązania w folderze `WebApp/Contoso/Topology`.
 
-Poniższy fragment kodu przedstawia zarys `ContosoTopologyDescription.json` pliku konfiguracji:
+Poniższy fragment kodu przedstawia konspekt pliku konfiguracji `ContosoTopologyDescription.json`:
 
 ```json
 {
@@ -85,27 +85,27 @@ Poniższy fragment kodu przedstawia zarys `ContosoTopologyDescription.json` plik
 }
 ```
 
-Wspólne właściwości `<global_configuration>`, `<factory_configuration>`, `<production_line_configuration>`, i `<station_configuration>` są:
+Typowe właściwości `<global_configuration>`, `<factory_configuration>`, `<production_line_configuration>`i `<station_configuration>` są następujące:
 
-* **Nazwa** (typ string)
+* **Nazwa** (ciąg typu)
 
-  Określa nazwę opisową, która powinna być tylko jednego słowa dla węzła topologii do wyświetlenia na pulpicie nawigacyjnym.
+  Definiuje nazwę opisową, która powinna mieć tylko jeden wyraz dla węzła topologii do wyświetlenia na pulpicie nawigacyjnym.
 
-* **Opis** (typ string)
+* **Opis** (ciąg typu)
 
-  W tym artykule opisano węzła topologii bardziej szczegółowo.
+  Opisuje węzeł topologii bardziej szczegółowo.
 
-* **Obraz** (typ string)
+* **Obraz** (ciąg typu)
 
-  Ścieżka do obrazu w rozwiązaniu aplikacji sieci Web do wyświetlenia, gdy informacje o węźle topologia jest wyświetlany na pulpicie nawigacyjnym.
+  Ścieżka do obrazu w rozwiązaniu WebApp, aby pokazać, kiedy informacje o węźle topologii są wyświetlane na pulpicie nawigacyjnym.
 
 * **OeeOverall**, **OeePerformance**, **OeeAvailability**, **OeeQuality**, **Kpi1**, **Kpi2** (typ `<performance_definition>`)
 
-  Te właściwości, zdefiniuj minimalny, docelowy i maksymalny wartości operacyjnej rysunek służącego do generowania alertów. Te właściwości również definiują akcje do wykonania w przypadku wykrycia alertu.
+  Te właściwości definiują minimalne, docelowe i maksymalne wartości na rysunku operacyjnym używanym do generowania alertów. Te właściwości definiują także akcje do wykonania w przypadku wykrycia alertu.
 
-`<factory_configuration>` i `<production_line_configuration>` elementy mają właściwości:
+Elementy `<factory_configuration>` i `<production_line_configuration>` mają właściwość:
 
-* **Identyfikator GUID** (typ string)
+* **Identyfikator GUID** (ciąg typu)
 
   Jednoznacznie identyfikuje węzeł topologii.
 
@@ -113,209 +113,209 @@ Wspólne właściwości `<global_configuration>`, `<factory_configuration>`, `<
 
 * **Lokalizacja** (typ `<location_definition>`)
 
-  Określa, gdzie znajduje się fabryki.
+  Określa miejsce, w którym znajduje się fabryka.
 
 `<station_configuration>` ma właściwości:
 
-* **OpcUri** (typ string)
+* **OpcUri** (ciąg typu)
 
-  Ta właściwość musi być równa OPC UA aplikacji identyfikator URI serwera OPC UA.
-  Ponieważ musi być unikatowa w skali globalnej specyfikacji OPC UA, ta właściwość jest używana do identyfikacji węzła topologii stacji.
+  Ta właściwość musi być ustawiona na identyfikator URI aplikacji OPC UA serwera OPC UA.
+  Ponieważ musi być globalnie unikatowa przez specyfikację OPC UA, ta właściwość jest używana do identyfikowania węzła topologii stacji.
 
-* **OpcNodes**, służą do tablicy węzły OPC UA (typ `<opc_node_description>`)
+* **OpcNodes**, które są tablicą węzłów OPC UA (typ `<opc_node_description>`)
 
 `<location_definition>` ma właściwości:
 
-* **Miasto** (typ string)
+* **Miasto** (ciąg typu)
 
-  Nazwa miasta najbliższą lokalizację
+  Nazwa miasta znajdującego się najbliżej lokalizacji
 
-* **Kraj** (typ string)
+* **Country** (ciąg typu)
 
   Kraj lokalizacji
 
-* **Szerokość geograficzna** (typ double)
+* **Szerokość geograficzna** (typ Double)
 
   Szerokość geograficzna lokalizacji
 
-* **Długość geograficzna** (typ double)
+* **Długość geograficzna** (typ Double)
 
   Długość geograficzna lokalizacji
 
 `<performance_definition>` ma właściwości:
 
-* **Co najmniej** (typ double)
+* **Minimum** (typ Double)
 
-  Aby osiągnąć niższego progu wartości. Jeśli aktualna wartość jest poniżej tego progu, generowany jest alert.
+  Dolny próg, do którego może dotrzeć wartość. Jeśli bieżąca wartość jest niższa od tego progu, generowany jest alert.
 
-* **Docelowy** (typ double)
+* **Target** (typ Double)
 
-  Wartość docelowa idealnym rozwiązaniem.
+  Idealna wartość docelowa.
 
-* **Maksymalna** (typ double)
+* **Maksimum** (typ Double)
 
-  Górny próg wartości można nawiązać połączenia. Jeśli aktualna wartość jest powyżej wartości progowej, generowany jest alert.
+  Górny próg, do którego może dotrzeć wartość. Jeśli bieżąca wartość przekracza ten próg, generowany jest alert.
 
 * **MinimumAlertActions** (typ `<alert_action>`)
 
-  Definiuje zestaw akcji, które mogą być podejmowane w odpowiedzi na alert w postaci minimalnej.
+  Definiuje zestaw akcji, które można wykonać jako odpowiedź na minimalny alert.
 
 * **MaximumAlertActions** (typ `<alert_action>`)
 
-  Definiuje zestaw akcji, które mogą być podejmowane w odpowiedzi na alert dotyczący maksymalnej.
+  Definiuje zestaw akcji, które można wykonać jako odpowiedź na maksymalny alert.
 
-`<alert_action`> ma właściwości:
+> `<alert_action`ma właściwości:
 
-* **Typ** (typ string)
+* **Typ** (ciąg typu)
 
   Typ akcji alertu. Znane są następujące typy:
 
-  * **AcknowledgeAlert**: stan alertu należy zmienić do potwierdzonego.
-  * **CloseAlert**: wszystkie alerty starsze tego samego typu, nie jest już powinna być wyświetlana na pulpicie nawigacyjnym.
-  * **CallOpcMethod**: powinna być wywoływana z metody OPC UA.
-  * **OpenWebPage**: okna przeglądarki powinien zostać otwarty wyświetlane dodatkowe informacje kontekstowe.
+  * **AcknowledgeAlert**: stan alertu powinien zostać zmieniony na potwierdzony.
+  * **CloseAlert**: wszystkie starsze alerty tego samego typu nie powinny być już wyświetlane na pulpicie nawigacyjnym.
+  * **CallOpcMethod**: Metoda OPC UA powinna być wywoływana.
+  * **OpenWebPage**: należy otworzyć okno przeglądarki zawierające dodatkowe informacje kontekstowe.
 
-* **Opis** (typ string)
+* **Opis** (ciąg typu)
 
-  Opis akcji widoczne w pulpicie nawigacyjnym.
+  Opis akcji pokazanej na pulpicie nawigacyjnym.
 
-* **Parametr** (typ string)
+* **Parameter** (ciąg typu)
 
   Parametry wymagane do wykonania akcji. Wartość zależy od typu akcji.
 
-  * **AcknowledgeAlert**: nie parametr wymagany.
-  * **CloseAlert**: nie parametr wymagany.
-  * **CallOpcMethod**: informacje o węźle i parametry metody OPC UA do wywołania w formacie "ID. węzła nadrzędnego węzła NodeId metody do wywołania, identyfikator URI serwera OPC UA."
-  * **OpenWebPage**: adres URL, aby pokazać w oknie przeglądarki.
+  * **AcknowledgeAlert**: żaden parametr nie jest wymagany.
+  * **CloseAlert**: żaden parametr nie jest wymagany.
+  * **CallOpcMethod**: informacje o węźle i parametry metody OPC UA do wywołania w formacie "nodeID węzła nadrzędnego, NodeId metody do wywołania, identyfikator URI serwera OPC UA".
+  * **OpenWebPage**: adres URL, który ma być wyświetlany w oknie przeglądarki.
 
-`<opc_node_description>` zawiera informacje o węzłów OPC UA stacji (serwer OPC UA). Węzły, które reprezentują żadnych istniejących węzłów OPC UA, ale są używane jako magazyn w logiki obliczeń połączonej fabryki, również są prawidłowe. Ma następujące właściwości:
+`<opc_node_description>` zawiera informacje o węzłach OPC UA na stacji (OPC UA). Węzły, które nie reprezentują istniejących węzłów OPC UA, ale są używane jako magazyn w logiki obliczeniowej połączonej fabryki, są również prawidłowe. Ma następujące właściwości:
 
-* **NodeId** (typ string)
+* **NodeId** (ciąg typu)
 
-  Adres serwera OPC UA w przestrzeni adresowej węzła w stacji (OPC UA serwera). Składnia muszą być określone w specyfikacji NodeId serwera OPC UA.
+  Adres węzła OPC UA w przestrzeni adresowej serwera (OPC UA). Składnia musi być określona w specyfikacji OPC UA dla NodeId.
 
-* **SymbolicName** (typ string)
+* **Symbolicznname** (ciąg typu)
 
-  Nazwa ma być wyświetlany na pulpicie nawigacyjnym, jeśli wartość tego węzła OPC UA jest wyświetlana.
+  Nazwa, która ma być wyświetlana na pulpicie nawigacyjnym, gdy zostanie wyświetlona wartość tego węzła OPC UA.
 
-* **Wg istotności** (tablicę typu string)
+* **Istotność** (tablica typu String)
 
-  Wskazuje, której obliczenie wartości ogólnej wydajności sprzętu lub kluczowego wskaźnika wydajności wartość węzła OPC UA jest istotne. Każdy element tablicy może być jednym z następujących wartości:
+  Wskazuje, dla którego obliczenia OEE lub kluczowego wskaźnika wydajności ma zastosowanie wartość węzła OPC UA. Każdy element tablicy może być jedną z następujących wartości:
 
-  * **OeeAvailability_Running**: wartość jest odpowiednie do obliczania dostępności ogólnej wydajności sprzętu.
-  * **OeeAvailability_Fault**: wartość jest odpowiednie do obliczania dostępności ogólnej wydajności sprzętu.
-  * **OeePerformance_Ideal**: wartość ma zastosowanie do obliczania wydajności ogólnej wydajności sprzętu i zwykle jest wartością stałą.
-  * **OeePerformance_Actual**: wartość jest odpowiednie do obliczania wydajności ogólnej wydajności sprzętu.
-  * **OeeQuality_Good**: wartość jest odpowiednie do obliczenia ogólnej wydajności sprzętu jakości.
-  * **OeeQuality_Bad**: wartość jest odpowiednie do obliczenia ogólnej wydajności sprzętu jakości.
-  * **Kpi1**: wartość jest odpowiednie do obliczania KPI1.
-  * **Kpi2**: wartość jest odpowiednie do obliczania KPI2.
+  * **OeeAvailability_Running**: wartość jest istotna dla obliczenia dostępności OEE.
+  * **OeeAvailability_Fault**: wartość jest istotna dla obliczenia dostępności OEE.
+  * **OeePerformance_Ideal**: wartość jest istotna dla obliczenia wydajności OEE i jest zwykle wartością stałą.
+  * **OeePerformance_Actual**: wartość jest istotna dla obliczenia wydajności OEE.
+  * **OeeQuality_Good**: wartość jest istotna dla obliczenia jakości OEE.
+  * **OeeQuality_Bad**: wartość jest istotna dla obliczenia jakości OEE.
+  * **Kpi1**: wartość jest istotna dla obliczenia elementu Kpi1.
+  * **Kpi2**: wartość jest istotna dla obliczenia elementu Kpi2.
 
-* **OpCode** (typ string)
+* **Opcode** (ciąg typu)
 
-  Wskazuje sposób obsługi wartości węzła OPC UA w zapytaniach Time Series Insights i obliczenia ogólnej wydajności sprzętu bądź kluczowego wskaźnika wydajności. Każda kwerenda Time Series Insights jest przeznaczony dla określonego przedziału czasu, co jest parametr zapytania i zapewnia wynik. OpCode kontroluje sposób wyniku jest obliczany i może być jedną z następujących wartości:
+  Wskazuje, w jaki sposób wartość węzła OPC UA jest obsługiwana w zapytaniach usługi Time Series Insights oraz obliczeń OEE/KPI. Każde zapytanie usługi Time Series Insights wskazuje określony przedział czasu, który jest parametrem zapytania i dostarcza wynik. Kod operacji kontroluje sposób obliczania wyniku i może być jedną z następujących wartości:
 
-  * **Diff**: różnica między ostatniego i pierwsza wartość timespan.
-  * **Średnia liczba**: średnią wszystkich wartości timespan.
-  * **Suma**: sumę wszystkich wartości timespan.
-  * **Ostatni**: obecnie nieużywane.
-  * **Liczba**: liczba wartości timespan.
-  * **Maksymalna liczba**: maksymalna wartość timespan.
-  * **Min**: minimalne wartość timespan.
-  * **Const**: wynik jest wartością określonej przez właściwość ConstValue.
-  * **SubMaxMin**: różnica między maksymalnie i minimalnej wartości.
-  * **Przedział czasu**: timespan.
+  * **Diff**: różnica między ostatnią i pierwszą wartością w przedziale czasu.
+  * **Średnia**: średnią wszystkich wartości w obiekcie TimeSpan.
+  * **Sum**: suma wszystkich wartości w obiekcie TimeSpan.
+  * **Ostatni**: obecnie nie jest używany.
+  * **Liczba**: liczba wartości w obiekcie TimeSpan.
+  * **Max**: maksymalna wartość w obiekcie TimeSpan.
+  * **Min**: wartość minimalna w obiekcie TimeSpan.
+  * **Const**: wynik jest wartością określoną przez właściwość ConstValue.
+  * **SubMaxMin**: różnica między wartością maksymalną i minimalną.
+  * **TimeSpan**: TimeSpan.
 
-* **Jednostki** (typ string)
+* **Jednostki** (ciąg typu)
 
   Definiuje jednostkę wartości do wyświetlenia na pulpicie nawigacyjnym.
 
-* **Widoczne** (typ wartość logiczna)
+* **Visible** (typ Boolean)
 
-  Kontroluje, czy wartość powinna być wyświetlana na pulpicie nawigacyjnym.
+  Określa, czy wartość powinna być wyświetlana na pulpicie nawigacyjnym.
 
-* **ConstValue** (typ double)
+* **ConstValue** (typ Double)
 
-  Jeśli **OpCode** jest **Const**, a następnie ta właściwość jest wartość węzła.
+  Jeśli **opcode** ma wartość **const**, ta właściwość jest wartością węzła.
 
-* **Co najmniej** (typ double)
+* **Minimum** (typ Double)
 
-  Jeśli bieżącą wartość spada poniżej tej wartości, generowany jest alert w postaci minimalnej.
+  Jeśli bieżąca wartość spadnie poniżej tej wartości, zostanie wygenerowany alert minimalny.
 
-* **Maksymalna** (typ double)
+* **Maksimum** (typ Double)
 
-  Jeśli bieżąca wartość wywołuje powyżej tej wartości, jest generowany alert dotyczący maksymalnej.
+  Jeśli bieżąca wartość zwiększa się powyżej tej wartości, generowany jest maksymalny alert.
 
 * **MinimumAlertActions** (typ `<alert_action>`)
 
-  Definiuje zestaw akcji, które mogą być podejmowane w odpowiedzi na alert w postaci minimalnej.
+  Definiuje zestaw akcji, które można wykonać jako odpowiedź na minimalny alert.
 
 * **MaximumAlertActions** (typ `<alert_action>`)
 
-  Definiuje zestaw akcji, które mogą być podejmowane w odpowiedzi na alert dotyczący maksymalnej.
+  Definiuje zestaw akcji, które można wykonać jako odpowiedź na maksymalny alert.
 
-Na poziomie stacji, powinien być też widoczny **symulacji** obiektów. Te obiekty są używane wyłącznie do konfigurowania symulacji połączonej fabryki i nie należy używać do konfigurowania topologii rzeczywistych.
+Na poziomie stacji widoczne są również obiekty **symulacji** . Te obiekty są używane tylko do konfigurowania symulacji połączonej fabryki i nie powinny być używane do konfigurowania rzeczywistej topologii.
 
 ## <a name="how-the-configuration-data-is-used-at-runtime"></a>Jak dane konfiguracji są używane w czasie wykonywania
 
-Wszystkie właściwości, które są używane w pliku konfiguracji można podzielić na różne kategorie w zależności od sposobu ich używania. Te kategorie są:
+Wszystkie właściwości używane w pliku konfiguracji można grupować w różne kategorie w zależności od sposobu ich użycia. Są to następujące kategorie:
 
-### <a name="visual-appearance"></a>Wygląd
+### <a name="visual-appearance"></a>Wygląd wizualizacji
 
-Właściwości z tej kategorii definiują wygląd pulpit nawigacyjny połączonej fabryki. Przykłady:
+Właściwości w tej kategorii definiują wygląd pulpitu nawigacyjnego połączonej fabryki. Przykłady:
 
-* Name (Nazwa)
+* Nazwa
 * Opis
-* Image
-* Location
+* Image (Obraz)
+* Lokalizacja
 * Jednostki
-* Widoczne
+* Widać
 
-### <a name="internal-topology-tree-addressing"></a>Adresowanie drzewo wewnętrznych topologii
+### <a name="internal-topology-tree-addressing"></a>Adresowanie drzewa topologii wewnętrznej
 
-Aplikacja przechowuje słownika danych wewnętrznych, zawierający informacje o wszystkich węzłów topologii. Właściwości **Guid** i **OpcUri** są używane jako klucze do dostępu do tego słownika i muszą być unikatowe.
+WebApp utrzymuje wewnętrzny słownik danych zawierający informacje o wszystkich węzłach topologii. **Identyfikatory GUID** i **OpcUri** są używane jako klucze do uzyskiwania dostępu do tego słownika i muszą być unikatowe.
 
-### <a name="oeekpi-computation"></a>Obliczenia ogólnej wydajności sprzętu bądź kluczowego wskaźnika wydajności
+### <a name="oeekpi-computation"></a>Obliczanie OEE/KPI
 
-Dane ogólnej wydajności sprzętu bądź kluczowego wskaźnika wydajności symulacji połączonej fabryki są sparametryzowany przez:
+Wartości OEE/KPI dla symulacji połączonej fabryki są sparametryzowane przez:
 
-* Wartości węzła OPC UA do uwzględnienia w obliczeniach.
-* Jak rysunek jest obliczany na podstawie wartości telemetryczne.
+* Wartości węzła OPC UA do uwzględnienia w obliczeniu.
+* Sposób obliczania rysunku z wartości telemetrycznych.
 
-Połączona fabryka używa formuł ogólnej wydajności sprzętu, jako opublikowane przez [ http://www.oeefoundation.org ](http://www.oeefoundation.org).
+Połączona fabryka używa formuł OEE jako opublikowanych przez [http://www.oeefoundation.org](http://www.oeefoundation.org).
 
-Obiekty węzła OPC UA stacji Włącz znakowanie do użycia podczas obliczania wartości ogólnej wydajności sprzętu bądź kluczowego wskaźnika wydajności. **Istotności** właściwość wskazuje, dla których rysunek ogólnej wydajności sprzętu bądź kluczowego wskaźnika wydajności powinna zostać użyta wartość węzła OPC UA. **OpCode** właściwość definiuje, jak wartość znajduje się w obliczeń.
+Obiekty węzłów OPC UA na stacjach umożliwiają znakowanie użycia w obliczeniach OEE/KPI. Właściwość **istotność** wskazuje, dla którego rysunku OEE/KPI należy użyć wartości węzła OPC UA. Właściwość **opcode** definiuje, w jaki sposób wartość jest uwzględniona w obliczeniach.
 
 ### <a name="alert-handling"></a>Obsługa alertów
 
-Połączona fabryka obsługuje mechanizm proste minimalne i maksymalne oparte na wartościach progowych Generowanie alertów. Istnieje kilka wstępnie zdefiniowanych akcji, które można skonfigurować w odpowiedzi na te alerty. Ten mechanizm kontrolować, następujące właściwości:
+Połączona fabryka obsługuje prosty, minimalny/maksymalny mechanizm generowania alertów opartych na progach. Istnieje wiele wstępnie zdefiniowanych akcji, które można skonfigurować w odpowiedzi na te alerty. Następujące właściwości sterują tym mechanizmem:
 
 * Maksimum
 * Minimalne
 * MaximumAlertActions
 * MinimumAlertActions
 
-## <a name="correlating-to-telemetry-data"></a>Korelowanie danych telemetrycznych
+## <a name="correlating-to-telemetry-data"></a>Korelacja z danymi telemetrycznymi
 
-W przypadku niektórych operacji, takich jak wizualizacja ostatnią wartość lub utworzenie kwerendy Time Series Insights, aplikacji internetowej musi schematu adresowania dane odebrane dane telemetryczne. Dane telemetryczne wysyłane do połączonej fabryki musi znajdować się w strukturach danych wewnętrznych. Dwie właściwości, umożliwiając te operacje są stacji (serwer OPC UA) i poziomu węzła OPC UA:
+W przypadku niektórych operacji, takich jak wizualizowanie ostatniej wartości lub tworzenie zapytań w usłudze Time Series Insights, WebApp wymaga schematu adresowania dla danych telemetrycznych. Dane telemetryczne wysyłane do połączonej fabryki również muszą być przechowywane w wewnętrznych strukturach danych. Dwie właściwości włączające te operacje są na stacji (OPC UA Server) i na poziomie węzła OPC UA:
 
 * **OpcUri**
 
-  Identyfikuje serwer OPC UA danych telemetrycznych (globalnie unikatowa) pochodzą z. Odebrane wiadomości, ta właściwość jest wysyłany jako **identyfikator applicationuri serwera**.
+  Identyfikuje (globalnie unikatowy) serwer OPC UA, z którego pochodzą dane telemetryczne. W wiadomościach pozyskiwanych ta właściwość jest wysyłana jako **ApplicationUri**.
 
 * **NodeId**
 
-  Określa wartość węzła serwera OPC UA. Plik musi mieć format właściwości określone w specyfikacji OPC UA. Odebrane wiadomości, ta właściwość jest wysyłany jako **NodeId**.
+  Identyfikuje wartość węzła na serwerze OPC UA. Format właściwości musi być określony w specyfikacji OPC UA. W wiadomościach pozyskiwanych ta właściwość jest wysyłana jako **NodeId**.
 
-Zobacz [co to jest wydawca OPC](overview-opc-publisher.md) więcej informacji na temat sposobu dane telemetryczne są pozyskiwane do połączonej fabryki.
+Zobacz, [co to jest Wydawca OPC](overview-opc-publisher.md) , aby uzyskać więcej informacji o sposobie pozyskiwania danych telemetrycznych do połączonej fabryki.
 
-## <a name="example-how-kpi1-is-calculated"></a>Przykład: Jak obliczana jest KPI1
+## <a name="example-how-kpi1-is-calculated"></a>Przykład: jak obliczana jest KPI1
 
-Konfiguracja opisana w `ContosoTopologyDescription.json` pliku Określa, jak są obliczane wartości ogólnej wydajności sprzętu bądź kluczowego wskaźnika wydajności. Poniższy przykład pokazuje, jak kontrolować obliczeń KPI1 przez właściwości, w tym pliku.
+Konfiguracja w pliku `ContosoTopologyDescription.json` kontroluje sposób obliczania wartości OEE/KPI. Poniższy przykład pokazuje, jak właściwości w tym pliku kontrolują obliczenia KPI1.
 
-W połączonych KPI1 Factory służy do mierzenia liczby produkty pomyślnie przetworzone w ciągu ostatniej godziny. Każdej stacji (serwer OPC UA) w symulacji Connected Factory zapewnia węzła OPC UA (`NodeId: "ns=2;i=385"`), który zawiera dane telemetryczne do obliczenia tego wskaźnika KPI.
+W połączonej fabryce KPI1 służy do mierzenia liczby pomyślnie wyprodukowanych produktów w ciągu ostatniej godziny. Każda stacja (OPC UA Server) w symulacji połączonej fabryki udostępnia węzeł OPC UA (`NodeId: "ns=2;i=385"`), który udostępnia dane telemetryczne do obliczenia tego wskaźnika KPI.
 
-Konfiguracja dla tego węzła OPC UA będzie wyglądać jak poniższy fragment kodu:
+Konfiguracja tego węzła OPC UA wygląda podobnie do następującego fragmentu kodu:
 
 ```json
 {
@@ -326,18 +326,18 @@ Konfiguracja dla tego węzła OPC UA będzie wyglądać jak poniższy fragment k
 },
 ```
 
-Ta konfiguracja umożliwia przesyłanie zapytań dotyczących wartości telemetryczne tego węzła przy użyciu usługi Time Series Insights. Pobiera zapytanie usługi Time Series Insights:
+Ta konfiguracja umożliwia wykonywanie zapytań dotyczących wartości telemetrycznych tego węzła przy użyciu Time Series Insights. Zapytanie Time Series Insights pobiera:
 
 * Liczba wartości.
-* Minimalnej wartości.
+* Wartość minimalna.
 * Wartość maksymalna.
-* Średnią wszystkich wartości.
-* Sumę wszystkich wartości dla wszystkich unikatowych **OpcUri** (**identyfikator applicationuri serwera**), **NodeId** pary w danym przedziału czasu.
+* Średnia wszystkich wartości.
+* Suma wszystkich wartości dla wszystkich unikatowych **OpcUri** (**ApplicationUri**), par **NodeId** w danym przedziałze czasu.
 
-Jedną z cech **NumberOfManufactureredProducts** wartość węzła jest fakt, że tylko zwiększa. Aby obliczyć liczbę produktów wytworzonych w zakres czasu, używa połączonej fabryki **OpCode** **SubMaxMin**. Obliczenia pobiera wartość minimalna na początku zakres czasu i maksymalną wartość na końcu timespan.
+Jedną cechą wartości węzła **NumberOfManufactureredProducts** jest to, że tylko zwiększa. Aby obliczyć liczbę produktów wyprodukowanych w TimeSpan, połączona fabryka używa SubMaxMin **kodu operacji**. Obliczenie Pobiera wartość minimalną na początku przedziału czasu i wartość maksymalną na końcu przedziału czasu.
 
-**OpCode** w konfiguracji konfiguruje logiki obliczeń do obliczania wyniku różnicę wartości maksymalne i minimalne. Te wyniki są następnie zgromadzonych dolnej do poziomu głównego (globalna) i widoczne w pulpicie nawigacyjnym.
+**Kod operacji** w konfiguracji konfiguruje logikę obliczeń, aby obliczyć wynik różnicy wartości maksymalnej i minimalnej. Te wyniki są następnie sumowane na poziomie głównym (globalnym) i wyświetlane na pulpicie nawigacyjnym.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
-A sugerowane, następnym krokiem jest, aby dowiedzieć się, jak [dostosowanie rozwiązania połączonej fabryki](iot-accelerators-connected-factory-customize.md).
+Sugerowany następny krok to Dowiedz się, jak [dostosować rozwiązanie połączonej fabryki](iot-accelerators-connected-factory-customize.md).

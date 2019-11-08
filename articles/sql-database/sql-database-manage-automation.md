@@ -1,5 +1,5 @@
 ---
-title: Zarządzanie bazami danych Azure SQL Database przy użyciu Azure Automation
+title: Zarządzanie bazami danych za pomocą Azure Automation
 description: Dowiedz się, w jaki sposób usługa Azure Automation może być używana do zarządzania bazami danych Azure SQL Database w odpowiedniej skali.
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: juliemsft
 ms.author: jrasnick
 ms.reviewer: carlrab
 ms.date: 03/12/2019
-ms.openlocfilehash: 0e29cd85c63bb2f6e083f9cda9abd48fa6d9975a
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 9d826a75f05cf2031565f89e21d7f3667ecc8f17
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73689448"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73822802"
 ---
 # <a name="managing-azure-sql-databases-using-azure-automation"></a>Zarządzanie bazami danych Azure SQL Database przy użyciu Azure Automation
 

@@ -1,5 +1,5 @@
 ---
-title: Zarządzanie ustawieniami weryfikacji dwuskładnikowej — Azure Active Directory | Microsoft Docs
+title: Zarządzanie ustawieniami weryfikacji dwuskładnikowej — usługa Azure AD
 description: Dowiedz się, jak zmienić szczegóły metody weryfikacji zabezpieczeń, ponieważ odnoszą się do weryfikacji dwuskładnikowej.
 services: active-directory
 author: eross-msft
@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 08/06/2019
 ms.author: lizross
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9ed7d812a9c1cba356277a4454234531ce8d41ef
-ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
+ms.openlocfilehash: 4c402e0992a3a04d674477bc9dd19e0181fd6775
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69616146"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73805258"
 ---
 # <a name="manage-your-two-factor-verification-method-settings"></a>Zarządzanie ustawieniami metody weryfikacji dwuskładnikowej
 
@@ -54,7 +54,7 @@ Jeśli Twoja organizacja dostarczyła konkretne kroki dotyczące włączania wer
         ![Link Moje aplikacje do strony dodatkowej weryfikacji zabezpieczeń](./media/multi-factor-authentication-end-user-manage-settings/mfa-myapps-link.png)
 
 >[!Note]
->Aby uzyskać informacje o korzystaniu z sekcji **hasła aplikacji** na stronie **dodatkowej weryfikacji zabezpieczeń** , zobacz [Zarządzanie hasłami aplikacji w celu weryfikacji](multi-factor-authentication-end-user-app-passwords.md)dwuskładnikowej. Haseł aplikacji należy używać tylko w przypadku aplikacji, które jeszcze nie obsługują weryfikacji dwuskładnikowej.
+>Aby uzyskać informacje o korzystaniu z sekcji **hasła aplikacji** na stronie **dodatkowej weryfikacji zabezpieczeń** , zobacz [Zarządzanie hasłami aplikacji w celu weryfikacji dwuskładnikowej](multi-factor-authentication-end-user-app-passwords.md). Haseł aplikacji należy używać tylko w przypadku aplikacji, które jeszcze nie obsługują weryfikacji dwuskładnikowej.
 
 ## <a name="change-your-default-security-verification-method"></a>Zmień domyślną metodę weryfikacji zabezpieczeń
 
@@ -89,7 +89,7 @@ Możesz dodać nowe numery telefonów lub zaktualizować istniejące numery na s
 
 1. Na stronie **jak chcesz odpowiedzieć?** w sekcji **dodatkowa Weryfikacja zabezpieczeń** Zaktualizuj informacje o numerze telefonu dla **telefonu uwierzytelniania** (podstawowego urządzenia przenośnego) i **telefonu biurowego**.
 
-2. Zaznacz pole wyboru obok opcji alternatywny numer **telefonu uwierzytelniania** , a następnie wpisz dodatkową liczbę telefonów, w której można odbierać wiadomości tekstowe lub połączenia telefoniczne, jeśli nie możesz uzyskać dostępu do urządzenia podstawowego.
+2. Zaznacz pole wyboru obok opcji **alternatywny numer telefonu uwierzytelniania** , a następnie wpisz dodatkową liczbę telefonów, w której można odbierać wiadomości tekstowe lub połączenia telefoniczne, jeśli nie możesz uzyskać dostępu do urządzenia podstawowego.
 
 3. Wybierz pozycję **Zapisz**.
 
@@ -137,7 +137,7 @@ W zależności od ustawień organizacji może pojawić się pole wyboru, które 
 
 Po dodaniu lub zaktualizowaniu ustawień weryfikacji dwuskładnikowej możesz zarządzać hasłami aplikacji, zalogować się lub uzyskać pomoc dotyczącą niektórych typowych problemów związanych z weryfikacją dwuskładnikowym.
 
-- [Zarządzaj hasłami aplikacji w celu weryfikacji](multi-factor-authentication-end-user-app-passwords.md) dwuskładnikowej dla wszystkich aplikacji, które nie obsługują weryfikacji dwuskładnikowej.
+- [Zarządzaj hasłami aplikacji w celu weryfikacji dwuskładnikowej](multi-factor-authentication-end-user-app-passwords.md) dla wszystkich aplikacji, które nie obsługują weryfikacji dwuskładnikowej.
 
 - [Logowanie przy użyciu weryfikacji dwuskładnikowej](multi-factor-authentication-end-user-signin.md)
 

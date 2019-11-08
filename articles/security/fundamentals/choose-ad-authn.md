@@ -2,19 +2,19 @@
 title: Wybierz właściwą metodę uwierzytelniania dla swojego rozwiązania tożsamości hybrydowej usługi Azure AD | Microsoft Docs
 description: Ten przewodnik pomaga CEOs, dyrektorzy działu informatyki, CISOs, starszym architektom tożsamości, architektom w przedsiębiorstwach i bezpieczeństwie oraz podejmującym decyzje IT odpowiedzialne za wybór metody uwierzytelniania dla swojego rozwiązania do obsługi tożsamości hybrydowej usługi Azure AD w średnich i dużych organizacjach.
 keywords: ''
-author: TerryLanfear
-ms.author: terrylan
+author: martincoetzer
+ms.author: martinco
 ms.date: 10/30/2019
 ms.topic: article
 ms.service: security
 ms.subservice: security-fundamentals
 ms.workload: identity
-ms.openlocfilehash: 564175141a8076d2ac4324b0dccf02cc250a613c
-ms.sourcegitcommit: 6c2c97445f5d44c5b5974a5beb51a8733b0c2be7
+ms.openlocfilehash: 71b4a8abc641a3ab11d6b17bbc8de3b42b61c34c
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73621177"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73820557"
 ---
 # <a name="choose-the-right-authentication-method-for-your-azure-active-directory-hybrid-identity-solution"></a>Wybierz właściwą metodę uwierzytelniania dla Azure Active Directory rozwiązanie do tworzenia tożsamości hybrydowej
 

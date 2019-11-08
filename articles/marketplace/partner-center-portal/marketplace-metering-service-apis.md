@@ -5,14 +5,15 @@ author: qianw211
 manager: evansma
 ms.author: v-qiwe
 ms.service: marketplace
+ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 07/11/2019
-ms.openlocfilehash: 35e6c61a8e8537035d70323c85dfc7a76f87cbcd
-ms.sourcegitcommit: 10251d2a134c37c00f0ec10e0da4a3dffa436fb3
+ms.openlocfilehash: 36ca95191e0e6422bd93360b98243393acad8147
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/13/2019
-ms.locfileid: "67869562"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73825472"
 ---
 # <a name="marketplace-metering-service-apis"></a>Interfejsy API usługi pomiaru w witrynie Marketplace
 
@@ -20,7 +21,7 @@ Interfejs API zdarzeń użycia umożliwia emitowanie zdarzeń użycia dla okreś
 
 ## <a name="usage-event"></a>Zdarzenie użycia
 
-**WPIS**:`https://marketplaceapi.microsoft.com/api/usageEvent?api-version=<ApiVersion>`
+**Wpis**: `https://marketplaceapi.microsoft.com/api/usageEvent?api-version=<ApiVersion>`
 
 *Parametry zapytania:*
 
@@ -34,7 +35,7 @@ Interfejs API zdarzeń użycia umożliwia emitowanie zdarzeń użycia dla okreś
 | ------------------ | ---------------------------- |
 | `x-ms-requestid`     | Unikatowa wartość ciągu służąca do śledzenia żądania od klienta, najlepiej identyfikatora GUID. Jeśli ta wartość nie zostanie podana, zostanie wygenerowana i podana w nagłówkach odpowiedzi. |
 | `x-ms-correlationid` | Unikatowa wartość ciągu dla operacji na kliencie. Ten parametr umożliwia skorelowanie wszystkich zdarzeń z operacji klienta ze zdarzeniami po stronie serwera. Jeśli ta wartość nie zostanie podana, zostanie wygenerowana i podana w nagłówkach odpowiedzi. |
-| `authorization`   | [Pobierz token okaziciela sieci Web JSON (JWT).](https://docs.microsoft.com/azure/marketplace/partner-center-portal/pc-saas-registration#get-a-token-based-on-the-azure-ad-app) Uwaga: Podczas wykonywania żądania HTTP prefiks `Bearer` do tokenu uzyskany od linku, do którego się odwoływano. |
+| `authorization`   | [Pobierz token okaziciela sieci Web JSON (JWT).](https://docs.microsoft.com/azure/marketplace/partner-center-portal/pc-saas-registration#get-a-token-based-on-the-azure-ad-app) Uwaga: podczas wykonywania żądania HTTP prefiks `Bearer` jest tokenem uzyskanym z przywoływanego linku. |
 
 *Żądając*
 
@@ -48,9 +49,9 @@ Interfejs API zdarzeń użycia umożliwia emitowanie zdarzeń użycia dla okreś
 }
 ```
 
-### <a name="responses"></a>Responses
+### <a name="responses"></a>Odpowiedzi
 
-Kodu 200<br>
+Kod: 200<br>
 OK 
 
 ```json
@@ -66,7 +67,7 @@ OK
 }
 ```
 
-Kodu 400 <br>
+Kod: 400 <br>
 Złe żądanie, brakujące lub nieprawidłowe dane lub wygasły
 
 ```json
@@ -84,7 +85,7 @@ Złe żądanie, brakujące lub nieprawidłowe dane lub wygasły
 }
 ```
 
-Kodu 403<br>
+Kod: 403<br>
 Złe żądanie, brakujące lub nieprawidłowe dane lub wygasły
 
 ```json
@@ -94,8 +95,8 @@ Złe żądanie, brakujące lub nieprawidłowe dane lub wygasły
 }
 ```
 
-Kodu 409<br>
-Konflikt, gdy otrzymamy wywołanie użycia dla identyfikatora zasobu użycia i efektywne użycie już istnieje. Odpowiedź będzie zawierać `additionalInfo` pole, które zawiera informacje o zaakceptowanej wiadomości.
+Kod: 409<br>
+Konflikt, gdy otrzymamy wywołanie użycia dla identyfikatora zasobu użycia i efektywne użycie już istnieje. Odpowiedź będzie zawierać pole `additionalInfo`, które zawiera informacje o zaakceptowanej wiadomości.
 
 ```json
 {
@@ -120,7 +121,7 @@ Interfejs API zdarzeń użycia usługi Batch umożliwia emitowanie zdarzeń uży
 >[!Note]
 >Możesz zarejestrować wiele ofert SaaS na komercyjnym rynku firmy Microsoft. Każda zarejestrowana oferta SaaS ma unikatową aplikację usługi Azure AD, która jest zarejestrowana na potrzeby uwierzytelniania i autoryzacji. Zdarzenia emitowane w usłudze Batch powinny należeć do ofert z tą samą aplikacją usługi Azure AD w momencie rejestracji oferty.
 
-**WPIS:** `https://marketplaceapi.microsoft.com/api/batchUsageEvent?api-version=<ApiVersion>`
+**Wpis:** `https://marketplaceapi.microsoft.com/api/batchUsageEvent?api-version=<ApiVersion>`
 
 *Parametry zapytania:*
 
@@ -134,7 +135,7 @@ Interfejs API zdarzeń użycia usługi Batch umożliwia emitowanie zdarzeń uży
 | ------------------ | ------ |
 | `x-ms-requestid`     | Unikatowa wartość ciągu służąca do śledzenia żądania od klienta, najlepiej identyfikatora GUID. Jeśli ta wartość nie zostanie podana, zostanie wygenerowana i podana w nagłówkach odpowiedzi. |
 | `x-ms-correlationid` | Unikatowa wartość ciągu dla operacji na kliencie. Ten parametr umożliwia skorelowanie wszystkich zdarzeń z operacji klienta ze zdarzeniami po stronie serwera. Jeśli ta wartość nie zostanie określona, zostanie wygenerowana i podana w nagłówkach odpowiedzi. |
-| `authorization`      | [Pobierz token okaziciela sieci Web JSON (JWT).](https://docs.microsoft.com/azure/marketplace/partner-center-portal/pc-saas-registration#get-a-token-based-on-the-azure-ad-app) Uwaga: Podczas wykonywania żądania HTTP prefiks `Bearer` do tokenu uzyskany od linku, do którego się odwoływano.  |
+| `authorization`      | [Pobierz token okaziciela sieci Web JSON (JWT).](https://docs.microsoft.com/azure/marketplace/partner-center-portal/pc-saas-registration#get-a-token-based-on-the-azure-ad-app) Uwaga: podczas wykonywania żądania HTTP prefiks `Bearer` jest tokenem uzyskanym z przywoływanego linku.  |
 
 *Żądając*
 ```json
@@ -157,9 +158,9 @@ Interfejs API zdarzeń użycia usługi Batch umożliwia emitowanie zdarzeń uży
   ]
 }
 ```
-### <a name="responses"></a>Responses
+### <a name="responses"></a>Odpowiedzi
 
-Kodu 200<br>
+Kod: 200<br>
 OK
 
 ```json
@@ -192,7 +193,7 @@ OK
 }
 ```
 
-Opis kodu stanu przywoływany `BatchUsageEvent` w odpowiedzi interfejsu API:
+Opis kodu stanu przywoływany w odpowiedzi interfejsu API `BatchUsageEvent`:
 
 | Kod stanu  | Opis |
 | ---------- | -------------------- |
@@ -206,7 +207,7 @@ Opis kodu stanu przywoływany `BatchUsageEvent` w odpowiedzi interfejsu API:
 | `InvalidQuantity` | Przenoszona ilość jest < 0. |
 | `BadArgument` | Brak danych wejściowych lub jest nieprawidłowo sformułowany. |
 
-Kodu 400<br>
+Kod: 400<br>
 Złe żądanie, brakujące lub nieprawidłowe dane lub wygasły
 
 ```json
@@ -223,7 +224,7 @@ Złe żądanie, brakujące lub nieprawidłowe dane lub wygasły
   "code": "BadArgument"
 }
 ```
-Kodu 403<br>
+Kod: 403<br>
 Użytkownik nie ma autoryzacji do tego wywołania
 
 ```json
@@ -233,6 +234,6 @@ Użytkownik nie ma autoryzacji do tego wywołania
 }
 ```
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 Aby uzyskać więcej informacji, zobacz [SaaS zliczanie opłat](./saas-metered-billing.md).

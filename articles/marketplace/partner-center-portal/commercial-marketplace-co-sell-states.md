@@ -5,14 +5,15 @@ author: qianw211
 manager: evansma
 ms.author: v-qiwe
 ms.service: marketplace
+ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 08/27/2019
-ms.openlocfilehash: f0fa86cc3de9f8c183d7b7a24fb03d02204adc17
-ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
+ms.openlocfilehash: 38dcfe04473e8d2fbd81614908adef9636c44b19
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70076149"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73812860"
 ---
 # <a name="co-sell-state-codes"></a>Kody stanu współsprzedażowego
 
@@ -30,7 +31,7 @@ Jeśli ma to zastosowanie, Użyj tych kodów, aby podać informacje o stanie/pro
 | Kolorado                            | US — CO     |
 | Connecticut                         | US-CT     |
 | Delaware                            | US-DE     |
-| Floryda                             | US-FL     |
+| Florida                             | US-FL     |
 | Gruzja                             | US — GA     |
 | Hawaje                              | US — WITAJ     |
 | Idaho                               | US — IDENTYFIKATOR     |
@@ -44,14 +45,14 @@ Jeśli ma to zastosowanie, Użyj tych kodów, aby podać informacje o stanie/pro
 | Maryland                            | US-MD     |
 | Massachusetts                       | US — MA     |
 | Michigan                            | US-MI     |
-| Minnesota                           | US-MN     |
+| Minnesoty                           | US-MN     |
 | Mississippi                         | US-MS     |
 | Missouri                            | US-MO     |
 | Montana                             | US-MT     |
 | Nebraska                            | US — NE     |
 | Nevada                              | US — NV     |
-| New Hampshire                       | US — NH     |
-| New Jersey                          | US — NJ     |
+| Nowy Hampshire                       | US — NH     |
+| Nowa Jersey                          | US — NJ     |
 | Nowy Meksyk                          | US – NM     |
 | Nowy Jork                            | US — POLSKA     |
 | Karolina Północna                      | US-NC     |
@@ -60,8 +61,8 @@ Jeśli ma to zastosowanie, Użyj tych kodów, aby podać informacje o stanie/pro
 | Oklahoma                            | US — OK     |
 | Oregon                              | US-LUB     |
 | Pensylwania                        | US-PA     |
-| Rhode Island                        | US — RI     |
-| Karolina Południowa                      | US-SC     |
+| Wyspa Rhode                        | US — RI     |
+| Karolinie południowy                      | US-SC     |
 | Dakota Południowa                        | US-SD     |
 | Tennessee                           | US-TN     |
 | Teksas                               | US-TX     |
@@ -69,7 +70,7 @@ Jeśli ma to zastosowanie, Użyj tych kodów, aby podać informacje o stanie/pro
 | Vermont                             | US — VT     |
 | Wirginia                            | US — VA     |
 | Waszyngton                          | US-WA     |
-| Wirginia Zachodnia                       | US — WV     |
+| Wirginia zachodni                       | US — WV     |
 | Wisconsin                           | US-WI     |
 | Wyoming                             | US — WY     |
 | Dystrykt Kolumbii                | US — DC     |

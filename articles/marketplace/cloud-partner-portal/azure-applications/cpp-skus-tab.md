@@ -1,158 +1,159 @@
 ---
-title: Konfigurowanie jednostki SKU dla oferty aplikacji platformy Azure | Portal Azure Marketplace
-description: Jak skonfigurować jednostki SKU dla platformy Azure zarządzanych aplikacji i szablon rozwiązania platformy Azure.
+title: Skonfiguruj jednostki SKU dla oferty aplikacji platformy Azure | Portal Azure Marketplace
+description: Jak skonfigurować jednostki SKU dla aplikacji zarządzanej przez platformę Azure i szablonu rozwiązania platformy Azure.
 services: Azure, Marketplace, Cloud Partner Portal,
 author: dan-wesley
 ms.service: marketplace
+ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 04/23/2019
 ms.author: pabutler
-ms.openlocfilehash: ef4ea2419c64d0376023ea5d291460df48a51c63
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 29b69499b708726b10947bd3202d3a52893f5c90
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64943448"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73826180"
 ---
 # <a name="azure-application-skus-tab"></a>Karta jednostki SKU aplikacji platformy Azure
 
-W tym artykule opisano, jak utworzyć jednostki SKU dla aplikacji platformy Azure przy użyciu karty jednostki SKU. 
+W tym artykule opisano, jak za pomocą karty SKU utworzyć jednostki SKU dla aplikacji platformy Azure. 
 
 > [!IMPORTANT]
-> Procedura konfigurowania jednostki SKU są różne dla oferty aplikacji zarządzanych i oferty szablonu rozwiązania. Te różnice są opisane w tym artykule. 
+> Kroki konfigurowania jednostki SKU różnią się w zależności od aplikacji zarządzanej i oferty szablonu rozwiązania. Te różnice opisano w tym artykule. 
 
-## <a name="configure-azure-application-skus"></a>Konfigurowanie aplikacji platformy Azure jednostki SKU
+## <a name="configure-azure-application-skus"></a>Konfigurowanie jednostek SKU aplikacji platformy Azure
 
-### <a name="create-a-new-sku"></a>Tworzenie nowej jednostki SKU
+### <a name="create-a-new-sku"></a>Utwórz nową jednostkę SKU
 
-Wykonaj następujące kroki, aby utworzyć nowe jednostki SKU:
+Wykonaj następujące kroki, aby utworzyć nową jednostkę SKU:
 
-1. Wybierz **jednostki SKU** kartę.
-2. W obszarze jednostek SKU, wybierz **+ nowej jednostki SKU**.
+1. Wybierz kartę **jednostki SKU** .
+2. W obszarze jednostki SKU wybierz pozycję **+ Nowa jednostka SKU**.
 
-    ![Nowy wiersz w jednostce SKU](./media/azureapp-plus-sku.png)
+    ![Nowy monit jednostki SKU](./media/azureapp-plus-sku.png)
 
-3. W oknie podręcznym nowej jednostki SKU wpisz **identyfikator jednostki SKU**. Ten identyfikator jest ograniczona do 50 znaków i musi zawierać tylko znaków alfanumerycznych, małe litery, kreski i znaki podkreślenia. Identyfikator jednostki SKU nie może kończyć się kreską.
-4. Identyfikator jednostki SKU jest widoczne dla klientów w adresach URL produktu, szablonów usługi Resource Manager (jeśli dotyczy) i raporty rozliczeń. Nie można zmodyfikować tego identyfikatora, po jego opublikowaniu oferty.
+3. W oknie podręcznym nowe jednostki SKU wpisz **Identyfikator jednostki SKU**. Ten identyfikator jest ograniczony do 50 znaków i musi zawierać tylko małe litery, znaki alfanumeryczne, łączniki i podkreślenia. Identyfikator jednostki SKU nie może kończyć się znakiem kreski.
+4. Identyfikator jednostki SKU jest widoczny dla klientów w adresach URL produktów, Menedżer zasobów szablonów (jeśli dotyczy) i raportów dotyczących rozliczeń. Nie można zmodyfikować tego identyfikatora po opublikowaniu oferty.
 
 ### <a name="sku-details-for-a-solution-template"></a>Szczegóły jednostki SKU dla szablonu rozwiązania
 
-Następny zrzut ekranu przedstawia formularz szczegółów jednostki SKU dla szablonu rozwiązania.
+Przechwytywanie następnego ekranu pokazuje formularz szczegóły jednostki SKU dla szablonu rozwiązania.
 
-![Formularz szczegółów jednostki SKU, szablon rozwiązania](./media/azureapp-sku-details-solutiontemplate.png)
+![Formularz szczegółów jednostki SKU dla szablonu rozwiązania](./media/azureapp-sku-details-solutiontemplate.png)
 
-Podaj następujące wartości jednostki SKU.  Wymagane są pola dołączany gwiazdką.
+Podaj następujące wartości jednostki SKU.  Pola dołączone do gwiazdki są wymagane.
 
 |    Pole         |       Opis                                                            |
 |  ---------       |     ---------------                                                          |
-|  **Tytuł\***     | Tytuł dla jednostki SKU. Ten tytuł jest wyświetlany w galerii dla tego elementu.   |
-| **Podsumowanie\***    | Krótki opis podsumowania jednostki SKU. (Maksymalna długość wynosi 100 znaków).  |
-| **Opis elementu\*** | Szczegółowy opis jednostki SKU. Podstawowe HTML jest obsługiwane.                 | 
-| **Typ jednostki SKU\***   | Typ rozwiązania aplikacji platformy Azure, wybierz pozycję ***szablon rozwiązania** dla tego scenariusza. |
-| **Dostępności w chmurze\*** | Lokalizacja jednostki SKU. Wartość domyślna to **publicznej Azure**.  <b/>   **Publiczna platforma Azure** — aplikacja będzie można wdrożyć dla klientów we wszystkich publicznych regionach platformy Azure, które mają integrację portalu marketplace.  <b/>   **Chmury platformy Azure dla instytucji rządowych** — aplikacja zostanie wdrożona w chmurze Azure Government. Przed opublikowaniem do [Azure dla instytucji rządowych](https://docs.microsoft.com/azure/azure-government/documentation-government-manage-marketplace-partners), firma Microsoft zaleca wydawców, testowanie i weryfikowanie ich działa zgodnie z oczekiwaniami, w tym środowisku. Przygotuj i przetestować, żądania [konto próbne](https://azure.microsoft.com/offers/ms-azr-usgov-0044p/).  |
-| **Jest to prywatne jednostki SKU\*** | Wybierz **tak** Jeśli ta jednostka SKU jest dostępna tylko dla wybranej grupy klientów. |
+|  **\* tytułu**     | Tytuł jednostki SKU. Ten tytuł jest wyświetlany w galerii dla tego elementu.   |
+| **\* podsumowania**    | Krótki opis podsumowania jednostki SKU. (Maksymalna długość to 100 znaków).  |
+| **\* opisu** | Szczegółowy opis jednostki SKU. Podstawowy kod HTML jest obsługiwany.                 | 
+| **\* typu jednostki SKU**   | Typ rozwiązania aplikacji platformy Azure, wybierz pozycję ***szablon rozwiązania** dla tego scenariusza. |
+| **Dostępność w chmurze\*** | Lokalizacja jednostki SKU. Wartość domyślna to **publiczna platforma Azure**.  <b/>**publiczną platformę Azure** — aplikacja zostanie wdrożona dla klientów we wszystkich publicznych regionach świadczenia usługi Azure z integracją z portalu Marketplace.  <b/>**Azure Government Cloud** — aplikacja zostanie wdrożona w chmurze Azure Government. Przed opublikowaniem w [Azure Government](https://docs.microsoft.com/azure/azure-government/documentation-government-manage-marketplace-partners), firma Microsoft zaleca, aby wydawcy przetestować i sprawdzali, czy rozwiązanie działa zgodnie z oczekiwaniami w tym środowisku. Aby przygotować się do etapu i przetestowania, zażądaj [konta próbnego](https://azure.microsoft.com/offers/ms-azr-usgov-0044p/).  |
+| **Czy jest to prywatna jednostka SKU?\*** | Wybierz opcję **tak** , jeśli ta jednostka SKU jest dostępna tylko dla wybranej grupy klientów. |
 |   |   |
 
   > [!NOTE] 
-  > Microsoft Azure dla instytucji rządowych to chmura dla instytucji rządowych i społeczności, przy użyciu kontrolowanego dostępu dla klientów z USA federalnych, stan, lokalnej lub plemiennej partnerów i kwalifikujących się do obsługi tych jednostek.
+  > Microsoft Azure Government to chmura dla instytucji rządowych, której dostęp jest kontrolowany przez klientów ze stanów USA, stan, lokalny lub plemienne oraz partnerzy kwalifikowania się do korzystania z tych jednostek.
 
 
 ### <a name="sku-details-for-managed-application"></a>Szczegóły jednostki SKU dla aplikacji zarządzanej
 
-Następny zrzut ekranu przedstawia formularz szczegółów jednostki SKU dla zarządzanej aplikacji.
+Przechwytywanie następnego ekranu pokazuje formularz szczegóły jednostki SKU dla aplikacji zarządzanej.
 
    ![Formularz szczegółów jednostki SKU dla aplikacji zarządzanej](./media/azureapp-sku-details-managedapplication.png)
 
-Skonfiguruj następujące ustawienia jednostki SKU. Wymagane są pola dołączany gwiazdką.
+Skonfiguruj następujące ustawienia jednostki SKU. Pola dołączone do gwiazdki są wymagane.
 
 |    Pole         |       Opis                                                            |
 |  ---------       |     ---------------                                                          |
-|  **Tytuł\***     | Tytuł dla jednostki SKU. Ten tytuł jest wyświetlany w galerii dla tego elementu.   |
-| **Podsumowanie\***    | Krótki opis podsumowania jednostki SKU. (Maksymalna długość wynosi 100 znaków).  |
-| **Opis elementu\*** | Szczegółowy opis jednostki SKU. Podstawowe HTML jest obsługiwane.                 | 
-| **Typ jednostki SKU\***   | Typ rozwiązania aplikacji platformy Azure, wybierz pozycję ***zarządzanej aplikacji** dla tego scenariusza. 
-| **Dostępności w chmurze\*** | Lokalizacja jednostki SKU. Wartość domyślna to **publicznej Azure**.  <b/>   **Publiczna platforma Azure** — aplikacja będzie można wdrożyć dla klientów we wszystkich publicznych regionach platformy Azure, które mają integrację portalu marketplace.  <b/>   **Chmury platformy Azure dla instytucji rządowych** — aplikacja zostanie wdrożona w chmurze Azure Government. Przed opublikowaniem do [Azure dla instytucji rządowych](https://docs.microsoft.com/azure/azure-government/documentation-government-manage-marketplace-partners), firma Microsoft zaleca wydawców, testowanie i weryfikowanie ich działa zgodnie z oczekiwaniami, w tym środowisku. Przygotuj i przetestować, żądania [konto próbne](https://azure.microsoft.com/offers/ms-azr-usgov-0044p/).   Microsoft Azure dla instytucji rządowych to chmura dla instytucji rządowych i społeczności, przy użyciu kontrolowanego dostępu dla klientów z USA federalnych, stan, lokalnej lub plemiennej partnerów i kwalifikujących się do obsługi tych jednostek. |
-| **Jest to prywatne jednostki SKU\*** | Wybierz **tak** Jeśli ta jednostka SKU jest dostępna tylko dla wybranej grupy klientów. |
-| **Dostępność Kraj/Region\*** | Użyj **Wybierz regiony** Aby wyświetlić listę krajów/regionów, które są dostępne. Sprawdź każdego kraju/regionu, a następnie wybierz **OK** można zapisać swoje propozycje.  <b/>   ![Lista dostępności krajów i regionów](./media/azure-app-select-country-region.png)  |
-| **Stary ceny\*** | Cena dla jednostki SKU w USD miesięcznie. Ceny są ustawiane w walucie lokalnej przy użyciu bieżących kursów wymiany podczas konfiguracji. Zweryfikuj je, ponieważ ostatecznie samodzielnie tych ustawień. Aby ustawić lub wyświetlić poszczególne cena każdego kraju/regionu, eksportować arkusz cen i zaimportuj z ceny niestandardowe.  Musisz zapisać zmiany cen, aby włączyć eksportu/importu danych cen.  |
-| **Cennik uproszczone waluty\*** | Cena dla jednostki SKU w USD miesięcznie. Musi to być takie same jak ceny stary. Aby uzyskać więcej informacji, zobacz [uproszczony ceny waluty](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cloud-partner-portal-update-existing-offer). |
+|  **\* tytułu**     | Tytuł jednostki SKU. Ten tytuł jest wyświetlany w galerii dla tego elementu.   |
+| **\* podsumowania**    | Krótki opis podsumowania jednostki SKU. (Maksymalna długość to 100 znaków).  |
+| **\* opisu** | Szczegółowy opis jednostki SKU. Podstawowy kod HTML jest obsługiwany.                 | 
+| **\* typu jednostki SKU**   | Typ rozwiązania aplikacji platformy Azure, wybierz pozycję ***zarządzana aplikacja** dla tego scenariusza. 
+| **Dostępność w chmurze\*** | Lokalizacja jednostki SKU. Wartość domyślna to **publiczna platforma Azure**.  <b/>**publiczną platformę Azure** — aplikacja zostanie wdrożona dla klientów we wszystkich publicznych regionach świadczenia usługi Azure z integracją z portalu Marketplace.  <b/>**Azure Government Cloud** — aplikacja zostanie wdrożona w chmurze Azure Government. Przed opublikowaniem w [Azure Government](https://docs.microsoft.com/azure/azure-government/documentation-government-manage-marketplace-partners), firma Microsoft zaleca, aby wydawcy przetestować i sprawdzali, czy rozwiązanie działa zgodnie z oczekiwaniami w tym środowisku. Aby przygotować się do etapu i przetestowania, zażądaj [konta próbnego](https://azure.microsoft.com/offers/ms-azr-usgov-0044p/).   Microsoft Azure Government to chmura dla instytucji rządowych, której dostęp jest kontrolowany przez klientów ze stanów USA, stan, lokalny lub plemienne oraz partnerzy kwalifikowania się do korzystania z tych jednostek. |
+| **Czy jest to prywatna jednostka SKU?\*** | Wybierz opcję **tak** , jeśli ta jednostka SKU jest dostępna tylko dla wybranej grupy klientów. |
+| **\* dostępności kraju/regionu** | Użyj **opcji wybierz regiony** , aby wyświetlić listę dostępnych krajów/regionów. Sprawdź każdy kraj/region, a następnie wybierz pozycję **OK** , aby zapisać swoje propozycje.  <b/>![listy dostępności kraju i regionu](./media/azure-app-select-country-region.png)  |
+| **Stara\* cenowe** | Cena jednostki SKU w USD miesięcznie. Ceny są ustawiane w walucie lokalnej przy użyciu bieżących kursów wymiany podczas konfiguracji. Sprawdź poprawność tych ustawień, ponieważ są one ostatecznie własne. Aby ustawić lub wyświetlić poszczególne ceny poszczególnych krajów/regionów, należy wyeksportować arkusz kalkulacyjny z cennikiem i zaimportować go przy użyciu cennika niestandardowego.  Musisz zapisać zmiany cen, aby włączyć eksportowanie/Importowanie danych cen.  |
+| **Uproszczone ceny walutowe\*** | Cena jednostki SKU w USD miesięcznie. Ta wartość musi być taka sama jak w przypadku starych cen. Aby uzyskać więcej informacji, zobacz [uproszczone ceny walutowe](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cloud-partner-portal-update-existing-offer). |
 |  |  |
 
 
-### <a name="package-details-for-solution-template"></a>Szczegóły pakietu szablon rozwiązania
+### <a name="package-details-for-solution-template"></a>Szczegóły pakietu dla szablonu rozwiązania
 
-   ![Szczegóły pakietu szablon rozwiązania](./media/azureapp-sku-pkgdetails-solutiontemplate.png)
+   ![Szczegóły pakietu dla szablonu rozwiązania](./media/azureapp-sku-pkgdetails-solutiontemplate.png)
 
-Podaj następujące **szczegóły pakietu** wartości.  Wymagane są pola dołączany gwiazdką.
+Podaj następujące wartości **szczegółów pakietu** .  Pola dołączone do gwiazdki są wymagane.
 
-- **Wersja\***  — wersja pakietu, który trzeba będzie przekazać. Tagi wersji musi być w postaci X.Y.Z, gdzie X, Y i Z są liczbami całkowitymi.
-- **Plik pakietu (zip)\***  — ten pakiet zawiera następujące pliki zapisane w pliku zip.
-  - MainTemplate.json — pliki szablonu wdrożenia, który jest używany do wdrożenia rozwiązanie/aplikację i utworzyć zasoby definiowane dla rozwiązania. Aby uzyskać więcej informacji, zobacz [jak tworzyć pliki szablonu wdrożenia](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-create-first-template).
-  - createUIDefinition.json — ten plik jest używany przez witryny Azure portal do wygenerowania interfejsu użytkownika do obsługi administracyjnej rozwiązania/aplikacji. Aby uzyskać więcej informacji, zobacz [interfejs użytkownika portalu tworzenie platformy Azure dla aplikacji zarządzanej](https://docs.microsoft.com/azure/azure-resource-manager/managed-application-createuidefinition-overview).
-
-  >[!IMPORTANT] 
-  >Ten pakiet powinien zawierać wszystkie zagnieżdżone szablony lub skrypty, które są potrzebne do aprowizowania tej aplikacji. Plik MainTemplate.json i plik createUIDefinition.json musi być w folderze głównym.
-
-
-### <a name="package-details-for-managed-application"></a>Szczegóły pakietu aplikacji zarządzanej
-
-   ![Szczegóły pakietu aplikacji zarządzanej](./media/azureapp-sku-pkgdetails-managedapplication.png)
-
-Podaj następujące szczegóły pakietu.  Wymagane są pola dołączany gwiazdką.
-
-- **Wersja\***  — wersja pakietu, który trzeba będzie przekazać. Tagi wersji musi być w postaci X.Y.Z, gdzie X, Y i Z są liczbami całkowitymi.
-- **Plik pakietu (zip)\***  — ten pakiet zawiera następujące pliki zapisane w pliku zip.
-  - applianceMainTemplate.json — pliki szablonu wdrożenia, który służy do wdrażania rozwiązania/aplikacji oraz tworzenia zasobów, które są zdefiniowane. Aby uzyskać więcej informacji, zobacz temat [Szybki start: Tworzenie i wdrażanie szablonów usługi Azure Resource Manager przy użyciu witryny Azure Portal](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-quickstart-create-templates-use-the-portal). 
-  - applianceCreateUIDefinition.json — ten plik jest używany przez witryny Azure portal do wygenerowania interfejsu użytkownika do obsługi administracyjnej rozwiązania/aplikacji. Aby uzyskać więcej informacji, zobacz [interfejs użytkownika portalu tworzenie platformy Azure dla aplikacji zarządzanej](https://docs.microsoft.com/azure/azure-resource-manager/managed-application-createuidefinition-overview).
-  - mainTemplate.json — plik szablonu, który zawiera tylko zasób Microsoft.Solution/appliances. Aby uzyskać więcej informacji, zobacz [Omówienie struktury i składni szablonów usługi Azure Resource Manager](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-authoring-templates). <br>
-Należy zwrócić uwagę następujących właściwości kluczy tego zasobu:
-    - "kind" — w przypadku aplikacji zarządzanych w witrynie Marketplace. wartość powinna być "Marketplace".
-    - "ManagedResourceGroupId" — grupę zasobów w subskrypcji klienta wdrożonym wszystkie zasoby, które są zdefiniowane w applianceMainTemplate.json.
-    - Ciąg "elementu PublisherPackageId", który unikatowo identyfikuje pakiet. Ta wartość musi być zbudowany w następujący sposób: jest łączenie [publisherId]. [Identyfikatora oferty]-[SKUID] w wersji zapoznawczej. [PackageVersion].
+- **Wersja\*** — wersja pakietu, który zostanie przekazany. Tagi wersji muszą mieć postać X. Y. Z, gdzie X, Y i Z są liczbami całkowitymi.
+- **\*pliku pakietu (zip)** — ten pakiet zawiera następujące pliki zapisane w pliku zip.
+  - MainTemplate. JSON — plik szablonu wdrożenia używany do wdrożenia rozwiązania/aplikacji i tworzenia zasobów zdefiniowanych dla rozwiązania. Aby uzyskać więcej informacji, zobacz [jak tworzyć pliki szablonów wdrożenia](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-create-first-template).
+  - createUIDefinition. JSON — ten plik jest używany przez Azure Portal do generowania interfejsu użytkownika na potrzeby aprowizacji tego rozwiązania/aplikacji. Aby uzyskać więcej informacji, zobacz [Tworzenie interfejsu użytkownika Azure Portal dla aplikacji zarządzanej](https://docs.microsoft.com/azure/azure-resource-manager/managed-application-createuidefinition-overview).
 
   >[!IMPORTANT] 
-  >Ten pakiet powinien zawierać wszystkie zagnieżdżone szablony lub skrypty, które są potrzebne do aprowizowania tej aplikacji. Pliki te muszą znajdować się w folderze głównym:  MainTemplate.json applianceMainTemplate.json i applianceCreateUIDefinition.json.
+  >Ten pakiet powinien zawierać wszelkie zagnieżdżone szablony lub skrypty, które są potrzebne do aprowizacji tej aplikacji. Plik MainTemplate. JSON i plik createUIDefinition. JSON muszą znajdować się w folderze głównym.
 
-- **Identyfikator dzierżawy\***  — identyfikator dzierżawy usługi Azure Active Directory w Twojej organizacji.
-- **Włącz dostęp JIT? \***  — Wybierz **tak** umożliwiające Just-In-Time dostępu do zarządzania w przypadku wdrożeń klientów przy użyciu tej oferty.
+
+### <a name="package-details-for-managed-application"></a>Szczegóły pakietu dla aplikacji zarządzanej
+
+   ![Szczegóły pakietu dla aplikacji zarządzanej](./media/azureapp-sku-pkgdetails-managedapplication.png)
+
+Podaj następujące szczegóły pakietu.  Pola dołączone do gwiazdki są wymagane.
+
+- **Wersja\*** — wersja pakietu, który zostanie przekazany. Tagi wersji muszą mieć postać X. Y. Z, gdzie X, Y i Z są liczbami całkowitymi.
+- **\*pliku pakietu (zip)** — ten pakiet zawiera następujące pliki zapisane w pliku zip.
+  - applianceMainTemplate. JSON — plik szablonu wdrożenia używany do wdrożenia rozwiązania/aplikacji i tworzenia zdefiniowanych zasobów. Aby uzyskać więcej informacji, zobacz [Szybki Start: Tworzenie i wdrażanie szablonów Azure Resource Manager przy użyciu Azure Portal](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-quickstart-create-templates-use-the-portal). 
+  - applianceCreateUIDefinition. JSON — ten plik jest używany przez Azure Portal do generowania interfejsu użytkownika na potrzeby aprowizacji tego rozwiązania/aplikacji. Aby uzyskać więcej informacji, zobacz [Tworzenie interfejsu użytkownika Azure Portal dla aplikacji zarządzanej](https://docs.microsoft.com/azure/azure-resource-manager/managed-application-createuidefinition-overview).
+  - mainTemplate. JSON — plik szablonu zawierający tylko zasób Microsoft. Solution/urządzenia. Aby uzyskać więcej informacji, zobacz [Opis struktury i składni szablonów Azure Resource Manager](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-authoring-templates). <br>
+Zwróć uwagę na następujące właściwości klucza tego zasobu:
+    - "Kind" — wartość powinna być "Marketplace" w przypadku aplikacji zarządzanej przez witrynę Marketplace.
+    - "ManagedResourceGroupId" — Grupa zasobów w subskrypcji klienta, w której zostaną wdrożone wszystkie zasoby zdefiniowane w pliku applianceMainTemplate. JSON.
+    - "PublisherPackageId" — ciąg, który jednoznacznie identyfikuje pakiet. Ta wartość musi być skonstruowana w następujący sposób: jest to połączenie [publisherId]. [OfferId] — wersja zapoznawcza [identyfikatora SKUID]. [PackageVersion].
+
+  >[!IMPORTANT] 
+  >Ten pakiet powinien zawierać wszelkie zagnieżdżone szablony lub skrypty, które są potrzebne do aprowizacji tej aplikacji. Te pliki muszą znajdować się w folderze głównym: MainTemplate. JSON, applianceMainTemplate. JSON i applianceCreateUIDefinition. JSON.
+
+- **Identyfikator dzierżawy\*** — identyfikator dzierżawy Azure Active Directory organizacji.
+- **Włączyć dostęp JIT?\*** -wybierz opcję **tak** , aby włączyć dostęp do usługi zarządzania just-in-Time dla wdrożeń klientów przy użyciu tej oferty.
 
   >[!NOTE] 
-  >Jeśli włączysz JIT, należy zaktualizować plik CreateUiDefinition.json do obsługi dostępu JIT.
+  >W przypadku włączenia JIT należy zaktualizować plik CreateUiDefinition. JSON, aby obsługiwał dostęp JIT.
 
-Dla aplikacji zarządzanej należy skonfigurować ustawienia zasad i autoryzacji.
+W przypadku aplikacji zarządzanej należy skonfigurować ustawienia autoryzacji i zasad.
 
 
 #### <a name="authorization"></a>Autoryzacja
 
-Dodawanie usługi Azure Active Directory identyfikator użytkownika, grupę lub aplikację, do którego chcesz udzielić uprawnień do zarządzanej grupy zasobów. Uprawnienia, które otrzymuje jest wskazywany przez identyfikator definicji roli Może to być właścicielem, współautorem lub dowolną rolę niestandardową.
+Dodaj Azure Active Directory identyfikator użytkownika, grupy lub aplikacji, do której chcesz udzielić uprawnienia do zarządzanej grupy zasobów. Przyznane uprawnienie jest wskazywane przez identyfikator definicji roli. Może być właścicielem, współautorem lub dowolną rolą niestandardową.
 
 
 #### <a name="policy-settings"></a>Ustawienia zasad
 
-Dodaj zasady, które spełnia aplikacji zarządzanej. Dowiedz się więcej na temat zasad zasobów platformy Azure, zobacz [co to jest usługa Azure Policy?](../../../governance/policy/overview.md)
+Dodaj zasady, z którymi jest zgodna aplikacja zarządzana. Dowiedz się więcej na temat zasad zasobów platformy Azure, zobacz [co to jest Azure Policy?](../../../governance/policy/overview.md)
 
-   ![Autoryzacja i zasady ustawień dla aplikacji zarządzanej](./media/azureapp-sku-details-managedapp-auth-policy.png)
+   ![Ustawienia autoryzacji i zasad dla aplikacji zarządzanej](./media/azureapp-sku-details-managedapp-auth-policy.png)
 
-**Aby utworzyć nowy autoryzacji:**
+**Aby utworzyć nową autoryzację:**
 
-1. W obszarze **autoryzacji**, wybierz opcję **+ nowe autoryzacji**.
-2. Aby uzyskać **identyfikator podmiotu zabezpieczeń**, wpisz usługi Azure Active Directory identyfikator użytkownika, grupy lub aplikacji, do którego chcesz udzielić uprawnień do zarządzanej grupy zasobów. Uprawnienia, które otrzymuje jest wskazywany przez definicji roli.
-3. Aby uzyskać **definicji roli**, wybierz jedną z następujących opcji z listy rozwijanej:  Właścicielem lub współautorem. Aby uzyskać więcej informacji, zobacz [wbudowane role zasobów platformy Azure](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles).
+1. W obszarze **autoryzacja**wybierz pozycję **+ Nowa autoryzacja**.
+2. Dla **identyfikatora podmiotu zabezpieczeń**wpisz identyfikator Azure Active Directory użytkownika, grupy lub aplikacji, do której chcesz udzielić uprawnienia do zarządzanej grupy zasobów. Przyznane uprawnienie jest wskazywane przez definicję roli.
+3. W obszarze **definicja roli**wybierz jedną z opcji z listy rozwijanej: właściciel lub współautor. Aby uzyskać więcej informacji, zobacz temat [Wbudowane role dla zasobów platformy Azure](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles).
 
 >[!NOTE] 
->Można dodać wiele autoryzacji. Jednak zaleca się utworzenie grupy użytkowników usługi Active Directory i określ jej identyfikator w "PrincipalId". Umożliwi to dodanie większej liczby użytkowników do grupy użytkowników, bez konieczności aktualizowania jednostki SKU.
+>Można dodać wiele autoryzacji. Zaleca się jednak utworzenie grupy użytkowników Active Directory i określenie jej identyfikatora w "PrincipalId". Umożliwi to dodanie większej liczby użytkowników do grupy użytkowników bez konieczności aktualizowania jednostki SKU.
 
 **Aby utworzyć nowe zasady:**
 
-1. W obszarze **ustawienia zasad**, wybierz opcję **+ nowe zasady**.
-2. Aby uzyskać **Nazwa_zasad**, wprowadź nazwę dla zasad. Maksymalna długość nazwy to 50 znaków.
-3. Aby uzyskać **zasady**, wybierz jedną z opcji z listy rozwijanej. Wybierz zasady, które chce można włączyć, jeśli aplikacja używa danych dostawcy danych. Aby uzyskać więcej informacji, zobacz [przykładów dla platformy Azure zasad](https://docs.microsoft.com/azure/governance/policy/samples/index).
+1. W obszarze **Ustawienia zasad**wybierz pozycję **+ nowe zasady**.
+2. W polu **Nazwa zasad**wprowadź nazwę zasady. Maksymalna długość nazwy to 50 znaków.
+3. W przypadku **zasad**wybierz jedną z opcji z listy rozwijanej. Wybierz zasady, które dostawca danych chce włączyć, gdy aplikacja korzysta z danych. Aby uzyskać więcej informacji, zobacz [przykłady Azure Policy](https://docs.microsoft.com/azure/governance/policy/samples/index).
 
     ![Ustawienia zasad dla aplikacji zarządzanej](./media/azureapp-sku-policy-settings.png)
 
-4. Aby uzyskać **jednostka SKU zasad**, wybierz jako zasady typ jednostki SKU bezpłatna lub standardowa. Standardowa jednostka SKU jest wymagana dla zasady inspekcji.
+4. W przypadku **jednostki SKU zasad**wybierz opcję bezpłatna lub standardowa jako typ jednostki SKU zasad. Dla zasad inspekcji wymagana jest standardowa jednostka SKU.
 
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
-Zostaną dodatkowo opisać Twoją ofertę i dostarczania zasobów marketingowych w [kartę Marketplace](./cpp-marketplace-tab.md). 
+Na [karcie Marketplace](./cpp-marketplace-tab.md)znajdziesz dokładniejsze informacje o ofercie i dostarczenie zasobów marketingowych. 

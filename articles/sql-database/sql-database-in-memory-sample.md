@@ -1,5 +1,5 @@
 ---
-title: Azure SQL Database przykład w pamięci
+title: Przykład w pamięci
 description: Wypróbuj Azure SQL Database technologii w pamięci za pomocą przykładu OLTP i magazynu kolumn.
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: ''
 ms.date: 12/18/2018
-ms.openlocfilehash: 8526236afdb0a312879cb3c1635a7fd85985278f
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: e7e7fc44d5f8b46a66c698d3a33ceeab5b8625c4
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73689821"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73810324"
 ---
 # <a name="in-memory-sample"></a>Przykład w pamięci
 
@@ -100,7 +100,7 @@ SELECT is_memory_optimized, name, type_desc, durability_desc
 ```
 
 
-**Procedura składowana skompilowana w sposób macierzysty**: można sprawdzić tabeli SalesLT. USP _insertsalesorder_inmem za pomocą zapytania widoku wykazu:
+**Procedura składowana skompilowana w sposób macierzysty**: można sprawdzić tabeli saleslt. usp_InsertSalesOrder_inmem za pomocą zapytania widoku wykazu:
 
 
 ```sql
@@ -168,7 +168,7 @@ end
 ```
 
 
-Aby udostępnić wersję *_ondisk* poprzedniego skryptu T-SQL dla ostress. exe, należy zamienić oba wystąpienia podciągu *_inmem* na *_ondisk*. Te zamienniki mają wpływ na nazwy tabel i procedur składowanych.
+Aby *_ondisk* wersja poprzedniego skryptu T-SQL dla ostress. exe, należy zamienić oba wystąpienia *_inmem* podciągu na *_ondisk*. Te zamienniki mają wpływ na nazwy tabel i procedur składowanych.
 
 
 ### <a name="install-rml-utilities-and-ostress"></a>Zainstaluj narzędzia RML i `ostress`
@@ -239,7 +239,7 @@ Po zakończeniu `ostress.exe` czas wykonywania jest pisywany jako ostatni wiersz
 #### <a name="reset-edit-for-_ondisk-then-rerun"></a>Zresetuj, Edytuj pod kątem *_ondisk*, a następnie uruchom ponownie
 
 
-Po uzyskaniu wyniku z przebiegu *_inmem* wykonaj następujące kroki, aby uruchomić *_ondisk* :
+Po uruchomieniu *_inmem* wykonaj następujące czynności w celu uruchomienia *_ondisk* :
 
 
 1. Zresetuj bazę danych, uruchamiając następujące polecenie w programie SSMS, aby usunąć wszystkie dane, które zostały wstawione przez poprzednie uruchomienie:
@@ -247,7 +247,7 @@ Po uzyskaniu wyniku z przebiegu *_inmem* wykonaj następujące kroki, aby urucho
    EXECUTE Demo.usp_DemoReset;
    ```
 
-2. Edytuj wiersz polecenia ostress. exe, aby zastąpić wszystkie *_inmem* *_ondisk*.
+2. Edytuj wiersz polecenia ostress. exe, aby zastąpić wszystkie *_inmem* z *_ondisk*.
 
 3. Ponownie uruchom program ostress. exe po raz drugi i Przechwyć wynik trwania.
 
@@ -279,7 +279,7 @@ W przypadku analiz w czasie rzeczywistym w obciążeniu OLTP często najlepszym 
    - Użyj tej dokładnej nazwy.
    - Wybierz dowolną warstwę usługi Premium.
 
-2. Skopiuj [sql_in-memory_analytics_sample](https://raw.githubusercontent.com/microsoft/sql-server-samples/master/samples/features/in-memory-database/in-memory-oltp/t-sql-scripts/sql_in-memory_analytics_sample.sql) do Schowka.
+2. Skopiuj [memory_analytics_sample sql_in](https://raw.githubusercontent.com/microsoft/sql-server-samples/master/samples/features/in-memory-database/in-memory-oltp/t-sql-scripts/sql_in-memory_analytics_sample.sql) do Schowka.
    - Skrypt T-SQL tworzy niezbędne obiekty w pamięci w przykładowej bazie danych AdventureWorksLT, która została utworzona w kroku 1.
    - Skrypt tworzy tabelę wymiarów i dwie tabele faktów. Tabele faktów są wypełniane 3 500 000 wierszami.
    - Wykonanie skryptu może zająć 15 minut.
@@ -294,9 +294,9 @@ W przypadku analiz w czasie rzeczywistym w obciążeniu OLTP często najlepszym 
 #### <a name="key-tables-and-columnstore-indexes"></a>Tabele kluczy i indeksy magazynu kolumn
 
 
-- dbo. FactResellerSalesXL_CCI to tabela, która ma klastrowany indeks magazynu kolumn, który ma zaawansowaną kompresję na poziomie *danych* .
+- dbo. FactResellerSalesXL_CCI to tabela mająca klastrowany indeks magazynu kolumn, która ma zaawansowaną kompresję na poziomie *danych* .
 
-- dbo. FactResellerSalesXL_PageCompressed to tabela, która ma równoważny indeks regularnego klastra, który jest kompresowany tylko na poziomie *strony* .
+- dbo. FactResellerSalesXL_PageCompressed to tabela, która ma odpowiednik regularnego indeksu klastrowanego, który jest kompresowany tylko na poziomie *strony* .
 
 
 #### <a name="key-queries-to-compare-the-columnstore-index"></a>Kluczowe zapytania do porównywania indeksu magazynu kolumn

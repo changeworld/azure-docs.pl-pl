@@ -1,59 +1,60 @@
 ---
-title: Store pakietu usługi AppSource do usługi Azure storage i wygenerować adresu URL przy użyciu klucza sygnatury dostępu Współdzielonego
-description: Wyszczególnia kroki wymagane do przekazania i zabezpieczania pakietu usługi AppSource.
+title: Przechowuj pakiet AppSource w usłudze Azure Storage i Wygeneruj adres URL z kluczem sygnatury dostępu współdzielonego
+description: Szczegóły kroków wymaganych do przekazania i zabezpieczenia pakietu AppSource.
 services: Azure, Marketplace, Cloud Partner Portal,
 author: v-miclar
 ms.service: marketplace
+ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 09/18/2018
 ms.author: pabutler
-ms.openlocfilehash: ac77767aee2dcde33f4266e1d2d09c49dcf5f8a3
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 5f1a09244697a6771ad1b499f3d7c36eb7297067
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64943296"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73827652"
 ---
-<a name="store-your-appsource-package-to-azure-storage-and-generate-a-url-with-sas-key"></a>Store pakietu usługi AppSource do usługi Azure storage i wygenerować adresu URL przy użyciu klucza sygnatury dostępu Współdzielonego
+<a name="store-your-appsource-package-to-azure-storage-and-generate-a-url-with-sas-key"></a>Przechowuj pakiet AppSource w usłudze Azure Storage i Wygeneruj adres URL z kluczem sygnatury dostępu współdzielonego
 =============================================================================
 
-Aby zachować bezpieczeństwo plików, wszyscy partnerzy należy ich plik pakietu usługi AppSource jest przechowywany na koncie magazynu obiektów blob platformy Azure i używać klucza sygnatury dostępu Współdzielonego do udostępniania go. Plik pakietu zostaną pobrane z lokalizacji magazynu platformy Azure do certyfikacji i z niej korzystać w przypadku wersji próbnej usługi AppSource.
+Aby zachować bezpieczeństwo plików, wszyscy partnerzy muszą przechowywać plik pakietu AppSource na koncie usługi Azure Blob Storage i używać klucza SAS do udostępniania go. Pobierzemy plik pakietu z lokalizacji usługi Azure Storage w celu certyfikacji i użyjemy go do AppSource prób.
 
-Do przekazania pakietu do magazynu obiektów blob, należy użyć następujących czynności:
+Aby przekazać pakiet do magazynu obiektów blob, wykonaj następujące czynności:
 
-1. Przejdź do <https://azure.microsoft.com> i Utwórz bezpłatne konto wersji próbnej lub rozliczane.
+1. Przejdź do <https://azure.microsoft.com> i utwórz bezpłatne konto wersji próbnej lub rachunku.
 
-2. Zaloguj się do [Portalu Azure](https://portal.azure.com/).
+2. Zaloguj się do [Azure Portal](https://portal.azure.com/).
 
-3. Utwórz nowe konto magazynu, klikając **+ nowy** i przechodząc do **dane + magazyn** konta.
+3. Utwórz nowe konto magazynu, klikając pozycję **+ Nowy** i przechodząc do konta **dane + magazyn** .
 
-   ![Dane + bloku magazynu w portalu Microsoft Azure](media/CRMScreenShot7.png)
+   ![Blok dane i magazyn w portalu Microsoft Azure](media/CRMScreenShot7.png)
 
-4. Wprowadź **nazwa** i **grupy zasobów** nazwę i kliknij przycisk **Utwórz** przycisku.
+4. Wprowadź **nazwę** i nazwę **grupy zasobów** , a następnie kliknij przycisk **Utwórz** .
 
-   ![Tworzenie konta magazynu w portalu Microsoft Azure](media/CRMScreenShot8.png)
+   ![Utwórz konto magazynu w portalu Microsoft Azure](media/CRMScreenShot8.png)
 
-5. Przejdź do swojej nowo utworzonej grupy zasobów i utworzyć nowy kontener obiektów blob.
+5. Przejdź do nowo utworzonej grupy zasobów i Utwórz nowy kontener obiektów BLOB.
 
-   ![Przekaż pakiet jako obiekt blob przy użyciu portalu platformy Microsoft Azure](media/CRMScreenShot9.png)
+   ![Przekazywanie pakietu jako obiektu BLOB przy użyciu portalu Microsoft Azure](media/CRMScreenShot9.png)
 
-6. Jeśli jeszcze tego nie zrobiono, Pobierz i zainstaluj program Microsoft [Eksploratora usługi Azure Storage](https://storageexplorer.com/).
+6. Jeśli jeszcze tego nie zrobiono, Pobierz i zainstaluj [Eksplorator usługi Azure Storage](https://storageexplorer.com/)Microsoft.
 
-7. Otwórz Eksploratora usługi Storage i użyć ikony, aby nawiązać połączenie z kontem usługi Azure storage.
+7. Otwórz Eksplorator usługi Storage i użyj ikony, aby nawiązać połączenie z kontem usługi Azure Storage.
 
-8. Przejdź do utworzonego kontenera obiektów blob, a następnie kliknij przycisk **przekazywanie** można dodać pliku zip pakietu.
+8. Przejdź do utworzonego kontenera obiektów blob, a następnie kliknij pozycję **Przekaż** , aby dodać plik zip pakietu.
 
-   ![Przekaż pakiet za pomocą Eksploratora magazynu firmy Microsoft](media/CRMScreenShot10.png)
+   ![Przekazywanie pakietu przy użyciu Eksplorator usługi Storage firmy Microsoft](media/CRMScreenShot10.png)
 
-9. Kliknij prawym przyciskiem myszy plik i wybierz **Uzyskaj sygnaturę dostępu współdzielonego**.
+9. Kliknij prawym przyciskiem myszy plik i wybierz polecenie **Pobierz sygnaturę dostępu współdzielonego**.
 
-   ![Uzyskiwanie sygnatury dostępu współdzielonego dla plików platformy Azure](media/CRMScreenShot11.png)
+   ![Uzyskiwanie sygnatury dostępu współdzielonego dla pliku platformy Azure](media/CRMScreenShot11.png)
 
-10. Modyfikowanie **czas wygaśnięcia** Aby uaktywnić sygnatury dostępu Współdzielonego przez jeden miesiąc, a następnie przycisk **Utwórz**.
+10. Zmodyfikuj **czas wygaśnięcia** , aby uaktywnić sygnaturę dostępu współdzielonego przez miesiąc, a następnie kliknij przycisk **Utwórz**.
 
-    ![Modyfikowanie daty wygaśnięcia sygnatury dostępu Współdzielonego dla plików platformy Azure](media/CRMScreenShot12.png)
+    ![Modyfikowanie daty wygaśnięcia sygnatury dostępu współdzielonego pliku platformy Azure](media/CRMScreenShot12.png)
 
-11. Kopiuj pole adresu URL i zapisz go na później. Należy wprowadzić ten adres URL, podczas tworzenia oferty skojarzone. 
+11. Skopiuj pole adresu URL i Zapisz je w późniejszym czasie. Musisz wprowadzić ten adres URL podczas tworzenia skojarzonej oferty. 
 
-    ![Skopiuj adres URL sygnatury dostępu Współdzielonego plików platformy Azure](media/CRMScreenShot13.png)
+    ![Skopiuj adres URL sygnatury dostępu współdzielonego pliku platformy Azure](media/CRMScreenShot13.png)
 

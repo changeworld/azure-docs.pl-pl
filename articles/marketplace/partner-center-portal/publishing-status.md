@@ -5,14 +5,15 @@ author: ChJenk
 manager: evansma
 ms.author: v-chjen
 ms.service: marketplace
+ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 05/30/2019
-ms.openlocfilehash: 84e8f1d7b723bb86b31abb1ff60bce5351d7d996
-ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
+ms.openlocfilehash: 14290e000d5c6251216a6b0a0fc68c8a0897210a
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/22/2019
-ms.locfileid: "72750152"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73824036"
 ---
 # <a name="check-the-publishing-status-of-your-commercial-marketplace-offer"></a>Sprawdź stan publikowania oferty komercyjnej witryny Marketplace
 
@@ -50,7 +51,7 @@ W tym kroku po zweryfikowaniu danych i funkcjonalności dysku testowego w poprze
 
 W tym kroku potwierdzamy, że Twój system zarządzania potencjalnym klientem może odbierać potencjalnych klientów na podstawie szczegółowych informacji podanych w ustawieniach oferty. Ten krok dotyczy tylko ofert z włączonym zarządzaniem potencjalnym klientem.
 
-## <a name="certification"></a>Certyfikat
+## <a name="certification"></a>Certyfikacja
 
 Przed opublikowaniem oferty przesłane do komercyjnej witryny Marketplace w centrum partnerskim muszą być certyfikowane. Przesłane oferty przechodzą rygorystyczne testy, kilka zautomatyzowanych i innych podręczników, w tym sprawdzanie [zasad certyfikacji portalu Azure Marketplace](https://docs.microsoft.com/legal/marketplace/general-policies). Przed przejściem do następnego kroku w przepływie publikowania należy zaznaczyć odpowiednie przesłania do certyfikatu.
 
@@ -116,7 +117,7 @@ Jeśli Twoja oferta już działa i jest dostępna publicznie w portalu Marketpla
 
 Zaloguj się do Centrum partnerskiego i uzyskaj dostęp do oferty. Nastąpi przekierowanie do strony **przeglądu oferty** . W górnej części tej strony zobaczysz opcję dla opcji **Przejdź na żywo**. Wybierz pozycję **Przejdź na żywo** i po potwierdzeniu, że oferta zacznie być opublikowana publicznie. Gdy oferta będzie aktywna, otrzymasz wiadomość e-mail z powiadomieniem.
 
-## <a name="publish"></a>Publikuj
+## <a name="publish"></a>Publikowanie
 
 Teraz, **gdy zamierzasz korzystać z oferty** , udostępniając ją w portalu Marketplace, istnieje szereg końcowych testów weryfikacyjnych, które zostaną przełączone w celu zapewnienia, że usługa Live Offer zostanie skonfigurowana tak jak wersja zapoznawcza oferty.
 

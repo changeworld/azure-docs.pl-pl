@@ -1,5 +1,5 @@
 ---
-title: Routing zależny od danych za pomocą Azure SQL Database
+title: Routing zależny od danych
 description: Jak używać klasy ShardMapManager w aplikacjach .NET do routingu zależnego od danych, funkcja baz danych podzielonej na fragmenty w Azure SQL Database
 services: sql-database
 ms.service: sql-database
@@ -11,18 +11,18 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 01/25/2019
-ms.openlocfilehash: 319f2744cd437aea51a05592cd7a26f8b58fe761
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: e5212ba7ed349f3596047fc0c027829b8667ddc5
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73690272"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73823680"
 ---
 # <a name="use-data-dependent-routing-to-route-a-query-to-appropriate-database"></a>Kierowanie zapytania do odpowiedniej bazy danych za pomocą routingu zależnego od danych
 
 **Routing zależny od danych** umożliwia kierowanie żądania do odpowiedniej bazy danych przy użyciu danych w zapytaniu. Routing zależny od danych jest podstawowym wzorcem podczas pracy z bazami danych podzielonej na fragmenty. Kontekst żądania może również służyć do kierowania żądania, zwłaszcza jeśli klucz fragmentowania nie jest częścią zapytania. Poszczególne zapytania lub transakcje w aplikacji korzystające z routingu zależnego od danych są ograniczone do uzyskiwania dostępu do jednej bazy danych na żądanie. W przypadku narzędzi elastycznych Azure SQL Database ten Routing jest realizowany za pomocą klasy **ShardMapManager** ([Java](/java/api/com.microsoft.azure.elasticdb.shard.mapmanager.shardmapmanager), [.NET](https://docs.microsoft.com/dotnet/api/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardmapmanager)).
 
-Aplikacja nie musi śledzić różnych parametrów połączenia lub lokalizacji bazy danych skojarzonych z różnymi wycinkami danych w środowisku podzielonej na fragmenty. Zamiast tego [Menedżer mapy fragmentu](sql-database-elastic-scale-shard-map-management.md) otwiera połączenia z prawidłowymi bazami danych, gdy jest to konieczne, na podstawie danych z mapy fragmentu i wartości klucza fragmentowania, który jest celem żądania aplikacji. Kluczem jest zwykle *Customer_ID*, *tenant_id*, *date_key*lub inny konkretny identyfikator, który jest podstawowym parametrem żądania bazy danych.
+Aplikacja nie musi śledzić różnych parametrów połączenia lub lokalizacji bazy danych skojarzonych z różnymi wycinkami danych w środowisku podzielonej na fragmenty. Zamiast tego [Menedżer mapy fragmentu](sql-database-elastic-scale-shard-map-management.md) otwiera połączenia z prawidłowymi bazami danych, gdy jest to konieczne, na podstawie danych z mapy fragmentu i wartości klucza fragmentowania, który jest celem żądania aplikacji. Klucz jest zwykle *Customer_ID*, *tenant_id*, *date_key*lub inny konkretny identyfikator, który jest podstawowym parametrem żądania bazy danych.
 
 Aby uzyskać więcej informacji, zobacz [skalowanie SQL Server przy użyciu routingu zależnego od danych](https://technet.microsoft.com/library/cc966448.aspx).
 

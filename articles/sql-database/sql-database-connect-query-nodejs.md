@@ -1,6 +1,6 @@
 ---
-title: 'Szybki Start: Używanie środowiska Node. js do wykonywania zapytań Azure SQL Database'
-description: Jak użyć środowiska Node. js do utworzenia programu, który nawiązuje połączenie z bazą danych SQL Azure i wykonuje zapytania za pomocą instrukcji języka T-SQL.
+title: 'Szybki Start: Używanie środowiska Node. js do wykonywania zapytań'
+description: Sposób użycia narzędzia Node.js do utworzenia programu, który nawiązuje połączenie z bazą danych Azure SQL Database i wykonuje zapytania za pomocą instrukcji języka T-SQL.
 services: sql-database
 ms.service: sql-database
 ms.subservice: development
@@ -11,59 +11,59 @@ ms.author: sstein
 ms.reviewer: v-masebo
 ms.date: 03/25/2019
 ms.custom: seo-javascript-september2019, seo-javascript-october2019
-ms.openlocfilehash: 4d9c3954aea5fe64439190a2a0886fd8300c4cf9
-ms.sourcegitcommit: 42748f80351b336b7a5b6335786096da49febf6a
+ms.openlocfilehash: b996b380195b8b339424c8d716c139072a98303f
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/09/2019
-ms.locfileid: "72178047"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73827032"
 ---
-# <a name="quickstart-use-nodejs-to-query-an-azure-sql-database"></a>Szybki Start: Używanie środowiska Node. js do wykonywania zapytań w bazie danych Azure SQL
+# <a name="quickstart-use-nodejs-to-query-an-azure-sql-database"></a>Szybki start: korzystanie z narzędzia Node.js do wykonywania zapytań w bazie danych Azure SQL Database
 
-Ten przewodnik Szybki Start przedstawia sposób nawiązywania połączeń z usługą Azure SQL Database przy użyciu środowiska [Node. js](https://nodejs.org) . Następnie można użyć instrukcji T-SQL do wykonywania zapytań dotyczących danych.
+Ten przewodnik Szybki Start przedstawia sposób nawiązywania połączeń z usługą Azure SQL Database przy użyciu środowiska [Node. js](https://nodejs.org) . Następnie można użyć instrukcji języka T-SQL w celu wykonywania zapytań o dane.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-Aby ukończyć ten przykład, upewnij się, że masz następujące wymagania wstępne:
+Aby ukończyć ten przykład, upewnij się, że dysponujesz następującymi elementami:
 
-- Baza danych SQL Azure. Możesz użyć jednego z tych przewodników Szybki Start, aby utworzyć i skonfigurować bazę danych w Azure SQL Database:
+- Baza danych Azure SQL Database. Aby utworzyć, a następnie skonfigurować bazę danych w usłudze Azure SQL Database, można użyć instrukcji z jednego z tych przewodników Szybki start:
 
   || Pojedyncza baza danych | Wystąpienie zarządzane |
   |:--- |:--- |:---|
-  | Create| [Portal](sql-database-single-database-get-started.md) | [Portal](sql-database-managed-instance-get-started.md) |
+  | Tworzenie| [Portal](sql-database-single-database-get-started.md) | [Portal](sql-database-managed-instance-get-started.md) |
   || [Interfejs wiersza polecenia](scripts/sql-database-create-and-configure-database-cli.md) | [Interfejs wiersza polecenia](https://medium.com/azure-sqldb-managed-instance/working-with-sql-managed-instance-using-azure-cli-611795fe0b44) |
-  || [Narzędzia](scripts/sql-database-create-and-configure-database-powershell.md) | [Narzędzia](scripts/sql-database-create-configure-managed-instance-powershell.md) |
-  | Konfiguracja | [Reguła zapory adresów IP na poziomie serwera](sql-database-server-level-firewall-rule.md)| [Łączność z maszyny wirtualnej](sql-database-managed-instance-configure-vm.md)|
-  |||[Łączność z lokacji](sql-database-managed-instance-configure-p2s.md)
-  |Ładowanie danych|Firma Adventure Works załadowana za szybki start|[Przywracanie szerokiej międzynarodowej importera](sql-database-managed-instance-get-started-restore.md)
+  || [Program PowerShell](scripts/sql-database-create-and-configure-database-powershell.md) | [Program PowerShell](scripts/sql-database-create-configure-managed-instance-powershell.md) |
+  | Konfigurowanie | [Reguła zapory bazująca na adresach IP na poziomie serwera](sql-database-server-level-firewall-rule.md)| [Łączność z maszyny wirtualnej](sql-database-managed-instance-configure-vm.md)|
+  |||[Łączność ze środowiska lokalnego](sql-database-managed-instance-configure-p2s.md)
+  |Ładowanie danych|Ładowanie bazy danych Adventure Works na potrzeby samouczka Szybki start|[Przywracanie bazy danych Wide World Importers](sql-database-managed-instance-get-started-restore.md)
   |||Przywróć lub zaimportuj Adventure Works z pliku [BACPAC](sql-database-import.md) z usługi [GitHub](https://github.com/Microsoft/sql-server-samples/tree/master/samples/databases/adventure-works)|
   |||
 
   > [!IMPORTANT]
-  > Skrypty w tym artykule są przeznaczone do korzystania z bazy danych firmy Adventure Works. W przypadku wystąpienia zarządzanego należy zaimportować bazę danych firmy Adventure Works do bazy danych wystąpienia lub zmodyfikować skrypty w tym artykule, aby użyć bazy danych Wide World Imports.
+  > Skrypty zamieszczone w tym artykule korzystają z bazy danych Adventure Works. Za pomocą wystąpienia zarządzanego należy zaimportować bazę danych Adventure Works do bazy danych wystąpienia lub zmodyfikować skrypty znajdujące się w tym artykule, aby korzystały z bazy danych Wide World Importers.
 
 
-- Oprogramowanie dotyczące środowiska Node. js dla systemu operacyjnego:
+- Oprogramowanie związane z narzędziem Node.js dla Twojego systemu operacyjnego:
 
-  - **MacOS**, zainstaluj oprogramowania Homebrew i Node. js, a następnie zainstaluj sterownik ODBC i narzędzie sqlcmd. Zobacz [krok 1,2 i 1,3](https://www.microsoft.com/sql-server/developer-get-started/node/mac/).
+  - **System MacOS**: zainstaluj oprogramowanie Homebrew i Node.js, a następnie zainstaluj sterownik ODBC i program SQLCMD. Zobacz [kroki 1.2 i 1.3](https://www.microsoft.com/sql-server/developer-get-started/node/mac/).
   
-  - **Ubuntu**, zainstaluj program Node. js, a następnie zainstaluj sterownik ODBC i narzędzie sqlcmd. Zobacz [krok 1,2 i 1,3](https://www.microsoft.com/sql-server/developer-get-started/node/ubuntu/).
+  - **System Ubuntu**: zainstaluj oprogramowanie Node.js, a następnie zainstaluj sterownik ODBC i program SQLCMD. Zobacz [kroki 1.2 i 1.3](https://www.microsoft.com/sql-server/developer-get-started/node/ubuntu/).
   
-  - **Windows**, zainstaluj czekoladę i Node. js, a następnie zainstaluj sterownik ODBC i narzędzie sqlcmd. Zobacz [krok 1,2 i 1,3](https://www.microsoft.com/sql-server/developer-get-started/node/windows/).
+  - **System Windows**: zainstaluj oprogramowanie Chocolatey i Node.js, a następnie zainstaluj sterownik ODBC i program SQLCMD. Zobacz [kroki 1.2 i 1.3](https://www.microsoft.com/sql-server/developer-get-started/node/windows/).
 
-## <a name="get-sql-server-connection-information"></a>Pobierz informacje o połączeniu z programem SQL Server
+## <a name="get-sql-server-connection-information"></a>Uzyskiwanie informacji o połączeniu z serwerem SQL
 
-Pobierz informacje o połączeniu potrzebne do nawiązania połączenia z bazą danych Azure SQL. Do nadchodzących procedur potrzebna jest w pełni kwalifikowana nazwa serwera lub nazwa hosta, nazwa bazy danych i informacje logowania.
+Uzyskaj parametry połączenia potrzebne do nawiązania połączenia z bazą danych Azure SQL Database. W następnych procedurach będą potrzebne w pełni kwalifikowana nazwa serwera lub nazwa hosta, nazwa bazy danych i informacje logowania.
 
-1. Zaloguj się do [Azure Portal](https://portal.azure.com/).
+1. Zaloguj się w witrynie [Azure Portal](https://portal.azure.com/).
 
 2. Przejdź do strony **bazy danych SQL** lub **wystąpienia zarządzane SQL** .
 
-3. Na stronie **Przegląd** zapoznaj się z w pełni kwalifikowaną nazwą serwera obok **nazwy serwera** dla pojedynczej bazy danych lub w pełni kwalifikowana nazwa serwera obok **hosta** dla wystąpienia zarządzanego. Aby skopiować nazwę serwera lub nazwę hosta, umieść kursor nad nim i wybierz ikonę **kopiowania** . 
+3. Na stronie **Przegląd** znajdź w pełni kwalifikowaną nazwę serwera obok pola **Nazwa serwera** (w przypadku pojedynczej bazy danych) lub w pełni kwalifikowaną nazwę serwera obok pola **Host** (w przypadku wystąpienia zarządzanego). Aby skopiować nazwę serwera lub hosta, umieść na niej wskaźnik myszy i wybierz ikonę **Kopiuj**. 
 
-## <a name="create-the-project"></a>Utwórz projekt
+## <a name="create-the-project"></a>Tworzenie projektu
 
-Otwórz wiersz polecenia i Utwórz folder o nazwie *SqlTest*. Otwórz utworzony folder i uruchom następujące polecenie:
+Otwórz wiersz polecenia i utwórz folder o nazwie *sqltest*. Otwórz utworzony folder i uruchom następujące polecenie:
 
   ```bash
   npm init -y
@@ -71,11 +71,11 @@ Otwórz wiersz polecenia i Utwórz folder o nazwie *SqlTest*. Otwórz utworzony 
   npm install async@2.6.2
   ```
 
-## <a name="add-code-to-query-database"></a>Dodawanie kodu do bazy danych zapytań
+## <a name="add-code-to-query-database"></a>Dodawanie kodu umożliwiającego wykonywanie zapytań w bazie danych
 
-1. W ulubionym edytorze tekstów Utwórz nowy plik *SqlTest. js*.
+1. W swoim ulubionym edytorze tekstów utwórz nowy plik o nazwie *sqltest.js*.
 
-1. Zastąp jego zawartość następującym kodem. Następnie Dodaj odpowiednie wartości dla serwera, bazy danych, użytkownika i hasła.
+1. Zastąp jego zawartość poniższym kodem. Następnie dodaj odpowiednie wartości dla swojego serwera, bazy danych, użytkownika i hasła.
 
     ```js
     var Connection = require('tedious').Connection;
@@ -139,24 +139,24 @@ Otwórz wiersz polecenia i Utwórz folder o nazwie *SqlTest*. Otwórz utworzony 
     ```
 
 > [!NOTE]
-> Przykład kodu używa przykładowej bazy danych **AdventureWorksLT** dla usługi Azure SQL.
+> W przykładzie kodu użyto przykładowej bazy danych **AdventureWorksLT** dla usługi Azure SQL.
 
-## <a name="run-the-code"></a>Uruchom kod
+## <a name="run-the-code"></a>Uruchamianie kodu
 
-1. W wierszu polecenia Uruchom program.
+1. W wierszu polecenia uruchom program.
 
     ```bash
     node sqltest.js
     ```
 
-1. Sprawdź, czy 20 najważniejszych wierszy jest zwracanych i Zamknij okno aplikacji.
+1. Sprawdź, czy zostało zwróconych 20 pierwszych wierszy, i zamknij okno aplikacji.
 
 ## <a name="next-steps"></a>Następne kroki
 
-- [Sterownik Microsoft Node. js dla SQL Server](/sql/connect/node-js/node-js-driver-for-sql-server)
+- [Sterownik firmy Microsoft środowiska Node.js dla programu SQL Server](/sql/connect/node-js/node-js-driver-for-sql-server)
 
-- Łączenie i wykonywanie zapytań w systemie Windows/Linux/macOS za pomocą [platformy .NET Core](sql-database-connect-query-dotnet-core.md), [Visual Studio Code](sql-database-connect-query-vscode.md)lub [SSMS](sql-database-connect-query-ssms.md) (tylko system Windows)
+- Nawiązywanie połączeń i wykonywanie zapytań w systemie Windows/Linux/macOS za pomocą platformy [.NET Core](sql-database-connect-query-dotnet-core.md), programu [Visual Studio Code](sql-database-connect-query-vscode.md) lub programu [SSMS](sql-database-connect-query-ssms.md) (tylko system Windows)
 
 - [Rozpoczynanie pracy z platformą .NET Core w systemie Windows/Linux/macOS przy użyciu wiersza polecenia](/dotnet/core/tutorials/using-with-xplat-cli)
 
-- Projektowanie pierwszej bazy danych Azure SQL Database przy użyciu [platformy .NET lub programu](sql-database-design-first-database-csharp.md) [SSMS](sql-database-design-first-database.md)
+- Projektowanie pierwszej bazy danych Azure SQL Database przy użyciu platformy [.NET](sql-database-design-first-database-csharp.md) lub programu [SSMS](sql-database-design-first-database.md)

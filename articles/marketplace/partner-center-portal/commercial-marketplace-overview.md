@@ -5,14 +5,15 @@ author: ChJenk
 manager: evansma
 ms.author: v-chjen
 ms.service: marketplace
+ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 05/30/2019
-ms.openlocfilehash: b0900dbfee81952ed014d976cc8d7136ea65f8fc
-ms.sourcegitcommit: 532335f703ac7f6e1d2cc1b155c69fc258816ede
+ms.openlocfilehash: f6ba5c240a9ad74d9a2fab41496ce519f25fc4dc
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70191717"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73812073"
 ---
 # <a name="overview-of-the-commercial-marketplace-portal-in-partner-center"></a>Omówienie portalu komercyjnej witryny Marketplace w centrum partnerskim
 
@@ -58,4 +59,4 @@ Dowiedz się więcej o najnowszych i przyszłych wersjach, odwiedzając [Plan Ma
 
 - W przypadku firmowych nowych partnerów firmy Microsoft zainteresowanych publikowaniem oferty SaaS na rynku Marketplace zobacz [Tworzenie komercyjnego konta witryny Marketplace w centrum partnerskim](./create-account.md).
 - W przypadku istniejących partnerów, którzy wcześniej opublikowały oferty w portal Cloud Partner, [Zarządzaj kontem komercyjnej witryny Marketplace w centrum partnerskim](./manage-account.md). 
-- Dowiedz się więcej o usłudze Cloud Marketplace Management przenoszonej do Centrum partnerskiego w tym wpisie na [blogu dla partnerów partnerskich](https://www.microsoftpartnercommunity.com/t5/Azure-Marketplace-and-AppSource/Cloud-Marketplace-In-Partner-Center/m-p/9738#M293), w tym pokaz filmu wideo.
+- Dowiedz się więcej o usłudze Cloud Marketplace Management przenoszonej do Centrum partnerskiego w tym [wpisie na blogu dla partnerów partnerskich](https://www.microsoftpartnercommunity.com/t5/Azure-Marketplace-and-AppSource/Cloud-Marketplace-In-Partner-Center/m-p/9738#M293), w tym pokaz filmu wideo.

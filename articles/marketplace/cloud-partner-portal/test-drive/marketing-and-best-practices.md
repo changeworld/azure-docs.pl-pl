@@ -1,40 +1,41 @@
 ---
-title: Przetestuj najlepsze rozwiązania marketingu | Portal Azure Marketplace
-description: Przetestuj marketingowych najlepszych rozwiązań dla wydawców
+title: Testowanie najlepszych rozwiązań marketingowych | Portal Azure Marketplace
+description: Testowanie najlepszych rozwiązań marketingowych dla wydawców
 services: Azure, Marketplace, Cloud Partner Portal,
 author: pbutlerm
 manager: Ricardo.Villalobos
 ms.service: marketplace
+ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 09/13/2018
 ms.author: pabutler
-ms.openlocfilehash: 02b2715c813f7814cf8bf5d23414bc14d5ff5a30
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 177b4bd804ad878c8f983eefcd54399d1a72ba19
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64939974"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73824544"
 ---
-<a name="test-drive-marketing-and-best-practices"></a>Test Drive marketingowych i najlepszych rozwiązań
+<a name="test-drive-marketing-and-best-practices"></a>Testowanie marketingowe i najlepsze rozwiązania
 =======================================
 
-Azure Marketplace testowej jest doskonałym narzędziem do marketingu, a firma Microsoft zaleca się należy włączyć w prace go-to-market po uruchomieniu. Mamy kilka najlepszych rozwiązań, zaleca się, wykonaj natychmiast, gdy opublikujesz, że będzie znacznie Obsługa generowania bardziej potencjalnych klientów z wersji testowej:
+Usługa Azure Marketplace Test Drive to doskonałe narzędzie dla rynków marketingowych, a firma Microsoft zaleca korzystanie z wysiłków na rynku podczas uruchamiania. Mamy kilka najlepszych rozwiązań, które zalecamy natychmiast po opublikowaniu, aby znacznie obsługiwał generowanie większej liczby potencjalnych klientów z dysku testowego:
 
-- **Strona odwołań**: Opublikuj strony w obecności w sieci web, która zawiera wszystkie informacje o dysku Azure Test i Publikuj wiele łączy odwołania kierowanie ruchu do wersji testowej
-- **Media społecznościowe**: Utwórz harmonogram, gdy opublikujesz w kanałów mediów społecznościowych dotyczące wersji testowej na bieżąco
-- **Blogi**: Napisz wpis na blogu dotyczące wersji testowej platformy Azure. Zaznacz, funkcje i korzyści, które użytkownik otrzyma się bezpłatnie bezpłatnie i w bardzo mało czasu. Pamiętaj łącze do strony dysku testowych platformy Azure w wielu miejscach w blogu. Oto link do wpisu w blogu próbki o wersję testową platformy Azure. Nawet lepiej? Wpis łącza do wpis w blogu na kanałów mediów społecznościowych.
-- **Adres e-mail pielęgnacji**: Poinformuj potencjalni klienci, którzy mają do czynienia z Twojej marki za pośrednictwem innych kanałów za pośrednictwem poczty e-mail w celu poinformowania ich o wersję testową i zachęcenie ich możesz bezpłatnie wypróbować.
-- **Narzędzia i szkolenia sprzedaży**: Konfigurowanie sesji szkoleniowych z zespołami sprzedaży pokaz środowisko dysku testu, i pozwoli uzyskać na kilka sposobów zaangażować swoich potencjalnych klientów oraz klientów z nią. Osoby zajmujące się sprzedaży można skonfigurować pokaz z wykorzystaniem wiele kontaktów w firmie, a następnie każdego z nich to łącze wysyła się wersję testową, aby zająć się.
-- **Pokazuje, jak i konferencji**: Masz stoisku na imprezie branży, potencjalni klienci będą udziałowi? Skonfigurować kilka laptopów na stoisku i dysków test uruchomiony, tak aby klienci mogą wypróbować wersję testową na stoisku usługi, a następnie omówimy im produktu w trakcie i po ich środowisko pracy!
+- **Strona referencyjna**: publikowanie strony w sieci Web, która nakazuje wszystkie informacje o dysku testowym platformy Azure i publikuje wiele linków do odwołań kierujących ruch do dysku testowego
+- **Media społecznościowe**: Utwórz harmonogram w celu regularnego publikowania na kanałach mediów społecznościowych na podstawie wersji testowej
+- **Blogi**: Napisz wpis w blogu dotyczący Twojego dysku testowego platformy Azure. Wyróżnij funkcje i korzyści, które użytkownik będzie mógł bezpłatnie i w bardzo krótkim czasie. Upewnij się, że masz link do strony dysku testowego platformy Azure w wielu miejscach w kopii blogu. Oto link do przykładowego wpisu w blogu dotyczący dysku testowego platformy Azure. Jeszcze lepsze? Publikuj linki do wpisu w blogu na kanałach mediów społecznościowych.
+- **Nurturing poczty e-mail**: informowanie potencjalnych klientów, którzy zaangażują swoją markę za pośrednictwem poczty e-mail w celu poinformowania ich o dysku testowym i zachęcają je do bezpłatnego wypróbowania.
+- **Szkolenia i narzędzia sprzedaży**: Skonfiguruj sesję szkoleniową z zespołami ds. sprzedaży w celu pokazania środowiska testowego i zapoznaj się z kilkoma sposobami, w których mogą oni uczestniczyć w swoich potencjalnych klientach i klientach. Usługa Sales osób może skonfigurować pokaz z wieloma kontaktami w firmie, a następnie wysłać każde z nich do dysku testowego, aby zrobić to samodzielnie.
+- **Pokazy i konferencje dotyczące handlu**: czy w branży zostanie wyświetlona w przypadku, gdy potencjalni klienci będą uczestniczyć? Skonfiguruj kilka laptopów w kabinie i pracuj z uruchomionymi dyskami testowymi, dzięki czemu klienci będą mogli korzystać z dysku testowego na urządzeniu, a następnie komunikować się z nimi w trakcie korzystania z programu i po nim.
 
 <a name="lead-management"></a>Zarządzanie potencjalnymi klientami
 ---------------
 
-Skoro generowania wysoko wykwalifikowanych potencjalnych klientów z wersji testowej, należy upewnić się, potencjalni klienci mają włączone do kanałów sprzedaży i marketingu i angażuj perspektywy, aby włączyć je do płacenia klientów. Oto niektóre zalecane praktyki w odniesieniu do kierowania potencjalnych klientów za pośrednictwem cyklu sprzedaży:
+Teraz, gdy generowane są wysoce kwalifikowane potencjalni klienci z dysku testowego, należy upewnić się, że zostały one dołączone do kanałów sprzedaży i marketingu, i poprowadzisz Cię przez liderów, aby przekształcić je w klientów. Poniżej przedstawiono kilka zalecanych praktyk związanych z kierowaniem klientów w ramach cyklu sprzedaży:
 
-- Wprowadź kontaktu z potencjalnym klientem w ciągu 24 godzin od ich biorąc wersji testowej. Zostanie wyświetlony potencjalnego klienta w CRM wybranego natychmiast po klient wdraża wersji testowej — należy Wyślij wiadomość e-mail w ciągu pierwszego 24 godzin są nadal ciepło. Żądanie, planowanie połączenie telefoniczne z nimi, aby lepiej zrozumieć, jakie problemy, które próbujesz rozwiązać i sprawdź, czy produkt może.
-- Monitowanie o kilka razy, ale nie ich bombard. Zaleca się, że możesz wysłać wiadomość e-mail tych potencjalnych klientów kilka razy przed Zamknij je automatycznie, ale nie zapewniają po pierwszej. Pamiętaj: Ci klienci bezpośrednio z produktu i zajęło dużo czasu w bezpłatnej wersji próbnej.
-- Są one wspaniałe perspektyw!
-- Jeśli Zamknij transakcji za pomocą testu potencjalny klient dysku należy pamiętać o uruchomieniu go zarejestrować sprzedaży partnera nawiązać połączenie. Także — chcielibyśmy Poznaj usługi wins klienta, której wersji testowej odtwarzania roli!
+- Skontaktuj się z potencjalnym liderem w ciągu 24 godzin od przeprowadzenia testu na dysku. Potencjalny klient zostanie wyświetlony w wybranym programie CRM natychmiast po wdrożeniu przez klienta dysku testowego — Pamiętaj o wysłaniu do nich wiadomości e-mail w ciągu pierwszych 24 godzin, gdy nadal są one aktywne. Zażądaj zaplanowania połączenia telefonicznego z nimi, aby lepiej zrozumieć, jakie problemy próbują rozwiązać, i sprawdź, czy Twój produkt może pomóc.
+- Obserwuj kilka razy, ale nie bombardj ich. Zalecane jest, aby wysłać wiadomość e-mail na kilka razy przed zamknięciem, ale nie wydawaj jej po pierwszej próbie. Pamiętaj — Ci klienci bezpośrednio zaangażowani w produkt i spędzają czas w bezpłatnej wersji próbnej.
+- Są to wspaniałe potencjalni klienci!
+- W przypadku zamknięcia transakcji z klientem testowym należy zadbać o zarejestrowanie go w obszarze Partner Sales Connect. Ponadto dowiesz się, jak poznać klienta usługi WINS, gdzie dysk testowy odgrywa rolę!
 
-Często zadawane pytania dotyczące dysków test znajduje się tutaj: <https://github.com/Azure/AzureTestDrive/wiki/Test-Drive-Best-Practices>
+Często zadawane pytania dotyczące wersji testowej znajdują się tutaj: <https://github.com/Azure/AzureTestDrive/wiki/Test-Drive-Best-Practices>

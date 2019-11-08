@@ -7,12 +7,12 @@ ms.date: 11/05/2019
 ms.service: storage
 ms.subservice: blobs
 ms.topic: quickstart
-ms.openlocfilehash: 0851ee9061fcb01a5e007f0cc4989d6a3febc665
-ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
+ms.openlocfilehash: 397464a70164ef06642a991fb8470ddfa2922647
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73605150"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73809927"
 ---
 # <a name="quickstart-azure-blob-storage-client-library-v12-for-python"></a>Szybki Start: Biblioteka kliencka usługi Azure Blob Storage V12 dla języka Python
 
@@ -30,6 +30,8 @@ Użyj biblioteki klienta usługi Azure Blob Storage, aby:
 * Usuwanie kontenera
 
 [Dokumentacja referencyjna interfejsu API](/python/api/azure-storage-blob) |  | pakietu [kodu źródłowego biblioteki](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/storage/azure-storage-blob) [(indeks pakietu Python)](https://pypi.org/project/azure-storage-blob/) | [przykładów](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/storage/azure-storage-blob/samples)
+
+[!INCLUDE [storage-multi-protocol-access-preview](../../../includes/storage-multi-protocol-access-preview.md)]
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
@@ -188,7 +190,7 @@ Określ nazwę nowego kontenera. Poniższy kod dołącza wartość identyfikator
 > [!IMPORTANT]
 > Nazwy kontenerów muszą być zapisane małymi literami. Aby uzyskać więcej informacji o nazewnictwie kontenerów i obiektów blob, zobacz temat [Nazewnictwo i odwoływanie się do kontenerów, obiektów blob i metadanych](/rest/api/storageservices/naming-and-referencing-containers--blobs--and-metadata).
 
-Utwórz wystąpienie klasy [BlobServiceClient](/python/api/azure-storage-blob/azure.storage.blob.blobserviceclient) przez wywołanie metody [from_connection_string](/python/api/azure-storage-blob/azure.storage.blob.blobserviceclient#from-connection-string-conn-str--credential-none----kwargs-) . Następnie Wywołaj metodę [create_container](/python/api/azure-storage-blob/azure.storage.blob.blobserviceclient#create-container-name--metadata-none--public-access-none----kwargs-) , aby utworzyć kontener na koncie magazynu.
+Utwórz wystąpienie klasy [BlobServiceClient](/python/api/azure-storage-blob/azure.storage.blob.blobserviceclient) przez wywołanie metody [from_connection_string](/python/api/azure-storage-blob/azure.storage.blob.blobserviceclient#from-connection-string-conn-str--credential-none----kwargs-) . Następnie Wywołaj metodę [create_container](/python/api/azure-storage-blob/azure.storage.blob.blobserviceclient#create-container-name--metadata-none--public-access-none----kwargs-) , aby faktycznie utworzyć kontener na koncie magazynu.
 
 Dodaj ten kod na końcu bloku `try`:
 

@@ -1,5 +1,5 @@
 ---
-title: Wskazówki dotyczące dostrajania wydajności Azure SQL Database
+title: Wskazówki dotyczące dostosowywania wydajności
 description: Dowiedz się więcej o korzystaniu z zaleceń w celu ręcznego dostrajania wydajności zapytań Azure SQL Database.
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: juliemsft
 ms.author: jrasnick
 ms.reviewer: carlrab
 ms.date: 01/25/2019
-ms.openlocfilehash: 971b35838f370f31d6e2d2da06dfdbced2fafb02
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 6e42911d05f387ea47b56b913e9a1868100c1b3c
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73687675"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73821364"
 ---
 # <a name="manual-tune-query-performance-in-azure-sql-database"></a>Ręczne dostrajanie wydajności zapytań w Azure SQL Database
 
@@ -120,7 +120,7 @@ Po jego utworzeniu ta sama instrukcja SELECT wybiera inny plan, który używa wy
 
 ![Plan zapytania ze poprawionymi indeksami](./media/sql-database-performance-guidance/query_plan_corrected_indexes.png)
 
-Kluczowym wglądem jest to, że pojemność we/wy udostępnionego systemu asortymentu jest bardziej ograniczona niż w przypadku dedykowanego komputera serwera. Istnieje potrzeba zminimalizowania niepotrzebnych operacji we/wy, aby maksymalnie wykorzystać możliwości systemu w jednostkach DTU każdego rozmiaru obliczeniowego Azure SQL Database warstw usług. Opcje projektowania odpowiednich fizycznych baz danych mogą znacząco poprawić opóźnienia poszczególnych zapytań, zwiększyć przepływność współbieżnych żądań obsłużonych na jednostkę skalowania i zminimalizować koszty wymagane do zaspokojenia zapytania. Aby uzyskać więcej informacji na temat brakującego indeksu widoków DMV, zobacz [sys. DM _db_missing_index_details](https://msdn.microsoft.com/library/ms345434.aspx).
+Kluczowym wglądem jest to, że pojemność we/wy udostępnionego systemu asortymentu jest bardziej ograniczona niż w przypadku dedykowanego komputera serwera. Istnieje potrzeba zminimalizowania niepotrzebnych operacji we/wy, aby maksymalnie wykorzystać możliwości systemu w jednostkach DTU każdego rozmiaru obliczeniowego Azure SQL Database warstw usług. Opcje projektowania odpowiednich fizycznych baz danych mogą znacząco poprawić opóźnienia poszczególnych zapytań, zwiększyć przepływność współbieżnych żądań obsłużonych na jednostkę skalowania i zminimalizować koszty wymagane do zaspokojenia zapytania. Aby uzyskać więcej informacji na temat brakującego indeksu widoków DMV, zobacz [sys. dm_db_missing_index_details](https://msdn.microsoft.com/library/ms345434.aspx).
 
 ### <a name="query-tuning-and-hinting"></a>Dostrajanie zapytania i podpowiedzi
 
@@ -228,7 +228,7 @@ ORDER BY start_time DESC
 > [!NOTE]
 > Chociaż wolumin w tym przykładzie jest celowo mały, wpływ parametrów optymalnych może być istotny, szczególnie w przypadku większych baz danych. Różnica w skrajnych przypadkach może wynosić od sekund dla szybkich przypadków i godzin w przypadku wolnych przypadków.
 
-Możesz sprawdzić, czy **sys. resource_stats** , aby określić, czy zasób do testu używa więcej lub mniej zasobów niż inny test. Podczas porównywania danych należy oddzielić chronometraż testów, tak aby nie były w tym samym oknie 5-minutowym w widoku **sys. resource_stats** . Celem ćwiczenia jest zminimalizowanie łącznej ilości używanych zasobów, a nie zminimalizowanie zasobów szczytowych. Ogólnie Optymalizacja fragmentu kodu do opóźnienia zmniejsza również zużycie zasobów. Upewnij się, że zmiany wprowadzane do aplikacji są niezbędne i że zmiany nie wpłyną negatywnie na wrażenia klienta dla kogoś, kto może korzystać z podpowiedzi zapytania w aplikacji.
+Możesz sprawdzić, czy **sys. resource_stats** , aby określić, czy zasób dla testu używa więcej lub mniej zasobów niż inny test. Podczas porównywania danych należy oddzielić chronometraż testów, tak aby nie były w tym samym oknie 5-minutowym w widoku **sys. resource_stats** . Celem ćwiczenia jest zminimalizowanie łącznej ilości używanych zasobów, a nie zminimalizowanie zasobów szczytowych. Ogólnie Optymalizacja fragmentu kodu do opóźnienia zmniejsza również zużycie zasobów. Upewnij się, że zmiany wprowadzane do aplikacji są niezbędne i że zmiany nie wpłyną negatywnie na wrażenia klienta dla kogoś, kto może korzystać z podpowiedzi zapytania w aplikacji.
 
 Jeśli obciążenie zawiera zestaw powtarzających się zapytań, często warto przechwycić i sprawdzić Optymalność opcji planu, ponieważ obejmuje ona minimalną jednostkę rozmiaru zasobu wymaganą do hostowania bazy danych programu. Po sprawdzeniu poprawności należy ponownie sprawdzić plany, aby upewnić się, że nie zostały one obniżone. Więcej informacji na temat [wskazówek dotyczących zapytań (Transact-SQL)](https://msdn.microsoft.com/library/ms181714.aspx).
 

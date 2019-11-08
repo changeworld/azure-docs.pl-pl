@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 04/08/2019
 ms.author: jingwang
-ms.openlocfilehash: 437d1e13bfb0831bb3ece26f761cef4f5e2e0c6f
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: d8f65bef669e21af96ffe86319602ca5d1eea2c1
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73677000"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73822729"
 ---
 # <a name="managed-identity-for-data-factory"></a>Tożsamość zarządzana dla usługi Data Factory
 
@@ -26,7 +26,7 @@ Ten artykuł pomaga zrozumieć, co to jest tożsamość zarządzana Data Factory
 
 ## <a name="overview"></a>Omówienie
 
-Podczas tworzenia fabryki danych można utworzyć zarządzaną tożsamość wraz z tworzeniem fabryczną. Zarządzana tożsamość to zarządzana aplikacja zarejestrowana w katalogu aktywności platformy Azure i reprezentuje tę konkretną fabrykę danych.
+Podczas tworzenia fabryki danych można utworzyć zarządzaną tożsamość wraz z tworzeniem fabryczną. Zarządzana tożsamość to zarządzana aplikacja zarejestrowana do Azure Active Directory i reprezentuje tę konkretną fabrykę danych.
 
 Tożsamość zarządzana dla Data Factory korzysta z następujących funkcji:
 

@@ -1,5 +1,5 @@
 ---
-title: Monitorowanie i dostrajanie wydajności — Azure SQL Database
+title: Monitorowanie i dostrajanie wydajności
 description: Wskazówki dotyczące dostrajania wydajności w Azure SQL Database oceny i ulepszeń.
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: jrasnick, carlrab
 ms.date: 01/25/2019
-ms.openlocfilehash: c11112963ec82a0e53df156048495e7b5141bcb7
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: e77af00dc3352af3265da90685e58b34c96bee81
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73687769"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73825161"
 ---
 # <a name="monitoring-and-performance-tuning"></a>Monitorowanie i dostrajanie wydajności
 
@@ -34,7 +34,7 @@ Aby upewnić się, że baza danych działa bez problemów, należy:
 
 Aby monitorować wydajność bazy danych SQL na platformie Azure, Zacznij od monitorowania zasobów używanych względem wybranego poziomu wydajności bazy danych. Monitoruj następujące zasoby:
  - **Użycie procesora**: Sprawdź, czy baza danych osiągnie 100% użycia procesora CPU przez dłuższy czas. Duże użycie procesora CPU może wskazywać na to, że trzeba identyfikować i dostrajać zapytania, które wykorzystują największą moc obliczeniową. Duże użycie procesora CPU może również oznaczać, że baza danych lub wystąpienie należy uaktualnić do wyższej warstwy usług. 
- - **Statystyka oczekiwania**: Użyj [widoku sys. DM _os_wait_stats (Transact-SQL)](/sql/relational-databases/system-dynamic-management-views/sys-dm-os-wait-stats-transact-sql) , aby określić, jak długo zapytania oczekują. Zapytania oczekują na zasoby, czekają na kolejki lub czekają na zewnątrz. 
+ - **Statystyka oczekiwania**: Użyj wykazu [sys. dm_os_wait_stats (Transact-SQL)](/sql/relational-databases/system-dynamic-management-views/sys-dm-os-wait-stats-transact-sql) , aby określić, jak długo zapytania oczekują. Zapytania oczekują na zasoby, czekają na kolejki lub czekają na zewnątrz. 
  - **Użycie we/wy**: Sprawdź, czy baza danych zbliża się do limitów operacji we/wy magazynu bazowego.
  - **Użycie pamięci**: ilość pamięci dostępnej dla bazy danych lub wystąpienia jest proporcjonalna do liczby rdzeni wirtualnych. Upewnij się, że pamięć jest wystarczająca dla obciążenia. Stron życia stron to jeden z parametrów, które mogą wskazywać na szybkość usuwania stron z pamięci.
 
@@ -91,11 +91,11 @@ Jeśli znajdziesz problem z wydajnością związany z działaniem, celem jest zi
 - Użyj [Azure Portal](sql-database-manage-after-migration.md#monitor-databases-using-the-azure-portal) , aby monitorować użycie procentowe procesora CPU.
 - Użyj następujących [widoków DMV](sql-database-monitoring-with-dmvs.md):
 
-  - [Sys. DM _db_resource_stats](sql-database-monitoring-with-dmvs.md#monitor-resource-use) DMV zwraca procesor, we/wy i użycie pamięci dla bazy danych SQL. Jeden wiersz istnieje dla każdego 15-sekundowego interwału, nawet jeśli w bazie danych nie ma żadnych działań. Dane historyczne są przechowywane przez jedną godzinę.
-  - [Sys. resource_stats](sql-database-monitoring-with-dmvs.md#monitor-resource-use) DMV zwraca dane użycia procesora CPU i magazynu dla Azure SQL Database. Dane są zbierane i agregowane w odstępach 5-minutowych.
+  - [Sys. dm_db_resource_stats](sql-database-monitoring-with-dmvs.md#monitor-resource-use) DMV zwraca procesor, we/wy i użycie pamięci dla bazy danych SQL. Jeden wiersz istnieje dla każdego 15-sekundowego interwału, nawet jeśli w bazie danych nie ma żadnych działań. Dane historyczne są przechowywane przez jedną godzinę.
+  - DMV [sys. resource_stats](sql-database-monitoring-with-dmvs.md#monitor-resource-use) zwraca dane użycia procesora CPU i magazynu dla Azure SQL Database. Dane są zbierane i agregowane w odstępach 5-minutowych.
 
 > [!IMPORTANT]
-> Aby rozwiązać problemy dotyczące użycia procesora przez zapytania T-SQL, które używają sys. DM _db_resource_stats i sys. resource_stats widoków DMV, zobacz temat [identyfikowanie problemów z wydajnością procesora CPU](sql-database-monitoring-with-dmvs.md#identify-cpu-performance-issues).
+> Aby rozwiązać problemy dotyczące użycia procesora przez zapytania T-SQL, które używają sys. dm_db_resource_stats i sys. resource_stats widoków DMV, zobacz temat [identyfikowanie problemów z wydajnością procesora CPU](sql-database-monitoring-with-dmvs.md#identify-cpu-performance-issues).
 
 ### <a name="ParamSniffing"></a>Zapytania, które mają problemy z PSP
 
@@ -108,7 +108,7 @@ Kilka obejść może rozwiązać problemy związane z PSP. Każde obejście ma p
 - Użyj wskazówki dotyczącej ponownej [kompilacji](https://docs.microsoft.com/sql/t-sql/queries/hints-transact-sql-query) w każdym wykonaniu zapytania. To obejście umożliwia wymianę czasu kompilacji i zwiększenie procesora w celu zapewnienia lepszej jakości planu. Opcja `RECOMPILE` jest często niemożliwa w przypadku obciążeń wymagających dużej przepływności.
 - Użyj [opcji zapytania (Optymalizacja dla...)](https://docs.microsoft.com/sql/t-sql/queries/hints-transact-sql-query) , aby zastąpić rzeczywistą wartość parametru wartością typowego parametru, która generuje plan, który jest wystarczająco dobry dla większości wartości parametrów. Ta opcja wymaga dobrego poznania optymalnych wartości parametrów i skojarzonych cech planu.
 - Użyj [opcji (Optymalizacja dla NIEznanej)](https://docs.microsoft.com/sql/t-sql/queries/hints-transact-sql-query) wskazówki, aby zastąpić rzeczywistą wartość parametru, a zamiast tego użyć średniej gęstości wektora. Można to zrobić również, przechwytując wartości parametrów przychodzących w zmiennych lokalnych, a następnie używając zmiennych lokalnych w predykatach zamiast używać samych parametrów. W przypadku tej poprawki średnia gęstość musi być *wystarczająca*.
-- Wyłącz wykrywanie parametrów za pomocą wskazówki zapytania [DISABLE_PARAMETER_SNIFFING](https://docs.microsoft.com/sql/t-sql/queries/hints-transact-sql-query) .
+- Wyłącz wykrywanie parametrów, używając wskazówki zapytania [DISABLE_PARAMETER_SNIFFING](https://docs.microsoft.com/sql/t-sql/queries/hints-transact-sql-query) .
 - Użyj wskazówki zapytania [KEEPFIXEDPLAN](https://docs.microsoft.com/sql/t-sql/queries/hints-transact-sql-query) , aby uniemożliwić ponowne kompilacje w pamięci podręcznej. W tym rozwiązaniu przyjęto założenie, że jest to ten sam plan, który jest już w pamięci podręcznej. Możesz również wyłączyć automatyczne aktualizacje statystyk, aby zmniejszyć prawdopodobieństwo wykluczenia dobrego planu i skompilowania nowego nieprawidłowego planu.
 - Wymuś planowanie jawnie za pomocą wskazówki zapytania [use plan](https://docs.microsoft.com/sql/t-sql/queries/hints-transact-sql-query) przez ponowne zapisanie zapytania i dodanie wskazówki w tekście zapytania. Lub ustawić konkretny plan przy użyciu magazynu zapytań lub przez włączenie [dostrajania automatycznego](sql-database-automatic-tuning.md).
 - Zastąp pojedynczą procedurę z zagnieżdżonym zestawem procedur, które mogą być używane na podstawie logiki warunkowej i skojarzonych wartości parametrów.
@@ -181,7 +181,7 @@ Ponowna kompilacja (lub Nowa kompilacja po wykluczeniu pamięci podręcznej) nad
 
 - **Różne statystyki**: Statystyka skojarzona z obiektami, do których istnieją odwołania, mogła ulec zmianie lub może być istotnie różna od statystyk oryginalnego systemu.  W przypadku zmiany statystyk i ponownej kompilacji optymalizator zapytań używa statystyk rozpoczynających się od momentu zmiany. Dane statystyczne i częstotliwości dla zaktualizowanych statystyk mogą się różnić od tych, które zostały oryginalnie skompilowane.  Te zmiany są używane do tworzenia oszacowań kardynalności. (*Oszacowania kardynalności* to liczba wierszy, które powinny przepływać przez drzewo zapytania logicznego). Zmiany w oszacowaniach kardynalności mogą prowadzić do wyboru różnych operatorów fizycznych i skojarzonych z nimi zamówień.  Nawet niewielkie zmiany w statystyce mogą spowodować zmianę planu wykonywania zapytania.
 
-- **Zmieniony poziom zgodności bazy danych lub wersja szacowaniaa Kardynalność**: zmiany poziomu zgodności bazy danych mogą umożliwić nowe strategie i funkcje, które mogą spowodować powstanie innego planu wykonywania zapytań.  Poza poziomem zgodności bazy danych wyłączona lub włączona flaga śledzenia 4199 lub zmieniony stan QUERY_OPTIMIZER_HOTFIXES konfiguracji bazy danych może również mieć wpływ na Opcje planu wykonywania zapytania w czasie kompilacji.  Flagi śledzenia 9481 (Wymuś starszą wersję CE) i 2312 (Wymuś ustawienie domyślne CE) wpływają również na plan. 
+- **Zmieniony poziom zgodności bazy danych lub wersja szacowaniaa Kardynalność**: zmiany poziomu zgodności bazy danych mogą umożliwić nowe strategie i funkcje, które mogą spowodować powstanie innego planu wykonywania zapytań.  Poza poziomem zgodności bazy danych wyłączona lub włączona flaga śledzenia 4199 lub zmieniony stan QUERY_OPTIMIZER_HOTFIXES konfiguracji z zakresem bazy danych może również mieć wpływ na Opcje planu wykonywania zapytania w czasie kompilacji.  Flagi śledzenia 9481 (Wymuś starszą wersję CE) i 2312 (Wymuś ustawienie domyślne CE) wpływają również na plan. 
 
 ### <a name="resolve-problem-queries-or-provide-more-resources"></a>Rozwiązywanie zapytań dotyczących problemów lub podawanie większej ilości zasobów
 
@@ -216,15 +216,15 @@ Jeśli masz pewność, że problem z wydajnością nie jest związany z dużym u
 Te metody są często używane do wyświetlania najważniejszych kategorii typów oczekiwania:
 
 - Użyj [magazynu zapytań](https://docs.microsoft.com/sql/relational-databases/performance/monitoring-performance-by-using-the-query-store) , aby znaleźć statystyki oczekiwania dla każdego zapytania w czasie. W magazynie zapytań typy oczekiwania są łączone w kategorie oczekiwania. Można znaleźć Mapowanie kategorii oczekiwania na typy oczekiwania w [tabeli sys. query_store_wait_stats](https://docs.microsoft.com/sql/relational-databases/system-catalog-views/sys-query-store-wait-stats-transact-sql#wait-categories-mapping-table).
-- Użyj [widoku sys. DM _db_wait_stats](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-db-wait-stats-azure-sql-database) , aby zwrócić informacje o wszystkich oczekiwaniach napotkanych przez wątki, które są wykonywane podczas operacji. Ten Zagregowany widok służy do diagnozowania problemów z wydajnością Azure SQL Database a także z określonymi kwerendami i partiami.
-- Użyj [widoku sys. DM _os_waiting_tasks](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-os-waiting-tasks-transact-sql) , aby zwrócić informacje o kolejce zadań oczekujących na jakiś zasób.
+- Użyj wykazu [sys. dm_db_wait_stats](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-db-wait-stats-azure-sql-database) , aby zwrócić informacje o wszystkich oczekiwaniach napotkanych przez wątki, które są wykonywane podczas operacji. Ten Zagregowany widok służy do diagnozowania problemów z wydajnością Azure SQL Database a także z określonymi kwerendami i partiami.
+- Użyj wykazu [sys. dm_os_waiting_tasks](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-os-waiting-tasks-transact-sql) , aby zwrócić informacje o kolejce zadań oczekujących na jakiś zasób.
 
 W scenariuszach z wysokim procesorem CPU magazyn zapytań i statystyki oczekiwania mogą nie odzwierciedlać użycia procesora, jeśli:
 
 - Nadal są wykonywane zapytania o wysokim zużyciu procesora CPU.
 - W przypadku przełączenia w tryb failover działały zapytania o wysokim zużyciu procesora CPU.
 
-Widoków DMV, który śledzi magazyn zapytań i statystyki oczekiwania, pokazują wyniki tylko dla zapytań zakończonych pomyślnie i przekroczenia limitu czasu. Nie wyświetlają one danych dla aktualnie wykonywanych instrukcji do momentu zakończenia instrukcji. Dynamiczny widok zarządzania [sys. DM _exec_requests](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-exec-requests-transact-sql) służy do śledzenia aktualnie wykonywanych zapytań i skojarzonego czasu procesu roboczego.
+Widoków DMV, który śledzi magazyn zapytań i statystyki oczekiwania, pokazują wyniki tylko dla zapytań zakończonych pomyślnie i przekroczenia limitu czasu. Nie wyświetlają one danych dla aktualnie wykonywanych instrukcji do momentu zakończenia instrukcji. Użyj dynamicznego widoku zarządzania [sys. dm_exec_requests](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-exec-requests-transact-sql) , aby śledzić aktualnie wykonywane zapytania i czas skojarzonego pracownika.
 
 Wykres na początku tego artykułu pokazuje, że najczęstsze oczekiwania są następujące:
 

@@ -4,19 +4,20 @@ description: Karta Marketplace służy do identyfikowania zasobów marketingowyc
 services: Azure, Marketplace, Cloud Partner Portal,
 author: dan-wesley
 ms.service: marketplace
+ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 04/23/2019
 ms.author: pabutler
-ms.openlocfilehash: b5d54e4c6744675da0dea5b095590b71df6d2641
-ms.sourcegitcommit: dd69b3cda2d722b7aecce5b9bd3eb9b7fbf9dc0a
+ms.openlocfilehash: 967b66a67d51b3a79bcf930ce977af48acc3dd63
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/12/2019
-ms.locfileid: "70962878"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73827576"
 ---
 # <a name="azure-application-marketplace-tab"></a>Karta Marketplace aplikacji platformy Azure
 
-Skorzystaj z karty Marketplace, aby opisać aplikację platformy Azure i udostępnić zasoby marketingowe. Ta karta zawiera następujące formy: Omówienie, artefakty marketingowe, zarządzanie potencjalnymi klientami i prawa.
+Skorzystaj z karty Marketplace, aby opisać aplikację platformy Azure i udostępnić zasoby marketingowe. Ta karta zawiera następujące formy: przegląd, artefakty marketingowe, zarządzanie potencjalnymi klientami i informacje prawne.
 
 ## <a name="overview-form"></a>Formularz przeglądu
 
@@ -28,14 +29,14 @@ W poniższej tabeli opisano ustawienia do użycia podczas tworzenia witryny skle
 
 |      Pole         |    Opis    |
 |  ---------------   |  ---------------  |
-| **Tytuły\***        | Tytuł oferty. Zostanie ona wyświetlona w widocznym miejscu w portalu Marketplace. Maksymalna długość to 50 znaków. |
-| **Podsumowanie\***      | Krótkie podsumowanie oferty. Maksymalna długość to 100 znaków.           |
-| **Długie podsumowanie\*** | Dłuższe podsumowanie oferty (chociaż może być takie samo, jak w przypadku podsumowania). Maksymalna długość to 256 znaków.           |
-| **Zharmonizowan\***  | Opis oferty. Maksymalna długość to 3000 znaków. Proste formatowanie HTML jest dozwolone, w &lt;tym&gt;Tagi &lt;p&gt;, &lt;em&gt;, &lt;ul&gt;, &lt;li,ol&gt; i header.  |
-| **Identyfikator marketingu\*** | Unikatowy adres URL do skojarzenia z ofertą zwykle zawiera nazwę organizacji i rozwiązania, maksymalną długość 50 znaków. Wybierz krótki, przyjazny identyfikator marketingu dla usługi. Ta oferta zostanie użyta w adresach URL portalu Marketplace. Na przykład jeśli identyfikator wydawcy to "contoso", a identyfikator marketingu to "sampleApp", adres URL oferty w portalu Azure Marketplace będzie https://azuremarketplace.microsoft.com/marketplace/apps/contoso.sampleApp  
-| **Podgląd identyfikatorów subskrypcji\*** | Dodaj od jednego do 100 identyfikatorów subskrypcji dla recenzentów. Te białe subskrypcje będą miały dostęp do oferty, gdy będzie ona dostępna w wersji zapoznawczej po jej opublikowaniu.          |
+| **\* tytułu**        | Tytuł oferty. Zostanie ona wyświetlona w widocznym miejscu w portalu Marketplace. Maksymalna długość to 50 znaków. |
+| **\* podsumowania**      | Krótkie podsumowanie oferty. Maksymalna długość to 100 znaków.           |
+| **Długi\* podsumowujący** | Dłuższe podsumowanie oferty (chociaż może być takie samo, jak w przypadku podsumowania). Maksymalna długość to 256 znaków.           |
+| **\* opisu**  | Opis oferty. Maksymalna długość to 3000 znaków. Proste formatowanie HTML jest dozwolone, w tym &lt;p&gt;, &lt;em&gt;, &lt;ul&gt;, &lt;li&gt;, &lt;olu&gt; i tagi nagłówków.  |
+| **\* identyfikatora marketingu** | Unikatowy adres URL do skojarzenia z ofertą zwykle zawiera nazwę organizacji i rozwiązania, maksymalną długość 50 znaków. Wybierz krótki, przyjazny identyfikator marketingu dla usługi. Ta oferta zostanie użyta w adresach URL portalu Marketplace. Na przykład jeśli identyfikator wydawcy to "contoso", a identyfikator marketingu to "sampleApp", adres URL oferty w witrynie Azure Marketplace zostanie https://azuremarketplace.microsoft.com/marketplace/apps/contoso.sampleApp  
+| **Zapodgląd identyfikatorów subskrypcji\*** | Dodaj od jednego do 100 identyfikatorów subskrypcji dla recenzentów. Te białe subskrypcje będą miały dostęp do oferty, gdy będzie ona dostępna w wersji zapoznawczej po jej opublikowaniu.          |
 | **Przydatne linki**    | Opcjonalnie możesz udostępnić linki do różnych zasobów użytkownikom oferty, takie jak pomoc techniczna, dokumentacja, fora itp.  Zaleca się dodanie co najmniej jednego linku do dokumentacji.            |
-| **Sugerowane kategorie (maks. 5)\*** | Wybierz jedną z pięciu kategorii. Wybrane kategorie są używane do mapowania oferty do kategorii produktów dostępnych w witrynie Azure Marketplace i witrynie Azure Portal. Będą one wyświetlane na stronach przeglądania i na stronie szczegółów produktu. |
+| **Sugerowane kategorie (maksymalnie 5)\*** | Wybierz jedną z pięciu kategorii. Wybrane kategorie są używane do mapowania oferty do kategorii produktów dostępnych w witrynie Azure Marketplace i witrynie Azure Portal. Będą one wyświetlane na stronach przeglądania i na stronie szczegółów produktu. |
 |  |  |
 
 
@@ -49,13 +50,13 @@ W poniższej tabeli opisano artefakty marketingowe.
 
 |      Pole         |    Opis    |
 |  ---------------   |  ---------------  |
-| **Małych\***        | Małe logo: 40x40 pikseli w formacie PNG     |
-| **Średniookresow\***       | Logo średniej: 90x90 pikseli w formacie PNG    |
-| **Znacznie\***        | Duże logo: 115x115 pikseli w formacie PNG   |
-| **Szerokooć\***         | Szerokie logo: 255x115 pikseli w formacie PNG    |
+| **Małe\***        | Małe logo: 40x40 pikseli w formacie PNG     |
+| **Średni\***       | Średnie logo: 90x90 pikseli w formacie PNG    |
+| **Duże\***        | Duże logo: 115x115 pikseli w formacie PNG   |
+| **Szerokie\***         | Szerokie logo: 255x115 pikseli w formacie PNG    |
 | **Hero**           | Opcjonalne logo Hero: 815x290 pikseli w formacie PNG. **Uwaga:** Po przekazaniu nie można usunąć ikony Hero. |
 | **Zrzuty ekranu (maks. 5)** |        Zrzuty ekranu są wyświetlane na stronie ze szczegółowymi informacjami o produkcie. Są one dobrym sposobem na wizualną komunikację z aplikacją i jej działaniem. Na przykład można wyświetlić diagramy architektury lub ilustracje przypadków użycia. Zrzuty ekranu są opcjonalne i ograniczone do 5 dla jednostki SKU. Aby dodać zrzut ekranu:<ul><li>Wybierz pozycję **+ Dodaj zrzut ekranu** , aby otworzyć okno zrzut ekranu</li><li>**Nazwa** — wprowadź nazwę/tytuł (maksymalną długość wynoszącą 100 znaków).</li><li>**Przekaż** — Przekaż obraz. Musi być w formacie PNG, a rozmiar wynosi 533 x 324 pikseli.</li></ul>           |
-| **Dodaj wideo**      | Opcjonalnie na stronie szczegółów produktu są wyświetlane wideo. Są one dobrym sposobem na wizualną komunikację z aplikacją i jej działaniem. Aby dodać film wideo: <ul><li>Wybierz pozycję **+ Dodaj film wideo** , aby otworzyć okno wideo</li><li>**Nazwa** — wprowadź nazwę/tytuł (maksymalną długość wynoszącą 100 znaków).</li><li>**Link** — wprowadź adres URL witryny, w której znajduje się film wideo (YouTube lub Vimeo)</li><li>**Miniatura** — Przekaż miniaturę. Musi być w formacie PNG, a rozmiar wynosi 533 x 324 pikseli.</li></ul>          |
+| **Dodaj wideo**      | Opcjonalnie na stronie szczegółów produktu są wyświetlane wideo. Są one dobrym sposobem na wizualną komunikację z aplikacją i jej działaniem. Aby dodać film wideo: <ul><li>Wybierz pozycję **+ Dodaj film wideo** , aby otworzyć okno wideo</li><li>**Nazwa** — wprowadź nazwę/tytuł (maksymalną długość wynoszącą 100 znaków).</li><li>**Link** — wprowadź adres URL witryny, która jest hostem wideo (YouTube lub Vimeo)</li><li>**Miniatura** — Przekaż miniaturę. Musi być w formacie PNG, a rozmiar wynosi 533 x 324 pikseli.</li></ul>          |
 |  |  |
 
 
@@ -125,8 +126,8 @@ Użyj formularza prawnego, aby dostarczyć dokumentację prawną wymaganą dla k
 
 Podaj następujące informacje:
 
-- **Adres URL\* zasad ochrony prywatności** — wprowadź link do zasad zachowania poufności informacji aplikacji.
-- **Warunkiużytkowania\***  — wprowadź warunki użytkowania aplikacji. Aby móc wypróbować aplikację, klienci muszą zaakceptować te warunki.
+- **Adres URL zasad ochrony prywatności\*** — wprowadź link do zasad zachowania poufności informacji aplikacji.
+- **Warunki użytkowania\*** — wprowadź warunki użytkowania aplikacji. Aby móc wypróbować aplikację, klienci muszą zaakceptować te warunki.
 
 ![Formularz prawny](./media/azureapp-marketplace-legal.png)
 

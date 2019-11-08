@@ -1,38 +1,39 @@
 ---
-title: Tworzenie oferty usługi doradcze | Portal Azure Marketplace
-description: Tworzenie platformy Azure lub Dynamics 365 doradcze usługi oferty w portalu Cloud Partner portalu Azure Marketplace.
+title: Tworzenie oferty konsultingowej | Portal Azure Marketplace
+description: Utwórz ofertę usługi konsultingowej platformy Azure lub Dynamics 365 w portal Cloud Partner portalu Azure Marketplace.
 services: Azure, Marketplace, Cloud Partner Portal,
 author: qianw211
 ms.service: marketplace
+ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 11/30/2018
 ms.author: pabutler
-ms.openlocfilehash: 09b9dce8e30ed3ba5ad0bac58929cd2c6d71793c
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 0cea0810300db1448540f58aa25b5f3197080d0e
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64942831"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73818151"
 ---
-# <a name="create-a-consulting-offer"></a>Tworzenie oferty usługi doradcze
+# <a name="create-a-consulting-offer"></a>Tworzenie oferty konsultingowej
 
-W tym artykule opisano, jak utworzyć i opublikować ofertę usługi doradcze.
+W tym artykule opisano sposób tworzenia i publikowania oferty usługi konsultingowej.
 
-## <a name="define-your-offer"></a>Zdefiniuj swoją ofertę
+## <a name="define-your-offer"></a>Definiowanie oferty
 
-Zdefiniuj spakowanych doradcze oferty usługi. Skupić się na zakres stały, ustalony czas trwania, szacowany stała cena (lub zwolnij) i głównie zorientowane na przedsprzedażna ofert dla jednego klienta. Wybierz powtarzalne spakowanych engagements, które są popularne i efektywne, prowadzenie nową działalność dla Ciebie.
+Zdefiniuj swoją spakowaną ofertę usługi konsultingowej. Skup się na stałym zakresie, stałym czasie trwania, szacowanej cenie stałej (lub bezpłatna) i przede wszystkim ofertami oferowanymi w ramach sprzedaży dla jednego klienta. Wybierz powtarzające się spakowane zaangażowanie, które są popularne i efektywne podczas prowadzenia nowej firmy.
 
 ## <a name="create-a-new-offer"></a>Tworzenie nowej oferty
 
 Aby utworzyć nową ofertę, wykonaj następujące kroki.
-1. W menu głównym portalu Cloud Partner, wybierz **nową ofertę**.
-1. Na **nowa oferta** menu, wybierz opcję **usługa doradcza**.
+1. W menu głównym portal Cloud Partner wybierz pozycję **Nowa oferta**.
+1. W menu **Nowa oferta** wybierz pozycję **Usługa doradcza**.
 
-    ![Tworzenie nowej oferty usługi doradcze](media/cppselectnewconsultingoffer.png)
+    ![Utwórz nową ofertę usługi konsultingowej](media/cppselectnewconsultingoffer.png)
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
-**Nowa oferta** strona doradcze typ oferty usługi zawiera zbiór kart i pól formularza, które umożliwiają tworzenie nowej oferty. W poniższych artykułach opisano sposób używania karty do definiowania ustawień oferty i storefront szczegóły nowej oferty:
+**Nowa strona oferty** typu oferty usługi konsultingowej zawiera zestaw kart i pól formularzy, które służą do tworzenia nowej oferty. W poniższych artykułach wyjaśniono, jak za pomocą karty zdefiniować ustawienia oferty oraz szczegóły dotyczące witryny dla nowej oferty:
 
 -   [Zdefiniuj ustawienia oferty](./cpp-consulting-service-define-offer-settings.md)
--   [Wprowadź szczegóły sklepu i czy publikować w witrynie Azure Marketplace lub w usłudze AppSource](./cpp-consulting-service-storefront-details.md)
+-   [Wprowadź szczegóły witryny Marketplace i zdecyduj, czy chcesz publikować w witrynie Azure Portal, czy w witrynie AppSource](./cpp-consulting-service-storefront-details.md)

@@ -1,5 +1,5 @@
 ---
-title: 'Always Encrypted: Azure SQL Database — magazyn certyfikatów systemu Windows '
+title: Always Encrypted — magazyn certyfikatów systemu Windows
 description: W tym artykule opisano sposób zabezpieczania poufnych danych w bazie danych SQL przy użyciu szyfrowania bazy danych za pomocą Kreatora Always Encrypted w programie SQL Server Management Studio (SSMS). Przedstawiono w nim również sposób przechowywania kluczy szyfrowania w magazynie certyfikatów systemu Windows.
 keywords: Szyfruj dane, szyfrowanie SQL, szyfrowanie bazy danych, dane poufne, Always Encrypted
 services: sql-database
@@ -12,12 +12,12 @@ author: VanMSFT
 ms.author: vanto
 ms.reviwer: ''
 ms.date: 03/08/2019
-ms.openlocfilehash: e19055f83ef9b943d5ac0068d38b4f58a2b3b17c
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 82c3c3274a8a9d66019ce906ee7be47cedac7470
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73691230"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73822040"
 ---
 # <a name="always-encrypted-protect-sensitive-data-and-store-encryption-keys-in-the-windows-certificate-store"></a>Always Encrypted: Ochrona danych poufnych i przechowywanie kluczy szyfrowania w magazynie certyfikatów systemu Windows
 

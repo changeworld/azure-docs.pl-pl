@@ -4,15 +4,16 @@ description: Omówienie portalu Azure Marketplace i Microsoft AppSource dla wyda
 services: Azure, Marketplace, Compute, Storage, Networking, Blockchain, Security
 author: ellacroi
 ms.service: marketplace
+ms.subservice: partnercenter-marketplace-publisher
 ms.topic: article
 ms.date: 06/05/2018
 ms.author: ellacroi
-ms.openlocfilehash: cd6b09a1130e50fae7bd83579a0f176af0b5b9cd
-ms.sourcegitcommit: dd69b3cda2d722b7aecce5b9bd3eb9b7fbf9dc0a
+ms.openlocfilehash: fba9c481ad9b3da1eb0dd5d8a4ff2499240a8cfa
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/12/2019
-ms.locfileid: "70962622"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73826483"
 ---
 # <a name="azure-marketplace-and-appsource-publishing-guide"></a>Podręcznik publikowania w witrynie Azure Marketplace i AppSource
 
@@ -30,7 +31,7 @@ Ten przewodnik obejmuje następujące tematy:
 
 Ten przewodnik zawiera informacje techniczne i biznesowe dotyczące czynności, które należy wykonać przed wyświetleniem listy aplikacji i usług. Za pomocą spisu treści przejdź do różnych sekcji przewodnika i przejdź bezpośrednio do najważniejszych tematów.
 
-Pytania dotyczące portalu Azure Marketplace i usługi AppSource umożliwiają wysyłanie wiadomości w obszarze **Typ** > problemu.  Nasz zespół ds. dołączania do portalu Marketplace będzie zadowolony z pomocy! 
+Pytania dotyczące portalu Azure Marketplace i usługi AppSource umożliwiają wysłanie do nas komunikatu o **typie problemu** > dołączania do **portalu Marketplace**.  Nasz zespół ds. dołączania do portalu Marketplace będzie zadowolony z pomocy! 
 
 ## <a name="benefits-of-participating-in-the-marketplace"></a>Korzyści wynikające z uczestnictwa w portalu Marketplace 
 
@@ -56,11 +57,11 @@ Uzyskaj wgląd w wydajność swoich aukcji za pomocą szczegółowych informacji
 
 Nowe aukcje w portalu Marketplace kwalifikują się do korzystania z różnorodnych bezpłatnych korzyści, aby pomóc partnerom rozwijać swoją firmę w portalu Marketplace. Te korzyści są następujące: 
 
-*   Naukow Wszystko, czego potrzebujesz, aby przygotować aplikację do uruchomienia. Od pomocy technicznej, projektowania aplikacji i projektu architektury, do środków na korzystanie z platformy Azure na potrzeby tworzenia i testowania. 
+*   Techniczne: wszystko, czego potrzebujesz, aby przygotować aplikację do uruchomienia. Od pomocy technicznej, projektowania aplikacji i projektu architektury, do środków na korzystanie z platformy Azure na potrzeby tworzenia i testowania. 
 
-*   Współmarketing: Wszystko, czego potrzebujesz do uruchomienia oferty. Uzyskaj dostęp do bezpłatnych podstaw uruchamiania Microsoft go-to-Market w celu ułatwienia uruchamiania i promowania rozwiązania. Możesz również kwalifikować się do dołączenia do dodatkowych kampanii marketingowych firmy Microsoft i możliwości ich promowania w portalu Marketplace.
+*   Marketing — wszystko, co jest potrzebne do uruchomienia oferty. Uzyskaj dostęp do bezpłatnych podstaw uruchamiania Microsoft go-to-Market w celu ułatwienia uruchamiania i promowania rozwiązania. Możesz również kwalifikować się do dołączenia do dodatkowych kampanii marketingowych firmy Microsoft i możliwości ich promowania w portalu Marketplace.
 
-*   Sprzedawanie: Zacznij lub Przyspiesz swoją podróż, aby sprzedawać w firmie Microsoft w portalu Marketplace. Uzyskiwanie dostępu do programów i pomocy technicznej w celu zapewnienia wspólnego sprzedaży za pomocą zespołów Microsoft Teams.
+*   Sprzedawanie: Rozpocznij lub Przyspiesz swoją podróż, aby sprzedawać firmę Microsoft w portalu Marketplace. Uzyskiwanie dostępu do programów i pomocy technicznej w celu zapewnienia wspólnego sprzedaży za pomocą zespołów Microsoft Teams.
 
 Po [przesłaniu rozwiązania](https://partner.microsoft.com/dashboard/account/v3/enrollment/introduction/azureisv) do portalu Marketplace nasz zespół ds. dołączania skontaktuje się z pomocą techniczną, aby obsłużyć proces publikowania.  Aby uzyskać więcej informacji [, zobacz jak utworzyć konto Centrum partnerskiego](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-account) .
 

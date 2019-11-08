@@ -1,56 +1,57 @@
 ---
-title: Wymagania wstępne maszyny wirtualnej dla systemu Microsoft Azure | Portal Azure Marketplace
-description: Lista wymagań wstępnych dotyczących publikowanie oferty maszyny Wirtualnej w portalu Azure Marketplace.
+title: Wymagania wstępne dotyczące Microsoft Azure maszyny wirtualnej | Portal Azure Marketplace
+description: Lista wymagań wstępnych wymaganych do opublikowania oferty maszyny wirtualnej w portalu Azure Marketplace.
 services: Azure, Marketplace, Cloud Partner Portal
 author: v-miclar
 ms.service: marketplace
+ms.subservice: partnercenter-marketplace-publisher
 ms.topic: article
 ms.date: 03/13/2019
 ms.author: pabutler
-ms.openlocfilehash: 258d21eae5af50b5dc0bed6887618e2999cae45a
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: a657ceaacf3680de54dc0d639a3f1a0aff6a6a03
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66257387"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73824421"
 ---
-# <a name="virtual-machine-prerequisites"></a>Wymagania wstępne maszyny wirtualnej
+# <a name="virtual-machine-prerequisites"></a>Wymagania wstępne dotyczące maszyn wirtualnych
 
-W tym artykule wymieniono zarówno techniczne i oferty maszyny Wirtualnej, aby opublikować wymagań biznesowych, które muszą spełnić, przed [portalu Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/).  Jeśli nie zostało to jeszcze zrobione, zapoznaj się z [Podręcznik publikowania oferty maszyny wirtualnej](../../marketplace-virtual-machines.md).
+W tym artykule wymieniono wymagania techniczne i biznesowe, które należy spełnić, aby można było opublikować ofertę maszyny wirtualnej w [portalu Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/).  Jeśli jeszcze tego nie zrobiono, zapoznaj się z [przewodnikiem publikowania oferty maszyn wirtualnych](../../marketplace-virtual-machines.md).
 
 
 ## <a name="technical-requirements"></a>Wymagania techniczne
 
-Techniczne wymagania wstępne dotyczące publikowania rozwiązania maszyny wirtualnej (VM) są oczywiste:
+Wymagania techniczne dotyczące publikowania rozwiązania maszyny wirtualnej (VM) są proste:
 
-- Musisz mieć aktywne konto platformy Azure. Jeśli nie masz, możesz zarejestrować się się w [witryny Microsoft Azure](https://azure.microsoft.com).  
-- Konieczne jest posiadanie środowisko skonfigurowane do obsługi tworzenia maszyny Wirtualnej systemu Linux lub Windows.  Aby uzyskać więcej informacji zobacz skojarzone witrynie dokumentacji maszyn wirtualnych:
+- Musisz mieć aktywne konto platformy Azure. Jeśli go nie masz, możesz zarejestrować się w [witrynie Microsoft Azure](https://azure.microsoft.com).  
+- Musisz mieć środowisko skonfigurowane do obsługi opracowywania maszyn wirtualnych z systemem Windows lub Linux.  Aby uzyskać więcej informacji, zobacz witrynę z dokumentacją skojarzoną z maszyną wirtualną:
     - [Dokumentacja dotycząca maszyn wirtualnych z systemem Linux](https://docs.microsoft.com/azure/virtual-machines/linux/)
-    - [Dokumentacja maszyny wirtualnej Windows](https://docs.microsoft.com/azure/virtual-machines/windows/)
+    - [Dokumentacja maszyn wirtualnych z systemem Windows](https://docs.microsoft.com/azure/virtual-machines/windows/)
 
 
 ## <a name="business-requirements"></a>Wymagania biznesowe
 
-Wymagania biznesowe obejmują procedurach umowne stosowane w UE oraz prawne zobowiązań: 
+Wymagania biznesowe obejmują kwestie proceduralne, umowne i prawne: 
 
 <!-- TD: Aren't most of these business requirements common to all AMP offerings?  If yes, then move to higher level, perhaps to the AMP section "Become a Cloud Marketplace Publisher" -->
 <!-- TD: Need references for remaining docs/business reqs!-->
 
-- Musi być zarejestrowany wydawcy chmury w witrynie Marketplace.  Jeśli nie zostały jeszcze zarejestrowane, postępuj zgodnie z instrukcjami w artykule [stają się wydawcy w witrynie Marketplace chmury](https://docs.microsoft.com/azure/marketplace/become-publisher).
+- Musisz być zarejestrowanym wydawcą portalu Marketplace w chmurze.  Jeśli jeszcze nie zarejestrowano Cię, wykonaj kroki opisane w artykule [Zostań wydawcy portalu Marketplace w chmurze](https://docs.microsoft.com/azure/marketplace/become-publisher).
 
     > [!NOTE]
-    > Należy używać tego samego konta Microsoft Developer Center rejestrowania się na [portalu Cloud Partner](https://cloudpartner.azure.com).
-    > Powinna mieć tylko jedno konto Microsoft, dla ofert portalu Azure Marketplace. Nie powinien być specyficzne dla poszczególnych usług lub oferty.
+    > Aby zalogować się do [Portal Cloud partner](https://cloudpartner.azure.com), należy użyć tego samego konta rejestracji Microsoft Developer Center.
+    > Dla ofert portalu Azure Marketplace powinna istnieć tylko jedna konto Microsoft. Nie powinny być specyficzne dla poszczególnych usług lub ofert.
     
-- Siedziba firmy (lub firmy od niej zależnej) musi znajdować się w sprzedaży z kraj/region obsługiwanym przez Portal Azure Marketplace.  Aby uzyskać bieżącą listę tych krajów/regionów, zobacz [Microsoft Azure Marketplace — zasady udziału](https://azure.microsoft.com/support/legal/marketplace/participation-policies/).
-- Musi być licencjonowany produkt w sposób, który jest zgodny z modelami rozliczeń obsługiwanym przez Portal Azure Marketplace.  Aby uzyskać więcej informacji, zobacz [opcje rozliczeń w witrynie Azure Marketplace](https://docs.microsoft.com/azure/marketplace/billing-options-azure-marketplace). 
-- Odpowiedzialność za udostępnianie pomocy technicznej dla klientów w sposób rozsądny z komercyjnego punktu widzenia. Może to mieć wolne, płatną lub za pośrednictwem metody społeczności.
-- Jesteś odpowiedzialny za Licencjonowanie oprogramowania oraz wszystkie zależności oprogramowania innych firm.
-- Należy podać zawartość, która spełnia kryteria za ofertę użytkownika był wyświetlany w portalu Azure Marketplace i w witrynie Azure portal. <!-- TD: Meaning/links? -->
-- Musisz wyrazić zgodę na warunki [Microsoft Azure Marketplace — zasady udziału](https://azure.microsoft.com/support/legal/marketplace/participation-policies/) oraz Umowie wydawcy portalu.
-- Muszą być zgodne z [Microsoft Azure warunkami korzystania z witryny](https://azure.microsoft.com/support/legal/website-terms-of-use/), [zasady zachowania poufności informacji firmy Microsoft](https://privacy.microsoft.com/privacystatement), i [umowę programu certyfikat platformy Azure Microsoft](https://azure.microsoft.com/support/legal/marketplace/certified-program-agreement/).
+- Firma (lub jej oddział) musi znajdować się w kraju/regionie, który jest obsługiwany przez portal Azure Marketplace.  Aby zapoznać się z bieżącą listą tych krajów/regionów, zobacz [Microsoft Azure Marketplace zasad udziału](https://azure.microsoft.com/support/legal/marketplace/participation-policies/).
+- Produkt musi być licencjonowany w sposób zgodny z modelami rozliczeń obsługiwanymi przez portal Azure Marketplace.  Aby uzyskać więcej informacji, zobacz [Opcje rozliczeń w portalu Azure Marketplace](https://docs.microsoft.com/azure/marketplace/billing-options-azure-marketplace). 
+- Użytkownik jest odpowiedzialny za pomoc techniczną dla klientów w rozsądnie uzasadniony sposób. Ta pomoc techniczna może być bezpłatna, płatna lub przez podejścia do społeczności.
+- Użytkownik jest odpowiedzialny za Licencjonowanie oprogramowania oraz wszelkich zależności oprogramowania innych firm.
+- Musisz podać zawartość, która spełnia kryteria oferty, która będzie wyświetlana w witrynie Azure Marketplace i w Azure Portal. <!-- TD: Meaning/links? -->
+- Należy wyrazić zgodę na warunki [Microsoft Azure Marketplace zasad uczestnictwa](https://azure.microsoft.com/support/legal/marketplace/participation-policies/) i umowy wydawcy.
+- Musisz przestrzegać [warunków użytkowania witryny sieci web Microsoft Azure, zasad](https://azure.microsoft.com/support/legal/website-terms-of-use/) [zachowania poufności informacji firmy Microsoft](https://privacy.microsoft.com/privacystatement)i [umowy Microsoft Azure certyfikowanych programów](https://azure.microsoft.com/support/legal/marketplace/certified-program-agreement/).
 
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
-Po zostały spełnione następujące wymagania wstępne, możesz [Tworzenie oferty maszyny Wirtualnej](./cpp-create-offer.md).
+Po spełnieniu tych wymagań wstępnych możesz [utworzyć swoją ofertę maszyny wirtualnej](./cpp-create-offer.md).

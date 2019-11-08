@@ -1,50 +1,51 @@
 ---
-title: Zarządzanie profilem wydawcy w portalu Azure Marketplace i AppSource
-description: Zarządzanie profilem wydawcy portalu Azure Marketplace i AppSource
+title: Zarządzanie profilem programu Azure Marketplace i AppSource Publisher
+description: Zarządzanie profilem programu Azure Marketplace i AppSource wydawcy
 services: Azure, Marketplace, Cloud Partner Portal,
 author: qianw211
 manager: pbutlerm
 ms.service: marketplace
+ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 11/15/2018
 ms.author: pabutler
-ms.openlocfilehash: a72259e1deb97ca0256de5bfd3b2f6c78d92e3c8
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: c9e8e73d18ec0c2a7334fbb5521e89ead4334cc7
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64935346"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73826369"
 ---
-# <a name="manage-azure-marketplace-and-appsource-publisher-profile"></a>Zarządzanie profilem wydawcy "Azure Marketplace" i "AppSource"
+# <a name="manage-azure-marketplace-and-appsource-publisher-profile"></a>Zarządzaj profilem wydawcy "Azure Marketplace" i "AppSource"
 
-Ten dokument jest przewodnikiem na wyświetlanie i zarządzanie nią użytkowników do swojego profilu wydawcy zarejestrowane.
+Ten dokument zawiera omówienie wyświetlania użytkowników i zarządzania nimi w zarejestrowanym profilu wydawcy.
 
-Przez ten czas został ukończony czynności, aby wydawcy w portalu Azure Marketplace i AppSource. Profil wydawcy, który jest zarejestrowany na **[portalu Cloud Partner](https://cloudpartner.azure.com/)** po zatwierdzeniu żądania partnera. Swojego profilu wydawcy będą dotyczyć wszystkich ofert i jednostek SKU opublikowanych za pomocą konta używanego podczas rejestracji partnera.
+Tym razem wykonano kroki, które należy wykonać, aby przejść do witryny Azure Marketplace i wydawcy AppSource. Profil wydawcy jest zarejestrowany w **[Portal Cloud partner](https://cloudpartner.azure.com/)** po zatwierdzeniu żądania partnera. Profil wydawcy będzie miał zastosowanie do wszystkich ofert i jednostek SKU opublikowanych z konta używanego podczas rejestracji partnera.
 
-Jeśli Twoja firma nie został zarejestrowany jako partnerem rozwiązań w chmurze, zobacz [wprowadzenie do portalu cloud partner](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cloud-partner-portal-getting-started-with-the-cloud-partner-portal).
+Jeśli Twoja firma nie została zarejestrowana jako partner w chmurze, zobacz artykuł Wprowadzenie do [portalu Cloud partner](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cloud-partner-portal-getting-started-with-the-cloud-partner-portal).
 
-**Profilem wydawcy**: Swojego profilu wydawcy odróżnia Twojej firmy w portalu Azure Marketplace i AppSource. Składa się z Twojego Identyfikatora wydawcy, nazwę wyświetlaną i email(s) właściciela. Profil dobrze zarządzanej będzie lepszy wgląd i pomaganie użytkownikom w portalu marketplace łatwo znaleźć i wybrać odpowiednią ofertę.
+**Profil wydawcy**: Twój profil wydawcy odróżnia firmę w witrynie Azure Marketplace i AppSource. Zawiera identyfikator wydawcy, nazwę wyświetlaną i adres e-mail właściciela. Dobrze zarządzany profil pozwala zwiększyć widoczność i pomóc użytkownikom w portalu Marketplace łatwo identyfikować i wybierać odpowiednią ofertę.
 
 > [!NOTE]
-> Swój identyfikator wydawcy i zarejestrowanego właściciela e-mail nie można edytować, po opublikowaniu oferty pierwszy. Możesz jednak wyświetlić swój profil i Edytuj Nazwa wyświetlana wydawcy w portalu Cloud Partner.
+> Po opublikowaniu pierwszej oferty nie można edytować identyfikatora wydawcy i zarejestrowanego adresu e-mail właściciela. Można jednak wyświetlić swój profil i zmienić nazwę wyświetlaną wydawcy z portal Cloud Partner.
 
 <!-- Dummy comment added to suppress MD linter warning -->
 
 > [!NOTE]
-> Dodaj użytkowników (współautorom i właścicielom) do swój profil publikowania z sekcji użytkowników w okienku nawigacji po lewej stronie w sekcji użytkownicy portalu cloud partner "
+> Dodaj użytkowników (współautorów i właścicieli) do profilu publikowania z sekcji Użytkownicy w okienku nawigacji po lewej stronie w sekcji Użytkownicy w portalu Cloud partner.
 
-**Do przeglądania i zarządzania swojego profilu wydawcy**, na pasku menu w prawym górnym rogu kliknij **karta profilu Wydawca**.
+**Aby wyświetlić profil wydawcy i zarządzać**nim, w prawym górnym pasku menu kliknij **kartę profil wydawcy**.
 
-![Wydawca profil karty wydawcy profilu](./media/cloud-partner-portal-how-to-manage-publisher-profile/publisherprofilenew.png)
+![Karta profil wydawcy — profil wydawcy](./media/cloud-partner-portal-how-to-manage-publisher-profile/publisherprofilenew.png)
 
-![Szczegóły profilu wydawcy — Szczegóły profilu wydawcy](./media/cloud-partner-portal-how-to-manage-publisher-profile/publisherprofiledetails.png)
+![Szczegóły profilu wydawcy — szczegóły profilu wydawcy](./media/cloud-partner-portal-how-to-manage-publisher-profile/publisherprofiledetails.png)
 
-**Połącz swoje konto Centrum deweloperów**: Możesz również połączyć istniejące konto Centrum deweloperów przy użyciu swojego profilu wydawcy w portalu Cloud Partner.
-Najpierw zaloguj się do portalu przy użyciu tego samego adresu e-mail używane do rejestrowania danych konta Centrum deweloperów. Następnie strony swojego profilu wydawcy Wyświetla Twoje stan konta Centrum deweloperów, adres e-mail właściciela konta Centrum deweloperów i nazwy konta Centrum deweloperów.
+**Połącz swoje konto Centrum deweloperów**: Możesz także połączyć istniejące konto Centrum deweloperów z Twoim profilem wydawcy na portal Cloud partner.
+Najpierw Zaloguj się do portalu przy użyciu tego samego adresu e-mail, który służy do rejestrowania konta Centrum deweloperów. Następnie na stronie profil wydawcy zostanie wyświetlony stan konta Centrum deweloperów, adres e-mail właściciela konta Centrum deweloperów oraz nazwa konta Centrum deweloperów.
 
 >[!NOTE]
->Rejestracja konta Centrum deweloperów jest obowiązkowa dla publikowania płatnych jednostek SKU platformę handlową.
+>Rejestracja konta Centrum deweloperów jest obowiązkowa w przypadku publikowania płatnych jednostek SKU w miejscu na rynku.
 
-Jeśli nie masz [konta Centrum deweloperów](./cloud-partner-portal-dev-center-accounts-registration.md), możesz utworzyć konto. Następnie należy dodać adres e-mail zarejestrowany jako właściciela w portalu Cloud Partner oferty. Właściciel tylko dodać adres e-mail zarejestrowany na swój profil publikowania z **użytkownika** sekcji. Następnie zaloguj się do portalu przy użyciu tego samego adresu e-mail i łączenie danych konta Centrum deweloperów.
+Jeśli nie masz [konta Centrum deweloperów](./cloud-partner-portal-dev-center-accounts-registration.md), możesz utworzyć konto. Następnie Dodaj zarejestrowany adres e-mail jako właściciela do portal Cloud Partner oferty. Właściciel może dodawać tylko zarejestrowane adresy e-mail do profilu publikacji z sekcji **użytkownik** . Następnie zaloguj się do portalu przy użyciu tego samego adresu e-mail i Połącz konto Centrum deweloperów.
 
 ![Szczegóły profilu wydawcy — opis profilu wydawcy](./media/cloud-partner-portal-how-to-manage-publisher-profile/publisherprofiledescription.png)

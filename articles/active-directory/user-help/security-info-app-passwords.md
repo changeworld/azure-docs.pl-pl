@@ -1,5 +1,5 @@
 ---
-title: Skonfiguruj hasła aplikacji na stronie informacje zabezpieczające (wersja zapoznawcza) — Azure Active Directory | Microsoft Docs
+title: Tworzenie haseł aplikacji w oknie Informacje zabezpieczające (wersja zapoznawcza) — Azure AD
 description: Skonfiguruj automatycznie generowane hasła (hasła aplikacji), które mają być używane z dowolną aplikacją nieobsługującą przeglądarki, lub dowolną aplikację, która nie obsługuje weryfikacji dwuskładnikowej w organizacji. To hasło aplikacji jest oddzielone od normalnego hasła i można je skonfigurować ze strony z informacjami o zabezpieczeniach.
 services: active-directory
 author: eross-msft
@@ -12,14 +12,14 @@ ms.topic: conceptual
 ms.date: 02/13/2018
 ms.author: lizross
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9638893c707757cb520acdf18e8e89a6cdf13f08
-ms.sourcegitcommit: 083aa7cc8fc958fc75365462aed542f1b5409623
+ms.openlocfilehash: eb26d90772fc9e3e3e506946363c76cf02e6b2ef
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70915974"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73820324"
 ---
-# <a name="manage-app-passwords-from-your-security-info-preview-page"></a>Zarządzanie hasłami aplikacji na stronie z informacjami o zabezpieczeniach (wersja zapoznawcza)
+# <a name="create-app-passwords-from-your-security-info-preview-page"></a>Tworzenie haseł aplikacji na stronie informacje zabezpieczające (wersja zapoznawcza)
 
 Niektóre aplikacje, takie jak Outlook 2010, nie obsługują weryfikacji dwuetapowej. Brak pomocy technicznej oznacza, że jeśli korzystasz z weryfikacji dwuetapowej w organizacji, aplikacja nie będzie działała. Aby obejść ten problem, możesz utworzyć automatycznie generowane hasło, które będzie używane z każdą aplikacją nie korzystającą z przeglądarki, niezależnie od normalnego hasła.
 
@@ -46,7 +46,7 @@ Jeśli korzystasz z weryfikacji dwuetapowej przy użyciu konta służbowego, a a
 
 ### <a name="to-create-a-new-app-password"></a>Aby utworzyć nowe hasło aplikacji
 
-1. Zaloguj się do swojego konta służbowego, a następnie przejdź do https://myprofile.microsoft.com/ strony.
+1. Zaloguj się do swojego konta służbowego, a następnie przejdź na stronę https://myprofile.microsoft.com/.
 
     ![Strona mój profil zawierająca wyróżnione linki do informacji zabezpieczających](media/security-info/securityinfo-myprofile-page.png)
 

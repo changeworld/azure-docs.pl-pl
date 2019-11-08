@@ -1,23 +1,24 @@
 ---
-title: Utwórz lub zmodyfikuj oferty | Portal Azure Marketplace
-description: Interfejs API, aby utworzyć nową lub zaktualizować i istniejącej oferty.
+title: Tworzenie lub modyfikowanie oferty | Portal Azure Marketplace
+description: Interfejs API służący do tworzenia nowej lub zaktualizowanej oferty.
 services: Azure, Marketplace, Cloud Partner Portal,
 author: v-miclar
 ms.service: marketplace
+ms.subservice: partnercenter-marketplace-publisher
 ms.topic: reference
 ms.date: 09/13/2018
 ms.author: pabutler
-ms.openlocfilehash: 55f6aa60c836d55333e1c5b02a44114b91df822d
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: bfb9cfbe2c63caafef8487015f42a05b98afa29c
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64935519"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73819718"
 ---
-<a name="create-or-modify-an-offer"></a>Utwórz lub zmodyfikuj oferty
+<a name="create-or-modify-an-offer"></a>Tworzenie lub modyfikowanie oferty
 =========================
 
-To wywołanie aktualizuje daną ofertą w przestrzeni nazw, wydawcy lub tworzy nową ofertę.
+To wywołanie aktualizuje określoną ofertę w przestrzeni nazw wydawcy lub tworzy nową ofertę.
 
   `PUT https://cloudpartner.azure.com/api/publishers/<publisherId>/offers/<offerId>?api-version=2017-10-31`
 
@@ -27,12 +28,12 @@ To wywołanie aktualizuje daną ofertą w przestrzeni nazw, wydawcy lub tworzy n
 
 |  **Nazwa**         |  **Opis**                      |  **Typ danych**  |
 |  --------         |  ----------------                     |  -------------  |
-| publisherId       |  Identyfikator wydawcy, na przykład `contoso` |   String |
-| offerId           |  Identyfikator oferty                     |   String        |
-| api-version       |  Najnowszą wersję interfejsu API            |   Date           |
+| publisherId       |  Identyfikator wydawcy, na przykład `contoso` |   Ciąg |
+| OfferId           |  Identyfikator oferty                     |   Ciąg        |
+| wersja interfejsu API       |  Najnowsza wersja interfejsu API            |   Date           |
 |  |  |  |
 
-<a name="header"></a>nagłówek
+<a name="header"></a>Nagłówek
 ------
 
 |  **Nazwa**        |  **Wartość**               |
@@ -45,7 +46,7 @@ To wywołanie aktualizuje daną ofertą w przestrzeni nazw, wydawcy lub tworzy n
 <a name="body-example"></a>Przykład treści
 ------------
 
-Poniższy przykład tworzy oferty z identyfikatora oferty z `contosovirtualmachine`.
+Poniższy przykład tworzy ofertę z offerID `contosovirtualmachine`.
 
 ### <a name="request"></a>Żądanie
 
@@ -239,23 +240,23 @@ Poniższy przykład tworzy oferty z identyfikatora oferty z `contosovirtualmachi
 ```
 
 > [!NOTE]
-> Aby zmodyfikować tę ofertę, Dodaj **If-Match** nagłówka równa * do powyższego żądania. Użyj tego samego treści żądania jako powyżej, ale zmodyfikuj wartości zgodnie z potrzebami. 
+> Aby zmodyfikować tę ofertę, Dodaj nagłówek **if-Match** o wartości * do powyższego żądania. Użyj tej samej treści żądania jak powyżej, ale Zmodyfikuj wartości zgodnie z potrzebami. 
 
 
-### <a name="response-status-codes"></a>Kody stanów odpowiedzi
+### <a name="response-status-codes"></a>Kody stanu odpowiedzi
 
-| **Kod**  |  **Opis**                                                                            |
+| **Kodu**  |  **Opis**                                                                            |
 | --------  |  ---------------                                                                            |
-|  200      | `OK`. Żądanie zostało pomyślnie przetworzone i oferta została pomyślnie zmodyfikowana.           |
+|  200      | `OK`. Żądanie zostało pomyślnie przetworzone i oferta została zmodyfikowana pomyślnie.           |
 |  201      | `Created`. Żądanie zostało pomyślnie przetworzone i oferta została pomyślnie utworzona.   |
-|  400      | `Bad/Malformed request`. Treść odpowiedzi błędu może dostarczyć dodatkowych informacji.            |
+|  400      | `Bad/Malformed request`. Treść odpowiedzi na błąd może dostarczyć więcej informacji.            |
 |  403      | `Forbidden`. Klient nie ma dostępu do żądanego obszaru nazw.                     |
-|  404      | `Not found`. Jednostki, określonych przez klienta nie istnieje.                           |
-|  412      | Serwer nie spełnia jednego z warunków wstępnych, czy strona żądająca określony w żądaniu. Klienta należy sprawdzić element ETAG wysłane z żądaniem. |
+|  404      | `Not found`. Jednostka, do której odwołuje się klient, nie istnieje.                           |
+|  412      | Serwer nie spełnia jednego z warunków wstępnych określonych w żądaniu. Klient powinien sprawdzić element ETAG wysłany z żądaniem. |
 |  |  |
 
 
 <a name="uploading-artifacts"></a>Przekazywanie artefaktów
 -------------------
 
-Artefaktów, takich jak obrazy i logo, powinny być współużytkowane przez przekazywanie ich do dostępnej lokalizacji w sieci web, a następnie, łącznie ze wszystkimi jako identyfikator URI żądania PUT, tak jak w powyższym przykładzie. System wykryje, że te pliki nie są obecne w magazynie Azure marketplace i pobierać te pliki do magazynu.  Co w efekcie można zauważyć, że przyszłe żądania GET zwróci adres URL usługi Azure marketplace dla tych plików.
+Artefakty, takie jak obrazy i logo, powinny być udostępniane przez przekazanie ich do dostępnej lokalizacji w sieci Web, a następnie dołączenie ich jako identyfikatora URI w żądaniu PUT, jak w powyższym przykładzie. System wykryje, że te pliki nie znajdują się w magazynie Azure Marketplace, i pobierzą te pliki do magazynu.  W związku z tym zobaczysz, że przyszłe żądania GET będą zwracać adres URL usługi Azure Marketplace dla tych plików.

@@ -11,12 +11,12 @@ author: MladjoA
 ms.author: mlandzic
 ms.reviewer: sstein
 ms.date: 01/03/2019
-ms.openlocfilehash: 37b19cd86cd13dd2bdc8b3a38abf61898b81d01b
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 79abaade22fc107fa4c848607ff48232eeeb58ad
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73690389"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73823764"
 ---
 # <a name="reporting-across-scaled-out-cloud-databases-preview"></a>Raportowanie w skalowanych bazach danych w chmurze (wersja zapoznawcza)
 
@@ -182,7 +182,7 @@ Zapytanie elastyczne zawiera również procedurę składowaną, która zapewnia 
 * Nazwa źródła danych (nvarchar): Nazwa zewnętrznego źródła danych typu RDBMS.
 * Query (nvarchar): zapytanie T-SQL, które ma zostać wykonane na każdym fragmentu.
 * Deklaracja parametru (nvarchar)-Optional: ciąg z definicjami typu danych dla parametrów używanych w parametrze zapytania (na przykład sp_executesql).
-* Lista wartości parametrów — opcjonalne: rozdzielana przecinkami lista wartości parametrów (na przykład sp_executesql).
+* Lista wartości parametrów — opcjonalne: rozdzielana przecinkami lista wartości parametrów (takich jak sp_executesql).
 
 Polecenie Sp\_Execute\_zdalnego używa zewnętrznego źródła danych podanego w parametrach wywołania, aby wykonać daną instrukcję T-SQL w zdalnych bazach danych. Używa poświadczeń zewnętrznego źródła danych, aby nawiązać połączenie z bazą danych programu shardmap Manager i zdalnymi bazami danych.  
 

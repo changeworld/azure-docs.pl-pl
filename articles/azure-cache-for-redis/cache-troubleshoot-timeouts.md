@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/18/2019
 ms.author: yegu
-ms.openlocfilehash: d6bf0f788f7c71a55a4c3667023d8b1d9f571baf
-ms.sourcegitcommit: 8e271271cd8c1434b4254862ef96f52a5a9567fb
+ms.openlocfilehash: 4f577e6497e853d9b75f81b5da4f7121064a9d07
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72820979"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73826353"
 ---
 # <a name="troubleshoot-azure-cache-for-redis-timeouts"></a>Rozwiązywanie problemów z usługą Azure cache dla limitów czasu Redis
 
@@ -34,7 +34,7 @@ W tej sekcji omówiono problemy z limitem czasu rozwiązywania problemów wystę
 
 ## <a name="redis-server-patching"></a>Stosowanie poprawek do serwera Redis
 
-Usługa Azure cache for Redis regularnie aktualizuje oprogramowanie serwera w ramach udostępnianych przez nią funkcji usługi zarządzanej. To działanie [poprawiania](cache-failover.md) odbywa się w dużej mierze za sceną. Podczas pracy w trybie failover w przypadku stosowania poprawek do węzłów serwera Redis klienci Redis połączeni z tymi węzłami mogą napotkać tymczasowe limity czasu, ponieważ połączenia są przełączane między tymi węzłami. Zobacz, [jak działa tryb failover moja aplikacja kliencka](cache-failover.md#how-does-a-failover-impact-my-client-application) , aby uzyskać więcej informacji na temat tego, jakie poprawki efektów ubocznych mogą znajdować się w aplikacji oraz jak można ulepszyć obsługę poprawek.
+Usługa Azure cache for Redis regularnie aktualizuje oprogramowanie serwera w ramach udostępnianych przez nią funkcji usługi zarządzanej. To działanie [poprawiania](cache-failover.md) odbywa się w dużej mierze za sceną. Podczas pracy w trybie failover w przypadku stosowania poprawek do węzłów serwera Redis klienci Redis połączeni z tymi węzłami mogą napotkać tymczasowe limity czasu, ponieważ połączenia są przełączane między tymi węzłami. Zobacz, w [jaki sposób tryb failover ma wpływ na moją aplikację kliencką](cache-failover.md#how-does-a-failover-affect-my-client-application) , aby uzyskać więcej informacji na temat tego, jakie poprawki efektów ubocznych mogą znajdować się w aplikacji oraz jak można poprawić obsługę poprawek zdarzeń.
 
 ## <a name="stackexchangeredis-timeout-exceptions"></a>Wyjątki limitu czasu StackExchange. Redis
 

@@ -4,15 +4,16 @@ description: Usługi "przejdź do rynku" — w tej sekcji opisano, jak uzyskać 
 services: Azure, Marketplace, Compute, Storage, Networking, Blockchain, Security
 author: qianw211
 ms.service: marketplace
+ms.subservice: partnercenter-marketplace-publisher
 ms.topic: article
 ms.date: 12/21/2018
 ms.author: ellacroi
-ms.openlocfilehash: a99237ec52d302dbb7fc3914c6abfff5fecf4523
-ms.sourcegitcommit: dd69b3cda2d722b7aecce5b9bd3eb9b7fbf9dc0a
+ms.openlocfilehash: 12dcdff082ce1bac350d0e3a426df6acec6efe99
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/12/2019
-ms.locfileid: "70962757"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73819019"
 ---
 # <a name="how-to-get-featured-in-appsource-and-azure-marketplace"></a>Jak uzyskać promowanie w AppSource i witrynie Azure Marketplace
 
@@ -46,6 +47,6 @@ Obsługa GTM obejmuje również pełną bibliotekę szablonów samodzielnej pomo
 
 Dowiedz się więcej o [korzyściach z używania komercyjnego portalu Marketplace](https://docs.microsoft.com/azure/marketplace/gtm-your-marketplace-benefits).
 
-Zaloguj się do [portalu Cloud Partner](https://cloudpartner.azure.com) tworzenie i konfigurowanie swojej oferty.
+Zaloguj się do [Portal Cloud partner](https://cloudpartner.azure.com) , aby utworzyć i skonfigurować ofertę.
 
 ---

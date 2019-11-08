@@ -5,26 +5,27 @@ services: Azure, Marketplace, Compute, Storage, Networking, Blockchain, Security
 author: jm-aditi-ms
 manager: pabutler
 ms.service: marketplace
+ms.subservice: partnercenter-marketplace-publisher
 ms.topic: article
 ms.date: 10/05/2018
 ms.author: ellacroi
-ms.openlocfilehash: 0dd53689f7528e73845ab47a9791f062e0f2cb0c
-ms.sourcegitcommit: dd69b3cda2d722b7aecce5b9bd3eb9b7fbf9dc0a
+ms.openlocfilehash: a7abb73f229c444f88626ef03c90f62e138023c6
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/12/2019
-ms.locfileid: "70962779"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73825927"
 ---
 # <a name="register-in-dev-center"></a>Rejestracja w Centrum deweloperów  
 Aby potwierdzić, że nie zalogowano się do osobistego konta przeglądarki, Otwórz nową sesję przeglądania InPrivate lub incognito programu Internet Explorer.  
 1.  Zarejestruj się jako sprzedawca w centrum deweloperów.  
     *   Aby zalogować się i zarejestrować jako sprzedawca, odwiedź stronę Centrum deweloperów Azure znajdującą się pod adresem [dev.Windows.com/registration?accountprogram=Azure](https://dev.windows.com/registration?accountprogram=azure).  
-2.  Ukończ pracę `Help us protect your account` kreatora, który weryfikuje swoją tożsamość przy użyciu numeru telefonu lub adresu e-mail.  
+2.  Ukończ pracę kreatora `Help us protect your account`, który weryfikuje tożsamość przy użyciu numeru telefonu lub adresu e-mail.  
 
 <!--
     ![Boxes for phone info in the Help us protect your account wizard](./media/marketplace-publishers-guide/registerdevcenteremail.png)  
 -->
-3.  W sekcji Wybierz kraj lub region konta z menu rozwijanego *kraj/region konta.* `Registration - Account Info`  
+3.  W sekcji `Registration - Account Info` wybierz kraj lub region konta z menu rozwijanego *kraj/region konta* .  
 <!--
     ![Account info with box for country/region](./media/marketplace-publishers-guide/devcenterregistrationaccountinfo.png)  
 -->
@@ -32,7 +33,7 @@ Aby potwierdzić, że nie zalogowano się do osobistego konta przeglądarki, Otw
     >To sell your services in Azure Marketplace, verify that your registered entity is from one of the approved *sell-from* countries/regions. The location restriction is required for payout and taxation reasons. 
     >*   For more information, visit the Azure Marketplace Participation Policies page located at [azure.microsoft.com/support/legal/marketplace/participation-policies](https://azure.microsoft.com/support/legal/marketplace/participation-policies).  
 
-4.  W *polu Typ konta*wybierz `Company` przycisk radiowy.  
+4.  W *polu Typ konta*wybierz przycisk radiowy `Company`.  
     *   Aby uzyskać więcej informacji na temat typów kont i pomóc w ustaleniu, który z nich najlepiej sprawdza się, odwiedź stronę typy kont, lokalizacje i opłaty znajdujące się w witrynie [docs.Microsoft.com/Windows/UWP/Publish/Account-Types-Locations-and-fees](https://docs.microsoft.com/windows/uwp/publish/account-types-locations-and-fees).  
 
     Kliknij przycisk Dalej.  
@@ -53,7 +54,7 @@ Aby potwierdzić, że nie zalogowano się do osobistego konta przeglądarki, Otw
 <!--
     !["Account info" page with sections highlighted](./media/marketplace-publishers-guide/devcenterregistrationpayment.png)  
 -->
-8.  `Registration - Payment` W sekcji Podaj informacje o płatności, aby zapłacić za konto Centrum deweloperów.  
+8.  W sekcji `Registration - Payment` musisz wprowadzić informacje o płatności, aby zapłacić za konto Centrum deweloperów.  
     *   W polu *kod promocyjny*wprowadź kod promocyjny, który obejmuje koszt rejestracji.  
     *   W przypadku *rozliczeń*podaj dane dotyczące karty kredytowej. Informacje o systemie PayPal mogą być używane zamiast karty kredytowej na obsługiwanych rynkach.  
 
@@ -61,7 +62,7 @@ Aby potwierdzić, że nie zalogowano się do osobistego konta przeglądarki, Otw
 <!--
     ![Dev Center payment information](./media/marketplace-publishers-guide/devcenterregistrationpayment2.png)  
 -->
-9.  `Registration - Review` W sekcji Przejrzyj informacje o koncie i upewnij się, że wszystkie elementy są poprawne.  
+9.  W sekcji `Registration - Review` Przejrzyj informacje o koncie i upewnij się, że wszystkie elementy są poprawne.  
 
     Zapoznaj się z warunkami i postanowieniami [umowy wydawcy](https://cloudpartner.azure.com/Content/Unversioned/PublisherAgreement2.pdf)Microsoft Azure Marketplace.  
 
@@ -72,7 +73,7 @@ Aby potwierdzić, że nie zalogowano się do osobistego konta przeglądarki, Otw
 
     | Model rozliczania | Następne kroki |  
     |:--- |:--- |  
-    | Wolne | Przejdź do portal Cloud Partner.<ul> <li>Aby publikować w portalu Azure Marketplace, odwiedź stronę portal Cloud Partner znajdującą się pod adresem [cloudpartner.Azure.com](https://cloudpartner.azure.com).</li> </ul> |  
+    | Bezpłatna | Przejdź do portal Cloud Partner.<ul> <li>Aby publikować w portalu Azure Marketplace, odwiedź stronę portal Cloud Partner znajdującą się pod adresem [cloudpartner.Azure.com](https://cloudpartner.azure.com).</li> </ul> |  
     | Komercyjne (Transact) | Aktualizowanie informacji o koncie.<ul> <li>Więcej informacji o dodawaniu informacji o koncie znajduje się w sekcji [jak dodać Bank i informacje podatkowe](#add-bank-information) .</li> </ul> |  
 
     *   Przykładem oferty komercyjnej jest oferta maszyny wirtualnej z modelem rozliczania godzinowego.  
@@ -110,7 +111,7 @@ Informacje o banku i podatku są wymagane dla wszystkich ofert komercyjnych przy
 1.  Zaloguj się do centrum deweloperów przy użyciu identyfikatora firmy Microsoft.  
     *   Aby zalogować się do centrum deweloperów, odwiedź stronę Centrum deweloperów systemu Windows znajdującą się pod adresem [dev.Windows.com](https://dev.windows.com).  
 2.  Wybierz pozycję konto wypłaty w menu po lewej stronie.
-3.  Na stronie wybierz `Bank account` lub `PayPal`. `Choose payment method`  
+3.  Na stronie `Choose payment method` wybierz pozycję `Bank account` lub `PayPal`.  
     >[!IMPORTANT]
     >Jeśli masz komercyjne oferty, które klienci kupują w portalu Marketplace, na koncie wypłaty zostanie wyświetlona wypłata za zakupy.  
 
@@ -126,7 +127,7 @@ Informacje o banku i podatku są wymagane dla wszystkich ofert komercyjnych przy
 1.  Zaloguj się do centrum deweloperów przy użyciu identyfikatora firmy Microsoft.  
     *   Aby zalogować się do centrum deweloperów, odwiedź stronę Centrum deweloperów systemu Windows znajdującą się pod adresem [dev.Windows.com](https://dev.windows.com).  
 2.  Wybierz pozycję Profil podatkowy w menu po lewej stronie. 
-3.  `Set up your tax form` Na stronie Wybierz kraj lub region, w którym znajduje się stały miejsce w miejscu.  
+3.  Na stronie `Set up your tax form` wybierz kraj lub region, w którym znajduje się stały miejsce w miejscu.  
     
     Wybierz kraj lub region, w którym posiadasz obywatelstwo podstawowe.  
     
@@ -138,13 +139,13 @@ Informacje o banku i podatku są wymagane dla wszystkich ofert komercyjnych przy
 ## <a name="frequently-asked-questions"></a>Często zadawane pytania: 
 
 * **Które wydawcy wymagają rejestracji konta Centrum deweloperów?** 
-  > Wydawca publikowany w usłudze Transact list typów: Maszyna wirtualna, aplikacje platformy Azure: szablony rozwiązań i zarządzane aplikacje.  
+  > Wydawca, który publikuje się w usłudze Transact list typu: VM, Azure Apps: szablony rozwiązań i zarządzane aplikacje.  
 
 * **Dlaczego jest wymagane konto Centrum deweloperów?**
   > Konto Centrum deweloperów jest wymagane, aby firma Microsoft mogła obciążyć klienta w imieniu wydawcy w przypadku typu listy Transact. Rejestracja konta Centrum deweloperów umożliwia firmie Microsoft Weryfikowanie informacji prawnych, podatków i bankowości firmy. Aby dowiedzieć się więcej, kliknij [tutaj.](https://docs.microsoft.com/azure/marketplace/become-publisher)
 
 * **Jak mogę rozpocząć rejestrację w centrum deweloperów?**
-  > Aby uniemożliwić duplikowanie, sprawdź, czy firma nie ma jeszcze zarejestrowanego konta Centrum deweloperów. Musisz zalogować się przy użyciu konto Microsoft, które chcesz skojarzyć z kontem dewelopera. Jeśli nie masz jeszcze konto Microsoft, możesz utworzyć nowe konto w [tym miejscu.](https://signup.live.com/signup?contextid=AEB123C8F2B1DA7A&bk=1529968434&ru=https%3a%2f%2flogin.live.com%2flogin.srf%3fcontextid%3dAEB123C8F2B1DA7A%26mkt%3dEN-US%26lc%3d1033%26bk%3d1529968434&uiflavor=web&uaid=9987e727fedb459780d95c1b9e46c82c&mkt=EN-US&lc=1033&lic=1) (przykład: contoso_marketplace@live.com) aby zalogować się i zarejestrować, przejdź do https://dev.windows.com/registration?accountProgram=Azure
+  > Aby uniemożliwić duplikowanie, sprawdź, czy firma nie ma jeszcze zarejestrowanego konta Centrum deweloperów. Musisz zalogować się przy użyciu konto Microsoft, które chcesz skojarzyć z kontem dewelopera. Jeśli nie masz jeszcze konto Microsoft, możesz utworzyć nowe konto w [tym miejscu.](https://signup.live.com/signup?contextid=AEB123C8F2B1DA7A&bk=1529968434&ru=https%3a%2f%2flogin.live.com%2flogin.srf%3fcontextid%3dAEB123C8F2B1DA7A%26mkt%3dEN-US%26lc%3d1033%26bk%3d1529968434&uiflavor=web&uaid=9987e727fedb459780d95c1b9e46c82c&mkt=EN-US&lc=1033&lic=1) (przykład: contoso_marketplace@live.com) Aby zalogować się i zarejestrować, przejdź do https://dev.windows.com/registration?accountProgram=Azure
   > <br>Aby dowiedzieć się więcej na temat procesu rejestracji, kliknij [tutaj.](https://docs.microsoft.com/azure/marketplace/register-dev-center)</br>
 
 * **Czy należy wybrać typ konta "indywidualny" czy "Firma"?**
@@ -160,10 +161,10 @@ Informacje o banku i podatku są wymagane dla wszystkich ofert komercyjnych przy
   > Wypełnij formularz [rejestracji w portalu Marketplace](https://partner.microsoft.com/dashboard/account/v3/enrollment/introduction/azureisv) , aby otrzymać kod promocyjny Centrum deweloperów. Aby uzyskać więcej informacji, zobacz jak [utworzyć konto Centrum partnerskiego](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-account) .
  
 * **Co mam oczekiwać po zakończeniu rejestracji?**
-  > Poszukaj wiadomości e-mail z verify@microsoft.com wiersza tematu "wymagana akcja: Zweryfikuj swoje konto e-mail w firmie Microsoft ". Kliknij link weryfikacja z uwzględnieniem czasu, aby zakończyć rejestrację. *Jeśli nie otrzymasz wiadomości e-mail w ramach 24 godzinach, sprawdź folder spam.*
+  > Poszukaj wiadomości e-mail z verify@microsoft.com z wierszem tematu "wymagana akcja: Sprawdź konto e-mail w firmie Microsoft". Kliknij link weryfikacja z uwzględnieniem czasu, aby zakończyć rejestrację. *Jeśli nie otrzymasz wiadomości e-mail w ramach 24 godzinach, sprawdź folder spam.*
 
 * **Jakie następne kroki należy wykonać po weryfikacji Centrum deweloperów?**
-  > Przejdź do pozycji "programy" (https://developer.microsoft.com/dashboard/Account/Programs) i zaloguj się do konta Centrum deweloperów). Jeśli nie widzisz platformy Azure jako zarejestrowanego programu, zapoznaj się z tematem "zalecane programy dla Ciebie", a następnie wyszukaj platformę Azure, aby wybrać pozycję "wprowadzenie".
+  > Przejdź do pozycji "programy" (https://developer.microsoft.com/dashboard/Account/Programs) i zaloguj się do konta Centrum deweloperów. Jeśli nie widzisz platformy Azure jako zarejestrowanego programu, zapoznaj się z tematem "zalecane programy dla Ciebie", a następnie wyszukaj platformę Azure, aby wybrać pozycję "wprowadzenie".
 
 * **Jak mogę połączyć konto Centrum deweloperów z moim profilem portal Cloud Partner wydawcy?**
   > Ostatnim krokiem przed opublikowaniem jest połączenie konta Centrum deweloperów z Twoim [profilem](https://cloudpartner.azure.com/#profile)Portal Cloud partner. Jeśli Twoje konto programu Dev Center różni się od konta na [Portal Cloud partner](https://cloudpartner.azure.com/#alloffers), w Portal Cloud partner należy dodać konto Centrum deweloperów jako nowego [użytkownika](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cloud-partner-portal-manage-users) . Zaloguj się do [Portal Cloud partner](https://cloudpartner.azure.com/#alloffers) przy użyciu konta Centrum deweloperów. Wybierz pozycję Profil wydawcy w menu znajdującym się w prawym górnym rogu przeglądarki sieci Web. Wybierz pozycję Połącz konto Centrum deweloperów.

@@ -1,5 +1,5 @@
 ---
-title: Pule wystąpień Azure SQL Database (wersja zapoznawcza)
+title: Pule wystąpień (wersja zapoznawcza)
 description: W tym artykule opisano pule wystąpień Azure SQL Database (wersja zapoznawcza).
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: bonova
 ms.author: bonova
 ms.reviewer: sstein, carlrab
 ms.date: 09/05/2019
-ms.openlocfilehash: 7d8c316d5c78cfe09bcf134b5a5c513e1c007d74
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 8738d1ad54d3ab63d8d2efc939aa9daacbe91c13
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73689773"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73810405"
 ---
 # <a name="what-are-sql-database-instance-pools-preview"></a>Co to są pule wystąpień SQL Database (wersja zapoznawcza)?
 

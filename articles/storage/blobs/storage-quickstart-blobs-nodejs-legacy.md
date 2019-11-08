@@ -1,5 +1,5 @@
 ---
-title: Tworzenie obiektu BLOB w usłudze Azure Storage dla środowiska Node. js
+title: 'Szybki Start: Biblioteka kliencka usługi Azure Blob Storage w wersji 2 dla języka JavaScript'
 description: Utwórz konto magazynu i kontener w magazynie obiektów (blob). Następnie użyj biblioteki klienta usługi Azure Storage dla środowiska Node. js v2, aby przekazać obiekt BLOB do usługi Azure Storage, pobrać obiekt BLOB i wyświetlić listę obiektów BLOB w kontenerze.
 author: mhopkins-msft
 ms.author: mhopkins
@@ -8,14 +8,14 @@ ms.service: storage
 ms.subservice: blobs
 ms.topic: conceptual
 ms.custom: seo-javascript-september2019
-ms.openlocfilehash: 8d0afc5a224e752bdd745ab4df0473a134b4180b
-ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
+ms.openlocfilehash: 12078300b36412a1507991507a39654acdeb7c69
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73609101"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73825347"
 ---
-# <a name="upload-download-and-list-blobs-using-the-client-library-for-nodejs"></a>Przekazywanie, pobieranie i wyświetlanie listy obiektów BLOB przy użyciu biblioteki klienckiej środowiska Node. js
+# <a name="quickstart-azure-blob-storage-client-library-v2-for-javascript"></a>Szybki Start: Biblioteka kliencka usługi Azure Blob Storage w wersji 2 dla języka JavaScript
 
 W tym przewodniku krok po kroku dowiesz się, jak używać biblioteki klienckiej programu Node. js v2 do przekazywania, pobierania i wyświetlania listy obiektów BLOB za pomocą usługi Azure Blob Storage.
 

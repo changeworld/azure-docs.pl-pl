@@ -1,5 +1,5 @@
 ---
-title: SQL Database format dziennika inspekcji
+title: Format dziennika inspekcji
 description: Zapoznaj się ze strukturą dzienników inspekcji SQL Database.
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: barmichal
 ms.author: mibar
 ms.reviewer: vanto
 ms.date: 01/03/2019
-ms.openlocfilehash: 5befd15beba6a5c8071a6f5a01e34dc109fd118a
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 389404f59b5a0cba1acd7aa097ddd3dd929d8082
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73691219"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73821989"
 ---
 # <a name="sql-database-audit-log-format"></a>SQL Database format dziennika inspekcji
 
@@ -68,7 +68,7 @@ Zdarzenia inspekcji są zapisywane w obszarze roboczym Log Analytics zdefiniowan
 | permission_bitmask | permission_bitmask_s | Jeśli ma to zastosowanie, pokazuje uprawnienia, które zostały przyznane, odrzucone lub odwołane | varbinary (16) | ciąg |
 | response_rows | response_rows_d | Liczba wierszy zwróconych w zestawie wyników | bigint | int |
 | schema_name | schema_name_s | Kontekst schematu, w którym wystąpiła akcja. Wartość zerowa dla inspekcji występujących poza schematem | bazy | ciąg |
-| Nie dotyczy | securable_class_type_s | Zabezpieczany obiekt, który jest mapowany na class_type z inspekcją | Nie dotyczy | ciąg |
+| Nie dotyczy | securable_class_type_s | Zabezpieczany obiekt, który jest mapowany na class_type poddawane inspekcji | Nie dotyczy | ciąg |
 | sequence_group_id | sequence_group_id_g | Unikatowy identyfikator | liczby | GUID |
 | sequence_number | sequence_number_d | Śledzi sekwencję rekordów w jednym rekordzie inspekcji, który był zbyt duży, aby zmieścił się w buforze zapisu dla inspekcji | int | int |
 | server_instance_name | server_instance_name_s | Nazwa wystąpienia serwera, na którym wystąpiła Inspekcja | bazy | ciąg |
@@ -86,7 +86,7 @@ Zdarzenia inspekcji są zapisywane w obszarze roboczym Log Analytics zdefiniowan
 | target_server_principal_sid | target_server_principal_sid_s | Identyfikator SID docelowej nazwy logowania. Wartość NULL, jeśli nie dotyczy | liczby | ciąg |
 | transaction_id | transaction_id_d | Tylko SQL Server (począwszy od 2016)-0 dla bazy danych SQL Azure | bigint | int |
 | user_defined_event_id | user_defined_event_id_d | Identyfikator zdarzenia zdefiniowany przez użytkownika przeszedł jako argument do sp_audit_write. Wartość zerowa dla zdarzeń systemowych (wartość domyślna) i wartość niezerowa dla zdarzenia zdefiniowanego przez użytkownika. Aby uzyskać więcej informacji, zobacz [sp_audit_write (Transact-SQL)](https://docs.microsoft.com/sql/relational-databases/system-stored-procedures/sp-audit-write-transact-sql) | smallint | int |
-| user_defined_information | user_defined_information_s | Informacje zdefiniowane przez użytkownika zostały przesłane jako argument do sp_audit_write. Wartość zerowa dla zdarzeń systemowych (wartość domyślna) i wartość niezerowa dla zdarzenia zdefiniowanego przez użytkownika. Aby uzyskać więcej informacji, zobacz [sp_audit_write (Transact-SQL)](https://docs.microsoft.com/sql/relational-databases/system-stored-procedures/sp-audit-write-transact-sql) | nvarchar (4000) | ciąg |
+| user_defined_information | user_defined_information_s | Informacje zdefiniowane przez użytkownika przekazały jako argument do sp_audit_write. Wartość zerowa dla zdarzeń systemowych (wartość domyślna) i wartość niezerowa dla zdarzenia zdefiniowanego przez użytkownika. Aby uzyskać więcej informacji, zobacz [sp_audit_write (Transact-SQL)](https://docs.microsoft.com/sql/relational-databases/system-stored-procedures/sp-audit-write-transact-sql) | nvarchar (4000) | ciąg |
 
 ## <a name="next-steps"></a>Następne kroki
 

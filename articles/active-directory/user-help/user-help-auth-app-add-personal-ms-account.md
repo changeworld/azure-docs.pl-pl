@@ -1,5 +1,5 @@
 ---
-title: Dodaj osobiste konta Microsoft do aplikacji Microsoft Authenticator Azure Active Directory | Microsoft Docs
+title: Dodawanie konto Microsoft osobistych do aplikacji uwierzytelniania — Azure AD
 description: Jak dodać osobiste konta Microsoft, takie jak Outlook.com lub Xbox LIVE do aplikacji Microsoft Authenticator na potrzeby weryfikacji dwuskładnikowej.
 services: active-directory
 author: eross-msft
@@ -12,12 +12,12 @@ ms.date: 01/24/2019
 ms.author: lizross
 ms.reviewer: olhaun
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7cf4629ca97abc5d4ce508f7078f4691467ba249
-ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
+ms.openlocfilehash: 9ca01aad76bfbeba0cf56be8ee74287a79f6346e
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69616080"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73820238"
 ---
 # <a name="add-your-personal-microsoft-accounts"></a>Dodawanie osobistych kont Microsoft
 
@@ -41,11 +41,11 @@ Możesz dodać własne konto Microsoft, najpierw włączając weryfikację dwuet
 
 1. Na komputerze przejdź do strony [podstawy zabezpieczeń](https://account.microsoft.com/security) i zaloguj się przy użyciu konto Microsoft osobistych. Na przykład alain@outlook.com.
 
-2. W dolnej części strony **podstawowe informacje** o zabezpieczeniach wybierz łącze **więcej opcji zabezpieczeń** .
+2. W dolnej części strony **podstawowe informacje o zabezpieczeniach** wybierz łącze **więcej opcji zabezpieczeń** .
 
     ![Strona podstawy zabezpieczeń z wyróżnionym linkiem "więcej opcji zabezpieczeń"](./media/user-help-auth-app-add-personal-ms-account/more-security-options-link.png)
 
-3. Przejdź do sekcji **weryfikacja** dwuetapowa i wybierz włączenie tej funkcji. Możesz również ją wyłączyć, jeśli nie chcesz już używać jej z kontem osobistym.
+3. Przejdź do sekcji **weryfikacja dwuetapowa** i **Wybierz Włączenie tej funkcji.** Możesz również ją wyłączyć, jeśli nie chcesz już używać jej z kontem osobistym.
 
 ### <a name="add-your-microsoft-account-to-the-app"></a>Dodawanie konto Microsoft do aplikacji
 
@@ -57,7 +57,7 @@ Możesz dodać własne konto Microsoft, najpierw włączając weryfikację dwuet
 
 3. Na stronie **Dodawanie konta** wybierz pozycję **konto osobiste**.
 
-4. Zaloguj się do swojego konta osobistego przy użyciu odpowiedniego adresu e-mail (np alain@outlook.com.), a następnie wybierz przycisk **dalej**.
+4. Zaloguj się do swojego konta osobistego przy użyciu odpowiedniego adresu e-mail (takiego jak alain@outlook.com), a następnie wybierz przycisk **dalej**.
 
     >[!Note]
     >Jeśli nie masz konto Microsoft osobistych, możesz utworzyć je tutaj.
@@ -70,6 +70,6 @@ Możesz dodać własne konto Microsoft, najpierw włączając weryfikację dwuet
 
 - Po dodaniu kont do aplikacji możesz zalogować się przy użyciu aplikacji uwierzytelniania na urządzeniu. Aby uzyskać więcej informacji, zobacz [Logowanie przy użyciu aplikacji](user-help-auth-app-sign-in.md).
 
-- Jeśli masz problemy z uzyskaniem kodu weryfikacyjnego dla konto Microsoft osobistych, zobacz sekcję Rozwiązywanie problemów z **kodem weryfikacyjnym** w artykule [konto Microsoft informacje zabezpieczające & kody weryfikacyjne](https://support.microsoft.com/help/12428/microsoft-account-security-info-verification-codes) .
+- Jeśli masz problemy z uzyskaniem kodu weryfikacyjnego dla konto Microsoft osobistych, zobacz sekcję **Rozwiązywanie problemów z kodem weryfikacyjnym** w artykule [konto Microsoft informacje zabezpieczające & kody weryfikacyjne](https://support.microsoft.com/help/12428/microsoft-account-security-info-verification-codes) .
 
 - W przypadku urządzeń z systemem iOS można również utworzyć kopię zapasową poświadczeń konta i powiązanych ustawień aplikacji, takich jak kolejność kont, w chmurze. Aby uzyskać więcej informacji, zobacz [Tworzenie kopii zapasowych i odzyskiwanie danych za pomocą aplikacji Microsoft Authenticator](user-help-auth-app-backup-recovery.md).

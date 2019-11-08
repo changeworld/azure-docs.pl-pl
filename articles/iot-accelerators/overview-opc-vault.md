@@ -1,6 +1,6 @@
 ---
 title: Co to jest magazyn OPC — platforma Azure | Microsoft Docs
-description: Omówienie magazynu OPC
+description: Ten artykuł zawiera omówienie magazynu OPC. Może on konfigurować, rejestrować i zarządzać cyklem życia certyfikatów dla aplikacji OPC UA w chmurze.
 author: dominicbetts
 ms.author: dobett
 ms.date: 11/26/2018
@@ -8,12 +8,12 @@ ms.topic: overview
 ms.service: industrial-iot
 services: iot-industrialiot
 manager: philmea
-ms.openlocfilehash: 44315790116545dd888aed533731bbf01abe801d
-ms.sourcegitcommit: 4b8a69b920ade815d095236c16175124a6a34996
+ms.openlocfilehash: 66a322d4f60d9553a68207136ae609c1f9b50dbc
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/23/2019
-ms.locfileid: "69997303"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73826214"
 ---
 # <a name="what-is-opc-vault"></a>Co to jest magazyn OPC?
 

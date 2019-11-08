@@ -1,5 +1,5 @@
 ---
-title: Włącz automatyczne dostrajanie dla Azure SQL Database
+title: Włączanie automatycznego dostrajania
 description: Automatyczne dostrajanie można włączyć na Azure SQL Database.
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: danimir
 ms.author: danil
 ms.reviewer: jrasnik, carlrab
 ms.date: 01/25/2019
-ms.openlocfilehash: 52e3dd01446a6292c3404f14bd8ebfb32aa00dd6
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 0abf4bb015be52a10178423a566433b87127a167
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73691134"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73821908"
 ---
 # <a name="enable-automatic-tuning-to-monitor-queries-and-improve-workload-performance"></a>Włączanie dostrajania automatycznego w celu monitorowania zapytań i zwiększania wydajności obciążeń
 
@@ -32,7 +32,7 @@ Dostrajanie automatyczne można włączyć na serwerze lub poziomie bazy danych 
 
 ## <a name="enable-automatic-tuning-on-server"></a>Włącz automatyczne dostrajanie na serwerze
 
-Na poziomie serwera można wybrać opcję Dziedzicz konfigurację dostrajania automatycznego z "ustawień domyślnych platformy Azure" lub nie odziedziczyć konfiguracji. Ustawienia domyślne platformy Azure to FORCE_LAST_GOOD_PLAN, CREATE_INDEX jest włączona, a DROP_INDEX jest wyłączone.
+Na poziomie serwera można wybrać opcję Dziedzicz konfigurację dostrajania automatycznego z "ustawień domyślnych platformy Azure" lub nie odziedziczyć konfiguracji. Ustawienia domyślne platformy Azure to FORCE_LAST_GOOD_PLAN są włączone, CREATE_INDEX jest włączona, a DROP_INDEX jest wyłączone.
 
 ### <a name="azure-portal"></a>Azure Portal
 
@@ -41,7 +41,7 @@ Aby włączyć dostrajanie automatyczne na Azure SQL Database **serwerze**logicz
 ![Serwer](./media/sql-database-automatic-tuning-enable/server.png)
 
 > [!NOTE]
-> Należy pamiętać, że opcja **DROP_INDEX** w tym momencie nie jest zgodna z aplikacjami korzystającymi z przełączania partycji i wskazówek dotyczących indeksów i nie powinna być włączona w takich przypadkach. Usuwanie nieużywanych indeksów nie jest obsługiwane dla warstw usług premium i Krytyczne dla działania firmy.
+> Należy pamiętać, że opcja **DROP_INDEX** nie jest w tej chwili zgodna z aplikacjami korzystającymi z przełączania partycji i wskazówek dotyczących indeksów i nie powinna być włączona w takich przypadkach. Usuwanie nieużywanych indeksów nie jest obsługiwane dla warstw usług premium i Krytyczne dla działania firmy.
 >
 
 Wybierz opcje dostrajania automatycznego, które chcesz włączyć, a następnie wybierz pozycję **Zastosuj**.
@@ -54,7 +54,7 @@ Dowiedz się więcej o korzystaniu z interfejsu API REST w celu włączenia dost
 
 ## <a name="enable-automatic-tuning-on-an-individual-database"></a>Włączanie dostrajania automatycznego dla pojedynczej bazy danych
 
-Azure SQL Database pozwala indywidualnie określić konfigurację dostrajania automatycznego dla każdej bazy danych. Na poziomie bazy danych można wybrać dziedziczenie automatycznej konfiguracji dostrajania z serwera nadrzędnego, "ustawień domyślnych platformy Azure" lub nie do dziedziczenia konfiguracji. Ustawienia domyślne platformy Azure są włączone, funkcja CREATE_INDEX jest włączona, a DROP_INDEX jest wyłączona.
+Azure SQL Database pozwala indywidualnie określić konfigurację dostrajania automatycznego dla każdej bazy danych. Na poziomie bazy danych można wybrać dziedziczenie automatycznej konfiguracji dostrajania z serwera nadrzędnego, "ustawień domyślnych platformy Azure" lub nie do dziedziczenia konfiguracji. Ustawienia domyślne platformy Azure mają wartość FORCE_LAST_GOOD_PLAN jest włączona, CREATE_INDEX jest włączona, a DROP_INDEX jest wyłączone.
 
 > [!TIP]
 > Ogólnym zaleceniem jest zarządzanie automatyczną konfiguracją na **poziomie serwera** , dzięki czemu te same ustawienia konfiguracji mogą być stosowane automatycznie w każdej bazie danych. Skonfiguruj automatyczne dostrajanie dla pojedynczej bazy danych tylko wtedy, gdy baza danych ma inne ustawienia niż inne dziedziczą ustawienia z tego samego serwera.
@@ -68,7 +68,7 @@ Indywidualne ustawienia dostrajania automatycznego można skonfigurować osobno 
 
 ![Database (Baza danych)](./media/sql-database-automatic-tuning-enable/database.png)
 
-Należy pamiętać, że opcja DROP_INDEX w tym momencie nie jest zgodna z aplikacjami korzystającymi z przełączania partycji i wskazówek dotyczących indeksów i nie powinna być włączona w takich przypadkach.
+Należy pamiętać, że opcja DROP_INDEX nie jest w tej chwili zgodna z aplikacjami korzystającymi z przełączania partycji i wskazówek dotyczących indeksów i nie powinna być włączona w takich przypadkach.
 
 Po wybraniu odpowiedniej konfiguracji kliknij przycisk **Zastosuj**.
 

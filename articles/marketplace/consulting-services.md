@@ -4,20 +4,21 @@ description: W tym artykule opisano kryteria kwalifikacji i wymagania dotyczące
 services: Marketplace, Compute, Storage, Networking, Blockchain, Security
 author: yijenj
 ms.service: marketplace
+ms.subservice: partnercenter-marketplace-publisher
 ms.topic: article
 ms.date: 10/29/2018
 ms.author: pabutler
-ms.openlocfilehash: e23a83ab3a5b110f74ab4ac203dfc020e8920c24
-ms.sourcegitcommit: e0a1a9e4a5c92d57deb168580e8aa1306bd94723
+ms.openlocfilehash: d56b83c8bd9a71ac30112f9e77a97ed8ab61a137
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/11/2019
-ms.locfileid: "72285984"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73825969"
 ---
 # <a name="consulting-services-for-azure-marketplace-and-appsource"></a>Usługi doradcze dla portalu Azure Marketplace i AppSource
 Usługi doradcze w witrynie Azure Marketplace i AppSource zapewniają partnerom firmy Microsoft cel łączenia się klientów z usługami w celu wspierania i zwiększania użycia platformy Azure i celów firmowych. 
 
-Witryna Azure Marketplace i usługa AppSource obsługują listę ofert usług doradczych od partnerów systemu (SI) firmy Microsoft — celem oferowania usług konsultacyjnych dotyczących jakości, dzięki którym klienci mogą łączyć się z usługami eksperckimi, których potrzebują. Pomóc klientom w ocenie, ocenie i wdrażaniu właściwych rozwiązań i implementacji, które ułatwią ich cele biznesowe i cele.  
+Witryna Azure Marketplace i usługa AppSource obsługują listę ofert usług konsultingowych od partnerów systemu (SI) firmy Microsoft — celem oferowania usług konsultacyjnych dotyczących jakości, dzięki którym klienci mogą łączyć się z usługami eksperckimi, których potrzebują. Pomóc klientom w ocenie, ocenie i wdrażaniu właściwych rozwiązań i implementacji, które ułatwią ich cele biznesowe i cele.  
 
 Te oferty konsultingowe usług są zobowiązaniami specyficznymi dla klienta. Wydawcy mogą korzystać z opcji określenia typu oferty oraz stałego zakresu i czasu trwania, stałej cenie lub bezpłatnej, a także posiadać zdefiniowany porządek sprzedaży dla klienta. Potencjalni klienci są odbierani przez powiadomienie w systemie CRM partnera i mają na celu reagowanie na klientów w ciągu 48 godzin. 
 
@@ -29,7 +30,7 @@ Witryny sklepu Marketplace są wyrównane z odbiorcami i produktami w chmurze fi
 |**Publiczn**   |**Informatycy i deweloperzy rozwiązań w chmurze**|**Użytkownicy biznesowi/przedsiębiorcy podejmujące decyzje biznesowe**|
 |Istotność rozwiązania     |Aplikacje techniczne skompilowane lub utworzone na platformie Azure|Aplikacje biznesowe, które wykorzystują/rozszerzającą D365, Power BI, O365 i platformę Azure. (Dodatek lub gotowe aplikacje)|
 |Opcje publikowania     |Kontakt ze mną, wersja próbna, usługa Transact lub usługi dla platformy Azure|Skontaktuj się z nami, wersją próbną lub usługami dla systemu Dynamics 365 i Power BI|
-|W środowisku produktu      |Portal zarządzania systemu Azure|Dynamics 365, Office 365, aplikacje klienckie pakietu Office| 
+|W środowisku produktu      |Portal zarządzania platformy Azure|Dynamics 365, Office 365, aplikacje klienckie pakietu Office| 
 |Inne      |Publikowanie lokalne za pośrednictwem Azure Stack, usług konsultingowych dla platformy Azure, usług zarządzanych dla platformy Azure|Usługi doradcze dla systemu Dynamics i Power BI|
 
 Oferty usług doradczych opartych na systemie Microsoft Dynamics 365 i Power BI mogą być wymienione na Microsoft AppSource. Aby uzyskać więcej informacji, zobacz artykuł [Microsoft AppSource Information Services — wskazówki](https://smp-cdn-prod.azureedge.net/documents/Microsoft%20AppSource%20Partner%20Listing%20Guidelines.pdf). 
@@ -64,7 +65,7 @@ Partnerzy muszą mieć **kompetencje Silver lub Gold** w odpowiednim obszarze dl
 |Dynamics 365 dla finansów i operacji, wersja Enterprise  |  Kompetencja [planowania zasobów w przedsiębiorstwie](https://partner.microsoft.com/membership/enterprise-resource-planning-competency) Silver lub Gold oraz minimalny przychód z $25K w operacjach w chmurze w ciągu 12 miesięcy.       |
 |Dynamics 365 dla finansów i operacji, wersja Business  |  ObDPOR jako [dostawcę usług w chmurze (CSP)](https://partner.microsoft.com/cloud-solution-provider) lub [Digital Partnering](https://partner.microsoft.com/membership/digital-partner-of-record) dla co najmniej jednego klienta      |
 |Power BI, Power BI wizualizacje niestandardowe | Spełnij [kryteria partnera rozwiązań](https://www.microsoftpartnerserverandcloud.com/_layouts/download.aspx?SourceUrl=/Hosted%20Documents/BI%20Partner%20Program%20Overview%20%26%20Incentives.pdf).|
-|Aplikacje PowerApp | Zaprezentuj rozwiązanie z opublikowanym [partnerem](https://appsource.microsoft.com/partners)
+|PowerApps | Zaprezentuj rozwiązanie z opublikowanym [partnerem](https://appsource.microsoft.com/partners)
 
 <b>Aby uzyskać więcej informacji, zobacz [kompetencje za Microsoft Partner Network](https://partner.microsoft.com/membership/competencies).</b>
  
@@ -75,7 +76,7 @@ Partnerzy muszą mieć **kompetencje Silver lub Gold** w odpowiednim obszarze dl
 |---------|----------|----------|----------|
 |Australia |Francja  |     Meksyk          |Hiszpania       |
 |Belgia   |Niemcy |     Holandia     |Szwecja       |
-|Kanada    |Indie   |     Nowa Zelandia     |Zjednoczone Królestwo  |
+|Kanada    |Indie   |     Nowa Zelandia     |Wielka Brytania  |
 |Dania   |Włochy   |     Norwegia          |Stany Zjednoczone |
 |Finlandia   |Japonia   |     Polska          
 
@@ -150,7 +151,7 @@ Przykłady:
 
 Podczas przeglądania opisów oferty i podsumowań oferty zespół będzie stosował następujące kryteria:
 
-|Typ oferty  |Wymagane |Zalecane  |
+|Typ oferty  |Wymagany |Zalecane  |
 |---------|---------|---------|
 |**Ocena**    |   Zapoznaj się ze szczegółowym porządkiem ocen obejmujących wiele dni lub wielotygodniowe i ideach, których elementów dostarcza klient może oczekiwać      |    Optymalizacja podsumowania oferty przy użyciu najważniejszych słów kluczowych optymalizacji aparatu wyszukiwania     |
 |**Briefing**    |   Ideach, którego elementu dostarcza klient może oczekiwać. Pamiętaj, aby zapamiętać, że krótka osoba musi być oferowana. Jeśli dostarczasz usługę wirtualną, wybierz inny typ oferty    |  Optymalizacja podsumowania oferty przy użyciu najważniejszych słów kluczowych optymalizacji aparatu wyszukiwania       |

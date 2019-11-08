@@ -1,5 +1,5 @@
 ---
-title: Kod pliku zdarzeń systemu XEvent dla SQL Database
+title: Kod pliku zdarzeń systemu XEvent
 description: Udostępnia program PowerShell i język Transact-SQL dla dwufazowego przykładu kodu, który pokazuje docelowy plik zdarzeń w zdarzeniu rozszerzonym na Azure SQL Database. Usługa Azure Storage to wymagana część tego scenariusza.
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: MightyPen
 ms.author: genemi
 ms.reviewer: jrasnik
 ms.date: 03/12/2019
-ms.openlocfilehash: ea5c90433a4d2928e5fb88df149631c80df9dacf
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 3b1e8881b2e2004a94064e472690ee40414ea02d
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73686821"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73822380"
 ---
 # <a name="event-file-target-code-for-extended-events-in-sql-database"></a>Kod docelowy pliku zdarzeń dla zdarzeń rozszerzonych w SQL Database
 
@@ -463,7 +463,7 @@ GO
 
 ## <a name="output"></a>Dane wyjściowe
 
-Po zakończeniu działania skryptu Transact-SQL kliknij komórkę w nagłówku kolumny **event_data_XML** . Zostanie wyświetlony jeden element **> zdarzenia\<** , który zawiera jedną instrukcję Update.
+Po zakończeniu działania skryptu Transact-SQL kliknij komórkę pod nagłówkiem kolumny **event_data_XML** . Zostanie wyświetlony jeden element **> zdarzenia\<** , który zawiera jedną instrukcję Update.
 
 Poniżej przedstawiono jeden **\<zdarzenia >** , który został wygenerowany podczas testowania:
 

@@ -4,15 +4,16 @@ description: Wyjaśnia, jak zmieniać rozmiar, aktualizować i uogólniać maszy
 services: Azure, Marketplace, Cloud Partner Portal,
 author: v-miclar
 ms.service: marketplace
+ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 10/19/2018
 ms.author: pabutler
-ms.openlocfilehash: 1270dff0bcb8de117247a454ab9c144250cfb17c
-ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
+ms.openlocfilehash: ce7fe49b07dc250a9f56ff73229e347b997f0cc0
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68880359"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73824494"
 ---
 # <a name="configure-the-azure-hosted-vm"></a>Konfigurowanie maszyny wirtualnej hostowanej na platformie Azure
 
@@ -43,7 +44,7 @@ W przypadku dystrybucji systemu Linux aktualizacje są często pobierane i insta
 
 ## <a name="perform-additional-security-checks"></a>Wykonaj dodatkowe sprawdzenia zabezpieczeń
 
-Należy zachować wysoki poziom zabezpieczeń obrazów rozwiązań w portalu Azure Marketplace.  Poniższy artykuł zawiera listę kontrolną konfiguracji i procedur zabezpieczeń, które pomagają w tym celu: [Zalecenia dotyczące zabezpieczeń obrazów portalu Azure Marketplace](https://docs.microsoft.com/azure/security/security-recommendations-azure-marketplace-images).  Niektóre z tych zaleceń dotyczą obrazów opartych na systemie Linux, ale większość obrazów maszyn wirtualnych. 
+Należy zachować wysoki poziom zabezpieczeń obrazów rozwiązań w portalu Azure Marketplace.  W poniższym artykule przedstawiono listę kontrolną konfiguracji i procedur zabezpieczeń, które pomagają w tym celu: [zalecenia dotyczące zabezpieczeń obrazów w portalu Azure Marketplace](https://docs.microsoft.com/azure/security/security-recommendations-azure-marketplace-images).  Niektóre z tych zaleceń dotyczą obrazów opartych na systemie Linux, ale większość obrazów maszyn wirtualnych. 
 
 
 ## <a name="perform-custom-configuration-and-scheduled-tasks"></a>Wykonywanie konfiguracji niestandardowej i zaplanowanych zadań
@@ -57,7 +58,7 @@ Aby uzyskać więcej informacji na temat dostosowań systemu Linux, zobacz [rozs
 
 ## <a name="generalize-the-image"></a>Uogólnianie obrazu
 
-Wszystkie obrazy w portalu Azure Marketplace muszą być wielokrotnego użytku w ogólny sposób. Aby osiągnąć tę możliwość, należy uogólniony wirtualny dysk twardy systemuoperacyjnego, operacji, która usuwa wszystkie identyfikatory specyficzne dla wystąpienia i sterowniki oprogramowania z maszyny wirtualnej.
+Wszystkie obrazy w portalu Azure Marketplace muszą być wielokrotnego użytku w ogólny sposób. Aby osiągnąć tę możliwość, należy *uogólniony*wirtualny dysk twardy systemu operacyjnego, operacji, która usuwa wszystkie identyfikatory specyficzne dla wystąpienia i sterowniki oprogramowania z maszyny wirtualnej.
 
 ### <a name="windows"></a>Windows
 
@@ -76,8 +77,8 @@ Poniższy dwuetapowy proces uogólni maszynę wirtualną z systemem Linux i pono
 1.  Nawiązywanie połączenia z maszyną wirtualną z systemem Linux przy użyciu klienta SSH.
 2.  W oknie SSH wpisz następujące polecenie: <br/>
     `sudo waagent -deprovision+user`
-3.  Wpisz `y` , aby kontynuować. (Można dodać `-force` parametr do poprzedniego polecenia, unikając tego kroku potwierdzenia).
-4.  Po zakończeniu wykonywania polecenia wpisz `exit` polecenie, aby zamknąć klienta SSH.
+3.  Wpisz `y`, aby kontynuować. (Do poprzedniego polecenia można dodać parametr `-force`, unikając tego kroku potwierdzenia).
+4.  Po zakończeniu wykonywania polecenia wpisz `exit`, aby zamknąć klienta SSH.
 
 <!-- TD: I need to add meat and/or references to the following steps -->
 #### <a name="capture-the-image"></a>Przechwyć obraz
@@ -89,8 +90,8 @@ Poniższy dwuetapowy proces uogólni maszynę wirtualną z systemem Linux i pono
 
 Tworzenie kopii maszyny wirtualnej jest często przydatne w przypadku tworzenia kopii zapasowych, testowania, dostosowywania trybu failover lub równoważenia obciążenia, w celu oferowania różnych konfiguracji rozwiązania i tak dalej. Aby uzyskać informacje na temat duplikowania i pobierania podstawowego wirtualnego dysku twardego, aby utworzyć niezarządzany klon, zobacz:
 
-- Maszyna wirtualna z systemem Linux: [Pobieranie wirtualnego dysku twardego z systemem Linux z platformy Azure](../../../virtual-machines/linux/download-vhd.md)
-- Maszyna wirtualna z systemem Windows: [Pobieranie wirtualnego dysku twardego systemu Windows z platformy Azure](../../../virtual-machines/windows/download-vhd.md)
+- Maszyna wirtualna z systemem Linux: [pobieranie wirtualnego dysku twardego z systemem Linux z platformy Azure](../../../virtual-machines/linux/download-vhd.md)
+- Maszyna wirtualna z systemem Windows: [pobieranie wirtualnego dysku twardego systemu Windows z platformy Azure](../../../virtual-machines/windows/download-vhd.md)
 
 
 ## <a name="next-steps"></a>Następne kroki

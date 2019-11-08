@@ -1,5 +1,5 @@
 ---
-title: Architektura łączności dla wystąpienia zarządzanego w Azure SQL Database
+title: Architektura łączności dla wystąpienia zarządzanego
 description: Dowiedz się więcej o Azure SQL Database architekturze komunikacji i łączności wystąpienia zarządzanego oraz o tym, jak składniki kierują ruch do wystąpienia zarządzanego.
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: srdan-bozovic-msft
 ms.author: srbozovi
 ms.reviewer: sstein, bonova, carlrab
 ms.date: 04/16/2019
-ms.openlocfilehash: 881f116988ae0c9a6a33c8454cd1e4012580bfab
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 0c21271eb19a8fd69cb42e30c6a45bd3af9a5600
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73688204"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73820476"
 ---
 # <a name="connectivity-architecture-for-a-managed-instance-in-azure-sql-database"></a>Architektura łączności dla wystąpienia zarządzanego w Azure SQL Database
 

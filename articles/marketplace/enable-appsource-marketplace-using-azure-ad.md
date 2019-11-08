@@ -5,15 +5,16 @@ services: Azure, AppSource, Marketplace, Compute, Storage, Networking, Blockchai
 author: qianw211
 manager: pabutler
 ms.service: marketplace
+ms.subservice: partnercenter-marketplace-publisher
 ms.topic: article
 ms.date: 09/12/2018
 ms.author: pabutler
-ms.openlocfilehash: 0b68687a2bbaa817f2776757ccab9571638c0fd5
-ms.sourcegitcommit: de47a27defce58b10ef998e8991a2294175d2098
+ms.openlocfilehash: 9423263270313659017b16a5e34511e7ef385af5
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/15/2019
-ms.locfileid: "67875999"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73825886"
 ---
 # <a name="enable-an-appsource-and-marketplace-listing-by-using-azure-active-directory"></a>Włączanie możliwości publikowania ofert w witrynach AppSource i Marketplace z użyciem usługi Azure Active Directory
 
@@ -35,12 +36,12 @@ Różne [Opcje i typy ofert](https://docs.microsoft.com/azure/marketplace/determ
 | **Typ oferty**    | **Wymagany jest logowanie jednokrotne usługi Azure AD?**  |  |   |  |
 | :------------------- | :-------------------|:-------------------|:-------------------|:-------------------|
 |  | Skontaktuj się z nami | Wersja próbna | Wersja testowa | Transakcja |
-| Maszyna wirtualna | ND | Nie | Nie | Nie |
-| Aplikacje platformy Azure (szablon rozwiązania)  | ND | ND | ND | ND |
-| Aplikacje zarządzane  | ND | ND | ND | Nie |
-| SaaS  | Nie | Yes | Yes | Yes |
-| Containers  | ND | ND | ND | Nie |
-| Usługi doradcze  | Nie | ND | ND | ND |
+| Maszyna wirtualna | Nie dotyczy | Nie | Nie | Nie |
+| Aplikacje platformy Azure (szablon rozwiązania)  | Nie dotyczy | Nie dotyczy | Nie dotyczy | Nie dotyczy |
+| Aplikacje zarządzane  | Nie dotyczy | Nie dotyczy | Nie dotyczy | Nie |
+| SaaS  | Nie | Tak | Tak | Tak |
+| Kontenery  | Nie dotyczy | Nie dotyczy | Nie dotyczy | Nie |
+| Usługi doradcze  | Nie | Nie dotyczy | Nie dotyczy | Nie dotyczy |
 
 Więcej informacji o wymaganiach technicznych SaaS można znaleźć w temacie [SaaS Applications oferują Podręcznik publikowania](https://docs.microsoft.com/azure/marketplace/marketplace-saas-applications-technical-publishing-guide).
 
@@ -86,7 +87,7 @@ Użyj usługi Azure AD, aby obsłużyć jedną z następujących akcji:
 - Tworzenie dysku testowego dla klienta.
 - Utwórz przykładową aplikację demonstracyjną obejmującą wiele dzierżawców, która korzysta z logowania jednokrotnego.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
-- Upewnij się, że zarejestrowano Cię [w portalu Azure Marketplace](https://azuremarketplace.microsoft.com/sell).
+- Upewnij się, że [zarejestrowano Cię w portalu Azure Marketplace](https://azuremarketplace.microsoft.com/sell).
 - Zobacz [jak utworzyć konto Centrum partnerskiego](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-account) , aby uzyskać więcej informacji na temat tworzenia lub uzupełniania oferty.

@@ -5,14 +5,15 @@ author: qianw211
 manager: evansma
 ms.author: v-qiwe
 ms.service: marketplace
+ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 10/04/2019
-ms.openlocfilehash: da6fee7158344d331c6c2a68f0fab1b13cc3a291
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: 9eb283f538759f9591add4b04462de151f2cb014
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72934098"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73825530"
 ---
 # <a name="create-a-new-saas-offer"></a>Utwórz nową ofertę SaaS
 
@@ -57,8 +58,8 @@ Na stronie **Przegląd oferty** znajdują się następujące informacje:
 - **Stan publikowania** przedstawia wizualną reprezentację kroków wymaganych do opublikowania oferty oraz czas wykonania poszczególnych kroków. Niekompletne ikony kroków publikowania zostaną wyszarzone. 
 
 - Menu **Przegląd oferty** zawiera listę linków do wykonywania operacji na tej ofercie. Ta lista operacji zmienia się w zależności od wyboru dokonanego dla oferty.  
-    - Jeśli oferta jest wersją roboczą — Usuń wersję roboczą 
-    - Jeśli oferta jest aktywna — Zatrzymaj sprzedawanie oferty 
+    - Jeśli oferta jest wersją roboczą, Usuń wersję roboczą 
+    - Jeśli oferta jest oferowana na żywo, Zatrzymaj sprzedawanie 
     - Jeśli oferta jest dostępna w wersji zapoznawczej — przejdź na żywo 
     - Jeśli nie ukończono wylogowania wydawcy — Anuluj publikowanie
 
@@ -237,11 +238,11 @@ Podstawowe składniki Twojej pozycji wartości powinny zawierać następujące i
 
 Aby dowiedzieć się, jak będzie bardziej atrakcyjny opis oferty, możesz użyć tagów HTML do sformatowania opisu. 
 
-1. Jeśli chcesz utworzyć akapity, Dodaj `<p>` na BEGGING tekstu i Dodaj `</p>` na końcu.
+1. Jeśli chcesz utworzyć akapity, Dodaj `<p>` w BEGGING tekstu i Dodaj `</p>` na końcu.
 
     **Przykład**: 
 
-    `<p>` to jest mój pierwszy akapit. `</p>` <br>
+    `<p>` jest to mój pierwszy akapit. `</p>` <br>
     `<p>` to w drugim akapicie. `</p>` <br>
 
     Powyższy sposób będzie wyglądać następująco:
@@ -249,7 +250,7 @@ Aby dowiedzieć się, jak będzie bardziej atrakcyjny opis oferty, możesz uży�
     <p> Jest to mój pierwszy akapit. </p>
     <p> Jest to mój drugi akapit. </p>
 
-1. Jeśli chcesz dodać **punktowaną listę elementów**, umieść swój tekst w tagach `<li>` poniżej. Można kopiować i wklejać więcej elementów punktowanych (elementów między tagami `<li>` i `</li>`) w tagach `<ul>` i `</ul>`. Upewnij się, że dodano `<ul></ul>`. 
+1. Jeśli chcesz dodać **punktowaną listę elementów**, umieść swój tekst w `<li>` tagach poniżej. Można kopiować i wklejać więcej elementów punktowanych (elementów między `<li>` i `</li>` tagów) w tagach `<ul>` i `</ul>`. Upewnij się, że dodano `<ul></ul>`. 
 
     **Przykład**:
 
@@ -276,11 +277,11 @@ Aby dowiedzieć się, jak będzie bardziej atrakcyjny opis oferty, możesz uży�
 
     **BEZPŁATNA WERSJA PRÓBNA**
 
-1. Aby dodać **podziały wierszy** między zawartością, Dodaj `<br>` przed zawartością, która ma być uruchamiana w nowym wierszu. Jeśli chcesz pozostawić miejsce i upewnić się, że zawartość zaczyna się w nowym wierszu, Dodaj `<br><br>` przed zawartością. 
+1. Aby dodać **podziały wierszy** między zawartością, Dodaj `<br>` przed zawartością, którą chcesz uruchomić w nowym wierszu. Jeśli chcesz pozostawić miejsce i upewnić się, że zawartość zaczyna się w nowym wierszu, Dodaj `<br><br>` przed zawartością. 
 
     **Przykład**:
 
-    To jest wiersz tekstu. `<br>` to jest linia tekstowa, która będzie uruchamiana w nowym wierszu. `<br><br>` to jest wiersz, w którym rozpocznie się dwa wiersze poniżej. 
+    To jest wiersz tekstu. `<br>` jest to wiersz tekstu, który zostanie uruchomiony w nowym wierszu. `<br><br>` to jest wiersz, w którym rozpocznie się dwa wiersze poniżej. 
 
     Powyższy sposób będzie wyglądać następująco:
 
@@ -351,7 +352,7 @@ Karta **konfiguracja techniczna** zawiera szczegółowe informacje techniczne (�
 
 - **Adres URL strony docelowej** (wymagane): Zdefiniuj adres URL witryny, po którym klienci będą mogli po uzyskaniu oferty z portalu Marketplace. Ten adres URL będzie punktem końcowym, który odbiera token, gdy klient jest kierowany do strony. Ten token może być wymieniany w celu uzyskania szczegółowych informacji o aprowizacji za pomocą rozwiązania w interfejsach API realizacji. Te szczegóły i wszelkie inne zbierane informacje mogą być używane jako część strony sieci Web interaktywnej klienta wbudowanej w środowisko użytkownika w celu ukończenia rejestracji i aktywowania zakupu.
 
-- **Element webhook połączenia** (wymagany): dla wszystkich zdarzeń asynchronicznych wymaganych przez firmę Microsoft w imieniu klienta (przykład: subskrypcja SaaS stała się nieprawidłowa) wymagane jest podanie elementu webhook połączenia. Jeśli nie masz jeszcze systemu elementu webhook, najprostszą konfiguracją jest posiadanie aplikacji logiki punktu końcowego protokołu HTTP, która będzie nasłuchiwać wszystkich zdarzeń, które są w nim ogłaszane, a następnie odpowiednio obsługiwać je (np. https: \//prod-1westus. Logic. Azure. com: 443/Work ). Aby uzyskać więcej informacji, zobacz [wywoływanie, wyzwalanie lub zagnieżdżanie przepływów pracy za pomocą punktów końcowych HTTP w usłudze Logic Apps](https://docs.microsoft.com/azure/logic-apps/logic-apps-http-endpoint).
+- **Element webhook połączenia** (wymagany): dla wszystkich zdarzeń asynchronicznych wymaganych przez firmę Microsoft w imieniu klienta (przykład: subskrypcja SaaS stała się nieprawidłowa) wymagane jest podanie elementu webhook połączenia. Jeśli nie masz jeszcze systemu elementu webhook, najprostszą konfiguracją jest posiadanie aplikacji logiki punktu końcowego HTTP, która będzie nasłuchiwać wszystkich zdarzeń, które są w nim ogłaszane, a następnie odpowiednio obsługiwać je (np. https:\//prod-1westus.logic.azure.com:443/work). Aby uzyskać więcej informacji, zobacz [wywoływanie, wyzwalanie lub zagnieżdżanie przepływów pracy za pomocą punktów końcowych HTTP w usłudze Logic Apps](https://docs.microsoft.com/azure/logic-apps/logic-apps-http-endpoint).
 
 - **Identyfikator dzierżawy usługi Azure AD** (wymagany): wewnątrz Azure Portal wymagamy [utworzenia aplikacji Azure Active Directory (AD)](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal) , aby umożliwić nam zweryfikowanie połączenia między naszymi dwiema usługami w ramach komunikacji uwierzytelnionej. Aby znaleźć [Identyfikator dzierżawy](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#get-values-for-signing-in), przejdź do Azure Active Directory i wybierz pozycję **Właściwości**, a następnie wyszukaj numer **identyfikatora katalogu** na liście (np. 50c464d3-4930-494c-963c-1e951d15360e).
 
@@ -367,8 +368,8 @@ Po utworzeniu zobaczysz nazwy planu, identyfikatory, modele cen, dostępność (
 
 **Akcje** dostępne w **przeglądzie planu** różnią się w zależności od bieżącego stanu planu i mogą obejmować:
 
-- Jeśli plan ma stan **wersja robocza** — Usuń wersję roboczą
-- Jeśli plan ma stan **Live** — Zatrzymaj sprzedawanie lub zsynchronizuj prywatnych odbiorców
+- Jeśli plan ma stan **wersja robocza** , Usuń wersję roboczą
+- Jeśli plan ma stan **Live** -Stop Sprzedaj lub zsynchronizuj odbiorców prywatnych
 
 **Utwórz nowy plan** (co najmniej jeden plan dla tych, którzy wybierają sprzedaż w firmie Microsoft)
 
@@ -437,7 +438,7 @@ Wybierz częstotliwość, z jaką klienci muszą uiścić cenę. Należy podać 
 - **Cena**: USD miesięcznie lub USD rocznie
 
 Ceny ustawione w walucie lokalnej (USD = Stany Zjednoczone dolara) są konwertowane na walutę lokalną wszystkich wybranych rynków przy użyciu bieżących stawek wymiany dostępnych podczas instalacji. Sprawdź te ceny przed opublikowaniem, eksportując arkusz kalkulacyjny z cennikiem i sprawdzając cenę na każdym rynku. Jeśli chcesz ustawić ceny niestandardowe na indywidualnym rynku, zmodyfikuj i zaimportuj arkusz cen. Użytkownik jest odpowiedzialny za sprawdzanie poprawności cen i ich ustawienia.
-*\*You należy najpierw zapisać zmiany cen, aby umożliwić eksportowanie danych cen.*
+*\*Najpierw musisz zapisać zmiany cen, aby włączyć eksportowanie danych cen.*
 
 Uważnie Przejrzyj ceny przed opublikowaniem, ponieważ istnieją pewne ograniczenia dotyczące tego, co można zmienić po opublikowaniu planu:
 
@@ -459,7 +460,7 @@ Zaznacz to pole wyboru, aby plan był prywatny i widoczny tylko dla wybranych od
 
 Przypisz odbiorców, którzy będą mieli dostęp do tego planu prywatnego. Dostęp jest przypisywany przy użyciu identyfikatorów dzierżawców z opcją dołączenia opisu każdego przypisanego identyfikatora dzierżawy. W przypadku importowania pliku arkusza kalkulacyjnego CSV można dodać maksymalnie 10 identyfikatorów dzierżaw lub 20 000 klientów.
 
-Dzierżawca jest reprezentacją organizacji, identyfikator reprezentowany jako identyfikator GUID (unikatowy identyfikator globalny, 128-bitowy numer liczbowy używany do identyfikowania zasobów). Jest to dedykowane wystąpienie usługi Azure AD, którą organizacja lub deweloper aplikacji otrzymuje po utworzeniu relacji z firmą Microsoft, na przykład zarejestrowaniu się na platformie Azure, w usłudze Microsoft Intune lub Microsoft 365. Każda dzierżawa usługi Azure AD jest unikatowa i oddzielona od innych dzierżaw usługi Azure AD. Aby sprawdzić dzierżawę, zaloguj się do Azure Portal przy użyciu konta, którego chcesz używać do zarządzania aplikacją. Jeśli masz dzierżawę, nastąpi automatyczne zalogowanie do niej, a nazwa dzierżawy zostanie wyświetlona bezpośrednio pod nazwą Twojego konta. Umieść wskaźnik myszy na nazwie konta w prawym górnym rogu witryny Azure Portal, aby wyświetlić swoją nazwę, adres e-mail, identyfikator katalogu/dzierżawy (GUID) oraz domenę. Jeśli Twoje konto jest skojarzone z wieloma dzierżawami, możesz wybrać nazwę swojego konta, aby otworzyć menu, w którym można przełączać się między dzierżawami. Każda dzierżawa ma własny identyfikator dzierżawy. Możesz również wyszukać identyfikator dzierżawy w organizacji przy użyciu adresu URL nazwy domeny o godzinie: [https://www.whatismytenantid.com](https://www.whatismytenantid.com).
+Dzierżawca jest reprezentacją organizacji, identyfikator reprezentowany jako identyfikator GUID (unikatowy identyfikator globalny, 128-bitowy numer liczbowy używany do identyfikowania zasobów). Jest to dedykowane wystąpienie usługi Azure AD, którą organizacja lub deweloper aplikacji otrzymuje po utworzeniu relacji z firmą Microsoft, na przykład zarejestrowaniu się na platformie Azure, w usłudze Microsoft Intune lub Microsoft 365. Każda dzierżawa usługi Azure AD jest unikatowa i oddzielona od innych dzierżaw usługi Azure AD. Aby sprawdzić dzierżawę, zaloguj się do Azure Portal przy użyciu konta, którego chcesz używać do zarządzania aplikacją. Jeśli masz dzierżawę, nastąpi automatyczne zalogowanie do niej, a nazwa dzierżawy zostanie wyświetlona bezpośrednio pod nazwą Twojego konta. Umieść wskaźnik myszy na nazwie konta w prawym górnym rogu witryny Azure Portal, aby wyświetlić swoją nazwę, adres e-mail, identyfikator katalogu/dzierżawy (GUID) oraz domenę. Jeśli Twoje konto jest skojarzone z wieloma dzierżawami, możesz wybrać nazwę swojego konta, aby otworzyć menu, w którym można przełączać się między dzierżawami. Każda dzierżawa ma własny identyfikator dzierżawy. Możesz również wyszukać identyfikator dzierżawy w organizacji przy użyciu adresu URL nazwy domeny w: [https://www.whatismytenantid.com](https://www.whatismytenantid.com).
 
 Mimo że usługa SaaS oferuje identyfikatory dzierżawców do definiowania prywatnych odbiorców, inne typy ofert mogą korzystać z identyfikatorów subskrypcji platformy Azure (które są również reprezentowane jako identyfikatory GUID).
 
@@ -474,7 +475,7 @@ Mimo że usługa SaaS oferuje identyfikatory dzierżawców do definiowania prywa
 
 [!INCLUDE [Test drive content](./includes/commercial-marketplace-test-drive.md)]
 
-## <a name="publish"></a>Publikuj
+## <a name="publish"></a>Publikowanie
 
 #### <a name="submit-offer-to-preview"></a>Prześlij ofertę do wersji zapoznawczej
 
@@ -485,7 +486,7 @@ Jeśli ta oferta jest publikowana po raz pierwszy, możesz:
 - Zobacz stan ukończenia dla każdej sekcji oferty.
     - *Nie uruchomiono* — oznacza, że sekcja nie została dotknięcia i należy ją ukończyć.
     - *Niekompletne* — oznacza, że sekcja zawiera błędy, które muszą zostać naprawione lub wymaga podania więcej informacji. Wróć do sekcji i zaktualizuj ją.
-    - *Zakończone* — oznacza, że sekcja została ukończona, wszystkie wymagane dane zostały dostarczone i nie występują żadne błędy. Wszystkie sekcje oferty muszą być w stanie kompletnym, zanim będzie możliwe przesłanie oferty.
+    - *Gotowe* — oznacza, że sekcja została ukończona, wszystkie wymagane dane zostały dostarczone i nie występują żadne błędy. Wszystkie sekcje oferty muszą być w stanie kompletnym, zanim będzie możliwe przesłanie oferty.
 - Podaj instrukcje dotyczące testowania dla zespołu certyfikacji, aby upewnić się, że aplikacja została prawidłowo przetestowana, a także wszelkich dodatkowych notatek przydatnych w zrozumieniu swojej aplikacji.
 - Prześlij ofertę do opublikowania, wybierając pozycję **Prześlij**. Wyślemy Ci wiadomość e-mail z prośbą o udostępnienie wersji zapoznawczej oferty, którą można przejrzeć i zatwierdzić. Musisz wrócić do Centrum partnerskiego i wybrać pozycję **Przejdź na żywo** , aby uzyskać ofertę opublikowania oferty na publiczną (lub w przypadku prywatnej oferty dla odbiorców prywatnych).
 

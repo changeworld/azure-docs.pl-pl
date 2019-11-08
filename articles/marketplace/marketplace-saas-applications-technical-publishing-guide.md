@@ -4,19 +4,20 @@ description: Przewodnik krok po kroku i publikowanie list kontrolnych dotyczący
 services: Marketplace, Compute, Storage, Networking, Blockchain, Security, SaaS
 author: keithcharlie
 ms.service: marketplace
+ms.subservice: partnercenter-marketplace-publisher
 ms.topic: article
 ms.date: 07/09/2018
 ms.author: kevidal
-ms.openlocfilehash: f9ff6e19a0f0091cb5b831279eee90727bbb89fd
-ms.sourcegitcommit: d060947aae93728169b035fd54beef044dbe9480
+ms.openlocfilehash: c213bbcb3c7859aa4718916aafab970b3ffd4613
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/02/2019
-ms.locfileid: "68742261"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73813043"
 ---
 # <a name="saas-applications-offer-publishing-guide"></a>Przewodnik publikowania w aplikacjach SaaS
 
-Aplikacje SaaS można publikować w witrynie Marketplace z trzema różnymi wywołaniami akcji: "Skontaktuj się z nami", "Wypróbuj teraz" i "Pobierz teraz". W tym przewodniku objaśniono te trzy opcje, w tym wymagania dotyczące każdego z nich. 
+Aplikacje SaaS można opublikować w witrynie Marketplace z trzema różnymi wywołaniami akcji: "Skontaktuj się z nami", "Wypróbuj teraz" i "Pobierz teraz". W tym przewodniku objaśniono te trzy opcje, w tym wymagania dotyczące każdego z nich. 
 
 ## <a name="offer-overview"></a>Przegląd oferty  
 
@@ -25,14 +26,14 @@ Aplikacje SaaS są dostępne w ramach witryny Azure portale w poniższej tabeli 
 | Opcja witryny sklepu | Zawierające | Wersja próbna/Transact |  
 | --- | --- | --- |  
 | AppSource | Tak (skontaktuj się z nami) | Tak (PowerBI/Dynamics) |
-| Azure Marketplace | Nie | Tak (SaaS Apps) |   
+| Rynek platformy Azure | Nie | Tak (SaaS Apps) |   
 
-**Staw**  Opcja publikowania listy składa się z typu oferty kontakt ze mną i jest używana, gdy nie jest możliwe uczestnictwo w wersji próbnej lub na poziomie transakcji. Zaletą tego podejścia jest to, że umożliwia ona wydawcom korzystanie z rozwiązania na rynku do natychmiastowego rozpoczęcia otrzymywania potencjalnych klientów, które mogą zostać przekształcone w celu zwiększenia firmy.  
+**Lista:**  Opcja publikowania listy składa się z typu oferty kontakt ze mną i jest używana, gdy nie jest możliwe uczestnictwo w wersji próbnej lub na poziomie transakcji. Zaletą tego podejścia jest to, że umożliwia ona wydawcom korzystanie z rozwiązania na rynku do natychmiastowego rozpoczęcia otrzymywania potencjalnych klientów, które mogą zostać przekształcone w celu zwiększenia firmy.  
 **Wersja próbna/transakcja:**  Klient ma możliwość bezpośredniego zakupu lub żądania wersji próbnej rozwiązania. Udostępnienie wersji próbnej spowoduje zwiększenie poziomu zaangażowania oferowanego klientom i umożliwienie klientom eksplorowania Twojego rozwiązania przed zakupem. Korzystając z wersji próbnej, będziesz mieć lepszy stopień promocji w witrynie sklepu i powinieneś oczekiwać więcej i bogatszych potencjalnych klientów od zaangażowania klientów. Wersje próbne muszą obejmować bezpłatną pomoc techniczną co najmniej przez okres próbny.  
 
 | Oferta aplikacji SaaS | Wymagania biznesowe | Wymagania techniczne |  
 | --- | --- | --- |  
-| **Kontakt z nami** | Yes | Nie |  
+| **Kontakt z nami** | Tak | Nie |  
 | **Usługi PowerBI/Dynamics** | Tak | Tak (Integracja z usługą Azure AD) |  
 | **Aplikacje SaaS**| Tak | Tak (Integracja z usługą Azure AD) |     
 
@@ -133,7 +134,7 @@ Firma Microsoft hostuje transakcję handlową. Firma Microsoft rozlicza klienta 
 | Wymaganie | Szczegóły |  
 |:--- |:--- |  
 |Rozliczenia i pomiary | Cena oferty jest naliczana na podstawie modelu cen wybranych przed opublikowaniem (stawka ryczałtowa lub dla użytkownika).  W przypadku korzystania z modelu stawki Flat można opcjonalnie uwzględnić dodatkowe wymiary używane do naliczania opłat klientom za użycie nieuwzględnione w stałej stawce. |  
-|Anulowania | Twoja oferta jest anulowana przez klienta w dowolnym momencie. |  
+|Anulowanie | Twoja oferta jest anulowana przez klienta w dowolnym momencie. |  
 |Strona docelowa transakcji | Możesz obsługiwać stronę docelową transakcji z platformą Azure, w której użytkownicy mogą tworzyć konta usługi SaaS i zarządzać nimi. |   
 | Interfejs API subskrypcji | Uwidaczniasz usługę, która może współistnieć z subskrypcją SaaS, aby utworzyć, zaktualizować i usunąć konto użytkownika i plan usług. Krytyczne zmiany interfejsu API muszą być obsługiwane w ciągu 24 godzin. Niekrytyczne zmiany interfejsu API będą okresowo publikowane. |  
 

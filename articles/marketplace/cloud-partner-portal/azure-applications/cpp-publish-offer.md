@@ -1,60 +1,61 @@
 ---
 title: Publikowanie oferty aplikacji platformy Azure | Portal Azure Marketplace
-description: W tym artykule opisano proces i kroki programu stawiane ofertom aplikacji platformy Azure w portalu Azure Marketplace.
+description: W tym artykule opisano proces i kroki publikowania oferty aplikacji platformy Azure w portalu Azure Marketplace.
 services: Azure, Marketplace, Cloud Partner Portal,
 author: dan-wesley
 ms.service: marketplace
+ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 01/25/2019
 ms.author: pabutler
-ms.openlocfilehash: 2326ce1a591d1276dbaf9c7f3238f7214e5134ab
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 0005760a16f5109ca3555df5c5c5137facc84c40
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64942907"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73826158"
 ---
 # <a name="publish-azure-application-offer"></a>Publikowanie oferty aplikacji platformy Azure
 
-Po utworzeniu oferty, podając informacje o **nowa oferta** strony, możesz opublikować ofertę. Wybierz **Publikuj** aby rozpocząć proces publikowania.
+Po utworzeniu oferty przez udostępnienie informacji na **nowej stronie oferty** można opublikować tę ofertę. Wybierz pozycję **Publikuj** , aby rozpocząć proces publikowania.
 
-Na poniższym diagramie przedstawiono główne kroki w procesie publikowania w celu skorzystania z oferty "Przejdź na żywo".
+Na poniższym diagramie przedstawiono główne kroki w procesie publikowania dla oferty "go Live".
 
-![Kroki publikowania oferty](./media/offer-publishing-steps.png)
+![Oferuj kroki publikowania](./media/offer-publishing-steps.png)
 
 
 ## <a name="detailed-description-of-publishing-steps"></a>Szczegółowy opis kroków publikowania
 
-Poniższej tabeli wymieniono i opisano poszczególne kroki publikowania i zapewnia szacowany czas wykonania poszczególnych kroków.  Czas szacowania w "dni" są zdefiniowane jako dni roboczych, których wykluczone podczas weekendów i dni wolnych od pracy.
+W poniższej tabeli wymieniono i opisano każdy krok publikowania i przedstawiono oszacowanie czasu na ukończenie każdego kroku.  Czasy szacowania w ciągu "dni" są definiowane jako dni robocze, które nie wykluczają weekendów i dni wolnych od pracy.
 
-|  **Krok publikowania**           | **czas**    | **Opis**                                                            |
+|  **Etap publikowania**           | **Pierwszym**    | **Opis**                                                            |
 |  -------------------           | --------    | ---------------                                                            |
-| Weryfikowanie wymagań wstępnych         | < 15 min    | Oferuje informacje i ofertę, ustawienia zostaną zweryfikowane.                        |
-| Sprawdź poprawność ustawień ich przychód | < 15 min  | Zaznaczono autorstwa użycia zasobów platformy Azure dla tej oferty.             |
-| Certyfikacja                  | < 1 dzień     | Oferty są analizowane przez zespół certyfikacji platformy Azure. Oferta jest skanowany w poszukiwaniu wirusów, złośliwego oprogramowania, bezpieczeństwo, zgodność i problemy z zabezpieczeniami. Oferta jest sprawdzenie spełnia kryteria kwalifikacyjne. Aby uzyskać więcej informacji, zobacz [wymagania wstępne](./cpp-prerequisites.md). Ile opinii jest, że problem zostanie znaleziony. |
-| Testowanie poprawności dysku          | < 2 godziny   | (Opcjonalnie) Jeśli wersji testowej jest obecny, Microsoft weryfikuje, że można go wdrożyć i replikowane.  |
-| Tworzenie pakietów i rejestracji generowania potencjalnych klientów | < 1 godz.  | Zasoby techniczne oferty są pakowane do użytku klienta i systemy potencjalnych klientów są konfigurowane i wdrażane. |
-|  Podpisywania wydawcy             |  Ręcznie    | Wydawcy ostateczny Przegląd i potwierdzenie oferty przejdzie na żywo. Oferta jest teraz dostępna w wersji zapoznawczej.  Sprawdź, czy spełnia wszystkie wymagania dotyczące można wdrożyć swoją ofertę w wybranych subskrypcjach (w krokach informacji oferty).  Po upewnieniu się, oferty, wybierz **Go Live** dzięki ofercie przejściem do następnego kroku. |
-| Przegląd firmy Microsoft                | 7 — 14 dni | Firma Microsoft całościowo przeglądy aplikacji systemu Azure i wiadomości e-mail, jeśli zostaną wykryte problemy.  Długość tego kroku zależy od złożoności aplikacji problemów niewykrytych i jak szybko możesz Reaguj na nie.  |
-| Na żywo                           | < 1 dzień | Oferta jest zwolniony, replikowane do określonych regionów i udostępnione publicznie. |
+| Sprawdzanie wymagań wstępnych         | < 15 min    | Informacje o ofercie i ustawienia oferty są weryfikowane.                        |
+| Sprawdź poprawność ustawień przychodu | < 15 min  | Dla oferty jest sprawdzane przypisanie użycia zasobów platformy Azure.             |
+| Certyfikacja                  | < 1 dzień     | Oferta jest analizowana przez zespół certyfikacji platformy Azure. Oferta jest skanowana w poszukiwaniu wirusów, złośliwego oprogramowania, zgodności z bezpieczeństwem i problemów z zabezpieczeniami. Oferta jest sprawdzana, aby sprawdzić, czy spełnia ona wszystkie kryteria kwalifikacyjne. Aby uzyskać więcej informacji, zobacz [wymagania wstępne](./cpp-prerequisites.md). Opinie są podawane w przypadku znalezienia problemu. |
+| Sprawdzanie poprawności dysku testowego          | < 2 godz.   | Obowiązkowe Jeśli jest obecny dysk testowy, firma Microsoft sprawdza, czy można go wdrożyć i zreplikować.  |
+| Pakowanie i rejestracja generacji potencjalnego klienta | < 1 godz.  | Zasoby techniczne oferty są pakowane do użytku przez klienta, a systemy liderów zostały skonfigurowane i wdrożone. |
+|  Wylogowanie wydawcy             |  Ręcznie    | Końcowe przeglądy i potwierdzenie wydawcy przed rozpoczęciem oferty. Oferta jest teraz dostępna w wersji zapoznawczej.  Ofertę można wdrożyć w wybranych subskrypcjach (w krokach dotyczących informacji o ofercie), aby sprawdzić, czy spełnia ona wszystkie wymagania.  Po sprawdzeniu oferty wybierz pozycję **Przejdź na żywo** , aby Twoja oferta mogła przejść do następnego kroku. |
+| Przegląd firmy Microsoft                | 7-14 dni | Firma Microsoft w całości przegląda swoją aplikację platformy Azure i wiadomości e-mail w przypadku odnalezienia problemów.  Ten krok zależy od złożoności aplikacji, nieznanych problemów oraz sposobu, w jaki użytkownik reaguje na nie.  |
+| Na żywo                           | < 1 dzień | Oferta jest wydawana, replikowana do określonych regionów i udostępniona publicznie. |
 |   |&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|   |
 
-Możesz monitorować proces publikowania w **stan** karcie oferty w portalu Cloud Partner.
+Proces publikowania można monitorować na karcie **stan** oferty w Portal Cloud partner.
 
-![Karta Stan dla oferty aplikacji platformy Azure](./media/offer-status-tab.png)
+![Karta stanu dla oferty aplikacji platformy Azure](./media/offer-status-tab.png)
 
-Po zakończeniu procesu publikowania, oferty, zostaną wyświetlone w [kategorii aplikacji Microsoft Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/).
+Po zakończeniu procesu publikowania oferta zostanie wyświetlona w [kategorii aplikacji Microsoft Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/).
 
 >[!Note]
->Dostawcy rozwiązań (CSP) partnera kanału zoptymalizowany pod kątem w chmurze jest teraz dostępna.  Zobacz [dostawców rozwiązań w chmurze](../../cloud-solution-providers.md) więcej informacji na temat marketingowych oferty za pośrednictwem programu Microsoft CSP partner kanałów.
+>Niedostępność kanału partnera dostawcy rozwiązań w chmurze (CSP) jest teraz dostępna.  Zobacz [dostawcy rozwiązań w chmurze](../../cloud-solution-providers.md) , aby uzyskać więcej informacji na temat marketingu oferty przez kanały partnerskie programu Microsoft CSP.
 
-## <a name="errors-and-review-feedback"></a>Błędy i opinii
+## <a name="errors-and-review-feedback"></a>Błędy i przejrzyj opinię
 
-Oprócz wyświetlania stanu publikowania oferty, **stan** karta zawiera również komunikaty o błędach i informacje zwrotne z wszystkie kroki publikowania, gdzie występuje problem.  Jeśli ten problem ma kluczowe znaczenie, publikując zostanie anulowane.  Następnie należy rozwiązać zgłoszone problemy i ponownie opublikować ofertę.  Ponieważ **przeglądu Microsoft** kroku reprezentuje przeglądu rozbudowane oferty i jego skojarzone zasoby techniczne (szczególnie szablonu usługi Azure Resource Manager), problemy zwykle są uporządkowane jako łącza (PR) żądanie ściągnięcia.  Wyjaśnienie, jak i Odpowiedz na te żądania ściągnięcia, zobacz [obsługi opinii](./cpp-handling-review-feedback.md).
+Oprócz wyświetlania stanu publikacji oferty na karcie **stan** są również wyświetlane komunikaty o błędach i informacje zwrotne z wszelkich kroków publikowania, w których napotkano problem.  Jeśli problem ma krytyczne znaczenie, publikowanie zostało anulowane.  Następnie należy skorygować zgłoszone problemy i ponownie opublikować ofertę.  Ponieważ krok **przeglądu firmy Microsoft** reprezentuje obszerny przegląd oferty i skojarzonych z nią zasobów technicznych (szczególnie szablon Azure Resource Manager), problemy są zwykle przedstawiane jako linki żądania ściągnięcia.  Informacje na temat sposobu wyświetlania tych żądań ściągnięcia i reagowania na nie można znaleźć w temacie [Obsługa informacji zwrotnych](./cpp-handling-review-feedback.md).
 
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
-Napotkano błędy w co najmniej jednej publikacji kroków należy poprawić je i ponownie opublikować ofertę.  Jeśli nie zostaną napotkane problemy krytyczne w **przeglądu Microsoft** kroku, należy najpierw [obsługi opinii](./cpp-handling-review-feedback.md) , uzyskując dostęp do firmy Microsoft zapoznaj się z repozytorium DevOps platformy Azure dla zespołu.
+Jeśli wystąpią błędy w co najmniej jednym z kroków publikacji, należy je poprawić i ponownie opublikować ofertę.  Jeśli w kroku **przeglądu firmy Microsoft** napotkasz problemy krytyczne, musisz [obsłużyć opinię na temat przeglądu](./cpp-handling-review-feedback.md) , uzyskując dostęp do repozytorium Azure DevOps zespołu.
 
-Po pomyślnym opublikowaniu aplikacji platformy Azure, możesz [aktualizowanie istniejącej oferty](./cpp-update-existing-offer.md) aby odzwierciedlić zmiany wymagania biznesowe lub techniczne. 
+Po pomyślnym opublikowaniu aplikacji platformy Azure możesz [zaktualizować istniejącą ofertę](./cpp-update-existing-offer.md) , aby odzwierciedlić zmieniające się wymagania biznesowe lub techniczne. 

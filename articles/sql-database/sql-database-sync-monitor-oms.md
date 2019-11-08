@@ -1,5 +1,5 @@
 ---
-title: 'Monitorowanie SQL Data Sync platformy Azure przy użyciu dzienników Azure Monitor '
+title: Monitorowanie SQL Data Sync przy użyciu dzienników Azure Monitor
 description: Dowiedz się, jak monitorować usługę Azure SQL Data Sync przy użyciu dzienników Azure Monitor
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: allenwux
 ms.author: xiwu
 ms.reviewer: carlrab
 ms.date: 12/20/2018
-ms.openlocfilehash: 9e89ad8e6ac556df87a674efdf2d3bbc2041c38b
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 031482fc0b87e095fcb19046564e15642050f261
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73687031"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73820796"
 ---
 # <a name="monitor-sql-data-sync-with-azure-monitor-logs"></a>Monitorowanie SQL Data Sync przy użyciu dzienników Azure Monitor 
 
@@ -173,7 +173,7 @@ Aby skonfigurować widok Azure Monitor, wykonaj następujące czynności:
 
     2.  Na każdym kafelku zaktualizuj zapytania przy użyciu swoich informacji.
 
-        1.  Na każdym kafelku Zmień interwał TimeStamp_t.
+        1.  Na każdym kafelku Zmień interwał TimeStamp_t zgodnie z potrzebami.
 
         2.  Na kafelkach dla każdej grupy synchronizacji należy zaktualizować nazwy grup synchronizacji.
 

@@ -1,5 +1,5 @@
 ---
-title: 'Punkty końcowe sieci wirtualnej i reguły dla jednej i puli baz danych w usłudze Azure SQL '
+title: Punkty końcowe sieci wirtualnej i reguły dla jednej i puli baz danych
 description: Oznacz podsieć jako punkt końcowy usługi Virtual Network. Następnie punkt końcowy jako reguła sieci wirtualnej do listy ACL Azure SQL Database. Następnie SQL Database akceptuje komunikację ze wszystkich maszyn wirtualnych i innych węzłów w podsieci.
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: rohitnayakmsft
 ms.author: rohitna
 ms.reviewer: vanto, genemi
 ms.date: 08/27/2019
-ms.openlocfilehash: e1f8ab6725c58d9e1f15f88e6d2465ab88df79e2
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: f171181aa56287561aba3159f5039f70165dc8ab
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73686918"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73807511"
 ---
 # <a name="use-virtual-network-service-endpoints-and-rules-for-database-servers"></a>Korzystanie z punktów końcowych usługi sieci wirtualnej i reguł dla serwerów baz danych
 

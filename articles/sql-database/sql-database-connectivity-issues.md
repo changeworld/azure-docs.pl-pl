@@ -1,5 +1,5 @@
 ---
-title: Praca z błędami przejściowymi — Azure SQL Database
+title: Praca z błędami przejściowymi
 description: Dowiedz się, jak rozwiązywać problemy, diagnozować i zapobiegać błędom połączenia SQL lub błędem przejściowym w Azure SQL Database.
 keywords: połączenie SQL, parametry połączenia, problemy z łącznością, błąd przejściowy, błąd połączenia
 services: sql-database
@@ -13,12 +13,12 @@ manager: dcscontentpm
 ms.author: ninarn
 ms.reviewer: carlrab
 ms.date: 06/14/2019
-ms.openlocfilehash: 0191506cab9a54ad3978bfa7387c9ba1112ae815
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: a943ade4bfc46083fe84274640d979928357a492
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73690824"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73826813"
 ---
 # <a name="working-with-sql-database-connection-issues-and-transient-errors"></a>Praca z SQL Database problemami z połączeniem i błędami przejściowymi
 
@@ -278,7 +278,7 @@ Poniżej przedstawiono niektóre instrukcje SELECT języka Transact-SQL, które 
 | Zapytanie o dziennik | Opis |
 |:--- |:--- |
 | `SELECT e.*`<br/>`FROM sys.event_log AS e`<br/>`WHERE e.database_name = 'myDbName'`<br/>`AND e.event_category = 'connectivity'`<br/>`AND 2 >= DateDiff`<br/>&nbsp;&nbsp;`(hour, e.end_time, GetUtcDate())`<br/>`ORDER BY e.event_category,`<br/>&nbsp;&nbsp;`e.event_type, e.end_time;` |Widok [sys. event_log](https://msdn.microsoft.com/library/dn270018.aspx) zawiera informacje o poszczególnych zdarzeniach, które mogą spowodować błędy przejściowe lub błędy łączności.<br/><br/>W idealnym przypadku można skorelować wartości **start_time** lub **end_time** z informacjami o tym, kiedy program kliencki napotkał problemy.<br/><br/>Musisz nawiązać połączenie z bazą danych *Master* , aby uruchomić to zapytanie. |
-| `SELECT c.*`<br/>`FROM sys.database_connection_stats AS c`<br/>`WHERE c.database_name = 'myDbName'`<br/>`AND 24 >= DateDiff`<br/>&nbsp;&nbsp;`(hour, c.end_time, GetUtcDate())`<br/>`ORDER BY c.end_time;` |Widok [sys. database_connection_stats](https://msdn.microsoft.com/library/dn269986.aspx) oferuje zagregowane liczby typów zdarzeń do dodatkowej diagnostyki.<br/><br/>Musisz nawiązać połączenie z bazą danych *Master* , aby uruchomić to zapytanie. |
+| `SELECT c.*`<br/>`FROM sys.database_connection_stats AS c`<br/>`WHERE c.database_name = 'myDbName'`<br/>`AND 24 >= DateDiff`<br/>&nbsp;&nbsp;`(hour, c.end_time, GetUtcDate())`<br/>`ORDER BY c.end_time;` |Widok [sys. database_connection_stats](https://msdn.microsoft.com/library/dn269986.aspx) oferuje zagregowane liczby typów zdarzeń na potrzeby dodatkowej diagnostyki.<br/><br/>Musisz nawiązać połączenie z bazą danych *Master* , aby uruchomić to zapytanie. |
 
 <a id="d-search-for-problem-events-in-the-sql-database-log" name="d-search-for-problem-events-in-the-sql-database-log"></a>
 

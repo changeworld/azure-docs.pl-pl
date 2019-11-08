@@ -1,5 +1,5 @@
 ---
-title: Implementowanie rozproszone geograficznie rozwiązania usługi Azure SQL Database | Microsoft Docs
+title: Implementowanie rozwiązania rozproszonego geograficznie
 description: Dowiedz się, jak skonfigurować usługę Azure SQL Database i aplikację do pracy w trybie failover w zreplikowanej bazie danych oraz testować tryb failover.
 services: sql-database
 ms.service: sql-database
@@ -11,21 +11,21 @@ author: anosov1960
 ms.author: sashan
 ms.reviewer: mathoma, carlrab
 ms.date: 03/12/2019
-ms.openlocfilehash: 4a21fe3ed15d1dc2550f6863611b27d2b36c5c51
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 51380d312c778380602c64cac766b050511cf994
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68568106"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73810919"
 ---
-# <a name="tutorial-implement-a-geo-distributed-database"></a>Samouczek: Implementowanie rozproszonej geograficznie bazy danych
+# <a name="tutorial-implement-a-geo-distributed-database"></a>Samouczek: implementowanie rozproszonej geograficznie bazy danych
 
 Skonfiguruj bazę danych i aplikację usługi Azure SQL dla trybu failover w regionie zdalnym i przetestuj plan trybu failover. Omawiane kwestie:
 
 > [!div class="checklist"]
 > - Tworzenie [grupy trybu failover](sql-database-auto-failover-group.md)
 > - Uruchamianie aplikacji Java do wykonywania zapytań w bazie danych Azure SQL
-> - Testowe przełączenie w tryb failover
+> - Testowanie pracy w trybie failover
 
 Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem [utwórz bezpłatne konto](https://azure.microsoft.com/free/).
 
@@ -101,7 +101,7 @@ Aby utworzyć grupę trybu failover, uruchom następujący skrypt:
        -FailoverGroupName $myfailovergroupname
    ```
 
-Ustawienia replikacji geograficznej można także zmienić w Azure Portal, wybierając bazę danych, a następnie **Ustawienia** > **replikacja geograficzna**.
+Ustawienia replikacji geograficznej można także zmienić w Azure Portal, wybierając bazę danych, a następnie **ustawienia** > **replikacji geograficznej**.
 
 ![Ustawienia replikacji geograficznej](./media/sql-database-implement-geo-distributed-database/geo-replication.png)
 
@@ -123,7 +123,7 @@ Ustawienia replikacji geograficznej można także zmienić w Azure Portal, wybie
 
 1. Za pomocą ulubionego edytora Otwórz plik *pliku pom. XML* w folderze projektu.
 
-1. Dodaj sterownik JDBC firmy Microsoft dla zależności SQL Server, dodając następującą `dependency` sekcję. Zależność należy wkleić w większej `dependencies` sekcji.
+1. Dodaj sterownik JDBC firmy Microsoft dla zależności SQL Server, dodając następującą sekcję `dependency`. Zależność należy wkleić w większej sekcji `dependencies`.
 
    ```xml
    <dependency>
@@ -133,7 +133,7 @@ Ustawienia replikacji geograficznej można także zmienić w Azure Portal, wybie
    </dependency>
    ```
 
-1. Określ wersję języka Java, dodając `properties` ją do `dependencies` sekcji:
+1. Określ wersję języka Java, dodając sekcję `properties` po sekcji `dependencies`:
 
    ```xml
    <properties>
@@ -142,7 +142,7 @@ Ustawienia replikacji geograficznej można także zmienić w Azure Portal, wybie
    </properties>
    ```
 
-1. Obsługa plików manifestu przez dodanie `build` sekcji `properties` po sekcji:
+1. Obsługa plików manifestu poprzez dodanie sekcji `build` po sekcji `properties`:
 
    ```xml
    <build>
@@ -296,7 +296,7 @@ Ustawienia replikacji geograficznej można także zmienić w Azure Portal, wybie
    ...
    ```
 
-## <a name="test-failover"></a>Testowe przełączenie w tryb failover
+## <a name="test-failover"></a>Testowanie pracy w trybie failover
 
 Uruchom następujące skrypty, aby zasymulować pracę w trybie failover i obserwować wyniki aplikacji. Zwróć uwagę, jak niektóre operacje INSERT i Select będą kończyć się niepowodzeniem podczas migracji bazy danych.
 
@@ -329,14 +329,14 @@ Aby przetestować tryb failover:
       -FailoverGroupName $myfailovergroupname
    ```
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 W tym samouczku skonfigurowano usługę Azure SQL Database i aplikację do pracy w trybie failover w regionie zdalnym i przetestowano plan trybu failover. W tym samouczku omówiono:
 
 > [!div class="checklist"]
 > - Tworzenie grupy trybu failover replikacji geograficznej
 > - Uruchamianie aplikacji Java do wykonywania zapytań w bazie danych Azure SQL
-> - Testowe przełączenie w tryb failover
+> - Testowanie pracy w trybie failover
 
 Przejdź do następnego samouczka dotyczącego migracji za pomocą usługi DMS.
 

@@ -15,14 +15,14 @@ ms.topic: tutorial
 ms.custom: mvc
 ms.date: 03/30/2018
 ms.author: yegu
-ms.openlocfilehash: bf4eb817bb1705c6af6d4e7e9e28e5789f49a906
-ms.sourcegitcommit: 4c2b9bc9cc704652cc77f33a870c4ec2d0579451
+ms.openlocfilehash: 8ca24e8556ee53e9d12eaea8fd9eddb07ebed490
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/17/2019
-ms.locfileid: "65873032"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73826393"
 ---
-# <a name="tutorial-create-a-cache-aside-leaderboard-on-aspnet"></a>Samouczek: Tworzenie rankingu z odkładaniem do pamięci podręcznej na platformie ASP.NET
+# <a name="tutorial-create-a-cache-aside-leaderboard-on-aspnet"></a>Samouczek: tworzenie rankingu z odkładaniem do pamięci podręcznej na platformie ASP.NET
 
 W tym samouczku zaktualizujesz aplikację internetową platformy ASP.NET o nazwie *ContosoTeamStats*, utworzoną w ramach [przewodnika Szybki start platformy ASP.NET dla usługi Azure Cache for Redis](cache-web-app-howto.md), w taki sposób, aby zawierała ranking korzystający ze [wzorca odkładania do pamięci podręcznej](https://docs.microsoft.com/azure/architecture/patterns/cache-aside) i usługi Azure Cache for Redis. Przykładowa aplikacja wyświetla listę statystyk zespołu z bazy danych i demonstruje różne sposoby korzystania z usługi Azure Cache for Redis do przechowywania danych w pamięci podręcznej i pobierania ich w celu podniesienia wydajności. Wykonanie instrukcji z samouczka umożliwi uzyskanie działającej aplikacji internetowej wykonującej odczyt i zapis w bazie danych, zoptymalizowanej przy użyciu usługi Azure Cache for Redis i hostowanej na platformie Azure.
 
@@ -41,8 +41,8 @@ Ten samouczek zawiera informacje na temat wykonywania następujących czynności
 Do ukończenia tego samouczka niezbędne są:
 
 * Ten samouczek jest kontynuacją [przewodnika Szybki start platformy ASP.NET dla usługi Azure Cache for Redis](cache-web-app-howto.md). Jeśli jeszcze nie został on przez Ciebie ukończony, ukończ go najpierw.
-* Zainstaluj [Visual Studio 2019](https://www.visualstudio.com/downloads/) z następującymi pakietami roboczymi:
-    * ASP.NET i tworzenie aplikacji internetowych
+* Zainstaluj [program Visual Studio 2019](https://www.visualstudio.com/downloads/) z następującymi obciążeniami:
+    * Tworzenie aplikacji na platformie ASP.NET i aplikacji internetowych
     * Programowanie na platformie Azure
     * Programowanie aplikacji klasycznych dla platformy .NET z użyciem programu SQL Server Express LocalDB lub [SQL Server 2017 Express](https://www.microsoft.com/sql-server/sql-server-editions-express).
 
@@ -156,7 +156,7 @@ Aby uzyskać więcej informacji dotyczących tego pakietu, zobacz stronę pakiet
 
 1. Dodaj następującą sekcję `connectionStrings` wewnątrz sekcji `configuration`. Nazwa parametrów połączenia musi być zgodna z nazwą klasy kontekstu bazy danych platformy Entity Framework, którą jest `TeamContext`.
 
-    Te parametry połączenia przyjęto założenie, że spełniasz [wymagania wstępne](#prerequisites) i zainstalować program SQL Server Express LocalDB, który jest częścią programu *programowanie aplikacji klasycznych dla platformy .NET* obciążenia instalowane z Visual Studio 2019 r.
+    W tych parametrach połączenia przyjęto założenie, że spełniono [wymagania wstępne](#prerequisites) i zainstalowano SQL Server Express LocalDB, które jest częścią obciążenia programowania dla programu *.NET Desktop* zainstalowanego z programem Visual Studio 2019.
 
     ```xml
     <connectionStrings>
@@ -671,7 +671,7 @@ W tej sekcji aprowizujesz nową bazę danych SQL platformy Azure dla aplikacji, 
 
    | Ustawienie       | Sugerowana wartość | Opis |
    | ------------ | ------------------ | ------------------------------------------------- |
-   | **Nazwa serwera** | Dowolna nazwa unikatowa w skali globalnej | Prawidłowe nazwy serwera opisano w artykule [Naming rules and restrictions](https://docs.microsoft.com/azure/architecture/best-practices/naming-conventions) (Reguły i ograniczenia nazewnictwa). |
+   | **Nazwa serwera** | Dowolna nazwa unikatowa w skali globalnej | Prawidłowe nazwy serwera opisano w artykule [Naming rules and restrictions](/azure/cloud-adoption-framework/ready/azure-best-practices/naming-and-tagging) (Reguły i ograniczenia nazewnictwa). |
    | **Identyfikator logowania administratora serwera** | Dowolna prawidłowa nazwa | Prawidłowe nazwy identyfikatorów logowania opisano w artykule [Database Identifiers](https://docs.microsoft.com/sql/relational-databases/databases/database-identifiers) (Identyfikatory baz danych). |
    | **Hasło** | Dowolne prawidłowe hasło | Hasło musi mieć co najmniej 8 znaków i musi zawierać znaki z trzech z następujących kategorii: wielkie litery, małe litery, cyfry i znaki inne niż alfanumeryczne. |
    | **Lokalizacja** | *Wschodnie stany USA* | Wybierz ten sam region, w którym utworzono pamięć podręczną i usługę App Service. |
@@ -699,7 +699,7 @@ W tym kroku samouczka opublikujesz aktualizacje aplikacji na platformie Azure w 
 
 1. Kliknij prawym przyciskiem myszy projekt **ContosoTeamStats** w programie Visual Studio i wybierz polecenie **Publikuj**.
 
-    ![Publikuj](./media/cache-web-app-cache-aside-leaderboard/cache-publish-app.png)
+    ![Publikowanie](./media/cache-web-app-cache-aside-leaderboard/cache-publish-app.png)
 
 2. Kliknij pozycję **Opublikuj**, aby użyć tego samego profilu publikowania, który został utworzony w ramach przewodnika Szybki start.
 
@@ -709,7 +709,7 @@ W tym kroku samouczka opublikujesz aktualizacje aplikacji na platformie Azure w 
 
     W poniższej tabeli opisano każdy link akcji z przykładowej aplikacji:
 
-    | Działanie | Opis |
+    | Akcja | Opis |
     | --- | --- |
     | Create New (Utwórz nowe) |Tworzenie nowego zespołu. |
     | Play Season (Odtwarzaj sezon) |Odtwarzanie sezonu gier, aktualizacja statystyk zespołu i czyszczenie nieaktualnych danych zespołu z pamięci podręcznej. |
@@ -732,16 +732,16 @@ Po zakończeniu pracy z przykładową aplikacją z samouczka możesz usunąć u�
 >
 
 1. Zaloguj się do witryny [Azure Portal](https://portal.azure.com) i kliknij pozycję **Grupy zasobów**.
-2. Wpisz nazwę grupy zasobów w polu tekstowym **Filtruj elementy...**.
+2. Wpisz nazwę grupy zasobów w polu tekstowym **Filtruj elementy...** .
 3. Kliknij pozycję **...** z prawej strony grupy zasobów i kliknij pozycję **Usuń grupę zasobów**.
 
-    ![Usuń](./media/cache-web-app-cache-aside-leaderboard/cache-delete-resource-group.png)
+    ![Usuwanie](./media/cache-web-app-cache-aside-leaderboard/cache-delete-resource-group.png)
 
 4. Zobaczysz prośbę o potwierdzenie usunięcia grupy zasobów. Wpisz nazwę grupy zasobów w celu potwierdzenia, a następnie kliknij pozycję **Usuń**.
 
     Po krótkim czasie grupa zasobów i wszystkie zawarte w niej zasoby zostaną usunięte.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 > [!div class="nextstepaction"]
 > [Jak skalować usługę Azure Cache for Redis](./cache-how-to-scale.md)

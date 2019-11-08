@@ -1,37 +1,38 @@
 ---
 title: Kontrola współbieżności | Portal Azure Marketplace
-description: Strategie kontroli współbieżności portalu Cloud Partner, publikowanie interfejsów API.
+description: Strategie kontroli współbieżności dla interfejsów API publikowania portal Cloud Partner.
 services: Azure, Marketplace, Cloud Partner Portal,
 author: v-miclar
 ms.service: marketplace
+ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 09/13/2018
 ms.author: pabutler
-ms.openlocfilehash: 8cdcfd84a2f3bd4f920b97392255237db173cbf9
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 6e2f8922d42e40d14338f06be983d3913b20859d
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64935592"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73819745"
 ---
 # <a name="concurrency-control"></a>Kontrola współbieżności
 
-Każde wywołanie do portalu Cloud Partner, publikowanie interfejsów API, należy jawnie określić które strategii kontroli współbieżności. Nie można podać **If-Match** nagłówka spowoduje odpowiedź o błędzie HTTP 400. Firma Microsoft oferuje dwa strategie do sterowania współbieżnością.
+Każde wywołanie interfejsów API publikowania portal Cloud Partner musi jawnie określić strategię kontroli współbieżności, która ma być używana. Niedostarczenie nagłówka **if-Match** spowoduje wystąpienie błędu HTTP 400. Oferujemy dwie strategie kontroli współbieżności.
 
--   **Optymistyczna** — klient wykonywanie aktualizacji sprawdza, jeśli dane zostały zmienione od czasu ostatniego odczytu danych.
--   **Ostatnie jeden serwer wins** — klient aktualizuje bezpośrednio danych, niezależnie od tego, czy inna aplikacja został on zmodyfikowany od czasu ostatniego odczytu czasu.
+-   **Optymistyczny** — klient wykonujący aktualizację weryfikuje, czy dane zostały zmienione od czasu ostatniego odczytu danych.
+-   **Ostatni serwer WINS** — klient bezpośrednio aktualizuje dane, bez względu na to, czy inna aplikacja zmodyfikował ją od czasu ostatniego odczytu.
 
-<a name="optimistic-concurrency-workflow"></a>Optymistyczna współbieżność przepływu pracy
+<a name="optimistic-concurrency-workflow"></a>Optymistyczny przepływ pracy współbieżności
 -------------------------------
 
-Zalecamy używanie strategię optymistycznej współbieżności z poniższym przepływie pracy w celu zagwarantowania, czy nie nieoczekiwane zmiany zostały wprowadzone do zasobów.
+Zalecamy korzystanie z strategii optymistycznej współbieżności z następującym przepływem pracy w celu zagwarantowania, że w Twoich zasobach nie wprowadzono nieoczekiwanych zmian.
 
-1.  Pobierać jednostki za pomocą interfejsów API. Odpowiedź zawiera element ETag określająca aktualnie przechowywana wersja jednostki (na czas odpowiedzi).
-2.  W momencie aktualizacji objęte ta sama wartość elementu ETag obowiązkowy **If-Match** nagłówek żądania.
-3.  Interfejs API porównuje wartość elementu ETag została odebrana w żądaniu z bieżącą wartością elementu ETag jednostki w transakcji niepodzielnej.
-    *   Jeśli element ETag wartości są różne, interfejs API zwraca `412 Precondition Failed` odpowiedzi HTTP. Ten błąd wskazuje, albo inny proces został zaktualizowany jednostkę od czasu ostatniego pobrania klienta lub że wartość elementu ETag określony w żądaniu jest nieprawidłowe.
-    *  Jeśli element ETag wartości są takie same, lub **If-Match** nagłówek zawiera znak symbolu wieloznacznego gwiazdki (`*`), interfejs API, wykonuje żądaną operację. Operacja interfejsu API aktualizuje również przechowywaną wartość elementu ETag jednostki.
+1.  Pobieranie jednostki przy użyciu interfejsów API. Odpowiedź zawiera wartość ETag, która identyfikuje aktualnie przechowywaną wersję jednostki (w czasie odpowiedzi).
+2.  W czasie aktualizacji należy uwzględnić tę samą wartość ETag w nagłówku żądania obowiązkowego **if-Match** .
+3.  Interfejs API porównuje wartość ETag odebraną w żądaniu z bieżącą wartością ETag jednostki w transakcji niepodzielnej.
+    *   Jeśli wartości ETag są różne, interfejs API zwraca `412 Precondition Failed` odpowiedzi HTTP. Ten błąd wskazuje, że inny proces zaktualizował jednostkę od momentu ostatniego pobrania przez klienta lub że wartość ETag określona w żądaniu jest niepoprawna.
+    *  Jeśli wartości ETag są takie same lub nagłówek **if-Match** zawiera symbol wieloznaczny gwiazdki (`*`), interfejs API wykonuje żądaną operację. Operacja interfejsu API aktualizuje także przechowywaną wartość ETag obiektu.
 
 
 > [!NOTE]
-> Określanie symbol wieloznaczny (*) w **If-Match** nagłówka wyniki w interfejsie API za pomocą strategii współbieżności ostatni jednej usługi wins. W tym przypadku porównanie element ETag nie występuje i zasób jest aktualizowany bez żadnych testów. 
+> Określenie symbolu wieloznacznego (*) w nagłówku **if-Match** spowoduje użycie interfejsu API w ramach strategii współbieżności z ostatnich jednego serwera WINS. W takim przypadku porównanie ETag nie występuje, a zasób jest aktualizowany bez żadnych testów. 

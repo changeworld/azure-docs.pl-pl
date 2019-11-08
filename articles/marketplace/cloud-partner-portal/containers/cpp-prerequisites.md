@@ -1,38 +1,39 @@
 ---
-title: Kontenery usługi Azure oferują wymagania wstępne | Portal Azure Marketplace
-description: Wymagania wstępne dotyczące publikowania kontenerów platformy Azure.
+title: Wymagania wstępne dotyczące kontenerów platformy Azure | Portal Azure Marketplace
+description: Wymagania wstępne dotyczące publikowania kontenera platformy Azure.
 services: Azure, Marketplace, Cloud Partner Portal,
 author: v-miclar
 ms.service: marketplace
+ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 03/13/2019
 ms.author: pabutler
-ms.openlocfilehash: 87727d23b407853aa9dad8a52c0a1cea446353bd
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 2c4e5520a2055fafee586fc369c21acfa36037c6
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64942556"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73823128"
 ---
-# <a name="container-publishing-prerequisites"></a>Wymagania wstępne dotyczące publikowania kontenera
+# <a name="container-publishing-prerequisites"></a>Wymagania wstępne dotyczące publikowania kontenerów
 
-W tym artykule opisano wymagania wstępne dotyczące publikowania oferty kontenera w witrynie Azure Marketplace.  Jeśli jeszcze tego nie zrobiono, należy zapoznać się [kontenerów zaoferować Podręcznik publikowania](../../marketplace-containers.md).
+W tym artykule opisano wymagania wstępne dotyczące publikowania oferty kontenera w witrynie Azure Marketplace.  Jeśli jeszcze tego nie zrobiono, należy zapoznać się z [przewodnikiem publikowania oferty kontenerów](../../marketplace-containers.md).
 
-## <a name="publishing-prerequisites"></a>Wymagania wstępne publikowania
+## <a name="publishing-prerequisites"></a>Publikowanie wymagań wstępnych
 
-Aby opublikować nowy obraz kontenera, musisz spełnić następujące wymagania wstępne:
+Aby opublikować nowy obraz kontenera, należy spełnić następujące wymagania wstępne:
 
-- Dostęp do portalu Cloud Partner. Aby uzyskać więcej informacji zobacz Podręcznik publikowania w portalu Azure Marketplace i AppSource.
-- Zgodę na warunki witryny Azure Marketplace
-- Hostowanie element zawartości technicznej kontenera w usłudze Azure Container Registry.
-- Ma metadane kontenera gotowe do użycia. Na przykład poniższa niepełna lista:
+- Dostęp do portal Cloud Partner. Aby uzyskać więcej informacji, zobacz artykuł Azure Marketplace i Podręcznik publikowania AppSource.
+- Umowa dotycząca warunków korzystania z witryny Azure Marketplace
+- Hostowanie zasobów technicznych kontenera w Azure Container Registry.
+- Przygotuj metadane kontenera do użycia. Na przykład następująca niepełna lista:
   - Tytuł
-  - Opis (format HTML)
-  - Obraz logo (w formacie PNG) i te rozmiary obrazów: 40 x 40 pikseli, 90 x 90 pikseli, 115 x 115 pikseli i 255 x 115 pikseli.
-- A *warunki użytkowania* i *zasady zachowania poufności informacji* instrukcji
+  - Opis (w formacie HTML)
+  - Obraz logo (w formacie PNG) i w następujących stałych rozmiarach: 40x40 px, 90x90 px, 115x 115 px i 255x115 px.
+- *Warunki użytkowania* i *zasady zachowania poufności informacji*
 - Dokumentacja rozwiązania kontenera
-- Kontakt z pomocą techniczną
+- Skontaktuj się z pomocą techniczną
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
-Jeśli jeszcze tego nie zrobiono, należy najpierw [przygotowanie kontenera zasoby techniczne](./cpp-create-technical-assets.md) przed [Utwórz ofertę kontenera](./cpp-create-offer.md).  
+Jeśli jeszcze tego nie zrobiono, przed [utworzeniem oferty kontenera](./cpp-create-offer.md)należy [przygotować swoje zasoby techniczne kontenera](./cpp-create-technical-assets.md) .  

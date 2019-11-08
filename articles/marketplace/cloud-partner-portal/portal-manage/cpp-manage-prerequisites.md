@@ -4,15 +4,16 @@ description: Wymagania wstępne dotyczące zarządzania kontami w witrynie Azure
 services: Azure, Marketplace, Cloud Partner Portal,
 author: v-miclar
 ms.service: marketplace
+ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 04/01/2019
 ms.author: pabutler
-ms.openlocfilehash: 09bf8479921c9bd55b98e835a19ea995fa37e20b
-ms.sourcegitcommit: a19f4b35a0123256e76f2789cd5083921ac73daf
+ms.openlocfilehash: b0a9f312ba78e148a573064b81ff1f52fbd85c03
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71720063"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73826672"
 ---
 # <a name="prerequisites-for-managing-accounts-on-the-cloud-partner-portal"></a>Wymagania wstępne dotyczące zarządzania kontami w portal Cloud Partner 
 
@@ -31,10 +32,10 @@ Należy uważnie wybrać swoją nazwę konta.  Reprezentuje Twoją organizację,
 W poniższej tabeli przedstawiono kroki niezbędne do pełnego zarejestrowania się jako Wydawca w chmurze firmy Microsoft.  Aby uzyskać pełne instrukcje, zobacz [Zostań wydawcą portalu Marketplace w chmurze](https://docs.microsoft.com/azure/marketplace/become-publisher). 
 
 
-|                   Czynność                   |  Wynikiem rejestracji lub zasobie                     |
+|                   Krok                   |  Wynikiem rejestracji lub zasobie                     |
 |                  ------                  |  -----------------------------------                    |
 | 1. Zarejestruj się w Microsoft Partner Network |  Identyfikator Microsoft Partner Network organizacji |
-| 2. Utwórz konto Microsoft *           |  Zweryfikowane konto Microsoft, kończące się na @outlook.com, @live.com itd. |
+| 2. Utwórz konto Microsoft *           |  Zweryfikowane konto Microsoft, kończące się na @outlook.com, @live.comitd. |
 | 3. Prześlij formularz rejestracyjny portalu Marketplace | Konto wydawcy na portal Cloud Partner      |
 | 4. Zaloguj się do portal Cloud Partner        | Aby tworzyć i publikować oferty, zarządzać użytkownikami, zbierać metryki witryny Marketplace itp. |
 | 5. Zarejestruj się w centrum deweloperów firmy Microsoft * | Zweryfikowane konto Centrum deweloperów; Urząd do przeprowadzania transakcji w witrynie Marketplace  |

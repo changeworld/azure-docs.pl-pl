@@ -1,20 +1,20 @@
 ---
-title: Przekazywanie, pobieranie, wyświetlanie i usuwanie obiektów blob za pomocą zestawu SDK usługi Azure Storage w wersji 10 dla języka JavaScript
-description: Tworzenie, przekazywanie i usuwanie obiektów blob oraz kontenerów w środowisku Node.js za pomocą usługi Azure Storage
+title: 'Szybki Start: Biblioteka kliencka usługi Azure Blob Storage v10 dla języka JavaScript'
+description: Tworzenie, przekazywanie i usuwanie obiektów blob i kontenerów w programie Node. js za pomocą biblioteki klienta usługi Azure Storage v10 dla języka JavaScript
 author: mhopkins-msft
 ms.author: mhopkins
 ms.date: 09/24/2019
 ms.service: storage
 ms.subservice: blobs
 ms.topic: quickstart
-ms.openlocfilehash: f8c7de63f2bd4b7329e8ae6a53123c9c1ea035af
-ms.sourcegitcommit: 992e070a9f10bf43333c66a608428fcf9bddc130
+ms.openlocfilehash: b909da5da0d7352d4086222fe0411ac37668bd92
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/24/2019
-ms.locfileid: "71240444"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73825322"
 ---
-# <a name="quickstart-upload-download-list-and-delete-blobs-using-azure-storage-v10-sdk-for-javascript"></a>Szybki start: Przekazywanie, pobieranie, wyświetlanie i usuwanie obiektów blob za pomocą zestawu SDK usługi Azure Storage w wersji 10 dla języka JavaScript
+# <a name="quickstart-azure-blob-storage-client-library-v10-for-javascript"></a>Szybki Start: Biblioteka kliencka usługi Azure Blob Storage v10 dla języka JavaScript
 
 W tym przewodniku Szybki start dowiesz się, jak za pomocą [zestawu SDK usługi Azure Storage w wersji 10 dla języka JavaScript](https://github.com/Azure/azure-sdk-for-js) w środowisku Node.js przekazywać, pobierać, wyświetlać i usuwać obiekty blob oraz zarządzać kontenerami.
 
@@ -203,7 +203,7 @@ Podobnie jak w przypadku kontenera, blokowy obiekt blob jeszcze nie istnieje. Zm
 
 ### <a name="using-the-aborter-class"></a>Używanie klasy Aborter
 
-Żądania wysyłane przez interfejs API można ustawić tak, aby wygasały po upływie określonego interwału. Klasa *Aborter* jest odpowiedzialna za zarządzanie sposobem wygasania żądań. Poniższy kod tworzy kontekst, w którym zestaw żądań otrzymuje 30 minut na wykonanie.
+Żądania wysyłane przez interfejs API można ustawić tak, aby wygasały po upływie określonego interwału. Klasa *Abort* jest odpowiedzialna za zarządzanie sposobem przekroczenia limitu czasu żądań. Poniższy kod tworzy kontekst, w którym zestaw żądań jest określony jako 30 minut do wykonania.
 
 ```javascript
 const aborter = Aborter.timeout(30 * ONE_MINUTE);

@@ -1,5 +1,5 @@
 ---
-title: Kod buforu pierścienia systemu XEvent dla SQL Database
+title: Kod buforu pierścienia systemu XEvent
 description: Zawiera przykładowy kod języka Transact-SQL, który jest łatwy i szybki dzięki użyciu obiektu docelowego buforu pierścieniowego w Azure SQL Database.
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: MightyPen
 ms.author: genemi
 ms.reviewer: jrasnik
 ms.date: 12/19/2018
-ms.openlocfilehash: 8fd04cac394f05a9db18e84117a8647c1a17ba30
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 7adffac045ddb2ba369993b1b805e3ce2304fb38
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73686815"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73822312"
 ---
 # <a name="ring-buffer-target-code-for-extended-events-in-sql-database"></a>Kod docelowy buforu pierścieniowego dla zdarzeń rozszerzonych w SQL Database
 
@@ -27,15 +27,15 @@ Chcesz uzyskać pełny przykładowy kod dla najłatwiejszego szybkiego sposobu p
 W tym temacie przedstawiono przykładowy kod języka Transact-SQL, który:
 
 1. Tworzy tabelę zawierającą dane, które mają być prezentowane za pomocą.
-2. Tworzy sesję dla istniejącego zdarzenia rozszerzonego, mianowicie **SqlServer. SQL _statement_starting**.
+2. Tworzy sesję dla istniejącego zdarzenia rozszerzonego, mianowicie **SqlServer. sql_statement_starting**.
    
    * Zdarzenie jest ograniczone do instrukcji SQL zawierających określony ciąg aktualizacji: instrukcja, taka **jak "% Update tabEmployee%"** .
-   * Wybiera do wysłania danych wyjściowych zdarzenia do obiektu docelowego buforu typu pierścień, mianowicie **package0. ring_buffer**.
+   * Wybiera do wysłania danych wyjściowych zdarzenia do obiektu docelowego bufora pierścieniowego, mianowicie **package0. ring_buffer**.
 3. Uruchamia sesję zdarzeń.
 4. Wystawia kilka prostych instrukcji dotyczących aktualizacji SQL.
 5. Emituje instrukcję SELECT języka SQL w celu pobrania danych wyjściowych zdarzenia z bufora pierścieni.
    
-   * **sys. DM _xe_database_session_targets** i inne dynamiczne widoki zarządzania (widoków DMV) są dołączone.
+   * **sys. dm_xe_database_session_targets** i inne dynamiczne widoki zarządzania (widoków DMV) są dołączone.
 6. Kończy sesję zdarzeń.
 7. Odrzuca obiekt docelowy buforu pierścieniowego, aby zwolnić jego zasoby.
 8. Odrzuca sesję zdarzeń i tabelę demonstracyjną.
@@ -54,10 +54,10 @@ W tym temacie przedstawiono przykładowy kod języka Transact-SQL, który:
 
 ## <a name="code-sample"></a>Przykład kodu
 
-W przypadku bardzo drobnej modyfikacji Poniższy przykład kodu buforu pierścieniowego można uruchomić na Azure SQL Database lub Microsoft SQL Server. Różnica polega na obecności węzła "_DATABASE" w nazwie niektórych dynamicznych widoków zarządzania (widoków DMV) użytego w klauzuli FROM w kroku 5. Na przykład:
+W przypadku bardzo drobnej modyfikacji Poniższy przykład kodu buforu pierścieniowego można uruchomić na Azure SQL Database lub Microsoft SQL Server. Różnica polega na obecności węzła "_database" w nazwie niektórych dynamicznych widoków zarządzania (widoków DMV) użytego w klauzuli FROM w kroku 5. Na przykład:
 
-* sys. DM _xe<strong>_DATABASE</strong>_session_targets
-* sys. DM _xe_session_targets
+* sys. dm_xe<strong>_database</strong>_session_targets
+* sys. dm_xe_session_targets
 
 &nbsp;
 
@@ -218,9 +218,9 @@ GO
 
 Użyto programu SSMS. exe do uruchomienia przykładu kodu.
 
-Aby wyświetlić wyniki, należy kliknąć komórkę w nagłówku kolumny **target_data_XML**.
+Aby wyświetlić wyniki, należy kliknąć komórkę poniżej nagłówka kolumny **target_data_XML**.
 
-Następnie w okienku wyników została kliknięta komórka w nagłówku kolumny **target_data_XML**. W tym celu kliknij pozycję utworzono inną kartę pliku w programie SSMS. exe, w której zawartość komórki wynikowej była wyświetlana jako XML.
+Następnie w okienku wyników kliknięto komórkę pod nagłówkiem kolumny **target_data_XML**. W tym celu kliknij pozycję utworzono inną kartę pliku w programie SSMS. exe, w której zawartość komórki wynikowej była wyświetlana jako XML.
 
 Dane wyjściowe są wyświetlane w następującym bloku. Wygląda na to, że jest on długi, ale jest tylko dwa **\<> zdarzeń** .
 

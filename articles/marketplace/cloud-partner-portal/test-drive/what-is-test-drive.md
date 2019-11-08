@@ -1,70 +1,71 @@
 ---
-title: Co to jest wersja testowa? | Azure Marketplace
-description: Omówienie funkcji testowej w witrynie Marketplace
+title: Co to jest wersja testowa? | Portal Azure Marketplace
+description: Wyjaśnienie funkcji dysku testowego Marketplace
 services: Azure, Marketplace, Cloud Partner Portal,
 author: pbutlerm
 manager: Ricardo.Villalobos
 ms.service: marketplace
+ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 09/13/2018
 ms.author: pabutler
-ms.openlocfilehash: 5b23a5e93dcbb9c13243240bda760a16d108d731
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: a6826657a4af74276e363acd585e80d101cc1459
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64938457"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73828155"
 ---
 <a name="what-is-test-drive"></a>Co to jest wersja testowa?
 ===================
 
-Wersja testowa jest to doskonały sposób, aby zaprezentować ofertę potencjalnym klientom, dając im możliwość \'spróbuj przed zakupem\', dając zwiększone konwersji i generowanie potencjalnych klientów wysoko wykwalifikowanych.
+Wersja testowa to doskonały sposób na pokazanie oferty dla potencjalnych klientów, dając im możliwość \'Wypróbuj przed zakupem\', co spowodowało zwiększenie konwersji i generowanie wysoce kwalifikowanych potencjalnych klientów.
 
-Po podaniu informacje kontaktowe, klienci mają dostęp do środowiska wstępnie skompilowanych wersji testowej: praktyczne, samodzielne okres próbny produktu\'s kluczowe funkcje i korzyści demonstrowany w rzeczywistym scenariuszu wdrożenia.
+Po podania informacji kontaktowych klienci mogą uzyskać dostęp do wstępnie skompilowanego środowiska testowego: praktycznej, samodzielnej wersji próbnej produktu\'kluczowych funkcji i korzyści, jakie można przedstawić w rzeczywistym scenariuszu implementacji.
 
-Wersja testowa umożliwia Ożyw produktu i generowanie potencjalnych klientów wysoko wykwalifikowanych w procesie.
+Na platformie testowej można zwiększyć żywotność produktu i generować wysoko kwalifikujące się potencjalni klienci w procesie.
 
-<a name="how-does-a-test-drive-work"></a>Jak działa wersji testowej?
+<a name="how-does-a-test-drive-work"></a>Jak działa Stacja testowa?
 ---------------------------
 
-Potencjalny klient umożliwia odnalezienie aplikacji w witrynie Marketplace, logowania i wyraża zgodę na warunki użytkowania. W tym momencie użytkownik otrzymał wstępnie skonfigurowanego środowiska do wypróbowania funkcji przez określoną liczbę godzin, gdy otrzymasz wysoko wykwalifikowanych potencjalnego klienta do monitowanie.
+Potencjalny klient odnajduje aplikację w portalu Marketplace, loguje się i wyraża zgodę na warunki użytkowania. W tym momencie klient otrzymuje wstępnie skonfigurowane środowisko w celu wypróbowania przez określoną liczbę godzin, a użytkownik otrzymuje wysoce wykwalifikowany klient.
 
-![Pierwszy krok. Wyświetlane oferty w portalu Marketplace](./media/what-is-test-drive/step1.png)
+![Krok 1. Wyświetlana oferta witryny Marketplace](./media/what-is-test-drive/step1.png)
 
-![Drugi krok. Ekran logowania ofert portalu Marketplace](./media/what-is-test-drive/step1andahalf.png)
+![Krok 2. Ekran logowania oferty witryny Marketplace](./media/what-is-test-drive/step1andahalf.png)
 
-![Krok 3. Ekranie Umowa wydawcy oferty w portalu Marketplace](./media/what-is-test-drive/step2.png)
+![Krok 3. Ekran umowy wydawcy z ofertą Marketplace](./media/what-is-test-drive/step2.png)
 
-![Krok 4. Ekran konfiguracji dysku testu](./media/what-is-test-drive/step3.png)
+![Krok 4. Ekran konfiguracji dysku testowego](./media/what-is-test-drive/step3.png)
 
-A tutaj poniżej przedstawiono przykładowy wygląd oferty wymaga czasu wdrażania:
+Poniżej przedstawiono przykład sposobu, w jaki wygląda oferta, gdy potrzebny jest czas na wdrożenie:
 
-![Wdrażane oferty w portalu Marketplace](./media/what-is-test-drive/step4.png)
+![Oferta portalu Marketplace jest wdrażana](./media/what-is-test-drive/step4.png)
 
-![Ekran gotowe wersji testowej witryny Marketplace](./media/what-is-test-drive/step5.png)
+![Ekran gotowy do testowania witryny Marketplace](./media/what-is-test-drive/step5.png)
 
-![Ekran ukończenia testowej witryny Marketplace](./media/what-is-test-drive/step6.png)
+![Ekran kończenia pracy z platformą Marketplace](./media/what-is-test-drive/step6.png)
 
-Niezależnie od tego, jak złożone aplikacji, wersji testowej firmy Microsoft pomoże Ci Ożyw produktu dla klienta. Obecnie oferujemy wersji testowych na podstawie typu produktu, scenariusza i portalu marketplace, które znajdują się na trzy różne typy.
+Niezależnie od tego, jak złożona jest aplikacja, twój dysk testowy firmy Microsoft pomoże Ci w przeniesieniu produktu do klienta. Dzisiaj oferujemy trzy różne typy dysków testowych na podstawie typu produktu, scenariusza i portalu Marketplace, w którym się znajdują.
 
-- **[Usługa Azure Resource Manager](./azure-resource-manager-test-drive.md)** : Usługi Azure Resource Manager testowej jest szablon wdrożenia, który zawiera wszystkie zasoby platformy Azure, wchodzące w skład rozwiązania tworzona przez wydawcę. Produkty, które mieszczą się w tym scenariuszu są te, które korzystać tylko zasobów platformy Azure.
-- **[Aplikacja logiki](./logic-app-test-drive.md)** : Wersję testową aplikacji logiki jest szablon wdrożenia, który jest przeznaczony do uwzględniający wszystkie architektury złożonych rozwiązań. Wszystkie aplikacje Dynamics lub niestandardowych produktów należy używać tego rodzaju wersji testowej.
-- **Power BI**: Usługa Power BI testowej jest po prostu osadzonego link do pulpitu nawigacyjnego niestandardowym. Produkt, który chce po prostu ilustrują, interaktywne wizualizacje usługi Power BI należy używać tego rodzaju wersji testowej.
-    Wszystko, co należy przekazać w tym miejscu jest osadzony adres URL do usługi Power BI.
+- **[Azure Resource Manager](./azure-resource-manager-test-drive.md)** : Azure Resource Manager Test jest szablonem wdrożenia zawierającym wszystkie zasoby platformy Azure, które składają się na rozwiązanie skompilowane przez wydawcę. Produkty, które pasują do tego scenariusza, korzystają z tylko zasobów platformy Azure.
+- **[Aplikacja logiki](./logic-app-test-drive.md)** : dysk testowy aplikacji logiki to szablon wdrożenia, który ma obejmować wszystkie złożone architektury rozwiązań. Wszystkie aplikacje Dynamics lub produkty niestandardowe powinny używać tego typu dysku testowego.
+- **Power BI**: Power BI dysk testowy jest po prostu osadzonym łączem do niestandardowego skompilowanego pulpitu nawigacyjnego. Każdy produkt, który chce tylko przedstawić interaktywną wizualizację Power BI, powinien używać tego typu dysku testowego.
+    Wszystko, co musisz przekazać, to osadzony adres URL Power BI.
 
-<a name="what-goes-on-in-the-background"></a>Co jest umieszczane w tle?
+<a name="what-goes-on-in-the-background"></a>Co się stało w tle?
 -------------------------------
 
-Usługa wersji testowej został opracowany pod kątem stale pomocy technicznej i obsługiwać klientów bez konieczności wszelkie ręcznej pracy ze strony użytkownika. Jako wydawca zadanie jest do zarządzania i skonfiguruj ustawienia testowej z theCloud portalu dla partnerów, a następnie ustawienie bezpośrednio będą dostępne dla klientów.
+Usługa dysk testowy jest wbudowana w taki sposób, aby obsługiwała klientów, bez konieczności ręcznego podejmowania jakichkolwiek działań. Jako Wydawca, Twoje zadanie służy do zarządzania ustawieniami dysków testowych z portalu theCloud partner i konfigurowania ich, a następnie to ustawienie będzie bezpośrednio dostępne dla klientów.
 
-To, ponieważ po ustawieniu konfiguracji dla wersji testowej, każdej wersji testowej staje się wystąpienia zarządzanego, który będzie wdrażany na żądanie dla klienta, na żądanie. Po przypisaniu wystąpienia wersji testowej wersji testowej jest dostępny do użytku na określoną ilość czasu, a następnie zostanie usunięty, aby utworzyć miejsce dla innego klienta.
+Oznacza to, że po skonfigurowaniu dla danego dysku testowego, każdy dysk testowy zostanie wystąpieniem zarządzanym, które zostanie wdrożone na żądanie dla klienta żądającego go. Po przypisaniu wystąpienia dysku testowego dysk testowy jest dostępny do użycia przez określoną ilość czasu, a następnie jest usuwany w celu utworzenia pokoju dla innego klienta.
 
-<a name="next-steps"></a>Kolejne kroki
+<a name="next-steps"></a>Następne kroki
 ----------
 
-Teraz, gdy wiesz, jakie wersji testowej jest ważny, przejdź odwiedziny określonego typu wersji testowej, który chcesz przejść, publikowania, aby poznać wszystkie wymagane pola wymagane.
+Teraz, gdy już wiesz, co to jest wersja testowa, przejdź do wybranego typu dysku testowego, który ma zostać opublikowany, aby dowiedzieć się więcej na temat wymaganych pól.
 
-- **[Usługa Azure Resource Manager](./azure-resource-manager-test-drive.md)**
+- **[Azure Resource Manager](./azure-resource-manager-test-drive.md)**
 - **[Aplikacja logiki](./logic-app-test-drive.md)**
 
-Jeśli masz więcej pytań, czego szukasz poradę dotyczącą rozwiązywania problemów lub mają być łatwiejsza, wersji testowej, przejdź do [— często zadawane pytania, rozwiązywanie problemów i najlepsze rozwiązania](./marketing-and-best-practices.md).
+Jeśli masz więcej pytań, szukasz porad dotyczących rozwiązywania problemów lub chcesz, aby test został pomyślnie przeszedł, przejdź do [sekcji często zadawane pytania, rozwiązywanie problemów, & najlepsze rozwiązania](./marketing-and-best-practices.md).

@@ -1,43 +1,44 @@
 ---
-title: Stronie szczegółowych informacji o witrynie Azure Marketplace
-description: Omówienie strony szczegółowych informacji w portalu Cloud Partner portalu Azure Marketplace.
+title: Strona usługi Insights dla portalu Azure Marketplace
+description: Przegląd strony usługi Insights w portal Cloud Partner dla witryny Azure Marketplace.
 services: Azure, Marketplace, Cloud Partner Portal,
 author: v-miclar
 ms.service: marketplace
+ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 11/14/2018
 ms.author: pabutler
-ms.openlocfilehash: 2cbe3b790197c3f71305e4cb21d0f37fe0404511
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: b1b8d716beec17b7da82968ede8d24ced348e04a
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64943512"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73821524"
 ---
 # <a name="insights-page"></a>Strona szczegółowych informacji
 
-[ **Insights** ](https://cloudpartner.azure.com/#insights) strona zawiera następujące zestawy pulpity nawigacyjne, które ułatwiają zrozumienie i maksymalizując sprzedaży ofert w witrynie marketplace.  Każdy pulpit nawigacyjny jest dostępny za pośrednictwem karty o takiej samej nazwie wzdłuż górnej części strony.
+Strona [**szczegółowe**](https://cloudpartner.azure.com/#insights) dane zawiera następujące zestawy pulpitów nawigacyjnych, które ułatwiają zrozumienie i maksymalizację sprzedaży ofert w portalu Marketplace.  Każdy pulpit nawigacyjny jest dostępny za pomocą karty o tej samej nazwie w górnej części strony.
 
 
-|  **Pulpit nawigacyjny**    |  **Wyświetlona zawartość**               |
+|  **Pulpit nawigacyjny**    |  **Wyświetlana zawartość**               |
 |  -------------    |  ---------------------               |
-| **Podsumowanie**       | wykresy trendów i wartości zagregowanych danych, który podsumowuje aktywność wydawcy, oferty w witrynie marketplace |
-| **Informacje dotyczące wypłat**        | wypłaty i powiązane transakcje w formatach graficznego i do pobrania |
-| **Zamówień i użycie** | zamówień i informacje dotyczące użycia w formatach graficznego i do pobrania |
-| **Odbiorcy**      | informacje o kliencie, łącznie z ich profilów zakupu |
-| **Wdrożenie**    | sukcesów i niepowodzeń informacje na temat wdrażania w formatach graficznego i poziom zdarzenia |
-| **Pliki do pobrania**     | Lista żądań pobierania w ciągu ostatnich 30 dni |
-| **Analiza**     | Podsumowanie funkcji web analytics i analiza wydajności kampanii |
+| **Podsumowanie**       | wykresy, trendy i wartości zagregowanych danych, które podsumowują aktywność witryny Marketplace dla ofert wydawców |
+| **Płat**        | wypłaty i powiązane transakcje w formatach graficznych i do pobrania |
+| **Zamówienia & użycie** | Informacje o zamówieniach i użyciu w formatach graficznych i do pobrania |
+| **Dział**      | Informacje o klientach, w tym ich profil zakupów |
+| **Wdrożenie**    | Informacje o powodzeniu i niepowodzeniu wdrożenia zarówno w formatach graficznym, jak i na poziomie zdarzeń |
+| **Proces**     | Lista żądań pobrania z ostatnich 30 dni |
+| **Analiza**     | Podsumowanie analizy sieci Web i analiza wydajności kampanii |
 |  |  |
 
 
 ## <a name="summary-dashboard"></a>Pulpit nawigacyjny podsumowania
-Pulpit nawigacyjny podsumowania jest pierwsza karta i domyślną kartę pojawi się po przejściu do strony szczegółowych informacji.  W tym projekcie zamierzone odzwierciedla, że ten pulpit nawigacyjny zapewnia wydawców największą widoku wielkości sprzedaży ofert.  Umożliwia graficzne tendencji użycia znormalizowane; miesięczne użycie; Popularne użycia rynku geograficznym, oferty i odbiorcę. informacje dotyczące wypłat trendów i.  Dane wyjściowe można dostosować, określając daty rozpoczęcia i zakończenia dla analizy.  Na poniższej ilustracji przedstawiono przykładowy pulpit nawigacyjny podsumowania dla firmy Contoso w czerwcu sierpnia 2018 r.
+Pulpit nawigacyjny podsumowania to pierwsza karta i jest domyślną kartą wyświetlaną po przejściu na stronę wglądu w szczegółowe dane.  Ten celowy Projekt odzwierciedla, że ten pulpit nawigacyjny jest przeznaczony dla wydawców w szerszym widoku działań sprzedaży ich ofert.  Zawiera graficzną reprezentację znormalizowanego trendu użycia; Miesięczne użycie; trendy użycia według geograficznego rynku, oferty i klienta; i trend wypłaty.  Dane wyjściowe można dostosować, określając daty rozpoczęcia i zakończenia analizy.  Na poniższej ilustracji przedstawiono przykład pulpitu nawigacyjnego podsumowania dla firmy Contoso dla czerwca do sierpnia 2018.
 
-![Pulpit nawigacyjny podsumowania strony Insights sprzedawcy](./media/insights-page1.png)
+![Pulpit nawigacyjny podsumowania strony sprzedającego szczegółowe informacje](./media/insights-page1.png)
 
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
-Aby uzyskać więcej informacji na temat za pomocą szczegółowych informacji sprzedawcy Optymalizuj sprzedaż, zobacz sekcję [Insights sprzedawcy wprowadzenie do](./../../cloud-partner-portal-orig/si-getting-started.md).
+Aby uzyskać więcej informacji o korzystaniu z wglądu dla sprzedającego w celu optymalizacji sprzedaży, zobacz sekcję [wprowadzenie ze szczegółowymi informacjami dla sprzedającego](./../../cloud-partner-portal-orig/si-getting-started.md).
 

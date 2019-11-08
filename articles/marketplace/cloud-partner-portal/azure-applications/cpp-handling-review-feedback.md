@@ -1,76 +1,77 @@
 ---
-title: Obsługa aplikacji platformy Azure opinii | Portal Azure Marketplace
-description: Wyjaśnia, jak używać DevOps platformy Azure do obsługi opinii dla aplikacji platformy Azure, ofert w portalu Azure Marketplace.
+title: Obsługa opinii na temat przeglądu aplikacji platformy Azure | Portal Azure Marketplace
+description: Wyjaśnia, jak używać usługi Azure DevOps do obsługi opinii na temat ofert aplikacji platformy Azure w portalu Azure Marketplace.
 services: Azure, Marketplace, Cloud Partner Portal,
 author: v-miclar
 ms.service: marketplace
+ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 02/05/2019
 ms.author: pabutler
-ms.openlocfilehash: 1a45af2cb5eed8daa4b50bb6f0b504f9653c827a
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: ef4aff57948034fb369bd74564306b7b8674b377
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67068951"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73827582"
 ---
 # <a name="handling-review-feedback"></a>Obsługa opinii dla przeglądu
 
-W tym artykule wyjaśniono, jak uzyskiwać dostęp do środowiska DevOps platformy Azure używane przez zespół usługi Microsoft Azure Marketplace przeglądu.  Jeśli krytycznych problemów znajdują się w ofercie usługi Azure application podczas **przeglądu Microsoft** krok, użytkownik może zalogować się do tego systemu Aby wyświetlić szczegółowe informacje na temat tych problemów (Przejrzyj opinię).  Po rozwiązaniu tych problemów muszą ponownie przesłać oferty w taki sposób, aby kontynuować, opublikuj go w portalu Azure Marketplace.  Na poniższym diagramie przedstawiono, jak ten proces opinii odnosi się do publikowania.
+W tym artykule wyjaśniono, jak uzyskać dostęp do środowiska Azure DevOps, które jest używane przez zespół przegląd Microsoft Azure Marketplace.  Jeśli w ramach kroku **przeglądu firmy Microsoft** zostaną znalezione problemy krytyczne, możesz zalogować się do tego systemu, aby wyświetlić szczegółowe informacje o tych problemach (Przejrzyj informacje zwrotne).  Po naprawieniu wszystkich tych problemów musisz ponownie przesłać swoją ofertę, aby nadal publikować ją w portalu Azure Marketplace.  Na poniższym diagramie przedstawiono sposób, w jaki proces opinii odnosi się do procesu publikowania.
 
-![Kroki publikowania opinii DevOps platformy Azure](./media/pub-flow-vsts-access.png)
+![Publikowanie kroków za pomocą usługi Azure DevOps](./media/pub-flow-vsts-access.png)
 
-Zwykle Przejrzyj problemy są przywoływane jako żądania ściągnięcia (PR).  Każdego żądania Ściągnięcia jest połączony z online [DevOps platformy Azure](https://azure.microsoft.com/services/devops/) (poprzednia nazwa programu Visual Studio Team Services (VSTS)) elementu, który zawiera szczegółowe informacje o problemie.  Poniższa ilustracja przedstawia przykład odwołania do przeglądu żądania Ściągnięcia.  Dla złożonych sytuacjach zespoły przeglądu i pomocy technicznej może również wiadomość e-mail. 
+Zazwyczaj do przeglądu problemów odwołuje się żądanie ściągnięcia.  Wszystkie żądania ściągnięcia są połączone z elementem online [Azure DevOps](https://azure.microsoft.com/services/devops/) (wcześniej o Visual Studio Team Services nazwie VSTS), który zawiera szczegółowe informacje o problemie.  Na poniższej ilustracji przedstawiono przykład odwołania przeglądu żądania ściągnięcia.  W przypadku złożonych sytuacji zespoły przeglądające i pomocy technicznej mogą również wysłać wiadomość e-mail. 
 
-![Stan karty zawierające opinii](./media/status-tab-ms-review.png)
+![Karta stanu wyświetlająca opinię na temat przeglądu](./media/status-tab-ms-review.png)
 
 
-## <a name="azure-devops-access"></a>Dostęp roli DevOps platformy Azure
+## <a name="azure-devops-access"></a>Dostęp do usługi Azure DevOps
 
-Aby wyświetlić elementy żądania Ściągnięcia, do którego odwołuje się opinii, wydawcy muszą najpierw zostać przyznane odpowiednią autoryzacją.  W przeciwnym razie odbieranie nowych wydawców `401 - Not Authorized` strony odpowiedzi podczas próby wyświetlenia żądania ściągnięcia.  Aby zażądać dostępu do tego repozytorium DevOps platformy Azure, wykonaj następujące czynności:
+Aby wyświetlić elementy żądania ściągnięcia, do których odwołuje się informacja zwrotna, należy najpierw udzielić wydawcom odpowiedniej autoryzacji.  W przeciwnym razie nowi wydawcy otrzymają stronę odpowiedzi `401 - Not Authorized` podczas próby wyświetlenia żądań ściągnięcia.  Aby zażądać dostępu do tego repozytorium usługi Azure DevOps, wykonaj następujące czynności:
 
 1. Zbierz następujące informacje:
-    - Twoja nazwa wydawcy i Identyfikatora
-    - Oferty (aplikacje platformy Azure), oferują nazwy i Identyfikatora jednostki SKU
-    - Żądanie ściągnięcia link na przykład: `https://solutiontemplates.visualstudio.com/marketplacesolutions/_git/contoso/pullrequest/<number>`  Ten adres URL można pobrać z komunikatu powiadomienia lub adres strony odpowiedzi 401.
-    - Adresy e-mail osób z organizacji publikowania, który chcesz udzielić dostępu do.  Ta lista powinna zawierać adresy właściciela, podanych podczas rejestracji jako wydawcę w portalu Cloud Partner.
-2. Utwórz żądanie pomocy technicznej.  Na pasku tytułu w portalu Cloud Partner wybierz **pomocy** przycisk, a następnie wybierz **pomocy technicznej** z menu.  Domyślne internetowej przeglądarki należy uruchomić i przejdź do firmy Microsoft nowe strony pomocy technicznej zdarzenia.  (Może mieć się się zalogować).
-3. Określ **typ problemu** jako **przechodzenia do portalu marketplace** i **kategorii** jako **problem z dostępem**, a następnie wybierz **Start żądanie**.
+    - Nazwa i identyfikator wydawcy
+    - Typ oferty (aplikacja platformy Azure), nazwa oferty i identyfikator jednostki SKU
+    - Link żądania ściągnięcia, na przykład: `https://solutiontemplates.visualstudio.com/marketplacesolutions/_git/contoso/pullrequest/<number>` ten adres URL można pobrać z komunikatu powiadomienia lub z adresu strony odpowiedzi 401.
+    - Adresy e-mail osób z organizacji publikowania, do których chcesz uzyskać dostęp.  Ta lista powinna zawierać adresy właścicieli podane podczas rejestrowania jako Wydawca na portal Cloud Partner.
+2. Utwórz zdarzenie pomocy technicznej.  Na pasku tytułu portal Cloud Partner wybierz przycisk **Pomoc** , a następnie wybierz pozycję **Obsługa** z menu.  Należy uruchomić domyślną przeglądarkę sieci Web i przejść do strony nowe zdarzenie pomocy technicznej firmy Microsoft.  (Może być konieczne zalogowanie się jako pierwsze).
+3. Określ **typ problemu** jako proces dołączania do **witryny Marketplace** oraz **kategorię** jako **problem z dostępem**, a następnie wybierz pozycję **Uruchom żądanie**.
 
-    ![Kategoria bilet pomocy technicznej](./media/support-incident1.png)
+    ![Kategoria biletu pomocy technicznej](./media/support-incident1.png)
 
-4. W **krok 1 z 2** strony, podaj swoje informacje kontaktowe i wybierz **Kontynuuj**.
-5. W **krok 2 z 2** Określ tytuł zdarzenia (na przykład `Request Azure DevOps access`) i podaj informacje zebrane w pierwszym kroku (powyżej).  Przeczytaj i zaakceptuj umowę, a następnie wybierz **przesyłania**.
+4. Na stronie **krok 1 z 2** podaj informacje kontaktowe i wybierz pozycję **Kontynuuj**.
+5. Na stronie **krok 2 z 2** określ tytuł zdarzenia (na przykład `Request Azure DevOps access`) i podaj informacje zebrane w pierwszym kroku (powyżej).  Przeczytaj i zaakceptuj umowę, a następnie wybierz pozycję **Prześlij**.
 
-Jeśli tworzenie zdarzenia zakończyło się pomyślnie, zostanie wyświetlona strona potwierdzenia.  Na tej stronie, na której można się odwołać, należy zapisać informacji o potwierdzenie.  Zespół pomocy technicznej firmy Microsoft należy odpowiedzieć na Twoje żądanie dostępu w ciągu kilku dni roboczych.
+Jeśli utworzenie zdarzenia zakończyło się pomyślnie, zostanie wyświetlona strona potwierdzenia.  Zapisz na tej stronie informacje o potwierdzeniu dotyczące odwołania.  Zespół pomoc techniczna firmy Microsoft powinien odpowiedzieć na żądanie dostępu w ciągu kilku dni roboczych.
 
 
 ## <a name="reviewing-the-pull-request"></a>Przeglądanie żądania ściągnięcia 
 
-Użyj poniższej procedury, przejrzeć zagadnienia, opisane w żądaniu ściągnięcia.
+Aby przejrzeć problemy udokumentowane w żądaniu ściągnięcia, należy wykonać poniższą procedurę.
 
-1. W **przeglądu Microsoft** części **publikowania kroki** formularza, kliknij Link żądania Ściągnięcia, aby uruchomić przeglądarkę i przejdź do **Przegląd** strony (macierzysty) dla tego żądania ściągnięcia.  Poniższa ilustracja przedstawia przykładową stronę główną krytyczny problem dla oferty aplikacji przykładowej firmy Contoso.  Ta strona zawiera przydatne podsumowanie informacji o problemach przeglądu w aplikacji platformy Azure.  
+1. W sekcji **Recenzja firmy Microsoft** w obszarze **Publikowanie kroków** kliknij link żądania ściągnięcia, aby uruchomić przeglądarkę, i przejdź do strony **Przegląd** (Strona główna) dla tego żądania ściągnięcia.  Na poniższej ilustracji przedstawiono przykładową stronę główną problemu krytycznego dla oferty przykładowej aplikacji contoso.  Ta strona zawiera przydatne informacje podsumowujące dotyczące problemów z przeglądem znalezionych w aplikacji platformy Azure.  
 
-    [![Strona główna żądania ściągnięcia](./media/pr-home-page-thumb.png)](./media/pr-home-page.png)
+    [![stronę główną żądania ściągnięcia](./media/pr-home-page-thumb.png)](./media/pr-home-page.png)
     <br/> *Kliknij obraz, aby rozwinąć.*
     
-2. (Opcjonalnie) Po prawej stronie okna, w sekcji **zasady**, kliknąć komunikat wydania (w tym przykładzie: **Nie można zweryfikować zasad**) aby zbadać szczegóły niskiego poziomu wydania, w tym skojarzonych plików dziennika.  Błędy zwykle są wyświetlane w dolnej części plików dziennika.
+2. Obowiązkowe Po prawej stronie okna, w sekcji **zasady**, kliknij komunikat problemu (w tym przykładzie: **Sprawdzanie poprawności zasad nie powiodło**się), aby zbadać szczegóły tego problemu, w tym skojarzone pliki dziennika.  Błędy są zwykle wyświetlane w dolnej części plików dziennika.
 
-3. W menu po stronie lewej części strony głównej wybierz **pliki** do wyświetlania listy plików, wchodzące w skład zasoby techniczne dla tej oferty.  Recenzenci firmy Microsoft, należy dodać komentarz opisujący wykryte problemy krytyczne.  W poniższym przykładzie dwa problemy zostały odnalezione. 
+3. W menu po lewej stronie strony głównej wybierz pozycję **pliki** , aby wyświetlić listę plików wchodzących w skład zasobów technicznych dla tej oferty.  Recenzenci firmy Microsoft powinni dodać komentarze opisujące wykryte problemy krytyczne.  W poniższym przykładzie wykryto dwa problemy. 
 
-    [![Strona główna żądania ściągnięcia](./media/pr-files-page-thumb.png)](./media/pr-files-page.png)
+    [![stronę główną żądania ściągnięcia](./media/pr-files-page-thumb.png)](./media/pr-files-page.png)
     <br/> *Kliknij obraz, aby rozwinąć.*
 
-4. Kliknij pozycję w każdym węźle komentarza, w drzewie po lewej stronie, aby przejść do komentarzy w kontekście otaczającym kodem.  Napraw kod źródłowy w projekcie zespołu, aby rozwiązać ten problem opisany przez komentarz.
+4. Kliknij każdy węzeł komentarza w drzewie po lewej stronie, aby przejść do komentarza w kontekście otaczającego kodu.  Popraw kod źródłowy w projekcie zespołu, aby rozwiązać problem opisany przez komentarz.
 
 > [!Note]
-> Nie można edytować zasoby techniczne swoją ofertę w środowisku DevOps platformy Azure zespołu przeglądu.  Dla wydawców jest to środowisko tylko do odczytu dla kodu źródłowego zawarte.  Można jednak pozostawić odpowiadanie na komentarze na rzecz przeglądu zespołu firmy Microsoft.
+> Nie możesz edytować zasobów technicznych swojej oferty w środowisku usługi Azure DevOps dla zespołu.  W przypadku wydawców jest to środowisko tylko do odczytu dla zawartego kodu źródłowego.  Można jednak zostawić odpowiedzi na komentarze, aby skorzystać z zespołu ds. przeglądu firmy Microsoft.
 
-   W poniższym przykładzie wydawcy ma przeglądowi poprawione i odpowiedź do pierwszego wydania.
+   W poniższym przykładzie Wydawca sprawdził, poprawił i odpowiedział na pierwszy problem.
 
-   ![Najpierw usuń i komentarz odpowiedzi](./media/first-comment-reply.png)
+   ![Pierwsza poprawka i odpowiedź komentarza](./media/first-comment-reply.png)
 
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
-Po naprawieniu krytycznych problemów, które opisano w PR(s) przeglądu musi [raz opublikuj swoją ofertę platformy Azure aplikacja](./cpp-publish-offer.md).
+Po usunięciu krytycznych problemów udokumentowanych w przeglądzie żądania ściągnięcia należy [ponownie opublikować ofertę aplikacji platformy Azure](./cpp-publish-offer.md).

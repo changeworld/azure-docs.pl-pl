@@ -4,15 +4,16 @@ description: Skonfiguruj potencjalnych klientów w komercyjnym portalu Marketpla
 services: Azure, Marketplace, commercial marketplace, Partner Center
 author: qianw211
 ms.service: marketplace
+ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 08/01/2019
 ms.author: evansma
-ms.openlocfilehash: 31dcc8c1e35b627b231dbe2a62998c8514d05a20
-ms.sourcegitcommit: d3dced0ff3ba8e78d003060d9dafb56763184d69
+ms.openlocfilehash: 7ead8dee12d4376e6e1058b84a25b91c021a937c
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69902652"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73812650"
 ---
 # <a name="customer-leads-from-your-marketplace-offer"></a>Potencjalni klienci z oferty portalu Marketplace
 
@@ -26,7 +27,7 @@ Potencjalni klienci są zainteresowani lub wdrażają oferty z [witryny Azure Ma
 
 Poniżej znajdują się miejsca, w których generowany jest potencjalny klient:
 
-1. Gdy klient wyraża zgodę na udostępnianie informacji po wybraniu pozycji "kontakt ze mną" w portalu Marketplace. Ten potencjalny klient jest potencjalnym liderem, gdzie udostępniamy informacje o kliencie, który wyraził zainteresowanie uzyskaniem produktu. Potencjalny klient to Góra lejka pozyskiwania.
+1. Gdy klient wyraża zgodę na udostępnianie informacji po wybraniu pozycji "kontakt ze mną" w portalu Marketplace. Ten **potencjalny klient jest potencjalnym liderem** , gdzie udostępniamy informacje o kliencie, który wyraził zainteresowanie uzyskaniem produktu. Potencjalny klient to Góra lejka pozyskiwania.
 
       ![Dynamics 365 kontakt ze mną](./media/commercial-marketplace-get-customer-leads/dynamics-365-contact-me.png)
 
@@ -48,13 +49,13 @@ Poniżej znajdują się miejsca, w których generowany jest potencjalny klient:
 
 ## <a name="understand-lead-data"></a>Informacje o potencjalnych klientach
 
-Każdy potencjalny klient, który otrzymasz w procesie pozyskiwania klientów, ma dane w określonych polach. Pierwsze pole, dla którego ma zostać wyszukane, to pole, które jest zgodne z `LeadSource` następującym formatem: | **Oferta**akcji źródłowej.
+Każdy potencjalny klient, który otrzymasz w procesie pozyskiwania klientów, ma dane w określonych polach. Pierwsze pole, dla którego ma zostać wyszukane, to pole `LeadSource`, które jest zgodne z następującym formatem: **Source-Action** | **Oferta**.
 
-**Źródła**: Wartość tego pola jest wypełniana na podstawie rynku, który wygenerował potencjalnego klienta. Możliwe wartości to `"AzureMarketplace"`, `"AzurePortal"`, i `"AppSource (SPZA)"`.
+**Źródła**: wartość tego pola jest wypełniana na podstawie rynku, który wygenerował potencjalnego klienta. Możliwe wartości to `"AzureMarketplace"`, `"AzurePortal"`i `"AppSource (SPZA)"`.
 
-**Akcje**: Wartość tego pola jest wypełniana na podstawie akcji podjętej przez klienta w witrynie Marketplace, która wygenerowała potencjalnego klienta. 
+**Akcje**: wartość dla tego pola jest wypełniana na podstawie akcji podjętej przez klienta w witrynie Marketplace, która wygenerowała potencjalnego klienta. 
 
-Możliwe wartości to:
+Możliwe wartości:
 
 - "INS" — instalacja. Ta akcja znajduje się w witrynie Azure Marketplace lub AppSource, gdy klient kupuje produkt.
 - "PLT" — oznacza próbę przetestowania partnera. Ta akcja jest włączona w AppSource, gdy klient korzysta z opcji kontakt ze mną.
@@ -62,9 +63,9 @@ Możliwe wartości to:
 - "Utwórz" — Ta akcja jest dostępna tylko wewnątrz Azure Portal i jest generowana, gdy klient zakupił ofertę na swoje konto.
 - "StartTestDrive" — Ta akcja dotyczy tylko dysków testowych i jest generowana, gdy klient uruchamia ich dysk testowy.
 
-**Oferty**: W portalu Marketplace może istnieć wiele ofert. Wartość tego pola jest wypełniana na podstawie oferty, która wygenerowała potencjalny klient. IDENTYFIKATOR wydawcy i identyfikator oferty są wysyłane w tym polu i są wartościami podanymi podczas opublikowania oferty w portalu Marketplace.
+**Oferty**: w portalu Marketplace może być wiele ofert. Wartość tego pola jest wypełniana na podstawie oferty, która wygenerowała potencjalny klient. IDENTYFIKATOR wydawcy i identyfikator oferty są wysyłane w tym polu i są wartościami podanymi podczas opublikowania oferty w portalu Marketplace.
 
-W poniższych przykładach pokazano przykładowe wartości w oczekiwanym `publisherid.offerid`formacie: 
+W poniższych przykładach pokazano przykładowe wartości w oczekiwanym formacie `publisherid.offerid`: 
 
 1. `checkpoint.check-point-r77-10sg-byol`
 1. `bitnami.openedxcypress`
@@ -74,13 +75,13 @@ W poniższych przykładach pokazano przykładowe wartości w oczekiwanym `publis
 
 Informacje o kliencie są wysyłane za pośrednictwem wielu pól. W poniższym przykładzie przedstawiono informacje o klientach, które znajdują się w potencjalnym kliencie.
 
-- Imię Zawierają
-- Nazwisko Smith
-- Poczta e-mail:\@jsmith Microsoft.com
-- Połączenia 1234567890
-- Kraj: USA
-- Przedsiębiorstwo Microsoft
-- Tytuły DYREKTOR DS
+- Imię: Jan
+- LastName: Kowalski
+- Poczta e-mail: jsmith\@microsoft.com
+- Telefon: 1234567890
+- Kraj: US
+- Firma: Microsoft
+- Tytuł: dyrektor ds
 
 >[!Note]
 >Nie wszystkie dane w poprzednim przykładzie są zawsze dostępne dla każdego potencjalnego klienta. Ponieważ będziesz otrzymywać potencjalni klienci z wielu kroków, jak wspomniano w sekcji potencjalni klienci, najlepszym sposobem obsługi potencjalnych klientów jest cofnięcie duplikatów rekordów i spersonalizowanie kolejnych działań. W ten sposób każdy klient otrzymuje odpowiedni komunikat i tworzysz unikatową relację.
@@ -104,7 +105,7 @@ Odpowiedź zależy od typu publikowanej oferty. SaaS i Dynamics 365 dla ofert zw
 
 ### <a name="how-can-i-find-the-test-lead"></a>Jak mogę znaleźć potencjalnego klienta testowego?
 
-`“MSFT_TEST”` Wyszukaj w miejscu docelowym potencjalnego klienta, Oto przykładowy test, który prowadzi od firmy Microsoft:
+Wyszukaj `"MSFT_TEST"` w miejscu docelowym potencjalnego klienta, Oto przykładowy test, który prowadzi od firmy Microsoft:
 
 ```
 company = MSFT_TEST_636573304831318844
@@ -141,7 +142,7 @@ Dostęp do danych potencjalnych klientów przechowywanych w tabeli platformy Azu
 
 ### <a name="i-have-configured-azure-table-as-my-lead-destination-can-i-get-notified-whenever-a-new-lead-is-sent-by-marketplace"></a>Mam skonfigurowaną tabelę platformy Azure jako lokalizację docelową mojego potencjalnego klienta, czy mogę otrzymywać powiadomienia za każdym razem, gdy nowy potencjalny klient zostanie wysłany przez portal Marketplace?
 
-Tak, postępuj zgodnie z instrukcjami w celu skonfigurowania usługi Microsoft Flow, która wysyła wiadomość e-mail, jeśli potencjalny klient zostanie dodany do tabeli [](./commercial-marketplace-lead-management-instructions-azure-table.md)platformy Azure w tej dokumentacji.
+Tak, postępuj zgodnie z instrukcjami w celu skonfigurowania usługi Microsoft Flow, która wysyła wiadomość e-mail, jeśli potencjalny klient zostanie dodany do tabeli platformy Azure w [tej dokumentacji.](./commercial-marketplace-lead-management-instructions-azure-table.md)
 
 ### <a name="i-have-configured-salesforce-as-my-lead-destination-why-cant-i-find-the-leads"></a>Mam skonfigurowaną usługi Salesforce jako lokalizację docelową mojego potencjalnego klienta, dlaczego nie mogę znaleźć potencjalnych klientów?
 

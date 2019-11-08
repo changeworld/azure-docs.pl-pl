@@ -1,6 +1,6 @@
 ---
 title: Jak wdrożyć moduł OPC bliźniaczy w istniejącym projekcie platformy Azure | Microsoft Docs
-description: Jak wdrożyć sznury OPC w istniejącym projekcie.
+description: W tym artykule opisano sposób wdrażania sznurka OPC w istniejącym projekcie. Możesz również dowiedzieć się, jak rozwiązywać problemy z błędami wdrożenia.
 author: dominicbetts
 ms.author: dobett
 ms.date: 11/26/2018
@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: industrial-iot
 services: iot-industrialiot
 manager: philmea
-ms.openlocfilehash: 74b502a37081c729c5e33a0db7dc7f26cb44774b
-ms.sourcegitcommit: 47b00a15ef112c8b513046c668a33e20fd3b3119
+ms.openlocfilehash: b971ec13c71ccfd7d28ae6987593d09201b9b764
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69972281"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73824116"
 ---
 # <a name="deploy-opc-twin-to-an-existing-project"></a>Wdróż bliźniaczy OPC do istniejącego projektu
 
@@ -52,7 +52,7 @@ cd azure-iiot-components
 
    Dane wyjściowe zawierają adres URL publicznego punktu końcowego. 
 
-3. Po pomyślnym zakończeniu działania skryptu wybierz, czy chcesz zapisać `.env` plik.  Aby nawiązać `.env` połączenie z punktem końcowym w chmurze za pomocą narzędzi takich jak konsola lub wdrożenie modułów do programowania i debugowania, potrzebny jest plik środowiska.
+3. Po pomyślnym zakończeniu działania skryptu wybierz, czy chcesz zapisać plik `.env`.  Aby nawiązać połączenie z punktem końcowym w chmurze za pomocą narzędzi takich jak konsola lub wdrażanie modułów do programowania i debugowania, potrzebny jest plik środowiska `.env`.
 
 ## <a name="troubleshooting-deployment-failures"></a>Rozwiązywanie problemów z błędami wdrożenia
 

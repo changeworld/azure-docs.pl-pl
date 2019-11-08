@@ -1,22 +1,22 @@
 ---
-title: 'Tworzenie Azure SQL Database agenta zadań elastycznych przy użyciu programu PowerShell '
+title: Tworzenie agenta zadań elastycznych za pomocą programu PowerShell
 description: Dowiedz się, jak utworzyć agenta zadań elastycznych za pomocą programu PowerShell.
 services: sql-database
 ms.service: sql-database
 ms.subservice: scale-out
-ms.custom: ''
+ms.custom: seo-lt-2019
 ms.devlang: ''
 ms.topic: tutorial
 author: johnpaulkee
 ms.author: joke
 ms.reviwer: sstein
 ms.date: 03/13/2019
-ms.openlocfilehash: 80f9db2d11c875d9be9bef225c04e3e90f3d0ff8
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 9724e54b03e5de065b8b39cb57c6a9880cf37cc6
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73692249"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73827194"
 ---
 # <a name="create-an-elastic-job-agent-using-powershell"></a>Tworzenie agenta zadań elastycznych za pomocą programu PowerShell
 
@@ -72,7 +72,7 @@ Do utworzenia agenta zadań elastycznych wymagana jest baza danych (S0 lub wyżs
 
 *Poniższy skrypt tworzy nową grupę zasobów, serwer i bazę danych do użycia jako baza danych zadań. Poniższy skrypt tworzy również drugi serwer z dwiema pustymi bazami danych do wykonywania zadań.*
 
-Dla zadań elastycznych nie ma określonych wymagań dotyczących nazewnictwa, można więc zastosować dowolne, o ile są one zgodne z [wymaganiami platformy Azure](https://docs.microsoft.com/azure/architecture/best-practices/naming-conventions).
+Dla zadań elastycznych nie ma określonych wymagań dotyczących nazewnictwa, można więc zastosować dowolne, o ile są one zgodne z [wymaganiami platformy Azure](/azure/cloud-adoption-framework/ready/azure-best-practices/naming-and-tagging).
 
 ```powershell
 # Sign in to your Azure account

@@ -1,22 +1,23 @@
 ---
-title: Szablon wdrożenia w usłudze Azure Key Vault | Portal Azure Marketplace
-description: Wyświetla listę szablonów usługi Azure Resource Manager wymagane do wdrożenia nowego wystąpienia usługi Azure Key Vault.
+title: Szablon wdrożenia Azure Key Vault | Portal Azure Marketplace
+description: Wyświetla listę Azure Resource Manager szablonu wymaganego do wdrożenia nowego wystąpienia Azure Key Vault.
 services: Azure, Marketplace, Cloud Partner Portal,
 author: v-miclar
 ms.service: marketplace
+ms.subservice: partnercenter-marketplace-publisher
 ms.topic: article
 ms.date: 11/29/2018
 ms.author: pabutler
-ms.openlocfilehash: 053a9f8ddfcc523532597d9e73aa095bf9110d72
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: befed70b6858ebc8aaab7ebe200bb8082a430bab
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64938627"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73824044"
 ---
 # <a name="key-vault-deployment-template"></a>Szablon wdrożenia magazynu kluczy
 
-Następujący szablon usługi Azure Resource Manager definiuje nowe wystąpienie usługi Azure Key Vault.  Jest on używany w artykule [Utwórz certyfikat usługi key vault](cpp-create-key-vault-cert.md). 
+Poniższy szablon Azure Resource Manager definiuje nowe wystąpienie Azure Key Vault.  Jest on używany w artykule [Tworzenie certyfikatu magazynu kluczy](cpp-create-key-vault-cert.md). 
 
 ```json
 {

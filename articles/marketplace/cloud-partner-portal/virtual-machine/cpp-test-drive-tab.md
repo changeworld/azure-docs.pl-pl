@@ -1,52 +1,53 @@
 ---
-title: Karta wersji testowej maszyny wirtualnej w portalu Cloud Partner portalu Azure Marketplace
-description: W tym artykule opisano kartę wersji testowej używanego podczas tworzenia oferty maszyny Wirtualnej portalu Azure Marketplace.
+title: Karta dysk testowy maszyny wirtualnej w portal Cloud Partner portalu Azure Marketplace
+description: Opisuje kartę dysk testowy służącą do tworzenia oferty maszyny wirtualnej portalu Azure Marketplace.
 services: Azure, Marketplace, Cloud Partner Portal, virtual machine
 author: v-miclar
 ms.service: marketplace
+ms.subservice: partnercenter-marketplace-publisher
 ms.topic: article
 ms.date: 04/25/2019
 ms.author: pabutler
-ms.openlocfilehash: 31c7968d0d96a44ff166444f73807e0ccb5dc583
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 94ebbcca50916f1675ab990a4b45f3b90e069104
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64938003"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73808875"
 ---
-# <a name="virtual-machine-test-drive-tab"></a>Karta wersji testowej maszyny wirtualnej
+# <a name="virtual-machine-test-drive-tab"></a>Karta Stacja testowa maszyn wirtualnych
 
-**Wersji testowej** karcie **nowa oferta** strony umożliwia podanie potencjalnych klientów z praktycznych, przeprowadzanemu samodzielnie procesowi pokaz najważniejsze funkcje i korzyści, przedstawiona w swojego produktu w przypadku scenariusza standardowych.  Wersja testowa to opcjonalna funkcja dla typów ofert, które obsługują wersję testową.  Wersja testowa wymaga obsługi zasobów, aby prawidłowo zaimplementować.  Aby uzyskać więcej informacji, zobacz artykuł [Azure Marketplace testowej](https://azure.microsoft.com/blog/azure-marketplace-test-drive/).  <!--TD: Replace with migrated version of Test Drive article! -->
+Karta **Stacja testowa** na stronie **Nowa oferta** umożliwia klientom potencjalnych klientów korzystanie z praktycznego pokazu najważniejszych funkcji i korzyści Twojego produktu, które przedstawiono w ustandaryzowanym scenariuszu.  Test Drive to opcjonalna funkcja dla typów ofert, które obsługują test na dysku.  Wersja testowa wymaga prawidłowego wdrożenia zasobów pomocniczych.  Aby uzyskać więcej informacji, zobacz artykuł [Azure Marketplace Test Drive](https://azure.microsoft.com/blog/azure-marketplace-test-drive/).  <!--TD: Replace with migrated version of Test Drive article! -->
 
-Aby włączyć tę funkcję, na **wersji testowej** kliknij pozycję **tak** opcja **włączyć wersję testową**.  **Wersji testowej** karty są wyświetlane pola, które są dostępne do edycji.  Dołączonych gwiazdki (*) na nazwę pola wskazuje, że jest wymagane.
+Aby włączyć tę funkcję, na karcie **dysk testowy** kliknij opcję **tak** , aby **włączyć dysk testowy**.  Na karcie **dysk testowy** są wyświetlane pola dostępne do edycji.  Dołączona gwiazdka (*) w nazwie pola wskazuje, że jest to wymagane.
 
-![Karta dysku testu w formularzu nowa oferta dla maszyn wirtualnych](./media/publishvm_007.png)
+![Karta Stacja testowa w formularzu Nowa oferta dla maszyn wirtualnych](./media/publishvm_007.png)
 
 
 ## <a name="field-values"></a>Wartości pól
 
-W poniższej tabeli opisano przeznaczenie i zawartość tych pól.  Wymagane pola są wskazanych przez znak gwiazdki (*).
+W poniższej tabeli opisano przeznaczenie i zawartość tych pól.  Wymagane pola są indicted przez gwiazdkę (*).
 
 
 |    Pole                  |       Opis                                                            |
 |  ---------                |     ---------------                                                          |
 |  *Szczegóły*   |  |
-| **Opis elementu\***           | Zawiera omówienie scenariusza wersji testowej. Ten tekst jest wyświetlany użytkownikowi podczas wersji testowej jest aprowizowana. To pole obsługuje podstawowe HTML, jeśli chcesz zapewnić sformatowaną zawartość.  |
-| **Podręcznik użytkownika\***           | Przekaż Podręcznik użytkownika szczegółowe (PDF), która umożliwia użytkownikom wersji testowej, zrozumienie, jak użyć rozwiązania.  |
-| **Demonstracyjny materiał wideo stacji testu** | Przekaż wideo, w których rozwiązania.  Jeśli wybierzesz tę opcję, musisz podać nazwę, adres URL wideo (w serwisie YouTube lub Vimeo) i miniatury (w pikselach 533 x 324) filmu wideo. |
-| *Pomoc konfiguracji* |  |
-| **Wystąpienia\***             | Określ region, a stosunkowo wystąpienia maszyny wirtualnej (kliknij ikonę informacji, aby uzyskać więcej informacji).  <br/>Potencjalne równoczesnych sesji testowej nie powinna przekraczać limit przydziału dla Twojej subskrypcji.  Pierwsza jest obliczany jako: [liczba regionów zaznaczonego] x [gorąca wystąpień] + [z regionów wybrać numer] x [ciepło wystąpień] + [liczba regionów zaznaczonego] x [zimnych wystąpień] |
-| **Czas trwania testu dysku\***   | Maksymalny czas trwania sesji czas w godzinach. Sesji testowej kończy się automatycznie po tym okresie zostanie przekroczony.  |
-|**Testuj szablon ARM dysku\***| Przekaż szablon usługi Azure Resource Manager skojarzonych z tej wersji testowej. Aby uzyskać więcej informacji, zobacz [przekształcania szablonu wdrożenia maszyny wirtualnej dla wersji testowej](https://github.com/Azure/AzureTestDrive/wiki/Transforming-Virtual-Machine-Deployment-Template-for-Test-Drive). |
-| **Uzyskiwanie dostępu do informacji\***    | Dostęp usługi Azure Resource Manager i informacje logowania wersji próbnej, zapisane jako zwykły tekst lub HTML proste. |
-| *Szczegóły subskrypcji wdrożenia dysku testu* |  |
-| **Identyfikator subskrypcji platformy Azure\*** | Można uzyskać, logując się do [portalu Microsoft Azure](https://ms.portal.azure.com) i klikając **subskrypcje** na pasku menu po lewej stronie. (Przykład: "a83645ac-1234-5ab6-6789-1h234g764ghty")    Ten identyfikator powinien mieć postać identyfikatora GUID w postaci `a83645ac-1234-5ab6-6789-1h234g764ghty`.|
-| **Identyfikator dzierżawy usługi Azure AD\***    | Identyfikator usługi Azure Active Directory dzierżawy.  Można uzyskać, logując się do [portalu Microsoft Azure](https://ms.portal.azure.com) i klikając **usługi Azure Active Directory** na pasku menu po lewej stronie, klikając **właściwości** w środkowym pasku menu następnie kopiując **identyfikator katalogu** z formularza.  Ten identyfikator powinny też być identyfikatorem GUID.  Jeśli pole pozostanie puste, należy utworzyć identyfikator dzierżawy dla Twojej organizacji. |
-| **Identyfikator aplikacji w usłudze Azure AD\***       | Identyfikator rozwiązania zarejestrowanych maszyny Wirtualnej platformy Azure  |
-| **Klucz aplikacji w usłudze Azure AD\***      | Klucz uwierzytelniania dla zarejestrowanych rozwiązania |
+| **\* opisu**           | Zadbaj o to, aby zapoznać się z omówieniem scenariusza testowego. Ten tekst będzie widoczny dla użytkownika podczas aprowizacji dysku testowego. To pole obsługuje podstawowy kod HTML, jeśli chcesz udostępnić sformatowaną zawartość.  |
+| **Ręczne\* użytkownika**           | Przekaż szczegółowy podręcznik użytkownika (. PDF), który pomaga testować, jak korzystać z rozwiązania.  |
+| **Wideo demonstracyjne na dysku testowym** | Przekaż wideo, które przedstawia Twoje rozwiązanie.  W przypadku wybrania tej opcji należy podać nazwę, adres URL wideo (hostowane w serwisie YouTube lub Vimeo) oraz miniaturę (533x324 pikseli) dla filmu wideo. |
+| *Konfiguracja techniczna* |  |
+| **\* wystąpień**             | Określ dostępność regionów i stosunkowo dostęp do wystąpienia maszyny wirtualnej (kliknij ikonę informacji, aby uzyskać więcej informacji).  <br/>W przypadku potencjalnych współbieżnych sesji dysków testowych nie należy przekroczyć limitu przydziału dla subskrypcji.  Dawniej jest obliczony jako: [liczba wybranych regionów] x [wystąpienia aktywne] + [wybrane regiony] x [rozgrzane wystąpienia] + [liczba wybranych regionów] x [zimne wystąpienia] |
+| **Czas trwania dysku testowego\***   | Maksymalny czas trwania sesji w godzinach. Sesja dysku testowego kończy się automatycznie po przekroczeniu tego okresu.  |
+|**\* szablonu ARM na dysku testowym**| Przekaż szablon Azure Resource Manager skojarzony z tym dyskiem testowym. Aby uzyskać więcej informacji, zobacz [transformacjeing a Virtual Machine Deployment Template for Test Drive](https://github.com/Azure/AzureTestDrive/wiki/Transforming-Virtual-Machine-Deployment-Template-for-Test-Drive). |
+| **\* informacji o dostępie**    | Azure Resource Manager dostęp do informacji o logowaniu i wersji próbnej, zapisaną jako zwykły tekst lub prosty kod HTML. |
+| *Szczegóły subskrypcji wdrożenia dysku testowego* |  |
+| **Identyfikator subskrypcji platformy Azure\*** | Można uzyskać, logując się do [Microsoft Azure Portal](https://ms.portal.azure.com) i klikając pozycję **subskrypcje** na lewym pasku menu. (Przykład: "a83645ac-1234-5ab6-6789-1h234g764ghty")    Ten identyfikator powinien być identyfikatorem GUID formularza `a83645ac-1234-5ab6-6789-1h234g764ghty`.|
+| **Identyfikator dzierżawy usługi Azure AD\***    | Azure Active Directory identyfikator dzierżawy.  Można uzyskać, logując się do [Microsoft Azure Portal](https://ms.portal.azure.com) i klikając przycisk **Azure Active Directory** na lewym pasku menu, a następnie klikając pozycję **Właściwości** na środkowym pasku menu, a następnie kopiując **Identyfikator katalogu** z formularza.  Ten identyfikator powinien być również identyfikatorem GUID.  Jeśli to pole jest puste, należy utworzyć identyfikator dzierżawy dla swojej organizacji. |
+| **Identyfikator aplikacja usługi Azure AD\***       | Identyfikator zarejestrowanego rozwiązania maszyny wirtualnej platformy Azure  |
+| **\* klucza aplikacja usługi Azure AD**      | Klucz uwierzytelniania dla zarejestrowanego rozwiązania |
 |   |   |
 
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
-W ciągu następnych [Marketplace](./cpp-marketplace-tab.md) karcie będzie zapewniać informacje prawne i marketingu o rozwiązaniu.
+Na następnej karcie [Marketplace](./cpp-marketplace-tab.md) znajdziesz informacje marketingowe i prawne dotyczące Twojego rozwiązania.

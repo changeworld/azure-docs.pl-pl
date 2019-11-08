@@ -1,5 +1,5 @@
 ---
-title: Uczenie sieci neuronowych uczenie głębokie z PyTorch
+title: Uczenie modeli PyTorch uczenia głębokiego
 titleSuffix: Azure Machine Learning
 description: Dowiedz się, jak uruchamiać skrypty szkoleniowe PyTorch na skalę przedsiębiorstwa przy użyciu klasy PyTorch szacowania firmy Azure Machine Learning.  Przykładowe skrypty klasyfikują obrazy kurczaka i Turcja w celu utworzenia sieci neuronowych uczenia głębokiego na podstawie samouczka nauka transferu PyTorch.
 services: machine-learning
@@ -11,12 +11,12 @@ author: maxluk
 ms.reviewer: peterlu
 ms.date: 08/01/2019
 ms.custom: seodec18
-ms.openlocfilehash: f08e19ac08d39b19838582cdfbb0d00dfde9de62
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: 2c704e36f4353b34733ccc29b785c752b2a5c559
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73584481"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73822710"
 ---
 # <a name="train-pytorch-deep-learning-models-at-scale-with-azure-machine-learning"></a>Uczenie modeli Pytorch głębokie uczenie na dużą skalę dzięki Azure Machine Learning
 [!INCLUDE [applies-to-skus](../../../includes/aml-applies-to-basic-enterprise-sku.md)]

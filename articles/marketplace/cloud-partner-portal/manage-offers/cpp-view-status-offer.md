@@ -1,49 +1,50 @@
 ---
-title: Wyświetlanie stanu oferty w witrynie marketplace | Portal Azure Marketplace
-description: Wyświetlanie stanu oferty na platformie Azure i usługi AppSource rynków przy użyciu portalu Cloud Partner
+title: Wyświetlanie stanu ofert portalu Marketplace | Portal Azure Marketplace
+description: Wyświetlanie stanu ofert na platformie Azure i AppSource Marketplace przy użyciu portal Cloud Partner
 services: Azure, AppSource, Marketplace, Cloud Partner Portal,
 author: v-miclar
 ms.service: marketplace
+ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 01/11/2019
 ms.author: pabutler
-ms.openlocfilehash: fff89dd8a17aaf6d45462edeaa22f1d2efc8d02b
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: e58670d37e01bb6e453b73e42a87e42e890d10d8
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67064316"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73826700"
 ---
-# <a name="view-the-publishing-status-of-azure-marketplace-and-appsource-offers"></a>Wyświetl stan publikowania ofert w portalu Azure Marketplace i AppSource
+# <a name="view-the-publishing-status-of-azure-marketplace-and-appsource-offers"></a>Wyświetlanie stanu publikowania w witrynie Azure Marketplace i ofertach AppSource
 
-Po utworzeniu oferty, a zwłaszcza w procesie publikowania, możesz wyświetlić stan oferty w portalu Cloud Partner.  Ogólny stan publikowania jest dostępna w [ **oferuje wszystkie** ](../portal-tour/cpp-all-offers-page.md) i [ **zatwierdzenia** ](../portal-tour/cpp-approvals-page.md) strony portalu.  Jedną z następujących wskaźników stanu powinien być wyświetlany dla każdej oferty.  
+Po utworzeniu oferty, w szczególności w trakcie procesu publikowania, można wyświetlić stan oferty w portal Cloud Partner.  Ogólny stan publikowania jest dostępny na stronach [**wszystkie oferty**](../portal-tour/cpp-all-offers-page.md) i [**zatwierdzenia**](../portal-tour/cpp-approvals-page.md) portalu.  Dla każdej oferty należy wyświetlić jeden z następujących wskaźników stanu.  
 
 |            Stan              |   Opis                                                           |
 |            ------              |   -----------                                                           |
-| **-**                          | Oferta została utworzona, ale nie rozpoczął procesu publikowania.            |
-| **Publikowanie w toku**        | Oferta pracuje w drodze kolejne kroki procesu publikowania.   |
-| **Publikowanie nie powiodło się**             | Krytyczny problem został wykryty podczas sprawdzania poprawności lub przeglądu przez firmę Microsoft. |
-| **Publikacja anulowana**           | Wydawca anulował oferty procesu publikowania.  Ten stan nie odmownej istniejące oferty w portalu marketplace. | 
-| **Oczekiwanie na wydawcy Wyloguj się** | Oferta został zrecenzowany przez firmę Microsoft i teraz czeka ostatecznej weryfikacji przez wydawcę. |
-| **Delisted**                   | Został usunięty wcześniej opublikowane oferty w portalu marketplace.      | 
+| **-**                          | Oferta została utworzona, ale proces publikowania nie został rozpoczęty.            |
+| **Publikowanie w toku**        | Oferta działa w sposób w ramach kroków procesu publikowania.   |
+| **Publikowanie nie powiodło się**             | Wykryto problem krytyczny podczas weryfikacji lub przegląd przez firmę Microsoft. |
+| **Publikowanie zostało anulowane**           | Wydawca anulował proces publikowania oferty.  W tym stanie nie zostanie wystawiona istniejąca oferta w portalu Marketplace. | 
+| **Oczekiwanie na wylogowanie wydawcy** | Oferta została sprawdzona przez firmę Microsoft i teraz czeka na ostateczną weryfikację przez wydawcę. |
+| **Lista**                   | Wcześniej opublikowana oferta w portalu Marketplace została usunięta.      | 
 |  |  |
 
 
 ## <a name="publishing-status-details"></a>Szczegóły stanu publikowania 
 
-Więcej informacji na temat stanu oferty ponieważ przechodzi ona przez proces publikowania znajduje się w **stan** karcie **nowa oferta** strony.  Ta strona zawiera listę wszystkich kroków publikowania dla tego typu oferty.  *Należy pamiętać, że liczba i poznać konkretne kroki często różnią się między typów ofert.*  Na tej stronie wskazuje także wszelkie oczekujących problemy zgłoszone przez weryfikacji firmy Microsoft i przejrzyj kroki, które często wymagają akcji przez wydawcę przed kontynuowaniem procesu publikowania.  Na przykład na poniższej ilustracji przedstawiono **stan** kartę do nowej oferty maszyny wirtualnej. 
+Więcej szczegółów na temat stanu oferty w ramach procesu publikowania znajduje się na karcie **stan** na **nowej stronie oferty** .  Ta strona zawiera listę wszystkich kroków publikowania dla tego typu oferty.  *Należy zauważyć, że liczba i konkretne kroki często różnią się w zależności od typu oferty.*  Ta strona wskazuje również wszelkie zaległe problemy zgłoszone przez proces sprawdzania poprawności i przeglądu firmy Microsoft, które często wymagają akcji wykonywanej przez wydawcę, zanim będzie można przeprowadzić publikowanie.  Na przykład na poniższej ilustracji przedstawiono kartę **stan** dla nowej oferty maszyny wirtualnej. 
 
-![Stan karty oferty maszyny Wirtualnej](./media/vm-offer-pub-steps1.png)
+![Karta stan dla oferty maszyny wirtualnej](./media/vm-offer-pub-steps1.png)
 
-Następny przykład **stan** kartę Usługa doradcza przedstawiający zgłoszony błąd w ustawieniach zarządzania potencjalnymi klientami.  Ponieważ zarządzanie potencjalnymi klientami jest wymagana dla usługi doradcze, muszą zostać poprawione ten błąd, zanim będzie można kontynuować publikowanie.
+Kolejna Przykładowa karta **stan** dla usługi doradczej wyświetlająca zgłoszony błąd w ustawieniach zarządzania potencjalnymi klientami.  Ponieważ zarządzanie potencjalnymi klientami jest wymagane dla usług doradczych, ten błąd należy poprawić, zanim będzie można kontynuować publikowanie.
 
-![Stan karty błąd przedstawiający usługi doradcze](./media/consulting-service-error.png)
+![Karta stan dla usługi konsultingowej przedstawiająca błąd](./media/consulting-service-error.png)
 
-Stan końcowy przykład aplikacji platformy Azure pokazuje krytyczny problem przeglądu firmy Microsoft.  Zawiera ona popularne łącze do elementu DevOps platformy Azure, który zawiera szczegółowe informacje o tym problemie przeglądu.  Aby uzyskać więcej informacji, zobacz [opublikować ofertę platformy Azure aplikacja](cpp-publish-offer.md).
+Ostatni przykładowy stan aplikacji platformy Azure przedstawia krytyczny problem z przeglądem firmy Microsoft.  Zawiera aktywne łącze do elementu usługi Azure DevOps, który zawiera szczegółowe informacje o tym problemie.  Aby uzyskać więcej informacji, zobacz temat [Publikowanie oferty aplikacji platformy Azure](cpp-publish-offer.md).
 
-![Karta Stan dla aplikacji platformy Azure, przedstawiający Przegląd problemu](../azure-applications/media/status-tab-ms-review.png)
+![Karta stan dla aplikacji platformy Azure z widocznym problemem przeglądu](../azure-applications/media/status-tab-ms-review.png)
 
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
-Aby rozwiązać problemy dotyczące zaległych lub zaktualizuj ustawienia oferty, musisz mieć [zaktualizować oferty](./cpp-update-offer.md). 
+Aby rozwiązać problemy nieobsłużone lub zaktualizować ustawienia oferty, musisz [zaktualizować ofertę](./cpp-update-offer.md). 

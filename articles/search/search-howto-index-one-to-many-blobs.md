@@ -9,12 +9,12 @@ ms.devlang: rest-api
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 863d38f6ea0f071a1c1a6678d025ec5b37a306dc
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 127354e55a81e379825b41759f2b6150ba554a12
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73466424"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73818543"
 ---
 # <a name="indexing-blobs-to-produce-multiple-search-documents"></a>Indeksowanie obiektów BLOB w celu utworzenia wielu dokumentów wyszukiwania
 Domyślnie indeksator obiektów BLOB będzie traktować zawartość obiektu BLOB jako pojedynczy dokument wyszukiwania. Niektóre wartości typu **analizowaniemode** obsługują scenariusze, w których pojedynczy obiekt BLOB może spowodować wielokrotne wyszukiwanie dokumentów. Różne typy **analizmode** , które umożliwiają Indeksatorowi wyodrębnienie więcej niż jednego dokumentu wyszukiwania z obiektu BLOB:
@@ -99,7 +99,7 @@ Jeśli chcesz skonfigurować jawne Mapowanie pól, upewnij się, że _sourceFiel
 
 ## <a name="next-steps"></a>Następne kroki
 
-Jeśli nie znasz już podstawowej struktury i przepływu pracy indeksowania obiektów blob, najpierw przejrzyj [indeksowanie BLOB Storage platformy Azure z Azure Search](search-howto-index-json-blobs.md) . Aby uzyskać więcej informacji na temat trybów analizowania dla różnych typów zawartości obiektów blob, zapoznaj się z następującymi artykułami.
+Jeśli nie znasz już podstawowej struktury i przepływu pracy indeksowania obiektów blob, należy najpierw przejrzeć [indeksowanie BLOB Storage platformy Azure przy użyciu usługi azure wyszukiwanie poznawcze](search-howto-index-json-blobs.md) . Aby uzyskać więcej informacji na temat trybów analizowania dla różnych typów zawartości obiektów blob, zapoznaj się z następującymi artykułami.
 
 > [!div class="nextstepaction"]
 > [Indeksowanie obiektów BLOB woluminów CSV](search-howto-index-csv-blobs.md)

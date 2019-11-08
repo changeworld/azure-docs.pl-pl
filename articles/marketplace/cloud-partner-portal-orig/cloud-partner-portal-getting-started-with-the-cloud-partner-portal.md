@@ -1,59 +1,60 @@
 ---
 title: Wprowadzenie | Portal Azure Marketplace
-description: Wprowadzenie do portalu Cloud Partner.
+description: Wprowadzenie do portal Cloud Partner.
 services: Azure, Marketplace, Cloud Partner Portal,
 author: dan-wesley
 ms.service: marketplace
+ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 09/14/2018
 ms.author: pabutler
-ms.openlocfilehash: 9d2c64479f65995c0eca756b86bd0a96a752867d
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 6065f0485b03a53fa55ae700831869998d9453cc
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64935748"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73818373"
 ---
-# <a name="getting-started-with-the-cloud-partner-portal"></a>Wprowadzenie do portalu Cloud Partner
+# <a name="getting-started-with-the-cloud-partner-portal"></a>Wprowadzenie do portal Cloud Partner
 
-Ten artykuł zawiera szczegółowe omówienie portalu Cloud Partner. Dowiedz się, co można zrobić za pomocą portalu Cloud Partner, pracować z oferty na [portalu Azure Marketplace](https://azuremarketplace.microsoft.com/) i [AppSource](https://appsource.microsoft.com/).
+Ten artykuł zawiera omówienie portal Cloud Partner. Dowiedz się, co możesz zrobić przy użyciu portal Cloud Partner do pracy z ofertami w witrynie [Azure Marketplace](https://azuremarketplace.microsoft.com/) i w witrynie [AppSource](https://appsource.microsoft.com/).
 
 <a name="portal-tour"></a>Samouczek portalu
 -----------
 
-Cloud Partner Portal zawiera wszystko, co jest potrzebne do oferty i obsługiwanie pomyślne firmę na chmurze. Poniżej przedstawiono krótkie podsumowanie części tej lokacji, który prawdopodobnie będzie najczęściej używane.
+Portal Cloud Partner zawiera wszystko, czego potrzebujesz, aby zaoferować i obdziałać sukces firmy w chmurze. Poniżej przedstawiono krótkie omówienie części tej witryny, które prawdopodobnie najczęściej używasz.
 
 ### <a name="left-navigation-bar"></a>Lewy pasek nawigacyjny
 
-Po raz pierwszy zostanie wyświetlony w portalu, powinien zostać wyświetlony zwijany pasek. Jest to, gdzie możesz przechodzić między elementami menu.
+Po pierwszym uruchomieniu portalu powinien zostać wyświetlony zwijany pasek nawigacyjny. Jest to miejsce, w którym można przechodzić między elementami menu.
 
 ![Portal Cloud Partner](./media/cloud-partner-portal-getting-started-with-the-cloud-partner-portal/cloud-partner-portal-page.png)
 
 Użyj paska menu, aby uzyskać więcej informacji na temat każdego z następujących elementów:
 
-- **Nowa oferta** -uruchamiał nową ofertę.
-- **Wszystkie oferty** — Sprawdź stan i stan wszystkich bieżących ofert.
-- **Użytkownicy** - [zarządzanie i kontroli dostępu w firmie](./cloud-partner-portal-manage-users.md).
-- **Dowiedz się,** — szybko Rozpocznij korzystanie z swoją wiedzę i najnowsze informacje dotyczące nowości w portalu dla partnerów.
-- **Szczegółowe informacje** — Znajdź szczegółowe informacje i informacje o użyciu dotyczące swoich produktów i klientów, odwiedzając Portal szczegółowych informacji.
+- **Nowa oferta** — Rozpocznij tutaj nową ofertę.
+- **Wszystkie oferty** — Sprawdź stan i stan wszystkich Twoich bieżących ofert.
+- **Użytkownicy** - [zarządzać dostępem do Twojej firmy i kontrolować](./cloud-partner-portal-manage-users.md)ją.
+- **Dowiedz się** — szybko Rozpocznij naukę i bądź na bieżąco z nowościami w portalu dla partnerów.
+- **Insights** — Znajdowanie szczegółowych informacji i danych o użyciu dotyczących Twoich produktów i klientów, odwiedzając portal usługi Insights.
 
 ### <a name="offer-page"></a>Strona oferty
 
-Samouczek, należy zaznaczyć, po uruchomieniu nowej oferty lub możesz wrócić do edycji oferty, należy to zrobić dużo pracy na stronie oferty. Jest to, którym można skonfigurować wszystkie ustawienia oferty i sprawdź jej stan.
+Kontynuując korzystanie z przewodnika po rozpoczęciu nowej oferty lub Wróć do edycji oferty, będziesz wykonywać wiele zadań na stronie oferty. Jest to miejsce, w którym można skonfigurować wszystkie ustawienia oferty i sprawdzić jej stan.
 
 ![Strona oferty](./media/cloud-partner-portal-getting-started-with-the-cloud-partner-portal/offer-page.png)
 
-Na stronie oferty można wykonywać następujące czynności:
-- Dodaj zawartość lub Sprawdź stan swojej oferty, przełączając się między dwoma trybami najwyższego poziomu: **Edytor** i **stan**.
-- Użyj **pasek akcji** jawnie Zarządzanie zmianami w ofercie, zapisywania i odrzucania dane wejściowe.
-- Przechodzenie między wymagane **formularzy** dla każdej oferty, jak zmienić ustawienia swojej oferty.
+Na stronie oferta możesz wykonać następujące instrukcje:
+- Dodaj zawartość lub Sprawdź stan oferty, przełączając dwa tryby najwyższego poziomu: **Edytor** i **stan**.
+- Za pomocą **paska akcji** można jawnie zarządzać zmianami oferty przez zapisanie i odrzucenie danych wejściowych.
+- Przechodź między wymaganymi **formularzami** dla każdej oferty, zmieniając ustawienia oferty.
 
 ### <a name="menu-bar"></a>Pasek menu
 
-Na koniec w górnej części ekranu możesz zawsze będzie można przejść do na pasku menu u góry. To menu zawiera interakcyjne akcje w przypadku pomoc techniczna i opinia. Można również uzyskać dostęp wszystkie dane konta wydawcy.
+Na koniec w górnej części ekranu zawsze będzie można przejść do górnego paska menu. To menu zawiera interaktywne akcje dla pomocy technicznej i informacji zwrotnych. Możesz również uzyskać dostęp do wszystkich informacji o koncie wydawcy.
 
 ![Pasek menu](./media/cloud-partner-portal-getting-started-with-the-cloud-partner-portal/menu-bar.png)
 
--   **Potrzebujesz pomocy?** — Jeśli kiedykolwiek mylić i potrzebujesz pomocy, Utwórz żądanie pomocy technicznej i znaleźć linki do dokumentacji.
--   **Opinie** -mogli zobaczyć coś chcesz podać? Daj nam znać, w tym miejscu. Firma Microsoft prosi o w portalu Azure Marketplace, proces publikowania w usłudze AppSource i ogólną portal cloud partner środowiska oraz łatwe jak intuicyjne, jak to możliwe. Firma Microsoft klasyfikowanie i przejrzyj wszystkie opinie, a firma Microsoft będzie zawsze Szanujemy Twoją prywatność. Firma Microsoft tylko skontaktowania się z Tobą podczas możesz zadawać pytania, aby uzyskać więcej informacji.
-- **Konto wydawcy** — w przypadku pierwszej wizyty w witrynie portal, zostanie wyświetlony umowie wydawcy umowę o zaakceptowanie staje się z wydawcą. Od tego momentu jest to, gdzie wprowadź zmiany do swojego profilu wydawcy lub ponownie umowy. Dotyczy to również, w którym łączysz danych konta Centrum deweloperów, aby można było sprzedawać swoje oferty.
+-   **Potrzebujesz pomocy?** — Jeśli kiedykolwiek masz wątpliwości i potrzebujesz pomocy, Utwórz żądanie pomocy technicznej i Znajdź linki do dokumentacji.
+-   **Opinię** — masz coś, co chcesz powiedzieć? Daj nam znać tutaj. Firma Microsoft chce, aby usługa Azure Marketplace, proces publikowania AppSource oraz ogólne środowisko portalu Cloud partner były łatwe i intuicyjne, jak to możliwe. Klasyfikacja i przeglądamy wszystkie opinie i zawsze Szanujemy Twoją prywatność. Skontaktujemy się z Tobą tylko w przypadku poproszenia o dodatkowe informacje.
+- **Konto wydawcy** — w przypadku pierwszej wizyty w portalu zobaczysz kontrakt wydawcy kontraktu, który zostanie zaakceptowany przez wydawcę. W tym miejscu możesz dokonać edycji profilu wydawcy lub ponownie odwiedzić umowę. W tym miejscu możesz również połączyć konto Centrum deweloperów, aby móc sprzedawać oferty.

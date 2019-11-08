@@ -4,15 +4,16 @@ description: Zintegrowane rozwiązania w witrynie Azure Marketplace i Microsoft 
 services: Azure, Marketplace, Compute, Storage, Networking
 author: qianw211
 ms.service: marketplace
+ms.subservice: partnercenter-marketplace-publisher
 ms.topic: article
 ms.date: 08/15/2019
 ms.author: v-qiwe
-ms.openlocfilehash: 8bffb2c71f5e07499338ea32e0c064392af81684
-ms.sourcegitcommit: d4c9821b31f5a12ab4cc60036fde00e7d8dc4421
+ms.openlocfilehash: eaba5612221e712ad5b14f10876e083729970fde
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/01/2019
-ms.locfileid: "71706309"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73818558"
 ---
 # <a name="publish-an-integrated-solution"></a>Publikowanie zintegrowanego rozwiązania
 
@@ -36,12 +37,12 @@ Aby zapoznać się z omówieniem programu Integrated Solutions, Obejrzyj [ten kl
 * Uczestniczący dostawca oprogramowania powinien być gotowy do współdziałania z adresem IP. 
 * Co najmniej jeden partner uczestniczący musi mieć kompetencje Gold w jednym z następujących obszarów:
 
-    * Projektowanie aplikacji
+    * Opracowywanie aplikacji
     * Integracja aplikacji
-    * Zarządzanie cyklem życia oprogramowania
+    * Zarządzanie cyklem życia aplikacji
     * Platforma w chmurze
     * Analiza danych
-    * Centr
+    * Centrum danych
     * Platforma danych
     * DevOps
 
@@ -63,23 +64,23 @@ Po zatwierdzeniu nominacji Użyj zasobów połączonego programu, aby opracować
     Dyskusja o rozwiązaniu powinna dotyczyć następujących punktów:
     * Zakres
     * Klienci docelowi
-    * Propozycja wartości
+    * Opis korzyści
     * Cennik
     * Licencjonowanie
     * Warunki i postanowienia
     * Podejście do pomocy technicznej
     * Działania marketingowe
     * Proces sprzedaży
-    * Kategoria Activities
+    * Działania
 
     Dyskusje na temat podejścia do integracji powinny dotyczyć następujących punktów: 
     * Punkty integracji
     * Architektura rozwiązania
-    * Uwierzytelnianie
+    * Authentication
     * Interfejs użytkownika
     * Monitorowanie
     * Mechanizm wdrażania
-    * interfejsy API
+    * Interfejsy API
     * Ujednolicone repozytorium danych
 
     Użyj tych zasobów dla procesu tworzenia:

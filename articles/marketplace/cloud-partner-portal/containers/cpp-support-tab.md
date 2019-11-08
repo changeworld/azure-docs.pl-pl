@@ -1,48 +1,49 @@
 ---
-title: Obsługa ustawień obrazu kontenerów platformy Azure | Portal Azure Marketplace
-description: Skonfiguruj ustawienia pomocy technicznej dla usługi Azure container.
+title: Ustawienia obsługi dla obrazu kontenerów platformy Azure | Portal Azure Marketplace
+description: Skonfiguruj ustawienia obsługi dla kontenera platformy Azure.
 services: Azure, Marketplace, Cloud Partner Portal,
 author: dan-wesley
 ms.service: marketplace
+ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 04/24/2019
 ms.author: pabutler
-ms.openlocfilehash: 71436d7ee82d9e5162780719d9a7a063fa903c6e
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 144512683e6afa643639ba12b071e2a3ed7e01bd
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64942578"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73823105"
 ---
-# <a name="container-support-tab"></a>Kontener kartę Pomoc techniczna
+# <a name="container-support-tab"></a>Karta Obsługa kontenerów
 
-Użyj **obsługuje** karcie **nowa oferta** stronę, aby dostarczyć technicznych i użytkownika, zasoby pomocy technicznej oferty.  W formularzu pomocy technicznej dostępne są następujące obszary danych wejściowych: **Inżynierów skontaktuj się z pomocą**, **techniczną**, i **obsługuje adresy URL**. Znak gwiazdki (*) dodanym na końcu nazwy pola wskazuje, że jest to wymagane.
-
-
-## <a name="support-form-fields"></a>Obsługa pól formularza
-
-Podaj wymagane informacje w polach kontakt techniczny i pomocy technicznej.
+Skorzystaj z karty **Pomoc techniczna** na **nowej stronie oferty** , aby udostępnić zasoby techniczne i pomoc techniczną dla swojej oferty.  Następujące obszary danych wejściowych są dostępne w formularzu pomocy technicznej: **kontakt inżynieryjny**, **Obsługa klienta**i **adresy URL pomocy technicznej**. Gwiazdka (*) dołączona do nazwy pola wskazuje, że jest to wymagane.
 
 
-### <a name="engineering-contact"></a>Kontakt techniczny
+## <a name="support-form-fields"></a>Pola formularza pomocy technicznej
 
-Skontaktuj się z inżynierii jest technicznych skontaktuj się z od Twojej organizacji i firmy Microsoft. Wymagane pola są wskazanych przez znak gwiazdki (*).
+Podaj wymagane informacje dla kontaktów inżynieryjnych i pomocy technicznej dla klientów.
 
-- **Nazwa\***  — nazwa osoby lub grupy, która służy jako technical/inżynierów pomocy technicznej.
-- **Adres e-mail\***  — wiadomości E-mail adres tego kontaktu Technical Preview.
-- **Telefon\***  — numer telefonu dla pomocy technicznej.
+
+### <a name="engineering-contact"></a>Kontakt inżynieryjny
+
+Kontakt inżynieryjny jest kontaktem technicznym między organizacją i firmą Microsoft. Wymagane pola są indicted przez gwiazdkę (*).
+
+- **Nazwa\*** — Nazwa osoby lub grupy, która służy jako wsparcie techniczne/inżynieryjne.
+- **\*e-mail** — adres e-mail tej osoby kontaktowej.
+- **Telefon\*** — numer telefonu do pomocy technicznej.
 
 
 ### <a name="customer-support"></a>Obsługa klienta
 
-Skontaktuj się z pomocy technicznej odbiera biletami pomocy technicznej otwierane przez klientów platformy Azure.  Wymagane pola są wskazanych przez znak gwiazdki (*).
+Kontakt z działem pomocy technicznej otrzymuje bilety pomocy technicznej otwarte przez klientów na platformie Azure.  Wymagane pola są indicted przez gwiazdkę (*).
 
-- **Nazwa\***  — nazwa osoby lub grupy, która służy jako dział obsługi klienta.
-- **Adres e-mail\***  — wiadomości E-mail adres tego skontaktuj się z pomocą techniczną.
-- **Telefon\***  — numer telefonu dla obsługi klienta.
+- **Nazwa\*** — Nazwa osoby lub grupy, która służy jako obsługa klienta.
+- **\*e-mail** — adres e-mail tego kontaktu z pomocą techniczną.
+- **Telefon\*** — numer telefonu do obsługi klienta.
 
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
-Po zakończeniu wprowadzania zmian, podając informacje o pomocy technicznej, możesz przystąpić do [opublikować ofertę](./cpp-publish-offer.md). 
+Po zapoznaniu się z informacjami o pomocy technicznej możesz [opublikować swoją ofertę](./cpp-publish-offer.md). 
 

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 03/15/2019
 ms.author: sedusch
-ms.openlocfilehash: 771a20ccf1c34958308d58dafb6fb01e36bb408a
-ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
-ms.translationtype: HT
+ms.openlocfilehash: c20fc2142718d3cc49d4b80c6a5e22e26a350335
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73749027"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73824863"
 ---
 # <a name="high-availability-for-nfs-on-azure-vms-on-suse-linux-enterprise-server"></a>Wysoka dostępność systemu plików NFS na maszynach wirtualnych platformy Azure na SUSE Linux Enterprise Server
 
@@ -94,7 +94,7 @@ Serwer NFS używa dedykowanej wirtualnej nazwy hosta i wirtualnych adresów IP d
 * Port sondy
   * Port 61000 dla NW1
   * Port 61001 dla NW2
-* Reguły LoadBalancing (Jeśli korzystasz z podstawowego modułu równoważenia obciążenia)
+* Reguły równoważenia obciążenia (w przypadku korzystania z podstawowego modułu równoważenia obciążenia)
   * 2049 TCP dla NW1
   * 2049 UDP dla NW1
   * 2049 TCP dla NW2
@@ -114,7 +114,7 @@ Możesz użyć jednego z szablonów szybkiego startu w usłudze GitHub, aby wdro
    1. Prefiks zasobu  
       Wprowadź prefiks, którego chcesz użyć. Wartość jest używana jako prefiks dla wdrożonych zasobów.
    2. Liczba systemów SAP  
-      Wprowadź liczbę systemów SAP, które będą korzystać z tego serwera plików. Spowoduje to wdrożenie wymaganej liczby konfiguracji frontonu, reguł równoważenia obciążenia, portów sondowania, dysków itp.
+      Wprowadź liczbę systemów SAP, które będą korzystać z tego serwera plików. Spowoduje to wdrożenie wymaganej liczby konfiguracji frontonu, zasad równoważenia obciążenia, portów sondowania, dysków itp.
    3. Typ systemu operacyjnego  
       Wybierz jedną z dystrybucji systemu Linux. Na potrzeby tego przykładu wybierz pozycję SLES 12
    4. Nazwa użytkownika administratora i hasło administratora  
@@ -164,7 +164,7 @@ Najpierw należy utworzyć maszyny wirtualne dla tego klastra systemu plików NF
             1. Kliknij przycisk OK.
          1. Port 61001 dla NW2
             * Powtórz powyższe kroki, aby utworzyć sondę kondycji dla NW2
-      1. Reguły LoadBalancing
+      1. Reguły równoważenia obciążenia
          1. Otwórz moduł równoważenia obciążenia, wybierz pozycję reguły równoważenia obciążenia i kliknij przycisk Dodaj.
          1. Wprowadź nazwę nowej reguły modułu równoważenia obciążenia (na przykład **NW1-lb**)
          1. Wybierz adres IP frontonu, pulę zaplecza i sondę kondycji utworzoną wcześniej (na przykład **NW1-frontonu**. **NW1 — zaplecze** i **NW1 — HP**)
@@ -200,7 +200,7 @@ Najpierw należy utworzyć maszyny wirtualne dla tego klastra systemu plików NF
             1. Kliknij przycisk OK.
          1. Port 61001 dla NW2
             * Powtórz powyższe kroki, aby utworzyć sondę kondycji dla NW2
-      1. Reguły LoadBalancing
+      1. Reguły równoważenia obciążenia
          1. 2049 TCP dla NW1
             1. Otwórz moduł równoważenia obciążenia, wybierz pozycję reguły równoważenia obciążenia i kliknij przycisk Dodaj.
             1. Wprowadź nazwę nowej reguły modułu równoważenia obciążenia (na przykład **NW1-lb-2049**)
@@ -216,8 +216,11 @@ Najpierw należy utworzyć maszyny wirtualne dla tego klastra systemu plików NF
          1. 2049 UDP dla NW2
             * Powtórz powyższe kroki dla portów 2049 i UDP dla NW2
 
+> [!Note]
+> Gdy maszyny wirtualne bez publicznych adresów IP są umieszczane w puli zaplecza wewnętrznego (bez publicznego adresu IP) standardowego modułu równoważenia obciążenia platformy Azure, nie będzie wychodzące połączenie z Internetem, chyba że zostanie przeprowadzona dodatkowa konfiguracja zezwalająca na kierowanie do publicznych punktów końcowych. Aby uzyskać szczegółowe informacje na temat sposobu osiągnięcia łączności wychodzącej, zobacz [publiczna łączność z punktem końcowym dla Virtual Machines przy użyciu usługi Azure usługa Load Balancer w warstwie Standardowa w scenariuszach wysokiej dostępności SAP](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-standard-load-balancer-outbound-connections).  
+
 > [!IMPORTANT]
-> Nie należy włączać sygnatur czasowych protokołu TCP na maszynach wirtualnych platformy Azure umieszczonych za Azure Load Balancer. Włączenie sygnatur czasowych protokołu TCP spowoduje niepowodzenie sond kondycji. Ustaw parametr **net. IPv4. TCP _timestamps** na **0**. Aby uzyskać szczegółowe informacje, zobacz [sondy kondycji Load Balancer](https://docs.microsoft.com/azure/load-balancer/load-balancer-custom-probe-overview).
+> Nie należy włączać sygnatur czasowych protokołu TCP na maszynach wirtualnych platformy Azure umieszczonych za Azure Load Balancer. Włączenie sygnatur czasowych protokołu TCP spowoduje niepowodzenie sond kondycji. Ustaw parametr **net. IPv4. tcp_timestamps** na **0**. Aby uzyskać szczegółowe informacje, zobacz [sondy kondycji Load Balancer](https://docs.microsoft.com/azure/load-balancer/load-balancer-custom-probe-overview).
 
 ### <a name="create-pacemaker-cluster"></a>Tworzenie klastra Pacemaker
 

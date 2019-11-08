@@ -1,33 +1,34 @@
 ---
-title: Tworzenie aplikacji platformy Azure, zasoby techniczne | Portal Azure Marketplace
+title: Tworzenie zasobów technicznych aplikacji platformy Azure | Portal Azure Marketplace
 description: Utwórz zasoby techniczne dla oferty aplikacji platformy Azure.
 services: Azure, Marketplace, Cloud Partner Portal,
 author: v-miclar
 ms.service: marketplace
+ms.subservice: partnercenter-marketplace-publisher
 ms.topic: article
 ms.date: 12/13/2018
 ms.author: pabutler
-ms.openlocfilehash: cbe1b8c8f1159d90fbf97eeae272c1c50ec9b9bb
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: c9abaab4597e9fea43a2f0dcabc0e4a527ed5a6a
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64942987"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73827607"
 ---
-# <a name="prepare-your-azure-application-technical-assets"></a>Przygotowanie zasobów technicznych aplikacji platformy Azure
+# <a name="prepare-your-azure-application-technical-assets"></a>Przygotowywanie zasobów technicznych aplikacji platformy Azure
 
-W tym artykule opisano zasoby do przygotowania zasoby techniczne oferty aplikacji platformy Azure.
+W tym artykule opisano zasoby dotyczące przygotowania zasobów technicznych dla oferty aplikacji platformy Azure.
 
 ## <a name="before-you-begin"></a>Przed rozpoczęciem
 
-Przejrzyj następujący film [tworzenia szablonów rozwiązań, a Managed Applications dla witryny Azure Marketplace](https://channel9.msdn.com/Events/Build/2018/BRK3603), omówienie sposobu tworzenia szablonu usługi Azure Resource Manager do definiowania rozwiązania aplikacji platformy Azure i następnie sposobu następnie należy opublikować ofertę aplikacji w portalu Azure Marketplace.
+Zapoznaj się z poniższym wideo, [tworzeniem szablonów rozwiązań i zarządzanymi aplikacjami dla portalu Azure Marketplace](https://channel9.msdn.com/Events/Build/2018/BRK3603)— omówienie sposobu tworzenia szablonu Azure Resource Manager w celu zdefiniowania rozwiązania aplikacji platformy Azure, a następnie sposobu opublikowania Oferta aplikacji w witrynie Azure Marketplace.
 
 >[!VIDEO https://channel9.msdn.com/Events/Build/2018/BRK3603/player]
 
 
-Przejrzyj następująca dokumentacja aplikacji Azure zawiera Przewodniki Szybki Start, samouczków i przykładów.
+Zapoznaj się z poniższą dokumentacją dotyczącą aplikacji platformy Azure, która zawiera Przewodniki Szybki Start, samouczki i przykłady.
 
-- [Omówienie szablonów usługi Azure Resource Manager](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-authoring-templates)
+- [Informacje o szablonach Azure Resource Manager](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-authoring-templates)
 - Przewodniki Szybki start:
 
   - [Szablony szybkiego startu platformy Azure](https://azure.microsoft.com/documentation/templates/)
@@ -38,46 +39,46 @@ Przejrzyj następująca dokumentacja aplikacji Azure zawiera Przewodniki Szybki 
   
 - Samouczki:
 
-  - [Tworzenie plików definicji](https://docs.microsoft.com/azure/managed-applications/publish-service-catalog-app)
+  - [Utwórz pliki definicji](https://docs.microsoft.com/azure/managed-applications/publish-service-catalog-app)
   - [Publish marketplace application (Publikowanie aplikacji w witrynie Marketplace)](https://docs.microsoft.com/azure/managed-applications/publish-marketplace-app)
 
-  - Przykłady:
+  - Badan
 
     - [Interfejs wiersza polecenia platformy Azure](https://docs.microsoft.com/azure/managed-applications/cli-samples)
     - [Azure PowerShell](https://docs.microsoft.com/azure/managed-applications/powershell-samples)
-    - [Rozwiązania aplikacji zarządzanych](https://docs.microsoft.com/azure/managed-applications/sample-projects)
+    - [Zarządzane rozwiązania aplikacji](https://docs.microsoft.com/azure/managed-applications/sample-projects)
 
-## <a name="fundamental-technical-knowledge"></a>Podstawową wiedzę techniczną
+## <a name="fundamental-technical-knowledge"></a>Podstawowa wiedza techniczna
 
-Projektowania, tworzenia i testowania te zasoby potrwać i wymaga wiedzę techniczną dotyczącą platformy Azure i technologii umożliwiających tworzenie oferty.
+Projektowanie, kompilowanie i testowanie tych zasobów jest czasochłonne i wymaga znajomości technicznej platformy Azure i technologii używanych do tworzenia oferty.
 
-Twój zespół inżynieryjny powinien mieć wiedzy na temat następujących technologii firmy Microsoft:
+Zespół inżynieryjny powinien znać następujące technologie firmy Microsoft:
 
-- Podstawową wiedzę na temat [usług platformy Azure](https://azure.microsoft.com/services/)
-- Jak [projektowania i architektury aplikacji platformy Azure](https://azure.microsoft.com/solutions/architecture/)
-- Praktyczną wiedzę na temat [maszyn wirtualnych platformy Azure](https://azure.microsoft.com/services/virtual-machines/), [usługi Azure Storage](https://azure.microsoft.com/services/?filter=storage), i [sieci platformy Azure](https://azure.microsoft.com/services/?filter=networking)
-- Praktyczną wiedzę na temat [usługi Azure Resource Manager](https://azure.microsoft.com/features/resource-manager/)
-- Praktyczną wiedzę na temat [JSON](https://www.json.org/)
+- Podstawowe informacje o [usługach platformy Azure](https://azure.microsoft.com/services/)
+- [Projektowanie i tworzenie architektury aplikacji platformy Azure](https://azure.microsoft.com/solutions/architecture/)
+- Wiedza praktyczna [Virtual Machines platformy](https://azure.microsoft.com/services/virtual-machines/)Azure, [usługi Azure Storage](https://azure.microsoft.com/services/?filter=storage)i [sieci platformy Azure](https://azure.microsoft.com/services/?filter=networking)
+- Wiedza o pracy [Azure Resource Manager](https://azure.microsoft.com/features/resource-manager/)
+- Wiedza o pracy w formacie [JSON](https://www.json.org/)
 
 ## <a name="suggested-tools"></a>Sugerowane narzędzia
 
-Wybierz jedną lub obie następujące środowiska skryptów pomagające w zarządzaniu aplikacji platformy Azure:
+Wybierz co najmniej jedno z następujących środowisk skryptów, aby ułatwić zarządzanie aplikacją platformy Azure:
 
 - [Azure PowerShell](https://docs.microsoft.com/powershell/azure/overview)
 - [Interfejs wiersza polecenia platformy Azure](https://docs.microsoft.com/cli/azure)
 
-Zaleca się dodanie następujących narzędzi do swojego środowiska projektowego:
+Zalecamy dodanie następujących narzędzi do środowiska deweloperskiego:
 
 - [Azure Storage Explorer](https://docs.microsoft.com/azure/vs-azure-tools-storage-manage-with-storage-explorer)
 - [Visual Studio Code](https://code.visualstudio.com/) z następującymi rozszerzeniami:
 
-  - Rozszerzenie: [Narzędzia usługi Azure Resource Manager](https://marketplace.visualstudio.com/items?itemName=msazurermtools.azurerm-vscode-tools)
-  - Rozszerzenie: [Upiększanie](https://marketplace.visualstudio.com/items?itemName=HookyQR.beautify)
-  - Rozszerzenie: [Prettify JSON](https://marketplace.visualstudio.com/items?itemName=mohsen1.prettify-json)
+  - Rozszerzenie: [narzędzia Azure Resource Manager](https://marketplace.visualstudio.com/items?itemName=msazurermtools.azurerm-vscode-tools)
+  - Rozszerzenie: [Beautify](https://marketplace.visualstudio.com/items?itemName=HookyQR.beautify)
+  - Rozszerzenie: [PRETTIFY JSON](https://marketplace.visualstudio.com/items?itemName=mohsen1.prettify-json)
 
-Także podpowiedzieć dostępne narzędzia w [narzędzi deweloperskich platformy Azure](https://azure.microsoft.com/tools/) strony i, jeśli używasz programu Visual Studio [Visual Studio Marketplace](https://marketplace.visualstudio.com/).
+Sugerujemy również przeglądanie dostępnych narzędzi na stronie [usługi Azure narzędzia deweloperskie](https://azure.microsoft.com/tools/) i, jeśli używasz programu Visual Studio, [Visual Studio Marketplace](https://marketplace.visualstudio.com/).
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 [Tworzenie oferty aplikacji platformy Azure](./cpp-create-offer.md)
 

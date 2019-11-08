@@ -1,78 +1,79 @@
 ---
-title: Certyfikowanie obrazu maszyny Wirtualnej w portalu Azure Marketplace
-description: Opisano sposób testowania i przesłać obraz maszyny Wirtualnej do certyfikacji w portalu Azure Marketplace.
+title: Certyfikowanie obrazu maszyny wirtualnej w witrynie Azure Marketplace
+description: Wyjaśnia, jak testować i przesyłać obraz maszyny wirtualnej na potrzeby certyfikacji w portalu Azure Marketplace.
 services: Azure, Marketplace, Cloud Partner Portal,
 author: pbutlerm
 ms.service: marketplace
+ms.subservice: partnercenter-marketplace-publisher
 ms.topic: article
 ms.date: 09/26/2018
 ms.author: pabutler
-ms.openlocfilehash: 0dbf1abbb91f9e5c3bd2d042c57f87591d52c9cd
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 4088864db4bf861d07821f5a0287336d8431f889
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64938502"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73826521"
 ---
-# <a name="certify-your-vm-image"></a>Certyfikowanie obrazu maszyny Wirtualnej
+# <a name="certify-your-vm-image"></a>Certyfikowanie obrazu maszyny wirtualnej
 
-Po utworzeniu i wdrażanie maszyny wirtualnej (VM) należy przetestować i przesłać obraz maszyny Wirtualnej do certyfikacji w portalu Azure Marketplace. W tym artykule opisano, gdzie można uzyskać *narzędzie Test certyfikacji do certyfikatu platformy Azure*, jak certyfikować swój obraz maszyny Wirtualnej za pomocą tego narzędzia i jak można przekazać wyników weryfikacji do kontenera platformy Azure, w którym znajdują się Twoje wirtualne dyski twarde. 
-
-
-## <a name="download-and-run-the-certification-test-tool"></a>Pobierz i uruchom narzędzie test certyfikacji
-
-Narzędzie Test certyfikacji do certyfikatu platformy Azure działa na komputerze lokalnym, Windows, ale testów opartych na platformie Azure Windows lub maszyny Wirtualnej systemu Linux.  Sprawdza, czy obrazu użytkownika maszyny Wirtualnej jest zgodna z platformą Microsoft Azure — czy zostały spełnione wytycznych oraz wymagań dotyczących przygotowywania wirtualnego dysku twardego. Wynikiem pracy narzędzia jest raport zgodności, który możesz przekazać do [portalu Cloud Partner](https://cloudpartner.azure.com) żądanie certyfikacji maszyny Wirtualnej.
-
-1. Pobieranie i instalowanie najnowszych, ostatnio [narzędzie Test certyfikacji do certyfikatu platformy Azure](https://www.microsoft.com/download/details.aspx?id=44299). 
-2. Otwórz narzędzie certyfikacji, a następnie kliknij przycisk **Rozpocznij nowy Test**.
-3. Z **informacji dotyczących testu** ekranu, należy wprowadzić **nazwa testu** dla przebiegu testu.
-4. Wybierz **platformy** dla maszyny Wirtualnej, albo `Windows Server` lub `Linux`. Wybór platformy ma wpływ na pozostałe opcje.
-5. Jeśli maszyna wirtualna korzysta z tej bazy danych usługi, wybierz **testu dla usługi Azure SQL Database** pola wyboru.
-
-   ![Strona początkowa narzędzie test certyfikatu](./media/publishvm_025.png)
+Po utworzeniu i wdrożeniu maszyny wirtualnej należy przetestować i przesłać obraz maszyny wirtualnej na potrzeby certyfikacji w portalu Azure Marketplace. W tym artykule wyjaśniono, w jaki sposób pobrać *Narzędzie do testowania certyfikacji dla certyfikatu platformy Azure*, jak używać tego narzędzia do certyfikowania obrazu maszyny wirtualnej i przekazywania wyników weryfikacji do kontenera platformy Azure, w którym znajdują się wirtualne dyski twarde. 
 
 
-## <a name="connect-the-certification-tool-to-a-vm-image"></a>Połącz narzędzie certyfikacji obrazem maszyny Wirtualnej
+## <a name="download-and-run-the-certification-test-tool"></a>Pobieranie i uruchamianie narzędzia testowego certyfikacji
 
-  Narzędzie łączy się maszyny wirtualne oparte na Windows za pomocą [PowerShell](https://docs.microsoft.com/powershell/) i nawiązanie połączenia z maszyn wirtualnych systemu Linux przy użyciu [SSH.Net](https://www.ssh.com/ssh/protocol/).
+Narzędzie Test certyfikacji dla certyfikatu platformy Azure jest uruchamiane na lokalnym komputerze z systemem Windows, ale testuje maszynę wirtualną z systemem Windows lub Linux opartą na platformie Azure.  Sprawdza, czy obraz maszyny wirtualnej użytkownika jest zgodny z Microsoft Azure — że zostały spełnione wskazówki i wymagania dotyczące przygotowywania wirtualnego dysku twardego. Dane wyjściowe narzędzia to raport zgodności, który zostanie przekazany do [Portal Cloud partner](https://cloudpartner.azure.com) , aby zażądać certyfikacji maszyny wirtualnej.
 
-### <a name="connect-the-certification-tool-to-a-linux-vm-image"></a>Połącz narzędzie certyfikacji obrazu maszyny Wirtualnej systemu Linux
+1. Pobierz i zainstaluj najnowsze [Narzędzie testowania certyfikacji dla certyfikatu platformy Azure](https://www.microsoft.com/download/details.aspx?id=44299). 
+2. Otwórz narzędzie certyfikacji, a następnie kliknij przycisk **Rozpocznij nowy test**.
+3. Na ekranie **Informacje o testach** wprowadź **nazwę testu** dla przebiegu testu.
+4. Wybierz **platformę** dla maszyny wirtualnej, `Windows Server` lub `Linux`. Wybór platformy ma wpływ na pozostałe opcje.
+5. Jeśli maszyna wirtualna korzysta z tej usługi bazy danych, zaznacz pole wyboru **Testuj dla Azure SQL Database** .
 
-1. Wybierz **uwierzytelniania SSH** tryb: `Password Authentication` lub `key File Authentication`.
-2. W przypadku wybrania uwierzytelniania opartego na hasłach, wprowadź wartości dla **nazwę DNS maszyny Wirtualnej**, **nazwa_użytkownika**, i **hasło**.  Opcjonalnie możesz zmienić domyślną **portu SSH** numer.
-
-     ![Uwierzytelnianie hasłem obrazu maszyny Wirtualnej systemu Linux](./media/publishvm_026.png)
-
-3. W przypadku wybrania uwierzytelniania opartego na pliku klucza wprowadź wartości dla **nazwę DNS maszyny Wirtualnej**, **nazwa_użytkownika**, i **klucza prywatnego** lokalizacji.  Opcjonalnie możesz podać **hasło** bądź zmienić domyślny typ **portu SSH** numer.
-
-     ![Uwierzytelniania opartego na pliku obrazu maszyny Wirtualnej systemu Linux](./media/publishvm_027.png)
-
-### <a name="connect-the-certification-tool-to-a-windows-based-vm-image"></a>**Połącz narzędzie certyfikacji obrazem maszyny Wirtualnej z systemem Windows**
-1. Wprowadź w pełni kwalifikowaną **nazwę DNS maszyny Wirtualnej** (na przykład `MyVMName.Cloudapp.net`).
-2. Wprowadź wartości w polach **nazwa_użytkownika** i **hasło**.
-
-   ![Hasło uwierzytelniania Windows obrazu maszyny Wirtualnej](./media/publishvm_028.png)
+   ![Strona początkowa narzędzia do testowania certyfikatów](./media/publishvm_025.png)
 
 
-## <a name="run-a-certification-test"></a>Uruchom test certyfikacji
+## <a name="connect-the-certification-tool-to-a-vm-image"></a>Łączenie Narzędzia certyfikacji z obrazem maszyny wirtualnej
 
-Po wartości parametrów wprowadzonych w narzędziu certyfikacji obrazu maszyny Wirtualnej, wybierz **Testuj połączenie** aby zapewnić prawidłowe połączenie z maszyną wirtualną. Po zweryfikowaniu połączenia kliknij pozycję Wybierz **dalej** aby rozpocząć test.  Po zakończeniu testu tabeli jest wyświetlany z wynikami testu (— dostęp próbny/niepowodzenie/ostrzeżenie).  Poniższy przykład pokazuje wyniki testów dla testów maszyny Wirtualnej systemu Linux. 
+  Narzędzie nawiązuje połączenie z maszynami wirtualnymi z systemem Windows [przy użyciu](https://www.ssh.com/ssh/protocol/) [programu PowerShell](https://docs.microsoft.com/powershell/) i nawiązuje połączenie z maszynami wirtualnymi z systemem Linux
 
-![Wyniki testu certyfikacji obrazu maszyny Wirtualnej systemu Linux](./media/publishvm_029.png)
+### <a name="connect-the-certification-tool-to-a-linux-vm-image"></a>Łączenie Narzędzia certyfikacji z obrazem maszyny wirtualnej z systemem Linux
 
-Jeśli którykolwiek z testów nie powiedzie się, obraz jest *nie* certyfikat. W tym przypadku Przegląd wymagań i komunikaty o błędach, wskazano zmiany i ponownie uruchom test. 
+1. Wybierz tryb **uwierzytelniania SSH** : `Password Authentication` lub `key File Authentication`.
+2. W przypadku korzystania z uwierzytelniania opartego na hasłach wprowadź wartości w polu Nazwa DNS, **Nazwa użytkownika**i **hasło** **maszyny wirtualnej**.  Opcjonalnie można zmienić domyślny numer **portu SSH** .
 
-Po testów automatycznych, należy podać dodatkowe informacje o obrazie maszyny Wirtualnej na **kwestionariusz** ekranu.  Zawiera ona dwie karty, które należy wykonać.  **Ogólną ocenę** karta zawiera **PRAWDA/FAŁSZ** pytania, natomiast **dostosowywania jądra** zawiera wiele oraz dowolne pytania.  Wykonaj pytania na obu kartach, a następnie wybierz pozycję **dalej**.
+     ![Uwierzytelnianie hasła maszyny wirtualnej z systemem Linux](./media/publishvm_026.png)
 
-![Kwestionariusz narzędzie certyfikacji](./media/publishvm_030.png)
+3. W przypadku użycia uwierzytelniania opartego na plikach klucza wpisz wartości w polu **nazwa DNS maszyny wirtualnej**, **Nazwa użytkownika**i lokalizacja **klucza prywatnego** .  Opcjonalnie możesz podać **hasło** lub zmienić domyślny numer **portu SSH** .
 
-Ostatnim ekranie umożliwia podanie dodatkowych informacji, takich jak SSH dostęp do informacji dla obrazu maszyny Wirtualnej systemu Linux i wyjaśnienia dla dowolnego oceny nie powiodło się, jeśli szukają wyjątki. 
+     ![Uwierzytelnianie plików na obrazie maszyny wirtualnej z systemem Linux](./media/publishvm_027.png)
 
-Na koniec kliknij **Generowanie raportu** pobrać wyniki testów i pliki dziennika dla wykonanych testów dodatkowo do odpowiedzi na kwestionariusz. Zapisz wyniki w tym samym kontenerze co z wirtualnymi dyskami twardymi.
+### <a name="connect-the-certification-tool-to-a-windows-based-vm-image"></a>**Łączenie Narzędzia certyfikacji z obrazem maszyny wirtualnej z systemem Windows**
+1. Wprowadź w pełni kwalifikowaną **nazwę DNS maszyny wirtualnej** (na przykład `MyVMName.Cloudapp.net`).
+2. Wprowadź wartości w polu **Nazwa użytkownika** i **hasło**.
 
-![Zapisz certyfikacji wyników testu](./media/publishvm_031.png)
+   ![Uwierzytelnianie hasła w obrazie maszyny wirtualnej systemu Windows](./media/publishvm_028.png)
 
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="run-a-certification-test"></a>Uruchamianie testu certyfikacji
 
-Następnie zostanie [Generowanie identyfikatory uniform resource identifier (URI) dla poszczególnych wirtualnych dysków Twardych](./cpp-get-sas-uri.md) przesyłanego do portalu marketplace. 
+Po podaniu wartości parametrów dla obrazu maszyny wirtualnej w narzędziu certyfikacji wybierz pozycję **Testuj połączenie** , aby upewnić się, że nastąpiło prawidłowe połączenie z maszyną wirtualną. Po zweryfikowaniu połączenia wybierz pozycję **dalej** , aby rozpocząć test.  Po zakończeniu testu zostanie wyświetlona tabela z wynikami testu (przebieg/niepowodzenie/ostrzeżenie).  Poniższy przykład pokazuje wyniki testu dla testu maszyny wirtualnej z systemem Linux. 
+
+![Wyniki testu certyfikacji dla obrazu maszyny wirtualnej z systemem Linux](./media/publishvm_029.png)
+
+Jeśli którykolwiek z testów zakończy się niepowodzeniem, obraz *nie* zostanie certyfikowany. W takim przypadku należy przejrzeć wymagania i komunikaty o błędach, wprowadzić wskazane zmiany i ponownie uruchomić test. 
+
+Po automatycznym teście wymagane jest podanie dodatkowych informacji o obrazie maszyny wirtualnej na ekranie **kwestionariusza** .  Zawiera dwie karty, które należy wykonać.  Karta **Ocena ogólna** zawiera pytania **prawdziwe/fałszywe** , podczas gdy **dostosowanie jądra** zawiera wiele pytań dotyczących wyboru i dowolnego kształtu.  Wykonaj pytania na obu kartach, a następnie wybierz przycisk **dalej**.
+
+![Kwestionariusz Narzędzia certyfikacji](./media/publishvm_030.png)
+
+Ostatni ekran umożliwia podanie dodatkowych informacji, takich jak informacje o dostępie SSH dla obrazu maszyny wirtualnej z systemem Linux, oraz wyjaśnienie ewentualnych ocen zakończonych niepowodzeniem w przypadku wyszukiwania wyjątków. 
+
+Na koniec kliknij pozycję **Generuj raport** , aby pobrać wyniki testów i pliki dziennika dla wykonanych przypadków testowych, a także do odpowiedzi na kwestionariusz. Zapisz wyniki w tym samym kontenerze co wirtualne dyski twarde.
+
+![Zapisz wyniki testu certyfikacji](./media/publishvm_031.png)
+
+
+## <a name="next-steps"></a>Następne kroki
+
+Następnie [dla każdego wirtualnego dysku twardego](./cpp-get-sas-uri.md) , który zostanie przesłany do portalu Marketplace, zostaną wygenerowane identyfikatory URI. 

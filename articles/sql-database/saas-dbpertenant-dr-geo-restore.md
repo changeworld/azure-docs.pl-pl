@@ -1,22 +1,22 @@
 ---
-title: 'SaaS Apps: Azure SQL Database geograficznie nadmiarowe kopie zapasowe na potrzeby odzyskiwania po awarii '
+title: 'SaaS Apps: geograficznie nadmiarowe kopie zapasowe na potrzeby odzyskiwania po awarii'
 description: Dowiedz się, jak używać Azure SQL Database geograficznie nadmiarowych kopii zapasowych w celu odzyskania wielodostępnej aplikacji SaaS w przypadku awarii
 services: sql-database
 ms.service: sql-database
 ms.subservice: scenario
-ms.custom: ''
+ms.custom: seo-lt-2019
 ms.devlang: ''
 ms.topic: conceptual
 author: AyoOlubeko
 ms.author: craigg
 ms.reviewer: sstein
 ms.date: 01/14/2019
-ms.openlocfilehash: 2f058a5cd20fff845a1feafe42b66beb1afef766
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 270fc157fa14efa19ed30d35b614fb769804b72e
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73692192"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73826471"
 ---
 # <a name="use-geo-restore-to-recover-a-multitenant-saas-application-from-database-backups"></a>Używanie przywracania geograficznego do odzyskiwania wielodostępnej aplikacji SaaS z kopii zapasowych bazy danych
 

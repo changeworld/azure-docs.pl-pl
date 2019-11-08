@@ -1,5 +1,5 @@
 ---
-title: Azure SQL Database — Omówienie zapytania elastycznego
+title: Omówienie zapytania elastycznego
 description: Elastyczne zapytanie umożliwia uruchomienie zapytania Transact-SQL obejmującego wiele baz danych.
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: MladjoA
 ms.author: mlandzic
 ms.reviewer: sstein
 ms.date: 07/01/2019
-ms.openlocfilehash: 08c191742425c448618db255491c709130df33a1
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 9566ac7169144d984f9200734c99eb10368b3142
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73690365"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73823737"
 ---
 # <a name="azure-sql-database-elastic-query-overview-preview"></a>Azure SQL Database Elastic Query — omówienie (wersja zapoznawcza)
 
@@ -138,7 +138,7 @@ Elastyczne zapytanie jest uwzględniane w kosztach baz danych Azure SQL Database
 * Uruchomienie pierwszego zapytania elastycznego może potrwać kilka minut w standardowej warstwie usług. Ten czas jest konieczny do załadowania funkcji zapytania elastycznego. Ładowanie wydajności zwiększa się o wyższe warstwy usług i rozmiary obliczeniowe.
 * Skrypty zewnętrznych źródeł danych lub tabel zewnętrznych z programu SSMS lub SSDT nie są jeszcze obsługiwane.
 * Usługa Import/Export dla bazy danych SQL nie obsługuje jeszcze zewnętrznych źródeł danych i tabel zewnętrznych. Jeśli musisz użyć polecenia Import/Export, Porzuć te obiekty przed eksportem, a następnie utwórz je ponownie po zaimportowaniu.
-* Elastyczne zapytanie obecnie obsługuje tylko dostęp tylko do odczytu do tabel zewnętrznych. Można jednak używać pełnej funkcjonalności języka T-SQL w bazie danych, w której zdefiniowano tabelę zewnętrzną. Może to być przydatne, np. utrwalanie tymczasowych wyników przy użyciu, na przykład, wybierz < column_list > do < local_table > lub Zdefiniuj procedury składowane w bazie danych zapytań elastycznych odwołujących się do tabel zewnętrznych.
+* Elastyczne zapytanie obecnie obsługuje tylko dostęp tylko do odczytu do tabel zewnętrznych. Można jednak używać pełnej funkcjonalności języka T-SQL w bazie danych, w której zdefiniowano tabelę zewnętrzną. Może to być przydatne, np. utrwalanie tymczasowych wyników przy użyciu, na przykład, wybierz < column_list > w < local_table > lub Zdefiniuj procedury składowane w bazie danych zapytań elastycznych odwołujących się do tabel zewnętrznych.
 * Typy obiektów LOB (w tym typy przestrzenne) nie są obsługiwane w definicjach tabel zewnętrznych. Aby obejść ten element, można utworzyć w zdalnej bazie danych widok, który rzutuje typ LOB na nvarchar (max), zdefiniować tabelę zewnętrzną w widoku zamiast tabeli bazowej, a następnie rzutować ją z powrotem na oryginalny typ LOB w zapytaniach.
 * Kolumny typu danych nvarchar (max) w zestawie wyników Wyłącz zaawansowane Technics wsadowe używane w implementacji zapytania elastycznego, które mogą wpływać na wydajność zapytania w kolejności wielkości, a nawet dwa zamówienia wielkości w przypadku niekanonicznych przypadków użycia, w których duża ilość dane niezagregowane są transferowane w wyniku zapytania.
 * Statystyki kolumn dla tabel zewnętrznych nie są obecnie obsługiwane. Statystyki tabeli są obsługiwane, ale należy je utworzyć ręcznie.

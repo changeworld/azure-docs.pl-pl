@@ -6,18 +6,18 @@ manager: philmea
 ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
-ms.date: 05/11/2019
+ms.date: 10/02/2019
 ms.author: robinsh
-ms.openlocfilehash: 32c7a2a79c8d6a35008255b3c117f20d04ad7749
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: 3b498911999e224003710eced8e0c34989672800
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72927419"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73809198"
 ---
 # <a name="import-and-export-iot-hub-device-identities-in-bulk"></a>Zbiorczo Importuj i Eksportuj IoT Hub tożsamości urządzeń
 
-Każde Centrum IoT Hub ma rejestr tożsamości, którego można użyć do tworzenia zasobów dla urządzeń w usłudze. Rejestr tożsamości pozwala również kontrolować dostęp do punktów końcowych dostępnych dla urządzenia. W tym artykule opisano sposób importowania i eksportowania tożsamości urządzeń zbiorczo do i z rejestru tożsamości.
+Każde Centrum IoT Hub ma rejestr tożsamości, którego można użyć do tworzenia zasobów dla urządzeń w usłudze. Rejestr tożsamości pozwala również kontrolować dostęp do punktów końcowych dostępnych dla urządzenia. W tym artykule opisano sposób importowania i eksportowania tożsamości urządzeń zbiorczo do i z rejestru tożsamości. Aby wyświetlić próbkę roboczą C# w programie i dowiedzieć się, jak można użyć tej funkcji podczas klonowania koncentratora do innego regionu, zobacz [jak sklonować IoT Hub](iot-hub-how-to-clone.md).
 
 [!INCLUDE [iot-hub-basic](../../includes/iot-hub-basic-whole.md)]
 
@@ -421,7 +421,11 @@ static string GetContainerSasUri(CloudBlobContainer container)
 
 ## <a name="next-steps"></a>Następne kroki
 
-W tym artykule przedstawiono sposób wykonywania operacji zbiorczych w rejestrze tożsamości w centrum IoT. Skorzystaj z poniższych linków, aby dowiedzieć się więcej o zarządzaniu usługą Azure IoT Hub:
+W tym artykule przedstawiono sposób wykonywania operacji zbiorczych w rejestrze tożsamości w centrum IoT. Wiele z tych operacji, w tym sposobu przenoszenia urządzeń z jednego koncentratora do drugiego, jest używana w [sekcji Zarządzanie urządzeniami zarejestrowanymi w centrum IoT Hub w artykule Jak sklonować IoT Hub](iot-hub-how-to-clone.md#managing-the-devices-registered-to-the-iot-hub). 
+
+Artykuł klonowania zawiera skojarzony z nim próbkę, która znajduje się w przykładach IoT C# na tej stronie: [Azure IoT Samples dla C# ](https://azure.microsoft.com/resources/samples/azure-iot-samples-csharp/), z projektem ImportExportDevicesSample. Możesz pobrać próbkę i wypróbować ją. istnieją instrukcje przedstawione w artykule [Jak sklonować IoT Hub](iot-hub-how-to-clone.md) .
+
+Aby dowiedzieć się więcej na temat zarządzania usługą Azure IoT Hub, zapoznaj się z następującymi artykułami:
 
 * [Metryki IoT Hub](iot-hub-metrics.md)
 * [Dzienniki IoT Hub](iot-hub-monitor-resource-health.md)

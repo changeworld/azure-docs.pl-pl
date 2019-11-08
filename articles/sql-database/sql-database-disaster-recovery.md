@@ -1,5 +1,5 @@
 ---
-title: SQL Database odzyskiwania po awarii
+title: Odzyskiwanie po awarii
 description: Dowiedz się, jak odzyskać bazę danych z regionalnego przestoju lub niepowodzenia w przypadku korzystania z Azure SQL Database aktywnej replikacji geograficznej oraz możliwości przywracania geograficznego.
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: anosov1960
 ms.author: sashan
 ms.reviewer: mathoma, carlrab
 ms.date: 06/21/2019
-ms.openlocfilehash: bc4968541c29e3bf18eb4caca2abe648d17342a4
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: d28edd28dcbe31bfe63c2d0a9c3e975967efef04
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73690601"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73826586"
 ---
 # <a name="restore-an-azure-sql-database-or-failover-to-a-secondary"></a>Przywracanie Azure SQL Database lub przełączenia w tryb failover do pomocniczego
 

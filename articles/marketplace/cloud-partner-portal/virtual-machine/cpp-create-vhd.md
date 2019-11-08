@@ -1,77 +1,78 @@
 ---
-title: Utwórz wirtualny dysk twardy zgodnych z platformą Azure w portalu Azure Marketplace
-description: Wyjaśnia sposób tworzenia wirtualnego dysku twardego dla oferty maszyny wirtualnej w witrynie Azure Marketplace.
+title: Tworzenie wirtualnego dysku twardego zgodnego z platformą Azure dla portalu Azure Marketplace
+description: W tym artykule wyjaśniono, jak utworzyć dysk VHD dla oferty maszyny wirtualnej w portalu Azure Marketplace.
 services: Azure, Marketplace, Cloud Partner Portal,
 author: pbutlerm
 ms.service: marketplace
+ms.subservice: partnercenter-marketplace-publisher
 ms.topic: article
 ms.date: 08/27/2018
 ms.author: pabutler
-ms.openlocfilehash: a47d16108d98c5449d57d1db4892bffcead7e5f2
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 37fecb8100ec40ace02960a4f3390420a8bfc735
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67072604"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73816805"
 ---
-# <a name="create-an-azure-compatible-vhd"></a>Utwórz wirtualny dysk twardy zgodnych z platformą Azure
+# <a name="create-an-azure-compatible-vhd"></a>Tworzenie wirtualnego dysku twardego zgodnego z platformą Azure
 
-Ten artykuł zawiera kroki wymagane do utworzenia wirtualnego dysku twardego (VHD) dla maszyny wirtualnej (VM) z tej oferty w portalu Azure Marketplace.  Zawiera także najlepsze rozwiązania dotyczące różnych aspektów, takich jak przy użyciu protokołu RDP (Remote Desktop), wybierając rozmiar maszyny wirtualnej, zainstalowanie najnowszych aktualizacji Windows i uogólnianie obrazu wirtualnego dysku twardego.  Poniższe sekcje głównie na wirtualnych dyskach twardych opartych na systemie windows; Aby uzyskać więcej informacji na temat tworzenia opartych na systemie Linux wirtualne dyski twarde, zobacz [systemu Linux na dystrybucje zalecane dla platformy Azure](../../../virtual-machines/linux/endorsed-distros.md). 
+W tym artykule szczegółowo opisano kroki wymagane do utworzenia wirtualnego dysku twardego (VHD) dla oferty maszyny wirtualnej w portalu Azure Marketplace.  Zawiera również najlepsze rozwiązania dotyczące różnych aspektów, takich jak korzystanie z Remote Desktop Protocol (RDP), Wybieranie rozmiaru maszyny wirtualnej, instalowanie najnowszych aktualizacji systemu Windows i uogólnianie obrazu dysku VHD.  W poniższych sekcjach głównie koncentrują się na dyskach VHD opartych na systemie Windows; Aby uzyskać więcej informacji na temat tworzenia wirtualnych dysków twardych opartych na systemie Linux, zobacz [Linux w przypadku dystrybucji potwierdzonych przez platformę Azure](../../../virtual-machines/linux/endorsed-distros.md). 
 
 > [!WARNING]
-> Zdecydowanie zaleca się, postępuj zgodnie ze wskazówkami w tym temacie, Utwórz Maszynę wirtualną zawierającą wstępnie skonfigurowane, zalecane dla systemu operacyjnego za pomocą platformy Azure.  Jeśli to nie jest zgodna z rozwiązaniem, następnie istnieje możliwość utworzyć i skonfigurować lokalną maszynę Wirtualną przy użyciu zatwierdzonego systemu operacyjnego.  Można skonfigurować i przygotować go do przekazywania, zgodnie z opisem w [przygotowanie Windows dysku VHD lub VHDX można przekazać na platformę Azure](https://docs.microsoft.com/azure/virtual-machines/windows/prepare-for-upload-vhd-image).
+> Zdecydowanie zalecamy przestrzeganie wskazówek przedstawionych w tym temacie, aby utworzyć maszynę wirtualną zawierającą wstępnie skonfigurowany, zatwierdzony system operacyjny.  Jeśli nie jest to zgodne z rozwiązaniem, można utworzyć i skonfigurować lokalną maszynę wirtualną przy użyciu zatwierdzonego systemu operacyjnego.  Następnie można skonfigurować i przygotować go do przekazania zgodnie z opisem w artykule [Przygotowywanie wirtualnego dysku twardego systemu Windows lub dysku VHDX do przekazania do platformy Azure](https://docs.microsoft.com/azure/virtual-machines/windows/prepare-for-upload-vhd-image).
 
 
-## <a name="select-an-approved-base"></a>Wybierz podstawowy zatwierdzone
-Wirtualny dysk twardy systemu operacyjnego obrazu maszyny Wirtualnej musi być oparta na zatwierdzone Azure podstawowy obraz, który zawiera systemu Windows Server lub SQL Server.
-Aby rozpocząć, Utwórz Maszynę wirtualną z jednego z następujących obrazów znajdujących się w portalu Microsoft Azure:
+## <a name="select-an-approved-base"></a>Wybierz zatwierdzoną bazę
+Wirtualny dysk twardy systemu operacyjnego na potrzeby obrazu maszyny wirtualnej musi opierać się na podstawie zatwierdzonej na platformie Azure obrazu podstawowego, który zawiera system Windows Server lub SQL Server.
+Aby rozpocząć, Utwórz maszynę wirtualną na podstawie jednego z następujących obrazów znajdujących się w Microsoft Azure Portal:
 
--   System Windows Server ([2016](https://www.microsoft.com/evalcenter/evaluate-windows-server-2016), [2012 R2 Datacenter](https://azuremarketplace.microsoft.com/marketplace/apps/microsoftwindowsserver.windowsserver?tab=Overview), [2012 Datacenter](https://azuremarketplace.microsoft.com/marketplace/apps/microsoftwindowsserver.windowsserver?tab=Overview), [2008 R2 z dodatkiem SP1](https://azuremarketplace.microsoft.com/marketplace/apps/microsoftwindowsserver.windowsserver?tab=Overview))
--   [Program SQL Server 2014](https://docs.microsoft.com/azure/virtual-machines/windows/sql/virtual-machines-windows-sql-server-pricing-guidance) (Enterprise, Standard, sieci Web)
--   [SQL Server 2012 z dodatkiem SP2](https://docs.microsoft.com/azure/virtual-machines/windows/sql/virtual-machines-windows-sql-server-pricing-guidance) (Enterprise, Standard, sieci Web)
+-   Windows Server ([2016](https://www.microsoft.com/evalcenter/evaluate-windows-server-2016), [2012 R2 Datacenter](https://azuremarketplace.microsoft.com/marketplace/apps/microsoftwindowsserver.windowsserver?tab=Overview), [2012 Datacenter](https://azuremarketplace.microsoft.com/marketplace/apps/microsoftwindowsserver.windowsserver?tab=Overview), [2008 R2 z dodatkiem SP1](https://azuremarketplace.microsoft.com/marketplace/apps/microsoftwindowsserver.windowsserver?tab=Overview))
+-   [SQL Server 2014](https://docs.microsoft.com/azure/virtual-machines/windows/sql/virtual-machines-windows-sql-server-pricing-guidance) (Enterprise, standard, Web)
+-   [SQL Server 2012 z dodatkiem SP2](https://docs.microsoft.com/azure/virtual-machines/windows/sql/virtual-machines-windows-sql-server-pricing-guidance) (Enterprise, standard, Web)
 
 > [!TIP]
-> Jeśli używasz aktualnej wersji portalu Azure lub programu PowerShell obrazy systemu Windows Server opublikowane 8 września 2014 r. i nowszych są zatwierdzane.
+> Jeśli używasz bieżącego Azure Portal lub programu PowerShell, obrazy systemu Windows Server opublikowane 8 września 2014 i nowsze są zatwierdzone.
 
-Alternatywnie platforma Azure oferuje szeroką gamę zatwierdzone dystrybucje systemu Linux.  Bieżącą listę, zobacz [systemu Linux na dystrybucje zalecane dla platformy Azure](https://docs.microsoft.com/azure/virtual-machines/linux/endorsed-distros).
+Alternatywnie platforma Azure oferuje zakres zatwierdzonych dystrybucji systemu Linux.  Aby zapoznać się z bieżącą listą, zobacz System [Linux dotyczący dystrybucji zatwierdzony przez platformę Azure](https://docs.microsoft.com/azure/virtual-machines/linux/endorsed-distros).
 
 
-## <a name="create-vm-in-the-azure-portal"></a>Tworzenie maszyny Wirtualnej w witrynie Azure portal 
+## <a name="create-vm-in-the-azure-portal"></a>Tworzenie maszyny wirtualnej w Azure Portal 
 
-W programie Microsoft [witryny Azure portal](https://ms.portal.azure.com/), utworzyć obraz podstawowy wykonując następujące kroki.
+W [Azure Portal](https://ms.portal.azure.com/)firmy Microsoft Utwórz podstawowy obraz, wykonując poniższe kroki.
 
-1. Zaloguj się do portalu przy użyciu konta Microsoft subskrypcji platformy Azure, czy chcesz opublikować ofertę maszyny Wirtualnej.
-2. Utwórz nową grupę zasobów i podaj swoje **nazwy grupy zasobów**, **subskrypcji**, i **lokalizację grupy zasobów**.  Aby uzyskać więcej wskazówek, zobacz [Zarządzanie grupami zasobów](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-portal).
-3. Kliknij pozycję **maszyn wirtualnych** na pasku menu po lewej stronie, aby wyświetlić stronę szczegółów maszyn wirtualnych. 
-4. W tej nowej strony kliknij **+ Dodaj** do wyświetlenia **obliczenia** bloku.  Jeśli nie ma typu maszyny Wirtualnej na ekranie początkowa, nazwa podstawowej maszyny Wirtualnej, można wyszukać na przykład:
+1. Zaloguj się do portalu przy użyciu konto Microsoft dla subskrypcji platformy Azure, w której chcesz opublikować ofertę maszyny wirtualnej.
+2. Utwórz nową grupę zasobów i podaj **nazwę grupy zasobów**, **subskrypcję**i **lokalizację grupy zasobów**.  Aby uzyskać więcej wskazówek, zobacz [Zarządzanie grupami zasobów](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-portal).
+3. Kliknij pozycję **maszyny wirtualne** na lewym pasku menu, aby wyświetlić stronę szczegóły maszyn wirtualnych. 
+4. Na tej nowej stronie kliknij pozycję **+ Dodaj** , aby wyświetlić blok **obliczenia** .  Jeśli nie widzisz typu maszyny wirtualnej na ekranie wstępnym, możesz wyszukać nazwę podstawowej maszyny wirtualnej, na przykład:
 
-    ![Blok nowej maszyny Wirtualnej obliczenia](./media/publishvm_014.png)
+    ![Blok obliczeń nowej maszyny wirtualnej](./media/publishvm_014.png)
 
-5. Po wybraniu odpowiedniego obrazu wirtualnej, podaj następujące wartości:
-   * Na **podstawy** bloku wprowadź **nazwa** dla maszyny wirtualnej, od 1 do 15 znaków alfanumerycznych. (W tym przykładzie użyto `DemoVm009`.)
-   * Wprowadź **nazwa_użytkownika** i silne **hasło**, które są używane do utworzenia konta lokalnego na maszynie Wirtualnej.  (W tym miejscu `adminUser` jest używana.)  Hasło musi mieć długość od 8 do 123 znaków i spełniać trzy z czterech następujących wymagań dotyczących złożoności: mała litera, wielka litera, cyfra i znak specjalny. Aby uzyskać więcej informacji, zobacz [wymagania dotyczące nazwy użytkownika i hasła](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-windows-faq#what-are-the-username-requirements-when-creating-a-vm).
-   * Wybierz utworzoną grupę zasobów (w tym miejscu `DemoResourceGroup`).
-   * Wybierz centrum danych Azure **lokalizacji** (w tym miejscu `West US`).
-   * Kliknij przycisk **OK** można zapisać tych wartości. 
+5. Po wybraniu odpowiedniego obrazu wirtualnego podaj następujące wartości:
+   * W bloku **podstawowe** wprowadź **nazwę** maszyny wirtualnej, od 1-15 znaków alfanumerycznych. (W tym przykładzie używa `DemoVm009`).
+   * Wprowadź **nazwę użytkownika** i silne **hasło**, które zostaną użyte do utworzenia konta lokalnego na maszynie wirtualnej.  (Tutaj `adminUser` jest używany).  Hasło musi mieć długość od 3 do 8-123 znaków i spełniać trzy z czterech następujących wymagań dotyczących złożoności: małe litery, wielkie litery, cyfry i znaki specjalne. Aby uzyskać więcej informacji, zobacz [wymagania dotyczące nazwy użytkownika i hasła](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-windows-faq#what-are-the-username-requirements-when-creating-a-vm).
+   * Wybierz utworzoną grupę zasobów (tutaj `DemoResourceGroup`).
+   * Wybierz **lokalizację** centrum danych platformy Azure (tutaj `West US`).
+   * Kliknij przycisk **OK** , aby zapisać te wartości. 
 
-6. Wybierz rozmiar maszyny Wirtualnej, aby wdrożyć przy użyciu następujące zalecenia:
-   * Jeśli zamierzasz utworzyć wirtualny dysk twardy w środowisku lokalnym, rozmiar nie ma znaczenia. Zastanów się nad użyciem maszyny wirtualnej o mniejszym rozmiarze.
+6. Wybierz rozmiar maszyny wirtualnej do wdrożenia przy użyciu następujących zaleceń:
+   * Jeśli planujesz opracowywanie wirtualnego dysku twardego, rozmiar nie ma znaczenia. Zastanów się nad użyciem maszyny wirtualnej o mniejszym rozmiarze.
    * Jeśli zamierzasz utworzyć obraz na platformie Azure, warto wybrać jeden z zalecanych rozmiarów maszyny wirtualnej dla wybranego obrazu.
-   * Aby uzyskać informacje o cenach, zobacz **zalecane warstwy cenowe** selektor wyświetlany w portalu. Zostaną wyświetlone trzy zalecane rozmiary udostępniane przez wydawcę. (W tym miejscu wydawca jest firmy Microsoft).
+   * Aby uzyskać informacje o cenach, zapoznaj się z selektorem **zalecane warstwy cenowe** , który jest wyświetlany w portalu. Zostaną wyświetlone trzy zalecane rozmiary udostępniane przez wydawcę. (W tym przypadku Wydawca to Microsoft).
 
-   ![Rozmiar bloku nowej maszyny Wirtualnej](./media/publishvm_015.png)
+   ![Blok rozmiaru nowej maszyny wirtualnej](./media/publishvm_015.png)
 
-7. W **ustawienia** ustawić bloku **użycie dysku zarządzanego** opcję **nie**.  Dzięki temu można ręcznie zarządzać nowego wirtualnego dysku twardego. ( **Ustawienia** bloku pozwala również na innych zmian, zmienić opcje magazynu i sieci, na przykład wybranie **Premium (SSD)** w **typ dysku**.)  Kliknij przycisk **OK** aby kontynuować.
+7. W bloku **Ustawienia** ustaw opcję **Użyj dysku zarządzanego** na wartość **nie**.  Pozwala to na ręczne zarządzanie nowym dyskiem VHD. (W bloku **Ustawienia** można także zmienić inne zmiany opcji magazynu i sieci, na przykład wybierając opcję **Premium (SSD)** w obszarze **typ dysku**.)  Kliknij przycisk **OK** , aby kontynuować.
 
-    ![Bloku ustawienia nowej maszyny Wirtualnej](./media/publishvm_016.png)
+    ![Blok ustawień nowej maszyny wirtualnej](./media/publishvm_016.png)
 
 8. Kliknij pozycję **Podsumowanie**, aby przejrzeć wybrane opcje. Po wyświetleniu komunikatu **Sprawdzanie poprawności zakończone powodzeniem** kliknij przycisk **OK**.
 
-    ![Blok podsumowania dla nowej maszyny Wirtualnej](./media/publishvm_017.png)
+    ![Blok podsumowania nowej maszyny wirtualnej](./media/publishvm_017.png)
 
-Azure rozpoczyna inicjowanie obsługi administracyjnej maszyny wirtualnej, wskazana.  Możesz śledzić postęp, klikając **maszyn wirtualnych** karty po lewej stronie.  Po jego utworzeniu stan zmieni się na **systemem**.  W tym momencie możesz [łączenie z maszyną wirtualną](./cpp-connect-vm.md).
+Platforma Azure rozpocznie Inicjowanie obsługi określonej maszyny wirtualnej.  Postęp można śledzić, klikając kartę **Virtual Machines** po lewej stronie.  Po jego utworzeniu stan zmieni się na **uruchomiony**.  W tym momencie można [nawiązać połączenie z maszyną wirtualną](./cpp-connect-vm.md).
 
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
-Jeśli pojawił się trudności, tworzenie nowych VHD opartych na platformie Azure, zobacz [typowe problemy występujące podczas tworzenia wirtualnego dysku twardego](./cpp-common-vhd-creation-issues.md).  W przeciwnym razie, następnie należy najpierw [nawiązać połączenie z maszynami wirtualnymi](./cpp-connect-vm.md) utworzone na platformie Azure. 
+Jeśli wystąpił problem podczas tworzenia nowego wirtualnego dysku twardego opartego na platformie Azure, zobacz [typowe problemy podczas tworzenia dysku VHD](./cpp-common-vhd-creation-issues.md).  W przeciwnym razie należy [nawiązać połączenie z maszynami wirtualnymi](./cpp-connect-vm.md) utworzonymi na platformie Azure. 

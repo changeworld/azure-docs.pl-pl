@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 10/01/2018
-ms.openlocfilehash: dc8b2a00882abc2e88b357d5778eaf96ec71b1bd
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 763a45446771f7b13178e22b0f7a35bd68bfc8bd
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73687575"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73821280"
 ---
 # <a name="public-data-sets-for-testing-and-prototyping"></a>Publiczne zestawy danych do testowania i tworzenia prototypów
 
@@ -42,7 +42,7 @@ Przejrzyj listę publicznych zestawów danych dla danych, których można użyć
 | [Dane dotyczące taksówki w Nowym Jorku](http://www.nyc.gov/html/tlc/html/about/trip_record_data.shtml) | "Rekordy podróży z taksówką zawierają pola przechwytujące pobieranie i Dropoff daty/godziny, lokalizacje pobierania i Dropoff, odległości podróży, opłaty za elementy, typy stawek, typy płatności i liczby osób zgłaszanych przez sterowniki". | Zestawy danych są w plikach CSV według miesiąca. |
 | [Zestawy danych badawczych firmy Microsoft — "Nauka danych do badań"](https://www.microsoft.com/research/academic-program/data-science-microsoft-research/) | Wiele zestawów danych obejmujących interakcje między komputerami, audio/wideo, wyszukiwanie danych/pobieranie informacji, geograficzną i lokalizację, przetwarzanie w języku naturalnym oraz obsługa programu Robotics/Computer. | Zestawy danych są w różnych formatach, spakowane do pobrania. |
 | [Publiczne dane genomu](https://www.completegenomics.com/public-data/) | "Różne zbiory danych dla całych genomów ludzkich są dostępne do użytku publicznego, aby wzmocnić badanie genomiki..." Dostawca, kompletny genomika, jest prywatnym firmą dla firmy. | Zestawy danych po wyodrębnieniu są w formacie tekstowym systemu UNIX. Dostępne są również narzędzia do analizy. |
-| [Otwórz dane analizy danych w chmurze](https://www.opensciencedatacloud.org/) | "Otwarta analiza danych w chmurze umożliwia społeczności naukowej korzystanie z zasobów służących do przechowywania, udostępniania i analizowania petabajtówych zestawów DataSet i skalowania w poziomie."| Zestawy danych są w różnych formatach. |
+| [Otwórz dane analizy danych w chmurze](https://www.opensciencedatacloud.org/projects/) | "Otwarta analiza danych w chmurze umożliwia społeczności naukowej korzystanie z zasobów służących do przechowywania, udostępniania i analizowania petabajtówych zestawów DataSet i skalowania w poziomie."| Zestawy danych są w różnych formatach. |
 | [Globalne dane klimatyczne — WorldClim](https://worldclim.org/) | "WorldClim to zestaw globalnych warstw klimatycznych (gridded dane klimatyczne) z rozdzielczością przestrzenną około 1 km2. Te dane mogą służyć do mapowania i modelowania przestrzennego ". | Te pliki zawierają dane geograficzne. Aby uzyskać więcej informacji, zobacz [Format danych](https://worldclim.org/formats1). |
 | [Dane dotyczące społeczeństwa ludzkiego — projekt GDELT](https://www.gdeltproject.org/data.html) | "Projekt GDELT to największa, najbardziej kompleksowa i najwyższa otwarta baza danych dla ludzkiego społeczeństwa." | Pliki danych pierwotnych są w formacie CSV. |
 | [Anonsowanie kliknij pozycję dane prognozowania dla uczenia maszynowego z Criteo](https://labs.criteo.com/2013/12/download-terabyte-click-logs/) | "Największy wcześniej opublikowany zestaw danych ML". Aby uzyskać więcej informacji, zobacz [Criteo 1 TB kliknij zestaw danych przewidywania](https://blogs.technet.microsoft.com/machinelearning/20../../now-available-on-azure-ml-criteos-1tb-click-prediction-dataset/). | |

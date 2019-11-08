@@ -1,35 +1,35 @@
 ---
 title: Dołączanie zasobów z dostawcami niestandardowymi platformy Azure
-description: Dołączanie zasobów za pomocą dostawców niestandardowych umożliwia manipulowanie i rozszerzanie istniejących zasobów platformy Azure.
+description: Dołączanie zasobów za pomocą dostawców niestandardowych umożliwia manipulowanie i poszerzanie istniejących zasobów platformy Azure.
 services: managed-applications
 ms.service: managed-applications
 ms.topic: tutorial
 ms.author: jobreen
 author: jjbfour
 ms.date: 09/17/2019
-ms.openlocfilehash: c722b4dc3219f76f8c7c571af3613996fec9e69c
-ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
+ms.openlocfilehash: 45086987d5ba3a619028ced798712f2870c6d487
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73608680"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73826784"
 ---
 # <a name="tutorial-resource-onboarding-with-azure-custom-providers"></a>Samouczek: dołączanie zasobów z dostawcami niestandardowymi platformy Azure
 
-Ten samouczek spowoduje wdrożenie niestandardowego dostawcy zasobów na platformie Azure, który rozszerza interfejs API Azure Resource Manager z typem zasobu "Microsoft. CustomProviders/Association". Ten przykład pokazuje, jak rozłożyć istniejące zasoby spoza grupy zasobów, w której przebywa wystąpienie dostawcy niestandardowego. W tym przykładzie dostawca zasobów niestandardowych jest obsługiwany przez aplikację logiki platformy Azure, ale można użyć dowolnego publicznego punktu końcowego interfejsu API.
+W tym samouczku zostanie wdrożony dostawca zasobów niestandardowych platformy Azure, który rozszerza interfejs API Azure Resource Manager z typem zasobu Microsoft. CustomProviders/Association. W tym samouczku pokazano, jak rozłożyć istniejące zasoby spoza grupy zasobów, w której znajduje się wystąpienie dostawcy niestandardowego. W tym samouczku dostawca zasobów niestandardowych jest obsługiwany przez aplikację logiki platformy Azure, ale można użyć dowolnego publicznego punktu końcowego interfejsu API.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
 Aby ukończyć ten samouczek, musisz znać:
 
-* Możliwości [niestandardowe dostawcy platformy Azure](custom-providers-overview.md) .
-* [Dołączanie zasobów z dostawcami niestandardowymi](concepts-custom-providers-resourceonboarding.md).
+* Możliwości [dostawców niestandardowych platformy Azure](custom-providers-overview.md).
+* Podstawowe informacje [na temat dołączania zasobów z dostawcami niestandardowymi](concepts-custom-providers-resourceonboarding.md).
 
-## <a name="getting-started-with-resource-onboarding"></a>Wprowadzenie do dołączania do zasobów
+## <a name="get-started-with-resource-onboarding"></a>Wprowadzenie do dołączania do zasobów
 
-W tym przykładzie istnieją dwa elementy, które należy wdrożyć: Dostawca niestandardowy i skojarzenie. Aby uprościć przykład, istnieje pojedynczy szablon, który umożliwia opcjonalne wdrożenie obu tych metod.
+W tym samouczku istnieją dwa elementy, które należy wdrożyć: Dostawca niestandardowy i skojarzenie. Aby uprościć proces, można opcjonalnie użyć pojedynczego szablonu, który wdraża oba elementy.
 
-Szablon będzie korzystać z następujących zasobów:
+Ten zasób będzie używany przez szablon:
 
 * Microsoft. CustomProviders/resourceProviders
 * Microsoft. Logic/przepływy pracy
@@ -207,89 +207,87 @@ Szablon będzie korzystać z następujących zasobów:
 
 ### <a name="deploy-the-custom-provider-infrastructure"></a>Wdrażanie infrastruktury dostawcy niestandardowego
 
-Pierwsza część szablonu wdraża niestandardową infrastrukturę dostawcy. Ta infrastruktura definiuje efekt zasobu "Associations". Jeśli nie znasz niestandardowych dostawców, zapoznaj się z tematem [podstawowe informacje o dostawcach](custom-providers-overview.md).
+W pierwszej części szablonu jest wdrażana infrastruktura dostawcy niestandardowego. Ta infrastruktura definiuje efekt zasobu skojarzenia. Jeśli nie masz doświadczenia z dostawcami niestandardowymi, zobacz [podstawowe informacje o dostawcach](custom-providers-overview.md).
 
-Wdróżmy infrastrukturę dostawcy niestandardowego, skopiując, Zapisz i Wdróż powyższy szablon albo wykonaj czynności i wdróż je w Azure Portal.
+Wdróżmy infrastrukturę dostawcy niestandardowego. Skopiuj, Zapisz i Wdróż poprzedni szablon albo wykonaj czynności i Wdróż infrastrukturę przy użyciu Azure Portal.
 
-1. Otwórz Azure Portal z https://portal.azure.com.
+1. Przejdź do witryny [Azure Portal](https://portal.azure.com).
 
-2. Wyszukaj w obszarze `All Services` lub na środkowym pasku wyszukiwania. 
+2. Wyszukaj **Szablony** w obszarze **wszystkie usługi** lub przy użyciu głównego pola wyszukiwania:
 
-![Wyszukiwanie szablonów](media/custom-providers-resource-onboarding/templates.png)
+   ![Wyszukaj szablony](media/custom-providers-resource-onboarding/templates.png)
 
-3. Naciśnij przycisk `+ Add` znajdujący się w lewym górnym rogu bloku "Szablony".
+3. Wybierz pozycję **Dodaj** w okienku **Szablony** :
 
-![Dodaj nowy szablon](media/custom-providers-resource-onboarding/templatesadd.png)
+   ![Wybierz pozycję Dodaj](media/custom-providers-resource-onboarding/templatesadd.png)
 
-4. Wypełnij pola "nazwa" i "opis" w obszarze "ogólne" dla nowego szablonu.
+4. W obszarze **Ogólne**wprowadź **nazwę** i **Opis** nowego szablonu:
 
-![Nazwa i opis szablonu](media/custom-providers-resource-onboarding/templatesdescription.png)
+   ![Nazwa i opis szablonu](media/custom-providers-resource-onboarding/templatesdescription.png)
 
-5. Wypełnij szablon Menedżer zasobów, kopiując szablon JSON z tabeli "wprowadzenie do zasobów".
+5. Utwórz szablon Menedżer zasobów przez skopiowanie szablonu JSON z sekcji "wprowadzenie do usługi Resource dołączania" w tym artykule:
 
-![Wypełnij szablon Menedżer zasobów](media/custom-providers-resource-onboarding/templatesarmtemplate.png)
+   ![Tworzenie szablonu usługi Resource Manager](media/custom-providers-resource-onboarding/templatesarmtemplate.png)
 
-6. Naciśnij przycisk `Add`, aby utworzyć nowy szablon. Jeśli nowy szablon nie jest wyświetlany, kliknij przycisk `Refresh`.
+6. Wybierz pozycję **Dodaj** , aby utworzyć szablon. Jeśli nowy szablon nie zostanie wyświetlony, wybierz pozycję **Odśwież**.
 
-7. Wybierz nowo utworzony szablon i naciśnij przycisk `Deploy`.
+7. Wybierz nowo utworzony szablon, a następnie wybierz pozycję **Wdróż**:
 
-![Wybierz nowo utworzony szablon i Wdróż go](media/custom-providers-resource-onboarding/templateselectspecific.png)
+   ![Wybierz nowy szablon, a następnie wybierz pozycję Wdróż.](media/custom-providers-resource-onboarding/templateselectspecific.png)
 
-8. Wprowadź parametry ustawień dla wymaganych pól i wybierz subskrypcję i grupę zasobów. "Identyfikator niestandardowego dostawcy zasobów" może pozostać puste.
+8. Wprowadź ustawienia dla wymaganych pól, a następnie wybierz subskrypcję i grupę zasobów. Pole **Identyfikator niestandardowego dostawcy zasobów** można pozostawić puste.
 
-| Nazwa ustawienia | Wymagany | Opis |
-| ------------ | -------- | ----------- |
-| Lokalizacja | *opcję* | Lokalizacja zasobów w szablonie. |
-| Nazwa aplikacji logiki | *znaleziono* | Nazwa aplikacji logiki. |
-| Nazwa niestandardowego dostawcy zasobów | *znaleziono* | Nazwa niestandardowego dostawcy zasobów. |
-| Identyfikator niestandardowego dostawcy zasobów | *znaleziono* | Istniejący dostawca zasobów niestandardowych obsługujący zasób "Association". Określenie tej opcji spowoduje pominięcie wdrożenia dostawcy aplikacji logiki i niestandardowego. |
-| Nazwa skojarzenia | *znaleziono* | Nazwa zasobu skojarzenia. |
+   | Nazwa ustawienia | Wymagana? | Opis |
+   | ------------ | -------- | ----------- |
+   | Lokalizacja | Tak | Lokalizacja zasobów w szablonie. |
+   | Nazwa aplikacji logiki | Nie | Nazwa aplikacji logiki. |
+   | Nazwa niestandardowego dostawcy zasobów | Nie | Nazwa niestandardowego dostawcy zasobów. |
+   | Identyfikator niestandardowego dostawcy zasobów | Nie | Istniejący dostawca zasobów niestandardowych obsługujący zasób skojarzenia. Jeśli określisz wartość w tym miejscu, wdrożenie aplikacji logiki i dostawcy niestandardowego zostanie pominięte. |
+   | Nazwa skojarzenia | Nie | Nazwa zasobu skojarzenia. |
 
-Przykładowe parametry:
+   Przykładowe parametry:
 
-![Parametry szablonu wejściowego](media/custom-providers-resource-onboarding/templatescustomprovider.png)
+   ![Wprowadź parametry szablonu](media/custom-providers-resource-onboarding/templatescustomprovider.png)
 
-9. Przejdź do wdrożenia i poczekaj na jego zakończenie. Powinna zostać wyświetlona wartość powodzenie i wyjście nowego zasobu "Association".
+9. Przejdź do wdrożenia i poczekaj na jego zakończenie. Powinien wyglądać podobnie do poniższego zrzutu ekranu. Nowy zasób skojarzenia powinien zostać wyświetlony jako dane wyjściowe:
 
-Powodzenie wdrożenia:
+   ![Pomyślne wdrożenie](media/custom-providers-resource-onboarding/customproviderdeployment.png)
 
-![Wdrożenie dostawcy niestandardowego](media/custom-providers-resource-onboarding/customproviderdeployment.png)
+   Oto Grupa zasobów z wybraną pozycją **Pokaż ukryte typy** :
 
-Grupa zasobów z opcją "Pokaż ukryte typy":
+   ![Wdrożenie dostawcy niestandardowego](media/custom-providers-resource-onboarding/showhidden.png)
 
-![Wdrożenie dostawcy niestandardowego](media/custom-providers-resource-onboarding/showhidden.png)
+10. Eksploruj kartę **historia uruchomień** aplikacji logiki, aby wyświetlić wywołania tworzenia skojarzenia:
 
-10. Eksploruj kartę "Historia uruchamiania" aplikacji logiki, aby zobaczyć wywołania dla tworzenia skojarzenia.
-
-![Historia uruchamiania aplikacji logiki](media/custom-providers-resource-onboarding/logicapprun.png)
+    ![Historia uruchomień aplikacji logiki](media/custom-providers-resource-onboarding/logicapprun.png)
 
 ## <a name="deploy-additional-associations"></a>Wdróż dodatkowe skojarzenia
 
-Po skonfigurowaniu infrastruktury niestandardowego dostawcy można łatwo wdrożyć dodatkowe "skojarzenia". Grupa zasobów dla dodatkowych "skojarzeń" nie musi być taka sama jak grupa zasobów, w której została wdrożona infrastruktura dostawcy niestandardowego. Aby można było utworzyć skojarzenie, uprawnienia "Microsoft. CustomProviders/resourceproviders/Write" są konieczne w określonym "IDENTYFIKATORze niestandardowego dostawcy zasobów".
+Po skonfigurowaniu infrastruktury niestandardowego dostawcy można łatwo wdrożyć więcej skojarzeń. Grupa zasobów dla dodatkowych skojarzeń nie musi być taka sama jak grupa zasobów, w której wdrożono infrastrukturę dostawcy niestandardowego. Aby utworzyć skojarzenie, musisz mieć uprawnienia Microsoft. CustomProviders/resourceproviders/Write do określonego niestandardowego identyfikatora dostawcy zasobów.
 
-1. Przejdź do zasobu niestandardowego dostawcy "Microsoft. CustomProviders/resourceProviders" w grupie zasobów poprzedniego wdrożenia. Należy zaznaczyć pole wyboru "Pokaż typy ukryte".
+1. Przejdź do zasobu dostawcy niestandardowego **Microsoft. CustomProviders/resourceProviders** w grupie zasobów poprzedniego wdrożenia. Musisz zaznaczyć pole wyboru **Pokaż ukryte typy** :
 
-![Wdrożenie dostawcy niestandardowego](media/custom-providers-resource-onboarding/showhidden.png)
+   ![Przejdź do zasobu](media/custom-providers-resource-onboarding/showhidden.png)
 
-2. Skopiuj Właściwość "Resource ID" dostawcy niestandardowego.
+2. Skopiuj Właściwość Identyfikator zasobu dostawcy niestandardowego.
 
-3. Wyszukaj w obszarze `All Services` lub na środkowym pasku wyszukiwania. 
+3. Wyszukaj **Szablony** w obszarze **wszystkie usługi** lub przy użyciu głównego pola wyszukiwania:
 
-![Wyszukiwanie szablonów](media/custom-providers-resource-onboarding/templates.png)
+   ![Wyszukaj szablony](media/custom-providers-resource-onboarding/templates.png)
 
-4. Wybierz wcześniej utworzony szablon i naciśnij przycisk `Deploy`.
+4. Wybierz wcześniej utworzony szablon, a następnie wybierz pozycję **Wdróż**:
 
-![Wybierz wcześniej utworzony szablon i Wdróż go](media/custom-providers-resource-onboarding/templateselectspecific.png)
+   ![Wybierz wcześniej utworzony szablon, a następnie wybierz pozycję Wdróż.](media/custom-providers-resource-onboarding/templateselectspecific.png)
 
-5. Wprowadź parametry ustawień dla wymaganych pól i wybierz subskrypcję i inną grupę zasobów. Dla ustawienia "niestandardowy identyfikator dostawcy zasobów" wprowadź skopiowany "Identyfikator zasobu" wcześniej wdrożonego niestandardowego dostawcę.
+5. Wprowadź ustawienia dla wymaganych pól, a następnie wybierz subskrypcję i inną grupę zasobów. W polu **Identyfikator niestandardowego dostawcy zasobów** wprowadź identyfikator zasobu skopiowany z wcześniej wdrożonego dostawcy niestandardowego.
 
-6. Przejdź do wdrożenia i poczekaj na jego zakończenie. Teraz należy wdrożyć tylko nowy zasób "Associations".
+6. Przejdź do wdrożenia i poczekaj na jego zakończenie. Powinien teraz wdrożyć tylko nowy zasób skojarzenia:
 
-![Utworzono skojarzenie](media/custom-providers-resource-onboarding/createdassociationresource.png)
+   ![Nowy zasób skojarzeń](media/custom-providers-resource-onboarding/createdassociationresource.png)
 
-Opcjonalnie możesz przejść z powrotem do aplikacji logiki "Historia uruchamiania" i zobaczyć, że zostało wykonane inne wywołanie do aplikacji logiki. Aplikację logiki można zaktualizować, aby rozszerzyć dodatkowe funkcje dla każdego utworzonego skojarzenia.
+Jeśli chcesz, możesz wrócić do **historii uruchamiania** aplikacji logiki i zobaczyć, że inne wywołanie zostało wykonane w aplikacji logiki. Możesz zaktualizować aplikację logiki, aby rozszerzyć dodatkowe funkcje dla każdego utworzonego skojarzenia.
 
-## <a name="looking-for-help"></a>Szukasz pomocy
+## <a name="getting-help"></a>Uzyskiwanie pomocy
 
-Jeśli masz pytania dotyczące dostawców niestandardowych platformy Azure, spróbuj zadać [Stack Overflow](http://stackoverflow.com/questions/tagged/azure-custom-providers). Podobne pytanie mogło zostać już zgłoszone i nie udzielono odpowiedzi, więc najpierw należy sprawdzić przed opublikowaniem. Dodaj tag `azure-custom-providers`, aby uzyskać szybką odpowiedź!
+Jeśli masz pytania dotyczące dostawców niestandardowych platformy Azure, spróbuj zadawać je na [Stack Overflow](http://stackoverflow.com/questions/tagged/azure-custom-providers). Na podobnej pytanie mogły już zostać odebrane odpowiedzi, więc najpierw należy sprawdzić przed opublikowaniem. Dodaj tag `azure-custom-providers`, aby uzyskać szybką odpowiedź!
 

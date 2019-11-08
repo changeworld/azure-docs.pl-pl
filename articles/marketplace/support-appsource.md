@@ -1,31 +1,32 @@
 ---
-title: Obsługa usługi AppSource | Azure
-description: Informacje pomocy technicznej i linki do usługi AppSource.
+title: Obsługa AppSource | Azure
+description: Informacje o pomocy technicznej i linki dla AppSource.
 services: Azure, Marketplace, Compute, Storage, Networking, Blockchain, Security
 author: ellacroi
 manager: nunoc
 ms.service: marketplace
+ms.subservice: partnercenter-marketplace-publisher
 ms.topic: article
 ms.date: 07/02/2018
 ms.author: ellacroi
-ms.openlocfilehash: 788a50b85b47b104f12c22ea3d4c39627c412cc2
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 2b150f48e0eab0d83ec50a269f171a0bbfa4ed80
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64937543"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73827729"
 ---
-# <a name="support-for-appsource"></a>Obsługa usługi AppSource  
-Opcje pomocy technicznej dla usługi AppSource.  
+# <a name="support-for-appsource"></a>Obsługa AppSource  
+Opcje pomocy technicznej dla AppSource.  
 
-## <a name="technical"></a>Technical Preview  
+## <a name="technical"></a>Naukow  
 
-| Kanał obsługi | Opis |  
+| Kanał pomocy technicznej | Opis |  
 |:--- |:--- |  
-| Fora MSDN: Usługa Azure Active Directory znajduje się w [social.msdn.microsoft.com/Forums/azure/home?forum=WindowsAzureAD](https://social.msdn.microsoft.com/Forums/azure/home?forum=WindowsAzureAD "usługi Azure AD na forach MSDN") | Forum sieci Microsoft Developer Network. |  
-| StackOverflow: Usługa Azure Active Directory znajduje się w [stackoverflow.com/questions/tagged/azure-active-directory](https://stackoverflow.com/questions/tagged/azure-active-directory "usługi Azure AD na stronie stackoverflow") | Stos środowiska przepełnienie w celu rozwiązania i zadawania pytań dotyczących wszystko, co jest związane z usługą Azure Active Directory (Azure AD). |  
+| Fora MSDN: Azure Active Directory zlokalizowane w [Social.MSDN.Microsoft.com/forums/Azure/Home?forum=WindowsAzureAD](https://social.msdn.microsoft.com/Forums/azure/home?forum=WindowsAzureAD "Usługa Azure AD na forach MSDN") | Forum Microsoft Developer Network. |  
+| StackOverflow: Azure Active Directory znajdujący się w [StackOverflow.com/questions/Tagged/Azure-Active-Directory](https://stackoverflow.com/questions/tagged/azure-active-directory "Usługa Azure AD w systemie StackOverflow") | Stack Overflow środowisko w celu uzyskania rozwiązań i zadawania pytań dotyczących wszystkich elementów związanych z Azure Active Directory (Azure AD). |  
 
-## <a name="next-steps"></a>Kolejne kroki
-Odwiedź stronę [portalu Azure Marketplace i AppSource — przewodnik dla wydawcy](./marketplace-publishers-guide.md) strony.  
+## <a name="next-steps"></a>Następne kroki
+Odwiedź stronę [przewodnika po wydawcy portalu Azure Marketplace i AppSource](./marketplace-publishers-guide.md) .  
  
 ---

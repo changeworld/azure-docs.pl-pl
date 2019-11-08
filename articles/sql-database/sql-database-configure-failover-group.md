@@ -1,5 +1,5 @@
 ---
-title: Konfigurowanie grupy trybu failover dla Azure SQL Database
+title: Konfigurowanie grupy trybu failover
 description: Dowiedz się, jak skonfigurować grupę autotrybu failover dla Azure SQL Database pojedynczej bazy danych, elastycznej puli i wystąpienia zarządzanego przy użyciu Azure Portal, polecenia AZ CLI i programu PowerShell.
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: MashaMSFT
 ms.author: mathoma
 ms.reviewer: sstein, carlrab
 ms.date: 08/14/2019
-ms.openlocfilehash: 626677ef9444e0ad99fd3678e23bdeec62fd920c
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: fb9ee2378679c420a7675856ec95e60f6ae1d14f
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72933388"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73827148"
 ---
 # <a name="configure-a-failover-group-for-azure-sql-database"></a>Konfigurowanie grupy trybu failover dla Azure SQL Database
 
@@ -183,7 +183,7 @@ Przywróć grupę trybu failover z powrotem do serwera podstawowego:
 
 ---
 
-## <a name="elastic-pool"></a>Pula elastyczna
+## <a name="elastic-pool"></a>Elastyczna pula
 Utwórz grupę trybu failover i Dodaj do niej pulę elastyczną przy użyciu Azure Portal lub programu PowerShell.  
 
 ### <a name="prerequisites"></a>Wymagania wstępne
@@ -368,7 +368,7 @@ Utwórz bramę podstawowej sieci wirtualnej przy użyciu Azure Portal.
     | **Subskrypcja** |  Subskrypcja, w której znajduje się główne wystąpienie zarządzane. |
     | **Nazwa** | Nazwa bramy sieci wirtualnej. | 
     | **Region** | Region, w którym znajduje się pomocnicze wystąpienie zarządzane. |
-    | **Typ bramy** | Wybierz pozycję **Sieć VPN**. |
+    | **Typ bramy** | wybierz pozycję **VPN**. |
     | **Typ sieci VPN** | Wybierz pozycję **oparta na trasach** |
     | **SKU**| Pozostaw wartość domyślną `VpnGw1`. |
     | **Lokalizacja**| Lokalizacja, w której znajduje się pomocnicze wystąpienie zarządzane i pomocnicza Sieć wirtualna.   |
@@ -429,7 +429,7 @@ Powtórz kroki opisane w poprzedniej sekcji, aby utworzyć podsieć i bramę sie
    | **Subskrypcja** |  Subskrypcja, w której znajduje się pomocnicze wystąpienie zarządzane. |
    | **Nazwa** | Nazwa bramy sieci wirtualnej, na przykład `secondary-mi-gateway`. | 
    | **Region** | Region, w którym znajduje się pomocnicze wystąpienie zarządzane. |
-   | **Typ bramy** | Wybierz pozycję **Sieć VPN**. |
+   | **Typ bramy** | wybierz pozycję **VPN**. |
    | **Typ sieci VPN** | Wybierz pozycję **oparta na trasach** |
    | **SKU**| Pozostaw wartość domyślną `VpnGw1`. |
    | **Lokalizacja**| Lokalizacja, w której znajduje się pomocnicze wystąpienie zarządzane i pomocnicza Sieć wirtualna.   |

@@ -1,5 +1,5 @@
 ---
-title: Rozwiązywanie problemów z wydajnością Azure SQL Database przy użyciu Intelligent Insights
+title: Rozwiązywanie problemów z wydajnością za pomocą Intelligent Insights
 description: Intelligent Insights pomaga rozwiązywać problemy Azure SQL Database wydajności.
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: danimir
 ms.author: danil
 ms.reviewer: jrasnik, carlrab
 ms.date: 01/25/2019
-ms.openlocfilehash: fef1ed386dbf3acccc09b9bba743b6b33492da0e
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: b6ec1952d730b6515032572def65806a1ccbc0b2
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73689716"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73810363"
 ---
 # <a name="troubleshoot-azure-sql-database-performance-issues-with-intelligent-insights"></a>Rozwiązywanie problemów z wydajnością Azure SQL Database przy użyciu Intelligent Insights
 
@@ -280,7 +280,7 @@ Aby uzyskać więcej informacji, zobacz [Informacje o tym, jak SQL Server uniemo
 
 Ten wykrywalny wzorzec wydajności wskazuje stan, w którym zmiana w konfiguracji z zakresem bazy danych powoduje, że regresja wydajności wykryto w porównaniu z siódmym 7-dniowym zachowaniem obciążenia bazy danych. Ten wzorzec oznacza, że Ostatnia zmiana w konfiguracji z zakresem bazy danych nie ma wpływu na wydajność bazy danych.
 
-Zmiany konfiguracji w zakresie bazy danych można ustawić dla każdej pojedynczej bazy danych. Ta konfiguracja jest używana na podstawie wielkości liter w celu zoptymalizowania indywidualnej wydajności bazy danych. Następujące opcje można skonfigurować dla każdej pojedynczej bazy danych: MAXDOP, LEGACY_CARDINALITY_ESTIMATION, PARAMETER_SNIFFING, QUERY_OPTIMIZER_HOTFIXES i CLEAR PROCEDURE_CACHE.
+Zmiany konfiguracji w zakresie bazy danych można ustawić dla każdej pojedynczej bazy danych. Ta konfiguracja jest używana na podstawie wielkości liter w celu zoptymalizowania indywidualnej wydajności bazy danych. Dla każdej pojedynczej bazy danych można skonfigurować następujące opcje: MAXDOP, LEGACY_CARDINALITY_ESTIMATION, PARAMETER_SNIFFING, QUERY_OPTIMIZER_HOTFIXES i wyczyść PROCEDURE_CACHE.
 
 ### <a name="troubleshooting"></a>Rozwiązywanie problemów
 

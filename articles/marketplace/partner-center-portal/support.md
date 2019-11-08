@@ -5,14 +5,15 @@ author: ChJenk
 manager: evansma
 ms.author: jamwall
 ms.service: marketplace
+ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 05/17/2019
-ms.openlocfilehash: c0f3fba389f9cb6f55ac5bf7bb81475fa8244cbf
-ms.sourcegitcommit: 532335f703ac7f6e1d2cc1b155c69fc258816ede
+ms.openlocfilehash: 53d6b5b43a028d552c95c58aebf7268353621759
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70195249"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73827900"
 ---
 # <a name="support-for-the-commercial-marketplace-program-in-partner-center"></a>Wsparcie dla komercyjnego programu w witrynie Marketplace w centrum partnerskim
 
@@ -42,11 +43,11 @@ Firma Microsoft zapewnia pomoc techniczną dla wielu różnych produktów i usł
 
 ## <a name="how-to-open-a-support-ticket"></a>Jak otworzyć bilet pomocy technicznej
 
-Wybranie **dodatkowej pomocy** z menu komercyjnej pomocy technicznej portalu Marketplace w centrum partnerskim spowoduje przekierowanie do strony Pomoc techniczna firmy Microsoft dla firm. Zobaczysz kilka menu rozwijanych. Pierwsze niektóre menu rozwijane są wypełniane automatycznie. Aby uzyskać pomoc techniczną, zidentyfikuj rodzinę produktów jako **usługi w chmurze i online**, produkt jako wydawcę w **portalu Marketplace**oraz wersję produktu jako publikację w **portalu Marketplace**. Nie zmieniaj wstępnie wypełnionych menu rozwijanych. 
+Wybranie **dodatkowej pomocy** z menu komercyjnej pomocy technicznej portalu Marketplace w centrum partnerskim spowoduje przekierowanie do strony Pomoc techniczna firmy Microsoft dla firm. Zobaczysz kilka menu rozwijanych. Pierwsze niektóre menu rozwijane są wypełniane automatycznie. Aby uzyskać pomoc techniczną, zidentyfikuj rodzinę produktów jako **usługi w chmurze i online**, produkt jako **wydawcę w portalu Marketplace**oraz wersję produktu jako **publikację w portalu Marketplace**. Nie zmieniaj wstępnie wypełnionych menu rozwijanych. 
 
-- **Wybierz kategorię, która najlepiej opisuje ten problem**: Wybierz kategorię, która najlepiej odpowiada danemu wystąpieniu lub problemowi. Wybranie kategorii spowoduje wyświetlenie dodatkowego menu rozwijanego z prośbą o wybranie problemu, który najlepiej opisuje Twój problem.
+- **Wybierz kategorię, która najlepiej opisuje problem**: Wybierz kategorię, która najlepiej odpowiada Twojemu pytania lub problemowi. Wybranie kategorii spowoduje wyświetlenie dodatkowego menu rozwijanego z prośbą o wybranie problemu, który najlepiej opisuje Twój problem.
 
-- **Wybierz problem, który najlepiej opisuje problem**: Wybierz problem z wyświetlonych opcji, które najlepiej odpowiadają problemom. W zależności od tego problemu w nowej sekcji może pojawić się komunikat "Oto kilka informacji, które mogą pomóc" z linkami związanymi z danym problemem. Przejrzyj te linki przed wybraniem przycisku **dalej** , aby sprawdzić, czy pytanie lub problem zostało rozwiązany.
+- **Wybierz problem, który najlepiej opisuje**problem: Wybierz problem z wymienionych opcji, które najlepiej odpowiadają temu problemowi. W zależności od tego problemu w nowej sekcji może pojawić się komunikat "Oto kilka informacji, które mogą pomóc" z linkami związanymi z danym problemem. Przejrzyj te linki przed wybraniem przycisku **dalej** , aby sprawdzić, czy pytanie lub problem zostało rozwiązany.
 
 Po wybraniu przycisku **dalej** nastąpi przekierowanie do strony **szczegółów problemu** . 
 

@@ -1,5 +1,5 @@
 ---
-title: Konfigurowanie platformy deweloperskiej
+title: 'Szybki Start: Konfigurowanie platformy deweloperskiej'
 titleSuffix: Azure Cognitive Services
 description: W tym przewodniku szybki start dowiesz się, jak zainstalować zestaw Speech SDK dla preferowanej platformy i kombinacji języka programowania.
 services: cognitive-services
@@ -11,14 +11,14 @@ ms.topic: quickstart
 ms.date: 11/04/2019
 ms.author: erhopf
 zone_pivot_groups: programming-languages-set-three
-ms.openlocfilehash: c1d8a9b6dd7bf7ccf29997f26a1c8cafb01a536e
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: ad1806daa1fc00d5b14f9c6a30027f278f53e892
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73682051"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73826957"
 ---
-# <a name="quickstart-setup-development-environment"></a>Szybki Start: Konfigurowanie środowiska deweloperskiego.
+# <a name="quickstart-setup-development-environment"></a>Szybki Start: Konfigurowanie środowiska deweloperskiego
 
 ::: zone pivot="programming-language-csharp"
 **Wybierz środowisko docelowe**

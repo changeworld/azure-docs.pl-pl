@@ -14,15 +14,15 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/14/2018
 ms.author: atsenthi
-ms.openlocfilehash: 6ee7c71a66488e9636752676d68a79fdfaf855cb
-ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
+ms.openlocfilehash: cf808bef75a73cef6e8c17045506f29fabf3b52e
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68599835"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73819443"
 ---
 # <a name="service-fabric-cluster-security-scenarios"></a>Scenariusze zabezpieczeń klastra Service Fabric
-Klaster Service Fabric platformy Azure to zasób, którego jesteś członkiem. Użytkownik jest odpowiedzialny za zabezpieczanie klastrów w celu zapobiegania łączeniu się z nimi nieautoryzowanych użytkowników. Bezpieczny klaster jest szczególnie ważny w przypadku uruchamiania obciążeń produkcyjnych w klastrze. Chociaż istnieje możliwość utworzenia klastra niezabezpieczonego, Jeśli klaster ujawnia punkty końcowe zarządzania do publicznej sieci Internet, anonimowi użytkownicy mogą się z nim połączyć. Niezabezpieczone klastry nie są obsługiwane w przypadku obciążeń produkcyjnych. 
+Klaster Service Fabric platformy Azure to zasób, którego jesteś członkiem. Użytkownik jest odpowiedzialny za zabezpieczanie klastrów w celu zapobiegania łączeniu się z nimi nieautoryzowanych użytkowników. Bezpieczny klaster jest szczególnie ważny w przypadku uruchamiania obciążeń produkcyjnych w klastrze. Istnieje możliwość utworzenia klastra niezabezpieczonego, jednak Jeśli klaster ujawnia punkty końcowe zarządzania do publicznej sieci Internet, anonimowi użytkownicy mogą się z nim połączyć. Niezabezpieczone klastry nie są obsługiwane w przypadku obciążeń produkcyjnych. 
 
 Ten artykuł zawiera omówienie scenariuszy zabezpieczeń klastrów platformy Azure i klastrów autonomicznych oraz różnych technologii, których można użyć do ich wdrożenia:
 
@@ -57,7 +57,7 @@ Zabezpieczenia klienta w węźle uwierzytelniają klientów i pomagają w zabezp
 Klastry działające na platformie Azure i autonomicznych klastrach działających w systemie Windows mogą korzystać z [zabezpieczeń certyfikatów](https://msdn.microsoft.com/library/ff649801.aspx) lub [zabezpieczeń systemu Windows](https://msdn.microsoft.com/library/ff649396.aspx).
 
 ### <a name="client-to-node-certificate-security"></a>Zabezpieczenia certyfikatów między klientami a węzłami
-Skonfiguruj zabezpieczenia certyfikatu klient-węzeł podczas tworzenia klastra, w Azure Portal, przy użyciu szablonu Menedżer zasobów lub przy użyciu autonomicznego szablonu JSON. Aby utworzyć certyfikat, Określ certyfikat klienta administratora lub certyfikat klienta użytkownika. Najlepszym rozwiązaniem jest określenie, że certyfikaty klienta i klienta administratora będą się różnić od podstawowych i pomocniczych certyfikatów określonych dla [zabezpieczeń](#node-to-node-security)między węzłami. Domyślnie certyfikaty klastra dla zabezpieczeń węzeł-węzeł są dodawane do listy dozwolonych certyfikatów administratora klienta.
+Skonfiguruj zabezpieczenia certyfikatu klient-węzeł podczas tworzenia klastra, w Azure Portal, przy użyciu szablonu Menedżer zasobów lub przy użyciu autonomicznego szablonu JSON. Aby utworzyć certyfikat, Określ certyfikat klienta administratora lub certyfikat klienta użytkownika. Najlepszym rozwiązaniem jest określenie, że certyfikaty klienta i klienta administratora będą się różnić od podstawowych i pomocniczych certyfikatów określonych dla [zabezpieczeń między węzłami](#node-to-node-security). Certyfikaty klastra mają takie same prawa jak certyfikaty administratora klienta. Jednak powinny być używane tylko przez klaster, a nie przez użytkowników administracyjnych jako najlepsze rozwiązanie w zakresie zabezpieczeń.
 
 Klienci, którzy łączą się z klastrem przy użyciu certyfikatu administratora, mają pełny dostęp do możliwości zarządzania. Klienci łączący się z klastrem przy użyciu certyfikatu klienta użytkownika tylko do odczytu mają dostęp tylko do odczytu do funkcji zarządzania. Te certyfikaty są używane na potrzeby kontroli RBAC opisanej w dalszej części tego artykułu.
 
@@ -83,7 +83,7 @@ W przypadku klastrów Service Fabric wdrożonych w sieci publicznej hostowanej n
 W przypadku autonomicznych klastrów systemu Windows Server, jeśli masz systemy Windows Server 2012 R2 i Windows Active Directory, zalecamy użycie zabezpieczeń systemu Windows z kontami usług zarządzanymi przez grupę. W przeciwnym razie Użyj zabezpieczeń systemu Windows z kontami systemu Windows.
 
 ## <a name="role-based-access-control-rbac"></a>Kontrola dostępu oparta na rolach (RBAC)
-Za pomocą kontroli dostępu można ograniczyć dostęp do niektórych operacji klastra dla różnych grup użytkowników. Dzięki temu klaster jest bezpieczniejszy. Dla klientów, którzy łączą się z klastrem, są obsługiwane dwa typy kontroli dostępu: Rola administratora i rola użytkownika.
+Za pomocą kontroli dostępu można ograniczyć dostęp do niektórych operacji klastra dla różnych grup użytkowników. Dzięki temu klaster jest bezpieczniejszy. Obsługiwane są dwa typy kontroli dostępu dla klientów łączących się z klastrem: rola administratora i rola użytkownika.
 
 Użytkownicy, którym przypisano rolę administratora, mają pełny dostęp do możliwości zarządzania, w tym możliwości odczytu i zapisu. Użytkownicy, którym przypisano rolę użytkownika, domyślnie mają dostęp tylko do odczytu do funkcji zarządzania (na przykład możliwości zapytania). Mogą również rozpoznać aplikacje i usługi.
 
@@ -94,7 +94,7 @@ Certyfikaty cyfrowe X. 509 są zwykle używane do uwierzytelniania klientów i s
 
 Niektóre ważne zagadnienia, które należy wziąć pod uwagę:
 
-* Aby utworzyć certyfikaty dla klastrów z uruchomionymi obciążeniami produkcyjnymi, należy użyć prawidłowo skonfigurowanej usługi certyfikatów systemu Windows Server lub jednej z zatwierdzonych urzędów certyfikacji [(CA)](https://en.wikipedia.org/wiki/Certificate_authority).
+* Aby utworzyć certyfikaty dla klastrów z uruchomionymi obciążeniami produkcyjnymi, należy użyć prawidłowo skonfigurowanej usługi certyfikatów systemu Windows Server lub jednej z zatwierdzonych [urzędów certyfikacji (CA)](https://en.wikipedia.org/wiki/Certificate_authority).
 * Nigdy nie należy używać żadnych certyfikatów tymczasowych ani testowych, które tworzysz przy użyciu narzędzi takich jak MakeCert. exe w środowisku produkcyjnym.
 * Możesz użyć certyfikatu z podpisem własnym, ale tylko w klastrze testowym. Nie należy używać certyfikatu z podpisem własnym w środowisku produkcyjnym.
 * Podczas generowania odcisku palca certyfikatu Pamiętaj o wygenerowaniu odcisku palca SHA1. Algorytm SHA1 jest używany podczas konfigurowania odcisków palca certyfikatu klienta i klastra.
@@ -115,7 +115,7 @@ Niektóre inne zagadnienia, które należy wziąć pod uwagę:
 * Pole **podmiotu** może zawierać wiele wartości. Każda wartość jest poprzedzona inicjalizacją, aby wskazać typ wartości. Zazwyczaj inicjowanie jest **CN** (dla *nazwy pospolitej*); na przykład **CN = www\.contoso.com**. 
 * Pole **podmiotu** może być puste. 
 * Jeśli pole wyboru opcjonalnej **alternatywnej nazwy podmiotu** jest wypełnione, musi mieć zarówno nazwę pospolitą certyfikatu, jak i jeden wpis na sieć San. Są one wprowadzane jako wartości **nazw DNS** . Aby dowiedzieć się, jak generować certyfikaty, które mają sieci SAN, zobacz [jak dodać alternatywną nazwę podmiotu do certyfikatu bezpiecznego protokołu LDAP](https://support.microsoft.com/kb/931351).
-* Wartość pola zamierzone **cele** w certyfikacie powinna zawierać odpowiednią wartość, na przykład **uwierzytelnianie serwera** lub **uwierzytelnianie klienta**.
+* Wartość pola **zamierzone cele** w certyfikacie powinna zawierać odpowiednią wartość, na przykład **uwierzytelnianie serwera** lub **uwierzytelnianie klienta**.
 
 ### <a name="application-certificates-optional"></a>Certyfikaty aplikacji (opcjonalnie)
 Dowolna liczba dodatkowych certyfikatów może być zainstalowana w klastrze na potrzeby zabezpieczeń aplikacji. Przed utworzeniem klastra należy wziąć pod uwagę scenariusze zabezpieczeń aplikacji, które wymagają zainstalowania certyfikatu w węzłach, na przykład:
@@ -126,7 +126,7 @@ Dowolna liczba dodatkowych certyfikatów może być zainstalowana w klastrze na 
 Koncepcja tworzenia bezpiecznych klastrów jest taka sama, niezależnie od tego, czy są to klastry systemu Linux czy Windows.
 
 ### <a name="client-authentication-certificates-optional"></a>Certyfikaty uwierzytelniania klienta (opcjonalnie)
-Dla operacji administratora lub użytkownika można określić dowolną liczbę dodatkowych certyfikatów. Klient może użyć tego certyfikatu, jeśli wymagane jest wzajemne uwierzytelnianie. Certyfikaty klienta zwykle nie są wystawiane przez urząd certyfikacji innej firmy. Zamiast tego magazyn osobisty bieżącej lokalizacji użytkownika zwykle zawiera certyfikaty klienta umieszczone w ramach głównego urzędu certyfikacji. Certyfikat powinien mieć zamierzoną wartość w polu **uwierzytelnianie klienta**.  
+Dla operacji administratora lub użytkownika można określić dowolną liczbę dodatkowych certyfikatów. Klient może użyć tego certyfikatu, jeśli wymagane jest wzajemne uwierzytelnianie. Certyfikaty klienta zwykle nie są wystawiane przez urząd certyfikacji innej firmy. Zamiast tego magazyn osobisty bieżącej lokalizacji użytkownika zwykle zawiera certyfikaty klienta umieszczone w ramach głównego urzędu certyfikacji. Certyfikat powinien mieć **zamierzoną** wartość w polu **uwierzytelnianie klienta**.  
 
 Domyślnie certyfikat klastra ma uprawnienia administratora. Te dodatkowe certyfikaty klienta nie powinny być zainstalowane w klastrze, ale są określone jako dozwolone w konfiguracji klastra.  Należy jednak zainstalować certyfikaty klienta na komputerach klienckich, aby połączyć się z klastrem i wykonać wszelkie operacje.
 

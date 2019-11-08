@@ -5,16 +5,17 @@ author: qianw211
 manager: evansma
 ms.author: v-qiwe
 ms.service: marketplace
+ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 08/27/2019
-ms.openlocfilehash: 14e8eb625658eac7f65e976e79669dac4ea1bdbd
-ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
+ms.openlocfilehash: fcc275b7534ebbfd65b28cbfce170dc6e1b926d9
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70076162"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73823053"
 ---
-# <a name="co-sell-partner-engagement"></a>Współpraca między partnerami
+# <a name="co-sell-partner-engagement"></a>Współpraca między partnerami w zakresie sprzedaży
 
 Program do współsprzedaży firmy Microsoft umożliwia partnerom bezpośrednie współdziałanie z firmą Microsoft na potrzeby wspólnych możliwości sprzedaży. Możesz skontaktować się z ogromną społecznością klientów i utworzyć nowe możliwości sprzedaży, które mogą przyspieszyć rozwój firmy.
 
@@ -22,11 +23,11 @@ Program do współsprzedaży firmy Microsoft umożliwia partnerom bezpośrednie 
 
 Istnieją trzy ruchy sprzedaży dla partnerów:
 
-* *Sprzedawanie przez partnera*: Możesz odsprzedawać technologię firmy Microsoft przez Twoich własnych przedstawicieli.
-* *Sprzedawane usługi*: Sprzedawcy i partnerzy współpracują nad sprzedażą projektu lub usług zarządzanych przy użyciu technologii firmy Microsoft Embedded.
-* *Współsprzedaż w adresie IP*: Sprzedawcy/partnerzy współpracują w celu sprzedawania powtarzalnych, spakowanych rozwiązań IP *.
+* *Sprzedawaj przez partnera*: możesz odsprzedawać technologię firmy Microsoft przez Twoich własnych przedstawicieli.
+* *Usługi współsprzedawane*: sprzedawcy i partnerzy współpracują nad sprzedażą projektu lub usług zarządzanych przy użyciu technologii firmy Microsoft Embedded.
+* Współsprzedaż do sieci *IP*: sprzedawcy/partnerzy współpracują w celu sprzedawania powtarzalnych, spakowanych rozwiązań IP *.
 
-\*Niektóre z tych rozwiązań związanych ze współsprzedażą IP mogą otrzymać dodatkowe zachęty w przypadku pomyślnego sprzedaży i wdrożenia z zespołem ds. sprzedaży firmy Microsoft.
+\* niektóre z tych rozwiązań związanych ze współsprzedażą IP mogą otrzymać dodatkowe zachęty w przypadku pomyślnego sprzedaży i wdrożenia z zespołem ds. sprzedaży firmy Microsoft.
 
 ![Nastąpi ponowne sprzedawanie](./media/marketplace-publishers-guide/marketplace-co-sell.png)
 
