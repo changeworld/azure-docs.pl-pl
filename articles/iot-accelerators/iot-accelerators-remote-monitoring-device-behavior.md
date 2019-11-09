@@ -1,6 +1,6 @@
 ---
-title: Symulowane zachowanie urządzenia w rozwiązaniu do monitorowania zdalnego — Azure | Dokumentacja firmy Microsoft
-description: W tym artykule opisano, jak zdefiniować zachowanie symulowanego urządzenia w rozwiązaniu do zdalnego monitorowania przy użyciu języka JavaScript.
+title: Symulowane urządzenie w rozwiązaniu do zdalnego monitorowania — Azure | Microsoft Docs
+description: W tym artykule opisano sposób użycia języka JavaScript w celu zdefiniowania zachowania symulowanego urządzenia w rozwiązaniu do zdalnego monitorowania.
 author: dominicbetts
 manager: timlt
 ms.author: dobett
@@ -8,38 +8,38 @@ ms.service: iot-accelerators
 services: iot-accelerators
 ms.date: 01/29/2018
 ms.topic: conceptual
-ms.openlocfilehash: 04d2ad2f0e86ee977600af86a2ffd1e9d7680375
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: c39ca0a018bd22844cf7e5350e6d3586319aac16
+ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65823417"
+ms.lasthandoff: 11/09/2019
+ms.locfileid: "73890858"
 ---
-# <a name="implement-the-device-model-behavior"></a>Implementowanie zachowania modelu urządzenia
+# <a name="implement-the-device-model-behavior"></a>Zaimplementuj zachowanie modelu urządzenia
 
-Artykuł [zrozumieć schematu modelu urządzenia](iot-accelerators-remote-monitoring-device-schema.md) opisano schemat, który definiuje model urządzenia symulowanego. Artykuł z określonych dwa rodzaje plików JavaScript implementujące zachowanie symulowanego urządzenia.
+W tym artykule opisano schemat [modelu urządzenia](iot-accelerators-remote-monitoring-device-schema.md) opisany w schemacie, który definiuje model symulowanego urządzenia. Ten artykuł odnosił się do dwóch typów plików JavaScript, które implementują zachowanie symulowanego urządzenia:
 
-- **Stan** pliki JavaScript, uruchamianą w ustalonych odstępach czasu, aby zaktualizować stan wewnętrzny urządzenia.
-- **Metoda** pliki JavaScript, który uruchamiany, gdy rozwiązanie wywołuje metodę na urządzeniu.
+- **Stan** Pliki JavaScript, które są uruchamiane w stałych interwałach, w celu zaktualizowania stanu wewnętrznego urządzenia.
+- **Metoda** Pliki JavaScript, które są uruchamiane, gdy rozwiązanie wywołuje metodę na urządzeniu.
 
 > [!NOTE]
-> Zachowania modelu urządzenia są przeznaczone tylko dla symulowanych urządzeń hostowanej w usłudze symulacji urządzenia. Jeśli chcesz utworzyć rzeczywistego urządzenia, zobacz [Podłączanie urządzenia do akceleratora rozwiązania monitorowania zdalnego](iot-accelerators-connecting-devices.md).
+> Zachowania modelu urządzenia są przeznaczone tylko dla symulowanych urządzeń hostowanych w usłudze symulacji urządzenia. Jeśli chcesz utworzyć rzeczywiste urządzenie, zobacz [łączenie urządzenia z akceleratorem rozwiązania do monitorowania zdalnego](iot-accelerators-connecting-devices.md).
 
 W tym artykule omówiono sposób wykonywania następujących zadań:
 
 >[!div class="checklist"]
-> * Kontrola stanu symulowanego urządzenia
-> * Zdefiniuj, jak symulowane urządzenie odpowiada na wywołanie metody rozwiązania do zdalnego monitorowania
+> * Sterowanie stanem symulowanego urządzenia
+> * Zdefiniuj, w jaki sposób symulowane urządzenie odpowiada na wywołanie metody z rozwiązania do zdalnego monitorowania
 > * Debugowanie skryptów
 
 ## <a name="state-behavior"></a>Zachowanie stanu
 
-[Symulacji](../../articles/iot-accelerators/iot-accelerators-remote-monitoring-device-schema.md#simulation) sekcja schematu modelu urządzenia definiuje stan wewnętrzny symulowane urządzenia:
+Sekcja [symulacja](../../articles/iot-accelerators/iot-accelerators-remote-monitoring-device-schema.md#simulation) schematu modelu urządzenia definiuje stan wewnętrzny symulowanego urządzenia:
 
-- `InitialState` definiuje początkowe wartości dla właściwości obiektu stanu urządzenia.
-- `Script` Określa plik języka JavaScript uruchamiana zgodnie z harmonogramem, aby zaktualizować stan urządzenia.
+- `InitialState` definiuje początkowe wartości dla wszystkich właściwości obiektu stanu urządzenia.
+- `Script` identyfikuje plik JavaScript, który jest uruchamiany zgodnie z harmonogramem w celu zaktualizowania stanu urządzenia.
 
-Definicja obiektu stanu urządzenia dla urządzenia symulowanego Chłodnica można znaleźć w poniższym przykładzie:
+Poniższy przykład przedstawia definicję obiektu stanu urządzenia symulowanego urządzenia chłodzenia:
 
 ```json
 "Simulation": {
@@ -61,9 +61,9 @@ Definicja obiektu stanu urządzenia dla urządzenia symulowanego Chłodnica moż
 }
 ```
 
-Stan Symulowane urządzenie, zgodnie z definicją w `InitialState` sekcji, są przechowywane w pamięci przez usługę symulacji. Informacje o stanie jest przekazywany jako dane wejściowe `main` funkcję zdefiniowaną w **Chłodnica-01-state.js**. W tym przykładzie jest uruchamiana usługa symulacji **Chłodnica-01-state.js** pliku co pięć sekund. Skrypt można modyfikować stanu symulowanego urządzenia.
+Stan symulowanego urządzenia, zgodnie z definicją w sekcji `InitialState`, jest przechowywany w pamięci przez usługę symulacji. Informacje o stanie są przesyłane jako dane wejściowe do funkcji `main` zdefiniowanej w **Chiller-01-State. js**. W tym przykładzie usługa symulacji uruchamia plik **Chiller-01-State. js** co pięć sekund. Skrypt może zmodyfikować stan symulowanego urządzenia.
 
-Poniżej pokazano zarys typowej `main` funkcji:
+Poniżej przedstawiono konspekt typowej funkcji `main`:
 
 ```javascript
 function main(context, previousState, previousProperties) {
@@ -76,15 +76,15 @@ function main(context, previousState, previousProperties) {
 }
 ```
 
-`context` Parametr ma następujące właściwości:
+Parametr `context` ma następujące właściwości:
 
-- `currentTime` jako ciąg w formacie `yyyy-MM-dd'T'HH:mm:sszzz`
+- `currentTime` jako ciąg z formatem `yyyy-MM-dd'T'HH:mm:sszzz`
 - `deviceId`, na przykład `Simulated.Chiller.123`
 - `deviceModel`, na przykład `Chiller`
 
-`state` Parametr zawiera stan urządzenia obsługiwane przez usługę symulacji urządzenia. Ta wartość jest `state` obiekt zwrócony przez poprzednie wywołanie `main`.
+Parametr `state` zawiera stan urządzenia obsługiwany przez usługę symulacji urządzenia. Ta wartość jest obiektem `state` zwróconym przez poprzednie wywołanie do `main`.
 
-W poniższym przykładzie pokazano Typowa implementacja metody `main` metody, aby obsłużyć stan urządzenia obsługiwane przez usługę symulacji:
+Poniższy przykład przedstawia typową implementację metody `main`, aby obsłużyć stan urządzenia obsługiwany przez usługę symulacji:
 
 ```javascript
 // Default state
@@ -118,7 +118,7 @@ function main(context, previousState, previousProperties) {
 }
 ```
 
-W poniższym przykładzie pokazano sposób, w jaki `main` metoda można symulować wartości telemetryczne, które różnią się wraz z upływem czasu:
+Poniższy przykład pokazuje, jak Metoda `main` może symulować wartości telemetryczne, które różnią się w zależności od czasu:
 
 ```javascript
 /**
@@ -156,13 +156,13 @@ function main(context, previousState, previousProperties) {
 }
 ```
 
-Możesz wyświetlić pełne [Chłodnica-01-state.js](https://github.com/Azure/device-simulation-dotnet/blob/master/Services/data/devicemodels/scripts/chiller-01-state.js) w witrynie GitHub.
+Możesz wyświetlić pełny [Chiller-01-State. js](https://github.com/Azure/device-simulation-dotnet/blob/master/Services/data/devicemodels/scripts/chiller-01-state.js) w witrynie GitHub.
 
 ## <a name="method-behavior"></a>Zachowanie metody
 
-[CloudToDeviceMethods](../../articles/iot-accelerators/iot-accelerators-remote-monitoring-device-schema.md#cloudtodevicemethods) sekcja schematu modelu urządzenia definiuje metody symulowane urządzenie odpowiada.
+Sekcja [CloudToDeviceMethods](../../articles/iot-accelerators/iot-accelerators-remote-monitoring-device-schema.md#cloudtodevicemethods) schematu modelu urządzenia definiuje metody, na które symulowane urządzenie reaguje.
 
-Lista metod obsługiwanych przez urządzenie symulowane Chłodnica można znaleźć w poniższym przykładzie:
+Poniższy przykład pokazuje listę metod obsługiwanych przez symulowane urządzenie chłodzenia.
 
 ```json
 "CloudToDeviceMethods": {
@@ -185,11 +185,11 @@ Lista metod obsługiwanych przez urządzenie symulowane Chłodnica można znale�
 }
 ```
 
-Każda metoda charakteryzuje się skojarzony plik JavaScript, który implementuje zachowanie metody.
+Każda metoda ma skojarzony plik JavaScript, który implementuje zachowanie metody.
 
-Stan Symulowane urządzenie, zgodnie z definicją w `InitialState` sekcji schematów, są przechowywane w pamięci przez usługę symulacji. Informacje o stanie jest przekazywany jako dane wejściowe `main` funkcję zdefiniowaną w pliku JavaScript, gdy wywoływana jest metoda. Skrypt można modyfikować stanu symulowanego urządzenia.
+Stan symulowanego urządzenia, zgodnie z definicją w sekcji `InitialState` schematu, jest przechowywany w pamięci przez usługę symulacji. Informacje o stanie są przesyłane jako dane wejściowe do funkcji `main` zdefiniowanej w pliku JavaScript, gdy wywoływana jest metoda. Skrypt może zmodyfikować stan symulowanego urządzenia.
 
-Poniżej pokazano zarys typowej `main` funkcji:
+Poniżej przedstawiono konspekt typowej funkcji `main`:
 
 ```javascript
 function main(context, previousState, previousProperties) {
@@ -197,23 +197,23 @@ function main(context, previousState, previousProperties) {
 }
 ```
 
-`context` Parametr ma następujące właściwości:
+Parametr `context` ma następujące właściwości:
 
-- `currentTime` jako ciąg w formacie `yyyy-MM-dd'T'HH:mm:sszzz`
+- `currentTime` jako ciąg z formatem `yyyy-MM-dd'T'HH:mm:sszzz`
 - `deviceId`, na przykład `Simulated.Chiller.123`
 - `deviceModel`, na przykład `Chiller`
 
-`state` Parametr zawiera stan urządzenia obsługiwane przez usługę symulacji urządzenia.
+Parametr `state` zawiera stan urządzenia obsługiwany przez usługę symulacji urządzenia.
 
-`properties` Parametr zawiera właściwości urządzenia, które są zapisywane w postaci zgłaszanych właściwości do bliźniaczej reprezentacji urządzenia usługi IoT Hub.
+Parametr `properties` zawiera właściwości urządzenia, które są zapisywane jako zgłoszone właściwości do sznurka IoT Hub urządzenia.
 
-Istnieją trzy funkcje globalne, używane w celu zaimplementować to zachowanie metody:
+Istnieją trzy funkcje globalne, których można użyć, aby pomóc zaimplementować zachowanie metody:
 
-- `updateState` Aby zaktualizować stan przechowywanych przez usługę symulacji.
-- `updateProperty` Aby zaktualizować pojedynczej właściwości urządzenia.
-- `sleep` Aby zatrzymać wykonywanie, aby zasymulować długotrwałe zadanie.
+- `updateState` zaktualizować stanu przechowywanego przez usługę symulacji.
+- `updateProperty` zaktualizować pojedynczej właściwości urządzenia.
+- `sleep` wstrzymać wykonywanie, aby symulować długotrwałe zadania.
 
-Poniższy przykład pokazuje, skróconą wersję **IncreasePressure method.js** używany przez urządzenia symulowanego Chłodnica skryptu:
+Poniższy przykład przedstawia skróconą wersję skryptu **IncreasePressure-Method. js** używanego przez symulowane urządzenia chłodzenia:
 
 ```javascript
 function main(context, previousState, previousProperties) {
@@ -248,27 +248,27 @@ function main(context, previousState, previousProperties) {
 }
 ```
 
-## <a name="debugging-script-files"></a>Pliki debugowania skryptu
+## <a name="debugging-script-files"></a>Debugowanie plików skryptów
 
-Nie jest możliwe dołączanie debugera do interpretera języka Javascript używane przez usługę symulacji urządzenia do uruchamiania skryptów stanu i metody. Jednak może rejestrować informacje w dzienniku usługi. Wbudowane `log()` funkcja umożliwia zapisanie informacji śledzenie i debugowanie wykonywania funkcji.
+Nie można dołączyć debugera do interpretera języka JavaScript używanego przez usługę symulacji urządzenia do uruchamiania skryptów stanu i metod. Można jednak rejestrować informacje w dzienniku usługi. Wbudowana funkcja `log()` umożliwia zapisywanie informacji do śledzenia i debugowania wykonywania funkcji.
 
-Jeśli występuje błąd składni interpreter zakończy się niepowodzeniem, i zapisuje `Jint.Runtime.JavaScriptException` wpis dziennika usługi.
+Jeśli wystąpi błąd składni interpretera kończy się niepowodzeniem i zapisuje wpis `Jint.Runtime.JavaScriptException` w dzienniku usługi.
 
-[Lokalnie uruchomiona usługa](https://github.com/Azure/device-simulation-dotnet#running-the-service-locally-eg-for-development-tasks) artykuł w witrynie GitHub dowiesz się, jak uruchomić usługi symulacji urządzeń lokalnie. Lokalnie uruchomiona usługa ułatwia debugowanie symulowane urządzenia, przed ich wdrożeniem w chmurze.
+W artykule dotyczącym [uruchamiania usługi w serwisie](https://github.com/Azure/device-simulation-dotnet#running-the-service-locally-eg-for-development-tasks) GitHub pokazano, jak uruchomić usługę symulacji urządzenia lokalnie. Uruchamianie usługi lokalnie ułatwia debugowanie symulowanych urządzeń przed ich wdrożeniem w chmurze.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
-W tym artykule opisano sposób definiowania zachowania modelu niestandardowego symulowanego urządzenia. Ten artykuł pokazuje, jak do:
+W tym artykule opisano sposób definiowania zachowania własnego niestandardowego symulowanego modelu urządzenia. W tym artykule pokazano, jak:
 
 <!-- Repeat task list from intro -->
 >[!div class="checklist"]
-> * Kontrola stanu symulowanego urządzenia
-> * Zdefiniuj, jak symulowane urządzenie odpowiada na wywołanie metody rozwiązania do zdalnego monitorowania
+> * Sterowanie stanem symulowanego urządzenia
+> * Zdefiniuj, w jaki sposób symulowane urządzenie odpowiada na wywołanie metody z rozwiązania do zdalnego monitorowania
 > * Debugowanie skryptów
 
-Teraz, gdy wyjaśniono sposób określić zachowanie symulowane urządzenie, sugerowane następnym krokiem jest Dowiedz się, jak [utworzyć symulowane urządzenie](iot-accelerators-remote-monitoring-create-simulated-device.md).
+Teraz, gdy wiesz już, jak określić zachowanie symulowanego urządzenia, sugerowanym następnym krokiem jest zapoznanie się z tematem [tworzenia symulowanego urządzenia](iot-accelerators-remote-monitoring-create-simulated-device.md).
 
-Aby uzyskać więcej informacji dla deweloperów o rozwiązaniu monitorowania zdalnego Zobacz:
+Aby uzyskać więcej informacji programistycznych dotyczących rozwiązania do zdalnego monitorowania, zobacz:
 
 * [Przewodnik informacyjny dla deweloperów](https://github.com/Azure/azure-iot-pcs-remote-monitoring-dotnet/wiki/Developer-Reference-Guide)
 * [Przewodnik po rozwiązywaniu problemów dla deweloperów](https://github.com/Azure/azure-iot-pcs-remote-monitoring-dotnet/wiki/Developer-Troubleshooting-Guide)

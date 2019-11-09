@@ -8,18 +8,18 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: quickstart
 ms.date: 11/04/2019
-ms.openlocfilehash: 21f55805e0486d987922a1aa160f2938f3a50155
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.openlocfilehash: 5acfb60395f39d17e640e389ae2a28e220ccfae6
+ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72792434"
+ms.lasthandoff: 11/09/2019
+ms.locfileid: "73884318"
 ---
 # <a name="quickstart-create-an-azure-cognitive-search-service-in-the-portal"></a>Szybki Start: Tworzenie usługi Azure Wyszukiwanie poznawcze w portalu
 
 Usługa Azure Wyszukiwanie poznawcze to autonomiczny zasób służący do podłączenia środowiska wyszukiwania w aplikacjach niestandardowych. Mimo że platforma Azure Wyszukiwanie poznawcze łatwo integruje się z innymi usługami platformy Azure, można także użyć jej jako składnika autonomicznego lub zintegrować ją z aplikacjami na serwerach sieciowych lub z oprogramowaniem działającym na innych platformach w chmurze.
 
-W tym artykule dowiesz się, jak utworzyć zasób usługi Azure Wyszukiwanie poznawcze w [Azure Portal](https://portal.azure.com/).
+W tym artykule dowiesz się, jak utworzyć zasób w [Azure Portal](https://portal.azure.com/).
 
 [![Animowany obraz GIF](./media/search-create-service-portal/AnimatedGif-AzureSearch-small.gif)](./media/search-create-service-portal/AnimatedGif-AzureSearch.gif#lightbox)
 
@@ -33,28 +33,30 @@ Możesz również [aktywować korzyści dla subskrybentów MSDN](https://azure.m
 
 ## <a name="find-azure-cognitive-search"></a>Znajdź Wyszukiwanie poznawcze platformy Azure
 
-1. Zaloguj się do [portalu Azure](https://portal.azure.com/).
+1. Zaloguj się w witrynie [Azure Portal](https://portal.azure.com/).
 2. Kliknij znak plus („+ Utwórz zasób”) w lewym górnym rogu.
 3. Użyj paska wyszukiwania, aby znaleźć "Wyszukiwanie poznawcze platformy Azure" lub przejdź do zasobu za pomocą Wyszukiwanie poznawcze **sieci Web** > **Azure**.
 
-![Przejdź do zasobu usługi Azure Wyszukiwanie poznawcze](./media/search-create-service-portal/find-search3.png "Ścieżka nawigacji do usługi Azure Wyszukiwanie poznawcze")
+![Tworzenie zasobu w portalu](./media/search-create-service-portal/find-search3.png "Tworzenie zasobu w portalu")
 
-## <a name="select-a-subscription"></a>Wybieranie subskrypcji
+## <a name="choose-a-subscription"></a>Wybierz subskrypcję
 
-Jeśli masz więcej niż jedną subskrypcję, wybierz tę, która obejmuje usługi magazynu danych lub plików. Usługa Azure Wyszukiwanie poznawcze może automatycznie wykryć usługę Azure Table i BLOB Storage, SQL Database i Azure Cosmos DB do indeksowania za pośrednictwem [*indeksatorów*](search-indexer-overview.md), ale tylko dla usług w ramach tej samej subskrypcji.
+Ustawianie identyfikatora subskrypcji i grupy zasobów to pierwszy krok. Jeśli masz więcej niż jedną subskrypcję, wybierz tę, która obejmuje usługi magazynu danych lub plików. Usługa Azure Wyszukiwanie poznawcze może automatycznie wykryć usługę Azure Table i BLOB Storage, SQL Database i Azure Cosmos DB do indeksowania za pośrednictwem [*indeksatorów*](search-indexer-overview.md), ale tylko dla usług w ramach tej samej subskrypcji.
 
 ## <a name="set-a-resource-group"></a>Ustawianie grupy zasobów
 
-Grupa zasobów jest wymagana i jest przydatna do zarządzania zasobami, w tym zarządzania kosztami. Grupa zasobów może składać się z jednej usługi lub wielu używanych jednocześnie usług. Na przykład, jeśli używasz usługi Azure Wyszukiwanie poznawcze do indeksowania bazy danych Azure Cosmos DB, możesz udostępnić obie usługi w tej samej grupie zasobów na potrzeby zarządzania. 
+Grupa zasobów jest wymagana i jest przydatna do zarządzania zasobami, w tym do kosztów. Grupa zasobów może składać się z jednej usługi lub wielu używanych jednocześnie usług. Na przykład, jeśli używasz usługi Azure Wyszukiwanie poznawcze do indeksowania bazy danych Azure Cosmos DB, możesz udostępnić obie usługi w tej samej grupie zasobów na potrzeby zarządzania. 
 
 Jeśli zasoby nie są łączone w pojedynczą grupę, a istniejące grupy zasobów są wypełniane zasobami używanymi w niepowiązanych rozwiązaniach, Utwórz nową grupę zasobów tylko dla zasobu usługi Azure Wyszukiwanie poznawcze. 
 
-Gdy korzystasz z usługi, możesz śledzić bieżące i przewidywane koszty wszystkie (jak pokazano na zrzucie ekranu) lub przewijać w dół, aby wyświetlić opłaty dla poszczególnych zasobów.
+![Utwórz nową grupę zasobów](./media/search-create-service-portal/new-resource-group.png "Utworzenie nowej grupy zasobów")
+
+Wraz z upływem czasu można śledzić bieżące i przewidywane koszty wszystkie (jak pokazano na zrzucie ekranu) lub przewijać w dół, aby wyświetlić opłaty dla poszczególnych zasobów. Poniższy zrzut ekranu przedstawia rodzaj informacji o kosztach, które mogą być widoczne w przypadku łączenia wielu zasobów w jedną grupę.
 
 ![Zarządzanie kosztami na poziomie grupy zasobów](./media/search-create-service-portal/resource-group-cost-management.png "Zarządzanie kosztami na poziomie grupy zasobów")
 
 > [!TIP]
-> Usunięcie grupy zasobów powoduje usunięcie zawartych w niej usług. Umieszczenie w tej samej grupie zasobów wszystkich projektów będących prototypami korzystającymi z wielu usług ułatwia proces czyszczenia po zakończeniu projektu.
+> Grupy zasobów upraszczają czyszczenie, ponieważ usunięcie grupy spowoduje również usunięcie w niej usług. Umieszczenie w tej samej grupie zasobów wszystkich projektów będących prototypami korzystającymi z wielu usług ułatwia proces czyszczenia po zakończeniu projektu.
 
 ## <a name="name-the-service"></a>Nazwij usługę
 
@@ -77,7 +79,7 @@ Usługa Azure Wyszukiwanie poznawcze może być hostowana w centrach danych na c
 
 Możesz zminimalizować lub uniknąć opłat za przepustowość, wybierając tę samą lokalizację dla wielu usług. Na przykład w przypadku indeksowania danych dostarczanych przez inną usługę platformy Azure (Azure Storage, Azure Cosmos DB, Azure SQL Database) Tworzenie usługi Azure Wyszukiwanie poznawcze w tym samym regionie pozwala uniknąć naliczania opłat za przepustowość (nie są naliczane opłaty za dane wychodzące, gdy usługi znajdują się w tym samym regionie).
 
-Ponadto, jeśli korzystasz z wzbogacania plików AI do wyszukiwania poznawczego, Utwórz usługę w tym samym regionie, w którym znajduje się zasób Cognitive Services. *Współpraca z platformą Azure wyszukiwanie poznawcze i Cognitive Services w tym samym regionie jest wymagana do wzbogacania AI*.
+Ponadto, jeśli używasz wzbogacania AI, Utwórz usługę w tym samym regionie co Cognitive Services. *Współpraca z platformą Azure wyszukiwanie poznawcze i Cognitive Services w tym samym regionie jest wymagana do wzbogacania AI*.
 
 > [!Note]
 > Indie Środkowe nie są obecnie dostępne dla nowych usług. W przypadku usług już znajdujących się w centralnym Indiach można skalować w górę bez ograniczeń, a usługa jest w pełni obsługiwana w tym regionie. Ograniczenie w tym regionie jest tymczasowe i ograniczone tylko do nowych usług. Ta uwaga zostanie usunięta, jeśli ograniczenie nie zostanie już zastosowane.
@@ -104,9 +106,9 @@ Twoja usługa zostanie wdrożona w ciągu kilku minut, którą można monitorowa
 
 Jeśli nie korzystasz z portalu, dostęp programistyczny do nowej usługi wymaga podania punktu końcowego adresu URL oraz klucza API uwierzytelniania.
 
-1. W prawej części strony przeglądu usługi zlokalizuj punkt końcowy adresu URL i skopiuj go.
+1. Na stronie **Przegląd** zlokalizuj i skopiuj punkt końcowy adresu URL po prawej stronie strony.
 
-2. W okienku nawigacji po lewej stronie wybierz pozycję **Klucze**, a następnie skopiuj jeden z kluczy administratora (są one równoważne). Klucze interfejsu API administratora są wymagane do tworzenia, aktualizowania i usuwania obiektów w usłudze.
+2. Na stronie **klucze** Skopiuj jeden z kluczy administratora (są one równoważne). Klucze interfejsu API administratora są wymagane do tworzenia, aktualizowania i usuwania obiektów w usłudze. Z kolei klucze zapytań zapewniają dostęp do odczytu do zawartości indeksu.
 
    ![Strona przeglądu usługi z punktem końcowym adresu URL](./media/search-create-service-portal/get-url-key.png "Punkt końcowy adresu URL i inne szczegóły usługi")
 
@@ -151,7 +153,7 @@ Druga usługa nie jest wymagana w celu zapewnienia wysokiej dostępności. Wysok
 
 ## <a name="next-steps"></a>Następne kroki
 
-Po zainicjowaniu obsługi administracyjnej usługi Azure Wyszukiwanie poznawcze można kontynuować w portalu, aby utworzyć swój pierwszy indeks.
+Po zainicjowaniu obsługi administracyjnej można kontynuować w portalu, aby utworzyć swój pierwszy indeks.
 
 > [!div class="nextstepaction"]
 > [Szybki Start: Tworzenie indeksu Wyszukiwanie poznawcze platformy Azure w portalu](search-get-started-portal.md)

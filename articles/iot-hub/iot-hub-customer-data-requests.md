@@ -1,53 +1,52 @@
 ---
-title: Funkcje żądania danych klienta
-description: Podsumowanie funkcji żądania danych klienta
+title: Żądania danych klienta dotyczące urządzeń IoT Hub platformy Azure
+description: Większość urządzeń zarządzanych w usłudze Azure IoT Hub nie jest osobista, ale niektóre z nich. W tym artykule omówiono administratorów, którzy mogą eksportować lub usuwać dane osobowe z urządzenia.
 author: robinsh
-manager: philmea
 ms.author: robinsh
 ms.date: 05/16/2018
 ms.topic: conceptual
 ms.service: iot-hub
 services: iot-hub
-ms.openlocfilehash: 1519637eddf909040131a1efac5738fc7cc8e565
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 29b3ed46ffe7f2236fc63d65ed49385b29b1a08a
+ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60845804"
+ms.lasthandoff: 11/09/2019
+ms.locfileid: "73889480"
 ---
 # <a name="summary-of-customer-data-request-features"></a>Podsumowanie funkcji żądania danych klienta
 
-Usługi Azure IoT Hub jest oparte na interfejsie API REST usługi w chmurze przeznaczona dla klientów korporacyjnych bezpiecznej, dwukierunkowej komunikacji między milionami urządzeń i podzielonym na partycje usługi platformy Azure.
+IoT Hub platformy Azure to usługa w chmurze oparta na interfejsie API REST przeznaczona dla klientów korporacyjnych, która zapewnia bezpieczną, dwukierunkową komunikację między milionami urządzeń a usługą platformy Azure podzielonej na partycje.
 
 [!INCLUDE [gdpr-related guidance](../../includes/gdpr-intro-sentence.md)]
 
-Poszczególne urządzenia są przypisane urządzenia identyfikator urządzenia przez administratora dzierżawy. Dane urządzenia opiera się na identyfikator przypisanych do urządzenia. Firma Microsoft zachowuje żadnych informacji i nie ma dostępu do danych, które pozwoliłoby identyfikator urządzenia do użytkownika korelacji.
+Do poszczególnych urządzeń przypisywany jest identyfikator urządzenia (identyfikator urządzenia) przez administratora dzierżawy. Dane urządzenia są oparte na przypisanym IDENTYFIKATORze urządzenia. Firma Microsoft nie przechowuje żadnych informacji i nie ma dostępu do danych, które mogłyby umożliwić korelację identyfikatora urządzenia z użytkownikiem.
 
-Wiele urządzeń zarządzanych w usłudze Azure IoT Hub nie jest urządzeń osobistych, na przykład robota Termostat lub fabryki pakietu office. Klienci mogą jednak wziąć pod uwagę niektóre urządzenia jako osobiste i według własnego uznania mogą utrzymać ich własnych zasobów magazynu śledzenia metody, które powiązanie urządzeń fizycznych. Usługa Azure IoT Hub zarządza i przechowuje wszystkie dane skojarzone z urządzeń, jak w przypadku danych osobowych.
+Wiele urządzeń zarządzanych w usłudze Azure IoT Hub nie są urządzeniami osobistymi, na przykład z termostatem lub robotem fabryki biurowej. Klienci mogą jednak rozważyć, że niektóre urządzenia mają być identyfikowalne i według ich uznania mogą zachować własne metody śledzenia zasobów lub spisu, które wiążą urządzenia z osobami. Usługa Azure IoT Hub zarządza i przechowuje wszystkie dane skojarzone z urządzeniami, tak jakby były danymi osobistymi.
 
-Administratorzy dzierżawy, można użyć witryny Azure portal lub interfejsów API REST usługi do spełnienia żądania informacji przez eksportowanie lub usuwanie danych skojarzonych z identyfikatorem urządzenia.
+Administratorzy dzierżawy mogą używać Azure Portal lub interfejsów API REST usługi do realizacji żądań informacji przez eksportowanie lub usuwanie danych skojarzonych z IDENTYFIKATORem urządzenia.
 
-Jeśli używasz routingu funkcji usługi Azure IoT Hub do przesyłania komunikatów z urządzeń do innych usług, następnie żądania danych muszą być wykonywane przez administratora dzierżawy dla każdego punktu końcowego w routingu w celu wykonania pełnego żądania dla danego urządzenia. Aby uzyskać więcej informacji zobacz dokumentację odniesienia dla każdego punktu końcowego. Aby uzyskać więcej informacji na temat obsługiwanych punktów końcowych, zobacz [odwołanie - punktów końcowych usługi IoT Hub](iot-hub-devguide-endpoints.md).
+W przypadku korzystania z funkcji routingu usługi Azure IoT Hub do przesyłania komunikatów na urządzeniach do innych usług, żądania danych muszą być wykonywane przez administratora dzierżawy dla każdego punktu końcowego routingu, aby wykonać pełne żądanie dla danego urządzenia. Aby uzyskać więcej informacji, zobacz dokumentację referencyjną dla każdego punktu końcowego. Aby uzyskać więcej informacji o obsługiwanych punktach końcowych, zobacz [punkty końcowe IoT Hub referencyjnych](iot-hub-devguide-endpoints.md).
 
-Jeśli używasz funkcji integracji usługi Azure Event Grid usługi Azure IoT Hub, następnie żądania danych muszą być wykonywane przez administratora dzierżawy dla każdego subskrybenta tych zdarzeń. Aby uzyskać więcej informacji, zobacz [reagować na zdarzenia IoT Hub przy użyciu usługi Event Grid](iot-hub-event-grid.md).
+Jeśli używasz funkcji integracji Azure Event Grid w usłudze Azure IoT Hub, żądania danych muszą być wykonywane przez administratora dzierżawy dla każdego subskrybenta tych zdarzeń. Aby uzyskać więcej informacji, zobacz temat [reagowanie na zdarzenia IoT Hub przy użyciu Event Grid](iot-hub-event-grid.md).
 
-Jeśli używasz funkcji integracji usługi Azure Monitor usługi Azure IoT Hub można tworzyć dzienniki diagnostyczne żądania danych muszą być wykonywane przez administratora dzierżawy przed przechowywane dzienniki. Aby uzyskać więcej informacji, zobacz [monitorowania kondycji usługi Azure IoT Hub](iot-hub-monitor-resource-health.md).
+W przypadku tworzenia dzienników diagnostycznych za pomocą funkcji integracji Azure Monitor w usłudze Azure IoT Hub, żądania danych muszą być wykonywane przez administratora dzierżawy względem przechowywanych dzienników. Aby uzyskać więcej informacji, zobacz [monitorowanie kondycji IoT Hub platformy Azure](iot-hub-monitor-resource-health.md).
 
 ## <a name="deleting-customer-data"></a>Usuwanie danych klienta
 
-Administratorzy dzierżawy, można użyć bloku urządzeń IoT rozszerzenia usługi Azure IoT Hub w witrynie Azure portal można usunąć urządzenia, co spowoduje usunięcie danych skojarzonych z tym urządzeniem.
+Administratorzy dzierżawy mogą użyć bloku urządzenia IoT rozszerzenia IoT Hub platformy Azure w Azure Portal, aby usunąć urządzenie, co spowoduje usunięcie danych skojarzonych z tym urządzeniem.
 
-Istnieje również możliwość wykonywania operacji usuwania w przypadku urządzeń korzystających z interfejsów API REST. Aby uzyskać więcej informacji, zobacz [Service — Usuń urządzenia](/rest/api/iothub/service/deletedevice).
+Możliwe jest również wykonywanie operacji usuwania dla urządzeń korzystających z interfejsów API REST. Aby uzyskać więcej informacji, zobacz temat [Usługa-Usuwanie urządzenia](/rest/api/iothub/service/deletedevice).
 
 ## <a name="exporting-customer-data"></a>Eksportowanie danych klienta
 
-Administratorzy dzierżawy mogą korzystanie z kopiowania i Wklej w bloku urządzeń IoT rozszerzenia usługi Azure IoT Hub w witrynie Azure portal, aby wyeksportować dane skojarzone z urządzenia.
+Administratorzy dzierżawy mogą używać kopiowania i wklejania w okienku urządzenia IoT rozszerzenia IoT Hub platformy Azure w Azure Portal do eksportowania danych skojarzonych z urządzeniem.
 
-Istnieje również możliwość wykonywania operacji eksportowania w przypadku urządzeń korzystających z interfejsów API REST. Aby uzyskać więcej informacji, zobacz [Service — Pobierz urządzenie](/rest/api/iothub/service/getdevice).
+Możliwe jest również wykonywanie operacji eksportowania dla urządzeń przy użyciu interfejsów API REST. Aby uzyskać więcej informacji, zobacz [Usługa-Get Device](/rest/api/iothub/service/getdevice).
 
 > [!NOTE]
-> Korzystając z usług firmy Microsoft dla przedsiębiorstw firmy Microsoft generuje pewnych informacji, znane jako dzienniki generowane przez system. Niektóre usługi Azure IoT Hub w dziennikach generowanych przez system nie są dostępne lub który można eksportować przez administratorów dzierżawy. Te dzienniki stanowią odzwierciedlenie faktycznych działań przeprowadzanych w ramach usługi i dane diagnostyczne, które dotyczą poszczególnych urządzeń.
+> Gdy korzystasz z usług firmy Microsoft dla przedsiębiorstw, firma Microsoft generuje pewne informacje, znane jako dzienniki generowane przez system. Niektóre dzienniki generowane przez system IoT Hub platformy Azure nie są dostępne ani eksportowane przez administratorów dzierżawy. Te dzienniki składają się na faktyczne działania wykonywane w ramach usługi i danych diagnostycznych związanych z poszczególnymi urządzeniami.
 
 ## <a name="links-to-additional-documentation"></a>Linki do dodatkowej dokumentacji
 
-Pełną dokumentację dotyczącą interfejsów API usługi Microsoft Azure IoT Hub znajduje się w [interfejsów API usługi Microsoft IoT Hub](https://docs.microsoft.com/rest/api/iothub/service).
+Pełna Dokumentacja interfejsów API usługi Azure IoT Hub Service znajduje się w [interfejsie API usługi IoT Hub Service](https://docs.microsoft.com/rest/api/iothub/service).

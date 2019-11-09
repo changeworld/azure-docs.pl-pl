@@ -1,6 +1,6 @@
 ---
 title: Konfigurowanie routingu komunikatów dla IoT Hub platformy Azure przy użyciu interfejsu wiersza polecenia platformy Azure | Microsoft Docs
-description: Konfigurowanie routingu komunikatów dla IoT Hub platformy Azure przy użyciu interfejsu wiersza polecenia platformy Azure
+description: Skonfiguruj Routing komunikatów dla IoT Hub platformy Azure przy użyciu interfejsu wiersza polecenia platformy Azure. W zależności od właściwości komunikatu, trasy do konta magazynu lub kolejki Service Bus.
 author: robinsh
 manager: philmea
 ms.service: iot-hub
@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 03/25/2019
 ms.author: robinsh
 ms.custom: mvc
-ms.openlocfilehash: 1748ec5ada9488487cd29ffb563226749b29f9f4
-ms.sourcegitcommit: ec2b75b1fc667c4e893686dbd8e119e7c757333a
+ms.openlocfilehash: 844ed44a588bfd789e7e2dcf2b9fecda3d51329b
+ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72808864"
+ms.lasthandoff: 11/09/2019
+ms.locfileid: "73890380"
 ---
 # <a name="tutorial-use-the-azure-cli-to-configure-iot-hub-message-routing"></a>Samouczek: Konfigurowanie routingu komunikatów IoT Hub przy użyciu interfejsu wiersza polecenia platformy Azure
 

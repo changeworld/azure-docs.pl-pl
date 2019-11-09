@@ -9,12 +9,12 @@ ms.devlang: rest-api
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 41da5b59c7d9429a068ecd483aa96edb1141b727
-ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
+ms.openlocfilehash: 0657d3d5aec414b867e85b627fcf77174c8ce789
+ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73719949"
+ms.lasthandoff: 11/09/2019
+ms.locfileid: "73889908"
 ---
 # <a name="how-to-index-cosmos-db-data-using-an-indexer-in-azure-cognitive-search"></a>Jak indeksować Cosmos DB danych przy użyciu indeksatora na platformie Azure Wyszukiwanie poznawcze 
 
@@ -78,17 +78,11 @@ Na stronie **Źródło danych** Źródło musi być **Cosmos DB**z następujący
 
    ![Cosmos DB definicję źródła danych](media/search-howto-index-cosmosdb/cosmosdb-datasource.png "Cosmos DB definicję źródła danych")
 
-### <a name="4---skip-the-add-cognitive-search-page-in-the-wizard"></a>4 — Pomiń stronę "Dodawanie wyszukiwania poznawczego" w Kreatorze
+### <a name="4---skip-the-enrich-content-page-in-the-wizard"></a>4 — pomijanie strony "wzbogacanie zawartości" w Kreatorze
 
-Dodawanie umiejętności poznawczych nie jest konieczne do importowania dokumentów. Jeśli nie ma potrzeby [dodawania wzbogacania AI](cognitive-search-concept-intro.md) do potoku indeksowania, należy pominąć ten krok.
+Dodawanie umiejętności poznawczych (lub wzbogacania) nie jest wymaganiem importowania. Jeśli nie ma potrzeby [dodawania wzbogacania AI](cognitive-search-concept-intro.md) do potoku indeksowania, należy pominąć ten krok.
 
-Aby pominąć ten krok, najpierw przejdź do następnej strony.
-
-   ![Przycisk Następna strona na potrzeby dodawania umiejętności](media/search-get-started-portal/next-button-add-cog-search.png)
-
-Na tej stronie możesz przejść do dostosowywania indeksu.
-
-   ![Pomijanie kroku Umiejętności poznawcze](media/search-get-started-portal/skip-cog-skill-step.png)
+Aby pominąć ten krok, kliknij niebieskie przyciski u dołu strony, aby "dalej" i "Pomiń".
 
 ### <a name="5---set-index-attributes"></a>5 — Ustawianie atrybutów indeksu
 

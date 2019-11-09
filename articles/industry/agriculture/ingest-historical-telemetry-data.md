@@ -5,12 +5,12 @@ author: uhabiba04
 ms.topic: article
 ms.date: 11/04/2019
 ms.author: v-umha
-ms.openlocfilehash: 6fc70b55b3e672ecc67eb1145bb751de33d998a1
-ms.sourcegitcommit: 16c5374d7bcb086e417802b72d9383f8e65b24a7
+ms.openlocfilehash: e6bd9b5c09e1af5ec587e1f0e52ab25d21d2293b
+ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73847435"
+ms.lasthandoff: 11/09/2019
+ms.locfileid: "73889609"
 ---
 # <a name="ingest-historical-telemetry-data"></a>Pozyskiwanie historycznych danych telemetrycznych
 
@@ -50,11 +50,14 @@ Wykonaj poniższe kroki, aby je wygenerować:
 
     ![Farmy projektów](./media/for-tutorials/power-shell-two-1.png)
 
-5. Przejdź do katalogu, do którego pliki zostały przekazane (domyślnie są przekazywane do katalogu macierzystego/home/username/.
+5. Przejdź do katalogu, do którego pliki zostały przekazane
+
+   >[!NOTE]
+   > Domyślnie plik jest przekazywany do katalogu macierzystego/home/username/.
 6. Uruchom skrypt za pomocą polecenia:  
 
     ```azurepowershell-interactive
-    PS> ./generateCredentials.ps1
+    ./generateCredentials.ps1
     ```
 
 7. Postępuj zgodnie z instrukcjami wyświetlanymi na ekranie, aby ukończyć procedurę.
@@ -127,7 +130,9 @@ FarmBeats centrum danych używa uwierzytelniania okaziciela, który wymaga nast�
 
 Korzystając z powyższych poświadczeń, obiekt wywołujący może zażądać tokenu dostępu, który musi zostać wysłany w kolejnych żądaniach interfejsu API w sekcji nagłówka w następujący sposób:
 
-Headers = *{"Authorization": "Bearer" + access_token,...}*
+```
+headers = *{"Authorization": "Bearer " + access_token, …}*
+```
 
 **Nagłówki żądań HTTP**:
 
@@ -161,8 +166,10 @@ Poniżej znajdują się najczęstsze nagłówki żądań, które należy określ
     "additionalProp3": {}
   }
 }
+```
 
-Device
+Urządzenie
+
 ```json
 {
   "deviceModelId": "string",
@@ -242,7 +249,7 @@ Czujnik
 ```
 Poniżej przykładowego żądania jest utworzenie urządzenia (ma on wejściowy kod JSON jako ładunek z treścią żądania).  
 
-```
+```azurepowershell-interactive
 curl -X POST "https://<datahub>.azurewebsites.net/Device" -H  
 "accept: application/json" -H  "Content-Type: application/json" -H
 "Authorization: Bearer <Access-Token>" -d "
@@ -266,6 +273,7 @@ Musisz wysłać dane telemetryczne do centrum zdarzeń platformy Azure w celu pr
 
 Po ustanowieniu połączenia jako klient usługi EventHub można wysyłać komunikaty do centrum zdarzeń jako dane JSON.  
 Przekonwertuj historyczny format danych z czujnika na format kanoniczny, który jest rozpoznawany przez platformę Azure FarmBeats. Format komunikatu kanonicznego jest następujący:  
+
 
 
  ```

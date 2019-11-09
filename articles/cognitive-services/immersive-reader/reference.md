@@ -10,18 +10,18 @@ ms.subservice: immersive-reader
 ms.topic: reference
 ms.date: 06/20/2019
 ms.author: metan
-ms.openlocfilehash: 1908ed916d61c7a65b1f0061c0fe8d8a08b5e41c
-ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
+ms.openlocfilehash: ed9bd6f5932fdcb2d9124a000115a6f68cf21613
+ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72388106"
+ms.lasthandoff: 11/09/2019
+ms.locfileid: "73889306"
 ---
 # <a name="immersive-reader-sdk-reference-guide"></a>Przewodnik referencyjny zestawu SDK czytnika immersyjny
 
 Zestaw SDK czytnika immersyjny to biblioteka języka JavaScript, która umożliwia integrację czytnika immersyjny z aplikacją sieci Web.
 
-# <a name="functions"></a>Functions
+## <a name="functions"></a>Funkcje
 
 Zestaw SDK udostępnia funkcje:
 
@@ -33,7 +33,7 @@ Zestaw SDK udostępnia funkcje:
 
 ## <a name="launchasync"></a>launchAsync
 
-Uruchamia czytnik immersyjny w `iframe` w aplikacji sieci Web.
+Uruchamia czytnik immersyjny w ramach `iframe` w aplikacji sieci Web.
 
 ```typescript
 launchAsync(token: string, subdomain: string, content: Content, options?: Options): Promise<HTMLDivElement>;
@@ -43,14 +43,14 @@ launchAsync(token: string, subdomain: string, content: Content, options?: Option
 
 | Nazwa | Typ | Opis |
 | ---- | ---- |------------ |
-| `token` | string | Token uwierzytelniania usługi Azure AD. Zobacz [temat uwierzytelnianie w usłudze Azure AD](./azure-active-directory-authentication.md). |
-| `subdomain` | string | Niestandardowa poddomena zasobu czytnika immersyjny na platformie Azure. Zobacz [temat uwierzytelnianie w usłudze Azure AD](./azure-active-directory-authentication.md). |
+| `token` | ciąg | Token uwierzytelniania usługi Azure AD. Zobacz [temat uwierzytelnianie w usłudze Azure AD](./azure-active-directory-authentication.md). |
+| `subdomain` | ciąg | Niestandardowa poddomena zasobu czytnika immersyjny na platformie Azure. Zobacz [temat uwierzytelnianie w usłudze Azure AD](./azure-active-directory-authentication.md). |
 | `content` | [Zawartość](#content) | Obiekt zawierający zawartość, która ma zostać pokazana w czytniku immersyjny. |
 | `options` | [Opcje](#options) | Opcje konfigurowania niektórych zachowań czytnika immersyjny. Opcjonalny. |
 
 ### <a name="returns"></a>Typu
 
-Zwraca `Promise<HTMLDivElement>`, który rozwiązuje, kiedy czytnik immersyjny jest ładowany. @No__t-0 jest rozpoznawany jako element `div`, którego jedynym elementem podrzędnym jest element `iframe`, który zawiera stronę czytnika immersyjny.
+Zwraca `Promise<HTMLDivElement>`, który rozwiązuje, kiedy czytnik immersyjny jest ładowany. `Promise` jest rozpoznawany jako element `div`, którego tylko element podrzędny jest `iframe` elementu, który zawiera stronę czytnika immersyjny.
 
 ### <a name="exceptions"></a>Wyjątki
 
@@ -68,7 +68,7 @@ close(): void;
 
 ## <a name="renderbuttons"></a>renderButtons
 
-Ta funkcja stylów i aktualizuje elementy przycisku czytnika immersyjny dokumentu. Jeśli podano ```options.elements```, ta funkcja będzie renderować przyciski w ```options.elements```. W przeciwnym razie przyciski będą renderowane w obrębie elementów dokumentu, które mają klasę ```immersive-reader-button```.
+Ta funkcja stylów i aktualizuje elementy przycisku czytnika immersyjny dokumentu. Jeśli podano ```options.elements```, ta funkcja będzie renderować przyciski w ```options.elements```. W przeciwnym razie przyciski będą renderowane w obrębie elementów dokumentu, które mają ```immersive-reader-button```klasie.
 
 Ta funkcja jest automatycznie wywoływana przez zestaw SDK podczas ładowania okna.
 
@@ -171,7 +171,7 @@ Zawiera informacje o błędzie.
 | Kod | Opis |
 | ---- | ----------- |
 | BadArgument | Podany argument jest nieprawidłowy. Aby uzyskać szczegółowe informacje, zobacz `message`. |
-| limit czasu | Nie można załadować czytnika immersyjny w określonym limicie czasu. |
+| Limit czasu | Nie można załadować czytnika immersyjny w określonym limicie czasu. |
 | TokenExpired | Podany token wygasł. |
 | Ograniczone | Przekroczono limit liczby wywołań. |
 
@@ -189,8 +189,8 @@ Użyj następujących atrybutów, aby skonfigurować wygląd i działanie przyci
 
 | Atrybut | Opis |
 | --------- | ----------- |
-| `data-button-style` | Ustawia styl przycisku. Może być `icon`, `text` lub `iconAndText`. Wartość domyślna to `icon`. |
-| `data-locale` | Ustawia ustawienia regionalne. Na przykład: `en-US` lub `fr-FR`. Wartość domyślna to angielski `en`. |
+| `data-button-style` | Ustawia styl przycisku. Może być `icon`, `text`lub `iconAndText`. Wartość domyślna to `icon`. |
+| `data-locale` | Ustawia ustawienia regionalne. Na przykład: `en-US` lub `fr-FR`. Wartość domyślna to `en`w języku angielskim. |
 | `data-icon-px-size` | Ustawia rozmiar ikony w pikselach. Wartość domyślna to 20px. |
 
 ## <a name="browser-support"></a>Obsługa przeglądarki

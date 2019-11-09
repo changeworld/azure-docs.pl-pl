@@ -10,12 +10,12 @@ ms.devlang: java
 ms.topic: quickstart
 ms.custom: mvc, seo-java-august2019, seo-java-september2019
 ms.date: 06/21/2019
-ms.openlocfilehash: eee8a3b17a23d34610951db8b881397a0649b53a
-ms.sourcegitcommit: 12de9c927bc63868168056c39ccaa16d44cdc646
+ms.openlocfilehash: 6ac102fa52977d3f9e07de1666dd98e8c2a31673
+ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72516737"
+ms.lasthandoff: 11/09/2019
+ms.locfileid: "73890545"
 ---
 # <a name="quickstart-control-a-device-connected-to-an-azure-iot-hub-with-java"></a>Szybki Start: sterowanie urządzeniem podłączonym do usługi Azure IoT Hub za pomocą języka Java
 
@@ -37,7 +37,7 @@ Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpł
 
 Dwie przykładowe aplikacje uruchamiane w tym przewodniku Szybki start zostały napisane w języku Java. Potrzebujesz języka Java SE 8 na komputerze deweloperskim.
 
-Możesz pobrać Java SE Development Kit 8 dla wielu platform w [języku Java — długoterminowa obsługa platformy Azure i Azure Stack](https://docs.microsoft.com/en-us/java/azure/jdk/?view=azure-java-stable). Upewnij się, że wybrano opcję **Java 8** w obszarze **Obsługa długoterminowa** , aby pobrać pliki do pobrania dla programu JDK 8.
+Możesz pobrać Java SE Development Kit 8 dla wielu platform w [języku Java — długoterminowa obsługa platformy Azure i Azure Stack](https://docs.microsoft.com/java/azure/jdk/?view=azure-java-stable). Upewnij się, że wybrano opcję **Java 8** w obszarze **Obsługa długoterminowa** , aby pobrać pliki do pobrania dla programu JDK 8.
 
 Możesz sprawdzić bieżącą wersję języka Java na komputerze deweloperskim przy użyciu następującego polecenia:
 
@@ -125,7 +125,7 @@ Aplikacja urządzenia symulowanego łączy się z punktem końcowym właściwym 
 
 2. Otwórz plik **src/main/java/com/microsoft/docs/iothub/samples/SimulatedDevice.java** w wybranym edytorze tekstów.
 
-    Zastąp wartość zmiennej `connString` parametrami połączenia urządzenia, które zostały wykonane wcześniej. Następnie Zapisz zmiany w **SimulatedDevice. Java**.
+    Zastąp wartość zmiennej `connString` parametrami połączenia urządzenia, które zostały wykonane wcześniej jako uwagi. Następnie Zapisz zmiany w **SimulatedDevice. Java**.
 
 3. W lokalnym oknie terminalu uruchom następujące polecenia, aby zainstalować wymagane biblioteki i skompilować aplikację urządzenia symulowanego:
 

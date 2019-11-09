@@ -9,16 +9,16 @@ tags: complex data types; compound data types; aggregate data types
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: af68f232c893259747e6ed106eced70fd8b89351
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.openlocfilehash: c7578b84fe1d23d2b4d97aa263cac576305db240
+ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72792230"
+ms.lasthandoff: 11/09/2019
+ms.locfileid: "73889918"
 ---
 # <a name="how-to-model-complex-data-types-in-azure-cognitive-search"></a>Jak modelować złożone typy danych w usłudze Azure Wyszukiwanie poznawcze
 
-Zewnętrzne zestawy danych używane do wypełniania indeksu usługi Azure Wyszukiwanie poznawcze mogą pochodzić z wielu kształtów. Czasami zawierają hierarchiczne lub zagnieżdżone podstruktury. Przykłady mogą obejmować wiele adresów pojedynczego klienta, wiele kolorów i rozmiarów dla pojedynczej jednostki SKU, wielu autorów jednej książki itd. W przypadku warunków modelowania można zobaczyć, że te struktury są określane jako *złożone* *, złożone, złożone*lub *zagregowane* typy danych. Termin korzystania z platformy Azure Wyszukiwanie poznawcze dla tego pojęcia to **typ złożony**. W Wyszukiwanie poznawcze poznawczej platformy Azure typy złożone są modelowane przy użyciu **pól złożonych**. Pole złożone to pole, które zawiera elementy podrzędne (podpola), które mogą być dowolnego typu danych, w tym inne typy złożone. Działa to podobnie jak w przypadku typów danych ze strukturą w języku programowania.
+Zewnętrzne zestawy danych używane do wypełniania indeksu usługi Azure Wyszukiwanie poznawcze mogą pochodzić z wielu kształtów. Czasami zawierają hierarchiczne lub zagnieżdżone podstruktury. Przykłady mogą obejmować wiele adresów pojedynczego klienta, wiele kolorów i rozmiarów dla pojedynczej jednostki SKU, wielu autorów jednej książki itd. W przypadku warunków modelowania można zobaczyć, że te struktury są określane jako *złożone* *, złożone, złożone*lub *zagregowane* typy danych. Termin korzystania z platformy Azure Wyszukiwanie poznawcze dla tego pojęcia to **typ złożony**. Na platformie Azure Wyszukiwanie poznawcze typy złożone są modelowane przy użyciu **pól złożonych**. Pole złożone to pole, które zawiera elementy podrzędne (podpola), które mogą być dowolnego typu danych, w tym inne typy złożone. Działa to podobnie jak w przypadku typów danych ze strukturą w języku programowania.
 
 Pola złożone reprezentują pojedynczy obiekt w dokumencie lub tablicę obiektów, w zależności od typu danych. Pola typu `Edm.ComplexType` reprezentują pojedyncze obiekty, natomiast pola typu `Collection(Edm.ComplexType)` reprezentują tablice obiektów.
 

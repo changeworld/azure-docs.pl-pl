@@ -8,12 +8,12 @@ ms.author: vikurpad
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 8a783581394de05fff9f0060e124e8dc59c96b60
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.openlocfilehash: 8fa20608f09b4e3006dad685d2fc52bcc9207b5a
+ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72790171"
+ms.lasthandoff: 11/09/2019
+ms.locfileid: "73890162"
 ---
 # <a name="working-with-skillsets-in-azure-cognitive-search"></a>Praca z usługą umiejętności na platformie Azure Wyszukiwanie poznawcze
 
@@ -32,7 +32,7 @@ Zestawu umiejętności ma trzy właściwości:
 
 
 
-Umiejętności są tworzone w formacie JSON. Można tworzyć złożone umiejętności z użyciem pętli i [rozgałęziania](https://docs.microsoft.com/en-us/azure/search/cognitive-search-skill-conditional) przy użyciu [języka wyrażeń](https://docs.microsoft.com/azure/search/cognitive-search-skill-conditional). Język wyrażeń używa notacji ścieżki [wskaźnika JSON](https://tools.ietf.org/html/rfc6901) z kilkoma modyfikacjami do identyfikowania węzłów w drzewie wzbogacania. ```"/"``` przechodzi poziom niższy w drzewie i ```"*"``` działa jako operator for-each w kontekście. Te koncepcje najlepiej opisać na przykład. Aby zilustrować niektóre koncepcje i możliwości, przeprowadzimy Cię przez zestawu umiejętnoście [przeglądów w hotelu](knowledge-store-connect-powerbi.md) . Aby wyświetlić zestawu umiejętności po wykonaniu przepływu pracy Importowanie danych, należy użyć klienta interfejsu API REST w celu [uzyskania zestawu umiejętności](https://docs.microsoft.com/en-us/rest/api/searchservice/get-skillset).
+Umiejętności są tworzone w formacie JSON. Można tworzyć złożone umiejętności z użyciem pętli i [rozgałęziania](https://docs.microsoft.com/azure/search/cognitive-search-skill-conditional) przy użyciu [języka wyrażeń](https://docs.microsoft.com/azure/search/cognitive-search-skill-conditional). Język wyrażeń używa notacji ścieżki [wskaźnika JSON](https://tools.ietf.org/html/rfc6901) z kilkoma modyfikacjami do identyfikowania węzłów w drzewie wzbogacania. ```"/"``` przechodzi poziom niższy w drzewie i ```"*"``` działa jako operator for-each w kontekście. Te koncepcje najlepiej opisać na przykład. Aby zilustrować niektóre koncepcje i możliwości, przeprowadzimy Cię przez zestawu umiejętnoście [przeglądów w hotelu](knowledge-store-connect-powerbi.md) . Aby wyświetlić zestawu umiejętności po wykonaniu przepływu pracy Importowanie danych, należy użyć klienta interfejsu API REST w celu [uzyskania zestawu umiejętności](https://docs.microsoft.com/rest/api/searchservice/get-skillset).
 
 ### <a name="enrichment-tree"></a>Drzewo wzbogacania
 
@@ -43,14 +43,14 @@ Gdy dokument znajduje się w potoku wzbogacenia, jest reprezentowany jako drzewo
 
 |Tryb Source\Parsing danych|Domyślne|JSON, wiersze JSON & CSV|
 |---|---|---|
-|Blob Storage|/document/content<br>/document/normalized_images/*<br>...|/document/{key1}<br>/document/{key2}<br>...|
-|SQL|/document/{column1}<br>/document/{column2}<br>...|ND |
-|Cosmos DB|/document/{key1}<br>/document/{key2}<br>...|ND|
+|Blob Storage|/document/content<br>/Document/normalized_images/*<br>...|/document/{key1}<br>/document/{key2}<br>...|
+|SQL|/document/{column1}<br>/document/{column2}<br>...|Nie dotyczy |
+|Cosmos DB|/document/{key1}<br>/document/{key2}<br>...|Nie dotyczy|
 
  W miarę wykonywania umiejętności Dodaj nowe węzły do drzewa wzbogacania. Te nowe węzły mogą być następnie używane jako dane wejściowe dla umiejętności podrzędnych, projekcja w sklepie wiedzy lub mapowanie do pól indeksu. Wzbogacania nie są modyfikowalne: po utworzeniu węzły nie mogą być edytowane. Ponieważ umiejętności jest bardziej skomplikowany, to drzewo wzbogacania, ale nie wszystkie węzły w drzewie wzbogacania muszą wprowadzić je do indeksu lub sklepu wiedzy. Można wybiórczo utrwalać tylko podzbiór wzbogaceń do indeksu lub sklepu z bazami danych.
 
 Można wybiórczo utrwalać tylko podzbiór wzbogaceń do indeksu lub sklepu z bazami danych.
-W pozostałej części tego dokumentu przyjęto założenie, że pracujemy z [przykładami przeglądów hotelu](https://docs.microsoft.com/en-us/azure/search/knowledge-store-connect-powerbi), ale te same koncepcje dotyczą wzbogacania dokumentów ze wszystkich innych źródeł danych.
+W pozostałej części tego dokumentu przyjęto założenie, że pracujemy z [przykładami przeglądów hotelu](https://docs.microsoft.com/azure/search/knowledge-store-connect-powerbi), ale te same koncepcje dotyczą wzbogacania dokumentów ze wszystkich innych źródeł danych.
 
 ### <a name="context"></a>Kontekst
 Każda umiejętność wymaga kontekstu. Kontekst określa:

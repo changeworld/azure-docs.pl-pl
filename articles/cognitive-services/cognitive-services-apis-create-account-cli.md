@@ -9,12 +9,12 @@ ms.service: cognitive-services
 ms.topic: conceptual
 ms.date: 10/04/2019
 ms.author: aahi
-ms.openlocfilehash: 8ca994b0b4abb27eef284eedf5a76571fe19699d
-ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
+ms.openlocfilehash: d715252f16a34f2261c108ebd3ff5d1f6f3424d8
+ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/18/2019
-ms.locfileid: "72595317"
+ms.lasthandoff: 11/09/2019
+ms.locfileid: "73887909"
 ---
 # <a name="create-a-cognitive-services-resource-using-the-azure-command-line-interfacecli"></a>Tworzenie zasobu Cognitive Services przy użyciu interfejsu wiersza polecenia platformy Azure (CLI)
 
@@ -91,16 +91,16 @@ Podczas tworzenia nowego zasobu należy znać "rodzaj" usługi, która ma być u
 | Przetwarzanie obrazów            | `ComputerVision`          |
 | Custom Vision — przewidywanie | `CustomVision.Prediction` |
 | Custom Vision — szkolenie   | `CustomVision.Training`   |
-| Interfejs API twarzy                   | `Face`                    |
+| Interfejs API rozpoznawania twarzy                   | `Face`                    |
 | Rozpoznawanie formularzy            | `FormRecognizer`          |
 | Rozpoznawanie pisma odręcznego             | `InkRecognizer`           |
 
-### <a name="search"></a>Search
+### <a name="search"></a>Wyszukiwanie
 
 | Usługa            | Natur                  |
 |--------------------|-----------------------|
 | Automatyczne sugerowanie Bing   | `Bing.Autosuggest.v7` |
-| Bing Custom Search | `Bing.CustomSearch`   |
+| Wyszukiwanie niestandardowe Bing | `Bing.CustomSearch`   |
 | Wyszukiwanie jednostek Bing | `Bing.EntitySearch`   |
 | Wyszukiwanie Bing        | `Bing.Search.v7`      |
 | Sprawdzanie pisowni Bing   | `Bing.SpellCheck.v7`  |
@@ -179,7 +179,7 @@ Warstwy cenowe (oraz opłata naliczana) są zależne od liczby wysyłanych trans
 
 ## <a name="get-current-quota-usage-for-your-resource"></a>Pobierz bieżące użycie przydziału dla zasobu
 
-Użyj polecenia [AZ cognitiveservices Account List-Usage](https://docs.microsoft.com/en-us/cli/azure/cognitiveservices/account?view=azure-cli-latest#az-cognitiveservices-account-list-usage) , aby uzyskać użycie zasobu usługi poznawczej.
+Użyj polecenia [AZ cognitiveservices Account List-Usage](https://docs.microsoft.com/cli/azure/cognitiveservices/account?view=azure-cli-latest#az-cognitiveservices-account-list-usage) , aby uzyskać użycie zasobu usługi poznawczej.
 
 ```azurecli-interactive
 az cognitiveservices account list-usage \
@@ -198,7 +198,7 @@ Aby usunąć grupę zasobów i skojarzone z nią zasoby, użyj polecenia AZ Grou
 az group delete --name storage-resource-group
 ```
 
-## <a name="see-also"></a>Zobacz także
+## <a name="see-also"></a>Zobacz też
 
 * [Uwierzytelnianie żądań w usłudze Azure Cognitive Services](authentication.md)
 * [Co to jest platforma Azure Cognitive Services?](Welcome.md)

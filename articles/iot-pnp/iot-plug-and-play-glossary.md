@@ -9,12 +9,12 @@ ms.custom: mvc
 ms.service: iot-pnp
 services: iot-pnp
 manager: philmea
-ms.openlocfilehash: 0d132a46db39308911f472941c02f8bb04a44e0d
-ms.sourcegitcommit: 92d42c04e0585a353668067910b1a6afaf07c709
+ms.openlocfilehash: 22b2cb8caa815b2ce8343a060a5f12133b763b83
+ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/28/2019
-ms.locfileid: "72988786"
+ms.lasthandoff: 11/09/2019
+ms.locfileid: "73890337"
 ---
 # <a name="glossary-of-terms-for-iot-plug-and-play-preview"></a>Słownik terminów dotyczących usługi IoT Plug and Play w wersji zapoznawczej
 
@@ -117,7 +117,7 @@ Deweloper urządzenia używa [modelu możliwości urządzenia](#device-capabilit
 
 ## <a name="device-provisioning-service"></a>Usługa Device Provisioning
 
-Usługa [Azure IoT Central](#azure-iot-central) używa usługi Device Provisioning w celu zarządzania rejestracją i połączeniem urządzeń. Aby uzyskać więcej informacji, zobacz [łączność urządzenia w usłudze Azure IoT Central](../iot-central/core/overview-iot-central-get-connected-pnp.md). Możesz również użyć usługi Device Provisioning, aby zarządzać rejestracją i połączeniem urządzeń z opartym na IoT Hub rozwiązaniu IoT. Aby uzyskać więcej informacji, zobacz temat [aprowizacji urządzeń przy użyciu usługi Azure IoT Hub Device Provisioning Service](../iot-dps/about-iot-dps.md).
+Usługa [Azure IoT Central](#azure-iot-central) używa usługi Device Provisioning w celu zarządzania rejestracją i połączeniem urządzeń. Aby uzyskać więcej informacji, zobacz [łączność urządzenia w usłudze Azure IoT Central](../iot-central/preview/overview-iot-central-get-connected.md). Możesz również użyć usługi Device Provisioning, aby zarządzać rejestracją i połączeniem urządzeń z opartym na IoT Hub rozwiązaniu IoT. Aby uzyskać więcej informacji, zobacz temat [aprowizacji urządzeń przy użyciu usługi Azure IoT Hub Device Provisioning Service](../iot-dps/about-iot-dps.md).
 
 ## <a name="device-registration"></a>Rejestracja urządzenia
 

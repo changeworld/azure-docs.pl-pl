@@ -8,12 +8,12 @@ author: mrbullwinkle
 ms.author: mbullwin
 ms.date: 03/15/2019
 ms.reviewer: sdash
-ms.openlocfilehash: 65a257cc4613fb9e4dece09a2544de2e78779ab4
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: 305de556cc6e50af21cb38aa1b8073b420efbf43
+ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73577059"
+ms.lasthandoff: 11/09/2019
+ms.locfileid: "73887753"
 ---
 # <a name="application-map-triage-distributed-applications"></a>Mapa aplikacji: Klasyfikacja aplikacje rozproszone
 
@@ -234,7 +234,7 @@ Alternatywnie **wystąpienie roli w chmurze** może być przydatne w scenariusza
 
 Scenariusz, w którym warto zastąpić wartość wystąpienia roli w chmurze, może mieć miejsce, jeśli aplikacja działa w środowisku kontenerowym, w którym tylko wiedza na pojedynczym serwerze może nie być wystarczająco dużo informacji, aby zlokalizować dany problem.
 
-Aby uzyskać więcej informacji na temat przesłonięcia właściwości Nazwa roli chmury z inicjatorami telemetrii, zobacz [Dodawanie właściwości: ITelemetryInitializer](api-filtering-sampling.md#add-properties-itelemetryinitializer).
+Aby uzyskać więcej informacji na temat przesłonięcia właściwości Nazwa roli chmury z inicjatorami telemetrii, zobacz [Dodawanie właściwości: ITelemetryInitializer](api-filtering-sampling.md#addmodify-properties-itelemetryinitializer).
 
 ## <a name="troubleshooting"></a>Rozwiązywanie problemów
 

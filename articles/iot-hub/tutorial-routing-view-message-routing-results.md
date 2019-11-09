@@ -1,6 +1,6 @@
 ---
 title: Wyświetlanie wyników routingu komunikatów usługi Azure IoT Hub (.NET) | Microsoft Docs
-description: Wyświetl wyniki routingu komunikatów usługi Azure IoT Hub
+description: Po skonfigurowaniu wszystkich zasobów przy użyciu części 1 samouczka Dodaj możliwość kierowania wiadomości do Azure Stream Analytics i wyświetlania wyników w usłudze PowerBI.
 author: robinsh
 manager: philmea
 ms.service: iot-hub
@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 03/25/2018
 ms.author: robinsh
 ms.custom: mvc
-ms.openlocfilehash: 6d40f7d81faa77a48a32aadefdf44ed89e184efb
-ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
+ms.openlocfilehash: bfee4e64070e5f37eaa3d63280409f00c0ed8672
+ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72900813"
+ms.lasthandoff: 11/09/2019
+ms.locfileid: "73890391"
 ---
 # <a name="tutorial-part-2---view-the-routed-messages"></a>Samouczek: część 2 — Wyświetlanie rozesłanych komunikatów
 
@@ -34,7 +34,7 @@ Są to reguły routingu wiadomości. zostały one skonfigurowane w części 1 te
 
 Teraz utworzysz zasoby, do których będą kierowane komunikaty, uruchom aplikację w celu wysłania komunikatów do centrum i zobacz, jak działa Routing.
 
-## <a name="create-a-logic-app"></a>Tworzenie aplikacji logicznej  
+## <a name="create-a-logic-app"></a>Tworzenie aplikacji logiki  
 
 Kolejka usługi Service Bus jest używana do odbierania komunikatów oznaczonych jako krytyczne. Skonfiguruj aplikację logiki, aby monitorować kolejkę usługi Service Bus i wysyłać wiadomość e-mail po dodaniu komunikatu do kolejki.
 

@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 07/11/2019
 author: mlearned
 monikerRange: vsts
-ms.openlocfilehash: 1c16368990148406fbacdde2981c10fab0b2d405
-ms.sourcegitcommit: c2e7595a2966e84dc10afb9a22b74400c4b500ed
+ms.openlocfilehash: 229b4b9f53ea3866dce1169645f6d6da20827271
+ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/05/2019
-ms.locfileid: "71969663"
+ms.lasthandoff: 11/09/2019
+ms.locfileid: "73888904"
 ---
 # <a name="deploy-nodejs-apps-powered-by-azure-cosmos-db-with-devops-projects"></a>Wdróż aplikacje Node. js obsługiwane przez Azure Cosmos DB z DevOps Projects
 
@@ -45,7 +45,7 @@ Potrzebna jest subskrypcja platformy Azure, za pomocą której możesz bezpłatn
 
 Usługa DevOps Projects tworzy potok ciągłej integracji/ciągłego wdrażania w usłudze Azure Pipelines. Możesz utworzyć nową organizację usługi Azure DevOps lub użyć istniejącej organizacji. DevOps Projects tworzy również zasoby platformy Azure, takie jak Azure Cosmos DB, Application Insights, App Service i App Service, w wybranej subskrypcji platformy Azure.
 
-1. Zaloguj się do [portalu Azure](https://portal.azure.com).
+1. Zaloguj się w witrynie [Azure Portal](https://portal.azure.com).
 
 1. W okienku po lewej stronie wybierz pozycję **Utwórz zasób**.
 
@@ -169,6 +169,6 @@ Możesz zmodyfikować potoki kompilacji i wydania, aby dopasować je do potrzeb 
 > * Zatwierdzanie zmian w usłudze Git i automatyczne wdrażanie ich na platformie Azure
 > * Oczyszczanie zasobów
 
-Aby uzyskać więcej informacji, zobacz sekcję [Definiowanie potoku ciągłego wdrażania wieloetapowego (CD)](https://docs.microsoft.com/en-us/azure/devops/pipelines/release/define-multistage-release-process?view=azure-devops&viewFallbackFrom=vsts) i następnych kroków.
+Aby uzyskać więcej informacji, zobacz sekcję [Definiowanie potoku ciągłego wdrażania wieloetapowego (CD)](https://docs.microsoft.com/azure/devops/pipelines/release/define-multistage-release-process?view=azure-devops&viewFallbackFrom=vsts) i następnych kroków.
 
 

@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 10/09/2019
 ms.author: pabouwer
 zone_pivot_groups: client-operating-system
-ms.openlocfilehash: 9c9dcd567b8632626bf4b1f0bf2ef6b5e69b8a9d
-ms.sourcegitcommit: f29fec8ec945921cc3a89a6e7086127cc1bc1759
+ms.openlocfilehash: 245ac3b1fd88b8d2430e9ddefef3562efd16e6d1
+ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72530448"
+ms.lasthandoff: 11/09/2019
+ms.locfileid: "73885386"
 ---
 # <a name="install-and-use-istio-in-azure-kubernetes-service-aks"></a>Instalowanie i używanie Istio w usłudze Azure Kubernetes Service (AKS)
 
@@ -21,9 +21,9 @@ ms.locfileid: "72530448"
 W tym artykule opisano sposób instalowania programu Istio. Plik binarny klienta Istio `istioctl` jest instalowany na komputerze klienckim, a składniki Istio są instalowane w klastrze Kubernetes na AKS.
 
 > [!NOTE]
-> Te instrukcje odwołują się do wersji Istio `1.3.2` i używają co najmniej Helm wersji `2.14.2`.
+> Te instrukcje odwołują się do wersji Istio `1.3.2`i używają co najmniej Helm wersji `2.14.2`.
 >
-> Wersje `1.3.x` Istio zostały przetestowane przez zespół Istio w odniesieniu do wersji Kubernetes `1.13`, `1.14` `1.15`. Dodatkowe wersje Istio można znaleźć w artykułach usługi [GitHub-Istio][istio-github-releases], informacje o każdej z tych wersji w usłudze [Istio News][istio-release-notes] i obsługiwane wersje Kubernetes na [ogół często zadawane pytania][istio-faq]na temat Istio.
+> Wersje `1.3.x` Istio zostały przetestowane przez zespół Istio w odniesieniu do wersji Kubernetes `1.13`, `1.14``1.15`. Dodatkowe wersje Istio można znaleźć w artykułach usługi [GitHub-Istio][istio-github-releases], informacje o każdej z tych wersji w usłudze [Istio News][istio-release-notes] i obsługiwane wersje Kubernetes na [ogół często zadawane pytania][istio-faq]na temat Istio.
 
 W tym artykule omówiono sposób wykonywania następujących zadań:
 
@@ -195,7 +195,7 @@ kubectl get svc --namespace istio-system --output wide
 Następujące przykładowe dane wyjściowe przedstawiają usługi, które powinny być teraz uruchomione:
 
 - usługi `istio-*`
-- usługi śledzenia dodatków `jaeger-*`, `tracing` i `zipkin`
+- usługi śledzenia dodatków `jaeger-*`, `tracing`i `zipkin`
 - Usługa metryk `prometheus` dodatek
 - `grafana` dodatku do analizy i monitorowania pulpitu nawigacyjnego
 - `kiali` dodatku pulpitu nawigacyjnego usługi Service oczka
@@ -309,7 +309,7 @@ istioctl dashboard envoy <pod-name>.<namespace>
 
 ### <a name="remove-istio-components-and-namespace"></a>Usuń składniki Istio i przestrzeń nazw
 
-Aby usunąć Istio z klastra AKS, użyj następujących poleceń. @No__t_0 polecenia spowodują usunięcie wykresów `istio` i `istio-init`, a polecenie `kubectl delete namespace` spowoduje usunięcie `istio-system` przestrzeni nazw.
+Aby usunąć Istio z klastra AKS, użyj następujących poleceń. `helm delete` polecenia spowodują usunięcie wykresów `istio` i `istio-init`, a polecenie `kubectl delete namespace` spowoduje usunięcie `istio-system` przestrzeni nazw.
 
 ```azurecli
 helm delete --purge istio
@@ -383,7 +383,7 @@ Aby dowiedzieć się, jak monitorować aplikację AKS przy użyciu Application I
 [kubernetes-crd]: https://kubernetes.io/docs/concepts/extend-kubernetes/api-extension/custom-resources/#customresourcedefinitions
 [kubernetes-jobs]: https://kubernetes.io/docs/concepts/workloads/controllers/jobs-run-to-completion/
 [kubernetes-secrets]: https://kubernetes.io/docs/concepts/configuration/secret/
-[kubernetes-node-selectors]: https://docs.microsoft.com/en-us/azure/aks/concepts-clusters-workloads#node-selectors
+[kubernetes-node-selectors]: https://docs.microsoft.com/azure/aks/concepts-clusters-workloads#node-selectors
 [kubectl-get]: https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#get
 [kubectl-describe]: https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#describe
 [kubectl-port-forward]: https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#port-forward

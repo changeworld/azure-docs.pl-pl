@@ -5,8 +5,6 @@
   items:
     - name: Opis zawartości rachunku
       href: billing-understand-your-bill.md
-    - name: Opis zawartości rachunku EA
-      href: billing-understand-your-bill-ea.md
     - name: Opis zawartości rachunku — umowa klienta firmy Microsoft
       href: billing-mca-understand-your-bill.md
     - name: Opis zawartości rachunku — umowa partnera firmy Microsoft
@@ -159,6 +157,8 @@
       items:
         - name: Rozpoczynanie pracy w portalu umowy Enterprise Agreement platformy Azure
           href: billing-ea-portal-get-started.md
+        - name: Opis zawartości rachunku EA
+          href: billing-understand-your-bill-ea.md
         - name: Role umowy EA na platformie Azure
           href: billing-understand-ea-roles.md
         - name: Administracja przy użyciu portalu umowy Enterprise Agreement

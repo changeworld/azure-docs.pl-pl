@@ -13,12 +13,12 @@ ms.date: 10/25/2019
 ms.author: cephalin
 ms.reviewer: yutlin
 ms.custom: seodec18
-ms.openlocfilehash: 12b8d6dff571c074d1f1422f75e33a8b12761bd9
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: 4f0c8078a502d0332b02d95c0c46d9dbcc53a884
+ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73572150"
+ms.lasthandoff: 11/09/2019
+ms.locfileid: "73886862"
 ---
 # <a name="add-an-ssl-certificate-in-azure-app-service"></a>Dodawanie certyfikatu SSL w Azure App Service
 
@@ -325,7 +325,7 @@ Po zakończeniu operacji odnawiania kliknij pozycję **Synchronizuj**. Operacja 
 
 ### <a name="export-certificate"></a>Eksportowanie certyfikatu
 
-Ponieważ App Service Certificates to [klucz tajny Key Vault](../key-vault/about-keys-secrets-and-certificates.md#key-vault-secrets), można wyeksportować jego kopię PFX i użyć go do innych usług platformy Azure lub poza platformą Azure.
+Ponieważ Certyfikat usługi App Service jest [Key Vault tajny](../key-vault/about-keys-secrets-and-certificates.md#key-vault-secrets), można wyeksportować kopię pliku PFX i użyć jej do innych usług platformy Azure lub poza platformą Azure.
 
 Aby wyeksportować Certyfikat usługi App Service jako plik PFX, uruchom następujące polecenia w [Cloud Shell](https://shell.azure.com). Można go również uruchomić lokalnie, jeśli [zainstalowano interfejs wiersza polecenia platformy Azure](https://docs.microsoft.com/cli/azure/install-azure-cli). Zastąp symbole zastępcze nazwami użytymi podczas [tworzenia certyfikatu App Service](#start-certificate-order).
 
@@ -344,7 +344,7 @@ az keyvault secret download \
     --encoding base64
 ```
 
-Pobrany plik *appservicecertificate. pfx* to pierwotny plik PKCS12, który zawiera certyfikaty publiczne i prywatne. Za każdym razem, gdy zostanie wyświetlony monit, zarówno hasło importowania, jak i polecenie przekazania PEM są pustym ciągiem.
+Pobrany plik *appservicecertificate. pfx* to pierwotny plik PKCS12, który zawiera certyfikaty publiczne i prywatne. W każdym monicie użyj pustego ciągu dla hasła importu i frazy przekazywania PEM.
 
 ### <a name="delete-certificate"></a>Usuń certyfikat 
 

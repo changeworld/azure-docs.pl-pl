@@ -9,12 +9,12 @@ ms.date: 02/25/2019
 ms.author: tamram
 ms.reviewer: cbrooks
 ms.subservice: common
-ms.openlocfilehash: 3717199d2fa342fff5996d97bc5cdaf6da6e9880
-ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
+ms.openlocfilehash: b265ff8831275a9f4b84f7dac28b82ae75630f8b
+ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/18/2019
-ms.locfileid: "72595207"
+ms.lasthandoff: 11/09/2019
+ms.locfileid: "73889785"
 ---
 # <a name="disaster-recovery-and-storage-account-failover-preview-in-azure-storage"></a>Odzyskiwanie po awarii i tryb failover konta magazynu (wersja zapoznawcza) w usłudze Azure Storage
 
@@ -47,8 +47,8 @@ Inne opcje nadmiarowości usługi Azure Storage obejmują magazyn strefowo nadmi
 
 Ważne jest, aby zaprojektować aplikację pod kątem wysokiej dostępności od początku. Zapoznaj się z tymi zasobami platformy Azure, aby uzyskać wskazówki dotyczące projektowania aplikacji i planowania odzyskiwania po awarii:
 
-* [Projektowanie odpornych aplikacji na platformę Azure](https://docs.microsoft.com/azure/architecture/resiliency/): przegląd najważniejszych pojęć dotyczących tworzenia aplikacji o wysokiej dostępności na platformie Azure.
-* [Lista kontrolna dostępności](https://docs.microsoft.com/azure/architecture/checklist/availability): Lista kontrolna służąca do sprawdzania, czy aplikacja implementuje najlepsze rozwiązania w zakresie projektowania wysokiej dostępności.
+* [Projektowanie odpornych aplikacji na platformę Azure](/azure/architecture/checklist/resiliency-per-service): przegląd najważniejszych pojęć dotyczących tworzenia aplikacji o wysokiej dostępności na platformie Azure.
+* [Lista kontrolna dostępności](/azure/architecture/checklist/resiliency-per-service): Lista kontrolna służąca do sprawdzania, czy aplikacja implementuje najlepsze rozwiązania w zakresie projektowania wysokiej dostępności.
 * [Projektowanie aplikacji o wysokiej dostępności przy użyciu usługi RA-GRS](storage-designing-ha-apps-with-ragrs.md): wskazówki dotyczące projektowania do kompilowania aplikacji w celu skorzystania z usługi RA-GRS.
 * [Samouczek: Tworzenie aplikacji o wysokiej dostępności przy użyciu magazynu obiektów BLOB](../blobs/storage-create-geo-redundant-storage.md): samouczek pokazujący sposób tworzenia aplikacji o wysokiej dostępności, która automatycznie przełącza się między punktami końcowymi w miarę awarii i odzyskiwania. 
 
@@ -120,7 +120,7 @@ Konto można zainicjować w trybie failover z poziomu Azure Portal, programu Pow
 Tryb failover konta jest dostępny w wersji zapoznawczej dla wszystkich klientów korzystających z usługi GRS lub RA-GRS z wdrożeniami Azure Resource Manager. Obsługiwane są tylko typy kont ogólnego przeznaczenia w wersji 1, ogólnego przeznaczenia w wersji 2 i BLOB Storage. Tryb failover konta jest obecnie dostępny w następujących regionach:
 
 - Azja Wschodnia
-- Azja Południowo-wschodnia
+- Azja Południowo-Wschodnia
 - Australia Wschodnia
 - Australia Południowo-Wschodnia
 - Środkowe stany USA
@@ -180,13 +180,13 @@ Następujące funkcje lub usługi nie są obsługiwane w przypadku przełączani
 
 ## <a name="copying-data-as-an-alternative-to-failover"></a>Kopiowanie danych jako alternatywy dla trybu failover
 
-Jeśli konto magazynu jest skonfigurowane dla usługi RA-GRS, masz dostęp do odczytu danych przy użyciu pomocniczego punktu końcowego. Jeśli wolisz przejść do trybu failover w przypadku awarii w regionie podstawowym, możesz użyć narzędzi, takich jak [AzCopy](storage-use-azcopy.md), [Azure PowerShell](storage-powershell-guide-full.md)lub [Biblioteka przenoszenia danych platformy Azure](https://azure.microsoft.com/blog/introducing-azure-storage-data-movement-library-preview-2/) , aby skopiować dane z konta magazynu w regionie pomocniczym do innego konto magazynu w nienaruszonym regionie. Następnie możesz wskazać swoje aplikacje na tym koncie magazynu, aby uzyskać dostęp do odczytu i zapisu.
+Jeśli konto magazynu jest skonfigurowane dla usługi RA-GRS, masz dostęp do odczytu danych przy użyciu pomocniczego punktu końcowego. Jeśli wolisz przejść do trybu failover w przypadku awarii w regionie podstawowym, możesz użyć narzędzi, takich jak [AzCopy](storage-use-azcopy.md), [Azure PowerShell](storage-powershell-guide-full.md)lub [Biblioteka przenoszenia danych platformy Azure](https://azure.microsoft.com/blog/introducing-azure-storage-data-movement-library-preview-2/) , aby skopiować dane z konta magazynu w regionie pomocniczym do innego konta magazynu w nienaruszonym regionie. Następnie możesz wskazać swoje aplikacje na tym koncie magazynu, aby uzyskać dostęp do odczytu i zapisu.
 
 ## <a name="microsoft-managed-failover"></a>Tryb failover zarządzany przez firmę Microsoft
 
 W skrajnych okolicznościach, gdy region zostanie utracony ze względu na znaczną awarię, firma Microsoft może zainicjować regionalną pracę w trybie failover. W takim przypadku nie jest wymagana żadna akcja z Twojej strony. Do momentu ukończenia pracy w trybie failover zarządzanej przez firmę Microsoft nie będziesz mieć dostępu do zapisu na koncie magazynu. Aplikacje mogą odczytywać z regionu pomocniczego, jeśli konto magazynu jest skonfigurowane dla usługi RA-GRS. 
 
-## <a name="see-also"></a>Zobacz także
+## <a name="see-also"></a>Zobacz też
 
 * [Inicjowanie trybu failover konta (wersja zapoznawcza)](storage-initiate-account-failover.md)
 * [Projektowanie wysoko dostępnych aplikacji przy użyciu magazynu RA-GRS](storage-designing-ha-apps-with-ragrs.md)

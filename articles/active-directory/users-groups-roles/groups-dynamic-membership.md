@@ -14,12 +14,12 @@ ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4a8823a9b354ca4ae9ecab0eeac265b486116bec
-ms.sourcegitcommit: ec2b75b1fc667c4e893686dbd8e119e7c757333a
+ms.openlocfilehash: 050bc3cf6b81b9467d9947a4f611477e2fcbcd9a
+ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72808975"
+ms.lasthandoff: 11/09/2019
+ms.locfileid: "73885861"
 ---
 # <a name="dynamic-membership-rules-for-groups-in-azure-active-directory"></a>Reguły członkostwa dynamicznego dla grup w Azure Active Directory
 
@@ -86,23 +86,23 @@ Poniżej przedstawiono właściwości użytkownika, których można użyć do ut
 
 ### <a name="properties-of-type-boolean"></a>Właściwości typu Boolean
 
-| Właściwości | Dozwolone wartości | Użycie |
+| Właściwości | Dozwolone wartości | Sposób użycia |
 | --- | --- | --- |
-| AccountEnabled |PRAWDA FAŁSZ |User. accountEnabled-EQ true |
+| accountEnabled |PRAWDA FAŁSZ |User. accountEnabled-EQ true |
 | dirSyncEnabled |PRAWDA FAŁSZ |User. dirSyncEnabled-EQ true |
 
 ### <a name="properties-of-type-string"></a>Właściwości typu String
 
-| Właściwości | Dozwolone wartości | Użycie |
+| Właściwości | Dozwolone wartości | Sposób użycia |
 | --- | --- | --- |
 | city |Dowolna wartość ciągu lub wartość *null* |(User. City-EQ "wartość") |
-| Trzeciego |Dowolna wartość ciągu lub wartość *null* |(User. Country-EQ "wartość") |
-| CompanyName | Dowolna wartość ciągu lub wartość *null* | (User. NazwaFirmy-EQ "wartość") |
+| trzeciego |Dowolna wartość ciągu lub wartość *null* |(User. Country-EQ "wartość") |
+| companyName | Dowolna wartość ciągu lub wartość *null* | (User. NazwaFirmy-EQ "wartość") |
 | department |Dowolna wartość ciągu lub wartość *null* |(User. Department-EQ "wartość") |
 | displayName |Dowolna wartość ciągu |(User. displayName-EQ "value") |
 | IDPracownika |Dowolna wartość ciągu |(User. IDPracownika-EQ "value")<br>(User. IDPracownika-ne *null*) |
 | facsimileTelephoneNumber |Dowolna wartość ciągu lub wartość *null* |(User. facsimileTelephoneNumber-EQ "wartość") |
-| GivenName |Dowolna wartość ciągu lub wartość *null* |(User. podaną wartośćname-EQ ") |
+| givenName |Dowolna wartość ciągu lub wartość *null* |(User. podaną wartośćname-EQ ") |
 | Stanowiska |Dowolna wartość ciągu lub wartość *null* |(User. stanowiska-EQ "wartość") |
 | mail (poczta) |Dowolna wartość ciągu lub wartość *null* (adres SMTP użytkownika) |(User. mail-EQ "wartość") |
 | mailNickName |Dowolna wartość ciągu (alias poczty użytkownika) |(User. mailNickName-EQ "wartość") |
@@ -117,14 +117,14 @@ Poniżej przedstawiono właściwości użytkownika, których można użyć do ut
 | state |Dowolna wartość ciągu lub wartość *null* |(User. State-EQ "value") |
 | streetAddress |Dowolna wartość ciągu lub wartość *null* |(User. streetAddress-EQ "wartość") |
 | surname |Dowolna wartość ciągu lub wartość *null* |(User. nazwisko-EQ "wartość") |
-| TelephoneNumber |Dowolna wartość ciągu lub wartość *null* |(User. teletelefon-EQ "wartość") |
+| telephoneNumber |Dowolna wartość ciągu lub wartość *null* |(User. teletelefon-EQ "wartość") |
 | usageLocation |Dwubajtowy kod kraju |(User. usageLocation-EQ "US") |
 | userPrincipalName |Dowolna wartość ciągu |(User. userPrincipalName-EQ "alias@domain") |
 | userType |Gość elementu członkowskiego *ma wartość null* |(User. UserType-EQ "member") |
 
 ### <a name="properties-of-type-string-collection"></a>Właściwości kolekcji ciągów typu
 
-| Właściwości | Dozwolone wartości | Użycie |
+| Właściwości | Dozwolone wartości | Sposób użycia |
 | --- | --- | --- |
 | otherMails |Dowolna wartość ciągu |(User. otherMails-zawiera "alias@domain") |
 | proxyAddresses |SMTP: alias@domain SMTP: alias@domain |(User. proxyAddresses-zawiera "SMTP: alias@domain") |
@@ -186,7 +186,7 @@ Podczas określania wartości w wyrażeniu ważne jest używanie poprawnej skła
 * Podwójne cudzysłowy są opcjonalne, chyba że wartość jest ciągiem.
 * W operacjach typu String i wyrażeń regularnych nie jest rozróżniana wielkość liter.
 * Gdy wartość ciągu zawiera podwójne cudzysłowy, oba cudzysłowy powinny być wyprowadzane przy użyciu znaku \`, na przykład user. Department-EQ \`"Sales\`" jest poprawną składnią, gdy "Sales" jest wartością.
-* Możesz także przeprowadzić sprawdzanie wartości null, używając wartości null jako wartości, na przykład `user.department -eq null`.
+* Można również przeprowadzać sprawdzanie wartości null, używając wartości null jako wartości, na przykład `user.department -eq null`.
 
 ### <a name="use-of-null-values"></a>Użycie wartości null
 
@@ -249,7 +249,7 @@ Reguła członkostwa może składać się z złożonych wyrażeń, w których w�
 
 Właściwości wielowartościowe to kolekcje obiektów tego samego typu. Mogą służyć do tworzenia reguł członkostwa przy użyciu-any i-All operatorów logicznych.
 
-| Właściwości | Wartości | Użycie |
+| Właściwości | Wartości | Sposób użycia |
 | --- | --- | --- |
 | assignedPlans | Każdy obiekt w kolekcji uwidacznia następujące właściwości ciągu: capabilityStatus, Service, servicePlanId |User. assignedPlans-any (assignedPlan. servicePlanId-EQ "efb87545-963c-4e0d-99df-69c6916d9eb0"-and assignedPlan. capabilityStatus-EQ "Enabled") |
 | proxyAddresses| SMTP: alias@domain SMTP: alias@domain | (User. proxyAddresses-any (\_-zawiera "contoso")) |
@@ -357,7 +357,10 @@ Nazwę właściwości niestandardowej można znaleźć w katalogu, wykonując za
 
 ## <a name="rules-for-devices"></a>Reguły dla urządzeń
 
-Możesz również utworzyć regułę, która wybiera obiekty urządzeń dla członkostwa w grupie. Użytkownicy i urządzenia nie mogą być członkami grupy. Atrybut **OrganizationalUnit** nie jest już wyświetlany i nie powinien być używany. Ten ciąg jest ustawiany przez usługę Intune w określonych przypadkach, ale nie jest rozpoznawany przez usługę Azure AD, więc żadne urządzenia nie są dodawane do grup na podstawie tego atrybutu.
+Możesz również utworzyć regułę, która wybiera obiekty urządzeń dla członkostwa w grupie. Użytkownicy i urządzenia nie mogą być członkami grupy. 
+
+> [!NOTE]
+> Atrybut **OrganizationalUnit** nie jest już wyświetlany i nie powinien być używany. Ten ciąg jest ustawiany przez usługę Intune w określonych przypadkach, ale nie jest rozpoznawany przez usługę Azure AD, więc żadne urządzenia nie są dodawane do grup na podstawie tego atrybutu.
 
 > [!NOTE]
 > systemlabels to atrybut tylko do odczytu, którego nie można ustawić za pomocą usługi Intune.
@@ -368,7 +371,7 @@ Można użyć następujących atrybutów urządzeń.
 
  Atrybut urządzenia  | Wartości | Przykład
  ----- | ----- | ----------------
- AccountEnabled | PRAWDA FAŁSZ | (Device. accountEnabled-EQ true)
+ accountEnabled | PRAWDA FAŁSZ | (Device. accountEnabled-EQ true)
  displayName | Dowolna wartość ciągu |(Device. displayName-EQ "Rob iPhone")
  deviceOSType | Dowolna wartość ciągu | (Device. deviceOSType-EQ "iPad") — lub (Device. deviceOSType-EQ "iPhone")<br>(Device. deviceOSType-zawiera "AndroidEnterprise")<br>(Device. deviceOSType-EQ "AndroidForWork")
  deviceOSVersion | Dowolna wartość ciągu | (Device. deviceOSVersion-EQ "9,1")
@@ -379,9 +382,8 @@ Można użyć następujących atrybutów urządzeń.
  enrollmentProfileName | Profil rejestracji urządzeń firmy Apple, rejestracja urządzeń — identyfikatory urządzeń firmowych (Android-kiosk) lub nazwa profilu autopilotażu systemu Windows | (Device. enrollmentProfileName-EQ "telefony iPhone")
  isrootd | PRAWDA FAŁSZ | (Device. isrootd-EQ true)
  managementtype | MDM (dla urządzeń przenośnych)<br>Komputer PC (dla komputerów zarządzanych przez agenta komputera usługi Intune) | (Device. managementtype-EQ "MDM")
- organizationalUnit | prawidłowa lokalna jednostka organizacyjna (OU) | (Device. organizationalUnit — zawiera "laptop")
  deviceId | prawidłowy identyfikator urządzenia usługi Azure AD | (Device. deviceId-EQ "d4fe7726-5966-431c-b3b8-cddc8fdb717d")
- Obiektu | prawidłowy identyfikator obiektu usługi Azure AD |  (Device. objectId-EQ 76ad43c9-32c5-45e8-A272-7b58b58f596d ")
+ Obiektu | prawidłowy identyfikator obiektu usługi Azure AD |  (Device. objectId-EQ "76ad43c9-32c5-45e8-A272-7b58b58f596d")
  devicePhysicalIds | dowolna wartość ciągu używana przez autopilotaż, taka jak wszystkie urządzenia autopilotażowe, IDZamówienia lub PurchaseOrderID  | (Device. devicePhysicalIDs-any _-zawiera "[ZTDId]") (Device. devicePhysicalIds-any _-EQ "[IDZamówienia]: 179887111881") (Device. devicePhysicalIds-any _-EQ "[PurchaseOrderId]: 76222342342")
  systemLabels | dowolny ciąg zgodny z właściwością urządzenia usługi Intune w celu tagowania nowoczesnych urządzeń w miejscu pracy | (Device. systemLabels-zawiera "M365Managed")
 

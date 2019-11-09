@@ -9,18 +9,18 @@ ms.author: robreed
 ms.date: 03/16/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: a42ba0a385b73032e3d4045094bc88613016b849
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: 8200052e14161d91b7daef6a0acd9c851518d9c2
+ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68850338"
+ms.lasthandoff: 11/09/2019
+ms.locfileid: "73886472"
 ---
 # <a name="start-a-runbook-in-azure-automation"></a>Uruchamianie elementu Runbook w Azure Automation
 
 Poniższa tabela pomaga określić metodę uruchamiania elementu Runbook w Azure Automation, który jest najbardziej odpowiedni dla konkretnego scenariusza. Ten artykuł zawiera szczegółowe informacje na temat uruchamiania elementu Runbook za pomocą Azure Portal i programu Windows PowerShell. Szczegółowe informacje na temat innych metod znajdują się w innych dokumentach, do których można uzyskać dostęp z poniższych linków.
 
-| **— Metoda** | **Elementy** |
+| **Metoda** | **Elementy** |
 | --- | --- |
 | [Azure Portal](#start-a-runbook-with-the-azure-portal) |<li>Najprostsza metoda z interakcyjnym interfejsem użytkownika.<br> <li>Formularz, aby zapewnić proste wartości parametrów.<br> <li>Łatwe śledzenie stanu zadania.<br> <li>Dostęp uwierzytelniany przy użyciu logowania do platformy Azure. |
 | [Program Windows PowerShell](/powershell/module/azurerm.automation/start-azurermautomationrunbook) |<li>Wywoływanie z wiersza polecenia za pomocą poleceń cmdlet programu Windows PowerShell.<br> <li>Może zostać uwzględniony w zautomatyzowanym rozwiązaniu z wieloma krokami.<br> <li>Żądanie zostało uwierzytelnione z certyfikatem lub podmiotem zabezpieczeń użytkownika OAuth/jednostką usługi.<br> <li>Podaj proste i złożone wartości parametrów.<br> <li>Śledzenie stanu zadania.<br> <li>Klient wymagany do obsługi poleceń cmdlet programu PowerShell. |
@@ -183,8 +183,8 @@ Przy założeniu, że nazwa użytkownika w poświadczeniu została *jsmith*, wyn
 jsmith
 ```
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 * Architektura elementu Runbook w bieżącym artykule zawiera ogólne omówienie elementów Runbook zarządzających zasobami na platformie Azure i lokalnie przy użyciu hybrydowego procesu roboczego elementu Runbook. Aby dowiedzieć się więcej o wykonywaniu elementów Runbook usługi Automation w centrum danych, zobacz [hybrydowe procesy robocze elementów Runbook](automation-hybrid-runbook-worker.md).
 * Aby dowiedzieć się więcej na temat tworzenia modularnych elementów Runbook, które mają być używane przez inne elementy Runbook dla określonych lub typowych funkcji, zobacz [podrzędne elementy Runbook](automation-child-runbooks.md).
-* Aby uzyskać więcej informacji na temat programu PowerShell, w tym modułów dokumentacji i uczenia dotyczącej języka, zapoznaj się z dokumentacją programu [PowerShell](https://docs.microsoft.com/en-us/powershell/scripting/overview).
+* Aby uzyskać więcej informacji na temat programu PowerShell, w tym modułów dokumentacji i uczenia dotyczącej języka, zapoznaj się z dokumentacją programu [PowerShell](https://docs.microsoft.com/powershell/scripting/overview).

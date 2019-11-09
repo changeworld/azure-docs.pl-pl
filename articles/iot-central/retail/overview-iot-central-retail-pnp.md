@@ -8,12 +8,12 @@ ms.topic: overview
 ms.service: iot-central
 ms.subservice: iot-central-retail
 services: iot-central
-ms.openlocfilehash: 7da5d7b80dfd07b742af5ff6225f26207747e58c
-ms.sourcegitcommit: b2fb32ae73b12cf2d180e6e4ffffa13a31aa4c6f
+ms.openlocfilehash: 7f82e2a539c968d0dde44cbc2ed411710054c290
+ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73615335"
+ms.lasthandoff: 11/09/2019
+ms.locfileid: "73890706"
 ---
 # <a name="building-retail-solutions-with-azure-iot-central"></a>Tworzenie rozwiązań dla handlu detalicznego za pomocą usługi Azure IoT Central
 
@@ -150,4 +150,4 @@ Aby rozpocząć tworzenie rozwiązania do sprzedaży detalicznej:
 * Dowiedz się, jak wdrożyć [szablon rozwiązanych rozwiązań logistycznych](./tutorial-iot-central-connected-logistics-pnp.md)
 * Dowiedz się, jak wdrożyć [szablon centrum dystrybucji cyfrowej](./tutorial-iot-central-digital-distribution-center-pnp.md)
 * Dowiedz się, jak wdrożyć [szablon zarządzania magazynem inteligentnym](./tutorial-iot-central-smart-inventory-management-pnp.md)
-* Dowiedz się więcej o IoT Central zapoznaj się z [omówieniem IoT Central](../core/overview-iot-central-pnp.md)
+* Dowiedz się więcej o IoT Central zapoznaj się z [omówieniem IoT Central](../preview/overview-iot-central.md)

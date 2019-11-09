@@ -1,6 +1,6 @@
 ---
 title: Dodawanie identyfikatorów korelacji do komunikatów IoT przy użyciu rozproszonego śledzenia (wersja zapoznawcza)
-description: ''
+description: Dowiedz się, jak śledzić komunikaty IoT w ramach usług platformy Azure używanych przez rozwiązanie przy użyciu funkcji śledzenia rozproszonego.
 author: jlian
 manager: briz
 ms.service: iot-hub
@@ -8,12 +8,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 02/06/2019
 ms.author: jlian
-ms.openlocfilehash: e4403c245a3cae671f83260ae313ed400b0f7721
-ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
+ms.openlocfilehash: a6e7d2dc9b6274c07fda011bff8ec9dc59f74f95
+ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71259353"
+ms.lasthandoff: 11/09/2019
+ms.locfileid: "73889445"
 ---
 # <a name="trace-azure-iot-device-to-cloud-messages-with-distributed-tracing-preview"></a>Śledzenie komunikatów z urządzenia do chmury w usłudze Azure IoT z rozproszonym śledzeniem (wersja zapoznawcza)
 
@@ -28,7 +28,7 @@ Włączenie śledzenia rozproszonego dla IoT Hub daje możliwość:
 - Zmierz i poznanie przepływu komunikatów oraz opóźnień z urządzeń w celu IoT Hub i kierowania punktów końcowych.
 - Zacznij rozważać, jak chcesz zaimplementować rozproszone śledzenie dla usług spoza platformy Azure w rozwiązaniu IoT.
 
-W tym artykule opisano użycie [zestawu SDK urządzeń Azure IoT dla języka C](./iot-hub-device-sdk-c-intro.md) z rozproszoną funkcją śledzenia. Obsługa śledzenia rozproszonego jest nadal w toku dla innych zestawów SDK.
+W tym artykule opisano użycie [zestawu SDK urządzeń Azure IoT dla języka C](iot-hub-device-sdk-c-intro.md) z rozproszoną funkcją śledzenia. Obsługa śledzenia rozproszonego jest nadal w toku dla innych zestawów SDK.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
@@ -38,7 +38,7 @@ W tym artykule opisano użycie [zestawu SDK urządzeń Azure IoT dla języka C](
   - **Azja Południowo-Wschodnia**
   - **Zachodnie stany USA 2**
 
-- W tym artykule założono, że wiesz już, jak wysyłać komunikaty telemetryczne do centrum IoT. Upewnij się, że zakończono [wysyłanie danych telemetrycznych dla przewodnika Szybki Start](./quickstart-send-telemetry-c.md).
+- W tym artykule założono, że wiesz już, jak wysyłać komunikaty telemetryczne do centrum IoT. Upewnij się, że zakończono [wysyłanie danych telemetrycznych dla przewodnika Szybki Start](quickstart-send-telemetry-c.md).
 
 - Zarejestruj urządzenie w centrum IoT Hub (kroki dostępne w każdym przewodniku Szybki Start) i zanotuj parametry połączenia.
 
@@ -90,7 +90,7 @@ Te instrukcje dotyczą tworzenia przykładu w systemie Windows. W przypadku inny
 
 1. Zainstaluj [pakiet C++"Programowanie aplikacji klasycznych"](https://docs.microsoft.com/cpp/build/vscpp-step-0-installation?view=vs-2017) dla programu Visual Studio 2015 lub 2017.
 
-1. Zainstaluj [CMAKE](https://cmake.org/). Upewnij się, że znajduje się `PATH` w obszarze `cmake -version` , wpisując polecenie w wierszu polecenia.
+1. Zainstaluj [CMAKE](https://cmake.org/). Upewnij się, że znajduje się w `PATH`, wpisując `cmake -version` z poziomu wiersza polecenia.
 
 1. Otwórz wiersz polecenia lub powłokę Git Bash. Wykonaj następujące polecenie, aby sklonować repozytorium GitHub [zestawu SDK języka C usługi IoT Azure](https://github.com/Azure/azure-iot-sdk-c):
 
@@ -109,7 +109,7 @@ Te instrukcje dotyczą tworzenia przykładu w systemie Windows. W przypadku inny
     cmake ..
     ```
 
-    Jeśli `cmake` nie można znaleźć C++ kompilatora, może wystąpić błąd kompilacji podczas uruchamiania powyższego polecenia. Jeśli tak się stanie, spróbuj uruchomić to polecenie w [wierszu polecenia programu Visual Studio](https://docs.microsoft.com/dotnet/framework/tools/developer-command-prompt-for-vs). 
+    Jeśli `cmake` nie może znaleźć C++ kompilatora, podczas uruchamiania powyższego polecenia mogą wystąpić błędy kompilacji. Jeśli tak się stanie, spróbuj uruchomić to polecenie w [wierszu polecenia programu Visual Studio](https://docs.microsoft.com/dotnet/framework/tools/developer-command-prompt-for-vs). 
 
     Gdy kompilacja zakończy się powodzeniem, kilka ostatnich wierszy danych wyjściowych będzie wyglądać podobnie do następujących danych wyjściowych:
 
@@ -129,23 +129,23 @@ Te instrukcje dotyczą tworzenia przykładu w systemie Windows. W przypadku inny
 
 ### <a name="edit-the-send-telemetry-sample-to-enable-distributed-tracing"></a>Edytuj przykład wysyłania danych telemetrycznych w celu włączenia śledzenia rozproszonego
 
-1. Użyj edytora, aby otworzyć `azure-iot-sdk-c/iothub_client/samples/iothub_ll_telemetry_sample/iothub_ll_telemetry_sample.c` plik źródłowy.
+1. Użyj edytora, aby otworzyć plik źródłowy `azure-iot-sdk-c/iothub_client/samples/iothub_ll_telemetry_sample/iothub_ll_telemetry_sample.c`.
 
 1. Znajdź deklarację stałej `connectionString`:
 
     [!code-c[](~/samples-iot-distributed-tracing/iothub_ll_telemetry_sample-c/iothub_ll_telemetry_sample.c?name=snippet_config&highlight=2)]
 
-    Zastąp wartość `connectionString` stałą parametrami połączenia urządzenia, które zostały zanotowane w sekcji [Rejestrowanie urządzenia](./quickstart-send-telemetry-c.md#register-a-device) w [przewodniku szybki start dotyczącego wysyłania telemetrii C](./quickstart-send-telemetry-c.md).
+    Zastąp wartość stałej `connectionString` z parametrami połączenia urządzenia, które zostały zanotowane w sekcji [Rejestrowanie urządzenia](./quickstart-send-telemetry-c.md#register-a-device) w [przewodniku szybki start dotyczącego wysyłania telemetrii C](./quickstart-send-telemetry-c.md).
 
-1. Zmień wartość `MESSAGE_COUNT` Definiuj na `5000`:
+1. Zmień `MESSAGE_COUNT` Definiuj na `5000`:
 
     [!code-c[](~/samples-iot-distributed-tracing/iothub_ll_telemetry_sample-c/iothub_ll_telemetry_sample.c?name=snippet_config&highlight=3)]
 
-1. Znajdź wiersz kodu, który wywołuje `IoTHubDeviceClient_LL_SetConnectionStatusCallback` , aby zarejestrować funkcję wywołania zwrotnego stanu połączenia przed pętlą wysyłania komunikatów. Dodaj kod w tym wierszu, jak pokazano poniżej, `IoTHubDeviceClient_LL_EnablePolicyConfiguration` aby wywołać Włączenie śledzenia rozproszonego dla urządzenia:
+1. Znajdź wiersz kodu, który wywołuje `IoTHubDeviceClient_LL_SetConnectionStatusCallback`, aby zarejestrować funkcję wywołania zwrotnego stanu połączenia przed pętlą wysyłania wiadomości. Dodaj kod w tym wierszu, jak pokazano poniżej, aby wywołać `IoTHubDeviceClient_LL_EnablePolicyConfiguration` Włączenie śledzenia rozproszonego dla urządzenia:
 
     [!code-c[](~/samples-iot-distributed-tracing/iothub_ll_telemetry_sample-c/iothub_ll_telemetry_sample.c?name=snippet_tracing&highlight=5)]
 
-    Funkcja włącza zasady dla określonych funkcji IoTHub skonfigurowanych za pośrednictwem [urządzenia bliźniaczych reprezentacji.](./iot-hub-devguide-device-twins.md) `IoTHubDeviceClient_LL_EnablePolicyConfiguration` Po `POLICY_CONFIGURATION_DISTRIBUTED_TRACING` włączeniu z wierszem kodu powyżej zachowanie śledzenia urządzenia będzie odzwierciedlać rozproszone zmiany śledzenia dotyczące sznurka urządzenia.
+    Funkcja `IoTHubDeviceClient_LL_EnablePolicyConfiguration` włącza zasady dla określonych funkcji IoTHub skonfigurowanych za pośrednictwem [urządzenia bliźniaczych reprezentacji](./iot-hub-devguide-device-twins.md). Gdy `POLICY_CONFIGURATION_DISTRIBUTED_TRACING` jest włączona z wierszem kodu powyżej, zachowanie śledzenia urządzenia będzie odzwierciedlać rozproszone zmiany śledzenia dotyczące sznurka urządzenia.
 
 1. Aby zapewnić, że aplikacja Przykładowa będzie uruchomiona bez korzystania ze wszystkich limitów przydziału, należy dodać jednosekundowe opóźnienie na końcu pętli wysyłania komunikatu:
 
@@ -153,7 +153,7 @@ Te instrukcje dotyczą tworzenia przykładu w systemie Windows. W przypadku inny
 
 ### <a name="compile-and-run"></a>Kompilowanie i uruchamianie
 
-1. Przejdź do katalogu projektu *iothub_ll_telemetry_sample* z utworzonego wcześniej katalogu CMAKE (`azure-iot-sdk-c/cmake`) i skompiluj przykład:
+1. Przejdź do katalogu projektu *iothub_ll_telemetry_sample* z utworzonego wcześniej katalogu CMake (`azure-iot-sdk-c/cmake`) i skompiluj przykład:
 
     ```cmd
     cd iothub_client/samples/iothub_ll_telemetry_sample
@@ -174,10 +174,10 @@ Te instrukcje dotyczą tworzenia przykładu w systemie Windows. W przypadku inny
 
 Nie jest **proste** , aby wyświetlić podgląd funkcji śledzenia rozproszonego bez użycia zestawu SDK języka C. W tym przypadku takie podejście nie jest zalecane.
 
-Najpierw należy zaimplementować wszystkie elementy podstawowe protokołu IoT Hub w wiadomościach, postępując zgodnie z instrukcją deweloperskią [Tworzenie i odczytywanie IoT Hub komunikatów](iot-hub-devguide-messages-construct.md). Następnie Edytuj właściwości protokołu w komunikatach MQTT/AMQP, aby dodać `tracestate` jako **Właściwość systemu**. Są to:
+Najpierw należy zaimplementować wszystkie elementy podstawowe protokołu IoT Hub w wiadomościach, postępując zgodnie z instrukcją deweloperskią [Tworzenie i odczytywanie IoT Hub komunikatów](iot-hub-devguide-messages-construct.md). Następnie Edytuj właściwości protokołu w komunikatach MQTT/AMQP w celu dodania `tracestate` jako **Właściwości systemu**. Są to:
 
-* W przypadku MQTT Dodaj `%24.tracestate=timestamp%3d1539243209` do tematu wiadomości, gdzie `1539243209` powinien zostać zastąpiony czasem utworzenia komunikatu w formacie sygnatury czasowej systemu UNIX. Na przykład zapoznaj się z implementacją [w zestawie SDK języka C](https://github.com/Azure/azure-iot-sdk-c/blob/6633c5b18710febf1af7713cf1a336fd38f623ed/iothub_client/src/iothubtransport_mqtt_common.c#L761) .
-* Dla AMQP, Dodawanie `key("tracestate")` i `value("timestamp=1539243209")` jak adnotacja wiadomości. Aby zapoznać się z implementacją referencyjną, zobacz [tutaj](https://github.com/Azure/azure-iot-sdk-c/blob/6633c5b18710febf1af7713cf1a336fd38f623ed/iothub_client/src/uamqp_messaging.c#L527).
+* W przypadku MQTT należy dodać `%24.tracestate=timestamp%3d1539243209` do tematu wiadomości, gdzie `1539243209` powinna zostać zamieniona na czas utworzenia komunikatu w formacie sygnatury czasowej systemu UNIX. Na przykład zapoznaj się z implementacją [w zestawie SDK języka C](https://github.com/Azure/azure-iot-sdk-c/blob/6633c5b18710febf1af7713cf1a336fd38f623ed/iothub_client/src/iothubtransport_mqtt_common.c#L761) .
+* W przypadku AMQP Dodaj `key("tracestate")` i `value("timestamp=1539243209")` jako adnotację wiadomości. Aby zapoznać się z implementacją referencyjną, zobacz [tutaj](https://github.com/Azure/azure-iot-sdk-c/blob/6633c5b18710febf1af7713cf1a336fd38f623ed/iothub_client/src/uamqp_messaging.c#L527).
 
 Aby kontrolować procent komunikatów zawierających tę właściwość, należy wdrożyć logikę w celu nasłuchiwania zdarzeń inicjowanych w chmurze, takich jak aktualizacje bliźniaczye.
 
@@ -201,11 +201,11 @@ Aby zmienić procent komunikatów, które mają być śledzone z chmury, należy
 
 1. Odczekaj kilka sekund, a następnie kliknij przycisk **Odśwież**, a następnie, jeśli został pomyślnie potwierdzony przez urządzenie, zostanie wyświetlona ikona synchronizacji z znacznikiem wyboru.
 
-1. Wróć do okna konsoli dla aplikacji wiadomości telemetrycznych. Komunikaty wysyłane za pomocą `tracestate` we właściwościach aplikacji zostaną wyświetlone.
+1. Wróć do okna konsoli dla aplikacji wiadomości telemetrycznych. Komunikaty wysyłane za pomocą `tracestate` we właściwościach aplikacji.
 
     ![Stan śledzenia](./media/iot-hub-distributed-tracing/MicrosoftTeams-image.png)
 
-1. Obowiązkowe Zmień częstotliwość próbkowania na inną wartość i obserwuj zmianę częstotliwości, jaką mogą zawierać `tracestate` komunikaty we właściwościach aplikacji.
+1. Obowiązkowe Zmień częstotliwość próbkowania na inną wartość i obserwuj zmianę częstotliwości, jaką komunikaty zawierają `tracestate` we właściwościach aplikacji.
 
 ### <a name="update-using-azure-iot-hub-toolkit-for-vs-code"></a>Aktualizowanie za pomocą narzędzia Azure IoT Hub Toolkit dla VS Code
 
@@ -240,10 +240,10 @@ Aby zaktualizować konfigurację próbkowania śledzenia rozproszonego dla wielu
 }
 ```
 
-| Nazwa elementu | Wymagane | Typ | Opis |
+| Nazwa elementu | Wymagany | Typ | Opis |
 |-----------------|----------|---------|-----------------------------------------------------|
-| `sampling_mode` | Tak | Integer | Dwie wartości trybu są obecnie obsługiwane do włączania i wyłączania próbkowania. `1`jest włączone i, `2` jest wyłączone. |
-| `sampling_rate` | Tak | Integer | Ta wartość jest wartością procentową. Dozwolone są tylko `0` wartości `100` z do (włącznie).  |
+| `sampling_mode` | Tak | Liczba całkowita | Dwie wartości trybu są obecnie obsługiwane do włączania i wyłączania próbkowania. `1` jest włączona i `2` jest wyłączona. |
+| `sampling_rate` | Tak | Liczba całkowita | Ta wartość jest wartością procentową. Dozwolone są tylko wartości z `0` do `100` (włącznie).  |
 
 ## <a name="query-and-visualize"></a>Zapytanie i wizualizacja
 
@@ -251,7 +251,7 @@ Aby wyświetlić wszystkie ślady zarejestrowane przez IoT Hub, wykonaj zapytani
 
 ### <a name="query-using-log-analytics"></a>Zapytanie przy użyciu Log Analytics
 
-Jeśli skonfigurowano [log Analytics z dziennikami diagnostycznymi](../azure-monitor/platform/resource-logs-collect-storage.md), wyszukaj dzienniki w `DistributedTracing` kategorii. Na przykład to zapytanie wyświetla wszystkie zarejestrowane ślady:
+Jeśli skonfigurowano [log Analytics z dziennikami diagnostycznymi](../azure-monitor/platform/resource-logs-collect-storage.md), wyszukaj dzienniki w kategorii `DistributedTracing`. Na przykład to zapytanie wyświetla wszystkie zarejestrowane ślady:
 
 ```Kusto
 // All distributed traces 
@@ -263,11 +263,11 @@ AzureDiagnostics
 
 Przykładowe dzienniki, jak pokazano w Log Analytics:
 
-| TimeGenerated | OperationName | Category | Poziom | Identyfikator korelacji | Milisekundach) | properties |
+| TimeGenerated | OperationName | Kategoria | Poziom | CorrelationId | Milisekundach) | Właściwości |
 |--------------------------|---------------|--------------------|---------------|---------------------------------------------------------|------------|------------------------------------------------------------------------------------------------------------------------------------------|
-| 2018 R-02-22T03:28:28.633 Z | DiagnosticIoTHubD2C | DistributedTracing | Informacyjny | 00-8cd869a412459a25f5b4f31311223344-0144d2590aacd909-01 |  | {"deviceId":"AZ3166","messageSize":"96","callerLocalTimeUtc":"2018-02-22T03:27:28.633Z","calleeLocalTimeUtc":"2018-02-22T03:27:28.687Z"} |
-| 2018 R-02-22T03:28:38.633 Z | DiagnosticIoTHubIngress | DistributedTracing | Informacyjny | 00-8cd869a412459a25f5b4f31311223344-349810a9bbd28730-01 | 20 | {"isRoutingEnabled": "false", "parentSpanId": "0144d2590aacd909"} |
-| 2018 R-02-22T03:28:48.633 Z | DiagnosticIoTHubEgress | DistributedTracing | Informacyjny | 00-8cd869a412459a25f5b4f31311223344-349810a9bbd28730-01 | 23 | {"endpointType":"EventHub","endpointName":"myEventHub", "parentSpanId":"0144d2590aacd909"} |
+| 2018 R-02-22T03:28:28.633 Z | DiagnosticIoTHubD2C | DistributedTracing | Informacyjne | 00-8cd869a412459a25f5b4f31311223344-0144d2590aacd909-01 |  | {"deviceId": "AZ3166", "messageSize": "96", "callerLocalTimeUtc": "2018 r-02-22T03:27:28.633 Z", "calleeLocalTimeUtc": "2018 r-02-22T03:27:28.687 Z"} |
+| 2018 R-02-22T03:28:38.633 Z | DiagnosticIoTHubIngress | DistributedTracing | Informacyjne | 00-8cd869a412459a25f5b4f31311223344-349810a9bbd28730-01 | 20 | {"isRoutingEnabled": "false", "parentSpanId": "0144d2590aacd909"} |
+| 2018 R-02-22T03:28:48.633 Z | DiagnosticIoTHubEgress | DistributedTracing | Informacyjne | 00-8cd869a412459a25f5b4f31311223344-349810a9bbd28730-01 | 23 | {"EndpointType": "EventHub", "EndpointName": "myEventHub", "parentSpanId": "0144d2590aacd909"} |
 
 Aby poznać różne typy dzienników, zapoznaj się z [dziennikami diagnostycznymi usługi Azure IoT Hub](iot-hub-monitor-resource-health.md#distributed-tracing-preview).
 
@@ -303,10 +303,10 @@ Po włączeniu obsługa śledzenia rozproszonego dla IoT Hub będzie zgodna z ty
 1. Zestaw SDK dodaje `tracestate` do właściwości aplikacji wiadomości zawierającej sygnaturę czasową tworzenia wiadomości.
 1. Urządzenie IoT wysyła komunikat do IoT Hub.
 1. Wiadomość dotarła do bramy IoT Hub.
-1. IoT Hub szuka `tracestate` we właściwościach aplikacji komunikatów i sprawdza, czy jest w poprawnym formacie.
-1. Jeśli tak, IoT Hub generuje i rejestruje `trace-id` dzienniki diagnostyczne i `span-id` Azure monitor w kategorii `DiagnosticIoTHubD2C`.
-1. Po zakończeniu przetwarzania komunikatu IoT Hub generuje inny `span-id` i rejestruje go wraz z istniejącym `trace-id` w kategorii `DiagnosticIoTHubIngress`.
-1. Jeśli dla wiadomości jest włączona funkcja routingu, IoT Hub zapisuje ją w niestandardowym punkcie końcowym i `span-id` rejestruje inne dane `trace-id` przy użyciu tej `DiagnosticIoTHubEgress`samej kategorii.
+1. IoT Hub szuka `tracestate` we właściwościach aplikacji wiadomości i sprawdza, czy jest w poprawnym formacie.
+1. Jeśli tak, IoT Hub generuje i rejestruje `trace-id` i `span-id` do Azure Monitor dzienników diagnostycznych w kategorii `DiagnosticIoTHubD2C`.
+1. Po zakończeniu przetwarzania wiadomości IoT Hub generuje kolejną `span-id` i rejestruje ją wraz z istniejącym `trace-id` w kategorii `DiagnosticIoTHubIngress`.
+1. Jeśli dla wiadomości włączono opcję Routing, IoT Hub zapisuje ją w niestandardowym punkcie końcowym i rejestruje inne `span-id` z tą samą `trace-id` w kategorii `DiagnosticIoTHubEgress`.
 1. Powyższe kroki są powtórzone dla każdego wygenerowanego komunikatu.
 
 ## <a name="public-preview-limits-and-considerations"></a>Limity i zagadnienia dotyczące publicznej wersji zapoznawczej

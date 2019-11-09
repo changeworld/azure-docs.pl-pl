@@ -7,12 +7,12 @@ ms.service: iot-central
 ms.subservice: iot-central-retail
 ms.topic: overview
 ms.date: 10/20/2019
-ms.openlocfilehash: 9d55eca3df8897650f78a6bd85b649349c806e95
-ms.sourcegitcommit: b2fb32ae73b12cf2d180e6e4ffffa13a31aa4c6f
+ms.openlocfilehash: 17d429444b81746a5c5082b8310c5208bc35f3d2
+ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73615267"
+ms.lasthandoff: 11/09/2019
+ms.locfileid: "73889040"
 ---
 # <a name="tutorial-deploy-and-walk-through-a-connected-logistics-application-template"></a>Samouczek: wdrażanie i przechodzenie przez połączony szablon aplikacji logistycznej
 
@@ -109,4 +109,4 @@ Jeśli nie chcesz nadal korzystać z tej aplikacji, Usuń szablon aplikacji, odw
 ## <a name="next-steps"></a>Następne kroki
 * Dowiedz się więcej o [koncepcji rozwiązanej logistyki](./architecture-connected-logistics-pnp.md)
 * Dowiedz się więcej na temat innych [szablonów detalicznych IoT Central](./overview-iot-central-retail-pnp.md)
-* Dowiedz się więcej o [IoT Central przegląd](../core/overview-iot-central-pnp.md)
+* Dowiedz się więcej o [IoT Central przegląd](../preview/overview-iot-central.md)

@@ -1,6 +1,6 @@
 ---
-title: Zintegrować rozwiązanie monitorowania zdalnego z usługą Data Lake Store — Azure | Dokumentacja firmy Microsoft
-description: Dowiedz się, jak zintegrować rozwiązanie monitorowania zdalnego z usługą Azure Data Lake Store, za pomocą zadania usługi Azure Stream Analytics.
+title: Przesyłanie strumieniowe danych ze zdalnego monitorowania do Data Lake Store na platformie Azure | Microsoft Docs
+description: Dowiedz się, jak zintegrować rozwiązanie do zdalnego monitorowania z Azure Data Lake Store przy użyciu zadania Azure Stream Analytics.
 author: philmea
 manager: timlt
 ms.author: philmea
@@ -8,39 +8,39 @@ ms.date: 04/29/2018
 ms.topic: conceptual
 ms.service: iot-accelerators
 services: iot-accelerators
-ms.openlocfilehash: 021f18f588613817110539d408f9260fb9247895
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 0a684151e01b298c60ff17ef1470e0648a425850
+ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61449502"
+ms.lasthandoff: 11/09/2019
+ms.locfileid: "73889233"
 ---
-# <a name="integrate-the-remote-monitoring-solution-with-azure-data-lake-store"></a>Integracja rozwiązania do zdalnego monitorowania za pomocą usługi Azure Data Lake Store
+# <a name="integrate-the-remote-monitoring-solution-with-azure-data-lake-store"></a>Zintegruj rozwiązanie do zdalnego monitorowania z usługą Azure Data Lake Store
 
-Może być zaawansowanym wymagania dotyczące Analityki poza co to jest oferowana w rozwiązaniu do zdalnego monitorowania. Azure Data Lake Store jest idealnym rozwiązaniem dla tej aplikacji, ponieważ go można przechowywać danych z masowych i różnych zestawów danych oraz integracja z usługą Azure Data Lake Analytics w celu zapewnienia analizy na żądanie.
+Możesz mieć zaawansowane wymagania dotyczące analiz wykraczające poza to, co jest oferowane w rozwiązaniu do zdalnego monitorowania. Azure Data Lake Store jest idealnym rozwiązaniem dla tej aplikacji, ponieważ może przechowywać dane z ogromnych i różnorodnych zestawów danych oraz integrować je z usługą Azure Data Lake Analytics w celu zapewnienia analizy na żądanie.
 
-W tym instruktażu użyjesz zadania usługi Azure Stream Analytics przesyłanie strumieniowe danych z usługi IoT hub w rozwiązaniu monitorowania zdalnego, do usługi Azure Data Lake Store.
+W tej metodzie można użyć zadania Azure Stream Analytics do przesyłania strumieniowego danych z Centrum IoT Hub w rozwiązaniu do zdalnego monitorowania do Azure Data Lake Store.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-Aby ukończyć Instruktaż, potrzebne następujące elementy:
+Aby ukończyć ten sposób, potrzebne są następujące elementy:
 
-* [Wdrażanie akceleratora rozwiązania monitorowania zdalnego](quickstart-remote-monitoring-deploy.md).
-  * Rozwiązania do zdalnego monitorowania wdroży Centrum IoT i zadania usługi Azure Stream Analytics, używane w tym artykule do subskrypcji platformy Azure.
-* [Wdrażanie usługi Azure Data Lake Store](../data-lake-store/data-lake-store-get-started-portal.md)
-  * Usługi Data Lake Store powinny zostać wdrożone na tym samym regionie jako rozwiązania do zdalnego monitorowania.
-  * [Utwórz folder](../data-lake-store/data-lake-store-get-started-portal.md#createfolder) o nazwie "przesyłanie strumieniowe" w ramach Twojego konta.
+* [Wdróż Akcelerator rozwiązania do monitorowania zdalnego](quickstart-remote-monitoring-deploy.md).
+  * Rozwiązanie do monitorowania zdalnego spowoduje wdrożenie w ramach subskrypcji platformy Azure zadania usługi IoT Hub i Azure Stream Analytics użytego w tym artykule.
+* [Wdrażanie Azure Data Lake Store](../data-lake-store/data-lake-store-get-started-portal.md)
+  * Data Lake Store należy wdrożyć w tym samym regionie, w którym znajduje się rozwiązanie do monitorowania zdalnego.
+  * [Utwórz folder](../data-lake-store/data-lake-store-get-started-portal.md#createfolder) o nazwie "streaming" na Twoim koncie.
 
-## <a name="create-a-consumer-group"></a>Utwórz grupę odbiorców
+## <a name="create-a-consumer-group"></a>Tworzenie grupy odbiorców
 
-Utwórz grupę odbiorców dedykowanej w usłudze IoT hub rozwiązania do monitorowania zdalnego. To posłuży za zadanie usługi Stream Analytics dla danych przesyłanych strumieniowo do usługi Data Lake Store.
+Utwórz dedykowaną grupę odbiorców w centrum IoT w rozwiązaniu do monitorowania zdalnego. Będzie on używany przez zadanie Stream Analytics do przesyłania strumieniowego danych do Data Lake Store.
 
 > [!NOTE]
-> Grupy konsumentów są używane przez aplikacje do pobierania danych z usługi Azure IoT Hub. Co pięć dane wyjściowe w konsumentach napisanych należy utworzyć nową grupę odbiorców. Można utworzyć maksymalnie 32 grup odbiorców.
+> Grupy konsumentów są używane przez aplikacje do ściągania danych z usługi Azure IoT Hub. Dla każdego pięciu odbiorców wyjściowych należy utworzyć nową grupę odbiorców. Można utworzyć maksymalnie 32 grup odbiorców.
 
 1. Zaloguj się do Portalu Azure.
 
-1. W witrynie Azure portal kliknij pozycję **Cloud Shell** przycisku.
+1. W Azure Portal kliknij przycisk **Cloud Shell** .
 
     ![Ikona uruchamiania portalu](./media/iot-accelerators-integrate-data-lake/portal-launch-icon.png)
 
@@ -51,84 +51,84 @@ az iot hub consumer-group create --hub-name contoso-rm30263 --name streamanalyti
 ```
 
 > [!NOTE]
-> Użyj grupy zasobów i nazwy Centrum IoT z rozwiązania do zdalnego monitorowania.
+> Użyj nazw grupy zasobów i usługi IoT Hub z rozwiązania do monitorowania zdalnego.
 
-## <a name="create-stream-analytics-job"></a>Utwórz zadanie usługi Stream Analytics
+## <a name="create-stream-analytics-job"></a>Tworzenie zadania Stream Analytics
 
-Utwórz zadanie usługi Azure Stream Analytics, przesłać strumień danych z usługi IoT hub do usługi Azure Data Lake store.
+Utwórz zadanie Azure Stream Analytics w celu przesyłania strumieniowego danych z Centrum IoT do magazynu Azure Data Lake.
 
-1. Kliknij przycisk **Utwórz zasób**wybierz Internetu rzeczy z witryny Marketplace, a kliknij **zadania usługi Stream Analytics**.
+1. Kliknij pozycję **Utwórz zasób**, wybierz Internet rzeczy z portalu Marketplace, a następnie kliknij pozycję **zadanie Stream Analytics**.
 
-    ![Nowe zadanie usługi Stream Analytics](./media/iot-accelerators-integrate-data-lake/new-stream-analytics-job.png)
+    ![Nowe zadanie Stream Analytics](./media/iot-accelerators-integrate-data-lake/new-stream-analytics-job.png)
 
-1. Wprowadź nazwę zadania, a następnie wybierz odpowiednią subskrypcję i grupę zasobów.
+1. Wprowadź nazwę zadania i wybierz odpowiednią subskrypcję i grupę zasobów.
 
-1. Wybierz lokalizację, w prawie lub w tym samym regionie, co usługi Data Lake Store. Tutaj używamy wschodnie stany USA.
+1. Wybierz lokalizację w sąsiedztwie lub w tym samym regionie, w którym znajduje się Data Lake Store. W tym miejscu używamy Wschodnie stany USA.
 
-1. Upewnij się, aby pozostawić środowiska hostingu jako domyślny **chmury**.
+1. Upewnij się, że środowisko hostingu ma pozostać w **chmurze**domyślnej.
 
 1. Kliknij pozycję **Utwórz**.
 
-    ![Utwórz zadanie usługi Stream Analytics](./media/iot-accelerators-integrate-data-lake/create-stream-analytics-job.png)
+    ![Tworzenie zadania Stream Analytics](./media/iot-accelerators-integrate-data-lake/create-stream-analytics-job.png)
 
-## <a name="configure-the-stream-analytics-job"></a>Konfigurowanie zadania usługi Stream Analytics
+## <a name="configure-the-stream-analytics-job"></a>Konfigurowanie zadania Stream Analytics
 
-1. Przejdź do **zadania usługi Stream Analytics** w grupie zasobów rozwiązanie monitorowania zdalnego.
+1. Przejdź do **zadania Stream Analytics** w grupie zasobów rozwiązania do monitorowania zdalnego.
 
-1. Na stronie Przegląd kliknij **dane wejściowe**.
+1. Na stronie Przegląd kliknij pozycję **dane wejściowe**.
 
     ![Strona przeglądu](./media/iot-accelerators-integrate-data-lake/stream-analytics-overview.png)
 
-1. Kliknij przycisk **Dodaj wejście strumienia** i wybierz **usługi IoT Hub** z listy rozwijanej.
+1. Kliknij pozycję **Dodaj strumień wejściowy** i wybierz pozycję **IoT Hub** z listy rozwijanej.
 
     ![Dodaj dane wejściowe](./media/iot-accelerators-integrate-data-lake/stream-analytics-add-input.png)
 
-1. Na nowej karcie danych wejściowych, wprowadź alias danych wejściowych **IoTHub**.
+1. Na karcie nowe dane wejściowe wprowadź alias wejściowy **IoTHub**.
 
-1. Od konsumenta grupy listę rozwijaną wybierz grupy odbiorców, która została utworzona wcześniej. Tutaj używamy **streamanalyticsjob**.
+1. Z listy rozwijanej Grupa odbiorców wybierz utworzoną wcześniej grupę odbiorców. Tutaj korzystamy z usługi **streamanalyticsjob**.
 
-    ![Wybierz pozycję dane wejściowe](./media/iot-accelerators-integrate-data-lake/stream-analytics-new-input.png)
+    ![Wybierz dane wejściowe](./media/iot-accelerators-integrate-data-lake/stream-analytics-new-input.png)
 
 1. Kliknij pozycję **Zapisz**.
 
-1. Na stronie Przegląd kliknij **dane wyjściowe**.
+1. Na stronie Przegląd kliknij pozycję dane **wyjściowe**.
 
     ![Dodaj Data Lake Store](./media/iot-accelerators-integrate-data-lake/stream-analytics-overview-2.png)
 
-1. Kliknij przycisk **Dodaj** i wybierz **Data Lake Store** z listy rozwijanej.
+1. Kliknij przycisk **Dodaj** i wybierz pozycję **Data Lake Store** z listy rozwijanej.
 
-    ![Dodaj dane wyjściowe](./media/iot-accelerators-integrate-data-lake/stream-analytics-output.png)
+    ![Dodawanie danych wyjściowych](./media/iot-accelerators-integrate-data-lake/stream-analytics-output.png)
 
-1. Na nowej karcie danych wyjściowych, wprowadź alias danych wyjściowych **DataLakeStore**.
+1. Na karcie nowe dane wyjściowe wprowadź alias wyjściowy elementu **kontach datalakestore**.
 
-1. Wybierz konto usługi Data Lake Store, do którego został utworzony w poprzednich krokach, a następnie podaj strukturę folderów, przesyłanie strumieniowe danych do magazynu.
+1. Wybierz konto Data Lake Store utworzone w poprzednich krokach i podaj strukturę folderów do przesyłania strumieniowego danych do magazynu.
 
-1. Wprowadź w polu format daty **/streaming/ {date} / {time}** . Pozostaw domyślny format daty RRRR/MM/DD i format godziny gg.
+1. W polu Format daty wprowadź **/Streaming/{Date}/{Time}** . Pozostaw domyślny format daty RRRR/MM/DD i godziny w formacie HH.
 
     ![Podaj strukturę folderów](./media/iot-accelerators-integrate-data-lake/stream-analytics-new-output.png)
 
-1. Kliknij przycisk **autoryzować**.
+1. Kliknij przycisk **Autoryzuj**.
 
-    Należy przeprowadzić autoryzację w usłudze Data Lake Store oferowanie Stream analytics zadanie zapisu w systemie plików.
+    Konieczne będzie autoryzowanie przy użyciu Data Lake Store, aby umożliwić usłudze Stream Analytics dostęp do zapisu w systemie plików.
 
-    ![Autoryzowanie usługi Stream Analytics do usług Data Lake Store](./media/iot-accelerators-integrate-data-lake/stream-analytics-out-authorize.png)
+    ![Autoryzuj Stream Analytics do Data Lake Store](./media/iot-accelerators-integrate-data-lake/stream-analytics-out-authorize.png)
 
-    Zobaczysz okno podręczne i po zamknięciu okno podręczne przycisk Autoryzuj będą wyszarzone po zakończeniu autoryzacji.
+    Zobaczysz okno podręczne, a po zakończeniu autoryzacji przycisk wyskakujący autoryzacja zostanie zamknięty.
 
     > [!NOTE]
-    > Jeśli zostanie wyświetlony błąd w oknie podręcznym, Otwórz nowe okno przeglądarki w trybie Incognito i spróbuj ponownie.
+    > Jeśli w oknie podręcznym zostanie wyświetlony błąd, Otwórz nowe okno przeglądarki w trybie incognito i spróbuj ponownie.
 
 1. Kliknij pozycję **Zapisz**.
 
-## <a name="edit-the-stream-analytics-query"></a>Edytuj zapytania usługi Stream Analytics
+## <a name="edit-the-stream-analytics-query"></a>Edytuj zapytanie Stream Analytics
 
-Usługa Azure Stream Analytics używa język zapytań przypominający SQL, aby określić źródło danych wejściowych przesyłające dane strumieniowo, przekształcić te dane jako odpowiednie i dane wyjściowe do różnych miejsc docelowych przechowywania lub przetwarzania.
+Azure Stream Analytics używa języka zapytań przypominających SQL, aby określić źródło danych wejściowych, które przesyła strumieniowo dane, przekształca te dane zgodnie z potrzebami oraz dane wyjściowe do różnych miejsc do magazynowania lub przetwarzania.
 
-1. Na karcie Przegląd kliknij **Edytuj zapytanie**.
+1. Na karcie Przegląd kliknij pozycję **Edytuj zapytanie**.
 
     ![Edytuj zapytanie](./media/iot-accelerators-integrate-data-lake/stream-analytics-edit-query.png)
 
-1. W edytorze zapytań, Zastąp [YourOutputAlias] i [YourInputAlias] zastępcze wartości zdefiniowane wcześniej.
+1. W edytorze zapytań Zastąp symbole zastępcze [YourOutputAlias] i [YourInputAlias] wartościami zdefiniowanymi wcześniej.
 
     ```sql
     SELECT
@@ -139,45 +139,45 @@ Usługa Azure Stream Analytics używa język zapytań przypominający SQL, aby o
         IoTHub
     ```
 
-    ![Stream Analytics Query](./media/iot-accelerators-integrate-data-lake/stream-analytics-query.png)
+    ![Zapytanie Stream Analytics](./media/iot-accelerators-integrate-data-lake/stream-analytics-query.png)
 
 1. Kliknij pozycję **Zapisz**.
-1. Kliknij przycisk **tak** aby zatwierdzić zmiany.
+1. Kliknij przycisk **tak** , aby zatwierdzić zmiany.
 
-## <a name="start-the-stream-analytics-job"></a>Uruchamianie zadania usługi Stream Analytics
+## <a name="start-the-stream-analytics-job"></a>Uruchamianie zadania Stream Analytics
 
-1. Na karcie Przegląd kliknij **Start**.
+1. Na karcie Przegląd kliknij przycisk **Uruchom**.
 
-    ![Uruchom zadanie usługi Stream Analytics](./media/iot-accelerators-integrate-data-lake/stream-analytics-start.png)
+    ![Uruchom zadanie Stream Analytics](./media/iot-accelerators-integrate-data-lake/stream-analytics-start.png)
 
-1. Na karcie zadania rozpoczęcia kliknij **niestandardowe**.
+1. Na karcie Uruchamianie zadania kliknij pozycję **niestandardowa**.
 
-1. Ustaw niestandardowy czas Wróć za kilka godzin do pobrania danych z urządzenia ma rozpoczęcia przesyłania strumieniowego.
+1. Ustaw czas niestandardowy, aby wycofać kilka godzin, aby pobrać dane z momentu rozpoczęcia przesyłania strumieniowego na urządzeniu.
 
 1. Kliknij przycisk **Uruchom**.
 
-    ![Wybierz niestandardowe daty](./media/iot-accelerators-integrate-data-lake/stream-analytics-start-custom.png)
+    ![Wybierz niestandardową datę](./media/iot-accelerators-integrate-data-lake/stream-analytics-start-custom.png)
 
-    Zaczekaj, aż zadanie przechodzi do stanu, działania, zostaną wyświetlone błędy, może to być zapytania, upewnij się sprawdzić, czy składnia jest poprawna.
+    Zaczekaj, aż zadanie przejdzie w stan uruchomienia, Jeśli zobaczysz błędy, które może być z tego zapytania, upewnij się, że składnia jest poprawna.
 
-    ![Zadanie uruchomione](./media/iot-accelerators-integrate-data-lake/stream-analytics-running.png)
+    ![Uruchomiono zadanie](./media/iot-accelerators-integrate-data-lake/stream-analytics-running.png)
 
-    Zadanie przesyłania strumieniowego rozpocznie się odczytuje dane z usługi IoT Hub i przechowywanie danych w usługi Data Lake Store. Może upłynąć kilka minut, zanim dane zacząć są wyświetlane w usługi Data Lake Store.
+    Zadanie przesyłania strumieniowego rozpocznie odczytywanie danych z IoT Hub i przechowywanie danych w Data Lake Store. Wyświetlenie danych w Data Lake Store może potrwać kilka minut.
 
-## <a name="explore-the-streaming-data"></a>Zapoznaj się z danych przesyłanych strumieniowo
+## <a name="explore-the-streaming-data"></a>Eksplorowanie danych przesyłanych strumieniowo
 
-1. Przejdź do usługi Data Lake Store.
+1. Przejdź do Data Lake Store.
 
-1. Na karcie Przegląd kliknij **Eksplorator danych**.
+1. Na karcie Przegląd kliknij pozycję **Eksplorator danych**.
 
-1. W Eksploratorze danych Drąż w dół do **/ przesyłania strumieniowego** folderu. Zostaną wyświetlone utworzone przy użyciu formatu RRRR/MM/DD/HH folderów.
+1. W Eksploratorze danych przejdź do szczegółów folderu **/Streaming** . Zostaną wyświetlone foldery utworzone przy użyciu formatu RRRR/MM/DD/HH.
 
-    ![Eksplorowanie danych przesyłania strumieniowego](./media/iot-accelerators-integrate-data-lake/data-lake-store-data-explorer.png)
+    ![Eksplorowanie danych przesyłanych strumieniowo](./media/iot-accelerators-integrate-data-lake/data-lake-store-data-explorer.png)
 
-    Zostaną wyświetlone pliki w formacie json za pomocą jednego pliku na godzinę.
+    Będą widoczne pliki JSON z jednym plikiem na godzinę.
 
-    ![Eksplorowanie danych przesyłania strumieniowego](./media/iot-accelerators-integrate-data-lake/data-lake-store-file-preview.png)
+    ![Eksplorowanie danych przesyłanych strumieniowo](./media/iot-accelerators-integrate-data-lake/data-lake-store-file-preview.png)
 
 ## <a name="next-steps"></a>Następne kroki
 
-Usługa Azure Data Lake Analytics może służyć do wykonywania analizy danych big data na zestawy danych usługi Data Lake Store. Dowiedz się więcej o [dokumentacja usługi Data Lake Analytics](https://docs.microsoft.com/azure/data-lake-analytics).
+Azure Data Lake Analytics można użyć do przeprowadzenia analizy danych Big Data na Data Lake Store zbiorach danych. Więcej informacji znajduje się w [dokumentacji Data Lake Analytics](https://docs.microsoft.com/azure/data-lake-analytics).

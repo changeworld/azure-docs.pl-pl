@@ -9,12 +9,12 @@ ms.author: robreed
 ms.date: 03/20/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 5daa1cf04e04507174fa480c785bd15b656541a1
-ms.sourcegitcommit: b12a25fc93559820cd9c925f9d0766d6a8963703
+ms.openlocfilehash: d1ef652747dccdcb0e04ac8032dd47e2ebaa6bf2
+ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/14/2019
-ms.locfileid: "69019104"
+ms.lasthandoff: 11/09/2019
+ms.locfileid: "73886889"
 ---
 # <a name="runbook-and-module-galleries-for-azure-automation"></a>Galeria elementów Runbook i modułów dla Azure Automation
 
@@ -50,7 +50,7 @@ Można importować tylko bezpośrednio z Galeria programu PowerShell przy użyci
 
 ### <a name="adding-a-powershell-runbook-to-the-gallery"></a>Dodawanie elementu Runbook programu PowerShell do galerii
 
-Firma Microsoft zachęca do dodawania elementów Runbook do Galeria programu PowerShell, które prawdopodobnie będą przydatne dla innych klientów. Galeria programu PowerShell akceptuje modułów programu PowerShell i skryptów programu PowerShell. Element Runbook można dodać, przekazując [go do Galeria programu PowerShell](/powershell/gallery/how-to/publishing-packages/publishing-a-package).
+Firma Microsoft zachęca do dodawania elementów Runbook do Galeria programu PowerShell, które prawdopodobnie będą przydatne dla innych klientów. Galeria programu PowerShell akceptuje modułów programu PowerShell i skryptów programu PowerShell. Element Runbook można dodać, [przekazując go do Galeria programu PowerShell](/powershell/gallery/how-to/publishing-packages/publishing-a-package).
 
 > [!NOTE]
 > Graficzne elementy Runbook nie są obsługiwane w Galeria programu PowerShell.
@@ -70,7 +70,7 @@ Moduły programu PowerShell zawierają polecenia cmdlet, których można używa�
 4. Na stronie **Przeglądaj Galerię** można wyszukać następujące pola:
 
    * Nazwa modułu
-   * `Tags`
+   * Tagi
    * Autor
    * Nazwa zasobu polecenia cmdlet/konfiguracji DSC
 
@@ -113,4 +113,4 @@ Poniższa lista zawiera kilka elementów Runbook, które udostępniają rozwiąz
 
 * Aby rozpocząć pracę z elementami Runbook, zobacz [Zarządzanie elementem Runbook w Azure Automation](manage-runbooks.md)
 * Aby zrozumieć różnice między programem PowerShell i przepływem pracy programu PowerShell z elementami Runbook, zobacz temat [uczenie przepływu pracy programu PowerShell](automation-powershell-workflow.md)
-* Aby uzyskać więcej informacji na temat programu PowerShell, w tym modułów dokumentacji i uczenia dotyczącej języka, zapoznaj się z dokumentacją programu [PowerShell](https://docs.microsoft.com/en-us/powershell/scripting/overview).
+* Aby uzyskać więcej informacji na temat programu PowerShell, w tym modułów dokumentacji i uczenia dotyczącej języka, zapoznaj się z dokumentacją programu [PowerShell](https://docs.microsoft.com/powershell/scripting/overview).

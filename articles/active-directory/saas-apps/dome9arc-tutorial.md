@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 10/17/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 75f0669a474c24647e71eae8b5e0e0830b7c0bef
-ms.sourcegitcommit: 6eecb9a71f8d69851bc962e2751971fccf29557f
+ms.openlocfilehash: b46ac34db21576c7e2de2271a468e3e782ff6aa9
+ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72533101"
+ms.lasthandoff: 11/09/2019
+ms.locfileid: "73885348"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-check-point-cloudguard-dome9-arc"></a>Samouczek Azure Active Directory: integracja z logowaniem jednokrotnym (SSO) przy użyciu narzędzia Check Point CloudGuard Dome9 Arc
 
@@ -107,7 +107,7 @@ Wykonaj następujące kroki, aby włączyć logowanie jednokrotne usługi Azure 
     | memberof | user.assignedroles |
 
     >[!NOTE]
-    >Kliknij [tutaj](https://docs.microsoft.com/en-us/azure/active-directory/saas-apps/apptio-tutorial) , aby dowiedzieć się, jak utworzyć role w usłudze Azure AD.
+    >Kliknij [tutaj](https://docs.microsoft.com/azure/active-directory/saas-apps/apptio-tutorial) , aby dowiedzieć się, jak utworzyć role w usłudze Azure AD.
 
 1. Na stronie **Konfigurowanie logowania jednokrotnego przy użyciu języka SAML** w sekcji **certyfikat podpisywania SAML** Znajdź **certyfikat (base64)** i wybierz pozycję **Pobierz** , aby pobrać certyfikat i zapisać go na komputerze.
 
@@ -127,7 +127,7 @@ W tej sekcji utworzysz użytkownika testowego w Azure Portal o nazwie B. Simon.
    1. W polu **Nazwa** wprowadź wartość `B.Simon`.  
    1. W polu **Nazwa użytkownika** wprowadź username@companydomain.extension. Na przykład `B.Simon@contoso.com`.
    1. Zaznacz pole wyboru **Pokaż hasło** i zanotuj wartość wyświetlaną w polu **Hasło**.
-   1. Kliknij przycisk **Utwórz**.
+   1. Kliknij pozycję **Utwórz**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Przypisywanie użytkownika testowego usługi Azure AD
 
@@ -179,7 +179,7 @@ W tej sekcji włączysz usługę B. Simon, aby korzystać z logowania jednokrotn
 
     d. Otwórz w Notatniku pobrany certyfikat zakodowany w formacie Base64, skopiuj zawartość do schowka, a następnie wklej ją w polu tekstowym **SAML X.509 certificate** (Certyfikat X.509 SAML).
 
-    e. Kliknij przycisk **Save** (Zapisz).
+    e. Kliknij pozycję **Zapisz**.
 
 ### <a name="create-check-point-cloudguard-dome9-arc-test-user"></a>Tworzenie użytkownika testowego Arc Check Point CloudGuard Dome9
 
@@ -220,7 +220,7 @@ W tej sekcji przetestujesz konfigurację logowania jednokrotnego usługi Azure A
 
 Po kliknięciu kafelka Arc Check Point CloudGuard Dome9 w panelu dostępu należy automatycznie zalogować się do łuku usługi Check Point CloudGuard Dome9, dla którego skonfigurowano Logowanie jednokrotne. Aby uzyskać więcej informacji na temat panelu dostępu, zobacz [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) (Wprowadzenie do panelu dostępu).
 
-## <a name="additional-resources"></a>Zasoby dodatkowe
+## <a name="additional-resources"></a>Dodatkowe zasoby
 
 - [ Lista samouczków dotyczących sposobu integrowania aplikacji SaaS z usługą Azure Active Directory ](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 

@@ -4,16 +4,16 @@ ms.service: billing
 ms.topic: include
 ms.date: 02/28/2019
 ms.author: amberb
-ms.openlocfilehash: 015803c50aab06cadd290783afca6a41673f8be3
-ms.sourcegitcommit: 0576bcb894031eb9e7ddb919e241e2e3c42f291d
+ms.openlocfilehash: 42e52ac964ec78e12be64d1bda63d7d04ff9beca
+ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72376811"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73850443"
 ---
 Sprawdź typ umowy, aby określić, czy masz dostęp do konta rozliczeniowego umowy partnerskiej firmy Microsoft.
  
-1. Zaloguj się w witrynie [Azure Portal]( http://portal.azure.com).
+1. Zaloguj się w witrynie [Azure Portal](https://portal.azure.com).
  
 2. Wyszukaj pozycję **Zarządzanie kosztami i rozliczenia**.
  

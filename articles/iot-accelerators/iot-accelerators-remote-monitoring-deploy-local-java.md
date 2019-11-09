@@ -1,5 +1,5 @@
 ---
-title: Wdróż lokalnie rozwiązanie do monitorowania zdalnego (za pośrednictwem środowiska IDE IntelliJ) — Azure | Microsoft Docs
+title: Wdrażanie rozwiązania do monitorowania zdalnego lokalnie-IntelliJ IDE — Azure | Microsoft Docs
 description: Ten przewodnik przedstawia sposób wdrażania akceleratora rozwiązania do monitorowania zdalnego na maszynie lokalnej przy użyciu IntelliJ do testowania i opracowywania.
 author: v-krghan
 manager: dominicbetts
@@ -8,12 +8,12 @@ ms.service: iot-accelerators
 services: iot-accelerators
 ms.date: 01/24/2019
 ms.topic: conceptual
-ms.openlocfilehash: 2f3c11763bb2f406caf9d33275fc29b0d140da9a
-ms.sourcegitcommit: ac1cfe497341429cf62eb934e87f3b5f3c79948e
+ms.openlocfilehash: 779ee1e057d74b11c5e0ba58dc2fd32b803f1e0e
+ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/01/2019
-ms.locfileid: "70743328"
+ms.lasthandoff: 11/09/2019
+ms.locfileid: "73888807"
 ---
 # <a name="deploy-the-remote-monitoring-solution-accelerator-locally---intellij"></a>Wdróż lokalnie Akcelerator rozwiązania do monitorowania zdalnego — IntelliJ
 
@@ -27,13 +27,13 @@ Jeśli chcesz uruchomić Akcelerator rozwiązania do zdalnego monitorowania w pr
 
 Aby można było wdrożyć usługi platformy Azure używane przez Akcelerator rozwiązania do monitorowania zdalnego, wymagana jest aktywna subskrypcja platformy Azure.
 
-Jeśli jej nie masz, możesz utworzyć bezpłatne konto próbne w zaledwie kilka minut. Aby uzyskać więcej informacji, zobacz [bezpłatnej wersji próbnej Azure](https://azure.microsoft.com/pricing/free-trial/).
+Jeśli jej nie masz, możesz utworzyć bezpłatne konto próbne w zaledwie kilka minut. Aby uzyskać szczegółowe informacje, zobacz [Bezpłatna wersja próbna platformy Azure](https://azure.microsoft.com/pricing/free-trial/).
 
 ### <a name="machine-setup"></a>Konfiguracja komputera
 
 Aby ukończyć lokalne wdrożenie, potrzebne są następujące narzędzia zainstalowane na lokalnym komputerze deweloperskim:
 
-* [Usługa Git](https://git-scm.com/)
+* [Git](https://git-scm.com/)
 * [Docker](https://www.docker.com)
 * [Java 8](https://www.oracle.com/technetwork/java/javase/downloads/index.html)
 * [IntelliJ Community Edition](https://www.jetbrains.com/idea/download/)
@@ -98,18 +98,18 @@ Jeśli nie utworzono jeszcze wymaganych zasobów platformy Azure, wykonaj nastę
    Skrypt dodaje również zestaw zmiennych środowiskowych do komputera lokalnego. Każda nazwa zmiennej ma **komputery**z prefiksem. Te zmienne środowiskowe zawierają szczegóły, które umożliwiają zdalne monitorowanie Odczytywanie wartości konfiguracji z zasobu Azure Key Vault.
 
    > [!TIP]
-   > Po zakończeniu działania skryptu zapisuje zmienne środowiskowe do pliku o nazwie  **\<folder\\\>\>macierzysty. Nazwa rozwiązania komputerów\\\<. env**. Można ich używać do przyszłych wdrożeń akceleratora rozwiązań. Należy pamiętać, że wszystkie zmienne środowiskowe ustawione na maszynie lokalnej przesłaniają wartości **w\\pliku\\\\. env skryptów usług** , gdy uruchamiasz **platformę Docker**.
+   > Po zakończeniu działania skryptu zapisuje zmienne środowiskowe do pliku o nazwie **\<folderze głównym\>\\. komputery\\\<Nazwa rozwiązania\>. env**. Można ich używać do przyszłych wdrożeń akceleratora rozwiązań. Należy pamiętać, że wszystkie zmienne środowiskowe ustawione na maszynie lokalnej zastępują wartości w **\\skrypty\\lokalnym pliku\\. env** , gdy uruchomisz **platformę Docker**.
 
 1. Zamknij środowisko wiersza polecenia.
 
 ### <a name="use-existing-azure-resources"></a>Korzystanie z istniejących zasobów platformy Azure
 
 Jeśli zostały już utworzone wymagane zasoby platformy Azure, ustaw odpowiednie zmienne środowiskowe na komputerze lokalnym:
-* **PCS_KEYVAULT_NAME**: Nazwa zasobu Key Vault.
-* **PCS_AAD_APPID**: Identyfikator aplikacji Azure Active Directory (Azure AD).
-* **PCS_AAD_APPSECRET**: Wpis tajny aplikacji usługi Azure AD.
+* **PCS_KEYVAULT_NAME**: nazwa zasobu Key Vault.
+* **PCS_AAD_APPID**: identyfikator aplikacji Azure Active Directory (Azure AD).
+* **PCS_AAD_APPSECRET**: wpis tajny aplikacji usługi Azure AD.
 
-Wartości konfiguracyjne zostaną odczytane z tego zasobu Key Vault. Te zmienne środowiskowe można zapisać w  **\<folderze\\\>\\głównym.\<nazwy\>rozwiązań komputerów. env** . Należy pamiętać, że zmienne środowiskowe ustawione na wartości Zastąp na komputerze lokalnym w pliku **Local\\\\. env skryptów\\usług** po uruchomieniu **platformy Docker — tworzenie**.
+Wartości konfiguracyjne zostaną odczytane z tego zasobu Key Vault. Te zmienne środowiskowe można zapisać w **\<folderze głównym\>\\. komputery\\\<Nazwa rozwiązania\>. env** plik z wdrożenia. Należy pamiętać, że zmienne środowiskowe ustawione na wartości Zastąp na komputerze lokalnym wartościami zastąpień w **usługach\\skrypty\\lokalnej\\. env** pliku po uruchomieniu **platformy Docker — tworzenie**.
 
 Niektóre konfiguracje wymagające mikrousługi są przechowywane w wystąpieniu Key Vault, które zostało utworzone podczas początkowego wdrożenia. Odpowiednie zmienne w magazynie kluczy powinny być modyfikowane w razie konieczności.
 
@@ -159,11 +159,11 @@ Poniższe kroki pokazują, jak uruchomić mikrousługi zdalnego monitorowania w 
 
 #### <a name="create-run-configurations"></a>Utwórz konfiguracje uruchomieniowe
 
-1. Wybierz kolejno opcje **Uruchom** > **Edytuj konfiguracje**.
-1. Wybierz pozycję **Dodaj nowe zadanie konfiguracji** > **SBT**.
+1. Wybierz pozycję **uruchom** > **Edytuj konfiguracje**.
+1. Wybierz pozycję **Dodaj nową konfigurację** > **SBT**.
 1. Wprowadź **nazwę**, a następnie wprowadź **zadania** jako **uruchomienia**.
 1. Wybierz **katalog roboczy** na podstawie usługi, którą chcesz uruchomić.
-1. Wybierz pozycję **Zastosuj** > **OK** , aby zapisać wybrane opcje.
+1. Wybierz pozycję **zastosuj** > **OK** , aby zapisać wybrane opcje.
 1. Utwórz konfiguracje uruchomieniowe dla następujących usług sieci Web:
     * Usługa sieci Web (services\config)
     * Usługa sieci Web (services\device-Telemetry)
@@ -172,17 +172,17 @@ Poniższe kroki pokazują, jak uruchomić mikrousługi zdalnego monitorowania w 
 
 Na przykład na poniższej ilustracji przedstawiono sposób dodawania konfiguracji dla usługi:
 
-[![Zrzut ekranu przedstawiający okno konfiguracje uruchamiania/debugowania środowiska IDE IntelliJ z wyróżnioną opcją storageAdapter na liście zadania SBT w okienku po lewej stronie, a następnie wpisów w polach Nazwa, zadania, katalog roboczy i parametry maszyny wirtualnej w okienku po prawej stronie.](./media/deploy-locally-intellij/run-configurations.png)](./media/deploy-locally-intellij/run-configurations.png#lightbox)
+[![zrzut ekranu okna konfiguracje uruchamiania/debugowania środowiska IDE IntelliJ, w którym wyświetlane są opcje storageAdapter wyróżnione na liście zadania SBT w okienku po lewej stronie i wpisy w polach Nazwa, zadania, katalog roboczy i parametry maszyny wirtualnej w okienku po prawej stronie.](./media/deploy-locally-intellij/run-configurations.png)](./media/deploy-locally-intellij/run-configurations.png#lightbox)
 
 #### <a name="create-a-compound-configuration"></a>Tworzenie konfiguracji złożonej
 
-1. Aby uruchomić wszystkie usługi razem, wybierz pozycję **Dodaj nowy** > **związek**konfiguracji.
+1. Aby uruchomić wszystkie usługi razem, wybierz pozycję **Dodaj nową konfigurację** > **złożonym**.
 1. Wprowadź **nazwę**, a następnie wybierz pozycję **Dodaj zadania SBT**.
-1. Wybierz pozycję **Zastosuj** > **OK** , aby zapisać wybrane opcje.
+1. Wybierz pozycję **zastosuj** > **OK** , aby zapisać wybrane opcje.
 
 Na przykład na poniższej ilustracji przedstawiono sposób dodawania wszystkich zadań SBT do jednej konfiguracji:
 
-[![Zrzut ekranu przedstawiający okno konfiguracje uruchamiania/debugowania środowiska IDE IntelliJ z wyróżnioną opcją AllServices w okienku po lewej stronie, a opcja "deviceTelemetry" zadania SBT została wyróżniona w okienku po prawej stronie.](./media/deploy-locally-intellij/all-services.png)](./media/deploy-locally-intellij/all-services.png#lightbox)
+[![zrzut ekranu okna konfiguracje uruchamiania/debugowania środowiska IDE IntelliJ, w którym jest wyświetlana opcja AllServices wyróżniona w okienku po lewej stronie, a opcja "deviceTelemetry" zadania SBT została wyróżniona w okienku po prawej stronie.](./media/deploy-locally-intellij/all-services.png)](./media/deploy-locally-intellij/all-services.png#lightbox)
 
 Wybierz pozycję **Uruchom** , aby skompilować i uruchomić usługi sieci Web na komputerze lokalnym.
 
@@ -190,10 +190,10 @@ Każda usługa sieci Web otwiera okno wiersza polecenia i okno przeglądarki sie
 
 Aby uzyskać dostęp do stanu usług, przejdź do następujących adresów URL:
 
-* Menedżer Centrum IoT:[http://localhost:9002/v1/status](http://localhost:9002/v1/status)
-* Dane telemetryczne urządzenia:[http://localhost:9004/v1/status](http://localhost:9004/v1/status)
-* sygnatur[http://localhost:9005/v1/status](http://localhost:9005/v1/status)
-* Magazyn-karta:[http://localhost:9022/v1/status](http://localhost:9022/v1/status)
+* IoT-Hub Manager: [http://localhost:9002/v1/status](http://localhost:9002/v1/status)
+* Dane telemetryczne urządzenia: [http://localhost:9004/v1/status](http://localhost:9004/v1/status)
+* Konfiguracja: [http://localhost:9005/v1/status](http://localhost:9005/v1/status)
+* Storage-Adapter: [http://localhost:9022/v1/status](http://localhost:9022/v1/status)
 
 ### <a name="start-the-stream-analytics-job"></a>Uruchamianie zadania Stream Analytics
 
@@ -226,7 +226,7 @@ Aby uzyskać więcej informacji na temat uruchamiania programu Nginx, zobacz [Ng
 
 ### <a name="connect-to-the-dashboard"></a>Nawiązywanie połączenia z pulpitem nawigacyjnym
 
-Aby uzyskać dostęp do pulpitu nawigacyjnego rozwiązania do monitorowania http://localhost:9000 zdalnego, przejdź do obszaru w przeglądarce.
+Aby uzyskać dostęp do pulpitu nawigacyjnego rozwiązania do monitorowania zdalnego, przejdź do http://localhost:9000 w przeglądarce.
 
 ## <a name="clean-up"></a>Czyszczenie
 

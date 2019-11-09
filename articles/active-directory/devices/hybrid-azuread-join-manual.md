@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5722d0b14c43bcdee7a06ebf5545cfc6254f7508
-ms.sourcegitcommit: 39d95a11d5937364ca0b01d8ba099752c4128827
+ms.openlocfilehash: ed28b4bb8ec61455168f50058c8cdcaf9f50717d
+ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/16/2019
-ms.locfileid: "69562356"
+ms.lasthandoff: 11/09/2019
+ms.locfileid: "73882848"
 ---
 # <a name="tutorial-configure-hybrid-azure-active-directory-joined-devices-manually"></a>Samouczek: ręczne konfigurowanie urządzeń dołączonych hybrydowo do usługi Azure Active Directory
 
@@ -64,7 +64,7 @@ Jeśli Twoja organizacja planuje używać bezproblemowego logowania jednokrotneg
 
 * `https://autologon.microsoftazuread-sso.com`
 
-Ponadto należy włączyć następujące ustawienie w strefie intranetu użytkownika: „Zezwalaj na aktualizacje paska stanu za pomocą skryptu”.
+Ponadto należy włączyć następujące ustawienie w strefie intranetu użytkownika: „Zezwalaj na aktualizacje paska stanu przy użyciu skryptu”.
 
 Jeśli Twoja organizacja używa zarządzanej instalacji (innej niż federacyjna) z lokalną usługą Azure Directory i nie używa usług Active Directory Federation Services (AD FS) do utworzenia federacji z usługą Azure AD, dołączenie hybrydowe do usługi Azure AD w systemie Windows 10 polega na obiektach komputerów w usłudze Active Directory jako synchronizowanych z usługą Azure AD. Upewnij się, że wszystkie jednostki organizacyjne zawierające obiekty komputerów, które muszą być dołączone hybrydowo do usługi Azure AD, są włączone do synchronizacji w konfiguracji synchronizacji programu Azure AD Connect.
 
@@ -82,10 +82,10 @@ Skorzystaj z poniższej tabeli, aby uzyskać przegląd kroków wymaganych dla da
 
 | Kroki | Bieżący system Windows i synchronizacja skrótów haseł | Bieżący system Windows i federacja | System Windows niższego poziomu |
 | :--- | :---: | :---: | :---: |
-| Konfigurowanie punktu połączenia usługi | ![Sprawdź][1] | ![Sprawdź][1] | ![Sprawdź][1] |
-| Konfigurowanie wystawiania oświadczeń |     | ![Sprawdź][1] | ![Sprawdź][1] |
-| Włączanie urządzeń z systemem innym niż Windows 10 |       |        | ![Sprawdź][1] |
-| Weryfikowanie dołączonych urządzeń | ![Sprawdź][1] | ![Sprawdź][1] | [Niezaznaczone][1] |
+| Konfigurowanie punktu połączenia usługi | ![Zaznacz][1] | ![Zaznacz][1] | ![Zaznacz][1] |
+| Konfigurowanie wystawiania oświadczeń |     | ![Zaznacz][1] | ![Zaznacz][1] |
+| Włączanie urządzeń z systemem innym niż Windows 10 |       |        | ![Zaznacz][1] |
+| Weryfikowanie dołączonych urządzeń | ![Zaznacz][1] | ![Zaznacz][1] | [Niezaznaczone][1] |
 
 ## <a name="configure-a-service-connection-point"></a>Konfigurowanie punktu połączenia usługi
 
@@ -141,7 +141,7 @@ Polecenie cmdlet `Initialize-ADSyncDomainJoinedComputerSync`:
 
 * Korzysta z modułu Active Directory PowerShell i narzędzi usług Azure Active Directory Domain Services (Azure AD DS). Te narzędzia są zależne od usług internetowych usługi Active Directory uruchomionych na kontrolerze domeny. Usługi internetowe usługi Active Directory są obsługiwane na kontrolerach domeny z systemem Windows Server 2008 R2 lub nowszym.
 * Jest obsługiwane tylko przez moduł MSOnline programu PowerShell w wersji 1.1.166.0. Aby pobrać ten moduł, użyj [tego linku](https://msconfiggallery.cloudapp.net/packages/MSOnline/1.1.166.0/).
-* Jeśli narzędzia AD DS nie są zainstalowane, `Initialize-ADSyncDomainJoinedComputerSync` program zakończy się niepowodzeniem. Narzędzia AD DS można zainstalować za pomocą Menedżer serwera w obszarze **funkcje** > **Narzędzia administracji zdalnej serwera** > **Narzędzia do administrowania rolami**.
+* Jeśli narzędzia AD DS nie są zainstalowane, `Initialize-ADSyncDomainJoinedComputerSync` zakończy się niepowodzeniem. Narzędzia AD DS można zainstalować za pomocą Menedżer serwera w obszarze **funkcje** > **Narzędzia administracji zdalnej serwera** > **Narzędzia do administrowania rolami**.
 
 W przypadku kontrolerów domeny z systemem Windows Server 2008 i jego wcześniejszymi wersjami użyj następującego skryptu, aby utworzyć punkt połączenia usługi. W konfiguracji z wieloma lasami użyj następującego skryptu, aby utworzyć punkt połączenia usługi w każdym lesie, w którym istnieją komputery.
 
@@ -185,7 +185,7 @@ W przypadku korzystania z AD FS należy włączyć następujące punkty końcowe
 - `/adfs/services/trust/13/certificatemixed`
 
 > [!WARNING]
-> **Usługi ADFS/Services/Trust/2005/windowstransport** lub **ADFS/Services/Trust/13/windowstransport** powinny być włączone tylko jako punkty końcowe dostępne dla intranetu i nie mogą być udostępniane jako punkty końcowe dla ekstranetu za pośrednictwem serwera proxy aplikacji sieci Web. Aby dowiedzieć się więcej na temat wyłączania punktów końcowych usługi WS-Trust systemu Windows, zobacz temat [wyłączanie punktów końcowych systemu Windows WS-Trust na serwerze proxy](https://docs.microsoft.com/en-us/windows-server/identity/ad-fs/deployment/best-practices-securing-ad-fs#disable-ws-trust-windows-endpoints-on-the-proxy-ie-from-extranet). Możesz zobaczyć, jakie punkty końcowe są włączone, za pomocą konsoli zarządzania usług AD FS w obszarze **Usługi** > **Punkty końcowe**.
+> **Usługi ADFS/Services/Trust/2005/windowstransport** lub **ADFS/Services/Trust/13/windowstransport** powinny być włączone tylko jako punkty końcowe dostępne dla intranetu i nie mogą być udostępniane jako punkty końcowe dla ekstranetu za pośrednictwem serwera proxy aplikacji sieci Web. Aby dowiedzieć się więcej na temat wyłączania punktów końcowych usługi WS-Trust systemu Windows, zobacz temat [wyłączanie punktów końcowych systemu Windows WS-Trust na serwerze proxy](https://docs.microsoft.com/windows-server/identity/ad-fs/deployment/best-practices-securing-ad-fs#disable-ws-trust-windows-endpoints-on-the-proxy-ie-from-extranet). Możesz zobaczyć, jakie punkty końcowe są włączone, za pomocą konsoli zarządzania usług AD FS w obszarze **Usługi** > **Punkty końcowe**.
 
 > [!NOTE]
 >Jeśli nie masz usługi AD FS jako lokalnej usługi federacyjnej, postępuj zgodnie z instrukcjami od dostawcy, aby upewnić się, że obsługuje on punkty końcowe protokołu WS-Trust 1.3 lub 2005, i że są one publikowane za pomocą pliku wymiany metadanych (MEX).
@@ -503,7 +503,7 @@ Jeśli część urządzeń dołączonych do domeny to urządzenia z systemem Win
 
 Aby zarejestrować urządzenia z systemem Windows niższego poziomu, upewnij się, że włączono ustawienie umożliwiające użytkownikom rejestrowanie urządzeń w usłudze Azure AD. W witrynie Azure Portal możesz znaleźć to ustawienie w obszarze **Azure Active Directory** > **Użytkownicy i grupy** > **Ustawienia urządzenia**.
 
-Dla następujących zasad należy wybrać ustawienie **Wszystkie**: **Użytkownicy mogą rejestrować swoje urządzenia w usłudze Azure AD**.
+Następujące zasady muszą mieć ustawioną wartość **wszystkie**: **Użytkownicy mogą zarejestrować swoje urządzenia w usłudze Azure AD**.
 
 ![Przycisk Wszystkie, który umożliwia użytkownikom rejestrowanie urządzeń](./media/hybrid-azuread-join-manual/23.png)
 
@@ -519,7 +519,7 @@ Lokalna usługa federacyjna musi obsługiwać wystawianie oświadczeń **authent
 
 Jeśli takie żądanie przychodzi, lokalna usługa federacyjna musi uwierzytelnić użytkownika przy użyciu zintegrowanego uwierzytelniania systemu Windows. W razie powodzenia usługa ta musi wystawić dwa następujące oświadczenia:
 
-   `http://schemas.microsoft.com/ws/2008/06/identity/authenticationmethod/windows``http://schemas.microsoft.com/claims/wiaormultiauthn`
+   `http://schemas.microsoft.com/ws/2008/06/identity/authenticationmethod/windows` `http://schemas.microsoft.com/claims/wiaormultiauthn`
 
 W usługach AD FS musisz dodać regułę przekształcania wystawiania, która przechodzi przez metodę uwierzytelniania. Aby dodać tę regułę:
 
@@ -545,7 +545,7 @@ Aby uniknąć monitów o certyfikat podczas uwierzytelniania użytkowników zare
 
 ### <a name="control-windows-down-level-devices"></a>Kontrolowanie urządzeń z systemem Windows niższego poziomu
 
-Aby zarejestrować urządzenia z systemem Windows niższego poziomu, musisz pobrać i zainstalować pakiet Instalatora Windows (msi) z Centrum pobierania. Aby uzyskać więcej informacji, zapoznaj się z sekcją kontrola poprawności hybrydowego dołączania do [usługi Azure AD na urządzeniach niskiego poziomu systemu Windows](hybrid-azuread-join-control.md#controlled-validation-of-hybrid-azure-ad-join-on-windows-down-level-devices).
+Aby zarejestrować urządzenia z systemem Windows niższego poziomu, musisz pobrać i zainstalować pakiet Instalatora Windows (msi) z Centrum pobierania. Aby uzyskać więcej informacji, zapoznaj się z sekcją kontrola [poprawności hybrydowego dołączania do usługi Azure AD na urządzeniach niskiego poziomu systemu Windows](hybrid-azuread-join-control.md#controlled-validation-of-hybrid-azure-ad-join-on-windows-down-level-devices).
 
 ## <a name="verify-joined-devices"></a>Weryfikowanie dołączonych urządzeń
 

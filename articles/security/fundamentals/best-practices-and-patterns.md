@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 5/03/2019
 ms.author: terrylan
-ms.openlocfilehash: e2e829fba9846c2429e362903f5ce49b9344e1bd
-ms.sourcegitcommit: 2d9a9079dd0a701b4bbe7289e8126a167cfcb450
+ms.openlocfilehash: 0bf9b4d3aa1926343ad25000a05762a31d49617d
+ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/29/2019
-ms.locfileid: "71672631"
+ms.lasthandoff: 11/09/2019
+ms.locfileid: "73889853"
 ---
 # <a name="azure-security-best-practices-and-patterns"></a>Najlepsze rozwiązania i wzorce dotyczące zabezpieczeń platformy Azure
 
@@ -28,7 +28,7 @@ Poniższe artykuły zawierają najlepsze rozwiązania w zakresie zabezpieczeń, 
 
 Najlepsze rozwiązania są przeznaczone dla informatyków. Może to obejmować projektantów, architektów, deweloperów i testerów, którzy tworzą i wdrażają bezpieczne rozwiązania platformy Azure.
 
-* [Najlepsze rozwiązania dotyczące usługi Azure granicy Security](https://docs.microsoft.com/en-us/azure/security/fundamentals/network-best-practices#adopt-a-zero-trust-approach)
+* [Najlepsze rozwiązania dotyczące usługi Azure granicy Security](/azure/security/fundamentals/network-best-practices#adopt-a-zero-trust-approach)
 * [Najlepsze rozwiązania z zakresu zabezpieczeń usługi Azure Database](database-best-practices.md)
 * [Najlepsze rozwiązania z zakresu zabezpieczeń i szyfrowania danych platformy Azure](data-encryption-best-practices.md)
 * [Najlepsze rozwiązania dotyczące zabezpieczeń usługi Azure Identity Management i kontroli dostępu](identity-management-best-practices.md)

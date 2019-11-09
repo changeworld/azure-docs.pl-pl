@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.service: iot-central
 services: iot-central
 manager: abjork
-ms.openlocfilehash: 59dae65d32f1b816e59ee883cb4529c6f1fd212c
-ms.sourcegitcommit: d47a30e54c5c9e65255f7ef3f7194a07931c27df
+ms.openlocfilehash: d79c4585d9764e2cc5cebd679372a97946479396
+ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/29/2019
-ms.locfileid: "73026560"
+ms.lasthandoff: 11/09/2019
+ms.locfileid: "73889154"
 ---
 # <a name="tutorial-create-a-water-consumption-monitoring-application-in-iot-central"></a>Samouczek: Tworzenie aplikacji do monitorowania zużycia wody w IoT Central
 
@@ -60,7 +60,7 @@ Aby utworzyć nową aplikację monitorowania zużycia wody w usłudze Azure IoT 
     * **Adres URL**: IoT Central automatycznie generuje adres URL na podstawie nazwy aplikacji. Możesz zaktualizować adres URL do swoich potrzeb. Adres URL można zmienić później. 
     * Jeśli masz subskrypcję platformy Azure, wprowadź swój *katalog, subskrypcję platformy Azure i region*. Jeśli nie masz subskrypcji, możesz włączyć **7-dniową bezpłatną wersję próbną** i uzupełnić wymagane informacje kontaktowe.  
 
-    Aby uzyskać więcej informacji na temat katalogów i subskrypcji, zapoznaj się z [przewodnikiem Szybki start dotyczącym tworzenia aplikacji](../core/quick-deploy-iot-central-pnp.md?toc=/azure/iot-central-pnp/toc.json&bc=/azure/iot-central-pnp/breadcrumb/toc.json).
+    Aby uzyskać więcej informacji na temat katalogów i subskrypcji, zapoznaj się z [przewodnikiem Szybki start dotyczącym tworzenia aplikacji](../preview/quick-deploy-iot-central.md).
 
 5. Kliknij przycisk **Utwórz** w dolnej części strony. 
 
@@ -154,7 +154,7 @@ Szablon urządzenia monitora zużycia wody jest dostarczany ze wstępnie zdefini
 
   ![Widoki szablonów urządzeń](./media/tutorial-waterconsumptionmonitoring/waterconsumptionmonitoring-devicetemplate-views.png)
 
-### <a name="publish"></a>Publikuj 
+### <a name="publish"></a>Publikowanie 
 Jeśli zostały wprowadzone jakiekolwiek zmiany, upewnij się, że szablon urządzenia jest **opublikowany** . 
 
 ### <a name="create-a-new-device-template"></a>Tworzenie nowego szablonu urządzenia 

@@ -1,28 +1,28 @@
 ---
-title: Tworzenie usługi Azure IoT Hub za pomocą narzędzia IoT platformy Azure dla programu VS Code | Dokumentacja firmy Microsoft
-description: Jak utworzyć Centrum IoT hub za pomocą narzędzia IoT Microsoft Azure dla programu VS Code.
+title: Utwórz IoT Hub platformy Azure przy użyciu narzędzi Azure IoT Tools for VS Code | Microsoft Docs
+description: Dowiedz się, jak za pomocą narzędzi Azure IoT Tools for Visual Studio Code utworzyć centrum Azure IoT Hub w grupie zasobów.
 author: formulahendry
 ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
 ms.date: 01/04/2019
 ms.author: junhan
-ms.openlocfilehash: c37eeec6429e8367ade12b58bb4e20022423edf6
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 3fe4dfae2e86d549056805e87c0fd3927697fe24
+ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66166251"
+ms.lasthandoff: 11/09/2019
+ms.locfileid: "73890564"
 ---
-# <a name="create-an-iot-hub-using-the-azure-iot-tools-for-visual-studio-code"></a>Tworzenie Centrum IoT przy użyciu narzędzi usługi Azure IoT dla programu Visual Studio Code
+# <a name="create-an-iot-hub-using-the-azure-iot-tools-for-visual-studio-code"></a>Tworzenie Centrum IoT Hub przy użyciu narzędzi Azure IoT Tools for Visual Studio Code
 
 [!INCLUDE [iot-hub-resource-manager-selector](../../includes/iot-hub-resource-manager-selector.md)]
 
-W tym artykule dowiesz się, jak używać [narzędzia usługi Azure IoT dla programu Visual Studio Code](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-tools) do utworzenia usługi Azure IoT hub. 
+W tym artykule pokazano, jak za pomocą [narzędzi usługi Azure iot Visual Studio Code](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-tools) utworzyć centrum Azure IoT Hub. 
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-Aby ukończyć ten artykuł, potrzebne są następujące elementy:
+Aby wykonać ten artykuł, potrzebne są następujące elementy:
 
 - Subskrypcja platformy Azure. Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpłatne konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
@@ -32,36 +32,36 @@ Aby ukończyć ten artykuł, potrzebne są następujące elementy:
 
 ## <a name="create-an-iot-hub"></a>Tworzenie centrum IoT Hub
 
-1. W programie Visual Studio Code Otwórz **Explorer** widoku.
+1. W Visual Studio Code Otwórz widok **Eksploratora** .
 
-2. W dolnej części Eksploratora rozwiń **Azure IoT Hub Devices** sekcji. 
+2. W dolnej części Eksploratora rozwiń sekcję **usługi Azure IoT Hub Devices** . 
 
-   ![Rozwiń węzeł urządzenia w usłudze Azure IoT Hub](./media/iot-hub-create-use-iot-toolkit/azure-iot-hub-devices.png)
+   ![Rozwiń węzeł Azure IoT Hub Devices](./media/iot-hub-create-use-iot-toolkit/azure-iot-hub-devices.png)
 
-3. Kliknij pozycję **...**  w **Azure IoT Hub Devices** nagłówek sekcji. Jeśli nie widzisz wielokropka, umieść kursor nad nagłówka. 
+3. Kliknij pozycję **...** w nagłówku sekcji **urządzenia IoT Hub Azure** . Jeśli nie widzisz wielokropka, umieść kursor nad nagłówkiem. 
 
-4. Wybierz **utworzyć Centrum IoT Hub**.
+4. Wybierz pozycję **utwórz IoT Hub**.
 
-5. Okno podręczne będzie wyświetlana w prawym dolnym rogu w umożliwia logowanie do platformy Azure po raz pierwszy.
+5. W prawym dolnym rogu zostanie wyświetlone okno podręczne, które umożliwi zalogowanie się do platformy Azure po raz pierwszy.
 
-6. Wybierz subskrypcję platformy Azure. 
+6. Wybierz pozycję subskrypcja platformy Azure. 
 
-7. Wybierz grupę zasobów.
+7. Wybierz pozycję Grupa zasobów.
 
 8. Wybierz lokalizację.
 
-9. Wybierz warstwę cenową.
+9. Wybierz pozycję warstwa cenowa.
 
-10. Wprowadź unikatową w skali globalnej nazwę Centrum IoT.
+10. Wprowadź globalnie unikatową nazwę dla IoT Hub.
 
-11. Poczekaj kilka minut, dopiero po utworzeniu Centrum IoT Hub.
+11. Poczekaj kilka minut, aż IoT Hub zostanie utworzona.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
-Teraz możesz wdrożyć usługi IoT hub przy użyciu narzędzi usługi Azure IoT dla programu Visual Studio Code. Do dalszego zbadania, zapoznaj się z następującymi artykułami:
+Teraz wdrożono Centrum IoT przy użyciu narzędzi Azure IoT Tools for Visual Studio Code. Aby dowiedzieć się więcej, zapoznaj się z następującymi artykułami:
 
-* [Narzędzia usługi Azure IoT dla programu Visual Studio Code do wysyłania i odbierania komunikatów między urządzeniem i Centrum IoT Hub](iot-hub-vscode-iot-toolkit-cloud-device-messaging.md).
+* [Użyj narzędzi Azure IoT Tools, aby Visual Studio Code wysyłać i odbierać komunikaty między urządzeniem i IoT Hub](iot-hub-vscode-iot-toolkit-cloud-device-messaging.md).
 
-* [Narzędzia usługi Azure IoT dla programu Visual Studio Code do zarządzania urządzeniami Azure IoT Hub](iot-hub-device-management-iot-toolkit.md)
+* [Korzystanie z narzędzi Azure IoT Tools dla Visual Studio Code na potrzeby zarządzania urządzeniami IoT Hub platformy Azure](iot-hub-device-management-iot-toolkit.md)
 
-* [Strona typu wiki usługi Azure IoT Hub Toolkit](https://github.com/microsoft/vscode-azure-iot-toolkit/wiki).
+* [Zobacz stronę typu wiki zestawu narzędzi platformy Azure IoT Hub](https://github.com/microsoft/vscode-azure-iot-toolkit/wiki).

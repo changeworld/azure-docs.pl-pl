@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 10/09/2019
 ms.author: dastrebe
 zone_pivot_groups: client-operating-system
-ms.openlocfilehash: 1c48e758e9ee69085034f714652632151912f8d4
-ms.sourcegitcommit: f29fec8ec945921cc3a89a6e7086127cc1bc1759
+ms.openlocfilehash: d5d0a575c3fb662df034b66a48135ac33393f95c
+ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72530630"
+ms.lasthandoff: 11/09/2019
+ms.locfileid: "73885402"
 ---
 # <a name="install-and-use-consul-in-azure-kubernetes-service-aks"></a>Instalowanie i używanie Consul w usłudze Azure Kubernetes Service (AKS)
 
@@ -21,7 +21,7 @@ ms.locfileid: "72530630"
 W tym artykule opisano sposób instalowania programu Consul. Składniki Consul są instalowane w klastrze Kubernetes na AKS.
 
 > [!NOTE]
-> Te instrukcje odwołują się do wersji Consul `1.6.0` i używają co najmniej Helm wersji `2.14.2`.
+> Te instrukcje odwołują się do wersji Consul `1.6.0`i używają co najmniej Helm wersji `2.14.2`.
 >
 > Wersje Consul `1.6.x` mogą być uruchamiane w przypadku wersji Kubernetes `1.13+`. Dodatkowe wersje Consul można znaleźć w [wersjach usługi GitHub-Consul][consul-github-releases] i informacje o każdej z nich w informacjach o [wersji Consul][consul-release-notes].
 
@@ -150,7 +150,7 @@ Teraz możesz otworzyć przeglądarkę i wskazać ją `http://localhost:8080/ui`
 
 ### <a name="remove-consul-components-and-namespace"></a>Usuń składniki Consul i przestrzeń nazw
 
-Aby usunąć Consul z klastra AKS, użyj następujących poleceń. @No__t_0 polecenia spowodują usunięcie wykresu `consul`, a polecenie `kubectl delete namespace` spowoduje usunięcie przestrzeni nazw `consul`.
+Aby usunąć Consul z klastra AKS, użyj następujących poleceń. `helm delete` polecenia spowodują usunięcie wykresu `consul`, a polecenie `kubectl delete namespace` spowoduje usunięcie przestrzeni nazw `consul`.
 
 ```azurecli
 helm delete --purge consul
@@ -186,7 +186,7 @@ Możesz również postępować zgodnie z dodatkowymi scenariuszami przy użyciu:
 [kubectl-get]: https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#get
 [kubectl-describe]: https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#describe
 [kubectl-port-forward]: https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#port-forward
-[kubernetes-node-selectors]: https://docs.microsoft.com/en-us/azure/aks/concepts-clusters-workloads#node-selectors
+[kubernetes-node-selectors]: https://docs.microsoft.com/azure/aks/concepts-clusters-workloads#node-selectors
 
 <!-- LINKS - internal -->
 [aks-quickstart]: ./kubernetes-walkthrough.md

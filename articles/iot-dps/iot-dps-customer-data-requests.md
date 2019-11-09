@@ -1,67 +1,67 @@
 ---
-title: Funkcje żądania danych klienta
+title: Funkcje żądania danych klienta dla urządzeń usługi Azure DPS
+description: W przypadku urządzeń zarządzanych w usłudze Azure Device Provisioning (DPS), które są osobiste, ten artykuł pokazuje administratorów, jak eksportować lub usuwać dane osobowe.
 author: dominicbetts
 ms.author: dobett
-manager: timlt
 ms.date: 05/16/2018
 ms.topic: conceptual
 ms.service: iot-dps
 services: iot-dps
-ms.openlocfilehash: 5dd027c886e8102e77ddefe93817daee0e1ec29b
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 1dcf1b9f62f94b8f75ef2fe77f3e237a387c53eb
+ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60626438"
+ms.lasthandoff: 11/09/2019
+ms.locfileid: "73890652"
 ---
 # <a name="summary-of-customer-data-request-features"></a>Podsumowanie funkcji żądania danych klienta
 
-Azure IoT Hub Device Provisioning Service jest oparte na interfejsie API REST usługi w chmurze przeznaczona dla klientów korporacyjnych umożliwiającą bezproblemowe i automatyczne bezdotykową automatyczną aprowizację urządzeń w usłudze Azure IoT Hub przy użyciu zabezpieczeń, który rozpoczyna się na urządzeniu i kończąca na chmurze.
+IoT Hub Device Provisioning Service platformy Azure to usługa w chmurze oparta na interfejsie API REST przeznaczona dla klientów korporacyjnych, która umożliwia bezproblemowe i zautomatyzowane Inicjowanie obsługi administracyjnej urządzeń na platformie Azure IoT Hub z zabezpieczeniami, które zaczynają się na urządzeniu i kończą się chmurą.
 
 [!INCLUDE [gdpr-intro-sentence](../../includes/gdpr-intro-sentence.md)]
 
-Poszczególne urządzenia są przypisane rejestracji identyfikator i Identyfikatora urządzenia przez administratora dzierżawy. Dane z i dotyczących tych urządzeń jest oparty na tych identyfikatorów. Firma Microsoft zachowuje żadnych informacji i nie ma dostępu do danych, które pozwoliłoby korelacji tych urządzeń, z określoną osobą.
+Do poszczególnych urządzeń są przypisywane identyfikatory rejestracji i identyfikatory urządzeń przez administratora dzierżawy. Dane z i informacje o tych urządzeniach są oparte na tych identyfikatorach. Firma Microsoft nie przechowuje żadnych informacji i nie ma dostępu do danych, które pozwolą na korelację tych urządzeń z osobą.
 
-Wiele urządzeń zarządzanych w usłudze Device Provisioning nie są urządzeń osobistych, na przykład robota Termostat lub fabryki pakietu office. Klienci mogą jednak wziąć pod uwagę niektóre urządzenia jako osobiste i według własnego uznania mogą utrzymać ich własnych zasobów magazynu śledzenia metody, które powiązanie urządzeń fizycznych. Usługi Device Provisioning Service zarządza i przechowuje wszystkie dane skojarzone z urządzeń, jak w przypadku danych osobowych.
+Wiele urządzeń zarządzanych w usłudze Device Provisioning nie jest urządzeniami osobistymi, na przykład z termostatem lub robotem fabryki biurowej. Klienci mogą jednak rozważyć, że niektóre urządzenia mają być identyfikowalne i według ich uznania mogą zachować własne metody śledzenia zasobów lub spisu, które wiążą urządzenia z osobami. Usługa Device Provisioning zarządza i przechowuje wszystkie dane skojarzone z urządzeniami, tak jakby były danymi osobistymi.
 
-Administratorzy dzierżawy za pomocą witryny Azure portal lub interfejsów API REST usługi można wykonać żądania informacji przez wyeksportowanie lub usuwania danych skojarzonych z Identyfikatorem urządzenia lub identyfikator rejestracji.
+Administratorzy dzierżawy mogą używać Azure Portal lub interfejsów API REST usługi do realizacji żądań informacji przez eksportowanie lub usuwanie danych skojarzonych z IDENTYFIKATORem lub IDENTYFIKATORem rejestracji.
 
 > [!NOTE]
-> Urządzenia, które zostały udostępnione w usłudze Azure IoT Hub przy użyciu usługi Device Provisioning Service ma dodatkowe dane przechowywane w usłudze Azure IoT Hub. Zobacz [dokumentacja usługi Azure IoT Hub](../iot-hub/iot-hub-customer-data-requests.md) w celu wykonania pełnego żądania dla danego urządzenia.
+> Urządzenia, które zostały wdrożone w usłudze Azure IoT Hub za pomocą usługi Device Provisioning, mają dodatkowe dane przechowywane w usłudze Azure IoT Hub. Zapoznaj się z [dokumentacją dotyczącą platformy Azure IoT Hub](../iot-hub/iot-hub-customer-data-requests.md) w celu wykonania pełnego żądania dla danego urządzenia.
 
 ## <a name="deleting-customer-data"></a>Usuwanie danych klienta
 
-Usługi Device Provisioning przechowuje rejestracji i rejestracji rekordów. Rejestracje zawierają informacje dotyczące urządzeń, które są dozwolone do aprowizacji i rejestracji rekordy pokazują, które urządzenia już przeszły proces inicjowania obsługi administracyjnej.
+Usługa Device Provisioning przechowuje rejestracje i rekordy rejestracji. Rejestracje zawierają informacje o urządzeniach, które mogą być inicjowane, a rekordy rejestracji pokazują, które urządzenia zostały już przetworzone przez proces aprowizacji.
 
-Administratorzy dzierżawy mogą usunąć rejestracje w witrynie Azure portal, a spowoduje to usunięcie wszystkich rekordów rejestracji skojarzony.
+Administratorzy dzierżawy mogą usuwać rejestracje z Azure Portal. spowoduje to również usunięcie wszystkich skojarzonych rekordów rejestracji.
 
-Aby uzyskać więcej informacji, zobacz [jak zarządzanie rejestracjami urządzeń](how-to-manage-enrollments.md).
+Aby uzyskać więcej informacji, zobacz [jak zarządzać rejestracjami urządzeń](how-to-manage-enrollments.md).
 
-Istnieje również możliwość wykonywania operacji usuwania rejestracji i rekordów rejestracji przy użyciu interfejsów API REST:
+Możliwe jest również wykonywanie operacji usuwania dla rejestracji i rekordów rejestracji przy użyciu interfejsów API REST:
 
-* Aby usunąć informacje o rejestracji dla jednego urządzenia, możesz użyć [rejestrowanie urządzeń — usuwanie](/rest/api/iot-dps/deleteindividualenrollment/deleteindividualenrollment).
-* Aby usunąć informacje o rejestracji dla grupy urządzeń, można użyć [grupy rejestracji urządzeń — usuwanie](/rest/api/iot-dps/deleteenrollmentgroup/deleteenrollmentgroup).
-* Aby usunąć informacje o urządzeniach, które zostały udostępnione, można użyć [stanu rejestracji — usuwanie stanu rejestracji](/rest/api/iot-dps/deletedeviceregistrationstate/deletedeviceregistrationstate).
+* Aby usunąć informacje o rejestracji dla pojedynczego urządzenia, można użyć funkcji [rejestracji urządzeń — Delete](/rest/api/iot-dps/deleteindividualenrollment/deleteindividualenrollment).
+* Aby usunąć informacje o rejestracji dla grupy urządzeń, można użyć [grupy rejestracji urządzeń-Delete](/rest/api/iot-dps/deleteenrollmentgroup/deleteenrollmentgroup).
+* Aby usunąć informacje o urządzeniach, które zostały zainicjowane, można użyć [stanu rejestracji — Usuń stan rejestracji](/rest/api/iot-dps/deletedeviceregistrationstate/deletedeviceregistrationstate).
 
 ## <a name="exporting-customer-data"></a>Eksportowanie danych klienta
 
-Usługi Device Provisioning przechowuje rejestracji i rejestracji rekordów. Rejestracje zawierają informacje dotyczące urządzeń, które są dozwolone do aprowizacji i rejestracji rekordy pokazują, które urządzenia już przeszły proces inicjowania obsługi administracyjnej.
+Usługa Device Provisioning przechowuje rejestracje i rekordy rejestracji. Rejestracje zawierają informacje o urządzeniach, które mogą być inicjowane, a rekordy rejestracji pokazują, które urządzenia zostały już przetworzone przez proces aprowizacji.
 
-Administratorzy dzierżawy mogą wyświetlić rejestracje i rekordy rejestracji za pośrednictwem witryny Azure portal i wyeksportować je za pomocą kopiowania i wklejania.
+Administratorzy dzierżawy mogą wyświetlać rejestracje i rekordy rejestracji za pośrednictwem Azure Portal i eksportować je przy użyciu funkcji kopiowania i wklejania.
 
-Aby uzyskać więcej informacji na temat zarządzania rejestracji, zobacz [jak zarządzanie rejestracjami urządzeń](how-to-manage-enrollments.md).
+Aby uzyskać więcej informacji na temat zarządzania rejestracjami, zobacz [jak zarządzać rejestracjami urządzeń](how-to-manage-enrollments.md).
 
-Istnieje również możliwość wykonywania operacji eksportowania do rejestracji i rekordów rejestracji przy użyciu interfejsów API REST:
+Możliwe jest również wykonywanie operacji eksportowania na potrzeby rejestracji i rekordów rejestracji przy użyciu interfejsów API REST:
 
-* Aby wyeksportować informacje o rejestracji dla jednego urządzenia, możesz użyć [rejestrowanie urządzeń — Get](/rest/api/iot-dps/getindividualenrollment/getindividualenrollment).
-* Aby wyeksportować informacje o rejestracji dla grupy urządzeń, można użyć [grupy rejestracji urządzeń - Get](/rest/api/iot-dps/getenrollmentgroup/getenrollmentgroup).
-* Aby wyeksportować informacje o urządzeniach, które już zostały udostępnione, można użyć [stanu rejestracji — stan rejestracji Get](/rest/api/iot-dps/getdeviceregistrationstate/getdeviceregistrationstate).
+* Aby wyeksportować informacje o rejestracji dla pojedynczego urządzenia, można użyć funkcji [rejestracji urządzeń — Get](/rest/api/iot-dps/getindividualenrollment/getindividualenrollment).
+* Aby wyeksportować informacje o rejestracji dla grupy urządzeń, można użyć [grupy rejestracji urządzeń — Get](/rest/api/iot-dps/getenrollmentgroup/getenrollmentgroup).
+* Aby wyeksportować informacje o urządzeniach, które zostały już zainicjowane, można użyć [stanu rejestracji — pobieranie stanu rejestracji](/rest/api/iot-dps/getdeviceregistrationstate/getdeviceregistrationstate).
 
 > [!NOTE]
-> Korzystając z usług firmy Microsoft dla przedsiębiorstw firmy Microsoft generuje pewnych informacji, znane jako dzienniki generowane przez system. Niektóre usługi Device Provisioning dzienniki generowane przez system nie są dostępne lub który można eksportować przez administratorów dzierżawy. Te dzienniki stanowią odzwierciedlenie faktycznych działań przeprowadzanych w ramach usługi i dane diagnostyczne, które dotyczą poszczególnych urządzeń.
+> Gdy korzystasz z usług firmy Microsoft dla przedsiębiorstw, firma Microsoft generuje pewne informacje, znane jako dzienniki generowane przez system. Niektóre dzienniki generowane przez system usługi Device Provisioning nie są dostępne ani eksportowane przez administratorów dzierżawy. Te dzienniki składają się na faktyczne działania wykonywane w ramach usługi i danych diagnostycznych związanych z poszczególnymi urządzeniami.
 
 ## <a name="links-to-additional-documentation"></a>Linki do dodatkowej dokumentacji
 
-Pełną dokumentację dotyczącą interfejsów API usługi aprowizacji urządzeń znajduje się w [ https://docs.microsoft.com/rest/api/iot-dps ](https://docs.microsoft.com/rest/api/iot-dps).
+Pełna dokumentacja dotycząca interfejsów API usługi Device Provisioning znajduje się w [https://docs.microsoft.com/rest/api/iot-dps](https://docs.microsoft.com/rest/api/iot-dps).
 
-Usługa Azure IoT Hub [funkcje na żądanie danych klienta](../iot-hub/iot-hub-customer-data-requests.md).
+[Funkcje żądania danych klienta](../iot-hub/iot-hub-customer-data-requests.md)na platformie Azure IoT Hub.

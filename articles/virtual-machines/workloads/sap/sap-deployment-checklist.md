@@ -12,15 +12,15 @@ ms.service: virtual-machines-linux
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 07/15/2019
+ms.date: 11/08/2019
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: a77c0e38db06698e714c3d0c3df0d9a5f028787b
-ms.sourcegitcommit: 6eecb9a71f8d69851bc962e2751971fccf29557f
+ms.openlocfilehash: 097429e9c761d447a7164c813a6c84d3f07f0ab6
+ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "71672954"
+ms.lasthandoff: 11/09/2019
+ms.locfileid: "73891420"
 ---
 # <a name="sap-workloads-on-azure-planning-and-deployment-checklist"></a>Obciążenia SAP na platformie Azure: Lista kontrolna planowania i wdrażania
 
@@ -128,7 +128,7 @@ Zalecamy skonfigurowanie i zweryfikowanie pełnego projektu rozwiązania HADR Cl
             - Oracle Linux 7,5. Jeśli używasz jądra RHCKL, wymagana jest wersja 3.10.0-862.13.1. el7. Jeśli używasz jądra Oracle UEK, wymagana jest wersja 5.
         - Przetestuj i Oceń opóźnienia sieci między maszynami wirtualnymi i maszynami wirtualnymi w warstwie aplikacji SAP zgodnie z uwagami dotyczącymi obsługi SAP [#500235](https://launchpad.support.sap.com/#/notes/500235) i [#1100926](https://launchpad.support.sap.com/#/notes/1100926/E). Oceń wyniki na wskazówki dotyczące opóźnień sieci w programie [SAP support uwagi #1100926](https://launchpad.support.sap.com/#/notes/1100926/E). Opóźnienie sieci powinno być w zakresie umiarkowanym lub dobrym. Wyjątki dotyczą ruchu między maszynami wirtualnymi i jednostkami dużych wystąpień platformy HANA, zgodnie z opisem w [tym artykule](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-network-architecture#networking-architecture-for-hana-large-instance).
         - Upewnij się, że wdrożenia ILB są skonfigurowane do używania bezpośredniego powrotu do serwera. To ustawienie spowoduje skrócenie opóźnienia, gdy usługa Azure ILB będzie używana do konfiguracji wysokiej dostępności na warstwie DBMS.
-        - Jeśli używasz Azure Load Balancer razem z systemami operacyjnymi gościa z systemem Linux, sprawdź, czy parametr sieci systemu Linux **net. IPv4. TCP _timestamps** jest ustawiony na **wartość 0**. To zalecenie powoduje konflikt z zaleceniami we wcześniejszych wersjach programu [SAP uwagi #2382421](https://launchpad.support.sap.com/#/notes/2382421). Uwaga dotycząca oprogramowania SAP jest teraz aktualizowana do stanu, w którym ten parametr musi być ustawiony na **wartość 0** , aby pracować z modułami równoważenia obciążenia platformy Azure.
+        - Jeśli używasz Azure Load Balancer razem z systemami operacyjnymi gościa z systemem Linux, sprawdź, czy parametr sieci w systemie Linux **net. IPv4. tcp_timestamps** jest ustawiony na **wartość 0**. To zalecenie powoduje konflikt z zaleceniami we wcześniejszych wersjach programu [SAP uwagi #2382421](https://launchpad.support.sap.com/#/notes/2382421). Uwaga dotycząca oprogramowania SAP jest teraz aktualizowana do stanu, w którym ten parametr musi być ustawiony na **wartość 0** , aby pracować z modułami równoważenia obciążenia platformy Azure.
         - W celu uzyskania optymalnego opóźnienia sieci należy rozważyć użycie [grup umieszczania usługi Azure zbliżeniowe](https://docs.microsoft.com/azure/virtual-machines/linux/co-location) . Aby uzyskać więcej informacji, zobacz [grupy umieszczania zbliżeniowe platformy Azure w celu uzyskania optymalnego opóźnienia sieci przy użyciu aplikacji SAP](sap-proximity-placement-scenarios.md).
    4. Wdrożenia wysokiej dostępności i odzyskiwania po awarii.
         - W przypadku wdrażania warstwy aplikacji SAP bez definiowania określonej strefy dostępności platformy Azure upewnij się, że wszystkie maszyny wirtualne, które uruchamiają wystąpienia okna dialogowego SAP lub wystąpienia oprogramowania pośredniczącego pojedynczego systemu SAP są wdrożone w [zestawie dostępności](https://docs.microsoft.com/azure/virtual-machines/windows/manage-availability).
@@ -143,7 +143,7 @@ Zalecamy skonfigurowanie i zweryfikowanie pełnego projektu rozwiązania HADR Cl
         - Aby uniknąć przekroczenia limitu czasu GRAFICZNEgo interfejsu użytkownika między lokalnymi interfejsami i warstwami aplikacji SAP wdrożonymi na platformie Azure, sprawdź, czy te parametry są ustawione w domyślnym. pfl lub profilu wystąpienia:
             - rdisp/keepalive_timeout = 3600
             - rdisp/utrzymywanie aktywności = 20
-        - Aby zapobiec zakłóceniom ustanowionych połączeń między procesem kolejkowania SAP a procesami roboczymi SAP, należy ustawić parametr **umieścić/encni/set_so_keepalive** na **wartość true**. Zobacz również artykuł [SAP uwagi #2743751](https://launchpad.support.sap.com/#/notes/2743751).  
+        - Aby zapobiec zakłóceniom ustanowionych połączeń między procesem kolejkowania SAP a procesami roboczymi SAP, należy ustawić **wartość true**dla parametru **umieścić/encni/set_so_keepalive** . Zobacz również artykuł [SAP uwagi #2743751](https://launchpad.support.sap.com/#/notes/2743751).  
         - Jeśli używasz konfiguracji klastra trybu failover systemu Windows, upewnij się, że czas reakcji na węzły, które nie odpowiada, jest ustawiony poprawnie dla platformy Azure. [Próg sieci klastra trybu failover dostrajania](https://techcommunity.microsoft.com/t5/Failover-Clustering/Tuning-Failover-Cluster-Network-Thresholds/ba-p/371834) zawiera listę parametrów i ich wpływ na sensitivities pracy awaryjnej. Przy założeniu, że węzły klastra znajdują się w tej samej podsieci, należy zmienić następujące parametry:
             - SameSubNetDelay = 2000
             - SameSubNetThreshold = 15
@@ -160,7 +160,7 @@ Zalecamy skonfigurowanie i zweryfikowanie pełnego projektu rozwiązania HADR Cl
    1.  Sprawdź, czy [sieciowe grupy zabezpieczeń i zasady ASC](https://docs.microsoft.com/azure/virtual-network/security-overview) działają zgodnie z oczekiwaniami, i Włącz ochronę chronionych zasobów.
    1.  Upewnij się, że wszystkie zasoby, które muszą być szyfrowane, są szyfrowane. Zdefiniuj i Implementuj procesy w celu tworzenia kopii zapasowych certyfikatów, przechowywania i uzyskiwania dostępu do tych certyfikatów oraz przywracania zaszyfrowanych jednostek.
    1.  Użyj [Azure Disk Encryption](https://docs.microsoft.com/azure/security/azure-security-disk-encryption-faq) dla dysków systemu operacyjnego, jeśli to możliwe, z punktu widzenia obsługi systemu operacyjnego.
-   1.  Upewnij się, że nie używasz zbyt wielu warstw szyfrowania. W niektórych przypadkach warto używać Azure Disk Encryption wraz z jedną z metod Transparent Data Encryption systemu DBMS.
+   1.  Upewnij się, że nie używasz zbyt wielu warstw szyfrowania. W niektórych przypadkach warto używać Azure Disk Encryption wraz z jedną z metod Transparent Data Encryption systemu DBMS do ochrony różnych dysków lub składników na tym samym serwerze.  Na przykład na serwerze SAP DBMS Azure Disk Encryption (ADE) można włączyć na dysku rozruchowym systemu operacyjnego (Jeśli system operacyjny obsługuje ADE) i te dyski danych nie są używane przez pliki trwałości danych w systemie DBMS.  Przykładem jest użycie ADE na dysku przechowującym klucze szyfrowania TDE systemu DBMS.
 1. Testowanie wydajnościowe. W oprogramowaniu SAP w oparciu o śledzenie i pomiary SAP należy wykonać następujące porównania:
    - W razie potrzeby Porównaj 10 najważniejszych raportów online z bieżącą implementacją.
    - W razie potrzeby Porównaj 10 najważniejszych zadań wsadowych z bieżącą implementacją.

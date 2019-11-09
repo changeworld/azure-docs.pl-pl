@@ -7,12 +7,12 @@ ms.date: 10/23/2019
 ms.topic: tutorial
 ms.service: iot-central
 services: iot-central
-ms.openlocfilehash: a0bf3b555334b67659975c150711eab02b957c6e
-ms.sourcegitcommit: d47a30e54c5c9e65255f7ef3f7194a07931c27df
+ms.openlocfilehash: fa2ea8cdf5148d27b025c62fbeec512ceac0943e
+ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/29/2019
-ms.locfileid: "73026612"
+ms.lasthandoff: 11/09/2019
+ms.locfileid: "73890824"
 ---
 # <a name="tutorial-create-a-connected-waste-management-application-in-iot-central"></a>Samouczek: Tworzenie połączonej aplikacji zarządzania odpadami w IoT Central
 
@@ -59,7 +59,7 @@ Aby utworzyć nową aplikację usługi Azure IoT Central połączonego zarządza
     * **URL** — Opcjonalnie możesz wybrać żądany adres URL. Adres URL można zmienić później. 
     * Jeśli masz subskrypcję platformy Azure, wprowadź swój *katalog, subskrypcję platformy Azure i region*. Jeśli nie masz subskrypcji, możesz włączyć **7-dniową bezpłatną wersję próbną** i uzupełnić wymagane informacje kontaktowe.  
 
-    Aby uzyskać więcej informacji na temat katalogów i subskrypcji, zapoznaj się z [przewodnikiem Szybki start dotyczącym tworzenia aplikacji](../core/quick-deploy-iot-central-pnp.md?toc=/azure/iot-central-pnp/toc.json&bc=/azure/iot-central-pnp/breadcrumb/toc.json).
+    Aby uzyskać więcej informacji na temat katalogów i subskrypcji, zapoznaj się z [przewodnikiem Szybki start dotyczącym tworzenia aplikacji](../preview/quick-deploy-iot-central.md).
 
 5. Kliknij przycisk **Utwórz** w dolnej części strony. 
 
@@ -157,7 +157,7 @@ Spróbuj dostosować następujące elementy:
 
   ![Widoki szablonów urządzeń](./media/tutorial-connectedwastemanagement/connectedwastemanagement-devicetemplate-views.png)
 
-### <a name="publish"></a>Publikuj 
+### <a name="publish"></a>Publikowanie 
 
 * Jeśli zostały wprowadzone jakiekolwiek zmiany, upewnij się, że szablon urządzenia jest **opublikowany** . 
 

@@ -7,13 +7,13 @@ manager: bertvanhoof
 ms.service: digital-twins
 services: digital-twins
 ms.topic: conceptual
-ms.date: 09/17/2019
-ms.openlocfilehash: b8ea5c54afd4b1e2c212422417688e528367d44f
-ms.sourcegitcommit: 4f7dce56b6e3e3c901ce91115e0c8b7aab26fb72
+ms.date: 11/07/2019
+ms.openlocfilehash: 0708b1dd2d272757949d014d768c1da649b50146
+ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/04/2019
-ms.locfileid: "71949975"
+ms.lasthandoff: 11/09/2019
+ms.locfileid: "73889679"
 ---
 # <a name="data-processing-and-user-defined-functions"></a>Przetwarzanie danych i funkcje zdefiniowane przez użytkownika
 
@@ -23,7 +23,7 @@ Usługa Azure Digital bliźniaczych reprezentacji oferuje zaawansowane możliwo�
 
 Gdy urządzenia wysyłają dane telemetryczne do usługi Azure Digital bliźniaczych reprezentacji, deweloperzy mogą przetwarzać dane w czterech fazach: *Walidacja*, *dopasowanie*, *Obliczanie*i *wysyłanie*.
 
-[przepływ przetwarzania danych Digital bliźniaczych reprezentacji @no__t 1Azure](media/concepts/digital-twins-data-processing-flow.png)](media/concepts/digital-twins-data-processing-flow.png#lightbox)
+[![przepływ przetwarzania danych Digital bliźniaczych reprezentacji platformy Azure](media/concepts/digital-twins-data-processing-flow.png)](media/concepts/digital-twins-data-processing-flow.png#lightbox)
 
 1. Faza walidacji przekształca przychodzące komunikaty telemetryczne do powszechnie rozumiany format [obiektu transferu danych](https://docs.microsoft.com/aspnet/web-api/overview/data/using-web-api-with-entity-framework/part-5) . W tej fazie wykonywane jest również Walidacja urządzenia i czujnika.
 1. Etap dopasowywania umożliwia znalezienie odpowiednich funkcji zdefiniowanych przez użytkownika do uruchomienia. Wstępnie zdefiniowane dopasowania znajdują funkcje zdefiniowane przez użytkownika na podstawie informacji o urządzeniu, czujniku i miejscu z przychodzącego komunikatu telemetrii.
@@ -34,43 +34,48 @@ Gdy urządzenia wysyłają dane telemetryczne do usługi Azure Digital bliźniac
 
 Przetwarzanie danych w usłudze Azure Digital bliźniaczych reprezentacji składa się z definiowania trzech obiektów: *dopasowań*, *funkcji zdefiniowanych przez użytkownika*i *przypisań ról*.
 
-[@no__t — obiekty 1Azure Digital bliźniaczych reprezentacji Data Processing](media/concepts/digital-twins-user-defined-functions.png)](media/concepts/digital-twins-user-defined-functions.png#lightbox)
+[![obiektów przetwarzania danych Digital bliźniaczych reprezentacji platformy Azure](media/concepts/digital-twins-user-defined-functions.png)](media/concepts/digital-twins-user-defined-functions.png#lightbox)
 
 ### <a name="matchers"></a>Dopasowanie
 
 Dopasowania definiują zestaw warunków, które sprawdzają, jakie akcje odbywają się w oparciu o przychodzące dane telemetryczne czujnika. Warunki do określenia dopasowania mogą obejmować właściwości z czujnika, urządzenie nadrzędne czujnika i przestrzeń nadrzędną czujnika. Warunki są wyrażane jako porównania ze [ścieżką JSON](https://jsonpath.com/) , jak pokazano w tym przykładzie:
 
 - Wszystkie czujniki **temperatury** elementu DataType reprezentowane przez wartość ciągu ucieczki `\"Temperature\"`
-- Posiadanie `01` na swoim porcie
-- Który należy do urządzeń, dla których **producent** klucza właściwości rozszerzonej ma ustawioną wartość ciągu ucieczki `\"GoodCorp\"`
+- Posiadanie `01` w porcie
+- Który należy do urządzeń, dla których **producent** klucza właściwości rozszerzonej ma ustawioną wartość ciągu ucieczki `\"Contoso\"`
 - Który należy do spacji typu określonego przez ciąg ucieczki `\"Venue\"`
 - Które są elementami podrzędnymi nadrzędnego **SpaceId** `DE8F06CA-1138-4AD7-89F4-F782CC6F69FD`
 
 ```JSON
 {
-  "SpaceId": "DE8F06CA-1138-4AD7-89F4-F782CC6F69FD",
-  "Name": "My custom matcher",
-  "Description": "All sensors of datatype Temperature with 01 in their port that belong to devices with the extended property key Manufacturer set to the value GoodCorp and that belong to spaces of type Venue that are somewhere below space Id DE8F06CA-1138-4AD7-89F4-F782CC6F69FD",
-  "Conditions": [
+  "id": "23535afafd-f39b-46c0-9b0c-0dd3892a1c30",
+  "name": "My custom matcher",
+  "spaceId": "DE8F06CA-1138-4AD7-89F4-F782CC6F69FD",
+  "description": "All sensors of datatype Temperature with 01 in their port that belong to devices with the extended property key Manufacturer set to the value Contoso and that belong to spaces of type Venue that are somewhere below space Id DE8F06CA-1138-4AD7-89F4-F782CC6F69FD",
+  "conditions": [
     {
+      "id": "43898sg43-e15a-4e9c-abb8-2gw464364",
       "target": "Sensor",
       "path": "$.dataType",
       "value": "\"Temperature\"",
       "comparison": "Equals"
     },
     {
+      "id": "wt3th44-e15a-35sg-seg3-235wf3ga463",
       "target": "Sensor",
       "path": "$.port",
       "value": "01",
       "comparison": "Contains"
     },
     {
+      "id": "735hs33-e15a-37jj-23532-db901d550af5",
       "target": "SensorDevice",
       "path": "$.properties[?(@.name == 'Manufacturer')].value",
-      "value": "\"GoodCorp\"",
+      "value": "\"Contoso\"",
       "comparison": "Equals"
     },
     {
+      "id": "222325-e15a-49fg-5744-463643644",
       "target": "SensorSpace",
       "path": "$.type",
       "value": "\"Venue\"",
@@ -83,7 +88,7 @@ Dopasowania definiują zestaw warunków, które sprawdzają, jakie akcje odbywaj
 > [!IMPORTANT]
 > - W ścieżkach JSON jest rozróżniana wielkość liter.
 > - Ładunek JSON jest taki sam jak ładunek zwracany przez:
->   - `/sensors/{id}?includes=properties,types` dla czujnika.
+>   - `/sensors/{id}?includes=properties,types` czujnika.
 >   - `/devices/{id}?includes=properties,types,sensors,sensorsproperties,sensorstypes` dla urządzenia nadrzędnego czujnika.
 >   - `/spaces/{id}?includes=properties,types,location,timezone` dla obszaru nadrzędnego czujnika.
 > - W porównaniach jest rozróżniana wielkość liter.
@@ -92,7 +97,7 @@ Dopasowania definiują zestaw warunków, które sprawdzają, jakie akcje odbywaj
 
 Funkcja zdefiniowana przez użytkownika jest funkcją niestandardową wykonywaną w izolowanym środowisku usługi Azure Digital bliźniaczych reprezentacji. Funkcje zdefiniowane przez użytkownika mają dostęp do komunikatu telemetrii nieprzetworzonej czujnika, gdy zostanie on odebrany. Funkcje zdefiniowane przez użytkownika mają również dostęp do przestrzennego wykresu i usługi dyspozytora. Po zarejestrowaniu funkcji zdefiniowanej przez użytkownika w grafie należy utworzyć odpowiednika (szczegółowo [powyżej](#matchers)), aby określić czas wykonywania funkcji. Na przykład gdy usługa Azure Digital bliźniaczych reprezentacji otrzymuje nową telemetrię z danego czujnika, dopasowana funkcja zdefiniowana przez użytkownika może obliczyć średnią przesunięcia z ostatnich kilku odczytów czujnika.
 
-Funkcje zdefiniowane przez użytkownika mogą być zapisywane w języku JavaScript. Metody pomocnika współpracują z wykresem w środowisku wykonawczym zdefiniowanym przez użytkownika. Deweloperzy mogą wykonywać niestandardowe fragmenty kodu w odniesieniu do komunikatów telemetrycznych czujnika. Przykłady obejmują:
+Funkcje zdefiniowane przez użytkownika mogą być zapisywane w języku JavaScript. Metody pomocnika współpracują z wykresem w środowisku wykonawczym zdefiniowanym przez użytkownika. Deweloperzy mogą wykonywać niestandardowe fragmenty kodu w odniesieniu do komunikatów telemetrycznych czujnika. Przykłady:
 
 - Ustaw odczyt czujnika bezpośrednio do obiektu czujnika na grafie.
 - Wykonaj akcję w oparciu o różne odczyty czujników w obrębie obszaru wykresu.

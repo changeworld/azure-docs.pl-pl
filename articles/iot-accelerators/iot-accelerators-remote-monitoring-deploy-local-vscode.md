@@ -1,6 +1,6 @@
 ---
-title: Wdrażanie rozwiązania do monitorowania zdalnego lokalnie (Visual Studio Code) — Azure | Dokumentacja firmy Microsoft
-description: Ten poradnik pokazuje, jak wdrożyć zdalnego akcelerator rozwiązań do monitorowania na komputerze lokalnym przy użyciu programu Visual Studio Code na potrzeby projektowania i testowania.
+title: Wdróż lokalnie rozwiązanie do monitorowania zdalnego — Visual Studio Code — Azure | Microsoft Docs
+description: Ten przewodnik przedstawia sposób wdrażania akceleratora rozwiązania do monitorowania zdalnego na maszynie lokalnej przy użyciu Visual Studio Code do testowania i programowania.
 author: avneet723
 manager: hegate
 ms.author: avneets
@@ -8,99 +8,99 @@ ms.service: iot-accelerators
 services: iot-accelerators
 ms.date: 01/17/2019
 ms.topic: conceptual
-ms.openlocfilehash: ed3301eb0e723e05e2a642ffea2f1609032553b4
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 8f1d20e9a6a78d99a23fe4b98aeb4f3eb8359da7
+ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66730163"
+ms.lasthandoff: 11/09/2019
+ms.locfileid: "73890955"
 ---
-# <a name="deploy-the-remote-monitoring-solution-accelerator-locally---visual-studio-code"></a>Wdrażanie zdalne monitorowanie akceleratora rozwiązań lokalnie — Visual Studio Code
+# <a name="deploy-the-remote-monitoring-solution-accelerator-locally---visual-studio-code"></a>Wdróż lokalnie Akcelerator rozwiązania do monitorowania zdalnego Visual Studio Code
 
 [!INCLUDE [iot-accelerators-selector-local](../../includes/iot-accelerators-selector-local.md)]
 
-W tym artykule pokazano, jak wdrożyć akcelerator rozwiązań monitorowania zdalnego na komputerze lokalnym na potrzeby projektowania i testowania. Dowiesz się, jak uruchomić mikrousługi w programie Visual Studio Code. Wdrożenie lokalne mikrousług używa następujących usług w chmurze: Usługa IoT Hub, usługa Cosmos DB, analizy przesyłania strumieniowego usługi Azure i usługi Azure Time Series Insights.
+W tym artykule opisano sposób wdrażania akceleratora rozwiązania do monitorowania zdalnego na maszynie lokalnej na potrzeby testowania i programowania. Dowiesz się, jak uruchamiać mikrousługi w Visual Studio Code. Lokalne wdrożenie mikrousług używa następujących usług w chmurze: IoT Hub, Cosmos DB, Azure Streaming Analytics i Azure Time Series Insights.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-Aby wdrożyć usługi platformy Azure używane przez akcelerator rozwiązania monitorowania zdalnego, należy aktywną subskrypcją platformy Azure.
+Aby można było wdrożyć usługi platformy Azure używane przez Akcelerator rozwiązania do monitorowania zdalnego, wymagana jest aktywna subskrypcja platformy Azure.
 
-Jeśli jej nie masz, możesz utworzyć bezpłatne konto próbne w zaledwie kilka minut. Aby uzyskać więcej informacji, zobacz [bezpłatnej wersji próbnej Azure](https://azure.microsoft.com/pricing/free-trial/).
+Jeśli jej nie masz, możesz utworzyć bezpłatne konto próbne w zaledwie kilka minut. Aby uzyskać szczegółowe informacje, zobacz [Bezpłatna wersja próbna platformy Azure](https://azure.microsoft.com/pricing/free-trial/).
 
-### <a name="machine-setup"></a>Ustawienia komputera
+### <a name="machine-setup"></a>Konfiguracja komputera
 
-Aby wykonać wdrożenie lokalne, potrzebne są następujące narzędzia, które są zainstalowane na lokalnej maszynie do programowania:
+Aby ukończyć lokalne wdrożenie, potrzebne są następujące narzędzia zainstalowane na lokalnym komputerze deweloperskim:
 
-* [Usługa Git](https://git-scm.com/)
+* [Git](https://git-scm.com/)
 * [.NET Core](https://dotnet.microsoft.com/download)
 * [Docker](https://www.docker.com)
 * [Nginx](https://nginx.org/en/download.html)
 * [Visual Studio Code](https://code.visualstudio.com/)
-* [Program VS Code C# rozszerzenia](https://code.visualstudio.com/docs/languages/csharp)
-* [Node.js v8](https://nodejs.org/) — to oprogramowanie jest wymagane w przypadku komputerów z systemem interfejsu wiersza polecenia, które skrypty umożliwia tworzenie zasobów platformy Azure. Nie używaj v10 środowiska Node.js
+* [C# Rozszerzenie vs Code](https://code.visualstudio.com/docs/languages/csharp)
+* [Node. js V8](https://nodejs.org/) — to oprogramowanie jest wymaganiem wstępnym dla komputerów, które są używane przez skrypty do tworzenia zasobów platformy Azure. Nie używaj środowiska Node. js v10
 
 > [!NOTE]
-> Visual Studio Code jest dostępny dla Windows, Mac i Ubuntu.
+> Visual Studio Code jest dostępny dla systemów Windows, Mac i Ubuntu.
 
 [!INCLUDE [iot-accelerators-local-setup](../../includes/iot-accelerators-local-setup.md)]
 
 ## <a name="run-the-microservices"></a>Uruchamianie mikrousług
 
-W tej sekcji uruchamiasz mikrousług monitorowania zdalnego. Działania interfejsu użytkownika sieci web, usługi symulacji urządzenia na platformie Docker i mikrousług w programie Visual Studio Code.
+W tej sekcji uruchomiono mikrousługi zdalnego monitorowania. Uruchamiasz interfejs użytkownika sieci Web w sposób natywny, usługę symulacji urządzenia w Docker i mikrousługi w Visual Studio Code.
 
 ### <a name="build-the-code"></a>Kompilowanie kod
 
-Przejdź do azure-iot-pcs-remote-monitoring-dotnet\services w wierszu polecenia, a następnie uruchom następujące polecenia, aby skompilować kod.
+Przejdź do Azure-IoT-PCs-Remote-Monitoring-dotnet\services w wierszu polecenia i uruchom następujące polecenia, aby skompilować kod.
 
 ```cmd
 dotnet restore
 dotnet build -c Release
 ```
 
-### <a name="deploy-all-other-microservices-on-local-machine"></a>Wdrażaj wszystkie mikrousługi na komputerze lokalnym
+### <a name="deploy-all-other-microservices-on-local-machine"></a>Wdróż wszystkie mikrousługi na komputerze lokalnym
 
-Poniższe kroki pokazują, jak uruchomić mikrousług zdalnego monitorowania w programie Visual Studio Code:
+Poniższe kroki pokazują, jak uruchomić mikrousługi zdalnego monitorowania w Visual Studio Code:
 
 1. Uruchom program Visual Studio Code.
-1. Otwórz w programie VS Code **azure-iot-pcs-remote-monitoring-dotnet** folderu.
-1. Utwórz nowy folder o nazwie **.vscode** w **azure-iot-pcs-remote-monitoring-dotnet** folderu.
-1. Skopiuj pliki **launch.json** i **tasks.json** z services\scripts\local\launch\idesettings\vscode do **.vscode** właśnie utworzony folder.
-1. Otwórz **panelu debugowania** w programie VS Code i uruchom **Uruchom wszystkie mikrousługi** konfiguracji. Ta konfiguracja działa mikrousług symulacji urządzenia na platformie Docker i uruchamia innych mikrousług w debugerze.
+1. W VS Code Otwórz folder **Azure-IoT-komputery-Remote-Monitoring-dotnet** .
+1. Utwórz nowy folder o nazwie **. programu vscode** w folderze **Azure-IoT-komputery-Remote-Monitoring-dotnet** .
+1. Skopiuj pliki **Launch. JSON** i **Tasks. JSON** z services\scripts\local\launch\idesettings\vscode do folderu **. programu vscode** , który właśnie został utworzony.
+1. Otwórz **panel Debugowanie** w vs Code i uruchom polecenie **Uruchom wszystkie mikrousługi** . Ta konfiguracja uruchamia mikrousługę symulacji urządzenia w Docker i uruchamia inne mikrousługi w debugerze.
 
-Dane wyjściowe uruchamianie **Uruchom wszystkie microsoervices** w konsoli debugowania wygląda podobnie do następującej:
+Wyjście z uruchamiania **Uruchom wszystkie microsoervices** w konsoli debugowania wygląda następująco:
 
-[![Deploy-Local-Microservices](./media/deploy-locally-vscode/auth-debug-results-inline.png)](./media/deploy-locally-vscode/auth-debug-results-expanded.png#lightbox)
+[![Wdrażanie-lokalne-mikrousługi](./media/deploy-locally-vscode/auth-debug-results-inline.png)](./media/deploy-locally-vscode/auth-debug-results-expanded.png#lightbox)
 
-### <a name="run-the-web-ui"></a>Uruchom interfejs użytkownika sieci web
+### <a name="run-the-web-ui"></a>Uruchamianie interfejsu użytkownika sieci Web
 
-W tym kroku należy uruchomić interfejs użytkownika sieci web. Przejdź do **azure-iot-pcs-remote-monitoring-dotnet\webui** folderu w lokalnym skopiować, a następnie uruchom następujące polecenia:
+W tym kroku zostanie uruchomiony interfejs użytkownika sieci Web. Przejdź do folderu **Azure-IoT-PCs-Remote-Monitoring-dotnet\webui** w lokalnej kopii i uruchom następujące polecenia:
 
 ```cmd
 npm install
 npm start
 ```
 
-Po zakończeniu początkowego przeglądarki zostanie wyświetlona strona **http:\//localhost:3000 / pulpit nawigacyjny**. Oczekiwane są błędy na tej stronie. Aby wyświetlić aplikację bez błędów, wykonaj poniższe czynności.
+Po zakończeniu uruchamiania Przeglądarka wyświetla stronę **http:\//localhost: 3000/pulpit nawigacyjny**. Błędy na tej stronie są oczekiwane. Aby wyświetlić aplikację bez błędów, wykonaj następujące czynności.
 
-### <a name="configure-and-run-nginx"></a>Konfigurowanie i uruchamianie serwera NGINX
+### <a name="configure-and-run-nginx"></a>Konfigurowanie i uruchamianie NGINX
 
-Konfigurowanie zwrotnego serwera proxy do łączenia aplikacji sieci web i mikrousług uruchomiona na komputerze lokalnym:
+Skonfiguruj odwrotny serwer proxy, aby połączyć aplikację sieci Web i mikrousługi uruchomione na komputerze lokalnym:
 
-* Kopiuj **nginx.conf** plik wchodzącej w skład **webui\scripts\localhost** folder **nginx\conf** katalog_instalacji.
-* Uruchom **nginx**.
+* Skopiuj plik **Nginx. conf** z folderu **webui\scripts\localhost** do katalogu instalacyjnego **nginx\conf** .
+* Uruchom **Nginx**.
 
-Aby uzyskać więcej informacji o uruchamianiu **nginx**, zobacz [nginx dla Windows](https://nginx.org/en/docs/windows.html).
+Aby uzyskać więcej informacji na temat uruchamiania programu **Nginx**, zobacz [Nginx for Windows](https://nginx.org/en/docs/windows.html).
 
-### <a name="connect-to-the-dashboard"></a>Łączenie do pulpitu nawigacyjnego
+### <a name="connect-to-the-dashboard"></a>Nawiązywanie połączenia z pulpitem nawigacyjnym
 
-Aby uzyskać dostęp do pulpitu nawigacyjnego rozwiązania monitorowania zdalnego, przejdź do protokołu http:\//localhost:9000 w przeglądarce.
+Aby uzyskać dostęp do pulpitu nawigacyjnego rozwiązania do monitorowania zdalnego, przejdź do protokołu http:\//localhost: 9000 w przeglądarce.
 
 ## <a name="clean-up"></a>Czyszczenie
 
-Aby uniknąć niepotrzebnych opłat, po zakończeniu testowania Usuń usług w chmurze z subskrypcji platformy Azure. Aby usunąć usługi, przejdź do [witryny Azure portal](https://ms.portal.azure.com) i Usuń zasób grupy, która **start.cmd** skrypt utworzony.
+Aby uniknąć niepotrzebnych opłat, po zakończeniu testowania Usuń usługi w chmurze z subskrypcji platformy Azure. Aby usunąć usługi, przejdź do [Azure Portal](https://ms.portal.azure.com) i Usuń grupę zasobów utworzoną przez skrypt **Start. cmd** .
 
-Możesz także usunąć lokalną kopię repozytorium zdalne monitorowanie utworzone podczas klonowania kodu źródłowego z repozytorium GitHub.
+Możesz również usunąć kopię lokalną repozytorium zdalnego monitorowania utworzonego podczas klonowania kodu źródłowego z usługi GitHub.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
-Teraz, że udało Ci się wdrożyć rozwiązania do zdalnego monitorowania, następnym krokiem jest [zapoznaj się z możliwościami pulpitu nawigacyjnego rozwiązania](quickstart-remote-monitoring-deploy.md).
+Teraz, gdy wdrożono rozwiązanie do monitorowania zdalnego, następnym krokiem jest zapoznanie się z [możliwościami pulpitu nawigacyjnego rozwiązania](quickstart-remote-monitoring-deploy.md).

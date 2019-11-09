@@ -15,12 +15,12 @@ ms.author: billmath
 search.appverid:
 - MET150
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ac1b75536e092203490a390860a1cead7ac333b7
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: 0398ff7eb8931acc400b326ff92deaf75f0aa97e
+ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73817976"
+ms.lasthandoff: 11/09/2019
+ms.locfileid: "73882838"
 ---
 # <a name="implement-password-hash-synchronization-with-azure-ad-connect-sync"></a>Implementowanie synchronizacji skrótów haseł z synchronizacją Azure AD Connect
 Ten artykuł zawiera informacje potrzebne do synchronizacji haseł użytkowników z wystąpienia lokalnego Active Directory do wystąpienia Azure Active Directory opartego na chmurze (Azure AD).
@@ -32,7 +32,7 @@ Aby zsynchronizować hasło, Azure AD Connect Sync wyodrębnia skrót hasła z l
 
 Rzeczywisty przepływ danych procesu synchronizacji skrótów haseł jest podobny do synchronizacji danych użytkownika. Hasła są jednak synchronizowane częściej niż okno synchronizacja katalogu standardowego dla innych atrybutów. Proces synchronizacji skrótów haseł jest uruchamiany co 2 minuty. Nie można zmodyfikować częstotliwości tego procesu. Synchronizacja hasła powoduje zastąpienie istniejącego hasła w chmurze.
 
-Po pierwszym włączeniu funkcji synchronizacji skrótów haseł wykonywana jest początkowa synchronizacja haseł wszystkich użytkowników należących do zakresu. Nie można jawnie zdefiniować podzbioru haseł użytkowników, które mają zostać zsynchronizowane. Jeśli jednak istnieje wiele łączników, można wyłączyć synchronizację skrótów haseł dla niektórych łączników, ale nie inne za pomocą polecenia cmdlet [Set-ADSyncAADPasswordSyncConfiguration](https://docs.microsoft.com/en-us/azure/active-directory-domain-services/active-directory-ds-getting-started-password-sync-synced-tenant) .
+Po pierwszym włączeniu funkcji synchronizacji skrótów haseł wykonywana jest początkowa synchronizacja haseł wszystkich użytkowników należących do zakresu. Nie można jawnie zdefiniować podzbioru haseł użytkowników, które mają zostać zsynchronizowane. Jeśli jednak istnieje wiele łączników, można wyłączyć synchronizację skrótów haseł dla niektórych łączników, ale nie inne za pomocą polecenia cmdlet [Set-ADSyncAADPasswordSyncConfiguration](https://docs.microsoft.com/azure/active-directory-domain-services/active-directory-ds-getting-started-password-sync-synced-tenant) .
 
 Po zmianie hasła lokalnego zaktualizowane hasło jest synchronizowane najczęściej, w ciągu kilku minut.
 Funkcja synchronizacji skrótów haseł automatycznie ponawia próbę synchronizacji nie powiodła się. Jeśli wystąpi błąd podczas próby zsynchronizowania hasła, w Podglądzie zdarzeń zostanie zarejestrowany błąd.

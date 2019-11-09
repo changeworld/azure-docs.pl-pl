@@ -1,7 +1,7 @@
 ---
 title: Pulpit nawigacyjny — Language Understanding — LUIS
 titleSuffix: Azure Cognitive Services
-description: Popraw intencje za pomocą pulpitu nawigacyjnego analizy, wizualnego narzędzia do raportowania.
+description: Popraw intencje i jednostki za pomocą pulpitu nawigacyjnego swojej aplikacji. Na pulpicie nawigacyjnym są wyświetlane ogólne informacje o aplikacji z wyróżnionymi intencjami, które powinny zostać naprawione.
 services: cognitive-services
 author: diberry
 manager: nitinme
@@ -9,14 +9,14 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
-ms.date: 05/22/2019
+ms.date: 11/08/2019
 ms.author: diberry
-ms.openlocfilehash: 22e187bba3782e485685354c203a6273d5bcc618
-ms.sourcegitcommit: 97605f3e7ff9b6f74e81f327edd19aefe79135d2
+ms.openlocfilehash: d9ae126753f55349f9bf3eefd20bc4d222866af1
+ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70735050"
+ms.lasthandoff: 11/09/2019
+ms.locfileid: "73888212"
 ---
 # <a name="how-to-use-the-dashboard-to-improve-your-app"></a>Jak ulepszyć aplikację przy użyciu pulpitu nawigacyjnego
 
@@ -33,7 +33,7 @@ Trzy problemy rozkierowane na pulpicie nawigacyjnym są następujące:
 |Problem|Kolor wykresu|Wyjaśnienie|
 |--|--|--|
 |Nierównoważność danych|-|Dzieje się tak, gdy liczba przykładowych wyrażenia długości znacznie się różni. Wszystkie intencje muszą mieć w _przybliżeniu_ tę samą liczbę przykładowych wyrażenia długości — z wyjątkiem zamiaru none. Powinna ona mieć 10%-15% łącznej liczby wyrażenia długości w aplikacji.<br><br> Jeśli dane są niezrównoważone, ale dokładność przeznaczenie jest wyższa od pewnej wartości progowej, to nierównowaga nie jest raportowana jako problem.<br><br>**Rozpocznij od tego problemu — może to być główna przyczyna innych problemów.**|
-|Niejasne przewidywania|Pomarańczowy|Dzieje się tak, gdy najlepsze zamierzenie i wyniki następnego celu są wystarczająco zbliżone, że mogą przerzucać kolejne szkolenia, z powodu [próbkowania negatywnego](luis-how-to-train.md#train-with-all-data) lub więcej przykładowych wyrażenia długości dodanych do intencji. |
+|Niejasne przewidywania|Orange|Dzieje się tak, gdy najlepsze zamierzenie i wyniki następnego celu są wystarczająco zbliżone, że mogą przerzucać kolejne szkolenia, z powodu [próbkowania negatywnego](luis-how-to-train.md#train-with-all-data) lub więcej przykładowych wyrażenia długości dodanych do intencji. |
 |Nieprawidłowe przewidywania|Czerwony|Dzieje się tak, gdy przykład wypowiedź nie jest przewidziany dla zamiaru oznaczonego etykietą (zamiar, w której znajduje się).|
 
 Poprawne przewidywania są reprezentowane kolorem niebieskim.
@@ -100,7 +100,7 @@ Nie należy dodawać wyrażenia długości do zamiaru brak, chyba że jest to su
 
 > [!Tip]
 > Skorzystaj z trzeciej sekcji na stronie, **wyrażenia długości z zamiarem** z ustawieniem **wyrażenia długości (Number)** jako krótkiego przewodnika, którego intencje potrzebują więcej wyrażenia długości.  
-    ![Użyj opcji "wyrażenia długości (Number)", aby znaleźć intencje z niezrównoważoną ilością danych.](./media/luis-how-to-use-dashboard/predictions-per-intent-number-of-utterances.png)
+    ![użyć opcji "wyrażenia długości (Number)", aby znaleźć intencje z niezrównoważoną ilością danych.](./media/luis-how-to-use-dashboard/predictions-per-intent-number-of-utterances.png)
 
 ### <a name="review-incorrect-predictions"></a>Przejrzyj nieprawidłowe przewidywania
 
@@ -154,7 +154,7 @@ Określ procent wartości progowych, z którymi masz doświadczenie dla Twojej f
 
 Filtr umożliwia znalezienie intencji z określonym problemem:
 
-|Filtr|Sugerowana wartość procentowa|Cel|
+|Filtr|Sugerowana wartość procentowa|Przeznaczenie|
 |--|--|--|
 |Najbardziej problematyczne intencje|-|**Zacznij tutaj** — naprawianie wyrażenia długości w tym celu poprawi aplikację więcej niż inne poprawki.|
 |Poprawne przewidywania poniżej|60%|Jest to wartość procentowa wyrażenia długości w wybranym zamierzeniu, która jest poprawna, ale ma wynik pewności poniżej wartości progowej. |

@@ -5,12 +5,12 @@ author: uhabiba04
 ms.topic: article
 ms.date: 11/04/2019
 ms.author: v-umha
-ms.openlocfilehash: c76fd151bf70bfff6eed3b45a673f94777e59467
-ms.sourcegitcommit: 018e3b40e212915ed7a77258ac2a8e3a660aaef8
+ms.openlocfilehash: 2b15cc56cb4f804fac0b047819ccf166950e1cf3
+ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73797909"
+ms.lasthandoff: 11/09/2019
+ms.locfileid: "73890972"
 ---
 # <a name="imagery-partner-integration"></a>Integracja z partnerem obrazów
 
@@ -97,7 +97,7 @@ Opcjonalnie można uwzględnić parametry zapytania dla wywołań GET do filtrow
 
 Poniżej przykładowego żądania jest uzyskanie listy urządzeń:
 
-```
+```azurepowershell-interactive
 curl -X GET "https://microsoft-farmbeats.azurewebsites.net/Device" -H
 "Content-Type: application/json" -H
 "Authorization: Bearer <Access-Token>”
@@ -108,7 +108,7 @@ Większość wywołań GET, POST i PUT wymaga treści żądania JSON.
 Poniżej przykładowego żądania jest utworzenie urządzenia (zawiera on wejściowy kod JSON z treścią żądania).
 
 
-```json
+```azurepowershell-interactive
 curl -X POST "https://microsoft-farmbeats.azurewebsites.net/Device" -H  
 "accept: application/json" -H  
 "Content-Type: application/json" -H "Authorization: Bearer <Access-Token>" -d

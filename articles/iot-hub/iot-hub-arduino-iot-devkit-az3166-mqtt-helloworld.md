@@ -1,6 +1,6 @@
 ---
 title: Wysyłanie komunikatów do serwera MQTT przy użyciu biblioteki klienckiej usługi Azure MQTT | Microsoft Docs
-description: Używanie DevKit jako klienta do wysyłania komunikatów do serwera MQTT
+description: Dowiedz się, jak wysyłać komunikaty do brokera MQTT przy użyciu biblioteki klienta MQTT. Dowiedz się również, jak skonfigurować zestawu deweloperskiego IoT DevKit jako klienta MQTT.
 author: liydu
 manager: jeffya
 ms.service: iot-hub
@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.tgt_pltfrm: arduino
 ms.date: 04/02/2018
 ms.author: liydu
-ms.openlocfilehash: 6afe0a2fe366b83af45682245776c803c99483d3
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 4de8b0910a2be48cc626775c5c9bc873c6e780dc
+ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73484031"
+ms.lasthandoff: 11/09/2019
+ms.locfileid: "73889546"
 ---
 # <a name="send-messages-to-an-mqtt-server"></a>Wysyłanie komunikatów do serwera MQTT
 

@@ -1,7 +1,7 @@
 ---
 title: Liczba znaków — interfejs API tłumaczenia tekstu w usłudze Translator
 titleSuffix: Azure Cognitive Services
-description: Jak interfejs API tłumaczenia tekstu w usłudze Translator liczy znaki.
+description: W tym artykule wyjaśniono, w jaki sposób usługa Azure Cognitive Services interfejs API tłumaczenia tekstu w usłudze Translator zlicza znaki, aby zrozumieć, jak pozyskuje zawartość.
 services: cognitive-services
 author: swmachan
 manager: nitinme
@@ -10,12 +10,12 @@ ms.subservice: translator-text
 ms.topic: conceptual
 ms.date: 06/04/2019
 ms.author: swmachan
-ms.openlocfilehash: e3a16d9272e75f9a94f5381c1681c036d177e0f6
-ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
+ms.openlocfilehash: cb70b8624ac0d909511032622948f14f8764b153
+ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68595988"
+ms.lasthandoff: 11/09/2019
+ms.locfileid: "73888159"
 ---
 # <a name="how-the-translator-text-api-counts-characters"></a>Jak interfejs API tłumaczenia tekstu w usłudze Translator liczy znaki
 
@@ -24,16 +24,16 @@ Interfejs API tłumaczenia tekstu w usłudze Translator liczy każdy punkt kodu 
 Jakie są następujące zliczenia:
 
 * Tekst przesłany do interfejs API tłumaczenia tekstu w usłudze Translator w treści żądania
-   * `Text`w przypadku korzystania z metod przeszukiwania, transliteracji i słownika
-   * `Text`i `Translation` w przypadku korzystania z przykładów słownika
+   * `Text` podczas korzystania z metod przeszukiwania tłumaczenia, transliteracji i słownika
+   * `Text` i `Translation` przy użyciu metody przykładów słownika
 * Wszystkie znaczniki: HTML, tagi XML itp. w polu tekstowym treści żądania. Nie zliczane jest notacja JSON użyta do skompilowania żądania (na przykład "Text:").
 * Pojedyncza litera
-* Znaki interpunkcyjne
+* interpunkcyjny
 * Spacja, tabulator, znacznik i dowolny znak znaku odstępu
 * Każdy punkt kodowy zdefiniowany w kodzie Unicode
 * Wielokrotne tłumaczenie, nawet jeśli wcześniej przetłumaczy ten sam tekst
 
-W przypadku skryptów opartych na ideograms, takich jak chiński i japoński Kanji, interfejs API tłumaczenia tekstu w usłudze Translator będzie nadal liczyć liczbę punktów kodowych Unicode, jeden znak na ideogram. Wyjątek: Surogaty Unicode liczą się jako dwa znaki.
+W przypadku skryptów opartych na ideograms, takich jak chiński i japoński Kanji, interfejs API tłumaczenia tekstu w usłudze Translator będzie nadal liczyć liczbę punktów kodowych Unicode, jeden znak na ideogram. Wyjątek: Liczba surogatów Unicode jest liczona jako dwa znaki.
 
 Liczba żądań, słów, bajtów lub zdań jest nieistotna w liczbie znaków.
 

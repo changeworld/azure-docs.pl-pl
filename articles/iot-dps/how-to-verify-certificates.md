@@ -1,79 +1,78 @@
 ---
-title: Jak przeprowadzić dowodu posiadania dla certyfikatów X.509 urzędu certyfikacji za pomocą usługi Azure IoT Hub Device Provisioning | Dokumentacja firmy Microsoft
-description: Sposób weryfikacji certyfikatów X.509 urzędu certyfikacji za pomocą usługi Device Provisioning
+title: Jak przeprowadzić potwierdzenie dla certyfikatów urzędu certyfikacji X. 509 za pomocą usługi Azure IoT Hub Device Provisioning Service
+description: Jak przeprowadzić potwierdzenie dla certyfikatów urzędu certyfikacji X. 509 za pomocą usługi Azure IoT Hub Device Provisioning Service
 author: wesmc7777
 ms.author: wesmc
 ms.date: 02/26/2018
 ms.topic: conceptual
 ms.service: iot-dps
 services: iot-dps
-manager: timlt
-ms.openlocfilehash: afa4b3861e9fb7f91fd9f5d540353c5fad23efe0
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: e762a1ab307bdc5ca9369c3f2e424cf6fd35f163
+ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "54913618"
+ms.lasthandoff: 11/09/2019
+ms.locfileid: "73890628"
 ---
-# <a name="how-to-do-proof-of-possession-for-x509-ca-certificates-with-your-device-provisioning-service"></a>Jak przeprowadzić dowodu posiadania dla certyfikatów X.509 urzędu certyfikacji za pomocą usługi Device Provisioning
+# <a name="how-to-do-proof-of-possession-for-x509-ca-certificates-with-your-device-provisioning-service"></a>Jak przeprowadzić potwierdzenie dla certyfikatów urzędu certyfikacji X. 509 za pomocą usługi Device Provisioning
 
-Zweryfikowano X.509 urząd certyfikacji (CA) certyfikat jest certyfikat urzędu certyfikacji, który został przekazany i zarejestrowana w celu aprowizowania usługi i zrealizowano dowodu posiadania w usłudze. 
+Zweryfikowany certyfikat urzędu certyfikacji X. 509 jest certyfikatem urzędu certyfikacji, który został przekazany i zarejestrowany w usłudze aprowizacji i został przeszedł przez dowód posiadania w usłudze. 
 
-Dowód posiadania obejmuje następujące czynności:
-1. Pobierz kod weryfikacyjny unikatowy generowane przez usługę aprowizacji dla certyfikatu X.509 urzędu certyfikacji. Można to zrobić w witrynie Azure portal.
-2. Utwórz certyfikat X.509 weryfikacji z kodem weryfikacyjnym, jako jego podmiot i podpisanie certyfikatu przy użyciu klucza prywatnego skojarzonego za pomocą certyfikatu X.509 urzędu certyfikacji.
-3. Przekaż certyfikat weryfikacji podpisanego z usługą. Usługa sprawdza poprawność certyfikatu weryfikacji za pomocą publiczną część certyfikatu urzędu certyfikacji, należy zweryfikować, zatem potwierdzające, że znajdują się w posiadaniu klucza prywatnego certyfikatu urzędu certyfikacji.
+Dowód posiadania obejmuje następujące kroki:
+1. Uzyskaj unikatowy kod weryfikacyjny wygenerowany przez usługę aprowizacji dla certyfikatu urzędu certyfikacji X. 509. Można to zrobić z poziomu Azure Portal.
+2. Utwórz certyfikat weryfikacji X. 509 z kodem weryfikacyjnym jako podmiot i podpisz certyfikat z kluczem prywatnym skojarzonym z certyfikatem urzędu certyfikacji X. 509.
+3. Przekaż podpisany certyfikat weryfikacji do usługi. Usługa sprawdza poprawność certyfikatu weryfikacji przy użyciu publicznej części certyfikatu urzędu certyfikacji do zweryfikowania, co oznacza, że dysponujesz kluczem prywatnym certyfikatu urzędu certyfikacji.
 
-Zweryfikowanych certyfikatów odgrywa ważną rolę w przypadku korzystania z grup rejestracji. Weryfikowanie własności certyfikatu zawiera dodatkowa warstwa zabezpieczeń poprzez zapewnienie, że przekazujesz certyfikatu jest w posiadaniu klucza prywatnego certyfikatu. Weryfikacja zapobiega aktora złośliwego wykrywanie ruchu z wyodrębniania pośredniego certyfikatu oraz przy użyciu tego certyfikatu można utworzyć grupę rejestracji w ich własnych usługę aprowizacji, efektywnie przejęcie kontroli nad urządzeniami. Przez poświadczenie własność katalogu głównego lub pośredniego certyfikatu w łańcuchu certyfikatów, one potwierdzające, że masz uprawnienia do generowania certyfikatów liścia dla urządzeń, które spowoduje zarejestrowanie w ramach tej grupy rejestracji. Aby z tego powodu, certyfikat głównego lub pośredniego skonfigurowane w grupie rejestracji musi być zweryfikowany certyfikat, lub musi roll maksymalnie zweryfikowany certyfikat w łańcuchu certyfikatów urządzenia przedstawia podczas uwierzytelniania w usłudze. Aby dowiedzieć się więcej na temat grup rejestracji, zobacz [certyfikaty X.509](concepts-security.md#x509-certificates) i [sterowanie dostępem urządzenia do usługi aprowizacji za pomocą certyfikatów X.509](concepts-security.md#controlling-device-access-to-the-provisioning-service-with-x509-certificates).
+Zweryfikowane certyfikaty odgrywają ważną rolę podczas korzystania z grup rejestracji. Sprawdzenie, czy własność certyfikatu zapewnia dodatkową warstwę zabezpieczeń, upewniając się, że obiektu przekazującego certyfikatu jest posiadania klucza prywatnego certyfikatu. Weryfikacja uniemożliwia złośliwemu aktorowi wykrywanie ruchu przed wyodrębnieniem certyfikatu pośredniego i użycie tego certyfikatu do utworzenia grupy rejestracji w ramach własnej usługi aprowizacji, skutecznie przejmowanie urządzeń. Przez udowodnienie własności certyfikatu głównego lub pośredniego w łańcuchu certyfikatów potwierdzasz, że masz uprawnienia do generowania certyfikatów liści dla urządzeń, które będą się rejestrować w ramach tej grupy rejestracji. Z tego powodu certyfikat główny lub pośredni skonfigurowany w grupie rejestracji musi być zweryfikowanym certyfikatem lub musi zostać wycofany do zweryfikowanego certyfikatu w łańcuchu certyfikatów, gdy urządzenie jest wyświetlane podczas uwierzytelniania w usłudze. Aby dowiedzieć się więcej o grupach rejestracji, zobacz temat [certyfikaty x. 509](concepts-security.md#x509-certificates) i [Kontrola dostępu urządzenia do usługi aprowizacji za pomocą certyfikatów x. 509](concepts-security.md#controlling-device-access-to-the-provisioning-service-with-x509-certificates).
 
-## <a name="register-the-public-part-of-an-x509-certificate-and-get-a-verification-code"></a>Zarejestruj publiczną część certyfikatu X.509 i kodu weryfikacyjnego
+## <a name="register-the-public-part-of-an-x509-certificate-and-get-a-verification-code"></a>Rejestrowanie publicznej części certyfikatu X. 509 i uzyskiwanie kodu weryfikacyjnego
 
-Aby zarejestrować certyfikat urzędu certyfikacji z Twoją usługą aprowizacji i uzyskać kod weryfikacyjny, który można użyć podczas dowodu posiadania, wykonaj następujące kroki. 
+Aby zarejestrować certyfikat urzędu certyfikacji przy użyciu usługi aprowizacji i uzyskać kod weryfikacyjny, którego można użyć podczas weryfikacji, wykonaj następujące kroki. 
 
-1. W witrynie Azure portal przejdź do usługi aprowizacji, a następnie otwórz **certyfikaty** z menu po lewej stronie. 
-2. Kliknij przycisk **Dodaj** można dodać nowego certyfikatu.
-3. Wprowadź przyjazną nazwę wyświetlaną dla certyfikatu. Przejdź do pliku cer lub PEM, który reprezentuje publiczną część certyfikatu X.509. Kliknij pozycję **Przekaż**.
-4. Gdy otrzymasz powiadomienie, że Twój certyfikat została pomyślnie przekazana, kliknij przycisk **Zapisz**.
+1. W Azure Portal przejdź do usługi aprowizacji, a następnie otwórz pozycję **Certyfikaty** w menu po lewej stronie. 
+2. Kliknij przycisk **Dodaj** , aby dodać nowy certyfikat.
+3. Wprowadź przyjazną nazwę wyświetlaną dla certyfikatu. Przejdź do pliku cer lub PEM, który reprezentuje publiczną część certyfikatu X. 509. Kliknij pozycję **Przekaż**.
+4. Po otrzymaniu powiadomienia o pomyślnym przekazaniu certyfikatu kliknij przycisk **Zapisz**.
 
     ![Przekazywanie certyfikatu](./media/how-to-verify-certificates/add-new-cert.png)  
 
-   Twój certyfikat będzie wyświetlana w **Eksplorator certyfikatów** listy. Należy pamiętać, że **stan** tego certyfikatu jest *niezweryfikowane*.
+   Certyfikat zostanie wyświetlony na liście **Eksplorator certyfikatów** . Należy pamiętać, że nie *zweryfikowano* **stanu** tego certyfikatu.
 
-5. Kliknij certyfikat, który zostało dodane w poprzednim kroku.
+5. Kliknij certyfikat dodany w poprzednim kroku.
 
-6. W **szczegóły certyfikatu**, kliknij przycisk **Generuj kod weryfikacyjny**.
+6. W obszarze **Szczegóły certyfikatu**kliknij przycisk **Generuj kod weryfikacyjny**.
 
-7. Tworzy usługę aprowizowania **kod weryfikacyjny** służącego do weryfikowania własności certyfikatu. Skopiuj kod do Schowka. 
+7. Usługa aprowizacji tworzy **kod weryfikacyjny** , którego można użyć do zweryfikowania własności certyfikatu. Skopiuj kod do Schowka. 
 
-   ![Zweryfikuj certyfikat](./media/how-to-verify-certificates/verify-cert.png)  
+   ![Weryfikuj certyfikat](./media/how-to-verify-certificates/verify-cert.png)  
 
-## <a name="digitally-sign-the-verification-code-to-create-a-verification-certificate"></a>Podpisuj cyfrowo kod weryfikacyjny, aby utworzyć certyfikat weryfikacji
+## <a name="digitally-sign-the-verification-code-to-create-a-verification-certificate"></a>Cyfrowe podpisywanie kodu weryfikacyjnego w celu utworzenia certyfikatu weryfikacji
 
-Teraz należy podpisać *kod weryfikacyjny* przy użyciu klucza prywatnego skojarzonego za pomocą certyfikatu X.509 urzędu certyfikacji, który generuje sygnaturę. Jest to nazywane [dowodu posiadania](https://tools.ietf.org/html/rfc5280#section-3.1) i wyników w weryfikacji podpisanego certyfikatu.
+Teraz musisz podpisać *kod weryfikacyjny* przy użyciu klucza prywatnego skojarzonego z certyfikatem urzędu certyfikacji X. 509, który generuje sygnaturę. Jest to tzw. [potwierdzenie posiadania](https://tools.ietf.org/html/rfc5280#section-3.1) i wyniki w podpisanym certyfikacie weryfikacji.
 
-Firma Microsoft udostępnia narzędzia i przykłady, które mogą pomóc Ci utworzyć certyfikat z podpisem weryfikacji: 
+Firma Microsoft udostępnia narzędzia i przykłady, które mogą pomóc utworzyć podpisany certyfikat weryfikacji: 
 
-- **Zestawu SDK usługi Azure IoT Hub C** zapewnia programu PowerShell (Windows) i skrypty powłoki Bash (Linux), ułatwiające tworzenie certyfikatów urzędu certyfikacji i liścia do tworzenia i wykonywanie dowodu posiadania za pomocą kodu weryfikacyjnego. Możesz pobrać [pliki](https://github.com/Azure/azure-iot-sdk-c/tree/master/tools/CACertificates) odpowiednie system do folderu roboczego i postępuj zgodnie z instrukcjami wyświetlanymi w [readme certyfikatów urzędu certyfikacji zarządzanie](https://github.com/Azure/azure-iot-sdk-c/blob/master/tools/CACertificates/CACertificateOverview.md) przeprowadzić dowodu posiadania w certyfikacie urzędu certyfikacji. 
-- **Azure IoT Hub zestawu SDK C#** zawiera [Group Certificate Verification Sample](https://github.com/Azure-Samples/azure-iot-samples-csharp/tree/master/provisioning/Samples/service/GroupCertificateVerificationSample), którego można użyć w celu dowodu posiadania.
+- **Zestaw Azure IoT Hub C SDK** udostępnia skrypty programu PowerShell (Windows) i bash (Linux), które ułatwiają tworzenie certyfikatów urzędu certyfikacji i liści na potrzeby opracowywania i wykonywanie dowodu posiadania przy użyciu kodu weryfikacyjnego. [Pliki](https://github.com/Azure/azure-iot-sdk-c/tree/master/tools/CACertificates) odpowiednie dla danego systemu można pobrać do folderu roboczego i postępować zgodnie z instrukcjami w [pliku Readme zarządzania certyfikatami urzędu certyfikacji](https://github.com/Azure/azure-iot-sdk-c/blob/master/tools/CACertificates/CACertificateOverview.md) w celu przeprowadzenia dowodu posiadania certyfikatu urzędu certyfikacji. 
+- **Zestaw Azure IoT Hub C# SDK** zawiera [przykład weryfikacji certyfikatu grupy](https://github.com/Azure-Samples/azure-iot-samples-csharp/tree/master/provisioning/Samples/service/GroupCertificateVerificationSample), którego można użyć do potwierdzenia posiadania.
  
 > [!IMPORTANT]
-> Oprócz wykonywania dowodu posiadania, skrypty programu PowerShell i programem Bash wymienionych wcześniej również pozwala na tworzenie certyfikatów głównych, certyfikaty pośrednie i certyfikatów liścia, używane do uwierzytelniania i aprowizować urządzenia. Te certyfikaty powinny być używane do tworzenia aplikacji tylko. One nie mogą być używane w środowisku produkcyjnym. 
+> Oprócz wykonywania dowodu istnienia, skrypty programu PowerShell i bash, które zostały wcześniej, również umożliwiają tworzenie certyfikatów głównych, certyfikatów pośrednich i certyfikatów liści, których można użyć do uwierzytelniania i aprowizacji urządzeń. Te certyfikaty powinny być używane tylko do celów deweloperskich. Nie powinny być używane w środowisku produkcyjnym. 
 
-Skrypty programu PowerShell i programem Bash, znajdujące się w dokumentacji i zestawów SDK polegają na [OpenSSL](https://www.openssl.org/). Można także użyć biblioteki OpenSSL lub innych narzędzi innych firm może ułatwić wykonywanie dowodu posiadania. Aby uzyskać więcej informacji na temat narzędzia dostarczane z zestawami SDK, zobacz [sposób korzystania z narzędzi dostępnych w zestawach SDK](how-to-use-sdk-tools.md). 
+Skrypty programu PowerShell i bash dostępne w dokumentacji i zestawach SDK są zależne od [OpenSSL](https://www.openssl.org/). Możesz również użyć OpenSSL lub innych narzędzi innych firm, aby ułatwić Ci dowód posiadania. Aby uzyskać więcej informacji na temat narzędzi dostarczanych z zestawami SDK, zobacz [jak korzystać z narzędzi dostępnych w](how-to-use-sdk-tools.md)zestawach SDK. 
 
 
-## <a name="upload-the-signed-verification-certificate"></a>Przekaż certyfikat weryfikacji podpisem
+## <a name="upload-the-signed-verification-certificate"></a>Przekaż podpisany certyfikat weryfikacji
 
-1. Przekaż wynikowy podpis jako certyfikat weryfikacji do usługi aprowizacji w portalu. W **szczegóły certyfikatu** w witrynie Azure portal, należy użyć _Eksploratora plików_ ikona obok pozycji **plik PEM lub cer certyfikatu weryfikacji** pola, aby przekazać podpisany certyfikat weryfikacji z systemu.
+1. Przekaż otrzymany podpis jako certyfikat weryfikacji do usługi aprowizacji w portalu. W obszarze **Szczegóły certyfikatu** na Azure Portal Użyj ikony _Eksploratora plików_ obok pola **plik PEM lub CER certyfikatu weryfikacji** , aby przekazać podpisany certyfikat weryfikacyjny z systemu.
 
-2. Po pomyślnym przekazaniu tego certyfikatu, kliknij przycisk **Sprawdź**. **Stan** zmian certyfikatu **_Verified_** w **Eksplorator certyfikatów** listy. Kliknij przycisk **Odśwież** Jeśli on nie być zaktualizowane automatycznie.
+2. Po pomyślnym przekazaniu certyfikatu kliknij przycisk **Weryfikuj**. **Stan** certyfikatu zmieni się na **_zweryfikowany_** na liście **Eksplorator certyfikatów** . Kliknij przycisk **Odśwież** , jeśli nie zostanie automatycznie zaktualizowany.
 
-   ![Przekaż certyfikat weryfikacji](./media/how-to-verify-certificates/upload-cert-verification.png)  
+   ![Przekaż weryfikację certyfikatu](./media/how-to-verify-certificates/upload-cert-verification.png)  
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
-- Aby dowiedzieć się więcej o tym, jak korzystać z portalu, aby utworzyć grupę rejestracji, zobacz [Zarządzanie rejestracjami urządzeń przy użyciu witryny Azure portal](how-to-manage-enrollments.md).
-- Aby dowiedzieć się więcej o tym, jak utworzyć grupę rejestracji za pomocą zestawów SDK usługi, zobacz [Zarządzanie rejestracjami urządzeń przy użyciu zestawów SDK usługi](how-to-manage-enrollments-sdks.md).
+- Aby dowiedzieć się, jak utworzyć grupę rejestracji przy użyciu portalu, zobacz [Zarządzanie rejestracjami urządzeń za pomocą Azure Portal](how-to-manage-enrollments.md).
+- Aby dowiedzieć się, jak używać zestawów SDK usługi do tworzenia grupy rejestracji, zobacz [Zarządzanie rejestracjami urządzeń za pomocą zestawów SDK usług](how-to-manage-enrollments-sdks.md).
 
 
 

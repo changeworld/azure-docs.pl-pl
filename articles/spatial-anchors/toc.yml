@@ -86,7 +86,7 @@
 - name: Zasoby
   items:
     - name: Interfejs API REST zarządzania zasobami usługi Azure Mixed Reality
-      href: 'https://docs.microsoft.com/en-us/rest/api/mixedreality/'
+      href: 'https://docs.microsoft.com/rest/api/mixedreality/'
     - name: Często zadawane pytania
       href: spatial-anchor-faq.md
     - name: Przekazywanie opinii o produkcie

@@ -3,24 +3,21 @@ title: Przykładowy skrypt interfejsu wiersza polecenia platformy Azure — twor
 description: Przykładowy skrypt interfejsu wiersza polecenia platformy Azure — tworzenie sieci wirtualnej dla aplikacji wielowarstwowych.
 services: virtual-network
 documentationcenter: virtual-network
-author: jimdial
-manager: timlt
-editor: tysonn
-tags: ''
-ms.assetid: ''
+author: KumudD
+manager: mtillman
 ms.service: virtual-network
 ms.devlang: azurecli
 ms.topic: article
 ms.tgt_pltfrm: ''
 ms.workload: infrastructure
 ms.date: 07/07/2017
-ms.author: timlt
-ms.openlocfilehash: 1cdc10157fb324ac9167860b9786f4902b1b8b81
-ms.sourcegitcommit: a8b638322d494739f7463db4f0ea465496c689c6
+ms.author: kumud
+ms.openlocfilehash: c211a476c31e386c9c74fcb0139fc61dad0a8eb8
+ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/17/2019
-ms.locfileid: "68295572"
+ms.lasthandoff: 11/09/2019
+ms.locfileid: "73889387"
 ---
 # <a name="create-a-network-for-multi-tier-applications"></a>Tworzenie sieci dla aplikacji wielowarstwowych
 
@@ -60,7 +57,7 @@ Ten skrypt zawiera następujące polecenia służące do tworzenia grupy zasobó
 | [az vm create](/cli/azure/vm) | Tworzy maszyny wirtualne i dołącza kartę sieciową do każdej maszyny wirtualnej. To polecenie określa również obraz maszyny wirtualnej do użycia oraz poświadczenia administracyjne. |
 | [az group delete](/cli/azure/group) | Usuwa grupę zasobów i wszystkie zasoby, które zawiera. |
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 Aby uzyskać więcej informacji na temat interfejsu wiersza polecenia platformy Azure, zobacz [dokumentację interfejsu wiersza polecenia platformy Azure](/cli/azure).
 

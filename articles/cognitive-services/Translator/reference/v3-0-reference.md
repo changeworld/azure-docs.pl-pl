@@ -1,7 +1,7 @@
 ---
 title: Dokumentacja interfejs API tłumaczenia tekstu w usłudze Translator V 3.0
 titleSuffix: Azure Cognitive Services
-description: Dokumentacja referencyjna interfejs API tłumaczenia tekstu w usłudze Translator V 3.0.
+description: Dokumentacja referencyjna interfejs API tłumaczenia tekstu w usłudze Translator V 3.0. Wersja 3 interfejs API tłumaczenia tekstu w usłudze Translator zapewnia nowoczesny internetowy interfejs API oparty na notacji JSON.
 services: cognitive-services
 author: swmachan
 manager: nitinme
@@ -10,12 +10,12 @@ ms.subservice: translator-text
 ms.topic: reference
 ms.date: 03/29/2018
 ms.author: swmachan
-ms.openlocfilehash: a441ca83230a1c715aadda79683964aaab6d6213
-ms.sourcegitcommit: 1c2659ab26619658799442a6e7604f3c66307a89
+ms.openlocfilehash: c07673e7b170170de4723a1232d2e7281feaaf99
+ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/10/2019
-ms.locfileid: "72252977"
+ms.lasthandoff: 11/09/2019
+ms.locfileid: "73888091"
 ---
 # <a name="translator-text-api-v30"></a>Interfejs API tłumaczenia tekstu w usłudze Translator v 3.0
 
@@ -48,7 +48,7 @@ Aby wymusić obsługę żądania przez określoną lokalizację geograficzną pl
 |Azure|Europa|  api-eur.cognitive.microsofttranslator.com|
 |Azure|Azja i Pacyfik|    api-apc.cognitive.microsofttranslator.com|
 
-## <a name="authentication"></a>Uwierzytelnianie
+## <a name="authentication"></a>Authentication
 
 Zasubskrybuj usługę interfejs API tłumaczenia tekstu w usłudze Translator lub [Cognitive Services wiele usług](https://azure.microsoft.com/pricing/details/cognitive-services/) w usłudze Azure Cognitive Services i Użyj klucza subskrypcji (dostępnego w Azure Portal) do uwierzytelniania. 
 
@@ -64,7 +64,7 @@ Istnieją trzy nagłówki, za pomocą których można uwierzytelniać swoją sub
 Pierwsza opcja polega na uwierzytelnianiu przy użyciu nagłówka `Ocp-Apim-Subscription-Key`. Dodaj nagłówek `Ocp-Apim-Subscription-Key: <YOUR_SECRET_KEY>` do żądania.
 
 ### <a name="authorization-token"></a>Token autoryzacji
-Alternatywnie możesz wymienić klucz tajny dla tokenu dostępu. Token ten jest dołączany do każdego żądania jako nagłówek `Authorization`. Aby uzyskać Token autoryzacji, wprowadź żądanie `POST` do następującego adresu URL:
+Alternatywnie możesz wymienić klucz tajny dla tokenu dostępu. Token ten jest dołączany do każdego żądania jako nagłówek `Authorization`. Aby uzyskać Token autoryzacji, należy wysłać żądanie `POST` do następującego adresu URL:
 
 | Środowisko     | Adres URL usługi uwierzytelniania                                |
 |-----------------|-----------------------------------------------------------|
@@ -98,9 +98,9 @@ W przypadku korzystania z wielousługowego klucza tajnego należy dołączyć dw
 
 Region jest wymagany w przypadku subskrypcji wielousługowego interfejsu API tekstu. Wybrany region jest jedynym regionem, którego można użyć do tłumaczenia tekstu przy użyciu klucza subskrypcji wielousługowej i musi być tym samym regionem wybranym podczas rejestrowania się w ramach subskrypcji wielousługowej za pośrednictwem Azure Portal.
 
-Dostępne regiony to `australiaeast`, `brazilsouth`, `canadacentral`, `centralindia`, `centralus` `centraluseuap`, `eastasia`, `eastus`, `eastus2`, `francecentral`, 0, 1, 2, 3, 4, 5, 6, @no__t – 17, 8, 9, 0, @no__ t-21 i 2.
+Dostępne są `australiaeast`, `brazilsouth`, `canadacentral`, `centralindia`, `centralus`, `centraluseuap`, `eastasia`, `eastus`, `eastus2`, `francecentral`, `japaneast`, `japanwest`, `koreacentral`, `northcentralus`, `northeurope`, `southcentralus`, `southeastasia`, `uksouth`, `westcentralus`, `westeurope`, `westus`, `westus2`i `southafricanorth`.
 
-Jeśli przekażesz klucz tajny w ciągu zapytania z parametrem `Subscription-Key`, należy określić region z parametrem zapytania `Subscription-Region`.
+Jeśli przekażesz klucz tajny w ciągu zapytania za pomocą parametru `Subscription-Key`, należy określić region z parametrem zapytania `Subscription-Region`.
 
 Jeśli używasz tokenu okaziciela, musisz uzyskać token z punktu końcowego regionu: `https://<your-region>.api.cognitive.microsoft.com/sts/v1.0/issueToken`.
 

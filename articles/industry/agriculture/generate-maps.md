@@ -5,12 +5,12 @@ author: uhabiba04
 ms.topic: article
 ms.date: 11/04/2019
 ms.author: v-umha
-ms.openlocfilehash: 6cdebb8f6abea2b50dd8aad58ccc9fb5e680cba9
-ms.sourcegitcommit: 018e3b40e212915ed7a77258ac2a8e3a660aaef8
+ms.openlocfilehash: 635431fb87e5f164f92ab4b7a1027ee96e9d801a
+ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73798481"
+ms.lasthandoff: 11/09/2019
+ms.locfileid: "73891025"
 ---
 # <a name="generate-maps"></a>Generuj mapy
 
@@ -88,7 +88,7 @@ Wykonaj następujące czynności:
     ![Farmy projektów](./media/get-sensor-data-from-sensor-partner/view-download-filter-1.png)
 
 3. Z menu rozwijanego wybierz **Typ**, **datę** i **nazwę** , a następnie wybierz pozycję **Zastosuj** do wyszukiwania mapy, którą chcesz wyświetlić.
-  Data utworzenia zadania jest pokazana w formacie type_farmname_YYYY-MM-DD.
+  Data utworzenia zadania jest wyświetlana w formacie type_farmname_YYYY-MM-DD.
 4. Przewiń listę dostępnych map przy użyciu pasków nawigacyjnych znajdujących się na końcu strony.
 5. Wybierz mapę, którą chcesz wyświetlić. W oknie podręcznym zostanie wyświetlona wersja zapoznawcza wybranej mapy.
 6. Wybierz pozycję **Pobierz**, a następnie Pobierz plik GEOJSON współrzędnych czujnika.
@@ -149,7 +149,7 @@ Wykonaj następujące czynności:
     ![Farmy projektów](./media/get-sensor-data-from-sensor-partner/view-download-filter-1.png)
 
 3. Z menu rozwijanego wybierz **Typ**, **datę** i **nazwę** , a następnie wybierz pozycję **Zastosuj** do wyszukiwania mapy, którą chcesz wyświetlić.
-  Data utworzenia zadania jest pokazana w formacie type_farmname_YYYY-MM-DD.
+  Data utworzenia zadania jest wyświetlana w formacie type_farmname_YYYY-MM-DD.
 
 4. Przewiń listę dostępnych map przy użyciu pasków nawigacyjnych znajdujących się na końcu strony.
 5. Dla każdej kombinacji nazwy i **daty** **farmy** dostępne są następujące trzy mapy:
@@ -170,7 +170,7 @@ Wilgotność gleby jest wodą, która znajduje się w odstępach między cząstk
 Przed podjęciem próby wygenerowania wilgotności gleby mapę cieplną upewnij się, że:
 
 - Należy wdrożyć co najmniej trzy czujniki wilgoci w glebie. Firma Microsoft zaleca, aby nie próbować utworzyć mapy wilgotności gleby przed wdrożeniem czujników i skojarzeniem ich z farmą.  
-- Co najmniej jedna z chmurowych wolnych scen musi być dostępna dla ostatnich 120 dni, od dnia, dla którego zażądano mapy wilgoci w glebie.
+- Na wygenerowanie mapę cieplną wilgoci ma wpływ pokrycie ścieżki, pokrycie chmury i cień w chmurze. Co najmniej jedna z chmurowych wolnych scen musi być dostępna dla ostatnich 120 dni, od dnia, dla którego zażądano mapy wilgoci w glebie.
 - Co najmniej połowa czujników wdrożonych w farmie musi być w trybie online i zawierać dane przesyłane strumieniowo do centrum danych.
 - Mapę cieplną powinny być generowane przy użyciu miar czujników z tego samego dostawcy.
 
@@ -216,10 +216,10 @@ Wykonaj następujące czynności:
 
     ![Farmy projektów](./media/get-sensor-data-from-sensor-partner/view-download-filter-1.png)
 
-3.  Z menu rozwijanego wybierz **Typ**, **datę** i **nazwę** , a następnie wybierz pozycję **Zastosuj** do wyszukiwania mapy, którą chcesz wyświetlić. Data utworzenia zadania jest pokazana w formacie type_farmname_YYYY-MM-DD.
+3.  Z menu rozwijanego wybierz **Typ**, **datę** i **nazwę** , a następnie wybierz pozycję **Zastosuj** do wyszukiwania mapy, którą chcesz wyświetlić. Data utworzenia zadania jest wyświetlana w formacie type_farmname_YYYY-MM-DD.
 4. Wybierz ikonę **sortowania** obok nagłówka tabeli, aby posortować dane zgodnie z farmą, datą, Data utworzenia, identyfikatorem zadania i typem zadania.
 5. Przewiń listę dostępnych map przy użyciu przycisków nawigacji na końcu strony.
 6. Wybierz mapę, którą chcesz wyświetlić. W oknie podręcznym zostanie wyświetlona wersja zapoznawcza wybranej mapy.
-7. Wybierz pozycję **Pobierz** menu rozwijane, aby wybrać format pobierania, a mapa zostanie pobrana i zapisana w folderze lokalnym Twojego komputera.
+7. Wybierz pozycję **Pobierz** menu rozwijane, aby wybrać format pobierania, a mapa zostanie pobrana i zapisana w określonym folderze.
 
     ![Farmy projektów](./media/get-sensor-data-from-sensor-partner/download-soil-moisture-map-1.png)

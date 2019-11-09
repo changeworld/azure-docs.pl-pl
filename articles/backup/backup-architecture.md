@@ -7,12 +7,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 02/19/2019
 ms.author: dacurwin
-ms.openlocfilehash: 24e90ebd2994c5fffc1252167c06783421f2ac33
-ms.sourcegitcommit: f9e81b39693206b824e40d7657d0466246aadd6e
+ms.openlocfilehash: e072923c2c8b1d8e5bb281a5bcff992b25289b4d
+ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/08/2019
-ms.locfileid: "72035250"
+ms.lasthandoff: 11/09/2019
+ms.locfileid: "73888500"
 ---
 # <a name="azure-backup-architecture-and-components"></a>Azure Backup architektura i składniki
 
@@ -120,7 +120,7 @@ Tworzenie kopii zapasowej deduplikowanych dysków | | | ![Częściowo][yellow]<b
     - Kopiowane są tylko bloki danych, które uległy zmianie od momentu utworzenia ostatniej kopii zapasowej.
     - Dane nie są szyfrowane. Azure Backup można utworzyć kopie zapasowe maszyn wirtualnych platformy Azure, które zostały zaszyfrowane przy użyciu Azure Disk Encryption.
     - Dane migawki mogą nie być od razu kopiowane do magazynu. W godzinach szczytu kopia zapasowa może trwać kilka godzin. Łączny czas wykonywania kopii zapasowej maszyny wirtualnej będzie krótszy niż 24 godziny dla codziennych zasad tworzenia kopii zapasowych.
-1. Po wysłaniu danych do magazynu zostanie utworzony punkt odzyskiwania. Domyślnie migawki są zachowywane przez dwa dni przed ich usunięciem. Ta funkcja umożliwia przywracanie z tych migawek, a tym samym wycinanie czasów przywracania. Skraca czas wymagany do przekształcania i kopiowania danych z magazynu. Zobacz [Azure Backup możliwości przywracania natychmiastowego](https://docs.microsoft.com/en-us/azure/backup/backup-instant-restore-capability).
+1. Po wysłaniu danych do magazynu zostanie utworzony punkt odzyskiwania. Domyślnie migawki są zachowywane przez dwa dni przed ich usunięciem. Ta funkcja umożliwia przywracanie z tych migawek, a tym samym wycinanie czasów przywracania. Skraca czas wymagany do przekształcania i kopiowania danych z magazynu. Zobacz [Azure Backup możliwości przywracania natychmiastowego](https://docs.microsoft.com/azure/backup/backup-instant-restore-capability).
 
 Maszyny wirtualne platformy Azure wymagają dostępu do Internetu dla poleceń sterowania. Jeśli wykonujesz kopię zapasową obciążeń wewnątrz maszyny wirtualnej (na przykład SQL Server kopie zapasowe bazy danych), dane zaplecza również wymagają dostępu do Internetu.
 

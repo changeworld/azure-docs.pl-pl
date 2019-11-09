@@ -10,12 +10,12 @@ ms.date: 04/29/2019
 ms.topic: conceptual
 manager: carmonm
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 8a1395c89b047bb120c7f7e2d2d9bb9b4d2b0c50
-ms.sourcegitcommit: 4d177e6d273bba8af03a00e8bb9fe51a447196d0
+ms.openlocfilehash: 0fc0aeab4e9603995130392e3560325ccaba1ffc
+ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/04/2019
-ms.locfileid: "71959957"
+ms.lasthandoff: 11/09/2019
+ms.locfileid: "73886807"
 ---
 # <a name="track-changes-in-your-environment-with-the-change-tracking-solution"></a>Śledź zmiany w środowisku przy użyciu rozwiązania Change Tracking
 
@@ -36,7 +36,7 @@ Następujące wersje systemu operacyjnego Windows są oficjalnie obsługiwane dl
 
 Następujące dystrybucje systemu Linux są oficjalnie obsługiwane. Jednak Agent systemu Linux może być również uruchamiany na innych dystrybucjach, których nie ma na liście. O ile nie zaznaczono inaczej, wszystkie wersje pomocnicze są obsługiwane dla każdej wymienionej wersji głównej.
 
-### <a name="64-bit"></a>64-bitowy
+### <a name="64-bit"></a>64 — bit
 
 * CentOS 6 i 7
 * Amazon Linux 2017,09
@@ -46,7 +46,7 @@ Następujące dystrybucje systemu Linux są oficjalnie obsługiwane. Jednak Agen
 * Ubuntu Linux 14,04 LTS, 16,04 LTS i 18,04 LTS
 * SUSE Linux Enterprise Server 12
 
-### <a name="32-bit"></a>32-bitowa
+### <a name="32-bit"></a>32 — bit
 
 * CentOS 6
 * Oracle Linux 6
@@ -80,7 +80,7 @@ Azure Security Center dodaliśmy monitorowanie integralności plików (FIM) wbud
 Jeśli włączono już program FIM i chcesz wypróbować pełne rozwiązanie Change Tracking, musisz wykonać następujące czynności. Ustawienia nie są usuwane przez ten proces.
 
 > [!NOTE]
-> Włączenie pełnego rozwiązania Change Tracking może spowodować naliczenie dodatkowych opłat, aby uzyskać więcej informacji, zobacz [Cennik usługi Automation](https://azure.microsoft.com/en-us/pricing/details/automation/).
+> Włączenie pełnego rozwiązania Change Tracking może spowodować naliczenie dodatkowych opłat, aby uzyskać więcej informacji, zobacz [Cennik usługi Automation](https://azure.microsoft.com/pricing/details/automation/).
 
 1. Usuń rozwiązanie monitorowania, przechodząc do obszaru roboczego i lokalizowanie go na [liście zainstalowanych rozwiązań monitorowania](../azure-monitor/insights/solutions.md#list-installed-monitoring-solutions).
 2. Kliknij nazwę rozwiązania, aby otworzyć jego stronę podsumowania, a następnie kliknij pozycję Usuń, zgodnie z opisem w temacie [usuwanie rozwiązania monitorowania](../azure-monitor/insights/solutions.md#remove-a-monitoring-solution).
@@ -97,18 +97,18 @@ Wykonaj następujące kroki, aby skonfigurować śledzenie plików na komputerac
 
 |Właściwość  |Opis  |
 |---------|---------|
-|Enabled     | Określa, czy to ustawienie jest stosowane.        |
+|Enabled (Włączony)     | Określa, czy to ustawienie jest stosowane.        |
 |Nazwa elementu     | Przyjazna nazwa pliku do śledzenia.        |
 |Grupa     | Nazwa grupy do logicznego grupowania plików.        |
-|Wprowadź ścieżkę     | Ścieżka do sprawdzenia pliku. Na przykład: "/etc/*. conf"       |
+|Wprowadzanie ścieżki     | Ścieżka do sprawdzenia pliku. Na przykład: "/etc/*. conf"       |
 |Typ ścieżki     | Typ elementu, który ma być śledzony, możliwe wartości to plik i katalog.        |
-|Rekursja     | Określa, czy rekursja jest używana podczas wyszukiwania elementu, który ma być śledzony.        |
-|Użyj sudo     | To ustawienie określa, czy sudo jest używany podczas sprawdzania elementu.         |
-|Łącza     | To ustawienie określa, w jaki sposób są rozwiązywane linki symboliczne podczas przechodzenia między katalogami.<br> **Ignoruj** — ignoruje linki symboliczne i nie uwzględnia plików/katalogów, do których się odwołuje.<br>**Obserwuj poniższe** linki symboliczne podczas rekursji, a także zawiera pliki/katalogi, do których się odwołuje.<br>**Zarządzanie** — następuje po linków symbolicznych i umożliwia zmianę zwracanej zawartości.     |
-|Przekaż zawartość pliku dla wszystkich ustawień| Włącza lub wyłącza przekazywanie zawartości plików dla śledzonych zmian. Dostępne opcje: **true** lub **false**.|
+|Rekursja     | Określa, czy podczas wyszukiwania elementu, który ma być śledzony, ma być używana rekursja.        |
+|Użyj polecenia Sudo     | To ustawienie określa, czy podczas sprawdzania elementu jest używane polecenie sudo.         |
+|Linki     | To ustawienie określa, w jaki sposób są obsługiwane linki symboliczne podczas przechodzenia między katalogami.<br> **Ignoruj** — ignoruje linki symboliczne i nie uwzględnia plików/katalogów, do których się odwołuje.<br>**Obserwuj poniższe** linki symboliczne podczas rekursji, a także zawiera pliki/katalogi, do których się odwołuje.<br>**Zarządzanie** — następuje po linków symbolicznych i umożliwia zmianę zwracanej zawartości.     |
+|Przekaż zawartość pliku dla wszystkich ustawień| Włącza lub wyłącza przekazywanie zawartości pliku dla śledzonych zmian. Dostępne opcje: **True** lub **False**.|
 
 > [!NOTE]
-> Opcja linków "Zarządzaj" nie jest zalecana. Pobieranie zawartości pliku nie jest obsługiwane.
+> Opcja linków „Zarządzaj” nie jest zalecana. Pobieranie zawartości plików nie jest obsługiwane.
 
 ### <a name="configure-windows-files-to-track"></a>Konfigurowanie plików systemu Windows do śledzenia
 
@@ -120,12 +120,12 @@ Wykonaj następujące kroki, aby skonfigurować śledzenie plików na komputerac
 
 |Właściwość  |Opis  |
 |---------|---------|
-|Enabled     | Określa, czy to ustawienie jest stosowane.        |
+|Enabled (Włączony)     | Określa, czy to ustawienie jest stosowane.        |
 |Nazwa elementu     | Przyjazna nazwa pliku do śledzenia.        |
 |Grupa     | Nazwa grupy do logicznego grupowania plików.        |
-|Wprowadź ścieżkę     | Ścieżka do sprawdzania pliku na przykład: "c:\Temp @ no__t-0\*.txt"<br>Można również użyć zmiennych środowiskowych, takich jak "%winDir%\System32 @ no__t-0 @ no__t-1. *"       |
-|Rekursja     | Określa, czy rekursja jest używana podczas wyszukiwania elementu, który ma być śledzony.        |
-|Przekaż zawartość pliku dla wszystkich ustawień| Włącza lub wyłącza przekazywanie zawartości plików dla śledzonych zmian. Dostępne opcje: **true** lub **false**.|
+|Wprowadzanie ścieżki     | Ścieżka do sprawdzania pliku, na przykład: „c:\temp\\\*.txt”<br>Możesz użyć również zmiennych środowiskowych, takich jak „%winDir%\System32\\\*.*”       |
+|Rekursja     | Określa, czy podczas wyszukiwania elementu, który ma być śledzony, ma być używana rekursja.        |
+|Przekaż zawartość pliku dla wszystkich ustawień| Włącza lub wyłącza przekazywanie zawartości pliku dla śledzonych zmian. Dostępne opcje: **True** lub **False**.|
 
 ## <a name="wildcard-recursion-and-environment-settings"></a>Ustawienia wieloznaczne, rekursji i środowiska
 
@@ -152,10 +152,10 @@ Wykonaj następujące kroki, aby skonfigurować śledzenie kluczy rejestru na ko
 
 |Właściwość  |Opis  |
 |---------|---------|
-|Enabled     | Określa, czy to ustawienie jest stosowane.        |
+|Enabled (Włączony)     | Określa, czy to ustawienie jest stosowane.        |
 |Nazwa elementu     | Przyjazna nazwa klucza rejestru do śledzenia.        |
 |Grupa     | Nazwa grupy do logicznego grupowania kluczy rejestru.        |
-|Klucz rejestru systemu Windows   | Ścieżka do sprawdzenia klucza rejestru. Na przykład: "HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\User Shell Folders\Common Start"      |
+|Klucz rejestru systemu Windows   | Ścieżka do sprawdzenia klucza rejestru. Na przykład: "HKEY_LOCAL_MACHINE \SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\User Shell Folders\Common Start"      |
 
 ## <a name="limitations"></a>Ograniczenia
 
@@ -176,25 +176,25 @@ Inne ograniczenia:
 Rozwiązanie Change Tracking ma obecnie następujące problemy:
 
 * Aktualizacje poprawek nie są zbierane na maszynach podstawowych RS3 systemu Windows Server 2016.
-* Demony systemu Linux może wskazywać zmieniony stan nawet wtedy, gdy nie wprowadzono żadnych zmian. Jest to spowodowane sposobem przechwycenia pola `SvcRunLevels`.
+* Demony systemu Linux może wskazywać zmieniony stan nawet wtedy, gdy nie wprowadzono żadnych zmian. Jest to spowodowane sposobem przechwytywania pola `SvcRunLevels`.
 
 ## <a name="change-tracking-data-collection-details"></a>Szczegóły zbierania danych Change Tracking
 
 W poniższej tabeli przedstawiono częstotliwość zbierania danych dla typów zmian. Dla każdego typu migawka danych bieżącego stanu jest również odświeżana co najmniej co 24 godziny:
 
-| **Zmień typ** | **Jaką** |
+| **Zmień typ** | **Częstotliwość** |
 | --- | --- |
 | Rejestr systemu Windows | 50 minut |
 | Plik systemu Windows | 30 minut |
 | Plik systemu Linux | 15 minut |
-| usługi systemu Windows | 10 sekund do 30 minut</br> Wartość domyślna: 30 minut |
+| Usługi systemu Windows | 10 sekund do 30 minut</br> Wartość domyślna: 30 minut |
 | Demony systemu Linux | 5 minut |
 | Oprogramowanie systemu Windows | 30 minut |
 | Oprogramowanie systemu Linux | 5 minut |
 
 W poniższej tabeli przedstawiono limity śledzonych elementów na maszynę dla Change Tracking.
 
-| **Zasoby** | **Granice**| **Uwagi** |
+| **Zasób** | **Limit**| **Uwagi** |
 |---|---|---|
 |Plik|500||
 |Rejestr|250||
@@ -221,7 +221,7 @@ Agent śledzi jedynie zmiany, co optymalizuje wydajność agenta. Ustawienie wys
 Celem monitorowania zmian w kluczach rejestru jest wskazanie punktów rozszerzalności, w których można aktywować kod innej firmy i złośliwe oprogramowanie. Na poniższej liście przedstawiono listę wstępnie skonfigurowanych kluczy rejestru. Te klucze są skonfigurowane, ale nie są włączone. Aby śledzić te klucze rejestru, należy włączyć każdą z nich.
 
 > [!div class="mx-tdBreakAll"]
-> |Klucz rejestru | Cel |
+> |Klucz rejestru | Przeznaczenie |
 > |---------------------------------------------------------------------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 > |`HKEY\LOCAL\MACHINE\Software\Classes\Directory\ShellEx\ContextMenuHandlers` | Monitoruje typowe wpisy Autostart, które są podłączane bezpośrednio do Eksploratora Windows i zwykle są uruchamiane w procesie przy użyciu programu Explorer. exe.
 > |`HKEY\LOCAL\MACHINE\Software\Microsoft\Windows\CurrentVersion\Group Policy\Scripts\Startup` | Monitoruje skrypty uruchamiane podczas uruchamiania.
@@ -247,10 +247,10 @@ Poniższe adresy są wymagane dla Change Tracking. Komunikacja z tymi adresami o
 
 |Usługa Azure Public  |Azure Government  |
 |---------|---------|
-|*. ods.opinsights.azure.com     |*. ods.opinsights.azure.us         |
-|*. oms.opinsights.azure.com     | *. oms.opinsights.azure.us        |
-|*. blob.core.windows.net|*. blob.core.usgovcloudapi.net|
-|*. azure-automation.net|*. azure-automation.us|
+|*.ods.opinsights.azure.com     |*. ods.opinsights.azure.us         |
+|*.oms.opinsights.azure.com     | *. oms.opinsights.azure.us        |
+|*.blob.core.windows.net|*. blob.core.usgovcloudapi.net|
+|*.azure-automation.net|*. azure-automation.us|
 
 ## <a name="use-change-tracking"></a>Użyj Change Tracking
 
@@ -274,7 +274,7 @@ Poniższa tabela zawiera przykładowe wyszukiwania dzienników dla rekordów zmi
 
 |Zapytanie  |Opis  |
 |---------|---------|
-|ConfigurationData<br>&#124;gdzie ConfigDataType = = "WindowsServices" i SvcStartupType = = "Auto"<br>&#124;gdzie SvcState = = "zatrzymana"<br>&#124;podsumowujący arg_max (TimeGenerated, *) według oprogramowania, komputera         | Pokazuje najnowsze rekordy spisu dla usług systemu Windows, które zostały ustawione na wartość automatycznie, ale zostały zgłoszone jako zatrzymane<br>Wyniki są ograniczone do najnowszego rekordu dla tego oprogramowania i komputera      |
+|ConfigurationData<br>&#124;gdzie ConfigDataType = = "WindowsServices" i SvcStartupType = = "Auto"<br>&#124;gdzie SvcState = = "zatrzymana"<br>&#124;Podsumuj arg_max (TimeGenerated, *) według oprogramowania, komputera         | Pokazuje najnowsze rekordy spisu dla usług systemu Windows, które zostały ustawione na wartość automatycznie, ale zostały zgłoszone jako zatrzymane<br>Wyniki są ograniczone do najnowszego rekordu dla tego oprogramowania i komputera      |
 |Zmianakonfiguracji<br>&#124;gdzie ConfigChangeType = = "oprogramowanie" i ChangeCategory = = "usunięte"<br>&#124;Order by TimeGenerated DESC|Pokazuje rekordy zmian dla usuniętego oprogramowania|
 
 ## <a name="alert-on-changes"></a>Alert dotyczący zmian
@@ -285,7 +285,7 @@ W poniższym przykładzie zrzut ekranu pokazuje, że plik `C:\windows\system32\d
 
 ![Wykres przedstawiający zmianę pliku hosts](./media/change-tracking/changes.png)
 
-Aby przeanalizować tę zmianę, przejdź do obszaru wyszukiwanie w dzienniku od kliknięcia **log Analytics**. W przeszukiwaniu dzienników Wyszukaj zmiany zawartości w pliku Hosts z zapytaniem `ConfigurationChange | where FieldsChanged contains "FileContentChecksum" and FileSystemPath contains "hosts"`. To zapytanie szuka zmian, które zawierały zmiany zawartości plików dla plików, których w pełni kwalifikowana ścieżka zawiera wyraz "hosty". Możesz również poszukać określonego pliku, zmieniając część ścieżki na jej w pełni kwalifikowaną formę (na przykład `FileSystemPath == "c:\windows\system32\drivers\etc\hosts"`).
+Aby przeanalizować tę zmianę, przejdź do obszaru wyszukiwanie w dzienniku od kliknięcia **log Analytics**. W przeszukiwaniu dzienników Wyszukaj zmiany zawartości w pliku hosts przy użyciu kwerendy `ConfigurationChange | where FieldsChanged contains "FileContentChecksum" and FileSystemPath contains "hosts"`. To zapytanie szuka zmian, które zawierały zmiany zawartości plików dla plików, których w pełni kwalifikowana ścieżka zawiera wyraz "hosty". Możesz również poszukać określonego pliku, zmieniając część ścieżki na jej w pełni kwalifikowaną formę (na przykład `FileSystemPath == "c:\windows\system32\drivers\etc\hosts"`).
 
 Po powrocie zapytania do żądanych wyników kliknij przycisk **Nowa reguła alertu** w środowisku wyszukiwania dzienników, aby otworzyć stronę tworzenie alertów. Możesz również przejść do tego środowiska za pomocą **Azure monitor** w Azure Portal. W środowisku tworzenia alertów Sprawdź ponownie zapytanie i zmodyfikuj logikę alertów. W takim przypadku alert ma być wyzwalany, jeśli istnieje nawet jedna zmiana została wykryta między wszystkimi maszynami w środowisku.
 
@@ -303,14 +303,14 @@ Alerty dotyczące zmian w pliku Hosts to jedna dobra usługa alertów dotyczący
 
 |Zapytanie  |Opis  |
 |---------|---------|
-|Zmianakonfiguracji <br>&#124;gdzie ConfigChangeType = = "Files" i FileSystemPath zawiera "c: \\Windows @ no__t-2system32 @ no__t-3drivers @ no__t-4"|Przydatne do śledzenia zmian plików krytycznych dla systemu|
-|Zmianakonfiguracji <br>&#124;gdzie FieldsChanged zawiera "FileContentChecksum" i FileSystemPath = = "c: \\Windows @ no__t-2system32 @ no__t-3drivers @ no__t-4etc @ no__t-5hosts"|Przydatne do śledzenia modyfikacji plików konfiguracji kluczy|
+|Zmianakonfiguracji <br>&#124;gdzie ConfigChangeType = = "Files" i FileSystemPath zawiera "c:\\Windows\\system32\\sterowniki\\"|Przydatne do śledzenia zmian plików krytycznych dla systemu|
+|Zmianakonfiguracji <br>&#124;gdzie FieldsChanged zawiera "FileContentChecksum" i FileSystemPath = = "c:\\Windows\\system32\\sterowniki\\etc\\hosts"|Przydatne do śledzenia modyfikacji plików konfiguracji kluczy|
 |Zmianakonfiguracji <br>&#124;gdzie ConfigChangeType = = "WindowsServices" i SvcName zawiera "W3SVC" i SvcState = = "zatrzymana"|Przydatne do śledzenia zmian krytycznych usług systemu|
 |Zmianakonfiguracji <br>&#124;gdzie ConfigChangeType = = "demony" i SvcName zawierają "SSH" i SvcState! = "uruchomiona"|Przydatne do śledzenia zmian krytycznych usług systemu|
 |Zmianakonfiguracji <br>&#124;gdzie ConfigChangeType = = "oprogramowanie" i ChangeCategory = = "dodane"|Przydatne w środowiskach, które wymagają blokowania konfiguracji oprogramowania|
 |ConfigurationData <br>&#124;gdzie Softwarename zawiera "Monitoring Agent" i CurrentVersion! = "8.0.11081.0"|Przydatne do wyświetlania maszyn, na których zainstalowano nieaktualną lub niezgodną wersję oprogramowania. Raport informuje o ostatnim raportowanym stanie konfiguracji, a nie o zmianach.|
-|Zmianakonfiguracji <br>&#124;gdzie RegistryKey = = @ "HKEY_LOCAL_MACHINE @ no__t-1SOFTWARE @ no__t-2Microsoft @ no__t-3Windows @ no__t-4CurrentVersion @ no__t-5QualityCompat"| Przydatne do śledzenia zmian kluczowych kluczy antywirusowych|
-|Zmianakonfiguracji <br>&#124;gdzie RegistryKey zawiera @ "HKEY_LOCAL_MACHINE @ no__t-1SYSTEM @ no__t-2CurrentControlSet @ no__t-3Services @ no__t-4SharedAccess @ no__t-5Parameters @ no__t-6FirewallPolicy"| Przydatne do śledzenia zmian w ustawieniach zapory|
+|Zmianakonfiguracji <br>&#124;gdzie RegistryKey = = @ "HKEY_LOCAL_MACHINE\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\QualityCompat"| Przydatne do śledzenia zmian kluczowych kluczy antywirusowych|
+|Zmianakonfiguracji <br>&#124;gdzie RegistryKey zawiera @ "HKEY_LOCAL_MACHINE\\SYSTEM\\CurrentControlSet\\Services\\SharedAccess\\Parameters\\FirewallPolicy"| Przydatne do śledzenia zmian w ustawieniach zapory|
 
 ## <a name="next-steps"></a>Następne kroki
 

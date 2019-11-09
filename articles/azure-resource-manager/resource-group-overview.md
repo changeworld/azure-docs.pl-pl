@@ -6,12 +6,12 @@ ms.service: azure-resource-manager
 ms.topic: overview
 ms.date: 08/29/2019
 ms.author: tomfitz
-ms.openlocfilehash: f8ec833a469e3c3a9b4c88343a48e109fc5c9728
-ms.sourcegitcommit: e1b6a40a9c9341b33df384aa607ae359e4ab0f53
+ms.openlocfilehash: 525271fdc94e0fd1b2cafe4a5a222ce9100156ef
+ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71338205"
+ms.lasthandoff: 11/09/2019
+ms.locfileid: "73888475"
 ---
 # <a name="azure-resource-manager-overview"></a>Omówienie usługi Azure Resource Manager
 
@@ -61,7 +61,7 @@ Za pomocą Menedżer zasobów można:
 
 Platforma Azure udostępnia cztery poziomy zakresu: [grupy zarządzania](../governance/management-groups/overview.md), subskrypcje, [grupy zasobów](#resource-groups)i zasoby. Na poniższej ilustracji przedstawiono takie przykładowe warstwy.
 
-![Scope](./media/resource-group-overview/scope-levels.png)
+![Zakres](./media/resource-group-overview/scope-levels.png)
 
 Ustawienia zarządzania są stosowane na dowolnych z tych poziomów zakresu. Zasięg zastosowania ustawienia jest określany na podstawie wybranego poziomu. Niższe poziomy dziedziczą ustawienia z wyższych poziomów. Na przykład w przypadku zastosowania [zasad](../governance/policy/overview.md) do subskrypcji zasady są stosowane do wszystkich grup zasobów i zasobów w ramach subskrypcji. Po zastosowaniu zasad w grupie zasobów te zasady są stosowane do grupy zasobów i wszystkich jej zasobów. Jednak inna grupa zasobów nie ma tego przypisania zasad.
 
@@ -87,7 +87,7 @@ Definiując grupę zasobów, należy wziąć pod uwagę pewne ważne czynniki:
 
 Podczas tworzenia grupy zasobów, należy podać lokalizację dla danej grupy zasobów. Być może zastanawiasz się, „Dlaczego grupa zasobów wymaga określenia lokalizacji? Ponadto dlaczego lokalizacja grupy zasobów jest w ogóle istotna, skoro zasoby mogą znajdować się w innej lokalizacji niż grupa zasobów?” Grupa zasobów przechowuje metadane dotyczące zasobów. W przypadku określania lokalizacji grupy zasobów należy określić miejsce przechowywania metadanych. Dla zachowania zgodności może być konieczne upewnienie się, że dane są przechowywane w odpowiednim regionie.
 
-Jeśli region grupy zasobów jest tymczasowo niedostępny, nie można zaktualizować zasobów w grupie zasobów, ponieważ metadane są niedostępne. Zasoby w innych regionach będą nadal działać zgodnie z oczekiwaniami, ale nie można ich zaktualizować. Aby uzyskać więcej informacji na temat tworzenia niezawodnych aplikacji, zobacz [projektowanie niezawodnych aplikacji platformy Azure](/azure/architecture/reliability/).
+Jeśli region grupy zasobów jest tymczasowo niedostępny, nie można zaktualizować zasobów w grupie zasobów, ponieważ metadane są niedostępne. Zasoby w innych regionach będą nadal działać zgodnie z oczekiwaniami, ale nie można ich zaktualizować. Aby uzyskać więcej informacji na temat tworzenia niezawodnych aplikacji, zobacz [projektowanie niezawodnych aplikacji platformy Azure](/azure/architecture/checklist/resiliency-per-service).
 
 ## <a name="resiliency-of-azure-resource-manager"></a>Odporność Azure Resource Manager
 

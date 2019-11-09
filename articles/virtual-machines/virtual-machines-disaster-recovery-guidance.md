@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 05/31/2017
 ms.author: gwallace
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: bc9ca5f5a638f0b36a28d58172fe8052b3d1522f
-ms.sourcegitcommit: de47a27defce58b10ef998e8991a2294175d2098
+ms.openlocfilehash: b59343fca5e14d211864a1354001819c918bd1ca
+ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/15/2019
-ms.locfileid: "67875448"
+ms.lasthandoff: 11/09/2019
+ms.locfileid: "73891514"
 ---
 # <a name="what-to-do-in-the-event-that-an-azure-service-disruption-impacts-azure-vms"></a>Co zrobić w przypadku przerwania działania usługi platformy Azure na maszyny wirtualne platformy Azure
 Firma Microsoft chce, aby upewnić się, że nasze usługi są zawsze dostępne dla Ciebie, gdy będą potrzebne. Siły wykraczające poza nasze kontrolki czasami wpływają na metody, które powodują nieplanowane zakłócenia usługi.
@@ -33,11 +33,11 @@ W tym artykule opisano prawdziwe scenariusze odzyskiwania po awarii, gdy cały r
 
 Aby pomóc Ci w obsłudze tych rzadkich wystąpień, oferujemy następujące wskazówki dotyczące maszyn wirtualnych platformy Azure w przypadku przerwania działania usługi w całym regionie, w którym wdrożono aplikację maszyny wirtualnej platformy Azure.
 
-## <a name="option-1-initiate-a-failover-by-using-azure-site-recovery"></a>Option 1: Inicjowanie trybu failover za pomocą Azure Site Recovery
+## <a name="option-1-initiate-a-failover-by-using-azure-site-recovery"></a>Opcja 1: inicjowanie trybu failover przy użyciu Azure Site Recovery
 Można skonfigurować Azure Site Recovery dla maszyn wirtualnych, aby umożliwić odzyskanie aplikacji za pomocą jednego kliknięcia w kilka minut. Możesz przeprowadzić replikację do wybranego regionu platformy Azure i nie ograniczyć się do sparowanych regionów. Możesz rozpocząć od [replikowania maszyn wirtualnych](https://aka.ms/a2a-getting-started). Można [utworzyć plan odzyskiwania](../site-recovery/site-recovery-create-recovery-plans.md) , dzięki czemu można zautomatyzować cały proces trybu failover dla aplikacji. Przełączenie w [tryb failover można przetestować](../site-recovery/site-recovery-test-failover-to-azure.md) wcześniej bez wpływu na aplikację produkcyjną lub trwającą replikację. W przypadku przerwania działania w regionie podstawowym wystarczy [zainicjować tryb failover](../site-recovery/site-recovery-failover.md) i przenieść swoją aplikację w region docelowy.
 
 
-## <a name="option-2-wait-for-recovery"></a>Opcja 2: Zaczekaj na odzyskanie
+## <a name="option-2-wait-for-recovery"></a>Opcja 2: Poczekaj na odzyskanie
 W takim przypadku nie jest wymagana żadna akcja z Twojej strony. Należy pamiętać, że pracujemy z pracujemy, aby przywrócić dostępność usługi. Bieżący stan usługi można zobaczyć na naszym [pulpicie nawigacyjnym Azure Service Health](https://azure.microsoft.com/status/).
 
 Jest to najlepsza opcja, jeśli nie skonfigurowano Azure Site Recovery, magazynu geograficznie nadmiarowego do odczytu lub magazynu geograficznie nadmiarowego przed przerwą w działaniu. Jeśli skonfigurowano magazyn Geograficznie nadmiarowy lub magazyn Geograficznie nadmiarowy z dostępem do odczytu dla konta magazynu, w którym są przechowywane wirtualne dyski twarde (VHD) maszyny wirtualnej, można odszukać plik VHD obrazu podstawowego i spróbować zainicjować dla niego nową maszynę wirtualną. Nie jest to preferowana opcja, ponieważ nie ma żadnych gwarancji synchronizacji danych. W związku z tym ta opcja nie jest gwarantowana.
@@ -48,13 +48,13 @@ Jest to najlepsza opcja, jeśli nie skonfigurowano Azure Site Recovery, magazynu
 >
 >
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 - Zacznij [chronić aplikacje działające na maszynach wirtualnych platformy Azure](https://aka.ms/a2a-getting-started) przy użyciu Azure Site Recovery
 
 - Aby dowiedzieć się więcej o implementowaniu strategii odzyskiwania po awarii i wysokiej dostępności, zobacz [odzyskiwanie po awarii i wysoka dostępność dla aplikacji platformy Azure](../resiliency/resiliency-disaster-recovery-high-availability-azure-applications.md).
 
-- Aby opracować szczegółowe informacje techniczne na temat możliwości platformy w chmurze, zobacz [Wskazówki techniczne dotyczące odporności na platformie Azure](../resiliency/resiliency-technical-guidance.md).
+- Aby opracować szczegółowe informacje techniczne na temat możliwości platformy w chmurze, zobacz [Wskazówki techniczne dotyczące odporności na platformie Azure](/azure/data-lake-store/data-lake-store-disaster-recovery-guidance).
 
 
 - Jeśli instrukcje nie są jasne lub jeśli chcesz, aby firma Microsoft wykonał operacje w Twoim imieniu, skontaktuj się z [pomocą techniczną](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade).

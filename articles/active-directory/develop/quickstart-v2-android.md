@@ -16,12 +16,12 @@ ms.date: 10/15/2019
 ms.author: twhitney
 ms.custom: aaddev, identityplatformtop40, scenarios:getting-started, languages:Android
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7a1a86965eb6a50fa87c63f5713f21d6a467dedb
-ms.sourcegitcommit: 3486e2d4eb02d06475f26fbdc321e8f5090a7fac
+ms.openlocfilehash: 7c5d3941cec7554152090c68bc1dc95f29ca9f17
+ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/31/2019
-ms.locfileid: "73242246"
+ms.lasthandoff: 11/09/2019
+ms.locfileid: "73882863"
 ---
 # <a name="quickstart-sign-in-users-and-call-the-microsoft-graph-api-from-an-android-app"></a>Szybki start: logowanie użytkowników i wywoływanie interfejsu API programu Microsoft Graph z poziomu aplikacji dla systemu Android
 
@@ -49,11 +49,11 @@ Aplikacje muszą być reprezentowane przez obiekt aplikacji w Azure Active Direc
 > > ![Already configured](media/quickstart-v2-android/green-check.png) (Już skonfigurowano) Twoja aplikacja została skonfigurowana za pomocą tych atrybutów
 >
 > ### <a name="step-2-download-the-project"></a>Krok 2. Pobieranie projektu 
-> * [Pobierz przykład kodu](https://github.com/Azure-Samples/ms-identity-android-java)
+> * [Pobierz przykład kodu](https://github.com/Azure-Samples/ms-identity-android-java/archive/master.zip)
 >
 > ### <a name="step-3-configure-your-project"></a>Krok 3. Konfigurowanie projektu
 > 1. Wyodrębnij i otwórz projekt w programie Android Studio.
-> 2. Wewnątrz aplikacji > src > głównej > res > RAW, Otwórz plik auth_config_multiple_account. JSON i zastąp go następującym kodem:
+> 2. Wewnątrz **aplikacji** > **src** > **głównej** > **res** > **RAW**, Otwórz plik **auth_config_multiple_account. JSON** i zastąp go następującym kodem:
 > ```javascript 
 > {
 >   "client_id" : "Enter_the_Application_Id_Here",
@@ -74,7 +74,7 @@ Aplikacje muszą być reprezentowane przez obiekt aplikacji w Azure Active Direc
 > ```
 
 > [!div class="sxs-lookup" renderon="portal"]
-> 3. Wewnątrz aplikacji > src > głównej > res > RAW, Otwórz plik auth_config_single_account. JSON i zastąp go następującym kodem:
+> 3. Wewnątrz **aplikacji** > **src** > **głównej** > **res** > **RAW**, Otwórz plik **auth_config_single_account. JSON** i zastąp go następującym kodem:
 > ```javascript 
 > {
 >   "client_id" : "Enter_the_Application_Id_Here",
@@ -98,22 +98,22 @@ Aplikacje muszą być reprezentowane przez obiekt aplikacji w Azure Active Direc
 > 4. Wewnątrz **aplikacji** > **src** > **Main**, Otwórz **pliku AndroidManifest. XML**.
 > 5. W węźle **manifest\application** Zastąp węzeł **<activity android:name="com.microsoft.identity.client.BrowserTabActivity">** następującym:  
 > ```xml
-> <!--Intent filter to catch Microsoft's callback after Sign In-->
-> <activity android:name="com.microsoft.identity.client.BrowserTabActivity">
->     <intent-filter>
->     <action android:name="android.intent.action.VIEW" />
->     <category android:name="android.intent.category.DEFAULT" />
->     <category android:name="android.intent.category.BROWSABLE" />
->         <!--
+> &lt;!--Intent filter to catch Microsoft's callback after Sign In--&gt;
+> &lt;activity android:name=&quot;com.microsoft.identity.client.BrowserTabActivity&quot;&gt;
+>     &lt;intent-filter&gt;
+>     &lt;action android:name=&quot;android.intent.action.VIEW&quot; /&gt;
+>     &lt;category android:name=&quot;android.intent.category.DEFAULT&quot; /&gt;
+>     &lt;category android:name=&quot;android.intent.category.BROWSABLE&quot; /&gt;
+>         &lt;!--
 >             Add in your scheme/host from registered redirect URI 
->             note that the leading "/" is required for android:path
->         -->
->         <data android:scheme="msauth"
->             android:host="Enter_the_Package_Name_here"
->             android:path="Enter_the_Signature_Hash_here"
->             android:scheme = "msauth" />
->     </intent-filter>
-> </activity>
+>             note that the leading &quot;/&quot; is required for android:path
+>         --&gt;
+>         &lt;data android:scheme=&quot;msauth&quot;
+>             android:host=&quot;Enter_the_Package_Name_Here&quot;
+>             android:path=&quot;Enter_the_Signature_Hash_Here&quot;
+>             android:scheme = &quot;msauth&quot; /&gt;
+>     &lt;/intent-filter&gt;
+> &lt;/activity&gt;
 > ```
 > 6. Uruchom aplikację.
 > Przykładowa aplikacja zostanie uruchomiona na ekranie **trybu pojedynczego konta** . Domyślny zakres, **User. Read**, jest dostarczany domyślnie, który jest używany podczas odczytywania własnych danych profilu podczas wywołania interfejsu API Microsoft Graph. Adres URL wywołania interfejsu API Microsoft Graph jest udostępniany domyślnie. Jeśli chcesz, możesz zmienić oba te elementy.
@@ -136,7 +136,7 @@ Aplikacje muszą być reprezentowane przez obiekt aplikacji w Azure Active Direc
 > [!div renderon="docs"]
 > ## <a name="step-1-get-the-sample-app"></a>Krok 1. Uzyskiwanie przykładowej aplikacji
 >
-> [Klonuj kod](https://github.com/Azure-Samples/ms-identity-android-java.git).
+> [Pobierz kod](https://github.com/Azure-Samples/ms-identity-android-java/archive/master.zip).
 >
 > ## <a name="step-2-run-the-sample-app"></a>Krok 2. Uruchamianie przykładowej aplikacji
 >
@@ -353,7 +353,7 @@ private void callGraphAPI(final IAuthenticationResult authenticationResult) {
 }
 ```
 
-### <a name="auth_config_single_accountjson"></a>auth_config_single_account. JSON
+### <a name="auth_config_single_accountjson"></a>plik auth_config_single_account. JSON
 
 Jest to plik konfiguracji aplikacji MSAL, który używa jednego konta.
 
@@ -509,13 +509,13 @@ mMultipleAccountApp.removeAccount(accountList.get(accountListSpinner.getSelected
         });
 ```
 
-### <a name="auth_config_multiple_accountjson"></a>auth_config_multiple_account. JSON
+### <a name="auth_config_multiple_accountjson"></a>plik auth_config_multiple_account. JSON
 
 Jest to plik konfiguracji aplikacji MSAL, który używa wielu kont.
 
 Aby uzyskać wyjaśnienie różnych pól, zobacz [Opis pliku konfiguracji MSAL systemu Android](msal-configuration.md) .
 
-W przeciwieństwie do pliku konfiguracji [auth_config_single_account. JSON](#auth_config_single_accountjson) , ten plik konfiguracji ma `"account_mode" : "MULTIPLE"` zamiast `"account_mode" : "SINGLE"`, ponieważ jest to aplikacja z wieloma kontami.
+W przeciwieństwie do pliku konfiguracji [auth_config_single_account. JSON](#auth_config_single_accountjson) , ten plik konfiguracji ma `"account_mode" : "MULTIPLE"` zamiast `"account_mode" : "SINGLE"` ponieważ jest to aplikacja z wieloma kontami.
 
 `"client_id"` jest wstępnie skonfigurowana do korzystania z rejestracji obiektu aplikacji obsługiwanej przez firmę Microsoft.
 `"redirect_uri"`jest wstępnie skonfigurowany do korzystania z klucza podpisywania dostarczonego z przykładem kodu.

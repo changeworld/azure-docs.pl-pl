@@ -9,12 +9,12 @@ ms.author: robreed
 ms.date: 04/16/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: b9d2dda589cc59be24b73ce16dcdcbbe79b31aef
-ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
+ms.openlocfilehash: 7be5e814d8092b523fa69fdd84f0e1476736fda2
+ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71259176"
+ms.lasthandoff: 11/09/2019
+ms.locfileid: "73887713"
 ---
 # <a name="troubleshoot-desired-state-configuration-dsc"></a>Rozwiązywanie problemów z konfiguracją żądanego stanu (DSC)
 
@@ -24,7 +24,7 @@ Ten artykuł zawiera informacje dotyczące rozwiązywania problemów z konfigura
 
 Gdy wystąpią błędy podczas kompilowania lub wdrażania konfiguracji w usłudze Azure State Configuration, poniżej przedstawiono kilka kroków, które ułatwią zdiagnozowanie problemu.
 
-1. **Upewnij się, że konfiguracja została pomyślnie skompilowana na komputerze lokalnym:**  Konfiguracja stanu platformy Azure jest oparta na usłudze PowerShell DSC. Dokumentację dotyczącą języka i składni DSC można znaleźć w dokumentacji [DSC programu PowerShell](https://docs.microsoft.com/en-us/powershell/scripting/overview).
+1. **Upewnij się, że konfiguracja została pomyślnie skompilowana na komputerze lokalnym:**  Konfiguracja stanu platformy Azure jest oparta na usłudze PowerShell DSC. Dokumentację dotyczącą języka i składni DSC można znaleźć w dokumentacji [DSC programu PowerShell](https://docs.microsoft.com/powershell/scripting/overview).
 
    Kompilując konfigurację DSC na komputerze lokalnym, można odkrywać i rozwiązywać typowe błędy, takie jak:
 
@@ -45,7 +45,7 @@ Gdy wystąpią błędy podczas kompilowania lub wdrażania konfiguracji w usłud
 
 ## <a name="common-errors-when-working-with-desired-state-configuration-dsc"></a>Typowe błędy podczas pracy z konfiguracją żądanego stanu (DSC)
 
-### <a name="unsupported-characters"></a>Scenariusz Nie można usunąć konfiguracji ze znakami specjalnymi z portalu
+### <a name="unsupported-characters"></a>Scenariusz: nie można usunąć konfiguracji z użyciem znaków specjalnych z portalu
 
 #### <a name="issue"></a>Problem
 
@@ -65,11 +65,11 @@ Ten błąd jest tymczasowym problemem, który został zaplanowany do rozwiązani
 * Dokumentacja tego polecenia cmdlet nie została jeszcze zaktualizowana.  Do tego momentu zapoznaj się z dokumentacją modułu AzureRM.
   * [Remove-AzureRmAutomationDSCConfiguration](/powershell/module/azurerm.automation/Remove-AzureRmAutomationDscConfiguration)
 
-### <a name="failed-to-register-agent"></a>Scenariusz Nie można zarejestrować agenta DSC
+### <a name="failed-to-register-agent"></a>Scenariusz: nie można zarejestrować agenta DSC
 
 #### <a name="issue"></a>Problem
 
-Podczas próby uruchomienia `Set-DscLocalConfigurationManager` lub innego polecenia cmdlet DSC pojawia się błąd:
+Podczas próby uruchomienia `Set-DscLocalConfigurationManager` lub innego polecenia cmdlet DSC zostanie wyświetlony komunikat o błędzie:
 
 ```error
 Registration of the Dsc Agent with the server
@@ -90,11 +90,11 @@ Ten błąd jest zwykle spowodowany przez zaporę, komputer za serwerem proxy lub
 
 Sprawdź, czy maszyna ma dostęp do odpowiednich punktów końcowych Azure Automation DSC i spróbuj ponownie. Aby uzyskać listę wymaganych portów i adresów, zobacz [Planowanie sieci](../automation-dsc-overview.md#network-planning)
 
-### <a name="failed-not-found"></a>Scenariusz Węzeł jest w stanie niepowodzenia z powodu błędu "nie znaleziono"
+### <a name="failed-not-found"></a>Scenariusz: węzeł jest w stanie niepowodzenia z powodu błędu "nie znaleziono"
 
 #### <a name="issue"></a>Problem
 
-Węzeł ma raport o stanu, zawiera kod **błędu**:
+Węzeł zawiera raport ze stanem **Niepowodzenie** i zawierający błąd:
 
 ```error
 The attempt to get the action from server https://<url>//accounts/<account-id>/Nodes(AgentId=<agent-id>)/GetDscAction failed because a valid configuration <guid> cannot be found.
@@ -112,7 +112,7 @@ Ten błąd występuje zazwyczaj, gdy węzeł jest przypisany do nazwy konfigurac
   * Aby przypisać konfigurację węzła do węzła przy użyciu Azure Portal, Otwórz stronę **węzły DSC** , a następnie wybierz węzeł i kliknij przycisk **Przypisz konfigurację węzła** .
   * Aby przypisać konfigurację węzła do węzła przy użyciu polecenia cmdlet programu PowerShell, użyj polecenia cmdlet **Set-AzureRmAutomationDscNode**
 
-### <a name="no-mof-files"></a>Scenariusz Podczas kompilowania konfiguracji nie zostały utworzone żadne konfiguracje węzłów (pliki MOF)
+### <a name="no-mof-files"></a>Scenariusz: podczas kompilowania konfiguracji nie zostały utworzone żadne konfiguracje węzłów (pliki MOF)
 
 #### <a name="issue"></a>Problem
 
@@ -124,7 +124,7 @@ Compilation completed successfully, but no node configuration.mofs were generate
 
 #### <a name="cause"></a>Przyczyna
 
-Gdy wyrażenie zgodne z słowem kluczowym "w konfiguracji DSC" ma `$null`wartość, konfiguracje węzłów nie są generowane.
+Gdy wyrażenie zgodne z słowem kluczowym **Node** w konfiguracji DSC zostanie oszacowane jako `$null`, nie są generowane konfiguracje węzłów.
 
 #### <a name="resolution"></a>Rozwiązanie
 
@@ -133,7 +133,7 @@ Niektóre z poniższych rozwiązań rozwiązują ten problem:
 * Upewnij się, że wyrażenie obok słowa kluczowego **Node** w definicji konfiguracji nie ocenia się do $null.
 * Jeśli przekazujesz ConfigurationData podczas kompilowania konfiguracji, upewnij się, że przechodzą oczekiwane wartości wymagane przez konfigurację z [ConfigurationData](../automation-dsc-compile.md).
 
-### <a name="dsc-in-progress"></a>Scenariusz Raport węzła DSC zostanie zablokowany w stanie "w toku"
+### <a name="dsc-in-progress"></a>Scenariusz: Raport węzła DSC zostanie zablokowany w stanie "w toku"
 
 #### <a name="issue"></a>Problem
 
@@ -151,7 +151,7 @@ Uaktualniono wersję WMF i usunięto uszkodzoną usługę WMI.
 
 Aby rozwiązać ten problem, postępuj zgodnie z instrukcjami podanymi w artykule [znane problemy i ograniczenia DSC](https://docs.microsoft.com/powershell/scripting/wmf/known-issues/known-issues-dsc) .
 
-### <a name="issue-using-credential"></a>Scenariusz Nie można użyć poświadczenia w konfiguracji DSC
+### <a name="issue-using-credential"></a>Scenariusz: nie można użyć poświadczenia w konfiguracji DSC
 
 #### <a name="issue"></a>Problem
 
@@ -167,9 +167,9 @@ Użyto poświadczenia w konfiguracji, ale nie podano odpowiednich **Configuratio
 
 #### <a name="resolution"></a>Rozwiązanie
 
-* Upewnij się, że w odpowiedniej **ConfigurationData** określono wartość true dla każdej konfiguracji węzła, która została określona w konfiguracji. Aby uzyskać więcej informacji, zobacz [zasoby w Azure Automation DSC](../automation-dsc-compile.md#working-with-assets-in-azure-automation-during-compilation).
+* Upewnij się, że w odpowiedniej **ConfigurationData** określono wartość true dla każdej konfiguracji węzła, która **została określona w** konfiguracji. Aby uzyskać więcej informacji, zobacz [zasoby w Azure Automation DSC](../automation-dsc-compile.md#working-with-assets-in-azure-automation-during-compilation).
 
-### <a name="failure-processing-extension"></a>Scenariusz Wystąpił błąd podczas dołączania z rozszerzenia DSC
+### <a name="failure-processing-extension"></a>Scenariusz: dołączanie z rozszerzenia DSC, błąd "niepowodzenie przetwarzania rozszerzenia"
 
 #### <a name="issue"></a>Problem
 
@@ -188,7 +188,7 @@ Ten błąd występuje zazwyczaj, gdy do węzła jest przypisana nazwa konfigurac
 * Upewnij się, że przypiszesz węzeł z nazwą konfiguracji węzła, która dokładnie pasuje do nazwy w usłudze.
 * Można zrezygnować z uwzględnienia nazwy konfiguracji węzła, która spowoduje dołączenie węzła, ale nie przypisanie konfiguracji węzła
 
-### <a name="failure-linux-temp-noexec"></a>Scenariusz Zastosowanie konfiguracji w systemie Linux powoduje wystąpienie błędu z ogólnym błędem
+### <a name="failure-linux-temp-noexec"></a>Scenariusz: zastosowanie konfiguracji w systemie Linux powoduje wystąpienie błędu z ogólnym błędem
 
 #### <a name="issue"></a>Problem
 
@@ -200,13 +200,13 @@ This event indicates that failure happens when LCM is processing the configurati
 
 #### <a name="cause"></a>Przyczyna
 
-Klienci zidentyfikowali, że jeśli `/tmp` lokalizacja jest ustawiona na `noexec`, bieżąca wersja DSC nie będzie mogła zastosować konfiguracji.
+Klienci zidentyfikowali, że jeśli `/tmp` lokalizacji jest ustawiona na `noexec`, bieżąca wersja DSC nie będzie stosowała konfiguracji.
 
 #### <a name="resolution"></a>Rozwiązanie
 
-* `noexec` Usuń opcję`/tmp` z lokalizacji.
+* Usuń opcję `noexec` z lokalizacji `/tmp`.
 
-### <a name="compilation-node-name-overlap"></a>Scenariusz Nazwy konfiguracji węzłów, które pokrywają się, mogą spowodować utratę prawidłowej wersji
+### <a name="compilation-node-name-overlap"></a>Scenariusz: nazwy konfiguracji węzłów, które pokrywają się, mogą spowodować utratę prawidłowej wersji
 
 #### <a name="issue"></a>Problem
 

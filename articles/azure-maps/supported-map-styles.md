@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: timlt
-ms.openlocfilehash: 457154a797a4b6d9853b1effe0d8121053653a99
-ms.sourcegitcommit: 42748f80351b336b7a5b6335786096da49febf6a
+ms.openlocfilehash: cd16ee87b213c2bfa4c541c4d3c453a4499855d0
+ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/09/2019
-ms.locfileid: "72174765"
+ms.lasthandoff: 11/09/2019
+ms.locfileid: "73887732"
 ---
 # <a name="azure-maps-supported-map-styles"></a>Azure Maps obsługiwane style mapy
 Azure Maps obsługuje kilka różnych wbudowanych stylów mapy, zgodnie z poniższym opisem.
@@ -31,7 +31,7 @@ Mapa **drogowa** to standardowa mapa, która wyświetla drogi, naturalne i sztuc
 
 ## <a name="blank-and-blank_accessible"></a>puste i blank_accessible
 
-Styl mapy **puste** i **blank_accessible** zapewniają pustą kanwę, na której można wizualizować dane. Styl **blank_accessible** będzie w dalszym ciągu dostarczać aktualizacje czytnika ekranu z informacjami o lokalizacji, w której znajduje się mapa, nawet jeśli mapa podstawowa nie jest wyświetlana.
+Style " **puste** " i " **blank_accessible** map" zawierają pustą kanwę, na której można wizualizować dane. Styl **blank_accessible** będzie w dalszym ciągu udostępniać aktualizacje czytnika ekranu informacjami o lokalizacji, w której znajduje się mapa, nawet jeśli mapa podstawowa nie jest wyświetlana.
 
 > [!Note]
 > W zestawie SDK sieci Web można zmienić kolor tła mapy, ustawiając styl CSS `background-color` stylu elementu DIV mapy.
@@ -103,4 +103,4 @@ nastąpi **odcień drogi** jest Azure Maps głównym stylem, który został uko�
 Dowiedz się więcej na temat sposobu ustawiania stylu mapy w Azure Maps:
 
 > [!div class="nextstepaction"]
-> [Wybieranie stylu mapy](https://docs.microsoft.com/en-us/azure/azure-maps/choose-map-style)
+> [Wybieranie stylu mapy](https://docs.microsoft.com/azure/azure-maps/choose-map-style)

@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: quickstart
 ms.date: 11/04/2019
-ms.openlocfilehash: 366986f989fdd8d76b1707451c2a7cca2aa554cf
-ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
+ms.openlocfilehash: ee4e9bd5487382ebb6f57996aac5d3de1ff6162a
+ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73719975"
+ms.lasthandoff: 11/09/2019
+ms.locfileid: "73890038"
 ---
 # <a name="quickstart-create-an-azure-cognitive-search-index-in-the-azure-portal"></a>Szybki Start: Tworzenie indeksu Wyszukiwanie poznawcze platformy Azure w Azure Portal
 > [!div class="op_single_selector"]
@@ -68,9 +68,7 @@ W tym samouczku użyjemy wbudowanego przykładowego zestawu danych, który możn
 
 3. Przejdź do następnej strony.
 
-   ![Przycisk następnej strony dla wyszukiwania poznawczego](media/search-get-started-portal/next-button-add-cog-search.png)
-
-### <a name="step-2---skip-cognitive-skills"></a>Krok 2 — Pomijanie kroku Umiejętności poznawcze
+### <a name="step-2---skip-the-enrich-content-page"></a>Krok 2. pomijanie strony "wzbogacanie zawartości"
 
 Kreator obsługuje tworzenie [potoku wzbogacania AI](cognitive-search-concept-intro.md) do dołączania Cognitive Servicesych algorytmów AI do indeksowania. 
 
@@ -104,7 +102,6 @@ Domyślnie kreator skanuje źródło danych w poszukiwaniu unikatowych identyfik
 
 2. Przejdź do następnej strony.
 
-   ![Następna strona — tworzenie indeksatora](media/search-get-started-portal/next-button-create-indexer.png)
 
 ### <a name="step-4---configure-indexer"></a>Krok 4 — Konfigurowanie indeksatora
 
@@ -127,6 +124,8 @@ Aktualizacja strony w portalu może wymagać kilku minut, ale na liście powinie
 ## <a name="view-the-index"></a>Wyświetlanie indeksu
 
 Strona główna usługi zawiera linki do zasobów utworzonych w usłudze Azure Wyszukiwanie poznawcze.  Aby wyświetlić właśnie utworzony indeks, kliknij pozycję **Indeksy** na liście linków. 
+
+Poczekaj na odświeżenie strony portalu. Po kilku minutach powinien zostać wyświetlony indeks z liczbą dokumentów i rozmiarem magazynu.
 
    ![Lista Indeksy na pulpicie nawigacyjnym usługi](media/search-get-started-portal/indexes-list.png)
 
@@ -154,7 +153,7 @@ Indeks wyszukiwania powinien być teraz gotowy do wykonywania względem niego za
 
    ![Polecenie Eksploratora wyszukiwania](media/search-get-started-portal/search-explorer-cmd.png)
 
-2. Z listy rozwijanej **indeks** wybierz pozycję *Hotele-przykład*. Kliknij listę rozwijaną **wersja interfejsu API** , aby zobaczyć, które interfejsy API REST są dostępne. W przypadku zapytań poniżej Użyj ogólnie dostępnej wersji (2019-05-06).
+2. Z listy rozwijanej **indeks** wybierz pozycję *Hotele-przykład — indeks*. Kliknij listę rozwijaną **wersja interfejsu API** , aby zobaczyć, które interfejsy API REST są dostępne. W przypadku zapytań poniżej Użyj ogólnie dostępnej wersji (2019-05-06).
 
    ![Polecenia indeksu i interfejsu API](media/search-get-started-portal/search-explorer-changeindex.png)
 

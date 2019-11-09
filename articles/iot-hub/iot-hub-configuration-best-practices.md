@@ -1,93 +1,93 @@
 ---
-title: Konfiguracja urządzenia najlepsze rozwiązania dotyczące usługi Azure IoT Hub | Dokumentacja firmy Microsoft
-description: Poznaj najlepsze rozwiązania dotyczące konfigurowania urządzeń IoT na dużą skalę
+title: Najlepsze rozwiązania związane z konfiguracją urządzeń dla systemu Azure IoT Hub | Microsoft Docs
+description: Poznaj najlepsze rozwiązania dotyczące korzystania z funkcji automatycznego zarządzania urządzeniami w celu zminimalizowania powtarzających się i złożonych zadań związanych z zarządzaniem urządzeniami IoT na dużą skalę.
 author: chrisgre
 ms.author: chrisgre
 ms.date: 06/28/2019
 ms.topic: conceptual
 ms.service: iot-hub
 services: iot-hub
-ms.openlocfilehash: 33e77d63b958df292ee9b4ac8ded41f3693cb6bc
-ms.sourcegitcommit: 9b80d1e560b02f74d2237489fa1c6eb7eca5ee10
+ms.openlocfilehash: a3b70af71c2ce19835ac2ef8fc8ceed79ca5fe1a
+ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/01/2019
-ms.locfileid: "67485811"
+ms.lasthandoff: 11/09/2019
+ms.locfileid: "73889526"
 ---
-# <a name="best-practices-for-device-configuration-within-an-iot-solution"></a>Najlepsze rozwiązania dotyczące konfiguracji urządzenia w ramach rozwiązania IoT
+# <a name="best-practices-for-device-configuration-within-an-iot-solution"></a>Najlepsze rozwiązania dotyczące konfiguracji urządzeń w ramach rozwiązania IoT
 
-Zarządzanie urządzeniami automatyczne w usłudze Azure IoT Hub automatyzuje wiele zadań powtarzających się i złożone zarządzania flot duże urządzenia względem całej ich cykle życia. W tym artykule definiuje wiele najlepszych rozwiązań dotyczących różnych ról zaangażowanych w rozwijania i obsługi rozwiązań IoT.
+Automatyczne zarządzanie urządzeniami w systemie Azure IoT Hub automatyzuje wiele powtarzających się i złożonych zadań związanych z zarządzaniem dużymi flotami urządzeń w całości z ich cyklów życia. W tym artykule opisano wiele najlepszych rozwiązań dla różnych ról związanych z programowaniem i działaniem rozwiązania IoT.
 
-* **Producent sprzętu IoT/integrator:** Producentów sprzętu IoT integratorzy złożenia sprzętu od różnych producentów lub dostawców, zapewniając sprzętu do wdrożenia IoT wytwarzane lub zintegrowane za pośrednictwem innych dostawców. Zaangażowana w rozwój i integracja oprogramowania układowego, wbudowanych systemów operacyjnych i oprogramowania osadzonego.
+* **Producent/Integrator sprzętu IoT:** Producenci sprzętu IoT, integratorzy asembler sprzętu od różnych producentów lub dostawcy dostarczający sprzęt do wdrożenia IoT wytwarzanego lub zintegrowanego przez innych dostawców. Dotyczy opracowywania i integracji oprogramowania układowego, osadzonych systemów operacyjnych i oprogramowania osadzonego.
 
-* **Dla deweloperów rozwiązań IoT:** Tworzenie rozwiązania IoT jest zazwyczaj wykonywane przez dewelopera rozwiązania. Dewelopera może być częścią wewnętrznego zespołu lub integrator systemów specjalizującym się w przypadku tego działania. Deweloper rozwiązania IoT mogą tworzenia różnych składników zestawu rozwiązań IoT od podstaw, zintegrować różne składniki standardowe lub typu open source lub dostosowywania [akcelerator rozwiązań IoT](/azure/iot-accelerators/).
+* **Deweloper rozwiązań IoT:** Opracowywanie rozwiązania IoT jest zwykle wykonywane przez dewelopera rozwiązań. Ten deweloper może być częścią zespołu pracującego w domu lub integratora systemu w ramach tego działania. Deweloperzy rozwiązań IoT mogą opracowywać różne składniki rozwiązania IoT od podstaw, zintegrować różne składniki standardowe lub typu open-source lub dostosowując [Akcelerator rozwiązań IoT](/azure/iot-accelerators/).
 
-* **Operator rozwiązania IoT:** Po wdrożeniu rozwiązania IoT wymaga długoterminowej obsługi, monitorowaniem, zarządzaniem uaktualnienia i konserwacji. Te zadania może odbywać się przez wewnętrznego zespołu, który składa się z operacji sprzętu i konserwacji zespołów, specjaliści ds. informacji o technologii i specjalistów domeny, które monitorują prawidłowe działanie całej infrastruktury IoT.
+* **Operator rozwiązania IoT:** Po wdrożeniu rozwiązania IoT wymagane jest długoterminowe operacje, monitorowanie, uaktualnienia i konserwacja. Te zadania mogą być wykonywane przez zespół pracujący w firmie, który składa się z specjalistów technologicznych, operacji sprzętowych i zespołów konserwacyjnych oraz specjalistów ds. domen, którzy monitorują prawidłowe zachowanie ogólnej infrastruktury IoT.
 
-## <a name="understand-automatic-device-management-for-configuring-iot-devices-at-scale"></a>Omówienie zarządzania urządzeniami automatyczne konfigurowanie urządzeń IoT na dużą skalę
+## <a name="understand-automatic-device-management-for-configuring-iot-devices-at-scale"></a>Informacje o automatycznym zarządzaniu urządzeniami do konfigurowania urządzeń IoT na dużą skalę
 
-Zarządzanie urządzeniami automatycznego obejmuje korzyści płynące ze [bliźniaczych reprezentacji urządzeń](iot-hub-devguide-device-twins.md) i [bliźniaczych reprezentacjach modułów](iot-hub-devguide-module-twins.md) do synchronizacji stanów żądaną i podać między chmurą i urządzeniami. [Konfiguracje urządzeń automatycznego](iot-hub-auto-device-config.md) automatycznie aktualizować dużych zestawów bliźniaczych reprezentacji i Podsumowanie postępu i zgodności. Następujące ogólne kroki opisują jak automatyczne zarządzanie urządzeniami jest rozwinięte i używać:
+Automatyczne zarządzanie urządzeniami obejmuje wiele zalet [bliźniaczych reprezentacji urządzeń](iot-hub-devguide-device-twins.md) i [bliźniaczych reprezentacji modułu](iot-hub-devguide-module-twins.md) do synchronizowania żądanych i raportowanych stanów między chmurą i urządzeniami. [Automatyczne konfiguracje urządzeń](iot-hub-auto-device-config.md) automatycznie aktualizują duże zestawy bliźniaczych reprezentacji oraz podsumowania postępu i zgodności. Poniższe kroki wysokiego poziomu opisują sposób opracowania i użycia automatycznego zarządzania urządzeniami:
 
-* **IoT, producent sprzętu/integrator** implementuje funkcje zarządzania urządzeniami w ramach aplikacji osadzonej przy użyciu [bliźniaczych reprezentacji urządzeń](iot-hub-devguide-device-twins.md). Funkcje te mogą obejmować aktualizacje oprogramowania układowego, instalacja oprogramowania i aktualizacji i zarządzania ustawieniami.
+* **Producent/Integrator sprzętu IoT** implementuje funkcje zarządzania urządzeniami w aplikacji osadzonej przy użyciu usługi [Device bliźniaczych reprezentacji](iot-hub-devguide-device-twins.md). Te funkcje mogą obejmować aktualizacje oprogramowania układowego, instalację oprogramowania i aktualizację oraz zarządzanie ustawieniami.
 
-* **Deweloperów rozwiązań IoT** implementuje warstwę zarządzania operacje zarządzania urządzeniami przy użyciu [bliźniaczych reprezentacji urządzeń](iot-hub-devguide-device-twins.md) i [konfiguracji urządzeń automatycznego](iot-hub-auto-device-config.md). Rozwiązanie powinno obejmować Definiowanie interfejsu operatora do wykonywania zadań zarządzania urządzeniami.
+* **Deweloperzy rozwiązań IoT** implementują warstwę zarządzania operacji zarządzania urządzeniami przy użyciu [bliźniaczych reprezentacji urządzeń](iot-hub-devguide-device-twins.md) i [konfiguracji urządzeń automatycznych](iot-hub-auto-device-config.md). Rozwiązanie powinno obejmować Definiowanie interfejsu operatora do wykonywania zadań związanych z zarządzaniem urządzeniami.
 
-* **Operatora rozwiązania IoT** używa rozwiązania IoT, aby wykonywać zadania dotyczące zarządzania urządzeniami, szczególnie do grupowania urządzeń ze sobą, zainicjować zmian konfiguracji, takich jak aktualizacje oprogramowania układowego, monitorować postęp i rozwiązywanie problemów z problemów, które pojawiają się.
+* **Operator rozwiązania IoT** korzysta z rozwiązania IoT do wykonywania zadań związanych z zarządzaniem urządzeniami, szczególnie w celu pogrupowania urządzeń, inicjowania zmian konfiguracji, takich jak aktualizacje oprogramowania układowego, monitorowania postępu i rozwiązywania problemów.
 
-## <a name="iot-hardware-manufacturerintegrator"></a>IoT, producent sprzętu/integrator
+## <a name="iot-hardware-manufacturerintegrator"></a>Producent/Integrator sprzętu IoT
 
-Poniżej przedstawiono najlepsze rozwiązania dla producentów sprzętu i rozwiązywania problemów związanych z projektowaniem oprogramowania osadzonego integratorzy:
+Poniżej przedstawiono najlepsze rozwiązania dla producentów sprzętu i integratorów zajmujących się tworzeniem oprogramowania osadzonego:
 
-* **Implementowanie [bliźniaczych reprezentacji urządzeń](iot-hub-devguide-device-twins.md):** Bliźniacze reprezentacje urządzeń Włącz synchronizowanie wymaganą konfiguracją z chmury oraz raportowanie w bieżącej konfiguracji i właściwości urządzenia. Najlepszym sposobem wdrożenia bliźniaczych reprezentacji urządzeń w ramach aplikacji embedded jest za pośrednictwem [Azure IoT SDKs](https://github.com/Azure/azure-iot-sdks). Bliźniacze reprezentacje urządzeń to najlepszym rozwiązaniem w przypadku konfiguracji, ponieważ ich:
+* **Zaimplementuj [bliźniaczych reprezentacji urządzenia](iot-hub-devguide-device-twins.md):** Bliźniaczych reprezentacji urządzeń umożliwia synchronizowanie żądanej konfiguracji z chmury oraz na potrzeby raportowania bieżącej konfiguracji i właściwości urządzenia. Najlepszym sposobem implementacji bliźniaczych reprezentacji urządzeń w aplikacjach osadzonych jest użycie [zestawów SDK usługi Azure IoT](https://github.com/Azure/azure-iot-sdks). Bliźniaczych reprezentacji urządzeń najlepiej nadają się do konfiguracji, ponieważ:
 
-    * Obsługuje komunikację dwukierunkową.
-    * Umożliwia zarówno Stany urządzeń połączonych, jak i bez połączenia.
+    * Obsługa komunikacji dwukierunkowej.
+    * Zezwalaj na stan urządzeń połączonych i odłączonych.
     * Postępuj zgodnie z zasadą spójności ostatecznej.
-    * Są w pełni możliwością tworzenia zapytań w chmurze.
+    * Są w pełni queriable w chmurze.
 
-* **Struktura bliźniaczej reprezentacji urządzenia do zarządzania urządzeniami:** Bliźniacza reprezentacja urządzenia powinny mieć strukturę w taki sposób, że właściwości zarządzania urządzeniami są logicznie pogrupowane na sekcje. Ten sposób umożliwi być izolowane, bez wywierania wpływu na inne sekcje bliźniaczej reprezentacji zmiany w konfiguracji. Na przykład można utworzyć części w obrębie żądane właściwości dla oprogramowania układowego, innej sekcji do oprogramowania oraz trzecią sekcję ustawień sieci. 
+* **Struktura sznurka urządzenia do zarządzania urządzeniami:** Sznurki urządzenia powinny być strukturalne, tak że właściwości zarządzania urządzeniami są logicznie pogrupowane w sekcje. Wykonanie tej czynności spowoduje odizolowanie zmian konfiguracji bez wpływu na inne sekcje sznurka. Na przykład utwórz sekcję w obszarze odpowiednie właściwości dla oprogramowania układowego, inną sekcję dla oprogramowania i trzecią sekcję ustawień sieciowych. 
 
-* **Raport atrybutów urządzenia, które są przydatne do zarządzania urządzeniami:** Atrybutów, takich jak urządzenia fizycznego, producent i model, oprogramowania układowego, system operacyjny, numer seryjny i inne identyfikatory są przydatne do raportowania i jako parametry dla przeznaczonych dla zmian w konfiguracji.
+* **Zgłoś atrybuty urządzenia, które są przydatne do zarządzania urządzeniami:** Atrybuty, takie jak marka i model urządzenia fizycznego, oprogramowanie układowe, system operacyjny, numer seryjny i inne identyfikatory, są przydatne do raportowania i jako parametry dla zmian konfiguracji docelowej.
 
-* **Definiowanie stanów głównego w celu raportowania stanu i postępu:** Stany najwyższego poziomu należy wyliczyć, dzięki czemu mogą zostać zgłoszone dla operatora. Na przykład aktualizacja oprogramowania układowego będzie zgłaszać stan jako bieżący, pobieranie, stosowanie, w toku i błędów. Na każdy stan, należy zdefiniować dodatkowe pola, aby uzyskać więcej informacji.
+* **Zdefiniuj główne Stany dla stanu raportowania i postępu:** Stany najwyższego poziomu powinny być wyliczane, aby mogły być zgłaszane do operatora. Na przykład aktualizacja oprogramowania układowego spowodowałaby zgłoszenie stanu jako bieżący, pobrania, zastosowania, w toku i błędu. Zdefiniuj dodatkowe pola, aby uzyskać więcej informacji na temat każdego stanu.
 
-## <a name="iot-solution-developer"></a>Dla deweloperów rozwiązań IoT
+## <a name="iot-solution-developer"></a>Deweloper rozwiązań IoT
 
-Poniżej przedstawiono najlepsze rozwiązania dla deweloperów IoT, którzy tworzą systemy oparte na platformie Azure:
+Poniżej przedstawiono najlepsze rozwiązania dla deweloperów rozwiązań IoT, którzy tworzą systemy oparte na platformie Azure:
 
-* **Implementowanie [bliźniaczych reprezentacji urządzeń](iot-hub-devguide-device-twins.md):** Bliźniacze reprezentacje urządzeń Włącz synchronizowanie wymaganą konfiguracją z chmury oraz raportowanie w bieżącej konfiguracji i właściwości urządzenia. Najlepszym sposobem wdrożenia bliźniaczych reprezentacji urządzeń w ramach aplikacji rozwiązań w chmurze jest za pośrednictwem [Azure IoT SDKs](https://github.com/Azure/azure-iot-sdks). Bliźniacze reprezentacje urządzeń to najlepszym rozwiązaniem w przypadku konfiguracji, ponieważ ich:
+* **Zaimplementuj [bliźniaczych reprezentacji urządzenia](iot-hub-devguide-device-twins.md):** Bliźniaczych reprezentacji urządzeń umożliwia synchronizowanie żądanej konfiguracji z chmury oraz na potrzeby raportowania bieżącej konfiguracji i właściwości urządzenia. Najlepszym sposobem implementacji bliźniaczych reprezentacji urządzeń w aplikacjach rozwiązań w chmurze jest użycie [zestawów SDK usługi Azure IoT](https://github.com/Azure/azure-iot-sdks). Bliźniaczych reprezentacji urządzeń najlepiej nadają się do konfiguracji, ponieważ:
 
-    * Obsługuje komunikację dwukierunkową.
-    * Umożliwia zarówno Stany urządzeń połączonych, jak i bez połączenia.
+    * Obsługa komunikacji dwukierunkowej.
+    * Zezwalaj na stan urządzeń połączonych i odłączonych.
     * Postępuj zgodnie z zasadą spójności ostatecznej.
-    * Są w pełni możliwością tworzenia zapytań w chmurze.
+    * Są w pełni queriable w chmurze.
 
-* **Organizowanie urządzeń za pomocą tagów bliźniaczych reprezentacji urządzeń:** Rozwiązanie powinno umożliwić operatora do definiowania pierścieni jakości lub inne zestawy urządzeń, w oparciu o różne strategie wdrażania, takie jak canary. Urządzenie organizacji można zaimplementować w ramach rozwiązania przy użyciu tagów bliźniaczych reprezentacji urządzeń i [zapytania](iot-hub-devguide-query-language.md). Organizacja urządzenia jest niezbędne w celu umożliwienia dla szczegółowymi informacjami dotyczącymi konfiguracji procesu, bezpieczne i dokładnie.
+* **Organizuj urządzenia przy użyciu znaczników bliźniaczych urządzeń:** Rozwiązanie powinno pozwolić operatorowi definiować pierścienie jakości lub inne zestawy urządzeń w oparciu o różne strategie wdrażania, takie jak Kanaryjskie. Organizacja urządzenia może być implementowana w ramach rozwiązania przy użyciu tagów i [zapytań](iot-hub-devguide-query-language.md)o sznurki urządzeń. Organizacja urządzeń jest niezbędna do zapewnienia bezpiecznego i dokładnego wyróżniania konfiguracji.
 
-* **Implementowanie [konfiguracji urządzeń automatycznego](iot-hub-auto-device-config.md):** Konfiguracje urządzeń automatycznego wdrażania i konfiguracji monitora zmieni się na potrzeby dużych zestawów urządzeń IoT za pomocą bliźniaczych reprezentacji urządzeń.
+* **Zaimplementuj [Automatyczne konfiguracje urządzeń](iot-hub-auto-device-config.md):** Automatyczne konfiguracje urządzeń wdrażają i monitorują zmiany konfiguracji w dużych zestawach urządzeń IoT za pośrednictwem urządzenia bliźniaczych reprezentacji.
 
-   Konfiguracji automatycznego urządzeń docelowych zestawy bliźniacze reprezentacje urządzeń za pośrednictwem **warunek docelowy** która jest zapytaniem na urządzeniu tagów bliźniaczych reprezentacji lub zgłoszonych właściwości. **Dopasowywanie zawartości** ustawiono żądane właściwości ustawione w ciągu docelowym bliźniaczych reprezentacji urządzeń. Adresuj zawartość należy wyrównać ze strukturą bliźniaczej reprezentacji urządzenia, zdefiniowanych przez producenta sprzętu IoT/integrator. **Metryki** zapytań dotyczących bliźniaczej reprezentacji urządzenia zgłaszanych właściwości i również należy wyrównać ze strukturą bliźniaczej reprezentacji urządzenia, zdefiniowanych przez producenta sprzętu IoT/integrator.
+   Automatyczne konfiguracje urządzeń docelowy zestaw bliźniaczych reprezentacji urządzeń za pomocą **warunku docelowego,** który jest kwerendą w przypadku tagów sznurka urządzenia lub zgłaszanych właściwości. **Zawartość docelowa** to zbiór żądanych właściwości, które zostaną ustawione w ramach docelowego urządzenia bliźniaczych reprezentacji. Zawartość docelowa powinna być wyrównana do struktury sznurka urządzenia zdefiniowanej przez producenta/integratora sprzętu IoT. **Metryki** są zapytania dotyczące właściwości z sznurka urządzenia i powinny również być wyrównane z strukturą sznurka urządzenia zdefiniowaną przez producenta/Integrator sprzętu IoT.
 
-   Konfiguracje urządzeń automatycznego uruchamiania po raz pierwszy wkrótce, po utworzeniu konfiguracji, a następnie co pięć minut. Mogą również korzystać z usługi IoT Hub, wykonywanie operacji bliźniaczej reprezentacji urządzenia z szybkością, który nigdy nie przekroczy [limity ograniczania przepływności](iot-hub-devguide-quotas-throttling.md) odczytów bliźniaczej reprezentacji urządzenia i aktualizacji.
+   Automatyczne konfiguracje urządzeń są uruchamiane po raz pierwszy wkrótce po utworzeniu konfiguracji, a następnie co pięć minut. Mogą oni również korzystać z IoT Hub wykonywania wieloosiowych operacji na urządzeniach, które nigdy nie przekroczą [limitów ograniczania przepustowości](iot-hub-devguide-quotas-throttling.md) urządzeń i aktualizacji.
 
-* **Użyj [usługi Device Provisioning](../iot-dps/how-to-manage-enrollments.md):** Deweloperzy rozwiązań należy używać usługi Device Provisioning przypisywanie tagów bliźniaczych reprezentacji urządzeń do nowych urządzeń, taki sposób, że zostaną one automatycznie skonfigurowane przez **konfiguracji urządzeń automatycznego** , są przeznaczone dla bliźniaczych elementów z tym tagiem. 
+* **Korzystanie z [usługi Device Provisioning](../iot-dps/how-to-manage-enrollments.md):** deweloperzy rozwiązań powinni używać usługi Device Provisioning do przypisywania znaczników bliźniaczych urządzeń do nowych urządzeń, tak że będą one automatycznie konfigurowane przez **Automatyczne konfiguracje urządzeń** , które są przeznaczone dla bliźniaczych reprezentacji z tym tagiem. 
 
 ## <a name="iot-solution-operator"></a>Operator rozwiązania IoT
 
-Poniżej przedstawiono najlepsze rozwiązania dotyczące operatorom rozwiązania IoT przy użyciu rozwiązania IoT oparta na platformie Azure:
+Poniżej przedstawiono najlepsze rozwiązania dla operatorów rozwiązań IoT korzystających z rozwiązania IoT utworzonego na platformie Azure:
 
-* **Organizowanie urządzenia do zarządzania:** Rozwiązania IoT, należy zdefiniować lub umożliwiają tworzenie sygnałów jakości lub inne zestawy urządzeń, w oparciu o różne strategie wdrażania, takie jak canary. Zestawy urządzeń będą używane w celu wprowadzania zmian w konfiguracji i wykonywanie innych operacji zarządzania urządzeniami na dużą skalę.
+* **Organizuj urządzenia do zarządzania:** Rozwiązanie IoT powinno definiować lub zezwalać na tworzenie pierścieni jakości lub innych zestawów urządzeń w oparciu o różne strategie wdrażania, takie jak Kanaryjskie. Zestawy urządzeń będą używane do wdrożenia zmian konfiguracji i wykonywania innych operacji zarządzania urządzeniami w skali.
 
-* **Wykonaj zmiany konfiguracji przy użyciu etapowego wdrażania:**  Etapowego wdrażania jest cały proces, według którego operator wdraża zmiany rozszerzanie zbiór urządzeń IoT. Celem jest, aby wprowadzić zmiany, stopniowo w celu zmniejszenia ryzyka dokonywania szerokiej skali istotne zmiany w.  Operator powinien umożliwia utworzenie interfejsu rozwiązania [konfiguracji urządzenia automatycznego](iot-hub-auto-device-config.md) i warunek docelowy powinien dotyczyć początkowego zestawu urządzeń (takich jak canary grupy). Operator powinien następnie zweryfikować zmiany konfiguracji w początkowego zestawu urządzeń.
+* **Przeprowadź zmiany w konfiguracji przy użyciu etapowego wdrożenia:**  Etapowe wycofywanie jest procesem, w którym operator wdraża zmiany w rozszerzonym zestawie urządzeń IoT. Celem jest stopniowe wprowadzanie zmian w celu zmniejszenia ryzyka związanego z wprowadzaniem zmian w skali szerokiej.  Operator powinien używać interfejsu rozwiązania, aby utworzyć [automatyczną konfigurację urządzenia](iot-hub-auto-device-config.md) , a warunek docelowy powinien wskazywać na początkowy zestaw urządzeń (na przykład grupę Kanaryjskie). Następnie operator powinien sprawdzić poprawność konfiguracji w początkowym zestawie urządzeń.
 
-   Po zakończeniu sprawdzania poprawności operator spowoduje zaktualizowanie konfiguracji na urządzenia automatycznego, aby uwzględnić większy zbiór urządzeń. Operator należy również ustawić priorytet dla konfiguracji mogą być wyższe niż inne konfiguracje, które mają obecnie zastosowania żadne do tych urządzeń. Roll out można monitorować przy użyciu metryk zgłoszone przez konfigurację urządzenia automatycznego.
+   Po zakończeniu walidacji operator zaktualizuje automatyczną konfigurację urządzenia w celu uwzględnienia większego zestawu urządzeń. Operator powinien również ustawić priorytet konfiguracji na wyższy niż inne konfiguracje, które są obecnie przeznaczone dla tych urządzeń. Przeprowadzenie można monitorować, korzystając z metryk raportowanych przez automatyczną konfigurację urządzenia.
 
-* **Wykonaj wycofywanie zmian w razie błędów lub błędy konfiguracji:**  Konfiguracja urządzenia automatycznego, która powoduje występowanie błędów lub błędy konfiguracji można wycofać, zmieniając **przeznaczonych dla warunku** tak, aby urządzenia nie spełniają warunek określania wartości docelowej. Upewnij się, że inną konfigurację urządzenia automatycznego o niższym priorytecie nadal jest przeznaczona dla tych urządzeń. Sprawdź, czy wycofywanie zakończyło się pomyślnie, wyświetlając metryki: Konfiguracji wycofane do tyłu już nie powinien być wyświetlony stan untargeted urządzeń, a druga Konfiguracja metryki powinny znajdować się teraz liczby urządzeń, które nadal są stosowane.
+* **Wykonaj wycofywanie w razie błędów lub błędnych konfiguracji:**  Automatyczna konfiguracja urządzeń, która powoduje, że błędy lub błędne konfiguracje można wycofać, zmieniając **warunek określania wartości docelowej** , aby urządzenia nie spełniały warunku określania wartości docelowej. Upewnij się, że dla tych urządzeń nadal są dostępne inne automatyczne konfiguracje urządzeń o niższym priorytecie. Sprawdź, czy wycofywanie zakończyło się pomyślnie, wyświetlając metryki: Konfiguracja wycofana nie powinna już wskazywać stanu nieprzeznaczonych urządzeń, a metryki drugiej konfiguracji powinny teraz zawierać liczniki dla urządzeń, które są nadal docelowe.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
-* Dowiedz się więcej o implementacji bliźniaczych reprezentacji urządzeń w [poznawanie i używanie bliźniaczych reprezentacji urządzeń w usłudze IoT Hub](iot-hub-devguide-device-twins.md).
+* Więcej informacji na temat implementowania bliźniaczych reprezentacji urządzeń w temacie [Omówienie i używanie bliźniaczych reprezentacji urządzeń w IoT Hub](iot-hub-devguide-device-twins.md).
 
-* Przewodnik po krokach do utworzenia, aktualizacji lub usunięcia konfiguracji urządzenia automatycznego w [Konfigurowanie i monitorowanie urządzeń IoT na dużą skalę](iot-hub-auto-device-config.md).
+* Zapoznaj się z instrukcjami, aby utworzyć, zaktualizować lub usunąć automatyczną konfigurację urządzenia w obszarze [Konfigurowanie i monitorowanie urządzeń IoT](iot-hub-auto-device-config.md)w odpowiedniej skali.
 
-* Implementowanie wzorca aktualizacji oprogramowania układowego, za pomocą bliźniaczych reprezentacji urządzeń i konfiguracji urządzenia automatycznego w [samouczka: Implementowanie proces aktualizacji oprogramowania układowego urządzenia](tutorial-firmware-update.md).
+* Implementowanie wzorca aktualizacji oprogramowania układowego przy użyciu usługi Device bliźniaczych reprezentacji i automatycznych konfiguracji urządzeń w [samouczku: implementowanie procesu aktualizacji oprogramowania układowego urządzenia](tutorial-firmware-update.md).

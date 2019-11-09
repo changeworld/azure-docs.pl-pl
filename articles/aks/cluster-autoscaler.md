@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 07/18/2019
 ms.author: mlearned
-ms.openlocfilehash: f27b910910ca21aa36582506e6c7b2d1d39da88a
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 8ce5d2965d0127eec01620c702d7d83bd0b39416
+ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73472854"
+ms.lasthandoff: 11/09/2019
+ms.locfileid: "73885780"
 ---
 # <a name="automatically-scale-a-cluster-to-meet-application-demands-on-azure-kubernetes-service-aks"></a>Automatyczne skalowanie klastra w celu spełnienia wymagań aplikacji w usłudze Azure Kubernetes Service (AKS)
 
@@ -122,6 +122,35 @@ Możesz ręcznie skalować klaster po wyłączeniu automatycznego skalowania kla
 ## <a name="re-enable-a-disabled-cluster-autoscaler"></a>Ponowne włączenie wyłączonego automatycznego skalowania klastra
 
 Jeśli chcesz ponownie włączyć automatyczne skalowanie klastra w istniejącym klastrze, możesz je ponownie włączyć przy użyciu polecenia [AZ AKS Update][az-aks-update] , określając parametr *--enable-Cluster-AutoScale*, *--min-Count*i *--Max-Count* .
+
+## <a name="retrieve-cluster-autoscaler-logs-and-status"></a>Pobieranie dzienników i stanu automatycznego skalowania klastra
+
+Aby zdiagnozować i debugować zdarzenia automatycznego skalowania, dzienniki i stan można pobrać z dodatku automatycznego skalowania.
+
+AKS zarządza automatycznym skalowaniem klastra w Twoim imieniu i uruchamia go na zarządzanej płaszczyźnie kontroli. Dzienniki węzłów głównych muszą być skonfigurowane tak, aby były wyświetlane w wyniku.
+
+Aby skonfigurować dzienniki do wypychania z automatycznego skalowania klastra do Log Analytics wykonaj następujące kroki.
+
+1. Skonfiguruj zasadę dla dzienników diagnostycznych w celu wypychania dzienników automatycznego skalowania klastra do Log Analytics. [Instrukcje są szczegółowo opisane w tym miejscu](https://docs.microsoft.com/azure/aks/view-master-logs#enable-diagnostics-logs), należy zaznaczyć pole wyboru `cluster-autoscaler` podczas wybierania opcji "dzienniki".
+1. Kliknij sekcję "Logs" w klastrze za pomocą Azure Portal.
+1. Wprowadź następujące przykładowe zapytanie do Log Analytics:
+
+```
+AzureDiagnostics
+| where Category == "cluster-autoscaler"
+```
+
+Powinny być wyświetlane dzienniki podobne do następujących, które zostały zwrócone, o ile istnieją dzienniki do pobrania.
+
+![Dzienniki Log Analytics](media/autoscaler/autoscaler-logs.png)
+
+Automatyczne skalowanie klastra również zapisuje stan kondycji do configmap o nazwie `cluster-autoscaler-status`. Aby pobrać te dzienniki, uruchom następujące polecenie `kubectl`. Dla każdej puli węzłów skonfigurowanej przy użyciu automatycznego skalowania klastra zostanie zgłoszony stan kondycji.
+
+```
+kubectl get configmap -n kube-system cluster-autoscaler-status -o yaml
+```
+
+Aby dowiedzieć się więcej na temat tego, co jest rejestrowane w ramach automatycznego skalowania, zapoznaj się z często zadawanymi pytaniami w [projekcie GitHub Kubernetes/autoscalenia](https://github.com/kubernetes/autoscaler/blob/master/cluster-autoscaler/FAQ.md#ca-doesnt-work-but-it-used-to-work-yesterday-why).
 
 ## <a name="use-the-cluster-autoscaler-with-multiple-node-pools-enabled"></a>Używanie automatycznego skalowania klastra z włączonymi wieloma pulami węzłów
 

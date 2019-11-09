@@ -1,13 +1,10 @@
 ---
-title: Przykładowy skrypt interfejsu wiersza polecenia platformy Azure — komunikacja równorzędna dwóch sieci wirtualnych | Dokumentacja firmy Microsoft
-description: Przykładowy skrypt interfejsu wiersza polecenia platformy Azure — komunikacja równorzędna dwóch sieci wirtualnych
+title: Przykładowy skrypt interfejsu wiersza polecenia platformy Azure — równorzędne dwie sieci wirtualne | Microsoft Docs
+description: Przykładowy skrypt interfejsu wiersza polecenia platformy Azure — równorzędne dwie sieci wirtualne
 services: virtual-network
 documentationcenter: virtual-network
 author: KumudD
-manager: timlt
-editor: tysonn
-tags: ''
-ms.assetid: ''
+manager: mtillman
 ms.service: virtual-network
 ms.devlang: azurecli
 ms.topic: article
@@ -15,16 +12,16 @@ ms.tgt_pltfrm: ''
 ms.workload: infrastructure
 ms.date: 07/07/2017
 ms.author: kumud
-ms.openlocfilehash: 072d62f925d4f4024aa17d648a56dc6f37de00f1
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 0e5aaf07b49546aca9f44dcb9a43a79127c82341
+ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60848439"
+ms.lasthandoff: 11/09/2019
+ms.locfileid: "73890245"
 ---
 # <a name="peer-two-virtual-networks"></a>Komunikacja równorzędna dwóch sieci wirtualnych
 
-Ten skrypt tworzy i łączy dwie sieci wirtualne w tym samym regionie za pośrednictwem sieci platformy Azure. Po uruchomieniu skryptu utworzysz komunikację równorzędną pomiędzy dwiema sieciami wirtualnymi.
+Ten skrypt tworzy i łączy dwie sieci wirtualne w tym samym regionie za pomocą sieci platformy Azure. Po uruchomieniu skryptu utworzysz komunikację równorzędną pomiędzy dwiema sieciami wirtualnymi.
 
 [!INCLUDE [sample-cli-install](../../../includes/sample-cli-install.md)]
 
@@ -54,7 +51,7 @@ Ten skrypt zawiera następujące polecenia służące do tworzenia grupy zasobó
 | [az network vnet peering create](https://docs.microsoft.com/cli/azure/network/vnet/peering) | Tworzy komunikację równorzędną między dwiema sieciami wirtualnymi.  |
 | [az group delete](https://docs.microsoft.com/cli/azure/vm/extension) | Usuwa grupę zasobów wraz ze wszystkimi zagnieżdżonymi zasobami. |
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 Aby uzyskać więcej informacji na temat interfejsu wiersza polecenia platformy Azure, zobacz [dokumentację interfejsu wiersza polecenia platformy Azure](https://docs.microsoft.com/cli/azure).
 

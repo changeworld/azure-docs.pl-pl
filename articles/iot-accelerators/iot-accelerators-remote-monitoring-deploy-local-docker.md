@@ -1,6 +1,6 @@
 ---
-title: Wdrażanie rozwiązania do monitorowania zdalnego lokalnie — Docker — Azure | Dokumentacja firmy Microsoft
-description: Ten poradnik pokazuje, jak wdrożyć zdalnego akcelerator rozwiązań do monitorowania na maszynę lokalną za pomocą platformy Docker na potrzeby projektowania i testowania.
+title: Wdróż lokalnie rozwiązanie do monitorowania zdalnego — Docker-Azure | Microsoft Docs
+description: Ten przewodnik przedstawia sposób wdrażania akceleratora rozwiązania do monitorowania zdalnego na maszynie lokalnej przy użyciu platformy Docker na potrzeby testowania i programowania.
 author: avneet723
 manager: hegate
 ms.author: avneets
@@ -8,74 +8,74 @@ ms.service: iot-accelerators
 services: iot-accelerators
 ms.date: 10/25/2018
 ms.topic: conceptual
-ms.openlocfilehash: db934725fe91a142c43ba66701919e9d5a70a4b2
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 32b47d9d6d45ff471961f55f8159dbe85eae2dce
+ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65967541"
+ms.lasthandoff: 11/09/2019
+ms.locfileid: "73888835"
 ---
-# <a name="deploy-the-remote-monitoring-solution-accelerator-locally---docker"></a>Wdrażanie zdalne monitorowanie akceleratora rozwiązań lokalnie - platformy Docker
+# <a name="deploy-the-remote-monitoring-solution-accelerator-locally---docker"></a>Wdrażanie akceleratora rozwiązania do monitorowania zdalnego lokalnie — Docker
 
 [!INCLUDE [iot-accelerators-selector-local](../../includes/iot-accelerators-selector-local.md)]
 
-W tym artykule pokazano, jak wdrożyć akcelerator rozwiązań monitorowania zdalnego na komputerze lokalnym na potrzeby projektowania i testowania. Nauczysz się wdrażanie mikrousług na lokalnym kontenerów platformy Docker. Wdrożenie lokalne mikrousług używa następujących usług w chmurze: Usługi IoT Hub, Cosmos DB, usługi Azure Stream Analytics i Azure Time Series Insights w chmurze.
+W tym artykule opisano sposób wdrażania akceleratora rozwiązania do monitorowania zdalnego na maszynie lokalnej na potrzeby testowania i programowania. Dowiesz się, jak wdrożyć mikrousługi w lokalnych kontenerach platformy Docker. Lokalne wdrożenie mikrousług używa następujących usług w chmurze: IoT Hub, Cosmos DB, Azure Streaming Analytics i Azure Time Series Insights Services w chmurze.
 
-Jeśli chcesz uruchomić akcelerator rozwiązania monitorowania zdalnego w środowisku IDE na komputerze lokalnym, zobacz [wdrażanie programu Visual Studio zdalne monitorowanie akceleratora rozwiązań lokalnie -](iot-accelerators-remote-monitoring-deploy-local.md).
+Jeśli chcesz uruchomić Akcelerator rozwiązania do monitorowania zdalnego w środowisku IDE na komputerze lokalnym, zobacz [wdrażanie akceleratora rozwiązań zdalnego monitorowania lokalnie — Visual Studio](iot-accelerators-remote-monitoring-deploy-local.md).
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-Aby wdrożyć usługi platformy Azure używane przez akcelerator rozwiązania monitorowania zdalnego, należy aktywną subskrypcją platformy Azure.
+Aby można było wdrożyć usługi platformy Azure używane przez Akcelerator rozwiązania do monitorowania zdalnego, wymagana jest aktywna subskrypcja platformy Azure.
 
-Jeśli jej nie masz, możesz utworzyć bezpłatne konto próbne w zaledwie kilka minut. Aby uzyskać więcej informacji, zobacz [bezpłatnej wersji próbnej Azure](https://azure.microsoft.com/pricing/free-trial/).
+Jeśli jej nie masz, możesz utworzyć bezpłatne konto próbne w zaledwie kilka minut. Aby uzyskać szczegółowe informacje, zobacz [Bezpłatna wersja próbna platformy Azure](https://azure.microsoft.com/pricing/free-trial/).
 
-### <a name="machine-setup"></a>Ustawienia komputera
+### <a name="machine-setup"></a>Konfiguracja komputera
 
-Aby wykonać wdrożenie lokalne, potrzebne są następujące narzędzia, które są zainstalowane na lokalnej maszynie do programowania:
+Aby ukończyć lokalne wdrożenie, potrzebne są następujące narzędzia zainstalowane na lokalnym komputerze deweloperskim:
 
-* [Usługa Git](https://git-scm.com/)
+* [Git](https://git-scm.com/)
 * [Docker](https://www.docker.com)
-* [Program Visual Studio](https://visualstudio.microsoft.com/) — Jeśli planujesz wprowadzić zmiany do mikrousług.
-* [Node.js v8](https://nodejs.org/) — to oprogramowanie jest wymagane w przypadku komputerów z systemem interfejsu wiersza polecenia, które skrypty umożliwia tworzenie zasobów platformy Azure. Nie używaj Node.js v10.
+* [Visual Studio](https://visualstudio.microsoft.com/) — Jeśli planujesz wprowadzić zmiany w mikrousługach.
+* [Node. js V8](https://nodejs.org/) — to oprogramowanie jest wymaganiem wstępnym dla komputerów, które są używane przez skrypty do tworzenia zasobów platformy Azure. Nie używaj środowiska Node. js v10.
 
 > [!NOTE]
-> Te narzędzia są dostępne na wielu platformach, w tym Windows i Linux oraz dla systemu iOS.
+> Te narzędzia są dostępne na wielu platformach, w tym w systemach Windows, Linux i iOS.
 
 [!INCLUDE [iot-accelerators-local-setup](../../includes/iot-accelerators-local-setup.md)]
 
-## <a name="run-the-microservices-in-docker"></a>Uruchom mikrousług na platformie Docker
+## <a name="run-the-microservices-in-docker"></a>Uruchamianie mikrousług w Docker
 
-Otwórz nowy wiersz polecenia mieć pewność, że dostęp do zmiennych środowiskowych, ustawiane przez **start.cmd** skryptu. W Windows możesz sprawdzić, czy zmienne środowiskowe są ustawiane za pomocą następującego polecenia:
+Otwórz nowy wiersz polecenia, aby upewnić się, że masz dostęp do zmiennych środowiskowych ustawionych przez skrypt **Start. cmd** . W systemie Windows można sprawdzić, czy zmienne środowiskowe są ustawiane przez uruchomienie następującego polecenia:
 
 ```cmd
 set PCS
 ```
 
-Polecenie wyświetla wszystkie zmienne środowiskowe ustawione **start.cmd** skryptu.
+Polecenie pokazuje wszystkie zmienne środowiskowe ustawione przez skrypt **Start. cmd** .
 
-Upewnij się, że platformy Docker jest uruchomiona na komputerze lokalnym.
+Upewnij się, że platforma Docker jest uruchomiona na komputerze lokalnym.
 > [!NOTE]
-> Platformy docker musi być uruchomiona [kontenerów systemu Linux](https://docs.docker.com/docker-for-windows/) jeśli działa on Windows.
+> Program Docker musi mieć uruchomione [kontenery systemu Linux](https://docs.docker.com/docker-for-windows/) , jeśli jest uruchomiony w systemie Windows.
 
-Mikrousługi uruchomiona w lokalnym kontenerów platformy Docker konieczne dostęp do usług Azure cloud services. Można przetestować łączność z Internetem środowiska platformy Docker na polecenie ping adresu internetowego z wewnątrz kontenera przy użyciu następującego polecenia:
+Mikrousługi działające w lokalnych kontenerach platformy Docker muszą uzyskiwać dostęp do usług w chmurze platformy Azure. Możesz przetestować łączność z Internetem środowiska Docker przy użyciu następującego polecenia, aby wysłać polecenie ping do adresu internetowego z wewnątrz kontenera:
 
 ```cmd/sh
 docker run --rm -ti library/alpine ping google.com
 ```
 
-Aby uruchomić akcelerator rozwiązań, przejdź do **usług\\skrypty\\lokalnego** folder w środowisku wiersza polecenia i uruchom następujące polecenie:
+Aby uruchomić Akcelerator rozwiązania, przejdź do **usługi\\skrypty\\lokalnym** folderze w środowisku wiersza polecenia i uruchom następujące polecenie:
 
 ```cmd/sh
 docker-compose up
 ```
 
 > [!NOTE] 
-> Upewnij się, że [Udostępnij dysk lokalny](https://github.com/Azure/azure-iot-pcs-remote-monitoring-dotnet/issues/115) przy użyciu rozwiązania Docker, przed uruchomieniem `docker-compose up`.
+> Przed uruchomieniem `docker-compose up`upewnij się, że [dysk lokalny został udostępniony](https://github.com/Azure/azure-iot-pcs-remote-monitoring-dotnet/issues/115) przy użyciu platformy Docker.
 
-Podczas pierwszego uruchamiania tego polecenia Docker pobiera obrazy mikrousług z usługi Docker hub do tworzenia kontenerów lokalnie. Na następujące przebiegi Docker uruchamia kontenery natychmiast.
+Przy pierwszym uruchomieniu tego polecenia usługa Docker pobiera obrazy mikrousług z usługi Docker Hub w celu lokalnego tworzenia kontenerów. W przypadku następujących uruchomień Aparat Docker natychmiast uruchamia kontenery.
 
 > [!TIP]
-> Firma Microsoft publikuje często nowych obrazów platformy Docker za pomocą nowych funkcji. Następujący zestaw poleceń, aby oczyścić można użyć lokalnego kontenerów platformy Docker i odpowiednie obrazów przed pobierania najnowszych te:
+> Firma Microsoft często publikuje nowe obrazy platformy Docker przy użyciu nowych funkcji. Możesz użyć następującego zestawu poleceń do oczyszczenia lokalnych kontenerów platformy Docker i odpowiednich obrazów przed pobraniem najnowszych danych:
 
 ```cmd/sh
 docker list
@@ -83,27 +83,27 @@ docker rm <list_of_containers>
 docker rmi <list_of_images>
 ```
 
-Aby wyświetlić dzienniki z kontenera, można użyć oddzielnych powłoki. Najpierw Znajdź przy użyciu Identyfikatora kontenera `docker ps` polecenia. Następnie użyj `docker logs {container-id} --tail 1000` ostatnich 1000 zapisy określonego kontenera.
+Aby wyświetlić dzienniki z kontenera, można użyć oddzielnej powłoki. Najpierw Znajdź identyfikator kontenera za pomocą polecenia `docker ps`. Następnie użyj `docker logs {container-id} --tail 1000`, aby wyświetlić ostatnie 1000 wpisów dla określonego kontenera.
 
-### <a name="start-the-stream-analytics-job"></a>Uruchamianie zadania usługi Stream Analytics
+### <a name="start-the-stream-analytics-job"></a>Uruchamianie zadania Stream Analytics
 
-Wykonaj następujące kroki, aby uruchomić zadanie usługi Stream Analytics:
+Wykonaj następujące kroki, aby uruchomić zadanie Stream Analytics:
 
 1. Przejdź do witryny [Azure Portal](https://portal.azure.com).
-1. Przejdź do **grupy zasobów** tworzony dla rozwiązania. Nazwa grupy zasobów jest nazwa została wybrana opcja rozwiązania jest wyświetlany po uruchomieniu **start.cmd** skryptu.
-1. Kliknij pozycję **zadania usługi Stream Analytics** na liście zasobów.
-1. W zadaniu Stream Analytics **Przegląd** kliknij **Start** przycisku. Następnie kliknij przycisk **Start** można teraz uruchomić zadania.
+1. Przejdź do **grupy zasobów** utworzonej dla Twojego rozwiązania. Nazwa grupy zasobów jest nazwą wybraną dla rozwiązania po uruchomieniu skryptu **Start. cmd** .
+1. Kliknij **zadanie Stream Analytics** na liście zasobów.
+1. Na stronie **Przegląd** zadania Stream Analytics kliknij przycisk **Uruchom** . Następnie kliknij przycisk **Uruchom** , aby uruchomić zadanie teraz.
 
-### <a name="connect-to-the-dashboard"></a>Łączenie do pulpitu nawigacyjnego
+### <a name="connect-to-the-dashboard"></a>Nawiązywanie połączenia z pulpitem nawigacyjnym
 
-Aby uzyskać dostęp do pulpitu nawigacyjnego rozwiązania monitorowania zdalnego, przejdź do `http://localhost:8080` w przeglądarce. Można teraz używać lokalnej mikrousług i internetowego interfejsu użytkownika.
+Aby uzyskać dostęp do pulpitu nawigacyjnego rozwiązania do monitorowania zdalnego, przejdź do `http://localhost:8080` w przeglądarce. Teraz można korzystać z interfejsu użytkownika sieci Web i lokalnych mikrousług.
 
 ## <a name="clean-up"></a>Czyszczenie
 
-Aby uniknąć niepotrzebnych opłat, po zakończeniu testowania Usuń usług w chmurze z subskrypcji platformy Azure. Aby usunąć usługi, przejdź do [witryny Azure portal](https://ms.portal.azure.com) i Usuń zasób grupy, która **start.cmd** skrypt utworzony.
+Aby uniknąć niepotrzebnych opłat, po zakończeniu testowania Usuń usługi w chmurze z subskrypcji platformy Azure. Aby usunąć usługi, przejdź do [Azure Portal](https://ms.portal.azure.com) i Usuń grupę zasobów utworzoną przez skrypt **Start. cmd** .
 
-Użyj `docker-compose down --rmi all` polecenie, aby usunąć obrazy platformy Docker i wolnego miejsca na komputerze lokalnym. Możesz także usunąć lokalną kopię repozytorium zdalne monitorowanie utworzone podczas klonowania kodu źródłowego z repozytorium GitHub.
+Użyj `docker-compose down --rmi all` polecenie, aby usunąć obrazy platformy Docker i zwolnić miejsce na komputerze lokalnym. Możesz również usunąć kopię lokalną repozytorium zdalnego monitorowania utworzonego podczas klonowania kodu źródłowego z usługi GitHub.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
-Teraz, że udało Ci się wdrożyć rozwiązania do zdalnego monitorowania, następnym krokiem jest [zapoznaj się z możliwościami pulpitu nawigacyjnego rozwiązania](quickstart-remote-monitoring-deploy.md).
+Teraz, gdy wdrożono rozwiązanie do monitorowania zdalnego, następnym krokiem jest zapoznanie się z [możliwościami pulpitu nawigacyjnego rozwiązania](quickstart-remote-monitoring-deploy.md).

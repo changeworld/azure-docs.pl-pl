@@ -1,5 +1,5 @@
 ---
-title: Używanie alertów i rozwiązywanie problemów z urządzeniem w rozwiązaniu do monitorowania zdalnego — samouczek — Azure | Microsoft Docs
+title: Korzystanie z alertów w rozwiązaniu do zdalnego monitorowania — Azure | Microsoft Docs
 description: Ten samouczek przedstawia sposób używania alertów w celu identyfikowania i rozwiązywania problemów z urządzeniami podłączonymi do akceleratora rozwiązania do monitorowania zdalnego.
 author: dominicbetts
 manager: timlt
@@ -9,20 +9,20 @@ services: iot-accelerators
 ms.date: 11/08/2018
 ms.topic: tutorial
 ms.custom: mvc
-ms.openlocfilehash: 1cd1eb9a0bd4b8457ea82303a747acb2553ab707
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 853fa2b80e04dd8d9225d023db8030fed044ed7f
+ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61452669"
+ms.lasthandoff: 11/09/2019
+ms.locfileid: "73890920"
 ---
-# <a name="tutorial-troubleshoot-and-fix-device-issues"></a>Samouczek: Rozwiązywanie problemów z urządzeniami
+# <a name="tutorial-troubleshoot-and-fix-device-issues"></a>Samouczek: rozwiązywanie problemów z urządzeniami
 
 W tym samouczku użyjesz akceleratora rozwiązania do monitorowania zdalnego, aby zidentyfikować i naprawić problemy z połączonymi urządzeniami IoT. Alertów na pulpicie nawigacyjnym akceleratora rozwiązania używa się do identyfikowania problemów oraz uruchamiania zdalnych zadań w celu ich rozwiązywania.
 
 Firma Contoso testuje nowe **prototypowe** urządzenie w terenie. Jako operator firmy Contoso podczas testowania zauważasz, że **prototypowe** urządzenie nieoczekiwanie wyzwala alert o temperaturze na pulpicie nawigacyjnym. Teraz musisz zbadać zachowanie tego wadliwego **prototypowego** urządzenia i rozwiązać problem.
 
-W tym samouczku zostały wykonane następujące czynności:
+W tym samouczku zostaną wykonane następujące czynności:
 
 >[!div class="checklist"]
 > * Badanie alertu z urządzenia

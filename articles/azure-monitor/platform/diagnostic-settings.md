@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 07/31/2019
 ms.author: bwren
 ms.subservice: logs
-ms.openlocfilehash: ec1842d534dcb1e9ddef149d3ae879677b29e715
-ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
+ms.openlocfilehash: c1b7f81c62217d9e113f3293a8f351d908a6a576
+ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71262520"
+ms.lasthandoff: 11/09/2019
+ms.locfileid: "73887273"
 ---
 # <a name="create-diagnostic-setting-to-collect-platform-logs-and-metrics-in-azure"></a>Utwórz ustawienie diagnostyczne, aby zbierać dzienniki platformy i metryki na platformie Azure
 [Dzienniki platformy](resource-logs-overview.md) na platformie Azure zapewniają szczegółowe informacje diagnostyczne i inspekcji dla zasobów platformy Azure i platformy Azure, od których zależą. Ten artykuł zawiera szczegółowe informacje na temat tworzenia i konfigurowania ustawień diagnostycznych w celu zbierania dzienników platformy do różnych miejsc docelowych.
@@ -32,10 +32,10 @@ Pojedyncze ustawienie diagnostyczne może definiować jedno z miejsc docelowych.
 > [!NOTE]
 > [Metryki platformy](metrics-supported.md) są zbierane automatycznie, aby [Azure monitor metryki](data-platform-metrics.md). Za pomocą ustawień diagnostycznych można zbierać metryki dla określonych usług platformy Azure w Azure Monitor dzienników do analizy z innymi danymi monitorowania przy użyciu [zapytań dzienników](../log-query/log-query-overview.md).
 
-## <a name="destinations"></a>Cele 
+## <a name="destinations"></a>Docelowym 
 Dzienniki platformy można wysyłać do miejsc docelowych w poniższej tabeli. Konfiguracja dla każdego miejsca docelowego odbywa się przy użyciu tego samego procesu tworzenia ustawień diagnostycznych opisanych w tym artykule. Aby uzyskać szczegółowe informacje na temat wysyłania danych do tego miejsca docelowego, należy postępować zgodnie z poniższymi tabelami.
 
-| Destination | Opis |
+| Element docelowy | Opis |
 |:---|:---|
 | [Obszar roboczy usługi Log Analytics](resource-logs-collect-workspace.md) | Zbieranie dzienników w obszarze roboczym Log Analytics pozwala analizować je za pomocą innych danych monitorowania zbieranych przez Azure Monitor przy użyciu zaawansowanych zapytań dzienników, a także korzystać z innych funkcji Azure Monitor, takich jak alerty i wizualizacje. |
 | [Centra zdarzeń](resource-logs-stream-event-hubs.md) | Wysyłanie dzienników do Event Hubs umożliwia przesyłanie strumieniowe danych do systemów zewnętrznych, takich jak rozwiązań Siem innych firm i inne rozwiązania do analizy dzienników. |
@@ -55,9 +55,9 @@ Ustawienia diagnostyczne można skonfigurować w Azure Portal z menu Azure Monit
 
     ![Ustawienia diagnostyczne](media/diagnostic-settings/menu-resource.png)
 
-2. Jeśli ustawienia nie istnieje w zasobie wybrany, zostanie wyświetlony monit, aby utworzyć ustawienie. Kliknij pozycję **Włącz diagnostykę**.
+2. Jeśli w wybranym zasobie nie ma żadnych ustawień, zostanie wyświetlony monit o utworzenie ustawienia. Kliknij pozycję **Włącz diagnostykę**.
 
-   ![Dodaj ustawienie diagnostyczne — nie istniejące ustawienia](media/diagnostic-settings/add-setting.png)
+   ![Dodaj ustawienie diagnostyczne — brak istniejących ustawień](media/diagnostic-settings/add-setting.png)
 
    Jeśli w zasobie istnieją istniejące ustawienia, zostanie wyświetlona lista ustawień, które zostały już skonfigurowane. Kliknij pozycję **Dodaj ustawienie diagnostyczne** , aby dodać nowe ustawienie lub **edytować ustawienie** , aby edytować istniejące. Każde ustawienie nie może mieć więcej niż jednego z typów docelowych.
 
@@ -68,11 +68,11 @@ Ustawienia diagnostyczne można skonfigurować w Azure Portal z menu Azure Monit
 
     | Ustawienie | Opis |
     |:---|:---|
-    | Obszar roboczy usługi Log Analytics | Nazwa obszaru roboczego. |
+    | Log Analytics obszar roboczy | Nazwa obszaru roboczego. |
     | Konto magazynu | Nazwa konta magazynu. |
     | Przestrzeń nazw centrum zdarzeń | Przestrzeń nazw, w której jest tworzony centrum zdarzeń (jeśli jest to pierwsze dzienniki przesyłania strumieniowego) lub przesyłane strumieniowo do programu (jeśli istnieją już zasoby, które są przesyłane strumieniowo do tej przestrzeni nazw).
     | Nazwa centrum zdarzeń | Opcjonalnie można określić nazwę centrum zdarzeń, aby wysłać wszystkie dane w ustawieniu. Jeśli nie określisz nazwy, centrum zdarzeń zostanie utworzone dla każdej kategorii dzienników. W przypadku wysyłania wielu kategorii warto określić nazwę, aby ograniczyć liczbę utworzonych centrów zdarzeń. Szczegóły można znaleźć w temacie limity [przydziału i limity Event Hubs platformy Azure](../../event-hubs/event-hubs-quotas.md) . |
-    | Nazwa zasad Centrum zdarzeń | Definiuje uprawnienia, które ma mechanizm przesyłania strumieniowego. |
+    | Nazwa zasad centrum zdarzeń | Definiuje uprawnienia, które ma mechanizm przesyłania strumieniowego. |
 
     ![Dodaj ustawienie diagnostyczne — istniejące ustawienia](media/diagnostic-settings/setting-details.png)
 
@@ -92,7 +92,7 @@ Po kilku chwilach nowe ustawienie zostanie wyświetlone na liście ustawień dla
 
 
 ## <a name="create-diagnostic-settings-using-powershell"></a>Tworzenie ustawień diagnostycznych przy użyciu programu PowerShell
-Użyj polecenia cmdlet [Set-AzDiagnosticSetting](https://docs.microsoft.com/en-us/powershell/module/az.monitor/set-azdiagnosticsetting) , aby utworzyć ustawienie diagnostyczne z [Azure PowerShell](powershell-quickstart-samples.md). Zapoznaj się z dokumentacją tego polecenia cmdlet, aby zapoznać się z opisami jego parametrów.
+Użyj polecenia cmdlet [Set-AzDiagnosticSetting](https://docs.microsoft.com/powershell/module/az.monitor/set-azdiagnosticsetting) , aby utworzyć ustawienie diagnostyczne z [Azure PowerShell](powershell-quickstart-samples.md). Zapoznaj się z dokumentacją tego polecenia cmdlet, aby zapoznać się z opisami jego parametrów.
 
 Poniżej znajduje się przykładowe polecenie cmdlet programu PowerShell służące do tworzenia ustawień diagnostycznych przy użyciu wszystkich trzech miejsc docelowych.
 

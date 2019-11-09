@@ -8,12 +8,12 @@ ms.service: container-registry
 ms.topic: article
 ms.date: 08/16/2019
 ms.author: stevelas
-ms.openlocfilehash: c0de5f958c6dcbf935de4eec9557cf64620abbcf
-ms.sourcegitcommit: 5f67772dac6a402bbaa8eb261f653a34b8672c3a
+ms.openlocfilehash: f6d1987012cb401d7167896d9352ba7eae821a04
+ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/01/2019
-ms.locfileid: "70208004"
+ms.lasthandoff: 11/09/2019
+ms.locfileid: "73887989"
 ---
 # <a name="geo-replication-in-azure-container-registry"></a>Replikacja geograficzna w usłudze Azure Container Registry
 
@@ -97,7 +97,7 @@ Usługa ACR rozpocznie synchronizowanie obrazów między skonfigurowanymi replik
 * Każdy region w rejestrze z replikacją geograficzną jest niezależny od konfiguracji. Azure Container Registry umowy SLA mają zastosowanie do każdego regionu zreplikowanego geograficznie.
 * W przypadku wypychania lub ściągania obrazów z rejestru z replikacją geograficzną, usługa Azure Traffic Manager w tle wysyła żądanie do rejestru znajdującego się w regionie najbliżej użytkownika.
 * Po wypchnięciu aktualizacji obrazu lub tagu do najbliższego regionu przez Azure Container Registry replikację manifestów i warstw do pozostałych regionów, które zostały wybrane. Większe obrazy trwają dłużej niż mniejsze. Obrazy i Tagi są synchronizowane w regionach replikacji z modelem spójności ostatecznej.
-* Aby zarządzać przepływami pracy, które są zależne od aktualizacji wypychanych do replikowanych geograficznie [](container-registry-webhook.md) , zalecamy skonfigurowanie elementów webhook w celu reagowania na zdarzenia wypychania. Można skonfigurować regionalne elementy webhook w ramach rejestru replikowanego geograficznie do śledzenia zdarzeń wypychania w miarę ich kończenia w regionach replikowanych geograficznie.
+* Aby zarządzać przepływami pracy, które są zależne od aktualizacji wypychanych do replikowanych geograficznie, zalecamy skonfigurowanie elementów [webhook](container-registry-webhook.md) w celu reagowania na zdarzenia wypychania. Można skonfigurować regionalne elementy webhook w ramach rejestru replikowanego geograficznie do śledzenia zdarzeń wypychania w miarę ich kończenia w regionach replikowanych geograficznie.
 
 ## <a name="delete-a-replica"></a>Usuwanie repliki
 
@@ -121,7 +121,7 @@ W poprzednim przykładzie firma Contoso skonsolidowała dwa rejestry w ramach je
  
 Klient platformy Docker, który wypycha obraz do rejestru z replikacją geograficzną, może nie wypchnąć wszystkich warstw obrazu i jego manifestu do jednego zreplikowanego regionu. Może to być spowodowane tym, że usługa Azure Traffic Manager kieruje żądania rejestru do najbliższego rejestru replikowanego w sieci. Jeśli rejestr ma dwa regiony replikacji w *pobliżu* , warstwy obrazu i manifest mogą być dystrybuowane do dwóch lokacji, a operacja push kończy się niepowodzeniem po sprawdzeniu poprawności manifestu. Ten problem występuje ze względu na sposób, w jaki nazwa DNS rejestru jest rozpoznawana na niektórych hostach z systemem Linux. Ten problem nie występuje w systemie Windows, co zapewnia pamięć podręczną usługi DNS po stronie klienta.
  
-W przypadku wystąpienia tego problemu jedno rozwiązanie ma zastosowanie pamięci podręcznej DNS po stronie klienta, `dnsmasq` takiej jak na hoście z systemem Linux. Pozwala to zapewnić spójność nazwy rejestru. Jeśli używasz maszyny wirtualnej z systemem Linux na platformie Azure do wypychania do rejestru, zobacz Opcje [rozpoznawania nazw DNS dla maszyn wirtualnych z systemem Linux na platformie Azure](https://docs.microsoft.com/en-us/azure/virtual-machines/linux/azure-dns).
+W przypadku wystąpienia tego problemu jedno rozwiązanie ma zastosowanie pamięci podręcznej DNS po stronie klienta, takiej jak `dnsmasq` na hoście z systemem Linux. Pozwala to zapewnić spójność nazwy rejestru. Jeśli używasz maszyny wirtualnej z systemem Linux na platformie Azure do wypychania do rejestru, zobacz Opcje [rozpoznawania nazw DNS dla maszyn wirtualnych z systemem Linux na platformie Azure](https://docs.microsoft.com/azure/virtual-machines/linux/azure-dns).
 
 W celu zoptymalizowania rozpoznawania nazw DNS do najbliższej repliki podczas wypychania obrazów Skonfiguruj rejestr z replikacją geograficzną w tych samych regionach platformy Azure jako źródło operacji wypychania lub najbliższy Region podczas pracy poza platformą Azure.
 

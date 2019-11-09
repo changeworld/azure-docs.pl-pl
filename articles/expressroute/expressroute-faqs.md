@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 10/28/2019
 ms.author: jaredro
 ms.custom: seodec18
-ms.openlocfilehash: 4dd4831d6437b7026459dc358455335dd0fa221b
-ms.sourcegitcommit: f7f70c9bd6c2253860e346245d6e2d8a85e8a91b
+ms.openlocfilehash: f27a6df86ebbe2b07b73016f304ac364e88664bb
+ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73063104"
+ms.lasthandoff: 11/09/2019
+ms.locfileid: "73891036"
 ---
 # <a name="expressroute-faq"></a>Usługa ExpressRoute — często zadawane pytania
 
@@ -65,7 +65,7 @@ ExpressRoute obsługuje [trzy domeny routingu](expressroute-circuit-peerings.md)
 
 * [Office 365](https://aka.ms/ExpressRouteOffice365)
 * Power BI — dostępne za pośrednictwem społeczności regionalnej platformy Azure, zobacz [tutaj](https://docs.microsoft.com/power-bi/service-admin-where-is-my-tenant-located) , jak sprawdzić region dzierżawy Power BI.
-* Usługa Active Directory systemu Azure
+* Usługa Azure Active Directory
 * [Pulpit wirtualny systemu Windows](https://azure.microsoft.com/services/virtual-desktop/)
 * [Azure DevOps](https://blogs.msdn.microsoft.com/devops/2018/10/23/expressroute-for-azure-devops/) (społeczność usług globalnych platformy Azure)
 * Większość usług platformy Azure jest obsługiwanych. Skontaktuj się bezpośrednio z usługą, która ma zostać użyta, aby zweryfikować pomoc techniczną.<br><br>**Następujące usługi nie są obsługiwane**:
@@ -101,7 +101,7 @@ Jeśli zobaczysz komunikat "wymagana Walidacja", Zbierz dokumenty, które pokazu
 Środowiska Dynamics 365 i Common Data Service (CD) są hostowane na platformie Azure, dlatego klienci korzystają z podstawowej obsługi ExpressRoute zasobów platformy Azure. Można nawiązać połączenie z punktami końcowymi usługi, jeśli filtr routera obejmuje regiony platformy Azure, w których są hostowane środowiska usługi Dynamics 365/CD.
 
 > [!NOTE]
-> Usługa [ExpressRoute Premium](https://docs.microsoft.com/en-us/azure/expressroute/expressroute-faqs#expressroute-premium) **nie** jest wymagana dla łączności z usługą Dynamics 365 za pośrednictwem usługi Azure ExpressRoute.
+> Usługa [ExpressRoute Premium](https://docs.microsoft.com/azure/expressroute/expressroute-faqs#expressroute-premium) **nie** jest wymagana dla łączności z usługą Dynamics 365 za pośrednictwem usługi Azure ExpressRoute.
 
 ## <a name="data-and-connections"></a>Dane i połączenia
 

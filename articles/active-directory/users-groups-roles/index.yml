@@ -12,12 +12,12 @@ metadata:
   ms.date: 08/28/2019
   author: curtand
   ms.author: curtand
-  ms.openlocfilehash: 4689a573bf8d58aa9734af97ea66f78ab4e5707a
-  ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
+  ms.openlocfilehash: db210331e07ec1b23c3300a5a5a972570be5b591
+  ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
   ms.translationtype: HT
   ms.contentlocale: pl-PL
-  ms.lasthandoff: 08/28/2019
-  ms.locfileid: "70126931"
+  ms.lasthandoff: 11/09/2019
+  ms.locfileid: "73885803"
 landingContent:
 - title: Użytkownicy, grupy, role i licencje — informacje
   linkLists:
@@ -32,7 +32,7 @@ landingContent:
     - text: Delegowanie administracji
       url: roles-concept-delegation.md
     - text: Porównanie ról RBAC platformy Azure i ról administratora usługi Azure AD
-      url: https://docs.microsoft.com/en-us/azure/role-based-access-control/rbac-and-directory-admin-roles?context=azure/active-directory/users-groups-roles/context/ugr-context
+      url: https://docs.microsoft.com/azure/role-based-access-control/rbac-and-directory-admin-roles?context=azure/active-directory/users-groups-roles/context/ugr-context
 - title: Rozpoczęcie pracy
   linkLists:
   - linkListType: quickstart
@@ -42,7 +42,7 @@ landingContent:
     - text: Ustawianie zasad wygasania dla grup
       url: groups-quickstart-expiration.md
     - text: Przypisywanie licencji do użytkowników
-      url: https://docs.microsoft.com/en-us/azure/active-directory/fundamentals/license-users-groups?context=azure/active-directory/users-groups-roles/context/ugr-context
+      url: https://docs.microsoft.com/azure/active-directory/fundamentals/license-users-groups?context=azure/active-directory/users-groups-roles/context/ugr-context
 - title: Przypisywanie ról administratorów usługi Azure AD
   linkLists:
   - linkListType: how-to-guide
@@ -78,6 +78,6 @@ landingContent:
   - linkListType: how-to-guide
     links:
     - text: Dodawanie niestandardowej nazwy domeny
-      url: https://docs.microsoft.com/en-us/azure/active-directory/fundamentals/add-custom-domain?context=azure/active-directory/users-groups-roles/context/ugr-context
+      url: https://docs.microsoft.com/azure/active-directory/fundamentals/add-custom-domain?context=azure/active-directory/users-groups-roles/context/ugr-context
     - text: Zarządzanie niestandardowymi nazwami domen
       url: domains-manage.md

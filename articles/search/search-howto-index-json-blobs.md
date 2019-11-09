@@ -9,12 +9,12 @@ ms.devlang: rest-api
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: f8ddec95b92121c8dad4a39cf0c7b3f1798ec8ad
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.openlocfilehash: 81e652b90831af0e1e20e716842b4e79f5606d05
+ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72789504"
+ms.lasthandoff: 11/09/2019
+ms.locfileid: "73889868"
 ---
 # <a name="how-to-index-json-blobs-using-a-blob-indexer-in-azure-cognitive-search"></a>Jak indeksować obiekty blob w formacie JSON za pomocą indeksatora obiektów BLOB na platformie Azure Wyszukiwanie poznawcze
 
@@ -65,17 +65,11 @@ Na stronie **Źródło danych** Źródło musi być **BLOB Storage platformy Azu
 
    ![Definicja źródła danych obiektu BLOB](media/search-howto-index-json/import-wizard-json-data-source.png)
 
-### <a name="4---skip-the-add-cognitive-search-page-in-the-wizard"></a>4 — Pomiń stronę "Dodawanie wyszukiwania poznawczego" w Kreatorze
+### <a name="4---skip-the-enrich-content-page-in-the-wizard"></a>4 — pomijanie strony "wzbogacanie zawartości" w Kreatorze
 
-Dodawanie umiejętności poznawczych nie jest konieczne w przypadku importu dokumentu JSON. Jeśli nie ma potrzeby [dodawania wzbogacania AI](cognitive-search-concept-intro.md) do potoku indeksowania, należy pominąć ten krok.
+Dodawanie umiejętności poznawczych (lub wzbogacania) nie jest wymaganiem importowania. Jeśli nie ma potrzeby [dodawania wzbogacania AI](cognitive-search-concept-intro.md) do potoku indeksowania, należy pominąć ten krok.
 
-Aby pominąć ten krok, najpierw przejdź do następnej strony.
-
-   ![Przycisk następnej strony dla wyszukiwania poznawczego](media/search-get-started-portal/next-button-add-cog-search.png)
-
-Na tej stronie możesz przejść do dostosowywania indeksu.
-
-   ![Pomijanie kroku Umiejętności poznawcze](media/search-get-started-portal/skip-cog-skill-step.png)
+Aby pominąć ten krok, kliknij niebieskie przyciski u dołu strony, aby "dalej" i "Pomiń".
 
 ### <a name="5---set-index-attributes"></a>5 — Ustawianie atrybutów indeksu
 
@@ -151,7 +145,7 @@ Te wartości można znaleźć w portalu:
 
 ### <a name="2---create-a-data-source"></a>2 — Tworzenie źródła danych
 
-Ten krok zapewnia informacje o połączeniu ze źródłem danych używane przez indeksator. Źródło danych to nazwany obiekt w usłudze Azure Wyszukiwanie poznawcze, który utrzymuje informacje o połączeniu. Typ źródła danych, `azureblob` określa, które zachowania wyodrębniania danych są wywoływane przez indeksator. 
+Ten krok zapewnia informacje o połączeniu ze źródłem danych używane przez indeksator. Źródło danych to nazwany obiekt w usłudze Azure Wyszukiwanie poznawcze, który utrzymuje informacje o połączeniu. Typ źródła danych, `azureblob`określa, które zachowania wyodrębniania danych są wywoływane przez indeksator. 
 
 Zastąp prawidłowe wartości w obszarze symbole zastępcze nazwa usługi, klucz administratora, konto magazynu i klucz konta.
 
@@ -411,7 +405,7 @@ Odwiedzanie przykładowego dokumentu JSON:
         }
     }
 
-Przyjmij indeks wyszukiwania o następujące pola: `text` typu `Edm.String`, `date` typu `Edm.DateTimeOffset` i `tags` typu `Collection(Edm.String)`. Zwróć uwagę na różnice między "datePublished" w polu źródłowym i `date`m w indeksie. Aby zmapować kod JSON do żądanego kształtu, użyj następujących mapowań pól:
+Przyjmij indeks wyszukiwania o następujące pola: `text` typu `Edm.String`, `date` typu `Edm.DateTimeOffset`i `tags` typu `Collection(Edm.String)`. Zwróć uwagę na różnice między "datePublished" w polu źródłowym i `date`m w indeksie. Aby zmapować kod JSON do żądanego kształtu, użyj następujących mapowań pól:
 
     "fieldMappings" : [
         { "sourceFieldName" : "/article/text", "targetFieldName" : "text" },
@@ -430,7 +424,7 @@ Można również odwoływać się do poszczególnych elementów tablicy przy uż
 >
 >
 
-## <a name="see-also"></a>Zobacz także
+## <a name="see-also"></a>Zobacz też
 
 + [Indeksatory w usłudze Azure Wyszukiwanie poznawcze](search-indexer-overview.md)
 + [Indeksowanie Blob Storage platformy Azure przy użyciu usługi Azure Wyszukiwanie poznawcze](search-howto-index-json-blobs.md)

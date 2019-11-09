@@ -9,14 +9,14 @@ ms.author: robreed
 ms.date: 04/26/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 52fcd0d928ecbce5c617ff6a27175fccb8fd96f6
-ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
+ms.openlocfilehash: 44ab9688471a87e6db3712cc61b8abb194d54ac3
+ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68990239"
+ms.lasthandoff: 11/09/2019
+ms.locfileid: "73886532"
 ---
-# <a name="source-control-integration-in-azure-automation"></a>Integracja kontroli źródła w usłudze Azure Automation
+# <a name="source-control-integration-in-azure-automation"></a>Integracja kontroli źródła w usłudze Automatyzacja Azure
 
 Kontrola źródła umożliwia zachowanie aktualności elementów Runbook na koncie usługi Automation za pomocą skryptów w repozytorium usługi GitHub lub Azure Repos. Kontrola źródła pozwala łatwo współpracować z zespołem, śledzić zmiany i przywracać wcześniejsze wersje elementów Runbook. Na przykład kontrola źródła pozwala synchronizować różne gałęzie w kontroli źródła z kontami programu do tworzenia, testowania lub produkcji. Dzięki temu można łatwo podwyższyć poziom kodu, który został przetestowany w środowisku programistycznym, na konto automatyzacji produkcji. Integracja kontroli źródła z automatyzacją obsługuje synchronizację jednokierunkową z repozytorium kontroli źródła.
 
@@ -41,7 +41,7 @@ W ramach konta usługi Automation wybierz pozycję **Kontrola źródła** , a na
 
 ![Wybierz kontrolę źródła](./media/source-control-integration/select-source-control.png)
 
-Wybierz **Typ kontroli źródła**, anastępnie kliknij przycisk Uwierzytelnij. Zostanie otwarte okno przeglądarki z monitem o zalogowanie się, postępuj zgodnie z monitami, aby zakończyć uwierzytelnianie.
+Wybierz **Typ kontroli źródła**, a następnie kliknij przycisk **Uwierzytelnij**. Zostanie otwarte okno przeglądarki z monitem o zalogowanie się, postępuj zgodnie z monitami, aby zakończyć uwierzytelnianie.
 
 Na stronie **Podsumowanie kontroli źródła** Wypełnij informacje i kliknij przycisk **Zapisz**. W poniższej tabeli przedstawiono opis dostępnych pól.
 
@@ -49,8 +49,8 @@ Na stronie **Podsumowanie kontroli źródła** Wypełnij informacje i kliknij pr
 |---------|---------|
 |Nazwa kontroli źródła     | Przyjazna nazwa dla kontroli źródła. *Ta nazwa może zawierać tylko litery i cyfry.*        |
 |Typ kontroli źródła     | Typ źródła kontroli źródła. Dostępne opcje:</br> GitHub</br>Azure Repos (Git)</br> Azure Repos (TFVC)        |
-|Repozytorium     | Nazwa repozytorium lub projektu. Zwracane są pierwsze 200 repozytoriów. Aby wyszukać repozytorium, wpisz nazwę w polu, a następnie kliknij pozycję **Wyszukaj w witrynie GitHub**.|
-|Rozgałęzienie     | Gałąź, z której mają zostać pobrane pliki źródłowe. Funkcja określania wartości docelowej gałęzi jest niedostępna dla typu kontroli źródła TFVC.          |
+|Kopie     | Nazwa repozytorium lub projektu. Zwracane są pierwsze 200 repozytoriów. Aby wyszukać repozytorium, wpisz nazwę w polu, a następnie kliknij pozycję **Wyszukaj w witrynie GitHub**.|
+|Branch     | Gałąź, z której mają zostać pobrane pliki źródłowe. Funkcja określania wartości docelowej gałęzi jest niedostępna dla typu kontroli źródła TFVC.          |
 |Ścieżka folderu     | Folder zawierający elementy Runbook do zsynchronizowania. Przykład:/Runbooks </br>*Synchronizowane są tylko elementy Runbook w określonym folderze. Rekursja nie jest obsługiwana.*        |
 |Synchronizacja autosynchronizacji<sup>1</sup>     | Włącza lub wyłącza automatyczną synchronizację po dokonaniu zatwierdzenia w repozytorium kontroli źródła         |
 |Publikowanie elementu Runbook     | W przypadku wybrania opcji **włączone**po zsynchronizowaniu elementów Runbook z kontroli źródła zostaną one automatycznie opublikowane.         |
@@ -93,21 +93,21 @@ Kontrola źródła wymaga pewnych minimalnych uprawnień do osobistych tokenów 
 
 Aby uzyskać więcej informacji na temat tworzenia osobistego tokenu dostępu w usłudze GitHub, odwiedź stronę [Tworzenie osobistego tokenu dostępu dla wiersza polecenia](https://help.github.com/articles/creating-a-personal-access-token-for-the-command-line/).
 
-|Scope  |Opis  |
+|Zakres  |Opis  |
 |---------|---------|
 |**repozytorium**     |         |
 |repozytorium: stan     | Stan zatwierdzenia dostępu         |
 |repo_deployment      | Stan wdrożenia dostępu         |
 |public_repo     | Dostęp do publicznych repozytoriów         |
-|**admin:repo_hook**     |         |
-|write:repo_hook     | Zapisz punkty zaczepienia repozytorium         |
-|read:repo_hook|Odczytaj punkty zaczepienia repozytorium|
+|**Administrator: repo_hook**     |         |
+|zapis: repo_hook     | Zapisz punkty zaczepienia repozytorium         |
+|Odczytaj: repo_hook|Odczytaj punkty zaczepienia repozytorium|
 
 #### <a name="azure-repos"></a>Azure Repos
 
 Aby uzyskać więcej informacji na temat tworzenia osobistego tokenu dostępu w Azure Repos, odwiedź stronę [uwierzytelnianie dostępu przy użyciu osobistych tokenów dostępu](/azure/devops/organizations/accounts/use-personal-access-tokens-to-authenticate).
 
-|Scope  |
+|Zakres  |
 |---------|
 |Kod (odczyt)     |
 |Projekt i zespół (odczyt)|
@@ -169,7 +169,7 @@ Aby rozłączyć się z repozytorium kontroli źródła, Otwórz **kontrolę źr
 
 Wybierz kontrolę źródła, którą chcesz usunąć. Na stronie **Podsumowanie kontroli źródła** kliknij pozycję **Usuń**.
 
-## <a name="encoding"></a>Kodowanie
+## <a name="encoding"></a>Encoding
 
 Jeśli wiele osób edytuje elementy Runbook w repozytorium kontroli źródła przy użyciu różnych edytorów, istnieje możliwość uruchomienia w nich problemów z kodowaniem. Ta sytuacja może prowadzić do niepoprawnych znaków w elemencie Runbook. Aby dowiedzieć się więcej na ten temat, zobacz [typowe przyczyny problemów z kodowaniem](/powershell/scripting/components/vscode/understanding-file-encoding#common-causes-of-encoding-issues)
 
@@ -177,7 +177,7 @@ Jeśli wiele osób edytuje elementy Runbook w repozytorium kontroli źródła pr
 
 Obecnie nie ma możliwości aktualizacji tokenu dostępu w kontroli źródła z portalu. Po wygaśnięciu lub odwołaniu osobistego tokenu dostępu można zaktualizować kontrolę źródła przy użyciu nowego tokenu dostępu w następujący sposób:
 
-* Za pomocą [interfejsu API REST](https://docs.microsoft.com/en-us/rest/api/automation/sourcecontrol/update).
+* Za pomocą [interfejsu API REST](https://docs.microsoft.com/rest/api/automation/sourcecontrol/update).
 * Za pomocą polecenia cmdlet [Update-AzAutomationSourceControl](/powershell/module/az.automation/update-azautomationsourcecontrol) .
 
 ## <a name="next-steps"></a>Następne kroki

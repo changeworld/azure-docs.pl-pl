@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/20/2019
 ms.author: juliako
-ms.openlocfilehash: 9563def1a7b510c403cf299a66066def0b03b59a
-ms.sourcegitcommit: 018e3b40e212915ed7a77258ac2a8e3a660aaef8
+ms.openlocfilehash: d5b84a9d216457720e9bd4e17b002d6ab9490f9d
+ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73796791"
+ms.lasthandoff: 11/09/2019
+ms.locfileid: "73888596"
 ---
 # <a name="upload-files-into-a-media-services-account-using-rest"></a>Przekazywanie plików na konto Media Services przy użyciu usługi REST  
 > [!div class="op_single_selector"]
@@ -45,7 +45,7 @@ W tym samouczku dowiesz się, jak przekazać plik i inną skojarzoną z nim oper
 - Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpłatne konto](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio).
 - [Utwórz konto Azure Media Services przy użyciu Azure Portal](media-services-portal-create-account.md).
 - Zapoznaj się z artykułem [Omówienie uzyskiwania dostępu do interfejsu API Azure Media Services przy użyciu usługi AAD Authentication](media-services-use-aad-auth-to-access-ams-api.md) .
-- Aby uzyskać więcej informacji, zobacz artykuł [używanie uwierzytelniania usługi Azure AD w celu uzyskania dostępu do interfejsu API Media Services przy użyciu artykułu REST](https://docs.microsoft.com/en-us/azure/media-services/previous/media-services-rest-connect-with-aad) .
+- Aby uzyskać więcej informacji, zobacz artykuł [używanie uwierzytelniania usługi Azure AD w celu uzyskania dostępu do interfejsu API Media Services przy użyciu artykułu REST](https://docs.microsoft.com/azure/media-services/previous/media-services-rest-connect-with-aad) .
 - Skonfiguruj **notkę** zgodnie z opisem w artykule [Konfigurowanie programu poster dla Media Services wywołań interfejsu API REST](media-rest-apis-with-postman.md).
 
 ## <a name="considerations"></a>Zagadnienia do rozważenia
@@ -73,7 +73,7 @@ Aby uzyskać instrukcje dotyczące sposobu konfigurowania programu Poster dla te
 2. Określ wartość dla zmiennej środowiskowej **MediaFileName** .
 
     Określ nazwę pliku nośnika, który ma zostać przekazany. W tym przykładzie przekażemy plik BigBuckBunny. MP4. 
-3. Przejrzyj plik **AzureMediaServices. postman_environment. JSON** . Zobaczysz, że prawie wszystkie operacje w kolekcji wykonują skrypt "test". Skrypty pobierają pewne wartości zwracane przez odpowiedź i ustawiają odpowiednie zmienne środowiskowe.
+3. Zapoznaj się z plikiem **AzureMediaServices. postman_environment. JSON** . Zobaczysz, że prawie wszystkie operacje w kolekcji wykonują skrypt "test". Skrypty pobierają pewne wartości zwracane przez odpowiedź i ustawiają odpowiednie zmienne środowiskowe.
 
     Na przykład Pierwsza operacja pobiera token dostępu i ustawia go w zmiennej środowiskowej **AccessToken** , która jest używana we wszystkich innych operacjach.
 
@@ -95,7 +95,7 @@ Aby uzyskać instrukcje dotyczące sposobu konfigurowania programu Poster dla te
 
 5. Kliknij pozycję **Wyślij**.
 
-    Można zobaczyć odpowiedź, która zawiera "access_token". Skrypt "test" pobiera tę wartość i ustawia zmienną środowiskową **AccessToken** (zgodnie z powyższym opisem). Jeśli sprawdzisz zmienne środowiskowe, zobaczysz, że ta zmienna zawiera teraz wartość tokenu dostępu (token okaziciela), która jest używana w pozostałej części operacji. 
+    Można zobaczyć odpowiedź zawierającą "access_token". Skrypt "test" pobiera tę wartość i ustawia zmienną środowiskową **AccessToken** (zgodnie z powyższym opisem). Jeśli sprawdzisz zmienne środowiskowe, zobaczysz, że ta zmienna zawiera teraz wartość tokenu dostępu (token okaziciela), która jest używana w pozostałej części operacji. 
 
     Jeśli token zostanie wystawiony ponownie, należy wykonać krok "Pobierz token usługi Azure AD w celu uzyskania głównej nazwy". 
 

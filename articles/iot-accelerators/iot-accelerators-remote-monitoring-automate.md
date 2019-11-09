@@ -1,5 +1,5 @@
 ---
-title: Samouczek dotyczący wykrywania problemów z urządzeniami w rozwiązaniu do monitorowania zdalnego — Azure | Microsoft Docs
+title: Korzystanie z rozwiązania do zdalnego monitorowania w celu wykrywania problemów z urządzeniami — platforma Azure | Microsoft Docs
 description: W tym samouczku pokazano, w jaki sposób korzystać z reguł i akcji do automatycznego wykrywania problemów z urządzeniami dotyczących wartości progowych w rozwiązaniu do monitorowania zdalnego.
 author: dominicbetts
 manager: timlt
@@ -9,14 +9,14 @@ services: iot-accelerators
 ms.date: 11/08/2018
 ms.topic: tutorial
 ms.custom: mvc
-ms.openlocfilehash: 91ee5087e5f41cda3648c2ecadcfcf16fd32a249
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 676f1133a516174478a456a97bc467e7770fe6e7
+ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61448318"
+ms.lasthandoff: 11/09/2019
+ms.locfileid: "73888888"
 ---
-# <a name="tutorial-detect-issues-with-devices-connected-to-your-monitoring-solution"></a>Samouczek: Wykrywanie problemów z urządzeniami połączonymi z rozwiązaniem do monitorowania
+# <a name="tutorial-detect-issues-with-devices-connected-to-your-monitoring-solution"></a>Samouczek: wykrywanie problemów z urządzeniami połączonymi z rozwiązaniem do monitorowania
 
 W tym samouczku skonfigurujesz akcelerator rozwiązania do monitorowania zdalnego, aby wykryć problemy z połączonymi urządzeniami IoT. Aby wykryć problemy z urządzeniami, dodasz reguły alertów generujące alerty na pulpicie nawigacyjnym rozwiązania.
 
@@ -132,7 +132,7 @@ Jednocześnie można usunąć tylko jedną regułę.
 
 [!INCLUDE [iot-accelerators-tutorial-cleanup](../../includes/iot-accelerators-tutorial-cleanup.md)]
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 W tym samouczku przedstawiono sposób korzystania ze strony **Reguły** w akceleratorze rozwiązania do monitorowania zdalnego w celu tworzenia reguł, które wywołują alerty w rozwiązaniu, i zarządzania nimi. Aby dowiedzieć się, w jaki sposób korzystać z akceleratora rozwiązań w celu konfigurowania połączonych urządzeń i zarządzania nimi, przejdź do kolejnego samouczka.
 

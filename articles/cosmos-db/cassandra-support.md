@@ -8,12 +8,12 @@ ms.service: cosmos-db
 ms.subservice: cosmosdb-cassandra
 ms.topic: overview
 ms.date: 09/24/2018
-ms.openlocfilehash: 12df79696033e69abbf48f053c1a594be9409cda
-ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
+ms.openlocfilehash: c0a47e922ae8cdca3c70cb53f9fa2f7dafe191c6
+ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73721109"
+ms.lasthandoff: 11/09/2019
+ms.locfileid: "73889224"
 ---
 # <a name="apache-cassandra-features-supported-by-azure-cosmos-db-cassandra-api"></a>Funkcje bazy danych Apache Cassandra obsługiwane przez interfejs API Cassandra usługi Azure Cosmos DB 
 
@@ -110,7 +110,7 @@ Narzędzie wiersza polecenia CQLSH jest dostarczane z Apache Cassandra 3.1.1 i d
 
 **Windows:**
 
-W przypadku korzystania z systemu Windows zaleca się włączenie [systemu Windows w systemie Linux](https://docs.microsoft.com/en-us/windows/wsl/install-win10#install-the-windows-subsystem-for-linux). Następnie możesz użyć poniższych poleceń systemu Linux.
+W przypadku korzystania z systemu Windows zaleca się włączenie [systemu Windows w systemie Linux](https://docs.microsoft.com/windows/wsl/install-win10#install-the-windows-subsystem-for-linux). Następnie możesz użyć poniższych poleceń systemu Linux.
 
 **Unix/Linux/Mac:**
 
@@ -179,10 +179,10 @@ Azure Cosmos DB obsługuje kontrolę dostępu opartą na rolach (RBAC) na potrze
 
 ## <a name="keyspace-and-table-options"></a>Opcje przestrzeni kluczy i tabeli
 
-Opcje dla nazwy regionu, klasy, replication_factor i centrum danych w poleceniu "Utwórz przestrzeń kluczy" są obecnie ignorowane. System używa podstawowej metody replikacji [dystrybucji](global-dist-under-the-hood.md) Azure Cosmos DB, aby dodać regiony. Jeśli potrzebujesz obecności danych między regionami, możesz ją włączyć na poziomie konta przy użyciu programu PowerShell, interfejsu wiersza polecenia lub portalu, aby dowiedzieć się więcej, zobacz artykuł [jak dodać regiony](how-to-manage-database-account.md#addremove-regions-from-your-database-account) . Nie można wyłączyć Durable_writes, ponieważ Azure Cosmos DB gwarantuje, że każdy zapis jest trwały. W każdym regionie Azure Cosmos DB replikuje dane przez zestaw replik składający się z czterech replik i nie można zmodyfikować tej [konfiguracji](global-dist-under-the-hood.md) zestawu replik.
+Opcje nazwy regionu, klasy, replication_factor i centrum danych w poleceniu "Utwórz przestrzeń kluczy" są obecnie ignorowane. System używa podstawowej metody replikacji [dystrybucji](global-dist-under-the-hood.md) Azure Cosmos DB, aby dodać regiony. Jeśli potrzebujesz obecności danych między regionami, możesz ją włączyć na poziomie konta przy użyciu programu PowerShell, interfejsu wiersza polecenia lub portalu, aby dowiedzieć się więcej, zobacz artykuł [jak dodać regiony](how-to-manage-database-account.md#addremove-regions-from-your-database-account) . Nie można wyłączyć Durable_writes, ponieważ Azure Cosmos DB gwarantuje, że każdy zapis jest trwały. W każdym regionie Azure Cosmos DB replikuje dane przez zestaw replik składający się z czterech replik i nie można zmodyfikować tej [konfiguracji](global-dist-under-the-hood.md) zestawu replik.
  
-Wszystkie opcje są ignorowane podczas tworzenia tabeli, z wyjątkiem gc_grace_seconds, która powinna mieć wartość zero.
-Przestrzeń kluczy i tabela mają dodatkową opcję o nazwie "cosmosdb_provisioned_throughput" o minimalnej wartości 400 RU/s. Przepływność przestrzeni kluczy umożliwia udostępnianie przepływności w wielu tabelach i jest przydatne w scenariuszach, gdy wszystkie tabele nie korzystają z zainicjowanej przepływności. Polecenie ALTER TABLE umożliwia zmianę zainicjowanej przepływności w regionach. 
+Wszystkie opcje są ignorowane podczas tworzenia tabeli, z wyjątkiem gc_grace_seconds, które powinny mieć wartość zero.
+Przestrzeń kluczy i tabela mają dodatkową opcję o nazwie "cosmosdb_provisioned_throughput" z minimalną wartością 400 RU/s. Przepływność przestrzeni kluczy umożliwia udostępnianie przepływności w wielu tabelach i jest przydatne w scenariuszach, gdy wszystkie tabele nie korzystają z zainicjowanej przepływności. Polecenie ALTER TABLE umożliwia zmianę zainicjowanej przepływności w regionach. 
 
 ```
 CREATE  KEYSPACE  sampleks WITH REPLICATION = {  'class' : 'SimpleStrategy'}   AND cosmosdb_provisioned_throughput=2000;  

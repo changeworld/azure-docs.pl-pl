@@ -1,20 +1,19 @@
 ---
 title: Konfigurowanie chmury dla usługi Azure IoT Hub Device Provisioning w portalu | Microsoft Docs
-description: Automatyczne aprowizowanie urządzeń usługi IoT Hub w witrynie Azure Portal
+description: Konfigurowanie zasobów w chmurze na potrzeby aprowizacji urządzeń w [Azure Portal](https://portal.azure.com) przy użyciu IoT Hub Device PROVISIONING Service (DPS)
 author: wesmc7777
 ms.author: wesmc
 ms.date: 09/05/2017
 ms.topic: tutorial
 ms.service: iot-dps
 services: iot-dps
-manager: philmea
 ms.custom: mvc
-ms.openlocfilehash: f2f3e56c9eb9362b8164ec611c9b305f5f994b03
-ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
-ms.translationtype: HT
+ms.openlocfilehash: f0e61f264ac0e6a4a2306bc94234811b38941bb5
+ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73833068"
+ms.lasthandoff: 11/09/2019
+ms.locfileid: "73888771"
 ---
 # <a name="configure-cloud-resources-for-device-provisioning-with-the-iot-hub-device-provisioning-service"></a>Konfigurowanie zasobów w chmurze pod kątem aprowizowania urządzeń za pomocą usługi IoT Hub Device Provisioning
 

@@ -1,30 +1,27 @@
 ---
-title: Przykładowy skrypt interfejsu wiersza polecenia platformy Azure — równoważ obciążenie powodowane przez wielu witryn sieci Web przy użyciu wiersza polecenia platformy Azure | Dokumentacja firmy Microsoft
-description: Przykładowy skrypt interfejsu wiersza polecenia platformy Azure — równoważ obciążenie powodowane przez wielu witryn sieci Web do tej samej maszyny wirtualnej
+title: Przykładowy skrypt interfejsu wiersza polecenia platformy Azure — Równoważenie obciążenia wielu witryn sieci Web za pomocą interfejsu wiersza polecenia platformy Azure | Microsoft Docs
+description: Przykładowy skrypt interfejsu wiersza polecenia platformy Azure — Równoważenie obciążenia wielu witryn sieci Web do tej samej maszyny wirtualnej
 services: load-balancer
 documentationcenter: load-balancer
-author: KumudD
-manager: timlt
-editor: tysonn
-tags: ''
-ms.assetid: ''
+author: asudbring
+manager: KumudD
 ms.service: load-balancer
 ms.devlang: azurecli
 ms.topic: article
 ms.tgt_pltfrm: ''
 ms.workload: infrastructure
 ms.date: 07/07/2017
-ms.author: kumud
-ms.openlocfilehash: e3dc9476d188382db31b03b37b2a23affc61aed3
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.author: allensu
+ms.openlocfilehash: 568934d6b5ecc2fbb3b6fc6588ecfd48c8306490
+ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60564888"
+ms.lasthandoff: 11/09/2019
+ms.locfileid: "73889454"
 ---
 # <a name="load-balance-multiple-websites"></a>Równoważenie obciążenia wielu witryn internetowych
 
-Ten przykładowy skrypt tworzy sieć wirtualną przy użyciu dwóch maszyn wirtualnych (VM), które są członkami zestawu dostępności. Moduł równoważenia obciążenia kieruje ruch dla 2 osobnych adresów IP do 2 maszyn wirtualnych. Po uruchomieniu skryptu możesz wdrożyć oprogramowanie serwera internetowego na maszynach wirtualnych i hostować wiele witryn internetowych, z których każda będzie miała własny adres IP.
+Ten przykładowy skrypt tworzy sieć wirtualną z dwiema maszynami wirtualnymi, które są elementami członkowskimi zestawu dostępności. Moduł równoważenia obciążenia kieruje ruch dla 2 osobnych adresów IP do 2 maszyn wirtualnych. Po uruchomieniu skryptu możesz wdrożyć oprogramowanie serwera internetowego na maszynach wirtualnych i hostować wiele witryn internetowych, z których każda będzie miała własny adres IP.
 
 [!INCLUDE [sample-cli-install](../../../includes/sample-cli-install.md)]
 
@@ -63,7 +60,7 @@ Ten skrypt zawiera następujące polecenia służące do tworzenia grupy zasobó
 | [az vm create](https://docs.microsoft.com/cli/azure/vm/availability-set) | Tworzy maszynę wirtualną i łączy ją z kartą sieciową, siecią wirtualną, podsiecią i sieciową grupą zabezpieczeń. To polecenie określa również obraz maszyny wirtualnej do użycia oraz poświadczenia administracyjne.  |
 | [az group delete](https://docs.microsoft.com/cli/azure/vm/extension) | Usuwa grupę zasobów wraz ze wszystkimi zagnieżdżonymi zasobami. |
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 Aby uzyskać więcej informacji na temat interfejsu wiersza polecenia platformy Azure, zobacz [dokumentację interfejsu wiersza polecenia platformy Azure](https://docs.microsoft.com/cli/azure).
 

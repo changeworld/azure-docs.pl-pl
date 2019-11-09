@@ -8,18 +8,18 @@ ms.topic: reference
 ms.date: 07/03/2019
 ms.author: vitalyg
 ms.subservice: application-insights
-ms.openlocfilehash: 903fd2309949036b62fb4975596fb645c021d06d
-ms.sourcegitcommit: 040abc24f031ac9d4d44dbdd832e5d99b34a8c61
+ms.openlocfilehash: 847c56faae61483813286c46190764327e287783
+ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/16/2019
-ms.locfileid: "69535038"
+ms.lasthandoff: 11/09/2019
+ms.locfileid: "73887249"
 ---
 # <a name="application-insights-log-based-metrics"></a>Application Insights metryki oparte na dzienniku
 
 Application Insights metryki oparte na dzienniku umożliwiają analizowanie kondycji monitorowanych aplikacji, tworzenie zaawansowanych pulpitów nawigacyjnych i Konfigurowanie alertów. Istnieją dwa rodzaje metryk:
 
-* [Metryki oparte](../../azure-monitor/app/pre-aggregated-metrics-log-metrics.md#log-based-metrics) na dziennikach są tłumaczone na [zapytania Kusto](https://docs.microsoft.com/azure/kusto/query/) z przechowywanych zdarzeń.
+* [Metryki oparte na dziennikach](../../azure-monitor/app/pre-aggregated-metrics-log-metrics.md#log-based-metrics) są tłumaczone na [zapytania Kusto](https://docs.microsoft.com/azure/kusto/query/) z przechowywanych zdarzeń.
 * [Metryki standardowe](../../azure-monitor/app/pre-aggregated-metrics-log-metrics.md#pre-aggregated-metrics) są przechowywane jako szeregi czasowe zagregowane.
 
 Ze względu na to, że *metryki standardowe* są wstępnie agregowane podczas zbierania, mają lepszą wydajność w czasie wykonywania zapytania. Zapewnia to lepszy wybór dla pulpitów nawigacyjnych i alertów w czasie rzeczywistym. *Metryki oparte na dzienniku* mają więcej wymiarów, co sprawia, że jest to opcja najwyższej jakości do analizy danych i diagnostyki ad hoc. Użyj [selektora przestrzeni nazw](metrics-getting-started.md#create-your-first-metric-chart) , aby przełączać się między metrykami opartymi na dzienniku i standardowym w [Eksploratorze metryk](metrics-getting-started.md).
@@ -50,7 +50,7 @@ Metryka *dostępności* przedstawia wartość procentową przebiegów testów si
 
 |Jednostka miary|Obsługiwane agregacje|Obsługiwane wymiary|
 |---|---|---|---|---|---|
-|Wartość procentowa|Average|Lokalizacja przebiegu, nazwa testu|
+|Wartość procentowa|Średnia|Lokalizacja przebiegu, nazwa testu|
 
 ```Kusto
 availabilityResults 
@@ -64,7 +64,7 @@ Metryka *czas trwania testu dostępności* pokazuje, ile czasu zajęło uruchomi
 
 |Jednostka miary|Obsługiwane agregacje|Obsługiwane wymiary|
 |---|---|---|---|---|---|
-|MS|Średnia, minimum, maksimum|Lokalizacja przebiegu, nazwa testu, wynik testu
+|)|Średnia, minimum, maksimum|Lokalizacja przebiegu, nazwa testu, wynik testu
 
 ```Kusto
 availabilityResults
@@ -80,7 +80,7 @@ Metryki *testów dostępności* odzwierciedlają liczbę testów sieci Web wykon
 
 |Jednostka miary|Obsługiwane agregacje|Obsługiwane wymiary|
 |---|---|---|---|---|---|
-|Count|Count|Lokalizacja przebiegu, nazwa testu, wynik testu|
+|Licznik|Licznik|Lokalizacja przebiegu, nazwa testu, wynik testu|
 
 ```Kusto
 availabilityResults
@@ -99,7 +99,7 @@ Metryki przeglądarki są zbierane przez zestaw Application Insights JavaScript 
 
 |Jednostka miary|Obsługiwane agregacje|Wymiary wstępnie zagregowane|
 |---|---|---|
-|MS|Średnia, minimum, maksimum|Brak|
+|)|Średnia, minimum, maksimum|Brak|
 
 ```Kusto
 browserTimings
@@ -115,7 +115,7 @@ browserTimings
 
 |Jednostka miary|Obsługiwane agregacje|Wymiary wstępnie zagregowane|
 |---|---|---|
-|MS|Średnia, minimum, maksimum|Brak|
+|)|Średnia, minimum, maksimum|Brak|
 
 ```Kusto
 browserTimings
@@ -131,7 +131,7 @@ browserTimings
 
 |Jednostka miary|Obsługiwane agregacje|Wymiary wstępnie zagregowane|
 |---|---|---|
-|MS|Średnia, minimum, maksimum|Brak|
+|)|Średnia, minimum, maksimum|Brak|
 
 ```Kusto
 browserTimings
@@ -147,7 +147,7 @@ browserTimings
 
 |Jednostka miary|Obsługiwane agregacje|Wymiary wstępnie zagregowane|
 |---|---|---|
-|MS|Średnia, minimum, maksimum|Brak|
+|)|Średnia, minimum, maksimum|Brak|
 
 ```Kusto
 browserTimings
@@ -163,7 +163,7 @@ browserTimings
 
 |Jednostka miary|Obsługiwane agregacje|Wymiary wstępnie zagregowane|
 |---|---|---|
-|MS|Średnia, minimum, maksimum|Brak|
+|)|Średnia, minimum, maksimum|Brak|
 
 ```Kusto
 browserTimings
@@ -181,11 +181,11 @@ Metryki w **błędach** pokazują problemy związane z przetwarzaniem żądań, 
 
 ### <a name="browser-exceptions-exceptionsbrowser"></a>Wyjątki przeglądarki (wyjątki/przeglądarka)
 
-Ta Metryka odzwierciedla liczbę zgłoszonych wyjątków z kodu aplikacji działającego w przeglądarce. W metryce są uwzględniane tylko wyjątki, ```trackException()``` które są śledzone za pomocą wywołania interfejsu API Application Insights.
+Ta Metryka odzwierciedla liczbę zgłoszonych wyjątków z kodu aplikacji działającego w przeglądarce. W metryce są uwzględniane tylko wyjątki, które są śledzone za pomocą wywołania interfejsu API Application Insights ```trackException()```.
 
 |Jednostka miary|Obsługiwane agregacje|Wymiary wstępnie zagregowane|Uwagi|
 |---|---|---|---|
-|Count|Count|Brak|Wersja oparta na dzienniku korzysta z agregacji **sum**|
+|Licznik|Licznik|Brak|Wersja oparta na dzienniku korzysta z agregacji **sum**|
 
 ```Kusto
 exceptions
@@ -200,7 +200,7 @@ Liczba wywołań zależności zakończonych niepowodzeniem.
 
 |Jednostka miary|Obsługiwane agregacje|Wymiary wstępnie zagregowane|Uwagi|
 |---|---|---|---|
-|Count|Count|Brak|Wersja oparta na dzienniku korzysta z agregacji **sum**|
+|Licznik|Licznik|Brak|Wersja oparta na dzienniku korzysta z agregacji **sum**|
 
 ```Kusto
 dependencies
@@ -215,7 +215,7 @@ Za każdym razem, gdy rejestrujesz wyjątek do Application Insights, istnieje wy
 
 |Jednostka miary|Obsługiwane agregacje|Wymiary wstępnie zagregowane|Uwagi|
 |---|---|---|---|
-|Count|Count|Nazwa roli w chmurze, wystąpienie roli w chmurze, typ urządzenia|Wersja oparta na dzienniku korzysta z agregacji **sum**|
+|Licznik|Licznik|Nazwa roli w chmurze, wystąpienie roli w chmurze, typ urządzenia|Wersja oparta na dzienniku korzysta z agregacji **sum**|
 
 ```Kusto
 exceptions
@@ -225,11 +225,11 @@ exceptions
 
 ### <a name="failed-requests-requestsfailed"></a>Nieudane żądania (żądania/niepowodzenie)
 
-Liczba śledzonych żądań serwera, które zostały oznaczone jako *zakończone niepowodzeniem*. Domyślnie zestaw SDK Application Insights automatycznie oznacza każde żądanie serwera, które zwróciło kod odpowiedzi HTTP 5xx lub 4xx jako żądanie zakończone niepowodzeniem. Tę logikę można dostosować, modyfikując właściwość *Success* elementu telemetrii żądania w niestandardowym inicjatorze telemetrii. [](../../azure-monitor/app/api-filtering-sampling.md#add-properties-itelemetryinitializer)
+Liczba śledzonych żądań serwera, które zostały oznaczone jako *zakończone niepowodzeniem*. Domyślnie zestaw SDK Application Insights automatycznie oznacza każde żądanie serwera, które zwróciło kod odpowiedzi HTTP 5xx lub 4xx jako żądanie zakończone niepowodzeniem. Tę logikę można dostosować, modyfikując właściwość *Success* elementu telemetrii żądania w [niestandardowym inicjatorze telemetrii](../../azure-monitor/app/api-filtering-sampling.md#addmodify-properties-itelemetryinitializer).
 
 |Jednostka miary|Obsługiwane agregacje|Wymiary wstępnie zagregowane|Uwagi|
 |---|---|---|---|
-|Count|Count|Wystąpienie roli w chmurze, nazwa roli chmury, ruch rzeczywisty lub syntetyczny, wydajność żądania, kod odpowiedzi|Wersja oparta na dzienniku korzysta z agregacji **sum**|
+|Licznik|Licznik|Wystąpienie roli w chmurze, nazwa roli chmury, ruch rzeczywisty lub syntetyczny, wydajność żądania, kod odpowiedzi|Wersja oparta na dzienniku korzysta z agregacji **sum**|
 
 ```Kusto
 requests
@@ -244,7 +244,7 @@ Ta Metryka przedstawia liczbę wyjątków serwera.
 
 |Jednostka miary|Obsługiwane agregacje|Wymiary wstępnie zagregowane|Uwagi|
 |---|---|---|---|
-|Count|Count|Nazwa roli w chmurze, wystąpienie roli w chmurze|Wersja oparta na dzienniku korzysta z agregacji **sum**|
+|Licznik|Licznik|Nazwa roli w chmurze, wystąpienie roli w chmurze|Wersja oparta na dzienniku korzysta z agregacji **sum**|
 
 ```Kusto
 exceptions
@@ -327,7 +327,7 @@ performanceCounters
 
 |Jednostka miary|Obsługiwane agregacje|Obsługiwane wymiary|
 |---|---|---|
-|Bajtów na sekundę|Średnia, minimum, maksimum|Wystąpienie roli w chmurze
+|Bajty na sekundę|Średnia, minimum, maksimum|Wystąpienie roli w chmurze
 
 ```Kusto
 performanceCounters
@@ -343,7 +343,7 @@ Ilość pamięci nieudostępnionej, którą proces monitorowania przydzielił dl
 
 |Jednostka miary|Obsługiwane agregacje|Obsługiwane wymiary|
 |---|---|---|
-|Bajty|Średnia, minimum, maksimum|Wystąpienie roli w chmurze
+|Szybkość|Średnia, minimum, maksimum|Wystąpienie roli w chmurze
 
 ```Kusto
 performanceCounters

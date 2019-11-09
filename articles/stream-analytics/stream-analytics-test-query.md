@@ -9,16 +9,16 @@ ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 08/23/2019
 ms.custom: seodec18
-ms.openlocfilehash: 9c67d511f6c94c8b9af034835e149875304e2235
-ms.sourcegitcommit: 083aa7cc8fc958fc75365462aed542f1b5409623
+ms.openlocfilehash: d68c1ee084efc146d69d8404aadb8acbb4cc33d1
+ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70918978"
+ms.lasthandoff: 11/09/2019
+ms.locfileid: "73891754"
 ---
 # <a name="test-an-azure-stream-analytics-job-with-sample-data"></a>Testowanie zadania Azure Stream Analytics przy użyciu przykładowych danych
 
-W Azure Stream Analytics można testować zapytanie bez uruchamiania lub zatrzymywania zadania. Można testować zapytania dotyczące danych przychodzących z Twojego ujścia danych wejściowych lub przekazać przykładowe dane z pliku lokalnego w witrynie Azure Portal. Możesz również testować zapytania lokalnie z lokalnych danych przykładowych lub danych na żywo w programie [Visual Studio](https://docs.microsoft.com/en-us/azure/stream-analytics/stream-analytics-live-data-local-testing) i [Visual Studio Code](https://docs.microsoft.com/en-us/azure/stream-analytics/vscode-local-run). 
+W Azure Stream Analytics można testować zapytanie bez uruchamiania lub zatrzymywania zadania. Można testować zapytania dotyczące danych przychodzących z Twojego ujścia danych wejściowych lub przekazać przykładowe dane z pliku lokalnego w witrynie Azure Portal. Możesz również testować zapytania lokalnie z lokalnych danych przykładowych lub danych na żywo w programie [Visual Studio](stream-analytics-live-data-local-testing.md) i [Visual Studio Code](vscode-local-run.md). 
 
 ## <a name="sample-incoming-data-from-input"></a>Przykładowe przychodzące dane z danych wejściowych
 
@@ -36,7 +36,7 @@ Azure Stream Analytics automatycznie pobiera zdarzenia z danych wejściowych prz
     
    b. Użyj selektora, aby wyświetlić dane w formacie **tabeli** lub **nieprzetworzonym** .
     
-   c. Jeśli wyświetlane dane nie są aktualne, wybierz pozycję **Odśwież** , aby wyświetlić najnowsze zdarzenia.
+   d. Jeśli wyświetlane dane nie są aktualne, wybierz pozycję **Odśwież** , aby wyświetlić najnowsze zdarzenia.
 
    W poniższej tabeli przedstawiono przykład danych w **formacie tabeli**:
 
@@ -74,7 +74,7 @@ Zamiast korzystać z danych na żywo, można użyć przykładowych danych z plik
 
 1. Zaloguj się do Portalu Azure.
    
-2. Znajdź istniejące zadanie usługi Stream Analytics i zaznacz je.
+2. Znajdź istniejące zadanie Stream Analytics i wybierz je.
 
 3. Na stronie Stream Analytics zadania w obszarze nagłówek **topologii zadania** wybierz pozycję **zapytanie** , aby otworzyć okno edytora zapytań.
 
@@ -106,4 +106,4 @@ Zamiast korzystać z danych na żywo, można użyć przykładowych danych z plik
 
 * [Informacje o danych wejściowych dla Azure Stream Analytics](stream-analytics-add-inputs.md)
 
-* [Zrozumieć dane wyjściowe z usługi Azure Stream Analytics](stream-analytics-define-outputs.md)
+* [Poznanie danych wyjściowych z Azure Stream Analytics](stream-analytics-define-outputs.md)

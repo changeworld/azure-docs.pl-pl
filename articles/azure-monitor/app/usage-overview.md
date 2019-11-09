@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: mrbullwinkle
 ms.author: mbullwin
 ms.date: 09/19/2019
-ms.openlocfilehash: 7131cf1902cc92fed66ae4db59449700973c6913
-ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
+ms.openlocfilehash: aa37717c5037294c2b5ec61f7815b007cbf74992
+ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72899430"
+ms.lasthandoff: 11/09/2019
+ms.locfileid: "73884825"
 ---
 # <a name="usage-analysis-with-application-insights"></a>Analiza użycia za pomocą usługi Application Insights
 
@@ -125,7 +125,7 @@ W tej metodzie należy dołączyć różne wartości właściwości do wszystkic
 
 W portalu Application Insights Przefiltruj i Podziel dane na wartości właściwości, aby porównać różne wersje.
 
-W tym celu należy [skonfigurować inicjator telemetrii](../../azure-monitor/app/api-filtering-sampling.md#add-properties-itelemetryinitializer):
+W tym celu należy [skonfigurować inicjator telemetrii](../../azure-monitor/app/api-filtering-sampling.md#addmodify-properties-itelemetryinitializer):
 
 **Aplikacje ASP.NET**
 

@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 880b31702cf1c0a92ab7ee536cd88e8e6957f6f8
-ms.sourcegitcommit: 77bfc067c8cdc856f0ee4bfde9f84437c73a6141
+ms.openlocfilehash: 3414cc54e5023bdeebb2d5536c1408f981e68f19
+ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72430852"
+ms.lasthandoff: 11/09/2019
+ms.locfileid: "73891400"
 ---
 # <a name="back-up-workload-vms-on-cloudsimple-private-cloud-using-veeam-br"></a>Tworzenie kopii zapasowych maszyn wirtualnych obciążeń w chmurze prywatnej CloudSimple przy użyciu Veeam B & R
 
@@ -54,7 +54,7 @@ W przypadku środowisk o pojemności poniżej 30 TB do utworzenia kopii zapasowe
 
 * Serwer Veeam Backup i serwer proxy zainstalowane na tej samej maszynie wirtualnej w chmurze prywatnej.
 * Główne repozytorium kopii zapasowej oparte na systemie Linux na platformie Azure skonfigurowane jako element docelowy dla zadań tworzenia kopii zapasowych.
-* `azcopy` służy do kopiowania danych z głównego repozytorium kopii zapasowej do kontenera obiektów blob platformy Azure, który jest replikowany do innego regionu.
+* `azcopy` używany do kopiowania danych z głównego repozytorium kopii zapasowej do kontenera obiektów blob platformy Azure, który jest replikowany do innego regionu.
 
 ![Podstawowe scenariusze wdrażania](media/veeam-basicdeployment.png)
 
@@ -65,7 +65,7 @@ W przypadku środowisk z więcej niż 30 TB kopii zapasowych CloudSimple zaleca 
 * Jeden serwer proxy na węzeł w klastrze sieci vSAN, zgodnie z zaleceniami Veeam.
 * Główne repozytorium kopii zapasowej oparte na systemie Windows w chmurze prywatnej umożliwiające szybkie przywracanie danych z pięciu dni.
 * Repozytorium kopii zapasowych systemu Linux na platformie Azure jako element docelowy dla zadań kopii zapasowych w celu dłuższego okresu przechowywania. To repozytorium należy skonfigurować jako repozytorium kopii zapasowych skalowalne w poziomie.
-* `azcopy` służy do kopiowania danych z głównego repozytorium kopii zapasowej do kontenera obiektów blob platformy Azure, który jest replikowany do innego regionu.
+* `azcopy` używany do kopiowania danych z głównego repozytorium kopii zapasowej do kontenera obiektów blob platformy Azure, który jest replikowany do innego regionu.
 
 ![Podstawowe scenariusze wdrażania](media/veeam-advanceddeployment.png)
 
@@ -136,7 +136,7 @@ Utwórz reguły zapory między podsiecią zarządzania i siecią kopii zapasowej
 
 Poniższa tabela zawiera listę portów.
 
-| Ikona | Opis | Ikona | Opis |
+| ikona | Opis | ikona | Opis |
 | ------------ | ------------- | ------------ | ------------- |
 | Backup Server  | vCenter  | HTTPS/TCP  | 443 |
 | Backup Server <br> *Wymagane do wdrożenia składników Veeam Backup & Replication* | Serwer proxy kopii zapasowej  | TCP/UDP  | 135, 137 do 139 i 445 |
@@ -194,7 +194,7 @@ Połącz sieć wirtualną z chmurą prywatną, postępując zgodnie z instrukcja
 
 ### <a name="configure-azure-blob-storage-for-long-term-data-retention"></a>Konfigurowanie magazynu obiektów blob platformy Azure na potrzeby długoterminowego przechowywania danych
 
-1. Utwórz konto magazynu ogólnego przeznaczenia (GPv2) typu standardowego i kontenera obiektów blob, zgodnie z opisem w Wprowadzenie wideo firmy Microsoft [za pomocą usługi Azure Storage](https://azure.microsoft.com/en-gb/resources/videos/get-started-with-azure-storage).
+1. Utwórz konto magazynu ogólnego przeznaczenia (GPv2) typu standardowego i kontenera obiektów blob, zgodnie z opisem w Wprowadzenie wideo firmy Microsoft [za pomocą usługi Azure Storage](https://azure.microsoft.com/resources/videos/get-started-with-azure-storage).
 2. Utwórz kontener usługi Azure Storage, zgodnie z opisem w temacie Tworzenie odwołania do [kontenera](https://docs.microsoft.com/rest/api/storageservices/create-container) .
 2. Pobierz narzędzie wiersza polecenia `azcopy` dla systemu Linux firmy Microsoft. W CentOS 7,5 można użyć następujących poleceń w powłoce bash.
 
@@ -206,7 +206,7 @@ Połącz sieć wirtualną z chmurą prywatną, postępując zgodnie z instrukcja
     sudo yum -y install icu
     ```
 
-3. Za pomocą polecenia `azcopy` Skopiuj pliki kopii zapasowej do i z kontenera obiektów BLOB.  Zobacz [transfer danych za pomocą AzCopy w systemie Linux](../storage/common/storage-use-azcopy-linux.md) , aby uzyskać szczegółowe polecenia.
+3. Użyj `azcopy` polecenia, aby skopiować pliki kopii zapasowej do i z kontenera obiektów BLOB.  Zobacz [transfer danych za pomocą AzCopy w systemie Linux](../storage/common/storage-use-azcopy-linux.md) , aby uzyskać szczegółowe polecenia.
 
 ### <a name="vcenter-console-of-private-cloud-install-veeam-br"></a>Program vCenter w chmurze prywatnej: Install Veeam B & R
 
@@ -260,7 +260,7 @@ Utwórz regułę zapory za pomocą programu, aby umożliwić serwerowi Veeam kop
 
 Aby cofnąć eskalację uprawnień, zobacz Cofanie [eskalacji uprawnień](escalate-private-cloud-privileges.md#de-escalate-privileges).
 
-## <a name="references"></a>Informacje
+## <a name="references"></a>Dokumentacja
 
 ### <a name="cloudsimple-references"></a>Odwołania CloudSimple
 
@@ -290,7 +290,7 @@ Aby cofnąć eskalację uprawnień, zobacz Cofanie [eskalacji uprawnień](escala
 * [Łączenie sieci wirtualnej z inną subskrypcją obwodu](../expressroute/expressroute-howto-linkvnet-portal-resource-manager.md#connect-a-vnet-to-a-circuit---different-subscription)
 * [Utwórz maszynę wirtualną z systemem Linux w Azure Portal](../virtual-machines/linux/quick-create-portal.md)
 * [Jak dołączyć dysk danych zarządzanych do maszyny wirtualnej z systemem Windows w Azure Portal](../virtual-machines/windows/attach-managed-disk-portal.md)
-* [Wprowadzenie z usługą Azure Storage — wideo](https://azure.microsoft.com/en-gb/resources/videos/get-started-with-azure-storage)
+* [Wprowadzenie z usługą Azure Storage — wideo](https://azure.microsoft.com/resources/videos/get-started-with-azure-storage)
 * [Utwórz kontener](https://docs.microsoft.com/rest/api/storageservices/create-container)
 * [Transferowanie danych za pomocą narzędzia AzCopy w systemie Linux](../storage/common/storage-use-azcopy-linux.md)
 

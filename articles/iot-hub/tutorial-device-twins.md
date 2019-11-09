@@ -1,24 +1,20 @@
 ---
 title: Synchronizowanie stanu urządzenia z usługi Azure IoT Hub | Microsoft Docs
-description: Używanie bliźniaczych reprezentacji urządzeń do synchronizowania stanu między urządzeniami i centrum IoT Hub
+description: Dowiedz się, jak za pomocą usługi Device bliźniaczych reprezentacji skonfigurować urządzenia z chmury i odbierać dane o stanie i zgodności z urządzeń.
 services: iot-hub
-documentationcenter: ''
 author: wesmc7777
-manager: philmea
 ms.author: wesmc
 ms.service: iot-hub
 ms.devlang: dotnet
 ms.topic: tutorial
-ms.tgt_pltfrm: na
-ms.workload: na
 ms.date: 06/21/2019
 ms.custom: mvc
-ms.openlocfilehash: 4ad3013f6914abbf4c75676e7423848dff9d5e9a
-ms.sourcegitcommit: 08138eab740c12bf68c787062b101a4333292075
+ms.openlocfilehash: 647182389ec0ad4cb2b80a0676812961cb9be770
+ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/22/2019
-ms.locfileid: "67330355"
+ms.lasthandoff: 11/09/2019
+ms.locfileid: "73890431"
 ---
 <!-- **TODO** Update publish config with repo paths before publishing! -->
 
@@ -43,7 +39,7 @@ Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpł
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-Dwie przykładowe aplikacje uruchamiane w tym przewodniku Szybki start zostały napisane przy użyciu środowiska Node.js. Należy Node.js v10.x.x lub później na komputerze deweloperskim.
+Dwie przykładowe aplikacje uruchamiane w tym przewodniku Szybki start zostały napisane przy użyciu środowiska Node.js. Potrzebujesz środowiska Node. js v10. x. x lub nowszego na komputerze deweloperskim.
 
 Możesz pobrać środowisko Node.js dla wielu platform ze strony [nodejs.org](https://nodejs.org).
 
@@ -59,7 +55,7 @@ Pobierz przykładowy projekt Node.js z https://github.com/Azure-Samples/azure-io
 
 Do ukończenia czynności z tego samouczka niezbędna jest subskrypcja platformy Azure zawierająca centrum IoT Hub z urządzeniem dodanym do rejestru tożsamości urządzeń. Wpis w rejestrze tożsamości urządzeń umożliwia łączenie urządzenia symulowanego uruchamianego w tym samouczku z centrum.
 
-Jeśli nie masz już Centrum IoT w subskrypcji, jeden skonfigurować, za pomocą następującego skryptu interfejsu wiersza polecenia. Ten skrypt używa nazwy **tutorial-iot-hub** dla centrum IoT Hub. Po uruchomieniu skryptu zastąp tę nazwę własną unikatową nazwą. Skrypt tworzy grupę zasobów i centrum w regionie **Środkowe stany USA**, który można zmienić na bliższy. Skrypt pobiera parametry połączenia usługi IoT Hub używane w przykładowym zapleczu w celi połączenia z centrum IoT Hub:
+Jeśli nie masz jeszcze skonfigurowanej usługi IoT Hub w ramach subskrypcji, możesz ją skonfigurować przy użyciu następującego skryptu interfejsu wiersza polecenia. Ten skrypt używa nazwy **tutorial-iot-hub** dla centrum IoT Hub. Po uruchomieniu skryptu zastąp tę nazwę własną unikatową nazwą. Skrypt tworzy grupę zasobów i centrum w regionie **Środkowe stany USA**, który można zmienić na bliższy. Skrypt pobiera parametry połączenia usługi IoT Hub używane w przykładowym zapleczu w celi połączenia z centrum IoT Hub:
 
 ```azurecli-interactive
 hubname=tutorial-iot-hub
@@ -240,7 +236,7 @@ Poniższy zrzut ekranu przedstawia dane wyjściowe z aplikacji urządzenia symul
 
 ![Symulowane urządzenie](./media/tutorial-device-twins/SimulatedDevice2.png)
 
-Poniższy zrzut ekranu przedstawia dane wyjściowe z aplikacji zaplecza i prezentuje sposób odbiera i przetwarza aktualizacji zgłaszanych właściwości, z urządzenia:
+Poniższy zrzut ekranu przedstawia dane wyjściowe z aplikacji zaplecza i wyróżnia informacje o sposobie odbierania i przetwarzania zgłoszonej aktualizacji właściwości z urządzenia:
 
 ![Aplikacja zaplecza](./media/tutorial-device-twins/BackEnd2.png)
 
@@ -257,7 +253,7 @@ Alternatywnie możesz użyć interfejsu wiersza polecenia:
 az group delete --name tutorial-iot-hub-rg
 ```
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 W tym samouczku przedstawiono sposób synchronizacji informacji o stanie między urządzeniami i centrum IoT Hub. Przejdź do następnego samouczka, aby dowiedzieć się, jak używać bliźniaczych reprezentacji urządzeń do implementowania procesu aktualizacji oprogramowania układowego.
 

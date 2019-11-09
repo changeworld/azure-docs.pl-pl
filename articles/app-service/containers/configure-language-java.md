@@ -13,12 +13,12 @@ ms.topic: article
 ms.date: 06/26/2019
 ms.author: brendm
 ms.custom: seodec18
-ms.openlocfilehash: fa3cd84978119a5858e63712b4d22c2ea89ea528
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 8f6fb9737d3d8dad93a95f31d566f7cc4706ded3
+ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73470906"
+ms.lasthandoff: 11/09/2019
+ms.locfileid: "73886042"
 ---
 # <a name="configure-a-linux-java-app-for-azure-app-service"></a>Konfigurowanie aplikacji Java dla systemu Linux dla Azure App Service
 
@@ -86,7 +86,7 @@ Podczas 30-sekundowego interwału można sprawdzić, czy nagranie odbywa się pr
 
 #### <a name="continuous-recording"></a>Ciągłe nagrywanie
 
-Rejestratora lotów Zulu można użyć do ciągłego profilowania aplikacji Java z minimalnym wpływem na wydajność środowiska uruchomieniowego ([Źródło](https://assets.azul.com/files/Zulu-Mission-Control-data-sheet-31-Mar-19.pdf)). Aby to zrobić, uruchom następujące polecenie interfejsu wiersza polecenia platformy Azure w celu utworzenia ustawienia aplikacji o nazwie JAVA_OPTS z wymaganą konfiguracją. Zawartość ustawienia aplikacji JAVA_OPTS są przesyłane do polecenia `java`, gdy aplikacja zostanie uruchomiona.
+Rejestratora lotów Zulu można użyć do ciągłego profilowania aplikacji Java z minimalnym wpływem na wydajność środowiska uruchomieniowego ([Źródło](https://assets.azul.com/files/Zulu-Mission-Control-data-sheet-31-Mar-19.pdf)). Aby to zrobić, uruchom następujące polecenie interfejsu wiersza polecenia platformy Azure w celu utworzenia ustawienia aplikacji o nazwie JAVA_OPTS z niezbędną konfiguracją. Zawartość ustawienia aplikacji JAVA_OPTS są przesyłane do polecenia `java`, gdy aplikacja zostanie uruchomiona.
 
 ```azurecli
 az webapp config appsettings set -g <your_resource_group> -n <your_app_name> --settings JAVA_OPTS=-XX:StartFlightRecording=disk=true,name=continuous_recording,dumponexit=true,maxsize=1024m,maxage=1d
@@ -238,6 +238,24 @@ Postępuj zgodnie z instrukcjami w polu [Zabezpiecz niestandardową nazwę DNS z
 Najpierw postępuj zgodnie z instrukcjami dotyczącymi [udzielania dostępu aplikacji do Key Vault](../app-service-key-vault-references.md#granting-your-app-access-to-key-vault) i [dokonywania odwołania do magazynu kluczy w ustawieniach aplikacji](../app-service-key-vault-references.md#reference-syntax). Można sprawdzić, czy odwołanie jest rozpoznawane jako wpis tajny, drukując zmienną środowiskową podczas zdalnego uzyskiwania dostępu do terminalu App Service.
 
 Aby wstrzyknąć te wpisy tajne w pliku konfiguracji wiosennej lub Tomcat, użyj składni iniekcji zmiennych środowiskowych (`${MY_ENV_VAR}`). W przypadku plików konfiguracji wiosennej zapoznaj się z tą dokumentacją w temacie [konfiguracje zewnętrzne](https://docs.spring.io/spring-boot/docs/current/reference/html/boot-features-external-config.html).
+
+## <a name="using-the-java-key-store"></a>Korzystanie z magazynu kluczy języka Java
+
+Domyślnie wszystkie certyfikaty publiczne lub prywatne [przekazane do App Service Linux](../configure-ssl-certificate.md) zostaną załadowane do magazynu kluczy Java w trakcie uruchamiania kontenera. Oznacza to, że przekazane certyfikaty będą dostępne w kontekście połączenia podczas tworzenia wychodzących połączeń TLS.
+
+Możesz korzystać z narzędzia klucza Java lub debugować je, [otwierając połączenie SSH](app-service-linux-ssh-support.md) do App Service i uruchamiając polecenie `keytool`. Listę poleceń można znaleźć w dokumentacji dotyczącej [najważniejszych narzędzi](https://docs.oracle.com/javase/8/docs/technotes/tools/unix/keytool.html) . Certyfikaty są przechowywane w domyślnej lokalizacji pliku magazynu języka Java, `$JAVA_HOME/jre/lib/security/cacerts`.
+
+Aby można było zaszyfrować połączenie JDBC, może być wymagana dodatkowa konfiguracja. Zapoznaj się z dokumentacją wybranego sterownika JDBC.
+
+- [PostgreSQL](https://jdbc.postgresql.org/documentation/head/ssl-client.html)
+- [SQL Server](https://docs.microsoft.com/sql/connect/jdbc/connecting-with-ssl-encryption?view=sql-server-ver15)
+- [MySQL](https://dev.mysql.com/doc/connector-j/5.1/en/connector-j-reference-using-ssl.html)
+
+### <a name="manually-initialize-and-load-the-key-store"></a>Ręczne inicjowanie i ładowanie magazynu kluczy
+
+Możesz zainicjować Magazyn kluczy i ręcznie dodać certyfikaty. Utwórz ustawienie aplikacji `SKIP_JAVA_KEYSTORE_LOAD`z wartością `1`, aby wyłączyć App Service ładowania certyfikatów do magazynu kluczy automatycznie. Wszystkie certyfikaty publiczne przekazane do App Service za pośrednictwem witryny Azure Portal są przechowywane w obszarze `/var/ssl/certs/`. Certyfikaty prywatne są przechowywane w obszarze `/var/ssl/private/`.
+
+Aby uzyskać więcej informacji na temat interfejsu API magazynu kluczy, zapoznaj się z [oficjalną dokumentacją](https://docs.oracle.com/javase/8/docs/api/java/security/KeyStore.html).
 
 ## <a name="configure-apm-platforms"></a>Konfigurowanie platform APM
 

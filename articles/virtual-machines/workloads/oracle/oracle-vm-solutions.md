@@ -14,12 +14,12 @@ ms.workload: infrastructure-services
 ms.date: 05/23/2019
 ms.author: rogirdh
 ms.custom: seodec18
-ms.openlocfilehash: 4480819a08ef9a7a4ad7257f75a94c5d10a3d312
-ms.sourcegitcommit: 65131f6188a02efe1704d92f0fd473b21c760d08
+ms.openlocfilehash: 23e638b1d678e6ecf19c23220828185eb0e25a00
+ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/10/2019
-ms.locfileid: "70858563"
+ms.lasthandoff: 11/09/2019
+ms.locfileid: "73891451"
 ---
 # <a name="oracle-vm-images-and-their-deployment-on-microsoft-azure"></a>Obrazy maszyn wirtualnych Oracle i ich wdrożenie na Microsoft Azure
 
@@ -79,7 +79,7 @@ Te możliwości są możliwe, ponieważ Azure NetApp Files jest oparty na NetApp
 
 ## <a name="licensing-oracle-database--software-on-azure"></a>Licencjonowanie Oracle Database & oprogramowania na platformie Azure
 Microsoft Azure to autoryzowane środowisko chmury do uruchamiania Oracle Database. Tabela czynników podstawowych firmy Oracle nie ma zastosowania w przypadku licencjonowania baz danych Oracle w chmurze. Zamiast tego podczas korzystania z maszyn wirtualnych z technologią Hyper-Threading dla baz danych w wersji Enterprise należy liczyć dwie procesorów wirtualnych vCPU jako równoważne jednej licencji procesora Oracle, jeśli jest włączona funkcja wielowątkowości (zgodnie z opisem w dokumencie zasad). Szczegóły zasad można znaleźć [tutaj](http://www.oracle.com/us/corporate/pricing/cloud-licensing-070579.pdf).
-Bazy danych Oracle zazwyczaj wymagają wyższych ilości pamięci i operacji we/wy. Z tego powodu zaleca się używanie [maszyn wirtualnych zoptymalizowanych pod kątem pamięci](https://docs.microsoft.com/en-us/azure/virtual-machines/linux/sizes-memory) dla tych obciążeń. Aby jeszcze bardziej zoptymalizować obciążenia, Oracle DB zaleca się użycie [procesorów wirtualnych vcpuych rdzeni](https://docs.microsoft.com/en-us/azure/virtual-machines/linux/constrained-vcpu) , które wymagają dużej ilości pamięci, magazynu I przepustowości we/wy, ale nie dużej liczby rdzeni.
+Bazy danych Oracle zazwyczaj wymagają wyższych ilości pamięci i operacji we/wy. Z tego powodu zaleca się używanie [maszyn wirtualnych zoptymalizowanych pod kątem pamięci](https://docs.microsoft.com/azure/virtual-machines/linux/sizes-memory) dla tych obciążeń. Aby jeszcze bardziej zoptymalizować obciążenia, Oracle DB zaleca się użycie [procesorów wirtualnych vcpuych rdzeni](https://docs.microsoft.com/azure/virtual-machines/linux/constrained-vcpu) , które wymagają dużej ilości pamięci, magazynu I przepustowości we/wy, ale nie dużej liczby rdzeni.
 
 W przypadku migrowania oprogramowania i obciążeń programu Oracle ze środowiska lokalnego do Microsoft Azure firma Oracle zapewnia mobilność licencji zgodnie z opisem w artykule [Oracle na platformie Azure — często zadawane pytania](https://www.oracle.com/cloud/technologies/oracle-azure-faq.html)
 
@@ -90,7 +90,7 @@ Certyfikat Oracle RAC został zaprojektowany z myślą o ograniczeniu awarii poj
 ## <a name="high-availability-and-disaster-recovery-considerations"></a>Zagadnienia dotyczące wysokiej dostępności i odzyskiwania po awarii
 W przypadku korzystania z baz danych Oracle na platformie Azure użytkownik jest odpowiedzialny za wdrożenie rozwiązania wysokiej dostępności i odzyskiwania po awarii w celu uniknięcia wszelkich przestojów. 
 
-Wysoką dostępność i odzyskiwanie po awarii dla Oracle Database Enterprise Edition (bez polegania na programie Oracle RAC) można uzyskać na platformie Azure przy użyciu funkcji [Data Guard, Active Data Guard](https://www.oracle.com/database/technologies/high-availability/dataguard.html)lub [Oracle GoldenGate](https://www.oracle.com/technetwork/middleware/goldengate)z dwiema bazami danych na dwóch oddzielnych wirtualnych Win64. Obie maszyny wirtualne powinny znajdować się w tej samej [sieci wirtualnej](https://azure.microsoft.com/documentation/services/virtual-network/) , aby zapewnić, że będą mogły uzyskać do nich dostęp za pośrednictwem prywatnego trwałego adresu IP.  Ponadto Zalecamy umieszczenie maszyn wirtualnych w tym samym zestawie dostępności, aby umożliwić platformie Azure umieszczenie ich w osobnych domenach błędów i domenach uaktualnienia. Jeśli chcesz mieć nadmiarowość geograficzną, skonfiguruj dwie bazy danych do replikowania między dwoma różnymi regionami i Połącz te dwa wystąpienia z VPN Gateway.
+Wysoką dostępność i odzyskiwanie po awarii dla Oracle Database Enterprise Edition (bez polegania na programie Oracle RAC) można uzyskać na platformie Azure przy użyciu funkcji [Data Guard, Active Data Guard](https://www.oracle.com/database/technologies/high-availability/dataguard.html)lub [Oracle GoldenGate](https://www.oracle.com/technetwork/middleware/goldengate)z dwiema bazami danych na dwóch oddzielnych maszynach wirtualnych. Obie maszyny wirtualne powinny znajdować się w tej samej [sieci wirtualnej](https://azure.microsoft.com/documentation/services/virtual-network/) , aby zapewnić, że będą mogły uzyskać do nich dostęp za pośrednictwem prywatnego trwałego adresu IP.  Ponadto Zalecamy umieszczenie maszyn wirtualnych w tym samym zestawie dostępności, aby umożliwić platformie Azure umieszczenie ich w osobnych domenach błędów i domenach uaktualnienia. Jeśli chcesz mieć nadmiarowość geograficzną, skonfiguruj dwie bazy danych do replikowania między dwoma różnymi regionami i Połącz te dwa wystąpienia z VPN Gateway.
 
 Samouczek [implementujący funkcję Oracle Data Guard na platformie Azure](configure-oracle-dataguard.md) przeprowadzi Cię przez podstawową procedurę konfiguracji na platformie Azure.  
 
@@ -102,7 +102,7 @@ Oprócz posiadania rozwiązań o wysokiej dostępności i rozwiązaniu DR na pla
 
 
 ## <a name="support-for-jd-edwards"></a>Obsługa JD Edwards
-Zgodnie z pomocą techniczną firmy Oracle [Identyfikator doc 2178595,1](https://support.oracle.com/epmos/faces/DocumentDisplay?_afrLoop=573435677515785&id=2178595.1&_afrWindowMode=0&_adf.ctrl-state=o852dw7d_4), JD Edwards EnterpriseOne wersje 9,2 i nowsze są obsługiwane we **wszystkich ofertach chmury publicznej** , które `Minimum Technical Requirements` spełniają ich specyficzne (MTR).  Należy utworzyć niestandardowe obrazy, które spełniają specyfikacje MTR dla zgodności aplikacji systemu operacyjnego i oprogramowania. 
+Zgodnie z opisem w dokumencie dotyczącym pomocy technicznej Oracle [Identyfikator Doc 2178595,1](https://support.oracle.com/epmos/faces/DocumentDisplay?_afrLoop=573435677515785&id=2178595.1&_afrWindowMode=0&_adf.ctrl-state=o852dw7d_4), JD Edwards EnterpriseOne wersje 9,2 i nowsze są obsługiwane we **wszystkich ofertach chmury publicznej** , które spełniają określone `Minimum Technical Requirements` (MTR).  Należy utworzyć niestandardowe obrazy, które spełniają specyfikacje MTR dla zgodności aplikacji systemu operacyjnego i oprogramowania. 
 
 
 ## <a name="oracle-weblogic-server-virtual-machine-images"></a>Obrazy maszyn wirtualnych z programem Oracle WebLogic Server
@@ -126,7 +126,7 @@ Zgodnie z pomocą techniczną firmy Oracle [Identyfikator doc 2178595,1](https:/
     -Dweblogic.rjvm.enableprotocolswitch=true
     ```
 
-Aby uzyskać powiązane informacje, zobacz artykuł **860340,1** w <https://support.oracle.com>bazie wiedzy o.
+Aby uzyskać powiązane informacje, zobacz artykuł **860340,1** w bazie wiedzy w <https://support.oracle.com>.
 
 * **Ograniczenia dynamicznego klastrowania i równoważenia obciążenia.** Załóżmy, że chcesz użyć klastra dynamicznego na serwerze WebLogic i uwidocznić go za pomocą jednego publicznego punktu końcowego ze zrównoważonym obciążeniem na platformie Azure. Można to zrobić tak długo, jak używasz stałego numeru portu dla każdego z serwerów zarządzanych (nie jest to przypisywany dynamicznie z zakresu) i nie uruchamiaj więcej zarządzanych serwerów niż maszyny, które są śledzone przez administratora. Oznacza to, że nie ma więcej niż jednego serwera zarządzanego na maszynę wirtualną. Jeśli konfiguracja powoduje, że serwery WebLogic są uruchamiane dłużej niż maszyny wirtualne (w przypadku wielu wystąpień serwera WebLogic, które współużytkują tę samą maszynę wirtualną), wówczas nie jest możliwe w przypadku więcej niż jednego wystąpienia serwerów WebLogic w celu utworzenia powiązania z danym numerem portu. Inne osoby na tej maszynie wirtualnej zakończą się niepowodzeniem.
 

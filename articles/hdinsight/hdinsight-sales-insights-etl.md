@@ -8,12 +8,12 @@ ms.custom: hdinsightactive
 ms.topic: tutorial
 ms.date: 09/30/2019
 ms.author: hrasheed
-ms.openlocfilehash: b9bcaf4b7497e8beba377eb7e47a44a6eb061299
-ms.sourcegitcommit: 42748f80351b336b7a5b6335786096da49febf6a
+ms.openlocfilehash: d662ad59722658ed888aa732c1f45afdf48f850c
+ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/09/2019
-ms.locfileid: "72178008"
+ms.lasthandoff: 11/09/2019
+ms.locfileid: "73889205"
 ---
 # <a name="tutorial-create-an-end-to-end-data-pipeline-to-derive-sales-insights"></a>Samouczek: Tworzenie kompleksowego potoku danych w celu uzyskania szczegółowych informacji o sprzedaży
 
@@ -25,7 +25,7 @@ Ten potok danych łączy dane z różnych magazynów, usuwa wszelkie niechciane 
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem Utwórz [bezpłatne konto](https://azure.microsoft.com/free/) .
+Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpłatne konto](https://azure.microsoft.com/free/).
 
 Pobierz [Power BI Desktop](https://www.microsoft.com/download/details.aspx?id=45331) , aby wizualizować szczegółowe informacje biznesowe na końcu tego samouczka.
 
@@ -33,10 +33,10 @@ Pobierz [Power BI Desktop](https://www.microsoft.com/download/details.aspx?id=45
 
 ### <a name="clone-the-repository-with-scripts-and-data"></a>Klonowanie repozytorium za pomocą skryptów i danych
 
-1. Zaloguj się do [Azure Portal](https://portal.azure.com).
+1. Zaloguj się w witrynie [Azure Portal](https://portal.azure.com).
 1. Otwórz Azure Cloud Shell z górnego paska menu. Wybierz swoją subskrypcję, aby utworzyć udział plików, jeśli Cloud Shell zostanie wyświetlony komunikat.
 
-   ![Otwórz Azure Cloud Shell](./media/hdinsight-sales-insights-etl/hdinsight-sales-insights-etl-click-cloud-shell.png)
+   ![Otwieranie usługi Azure Cloud Shell](./media/hdinsight-sales-insights-etl/hdinsight-sales-insights-etl-click-cloud-shell.png)
 1. W menu rozwijanym **Wybierz środowisko** wybierz pozycję **bash**.
 1. Zaloguj się do konta platformy Azure i ustaw subskrypcję. 
 1. Skonfiguruj grupę zasobów dla projektu.
@@ -69,7 +69,7 @@ Pobierz [Power BI Desktop](https://www.microsoft.com/download/details.aspx?id=45
 ### <a name="deploy-azure-resources-needed-for-the-pipeline"></a>Wdrażanie zasobów platformy Azure wymaganych dla potoku 
 
 1. Dodaj uprawnienia wykonywania dla skryptu `chmod +x scripts/*.sh`.
-1. Użyj polecenia `./scripts/resources.sh <RESOURCE_GROUP_NAME> <LOCATION>`, aby uruchomić skrypt w celu wdrożenia następujących zasobów na platformie Azure:
+1. Użyj `./scripts/resources.sh <RESOURCE_GROUP_NAME> <LOCATION>` polecenia, aby uruchomić skrypt w celu wdrożenia następujących zasobów na platformie Azure:
 
    1. Konto usługi Azure Blob Storage. To konto będzie zawierać dane sprzedaży firmowej.
    2. Konto Azure Data Lake Storage Gen2. To konto będzie działać jako konto magazynu dla obu klastrów usługi HDInsight. Przeczytaj więcej na temat usługi HDInsight i Data Lake Storage Gen2 w [usłudze Azure HDInsight Integration z Data Lake Storage Gen2](https://azure.microsoft.com/blog/azure-hdinsight-integration-with-data-lake-storage-gen-2-preview-acl-and-security-update/).
@@ -80,7 +80,7 @@ Pobierz [Power BI Desktop](https://www.microsoft.com/download/details.aspx?id=45
 
 Tworzenie klastra może trwać około 20 minut.
 
-Skrypt `resources.sh` zawiera następujące polecenie. To polecenie używa szablonu Azure Resource Manager (`resourcestemplate.json`) do utworzenia określonych zasobów z odpowiednią konfiguracją.
+Skrypt `resources.sh` zawiera następujące polecenie. To polecenie używa szablonu Azure Resource Manager (`resourcestemplate.json`) do tworzenia określonych zasobów z odpowiednią konfiguracją.
 
 ```azurecli-interactive 
 az group deployment create --name ResourcesDeployment \
@@ -89,20 +89,20 @@ az group deployment create --name ResourcesDeployment \
     --parameters "@resourceparameters.json"
 ```
 
-Skrypt `resources.sh` przekazuje także pliki CSV danych Sales do nowo utworzonego konta usługi BLOB Storage za pomocą tego polecenia:
+Skrypt `resources.sh` umożliwia również przekazywanie plików CSV danych sprzedaży do nowo utworzonego konta usługi BLOB Storage za pomocą tego polecenia:
 
 ```
 az storage blob upload-batch -d rawdata \
     --account-name <BLOB STORAGE NAME> -s ./ --pattern *.csv
 ```
 
-Domyślne hasło dostępu SSH do klastrów jest `Thisisapassword1`. Jeśli chcesz zmienić hasło, przejdź do pliku `resourcesparameters.json` i Zmień hasło dla `sparksshPassword`, `sparkClusterLoginPassword`, `llapClusterLoginPassword` i `llapsshPassword` parametrów.
+Domyślne hasło dostępu SSH do klastrów jest `Thisisapassword1`. Jeśli chcesz zmienić hasło, przejdź do pliku `resourcesparameters.json` i Zmień hasło dla parametrów `sparksshPassword`, `sparkClusterLoginPassword`, `llapClusterLoginPassword`i `llapsshPassword`.
 
 ### <a name="verify-deployment-and-collect-resource-information"></a>Weryfikowanie wdrożenia i zbieranie informacji o zasobach
 
 1. Jeśli chcesz sprawdzić stan wdrożenia, przejdź do grupy zasobów na Azure Portal. Wybierz pozycję **wdrożenia** w obszarze **Ustawienia**. Wybierz nazwę wdrożenia, `ResourcesDeployment`. Tutaj można zobaczyć zasoby, które zostały pomyślnie wdrożone, oraz zasoby, które są nadal w toku.
 1. Po zakończeniu wdrażania przejdź do Azure Portal > **grup zasobów** > < RESOURCE_GROUP_NAME >.
-1. Znajdź nowe konto usługi Azure Storage, które zostało utworzone na potrzeby przechowywania plików sprzedaży. Nazwa konta magazynu rozpoczyna się od `blob`, a następnie zawiera ciąg losowy. Wykonaj następujące czynności:
+1. Znajdź nowe konto usługi Azure Storage, które zostało utworzone na potrzeby przechowywania plików sprzedaży. Nazwa konta magazynu rozpoczyna się od `blob` a następnie zawiera ciąg losowy. Wykonaj następujące czynności:
    1. Zanotuj nazwę konta magazynu do późniejszego użycia.
    1. Wybierz nazwę konta magazynu obiektów BLOB.
    1. Po lewej stronie portalu w obszarze **Ustawienia**wybierz pozycję **klucze dostępu**.
@@ -124,7 +124,7 @@ Domyślne hasło dostępu SSH do klastrów jest `Thisisapassword1`. Jeśli chces
 
 ### <a name="create-a-data-factory"></a>Tworzenie fabryki danych
 
-Azure Data Factory jest narzędziem ułatwiającym automatyzację potoków platformy Azure. Nie jest to jedyna metoda wykonywania tych zadań, ale jest to świetny sposób automatyzacji procesów. Aby uzyskać więcej informacji na temat Azure Data Factory, zobacz [dokumentację Azure Data Factory](https://azure.microsoft.com/en-us/services/data-factory/). 
+Azure Data Factory jest narzędziem ułatwiającym automatyzację potoków platformy Azure. Nie jest to jedyna metoda wykonywania tych zadań, ale jest to świetny sposób automatyzacji procesów. Aby uzyskać więcej informacji na temat Azure Data Factory, zobacz [dokumentację Azure Data Factory](https://azure.microsoft.com/services/data-factory/). 
 
 Ta Fabryka danych będzie mieć jeden potok z dwoma działaniami: 
 
@@ -133,7 +133,7 @@ Ta Fabryka danych będzie mieć jeden potok z dwoma działaniami:
 
 Aby skonfigurować potok Azure Data Factory, uruchom skrypt `adf.sh`:
 
-1. Aby dodać uprawnienia EXECUTE do pliku, użyj `chmod +x adf.sh`.
+1. Użyj `chmod +x adf.sh`, aby dodać uprawnienia EXECUTE do pliku.
 1. Użyj `./adf.sh`, aby uruchomić skrypt. 
 
 Ten skrypt wykonuje następujące czynności:
@@ -201,12 +201,12 @@ Ten skrypt spowoduje utworzenie tabeli zarządzanej w klastrze interakcyjnych za
 
 ### <a name="create-a-power-bi-dashboard-from-sales-data"></a>Tworzenie pulpitu nawigacyjnego Power BI na podstawie danych sprzedaży
 
-1. Otwórz Power BI Desktop.
-1. Wybierz pozycję **Pobierz dane**.
+1. Otwórz program Power BI Desktop.
+1. Wybierz pozycję **Pobieranie danych**.
 1. Wyszukaj **klaster interakcyjnych zapytań usługi HDInsight**.
-1. Wklej w tym miejscu identyfikator URI klastra. Powinien być w formacie `https://<LLAP CLUSTER NAME>.azurehdinsight.net`.
+1. Wklej w tym miejscu identyfikator URI klastra. Powinna ona mieć format `https://<LLAP CLUSTER NAME>.azurehdinsight.net`.
 
-   Wprowadź `default` dla bazy danych.
+   Wprowadź `default` bazy danych.
 1. Wprowadź nazwę użytkownika i hasło, które są używane w celu uzyskania dostępu do klastra.
 
 Po załadowaniu danych można eksperymentować z pulpitem nawigacyjnym, który ma zostać utworzony. Aby rozpocząć pracę z pulpitami nawigacyjnymi Power BI, zobacz następujące linki:
@@ -214,7 +214,7 @@ Po załadowaniu danych można eksperymentować z pulpitem nawigacyjnym, który m
 * [Wprowadzenie do pulpitów nawigacyjnych dla projektantów Power BI](https://docs.microsoft.com/power-bi/service-dashboards)
 * [Samouczek: Rozpoczynanie pracy z usługa Power BI](https://docs.microsoft.com/power-bi/service-get-started)
 
-## <a name="clean-up-resources"></a>Czyszczenie zasobów
+## <a name="clean-up-resources"></a>Oczyszczanie zasobów
 
 Jeśli nie chcesz nadal korzystać z tej aplikacji, Usuń wszystkie zasoby przy użyciu następującego polecenia, aby nie były naliczone opłaty.
 

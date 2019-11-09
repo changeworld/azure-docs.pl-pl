@@ -1,7 +1,7 @@
 ---
 title: Przykłady interfejs API tłumaczenia tekstu w usłudze Translator słownika
 titleSuffix: Azure Cognitive Services
-description: Użyj metody przykładów słownika interfejs API tłumaczenia tekstu w usłudze Translator.
+description: Przykłady interfejs API tłumaczenia tekstu w usłudze Translator słownika zawierają przykłady pokazujące, w jaki sposób terminy w słowniku są używane w kontekście.
 services: cognitive-services
 author: swmachan
 manager: nitinme
@@ -10,20 +10,20 @@ ms.subservice: translator-text
 ms.topic: reference
 ms.date: 03/29/2018
 ms.author: swmachan
-ms.openlocfilehash: 419e11862b2c584686922cfc8d1db72ee4751a03
-ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
+ms.openlocfilehash: daa3ff7cb9006a0ec940a57a4db31746dcb0550a
+ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68934033"
+ms.lasthandoff: 11/09/2019
+ms.locfileid: "73888100"
 ---
-# <a name="translator-text-api-30-dictionary-examples"></a>Interfejs API tłumaczenia tekstu w usłudze Translator 3,0: Przykłady słowników
+# <a name="translator-text-api-30-dictionary-examples"></a>Interfejs API tłumaczenia tekstu w usłudze Translator 3,0: przykłady słownika
 
 Zawiera przykłady pokazujące, jak terminy w słowniku są używane w kontekście. Ta operacja jest używana wspólnie z funkcją [Lookup dictionary](./v3-0-dictionary-lookup.md).
 
 ## <a name="request-url"></a>Adres URL żądania
 
-`POST` Wyślij żądanie do:
+Wyślij żądanie `POST` do:
 
 ```HTTP
 https://api.cognitive.microsofttranslator.com/dictionary/examples?api-version=3.0
@@ -37,16 +37,16 @@ Parametry żądania przesłane na ciągu zapytania są następujące:
   <th width="20%">Parametr zapytania</th>
   <th>Opis</th>
   <tr>
-    <td>api-version</td>
+    <td>wersja interfejsu API</td>
     <td>*Wymagany parametr*.<br/>Wersja interfejsu API żądana przez klienta. Wartość musi być `3.0`.</td>
   </tr>
   <tr>
-    <td>from</td>
-    <td>*Wymagany parametr*.<br/>Określa język tekstu wejściowego. Język źródłowy musi być jednym z [obsługiwanych języków](./v3-0-languages.md) zawartych w `dictionary` zakresie.</td>
+    <td>wniosek</td>
+    <td>*Wymagany parametr*.<br/>Określa język tekstu wejściowego. Język źródłowy musi być jednym z [obsługiwanych języków](./v3-0-languages.md) znajdujących się w zakresie `dictionary`.</td>
   </tr>
   <tr>
-    <td>to</td>
-    <td>*Wymagany parametr*.<br/>Określa język tekstu wyjściowego. Język docelowy musi być jednym z [obsługiwanych języków](./v3-0-languages.md) zawartych w `dictionary` zakresie.</td>
+    <td>na</td>
+    <td>*Wymagany parametr*.<br/>Określa język tekstu wyjściowego. Język docelowy musi być jednym z [obsługiwanych języków](./v3-0-languages.md) uwzględnionych w zakresie `dictionary`.</td>
   </tr>
 </table>
 
@@ -77,9 +77,9 @@ Nagłówki żądań obejmują:
 
 Treść żądania jest tablicą JSON. Każdy element tablicy jest obiektem JSON o następujących właściwościach:
 
-  * `Text`: Ciąg określający termin do wyszukania. Powinna to być wartość `normalizedText` pola z retłumaczenia poprzedniego żądania [wyszukiwania słownika](./v3-0-dictionary-lookup.md) . Może być również wartością `normalizedSource` pola.
+  * `Text`: ciąg określający termin do wyszukania. Powinna to być wartość pola `normalizedText` z przetłumaczeń z tyłu poprzedniego żądania [wyszukiwania słownika](./v3-0-dictionary-lookup.md) . Może to być również wartość pola `normalizedSource`.
 
-  * `Translation`: Ciąg określający przetłumaczony tekst, który został wcześniej zwrócony przez operację [wyszukiwania słownika](./v3-0-dictionary-lookup.md) . Powinna to być wartość z `normalizedTarget` pola `translations` na liście odpowiedzi na [Wyszukiwanie słownika](./v3-0-dictionary-lookup.md) . Usługa zwróci przykłady dla określonej pary wyrazów dla docelowej lokalizacji źródłowej.
+  * `Translation`: ciąg określający przetłumaczony tekst, który został wcześniej zwrócony przez operację [wyszukiwania słownika](./v3-0-dictionary-lookup.md) . Powinna to być wartość pola `normalizedTarget` na liście `translations` odpowiedzi [wyszukiwania słownika](./v3-0-dictionary-lookup.md) . Usługa zwróci przykłady dla określonej pary wyrazów dla docelowej lokalizacji źródłowej.
 
 Przykład:
 
@@ -98,30 +98,30 @@ Obowiązują następujące ograniczenia:
 
 Pomyślna odpowiedź to tablica JSON z jednym wynikiem dla każdego ciągu w tablicy wejściowej. Obiekt wynikowy zawiera następujące właściwości:
 
-  * `normalizedSource`: Ciąg przedstawiający znormalizowaną formę okresu źródłowego. Ogólnie rzecz biorąc powinna być taka sama jak wartość `Text` pola w indeksie zgodnej listy w treści żądania.
+  * `normalizedSource`: ciąg dający znormalizowaną formę okresu źródłowego. Ogólnie rzecz biorąc powinna być taka sama jak wartość pola `Text` w indeksie zgodnej listy w treści żądania.
     
-  * `normalizedTarget`: Ciąg przedstawiający znormalizowaną formę okresu docelowego. Ogólnie rzecz biorąc powinna być taka sama jak wartość `Translation` pola w indeksie zgodnej listy w treści żądania.
+  * `normalizedTarget`: ciąg dający znormalizowaną postać terminu docelowego. Ogólnie rzecz biorąc powinna być taka sama jak wartość pola `Translation` w indeksie zgodnej listy w treści żądania.
   
   * `examples`: Lista przykładów dla pary (termin źródłowy, termin docelowy). Każdy element listy jest obiektem o następujących właściwościach:
 
-    * `sourcePrefix`: Ciąg, który ma zostać połączony _przed_ wartością `sourceTerm` w celu utworzenia kompletnego przykładu. Nie należy dodawać znaku spacji, ponieważ jest już tam, gdy powinien być. Ta wartość może być pustym ciągiem.
+    * `sourcePrefix`: ciąg do łączenia _przed_ wartością `sourceTerm`, aby utworzyć kompletny przykład. Nie należy dodawać znaku spacji, ponieważ jest już tam, gdy powinien być. Ta wartość może być pustym ciągiem.
 
-    * `sourceTerm`: Ciąg równy rzeczywistemu wyszukiwanemu okresowi. Ciąg zostanie dodany z `sourcePrefix` i `sourceSuffix` w celu utworzenia kompletnego przykładu. Jego wartość jest oddzielona, aby można było ją oznaczyć w interfejsie użytkownika, np. przez pogrubienie.
+    * `sourceTerm`: ciąg równy rzeczywistemu wyszukiwanemu okresowi. Ciąg zostanie dodany z `sourcePrefix` i `sourceSuffix`, aby utworzyć kompletny przykład. Jego wartość jest oddzielona, aby można było ją oznaczyć w interfejsie użytkownika, np. przez pogrubienie.
 
-    * `sourceSuffix`: Ciąg, który ma zostać połączony _po_ wartości `sourceTerm` w celu utworzenia kompletnego przykładu. Nie należy dodawać znaku spacji, ponieważ jest już tam, gdy powinien być. Ta wartość może być pustym ciągiem.
+    * `sourceSuffix`: ciąg, który ma zostać połączony _po_ wartości `sourceTerm`, aby utworzyć kompletny przykład. Nie należy dodawać znaku spacji, ponieważ jest już tam, gdy powinien być. Ta wartość może być pustym ciągiem.
 
-    * `targetPrefix`: Ciąg podobny do `sourcePrefix` dla elementu docelowego.
+    * `targetPrefix`: ciąg podobny do `sourcePrefix`, ale dla elementu docelowego.
 
-    * `targetTerm`: Ciąg podobny do `sourceTerm` dla elementu docelowego.
+    * `targetTerm`: ciąg podobny do `sourceTerm`, ale dla elementu docelowego.
 
-    * `targetSuffix`: Ciąg podobny do `sourceSuffix` dla elementu docelowego.
+    * `targetSuffix`: ciąg podobny do `sourceSuffix`, ale dla elementu docelowego.
 
     > [!NOTE]
-    > Jeśli w słowniku nie ma przykładów, odpowiedź jest 200 (ok), ale `examples` lista jest pusta.
+    > Jeśli w słowniku nie ma przykładów, odpowiedź to 200 (OK), ale lista `examples` jest pustą listą.
 
 ## <a name="examples"></a>Przykłady
 
-Ten przykład pokazuje, jak wyszukiwać przykłady dla pary składające się z okresu `fly` angielskiego i jego tłumaczenia `volar`hiszpańskiego.
+Ten przykład pokazuje, jak odszukać przykłady dla pary składającej się z `fly` terminów w języku angielskim i `volar`tłumaczenia hiszpańskiego.
 
 ```curl
 curl -X POST "https://api.cognitive.microsofttranslator.com/dictionary/examples?api-version=3.0&from=en&to=es" -H "Ocp-Apim-Subscription-Key: <client-secret>" -H "Content-Type: application/json" -d "[{'Text':'fly', 'Translation':'volar'}]"

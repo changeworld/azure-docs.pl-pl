@@ -1,6 +1,6 @@
 ---
 title: Poznaj wyniki kontroli agenta systemu Windows w usłudze Azure Update Management
-description: Dowiedz się, jak rozwiązywać problemy z agentem rozwiązania Update Management.
+description: Dowiedz się, jak rozwiązywać problemy z agentem Update Management.
 services: automation
 author: bobbytreed
 ms.author: robreed
@@ -9,16 +9,16 @@ ms.topic: conceptual
 ms.service: automation
 ms.subservice: update-management
 manager: carmonm
-ms.openlocfilehash: 956e31c157c667acd2f830702467249d869648cb
-ms.sourcegitcommit: 47b00a15ef112c8b513046c668a33e20fd3b3119
+ms.openlocfilehash: d3099498c3abea428e04d94ca0fcd553e6a0fec6
+ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69971273"
+ms.lasthandoff: 11/09/2019
+ms.locfileid: "73886399"
 ---
 # <a name="understand-the-windows-agent-check-results-in-update-management"></a>Zapoznaj się z wynikami sprawdzania agenta systemu Windows w Update Management
 
-Może istnieć wiele przyczyn, dla których Twoja maszyna nie jest wyświetlana w Update Management. W zarządzania aktualizacjami można sprawdzić kondycję agenta hybrydowy proces roboczy, aby określić pierwotny problem. W tym artykule omówiono sposób uruchamiania narzędzia do rozwiązywania problemów dla maszyn platformy Azure z poziomu maszyn Azure Portal i spoza platformy Azure w scenariuszu w [trybie offline](#troubleshoot-offline).
+Może istnieć wiele przyczyn, dla których Twoja maszyna nie **jest wyświetlana w** Update Management. W Update Management można sprawdzić kondycję agenta hybrydowego procesu roboczego w celu określenia podstawowego problemu. W tym artykule omówiono sposób uruchamiania narzędzia do rozwiązywania problemów dla maszyn platformy Azure z poziomu maszyn Azure Portal i spoza platformy Azure w [scenariuszu w trybie offline](#troubleshoot-offline).
 
 Na poniższej liście przedstawiono trzy Stany gotowości, w których może znajdować się maszyna:
 
@@ -61,33 +61,33 @@ Sprawdzenie systemu operacyjnego weryfikuje, czy hybrydowy proces roboczy elemen
 
 .NET Framework sprawdza, czy w systemie jest zainstalowany co najmniej [.NET Framework 4.6.1](https://www.microsoft.com/en-us/download/details.aspx?id=49981) .
 
-### <a name="wmf-51"></a>WMF 5.1
+### <a name="wmf-51"></a>WMF 5,1
 
 Sprawdzanie plików WMF sprawdza, czy system ma wymaganą wersję programu Windows Management Framework (WMF) — [Windows Management framework 5,1](https://www.microsoft.com/download/details.aspx?id=54616).
 
-### <a name="tls-12"></a>TLS 1.2
+### <a name="tls-12"></a>TLS 1,2
 
 Ta kontrola określa, czy używasz protokołu TLS 1,2 do szyfrowania komunikacji. Protokół TLS 1,0 nie jest już obsługiwany przez platformę. Zalecamy, aby klienci używali protokołu TLS 1,2 do komunikowania się z Update Management.
 
-## <a name="connectivity-checks"></a>Sprawdzanie łączności
+## <a name="connectivity-checks"></a>Sprawdzenia łączności
 
 ### <a name="registration-endpoint"></a>Punkt końcowy rejestracji
 
 Ta kontrola określa, czy Agent może prawidłowo komunikować się z usługą agenta.
 
-Konfiguracji serwera proxy i zapory muszą zezwalać na agenta hybrydowego procesu roboczego Runbook, aby komunikował się z punktem końcowym rejestracji. Aby uzyskać listę adresów i portów do otwarcia, zobacz [Planowanie sieci dla hybrydowych procesów roboczych](../automation-hybrid-runbook-worker.md#network-planning).
+Konfiguracje serwera proxy i zapory muszą zezwalać agentowi hybrydowego procesu roboczego elementu Runbook na komunikowanie się z punktem końcowym rejestracji. Aby uzyskać listę adresów i portów do otwarcia, zobacz [Planowanie sieci dla hybrydowych procesów roboczych](../automation-hybrid-runbook-worker.md#network-planning).
 
 ### <a name="operations-endpoint"></a>Punkt końcowy operacji
 
 Ta kontrola określa, czy Agent może prawidłowo komunikować się z usługą danych czasu wykonywania zadania.
 
-Konfiguracji serwera proxy i zapory muszą zezwalać na agenta hybrydowego procesu roboczego Runbook do komunikacji z usługą danych czasu wykonywania zadania. Aby uzyskać listę adresów i portów do otwarcia, zobacz [Planowanie sieci dla hybrydowych procesów roboczych](../automation-hybrid-runbook-worker.md#network-planning).
+Konfiguracje serwera proxy i zapory muszą zezwalać agentowi hybrydowego procesu roboczego elementu Runbook na komunikowanie się z usługą danych czasu wykonywania zadania. Aby uzyskać listę adresów i portów do otwarcia, zobacz [Planowanie sieci dla hybrydowych procesów roboczych](../automation-hybrid-runbook-worker.md#network-planning).
 
 ## <a name="vm-service-health-checks"></a>Kontrole kondycji usługi maszyny wirtualnej
 
 ### <a name="monitoring-agent-service-status"></a>Stan usługi Monitoring Agent
 
-Ta kontrola określa, `HealthService`czy Microsoft Monitoring Agent jest uruchomiona na komputerze.
+To sprawdzenie decyduje o tym, czy `HealthService`, Microsoft Monitoring Agent, działa na maszynie.
 
 Aby dowiedzieć się więcej o rozwiązywaniu problemów z usługą, zobacz [Microsoft Monitoring Agent nie jest uruchomiony](hybrid-runbook-worker.md#mma-not-running).
 
@@ -95,7 +95,7 @@ Aby ponownie zainstalować Microsoft Monitoring Agent, zobacz [Instalowanie i ko
 
 ### <a name="monitoring-agent-service-events"></a>Monitorowanie zdarzeń usługi Agent
 
-To sprawdzenie decyduje o `4502` tym, czy zdarzenia pojawiają się w dzienniku Operations Manager platformy Azure na komputerze w ciągu ostatnich 24 godzin.
+To sprawdzenie decyduje o tym, czy dowolne zdarzenia `4502` pojawiają się w dzienniku Operations Manager platformy Azure na komputerze w ciągu ostatnich 24 godzin.
 
 Aby dowiedzieć się więcej o tym zdarzeniu, zobacz [Przewodnik rozwiązywania problemów](hybrid-runbook-worker.md#event-4502) dla tego zdarzenia.
 
@@ -107,7 +107,7 @@ Sprawdzanie dostępu do folderu kryptograficznego określa, czy konto systemu lo
 
 ## <a name="troubleshoot-offline"></a>Rozwiązywanie problemów w trybie offline
 
-Aby użyć narzędzia do rozwiązywania problemów z hybrydowym procesem roboczym elementu Runbook, należy uruchomić skrypt lokalnie. Możesz uzyskać skrypt, [rozwiązać problemy — WindowsUpdateAgentRegistration](https://www.powershellgallery.com/packages/Troubleshoot-WindowsUpdateAgentRegistration), w Galeria programu PowerShell. Aby można było uruchomić skrypt, musi być zainstalowany program WMF 4,0 lub nowszy. Aby pobrać najnowszą wersję programu PowerShell, zobacz [Instalowanie różnych wersji programu PowerShell](https://docs.microsoft.com/en-us/powershell/scripting/install/installing-powershell).
+Aby użyć narzędzia do rozwiązywania problemów z hybrydowym procesem roboczym elementu Runbook, należy uruchomić skrypt lokalnie. Możesz uzyskać skrypt, [rozwiązać problemy — WindowsUpdateAgentRegistration](https://www.powershellgallery.com/packages/Troubleshoot-WindowsUpdateAgentRegistration), w Galeria programu PowerShell. Aby można było uruchomić skrypt, musi być zainstalowany program WMF 4,0 lub nowszy. Aby pobrać najnowszą wersję programu PowerShell, zobacz [Instalowanie różnych wersji programu PowerShell](https://docs.microsoft.com/powershell/scripting/install/installing-powershell).
 
 Dane wyjściowe tego skryptu wyglądają podobnie jak w poniższym przykładzie:
 

@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/05/2019
 ms.author: spelluru
-ms.openlocfilehash: f3006dd3f474dea1add1621f35f902422e244ce1
-ms.sourcegitcommit: a7a9d7f366adab2cfca13c8d9cbcf5b40d57e63a
+ms.openlocfilehash: 4f3f435110f0cba5ea2370f2900d4e7031904067
+ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/20/2019
-ms.locfileid: "71161544"
+ms.lasthandoff: 11/09/2019
+ms.locfileid: "73890329"
 ---
 # <a name="attach-or-detach-a-shared-image-gallery-in-azure-lab-services"></a>Dołączanie lub odłączanie galerii obrazów udostępnionych w Azure Lab Services
 Nauczyciele/administrator laboratorium mogą zapisać obraz szablonu maszyny wirtualnej w [galerii udostępnionych obrazów](../../virtual-machines/windows/shared-image-galleries.md) systemu Azure, aby był on ponownie używany przez inne osoby. Pierwszym krokiem jest dołączenie istniejącej galerii udostępnionych obrazów do konta laboratorium przez administratora laboratorium. Po dołączeniu do galerii obrazów udostępnionych laboratoria utworzone na koncie laboratorium mogą zapisywać obrazy w galerii obrazów udostępnionych. Inni nauczyciele mogą wybrać ten obraz z galerii obrazów udostępnionych, aby utworzyć szablon dla ich klas. 
@@ -26,7 +26,7 @@ Nauczyciele/administrator laboratorium mogą zapisać obraz szablonu maszyny wir
 W tym artykule opisano sposób dołączania lub odłączania udostępnionej galerii obrazów do konta laboratorium. 
 
 > [!NOTE]
-> Gdy obraz jest zapisywany w galerii obrazów udostępnionych, Azure Lab Services replikuje zapisany obraz do innych regionów dostępnych w tej samej lokalizacji [geograficznej](https://azure.microsoft.com/global-infrastructure/geographies/). Zapewnia, że obraz jest dostępny dla laboratoriów utworzonych w innych regionach w tej samej lokalizacji geograficznej. Zapisanie obrazów do udostępnionej galerii obrazów wiąże się z dodatkowym kosztem, który obejmuje koszt wszystkich zreplikowanych obrazów. Ten koszt jest oddzielony od kosztu użycia Azure Lab Services. Aby uzyskać więcej informacji na temat cen udostępnionych galerii obrazów, zobacz [Galeria obrazów udostępnionych — rozliczenia]( https://docs.microsoft.com/en-us/azure/virtual-machines/windows/shared-image-galleries#billing).
+> Gdy obraz jest zapisywany w galerii obrazów udostępnionych, Azure Lab Services replikuje zapisany obraz do innych regionów dostępnych w tej samej lokalizacji [geograficznej](https://azure.microsoft.com/global-infrastructure/geographies/). Zapewnia, że obraz jest dostępny dla laboratoriów utworzonych w innych regionach w tej samej lokalizacji geograficznej. Zapisanie obrazów do udostępnionej galerii obrazów wiąże się z dodatkowym kosztem, który obejmuje koszt wszystkich zreplikowanych obrazów. Ten koszt jest oddzielony od kosztu użycia Azure Lab Services. Aby uzyskać więcej informacji na temat cen udostępnionych galerii obrazów, zobacz [Galeria obrazów udostępnionych — rozliczenia]( https://docs.microsoft.com/azure/virtual-machines/windows/shared-image-galleries#billing).
 
 
 ## <a name="configure-at-the-time-of-lab-account-creation"></a>Konfiguruj podczas tworzenia konta laboratorium
@@ -43,7 +43,7 @@ Po utworzeniu konta laboratorium można wykonać następujące zadania:
 
 ## <a name="create-and-attach-a-shared-image-gallery"></a>Tworzenie i dołączanie galerii obrazów udostępnionych
 1. Zaloguj się w witrynie [Azure Portal](https://portal.azure.com).
-2. Wybierz pozycję **Wszystkie usługi** w menu po lewej stronie. Wybierz pozycję **usługi laboratoryjne** w sekcji **DEVOPS** . Jeśli wybierzesz pozycję gwiazdka (`*`) obok pozycji **usługi Lab Services**, zostanie ona dodana do sekcji **Ulubione** w menu po lewej stronie. Od następnego momentu wybierz pozycję **usługi laboratoryjne** w obszarze **Ulubione**.
+2. Wybierz pozycję **Wszystkie usługi** w menu po lewej stronie. Wybierz pozycję **usługi laboratoryjne** w sekcji **DEVOPS** . Jeśli wybierzesz pozycję gwiazda (`*`) obok pozycji **usługi Lab Services**, zostanie ona dodana do sekcji **Ulubione** w menu po lewej stronie. Od następnego momentu wybierz pozycję **usługi laboratoryjne** w obszarze **Ulubione**.
 
     ![Wszystkie usługi — > usług Lab Services](../media/tutorial-setup-lab-account/select-lab-accounts-service.png)
 3. Wybierz swoje konto laboratorium, aby wyświetlić stronę **konto laboratorium** . 

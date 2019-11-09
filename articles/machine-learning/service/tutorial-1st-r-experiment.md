@@ -10,12 +10,12 @@ ms.reviewer: sgilley
 author: revodavid
 ms.author: davidsmi
 ms.date: 11/04/2019
-ms.openlocfilehash: 9073893ebfcfea1a7f4e2a00bf82babcb8841122
-ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
-ms.translationtype: HT
+ms.openlocfilehash: 690df14e4e09b4a35589446029468a7d757d2732
+ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73838518"
+ms.lasthandoff: 11/09/2019
+ms.locfileid: "73888616"
 ---
 # <a name="tutorial-train-and-deploy-your-first-model-in-r-with-azure-machine-learning"></a>Samouczek: uczenie i wdrażanie pierwszego modelu w języku R z Azure Machine Learning
 [!INCLUDE [applies-to-skus](../../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -269,7 +269,7 @@ as.numeric(predict(accident_model,newdata, type="response")*100)
 
 ## <a name="deploy-as-a-web-service"></a>Wdrażanie w postaci usługi internetowej
 
-Dzięki modelowi można przewidzieć niebezpieczeństwo zgonu z kolizji. Użyj platformy Azure ML do wdrożenia modelu jako usługi predykcyjnej. W tym samouczku zostanie wdrożona usługa sieci Web w [Azure Container Instances](https://docs.microsoft.com/en-us/azure/container-instances/) (ACI).
+Dzięki modelowi można przewidzieć niebezpieczeństwo zgonu z kolizji. Użyj platformy Azure ML do wdrożenia modelu jako usługi predykcyjnej. W tym samouczku zostanie wdrożona usługa sieci Web w [Azure Container Instances](https://docs.microsoft.com/azure/container-instances/) (ACI).
 
 ### <a name="register-the-model"></a>Rejestrowanie modelu
 

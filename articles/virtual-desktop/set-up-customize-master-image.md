@@ -7,12 +7,12 @@ ms.service: virtual-desktop
 ms.topic: conceptual
 ms.date: 10/14/2019
 ms.author: helohr
-ms.openlocfilehash: 622b4e53be68025ad9553ce604041d14885bb2b2
-ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
+ms.openlocfilehash: 7a0cce6b72240b95943fbece08cfbf61eaee3524
+ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72330846"
+ms.lasthandoff: 11/09/2019
+ms.locfileid: "73891703"
 ---
 # <a name="prepare-and-customize-a-master-vhd-image"></a>Przygotowywanie i dostosowywanie głównego obrazu wirtualnego dysku twardego
 
@@ -70,7 +70,7 @@ Jeśli użytkownicy muszą uzyskać dostęp do określonych aplikacji biznesowyc
 
 ### <a name="set-up-user-profile-container-fslogix"></a>Konfigurowanie kontenera profilu użytkownika (FSLogix)
 
-Aby dołączyć kontener FSLogix jako część obrazu, postępuj zgodnie z instrukcjami w temacie [Tworzenie kontenera profilu dla puli hostów przy użyciu udziału plików](create-host-pools-user-profile.md#configure-the-fslogix-profile-container). Funkcję kontenera FSLogix można testować za pomocą [tego przewodnika Szybki Start](https://docs.microsoft.com/en-us/fslogix/configure-cloud-cache-tutorial).
+Aby dołączyć kontener FSLogix jako część obrazu, postępuj zgodnie z instrukcjami w temacie [Tworzenie kontenera profilu dla puli hostów przy użyciu udziału plików](create-host-pools-user-profile.md#configure-the-fslogix-profile-container). Funkcję kontenera FSLogix można testować za pomocą [tego przewodnika Szybki Start](https://docs.microsoft.com/fslogix/configure-cloud-cache-tutorial).
 
 ### <a name="configure-windows-defender"></a>Konfiguruj usługę Windows Defender
 
@@ -86,7 +86,7 @@ Aby dowiedzieć się więcej o tym, jak skonfigurować usługę Windows Defender
 
 Aby wyłączyć aktualizacje automatyczne za pośrednictwem zasady grupy lokalnego:
 
-1. Otwórz **Edytor lokalnych zasad grupy @ no__t-1Administrative templates @ no__t-2Windows Components @ no__t-3Windows Update**.
+1. Otwórz **Edytor lokalnych zasad grupy\\Szablony administracyjne\\składników systemu Windows\\Windows Update**.
 2. Kliknij prawym przyciskiem myszy pozycję **Skonfiguruj automatyczną aktualizację** i ustaw ją na wartość **wyłączone**.
 
 Aby wyłączyć aktualizacje automatyczne, można również uruchomić następujące polecenie w wierszu polecenia.
@@ -134,7 +134,7 @@ Aby przekierować strefy czasowe:
 1. Na serwerze Active Directory Otwórz **Konsola zarządzania zasadami grupy**.
 2. Rozwiń domenę i zasady grupy obiekty.
 3. Kliknij prawym przyciskiem myszy **obiekt zasady grupy** , który został utworzony dla ustawień zasad grupy, a następnie wybierz polecenie **Edytuj**.
-4. W **Edytor zarządzania zasadami grupy**przejdź do **konfiguracji komputera** > **zasady** > **Szablony administracyjne** > **składników systemu Windows** > **usługi pulpitu zdalnego**@no__ **pulpit zdalny hosta sesji**t-10 2**urządzenia i przekierowania zasobów**.
+4. W **Edytor zarządzania zasadami grupy**przejdź do **konfiguracji komputera** > **zasady** > **Szablony administracyjne** > **składników systemu Windows** ** > usługi pulpitu zdalnego > pulpit zdalny** **Host sesji** > **urządzenia i przekierowania zasobów**.
 5. Włącz ustawienie **Zezwalaj na przekierowywanie strefy czasowej** .
 
 Możesz również uruchomić to polecenie na głównym obrazie, aby przekierować strefy czasowe:

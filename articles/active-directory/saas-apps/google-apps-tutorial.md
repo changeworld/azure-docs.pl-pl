@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 09/23/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 540dbc3605cfddc9b8d83eceeae8407848f1a91e
-ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
+ms.openlocfilehash: 66d8e13a4e042146ef2b99728e41e14f1dcb3435
+ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73175995"
+ms.lasthandoff: 11/09/2019
+ms.locfileid: "73885372"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-g-suite"></a>Samouczek Azure Active Directory: integracja logowania jednokrotnego (SSO) z usługą G Suite
 
@@ -152,7 +152,7 @@ Wykonaj następujące kroki, aby włączyć logowanie jednokrotne usługi Azure 
     > [!NOTE]
     > Te wartości nie są prawdziwe. Zaktualizuj je, używając faktycznego adresu URL i identyfikatora logowania. Pakiet G Suite nie udostępnia wartości identyfikatora/identyfikatora jednostki na potrzeby konfiguracji logowania jednokrotnego, więc po odpisaniu opcji **wystawcy specyficznego dla domeny** wartość identyfikatora zostanie `google.com`. W przypadku zaznaczenia opcji **wystawcy specyficznego dla domeny** zostanie `google.com/a/<yourdomainname.com>`. Aby zaznaczyć/wyczyścić opcję **wystawcy specyficzną dla domeny** , należy przejść do sekcji Konfigurowanie w usłudze **G Suite rejestracji jednokrotnej** , która została omówiona w dalszej części tego samouczka. Aby uzyskać więcej informacji, skontaktuj się z [zespołem pomocy technicznej usługi G Suite](https://www.google.com/contact/).
 
-1. Aplikacja G Suite oczekuje asercji SAML w określonym formacie, który wymaga dodania mapowań atrybutów niestandardowych do konfiguracji atrybutów tokenów języka SAML. Poniższy zrzut ekranu przedstawia przykład tego działania. Wartość domyślna atrybutu **Unikatowy identyfikator użytkownika** to **user.userprincipalname**, ale usługa G Suite oczekuje, że zostanie ona zamapowana na adres e-mail użytkownika. Do tego celu można użyć atrybutu **user.mail** z listy lub odpowiedniej wartości atrybutu zgodnie z konfiguracją organizacji.
+1. Aplikacja G Suite oczekuje asercji SAML w określonym formacie, który wymaga dodania mapowań atrybutów niestandardowych do konfiguracji atrybutów tokenów języka SAML. Poniższy zrzut ekranu przedstawia przykład tego działania. Wartość domyślna atrybutu **Unikatowy identyfikator użytkownika** to **user.userprincipalname**, ale usługa G Suite oczekuje, że zostanie ona zamapowana na adres e-mail użytkownika. W tym celu możesz użyć atrybutu **user.mail** z listy lub odpowiedniej wartości atrybutu zgodnie z konfiguracją w organizacji.
 
     ![image](common/edit-attribute.png)
 
@@ -178,7 +178,7 @@ Wykonaj następujące kroki, aby włączyć logowanie jednokrotne usługi Azure 
 
     f. Kliknij przycisk **OK**.
 
-    g. Kliknij przycisk **Save** (Zapisz).
+    g. Kliknij pozycję **Zapisz**.
 
 1. Na stronie **Konfigurowanie logowania jednokrotnego przy użyciu języka SAML** w sekcji **certyfikat podpisywania SAML** Znajdź **certyfikat (base64)** i wybierz pozycję **Pobierz** , aby pobrać certyfikat i zapisać go na komputerze.
 
@@ -198,7 +198,7 @@ W tej sekcji utworzysz użytkownika testowego w Azure Portal o nazwie B. Simon.
    1. W polu **Nazwa** wprowadź wartość `B.Simon`.  
    1. W polu **Nazwa użytkownika** wprowadź username@companydomain.extension. Na przykład `B.Simon@contoso.com`.
    1. Zaznacz pole wyboru **Pokaż hasło** i zanotuj wartość wyświetlaną w polu **Hasło**.
-   1. Kliknij przycisk **Utwórz**.
+   1. Kliknij pozycję **Utwórz**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Przypisywanie użytkownika testowego usługi Azure AD
 
@@ -222,9 +222,9 @@ W tej sekcji włączysz usługę B. Simon, aby korzystać z logowania jednokrotn
 
 1. Otwórz nową kartę w przeglądarce, a następnie zaloguj się do [konsoli administracyjnej usługi G Suite](https://admin.google.com/) przy użyciu konta administratora.
 
-2. Kliknij pozycję **Security** (Zabezpieczenia). Jeśli nie widzisz linku, może on znajdować się w menu **More Controls** (Więcej kontrolek) u dołu ekranu.
+2. Kliknij pozycję **Zabezpieczenia**. Jeśli nie widzisz linku, może on znajdować się w menu **More Controls** (Więcej kontrolek) u dołu ekranu.
 
-    ![Kliknij pozycję Zabezpieczenia.][10]
+    ![Kliknij pozycję Security (Zabezpieczenia).][10]
 
 3. Na stronie **Security** (Zabezpieczenia) kliknij pozycję **Set up single sign-on (SSO)** (Konfigurowanie logowania jednokrotnego).
 
@@ -252,7 +252,7 @@ W tej sekcji włączysz usługę B. Simon, aby korzystać z logowania jednokrotn
 
 Celem tej sekcji jest [utworzenie użytkownika w usłudze G Suite](https://support.google.com/a/answer/33310?hl=en) o nazwie B. Simon. Po ręcznym utworzeniu użytkownika w usłudze G Suite użytkownik będzie mógł zalogować się przy użyciu poświadczeń logowania do pakietu Office 365.
 
-Pakiet G Suite obsługuje również automatyczne Inicjowanie obsługi użytkowników. Aby skonfigurować automatyczne Inicjowanie obsługi użytkowników, należy najpierw [skonfigurować pakiet G Suite do automatycznej aprowizacji użytkowników](https://docs.microsoft.com/en-us/azure/active-directory/saas-apps/google-apps-provisioning-tutorial).
+Pakiet G Suite obsługuje również automatyczne Inicjowanie obsługi użytkowników. Aby skonfigurować automatyczne Inicjowanie obsługi użytkowników, należy najpierw [skonfigurować pakiet G Suite do automatycznej aprowizacji użytkowników](https://docs.microsoft.com/azure/active-directory/saas-apps/google-apps-provisioning-tutorial).
 
 > [!NOTE]
 > Przed testowaniem logowania jednokrotnego upewnij się, że użytkownik już istnieje w usłudze G Suite, jeśli aprowizacja w usłudze Azure AD nie została włączona.
@@ -266,7 +266,7 @@ W tej sekcji przetestujesz konfigurację logowania jednokrotnego usługi Azure A
 
 Po kliknięciu kafelka G Suite na panelu dostępu powinno nastąpić automatyczne zalogowanie do usługi G Suite, dla której skonfigurowano logowanie jednokrotne. Aby uzyskać więcej informacji na temat panelu dostępu, zobacz [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) (Wprowadzenie do panelu dostępu).
 
-## <a name="additional-resources"></a>Zasoby dodatkowe
+## <a name="additional-resources"></a>Dodatkowe zasoby
 
 - [ Lista samouczków dotyczących sposobu integrowania aplikacji SaaS z usługą Azure Active Directory ](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 

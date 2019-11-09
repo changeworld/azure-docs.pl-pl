@@ -1,30 +1,27 @@
 ---
-title: Przykładowy skrypt Azure PowerShell — Równoważenie obciążenia ruchem do maszyn wirtualnych wysokiej dostępności | Dokumentacja firmy Microsoft
-description: Przykładowy skrypt Azure PowerShell — Równoważenie obciążenia ruchem do maszyn wirtualnych wysokiej dostępności
+title: Przykład skryptu Azure PowerShell — Równoważenie obciążenia ruchem do maszyn wirtualnych w celu zapewnienia wysokiej dostępności | Microsoft Docs
+description: Przykład skryptu Azure PowerShell — Równoważenie obciążenia ruchem do maszyn wirtualnych w celu zapewnienia wysokiej dostępności
 services: load-balancer
 documentationcenter: load-balancer
-author: georgewallace
-manager: timlt
-editor: tysonn
-tags: ''
-ms.assetid: ''
+author: asudbring
+manager: KumudD
 ms.service: load-balancer
 ms.devlang: powershell
 ms.topic: article
 ms.tgt_pltfrm: ''
 ms.workload: infrastructure
 ms.date: 05/16/2017
-ms.author: gwallace
-ms.openlocfilehash: 282a9d0b1ae5afb873d9f3736550dff52e16bc12
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.author: allensu
+ms.openlocfilehash: 73fe1b57f3f1d8bef388901f19438daff4110469
+ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66160531"
+ms.lasthandoff: 11/09/2019
+ms.locfileid: "73890276"
 ---
 # <a name="load-balance-traffic-to-vms-for-high-availability"></a>Równoważenie obciążenia ruchem maszyn wirtualnych w celu uzyskania wysokiej dostępności
 
-Ten przykładowy skrypt tworzy wszystkie elementy potrzebne do uruchomienia kilku maszyn wirtualnych Windows skonfigurowany w wysokiej dostępności i obciążenia zrównoważone konfiguracji. Po uruchomieniu skryptu będziesz mieć trzy maszyny wirtualne dołączone do zestawu dostępności platformy Azure i dostępne za pośrednictwem usługi Azure Load Balancer.
+Ten przykładowy skrypt tworzy wszystko, co jest potrzebne do uruchomienia kilku maszyn wirtualnych z systemem Windows skonfigurowanych w konfiguracji o wysokiej dostępności i o zrównoważonym obciążeniu. Po uruchomieniu skryptu będziesz mieć trzy maszyny wirtualne dołączone do zestawu dostępności platformy Azure i dostępne za pośrednictwem usługi Azure Load Balancer.
 
 W razie potrzeby zainstaluj program Azure PowerShell, korzystając z instrukcji w [przewodniku programu Azure PowerShell](https://docs.microsoft.com/powershell/azureps-cmdlets-docs/), a następnie uruchom polecenie `Connect-AzAccount`, aby utworzyć połączenie z platformą Azure.
 
@@ -66,7 +63,7 @@ Ten skrypt zawiera następujące polecenia służące do tworzenia grupy zasobó
 | [New-AzVM](/powershell/module/az.compute/new-azvm)  | Tworzy maszynę wirtualną i łączy ją z kartą sieciową, siecią wirtualną, podsiecią i sieciową grupą zabezpieczeń. To polecenie określa również obraz maszyny wirtualnej do użycia oraz poświadczenia administracyjne.  |
 | [Remove-AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup) | Usuwa grupę zasobów wraz ze wszystkimi zagnieżdżonymi zasobami. |
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 Aby uzyskać więcej informacji na temat programu Azure PowerShell, zobacz [dokumentację programu Azure PowerShell](https://docs.microsoft.com/powershell/azure/overview).
 

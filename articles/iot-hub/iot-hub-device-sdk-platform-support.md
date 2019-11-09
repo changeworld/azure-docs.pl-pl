@@ -1,18 +1,18 @@
 ---
 title: Obsługa platformy zestawów SDK urządzeń Azure IoT | Microsoft Docs
-description: Pojęcia — lista platform obsługiwanych przez zestawy SDK urządzeń usługi Azure IoT
+description: Zestawy SDK urządzeń "open source" są dostępne w witrynie GitHub w językuC#C, .NET (), Java, Node. js i Python, aby można było połączyć urządzenia z platformą Azure IoT Hub i usługą Device Provisioning Service (DPS).
 author: robinsh
 ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
 ms.date: 10/08/2019
 ms.author: robinsh
-ms.openlocfilehash: ac5817675d3cfc97a8732ee2e10ec7b9246b12a5
-ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
+ms.openlocfilehash: d39fd95f8704650db16c1dc1553efaba2f727052
+ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "72693335"
+ms.lasthandoff: 11/09/2019
+ms.locfileid: "73889422"
 ---
 # <a name="azure-iot-device-sdks-platform-support"></a>Obsługa platformy zestawów SDK urządzeń Azure IoT
 
@@ -50,7 +50,7 @@ Dla każdego z wymienionych zestawów SDK firma Microsoft:
 | iOS 12,2            | OpenSSL lub natywny OSX        | XCode emulowane w OSX 10.13.4                                                               |
 | Rodzina systemów Windows 10   | SChannel                     |                                                                                             |
 | Mbed OS 5,4         | Mbed TLS 2                   | [Zestawu deweloperskiego IoT dev Kit](https://microsoft.github.io/azure-iot-developer-kit/)                  |
-| System operacyjny Azure Sphere     | WolfSSL                      | [Azure Sphere MT3620](https://azure.microsoft.com/en-us/services/azure-sphere/get-started/) |
+| System operacyjny Azure Sphere     | WolfSSL                      | [Azure Sphere MT3620](https://azure.microsoft.com/services/azure-sphere/get-started/) |
 
 ### <a name="python-sdk"></a>Zestaw SDK dla języka Python
 
@@ -64,18 +64,18 @@ Dla każdego z wymienionych zestawów SDK firma Microsoft:
 
 \* Tylko w wersji 3.5.3 lub nowszej obsługują asynchroniczne interfejsy API, zalecamy użycie 3,7 lub nowszego.
 
-### <a name="net-sdk"></a>Zestaw SDK dla platformy .NET
+### <a name="net-sdk"></a>Zestaw SDK .NET
 
 [Zestaw SDK urządzeń platformy AzureC#IoT Hub .NET ()](https://github.com/Azure/azure-iot-sdk-csharp) jest testowany z programem i obsługuje następujące konfiguracje.
 
-| System operacyjny                                   | Standardowa (Standard)                                                   |
+| System operacyjny                                   | Standardowa                                                   |
 |--------------------------------------|------------------------------------------------------------|
 | Linux                                | .NET Core 2.1                                              |
 | Jednostki SKU systemu Windows 10 dla komputerów stacjonarnych i serwerów   | .NET Core 2,1, .NET Framework 4.5.1 lub .NET Framework 4,7 |
 
 Zestawu .NET SDK można także użyć w połączeniu z usługą Windows IoT Core z [agentem urządzenia platformy Azure](https://github.com/ms-iot/azure-client-tools/blob/master/docs/device-agent/device-agent.md) lub z [niestandardowym NTService, który może używać usługi RPC do komunikowania się z aplikacjami platformy UWP](https://docs.microsoft.com/samples/microsoft/windows-iotcore-samples/ntservice-rpc/).
 
-### <a name="nodejs-sdk"></a>Zestaw SDK środowiska Node.js
+### <a name="nodejs-sdk"></a>Zestaw SDK dla platformy Node.js
 
 [Zestaw SDK urządzenia środowiska Node. js platformy Azure IoT Hub](https://github.com/Azure/azure-iot-sdk-node) jest testowany z programem i obsługuje następujące konfiguracje.
 
@@ -84,7 +84,7 @@ Zestawu .NET SDK można także użyć w połączeniu z usługą Windows IoT Core
 | Linux               | LTS i bieżące |
 | Rodzina systemów Windows 10   | LTS i bieżące |
 
-### <a name="java-sdk"></a>Zestaw Java SDK
+### <a name="java-sdk"></a>Zestaw SDK Java
 
 [Zestaw SDK urządzeń Java IoT Hub platformy Azure](https://github.com/Azure/azure-iot-sdk-java) jest testowany z programem i obsługuje następujące konfiguracje.
 
@@ -115,11 +115,11 @@ Firma Microsoft współpracuje z partnerami, aby ciągle rozszerzać usługę Az
 
 * Aby przeglądać urządzenia z certyfikatem usługi Azure IoT, zobacz [certyfikat platformy Microsoft Azure dla IoT wykaz urządzeń](https://catalog.azureiotsolutions.com/).
 
-* Aby dowiedzieć się więcej o zaufanych partnerach firmy Microsoft lub dowiedzieć się, jak stać się zaufanym partnerem firmy Microsoft, zobacz [Microsoft Azure certyfikowanych Internet rzeczy zaufanych partnerów](https://azure.microsoft.com/en-us/marketplace/certified-iot-partners/).
+* Aby dowiedzieć się więcej o zaufanych partnerach firmy Microsoft lub dowiedzieć się, jak stać się zaufanym partnerem firmy Microsoft, zobacz [Microsoft Azure certyfikowanych Internet rzeczy zaufanych partnerów](https://azure.microsoft.com/marketplace/certified-iot-partners/).
 
 ## <a name="connecting-to-iot-hub-without-an-sdk"></a>Nawiązywanie połączenia z IoT Hub bez zestawu SDK
 
-Jeśli nie można użyć jednego z zestawów SDK urządzeń IoT Hub, można połączyć się bezpośrednio z IoT Hub przy użyciu [interfejsów API REST IoT Hub](https://docs.microsoft.com/en-us/rest/api/iothub/) z dowolnej aplikacji, która może wysyłać i odbierać żądania HTTPS i odpowiedzi.
+Jeśli nie można użyć jednego z zestawów SDK urządzeń IoT Hub, można połączyć się bezpośrednio z IoT Hub przy użyciu [interfejsów API REST IoT Hub](https://docs.microsoft.com/rest/api/iothub/) z dowolnej aplikacji, która może wysyłać i odbierać żądania HTTPS i odpowiedzi.
 
 ## <a name="support-and-other-resources"></a>Pomoc techniczna i inne zasoby
 

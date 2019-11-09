@@ -1,6 +1,6 @@
 ---
-title: Wskazówki dotyczące odzyskiwania po awarii usługi Azure Data Lake Analytics
-description: Dowiedz się, jak zaplanować odzyskiwanie po awarii dla kont usługi Azure Data Lake Analytics.
+title: Wskazówki dotyczące odzyskiwania po awarii dla Azure Data Lake Analytics
+description: Dowiedz się, jak zaplanować odzyskiwanie po awarii dla kont Azure Data Lake Analytics.
 services: data-lake-analytics
 author: MikeRys
 ms.author: mrys
@@ -8,41 +8,41 @@ ms.reviewer: jasonwhowell
 ms.service: data-lake-analytics
 ms.topic: conceptual
 ms.date: 06/03/2019
-ms.openlocfilehash: ea1d4020aa9be23b4839690ae0b386d35bce8a23
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: f9b22e6b806f76189134ec63c83d48f48bf95587
+ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66498892"
+ms.lasthandoff: 11/09/2019
+ms.locfileid: "73889758"
 ---
-# <a name="disaster-recovery-guidance-for-azure-data-lake-analytics"></a>Wskazówki dotyczące odzyskiwania po awarii usługi Azure Data Lake Analytics
+# <a name="disaster-recovery-guidance-for-azure-data-lake-analytics"></a>Wskazówki dotyczące odzyskiwania po awarii dla Azure Data Lake Analytics
 
-Usługa Azure Data Lake Analytics jest usługą zadań analizy na żądanie, która pozwala uprościć analizowanie danych big data. Zamiast wdrażać, konfigurować i dostosowywać sprzęt, możesz pisać zapytania umożliwiające przekształcanie danych i wyodrębniać wartościowe informacje. Usługa analizy może od razu rozpocząć obsługę zadań w dowolnej skali — należy wybrać ustawienie wskazujące potrzebną moc. Płacisz tylko za uruchomione zadanie, dzięki czemu oszczędzasz pieniądze. Ten artykuł zawiera wskazówki na temat ochrony zadań z rzadko awariami lub przypadkowymi usunięciami.
+Usługa Azure Data Lake Analytics jest usługą zadań analizy na żądanie, która pozwala uprościć analizowanie danych big data. Zamiast wdrażać, konfigurować i dostosowywać sprzęt, możesz pisać zapytania umożliwiające przekształcanie danych i wyodrębniać wartościowe informacje. Usługa analizy może od razu rozpocząć obsługę zadań w dowolnej skali — należy wybrać ustawienie wskazujące potrzebną moc. Płacisz tylko za uruchomione zadanie, dzięki czemu oszczędzasz pieniądze. Ten artykuł zawiera wskazówki dotyczące ochrony zadań przed rzadkimi przypadkami wypadków w całym regionie.
 
 ## <a name="disaster-recovery-guidance"></a>Wskazówki dotyczące odzyskiwania po awarii
 
-Korzystając z usługi Azure Data Lake Analytics, ważne jest, aby przygotować własny plan odzyskiwania po awarii. W tym artykule zawarto ułatwiają tworzenie planu odzyskiwania po awarii. Istnieją dodatkowe zasoby, które mogą pomóc w tworzeniu własnego planu:
+W przypadku korzystania z Azure Data Lake Analytics najważniejsze jest przygotowanie własnego planu odzyskiwania po awarii. Ten artykuł ułatwia tworzenie planu odzyskiwania po awarii. Istnieją dodatkowe zasoby, które mogą pomóc w tworzeniu własnego planu:
 - [Failure and disaster recovery for Azure applications (Awarie i odzyskiwanie po awariach w aplikacjach platformy Azure)](/azure/architecture/reliability/disaster-recovery)
-- [Odporność platformy Azure — wskazówki techniczne](/azure/architecture/reliability)
+- [Odporność platformy Azure — wskazówki techniczne](/azure/architecture/checklist/resiliency-per-service)
 
-## <a name="best-practices-and-scenario-guidance"></a>Najlepsze praktyki i wytyczne scenariusza
+## <a name="best-practices-and-scenario-guidance"></a>Najlepsze rozwiązania i wskazówki dotyczące scenariusza
 
-Cykliczne zadania U-SQL można uruchomić na koncie ADLA w regionie, który odczytuje i zapisuje je w tabelach U-SQL, a także dane bez określonej struktury.  Przygotowanie do awarii, wykonując następujące kroki:
+Można uruchomić cykliczne zadanie U-SQL na koncie ADLA w regionie, który odczytuje i zapisuje tabele U-SQL, a także dane bez struktury.  Przygotuj się na awarię, wykonując następujące czynności:
 
-1. Utwórz konta ADLA i Azure Data Lake Store w regionie dodatkowym, które będą używane podczas wystąpienia awarii.
-
-   > [!NOTE]
-   > Ponieważ nazwy kont są globalnie unikatowe, należy użyć spójnego nazewnictwa wskazującą, które konto to dodatkowa baza danych.
-
-2. Dla danych bez struktury, należy odwołać [wskazówki dotyczące odzyskiwania po awarii dla danych w usłudze Azure Data Lake magazynu Gen1](../data-lake-store/data-lake-store-disaster-recovery-guidance.md)
-
-3. Dla ustrukturyzowanymi danymi przechowywanymi w tabelach ADLA i baz danych należy utworzyć kopie artefakty metadane, takie jak bazy danych, tabel, zwracających tabelę i zestawów. Należy okresowo ponownie zsynchronizować te artefakty, w przypadku wprowadzenia zmiany w środowisku produkcyjnym. Na przykład nowo wstawionej dane mają być replikowane do regionu pomocniczego, kopiując dane, a następnie wstawianie do tabeli pomocniczej.
+1. Utwórz konta ADLA i ADLS w regionie pomocniczym, które będą używane podczas przestoju.
 
    > [!NOTE]
-   > Te nazwy obiektu są ograniczone do pomocniczego konta i nie są globalnie unikatowa, dzięki czemu mogą mieć takich samych nazwach jak konto produkcji podstawowej.
+   > Ponieważ nazwy kont są globalnie unikatowe, użyj spójnego schematu nazewnictwa, który wskazuje, które konto jest pomocnicze.
 
-Podczas awarii należy zaktualizować skrypty, tak aby wskazywała ścieżek wejściowych pomocniczego punktu końcowego. Następnie użytkownicy przesyłanie ich zadań na koncie ADLA w regionie pomocniczym. Dane wyjściowe zadania następnie będą zapisywane na koncie ADLA i Azure Data Lake Store w regionie pomocniczym.
+2. W przypadku danych bez struktury, [wskazówki dotyczące odzyskiwania po awarii dotyczące danych w Azure Data Lake Storage Gen1](../data-lake-store/data-lake-store-disaster-recovery-guidance.md)
 
-## <a name="next-steps"></a>Kolejne kroki
+3. W przypadku danych strukturalnych przechowywanych w tabelach i bazach danych ADLA można tworzyć kopie artefaktów metadanych, takich jak bazy danych, tabele, funkcje z wartościami przechowywanymi w tabeli i zestawy. Należy okresowo ponownie synchronizować te artefakty, gdy nastąpią zmiany w środowisku produkcyjnym. Na przykład nowo wstawione dane są replikowane do regionu pomocniczego przez skopiowanie danych i wstawienie ich do tabeli pomocniczej.
 
-[Wskazówki dotyczące odzyskiwania po awarii dla danych w usłudze Azure Data Lake magazynu Gen1](../data-lake-store/data-lake-store-disaster-recovery-guidance.md)
+   > [!NOTE]
+   > Te nazwy obiektów są objęte zakresem konta pomocniczego i nie są globalnie unikatowe, dlatego mogą mieć takie same nazwy jak na podstawowym koncie produkcyjnym.
+
+Podczas przestoju należy zaktualizować swoje skrypty, aby ścieżki wejściowe wskazywały pomocniczy punkt końcowy. Następnie użytkownicy przesyłają swoje zadania do konta ADLA w regionie pomocniczym. Dane wyjściowe zadania zostaną następnie zazapisywane na koncie ADLA i ADLS w regionie pomocniczym.
+
+## <a name="next-steps"></a>Następne kroki
+
+[Wskazówki dotyczące odzyskiwania po awarii dla danych w Azure Data Lake Storage Gen1](../data-lake-store/data-lake-store-disaster-recovery-guidance.md)

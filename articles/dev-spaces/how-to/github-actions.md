@@ -10,12 +10,12 @@ ms.topic: conceptual
 description: Przejrzyj i przetestuj zmiany z żądania ściągnięcia bezpośrednio w usłudze Azure Kubernetes za pomocą akcji usługi GitHub i Azure Dev Spaces.
 keywords: Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, kontenery, akcje GitHub, Helm, Siatka usług, routing w sieci usług, polecenia kubectl, k8s
 manager: gwallace
-ms.openlocfilehash: 590d49f4c189ff48f20369d18b17e0f6e4a46fa2
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: 09dc9440628ac5d808f90d086bd88e4f90765c28
+ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73571589"
+ms.lasthandoff: 11/09/2019
+ms.locfileid: "73889737"
 ---
 # <a name="github-actions--azure-kubernetes-service-preview"></a>Akcje GitHub & usługi Azure Kubernetes (wersja zapoznawcza)
 
@@ -96,7 +96,7 @@ Przejdź do repozytorium z rozwidleniem, a następnie kliknij pozycję *Ustawien
 1. *RESOURCE_GROUP*: Grupa zasobów dla klastra AKS, która w tym przykładzie jest grupą *zasobów*.
 1. *CLUSTER_NAME*: Nazwa klastra AKS, która jest w tym przykładzie *MyAKS*.
 1. *CONTAINER_REGISTRY*: *loginServer* dla ACR.
-1. *Host*: Host dla miejsca deweloperskiego, który przyjmuje formularz *< MASTER_SPACE >. < APP_NAME >. < HOST_SUFFIX >* , który w tym przykładzie jest *dev.bikesharingweb.fedcab0987.EUS.azds.IO*.
+1. *Host*: Host dla obszaru deweloperskiego, który przyjmuje formularz *< MASTER_SPACE >. < APP_NAME >. < HOST_SUFFIX*>, który jest w tym przykładzie *dev.bikesharingweb.fedcab0987.EUS.azds.IO*.
 1. *HOST_SUFFIX*: sufiks hosta dla obszaru dev, który jest w tym przykładzie *fedcab0987.EUS.azds.IO*.
 1. *IMAGE_PULL_SECRET*: Nazwa klucza tajnego, którego chcesz użyć, na przykład *Demonstracja-wpis tajny*.
 1. *MASTER_SPACE*: Nazwa nadrzędnego obszaru deweloperskiego, który w tym przykładzie jest *deweloperem*.
@@ -145,7 +145,7 @@ Użyj `git push`, aby wypchnąć nową gałąź do repozytorium z rozwidleniem:
 git push origin bike-images
 ```
 
-Po zakończeniu wypychania przejdź do repozytorium rozwidlenia w usłudze GitHub Utwórz żądanie ściągnięcia z elementem *dev* w repozytorium z rozwidleniem jako gałęzią bazową w porównaniu z gałęzią *rower-images* .
+Po zakończeniu wypychania przejdź do repozytorium z rozwidleniem w witrynie GitHub, aby utworzyć żądanie ściągnięcia z gałęzią *główną* w repozytorium rozwidlenia jako gałąź bazową w porównaniu z gałęzią *rower-images* .
 
 Gdy żądanie ściągnięcia zostanie otwarte, przejdź do karty *Akcje* . Sprawdź, czy nowa akcja została uruchomiona i kompiluje usługę *Bikes* .
 
@@ -158,7 +158,7 @@ Po zakończeniu akcji zobaczysz komentarz z adresem URL do nowego miejsca podrz�
 
 Przejdź do usługi *bikesharingweb* , otwierając adres URL z komentarza. Wybierz pozycję *Aurelia Briggs (Customer)* jako użytkownik, a następnie wybierz rower do wynajęcia. Sprawdź, czy obraz symbolu zastępczego dla roweru nie jest już widoczny.
 
-W przypadku scalania zmian w gałęzi *dev* zostanie uruchomiona kolejna Akcja w celu odbudowania i uruchomienia całej aplikacji w nadrzędnym obszarze dev. W tym przykładzie przestrzeń nadrzędna jest *deweloperem*. Ta akcja jest konfigurowana w witrynie [GitHub/Workflows/bikesharing. yml][github-action-bikesharing-yaml].
+W przypadku scalenia zmian w gałęzi *głównej* w rozwidleniu zostanie uruchomiona kolejna Akcja w celu odbudowania i uruchomienia całej aplikacji w nadrzędnym obszarze dev. W tym przykładzie przestrzeń nadrzędna jest *deweloperem*. Ta akcja jest konfigurowana w witrynie [GitHub/Workflows/bikesharing. yml][github-action-bikesharing-yaml].
 
 ## <a name="clean-up-your-azure-resources"></a>Czyszczenie zasobów platformy Azure
 

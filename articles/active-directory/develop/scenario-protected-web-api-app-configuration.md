@@ -17,12 +17,12 @@ ms.date: 05/07/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a8cc02831fa00a3974da1b74b07daf581f50dd22
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: eb562caf2dfc83841762748f37d1a7ee325de10b
+ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73569624"
+ms.lasthandoff: 11/09/2019
+ms.locfileid: "73882622"
 ---
 # <a name="protected-web-api-code-configuration"></a>Chroniony internetowy interfejs API: Konfiguracja kodu
 
@@ -158,6 +158,10 @@ W tej tabeli opisano moduły sprawdzania poprawności:
 | `ValidateTokenReplay` | Zapewnia, że token nie jest odtwarzany. (Specjalny przypadek dla niektórych jednorazowej używanych protokołów). |
 
 Wszystkie moduły walidacji są skojarzone z właściwościami klasy `TokenValidationParameters`, które są inicjowane z poziomu konfiguracji ASP.NET/ASP.NET Core. W większości przypadków nie trzeba zmieniać parametrów. Istnieje jeden wyjątek dla aplikacji, które nie są pojedynczymi dzierżawcami. (Oznacza to, że aplikacje sieci Web, które akceptują użytkowników z dowolnej organizacji lub osobistych kont Microsoft). W takim przypadku wystawca musi być zweryfikowany.
+
+## <a name="token-validation-in-azure-functions"></a>Sprawdzanie poprawności tokenu w Azure Functions
+
+Możliwe jest również zweryfikowanie tokenów dostępu przychodzącego w usłudze Azure Functions. Przykłady sprawdzania poprawności tokenów w usłudze Azure Functions można znaleźć w usłudze [dotnet](https://github.com/Azure-Samples/ms-identity-dotnet-webapi-azurefunctions), [NodeJS](https://github.com/Azure-Samples/ms-identity-nodejs-webapi-azurefunctions)i [Python](https://github.com/Azure-Samples/ms-identity-python-webapi-azurefunctions).
 
 ## <a name="next-steps"></a>Następne kroki
 

@@ -7,13 +7,13 @@ manager: bertvanhoof
 ms.service: digital-twins
 services: digital-twins
 ms.topic: conceptual
-ms.date: 09/17/2019
-ms.openlocfilehash: 217a1d94a4a5235fc5886f34986ffcb3aef60873
-ms.sourcegitcommit: 4f7dce56b6e3e3c901ce91115e0c8b7aab26fb72
+ms.date: 11/07/2019
+ms.openlocfilehash: f2479d9f3e278d23d62275b667f78d1fd70dd151
+ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/04/2019
-ms.locfileid: "71949261"
+ms.lasthandoff: 11/09/2019
+ms.locfileid: "73889704"
 ---
 # <a name="routing-events-and-messages"></a>Routing zdarzeń i komunikatów
 
@@ -29,9 +29,11 @@ Usługa Azure Digital bliźniaczych reprezentacji oferuje dwa sposoby łączenia
 
 Użytkownicy mogą określać jeden lub więcej punktów końcowych ruchu wychodzącego w celu wysyłania zdarzeń lub przesyłania dalej komunikatów. Zdarzenia i komunikaty będą wysyłane do punktów końcowych zgodnie z tymi wstępnie zdefiniowanymi preferencjami routingu. Innymi słowy użytkownicy mogą określić określony punkt końcowy do odbierania zdarzeń operacji wykresu, drugi do odbierania zdarzeń telemetrii urządzenia itd.
 
-[Routing zdarzeń 1Azure Digital bliźniaczych reprezentacjis @no__t](media/concepts/digital-twins-events-routing.png)](media/concepts/digital-twins-events-routing.png#lightbox)
+[![routing zdarzeń bliźniaczych reprezentacji na platformie Azure](media/concepts/digital-twins-events-routing.png)](media/concepts/digital-twins-events-routing.png#lightbox)
 
-Routing do Event Hubs zachowuje kolejność, w której wysyłane są komunikaty telemetryczne. Tak więc docierają do punktu końcowego w tej samej kolejności, w jakiej zostały pierwotnie odebrane. Event Grid i Service Bus nie gwarantuje, że punkty końcowe będą odbierać zdarzenia w takiej samej kolejności, w jakiej wystąpiły. Jednak schemat zdarzenia zawiera sygnaturę czasową, która może służyć do identyfikowania kolejności po nadejściu zdarzeń w punkcie końcowym.
+Routing do Event Hubs zachowuje kolejność, w której wysyłane są komunikaty telemetryczne. Tak więc docierają do punktu końcowego w tej samej kolejności, w jakiej zostały pierwotnie odebrane. 
+
+Event Grid i Service Bus nie gwarantuje, że punkty końcowe będą odbierać zdarzenia w takiej samej kolejności, w jakiej wystąpiły. Jednak schemat zdarzenia zawiera sygnaturę czasową, która może służyć do identyfikowania kolejności po nadejściu zdarzeń w punkcie końcowym.
 
 ## <a name="route-implementation"></a>Implementacja trasy
 

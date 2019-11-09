@@ -8,12 +8,12 @@ author: NumberByColors
 ms.author: daviste
 ms.date: 01/03/2019
 ms.reviewer: abgreg;mbullwin
-ms.openlocfilehash: cf639be5db90e3632b8931564ac397c42e1d8403
-ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
+ms.openlocfilehash: b105e8ba79e99be02420ca1821f6a080b0862d6f
+ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72899360"
+ms.lasthandoff: 11/09/2019
+ms.locfileid: "73887409"
 ---
 # <a name="send-user-context-ids-to-enable-usage-experiences-in-azure-application-insights"></a>Wyślij identyfikatory kontekstu użytkownika, aby włączyć środowiska użycia na platformie Azure Application Insights
 
@@ -48,7 +48,7 @@ Jeśli identyfikator zawiera informacje osobiste dotyczące użytkownika, nie je
 
 ## <a name="aspnet-apps-setting-the-user-context-in-an-itelemetryinitializer"></a>ASP.NET Apps: Ustawianie kontekstu użytkownika w ITelemetryInitializer
 
-Utwórz inicjator telemetrii, jak opisano [tutaj](https://docs.microsoft.com/azure/application-insights/app-insights-api-filtering-sampling#add-properties-itelemetryinitializer)szczegółowo. Przekaż identyfikator sesji za pomocą telemetrii żądania, a następnie ustaw Context.User.Id i Context.Session.Id.
+Utwórz inicjator telemetrii, jak opisano [tutaj](https://docs.microsoft.com/azure/application-insights/app-insights-api-filtering-sampling#addmodify-properties-itelemetryinitializer)szczegółowo. Przekaż identyfikator sesji za pomocą telemetrii żądania, a następnie ustaw Context.User.Id i Context.Session.Id.
 
 Ten przykład ustawia identyfikator użytkownika na identyfikator, który wygasa po sesji. Jeśli to możliwe, należy użyć identyfikatora użytkownika, który utrzymuje się między sesjami.
 

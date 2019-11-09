@@ -1,100 +1,99 @@
 ---
-title: Jak ponownie udostępnić urządzeń w usłudze Azure IoT Hub Device Provisioning Service | Dokumentacja firmy Microsoft
-description: Jak ponownie udostępnić urządzenia z urządzeniem, inicjowanie obsługi administracyjnej wystąpienia usługi
+title: Jak ponownie zainicjować obsługę administracyjną urządzeń w usłudze Azure IoT Hub Device Provisioning Service | Microsoft Docs
+description: Dowiedz się, jak ponownie zainicjować obsługę administracyjną urządzeń za pomocą wystąpienia usługi Device Provisioning i dlaczego trzeba to zrobić.
 author: wesmc7777
 ms.author: wesmc
 ms.date: 04/04/2019
 ms.topic: conceptual
 ms.service: iot-dps
 services: iot-dps
-manager: timlt
-ms.openlocfilehash: 92680a453d93c8dc0189c6ae376449a8e7a22076
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 41e6274e81c91584cf5212bc7ca7b2f31582b4db
+ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60627352"
+ms.lasthandoff: 11/09/2019
+ms.locfileid: "73888977"
 ---
-# <a name="how-to-reprovision-devices"></a>Jak ponownie udostępnić urządzeń
+# <a name="how-to-reprovision-devices"></a>Jak ponownie zainicjować obsługę urządzeń
 
-Podczas cyklu życia rozwiązania IoT jest często przenosić urządzenia między centra IoT Hub. Przyczyny tego przeniesienia może obejmować następujące scenariusze:
+W trakcie cyklu życia rozwiązania IoT typowe jest przenoszenie urządzeń między centrami IoT. Przyczyny tego przeniesienia mogą obejmować następujące scenariusze:
 
-* **Używanie funkcji Geolokalizacji**: Przemieszcza się w urządzeniu między lokalizacjami, sieci opóźnieniu przez urządzenie poddane migracji do usługi IoT hub bliżej do każdej lokalizacji.
+* **Geolokalizacja**: w miarę przemieszczania się urządzenia między lokalizacjami opóźnienie sieci jest ulepszane, ponieważ urządzenie jest migrowane do centrum IoT Hub bliżej każdej lokalizacji.
 
-* **Wielodostępność**: Urządzenie może używane w ramach tego samego rozwiązania IoT, ale ponownie przypisane lub dzierżawy do nowego klienta lub klienta lokacji. Ten nowy klient może obsłużenie za pomocą innej usługi IoT hub.
+* **Wielodostępność**: urządzenie może być używane w ramach tego samego rozwiązania IoT, ale ponownie przypisane lub wydzierżawione do nowego klienta lub do lokacji klienta. Ten nowy klient może być serwisowany przy użyciu innego Centrum IoT Hub.
 
-* **Rozwiązanie, zmian**: Urządzenie można przenieść do nowych lub zaktualizowanych rozwiązania IoT. To ponowne przypisywanie może wymagać, że urządzenia komunikują się za pomocą nowego centrum IoT, który jest podłączony do innych składników zaplecza. 
+* **Zmiana rozwiązania**: urządzenie można przenieść do nowego lub zaktualizowanego rozwiązania IoT. To ponowne przypisanie może wymagać, aby urządzenie komunikuje się z nowym centrum IoT, które jest połączone z innymi składnikami zaplecza. 
 
-* **Kwarantanna**: Podobnie jak zmiany rozwiązań. Urządzenie jest nieprawidłowo, których bezpieczeństwo zostało naruszone lub nieaktualne może zostać ponownie przypisane do usługi IoT hub, gdzie to wszystko, co można zrobić aktualizacji, a wrócić w zakresie zgodności. Gdy urządzenie działa poprawnie, następnie jest migrowana do jego głównej koncentratora.
+* **Kwarantanna**: podobnie jak w przypadku zmiany rozwiązania. Urządzenie, które jest uszkodzone, naruszone lub nieaktualne, może zostać ponownie przypisane do centrum IoT Hub, gdzie wszystkie te czynności mogą zostać zaktualizowane i zawracają do zgodności. Po poprawnym działaniu urządzenie zostanie zmigrowane z powrotem do głównego centrum.
 
-Aby uzyskać bardziej szczegółowe omówienie reprovisioning, zobacz [reprovisioning pojęcia dotyczące urządzeń usługi IoT Hub](concepts-device-reprovision.md).
+Aby zapoznać się z bardziej szczegółowym omówieniem ponownego inicjowania obsługi administracyjnej, zobacz temat IoT Hub reaprowizacji [urządzeń](concepts-device-reprovision.md).
 
 
-## <a name="configure-the-enrollment-allocation-policy"></a>Konfigurowanie rejestracji zasady alokacji
+## <a name="configure-the-enrollment-allocation-policy"></a>Konfigurowanie zasad alokacji rejestracji
 
-Zasady alokacji określa urządzeń skojarzonych z rejestracji będzie jak przydzielone, lub przypisane do usługi IoT hub, gdy ponownie aprowizować.
+Zasady alokacji określają, w jaki sposób urządzenia skojarzone z rejestracją zostaną przydzielone lub przypisane do centrum IoT po ponownym zainicjowaniu obsługi administracyjnej.
 
-Poniższe kroki skonfigurować zasady alokacji do rejestracji urządzeń:
+Poniższe kroki konfigurują zasady alokacji na potrzeby rejestracji urządzenia:
 
-1. Zaloguj się do [witryny Azure portal](https://portal.azure.com) i przejdź do swojego wystąpienia usługi Device Provisioning.
+1. Zaloguj się do [Azure Portal](https://portal.azure.com) i przejdź do wystąpienia usługi Device Provisioning.
 
-2. Kliknij przycisk **Zarządzanie rejestracjami**i kliknij grupę rejestracji lub rejestracji indywidualnej, który chcesz skonfigurować reprovisioning. 
+2. Kliknij pozycję **Zarządzaj rejestracjami**, a następnie kliknij grupę rejestracji lub rejestrację indywidualną, którą chcesz skonfigurować do ponownego aprowizacji. 
 
-3. W obszarze **wybierz sposób przypisywania urządzeń do centrów**, wybierz jedną z następujących zasad alokacji:
+3. W obszarze **Wybierz sposób przypisywania urządzeń do centrów**wybierz jedną z następujących zasad alokacji:
 
-    * **Najmniejsze opóźnienie**: Ta zasada przypisuje urządzenia połączone Centrum IoT, który spowoduje najniższy komunikacji opóźnienia między urządzeniem i Centrum IoT Hub. Ta opcja umożliwia urządzeniu komunikowanie się z najbliższego Centrum IoT hub na podstawie lokalizacji. 
+    * **Najniższe opóźnienie**: te zasady przypisuje urządzenia do połączonej IoT Hub, co spowoduje, że komunikacja między urządzeniem i IoT Hub jest najmniejsza. Ta opcja umożliwia urządzeniu komunikację z najbliższym centrum IoT Hub w oparciu o lokalizację. 
     
-    * **Dystrybucja z równymi wagami**: Ta zasada rozkłada urządzeń na połączone centra IoT Hub na podstawie wagi przydziału przypisanych do każdego połączonego Centrum IoT hub. Ta zasada umożliwia załadować saldo urządzeń w grupie połączone centra oparte na alokacji wagi, ustaw w tych centrach. W przypadku aprowizowania urządzeń tylko jednego centrum IoT, firma Microsoft zaleca ustawienie. Jest to ustawienie domyślne. 
+    * **Dystrybucja równomiernie ważona**: te zasady dystrybuują urządzenia przez połączone centra IoT na podstawie wagi alokacji przypisanej do każdego połączonego Centrum IoT. Te zasady umożliwiają Równoważenie obciążenia urządzeń w grupie połączonych centrów na podstawie wag alokacji ustawionych w tych centrach. W przypadku aprowizacji urządzeń tylko do jednego IoT Hub zalecamy to ustawienie. Jest to ustawienie domyślne. 
     
-    * **Konfiguracja statyczna**: Te zasady wymagają wymagane Centrum IoT Hub się na liście wpis rejestracji urządzenia w celu zainicjowania obsługi administracyjnej. Ta zasada umożliwia wyznaczenie w jednym centrum IoT określonych, którą chcesz przypisać urządzenia do.
+    * **Konfiguracja statyczna**: te zasady wymagają, aby odpowiednie IoT Hub były wymienione w wpisie rejestracji dla urządzenia do aprowizacji. Te zasady umożliwiają wyznaczenie jednego określonego Centrum IoT Hub, do którego mają zostać przypisane urządzenia.
 
-4. W obszarze **wybierz centra IoT Hub do tej grupy mogą być przypisane do**, wybierz połączone centra IoT, które mają włączone za pomocą zasady alokacji. Opcjonalnie dodaj nową połączone Centrum Iot przy użyciu **Link nowego centrum IoT Hub** przycisku.
+4. W obszarze **Wybierz centra IoT, do których ta grupa może być przypisana**, wybierz połączone centra IoT, które chcesz uwzględnić w ramach zasad alokacji. Opcjonalnie dodaj nowe połączone centrum IoT Hub za pomocą przycisku **Połącz nowy IoT Hub** .
 
-    Za pomocą **najmniejszego opóźnienia** zasad alokacji, koncentratorów, możesz wybrać, które zostaną uwzględnione w oceny opóźnienia ustalenie najbliższe Centrum w celu przypisania urządzenia.
+    Przy **najniższych** zasadach alokacji opóźnienia wybrane centra zostaną uwzględnione w ocenie opóźnienia, aby określić najbliższy koncentrator do przypisywania urządzeń.
 
-    Za pomocą **dystrybucja z równymi wagami** zasady alokacji urządzeń będzie równoważone w centrach należy wybrać w oparciu o ich wagi w skonfigurowanym alokacji i ich bieżące obciążenie urządzenia.
+    Dzięki **równomiernie ważonej** zasadzie alokacji dystrybucji urządzenia będą równoważone obciążeniem w wybranych centrach na podstawie skonfigurowanych wag alokacji i ich bieżącego obciążenia urządzenia.
 
-    Za pomocą **statycznie** zasady alokacji wybierz Centrum IoT hub, przypisany do urządzenia.
+    Za pomocą zasad **statycznej alokacji konfiguracji** wybierz Centrum IoT, do którego chcesz przypisać urządzenia.
 
-4. Kliknij przycisk **Zapisz**, lub przejdź do następnej sekcji, aby ustawić zasady reprovisioning.
+4. Kliknij przycisk **Zapisz**lub przejdź do następnej sekcji, aby ustawić zasady ponownego inicjowania obsługi administracyjnej.
 
-    ![Wybierz zasady alokacji rejestracji](./media/how-to-reprovision/enrollment-allocation-policy.png)
+    ![Wybieranie zasad alokacji rejestracji](./media/how-to-reprovision/enrollment-allocation-policy.png)
 
 
 
-## <a name="set-the-reprovisioning-policy"></a>Ustaw zasady reprovisioning
+## <a name="set-the-reprovisioning-policy"></a>Ustawianie zasad ponownego inicjowania obsługi administracyjnej
 
-1. Zaloguj się do [witryny Azure portal](https://portal.azure.com) i przejdź do swojego wystąpienia usługi Device Provisioning.
+1. Zaloguj się do [Azure Portal](https://portal.azure.com) i przejdź do wystąpienia usługi Device Provisioning.
 
-2. Kliknij przycisk **Zarządzanie rejestracjami**i kliknij grupę rejestracji lub rejestracji indywidualnej, który chcesz skonfigurować reprovisioning.
+2. Kliknij pozycję **Zarządzaj rejestracjami**, a następnie kliknij grupę rejestracji lub rejestrację indywidualną, którą chcesz skonfigurować do ponownego aprowizacji.
 
-3. W obszarze **wybierz sposób dane urządzenia, które mają być obsługiwane na ponowne zainicjowanie obsługi administracyjnej do innej usługi IoT hub**, wybierz jedną z następujących zasad reprovisioning:
+3. W obszarze **Wybierz sposób, w jaki dane urządzenia mają być obsługiwane po ponownym zainicjowaniu obsługi administracyjnej w innym Centrum IoT**, wybierz jedną z następujących zasad ponownego aprowizacji:
 
-    * **Ponownie zainicjować obsługę administracyjną i przeprowadzić migrację danych**: Ta zasada wykonuje akcję, gdy skojarzone z wpisu rejestracji urządzenia przesłać nowe żądanie obsługi administracyjnej. W zależności od konfiguracji wpisu rejestracji urządzenia może zostać ponownie przypisane do innego Centrum IoT hub. Jeśli urządzenie ulegają zmianie centra IoT Hub, Rejestracja urządzenia w początkowej Centrum IoT zostaną usunięte. Wszystkie informacje o stanie urządzenia z tej początkowej usługi IoT hub będą migrowani do nowego centrum IoT hub. Podczas migracji stanu urządzenia będą raportowane jako **przypisywanie**
+    * **Ponowne Inicjowanie obsługi administracyjnej i Migrowanie danych**: te zasady podejmują akcję, gdy urządzenia skojarzone z wpisem rejestracji przesyłają nowe żądanie aprowizacji. W zależności od konfiguracji wpisu rejestracji urządzenie może zostać ponownie przypisane do innego Centrum IoT Hub. Jeśli urządzenie zmienia centra IoT, Rejestracja urządzenia z początkowym Centrum IoT Hub zostanie usunięta. Wszystkie informacje o stanie urządzenia z tego początkowej usługi IoT Hub zostaną zmigrowane do nowego centrum IoT Hub. Podczas migracji stan urządzenia będzie raportowany jako **przypisanie**
 
-    * **Ponownie zainicjować obsługę administracyjną i zresetowane do konfiguracji początkowej**: Ta zasada wykonuje akcję, gdy skojarzone z wpisu rejestracji urządzenia przesłać nowe żądanie obsługi administracyjnej. W zależności od konfiguracji wpisu rejestracji urządzenia może zostać ponownie przypisane do innego Centrum IoT hub. Jeśli urządzenie ulegają zmianie centra IoT Hub, Rejestracja urządzenia w początkowej Centrum IoT zostaną usunięte. Dane konfiguracji początkowej, podanym inicjowania obsługi administracyjnej wystąpienia usługi odbieranych, kiedy urządzenie zostało zaaprowizowane do nowego centrum IoT hub. Podczas migracji stanu urządzenia będą raportowane jako **przypisywanie**.
+    * **Ponownie Zainicjuj obsługę administracyjną i Zresetuj do konfiguracji początkowej**: te zasady podejmują akcję, gdy urządzenia skojarzone z wpisem rejestracji prześlą nowe żądanie aprowizacji. W zależności od konfiguracji wpisu rejestracji urządzenie może zostać ponownie przypisane do innego Centrum IoT Hub. Jeśli urządzenie zmienia centra IoT, Rejestracja urządzenia z początkowym Centrum IoT Hub zostanie usunięta. Początkowe dane konfiguracji, które otrzymały wystąpienie usługi aprowizacji po przyłączeniu urządzenia do nowego centrum IoT Hub. Podczas migracji stan urządzenia będzie raportowany jako **przypisanie**.
 
-4. Kliknij przycisk **Zapisz** umożliwiające reprovisioning urządzenia na podstawie wprowadzonych zmian.
+4. Kliknij przycisk **Zapisz** , aby włączyć ponowne Inicjowanie obsługi urządzenia na podstawie wprowadzonych zmian.
 
-    ![Wybierz zasady alokacji rejestracji](./media/how-to-reprovision/reprovisioning-policy.png)
+    ![Wybieranie zasad alokacji rejestracji](./media/how-to-reprovision/reprovisioning-policy.png)
 
 
 
 ## <a name="send-a-provisioning-request-from-the-device"></a>Wyślij żądanie aprowizacji z urządzenia
 
-W kolejności, w przypadku urządzeń do ponownego udostępnienia oparte na zmiany konfiguracji wprowadzone w poprzednich sekcjach, te urządzenia należy zażądać reprovisioning. 
+Aby urządzenia były ponownie inicjowane na podstawie zmian konfiguracji wprowadzonych w poprzednich sekcjach, te urządzenia muszą zażądać ponownego zainicjowania obsługi administracyjnej. 
 
-Jak często urządzenie przesyła żądanie aprowizacji jest zależny od scenariusza. Jednak zaleca się do urządzenia, aby wysłać żądanie inicjowania obsługi administracyjnej do aprowizacji wystąpienia usługi o ponowne uruchomienie komputera i obsłudze programu [metoda](../iot-hub/iot-hub-devguide-direct-methods.md) do ręcznego wyzwalania, aprowizacja na żądanie. Inicjowanie obsługi administracyjnej może być też wywoływane przez ustawienie [żądaną właściwość](../iot-hub/iot-hub-devguide-device-twins.md#desired-property-example). 
+Jak często urządzenie przesyła żądanie aprowizacji, zależy od tego scenariusza. Jednak zaleca się zaprogramowanie urządzeń w celu wysłania żądania aprowizacji do wystąpienia usługi aprowizacji przy ponownym uruchomieniu i obsługę [metody](../iot-hub/iot-hub-devguide-direct-methods.md) ręcznego wyzwalania aprowizacji na żądanie. Inicjowanie obsługi może być również wyzwalane przez ustawienie [odpowiedniej właściwości](../iot-hub/iot-hub-devguide-device-twins.md#desired-property-example). 
 
-Reprovisioning zasady na wpis rejestracji Określa, jak wystąpienie usługi aprowizacji urządzeń obsługuje te żądania alokacji, a jeśli dane o stanie urządzenia powinny być migrowane podczas reprovisioning. Te same zasady są dostępne dla rejestracji indywidualnych i grup rejestracji:
+Zasady ponownego inicjowania obsługi w wpisie rejestracji określają, jak wystąpienie usługi Device Provisioning obsługuje te żądania aprowizacji, a jeśli dane stanu urządzenia mają być migrowane podczas ponownego inicjowania obsługi administracyjnej. Te same zasady są dostępne dla poszczególnych rejestracji i grup rejestracji:
 
-Na przykład inicjowania obsługi żądań z urządzenia podczas sekwencji rozruchu, zobacz kod wysyła [automatycznej aprowizacji symulowanego urządzenia](quick-create-simulated-device.md).
+Przykładowy kod wysyłania żądań aprowizacji z urządzenia podczas sekwencji rozruchu znajduje się w temacie [Obsługa administracyjna urządzenia symulowanego](quick-create-simulated-device.md).
 
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
-- Aby dowiedzieć się więcej Reprovisioning, zobacz [reprovisioning pojęcia dotyczące urządzeń usługi IoT Hub](concepts-device-reprovision.md) 
-- Aby dowiedzieć się więcej anulowania zastrzeżenia, zobacz [jak anulować aprowizację urządzeń, które wcześniej zostały udostępnione do automatycznego](how-to-unprovision-devices.md) 
+- Aby dowiedzieć się więcej, zobacz temat [IoT Hub ponowne Inicjowanie obsługi administracyjnej urządzeń](concepts-device-reprovision.md) 
+- Aby dowiedzieć się więcej, zobacz [Jak anulować obsługę administracyjną urządzeń, które wcześniej były obsługiwane](how-to-unprovision-devices.md) . 
 
 
 

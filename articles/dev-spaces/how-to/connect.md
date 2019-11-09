@@ -9,12 +9,12 @@ ms.date: 11/04/2019
 ms.topic: conceptual
 description: Dowiedz się, jak połączyć maszynę deweloperskią z klastrem AKS przy użyciu Azure Dev Spaces
 keywords: Azure Dev Spaces, Spaces dev, Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, kontenery
-ms.openlocfilehash: 0adaa4266978cf9c9ef42359c0cf4f81c5c5f056
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: 15e46fba19d92e08a9c87a63f6f01ec6b0836910
+ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73571763"
+ms.lasthandoff: 11/09/2019
+ms.locfileid: "73888924"
 ---
 # <a name="connect-your-development-machine-to-an-aks-cluster-preview"></a>Łączenie komputera deweloperskiego z klastrem AKS (wersja zapoznawcza)
 
@@ -96,7 +96,7 @@ Po wybraniu trybu połączenia zostanie wyświetlony monit o wprowadzenie portu 
 Po wybraniu portu TCP aplikacji Azure Dev Spaces nawiąże połączenie z klastrem AKS. Azure Dev Spaces wprowadza agenta do klastra AKS w celu przekierowania ruchu między klastrem AKS i komputerem deweloperskim. Ustanowienie tego połączenia może potrwać kilka minut. Azure Dev Spaces również poprosić o dostęp administratora w celu zmodyfikowania pliku *hosts* na komputerze deweloperskim.
 
 > [!IMPORTANT]
-> Gdy Azure Dev Spaces nawiązuje połączenie z klastrem AKS, inne usługi w klastrze AKS mogą działać nieprawidłowo, dopóki usługa nie zostanie uruchomiona na komputerze deweloperskim. Ponadto jeśli usługa ma zależność, która nie jest dostępna na komputerze deweloperskim, może być konieczne zmodyfikowanie aplikacji lub dostarczenie [dodatkowej konfiguracji](#additional-configuration)
+> Po Azure Dev Spaces ustanowieniu połączenia z klastrem AKS inne usługi w klastrze AKS mogą działać nieprawidłowo, dopóki usługa nie zostanie uruchomiona na komputerze deweloperskim w przypadku wybrania opcji *Zamień* połączenie. Zamiast tego można wybrać tryb połączenia *klonowania* , aby utworzyć podrzędny obszar deweloperski dla przekierowania i uniknąć przerw w miejscu nadrzędnym. Ponadto jeśli usługa ma zależność, która nie jest dostępna na komputerze deweloperskim, może być konieczne zmodyfikowanie aplikacji lub dostarczenie [dodatkowej konfiguracji](#additional-configuration)
 
 Azure Dev Spaces otwiera okno terminalu zatytułowane *AZDS Connect-Bikes* po ustanowieniu połączenia z klastrem AKS. To okno terminalu ma wszystkie zmienne środowiskowe i wpisy DNS skonfigurowane z klastra AKS. Każdy kod uruchamiany w tym oknie terminalu lub przy użyciu debugera Visual Studio Code jest połączony z klastrem AKS.
 

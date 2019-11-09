@@ -1,23 +1,20 @@
 ---
 title: Aktualizowanie oprogramowania układowego urządzenia za pośrednictwem usługi Azure IoT Hub | Microsoft Docs
-description: Zaimplementuj proces aktualizacji oprogramowania układowego urządzenia z wykorzystaniem zadań i bliźniaczych reprezentacji urządzeń.
+description: Dowiedz się, jak zaimplementować proces aktualizacji oprogramowania układowego urządzenia, który może zostać wywołany z poziomu aplikacji zaplecza połączonej z Centrum IoT.
 services: iot-hub
 author: wesmc7777
-manager: philmea
 ms.author: wesmc
 ms.service: iot-hub
 ms.devlang: dotnet
 ms.topic: tutorial
-ms.tgt_pltfrm: na
-ms.workload: na
 ms.date: 06/28/2019
 ms.custom: mvc
-ms.openlocfilehash: be1b23991a8dc4d8f29e961e33ba97153d8c5355
-ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
+ms.openlocfilehash: 0665a20bfd8253b28936044abe515862b32f1b43
+ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/22/2019
-ms.locfileid: "72755833"
+ms.lasthandoff: 11/09/2019
+ms.locfileid: "73888743"
 ---
 # <a name="tutorial-implement-a-device-firmware-update-process"></a>Samouczek: wdrażanie procesu aktualizacji oprogramowania układowego urządzenia
 

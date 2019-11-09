@@ -7,12 +7,12 @@ ms.service: azure-functions
 ms.topic: conceptual
 ms.date: 4/11/2019
 ms.author: alkarche
-ms.openlocfilehash: 34759077bd7223d17fea70d32bda63fd1b2595eb
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 4e55932d47389e09b135d571d0e000b9795e6edc
+ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73668135"
+ms.lasthandoff: 11/09/2019
+ms.locfileid: "73884960"
 ---
 # <a name="azure-functions-networking-options"></a>Opcje sieci Azure Functions
 
@@ -86,7 +86,7 @@ Niezależnie od używanej wersji integracja z siecią wirtualną daje aplikacji 
 Funkcja integracji sieci wirtualnej:
 
 * Wymaga planu App Service w warstwie Standardowa, Premium lub PremiumV2
-* obsługuje protokoły TCP i UDP
+* Obsługuje protokoły TCP i UDP
 * Współdziałanie z aplikacjami App Service i aplikacjami funkcji
 
 Istnieje kilka rzeczy, które nie są obsługiwane przez integrację sieci wirtualnej, w tym:
@@ -116,6 +116,12 @@ Aby zapewnić wyższy poziom zabezpieczeń, można ograniczyć liczbę usług pl
 Podczas tworzenia aplikacji funkcji należy utworzyć konto usługi Azure Storage ogólnego przeznaczenia lub połączyć się z nim, które obsługuje magazyn obiektów blob, kolejek i tabel. Na tym koncie nie można obecnie używać żadnych ograniczeń sieci wirtualnej. W przypadku skonfigurowania punktu końcowego usługi sieci wirtualnej na koncie magazynu używanym przez aplikację funkcji, która spowoduje przerwanie działania aplikacji.
 
 [Dowiedz się więcej o wymaganiach dotyczących kont magazynu.](./functions-create-function-app-portal.md#storage-account-requirements)
+
+### <a name="using-key-vault-references"></a>Korzystanie z odwołań Key Vault 
+
+Odwołania Key Vault umożliwiają używanie wpisów tajnych z Azure Key Vault w aplikacji Azure Functions bez konieczności wprowadzania żadnych zmian w kodzie. Azure Key Vault to usługa zapewniająca scentralizowane zarządzanie kluczami tajnymi z pełną kontrolą nad zasadami dostępu i historią inspekcji.
+
+Obecnie [Key Vault odwołania](../app-service/app-service-key-vault-references.md) nie będą działały, jeśli key Vault jest zabezpieczony za pomocą punktów końcowych usługi. Aby nawiązać połączenie z Key Vault przy użyciu integracji z siecią wirtualną, należy wywołać Magazyn kluczy w kodzie aplikacji.
 
 ## <a name="virtual-network-triggers-non-http"></a>Wyzwalacze sieci wirtualnej (bez protokołu HTTP)
 

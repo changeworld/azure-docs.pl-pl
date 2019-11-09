@@ -10,12 +10,12 @@ ms.subservice: computer-vision
 ms.topic: tutorial
 ms.date: 09/11/2019
 ms.author: pafarley
-ms.openlocfilehash: b19f5a4f4f61285bc7b1a30073ea7d33d95420e0
-ms.sourcegitcommit: e1b6a40a9c9341b33df384aa607ae359e4ab0f53
+ms.openlocfilehash: d146c264ebc2d36f0842f464f4547520546fd363
+ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "73519434"
+ms.lasthandoff: 11/09/2019
+ms.locfileid: "73888274"
 ---
 # <a name="tutorial-use-custom-vision-with-an-iot-device-to-report-visual-states"></a>Samouczek: używanie Custom Vision z urządzeniem IoT do zgłaszania Stanów wizualnych
 
@@ -116,7 +116,7 @@ Aby powtórzyć ten proces z własnym scenariuszem:
 
 Po pobraniu przez aplikację przeszkolonego modelu nastąpi przełączenie do stanu **oceniania** i rozpoczęcie oceniania obrazów z aparatu w pętli ciągłej.
 
-Dla każdego przechwytywanego obrazu aplikacja wyświetli na ekranie górny tag. Jeśli nie rozpoznaje stanu wizualizacji, będzie wyświetlał **Brak dopasowań**. Aplikacja wysyła również te komunikaty do IoT Hub, a w przypadku wykrycia klasy, komunikat będzie zawierać etykietę, wynik pewności i właściwość o nazwie `detectedClassAlert`, która może być używana przez IoT Hub klientów zainteresowanych wykonywaniem szybkiego routingu komunikatów na podstawie propa rties.
+Dla każdego przechwytywanego obrazu aplikacja wyświetli na ekranie górny tag. Jeśli nie rozpoznaje stanu wizualnego, wyświetli **Brak dopasowań**. Aplikacja wysyła również te komunikaty do IoT Hub, a w przypadku wykrycia klasy, komunikat będzie zawierać etykietę, wynik pewności i właściwość o nazwie `detectedClassAlert`, która może być używana przez IoT Hub klientów zainteresowanych wykonywaniem szybkiego routingu komunikatów na podstawie propa rties.
 
 Ponadto przykład korzysta z [biblioteki rozpoznawania wykrywania](https://github.com/emmellsoft/RPi.SenseHat) , aby wykryć, kiedy jest uruchomiona w Raspberry Pi z jednostką Hat, tak aby można było go używać jako danych wyjściowych, ustawiając wszystkie sygnalizatory wyświetlania na czerwono, gdy wykryje klasę i puste, gdy nie wykryje niczego.
 

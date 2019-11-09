@@ -9,12 +9,12 @@ ms.author: deli
 ms.reviewer: klam, LADocs
 ms.topic: article
 ms.date: 09/23/2019
-ms.openlocfilehash: 73aa641fc4bb01ef3d06820ecd18b61197ab81e7
-ms.sourcegitcommit: 8bae7afb0011a98e82cbd76c50bc9f08be9ebe06
+ms.openlocfilehash: 3d748e1625f27be27b7f403fbab3e213b16c4dd6
+ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/01/2019
-ms.locfileid: "71695496"
+ms.lasthandoff: 11/09/2019
+ms.locfileid: "73890174"
 ---
 # <a name="migrate-azure-scheduler-jobs-to-azure-logic-apps"></a>Migrowanie zadań usługi Azure Scheduler do Azure Logic Apps
 
@@ -198,7 +198,7 @@ Aby dowiedzieć się więcej o obsłudze wyjątków, zobacz temat [Obsługa bł�
 <a name="retire-date"></a>
 
 **P**: Kiedy trwa wycofywanie usługi Azure Scheduler? <br>
-Odp **.: usługa**Azure Scheduler została zaplanowana w pełni w dniu 31 grudnia 2019. Aby zapoznać się z ważnymi krokami, które należy wykonać przed tą datą i szczegółowa oś czasu, zobacz [rozszerzanie daty wycofania usługi Scheduler do 31 grudnia 2019](https://azure.microsoft.com/en-us/updates/extending-retirement-date-of-scheduler/). Aby uzyskać ogólne aktualizacje, zobacz [Azure Updates-Scheduler](https://azure.microsoft.com/updates/?product=scheduler).
+Odp **.: usługa**Azure Scheduler została zaplanowana w pełni w dniu 31 grudnia 2019. Aby zapoznać się z ważnymi krokami, które należy wykonać przed tą datą i szczegółowa oś czasu, zobacz [rozszerzanie daty wycofania usługi Scheduler do 31 grudnia 2019](https://azure.microsoft.com/updates/extending-retirement-date-of-scheduler/). Aby uzyskać ogólne aktualizacje, zobacz [Azure Updates-Scheduler](https://azure.microsoft.com/updates/?product=scheduler).
 
 **P**: co się stanie z moimi kolekcjami zadań i zadaniami po zakończeniu usługi? <br>
 Odp **.:** wszystkie kolekcje zadań usługi Scheduler i zadania przestają działać i są usuwane z systemu.
@@ -223,7 +223,7 @@ Jeśli Twoja subskrypcja platformy Azure ma płatny Plan pomocy technicznej, mo�
    | Właściwość | Wartość |
    |---------|-------|
    | **Typ problemu** | **Naukow** |
-   | **Subskrypcja** | <*platformy-Azure-subscription*> |
+   | **Subskrypcja** | <*subskrypcję platformy Azure*> |
    | **Usługa** | W obszarze **monitorowanie & zarządzanie**wybierz pozycję **harmonogram**. Jeśli nie możesz znaleźć **harmonogramu**, najpierw wybierz pozycję **wszystkie usługi** . |
    ||| 
 

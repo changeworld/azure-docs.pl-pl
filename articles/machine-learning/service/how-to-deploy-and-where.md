@@ -11,12 +11,12 @@ author: jpe316
 ms.reviewer: larryfr
 ms.date: 09/13/2019
 ms.custom: seoapril2019
-ms.openlocfilehash: df2f22f91cbed17035485d25369965d3284dbaf7
-ms.sourcegitcommit: 6c2c97445f5d44c5b5974a5beb51a8733b0c2be7
+ms.openlocfilehash: 0d478b56d7be4ae0c7f2403f9960e5eed59e2b4d
+ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73622392"
+ms.lasthandoff: 11/09/2019
+ms.locfileid: "73888637"
 ---
 # <a name="deploy-models-with-azure-machine-learning"></a>Wdrażanie modeli przy użyciu Azure Machine Learning
 [!INCLUDE [applies-to-skus](../../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -88,7 +88,7 @@ Fragmenty kodu w tej sekcji pokazują, jak zarejestrować model z poziomu przebi
     print(model.name, model.id, model.version, sep='\t')
     ```
 
-    `model_path` parametr odnosi się do lokalizacji w chmurze modelu. W tym przykładzie jest używana ścieżka pojedynczego pliku. Aby uwzględnić wiele plików w rejestracji modelu, należy ustawić `model_path` na ścieżkę folderu zawierającego pliki. Aby uzyskać więcej informacji, zobacz dokumentację [Run. register_model](https://review.docs.microsoft.com/python/api/azureml-core/azureml.core.run.run?view=azure-ml-py&branch=master#register-model-model-name--model-path-none--tags-none--properties-none--model-framework-none--model-framework-version-none--description-none--datasets-none----kwargs-) .
+    `model_path` parametr odnosi się do lokalizacji w chmurze modelu. W tym przykładzie jest używana ścieżka pojedynczego pliku. Aby uwzględnić wiele plików w rejestracji modelu, należy ustawić `model_path` na ścieżkę folderu zawierającego pliki. Aby uzyskać więcej informacji, zobacz dokumentację dotyczącą [uruchamiania. register_model](https://review.docs.microsoft.com/python/api/azureml-core/azureml.core.run.run?view=azure-ml-py&branch=master#register-model-model-name--model-path-none--tags-none--properties-none--model-framework-none--model-framework-version-none--description-none--datasets-none----kwargs-) .
 
   + Zarejestruj model na podstawie obiektu `azureml.train.automl.run.AutoMLRun`:
 
@@ -228,7 +228,7 @@ model_path = os.path.join(os.getenv('AZUREML_MODEL_DIR'), 'sklearn_model/1/sklea
 
 ##### <a name="get_model_path"></a>get_model_path
 
-Podczas rejestrowania modelu należy podać nazwę modelu, która jest używana do zarządzania modelem w rejestrze. Ta nazwa jest używana z [modelem. Get _model_path ()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.model.model?view=azure-ml-py#get-model-path-model-name--version-none---workspace-none-) Metoda pobrania ścieżki pliku lub plików modelu w lokalnym systemie plików. Po zarejestrowaniu folderu lub kolekcji plików ten interfejs API zwróci ścieżkę do katalogu, który zawiera te pliki.
+Podczas rejestrowania modelu należy podać nazwę modelu, która jest używana do zarządzania modelem w rejestrze. Ta nazwa jest używana z metodą [model. get_model_path ()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.model.model?view=azure-ml-py#get-model-path-model-name--version-none---workspace-none-) w celu pobrania ścieżki pliku lub plików modelu w lokalnym systemie plików. Po zarejestrowaniu folderu lub kolekcji plików ten interfejs API zwróci ścieżkę do katalogu, który zawiera te pliki.
 
 Po zarejestrowaniu modelu nadaj mu nazwę. Nazwa odnosi się do lokalizacji modelu, lokalnie lub podczas wdrażania usługi.
 
@@ -627,7 +627,7 @@ Jeśli włączono uwierzytelnianie klucza dla usługi, musisz podać klucz usłu
 Jeśli włączono uwierzytelnianie tokenu dla usługi, musisz podać Azure Machine Learning token JWT jako token okaziciela w nagłówku żądania.
 
 > [!TIP]
-> Po wdrożeniu usługi można pobrać dokument JSON schematu. Użyj [Właściwości swagger_uri](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice.local.localwebservice?view=azure-ml-py#swagger-uri) ze wdrożonej usługi sieci Web (na przykład `service.swagger_uri`), aby uzyskać identyfikator URI do pliku struktury Swagger lokalnej usługi sieci Web.
+> Po wdrożeniu usługi można pobrać dokument JSON schematu. Użyj [właściwości swagger_uri](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice.local.localwebservice?view=azure-ml-py#swagger-uri) ze wdrożonej usługi sieci Web (na przykład `service.swagger_uri`), aby uzyskać identyfikator URI do pliku struktury Swagger lokalnej usługi sieci Web.
 
 ### <a name="request-response-consumption"></a>Żądanie — użycie odpowiedzi
 
@@ -661,7 +661,7 @@ Aby uzyskać więcej informacji, zobacz [Tworzenie aplikacji klienckich do korzy
 
 ### <a name="web-service-schema-openapi-specification"></a>Schemat usługi sieci Web (Specyfikacja OpenAPI)
 
-Jeśli używasz automatycznej generacji schematu w ramach wdrożenia, możesz uzyskać adres specyfikacji OpenAPI dla usługi przy użyciu [Właściwości swagger_uri](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice.local.localwebservice?view=azure-ml-py#swagger-uri). (Na przykład `print(service.swagger_uri)`.) Użyj żądania GET lub Otwórz identyfikator URI w przeglądarce, aby pobrać specyfikację.
+Jeśli używasz automatycznej generacji schematu w ramach wdrożenia, możesz uzyskać adres specyfikacji OpenAPI dla usługi przy użyciu [właściwości swagger_uri](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice.local.localwebservice?view=azure-ml-py#swagger-uri). (Na przykład `print(service.swagger_uri)`.) Użyj żądania GET lub Otwórz identyfikator URI w przeglądarce, aby pobrać specyfikację.
 
 Poniższy dokument JSON jest przykładem schematu (Specyfikacja OpenAPI) wygenerowanego dla wdrożenia:
 
@@ -858,6 +858,78 @@ Interfejs
 az ml model download --model-id mymodel:1 --target-dir model_folder
 ```
 
+## <a name="preview-no-code-model-deployment"></a>Przeglądania Wdrożenie modelu bez kodu
+
+Wdrożenie modelu bez kodu jest obecnie dostępne w wersji zapoznawczej i obsługuje następujące platformy uczenia maszynowego:
+
+### <a name="tensorflow-savedmodel-format"></a>Tensorflow SavedModel
+
+```python
+from azureml.core import Model
+
+model = Model.register(workspace=ws,
+                       model_name='flowers',                        # Name of the registered model in your workspace.
+                       model_path='./flowers_model',                # Local Tensorflow SavedModel folder to upload and register as a model.
+                       model_framework=Model.Framework.TENSORFLOW,  # Framework used to create the model.
+                       model_framework_version='1.14.0',            # Version of Tensorflow used to create the model.
+                       description='Flowers model')
+
+service_name = 'tensorflow-flower-service'
+service = Model.deploy(ws, service_name, [model])
+```
+
+### <a name="onnx-models"></a>Modele ONNX
+
+Rejestracja i wdrożenie modelu ONNX są obsługiwane w przypadku grafu wnioskowania ONNX. Kroki preprocesora i PostProcess nie są obecnie obsługiwane.
+
+Oto przykład sposobu rejestrowania i wdrażania modelu ONNX MNIST ręcznie:
+
+```python
+from azureml.core import Model
+
+model = Model.register(workspace=ws,
+                       model_name='mnist-sample',                  # Name of the registered model in your workspace.
+                       model_path='mnist-model.onnx',              # Local ONNX model to upload and register as a model.
+                       model_framework=Model.Framework.ONNX ,      # Framework used to create the model.
+                       model_framework_version='1.3',              # Version of ONNX used to create the model.
+                       description='Onnx MNIST model')
+
+service_name = 'onnx-mnist-service'
+service = Model.deploy(ws, service_name, [model])
+```
+
+### <a name="scikit-learn-models"></a>Scikit — uczenie modeli
+
+Żadne wdrożenie modelu kodu nie jest obsługiwane dla wszystkich wbudowanych typów modeli scikit.
+
+Oto przykład sposobu rejestrowania i wdrażania modelu skryptu sklearn bez dodatkowego kodu:
+
+```python
+from azureml.core import Model
+from azureml.core.resource_configuration import ResourceConfiguration
+
+model = Model.register(workspace=ws,
+                       model_name='my-sklearn-model',                # Name of the registered model in your workspace.
+                       model_path='./sklearn_regression_model.pkl',  # Local file to upload and register as a model.
+                       model_framework=Model.Framework.SCIKITLEARN,  # Framework used to create the model.
+                       model_framework_version='0.19.1',             # Version of scikit-learn used to create the model.
+                       resource_configuration=ResourceConfiguration(cpu=1, memory_in_gb=0.5),
+                       description='Ridge regression model to predict diabetes progression.',
+                       tags={'area': 'diabetes', 'type': 'regression'})
+                       
+service_name = 'my-sklearn-service'
+service = Model.deploy(ws, service_name, [model])
+```
+
+Uwaga: te zależności są zawarte we wstępnie skompilowanym kontenerze wnioskowania skryptu sklearn:
+
+```yaml
+    - azureml-defaults
+    - inference-schema[numpy-support]
+    - scikit-learn
+    - numpy
+```
+
 ## <a name="package-models"></a>Modele pakietów
 
 W niektórych przypadkach może być konieczne utworzenie obrazu platformy Docker bez wdrażania modelu (Jeśli na przykład planujesz [wdrożyć program w Azure App Service](how-to-deploy-app-service.md)). Możesz też chcieć pobrać obraz i uruchomić go w lokalnej instalacji platformy Docker. Możesz nawet pobrać pliki użyte do skompilowania obrazu, sprawdzić je, zmodyfikować i ręcznie utworzyć obraz.
@@ -997,78 +1069,6 @@ Aby usunąć wdrożoną usługę sieci Web, użyj `service.delete()`.
 Aby usunąć zarejestrowany model, użyj `model.delete()`.
 
 Aby uzyskać więcej informacji, zobacz dokumentację dotyczącą usługi [WebService. Delete ()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice(class)?view=azure-ml-py#delete--) i [model. Delete ()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.model.model?view=azure-ml-py#delete--).
-
-## <a name="preview-no-code-model-deployment"></a>Przeglądania Wdrożenie modelu bez kodu
-
-Wdrożenie modelu bez kodu jest obecnie dostępne w wersji zapoznawczej i obsługuje następujące platformy uczenia maszynowego:
-
-### <a name="tensorflow-savedmodel-format"></a>Tensorflow SavedModel
-
-```python
-from azureml.core import Model
-
-model = Model.register(workspace=ws,
-                       model_name='flowers',                        # Name of the registered model in your workspace.
-                       model_path='./flowers_model',                # Local Tensorflow SavedModel folder to upload and register as a model.
-                       model_framework=Model.Framework.TENSORFLOW,  # Framework used to create the model.
-                       model_framework_version='1.14.0',            # Version of Tensorflow used to create the model.
-                       description='Flowers model')
-
-service_name = 'tensorflow-flower-service'
-service = Model.deploy(ws, service_name, [model])
-```
-
-### <a name="onnx-models"></a>Modele ONNX
-
-Rejestracja i wdrożenie modelu ONNX są obsługiwane w przypadku grafu wnioskowania ONNX. Kroki preprocesora i PostProcess nie są obecnie obsługiwane.
-
-Oto przykład sposobu rejestrowania i wdrażania modelu ONNX MNIST ręcznie:
-
-```python
-from azureml.core import Model
-
-model = Model.register(workspace=ws,
-                       model_name='mnist-sample',                  # Name of the registered model in your workspace.
-                       model_path='mnist-model.onnx',              # Local ONNX model to upload and register as a model.
-                       model_framework=Model.Framework.ONNX ,      # Framework used to create the model.
-                       model_framework_version='1.3',              # Version of ONNX used to create the model.
-                       description='Onnx MNIST model')
-
-service_name = 'onnx-mnist-service'
-service = Model.deploy(ws, service_name, [model])
-```
-
-### <a name="scikit-learn-models"></a>Scikit — uczenie modeli
-
-Żadne wdrożenie modelu kodu nie jest obsługiwane dla wszystkich wbudowanych typów modeli scikit.
-
-Oto przykład sposobu rejestrowania i wdrażania modelu skryptu sklearn bez dodatkowego kodu:
-
-```python
-from azureml.core import Model
-from azureml.core.resource_configuration import ResourceConfiguration
-
-model = Model.register(workspace=ws,
-                       model_name='my-sklearn-model',                # Name of the registered model in your workspace.
-                       model_path='./sklearn_regression_model.pkl',  # Local file to upload and register as a model.
-                       model_framework=Model.Framework.SCIKITLEARN,  # Framework used to create the model.
-                       model_framework_version='0.19.1',             # Version of scikit-learn used to create the model.
-                       resource_configuration=ResourceConfiguration(cpu=1, memory_in_gb=0.5),
-                       description='Ridge regression model to predict diabetes progression.',
-                       tags={'area': 'diabetes', 'type': 'regression'})
-                       
-service_name = 'my-sklearn-service'
-service = Model.deploy(ws, service_name, [model])
-```
-
-Uwaga: te zależności są zawarte we wstępnie skompilowanym kontenerze wnioskowania skryptu sklearn:
-
-```yaml
-    - azureml-defaults
-    - inference-schema[numpy-support]
-    - scikit-learn
-    - numpy
-```
 
 ## <a name="next-steps"></a>Następne kroki
 

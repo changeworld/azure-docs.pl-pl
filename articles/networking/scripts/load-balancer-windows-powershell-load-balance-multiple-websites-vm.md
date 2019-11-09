@@ -1,30 +1,27 @@
 ---
-title: Przykładowy skrypt Azure PowerShell — równoważ obciążenie powodowane przez wielu witryn sieci Web przy użyciu programu Azure PowerShell | Dokumentacja firmy Microsoft
-description: Przykładowy skrypt Azure PowerShell — równoważ obciążenie powodowane przez wielu witryn sieci Web do tej samej maszyny wirtualnej
+title: Przykład skryptu Azure PowerShell — Równoważenie obciążenia wielu witryn sieci Web z Azure PowerShell | Microsoft Docs
+description: Przykład skryptu Azure PowerShell — Równoważenie obciążenia wielu witryn sieci Web do tej samej maszyny wirtualnej
 services: load-balancer
 documentationcenter: load-balancer
-author: georgewallace
-manager: timlt
-editor: tysonn
-tags: ''
-ms.assetid: ''
+author: asudbring
+manager: KumudD
 ms.service: load-balancer
 ms.devlang: powershell
 ms.topic: article
 ms.tgt_pltfrm: ''
 ms.workload: infrastructure
 ms.date: 05/16/2017
-ms.author: gwallace
-ms.openlocfilehash: 145b5a686b2707b6e60a481c08f187164d788580
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.author: allensu
+ms.openlocfilehash: 0b266f5fcad0ef709e29a125f1b9b5ddba7fec90
+ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66121235"
+ms.lasthandoff: 11/09/2019
+ms.locfileid: "73890293"
 ---
 # <a name="load-balance-multiple-websites"></a>Równoważenie obciążenia wielu witryn internetowych
 
-Ten przykładowy skrypt tworzy sieć wirtualną przy użyciu dwóch maszyn wirtualnych (VM), które są członkami zestawu dostępności. Moduł równoważenia obciążenia kieruje ruch dla 2 osobnych adresów IP do 2 maszyn wirtualnych. Po uruchomieniu skryptu możesz wdrożyć oprogramowanie serwera internetowego na maszynach wirtualnych i hostować wiele witryn internetowych, z których każda będzie miała własny adres IP.
+Ten przykładowy skrypt tworzy sieć wirtualną z dwiema maszynami wirtualnymi, które są elementami członkowskimi zestawu dostępności. Moduł równoważenia obciążenia kieruje ruch dla 2 osobnych adresów IP do 2 maszyn wirtualnych. Po uruchomieniu skryptu możesz wdrożyć oprogramowanie serwera internetowego na maszynach wirtualnych i hostować wiele witryn internetowych, z których każda będzie miała własny adres IP.
 
 W razie potrzeby zainstaluj program Azure PowerShell, korzystając z instrukcji w [przewodniku programu Azure PowerShell](https://docs.microsoft.com/powershell/azureps-cmdlets-docs/), a następnie uruchom polecenie `Connect-AzAccount`, aby utworzyć połączenie z platformą Azure.
 
@@ -66,7 +63,7 @@ Ten skrypt zawiera następujące polecenia służące do tworzenia grupy zasobó
 | [New-AzVM](/powershell/module/az.compute/new-azvm) | Tworzy maszynę wirtualną. |
 |[Remove-AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup) | Usuwa grupę zasobów i wszystkie zasoby w niej zawarte. |
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 Aby uzyskać więcej informacji na temat programu Azure PowerShell, zobacz [dokumentację programu Azure PowerShell](https://docs.microsoft.com/powershell/azure/overview).
 

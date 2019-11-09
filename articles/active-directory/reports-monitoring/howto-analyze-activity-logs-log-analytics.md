@@ -17,12 +17,12 @@ ms.date: 04/18/2019
 ms.author: chadam
 ms.reviewer: markvi
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 52ab1bd445f8af0bf58dcb6b1176904aa073877a
-ms.sourcegitcommit: 8e271271cd8c1434b4254862ef96f52a5a9567fb
+ms.openlocfilehash: 04d9bb8bca64292b73bc14f02d126d384da33780
+ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72820954"
+ms.lasthandoff: 11/09/2019
+ms.locfileid: "73885263"
 ---
 # <a name="analyze-azure-ad-activity-logs-with-azure-monitor-logs"></a>Analizowanie dzienników aktywności usługi Azure AD za pomocą dzienników Azure Monitor
 
@@ -38,7 +38,7 @@ Aby wykonać następujące czynności, potrzebne są:
 
 * Log Analytics obszar roboczy w ramach subskrypcji platformy Azure. Dowiedz się [, jak utworzyć obszar roboczy log Analytics](https://docs.microsoft.com/azure/log-analytics/log-analytics-quick-create-workspace).
 * Najpierw wykonaj kroki umożliwiające [kierowanie dzienników aktywności usługi Azure AD do obszaru roboczego log Analytics](howto-integrate-activity-logs-with-log-analytics.md).
-*  [Dostęp](https://docs.microsoft.com/en-us/azure/azure-monitor/platform/manage-access#manage-access-using-workspace-permissions) do obszaru roboczego usługi log Analytics
+*  [Dostęp](https://docs.microsoft.com/azure/azure-monitor/platform/manage-access#manage-access-using-workspace-permissions) do obszaru roboczego usługi log Analytics
 * Poniższe role w Azure Active Directory (Jeśli uzyskujesz dostęp do Log Analytics za pomocą portalu Azure Active Directory)
     - Administrator zabezpieczeń
     - Czytelnik zabezpieczeń
@@ -47,7 +47,7 @@ Aby wykonać następujące czynności, potrzebne są:
     
 ## <a name="navigate-to-the-log-analytics-workspace"></a>Przejdź do obszaru roboczego Log Analytics
 
-1. Zaloguj się do [portalu Azure](https://portal.azure.com). 
+1. Zaloguj się w witrynie [Azure Portal](https://portal.azure.com). 
 
 2. Wybierz pozycję **Azure Active Directory**, a następnie wybierz pozycję **dzienniki** w sekcji **monitorowanie** , aby otworzyć obszar roboczy log Analytics. Obszar roboczy zostanie otwarty z zapytaniem domyślnym.
 
@@ -104,7 +104,7 @@ Możesz również skonfigurować alerty w zapytaniu. Na przykład, aby skonfigur
 
 Możesz również pobrać wstępnie skompilowane widoki usługi log Analytics dla dzienników aktywności w usłudze Azure AD. Widoki zawierają kilka raportów związanych z typowymi scenariuszami związanymi z inspekcją i zdarzeniami logowania. Możesz również otrzymywać alerty dotyczące dowolnych danych zawartych w raportach, korzystając z kroków opisanych w poprzedniej sekcji.
 
-* **Zdarzenia aprowizacji konta usługi Azure AD**: ten widok przedstawia raporty dotyczące aktywności związanej z obsługą inspekcji, na przykład liczbę nowych użytkowników i niepowodzenia aprowizacji, liczbę zaktualizowanych użytkowników i błędy aktualizacji oraz liczbę użytkowników dezaktywowane i odpowiadające błędy.    
+* **Zdarzenia aprowizacji konta usługi Azure AD**: ten widok przedstawia raporty dotyczące aktywności związanej z obsługą inspekcji, takie jak liczba nowych użytkowników i niepowodzenia aprowizacji, liczba zaktualizowanych użytkowników i aktualizacja niepowodzeń oraz liczba użytkowników, którym cofnięto Inicjowanie obsługi administracyjnej i odpowiadające im błędy.    
 * **Zdarzenia logowania**: ten widok przedstawia najbardziej odpowiednie raporty związane z monitorowaniem aktywności, takie jak logowania według aplikacji, użytkownika, urządzenia, a także widok podsumowania, który śledzi liczbę logowań w czasie.
 * **Użytkownicy**korzystający z zgody: ten widok przedstawia raporty dotyczące zgody użytkownika, takie jak zgoda użytkownika, logowania użytkowników, którzy udzieliły zgody, a także logowania przez aplikacje dla wszystkich aplikacji opartych na zgodzie. 
 

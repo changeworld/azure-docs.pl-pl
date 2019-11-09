@@ -1,19 +1,18 @@
 ---
 title: Zapytanie w usłudze Azure IoT Hub Routing komunikatów | Microsoft Docs
-description: Przewodnik dla deweloperów — Składnia zapytania dla routingu wiadomości w usłudze Azure IoT Hub.
+description: Dowiedz się więcej na temat języka zapytań dotyczących routingu komunikatów IoT Hub, którego możesz użyć, aby zastosować zaawansowane zapytania do wiadomości w celu uzyskania danych, które są dla Ciebie ważne.
 author: ash2017
-manager: briz
 ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
 ms.date: 08/13/2018
 ms.author: asrastog
-ms.openlocfilehash: 7f6439d79e5d46621b92b1c24ba5caf87889f443
-ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
+ms.openlocfilehash: 859b15954f64f8b481f6b86c04fc28b542599f02
+ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/21/2019
-ms.locfileid: "69877074"
+ms.lasthandoff: 11/09/2019
+ms.locfileid: "73890493"
 ---
 # <a name="iot-hub-message-routing-query-syntax"></a>Składnia zapytania dotyczącego routingu komunikatów IoT Hub
 
@@ -53,11 +52,11 @@ Właściwości systemu pomagają identyfikować zawartość i źródło komunika
 
 | Właściwość | Typ | Opis |
 | -------- | ---- | ----------- |
-| contentType | string | Użytkownik określa typ zawartości komunikatu. Aby zezwolić na zapytanie w treści wiadomości, należy ustawić wartość Application/JSON. |
-| contentEncoding | string | Użytkownik określa typ kodowania wiadomości. Dozwolone wartości to UTF-8, UTF-16, UTF-32, jeśli dla właściwości contentType ustawiono wartość Application/JSON. |
-| iothub-Connection-ID urządzenia | string | Ta wartość jest ustawiana przez IoT Hub i identyfikuje identyfikator urządzenia. Aby wykonać zapytanie, `$connectionDeviceId`Użyj. |
-| iothub — enqueuedtime | string | Ta wartość jest ustawiana przez IoT Hub i reprezentuje rzeczywisty czas umieszczenie komunikatu w formacie UTC. Aby wykonać zapytanie, `enqueuedTime`Użyj. |
-| iothub-Interface-Name | string | Ta wartość jest ustawiana przez użytkownika i reprezentuje nazwę interfejsu dwuosiowego, który implementuje komunikat telemetrii. Aby wykonać zapytanie, `$interfaceName`Użyj. Ta funkcja jest dostępna w ramach [publicznej wersji zapoznawczej Plug and Play IoT](../iot-pnp/overview-iot-plug-and-play.md). |
+| contentType | ciąg | Użytkownik określa typ zawartości komunikatu. Aby zezwolić na zapytanie w treści wiadomości, należy ustawić wartość Application/JSON. |
+| contentEncoding | ciąg | Użytkownik określa typ kodowania wiadomości. Dozwolone wartości to UTF-8, UTF-16, UTF-32, jeśli dla właściwości contentType ustawiono wartość Application/JSON. |
+| iothub-Connection-ID urządzenia | ciąg | Ta wartość jest ustawiana przez IoT Hub i identyfikuje identyfikator urządzenia. Aby wykonać zapytanie, użyj `$connectionDeviceId`. |
+| iothub — enqueuedtime | ciąg | Ta wartość jest ustawiana przez IoT Hub i reprezentuje rzeczywisty czas umieszczenie komunikatu w formacie UTC. Aby wykonać zapytanie, użyj `enqueuedTime`. |
+| iothub-Interface-Name | ciąg | Ta wartość jest ustawiana przez użytkownika i reprezentuje nazwę interfejsu dwuosiowego, który implementuje komunikat telemetrii. Aby wykonać zapytanie, użyj `$interfaceName`. Ta funkcja jest dostępna w ramach [publicznej wersji zapoznawczej Plug and Play IoT](../iot-pnp/overview-iot-plug-and-play.md). |
 
 Zgodnie z opisem w komunikatach [IoT Hub](iot-hub-devguide-messages-construct.md)w komunikacie są dostępne dodatkowe właściwości systemu. Oprócz **elementów ContentType**, **contentEncoding**i **EnqueuedTime**, można także zbadać **connectionDeviceId** i **connectionModuleId** .
 
@@ -67,7 +66,7 @@ Właściwości aplikacji są ciągami zdefiniowanymi przez użytkownika, które 
 
 ### <a name="query-expressions"></a>Wyrażenia zapytań
 
-Zapytanie dotyczące właściwości systemu komunikatów musi być poprzedzone `$` symbolem. Zapytania dotyczące właściwości aplikacji są dostępne wraz z ich nazwą i nie powinny być poprzedzone `$`znakiem. Jeśli nazwa właściwości aplikacji zaczyna się `$`od, IoT Hub wyszuka ją we właściwościach systemu i nie zostanie znaleziona, będzie wyglądać we właściwościach aplikacji. Na przykład: 
+Zapytanie o właściwościach systemu wiadomości musi być poprzedzone symbolem `$`. Zapytania dotyczące właściwości aplikacji są dostępne z ich nazwą i nie powinny być poprzedzone prefiksem `$`. Jeśli nazwa właściwości aplikacji rozpoczyna się od `$`, IoT Hub wyszuka ją we właściwościach systemu i nie zostanie znaleziona, a następnie będzie wyglądać we właściwościach aplikacji. Na przykład: 
 
 Aby wykonać zapytanie o Właściwość system contentEncoding 
 
@@ -87,11 +86,11 @@ Aby połączyć te zapytania, można użyć wyrażeń i funkcji logicznych:
 $contentEncoding = 'UTF-8' AND processingPath = 'hot'
 ```
 
-Pełna lista obsługiwanych operatorów i funkcji jest wyświetlana w wyrażeniach [i warunkach](iot-hub-devguide-query-language.md#expressions-and-conditions).
+Pełna lista obsługiwanych operatorów i funkcji jest wyświetlana w [wyrażeniach i warunkach](iot-hub-devguide-query-language.md#expressions-and-conditions).
 
 ## <a name="message-routing-query-based-on-message-body"></a>Zapytanie routingu komunikatów na podstawie treści wiadomości 
 
-Aby włączyć zapytania dotyczące treści wiadomości, komunikat powinien znajdować się w formacie JSON zakodowanym w formacie UTF-8, UTF-16 lub UTF-32. Wartość musi być ustawiona na `application/JSON` i `contentEncoding` na jeden z obsługiwanych kodowań UTF we właściwości System. `contentType` Jeśli te właściwości nie są określone, IoT Hub nie będzie szacować wyrażenia zapytania w treści komunikatu. 
+Aby włączyć zapytania dotyczące treści wiadomości, komunikat powinien znajdować się w formacie JSON zakodowanym w formacie UTF-8, UTF-16 lub UTF-32. `contentType` musi być ustawiona na `application/JSON` i `contentEncoding` do jednego z obsługiwanych kodowań UTF we właściwości System. Jeśli te właściwości nie są określone, IoT Hub nie będzie szacować wyrażenia zapytania w treści komunikatu. 
 
 Poniższy przykład pokazuje, jak utworzyć komunikat z poprawnie sformułowaną i zakodowaną treścią JSON: 
 
@@ -197,7 +196,7 @@ Routing komunikatów umożliwia wykonywanie zapytań dotyczących tagów i wła�
 
 ### <a name="query-expressions"></a>Wyrażenia zapytań
 
-Zapytanie o treść wiadomości musi być poprzedzone prefiksem `$twin`. Wyrażenie zapytania może również łączyć tag bliźniaczy lub odwołanie do właściwości z odwołaniem do treści, właściwościami systemu komunikatów i odwołaniami do właściwości aplikacji komunikatów. Zalecamy używanie unikatowych nazw w tagach i właściwościach, ponieważ w kwerendzie nie jest rozróżniana wielkość liter. Należy również zrezygnować `twin`z `$twin`używania `body`,, `$body`, lub, jako nazwy właściwości. Na przykład następujące są wszystkie prawidłowe wyrażenia zapytania: 
+Zapytanie o treść wiadomości musi być poprzedzone prefiksem `$twin`. Wyrażenie zapytania może również łączyć tag bliźniaczy lub odwołanie do właściwości z odwołaniem do treści, właściwościami systemu komunikatów i odwołaniami do właściwości aplikacji komunikatów. Zalecamy używanie unikatowych nazw w tagach i właściwościach, ponieważ w kwerendzie nie jest rozróżniana wielkość liter. Należy również zrezygnować z używania `twin`, `$twin`, `body`lub `$body`jako nazw właściwości. Na przykład następujące są wszystkie prawidłowe wyrażenia zapytania: 
 
 ```sql
 $twin.properties.desired.telemetryConfig.sendFrequency = '5m'

@@ -1,22 +1,21 @@
 ---
 title: Konfigurowanie i używanie metryk i dzienników diagnostycznych w usłudze Azure IoT Hub | Microsoft Docs
-description: Konfigurowanie i używanie metryk i dzienników diagnostycznych w usłudze Azure IoT Hub
+description: Dowiedz się, jak skonfigurować metryki i dzienniki diagnostyczne przy użyciu usługi Azure IoT Hub i korzystać z nich. Umożliwi to analizowanie danych, które mogą być pomocne w diagnozowaniu problemów z centrum.
 author: robinsh
-manager: philmea
 ms.service: iot-hub
 services: iot-hub
 ms.topic: tutorial
 ms.date: 3/13/2019
 ms.author: robinsh
 ms.custom: mvc
-ms.openlocfilehash: 7349287945a56bb7674e364f515d0b763015ed59
-ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
+ms.openlocfilehash: 3bda78a54b0914465a50d664ab0323444203a387
+ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71262311"
+ms.lasthandoff: 11/09/2019
+ms.locfileid: "73890361"
 ---
-# <a name="tutorial-set-up-and-use-metrics-and-diagnostic-logs-with-an-iot-hub"></a>Samouczek: konfigurowanie i używanie metryk i dzienników diagnostycznych w usłudze IoT Hub
+# <a name="tutorial-set-up-and-use-metrics-and-diagnostic-logs-with-an-iot-hub"></a>Samouczek: Konfigurowanie metryk i dzienników diagnostycznych za pomocą Centrum IoT Hub oraz korzystanie z nich
 
 Jeśli w Twoim środowisku produkcyjnym działa rozwiązanie IoT Hub, możesz chcieć skonfigurować kilka metryk i włączyć dzienniki diagnostyczne. W razie wystąpienia problemu możesz wówczas przyjrzeć się danym, które pomogą Ci zdiagnozować ten problem i szybciej go rozwiązać. W tym artykule zobaczysz, jak włączać dzienniki diagnostyczne i jak wyszukiwać w nich błędy. Skonfigurujesz także kilka metryk do obserwowania oraz alerty uruchamiane, gdy metryki osiągną określone granice. Na przykład możesz otrzymywać wiadomość e-mail, gdy liczba wysłanych komunikatów telemetrycznych przekroczy określoną granicę lub gdy liczba użytych komunikatów zbliży się do dziennego limitu przydziału komunikatów dozwolonego w usłudze IoT Hub. 
 
@@ -116,7 +115,7 @@ az iot hub device-identity show --device-id $iotDeviceName \
 ```
 
 >[!NOTE]
->Podczas tworzenia tożsamości urządzenia może wystąpić następujący błąd: *Nie znaleziono kluczy dla zasad iothubowner centrum IoT ContosoTestHub*. Aby naprawić ten błąd, zaktualizuj rozszerzenie IoT interfejsu wiersza polecenia platformy Azure, a następnie uruchom ponownie ostatnie dwa polecenia w skrypcie. 
+>Podczas tworzenia tożsamości urządzenia może zostać wyświetlony następujący błąd: *nie znaleziono kluczy dla zasad iothubowner IoT Hub ContosoTestHub*. Aby naprawić ten błąd, zaktualizuj rozszerzenie IoT interfejsu wiersza polecenia platformy Azure, a następnie uruchom ponownie ostatnie dwa polecenia w skrypcie. 
 >
 >Poniżej przedstawiono polecenie umożliwiające zaktualizowanie rozszerzenia. Uruchom je w swoim wystąpieniu usługi Cloud Shell.
 >
@@ -135,7 +134,7 @@ az iot hub device-identity show --device-id $iotDeviceName \
    ![Zrzut ekranu przedstawiający fragment bloku usługi IoT Hub dotyczący ustawień diagnostycznych.](./media/tutorial-use-metrics-and-diags/01-diagnostic-settings.png)
 
 
-3. Upewnij się, że subskrypcja i grupa zasobów są poprawne. W obszarze **Typ zasobu** usuń zaznaczenie pola wyboru **Zaznacz wszystko**, a następnie znajdź i zaznacz pozycję **IoT Hub**. (Znacznik wyboru zostanie ponownie umieszczony obok pozycji *Zaznacz wszystko* — zignoruj to). W obszarze **Zasób** wybierz nazwę centrum. Ekran powinien wyglądać jak na poniższej ilustracji: 
+3. Upewnij się, że subskrypcja i grupa zasobów są poprawne. W obszarze **Typ zasobu** usuń zaznaczenie pola wyboru **Zaznacz wszystko**, a następnie znajdź i zaznacz pozycję **IoT Hub**. (Zaznacza znacznik wyboru obok *opcji wszystkie* ponownie, ignorując go). W obszarze **zasób**wybierz nazwę centrum. Ekran powinien wyglądać jak na poniższej ilustracji: 
 
    ![Zrzut ekranu przedstawiający fragment bloku usługi IoT Hub dotyczący ustawień diagnostycznych.](./media/tutorial-use-metrics-and-diags/02-diagnostic-settings-start.png)
 
@@ -196,25 +195,25 @@ Usługa IoT Hub nie została jeszcze zmigrowana do [metryk w usłudze Azure Moni
 
     Wypełnij następujące pola: 
 
-    **Subskrypcja**: w tym polu pozostaw bieżącą subskrypcję.
+    **Subskrypcja**: pozostaw to pole ustawione na bieżącą subskrypcję.
 
-    **Źródło**: w tym polu ustaw wartość *Metryki*.
+    **Źródło**: Ustaw to pole na *metryki*.
 
-    **Grupa zasobów**: w tym polu ustaw bieżącą grupę zasobów *ContosoResources*. 
+    **Grupa zasobów**: Ustaw to pole na bieżącą grupę zasobów, *ContosoResources*. 
 
-    **Typ zasobu**: w tym polu ustaw usługę IoT Hub. 
+    **Typ zasobu**: Ustaw to pole na IoT Hub. 
 
-    **Zasób**: wybierz swoje centrum IoT *ContosoTestHub*.
+    **Zasób**: wybierz Centrum IoT Hub, *ContosoTestHub*.
 
 3. Kliknij pozycję **Dodaj alert metryki (klasyczny)** , aby skonfigurować nowy alert.
 
     Wypełnij następujące pola:
 
-    **Nazwa**: podaj nazwę reguły alertu, na przykład *telemetry-messages*.
+    **Nazwa**: Podaj nazwę reguły alertu, na przykład *komunikaty telemetryczne*.
 
-    **Opis**: podaj opis alertu, na przykład *alert when there are 1000 telemetry messages sent* (alert po wysłaniu 1000 komunikatów telemetrycznych). 
+    **Opis**: Podaj opis alertu, na przykład alert, *gdy wysyłane są 1000 komunikaty telemetryczne*. 
 
-    **Źródło**: w tym polu ustaw wartość *Metryki*.
+    **Źródło**: Ustaw tę wartość na *metryki*.
 
     W polach **Subskrypcja**, **Grupa zasobów** i **Zasób** należy ustawić wartości wybrane na ekranie **Wyświetl alerty klasyczne**. 
 
@@ -224,13 +223,13 @@ Usługa IoT Hub nie została jeszcze zmigrowana do [metryk w usłudze Azure Moni
 
 4. Po wykresie ustaw następujące pola:
 
-   **Warunek**: w tym polu ustaw wartość *Większe niż*.
+   **Warunek**: wartość *większa niż*.
 
-   **Próg**: w tym polu ustaw wartość 1000.
+   **Próg**: ustaw na 1000.
 
-   **Okres**: w tym polu ustaw wartość *W ciągu ostatnich 5 minut*.
+   **Okres**: Ustaw na wartość *w ciągu ostatnich 5 minut*.
 
-   **Adresaci powiadomienia e-mail**: w tym miejscu wprowadź swój adres e-mail. 
+   **Adresaci wiadomości e-mail z powiadomieniem**: Umieść tutaj swój adres e-mail. 
 
    ![Zrzut ekranu przedstawiający dolną część ekranu alertów.](./media/tutorial-use-metrics-and-diags/11-alerts-add-rule-bottom.png)
 
@@ -240,11 +239,11 @@ Usługa IoT Hub nie została jeszcze zmigrowana do [metryk w usłudze Azure Moni
 
    Na ekranie **Wyświetl alerty klasyczne** kliknij pozycję **Dodaj alert metryki (klasyczny)** , a następnie wypełnij poniższe pola w okienku **Dodaj regułę**.
 
-   **Nazwa**: podaj nazwę reguły alertu, na przykład *number-of-messages-used*.
+   **Nazwa**: Podaj nazwę reguły alertu, na przykład *liczbę używanych komunikatów*.
 
-   **Opis**: podaj opis alertu, na przykład *alert when getting close to quota* (alert po zbliżeniu się do limitu przydziału).
+   **Opis**: Podaj opis alertu, na przykład alert, *Kiedy zbliża się do limitu przydziału*.
 
-   **Źródło**: w tym polu ustaw wartość *Metryki*.
+   **Źródło**: Ustaw to pole na *metryki*.
 
     W polach **Subskrypcja**, **Grupa zasobów** i **Zasób** należy ustawić wartości wybrane na ekranie **Wyświetl alerty klasyczne**. 
 
@@ -252,13 +251,13 @@ Usługa IoT Hub nie została jeszcze zmigrowana do [metryk w usłudze Azure Moni
 
 6. Pod wykresem wypełnij następujące pola:
 
-   **Warunek**: w tym polu ustaw wartość *Większe niż*.
+   **Warunek**: wartość *większa niż*.
 
-   **Próg**: w tym polu ustaw wartość 1000.
+   **Próg**: ustaw na 1000.
 
-   **Okres**: w tym polu ustaw wartość *W ciągu ostatnich 5 minut*. 
+   **Okres**: Ustaw to pole na wartość w *ciągu ostatnich 5 minut*. 
 
-   **Adresaci powiadomienia e-mail**: w tym miejscu wprowadź swój adres e-mail. 
+   **Adresaci wiadomości e-mail z powiadomieniem**: Umieść tutaj swój adres e-mail. 
 
    Kliknij przycisk **OK**, aby zapisać regułę. 
 

@@ -1,6 +1,6 @@
 ---
-title: Już istniejące Centrum IoT za pomocą rozwiązania do symulacji urządzenia — Azure | Dokumentacja firmy Microsoft
-description: W tym artykule opisano sposób konfigurowania symulacji urządzenia akceleratora rozwiązań do użycia już istniejące Centrum IoT.
+title: Korzystanie z istniejącego Centrum IoT Hub z rozwiązaniem symulacji urządzenia — Azure | Microsoft Docs
+description: W tym artykule opisano sposób konfigurowania akceleratora rozwiązania urządzenia do używania istniejącego IoT Hub.
 author: dominicbetts
 manager: timlt
 ms.author: dobett
@@ -8,35 +8,35 @@ ms.service: iot-accelerators
 services: iot-accelerators
 ms.date: 10/25/2018
 ms.topic: conceptual
-ms.openlocfilehash: 38cde750ce07741a433baa1b8607a584f94ad9b1
-ms.sourcegitcommit: b7a44709a0f82974578126f25abee27399f0887f
+ms.openlocfilehash: 1f89e23d7bb279e7cce5c104060cc7898517f8b7
+ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67203948"
+ms.lasthandoff: 11/09/2019
+ms.locfileid: "73889194"
 ---
-# <a name="use-an-existing-iot-hub-with-the-device-simulation-solution-accelerator"></a>Już istniejące Centrum IoT za pomocą symulacji urządzenia akceleratora rozwiązań
+# <a name="use-an-existing-iot-hub-with-the-device-simulation-solution-accelerator"></a>Używanie istniejącego Centrum IoT Hub z akceleratorem rozwiązania do symulacji urządzeń
 
-Podczas wdrażania symulacji urządzenia można także wdrożyć usługi IoT hub do użycia w symulacji. Ta opcja wdraża [Centrum IoT hub warstwy S2 o jednostce skalowania pojedynczej](../iot-hub/iot-hub-scaling.md). W przypadku wdrożenia tego opcjonalne Centrum IoT hub, można nadal docelowy inny Centrum IoT, uruchamiania symulacji.
+Podczas wdrażania symulacji urządzenia można także wybrać wdrożenie Centrum IoT Hub do użycia w symulacji. Ta opcja służy do wdrażania [Centrum IoT w warstwie S2 z pojedynczą jednostką skalowania](../iot-hub/iot-hub-scaling.md). W przypadku wdrożenia tego opcjonalnego Centrum IoT można nadal wybrać inną IoT Hub do uruchomienia symulacji.
 
-Jeśli możesz zdecydować o niewdrażaniu opcjonalne usługi IoT Hub, należy użyć własnego Centrum dla dowolnego symulacje, po uruchomieniu.
+Jeśli nie zdecydujesz się na wdrożenie opcjonalnej IoT Hub, musisz użyć własnego centrum dla wszystkich symulacji, które są uruchamiane.
 
-Jeśli nie masz usługi IoT hub, zawsze można utworzyć nowy [witryny Azure portal](https://portal.azure.com).
+Jeśli nie masz usługi IoT Hub, możesz zawsze utworzyć nową aplikację na podstawie [Azure Portal](https://portal.azure.com).
 
-Za pomocą istniejące Centrum IoT, potrzebne są parametry połączenia dla **iothubowner** udostępnione zasad dostępu. Możesz uzyskać te parametry połączenia z [witryny Azure portal](https://portal.azure.com):
+Aby użyć istniejącego już Centrum IoT Hub, potrzebne są parametry połączenia dla zasad dostępu współdzielonego **iothubowner** . Te parametry połączenia można uzyskać z [Azure Portal](https://portal.azure.com):
 
-1. Na stronie konfiguracji Centrum w portalu, kliknij przycisk **zasady dostępu współdzielonego**.
+1. Na stronie Konfiguracja centrum w portalu kliknij pozycję **zasady dostępu współużytkowanego**.
 
-1. Kliknij przycisk **iothubowner**.
+1. Kliknij pozycję **iothubowner**.
 
-1. Skopiuj parametry połączenia podstawowej lub dodatkowej.
+1. Skopiuj podstawowe lub pomocnicze parametry połączenia.
 
-[![Pobieranie parametrów połączenia](./media/iot-accelerators-device-simulation-choose-hub/connectionstring-inline.png)](./media/iot-accelerators-device-simulation-choose-hub/connectionstring-expanded.png#lightbox)
+[![pobrać parametrów połączenia](./media/iot-accelerators-device-simulation-choose-hub/connectionstring-inline.png)](./media/iot-accelerators-device-simulation-choose-hub/connectionstring-expanded.png#lightbox)
 
-Użyj parametrów połączenia skopiowaną po skonfigurowaniu symulacji:
+Użyj parametrów połączenia skopiowanych podczas konfigurowania symulacji:
 
 ![Konfigurowanie symulacji](./media/iot-accelerators-device-simulation-choose-hub/configuresimulation.png)
 
-### <a name="next-steps"></a>Kolejne kroki
+### <a name="next-steps"></a>Następne kroki
 
-W tym przewodniku wyjaśniono sposób użycia już istniejące Centrum IoT w symulacji. Następnie możesz chcieć Dowiedz się, jak [tworzenia modelu urządzenia zaawansowane](iot-accelerators-device-simulation-advanced-device.md) symulacji.
+W tym przewodniku krok po kroku przedstawiono sposób użycia istniejącego Centrum IoT w symulacji. Następnie warto dowiedzieć się, jak [utworzyć zaawansowany model urządzenia](iot-accelerators-device-simulation-advanced-device.md) dla symulacji.

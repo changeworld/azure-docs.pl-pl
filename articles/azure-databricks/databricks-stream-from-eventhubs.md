@@ -10,12 +10,12 @@ ms.topic: tutorial
 ms.workload: Active
 ms.date: 07/23/2019
 ms.author: alehall
-ms.openlocfilehash: 0ea85e60a84b540af2c772f81326dd8c45f61d4d
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.openlocfilehash: 4f9999b696191a7ea317906cedfc6c6946c3ae5e
+ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72784016"
+ms.lasthandoff: 11/09/2019
+ms.locfileid: "73886354"
 ---
 # <a name="tutorial-stream-data-into-azure-databricks-using-event-hubs"></a>Samouczek: Przesyłanie strumieniowe danych do usługi Azure Databricks przy użyciu usługi Event Hubs
 
@@ -59,7 +59,7 @@ Aby spełnić te wymagania, wystarczy wykonać kroki opisane w artykule [Create 
 
 ## <a name="sign-in-to-the-azure-portal"></a>Logowanie się do witryny Azure Portal
 
-Zaloguj się do [portalu Azure](https://portal.azure.com/).
+Zaloguj się w witrynie [Azure Portal](https://portal.azure.com/).
 
 ## <a name="create-an-azure-databricks-workspace"></a>Tworzenie obszaru roboczego usługi Azure Databricks
 
@@ -107,7 +107,7 @@ W tej sekcji utworzysz obszar roboczy usługi Azure Databricks przy użyciu witr
    * W tym artykule należy utworzyć klaster ze środowiskiem uruchomieniowym **5,2** .
    * Upewnij się, że jest zaznaczone pole wyboru **Zakończ po \_\_ min nieaktywności**. Podaj czas (w minutach), po jakim działanie klastra ma zostać zakończone, jeśli nie jest używany.
 
-   Wybierz pozycję proces roboczy klastra i rozmiar węzła sterownika odpowiednie dla kryteriów technicznych i [budżetu](https://azure.microsoft.com/en-us/pricing/details/databricks/).
+   Wybierz pozycję proces roboczy klastra i rozmiar węzła sterownika odpowiednie dla kryteriów technicznych i [budżetu](https://azure.microsoft.com/pricing/details/databricks/).
 
      Wybierz pozycję **Utwórz klaster**. Po uruchomieniu klastra możesz dołączyć do niego notesy i uruchamiać zadania Spark.
 

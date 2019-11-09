@@ -7,13 +7,13 @@ manager: bertvanhoof
 ms.service: digital-twins
 services: digital-twins
 ms.topic: conceptual
-ms.date: 09/17/2019
-ms.openlocfilehash: 6c61bc6075b3f0713dd790f1b3aa1a47af9d8e6c
-ms.sourcegitcommit: 4f7dce56b6e3e3c901ce91115e0c8b7aab26fb72
+ms.date: 11/07/2019
+ms.openlocfilehash: 723fe14db9089e1127f39eae3ed7b10bbddf70bf
+ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/04/2019
-ms.locfileid: "71950034"
+ms.lasthandoff: 11/09/2019
+ms.locfileid: "73889709"
 ---
 # <a name="device-connectivity-and-telemetry-ingress"></a>Ruch przychodzący danych telemetrycznych i łączność urządzeń
 
@@ -39,7 +39,7 @@ W poniższych sekcjach dowiesz się, jak pobrać parametry połączenia urządze
 
 [!INCLUDE [Digital Twins Management API](../../includes/digital-twins-management-api.md)]
 
-Wykonaj wywołanie GET w interfejsie API urządzenia z parametrem `includes=ConnectionString`, aby uzyskać parametry połączenia z urządzeniem IoT Hub. Odfiltruj według identyfikatora GUID urządzenia lub identyfikatora sprzętu, aby znaleźć określone urządzenie.
+Wykonaj wywołanie GET w interfejsie API urządzenia za pomocą parametru `includes=ConnectionString`, aby uzyskać parametry połączenia urządzenia IoT Hub. Odfiltruj według identyfikatora GUID urządzenia lub identyfikatora sprzętu, aby znaleźć określone urządzenie.
 
 ```plaintext
 YOUR_MANAGEMENT_API_URL/devices/YOUR_DEVICE_GUID?includes=ConnectionString
@@ -65,9 +65,9 @@ Można dostosować Format komunikatów i ładunek urządzenia, aby odpowiadały 
 
 ### <a name="telemetry-properties"></a>Właściwości telemetrii
 
- Zawartość ładunku **komunikatu** może zawierać dowolne dane o rozmiarze do 256 KB. Dla właściwości typu [`Message.Properties`](https://docs.microsoft.com/dotnet/api/microsoft.azure.devices.client.message.properties?view=azure-dotnet) oczekiwany jest kilka wymagań. W tabeli przedstawiono właściwości wymagane i opcjonalne obsługiwane przez system.
+ Zawartość ładunku **komunikatu** może zawierać dowolne dane o rozmiarze do 256 KB. Dla właściwości typu [`Message.Properties`](https://docs.microsoft.com/dotnet/api/microsoft.azure.devices.client.message.properties?view=azure-dotnet) oczekiwano kilku wymagań. W tabeli przedstawiono właściwości wymagane i opcjonalne obsługiwane przez system.
 
-| Nazwa właściwości | Wartość | Wymagane | Opis |
+| Nazwa właściwości | Wartość | Wymagany | Opis |
 |---|---|---|---|
 | **DigitalTwins — Telemetria** | 1.0 | Tak | Stała wartość, która identyfikuje komunikat w systemie. |
 | **DigitalTwins-SensorHardwareId** | `string(72)` | Tak | Unikatowy identyfikator czujnika, który wysyła **komunikat**. Ta wartość musi być zgodna z właściwością **HardwareId** obiektu dla systemu, aby przetworzyć go. Na przykład `00FF0643BE88-CO2`. |

@@ -16,12 +16,12 @@ ms.date: 10/03/2019
 ms.author: mimart
 ms.reviewer: arvinh
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 704e217cd7ddea988b6a9812627aba8c8468fb73
-ms.sourcegitcommit: 4f7dce56b6e3e3c901ce91115e0c8b7aab26fb72
+ms.openlocfilehash: e3ad689fb57c51d0deb698a723b93e6175bdbb5c
+ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/04/2019
-ms.locfileid: "71955499"
+ms.lasthandoff: 11/09/2019
+ms.locfileid: "73882890"
 ---
 # <a name="application-provisioning-in-quarantine-status"></a>Inicjowanie obsługi aplikacji w stanie kwarantanny
 
@@ -33,7 +33,7 @@ Podczas kwarantanny Częstotliwość cykli przyrostowych jest stopniowo zmniejsz
 
 Istnieją trzy sposoby, aby sprawdzić, czy aplikacja znajduje się w kwarantannie:
   
-- W Azure Portal przejdź do **Azure Active Directory** >  aplikacje dla**przedsiębiorstw** >  @ no__t-4*Nazwa aplikacji*&gt; @ no__t-7**Provisioning** i przewiń na pasek postępu u dołu.  
+- W Azure Portal przejdź do **Azure Active Directory** > aplikacje dla **przedsiębiorstw** > &lt;*Nazwa aplikacji*&gt; > **aprowizacji** i przewiń na pasek postępu u dołu.  
 
   ![Pasek stanu aprowizacji przedstawiający stan kwarantanny](media/application-provisioning-quarantine-status/progress-bar-quarantined.png)
 
@@ -53,9 +53,9 @@ Microsoft Graph żądanie pobrania stanu zadania aprowizacji wskazuje następuj�
 
 - `EncounteredQuarantineException` wskazuje, że podano nieprawidłowe poświadczenia. Usługa aprowizacji nie może nawiązać połączenia między systemem źródłowym i systemem docelowym.
 
-- wartość `EncounteredEscrowProportionThreshold` wskazuje, że inicjowanie obsługi przekroczyło próg Escrow. Ten stan występuje, gdy więcej niż 60% zdarzeń aprowizacji nie powiodło się.
+- `EncounteredEscrowProportionThreshold` wskazuje, że inicjowanie obsługi przekroczyło próg Escrow. Ten stan występuje, gdy więcej niż 60% zdarzeń aprowizacji nie powiodło się.
 
-- `QuarantineOnDemand` oznacza, że wykryto problem z aplikacją i ręcznie ustawił ją na kwarantannę.
+- `QuarantineOnDemand` oznacza, że wykryto problem z aplikacją i ręcznie ją ustawił na kwarantannę.
 
 ## <a name="how-do-i-get-my-application-out-of-quarantine"></a>Jak mogę uzyskać mojej aplikacji z kwarantanny?
 
@@ -63,12 +63,12 @@ Najpierw należy rozwiązać problem, który spowodował umieszczenie aplikacji 
 
 - Sprawdź ustawienia aprowizacji aplikacji, aby upewnić się, że [wprowadzono prawidłowe poświadczenia administratora](configure-automatic-user-provisioning-portal.md#configuring-automatic-user-account-provisioning). Usługa Azure AD musi być w stanie ustanowić relację zaufania z aplikacją docelową. Upewnij się, że wprowadzono prawidłowe poświadczenia, a Twoje konto ma wymagane uprawnienia.
 
-- Przejrzyj [dzienniki aprowizacji](https://docs.microsoft.com/azure/active-directory/reports-monitoring/concept-provisioning-logs) , aby dokładniej zbadać, jakie błędy powodują Kwarantanna i rozwiązać problem. Uzyskaj dostęp do dzienników aprowizacji w Azure Portal, przechodząc do **Azure Active Directory** &gt; **Enterprise Apps** &gt; **Provisioning Logs (wersja zapoznawcza)** w sekcji **działanie** .
+- Przejrzyj [dzienniki aprowizacji](https://docs.microsoft.com/azure/active-directory/reports-monitoring/concept-provisioning-logs) , aby dokładniej zbadać, jakie błędy powodują Kwarantanna i rozwiązać problem. Uzyskaj dostęp do dzienników aprowizacji w Azure Portal, przechodząc do **Azure Active Directory** &gt; **aplikacje korporacyjne** &gt; **dzienniki aprowizacji (wersja zapoznawcza)** w sekcji **działanie** .
 
 Po rozwiązaniu problemu należy ponownie uruchomić zadanie aprowizacji. Pewne zmiany ustawień aprowizacji aplikacji, takie jak mapowania atrybutów lub filtry zakresu, będą automatycznie ponownie uruchamiać Inicjowanie obsługi. Pasek postępu na stronie **aprowizacji** aplikacji wskazuje czas ostatniego uruchomienia aprowizacji. Jeśli konieczne jest ręczne ponowne uruchomienie zadania aprowizacji, należy użyć jednej z następujących metod:  
 
 - Użyj Azure Portal, aby ponownie uruchomić zadanie aprowizacji. Na stronie **aprowizacji** aplikacji w obszarze **Ustawienia**wybierz pozycję **Wyczyść stan i ponownie uruchom synchronizację** , a następnie ustaw **stan aprowizacji** na **włączone**. Ta akcja powoduje w pełni ponowne uruchomienie usługi aprowizacji, która może zająć trochę czasu. Pełny cykl początkowy zostanie uruchomiony ponownie, co oznacza, że usługa Escrow usunie aplikację z kwarantanny i wyczyści wszystkie znaki wodne.
 
-- Użyj Microsoft Graph, aby [ponownie uruchomić zadanie aprowizacji](https://docs.microsoft.com/en-us/graph/api/synchronization-synchronizationjob-restart?view=graph-rest-beta&tabs=http). Będziesz mieć pełną kontrolę nad tym, co zostało ponownie uruchomione. Możesz wybrać opcję wyczyszczenia usługi Escrow (aby ponownie uruchomić licznik Escrow, który naliczy na status kwarantanny), wyczyścić opcję kwarantanny (w celu usunięcia aplikacji z kwarantanny) lub wyczyścić znaki wodne. Użyj następującego żądania:
+- Użyj Microsoft Graph, aby [ponownie uruchomić zadanie aprowizacji](https://docs.microsoft.com/graph/api/synchronization-synchronizationjob-restart?view=graph-rest-beta&tabs=http). Będziesz mieć pełną kontrolę nad tym, co zostało ponownie uruchomione. Możesz wybrać opcję wyczyszczenia usługi Escrow (aby ponownie uruchomić licznik Escrow, który naliczy na status kwarantanny), wyczyścić opcję kwarantanny (w celu usunięcia aplikacji z kwarantanny) lub wyczyścić znaki wodne. Użyj następującego żądania:
  
        `POST /servicePrincipals/{id}/synchronization/jobs/{jobId}/restart`

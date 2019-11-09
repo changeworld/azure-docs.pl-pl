@@ -13,15 +13,15 @@ ms.service: virtual-machines-linux
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
-ms.date: 11/04/2019
+ms.date: 11/08/2019
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: d444ed21f3eb86975442f2176b8caa8dca6e0c3f
-ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
+ms.openlocfilehash: 74c95ed62bcfec8792aaa465d27f539c02188713
+ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73602433"
+ms.lasthandoff: 11/09/2019
+ms.locfileid: "73891430"
 ---
 # <a name="use-azure-to-host-and-run-sap-workload-scenarios"></a>Korzystanie z platformy Azure do hostowania i uruchamiania scenariuszy obciążeń SAP
 
@@ -120,6 +120,7 @@ Aby uzyskać informacje na temat integracji usług platformy Azure z składnikam
 
 
 ## <a name="change-log"></a>Dziennik zmian
+- 11/08/2019: zmiany dotyczące [planowania obciążeń SAP i listy kontrolnej wdrożenia](sap-deployment-checklist.md) w celu wyjaśnienia zalecenia dotyczące szyfrowania  
 - 11/04/2019: zmiany [SUSE Linux Enterprise Server dotyczące konfigurowania Pacemaker na platformie Azure](high-availability-guide-suse-pacemaker.md) w celu utworzenia klastra bezpośrednio z konfiguracją emisji pojedynczej  
 - 10/29/2019: wydanie [łączności między publicznymi punktami końcowymi dla Virtual Machines przy użyciu usługi Azure usługa Load Balancer w warstwie Standardowa w scenariuszach wysokiej dostępności SAP](high-availability-guide-standard-load-balancer-outbound-connections.md)
 - 10/25/2019: zmiany [konfiguracji magazynu maszyn wirtualnych SAP HANA platformy Azure](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-vm-operations-storage) i [SAP HANA skalowanie w poziomie za pomocą węzła wstrzymywania na maszynach wirtualnych platformy Azure z Azure NetApp Files na SUSE Linux Enterprise Server](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-hana-scale-out-standby-netapp-files-suse) do wyjaśnienia protokołu NFS dla woluminu/Hana/Shared

@@ -15,12 +15,12 @@ ms.workload: infrastructure-services
 ms.date: 03/30/2018
 ms.author: akjosh
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 8d73a2dcd0aab3b972a3e0a9237e53d05d4a9a53
-ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
+ms.openlocfilehash: 8b99e919c396ebc3ef72c046fbe3fef1261050ad
+ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73750022"
+ms.lasthandoff: 11/09/2019
+ms.locfileid: "73891593"
 ---
 # <a name="virtual-machine-extensions-and-features-for-windows"></a>Rozszerzenia i funkcje maszyny wirtualnej dla systemu Windows
 
@@ -54,18 +54,18 @@ Aby uzyskać informacje dotyczące obsługiwanych systemów operacyjnych i instr
 
 #### <a name="supported-agent-versions"></a>Obsługiwane wersje agentów
 
-Aby zapewnić najlepsze możliwe środowisko, istnieją minimalne wersje agenta. Więcej informacji znajduje się w [tym artykule](https://support.microsoft.com/en-us/help/4049215/extensions-and-virtual-machine-agent-minimum-version-support).
+Aby zapewnić najlepsze możliwe środowisko, istnieją minimalne wersje agenta. Więcej informacji znajduje się w [tym artykule](https://support.microsoft.com/help/4049215/extensions-and-virtual-machine-agent-minimum-version-support).
 
 #### <a name="supported-oses"></a>Obsługiwane systemów operacyjnych
 
-Agent gościa systemu Windows działa na wielu systemów operacyjnych, jednak struktura rozszerzeń ma limit dla systemów operacyjnych. Więcej informacji znajduje się w [tym artykule](https://support.microsoft.com/en-us/help/4078134/azure-extension-supported-operating-systems
+Agent gościa systemu Windows działa na wielu systemów operacyjnych, jednak struktura rozszerzeń ma limit dla systemów operacyjnych. Więcej informacji znajduje się w [tym artykule](https://support.microsoft.com/help/4078134/azure-extension-supported-operating-systems
 ).
 
 Niektóre rozszerzenia nie są obsługiwane przez wszystkie systemów operacyjnych i mogą emitować *Kod błędu 51, "nieobsługiwany system operacyjny"* . Zapoznaj się z dokumentacją poszczególnych rozszerzeń, aby uzyskać pomoc techniczną.
 
 #### <a name="network-access"></a>Dostęp do sieci
 
-Pakiety rozszerzeń są pobierane z repozytorium rozszerzeń usługi Azure Storage, a operacje przekazywania stanu rozszerzenia są ogłaszane w usłudze Azure Storage. Jeśli używasz [obsługiwanej](https://support.microsoft.com/en-us/help/4049215/extensions-and-virtual-machine-agent-minimum-version-support) wersji agentów, nie musisz zezwalać na dostęp do usługi Azure Storage w regionie maszyny wirtualnej, ponieważ może on użyć agenta w celu przekierowania komunikacji do kontrolera sieci szkieletowej platformy Azure na potrzeby komunikacji agenta (funkcja HostGAPlugin za pomocą uprzywilejowany kanał na prywatnym adresie IP [168.63.129.16](https://docs.microsoft.com/en-us/azure/virtual-network/what-is-ip-address-168-63-129-16)). Jeśli korzystasz z nieobsługiwanej wersji agenta, musisz zezwolić na dostęp wychodzący do usługi Azure Storage w tym regionie z maszyny wirtualnej.
+Pakiety rozszerzeń są pobierane z repozytorium rozszerzeń usługi Azure Storage, a operacje przekazywania stanu rozszerzenia są ogłaszane w usłudze Azure Storage. Jeśli używasz [obsługiwanej](https://support.microsoft.com/help/4049215/extensions-and-virtual-machine-agent-minimum-version-support) wersji agentów, nie musisz zezwalać na dostęp do usługi Azure Storage w regionie maszyny wirtualnej, ponieważ może on użyć agenta w celu przekierowania komunikacji do kontrolera sieci szkieletowej platformy Azure na potrzeby komunikacji agenta (funkcja HostGAPlugin za pomocą uprzywilejowany kanał na prywatnym adresie IP [168.63.129.16](https://docs.microsoft.com/azure/virtual-network/what-is-ip-address-168-63-129-16)). Jeśli korzystasz z nieobsługiwanej wersji agenta, musisz zezwolić na dostęp wychodzący do usługi Azure Storage w tym regionie z maszyny wirtualnej.
 
 > [!IMPORTANT]
 > Jeśli zablokowano dostęp do usługi *168.63.129.16* za pomocą zapory gościa lub serwera proxy, rozszerzenia nie powiodą się od powyższych. Porty 80, 443 i 32526 są wymagane.

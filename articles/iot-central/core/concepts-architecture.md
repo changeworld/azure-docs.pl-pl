@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: philmea
-ms.openlocfilehash: 9206bf07a36cc5724b173790eb94037cb86add9c
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: 25b0ec1b86a59b944cdb895bd536da32a1f8595b
+ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72952084"
+ms.lasthandoff: 11/09/2019
+ms.locfileid: "73884506"
 ---
 # <a name="azure-iot-central-architecture"></a>Architektura usługi Azure IoT Central
 
@@ -83,7 +83,7 @@ Aplikacja może mieć co najmniej jedno symulowane i rzeczywiste urządzenie w o
 
 ## <a name="data-export"></a>Eksport danych
 
-W aplikacji IoT Central platformy Azure możesz [ciągle eksportować dane](howto-export-data-event-hubs-service-bus.md) do własnych Event Hubs platformy azure i Azure Service Bus wystąpień. Możesz również okresowo eksportować dane do konta usługi Azure Blob Storage. IoT Central mogą eksportować pomiary, urządzenia i szablony urządzeń.
+W aplikacji IoT Central platformy Azure możesz [ciągle eksportować dane](howto-export-data-event-hubs-service-bus.md) do własnych wystąpień platformy Azure Event Hubs, Azure Service Bus i BLOB Storage platformy Azure. IoT Central mogą eksportować pomiary, urządzenia i szablony urządzeń.
 
 ## <a name="batch-device-updates"></a>Aktualizacje urządzeń wsadowych
 
@@ -93,7 +93,7 @@ W aplikacji IoT Central platformy Azure można [tworzyć i uruchamiać zadania](
 
 [Administrator może zdefiniować reguły dostępu](howto-administer.md) dla aplikacji IoT Central platformy Azure przy użyciu wstępnie zdefiniowanych ról. Administrator może przypisywać użytkowników do ról, które określają obszary aplikacji, do których użytkownik ma dostęp.
 
-## <a name="security"></a>Zabezpieczenia
+## <a name="security"></a>Bezpieczeństwo
 
 Funkcje zabezpieczeń w ramach usługi Azure IoT Central obejmują:
 

@@ -9,12 +9,12 @@ ms.date: 05/28/2019
 ms.topic: tutorial
 ms.service: iot-edge
 ms.custom: mvc
-ms.openlocfilehash: fdd1aeea20160bb1a9f91de934bd9268a179648a
-ms.sourcegitcommit: f29fec8ec945921cc3a89a6e7086127cc1bc1759
+ms.openlocfilehash: c098b67ab2782fa3cf29b5b19aa198f899ba69c0
+ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72529230"
+ms.lasthandoff: 11/09/2019
+ms.locfileid: "73890614"
 ---
 # <a name="tutorial-develop-a-c-iot-edge-module-for-windows-devices"></a>Samouczek: opracowywanie modułu IoT Edge C dla urządzeń z systemem Windows
 
@@ -134,11 +134,11 @@ Kod modułu domyślnego odbiera komunikaty w kolejce wejściowej i przekazuje je
       )
       ```
 
-   3. Dodaj **my_parson** do listy bibliotek w sekcji **target_link_libraries** pliku CMakeLists. txt.
+   3. Dodaj `my_parson` do listy bibliotek w sekcji **target_link_libraries** pliku CMakeLists. txt.
 
    4. Zapisz plik **CMakeLists.txt**.
 
-   5. Otwórz **CModule**  > **Main. c**. W dolnej części listy instrukcji include Dodaj nową pozycję, aby dołączyć `parson.h` do obsługi JSON:
+   5. Otwórz **CModule** > **Main. c**. W dolnej części listy instrukcji include Dodaj nową pozycję, aby dołączyć `parson.h` do obsługi JSON:
 
       ```c
       #include "parson.h"
@@ -174,6 +174,14 @@ Kod modułu domyślnego odbiera komunikaty w kolejce wejściowej i przekazuje je
 4. Znajdź funkcję `InputQueue1Callback` i Zastąp całą funkcję poniższym kodem. Ta funkcja implementuje rzeczywisty filtr komunikatów. Po odebraniu komunikatu sprawdza, czy zgłoszona temperatura przekracza wartość progową. Jeśli tak, przesyła komunikat do kolejki wyjściowej. W przeciwnym razie ignoruje komunikat. 
 
     ```c
+    static unsigned char *bytearray_to_str(const unsigned char *buffer, size_t len)
+    {
+        unsigned char *ret = (unsigned char *)malloc(len + 1);
+        memcpy(ret, buffer, len);
+        ret[len] = '\0';
+        return ret;
+    }
+
     static IOTHUBMESSAGE_DISPOSITION_RESULT InputQueue1Callback(IOTHUB_MESSAGE_HANDLE message, void* userContextCallback)
     {
         IOTHUBMESSAGE_DISPOSITION_RESULT result;
@@ -183,7 +191,10 @@ Kod modułu domyślnego odbiera komunikaty w kolejce wejściowej i przekazuje je
         unsigned const char* messageBody;
         size_t contentSize;
 
-        if (IoTHubMessage_GetByteArray(message, &messageBody, &contentSize) != IOTHUB_MESSAGE_OK)
+        if (IoTHubMessage_GetByteArray(message, &messageBody, &contentSize) == IOTHUB_MESSAGE_OK)
+        {
+            messageBody = bytearray_to_str(messageBody, contentSize);
+        } else
         {
             messageBody = "<null>";
         }
@@ -309,13 +320,13 @@ W poprzedniej sekcji utworzono rozwiązanie IoT Edge i dodano kod do **CModule**
    docker login -u <ACR username> -p <ACR password> <ACR login server>
    ```
 
-   Może zostać wyświetlone ostrzeżenie dotyczące zabezpieczeń zalecające użycie `--password-stdin`. Chociaż najlepsze rozwiązanie jest zalecane w scenariuszach produkcyjnych, jest ono poza zakresem tego samouczka. Aby uzyskać więcej informacji, zobacz informacje dotyczące [logowania do platformy Docker](https://docs.docker.com/engine/reference/commandline/login/#provide-a-password-using-stdin) .
+   Może zostać wyświetlone ostrzeżenie dotyczące zabezpieczeń zalecające korzystanie z `--password-stdin`. Chociaż najlepsze rozwiązanie jest zalecane w scenariuszach produkcyjnych, jest ono poza zakresem tego samouczka. Aby uzyskać więcej informacji, zobacz informacje dotyczące [logowania do platformy Docker](https://docs.docker.com/engine/reference/commandline/login/#provide-a-password-using-stdin) .
 
 2. W Eksploratorze rozwiązań programu Visual Studio kliknij prawym przyciskiem myszy nazwę projektu, który chcesz skompilować. Nazwa domyślna to **AzureIotEdgeApp1** , a ponieważ tworzysz moduł systemu Windows, rozszerzenie powinno mieć wartość **Windows. amd64**. 
 
 3. Wybierz pozycję **kompilacje i moduły IoT Edge wypychania**. 
 
-   Polecenie Build i push uruchamia trzy operacje. Po pierwsze tworzy nowy folder w rozwiązaniu o nazwie **config** , który zawiera pełny manifest wdrożenia, utworzony poza informacjami w szablonie wdrożenia i innych plikach rozwiązania. Następnie działa `docker build` w celu skompilowania obrazu kontenera na podstawie odpowiednich pliku dockerfile dla architektury docelowej. Następnie uruchamia `docker push` w celu wypchnięcia repozytorium obrazów do rejestru kontenerów. 
+   Polecenie Build i push uruchamia trzy operacje. Po pierwsze tworzy nowy folder w rozwiązaniu o nazwie **config** , który zawiera pełny manifest wdrożenia, utworzony poza informacjami w szablonie wdrożenia i innych plikach rozwiązania. Następnie działa `docker build`, aby skompilować obraz kontenera na podstawie odpowiednich pliku dockerfile dla architektury docelowej. Następnie uruchamia `docker push`, aby wypchnąć repozytorium obrazów do rejestru kontenerów. 
 
 ## <a name="deploy-modules-to-device"></a>Wdrażanie modułów na urządzeniu
 
@@ -375,7 +386,7 @@ W przeciwnym razie możesz usunąć konfiguracje lokalne i zasoby platformy Azur
 W tym samouczku został utworzony moduł usługi IoT Edge zawierający kod służący do filtrowania nieprzetworzonych danych wygenerowanych przez urządzenie usługi IoT Edge. Gdy wszystko będzie gotowe do tworzenia własnych modułów, możesz dowiedzieć się więcej na temat [opracowywania własnych modułów IoT Edge](module-development.md) lub tworzenia [modułów w programie Visual Studio](how-to-visual-studio-develop-module.md). Możesz przejść do kolejnych samouczków, aby dowiedzieć się, jak Azure IoT Edge może pomóc w wdrażaniu usług Azure Cloud Services w celu przetwarzania i analizowania danych na krawędzi.
 
 > [!div class="nextstepaction"]
-> [Funkcje](tutorial-deploy-function.md)
+> [Functions](tutorial-deploy-function.md)
 > [Stream Analytics](tutorial-deploy-stream-analytics.md)
 > [Machine Learning](tutorial-deploy-machine-learning.md)
 > [Custom Vision Service](tutorial-deploy-custom-vision.md)

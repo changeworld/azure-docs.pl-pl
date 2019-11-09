@@ -13,12 +13,12 @@ ms.topic: article
 ms.date: 10/16/2019
 ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: bbfab41c3324bc16874463d2fc0201f99ee9284b
-ms.sourcegitcommit: 12de9c927bc63868168056c39ccaa16d44cdc646
+ms.openlocfilehash: a56abbcb72afc1f45683259d3bd3bf13309cda07
+ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72516991"
+ms.lasthandoff: 11/09/2019
+ms.locfileid: "73886064"
 ---
 # <a name="back-up-your-app-in-azure"></a>Tworzenie kopii zapasowej aplikacji na platformie Azure
 Funkcja tworzenia kopii zapasowych i przywracania w [Azure App Service](overview.md) umożliwia łatwe tworzenie kopii zapasowych aplikacji ręcznie lub zgodnie z harmonogramem. Kopie zapasowe można skonfigurować tak, aby były przechowywane przez czas nieokreślony. Możesz przywrócić aplikację do migawki poprzedniego stanu, zastępując istniejącą aplikację lub przywracając ją do innej aplikacji.
@@ -39,7 +39,7 @@ Następujące rozwiązania bazy danych są obsługiwane z funkcją tworzenia kop
 - [SQL Database](https://azure.microsoft.com/services/sql-database/)
 - [Azure Database for MySQL](https://azure.microsoft.com/services/mysql)
 - [Azure Database for PostgreSQL](https://azure.microsoft.com/services/postgresql)
-- [MySQL w aplikacji](https://azure.microsoft.com/en-us/blog/mysql-in-app-preview-app-service/)
+- [MySQL w aplikacji](https://azure.microsoft.com/blog/mysql-in-app-preview-app-service/)
  
 
 > [!NOTE]
@@ -68,7 +68,7 @@ Następujące rozwiązania bazy danych są obsługiwane z funkcją tworzenia kop
     > [!NOTE]
     > Jeśli zobaczysz następujący komunikat, kliknij go, aby uaktualnić plan App Service przed kontynuowaniem tworzenia kopii zapasowych.
     > Aby uzyskać więcej informacji, zobacz [skalowanie w górę aplikacji na platformie Azure](manage-scale-up.md).
-    > ![Choose konta magazynu ](./media/manage-backup/upgrade-plan.png)
+    > ![wybrać konto magazynu](./media/manage-backup/upgrade-plan.png)
     > 
     > 
 
@@ -156,7 +156,7 @@ Uruchom kopie zapasowe w taki sam sposób, jak zwykle, [ręcznie](#create-a-manu
 <a name="aboutbackups"></a>
 
 ## <a name="how-backups-are-stored"></a>Jak są przechowywane kopie zapasowe
-Po wykonaniu co najmniej jednej kopii zapasowej dla aplikacji kopie zapasowe są widoczne na stronie **kontenery** Twojego konta magazynu i aplikacji. Na koncie magazynu każda kopia zapasowa składa się z pliku `.zip` zawierającego dane kopii zapasowej i `.xml` pliku, który zawiera manifest zawartości pliku `.zip`. Można rozpakować i przeglądać te pliki, jeśli chcesz uzyskać dostęp do kopii zapasowych bez rzeczywistego wykonywania przywracania aplikacji.
+Po wykonaniu co najmniej jednej kopii zapasowej dla aplikacji kopie zapasowe są widoczne na stronie **kontenery** Twojego konta magazynu i aplikacji. Na koncie magazynu każda kopia zapasowa składa się z pliku`.zip` zawierającego dane kopii zapasowej i `.xml` pliku, który zawiera manifest zawartości pliku `.zip`. Można rozpakować i przeglądać te pliki, jeśli chcesz uzyskać dostęp do kopii zapasowych bez rzeczywistego wykonywania przywracania aplikacji.
 
 Kopia zapasowa bazy danych aplikacji jest przechowywana w katalogu głównym pliku zip. W przypadku bazy danych SQL jest to plik BACPAC (bez rozszerzenia pliku) i można go zaimportować. Aby utworzyć bazę danych SQL na podstawie eksportu BACPAC, zobacz [Importowanie pliku BACPAC w celu utworzenia nowej bazy danych użytkownika](https://technet.microsoft.com/library/hh710052.aspx).
 

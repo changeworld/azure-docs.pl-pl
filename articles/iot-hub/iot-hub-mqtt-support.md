@@ -7,12 +7,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 10/12/2018
 ms.author: robinsh
-ms.openlocfilehash: 11e2a02277a47e070f91e8f057f0d8493235c5ce
-ms.sourcegitcommit: 8e271271cd8c1434b4254862ef96f52a5a9567fb
+ms.openlocfilehash: 183b85ad8a61c76942981ebb764512b8a090b0a8
+ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72821355"
+ms.lasthandoff: 11/09/2019
+ms.locfileid: "73890441"
 ---
 # <a name="communicate-with-your-iot-hub-using-the-mqtt-protocol"></a>Komunikacja z Centrum IoT Hub przy użyciu protokołu MQTT
 
@@ -132,7 +132,7 @@ To repozytorium zawiera:
 
 • DeviceTwinMQTTWin32: zawiera kod służący do wykonywania zapytań i subskrybowania zdarzeń z sznurka urządzenia w usłudze Azure IoT Hub na komputerze z systemem Windows.
 
-• PnPMQTTWin32: zawiera kod służący do wysyłania komunikatów telemetrycznych z funkcją IoT Plug & Play w wersji zapoznawczej do usługi Azure IoT Hub, która została utworzona i uruchomiona na komputerze z systemem Windows. Więcej informacji o usłudze IoT & Play [tutaj](https://docs.microsoft.com/en-us/azure/iot-pnp/overview-iot-plug-and-play)
+• PnPMQTTWin32: zawiera kod służący do wysyłania komunikatów telemetrycznych z funkcją IoT Plug & Play w wersji zapoznawczej do usługi Azure IoT Hub, która została utworzona i uruchomiona na komputerze z systemem Windows. Więcej informacji o usłudze IoT & Play [tutaj](https://docs.microsoft.com/azure/iot-pnp/overview-iot-plug-and-play)
 
 **Dla systemu Linux:**
 
@@ -144,7 +144,7 @@ To repozytorium zawiera:
 
 • Ten folder zawiera dwa przykłady poleceń używanych z narzędziem narzędzi mosquitto_pub udostępnionym przez Mosquitto.org.
 
-Mosquitto_sendmessage: w celu wysłania prostej wiadomości tekstowej do usługi Azure IoT Hub działającej jako urządzenie.
+Mosquitto_sendmessage: aby wysłać prostą wiadomość tekstową do usługi Azure IoT Hub działającej jako urządzenie.
 
 Mosquitto_subscribe: Aby wyświetlić zdarzenia występujące w usłudze Azure IoT Hub.
 
@@ -181,7 +181,7 @@ pip install paho-mqtt
 
 Następnie Zaimplementuj klienta w skrypcie języka Python. Zastąp symbole zastępcze w następujący sposób:
 
-* `<local path to digicert.cer>` jest ścieżką do pliku lokalnego, który zawiera certyfikat główny DigiCert Baltimore. Ten plik można utworzyć, kopiując informacje o certyfikacie z [certyfikatów. c](https://github.com/Azure/azure-iot-sdk-c/blob/master/certs/certs.c) w zestawie SDK usługi Azure IoT dla języka c. Uwzględnij wiersze `-----BEGIN CERTIFICATE-----` i `-----END CERTIFICATE-----`, usuń znaczniki `"` na początku i końcu każdego wiersza, a następnie usuń znaki `\r\n` na końcu e bardzo proste.
+* `<local path to digicert.cer>` jest ścieżką do pliku lokalnego, który zawiera certyfikat główny DigiCert Baltimore. Ten plik można utworzyć, kopiując informacje o certyfikacie z [certyfikatów. c](https://github.com/Azure/azure-iot-sdk-c/blob/master/certs/certs.c) w zestawie SDK usługi Azure IoT dla języka c. dołącz wiersze `-----BEGIN CERTIFICATE-----` i `-----END CERTIFICATE-----`, usuń znaczniki `"` na początku i na końcu każdego wiersza, a następnie usuń znaki `\r\n` na końcu każdego wiersza.
 
 * `<device id from device registry>` to identyfikator urządzenia dodanego do centrum IoT Hub.
 
@@ -287,7 +287,7 @@ Gdy aplikacja urządzenia subskrybuje temat z zasadą **QoS 2**, IoT Hub przyzna
 
 ## <a name="retrieving-a-device-twins-properties"></a>Pobieranie właściwości sznurka urządzenia
 
-Najpierw urządzenie subskrybuje `$iothub/twin/res/#`, aby otrzymywać odpowiedzi operacji. Następnie wysyła pusty komunikat do tematu `$iothub/twin/GET/?$rid={request id}` z wypełnioną wartością dla **identyfikatora żądania**. Następnie usługa wysyła komunikat odpowiedzi zawierający dane dotyczące sznurka urządzenia w temacie `$iothub/twin/res/{status}/?$rid={request id}` przy użyciu tego samego **identyfikatora żądania** co żądanie.
+Najpierw urządzenie subskrybuje `$iothub/twin/res/#`, aby otrzymywać odpowiedzi operacji. Następnie wysyła pusty komunikat do tematu `$iothub/twin/GET/?$rid={request id}`z wypełnioną wartością dla **identyfikatora żądania**. Następnie usługa wysyła komunikat odpowiedzi zawierający dane dotyczące sznurka urządzenia w temacie `$iothub/twin/res/{status}/?$rid={request id}`przy użyciu tego samego **identyfikatora żądania** co żądanie.
 
 Identyfikator żądania może być dowolną prawidłową wartością dla wartości właściwości wiadomości, zgodnie z opisem w [przewodniku dewelopera obsługi komunikatów IoT Hub](iot-hub-devguide-messaging.md), a stan jest sprawdzony jako liczba całkowita.
 
@@ -361,13 +361,13 @@ client.publish("$iothub/twin/PATCH/properties/reported/?$rid=" +
                rid, twin_reported_property_patch, qos=0)
 ```
 
-Po pomyślnym wykonaniu operacji aktualizacji właściwości o nazwie przędzy w wiadomości z IoT Hub będzie dostępny następujący temat: `$iothub/twin/res/204/?$rid=1&$version=6`, gdzie `204` jest kodem stanu wskazującym powodzenie, `$rid=1` odnosi się do identyfikatora żądania dostarczonego przez urządzenie w kod i `$version` odpowiadają wersji zgłoszonych właściwości sekcji Device bliźniaczych reprezentacji po aktualizacji.
+Po pomyślnym przeprowadzeniu operacji aktualizacji właściwości w postaci dwuosiowej komunikat publikacji z IoT Hub będzie miał następujący temat: `$iothub/twin/res/204/?$rid=1&$version=6`, gdzie `204` jest kodem stanu wskazującym powodzenie, `$rid=1` odnosi się do identyfikatora żądania dostarczonego przez urządzenie w kodzie, a `$version` odpowiada wersji zgłoszonej sekcji Właściwości urządzenia bliźniaczych reprezentacji po aktualizacji.
 
 Aby uzyskać więcej informacji, zobacz [przewodnik dewelopera urządzenia bliźniaczych reprezentacji](iot-hub-devguide-device-twins.md).
 
 ## <a name="receiving-desired-properties-update-notifications"></a>Otrzymywanie powiadomień o aktualizacji żądanych właściwości
 
-Gdy urządzenie jest połączone, IoT Hub wysyła powiadomienia do `$iothub/twin/PATCH/properties/desired/?$version={new version}` tematu, który zawiera zawartość aktualizacji wykonywanej przez zaplecze rozwiązania. Na przykład:
+Gdy urządzenie jest połączone, IoT Hub wysyła powiadomienia do `$iothub/twin/PATCH/properties/desired/?$version={new version}`tematu, który zawiera zawartość aktualizacji wykonywanej przez zaplecze rozwiązania. Na przykład:
 
 ```json
 {
@@ -386,7 +386,7 @@ Aby uzyskać więcej informacji, zobacz [przewodnik dewelopera urządzenia bliź
 
 ## <a name="respond-to-a-direct-method"></a>Odpowiedz na metodę bezpośrednią
 
-Najpierw Zasubskrybuj urządzenie `$iothub/methods/POST/#`. IoT Hub wysyła żądania metod do `$iothub/methods/POST/{method name}/?$rid={request id}` tematu z prawidłowym elementem JSON lub pustą treścią.
+Najpierw Zasubskrybuj urządzenie `$iothub/methods/POST/#`. IoT Hub wysyła żądania metod do `$iothub/methods/POST/{method name}/?$rid={request id}`tematu z prawidłowym elementem JSON lub pustą treścią.
 
 Aby można było odpowiedzieć, urządzenie wysyła komunikat z prawidłową treścią JSON lub pustą do tematu `$iothub/methods/res/{status}/?$rid={request id}`. W tym komunikacie **Identyfikator żądania** musi być zgodny z jednym z komunikatów żądania, a **stan** musi być liczbą całkowitą.
 

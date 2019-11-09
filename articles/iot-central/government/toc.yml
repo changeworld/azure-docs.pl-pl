@@ -27,45 +27,45 @@
     - name: Łączenie urządzeń
       items:
         - name: Przygotowywanie i łączenie zestawu deweloperskiego IoT MXChip
-          href: ../core/howto-connect-devkit-pnp.md?toc=/azure/iot-central/government/toc.json&bc=/azure/iot-central/government/breadcrumb/toc.json
+          href: ../preview/howto-connect-devkit.md?toc=/azure/iot-central/government/toc.json&bc=/azure/iot-central/government/breadcrumb/toc.json
         - name: Przygotowywanie i łączenie urządzenia Rigado Cascade 500
-          href: ../core/howto-connect-rigado-cascade-500-pnp.md?toc=/azure/iot-central/government/toc.json&bc=/azure/iot-central/government/breadcrumb/toc.json
+          href: ../preview/howto-connect-rigado-cascade-500.md?toc=/azure/iot-central/government/toc.json&bc=/azure/iot-central/government/breadcrumb/toc.json
         - name: Monitorowanie łączności urządzeń przy użyciu interfejsu wiersza polecenia platformy Azure
-          href: ../core/howto-monitor-devices-azure-cli-pnp.md?toc=/azure/iot-central/government/toc.json&bc=/azure/iot-central/government/breadcrumb/toc.json
+          href: ../preview/howto-monitor-devices-azure-cli.md?toc=/azure/iot-central/government/toc.json&bc=/azure/iot-central/government/breadcrumb/toc.json
     - name: Zarządzanie urządzeniami
       items:
         - name: Zarządzanie urządzeniami
-          href: ../core/howto-manage-devices-pnp.md?toc=/azure/iot-central/government/toc.json&bc=/azure/iot-central/government/breadcrumb/toc.json
+          href: ../preview/howto-manage-devices.md?toc=/azure/iot-central/government/toc.json&bc=/azure/iot-central/government/breadcrumb/toc.json
         - name: Uruchamianie zadania
           href: ../core/howto-run-a-job.md?toc=/azure/iot-central/government/toc.json&bc=/azure/iot-central/government/breadcrumb/toc.json
         - name: Wersjonowanie szablonu urządzenia
-          href: ../core/howto-version-device-template-pnp.md?toc=/azure/iot-central/government/toc.json&bc=/azure/iot-central/government/breadcrumb/toc.json
+          href: ../preview/howto-version-device-template.md?toc=/azure/iot-central/government/toc.json&bc=/azure/iot-central/government/breadcrumb/toc.json
     - name: Monitorowanie i analizowanie
       items:
         - name: Analizowanie danych urządzenia
-          href: ../core/howto-create-analytics-pnp.md?toc=/azure/iot-central/government/toc.json&bc=/azure/iot-central/government/breadcrumb/toc.json
+          href: ../preview/howto-create-analytics.md?toc=/azure/iot-central/government/toc.json&bc=/azure/iot-central/government/breadcrumb/toc.json
         - name: Tworzenie elementów webhook w regułach
-          href: ../core/howto-create-webhooks-pnp.md?toc=/azure/iot-central/government/toc.json&bc=/azure/iot-central/government/breadcrumb/toc.json
+          href: ../preview/howto-create-webhooks.md?toc=/azure/iot-central/government/toc.json&bc=/azure/iot-central/government/breadcrumb/toc.json
     - name: Akcje i rozszerzalność
       items:
         - name: Konfigurowanie ciągłego eksportu danych
-          href: ../core/howto-export-data-pnp.md?toc=/azure/iot-central/government/toc.json&bc=/azure/iot-central/government/breadcrumb/toc.json
+          href: ../preview/howto-export-data.md?toc=/azure/iot-central/government/toc.json&bc=/azure/iot-central/government/breadcrumb/toc.json
         - name: Tworzenie reguł niestandardowych
-          href: ../core/howto-create-custom-rules-pnp.md?toc=/azure/iot-central/government/toc.json&bc=/azure/iot-central/government/breadcrumb/toc.json
+          href: ../preview/howto-create-custom-rules.md?toc=/azure/iot-central/government/toc.json&bc=/azure/iot-central/government/breadcrumb/toc.json
         - name: Tworzenie niestandardowych analiz przy użyciu usługi Databricks
-          href: ../core/howto-create-custom-analytics-pnp.md?toc=/azure/iot-central/government/toc.json&bc=/azure/iot-central/government/breadcrumb/toc.json
+          href: ../preview/howto-create-custom-analytics.md?toc=/azure/iot-central/government/toc.json&bc=/azure/iot-central/government/breadcrumb/toc.json
     - name: Administracja
       items:
         - name: Zmienianie ustawień aplikacji
-          href: ../core/howto-administer-pnp.md?toc=/azure/iot-central/government/toc.json&bc=/azure/iot-central/government/breadcrumb/toc.json
+          href: ../preview/howto-administer.md?toc=/azure/iot-central/government/toc.json&bc=/azure/iot-central/government/breadcrumb/toc.json
         - name: Eksportowanie aplikacji
-          href: ../core/howto-use-app-templates-pnp.md?toc=/azure/iot-central/government/toc.json&bc=/azure/iot-central/government/breadcrumb/toc.json
+          href: ../preview/howto-use-app-templates.md?toc=/azure/iot-central/government/toc.json&bc=/azure/iot-central/government/breadcrumb/toc.json
         - name: Zarządzanie użytkownikami i rolami
-          href: ../core/howto-manage-users-roles-pnp.md?toc=/azure/iot-central/government/toc.json&bc=/azure/iot-central/government/breadcrumb/toc.json
+          href: ../preview/howto-manage-users-roles.md?toc=/azure/iot-central/government/toc.json&bc=/azure/iot-central/government/breadcrumb/toc.json
         - name: Zarządzanie rachunkiem
-          href: ../core/howto-view-bill-pnp.md?toc=/azure/iot-central/government/toc.json&bc=/azure/iot-central/government/breadcrumb/toc.json
+          href: ../preview/howto-view-bill.md?toc=/azure/iot-central/government/toc.json&bc=/azure/iot-central/government/breadcrumb/toc.json
         - name: Dostosowywanie interfejsu użytkownika aplikacji
-          href: ../core/howto-customize-ui-pnp.md?toc=/azure/iot-central/government/toc.json&bc=/azure/iot-central/government/breadcrumb/toc.json
+          href: ../preview/howto-customize-ui.md?toc=/azure/iot-central/government/toc.json&bc=/azure/iot-central/government/breadcrumb/toc.json
         - name: Dodawanie kafelków do pulpitu nawigacyjnego
           href: ../core/howto-add-tiles-to-your-dashboard.md?toc=/azure/iot-central/government/toc.json&bc=/azure/iot-central/government/breadcrumb/toc.json
         - name: Zarządzanie z poziomu witryny Azure Portal

@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 09/11/2019
 ms.author: saudas
 ms.custom: mvc
-ms.openlocfilehash: 5c2ecd5a53bb77193469ba1135c46d9b5fa65b2c
-ms.sourcegitcommit: 8a717170b04df64bd1ddd521e899ac7749627350
+ms.openlocfilehash: 8b7e50fdc02ab47c50cecb95073f1b51393db898
+ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/23/2019
-ms.locfileid: "71202978"
+ms.lasthandoff: 11/09/2019
+ms.locfileid: "73885644"
 ---
 # <a name="security-hardening-in-aks-virtual-machine-hosts"></a>Zabezpieczanie zabezpieczeń na hostach maszyn wirtualnych AKS 
 
@@ -30,7 +30,7 @@ Celem systemu operacyjnego hosta z zaostrzonymi zabezpieczeniami jest zredukowan
 
 * AKS zapewnia domyślnie system operacyjny hosta zoptymalizowanego pod kątem zabezpieczeń. Nie ma bieżącej opcji, aby wybrać alternatywny system operacyjny. 
 
-* Na platformie Azure są stosowane codzienne poprawki (w tym poprawki zabezpieczeń) do AKS hostów maszyn wirtualnych. Niektóre z tych poprawek będą wymagały ponownego uruchomienia, a inne nie. Użytkownik jest odpowiedzialny za planowanie ponownych uruchomień hosta maszyn wirtualnych AKS w razie potrzeby. Aby uzyskać informacje na temat sposobu automatyzowania poprawek AKS, zobacz [poprawek węzłów AKS](https://docs.microsoft.com/en-us/azure/aks/node-updates-kured).
+* Na platformie Azure są stosowane codzienne poprawki (w tym poprawki zabezpieczeń) do AKS hostów maszyn wirtualnych. Niektóre z tych poprawek będą wymagały ponownego uruchomienia, a inne nie. Użytkownik jest odpowiedzialny za planowanie ponownych uruchomień hosta maszyn wirtualnych AKS w razie potrzeby. Aby uzyskać informacje na temat sposobu automatyzowania poprawek AKS, zobacz [poprawek węzłów AKS](https://docs.microsoft.com/azure/aks/node-updates-kured).
 
 Poniżej znajduje się podsumowanie zadań związanych z ograniczaniem funkcjonalności obrazu, które są implementowane w aparacie AKS w celu utworzenia systemu operacyjnego hosta zoptymalizowanego pod kątem zabezpieczeń. Prace zostały zaimplementowane [w tym projekcie GitHub](https://github.com/Azure/aks-engine/projects/7).  
 
@@ -75,9 +75,9 @@ AKS — aparat nie promuje lub nie stosuje się do żadnego konkretnego standard
 |5.4.1.1 |Upewnij się, że wygaśnięcie hasła wynosi 90 dni lub mniej |
 |5.4.1.4 |Upewnij się, że blokada hasła nieaktywnego to 30 dni lub mniej |
 |5.4.4 |Upewnij się, że domyślny maska umask użytkownika jest 027 lub bardziej restrykcyjny |
-|5.6 |Zapewnianie dostępu do polecenia su jest ograniczone|
+|5,6 |Zapewnianie dostępu do polecenia su jest ograniczone|
 
-## <a name="additional-notes"></a>Dodatkowe uwagi
+## <a name="additional-notes"></a>Uwagi dodatkowe
  
 * Aby jeszcze bardziej ograniczyć obszar narażony na ataki, niektóre zbędne sterowniki modułów jądra zostały wyłączone w systemie operacyjnym. 
 
@@ -87,7 +87,7 @@ AKS — aparat nie promuje lub nie stosuje się do żadnego konkretnego standard
 
 Więcej informacji na temat zabezpieczeń AKS można znaleźć w następujących artykułach: 
 
-[Usługa Azure Kubernetes Service (AKS)](https://docs.microsoft.com/azure/aks/intro-kubernetes)
+[Azure Kubernetes Service (AKS)](https://docs.microsoft.com/azure/aks/intro-kubernetes)
 
 [Zagadnienia dotyczące zabezpieczeń AKS](https://docs.microsoft.com/azure/aks/concepts-security)
 

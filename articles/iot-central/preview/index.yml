@@ -1,0 +1,99 @@
+### YamlMime:Landing
+title: Dokumentacja usługi Azure IoT Central
+summary: Azure IoT Central to w pełni zarządzane rozwiązanie SaaS (oprogramowanie jako usługa), które ułatwia łączenie i monitorowanie zasobów IoT oraz zarządzanie nimi w dużej skali. Usługa Azure IoT Central upraszcza początkową konfigurację rozwiązania IoT, a także zmniejsza obciążenie związane z zarządzaniem, koszty operacyjne i ogólny nakład pracy w typowym projekcie IoT. Dowiedz się, jak tworzyć i dostosowywać aplikację usługi Azure IoT Central, używać jej oraz zarządzać nią, korzystając z naszych przewodników Szybki start i samouczków.
+metadata:
+  title: Dokumentacja usługi Azure IoT Central
+  description: Azure IoT Central to w pełni zarządzane rozwiązanie SaaS (oprogramowanie jako usługa), które ułatwia łączenie i monitorowanie zasobów IoT oraz zarządzanie nimi w dużej skali. Usługa Azure IoT Central upraszcza początkową konfigurację rozwiązania IoT, a także zmniejsza obciążenie związane z zarządzaniem, koszty operacyjne i ogólny nakład pracy w typowym projekcie IoT. Dowiedz się, jak tworzyć i dostosowywać aplikację usługi Azure IoT Central, używać jej oraz zarządzać nią, korzystając z naszych przewodników Szybki start i samouczków.
+  services: iot-central
+  ms.service: iot-central
+  ms.topic: landing-page
+  author: philmea
+  ms.author: philmea
+  ms.date: 10/25/2019
+  ms.openlocfilehash: d769b906324c1022baffff198fea6e4e44821757
+  ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
+  ms.translationtype: HT
+  ms.contentlocale: pl-PL
+  ms.lasthandoff: 11/09/2019
+  ms.locfileid: "73891809"
+landingContent:
+- title: Informacje o usłudze Azure IoT Central
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Co to jest usługa Azure IoT Central?
+      url: overview-iot-central.md
+    - text: Opcje rozwiązania IoT
+      url: overview-iot-central-tour.md
+    - text: Przewodnik po interfejsie użytkownika
+      url: overview-iot-central-tour.md
+  - linkListType: architecture
+    links:
+    - text: Architektura usługi Azure IoT Central
+      url: concepts-architecture.md
+  - linkListType: quickstart
+    links:
+    - text: Tworzenie nowej aplikacji
+      url: quick-deploy-iot-central.md
+- title: Łączenie się
+  linkLists:
+  - linkListType: tutorial
+    links:
+    - text: Konfigurowanie szablonu urządzenia
+      url: howto-set-up-template.md
+    - text: Łączenie urządzenia IoT Plug and Play
+      url: tutorial-connect-pnp-device.md
+  - linkListType: how-to-guide
+    links:
+    - text: Przygotowywanie i łączenie zestawu MX Chip IoT DevKit
+      url: howto-connect-devkit.md
+    - text: Łączenie innych chmur IoT
+      url: ../core/howto-build-iotc-device-bridge.md?toc=/azure/iot-central/preview/toc.json&bc=/azure/iot-central/preview/breadcrumb/toc.json
+- title: Zachowanie łączności
+  linkLists:
+  - linkListType: tutorial
+    links:
+    - text: Korzystanie z grup urządzeń
+      url: tutorial-use-device-groups.md
+  - linkListType: how-to-guide
+    links:
+    - text: Zarządzanie urządzeniami
+      url: howto-manage-devices.md
+    - text: Uruchamianie zadania
+      url: ../core/howto-run-a-job.md?toc=/azure/iot-central/preview/toc.json&bc=/azure/iot-central/preview/breadcrumb/toc.json
+    - text: Analizowanie danych urządzenia
+      url: howto-create-analytics.md
+- title: Przekształcanie
+  linkLists:
+  - linkListType: tutorial
+    links:
+    - text: Tworzenie reguły
+      url: quick-configure-rules.md
+    - text: Tworzenie reguł telemetrii
+      url: tutorial-create-telemetry-rules.md
+    - text: Eksportowanie do usługi Blob Storage
+      url: howto-export-data.md
+  - linkListType: how-to-guide
+    links:
+    - text: Tworzenie reguł niestandardowych
+      url: howto-create-custom-rules.md
+    - text: Tworzenie niestandardowych analiz
+      url: howto-create-custom-analytics.md
+- title: Administracja
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: Zarządzanie aplikacją
+      url: howto-administer.md
+    - text: Zarządzanie użytkownikami i rolami
+      url: howto-manage-users-roles.md
+    - text: Wyświetlanie rachunku
+      url: howto-view-bill.md
+    - text: Dostosowywanie interfejsu użytkownika aplikacji
+      url: howto-customize-ui.md
+    - text: Konfigurowanie osobistych pulpitów nawigacyjnych
+      url: ../core/howto-create-personal-dashboards.md?toc=/azure/iot-central/preview/toc.json&bc=/azure/iot-central/preview/breadcrumb/toc.json
+    - text: Korzystanie z kafelków pulpitu nawigacyjnego
+      url: ../core/howto-add-tiles-to-your-dashboard.md?toc=/azure/iot-central/preview/toc.json&bc=/azure/iot-central/preview/breadcrumb/toc.json
+    - text: Używanie szablonów aplikacji
+      url: howto-use-app-templates.md

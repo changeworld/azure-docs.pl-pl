@@ -5,18 +5,18 @@ services: iot-edge
 author: shizn
 manager: philmea
 ms.author: xshi
-ms.date: 08/23/2019
+ms.date: 11/07/2019
 ms.topic: tutorial
 ms.service: iot-edge
 ms.custom: mvc, seodec18
-ms.openlocfilehash: 581d2e03474eb7e740f9d0468022269bdb20b663
-ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
+ms.openlocfilehash: f610ad50daadf5bef1f43f3991792869c7dae6af
+ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/09/2019
-ms.locfileid: "70813798"
+ms.lasthandoff: 11/09/2019
+ms.locfileid: "73890587"
 ---
-# <a name="tutorial-develop-a-c-iot-edge-module-for-linux-devices"></a>Samouczek: Opracowywanie modułu IoT Edge C dla urządzeń z systemem Linux
+# <a name="tutorial-develop-a-c-iot-edge-module-for-linux-devices"></a>Samouczek: opracowywanie modułu IoT Edge C dla urządzeń z systemem Linux
 
 Użyj Visual Studio Code, aby opracować kod C i wdrożyć go na urządzeniu z systemem Linux z Azure IoT Edge. 
 
@@ -45,7 +45,7 @@ Skorzystaj z poniższej tabeli, aby poznać opcje tworzenia i wdrażania moduł�
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-Przed rozpoczęciem pracy z tym samouczkiem należy zapoznać się z poprzednim samouczkiem dotyczącym konfigurowania środowiska deweloperskiego do tworzenia kontenerów systemu Linux: [Opracowywanie modułów IoT Edge dla urządzeń z systemem Linux](tutorial-develop-for-linux.md). Wykonując ten samouczek, należy spełnić następujące wymagania wstępne: 
+Przed rozpoczęciem pracy z tym samouczkiem należy zapoznać się z poprzednim samouczkiem dotyczącym konfigurowania środowiska deweloperskiego do tworzenia kontenerów systemu Linux: [Tworzenie modułów IoT Edge dla urządzeń z systemem Linux](tutorial-develop-for-linux.md). Wykonując ten samouczek, należy spełnić następujące wymagania wstępne: 
 
 * Usługa [IoT Hub](../iot-hub/iot-hub-create-through-portal.md) w warstwie Bezpłatna lub Standardowa na platformie Azure.
 * [Urządzenie z systemem Linux Azure IoT Edge](quickstart-linux.md)
@@ -67,9 +67,9 @@ Utwórz szablon rozwiązania języka C, który można dostosować przy użyciu w
 
 1. Wybierz kolejno opcje **Widok** > **Paleta poleceń**, aby otworzyć paletę poleceń programu VS Code.
 
-2. W palecie poleceń wpisz i uruchom polecenie **Azure: Sign in (Azure: zaloguj się)** , a następnie postępuj zgodnie z instrukcjami, aby zalogować się na swoim koncie platformy Azure. Jeśli już się zalogowano, można pominąć ten krok.
+2. W palecie poleceń wpisz i uruchom polecenie **Azure: zaloguj**, a następnie postępuj zgodnie z instrukcjami, aby zalogować się na koncie platformy Azure. Jeśli już się zalogowano, można pominąć ten krok.
 
-3. W palecie poleceń wpisz i uruchom polecenie **Azure IoT Edge: New IoT Edge solution** (Azure IoT Edge: nowe rozwiązanie usługi IoT Edge). Postępuj zgodnie z monitami wyświetlanymi na palecie poleceń, aby utworzyć rozwiązanie.
+3. W palecie poleceń wpisz i uruchom polecenie **Azure IoT Edge: nowe rozwiązanie usługi IoT Edge**. Postępuj zgodnie z monitami wyświetlanymi na palecie poleceń, aby utworzyć rozwiązanie.
 
    | Pole | Wartość |
    | ----- | ----- |
@@ -93,7 +93,7 @@ W pliku środowiska przechowywane są poświadczenia rejestru kontenerów udost�
 
 Obecnie Visual Studio Code mogą opracowywać moduły C dla urządzeń z systemem Linux AMD64 i Linux ARM32v7. Należy wybrać, która architektura ma być ukierunkowana na każde rozwiązanie, ponieważ kontener jest zbudowany i uruchamiany inaczej dla każdego typu architektury. Wartość domyślna to Linux AMD64. 
 
-1. Otwórz paletę poleceń i Wyszukaj **Azure IoT Edge: Ustaw domyślną platformę docelową**dla rozwiązania brzegowego lub wybierz ikonę skrótu na pasku bocznym u dołu okna. 
+1. Otwórz paletę poleceń i Wyszukaj **Azure IoT Edge: Ustaw domyślną platformę docelową dla rozwiązania brzegowego**lub wybierz ikonę skrótu na pasku bocznym u dołu okna. 
 
 2. W palecie poleceń wybierz architekturę docelową z listy opcji. W tym samouczku używamy maszyny wirtualnej Ubuntu jako urządzenia IoT Edge, co spowoduje zachowanie domyślnego **amd64**. 
 
@@ -114,11 +114,11 @@ Kod modułu domyślnego odbiera komunikaty w kolejce wejściowej i przekazuje je
       )
       ```
 
-   3. Dodaj bibliotekę **my_parson** do listy bibliotek w funkcji **target_link_libraries** pliku CMakeLists.txt.
+   3. Dodaj `my_parson` do listy bibliotek w funkcji **Target_link_libraries** CMakeLists. txt.
 
    4. Zapisz plik **CMakeLists.txt**.
 
-   5. Otwórz plik **modules** > **CModule** > **main.c**. W dolnej części listy instrukcji include Dodaj nowy element, który ma zostać dołączony `parson.h` do obsługi JSON:
+   5. Otwórz plik **modules** > **CModule** > **main.c**. W dolnej części listy instrukcji include Dodaj nową pozycję, aby dołączyć `parson.h` do obsługi JSON:
 
       ```c
       #include "parson.h"
@@ -130,7 +130,7 @@ Kod modułu domyślnego odbiera komunikaty w kolejce wejściowej i przekazuje je
     static double temperatureThreshold = 25;
     ```
 
-1. `CreateMessageInstance` Znajdź funkcję w Main. c. Zastąp wewnętrzną instrukcję if-else następującym kodem, który dodaje kilka wierszy funkcjonalności: 
+1. Znajdź funkcję `CreateMessageInstance` w Main. c. Zastąp wewnętrzną instrukcję if-else następującym kodem, który dodaje kilka wierszy funkcjonalności: 
 
    ```c
        if ((messageInstance->messageHandle = IoTHubMessage_Clone(message)) == NULL)
@@ -154,6 +154,14 @@ Kod modułu domyślnego odbiera komunikaty w kolejce wejściowej i przekazuje je
 1. Zastąp całą funkcję `InputQueue1Callback` poniższym kodem. Ta funkcja implementuje rzeczywisty filtr komunikatów. Po odebraniu komunikatu sprawdza, czy zgłoszona temperatura przekracza wartość progową. Jeśli tak, przesyła komunikat do kolejki wyjściowej. W przeciwnym razie ignoruje komunikat. 
 
     ```c
+    static unsigned char *bytearray_to_str(const unsigned char *buffer, size_t len)
+    {
+        unsigned char *ret = (unsigned char *)malloc(len + 1);
+        memcpy(ret, buffer, len);
+        ret[len] = '\0';
+        return ret;
+    }
+
     static IOTHUBMESSAGE_DISPOSITION_RESULT InputQueue1Callback(IOTHUB_MESSAGE_HANDLE message, void* userContextCallback)
     {
         IOTHUBMESSAGE_DISPOSITION_RESULT result;
@@ -163,7 +171,10 @@ Kod modułu domyślnego odbiera komunikaty w kolejce wejściowej i przekazuje je
         unsigned const char* messageBody;
         size_t contentSize;
 
-        if (IoTHubMessage_GetByteArray(message, &messageBody, &contentSize) != IOTHUB_MESSAGE_OK)
+        if (IoTHubMessage_GetByteArray(message, &messageBody, &contentSize) == IOTHUB_MESSAGE_OK)
+        {
+            messageBody = bytearray_to_str(messageBody, contentSize);
+        } else
         {
             messageBody = "<null>";
         }
@@ -232,7 +243,7 @@ Kod modułu domyślnego odbiera komunikaty w kolejce wejściowej i przekazuje je
     }
     ```
 
-1. `SetupCallbacksForModule` Znajdź funkcję. Zastąp funkcję następującym kodem, który dodaje instrukcję **else if** , aby sprawdzić, czy jest on aktualizowany.
+1. Znajdź funkcję `SetupCallbacksForModule`. Zastąp funkcję następującym kodem, który dodaje instrukcję **else if** , aby sprawdzić, czy jest on aktualizowany.
 
    ```c
    static int SetupCallbacksForModule(IOTHUB_MODULE_CLIENT_LL_HANDLE iotHubModuleClientHandle)
@@ -280,7 +291,7 @@ Kod modułu domyślnego odbiera komunikaty w kolejce wejściowej i przekazuje je
 
 W poprzedniej sekcji utworzono rozwiązanie IoT Edge i dodano kod do CModule, który będzie odfiltrować komunikaty, w przypadku których zgłoszona temperatura maszyny mieści się w dopuszczalnym limicie. Teraz należy skompilować to rozwiązanie jako obraz kontenera i wypchnąć go do rejestru kontenerów.
 
-1. Otwórz Terminal vs Code, wybierając pozycję **Wyświetl** > **Terminal**.
+1. Otwórz Terminal VS Code, wybierając pozycję **wyświetl** > **Terminal**.
 
 1. Zaloguj się do platformy Docker, wprowadzając następujące polecenie w terminalu. Zaloguj się przy użyciu nazwy użytkownika, hasła i serwera logowania z usługi Azure Container Registry. Te wartości można pobrać z sekcji **klucze dostępu** rejestru w Azure Portal.
      
@@ -288,11 +299,11 @@ W poprzedniej sekcji utworzono rozwiązanie IoT Edge i dodano kod do CModule, kt
    docker login -u <ACR username> -p <ACR password> <ACR login server>
    ```
 
-   Może zostać wyświetlone ostrzeżenie dotyczące zabezpieczeń zalecające użycie programu `--password-stdin`. Chociaż najlepsze rozwiązanie jest zalecane w scenariuszach produkcyjnych, jest ono poza zakresem tego samouczka. Aby uzyskać więcej informacji, zobacz informacje dotyczące [logowania do platformy Docker](https://docs.docker.com/engine/reference/commandline/login/#provide-a-password-using-stdin) .
+   Może zostać wyświetlone ostrzeżenie dotyczące zabezpieczeń zalecające korzystanie z `--password-stdin`. Chociaż najlepsze rozwiązanie jest zalecane w scenariuszach produkcyjnych, jest ono poza zakresem tego samouczka. Aby uzyskać więcej informacji, zobacz informacje dotyczące [logowania do platformy Docker](https://docs.docker.com/engine/reference/commandline/login/#provide-a-password-using-stdin) .
 
 2. W eksploratorze programu VS Code kliknij prawym przyciskiem myszy plik **deployment.template.json** i wybierz polecenie **Skompiluj i wypchnij rozwiązanie usługi IoT Edge**.
 
-   Polecenie Build i push uruchamia trzy operacje. Po pierwsze tworzy nowy folder w rozwiązaniu o nazwie **config** , który zawiera pełny manifest wdrożenia, z wbudowanymi informacjami w szablonie wdrożenia i innych plikach rozwiązania. Następnie jest uruchamiany `docker build` w celu skompilowania obrazu kontenera na podstawie odpowiednich pliku dockerfile dla architektury docelowej. Następnie jest uruchamiany `docker push` w celu wypchnięcia repozytorium obrazów do rejestru kontenerów.
+   Polecenie Build i push uruchamia trzy operacje. Po pierwsze tworzy nowy folder w rozwiązaniu o nazwie **config** , który zawiera pełny manifest wdrożenia, z wbudowanymi informacjami w szablonie wdrożenia i innych plikach rozwiązania. Następnie działa `docker build`, aby skompilować obraz kontenera na podstawie odpowiednich pliku dockerfile dla architektury docelowej. Następnie uruchamia `docker push`, aby wypchnąć repozytorium obrazów do rejestru kontenerów.
 
 ## <a name="deploy-modules-to-device"></a>Wdrażanie modułów na urządzeniu
 

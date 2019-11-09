@@ -1,5 +1,5 @@
 ---
-title: Samouczek dotyczący monitorowania urządzeń IoT z poziomu rozwiązania platformy Azure — Azure | Microsoft Docs
+title: Monitorowanie urządzeń w rozwiązaniu do zdalnego monitorowania — Azure | Microsoft Docs
 description: W tym samouczku pokazano, jak monitorować urządzenia IoT przy użyciu akceleratora rozwiązania do monitorowania zdalnego.
 author: dominicbetts
 manager: timlt
@@ -9,14 +9,14 @@ services: iot-accelerators
 ms.date: 03/08/2019
 ms.topic: tutorial
 ms.custom: mvc
-ms.openlocfilehash: d6d850fa8f896809318be77529e10abddaf6ea9a
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 400a71b11fde210b889d938041e88c5ebe73c1dc
+ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61452438"
+ms.lasthandoff: 11/09/2019
+ms.locfileid: "73890871"
 ---
-# <a name="tutorial-monitor-your-iot-devices"></a>Samouczek: Monitorowanie urządzeń IoT
+# <a name="tutorial-monitor-your-iot-devices"></a>Samouczek: monitorowanie urządzeń IoT
 
 W tym samouczku użyjesz akceleratora rozwiązania do monitorowania zdalnego w celu monitorowania połączonych urządzeń IoT. Użyjesz pulpitu nawigacyjnego rozwiązania, aby wyświetlać dane telemetryczne, informacje na temat urządzenia, alerty i wskaźniki KPI.
 
@@ -95,7 +95,7 @@ Te same filtry, które wyznaczają zakres czasowy dla alertów i określają, kt
 
 [!INCLUDE [iot-accelerators-tutorial-cleanup](../../includes/iot-accelerators-tutorial-cleanup.md)]
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 W tym samouczku przedstawiono, jak korzystać ze strony **Pulpit nawigacyjny** w akceleratorze rozwiązania do monitorowania zdalnego, aby filtrować i monitorować symulowane ciężarówki. Aby dowiedzieć się, w jaki sposób korzystać z akceleratora rozwiązań w celu wykrywania problemów z połączonymi urządzeniami, przejdź do kolejnego samouczka.
 

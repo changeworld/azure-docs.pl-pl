@@ -12,12 +12,12 @@ ms.date: 10/24/2019
 ms.author: mimart
 ms.reviewer: japere
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a8d6297a32cd0f85cf354a93bfdac72cbad9603d
-ms.sourcegitcommit: f7f70c9bd6c2253860e346245d6e2d8a85e8a91b
+ms.openlocfilehash: 72678a67b1bc9845eae2bca658f35a05c9bcf659
+ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73062872"
+ms.lasthandoff: 11/09/2019
+ms.locfileid: "73883977"
 ---
 # <a name="tutorial-add-an-on-premises-application-for-remote-access-through-application-proxy-in-azure-active-directory"></a>Samouczek: Dodawanie aplikacji lokalnej dla dostępu zdalnego przy użyciu serwera proxy aplikacji w Azure Active Directory
 
@@ -45,6 +45,12 @@ Aby dodać aplikację lokalną do usługi Azure AD, potrzebne są:
 Aby użyć serwera proxy aplikacji, potrzebujesz serwera systemu Windows z systemem Windows Server 2012 R2 lub nowszym. Na serwerze zainstalujesz łącznik serwera proxy aplikacji. Serwer łącznika musi się łączyć z usługami serwera proxy aplikacji na platformie Azure oraz aplikacjami lokalnymi, które zamierzasz opublikować.
 
 Aby zapewnić wysoką dostępność w środowisku produkcyjnym, zalecamy użycie więcej niż jednego serwera systemu Windows. W tym samouczku wystarczy nam jeden serwer systemu Windows.
+
+> [!IMPORTANT]
+> W przypadku instalowania łącznika w systemie Windows Server 2019 istnieje ograniczenie HTTP2. Aby pomyślnie używać łącznika w tej wersji, Dodaj następujący klucz rejestru i uruchom ponownie serwer:
+    ```
+    HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Internet Settings\WinHttp\EnableDefaultHttp2 (DWORD) Value: 0 
+    ```
 
 #### <a name="recommendations-for-the-connector-server"></a>Zalecenia dotyczące serwera łącznika
 
@@ -231,4 +237,4 @@ Zostały wykonane następujące zadania:
 Możesz przystąpić do konfigurowania aplikacji pod kątem logowania jednokrotnego. Użyj poniższego linku, aby wybrać metodę logowania jednokrotnego i znaleźć samouczki logowania jednokrotnego.
 
 > [!div class="nextstepaction"]
-> [Konfigurowanie logowania jednokrotnego](what-is-single-sign-on.md#choosing-a-single-sign-on-method)
+> [Skonfiguruj logowanie jednokrotne](what-is-single-sign-on.md#choosing-a-single-sign-on-method)
