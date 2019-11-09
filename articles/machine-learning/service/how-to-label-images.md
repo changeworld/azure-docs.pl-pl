@@ -7,16 +7,16 @@ ms.author: laobri
 ms.service: machine-learning
 ms.topic: tutorial
 ms.date: 11/04/2019
-ms.openlocfilehash: af12361ed11d0a16e5a5d0cfe5989bb3918ce154
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: 9cbebb905ba39dabaf905be2fa741702bd1a0088
+ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73586397"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73838939"
 ---
 # <a name="how-to-tag-images-in-a-labeling-project"></a>Jak oznakować obrazy w projekcie etykietowania
 
-Gdy administrator projektu utworzy projekt etykietowania w programie Azure Machine Learning Studio, można użyć narzędzia do etykietowania, aby szybko przygotować dane dla projektu uczenia maszynowego. 
+Gdy administrator projektu utworzył projekt etykietowania w Azure Machine Learning, można użyć narzędzia do etykietowania, aby szybko przygotować dane dla projektu uczenia maszynowego. 
 
 > [!div class="checklist"]
 > * Jak uzyskać dostęp do projektów etykietowania

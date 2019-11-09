@@ -10,12 +10,12 @@ ms.reviewer: sgilley
 author: revodavid
 ms.author: davidsmi
 ms.date: 11/04/2019
-ms.openlocfilehash: bcd1fff61e1612cc3361548527e5ed13affa3ba5
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
-ms.translationtype: MT
+ms.openlocfilehash: 9073893ebfcfea1a7f4e2a00bf82babcb8841122
+ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73501372"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73838518"
 ---
 # <a name="tutorial-train-and-deploy-your-first-model-in-r-with-azure-machine-learning"></a>Samouczek: uczenie i wdrażanie pierwszego modelu w języku R z Azure Machine Learning
 [!INCLUDE [applies-to-skus](../../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -167,7 +167,7 @@ Na potrzeby tego samouczka Dopasuj model regresji logistycznej do przekazanych d
 Skrypt szkoleniowy o nazwie `accidents.R` został udostępniony dla Ciebie w tym samym katalogu, w którym znajduje się ten samouczek. Zwróć uwagę na następujące szczegóły w **skrypcie szkoleniowym** , które zostały wykonane w celu wykorzystania usługi Azure ml do szkolenia:
 
 * Skrypt szkoleniowy przyjmuje `-d` argumentu, aby znaleźć katalog zawierający dane szkoleniowe. Po zdefiniowaniu i przesłaniu zadania później należy wskazać magazyn danych dla tego argumentu. Platforma Azure ML zainstaluje folder magazynu w klastrze zdalnym dla zadania szkoleniowego.
-* Skrypt szkoleniowy rejestruje ostateczną dokładność jako metrykę do rekordu uruchomienia w usłudze Azure ML przy użyciu `log_metric_to_run()`. Zestaw SDK usługi Azure ML udostępnia zestaw interfejsów API rejestrowania do rejestrowania różnych metryk podczas przebiegów szkoleniowych. Te metryki są rejestrowane i utrwalane w rekordzie przebiegu eksperymentu. Dostęp do metryk można uzyskać w dowolnym momencie lub wyświetlić na stronie Szczegóły uruchamiania w programie [Azure Machine Learning Studio](http://ml.azure.com). Zobacz [informacje](https://azure.github.io/azureml-sdk-for-r/reference/index.html#section-training-experimentation) dotyczące pełnego zestawu metod rejestrowania `log_*()`.
+* Skrypt szkoleniowy rejestruje ostateczną dokładność jako metrykę do rekordu uruchomienia w usłudze Azure ML przy użyciu `log_metric_to_run()`. Zestaw SDK usługi Azure ML udostępnia zestaw interfejsów API rejestrowania do rejestrowania różnych metryk podczas przebiegów szkoleniowych. Te metryki są rejestrowane i utrwalane w rekordzie przebiegu eksperymentu. Dostęp do metryk można uzyskać w dowolnym momencie lub wyświetlić na stronie Szczegóły uruchamiania w programie [Azure Machine Learning Studio](https://ml.azure.com). Zobacz [informacje](https://azure.github.io/azureml-sdk-for-r/reference/index.html#section-training-experimentation) dotyczące pełnego zestawu metod rejestrowania `log_*()`.
 * Skrypt szkoleniowy zapisuje model w katalogu **o nazwie**Outputs. Folder `./outputs` otrzymuje specjalne traktowanie w usłudze Azure ML. Podczas szkoleń pliki zapisywane do `./outputs` są automatycznie przekazywane do rekordu uruchomienia przez usługę Azure ML i utrwalane jako artefakty. Dzięki zapisaniu przeszkolonego modelu do `./outputs`będziesz mieć dostęp do pliku modelu nawet po jego zakończeniu i nie masz już dostępu do zdalnego środowiska szkoleniowego.
 
 ### <a name="create-an-estimator"></a>Tworzenie narzędzia do szacowania

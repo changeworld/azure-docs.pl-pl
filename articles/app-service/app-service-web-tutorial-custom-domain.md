@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 06/06/2019
 ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: 52394eb150a4206b7fb31cdf4b801762511e1a8c
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: fa8acbab8179eea752607c4410851d74ae4e9444
+ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73471345"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73835869"
 ---
 # <a name="tutorial-map-an-existing-custom-dns-name-to-azure-app-service"></a>Samouczek: mapowanie istniejącej niestandardowej nazwy DNS na Azure App Service
 
@@ -330,7 +330,7 @@ W dolnej części strony widać, że główny katalog wirtualny `/` domyślnie w
 
 ![Dostosowywanie katalogu wirtualnego](./media/app-service-web-tutorial-custom-domain/customize-virtual-directory.png)
 
-Po zakończeniu tej operacji aplikacja powinna zwracać odpowiednią stronę w ścieżce głównej (na przykład http://contoso.com).
+Po zakończeniu operacji aplikacja powinna zwrócić odpowiednią stronę w ścieżce katalogu głównego (na przykład `http://contoso.com`).
 
 ## <a name="automate-with-scripts"></a>Automatyzowanie przy użyciu skryptów
 

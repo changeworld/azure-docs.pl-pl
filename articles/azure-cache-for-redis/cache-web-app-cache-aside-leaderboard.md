@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.custom: mvc
 ms.date: 03/30/2018
 ms.author: yegu
-ms.openlocfilehash: 8ca24e8556ee53e9d12eaea8fd9eddb07ebed490
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: 3260bbbd858fecc8cc305a9fcab0b551fdf182dc
+ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 11/08/2019
-ms.locfileid: "73826393"
+ms.locfileid: "73834115"
 ---
 # <a name="tutorial-create-a-cache-aside-leaderboard-on-aspnet"></a>Samouczek: tworzenie rankingu z odkładaniem do pamięci podręcznej na platformie ASP.NET
 
@@ -671,7 +671,7 @@ W tej sekcji aprowizujesz nową bazę danych SQL platformy Azure dla aplikacji, 
 
    | Ustawienie       | Sugerowana wartość | Opis |
    | ------------ | ------------------ | ------------------------------------------------- |
-   | **Nazwa serwera** | Dowolna nazwa unikatowa w skali globalnej | Prawidłowe nazwy serwera opisano w artykule [Naming rules and restrictions](/azure/cloud-adoption-framework/ready/azure-best-practices/naming-and-tagging) (Reguły i ograniczenia nazewnictwa). |
+   | **Nazwa serwera** | Dowolna nazwa unikatowa w skali globalnej | Prawidłowe nazwy serwera opisano w artykule [Naming rules and restrictions](/azure/architecture/best-practices/resource-naming) (Reguły i ograniczenia nazewnictwa). |
    | **Identyfikator logowania administratora serwera** | Dowolna prawidłowa nazwa | Prawidłowe nazwy identyfikatorów logowania opisano w artykule [Database Identifiers](https://docs.microsoft.com/sql/relational-databases/databases/database-identifiers) (Identyfikatory baz danych). |
    | **Hasło** | Dowolne prawidłowe hasło | Hasło musi mieć co najmniej 8 znaków i musi zawierać znaki z trzech z następujących kategorii: wielkie litery, małe litery, cyfry i znaki inne niż alfanumeryczne. |
    | **Lokalizacja** | *Wschodnie stany USA* | Wybierz ten sam region, w którym utworzono pamięć podręczną i usługę App Service. |
@@ -735,7 +735,7 @@ Po zakończeniu pracy z przykładową aplikacją z samouczka możesz usunąć u�
 2. Wpisz nazwę grupy zasobów w polu tekstowym **Filtruj elementy...** .
 3. Kliknij pozycję **...** z prawej strony grupy zasobów i kliknij pozycję **Usuń grupę zasobów**.
 
-    ![Usuwanie](./media/cache-web-app-cache-aside-leaderboard/cache-delete-resource-group.png)
+    ![Usuń](./media/cache-web-app-cache-aside-leaderboard/cache-delete-resource-group.png)
 
 4. Zobaczysz prośbę o potwierdzenie usunięcia grupy zasobów. Wpisz nazwę grupy zasobów w celu potwierdzenia, a następnie kliknij pozycję **Usuń**.
 

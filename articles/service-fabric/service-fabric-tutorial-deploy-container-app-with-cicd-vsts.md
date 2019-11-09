@@ -15,14 +15,14 @@ ms.workload: NA
 ms.date: 08/29/2018
 ms.author: atsenthi
 ms.custom: mvc
-ms.openlocfilehash: b686ceace3679d1541e8f1a74bca7e99b81ba932
-ms.sourcegitcommit: 0f54f1b067f588d50f787fbfac50854a3a64fff7
+ms.openlocfilehash: a2dc6aeb7dc2a62c543a58c322c23c9661c6940a
+ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/12/2019
-ms.locfileid: "68598898"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73832737"
 ---
-# <a name="tutorial-deploy-a-container-application-with-cicd-to-a-service-fabric-cluster"></a>Samouczek: Wdrażanie aplikacji kontenera przy użyciu ciągłej integracji/ciągłego wdrażania w klastrze usługi Service Fabric
+# <a name="tutorial-deploy-a-container-application-with-cicd-to-a-service-fabric-cluster"></a>Samouczek: wdrażanie aplikacji kontenera przy użyciu ciągłej integracji/ciągłego wdrażania w klastrze usługi Service Fabric
 
 Niniejszy samouczek jest drugą częścią serii i zawiera opis sposobu konfiguracji ciągłej integracji i ciągłego wdrażania aplikacji kontenera usługi Azure Service Fabric za pomocą programu Visual Studio i usługi Azure DevOps.  Wymagana jest istniejąca aplikacja usługi Service Fabric. Na potrzeby tego samouczka za przykład posłużyła aplikacja utworzona w temacie [Samouczek: wdrażanie aplikacji .NET w kontenerze systemu Windows w usłudze Azure Service Fabric](service-fabric-host-app-in-a-container.md).
 
@@ -110,7 +110,7 @@ W oknie dialogowym **Zapisywanie potoku i kolejki kompilacji** kliknij pozycję 
 
 ![Wybieranie wyzwalaczy][save-and-queue]
 
-Kompilacje można również wyzwalać w ramach procesu wypychania lub ewidencjonowania. Aby sprawdzić postęp kompilacji, przejdź do karty **Kompilacje**.  Po upewnieniu się, że kompilacja jest wykonywana prawidłowo, określ definicję wydania, która wdraża aplikację w klastrze.
+Kompilacje można również wyzwalać w ramach procesu wypychania lub ewidencjonowania. Aby sprawdzić postęp kompilacji, przejdź do karty **kompilacje** .  Po sprawdzeniu, czy kompilacja została wykonana pomyślnie, zdefiniuj definicję wydania, która wdraża aplikację w klastrze.
 
 ### <a name="create-a-release-definition"></a>Tworzenie definicji wydania
 
@@ -147,7 +147,7 @@ Włącz wyzwalacz ciągłego wdrażania, aby umożliwić automatyczne tworzenie 
 
 Wybierz pozycję **+ Wydanie** -> **Tworzenie wydania** -> **Utwórz**, aby ręcznie utworzyć wydanie. Postęp wydawania możesz monitorować na karcie **Wydania**.
 
-Sprawdź, czy wdrożenie zakończyło się pomyślnie, a aplikacja została uruchomiona w klastrze.  Otwórz przeglądarkę i przejdź pod adres [http://mysftestcluster.southcentralus.cloudapp.azure.com:19080/Explorer/](http://mysftestcluster.southcentralus.cloudapp.azure.com:19080/Explorer/).  Zwróć uwagę na wersję aplikacji. W tym przykładzie jest to „1.0.0.20170616.3”.
+Sprawdź, czy wdrożenie zakończyło się pomyślnie, a aplikacja została uruchomiona w klastrze.  Otwórz przeglądarkę internetową i przejdź pod adres `http://mysftestcluster.southcentralus.cloudapp.azure.com:19080/Explorer/`.  Zwróć uwagę na wersję aplikacji. W tym przykładzie jest to „1.0.0.20170616.3”.
 
 ## <a name="commit-and-push-changes-trigger-a-release"></a>Zatwierdzanie i wypychanie zmian, wyzwalanie wydania
 
@@ -167,7 +167,7 @@ Wypychanie zmian do usługi Azure DevOps automatycznie wyzwala kompilację.  Po 
 
 Aby sprawdzić postęp kompilacji, przejdź do karty **Kompilacje** modułu **Team Explorer** w programie Visual Studio.  Po upewnieniu się, że kompilacja jest wykonywana prawidłowo, określ definicję wydania, która wdraża aplikację w klastrze.
 
-Sprawdź, czy wdrożenie zakończyło się pomyślnie, a aplikacja została uruchomiona w klastrze.  Otwórz przeglądarkę i przejdź pod adres [http://mysftestcluster.southcentralus.cloudapp.azure.com:19080/Explorer/](http://mysftestcluster.southcentralus.cloudapp.azure.com:19080/Explorer/).  Zwróć uwagę na wersję aplikacji. W tym przykładzie jest to „1.0.0.20170815.3”.
+Sprawdź, czy wdrożenie zakończyło się pomyślnie, a aplikacja została uruchomiona w klastrze.  Otwórz przeglądarkę internetową i przejdź pod adres `http://mysftestcluster.southcentralus.cloudapp.azure.com:19080/Explorer/`.  Zwróć uwagę na wersję aplikacji. W tym przykładzie jest to „1.0.0.20170815.3”.
 
 ![Service Fabric Explorer][sfx1]
 

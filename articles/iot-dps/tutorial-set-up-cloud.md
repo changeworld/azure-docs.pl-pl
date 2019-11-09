@@ -9,12 +9,12 @@ ms.service: iot-dps
 services: iot-dps
 manager: philmea
 ms.custom: mvc
-ms.openlocfilehash: 41689b7596c9da350a9e0fec619e49d332a36d5b
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
-ms.translationtype: MT
+ms.openlocfilehash: f2f3e56c9eb9362b8164ec611c9b305f5f994b03
+ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
+ms.translationtype: HT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 11/08/2019
-ms.locfileid: "73826193"
+ms.locfileid: "73833068"
 ---
 # <a name="configure-cloud-resources-for-device-provisioning-with-the-iot-hub-device-provisioning-service"></a>Konfigurowanie zasobów w chmurze pod kątem aprowizowania urządzeń za pomocą usługi IoT Hub Device Provisioning
 
@@ -48,7 +48,7 @@ Wykonaj następujące kroki, aby utworzyć nowe wystąpienie usługi Device Prov
    | ------------ | ------------------ | ------------------------------------------------- | 
    | **Nazwa** | Dowolna unikatowa nazwa | -- | 
    | **Subskrypcja** | Twoja subskrypcja  | Aby uzyskać szczegółowe informacje o subskrypcjach, zobacz [Subskrypcje](https://account.windowsazure.com/Subscriptions). |
-   | **Grupa zasobów** | myResourceGroup | Prawidłowe nazwy grup zasobów opisano w artykule [Naming rules and restrictions](/azure/cloud-adoption-framework/ready/azure-best-practices/naming-and-tagging) (Reguły i ograniczenia nazewnictwa). |
+   | **Grupa zasobów** | myResourceGroup | Prawidłowe nazwy grup zasobów opisano w artykule [Naming rules and restrictions](/azure/architecture/best-practices/resource-naming) (Reguły i ograniczenia nazewnictwa). |
    | **Lokalizacja** | Dowolna prawidłowa lokalizacja | Aby uzyskać informacje na temat regionów, zobacz temat [Regiony systemu Azure](https://azure.microsoft.com/regions/). |   
 
    ![Wprowadzanie podstawowych informacji o usłudze Device Provisioning Service w portalu](./media/tutorial-set-up-cloud/create-iot-dps-portal.png)

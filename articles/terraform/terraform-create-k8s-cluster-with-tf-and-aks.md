@@ -5,13 +5,13 @@ ms.service: terraform
 author: tomarchermsft
 ms.author: tarcher
 ms.topic: tutorial
-ms.date: 10/26/2019
-ms.openlocfilehash: b815776b8ff6dddf74c8aaa31a489b56751c0c73
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.date: 11/07/2019
+ms.openlocfilehash: 1bfeef729bdb3f07fe2cc64cee4fd4f27c49ef67
+ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73162344"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73833607"
 ---
 # <a name="tutorial-create-a-kubernetes-cluster-with-azure-kubernetes-service-using-terraform"></a>Samouczek: Tworzenie klastra Kubernetes za pomocą usługi Azure Kubernetes Service przy użyciu Terraform
 
@@ -398,4 +398,4 @@ Podczas tworzenia klastra AKS włączono monitorowanie, aby przechwycić metryki
 ## <a name="next-steps"></a>Następne kroki
 
 > [!div class="nextstepaction"] 
-> [Terraform na platformie Azure](/azure/ansible/)
+> [Dowiedz się więcej o korzystaniu z Terraform na platformie Azure](/azure/terraform)

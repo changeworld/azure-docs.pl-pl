@@ -15,14 +15,14 @@ ms.workload: NA
 ms.date: 07/22/2019
 ms.author: atsenthi
 ms.custom: mvc
-ms.openlocfilehash: 184c57c0d9160cedef4be417f16c52c8635a1eb4
-ms.sourcegitcommit: 0f54f1b067f588d50f787fbfac50854a3a64fff7
+ms.openlocfilehash: 13411e813e96a1548b912c024f75404dd856fee1
+ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/12/2019
-ms.locfileid: "68385291"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73838969"
 ---
-# <a name="tutorial-deploy-an-application-with-cicd-to-a-service-fabric-cluster"></a>Samouczek: Wdrażanie aplikacji przy użyciu ciągłej integracji/ciągłego wdrażania w klastrze usługi Service Fabric
+# <a name="tutorial-deploy-an-application-with-cicd-to-a-service-fabric-cluster"></a>Samouczek: wdrażanie aplikacji przy użyciu ciągłej integracji/ciągłego wdrażania w klastrze usługi Service Fabric
 
 Niniejszy samouczek jest czwartą częścią serii i zawiera opis sposobu konfigurowania ciągłej integracji i ciągłego wdrażania aplikacji usługi Service Fabric za pomocą usługi Azure Pipelines.  Wymagana jest istniejąca aplikacja usługi Service Fabric. Na potrzeby tego samouczka za przykład posłużyła aplikacja utworzona w temacie [Tworzenie aplikacji .NET](service-fabric-tutorial-create-dotnet-app.md).
 
@@ -46,8 +46,8 @@ Ta seria samouczków zawiera informacje na temat wykonywania następujących czy
 
 Przed rozpoczęciem tego samouczka:
 
-* Jeśli nie masz subskrypcji platformy Azure, utwórz [bezpłatne konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
-* [Zainstaluj program Visual Studio 2019](https://www.visualstudio.com/) i zainstaluj obciążenia związane z programowaniem i programowaniem na **platformie Azure** .
+* Jeśli nie masz subskrypcji platformy Azure, utwórz [bezpłatne konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)
+* [Zainstaluj program Visual Studio 2019](https://www.visualstudio.com/) i zainstaluj obciążenia związane z programowaniem i **programowaniem** na **platformie Azure** .
 * [Zainstaluj zestaw SDK usługi Service Fabric.](service-fabric-get-started.md)
 * Utwórz klaster usługi Service Fabric z systemem Windows na platformie Azure, na przykład [postępując zgodnie z tym samouczkiem](service-fabric-tutorial-create-vnet-and-windows-cluster.md).
 * Utwórz [organizację usługi Azure DevOps](https://docs.microsoft.com/azure/devops/organizations/accounts/create-organization-msa-or-work-student). Umożliwia to utworzenie projektu w usłudze Azure DevOps i korzystanie z usługi Azure Pipelines.
@@ -108,15 +108,15 @@ W obszarze **Wybieranie szablonu** wybierz szablon **Aplikacja usługi Azure Ser
 
 W obszarze **Zadania** wprowadź wyrażenie „Hostowany program VS2017” jako **Pulę agentów**.
 
-![Wybierz zadania podrzędne][save-and-queue]
+![Wybieranie zadań][save-and-queue]
 
 W obszarze **Wyzwalacze** włącz ciągłą integrację, zaznaczając pozycję **Włącz ciągłą integrację**. W obszarze **Filtry gałęzi** wartość domyślna pozycji **Specyfikacja gałęzi** jest ustawiona na **master**. Wybierz pozycję **Zapisz i dodaj do kolejki**, aby ręcznie uruchomić kompilację.
 
 ![Wybieranie wyzwalaczy][save-and-queue2]
 
-Kompilacje można również wyzwalać w ramach procesu wypychania lub ewidencjonowania. Aby sprawdzić postęp kompilacji, przejdź do karty **Kompilacje**.  Po upewnieniu się, że kompilacja jest wykonywana prawidłowo, zdefiniuj potok wydania, który wdraża aplikację w klastrze.
+Kompilacje można również wyzwalać w ramach procesu wypychania lub ewidencjonowania. Aby sprawdzić postęp kompilacji, przejdź do karty **kompilacje** .  Po sprawdzeniu, czy kompilacja została wykonana pomyślnie, zdefiniuj potok wydania, który wdraża aplikację w klastrze.
 
-### <a name="create-a-release-pipeline"></a>Tworzenie potoku tworzenia wersji
+### <a name="create-a-release-pipeline"></a>Tworzenie potoku wydania
 
 Wybierz kartę **Potoki**, wybierz pozycję **Wydania**, a następnie wybierz pozycję **+ Nowy potok**.  W obszarze **Wybieranie szablonu** wybierz z listy szablon **Wdrożenie usługi Azure Service Fabric**, a następnie przycisk **Zastosuj**.
 
@@ -144,7 +144,7 @@ Włącz wyzwalacz ciągłego wdrażania, aby umożliwić automatyczne tworzenie 
 
 Wybierz pozycję **+ Wydanie** -> **Tworzenie wydania** -> **Utwórz**, aby ręcznie utworzyć wydanie. Postęp wydawania możesz monitorować na karcie **Wydania**.
 
-Sprawdź, czy wdrożenie zakończyło się pomyślnie, a aplikacja została uruchomiona w klastrze.  Otwórz przeglądarkę i przejdź pod adres [http://mysftestcluster.southcentralus.cloudapp.azure.com:19080/Explorer/](http://mysftestcluster.southcentralus.cloudapp.azure.com:19080/Explorer/).  Zwróć uwagę na wersję aplikacji. W tym przykładzie jest to „1.0.0.20170616.3”.
+Sprawdź, czy wdrożenie zakończyło się pomyślnie, a aplikacja została uruchomiona w klastrze.  Otwórz przeglądarkę internetową i przejdź pod adres `http://mysftestcluster.southcentralus.cloudapp.azure.com:19080/Explorer/`.  Zwróć uwagę na wersję aplikacji. W tym przykładzie jest to „1.0.0.20170616.3”.
 
 ## <a name="commit-and-push-changes-trigger-a-release"></a>Zatwierdzanie i wypychanie zmian, wyzwalanie wydania
 
@@ -164,7 +164,7 @@ Wypychanie zmian do usługi Azure Pipelines automatycznie wyzwala kompilację.  
 
 Aby sprawdzić postęp kompilacji, przejdź do karty **Kompilacje** modułu **Team Explorer** w programie Visual Studio.  Po upewnieniu się, że kompilacja jest wykonywana prawidłowo, zdefiniuj potok wydania, który wdraża aplikację w klastrze.
 
-Sprawdź, czy wdrożenie zakończyło się pomyślnie, a aplikacja została uruchomiona w klastrze.  Otwórz przeglądarkę i przejdź pod adres [http://mysftestcluster.southcentralus.cloudapp.azure.com:19080/Explorer/](http://mysftestcluster.southcentralus.cloudapp.azure.com:19080/Explorer/).  Zwróć uwagę na wersję aplikacji. W tym przykładzie jest to „1.0.0.20170815.3”.
+Sprawdź, czy wdrożenie zakończyło się pomyślnie, a aplikacja została uruchomiona w klastrze.  Otwórz przeglądarkę internetową i przejdź pod adres `http://mysftestcluster.southcentralus.cloudapp.azure.com:19080/Explorer/`.  Zwróć uwagę na wersję aplikacji. W tym przykładzie jest to „1.0.0.20170815.3”.
 
 ![Service Fabric Explorer][sfx1]
 
@@ -187,7 +187,7 @@ W niniejszym samouczku zawarto informacje na temat wykonywania następujących c
 > [!div class="checklist"]
 > * Dodawanie kontroli źródła do projektu
 > * Tworzenie potoku kompilacji
-> * Tworzenie potoku tworzenia wersji
+> * Tworzenie potoku wydania
 > * Automatyczne wdrażanie i uaktualnianie aplikacji
 
 Przejdź do następnego samouczka:

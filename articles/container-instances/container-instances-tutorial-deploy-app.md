@@ -9,14 +9,14 @@ ms.topic: tutorial
 ms.date: 03/21/2018
 ms.author: danlep
 ms.custom: seodec18, mvc
-ms.openlocfilehash: e14a3ba50d75161afa3325b3b7bcbfe96ea24cc3
-ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
+ms.openlocfilehash: f2890948dd15fa972104e4ef11001e83a2abd4f8
+ms.sourcegitcommit: 16c5374d7bcb086e417802b72d9383f8e65b24a7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68325629"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73846597"
 ---
-# <a name="tutorial-deploy-a-container-application-to-azure-container-instances"></a>Samouczek: Wdrażanie aplikacji kontenerowej w usłudze Azure Container Instances
+# <a name="tutorial-deploy-a-container-application-to-azure-container-instances"></a>Samouczek: wdrażanie aplikacji kontenera do Azure Container Instances
 
 To jest ostatni samouczek z serii składającej się z trzech części. Wcześniej w tej serii [utworzono obraz kontenera](container-instances-tutorial-prepare-app.md) i [przekazano go do usługi Azure Container Registry](container-instances-tutorial-prepare-acr.md). Ten artykuł stanowi zakończenie serii i dotyczy wdrażania kontenera w usłudze Azure Container Instances.
 
@@ -37,7 +37,9 @@ W tej sekcji używa się interfejsu wiersza polecenia platformy Azure do wdroże
 
 ### <a name="get-registry-credentials"></a>Pobieranie poświadczeń rejestru
 
-Podczas wdrażania obrazu hostowanego w prywatnym rejestrze kontenerów, takim jak rejestr utworzony w [drugim samouczku](container-instances-tutorial-prepare-acr.md), musisz podać poświadczenia umożliwiające dostęp do rejestru. Jak pokazano w artykule [Uwierzytelnianie w usłudze Azure Container Registry z poziomu usługi Azure Container Instances](../container-registry/container-registry-auth-aci.md), w wielu scenariuszach najlepiej jest utworzyć jednostkę usługi Azure Active Directory i skonfigurować ją pod kątem uprawnień *ściągania* dla rejestru. W artykule tym można znaleźć przykładowe skrypty do tworzenia jednostki usługi z wymaganymi uprawnieniami. Zanotuj identyfikator jednostki usługi i hasło jednostki usługi. Poświadczenia te są używane podczas wdrażania kontenera.
+Podczas wdrażania obrazu hostowanego w prywatnym rejestrze kontenera platformy Azure, takim jak ten utworzony w [drugim samouczku](container-instances-tutorial-prepare-acr.md), musisz podać poświadczenia, aby uzyskać dostęp do rejestru. 
+
+Najlepszym rozwiązaniem w przypadku wielu scenariuszy jest utworzenie i skonfigurowanie jednostki usługi Azure Active Directory z uprawnieniami *ściągania* do rejestru. Aby utworzyć jednostkę usługi z niezbędnymi uprawnieniami, zobacz [uwierzytelnianie za pomocą Azure Container Registry z Azure Container Instances](../container-registry/container-registry-auth-aci.md) . Zanotuj identyfikator jednostki *usługi* i *hasło nazwy głównej usługi*. Te poświadczenia są używane do uzyskiwania dostępu do rejestru podczas wdrażania kontenera.
 
 Potrzebna jest również pełna nazwa serwera logowania rejestru kontenerów (element `<acrName>` należy zastąpić nazwą rejestru):
 
@@ -73,7 +75,7 @@ Po pomyślnym wdrożeniu Wyświetl w pełni kwalifikowaną nazwę domeny (FQDN) 
 az container show --resource-group myResourceGroup --name aci-tutorial-app --query ipAddress.fqdn
 ```
 
-Przykład:
+Na przykład:
 ```console
 $ az container show --resource-group myResourceGroup --name aci-tutorial-app --query ipAddress.fqdn
 "aci-demo.eastus.azurecontainer.io"

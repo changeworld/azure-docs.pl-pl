@@ -5,13 +5,13 @@ ms.service: terraform
 author: tomarchermsft
 ms.author: tarcher
 ms.topic: tutorial
-ms.date: 10/26/2019
-ms.openlocfilehash: 205cf7610bd9f86bf36fc738ced71fc8175ccdc9
-ms.sourcegitcommit: b1c94635078a53eb558d0eb276a5faca1020f835
+ms.date: 11/07/2019
+ms.openlocfilehash: e2b7d816a02eaf47ef50bfd2d814f7b26a813446
+ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/27/2019
-ms.locfileid: "72969455"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73838403"
 ---
 # <a name="tutorial-create-an-azure-virtual-machine-scale-set-using-terraform"></a>Samouczek: Tworzenie zestawu skalowania maszyn wirtualnych platformy Azure przy użyciu Terraform
 
@@ -524,4 +524,4 @@ Proces niszczenia może potrwać kilka minut.
 ## <a name="next-steps"></a>Następne kroki
 
 > [!div class="nextstepaction"] 
-> [Terraform na platformie Azure](/azure/ansible/)
+> [Dowiedz się więcej o korzystaniu z Terraform na platformie Azure](/azure/terraform)

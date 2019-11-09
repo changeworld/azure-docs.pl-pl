@@ -7,18 +7,18 @@ ms.author: laobri
 ms.service: machine-learning
 ms.topic: tutorial
 ms.date: 11/04/2019
-ms.openlocfilehash: 76f995901814c90ff9fd78585c98d56b3478e8b4
-ms.sourcegitcommit: b2fb32ae73b12cf2d180e6e4ffffa13a31aa4c6f
+ms.openlocfilehash: ca3486610d6cf71ba315e407b58a2a2551ad6ee1
+ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73612769"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73837486"
 ---
 # <a name="get-labels-for-data"></a>Pobieranie etykiet dla danych
 
 Etykietowanie dużych ilości danych często było kłopotliwej w projektach uczenia maszynowego. Projekty ML ze składnikiem przetwarzania obrazów, takie jak Klasyfikacja obrazu lub wykrywanie obiektów, zwykle wymagają tysięcy obrazów i odpowiednich etykiet. 
  
-Azure Machine Learning Studio udostępnia centralną lokalizację do tworzenia i monitorowania projektów etykietowania oraz zarządzania nimi. Etykietowanie projektów ułatwia koordynowanie danych, etykiet i członków zespołu, co pozwala efektywniej zarządzać zadaniami etykietowania. Obecnie obsługiwane zadania to klasyfikacja obrazów, wiele etykiet lub wiele klas oraz identyfikacja obiektów przy użyciu powiązanych pól.
+Azure Machine Learning stanowi centralną lokalizację do tworzenia i monitorowania projektów etykietowania oraz zarządzania nimi. Etykietowanie projektów ułatwia koordynowanie danych, etykiet i członków zespołu, co pozwala efektywniej zarządzać zadaniami etykietowania. Obecnie obsługiwane zadania to klasyfikacja obrazów, wiele etykiet lub wiele klas oraz identyfikacja obiektów przy użyciu powiązanych pól.
 
 Platforma Azure śledzi postęp i utrzymuje kolejkę niekompletnych zadań etykietowania. Etykiety nie wymagają konta platformy Azure do wzięcia udziału. Po uwierzytelnieniu za pomocą konta Microsoft (MSA) lub [Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-whatis)mogą one mieć dowolną ilość lub małą etykietę, gdy zezwoli na ich czas. Mogą przypisywać i zmieniać etykiety za pomocą skrótów klawiaturowych. 
 
@@ -43,7 +43,7 @@ W tym artykule dowiesz się, jak:
 
 ## <a name="create-a-labeling-project"></a>Tworzenie projektu etykietowania
 
-Projekty etykiet są administrowane w programie [Azure Machine Learning Studio](https://ml.azure.com/). Strona **etykietowanie projektów** umożliwia zarządzanie projektami, zespołami i osobami. Do projektu jest przypisany co najmniej jeden zespół, a zespół ma przypisaną co najmniej jedną osobę. 
+Projekty etykiet są administrowane przy użyciu [Azure Machine Learning](https://ml.azure.com/). Strona **etykietowanie projektów** umożliwia zarządzanie projektami, zespołami i osobami. Do projektu jest przypisany co najmniej jeden zespół, a zespół ma przypisaną co najmniej jedną osobę. 
 
 Jeśli dane są już przechowywane w usłudze Azure Blob Storage, należy je udostępnić jako magazyn danych przed utworzeniem projektu etykietowania. Aby uzyskać więcej informacji, zobacz [Tworzenie i rejestrowanie magazynów](https://docs.microsoft.com/azure/machine-learning/service/how-to-access-data#create-and-register-datastores)danych. 
 
@@ -149,7 +149,7 @@ Dane można oznaczyć bezpośrednio na stronie **szczegółów projektu** , wybi
 
 W dowolnym momencie możesz wyeksportować dane etykiety na potrzeby eksperymentowania w usłudze Machine Learning. Etykiety obrazów można eksportować w [formacie Coco](http://cocodataset.org/#format-data) lub jako zestaw danych usługi Azure ml. Przycisk **Eksportuj** znajdziesz na stronie **szczegółów projektu** w projekcie etykietowania.
 
-Plik COCO jest tworzony w domyślnym magazynie obiektów BLOB w obszarze roboczym Azure ML w folderze w obszarze **Export/Coco**. Możesz uzyskać dostęp do wyeksportowanego zestawu danych platformy Azure ML w sekcji **zestawy** danych w programie Studio. Strona szczegóły zestawu danych zawiera również przykładowy kod umożliwiający uzyskanie dostępu do etykiet z poziomu języka Python.
+Plik COCO jest tworzony w domyślnym magazynie obiektów BLOB w obszarze roboczym Azure ML w folderze w obszarze **Export/Coco**. Możesz uzyskać dostęp do wyeksportowanego zestawu danych Azure ML w sekcji **zestawy** danych Azure Machine Learning. Strona szczegóły zestawu danych zawiera również przykładowy kod umożliwiający uzyskanie dostępu do etykiet z poziomu języka Python.
 
 ![Wyeksportowany zestaw danych](media/how-to-create-labeling-projects/exported-dataset.png)
 

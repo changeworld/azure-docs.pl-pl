@@ -9,12 +9,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: v-masebo
 ms.date: 07/29/2019
-ms.openlocfilehash: 97e603e6daa64bb70edefe06b52a7c45f90787f3
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: d3fecd54e36c8a3dd43c88f5aa4e4233057c3f91
+ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 11/08/2019
-ms.locfileid: "73818303"
+ms.locfileid: "73838596"
 ---
 # <a name="tutorial-design-a-relational-database-in-a-single-database-within-azure-sql-database-using-ssms"></a>Samouczek: projektowanie relacyjnej bazy danych w pojedynczej bazie danych w ramach Azure SQL Database przy użyciu programu SSMS
 
@@ -63,14 +63,14 @@ Wykonaj poniższe kroki, aby utworzyć pustą pojedynczą bazę danych.
     | ------------ | ------------------ | ------------------------------------------------- |
     | **Nazwa bazy danych** | *yourDatabase* | Prawidłowe nazwy baz danych opisano w artykule [Database Identifiers](/sql/relational-databases/databases/database-identifiers) (Identyfikatory baz danych). |
     | **Subskrypcja** | *yourSubscription*  | Aby uzyskać szczegółowe informacje o subskrypcjach, zobacz [Subskrypcje](https://account.windowsazure.com/Subscriptions). |
-    | **Grupa zasobów** | *yourResourceGroup* | Prawidłowe nazwy grup zasobów opisano w artykule [Naming rules and restrictions](/azure/architecture/best-practices/naming-conventions) (Reguły i ograniczenia nazewnictwa). |
+    | **Grupa zasobów** | *yourResourceGroup* | Prawidłowe nazwy grup zasobów opisano w artykule [Naming rules and restrictions](/azure/architecture/best-practices/resource-naming) (Reguły i ograniczenia nazewnictwa). |
     | **Wybierz źródło** | Pusta baza danych | Określa, że ma zostać utworzona pusta baza danych. |
 
 4. Kliknij pozycję **Serwer**, aby użyć istniejącego serwera baz danych lub utworzyć i skonfigurować nowy serwer baz danych. Wybierz istniejący serwer lub kliknij pozycję **Utwórz nowy serwer** i wypełnij formularz **Nowy serwer** przy użyciu następujących informacji:
 
     | Ustawienie       | Sugerowana wartość | Opis |
     | ------------ | ------------------ | ------------------------------------------------- |
-    | **Nazwa serwera** | Dowolna nazwa unikatowa w skali globalnej | Prawidłowe nazwy serwera opisano w artykule [Naming rules and restrictions](/azure/architecture/best-practices/naming-conventions) (Reguły i ograniczenia nazewnictwa). |
+    | **Nazwa serwera** | Dowolna nazwa unikatowa w skali globalnej | Prawidłowe nazwy serwera opisano w artykule [Naming rules and restrictions](/azure/architecture/best-practices/resource-naming) (Reguły i ograniczenia nazewnictwa). |
     | **Identyfikator logowania administratora serwera** | Dowolna prawidłowa nazwa | Prawidłowe nazwy identyfikatorów logowania opisano w artykule [Database Identifiers](/sql/relational-databases/databases/database-identifiers) (Identyfikatory baz danych). |
     | **Hasło** | Dowolne prawidłowe hasło | Hasło musi mieć co najmniej osiem znaków i musi zawierać znaki z trzech z następujących kategorii: wielkie litery, małe litery, cyfry i znaki inne niż alfanumeryczne. |
     | **Lokalizacja** | Dowolna prawidłowa lokalizacja | Aby uzyskać informacje na temat regionów, zobacz temat [Regiony systemu Azure](https://azure.microsoft.com/regions/). |

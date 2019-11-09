@@ -5,13 +5,13 @@ ms.service: terraform
 author: tomarchermsft
 ms.author: tarcher
 ms.topic: tutorial
-ms.date: 10/26/2019
-ms.openlocfilehash: e00b674df35516da559339af8028c1ca1845b0db
-ms.sourcegitcommit: b1c94635078a53eb558d0eb276a5faca1020f835
+ms.date: 11/07/2019
+ms.openlocfilehash: 233012d6caf1280914a6d2439ae856d69570fff7
+ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/27/2019
-ms.locfileid: "72969791"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73838050"
 ---
 # <a name="tutorial-create-a-linux-vm-with-a-managed-identity-from-the-azure-marketplace-image-using-terraform"></a>Samouczek: Tworzenie maszyny wirtualnej z systemem Linux przy użyciu tożsamości zarządzanej z obrazu portalu Azure Marketplace przy użyciu Terraform
 
@@ -99,4 +99,4 @@ Po utworzeniu maszyny wirtualnej wykonaj następujące czynności:
 ## <a name="next-steps"></a>Następne kroki
 
 > [!div class="nextstepaction"] 
-> [Terraform na platformie Azure](/azure/ansible/)
+> [Dowiedz się więcej o korzystaniu z Terraform na platformie Azure](/azure/terraform)

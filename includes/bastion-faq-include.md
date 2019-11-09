@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 10/15/2019
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: 4f49220da5d996615c9f8ef7cad2b6c6793866b7
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: b4e479405a9606a8353785828d0c9c94ef8c32ed
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73466272"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73850436"
 ---
 ### <a name="regions"></a>Które regiony są dostępne?
 
@@ -50,3 +50,8 @@ Aby uzyskać więcej informacji, odwiedź [stronę cennika](https://aka.ms/Basti
 ### <a name="session"></a>Dlaczego otrzymuję komunikat o błędzie "sesja wygasła" przed rozpoczęciem sesji bastionu?
 
 Sesja powinna zostać zainicjowana tylko z Azure Portal. Zaloguj się do Azure Portal i ponownie Rozpocznij sesję. Jeśli przejdziesz do adresu URL bezpośrednio z innej sesji lub karty przeglądarki, ten błąd jest oczekiwany. Gwarantuje to, że sesja jest bezpieczniejsza i dostęp do sesji można uzyskać tylko za pomocą Azure Portal.
+
+### <a name="keyboard"></a>Jakie układy klawiatury są obsługiwane podczas sesji zdalnej bastionu?
+
+Usługa Azure bastionu obecnie obsługuje układ klawiatury en-us-QWERTY wewnątrz maszyny wirtualnej.  Obsługa innych ustawień regionalnych układu klawiatury jest w toku.
+

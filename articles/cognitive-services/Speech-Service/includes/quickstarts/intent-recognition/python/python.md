@@ -11,12 +11,12 @@ ms.topic: quickstart
 ms.date: 10/28/2019
 ms.author: erhopf
 zone_pivot_groups: programming-languages-set-two
-ms.openlocfilehash: 8916cb0438f0005d3ff9f720cf1b5a5653eeac77
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 9a226c17dd72d0dcd6403277054cf264f0094e65
+ms.sourcegitcommit: 16c5374d7bcb086e417802b72d9383f8e65b24a7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73504032"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73850446"
 ---
 ## <a name="prerequisites"></a>Wymagania wstępne
 
@@ -44,7 +44,7 @@ Przed zainicjowaniem obiektu `IntentRecognizer` należy utworzyć konfigurację,
 Ten przykład konstruuje obiekt `SpeechConfig` przy użyciu klucza i regionu LUIS. Aby uzyskać pełną listę dostępnych metod, zobacz [SpeechConfig Class](https://docs.microsoft.com/python/api/azure-cognitiveservices-speech/azure.cognitiveservices.speech.speechconfig).
 
 > [!NOTE]
-> Ważne jest, aby użyć klucza punktu końcowego LUIS, a nie kluczy początkowych lub Authroing, ponieważ tylko klucz punktu końcowego jest prawidłowy na potrzeby rozpoznawania mowy. Zobacz [Tworzenie aplikacji Luis i Uzyskiwanie klucza punktu końcowego,](~/articles/cognitive-services/Speech-Service/quickstarts/create-luis.md) Aby uzyskać instrukcje dotyczące pobierania poprawnego klucza.
+> Ważne jest, aby użyć klucza punktu końcowego LUIS, a nie kluczy początkowych lub autorskich, ponieważ tylko klucz punktu końcowego jest prawidłowy dla rozpoznawania mowy dla konwersji. Zobacz [Tworzenie aplikacji Luis i Uzyskiwanie klucza punktu końcowego,](~/articles/cognitive-services/Speech-Service/quickstarts/create-luis.md) Aby uzyskać instrukcje dotyczące pobierania poprawnego klucza.
 
 [!code-python[](~/samples-cognitive-services-speech-sdk/quickstart/python/intent-recognition/quickstart.py?range=12)]
 

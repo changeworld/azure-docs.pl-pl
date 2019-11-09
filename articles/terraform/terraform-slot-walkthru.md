@@ -5,13 +5,13 @@ ms.service: terraform
 author: tomarchermsft
 ms.author: tarcher
 ms.topic: tutorial
-ms.date: 10/26/2019
-ms.openlocfilehash: 209bc23c6f8e96734506e3017ed2b16e51c77a00
-ms.sourcegitcommit: b1c94635078a53eb558d0eb276a5faca1020f835
+ms.date: 11/07/2019
+ms.openlocfilehash: 0bfd10325f1a62e74f0d3573f052d114069491a3
+ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/27/2019
-ms.locfileid: "72969288"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73838058"
 ---
 # <a name="tutorial-provision-infrastructure-with-azure-deployment-slots-using-terraform"></a>Samouczek: Inicjowanie obsługi infrastruktury przy użyciu miejsc wdrożenia platformy Azure za pomocą Terraform
 
@@ -297,4 +297,4 @@ Po zamianie aplikacji zobaczysz oryginalną konfigurację.
 ## <a name="next-steps"></a>Następne kroki
 
 > [!div class="nextstepaction"] 
-> [Terraform na platformie Azure](/azure/ansible/)
+> [Dowiedz się więcej o korzystaniu z Terraform na platformie Azure](/azure/terraform)

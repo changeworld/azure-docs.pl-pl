@@ -1,6 +1,6 @@
 ---
 title: 'Samouczek 3: Wdrażanie modelu ryzyka kredytowego'
-titleSuffix: ML Studio (classic) Azure
+titleSuffix: ML Studio (classic) - Azure
 description: Szczegółowy Samouczek przedstawiający sposób tworzenia rozwiązania do analizy predykcyjnej w celu oceny ryzyka kredytowego w klasycznej wersji Azure Machine Learning Studio. Niniejszy samouczek jest trzecią częścią trzyczęściowej serii. Przedstawia on sposób wdrażania modelu w postaci usługi internetowej.
 keywords: ryzyko kredytowe, rozwiązanie analizy predykcyjnej, ocena ryzyka, wdrażanie, usługa internetowa
 author: sdgilley
@@ -10,12 +10,12 @@ ms.service: machine-learning
 ms.subservice: studio
 ms.topic: tutorial
 ms.date: 02/11/2019
-ms.openlocfilehash: 0f4ee6cfebcb5edb38b1cc7a11b070dab5d2098c
-ms.sourcegitcommit: 6c2c97445f5d44c5b5974a5beb51a8733b0c2be7
+ms.openlocfilehash: 4e8e8a114a06029ef9a81d92b60afd575bc9661f
+ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73619013"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73839482"
 ---
 # <a name="tutorial-3-deploy-credit-risk-model---azure-machine-learning-studio-classic"></a>Samouczek 3: Wdrażanie modelu ryzyka kredytowego — Azure Machine Learning Studio (klasyczny)
 

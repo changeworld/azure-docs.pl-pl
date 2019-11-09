@@ -8,12 +8,12 @@ ms.devlang: powershell
 ms.topic: sample
 ms.date: 8/13/2018
 ms.author: victorh
-ms.openlocfilehash: 6e85bd6ec51cff27fed6d0b2d9e73f94325e4d4f
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: df7897e5b0941f1763f1a10e51d49827bd2ca63d
+ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60194196"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73839261"
 ---
 # <a name="create-an-azure-firewall-test-environment"></a>Tworzenie środowiska testowego usługi Azure Firewall
 
@@ -21,20 +21,20 @@ Ten przykładowy skrypt tworzy zaporę i testowe środowisko sieciowe. Sieć ma 
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
-Zapora znajduje się w podsieci AzureFirewallSubnet i jest w niej skonfigurowana kolekcja reguł aplikacji z pojedynczą regułą zezwalającą na dostęp do witryny www.microsoft.com.
+Zapora znajduje się w AzureFirewallSubnet i jest skonfigurowana za pomocą kolekcji reguł aplikacji z pojedynczą regułą, która umożliwia dostęp do `www.microsoft.com`.
 
 Tworzona jest trasa zdefiniowana przez użytkownika, która kieruje ruch sieciowy z podsieci ServersSubnet przez zaporę, gdzie są stosowane reguły zapory.
 
 Skrypt można uruchomić z poziomu usługi Azure [Cloud Shell](https://shell.azure.com/powershell) lub z lokalnej instalacji programu PowerShell. 
 
-Po uruchomieniu programu PowerShell lokalnie, ten skrypt wymaga programu Azure PowerShell. Aby dowiedzieć się, jaka wersja została zainstalowana, uruchom polecenie `Get-Module -ListAvailable Az`. 
+Jeśli uruchamiasz program PowerShell lokalnie, ten skrypt wymaga Azure PowerShell. Aby dowiedzieć się, jaka wersja została zainstalowana, uruchom polecenie `Get-Module -ListAvailable Az`. 
 
 Jeśli konieczne jest uaktualnienie, możesz użyć modułu `PowerShellGet`, który jest wbudowany w system Windows 10 i Windows Server 2016.
 
 > [!NOTE]
 >Inne wersje systemu Windows wymagają zainstalowania modułu `PowerShellGet`, zanim będzie można go użyć. Aby określić, czy ten moduł jest zainstalowany w Twoim systemie, możesz uruchomić polecenie `Get-Module -Name PowerShellGet -ListAvailable | Select-Object -Property Name,Version,Path`. Jeśli dane wyjściowe są puste, musisz zainstalować najnowszą wersję pakietu [Windows Management Framework](https://www.microsoft.com/download/details.aspx?id=54616).
 
-Aby uzyskać więcej informacji, zobacz [Instalowanie programu Azure PowerShell](/powershell/azure/install-Az-ps)
+Aby uzyskać więcej informacji, zobacz [Install Azure PowerShell](/powershell/azure/install-Az-ps)
 
 Dowolna istniejąca instalacja programu Azure PowerShell zainstalowana za pomocą Instalatora platformy internetowej będzie powodować konflikt z instalacją modułu PowerShellGet i musi zostać usunięta.
 
@@ -72,12 +72,12 @@ Ten skrypt zawiera następujące polecenia służące do tworzenia grupy zasobó
 | [New-AzVMConfig](/powershell/module/az.compute/new-azvmconfig) | Tworzy konfigurację maszyny wirtualnej. Ta konfiguracja zawiera informacje, takie jak nazwa maszyny wirtualnej, system operacyjny i poświadczenia administracyjne. Jest ona używana podczas tworzenia maszyny wirtualnej. |
 | [New-AzVM](/powershell/module/az.compute/new-azvm) | Tworzy maszynę wirtualną. |
 |[Remove-AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup) | Usuwa grupę zasobów i wszystkie zasoby w niej zawarte. |
-|[Nowe AzFirewall](https://docs.microsoft.com/powershell/module/az.network/new-azfirewall)| Tworzy nową usługę Azure Firewall.|
+|[New-AzFirewall](https://docs.microsoft.com/powershell/module/az.network/new-azfirewall)| Tworzy nową usługę Azure Firewall.|
 |[Get-AzFirewall](https://docs.microsoft.com/powershell/module/az.network/get-azfirewall)|Pobiera obiekt usługi Azure Firewall.|
 |[New-AzFirewallApplicationRule](https://docs.microsoft.com/powershell/module/az.network/new-azfirewallapplicationrule)|Tworzy nową regułę aplikacji usługi Azure Firewall.|
 |[Set-AzFirewall](https://docs.microsoft.com/powershell/module/az.network/set-azfirewall)|Zatwierdza zmiany w obiekcie usługi Azure Firewall.|
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 Aby uzyskać więcej informacji na temat programu Azure PowerShell, zobacz [dokumentację programu Azure PowerShell](/powershell/azure/overview).
 
