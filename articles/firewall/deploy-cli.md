@@ -7,12 +7,12 @@ ms.service: firewall
 ms.date: 08/29/2019
 ms.author: victorh
 ms.topic: article
-ms.openlocfilehash: 94db17405457be91795d1588bee68a0deea68246
-ms.sourcegitcommit: 8e1fb03a9c3ad0fc3fd4d6c111598aa74e0b9bd4
+ms.openlocfilehash: e97783d1a32916cad151f1d0858a8190d0005fd0
+ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70114826"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73831981"
 ---
 # <a name="deploy-and-configure-azure-firewall-using-azure-cli"></a>Wdrażanie i Konfigurowanie zapory platformy Azure przy użyciu interfejsu wiersza polecenia platformy Azure
 
@@ -263,7 +263,7 @@ Teraz Przetestuj zaporę, aby upewnić się, że działa zgodnie z oczekiwaniami
    -n Srv-Work
    ```
 
-1. Połącz pulpit zdalny z maszyną wirtualną z przeskokiem **SRV** i zaloguj się. W tym miejscu Otwórz połączenie pulpitu zdalnego z prywatnym adresem IP **SRV** i zaloguj się.
+1. Połącz pulpit zdalny z maszyną wirtualną z **przeskokiem SRV** i zaloguj się. W tym miejscu Otwórz połączenie pulpitu zdalnego z prywatnym adresem IP **SRV** i zaloguj się.
 
 3. W obszarze **SRV (Pracuj**) Otwórz okno programu PowerShell i uruchom następujące polecenia:
 
@@ -284,7 +284,7 @@ Teraz Przetestuj zaporę, aby upewnić się, że działa zgodnie z oczekiwaniami
    Invoke-WebRequest -Uri https://www.microsoft.com
    ```
 
-   Żądania www.google.com powinny się zakończyć pomyślnie, a żądania www.microsoft.com powinny kończyć się niepowodzeniem. Pokazuje to, że reguły zapory działają zgodnie z oczekiwaniami.
+   Żądania `www.google.com` powinny się zakończyć pomyślnie, a żądania `www.microsoft.com` powinny kończyć się niepowodzeniem. Pokazuje to, że reguły zapory działają zgodnie z oczekiwaniami.
 
 Teraz sprawdzono, że reguły zapory działają:
 
@@ -302,4 +302,4 @@ az group delete \
 
 ## <a name="next-steps"></a>Następne kroki
 
-* [Samouczek: Monitorowanie dzienników usługi Azure Firewall](./tutorial-diagnostics.md)
+* [Samouczek: monitorowanie dzienników usługi Azure Firewall](./tutorial-diagnostics.md)

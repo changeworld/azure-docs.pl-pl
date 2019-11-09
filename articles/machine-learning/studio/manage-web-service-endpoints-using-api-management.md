@@ -1,6 +1,6 @@
 ---
 title: Zarządzanie usługami sieci Web przy użyciu API Management
-titleSuffix: ML Studio (classic) Azure
+titleSuffix: ML Studio (classic) - Azure
 description: Przewodnik przedstawiający sposób zarządzania usługami sieci Web Azure przy użyciu API Management. Zarządzanie punktami końcowymi interfejsu API REST przez definiowanie dostępu użytkowników, ograniczanie użycia i monitorowanie pulpitu nawigacyjnego.
 services: machine-learning
 ms.service: machine-learning
@@ -10,12 +10,12 @@ author: xiaoharper
 ms.author: amlstudiodocs
 ms.custom: seodec18
 ms.date: 11/03/2017
-ms.openlocfilehash: 227a7205788194cc507dcd9dab7e5cad57abc7f9
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 084f3a1ecc7e44dc404d63a75b4561f8d5cb57cb
+ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73671570"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73839813"
 ---
 # <a name="manage-azure-machine-learning-studio-classic-web-services-using-api-management"></a>Zarządzanie usługami sieci Web Azure Machine Learning Studio (klasycznymi) za pomocą API Management
 ## <a name="overview"></a>Omówienie
@@ -29,7 +29,7 @@ Aby ukończyć ten przewodnik, musisz wykonać następujące czynności:
 
 * Konto platformy Azure.
 * Konto Azure.
-* Obszar roboczy, usługa i api_key dla eksperymentu usługi Azure wdrożonego jako usługa sieci Web. Aby uzyskać szczegółowe informacje na temat sposobu tworzenia eksperymentu dotyczącego platformy Azure, zobacz [Przewodnik Szybki Start](create-experiment.md)dotyczący programu Studio. Aby uzyskać informacje na temat sposobu wdrażania eksperymentu programu Studio (klasycznego) jako usługi sieci Web, zobacz sekcję dotyczącą [wdrożenia programu Studio](deploy-a-machine-learning-web-service.md) , aby uzyskać szczegółowe informacje na temat sposobu wdrażania eksperymentu platformy Azure jako usługi sieci Web. Alternatywnie dodatek A zawiera instrukcje dotyczące sposobu tworzenia i testowania prostego eksperymentu dotyczącego usługi Azure i wdrażania go jako usługa sieci Web.
+* Obszar roboczy, usługa i api_key dla eksperymentu platformy Azure wdrożonego jako usługa sieci Web. Aby uzyskać szczegółowe informacje na temat sposobu tworzenia eksperymentu dotyczącego platformy Azure, zobacz [Przewodnik Szybki Start](create-experiment.md)dotyczący programu Studio. Aby uzyskać informacje na temat sposobu wdrażania eksperymentu programu Studio (klasycznego) jako usługi sieci Web, zobacz sekcję dotyczącą [wdrożenia programu Studio](deploy-a-machine-learning-web-service.md) , aby uzyskać szczegółowe informacje na temat sposobu wdrażania eksperymentu platformy Azure jako usługi sieci Web. Alternatywnie dodatek A zawiera instrukcje dotyczące sposobu tworzenia i testowania prostego eksperymentu dotyczącego usługi Azure i wdrażania go jako usługa sieci Web.
 
 ## <a name="create-an-api-management-instance"></a>Tworzenie wystąpienia usługi API Management
 
@@ -198,7 +198,7 @@ Wpisz **3** dla **bitsize skrótu**. Spowoduje to utworzenie 8 (23) kolumn.
 
 W tym momencie można kliknąć przycisk **Uruchom** , aby przetestować eksperyment.
 
-![Wykonane](./media/manage-web-service-endpoints-using-api-management/run.png)
+![wykonane](./media/manage-web-service-endpoints-using-api-management/run.png)
 
 ### <a name="create-a-web-service"></a>Tworzenie usługi internetowej
 Teraz Utwórz usługę sieci Web. Rozwiń węzeł **Usługa sieci Web** i przeciągnij **dane wejściowe** na eksperyment. Połącz **dane wejściowe** z **mieszaniem funkcji**. Przeciągnij również **dane wyjściowe** na eksperyment. Połącz **dane wyjściowe** z **mieszaniem funkcji**.
@@ -216,7 +216,7 @@ Kliknij przycisk **tak** , aby opublikować eksperyment.
 ### <a name="test-the-web-service"></a>Testowanie usługi internetowej
 Usługa sieci Web platformy Azure składa się z punktów końcowych RSS (usługa żądania/odpowiedź) i BES (usługa wykonywania wsadowego). Funkcja RSS jest do wykonania synchronicznego. BES jest przeznaczony do asynchronicznego wykonywania zadań. Aby przetestować usługę sieci Web za pomocą przykładowego źródła Python poniżej, może być konieczne pobranie i zainstalowanie zestawu Azure SDK dla języka Python (zobacz: [jak zainstalować język Python](/azure/python/python-sdk-azure-install)).
 
-Do poniższego przykładowego źródła będzie potrzebne również **obszar roboczy**, **Usługa**i **api_key** eksperymentu. Obszar roboczy i usługę można znaleźć, klikając pozycję **żądanie/odpowiedź** lub **wykonanie wsadowe** dla eksperymentu na pulpicie nawigacyjnym usługi sieci Web.
+Przykładem może być również **obszar roboczy**, **Usługa**i **api_key** eksperymentu dla poniższego źródła. Obszar roboczy i usługę można znaleźć, klikając pozycję **żądanie/odpowiedź** lub **wykonanie wsadowe** dla eksperymentu na pulpicie nawigacyjnym usługi sieci Web.
 
 ![Znajdź — obszar roboczy i usługa](./media/manage-web-service-endpoints-using-api-management/find-workspace-and-service.png)
 
@@ -273,7 +273,7 @@ W tym przewodniku przedstawiono przykład działającego środowiska Python. Nal
 #### <a name="test-bes-endpoint"></a>Test Endpoint BES
 Kliknij pozycję **wykonywanie wsadowe** na pulpicie nawigacyjnym i przewiń w dół. Zobaczysz przykładowy kod dla C#języków, Python i R. Zostanie również wyświetlona składnia żądań BES w celu przesłania zadania, uruchomienia zadania, uzyskania stanu lub wyników zadania oraz usunięcia zadania.
 
-W tym przewodniku przedstawiono przykład działającego środowiska Python. Musisz zmodyfikować ją z **obszarem roboczym**, **usługą**i **api_key** eksperymentu. Ponadto należy zmodyfikować **nazwę konta magazynu**, **klucz konta magazynu**i **nazwę kontenera magazynu**. Na koniec należy zmodyfikować lokalizację **pliku wejściowego** i lokalizację **pliku wyjściowego**.
+W tym przewodniku przedstawiono przykład działającego środowiska Python. Należy zmodyfikować ją z **obszarem roboczym**, **usługą**i **api_key** eksperymentu. Ponadto należy zmodyfikować **nazwę konta magazynu**, **klucz konta magazynu**i **nazwę kontenera magazynu**. Na koniec należy zmodyfikować lokalizację **pliku wejściowego** i lokalizację **pliku wyjściowego**.
 
     import urllib2
     import json

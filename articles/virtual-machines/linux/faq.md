@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.topic: article
 ms.date: 05/08/2019
 ms.author: cynthn
-ms.openlocfilehash: 0648b9b321aabc7c9e56997c320a63386542498c
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: e7c577e28b30e68020532049affba59f355341cf
+ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70083369"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73838508"
 ---
 # <a name="frequently-asked-question-about-linux-virtual-machines"></a>Często zadawane pytania dotyczące Linux Virtual Machines
 W tym artykule opisano niektóre często zadawane pytania dotyczące maszyn wirtualnych z systemem Linux utworzonych na platformie Azure przy użyciu modelu wdrażania Menedżer zasobów. Aby uzyskać informacje na temat wersji systemu Windows w tym temacie, zobacz [często zadawane pytania dotyczące Windows Virtual Machines](../windows/faq.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
@@ -30,7 +30,7 @@ Wszyscy subskrybenci mogą uruchomić oprogramowanie serwerowe na maszynie wirtu
 ## <a name="how-much-storage-can-i-use-with-a-virtual-machine"></a>Ile pamięci masowej mogę użyć w maszynie wirtualnej?
 Każdy dysk z danymi może mieć do 32 767 GiB. Liczba dysków danych, których możesz użyć, zależy od rozmiaru maszyny wirtualnej. Aby uzyskać szczegółowe informacje, zobacz [Sizes for virtual machines](sizes.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) (Rozmiary maszyn wirtualnych).
 
-Usługa Azure Managed Disks to zalecane oferty magazynu dyskowego do użycia z usługą Azure Virtual Machines na potrzeby trwałego magazynowania danych. W każdej maszynie wirtualnej możesz używać wielu funkcji Dyski zarządzane. Managed Disks oferuje dwa typy opcji trwałego magazynu: Managed Disks w warstwie Premium i standardowa. Aby uzyskać informacje o cenach, zobacz [Cennik usługi Managed disks](https://azure.microsoft.com/pricing/details/managed-disks).
+Usługa Azure Managed Disks to zalecane oferty magazynu dyskowego do użycia z usługą Azure Virtual Machines na potrzeby trwałego magazynowania danych. W każdej maszynie wirtualnej możesz używać wielu funkcji Dyski zarządzane. Funkcja Dyski zarządzane oferuje dwa typy opcji magazynu trwałego: w warstwie Premium i Standardowa. Aby uzyskać informacje o cenach, zobacz [Cennik usługi Managed disks](https://azure.microsoft.com/pricing/details/managed-disks).
 
 Konta usługi Azure Storage mogą również udostępniać magazyn dla dysku systemu operacyjnego i dysków z danymi. Każdy dysk jest plikiem VHD przechowywanym jako stronicowy obiekt blob. Aby uzyskać szczegółowe informacje o cenach, zobacz [Szczegóły cennika magazynu](https://azure.microsoft.com/pricing/details/storage/).
 
@@ -52,10 +52,10 @@ Dwa nowe regiony Kanady środkowe i Kanada Wschodnia nie są automatycznie rejes
 Tak. teraz jest to możliwe. Najpierw należy zatrzymać cofniętą alokację maszyny wirtualnej. Następnie można dodać lub usunąć kartę sieciową (chyba że jest to ostatnia karta sieciowa na maszynie wirtualnej). 
 
 ## <a name="are-there-any-computer-name-requirements"></a>Czy istnieją jakieś wymagania dotyczące nazw komputerów?
-Tak. Nazwa komputera może zawierać maksymalnie 64 znaków. Zobacz [reguły nazewnictwa i ograniczenia,](/azure/architecture/best-practices/naming-conventions) Aby uzyskać więcej informacji na temat nazywania zasobów.
+Tak. Nazwa komputera może zawierać maksymalnie 64 znaków. Zobacz [reguły nazewnictwa i ograniczenia,](/azure/architecture/best-practices/resource-naming) Aby uzyskać więcej informacji na temat nazywania zasobów.
 
 ## <a name="are-there-any-resource-group-name-requirements"></a>Czy istnieją jakieś wymagania dotyczące nazw grup zasobów?
-Tak. Nazwa grupy zasobów może zawierać maksymalnie 90 znaków. Aby uzyskać więcej informacji na temat grup zasobów [, zobacz Reguły nazewnictwa i ograniczenia](/azure/architecture/best-practices/naming-conventions) .
+Tak. Nazwa grupy zasobów może zawierać maksymalnie 90 znaków. Aby uzyskać więcej informacji na temat grup zasobów [, zobacz Reguły nazewnictwa i ograniczenia](/azure/architecture/best-practices/resource-naming) .
 
 ## <a name="what-are-the-username-requirements-when-creating-a-vm"></a>Jakie są wymagania dotyczące nazwy użytkownika podczas tworzenia maszyny wirtualnej?
 
@@ -88,7 +88,7 @@ Hasła muszą również spełniać 3 z następujących wymagań dotyczących zł
 * Zawierać małe litery
 * Zawierać wielkie litery
 * Mieć cyfrę
-* Mieć znak specjalny (dopasowanie wyrażenia regularnego [\W_])
+* Mieć znak specjalny (dopasowanie wyrażenia regularnego [\ W_])
 
 Następujące hasła są niedozwolone:
 
@@ -98,7 +98,7 @@ Następujące hasła są niedozwolone:
         <td style="text-align:center">P @ $ $w 0rd</td>
         <td style="text-align:center">P@ssw0rd</td>
         <td style="text-align:center">P@ssword123</td>
-        <td style="text-align:center">Pa$$word</td>
+        <td style="text-align:center">PA $ $word</td>
     </tr>
     <tr>
         <td style="text-align:center">pass@word1</td>

@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: vinynigam
 ms.author: vinigam
 ms.date: 10/12/2018
-ms.openlocfilehash: b451597d2d91117e11b1becd8b4ab96f981dade8
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: ce0b917f34cab31227e721e119c72cd5d1f99bff
+ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72931312"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73832017"
 ---
 # <a name="network-performance-monitor-solution-faq"></a>Rozwiązanie Network Performance Monitor — często zadawane pytania
 
@@ -48,7 +48,7 @@ W przypadku możliwości monitorowania ExpressRoute węzły platformy Azure powi
 ### <a name="which-protocol-among-tcp-and-icmp-should-be-chosen-for-monitoring"></a>Który protokół z protokołów TCP i ICMP powinien być wybierany do monitorowania?
 W przypadku monitorowania sieci przy użyciu węzłów opartych na systemie Windows Server zalecamy użycie protokołu TCP jako protokołu monitorowania, ponieważ zapewnia lepszą dokładność. 
 
-Protokół ICMP jest zalecany dla komputerów stacjonarnych/klienckich z systemem Windows. Ta platforma does'nt zezwala na wysyłanie danych TCP za pośrednictwem gniazd surowych, których NPM używa do odnajdywania topologii sieci.
+Protokół ICMP jest zalecany dla komputerów stacjonarnych/klienckich z systemem Windows. Ta platforma nie zezwala na wysyłanie danych TCP za pośrednictwem gniazd nieprzetworzonych, które NPM używają do odnajdywania topologii sieci.
 
 Więcej szczegółowych informacji na temat względnych zalet poszczególnych protokołów można znaleźć [tutaj](../../azure-monitor/insights/network-performance-monitor-performance-monitor.md#choose-the-protocol).
 
@@ -98,6 +98,42 @@ NPM używa mechanizmu probabilistyczne do przypisywania prawdopodobieństwa bł�
 ### <a name="how-can-i-create-alerts-in-npm"></a>Jak mogę utworzyć alerty w programie NPM?
 Instrukcje krok po kroku znajdują się [w sekcji alertów w dokumentacji](https://docs.microsoft.com/azure/log-analytics/log-analytics-network-performance-monitor#alerts) .
 
+### <a name="what-are-the-default-log-analytics-queries-for-alerts"></a>Jakie są domyślne Log Analytics zapytania dotyczące alertów
+Zapytanie monitora wydajności
+
+    NetworkMonitoring 
+     | where (SubType == "SubNetwork" or SubType == "NetworkPath") 
+     | where (LossHealthState == "Unhealthy" or LatencyHealthState == "Unhealthy") and RuleName == "<<your rule name>>"
+    
+Zapytanie monitora łączności usług
+
+    NetworkMonitoring                 
+     | where (SubType == "EndpointHealth" or SubType == "EndpointPath")
+     | where (LossHealthState == "Unhealthy" or LatencyHealthState == "Unhealthy" or ServiceResponseHealthState == "Unhealthy" or LatencyHealthState == "Unhealthy") and TestName == "<<your test name>>"
+    
+Zapytania monitora ExpressRoute: zapytanie obwodu
+
+    NetworkMonitoring
+    | where (SubType == "ERCircuitTotalUtilization") and (UtilizationHealthState == "Unhealthy") and CircuitResourceId == "<<your circuit resource ID>>"
+
+Prywatna komunikacja równorzędna
+
+    NetworkMonitoring 
+     | where (SubType == "ExpressRoutePeering" or SubType == "ERVNetConnectionUtilization" or SubType == "ExpressRoutePath")   
+    | where (LossHealthState == "Unhealthy" or LatencyHealthState == "Unhealthy" or UtilizationHealthState == "Unhealthy") and CircuitName == "<<your circuit name>>" and VirtualNetwork == "<<vnet name>>"
+
+Komunikacja równorzędna firmy Microsoft
+
+    NetworkMonitoring 
+     | where (SubType == "ExpressRoutePeering" or SubType == "ERMSPeeringUtilization" or SubType == "ExpressRoutePath")
+    | where (LossHealthState == "Unhealthy" or LatencyHealthState == "Unhealthy" or UtilizationHealthState == "Unhealthy") and CircuitName == ""<<your circuit name>>" and PeeringType == "MicrosoftPeering"
+
+Wspólne zapytanie   
+
+    NetworkMonitoring
+    | where (SubType == "ExpressRoutePeering" or SubType == "ERVNetConnectionUtilization" or SubType == "ERMSPeeringUtilization" or SubType == "ExpressRoutePath")
+    | where (LossHealthState == "Unhealthy" or LatencyHealthState == "Unhealthy" or UtilizationHealthState == "Unhealthy") 
+
 ### <a name="can-npm-monitor-routers-and-servers-as-individual-devices"></a>Czy NPM monitorować routery i serwery jako pojedyncze urządzenia?
 NPM identyfikują adres IP i nazwę hosta odpowiednich przeskoków sieci (przełączniki, routery, serwery itp.) między źródłowym i docelowym adresem IP. Identyfikuje także opóźnienie między tymi zidentyfikowanymi przeskokami. Nie monitorują osobno tych bazowych przeskoków.
 
@@ -110,17 +146,23 @@ Użycie przepustowości to całkowita przepustowość przychodząca i wychodząc
 ### <a name="can-we-get-incoming-and-outgoing-bandwidth-information-for-the-expressroute"></a>Czy można uzyskać informacje o przepustowości przychodzące i wychodzące dla ExpressRoute?
 Wartości przychodzące i wychodzące dla przepustowości podstawowej i pomocniczej mogą być przechwytywane.
 
-Aby uzyskać informacje na temat poziomu komunikacji równorzędnej, użyj poniższego zapytania w przeszukiwaniu dzienników
+Aby uzyskać informacje na temat poziomu komunikacji równorzędnej firmy Microsoft, użyj poniższego zapytania w przeszukiwaniu dzienników
 
     NetworkMonitoring 
-    | where SubType == "ExpressRoutePeeringUtilization"
-    | project CircuitName,PeeringName,PrimaryBytesInPerSecond,PrimaryBytesOutPerSecond,SecondaryBytesInPerSecond,SecondaryBytesOutPerSecond
+     | where SubType == "ERMSPeeringUtilization"
+     | project  CircuitName,PeeringName,PrimaryBytesInPerSecond,PrimaryBytesOutPerSecond,SecondaryBytesInPerSecond,SecondaryBytesOutPerSecond
+    
+W przypadku prywatnych informacji o poziomie komunikacji równorzędnej Użyj poniższego zapytania w przeszukiwaniu dzienników
+
+    NetworkMonitoring 
+     | where SubType == "ERVNetConnectionUtilization"
+     | project  CircuitName,PeeringName,PrimaryBytesInPerSecond,PrimaryBytesOutPerSecond,SecondaryBytesInPerSecond,SecondaryBytesOutPerSecond
   
-Aby uzyskać informacje o poziomie obwodu, użyj poniższego zapytania 
+Aby uzyskać informacje o poziomie obwodu, użyj poniższego zapytania w przeszukiwaniu dzienników
 
     NetworkMonitoring 
-    | where SubType == "ExpressRouteCircuitUtilization"
-    | project CircuitName,PrimaryBytesInPerSecond, PrimaryBytesOutPerSecond,SecondaryBytesInPerSecond,SecondaryBytesOutPerSecond
+        | where SubType == "ERCircuitTotalUtilization"
+        | project CircuitName, PrimaryBytesInPerSecond, PrimaryBytesOutPerSecond,SecondaryBytesInPerSecond,SecondaryBytesOutPerSecond
 
 ### <a name="which-regions-are-supported-for-npms-performance-monitor"></a>Które regiony są obsługiwane przez Monitor wydajności NPM?
 NPM może monitorować łączność między sieciami w dowolnej części świata z obszaru roboczego, który jest hostowany w jednym z [obsługiwanych regionów](../../azure-monitor/insights/network-performance-monitor.md#supported-regions)
@@ -140,10 +182,10 @@ Przeskok może nie reagować na traceroute w co najmniej jednym z poniższych sc
 
 * Routery zostały skonfigurowane w taki sposób, aby nie ujawniali swojej tożsamości.
 * Urządzenia sieciowe nie zezwalają na ruch ICMP_TTL_EXCEEDED.
-* Zapora blokuje odpowiedź ICMP_TTL_EXCEEDED z urządzenia sieciowego.
+* Zapora blokuje ICMP_TTL_EXCEEDED odpowiedzi z urządzenia sieciowego.
 
-### <a name="i-get-alerts-for-unhealthy-tests-but-i-do-not-see-the-high-values-in-npms-loss-and-latency-graph-how-do-i-check-what-is-unhealthy-"></a>Otrzymuję alerty dotyczące testów w złej kondycji, ale nie widzę wysokich wartości w grafie strat i opóźnień NPM. Jak mogę sprawdzić, co jest w złej kondycji?
-NPM zgłasza alert, jeśli opóźnienie końca między źródłem a miejscem docelowym przekroczy przykład opcja próg dla każdej ścieżki między nimi. Niektóre sieci mają więcej niż jedną ścieżkę łączącą to samo źródło i miejsce docelowe. NPM wywołuje alert, każda ścieżka jest w złej kondycji. Utrata i opóźnienie widoczne na wykresach to średnia wartość dla wszystkich ścieżek, dlatego nie może być pokazywana dokładna wartość pojedynczej ścieżki. Aby zrozumieć, gdzie próg został naruszony, poszukaj kolumny "podtyp" w alercie. Jeśli problem jest spowodowany przez ścieżkę, wartość podtypu będzie wartość networkpath ((dla testów monitora wydajności), EndpointPath (dla testów monitora łączności usług) i ExpressRoutePath (dla testów monitora ExpressRotue). 
+### <a name="i-get-alerts-for-unhealthy-tests-but-i-do-not-see-the-high-values-in-npms-loss-and-latency-graph-how-do-i-check-what-is-unhealthy"></a>Otrzymuję alerty dotyczące testów w złej kondycji, ale nie widzę wysokich wartości w grafie strat i opóźnień NPM. Jak mogę sprawdzić, co jest w złej kondycji?
+NPM zgłasza alert, jeśli opóźnienie końca między źródłem a miejscem docelowym przekracza próg dla każdej ścieżki między nimi. Niektóre sieci mają wiele ścieżek łączących te same źródła i miejsce docelowe. NPM wywołuje alert, każda ścieżka jest w złej kondycji. Utrata i opóźnienie widoczne na wykresach to średnia wartość dla wszystkich ścieżek, dlatego nie może być pokazywana dokładna wartość pojedynczej ścieżki. Aby zrozumieć, gdzie próg został naruszony, poszukaj kolumny "podtyp" w alercie. Jeśli problem jest spowodowany przez ścieżkę, wartość podtypu będzie wartość networkpath ((dla testów monitora wydajności), EndpointPath (dla testów monitora łączności usług) i ExpressRoutePath (dla testów monitora ExpressRotue). 
 
 Przykładowe zapytanie do znalezienia jest w złej kondycji:
 

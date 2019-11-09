@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 10/07/2019
 ms.author: dacurwin
-ms.openlocfilehash: 68c991396c92e6f288d1cc17d6b7dcf1ec79343f
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.openlocfilehash: 88a914a2a4d3d62918b01674d6d21f2f011e2c2e
+ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73165487"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73834297"
 ---
 # <a name="manage-microsoft-azure-recovery-services-agent-backups-by-using-the-azure-backup-service"></a>Zarządzanie kopiami zapasowymi Microsoft Azure Recovery Services agenta za pomocą usługi Azure Backup
 
@@ -209,4 +209,4 @@ Jeśli ochrona zostanie zatrzymana podczas zachowywania danych i podjęta zostan
 ## <a name="next-steps"></a>Następne kroki
 
 - Aby uzyskać informacje o obsługiwanych scenariuszach i ograniczeniach, zapoznaj się z [macierzą pomocy technicznej dla usługi Mars](https://docs.microsoft.com/azure/backup/backup-support-matrix-mars-agent).
-- Dowiedz się więcej na temat [zachowania przechowywania zasad tworzenia kopii zapasowych ad hoc](https://docs.microsoft.com/azure/backup/backup-configure-vault#ad-hoc-backup-policy-retention-behavior.md).
+- Dowiedz się więcej na temat [zachowania przechowywania zasad tworzenia kopii zapasowych ad hoc](backup-configure-vault.md#ad-hoc-backup-policy-retention-behavior).

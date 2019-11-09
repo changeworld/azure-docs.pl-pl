@@ -8,12 +8,12 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 08/30/2019
-ms.openlocfilehash: 2962f6c5032ba317f9eb8f10c2abddb566aad904
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: 2edc644f003af2b33054a5cbdbaee81c9baa38cd
+ms.sourcegitcommit: 16c5374d7bcb086e417802b72d9383f8e65b24a7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 11/08/2019
-ms.locfileid: "73825518"
+ms.locfileid: "73847446"
 ---
 # <a name="how-to-manage-your-commercial-marketplace-account-in-partner-center"></a>Jak zarządzać kontem komercyjnej witryny Marketplace w centrum partnerskim 
 
@@ -145,6 +145,11 @@ Raportowanie jest wykonywane przez wartość partnera (identyfikator partnera fi
 Aby uzyskać więcej informacji, zobacz [Śledzenie użycia klientów platformy Azure z identyfikatorami GUID często zadawane pytania](https://docs.microsoft.com/azure/marketplace/azure-partner-customer-usage-attribution#faq).
 
 
+## <a name="establish-a-billing-profile"></a>Ustanów profil rozliczeń
+
+Jeśli publikujesz [Dynamics 365 do zaangażowania klienta & aplikacje zaawansowane](./create-new-customer-engagement-offer.md) lub [Dynamics 365 for Operations](./create-new-operations-offer.md) , musisz ukończyć **profil rozliczeń**.
+
+Adres rozliczeniowy jest wstępnie wypełniony z identyfikatora MPN i można go później zaktualizować. Pola podatek i Identyfikator VAT są opcjonalne.  Nie można edytować nazwy kraju i nazwy firmy.
 
 ## <a name="multi-user-account-management"></a>Zarządzanie kontami przez wiele użytkowników
 

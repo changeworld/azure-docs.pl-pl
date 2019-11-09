@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.date: 1/16/2019
 ms.author: amsriva
 ms.topic: conceptual
-ms.openlocfilehash: d01ff17966d2e6b9aeaaf3c1f69817dbc84c3a6f
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: f2e50217b361b62a468e872fe489381911de9c2c
+ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "57792637"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73835365"
 ---
 # <a name="application-gateway-multiple-site-hosting"></a>Hostowanie wielu witryn usługi Application Gateway
 
@@ -23,9 +23,9 @@ Hostowanie wielu witryn pozwala na skonfigurowanie więcej niż jednej aplikacji
 > [!IMPORTANT]
 > Reguły są przetwarzane w kolejności, w jakiej znajdują się na liście w portalu. Zdecydowanie zaleca się skonfigurowanie odbiorników obejmujących wiele lokacji przed skonfigurowaniem podstawowego odbiornika.  Zapewni to skierowanie ruchu do odpowiedniego zaplecza. Jeśli podstawowy odbiornik znajduje się na początku listy i jest zgodny z żądaniem przychodzącym, jest ono przetwarzane przez ten odbiornik.
 
-Żądania dotyczące adresu http://contoso.com są kierowane do puli ContosoServerPool, a żądania dotyczące adresu http://fabrikam.com — do puli FabrikamServerPool.
+Żądania dotyczące adresu `http://contoso.com` są kierowane do puli ContosoServerPool, a żądania dotyczące adresu `http://fabrikam.com` — do puli FabrikamServerPool.
 
-Podobnie dwie domeny podrzędne tej samej domeny nadrzędnej mogą być hostowane na tym samym wdrożeniu usługi Application Gateway. Przykłady użycia domen podrzędnych mogą obejmować domeny podrzędne http://blog.contoso.com i http://app.contoso.com hostowane w ramach jednego wdrożenia usługi Application Gateway.
+Podobnie dwie domeny podrzędne tej samej domeny nadrzędnej mogą być hostowane na tym samym wdrożeniu usługi Application Gateway. Przykłady użycia domen podrzędnych mogą obejmować domeny podrzędne `http://blog.contoso.com` i `http://app.contoso.com` hostowane w ramach jednego wdrożenia usługi Application Gateway.
 
 ## <a name="host-headers-and-server-name-indication-sni"></a>Nagłówki hosta i oznaczanie nazwy serwera (SNI, Server Name Indication)
 
@@ -120,6 +120,6 @@ Reguła routingu nie wymaga żadnej zmiany. Nadal należy wybierać podstawową 
 ]
 ```
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 Po zapoznaniu się z informacjami o hostowaniu wielu witryn przejdź do [tworzenia bramy aplikacji przy użyciu hostowania wielu witryn](application-gateway-create-multisite-azureresourcemanager-powershell.md), aby utworzyć bramę aplikacji z możliwością obsługi więcej niż jednej aplikacji internetowej.

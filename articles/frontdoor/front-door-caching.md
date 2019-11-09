@@ -1,6 +1,6 @@
 ---
-title: Usługa Azure drzwiami frontowymi — pamięć podręczna | Dokumentacja firmy Microsoft
-description: Ten artykuł pomoże Ci zrozumieć, jak usługa drzwiami frontowymi Azure monitoruje kondycję usługi zaplecza
+title: Usługa frontonu platformy Azure — buforowanie | Microsoft Docs
+description: Ten artykuł pomaga zrozumieć, jak usługa Azure front-drzwi monitoruje kondycję zasobie
 services: frontdoor
 documentationcenter: ''
 author: sharad4u
@@ -11,110 +11,110 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/10/2018
 ms.author: sharadag
-ms.openlocfilehash: 42ee1dea8c9735592f6d6c9e0542ca094a6be383
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 70ee0af0b39e80aa90d143303b3c522fbb3cc780
+ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65962918"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73839221"
 ---
-# <a name="caching-with-azure-front-door-service"></a>Buforowanie przy użyciu usługi Azure drzwi
-Poniższy dokument określa zachowanie drzwiami frontowymi za pomocą reguł routingu, które mają włączone buforowanie.
+# <a name="caching-with-azure-front-door-service"></a>Buforowanie za pomocą usługi Azure Front drzwiczk
+Poniższy dokument określa zachowanie dla drzwi z przodu z regułami routingu, które mają włączone buforowanie.
 
 ## <a name="delivery-of-large-files"></a>Dostarczanie dużych plików
-Usługa drzwiami frontowymi zapewnia duże pliki bez limitu rozmiaru pliku. Drzwiami frontowymi wykorzystuje technikę o nazwie obiekt segmentu. Jeśli są żądane duże pliki, usługa Front Door pobiera mniejsze części pliku z zaplecza. Po otrzymaniu żądania dotyczącego całego pliku lub zakresu bajtów pliku usługa Front Door żąda pliku z zaplecza we fragmentach po 8 MB.
+Usługa frontonu platformy Azure dostarcza duże pliki bez limitu rozmiaru pliku. Drzwi przednich wykorzystują technikę nazywaną fragmentem obiektu. Jeśli są żądane duże pliki, usługa Front Door pobiera mniejsze części pliku z zaplecza. Po otrzymaniu żądania dotyczącego całego pliku lub zakresu bajtów pliku usługa Front Door żąda pliku z zaplecza we fragmentach po 8 MB.
 
-</br>Po fragmencie dociera do środowiska drzwiami frontowymi, pamięci podręcznej i obsłużonych natychmiast użytkownika. Następnie drzwiami frontowymi pobiera wstępnie dalej fragmentów w sposób równoległy. Ta pobierania wstępnego gwarantuje, że zawartość pozostaje w jednym fragmencie w przód od użytkownika, co zmniejsza opóźnienie. Ten proces jest kontynuowany aż do całego pobrany plik (jeśli jest to wymagane), wszystkich zakresów bajtów są dostępne (jeśli jest to wymagane), lub klient zakończy połączenie.
+</br>Po nadejściu fragmentu w środowisku z drzwiami jest on buforowany i natychmiast obsługiwany przez użytkownika. Następnie przede wszystkim wstępnie pobiera Następny fragment równolegle. To wstępne pobranie zapewnia, że zawartość pozostaje jednym fragmentem przed użytkownikiem, co zmniejsza opóźnienia. Ten proces jest kontynuowany do momentu pobrania całego pliku (jeśli będzie to wymagane), wszystkie zakresy bajtów są dostępne (jeśli jest to wymagane) lub klient przerwał połączenie.
 
-</br>Aby uzyskać więcej informacji na temat żądania zakresu bajtów, przeczytaj [RFC 7233](https://web.archive.org/web/20171009165003/ http://www.rfc-base.org/rfc-7233.html).
-Drzwiami frontowymi buforuje wszelkie fragmenty, po odebraniu i dlatego nie trzeba być buforowane w pamięci podręcznej drzwiami frontowymi całego pliku. Kolejne żądania dla pliku lub bajt zakresy są udostępniane z pamięci podręcznej. Jeśli nie wszystkie fragmenty są buforowane, wstępnego pobierania jest używany do zażądania fragmentów z wewnętrznej bazy danych. Tego rodzaju optymalizacji opiera się na możliwość obsługi żądania zakresu bajtów; wewnętrznej bazy danych Jeśli wewnętrznej bazy danych nie obsługuje żądania zakresu bajtów, optymalizacja nie jest skuteczna.
+</br>Aby uzyskać więcej informacji na temat żądania zakresu bajtów, przeczytaj artykuł [RFC 7233](https://web.archive.org/web/20171009165003/http://www.rfc-base.org/rfc-7233.html).
+Drzwi z przodu buforują wszystkie fragmenty, gdy są odbierane, i dlatego cały plik nie musi być buforowany w pamięci podręcznej z przodu. Kolejne żądania dla plików lub zakresów bajtów są obsługiwane z pamięci podręcznej. Jeśli nie wszystkie fragmenty są buforowane, wstępne pobieranie jest używane do żądania fragmentów z zaplecza. Ta optymalizacja opiera się na możliwości wewnętrznej bazy danych obsługującej żądania zakresu bajtów; Jeśli zaplecze nie obsługuje żądań zakresu bajtów, Ta optymalizacja nie obowiązuje.
 
 ## <a name="file-compression"></a>Kompresja plików
-Drzwiami frontowymi można dynamicznie umożliwia kompresję zawartości na urządzeniach brzegowych, wynikiem mniejsze i szybsze odpowiedzi do klientów. Wszystkie pliki kwalifikują się do kompresji. Jednakże plik musi być typu MIME oznacza możliwość skorzystania z listy kompresji. Obecnie drzwiami frontowymi nie zezwala na tej listy, aby go zmienić. Bieżąca lista jest:</br>
-- "aplikacja/eot"
-- "aplikacja/czcionki"
-- "aplikacja/font-sfnt"
-- "application/javascript"
-- "application/json"
-- "aplikacja/opentype"
-- "aplikacja/otf"
-- "aplikacja/pkcs7-mime"
-- "application/truetype"
-- "aplikacja/ttf"
-- "aplikacja/vnd.ms-fontobject"
-- "aplikacja/xhtml i xml"
-- "application/xml"
-- "application/xml + rss"
-- "application/x-font-opentype"
-- "application/x-font-truetype"
-- "application/x-font-ttf"
-- "application/x-httpd-cgi"
+Drzwi przednich umożliwiają dynamiczne kompresowanie zawartości na krawędzi, co pozwala na wypróbowanie klientów w krótszej i krótszej reakcji. Wszystkie pliki kwalifikują się do kompresji. Jednak plik musi być typu MIME, który kwalifikuje się do listy kompresji. Obecnie przed drzwiami nie zezwala się na zmianę tej listy. Bieżąca lista:</br>
+- "Application/EOT"
+- "aplikacja/czcionka"
+- "Application/Font-sfnt"
+- "aplikacja/JavaScript"
+- "Application/JSON"
+- "Application/OpenType"
+- "Application/OTF"
+- "Application/PKCS7-MIME"
+- "Application/TrueType"
+- "Application/ttf",
+- "application/vnd. MS-fontobject"
+- "Application/XHTML + XML"
+- "Application/XML"
+- "Application/XML + RSS"
+- "application/x-Font-OpenType"
+- "application/x-Font-TrueType"
+- "application/x-Font-ttf"
+- "application/x-http-CGI"
 - "application/x-mpegurl"
-- "application/x-opentype"
-- "application/x-otf"
-- "application/x-perl"
+- "application/x-OpenType"
+- "application/x-OTF"
+- "application/x-Perl"
 - "application/x-ttf"
-- "application/x-javascript"
-- "czcionki/eot"
-- "czcionki/ttf"
-- "czcionki/otf"
-- "czcionki/opentype"
-- "image/svg + xml"
-- "tekst/css"
-- "text/csv"
+- "application/x-JavaScript"
+- "Font/EOT"
+- "Font/ttf"
+- "Font/OTF"
+- "Font/OpenType"
+- "Image/SVG + XML"
+- "tekst/CSS"
+- "tekst/CSV"
 - "text/html"
-- "text/javascript"
-- "tekst/js", "text/plain"
-- "tekst/richtext"
-- "text/tab-separated-values"
+- "tekst/JavaScript"
+- "text/js", "text/zwykły"
+- "tekst/RTF"
+- "tekst/tabulator — wartości rozdzielane"
 - "text/xml"
-- "tekst/x skrypt"
-- "tekst/x-component"
-- "tekst/x-java-source"
+- "tekst/x-Script"
+- "tekst/x-składnik"
+- "tekst/x-Java-Source"
 
-Ponadto plik musi być również od 1 KB do 8 MB w rozmiarze włącznie.
+Ponadto plik musi mieć rozmiar od 1 KB do 8 MB włącznie.
 
 Te profile obsługują następujące kodowania kompresji:
 - [Gzip (GNU zip)](https://en.wikipedia.org/wiki/Gzip)
 - [Brotli](https://en.wikipedia.org/wiki/Brotli)
 
-Jeśli żądanie obsługuje gzip i Brotli kompresji, pierwszeństwo ma Brotli kompresji.</br>
-Gdy żądania dla zasobu określa to Chybienie pamięci podręcznej, kompresji i wyniki żądania, drzwiami frontowymi wykonuje kompresji zasobu bezpośrednio na serwer protokołu POP. W efekcie skompresowanego pliku jest obsługiwany z pamięci podręcznej. Wynikowy element zostaje zwrócony z transfer-encoding: fragmentaryczne.
+Jeśli żądanie obsługuje kompresję gzip i Brotli, ma pierwszeństwo kompresja Brotli.</br>
+Gdy żądanie dotyczące elementu zawartości określa kompresję, a żądanie spowoduje odrzucenie pamięci podręcznej, do przodu wykonuje kompresję elementu zawartości bezpośrednio na serwerze POP. Następnie skompresowany plik jest obsługiwany z pamięci podręcznej. Wynikowy element jest zwracany przy użyciu kodowania Transfer-Encoding:.
 
-## <a name="query-string-behavior"></a>Działanie ciągu kwerendy
-Za pomocą drzwiami frontowymi można kontrolować, jak pliki są buforowane dla żądania sieci web, który zawiera ciąg zapytania. W żądaniu sieci web za pomocą ciągu zapytania ciąg zapytania jest część żądanie, która występuje po znaku zapytania (?). Ciąg zapytania może zawierać pary klucz wartość, w których nazwy pól i wartości są oddzielone znak równości (=). Każdej pary klucz wartość jest oddzielona handlowe "i" (&). Na przykład http://www.contoso.com/content.mov?field1=value1&field2=value2. Jeśli istnieje więcej niż jedną parę klucz wartość w ciągu zapytania żądania, ich kolejność nie ma znaczenia.
-- **Ignoruj ciągi zapytań**: Tryb domyślny. W tym trybie drzwiami frontowymi przekazuje ciągi zapytań z obiekt żądający do wewnętrznej bazy danych na pierwsze żądanie i zapisuje w pamięci podręcznej elementu zawartości. Wszystkie kolejne żądania dla elementu zawartości, które są obsługiwane w środowisku drzwiami frontowymi Ignoruj ciągi zapytań, do momentu wygaśnięcia pamięci podręcznej elementu zawartości.
+## <a name="query-string-behavior"></a>Zachowanie ciągu zapytania
+Za pomocą przednich drzwi można kontrolować sposób, w jaki pliki są buforowane dla żądania sieci Web, które zawiera ciąg zapytania. W żądaniu sieci Web za pomocą ciągu zapytania ciąg zapytania jest częścią żądania, która występuje po znaku zapytania (?). Ciąg zapytania może zawierać co najmniej jedną parę klucz-wartość, w której nazwa pola i jego wartość są oddzielone znakiem równości (=). Każda para klucz-wartość jest oddzielona znakiem handlowego "i" (&). Na przykład `http://www.contoso.com/content.mov?field1=value1&field2=value2`. Jeśli w ciągu zapytania żądania występuje więcej niż jedna para klucz-wartość, ich kolejność nie ma znaczenia.
+- **Ignoruj ciągi zapytań**: tryb domyślny. W tym trybie tylne drzwiczki przekazują ciągi zapytania od osoby żądającej do zaplecza pierwszego żądania i buforują element zawartości. Wszystkie kolejne żądania dla elementu zawartości, które są obsługiwane przez środowisko front-drzwi, ignorują ciągi zapytania do momentu wygaśnięcia pamięci podręcznej.
 
-- **Buforuj każdy unikatowy adres URL**: W tym trybie każde żądanie z unikatowy adres URL, w tym ciągu zapytania jest traktowany jako unikatowy zasobu ze wszystkimi jego własnej pamięci podręcznej. Na przykład odpowiedź z wewnętrznej bazy danych na żądanie dla `www.example.ashx?q=test1` jest zbuforowana w środowisku drzwiami frontowymi i zwrócony dla kolejnych pamięci podręcznych przy użyciu tego samego ciągu zapytania. Żądanie dotyczące `www.example.ashx?q=test2` pamięci podręcznej jako oddzielny składnik aktywów swoje własne ustawienie czasu wygaśnięcia.
+- **Buforuj każdy unikatowy adres URL**: w tym trybie każde żądanie z unikatowym adresem URL, łącznie z ciągiem zapytania, jest traktowane jako unikatowy element zawartości z własną pamięcią podręczną. Na przykład odpowiedź z zaplecza dla żądania `www.example.ashx?q=test1` jest buforowana w środowisku przednim i zwracana dla kolejnych pamięci podręcznych z tym samym ciągiem zapytania. Żądanie `www.example.ashx?q=test2` jest buforowane jako osobny zasób z własnym ustawieniem czasu wygaśnięcia.
 
-## <a name="cache-purge"></a>Wyczyść pamięć podręczną
-Drzwi spowoduje zasobów w pamięci podręcznej do momentu wygaśnięcia zasobu czas wygaśnięcia (TTL). Po wygaśnięciu czasu wygaśnięcia zasobu, gdy klient zażąda zawartości, środowiska drzwiami frontowymi powoduje pobranie zaktualizowanych nową kopię zasobu ma obsługiwać żądania klienta i magazynu odświeżyć pamięć podręczną.
-</br>Najlepszym rozwiązaniem jest, aby upewnić się, że użytkownicy zawsze uzyskać najnowszą kopię zawartości jest wersja zasobów dla każdej aktualizacji i opublikować je jako nowe adresy URL. Drzwiami frontowymi natychmiast pobierze nowe zasoby dla następnego żądania klienta. Czasami chcesz przeczyścić pamięci podręcznej zawartość ze wszystkich węzłów brzegowych i wymusić na nich wszystkich pobrać nowe zaktualizowane zasoby. Może to być spowodowane aktualizacje do aplikacji sieci web lub szybko zasobów aktualizacji, które zawierają nieprawidłowe informacje.
+## <a name="cache-purge"></a>Przeczyszczanie pamięci podręcznej
+Drzwi z przodu będą buforować zasoby do momentu wygaśnięcia czasu wygaśnięcia elementu zawartości. Po upływie czasu wygaśnięcia zasobu, gdy klient zażąda zasobu, środowisko z przodu będzie pobierać nową zaktualizowaną kopię zasobu do obsłużyć żądanie klienta i zapisać Odświeżanie pamięci podręcznej.
+</br>Najlepszym rozwiązaniem, aby upewnić się, że użytkownicy zawsze uzyskują najnowszą kopię zasobów, są w wersji zasobów dla każdej aktualizacji i publikują je jako nowe adresy URL. Drzwi z przodu natychmiast spowodują pobranie nowych zasobów dla kolejnych żądań klientów. Czasami możesz chcieć przeczyścić zawartość pamięci podręcznej ze wszystkich węzłów brzegowych i wymusić, aby wszystkie nowe zasoby były pobierane. Może to być spowodowane aktualizacjami aplikacji sieci Web lub szybkiej aktualizacji zasobów zawierających nieprawidłowe informacje.
 
-</br>Wybierz zasoby, które chcesz przeczyścić z węzłów krawędzi. Jeśli chcesz wyczyścić wszystkie zasoby, kliknij przycisk przeczyszczanie wszystkie pola wyboru. W przeciwnym razie wpisz ścieżkę do każdego elementu zawartości, który chcesz przeczyścić w polu tekstowym Ścieżka. Poniższe formaty są obsługiwane w ścieżce.
-1. **Pojedynczy adres URL przeczyszczania**: Przeczyść poszczególnych zasobów, określając pełny adres URL z rozszerzeniem pliku, na przykład /pictures/strasbourg.png;
-2. **Symbol wieloznaczny przeczyszczania**: Gwiazdka (\*) może być używana jako symbol wieloznaczny. Przeczyść wszystkich folderów, podfolderów i plików w ramach punktu końcowego za pomocą /\* w ścieżce lub Przeczyść wszystkie podfoldery i pliki w określonym folderze, określając folder następuje /\*, na przykład /zdjęcia/miasto.PNG\*.
-3. **Przeczyszczanie domeny katalogu głównego**: Przeczyszczanie punktu końcowego "/" w ścieżce katalogu głównego.
+</br>Wybierz zasoby, które chcesz przeczyścić z węzłów krawędzi. Jeśli chcesz wyczyścić wszystkie zasoby, kliknij pole wyboru Przeczyść wszystkie. W przeciwnym razie wpisz ścieżkę do każdego zasobu, który ma zostać przeczyszczony, w polu tekstowym ścieżka. W ścieżce obsługiwane są poniższe formaty.
+1. **Przeczyszczanie pojedynczego adresu URL**: Przeczyść pojedynczy element zawartości, określając pełny adres URL, z rozszerzeniem pliku, na przykład/Pictures/Strasbourg.png;
+2. **Przeczyszczanie symboli wieloznacznych**: gwiazdka (\*) może być używana jako symbol wieloznaczny. Przeczyść wszystkie foldery, podfoldery i pliki w punkcie końcowym z ścieżką/\* w ścieżce lub Przeczyść wszystkie podfoldery i pliki w określonym folderze, określając folder, a następnie polecenie/\*, na przykład/Pictures/\*.
+3. **Przeczyszczanie domeny głównej**: Przeczyść element główny punktu końcowego z "/" w ścieżce.
 
-Powoduje usunięcie pamięci podręcznej, na wejściu jest rozróżniana wielkość liter. Ponadto są niezależne od ciąg zapytania, co oznacza, że przeczyszczanie adresu URL spowoduje to wyczyszczenie wszystkie odmiany ciągu zapytania o. 
+Przeczyszczanie pamięci podręcznej w przypadku drzwi przednich nie uwzględnia wielkości liter. Ponadto są to ciąg zapytania niezależny od, co oznacza, że przeczyszczanie adresu URL spowoduje przeczyszczenie wszystkich odmian ciągu zapytania. 
 
-## <a name="cache-expiration"></a>Wygaśnięcia pamięci podręcznej
-Kolejność następujące nagłówki jest używana w celu określenia, jak długo element będzie przechowywane w naszych pamięci podręcznej:</br>
-1. Cache-Control: s-maxage =\<sekund >
-2. Cache-Control: max-age=\<seconds>
-3. Wygasa: \<Data http >
+## <a name="cache-expiration"></a>Wygaśnięcie pamięci podręcznej
+Następująca kolejność nagłówków jest używana w celu określenia czasu przechowywania elementu w pamięci podręcznej:</br>
+1. Cache-Control: s-maxage =\<s >
+2. Cache-Control: max-age =\<s >
+3. Wygasa: \<http-Date >
 
-Nagłówki Cache-Control odpowiedzi, które wskazują, że odpowiedzi nie będą buforowane takich jak Cache-Control: Cache-Control prywatne: nie pamięci podręcznej i Cache-Control: nie-store są uznawane. Jednak w przypadku wielu żądań locie przez usługę POP dla tego samego adresu URL, może udostępniać odpowiedzi. Jeżeli Cache-Control ma domyślne zachowanie jest AFD będzie buforowania przez zasób dla X czas, gdzie X jest pobierana losowo od 1 do 3 dni.
+Nagłówki odpowiedzi kontroli pamięci podręcznej, wskazujące, że odpowiedź nie będzie buforowana, taka jak Cache-Control: Private, Cache-Control: Brak pamięci podręcznej i kontrola pamięci podręcznej: żaden magazyn nie jest uznawany. Jeśli jednak dla tego samego adresu URL występuje wiele żądań w punkcie obecności, mogą one udostępnić odpowiedź. Jeśli żadna kontrola pamięci podręcznej nie jest obecna, domyślnym zachowaniem jest to, że AFD będzie buforować zasób dla X czasu, gdzie X jest losowo wybierany z przedziału od 1 do 3 dni.
 
 
 ## <a name="request-headers"></a>Nagłówki żądań
 
-Następujące nagłówki żądania nie zostaną przekazane do wewnętrznej bazy danych, korzystając z buforowania.
+Następujące nagłówki żądania nie będą przekazywane do zaplecza podczas korzystania z pamięci podręcznej.
 - Autoryzacja
 - Długość zawartości
 - Transfer-Encoding
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 - Dowiedz się, jak [utworzyć usługę Front Door](quickstart-create-front-door.md).
 - Dowiedz się, [jak działa usługa Front Door](front-door-routing-architecture.md).

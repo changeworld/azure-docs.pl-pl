@@ -11,14 +11,14 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/11/2019
+ms.date: 11/07/2019
 ms.author: juliako
-ms.openlocfilehash: c402381534087f1e8cdab711bd1b2a34c78417f4
-ms.sourcegitcommit: 9a4296c56beca63430fcc8f92e453b2ab068cc62
+ms.openlocfilehash: 7b4e2d14e8719808db138a4f2607b19cece401a6
+ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/20/2019
-ms.locfileid: "72675726"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73839596"
 ---
 # <a name="configure-postman-for-media-services-rest-api-calls"></a>Konfigurowanie programu Poster do Media Services wywołań interfejsu API REST
 
@@ -92,7 +92,12 @@ Przed rozpoczęciem manipulowania zasobami usługi AMS v3 musisz uzyskać i usta
 
     ![Pobieranie tokenu usługi AAD](./media/develop-with-postman/postman-get-aad-auth-token.png)
 
-## <a name="see-also"></a>Zobacz także
+## <a name="troubleshooting"></a>Rozwiązywanie problemów 
+
+* Jeśli aplikacja nie powiedzie się z "HTTP 504: limit czasu bramy", upewnij się, że zmienna lokalizacji nie została jawnie ustawiona na wartość inną niż oczekiwana Lokalizacja konta Media Services. 
+* Jeśli zostanie wyświetlony komunikat o błędzie "nie znaleziono konta", upewnij się również, że właściwość Location w treści pliku JSON jest ustawiona na lokalizację, w której znajduje się konto Media Services. 
+
+## <a name="see-also"></a>Zobacz też
 
 - [Przekazywanie plików na konto usługi Media Services — REST](upload-files-rest-how-to.md)
 - [Tworzenie filtrów za pomocą usługi Media Services — REST](filters-dynamic-manifest-rest-howto.md)

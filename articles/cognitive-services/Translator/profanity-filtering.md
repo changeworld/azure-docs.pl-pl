@@ -1,7 +1,7 @@
 ---
 title: Filtrowanie niewulgarności — interfejs API tłumaczenia tekstu w usłudze Translator
 titleSuffix: Azure Cognitive Services
-description: Użyj filtrowania wulgarności w interfejs API tłumaczenia tekstu w usłudze Translator.
+description: Użyj filtrowania wulgarności, aby określić poziom niewulgarnego tłumaczenia tekstu w interfejs API tłumaczenia tekstu w usłudze Translator Cognitive Services platformy Azure.
 services: cognitive-services
 author: swmachan
 manager: nitinme
@@ -10,12 +10,12 @@ ms.subservice: translator-text
 ms.topic: conceptual
 ms.date: 06/04/2019
 ms.author: swmachan
-ms.openlocfilehash: 114dea098db5c824a1235ba1635f547383bf6743
-ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
+ms.openlocfilehash: e7e2097e0d3daf360f1fa0f30bf3fd2c62c07163
+ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68595197"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73836228"
 ---
 # <a name="add-profanity-filtering-with-the-translator-text-api"></a>Dodawanie filtrowania niewulgarności za pomocą interfejs API tłumaczenia tekstu w usłudze Translator
 
@@ -26,10 +26,10 @@ Jeśli chcesz uniknąć wyświetlania niedostępności w tłumaczeniu, nawet je�
 Metoda Przetłumacz () przyjmuje parametr "Options", który zawiera nowy element "ProfanityAction". Akceptowane wartości ProfanityAction to "NoAction", "oznaczył" i "usunięte".
 
 ## <a name="accepted-values-of-profanityaction-and-examples"></a>Zaakceptowane wartości ProfanityAction i przykładów
-|ProfanityAction wartość | Action | Przykład: Źródło — japoński | Przykład: Docelowy — angielski|
+|ProfanityAction wartość | Akcja | Przykład: Źródło — japoński | Przykład: Target — angielski|
 | :---|:---|:---|:---|
 | NoAction | Domyślne. Analogicznie jak ustawienie opcji nie jest możliwe. Niezbyt wulgarne przekazanie z lokalizacji źródłowej do docelowej. | 彼は変態です. | Jest to jerk. |
-| Oznacz | Wyrazy wulgarne są otoczone nie>ami \<tagów XML... \</profanity >. | 彼は変態です. | Jest to \<wulgarne > Jerk\</profanity >. |
+| Oznacz | Słowa niezbyt wulgarne są otoczone tagami XML, \<brak >... \<>/profanity. | 彼は変態です. | Jest to \<wulgarności > Jerk\</profanity >. |
 | Usunięte | Wyrazy wulgarne są usuwane z danych wyjściowych bez zastępowania. | 彼は. | Jest to. |
 
 ## <a name="next-steps"></a>Następne kroki

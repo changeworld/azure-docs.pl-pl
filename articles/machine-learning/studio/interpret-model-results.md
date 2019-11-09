@@ -1,6 +1,6 @@
 ---
 title: Interpretacja wyników modelu
-titleSuffix: ML Studio (classic) Azure
+titleSuffix: ML Studio (classic) - Azure
 description: Jak wybrać optymalny zestaw parametrów dla algorytmu przy użyciu i wizualizować dane wyjściowe modelu wynikowego.
 services: machine-learning
 ms.service: machine-learning
@@ -10,12 +10,12 @@ author: xiaoharper
 ms.author: amlstudiodocs
 ms.custom: previous-author=heatherbshapiro, previous-ms.author=hshapiro
 ms.date: 11/29/2017
-ms.openlocfilehash: cdeded35e1afb9313f2dd2c5842aef511ea0dd61
-ms.sourcegitcommit: 6c2c97445f5d44c5b5974a5beb51a8733b0c2be7
+ms.openlocfilehash: acac881a790644532121697e6b79e57a98b168fe
+ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73621666"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73839845"
 ---
 # <a name="interpret-model-results-in-azure-machine-learning-studio-classic"></a>Interpretowanie wyników modelu w Azure Machine Learning Studio (klasyczny)
 W tym temacie wyjaśniono, jak wizualizować i interpretować wyniki prognozowania w Azure Machine Learning Studio (klasyczny). Po przeprowadzeniu szkolenia modelu i zakończeniu przewidywania względem niego ("Ocena modelu") należy zrozumieć i zinterpretować wynik przewidywania.
@@ -26,7 +26,7 @@ Istnieją cztery główne rodzaje modeli uczenia maszynowego w klasycznej wersji
 
 * Klasyfikacja
 * Usługę
-* Ubytk
+* ubytk
 * Systemy zalecające
 
 Moduły używane do przewidywania w oparciu o te modele są następujące:
@@ -137,7 +137,7 @@ Po opublikowaniu i uruchomieniu usługi sieci Web, a następnie wprowadzeniu nie
 
 Rysunek 10. Wynik usługi sieci Web klasyfikacji wieloklasowej
 
-## <a name="regression"></a>Ubytk
+## <a name="regression"></a>ubytk
 Problemy z regresją różnią się od błędów klasyfikacji. W przypadku problemu klasyfikacji próbujesz przewidzieć klasy dyskretne, takie jak Klasa, do której należy kwiat. Ale jak widać w poniższym przykładzie problemu z regresją, próbujesz przewidzieć zmienną ciągłą, taką jak cena samochodu.
 
 **Przykładowy eksperyment**

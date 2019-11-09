@@ -7,35 +7,34 @@ manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
 ms.subservice: design
-ms.date: 07/16/2019
+ms.date: 11/07/2019
 ms.author: anvang
 ms.reviewer: jrasnick
-ms.openlocfilehash: 91b202f8a5df841fa3d6aa1f0903999b395f8137
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: e9d5a137247c072516c0b25d7f6147ef48fec248
+ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73686068"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73839791"
 ---
 # <a name="use-maintenance-schedules-to-manage-service-updates-and-maintenance"></a>Korzystanie z harmonogramów konserwacji do zarządzania aktualizacjami i konserwacją usług
 
-Harmonogramy konserwacji są teraz dostępne we wszystkich regionach Azure SQL Data Warehouse. Funkcja harmonogramu konserwacji integruje Service Health planowane powiadomienia o konserwacji, Resource Health monitorowania i Azure SQL Data Warehouse usłudze planowania konserwacji.
+Funkcja harmonogramu konserwacji integruje Service Health planowane powiadomienia o konserwacji, Resource Health monitorowania i Azure SQL Data Warehouse usłudze planowania konserwacji.
 
-Planowanie konserwacji służy do wybierania przedziału czasu, gdy jest wygodne do otrzymywania nowych funkcji, uaktualnień i poprawek. Możesz wybrać podstawowe i pomocnicze okno obsługi w ciągu siedmiu dni. Aby użyć tej funkcji, należy zidentyfikować podstawowe i pomocnicze okno w różnych zakresach dni.
+Należy użyć funkcji planowanie konserwacji, aby wybrać przedział czasu, gdy jest wygodne do otrzymywania nowych funkcji, uaktualnień i poprawek. Musisz wybrać podstawowe i pomocnicze okno obsługi w ciągu siedmiu dni, każde okno musi znajdować się w różnych zakresach dni.
 
-Na przykład można zaplanować podstawowe okno soboty Sobota 22:00 do niedzieli 01:00, a następnie zaplanować okno pomocnicze w środę 19:00 do 22:00. Jeśli SQL Data Warehouse nie może wykonać konserwacji w ramach głównego okna obsługi, spróbuje przeprowadzić konserwację ponownie w oknie konserwacji dodatkowej. Konserwacja usługi może wystąpić zarówno w podstawowym, jak i pomocniczym systemie Windows. Aby zapewnić szybkie zakończenie wszystkich operacji konserwacji, DW400 (c) i niższe warstwy magazynu danych mogą zakończyć konserwację poza wydzielonym oknem obsługi.
+Na przykład można zaplanować podstawowe okno soboty Sobota 22:00 do niedzieli 01:00, a następnie zaplanować okno pomocnicze w środę 19:00 do 22:00. Jeśli SQL Data Warehouse nie może wykonać konserwacji w ramach głównego okna obsługi, spróbuje przeprowadzić konserwację ponownie w oknie konserwacji dodatkowej. Obsługa usługi może się odbywać w obu oknach podstawowych i pomocniczych. Aby zapewnić szybkie zakończenie wszystkich operacji konserwacyjnych, DW400c i niższe warstwy magazynu danych mogą zakończyć konserwację poza wydzielonym oknem obsługi.
 
 Wszystkie nowo utworzone wystąpienia Azure SQL Data Warehouse będą miały zdefiniowany przez system harmonogram konserwacji stosowany podczas wdrażania. Harmonogram można edytować zaraz po zakończeniu wdrażania.
 
-Każde okno obsługi może należeć do przedziału od trzech do ośmiu godzin. W oknie można przeprowadzić konserwację w dowolnym momencie. Po rozpoczęciu konserwacji wszystkie aktywne sesje zostaną anulowane, a transakcje niezatwierdzone zostaną wycofane. Należy oczekiwać wielu krótkich strat podczas łączności, ponieważ usługa wdraża nowy kod w magazynie danych. Po zakończeniu konserwacji magazynu danych zostanie wyświetlone powiadomienie.
+Mimo że okno obsługi może być od trzech do ośmiu godzin nie oznacza to, że magazyn danych będzie w trybie offline przez czas trwania. Konserwacja może wystąpić w dowolnym momencie w tym oknie i należy oczekiwać pojedynczego rozłączenia w tym okresie przez trwałą 5 -6 minut, ponieważ usługa wdraża nowy kod w magazynie danych. DW400c i Lower mogą mieć wiele krótkich strat w łączności w różnym czasie w oknie obsługi. Po rozpoczęciu konserwacji wszystkie aktywne sesje zostaną anulowane, a transakcje niezatwierdzone zostaną wycofane. Aby zminimalizować przestoje wystąpienia, upewnij się, że magazyn danych nie ma długotrwałych transakcji przed wybranym okresem konserwacji.
 
- Wszystkie operacje konserwacji powinny zakończyć się w ramach zaplanowanych okien obsługi. Żadne czynności konserwacyjne nie będą przeprowadzane poza oknami obsługi bez wcześniejszego powiadomienia. Jeśli magazyn danych jest wstrzymany podczas zaplanowanej konserwacji, zostanie on zaktualizowany podczas operacji wznawiania. 
+Wszystkie operacje konserwacji powinny zakończyć się w określonych oknach obsługi, chyba że wymagane jest wdrożenie aktualizacji poufnej czasu. Jeśli magazyn danych jest wstrzymany podczas zaplanowanej konserwacji, zostanie on zaktualizowany podczas operacji wznawiania. Po zakończeniu konserwacji magazynu danych zostanie wyświetlone powiadomienie.
 
 ## <a name="alerts-and-monitoring"></a>Alerty i monitorowanie
 
-Integracja z Service Health powiadomieniami i monitorowaniem Resource Health kontrola pozwala klientom na uzyskanie informacji o zbliżającej się aktywności. Nowa Automatyzacja wykorzystuje Azure Monitor. Możesz zdecydować, jak chcesz otrzymywać powiadomienia o zbliżającym się zdarzeniu konserwacji. Ponadto możesz wybrać, które automatyczne przepływy będą pomocne w zarządzaniu przestojami i minimalizacji wpływu operacyjnego.
-
-Powiadomienie z góry 24-godzinne poprzedza wszystkie zdarzenia konserwacji, które nie są używane w przypadku DWC400c i niższych warstw. Aby zminimalizować przestoje wystąpienia, upewnij się, że magazyn danych nie ma długotrwałych transakcji przed wybranym okresem konserwacji.
+Integracja z Service Health powiadomieniami i monitorowaniem Resource Health kontrola pozwala klientom na uzyskanie informacji o zbliżającej się aktywności. Ta Automatyzacja wykorzystuje Azure Monitor. Możesz zdecydować, jak chcesz otrzymywać powiadomienia o zbliżającym się zdarzeniu konserwacji. Ponadto możesz wybrać, które automatyczne przepływy będą pomocne w zarządzaniu przestojami i minimalizacji wpływu operacyjnego.
+Powiadomienie z góry 24-godzinne poprzedza wszystkie zdarzenia konserwacji, które nie są używane w przypadku DWC400c i niższych warstw.
 
 > [!NOTE]
 > W przypadku, gdy wymagane jest wdrożenie aktualizacji krytycznej czasu, zaawansowane czasy powiadomień mogą być znacząco ograniczone.

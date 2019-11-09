@@ -16,14 +16,14 @@ ms.topic: quickstart
 ms.date: 05/29/2019
 ms.author: jafreebe
 ms.custom: mvc, seo-java-july2019, seo-java-august2019, seo-java-september2019
-ms.openlocfilehash: 3251637d5a5bd0593a9eaf559963921a68a6ccdc
-ms.sourcegitcommit: 1c9858eef5557a864a769c0a386d3c36ffc93ce4
+ms.openlocfilehash: d119ffdcb952405f17e0df152c817df9a8a63110
+ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71102755"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73833643"
 ---
-# <a name="quickstart-create-a-java-app-on-azure-app-service-on-windows"></a>Szybki start: Tworzenie aplikacji Java na Azure App Service w systemie Windows
+# <a name="quickstart-create-a-java-app-on-azure-app-service-on-windows"></a>Szybki Start: Tworzenie aplikacji Java na Azure App Service w systemie Windows
 
 > [!NOTE]
 > W tym artykule opisano wdrażanie aplikacji w usłudze App Service w systemie Windows. Aby wdrożyć program w celu App Service w systemie _Linux_, zobacz [Tworzenie aplikacji sieci Web Java w systemie Linux](./containers/quickstart-java.md).
@@ -66,7 +66,7 @@ Następnie dodaj następującą definicję wtyczki w elemencie `<build>` pliku `
     <plugin>
         <groupId>com.microsoft.azure</groupId>
         <artifactId>azure-webapp-maven-plugin</artifactId>
-        <version>1.7.0</version>
+        <version>1.8.0</version>
         <configuration>
             <!-- Specify v2 schema -->
             <schemaVersion>v2</schemaVersion>
@@ -104,7 +104,7 @@ Zaktualizuj następujące symbole zastępcze w konfiguracji wtyczki:
 
 | Symbol zastępczy | Opis |
 | ----------- | ----------- |
-| `SUBSCRIPTION_ID` | Unikatowy identyfikator subskrypcji, w której ma zostać wdrożona aplikacja. Identyfikator domyślnej subskrypcji można znaleźć w Cloud Shell lub interfejsie wiersza `az account show` polecenia przy użyciu poleceń. Dla wszystkich dostępnych subskrypcji Użyj `az account list` polecenia.|
+| `SUBSCRIPTION_ID` | Unikatowy identyfikator subskrypcji, w której ma zostać wdrożona aplikacja. Identyfikator domyślnej subskrypcji można znaleźć w Cloud Shell lub interfejsie wiersza polecenia przy użyciu `az account show` polecenie. Dla wszystkich dostępnych subskrypcji Użyj polecenia `az account list`.|
 | `RESOURCEGROUP_NAME` | Nazwa nowej grupy zasobów, w której ma zostać utworzona aplikacja. Dzięki wprowadzeniu wszystkich zasobów dla aplikacji do grupy można nimi zarządzać jednocześnie. Na przykład usunięcie grupy zasobów spowodowałoby usunięcie wszystkich zasobów skojarzonych z aplikacją. Zaktualizuj tę wartość przy użyciu unikatowej nazwy nowej grupy zasobów, na przykład grupa *zasobów*. Za pomocą tej nazwy grupy zasobów wyczyścisz wszystkie zasoby platformy Azure w późniejszej sekcji. |
 | `WEBAPP_NAME` | Nazwa aplikacji będzie częścią nazwy hosta aplikacji po wdrożeniu na platformie Azure (WEBAPP_NAME. azurewebsites. NET). Zaktualizuj tę wartość przy użyciu unikatowej nazwy nowej aplikacji usługi App Service, która będzie hostem aplikacji Java, na przykład *contoso*. |
 | `REGION` | Region świadczenia usługi Azure, w którym aplikacja jest hostowana, na przykład *westus2*. Listę regionów można uzyskać z usługi Cloud Shell lub interfejsu wiersza polecenia przy użyciu polecenia `az account list-locations`. |

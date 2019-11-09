@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 10/09/2019
 ms.author: shlo
-ms.openlocfilehash: c0a097c17a24c68f7ebe4ec06a01b9ab7d9943b0
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 73e6e4e69a245485ca473f048bbeafef21dbbf37
+ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73507144"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73836785"
 ---
 # <a name="custom-neural-voice-gating-overview"></a>Niestandardowy neuronowych głosu kontroli — Omówienie
 
@@ -28,7 +28,7 @@ W ramach zobowiązania firmy Microsoft do projektowania odpowiedzialnych plików
 ### <a name="guidance-for-deploying-custom-neural-voice"></a>Wskazówki dotyczące wdrażania niestandardowego głosu neuronowych
 
 - [Wytyczne dotyczące odpowiedzialnego wdrożenia](concepts-guidelines-responsible-deployment-synthetic.md): nasze najważniejsze zalecenia na podstawie naszych badań
-- [Neuronowych przezroczystość tekstu na mowę](https://aka.ms/neural-tts-transparency-note): co należy wiedzieć o technologii do jej używania
+- [Ujawnienie do talentów głosu](https://aka.ms/disclosure-voice-talent): czego potrzebujesz, aby poznać i poinformować talent o technologii, aby z niej korzystać
 - [Projekt ujawniania](concepts-disclosure-guidelines.md): jak projektować środowiska, aby użytkownicy wiedzieli, kiedy jest używany głos syntetyczny i ufają usłudze
 
 ### <a name="why-custom-neural-voice-is-a-gated-technology"></a>Dlaczego niestandardowy głos neuronowych jest technologią warunkową
@@ -41,11 +41,11 @@ Aby uzyskać dostęp do niestandardowego głosu neuronowych, musisz zacząć od 
 
 Dostęp do niestandardowej usługi głosowej neuronowych jest uzależniony od uznania firmy Microsoft w zależności od kryteriów kwalifikujących, procesu przed sprawdzeniem i dostępności w celu obsługi ograniczonej liczby klientów w ramach tej warunkowej wersji zapoznawczej.
 
-W ramach procesu aplikacji należy zatwierdzić uzyskanie jawnie pisemnego uprawnienia z Talenti głosu przed utworzeniem czcionki głosowej, co obejmuje udostępnienie uwagi dotyczącej [przejrzystości neuronowych TTS](https://aka.ms/neural-tts-transparency-note). Należy również wyrazić zgodę na wdrożenie czcionki głosowej przez implementację, która spowoduje [ujawnienie syntetycznego charakteru](concepts-disclosure-guidelines.md) usługi użytkownikom, zapewnienie przypisywania syntetycznej usługi rozpoznawania mowy firmy Microsoft w warunkach użytkowania i wsparcie kanału opinii Dzięki temu użytkownicy usługi mogą zgłaszać problemy i udostępniać szczegółowe informacje firmie Microsoft. Dowiedz się więcej o naszych warunkach użytkowania [tutaj](https://aka.ms/neural-tts-transparency-note).
+W ramach procesu aplikacji należy zatwierdzić uzyskanie jawnie pisemnego uprawnienia z Talenti głosu przed utworzeniem czcionki głosowej, co obejmuje udostępnienie [ujawniania talent głosu](https://aka.ms/disclosure-voice-talent). Należy również wyrazić zgodę na wdrożenie czcionki głosowej przez implementację, która spowoduje [ujawnienie syntetycznego charakteru](concepts-disclosure-guidelines.md) usługi użytkownikom, zapewnienie przypisywania syntetycznej usługi rozpoznawania mowy firmy Microsoft w warunkach użytkowania i wsparcie kanału opinii Dzięki temu użytkownicy usługi mogą zgłaszać problemy i udostępniać szczegółowe informacje firmie Microsoft. Dowiedz się więcej o naszych warunkach użytkowania [tutaj](https://aka.ms/custom-neural-code-of-conduct).
 
 ## <a name="reference-docs"></a>Dokumentacja
 
-* [Uwaga przezroczystości](https://aka.ms/neural-tts-transparency-note)
+* [Ujawnienie dla talent głosu](https://aka.ms/disclosure-voice-talent)
 * [Wytyczne dotyczące odpowiedzialnego wdrożenia syntetycznej technologii głosowej](concepts-guidelines-responsible-deployment-synthetic.md)
 * [Jak ujawnić](concepts-disclosure-guidelines.md)
 

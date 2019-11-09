@@ -1,7 +1,7 @@
 ---
-title: Uaktualnianie do Azure Search .NET SDK wersja 10
+title: Uaktualnianie do platformy Azure Wyszukiwanie poznawcze .NET SDK wersja 10
 titleSuffix: Azure Cognitive Search
-description: Migruj kod do Azure Search .NET SDK wersja 10 ze starszych wersji. Dowiedz się, co nowego i jakie zmiany w kodzie są wymagane.
+description: Migruj kod do platformy Azure Wyszukiwanie poznawcze .NET SDK wersja 10 ze starszych wersji. Dowiedz się, co nowego i jakie zmiany w kodzie są wymagane.
 manager: nitinme
 author: arv100kri
 ms.author: arjagann
@@ -9,30 +9,30 @@ ms.service: cognitive-search
 ms.devlang: dotnet
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 4a8550a7f9c6a684a172da6f384039c6050797f6
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.openlocfilehash: ad912eb0b26354d40a654a1c8782dfcb960235e5
+ms.sourcegitcommit: 16c5374d7bcb086e417802b72d9383f8e65b24a7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72793050"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73847518"
 ---
-# <a name="upgrade-to-azure-search-net-sdk-version-10"></a>Uaktualnianie do Azure Search .NET SDK wersja 10
+# <a name="upgrade-to-azure-cognitive-search-net-sdk-version-10"></a>Uaktualnianie do platformy Azure Wyszukiwanie poznawcze .NET SDK wersja 10
 
 Jeśli korzystasz z wersji 9,0 lub starszej [Azure Search .NET SDK](https://aka.ms/search-sdk), ten artykuł pomoże Ci uaktualnić aplikację pod kątem korzystania z wersji 10.
 
-Aby zapoznać się z bardziej ogólnym przewodnikiem dotyczącym zestawu SDK, łącznie z przykładami, zobacz [jak używać Azure Search z poziomu aplikacji .NET](search-howto-dotnet-sdk.md).
+Nazwa Azure Search została zmieniona na Wyszukiwanie poznawcze platformy Azure w wersji 10, ale przestrzenie nazw i nazwy pakietów nie są zmieniane. Poprzednie wersje zestawu SDK (9,0 i starsze) nadal używają poprzedniej nazwy. Aby uzyskać więcej informacji na temat korzystania z zestawu SDK, w tym przykładów, zobacz [jak używać platformy Azure wyszukiwanie poznawcze z poziomu aplikacji .NET](search-howto-dotnet-sdk.md).
 
 Wersja 10 dodaje kilka funkcji i poprawek błędów, przenosząc je na ten sam poziom funkcjonalności co Najnowsza wersja interfejsu API REST `2019-05-06`. W przypadkach, gdy zmiana przerywa istniejący kod, przeprowadzimy Cię przez [kroki wymagane do rozwiązania problemu](#UpgradeSteps).
 
 > [!NOTE]
 > Jeśli używasz wersji 8,0-Preview lub starszej, należy najpierw uaktualnić do wersji 9, a następnie uaktualnić do wersji 10. Aby uzyskać instrukcje [, zobacz Uaktualnianie do Azure Search .NET SDK w wersji 9](search-dotnet-sdk-migration-version-9.md) .
 >
-> Wystąpienie usługi Azure Search obsługuje kilka wersji interfejsu API REST, w tym najnowsze. Możesz nadal korzystać z wersji, gdy nie jest już Najnowsza, ale zalecamy przeprowadzenie migracji kodu w celu użycia najnowszej wersji. W przypadku korzystania z interfejsu API REST należy określić wersję interfejsu API w każdym żądaniu za pośrednictwem parametru API-Version. Podczas korzystania z zestawu SDK platformy .NET wersja zestawu SDK określa odpowiednią wersję interfejsu API REST. Jeśli używasz starszego zestawu SDK, możesz nadal uruchamiać ten kod bez zmian, nawet jeśli usługa zostanie uaktualniona w celu obsługi nowszej wersji interfejsu API.
+> Wystąpienie usługi wyszukiwania obsługuje kilka wersji interfejsu API REST, w tym najnowsze. Możesz nadal korzystać z wersji, gdy nie jest już Najnowsza, ale zalecamy przeprowadzenie migracji kodu w celu użycia najnowszej wersji. W przypadku korzystania z interfejsu API REST należy określić wersję interfejsu API w każdym żądaniu za pośrednictwem parametru API-Version. Podczas korzystania z zestawu SDK platformy .NET wersja zestawu SDK określa odpowiednią wersję interfejsu API REST. Jeśli używasz starszego zestawu SDK, możesz nadal uruchamiać ten kod bez zmian, nawet jeśli usługa zostanie uaktualniona w celu obsługi nowszej wersji interfejsu API.
 
 <a name="WhatsNew"></a>
 
 ## <a name="whats-new-in-version-10"></a>Co nowego w wersji 10
-Wersja 10 zestawu SDK Azure Search .NET jest przeznaczona dla najnowszej ogólnie dostępnej wersji interfejsu API REST Azure Search (`2019-05-06`) z tymi aktualizacjami:
+Wersja 10 zestawu SDK platformy Azure Wyszukiwanie poznawcze platformy .NET jest przeznaczona dla najnowszej, ogólnie dostępnej wersji interfejsu API REST (`2019-05-06`) z tymi aktualizacjami:
 
 * Wprowadzenie dwóch nowych [umiejętności związanych z umiejętnościami](cognitive-search-skill-conditional.md) i [tłumaczeniami tekstu](cognitive-search-skill-text-translation.md).
 * Dane wejściowe [umiejętności kształtu](cognitive-search-skill-shaper.md) zostały poddane restrukturyzacji w celu uwzględnienia konsolidacji z zagnieżdżonych kontekstów. Aby uzyskać więcej informacji, zobacz tę [przykładową definicję JSON](https://docs.microsoft.com/azure/search/cognitive-search-skill-shaper#scenario-3-input-consolidation-from-nested-contexts).
@@ -62,7 +62,7 @@ Wersja 10 zestawu SDK Azure Search .NET jest przeznaczona dla najnowszej ogólni
 Istnieje kilka istotnych zmian w wersji 10, które mogą wymagać zmiany kodu oprócz ponownego kompilowania aplikacji.
 
 > [!NOTE]
-> Lista zmian poniżej nie jest wyczerpująca. Niektóre zmiany prawdopodobnie nie spowodują błędów kompilacji, ale są technicznie przerywane, ponieważ przerwają zgodność binarną z zestawami, które są zależne od wcześniejszych wersji zestawów Azure Search .NET SDK. Istotne zmiany, które znajdują się w tej kategorii, znajdują się również na liście wraz z zaleceniami. Skompiluj ponownie aplikację podczas uaktualniania do wersji 10, aby uniknąć problemów ze zgodnością binarną.
+> Lista zmian poniżej nie jest wyczerpująca. Niektóre zmiany prawdopodobnie nie spowodują błędów kompilacji, ale są technicznie przerywane, ponieważ przerywają zgodność binarną z zestawami, które są zależne od wcześniejszych wersji zestawów SDK platformy .NET Wyszukiwanie poznawcze. Istotne zmiany, które znajdują się w tej kategorii, znajdują się również na liście wraz z zaleceniami. Skompiluj ponownie aplikację podczas uaktualniania do wersji 10, aby uniknąć problemów ze zgodnością binarną.
 
 ### <a name="custom-web-api-skill-definition"></a>Niestandardowa definicja umiejętności internetowego interfejsu API
 

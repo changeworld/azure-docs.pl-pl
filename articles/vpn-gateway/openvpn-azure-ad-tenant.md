@@ -2,21 +2,25 @@
 title: 'Tworzenie dzierżawy Azure Active Directory dla połączeń sieci VPN P2S: uwierzytelnianie usługi Azure AD | Microsoft Docs'
 description: Aby nawiązać połączenie z siecią wirtualną przy użyciu uwierzytelniania usługi Azure AD, możesz użyć sieci VPN P2S
 services: vpn-gateway
-author: cherylmc
+author: anzaman
 ms.service: vpn-gateway
 ms.topic: conceptual
-ms.date: 10/08/2019
-ms.author: cherylmc
-ms.openlocfilehash: 9d3ab7e56c136d110f58b95d10c0e4bda5839fd0
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.date: 11/07/2019
+ms.author: alzam
+ms.openlocfilehash: 6730cad4f65648516769476740813c2e3384fe6a
+ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73517399"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73837907"
 ---
-# <a name="create-an-azure-active-directory-tenant-for-p2s-open-vpn-connections-that-use-azure-ad-authentication"></a>Tworzenie dzierżawy Azure Active Directory na potrzeby P2S otwartych połączeń sieci VPN korzystających z uwierzytelniania usługi Azure AD
+# <a name="create-an-azure-active-directory-tenant-for-p2s-openvpn-protocol-connections"></a>Tworzenie dzierżawy Azure Active Directory dla połączeń protokołu OpenVPN P2S
 
 Podczas nawiązywania połączenia z siecią wirtualną można użyć uwierzytelniania opartego na certyfikatach lub uwierzytelniania usługi RADIUS. Jednak w przypadku korzystania z otwartego protokołu sieci VPN można również użyć uwierzytelniania Azure Active Directory. Ten artykuł ułatwia skonfigurowanie dzierżawy usługi Azure AD na potrzeby P2S Open VPN Authentication.
+
+> [!NOTE]
+> Uwierzytelnianie usługi Azure AD jest obsługiwane tylko dla połączeń protokołu OpenVPN®.
+>
 
 ## <a name="tenant"></a>1. Tworzenie dzierżawy usługi Azure AD
 

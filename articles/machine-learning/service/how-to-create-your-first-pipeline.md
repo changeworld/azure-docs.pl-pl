@@ -11,12 +11,12 @@ ms.author: sanpil
 author: sanpil
 ms.date: 08/09/2019
 ms.custom: seodec18
-ms.openlocfilehash: 3dc439c352bb3e6e56fae4b83d783da94720bfe1
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: 4af18eaa0dc5622dcc52603e6fb4e569f505feeb
+ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 11/08/2019
-ms.locfileid: "73818413"
+ms.locfileid: "73838108"
 ---
 # <a name="create-and-run-machine-learning-pipelines-with-azure-machine-learning-sdk"></a>Tworzenie i uruchamianie potoków uczenia maszynowego za pomocą zestawu SDK Azure Machine Learning
 [!INCLUDE [applies-to-skus](../../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -411,14 +411,14 @@ response = requests.post(published_pipeline1.endpoint,
 ### <a name="view-results-of-a-published-pipeline"></a>Wyświetl wyniki opublikowanego potoku
 
 Zobacz listę wszystkich opublikowanych potoków i ich szczegóły przebiegu:
-1. Zaloguj się do [Azure Machine Learning Studio](https://ml.azure.com).
+1. Zaloguj się do [Azure Machine Learning](https://ml.azure.com).
 
 1. [Wyświetlenie obszaru roboczego](how-to-manage-workspace.md#view) , aby znaleźć listę potoków.
  ![listę potoków uczenia maszynowego](./media/how-to-create-your-first-pipeline/list_of_pipelines.png)
  
 1. Wybierz konkretny potok, aby wyświetlić wyniki przebiegu.
 
-Te wyniki są również dostępne w obszarze roboczym w programie [Azure Machine Learning Studio]] (https://ml.azure.com).
+Te wyniki są również dostępne w obszarze roboczym w [Azure Machine Learning](https://ml.azure.com).
 
 ### <a name="disable-a-published-pipeline"></a>Wyłącz opublikowany potok
 

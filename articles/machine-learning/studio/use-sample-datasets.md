@@ -1,6 +1,6 @@
 ---
 title: Korzystanie z przykładowych zestawów danych
-titleSuffix: ML Studio (classic) Azure
+titleSuffix: ML Studio (classic) - Azure
 description: Opisy zestawów danych używanych w przykładowych modelach zawartych w Machine Learning Studio (klasyczne). Te przykładowe zestawy danych mogą być używane do eksperymentów.
 services: machine-learning
 ms.service: machine-learning
@@ -10,12 +10,12 @@ author: xiaoharper
 ms.author: amlstudiodocs
 ms.custom: previous-author=heatherbshapiro, previous-ms.author=hshapiro
 ms.date: 01/19/2018
-ms.openlocfilehash: f22d27f7900ce9dda3a8e65451acb9b743a25811
-ms.sourcegitcommit: 6c2c97445f5d44c5b5974a5beb51a8733b0c2be7
+ms.openlocfilehash: 84ac2b43c9ec2e46bcd2967cf411f1bb1f60f42a
+ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73618906"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73839406"
 ---
 # <a name="use-the-sample-datasets-in-azure-machine-learning-studio-classic"></a>Korzystanie z przykładowych zestawów danych w Azure Machine Learning Studio (klasyczny)
 [top]: #machine-learning-sample-datasets
@@ -127,14 +127,14 @@ Zestaw danych zawiera dodatkowe informacje dotyczące każdego podejrzanego regi
 <tr>
   <td>Udostępnione etykiety programu CRM pragnienie</td>
   <td>
-Etykiety z wyzwania KDD 2009 (<a href="http://www.sigkdd.org/site/2009/files/orange_small_train_appetency.labels">orange_small_train_appetency. labels</a>) przewidywania relacji klientów.
+Etykiety z wyzwania KDD 2009 (<a href="http://www.sigkdd.org/site/2009/files/orange_small_train_appetency.labels">orange_small_train_appetency. labels</a>) z przewidywania relacji klientów.
   </td>
 </tr>
 
 <tr>
   <td>Udostępnione etykiety zmian CRM</td>
   <td>
-Etykiety z wyzwania KDD 2009 (<a href="http://www.sigkdd.org/site/2009/files/orange_small_train_churn.labels">orange_small_train_churn. labels</a>) przewidywania relacji klientów.
+Etykiety z wyzwania KDD 2009 (<a href="http://www.sigkdd.org/site/2009/files/orange_small_train_churn.labels">orange_small_train_churn. labels</a>) z przewidywania relacji klientów.
   </td>
 </tr>
 
@@ -150,7 +150,7 @@ Zestaw danych zawiera klientów 50 000 z niemieckiej firmy telekomunikacyjnej po
 <tr>
   <td>Udostępnione etykiety CRM do sprzedawania</td>
   <td>
-Etykiety z wyzwania KDD 2009 (<a href="http://www.sigkdd.org/site/2009/files/orange_large_train_upselling.labels">orange_large_train_upselling. labels</a>) przewidywania relacji klientów.
+Etykiety z wyzwania KDD 2009 (<a href="http://www.sigkdd.org/site/2009/files/orange_large_train_upselling.labels">orange_large_train_upselling. labels</a>) z przewidywania relacji klientów.
   </td>
 </tr>
 
@@ -358,28 +358,28 @@ Należy zauważyć, że w niektórych firmach nie znaleziono artykułu, więc li
 </tr>
 
 <tr>
-  <td><a href="https://azuremlsampleexperiments.blob.core.windows.net/datasets/direct_marketing.csv">direct_marketing. csv</a></td>
+  <td><a href="https://azuremlsampleexperiments.blob.core.windows.net/datasets/direct_marketing.csv">plik direct_marketing. csv</a></td>
   <td>
 Zestaw danych zawiera dane klienta i informacje o ich odpowiedzi na bezpośrednią kampanię korespondencyjną. Każdy wiersz reprezentuje klienta. Zestaw danych zawiera dziewięć funkcji dotyczących elementów demograficznych użytkownika i przeszłe zachowanie oraz trzy kolumny etykiet (odwiedzin, konwersji i wydatków).  Odwiedzanie jest kolumną binarną, która wskazuje, że klient odwiedził po kampanii marketingowej. Konwersja wskazuje, że klient kupił coś. Wydatki to kwota, która została pobrana.  Zestaw danych został udostępniony przez Jan Hillstrom na potrzeby analizy poczty E-Mail MineThatData i wyzwania wyszukiwania danych.
   </td>
 </tr>
 
 <tr>
-  <td><a href="https://azuremlsampleexperiments.blob.core.windows.net/datasets/lyrl2004_tokens_test.csv">lyrl2004_tokens_test. csv</a></td>
+  <td><a href="https://azuremlsampleexperiments.blob.core.windows.net/datasets/lyrl2004_tokens_test.csv">plik lyrl2004_tokens_test. csv</a></td>
   <td>
 Przykłady testów w zestawie danych Aktualności RCV1-v2 firmy Reuters. Zestaw danych zawiera 781K artykuły z wiadomościami oraz ich identyfikatory (pierwsza kolumna zestawu danych). Każdy artykuł ma tokeny, stopworded i odszukane. Zestaw danych został udostępniony przez David. D. Lewis przedstawiają.
   </td>
 </tr>
 
 <tr>
-  <td><a href="https://azuremlsampleexperiments.blob.core.windows.net/datasets/lyrl2004_tokens_train.csv">lyrl2004_tokens_train. csv</a></td>
+  <td><a href="https://azuremlsampleexperiments.blob.core.windows.net/datasets/lyrl2004_tokens_train.csv">plik lyrl2004_tokens_train. csv</a></td>
   <td>
 Przykłady szkoleń w zestawie danych RCV1-v2 Reuters News. Zestaw danych zawiera 23K artykuły z wiadomościami oraz ich identyfikatory (pierwsza kolumna zestawu danych). Każdy artykuł ma tokeny, stopworded i odszukane. Zestaw danych został udostępniony przez David. D. Lewis przedstawiają.
   </td>
 </tr>
 
 <tr>
-  <td><a href="https://azuremlsampleexperiments.blob.core.windows.net/datasets/network_intrusion_detection.csv">network_intrusion_detection. csv</a><br></td>
+  <td><a href="https://azuremlsampleexperiments.blob.core.windows.net/datasets/network_intrusion_detection.csv">plik network_intrusion_detection. csv</a><br></td>
   <td>
 Zestaw danych z KDD 1999 wiedzy dotyczącej narzędzi do odnajdywania i wyszukiwania danych (<a href="https://kdd.ics.uci.edu/databases/kddcup99/kddcup99.html">kddcup99. html</a>).
 <p></p>
@@ -397,7 +397,7 @@ Przypisania tematu dotyczące artykułów z wiadomościami w zestawie danych RCV
 <tr>
   <td><a href="https://azuremlsampleexperiments.blob.core.windows.net/datasets/student_performance.txt">student_performance. txt</a></td>
   <td>
-Te dane pochodzą z wyzwania testowego oceny wydajności KDD filiżanki 2010 (<a href="https://www.kdd.org/kdd-cup/view/kdd-cup-2010-student-performance-evaluation">Ocena wydajności ucznia</a>). Używane dane to zestaw szkoleniowy Algebra_2008_2009 (Sygnatura, J., Niculescu-Mizil, A., Ritter, S., Gordon, G.J., & Koedinger, K.R. (2010). Algebry I 2008-2009. Zestaw danych wyzwania z KDD 2010 filiżanki — wyzwanie dla wyszukiwania danych edukacyjnych. Znajdź go przy <a href="https://pslcdatashop.web.cmu.edu/KDDCup/downloads.jsp">pobieraniu. jsp</a>.
+Te dane pochodzą z wyzwania testowego oceny wydajności KDD filiżanki 2010 (<a href="https://www.kdd.org/kdd-cup/view/kdd-cup-2010-student-performance-evaluation">Ocena wydajności ucznia</a>). Używane dane to Algebra_2008_2009 zestawu szkoleniowego (Sygnatura, J., Niculescu-Mizil, A., Ritter, S., Gordon, G.J., & Koedinger, K.R. (2010). Algebry I 2008-2009. Zestaw danych wyzwania z KDD 2010 filiżanki — wyzwanie dla wyszukiwania danych edukacyjnych. Znajdź go przy <a href="https://pslcdatashop.web.cmu.edu/KDDCup/downloads.jsp">pobieraniu. jsp</a>.
 <p></p>
 Zestaw danych został pobrany i zapisany w usłudze Azure Blob Storage (<a href="https://azuremlsampleexperiments.blob.core.windows.net/datasets/student_performance.txt">student_performance. txt</a>) i zawiera pliki dziennika z systemu tworzenia uczniów. Podane funkcje obejmują identyfikator problemu i jego Krótki opis, identyfikator ucznia, sygnaturę czasową oraz liczbę prób dokonanych przez studenta przed rozpuszczeniem problemu w odpowiedni sposób. Oryginalny zestaw danych ma 8,9 M rekordów; Ten zestaw danych został przepróbkowany do pierwszych 100 000 wierszy. Zestaw danych ma 23 kolumny oddzielane tabulatorami różnych typów: numeryczne, kategorii i timestamp.
   </td>

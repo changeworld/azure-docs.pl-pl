@@ -4,14 +4,14 @@ description: Opisuje sposób tworzenia grupy zasobów w szablonie Azure Resource
 author: tfitzmac
 ms.service: azure-resource-manager
 ms.topic: conceptual
-ms.date: 10/07/2019
+ms.date: 11/07/2019
 ms.author: tomfitz
-ms.openlocfilehash: d8b1be1d79ae0426d73c45408dd3c4f4f4660afb
-ms.sourcegitcommit: 6eecb9a71f8d69851bc962e2751971fccf29557f
+ms.openlocfilehash: 04a46700b68bcf498956f93c96ce2dccf1b555fe
+ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72532195"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73832729"
 ---
 # <a name="create-resource-groups-and-resources-at-the-subscription-level"></a>Tworzenie grup zasobów i zasobów na poziomie subskrypcji
 
@@ -23,7 +23,7 @@ Aby wdrażać szablony na poziomie subskrypcji, użyj interfejsu wiersza polecen
 
 Na poziomie subskrypcji można wdrożyć następujące typy zasobów:
 
-* [komputerów](/azure/templates/microsoft.resources/deployments) 
+* [komputerów](/azure/templates/microsoft.resources/deployments)
 * [peerAsns](/azure/templates/microsoft.peering/peerasns)
 * [policyAssignments](/azure/templates/microsoft.authorization/policyassignments)
 * [policyDefinitions](/azure/templates/microsoft.authorization/policydefinitions)
@@ -36,10 +36,16 @@ Na poziomie subskrypcji można wdrożyć następujące typy zasobów:
 
 Schemat używany do wdrożeń na poziomie subskrypcji różni się od schematu dla wdrożeń grup zasobów.
 
-Dla schematu należy użyć:
+W przypadku szablonów Użyj:
 
 ```json
 https://schema.management.azure.com/schemas/2018-05-01/subscriptionDeploymentTemplate.json#
+```
+
+W przypadku plików parametrów należy użyć:
+
+```json
+https://schema.management.azure.com/schemas/2018-05-01/subscriptionDeploymentParameters.json#
 ```
 
 ## <a name="deployment-commands"></a>Polecenia wdrażania
@@ -76,14 +82,14 @@ W przypadku wdrożeń na poziomie subskrypcji należy podać lokalizację wdroż
 
 Możesz podać nazwę wdrożenia lub użyć domyślnej nazwy wdrożenia. Nazwa domyślna to nazwa pliku szablonu. Na przykład wdrożenie szablonu o nazwie **azuredeploy. JSON** tworzy domyślną nazwę wdrożenia **azuredeploy**.
 
-Dla każdej nazwy wdrożenia lokalizacja jest niezmienna. Nie można utworzyć wdrożenia w jednej lokalizacji, gdy istnieje wdrożenie o tej samej nazwie, ale innej lokalizacji. Jeśli zostanie wyświetlony kod błędu `InvalidDeploymentLocation`, użyj innej nazwy lub tej samej lokalizacji co poprzednie wdrożenie dla tej nazwy.
+Dla każdej nazwy wdrożenia lokalizacja jest niezmienna. Nie można utworzyć wdrożenia w jednej lokalizacji, gdy istnieje wdrożenie o tej samej nazwie w innej lokalizacji. Jeśli zostanie wyświetlony kod błędu `InvalidDeploymentLocation`, użyj innej nazwy lub tej samej lokalizacji co poprzednie wdrożenie dla tej nazwy.
 
 ## <a name="use-template-functions"></a>Korzystanie z funkcji szablonu
 
 W przypadku wdrożeń na poziomie subskrypcji istnieją pewne ważne zagadnienia dotyczące korzystania z funkcji szablonu:
 
 * Funkcja [przesourceing ()](resource-group-template-functions-resource.md#resourcegroup) **nie** jest obsługiwana.
-* Funkcja [ResourceID ()](resource-group-template-functions-resource.md#resourceid) jest obsługiwana. Służy do uzyskiwania identyfikatora zasobu dla zasobów używanych w ramach wdrożeń na poziomie subskrypcji. Na przykład Pobierz identyfikator zasobu dla definicji zasad z `resourceId('Microsoft.Authorization/roleDefinitions/', parameters('roleDefinition'))`
+* Funkcja [ResourceID ()](resource-group-template-functions-resource.md#resourceid) jest obsługiwana. Służy do uzyskiwania identyfikatora zasobu dla zasobów używanych w ramach wdrożeń na poziomie subskrypcji. Na przykład Pobierz identyfikator zasobu dla definicji zasad z `resourceId('Microsoft.Authorization/roleDefinitions/', parameters('roleDefinition'))`. Można też użyć funkcji [subscriptionResourceId ()](resource-group-template-functions-resource.md#subscriptionresourceid) w celu pobrania identyfikatora zasobu dla zasobu poziomu subskrypcji.
 * Obsługiwane są funkcje [Reference ()](resource-group-template-functions-resource.md#reference) i [list ()](resource-group-template-functions-resource.md#list) .
 
 ## <a name="create-resource-groups"></a>Tworzenie grup zasobów

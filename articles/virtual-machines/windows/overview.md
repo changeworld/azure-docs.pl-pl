@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 10/04/2018
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 47ad2346f4574b10d12c46c1f72394225e014854
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 0f2929218b3a304099b1eb009df8e93d0e43c103
+ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70102563"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73839876"
 ---
 # <a name="overview-of-windows-virtual-machines-in-azure"></a>Omówienie maszyn wirtualnych z systemem Windows na platformie Azure
 
@@ -47,8 +47,8 @@ Podczas tworzenia infrastruktury aplikacji na platformie Azure należy zawsze wz
 * konfiguracja maszyny wirtualnej po jej uruchomieniu;
 * powiązane zasoby niezbędne do działania maszyny wirtualnej.
 
-### <a name="naming"></a>Nadawanie nazw
-Maszyna wirtualna ma przypisaną do niej [nazwę](/azure/architecture/best-practices/naming-conventions), a także nazwę komputera skonfigurowaną jako element systemu operacyjnego. Nazwa maszyny wirtualnej może zawierać maksymalnie 15 znaków.
+### <a name="naming"></a>Nazewnictwo
+Maszyna wirtualna ma przypisaną do niej [nazwę](/azure/architecture/best-practices/resource-naming), a także nazwę komputera skonfigurowaną jako element systemu operacyjnego. Nazwa maszyny wirtualnej może zawierać maksymalnie 15 znaków.
 
 Jeśli dysk systemu operacyjnego zostanie utworzony na platformie Azure, nazwa komputera jest taka sama jak nazwa maszyny wirtualnej. Nazwy mogą się różnić w przypadku [przesłania i użycia własnego obrazu](upload-generalized-managed.md), który zawiera skonfigurowany wcześniej system operacyjny, oraz wykorzystania go do utworzenia maszyny wirtualnej. Jeśli zostanie przesłany własny plik obrazu, zalecamy ustawienie takiej samej nazwy dla komputera w systemie operacyjnym i dla maszyny wirtualnej.
 
@@ -100,7 +100,7 @@ Typowe zadania można realizować przy użyciu różnych rozszerzeń:
 ### <a name="related-resources"></a>Powiązane zasoby
 Zasoby wymienione w tej tabeli są używane przez maszynę wirtualną i muszą istnieć lub zostać utworzone podczas jej tworzenia.
 
-| Zasób | Wymagane | Opis |
+| Zasób | Wymagany | Opis |
 | --- | --- | --- |
 | [Grupa zasobów](../../azure-resource-manager/resource-group-overview.md) |Tak |Maszyna wirtualna musi być zawarta w grupie zasobów. |
 | [Konto magazynu](../../storage/common/storage-create-storage-account.md) |Tak |Maszyna wirtualna wymaga konta magazynu do przechowywania wirtualnych dysków twardych. |

@@ -1,7 +1,7 @@
 ---
 title: Korzystanie z rozpoznawania jednostek z interfejs API analizy tekstu
 titleSuffix: Azure Cognitive Services
-description: Dowiedz się, jak rozpoznawać jednostki przy użyciu interfejsu API REST analiza tekstu.
+description: Dowiedz się, jak identyfikować i odróżnić tożsamość jednostki znalezionej w tekście za pomocą interfejsu API REST analiza tekstu.
 services: cognitive-services
 author: aahill
 manager: nitinme
@@ -10,12 +10,12 @@ ms.subservice: text-analytics
 ms.topic: article
 ms.date: 10/21/2019
 ms.author: aahi
-ms.openlocfilehash: e51e5945df8b08ec81db0c85416b31b3ec788ffd
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: b139f473bb20dbecde75c3b08dd92371849f096e
+ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73488642"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73835661"
 ---
 # <a name="how-to-use-named-entity-recognition-in-text-analytics"></a>Jak używać rozpoznawania jednostek nazwanych w analiza tekstu
 
@@ -117,7 +117,7 @@ NER
 | DateTime      | Zakres dat     | „May 2nd to May 5th”    |
 | DateTime      | Zakres czasu     | „6pm to 7pm”     |
 | DateTime      | Czas trwania      | „1 minute and 45 seconds”   |
-| DateTime      | Zestaw           | „every Tuesday”     |
+| DateTime      | Set           | „every Tuesday”     |
 | Adres URL           | Nie dotyczy\*         | "https:\//www.bing.com"    |
 | Email         | Nie dotyczy\*         | „support@contoso.com” |
 

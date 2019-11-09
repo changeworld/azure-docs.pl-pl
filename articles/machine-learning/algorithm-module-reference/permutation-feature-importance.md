@@ -9,12 +9,12 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 10/10/2019
-ms.openlocfilehash: a1c3bec4b32a9d3450e307f42958bb19263c3d7a
-ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
+ms.openlocfilehash: ddd631b809d4a0635107069f48281db4c0a2e7e0
+ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73717155"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73837551"
 ---
 # <a name="permutation-feature-importance"></a>Ważność funkcji permutacji
 
@@ -24,7 +24,7 @@ W tym module wartości funkcji są losowo przebierane w jedną kolumnę w czasie
 
 Wyniki zwracane przez moduł reprezentują *zmianę* wydajności przeszkolonego modelu, po permutacji. Ważne funkcje są zwykle bardziej wrażliwe na proces Shuffling, więc będą powodować wyższe znaczenie. 
 
-Ten artykuł zawiera omówienie funkcji permutacji, jej teoretyczną podstawę i jej aplikacji w usłudze Machine Learning: [ważność funkcji permutacji](http://blogs.technet.com/b/machinelearning/archive/2015/04/14/permutation-feature-importance.aspx).  
+Ten artykuł zawiera omówienie funkcji permutacji, jej teoretyczną podstawę i jej aplikacji w usłudze Machine Learning: [ważność funkcji permutacji](https://blogs.technet.com/b/machinelearning/archive/2015/04/14/permutation-feature-importance.aspx).  
 
 ## <a name="how-to-use-permutation-feature-importance"></a>Jak używać ważności funkcji permutacji
 

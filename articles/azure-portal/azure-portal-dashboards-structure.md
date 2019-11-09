@@ -13,12 +13,12 @@ ms.tgt_pltfrm: NA
 ms.workload: na
 ms.date: 09/01/2017
 ms.author: kfollis
-ms.openlocfilehash: dccf1550052910269efe156b999882234669d7dc
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: 5933521993b598ae3758df6e2e7dbf61bf424779
+ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 11/08/2019
-ms.locfileid: "73815702"
+ms.locfileid: "73832791"
 ---
 # <a name="the-structure-of-azure-dashboards"></a>Struktura pulpitów nawigacyjnych platformy Azure
 Ten dokument przedstawia strukturę pulpitu nawigacyjnego platformy Azure, korzystając z następującego pulpitu nawigacyjnego:
@@ -295,7 +295,7 @@ Podziel się odpowiednimi sekcjami kodu JSON.  Właściwości najwyższego pozio
 
 ### <a name="the-id-property"></a>Właściwość identyfikatora
 
-Identyfikator zasobu platformy Azure, objęty [konwencjami nazewnictwa zasobów platformy Azure](/azure/cloud-adoption-framework/ready/azure-best-practices/naming-and-tagging). Gdy Portal tworzy pulpit nawigacyjny, zwykle wybiera identyfikator w postaci identyfikatora GUID, ale możesz użyć dowolnej prawidłowej nazwy podczas programowego tworzenia. 
+Identyfikator zasobu platformy Azure, objęty [konwencjami nazewnictwa zasobów platformy Azure](/azure/architecture/best-practices/resource-naming). Gdy Portal tworzy pulpit nawigacyjny, zwykle wybiera identyfikator w postaci identyfikatora GUID, ale możesz użyć dowolnej prawidłowej nazwy podczas programowego tworzenia. 
 
 ### <a name="the-name-property"></a>Właściwość Name
 Nazwa jest segmentem identyfikatora zasobu, który nie zawiera informacji o subskrypcji, typie zasobu lub grupie zasobów. Zasadniczo jest to ostatni segment identyfikatora zasobu.

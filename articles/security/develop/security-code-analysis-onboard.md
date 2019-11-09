@@ -12,12 +12,12 @@ ms.assetid: 521180dc-2cc9-43f1-ae87-2701de7ca6b8
 ms.devlang: na
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.openlocfilehash: 8936bc21af951cbabb90188b6a31d610caf80395
-ms.sourcegitcommit: 6794fb51b58d2a7eb6475c9456d55eb1267f8d40
+ms.openlocfilehash: aaf59de2425e0725958847477f1043a5b7fac68a
+ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70241775"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73839348"
 ---
 # <a name="onboarding-and-installing"></a>Dołączanie i Instalowanie
 
@@ -51,7 +51,7 @@ Wymagania wstępne dotyczące analizy kodu zabezpieczeń firmy Microsoft:
 
 ## <a name="installing-the-microsoft-security-code-analysis-extension"></a>Instalowanie rozszerzenia Microsoft Security code Analysis
 
-1. Po udostępnieniu rozszerzenia organizacji usługi Azure DevOps przejdź do strony organizacji usługi Azure DevOps. Przykładowy adres URL dla takiej strony to http://dev.azure.com/contoso.
+1. Po udostępnieniu rozszerzenia organizacji usługi Azure DevOps przejdź do strony organizacji usługi Azure DevOps. Przykładowy adres URL dla takiej strony jest `https://dev.azure.com/contoso`.
 1. Wybierz ikonę torba do zakupów w prawym górnym rogu obok nazwy, a następnie wybierz pozycję **Zarządzaj rozszerzeniami**.
 1. Wybierz rozszerzenie Microsoft Security code Analysis, a następnie Otwórz Kreatora interfejsu użytkownika usługi Azure DevOps, aby rozpocząć instalację.
 1. Z listy rozwijanej wybierz organizację usługi Azure DevOps, w której ma zostać zainstalowane rozszerzenie.
@@ -65,11 +65,11 @@ Po zainstalowaniu rozszerzenia zadania tworzenia bezpiecznych deweloperów są w
 ## <a name="adding-specific-build-tasks-to-your-azure-devops-pipeline"></a>Dodawanie określonych zadań kompilacji do potoku usługi Azure DevOps
 
 1. W organizacji usługi Azure DevOps Otwórz projekt zespołowy.
-1. Wybierz**kompilacje** **potoki** > .
+1. Wybierz pozycję **potoki** > **kompilacje**.
 1. Wybierz potok, do którego chcesz dodać zadania kompilacji rozszerzenia:
-   - Nowy potok: Wybierz pozycję **Nowy** i postępuj zgodnie z szczegółowymi krokami, aby utworzyć nowy potok.
-   - Edytuj potok: Wybierz istniejący potok, a następnie wybierz pozycję **Edytuj** , aby rozpocząć edytowanie potoku.
-1. Wybierz **+** i przejdź do okienka **Dodawanie zadań** .
+   - Nowy potok: wybierz pozycję **Nowy** i postępuj zgodnie z szczegółowymi krokami, aby utworzyć nowy potok.
+   - Edytuj potok: wybierz istniejący potok, a następnie wybierz pozycję **Edytuj** , aby rozpocząć edytowanie potoku.
+1. Wybierz pozycję **+** i przejdź do okienka **Dodawanie zadań** .
 1. Z listy lub przy użyciu pola wyszukiwania Znajdź zadanie kompilacji, które chcesz dodać. Wybierz pozycję **Dodaj**.
 1. Określ parametry, które są zbędne dla zadania.
 1. Utwórz nową kompilację w kolejce.

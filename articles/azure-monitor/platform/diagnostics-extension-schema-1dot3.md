@@ -7,21 +7,21 @@ ms.topic: reference
 author: rboucher
 ms.author: robb
 ms.date: 09/20/2018
-ms.openlocfilehash: 1d378571a02f30c223338eef5c7d142ed02ff4c8
-ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
+ms.openlocfilehash: 3d79fe6a415b7d1f862797bf41caed89bfe50a41
+ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72555548"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73834746"
 ---
 # <a name="azure-diagnostics-13-and-later-configuration-schema"></a>Diagnostyka Azure 1,3 i nowszy Schemat konfiguracji
 > [!NOTE]
 > Diagnostyka Azure rozszerzenie jest składnikiem używanym do zbierania liczników wydajności i innych statystyk z:
 > - Azure Virtual Machines
-> - Virtual Machine Scale Sets
-> - Sieć szkieletowa usługi
+> - Zestawy skali maszyn wirtualnych
+> - Service Fabric
 > - Cloud Services
-> - Sieciowe grupy zabezpieczeń
+> - Grupy zabezpieczeń sieci
 >
 > Ta strona ma zastosowanie tylko w przypadku korzystania z jednej z tych usług.
 
@@ -411,7 +411,7 @@ Dodano w wersji 1,3.
 Element najwyższego poziomu pliku konfiguracji diagnostyki.  
 
 **Atrybut** xmlns — przestrzeń nazw XML dla pliku konfiguracji diagnostyki:  
-http://schemas.microsoft.com/ServiceHosting/2010/10/DiagnosticsConfiguration  
+`http://schemas.microsoft.com/ServiceHosting/2010/10/DiagnosticsConfiguration`
 
 
 |Elementy podrzędne|Opis|  
@@ -430,7 +430,7 @@ http://schemas.microsoft.com/ServiceHosting/2010/10/DiagnosticsConfiguration
 |**WadCfg**|Wymagany. Zobacz opis w innym miejscu na tej stronie.|  
 |**StorageAccount**|Nazwa konta usługi Azure Storage do przechowywania danych. Może być również określony jako parametr podczas wykonywania polecenia cmdlet Set-AzureServiceDiagnosticsExtension.|  
 |**StorageType**|Może to być *tabela*, *obiekt BLOB*lub *TableAndBlob*. Tabela jest domyślna. Po wybraniu TableAndBlob dane diagnostyczne są zapisywane dwa razy do każdego typu.|  
-|**LocalResourceDirectory**|Katalog na maszynie wirtualnej, w której Agent monitorowania przechowuje dane zdarzenia. Jeśli nie, ustaw, domyślny katalog jest używany:<br /><br /> Dla roli proces roboczy/Sieć Web: `C:\Resources\<guid>\directory\<guid>.<RoleName.DiagnosticStore\`<br /><br /> Dla maszyny wirtualnej: `C:\WindowsAzure\Logs\Plugins\Microsoft.Azure.Diagnostics.IaaSDiagnostics\<WADVersion>\WAD<WADVersion>`<br /><br /> Wymagane atrybuty:<br /><br /> **ścieżka** -  — katalog w systemie, który ma być używany przez Diagnostyka Azure.<br /><br /> - **expandEnvironment** — określa, czy zmienne środowiskowe są rozwinięte w nazwie ścieżki.|  
+|**LocalResourceDirectory**|Katalog na maszynie wirtualnej, w której Agent monitorowania przechowuje dane zdarzenia. Jeśli nie, ustaw, domyślny katalog jest używany:<br /><br /> Dla roli proces roboczy/Sieć Web: `C:\Resources\<guid>\directory\<guid>.<RoleName.DiagnosticStore\`<br /><br /> Dla maszyny wirtualnej: `C:\WindowsAzure\Logs\Plugins\Microsoft.Azure.Diagnostics.IaaSDiagnostics\<WADVersion>\WAD<WADVersion>`<br /><br /> Wymagane atrybuty:<br /><br /> **ścieżka** - — katalog w systemie, który ma być używany przez Diagnostyka Azure.<br /><br /> - **expandEnvironment** — określa, czy zmienne środowiskowe są rozwinięte w nazwie ścieżki.|  
 
 ## <a name="wadcfg-element"></a>WadCFG, element  
  *Drzewo: root-DiagnosticsConfiguration-PublicConfig-WadCFG*
@@ -441,7 +441,7 @@ http://schemas.microsoft.com/ServiceHosting/2010/10/DiagnosticsConfiguration
 ## <a name="diagnosticmonitorconfiguration-element"></a>DiagnosticMonitorConfiguration, element
  *Drzewo: root-DiagnosticsConfiguration-PublicConfig-WadCFG-DiagnosticMonitorConfiguration*
 
- Wymagane
+ Wymagany
 
 |Atrybuty|Opis|  
 |----------------|-----------------|  
@@ -516,8 +516,8 @@ http://schemas.microsoft.com/ServiceHosting/2010/10/DiagnosticsConfiguration
 
 |Elementy podrzędne|Opis|  
 |--------------------|-----------------|  
-|**Pozycjonowa**|Ścieżka bezwzględna do katalogu do monitorowania. Wymagane są następujące atrybuty:<br /><br /> **ścieżka** -  — ścieżka bezwzględna do katalogu do monitorowania.<br /><br /> - **expandEnvironment** — określa, czy zmienne środowiskowe w ścieżce są rozwinięte.|  
-|**LocalResource**|Ścieżka względna do zasobu lokalnego do monitorowania. Wymagane atrybuty:<br /><br /> **nazwa** -  — zasób lokalny zawierający katalog do monitorowania<br /><br /> - **RelativePath** — ścieżka względna do nazwy zawierającej katalog do monitorowania|  
+|**Pozycjonowa**|Ścieżka bezwzględna do katalogu do monitorowania. Wymagane są następujące atrybuty:<br /><br /> **ścieżka** - — ścieżka bezwzględna do katalogu do monitorowania.<br /><br /> - **expandEnvironment** — określa, czy zmienne środowiskowe w ścieżce są rozwinięte.|  
+|**LocalResource**|Ścieżka względna do zasobu lokalnego do monitorowania. Wymagane atrybuty:<br /><br /> **nazwa** - — zasób lokalny zawierający katalog do monitorowania<br /><br /> - **RelativePath** — ścieżka względna do nazwy zawierającej katalog do monitorowania|  
 
 
 
@@ -560,7 +560,7 @@ http://schemas.microsoft.com/ServiceHosting/2010/10/DiagnosticsConfiguration
 
  Umożliwia generowanie tabeli liczników wydajności zoptymalizowanej pod kątem szybkich zapytań. Każdy licznik wydajności, który jest zdefiniowany w elemencie **liczniki wydajności** , jest przechowywany w tabeli metryk oprócz tabeli liczników wydajności.  
 
- Atrybut **ResourceID** jest wymagany.  Identyfikator zasobu maszyny wirtualnej lub zestawu skalowania maszyn wirtualnych, który jest wdrażany Diagnostyka Azure. Pobierz identyfikator **zasobu** z [Azure Portal](https://portal.azure.com). Wybierz kolejno pozycje **przeglądaj**  -> **grupy zasobów**  ->  **< nazwa \>** . Kliknij kafelek **Właściwości** i skopiuj wartość z pola **Identyfikator** .  
+ Atrybut **ResourceID** jest wymagany.  Identyfikator zasobu maszyny wirtualnej lub zestawu skalowania maszyn wirtualnych, który jest wdrażany Diagnostyka Azure. Pobierz identyfikator **zasobu** z [Azure Portal](https://portal.azure.com). Wybierz kolejno pozycje **przeglądaj** -> **grupy zasobów** ->  **< nazwa\>** . Kliknij kafelek **Właściwości** i skopiuj wartość z pola **Identyfikator** .  
 
 |Elementy podrzędne|Opis|  
 |--------------------|-----------------|  
@@ -640,12 +640,12 @@ http://schemas.microsoft.com/ServiceHosting/2010/10/DiagnosticsConfiguration
 
 |Atrybut|Typ|Opis|  
 |---------------|----------|-----------------|  
-|**Nazwij**|string|Ciąg identyfikujący obiekt ujścianame.|  
+|**Nazwij**|ciąg|Ciąg identyfikujący obiekt ujścianame.|  
 
 |Element|Typ|Opis|  
 |-------------|----------|-----------------|  
-|**Application Insights**|string|Używane tylko w przypadku wysyłania danych do Application Insights. Zawiera klucz Instrumentacji dla aktywnego konta Application Insights, do którego masz dostęp.|  
-|**Dyplomatyczn**|string|Jeden dla każdego dodatkowego filtrowania, który przesyła strumieniowo|  
+|**Application Insights**|ciąg|Używane tylko w przypadku wysyłania danych do Application Insights. Zawiera klucz Instrumentacji dla aktywnego konta Application Insights, do którego masz dostęp.|  
+|**Dyplomatyczn**|ciąg|Jeden dla każdego dodatkowego filtrowania, który przesyła strumieniowo|  
 
 ## <a name="channels-element"></a>Element Channels  
  *Drzewo: root-DiagnosticsConfiguration-PublicConfig-WadCFG-SinksConfig-sink-Channels*
@@ -656,7 +656,7 @@ http://schemas.microsoft.com/ServiceHosting/2010/10/DiagnosticsConfiguration
 
 |Element|Typ|Opis|  
 |-------------|----------|-----------------|  
-|**Ukierunkowan**|string|Zobacz opis w innym miejscu na tej stronie.|  
+|**Ukierunkowan**|ciąg|Zobacz opis w innym miejscu na tej stronie.|  
 
 ## <a name="channel-element"></a>Element kanału
  *Drzewo: root-DiagnosticsConfiguration-PublicConfig-WadCFG-SinksConfig-ujścia-Channel*
@@ -676,13 +676,13 @@ http://schemas.microsoft.com/ServiceHosting/2010/10/DiagnosticsConfiguration
 
  Dodano w wersji 1,3.  
 
- Opcjonalne  
+ Optional (Opcjonalność)  
 
  Przechowuje prywatne szczegóły konta magazynu (nazwa, klucz i punkt końcowy). Te informacje są wysyłane do maszyny wirtualnej, ale nie można z niej pobrać.  
 
 |Elementy podrzędne|Opis|  
 |--------------------|-----------------|  
-|**StorageAccount**|Konto magazynu do użycia. Wymagane są następujące atrybuty<br /><br /> **nazwa** -  — nazwa konta magazynu.<br /><br /> **klucz** -  — klucz do konta magazynu.<br /><br /> - **punkt końcowy** — punkt końcowy do uzyskiwania dostępu do konta magazynu. <br /><br /> -**sasToken** (dodano 1.8.1) — w konfiguracji prywatnej można określić token SAS zamiast klucza konta magazynu. Jeśli ta wartość jest określona, klucz konta magazynu jest ignorowany. <br />Wymagania dotyczące tokenu sygnatury dostępu współdzielonego: <br />-Obsługuje tylko token SAS konta <br />- *b*, typy usługi *t* są wymagane. <br /> wymagane są uprawnienia - *a*, *c*, *u*, *w* . <br /> - *c*, *o* typy zasobów są wymagane. <br /> — Obsługuje tylko protokół HTTPS <br /> — Czas rozpoczęcia i wygaśnięcia musi być prawidłowy.|  
+|**StorageAccount**|Konto magazynu do użycia. Wymagane są następujące atrybuty<br /><br /> **nazwa** - — nazwa konta magazynu.<br /><br /> **klucz** - — klucz do konta magazynu.<br /><br /> - **punkt końcowy** — punkt końcowy do uzyskiwania dostępu do konta magazynu. <br /><br /> -**sasToken** (dodano 1.8.1) — w konfiguracji prywatnej można określić token SAS zamiast klucza konta magazynu. Jeśli ta wartość jest określona, klucz konta magazynu jest ignorowany. <br />Wymagania dotyczące tokenu sygnatury dostępu współdzielonego: <br />-Obsługuje tylko token SAS konta <br />- *b*, typy usługi *t* są wymagane. <br /> wymagane są uprawnienia - *a*, *c*, *u*, *w* . <br /> - *c*, *o* typy zasobów są wymagane. <br /> — Obsługuje tylko protokół HTTPS <br /> — Czas rozpoczęcia i wygaśnięcia musi być prawidłowy.|  
 
 
 ## <a name="isenabled-element"></a>IsEnabled, element  

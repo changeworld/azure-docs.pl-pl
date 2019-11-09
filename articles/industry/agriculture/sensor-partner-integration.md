@@ -5,21 +5,22 @@ author: uhabiba04
 ms.topic: article
 ms.date: 11/04/2019
 ms.author: v-umha
-ms.openlocfilehash: e7de815b7254fb071b3094f9ae636b712b38684b
-ms.sourcegitcommit: 018e3b40e212915ed7a77258ac2a8e3a660aaef8
+ms.openlocfilehash: 7a85ed93d9ee01255d809cce84ebe24e6c3f71d1
+ms.sourcegitcommit: 16c5374d7bcb086e417802b72d9383f8e65b24a7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73797688"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73847395"
 ---
 # <a name="sensor-partner-integration"></a>Integracja z partnerem czujnika
-Ten artykuł zawiera informacje na temat składnika usługi Azure FarmBeats **translator** .
+
+Ten artykuł zawiera informacje na temat składnika usługi Azure FarmBeats **translator** , który umożliwia integrację z partnerem czujnika.
 
 Korzystając z tego składnika, partnerzy mogą opracowywać czujniki, które integrują się z FarmBeats, wykorzystując nasz interfejs API i wysyłając dane urządzenia klienta oraz telemetrię do centrum danych FarmBeats. Dane są wizualizowane przy użyciu akceleratora FarmBeats. Dane mogą służyć do łączenia danych oraz do tworzenia modeli maszyn/sztucznej analizy.
 
 ## <a name="link-farmbeats-account"></a>Połącz konto FarmBeats
 
-Gdy klienci zakupili i wdrożono urządzenia/czujniki, mogą uzyskać dostęp do danych urządzenia i telemetrii w portalu SaaS (oprogramowanie jako usługa). Partnerzy urządzeń muszą umożliwić klientom łączenie ich kont z wystąpieniem FarmBeats na platformie Azure. Poniższe poświadczenia są wymagane do wypełnienia przez klienta/SI:
+Gdy klienci zakupili i wdrożono urządzenia/czujniki, mogą uzyskać dostęp do danych urządzenia i telemetrii w portalu SaaS (oprogramowanie jako usługa). Partnerzy urządzeń muszą umożliwić klientom łączenie ich kont z wystąpieniem FarmBeats na platformie Azure. Poniższe poświadczenia są wymagane do wypełnienia przez Integrator klienta/systemu:
 
    - Nazwa wyświetlana (opcjonalne pole dla użytkownika do zdefiniowania nazwy dla tej integracji)
    - Punkt końcowy interfejsu API
@@ -41,14 +42,11 @@ Klienci mają możliwość odłączenia istniejącej integracji FarmBeats. Odł�
 
 ## <a name="edit-farmbeats-integration"></a>Edytuj integrację FarmBeats
 
-Klient może edytować integrację FarmBeats. Podstawowym scenariuszem do edycji jest to, że klucz tajny klienta lub parametry połączenia są zmieniane z powodu wygaśnięcia. w takim przypadku klient może edytować tylko następujące pola.
+Klient może edytować ustawienia integracji FarmBeats, jeśli klucz tajny klienta lub parametry połączenia są zmieniane. W takim przypadku klient może edytować tylko następujące pola:
 
    - Nazwa wyświetlana (jeśli dotyczy)
    - Wpis tajny klienta (powinien być wyświetlany w formacie "2X8 * * * * * * * * *
    - Parametry połączenia (powinny być wyświetlane w postaci "2X8 * * * * * * * * * * *," format lub Pokaż/Ukryj funkcję, a nie zwykły tekst)
-
-   > [!NOTE]
-   > Edycja nie powinna przerywać tworzenia obiektów metadanych.
 
 ## <a name="view-last-telemetry-sent"></a>Wyświetl ostatnie wysłane dane telemetryczne
 
@@ -172,7 +170,7 @@ ParentDeviceId | Identyfikator urządzenia nadrzędnego, z którym jest połącz
   Typ (analogowy, cyfrowy)  |Wzmianka o czujniku analogowym lub cyfrowym|
   instrukcj  | Nazwa producenta |
   ProductCode  | Kod produktu lub nazwa modelu/numer. Na przykład RS-CO2-N01  |
-  Nazwa > SensorMeasures  | Nazwa miary czujnika. Obsługiwane jest tylko małe litery. W przypadku pomiaru z różnych głębokości należy określić głębokość. Na przykład soil_moisture_15cm ta nazwa musi być spójna z danymi telemetrycznymi. |
+  Nazwa > SensorMeasures  | Nazwa miary czujnika. Obsługiwane jest tylko małe litery. W przypadku pomiaru z różnych głębokości należy określić głębokość. Na przykład, soil_moisture_15cm ta nazwa musi być spójna z danymi telemetrycznymi. |
   SensorMeasures > DataType  | Typ danych telemetrii. Obecnie jest obsługiwana Podwójna precyzja  |
   Typ > SensorMeasures  | Typ pomiaru danych telemetrii czujnika. Poniżej przedstawiono typy zdefiniowane przez system: AmbientTemperature, CO2, Głębokość, ElectricalConductivity, LeafWetness, długość, LiquidLevel, azotan, O2, PH, fosforan, PointInTime, potas, ciśnienie, RainGauge, RelativeHumidity, zasolenie, SoilMoisture, SoilTemperature, SolarRadiation, State, TimeDuration, UVRadiation, UVIndex, Volume, WindDirection, WindRun, WindSpeed, Evapotranspiration, PAR. Aby dowiedzieć się więcej, zapoznaj się z interfejsem API/ExtendedType
   Jednostka > SensorMeasures | Jednostka danych telemetrii czujnika. Poniżej przedstawiono jednostki zdefiniowane przez system: nounit, Celsjusza, Fahrenheita, Kelvin, Rankine, Pascal, rtęć, PSI, milimetr, centymetr, metr, cal, stopy, mila, KiloMeter, MilesPerHour, MilesPerSecond, KMPerHour, KMPerSecond, MetersPerHour, MetersPerSecond, stopień, WattsPerSquareMeter, KiloWattsPerSquareMeter, MilliWattsPerSquareCentiMeter, MilliJoulesPerSquareCentiMeter, VolumetricWaterContent, wartość procentowa, PartsPerMillion, MicroMol, MicroMolesPerLiter, SiemensPerSquareMeterPerMole, MilliSiemensPerCentiMeter, Centibar, DeciSiemensPerMeter, KiloPascal, VolumetricIonContent, litr, MilliLiter, seconds, UnixTimestamp, MicroMolPerMeterSquaredPerSecond, InchesPerHour, aby dodać więcej, zapoznaj się z/ Rozszerzony interfejs API
@@ -192,7 +190,7 @@ ParentDeviceId | Identyfikator urządzenia nadrzędnego, z którym jest połącz
   description  | Podaj znaczący opis
   properties  | Dodatkowe właściwości producenta
 
- Aby uzyskać informacje na temat poszczególnych obiektów i ich właściwości, zobacz [Swagger](httpa://aka.ms/FarmBeatsDatahubSwagger).
+ Aby uzyskać informacje na temat poszczególnych obiektów i ich właściwości, zobacz [Swagger](https://aka.ms/FarmBeatsDatahubSwagger).
 
  > [!NOTE]
  > Interfejsy API zwracają unikatowe identyfikatory dla każdego utworzonego wystąpienia. Ten identyfikator musi być zachowywany przez translator w celu zarządzania urządzeniami i synchronizowania metadanych.

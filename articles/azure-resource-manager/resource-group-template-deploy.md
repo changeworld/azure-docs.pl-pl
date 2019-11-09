@@ -6,12 +6,12 @@ ms.service: azure-resource-manager
 ms.topic: conceptual
 ms.date: 08/21/2019
 ms.author: tomfitz
-ms.openlocfilehash: 88aabb676d3a15dd2efff3acd751818301519ae1
-ms.sourcegitcommit: c2e7595a2966e84dc10afb9a22b74400c4b500ed
+ms.openlocfilehash: 0634b069c79495ad6de536b27ebd9981eeb36128
+ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/05/2019
-ms.locfileid: "71972706"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73837091"
 ---
 # <a name="deploy-resources-with-resource-manager-templates-and-azure-powershell"></a>Deploy resources with Resource Manager templates and Azure PowerShell (Wdrażanie zasobów za pomocą szablonów usługi Resource Manager i programu Azure PowerShell)
 
@@ -33,9 +33,11 @@ Aby wdrożyć w **ramach subskrypcji**, użyj polecenie [New-AzDeployment](/powe
 New-AzDeployment -Location <location> -TemplateFile <path-to-template>
 ```
 
-Obecnie wdrożenia grup zarządzania są obsługiwane tylko za pomocą interfejsu API REST. Zobacz [wdrażanie zasobów za pomocą szablonów Menedżer zasobów i Menedżer zasobów interfejsu API REST](resource-group-template-deploy-rest.md).
+Aby uzyskać więcej informacji o wdrożeniach na poziomie subskrypcji, zobacz [Tworzenie grup zasobów i zasobów na poziomie subskrypcji](deploy-to-subscription.md).
 
-W przykładach w tym artykule są używane wdrożenia grup zasobów. Aby uzyskać więcej informacji na temat wdrożeń subskrypcji, zobacz [Tworzenie grup zasobów i zasobów na poziomie subskrypcji](deploy-to-subscription.md).
+Obecnie wdrożenia grup zarządzania są obsługiwane tylko za pomocą interfejsu API REST. Aby uzyskać więcej informacji o wdrożeniach na poziomie grupy zarządzania, zobacz [Tworzenie zasobów na poziomie grupy zarządzania](deploy-to-management-group.md).
+
+W przykładach w tym artykule są używane wdrożenia grup zasobów.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 

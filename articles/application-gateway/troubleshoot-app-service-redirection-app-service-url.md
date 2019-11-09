@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 07/19/2019
 ms.author: absha
-ms.openlocfilehash: 4b233117bc0f967368aeac7baec8c4875aa16826
-ms.sourcegitcommit: bba811bd615077dc0610c7435e4513b184fbed19
+ms.openlocfilehash: ef2bbf8804e96a3e25f053d189c6d85bfa845b0b
+ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/27/2019
-ms.locfileid: "70051428"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73833189"
 ---
 # <a name="troubleshoot-app-service-issues-in-application-gateway"></a>Rozwiązywanie problemów z App Service w programie Application Gateway
 
@@ -39,10 +39,10 @@ Ponadto w przypadku korzystania z usług App Services za bramą aplikacji nazwa 
 
 ## <a name="sample-configuration"></a>Przykładowa konfiguracja
 
-- Odbiornik HTTP: Podstawowa lub wielolokacja
+- Odbiornik HTTP: podstawowa lub wielolokacjowa
 - Pula adresów zaplecza: App Service
-- Ustawienia protokołu HTTP: Włączono **Wybieranie nazwy hosta z adresu zaplecza**
-- Badane **Wybierz nazwę hosta z włączonego ustawienia protokołu HTTP**
+- Ustawienia protokołu HTTP: **Wybierz nazwę hosta z włączonego adresu zaplecza**
+- Sonda: **Wybieranie nazwy hosta z włączonych ustawień protokołu HTTP**
 
 ## <a name="cause"></a>Przyczyna
 
@@ -76,14 +76,14 @@ Set-Cookie: ARRAffinity=b5b1b14066f35b3e4533a1974cacfbbd969bf1960b6518aa2c2e2619
 
 X-Powered-By: ASP.NET
 ```
-W poprzednim przykładzie Zwróć uwagę, że nagłówek odpowiedzi ma kod stanu 301 dla przekierowania. Nagłówek lokalizacji zawiera nazwę hosta usługi App Service, a nie oryginalną nazwę hosta www.contoso.com.
+W poprzednim przykładzie Zwróć uwagę, że nagłówek odpowiedzi ma kod stanu 301 dla przekierowania. Nagłówek lokalizacji zawiera nazwę hosta usługi App Service, a nie oryginalną nazwę hosta `www.contoso.com`.
 
-## <a name="solution-rewrite-the-location-header"></a>Narzędzie Zapisz ponownie nagłówek lokalizacji
+## <a name="solution-rewrite-the-location-header"></a>Rozwiązanie: Zapisz ponownie nagłówek lokalizacji
 
 W nagłówku lokalizacji Ustaw nazwę hosta na nazwę domeny bramy aplikacji. W tym celu należy utworzyć [regułę ponownego zapisywania](https://docs.microsoft.com/azure/application-gateway/rewrite-http-headers) z warunkiem, który oblicza, czy nagłówek lokalizacji w odpowiedzi zawiera azurewebsites.NET. Należy również wykonać akcję, aby ponownie zapisać nagłówek lokalizacji w celu posiadania nazwy hosta bramy aplikacji. Aby uzyskać więcej informacji, zobacz instrukcje dotyczące [ponownego zapisywania nagłówka lokalizacji](https://docs.microsoft.com/azure/application-gateway/rewrite-http-headers#modify-a-redirection-url).
 
 > [!NOTE]
-> Obsługa ponownego zapisywania nagłówka HTTP jest dostępna tylko dla [jednostki SKU Standard_v2 i WAF_v2](https://docs.microsoft.com/azure/application-gateway/application-gateway-autoscaling-zone-redundant) Application Gateway. W przypadku korzystania z jednostki SKU w wersji 1 zalecamy [Migrowanie z wersji od 1 do v2](https://docs.microsoft.com/azure/application-gateway/migrate-v1-v2). Chcesz użyć funkcji ponownego zapisywania i innych [zaawansowanych możliwości](https://docs.microsoft.com/azure/application-gateway/application-gateway-autoscaling-zone-redundant#feature-comparison-between-v1-sku-and-v2-sku) dostępnych w wersji 2 jednostki SKU.
+> Obsługa ponownego zapisywania nagłówka HTTP jest dostępna tylko dla [Standard_v2 i WAF_V2 SKU](https://docs.microsoft.com/azure/application-gateway/application-gateway-autoscaling-zone-redundant) Application Gateway. W przypadku korzystania z jednostki SKU w wersji 1 zalecamy [Migrowanie z wersji od 1 do v2](https://docs.microsoft.com/azure/application-gateway/migrate-v1-v2). Chcesz użyć funkcji ponownego zapisywania i innych [zaawansowanych możliwości](https://docs.microsoft.com/azure/application-gateway/application-gateway-autoscaling-zone-redundant#feature-comparison-between-v1-sku-and-v2-sku) dostępnych w wersji 2 jednostki SKU.
 
 ## <a name="alternate-solution-use-a-custom-domain-name"></a>Alternatywne rozwiązanie: Użyj niestandardowej nazwy domeny
 
@@ -97,9 +97,9 @@ Musisz być członkiem domeny niestandardowej i wykonać następujący proces:
 
     ![Niestandardowa lista domen usługi App Service](./media/troubleshoot-app-service-redirection-app-service-url/appservice-2.png)
 
-- Usługa App Service jest gotowa do zaakceptowania nazwy hosta www.contoso.com. Zmień wpis CNAME w systemie DNS, aby wskazywał z powrotem na nazwę FQDN bramy aplikacji, na przykład appgw.eastus.cloudapp.azure.com.
+- Usługa App Service jest gotowa do akceptowania nazwy hosta `www.contoso.com`. Zmień wpis CNAME w systemie DNS, aby wskazywał z powrotem na nazwę FQDN bramy aplikacji, na przykład `appgw.eastus.cloudapp.azure.com`.
 
-- Upewnij się, że domena www.contoso.com jest rozpoznawana jako nazwa FQDN bramy aplikacji podczas wykonywania zapytania DNS.
+- Upewnij się, że `www.contoso.com` domeny jest rozpoznawana jako nazwa FQDN bramy aplikacji podczas wykonywania zapytania DNS.
 
 - Ustaw niestandardową sondę, aby wyłączyć **Wybieranie nazwy hosta z ustawień protokołu HTTP zaplecza**. W Azure Portal wyczyść pole wyboru w obszarze Ustawienia sondy. W programie PowerShell nie należy używać przełącznika **-PickHostNameFromBackendHttpSettings** w poleceniu **Set-AzApplicationGatewayProbeConfig** . W polu Nazwa hosta sondy wprowadź nazwę FQDN usługi App Service, example.azurewebsites.net. Żądania sondowania wysyłane z bramy aplikacji przenoszą tę nazwę FQDN w nagłówku hosta.
 
@@ -110,7 +110,7 @@ Musisz być członkiem domeny niestandardowej i wykonać następujący proces:
 
 - Skojarz niestandardową sondę z powrotem z ustawieniami protokołu HTTP zaplecza i sprawdź, czy zaplecze jest w dobrej kondycji.
 
-- Brama aplikacji powinna teraz przesłać dalej tę samą nazwę hosta (www.contoso.com) do usługi App Service. Przekierowanie odbywa się na tej samej nazwie hosta. Sprawdź następujące przykładowe nagłówki żądania i odpowiedzi.
+- Brama aplikacji powinna teraz przesłać dalej tę samą nazwę hosta, `www.contoso.com`do usługi App Service. Przekierowanie odbywa się na tej samej nazwie hosta. Sprawdź następujące przykładowe nagłówki żądania i odpowiedzi.
 
 Aby zaimplementować poprzednie kroki przy użyciu programu PowerShell dla istniejącej instalacji, użyj poniższego skryptu programu PowerShell. Zwróć uwagę, jak nie używamy przełączników **-PickHostname** w konfiguracji ustawień sondowania i http.
 

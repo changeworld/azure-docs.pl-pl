@@ -1,26 +1,26 @@
 ---
 title: Skalowanie automatyczne i strefowo nadmiarowa brama aplikacji (wersja 2)
-description: W tym artykule wprowadzono jednostkę SKU aplikacji Azure Application Standard_v2 i WAF_v2, która obejmuje funkcję skalowania automatycznego i strefowo nadmiarowe.
+description: W tym artykule wprowadzono Standard_v2 aplikacji platformy Azure i WAF_v2 jednostki SKU, które obejmują funkcję skalowania automatycznego i strefowo nadmiarowe.
 services: application-gateway
 author: vhorne
 ms.service: application-gateway
 ms.topic: article
-ms.date: 10/09/2019
+ms.date: 11/09/2019
 ms.author: victorh
-ms.openlocfilehash: 3b552d37ce176e76bc0a4230a24a910543e5ea0d
-ms.sourcegitcommit: c4700ac4ddbb0ecc2f10a6119a4631b13c6f946a
+ms.openlocfilehash: 8f3a732d5d6128ff38f81f715113e87710b11c47
+ms.sourcegitcommit: 16c5374d7bcb086e417802b72d9383f8e65b24a7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/27/2019
-ms.locfileid: "72965120"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73847268"
 ---
 # <a name="autoscaling-and-zone-redundant-application-gateway-v2"></a>Skalowanie automatyczne i strefowo nadmiarowa brama aplikacji (wersja 2) 
 
-Application Gateway i Zapora aplikacji sieci Web (WAF) są również dostępne w ramach jednostki SKU Standard_v2 i WAF_v2. Jednostka SKU v2 oferuje ulepszenia wydajności i dodaje obsługę krytycznych nowych funkcji, takich jak Skalowanie automatyczne, nadmiarowość stref i obsługa statycznych adresów VIP. Istniejące funkcje w ramach jednostki SKU w warstwie Standardowa i WAF nadal są obsługiwane w nowej jednostce SKU v2 z kilkoma wyjątkami wymienionymi w sekcji [porównanie](#differences-with-v1-sku) .
+Application Gateway i Zapora aplikacji sieci Web (WAF) są również dostępne w ramach Standard_v2 i WAF_v2 jednostki SKU. Jednostka SKU v2 oferuje ulepszenia wydajności i dodaje obsługę krytycznych nowych funkcji, takich jak Skalowanie automatyczne, nadmiarowość stref i obsługa statycznych adresów VIP. Istniejące funkcje w ramach jednostki SKU w warstwie Standardowa i WAF nadal są obsługiwane w nowej jednostce SKU v2 z kilkoma wyjątkami wymienionymi w sekcji [porównanie](#differences-with-v1-sku) .
 
 Nowa jednostka SKU w wersji 2 obejmuje następujące udoskonalenia:
 
-- **Skalowanie**automatyczne: wdrożenia Application Gateway lub WAF w ramach jednostki SKU skalowania automatycznego można skalować w górę lub w dół w zależności od zmiany wzorców obciążenia ruchu sieciowego. Dzięki skalowaniu automatycznemu nie trzeba również wybierać rozmiaru wdrożenia ani liczby wystąpień podczas aprowizowania usługi. Ta jednostka SKU oferuje prawdziwą elastyczność. W jednostce SKU Standard_v2 i WAF_v2 Application Gateway mogą działać zarówno w stałej pojemności (wyłączone Skalowanie automatyczne), jak i w trybie włączonym skalowaniem automatycznym. Tryb stałej wydajności jest przydatny w scenariuszach z spójnymi i przewidywalnymi obciążeniami. Tryb skalowania automatycznego jest korzystny w aplikacjach, które zobaczą wariancję ruchu aplikacji.
+- **Skalowanie**automatyczne: wdrożenia Application Gateway lub WAF w ramach jednostki SKU skalowania automatycznego można skalować w górę lub w dół w zależności od zmiany wzorców obciążenia ruchu sieciowego. Dzięki skalowaniu automatycznemu nie trzeba również wybierać rozmiaru wdrożenia ani liczby wystąpień podczas aprowizowania usługi. Ta jednostka SKU oferuje prawdziwą elastyczność. W Standard_v2 i WAF_v2 jednostki SKU Application Gateway mogą działać zarówno w stałej pojemności (wyłączone Skalowanie automatyczne), jak i w trybie włączonym skalowaniem automatycznym. Tryb stałej wydajności jest przydatny w scenariuszach z spójnymi i przewidywalnymi obciążeniami. Tryb skalowania automatycznego jest korzystny w aplikacjach, które zobaczą wariancję ruchu aplikacji.
 - **Nadmiarowość stref**: wdrożenie Application Gateway lub WAF może obejmować wiele strefy dostępności, eliminując konieczność udostępniania oddzielnych wystąpień Application Gateway w każdej strefie za pomocą Traffic Manager. Można wybrać jedną strefę lub wiele stref, w których są wdrożone Application Gateway wystąpienia, co sprawia, że jest to bardziej odporne na awarie strefy. Pula zaplecza dla aplikacji może być podobnie dystrybuowana w strefach dostępności.
 
   Nadmiarowość stref jest dostępna tylko w przypadku, gdy dostępne są strefy platformy Azure. W innych regionach obsługiwane są wszystkie inne funkcje. Aby uzyskać więcej informacji, zobacz [co to jest strefy dostępności na platformie Azure?](../availability-zones/az-overview.md#services-support-by-region)
@@ -35,13 +35,13 @@ Nowa jednostka SKU w wersji 2 obejmuje następujące udoskonalenia:
 
 ## <a name="supported-regions"></a>Obsługiwane regiony
 
-Jednostka SKU Standard_v2 i WAF_v2 jest dostępna w następujących regionach: Północno-środkowe stany USA, Południowo-środkowe stany USA, zachodnie stany USA, zachodnie Stany Zjednoczone 2, Wschodnie stany USA, wschodnie Stany Zjednoczone 2, środkowe stany USA, Europa Północna, Europa Zachodnia, Azja Południowo-Wschodnia, Francja środkowa, Zachodnie Zjednoczone Królestwo, Japonia Wschodnia, Japonia Zachodnia, Australia Wschodnia , Australia Południowo-Wschodnia, Brazylia Południowa, Kanada środkowa, Kanada Wschodnia, Azja Wschodnia, Korea środkowa, Korea Południowa, Indie Południowe, Południowe Zjednoczone Królestwo, Indie Środkowe, Indie Zachodnie, Indie Południowe.
+Jednostka SKU Standard_v2 i WAF_v2 jest dostępna w następujących regionach: Północno-środkowe stany USA, Południowo-środkowe stany USA, zachodnie stany USA, zachodnie Stany Zjednoczone 2, Wschodnie stany USA, USA 2, środkowe stany USA, Europa Północna, Europa Zachodnia, Azja Południowo-Wschodnia, Francja Zachodnie Zjednoczone Królestwo środkowa, Stany Zjednoczone, Japonia Wschodnia, Japonia Zachodnia, Australia Wschodnia , Australia Południowo-Wschodnia, Brazylia Południowa, Kanada środkowa, Kanada Wschodnia, Azja Wschodnia, Korea środkowa, Korea Południowa, Indie Południowe, Południowe Zjednoczone Królestwo, Indie Środkowe, Indie Zachodnie, Indie Południowe.
 
 ## <a name="pricing"></a>Cennik
 
 W przypadku jednostki SKU v2 model cenowy jest oparty na zużyciu i nie jest już dołączony do liczby wystąpień ani rozmiarów. Cennik wersji 2 jednostki SKU ma dwa składniki:
 
-- **Stała cena** — cena godzinowa (lub częściowa godzina) do aprowizacji bramy Standard_v2 lub WAF_v2. Należy pamiętać, że 0 dodatkowe wystąpienia w dalszym ciągu zapewniają wysoką dostępność usługi, która jest zawsze dostępna ze stałą ceną.
+- **Stała cena** — cena godzinowa (lub częściowa godzina) do aprowizacji Standard_v2 lub WAF_v2 bramy. Należy pamiętać, że 0 dodatkowe wystąpienia w dalszym ciągu zapewniają wysoką dostępność usługi, która jest zawsze dostępna ze stałą ceną.
 - **Cena jednostkowa wydajności** — koszt oparty na zużyciu jest naliczany wraz z kosztem stałym. Opłata za jednostkę wydajności jest też obliczana godzinowo lub częściowo godzinowo. Jednostka wydajności ma trzy wymiary: jednostkę obliczeniową, połączenia trwałe i przepływność. Jednostka obliczeniowa jest miarą użycia wydajności procesora. Czynniki wpływające na jednostkę obliczeniową to połączenia TLS/s, obliczenia ponownego zapisu adresów URL i przetwarzanie reguł WAF. Połączenie trwałe to miara ustanowionych połączeń TCP z bramą aplikacji w danym interwale rozliczeniowym. Przepływność jest średnimi Megabitami/s przetworzonymi przez system w danym interwale rozliczeniowym.  Rozliczenia odbywają się na poziomie jednostki pojemności dla wszystkiego powyżej liczby wystąpień zarezerwowanych.
 
 Każda jednostka pojemności składa się z maksymalnie: 1 jednostki obliczeniowej lub 2500 połączeń trwałych lub przepływności 2,22 MB/s.
@@ -68,7 +68,7 @@ Aby uzyskać więcej informacji o cenach, zobacz [stronę z cennikiem](https://a
 
 **Przykład 1**
 
-Application Gateway Standard_v2 jest inicjowana bez skalowania automatycznego w trybie skalowania ręcznego ze stałą pojemnością pięciu wystąpień.
+Standard_v2 Application Gateway jest inicjowana bez skalowania automatycznego w trybie skalowania ręcznego ze stałą pojemnością pięciu wystąpień.
 
 Stała cena = 744 (godziny) * $0,20 = $148,8 <br>
 Jednostki pojemności = 744 (godz.) * 10 jednostek wydajności na wystąpienie * 5 wystąpień * $0,008 za godzinę jednostki pojemności = $297,6
@@ -77,7 +77,7 @@ Jednostki pojemności = 744 (godz.) * 10 jednostek wydajności na wystąpienie *
 
 **Przykład 2**
 
-Application Gateway standard_v2 jest inicjowany przez miesiąc, z 0 minimalnymi wystąpieniami, a w tym czasie otrzymuje 25 nowych połączeń SSL/s, średnia 8,88-MB/s transferu danych. Przy założeniu, że połączenia są krótkotrwałe, cena będzie:
+Application Gateway standard_v2 jest inicjowana przez miesiąc, z zerowymi wystąpieniami i w tym momencie otrzymuje 25 nowych połączeń SSL/s, średnia z 8,88-MB/s transfer danych. Przy założeniu, że połączenia są krótkotrwałe, cena będzie:
 
 Stała cena = 744 (godziny) * $0,20 = $148,8
 
@@ -85,7 +85,7 @@ Cena jednostkowa wydajności = 744 (godz.) * Max (25/50 jednostek obliczeniowych
 
 Łączna cena = $148.8 + 23.81 = $172,61
 
-Jak widać, opłaty są naliczane za 4 jednostki wydajności, a nie dla całego wystąpienia. 
+Jak widać, opłaty są naliczane tylko za cztery jednostki pojemności, a nie dla całego wystąpienia. 
 
 > [!NOTE]
 > Funkcja Max zwraca największą wartość w parze wartości.
@@ -93,7 +93,7 @@ Jak widać, opłaty są naliczane za 4 jednostki wydajności, a nie dla całego 
 
 **Przykład 3**
 
-Application Gateway standard_v2 jest inicjowana przez miesiąc z co najmniej 5 wystąpieniami. Przy założeniu, że ruch i połączenia są krótkotrwałe, cena będzie następująca:
+Application Gateway standard_v2 jest inicjowana przez miesiąc z co najmniej pięcioma wystąpieniami. Przy założeniu, że ruch i połączenia są krótkotrwałe, cena będzie następująca:
 
 Stała cena = 744 (godziny) * $0,20 = $148,8
 
@@ -101,11 +101,11 @@ Cena jednostki wydajności = 744 (godz.) * Max (0/50 jednostek obliczeniowych dl
 
 Łączna cena = $148.80 + 297.60 = $446,4
 
-W tym przypadku opłaty są naliczane w całości z 5 wystąpień, nawet jeśli nie ma żadnego ruchu.
+W tym przypadku opłaty są naliczane w całości z pięciu wystąpień nawet wtedy, gdy nie ma żadnego ruchu.
 
 **Przykład 4**
 
-Application Gateway standard_v2 jest inicjowana przez miesiąc z co najmniej 5 wystąpieniami, ale ten czas jest średnim transferem danych 125 – MB/s i 25 połączeniami SSL na sekundę. Przy założeniu, że ruch i połączenia są krótkotrwałe, cena będzie następująca:
+Application Gateway standard_v2 jest inicjowana przez miesiąc, z co najmniej pięcioma wystąpieniami, ale ten czas jest średnim 125-MB/s i 25 połączeniami SSL na sekundę. Przy założeniu, że ruch i połączenia są krótkotrwałe, cena będzie następująca:
 
 Stała cena = 744 (godziny) * $0,20 = $148,8
 
@@ -113,11 +113,11 @@ Cena jednostkowa wydajności = 744 (godz.) * Max (25/50 jednostek obliczeniowych
 
 Łączna cena = $148.80 + 339.26 = $488,06
 
-W tym przypadku opłaty są naliczane za całe 5 wystąpień oraz 7 jednostek pojemności (czyli 7/10 wystąpienia).  
+W tym przypadku opłaty są naliczane za całe pięć wystąpień oraz siedem jednostek pojemności (czyli 7/10 wystąpienia).  
 
 **Przykład 5**
 
-Application Gateway WAF_v2 jest inicjowany przez miesiąc. W tym czasie otrzymujesz 25 nowych połączeń SSL/s, średnia z 8,88-MB/s transmisji danych i wysyła żądania 80 na sekundę. Przy założeniu, że połączenia są krótkotrwałe i obliczenia jednostek obliczeniowych dla aplikacji obsługują 10 RPS pliku na jednostkę obliczeniową, cena będzie:
+WAF_v2 Application Gateway jest inicjowany przez miesiąc. W tym czasie otrzymujesz 25 nowych połączeń SSL/s, średnia z 8,88-MB/s transmisji danych i wysyła żądania 80 na sekundę. Przy założeniu, że połączenia są krótkotrwałe i obliczenia jednostek obliczeniowych dla aplikacji obsługują 10 RPS pliku na jednostkę obliczeniową, cena będzie:
 
 Stała cena = 744 (godziny) * $0,36 = $267,84
 
@@ -132,7 +132,7 @@ Cena jednostkowa wydajności = 744 (godz.) * Max (maksymalna liczba jednostek ob
 
 Application Gateway i WAF można skonfigurować do skalowania w dwóch trybach:
 
-- **Skalowanie** automatyczne — z włączonym skalowaniem automatycznym jednostki SKU Application Gateway i WAF v2 są skalowane w górę lub w dół na podstawie wymagań dotyczących ruchu aplikacji. Ten tryb oferuje lepszą elastyczność aplikacji i eliminuje konieczność odgadnięcia rozmiaru bramy aplikacji lub liczby wystąpień. Ten tryb pozwala także zaoszczędzić koszt przez niewymaganie, aby brama działała na szczytowej pojemności dla przewidywanego maksymalnego obciążenia ruchem. Należy określić minimalną i opcjonalną maksymalną liczbę wystąpień. Minimalna pojemność zapewnia, że Application Gateway i WAF v2 nie spadnie poniżej minimalnej określonej liczby wystąpień, nawet w przypadku braku ruchu. Każde wystąpienie liczy się jako 10 dodatkowych jednostek pojemności zarezerwowanych. 0 oznacza brak zarezerwowanej pojemności i ma charakter wyłącznie Skalowanie automatyczne. Należy pamiętać, że 0 dodatkowe wystąpienia w dalszym ciągu zapewniają wysoką dostępność usługi, która jest zawsze dostępna ze stałą ceną. Opcjonalnie można również określić maksymalną liczbę wystąpień, która zapewnia, że Application Gateway nie będzie skalowana poza określoną liczbę wystąpień. Opłaty są naliczane za ilość ruchu obsługiwanego przez bramę. Liczba wystąpień może być z zakresu od 0 do 125. Wartość domyślna maksymalna liczba wystąpień to 20, jeśli nie zostanie określona.
+- **Skalowanie** automatyczne — z włączonym skalowaniem automatycznym jednostki SKU Application Gateway i WAF v2 są skalowane w górę lub w dół na podstawie wymagań dotyczących ruchu aplikacji. Ten tryb oferuje lepszą elastyczność aplikacji i eliminuje konieczność odgadnięcia rozmiaru bramy aplikacji lub liczby wystąpień. Ten tryb pozwala także zaoszczędzić koszt przez niewymaganie, aby brama działała na szczytowej pojemności dla przewidywanego maksymalnego obciążenia ruchem. Należy określić minimalną i opcjonalną maksymalną liczbę wystąpień. Minimalna pojemność zapewnia, że Application Gateway i WAF v2 nie spadnie poniżej minimalnej określonej liczby wystąpień, nawet w przypadku braku ruchu. Każde wystąpienie liczy się jako 10 dodatkowych jednostek pojemności zarezerwowanych. Zero oznacza brak zarezerwowanej pojemności i ma charakter wyłącznie Skalowanie automatyczne. Należy pamiętać, że zero dodatkowych wystąpień w dalszym ciągu zapewnia wysoką dostępność usługi, która jest zawsze dostępna ze stałą ceną. Opcjonalnie można również określić maksymalną liczbę wystąpień, która zapewnia, że Application Gateway nie będzie skalowana poza określoną liczbę wystąpień. Opłaty są naliczane za ilość ruchu obsługiwanego przez bramę. Liczba wystąpień może być z zakresu od 0 do 125. Wartość domyślna maksymalna liczba wystąpień to 20, jeśli nie zostanie określona.
 - **Ręczne** — możesz alternatywnie wybrać tryb ręczny, w którym Brama nie będzie automatycznie skalowana. W tym trybie, jeśli ruch jest większy niż obsługiwane Application Gateway lub WAF, może to spowodować utratę ruchu. W trybie ręcznym określenie liczby wystąpień jest obowiązkowe. Liczba wystąpień może się różnić od 1 do 125 wystąpień.
 
 ## <a name="feature-comparison-between-v1-sku-and-v2-sku"></a>Porównanie funkcji między jednostką SKU V1 i jednostką SKU v2
@@ -151,6 +151,7 @@ Poniższa tabela zawiera porównanie funkcji dostępnych w poszczególnych jedno
 | Hostowanie wielu witryn                             | &#x2713; | &#x2713; |
 | Przekierowywanie ruchu                               | &#x2713; | &#x2713; |
 | Zapora aplikacji internetowej                    | &#x2713; | &#x2713; |
+| Reguły niestandardowe zapory aplikacji internetowej                                  |          | &#x2713; |
 | Kończenie żądań protokołu Secure Sockets Layer (SSL)            | &#x2713; | &#x2713; |
 | Kompleksowe szyfrowanie SSL                         | &#x2713; | &#x2713; |
 | Koligacja sesji                                  | &#x2713; | &#x2713; |
@@ -167,9 +168,9 @@ Poniższa tabela zawiera porównanie funkcji dostępnych w poszczególnych jedno
 |Występują|Szczegóły|
 |--|--|
 |Certyfikat uwierzytelniania|Nieobsługiwane.<br>Aby uzyskać więcej informacji, zobacz [Omówienie kompleksowej usługi SSL z Application Gateway](ssl-overview.md#end-to-end-ssl-with-the-v2-sku).|
-|Mieszanie Standard_v2 i standardowych Application Gateway w tej samej podsieci|Brak obsługi|
-|Trasa zdefiniowana przez użytkownika (UDR) w podsieci Application Gateway|Brak obsługi|
-|SIECIOWEJ grupy zabezpieczeń dla zakresu portów przychodzących| -65200 do 65535 dla jednostki SKU Standard_v2<br>-65503 do 65534 dla standardowej jednostki SKU.<br>Aby uzyskać więcej informacji, zobacz [często zadawane pytania](application-gateway-faq.md#are-network-security-groups-supported-on-the-application-gateway-subnet).|
+|Mieszanie Standard_v2 i Application Gateway standardowych w tej samej podsieci|Nieobsługiwane|
+|Trasa zdefiniowana przez użytkownika (UDR) w podsieci Application Gateway|Nieobsługiwane|
+|SIECIOWEJ grupy zabezpieczeń dla zakresu portów przychodzących| -65200 do 65535 dla Standard_v2 jednostki SKU<br>-65503 do 65534 dla standardowej jednostki SKU.<br>Aby uzyskać więcej informacji, zobacz [często zadawane pytania](application-gateway-faq.md#are-network-security-groups-supported-on-the-application-gateway-subnet).|
 |Dzienniki wydajności w usłudze Diagnostyka Azure|Nieobsługiwane.<br>Należy używać metryk platformy Azure.|
 |Rozliczenia|Rozliczenia zaplanowane do rozpoczęcia od 1 lipca 2019.|
 |Tryb FIPS|Te nie są obecnie obsługiwane.|

@@ -1,5 +1,5 @@
 ---
-title: Kopiowanie danych między Azure Data Lake Storage Gen1 i Azure SQL Database przy użyciu Sqoop | Microsoft Docs
+title: Kopiowanie danych między Data Lake Storage Gen1 i Azure SQL-Sqoop | Microsoft Docs
 description: Użyj Sqoop do kopiowania danych między Azure SQL Database i Azure Data Lake Storage Gen1
 services: data-lake-store
 author: twooley
@@ -7,12 +7,12 @@ ms.service: data-lake-store
 ms.topic: conceptual
 ms.date: 07/30/2019
 ms.author: twooley
-ms.openlocfilehash: 22789deca0934a9d4e88d587cd24aacacc9b12c6
-ms.sourcegitcommit: 08d3a5827065d04a2dc62371e605d4d89cf6564f
+ms.openlocfilehash: cf3893706afcb4c4cc5b90dd3d2431ecedc71d0a
+ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68620012"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73839057"
 ---
 # <a name="copy-data-between-data-lake-storage-gen1-and-azure-sql-database-using-sqoop"></a>Kopiuj dane między Data Lake Storage Gen1 i Azure SQL Database przy użyciu Sqoop
 
@@ -69,9 +69,9 @@ Przed rozpoczęciem należy wykonać następujące czynności:
 
 ## <a name="use-sqoop-from-an-hdinsight-cluster-with-access-to-data-lake-storage-gen1"></a>Korzystanie z Sqoop z klastra usługi HDInsight z dostępem do Data Lake Storage Gen1
 
-Dla klastra HDInsight An dostępne są już pakiety Sqoop. Jeśli klaster usługi HDInsight został skonfigurowany tak, aby używał Data Lake Storage Gen1 jako dodatkowego magazynu, możesz użyć Sqoop (bez zmian konfiguracji), aby zaimportować/wyeksportować dane między relacyjną bazą danych, taką jak Azure SQL Database, a kontem Data Lake Storage Gen1 .
+Dla klastra HDInsight An dostępne są już pakiety Sqoop. Jeśli klaster usługi HDInsight został skonfigurowany tak, aby używał Data Lake Storage Gen1 jako dodatkowego magazynu, możesz użyć Sqoop (bez zmian konfiguracji), aby zaimportować/wyeksportować dane między relacyjną bazą danych, taką jak Azure SQL Database, a kontem Data Lake Storage Gen1.
 
-1. W tym artykule przyjęto założenie, że utworzono klaster systemu Linux, dlatego należy użyć protokołu SSH do nawiązania połączenia z klastrem. Zobacz [nawiązywanie połączenia](../hdinsight/hdinsight-hadoop-linux-use-ssh-unix.md)z klastrem usługi HDInsight opartej na systemie Linux.
+1. W tym artykule przyjęto założenie, że utworzono klaster systemu Linux, dlatego należy użyć protokołu SSH do nawiązania połączenia z klastrem. Zobacz [nawiązywanie połączenia z klastrem usługi HDInsight opartej](../hdinsight/hdinsight-hadoop-linux-use-ssh-unix.md)na systemie Linux.
 
 1. Sprawdź, czy możesz uzyskać dostęp do konta Data Lake Storage Gen1 z klastra. Uruchom następujące polecenie w wierszu polecenia SSH:
 
@@ -81,7 +81,7 @@ Dla klastra HDInsight An dostępne są już pakiety Sqoop. Jeśli klaster usług
 
 ### <a name="import-data-from-azure-sql-database-into-data-lake-storage-gen1"></a>Importuj dane z Azure SQL Database do Data Lake Storage Gen1
 
-1. Przejdź do katalogu, w którym są dostępne pakiety Sqoop. Zwykle jest `/usr/hdp/<version>/sqoop/bin`to lokalizacja.
+1. Przejdź do katalogu, w którym są dostępne pakiety Sqoop. Zazwyczaj ta lokalizacja jest `/usr/hdp/<version>/sqoop/bin`.
 
 1. Zaimportuj dane z programu **Tabela1** do konta Data Lake Storage Gen1. Użyj następującej składni:
 
@@ -89,7 +89,7 @@ Dla klastra HDInsight An dostępne są już pakiety Sqoop. Jeśli klaster usług
 
    Symbol zastępczy **SQL-Database-Server-Name** reprezentuje nazwę serwera, na którym działa baza danych SQL Azure. Symbol zastępczy **SQL-Database-Name** reprezentuje rzeczywistą nazwę bazy danych.
 
-   Na przykład
+   Na przykład:
 
        sqoop-import --connect "jdbc:sqlserver://mysqoopserver.database.windows.net:1433;username=twooley@mysqoopserver;password=<password>;database=mysqoopdatabase" --table Table1 --target-dir adl://myadlsg1store.azuredatalakestore.net/Sqoop/SqoopImportTable1
 
@@ -113,7 +113,7 @@ Dla klastra HDInsight An dostępne są już pakiety Sqoop. Jeśli klaster usług
 
        sqoop-export --connect "jdbc:sqlserver://<sql-database-server-name>.database.windows.net:1433;username=<username>@<sql-database-server-name>;password=<password>;database=<sql-database-name>" --table Table2 --export-dir adl://<data-lake-storage-gen1-name>.azuredatalakestore.net/Sqoop/SqoopImportTable1 --input-fields-terminated-by ","
 
-   Na przykład
+   Na przykład:
 
        sqoop-export --connect "jdbc:sqlserver://mysqoopserver.database.windows.net:1433;username=twooley@mysqoopserver;password=<password>;database=mysqoopdatabase" --table Table2 --export-dir adl://myadlsg1store.azuredatalakestore.net/Sqoop/SqoopImportTable1 --input-fields-terminated-by ","
 
@@ -134,7 +134,7 @@ Dla klastra HDInsight An dostępne są już pakiety Sqoop. Jeśli klaster usług
 
 Aby uzyskać informacje o wydajności dostrajania Sqoop zadania do kopiowania danych do Data Lake Storage Gen1, zobacz wpis w blogu dotyczącym [wydajności Sqoop](https://blogs.msdn.microsoft.com/bigdatasupport/2015/02/17/sqoop-job-performance-tuning-in-hdinsight-hadoop/).
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 * [Kopiowanie danych z obiektów BLOB usługi Azure Storage do Data Lake Storage Gen1](data-lake-store-copy-data-azure-storage-blob.md)
 * [Zabezpieczanie danych w usłudze Data Lake Storage 1. generacji](data-lake-store-secure-data.md)

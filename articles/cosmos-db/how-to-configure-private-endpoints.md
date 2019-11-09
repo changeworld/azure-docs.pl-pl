@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.author: thweiss
-ms.openlocfilehash: 34b54459629560ba80e6a38d10edbab32ea44778
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: 3f987b9e05bcdcda9afe26a1eb1354e5e2450ac5
+ms.sourcegitcommit: 16c5374d7bcb086e417802b72d9383f8e65b24a7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 11/08/2019
-ms.locfileid: "73820151"
+ms.locfileid: "73846532"
 ---
 # <a name="configure-azure-private-link-for-an-azure-cosmos-account-preview"></a>Konfigurowanie prywatnego linku platformy Azure dla konta usługi Azure Cosmos (wersja zapoznawcza)
 
@@ -86,7 +86,7 @@ W poniższej tabeli przedstawiono mapowanie między różnymi typami interfejsó
 
 ### <a name="fetch-the-private-ip-addresses"></a>Pobierz prywatne adresy IP
 
-Po aprowizacji prywatnego punktu końcowego możesz wysyłać zapytania dotyczące adresów IP. Aby wyświetlić adresy IP z Azure Portal. Wybierz pozycję **wszystkie zasoby**, Wyszukaj prywatny punkt końcowy utworzony wcześniej w tym przypadku "dbPrivateEndpoint3" i wybierz kartę Przegląd, aby wyświetlić ustawienia DNS i adresy IP:
+Po aprowizacji prywatnego punktu końcowego możesz wysyłać zapytania dotyczące adresów IP. Aby wyświetlić adresy IP z Azure Portal, wybierz pozycję **wszystkie zasoby**, Wyszukaj prywatny punkt końcowy utworzony wcześniej w tym przypadku jest to "dbPrivateEndpoint3" i wybierz kartę Przegląd, aby wyświetlić ustawienia DNS i adresy IP:
 
 ![Prywatne adresy IP w Azure Portal](./media/how-to-configure-private-endpoints/private-ip-addresses-portal.png)
 
@@ -354,7 +354,7 @@ Dodawanie lub usuwanie regionów na koncie usługi Azure Cosmos wymaga dodania l
 
 Na przykład w przypadku wdrożenia konta usługi Azure Cosmos w 3 regionach: "zachodnie stany USA", "środkowe stany US" i "Europa Zachodnia". W przypadku tworzenia prywatnego punktu końcowego dla konta w podsieci są zastrzeżone 4 prywatne adresy IP. Jeden dla każdego regionu, który liczy się do łącznej liczby 3 i jeden dla punktu końcowego Global/region-niezależny od.
 
-Później, jeśli dodasz nowy region, na przykład "Wschodnie stany USA" do konta usługi Azure Cosmos. Domyślnie nowy region nie jest dostępny z istniejącego prywatnego punktu końcowego. Administrator konta usługi Azure Cosmos powinien odświeżyć połączenie prywatnego punktu końcowego przed uzyskaniem dostępu do niego w nowym regionie. 
+Później, jeśli dodasz nowy region, na przykład "Wschodnie stany USA" do konta usługi Azure Cosmos. Domyślnie nowy region nie jest dostępny z istniejącego prywatnego punktu końcowego. Administrator konta usługi Azure Cosmos powinien odświeżyć połączenie prywatnego punktu końcowego przed uzyskaniem dostępu do niego z nowego regionu. 
 
 Po uruchomieniu polecenia ` Get-AzPrivateEndpoint -Name <your private endpoint name> -ResourceGroupName <your resource group name>` dane wyjściowe polecenia zawierają parametr `actionsRequired`, który jest ustawiony na "Recreate". Ta wartość wskazuje, że prywatny punkt końcowy powinien być odświeżony. Następnie administrator konta usługi Azure Cosmos uruchamia polecenie `Set-AzPrivateEndpoint`, aby wyzwolić odświeżanie prywatnego punktu końcowego.
 

@@ -7,12 +7,12 @@ ms.service: firewall
 ms.date: 4/10/2019
 ms.author: victorh
 ms.topic: conceptual
-ms.openlocfilehash: 494beb6ba2bf8a9409962b4418089cdad0e182e1
-ms.sourcegitcommit: 8e1fb03a9c3ad0fc3fd4d6c111598aa74e0b9bd4
+ms.openlocfilehash: 7f48012ca1f97c2e28380d95da37863c4bc17f63
+ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70114779"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73831843"
 ---
 # <a name="deploy-and-configure-azure-firewall-using-azure-powershell"></a>Wdrażanie i Konfigurowanie zapory platformy Azure przy użyciu Azure PowerShell
 
@@ -220,7 +220,7 @@ Teraz Przetestuj zaporę, aby upewnić się, że działa zgodnie z oczekiwaniami
    $NIC.IpConfigurations.PrivateIpAddress
    ```
 
-1. Połącz pulpit zdalny z maszyną wirtualną z przeskokiem **SRV** i zaloguj się. W tym miejscu Otwórz połączenie pulpitu zdalnego z prywatnym adresem IP **SRV** i zaloguj się.
+1. Połącz pulpit zdalny z maszyną wirtualną z **przeskokiem SRV** i zaloguj się. W tym miejscu Otwórz połączenie pulpitu zdalnego z prywatnym adresem IP **SRV** i zaloguj się.
 
 3. W obszarze **SRV (Pracuj**) Otwórz okno programu PowerShell i uruchom następujące polecenia:
 
@@ -241,7 +241,7 @@ Teraz Przetestuj zaporę, aby upewnić się, że działa zgodnie z oczekiwaniami
    Invoke-WebRequest -Uri https://www.microsoft.com
    ```
 
-   Żądania www.google.com powinny się zakończyć pomyślnie, a żądania www.microsoft.com powinny kończyć się niepowodzeniem. Pokazuje to, że reguły zapory działają zgodnie z oczekiwaniami.
+   Żądania `www.google.com` powinny się zakończyć pomyślnie, a żądania `www.microsoft.com` powinny kończyć się niepowodzeniem. Pokazuje to, że reguły zapory działają zgodnie z oczekiwaniami.
 
 Teraz sprawdzono, że reguły zapory działają:
 
@@ -258,4 +258,4 @@ Remove-AzResourceGroup -Name Test-FW-RG
 
 ## <a name="next-steps"></a>Następne kroki
 
-* [Samouczek: Monitorowanie dzienników usługi Azure Firewall](./tutorial-diagnostics.md)
+* [Samouczek: monitorowanie dzienników usługi Azure Firewall](./tutorial-diagnostics.md)

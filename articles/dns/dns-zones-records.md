@@ -15,12 +15,12 @@ ms.custom: H1Hack27Feb2017
 ms.workload: infrastructure-services
 ms.date: 12/18/2017
 ms.author: victorh
-ms.openlocfilehash: ccc418cd3af14c0468ab8d669ad2e2e11a0b6d57
-ms.sourcegitcommit: a4b5d31b113f520fcd43624dd57be677d10fc1c0
+ms.openlocfilehash: fdf9b60e38ad37334fe6183bb1a9c60cce9f85e1
+ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70772269"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73832037"
 ---
 # <a name="overview-of-dns-zones-and-records"></a>Przegląd stref i rekordów DNS
 
@@ -30,7 +30,7 @@ Na tej stronie objaśniono kluczowe pojęcia dotyczące domen, stref DNS i rekor
 
 System nazw domen (DNS, Domain Name System) jest hierarchią domen. Hierarchia rozpoczyna się od domeny głównej, której nazwa to po prostu „ **.** ”.  Poniżej są domeny najwyższego poziomu, takie jak „com”, „net”, „org”, „uk” lub „jp”.  Pod nimi są domeny drugiego poziomu, takie jak „org.uk” lub „co.jp”. Domeny w hierarchii DNS są dystrybuowane globalnie, hostowane przez serwery nazw DNS na całym świecie.
 
-Rejestrator nazw domen to organizacja, która umożliwia zakupienie nazwy domeny, takiej jak "contoso.com".  Zakup nazwy domeny daje prawo do kontrolowania hierarchii DNS pod tą nazwą, na przykład w celu skierowania nazwy www.contoso.com do firmowej witryny sieci Web. Rejestrator może hostować domenę we własnych serwerach nazw w Twoim imieniu lub zezwolić na Określanie alternatywnych serwerów nazw.
+Rejestrator nazw domen to organizacja, która umożliwia zakupienie nazwy domeny, takiej jak `contoso.com`.  Zakup nazwy domeny daje prawo do kontrolowania hierarchii DNS pod tą nazwą, na przykład w celu skierowania nazwy `www.contoso.com` do firmowej witryny sieci Web. Rejestrator może hostować domenę we własnych serwerach nazw w Twoim imieniu lub zezwolić na Określanie alternatywnych serwerów nazw.
 
 Azure DNS oferuje globalnie dystrybuowaną infrastrukturę serwera nazw o wysokiej dostępności, której można używać do hostowania domeny. Hosting domen w Azure DNS umożliwia zarządzanie rekordami DNS przy użyciu tych samych poświadczeń, interfejsów API, narzędzi, rozliczeń i pomocy technicznej co w przypadku innych usług platformy Azure.
 
@@ -54,12 +54,12 @@ W Azure DNS czas TTL jest określany dla zestawu rekordów, a nie dla każdego r
 
 Usługa DNS platformy Azure obsługuje [rekordy z użyciem symboli wieloznacznych](https://en.wikipedia.org/wiki/Wildcard_DNS_record). Rekordy symboli wieloznacznych są zwracane w odpowiedzi na dowolne zapytanie o pasującej nazwie (chyba że istnieje bliższe dopasowanie z zestawu rekordów innego niż symbol wieloznaczny). Azure DNS obsługuje wieloznaczne zestawy rekordów dla wszystkich typów rekordów, z wyjątkiem NS i SOA.
 
-Aby utworzyć zestaw rekordów z symbolami wieloznacznymi, użyj nazwy\*zestawu rekordów "". Alternatywnie można również użyć nazwy z "\*" jako jej lewej strony etykiety, na przykład "\*. foo".
+Aby utworzyć zestaw rekordów z symbolami wieloznacznymi, użyj nazwy zestawu rekordów "\*". Alternatywnie można również użyć nazwy z "\*" jako jej lewej strony, na przykład "\*. foo".
 
 ### <a name="caa-records"></a>CAA rekordy
 
 Rekordy CAA umożliwiają właścicielom domeny Określanie, które urzędy certyfikacji są autoryzowane do wystawiania certyfikatów dla ich domeny. Dzięki temu urzędy certyfikacji mogą uniknąć nieprawidłowo wystawiania certyfikatów w pewnych okolicznościach. Rekordy CAA mają trzy właściwości:
-* **Flagi**: Jest to liczba całkowita z zakresu od 0 do 255, używana do reprezentowania flagi krytycznej, która ma specjalne znaczenie dla elementu [RFC](https://tools.ietf.org/html/rfc6844#section-3)
+* **Flagi**: jest to liczba całkowita z zakresu od 0 do 255, używana do reprezentowania flagi krytycznej, która ma specjalne znaczenie dla elementu [RFC](https://tools.ietf.org/html/rfc6844#section-3)
 * **Tag**: ciąg ASCII, który może mieć jedną z następujących wartości:
     * **problem**: Użyj tego, jeśli chcesz określić urzędy certyfikacji, które mogą wystawiać certyfikaty (wszystkie typy)
     * **issuewild**: Użyj tego, jeśli chcesz określić urzędy certyfikacji, które mogą wystawiać certyfikaty (tylko Certyfikaty wieloznaczne)
@@ -70,7 +70,7 @@ Rekordy CAA umożliwiają właścicielom domeny Określanie, które urzędy cert
 
 Zestawy rekordów CNAME nie mogą współistnieć z innymi zestawami rekordów o tej samej nazwie. Na przykład nie można utworzyć zestawu rekordów CNAME o nazwie względnej "www" i rekordzie A o nazwie względnej "www" w tym samym czasie.
 
-Ponieważ Apex strefy (nazwa = '\@') zawsze zawiera zestawy rekordów NS i SOA, które zostały utworzone podczas tworzenia strefy, nie można utworzyć zestawu rekordów CNAME w wierzchołku strefy.
+Ponieważ Apex strefy (nazwa = "\@") zawsze zawiera zestawy rekordów NS i SOA, które zostały utworzone podczas tworzenia strefy, nie można utworzyć zestawu rekordów CNAME w wierzchołku strefy.
 
 Te ograniczenia powstają na podstawie standardów DNS i nie są ograniczeniami Azure DNS.
 
@@ -84,7 +84,7 @@ Ma to zastosowanie tylko do zestawu rekordów NS w wierzchołku strefy. Inne zes
 
 ### <a name="soa-records"></a>Rekordy SOA
 
-Zestaw rekordów SOA jest tworzony automatycznie w wierzchołku każdej strefy (nazwa = '\@') i jest automatycznie usuwany po usunięciu strefy.  Rekordy SOA nie mogą być tworzone ani usuwane osobno.
+Zestaw rekordów SOA jest tworzony automatycznie na wierzchołku każdej strefy (Name = "\@") i jest automatycznie usuwany po usunięciu strefy.  Rekordy SOA nie mogą być tworzone ani usuwane osobno.
 
 Można zmodyfikować wszystkie właściwości rekordu SOA z wyjątkiem właściwości "host", która jest wstępnie skonfigurowana do odwoływania się do nazwy podstawowego serwera nazw dostarczonego przez Azure DNS.
 
@@ -98,7 +98,7 @@ Numer seryjny strefy w rekordzie SOA nie jest aktualizowany automatycznie, gdy z
 
 [Rekordy SRV](https://en.wikipedia.org/wiki/SRV_record) są używane przez różne usługi do określania lokalizacji serwera. Podczas określania rekordu SRV w Azure DNS:
 
-* Należy określić *usługę* i *Protokół* jako część nazwy zestawu rekordów poprzedzoną znakami podkreślenia.  Na przykład "\_SIP.\_ tcp.name '.  W przypadku rekordu w wierzchołku strefy nie ma potrzeby określania elementu "\@" w nazwie rekordu, po prostu Użyj usługi i protokołu, na przykład "\_SIP.\_ TCP '.
+* Należy określić *usługę* i *Protokół* jako część nazwy zestawu rekordów poprzedzoną znakami podkreślenia.  Na przykład "\_SIP.\_tcp.name ".  W przypadku rekordu w wierzchołku strefy nie ma potrzeby określania elementu "\@" w nazwie rekordu, po prostu Użyj usługi i protokołu, na przykład "\_SIP.\_TCP ".
 * *Priorytet*, *waga*, *port*i *cel* są określone jako parametry każdego rekordu w zestawie rekordów.
 
 ### <a name="txt-records"></a>Rekordy TXT
@@ -113,7 +113,7 @@ Nie należy mylić wielu ciągów w rekordzie DNS z wieloma rekordami TXT w zest
 
 ## <a name="tags-and-metadata"></a>Tagi i metadane
 
-### <a name="tags"></a>`Tags`
+### <a name="tags"></a>Tagi
 
 Tagi są listą par nazwa-wartość i są używane przez Azure Resource Manager do etykietowania zasobów.  Azure Resource Manager używa tagów do włączania filtrowanych widoków rachunku na korzystanie z platformy Azure, a także umożliwia ustawienie zasad, na których Tagi są wymagane. Aby uzyskać więcej informacji na temat tagów, zobacz [Porządkowanie zasobów na platformie Azure za pomocą tagów](../azure-resource-manager/resource-group-using-tags.md).
 
@@ -133,10 +133,10 @@ Domyślnie program Azure DNS PowerShell używa elementów ETag do blokowania wsp
 
 Na poziomie interfejsu API REST Azure DNS elementy ETag są określane przy użyciu nagłówków HTTP.  Ich zachowanie jest podano w poniższej tabeli:
 
-| nagłówek | Zachowanie |
+| Nagłówek | Zachowanie |
 | --- | --- |
 | Brak |UMIESZCZAj zawsze zakończone powodzeniem (brak testów ETag) |
-| Element ETag if \<-Match > |Element PUT kończy się powodzeniem tylko wtedy, gdy zasób istnieje i element ETag pasuje |
+| If-Match \<ETag > |Element PUT kończy się powodzeniem tylko wtedy, gdy zasób istnieje i element ETag pasuje |
 | If-Match * |PUT kończy się powodzeniem, jeśli zasób istnieje |
 | If-None-Match * |PUT kończy się powodzeniem, jeśli zasób nie istnieje |
 

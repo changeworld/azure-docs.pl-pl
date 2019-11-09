@@ -1,7 +1,7 @@
 ---
-title: Regiony, w których jest dostępna — indeksator wideo platformy Azure
-titlesuffix: Azure Media Services
-description: Ten artykuł zawiera informacje o regionach platformy Azure, w których dostępna jest Video Indexer.
+title: Regiony, w których Video Indexer jest dostępna — Azure
+titleSuffix: Azure Media Services
+description: Ten artykuł zawiera informacje na temat regionów świadczenia usługi Azure, w których Video Indexer jest dostępna.
 services: media-services
 author: anikaz
 manager: johndeu
@@ -10,28 +10,28 @@ ms.subservice: video-indexer
 ms.topic: article
 ms.date: 05/15/2019
 ms.author: anzaman
-ms.openlocfilehash: 404aaf91c0cb30df0a83353ef7397987ec3f8e80
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: b67c89e02091d57b4f2dc901005c2dae36deafc2
+ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65799415"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73838198"
 ---
-# <a name="azure-regions-in-which-video-indexer-exists"></a>Regiony platformy Azure, w których istnieje indeksatora wideo
+# <a name="azure-regions-in-which-video-indexer-exists"></a>Regiony platformy Azure, w których istnieje Video Indexer
 
-Zawiera interfejsów API klipów wideo indeksatora **lokalizacji** parametr, który należy ustawić w regionie platformy Azure, do którego powinny być kierowane wywołania. Musi to być [region platformy Azure, w której jest dostępny Video Indexer](https://azure.microsoft.com/global-infrastructure/services/?products=cognitive-services&regions=all).
+Interfejsy API Video Indexer zawierają parametr **lokalizacji** , który należy ustawić dla regionu platformy Azure, do którego ma zostać przekierowane wywołanie. Musi to być [region platformy Azure, w którym Video Indexer jest dostępna](https://azure.microsoft.com/global-infrastructure/services/?products=cognitive-services&regions=all).
 
 ## <a name="locations"></a>Lokalizacje
 
-**Lokalizacji** parametr należy podać nazwę kod regionu platformy Azure jako jego wartość. Jeśli używasz indeksatora wideo w wersji zapoznawczej, należy umieścić *"próbne"* jako wartość. W przeciwnym razie można uzyskać nazwy kodu, czy Twoje konto jest w i czy połączenia powinny być kierowane do regionu platformy Azure, możesz uruchomić następujący wiersz w [wiersza polecenia platformy Azure](https://docs.microsoft.com/cli/azure/?view=azure-cli-latest):
+Jako wartość parametru **Location** należy nadać nazwę kodową regionu platformy Azure. Jeśli używasz Video Indexer w trybie wersji zapoznawczej, należy umieścić jako wartość *"wersję próbną"* . W przeciwnym razie, aby uzyskać nazwę kodową regionu platformy Azure, w którym znajduje się konto, a połączenie powinno być kierowane, można uruchomić następujący wiersz w [interfejsie wiersza polecenia platformy Azure](https://docs.microsoft.com/cli/azure/?view=azure-cli-latest):
 
 ```bash
 az account list-locations
 ```
 
-Po uruchomieniu wiersz powyżej, zostanie wyświetlona lista wszystkich regionów świadczenia usługi Azure. Przejdź do regionu platformy Azure, która ma *displayName* szukasz i używać jej *nazwa* wartość **lokalizacji** parametru.
+Po uruchomieniu pokazanego powyżej wiersza otrzymujesz listę wszystkich regionów świadczenia usługi Azure. Przejdź do regionu platformy Azure, dla którego szukasz *DisplayName* , i użyj jego wartości *nazwy* dla parametru **Location** .
 
-Na przykład dla regionu platformy Azure zachodnie stany USA 2 (wyświetlane poniżej), użytkownik użyje "westus2" **lokalizacji** parametru.
+Na przykład dla regionu Azure zachodnie stany USA 2 (wyświetlone poniżej) dla parametru **Location** zostanie użyta wartość "westus2".
 
 ```json
    {
@@ -44,8 +44,8 @@ Na przykład dla regionu platformy Azure zachodnie stany USA 2 (wyświetlane pon
     }
 ```
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
-- [Dostosuj model języka, za pomocą interfejsów API](customize-language-model-with-api.md)
-- [Dostosuj model marek przy użyciu interfejsów API](customize-brands-model-with-api.md)
-- [Dostosuj model osoby za pomocą interfejsów API](customize-person-model-with-api.md)
+- [Dostosowywanie modelu języka przy użyciu interfejsów API](customize-language-model-with-api.md)
+- [Dostosowywanie modelu marek przy użyciu interfejsów API](customize-brands-model-with-api.md)
+- [Dostosuj model osoby przy użyciu interfejsów API](customize-person-model-with-api.md)

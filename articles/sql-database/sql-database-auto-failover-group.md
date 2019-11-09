@@ -10,13 +10,13 @@ ms.topic: conceptual
 author: anosov1960
 ms.author: sashan
 ms.reviewer: mathoma, carlrab
-ms.date: 10/23/2019
-ms.openlocfilehash: 88bcee1cbb23bf298c5ad3920a7744d8da6ce3fb
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.date: 11/07/2019
+ms.openlocfilehash: 16fc15a574655f20e3e6e37f164773b41ffe0b78
+ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 11/08/2019
-ms.locfileid: "73821957"
+ms.locfileid: "73839335"
 ---
 # <a name="use-auto-failover-groups-to-enable-transparent-and-coordinated-failover-of-multiple-databases"></a>Używanie grup z obsługą trybu failover w celu zapewnienia przezroczystej i skoordynowanej pracy w trybie failover wielu baz danych
 
@@ -246,7 +246,7 @@ Jeśli aplikacja używa wystąpienia zarządzanego jako warstwy danych, postępu
 
 - **Potwierdź znane ograniczenia grup trybu failover**
 
-  Zmiana nazwy i rozmiaru wystąpienia bazy danych nie jest obsługiwana w przypadku wystąpień w grupie trybu failover. Należy tymczasowo usunąć grupę trybu failover, aby móc przeprowadzić te akcje.
+  Zmiana nazwy bazy danych nie jest obsługiwana w przypadku wystąpień w grupie trybu failover. Należy tymczasowo usunąć grupę trybu failover, aby można było zmienić nazwę bazy danych.
 
 ## <a name="failover-groups-and-network-security"></a>Grupy trybu failover i zabezpieczenia sieci
 
@@ -296,7 +296,7 @@ Po skonfigurowaniu grupy trybu failover między podstawowym i pomocniczym wystą
    > [!IMPORTANT]
    > Nieprawidłowo skonfigurowane reguły zabezpieczeń sieciowej grupy zabezpieczeń prowadzą do zablokowanych operacji kopiowania bazy danych.
 
-7. Wystąpienie pomocnicze jest skonfigurowane z prawidłowym IDENTYFIKATORem strefy DNS. Strefa DNS jest właściwością wystąpienia zarządzanego, a jego identyfikator jest uwzględniony w adresie nazwy hosta. Identyfikator strefy jest generowany jako ciąg losowy, gdy pierwsze wystąpienie zarządzane jest tworzone w każdej sieci wirtualnej, a ten sam identyfikator jest przypisany do wszystkich innych wystąpień w tej samej podsieci. Po przypisaniu strefa DNS nie może być modyfikowana. Wystąpienia zarządzane zawarte w tej samej grupie trybu failover muszą współdzielić strefę DNS. W tym celu należy przekazać Identyfikator strefy wystąpienia podstawowego jako wartość parametru DnsZonePartner podczas tworzenia wystąpienia pomocniczego. 
+7. Wystąpienie pomocnicze jest skonfigurowane z prawidłowym IDENTYFIKATORem strefy DNS. Strefa DNS jest właściwością wystąpienia zarządzanego i klastra wirtualnego, a jego identyfikator jest zawarty w adresie nazwy hosta. Identyfikator strefy jest generowany jako ciąg losowy, gdy pierwsze wystąpienie zarządzane jest tworzone w każdej sieci wirtualnej, a ten sam identyfikator jest przypisany do wszystkich innych wystąpień w tej samej podsieci. Po przypisaniu strefa DNS nie może być modyfikowana. Wystąpienia zarządzane zawarte w tej samej grupie trybu failover muszą współdzielić strefę DNS. W tym celu należy przekazać Identyfikator strefy wystąpienia podstawowego jako wartość parametru DnsZonePartner podczas tworzenia wystąpienia pomocniczego. 
 
    > [!NOTE]
    > Aby uzyskać szczegółowy samouczek dotyczący konfigurowania grup trybu failover z wystąpieniem zarządzanym, zobacz [Dodawanie wystąpienia zarządzanego do grupy trybu failover](sql-database-managed-instance-failover-group-tutorial.md).

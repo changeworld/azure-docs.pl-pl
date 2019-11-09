@@ -1,17 +1,17 @@
 ---
 title: Szablony Azure Resource Manager dla Azure Cosmos DB interfejs API Cassandra
 description: Utwórz i skonfiguruj Azure Cosmos DB interfejs API Cassandra za pomocą szablonów Azure Resource Manager.
-author: markjbrown
+author: TheovanKraay
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 08/05/2019
-ms.author: mjbrown
-ms.openlocfilehash: f36b167b6ddacadb8c5aef8a4609be13834bf174
-ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
+ms.date: 11/07/2019
+ms.author: thvankra
+ms.openlocfilehash: d71847da4b395be230bce5773a5ba7a472a412f4
+ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73606770"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73832682"
 ---
 # <a name="manage-azure-cosmos-db-cassandra-api-resources-using-azure-resource-manager-templates"></a>Zarządzanie zasobami interfejs API Cassandra Azure Cosmos DB przy użyciu szablonów Azure Resource Manager
 
@@ -22,7 +22,8 @@ W tym artykule opisano sposób wykonywania różnych operacji w celu zautomatyzo
 Tworzenie Azure Cosmos DB zasobów przy użyciu szablonu Azure Resource Manager. Ten szablon spowoduje utworzenie konta usługi Azure Cosmos na potrzeby interfejs API Cassandra z dwiema tabelami, które współużytkują przepływność na poziomie między jednostkami 400 RU/s. Skopiuj szablon i Wdróż, jak pokazano poniżej, lub odwiedź [galerię szybkiego startu platformy Azure](https://azure.microsoft.com/resources/templates/101-cosmosdb-cassandra/) i Wdróż ją z Azure Portal. Możesz również pobrać szablon na komputer lokalny lub utworzyć nowy szablon i określić ścieżkę lokalną za pomocą parametru `--template-file`.
 
 > [!NOTE]
-> Nazwy kont muszą zawierać małe litery i < 31 znaków.
+> Nazwy kont muszą zawierać małe litery i < 44 znaków.
+> Aby zaktualizować RU/s, ponownie prześlij szablon ze zaktualizowanymi wartościami właściwości przepływności.
 
 [!code-json[create-cosmos-Cassandra](~/quickstart-templates/101-cosmosdb-cassandra/azuredeploy.json)]
 
@@ -52,48 +53,6 @@ az cosmosdb show --resource-group $resourceGroupName --name accountName --output
 
 Polecenie `az cosmosdb show` wyświetla nowo utworzone konto usługi Azure Cosmos po jego aprowizacji. Jeśli zdecydujesz się używać lokalnie zainstalowanej wersji interfejsu wiersza polecenia platformy Azure zamiast korzystania z programu CloudShell, zobacz artykuł [interfejs wiersza poleceń platformy Azure](/cli/azure/) .
 
-## Aktualizowanie przepływności (RU/s) na przestrzeni kluczy<a id="keyspace-ru-update"></a>
-
-Następujący szablon zaktualizuje przepływność przestrzeni kluczy. Skopiuj szablon i Wdróż, jak pokazano poniżej, lub odwiedź [galerię szybkiego startu platformy Azure](https://azure.microsoft.com/resources/templates/101-cosmosdb-cassandra-keyspace-ru-update/) i Wdróż ją z Azure Portal. Możesz również pobrać szablon na komputer lokalny lub utworzyć nowy szablon i określić ścieżkę lokalną za pomocą parametru `--template-file`.
-
-[!code-json[cosmosdb-cassandra-keyspace-ru-update](~/quickstart-templates/101-cosmosdb-cassandra-keyspace-ru-update/azuredeploy.json)]
-
-### <a name="deploy-keyspace-template-via-azure-cli"></a>Wdróż szablon przestrzeni kluczy za pomocą interfejsu wiersza polecenia platformy Azure
-
-Aby wdrożyć szablon Menedżer zasobów przy użyciu interfejsu wiersza polecenia platformy Azure, wybierz pozycję **Wypróbuj** , aby otworzyć usługę Azure Cloud Shell. Aby wkleić skrypt, kliknij prawym przyciskiem myszy powłokę, a następnie wybierz polecenie **Wklej**:
-
-```azurecli-interactive
-read -p 'Enter the Resource Group name: ' resourceGroupName
-read -p 'Enter the account name: ' accountName
-read -p 'Enter the keyspace name: ' keyspaceName
-read -p 'Enter the new throughput: ' throughput
-
-az group deployment create --resource-group $resourceGroupName \
-   --template-uri https://raw.githubusercontent.com/azure/azure-quickstart-templates/master/101-cosmosdb-cassandra-keyspace-ru-update/azuredeploy.json \
-   --parameters accountName=$accountName keyspaceName=$keyspaceName throughput=$throughput
-```
-
-## Aktualizowanie przepływności (RU/s) w tabeli<a id="table-ru-update"></a>
-
-Następujący szablon zaktualizuje przepływność tabeli. Skopiuj szablon i Wdróż, jak pokazano poniżej, lub odwiedź [galerię szybkiego startu platformy Azure](https://azure.microsoft.com/resources/templates/101-cosmosdb-cassandra-table-ru-update/) i Wdróż ją z Azure Portal. Możesz również pobrać szablon na komputer lokalny lub utworzyć nowy szablon i określić ścieżkę lokalną za pomocą parametru `--template-file`.
-
-[!code-json[cosmosdb-cassandra-table-ru-update](~/quickstart-templates/101-cosmosdb-cassandra-table-ru-update/azuredeploy.json)]
-
-### <a name="deploy-table-template-via-azure-cli"></a>Wdrażanie szablonu tabeli za pośrednictwem interfejsu wiersza polecenia platformy Azure
-
-Aby wdrożyć szablon Menedżer zasobów przy użyciu interfejsu wiersza polecenia platformy Azure, wybierz pozycję **Wypróbuj** , aby otworzyć usługę Azure Cloud Shell. Aby wkleić skrypt, kliknij prawym przyciskiem myszy powłokę, a następnie wybierz polecenie **Wklej**:
-
-```azurecli-interactive
-read -p 'Enter the Resource Group name: ' resourceGroupName
-read -p 'Enter the account name: ' accountName
-read -p 'Enter the keyspace name: ' keyspaceName
-read -p 'Enter the table name: ' tableName
-read -p 'Enter the new throughput: ' throughput
-
-az group deployment create --resource-group $resourceGroupName \
-   --template-uri https://raw.githubusercontent.com/azure/azure-quickstart-templates/master/101-cosmosdb-cassandra-table-ru-update/azuredeploy.json \
-   --parameters accountName=$accountName keyspaceName=$keyspaceName tableName=$tableName throughput=$throughput
-```
 
 ## <a name="next-steps"></a>Następne kroki
 

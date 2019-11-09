@@ -13,14 +13,14 @@ ms.service: virtual-machines-windows
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
-ms.date: 04/30/2019
+ms.date: 11/07/2019
 ms.author: sedusch
-ms.openlocfilehash: 569ac844a971970c22f5cc0a511545020fe802c5
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.openlocfilehash: d08f17bd22188f3d969261d8626d47a9e0faf08e
+ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72791686"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73839606"
 ---
 # <a name="high-availability-for-sap-netweaver-on-azure-vms-on-suse-linux-enterprise-server-for-sap-applications"></a>Wysoka dostępność dla oprogramowania SAP NetWeaver na maszynach wirtualnych platformy Azure na SUSE Linux Enterprise Server dla aplikacji SAP
 
@@ -78,13 +78,13 @@ Najpierw przeczytaj następujące informacje i dokumenty SAP
 * [Przewodniki dla systemu SUSE SAP ha Best Practices][suse-ha-guide] Przewodniki zawierają wszystkie informacje wymagane do skonfigurowania NetWeaver HA i replikacji systemu SAP HANA w środowisku lokalnym. Użyj tych przewodników jako ogólnego planu bazowego. Zapewniają one wiele bardziej szczegółowych informacji.
 * [Informacje o wersji w programie SUSE High Availability Extension 12 SP3][suse-ha-12sp3-relnotes]
 
-## <a name="overview"></a>Przegląd
+## <a name="overview"></a>Omówienie
 
 Aby zapewnić wysoką dostępność, rozwiązanie SAP NetWeaver wymaga serwera NFS. Serwer NFS jest skonfigurowany w osobnym klastrze i może być używany przez wiele systemów SAP.
 
 ![Omówienie wysokiej dostępności SAP NetWeaver](./media/high-availability-guide-suse/ha-suse.png)
 
-Serwer plików NFS, SAP NetWeaver ASCS, SAP NetWeaver SCS, SAP NetWeaver wykres WYWOŁUJĄCYCH, a SAP HANA Database używają wirtualnej nazwy hosta i wirtualnych adresów IP. Na platformie Azure moduł równoważenia obciążenia jest wymagany do używania wirtualnego adresu IP. Na poniższej liście przedstawiono konfigurację modułu równoważenia obciążenia (A) SCS i wykres WYWOŁUJĄCYCH.
+Serwer plików NFS, SAP NetWeaver ASCS, SAP NetWeaver SCS, SAP NetWeaver wykres WYWOŁUJĄCYCH, a SAP HANA Database używają wirtualnej nazwy hosta i wirtualnych adresów IP. Na platformie Azure moduł równoważenia obciążenia jest wymagany do używania wirtualnego adresu IP. Zalecamy korzystanie z usługi [równoważenia obciążenia w warstwie Standardowa](https://docs.microsoft.com/azure/load-balancer/quickstart-load-balancer-standard-public-portal). Na poniższej liście przedstawiono konfigurację modułu równoważenia obciążenia (A) SCS i wykres WYWOŁUJĄCYCH.
 
 > [!IMPORTANT]
 > Klastrowanie z obsługą protokołu ASCS/wykres WYWOŁUJĄCYCH w systemie SUSE Linux jako system operacyjny gościa na maszynach wirtualnych platformy Azure **nie jest obsługiwane**. Klastrowanie wielu identyfikatorów SID opisuje instalację wielu wystąpień SAP ASCS/wykres WYWOŁUJĄCYCH z różnymi identyfikatorami SID w jednym klastrze Pacemaker
@@ -97,15 +97,16 @@ Serwer plików NFS, SAP NetWeaver ASCS, SAP NetWeaver SCS, SAP NetWeaver wykres 
   * Połączono z podstawowymi interfejsami sieciowymi wszystkich maszyn wirtualnych, które powinny być częścią klastra programu (A) SCS/wykres WYWOŁUJĄCYCH
 * Port sondy
   * Port 620<strong>&lt;nr&gt;</strong>
-* Ładowanie 
-* reguły równoważenia
-  * 32<strong>&lt;nr&gt;</strong> TCP
-  * 36<strong>&lt;nr&gt;</strong> TCP
-  * 39<strong>&lt;nr&gt;</strong> TCP
-  * 81<strong>&lt;nr&gt;</strong> TCP
-  * 5<strong>&lt;nr&gt;</strong>13 TCP
-  * 5<strong>&lt;nr&gt;</strong>14 TCP
-  * 5<strong>&lt;nr&gt;</strong>16 TCP
+* Reguły równoważenia obciążenia
+  * W przypadku używania usługa Load Balancer w warstwie Standardowa wybierz pozycję **porty ha**
+  * W przypadku korzystania z Load Balancer podstawowych Utwórz reguły równoważenia obciążenia dla następujących portów
+    * 32<strong>&lt;nr&gt;</strong> TCP
+    * 36<strong>&lt;nr&gt;</strong> TCP
+    * 39<strong>&lt;nr&gt;</strong> TCP
+    * 81<strong>&lt;nr&gt;</strong> TCP
+    * 5<strong>&lt;nr&gt;</strong>13 TCP
+    * 5<strong>&lt;nr&gt;</strong>14 TCP
+    * 5<strong>&lt;nr&gt;</strong>16 TCP
 
 ### <a name="ers"></a>Wykres WYWOŁUJĄCYCH
 
@@ -116,11 +117,13 @@ Serwer plików NFS, SAP NetWeaver ASCS, SAP NetWeaver SCS, SAP NetWeaver wykres 
 * Port sondy
   * Port 621<strong>&lt;nr&gt;</strong>
 * Reguły równoważenia obciążenia
-  * 32<strong>&lt;nr&gt;</strong> TCP
-  * 33<strong>&lt;nr&gt;</strong> TCP
-  * 5<strong>&lt;nr&gt;</strong>13 TCP
-  * 5<strong>&lt;nr&gt;</strong>14 TCP
-  * 5<strong>&lt;nr&gt;</strong>16 TCP
+  * W przypadku używania usługa Load Balancer w warstwie Standardowa wybierz pozycję **porty ha**
+  * W przypadku korzystania z Load Balancer podstawowych Utwórz reguły równoważenia obciążenia dla następujących portów
+    * 32<strong>&lt;nr&gt;</strong> TCP
+    * 33<strong>&lt;nr&gt;</strong> TCP
+    * 5<strong>&lt;nr&gt;</strong>13 TCP
+    * 5<strong>&lt;nr&gt;</strong>14 TCP
+    * 5<strong>&lt;nr&gt;</strong>16 TCP
 
 ## <a name="setting-up-a-highly-available-nfs-server"></a>Konfigurowanie serwera NFS o wysokiej dostępności
 
@@ -176,7 +179,44 @@ Najpierw należy utworzyć maszyny wirtualne dla tego klastra systemu plików NF
    Wybierz utworzony wcześniej zestaw dostępności  
 1. Dodaj co najmniej jeden dysk danych do obu maszyn wirtualnych  
    Dyski danych są używane na potrzeby/usr/SAP/`<SAPSID`> Directory
-1. Tworzenie Load Balancer (wewnętrzny)  
+1. Tworzenie modułu równoważenia obciążenia (wewnętrznego, standardowego):  
+   1. Utwórz adresy IP frontonu
+      1. Adres IP 10.0.0.7 dla ASCS
+         1. Otwórz moduł równoważenia obciążenia, wybierz pozycję Pula adresów IP frontonu, a następnie kliknij przycisk Dodaj.
+         1. Wprowadź nazwę nowej puli adresów IP frontonu (na przykład **NW1-ASCS-fronton**)
+         1. Ustaw przypisanie na static i wprowadź adres IP (na przykład **10.0.0.7**)
+         1. Kliknij przycisk OK.
+      1. 10.0.0.8 adresu IP dla ASCS wykres WYWOŁUJĄCYCH
+         * Powtórz powyższe kroki, aby utworzyć adres IP dla wykres WYWOŁUJĄCYCH (na przykład **10.0.0.8** i **NW1-AERS-zaplecza**)
+   1. Tworzenie pul zaplecza
+      1. Tworzenie puli zaplecza dla ASCS
+         1. Otwórz moduł równoważenia obciążenia, wybierz pozycję Pule zaplecza, a następnie kliknij przycisk Dodaj.
+         1. Wprowadź nazwę nowej puli zaplecza (na przykład **NW1-ASCS-zaplecza**)
+         1. Kliknij pozycję Dodaj maszynę wirtualną.
+         1. Wybierz maszynę wirtualną
+         1. Wybierz Maszyny wirtualne klastra SCS i ich adresy IP.
+         1. Kliknij pozycję Dodaj.
+      1. Tworzenie puli zaplecza dla ASCS wykres WYWOŁUJĄCYCH
+         * Powtórz powyższe kroki, aby utworzyć pulę zaplecza dla wykres WYWOŁUJĄCYCH (na przykład **NW1-AERS-zaplecza**)
+   1. Tworzenie sond kondycji
+      1. Port 620**00** dla ASCS
+         1. Otwórz moduł równoważenia obciążenia, wybierz pozycję sondy kondycji, a następnie kliknij przycisk Dodaj.
+         1. Wprowadź nazwę nowej sondy kondycji (na przykład **NW1-ASCS-HP**)
+         1. Wybierz pozycję TCP jako protokół, port 620**00**, Zachowaj interwał 5 i próg złej kondycji 2
+         1. Kliknij przycisk OK.
+      1. Port 621**02** dla ASCS wykres wywołujących
+         * Powtórz powyższe kroki, aby utworzyć sondę kondycji dla wykres WYWOŁUJĄCYCH (na przykład 621**02** i **NW1-AERS-HP**)
+   1. Reguły równoważenia obciążenia
+      1. Reguły równoważenia obciążenia dla ASCS
+         1. Otwórz moduł równoważenia obciążenia, wybierz pozycję reguły równoważenia obciążenia i kliknij przycisk Dodaj.
+         1. Wprowadź nazwę nowej reguły modułu równoważenia obciążenia (na przykład **NW1-lb-ASCS**)
+         1. Wybierz adres IP frontonu, pulę zaplecza i sondę kondycji utworzoną wcześniej (na przykład **NW1-ASCS-fronton**, **NW1-ASCS-zaplecze** i **NW1-ASCS-HP**)
+         1. Wybieranie **portów ha**
+         1. Zwiększ limit czasu bezczynności do 30 minut
+         1. **Upewnij się, że włączono zmiennoprzecinkowy adres IP**
+         1. Kliknij przycisk OK.
+         * Powtórz powyższe kroki, aby utworzyć reguły równoważenia obciążenia dla wykres WYWOŁUJĄCYCH (na przykład **NW1-lb-wykres wywołujących**)
+1. Alternatywnie, jeśli scenariusz wymaga podstawowego modułu równoważenia obciążenia (wewnętrznego), wykonaj następujące czynności:  
    1. Utwórz adresy IP frontonu
       1. Adres IP 10.0.0.7 dla ASCS
          1. Otwórz moduł równoważenia obciążenia, wybierz pozycję Pula adresów IP frontonu, a następnie kliknij przycisk Dodaj.
@@ -217,8 +257,11 @@ Najpierw należy utworzyć maszyny wirtualne dla tego klastra systemu plików NF
       1. Dodatkowe porty dla ASCS wykres WYWOŁUJĄCYCH
          * Powtórz powyższe kroki dla portów 33**02**, 5**02**13, 5**02**14, 5**02**16 i TCP dla ASCS wykres wywołujących
 
+> [!Note]
+> Gdy maszyny wirtualne bez publicznych adresów IP są umieszczane w puli zaplecza wewnętrznego (bez publicznego adresu IP) standardowego modułu równoważenia obciążenia platformy Azure, nie będzie wychodzące połączenie z Internetem, chyba że zostanie przeprowadzona dodatkowa konfiguracja zezwalająca na kierowanie do publicznych punktów końcowych. Aby uzyskać szczegółowe informacje na temat sposobu osiągnięcia łączności wychodzącej, zobacz [publiczna łączność z punktem końcowym dla Virtual Machines przy użyciu usługi Azure usługa Load Balancer w warstwie Standardowa w scenariuszach wysokiej dostępności SAP](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-standard-load-balancer-outbound-connections).  
+
 > [!IMPORTANT]
-> Nie należy włączać sygnatur czasowych protokołu TCP na maszynach wirtualnych platformy Azure umieszczonych za Azure Load Balancer. Włączenie sygnatur czasowych protokołu TCP spowoduje niepowodzenie sond kondycji. Ustaw parametr **net. IPv4. TCP _timestamps** na **0**. Aby uzyskać szczegółowe informacje, zobacz [sondy kondycji Load Balancer](https://docs.microsoft.com/azure/load-balancer/load-balancer-custom-probe-overview).
+> Nie należy włączać sygnatur czasowych protokołu TCP na maszynach wirtualnych platformy Azure umieszczonych za Azure Load Balancer. Włączenie sygnatur czasowych protokołu TCP spowoduje niepowodzenie sond kondycji. Ustaw parametr **net. IPv4. tcp_timestamps** na **0**. Aby uzyskać szczegółowe informacje, zobacz [sondy kondycji Load Balancer](https://docs.microsoft.com/azure/load-balancer/load-balancer-custom-probe-overview).
 
 ### <a name="create-pacemaker-cluster"></a>Tworzenie klastra Pacemaker
 
@@ -236,7 +279,7 @@ Następujące elementy są poprzedzone **[A]** -dotyczy wszystkie węzły, **[1]
    > [!NOTE]
    > Nie używaj kresek w nazwach hostów węzłów klastra. W przeciwnym razie klaster nie będzie działał. Jest to znane ograniczenie, a SUSE działa z poprawkami. Poprawka zostanie wydana jako poprawka pakietu SAP-SUSE-Cloud-Connector.
 
-   Upewnij się, że zainstalowano nową wersję łącznika klastra SAP SUSE. Stary został o nazwie sap_suse_cluster_connector, a nowy o nazwie **SAP-SUSE-Cluster-Connector**.
+   Upewnij się, że zainstalowano nową wersję łącznika klastra SAP SUSE. Stary został wywołany sap_suse_cluster_connector, a nowy o nazwie **SAP-SUSE-Cluster-Connector**.
 
    ```
    sudo zypper info sap-suse-cluster-connector
@@ -268,7 +311,7 @@ Następujące elementy są poprzedzone **[A]** -dotyczy wszystkie węzły, **[1]
    <pre><code>&lt;parameter name="IS_ERS" unique="0" required="0"&gt;
    </code></pre>
 
-   Jeśli polecenie grep nie znajdzie parametru IS_ERS, należy zainstalować poprawkę wymienioną na [stronie pobierania systemu SUSE](https://download.suse.com/patch/finder/#bu=suse&familyId=&productId=&dateRange=&startDate=&endDate=&priority=&architecture=&keywords=resource-agents)
+   Jeśli polecenie grep nie odnajdzie parametru IS_ERS, należy zainstalować poprawkę wymienioną na [stronie pobierania systemu SUSE](https://download.suse.com/patch/finder/#bu=suse&familyId=&productId=&dateRange=&startDate=&endDate=&priority=&architecture=&keywords=resource-agents)
 
    <pre><code># example for patch for SLES 12 SP1
    sudo zypper in -t patch SUSE-SLE-HA-12-SP1-2017-885=1
@@ -405,7 +448,7 @@ Następujące elementy są poprzedzone **[A]** -dotyczy wszystkie węzły, **[1]
 
    Zainstaluj oprogramowanie SAP NetWeaver ASCS jako element główny w pierwszym węźle przy użyciu wirtualnej nazwy hosta, która jest mapowana na adres IP konfiguracji frontonu modułu równoważenia obciążenia dla ASCS, na przykład <b>NW1-ASCS</b>, <b>10.0.0.7</b> i numer wystąpienia użyty dla sondy Moduł równoważenia obciążenia, na przykład <b>00</b>.
 
-   Można użyć sapinst parametru SAPINST_REMOTE_ACCESS_USER, aby zezwolić niegłównemu użytkownikowi na łączenie się z usługą sapinst.
+   SAPINST_REMOTE_ACCESS_USER parametru sapinst można użyć, aby zezwolić użytkownikowi niebędącemu głównym na łączenie się z sapinst.
 
    <pre><code>sudo &lt;swpm&gt;/sapinst SAPINST_REMOTE_ACCESS_USER=<b>sapadmin</b>
    </code></pre>
@@ -464,7 +507,7 @@ Następujące elementy są poprzedzone **[A]** -dotyczy wszystkie węzły, **[1]
 
    Zainstaluj program SAP NetWeaver wykres WYWOŁUJĄCYCH jako element główny w drugim węźle przy użyciu wirtualnej nazwy hosta, która jest mapowana na adres IP konfiguracji frontonu modułu równoważenia obciążenia dla wykres WYWOŁUJĄCYCH, na przykład <b>NW1-AERS</b>, <b>10.0.0.8</b> i numer wystąpienia użyty dla sondy Moduł równoważenia obciążenia, na przykład <b>02</b>.
 
-   Można użyć sapinst parametru SAPINST_REMOTE_ACCESS_USER, aby zezwolić niegłównemu użytkownikowi na łączenie się z usługą sapinst.
+   SAPINST_REMOTE_ACCESS_USER parametru sapinst można użyć, aby zezwolić użytkownikowi niebędącemu głównym na łączenie się z sapinst.
 
    <pre><code>sudo &lt;swpm&gt;/sapinst SAPINST_REMOTE_ACCESS_USER=<b>sapadmin</b>
    </code></pre>
@@ -719,7 +762,7 @@ W tym przykładzie system SAP NetWeaver jest instalowany na SAP HANA. Dla tej in
 
    Zainstaluj wystąpienie bazy danych SAP NetWeaver jako element główny przy użyciu wirtualnej nazwy hosta, która jest mapowana na adres IP konfiguracji frontonu modułu równoważenia obciążenia dla bazy danych, na przykład <b>NW1-DB</b> i <b>10.0.0.13</b>.
 
-   Można użyć sapinst parametru SAPINST_REMOTE_ACCESS_USER, aby zezwolić niegłównemu użytkownikowi na łączenie się z usługą sapinst.
+   SAPINST_REMOTE_ACCESS_USER parametru sapinst można użyć, aby zezwolić użytkownikowi niebędącemu głównym na łączenie się z sapinst.
 
    <pre><code>sudo &lt;swpm&gt;/sapinst SAPINST_REMOTE_ACCESS_USER=<b>sapadmin</b>
    </code></pre>
@@ -736,7 +779,7 @@ Wykonaj następujące kroki, aby zainstalować serwer aplikacji SAP.
 
    Zainstaluj podstawowy lub dodatkowy serwer aplikacji SAP NetWeaver.
 
-   Można użyć sapinst parametru SAPINST_REMOTE_ACCESS_USER, aby zezwolić niegłównemu użytkownikowi na łączenie się z usługą sapinst.
+   SAPINST_REMOTE_ACCESS_USER parametru sapinst można użyć, aby zezwolić użytkownikowi niebędącemu głównym na łączenie się z sapinst.
 
    <pre><code>sudo &lt;swpm&gt;/sapinst SAPINST_REMOTE_ACCESS_USER=<b>sapadmin</b>
    </code></pre>

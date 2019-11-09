@@ -8,12 +8,12 @@ author: tomarchermsft
 manager: jeconnoc
 ms.author: tarcher
 ms.date: 04/30/2019
-ms.openlocfilehash: 5ababe9eb1f680378e882970df2d0b008287a7c4
-ms.sourcegitcommit: 824e3d971490b0272e06f2b8b3fe98bbf7bfcb7f
+ms.openlocfilehash: 6aa721ee6cf6680518a28d050c22d8649f0f531f
+ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/10/2019
-ms.locfileid: "72241712"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73833170"
 ---
 # <a name="quickstart-deploy-the-ansible-solution-template-for-azure-to-centos"></a>Szybki Start: Wdrażanie szablonu rozwiązania rozwiązania ansible dla platformy Azure w usłudze CentOS
 
@@ -59,7 +59,7 @@ Szablon rozwiązania Ansible platformy Azure jest zaprojektowany tak, aby umożl
        - [Magazyn Premium Storage o wysokiej wydajności i dyski zarządzane dla maszyn wirtualnych](/azure/virtual-machines/windows/premium-storage)
        - [Standard SSD Managed Disks for Azure Virtual machine workloads (Dyski zarządzane SSD w warstwie Standardowa dla obciążeń maszyny wirtualnej na platformie Azure)](/azure/virtual-machines/windows/disks-standard-ssd)
    - **Publiczny adres IP** – skonfiguruj to ustawienie, jeśli chcesz nawiązać komunikację z maszyną wirtualną spoza maszyny wirtualnej. Opcją domyślną jest nowy publiczny adres IP o nazwie `ansible-pip`. Aby określić inny adres IP, wybierz ikonę strzałki i określ atrybuty, takie jak nazwa, SKU oraz Przypisanie dla tego adresu IP. 
-   - **Etykieta nazwy domeny** — wprowadź nazwę domeny publicznej maszyny wirtualnej. Nazwa musi być unikatowa i odpowiadać wymaganiom dotyczącym nazewnictwa. Aby uzyskać więcej informacji na temat nazw maszyn wirtualnych, zobacz [Naming conventions for Azure resources (Konwencja nazewnictwa dla zasobów platformy Azure)](/azure/architecture/best-practices/naming-conventions).
+   - **Etykieta nazwy domeny** — wprowadź nazwę domeny publicznej maszyny wirtualnej. Nazwa musi być unikatowa i odpowiadać wymaganiom dotyczącym nazewnictwa. Aby uzyskać więcej informacji na temat nazw maszyn wirtualnych, zobacz [Naming conventions for Azure resources (Konwencja nazewnictwa dla zasobów platformy Azure)](/azure/architecture/best-practices/resource-naming).
    - **Wersja rozwiązania Ansible** — określ numer wersji lub wprowadź wartość `latest`, aby wdrożyć najnowszą wersję. Wybierz ikonę informacji obok pola **Wersja rozwiązania Ansible**, aby wyświetlić więcej informacji na temat dostępnych wersji.
 
      ![Karta dodatkowych ustawień rozwiązania Ansible w witrynie Azure Portal](./media/ansible-quick-deploy-solution-template/portal-ansible-setup-tab-2.png)

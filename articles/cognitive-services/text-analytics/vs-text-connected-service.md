@@ -1,7 +1,7 @@
 ---
-title: 'Samouczek: Łączenie z usługą analizy tekstu za pomocą usług połączonych w programie Visual Studio'
+title: 'Samouczek: Nawiązywanie połączenia z usługą analiza tekstu przy użyciu usług połączonych w programie Visual Studio'
 titleSuffix: Azure Cognitive Services
-description: Dowiedz się, jak nawiązywać połączenie z analizą tekstu z poziomu aplikacji internetowej platformy ASP.NET Core.
+description: W tym artykule i artykułach towarzyszących podano szczegółowe informacje na temat używania funkcji usługi połączonej programu Visual Studio na potrzeby usługi Text Analytics.
 services: cognitive-services
 author: aahill
 manager: nitinme
@@ -10,14 +10,14 @@ ms.subservice: text-analytics
 ms.topic: tutorial
 ms.date: 07/24/2019
 ms.author: aahi
-ms.openlocfilehash: ff4c703070d6a7ebd545de3043e5f59b764fe4c9
-ms.sourcegitcommit: 75a56915dce1c538dc7a921beb4a5305e79d3c7a
+ms.openlocfilehash: b094a6917892dfff58c49435de4dc42551be19df
+ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/24/2019
-ms.locfileid: "68478474"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73837191"
 ---
-# <a name="tutorial-connect-to-the-text-analytics-service-with-connected-services-in-visual-studio"></a>Samouczek: Łączenie z usługą analizy tekstu za pomocą usług połączonych w programie Visual Studio
+# <a name="tutorial-connect-to-the-text-analytics-service-with-connected-services-in-visual-studio"></a>Samouczek: Nawiązywanie połączenia z usługą analiza tekstu przy użyciu usług połączonych w programie Visual Studio
 
 Za pomocą usługi Text Analytics możesz wyodrębniać rozbudowane informacje w celu kategoryzowania i przetwarzania danych wizualnych oraz przeprowadzać wspomagane maszynowo moderowanie obrazów, aby ułatwić nadzorowanie usług.
 
@@ -153,7 +153,7 @@ W tym artykule i artykułach towarzyszących podano szczegółowe informacje na 
     }
     ```
     
-    Kod zawiera `GetTextAnalyzeClient` , aby uzyskać obiekt klienta do wykonywania wywołań do interfejs API analizy tekstu, oraz procedurę obsługi żądania, która wywołuje DetectLanguage na danym tekście.
+    Kod zawiera `GetTextAnalyzeClient`, aby uzyskać obiekt klienta służący do wykonywania wywołań do interfejs API analizy tekstu, oraz procedurę obsługi żądania, która wywołuje DetectLanguage na danym tekście.
 
 1. Dodaj klasę pomocy MyHandler używaną przez powyższy kod.
 
@@ -265,6 +265,6 @@ Gdy grupa zasobów nie jest już potrzebna, usuń ją. Spowoduje to usunięcie u
 2. Wybierz pozycję **Usuń grupę zasobów**.
 3. W polu **WPISZ NAZWĘ GRUPY ZASOBÓW:** wpisz nazwę grupy zasobów i wybierz pozycję **Usuń**.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 Dowiedz się więcej o usłudze Text Analytics, zapoznając się z [dokumentacją usługi Text Analytics](index.yml).

@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 05/22/2019
-ms.openlocfilehash: 81d82ce79130513a2827090a98bfef192c9d7829
-ms.sourcegitcommit: 018e3b40e212915ed7a77258ac2a8e3a660aaef8
+ms.openlocfilehash: d1b53267daa2d47baf9976727bbaf3fa56172432
+ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73795719"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73832090"
 ---
 # <a name="overview-of-insights-in-azure-monitor"></a>Przegląd szczegółowych informacji w Azure Monitor
 Szczegółowe informacje zapewniają dostosowane środowisko monitorowania dla określonych aplikacji i usług. Przechowują one dane na [platformie danych Azure monitor](../platform/data-platform.md) i korzystają z innych funkcji Azure monitor do analizy i tworzenia alertów, ale mogą zbierać dodatkowe dane i zapewniać unikatowe środowisko użytkownika w Azure Portal. Uzyskaj dostęp do szczegółowych informacji z sekcji **Insights** w menu Azure Monitor w Azure Portal.
@@ -47,8 +47,8 @@ Zobacz [co to jest Azure monitor dla maszyn wirtualnych?](vminsights-overview.md
 
 ![Usługa Azure Monitor dla maszyn wirtualnych](media/insights-overview/vm-insights.png)
 
-## <a name="azure-monitor-for-network-preview"></a>Azure Monitor sieci (wersja zapoznawcza)
-Azure Monitor dla sieci zapewnia kompleksowy wgląd w kondycję i metryki dla wszystkich zasobów sieciowych. Funkcja wyszukiwania zaawansowanego pomaga identyfikować zależności zasobów i umożliwiać scenariusze, takie jak identyfikowanie zasobów, które obsługują witrynę sieci Web, przez zwykłe wyszukiwanie nazwy witryny sieci Web.
+## <a name="azure-monitor-for-networks-preview"></a>Azure Monitor dla sieci (wersja zapoznawcza)
+[Azure monitor dla sieci](network-insights-overview.md) zapewnia kompleksowy wgląd w kondycję i metryki dla wszystkich zasobów sieciowych. Funkcja wyszukiwania zaawansowanego pomaga identyfikować zależności zasobów i umożliwiać scenariusze, takie jak identyfikowanie zasobów, które obsługują witrynę sieci Web, przez zwykłe wyszukiwanie nazwy witryny sieci Web.
 
 ![Azure Monitor sieci](media/insights-overview/network-insights.png)
 

@@ -1,7 +1,7 @@
 ---
 title: Metoda interfejs API tłumaczenia tekstu w usłudze Translator Languages
 titleSuffix: Azure Cognitive Services
-description: Użyj metody interfejs API tłumaczenia tekstu w usłudze Translator Languages.
+description: Język Metoda pobiera zestaw języków aktualnie obsługiwanych przez inne operacje interfejs API tłumaczenia tekstu w usłudze Translator.
 services: cognitive-services
 author: swmachan
 manager: nitinme
@@ -10,20 +10,20 @@ ms.subservice: translator-text
 ms.topic: reference
 ms.date: 02/01/2019
 ms.author: swmachan
-ms.openlocfilehash: 3dd875fbf9a8da464abe1b6312cec84c030dc624
-ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
+ms.openlocfilehash: 37f70399e8125db559098869cdfffdf4533498d7
+ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68934013"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73835828"
 ---
-# <a name="translator-text-api-30-languages"></a>Interfejs API tłumaczenia tekstu w usłudze Translator 3,0: Languages
+# <a name="translator-text-api-30-languages"></a>Interfejs API tłumaczenia tekstu w usłudze Translator 3,0: Języki
 
 Pobiera zestaw języków aktualnie obsługiwanych przez inne operacje interfejs API tłumaczenia tekstu w usłudze Translator. 
 
 ## <a name="request-url"></a>Adres URL żądania
 
-`GET` Wyślij żądanie do:
+Wyślij żądanie `GET` do:
 ```HTTP
 https://api.cognitive.microsofttranslator.com/languages?api-version=3.0
 ```
@@ -36,12 +36,12 @@ Parametry żądania przesłane na ciągu zapytania są następujące:
   <th width="20%">Parametr zapytania</th>
   <th>Opis</th>
   <tr>
-    <td>api-version</td>
+    <td>wersja interfejsu API</td>
     <td><em>Wymagany parametr</em>.<br/>Wersja interfejsu API żądana przez klienta. Wartość musi być `3.0`.</td>
   </tr>
   <tr>
     <td>scope</td>
-    <td>*Opcjonalny parametr*.<br/>Rozdzielana przecinkami lista nazw definiująca grupę języków do zwrócenia. Dozwolone nazwy grup to: `translation`, `transliteration` i `dictionary`. Jeśli żaden zakres nie zostanie określony, zwracane są wszystkie grupy, co jest równoznaczne z `scope=translation,transliteration,dictionary`przekazywaniem. Aby zdecydować, który zestaw obsługiwanych języków jest odpowiedni dla danego scenariusza, zobacz Opis [obiektu Response](#response-body).</td>
+    <td>*Opcjonalny parametr*.<br/>Rozdzielana przecinkami lista nazw definiująca grupę języków do zwrócenia. Dozwolone nazwy grup to: `translation`, `transliteration` i `dictionary`. Jeśli żaden zakres nie zostanie określony, zwracane są wszystkie grupy, co jest równoznaczne z przekazywaniem `scope=translation,transliteration,dictionary`. Aby zdecydować, który zestaw obsługiwanych języków jest odpowiedni dla danego scenariusza, zobacz Opis [obiektu Response](#response-body).</td>
   </tr>
 </table> 
 
@@ -52,7 +52,7 @@ Nagłówki żądań to:
   <th>Opis</th>
   <tr>
     <td>Zaakceptuj — język</td>
-    <td>*Opcjonalny nagłówek żądania*.<br/>Język ciągów interfejsu użytkownika. Niektóre pola w odpowiedzi są nazwami języków lub nazw regionów. Ten parametr służy do definiowania języka, w którym są zwracane te nazwy. Język jest określony przez udostępnienie poprawnie sformułowanego znacznika języka BCP 47. Na przykład użyj wartości `fr` , aby zażądać nazw w języku francuskim, lub użyj wartości `zh-Hant` , aby zażądać nazw w języku chińskim tradycyjnym.<br/>Nazwy są udostępniane w języku angielskim, gdy nie określono języka docelowego lub lokalizacja jest niedostępna.
+    <td>*Opcjonalny nagłówek żądania*.<br/>Język ciągów interfejsu użytkownika. Niektóre pola w odpowiedzi są nazwami języków lub nazw regionów. Ten parametr służy do definiowania języka, w którym są zwracane te nazwy. Język jest określony przez udostępnienie poprawnie sformułowanego znacznika języka BCP 47. Na przykład użyj wartości `fr`, aby zażądać nazw w języku francuskim, lub użyj `zh-Hant` wartości, aby zażądać nazw w języku chińskim tradycyjnym.<br/>Nazwy są udostępniane w języku angielskim, gdy nie określono języka docelowego lub lokalizacja jest niedostępna.
     </td>
   </tr>
   <tr>
@@ -65,15 +65,15 @@ Uwierzytelnianie nie jest wymagane w celu pobrania zasobów językowych.
 
 ## <a name="response-body"></a>Treść odpowiedzi
 
-Klient używa parametru zapytania `scope` , aby określić, które grupy języków interesują.
+Klient używa `scope` parametru zapytania, aby określić, które grupy języków są interesujące.
 
-* `scope=translation`udostępnia języki obsługiwane w celu tłumaczenia tekstu z jednego języka do innego języka;
+* `scope=translation` udostępnia Języki obsługujące tłumaczenie tekstu z jednego języka do innego języka;
 
-* `scope=transliteration`zapewnia możliwości konwertowania tekstu w jednym języku z jednego skryptu na inny skrypt;
+* `scope=transliteration` zapewnia możliwości konwertowania tekstu w jednym języku z jednego skryptu na inny skrypt;
 
-* `scope=dictionary`zawiera pary językowe, dla `Dictionary` których operacje zwracają dane.
+* `scope=dictionary` zawiera pary językowe, dla których operacje `Dictionary` zwracają dane.
 
-Klient może pobrać kilka grup jednocześnie, określając rozdzieloną przecinkami listę nazw. Na przykład `scope=translation,transliteration,dictionary` Zwróć języki obsługiwane dla wszystkich grup.
+Klient może pobrać kilka grup jednocześnie, określając rozdzieloną przecinkami listę nazw. Na przykład `scope=translation,transliteration,dictionary` zwróci obsługiwane języki dla wszystkich grup.
 
 Pomyślna odpowiedź to obiekt JSON z jedną właściwością dla każdej z żądanych grup:
 
@@ -93,15 +93,15 @@ Pomyślna odpowiedź to obiekt JSON z jedną właściwością dla każdej z żą
 
 Wartość każdej właściwości jest następująca.
 
-* `translation`wartość
+* `translation` Właściwość
 
-  Wartość `translation` właściwości jest słownik par (klucz, wartość). Każdy klucz jest tagiem języka BCP 47. Klucz określa język, w którym można przetłumaczyć lub przetłumaczyć tekst. Wartość skojarzona z kluczem jest obiektem JSON z właściwościami opisującymi język:
+  Wartość właściwości `translation` jest słownikiem par (klucz, wartość). Każdy klucz jest tagiem języka BCP 47. Klucz określa język, w którym można przetłumaczyć lub przetłumaczyć tekst. Wartość skojarzona z kluczem jest obiektem JSON z właściwościami opisującymi język:
 
-  * `name`: Nazwa wyświetlana języka w ustawieniach regionalnych żądanych przez `Accept-Language` nagłówek.
+  * `name`: Nazwa wyświetlana języka w ustawieniach regionalnych żądanych za pośrednictwem `Accept-Language` nagłówka.
 
   * `nativeName`: Nazwa wyświetlana języka w ustawieniach regionalnych natywnych dla tego języka.
 
-  * `dir`: Kierunkowość, która `rtl` jest w przypadku języków pisanych od prawej do `ltr` lewej lub języków od lewej do prawej.
+  * `dir`: kierunkowość, która jest `rtl` dla języków pisanych od prawej do lewej lub `ltr` dla języków z lewej strony.
 
   Przykład:
           
@@ -119,25 +119,25 @@ Wartość każdej właściwości jest następująca.
   }
   ```
 
-* `transliteration`wartość
+* `transliteration` Właściwość
 
-  Wartość `transliteration` właściwości jest słownik par (klucz, wartość). Każdy klucz jest tagiem języka BCP 47. Klucz określa język, dla którego tekst może być konwertowany z jednego skryptu na inny. Wartość skojarzona z kluczem jest obiektem JSON z właściwościami opisującymi język i obsługiwane skrypty:
+  Wartość właściwości `transliteration` jest słownikiem par (klucz, wartość). Każdy klucz jest tagiem języka BCP 47. Klucz określa język, dla którego tekst może być konwertowany z jednego skryptu na inny. Wartość skojarzona z kluczem jest obiektem JSON z właściwościami opisującymi język i obsługiwane skrypty:
 
-  * `name`: Nazwa wyświetlana języka w ustawieniach regionalnych żądanych przez `Accept-Language` nagłówek.
+  * `name`: Nazwa wyświetlana języka w ustawieniach regionalnych żądanych za pośrednictwem `Accept-Language` nagłówka.
 
   * `nativeName`: Nazwa wyświetlana języka w ustawieniach regionalnych natywnych dla tego języka.
 
-  * `scripts`: Lista skryptów do przekonwertowania. Każdy element `scripts` listy ma właściwości:
+  * `scripts`: lista skryptów do przekonwertowania. Każdy element listy `scripts` ma właściwości:
 
-    * `code`: Kod identyfikujący skrypt.
+    * `code`: kod identyfikujący skrypt.
 
-    * `name`: Nazwa wyświetlana skryptu w ustawieniach regionalnych żądanych przez `Accept-Language` nagłówek.
+    * `name`: Nazwa wyświetlana skryptu w ustawieniach regionalnych żądanych za pośrednictwem `Accept-Language` header.
 
     * `nativeName`: Nazwa wyświetlana języka w ustawieniach regionalnych natywnych dla języka.
 
-    * `dir`: Kierunkowość, która `rtl` jest w przypadku języków pisanych od prawej do `ltr` lewej lub języków od lewej do prawej.
+    * `dir`: kierunkowość, która jest `rtl` dla języków pisanych od prawej do lewej lub `ltr` dla języków z lewej strony.
 
-    * `toScripts`: Lista skryptów dostępnych do przekonwertowania tekstu na. Każdy `toScripts` element listy ma właściwości `name` `code`,, `nativeName`, i `dir` zgodnie z wcześniejszym opisem.
+    * `toScripts`: lista skryptów dostępnych do przekonwertowania tekstu na. Każdy element listy `toScripts` ma właściwości `code`, `name`, `nativeName`i `dir` zgodnie z wcześniejszym opisem.
 
   Przykład:
 
@@ -184,25 +184,25 @@ Wartość każdej właściwości jest następująca.
   }
   ```
 
-* `dictionary`wartość
+* `dictionary` Właściwość
 
-  Wartość `dictionary` właściwości jest słownik par (klucz, wartość). Każdy klucz jest tagiem języka BCP 47. Klucz identyfikuje język, dla którego są dostępne alternatywne tłumaczenia i zwrotne. Wartość jest obiektem JSON opisującym język źródłowy i Języki docelowe z dostępnymi tłumaczeniami:
+  Wartość właściwości `dictionary` jest słownikiem par (klucz, wartość). Każdy klucz jest tagiem języka BCP 47. Klucz identyfikuje język, dla którego są dostępne alternatywne tłumaczenia i zwrotne. Wartość jest obiektem JSON opisującym język źródłowy i Języki docelowe z dostępnymi tłumaczeniami:
 
-  * `name`: Nazwa wyświetlana języka źródłowego w ustawieniach regionalnych żądanych przez `Accept-Language` nagłówek.
+  * `name`: Nazwa wyświetlana języka źródłowego w ustawieniach regionalnych żądanych za pośrednictwem `Accept-Language` nagłówka.
 
   * `nativeName`: Nazwa wyświetlana języka w ustawieniach regionalnych natywnych dla tego języka.
 
-  * `dir`: Kierunkowość, która `rtl` jest w przypadku języków pisanych od prawej do `ltr` lewej lub języków od lewej do prawej.
+  * `dir`: kierunkowość, która jest `rtl` dla języków pisanych od prawej do lewej lub `ltr` dla języków z lewej strony.
 
-  * `translations`: Lista języków z tłumaczeniami alterative i przykłady dla zapytania wyrażone w języku źródłowym. Każdy element `translations` listy ma właściwości:
+  * `translations`: lista języków z tłumaczeniami alterative i przykłady dla zapytania wyrażone w języku źródłowym. Każdy element listy `translations` ma właściwości:
 
-    * `name`: Nazwa wyświetlana języka docelowego w ustawieniach regionalnych żądanych przez `Accept-Language` nagłówek.
+    * `name`: Nazwa wyświetlana języka docelowego w ustawieniach regionalnych żądanych za pośrednictwem `Accept-Language` nagłówka.
 
     * `nativeName`: Nazwa wyświetlana języka docelowego w ustawieniach regionalnych w języku docelowym.
 
-    * `dir`: Kierunkowość, która `rtl` jest w przypadku języków pisanych od prawej do `ltr` lewej lub języków od lewej do prawej.
+    * `dir`: kierunkowość, która jest `rtl` dla języków pisanych od prawej do lewej lub `ltr` dla języków z lewej strony.
     
-    * `code`: Kod języka identyfikujący język docelowy.
+    * `code`: kod języka identyfikujący język docelowy.
 
   Przykład:
 
@@ -224,7 +224,7 @@ Wartość każdej właściwości jest następująca.
 
 Struktura obiektu Response nie ulegnie zmianie bez zmiany w wersji interfejsu API. W przypadku tej samej wersji interfejsu API lista dostępnych języków może ulec zmianie w miarę upływu czasu, ponieważ usługa Microsoft Translator ciągle rozszerza listę języków obsługiwanych przez jej usługi.
 
-Lista obsługiwanych języków nie będzie często zmieniana. Aby zaoszczędzić przepustowość sieci i zwiększyć czas odpowiedzi, aplikacja kliencka powinna rozważyć buforowanie zasobów językowych i odpowiadający mu tag`ETag`jednostki (). Następnie aplikacja kliencka może okresowo (na przykład co 24 godziny) wysyłać zapytania do usługi w celu pobrania najnowszego zestawu obsługiwanych języków. Przekazanie bieżącej `ETag` wartości `If-None-Match` w polu nagłówka pozwoli usłudze na optymalizację odpowiedzi. Jeśli zasób nie został zmodyfikowany, usługa zwróci kod stanu 304 i pustą treść odpowiedzi.
+Lista obsługiwanych języków nie będzie często zmieniana. Aby zaoszczędzić przepustowość sieci i zwiększyć czas odpowiedzi, aplikacja kliencka powinna rozważyć użycie pamięci podręcznej i odpowiedniego znacznika jednostki (`ETag`). Następnie aplikacja kliencka może okresowo (na przykład co 24 godziny) wysyłać zapytania do usługi w celu pobrania najnowszego zestawu obsługiwanych języków. Przekazanie bieżącej wartości `ETag` w polu nagłówka `If-None-Match` pozwoli usłudze na optymalizację odpowiedzi. Jeśli zasób nie został zmodyfikowany, usługa zwróci kod stanu 304 i pustą treść odpowiedzi.
 
 ## <a name="response-headers"></a>Nagłówki odpowiedzi
 
@@ -232,12 +232,12 @@ Lista obsługiwanych języków nie będzie często zmieniana. Aby zaoszczędzić
   <th width="20%">Nagłówki</th>
   <th>Opis</th>
   <tr>
-    <td>Element eTag</td>
-    <td>Bieżąca wartość tagu Entity dla żądanych grup obsługiwanych języków. Aby kolejne żądania były bardziej wydajne, klient może wysłać `ETag` wartość `If-None-Match` w polu nagłówka.
+    <td>Element ETag</td>
+    <td>Bieżąca wartość tagu Entity dla żądanych grup obsługiwanych języków. Aby kolejne żądania były bardziej wydajne, klient może wysłać wartość `ETag` w `If-None-Match` polu nagłówka.
     </td>
   </tr>
   <tr>
-    <td>X-RequestId</td>
+    <td>X-IdentyfikatorŻądania</td>
     <td>Wartość wygenerowana przez usługę w celu zidentyfikowania żądania. Służy do rozwiązywania problemów.</td>
   </tr>
 </table> 
@@ -255,7 +255,7 @@ Oto możliwe kody stanu HTTP zwracane przez żądanie.
   </tr>
   <tr>
     <td>304</td>
-    <td>Zasób nie został zmodyfikowany od wersji określonej przez nagłówki `If-None-Match`żądania.</td>
+    <td>Zasób nie został zmodyfikowany od wersji określonej przez nagłówki żądania `If-None-Match`.</td>
   </tr>
   <tr>
     <td>400</td>
@@ -267,11 +267,11 @@ Oto możliwe kody stanu HTTP zwracane przez żądanie.
   </tr>
   <tr>
     <td>500</td>
-    <td>Wystąpił nieoczekiwany błąd. Jeśli błąd będzie się powtarzać, zgłoś go z: Data i godzina błędu, identyfikator żądania z nagłówka `X-RequestId`odpowiedzi oraz identyfikator klienta z nagłówka `X-ClientTraceId`żądania.</td>
+    <td>Wystąpił nieoczekiwany błąd. Jeśli błąd będzie się powtarzać, zgłoś go z: Data i godzina błędu, identyfikator żądania z nagłówka odpowiedzi `X-RequestId`i identyfikator klienta z nagłówka żądania `X-ClientTraceId`.</td>
   </tr>
   <tr>
     <td>503</td>
-    <td>Serwer jest tymczasowo niedostępny. Ponów żądanie. Jeśli błąd będzie się powtarzać, zgłoś go z: Data i godzina błędu, identyfikator żądania z nagłówka `X-RequestId`odpowiedzi oraz identyfikator klienta z nagłówka `X-ClientTraceId`żądania.</td>
+    <td>Serwer jest tymczasowo niedostępny. Ponów żądanie. Jeśli błąd będzie się powtarzać, zgłoś go z: Data i godzina błędu, identyfikator żądania z nagłówka odpowiedzi `X-RequestId`i identyfikator klienta z nagłówka żądania `X-ClientTraceId`.</td>
   </tr>
 </table> 
 

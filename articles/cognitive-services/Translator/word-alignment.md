@@ -1,7 +1,7 @@
 ---
-title: Wyrównanie Word — interfejs API tekstu usługi Translator
+title: Wyrównanie wyrazów — interfejs API tłumaczenia tekstu w usłudze Translator
 titleSuffix: Azure Cognitive Services
-description: Otrzymywanie informacji, wyrównanie programu word z interfejsu API tłumaczenia tekstu.
+description: Aby otrzymywać informacje o wyrównaniu, użyj metody tłumaczenia i Dołącz opcjonalny parametr includeAlignment.
 services: cognitive-services
 author: swmachan
 manager: nitinme
@@ -11,36 +11,36 @@ ms.topic: conceptual
 ms.date: 06/04/2019
 ms.author: swmachan
 ms.custom: seodec18
-ms.openlocfilehash: 5818d3f4d2ebed7cbcd46aadf538640914d3b7d4
-ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
+ms.openlocfilehash: dd4ff1e39c062910f4627973c801dc3c51f345e5
+ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68594783"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73837226"
 ---
-# <a name="how-to-receive-word-alignment-information"></a>Jak otrzymywać informacje wyrównanie programu word
+# <a name="how-to-receive-word-alignment-information"></a>Jak uzyskać informacje dotyczące wyrównania wyrazów
 
-## <a name="receiving-word-alignment-information"></a>Odbieranie informacji wyrównanie programu word
-Aby otrzymywać informacje wyrównanie, używana jest metoda Translate i zawierać parametr opcjonalny includeAlignment.
+## <a name="receiving-word-alignment-information"></a>Otrzymywanie informacji o wyrównaniu wyrazów
+Aby otrzymywać informacje o wyrównaniu, użyj metody tłumaczenia i Dołącz opcjonalny parametr includeAlignment.
 
-## <a name="alignment-information-format"></a>Format informacji o wyrównania
-Wyrównanie jest zwracana jako wartość ciągu następujący format dla każdego wyrazu w źródle. Informacje dotyczące każdego wyrazu jest oddzielona od miejsca, w tym oddzielone miejsca języków (skrypt), takich jak chiński:
+## <a name="alignment-information-format"></a>Format informacji o wyrównaniu
+Wyrównanie jest zwracane jako wartość ciągu następującego formatu dla każdego wyrazu źródła. Informacje dla każdego wyrazu są oddzielone spacjami, w tym dla języków (skryptów), takich jak chiński:
 
-[[SourceTextStartIndex]:\[SourceTextEndIndex]—[TgtTextStartIndex]:[TgtTextEndIndex]] *
+[[SourceTextStartIndex]:[SourceTextEndIndex]–[TgtTextStartIndex]:[TgtTextEndIndex]] *
 
 Przykładowy ciąg wyrównania: "0:0-7:10 1:2-11:20 3:4-0:3 3:4-4:6 5:5-21:21".
 
-Innymi słowy dwukropek oddziela start końcowego indeksu, kreska oddziela językach i spacja oddziela słowa. O jeden wyraz może być dostosowanie zero, jeden lub wiele słów w innym języku, a wyrównany wyrażenie może być nieciągłe. Po udostępnieniu żadnych informacji wyrównanie elementu wyrównania jest pusta. Metoda zwraca błąd braku w takiej sytuacji.
+Inaczej mówiąc, dwukropek oddziela indeks początkowy i końcowy, myślnik oddziela Języki, a spacja oddziela słowa. Jedno słowo może być wyrównane z zerem, jednym lub wieloma wyrazami w innym języku, a wyrównane słowa mogą nie być ciągłe. Gdy żadne informacje o wyrównaniu nie są dostępne, element wyrównania będzie pusty. Metoda nie zwraca żadnego błędu w tym przypadku.
 
 ## <a name="restrictions"></a>Ograniczenia
-Wyrównanie jest zwracany tylko wtedy dla podzbioru kierunki w tym momencie:
-* z języka angielskiego na dowolnym innym języku;
-* z dowolnego innego języka na język angielski, chiński uproszczony, chiński tradycyjny i łotewski do języka angielskiego
-* z japoński, koreański lub koreański użytkownikowi japońskiego nie będzie otrzymywać informacji wyrównanie przypadku zdanie zwięzłych tłumaczenia. Przykład zwięzłych tłumaczenia jest "To jest test", "Kocham Cię" i inne zdania wysokiej częstotliwości.
+Wyrównanie jest zwracane tylko dla podzestawu par języka w tym punkcie:
+* od języka angielskiego do dowolnego innego języka;
+* z dowolnego innego języka w języku angielskim, z wyjątkiem chiński uproszczony, chiński tradycyjny i łotewski do Polski
+* od japońskiego na koreański lub z koreańskiego na japoński nie otrzymasz informacji o wyrównaniu, jeśli zdanie jest przekształceniem w konserwie. Przykładem przeprowadzonego tłumaczenia jest "to jest test", "mam miłość" i inne zdania o wysokiej częstotliwości.
 
 ## <a name="example"></a>Przykład
 
-Przykładowy plik JSON
+Przykładowy kod JSON
 
 ```json
 [

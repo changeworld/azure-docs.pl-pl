@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 09/19/2017
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 00130114b793b5f4d4459eee3404fc4adaf6a8b4
-ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
+ms.openlocfilehash: 28a280ea7c3bf9ef84a1fff05da5090ed526fb12
+ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68699408"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73837472"
 ---
 # <a name="develop-for-azure-files-with-java"></a>Programowanie dla Azure Files przy użyciu języka Java
 [!INCLUDE [storage-selector-file-include](../../../includes/storage-selector-file-include.md)]
@@ -54,7 +54,7 @@ public static final String storageConnectionString =
 ```
 
 > [!NOTE]
-> Zastąp wartości your_storage_account_name i your_storage_account_key wartościami dla konta magazynu.
+> Zastąp your_storage_account_name i your_storage_account_key wartościami rzeczywistymi dla konta magazynu.
 > 
 > 
 
@@ -165,7 +165,7 @@ for ( ListFileItem fileItem : rootDir.listFilesAndDirectories() ) {
 }
 ```
 
-## <a name="upload-a-file"></a>Przekaż plik
+## <a name="upload-a-file"></a>Przekazywanie pliku
 W tej sekcji dowiesz się, jak przekazać plik z magazynu lokalnego do katalogu głównego udziału.
 
 Pierwszym krokiem przekazywania pliku jest uzyskanie odwołania do katalogu, w którym powinien się znajdować. W tym celu należy wywołać metodę **getRootDirectoryReference** obiektu Share.
@@ -185,7 +185,7 @@ Teraz, gdy masz odwołanie do katalogu głównego udziału, możesz przekazać d
         cloudFile.uploadFromFile(filePath);
 ```
 
-## <a name="download-a-file"></a>Pobierz plik
+## <a name="download-a-file"></a>Pobieranie pliku
 Jedną z kilku częstych operacji wykonywanych względem Azure Files jest pobranie plików. W poniższym przykładzie kod pobiera SampleFile. txt i wyświetla jego zawartość.
 
 ```java
@@ -227,7 +227,7 @@ Jeśli chcesz dowiedzieć się więcej na temat innych interfejsów API usługi 
 * [Platforma Azure dla deweloperów języka Java](/java/azure)/)
 * [Zestaw SDK usługi Azure Storage dla języka Java](https://github.com/azure/azure-storage-java)
 * [Zestaw SDK usługi Azure Storage dla systemu Android](https://github.com/azure/azure-storage-android)
-* [Dokumentacja zestawu SDK klienta usługi Azure Storage](http://dl.windowsazure.com/storage/javadoc/)
+* [Dokumentacja zestawu SDK klienta usługi Azure Storage](https://javadoc.io/doc/com.microsoft.azure/azure-core/0.8.0/index.html)
 * [Interfejs API REST usług Azure Storage](https://msdn.microsoft.com/library/azure/dd179355.aspx)
 * [Blog zespołu odpowiedzialnego za usługę Azure Storage](https://blogs.msdn.com/b/windowsazurestorage/)
 * [Transfer danych za pomocą narzędzia wiersza polecenia AzCopy](../common/storage-use-azcopy.md)

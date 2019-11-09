@@ -1,7 +1,7 @@
 ---
-title: Często zadawane pytania na temat usługi Video Indexer — platformy Azure
-titlesuffix: Azure Media Services
-description: Uzyskaj odpowiedzi na często zadawane pytania na temat usługi Video Indexer.
+title: Często zadawane pytania dotyczące Video Indexer — Azure
+titleSuffix: Azure Media Services
+description: Uzyskaj odpowiedzi na często zadawane pytania dotyczące Video Indexer.
 services: media-services
 author: Juliako
 manager: femila
@@ -10,163 +10,163 @@ ms.subservice: video-indexer
 ms.topic: article
 ms.date: 05/15/2019
 ms.author: juliako
-ms.openlocfilehash: f20d718d0b1d3bbdf117e502a380897c79a7905f
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 95f2af1b192564290551f9ed31f0fe158b4536f6
+ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65799502"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73838232"
 ---
 # <a name="frequently-asked-questions"></a>Często zadawane pytania
 
-Ten artykuł zawiera odpowiedzi na często zadawane pytania na temat usługi Video Indexer.
+W tym artykule znajdują się odpowiedzi na często zadawane pytania dotyczące Video Indexer.
 
 ## <a name="general-questions"></a>Pytania ogólne
 
 ### <a name="what-is-video-indexer"></a>Co to jest Video Indexer?
 
-Usługa Video Indexer jest usługą sztucznej inteligencji, która jest częścią usługi Microsoft Azure Media Services. Indeksator wideo umożliwia organizowanie wielu modeli, które umożliwiają łatwe prowadzenie szczegółowe informacje dotyczące filmu wideo uczenia maszynowego. Aby zapewnić zaawansowane i dokładne informacje na temat technologii, indeksator wideo sprawia, że korzystanie z wielu kanałów wideo: audio, mowy i wizualizacji. Informacji szczegółowych indeksatora wideo mogą być używane na wiele sposobów, takich jak poprawa zawartości możliwości odnajdywania i udostępniania, tworzenie nowych szans zysków z aplikacji, lub tworzenie nowych środowisk używanego przez wgląd w dane. Video Indexer udostępnia interfejs sieci web do testowania, konfiguracji i dostosowania modeli w ramach Twojego konta. Deweloperzy mogą używać interfejsu API opartego na interfejsie REST do integracji indeksatora wideo w systemie produkcyjnym. 
+Video Indexer jest sztuczną usługą analizy, która jest częścią Microsoft Azure Media Services. Video Indexer zapewnia aranżację wielu modeli uczenia maszynowego, które umożliwiają łatwe wyodrębnienie szczegółowego wglądu w dane wideo. Aby zapewnić zaawansowane i dokładne informacje, Video Indexer wykorzystuje wiele kanałów wideo: audio, mowy i wizualizacji. Szczegółowe informacje na temat Video Indexer mogą być używane na wiele sposobów, takich jak ulepszanie możliwości odnajdywania zawartości i ułatwień dostępu, tworzenie nowych zyskówych szans i tworzenie nowych środowisk korzystających ze szczegółowych informacji. Video Indexer udostępnia interfejs oparty na sieci Web służący do testowania, konfigurowania i dostosowywania modeli na Twoim koncie. Deweloperzy mogą korzystać z interfejsu API opartego na protokole REST, aby integrować Video Indexer w systemie produkcyjnym. 
 
-### <a name="what-can-i-do-with-video-indexer"></a>Co można zrobić za pomocą indeksatora wideo?
+### <a name="what-can-i-do-with-video-indexer"></a>Co mogę zrobić z Video Indexer?
 
-Operacje, które indeksator wideo można wykonywać na pliki multimedialne, należą:
+Niektóre operacje, które Video Indexer mogą wykonywać na plikach multimedialnych, to m.in.:
 
-* Identyfikowanie, wyodrębniając mowę i zidentyfikować głośników.
-* Identyfikowanie i wyodrębniania wyświetlanymi na ekranie tekst w filmie wideo.
+* Identyfikowanie i wyodrębnianie mowy i identyfikowanie głośników.
+* Identyfikowanie i Wyodrębnianie tekstu na ekranie wideo.
 * Wykrywanie obiektów w pliku wideo.
-* Identyfikowanie marek (na przykład: Microsoft) od ścieżki audio i na ekranie tekst w filmie wideo.
-* Wykrywanie i rozpoznawanie twarzy z bazy danych osobistości i zdefiniowanych przez użytkownika bazy danych twarzy.
-* Wyodrębnianie tematy omówione, ale nie koniecznie są wymienione w zawartości audio i wideo.
-* Tworzenie napisów lub transkrypcji ze ścieżki audio.
+* Zidentyfikuj znaki marki (na przykład Microsoft) z ścieżek audio i tekstu na ekranie wideo.
+* Wykrywanie i rozpoznawanie twarzy z bazy danych osobistości i zdefiniowanej przez użytkownika bazy danych twarzy.
+* Wyodrębnianie tematów omówionych, ale niekoniecznie wymienionych w zawartości audio i wideo.
+* Tworzenie podpisów kodowanych lub napisów z ścieżki audio.
 
-Więcej informacji i większą liczbą funkcji indeksatora wideo, zobacz [Przegląd](video-indexer-overview.md).
+Aby uzyskać więcej informacji i dowiedzieć się więcej o Video Indexer funkcjach, zobacz [Omówienie](video-indexer-overview.md).
 
-### <a name="how-do-i-get-started-with-video-indexer"></a>Jak zacząć korzystać z indeksatora wideo?
+### <a name="how-do-i-get-started-with-video-indexer"></a>Jak mogę rozpocząć pracę z usługą Video Indexer?
 
-Indeksator wideo obejmuje bezpłatna wersja próbna, oferty, który zapewnia 600 minut w interfejsie internetowym i 2400 minut za pomocą interfejsu API. Możesz [logowania do interfejsu opartego na sieci web Video Indexer](https://www.videoindexer.ai/) i wypróbuj ją samodzielnie przy użyciu dowolnej tożsamości w sieci web i bez konieczności konfigurowania subskrypcji platformy Azure. 
+Video Indexer obejmuje bezpłatną ofertę próbną, która zapewnia 600 minut w interfejsie internetowym i 2 400 minut za pośrednictwem interfejsu API. Możesz [zalogować się do interfejsu opartego na sieci web video Indexer](https://www.videoindexer.ai/) i wypróbować go samodzielnie przy użyciu dowolnej tożsamości sieci Web i bez konieczności konfigurowania subskrypcji platformy Azure. 
 
-Indeks wideo i audio much na dużą skalę możesz nawiązać połączenie Video Indexer płatnej subskrypcji Microsoft Azure. Można znaleźć więcej informacji na temat cen na [ceny](https://azure.microsoft.com/pricing/details/cognitive-services/video-indexer/) strony.
+Aby zindeksować pliki wideo i audio na dużą skalę, możesz połączyć Video Indexer z subskrypcją płatną Microsoft Azure. Więcej informacji na temat cennika można znaleźć na stronie [cennika](https://azure.microsoft.com/pricing/details/cognitive-services/video-indexer/) .
 
-Można znaleźć więcej informacji na temat rozpoczynania pracy [wprowadzenie](video-indexer-get-started.md).
+Więcej informacji na temat rozpoczynania pracy można znaleźć w [temacie Rozpoczynanie pracy.](video-indexer-get-started.md)
 
-### <a name="do-i-need-coding-skills-to-use-video-indexer"></a>Czy muszę mieć kodowanie umiejętności, aby użyć indeksatora wideo?
+### <a name="do-i-need-coding-skills-to-use-video-indexer"></a>Czy muszę mieć umiejętność kodowania, aby korzystać z Video Indexer?
 
-Interfejs internetowy Video Indexer umożliwia ocenę, konfigurowanie i zarządzanie kontem odbywa się za pomocą **bez konieczności kodowania**.  Gdy wszystko jest gotowe do tworzenia bardziej złożonych aplikacji, możesz użyć [interfejsu API indeksatora wideo](https://api-portal.videoindexer.ai/) nad zintegrowaniem Video Indexer własnej aplikacji, witryn sieci web lub [niestandardowych przepływów pracy przy użyciu technologii bezserwerowej, takich jak Usługi Azure Logic Apps](https://azure.microsoft.com/blog/logic-apps-flow-connectors-will-make-automating-video-indexer-simpler-than-ever/) lub usługi Azure Functions.
+Za pomocą interfejsu opartego na sieci Web Video Indexer można oszacować i skonfigurować konto oraz zarządzać nim **bez konieczności kodowania**.  Gdy wszystko jest gotowe do opracowania bardziej złożonych aplikacji, można użyć [interfejsu API Video Indexer](https://api-portal.videoindexer.ai/) , aby zintegrować Video Indexer z własnymi aplikacjami, witrynami sieci Web lub [niestandardowymi przepływami pracy przy użyciu technologii bezserwerowych, takich jak Azure Logic Apps](https://azure.microsoft.com/blog/logic-apps-flow-connectors-will-make-automating-video-indexer-simpler-than-ever/) lub Azure Functions.
 
-### <a name="do-i-need-machine-learning-skills-to-use-video-indexer"></a>Czy muszę mieć maszyny learning umiejętności, aby użyć indeksatora wideo?
+### <a name="do-i-need-machine-learning-skills-to-use-video-indexer"></a>Czy muszę mieć umiejętność uczenia maszynowego, aby korzystać z Video Indexer?
 
-Nie, Video Indexer umożliwia integrację wielu modelach uczenia w jeden potok maszynowego. Indeksowanie pliku audio lub wideo za pośrednictwem Video Indexer pobiera pełny zestaw szczegółowych danych został wyodrębniony na jedną oś udostępnione bez maszyn uczenia umiejętności i wiedzy na algorytmach wymagane ze strony klienta.
+Nie, Video Indexer zapewnia integrację wielu modeli uczenia maszynowego w jednym potoku. Indeksowanie pliku wideo lub audio za pośrednictwem Video Indexer umożliwia pobranie pełnego zestawu szczegółowych informacji na jednej wspólnej osi czasu bez znajomości umiejętności uczenia maszynowego ani wiedzy na temat algorytmów potrzebnych w części klienta.
 
-### <a name="what-media-formats-does-video-indexer-support"></a>Formaty multimediów jest Video Indexer pomocy technicznej?
+### <a name="what-media-formats-does-video-indexer-support"></a>Jakie formaty multimediów Video Indexer obsługiwać?
 
-Usługa Video Indexer obsługuje najbardziej typowe formaty multimediów. Zapoznaj się [usługi Azure Media Encoder standard formaty](https://docs.microsoft.com/azure/media-services/latest/media-encoder-standard-formats) listy, aby uzyskać więcej informacji.
+Usługa Video Indexer obsługuje większość popularnych formatów multimediów. Aby uzyskać więcej informacji, zapoznaj się z listą [formatów standardowych Azure Media Encoder](https://docs.microsoft.com/azure/media-services/latest/media-encoder-standard-formats) .
 
-### <a name="how-to-do-i-upload-a-media-into-video-indexer"></a>W jaki sposób należy przekazać nośników do indeksatora wideo?
+### <a name="how-to-do-i-upload-a-media-into-video-indexer"></a>Jak przekazać nośnik do Video Indexer?
 
-W portalu sieci web Video Indexer można przekazać pliku multimediów za pomocą okna dialogowego przekazywania pliku lub przez przejście do adresu URL, który bezpośrednio obsługuje pliku źródłowego (zobacz [przykład](https://nimbuscdn-nimbuspm.streaming.mediaservices.windows.net/2b533311-b215-4409-80af-529c3e853622/Ignite-short.mp4)). Dowolny adres URL, który hostów multimediów zawartości przy użyciu elementu iFrame i kodu osadzania nie będzie działać (zobacz [przykład](https://www.videoindexer.ai/accounts/7e1282e8-083c-46ab-8c20-84cae3dc289d/videos/5cfa29e152/?t=4.11)). Interfejsu API indeksatora wideo wymaga określenia pliku wejściowego za pomocą adresu URL lub tablicą bajtów. Przekazywanie za pośrednictwem adresu URL przy użyciu interfejsu API są ograniczone do 10 GB, ale nie mają limitu czasu trwania. Aby uzyskać więcej informacji, zobacz to [poradnik](https://docs.microsoft.com/azure/media-services/video-indexer/upload-index-videos).
+W portalu opartym na sieci Web Video Indexer można przekazać plik multimedialny przy użyciu okna dialogowego przekazywania plików lub wskazując adres URL, który bezpośrednio hostuje plik źródłowy (zobacz [przykład](https://nimbuscdn-nimbuspm.streaming.mediaservices.windows.net/2b533311-b215-4409-80af-529c3e853622/Ignite-short.mp4)). Wszystkie adresy URL, które obsługują zawartość multimedialną przy użyciu elementu iFrame lub kodu osadzania, nie będą działały (zobacz [przykład](https://www.videoindexer.ai/accounts/7e1282e8-083c-46ab-8c20-84cae3dc289d/videos/5cfa29e152/?t=4.11)). Interfejs API Video Indexer wymaga określenia pliku wejściowego za pośrednictwem adresu URL lub tablicy bajtów. Operacje przekazywania za pośrednictwem adresu URL przy użyciu interfejsu API są ograniczone do 10 GB, ale nie mają limitu czasu. Aby uzyskać więcej informacji, zobacz ten [Przewodnik](https://docs.microsoft.com/azure/media-services/video-indexer/upload-index-videos).
 
-### <a name="how-long-does-it-take-video-indexer-to-extract-insights-from-media"></a>Jak długo trwa indeksatora wideo, aby wyodrębnić szczegółowe informacje z nośnika?
+### <a name="how-long-does-it-take-video-indexer-to-extract-insights-from-media"></a>Jak długo trwa Video Indexer w celu wyodrębnienia szczegółowych informacji z nośnika?
 
-Czas potrzebny do indeksu pliku audio lub wideo, zarówno przy użyciu interfejs API indeksatora wideo i interfejsu opartego na sieci web usługa Video Indexer zależy od wielu parametrów, takich jak plik długość i jakość, liczba insights znajdującą się w pliku, liczba [jednostek zarezerwowanych](https://docs.microsoft.com/azure/media-services/previous/media-services-scale-media-processing-overview) dostępna oraz tego, czy [punkt końcowy przesyłania strumieniowego](https://docs.microsoft.com/azure/media-services/previous/media-services-streaming-endpoints-overview) jest włączony, czy nie. Zalecamy uruchomienie kilku plików testowych za pomocą własnej zawartości i uzyskać średnią, aby lepiej zrozumieć.
+Czas potrzebny na indeksowanie pliku wideo lub audio, zarówno przy użyciu interfejsu API Video Indexer, jak i interfejsu opartego na sieci Web Video Indexer, zależy od wielu parametrów, takich jak długość i jakość pliku, liczba szczegółowych informacji znalezionych w pliku, liczba dostępnych [jednostek zarezerwowanych](https://docs.microsoft.com/azure/media-services/previous/media-services-scale-media-processing-overview) oraz czy [punkt końcowy przesyłania strumieniowego](https://docs.microsoft.com/azure/media-services/previous/media-services-streaming-endpoints-overview) jest włączony. Zalecamy uruchomienie kilku plików testowych przy użyciu własnej zawartości i wypróbowanie lepszego pomysłu.
 
-### <a name="can-i-create-customized-workflows-to-automate-processes-with-video-indexer"></a>Można tworzyć niestandardowe przepływy pracy służące do automatyzacji procesów za pomocą indeksatora wideo?
+### <a name="can-i-create-customized-workflows-to-automate-processes-with-video-indexer"></a>Czy można tworzyć niestandardowe przepływy pracy do automatyzowania procesów z Video Indexer?
 
-Tak, można zintegrować Video Indexer technologii bezserwerowych, takich jak usługi Flow, Logic Apps i [usługi Azure Functions](https://azure.microsoft.com/services/functions/). Więcej szczegółów można znaleźć na [aplikacji logiki](https://azure.microsoft.com/services/logic-apps/) i [przepływu](https://flow.microsoft.com/en-us/) łączniki do indeksatora wideo [tutaj](https://azure.microsoft.com/blog/logic-apps-flow-connectors-will-make-automating-video-indexer-simpler-than-ever/). 
+Tak, możesz zintegrować Video Indexer z technologiami bezserwerowymi, takimi jak Logic Apps, Flow i [Azure Functions](https://azure.microsoft.com/services/functions/). Więcej szczegółów na temat [aplikacji logiki](https://azure.microsoft.com/services/logic-apps/) i łączników [przepływu](https://flow.microsoft.com/en-us/) dla Video Indexer można znaleźć [tutaj](https://azure.microsoft.com/blog/logic-apps-flow-connectors-will-make-automating-video-indexer-simpler-than-ever/). 
 
-### <a name="in-which-azure-regions-is-video-indexer-available"></a>W jakich regionach platformy Azure jest dostępna indeksatora wideo?
+### <a name="in-which-azure-regions-is-video-indexer-available"></a>W jakich regionach platformy Azure są dostępne indeksatory wideo?
 
-Możesz zobaczyć, które regiony platformy Azure jest dostępna na Video Indexer [regionów](https://azure.microsoft.com/global-infrastructure/services/?products=cognitive-services&regions=all) strony.
+Możesz sprawdzić, które regiony platformy Azure Video Indexer są dostępne na stronie [regiony](https://azure.microsoft.com/global-infrastructure/services/?products=cognitive-services&regions=all) .
 
-### <a name="what-is-the-sla-for-video-indexer"></a>Co to jest umowa SLA dla usługi Video Indexer?
+### <a name="what-is-the-sla-for-video-indexer"></a>Co to jest umowa SLA dla Video Indexer?
 
-Umowy SLA w usłudze multimediów Azure obejmuje Video Indexer i znajduje się na [SLA](https://azure.microsoft.com/support/legal/sla/media-services/v1_2/) strony. Umowy SLA stosuje się do usługi Video Indexer płatne konta i tylko nie ma zastosowania do bezpłatnej wersji próbnej.
+Umowa SLA usługi Azure Media Service obejmuje Video Indexer i można ją znaleźć na stronie [umów SLA](https://azure.microsoft.com/support/legal/sla/media-services/v1_2/) . Umowa SLA dotyczy tylko Video Indexer płatnych kont i nie dotyczy bezpłatnej wersji próbnej.
 
-## <a name="privacy-questions"></a>Pytania dotyczące ochrony prywatności
+## <a name="privacy-questions"></a>Pytania dotyczące prywatności
 
-### <a name="are-video-and-audio-files-indexed-by-video-indexer-stored"></a>Czy plików wideo i audio są indeksowane przez usługę Video Indexer przechowywane?
+### <a name="are-video-and-audio-files-indexed-by-video-indexer-stored"></a>Czy pliki wideo i audio są indeksowane przez Video Indexer zapisane?
 
-Tak, o ile nie usuniesz plik przez indeksator wideo, albo za pomocą indeksatora wideo witryny sieci Web lub interfejsu API, są przechowywane pliki audio i wideo. Dla bezpłatnej wersji próbnej, wideo i audio plików, które indeksu są przechowywane w regionie platformy Azure, wschodnie stany USA. W przeciwnym razie pliki audio i wideo są przechowywane na koncie magazynu w swojej subskrypcji platformy Azure.
+Tak, chyba że usuniesz plik z Video Indexer przy użyciu witryny sieci Web lub interfejsu API Video Indexer, pliki wideo i audio są przechowywane. W przypadku bezpłatnej wersji próbnej pliki wideo i audio, które są indeksowane, są przechowywane w regionie platformy Azure Wschodnie stany USA. W przeciwnym razie pliki wideo i audio są przechowywane na koncie magazynu subskrypcji platformy Azure.
 
-### <a name="can-i-delete-my-files-that-are-stored-in-video-indexer-portal"></a>Czy mogę usunąć pliki, które są przechowywane w portalu indeksatora wideo
+### <a name="can-i-delete-my-files-that-are-stored-in-video-indexer-portal"></a>Czy mogę usunąć pliki, które są przechowywane w portalu Video Indexer?
 
-Tak, zawsze możesz usunąć filmu wideo i pliki audio, a także wszystkie metadane i szczegółowe informacje wyodrębnione z nich przez usługę Video Indexer. Raz usuwanie pliku z indeksatora wideo, pliku i jego danych i szczegółowych informacji są trwale usuwane z indeksatora wideo. Jednak jeśli zaimplementowano rozwiązania tworzenia kopii zapasowych w usłudze Azure storage, plik pozostaje w magazynie platformy Azure.
+Tak. możesz zawsze usuwać pliki wideo i audio, a także wszystkie metadane i szczegółowe informacje wyodrębnione z nich przez Video Indexer. Po usunięciu pliku z Video Indexer plik oraz jego metadane i szczegółowe dane zostaną trwale usunięte z Video Indexer. Jeśli jednak wdrożono własne rozwiązanie do tworzenia kopii zapasowych w usłudze Azure Storage, plik pozostanie w usłudze Azure Storage.
 
-### <a name="can-i-control-user-access-to-my-video-indexer-account"></a>Do Moje konto usługi Video Indexer można kontrolować dostęp użytkowników?
+### <a name="can-i-control-user-access-to-my-video-indexer-account"></a>Czy mogę kontrolować dostęp użytkowników do konta Video Indexer?
 
-Tak, tylko administratorzy kont mogą zapraszać i Anuluj zaproszenie osób do swoich kont, a także przypisać kto ma uprawnienia do edycji i kto ma dostęp tylko do odczytu.
+Tak. tylko Administratorzy konta mogą zapraszać i zapraszać osoby do swoich kont, a także przypisywać osoby, które mają uprawnienia do odczytu.
 
-### <a name="who-has-access-to-my-video-and-audio-files-that-have-been-indexed-andor-stored-by-video-indexer-and-the-metadata-and-insights-that-were-extracted"></a>Kto ma dostęp do mojej plików audio i wideo, które mają zostać indeksowane i/lub przechowywane przez indeksator wideo i metadane i szczegółowe informacje, które zostały wyodrębnione?
+### <a name="who-has-access-to-my-video-and-audio-files-that-have-been-indexed-andor-stored-by-video-indexer-and-the-metadata-and-insights-that-were-extracted"></a>Kto ma dostęp do moich plików wideo i audio, które są indeksowane i/lub przechowywane przez Video Indexer oraz zaekstrahowanych metadanych i szczegółowych informacji?
 
-Każda osoba, która zawiera link do zawartości wideo lub audio i jego szczegółowe informacje można uzyskać dostępu do zawartości wideo lub audio, które mają publiczne jak jego ustawienia prywatności. Zawartości wideo lub audio, które mają prywatny jako jego ustawienia prywatności może zostać oceniony jedynie przez użytkowników, którzy zostali zaproszeni do konta zawartość wideo lub audio. Ustawienia prywatności zawartości również odnosi się do metadanych i szczegółowe informacje, które wyodrębnia Video Indexer. Możesz przypisać ustawienia prywatności podczas przekazywania plików wideo lub audio. Można również zmienić ustawienia prywatności po indeksowania.
+Dostęp do zawartości wideo lub audio, która ma być publiczna jako ustawienia prywatności, jest dostępny dla każdego, kto ma link do zawartości wideo lub audio i jego szczegółowych informacji. Dostęp do zawartości wideo lub audio, która ma charakter prywatny jako ustawienia prywatności, jest możliwy tylko dla użytkowników, którzy zostali zaproszeni na konto zawartości wideo lub audio. Ustawienie prywatności zawartości dotyczy również metadanych i szczegółowych informacji, które Video Indexer wyodrębniania. Ustawienie prywatności należy przypisać podczas przekazywania pliku wideo lub audio. Można również zmienić ustawienie prywatności po indeksie.
 
-### <a name="what-access-does-microsoft-have-to-my-video-or-audio-files-that-have-been-indexed-andor-stored-by-video-indexer-and-the-metadata-and-insights-that-were-extracted"></a>Jakiego dostępu firmy Microsoft ma Moje wideo lub audio plików, które mają zostać indeksowane i/lub przechowywane przez indeksator wideo i metadane i szczegółowe informacje, które zostały wyodrębnione?
+### <a name="what-access-does-microsoft-have-to-my-video-or-audio-files-that-have-been-indexed-andor-stored-by-video-indexer-and-the-metadata-and-insights-that-were-extracted"></a>Jaki dostęp ma firma Microsoft do moich plików wideo lub audio, które są indeksowane i/lub przechowywane przez Video Indexer, a także metadane i szczegółowe informacje, które zostały wyodrębnione?
 
-Na [warunki dotyczące usług Online Azure](https://www.microsoftvolumelicensing.com/DocumentSearch.aspx?Mode=3&DocumentTypeId=31) (OST), całkowicie właścicielem zawartości, a firma Microsoft będzie tylko dostępu do zawartości i metadanych i szczegółowe informacje, które Video Indexer wyodrębnia z zawartości zgodnie z pliku OST i firmy Microsoft Zasady zachowania poufności.
+Zgodnie z [postanowieniami dotyczącymi usług Azure Online Services](https://www.microsoftvolumelicensing.com/DocumentSearch.aspx?Mode=3&DocumentTypeId=31) (ost) masz kompletną zawartość, a firma Microsoft będzie uzyskiwać dostęp do zawartości i metadanych oraz szczegółowych informacji, które Video Indexer wyodrębniane z zawartości według pliku ost i zasad zachowania poufności informacji firmy Microsoft.
 
-### <a name="are-the-custom-models-that-i-build-in-my-video-indexer-account-available-to-other-accounts"></a>Należą modele niestandardowe, które mogę kompilować Moje konto usługi Video Indexer dostępne dla innych kont?
+### <a name="are-the-custom-models-that-i-build-in-my-video-indexer-account-available-to-other-accounts"></a>Czy modele niestandardowe, które zostały skompilowane w ramach konta Video Indexer dostępne dla innych kont?
 
- Nie, niestandardowe modele, tworzonych w ramach Twojego konta nie są dostępne na inne konto. Usługa Video Indexer umożliwia obecnie Tworzenie niestandardowego [marek](customize-brands-model-overview.md), [języka](customize-language-model-overview.md), i [osoby](customize-person-model-overview.md) modeli w ramach Twojego konta. Modele te są dostępne tylko w ramach konta, w którym zostały utworzone modele.
+ Nie, modele niestandardowe tworzone na koncie nie są dostępne dla żadnego innego konta. Video Indexer obecnie umożliwia tworzenie niestandardowych [marek](customize-brands-model-overview.md), [języków](customize-language-model-overview.md)i modeli [osób](customize-person-model-overview.md) na koncie. Te modele są dostępne tylko na koncie, w którym zostały utworzone modele.
   
-### <a name="is-the-content-indexed-by-video-indexer-kept-within-the-azure-region-where-i-am-using-video-indexer"></a>Zawartość jest indeksowane przez indeksator wideo, przechowywane w regionie platformy Azure, której używam Video Indexer?
+### <a name="is-the-content-indexed-by-video-indexer-kept-within-the-azure-region-where-i-am-using-video-indexer"></a>Czy zawartość jest indeksowana przez Video Indexer w regionie świadczenia usługi Azure, w którym używam Video Indexer?
 
-Tak, zawartość i jego szczegółowe informacje są przechowywane w obrębie regionu świadczenia usługi Azure, chyba że masz ręcznej konfiguracji w ramach subskrypcji Azure, który używa wielu regionach platformy Azure. 
+Tak, zawartość i jej szczegółowe informacje są przechowywane w regionie świadczenia usługi Azure, chyba że masz ręczną konfigurację w ramach subskrypcji platformy Azure korzystającej z wielu regionów świadczenia usługi Azure. 
 
-### <a name="what-is-the-privacy-policy-for-video-indexer"></a>Co to są zasady ochrony prywatności, indeksatora wideo?
+### <a name="what-is-the-privacy-policy-for-video-indexer"></a>Jakie są zasady zachowania poufności informacji dla Video Indexer?
 
-Usługa Video Indexer jest objęta [zasady zachowania poufności informacji firmy Microsoft](https://privacy.microsoft.com/privacystatement). Zasady zachowania poufności wyjaśniają danych osobowych, które firma Microsoft przetwarza, jak firma Microsoft przetwarza je i do jakich celów Microsoft przetwarza je. Aby dowiedzieć się więcej o ochronie prywatności, odwiedź stronę [Microsoft Trust Center](https://www.microsoft.com/trustcenter).
+Video Indexer podlega [zasadom zachowania poufności informacji firmy Microsoft](https://privacy.microsoft.com/privacystatement). W zasadach zachowania poufności informacji są wyjaśnione dane osobowe dotyczące procesów firmy Microsoft, sposobu ich przetwarzania i działania przez firmę Microsoft. Aby dowiedzieć się więcej o ochronie prywatności, odwiedź [Centrum zaufania firmy Microsoft](https://www.microsoft.com/trustcenter).
 
-### <a name="what-certifications-does-video-indexer-have"></a>Jakie certyfikaty ma indeksatora wideo?
+### <a name="what-certifications-does-video-indexer-have"></a>Jakie certyfikaty ma Video Indexer?
 
-Indeksator wideo ma obecnie certyfikacji SOC. Aby zapoznać się z indeksatora wideo certyfikacji, zapoznaj się [Microsoft Trust Center](https://www.microsoft.com/trustcenter/compliance/complianceofferings?product=Azure).
+Video Indexer obecnie ma certyfikat SOC. Aby zapoznać się z certyfikatem Video Indexer, zapoznaj się z [Centrum zaufania Microsoft](https://www.microsoft.com/trustcenter/compliance/complianceofferings?product=Azure).
 
-## <a name="api-questions"></a>API Questions
+## <a name="api-questions"></a>Pytania dotyczące interfejsu API
 
-### <a name="what-apis-does-video-indexer-offer"></a>Interfejsy API oferuje usługa Video Indexer
+### <a name="what-apis-does-video-indexer-offer"></a>Jakie interfejsy API oferuje Video Indexer?
 
-Interfejsy API Video Indexer umożliwia indeksowanie, wyodrębniając metadane, zarządzanie środkami trwałymi, tłumaczenia, osadzania, dostosowania różnych modeli i inne. Aby uzyskać bardziej szczegółowe informacje na temat korzystania z interfejsu API indeksatora wideo, zobacz [portalu dla deweloperów indeksatora wideo](https://api-portal.videoindexer.ai/).
+Interfejsy API Video Indexer umożliwiają indeksowanie, wyodrębnianie metadanych, zarządzanie zasobami, tłumaczenie, osadzanie, Dostosowywanie modeli i nie tylko. Aby uzyskać bardziej szczegółowe informacje na temat korzystania z interfejsu API Video Indexer, zapoznaj się z tematem [Video Indexer Portal dla deweloperów](https://api-portal.videoindexer.ai/).
 
-### <a name="what-client-sdks-does-video-indexer-offer"></a>Jakie zestawy SDK klientów oferuje usługa Video Indexer
+### <a name="what-client-sdks-does-video-indexer-offer"></a>Jakie zestawy SDK klienta Video Indexer oferować?
 
-Obecnie nie są klienta, nie udostępniane zestawów SDK. Video Indexer zespół pracuje nad zestawy SDK i plany w celu dostarczania ich wkrótce.
+Obecnie nie ma dostępnych zestawów SDK klienta. Zespół Video Indexer pracuje nad zestawami SDK i planami w celu ich uzyskania wkrótce.
 
-### <a name="how-do-i-get-started-with-video-indexers-api"></a>Jak rozpocząć korzystanie z interfejsu API indeksatora wideo?
+### <a name="how-do-i-get-started-with-video-indexers-api"></a>Jak mogę rozpocząć pracę z interfejsem API Video Indexer?
 
-Postępuj zgodnie z [samouczek: wprowadzenie do interfejsu API indeksatora wideo](video-indexer-use-apis.md).
+[Samouczek: Rozpoczynanie pracy z interfejsem API Video Indexer](video-indexer-use-apis.md).
 
-### <a name="what-is-the-difference-between-the-video-indexer-api-and-the-azure-media-service-v3-api"></a>Jaka jest różnica między interfejsu API indeksatora wideo i interfejsu API w wersji 3 Usługa multimediów Azure?
+### <a name="what-is-the-difference-between-the-video-indexer-api-and-the-azure-media-service-v3-api"></a>Jaka jest różnica między interfejsem API Video Indexer i interfejsem API usługi Azure Media Service v3?
 
-Obecnie istnieją pewne nakładania się w funkcji oferowanych przez interfejsu API indeksatora wideo i interfejsu API w wersji 3 Usługa multimediów Azure. Więcej informacji na temat sposobu porównywania obie te usługi można znaleźć [tutaj](compare-video-indexer-with-media-services-presets.md).
+Obecnie istnieją pewne nakładające się funkcje interfejsu API Video Indexer i interfejsu API usługi Azure Media Service v3. Więcej informacji na temat sposobu porównywania obu usług można znaleźć [tutaj](compare-video-indexer-with-media-services-presets.md).
 
-### <a name="what-is-an-api-access-token-and-why-do-i-need-it"></a>Co to jest token dostępu do interfejsu API i dlaczego jest potrzebna?
+### <a name="what-is-an-api-access-token-and-why-do-i-need-it"></a>Co to jest token dostępu interfejsu API i dlaczego jest potrzebny?
 
-Interfejsu API indeksatora wideo zawiera autoryzacji interfejsu API i operacje interfejsu API. Interfejs API autoryzacji zawiera wywołania, które zapewniają tokenu dostępu. Każde wywołanie interfejsu API operacji powinno być skojarzone z tokenem dostępu zgodnym z zakresem autoryzacji wywołania.
+Interfejs API Video Indexer zawiera interfejs API autoryzacji i interfejs API operacji. Interfejs API autoryzacji zawiera wywołania, które dają dostęp do tokenu dostępu. Każde wywołanie interfejsu API operacji powinno być skojarzone z tokenem dostępu zgodnym z zakresem autoryzacji wywołania.
 
-Tokeny dostępu są niezbędne do używania interfejsów API indeksatora wideo ze względów bezpieczeństwa. Daje to gwarancję, że dowolne wywołania zostaną wprowadzone przez Ciebie lub tych, którzy mają uprawnienia dostępu do Twojego konta. 
+Tokeny dostępu są konieczne do używania interfejsów API Video Indexer ze względów bezpieczeństwa. Daje to pewność, że wszystkie wywołania pochodzą z użytkownika lub osoby, które mają uprawnienia dostępu do Twojego konta. 
 
-### <a name="what-is-the-difference-between-account-access-token-user-access-token-and-video-access-token"></a>Jaka jest różnica między tokenu dostępu do konta, token dostępu użytkownika i token dostępu wideo?
+### <a name="what-is-the-difference-between-account-access-token-user-access-token-and-video-access-token"></a>Jaka jest różnica między tokenem dostępu do konta, tokenem dostępu użytkowników i tokenem dostępu wideo?
 
-* Poziom konta — tokenów dostępu na poziomie konta pozwalają na wykonywanie operacji na poziomie konta lub wideo. Na przykład przekazywania filmu wideo, listę wszystkich filmów wideo, Pobierz informacjom o filmie wideo.
-* Na poziomie użytkownika — tokeny dostępu na poziomie użytkownika umożliwiają wykonywanie operacji na poziomie użytkownika. Na przykład uzyskiwanie informacji o skojarzonych kontach.
-* Poziom wideo — tokeny dostępu na poziomie wideo umożliwiają wykonywanie operacji na określonym wideo. Na przykład pobranie szczegółowych informacji o wideo, pobranie napisów, pobranie widżetów itp.
+* Poziom konta — tokeny dostępu na poziomie konta umożliwiają wykonywanie operacji na poziomie konta lub wideo. Na przykład Przekaż wideo, Wyświetl listę wszystkich filmów wideo i uzyskaj wgląd w dane wideo.
+* Tokeny dostępu na poziomie użytkownika umożliwiają wykonywanie operacji na poziomie użytkownika. Na przykład uzyskiwanie informacji o skojarzonych kontach.
+* Poziom wideo — tokeny dostępu na poziomie wideo umożliwiają wykonywanie operacji na konkretnym filmie wideo. Na przykład pobranie szczegółowych informacji o wideo, pobranie napisów, pobranie widżetów itp.
 
-### <a name="how-often-do-i-need-to-get-a-new-access-token-when-do-access-tokens-expire"></a>Jak często należy uzyskać nowy token dostępu Kiedy wygaśnie tokenów dostępu?
+### <a name="how-often-do-i-need-to-get-a-new-access-token-when-do-access-tokens-expire"></a>Jak często należy uzyskać nowy token dostępu? Kiedy tokeny dostępu wygasają?
 
-Tokeny dostępu wygasa co godzinę, więc należy wygenerować nowy token dostępu, co godzinę. 
+Tokeny dostępu wygasają co godzinę, więc musisz wygenerować nowy token dostępu co godzinę. 
 
 ## <a name="billing-questions"></a>Pytania dotyczące rozliczeń
 
-### <a name="how-much-does-video-indexer-cost"></a>Ile kosztuje indeksatora wideo
+### <a name="how-much-does-video-indexer-cost"></a>Ile kosztuje Video Indexer?
 
-Usługa Video Indexer używa prostego zgodnie z rzeczywistym użyciem model cenowy oparty na czasie trwania zawartości danych wejściowych, które można indeksować. Dodatkowe opłaty mogą mieć zastosowanie dla kodowanie, przesyłanie strumieniowe, magazynu, użycia sieci i media użytych jednostek zastrzeżonych. Aby uzyskać więcej informacji, zobacz [ceny](https://azure.microsoft.com/pricing/details/cognitive-services/video-indexer/) strony.
+Video Indexer korzysta z prostego modelu cen z płatność zgodnie z rzeczywistym użyciem na podstawie czasu trwania indeksu zawartości wprowadzonej przez użytkownika. Dodatkowe opłaty mogą dotyczyć kodowania, przesyłania strumieniowego, magazynu, użycia sieci i jednostek zarezerwowanych multimediów. Aby uzyskać więcej informacji, zobacz stronę z [cennikiem](https://azure.microsoft.com/pricing/details/cognitive-services/video-indexer/) .
 
-### <a name="when-am-i-billed-for-using-video-indexer"></a>Kiedy są rozliczane za pomocą indeksatora wideo?
+### <a name="when-am-i-billed-for-using-video-indexer"></a>Kiedy naliczane są opłaty za korzystanie z Video Indexer?
 
 Wysyłając wideo do indeksowania, użytkownik definiuje, czy indeksowanie ma być analizą wideo, analizą audio, czy jednym i drugim. Na tej podstawie określa się, za które jednostki SKU jest naliczana opłata. Jeśli podczas przetwarzania wystąpi błąd na poziomie krytycznym, w odpowiedzi zostanie zwrócony kod błędu. W takim przypadku nie są naliczane żadne opłaty.  Błąd krytyczny może być spowodowany usterką w naszym kodzie lub krytyczną awarią w wewnętrznej zależności usługi. Błędy takie jak nieprawidłowa identyfikacja lub ekstrakcja szczegółowych informacji nie są uważane za krytyczne i w takich przypadkach odpowiedź jest zwracana. Za każdym razem, gdy jest zwracana prawidłowa odpowiedź (czyli bez kodu błędu), jest naliczana opłata.
  
-### <a name="does-video-indexer-offer-a-free-trial"></a>Video Indexer oferuje bezpłatną wersję próbną?
+### <a name="does-video-indexer-offer-a-free-trial"></a>Czy Video Indexer oferować bezpłatną wersję próbną?
 
-Tak, Video Indexer oferuje bezpłatną wersję próbną, który zapewnia pełną obsługę oraz funkcje interfejsów API. Obowiązuje przydział 600 minut warte filmów wideo dla użytkowników w interfejsie internetowym i 2400 minut dla użytkowników interfejsu API. 
+Tak, Video Indexer oferuje bezpłatną wersję próbną, która zapewnia pełną funkcjonalność usługi i interfejsu API. Liczba filmów wideo przeznaczonych dla użytkowników interfejsu internetowego i 2 400 minut jest przydziałem 600 minut w przypadku usługi API users. 
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 [Omówienie](video-indexer-overview.md)

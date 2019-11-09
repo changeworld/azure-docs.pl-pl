@@ -1,7 +1,7 @@
 ---
-title: Dostosuj model języka, w Video Indexer — platformy Azure
-titlesuffix: Azure Media Services
-description: Ten artykuł zawiera omówienie co to jest model języka w Video Indexer i sposobami ich dostosowywania.
+title: Dostosowywanie modelu języka w Video Indexer — Azure
+titleSuffix: Azure Media Services
+description: Ten artykuł zawiera omówienie modelu języka w Video Indexer i sposobu jego dostosowywania.
 services: media-services
 author: anikaz
 manager: johndeu
@@ -10,38 +10,38 @@ ms.subservice: video-indexer
 ms.topic: article
 ms.date: 05/15/2019
 ms.author: anzaman
-ms.openlocfilehash: 516ecd8842e7b673201cc640b283c081a02d2b2f
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: b096b9352be65033f2fb782b118e815dc16b43b6
+ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65799560"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73838318"
 ---
-# <a name="customize-a-language-model-with-video-indexer"></a>Dostosuj model języka, za pomocą indeksatora wideo
+# <a name="customize-a-language-model-with-video-indexer"></a>Dostosowywanie modelu języka za pomocą Video Indexer
 
-Usługa Video Indexer obsługuje automatyczne rozpoznawanie mowy dzięki integracji z usługą Microsoft [Custom Speech Service](https://azure.microsoft.com/services/cognitive-services/custom-speech-service/). Możesz dostosować model języka przez przekazanie tekstu dostosowania, a mianowicie tekst z domeny słownictwo, którego chcesz aparatu, aby dostosować je do. Po użytkownik nauczenia modelu, nowych słów, które pojawiają się w tekście adaptacji zostanie rozpoznany, zakładając, że Wymowa domyślne i modelu językowego dowiesz się, nowe prawdopodobne sekwencji wyrazów. Niestandardowe modele językowe są obsługiwane przez język angielski, hiszpański, francuski, niemiecki, włoski, chiński (uproszczony), japoński, rosyjski, portugalski (Brazylia), Hindi i koreański. 
+Video Indexer obsługuje automatyczne rozpoznawanie mowy poprzez integrację z usługą Microsoft [Custom Speech Service](https://azure.microsoft.com/services/cognitive-services/custom-speech-service/). Możesz dostosować model języka, przekazując tekst do adaptacji, czyli tekst z domeny, której słownictwo chcesz dostosować do aparatu. Po przeprowadzeniu szkolenia modelu nowe wyrazy pojawiające się w tekście adaptacyjnym zostaną rozpoznane, przy założeniu, że domyślna wymowa i model języka będzie uczyć się nowych prawdopodobnych sekwencji wyrazów. Niestandardowe modele języków są obsługiwane w języku angielskim, hiszpańskim, francuskim, niemieckim, włoskim, chińskim (uproszczonym), japońskim, rosyjskim, portugalskim portugalskim, hindi i koreańskim. 
 
-Weźmy programu word, który jest bardzo specyficzny, takich jak "Kubernetes" (w kontekście usługi Azure Kubernetes service), na przykład. Ponieważ słowo pojawił się do usługi Video Indexer, uznaje się za "społeczności". Należy do nauczenia modelu, rozpoznawał ją jako "Kubernetes". W innych przypadkach istnieje wyrazy, ale model języka nie jest oczekiwane pojawiać się w pewnym kontekście. Na przykład "container service" nie jest to sekwencja programu word 2 model języka niewyspecjalizowaną rozpoznawany jako określony zestaw wyrazów.
+Utwórzmy słowo o wysokiej dostępności, takie jak "Kubernetes" (w kontekście usługi Azure Kubernetes Service), na przykład. Ponieważ wyraz jest nowy do Video Indexer, jest rozpoznawany jako "społeczności". Musisz nauczyć model, aby rozpoznawał go jako "Kubernetes". W innych przypadkach słowa istnieją, ale model języka nie oczekuje, że są one wyświetlane w określonym kontekście. Na przykład "Usługa kontenera" nie jest sekwencją 2-słowną, którą Niewyspecjalizowany model języka może rozpoznać jako określony zestaw słów.
 
-Masz możliwość przekazywania wyrazów bez kontekstu na liście w pliku tekstowym. To jest traktowany jako częściowe dostosowania. Alternatywnie możesz przekazać pliki tekst dokumentacji lub zdania związane z zawartość na potrzeby lepszego dostosowania.
+Istnieje możliwość przekazania wyrazów bez kontekstu na liście w pliku tekstowym. Jest to traktowane jako częściowe adaptacje. Alternatywnie można przekazać pliki tekstowe dokumentacji lub zdania dotyczące zawartości w celu lepszego dostosowania.
 
-Służy do interfejsów API indeksatora wideo lub witryny sieci Web można tworzyć i edytować niestandardowych modeli językowych, zgodnie z opisem w tematach w [następne kroki](#next-steps) części tego tematu.
+Za pomocą interfejsów API Video Indexer lub witryny sieci Web można tworzyć i edytować niestandardowe modele języka, jak opisano w tematach w sekcji [następne kroki](#next-steps) w tym temacie.
 
-## <a name="best-practices-for-custom-language-models"></a>Najlepsze rozwiązania dotyczące niestandardowych modeli językowych
+## <a name="best-practices-for-custom-language-models"></a>Najlepsze rozwiązania dotyczące niestandardowych modeli języków
 
-Usługa Video Indexer uczy się zależnie od prawdopodobieństwa kombinacje słowa, więc, aby dowiedzieć się, najlepiej:
+Video Indexer uczy się na podstawie prawdopodobieństwa kombinacji wyrazów, aby poznać najlepsze:
 
-* Przekazuje wystarczającej liczby rzeczywistych przykładów zdań, które jest wymawiany.
-* Nie więcej umieścić tylko jeden zdanie w każdym wierszu. W przeciwnym razie system zawiera informacje prawdopodobieństwa między zdaniami.
-* Można umieścić o jeden wyraz jako zdanie do poprawienia word względem innych użytkowników, ale system uczy się najlepiej z pełną zdań.
-* Wprowadzając nowe słowa lub akronimów, jeśli jest to możliwe, podać dowolną liczbę przykłady zastosowania w zdaniu pełną oferowanie tyle kontekstu w możliwie systemu.
-* Spróbuj umieścić kilka opcji dostosowania i zobacz, jak działają dla Ciebie.
-* Należy unikać powtarzania z dokładnie jednym zdaniu wiele razy. To może spowodować utworzenie odchylenie dla pozostałych danych wejściowych.
-* Unikaj, łącznie z symbolami nietypowe (~, # @ % &) jako zostanie wstrzymane. Zdania, w których są wyświetlane również zostanie wstrzymane.
-* Należy unikać umieszczania duży dane wejściowe, takie jak setki tysięcy zdania, ponieważ będzie więc rozcieńczyć efekt zwiększania wyniku.
+* Zapewnij wystarczającą liczbę przykładowych zdań w miarę ich wymawiania.
+* Umieść tylko jedno zdanie na wiersz, nie więcej. W przeciwnym razie system będzie uczyć się prawdopodobieństwa w zdaniach.
+* Nie można umieścić jednego wyrazu jako zdania, aby zwiększyć słowo względem innych, ale system uczy się najlepiej z pełnych zdań.
+* Wprowadzając nowe wyrazy lub akronimy, jeśli to możliwe, podaj wiele przykładów użycia w pełnych zdaniach, aby zapewnić możliwie największą ilość kontekstu dla systemu.
+* Spróbuj wprowadzić kilka opcji adaptacji i zobaczyć, jak działają.
+* Unikaj powtarzania dokładnie tego samego zdania wielokrotnie. Może to spowodować odliczenie od reszty danych wejściowych.
+* Należy unikać umieszczania nietypowych symboli (~, # @% &), ponieważ zostaną odrzucone. Zdania, w których pojawiają się, zostaną również odrzucone.
+* Unikaj umieszczania zbyt dużych danych wejściowych, takich jak setki tysięcy zdań, ponieważ dzięki temu zostanie rozcieńczony efekt podwyższania poziomu.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
-[Dostosuj model języka, za pomocą interfejsów API](customize-language-model-with-api.md)
+[Dostosowywanie modelu języka przy użyciu interfejsów API](customize-language-model-with-api.md)
 
-[Dostosuj model języka, witryny sieci Web](customize-language-model-with-website.md)
+[Dostosowywanie modelu języka za pomocą witryny sieci Web](customize-language-model-with-website.md)

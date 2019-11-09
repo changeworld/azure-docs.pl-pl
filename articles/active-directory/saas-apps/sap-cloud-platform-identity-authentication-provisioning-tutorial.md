@@ -15,16 +15,16 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/19/2019
 ms.author: Zhchia
-ms.openlocfilehash: f570cb6f945f403e77a36374cc9f82edb7b640c9
-ms.sourcegitcommit: f2771ec28b7d2d937eef81223980da8ea1a6a531
+ms.openlocfilehash: 266e68b2378db7148649fd4067f1da6172932367
+ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/20/2019
-ms.locfileid: "71174814"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73833851"
 ---
 # <a name="tutorial-configure-sap-cloud-platform-identity-authentication-for-automatic-user-provisioning"></a>Samouczek: Konfigurowanie uwierzytelniania tożsamości platformy SAP w chmurze na potrzeby automatycznej aprowizacji użytkowników
 
-Celem tego samouczka jest przedstawienie czynności, które należy wykonać w ramach uwierzytelniania tożsamości platformy SAP w chmurze i Azure Active Directory (Azure AD) w celu skonfigurowania usługi Azure AD w celu automatycznego aprowizacji i cofania aprowizacji użytkowników i/lub grup w chmurze SAP Uwierzytelnianie tożsamości platformy.
+Celem tego samouczka jest przedstawienie czynności, które należy wykonać w ramach uwierzytelniania tożsamości platformy SAP w chmurze i Azure Active Directory (Azure AD) w celu skonfigurowania usługi Azure AD w celu automatycznego aprowizacji i cofania aprowizacji użytkowników i/lub grup do uwierzytelniania tożsamości platformy w chmurze SAP.
 
 > [!NOTE]
 > Ten samouczek zawiera opis łącznika utworzonego na podstawie usługi Azure AD User Provisioning. Aby uzyskać ważne informacje o tym, jak działa ta usługa, jak ona dotyczy, i często zadawanych pytań, zobacz [Automatyzowanie aprowizacji użytkowników i Anulowanie udostępniania aplikacji SaaS przy użyciu programu Azure Active Directory](../manage-apps/user-provisioning.md).
@@ -76,15 +76,15 @@ Przed skonfigurowaniem uwierzytelniania tożsamości platformy SAP w chmurze w c
 
 1. W **[Azure Portal](https://portal.azure.com)** w lewym panelu nawigacyjnym wybierz pozycję **Azure Active Directory**.
 
-    ![Przycisk usługi Azure Active Directory](common/select-azuread.png)
+    ![Przycisk Azure Active Directory](common/select-azuread.png)
 
 2. Przejdź do pozycji **aplikacje dla przedsiębiorstw**, a następnie wybierz pozycję **wszystkie aplikacje**.
 
-    ![W bloku aplikacji przedsiębiorstwa](common/enterprise-applications.png)
+    ![Blok Aplikacje dla przedsiębiorstw](common/enterprise-applications.png)
 
 3. Aby dodać nową aplikację, wybierz przycisk **Nowa aplikacja** w górnej części okienka.
 
-    ![Nowy przycisk aplikacji](common/add-new-app.png)
+    ![Przycisk Nowa aplikacja](common/add-new-app.png)
 
 4. W polu wyszukiwania wprowadź **uwierzytelnianie tożsamości platformy w chmurze SAP**, wybierz pozycję **SAP Cloud Platform Identity Authentication** w panelu wyniki, a następnie kliknij przycisk **Dodaj** , aby dodać aplikację.
 
@@ -115,13 +115,13 @@ Ta sekcja przeprowadzi Cię przez kroki konfigurowania usługi Azure AD Provisio
 
     ![Karta aprowizacji](common/provisioning-automatic.png)
 
-5. W sekcji **poświadczenia administratora** wprowadź `https://<tenantID>.accounts.ondemand.com/service/scim ` **adres URL dzierżawy**. Wprowadź odpowiednio wartości **identyfikatora użytkownika** i **hasła** pobrane wcześniej w polu **Nazwa użytkownika administratora** i **hasło administratora** . Kliknij pozycję **Testuj połączenie** , aby upewnić się, że usługa Azure AD może połączyć się z uwierzytelnianiem tożsamości platformy SAP Cloud Platform. Jeśli połączenie nie powiedzie się, upewnij się, że konto uwierzytelniania tożsamości platformy SAP Cloud Platform ma uprawnienia administratora, a następnie spróbuj ponownie.
+5. W sekcji **poświadczenia administratora** wprowadź `https://<tenantID>.accounts.ondemand.com/service/scim ` w **adresie URL dzierżawy**. Wprowadź odpowiednio wartości **identyfikatora użytkownika** i **hasła** pobrane wcześniej w polu **Nazwa użytkownika administratora** i **hasło administratora** . Kliknij pozycję **Testuj połączenie** , aby upewnić się, że usługa Azure AD może połączyć się z uwierzytelnianiem tożsamości platformy SAP Cloud Platform. Jeśli połączenie nie powiedzie się, upewnij się, że konto uwierzytelniania tożsamości platformy SAP Cloud Platform ma uprawnienia administratora, a następnie spróbuj ponownie.
 
     ![Adres URL dzierżawy + token](media/sap-cloud-platform-identity-authentication-provisioning-tutorial/testconnection.png)
 
 6. W polu **adres E-mail powiadomienia** wprowadź adres e-mail osoby lub grupy, które powinny otrzymywać powiadomienia o błędach aprowizacji, i zaznacz pole wyboru — **Wyślij powiadomienie e-mail, gdy wystąpi awaria**.
 
-    ![Wiadomość e-mail z powiadomieniem](common/provisioning-notification-email.png)
+    ![Wiadomość E-mail z powiadomieniem](common/provisioning-notification-email.png)
 
 7. Kliknij pozycję **Zapisz**.
 
@@ -133,7 +133,7 @@ Ta sekcja przeprowadzi Cię przez kroki konfigurowania usługi Azure AD Provisio
 
     ![Atrybuty użytkownika uwierzytelniania tożsamości platformy SAP Cloud Platform](media/sap-cloud-platform-identity-authentication-provisioning-tutorial/userattributes.png)
 
-10. Aby skonfigurować filtry określania zakresu, zapoznaj się z poniższymi instrukcjami w samouczku dotyczącym [filtru określania zakresu](../manage-apps/define-conditional-rules-for-provisioning-user-accounts.md).
+10. Aby skonfigurować filtry określania zakresu, zapoznaj się z poniższymi instrukcjami w [samouczku dotyczącym filtru określania zakresu](../manage-apps/define-conditional-rules-for-provisioning-user-accounts.md).
 
 11. Aby włączyć usługę aprowizacji usługi Azure AD na potrzeby uwierzytelniania tożsamości platformy SAP w chmurze, Zmień **stan aprowizacji** na **włączone** w sekcji **Ustawienia** .
 
@@ -149,7 +149,11 @@ Ta sekcja przeprowadzi Cię przez kroki konfigurowania usługi Azure AD Provisio
 
 Ta operacja uruchamia początkową synchronizację wszystkich użytkowników i/lub grup zdefiniowanych w **zakresie** w sekcji **Ustawienia** . Synchronizacja początkowa trwa dłużej niż kolejne synchronizacje, które wystąpiły co około 40 minut, o ile usługa Azure AD Provisioning jest uruchomiona. Możesz użyć sekcji **szczegóły synchronizacji** do monitorowania postępu i postępuj zgodnie z raportem aktywności aprowizacji, który opisuje wszystkie akcje wykonywane przez usługę Azure AD Provisioning na potrzeby uwierzytelniania tożsamości platformy SAP Cloud Platform.
 
-Aby uzyskać więcej informacji na temat sposobu odczytywania aprowizacji dzienniki usługi Azure AD, zobacz [raportowanie na inicjowanie obsługi administracyjnej konta użytkownika automatyczne](../manage-apps/check-status-user-account-provisioning.md).
+Aby uzyskać więcej informacji na temat sposobu odczytywania dzienników aprowizacji usługi Azure AD, zobacz [Raportowanie dotyczące automatycznego inicjowania obsługi konta użytkownika](../manage-apps/check-status-user-account-provisioning.md).
+
+## <a name="connector-limitations"></a>Ograniczenia łącznika
+
+* Punkt końcowy Standard scim uwierzytelniania tożsamości platformy w chmurze SAP wymaga, aby pewne atrybuty miały określony format. Więcej informacji o tych atrybutach i ich konkretnym formacie można znaleźć [tutaj](https://help.sap.com/viewer/6d6d63354d1242d185ab4830fc04feb1/Cloud/en-US/b10fc6a9a37c488a82ce7489b1fab64c.html#).
 
 ## <a name="additional-resources"></a>Dodatkowe zasoby
 

@@ -9,12 +9,12 @@ ms.service: key-vault
 ms.topic: conceptual
 ms.date: 09/04/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 6c7a9fdb5ed60023a82984fd5be5b424c634e679
-ms.sourcegitcommit: a19f4b35a0123256e76f2789cd5083921ac73daf
+ms.openlocfilehash: 75317f73ad724b4ce8ad7a894890b2269bd8c5d0
+ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71720247"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73837495"
 ---
 # <a name="provide-key-vault-authentication-with-a-managed-identity"></a>Zapewnianie uwierzytelniania Key Vault przy użyciu tożsamości zarządzanej
 
@@ -34,7 +34,7 @@ Aby ukończyć ten przewodnik, musisz dysponować następującymi zasobami.
    - [Tworzenie magazynu kluczy za pomocą Azure PowerShell](quick-create-powershell.md)
    - [Utwórz magazyn kluczy z Azure Portal](quick-create-portal.md).
 - Istniejąca aplikacja App Service, do której ma zostać udzielony dostęp do magazynu kluczy. Można ją szybko utworzyć, wykonując czynności opisane w [dokumentacji App Service](../app-service/overview.md).
-- [Interfejs wiersza polecenia platformy Azure](/cli/azure/install-azure-cli?view=azure-cli-latest) lub [Azure PowerShell](/powershell/azure/overview). Alternatywnie możesz użyć [Azure Portal](http://portal.azure.com).
+- [Interfejs wiersza polecenia platformy Azure](/cli/azure/install-azure-cli?view=azure-cli-latest) lub [Azure PowerShell](/powershell/azure/overview). Alternatywnie możesz użyć [Azure Portal](https://portal.azure.com).
 
 
 ## <a name="adding-a-system-assigned-identity"></a>Dodawanie tożsamości przypisanej do systemu 
@@ -49,7 +49,7 @@ Aby skonfigurować tożsamość zarządzaną w portalu, musisz najpierw utworzy�
 
 1. Wybierz pozycję **zarządzana tożsamość**. 
 
-1. W ramach karty **przypisanej do systemu** Przełącz pozycję **stan** na wartość **włączone**. Kliknij przycisk **Save** (Zapisz). 
+1. W ramach karty **przypisanej do systemu** Przełącz pozycję **stan** na wartość **włączone**. Kliknij pozycję **Zapisz**. 
 
     ![](./media/managed-identity-system-assigned.png)
 
@@ -76,7 +76,7 @@ az webapp identity assign --name myApp --resource-group myResourceGroup
 az functionapp identity assign --name myApp --resource-group myResourceGroup
 ```
 
-Zanotuj `PrincipalId`, który będzie wymagany w następnej sekcji.
+Zanotuj `PrincipalId`, co będzie wymagało w następnej sekcji.
 
 ```json
 {

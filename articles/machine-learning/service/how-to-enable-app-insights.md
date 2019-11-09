@@ -11,30 +11,31 @@ ms.author: copeters
 author: lostmygithubaccount
 ms.date: 10/11/2019
 ms.custom: seoapril2019
-ms.openlocfilehash: c02c502dc2ab85a6ae1c602c53723e9b5a758250
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: 545826a66e518366cd993a1e293c4137bde08c22
+ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73576739"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73839084"
 ---
 # <a name="monitor-and-collect-data-from-ml-web-service-endpoints"></a>Monitorowanie i zbieranie danych z punktów końcowych usługi sieci Web ML
 [!INCLUDE [applies-to-skus](../../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
 W tym artykule dowiesz się, jak zbierać dane i monitorować modele wdrożone w punktach końcowych usługi sieci Web w usłudze Azure Kubernetes Service (AKS) lub Azure Container Instances (ACI), włączając usługę Azure Application Insights. Oprócz zbierania danych wejściowych i odpowiedzi punktu końcowego można monitorować:
-* Stawki żądania, czasy odpowiedzi i wskaźniki niepowodzeń.
-* Stawki zależności, czasy odpowiedzi i wskaźniki niepowodzeń.
-* Wyłączenia.
+
+* Stawki żądania, czasy odpowiedzi i wskaźniki niepowodzeń
+* Stawki zależności, czasy odpowiedzi i wskaźniki niepowodzeń
+* Wyjątki
 
 [Dowiedz się więcej o usłudze Azure Application Insights](../../azure-monitor/app/app-insights-overview.md). 
 
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-* Jeśli nie masz subskrypcji Azure, przed rozpoczęciem utwórz bezpłatne konto. Wypróbuj [bezpłatną lub płatną wersję Azure Machine Learning](https://aka.ms/AMLFree) dzisiaj.
+* Jeśli nie masz subskrypcji Azure, przed rozpoczęciem utwórz bezpłatne konto. Wypróbuj [bezpłatną lub płatną wersję Azure Machine Learning](https://aka.ms/AMLFree) dzisiaj
 
-* Azure Machine Learning obszar roboczy, katalog lokalny, który zawiera skrypty, oraz zestaw Azure Machine Learning SDK dla języka Python. Aby dowiedzieć się, jak uzyskać te wymagania wstępne, zobacz [jak skonfigurować środowisko programistyczne](how-to-configure-environment.md).
-* Model uczenia maszynowego, który ma zostać wdrożony w usłudze Azure Kubernetes Service (AKS) lub Azure Container Instance (ACI). Jeśli go nie masz, zapoznaj się z samouczkiem dotyczącym [modelu klasyfikacji obrazów szkolenia](tutorial-train-models-with-aml.md) .
+* Azure Machine Learning obszar roboczy, katalog lokalny, który zawiera skrypty, oraz zestaw Azure Machine Learning SDK dla języka Python. Aby dowiedzieć się, jak uzyskać te wymagania wstępne, zobacz [jak skonfigurować środowisko programistyczne](how-to-configure-environment.md) .
+* Model uczenia maszynowego, który ma zostać wdrożony w usłudze Azure Kubernetes Service (AKS) lub Azure Container Instance (ACI). Jeśli go nie masz, zapoznaj się z samouczkiem dotyczącym [modelu klasyfikacji obrazów szkolenia](tutorial-train-models-with-aml.md)
 
 ## <a name="web-service-input-and-response-data"></a>Dane wejściowe i odpowiedzi usługi sieci Web
 
@@ -44,65 +45,68 @@ Dane wejściowe i odpowiedzi dotyczące usługi — odpowiadające danym wejści
 
 Możesz włączyć i wyłączyć usługę Azure Application Insights w Azure Portal. 
 
-1. W [Azure Portal](https://portal.azure.com)Otwórz obszar roboczy.
+1. W [Azure Portal](https://portal.azure.com)Otwórz obszar roboczy
 
-1. Na karcie **wdrożenia** wybierz usługę, w której chcesz włączyć Application Insights platformy Azure.
+1. Na karcie **wdrożenia** wybierz usługę, w której chcesz włączyć Application Insights platformy Azure
 
    [![listę usług na karcie wdrożenia](media/how-to-enable-app-insights/Deployments.PNG)](./media/how-to-enable-app-insights/Deployments.PNG#lightbox)
 
-3. Wybierz pozycję **Edit** (Edytuj).
+3. Wybierz pozycję **Edytuj**
 
    [przycisk edycji ![](media/how-to-enable-app-insights/Edit.PNG)](./media/how-to-enable-app-insights/Edit.PNG#lightbox)
 
-4. W obszarze **Ustawienia zaawansowane**zaznacz pole wyboru **Włącz diagnostykę AppInsights** .
+4. W obszarze **Ustawienia zaawansowane**zaznacz pole wyboru **Włącz diagnostykę AppInsights**
 
    [![zaznaczone pole wyboru włączania diagnostyki](media/how-to-enable-app-insights/AdvancedSettings.png)](./media/how-to-enable-app-insights/AdvancedSettings.png#lightbox)
 
-1. Wybierz pozycję **Aktualizuj** w dolnej części ekranu, aby zastosować zmiany. 
+1. Wybierz pozycję **Aktualizuj** w dolnej części ekranu, aby zastosować zmiany
 
 ### <a name="disable"></a>Wyłączanie
-1. W [Azure Portal](https://portal.azure.com)Otwórz obszar roboczy.
-1. Wybierz pozycję **wdrożenia**, wybierz pozycję Usługa, a następnie wybierz pozycję **Edytuj**.
+
+1. W [Azure Portal](https://portal.azure.com)Otwórz obszar roboczy
+1. Wybierz pozycję **wdrożenia**, wybierz pozycję Usługa, a następnie wybierz pozycję **Edytuj** .
 
    [![użyć przycisku Edytuj](media/how-to-enable-app-insights/Edit.PNG)](./media/how-to-enable-app-insights/Edit.PNG#lightbox)
 
-1. W obszarze **Ustawienia zaawansowane**Usuń zaznaczenie pola wyboru **Włącz diagnostykę AppInsights** . 
+1. W obszarze **Ustawienia zaawansowane**wyczyść pole wyboru **Włącz diagnostykę AppInsights**
 
    [pole wyboru ![wyczyszczone w celu włączenia diagnostyki](media/how-to-enable-app-insights/uncheck.png)](./media/how-to-enable-app-insights/uncheck.png#lightbox)
 
-1. Wybierz pozycję **Aktualizuj** w dolnej części ekranu, aby zastosować zmiany. 
+1. Wybierz pozycję **Aktualizuj** w dolnej części ekranu, aby zastosować zmiany
  
 ## <a name="use-python-sdk-to-configure"></a>Użyj zestawu SDK języka Python, aby skonfigurować 
 
 ### <a name="update-a-deployed-service"></a>Aktualizowanie wdrożonej usługi
-1. Zidentyfikuj usługę w obszarze roboczym. Wartość `ws` jest nazwą obszaru roboczego.
+
+1. Zidentyfikuj usługę w obszarze roboczym. Wartość `ws` jest nazwą obszaru roboczego
 
     ```python
     from azureml.core.webservice import Webservice
     aks_service= Webservice(ws, "my-service-name")
     ```
-2. Zaktualizuj usługę i Włącz Application Insights platformy Azure. 
+2. Aktualizowanie usługi i Włączanie usługi Azure Application Insights
 
     ```python
     aks_service.update(enable_app_insights=True)
     ```
 
 ### <a name="log-custom-traces-in-your-service"></a>Rejestruj niestandardowe ślady w usłudze
+
 Jeśli chcesz rejestrować niestandardowe ślady, postępuj zgodnie ze standardowym procesem wdrażania dla AKS lub ACI w temacie [jak wdrożyć i gdzie](how-to-deploy-and-where.md) dokument. Następnie wykonaj następujące czynności:
 
-1. Zaktualizuj plik oceniania przez dodanie instrukcji Print.
+1. Aktualizowanie pliku oceniania przez dodanie instrukcji Print
     
     ```python
     print ("model initialized" + time.strftime("%H:%M:%S"))
     ```
 
-2. Zaktualizuj konfigurację usługi.
+2. Aktualizowanie konfiguracji usługi
     
     ```python
     config = Webservice.deploy_configuration(enable_app_insights=True)
     ```
 
-3. Utwórz obraz i Wdróż go na [AKS](how-to-deploy-to-aks.md) lub [ACI](how-to-deploy-to-aci.md).  
+3. Tworzenie obrazu i wdrażanie go na [AKS](how-to-deploy-to-aks.md) lub [ACI](how-to-deploy-to-aci.md)
 
 ### <a name="disable-tracking-in-python"></a>Wyłącz śledzenie w języku Python
 
@@ -116,11 +120,12 @@ Aby wyłączyć usługę Azure Application Insights, użyj następującego kodu:
 ## <a name="evaluate-data"></a>Oceń dane
 Dane usługi są przechowywane na koncie usługi Azure Application Insights w ramach tej samej grupy zasobów co Azure Machine Learning.
 Aby ją wyświetlić:
-1. Przejdź do obszaru roboczego usługi Machine Learning w programie [Azure Machine Learning Studio](https://ml.azure.com) i kliknij link Application Insights.
+
+1. Przejdź do obszaru roboczego usługi Machine Learning w programie [Azure Machine Learning Studio](https://ml.azure.com) i kliknij link Application Insights
 
     [![AppInsightsLoc](media/how-to-enable-app-insights/AppInsightsLoc.png)](./media/how-to-enable-app-insights/AppInsightsLoc.png#lightbox)
 
-1. Wybierz kartę **Przegląd** , aby wyświetlić podstawowy zestaw metryk dla usługi.
+1. Wybierz kartę **Przegląd** , aby wyświetlić podstawowy zestaw metryk dla usługi
 
    [Przegląd ![](media/how-to-enable-app-insights/overview.png)](./media/how-to-enable-app-insights/overview.png#lightbox)
 
@@ -130,8 +135,8 @@ Aby ją wyświetlić:
    [![dane modelu](media/how-to-enable-app-insights/model-data-trace.png)](./media/how-to-enable-app-insights/model-data-trace.png#lightbox)
 
 
-3. Aby zapoznać się ze śladami niestandardowymi, wybierz pozycję **Analiza**.
-4. W sekcji schemat wybierz pozycję **ślady**. Następnie wybierz pozycję **Uruchom** , aby uruchomić zapytanie. Dane powinny być wyświetlane w formacie tabeli i powinny być mapowane na niestandardowe wywołania w pliku oceniania. 
+3. Aby zapoznać się ze śladami niestandardowymi, wybierz pozycję **Analiza**
+4. W sekcji schemat wybierz pozycję **ślady**. Następnie wybierz pozycję **Uruchom** , aby uruchomić zapytanie. Dane powinny być wyświetlane w formacie tabeli i powinny być mapowane na niestandardowe wywołania w pliku oceniania
 
    [![niestandardowe ślady](media/how-to-enable-app-insights/logs.png)](./media/how-to-enable-app-insights/logs.png#lightbox)
 
@@ -152,5 +157,5 @@ W notesie [enable-App-Insights-in-Product-Service. ipynb](https://github.com/Azu
 
 ## <a name="next-steps"></a>Następne kroki
 
-* Zapoznaj się z artykułem [jak wdrożyć model w klastrze usługi Azure Kubernetes](https://docs.microsoft.com/azure/machine-learning/service/how-to-deploy-azure-kubernetes-service) lub [jak wdrożyć model w celu Azure Container Instances](https://docs.microsoft.com/azure/machine-learning/service/how-to-deploy-azure-container-instance) , aby wdrożyć modele w punktach końcowych usługi sieci Web, i Włącz usługę Azure Application Insights, aby korzystać z zbierania danych i punktu końcowego. kontrolą.
-* Zobacz [MLOps: zarządzanie, wdrażanie i monitorowanie modeli przy użyciu Azure Machine Learning](https://docs.microsoft.com/azure/machine-learning/service/concept-model-management-and-deployment) , aby dowiedzieć się więcej na temat wykorzystywania danych zebranych z modeli w środowisku produkcyjnym. Takie dane mogą pomóc w nieustannym ulepszaniu procesu uczenia maszynowego. 
+* Zapoznaj się z artykułem [jak wdrożyć model w klastrze usługi Azure Kubernetes](https://docs.microsoft.com/azure/machine-learning/service/how-to-deploy-azure-kubernetes-service) lub [jak wdrożyć model do Azure Container Instances](https://docs.microsoft.com/azure/machine-learning/service/how-to-deploy-azure-container-instance) , aby wdrożyć modele w punktach końcowych usługi sieci Web, i włączyć usługę Azure Application Insights, aby korzystać z zbierania danych i monitorowania punktów końcowych.
+* Zobacz [MLOps: zarządzanie, wdrażanie i monitorowanie modeli przy użyciu Azure Machine Learning](https://docs.microsoft.com/azure/machine-learning/service/concept-model-management-and-deployment) , aby dowiedzieć się więcej na temat wykorzystywania danych zebranych z modeli w środowisku produkcyjnym. Takie dane mogą pomóc w nieustannym ulepszaniu procesu uczenia maszynowego

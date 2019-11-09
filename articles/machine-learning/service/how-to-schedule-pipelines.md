@@ -8,13 +8,13 @@ ms.subservice: core
 ms.topic: conceptual
 ms.author: laobri
 author: lobrien
-ms.date: 10/15/2019
-ms.openlocfilehash: 31c3cd944651b9ba4ca4fcaa275e5b0ccedd947c
-ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
+ms.date: 11/06/2019
+ms.openlocfilehash: ded95800c482d43fcaf27993869f1e71eee68f47
+ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72559439"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73831818"
 ---
 # <a name="schedule-machine-learning-pipelines-with-azure-machine-learning-sdk-for-python"></a>Planowanie potoków uczenia maszynowego za pomocą zestawu SDK Azure Machine Learning dla języka Python
 
@@ -54,7 +54,7 @@ pipeline_id = "aaaaaaaaa-bbbb-cccc-dddd-eeeeeeeeeeee"
 
 ## <a name="create-a-schedule"></a>Tworzenie harmonogramu
 
-Aby uruchomić potok cyklicznie, należy utworzyć harmonogram. @No__t_0 kojarzy potok, eksperyment i wyzwalacz. Wyzwalacz może być `ScheduleRecurrence`, który opisuje oczekiwanie między uruchomieniami lub ścieżkę magazynu danych określającą katalog do śledzenia zmian. W obu przypadkach potrzebny będzie identyfikator potoku i nazwa eksperymentu, w którym ma zostać utworzony harmonogram.
+Aby uruchomić potok cyklicznie, należy utworzyć harmonogram. `Schedule` kojarzy potok, eksperyment i wyzwalacz. Wyzwalacz może być`ScheduleRecurrence`, który opisuje oczekiwanie między uruchomieniami lub ścieżkę magazynu danych określającą katalog do śledzenia zmian. W obu przypadkach potrzebny będzie identyfikator potoku i nazwa eksperymentu, w którym ma zostać utworzony harmonogram.
 
 ### <a name="create-a-time-based-schedule"></a>Tworzenie harmonogramu opartego na czasie
 
@@ -75,7 +75,7 @@ recurring_schedule = Schedule.create(ws, name="MyRecurringSchedule",
 
 Potoki wyzwalane przez zmiany plików mogą być bardziej wydajne niż harmonogramy oparte na czasie. Na przykład możesz chcieć wykonać krok przetwarzania wstępnego, gdy plik zostanie zmieniony lub gdy nowy plik zostanie dodany do katalogu danych. Możesz monitorować wszelkie zmiany w magazynie danych lub zmiany w określonym katalogu w magazynie danych. W przypadku monitorowania określonego katalogu zmiany w podkatalogach tego katalogu _nie_ będą powodowały uruchomienia.
 
-Aby utworzyć `Schedule` ponownie aktywny plik, należy ustawić parametr `datastore` w wywołaniu metody [Schedule. Create](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.schedule.schedule?view=azure-ml-py#create-workspace--name--pipeline-id--experiment-name--recurrence-none--description-none--pipeline-parameters-none--wait-for-provisioning-false--wait-timeout-3600--datastore-none--polling-interval-5--data-path-parameter-name-none--continue-on-step-failure-none--path-on-datastore-none---workflow-provider-none---service-endpoint-none-). Aby monitorować folder, ustaw `path_on_datastore` argument.
+Aby utworzyć `Schedule`ponownie aktywny plik, należy ustawić parametr `datastore` w wywołaniu metody [Schedule. Create](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.schedule.schedule?view=azure-ml-py#create-workspace--name--pipeline-id--experiment-name--recurrence-none--description-none--pipeline-parameters-none--wait-for-provisioning-false--wait-timeout-3600--datastore-none--polling-interval-5--data-path-parameter-name-none--continue-on-step-failure-none--path-on-datastore-none---workflow-provider-none---service-endpoint-none-). Aby monitorować folder, ustaw `path_on_datastore` argument.
 
 Argument `polling_interval` pozwala określić, w minutach, częstotliwość sprawdzania zmian w magazynie danych.
 
@@ -94,9 +94,9 @@ Oprócz argumentów omówionych wcześniej, można ustawić argument `status`, a
 
 ## <a name="view-your-scheduled-pipelines"></a>Wyświetlanie zaplanowanych potoków
 
-W przeglądarce internetowej przejdź do obszaru roboczego usługi Machine Learning. W sekcji **składniki** panelu nawigacji wybierz pozycję **potoki**. Ten link umożliwia przejście do listy potoków opublikowanych w obszarze roboczym.
+W przeglądarce sieci Web przejdź do Azure Machine Learning. W sekcji **punkty końcowe** panelu nawigacji wybierz pozycję **punkty końcowe potoku**. Spowoduje to przejście do listy potoków opublikowanych w obszarze roboczym.
 
-![Strona potoków obszaru roboczego](media/how-to-schedule-a-pipeline/pipelines-list.png)
+![Strona potoki elementu AML](media/how-to-schedule-pipelines/scheduled-pipelines.png)
 
 Na tej stronie można wyświetlić informacje podsumowujące dotyczące wszystkich potoków w obszarze roboczym: nazwy, opisy, Stany i tak dalej. Aby przejść do szczegółów, kliknij potok. Na otrzymanej stronie znajduje się więcej szczegółów na temat potoku i można przechodzić do poszczególnych uruchomień.
 

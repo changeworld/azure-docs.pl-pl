@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 01/25/2019
 ms.author: atsenthi
-ms.openlocfilehash: 771a4ffde9f3929a55ee8ce48c2b38e16b83ad49
-ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
+ms.openlocfilehash: 4fd6de848756cedf21d7bb1f7f1be31175de6627
+ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "69650675"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73838254"
 ---
 # <a name="create-your-first-service-fabric-container-application-on-windows"></a>Tworzenie pierwszej aplikacji kontenera usługi Service Fabric w systemie Windows
 
@@ -27,7 +27,7 @@ ms.locfileid: "69650675"
 > * [Windows](service-fabric-get-started-containers.md)
 > * [Linux](service-fabric-get-started-containers-linux.md)
 
-Uruchomienie istniejącej aplikacji w kontenerze systemu Windows w klastrze usługi Service Fabric nie wymaga dokonywania żadnych zmian w aplikacji. W tym artykule przedstawiono sposób tworzenia obrazu platformy Docker zawierającego aplikację sieci Web [](http://flask.pocoo.org/) z kolbą Python i wdrożenia jej w klastrze Service Fabric uruchomionym na komputerze lokalnym. Będziesz również udostępniać aplikację skonteneryzowaną za pomocą usługi [Azure Container Registry](/azure/container-registry/). W tym artykule przyjęto założenie, że masz podstawową wiedzą dotyczącą platformy Docker. Aby uzyskać informacje dotyczące platformy Docker, przeczytaj artykuł [Docker Overview](https://docs.docker.com/engine/understanding-docker/) (Przegląd platformy Docker).
+Uruchomienie istniejącej aplikacji w kontenerze systemu Windows w klastrze usługi Service Fabric nie wymaga dokonywania żadnych zmian w aplikacji. W tym artykule przedstawiono sposób tworzenia obrazu platformy Docker zawierającego aplikację sieci Web z [kolbą](http://flask.pocoo.org/) Python i wdrożenia jej w klastrze Service Fabric uruchomionym na komputerze lokalnym. Będziesz również udostępniać aplikację skonteneryzowaną za pomocą usługi [Azure Container Registry](/azure/container-registry/). W tym artykule przyjęto założenie, że masz podstawową wiedzą dotyczącą platformy Docker. Aby uzyskać informacje dotyczące platformy Docker, przeczytaj artykuł [Docker Overview](https://docs.docker.com/engine/understanding-docker/) (Przegląd platformy Docker).
 
 > [!NOTE]
 > Ten artykuł ma zastosowanie do środowiska Windows Development.  Środowisko uruchomieniowe klastra Service Fabric i środowisko uruchomieniowe platformy Docker musi być uruchomione w tym samym systemie operacyjnym.  Nie można uruchamiać kontenerów systemu Windows w klastrze z systemem Linux.
@@ -46,7 +46,7 @@ Uruchomienie istniejącej aplikacji w kontenerze systemu Windows w klastrze usł
 
   W tym artykule wersja (kompilacja) systemu Windows Server z kontenerami działającymi w węzłach klastra musi być zgodna z tym na komputerze deweloperskim. Wynika to z faktu, że tworzysz obraz platformy Docker na komputerze deweloperskim, a istnieją ograniczenia zgodności między wersjami systemu operacyjnego kontenera i systemem operacyjnym hosta, na którym został wdrożony. Aby uzyskać więcej informacji, zobacz [Windows Server Container system operacyjny i zgodność systemu operacyjnego hosta](#windows-server-container-os-and-host-os-compatibility). 
   
-Aby określić wersję systemu Windows Server z kontenerami, które są potrzebne dla klastra, uruchom `ver` polecenie w wierszu polecenia systemu Windows na komputerze deweloperskim:
+Aby określić wersję systemu Windows Server z kontenerami, które są potrzebne dla klastra, uruchom polecenie `ver` w wierszu polecenia systemu Windows na komputerze deweloperskim:
 
 * Jeśli wersja zawiera *x. x. 14323. x*, a następnie wybierz pozycję *WindowsServer 2016-Datacenter-with-Containers* dla systemu operacyjnego podczas [tworzenia klastra](service-fabric-cluster-creation-via-portal.md).
   * Jeśli wersja zawiera *x. x. 16299. x*, a następnie wybierz pozycję *WindowsServerSemiAnnual Datacenter-Core-1709-with-Containers* dla systemu operacyjnego podczas [tworzenia klastra](service-fabric-cluster-creation-via-portal.md).
@@ -177,7 +177,7 @@ docker rm my-web-site
 
 Po sprawdzeniu, że kontener działa na komputerze dewelopera, wypchnij obraz do rejestru w usłudze Azure Container Registry.
 
-Uruchom ``docker login`` , aby zalogować się do rejestru kontenerów przy użyciu [poświadczeń rejestru](../container-registry/container-registry-authentication.md).
+Uruchom ``docker login``, aby zalogować się do rejestru kontenerów przy użyciu [poświadczeń rejestru](../container-registry/container-registry-authentication.md).
 
 Poniższy przykład przekazuje identyfikator i hasło [nazwy głównej usługi](../active-directory/develop/app-objects-and-service-principals.md) Azure Active Directory. Na przykład nazwę główną usługi można było przypisać do rejestru dla scenariusza automatyzacji. Możesz też zalogować się przy użyciu nazwy użytkownika i hasła do rejestru.
 
@@ -281,7 +281,7 @@ System Windows obsługuje dwa tryby izolacji dla kontenerów: tryb procesu oraz 
    >
 
 ## <a name="configure-resource-governance"></a>Konfigurowanie zarządzania zasobami
-[Zarządzanie zasobami](service-fabric-resource-governance.md) ogranicza zasoby, z których kontener może korzystać na hoście. Element `ResourceGovernancePolicy` określany w manifeście aplikacji służy do deklarowania limitów zasobów pakietu kodu usługi. Limity zasobów można ustawić dla następujących zasobów: Pamięć, MemorySwap, CpuShares (waga względna procesora CPU), MemoryReservationInMB, BlkioWeight (waga względna: BlockIO). W tym przykładzie pakiet usług Guest1Pkg otrzymuje dostęp do jednego rdzenia w węzłach klastra, w których jest umieszczony. Limity pamięci są bezwzględne, więc pakiet kodu jest ograniczony do 1024 MB pamięci (i ma rezerwację tej samej ilości ze wstępną gwarancją). Pakiety kodu (kontenery lub procesy) nie mogą przydzielać pamięci ponad ten limit. Podjęcie próby takiego przydzielenia spowoduje wyjątek braku pamięci. Aby wymuszanie limitu zasobów działało, wszystkie pakiety kodu w ramach pakietu usług powinny mieć określone limity pamięci.
+[Zarządzanie zasobami](service-fabric-resource-governance.md) ogranicza zasoby, z których kontener może korzystać na hoście. Element `ResourceGovernancePolicy` określany w manifeście aplikacji służy do deklarowania limitów zasobów pakietu kodu usługi. Limity można ustawić dla następujących zasobów: Memory, MemorySwap, CpuShares (CPU — względna waga), MemoryReservationInMB, BlkioWeight (BlockIO — względna waga). W tym przykładzie pakiet usług Guest1Pkg otrzymuje dostęp do jednego rdzenia w węzłach klastra, w których jest umieszczony. Limity pamięci są bezwzględne, więc pakiet kodu jest ograniczony do 1024 MB pamięci (i ma rezerwację tej samej ilości ze wstępną gwarancją). Pakiety kodu (kontenery lub procesy) nie mogą przydzielać pamięci ponad ten limit. Podjęcie próby takiego przydzielenia spowoduje wyjątek braku pamięci. Aby wymuszanie limitu zasobów działało, wszystkie pakiety kodu w ramach pakietu usług powinny mieć określone limity pamięci.
 
 ```xml
 <ServiceManifestImport>
@@ -296,7 +296,7 @@ System Windows obsługuje dwa tryby izolacji dla kontenerów: tryb procesu oraz 
 
 Począwszy od wersji 6.1, usługa Service Fabric automatycznie integruje zdarzenia [funkcji HEALTHCHECK platformy Docker](https://docs.docker.com/engine/reference/builder/#healthcheck) z raportem o kondycji systemu. Oznacza to, że jeśli w kontenerze włączono funkcję **HEALTHCHECK**, usługa Service Fabric będzie raportować kondycję przy każdej zmianie stanu kondycji kontenera zgłoszonej przez platformę Docker. Raport kondycji **OK** pojawi się w narzędziu [Service Fabric Explorer](service-fabric-visualizing-your-cluster.md), gdy wartość *health_status* będzie równa *healthy*, a raport **OSTRZEŻENIE** pojawi się, gdy wartość *health_status* będzie równa *unhealthy*. 
 
-Począwszy od najnowszej wersji odświeżania programu v 6.4, można określić, że oceny Docker HEALTHCHECK powinny być zgłaszane jako błąd. Jeśli ta opcja jest włączona, raport o kondycji **OK** pojawi się, gdy *health_status* jest w *dobrej* kondycji i pojawi się **komunikat o błędzie** , gdy *health_status* jest w *złej kondycji*.
+Począwszy od najnowszej wersji odświeżania programu v 6.4, można określić, że oceny Docker HEALTHCHECK powinny być zgłaszane jako błąd. Jeśli ta opcja jest włączona, zostanie wyświetlony **Raport kondycji prawidłowy,** gdy *health_status* jest w *dobrej* kondycji i pojawi się **komunikat o błędzie** , gdy *health_status* jest w złej *kondycji*.
 
 Instrukcja **HEALTHCHECK** wskazująca rzeczywisty test wykonywany w celu monitorowania kondycji kontenera musi występować w pliku Dockerfile używanym podczas generowania obrazu kontenera.
 
@@ -320,7 +320,7 @@ Możesz skonfigurować zachowanie funkcji **HEALTHCHECK** dla każdego kontenera
     </Policies>
 </ServiceManifestImport>
 ```
-Domyślnie *IncludeDockerHealthStatusInSystemHealthReport* ma wartość **true**, *wartość restartcontaineronunhealthydockerhealthstatus* ma wartość **false**, a *TreatContainerUnhealthyStatusAsError* jest ustawiona na **wartość false.** . 
+Domyślnie *IncludeDockerHealthStatusInSystemHealthReport* ma wartość **true**, *wartość restartcontaineronunhealthydockerhealthstatus* ma wartość **false**, a *TreatContainerUnhealthyStatusAsError* jest ustawiona na **wartość false**. 
 
 Jeśli wartość *RestartContainerOnUnhealthyDockerHealthStatus* jest ustawiona na **true**, kontener wielokrotnie raportujący złą kondycję jest uruchamiany ponownie (potencjalnie w innych węzłach).
 
@@ -331,15 +331,15 @@ Aby wyłączyć integrację funkcji **HEALTHCHECK** dla całego klastra usługi 
 ## <a name="deploy-the-container-application"></a>Wdrażanie aplikacji kontenera
 Zapisz wszystkie zmiany i skompiluj aplikację. Aby opublikować aplikację, w Eksploratorze rozwiązań kliknij prawym przyciskiem myszy węzeł **MyFirstContainer** i wybierz pozycję **Publikuj**.
 
-W obszarze **Punkt końcowy połączenia** wprowadź punkt końcowy zarządzania dla klastra. Na przykład „containercluster.westus2.cloudapp.azure.com:19000”. Punkt końcowy połączenia klienta można znaleźć na karcie Przegląd klastra w witrynie [Azure Portal](https://portal.azure.com).
+W obszarze **Punkt końcowy połączenia** wprowadź punkt końcowy zarządzania dla klastra. Na przykład `containercluster.westus2.cloudapp.azure.com:19000`. Punkt końcowy połączenia klienta można znaleźć na karcie Przegląd klastra w witrynie [Azure Portal](https://portal.azure.com).
 
-Kliknij przycisk **publikowania**.
+Kliknij przycisk **Opublikuj**.
 
-[Service Fabric Explorer](service-fabric-visualizing-your-cluster.md) to oparte na sieci Web narzędzie do sprawdzania aplikacji i węzłów oraz zarządzania nimi w klastrze usługi Service Fabric. Otwórz przeglądarkę i przejdź do adresu http://containercluster.westus2.cloudapp.azure.com:19080/Explorer/, a następnie wykonaj procedurę wdrażania aplikacji. Aplikacja zostanie wdrożona, ale jest w stanie błędu do momentu pobrania obrazu w węzłach klastra (co może zająć trochę czasu, w zależności od rozmiaru obrazu): ![Error][1]
+[Service Fabric Explorer](service-fabric-visualizing-your-cluster.md) to oparte na sieci Web narzędzie do sprawdzania aplikacji i węzłów oraz zarządzania nimi w klastrze usługi Service Fabric. Otwórz przeglądarkę i przejdź do adresu `http://containercluster.westus2.cloudapp.azure.com:19080/Explorer/`, a następnie wykonaj procedurę wdrażania aplikacji. Aplikacja zostanie wdrożona, ale pozostanie w stanie błędu do czasu pobrania obrazu na węzły klastra (co może zająć trochę czasu w zależności od rozmiaru obrazu): ![Błąd][1]
 
-Aplikacja jest gotowa, gdy jest w ```Ready``` stanie: ![Gotowe][2]
+Aplikacja jest gotowa, gdy ma stan ```Ready```: ![Gotowa][2]
 
-Otwórz przeglądarkę i przejdź do http://containercluster.westus2.cloudapp.azure.com:8081. W przeglądarce powinien zostać wyświetlony nagłówek „Hello World!”.
+Otwórz przeglądarkę i przejdź pod adres `http://containercluster.westus2.cloudapp.azure.com:8081`. W przeglądarce powinien zostać wyświetlony nagłówek „Hello World!”.
 
 ## <a name="clean-up"></a>Czyszczenie
 
@@ -379,7 +379,7 @@ Zalecamy następujące metody, aby upewnić się, że kontenery są poprawnie wd
  
 ## <a name="specify-os-build-specific-container-images"></a>Określanie obrazów kontenera dla kompilacji systemu operacyjnego 
 
-Kontenery systemu Windows Server mogą być niezgodne z różnymi wersjami systemu operacyjnego. Na przykład kontenery systemu Windows Server utworzone przy użyciu systemu Windows Server 2016 nie działają w systemie Windows Server w wersji 1709 w trybie izolacji procesu. W związku z tym, jeśli węzły klastra są aktualizowane do najnowszej wersji, usługi kontenerów utworzone przy użyciu wcześniejszych wersji systemu operacyjnego mogą zakończyć się niepowodzeniem. Aby obejść ten element przy użyciu wersji 6,1 środowiska uruchomieniowego i nowszego, Service Fabric obsługuje określanie wielu obrazów systemu operacyjnego na kontener i tagowanie ich z wersjami kompilacji systemu operacyjnego w manifeście aplikacji. Wersję kompilacji systemu operacyjnego można uzyskać, uruchamiając `winver` polecenie w wierszu polecenia systemu Windows. Przed zaktualizowaniem systemu operacyjnego na węzłach najpierw zaktualizuj manifesty aplikacji i określ elementy przesłaniające obrazy dla poszczególnych wersji systemu operacyjnego. Poniższy fragment kodu przedstawia, w jaki sposób określić wiele obrazów kontenera w manifeście aplikacji **ApplicationManifest.xml**:
+Kontenery systemu Windows Server mogą być niezgodne z różnymi wersjami systemu operacyjnego. Na przykład kontenery systemu Windows Server utworzone przy użyciu systemu Windows Server 2016 nie działają w systemie Windows Server w wersji 1709 w trybie izolacji procesu. W związku z tym, jeśli węzły klastra są aktualizowane do najnowszej wersji, usługi kontenerów utworzone przy użyciu wcześniejszych wersji systemu operacyjnego mogą zakończyć się niepowodzeniem. Aby obejść ten element przy użyciu wersji 6,1 środowiska uruchomieniowego i nowszego, Service Fabric obsługuje określanie wielu obrazów systemu operacyjnego na kontener i tagowanie ich z wersjami kompilacji systemu operacyjnego w manifeście aplikacji. Wersję kompilacji systemu operacyjnego można uzyskać, uruchamiając `winver` w wierszu polecenia systemu Windows. Przed zaktualizowaniem systemu operacyjnego na węzłach najpierw zaktualizuj manifesty aplikacji i określ elementy przesłaniające obrazy dla poszczególnych wersji systemu operacyjnego. Poniższy fragment kodu przedstawia, w jaki sposób określić wiele obrazów kontenera w manifeście aplikacji **ApplicationManifest.xml**:
 
 
 ```xml
@@ -507,7 +507,7 @@ NtTvlzhk11LIlae/5kjPv95r3lw6DHmV4kXLwiCNlcWPYIWBGIuspwyG+28EWSrHmN7Dt2WqEWqeNQ==
 
 ## <a name="configure-time-interval-before-container-is-force-terminated"></a>Konfigurowanie interwału czasu wymuszania przerwania działania kontenera
 
-Możesz skonfigurować interwał czasu środowiska uruchomieniowego, po upływie którego kontener ma zostać usunięty po rozpoczęciu usuwania usługi (lub przenoszenia do innego węzła). Skonfigurowanie interwału czasu powoduje wysłanie polecenia `docker stop <time in seconds>` do kontenera.  Aby uzyskać więcej informacji, zobacz [docker stop](https://docs.docker.com/engine/reference/commandline/stop/). Interwał czasu oczekiwania jest określony w sekcji `Hosting`. `Hosting` Sekcję można dodać podczas tworzenia klastra lub później w ramach uaktualnienia konfiguracji. W poniższym fragmencie manifestu klastra pokazano, jak ustawić interwał oczekiwania:
+Możesz skonfigurować interwał czasu środowiska uruchomieniowego, po upływie którego kontener ma zostać usunięty po rozpoczęciu usuwania usługi (lub przenoszenia do innego węzła). Skonfigurowanie interwału czasu powoduje wysłanie polecenia `docker stop <time in seconds>` do kontenera.  Aby uzyskać więcej informacji, zobacz [docker stop](https://docs.docker.com/engine/reference/commandline/stop/). Interwał czasu oczekiwania jest określony w sekcji `Hosting`. Sekcję `Hosting` można dodać podczas tworzenia klastra lub później w ramach uaktualnienia konfiguracji. W poniższym fragmencie manifestu klastra pokazano, jak ustawić interwał oczekiwania:
 
 ```json
 "fabricSettings": [

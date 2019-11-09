@@ -1,7 +1,7 @@
 ---
 title: interfejs API tłumaczenia tekstu w usłudze Translator Metoda transliteracji
 titleSuffix: Azure Cognitive Services
-description: Użyj metody transliteracji interfejs API tłumaczenia tekstu w usłudze Translator.
+description: Konwertuj tekst w jednym języku z jednego skryptu na inny skrypt za pomocą metody transliteracji interfejs API tłumaczenia tekstu w usłudze Translator.
 services: cognitive-services
 author: swmachan
 manager: nitinme
@@ -10,20 +10,20 @@ ms.subservice: translator-text
 ms.topic: reference
 ms.date: 02/01/2019
 ms.author: swmachan
-ms.openlocfilehash: 58c9399b3701e2d8f0737b48c00336159e9688a8
-ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
+ms.openlocfilehash: e6bb1541b2b668796b352bebc68d59b4ade143e3
+ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68931996"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73837278"
 ---
-# <a name="translator-text-api-30-transliterate"></a>Interfejs API tłumaczenia tekstu w usłudze Translator 3,0: Transliterate
+# <a name="translator-text-api-30-transliterate"></a>Interfejs API tłumaczenia tekstu w usłudze Translator 3,0: transliteracja
 
 Konwertuje tekst w jednym języku z jednego skryptu na inny skrypt.
 
 ## <a name="request-url"></a>Adres URL żądania
 
-`POST` Wyślij żądanie do:
+Wyślij żądanie `POST` do:
 
 ```HTTP
 https://api.cognitive.microsofttranslator.com/transliterate?api-version=3.0
@@ -37,20 +37,20 @@ Parametry żądania przesłane na ciągu zapytania są następujące:
   <th width="20%">Parametr zapytania</th>
   <th>Opis</th>
   <tr>
-    <td>api-version</td>
+    <td>wersja interfejsu API</td>
     <td>*Wymagany parametr*.<br/>Wersja interfejsu API żądana przez klienta. Wartość musi być `3.0`.</td>
   </tr>
   <tr>
-    <td>język</td>
+    <td>language</td>
     <td>*Wymagany parametr*.<br/>Określa język tekstu do przekonwertowania z jednego skryptu na drugi. Możliwe języki są wymienione w `transliteration` zakresie uzyskanym przez wykonywanie zapytań do usługi pod kątem [obsługiwanych języków](./v3-0-languages.md).</td>
   </tr>
   <tr>
     <td>fromScript</td>
-    <td>*Wymagany parametr*.<br/>Określa skrypt używany przez tekst wejściowy. Wyszukaj [obsługiwane języki](./v3-0-languages.md) przy użyciu `transliteration` zakresu, aby znaleźć skrypty wejściowe dostępne dla wybranego języka.</td>
+    <td>*Wymagany parametr*.<br/>Określa skrypt używany przez tekst wejściowy. Wyszukaj [obsługiwane języki](./v3-0-languages.md) przy użyciu zakresu `transliteration`, aby znaleźć skrypty wejściowe dostępne dla wybranego języka.</td>
   </tr>
   <tr>
     <td>toScript</td>
-    <td>*Wymagany parametr*.<br/>Określa skrypt wyjściowy. Wyszukaj [obsługiwane języki](./v3-0-languages.md) przy użyciu `transliteration` zakresu, aby znaleźć skrypty wyjściowe dostępne dla wybranej kombinacji języka i skryptu wejściowego.</td>
+    <td>*Wymagany parametr*.<br/>Określa skrypt wyjściowy. Wyszukaj [obsługiwane języki](./v3-0-languages.md) przy użyciu zakresu `transliteration`, aby znaleźć skrypty wyjściowe dostępne dla wybranej kombinacji języka i skryptu wejściowego.</td>
   </tr>
 </table> 
 
@@ -73,13 +73,13 @@ Nagłówki żądań obejmują:
   </tr>
   <tr>
     <td>X-ClientTraceId</td>
-    <td>*Opcjonalnie*.<br/>Wygenerowany przez klienta identyfikator GUID służący do unikatowej identyfikacji żądania. Należy pamiętać, że ten nagłówek można pominąć, jeśli w ciągu zapytania zostanie uwzględniony identyfikator śledzenia, przy użyciu parametru `ClientTraceId`zapytania o nazwie.</td>
+    <td>*Opcjonalnie*.<br/>Wygenerowany przez klienta identyfikator GUID służący do unikatowej identyfikacji żądania. Należy pamiętać, że ten nagłówek można pominąć, jeśli w ciągu zapytania zostanie uwzględniony identyfikator śledzenia, przy użyciu parametru zapytania o nazwie `ClientTraceId`.</td>
   </tr>
 </table> 
 
 ## <a name="request-body"></a>Treść żądania
 
-Treść żądania jest tablicą JSON. Każdy element tablicy jest obiektem JSON z właściwością ciągu o `Text`nazwie, która reprezentuje ciąg do przekonwertowania.
+Treść żądania jest tablicą JSON. Każdy element tablicy jest obiektem JSON z właściwością ciągu o nazwie `Text`, która reprezentuje ciąg do przekonwertowania.
 
 ```json
 [
@@ -98,9 +98,9 @@ Obowiązują następujące ograniczenia:
 
 Pomyślna odpowiedź to tablica JSON z jednym wynikiem dla każdego elementu w tablicy wejściowej. Obiekt wynikowy zawiera następujące właściwości:
 
-  * `text`: Ciąg, który jest wynikiem konwersji ciągu wejściowego na skrypt wyjściowy.
+  * `text`: ciąg, który jest wynikiem konwersji ciągu wejściowego na skrypt wyjściowy.
   
-  * `script`: Ciąg określający skrypt używany w danych wyjściowych.
+  * `script`: ciąg określający skrypt używany w danych wyjściowych.
 
 Przykładowa odpowiedź JSON to:
 
@@ -117,7 +117,7 @@ Przykładowa odpowiedź JSON to:
   <th width="20%">Nagłówki</th>
   <th>Opis</th>
   <tr>
-    <td>X-RequestId</td>
+    <td>X-IdentyfikatorŻądania</td>
     <td>Wartość wygenerowana przez usługę w celu zidentyfikowania żądania. Służy do rozwiązywania problemów.</td>
   </tr>
 </table> 
@@ -143,7 +143,7 @@ Oto możliwe kody stanu HTTP zwracane przez żądanie.
   </tr>
   <tr>
     <td>403</td>
-    <td>Żądanie nie jest autoryzowany. Sprawdź komunikat o błędzie szczegóły. Często oznacza to, że używane są wszystkie bezpłatne tłumaczenia udostępnione w ramach wersji próbnej.</td>
+    <td>Żądanie nie ma autoryzacji. Sprawdź komunikat o błędzie szczegóły. Często oznacza to, że używane są wszystkie bezpłatne tłumaczenia udostępnione w ramach wersji próbnej.</td>
   </tr>
   <tr>
     <td>429</td>
@@ -151,11 +151,11 @@ Oto możliwe kody stanu HTTP zwracane przez żądanie.
   </tr>
   <tr>
     <td>500</td>
-    <td>Wystąpił nieoczekiwany błąd. Jeśli błąd będzie się powtarzać, zgłoś go z: Data i godzina błędu, identyfikator żądania z nagłówka `X-RequestId`odpowiedzi oraz identyfikator klienta z nagłówka `X-ClientTraceId`żądania.</td>
+    <td>Wystąpił nieoczekiwany błąd. Jeśli błąd będzie się powtarzać, zgłoś go z: Data i godzina błędu, identyfikator żądania z nagłówka odpowiedzi `X-RequestId`i identyfikator klienta z nagłówka żądania `X-ClientTraceId`.</td>
   </tr>
   <tr>
     <td>503</td>
-    <td>Serwer jest tymczasowo niedostępny. Ponów żądanie. Jeśli błąd będzie się powtarzać, zgłoś go z: Data i godzina błędu, identyfikator żądania z nagłówka `X-RequestId`odpowiedzi oraz identyfikator klienta z nagłówka `X-ClientTraceId`żądania.</td>
+    <td>Serwer jest tymczasowo niedostępny. Ponów żądanie. Jeśli błąd będzie się powtarzać, zgłoś go z: Data i godzina błędu, identyfikator żądania z nagłówka odpowiedzi `X-RequestId`i identyfikator klienta z nagłówka żądania `X-ClientTraceId`.</td>
   </tr>
 </table> 
 
@@ -171,7 +171,7 @@ Poniższy przykład pokazuje, jak konwertować dwa japońskie ciągi na łacińs
 [{"text":"こんにちは","script":"jpan"},{"text":"さようなら","script":"jpan"}]
 ```
 
-Jeśli używasz zwinięcie w oknie wiersza polecenia, które nie obsługuje znaków Unicode, weź następujący ładunek JSON i Zapisz go w pliku o nazwie `request.txt`. Pamiętaj, aby zapisać plik z `UTF-8` kodowaniem.
+Jeśli używasz zwinięcie w oknie wiersza polecenia, które nie obsługuje znaków Unicode, weź następujący ładunek JSON i Zapisz go w pliku o nazwie `request.txt`. Pamiętaj, aby zapisać plik z kodowaniem `UTF-8`.
 
 ```
 curl -X POST "https://api.cognitive.microsofttranslator.com/transliterate?api-version=3.0&language=ja&fromScript=Jpan&toScript=Latn" -H "X-ClientTraceId: 875030C7-5380-40B8-8A03-63DACCF69C11" -H "Ocp-Apim-Subscription-Key: <client-secret>" -H "Content-Type: application/json" -d @request.txt

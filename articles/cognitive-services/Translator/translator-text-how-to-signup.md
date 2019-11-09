@@ -1,7 +1,7 @@
 ---
-title: Wprowadzenie — interfejs API tekstu usługi Translator
+title: Wprowadzenie — interfejs API tłumaczenia tekstu w usłudze Translator
 titleSuffix: Azure Cognitive Services
-description: Dowiedz się, jak utworzyć konto interfejsu API tłumaczenia tekstu i uzyskiwanie klucza subskrypcji.
+description: W tym artykule przedstawiono sposób tworzenia konta w usłudze Azure Cognitive Services interfejs API tłumaczenia tekstu w usłudze Translator i uzyskiwania klucza subskrypcji.
 services: cognitive-services
 author: swmachan
 manager: nitinme
@@ -11,56 +11,56 @@ ms.topic: conceptual
 ms.date: 06/04/2019
 ms.author: swmachan
 ms.custom: seodec18
-ms.openlocfilehash: e51e6875681618b5f558d5c52ed5a2b14095b079
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: cfae5318213e8af164c8d0cc9ed378705a5644b0
+ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67434969"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73835706"
 ---
-# <a name="how-to-sign-up-for-the-translator-text-api"></a>Jak zarejestrować się do interfejsu API tłumaczenia tekstu
+# <a name="how-to-sign-up-for-the-translator-text-api"></a>Jak zarejestrować się w usłudze interfejs API tłumaczenia tekstu w usłudze Translator
 
 ## <a name="sign-in-to-the-azure-portal"></a>Logowanie się do witryny Azure Portal
 
 - Nie masz jeszcze konta? Możesz utworzyć [bezpłatne konto](https://azure.microsoft.com/free/), aby eksperymentować bez opłat.
 - Masz już konto? [Rejestrowanie](https://ms.portal.azure.com/)
 
-## <a name="create-a-subscription-to-the-translator-text-api"></a>Utwórz subskrypcję interfejsu API tłumaczenia tekstu
+## <a name="create-a-subscription-to-the-translator-text-api"></a>Utwórz subskrypcję dla interfejs API tłumaczenia tekstu w usłudze Translator
 
-Po zalogowaniu się do portalu można utworzyć subskrypcji interfejsu API tłumaczenia tekstu w następujący sposób:
+Po zalogowaniu się do portalu można utworzyć subskrypcję w interfejs API tłumaczenia tekstu w usłudze Translator w następujący sposób:
 
 1. Wybierz pozycję **+ Utwórz zasób**.
-1. W **Przeszukaj witrynę Marketplace** polu wyszukiwania, wprowadź **tekstu usługi Translator** a następnie wybierz pozycję z wyników.
-1. Wybierz **Utwórz** można zdefiniować szczegóły dla subskrypcji.
-1. Z **warstwa cenowa** listy, wybierz warstwę cenową, która najlepiej spełnia Twoje potrzeby.
-    1. Każda subskrypcja ma warstwę bezpłatną. Bezpłatna warstwa ma takie same funkcje i funkcje jako naszych płatnych planów i nie wygasa.
-    1. Może mieć tylko jedną bezpłatną subskrypcję dla konta usługi.
-1. Wybierz **Utwórz** na zakończenie tworzenia subskrypcji.
+1. W polu Wyszukaj w **portalu Marketplace** wprowadź **tłumaczenie tekstu w usłudze translator** a następnie wybierz je z wyników.
+1. Wybierz pozycję **Utwórz** , aby zdefiniować szczegóły dla subskrypcji.
+1. Z listy **warstwa cenowa** wybierz warstwę cenową, która najlepiej odpowiada Twoim potrzebom.
+    1. Każda subskrypcja ma bezpłatną warstwę. Warstwa Bezpłatna ma takie same funkcje, jak plany płatne i nie wygasa.
+    1. Dla Twojego konta może istnieć tylko jedna bezpłatna subskrypcja.
+1. Wybierz pozycję **Utwórz** , aby zakończyć tworzenie subskrypcji.
 
 ## <a name="authentication-key"></a>Klucz uwierzytelniania
 
-Po zarejestrowaniu się do tekstu usługi Translator można korzystać klucz dostępu do spersonalizowanych unikatowy Twojej subskrypcji. Ten klucz jest wymagany przy każdym wywołaniu interfejsu API tłumaczenia tekstu.
+Po zarejestrowaniu się w usłudze tłumaczenie tekstu w usłudze Translator otrzymujesz spersonalizowany klucz dostępu unikatowy dla Twojej subskrypcji. Ten klucz jest wymagany dla każdego wywołania interfejs API tłumaczenia tekstu w usłudze Translator.
 
-1. Pobrać klucz uwierzytelniania, wybierając najpierw odpowiednią subskrypcję.
-1. Wybierz **klucze** w **zarządzania zasobami** części szczegółów Twojej subskrypcji.
-1. Skopiuj jeden z kluczy na liście dla Twojej subskrypcji.
+1. Pobierz klucz uwierzytelniania, wybierając odpowiednią subskrypcję.
+1. Wybierz pozycję **klucze** w sekcji **Zarządzanie zasobami** w obszarze szczegóły subskrypcji.
+1. Skopiuj jeden z kluczy wymienionych dla Twojej subskrypcji.
 
-## <a name="learn-test-and-get-support"></a>Dowiedz się, testowanie i uzyskanie pomocy technicznej
+## <a name="learn-test-and-get-support"></a>Uczenie się, testowanie i uzyskiwanie pomocy technicznej
 
-- [Przykłady kodu w serwisie GitHub](https://github.com/MicrosoftTranslator)
+- [Przykłady kodu w witrynie GitHub](https://github.com/MicrosoftTranslator)
 - [Forum pomocy technicznej usługi Microsoft Translator](https://www.aka.ms/TranslatorForum)
 
-Usługa Microsoft Translator jest ogólnie umożliwi Twoje pierwsze kilka żądań, które upłynąć, zanim po sprawdzeniu stanu konta subskrypcji. Jeśli pierwsze kilka żądań interfejsu API usługi Microsoft Translator powiedzie się następnie wywołania kończyć się niepowodzeniem, odpowiedzi na błąd będą wskazywać problem. Aby zobaczyć przyczynę, zaloguj się odpowiedzi interfejsu API.
+Usługi Microsoft Translator zazwyczaj umożliwią przekazanie pierwszych kilku żądań przed zweryfikowaniem stanu konta subskrypcji. Jeśli pierwsze kilka żądań interfejsu API usługi Microsoft Translator zakończyło się niepowodzeniem, odpowiedź na błąd będzie wskazywać na problem. Zarejestruj odpowiedź interfejsu API, aby zobaczyć przyczynę.
 
 ## <a name="pricing-options"></a>Opcje cennika
 
-- [Interfejs API tekstu usługi Translator](https://azure.microsoft.com/pricing/details/cognitive-services/translator-text-api/)
+- [interfejs API tłumaczenia tekstu w usłudze Translator](https://azure.microsoft.com/pricing/details/cognitive-services/translator-text-api/)
 
 ## <a name="customization"></a>Dostosowywanie
 
-Użyj niestandardowego w usłudze Translator Dostosuj tłumaczenia i Utwórz system tłumaczeń dostosowana do własnych terminologii i stylu, zaczynając od ogólnego systemów neuronowego tłumaczenia maszynowego Microsoft Translator. [Dowiedz się więcej](customization.md)
+Użyj translatora niestandardowego, aby dostosować tłumaczenia i utworzyć system tłumaczenia dostosowany do własnej terminologii i stylu, rozpoczynając od ogólnego systemu tłumaczenia usługi Microsoft Translator neuronowych Machine. [Dowiedz się więcej](customization.md)
 
-## <a name="additional-resources"></a>Zasoby dodatkowe
+## <a name="additional-resources"></a>Dodatkowe zasoby
 
-- [Rozpoczynanie pracy z platformą Azure (3-minutowy klip wideo)](https://azure.microsoft.com/get-started/?b=16.24)
-- [Jak zapłacić za pomocą faktury](https://azure.microsoft.com/pricing/invoicing/)
+- [Wprowadzenie do platformy Azure (wideo 3-minutowy)](https://azure.microsoft.com/get-started/?b=16.24)
+- [Jak uregulować fakturę](https://azure.microsoft.com/pricing/invoicing/)

@@ -1,7 +1,7 @@
 ---
-title: Dostosowywanie modelu osoby w Video Indexer — platformy Azure
-titlesuffix: Azure Media Services
-description: Ten artykuł zawiera omówienie modelu osoby w Video Indexer i sposobami ich dostosowywania.
+title: Dostosowywanie modelu osoby w Video Indexer — Azure
+titleSuffix: Azure Media Services
+description: Ten artykuł zawiera omówienie tego, co to jest model osoby w Video Indexer i jak go dostosować.
 services: media-services
 author: anikaz
 manager: johndeu
@@ -10,24 +10,24 @@ ms.subservice: video-indexer
 ms.topic: article
 ms.date: 05/15/2019
 ms.author: anzaman
-ms.openlocfilehash: c74b913fc3ac35039d914fc97c9c438d2e4a3069
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 3fabba98cb137975da749411ca9accb5a951742d
+ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65799444"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73838293"
 ---
-# <a name="customize-a-person-model-in-video-indexer"></a>Dostosowywanie modelu osoby w indeksatora wideo
+# <a name="customize-a-person-model-in-video-indexer"></a>Dostosowywanie modelu osoby w Video Indexer
 
-Usługa Video Indexer obsługuje rozpoznawanie osobistości w filmach wideo. Funkcja rozpoznawania osobistości obejmuje około jeden milion twarze na podstawie źródła najczęściej żądanych danych, takich jak ZAUFANI Wikipedia i górnym specjaliści LinkedIn. Twarzy, które nie są rozpoznawane przez indeksator wideo nadal są wykrywane, ale są pozostawione bez nazwy. Klientów można tworzyć niestandardowe modele osoby i włączyć indeksatora wideo do rozpoznawania twarzy, które nie są rozpoznawane przez domyślny. Klienci mogą tworzyć modele te osoby, łącząc nazwiska osoby za pomocą plików obrazów twarzy osoby.  
+Video Indexer obsługuje rozpoznawanie osobistości w filmach wideo. Funkcja rozpoznawania osobistości obejmuje około 1 000 000 twarzy na podstawie często zażądanego źródła danych, takiego jak IMDB, Wikipedia i najpopularniejszych wpływów serwisu LinkedIn. Powierzchnie, które nie są rozpoznawane przez Video Indexer są nadal wykrywane, ale pozostawione bez nazwy. Klienci mogą tworzyć niestandardowe modele osób i umożliwiać Video Indexer rozpoznawania twarzy, które nie są rozpoznawane domyślnie. Klienci mogą tworzyć te modele osób, parowania nazwisko osoby za pomocą plików obrazów na stronie osoby.  
 
-Jeśli Twoje konto jest przeznaczony dla różnych przypadków użycia, możesz korzystać z możliwości tworzenia wielu modeli osoby na jednym koncie. Na przykład zawartość w ramach Twojego konta ma być posortowane według różnych kanałów, możesz utworzyć oddzielne model osoby dla każdego kanału. 
+Jeśli Twoje konto uwzględnia różne przypadki użycia, możesz skorzystać z możliwości tworzenia wielu modeli osób na konto. Na przykład jeśli zawartość na koncie ma być posortowana w różnych kanałach, można utworzyć osobny model osoby dla każdego kanału. 
 
 > [!NOTE]
-> Każdy model osoby obsługuje maksymalnie 1 milion osób i każde konto ma ograniczenie do 50 modeli osoby. 
+> Każdy model osoby obsługuje do 1 000 000 osób, a każde konto ma limit 50 modeli osób. 
 
-Po utworzeniu modelu, można użyć go, podając identyfikator modelu określonego modelu osoby podczas przekazywania indeksowania lub Indeksowanie filmu wideo. Szkolenia nowej twarzy, aby obejrzeć wideo, aktualizuje określonego modelu niestandardowego, który film wideo został skojarzony z. 
+Po utworzeniu modelu można go użyć, dostarczając Identyfikator modelu określonego modelu osoby podczas przekazywania/indeksowania lub ponownego indeksowania wideo. Uczenie nowej kroju filmu wideo i aktualizowanie określonego modelu niestandardowego, z którym zostało skojarzone wideo. 
 
-Jeśli nie potrzebujesz obsługi wielu modelu osoby, nie należy przypisywać osoby identyfikator modelu do swojego wideo podczas przekazywania indeksowania lub ponowne indeksowanie. W tym przypadku Video Indexer użyje domyślnego modelu osoby na Twoim koncie. 
+Jeśli nie potrzebujesz pomocy technicznej modelu wielu osób, nie przypisuj identyfikatora modelu osoby do wideo podczas przekazywania/indeksowania lub ponownego indeksowania. W takim przypadku Video Indexer będzie używać domyślnego modelu osoby na Twoim koncie. 
 
-Umożliwia Video Indexer witryny sieci Web do edytowania, twarze, które zostały wykryte w filmie wideo i zarządzanie wielu niestandardowych modeli osoby ze swojego konta, zgodnie z opisem w [dostosowania modelu osoba, za pomocą witryny sieci Web](customize-person-model-with-website.md) tematu. Możesz również użyć interfejsu API, zgodnie z opisem w [dostosowania modelu osoba, za pomocą interfejsów API](customize-person-model-with-api.md).
+Za pomocą witryny sieci Web Video Indexer można edytować powierzchnie wykryte w filmie wideo i zarządzać wieloma niestandardowymi modelami osób na koncie, zgodnie z opisem w temacie [Dostosowywanie modelu osoby za pomocą witryny sieci Web](customize-person-model-with-website.md) . Możesz również użyć interfejsu API, zgodnie z opisem w temacie [Dostosowywanie modelu osoby za pomocą interfejsów API](customize-person-model-with-api.md).

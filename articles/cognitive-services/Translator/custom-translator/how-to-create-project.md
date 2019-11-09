@@ -1,7 +1,7 @@
 ---
-title: Jak utworzyć projekt? — Niestandardowy w usłudze Translator
+title: Jak utworzyć projekt — translator niestandardowy
 titleSuffix: Azure Cognitive Services
-description: Jak utworzyć projekt w usłudze translator niestandardowym?
+description: W tym artykule wyjaśniono, jak utworzyć projekt i zarządzać nim w usłudze Azure Cognitive Services translatorem niestandardowym.
 author: swmachan
 manager: nitinme
 ms.service: cognitive-services
@@ -9,12 +9,12 @@ ms.subservice: translator-text
 ms.date: 02/21/2019
 ms.author: swmachan
 ms.topic: conceptual
-ms.openlocfilehash: a62cc6133fe01bf7478166c526e32b3215ceebf1
-ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
+ms.openlocfilehash: 5b3a6f2e903d8178554b7a076ae1277633569353
+ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68595753"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73836560"
 ---
 # <a name="create-a-project"></a>Tworzenie projektu
 
@@ -32,15 +32,15 @@ Tworzenie projektu to pierwszy krok w kierunku tworzenia modelu.
 
     a.  Nazwa projektu (wymagana): Nadaj projektowi unikatową, zrozumiałą nazwę. Nie trzeba wymieniać języków w tytule.
 
-    b.  Opis: Krótkie podsumowanie dotyczące projektu. Ten opis nie ma wpływu na zachowanie translatora niestandardowego ani systemowego systemu, ale może ułatwić rozróżnienie między różnymi projektami.
+    b.  Opis: krótkie podsumowanie dotyczące projektu. Ten opis nie ma wpływu na zachowanie translatora niestandardowego ani systemowego systemu, ale może ułatwić rozróżnienie między różnymi projektami.
 
-    c.  Para języków (wymagana): Wybierz język, z którego jest przeprowadzana translacja.
+    d.  Para języków (wymagana): Wybierz język, z którego jest przeprowadzana translacja.
 
     d.  Kategoria (wymagana): Wybierz kategorię, która jest najbardziej odpowiednia dla Twojego projektu. Kategoria zawiera opis terminologii i stylu dokumentów, które zamierzasz przetłumaczyć.
 
-    e.  Opis kategorii: Użyj tego pola, aby lepiej opisać konkretne pole lub branżę, w której pracujesz. Na przykład jeśli Twoja kategoria to medycyna, możesz dodać określony dokument, taki chirurg lub Pediatrics. Opis nie ma wpływu na zachowanie niestandardowego translatora ani systemu niestandardowego.
+    e.  Opis kategorii: to pole służy do lepszego opisywania określonego pola lub branży, w której pracujesz. Na przykład jeśli Twoja kategoria to medycyna, możesz dodać określony dokument, taki chirurg lub Pediatrics. Opis nie ma wpływu na zachowanie niestandardowego translatora ani systemu niestandardowego.
 
-    f.  Etykieta projektu: [Etykieta projektu](workspace-and-project.md#project-labels) rozróżnia projekty z tą samą parą językową i kategorią. Najlepszym rozwiązaniem jest użycie etykiety *tylko* wtedy, gdy planujesz kompilację wielu projektów dla tej samej pary językowej i tej samej kategorii i chcesz uzyskać dostęp do tych projektów z innym IDKategorii. Nie używaj tego pola, jeśli tworzysz systemy tylko dla jednej kategorii. Etykieta projektu nie jest wymagana i nie ułatwia rozróżniania par językowych. Możesz użyć tej samej etykiety dla wielu projektów.
+    f.  Etykieta projektu: [etykieta projektu](workspace-and-project.md#project-labels) rozróżnia projekty z tą samą parą językową i kategorią. Najlepszym rozwiązaniem jest użycie etykiety *tylko* wtedy, gdy planujesz kompilację wielu projektów dla tej samej pary językowej i tej samej kategorii i chcesz uzyskać dostęp do tych projektów z innym IDKategorii. Nie używaj tego pola, jeśli tworzysz systemy tylko dla jednej kategorii. Etykieta projektu nie jest wymagana i nie ułatwia rozróżniania par językowych. Możesz użyć tej samej etykiety dla wielu projektów.
 
     ![Okno dialogowe Tworzenie projektu](media/how-to/how-to-create-project-dialog.png)
 
@@ -52,13 +52,13 @@ Strona docelowa usługi tłumaczenia niestandardowego pokazuje pierwsze 10 proje
 
 Po wybraniu projektu na stronie projektu zostaną wyświetlone następujące elementy:
 
-- Wartooć IDKategorii jest tworzony przez połączenie identyfikator obszaru roboczego, etykiety projektu i kodu kategorii. Używasz IDKategorii z interfejsem API usługi Text translator, aby uzyskać niestandardowe tłumaczenia.
+- IDKategorii: element IDKategorii jest tworzony przez połączenie identyfikator obszaru roboczego, etykiety projektu i kodu kategorii. Używasz IDKategorii z interfejsem API usługi Text translator, aby uzyskać niestandardowe tłumaczenia.
 
 - Przycisk uczenia: Użyj tego przycisku, aby rozpocząć [uczenie modelu](how-to-train-model.md).
 
-- Przycisk Dodaj dokumenty: Ten przycisk służy do [przekazywania dokumentów](how-to-upload-document.md).
+- Przycisk Dodaj dokumenty: ten przycisk służy do [przekazywania dokumentów](how-to-upload-document.md).
 
-- Przycisk filtrowania dokumentów: Ten przycisk służy do filtrowania i wyszukiwania określonych dokumentów.
+- Przycisk filtrowania dokumentów: ten przycisk służy do filtrowania i wyszukiwania określonych dokumentów.
 
     ![Wyświetl szczegóły projektu](media/how-to/how-to-view-project.png)
 

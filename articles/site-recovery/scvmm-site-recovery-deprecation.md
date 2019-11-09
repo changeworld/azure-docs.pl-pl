@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 09/13/2019
 ms.author: rajanaki
-ms.openlocfilehash: 68881d57f251d2f26996b2a837780106326ec1d3
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: c126d72720c16d4ba869156e86a6e60110b2c31b
+ms.sourcegitcommit: 16c5374d7bcb086e417802b72d9383f8e65b24a7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73492287"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73847490"
 ---
 # <a name="upcoming-deprecation-of-dr-between-customer-owned-sites-using-hyper-v-and-between-sites-managed-by-scvmm-to-azure"></a>Nadchodzące wycofanie firmy DR między lokacjami należącymi do klienta przy użyciu funkcji Hyper-V i między lokacjami zarządzanymi przez program SCVMM na platformie Azure
 
@@ -43,7 +43,7 @@ Poniżej znajdują się opcje, które klient musi zapewnić, że nie ma to wpły
 - Wybierz, aby [rozpocząć korzystanie z platformy Azure jako elementu docelowego odzyskiwania maszyn wirtualnych na hostach funkcji Hyper-V](hyper-v-azure-tutorial.md).
 
 > [!IMPORTANT]
-> Należy pamiętać, że środowisko lokalne może nadal mieć SCVMMM, ale skonfigurujesz funkcję ASR z odwołaniami tylko do hostów funkcji Hyper-V.
+> Należy pamiętać, że środowisko lokalne może nadal mieć program SCVMM, ale skonfigurujesz funkcję ASR z odwołaniami tylko do hostów funkcji Hyper-V.
 
 - Wybierz, aby kontynuować replikację między lokacjami, ale używając bazowego [rozwiązania funkcji Hyper-V Replica](https://docs.microsoft.com/windows-server/virtualization/hyper-v/manage/set-up-hyper-v-replica), ale nie będzie można zarządzać konfiguracjami Dr przy użyciu Azure Site Recovery w Azure Portal. 
 

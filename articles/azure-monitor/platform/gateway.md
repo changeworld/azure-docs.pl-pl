@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: MGoedtel
 ms.author: magoedte
 ms.date: 10/30/2019
-ms.openlocfilehash: 87e1995a84ae2b598b8097d4910914831a75a318
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.openlocfilehash: 7574f5c17c1b4598336b8db3108946164dc203f2
+ms.sourcegitcommit: 16c5374d7bcb086e417802b72d9383f8e65b24a7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73162021"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73847286"
 ---
 # <a name="connect-computers-without-internet-access-by-using-the-log-analytics-gateway-in-azure-monitor"></a>Łączenie komputerów bez dostępu do Internetu przy użyciu bramy Log Analytics w programie Azure Monitor
 
@@ -26,7 +26,7 @@ Brama Log Analytics jest serwerem proxy przesyłania dalej HTTP, który obsługu
 
 Brama Log Analytics obsługuje:
 
-* Raportowanie do tych samych czterech Log Analytics agentów obszaru roboczego, które znajdują się w nim i są skonfigurowane za pomocą Azure Automation hybrydowych procesów roboczych elementów Runbook.  
+* Raportowanie do tych samych Log Analytics obszarów roboczych skonfigurowanych dla każdego agenta w tle i skonfigurowanych przy użyciu Azure Automation hybrydowych procesów roboczych elementów Runbook.  
 * Komputery z systemem Windows, na których Microsoft Monitoring Agent jest podłączony bezpośrednio do Log Analytics obszaru roboczego w Azure Monitor.
 * Komputery z systemem Linux, na których Agent Log Analytics dla systemu Linux jest podłączony bezpośrednio do Log Analytics obszaru roboczego w Azure Monitor.  
 * System Center Operations Manager 2012 z dodatkiem SP1 z pakietem UR7, Operations Manager 2012 R2 z UR3 lub grupą zarządzania w Operations Manager 2016 lub nowszym, która jest zintegrowana z Log Analytics.  
@@ -317,7 +317,7 @@ Za pomocą poleceń cmdlet można wykonać zadania w celu zaktualizowania ustawi
 1. Zainstaluj bramę Log Analytics (Microsoft Instalator Windows).
 1. Otwórz okno konsoli programu PowerShell.
 1. Zaimportuj moduł, wpisując następujące polecenie: `Import-Module OMSGateway`
-1. Jeśli w poprzednim kroku nie wystąpił błąd, moduł został pomyślnie zaimportowany i można użyć poleceń cmdlet. Wprowadź wartość `Get-Module OMSGateway`
+1. Jeśli w poprzednim kroku nie wystąpił błąd, moduł został pomyślnie zaimportowany i można użyć poleceń cmdlet. Wprowadź `Get-Module OMSGateway`
 1. Po użyciu poleceń cmdlet, aby wprowadzić zmiany, uruchom ponownie usługę bramy OMS.
 
 Błąd w kroku 3 oznacza, że moduł nie został zaimportowany. Ten błąd może wystąpić, gdy program PowerShell nie może odnaleźć modułu. Moduł można znaleźć w ścieżce instalacji usługi OMS Gateway: *C:\Program Files\Microsoft OMS Gateway\PowerShell\OmsGateway*.

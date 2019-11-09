@@ -9,14 +9,14 @@ services: cognitive-services
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
-ms.date: 11/04/2019
+ms.date: 11/07/2019
 ms.author: diberry
-ms.openlocfilehash: 0788df1c05d70c01d4de7f7a6ba62a476252f75a
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 2e32d0f4906dea69d6eab27faca4a2e41106ed73
+ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73498922"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73836839"
 ---
 # <a name="whats-new-in-language-understanding"></a>Co nowego w Language Understanding
 
@@ -31,11 +31,13 @@ Dowiedz się, co nowego w usłudze. Te elementy obejmują informacje o wersji, k
     * Możliwość importowania i eksportowania aplikacji z formatem. lu ([LUDown](https://github.com/microsoft/botbuilder-tools/tree/master/packages/Ludown)). To paves sposób na efektywny proces ciągłej integracji/ciągłego dostarczania. 
 * Rozwinięcie języka
     * [Język arabski i hindi](luis-language-support.md) w publicznej wersji zapoznawczej.
-* Modele prekompilowania
+* Wstępnie utworzone modele
     * [Wstępnie skompilowane domeny](luis-reference-prebuilt-domains.md) są teraz ogólnie dostępne (ga)
     * Japońskie wstępnie [skompilowane jednostki](luis-reference-prebuilt-entities.md#japanese-entity-support) — wiek, waluta, numer, procent nie są obsługiwane w wersji 3.
     * Włoskie wstępnie [skompilowane jednostki](luis-reference-prebuilt-entities.md#italian-entity-support) — wiek, waluta, wymiar, liczba, rozdzielczość procentowa została zmieniona z v2.
-* Usprawnij środowisko użytkownika w [portalu Preview.Luis.AI](https://preview.luis.ai) — środowisko etykietowania odnowionych, aby umożliwić tworzenie i debugowanie złożonych modeli.
+* Usprawnij środowisko użytkownika w [portalu Preview.Luis.AI](https://preview.luis.ai) — środowisko etykietowania odnowionych, aby umożliwić tworzenie i debugowanie złożonych modeli. Wypróbuj samouczki dotyczące portalu w wersji zapoznawczej:
+    * [Tylko intencje](tutorial-intents-only.md)
+    * [Odtworzona jednostka pouczenia maszynowego](tutorial-machine-learned-entity.md) 
 * Dokładniejsze Omówienie języka — [tworzenie zaawansowanych modeli języków](luis-concept-entity-types.md) z mniejszym nakładem pracy. 
 * Definiowanie funkcji uczenia maszynowego na poziomie modelu i włączanie modeli do użycia jako sygnałów do innego modelu, takich jak używanie jednostek jako funkcji do intencji i innych jednostek.
 * Nowe, rozwinięte [limity](luis-boundaries.md) — wyższa wartość maksymalna dla list fraz i łączna liczba fraz, nowy model jako limity funkcji

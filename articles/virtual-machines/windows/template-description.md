@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: article
 ms.date: 01/03/2019
 ms.author: cynthn
-ms.openlocfilehash: afbf77014ece981568d4123db7820a2fa0a8f60d
-ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
+ms.openlocfilehash: e1b513344b6ea16c25d829939e64cd5ca1063c87
+ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73749110"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73838890"
 ---
 # <a name="virtual-machines-in-an-azure-resource-manager-template"></a>Maszyny wirtualne w szablonie Azure Resource Manager
 
@@ -282,7 +282,7 @@ Aby ustawić tę właściwość, musi istnieć interfejs sieciowy. W związku z 
 Podczas definiowania zasobu maszyny wirtualnej są używane różne elementy profilu. Niektóre są wymagane, a niektóre są opcjonalne. Na przykład elementy — obiekt hardwareprofile, osProfile, obszarze storageprofile i networkProfile są wymagane, ale diagnosticsProfile jest opcjonalne. Te profile definiują ustawienia, takie jak:
    
 - [zmienia](sizes.md)
-- [Nazwa](/azure/architecture/best-practices/naming-conventions) i poświadczenia
+- [Nazwa](/azure/architecture/best-practices/resource-naming) i poświadczenia
 - Ustawienia dysku i [systemu operacyjnego](cli-ps-findimage.md)
 - [Interfejs sieciowy](../../virtual-network/virtual-network-deploy-multinic-classic-ps.md) 
 - Diagnostyka rozruchu
@@ -360,7 +360,7 @@ Jeśli chcesz utworzyć maszynę wirtualną na podstawie obrazu zarządzanego, Z
 
 ### <a name="attach-data-disks"></a>Dołączanie dysków danych
 
-Opcjonalnie można dodać dyski danych do maszyn wirtualnych. [Liczba dysków](sizes.md) zależy od rozmiaru używanego dysku systemu operacyjnego. Z rozmiarem maszyn wirtualnych ustawionym na Standard_DS1_v2, Maksymalna liczba dysków z danymi, które można dodać do nich, to dwie. W tym przykładzie jeden zarządzany dysk danych jest dodawany do każdej maszyny wirtualnej:
+Opcjonalnie można dodać dyski danych do maszyn wirtualnych. [Liczba dysków](sizes.md) zależy od rozmiaru używanego dysku systemu operacyjnego. Po ustawieniu rozmiaru maszyn wirtualnych ustawionych na Standard_DS1_v2 Maksymalna liczba dysków z danymi, które można dodać do nich, to dwie. W tym przykładzie jeden zarządzany dysk danych jest dodawany do każdej maszyny wirtualnej:
 
 ```
 "dataDisks": [

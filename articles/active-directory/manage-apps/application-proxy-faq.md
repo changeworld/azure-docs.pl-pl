@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 10/03/2019
 ms.author: mimart
 ms.reviewer: japere
-ms.openlocfilehash: 9743f25d89bed4e54b3deed815d1cf29030caff6
-ms.sourcegitcommit: 4f7dce56b6e3e3c901ce91115e0c8b7aab26fb72
+ms.openlocfilehash: 612b6caf47ec4764aa2bbef162592100198ed0c4
+ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/04/2019
-ms.locfileid: "71955473"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73832208"
 ---
 # <a name="active-directory-azure-ad-application-proxy-frequently-asked-questions"></a>Serwer proxy aplikacji usługi Active Directory (Azure AD) — często zadawane pytania
 
@@ -66,7 +66,7 @@ Nie ma powodu. Zostaną wykonane wszystkie konta administratora globalnego lub a
 Istnieją liczniki Monitora wydajności, które są zainstalowane wraz z łącznikiem. Aby je wyświetlić:  
 
 1. Wybierz pozycję **Start**, wpisz "perfmon" i naciśnij klawisz ENTER.
-2. Wybierz pozycję **Monitor wydajności** i kliknij ikonę zielony **+** .
+2. Wybierz pozycję **Monitor wydajności** i kliknij ikonę **+** zielony.
 3. Dodaj liczniki **łącznika serwera proxy aplikacji usługi Microsoft AAD** , które chcesz monitorować.
 
 ### <a name="does-the-azure-ad-application-proxy-connector-have-to-be-on-the-same-subnet-as-the-resource"></a>Czy łącznik usługi Azure serwer proxy aplikacji usługi Azure AD musi znajdować się w tej samej podsieci co zasób?
@@ -95,7 +95,7 @@ Metoda PrincipalsAllowedToDelegateToAccount jest używana, gdy serwery łącznik
 Jeśli serwery łączników i konta usługi aplikacji sieci Web znajdują się w tej samej domenie, można użyć Active Directory Użytkownicy i komputery, aby skonfigurować ustawienia delegowania na poszczególnych kontach komputerów łączników, umożliwiając im delegowanie do docelowej nazwy SPN.
 
 Jeśli serwery łączników i konta usługi aplikacji sieci Web znajdują się w różnych domenach, używane jest delegowanie oparte na zasobach. Uprawnienia delegowania są konfigurowane na docelowym serwerze sieci Web i na koncie usługi aplikacji sieci Web. Ta metoda delegowania ograniczonego jest stosunkowo nowa. Metoda została wprowadzona w systemie Windows Server 2012, która obsługuje delegowanie między domenami przez umożliwienie właścicielowi zasobu (usługi sieci Web) kontroli nad tym, którym maszynom i kontom usług mogą delegować. Nie ma interfejsu użytkownika umożliwiającego korzystanie z tej konfiguracji, dlatego należy użyć programu PowerShell.
-Aby uzyskać więcej informacji, zobacz oficjalny dokument dotyczący [ograniczonego delegowania protokołu Kerberos z serwerem proxy aplikacji](http://aka.ms/kcdpaper).
+Aby uzyskać więcej informacji, zobacz oficjalny dokument dotyczący [ograniczonego delegowania protokołu Kerberos z serwerem proxy aplikacji](https://aka.ms/kcdpaper).
 
 ## <a name="pass-through-authentication"></a>Uwierzytelnianie przekazywane
 
@@ -155,7 +155,7 @@ Tak. Konsolidacja łącza ma wpływ na wydajność. Usługa serwera proxy aplika
 
 Aby uzyskać najlepszą wydajność, zalecamy użycie identycznych wewnętrznych i zewnętrznych adresów URL przez skonfigurowanie [domen niestandardowych](https://docs.microsoft.com/azure/active-directory/manage-apps/application-proxy-configure-custom-domain). Jeśli nie jest możliwe korzystanie z domen niestandardowych, można poprawić wydajność tłumaczenia łącza za pomocą rozszerzenia moje aplikacje bezpieczne logowanie do konta lub przeglądarki Microsoft Edge na urządzeniu przenośnym. Zobacz [przekierowanie stałe linki dla aplikacji opublikowanych przy użyciu usługi Azure serwer proxy aplikacji usługi Azure AD](application-proxy-configure-hard-coded-link-translation.md).
 
-## <a name="wildcards"></a>Symboli wieloznacznych
+## <a name="wildcards"></a>Symbole wieloznaczne
 
 ### <a name="how-do-i-use-wildcards-to-publish-two-applications-with-the-same-custom-domain-name-but-with-different-protocols-one-for-http-and-one-for-https"></a>Jak mogę użyć symboli wieloznacznych, aby opublikować dwie aplikacje z taką samą niestandardową nazwą domeny, ale z różnymi protokołami, jeden dla protokołu HTTP i jeden dla protokołu HTTPS?
 

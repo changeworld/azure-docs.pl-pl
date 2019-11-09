@@ -14,22 +14,22 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 05/15/2018
 ms.author: atsenthi
-ms.openlocfilehash: 3fa40d794d02da08d29b6cac652edf493977f8e1
-ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
+ms.openlocfilehash: fd1787318e8573183293ddd832a11cf8cfe09cf2
+ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68599730"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73832618"
 ---
 # <a name="view-logs-for-a-service-fabric-container-service"></a>Wyświetlanie dzienników usługi kontenera Service Fabric
 Usługa Azure Service Fabric jest koordynatorem kontenera i obsługuje [kontenery systemu Linux i Windows](service-fabric-containers-overview.md).  W tym artykule opisano sposób wyświetlania dzienników kontenerów działającej usługi kontenera lub martwego kontenera, dzięki czemu można diagnozować i rozwiązywać problemy.
 
 ## <a name="access-the-logs-of-a-running-container"></a>Dostęp do dzienników działającego kontenera
-Dostęp do dzienników kontenerów można uzyskać przy użyciu [Service Fabric Explorer](service-fabric-visualizing-your-cluster.md).  W przeglądarce sieci Web otwórz Service Fabric Explorer z punktu końcowego zarządzania klastrami, przechodząc do [http://mycluster.region.cloudapp.azure.com:19080/Explorer](http://mycluster.region.cloudapp.azure.com:19080/Explorer)witryny.  
+Dostęp do dzienników kontenerów można uzyskać przy użyciu [Service Fabric Explorer](service-fabric-visualizing-your-cluster.md).  W przeglądarce sieci Web otwórz Service Fabric Explorer z punktu końcowego zarządzania klastrami, przechodząc do `http://mycluster.region.cloudapp.azure.com:19080/Explorer`.  
 
-Dzienniki kontenerów znajdują się w węźle klastra, na którym jest uruchomione wystąpienie usługi kontenera. Przykładowo można pobrać dzienniki kontenera frontonu sieci Web [aplikacji przykładowej głosowania systemu Linux](service-fabric-quickstart-containers-linux.md). W widoku drzewa rozwiń węzeł**aplikacje**>>klastra> **:/głosowania/azurevotefront**.  Następnie rozwiń partycję (d1aa737e-f22a-e347-BE16-eec90be24bc1 w tym przykładzie) i sprawdź, czy kontener jest uruchomiony w węźle klastra *_lnxvm_0*.
+Dzienniki kontenerów znajdują się w węźle klastra, na którym jest uruchomione wystąpienie usługi kontenera. Przykładowo można pobrać dzienniki kontenera frontonu sieci Web [aplikacji przykładowej głosowania systemu Linux](service-fabric-quickstart-containers-linux.md). W widoku drzewa rozwiń węzeł **klaster**>**aplikacje**>**głosutype**>**Fabric:/głosowania/azurevotefront**.  Następnie rozwiń partycję (d1aa737e-f22a-e347-BE16-eec90be24bc1 w tym przykładzie) i sprawdź, czy kontener jest uruchomiony w węźle klastra *_lnxvm_0*.
 
-W widoku drzewa Znajdź pakiet kodu w węźle *_lnxvm_0* przez powiększanie **węzłów**> **_lnxvm_0**>**Fabric:/głosowania**>**azurevotfrontPkg**>**Code** >**Kod**pakietów.  Następnie wybierz opcję **dzienniki kontenerów** , aby wyświetlić dzienniki kontenerów.
+W widoku drzewa Znajdź pakiet kodu w węźle *_lnxvm_0* przez powiększanie **węzłów**> **_Lnxvm_0**>**Fabric:/głosu** **>** **azurevotfrontPkg** **>kod>.**  Następnie wybierz opcję **dzienniki kontenerów** , aby wyświetlić dzienniki kontenerów.
 
 ![Platforma Service Fabric][Image1]
 
@@ -44,7 +44,7 @@ Aby ułatwić diagnozowanie błędów uruchamiania kontenerów, usługa Service 
 
 Ustawienie **ContainersRetentionCount** określa liczbę kontenerów do przechowywania w przypadku wystąpienia w nich błędu. Jeśli zostanie określona wartość ujemna, będą przechowywane wszystkie kontenery z błędami. Jeśli atrybut **ContainersRetentionCount** nie jest określony, kontenery nie będą zachowywane. Atrybut **ContainersRetentionCount** obsługuje też parametry aplikacji, dzięki czemu użytkownicy mogą określać różne wartości dla klastrów testowych i produkcyjnych. W przypadku używania tej funkcji można zastosować ograniczenia rozmieszczania, tak aby obiektem docelowym usługi kontenera był określony węzeł, co zapobiega przenoszeniu usługi kontenera do innych węzłów. Wszelkie kontenery przechowywane przy użyciu tej funkcji należy usunąć ręcznie.
 
-Ustawienie **RunInteractive** odnosi się do `--interactive` [flag](https://docs.docker.com/engine/reference/commandline/run/#options)platformy Docker `tty` i. Gdy to ustawienie ma wartość true w pliku manifestu, te flagi są używane do uruchamiania kontenera.  
+Ustawienie **RunInteractive** odpowiada [flagom](https://docs.docker.com/engine/reference/commandline/run/#options)`--interactive` i `tty` platformy Docker. Gdy to ustawienie ma wartość true w pliku manifestu, te flagi są używane do uruchamiania kontenera.  
 
 ### <a name="rest"></a>REST
 Użyj operacji [Pobierz dzienniki kontenera wdrożone w węźle](/rest/api/servicefabric/sfclient-api-getcontainerlogsdeployedonnode) , aby pobrać dzienniki dla nieoczekiwanego kontenera. Określ nazwę węzła, na którym uruchomiono kontener, nazwę aplikacji, nazwę manifestu usługi i nazwę pakietu kodu.  Określ `&Previous=true`. Odpowiedź będzie zawierać dzienniki kontenerów dla martwego kontenera wystąpienia pakietu kodu.
@@ -66,7 +66,7 @@ treść odpowiedzi 200:
 ```
 
 ### <a name="service-fabric-sfctl"></a>Service Fabric (SFCTL)
-Użyj polecenia [Get-Container-Logs usługi sfctl](service-fabric-sfctl-service.md) w celu pobrania dzienników dla kontenera, który uległ awarii.  Określ nazwę węzła, na którym uruchomiono kontener, nazwę aplikacji, nazwę manifestu usługi i nazwę pakietu kodu. `--previous` Określ flagę.  Odpowiedź będzie zawierać dzienniki kontenerów dla martwego kontenera wystąpienia pakietu kodu.
+Użyj polecenia [Get-Container-Logs usługi sfctl](service-fabric-sfctl-service.md) w celu pobrania dzienników dla kontenera, który uległ awarii.  Określ nazwę węzła, na którym uruchomiono kontener, nazwę aplikacji, nazwę manifestu usługi i nazwę pakietu kodu. Określ flagę `--previous`.  Odpowiedź będzie zawierać dzienniki kontenerów dla martwego kontenera wystąpienia pakietu kodu.
 
 ```
 sfctl service get-container-logs --node-name _Node_0 --application-id SimpleHttpServerApp --service-manifest-name SimpleHttpServerSvcPkg --code-package-name Code –-previous
@@ -76,7 +76,7 @@ Odpowiedź:
 {   "content": "Exception encountered: System.Net.Http.HttpRequestException: Response status code does not indicate success: 500 (Internal Server Error).\r\n\tat System.Net.Http.HttpResponseMessage.EnsureSuccessStatusCode()\r\n" }
 ```
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 - Pracuj w [samouczku Tworzenie aplikacji kontenera systemu Linux](service-fabric-tutorial-create-container-images.md).
 - Dowiedz się więcej o [Service Fabric i kontenerach](service-fabric-containers-overview.md)
 

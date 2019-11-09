@@ -1,7 +1,7 @@
 ---
 title: interfejs API tłumaczenia tekstu w usłudze Translator Metoda tłumaczenia
 titleSuffix: Azure Cognitive Services
-description: Użyj metody translacji interfejs API tłumaczenia tekstu w usłudze Translator.
+description: Informacje o parametrach, nagłówkach i komunikatach treści dla Cognitive Services platformy Azure interfejs API tłumaczenia tekstu w usłudze Translator tłumaczenie metody w celu przetłumaczenia tekstu.
 services: cognitive-services
 author: swmachan
 manager: nitinme
@@ -10,12 +10,12 @@ ms.subservice: translator-text
 ms.topic: reference
 ms.date: 10/16/2019
 ms.author: swmachan
-ms.openlocfilehash: b809171549a8f3cbbbb6ccad1553608598afa345
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.openlocfilehash: b4daa04a4dbf87006147fb0d44d7b128a6d8ecf4
+ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73161720"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73835782"
 ---
 # <a name="translator-text-api-30-translate"></a>Interfejs API tłumaczenia tekstu w usłudze Translator 3,0: tłumaczenie
 
@@ -46,7 +46,7 @@ Parametry żądania przesłane na ciągu zapytania są następujące:
   </tr>
   <tr>
     <td>na</td>
-    <td><em>Wymagany parametr</em>.<br/>Określa język tekstu wyjściowego. Język docelowy musi być jednym z <a href="./v3-0-languages.md">obsługiwanych języków</a> uwzględnionych w zakresie <code>translation</code>. Na przykład użyj <code>to=de</code>, aby przetłumaczyć na język niemiecki.<br/>Możliwe jest przetłumaczenie na wiele języków jednocześnie przez powtarzanie parametru w ciągu zapytania. Na przykład użyj <code>to=de&to=it</code>, aby przetłumaczyć na język niemiecki i włoski.</td>
+    <td><em>Wymagany parametr</em>.<br/>Określa język tekstu wyjściowego. Język docelowy musi być jednym z <a href="./v3-0-languages.md">obsługiwanych języków</a> uwzględnionych w zakresie <code>translation</code>. Na przykład użyj <code>to=de</code>, aby przetłumaczyć na język niemiecki.<br/>Możliwe jest przetłumaczenie na wiele języków jednocześnie przez powtarzanie parametru w ciągu zapytania. Na przykład użyj <code>to=de&to=it</code> do tłumaczenia na język niemiecki i włoski.</td>
   </tr>
   <tr>
     <td>texttype</td>
@@ -86,7 +86,7 @@ Parametry żądania przesłane na ciągu zapytania są następujące:
   </tr>
   <tr>
     <td>allowFallback</td>
-    <td><em>Opcjonalny parametr</em>.<br/>Określa, że usługa może przewracać do ogólnego systemu, gdy nie istnieje system niestandardowy. Możliwe wartości to: <code>true</code> (wartość domyślna) lub <code>false</code>.<br/><br/><code>allowFallback=false</code> Określa, że tłumaczenie ma używać tylko systemów przeszkolonych dla <code>category</code> określonych przez żądanie. Jeśli tłumaczenie języka X na język t wymaga łańcucha za pośrednictwem języka Pivot E, wszystkie systemy w łańcuchu (X-> E i E-> Y) będą musiały być niestandardowe i mieć tę samą kategorię. Jeśli nie zostanie znaleziony żaden system z określoną kategorią, żądanie zwróci kod stanu 400. <code>allowFallback=true</code> Określa, że usługa może przewracać do ogólnego systemu, gdy nie istnieje system niestandardowy.
+    <td><em>Opcjonalny parametr</em>.<br/>Określa, że usługa może przewracać do ogólnego systemu, gdy nie istnieje system niestandardowy. Możliwe wartości to: <code>true</code> (wartość domyślna) lub <code>false</code>.<br/><br/><code>allowFallback=false</code> określa, że tłumaczenie ma używać tylko systemów przeszkolonych dla <code>category</code> określonych przez żądanie. Jeśli tłumaczenie języka X na język t wymaga łańcucha za pośrednictwem języka Pivot E, wszystkie systemy w łańcuchu (X-> E i E-> Y) będą musiały być niestandardowe i mieć tę samą kategorię. Jeśli nie zostanie znaleziony żaden system z określoną kategorią, żądanie zwróci kod stanu 400. <code>allowFallback=true</code> określa, że usługa może przewracać do ogólnego systemu, gdy nie istnieje system niestandardowy.
 </td>
   </tr>
 </table> 
@@ -137,11 +137,11 @@ Pomyślna odpowiedź to tablica JSON z jednym wynikiem dla każdego ciągu w tab
 
       * `language`: ciąg reprezentujący kod wykrytego języka.
 
-      * `score`: wartość zmiennoprzecinkowa wskazująca pewność w wyniku. Wynik jest z przedziału od zera do jednego, a niski Wynik wskazuje na niski poziom pewności.
+      * `score`: wartość zmiennoprzecinkowa wskazująca wiarygodność w wyniku. Wynik jest z przedziału od zera do jednego, a niski Wynik wskazuje na niski poziom pewności.
 
     Właściwość `detectedLanguage` jest obecna tylko w obiekcie wynikowym, gdy żąda się automatycznego wykrywania języka.
 
-  * `translations`: Tablica wyników tłumaczenia. Rozmiar tablicy jest zgodny z liczbą języków docelowych określonych za pomocą parametru zapytania `to`. Każdy element w tablicy zawiera:
+  * `translations`: Tablica wyników tłumaczenia. Rozmiar tablicy jest zgodny z liczbą języków docelowych określonych za pomocą `to` parametru zapytania. Każdy element w tablicy zawiera:
 
     * `to`: ciąg reprezentujący kod języka dla języka docelowego.
 
@@ -153,9 +153,9 @@ Pomyślna odpowiedź to tablica JSON z jednym wynikiem dla każdego ciągu w tab
 
       * `text`: ciąg zawierający przetłumaczony tekst w skrypcie docelowym.
 
-    Obiekt `transliteration` nie jest uwzględniany w przypadku, gdy nie ma miejsca.
+    Obiekt `transliteration` nie jest uwzględniony w przypadku, gdy nie nastąpi przeznaczenie.
 
-    * `alignment`: obiekt z właściwością pojedynczego ciągu o nazwie `proj`, która mapuje tekst wejściowy na przetłumaczony tekst. Informacje o wyrównaniu są podawane tylko wtedy, gdy parametr żądania `includeAlignment` jest `true`. Wyrównanie jest zwracane jako wartość ciągu o następującym formacie: `[[SourceTextStartIndex]:[SourceTextEndIndex]–[TgtTextStartIndex]:[TgtTextEndIndex]]`.  Dwukropek oddziela indeks początkowy i końcowy, myślnik oddziela Języki, a spacja oddziela słowa. Jedno słowo może być wyrównane z zerem, jednym lub wieloma wyrazami w innym języku, a wyrównane słowa mogą nie być ciągłe. Gdy żadne informacje o wyrównaniu nie są dostępne, element wyrównania będzie pusty. Zobacz [Uzyskiwanie informacji o wyrównaniu](#obtain-alignment-information) dla przykładu i ograniczeń.
+    * `alignment`: obiekt z właściwością pojedynczego ciągu o nazwie `proj`, który mapuje tekst wejściowy na przetłumaczony tekst. Informacje o wyrównaniu są dostępne tylko wtedy, gdy `includeAlignment` parametru żądania jest `true`. Wyrównanie jest zwracane jako wartość ciągu o następującym formacie: `[[SourceTextStartIndex]:[SourceTextEndIndex]–[TgtTextStartIndex]:[TgtTextEndIndex]]`.  Dwukropek oddziela indeks początkowy i końcowy, myślnik oddziela Języki, a spacja oddziela słowa. Jedno słowo może być wyrównane z zerem, jednym lub wieloma wyrazami w innym języku, a wyrównane słowa mogą nie być ciągłe. Gdy żadne informacje o wyrównaniu nie są dostępne, element wyrównania będzie pusty. Zobacz [Uzyskiwanie informacji o wyrównaniu](#obtain-alignment-information) dla przykładu i ograniczeń.
 
     * `sentLen`: obiekt zwracający granice zdania w tekstach wejściowych i wyjściowych.
 
@@ -163,9 +163,9 @@ Pomyślna odpowiedź to tablica JSON z jednym wynikiem dla każdego ciągu w tab
 
       * `transSentLen`: tablica liczb całkowitych reprezentująca długości zdań w przetłumaczonym tekście. Długość tablicy jest liczbą zdań, a wartości to długość każdego zdania.
 
-    Granice zdania są uwzględniane tylko wtedy, gdy parametr żądania `includeSentenceLength` jest `true`.
+    Granice zdania są uwzględniane tylko wtedy, gdy `includeSentenceLength` parametru żądania jest `true`.
 
-  * `sourceText`: obiekt z właściwością pojedynczego ciągu o nazwie `text`, która daje tekst wejściowy w domyślnym skrypcie języka źródłowego. Właściwość `sourceText` jest obecna tylko wtedy, gdy dane wejściowe są wyrażane w skrypcie, który nie jest zwykłym skryptem dla danego języka. Na przykład, jeśli dane wejściowe były zapisywane w języku łacińskim w skrypcie łaciński, wówczas `sourceText.text` byłaby ten sam tekst arabski konwertowany do arabskiej skryptu.
+  * `sourceText`: obiekt z właściwością pojedynczego ciągu o nazwie `text`, która daje tekst wejściowy w domyślnym skrypcie języka źródłowego. Właściwość `sourceText` jest obecna tylko wtedy, gdy dane wejściowe są wyrażane w skrypcie, który nie jest zwykłym skryptem dla danego języka. Na przykład, jeśli dane wejściowe były zapisywane w języku łacińskim w skrypcie łaciński, wówczas `sourceText.text` będzie to ten sam tekst arabski konwertowany do arabskiej skryptu.
 
 Przykład odpowiedzi JSON znajduje się w sekcji [przykładów](#examples) .
 
@@ -209,7 +209,7 @@ Oto możliwe kody stanu HTTP zwracane przez żądanie.
   </tr>
   <tr>
     <td>408</td>
-    <td>Nie można spełnić żądania, ponieważ brakuje zasobu. Sprawdź komunikat o błędzie szczegóły. W przypadku używania niestandardowego <code>category</code> często oznacza to, że niestandardowy system tłumaczenia nie jest jeszcze dostępny do obsłużynia żądań. Żądanie powinno być ponowione po okresie oczekiwania (np. 1 minuta).</td>
+    <td>Nie można spełnić żądania, ponieważ brakuje zasobu. Sprawdź komunikat o błędzie szczegóły. W przypadku korzystania z <code>category</code>niestandardowych często oznacza to, że niestandardowy system tłumaczenia nie jest jeszcze dostępny do obsłużynia żądań. Żądanie powinno być ponowione po okresie oczekiwania (np. 1 minuta).</td>
   </tr>
   <tr>
     <td>429</td>
@@ -217,11 +217,11 @@ Oto możliwe kody stanu HTTP zwracane przez żądanie.
   </tr>
   <tr>
     <td>500</td>
-    <td>Wystąpił nieoczekiwany błąd. Jeśli błąd będzie się powtarzać, zgłoś go z: Data i godzina błędu, identyfikator żądania z nagłówka odpowiedzi <code>X-RequestId</code> i identyfikator klienta z nagłówka żądania <code>X-ClientTraceId</code>.</td>
+    <td>Wystąpił nieoczekiwany błąd. Jeśli błąd będzie się powtarzać, zgłoś go z: Data i godzina błędu, identyfikator żądania z nagłówka odpowiedzi <code>X-RequestId</code>i identyfikator klienta z nagłówka żądania <code>X-ClientTraceId</code>.</td>
   </tr>
   <tr>
     <td>503</td>
-    <td>Serwer jest tymczasowo niedostępny. Ponów żądanie. Jeśli błąd będzie się powtarzać, zgłoś go z: Data i godzina błędu, identyfikator żądania z nagłówka odpowiedzi <code>X-RequestId</code> i identyfikator klienta z nagłówka żądania <code>X-ClientTraceId</code>.</td>
+    <td>Serwer jest tymczasowo niedostępny. Ponów żądanie. Jeśli błąd będzie się powtarzać, zgłoś go z: Data i godzina błędu, identyfikator żądania z nagłówka odpowiedzi <code>X-RequestId</code>i identyfikator klienta z nagłówka żądania <code>X-ClientTraceId</code>.</td>
   </tr>
 </table> 
 
@@ -298,7 +298,7 @@ Treść odpowiedzi:
 ]
 ```
 
-Wyniki tłumaczenia zawierają teraz Właściwość `transliteration`, która daje przetłumaczony tekst przy użyciu znaków łacińskich.
+Wyniki tłumaczenia zawierają teraz Właściwość `transliteration`, która umożliwia tłumaczenie tekstu przy użyciu znaków łacińskich.
 
 ### <a name="translate-multiple-pieces-of-text"></a>Tłumaczenie wielu fragmentów tekstu
 
@@ -350,11 +350,11 @@ Treść odpowiedzi:
 
 Zwykle usługa translator zachowa nieobecność, która jest obecna w źródle w tłumaczeniu. Stopień niepewności i kontekst, który sprawia, że wyrazy nie różnią się między kulturami, a w efekcie stopień niewystarczającego poziomu braków w języku docelowym może być wzmacniany lub zmniejszany.
 
-Jeśli chcesz uniknąć niewulgarności w tłumaczeniu, niezależnie od obecności w tekście źródłowym, możesz użyć opcji filtrowania niepotrzebne. Opcja pozwala wybrać, czy ma być wyświetlana wartość nietrwałych nietrwałych, niezależnie od tego, czy mają być oznaczane wulgarne przy użyciu odpowiednich tagów (co umożliwia dodanie własnego przetwarzania końcowego) lub nie ma żadnej akcji. Akceptowane wartości `ProfanityAction` są `Deleted`, `Marked` i `NoAction` (domyślnie).
+Jeśli chcesz uniknąć niewulgarności w tłumaczeniu, niezależnie od obecności w tekście źródłowym, możesz użyć opcji filtrowania niepotrzebne. Opcja pozwala wybrać, czy ma być wyświetlana wartość nietrwałych nietrwałych, niezależnie od tego, czy mają być oznaczane wulgarne przy użyciu odpowiednich tagów (co umożliwia dodanie własnego przetwarzania końcowego) lub nie ma żadnej akcji. Akceptowane wartości `ProfanityAction` to `Deleted`, `Marked` i `NoAction` (wartość domyślna).
 
 <table width="100%">
   <th width="20%">ProfanityAction</th>
-  <th>Działanie</th>
+  <th>Akcja</th>
   <tr>
     <td><code>NoAction</code></td>
     <td>Jest to zachowanie domyślne. Niedostępność zostanie przekazana z lokalizacji źródłowej do docelowej.<br/><br/>
@@ -372,12 +372,12 @@ Jeśli chcesz uniknąć niewulgarności w tłumaczeniu, niezależnie od obecnoś
   <tr>
     <td><code>Marked</code></td>
     <td>Wyrazy wulgarne są zastępowane przez znacznik w danych wyjściowych. Znacznik zależy od parametru <code>ProfanityMarker</code>.<br/><br/>
-W przypadku <code>ProfanityMarker=Asterisk</code> wyrazy nie są zastępowane <code>***</code>:<br/>
+W przypadku <code>ProfanityMarker=Asterisk</code>wulgarne słowa są zastępowane <code>***</code>:<br/>
     <strong>Przykładowe źródło (japoński)</strong>: 彼はジャッカスです.<br/>
-    <strong>Przykładowe tłumaczenie (angielski)</strong>: jest to \* \* \*.<br/><br/>
-W przypadku <code>ProfanityMarker=Tag</code> wulgarne słowa są otoczone tagami XML &lt;profanity &gt; i &lt;/profanity &gt;:<br/>
+    <strong>Przykładowe tłumaczenie (angielski)</strong>: jest to \*\*\*.<br/><br/>
+W przypadku <code>ProfanityMarker=Tag</code>wulgarne słowa są otoczone tagami XML &lt;wulgarności&gt; i &lt;/profanity&gt;:<br/>
     <strong>Przykładowe źródło (japoński)</strong>: 彼はジャッカスです.<br/>
-    <strong>Przykładowe tłumaczenie (angielski)</strong>: jest to &lt;profanity &gt;jackass &lt;/profanity &gt;.
+    <strong>Przykładowe tłumaczenie (angielski)</strong>: jest to &lt;wulgarności&gt;Jackass&lt;/profanity&gt;.
   </tr>
 </table> 
 
@@ -467,7 +467,7 @@ Odpowiedź:
 ]
 ```
 
-Informacje o wyrównaniu zaczynają się od `0:2-0:1`, co oznacza, że pierwsze trzy znaki w tekście źródłowym (`The`) są mapowane na pierwsze dwa znaki przetłumaczonego tekstu (`La`).
+Informacje o wyrównaniu zaczynają się od `0:2-0:1`, co oznacza, że pierwsze trzy znaki w tekście źródłowym (`The`) są mapowane na pierwsze dwa znaki w przetłumaczonym tekście (`La`).
 
 #### <a name="limitations"></a>Ograniczenia
 Należy pamiętać o następujących ograniczeniach:
@@ -531,4 +531,4 @@ Wynik:
 ]
 ```
 
-Ta funkcja działa tak samo jak w przypadku `textType=text` lub z `textType=html`. Ta funkcja powinna być stosowana oszczędnie. Odpowiednim i znacznie lepszym sposobem dostosowywania tłumaczenia jest użycie translatora niestandardowego. W przypadku translatora niestandardowego w pełni stosowane są prawdopodobieństwa kontekstowe i statystyczne. Jeśli masz lub możesz stworzyć dane szkoleniowe, które pokazują swoją służbę lub frazę w kontekście, uzyskasz dużo lepszych wyników. [Dowiedz się więcej o usłudze translator niestandardowym](../customization.md).
+Ta funkcja działa tak samo jak w przypadku `textType=text` lub `textType=html`. Ta funkcja powinna być stosowana oszczędnie. Odpowiednim i znacznie lepszym sposobem dostosowywania tłumaczenia jest użycie translatora niestandardowego. W przypadku translatora niestandardowego w pełni stosowane są prawdopodobieństwa kontekstowe i statystyczne. Jeśli masz lub możesz stworzyć dane szkoleniowe, które pokazują swoją służbę lub frazę w kontekście, uzyskasz dużo lepszych wyników. [Dowiedz się więcej o usłudze translator niestandardowym](../customization.md).

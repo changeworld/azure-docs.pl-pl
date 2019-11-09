@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 10/10/2019
 ms.author: angle
-ms.openlocfilehash: fde4a73dd4a95028f23563fb6a8ae36c0142fd39
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: dfa05ff114ea0976cb8d57f711eaacc016ea53cc
+ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73507320"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73836996"
 ---
 # <a name="disclosure-design-patterns"></a>Wzorce projektowania ujawniania
 Teraz,&#39;po ustaleniu właściwego [poziomu ujawniania](concepts-disclosure-guidelines.md#disclosure-assessment) danych na potrzeby obsługi głosu syntetycznego,&#39;warto zapoznać się z potencjalnymi wzorcami projektowymi.
@@ -38,7 +38,7 @@ Skorzystaj z poniższej tabeli, aby odwołać się bezpośrednio do wzorców, kt
 
 
 
-| Jeśli Twoje środowisko głosu syntetycznego... | Polecane elementy | Wzorce projektowe |
+| Jeśli Twoje środowisko głosu syntetycznego... | Zalecenia | Wzorce projektowe |
 | --- | --- | --- |
 | Wymaga wysokiego ujawnienia  | Użyj co najmniej jednego jawnego wzorca i niejawnych wskazówek na początku, aby ułatwić użytkownikom tworzenie skojarzeń. |[Jawne ujawnienie](#explicit-disclosure)<br>[Niejawne ujawnienie](#implicit-disclosure)  |
 | Wymaga niskiej ilości informacji | Ujawnienie może być minimalne lub niepotrzebne, ale może korzystać z niektórych niejawnych wzorców. | [Ujawnienie możliwości](#capability-disclosure)<br>[Przezroczystość konwersacji](#conversational-transparency)  |
@@ -61,7 +61,7 @@ Przed rozpoczęciem pracy z głosem należy wprowadzić asystenta cyfrowego prze
 ![przejrzyste wprowadzenie podczas pierwszego uruchomienia środowiska](media/responsible-ai/disclosure-patterns/transparent-intro-first.png) <br>
 *Głos syntetyczny jest wprowadzany podczas dołączania nowego użytkownika.*
 
-Polecane elementy
+Zalecenia
 - Opisz, że głos jest sztuczny (np. &quot;Digital&quot;)
 - Opisz, do czego służy Agent
 - Jawnie określaj źródła&#39;głosu
@@ -96,7 +96,7 @@ Użyj tego wzorca, jeśli użytkownik będzie pracowali przy użyciu odtwarzacza
 ![Explicit Byline w scenariuszu multimediów wiadomości](media/responsible-ai/disclosure-patterns/explicit-byline.png) <br/>
 *Jawna Byline jest przyznanym miejscu, z którego pochodzi głos.*
 
-Polecane elementy
+Zalecenia
 
 - Punkt wejścia oferty, aby dowiedzieć się więcej o wystawionym głosie
 
@@ -111,7 +111,7 @@ Oferuje opcje, które mają znaczący i zauważalny wpływ na środowisko głosu
 ![preferencje użytkownika](media/responsible-ai/disclosure-patterns/customization-user-control.png)<br/>
 *Preferencje użytkownika umożliwiają użytkownikom dostosowywanie i ulepszanie ich środowiska.*
 
-Polecane elementy
+Zalecenia
 
 - Zezwól użytkownikom na dostosowywanie głosu (np. Wybierz język i typ głosu)
 - Zapewnianie użytkownikom możliwości nauczenia systemu w celu reagowania na jego unikatowy głos (np. Kalibracja głosu, polecenia niestandardowe)
@@ -124,7 +124,7 @@ Oferuje sposoby dostosowywania głosu asystenta&#39;cyfrowego. Jeśli głos jest
 ![dostosowania głosu](media/responsible-ai/disclosure-patterns/customization-voice-type.png)<br/>
 *Oferowanie możliwości wyboru z zestawu głosów ułatwia przekazanie sztucznego charakteru.*
 
-Polecane elementy
+Zalecenia
 - Zezwalaj użytkownikom na podgląd dźwięku każdego głosu
 - Użyj oryginalnego wprowadzenia dla każdego głosu
 - Punkty wejścia oferty, aby dowiedzieć się więcej o wystawionym głosie
@@ -136,7 +136,7 @@ Oprócz zgodności z przepisami COPPA należy zapewnić ujawnienie rodzicom, je�
 ![ujawnienie dla elementów nadrzędnych](media/responsible-ai/disclosure-patterns/parental-disclosure.png)<br/>
 *Przejrzyste wprowadzenie zoptymalizowane pod kątem rodziców gwarantuje, że osoba dorosła świadomie poznała syntetycznego charakteru głosu przed interakcją z nim.*
 
-Polecane elementy
+Zalecenia
 
 - Kierowanie obiektów docelowych jako głównych odbiorców do ujawnienia
 - Zachęcanie rodziców do przekazywania informacji do ich elementów podrzędnych
@@ -155,7 +155,7 @@ Gdy użytkownik zażąda więcej informacji na temat głosu syntetycznego, głó
 ![zapewnić użytkownikom więcej informacji na temat syntetycznego głosu](media/responsible-ai/disclosure-patterns/learn-more.png)<br/>
 *Więcej informacji można uzyskać w witrynie pomocy zewnętrznej witryny.*
 
-Polecane elementy
+Zalecenia
 
 - Uprość złożone koncepcje i Unikaj korzystania z Legalese i technicznych żargon
 - Nie Bury tej zawartości w oświadczeniach o ochronie prywatności i warunkach użytkowania
@@ -247,11 +247,11 @@ Użyj ujawnienia jako możliwości bezproblemowego niepowodzenia.
 
 ## <a name="reference-docs"></a>Dokumentacja
 
-* [Uwaga przezroczystości](https://aka.ms/neural-tts-transparency-note)
+* [Ujawnienie dla talent głosu](https://aka.ms/disclosure-voice-talent)
 * [Wytyczne dotyczące odpowiedzialnego wdrożenia syntetycznej technologii głosowej](concepts-guidelines-responsible-deployment-synthetic.md)
 * [Kontroli — Omówienie](concepts-gating-overview.md)
 * [Jak ujawnić](concepts-disclosure-guidelines.md)
 
 ## <a name="next-steps"></a>Następne kroki
 
-* [Uwaga przezroczystości](https://aka.ms/neural-tts-transparency-note)
+* [Ujawnienie dla talent głosu](https://aka.ms/disclosure-voice-talent)

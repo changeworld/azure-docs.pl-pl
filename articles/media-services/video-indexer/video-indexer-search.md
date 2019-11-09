@@ -1,7 +1,7 @@
 ---
-title: Znajdowanie konkretnych momentów w wideo — Video Indexer pliku
-titlesuffix: Azure Media Services
-description: W tym temacie pokazano, jak znajdowanie konkretnych momentów filmów wideo przy użyciu Video Indexer — w pliku.
+title: Znajdowanie dokładnego momentu w filmach wideo — Video Indexer
+titleSuffix: Azure Media Services
+description: W tym temacie pokazano, jak znaleźć dokładną chwilę w filmach wideo przy użyciu Video Indexer.
 services: media-services
 author: Juliako
 manager: femila
@@ -10,50 +10,50 @@ ms.subservice: video-indexer
 ms.topic: article
 ms.date: 05/15/2019
 ms.author: juliako
-ms.openlocfilehash: 93376059dac2a8336e581269d8289d893779b291
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 8ebf7606d1a0932cc2254e14a40a2fff550fd35f
+ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65799091"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73833792"
 ---
 # <a name="find-exact-moments-within-videos"></a>Znajdowanie konkretnych momentów w wideo
 
-Ten temat przedstawia opcje wyszukiwania, które umożliwiają znajdowanie konkretnych momentów w wideo pliku.
+W tym temacie przedstawiono opcje wyszukiwania umożliwiające znalezienie dokładnego momentu w filmach wideo.
 
 1. Przejdź do witryny internetowej [Video Indexer](https://www.videoindexer.ai/) i zaloguj się.
-2. Przeszukiwanie wszystkich filmów wideo w ramach Twojego konta.
+2. Przeszukaj wszystkie filmy wideo na Twoim koncie.
 
-    W poniższym przykładzie przeszukiwania dla wszystkich filmów wideo, które mówić o zabezpieczeniach i Satya widocznego,
+    W poniższym przykładzie wyszukamy wszystkie filmy wideo, które mówią o zabezpieczeniach i w których Satya pojawia się.
 
     ![Wyszukiwanie](./media/video-indexer-search/video-indexer-search01.png)
-3. Wyszukaj podsumowane szczegółowe informacje dotyczące filmu wideo.
+3. Przeszukaj podsumowanie informacji o filmie wideo.
 
-    Możesz wyszukiwać w filmie wideo, klikając **Odtwórz** film wideo. Następnie możesz przeszukiwać wideo, wybierając **wyszukiwania** kartę. 
+    Następnie możesz przeszukać w filmie wideo, klikając pozycję **Odtwórz** na filmie wideo. Następnie możesz wyszukać w filmie wideo, wybierając kartę **Wyszukiwanie** . 
 
-    W poniższym przykładzie mamy wyszukiwanie "secure" wewnątrz wybrany film wideo.
+    W poniższym przykładzie wyszukamy "Secure" w wybranym filmie wideo.
 
     ![Wyszukiwanie](./media/video-indexer-search/video-indexer-search02.png)
 
-    Po kliknięciu jednego z wyników, gracz oferuje do tej pory w trakcie filmu wideo. W aplikacji, można osiągnąć player/szczegółowe dane i synchronizacja. Aby uzyskać więcej informacji, zobacz [osadzić Video Indexer widżetów w aplikacji](video-indexer-embed-widgets.md). 
-4. Wyszukaj szczegółowy podział filmu wideo.
+    Po kliknięciu jednego z wyników gracz zostanie pożądany do tego momentu w filmie wideo. Możesz uzyskać informacje o widoku odtwarzacza/analizy i synchronizacji w aplikacji. Aby uzyskać więcej informacji, zobacz [osadzanie Video Indexer elementów widget w aplikacji](video-indexer-embed-widgets.md). 
+4. Przeszukaj szczegółowy podział wideo.
     
-    Jeśli chcesz tworzyć własne klipu oparte na film wideo, który można znaleźć, naciśnij **Edytuj** przycisku. Ta strona pokazuje wideo wraz z jego insights jako filtry. Aby uzyskać więcej informacji, zobacz [wyświetlanie i edytowanie informacji szczegółowych indeksatora wideo](video-indexer-view-edit.md). 
+    Jeśli chcesz utworzyć własny klip na podstawie znalezionego filmu wideo, naciśnij przycisk **Edytuj** . Na tej stronie znajduje się film wideo wraz ze szczegółowymi informacjami na temat filtrów. Aby uzyskać więcej informacji, zobacz [Wyświetlanie i edytowanie Video Indexer Insights](video-indexer-view-edit.md). 
 
-    Możesz przeszukiwać wideo, aby tylko wyświetlić wiersze interesuje i używać szczegółowych danych po stronie, aby filtrować elementy, które mają być wyświetlane. Gdy skończysz, możesz wyświetlić podgląd usługi klipu, a następnie naciśnij klawisz **Publikuj** do utworzenia nowego klip, który pojawia się w galerii.
+    Możesz wyszukać w filmie wideo, aby wyświetlić tylko te, które Cię interesują, i użyć szczegółowych informacji do filtrowania części, które mają być wyświetlane. Po zakończeniu możesz wyświetlić podgląd klipu i nacisnąć przycisk **Publikuj** , aby utworzyć nowy klip, który pojawia się w galerii.
     
-    W poniższym przykładzie firma Microsoft wyszukiwany tekst "mixed reality". Możemy również stosowane dodatkowe filtry, jak pokazano na poniższym ekranie.
+    W poniższym przykładzie przeszukano tekst "rzeczywistość mieszana". Zastosowano również dodatkowe filtry, jak pokazano na poniższym ekranie.
     
     ![Wyszukiwanie](./media/video-indexer-search/video-indexer-search03.png)
 
-## <a name="next-steps"></a>Kolejne kroki 
+## <a name="next-steps"></a>Następne kroki 
 
-Po znalezieniu wideo, który chcesz pracować, możesz kontynuować przetwarzanie filmu wideo, zgodnie z opisem w jednym z tych tematów: 
+Po znalezieniu wideo, z którym chcesz współpracować, możesz kontynuować przetwarzanie wideo, zgodnie z opisem w jednym z następujących tematów: 
 
-- [Użyj szczegółowych filmów wideo](use-editor-create-project.md)
+- [Korzystaj z szczegółowego wglądu w dane wideo](use-editor-create-project.md)
 - [Przetwarzanie zawartości przy użyciu interfejsu REST API usługi Video Indexer](video-indexer-use-apis.md)
 - [Osadzanie widgetów wizualnych w aplikacji](video-indexer-embed-widgets.md)
 
-## <a name="see-also"></a>Zobacz także
+## <a name="see-also"></a>Zobacz też
 
 [Omówienie usługi Video Indexer](video-indexer-overview.md)

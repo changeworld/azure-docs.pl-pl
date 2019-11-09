@@ -1,7 +1,7 @@
 ---
 title: Często zadawane pytania — translator niestandardowy
 titleSuffix: Azure Cognitive Services
-description: Zawiera odpowiedzi na często zadawane pytania dotyczące translatora niestandardowego.
+description: Ten artykuł zawiera odpowiedzi na często zadawane pytania dotyczące usługi Azure Cognitive Services Custom translator.
 author: swmachan
 manager: nitinme
 ms.service: cognitive-services
@@ -9,12 +9,12 @@ ms.subservice: translator-text
 ms.date: 02/21/2019
 ms.author: swmachan
 ms.topic: reference
-ms.openlocfilehash: 3dacfc0d8371ad9e8fa66d8bb1c5fafa59271ce0
-ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
+ms.openlocfilehash: 97d399f4a8ec704fd90eb6c49f0835be7e9e4537
+ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72388161"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73836591"
 ---
 # <a name="custom-translator-frequently-asked-questions"></a>Często zadawane pytania dotyczące translatora niestandardowego
 
@@ -45,9 +45,9 @@ Do wdrożonych systemów można uzyskać dostęp za pośrednictwem programu Micr
 
 ## <a name="how-do-i-skip-alignment-and-sentence-breaking-if-my-data-is-already-sentence-aligned"></a>Jak mogę pominąć wyrównywanie i przerywanie zdania, jeśli moje dane są już wyrównane do zdania?
 
-Niestandardowa translator pomija wyrównanie zdania i przerywanie zdania dla plików TMX i dla plików tekstowych z rozszerzeniem `.align`. Pliki `.align` zapewniają użytkownikom opcję pomijania procesu rozdzielania i wyrównania w przypadku plików, które są idealnie wyrównane i nie wymagają dalszej obróbki. Zalecamy używanie rozszerzenia `.align` tylko w przypadku plików, które są idealnie wyrównane.
+Niestandardowa translator pomija wyrównanie zdania i przerywanie zdania dla plików TMX oraz dla plików tekstowych z rozszerzeniem `.align`. `.align` pliki zapewniają użytkownikom opcję pomijania procesu rozdzielania i wyrównania w przypadku plików, które są idealnie wyrównane i nie wymagają dalszej obróbki. Zalecamy używanie rozszerzenia `.align` tylko w przypadku plików, które są idealnie wyrównane.
 
-Jeśli liczba wyodrębnionych zdań nie pasuje do obu plików o tej samej nazwie podstawowej, usługa translatora niestandardowego będzie nadal uruchamiać program do `.align`.
+Jeśli liczba wyodrębnionych zdań nie pasuje do obu plików o tej samej nazwie podstawowej, usługa translatora niestandardowego będzie nadal uruchamiać program do `.align` plików.
 
 ## <a name="i-tried-uploading-my-tmx-but-it-says-document-processing-failed"></a>Próbowaliśmy przekazać moją TMX, ale jest to komunikat "Przetwarzanie dokumentu nie powiodło się".
 

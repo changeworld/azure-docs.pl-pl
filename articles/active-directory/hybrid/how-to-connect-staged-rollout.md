@@ -6,16 +6,16 @@ manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 10/28/2019
+ms.date: 11/07/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 24efd9d67e5bcc083ce1a02dcf0850a39189afe8
-ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
+ms.openlocfilehash: 2596091324acde5c4fdc3f7c467849f90266fec9
+ms.sourcegitcommit: 16c5374d7bcb086e417802b72d9383f8e65b24a7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73173105"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73847233"
 ---
 # <a name="cloud-authentication-staged-rollout-public-preview"></a>Uwierzytelnianie w chmurze: wdrażanie etapowe (publiczna wersja zapoznawcza)
 
@@ -117,18 +117,18 @@ Włącz bezproblemową rejestrację jednokrotną w lasach usługi AD przy użyci
 
 2. Przejdź do folderu% PROGRAMFILES%\\Microsoft Azure Active Directory Connect.
 
-3. Zaimportuj bezproblemowy moduł programu PowerShell dla logowania jednokrotnego za pomocą tego polecenia: `Import-Module .\\AzureADSSO.psd1`.
+3. Zaimportuj bezproblemowy moduł programu PowerShell dla logowania jednokrotnego za pomocą tego polecenia: `Import-Module .\AzureADSSO.psd1`.
 
 4. Uruchom program PowerShell jako administrator. W programie PowerShell Wywołaj `New-AzureADSSOAuthenticationContext`. To polecenie powinno dać okno dialogowe, w którym można wprowadzić poświadczenia administratora globalnego dzierżawy.
 
-5. Wywołaj `Get-AzureADSSOStatus \| ConvertFrom-Json`. To polecenie umożliwia wyświetlenie listy lasów usługi AD (poszukaj na liście \"domen\"), na których ta funkcja została włączona. Domyślnie na poziomie dzierżawy jest ustawiona wartość false.
+5. Wywołaj `Get-AzureADSSOStatus | ConvertFrom-Json`. To polecenie umożliwia wyświetlenie listy lasów usługi AD (poszukaj na liście \"domen\"), na których ta funkcja została włączona. Domyślnie na poziomie dzierżawy jest ustawiona wartość false.
 
    > **Przykład:** 
    > ![przykład danych wyjściowych programu Windows PowerShell](./media/how-to-connect-staged-rollout/sr3.png)
 
-6. Wywołaj `\$creds = Get-Credential`. Po wyświetleniu monitu wprowadź poświadczenia administratora domeny dla zamierzonego lasu usługi AD.
+6. Wywołaj `$creds = Get-Credential`. Po wyświetleniu monitu wprowadź poświadczenia administratora domeny dla zamierzonego lasu usługi AD.
 
-7. Wywołaj `Enable-AzureADSSOForest -OnPremCredentials \$creds`. To polecenie tworzy konto komputera AZUREADSSOACC z lokalnego kontrolera domeny dla tego konkretnego lasu Active Directory, który jest wymagany do bezproblemowego logowania jednokrotnego.
+7. Wywołaj `Enable-AzureADSSOForest -OnPremCredentials $creds`. To polecenie tworzy konto komputera AZUREADSSOACC z lokalnego kontrolera domeny dla tego konkretnego lasu Active Directory, który jest wymagany do bezproblemowego logowania jednokrotnego.
 
 8. Bezproblemowe logowanie jednokrotne wymaga, aby adresy URL znajdować się w strefie intranetowej. Aby wdrożyć te adresy URL przy użyciu zasad grupy, zapoznaj się z [przewodnikiem Szybki Start dotyczącego logowania](how-to-connect-sso-quick-start.md#step-3-roll-out-the-feature) jednokrotnego.
 
@@ -240,7 +240,7 @@ Oto jak można śledzić logowania użytkowników, które są nadal wykonywane n
 
 -   **P: Czy można użyć programu PowerShell, aby wykonać etapowe wdrażanie?**
 
--   Odp.: tak, Znajdź dokumentację, aby za pomocą programu PowerShell wykonać wdrożenie etapowe.
+-   Odp.: tak, Znajdź dokumentację, aby za pomocą programu PowerShell wykonać wdrożenie etapowe [.](https://docs.microsoft.com/powershell/module/azuread/?view=azureadps-2.0-preview#staged_rollout)
 
 ## <a name="next-steps"></a>Następne kroki
 - [AzureAD 2,0 — wersja zapoznawcza](https://docs.microsoft.com/powershell/module/azuread/?view=azureadps-2.0-preview#staged_rollout )

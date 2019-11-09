@@ -1,7 +1,7 @@
 ---
-title: Dostosowywanie modelu marek w Video Indexer — platformy Azure
-titlesuffix: Azure Media Services
-description: Ten artykuł zawiera omówienie modelu marek w Video Indexer i sposobami ich dostosowywania.
+title: Dostosowywanie modelu marek w Video Indexer na platformie Azure
+titleSuffix: Azure Media Services
+description: Ten artykuł zawiera omówienie modelu marki w Video Indexer i sposobu jego dostosowywania.
 services: media-services
 author: anikaz
 manager: johndeu
@@ -10,31 +10,31 @@ ms.subservice: video-indexer
 ms.topic: article
 ms.date: 05/15/2019
 ms.author: anzaman
-ms.openlocfilehash: 863dbd9a6044ee33ae39ac9693a7d4f74382b9c7
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: ca3d825fb2f4184448cc279d9408f47ad4ad004a
+ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65799672"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73838370"
 ---
-# <a name="customize-a-brands-model-in-video-indexer"></a>Dostosowywanie modelu marek w indeksatora wideo
+# <a name="customize-a-brands-model-in-video-indexer"></a>Dostosowywanie modelu marek w Video Indexer
 
-Usługa Video Indexer obsługuje wykrywanie marki mowy i tekstu podczas indeksowania i indeksowanie zawartości audio i wideo. Funkcja wykrywania marki identyfikuje wzmianek o produktach, usługach i firm zaproponowana przez Bing marek w bazie danych. Na przykład Microsoft jest wymieniony w zawartości wideo lub audio lub zostanie ona wyświetlona w tekście visual w filmach wideo, Video Indexer wykrywa ją jako marki w zawartości. Marek są rozróżniane od innych postanowień przy użyciu kontekstu.
+Video Indexer obsługuje wykrywanie marki z mowy i tekstu wizualnego podczas indeksowania i ponownego indeksowania zawartości audio i wideo. Funkcja wykrywania marki identyfikuje wzmianki o produktach, usługach i firmach sugerowanych przez bazę danych marek usługi Bing. Na przykład jeśli firma Microsoft jest wymieniona w zawartości wideo lub audio lub jeśli zostanie wyświetlona w tekście wizualnym w filmie wideo, Video Indexer wykrywa ją jako markę zawartości. Marki różnią się od innych warunków przy użyciu kontekstu.
 
-Wykrywanie na marki przydaje się w wielu różnych scenariuszy biznesowych, takich jak zawartość archiwum i odnajdywania, kontekstowe reklamy, analiza mediów społecznościowych, detaliczna konkurować analizy i wiele innych. Funkcję wykrywania marki indeksator wideo umożliwia wzmianki marki indeksu w mowy i tekstu, za pomocą usługi Bing przez marek w bazie danych, a także z dostosowywaniem, tworząc niestandardowy model marki dla każdego konta Video Indexer. Funkcja niestandardowej modelu marek umożliwia wybranie, czy Video Indexer wykryje marek bazy danych marek Bing i wykluczyć pewne marek miałyby wykryto (zasadniczo tworzy czarnej listy marek) i zawierać znaki firmowe, które powinny być częścią usługi model, który może nie być w bazie danych marek Bing (zasadniczo tworzy białą listę marek). Niestandardowy model marek, którą tworzysz tylko będą dostępne w ramach konta, w którym został utworzony model.
+Wykrywanie marki jest przydatne w różnorodnych scenariuszach biznesowych, takich jak archiwum zawartości i odnajdywanie, reklama kontekstowa, analiza mediów społecznościowych, analiza konkurowania detaliczna i wiele innych. Funkcja wykrywania marki Video Indexer umożliwia indeksowanie marek w postaci mowy i tekstu wizualnego przy użyciu bazy danych marek Bing, a także dostosowanie przez utworzenie niestandardowego modelu marek dla każdego konta Video Indexer. Funkcja model niestandardowych marek pozwala określić, czy Video Indexer będą wykrywać marki z bazy danych marek Bing, wykluczać Niektóre marki (głównie tworząc czarną listę marek), a także dołączać marki, które powinny być częścią model, który może nie znajdować się w bazie danych marek Bing (głównie w przypadku tworzenia białej listy marek). Tworzony model marek niestandardowych będzie dostępny tylko na koncie, w którym został utworzony model.
 
-## <a name="out-of-the-box-detection-example"></a>Poza przykład wykrywania pola
+## <a name="out-of-the-box-detection-example"></a>Przykład wykrycia pola
 
-W [Microsoft Build 2017 dnia 2](https://www.videoindexer.ai/media/ed6ede78ad/) prezentacji, markę "Microsoft Windows" pojawia się wiele razy. Czasami w transkrypcji, czasami jako tekstu i nigdy nie verbatim. Usługa Video Indexer wykrywa dużej dokładności, termin jest w rzeczywistości marki, na podstawie kontekstu, obejmującego ponad 90k marek gotowych i stale aktualizacji. Godzinie 02:25 Video Indexer wykrywa marki z wypowiedzi, a następnie ponownie na 02:40 z tekstu, który jest częścią logo systemu windows.
+W prezentacji [Microsoft Build 2017 Day 2](https://www.videoindexer.ai/media/ed6ede78ad/) Marka "Microsoft Windows" pojawia się wiele razy. Czasami w transkrypcji, czasami jako tekst wizualny i nigdy nie jako Verbatim. Video Indexer wykrywa z wysoką dokładnością, że termin jest istotny na podstawie kontekstu, obejmującego 90k marek od pudełka i ciągle aktualizuje. W 02:25 Video Indexer wykrywa markę z mowy, a następnie ponownie w 02:40 od tekstu wizualnego, który jest częścią logo systemu Windows.
 
-![Omówienie marki](./media/content-model-customization/brands-overview.png)
+![Przegląd marek](./media/content-model-customization/brands-overview.png)
 
-Mówić o korzystaniu z okien w kontekście budowy nie wykrywa słowo "Windows" jako marki i te same pola, firmy Apple, Fox, itp., oparte na zaawansowanych algorytmów uczenia maszynowego, które odróżnić od kontekstu. Wykrywanie na marki działa w przypadku naszej obsługiwanych języków. Kliknij tutaj, aby [pełna Microsoft Build 2017 dnia 2 prezentacja wideo i indeks](https://www.videoindexer.ai/media/ed6ede78ad/).
+Mówiąc o systemie Windows w kontekście konstrukcji nie wykryje wyrazu "Windows" jako marki i tego samego dla pola, firmy Apple, Fox itp., na podstawie zaawansowanych algorytmów Machine Learning, które wiedzą, jak odróżnić się od kontekstu. Wykrywanie marki działa w przypadku wszystkich naszych obsługiwanych języków. Kliknij tutaj, aby uzyskać [pełną kompilację Microsoft Build 2017 Day 2 prezentację wideo i indeks](https://www.videoindexer.ai/media/ed6ede78ad/).
 
-Aby wyświetlić własne marki, zapoznaj się z następnych kroków.
+Aby wprowadzić własne marki, zapoznaj się z następnymi krokami.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
-[Dostosuj model marek przy użyciu interfejsów API](customize-brands-model-with-api.md)
+[Dostosowywanie modelu marek przy użyciu interfejsów API](customize-brands-model-with-api.md)
 
-[Dostosuj model marek witryny sieci Web](customize-brands-model-with-website.md)
+[Dostosowywanie modelu marek przy użyciu witryny sieci Web](customize-brands-model-with-website.md)

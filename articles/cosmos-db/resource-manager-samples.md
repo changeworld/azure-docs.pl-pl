@@ -1,17 +1,17 @@
 ---
 title: Szablony Azure Resource Manager dla Azure Cosmos DB
 description: Użyj szablonów Azure Resource Manager, aby utworzyć i skonfigurować Azure Cosmos DB.
-author: markjbrown
+author: TheovanKraay
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 10/31/2019
-ms.author: mjbrown
-ms.openlocfilehash: ecdfe89e899e0d416784ae32a0d66b335c09e2b6
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.date: 11/07/2019
+ms.author: thvankra
+ms.openlocfilehash: 7c508d736c7c04cc6df2b42e0a90a2906052adbc
+ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73582806"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73835518"
 ---
 # <a name="azure-resource-manager-templates-for-azure-cosmos-db"></a>Szablony Azure Resource Manager dla Azure Cosmos DB
 
@@ -37,8 +37,6 @@ W poniższych tabelach uwzględniono linki do Azure Resource Manager szablonów 
 |**Szablon**|**Opis**|
 |---| ---|
 |[Tworzenie konta usługi Azure Cosmos, przestrzeni kluczy, tabeli](manage-cassandra-with-resource-manager.md#create-resource) | Ten szablon służy do tworzenia konta interfejs API Cassandra w dwóch regionach z włączoną obsługą wielu wzorców. Konto usługi Azure Cosmos będzie miało dwie tabele, które współdzielą przepływność na poziomie przestrzeni kluczy. |
-|[Aktualizacja przepływności (RU/s) dla przestrzeni kluczy](manage-cassandra-with-resource-manager.md#keyspace-ru-update) | Ten szablon służy do aktualizowania przepływności dla przestrzeni kluczy w ramach konta interfejs API Cassandra. |
-|[Aktualizacja przepływności (RU/s) dla tabeli](manage-cassandra-with-resource-manager.md#table-ru-update) | Ten szablon służy do aktualizowania przepływności tabeli na koncie interfejs API Cassandra. |
 
 ## <a name="gremlin-api"></a>Interfejs API języka Gremlin
 

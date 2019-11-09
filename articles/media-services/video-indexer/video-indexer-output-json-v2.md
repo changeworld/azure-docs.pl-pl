@@ -1,6 +1,6 @@
 ---
 title: Badanie Azure Media Services Video Indexer danych wyjściowych generowanych przez interfejs API v2
-titlesuffix: Azure Media Services
+titleSuffix: Azure Media Services
 description: Ten temat bada Video Indexer dane wyjściowe utworzone przez interfejs API v2.
 services: media-services
 author: Juliako
@@ -10,12 +10,12 @@ ms.subservice: video-indexer
 ms.topic: article
 ms.date: 10/11/2019
 ms.author: juliako
-ms.openlocfilehash: 20a973e5386cd9cad7d090236f021ced9a64cafc
-ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
+ms.openlocfilehash: 0a42c2dce3976a1bf83c85644f56f4c1d8abc9c8
+ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/13/2019
-ms.locfileid: "72300930"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73839532"
 ---
 # <a name="examine-the-video-indexer-output-produced-by-api"></a>Sprawdzanie Video Indexer danych wyjściowych generowanych przez interfejs API
 
@@ -23,7 +23,7 @@ Gdy wywołasz interfejs API **pobierania indeksu wideo** , a stan odpowiedzi to 
 
 Możesz również wizualnie zapoznać się ze szczegółowymi informacjami na temat wideo, naciskając przycisk **odtwarzania** na filmie wideo w witrynie [Video Indexer](https://www.videoindexer.ai/) . Aby uzyskać więcej informacji, zobacz [Wyświetlanie i edytowanie wglądu w dane wideo](video-indexer-view-edit.md).
 
-![Szczegółowe informacje](./media/video-indexer-output-json/video-indexer-summarized-insights.png)
+![Insights](./media/video-indexer-output-json/video-indexer-summarized-insights.png)
 
 Ten artykuł bada zawartość JSON zwróconą przez interfejs API **pobierania indeksu wideo** . 
 
@@ -156,7 +156,7 @@ Obiekt może mieć identyfikator, nazwę, miniaturę, inne metadane i listę wys
 |zapisy|Wymiar [transkrypcji](#transcript) .|
 |aparat|Wymiar [OCR](#ocr) .|
 |służąc|Wymiar [słów kluczowych](#keywords) .|
-|Propagowan|Może zawierać co najmniej jeden [blok](#blocks)|
+|propagowan|Może zawierać co najmniej jeden [blok](#blocks)|
 |ściank|Wymiar [twarzy](#faces) .|
 |Etykieta|Wymiar [etykiet](#labels) .|
 |zrzutów|Wymiar [zrzutów](#shots) .|
@@ -189,7 +189,7 @@ Przykład:
 }
 ```
 
-#### <a name="blocks"></a>Propagowan
+#### <a name="blocks"></a>propagowan
 
 Atrybut | Opis
 ---|---
@@ -243,7 +243,7 @@ Przykład:
 |zachowanie|Wiarygodność rozpoznawania.|
 |language|Język OCR.|
 |wystąpienia|Lista przedziałów czasu, w których wystąpiło to OCR (ten sam OCR może występować wiele razy).|
-|Proporcj|Wysokość prostokąta OCR.|
+|proporcj|Wysokość prostokąta OCR.|
 |Do góry|Górna lokalizacja w px|
 |lewym| Lewa lokalizacja w px|
 |Szerokość|Szerokość prostokąta OCR.|
@@ -496,7 +496,7 @@ Nazwy firmowe i towarowe wykryte w zamiany mowy na tekst transkrypcji i/lub OCR 
 |referenceId | Sufiks adresu URL witryny Wikipedia. Na przykład "Target_Corporation" jest sufiksem [https://en.wikipedia.org/wiki/Target_Corporation](https://en.wikipedia.org/wiki/Target_Corporation).
 |referenceUrl | Adres URL witryny Wikipedia marki, jeśli istnieje. Na przykład [https://en.wikipedia.org/wiki/Target_Corporation](https://en.wikipedia.org/wiki/Target_Corporation).
 |description|Opis marek.|
-|tags|Lista wstępnie zdefiniowanych tagów, które zostały skojarzone z tą marką.|
+|tagów|Lista wstępnie zdefiniowanych tagów, które zostały skojarzone z tą marką.|
 |zachowanie|Wartość ufności detektora Video Indexer marką (0-1).|
 |wystąpienia|Lista zakresów czasu tej marki. Każde wystąpienie ma element marktype, który wskazuje, czy ta marka pojawiła się w transkrypcji, czy w OCR.|
 
@@ -556,7 +556,7 @@ Nazwy firmowe i towarowe wykryte w zamiany mowy na tekst transkrypcji i/lub OCR 
 |SpeakerLongestMonolog|Najdłuższa monologa. Jeśli prelegent znajduje się w monolog, jest on uwzględniony. Wyciszenie na początku i na końcu monolog zostaje usunięte.| 
 |SpeakerTalkToListenRatio|Obliczenia opierają się na czasie poświęcanym na monolog osoby mówiącej (bez wyciszenia między nimi) podzieloną przez łączny czas wideo. Czas jest zaokrąglany do trzeciego punktu dziesiętnego.|
 
-#### <a name="a-idaudioeffectsaudioeffects"></a>@no__t — 0audioEffects
+#### <a name="a-idaudioeffectsaudioeffects"></a><a id="audioEffects"/>audioEffects
 
 |Nazwa|Opis|
 |---|---|

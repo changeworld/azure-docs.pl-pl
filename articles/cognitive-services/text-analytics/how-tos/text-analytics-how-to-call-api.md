@@ -1,7 +1,7 @@
 ---
 title: Wywoływanie interfejsu API usługi Text Analytics
 titleSuffix: Azure Cognitive Services
-description: Dowiedz się, jak wywołać interfejs API REST analiza tekstu.
+description: W tym artykule wyjaśniono, jak można wywołać usługę Azure Cognitive Services analiza tekstu interfejsu API REST i programu Poster.
 services: cognitive-services
 author: aahill
 manager: nitinme
@@ -10,18 +10,18 @@ ms.subservice: text-analytics
 ms.topic: conceptual
 ms.date: 07/30/2019
 ms.author: aahi
-ms.openlocfilehash: 14d3864f654dac42566441b3729de0cf88482295
-ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
+ms.openlocfilehash: 5697ae4c8864e0b9c4cbfc9e1e1048e1c3d60f77
+ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68697859"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73837211"
 ---
 # <a name="how-to-call-the-text-analytics-rest-api"></a>Jak wywołać interfejs API REST analiza tekstu
 
 Wywołania **interfejs API analizy tekstu** to wywołania http post/Get, które można sformułować w dowolnym języku. W tym artykule używamy REST i programu [Poster](https://chrome.google.com/webstore/detail/postman/fhbjgbiflinjbdggehcddcbncdddomop) , aby zademonstrować kluczowe pojęcia.
 
-Każde żądanie musi zawierać klucz dostępu i punkt końcowy HTTP. Punkt końcowy określa region wybrany podczas rejestracji, adres URL usługi i zasób używany w żądaniu `sentiment`:, `keyphrases`, `languages`, i `entities`. 
+Każde żądanie musi zawierać klucz dostępu i punkt końcowy HTTP. Punkt końcowy określa region wybrany podczas rejestracji, adres URL usługi i zasób używany na żądanie: `sentiment`, `keyphrases`, `languages`i `entities`. 
 
 Odzyskanie tego analiza tekstu jest bezstanowe, aby nie było żadnych zasobów danych do zarządzania. Tekst zostanie przekazany, przeanalizowany po odebraniu, a wyniki są zwracane natychmiast do aplikacji wywołującej.
 
@@ -40,11 +40,11 @@ Dane wejściowe muszą być w formacie JSON w nieprzetworzonym tekście bez stru
 
 Obecnie można przesłać te same dokumenty do wszystkich operacji analiza tekstu: tonacji, frazy kluczowej, wykrywania języka i identyfikacji jednostek. (Schemat jest prawdopodobnie różny dla każdej analizy w przyszłości).
 
-| Element | Prawidłowe wartości | Wymagane? | Użycie |
+| Element | Prawidłowe wartości | Wymagana? | Sposób użycia |
 |---------|--------------|-----------|-------|
-|`id` |Typ danych to ciąg, ale w temacie identyfikatory dokumentów w programie mają być liczbami całkowitymi. | Wymagane | System używa identyfikatorów dostarczanych do struktury danych wyjściowych. Kody języka, kluczowe frazy i oceny tonacji są generowane dla każdego identyfikatora w żądaniu.|
-|`text` | Nieprzetworzony tekst nieprzebudowany, do 5 120 znaków. | Wymagane | W przypadku wykrywania języka tekst może być wyrażony w dowolnym języku. W przypadku analizy tonacji, wyodrębniania kluczowych fraz i identyfikacji jednostek tekst musi być w [obsługiwanym języku](../text-analytics-supported-languages.md). |
-|`language` | 2-znakowy kod [ISO 639-1](https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes) dla [obsługiwanego języka](../text-analytics-supported-languages.md) | Różna | Wymagane do analizy tonacji, wyodrębniania kluczowych fraz i konsolidacji jednostek; opcjonalne do wykrywania języka. Jeśli wyłączysz go, nie ma żadnego błędu, ale analiza zostanie nieprzerwana. Kod języka powinien odpowiadać podanemu `text` podaniu. |
+|`id` |Typ danych to ciąg, ale w temacie identyfikatory dokumentów w programie mają być liczbami całkowitymi. | Wymagany | System używa identyfikatorów dostarczanych do struktury danych wyjściowych. Kody języka, kluczowe frazy i oceny tonacji są generowane dla każdego identyfikatora w żądaniu.|
+|`text` | Nieprzetworzony tekst nieprzebudowany, do 5 120 znaków. | Wymagany | W przypadku wykrywania języka tekst może być wyrażony w dowolnym języku. W przypadku analizy tonacji, wyodrębniania kluczowych fraz i identyfikacji jednostek tekst musi być w [obsługiwanym języku](../text-analytics-supported-languages.md). |
+|`language` | 2-znakowy kod [ISO 639-1](https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes) dla [obsługiwanego języka](../text-analytics-supported-languages.md) | Różna | Wymagane do analizy tonacji, wyodrębniania kluczowych fraz i konsolidacji jednostek; opcjonalne do wykrywania języka. Jeśli wyłączysz go, nie ma żadnego błędu, ale analiza zostanie nieprzerwana. Kod języka powinien odpowiadać podanej `text`. |
 
 Aby uzyskać więcej informacji na temat limitów, zobacz [Analiza tekstu omówienie > limitów danych](../overview.md#data-limits). 
 
@@ -91,7 +91,7 @@ Usługa akceptuje żądania o rozmiarze do 1 MB. Jeśli używasz programu Poster
 
    W programie Poster odpowiedź jest wyświetlana w następnym oknie w dół, jako pojedynczy dokument JSON, z elementem dla każdego identyfikatora dokumentu podanego w żądaniu.
 
-## <a name="see-also"></a>Zobacz także 
+## <a name="see-also"></a>Zobacz też 
 
  [Przegląd analizy tekstu](../overview.md)  
  [Często zadawane pytania](../text-analytics-resource-faq.md)

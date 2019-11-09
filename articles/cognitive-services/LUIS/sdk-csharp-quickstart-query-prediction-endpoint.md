@@ -10,12 +10,12 @@ ms.subservice: language-understanding
 ms.topic: quickstart
 ms.date: 09/27/2019
 ms.author: diberry
-ms.openlocfilehash: d7cf46add464a089f15a5bd15a20cea7d17eed37
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: bd1fefa828aca71e3faa27f75a8c67a2f1539d52
+ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73488675"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73837075"
 ---
 # <a name="quickstart-query-v2-prediction-endpoint-with-c-net-sdk"></a>Szybki Start: zapytanie dotyczące punktu końcowego C# przewidywania wersji 2 z zestawem SDK platformy .NET
 
@@ -77,7 +77,7 @@ using Microsoft.Azure.CognitiveServices.Language.LUIS.Runtime.Models;
 
 ## <a name="create-a-new-method-for-the-prediction"></a>Tworzenie nowej metody dla przewidywania
 
-Utwórz nową metodę, `GetPrediction`, aby wysłać zapytanie do punktu końcowego przewidywania zapytania. Ta metoda utworzy i skonfiguruje wszystkie potrzebne obiekty, a następni zwróci element `Task` z wynikami przewidywania [`LuisResult`](https://docs.microsoft.com/en-us/python/api/azure-cognitiveservices-language-luis/azure.cognitiveservices.language.luis.runtime.models.luisresult?view=azure-python). 
+Utwórz nową metodę, `GetPrediction`, aby wysłać zapytanie do punktu końcowego przewidywania zapytania. Ta metoda utworzy i skonfiguruje wszystkie potrzebne obiekty, a następni zwróci element `Task` z wynikami przewidywania [`LuisResult`](/python/api/azure-cognitiveservices-language-luis/azure.cognitiveservices.language.luis.runtime.models.luisresult). 
 
 ```csharp
 static async  Task<LuisResult> GetPrediction() {

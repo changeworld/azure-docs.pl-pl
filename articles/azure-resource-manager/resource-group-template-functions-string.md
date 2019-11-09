@@ -6,12 +6,12 @@ ms.service: azure-resource-manager
 ms.topic: conceptual
 ms.date: 07/31/2019
 ms.author: tomfitz
-ms.openlocfilehash: 93f17ea9d2ffa33d1dca9da3eb60f75165e8ed61
-ms.sourcegitcommit: c2e7595a2966e84dc10afb9a22b74400c4b500ed
+ms.openlocfilehash: d5c95e964740978af0db8db233c65adb7eb074f0
+ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/05/2019
-ms.locfileid: "71973328"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73834343"
 ---
 # <a name="string-functions-for-azure-resource-manager-templates"></a>Funkcje ciągów dla Azure Resource Manager szablonów
 
@@ -30,13 +30,13 @@ Menedżer zasobów udostępnia następujące funkcje do pracy z ciągami:
 * [Formatowanie](#format)
 * [ident](#guid)
 * [indexOf](#indexof)
-* [ostatniego](#last)
+* [last](#last)
 * [lastIndexOf](#lastindexof)
 * [Długość](#length)
 * [newGuid](#newguid)
 * [padLeft](#padleft)
 * [stępować](#replace)
-* [Skocz](#skip)
+* [skip](#skip)
 * [split](#split)
 * [startsWith](#startswith)
 * [parametry](#string)
@@ -44,7 +44,7 @@ Menedżer zasobów udostępnia następujące funkcje do pracy z ciągami:
 * [czasochłonn](#take)
 * [toLower](#tolower)
 * [toUpper](#toupper)
-* [Trim](#trim)
+* [trim](#trim)
 * [uniqueString](#uniquestring)
 * [adresu](#uri)
 * [uriComponent](#uricomponent)
@@ -59,9 +59,9 @@ Zwraca reprezentację Base64 ciągu wejściowego.
 
 ### <a name="parameters"></a>Parametry
 
-| Parametr | Wymagane | Typ | Opis |
+| Parametr | Wymagany | Typ | Opis |
 |:--- |:--- |:--- |:--- |
-| inputString |Tak |string |Wartość, która ma zostać zwrócona jako reprezentacja Base64. |
+| inputString |Tak |ciąg |Wartość, która ma zostać zwrócona jako reprezentacja Base64. |
 
 ### <a name="return-value"></a>Wartość zwracana
 
@@ -124,9 +124,9 @@ Konwertuje reprezentację Base64 na obiekt JSON.
 
 ### <a name="parameters"></a>Parametry
 
-| Parametr | Wymagane | Typ | Opis |
+| Parametr | Wymagany | Typ | Opis |
 |:--- |:--- |:--- |:--- |
-| base64Value |Tak |string |Reprezentacja Base64 do przekonwertowania na obiekt JSON. |
+| base64Value |Tak |ciąg |Reprezentacja Base64 do przekonwertowania na obiekt JSON. |
 
 ### <a name="return-value"></a>Wartość zwracana
 
@@ -189,9 +189,9 @@ Konwertuje reprezentację Base64 na ciąg.
 
 ### <a name="parameters"></a>Parametry
 
-| Parametr | Wymagane | Typ | Opis |
+| Parametr | Wymagany | Typ | Opis |
 |:--- |:--- |:--- |:--- |
-| base64Value |Tak |string |Reprezentacja Base64 do przekonwertowania na ciąg. |
+| base64Value |Tak |ciąg |Reprezentacja Base64 do przekonwertowania na ciąg. |
 
 ### <a name="return-value"></a>Wartość zwracana
 
@@ -254,10 +254,10 @@ Dane wyjściowe z poprzedniego przykładu z wartościami domyślnymi są następ
 
 ### <a name="parameters"></a>Parametry
 
-| Parametr | Wymagane | Typ | Opis |
+| Parametr | Wymagany | Typ | Opis |
 |:--- |:--- |:--- |:--- |
 | arg1 |Tak |ciąg lub tablica |Pierwsza wartość dla łączenia. |
-| dodatkowe argumenty |Nie |string |Dodatkowe wartości w kolejności sekwencyjnej dla łączenia. |
+| dodatkowe argumenty |Nie |ciąg |Dodatkowe wartości w kolejności sekwencyjnej dla łączenia. |
 
 ### <a name="return-value"></a>Wartość zwracana
 Ciąg lub tablica połączonych wartości.
@@ -341,7 +341,7 @@ Sprawdza, czy tablica zawiera wartość, obiekt zawiera klucz, lub ciąg zawiera
 
 ### <a name="parameters"></a>Parametry
 
-| Parametr | Wymagane | Typ | Opis |
+| Parametr | Wymagany | Typ | Opis |
 |:--- |:--- |:--- |:--- |
 | kontener |Tak |Tablica, obiekt lub ciąg |Wartość, która zawiera wartość do znalezienia. |
 | itemToFind |Tak |ciąg lub int |Wartość do znalezienia. |
@@ -422,9 +422,9 @@ Konwertuje wartość na identyfikator URI danych.
 
 ### <a name="parameters"></a>Parametry
 
-| Parametr | Wymagane | Typ | Opis |
+| Parametr | Wymagany | Typ | Opis |
 |:--- |:--- |:--- |:--- |
-| stringToConvert |Tak |string |Wartość do przekonwertowania na identyfikator URI danych. |
+| stringToConvert |Tak |ciąg |Wartość do przekonwertowania na identyfikator URI danych. |
 
 ### <a name="return-value"></a>Wartość zwracana
 
@@ -467,7 +467,7 @@ Dane wyjściowe z poprzedniego przykładu z wartościami domyślnymi są następ
 | Nazwa | Typ | Wartość |
 | ---- | ---- | ----- |
 | dataUriOutput | Ciąg | dane: text/Plains; charset = UTF8; Base64, SGVsbG8 = |
-| toStringOutput | Ciąg | Cześć ludzie! |
+| toStringOutput | Ciąg | Hello world! |
 
 ## <a name="datauritostring"></a>dataUriToString
 
@@ -477,9 +477,9 @@ Konwertuje wartość sformatowaną identyfikatora URI danych na ciąg.
 
 ### <a name="parameters"></a>Parametry
 
-| Parametr | Wymagane | Typ | Opis |
+| Parametr | Wymagany | Typ | Opis |
 |:--- |:--- |:--- |:--- |
-| dataUriToConvert |Tak |string |Wartość identyfikatora URI danych do przekonwertowania. |
+| dataUriToConvert |Tak |ciąg |Wartość identyfikatora URI danych do przekonwertowania. |
 
 ### <a name="return-value"></a>Wartość zwracana
 
@@ -522,7 +522,7 @@ Dane wyjściowe z poprzedniego przykładu z wartościami domyślnymi są następ
 | Nazwa | Typ | Wartość |
 | ---- | ---- | ----- |
 | dataUriOutput | Ciąg | dane: text/Plains; charset = UTF8; Base64, SGVsbG8 = |
-| toStringOutput | Ciąg | Cześć ludzie! |
+| toStringOutput | Ciąg | Hello world! |
 
 ## <a name="empty"></a>ciągiem
 
@@ -532,7 +532,7 @@ Określa, czy tablica, obiekt lub ciąg jest pusty.
 
 ### <a name="parameters"></a>Parametry
 
-| Parametr | Wymagane | Typ | Opis |
+| Parametr | Wymagany | Typ | Opis |
 |:--- |:--- |:--- |:--- |
 | itemToTest |Tak |Tablica, obiekt lub ciąg |Wartość, aby sprawdzić, czy jest pusta. |
 
@@ -589,7 +589,7 @@ Dane wyjściowe z poprzedniego przykładu z wartościami domyślnymi są następ
 | objectEmpty | Logiczna | True |
 | stringEmpty | Logiczna | True |
 
-## <a name="endswith"></a>endsWith
+## <a name="endswith"></a>EndsWith
 
 `endsWith(stringToSearch, stringToFind)`
 
@@ -597,10 +597,10 @@ Określa, czy ciąg ma kończyć się wartością. W porównaniu z rozróżniani
 
 ### <a name="parameters"></a>Parametry
 
-| Parametr | Wymagane | Typ | Opis |
+| Parametr | Wymagany | Typ | Opis |
 |:--- |:--- |:--- |:--- |
-| stringToSearch |Tak |string |Wartość, która zawiera element do znalezienia. |
-| stringToFind |Tak |string |Wartość do znalezienia. |
+| stringToSearch |Tak |ciąg |Wartość, która zawiera element do znalezienia. |
+| stringToFind |Tak |ciąg |Wartość do znalezienia. |
 
 ### <a name="return-value"></a>Wartość zwracana
 
@@ -663,7 +663,7 @@ Zwraca pierwszy znak ciągu lub pierwszy element tablicy.
 
 ### <a name="parameters"></a>Parametry
 
-| Parametr | Wymagane | Typ | Opis |
+| Parametr | Wymagany | Typ | Opis |
 |:--- |:--- |:--- |:--- |
 | arg1 |Tak |Tablica lub ciąg |Wartość do pobrania pierwszego elementu lub znaku. |
 
@@ -715,9 +715,9 @@ Tworzy sformatowany ciąg z wartości wejściowych.
 
 ### <a name="parameters"></a>Parametry
 
-| Parametr | Wymagane | Typ | Opis |
+| Parametr | Wymagany | Typ | Opis |
 |:--- |:--- |:--- |:--- |
-| Formatowanie | Tak | string | Ciąg formatu złożonego. |
+| Formatowanie | Tak | ciąg | Ciąg formatu złożonego. |
 | arg1 | Tak | ciąg, liczba całkowita lub wartość logiczna | Wartość, która ma zostać uwzględniona w sformatowanym ciągu. |
 | dodatkowe argumenty | Nie | ciąg, liczba całkowita lub wartość logiczna | Dodatkowe wartości do uwzględnienia w sformatowanym ciągu. |
 
@@ -764,7 +764,7 @@ Dane wyjściowe z poprzedniego przykładu z wartościami domyślnymi są następ
 | ---- | ---- | ----- |
 | formatTest | Ciąg | Witaj, użytkownik. Sformatowana liczba: 8 175 133 |
 
-## <a name="guid"></a>ident
+## <a name="guid"></a>guid
 
 `guid(baseString, ...)`
 
@@ -772,10 +772,10 @@ Tworzy wartość w formacie unikatowego identyfikatora globalnego na podstawie w
 
 ### <a name="parameters"></a>Parametry
 
-| Parametr | Wymagane | Typ | Opis |
+| Parametr | Wymagany | Typ | Opis |
 |:--- |:--- |:--- |:--- |
-| baseString |Tak |string |Wartość użyta w funkcji skrótu do utworzenia identyfikatora GUID. |
-| dodatkowe parametry w razie konieczności |Nie |string |W razie potrzeby można dodać dowolną liczbę ciągów, aby utworzyć wartość określającą poziom unikatowości. |
+| baseString |Tak |ciąg |Wartość użyta w funkcji skrótu do utworzenia identyfikatora GUID. |
+| dodatkowe parametry w razie konieczności |Nie |ciąg |W razie potrzeby można dodać dowolną liczbę ciągów, aby utworzyć wartość określającą poziom unikatowości. |
 
 ### <a name="remarks"></a>Uwagi
 
@@ -843,10 +843,10 @@ Zwraca pierwszą pozycję wartości w ciągu. W porównaniu z rozróżnianiem wi
 
 ### <a name="parameters"></a>Parametry
 
-| Parametr | Wymagane | Typ | Opis |
+| Parametr | Wymagany | Typ | Opis |
 |:--- |:--- |:--- |:--- |
-| stringToSearch |Tak |string |Wartość, która zawiera element do znalezienia. |
-| stringToFind |Tak |string |Wartość do znalezienia. |
+| stringToSearch |Tak |ciąg |Wartość, która zawiera element do znalezienia. |
+| stringToFind |Tak |ciąg |Wartość do znalezienia. |
 
 ### <a name="return-value"></a>Wartość zwracana
 
@@ -896,7 +896,7 @@ Dane wyjściowe z poprzedniego przykładu z wartościami domyślnymi są następ
 | lastString | ZAOKR | 0 |
 | notFound | ZAOKR | -1 |
 
-## <a name="last"></a>ostatniego
+## <a name="last"></a>last
 
 `last (arg1)`
 
@@ -904,7 +904,7 @@ Zwraca ostatni znak ciągu lub ostatni element tablicy.
 
 ### <a name="parameters"></a>Parametry
 
-| Parametr | Wymagane | Typ | Opis |
+| Parametr | Wymagany | Typ | Opis |
 |:--- |:--- |:--- |:--- |
 | arg1 |Tak |Tablica lub ciąg |Wartość do pobrania ostatniego elementu lub znaku. |
 
@@ -956,10 +956,10 @@ Zwraca ostatnią pozycję wartości w ciągu. W porównaniu z rozróżnianiem wi
 
 ### <a name="parameters"></a>Parametry
 
-| Parametr | Wymagane | Typ | Opis |
+| Parametr | Wymagany | Typ | Opis |
 |:--- |:--- |:--- |:--- |
-| stringToSearch |Tak |string |Wartość, która zawiera element do znalezienia. |
-| stringToFind |Tak |string |Wartość do znalezienia. |
+| stringToSearch |Tak |ciąg |Wartość, która zawiera element do znalezienia. |
+| stringToFind |Tak |ciąg |Wartość do znalezienia. |
 
 ### <a name="return-value"></a>Wartość zwracana
 
@@ -1017,7 +1017,7 @@ Zwraca liczbę znaków w ciągu, elementów w tablicy lub we właściwościach p
 
 ### <a name="parameters"></a>Parametry
 
-| Parametr | Wymagane | Typ | Opis |
+| Parametr | Wymagany | Typ | Opis |
 |:--- |:--- |:--- |:--- |
 | arg1 |Tak |Tablica, ciąg lub obiekt |Tablica, która ma być używana do pobierania liczby elementów, ciągu, który ma być używany do pobierania liczby znaków lub obiektu, który ma być używany do pobierania liczby właściwości na poziomie głównym. |
 
@@ -1136,7 +1136,7 @@ Dane wyjściowe z powyższego przykładu różnią się w zależności od wdroż
 
 | Nazwa | Typ | Wartość |
 | ---- | ---- | ----- |
-| guidOutput | string | b76a51fc-bd72-4a77-b9a2-3c29e7d2e551 |
+| guidOutput | ciąg | b76a51fc-bd72-4a77-b9a2-3c29e7d2e551 |
 
 Poniższy przykład używa funkcji newGuid, aby utworzyć unikatową nazwę konta magazynu. Ten szablon może posłużyć do środowiska testowego, w którym konto magazynu istnieje przez krótki czas i nie jest wdrażane ponownie.
 
@@ -1179,10 +1179,10 @@ Dane wyjściowe z powyższego przykładu różnią się w zależności od wdroż
 
 | Nazwa | Typ | Wartość |
 | ---- | ---- | ----- |
-| nameOutput | string | storagenziwvyru7uxie |
+| nameOutput | ciąg | storagenziwvyru7uxie |
 
 
-## <a name="padleft"></a>padLeft
+## <a name="padleft"></a>PadLeft
 
 `padLeft(valueToPad, totalLength, paddingCharacter)`
 
@@ -1190,7 +1190,7 @@ Zwraca ciąg wyrównany do prawej poprzez dodanie znaków po lewej stronie do os
 
 ### <a name="parameters"></a>Parametry
 
-| Parametr | Wymagane | Typ | Opis |
+| Parametr | Wymagany | Typ | Opis |
 |:--- |:--- |:--- |:--- |
 | valueToPad |Tak |ciąg lub int |Wartość na wyrównanie do prawej. |
 | totalLength |Tak |int |Całkowita liczba znaków w zwracanym ciągu. |
@@ -1240,11 +1240,11 @@ Zwraca nowy ciąg ze wszystkimi wystąpieniami jednego ciągu zamienionego przez
 
 ### <a name="parameters"></a>Parametry
 
-| Parametr | Wymagane | Typ | Opis |
+| Parametr | Wymagany | Typ | Opis |
 |:--- |:--- |:--- |:--- |
-| originalString |Tak |string |Wartość, która ma wszystkie wystąpienia jednego ciągu zamienionego przez inny ciąg. |
-| Staryciąg |Tak |string |Ciąg, który ma zostać usunięty z oryginalnego ciągu. |
-| Nowyciąg |Tak |string |Ciąg, który ma zostać dodany zamiast usuniętego ciągu. |
+| originalString |Tak |ciąg |Wartość, która ma wszystkie wystąpienia jednego ciągu zamienionego przez inny ciąg. |
+| Staryciąg |Tak |ciąg |Ciąg, który ma zostać usunięty z oryginalnego ciągu. |
+| Nowyciąg |Tak |ciąg |Ciąg, który ma zostać dodany zamiast usuniętego ciągu. |
 
 ### <a name="return-value"></a>Wartość zwracana
 
@@ -1293,7 +1293,7 @@ Zwraca ciąg zawierający wszystkie znaki po określonej liczbie znaków lub tab
 
 ### <a name="parameters"></a>Parametry
 
-| Parametr | Wymagane | Typ | Opis |
+| Parametr | Wymagany | Typ | Opis |
 |:--- |:--- |:--- |:--- |
 | originalValue |Tak |Tablica lub ciąg |Tablica lub ciąg, który ma być używany do pomijania. |
 | numberToSkip |Tak |int |Liczba elementów lub znaków do pominięcia. Jeśli ta wartość jest równa 0 lub mniejsza, zwracane są wszystkie elementy lub znaki w wartości. Jeśli jest większa niż długość tablicy lub ciągu, zwracana jest pusta tablica lub ciąg. |
@@ -1361,9 +1361,9 @@ Zwraca tablicę ciągów, która zawiera podciągi ciągu wejściowego, które s
 
 ### <a name="parameters"></a>Parametry
 
-| Parametr | Wymagane | Typ | Opis |
+| Parametr | Wymagany | Typ | Opis |
 |:--- |:--- |:--- |:--- |
-| inputString |Tak |string |Ciąg do podzielenia. |
+| inputString |Tak |ciąg |Ciąg do podzielenia. |
 | ogranicznik |Tak |ciąg lub tablica ciągów |Ogranicznik używany do dzielenia ciągu. |
 
 ### <a name="return-value"></a>Wartość zwracana
@@ -1420,10 +1420,10 @@ Określa, czy ciąg rozpoczyna się od wartości. W porównaniu z rozróżnianie
 
 ### <a name="parameters"></a>Parametry
 
-| Parametr | Wymagane | Typ | Opis |
+| Parametr | Wymagany | Typ | Opis |
 |:--- |:--- |:--- |:--- |
-| stringToSearch |Tak |string |Wartość, która zawiera element do znalezienia. |
-| stringToFind |Tak |string |Wartość do znalezienia. |
+| stringToSearch |Tak |ciąg |Wartość, która zawiera element do znalezienia. |
+| stringToFind |Tak |ciąg |Wartość do znalezienia. |
 
 ### <a name="return-value"></a>Wartość zwracana
 
@@ -1478,7 +1478,7 @@ Dane wyjściowe z poprzedniego przykładu z wartościami domyślnymi są następ
 | endsCapTrue | Logiczna | True |
 | endsFalse | Logiczna | False |
 
-## <a name="string"></a>string
+## <a name="string"></a>ciąg
 
 `string(valueToConvert)`
 
@@ -1486,7 +1486,7 @@ Konwertuje określoną wartość na ciąg.
 
 ### <a name="parameters"></a>Parametry
 
-| Parametr | Wymagane | Typ | Opis |
+| Parametr | Wymagany | Typ | Opis |
 |:--- |:--- |:--- |:--- |
 | valueToConvert |Tak | Dowolne |Wartość do przekonwertowania na ciąg. Każdy typ wartości może być konwertowany, w tym obiektów i tablic. |
 
@@ -1557,9 +1557,9 @@ Zwraca podciąg, który zaczyna się od określonej pozycji znaku i zawiera okre
 
 ### <a name="parameters"></a>Parametry
 
-| Parametr | Wymagane | Typ | Opis |
+| Parametr | Wymagany | Typ | Opis |
 |:--- |:--- |:--- |:--- |
-| stringToParse |Tak |string |Oryginalny ciąg, z którego jest wyodrębniany podciąg. |
+| stringToParse |Tak |ciąg |Oryginalny ciąg, z którego jest wyodrębniany podciąg. |
 | Indeks |Nie |int |Początkowa pozycja znaku (liczony od zera) dla podciągu. |
 | Długość |Nie |int |Liczba znaków podciągu. Musi odwoływać się do lokalizacji w ciągu. Musi być równa zero lub większa. |
 
@@ -1610,7 +1610,7 @@ Dane wyjściowe z poprzedniego przykładu z wartościami domyślnymi są następ
 | ---- | ---- | ----- |
 | substringOutput | Ciąg | dwa |
 
-## <a name="take"></a>czasochłonn
+## <a name="take"></a>Czasochłonn
 
 `take(originalValue, numberToTake)`
 
@@ -1618,7 +1618,7 @@ Zwraca ciąg zawierający określoną liczbę znaków od początku ciągu lub ta
 
 ### <a name="parameters"></a>Parametry
 
-| Parametr | Wymagane | Typ | Opis |
+| Parametr | Wymagany | Typ | Opis |
 |:--- |:--- |:--- |:--- |
 | originalValue |Tak |Tablica lub ciąg |Tablica lub ciąg, z którego mają zostać przebrane elementy. |
 | numberToTake |Tak |int |Liczba elementów lub znaków do wykonania. Jeśli ta wartość jest równa 0 lub mniejsza, zwracana jest pusta tablica lub ciąg. Jeśli jest większa niż długość danej tablicy lub ciągu, zwracane są wszystkie elementy w tablicy lub ciągu. |
@@ -1686,9 +1686,9 @@ Konwertuje określony ciąg na małe litery.
 
 ### <a name="parameters"></a>Parametry
 
-| Parametr | Wymagane | Typ | Opis |
+| Parametr | Wymagany | Typ | Opis |
 |:--- |:--- |:--- |:--- |
-| stringToChange |Tak |string |Wartość do przekonwertowania na małe litery. |
+| stringToChange |Tak |ciąg |Wartość do przekonwertowania na małe litery. |
 
 ### <a name="return-value"></a>Wartość zwracana
 
@@ -1737,9 +1737,9 @@ Konwertuje określony ciąg na wielkie litery.
 
 ### <a name="parameters"></a>Parametry
 
-| Parametr | Wymagane | Typ | Opis |
+| Parametr | Wymagany | Typ | Opis |
 |:--- |:--- |:--- |:--- |
-| stringToChange |Tak |string |Wartość do przekonwertowania na wielkie litery. |
+| stringToChange |Tak |ciąg |Wartość do przekonwertowania na wielkie litery. |
 
 ### <a name="return-value"></a>Wartość zwracana
 
@@ -1780,7 +1780,7 @@ Dane wyjściowe z poprzedniego przykładu z wartościami domyślnymi są następ
 | toLowerOutput | Ciąg | Raz dwa trzy |
 | toUpperOutput | Ciąg | Raz dwa trzy |
 
-## <a name="trim"></a>Trim
+## <a name="trim"></a>trim
 
 `trim (stringToTrim)`
 
@@ -1788,9 +1788,9 @@ Usuwa wszystkie spacje wiodące i końcowe z określonego ciągu.
 
 ### <a name="parameters"></a>Parametry
 
-| Parametr | Wymagane | Typ | Opis |
+| Parametr | Wymagany | Typ | Opis |
 |:--- |:--- |:--- |:--- |
-| stringToTrim |Tak |string |Wartość do przycięcia. |
+| stringToTrim |Tak |ciąg |Wartość do przycięcia. |
 
 ### <a name="return-value"></a>Wartość zwracana
 
@@ -1834,10 +1834,10 @@ Tworzy deterministyczny ciąg skrótu na podstawie wartości podanych jako param
 
 ### <a name="parameters"></a>Parametry
 
-| Parametr | Wymagane | Typ | Opis |
+| Parametr | Wymagany | Typ | Opis |
 |:--- |:--- |:--- |:--- |
-| baseString |Tak |string |Wartość użyta w funkcji skrótu do utworzenia unikatowego ciągu. |
-| dodatkowe parametry w razie konieczności |Nie |string |W razie potrzeby można dodać dowolną liczbę ciągów, aby utworzyć wartość określającą poziom unikatowości. |
+| baseString |Tak |ciąg |Wartość użyta w funkcji skrótu do utworzenia unikatowego ciągu. |
+| dodatkowe parametry w razie konieczności |Nie |ciąg |W razie potrzeby można dodać dowolną liczbę ciągów, aby utworzyć wartość określającą poziom unikatowości. |
 
 ### <a name="remarks"></a>Uwagi
 
@@ -1912,10 +1912,10 @@ Tworzy bezwzględny identyfikator URI przez połączenie baseUri i ciągu relati
 
 ### <a name="parameters"></a>Parametry
 
-| Parametr | Wymagane | Typ | Opis |
+| Parametr | Wymagany | Typ | Opis |
 |:--- |:--- |:--- |:--- |
-| baseUri |Tak |string |Podstawowy ciąg identyfikatora URI. Pamiętaj, aby obserwować zachowanie dotyczące obsługi końcowego ukośnika ('/'), zgodnie z opisem poniżej tej tabeli.  |
-| relativeUri |Tak |string |Względny ciąg identyfikatora URI, który ma zostać dodany do podstawowego ciągu identyfikatora URI. |
+| baseUri |Tak |ciąg |Podstawowy ciąg identyfikatora URI. Pamiętaj, aby obserwować zachowanie dotyczące obsługi końcowego ukośnika ('/'), zgodnie z opisem poniżej tej tabeli.  |
+| relativeUri |Tak |ciąg |Względny ciąg identyfikatora URI, który ma zostać dodany do podstawowego ciągu identyfikatora URI. |
 
 * Jeśli **baseUri** kończy się na końcu ukośnika, wynik jest po prostu **baseUri** , a następnie **relativeUri**.
 
@@ -1980,9 +1980,9 @@ Dane wyjściowe z poprzedniego przykładu z wartościami domyślnymi są następ
 
 | Nazwa | Typ | Wartość |
 | ---- | ---- | ----- |
-| uriOutput | Ciąg | http://contoso.com/resources/nested/azuredeploy.json |
-| componentOutput | Ciąg | http% 3 A% 2 F% 2 F contoso. com% 2Fresources% 2Fnested% 2Fazuredeploy. JSON |
-| toStringOutput | Ciąg | http://contoso.com/resources/nested/azuredeploy.json |
+| uriOutput | Ciąg | `http://contoso.com/resources/nested/azuredeploy.json` |
+| componentOutput | Ciąg | `http%3A%2F%2Fcontoso.com%2Fresources%2Fnested%2Fazuredeploy.json` |
+| toStringOutput | Ciąg | `http://contoso.com/resources/nested/azuredeploy.json` |
 
 ## <a name="uricomponent"></a>uriComponent
 
@@ -1992,9 +1992,9 @@ Koduje identyfikator URI.
 
 ### <a name="parameters"></a>Parametry
 
-| Parametr | Wymagane | Typ | Opis |
+| Parametr | Wymagany | Typ | Opis |
 |:--- |:--- |:--- |:--- |
-| stringToEncode |Tak |string |Wartość do kodowania. |
+| stringToEncode |Tak |ciąg |Wartość do kodowania. |
 
 ### <a name="return-value"></a>Wartość zwracana
 
@@ -2035,9 +2035,9 @@ Dane wyjściowe z poprzedniego przykładu z wartościami domyślnymi są następ
 
 | Nazwa | Typ | Wartość |
 | ---- | ---- | ----- |
-| uriOutput | Ciąg | http://contoso.com/resources/nested/azuredeploy.json |
-| componentOutput | Ciąg | http% 3 A% 2 F% 2 F contoso. com% 2Fresources% 2Fnested% 2Fazuredeploy. JSON |
-| toStringOutput | Ciąg | http://contoso.com/resources/nested/azuredeploy.json |
+| uriOutput | Ciąg | `http://contoso.com/resources/nested/azuredeploy.json` |
+| componentOutput | Ciąg | `http%3A%2F%2Fcontoso.com%2Fresources%2Fnested%2Fazuredeploy.json` |
+| toStringOutput | Ciąg | `http://contoso.com/resources/nested/azuredeploy.json` |
 
 ## <a name="uricomponenttostring"></a>uriComponentToString
 
@@ -2047,9 +2047,9 @@ Zwraca ciąg wartości zakodowanej URI.
 
 ### <a name="parameters"></a>Parametry
 
-| Parametr | Wymagane | Typ | Opis |
+| Parametr | Wymagany | Typ | Opis |
 |:--- |:--- |:--- |:--- |
-| uriEncodedString |Tak |string |Zakodowana wartość identyfikatora URI w celu przekonwertowania na ciąg. |
+| uriEncodedString |Tak |ciąg |Zakodowana wartość identyfikatora URI w celu przekonwertowania na ciąg. |
 
 ### <a name="return-value"></a>Wartość zwracana
 
@@ -2090,9 +2090,9 @@ Dane wyjściowe z poprzedniego przykładu z wartościami domyślnymi są następ
 
 | Nazwa | Typ | Wartość |
 | ---- | ---- | ----- |
-| uriOutput | Ciąg | http://contoso.com/resources/nested/azuredeploy.json |
-| componentOutput | Ciąg | http% 3 A% 2 F% 2 F contoso. com% 2Fresources% 2Fnested% 2Fazuredeploy. JSON |
-| toStringOutput | Ciąg | http://contoso.com/resources/nested/azuredeploy.json |
+| uriOutput | Ciąg | `http://contoso.com/resources/nested/azuredeploy.json` |
+| componentOutput | Ciąg | `http%3A%2F%2Fcontoso.com%2Fresources%2Fnested%2Fazuredeploy.json` |
+| toStringOutput | Ciąg | `http://contoso.com/resources/nested/azuredeploy.json` |
 
 ## <a name="utcnow"></a>utcNow
 
@@ -2102,9 +2102,9 @@ Zwraca bieżącą wartość daty/godziny w określonym formacie. Jeśli format n
 
 ### <a name="parameters"></a>Parametry
 
-| Parametr | Wymagane | Typ | Opis |
+| Parametr | Wymagany | Typ | Opis |
 |:--- |:--- |:--- |:--- |
-| Formatowanie |Nie |string |Zakodowana wartość identyfikatora URI w celu przekonwertowania na ciąg. Użyj [standardowych ciągów formatu](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings) lub [niestandardowych ciągów formatu](https://docs.microsoft.com/dotnet/standard/base-types/custom-date-and-time-format-strings). |
+| Formatowanie |Nie |ciąg |Zakodowana wartość identyfikatora URI w celu przekonwertowania na ciąg. Użyj [standardowych ciągów formatu](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings) lub [niestandardowych ciągów formatu](https://docs.microsoft.com/dotnet/standard/base-types/custom-date-and-time-format-strings). |
 
 ### <a name="remarks"></a>Uwagi
 
@@ -2163,9 +2163,9 @@ Dane wyjściowe z powyższego przykładu różnią się w zależności od wdroż
 
 | Nazwa | Typ | Wartość |
 | ---- | ---- | ----- |
-| utcOutput | string | 20190305T175318Z |
-| utcShortOutput | string | 03/05/2019 |
-| utcCustomOutput | string | 3 5 |
+| utcOutput | ciąg | 20190305T175318Z |
+| utcShortOutput | ciąg | 03/05/2019 |
+| utcCustomOutput | ciąg | 3 5 |
 
 W następnym przykładzie pokazano, jak używać wartości z funkcji podczas ustawiania wartości tagu.
 

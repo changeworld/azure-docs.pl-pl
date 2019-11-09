@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/07/2017
 ms.author: jegeib
-ms.openlocfilehash: 1c9562f413fa0ed52d61d0b38df358f1a2cd03f9
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 54d34a120c575fd01f746131d909058951d1facf
+ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73498686"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73839254"
 ---
 # <a name="security-frame-communication-security--mitigations"></a>Ramka zabezpieczeń: zabezpieczenia komunikacji | Środki zaradcze 
 | Produkt/usługa | Artykuł |
@@ -136,7 +136,7 @@ Poniższy przykład zawiera regułę podstawowego ponownego zapisywania adresu U
   </system.webServer>
 </configuration>
 ```
-Ta reguła działa przez zwrócenie kodu stanu HTTP 301 (trwałe przekierowanie), gdy użytkownik zażąda strony przy użyciu protokołu HTTP. 301 przekierowuje żądanie do tego samego adresu URL, który jest żądany przez osobę odwiedzającą, ale zastępuje część HTTP żądania przy użyciu protokołu HTTPS. Na przykład HTTP://contoso.com zostałby przekierowany do HTTPS://contoso.com. 
+Ta reguła działa przez zwrócenie kodu stanu HTTP 301 (trwałe przekierowanie), gdy użytkownik zażąda strony przy użyciu protokołu HTTP. 301 przekierowuje żądanie do tego samego adresu URL, który jest żądany przez osobę odwiedzającą, ale zastępuje część HTTP żądania przy użyciu protokołu HTTPS. Na przykład `HTTP://contoso.com` zostałby przekierowany do `HTTPS://contoso.com`. 
 
 ## <a id="http-hsts"></a>Włącz zabezpieczenia protokołu HTTP Strict Transport (HSTS)
 

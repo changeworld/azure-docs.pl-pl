@@ -8,12 +8,12 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: guide
 ms.date: 09/26/2019
-ms.openlocfilehash: 072fafac7294757afb26511af569ea75ace0d20a
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: df857fb938ade329a971578ac206f16f1357d7e5
+ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 11/08/2019
-ms.locfileid: "73811935"
+ms.locfileid: "73838760"
 ---
 # <a name="create-a-commercial-marketplace-account-in-partner-center"></a>Utwórz komercyjne konto witryny Marketplace w centrum partnerskim
 
@@ -137,7 +137,7 @@ Po zalogowaniu wykonaj następujące kroki, aby zakończyć konfigurowanie konta
 
 1. W centrum partnerskim wybierz pozycję **ustawienia** > **ustawienia dewelopera** > **programy** ** > wprowadzenie i wprowadź**służbowy adres e-mail.
 2. Uzupełnij szczegóły na stronie profil wydawcy.
-3. Przeczytaj warunki i postanowienia w [Umowie wydawcy Microsoft Marketplace](http://go.microsoft.com/fwlink/?LinkID=699560), a następnie wybierz pozycję **Zaakceptuj i Kontynuuj** , aby zakończyć rejestrację.
+3. Przeczytaj warunki i postanowienia w [Umowie wydawcy Microsoft Marketplace](https://go.microsoft.com/fwlink/?LinkID=699560), a następnie wybierz pozycję **Zaakceptuj i Kontynuuj** , aby zakończyć rejestrację.
 
     >[!Important]
     >*Aby zaakceptować te warunki, musisz mieć uprawnienia do działania w imieniu firmy.*

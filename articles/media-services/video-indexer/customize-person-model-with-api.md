@@ -1,7 +1,7 @@
 ---
-title: Dostosowywanie modelu osoby — Azure za pomocą interfejsu API indeksatora wideo
-titlesuffix: Azure Media Services
-description: W tym artykule pokazano, jak dostosować model osoby przy użyciu interfejsu API indeksatora wideo.
+title: Korzystanie z interfejsu API Video Indexer, aby dostosować model osoby — Azure
+titleSuffix: Azure Media Services
+description: W tym artykule pokazano, jak dostosować model osoby za pomocą interfejsu API Video Indexer.
 services: media-services
 author: anikaz
 manager: johndeu
@@ -10,28 +10,28 @@ ms.subservice: video-indexer
 ms.topic: article
 ms.date: 05/15/2019
 ms.author: anzaman
-ms.openlocfilehash: 6c4980536eddd0226fac422ae17ddb717e34630d
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 44f97e3d9af9daac8d62ae42be76bd73dedbd453
+ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65799468"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73838267"
 ---
-# <a name="customize-a-person-model-with-the-video-indexer-api"></a>Dostosuj model osoba, za pomocą interfejsu API indeksatora wideo
+# <a name="customize-a-person-model-with-the-video-indexer-api"></a>Dostosowywanie modelu osoby za pomocą interfejsu API Video Indexer
 
-Usługa Video Indexer obsługuje wykrywanie twarzy oraz rozpoznawanie osobistości zawartości wideo. Funkcja rozpoznawania osobistości obejmuje około jeden milion twarze na podstawie źródła najczęściej żądanych danych, takich jak ZAUFANI Wikipedia i górnym specjaliści LinkedIn. Wykryto twarzy, które nie są rozpoznawane przez funkcję rozpoznawania osobistości; jednak są pozostawione bez nazwy. Po wideo możesz przekazać do indeksatora wideo i uzyskuj wyniki z powrotem, może Przejdź wstecz i nazwij twarzy, które nie zostały rozpoznane. Gdy etykiety twarz o nazwie twarzy i nazwy poproś o dodanie Cię do swojego konta osoby modelu. Indeksator wideo następnie rozpozna twarzach przyszłych filmów wideo i ostatnich filmów wideo.
+Video Indexer obsługuje wykrywanie kroju i rozpoznawanie osobistości dla zawartości wideo. Funkcja rozpoznawania osobistości obejmuje około 1 000 000 twarzy na podstawie często zażądanego źródła danych, takiego jak IMDB, Wikipedia i najpopularniejszych wpływów serwisu LinkedIn. Wykryto twarze, które nie są rozpoznawane przez funkcję rozpoznawania osobistości. są one jednak pozostawiane bez nazwy. Po przekazaniu wideo do Video Indexer i powrocie z powrotem możesz wrócić i nazwać powierzchnie, które nie zostały rozpoznane. Po oznaczeniu kroju z nazwą zostanie dodana do modelu osoby Twojego konta. Następnie Video Indexer rozpoznają Tę miarę w przyszłych wideo i poprzednich wideo.
 
-Interfejs API indeksatora wideo służy do edytowania twarzy, które zostały wykryte w filmach wideo, zgodnie z opisem w tym temacie. Umożliwia także Video Indexer witryny sieci Web, zgodnie z opisem w [modelu dostosować osoby za pomocą witryny sieci Web Video Indexer](customize-person-model-with-api.md).
+Za pomocą interfejsu API Video Indexer można edytować powierzchnie wykryte w wideo, zgodnie z opisem w tym temacie. Możesz również użyć witryny sieci Web Video Indexer, zgodnie z opisem w temacie [Dostosowywanie modelu osoby za pomocą witryny sieci web video Indexer](customize-person-model-with-api.md).
 
-## <a name="managing-multiple-person-models"></a>Zarządzanie wielu modeli osoby 
+## <a name="managing-multiple-person-models"></a>Zarządzanie wieloma modelami osób 
 
-Usługa Video Indexer obsługuje wiele modeli osoby na jednym koncie. Ta funkcja jest obecnie dostępna wyłącznie za pośrednictwem interfejsów API indeksatora wideo.
+Video Indexer obsługuje wiele modeli osób na konto. Ta funkcja jest obecnie dostępna tylko za pomocą interfejsów API Video Indexer.
 
-Jeśli Twoje konto jest przeznaczony dla różnych scenariuszy przypadków użycia, można utworzyć wiele modeli osoby na jednym koncie. Na przykład jeśli zawartość jest powiązany z dyscyplin sportowych, następnie utwórz oddzielne modelu osoby dla każdego rodzaju sportu (football przeciwna, soccer, itp.). 
+Jeśli Twoje konto uwzględnia różne scenariusze przypadków użycia, można utworzyć wiele modeli osób dla każdego konta. Na przykład jeśli zawartość jest powiązana z sportem, można utworzyć osobny model dla każdej sportka (piłka, Basketball, piłka itp.). 
 
-Po utworzeniu modelu, można użyć go, podając identyfikator modelu określonego modelu osoby podczas przekazywania indeksowania lub Indeksowanie filmu wideo. Szkolenie nowej twarzy film aktualizuje określonego modelu niestandardowego, który film wideo został skojarzony z.
+Po utworzeniu modelu można go użyć, dostarczając Identyfikator modelu określonego modelu osoby podczas przekazywania/indeksowania lub ponownego indeksowania wideo. Uczenie nowej kroju filmu wideo aktualizuje określony model niestandardowy, z którym zostało skojarzone wideo.
 
-Każde konto ma ograniczenie do 50 modeli osoby. Jeśli nie potrzebujesz obsługi wielu modelu osoby, nie należy przypisywać osoby identyfikator modelu do swojego wideo podczas przekazywania indeksowania lub ponowne indeksowanie. W takim przypadku Video Indexer używa domyślnego niestandardowego modelu osoby na Twoim koncie.
+Każde konto ma limit 50 modeli osób. Jeśli nie potrzebujesz pomocy technicznej modelu wielu osób, nie przypisuj identyfikatora modelu osoby do wideo podczas przekazywania/indeksowania lub ponownego indeksowania. W takim przypadku Video Indexer używa domyślnego modelu osoby niestandardowej na Twoim koncie.
 
 ## <a name="create-a-new-person-model"></a>Utwórz nowy model osoby
 
@@ -45,30 +45,30 @@ Jest to żądanie POST.
 https://api.videoindexer.ai/{location}/Accounts/{accountId}/Customization/PersonModels?name={name}&accessToken={accessToken}
 ```
 
-Poniżej znajduje się na żądanie w Curl.
+Poniżej znajduje się żądanie w zadaniu.
 
 ```curl
 curl -v -X POST "https://api.videoindexer.ai/{location}/Accounts/{accountId}/Customization/PersonModels?name={name}&accessToken={accessToken}"
 ```
 
-[Zobacz wymagane parametry i przetestowania przy użyciu portalu dla deweloperów indeksatora wideo](https://api-portal.videoindexer.ai/docs/services/operations/operations/Create-Person-Model?).
+[Zobacz wymagane parametry i przetestuj je za pomocą portalu deweloperów Video Indexer](https://api-portal.videoindexer.ai/docs/services/operations/operations/Create-Person-Model?).
 
 ### <a name="request-parameters"></a>Parametry żądania 
 
 |**Nazwa**|**Typ**|**Wymagane**|**Opis**|
 |---|---|---|---|
-|location|string|Yes|Region platformy Azure, do którego powinny być kierowane wywołania. Aby uzyskać więcej informacji, zobacz [regiony platformy Azure i Video Indexer](regions.md).|
-|accountId|string|Tak|Unikatowy identyfikator globalny dla konta|
-|name|string|Tak|Nazwa modelu osoby|
-|accessToken|string|Tak|Token dostępu (musi być z zakresu [Token dostępu konta](https://api-portal.videoindexer.ai/docs/services/authorization/operations/Get-Account-Access-Token?)) do uwierzytelniania połączenia. Tokeny dostępu wygasa w ciągu 1 godziny.|
+|location|ciąg|Tak|Region świadczenia usługi Azure, do którego ma zostać rozesłane wywołanie. Aby uzyskać więcej informacji, zobacz [regiony i video Indexer platformy Azure](regions.md).|
+|accountId|ciąg|Tak|Unikatowy identyfikator globalny dla konta|
+|name|ciąg|Tak|Nazwa modelu osoby|
+|accessToken|ciąg|Tak|Token dostępu (musi być [tokenem dostępu konta](https://api-portal.videoindexer.ai/docs/services/authorization/operations/Get-Account-Access-Token?)zakresu) do uwierzytelniania w wywołaniu. Tokeny dostępu wygasną w ciągu 1 godziny.|
 
 ### <a name="request-body"></a>Treść żądania
 
-Nie ma już treść żądania wymagane dla tego wywołania.
+Dla tego wywołania nie jest wymagana żadna dodatkowa treść żądania.
 
 ### <a name="response"></a>Odpowiedź
 
-Odpowiedź zawiera nazwy i Identyfikatora modelu wygenerowanego osoby modelu, utworzony zgodnie z formatu w poniższym przykładzie.
+Odpowiedź zawiera nazwę i wygenerowany identyfikator modelu osoby, który właśnie został utworzony, zgodnie z poniższym formatem.
 
 ```json
 {
@@ -77,13 +77,13 @@ Odpowiedź zawiera nazwy i Identyfikatora modelu wygenerowanego osoby modelu, ut
 }
 ```
 
-Następnie należy użyć **identyfikator** wartość **personModelId** parametru podczas [przekazywania filmu wideo do indeksu](https://api-portal.videoindexer.ai/docs/services/operations/operations/Upload-video?) lub [indeksowanie wideo](https://api-portal.videoindexer.ai/docs/services/operations/operations/Re-index-video?).
+Następnie należy użyć wartości **identyfikatora** dla parametru **personModelId** podczas [przekazywania wideo do indeksu](https://api-portal.videoindexer.ai/docs/services/operations/operations/Upload-video?) lub ponownego [indeksowania wideo](https://api-portal.videoindexer.ai/docs/services/operations/operations/Re-index-video?).
 
 ## <a name="delete-a-person-model"></a>Usuń model osoby
 
 Usuń niestandardowy model osoby z określonego konta. 
 
-Po pomyślnym usunięciu modelu osoby indeks bieżącej filmów wideo, które były używane usunięto modelu pozostanie niezmieniona, do momentu ich indeksowania. Podczas ponownego indeksowania, powierzchnie, które zostały nazwane w modelu usuniętego nie zostanie rozpoznana przez indeksator wideo w bieżącym filmów wideo, które są indeksowane, za pomocą modelu; Jednak te powierzchnie nadal zostanie wykryty. Bieżący filmów wideo, które są indeksowane, za pomocą modelu usuniętego będą teraz korzystały z Twojego konta domyślnego osoby modelu. Twarze na nagraniach usunięto modelu są również wymienione w modelu domyślnego konta, będą nadal być rozpoznawany w filmach wideo te powierzchnie.
+Po pomyślnym usunięciu modelu osoby indeks bieżących filmów wideo, przy użyciu którego usunięto model, pozostanie bez zmian do momentu ponownego indeksowania. Podczas ponownego indeksowania powierzchnie, które zostały nazwane w usuniętym modelu, nie będą rozpoznawane przez Video Indexer w bieżących filmach wideo, które były indeksowane przy użyciu tego modelu; Jednak te powierzchnie nadal będą wykrywane. Bieżące filmy wideo, które były indeksowane przy użyciu usuniętego modelu, będą teraz używały domyślnego modelu osoby Twojego konta. Jeśli twarze z usuniętego modelu są również nazwane w domyślnym modelu konta, te powierzchnie będą nadal rozpoznawane w filmach wideo.
 
 ### <a name="request-url"></a>Adres URL żądania
 
@@ -91,35 +91,35 @@ Po pomyślnym usunięciu modelu osoby indeks bieżącej filmów wideo, które by
 https://api.videoindexer.ai/{location}/Accounts/{accountId}/Customization/PersonModels/{id}?accessToken={accessToken}
 ```
 
-Poniżej znajduje się na żądanie w Curl.
+Poniżej znajduje się żądanie w zadaniu.
 ```curl
 curl -v -X DELETE "https://api.videoindexer.ai/{location}/Accounts/{accountId}/Customization/PersonModels/{id}?accessToken={accessToken}"
 ```
 
-[Zobacz wymagane parametry i przetestowania przy użyciu portalu dla deweloperów indeksatora wideo](https://api-portal.videoindexer.ai/docs/services/operations/operations/Delete-Person-Model?).
+[Zobacz wymagane parametry i przetestuj je za pomocą portalu deweloperów Video Indexer](https://api-portal.videoindexer.ai/docs/services/operations/operations/Delete-Person-Model?).
 
 ### <a name="request-parameters"></a>Parametry żądania
 
 |**Nazwa**|**Typ**|**Wymagane**|**Opis**|
 |---|---|---|---|
-|location|string|Tak|Region platformy Azure, do którego powinny być kierowane wywołania. Aby uzyskać więcej informacji, zobacz [regiony platformy Azure i Video Indexer](regions.md).|
-|accountId|string|Tak|Unikatowy identyfikator globalny dla konta|
-|id|string|Tak|Identyfikator modelu osoby (generowany podczas tworzenia modelu osoby)|
-|accessToken|string|Tak|Token dostępu (musi być z zakresu [Token dostępu konta](https://api-portal.videoindexer.ai/docs/services/authorization/operations/Get-Account-Access-Token?)) do uwierzytelniania połączenia. Tokeny dostępu wygasa w ciągu 1 godziny.|
+|location|ciąg|Tak|Region świadczenia usługi Azure, do którego ma zostać rozesłane wywołanie. Aby uzyskać więcej informacji, zobacz [regiony i video Indexer platformy Azure](regions.md).|
+|accountId|ciąg|Tak|Unikatowy identyfikator globalny dla konta|
+|id|ciąg|Tak|Identyfikator modelu osoby (wygenerowany podczas tworzenia modelu osoby)|
+|accessToken|ciąg|Tak|Token dostępu (musi być [tokenem dostępu konta](https://api-portal.videoindexer.ai/docs/services/authorization/operations/Get-Account-Access-Token?)zakresu) do uwierzytelniania w wywołaniu. Tokeny dostępu wygasną w ciągu 1 godziny.|
 
 ### <a name="request-body"></a>Treść żądania
 
-Nie ma już treść żądania wymagane dla tego wywołania.
+Dla tego wywołania nie jest wymagana żadna dodatkowa treść żądania.
 
 ### <a name="response"></a>Odpowiedź
 
-Brak zawartości zwracane, gdy model osoby został pomyślnie usunięty.
+Nie ma żadnej zwróconej zawartości, gdy model osoby został usunięty pomyślnie.
 
-## <a name="get-all-person-models"></a>Wszystkie modele osoby
+## <a name="get-all-person-models"></a>Pobierz wszystkie modele osób
 
-Pobierz wszystkie modele osoby na określonym koncie. 
+Pobierz wszystkie modele osób na określonym koncie. 
 
-### <a name="request-call"></a>Wywołanie żądania
+### <a name="request-call"></a>Żądanie wywołania
 
 Jest to żądanie GET.
 
@@ -127,29 +127,29 @@ Jest to żądanie GET.
 https://api.videoindexer.ai/{location}/Accounts/{accountId}/Customization/PersonModels?accessToken={accessToken}
 ```
 
-Poniżej znajduje się na żądanie w Curl.
+Poniżej znajduje się żądanie w zadaniu.
 
 ```curl
 curl -v -X GET "https://api.videoindexer.ai/{location}/Accounts/{accountId}/Customization/PersonModels?accessToken={accessToken}"
 ```
 
-[Zobacz wymagane parametry i przetestowania przy użyciu portalu dla deweloperów indeksatora wideo](https://api-portal.videoindexer.ai/docs/services/operations/operations/Get-Person-Models?).
+[Zobacz wymagane parametry i przetestuj je za pomocą portalu deweloperów Video Indexer](https://api-portal.videoindexer.ai/docs/services/operations/operations/Get-Person-Models?).
 
 ### <a name="request-parameters"></a>Parametry żądania
 
 |**Nazwa**|**Typ**|**Wymagane**|**Opis**|
 |---|---|---|---|
-|location|string|Tak|Region platformy Azure, do którego powinny być kierowane wywołania. Aby uzyskać więcej informacji, zobacz [regiony platformy Azure i Video Indexer](regions.md).|
-|accountId|string|Tak|Unikatowy identyfikator globalny dla konta|
-|accessToken|string|Tak|Token dostępu (musi być z zakresu [Token dostępu konta](https://api-portal.videoindexer.ai/docs/services/authorization/operations/Get-Account-Access-Token?)) do uwierzytelniania połączenia. Tokeny dostępu wygasa w ciągu 1 godziny.|
+|location|ciąg|Tak|Region świadczenia usługi Azure, do którego ma zostać rozesłane wywołanie. Aby uzyskać więcej informacji, zobacz [regiony i video Indexer platformy Azure](regions.md).|
+|accountId|ciąg|Tak|Unikatowy identyfikator globalny dla konta|
+|accessToken|ciąg|Tak|Token dostępu (musi być [tokenem dostępu konta](https://api-portal.videoindexer.ai/docs/services/authorization/operations/Get-Account-Access-Token?)zakresu) do uwierzytelniania w wywołaniu. Tokeny dostępu wygasną w ciągu 1 godziny.|
 
 ### <a name="request-body"></a>Treść żądania
 
-Nie ma już treść żądania wymagane dla tego wywołania.
+Dla tego wywołania nie jest wymagana żadna dodatkowa treść żądania.
 
 ### <a name="response"></a>Odpowiedź
 
-Odpowiedź zawiera listę wszystkich modeli osoby na koncie (w tym domyślny model osoby na określonym koncie), a każdy z ich nazwy i identyfikatory następującego formatu w poniższym przykładzie.
+Odpowiedź zawiera listę wszystkich modeli osób w Twoim koncie (w tym domyślny model osoby na określonym koncie) oraz każdej z nazw i identyfikatorów, które są zgodne z poniższym formatem przykładu.
 
 ```json
 [
@@ -164,17 +164,17 @@ Odpowiedź zawiera listę wszystkich modeli osoby na koncie (w tym domyślny mod
 ]
 ```
 
-Można wybrać model, który chcesz użyć dla filmu wideo za pomocą **identyfikator** wartość modelu osoby **personModelId** parametru podczas [przekazywania filmu wideo do indeksu](https://api-portal.videoindexer.ai/docs/services/operations/operations/Upload-video?) lub [indeksowanie wideo](https://api-portal.videoindexer.ai/docs/services/operations/operations/Re-index-video?).
+Można wybrać model, który ma być używany dla filmu wideo, przy użyciu wartości **identyfikatora** modelu osoby dla parametru **personModelId** podczas [przekazywania wideo do indeksu](https://api-portal.videoindexer.ai/docs/services/operations/operations/Upload-video?) lub ponownego [indeksowania wideo](https://api-portal.videoindexer.ai/docs/services/operations/operations/Re-index-video?).
 
-## <a name="update-a-face"></a>Aktualizacja twarzy
+## <a name="update-a-face"></a>Aktualizowanie kroju
 
-To polecenie umożliwia aktualizowanie twarzy w wideo nazwą, używając Identyfikatora wideo i identyfikator powierzchni. Następnie aktualizuje model osoby, do którego film wideo został skojarzony z po przekazaniu indeksowania lub ponowne indeksowanie. Jeśli przypisano bez modelu osoby, aktualizuje konta domyślnego osoby modelu. 
+To polecenie umożliwia zaktualizowanie kroju obrazu w filmie wideo przy użyciu nazwy z IDENTYFIKATORem wideo i IDENTYFIKATORem kroju. Następnie aktualizuje on model osoby, z którym zostało skojarzone wideo podczas przekazywania/indeksowania lub ponownego indeksowania. Jeśli żaden model osoby nie został przypisany, aktualizuje domyślny model osoby dla konta. 
 
-Gdy tak się stanie, rozpoznaje wystąpień tego samego twarzy w innych bieżącego filmów wideo, które współużytkują ten sam model osoby. Rozpoznawanie twarzy w Twojej bieżącej wideo może trochę potrwać zaczęły obowiązywać, ponieważ jest to proces usługi batch.
+Gdy tak się stanie, rozpoznaje wystąpienia tej samej klasy z innymi bieżącymi filmami wideo, które współużytkują ten sam model osoby. Rozpoznawanie twarz w innych bieżących filmach wideo może zająć trochę czasu, ponieważ jest to proces wsadowy.
 
-Możesz zaktualizować krój Video Indexer, który został rozpoznany jako osobistości z nową nazwą. Nowa nazwa nadana ma pierwszeństwo rozpoznawania osobistości wbudowanych.
+Możesz zaktualizować miarę, która Video Indexer rozpoznawana jako osobistości z nową nazwą. Nowa nazwa, która zostanie nadana, będzie mieć pierwszeństwo przed wbudowanym rozpoznawaniem osobistości.
 
-### <a name="request-call"></a>Wywołanie żądania
+### <a name="request-call"></a>Żądanie wywołania
 
 Jest to żądanie POST.
 
@@ -182,35 +182,35 @@ Jest to żądanie POST.
 https://api.videoindexer.ai/{location}/Accounts/{accountId}/Videos/{videoId}/Index/Faces/{faceId}?accessToken={accessToken}&newName={newName}
 ```
 
-Poniżej znajduje się na żądanie w Curl.
+Poniżej znajduje się żądanie w zadaniu.
 
 ```curl
 curl -v -X PUT "https://api.videoindexer.ai/{location}/Accounts/{accountId}/Videos/{videoId}/Index/Faces/{faceId}?accessToken={accessToken}&newName={newName}"
 ```
 
-[Zobacz wymagane parametry i przetestowania przy użyciu portalu dla deweloperów indeksatora wideo](https://api-portal.videoindexer.ai/docs/services/operations/operations/Update-Video-Face?).
+[Zobacz wymagane parametry i przetestuj je za pomocą portalu deweloperów Video Indexer](https://api-portal.videoindexer.ai/docs/services/operations/operations/Update-Video-Face?).
 
 ### <a name="request-parameters"></a>Parametry żądania
 
 |**Nazwa**|**Typ**|**Wymagane**|**Opis**|
 |---|---|---|---|
-|location|string|Tak|Region platformy Azure, do którego powinny być kierowane wywołania. Aby uzyskać więcej informacji, zobacz [regiony platformy Azure i Video Indexer](regions.md).|
-|accountId|string|Tak|Unikatowy identyfikator globalny dla konta|
-|videoId|string|Yes|Identyfikator filmu wideo, w którym pojawia się twarz, którą chcesz zaktualizować. To jest tworzony, gdy wideo zostanie przekazany i indeksowane.|
-|faceId|liczba całkowita|Tak|Identyfikator twarzy, które zostaną zaktualizowane. Indeks wideo można uzyskać faceId|
-|accessToken|string|Tak|Token dostępu (musi być z zakresu [Token dostępu konta](https://api-portal.videoindexer.ai/docs/services/authorization/operations/Get-Account-Access-Token?)) do uwierzytelniania połączenia. Tokeny dostępu wygasa w ciągu 1 godziny.|
-|name|string|Tak|Nowa nazwa do rozpoznawania twarzy, za pomocą aktualizacji.|
+|location|ciąg|Tak|Region świadczenia usługi Azure, do którego ma zostać rozesłane wywołanie. Aby uzyskać więcej informacji, zobacz [regiony i video Indexer platformy Azure](regions.md).|
+|accountId|ciąg|Tak|Unikatowy identyfikator globalny dla konta|
+|videoId|ciąg|Tak|Identyfikator filmu wideo, w którym pojawia się Strona, która ma zostać zaktualizowana. Ta wartość jest tworzona podczas przekazywania i indeksowania wideo.|
+|faceId|liczba całkowita|Tak|Identyfikator dla kroju, który zostanie zaktualizowany. Możesz uzyskać faceId z indeksu wideo|
+|accessToken|ciąg|Tak|Token dostępu (musi być [tokenem dostępu konta](https://api-portal.videoindexer.ai/docs/services/authorization/operations/Get-Account-Access-Token?)zakresu) do uwierzytelniania w wywołaniu. Tokeny dostępu wygasną w ciągu 1 godziny.|
+|name|ciąg|Tak|Nowa nazwa, za pomocą której ma zostać zaktualizowana wartość.|
 
-Nazwy są unikatowe dla modeli osoby, więc jeśli nadasz dwa różne twarze na tej samej osoby modelu takie same **nazwa** wartość parametru i Video Indexer widoków powierzchnie jako ta sama osoba i zbieżna dla wartości, ich po ponownego poindeksowania danych filmu wideo. 
+Nazwy są unikatowe dla modeli osób, dlatego w przypadku udostępnienia dwóch różnych twarzy w tym samym modelu osoby o tej samej wartości parametru **nazwa** Video Indexer wyświetlenia twarzy jako ta sama osoba i nastąpi ich zbieżność po ponownym indeksie wideo. 
 
 ### <a name="request-body"></a>Treść żądania
 
-Nie ma już treść żądania wymagane dla tego wywołania.
+Dla tego wywołania nie jest wymagana żadna dodatkowa treść żądania.
 
 ### <a name="response"></a>Odpowiedź
 
-Brak zawartości zwracane, gdy twarz został pomyślnie zaktualizowany.
+Po pomyślnym zaktualizowaniu kroju nie jest zwracana zawartość.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
-[Dostosuj model osoby, witryny sieci Web indeksatora wideo](customize-person-model-with-website.md)
+[Dostosuj model osoby za pomocą witryny sieci Web Video Indexer](customize-person-model-with-website.md)

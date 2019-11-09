@@ -1,7 +1,7 @@
 ---
-title: Użyć Video Indexer witryny sieci Web, aby dostosować model języka - Azure
-titlesuffix: Azure Media Services
-description: W tym artykule pokazano, jak dostosować model języka, za pomocą indeksatora wideo witryny sieci Web.
+title: Dostosowywanie modelu języka na platformie Azure za pomocą witryny sieci Web Video Indexer
+titleSuffix: Azure Media Services
+description: W tym artykule pokazano, jak dostosować model języka za pomocą witryny sieci Web Video Indexer.
 services: media-services
 author: anikaz
 manager: johndeu
@@ -10,142 +10,142 @@ ms.subservice: video-indexer
 ms.topic: article
 ms.date: 05/15/2019
 ms.author: anzaman
-ms.openlocfilehash: f98cdcab2d108f8dd9d40e3770498ad17b2a8a88
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 5d92cb02a0ac52b317cf9d4b6c8e0278f9291910
+ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65799618"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73838458"
 ---
-# <a name="customize-a-language-model-with-the-video-indexer-website"></a>Dostosuj model języka, za pomocą witryny sieci Web indeksatora wideo
+# <a name="customize-a-language-model-with-the-video-indexer-website"></a>Dostosowywanie modelu języka za pomocą witryny sieci Web Video Indexer
 
-Usługa Video Indexer umożliwia tworzenie niestandardowych modeli językowych, aby dostosować rozpoznawania mowy, przekazując adaptacji tekstu, a mianowicie tekstu z domeny słownictwo, którego chcesz aparatu, aby dostosować je do. Po użytkownik nauczenia modelu, nowych słów, które pojawiają się w tekście adaptacji zostanie rozpoznana. 
+Video Indexer umożliwia tworzenie niestandardowych modeli języka w celu dostosowania rozpoznawania mowy przez przekazywanie tekstu adaptacji, czyli tekstu z domeny, do którego słownika ma być dołączany aparat. Po przeprowadzeniu szkolenia modelu zostaną rozpoznane nowe wyrazy pojawiające się w tekście adaptacyjnym. 
 
-Aby uzyskać szczegółowe omówienie i najlepsze rozwiązania dotyczące niestandardowych modeli językowych, zobacz [dostosować model języka, za pomocą indeksatora wideo](customize-language-model-overview.md).
+Aby zapoznać się z szczegółowym omówieniem i najlepszymi rozwiązaniami dotyczącymi niestandardowych modeli języków, zobacz [Dostosowywanie modelu języka za pomocą Video Indexer](customize-language-model-overview.md).
 
-Video Indexer witryny sieci Web służy do tworzenia i edytowania niestandardowych modeli językowych ze swojego konta, zgodnie z opisem w tym temacie. Możesz również użyć interfejsu API, zgodnie z opisem w [Dostosowywanie języka modelu przy użyciu interfejsów API](customize-language-model-with-api.md).
+Za pomocą witryny sieci Web Video Indexer można tworzyć i edytować niestandardowe modele języka na koncie, zgodnie z opisem w tym temacie. Możesz również użyć interfejsu API, zgodnie z opisem w temacie [Dostosowywanie modelu języka za pomocą interfejsów API](customize-language-model-with-api.md).
 
 ## <a name="create-a-language-model"></a>Tworzenie modelu języka
 
 1. Przejdź do witryny internetowej [Video Indexer](https://www.videoindexer.ai/) i zaloguj się.
-2. Aby dostosować model na Twoim koncie, wybierz polecenie **zawartości Dostosowywanie modelu** przycisk w prawym górnym rogu strony.
+2. Aby dostosować model na koncie, kliknij przycisk **dostosowywania modelu zawartości** w prawym górnym rogu strony.
 
-   ![Dostosowywanie modelu zawartości](./media/content-model-customization/content-model-customization.png)
+   ![Dostosuj model zawartości](./media/content-model-customization/content-model-customization.png)
 
-3. Wybierz **języka** kartę.
+3. Wybierz kartę **Język** .
 
-    Zobaczysz listę obsługiwanych języków. 
+    Zostanie wyświetlona lista obsługiwanych języków. 
 
     ![Dostosuj model języka](./media/customize-language-model/customize-language-model.png)
 
-4. W obszarze język, który ma, kliknij **modelu Dodaj**.
-5. Wpisz nazwę dla modelu językowego i naciśnij klawisz enter.
+4. W obszarze język, który chcesz, kliknij pozycję **Dodaj model**.
+5. Wpisz nazwę modelu języka i naciśnij klawisz ENTER.
 
-    Umożliwia utworzenie modelu i udostępnia opcję przekazania plików tekstowych w modelu.
-6. Aby dodać plik tekstowy, kliknij **Dodaj plik**. Spowoduje to otwarcie Eksploratora plików.
+    Spowoduje to utworzenie modelu i umożliwi przekazanie plików tekstowych do modelu.
+6. Aby dodać plik tekstowy, kliknij przycisk **Dodaj plik**. Spowoduje to otwarcie Eksploratora plików.
 
-7. Przejdź do, a następnie wybierz plik tekstowy. Model języka, można dodać wiele plików.
+7. Przejdź do i wybierz plik tekstowy. Można dodać wiele plików tekstowych do modelu języka.
 
-    Można również dodać plik tekstowy, klikając **...**  znajdujący się po prawej stronie modelu językowego i wybierając **Dodaj plik**.
-8. Po zakończeniu przekazywania plików tekstowych, kliknij zielony **Train** opcji.
+    Możesz również dodać plik tekstowy, klikając przycisk **...** po prawej stronie modelu języka i wybierając pozycję **Dodaj plik**.
+8. Po zakończeniu przekazywania plików tekstowych kliknij opcję zielony **pociąg** .
 
-    ![Train model języka](./media/customize-language-model/train-model.png)
+    ![Model języka uczenia](./media/customize-language-model/train-model.png)
 
-Szkolenie może potrwać kilka minut. Po zakończeniu szkolenia **Trained** obok modelu. Można w wersji zapoznawczej, Pobierz i usunięcie pliku z modelu.
+Proces uczenia może potrwać kilka minut. Po zakończeniu szkolenia zobaczysz **przeszkolony** obok modelu. Możesz wyświetlić podgląd, pobrać i usunąć plik z modelu.
 
-![Model języka przeszkolonych](./media/customize-language-model/preview-model.png)
+![Model przeszkolonego języka](./media/customize-language-model/preview-model.png)
 
-### <a name="using-a-language-model-on-a-new-video"></a>Za pomocą modelu języka na nowy film wideo
+### <a name="using-a-language-model-on-a-new-video"></a>Używanie modelu języka na nowym filmie wideo
 
-Aby użyć Twojego modelu językowego na nowy film wideo, wykonaj jedną z następujących czynności:
+Aby użyć modelu języka na nowym filmie wideo, wykonaj jedną z następujących czynności:
 
-* Kliknij pozycję **przekazywanie** przycisku w górnej części strony 
+* Kliknij przycisk **Przekaż** w górnej części strony. 
 
-    ![Przekazanie](./media/customize-language-model/upload.png)
-* Usuń z pliku audio lub wideo w okręgu lub Przeglądaj w poszukiwaniu pliku
+    ![Upload](./media/customize-language-model/upload.png)
+* Porzuć plik audio lub wideo w okręgu lub Wyszukaj plik
 
-    ![Przekazanie](./media/customize-language-model/upload2.png)
+    ![Upload](./media/customize-language-model/upload2.png)
 
-Zapewni to możliwość dokonania wyboru **języka źródłowego wideo**. Kliknij listę rozwijaną i wybierz model języka, który został utworzony z listy. Powinien on Załóżmy, że język Twojego modelu językowego i nazwę, która udostępniła je w nawiasach.
+Umożliwi to wybranie **języka źródła wideo**. Kliknij listę rozwijaną i wybierz model języka, który został utworzony na podstawie listy. Powinien on wypowiedzieć język modelu języka i nazwę nadaną w nawiasach.
 
-Kliknij przycisk **przekazywanie** opcję w dolnej części strony i nowy film wideo będzie indeksowany przy użyciu Twojego modelu językowego.
+Kliknij opcję **Przekaż** w dolnej części strony, a nowe wideo zostanie indeksowane przy użyciu modelu języka.
 
-### <a name="using-a-language-model-to-reindex"></a>Ponowna indeksacja przy użyciu modelu języka
+### <a name="using-a-language-model-to-reindex"></a>Używanie modelu języka do ponownego indeksowania
 
-Aby użyć Twojego modelu językowego do ponownego poindeksowania danych wideo w kolekcji, przejdź do usługi **konta wideo** na [Video Indexer](https://www.videoindexer.ai/) strony głównej i umieść kursor na nazwie film wideo, który ma być ponowna indeksacja.
+Aby użyć modelu języka do ponownego indeksowania wideo w kolekcji, przejdź do swoich **filmów wideo** na stronie głównej [Video Indexer](https://www.videoindexer.ai/) i umieść kursor nad nazwą filmu wideo, który chcesz ponownie zindeksować.
 
-Zostanie wyświetlony opcje edytowania filmu wideo, usunięcie wideo i ponowna indeksacja filmu wideo. Kliknij opcję ponownego poindeksowania danych filmu wideo.
+Zobaczysz opcje edycji wideo, usuwania wideo i ponownego indeksowania wideo. Kliknij opcję, aby ponownie zindeksować wideo.
 
 ![Ponowna indeksacja](./media/customize-language-model/reindex1.png)
 
-Daje to możliwość dokonania wyboru **języka źródłowego wideo** indeksowania wideo. Kliknij listę rozwijaną i wybierz model języka, który został utworzony z listy. Powinien on Załóżmy, że język Twojego modelu językowego i nazwę, która udostępniła je w nawiasach.
+Dzięki temu można wybrać **język źródła wideo** do ponownego indeksowania wideo. Kliknij listę rozwijaną i wybierz model języka, który został utworzony na podstawie listy. Powinien on wypowiedzieć język modelu języka i nazwę nadaną w nawiasach.
 
 ![Ponowna indeksacja](./media/customize-language-model/reindex.png)
 
-Kliknij przycisk **ponownie poindeksuj** przycisk, a Twój film wideo będzie można ponownie indeksowane za pomocą modelu językowego.
+Kliknij przycisk **ponownego indeksowania** , a Twoje wideo zostanie ponownie indeksowane przy użyciu modelu języka.
 
-## <a name="edit-a-language-model"></a>Edytuj model języka
+## <a name="edit-a-language-model"></a>Edytowanie modelu języka
 
-Można edytować model języka, zmiana jego nazwy, dodawanie plików do niego i usuwanie plików z niego.
+Można edytować model języka, zmieniając jego nazwę, dodając do niego pliki i usuwając z niego pliki.
 
-Jeśli dodasz lub Usuń pliki z modelu językowego trzeba będzie ponownie nauczenia modelu, klikając przycisk w kolorze zielonym **szkolenie** opcji.
+W przypadku dodania lub usunięcia plików z modelu języka należy ponownie przeprowadzić uczenie modelu przez kliknięcie opcji zielony **pociąg** .
 
-### <a name="rename-the-language-model"></a>Zmień nazwę modelu językowego
+### <a name="rename-the-language-model"></a>Zmień nazwę modelu języka
 
-Nazwa modelu językowego można zmienić, klikając **...**  po prawej stronie język modelu i wybierając polecenie **Zmień nazwę**. 
+Nazwę modelu języka można zmienić, klikając pozycję **...** po prawej stronie modelu języka i wybierając pozycję **Zmień nazwę**. 
 
-Wpisz nową nazwę i kliknij przycisk Wprowadź.
+Wpisz nową nazwę i naciśnij klawisz ENTER.
 
 ### <a name="add-files"></a>Dodaj pliki
 
-Aby dodać plik tekstowy, kliknij **Dodaj plik**. Spowoduje to otwarcie Eksploratora plików.
+Aby dodać plik tekstowy, kliknij przycisk **Dodaj plik**. Spowoduje to otwarcie Eksploratora plików.
 
-Przejdź do, a następnie wybierz plik tekstowy. Model języka, można dodać wiele plików.
+Przejdź do i wybierz plik tekstowy. Można dodać wiele plików tekstowych do modelu języka.
 
-Można również dodać plik tekstowy, klikając **...**  znajdujący się po prawej stronie modelu językowego i wybierając **Dodaj plik**.
+Możesz również dodać plik tekstowy, klikając przycisk **...** po prawej stronie modelu języka i wybierając pozycję **Dodaj plik**.
 
 ### <a name="delete-files"></a>Usuwanie plików
 
-Aby usunąć plik z modelu języka, kliknij przycisk **...**  przycisk po prawej stronie pliku tekstowego, a następnie wybierz pozycję **Usuń**. Spowoduje to przejście nowe okno informujące o tym, że usunięcie nie można cofnąć. Kliknij przycisk **Usuń** opcji w nowym oknie.
+Aby usunąć plik z modelu języka, kliknij przycisk **...** po prawej stronie pliku tekstowego, a następnie wybierz pozycję **Usuń**. Spowoduje to wyświetlenie nowego okna z informacją o tym, że nie można cofnąć operacji usuwania. Kliknij opcję **Usuń** w nowym oknie.
 
-Ta akcja usuwa plik całkowicie z modelu językowego.
+Ta akcja powoduje usunięcie pliku w całości z modelu języka.
 
-## <a name="delete-a-language-model"></a>Usuń model języka
+## <a name="delete-a-language-model"></a>Usuwanie modelu języka
 
-Aby usunąć model języka z Twojego konta, kliknij przycisk **...**  przycisk po prawej stronie modelu językowego i wybierz **Usuń**.
+Aby usunąć model języka z konta, kliknij przycisk **...** po prawej stronie modelu języka, a następnie wybierz pozycję **Usuń**.
 
-Spowoduje to przejście nowe okno informujące o tym, że usunięcie nie można cofnąć. Kliknij przycisk **Usuń** opcji w nowym oknie.
+Spowoduje to wyświetlenie nowego okna z informacją o tym, że nie można cofnąć operacji usuwania. Kliknij opcję **Usuń** w nowym oknie.
 
-Ta akcja usuwa model języka całkowicie z Twojego konta. Wszelkie film wideo, który używał usunięto model języka spowoduje zachowanie tego samego indeksu, do momentu ponownego indeksowania wideo. Jeśli ponownie poindeksuj wideo, można przypisać nowego modelu języka filmu wideo. W przeciwnym razie usługa Video Indexer użyje jej domyślny model ponownego indeksowania filmu wideo. 
+Ta akcja spowoduje całkowite usunięcie modelu języka z Twojego konta. Wszystkie filmy wideo, które były używane w modelu języka, będą zachować ten sam indeks do momentu ponownego indeksowania wideo. Jeśli ponownie indeksujesz wideo, możesz przypisać nowy model języka do wideo. W przeciwnym razie Video Indexer będzie używać domyślnego modelu do ponownego indeksowania wideo. 
 
-## <a name="customize-language-models-by-correcting-transcripts"></a>Dostosowywanie modeli językowych, poprawiając transkrypcji
+## <a name="customize-language-models-by-correcting-transcripts"></a>Dostosowywanie modeli języków przez skorygowanie transkrypcji
 
-Usługa Video Indexer obsługuje automatyczne dostosowywanie języka modeli na podstawie użytkowników poprawki rzeczywiste dokonać transkrypcje plików wideo.
+Video Indexer obsługuje automatyczne dostosowywanie modeli języka na podstawie rzeczywistych poprawek, które użytkownicy wprowadzili do transkrypcji filmów wideo.
 
-1. Aby wprowadzić korekty do zapisu, otwórz film wideo, który chcesz edytować konto przetwarzania filmów wideo. Wybierz **osi czasu** kartę.
+1. Aby wprowadzić poprawki do transkrypcji, Otwórz film wideo, który chcesz edytować z poziomu wideo na koncie. Wybierz kartę **oś czasu** .
 
     ![Dostosuj model języka](./media/customize-language-model/timeline.png)
-1. Kliknij ikonę ołówka, aby edytować transkrypcję dla Twojego transkrypcji. 
+1. Kliknij ikonę ołówka, aby edytować transkrypcję transkrypcji. 
 
     ![Dostosuj model języka](./media/customize-language-model/edits.png)
 
-    Usługa Video Indexer przechwytuje wszystkie wiersze, które są usuwane przez Ciebie w transkrypcji wideo i automatycznie dodaje je do pliku tekstowego o nazwie "od transkrypcji zmiany". Te zmiany są używane do ponownego trenowania określonych języka użytego do indeksu w tym wideo. 
+    Video Indexer przechwytuje wszystkie wiersze, które są poprawione przez użytkownika w transkrypcji wideo, i automatycznie dodaje je do pliku tekstowego o nazwie "z edycji transkrypcji". Te zmiany są używane do ponownego uczenia określonego modelu języka, który został użyty do indeksowania tego wideo. 
     
-    Jeśli nie określono modelu języka podczas indeksowania w tym wideo, wszystkie zmiany dla tego wideo będą przechowywane w domyślnego języka modelu o nazwie dostosowania w ramach wykryty język filmu wideo. 
+    Jeśli nie określisz modelu języka podczas indeksowania tego wideo, wszystkie zmiany tego wideo będą przechowywane w domyślnym modelu języka o nazwie dostosowania konta w wykrytym języku wideo. 
     
-    W przypadku, gdy wprowadzono wiele zmian tej samej linii, tylko ostatnia wersja poprawiony wiersza będzie służyć do aktualizacji modelu językowego.  
+    W przypadku dokonania wielokrotnych zmian w tym samym wierszu do zaktualizowania modelu języka zostanie użyta tylko Ostatnia wersja poprawionego wiersza.  
     
     > [!NOTE]
-    > Tylko tekstowy korekty są używane do dostosowywania. Oznacza to, że poprawki, które nie wymagają rzeczywistymi słowami (na przykład znaków interpunkcyjnych lub miejsca do magazynowania) nie są uwzględniane. 
+    > Do dostosowania są używane tylko poprawki tekstowe. Oznacza to, że poprawki, które nie zawierają rzeczywistych wyrazów (na przykład znaki interpunkcyjne lub spacje) nie są uwzględniane. 
     
-1. Zostanie wyświetlony poprawki transkrypcji pojawiają się w karcie języka strony dostosowania modelu zawartości.
+1. Pojawią się poprawki transkrypcji są wyświetlane na karcie język na stronie dostosowywania modelu zawartości.
 
     ![Dostosuj model języka](./media/customize-language-model/customize.png)
 
-   Aby zobaczyć plik "od zmiany transkrypcji" dla każdego z modeli językowych, kliknij go, aby go otworzyć. 
+   Aby przyjrzeć się plikowi "from transkrypcji edycji" dla każdego z modeli języka, kliknij go, aby go otworzyć. 
 
-    ![Przed zmianami wprowadzanymi transkrypcji](./media/customize-language-model/from-transcript-edits.png)
+    ![Z edycji transkrypcji](./media/customize-language-model/from-transcript-edits.png)
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
-[Dostosuj model języka, za pomocą interfejsów API](customize-language-model-with-api.md)
+[Dostosowywanie modelu języka przy użyciu interfejsów API](customize-language-model-with-api.md)

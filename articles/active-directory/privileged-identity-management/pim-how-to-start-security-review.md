@@ -1,10 +1,10 @@
 ---
-title: Tworzenie przeglądu dostępu ról usługi Azure AD w programie PIM-Azure Active Directory | Microsoft Docs
+title: Tworzenie przeglądu dostępu ról usługi Azure AD w usłudze PIM — Azure AD | Microsoft Docs
 description: Dowiedz się, jak utworzyć przegląd dostępu ról usługi Azure AD w Azure AD Privileged Identity Management (PIM).
 services: active-directory
 documentationcenter: ''
 author: curtand
-manager: mtillman
+manager: daveba
 editor: ''
 ms.service: active-directory
 ms.topic: conceptual
@@ -14,16 +14,16 @@ ms.date: 10/22/2019
 ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 72d9f0c7df12bd6746cd5cf0336e7bd58b6cc88d
-ms.sourcegitcommit: ec2b75b1fc667c4e893686dbd8e119e7c757333a
+ms.openlocfilehash: 2f7e9ef503a9a3469ecbc835be8d9229fbd0167f
+ms.sourcegitcommit: 16c5374d7bcb086e417802b72d9383f8e65b24a7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72809041"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73847109"
 ---
 # <a name="create-an-access-review-of-azure-ad-roles-in-privileged-identity-management"></a>Tworzenie przeglądu dostępu do ról usługi Azure AD w Privileged Identity Management
 
-Wymagania dotyczące użytkowników w celu uzyskania dostępu do ról uprzywilejowanych Azure Active Directory (Azure AD) mogą ulec zmianie z upływem czasu. Aby zmniejszyć ryzyko związane ze starymi przypisaniami ról, należy regularnie przeglądać dostęp. Możesz użyć Azure AD Privileged Identity Management (PIM), aby utworzyć przeglądy dostępu dla ról uprzywilejowanych usługi Azure AD. Istnieje również możliwość skonfigurowania cyklicznych przeglądów dostępu, które są wykonywane automatycznie.
+Aby zmniejszyć ryzyko związane ze starymi przypisaniami ról, należy regularnie przeglądać dostęp. Możesz użyć Azure AD Privileged Identity Management (PIM), aby utworzyć przeglądy dostępu dla ról uprzywilejowanych usługi Azure AD. Istnieje również możliwość skonfigurowania cyklicznych przeglądów dostępu, które są wykonywane automatycznie.
 
 W tym artykule opisano sposób tworzenia co najmniej jednej oceny dostępu dla uprzywilejowanych ról usługi Azure AD.
 

@@ -9,12 +9,12 @@ ms.service: storage
 custom: jenkins
 ms.date: 08/13/2019
 ms.subservice: common
-ms.openlocfilehash: dc62696700a5c34c28f5f8c4f347dbb4c5183cab
-ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
+ms.openlocfilehash: 72756bd3eb12ca80f419a0d53db76e6637d884fc
+ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68986543"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73839129"
 ---
 # <a name="using-azure-storage-with-a-jenkins-continuous-integration-solution"></a>Korzystanie z usługi Azure Storage z rozwiązaniem ciągłej integracji Jenkins
 
@@ -45,10 +45,10 @@ Korzyści wynikające z używania Blob service do hostowania artefaktów kompila
      
       `java -jar jenkins.war`
 
-  3. W przeglądarce Otwórz `http://localhost:8080/` program, aby otworzyć pulpit nawigacyjny Jenkins, który zostanie użyty do zainstalowania i skonfigurowania wtyczki usługi Azure Storage.
+  3. W przeglądarce Otwórz `http://localhost:8080/`, aby otworzyć pulpit nawigacyjny Jenkins, który zostanie użyty do zainstalowania i skonfigurowania wtyczki usługi Azure Storage.
      
       W przypadku typowego rozwiązania CI Jenkins można skonfigurować do uruchamiania jako usługa, a w wierszu polecenia musi być wystarczająca wartość Jenkins War.
-* Konto platformy Azure. Konto platformy Azure można zarejestrować pod adresem <https://www.azure.com>.
+* Konto platformy Azure. Konto platformy Azure można zarejestrować w <https://www.azure.com>.
 * Konto usługi Azure Storage. Jeśli nie masz jeszcze konta magazynu, możesz utworzyć je, wykonując czynności opisane w sekcji [Tworzenie konta magazynu](../common/storage-quickstart-create-account.md).
 * Znajomość rozwiązania Jenkins CI jest zalecana, ale nie jest wymagana, ponieważ Poniższa zawartość będzie używać przykładu podstawowego do wyświetlania kroków potrzebnych podczas korzystania z Blob service jako repozytorium dla artefaktów kompilacji Jenkins CI.
 
@@ -96,11 +96,11 @@ W celach informacyjnych należy najpierw utworzyć zadanie, które spowoduje utw
    
     **Porada**
    
-    Poniżej sekcji **polecenie** , w której wprowadzono skrypt do **wykonywania polecenia Windows Batch** jest łączem do zmiennych środowiskowych rozpoznawanych przez Jenkins. Wybierz ten link, aby poznać nazwy zmiennych środowiskowych i opisy. Zmienne środowiskowe, które zawierają znaki specjalne, takie jak zmienna środowiskowa **BUILD_URL** , nie mogą być nazwami kontenerów ani wspólną ścieżką wirtualną.
+    Poniżej sekcji **polecenie** , w której wprowadzono skrypt do **wykonywania polecenia Windows Batch** jest łączem do zmiennych środowiskowych rozpoznawanych przez Jenkins. Wybierz ten link, aby poznać nazwy zmiennych środowiskowych i opisy. Zmienne środowiskowe, które zawierają znaki specjalne, takie jak **BUILD_URL** zmienna środowiskowa, nie mogą być nazwami kontenerów ani wspólną ścieżką wirtualną.
 8. Wybierz opcję **Utwórz nowy kontener jako publiczny domyślnie** dla tego przykładu. (Jeśli chcesz użyć prywatnego kontenera, musisz utworzyć sygnaturę dostępu współdzielonego w celu zezwolenia na dostęp, która wykracza poza zakres tego artykułu. Więcej informacji na temat sygnatur dostępu współdzielonego można uzyskać przy [użyciu sygnatur dostępu współdzielonego (SAS)](storage-sas-overview.md).
-9. Obowiązkowe Wybierz pozycję **Oczyść kontener przed** przekazaniem, jeśli chcesz, aby kontener został usunięty z zawartości przed przekazaniem artefaktów kompilacji (pozostaw to pole niezaznaczone, jeśli nie chcesz czyścić zawartości kontenera).
-10. Aby uzyskać **listę artefaktów do przekazania**, `text/*.txt`wprowadź.
-11. Dla **typowej ścieżki wirtualnej dla przekazanych artefaktów**, na potrzeby tego samouczka wprowadź `${BUILD\_ID}/${BUILD\_NUMBER}`.
+9. Obowiązkowe Wybierz pozycję **Oczyść kontener przed przekazaniem** , jeśli chcesz, aby kontener został usunięty z zawartości przed przekazaniem artefaktów kompilacji (pozostaw to pole niezaznaczone, jeśli nie chcesz czyścić zawartości kontenera).
+10. Aby uzyskać **listę artefaktów do przekazania**, wprowadź `text/*.txt`.
+11. W przypadku **wspólnej ścieżki wirtualnej dla przekazanych artefaktów**na potrzeby tego samouczka wprowadź `${BUILD\_ID}/${BUILD\_NUMBER}`.
 12. Wybierz pozycję **Zapisz** , aby zapisać ustawienia.
 13. Na pulpicie nawigacyjnym Jenkins wybierz opcję **Kompiluj teraz** , aby uruchomić **MyJob**. Przejrzyj dane wyjściowe konsoli dla stanu. Komunikaty o stanie usługi Azure Storage zostaną uwzględnione w danych wyjściowych konsoli, gdy akcja po kompilacji zacznie przekazywać artefakty kompilacji.
 14. Po pomyślnym zakończeniu zadania można przeanalizować artefakty kompilacji, otwierając publiczny obiekt BLOB.
@@ -118,7 +118,7 @@ Poniższe kroki pokazują, jak skonfigurować krok kompilacji do pobierania elem
 1. W sekcji **kompilacja** w obszarze Konfiguracja zadania wybierz pozycję **Dodaj krok kompilacji** , a następnie wybierz pozycję **Pobierz z usługi Azure Blob Storage**.
 2. W polu **nazwa konta magazynu**wybierz konto magazynu, które ma być używane.
 3. W polu **nazwa kontenera**Określ nazwę kontenera zawierającego obiekty blob, które chcesz pobrać. Można używać zmiennych środowiskowych.
-4. W polu **Nazwa obiektu BLOB**Określ nazwę obiektu BLOB. Można używać zmiennych środowiskowych. Ponadto można użyć gwiazdki jako symbolu wieloznacznego po określeniu początkowych liter nazwy obiektu BLOB. Na przykład **projekt\\** * będzie określać wszystkie obiekty blob, których nazwy zaczynają się od **Project**.
+4. W polu **Nazwa obiektu BLOB**Określ nazwę obiektu BLOB. Można używać zmiennych środowiskowych. Ponadto można użyć gwiazdki jako symbolu wieloznacznego po określeniu początkowych liter nazwy obiektu BLOB. Na przykład **projekt\\** * będzie określać wszystkie obiekty blob, których nazwy zaczynają się od **projektu**.
 5. Obowiązkowe W polu **ścieżka do pobierania**określ ścieżkę na maszynie Jenkins, w której chcesz pobrać pliki z usługi Azure Blob Storage. Można również użyć zmiennych środowiskowych. (Jeśli nie podasz wartości **ścieżki pobierania**, pliki z usługi Azure Blob Storage zostaną pobrane do obszaru roboczego zadania).
 
 Jeśli masz dodatkowe elementy, które chcesz pobrać z usługi Azure Blob Storage, możesz utworzyć dodatkowe kroki kompilacji.
@@ -128,16 +128,16 @@ Po uruchomieniu kompilacji można sprawdzić dane wyjściowe konsoli historia ko
 ## <a name="components-used-by-the-blob-service"></a>Składniki używane przez Blob service
 Ta sekcja zawiera omówienie składników Blob service.
 
-* **Konto magazynu**: Cały dostęp do usługi Azure Storage odbywa się za pomocą konta magazynu. Konto magazynu to najwyższy poziom przestrzeni nazw do uzyskiwania dostępu do obiektów BLOB. Konto może zawierać nieograniczoną liczbę kontenerów, o ile ich łączny rozmiar przekracza 100 TB.
-* **Kontener**: Kontener zawiera grupowanie zestawu obiektów BLOB. Wszystkie obiekty blob muszą być w kontenerze. Konto może zawierać nieograniczoną liczbę kontenerów. Kontener może przechowywać nieograniczoną liczbę obiektów blob.
-* **Obiekt BLOB**: Plik o dowolnym typie i rozmiarze. Istnieją dwa typy obiektów blob, które mogą być przechowywane w usłudze Azure Storage: blokowe i stronicowe obiekty blob. Większość plików to blokowe obiekty blob. Pojedynczy blokowy obiekt BLOB może mieć rozmiar do 200 GB. W tym samouczku są stosowane blokowe obiekty blob. Stronicowe obiekty blob, inne typy obiektów blob, mogą mieć rozmiar do 1 TB i są bardziej wydajne, gdy często są modyfikowane zakresy bajtów w pliku. Aby uzyskać więcej informacji na temat obiektów blob, zobacz [Opis blokowych obiektów blob, dołączania obiektów blob i stronicowych obiektów BLOB](https://msdn.microsoft.com/library/azure/ee691964.aspx).
-* **Format adresu URL**: Obiekty blob są adresowane przy użyciu następującego formatu adresu URL:
+* **Konto magazynu**: cały dostęp do usługi Azure Storage odbywa się przez konto magazynu. Konto magazynu to najwyższy poziom przestrzeni nazw do uzyskiwania dostępu do obiektów BLOB. Konto może zawierać nieograniczoną liczbę kontenerów, o ile ich łączny rozmiar przekracza 100 TB.
+* **Kontener**: kontener zawiera grupowanie zestawu obiektów BLOB. Wszystkie obiekty blob muszą być w kontenerze. Konto może zawierać nieograniczoną liczbę kontenerów. Kontener może przechowywać nieograniczoną liczbę obiektów blob.
+* **BLOB**: plik dowolnego typu i rozmiaru. Istnieją dwa typy obiektów blob, które mogą być przechowywane w usłudze Azure Storage: blokowe i stronicowe obiekty blob. Większość plików to blokowe obiekty blob. Pojedynczy blokowy obiekt BLOB może mieć rozmiar do 200 GB. W tym samouczku są stosowane blokowe obiekty blob. Stronicowe obiekty blob, inne typy obiektów blob, mogą mieć rozmiar do 1 TB i są bardziej wydajne, gdy często są modyfikowane zakresy bajtów w pliku. Aby uzyskać więcej informacji na temat obiektów blob, zobacz [Opis blokowych obiektów blob, dołączania obiektów blob i stronicowych obiektów BLOB](https://msdn.microsoft.com/library/azure/ee691964.aspx).
+* **Format adresu URL**: obiekty blob są adresowane przy użyciu następującego formatu adresu URL:
   
     `http://storageaccount.blob.core.windows.net/container_name/blob_name`
   
     (Powyższy format dotyczy globalnej chmury platformy Azure. Jeśli używasz innej chmury platformy Azure, użyj punktu końcowego w [Azure Portal](https://portal.azure.com) , aby określić punkt końcowy adresu URL.)
   
-    W powyższym `storageaccount` formacie reprezentuje nazwę konta magazynu, `container_name` reprezentuje nazwę kontenera i `blob_name` reprezentuje odpowiednio nazwę obiektu BLOB. W obrębie nazwy kontenera można mieć wiele ścieżek oddzielonych ukośnikiem **/** . Przykładowa nazwa kontenera użyta w tym samouczku została MyJoba, a **$\_{Build ID}/\_$ {Number Build}** została użyta dla wspólnej ścieżki wirtualnej, co spowodowało, że obiekt BLOB ma adres URL w następującej postaci:
+    W powyższym formacie `storageaccount` reprezentuje nazwę konta magazynu, `container_name` reprezentuje nazwę kontenera, a `blob_name` reprezentuje odpowiednio nazwę obiektu BLOB. W obrębie nazwy kontenera można mieć wiele ścieżek oddzielonych ukośnikiem, **/** . Przykładowa nazwa kontenera użyta w tym samouczku została **MyJoba**, a **$ {Build\_ID}/$ {Build\_Number}** została użyta dla wspólnej ścieżki wirtualnej, co spowodowało, że obiekt BLOB ma adres URL w następującej postaci:
   
     `http://example.blob.core.windows.net/myjob/2014-04-14_23-57-00/1/hello.txt`
 
@@ -148,7 +148,7 @@ Jeśli napotkasz jakiekolwiek usterki we wtyczkach narzędzia Jenkins, prześlij
 ## <a name="next-steps"></a>Następne kroki
 * [Poznaj Jenkins](https://wiki.jenkins-ci.org/display/JENKINS/Meet+Jenkins)
 * [Zestaw SDK usługi Azure Storage dla języka Java](https://github.com/azure/azure-storage-java)
-* [Dokumentacja zestawu SDK klienta usługi Azure Storage](http://dl.windowsazure.com/storage/javadoc/)
+* [Dokumentacja zestawu SDK klienta usługi Azure Storage](https://javadoc.io/doc/com.microsoft.azure/azure-core/0.8.0/index.html)
 * [Interfejs API REST usług Azure Storage](https://msdn.microsoft.com/library/azure/dd179355.aspx)
 * [Blog zespołu odpowiedzialnego za usługę Azure Storage](https://blogs.msdn.com/b/windowsazurestorage/)
 

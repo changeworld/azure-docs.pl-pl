@@ -1,7 +1,7 @@
 ---
-title: Zarządzanie kontem indeksatora wideo
-titlesuffix: Azure Media Services
-description: W tym artykule przedstawiono sposób zarządzania konto usługi Video Indexer połączony z platformą Azure.
+title: Zarządzanie kontem Video Indexer
+titleSuffix: Azure Media Services
+description: W tym artykule pokazano, jak zarządzać kontem Video Indexer połączonym z platformą Azure.
 services: media-services
 author: Juliako
 manager: femila
@@ -10,72 +10,72 @@ ms.subservice: video-indexer
 ms.topic: article
 ms.date: 05/15/2019
 ms.author: juliako
-ms.openlocfilehash: 37aef7c0ae06aefc69b8a72a80c8ade3951e8b0d
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: a8221cdcf7afe82ee969f645d7f459c69519711d
+ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65799514"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73838984"
 ---
-# <a name="manage-a-video-indexer-account-connected-to-azure"></a>Zarządzanie kontem Video Indexer połączony z platformą Azure
+# <a name="manage-a-video-indexer-account-connected-to-azure"></a>Zarządzanie kontem Video Indexer połączonym z platformą Azure
 
-W tym artykule przedstawiono sposób zarządzania konta Video Indexer, który jest połączony z subskrypcją platformy Azure i konto usługi Azure Media Services.
+W tym artykule pokazano, jak zarządzać kontem Video Indexer, które jest połączone z subskrypcją platformy Azure i kontem Azure Media Services.
 
 > [!NOTE]
-> Musisz być Video Indexer konto właściciela konta zmian w konfiguracji omówionych w tym temacie.
+> Musisz być właścicielem konta Video Indexer, aby dostosować konfigurację konta omówione w tym temacie.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-Połącz swoje konto usługi Video Indexer na platformie Azure, zgodnie z opisem w [połączony z platformą Azure](connect-to-azure.md). 
+Połącz konto Video Indexer z platformą Azure zgodnie z opisem w artykule [połączono z platformą Azure](connect-to-azure.md). 
 
-Upewnij się, że należy wykonać [wymagania wstępne](connect-to-azure.md#prerequisites) i przejrzyj [zagadnienia](connect-to-azure.md#considerations) w artykule.
+Upewnij się, że [spełniono wymagania wstępne](connect-to-azure.md#prerequisites) i zapoznaj się z [zagadnieniami](connect-to-azure.md#considerations) w artykule.
 
-## <a name="examine-account-settings"></a>Sprawdź ustawienia konta
+## <a name="examine-account-settings"></a>Sprawdzanie ustawień konta
 
-W tej sekcji sprawdza, czy ustawienia konta usługi Video Indexer.
+Ta sekcja bada ustawienia konta Video Indexer.
 
 Aby wyświetlić ustawienia:
 
-1. Kliknij ikonę użytkownika w prawym górnym rogu i wybierz pozycję **ustawienia**.
+1. Kliknij ikonę użytkownika w prawym górnym rogu, a następnie wybierz pozycję **Ustawienia**.
 
     ![Ustawienia](./media/manage-account-connected-to-azure/select-settings.png)
 
-2. Na **ustawienia** wybierz opcję **konta** kartę.
+2. Na stronie **Ustawienia** wybierz kartę **konto** .
 
-Jeśli Twoje konto indeksatora wideo jest podłączony do platformy Azure, zobaczysz następujące czynności:
+Jeśli konto indeksatora wideo jest połączone z platformą Azure, zobaczysz następujące kwestie:
 
-* Nazwa podstawowego konta usługi Azure Media Services.
-* Liczba zadań uruchamiania i umieszczonych w kolejce.
-* Liczba i typ przydzielonych jednostek zarezerwowanych.
+* Nazwa podstawowego konta Azure Media Services.
+* Liczba zadań indeksowania uruchomionych i umieszczonych w kolejce.
+* Liczba i typ przydzielonej jednostki zarezerwowanej.
 
-Jeśli Twoje konto musi mieć pewnych zmian, zobaczysz istotne błędy i ostrzeżenia dotyczące konfiguracji konta na **ustawienia** strony. Komunikaty zawierają łącza do dokładne miejsca w witrynie Azure portal, w którym należy wprowadzić zmiany. Aby uzyskać więcej informacji, zobacz [błędy i ostrzeżenia](#errors-and-warnings) Poniższa sekcja.
+Jeśli Twoje konto wymaga wprowadzenia zmian, zostaną wyświetlone odpowiednie błędy i ostrzeżenia dotyczące konfiguracji konta na stronie **Ustawienia** . Komunikaty zawierają linki do dokładnych miejsc w Azure Portal, w których należy wprowadzić zmiany. Aby uzyskać więcej informacji, zobacz sekcję [błędy i ostrzeżenia](#errors-and-warnings) poniżej.
 
-## <a name="auto-scale-reserved-units"></a>Automatyczne skalowanie, zarezerwowane jednostki
+## <a name="auto-scale-reserved-units"></a>Jednostki zarezerwowane automatyczne skalowanie
 
-**Ustawienia** strony pozwala na ustawienie skalowania automatycznego z nośnika zastrzeżonych jednostek. Jeśli ta opcja jest **na**, można przydzielić maksymalną liczbę jednostek żądania i pamiętaj, że Video Indexer zatrzymuje/Start (RUS) automatycznie. Po wybraniu tej opcji nie zapłacenia pieniędzy dodatkowy czas bezczynności, ale również nie czeka na zadania do wykonania przez długi czas, kiedy indeksowania duże obciążenie jest indeksowania.
+Strona **Ustawienia** umożliwia ustawienie automatycznego skalowania jednostek zarezerwowanych multimediów (ru). Jeśli opcja jest **włączona**, można przydzielić maksymalną liczbę jednostek ru i upewnić się, że Video Indexer zatrzyma/uruchamia jednostek ru automatycznie. W przypadku tej opcji nie należy uiszczać dodatkowych opłat za czas bezczynności, ale również nie czekać na ukończenie zadań indeksowania, gdy obciążenie indeksowania jest wysokie.
 
-Automatyczne skalowanie nie skaluje poniżej 1 RU lub powyżej limitu domyślnego konta usługi Media Services. Aby zwiększyć limit, Utwórz żądanie obsługi. Aby uzyskać informacje o limitach przydziałów i ograniczeń i sposobu otwierania biletu pomocy technicznej, zobacz [przydziały i ograniczenia](../../media-services/previous/media-services-quotas-and-limitations.md).
+Skalowanie automatyczne nie jest skalowane poniżej 1 RU ani powyżej domyślnego limitu konta Media Services. Aby zwiększyć limit, należy utworzyć żądanie obsługi. Aby uzyskać informacje na temat przydziałów i ograniczeń oraz sposobu otwierania biletu pomocy technicznej, zobacz [limity przydziału i ograniczenia](../../media-services/previous/media-services-quotas-and-limitations.md).
 
 ![Rejestrowanie](./media/manage-account-connected-to-azure/autoscale-reserved-units.png)
 
 ## <a name="errors-and-warnings"></a>Błędy i ostrzeżenia
 
-Jeśli Twoje konto musi mieć pewnych zmian, zobaczysz istotne błędy i ostrzeżenia dotyczące konfiguracji konta na **ustawienia** strony. Komunikaty zawierają łącza do dokładne miejsca w witrynie Azure portal, w którym należy wprowadzić zmiany. Ta sekcja zawiera szczegółowe informacje o błędach i komunikaty ostrzegawcze.
+Jeśli Twoje konto wymaga pewnych dostosowań, zobaczysz odpowiednie błędy i ostrzeżenia dotyczące konfiguracji konta na stronie **Ustawienia** . Komunikaty zawierają linki do dokładnych miejsc w Azure Portal, w których należy wprowadzić zmiany. Ta sekcja zawiera więcej szczegółów o komunikatach o błędach i ostrzeżeniach.
 
 * Event Grid
 
-    Należy zarejestrować dostawcę zasobów EventGrid przy użyciu witryny Azure portal. W [witryny Azure portal](https://portal.azure.com/), przejdź do **subskrypcje** > [subskrypcja] > **ResourceProviders** > **Microsoft.EventGrid**. W przeciwnym razie w **zarejestrowanej** stan, kliknij przycisk **zarejestrować**. Może potrwać kilka minut, aby zarejestrować. 
+    Należy zarejestrować dostawcę zasobów EventGrid za pomocą Azure Portal. W [Azure Portal](https://portal.azure.com/)przejdź do pozycji **subskrypcje** > [subskrypcja] > **ResourceProviders** > **Microsoft. EventGrid**. Jeśli nie jest w **zarejestrowanym** stanie, kliknij pozycję **zarejestruj**. Rejestracja może potrwać kilka minut. 
 
 * Punkt końcowy przesyłania strumieniowego
 
-    Upewnij się, bazowego konta usługi Media Services ma domyślne **punkt końcowy przesyłania strumieniowego** w stanie uruchomionym. W przeciwnym razie nie można oglądać filmy wideo za pomocą tego konta usługi Media Services lub Video Indexer.
+    Upewnij się, że konto bazowe Media Services ma domyślny **punkt końcowy przesyłania strumieniowego** w stanie uruchomienia. W przeciwnym razie nie będzie można oglądać filmów wideo z tego konta Media Services ani Video Indexer.
 
 * Jednostki zarezerwowane multimediów 
 
-    Należy przydzielić jednostki zarezerwowane multimediów zasobu usługi multimediów w celu wideo indeksu. Aby uzyskać optymalną wydajność indeksowania zaleca się przydzielenie co najmniej 10 jednostki zarezerwowane S3. Aby uzyskać informacje o cenach, zobacz sekcję Często zadawane pytania dotyczące [cennika usługi Media Services](https://azure.microsoft.com/pricing/details/media-services/) strony.   
+    Aby można było indeksować wideo, należy przydzielić jednostki zarezerwowane multimediów w ramach zasobu usługi multimediów. Aby zapewnić optymalną wydajność indeksowania, zaleca się przydzielenie co najmniej 10 jednostek zarezerwowanych S3. Aby uzyskać informacje o cenach, zapoznaj się z sekcją często zadawanych pytań na stronie [cennika Media Services](https://azure.microsoft.com/pricing/details/media-services/) .   
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
-Mogą programowo współdziałać z konta wersji próbnej i/lub z kontami usługi Video Indexer, które są podłączone do platformy azure, postępując zgodnie z instrukcjami wyświetlanymi w: [Korzystanie z interfejsów API](video-indexer-use-apis.md).
+Możesz programowo korzystać z konta próbnego i/lub z kontami Video Indexer, które są połączone z platformą Azure, postępując zgodnie z instrukcjami w temacie: [Korzystanie z interfejsów API](video-indexer-use-apis.md).
 
-Należy używać tego samego użytkownika usługi Azure AD, używane podczas nawiązywania połączenia z platformą Azure.
+Należy używać tego samego użytkownika usługi Azure AD, który był używany podczas nawiązywania połączenia z platformą Azure.

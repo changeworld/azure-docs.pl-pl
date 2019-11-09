@@ -8,12 +8,12 @@ ms.service: azure-migrate
 ms.topic: conceptual
 ms.date: 09/17/2019
 ms.author: raynew
-ms.openlocfilehash: 2a8a19dfd2cdc7a64a5ea90b96808963b19f73bb
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 4b07252aed2205917f6b43e3e09a2877663e5bab
+ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73498650"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73838914"
 ---
 # <a name="support-matrix-for-vmware-assessment-and-migration"></a>Macierz obsługi dotycząca oceny i migracji środowiska VMware
 
@@ -49,7 +49,7 @@ Europa | Europa Północna lub Europa Zachodnia
 Francja | Francja Środkowa
 Indie | Indie Środkowe lub Indie Południowe
 Japonia |  Japonia Wschodnia lub Japonia Zachodnia
-Korea Południowa | Korea środkowa lub Korea Południowa
+Korea | Korea środkowa lub Korea Południowa
 Wielka Brytania | Południowe Zjednoczone Królestwo lub Zachodnie Zjednoczone Królestwo
 Stany Zjednoczone | Środkowe stany USA lub zachodnie stany USA 2
 
@@ -112,7 +112,7 @@ dc.services.visualstudio.com | Przekaż Dzienniki aplikacji używane do wewnętr
 *.servicebus.windows.net | Komunikacja między urządzeniem a usługą Azure Migrate.
 *.discoverysrv.windowsazure.com <br/> *.migration.windowsazure.com <br/> *.hypervrecoverymanager.windowsazure.com | Połącz się z adresami URL usługi Azure Migrate.
 *.blob.core.windows.net | Przekazywanie danych do kont magazynu.
-http://aka.ms/latestapplianceservices<br/><br/> https://download.microsoft.com/download | Używany do Azure Migrate aktualizacji urządzenia.
+https://aka.ms/latestapplianceservices<br/><br/> https://download.microsoft.com/download | Używany do Azure Migrate aktualizacji urządzenia.
 
 ## <a name="assessment-port-requirements"></a>Ocena — wymagania dotyczące portów
 
@@ -168,7 +168,7 @@ Maszyna wirtualna. Interaction. Zasilanie wyłączone | Zezwalaj na wyłączenie
 **Pomoc techniczna** | **Szczegóły**
 --- | ---
 **Obsługiwane systemy operacyjne** | Systemy operacyjne [Windows](https://support.microsoft.com/help/2721672/microsoft-server-software-support-for-microsoft-azure-virtual-machines) i [Linux](https://docs.microsoft.com/azure/virtual-machines/linux/endorsed-distros) , które są obsługiwane przez platformę Azure, można migrować za pomocą migracji bez wykorzystania agentów.
-**Wymagane zmiany dotyczące platformy Azure** | Niektóre maszyny wirtualne mogą wymagać zmian, aby mogły być uruchamiane na platformie Azure. Azure Migrate automatycznie wprowadza te zmiany w następujących systemach operacyjnych:<br/> -Red Hat Enterprise Linux 6.5 +, 7.0 +<br/> -CentOS 6.5 +, 7.0 +</br> -SUSE Linux Enterprise Server 12 SP1 +<br/> -Ubuntu 14.04 LTS, 16.04 LTS, 18.04 LTS<br/> -Debian 7, 8<br/><br/> W przypadku innych systemów operacyjnych należy ręcznie wprowadzić zmiany przed migracją. Odpowiednie artykuły zawierają instrukcje, jak to zrobić.
+**Wymagane zmiany dotyczące platformy Azure** | Niektóre maszyny wirtualne mogą wymagać zmian, aby mogły być uruchamiane na platformie Azure. Azure Migrate automatycznie wprowadza te zmiany w następujących systemach operacyjnych:<br/> -Red Hat Enterprise Linux 6.5 +, 7.0 +<br/> - CentOS 6.5+, 7.0+</br> -SUSE Linux Enterprise Server 12 SP1 +<br/> -Ubuntu 14.04 LTS, 16.04 LTS, 18.04 LTS<br/> -Debian 7, 8<br/><br/> W przypadku innych systemów operacyjnych należy ręcznie wprowadzić zmiany przed migracją. Odpowiednie artykuły zawierają instrukcje, jak to zrobić.
 **Rozruch systemu Linux** | Jeśli/Boot znajduje się na dedykowanej partycji, powinien znajdować się na dysku systemu operacyjnego i nie można go rozłożyć na wiele dysków.<br/> Jeśli/boot jest częścią partycji głównej (/), partycja "/" powinna znajdować się na dysku systemu operacyjnego i nie może obejmować innych dysków.
 **Rozruch z interfejsem UEFI** | Maszyny wirtualne z rozruchem UEFI nie są obsługiwane w przypadku migracji.
 **Rozmiar dysku** | dysk systemu operacyjnego: 2 TB; 4 TB dla dysków z danymi.
@@ -215,7 +215,7 @@ dc.services.visualstudio.com | Przekaż Dzienniki aplikacji używane do wewnętr
 *.servicebus.windows.net | Komunikacja między urządzeniem a usługą Azure Migrate.
 *.discoverysrv.windowsazure.com <br/> *.migration.windowsazure.com <br/> *.hypervrecoverymanager.windowsazure.com | Połącz się z adresami URL usługi Azure Migrate.
 *.blob.core.windows.net | Przekazywanie danych do kont magazynu.
-http://aka.ms/latestapplianceservices<br/><br/> https://download.microsoft.com/download | Używany do Azure Migrate aktualizacji urządzenia.
+https://aka.ms/latestapplianceservices<br/><br/> https://download.microsoft.com/download | Używany do Azure Migrate aktualizacji urządzenia.
 
 
 ## <a name="agentless-migration-port-requirements"></a>Migracja bez agentów — wymagania dotyczące portów

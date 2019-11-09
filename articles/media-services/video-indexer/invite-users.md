@@ -1,6 +1,6 @@
 ---
 title: Zapraszanie użytkowników do Video Indexer na platformie Azure
-titlesuffix: Azure Media Services
+titleSuffix: Azure Media Services
 description: W tym artykule pokazano, jak zapraszać użytkowników do Video Indexer.
 services: media-services
 author: ReutAmior
@@ -10,12 +10,12 @@ ms.subservice: video-indexer
 ms.topic: article
 ms.date: 10/01/2019
 ms.author: juliako
-ms.openlocfilehash: 740b03179fad91e9042a54f8e74a622b3125b832
-ms.sourcegitcommit: 4f7dce56b6e3e3c901ce91115e0c8b7aab26fb72
+ms.openlocfilehash: c1395bc3b329630a1ecbd479d275c30c9c787bb1
+ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/04/2019
-ms.locfileid: "71950179"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73839008"
 ---
 # <a name="quickstart-invite-users-to-video-indexer"></a>Szybki Start: Zapraszanie użytkowników do Video Indexer
 
@@ -26,7 +26,7 @@ Aby współpracować ze współpracownikami, możesz zaprosić je do konta Video
 
 ## <a name="invite-new-users"></a>Zaproś nowych użytkowników
 
-1. Zaloguj się w witrynie sieci Web [Video Indexer](https://www.videoindexer.ai/) . Upewnij się, że nawiązano połączenie z kontem administratora.
+1. Zaloguj się w witrynie internetowej usługi [Video Indexer](https://www.videoindexer.ai/). Upewnij się, że nawiązano połączenie z kontem administratora.
 1. Kliknij przycisk **Zaproś innych** w menu u góry:
 
    ![Zaproś nowych użytkowników](./media/invite-users/invite-users.png)
@@ -39,7 +39,7 @@ Aby współpracować ze współpracownikami, możesz zaprosić je do konta Video
     > Wszyscy zaproszeni użytkownicy będą mieć uprawnienia do odczytu i zapisu do wszystkich filmów wideo na Twoim koncie.
 1. Zaproszeni użytkownicy otrzymają wiadomość e-mail z linkiem i będą mogli uzyskać dostęp do konta po kliknięciu linku **Video Indexer sprzężenia** :
 
-    ![Confirmation](./media/invite-users/invite-msg.png)
+    ![Potwierdzenie](./media/invite-users/invite-msg.png)
 
     Aby uzyskać dostęp do konta, użytkownik musi kliknąć link do przyłączenia. 
 
@@ -47,7 +47,7 @@ Aby współpracować ze współpracownikami, możesz zaprosić je do konta Video
 
 Jeśli chcesz usunąć użytkowników, którzy mają dostęp do Twojego konta, możesz kliknąć znak **X** obok jego nazwy:
 
-![Usuń użytkowników](./media/invite-users/remove-users.png)
+![Usuwanie użytkowników](./media/invite-users/remove-users.png)
 
 Użytkownicy nie otrzymają powiadomienia po usunięciu. Po usunięciu użytkownicy nie będą autoryzowani do logowania.
 
@@ -55,8 +55,8 @@ Użytkownicy nie otrzymają powiadomienia po usunięciu. Po usunięciu użytkown
 
 Możesz teraz korzystać z [witryny sieci web video Indexer](video-indexer-view-edit.md) lub [portalu deweloperów Video Indexer](video-indexer-use-apis.md) , aby zobaczyć szczegółowe informacje o filmie wideo.
 
-## <a name="see-also"></a>Zobacz także
+## <a name="see-also"></a>Zobacz też
 
-- [Przegląd Video Indexer](video-indexer-overview.md)
+- [Omówienie usługi Video Indexer](video-indexer-overview.md)
 - [Jak utworzyć konto i przekazać swoje pierwsze wideo](video-indexer-get-started.md)
 - [Rozpocznij korzystanie z interfejsów API](video-indexer-use-apis.md)

@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 10/24/2019
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: e1f7aeb5615c1a22c1970f118c24c996ac936870
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: 3c70d2086fc5866b07c31966343397f8ccc809be
+ms.sourcegitcommit: 16c5374d7bcb086e417802b72d9383f8e65b24a7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 11/08/2019
-ms.locfileid: "73826818"
+ms.locfileid: "73846746"
 ---
 # <a name="planning-for-an-azure-file-sync-deployment"></a>Planowanie wdrażania usługi Azure File Sync
 Użyj Azure File Sync, aby scentralizować udziały plików w organizacji w Azure Files, utrzymując elastyczność, wydajność i zgodność lokalnego serwera plików. Funkcja Azure File Sync przekształca system Windows Server w szybką pamięć podręczną udziału plików platformy Azure. Możesz użyć dowolnego protokołu, który jest dostępny w systemie Windows Server, aby uzyskać dostęp do danych lokalnie, w tym SMB, NFS i FTPS. Na całym świecie możesz mieć dowolną liczbę pamięci podręcznych.
@@ -169,7 +169,7 @@ Zwróć uwagę, że oszczędności woluminu dotyczą tylko serwera programu; Two
 > Deduplikacja danych i Obsługa warstw w chmurze nie są obecnie obsługiwane na tym samym woluminie na serwerze 2019 z powodu błędu, który zostanie rozwiązany w przyszłej aktualizacji.
 
 **System Windows Server 2012 R2**  
-Azure File Sync nie obsługuje deduplikacji danych i warstw w chmurze na tym samym woluminie. Jeśli Deduplikacja danych jest włączona w woluminie, Obsługa warstw w chmurze musi być wyłączona. 
+Azure File Sync nie obsługuje deduplikacji danych i warstw w chmurze na tym samym woluminie w systemie Windows Server 2012 R2. Jeśli Deduplikacja danych jest włączona w woluminie, Obsługa warstw w chmurze musi być wyłączona. 
 
 **Uwagi**
 - Jeśli Deduplikacja danych jest zainstalowana przed zainstalowaniem agenta Azure File Sync, ponowne uruchomienie jest wymagane do obsługi deduplikacji danych i warstw w chmurze na tym samym woluminie.

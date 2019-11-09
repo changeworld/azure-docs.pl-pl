@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: mrbullwinkle
 ms.author: mbullwin
 ms.date: 11/23/2016
-ms.openlocfilehash: 1e02e227180bb0082dd87ab8f5d2fe64e19b60f2
-ms.sourcegitcommit: 1bd2207c69a0c45076848a094292735faa012d22
+ms.openlocfilehash: 550ac9ff3b425e682fdda16501613aa41a80d765
+ms.sourcegitcommit: 16c5374d7bcb086e417802b72d9383f8e65b24a7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "72677806"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73847245"
 ---
 # <a name="filtering-and-preprocessing-telemetry-in-the-application-insights-sdk"></a>Filtrowanie i wstępne przetwarzanie danych telemetrycznych w zestawie Application Insights SDK
 
@@ -25,11 +25,11 @@ Można napisać i skonfigurować wtyczki dla zestawu SDK Application Insights, a
 
 Przed rozpoczęciem:
 
-* Zainstaluj odpowiedni zestaw SDK dla swojej aplikacji: [ASP.NET](asp-net.md), [ASP.NET Core](asp-net-core.md), [non http/Worker dla platformy .NET/.NET Core](worker-service.md)lub [Java](../../azure-monitor/app/java-get-started.md).
+* Zainstaluj odpowiedni zestaw SDK dla aplikacji: [ASP.NET](asp-net.md), [ASP.NET Core](asp-net-core.md), [nie http/Worker dla platformy .NET/.NET Core](worker-service.md), [Java](../../azure-monitor/app/java-get-started.md) lub [JavaScript](javascript.md)
 
 <a name="filtering"></a>
 
-## <a name="filtering-itelemetryprocessor"></a>Filtrowanie: ITelemetryProcessor
+## <a name="filtering"></a>Filtrowanie
 
 Ta technika zapewnia bezpośrednią kontrolę nad tym, co jest uwzględnione lub wykluczone ze strumienia telemetrii. Filtrowanie może służyć do porzucania elementów telemetrycznych z wysyłania do Application Insights. Można jej używać w połączeniu z próbkami lub oddzielnie.
 
@@ -117,9 +117,9 @@ TelemetryClients utworzony po tym punkcie będzie używać procesorów.
 **ASP.NET Core/aplikacje usługi Worker**
 
 > [!NOTE]
-> Dodawanie procesora przy użyciu `ApplicationInsights.config` lub użycie `TelemetryConfiguration.Active` jest nieprawidłowe dla aplikacji ASP.NET Core lub jeśli używasz zestawu SDK Microsoft. ApplicationInsights. WorkerService.
+> Dodawanie procesora przy użyciu `ApplicationInsights.config` lub użycie `TelemetryConfiguration.Active` jest nieprawidłowe dla aplikacji ASP.NET Core lub jeśli używasz zestawu Microsoft. ApplicationInsights. WorkerService SDK.
 
-W przypadku aplikacji pisanych przy użyciu [ASP.NET Core](asp-net-core.md#adding-telemetry-processors) lub [WorkerService](worker-service.md#adding-telemetry-processors)Dodawanie nowej `TelemetryProcessor` odbywa się przy użyciu metody rozszerzenia `AddApplicationInsightsTelemetryProcessor` na `IServiceCollection`, jak pokazano poniżej. Ta metoda jest wywoływana w metodzie `ConfigureServices` klasy `Startup.cs`.
+W przypadku aplikacji pisanych przy użyciu [ASP.NET Core](asp-net-core.md#adding-telemetry-processors) lub [WorkerService](worker-service.md#adding-telemetry-processors)Dodawanie nowych `TelemetryProcessor` odbywa się przy użyciu metody rozszerzenia `AddApplicationInsightsTelemetryProcessor` na `IServiceCollection`, jak pokazano poniżej. Ta metoda jest wywoływana w metodzie `ConfigureServices` klasy `Startup.cs`.
 
 ```csharp
     public void ConfigureServices(IServiceCollection services)
@@ -198,13 +198,36 @@ W [tym blogu](https://azure.microsoft.com/blog/implement-an-application-insights
 
 <a name="add-properties"></a>
 
-## <a name="add-properties-itelemetryinitializer"></a>Dodaj właściwości: ITelemetryInitializer
+### <a name="javascript-web-applications"></a>Aplikacje sieci Web w języku JavaScript
+
+**Filtrowanie przy użyciu ITelemetryInitializer**
+
+1. Utwórz funkcję wywołania zwrotnego inicjatora telemetrii. Funkcja wywołania zwrotnego przyjmuje `ITelemetryItem` jako parametr, który jest przetwarzanym zdarzeniem. Zwrócenie `false` z tego wywołania zwrotnego spowoduje odfiltrowanie elementu telemetrii.  
+
+   ```JS
+   var filteringFunction = (envelope) => {
+     if (envelope.data.someField === 'tobefilteredout') {
+        return false;
+     }
+  
+     return true;
+   };
+   ```
+
+2. Dodaj wywołanie zwrotne inicjatora telemetrii:
+
+   ```JS
+   appInsights.addTelemetryInitializer(filteringFunction);
+   ```
+
+## <a name="addmodify-properties-itelemetryinitializer"></a>Dodaj/Modyfikuj właściwości: ITelemetryInitializer
+
 
 Użyj inicjatorów telemetrii, aby wzbogacić telemetrię z dodatkowymi informacjami i/lub aby zastąpić właściwości telemetryczne ustawione przez standardowe moduły telemetrii.
 
 Na przykład Application Insights dla pakietu sieci Web zbiera dane telemetryczne o żądaniach HTTP. Domyślnie flaguje jako nieudane wszystkie żądania z kodem odpowiedzi > = 400. Jeśli jednak chcesz traktować 400 jako pomyślne, możesz podać inicjator telemetrii, który ustawia właściwość Success.
 
-W przypadku dostarczania inicjatora telemetrii jest on wywoływany za każdym razem, gdy wywoływana jest jakakolwiek metoda Track * (). Obejmuje to metody `Track()` wywoływane przez standardowe moduły telemetrii. Zgodnie z Konwencją te moduły nie ustawiają żadnej właściwości, która została już ustawiona przez inicjator. Inicjatory telemetrii są wywoływane przed wywołaniem procesorów telemetrycznych. W związku z tym wszystkie wzbogacania wykonywane przez inicjatorów są widoczne dla procesorów.
+W przypadku dostarczania inicjatora telemetrii jest on wywoływany za każdym razem, gdy wywoływana jest jakakolwiek metoda Track * (). Obejmuje to `Track()` metod wywoływanych przez standardowe moduły telemetrii. Zgodnie z Konwencją te moduły nie ustawiają żadnej właściwości, która została już ustawiona przez inicjator. Inicjatory telemetrii są wywoływane przed wywołaniem procesorów telemetrycznych. W związku z tym wszystkie wzbogacania wykonywane przez inicjatorów są widoczne dla procesorów.
 
 **Definiowanie inicjatora**
 
@@ -276,9 +299,9 @@ protected void Application_Start()
 **ASP.NET Core/aplikacje usługi Worker: ładowanie inicjatora**
 
 > [!NOTE]
-> Dodawanie inicjatora przy użyciu `ApplicationInsights.config` lub użycie `TelemetryConfiguration.Active` jest nieprawidłowe dla aplikacji ASP.NET Core lub jeśli używasz zestawu SDK Microsoft. ApplicationInsights. WorkerService.
+> Dodawanie inicjatora przy użyciu `ApplicationInsights.config` lub użycie `TelemetryConfiguration.Active` jest nieprawidłowe dla aplikacji ASP.NET Core lub jeśli używasz zestawu Microsoft. ApplicationInsights. WorkerService SDK.
 
-W przypadku aplikacji pisanych przy użyciu [ASP.NET Core](asp-net-core.md#adding-telemetryinitializers) lub [WorkerService](worker-service.md#adding-telemetryinitializers)Dodawanie nowego `TelemetryInitializer` jest wykonywane przez dodanie go do kontenera iniekcji zależności, jak pokazano poniżej. Jest to wykonywane w metodzie `Startup.ConfigureServices`.
+W przypadku aplikacji pisanych przy użyciu [ASP.NET Core](asp-net-core.md#adding-telemetryinitializers) lub [WorkerService](worker-service.md#adding-telemetryinitializers)Dodawanie nowego `TelemetryInitializer` odbywa się przez dodanie go do kontenera iniekcji zależności, jak pokazano poniżej. Odbywa się to w `Startup.ConfigureServices` metodzie.
 
 ```csharp
  using Microsoft.ApplicationInsights.Extensibility;

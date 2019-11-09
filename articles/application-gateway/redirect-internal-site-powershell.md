@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 7/13/2018
 ms.author: victorh
-ms.openlocfilehash: 266569494c58ac75371c1a891e9cbffb4c351056
-ms.sourcegitcommit: 2aefdf92db8950ff02c94d8b0535bf4096021b11
+ms.openlocfilehash: c917ab08d9640599c31d2ebf911e1554cf90425d
+ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/03/2019
-ms.locfileid: "70232123"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73835387"
 ---
 # <a name="create-an-application-gateway-with-internal-redirection-using-azure-powershell"></a>Tworzenie bramy aplikacji z przekierowaniami wewnętrznymi przy użyciu Azure PowerShell
 
@@ -296,11 +296,11 @@ Get-AzPublicIPAddress -ResourceGroupName myResourceGroupAG -Name myAGPublicIPAdd
 
 ## <a name="test-the-application-gateway"></a>Testowanie bramy aplikacji
 
-Wpisz nazwę swojej domeny na pasku adresu przeglądarki. Takie jak, [http://www.contoso.com](http://www.contoso.com).
+Wpisz nazwę swojej domeny na pasku adresu przeglądarki. Takie jak, [https://www.contoso.com](https://www.contoso.com).
 
 ![Testowanie witryny contoso w bramie aplikacji](./media/redirect-internal-site-powershell/application-gateway-iistest.png)
 
-Zmień adres na inną domenę, na przykład http://www.contoso.org i sprawdź, czy ruch został przekierowany z powrotem do odbiornika www.contoso.com.
+Zmień adres na inną domenę, na przykład https://www.contoso.org i sprawdź, czy ruch został przekierowany z powrotem do odbiornika `www.contoso.com`.
 
 ## <a name="next-steps"></a>Następne kroki
 

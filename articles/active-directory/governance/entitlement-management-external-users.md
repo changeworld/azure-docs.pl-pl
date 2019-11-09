@@ -16,12 +16,12 @@ ms.date: 10/26/2019
 ms.author: ajburnle
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9107471448a58dc7866fb2cd6052abf168437d2b
-ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
+ms.openlocfilehash: e76e5c5d2cfcfd983f2b5cdc279f0c13fa6706e4
+ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73174178"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73832704"
 ---
 # <a name="govern-access-for-external-users-in-azure-ad-entitlement-management"></a>Zarządzanie dostępem użytkowników zewnętrznych w usłudze Azure AD upoważnienia
 
@@ -97,7 +97,7 @@ Aby zapewnić, że osoby spoza organizacji mogą żądać dostępu do pakietów 
 
 ### <a name="review-your-sharepoint-online-external-sharing-settings"></a>Przejrzyj ustawienia udostępniania zewnętrznego usługi SharePoint Online
 
-- Jeśli chcesz uwzględnić witryny usługi SharePoint Online w pakietach dostępu dla użytkowników zewnętrznych, upewnij się, że ustawienie udostępniania zewnętrznego na poziomie organizacji jest ustawione na wartość **Wszyscy** (użytkownicy nie wymagają logowania) lub **nowych i istniejących Gości** (Goście muszą podpisać w programie lub podaj kod weryfikacyjny). Aby uzyskać więcej informacji, zobacz [Włączanie lub wyłączanie udostępniania zewnętrznego](https://docs.microsoft.com/sharepoint/turn-external-sharing-on-or-off#change-the-organization-level-external-sharing-setting).
+- Jeśli chcesz dołączyć witryny usługi SharePoint Online do pakietów dostępu dla użytkowników zewnętrznych, upewnij się, że ustawienie udostępniania zewnętrznego na poziomie organizacji jest ustawione na wartość **Wszyscy** (użytkownicy nie wymagają logowania) lub **nowi i istniejący Goście** (Goście muszą się zalogować lub podać kod weryfikacyjny). Aby uzyskać więcej informacji, zobacz [Włączanie lub wyłączanie udostępniania zewnętrznego](https://docs.microsoft.com/sharepoint/turn-external-sharing-on-or-off#change-the-organization-level-external-sharing-setting).
 
 - Jeśli chcesz ograniczyć udostępnianie zewnętrzne poza zarządzaniem prawami, możesz ustawić ustawienie Udostępnianie zewnętrzne dla **istniejących Gości**. Następnie tylko nowi użytkownicy zapraszani za poorednictwem zarządzania uprawnieniami będą mogli uzyskać dostęp do tych witryn. Aby uzyskać więcej informacji, zobacz [Włączanie lub wyłączanie udostępniania zewnętrznego](https://docs.microsoft.com/sharepoint/turn-external-sharing-on-or-off#change-the-organization-level-external-sharing-setting).
 
@@ -113,7 +113,7 @@ Aby zapewnić, że osoby spoza organizacji mogą żądać dostępu do pakietów 
 
 ### <a name="review-your-teams-sharing-settings"></a>Przejrzyj ustawienia udostępniania zespołów
 
-- Jeśli chcesz dołączyć zespoły do pakietów dostępu dla użytkowników zewnętrznych, upewnij się, że ustawienie **Zezwalaj na dostęp gościa w usłudze Microsoft Teams** jest ustawione na wartość **Zezwalaj na dostęp** gościa. Aby uzyskać więcej informacji, zobacz [Konfigurowanie dostępu gościa w centrum administracyjnym Microsoft Teams](https://docs.microsoft.com/microsoftteams/set-up-guests#configure-guest-access-in-the-microsoft-teams-admin-center).
+- Jeśli chcesz dołączyć zespoły do pakietów dostępu dla użytkowników zewnętrznych, upewnij się, że ustawienie **Zezwalaj na dostęp gościa w usłudze Microsoft Teams** jest ustawione na wartość **Zezwalaj na dostęp** gościa. Aby uzyskać więcej informacji, zobacz [Konfigurowanie dostępu gościa w centrum administracyjnym Microsoft Teams](/microsoftteams/set-up-guests#configure-guest-access-in-the-teams-admin-center).
 
 ## <a name="manage-the-lifecycle-of-external-users"></a>Zarządzanie cyklem życia użytkowników zewnętrznych
 
@@ -143,7 +143,7 @@ Możesz wybrać, co się stanie, gdy użytkownik zewnętrzny, który został zap
 
 1. Jeśli chcesz usunąć konto użytkownika-gościa w tym katalogu, możesz ustawić liczbę dni, po której ma zostać usunięta. Jeśli chcesz usunąć konto użytkownika-gościa, gdy tylko utracisz swoje ostatnie przypisanie do wszystkich pakietów dostępu, ustaw **liczbę dni przed usunięciem użytkownika zewnętrznego z tego katalogu** do **0**.
 
-1. Kliknij przycisk **Save** (Zapisz).
+1. Kliknij pozycję **Zapisz**.
 
 ## <a name="next-steps"></a>Następne kroki
 

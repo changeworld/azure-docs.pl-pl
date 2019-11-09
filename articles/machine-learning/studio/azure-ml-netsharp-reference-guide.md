@@ -1,6 +1,6 @@
 ---
 title: Sieć neuronowych — niestandardowe sieci
-titleSuffix: ML Studio (classic) Azure
+titleSuffix: ML Studio (classic) - Azure
 description: 'Przewodnik dotyczący składni języka NET # neuronowych Network Specification. Dowiedz się, jak tworzyć niestandardowe modele sieci neuronowych w Azure Machine Learning Studio (klasyczne).'
 services: machine-learning
 ms.service: machine-learning
@@ -10,12 +10,12 @@ author: xiaoharper
 ms.author: amlstudiodocs
 ms.custom: previous-author=heatherbshapiro, previous-ms.author=hshapiro
 ms.date: 03/01/2018
-ms.openlocfilehash: 0c413bbc3c3b0bd4b1a6e6d6ff40dc1061bbc834
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 7cef92964a4b62c9ed15ddd19778494d6c3be98a
+ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73684843"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73839746"
 ---
 # <a name="guide-to-net-neural-network-specification-language-for-azure-machine-learning-studio-classic"></a>Przewodnik dotyczący języka specyfikacji sieci NET # neuronowych dla Azure Machine Learning Studio (klasyczny)
 
@@ -24,7 +24,7 @@ NET # to język opracowany przez firmę Microsoft, który służy do definiowani
 W tych kontekstach można użyć specyfikacji architektury net #:
 
 + Wszystkie moduły sieciowe neuronowych w Microsoft Azure Machine Learning Studio (klasyczny): [wieloklasowe sieci neuronowych](https://docs.microsoft.com/azure/machine-learning/studio-module-reference/multiclass-neural-network), [dwie klasy sieci neuronowych](https://docs.microsoft.com/azure/machine-learning/studio-module-reference/two-class-neural-network)oraz [regresja sieci neuronowych](https://docs.microsoft.com/azure/machine-learning/studio-module-reference/neural-network-regression)
-+ Neuronowych funkcje sieciowe w programie Microsoft ML Server: [NeuralNet](https://docs.microsoft.com/machine-learning-server/r-reference/microsoftml/neuralnet) i [RxNeuralNet](https://docs.microsoft.com/machine-learning-server/r-reference/microsoftml/rxneuralnet)dla języka R oraz [rx_neural_network](https://docs.microsoft.com/machine-learning-server/python-reference/microsoftml/rx-neural-network) for Python.
++ Neuronowych funkcje sieciowe w programie Microsoft ML Server: [NeuralNet](https://docs.microsoft.com/machine-learning-server/r-reference/microsoftml/neuralnet) i [RxNeuralNet](https://docs.microsoft.com/machine-learning-server/r-reference/microsoftml/rxneuralnet)dla języka R, a [rx_neural_network](https://docs.microsoft.com/machine-learning-server/python-reference/microsoftml/rx-neural-network) for Python.
 
 
 W tym artykule opisano podstawowe pojęcia i składnię wymaganą do opracowania niestandardowej sieci neuronowych przy użyciu usługi net #:

@@ -1,7 +1,7 @@
 ---
 title: interfejs API tłumaczenia tekstu w usłudze Translator Metoda BreakSentence
 titleSuffix: Azure Cognitive Services
-description: Użyj metody interfejs API tłumaczenia tekstu w usłudze Translator BreakSentence.
+description: Metoda interfejs API tłumaczenia tekstu w usłudze Translator BreakSentence określa pozycjonowanie granic zdania w fragmencie tekstu.
 services: cognitive-services
 author: swmachan
 manager: nitinme
@@ -10,12 +10,12 @@ ms.subservice: translator-text
 ms.topic: reference
 ms.date: 02/01/2019
 ms.author: swmachan
-ms.openlocfilehash: 184677589b3aa777ec556215455f8018e0d71f3f
-ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
+ms.openlocfilehash: b4eb083b0f98112274a5d00631af8662ff5c063a
+ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68934052"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73835888"
 ---
 # <a name="translator-text-api-30-breaksentence"></a>Interfejs API tłumaczenia tekstu w usłudze Translator 3,0: BreakSentence
 
@@ -23,7 +23,7 @@ Określa położenie granic zdania w fragmencie tekstu.
 
 ## <a name="request-url"></a>Adres URL żądania
 
-`POST` Wyślij żądanie do:
+Wyślij żądanie `POST` do:
 
 ```HTTP
 https://api.cognitive.microsofttranslator.com/breaksentence?api-version=3.0
@@ -37,15 +37,15 @@ Parametry żądania przesłane na ciągu zapytania są następujące:
   <th width="20%">Parametr zapytania</th>
   <th>Opis</th>
   <tr>
-    <td>api-version</td>
+    <td>wersja interfejsu API</td>
     <td>*Wymagany parametr zapytania*.<br/>Wersja interfejsu API żądana przez klienta. Wartość musi być `3.0`.</td>
   </tr>
   <tr>
-    <td>język</td>
+    <td>language</td>
     <td>*Opcjonalny parametr zapytania*.<br/>Tag języka identyfikujący język tekstu wejściowego. Jeśli kod nie zostanie określony, zostanie zastosowane automatyczne wykrywanie języka.</td>
   </tr>
   <tr>
-    <td>script</td>
+    <td>napisy</td>
     <td>*Opcjonalny parametr zapytania*.<br/>Tag skryptu identyfikujący skrypt używany przez tekst wejściowy. Jeśli skrypt nie jest określony, zostanie przyjęty domyślny skrypt języka.</td>
   </tr>
 </table> 
@@ -69,13 +69,13 @@ Nagłówki żądań obejmują:
   </tr>
   <tr>
     <td>X-ClientTraceId</td>
-    <td>*Opcjonalnie*.<br/>Wygenerowany przez klienta identyfikator GUID służący do unikatowej identyfikacji żądania. Należy pamiętać, że ten nagłówek można pominąć, jeśli w ciągu zapytania zostanie uwzględniony identyfikator śledzenia, przy użyciu parametru `ClientTraceId`zapytania o nazwie.</td>
+    <td>*Opcjonalnie*.<br/>Wygenerowany przez klienta identyfikator GUID służący do unikatowej identyfikacji żądania. Należy pamiętać, że ten nagłówek można pominąć, jeśli w ciągu zapytania zostanie uwzględniony identyfikator śledzenia, przy użyciu parametru zapytania o nazwie `ClientTraceId`.</td>
   </tr>
 </table> 
 
 ## <a name="request-body"></a>Treść żądania
 
-Treść żądania jest tablicą JSON. Każdy element tablicy jest obiektem JSON z właściwością ciągu o `Text`nazwie. Granice zdania są obliczane dla wartości `Text` właściwości. Przykładowa treść żądania z jednym fragmentem tekstu wygląda następująco:
+Treść żądania jest tablicą JSON. Każdy element tablicy jest obiektem JSON z właściwością ciągu o nazwie `Text`. Granice zdania są obliczane dla wartości właściwości `Text`. Przykładowa treść żądania z jednym fragmentem tekstu wygląda następująco:
 
 ```json
 [
@@ -88,21 +88,21 @@ Obowiązują następujące ograniczenia:
 * Tablica może zawierać maksymalnie 100 elementów.
 * Wartość tekstowa elementu tablicy nie może być dłuższa niż 10 000 znaków, w tym spacje.
 * Cały tekst zawarty w żądaniu nie może zawierać więcej niż 50 000 znaków, w tym spacji.
-* Jeśli parametr `language` zapytania jest określony, wszystkie elementy tablicy muszą być w tym samym języku. W przeciwnym razie Autowykrywanie języka jest stosowane do każdego elementu tablicy niezależnie.
+* Jeśli parametr zapytania `language` jest określony, wszystkie elementy tablicy muszą być w tym samym języku. W przeciwnym razie Autowykrywanie języka jest stosowane do każdego elementu tablicy niezależnie.
 
 ## <a name="response-body"></a>Treść odpowiedzi
 
 Pomyślna odpowiedź to tablica JSON z jednym wynikiem dla każdego ciągu w tablicy wejściowej. Obiekt wynikowy zawiera następujące właściwości:
 
-  * `sentLen`: Tablica liczb całkowitych reprezentujących długości zdań w elemencie Text. Długość tablicy jest liczbą zdań, a wartości to długość każdego zdania. 
+  * `sentLen`: tablica liczb całkowitych reprezentująca długości zdań w elemencie tekstowym. Długość tablicy jest liczbą zdań, a wartości to długość każdego zdania. 
 
-  * `detectedLanguage`: Obiekt opisujący wykryty język przez następujące właściwości:
+  * `detectedLanguage`: obiekt opisujący wykryty język przez następujące właściwości:
 
      * `language`: Kod wykrytego języka.
 
-     * `score`: Wartość zmiennoprzecinkowa wskazująca wiarygodność w wyniku. Wynik jest z przedziału od zera do jednego, a niski Wynik wskazuje na niski poziom pewności.
+     * `score`: wartość zmiennoprzecinkowa wskazująca wiarygodność w wyniku. Wynik jest z przedziału od zera do jednego, a niski Wynik wskazuje na niski poziom pewności.
      
-    Należy zauważyć, `detectedLanguage` że właściwość jest obecna tylko w obiekcie wynikowym, gdy żąda się automatycznego wykrywania języka.
+    Należy pamiętać, że właściwość `detectedLanguage` jest obecna tylko w obiekcie wynikowym, gdy żąda się automatycznego wykrywania języka.
 
 Przykładowa odpowiedź JSON to:
 
@@ -124,7 +124,7 @@ Przykładowa odpowiedź JSON to:
   <th width="20%">Nagłówki</th>
   <th>Opis</th>
   <tr>
-    <td>X-RequestId</td>
+    <td>X-IdentyfikatorŻądania</td>
     <td>Wartość wygenerowana przez usługę w celu zidentyfikowania żądania. Służy do rozwiązywania problemów.</td>
   </tr>
 </table> 
@@ -150,7 +150,7 @@ Oto możliwe kody stanu HTTP zwracane przez żądanie.
   </tr>
   <tr>
     <td>403</td>
-    <td>Żądanie nie jest autoryzowany. Sprawdź komunikat o błędzie szczegóły. Często oznacza to, że używane są wszystkie bezpłatne tłumaczenia udostępnione w ramach wersji próbnej.</td>
+    <td>Żądanie nie ma autoryzacji. Sprawdź komunikat o błędzie szczegóły. Często oznacza to, że używane są wszystkie bezpłatne tłumaczenia udostępnione w ramach wersji próbnej.</td>
   </tr>
   <tr>
     <td>429</td>
@@ -158,11 +158,11 @@ Oto możliwe kody stanu HTTP zwracane przez żądanie.
   </tr>
   <tr>
     <td>500</td>
-    <td>Wystąpił nieoczekiwany błąd. Jeśli błąd będzie się powtarzać, zgłoś go z: Data i godzina błędu, identyfikator żądania z nagłówka `X-RequestId`odpowiedzi oraz identyfikator klienta z nagłówka `X-ClientTraceId`żądania.</td>
+    <td>Wystąpił nieoczekiwany błąd. Jeśli błąd będzie się powtarzać, zgłoś go z: Data i godzina błędu, identyfikator żądania z nagłówka odpowiedzi `X-RequestId`i identyfikator klienta z nagłówka żądania `X-ClientTraceId`.</td>
   </tr>
   <tr>
     <td>503</td>
-    <td>Serwer jest tymczasowo niedostępny. Ponów żądanie. Jeśli błąd będzie się powtarzać, zgłoś go z: Data i godzina błędu, identyfikator żądania z nagłówka `X-RequestId`odpowiedzi oraz identyfikator klienta z nagłówka `X-ClientTraceId`żądania.</td>
+    <td>Serwer jest tymczasowo niedostępny. Ponów żądanie. Jeśli błąd będzie się powtarzać, zgłoś go z: Data i godzina błędu, identyfikator żądania z nagłówka odpowiedzi `X-RequestId`i identyfikator klienta z nagłówka żądania `X-ClientTraceId`.</td>
   </tr>
 </table> 
 

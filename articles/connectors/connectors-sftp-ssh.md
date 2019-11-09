@@ -10,12 +10,12 @@ ms.reviewer: divswa, klam, LADocs
 ms.topic: article
 ms.date: 06/18/2019
 tags: connectors
-ms.openlocfilehash: a48ba0d2d691314a1ca7c91ac7ae27b62fbb379b
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: f52fc91d218e1a5448f6e6e7465f6416a04fd67d
+ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 11/08/2019
-ms.locfileid: "73825237"
+ms.locfileid: "73837146"
 ---
 # <a name="monitor-create-and-manage-sftp-files-by-using-ssh-and-azure-logic-apps"></a>Monitorowanie i tworzenie plików SFTP oraz zarządzanie nimi za pomocą protokołów SSH i Azure Logic Apps
 
@@ -49,7 +49,9 @@ Poniżej przedstawiono inne kluczowe różnice między łącznikiem SFTP-SSH a �
 
 * Używa [biblioteki SSH.NET](https://github.com/sshnet/SSH.NET), która jest biblioteką Secure Shell (SSH), która obsługuje platformę .NET.
 
-* Domyślnie działania protokołu SFTP-SSH mogą odczytywać lub zapisywać pliki, które są *1 GB lub mniejsze* , ale tylko w przypadku fragmentów *15 MB* naraz. Aby obsłużyć pliki o rozmiarze większym niż 15 MB, w akcjach SFTP-SSH można używać [fragmentów komunikatów](../logic-apps/logic-apps-handle-large-messages.md). Do przekazywania dużych plików wymagane są również uprawnienia do odczytu i zapisu. Jednak akcja Kopiuj plik obsługuje tylko 15 MB plików, ponieważ ta akcja nie obsługuje fragmentacji komunikatów. Protokół SFTP-SSH nie obsługuje fragmentów.
+* Domyślnie działania protokołu SFTP-SSH mogą odczytywać lub zapisywać pliki, które są *1 GB lub mniejsze* , ale tylko w przypadku fragmentów *15 MB* naraz.
+
+  Aby obsłużyć pliki o rozmiarze większym niż 15 MB, w akcjach SFTP-SSH można używać [fragmentów komunikatów](../logic-apps/logic-apps-handle-large-messages.md). Jednak akcja Kopiuj plik obsługuje tylko 15 MB plików, ponieważ ta akcja nie obsługuje fragmentacji komunikatów. Protokół SFTP-SSH nie obsługuje fragmentów. Aby przekazać duże pliki, musisz mieć uprawnienia do odczytu i zapisu dla folderu głównego na serwerze SFTP.
 
 * Udostępnia akcję **Utwórz folder** , która tworzy folder w określonej ścieżce na serwerze SFTP.
 
@@ -61,7 +63,7 @@ Poniżej przedstawiono inne kluczowe różnice między łącznikiem SFTP-SSH a �
 
 * Subskrypcja platformy Azure. Jeśli nie masz subskrypcji platformy Azure, [zarejestruj się w celu założenia bezpłatnego konta platformy Azure](https://azure.microsoft.com/free/).
 
-* Adres serwera SFTP i poświadczenia konta, które umożliwiają aplikacji logiki dostęp do Twojego konta SFTP. Wymagany jest również dostęp do prywatnego klucza SSH oraz hasła prywatnego klucza SSH. Aby można było używać fragmentów podczas przekazywania dużych plików, wymagane są uprawnienia do odczytu i zapisu.
+* Adres serwera SFTP i poświadczenia konta, które umożliwiają aplikacji logiki dostęp do Twojego konta SFTP. Wymagany jest również dostęp do prywatnego klucza SSH oraz hasła prywatnego klucza SSH. Aby można było używać fragmentów podczas przekazywania dużych plików, wymagane są uprawnienia do odczytu i zapisu dla folderu głównego na serwerze SFTP. W przeciwnym razie zostanie wyświetlony komunikat o błędzie "401 bez autoryzacji".
 
   > [!IMPORTANT]
   >

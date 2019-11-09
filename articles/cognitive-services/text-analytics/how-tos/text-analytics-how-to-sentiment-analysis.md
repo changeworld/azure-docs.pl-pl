@@ -1,7 +1,7 @@
 ---
-title: Analiza tonacji przy użyciu interfejsu API REST analiza tekstu z platformy Azure Cognitive Services
+title: Wykonywanie analizy tonacji przy użyciu interfejsu API REST analiza tekstu
 titleSuffix: Azure Cognitive Services
-description: Dowiedz się, jak wykrywać tonacji za pomocą interfejsu API REST analiza tekstu.
+description: W tym artykule przedstawiono sposób wykrywania tonacji w tekście przy użyciu interfejsu API REST usługi Azure Cognitive Services analiza tekstu.
 services: cognitive-services
 author: aahill
 manager: nitinme
@@ -10,12 +10,12 @@ ms.subservice: text-analytics
 ms.topic: sample
 ms.date: 09/23/2019
 ms.author: aahi
-ms.openlocfilehash: d246b14a5bd6e60a7b6facae73c68d7449e2e097
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: a930a22472dd4329c555539704747af9a2359c33
+ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73494434"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73837164"
 ---
 # <a name="example-detect-sentiment-with-text-analytics"></a>Przykład: wykrywanie tonacji z analiza tekstu
 

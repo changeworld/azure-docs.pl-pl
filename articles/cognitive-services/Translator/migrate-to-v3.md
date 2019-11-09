@@ -1,7 +1,7 @@
 ---
 title: Migrowanie do wersji v3-interfejs API tłumaczenia tekstu w usłudze Translator
 titleSuffix: Azure Cognitive Services
-description: Dowiedz się, jak przeprowadzić migrację z wersji 2 do V3 interfejs API tłumaczenia tekstu w usłudze Translator.
+description: Ten artykuł zawiera instrukcje ułatwiające Migrowanie z wersji 2 do V3 interfejs API tłumaczenia tekstu w usłudze Translator Cognitive Services platformy Azure.
 services: cognitive-services
 author: swmachan
 manager: nitinme
@@ -10,12 +10,12 @@ ms.subservice: translator-text
 ms.topic: conceptual
 ms.date: 02/01/2019
 ms.author: swmachan
-ms.openlocfilehash: 9ce9dc330ec1b0c32ce045437fadb5d8c191529e
-ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
+ms.openlocfilehash: eb43d549d3e0cd449c865d533fc8701c4c3912fd
+ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68595246"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73837307"
 ---
 # <a name="translator-text-api-v2-to-v3-migration"></a>Migracja interfejs API tłumaczenia tekstu w usłudze Translator v2 do wersji v3
 
@@ -61,7 +61,7 @@ Poniższa lista metod v2 i V3 identyfikuje metody v3 i interfejsy API, które b�
 
 Tłumaczenie tłumaczenie tekstu w usłudze Translator firmy Microsoft w wersji 2 zostało zaakceptowane i zwróciło dane w formacie XML. W wersji 3 wszystkie dane wysyłane i odbierane przy użyciu interfejsu API są w formacie JSON. KOD XML nie zostanie już zaakceptowany ani zwrócony w wersji 3.
 
-Ta zmiana wpłynie na kilka aspektów aplikacji zapisaną dla interfejsu API tłumaczenia tekstu w wersji 2. Na przykład: Interfejs API języków zwraca informacje o języku dla tłumaczenia tekstu, przeciągania i dwóch metod słownika. Możesz zażądać wszystkich informacji o języku dla wszystkich metod w jednym wywołaniu lub zażądać ich indywidualnie.
+Ta zmiana wpłynie na kilka aspektów aplikacji zapisaną dla interfejsu API tłumaczenia tekstu w wersji 2. Przykład: interfejs API języków zwraca informacje o języku dla tłumaczenia tekstu, przeciągania i dwóch metod słownika. Możesz zażądać wszystkich informacji o języku dla wszystkich metod w jednym wywołaniu lub zażądać ich indywidualnie.
 
 Metoda języka nie wymaga uwierzytelniania; klikając poniższe łącze, można zobaczyć wszystkie informacje o języku V3 w formacie JSON:
 
@@ -86,7 +86,7 @@ Cena usługi Microsoft Translator V3 jest naliczana w taki sam sposób, jak w pr
 
 ## <a name="v3-end-points"></a>Punkty końcowe v3
 
-Global
+Globalny
 
 * api.cognitive.microsofttranslator.com
 
@@ -118,8 +118,8 @@ Translacja neuronowych z interfejsem API tekstu V3 nie obsługuje korzystania z 
 
 | |Endpoint|    Zgodność procesora Rodo|  Korzystanie z centrum usługi translator| Korzystanie z translatora niestandardowego (wersja zapoznawcza)|
 |:-----|:-----|:-----|:-----|:-----|
-|interfejs API tłumaczenia tekstu w usłudze Translator wersja 2| api.microsofttranslator.com|    Nie  |Yes    |Nie|
-|interfejs API tłumaczenia tekstu w usłudze Translator wersja 3| api.cognitive.microsofttranslator.com|  Tak|    Nie| Yes|
+|interfejs API tłumaczenia tekstu w usłudze Translator wersja 2| api.microsofttranslator.com|    Nie  |Tak    |Nie|
+|interfejs API tłumaczenia tekstu w usłudze Translator wersja 3| api.cognitive.microsofttranslator.com|  Tak|    Nie| Tak|
 
 **interfejs API tłumaczenia tekstu w usłudze Translator wersja 3**
 * Jest ogólnie dostępna i w pełni obsługiwana.
@@ -137,13 +137,13 @@ Jeśli używasz punktu końcowego api.cognitive.microsofttranslator.com, używas
 
 Żadna wersja interfejsu API usługi Translator nie tworzy rekordu tłumaczenia. Twoje tłumaczenia nigdy nie są udostępniane nikomu. Więcej informacji na temat strony sieci Web usługi [Translator nie śledzenia](https://www.aka.ms/NoTrace) .
 
-## <a name="links"></a>Łącza
+## <a name="links"></a>Linki
 
 * [Zasady zachowania poufności informacji firmy Microsoft](https://privacy.microsoft.com/privacystatement)
 * [Microsoft Azure informacje prawne](https://azure.microsoft.com/support/legal)
 * [Warunki dotyczące usług online](https://www.microsoftvolumelicensing.com/DocumentSearch.aspx?Mode=3&DocumentTypeId=31)
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 > [!div class="nextstepaction"]
 > [Wyświetl dokumentację w wersji 3.0](reference/v3-0-reference.md)

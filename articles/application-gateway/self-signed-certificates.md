@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 07/23/2019
 ms.author: victorh
-ms.openlocfilehash: 659c4cb3a6f0d50176875b76eeb2784c711eafd1
-ms.sourcegitcommit: 5d6c8231eba03b78277328619b027d6852d57520
+ms.openlocfilehash: 84a46e66bb6c36950a84fbeb2dacc3a8d6bcc241
+ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68967138"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73833365"
 ---
 # <a name="generate-an-azure-application-gateway-self-signed-certificate-with-a-custom-root-ca"></a>Generowanie certyfikatu z podpisem własnym na platformie Azure Application Gateway przy użyciu niestandardowego głównego urzędu certyfikacji
 
@@ -23,7 +23,7 @@ Application Gateway domyślnie ufa certyfikatowi witryny sieci Web, jeśli jest 
 > [!NOTE]
 > Certyfikaty z podpisem własnym nie są domyślnie zaufane i mogą być trudne do utrzymania. Ponadto mogą używać przestarzałych algorytmów skrótu i szyfrowania, które mogą nie być silne. Aby zapewnić lepsze zabezpieczenia, należy zakupić certyfikat podpisany przez dobrze znany urząd certyfikacji.
 
-W tym artykule dowiesz się jak:
+W tym artykule dowiesz się, jak:
 
 - Tworzenie własnego niestandardowego urzędu certyfikacji
 - Tworzenie certyfikatu z podpisem własnym podpisanego przez niestandardowy urząd certyfikacji
@@ -40,7 +40,7 @@ W tym artykule dowiesz się jak:
 
 - **Jednostka SKU Application Gateway v2**
    
-  Jeśli nie masz istniejącej bramy aplikacji, zobacz [szybki start: bezpośredni ruch internetowy w usłudze Azure Application Gateway — Azure Portal](quick-create-portal.md).
+  Jeśli nie masz istniejącej bramy aplikacji, zobacz [Szybki Start: bezpośredni ruch internetowy za pomocą usługi Azure Application Gateway — Azure Portal](quick-create-portal.md).
 
 ## <a name="create-a-root-ca-certificate"></a>Tworzenie certyfikatu głównego urzędu certyfikacji
 
@@ -87,7 +87,7 @@ Użyj następującego polecenia, aby wygenerować klucz dla certyfikatu serwera.
 CSR jest kluczem publicznym przyznanym do urzędu certyfikacji podczas żądania certyfikatu. Urząd certyfikacji wystawia certyfikat dla tego konkretnego żądania.
 
 > [!NOTE]
-> Nazwa POSPOLITa dla certyfikatu serwera musi być różna od domeny wystawcy. Na przykład, w tym przypadku, nazwa POSPOLITa dla wystawcy to www.contoso.com, a CN certyfikatu serwera to www.fabrikam.com
+> Nazwa POSPOLITa dla certyfikatu serwera musi być różna od domeny wystawcy. Na przykład w tym przypadku CN dla wystawcy jest `www.contoso.com`, a nazwa POSPOLITa certyfikatu serwera jest `www.fabrikam.com`.
 
 
 1. Użyj następującego polecenia, aby wygenerować CSR:
@@ -96,7 +96,7 @@ CSR jest kluczem publicznym przyznanym do urzędu certyfikacji podczas żądania
    openssl req -new -sha256 -key fabrikam.key -out fabrikam.csr
    ```
 
-1. Po wyświetleniu monitu wpisz hasło klucza głównego oraz informacje o organizacji dla niestandardowego urzędu certyfikacji: Kraj, stan, organizacja, jednostka organizacyjna i w pełni kwalifikowana nazwa domeny. Jest to domena witryny sieci Web i powinna być różna od wystawcy.
+1. Po wyświetleniu monitu wpisz hasło klucza głównego oraz informacje o organizacji dla niestandardowego urzędu certyfikacji: kraj, stan, organizacja, jednostka organizacyjna i w pełni kwalifikowana nazwa domeny. Jest to domena witryny sieci Web i powinna być różna od wystawcy.
 
    ![Certyfikat serwera](media/self-signed-certificates/server-cert.png)
 
@@ -130,7 +130,7 @@ Na serwerze sieci Web Skonfiguruj protokół SSL przy użyciu plików fabrikam. 
 
 ### <a name="iis"></a>IIS
 
-Aby uzyskać instrukcje dotyczące sposobu importowania certyfikatu i przekazywania ich jako certyfikatu serwera w usługach IIS, [zobacz How to: Zainstaluj zaimportowane certyfikaty na serwerze sieci Web w systemie Windows](https://support.microsoft.com/help/816794/how-to-install-imported-certificates-on-a-web-server-in-windows-server)Server 2003.
+Aby uzyskać instrukcje dotyczące sposobu importowania certyfikatu i przekazywania ich jako certyfikatu serwera w usługach IIS, zobacz [How to: Install import Certificates on a serwer sieci Web w systemie Windows server 2003](https://support.microsoft.com/help/816794/how-to-install-imported-certificates-on-a-web-server-in-windows-server).
 
 Aby uzyskać instrukcje dotyczące powiązań SSL, zobacz [jak skonfigurować protokół SSL w usługach IIS 7](https://docs.microsoft.com/iis/manage/configuring-security/how-to-set-up-ssl-on-iis#create-an-ssl-binding-1).
 
@@ -184,7 +184,7 @@ Aby przekazać zaufany certyfikat główny z portalu, wybierz **Ustawienia proto
 
 ![Dodawanie certyfikatu przy użyciu portalu](media/self-signed-certificates/portal-cert.png)
 
-### <a name="azure-powershell"></a>Azure PowerShell
+### <a name="azure-powershell"></a>Program Azure PowerShell
 
 Możesz też użyć interfejsu wiersza polecenia platformy Azure lub Azure PowerShell, aby przekazać certyfikat główny. Poniższy kod jest przykładem Azure PowerShell.
 

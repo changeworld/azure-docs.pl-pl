@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d6f0d732917a6587307e6d60581e0189687cc7e9
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.openlocfilehash: dd50ca8b81b933a61a67ac36db6a656791a8121f
+ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73164772"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73832855"
 ---
 # <a name="sign-in-to-windows-virtual-machine-in-azure-using-azure-active-directory-authentication-preview"></a>Logowanie do maszyny wirtualnej z systemem Windows na platformie Azure przy użyciu uwierzytelniania Azure Active Directory (wersja zapoznawcza)
 
@@ -166,7 +166,7 @@ Po kilku chwilach podmiot zabezpieczeń ma przypisaną rolę w wybranym zakresie
 
 ### <a name="using-the-azure-cloud-shell-experience"></a>Korzystanie z Azure Cloud Shell
 
-Poniższy przykład używa [AZ role przypisanie Create](https://docs.microsoft.com/cli/azure/role/assignment#az-role-assignment-create) , aby przypisać rolę logowania administratora maszyny wirtualnej do maszyny wirtualnej dla bieżącego użytkownika platformy Azure. Nazwa użytkownika aktywnego konta platformy Azure zostanie uzyskana za pomocą [AZ Account show](https://docs.microsoft.com/cli/azure/account#az-account-show), a zakres jest USTAWIANY na maszynę wirtualną utworzoną w poprzednim kroku przy użyciu [AZ VM show](https://docs.microsoft.com/cli/azure/vm#az-vm-show). Zakres może być również przypisany do grupy zasobów lub poziomu subskrypcji i obowiązują normalne uprawnienia dziedziczenia RBAC. Aby uzyskać więcej informacji, zobacz [Kontrola dostępu oparta na rolach](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview#access-control).
+Poniższy przykład używa [AZ role przypisanie Create](https://docs.microsoft.com/cli/azure/role/assignment#az-role-assignment-create) , aby przypisać rolę logowania administratora maszyny wirtualnej do maszyny wirtualnej dla bieżącego użytkownika platformy Azure. Nazwa użytkownika aktywnego konta platformy Azure zostanie uzyskana za pomocą [AZ Account show](https://docs.microsoft.com/cli/azure/account#az-account-show), a zakres jest USTAWIANY na maszynę wirtualną utworzoną w poprzednim kroku przy użyciu [AZ VM show](https://docs.microsoft.com/cli/azure/vm#az-vm-show). Zakres może być również przypisany do grupy zasobów lub poziomu subskrypcji i obowiązują normalne uprawnienia dziedziczenia RBAC. Aby uzyskać więcej informacji, zobacz [Kontrola dostępu oparta na rolach](../../virtual-machines/linux/login-using-aad.md).
 
 ```AzureCLI
 username=$(az account show --query user.name --output tsv)
@@ -223,24 +223,24 @@ Aby maszyna wirtualna mogła ukończyć proces przyłączania do usługi Azure A
 
    | Polecenie do uruchomienia | Oczekiwane dane wyjściowe |
    | --- | --- |
-   | zwinięcie-H Metadata: true "http://169.254.169.254/metadata/instance?api-version=2017-08-01 " | Popraw informacje o maszynie wirtualnej platformy Azure |
-   | zwinięcie-H Metadata: true "http://169.254.169.254/metadata/identity/info?api-version=2018-02-01 " | Prawidłowy identyfikator dzierżawy skojarzony z subskrypcją platformy Azure |
-   | zwinięcie-H Metadata: true "http://169.254.169.254/metadata/identity/oauth2/token?resource=urn:ms-drs:enterpriseregistration.windows.net&api-version=2018-02-01 " | Prawidłowy token dostępu wystawiony przez Azure Active Directory dla zarządzanej tożsamości przypisanej do tej maszyny wirtualnej |
+   | zwinięcie-H Metadata: true "http://169.254.169.254/metadata/instance?api-version=2017-08-01" | Popraw informacje o maszynie wirtualnej platformy Azure |
+   | zwinięcie-H Metadata: true "http://169.254.169.254/metadata/identity/info?api-version=2018-02-01" | Prawidłowy identyfikator dzierżawy skojarzony z subskrypcją platformy Azure |
+   | zwinięcie-H Metadata: true "http://169.254.169.254/metadata/identity/oauth2/token?resource=urn:ms-drs:enterpriseregistration.windows.net&api-version=2018-02-01" | Prawidłowy token dostępu wystawiony przez Azure Active Directory dla zarządzanej tożsamości przypisanej do tej maszyny wirtualnej |
 
    > [!NOTE]
    > Token dostępu można zdekodować przy użyciu narzędzia, takiego jak [http://calebb.net/](http://calebb.net/). Sprawdź, czy identyfikator "AppID" w tokenie dostępu jest zgodny z zarządzaną tożsamością przypisaną do maszyny wirtualnej.
 
 1. Upewnij się, że wymagane punkty końcowe są dostępne z maszyny wirtualnej przy użyciu wiersza polecenia:
    
-   - zwinięcie https://login.microsoftonline.com/ -D —
-   - zwinięcie https://login.microsoftonline.com/`<TenantID>` /-D —
+   - zwinięcie https://login.microsoftonline.com/-D —
+   - zwinięcie https://login.microsoftonline.com/`<TenantID>`/-D —
 
    > [!NOTE]
    > Zastąp `<TenantID>` IDENTYFIKATORem dzierżawy usługi Azure AD skojarzonym z subskrypcją platformy Azure.
 
-   - zwinięcie https://enterpriseregistration.windows.net/ -D-
-   - zwinięcie https://device.login.microsoftonline.com/ -D-
-   - zwinięcie https://pas.windows.net/ -D-
+   - zwinięcie https://enterpriseregistration.windows.net/-D-
+   - zwinięcie https://device.login.microsoftonline.com/-D-
+   - zwinięcie https://pas.windows.net/-D-
 
 1. Stan urządzenia można wyświetlić, uruchamiając `dsregcmd /status`. Celem jest stan urządzenia, który ma być wyświetlany jako `AzureAdJoined : YES`.
 
@@ -263,19 +263,19 @@ Ten kod zakończenia tłumaczy na DSREG_E_MSI_TENANTID_UNAVAILABLE, ponieważ ro
 
 #### <a name="issue-2-aadloginforwindows-extension-fails-to-install-with-exit-code--2145648607"></a>Problem 2: nie można zainstalować rozszerzenia AADLoginForWindows z kodem zakończenia:-2145648607
 
-Ten kod zakończenia tłumaczy na DSREG_AUTOJOIN_DISC_FAILED, ponieważ rozszerzenie nie może dotrzeć do punktu końcowego https://enterpriseregistration.windows.net.
+Ten kod zakończenia tłumaczy na DSREG_AUTOJOIN_DISC_FAILED, ponieważ rozszerzenie nie może nawiązać połączenia z punktem końcowym https://enterpriseregistration.windows.net.
 
 1. Sprawdź, czy wymagane punkty końcowe są dostępne z maszyny wirtualnej przy użyciu wiersza polecenia:
 
-   - zwinięcie https://login.microsoftonline.com/ -D —
-   - zwinięcie https://login.microsoftonline.com/`<TenantID>` /-D —
+   - zwinięcie https://login.microsoftonline.com/-D —
+   - zwinięcie https://login.microsoftonline.com/`<TenantID>`/-D —
    
    > [!NOTE]
    > Zastąp `<TenantID>` IDENTYFIKATORem dzierżawy usługi Azure AD skojarzonym z subskrypcją platformy Azure. Jeśli musisz znaleźć identyfikator dzierżawy, możesz umieścić wskaźnik myszy nad nazwą konta, aby uzyskać identyfikator katalogu/dzierżawy, lub wybrać Azure Active Directory właściwości > > identyfikator katalogu w Azure Portal.
 
-   - zwinięcie https://enterpriseregistration.windows.net/ -D-
-   - zwinięcie https://device.login.microsoftonline.com/ -D-
-   - zwinięcie https://pas.windows.net/ -D-
+   - zwinięcie https://enterpriseregistration.windows.net/-D-
+   - zwinięcie https://device.login.microsoftonline.com/-D-
+   - zwinięcie https://pas.windows.net/-D-
 
 1. Jeśli którekolwiek z poleceń zakończy się niepowodzeniem z "nie można rozpoznać `<URL>`hosta", spróbuj uruchomić to polecenie, aby określić serwer DNS, który jest używany przez maszynę wirtualną.
    
@@ -312,7 +312,7 @@ Jeśli po zainicjowaniu połączenia pulpitu zdalnego z maszyną wirtualną zoba
 
 ![Twoje konto jest skonfigurowane tak, aby uniemożliwić korzystanie z tego urządzenia.](./media/howto-vm-sign-in-azure-ad-windows/rbac-role-not-assigned.png)
 
-Sprawdź, czy [skonfigurowano zasady RBAC](https://docs.microsoft.com/azure/virtual-machines/linux/login-using-aad#configure-rbac-policy-for-the-virtual-machine) dla maszyny wirtualnej, która udziela użytkownikowi identyfikatora logowania administratora maszyny wirtualnej lub roli logowania użytkownika maszyny wirtualnej:
+Sprawdź, czy [skonfigurowano zasady RBAC](../../virtual-machines/linux/login-using-aad.md) dla maszyny wirtualnej, która udziela użytkownikowi identyfikatora logowania administratora maszyny wirtualnej lub roli logowania użytkownika maszyny wirtualnej:
  
 #### <a name="unauthorized-client"></a>Nieautoryzowany klient
 

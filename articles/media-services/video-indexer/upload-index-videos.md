@@ -1,6 +1,6 @@
 ---
 title: Przekazywanie i indeksowanie plików wideo za pomocą usługi Video Indexer
-titlesuffix: Azure Media Services
+titleSuffix: Azure Media Services
 description: W tym temacie pokazano, jak przy użyciu interfejsów API przekazywać i indeksować pliki wideo za pomocą usługi Video Indexer.
 services: media-services
 author: Juliako
@@ -10,12 +10,12 @@ ms.subservice: video-indexer
 ms.topic: article
 ms.date: 09/10/2019
 ms.author: juliako
-ms.openlocfilehash: d6338f3840b6f8afe21f8115304ba00bba90c6ea
-ms.sourcegitcommit: 0576bcb894031eb9e7ddb919e241e2e3c42f291d
+ms.openlocfilehash: 255c98965026266348a66bb98a1741eaf04a1d38
+ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72372372"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73839154"
 ---
 # <a name="upload-and-index-your-videos"></a>Przekazywanie i indeksowanie plików wideo  
 
@@ -37,7 +37,7 @@ Po przekazaniu wideo Video Indexer opcjonalnie koduje wideo (omówione w artykul
 - Długość adresu URL żądania jest ograniczona do 6144 znaków, w przypadku których długość adresu URL ciągu zapytania jest ograniczona do 4096 znaków.
 - Rozmiar przekazywania z opcją tablicy bajtowej jest ograniczony do 2 GB.
 - Opcja tablicy bajtowej jest przekreślania po 30 minutach.
-- Adres URL podany w parametrze `videoURL` musi być zakodowany.
+- Adres URL podany w `videoURL` param musi być zakodowany.
 - Indeksowanie Media Services elementów zawartości ma takie samo ograniczenie jak indeksowanie z adresu URL.
 - W przypadku pojedynczego pliku Video Indexer ma maksymalny limit czasu trwania wynoszący 4 godziny.
 
@@ -65,7 +65,7 @@ Adres URL używany do powiadamiania klienta (za pomocą żądania POST) o nastę
         |---|---|
         |id|Identyfikator wideo|
         |state|Stan wideo|  
-    - Przykład: https: \//test. com/NotifyMe? projectName = WebProject & ID = 1234abcd & State = przetworzony
+    - Przykład: https:\//test.com/notifyme?projectName=MyProject&id=1234abcd&state=Processed
 - Osoba rozpoznana na filmie wideo:
   - Właściwości
     
@@ -76,7 +76,7 @@ Adres URL używany do powiadamiania klienta (za pomocą żądania POST) o nastę
       |knownPersonId|Identyfikator osoby, unikatowy w ramach danego modelu twarzy|
       |personName|Imię i nazwisko osoby|
         
-    - Przykład: https: \//test. com/NotifyMe? projectName = WebProject & ID = 1234abcd & FaceID = 12 & knownPersonId = CCA84350-89B7-4262-861C-3CAC796542A5 & PersonName = Inigo_Montoya 
+    - Przykład: https:\//test.com/notifyme?projectName=MyProject&id=1234abcd&faceid=12&knownPersonId=CCA84350-89B7-4262-861C-3CAC796542A5&personName=Inigo_Montoya 
 
 #### <a name="notes"></a>Uwagi
 
