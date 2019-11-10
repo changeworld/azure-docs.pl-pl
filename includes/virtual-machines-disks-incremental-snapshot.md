@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 09/23/2019
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: 72e94b864b15d5c4872ebf6ba9f0d1a00a0e92b0
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: f9b9773e595d1ff00d92bd757c4b85eb6c219b26
+ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72924847"
+ms.lasthandoff: 11/09/2019
+ms.locfileid: "73897537"
 ---
 # <a name="creating-an-incremental-snapshot-preview-for-managed-disks"></a>Tworzenie przyrostowej migawki (wersja zapoznawcza) dla dysków zarządzanych
 
@@ -45,7 +45,7 @@ Install-Module -Name Az -AllowClobber -Scope CurrentUser
 
 Po zainstalowaniu, zaloguj się do sesji programu PowerShell przy użyciu `az login`.
 
-Aby utworzyć przyrostową migawkę z Azure PowerShell, Ustaw konfigurację przy użyciu opcji [New-AzSnapShotConfig](https://docs.microsoft.com/en-us/powershell/module/az.compute/new-azsnapshotconfig?view=azps-2.7.0) z parametrem `-Incremental`, a następnie przekaż ją jako zmienną do opcji [New-AzSnapshot](https://docs.microsoft.com/en-us/powershell/module/az.compute/new-azsnapshot?view=azps-2.7.0) za pomocą parametru `-Snapshot`.
+Aby utworzyć przyrostową migawkę z Azure PowerShell, Ustaw konfigurację przy użyciu opcji [New-AzSnapShotConfig](https://docs.microsoft.com/powershell/module/az.compute/new-azsnapshotconfig?view=azps-2.7.0) z parametrem `-Incremental`, a następnie przekaż ją jako zmienną do opcji [New-AzSnapshot](https://docs.microsoft.com/powershell/module/az.compute/new-azsnapshot?view=azps-2.7.0) za pomocą parametru `-Snapshot`.
 
 Zastąp wartości `<yourDiskNameHere>`, `<yourResourceGroupNameHere>`i `<yourDesiredSnapShotNameHere>` wartościami, a następnie użyj następującego skryptu, aby utworzyć migawkę przyrostową:
 
@@ -78,7 +78,7 @@ foreach ($snapshot in $snapshots)
 $incrementalSnapshots
 ```
 
-## <a name="cli"></a>Interfejs CLI
+## <a name="cli"></a>Interfejs wiersza polecenia
 
 Można utworzyć przyrostową migawkę przy użyciu interfejsu wiersza polecenia platformy Azure, która będzie potrzebna w najnowszej wersji interfejsu wiersza polecenia platformy Azure. Następujące polecenie zainstaluje lub zaktualizuje istniejącą instalację do najnowszej wersji:
 
