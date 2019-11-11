@@ -1,22 +1,22 @@
 ---
-title: Konfigurowanie aprowizacji urządzeń przy użyciu szablonu usługi Azure Resource Manager | Microsoft Docs
+title: 'Szybki Start: Konfigurowanie aprowizacji urządzeń przy użyciu szablonu Azure Resource Manager'
 description: Przewodnik Szybki start platformy Azure — Konfigurowanie usługi Azure IoT Hub Device Provisioning Service przy użyciu szablonu
 author: wesmc7777
 ms.author: wesmc
-ms.date: 06/18/2018
+ms.date: 11/08/2019
 ms.topic: quickstart
 ms.service: iot-dps
 services: iot-dps
 manager: timlt
 ms.custom: mvc
-ms.openlocfilehash: 3360bfa7eed15f72fb78f698e837d887e9c8aa85
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.openlocfilehash: fdc75424c5c99e80c13ac086229da93411e3ce83
+ms.sourcegitcommit: bc193bc4df4b85d3f05538b5e7274df2138a4574
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "62126481"
+ms.lasthandoff: 11/10/2019
+ms.locfileid: "73903358"
 ---
-# <a name="set-up-the-iot-hub-device-provisioning-service-with-an-azure-resource-manager-template"></a>Konfigurowanie usługi IoT Hub Device Provisioning przy użyciu szablonu usługi Azure Resource Manager
+# <a name="quickstart-set-up-the-iot-hub-device-provisioning-service-with-an-azure-resource-manager-template"></a>Szybki Start: Konfigurowanie IoT Hub Device Provisioning Service przy użyciu szablonu Azure Resource Manager
 
 Przy użyciu usługi [Azure Resource Manager](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview) można skonfigurować programowo zasoby w chmurze platformy Azure niezbędne do aprowizacji urządzeń. Poniżej przedstawiono procedurę tworzenia usługi IoT Hub, nowej usługi IoT Hub Device Provisioning oraz łączenia tych dwóch usług ze sobą przy użyciu szablonu usługi Azure Resource Manager. W tym przewodniku Szybki start [interfejs wiersza polecenia platformy Azure](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-template-deploy-cli) jest używany do wykonywania kroków programowych niezbędnych do utworzenia grupy zasobów i wdrożenia szablonu, ale te kroki można również z łatwością wykonać i wdrożyć szablon przy użyciu [witryny Azure Portal](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-template-deploy-portal), [programu PowerShell](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-template-deploy), środowiska .NET, języka Ruby lub innych języków programowania. 
 
@@ -31,7 +31,7 @@ Przy użyciu usługi [Azure Resource Manager](https://docs.microsoft.com/azure/a
 
 Zaloguj się do konta platformy Azure i wybierz subskrypcję.
 
-1. W wierszu polecenia uruchom [polecenie logowania][lnk-login-command]:
+1. W wierszu polecenia Uruchom [polecenie Login][lnk-login-command]:
     
     ```azurecli
     az login
@@ -321,7 +321,7 @@ Użyj następujących poleceń interfejsu wiersza polecenia Azure, aby wdrożyć
 
 ## <a name="clean-up-resources"></a>Oczyszczanie zasobów
 
-Inne przewodniki Szybki start w tej kolekcji bazują na tym przewodniku. Jeśli planujesz kontynuować pracę z kolejnymi przewodnikami Szybki start lub samouczkami, nie usuwaj zasobów utworzonych w tym przewodniku Szybki start. Jeśli nie planujesz kontynuować pracy, możesz użyć wiersza polecenia platformy Azure, aby [usunąć pojedynczy zasób][lnk-az-resource-command], na przykład centrum IoT lub usługę aprowizacji, bądź usunąć grupę zasobów i wszystkie jej zasoby.
+Inne przewodniki Szybki start w tej kolekcji bazują na tym przewodniku. Jeśli planujesz kontynuować pracę z kolejnymi przewodnikami Szybki start lub samouczkami, nie usuwaj zasobów utworzonych w tym przewodniku Szybki start. Jeśli nie planujesz kontynuować pracy, możesz użyć interfejsu wiersza polecenia platformy Azure, aby [usunąć poszczególne zasoby][lnk-az-resource-command], takie jak centrum IoT lub usługa aprowizacji, lub usunąć grupę zasobów i wszystkie jej zasoby.
 
 Aby usunąć usługę aprowizacji, uruchom następujące polecenie:
 
@@ -342,7 +342,7 @@ az group delete --name {your resource group name}
 
 Grupy zasobów i poszczególne zasoby można usuwać również przy użyciu witryny Azure Portal, programu PowerShell lub interfejsów API REST, bądź obsługiwanych zestawów SDK platformy opublikowanych na potrzeby usługi Azure Resource Manager lub usługi IoT Hub Device Provisioning.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 W tym przewodniku Szybki start zostały wdrożone centrum IoT i wystąpienie usługi Device Provisioning Service, po czym te dwa zasoby zostały połączone ze sobą. Aby dowiedzieć się, jak za pomocą tej konfiguracji zaaprowizować symulowane urządzenie, przejdź do przewodnika Szybki start omawiającego tworzenie symulowanego urządzenia.
 

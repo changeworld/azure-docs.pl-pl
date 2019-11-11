@@ -9,33 +9,33 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
-ms.date: 10/25/2019
+ms.date: 11/08/2019
 ms.author: diberry
-ms.openlocfilehash: 227efcdbcb7d8e776dd77b38c5d1dedd54d71b6b
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: d3f8696388a33a8ea112aae438c6bbe9af520c61
+ms.sourcegitcommit: bc193bc4df4b85d3f05538b5e7274df2138a4574
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73500308"
+ms.lasthandoff: 11/10/2019
+ms.locfileid: "73904267"
 ---
 # <a name="create-a-new-luis-app-in-the-luis-portal"></a>Tworzenie nowej aplikacji LUIS w portalu LUIS
-Istnieje kilka sposobów tworzenia aplikacji LUIS. Aplikację LUIS można utworzyć w portalu [Luis](https://www.luis.ai) lub za pomocą [interfejsów API](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/5890b47c39e2bb052c5b9c2f)tworzenia Luis.
+Istnieje kilka sposobów tworzenia aplikacji LUIS. Aplikację LUIS można utworzyć w portalu LUIS lub za pomocą [interfejsów API](developer-reference-resource.md)tworzenia Luis.
 
-[!INCLUDE [Waiting for LUIS portal refresh](./includes/wait-v3-upgrade.md)]
+[!INCLUDE [Uses preview portal](includes/uses-portal-preview.md)]
 
 ## <a name="using-the-luis-portal"></a>Korzystanie z portalu LUIS
 
-Nową aplikację w portalu LUIS można utworzyć na kilka sposobów:
+Nową aplikację można utworzyć w portalu w wersji zapoznawczej na kilka sposobów:
 
 * Zacznij od pustej aplikacji i Utwórz intencje, wyrażenia długości i jednostki.
 * Zacznij od pustej aplikacji i Dodaj [prezbudowaną domenę](luis-how-to-use-prebuilt-domains.md).
-* Zaimportuj aplikację LUIS z pliku JSON, który zawiera już intencje, wyrażenia długości i jednostki.
+* Zaimportuj aplikację LUIS z pliku `.lu` lub `.json`, który zawiera już intencje, wyrażenia długości i jednostki.
 
 ## <a name="using-the-authoring-apis"></a>Korzystanie z interfejsów API tworzenia
 Nową aplikację można utworzyć za pomocą interfejsów API tworzenia na kilka sposobów:
 
-* [Zacznij](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/5890b47c39e2bb052c5b9c2f) od pustej aplikacji i Utwórz intencje, wyrażenia długości i jednostki.
-* [Zacznij](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/59104e515aca2f0b48c76be5) od prekompilowanej domeny.  
+* [Dodaj aplikację](https://westeurope.dev.cognitive.microsoft.com/docs/services/luis-programmatic-apis-v3-0-preview/operations/5890b47c39e2bb052c5b9c2f) — Zacznij od pustej aplikacji i Utwórz intencje, wyrażenia długości i jednostki.
+* [Dodaj prekompilowaną aplikację](https://westeurope.dev.cognitive.microsoft.com/docs/services/luis-programmatic-apis-v3-0-preview/operations/59104e515aca2f0b48c76be5) — Zacznij od wstępnie skompilowanej domeny, w tym intencji, wyrażenia długości i jednostek.  
 
 
 <a name="export-app"></a>
@@ -47,51 +47,36 @@ Nową aplikację można utworzyć za pomocą interfejsów API tworzenia na kilka
 
 ## <a name="create-new-app-in-luis"></a>Utwórz nową aplikację w LUIS
 
-1. Na stronie **Moje aplikacje** wybierz pozycję **+ Utwórz**.
+1. Na stronie **Moje aplikacje** wybierz swoją subskrypcję, a następnie **Utwórz**zasób, a następnie kliknij pozycję Włącz. Jeśli używasz bezpłatnego klucza wersji próbnej, Dowiedz się, jak [utworzyć zasób tworzenia](luis-how-to-azure-subscription.md#create-resources-in-the-azure-portal).
 
-    ![Lista aplikacji LUIS](./media/luis-create-new-app/apps-list.png)
+    ![Lista aplikacji LUIS](./media/create-app-in-portal.png)
 
 
-2. W oknie dialogowym Nadaj nazwę aplikacji "TravelAgent".
+1. W oknie dialogowym wprowadź nazwę aplikacji, taką jak `Pizza Tutorial`.
 
-    ![Okno dialogowe Tworzenie nowej aplikacji](./media/luis-create-new-app/create-app.png)
+    ![Okno dialogowe Tworzenie nowej aplikacji](./media/create-pizza-tutorial-app-in-portal.png)
 
-3. Wybierz kulturę aplikacji (dla aplikacji TravelAgent, wybierz pozycję angielski), a następnie wybierz pozycję **gotowe**. 
+1. Wybierz kulturę aplikacji, a następnie wybierz pozycję **gotowe**. Opis i zasób przewidywania są opcjonalne w tym momencie. W każdej chwili możesz ją ustawić w sekcji **Zarządzanie** w portalu.
 
     > [!NOTE]
     > Kultury nie można zmienić po utworzeniu aplikacji. 
 
-## <a name="import-an-app-from-file"></a>Importuj aplikację z pliku
+    Po utworzeniu aplikacji Portal LUIS pokazuje listę **intencji** z zamiarem `None` już utworzonym przez użytkownika. Masz teraz pustą aplikację. 
+    
+    > [!div class="mx-imgBorder"]
+    > Lista założeń, dla których nie utworzono żadnego z przykładowych wyrażenia długości, nie została utworzona. ![](media/pizza-tutorial-new-app-empty-intent-list.png)
 
-1. Na stronie **Moje aplikacje** wybierz pozycję **Importuj nową aplikację**.
-1. W podręcznym oknie dialogowym Wybierz prawidłowy plik JSON aplikacji, a następnie wybierz pozycję **gotowe**.
+## <a name="other-actions-available"></a>Inne dostępne akcje
 
-### <a name="import-errors"></a>Błędy importowania
+Pasek narzędzi kontekstowych zawiera inne akcje:
 
-Możliwe błędy to: 
-
-* Aplikacja o tej nazwie już istnieje. Aby rozwiązać ten problem, zaimportuj ponownie aplikację i ustaw nową nazwę jako **nazwę opcjonalną** . 
-
-## <a name="export-app-for-backup"></a>Eksportuj aplikację do kopii zapasowej
-
-1. Na stronie **Moje aplikacje** wybierz pozycję **Eksportuj**.
-1. Wybierz pozycję **Eksportuj jako plik JSON**. Przeglądarka pobiera aktywną wersję aplikacji.
-1. Dodaj ten plik do systemu kopii zapasowej, aby zarchiwizować model.
-
-## <a name="export-app-for-containers"></a>Eksportowanie aplikacji dla kontenerów
-
-1. Na stronie **Moje aplikacje** wybierz pozycję **Eksportuj**.
-1. Wybierz pozycję **Eksportuj jako kontener,** a następnie wybierz opublikowane gniazdo (produkcyjne lub etap), które chcesz wyeksportować.
-1. Użyj tego pliku z [kontenerem Luis](luis-container-howto.md). 
-
-    Jeśli interesuje Cię eksportowanie przeszkolonego, ale jeszcze nie opublikowanego modelu do użycia z kontenerem LUIS, przejdź do strony **wersje** i wyeksportuj z tego miejsca. 
-
-## <a name="delete-app"></a>Usuń aplikację
-
-1. Na stronie **Moje aplikacje** wybierz trzy kropki (...) na końcu wiersza aplikacji.
-1. Z menu wybierz pozycję **Usuń** .
-1. W oknie potwierdzenia wybierz pozycję **OK** .
+* Zmień nazwę aplikacji
+* Importuj z pliku przy użyciu `.lu` lub `.json`
+* Eksportuj aplikację jako `.lu` (dla [LUDown](https://github.com/microsoft/botbuilder-tools/tree/master/packages/Ludown)), `.json`lub `.zip` (dla [kontenera Luis](luis-container-howto.md))
+* Importuj dzienniki punktów końcowych kontenera, aby przejrzeć wyrażenia długości punktu końcowego
+* Eksportowanie dzienników punktów końcowych `.csv`w celu przeprowadzenia analizy w trybie offline
+* Usuń aplikację
 
 ## <a name="next-steps"></a>Następne kroki
 
-Twoje pierwsze zadanie w aplikacji ma na celu [dodanie intencji](luis-how-to-add-intents.md).
+Jeśli projekt aplikacji obejmuje wykrywanie intencji, [Utwórz nowe intencje](luis-how-to-add-intents.md)i Dodaj przykład wyrażenia długości. Jeśli projekt aplikacji jest tylko do wyodrębnienia danych, Dodaj przykład wyrażenia długości do zamiaru brak, a następnie [Utwórz jednostki](luis-how-to-add-example-utterances.md)i Oznacz przykład wyrażenia długości z tymi jednostkami. 

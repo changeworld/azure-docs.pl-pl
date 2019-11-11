@@ -1,23 +1,23 @@
 ---
-title: Ten przewodnik Szybki start przedstawia sposób rejestrowania urządzeń X.509 w usłudze Azure Device Provisioning przy użyciu języka Java | Microsoft Docs
+title: 'Szybki Start: rejestrowanie urządzeń X. 509 w usłudze Azure Device Provisioning przy użyciu języka Java'
 description: W tym przewodniku Szybki start używane są zarówno rejestracje grupowe, jak i indywidualne. W ramach tego przewodnika Szybki start zarejestrujesz urządzenia X.509 w usłudze Azure IoT Hub Device Provisioning przy użyciu języka Java.
 author: wesmc7777
 ms.author: wesmc
-ms.date: 12/20/2017
+ms.date: 11/08/2019
 ms.topic: quickstart
 ms.service: iot-dps
 services: iot-dps
 manager: timlt
 ms.devlang: java
 ms.custom: mvc
-ms.openlocfilehash: 3eec6628ca7dbc16e0cc01701620f1699ba8d368
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.openlocfilehash: 8a1accf232b022bc3028f91d2151c00b98969f1f
+ms.sourcegitcommit: bc193bc4df4b85d3f05538b5e7274df2138a4574
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "62126532"
+ms.lasthandoff: 11/10/2019
+ms.locfileid: "73904780"
 ---
-# <a name="quickstart-enroll-x509-devices-to-the-device-provisioning-service-using-java"></a>Szybki start: Rejestrowanie urządzeń X.509 w usłudze Device Provisioning przy użyciu języka Java
+# <a name="quickstart-enroll-x509-devices-to-the-device-provisioning-service-using-java"></a>Przewodnik Szybki start: rejestrowanie urządzeń X.509 w usłudze Device Provisioning przy użyciu języka Java
 
 [!INCLUDE [iot-dps-selector-quick-enroll-device-x509](../../includes/iot-dps-selector-quick-enroll-device-x509.md)]
 
@@ -38,7 +38,7 @@ Mimo że zestaw SDK usługi Java działa zarówno na komputerach z systemami Win
     mvn --version
     ```
 
-* [Zainstaluj oprogramowanie Git](https://git-scm.com/download/).
+* Zainstaluj oprogramowanie [Git](https://git-scm.com/download/).
 
 
 <a id="javasample"></a>
@@ -58,7 +58,7 @@ W poniższych krokach przedstawiono sposób dodawania szczegółów aprowizacji 
     git clone https://github.com/Azure/azure-iot-sdk-java.git --recursive
     ```
 
-2. W pobranym kodzie źródłowym przejdź do folderu przykładu **_azure-iot-sdk-java/provisioning/provisioning-samples/service-enrollment-group-sample_**. Otwórz plik **_/src/main/java/samples/com/microsoft/azure/sdk/iot/ServiceEnrollmentGroupSample.java_** w dowolnym edytorze i dodaj następujące szczegółowe informacje:
+2. W pobranym kodzie źródłowym przejdź do folderu przykładu **_azure-iot-sdk-java/provisioning/provisioning-samples/service-enrollment-group-sample_** . Otwórz plik **_/src/main/java/samples/com/microsoft/azure/sdk/iot/ServiceEnrollmentGroupSample.java_** w dowolnym edytorze i dodaj następujące szczegółowe informacje:
 
     1. Dodaj ciąg `[Provisioning Connection String]` dla usługi aprowizacji z portalu, jako pokazano poniżej:
         1. Przejdź do usługi aprowizacji w witrynie [Azure Portal](https://portal.azure.com). 
@@ -74,7 +74,7 @@ W poniższych krokach przedstawiono sposób dodawania szczegółów aprowizacji 
             ```
 
     2. Dodaj certyfikat główny dla grupy urządzeń. Jeśli potrzebujesz przykładowego certyfikatu głównego, użyj narzędzia _Generator certyfikatów X.509_ w następujący sposób:
-        1. W oknie polecenia przejdź do folderu **_azure-iot-sdk-java/provisioning/provisioning-tools/provisioning-x509-cert-generator_**.
+        1. W oknie polecenia przejdź do folderu **_azure-iot-sdk-java/provisioning/provisioning-tools/provisioning-x509-cert-generator_** .
         2. Skompiluj narzędzie, uruchamiając następujące polecenie:
 
                 ```cmd\sh
@@ -90,7 +90,7 @@ W poniższych krokach przedstawiono sposób dodawania szczegółów aprowizacji 
 
         5. Po wyświetleniu monitu można opcjonalnie wprowadzić _nazwę pospolitą_ dla certyfikatów.
         6. To narzędzie generuje lokalnie **Certyfikat klienta**, **Klucz prywatny certyfikatu klienta** oraz **Certyfikat główny**.
-        7. Skopiuj **Certyfikat główny** razem z wierszami **_-----BEGIN CERTIFICATE-----_** i **_-----END CERTIFICATE-----_**. 
+        7. Skopiuj **Certyfikat główny** razem z wierszami **_-----BEGIN CERTIFICATE-----_** i **_-----END CERTIFICATE-----_** . 
         8. Przypisz wartość **certyfikatu głównego** do parametru **PUBLIC_KEY_CERTIFICATE_STRING** w sposób przedstawiony poniżej:
 
                 ```Java
@@ -142,7 +142,7 @@ W poniższych krokach przedstawiono sposób dodawania szczegółów aprowizacji 
 
 ## <a name="build-and-run-sample-group-enrollment"></a>Kompilowanie i uruchamianie przykładowej rejestracji grupowej
 
-1. Otwórz okno polecenia i przejdź do folderu **_azure-iot-sdk-java/provisioning/provisioning-samples/service-enrollment-group-sample_**.
+1. Otwórz okno polecenia i przejdź do folderu **_azure-iot-sdk-java/provisioning/provisioning-samples/service-enrollment-group-sample_** .
 
 2. Skompiluj przykładowy kod za pomocą tego polecenia:
 
@@ -207,9 +207,9 @@ Jeśli planujesz eksplorować przykładową usługę Java, nie usuwaj zasobów u
 
 1. Zamknij okno danych wyjściowych przykładowej usługi Java na swojej maszynie.
 1. Zamknij okno _Generator certyfikatów X509_ na swojej maszynie.
-1. Przejdź do usługi Device Provisioning w witrynie Azure Portal, kliknij pozycję **Zarządzanie rejestracjami**, a następnie wybierz kartę **Grupy rejestracji**. Wybierz *NAZWĘ GRUPY* urządzeń X.509 zarejestrowanych w ramach tego przewodnika Szybki start i kliknij przycisk **Usuń** u góry bloku.  
+1. Przejdź do usługi Device Provisioning w Azure Portal kliknij pozycję **Zarządzanie rejestracjami**, a następnie wybierz kartę **grupy rejestracji** . Wybierz *nazwę grupy* dla urządzeń X. 509 zarejestrowanych przy użyciu tego przewodnika Szybki Start, a następnie kliknij przycisk **Usuń** w górnej części bloku.  
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 W tym przewodniku Szybki start zarejestrowano symulowaną grupę urządzeń X.509 w usłudze Device Provisioning. Aby uzyskać dokładne informacje na temat aprowizowania urządzeń, przejdź do samouczka poświęconego konfiguracji usługi Device Provisioning Service w witrynie Azure portal. 
 
 > [!div class="nextstepaction"]

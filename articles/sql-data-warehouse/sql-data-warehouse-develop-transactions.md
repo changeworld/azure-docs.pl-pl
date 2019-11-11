@@ -11,12 +11,12 @@ ms.date: 03/22/2019
 ms.author: xiaoyul
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 09fc0f7cee38f799322a1914848a5176e9a223a1
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 376b7b8a734e5064713237e9250542a4c5cc18f1
+ms.sourcegitcommit: bc193bc4df4b85d3f05538b5e7274df2138a4574
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73692773"
+ms.lasthandoff: 11/10/2019
+ms.locfileid: "73903074"
 ---
 # <a name="using-transactions-in-sql-data-warehouse"></a>Korzystanie z transakcji w SQL Data Warehouse
 Wskazówki dotyczące implementowania transakcji w Azure SQL Data Warehouse na potrzeby tworzenia rozwiązań.
@@ -78,7 +78,7 @@ Limit rozmiaru transakcji jest stosowany dla transakcji lub operacji. Nie jest o
 Aby zoptymalizować i zminimalizować ilość danych zapisywana w dzienniku, zapoznaj się z artykułem [najlepsze rozwiązania](sql-data-warehouse-develop-best-practices-transactions.md) w zakresie transakcji.
 
 > [!WARNING]
-> Maksymalny rozmiar transakcji można uzyskać tylko w przypadku tabel rozproszonych lub ROUND_ROBIN rozproszonej, gdzie rozproszenie danych jest parzyste. Jeśli transakcja zapisuje dane w sposób skośny do dystrybucji, to limit jest prawdopodobnie osiągnięty przed maksymalnym rozmiarem transakcji.
+> Maksymalny rozmiar transakcji można osiągnąć tylko dla skrótów lub ROUND_ROBIN rozproszonych tabel, w których rozproszenie danych jest parzyste. Jeśli transakcja zapisuje dane w sposób skośny do dystrybucji, to limit jest prawdopodobnie osiągnięty przed maksymalnym rozmiarem transakcji.
 > <!--REPLICATED_TABLE-->
 > 
 > 
@@ -87,7 +87,7 @@ Aby zoptymalizować i zminimalizować ilość danych zapisywana w dzienniku, zap
 SQL Data Warehouse używa funkcji XACT_STATE (), aby zgłosić nieudaną transakcję przy użyciu wartości-2. Ta wartość oznacza, że transakcja zakończyła się niepowodzeniem i jest oznaczona wyłącznie do wycofania.
 
 > [!NOTE]
-> Użycie-2 przez funkcję XACT_STATE w celu określenia nieudanej transakcji reprezentuje inne zachowanie SQL Server. SQL Server używa wartości-1 do reprezentowania transakcji niezatwierdzonej. SQL Server może tolerować błędy wewnątrz transakcji, bez konieczności oznaczania jej jako niezatwierdzonej. Na przykład `SELECT 1/0` może spowodować błąd, ale nie wymusić transakcji w stanie niezatwierdzonym. SQL Server również zezwala na odczyty w transakcji niezatwierdzonej. Jednak SQL Data Warehouse nie zezwala na to. Jeśli wystąpi błąd w ramach transakcji SQL Data Warehouse, automatycznie wprowadzi stan-2 i nie będzie można wykonać żadnych dalszych instrukcji SELECT do momentu wycofania instrukcji z powrotem. W związku z tym ważne jest, aby sprawdzić, czy kod aplikacji jest używany XACT_STATE (), ponieważ może być konieczne wprowadzenie modyfikacji kodu.
+> Użycie-2 przez funkcję XACT_STATE, aby zauważyć, że nieudana transakcja reprezentuje inne zachowanie, aby SQL Server. SQL Server używa wartości-1 do reprezentowania transakcji niezatwierdzonej. SQL Server może tolerować błędy wewnątrz transakcji, bez konieczności oznaczania jej jako niezatwierdzonej. Na przykład `SELECT 1/0` może spowodować błąd, ale nie wymusić transakcji w stanie niezatwierdzonym. SQL Server również zezwala na odczyty w transakcji niezatwierdzonej. Jednak SQL Data Warehouse nie zezwala na to. Jeśli wystąpi błąd w ramach transakcji SQL Data Warehouse, automatycznie wprowadzi stan-2 i nie będzie można wykonać żadnych dalszych instrukcji SELECT do momentu wycofania instrukcji z powrotem. W związku z tym ważne jest, aby sprawdzić, czy kod aplikacji jest używany XACT_STATE (), ponieważ może być konieczne dokonanie modyfikacji kodu.
 > 
 > 
 
@@ -151,8 +151,8 @@ BEGIN TRAN
 
         IF @@TRANCOUNT > 0
         BEGIN
-            PRINT 'ROLLBACK';
             ROLLBACK TRAN;
+            PRINT 'ROLLBACK';
         END
 
         SELECT  ERROR_NUMBER()    AS ErrNumber
@@ -172,7 +172,7 @@ END
 SELECT @xact_state AS TransactionState;
 ```
 
-Oczekiwane zachowanie jest teraz obserwowane. Błąd w transakcji jest zarządzany, a funkcje ERROR_ * zapewniają wartości zgodnie z oczekiwaniami.
+Oczekiwane zachowanie jest teraz obserwowane. Błąd w transakcji jest zarządzany, a ERROR_ * funkcje zapewniają wartości zgodnie z oczekiwaniami.
 
 Wszystko, co zostało zmienione, polega na tym, że WYCOFANie transakcji musiało wystąpić przed odczytaniem informacji o błędzie w bloku CATCH.
 

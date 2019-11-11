@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.date: 05/02/2019
 ms.author: lcozzens
 ms.custom: mvc
-ms.openlocfilehash: dbfb6a1c4c53b1bd255560e688d3dc0cf3835a3a
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 8d286cbab33a1fb6a2d2a2cb70caed11b21af735
+ms.sourcegitcommit: bc193bc4df4b85d3f05538b5e7274df2138a4574
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73469639"
+ms.lasthandoff: 11/10/2019
+ms.locfileid: "73904090"
 ---
 # <a name="azure-app-configuration-faq"></a>Konfiguracja aplikacji platformy Azure — często zadawane pytania
 
@@ -42,9 +42,19 @@ Konfiguracja aplikacji jest uzupełniana do Key Vault, a dwa z nich powinny być
 
 Mimo że konfiguracja aplikacji zapewnia zabezpieczenia z ograniczeniami, Key Vault jest nadal najlepszym miejscem do przechowywania wpisów tajnych aplikacji. Key Vault zapewnia szyfrowanie na poziomie sprzętu, szczegółowe zasady dostępu i operacje zarządzania, takie jak rotacja certyfikatów.
 
+Można utworzyć wartości konfiguracji aplikacji, które odwołują się do wpisów tajnych przechowywanych w Key Vault. Aby uzyskać więcej informacji, zobacz [Korzystanie z odwołań Key Vault w aplikacji ASP.NET Core](./use-key-vault-references-dotnet-core.md).
+
 ## <a name="does-app-configuration-encrypt-my-data"></a>Czy konfiguracja aplikacji szyfruje moje dane?
 
 Tak. Konfiguracja aplikacji szyfruje wszystkie przechowywane wartości klucza i szyfruje komunikację sieciową. Nazwy kluczy są używane jako indeksy do pobierania danych konfiguracji i nie są szyfrowane.
+
+## <a name="how-is-app-configuration-different-from-azure-app-service-settings"></a>Czym różni się konfiguracja aplikacji od ustawień Azure App Service?
+
+Azure App Service umożliwia zdefiniowanie ustawień aplikacji dla każdego wystąpienia App Service. Te ustawienia są przesyłane jako zmienne środowiskowe do kodu aplikacji. W razie potrzeby można skojarzyć ustawienie z określonym miejscem wdrożenia. Aby uzyskać więcej informacji, zobacz [Konfigurowanie ustawień aplikacji](/azure/app-service/configure-common#configure-app-settings).
+
+W przeciwieństwie do konfiguracji aplikacji platformy Azure można definiować ustawienia, które mogą być współużytkowane przez wiele aplikacji, w tym aplikacje działające w App Service. Te ustawienia są dostępne w kodzie aplikacji za pośrednictwem dostawców konfiguracji dla platform .NET i Java za pomocą zestawu Azure SDK lub bezpośrednio za pośrednictwem interfejsów API REST.
+
+Można również importować i eksportować ustawienia między App Service i konfiguracji aplikacji. Dzięki temu można szybko skonfigurować nowy magazyn konfiguracji aplikacji na podstawie istniejących ustawień App Service lub łatwo udostępnić konfigurację istniejącej aplikacji, która opiera się na App Service ustawieniach.
 
 ## <a name="are-there-any-size-limitations-on-keys-and-values-stored-in-app-configuration"></a>Czy istnieją jakieś ograniczenia rozmiaru kluczy i wartości przechowywanych w konfiguracji aplikacji?
 

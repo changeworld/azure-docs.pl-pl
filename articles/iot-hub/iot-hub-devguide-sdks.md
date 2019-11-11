@@ -8,12 +8,12 @@ ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
 ms.date: 09/14/2018
-ms.openlocfilehash: 7113914fe8681ca099fc0f3fc1e4a7d064c19480
-ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
+ms.openlocfilehash: 22734d29973f0d7102307aa9038b6ebe7cc2521b
+ms.sourcegitcommit: bc193bc4df4b85d3f05538b5e7274df2138a4574
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/15/2019
-ms.locfileid: "71000249"
+ms.lasthandoff: 11/10/2019
+ms.locfileid: "73903314"
 ---
 # <a name="understand-and-use-azure-iot-hub-sdks"></a>Omówienie zestawów SDK IoT Hub platformy Azure i korzystanie z nich
 
@@ -164,7 +164,7 @@ Zestawy SDK urządzeń i usług dla platformy Azure dla języka Python:
 
 Zestawy SDK usługi Azure IoT oferują również zestaw narzędzi, które ułatwiają programowanie:
 * [iothub-Diagnostics](https://github.com/Azure/iothub-diagnostics): międzyplatformowe narzędzie wiersza polecenia pomagające zdiagnozować problemy związane z połączeniem z IoT Hub.
-* [Eksplorator urządzeń](https://github.com/Azure/azure-iot-sdk-csharp/tree/master/tools/DeviceExplorer): aplikacja klasyczna systemu Windows do łączenia się z IoT Hub.
+* [Azure-IoT-Explorer](https://github.com/Azure/azure-iot-explorer): międzyplatformowa aplikacja klasyczna umożliwiająca łączenie się z IoT Hub i Dodawanie/zarządzanie/komunikacja z urządzeniami IoT.
 
 Odpowiednie dokumenty dotyczące programowania przy użyciu zestawów SDK usługi Azure IoT:
 * Informacje o [sposobach zarządzania łącznością i niezawodną obsługą komunikatów](iot-hub-reliability-features-in-sdks.md) przy użyciu zestawów SDK IoT Hub.

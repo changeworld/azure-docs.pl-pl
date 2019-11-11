@@ -6,14 +6,14 @@ author: axayjo
 ms.service: virtual-machines
 ms.topic: include
 ms.date: 05/06/2019
-ms.author: akjosh; cynthn
+ms.author: akjosh
 ms.custom: include file
-ms.openlocfilehash: 9a564bf7f633903c58a5719327216baee2df6550
-ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
+ms.openlocfilehash: 18c85995c545e1b603333fd6788b70cd863865ce
+ms.sourcegitcommit: bc193bc4df4b85d3f05538b5e7274df2138a4574
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/08/2019
-ms.locfileid: "72026157"
+ms.lasthandoff: 11/10/2019
+ms.locfileid: "73905009"
 ---
 Udostępniona Galeria obrazów to usługa, która ułatwia tworzenie struktury i organizacji na całym zarządzanym obrazie. Udostępnione Galerie obrazów zapewniają następujące:
 
@@ -33,9 +33,10 @@ Funkcja galerii obrazów udostępnionych ma wiele typów zasobów:
 
 | Zasób | Opis|
 |----------|------------|
-| **Obraz zarządzany** | Podstawowy obraz, który może być używany samodzielnie lub do tworzenia **wersji obrazu** w galerii obrazów. Obrazy zarządzane są tworzone na podstawie uogólnionych maszyn wirtualnych. Obraz zarządzany jest specjalnym typem dysku VHD, który może służyć do tworzenia wielu maszyn wirtualnych i może być teraz używany do utworzenia wersji obrazu udostępnionego. |
+| **Obraz zarządzany** | Podstawowy obraz, który może być używany samodzielnie lub do tworzenia **wersji obrazu** w galerii obrazów. Obrazy zarządzane są tworzone na podstawie [uogólnionych](#generalized-and-specialized-images) maszyn wirtualnych. Obraz zarządzany jest specjalnym typem dysku VHD, który może służyć do tworzenia wielu maszyn wirtualnych i może być teraz używany do utworzenia wersji obrazu udostępnionego. |
+| **Zdjęcie** | Kopia dysku VHD, której można użyć do udostępnienia **wersji obrazu**. Migawki mogą być pobierane z [wyspecjalizowanej](#generalized-and-specialized-images) maszyny wirtualnej (która nie została uogólniona), a następnie używana samodzielnie lub z migawkami dysków danych, aby utworzyć wyspecjalizowaną wersję obrazu.
 | **Galeria obrazów** | Podobnie jak w przypadku portalu Azure Marketplace, **Galeria obrazów** jest repozytorium do zarządzania i udostępniania obrazów, ale ty kontrolujesz, kto ma dostęp. |
-| **Definicja obrazu** | Obrazy są zdefiniowane w galerii i zawierają informacje o obrazie i wymaganiach dotyczących używania go w organizacji. Można dołączać informacje takie jak obraz systemu Windows lub Linux, minimalne i maksymalne wymagania dotyczące pamięci oraz informacje o wersji. Jest to definicja typu obrazu. |
+| **Definicja obrazu** | Obrazy są zdefiniowane w galerii i zawierają informacje o obrazie i wymaganiach dotyczących używania go w organizacji. Można dołączyć informacje takie jak uogólnione lub wyspecjalizowane obrazy, system operacyjny, minimalne i maksymalne wymagania dotyczące pamięci oraz informacje o wersji. Jest to definicja typu obrazu. |
 | **Wersja obrazu** | **Wersja obrazu** jest używana do tworzenia maszyny wirtualnej w przypadku korzystania z galerii. Dla danego środowiska można mieć wiele wersji obrazu. Podobnie jak w przypadku obrazu zarządzanego, w przypadku tworzenia maszyny wirtualnej przy użyciu **wersji obrazu** wersja obrazu jest używana do tworzenia nowych dysków dla maszyny wirtualnej. Wersje obrazów można wielokrotnie używać. |
 
 <br>
@@ -48,7 +49,7 @@ Definicje obrazów są logiczną grupą dla wersji obrazu. Definicja obrazu zawi
 
 Istnieją trzy parametry dla każdej definicji obrazu, które są używane w połączeniu **wydawcy**, **oferty** i **jednostki SKU**. Są one używane do znajdowania konkretnej definicji obrazu. Możesz mieć wersje obrazów, które współdzielą jeden lub dwa, ale nie wszystkie trzy wartości.  Na przykład poniżej przedstawiono trzy definicje obrazów i ich wartości:
 
-|Definicja obrazu|Publisher|Oferta|Jednostka SKU|
+|Definicja obrazu|Wydawca|Oferta|SKU|
 |---|---|---|---|
 |myImage1|Contoso|Finanse|Danych|
 |myImage2|Contoso|Finanse|Frontonu|
@@ -58,7 +59,7 @@ Wszystkie trzy z nich mają unikatowe zestawy wartości. Ten format jest podobny
 
 Poniżej znajdują się inne parametry, które można ustawić w definicji obrazu, dzięki czemu można łatwiej śledzić zasoby:
 
-* Stan systemu operacyjnego — można ustawić uogólniony lub wyspecjalizowany stan systemu operacyjnego, ale tylko uogólnione jest obecnie obsługiwane. Obrazy muszą być tworzone na podstawie maszyn wirtualnych, które zostały uogólnione przy użyciu programu Sysprep dla systemu Windows lub `waagent -deprovision` w systemie Linux.
+* Stan systemu operacyjnego — można ustawić [uogólniony lub wyspecjalizowany](#generalized-and-specialized-images)stan systemu operacyjnego.
 * System operacyjny — może to być system Windows lub Linux.
 * Opis — Użyj opisu, aby uzyskać bardziej szczegółowe informacje na temat tego, dlaczego istnieje definicja obrazu. Na przykład może istnieć definicja obrazu dla serwera frontonu, na którym jest wstępnie zainstalowana aplikacja.
 * EULA — może służyć do wskazywania umowy licencyjnej użytkownika końcowego dotyczącej definicji obrazu.
@@ -68,21 +69,43 @@ Poniżej znajdują się inne parametry, które można ustawić w definicji obraz
 * Minimalne i maksymalne zalecenia dotyczące vCPU i pamięci — Jeśli obraz ma zalecenia vCPU i pamięci, możesz dołączyć te informacje do definicji obrazu.
 * Niedozwolone typy dysków — można podać informacje o wymaganiach dotyczących magazynu dla maszyny wirtualnej. Na przykład jeśli obraz nie jest odpowiedni dla standardowych dysków DYSKowych, należy dodać je do listy nie Zezwalaj.
 
+## <a name="generalized-and-specialized-images"></a>Uogólnione i wyspecjalizowane obrazy
+
+Udostępnione galerii obrazów są obsługiwane przez dwa stany systemu operacyjnego. Zazwyczaj obrazy wymagają, aby maszyna wirtualna użyta do utworzenia obrazu była uogólniona przed pobraniem obrazu. Uogólnianie to proces, który usuwa informacje specyficzne dla komputera i użytkownika z maszyny wirtualnej. W przypadku systemu Windows jest używany program Sysprep. W przypadku systemu Linux można użyć parametrów [waagent](https://github.com/Azure/WALinuxAgent) `-deprovision` lub `-deprovision+user`.
+
+Wyspecjalizowane maszyny wirtualne nie przechodzący przez proces usuwania konkretnych informacji i kont komputera. Ponadto maszyny wirtualne utworzone na podstawie specjalnych obrazów nie mają skojarzonych z nimi `osProfile`. Oznacza to, że specjalne obrazy mają pewne ograniczenia.
+
+- Konta, których można użyć do logowania się do maszyny wirtualnej, można również używać na dowolnej maszynie wirtualnej utworzonej przy użyciu obrazu wyspecjalizowanego tworzonego na podstawie tej maszyny wirtualnej.
+- Maszyny wirtualne będą miały **nazwę komputera** maszyny wirtualnej, z której zrobiono obraz. Należy zmienić nazwę komputera, aby uniknąć kolizji.
+- `osProfile` polega na tym, jak niektóre informacje poufne są przesyłane do maszyny wirtualnej przy użyciu `secrets`. Może to powodować problemy przy użyciu magazynu kluczy, usługi WinRM i innych funkcji, które używają `secrets` w `osProfile`. W niektórych przypadkach można użyć tożsamości usługi zarządzanej (MSI) do obejścia tych ograniczeń.
+
+> [!IMPORTANT]
+> Wyspecjalizowane obrazy są obecnie dostępne w publicznej wersji zapoznawczej.
+> Ta wersja zapoznawcza nie jest objęta umową dotyczącą poziomu usług i nie zalecamy korzystania z niej w przypadku obciążeń produkcyjnych. Niektóre funkcje mogą być nieobsługiwane lub ograniczone. Aby uzyskać więcej informacji, zobacz [Uzupełniające warunki korzystania z wersji zapoznawczych platformy Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+>
+> **Ograniczenia znanej wersji zapoznawczej** Maszyny wirtualne można tworzyć tylko z wyspecjalizowanych obrazów przy użyciu portalu lub interfejsu API. Program nie obsługuje interfejsu wiersza polecenia lub programu PowerShell dla wersji zapoznawczej.
+
+
 ## <a name="regional-support"></a>Obsługa regionalna
 
 Regiony źródłowe są wymienione w poniższej tabeli. Wszystkie regiony publiczne mogą być regionami docelowymi, ale w celu replikowania do Australii Środkowej i Australii środkowej 2 trzeba mieć subskrypcję listy dozwolonych. Aby zażądać listy dozwolonych, przejdź do: https://azure.microsoft.com/global-infrastructure/australia/contact/
 
-| Regiony źródłowe |
-|---------------------|-----------------|------------------|-----------------|
-| Australia Środkowa   | Środkowe stany USA — EUAP | Korea Środkowa    | Zachodnio-środkowe stany USA |
-| Australia Środkowa 2 | Azja Wschodnia       | Korea Południowa      | Europa Zachodnia     |
-| Australia Wschodnia      | Wschodnie stany USA         | Północno-środkowe stany USA | Indie Zachodnie      |
-| Australia Południowo-Wschodnia | Wschodnie stany USA 2       | Europa Północna     | Zachodnie stany USA         |
-| Brazylia Południowa        | Wschodnie stany USA 2 — EUAP  | Południowo-środkowe stany USA | Zachodnie stany USA 2       |
-| Kanada Środkowa      | Francja Środkowa  | Indie Południowe      | Chiny Wschodnie      |
-| Kanada Wschodnia         | Francja Południowa    | Azja Południowo-wschodnia   | Chiny Wschodnie 2    |
-| Indie Środkowe       | Japonia Wschodnia      | Południowe Zjednoczone Królestwo         | Chiny Północne     |
-| Środkowe stany USA          | Japonia Zachodnia      | Zachodnie Zjednoczone Królestwo          | Chiny Północne 2   |
+
+| Regiony źródłowe        |                   |                    |                    |
+| --------------------- | ----------------- | ------------------ | ------------------ |
+| Australia Środkowa     | Chiny Wschodnie        | Indie Południowe        | Europa Zachodnia        |
+| Australia Środkowa 2   | Chiny Wschodnie 2      | Azja Południowo-Wschodnia     | Południowe Zjednoczone Królestwo           |
+| Australia Wschodnia        | Chiny Północne       | Japonia Wschodnia         | Zachodnie Zjednoczone Królestwo            |
+| Australia Południowo-Wschodnia   | Chiny Północne 2     | Japonia Zachodnia         | US DoD — środkowe stany     |
+| Brazylia Południowa          | Azja Wschodnia         | Korea Środkowa      | US DoD — wschodnie stany        |
+| Kanada Środkowa        | Wschodnie stany USA           | Korea Południowa        | Administracja USA — Arizona     |
+| Kanada Wschodnia           | Wschodnie stany USA 2         | Środkowo-północne stany USA   | Administracja USA — Teksas       |
+| Indie Środkowe         | Wschodnie stany USA 2 — EUAP    | Europa Północna       | Administracja USA — Wirginia    |
+| Środkowe stany USA            | Francja Środkowa    | Środkowo-południowe stany USA   | Indie Zachodnie         |
+| Środkowe stany USA — EUAP       | Francja Południowa      | Środkowo-zachodnie stany USA    | Zachodnie stany USA            |
+|                       |                   |                    | Zachodnie stany USA 2          |
+
+
 
 ## <a name="limits"></a>Limity 
 
@@ -109,7 +132,7 @@ Zawsze zalecamy przeprowadzenie aprowizacji liczby replik ze względu na takie c
 
 [Magazyn strefowo nadmiarowy (ZRS) platformy Azure](https://azure.microsoft.com/blog/azure-zone-redundant-storage-in-public-preview/) zapewnia odporność na awarię strefy dostępności w regionie. Korzystając z ogólnej dostępności galerii obrazów udostępnionych, można wybrać przechowywanie obrazów na kontach ZRS w regionach, w których Strefy dostępności. 
 
-Możesz również wybrać typ konta dla każdego regionu docelowego. Domyślnym typem konta magazynu jest Standard_LRS, ale można wybrać Standard_ZRS dla regionów z Strefy dostępności. Sprawdź regionalną dostępność ZRS [tutaj](https://docs.microsoft.com/azure/storage/common/storage-redundancy-zrs).
+Możesz również wybrać typ konta dla każdego regionu docelowego. Domyślny typ konta magazynu to Standard_LRS, ale można wybrać Standard_ZRS dla regionów z Strefy dostępności. Sprawdź regionalną dostępność ZRS [tutaj](https://docs.microsoft.com/azure/storage/common/storage-redundancy-zrs).
 
 ![Ilustracja przedstawiająca ZRS](./media/shared-image-galleries/zrs.png)
 
@@ -120,7 +143,7 @@ Regiony, w których jest replikowana wersja udostępnionego obrazu, mogą zosta�
 
 ![Ilustracja przedstawiająca sposób replikowania obrazów](./media/shared-image-galleries/replication.png)
 
-## <a name="access"></a>Dostęp
+## <a name="access"></a>Access
 
 Jako Galeria obrazów udostępnionych, definicja obrazu i wersja obrazu są wszystkie zasoby, które można udostępniać przy użyciu wbudowanych kontrolek kontroli RBAC platformy Azure. Za pomocą RBAC można udostępniać te zasoby innym użytkownikom, podmiotom usługi i grupom. Możesz nawet udostępnić dostęp osobom spoza dzierżawy, w ramach której zostały utworzone. Gdy użytkownik ma dostęp do udostępnionej wersji obrazu, może wdrożyć maszynę wirtualną lub zestaw skalowania maszyn wirtualnych.  Oto macierz udostępniania, która pomaga zrozumieć, do czego użytkownik uzyskuje dostęp:
 
@@ -217,15 +240,16 @@ Tak. Istnieją 3 scenariusze na podstawie typów obrazów, które mogą mieć.
 
  Scenariusz 1. Jeśli masz obraz zarządzany, możesz utworzyć definicję obrazu i wersję obrazu.
 
- Scenariusz 2. Jeśli masz niezarządzany obraz uogólniony, możesz utworzyć z niego obraz zarządzany, a następnie utworzyć definicję obrazu i wersję obrazu. 
+ Scenariusz 2. Jeśli masz obraz niezarządzany, możesz utworzyć z niego obraz zarządzany, a następnie utworzyć definicję obrazu i wersję obrazu. 
 
- Scenariusz 3. Jeśli masz dysk VHD w lokalnym systemie plików, musisz przekazać dysk VHD, utworzyć obraz zarządzany, a następnie utworzyć definicję obrazu i wersję z obrazu.
-- Jeśli wirtualny dysk twardy jest maszyną wirtualną z systemem Windows, zobacz [przekazywanie uogólnionego wirtualnego dysku twardego](https://docs.microsoft.com/azure/virtual-machines/windows/upload-generalized-managed).
+ Scenariusz 3. Jeśli masz dysk VHD w lokalnym systemie plików, musisz przekazać wirtualny dysk twardy do zarządzanego obrazu, a następnie utworzyć definicję obrazu i wersję obrazu.
+
+- Jeśli wirtualny dysk twardy jest maszyną wirtualną z systemem Windows, zobacz [przekazywanie wirtualnego dysku twardego](https://docs.microsoft.com/azure/virtual-machines/windows/upload-generalized-managed).
 - Jeśli wirtualny dysk twardy jest przeznaczony dla maszyny wirtualnej z systemem Linux, zobacz [przekazywanie wirtualnego dysku twardego](https://docs.microsoft.com/azure/virtual-machines/linux/upload-vhd#option-1-upload-a-vhd)
 
 ### <a name="can-i-create-an-image-version-from-a-specialized-disk"></a>Czy mogę utworzyć wersję obrazu z wyspecjalizowanego dysku?
 
-Nie, obecnie nie obsługujemy wyspecjalizowanych dysków jako obrazów. Jeśli masz wyspecjalizowany dysk, musisz [utworzyć maszynę wirtualną na podstawie wirtualnego dysku twardego](https://docs.microsoft.com/azure/virtual-machines/windows/create-vm-specialized-portal#create-a-vm-from-a-disk) , dołączając wyspecjalizowany dysk do nowej maszyny wirtualnej. Gdy masz działającą maszynę wirtualną, musisz postępować zgodnie z instrukcjami, aby utworzyć obraz zarządzany na podstawie [maszyny wirtualnej](https://docs.microsoft.com/azure/virtual-machines/windows/tutorial-custom-images) lub [maszyny wirtualnej](https://docs.microsoft.com/azure/virtual-machines/linux/tutorial-custom-images)z systemem Linux. Gdy masz uogólniony zarządzany obraz, możesz rozpocząć proces, aby utworzyć udostępniony obraz opisu i wersję obrazu.
+Tak, obsługa wyspecjalizowanych dysków jako obrazów jest w wersji zapoznawczej. Maszynę wirtualną można utworzyć tylko na podstawie wyspecjalizowanego obrazu przy użyciu portalu ([Windows](../articles/virtual-machines/linux/shared-images-portal.md) lub [Linux](../articles/virtual-machines/linux/shared-images-portal.md)) i interfejsu API. Brak obsługi programu PowerShell na potrzeby wersji zapoznawczej.
 
 ### <a name="can-i-move-the-shared-image-gallery-resource-to-a-different-subscription-after-it-has-been-created"></a>Czy mogę przenieść zasób udostępnionej galerii obrazów do innej subskrypcji po jej utworzeniu?
 
@@ -235,7 +259,7 @@ Nie, nie można przenieść zasobu udostępnionej galerii obrazów do innej subs
 
 Nie, nie można replikować wersji obrazu w chmurach.
 
-### <a name="can-i-replicate-my-image-versions-across-subscriptions"></a>Czy można replikować wersje obrazów między subskrypcjami? 
+### <a name="can-i-replicate-my-image-versions-across-subscriptions"></a>Czy można replikować wersje obrazów między subskrypcjami?
 
 Nie, możesz replikować wersje obrazów między regionami w ramach subskrypcji i używać ich w innych subskrypcjach za pośrednictwem RBAC.
 

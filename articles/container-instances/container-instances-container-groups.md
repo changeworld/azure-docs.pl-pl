@@ -6,15 +6,15 @@ author: dlepow
 manager: gwallace
 ms.service: container-instances
 ms.topic: article
-ms.date: 03/20/2019
+ms.date: 11/01/2019
 ms.author: danlep
 ms.custom: mvc
-ms.openlocfilehash: cc9b11ba5fe0cd015d0879f28b9e85fb46b11955
-ms.sourcegitcommit: 83df2aed7cafb493b36d93b1699d24f36c1daa45
+ms.openlocfilehash: a785ecbfa09c54d3affa97c220d4808f9fe8d90b
+ms.sourcegitcommit: bc193bc4df4b85d3f05538b5e7274df2138a4574
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/22/2019
-ms.locfileid: "71178581"
+ms.lasthandoff: 11/10/2019
+ms.locfileid: "73904447"
 ---
 # <a name="container-groups-in-azure-container-instances"></a>Grupy kontenerów w Azure Container Instances
 
@@ -22,7 +22,7 @@ Zasób najwyższego poziomu w Azure Container Instances jest *grupą kontenerów
 
 ## <a name="how-a-container-group-works"></a>Jak działa Grupa kontenerów
 
-Grupa kontenerów to kolekcja kontenerów, które są planowane na tym samym komputerze-hoście. Kontenery w grupie kontenerów współdzielą cykl życia, zasoby, sieć lokalną i woluminy magazynu. Jest to podobne w koncepcji w [Kubernetes][kubernetes-pod].
+Grupa kontenerów to kolekcja kontenerów, które są planowane na tym samym komputerze-hoście. Kontenery w grupie kontenerów współdzielą cykl życia, zasoby, sieć lokalną i woluminy magazynu. Jest to podobne w *koncepcji w* [Kubernetes][kubernetes-pod].
 
 Na poniższym diagramie przedstawiono przykład grupy kontenerów zawierającej wiele kontenerów:
 
@@ -37,7 +37,7 @@ Ta przykładowa Grupa kontenerów:
 * Obejmuje dwa udziały plików platformy Azure jako instalacje woluminów, a każdy kontener instaluje jeden z udziałów lokalnie.
 
 > [!NOTE]
-> Grupy wielokontenerowe obsługują obecnie tylko kontenery systemu Linux. W przypadku kontenerów systemu Windows Azure Container Instances obsługuje tylko wdrożenie jednego wystąpienia. Gdy pracujemy nad przełączeniem wszystkich funkcji do kontenerów systemu Windows, w przeglądzie usługi można znaleźć [](container-instances-overview.md#linux-and-windows-containers)bieżące różnice między platformami.
+> Grupy wielokontenerowe obsługują obecnie tylko kontenery systemu Linux. W przypadku kontenerów systemu Windows Azure Container Instances obsługuje tylko wdrożenie jednego wystąpienia. Gdy pracujemy nad przełączeniem wszystkich funkcji do kontenerów systemu Windows, w [przeglądzie](container-instances-overview.md#linux-and-windows-containers)usługi można znaleźć bieżące różnice między platformami.
 
 ## <a name="deployment"></a>Wdrożenie
 
@@ -51,15 +51,17 @@ Aby zachować konfigurację grupy kontenerów, można wyeksportować konfiguracj
 
 Azure Container Instances przydzielać zasoby, takie jak procesory CPU, pamięć i opcjonalnie [procesory GPU][gpus] (wersja zapoznawcza) do grupy kontenerów przez dodanie [żądań zasobów][resource-requests] wystąpień w grupie. Jeśli na przykład utworzysz grupę kontenerów z dwoma wystąpieniami, każdy z nich żąda 1 procesora CPU, Grupa kontenerów zostanie przypisana 2 procesory CPU.
 
-Maksymalna liczba zasobów dostępnych dla grupy kontenerów zależy od [regionu platformy Azure][region-availability] używanego do wdrożenia.
+### <a name="resource-usage-by-instances"></a>Użycie zasobów według wystąpień
 
-### <a name="container-resource-requests-and-limits"></a>Żądania i limity zasobów kontenera
+Każde wystąpienie kontenera ma przydzieloną zasoby określone w żądaniu zasobu. Jednak użycie zasobów przez wystąpienie kontenera w grupie zależy od sposobu skonfigurowania jego opcjonalnej właściwości [limitu zasobów][resource-limits] .
 
-* Domyślnie wystąpienia kontenerów w grupie udostępniają żądane zasoby grupy. W grupie z dwoma wystąpieniami żądające 1 procesora CPU Grupa jako całość ma dostęp do 2 procesorów CPU. Każde wystąpienie może korzystać z maksymalnie dwóch procesorów CPU, a wystąpienia mogą ulec konkurowaniu w przypadku zasobów procesora CPU, gdy są uruchomione.
+* Jeśli nie określisz limitu zasobów, maksymalne użycie zasobów przez wystąpienie będzie takie samo jak jego żądanie zasobu.
 
-* Aby ograniczyć użycie zasobów przez wystąpienie w grupie, opcjonalnie Ustaw [Limit zasobów][resource-limits] dla tego wystąpienia. W grupie zawierającej dwa wystąpienia żądające 1 procesora CPU jeden z kontenerów może wymagać od siebie więcej procesorów CPU.
+* W przypadku określenia limitu zasobów dla wystąpienia można dostosować użycie zasobów wystąpienia dla jego obciążenia, zmniejszając lub zwiększając użycie względem żądania zasobu. Maksymalny limit zasobów, który można ustawić, to łączna liczba zasobów przydzielono do grupy.
+    
+    Na przykład w grupie z dwoma wystąpieniami żądającym 1 procesora CPU jeden z kontenerów może uruchamiać obciążenie, które wymaga więcej niż drugi procesor CPU.
 
-  W tym scenariuszu można ustawić limit zasobów 0,5 CPU dla jednego wystąpienia i limit 2 procesorów CPU dla drugiego. Ta konfiguracja ogranicza użycie zasobów pierwszego kontenera do 0,5 procesora CPU, co pozwala drugiemu kontenerowi używać do pełnych 2 procesorów CPU, jeśli są dostępne.
+    W tym scenariuszu można ustawić limit zasobów 0,5 CPU dla jednego wystąpienia i limit 2 procesorów CPU dla drugiego. Ta konfiguracja ogranicza użycie zasobów pierwszego kontenera do 0,5 procesora CPU, co pozwala drugiemu kontenerowi używać do pełnych 2 procesorów CPU, jeśli są dostępne.
 
 Aby uzyskać więcej informacji, zobacz Właściwość [ResourceRequirements][resource-requirements] w interfejsie API REST grup kontenerów.
 

@@ -7,12 +7,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 05/22/2019
 ms.author: dacurwin
-ms.openlocfilehash: 648c5ca1eb1cb1c0f1832654fc66d436b9318af3
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.openlocfilehash: 878658135bdb8844c5c86bc207db580ccd7ff63f
+ms.sourcegitcommit: bc193bc4df4b85d3f05538b5e7274df2138a4574
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73161923"
+ms.lasthandoff: 11/10/2019
+ms.locfileid: "73903598"
 ---
 # <a name="restore-sql-server-databases-on-azure-vms"></a>Przywracanie SQL Server baz danych na maszynach wirtualnych platformy Azure
 
@@ -76,9 +76,9 @@ Przywróć w następujący sposób:
    - **Lokalizacja alternatywna**: Przywracanie bazy danych do alternatywnej lokalizacji i zachowywanie oryginalnej źródłowej bazy danych.
    - **Zastąp bazę**danych: Przywróć dane do tego samego wystąpienia SQL Server co oryginalne źródło. Ta opcja zastępuje oryginalną bazę danych.
 
-           > [!IMPORTANT]
-           > If the selected database belongs to an Always On availability group, SQL Server doesn't allow the database to be overwritten. Only **Alternate Location** is available.
-           >
+    > [!IMPORTANT]
+    > Jeśli wybrana baza danych należy do grupy dostępności Always On, SQL Server nie zezwala na zastąpienie bazy danych. Dostępna jest tylko **Lokalizacja alternatywna** .
+    >
    - **Przywróć jako pliki**: zamiast przywracać jako bazę danych, Przywróć pliki kopii zapasowej, które mogą być odzyskiwane jako baza danych później na dowolnym komputerze, na którym znajdują się pliki, przy użyciu SQL Server Management Studio.
      menu ![przywracania konfiguracji](./media/backup-azure-sql-database/restore-configuration.png)
 

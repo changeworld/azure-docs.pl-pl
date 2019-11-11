@@ -1,7 +1,7 @@
 ---
 title: Co to jest rozpoznawanie formularzy?
 titleSuffix: Azure Cognitive Services
-description: Dowiedz się, jak analizować dane formularzy i tabel przy użyciu aparatu rozpoznawania formularzy.
+description: Aparat rozpoznawania formularzy Cognitive Services platformy Azure pozwala identyfikować i wyodrębniać pary klucz/wartość oraz dane tabeli z dokumentów formularzy.
 author: PatrickFarley
 manager: nitinme
 ms.service: cognitive-services
@@ -9,12 +9,12 @@ ms.subservice: forms-recognizer
 ms.topic: overview
 ms.date: 07/25/2019
 ms.author: pafarley
-ms.openlocfilehash: b07201556f08bde4ef8c7a7904c6619a126d7765
-ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
+ms.openlocfilehash: 86e0494ded84e9711b2283ae5fad77ff626cf792
+ms.sourcegitcommit: bc193bc4df4b85d3f05538b5e7274df2138a4574
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68594546"
+ms.lasthandoff: 11/10/2019
+ms.locfileid: "73904482"
 ---
 # <a name="what-is-form-recognizer"></a>Co to jest rozpoznawanie formularzy?
 
@@ -49,7 +49,7 @@ Wymagania dotyczące danych wejściowych dla modelu paragonu są nieco inne.
 * Wymiary PDF muszą mieć co najwyżej 17 x 17 cali, odpowiadające rozmiarowi papieru legalnego lub A3 i mniejszemu.
 * W przypadku plików PDF i TIFF tylko pierwsze 200 stron jest przetwarzanych (z subskrypcją warstwy Bezpłatna, są przetwarzane tylko dwie pierwsze strony).
 
-## <a name="request-access"></a>Żądaj dostępu
+## <a name="request-access"></a>Żądanie dostępu
 
 Aparat rozpoznawania formularzy jest dostępny w wersji zapoznawczej o ograniczonym dostępie. Aby uzyskać dostęp do wersji zapoznawczej, Wypełnij i Prześlij formularz [żądania dostępu do aparatu rozpoznawania formularza](https://aka.ms/FormRecognizerRequestAccess) . Formularz żąda informacji o użytkowniku, firmie i scenariuszu użytkownika, dla którego będziesz używać aparatu rozpoznawania formularza. Jeśli żądanie zostało zatwierdzone przez zespół usługi Azure Cognitive Services, otrzymasz wiadomość e-mail z instrukcjami dotyczącymi uzyskiwania dostępu do usługi.
 
@@ -58,10 +58,10 @@ Aparat rozpoznawania formularzy jest dostępny w wersji zapoznawczej o ograniczo
 **Krok 1:** Utwórz zasób aparatu rozpoznawania formularzy w Azure Portal.
 
 **Krok 2:** Postępuj zgodnie z przewodnikiem Szybki Start, aby użyć interfejsu API REST:
-* [Szybki start: Uczenie modelu aparatu rozpoznawania formularzy i wyodrębnianie danych formularza przy użyciu interfejsu API REST z zwinięciem](quickstarts/curl-train-extract.md)
-* [Szybki start: Uczenie modelu aparatu rozpoznawania formularzy i wyodrębnianie danych formularza przy użyciu interfejsu API REST w języku Python](quickstarts/python-train-extract.md)
-* [Szybki start: Wyodrębnij dane przyjęcia przy użyciu zwinięcia](quickstarts/curl-receipts.md)
-* [Szybki start: Wyodrębnij dane przyjęcia przy użyciu języka Python](quickstarts/python-receipts.md)
+* [Szybki Start: uczenie modelu aparatu rozpoznawania formularzy i wyodrębnianie danych formularza przy użyciu interfejsu API REST z zwinięciem](quickstarts/curl-train-extract.md)
+* [Szybki Start: uczenie modelu aparatu rozpoznawania formularzy i wyodrębnianie danych formularza przy użyciu interfejsu API REST w języku Python](quickstarts/python-train-extract.md)
+* [Szybki Start: wyodrębnianie danych przyjęcia przy użyciu zwinięcia](quickstarts/curl-receipts.md)
+* [Szybki Start: wyodrębnianie danych przyjęcia przy użyciu języka Python](quickstarts/python-receipts.md)
 
 Zalecamy korzystanie z bezpłatnej usługi podczas nauki technologii. Należy pamiętać, że liczba bezpłatnych stron jest ograniczona do 500 miesięcznie.
 
@@ -79,7 +79,7 @@ Zapoznaj się z [dokumentacją interfejsu API REST](https://aka.ms/form-recogniz
 
 ## <a name="data-privacy-and-security"></a>Prywatność i zabezpieczenia danych
 
-Ta usługa jest oferowana jako [wersja](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) zapoznawcza usługi platformy Azure w ramach [warunków świadczenia usługi online](https://www.microsoftvolumelicensing.com/DocumentSearch.aspx?Mode=3&DocumentTypeId=31). Podobnie jak w przypadku wszystkich usług poznawczych, deweloperzy korzystający z usługi rozpoznawania formularzy powinni mieć świadomość zasad firmy Microsoft dotyczących danych klientów. Zobacz [stronę usług Cognitive Services](https://www.microsoft.com/trustcenter/cloudservices/cognitiveservices) w Centrum zaufania firmy Microsoft, aby dowiedzieć się więcej.
+Ta usługa jest oferowana jako [wersja zapoznawcza](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) usługi platformy Azure w ramach [warunków świadczenia usługi online](https://www.microsoftvolumelicensing.com/DocumentSearch.aspx?Mode=3&DocumentTypeId=31). Podobnie jak w przypadku wszystkich usług poznawczych, deweloperzy korzystający z usługi rozpoznawania formularzy powinni mieć świadomość zasad firmy Microsoft dotyczących danych klientów. Zobacz [stronę usług Cognitive Services](https://www.microsoft.com/trustcenter/cloudservices/cognitiveservices) w Centrum zaufania firmy Microsoft, aby dowiedzieć się więcej.
 
 ## <a name="next-steps"></a>Następne kroki
 

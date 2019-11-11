@@ -9,12 +9,12 @@ ms.author: estfan
 ms.topic: article
 ms.date: 10/01/2019
 ms.reviewer: klam, LADocs
-ms.openlocfilehash: 275d02219087d07a058f486c263d1886839dd4cf
-ms.sourcegitcommit: be8e2e0a3eb2ad49ed5b996461d4bff7cba8a837
+ms.openlocfilehash: 5b946e36c5da9f122adce1f8e3b99523a789a66f
+ms.sourcegitcommit: bc193bc4df4b85d3f05538b5e7274df2138a4574
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72799796"
+ms.lasthandoff: 11/10/2019
+ms.locfileid: "73901028"
 ---
 # <a name="call-azure-functions-from-azure-logic-apps"></a>Wywoływanie usługi Azure Functions z Azure Logic Apps
 
@@ -114,7 +114,7 @@ Aby można było utworzyć funkcję platformy Azure rozpoczynającą się od wew
 
    * Między istniejącymi krokami przepływu pracy aplikacji logiki Przenieś wskaźnik myszy nad strzałkę, wybierz znak plus (+), a następnie wybierz pozycję **Dodaj akcję**.
 
-1. W polu wyszukiwania wprowadź ciąg "Azure Functions" jako filtr. Z listy Akcje wybierz tę akcję: **Wybierz funkcję platformy Azure**
+1. W polu wyszukiwania wprowadź ciąg "Azure Functions" jako filtr. Z listy Akcje wybierz akcję **Wybierz funkcję platformy Azure** , na przykład:
 
    ![Znajdź "usługa Azure Functions"](./media/logic-apps-azure-functions/find-azure-functions-action.png)
 
@@ -126,24 +126,24 @@ Aby można było utworzyć funkcję platformy Azure rozpoczynającą się od wew
 
    1. W polu **nazwa funkcji** Podaj nazwę funkcji.
 
-   1. W polu **kod** Dodaj kod do szablonu funkcji, łącznie z odpowiedzią i ładunkiem, która ma zostać zwrócona do aplikacji logiki po zakończeniu działania funkcji.
+   1. W polu **kod** Dodaj kod do szablonu funkcji, łącznie z odpowiedzią i ładunkiem, która ma zostać zwrócona do aplikacji logiki po zakończeniu działania funkcji. Gdy wszystko będzie gotowe, wybierz pozycję **Utwórz**.
 
-      ![Zdefiniuj funkcję](./media/logic-apps-azure-functions/function-definition.png)
+   Na przykład:
 
-      W kodzie szablonu *obiekt`context`* odnosi się do wiadomości wysyłanej przez aplikację logiki za pomocą pola **treści żądania** w późniejszym kroku. Aby uzyskać dostęp do właściwości obiektu `context` z wewnątrz funkcji, użyj następującej składni:
+   ![Zdefiniuj funkcję](./media/logic-apps-azure-functions/add-code-function-definition.png)
 
-      `context.body.<property-name>`
+   W kodzie szablonu *obiekt`context`* odnosi się do wiadomości wysyłanej przez aplikację logiki za pomocą pola **treści żądania** w późniejszym kroku. Aby uzyskać dostęp do właściwości obiektu `context` z wewnątrz funkcji, użyj następującej składni:
 
-      Na przykład, aby odwołać się do właściwości `content` wewnątrz obiektu `context`, użyj następującej składni:
+   `context.body.<property-name>`
 
-      `context.body.content`
+   Na przykład, aby odwołać się do właściwości `content` wewnątrz obiektu `context`, użyj następującej składni:
 
-      Kod szablonu zawiera również zmienną `input`, która przechowuje wartość z parametru `data`, dzięki czemu funkcja może wykonywać operacje na tej wartości. Wewnątrz funkcji języka JavaScript zmienna `data` jest również skrótem `context.body`.
+   `context.body.content`
 
-      > [!NOTE]
-      > Właściwość `body` ma zastosowanie do obiektu `context` i nie jest taka sama jak token **treści** z danych wyjściowych akcji, która może być również przekazana do funkcji.
+   Kod szablonu zawiera również zmienną `input`, która przechowuje wartość z parametru `data`, dzięki czemu funkcja może wykonywać operacje na tej wartości. Wewnątrz funkcji języka JavaScript zmienna `data` jest również skrótem `context.body`.
 
-   1. Gdy wszystko będzie gotowe, wybierz pozycję **Utwórz**.
+   > [!NOTE]
+   > Właściwość `body` ma zastosowanie do obiektu `context` i nie jest taka sama jak token **treści** z danych wyjściowych akcji, która może być również przekazana do funkcji.
 
 1. W polu **treść żądania** podaj dane wejściowe funkcji, które muszą być sformatowane jako obiekt JavaScript Object Notation (JSON).
 
@@ -167,7 +167,7 @@ Aby wywołać istniejące funkcje platformy Azure z poziomu aplikacji logiki, mo
 
 1. W kroku, w którym chcesz dodać funkcję, wybierz pozycję **nowy krok**.
 
-1. W obszarze **Wybierz akcję**w polu wyszukiwania wprowadź ciąg "Azure Functions" jako filtr. Z listy Akcje wybierz tę akcję: **Wybierz funkcję platformy Azure**
+1. W obszarze **Wybierz akcję**w polu wyszukiwania wprowadź ciąg "Azure Functions" jako filtr. Z listy Akcje wybierz akcję **Wybierz funkcję platformy Azure** .
 
    ![Znajdź "usługa Azure Functions"](./media/logic-apps-azure-functions/find-azure-functions-action.png)
 

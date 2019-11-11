@@ -1,23 +1,25 @@
 ---
 title: Wyświetlanie listy obiektów BLOB przy użyciu platformy .NET — Azure Storage
-description: Dowiedz się, jak wyświetlić listę obiektów BLOB w kontenerze na koncie usługi Azure Storage za pomocą biblioteki klienckiej platformy .NET.
+description: Dowiedz się, jak wyświetlić listę obiektów BLOB w kontenerze na koncie usługi Azure Storage za pomocą biblioteki klienckiej platformy .NET. Przykłady kodu przedstawiają sposób wyświetlania listy obiektów BLOB w postaci płaskiej listy lub sposobu wyświetlania listy obiektów BLOB hierarchicznie, tak jakby były zorganizowane w katalogi lub foldery.
 services: storage
 author: tamram
 ms.service: storage
 ms.topic: article
-ms.date: 09/04/2019
+ms.date: 11/08/2019
 ms.author: tamram
 ms.subservice: blobs
-ms.openlocfilehash: bf9d2d59e993de3807a10a6c39f88b2063024bfc
-ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
+ms.openlocfilehash: 4b6dc9d80cfe96e501e575d265b9fa383b1c4d2c
+ms.sourcegitcommit: bc193bc4df4b85d3f05538b5e7274df2138a4574
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/18/2019
-ms.locfileid: "72599931"
+ms.lasthandoff: 11/10/2019
+ms.locfileid: "73902016"
 ---
 # <a name="list-blobs-with-net"></a>Wyświetlanie listy obiektów BLOB przy użyciu platformy .NET
 
-Podczas wyświetlania listy obiektów blob z kodu można określić szereg opcji zarządzania wynikami zwracanymi z usługi Azure Storage. W tym artykule przedstawiono sposób wyświetlania listy obiektów BLOB przy użyciu [biblioteki klienta usługi Azure Storage dla platformy .NET](/dotnet/api/overview/azure/storage/client).  
+Podczas wyświetlania listy obiektów blob z kodu można określić szereg opcji zarządzania wynikami zwracanymi z usługi Azure Storage. Możesz określić liczbę wyników do zwrócenia w każdym zestawie wyników, a następnie pobrać kolejne zestawy. Można określić prefiks do zwrócenia obiektów blob, których nazwy zaczynają się od znaku lub ciągu. I można wyświetlić listę obiektów BLOB w strukturze płaskiej listy lub hierarchicznie. Hierarchiczna lista zwraca obiekty blob, tak jakby były zorganizowane w folderach. 
+
+W tym artykule przedstawiono sposób wyświetlania listy obiektów BLOB przy użyciu [biblioteki klienta usługi Azure Storage dla platformy .NET](/dotnet/api/overview/azure/storage/client).  
 
 ## <a name="understand-blob-listing-options"></a>Omówienie opcji listy obiektów BLOB
 
@@ -53,7 +55,7 @@ Aby zwrócić metadane obiektu BLOB z wynikami, określ wartość **metadanych**
 
 ### <a name="flat-listing-versus-hierarchical-listing"></a>Płaska lista w porównaniu z listą hierarchiczną
 
-Obiekty blob w usłudze Azure Storage są zorganizowane z płaskim modelem, a nie hierarchicznym modelem (na przykład klasycznym systemem plików). Można jednak zorganizować obiekty blob w *katalogi wirtualne* w celu naśladowania modelu hierarchicznego. Katalog wirtualny jest częścią nazwy obiektu BLOB, który jest rozdzielony przez znak ogranicznika.
+Obiekty blob w usłudze Azure Storage są zorganizowane z płaskim modelem, a nie hierarchicznym modelem (na przykład klasycznym systemem plików). Można jednak organizować obiekty blob w *katalogi wirtualne* , aby naśladować strukturę folderów. Katalog wirtualny stanowi część nazwy obiektu BLOB i jest wskazywany przez znak ogranicznika.
 
 Aby zorganizować obiekty blob w katalogi wirtualne, użyj znaku ograniczającego w nazwie obiektu BLOB. Domyślny znak ogranicznika jest ukośnikiem (/), ale można określić dowolny znak jako ogranicznik.
 

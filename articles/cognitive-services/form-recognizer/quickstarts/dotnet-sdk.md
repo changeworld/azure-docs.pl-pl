@@ -1,6 +1,6 @@
 ---
 title: 'Szybki Start: Biblioteka klienta aparatu rozpoznawania formularzy dla platformy .NET | Microsoft Docs'
-description: Wprowadzenie do biblioteki klienta aparatu rozpoznawania formularzy dla platformy .NET.
+description: Wprowadzenie do biblioteki klienta aparatu rozpoznawania formularzy dla platformy .NET do uczenia, wyodrębnienia, analizy i pobrania danych wyjściowych z danymi strukturalnymi.
 services: cognitive-services
 author: PatrickFarley
 manager: nitinme
@@ -9,12 +9,12 @@ ms.subservice: forms-recognizer
 ms.topic: quickstart
 ms.date: 07/12/2019
 ms.author: pafarley
-ms.openlocfilehash: e4e65f38f71b458c34a6747c434ebcd1d8a1b350
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: 6d360939a0196d7e5dc651ecf9a01ef5cbd2f689
+ms.sourcegitcommit: bc193bc4df4b85d3f05538b5e7274df2138a4574
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72931567"
+ms.lasthandoff: 11/10/2019
+ms.locfileid: "73904606"
 ---
 # <a name="quickstart-form-recognizer-client-library-for-net"></a>Szybki Start: Biblioteka klienta aparatu rozpoznawania formularzy dla platformy .NET
 
@@ -28,7 +28,7 @@ Biblioteka klienta aparatu rozpoznawania w programie .NET umożliwia:
 * [Pobieranie listy modeli niestandardowych](#get-a-list-of-custom-models)
 * [Usuwanie modelu niestandardowego](#delete-a-custom-model)
 
-[Dokumentacja referencyjna](https://docs.microsoft.com/dotnet/api/overview/azure/cognitiveservices/client/formrecognizer?view=azure-dotnet-preview) | [kod źródłowy biblioteki](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/cognitiveservices/Vision.FormRecognizer) | [pakiet (NuGet)](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.FormRecognizer/)
+[Dokumentacja referencyjna](https://docs.microsoft.com/dotnet/api/overview/azure/cognitiveservices/client/formrecognizer?view=azure-dotnet-preview) | [kodu źródłowego biblioteki](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/cognitiveservices/Vision.FormRecognizer) | [pakietu (NuGet)](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.FormRecognizer/)
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 

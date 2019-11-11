@@ -9,12 +9,12 @@ ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: overview
 ms.date: 06/12/2019
 ms.author: hrasheed
-ms.openlocfilehash: 71ccdb7ac6666cde1841599cdaf95b67bc54e6a5
-ms.sourcegitcommit: be8e2e0a3eb2ad49ed5b996461d4bff7cba8a837
+ms.openlocfilehash: 73a3359955bf50929f083d542e6a0583b356a280
+ms.sourcegitcommit: bc193bc4df4b85d3f05538b5e7274df2138a4574
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72800019"
+ms.lasthandoff: 11/10/2019
+ms.locfileid: "73903752"
 ---
 # <a name="what-is-apache-storm-on-azure-hdinsight"></a>Co to jest Apache Storm w usłudze Azure HDInsight?
 
@@ -70,7 +70,7 @@ W domyślnej konfiguracji klastrów Apache Storm występuje tylko jeden węzeł 
 
 Nowy klaster Storm można utworzyć w usłudze HDInsight w ciągu kilku minut. Aby uzyskać więcej informacji na temat tworzenia klastra burzy, zobacz [Tworzenie klastrów Apache Hadoop przy użyciu Azure Portal](../hdinsight-hadoop-create-linux-clusters-portal.md).
 
-## <a name="ease-of-use"></a>Prostota użytkowania
+## <a name="ease-of-use"></a>Łatwość obsługi
 
 * __Łączność z protokołem Secure Shell (SSH)__ : dostęp do węzłów głównych klastra Storm w Internecie przy użyciu protokołu SSH. Polecenia można uruchamiać bezpośrednio w klastrze przy użyciu protokołu SSH.
 
@@ -113,12 +113,12 @@ Poniżej przedstawiono kilka typowych scenariuszy, w których można skorzystać
 * Analityka społecznościowa
 * Wyodrębnianie, transformacja, ładowanie (ETL)
 * Monitorowanie sieci
-* Search
+* Wyszukiwanie
 * Marketing na urządzeniach przenośnych
 
-Aby uzyskać informacje na temat scenariuszy rzeczywistych, zobacz artykuł [jak firmy](https://storm.apache.org/documentation/Powered-By.html) korzystają z Apache Storm dokumentu.
+Aby uzyskać informacje na temat scenariuszy rzeczywistych, zobacz artykuł [jak firmy](https://storm.apache.org/Powered-By.html) korzystają z Apache Storm dokumentu.
 
-## <a name="development"></a>Tworzenie oprogramowania
+## <a name="development"></a>Opracowywanie zawartości
 
 Korzystając z narzędzi Data Lake Tools for Visual Studio programiści .NET mogą projektować i implementować topologie w języku C#. Można również tworzyć hybrydowe topologie, wykorzystujące składniki Java i C#.
 

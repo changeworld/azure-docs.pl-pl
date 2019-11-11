@@ -8,13 +8,13 @@ author: ecfan
 ms.author: estfan
 ms.reviewer: jehollan, klam, LADocs
 ms.topic: article
-ms.date: 06/04/2019
-ms.openlocfilehash: 2ab6ace7c30c3dd385928b6b0ae8000485d5f495
-ms.sourcegitcommit: d37991ce965b3ee3c4c7f685871f8bae5b56adfa
+ms.date: 11/08/2019
+ms.openlocfilehash: c65a0464bbad6dbaca51dbc5bbc0d84adbd605d7
+ms.sourcegitcommit: bc193bc4df4b85d3f05538b5e7274df2138a4574
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "72680140"
+ms.lasthandoff: 11/10/2019
+ms.locfileid: "73904644"
 ---
 # <a name="call-or-trigger-logic-apps-by-using-azure-functions-and-azure-service-bus"></a>Wywołaj lub Wyzwól Aplikacje logiki przy użyciu Azure Functions i Azure Service Bus
 
@@ -32,13 +32,13 @@ Możesz użyć [Azure Functions](../azure-functions/functions-overview.md) , aby
 
 ## <a name="create-logic-app"></a>Tworzenie aplikacji logiki
 
-W tym scenariuszu masz funkcję uruchamiającego każdą aplikację logiki, która ma zostać wyzwolona. Najpierw Utwórz aplikację logiki, która rozpoczyna się od wyzwalacza żądania HTTP. Funkcja wywołuje ten punkt końcowy za każdym razem, gdy zostanie odebrany komunikat kolejki.  
+W tym scenariuszu masz funkcję uruchamiającego każdą aplikację logiki, która ma zostać wyzwolona. Najpierw Utwórz aplikację logiki, która rozpoczyna się od wyzwalacza żądania HTTP. Funkcja wywołuje ten punkt końcowy za każdym razem, gdy zostanie odebrany komunikat kolejki.
 
 1. Zaloguj się do [Azure Portal](https://portal.azure.com)i Utwórz pustą aplikację logiki.
 
    Jeśli dopiero zaczynasz tworzyć aplikacje logiki, zapoznaj się z [przewodnikiem Szybki Start: Tworzenie pierwszej aplikacji logiki](../logic-apps/quickstart-create-first-logic-app-workflow.md).
 
-1. W polu wyszukiwania wprowadź ciąg "żądanie HTTP". Z listy Wyzwalacze wybierz ten wyzwalacz: **po odebraniu żądania HTTP**
+1. W polu wyszukiwania wpisz `http request`. Z listy Wyzwalacze wybierz wyzwalacz **po odebraniu żądania HTTP** .
 
    ![Wybierz wyzwalacz](./media/logic-apps-scenario-function-sb-trigger/when-http-request-received-trigger.png)
 
@@ -104,7 +104,7 @@ Następnie Utwórz funkcję, która działa jako wyzwalacz i nasłuchuje kolejki
 
 1. W obszarze Nazwa aplikacji funkcji rozwiń pozycję **funkcje**. W okienku **funkcje** wybierz pozycję **Nowa funkcja**.
 
-   ![Rozwiń "funkcje" i wybierz pozycję "Nowa funkcja"](./media/logic-apps-scenario-function-sb-trigger/create-new-function.png)
+   ![Rozwiń "funkcje" i wybierz pozycję "Nowa funkcja"](./media/logic-apps-scenario-function-sb-trigger/add-new-function-to-function-app.png)
 
 1. Wybierz ten szablon na podstawie tego, czy utworzono nową aplikację funkcji, w której wybrano platformę .NET jako stos środowiska uruchomieniowego, czy używasz istniejącej aplikacji funkcji.
 
@@ -118,7 +118,15 @@ Następnie Utwórz funkcję, która działa jako wyzwalacz i nasłuchuje kolejki
 
 1. W okienku **Azure Service Bus wyzwalacza kolejki** Podaj nazwę wyzwalacza i skonfiguruj **połączenie Service Bus** dla kolejki, która używa odbiornika Azure Service Bus zestawu SDK `OnMessageReceive()` i wybierz pozycję **Utwórz**.
 
-1. Napisz podstawową funkcję do wywołania utworzonego wcześniej punktu końcowego aplikacji logiki przy użyciu komunikatu kolejki jako wyzwalacza. Ten przykład używa typu zawartości komunikatu `application/json`, ale w razie potrzeby można zmienić ten typ. Jeśli to możliwe, ponownie Użyj wystąpienia klientów HTTP. Aby uzyskać więcej informacji, zobacz [Zarządzanie połączeniami w Azure Functions](../azure-functions/manage-connections.md).
+1. Napisz podstawową funkcję do wywołania utworzonego wcześniej punktu końcowego aplikacji logiki przy użyciu komunikatu kolejki jako wyzwalacza. Przed zapisaniem funkcji zapoznaj się z następującymi kwestiami:
+
+   * Ten przykład używa typu zawartości komunikatu `application/json`, ale w razie potrzeby można zmienić ten typ.
+   
+   * Ze względu na możliwe współbieżnie uruchomione funkcje, duże ilości lub duże obciążenia, należy unikać tworzenia wystąpienia [klasy HttpClient](https://docs.microsoft.com/dotnet/api/system.net.http.httpclient) za pomocą instrukcji `using` i bezpośrednio tworzyć wystąpienia HttpClient na żądanie. Aby uzyskać więcej informacji, zobacz [Używanie HttpClientFactory do implementowania odpornych żądań HTTP](https://docs.microsoft.com/dotnet/architecture/microservices/implement-resilient-applications/use-httpclientfactory-to-implement-resilient-http-requests#issues-with-the-original-httpclient-class-available-in-net-core).
+   
+   * Jeśli to możliwe, ponownie Użyj wystąpienia klientów HTTP. Aby uzyskać więcej informacji, zobacz [Zarządzanie połączeniami w Azure Functions](../azure-functions/manage-connections.md).
+
+   W tym przykładzie zastosowano [metodę`Task.Run`](https://docs.microsoft.com/dotnet/api/system.threading.tasks.task.run) w trybie [asynchronicznym](https://docs.microsoft.com/dotnet/csharp/language-reference/keywords/async) . Aby uzyskać więcej informacji, zobacz [programowanie asynchroniczne z Async i await](https://docs.microsoft.com/dotnet/csharp/programming-guide/concepts/async/).
 
    ```CSharp
    using System;
@@ -126,17 +134,16 @@ Następnie Utwórz funkcję, która działa jako wyzwalacz i nasłuchuje kolejki
    using System.Net.Http;
    using System.Text;
 
-   // Callback URL for previously created Request trigger
+   // Can also fetch from App Settings or environment variable
    private static string logicAppUri = @"https://prod-05.westus.logic.azure.com:443/workflows/<remaining-callback-URL>";
 
-   // Reuse the instance of HTTP clients if possible
+   // Reuse the instance of HTTP clients if possible: https://docs.microsoft.com/azure/azure-functions/manage-connections
    private static HttpClient httpClient = new HttpClient();
 
-   public static void Run(string myQueueItem, ILogger log)
+   public static async Task Run(string myQueueItem, TraceWriter log) 
    {
-       log.LogInformation($"C# ServiceBus queue trigger function processed message: {myQueueItem}");
-
-       var response = httpClient.PostAsync(logicAppUri, new StringContent(myQueueItem, Encoding.UTF8, "application/json")).Result;
+      log.Info($"C# ServiceBus queue trigger function processed message: {myQueueItem}");
+      var response = await httpClient.PostAsync(logicAppUri, new StringContent(myQueueItem, Encoding.UTF8, "application/json")); 
    }
    ```
 
@@ -146,4 +153,4 @@ Następnie Utwórz funkcję, która działa jako wyzwalacz i nasłuchuje kolejki
 
 ## <a name="next-steps"></a>Następne kroki
 
-[Wywoływanie, wyzwalanie lub zagnieżdżanie przepływów pracy za pomocą punktów końcowych HTTP](../logic-apps/logic-apps-http-endpoint.md)
+* [Wywoływanie, wyzwalanie lub zagnieżdżanie przepływów pracy za pomocą punktów końcowych HTTP](../logic-apps/logic-apps-http-endpoint.md)

@@ -9,14 +9,14 @@ services: cognitive-services
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
-ms.date: 10/25/2019
+ms.date: 11/08/2019
 ms.author: diberry
-ms.openlocfilehash: 6a17993d7bc4ff54b3d55fa5b5bb141463896e32
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 5824b835b3debb33386c0d1f86581c6bb91b14ae
+ms.sourcegitcommit: bc193bc4df4b85d3f05538b5e7274df2138a4574
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73488706"
+ms.lasthandoff: 11/10/2019
+ms.locfileid: "73904190"
 ---
 # <a name="language-understanding-frequently-asked-questions-faq"></a>Language Understanding często zadawane pytania
 
@@ -74,7 +74,7 @@ W portalu LUIS można oznaczyć tekst dla dokładnej jednostki, która ma zosta�
 
 ### <a name="i-tried-to-import-an-app-or-version-file-but-i-got-an-error-what-happened"></a>Próbuję zaimportować plik aplikacji lub wersji, ale wystąpił błąd, co się stało? 
 
-Przeczytaj więcej na temat [błędów importowania wersji](luis-how-to-manage-versions.md#import-errors) i [błędów importowania aplikacji](luis-how-to-start-new-app.md#import-errors).
+Przeczytaj więcej na temat [błędów importowania wersji](luis-how-to-manage-versions.md#import-errors).
 
 <a name="luis-collaborating"></a>
 
@@ -113,7 +113,7 @@ Rozwiązania obejmują:
 * Jeśli użycie przekroczy najwyższą warstwę cenową, należy dodać więcej Language Understanding zasobów przy użyciu modułu równoważenia obciążenia przed nimi. [Language Understanding kontener](luis-container-howto.md) z Kubernetes lub Docker Compose może Ci pomóc.
 * Po otrzymaniu tego kodu stanu można posłużyć do żądania aplikacji klienckich przy użyciu [zasad ponawiania](https://docs.microsoft.com/azure/architecture/best-practices/transient-faults#general-guidelines) . 
 
-### <a name="my-endpoint-query-returned-unexpected-results-what-should-i-do"></a>Zapytanie o punkt końcowy zwróciło nieoczekiwane wyniki. Co mamy zrobić?
+### <a name="my-endpoint-query-returned-unexpected-results-what-should-i-do"></a>Zapytanie o punkt końcowy zwróciło nieoczekiwane wyniki. Co mam zrobić?
 
 Nieoczekiwane wyniki prognozowania zapytań są oparte na stanie opublikowanego modelu. Aby poprawić model, należy zmienić model, uczenie i opublikować ponownie. 
 
@@ -158,11 +158,11 @@ Zobacz [Zabezpieczanie punktu końcowego](luis-concept-keys.md#securing-the-endp
 ### <a name="what-is-the-maximum-number-of-intents-and-entities-that-a-luis-app-can-support"></a>Jaka jest maksymalna liczba zamiar i jednostek, które może obsłużyć aplikacja LUIS?
 Zobacz informacje o [granicach](luis-boundaries.md) .
 
-### <a name="i-want-to-build-a-luis-app-with-more-than-the-maximum-number-of-intents-what-should-i-do"></a>Chcę skompilować aplikację LUIS z więcej niż maksymalną liczbą intencji. Co mamy zrobić?
+### <a name="i-want-to-build-a-luis-app-with-more-than-the-maximum-number-of-intents-what-should-i-do"></a>Chcę skompilować aplikację LUIS z więcej niż maksymalną liczbą intencji. Co mam zrobić?
 
 Zapoznaj się z [najlepszymi rozwiązaniami dotyczącymi intencji](luis-concept-intent.md#if-you-need-more-than-the-maximum-number-of-intents).
 
-### <a name="i-want-to-build-an-app-in-luis-with-more-than-the-maximum-number-of-entities-what-should-i-do"></a>Chcę skompilować aplikację w LUIS z więcej niż maksymalną liczbą jednostek. Co mamy zrobić?
+### <a name="i-want-to-build-an-app-in-luis-with-more-than-the-maximum-number-of-entities-what-should-i-do"></a>Chcę skompilować aplikację w LUIS z więcej niż maksymalną liczbą jednostek. Co mam zrobić?
 
 Zobacz [najlepsze rozwiązania dotyczące jednostek](luis-concept-entity-types.md#if-you-need-more-than-the-maximum-number-of-entities)
 

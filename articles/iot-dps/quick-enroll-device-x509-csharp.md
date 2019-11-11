@@ -1,23 +1,23 @@
 ---
-title: Ten przewodnik Szybki start przedstawia sposób rejestrowania urządzenia X.509 w usłudze Azure Device Provisioning Service przy użyciu języka C# | Microsoft Docs
+title: 'Szybki Start: rejestrowanie urządzenia X. 509 w usłudze Azure Device Provisioning przy użyciuC#'
 description: W tym przewodniku Szybki start używane są rejestracje grupowe. W tym przewodniku szybki start Zarejestruj urządzenia X. 509 na platformie Azure C#IoT Hub Device Provisioning Service przy użyciu programu.
 author: wesmc7777
 ms.author: wesmc
-ms.date: 04/10/2019
+ms.date: 11/08/2019
 ms.topic: quickstart
 ms.service: iot-dps
 services: iot-dps
 manager: philmea
 ms.devlang: csharp
 ms.custom: mvc
-ms.openlocfilehash: 15bce340b257b5c221192a6ace5c5f0eac30f85a
-ms.sourcegitcommit: 0fab4c4f2940e4c7b2ac5a93fcc52d2d5f7ff367
+ms.openlocfilehash: e43448337f787115c479f2f53ca57b7a20120108
+ms.sourcegitcommit: bc193bc4df4b85d3f05538b5e7274df2138a4574
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71035990"
+ms.lasthandoff: 11/10/2019
+ms.locfileid: "73903433"
 ---
-# <a name="quickstart-enroll-x509-devices-to-the-device-provisioning-service-using-c"></a>Szybki start: rejestrowanie urządzeń X.509 w usłudze Device Provisioning przy użyciu języka C#
+# <a name="quickstart-enroll-x509-devices-to-the-device-provisioning-service-using-c"></a>Przewodnik Szybki start: rejestrowanie urządzeń X.509 w usłudze Device Provisioning Service przy użyciu języka C#
 
 [!INCLUDE [iot-dps-selector-quick-enroll-device-x509](../../includes/iot-dps-selector-quick-enroll-device-x509.md)]
 
@@ -33,7 +33,7 @@ Chociaż kroki opisane w tym artykule działają na komputerach z systemem Windo
 
 * Zainstaluj [program Visual Studio 2019](https://www.visualstudio.com/vs/).
 * Zainstaluj [zestaw .NET Core SDK](https://www.microsoft.com/net/download/windows).
-* [Zainstaluj oprogramowanie Git](https://git-scm.com/download/).
+* Zainstaluj oprogramowanie [Git](https://git-scm.com/download/).
 
 ## <a name="prepare-test-certificates"></a>Przygotowywanie certyfikatów testowych
 
@@ -92,7 +92,7 @@ W tej sekcji przedstawiono sposób tworzenia aplikacji konsolowej .NET Core, kt�
 
    Ten krok spowoduje pobranie, zainstalowanie i dodanie odwołania do pakietu NuGet [zestawu SDK klienta usługi Azure IoT](https://www.nuget.org/packages/Microsoft.Azure.Devices.Provisioning.Service/) i jego zależności.
 
-1. Dodaj następujące `using` instrukcje `using` w górnej części `Program.cs`okna:
+1. Dodaj następujące instrukcje `using` po innych instrukcjach `using` w górnej części `Program.cs`:
 
    ```csharp
    using System.Security.Cryptography.X509Certificates;
@@ -100,7 +100,7 @@ W tej sekcji przedstawiono sposób tworzenia aplikacji konsolowej .NET Core, kt�
    using Microsoft.Azure.Devices.Provisioning.Service;
    ```
 
-1. Dodaj następujące pola do `Program` klasy i wprowadź zmiany na liście.  
+1. Dodaj następujące pola do klasy `Program` i wprowadź zmiany na liście.  
 
    ```csharp
    private static string ProvisioningConnectionString = "{Your provisioning service connection string}";
@@ -110,9 +110,9 @@ W tej sekcji przedstawiono sposób tworzenia aplikacji konsolowej .NET Core, kt�
 
    * Zastąp `ProvisioningConnectionString` wartość symbolu zastępczego parametrami połączenia usługi aprowizacji, dla której chcesz utworzyć rejestrację.
 
-   * Zastąp `X509RootCertPath` wartość symbolu zastępczego ścieżką do pliku PEM lub CER. Ten plik reprezentuje publiczną część pośredniego lub głównego certyfikatu X. 509 urzędu certyfikacji, który został wcześniej przekazany i zweryfikowany przy użyciu usługi aprowizacji.
+   * Zastąp wartość symbolu zastępczego `X509RootCertPath` ścieżką do pliku PEM lub CER. Ten plik reprezentuje publiczną część pośredniego lub głównego certyfikatu X. 509 urzędu certyfikacji, który został wcześniej przekazany i zweryfikowany przy użyciu usługi aprowizacji.
 
-   * Opcjonalnie możesz zmienić `EnrollmentGroupId` wartość. Ciąg może zawierać tylko małe litery i łączniki.
+   * Opcjonalnie możesz zmienić wartość `EnrollmentGroupId`. Ciąg może zawierać tylko małe litery i łączniki.
 
    > [!IMPORTANT]
    > W kodzie produkcyjnym pamiętaj o następujących kwestiach dotyczących zabezpieczeń:
@@ -120,7 +120,7 @@ W tej sekcji przedstawiono sposób tworzenia aplikacji konsolowej .NET Core, kt�
    > * Trwałe kodowanie parametrów połączenia administratora usługi aprowizacji jest niezgodne z najlepszymi rozwiązaniami dotyczącymi zabezpieczeń. Zamiast tego parametry połączenia powinny być przechowywane w sposób bezpieczny, np. w zabezpieczonym pliku konfiguracji lub rejestrze.
    > * Pamiętaj, aby przekazać tylko publiczną część certyfikatu podpisywania. Nigdy nie przekazuj plików pfx (PKCS12) ani plików pem zawierających klucze prywatne do usługi aprowizacji.
 
-1. Dodaj następującą metodę do `Program` klasy. Ten kod tworzy wpis grupy rejestracji, a następnie wywołuje `CreateOrUpdateEnrollmentGroupAsync` metodę w `ProvisioningServiceClient` celu dodania grupy rejestracji do usługi aprowizacji.
+1. Dodaj następującą metodę do klasy `Program`. Ten kod tworzy wpis grupy rejestracji, a następnie wywołuje metodę `CreateOrUpdateEnrollmentGroupAsync` na `ProvisioningServiceClient` w celu dodania grupy rejestracji do usługi aprowizacji.
 
    ```csharp
    public static async Task RunSample()
@@ -156,7 +156,7 @@ W tej sekcji przedstawiono sposób tworzenia aplikacji konsolowej .NET Core, kt�
    }
    ```
 
-1. Na koniec Zastąp treść `Main` metody następującymi wierszami:
+1. Na koniec Zastąp treść metody `Main` następującymi wierszami:
 
    ```csharp
    RunSample().GetAwaiter().GetResult();

@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 10/07/2019
 ms.author: dacurwin
-ms.openlocfilehash: 88a914a2a4d3d62918b01674d6d21f2f011e2c2e
-ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
+ms.openlocfilehash: 049b09f7927da2cc841130a0adeaa90768037db8
+ms.sourcegitcommit: bc193bc4df4b85d3f05538b5e7274df2138a4574
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73834297"
+ms.lasthandoff: 11/10/2019
+ms.locfileid: "73903208"
 ---
 # <a name="manage-microsoft-azure-recovery-services-agent-backups-by-using-the-azure-backup-service"></a>Zarządzanie kopiami zapasowymi Microsoft Azure Recovery Services agenta za pomocą usługi Azure Backup
 
@@ -62,7 +62,7 @@ Utwórz zasady w następujący sposób:
             -Kopie zapasowe wykonane w sobotę w ciągu ostatniego tygodnia miesiąca o północy i 6:00 PM są przechowywane przez 12 miesięcy.
             -Kopie zapasowe wykonane w sobotę w ostatnim tygodniu marca są przechowywane przez 10 lat.
 
-           ![Retention example](./media/backup-configure-vault/retention-example.png)
+    ![Przykład przechowywania](./media/backup-configure-vault/retention-example.png)
 
 11. W obszarze **Wybierz typ początkowej kopii zapasowej** Zdecyduj, czy chcesz pobrać początkową kopię zapasową za pośrednictwem sieci, lub Użyj kopii zapasowej offline (Aby uzyskać więcej informacji na temat odwołania do kopii zapasowej offline, zobacz ten [artykuł](backup-azure-backup-import-export.md)). Aby pobrać początkową kopię zapasową za pośrednictwem sieci, wybierz opcję **automatycznie przez sieć** , a następnie kliknij przycisk **dalej**.
 
@@ -165,7 +165,7 @@ Istnieją dwa sposoby na zatrzymanie ochrony kopii zapasowych plików i folderó
     ![zmodyfikować lub zatrzymać zaplanowaną kopię zapasową.](./media/backup-azure-manage-mars/mars-actions.png)
 1. Na stronie **Wybierz element zasad** wybierz pozycję **Modyfikuj harmonogram tworzenia kopii zapasowych dla plików i folderów, a** następnie kliknij przycisk **dalej**.
     ![zmodyfikować lub zatrzymać zaplanowaną kopię zapasową.](./media/backup-azure-manage-mars/select-policy-item-retain-data.png)
-1. Na stronie **Modyfikuj lub Zatrzymaj zaplanowaną kopię zapasową** wybierz pozycję **Zatrzymaj przy użyciu tego harmonogramu kopii zapasowych, ale Zachowaj przechowywane kopie zapasowe do momentu ponownego aktywowania harmonogramu**. Następnie wybierz opcję **Dalej**.  
+1. Na stronie **Modyfikuj lub Zatrzymaj zaplanowaną kopię zapasową** wybierz pozycję **Zatrzymaj przy użyciu tego harmonogramu tworzenia kopii zapasowych, ale przechowuj przechowywane kopie zapasowe do momentu ponownego aktywowania harmonogramu**. Następnie wybierz opcję **Dalej**.  
     ![zmodyfikować lub zatrzymać zaplanowaną kopię zapasową.](./media/backup-azure-manage-mars/stop-schedule-backup.png)
 1. W obszarze **Wstrzymaj zaplanowaną kopię zapasową** Przejrzyj informacje kliknij przycisk **Zakończ** ![zmodyfikować lub zatrzymać zaplanowane kopie zapasowe.](./media/backup-azure-manage-mars/pause-schedule-backup.png)
 1. w obszarze **Modyfikuj proces tworzenia kopii zapasowej** Sprawdź, czy zaplanowano stan wstrzymania kopii zapasowej i kliknij przycisk **Zamknij** , aby zakończyć

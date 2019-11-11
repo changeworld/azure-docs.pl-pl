@@ -1,6 +1,6 @@
 ---
-title: Tworzenie sznurka modułu zabezpieczeń dla Azure Security Center usługi IoT | Microsoft Docs
-description: Dowiedz się, jak utworzyć Azure Security Center dla sznurów modułu IoT do użycia z Azure Security Center dla IoT.
+title: 'Szybki Start: Tworzenie sznurka modułu zabezpieczeń dla Azure Security Center dla IoT'
+description: W tym przewodniku szybki start dowiesz się, jak utworzyć Azure Security Center dla sznurka modułu IoT, który ma być używany z Azure Security Center dla IoT.
 services: asc-for-iot
 ms.service: asc-for-iot
 documentationcenter: na
@@ -13,16 +13,16 @@ ms.devlang: na
 ms.topic: quickstart
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 03/26/2019
+ms.date: 11/08/2019
 ms.author: mlottner
-ms.openlocfilehash: 92bf79aa5ae55bad16d68a26dc13d292285a4d46
-ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
+ms.openlocfilehash: b362130c2b717f813a6332f81a3c8179bea4166a
+ms.sourcegitcommit: bc193bc4df4b85d3f05538b5e7274df2138a4574
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68597079"
+ms.lasthandoff: 11/10/2019
+ms.locfileid: "73904164"
 ---
-# <a name="quickstart-create-an-azureiotsecurity-module-twin"></a>Szybki start: Tworzenie sznurka modułu azureiotsecurity
+# <a name="quickstart-create-an-azureiotsecurity-module-twin"></a>Szybki Start: Tworzenie sznurka modułu azureiotsecurity
 
 W tym przewodniku szybki start wyjaśniono, jak utworzyć pojedynczy moduł _azureiotsecurity_ bliźniaczych reprezentacji dla nowych urządzeń, lub Batch Create module bliźniaczych reprezentacji dla wszystkich urządzeń w IoT Hub.  
 
@@ -58,7 +58,7 @@ Aby ręcznie utworzyć nową sznurek modułu _azureiotsecurity_ dla urządzenia,
 1. Kliknij urządzenie, a następnie **Dodaj tożsamość modułu**.
 1. W polu **Nazwa tożsamości modułu** wprowadź **azureiotsecurity**.
 
-1. Kliknij polecenie **Zapisz**. 
+1. Kliknij pozycję **Zapisz**. 
 
 ## <a name="verify-creation-of-a-module-twin"></a>Weryfikowanie tworzenia sznurka modułu
 
@@ -66,10 +66,10 @@ Aby sprawdzić, czy dla określonego urządzenia istnieje sznurek modułu zabezp
 
 1. W IoT Hub platformy Azure wybierz pozycję **urządzenia IoT** z menu **eksplorators** .    
 1. Wprowadź identyfikator urządzenia lub wybierz opcję w **polu zapytanie dotyczące urządzenia** , a następnie kliknij pozycję **zapytanie o urządzenia**. 
-    ![Zapytanie dotyczące urządzeń](./media/quickstart/verify-security-module-twin.png)
+    ![urządzeń zapytań](./media/quickstart/verify-security-module-twin.png)
 1. Wybierz urządzenie lub kliknij je dwukrotnie, aby otworzyć stronę szczegóły urządzenia. 
 1. Wybierz menu **tożsamości modułów** i potwierdzenie istnienia modułu **azureiotsecurity** na liście tożsamości modułów skojarzonych z urządzeniem. 
-    ![Moduły skojarzone z urządzeniem](./media/quickstart/verify-security-module-twin-3.png)
+    Moduły ![skojarzone z urządzeniem](./media/quickstart/verify-security-module-twin-3.png)
 
 
 Aby dowiedzieć się więcej o dostosowywaniu właściwości Azure Security Center dla modułu IoT bliźniaczych reprezentacji, zobacz [Konfiguracja agenta](how-to-agent-configuration.md).

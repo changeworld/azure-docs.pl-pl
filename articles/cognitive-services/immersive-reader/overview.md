@@ -1,7 +1,7 @@
 ---
 title: Co to jest interfejs API czytnika immersyjny?
 titleSuffix: Azure Cognitive Services
-description: Dowiedz się więcej o interfejsie API czytnika immersyjny.
+description: Interfejs API czytnika immersyjny to narzędzie, którego można użyć w celu podzielenia się z różnicami w nauce lub ułatwieniami nowych czytników i języków.
 services: cognitive-services
 author: metanMSFT
 manager: nitinme
@@ -10,12 +10,12 @@ ms.subservice: immersive-reader
 ms.topic: overview
 ms.date: 06/20/2019
 ms.author: metan
-ms.openlocfilehash: f84804fbad07357706e786fc449fce9e42a5ec4a
-ms.sourcegitcommit: d585cdda2afcf729ed943cfd170b0b361e615fae
+ms.openlocfilehash: 3e6889cd5d26b88cedd6b110510cb89777252f54
+ms.sourcegitcommit: bc193bc4df4b85d3f05538b5e7274df2138a4574
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68688333"
+ms.lasthandoff: 11/10/2019
+ms.locfileid: "73904360"
 ---
 # <a name="what-is-immersive-reader"></a>Co to jest czytnik immersyjny?
 
@@ -45,7 +45,7 @@ Czytnik immersyjny został zaprojektowany w celu ułatwienia dostępu do odczytu
 
 * Tłumaczy zawartość na inny język
 
-  ![{1&gt;Translacja&lt;1}](./media/translation.png)
+  ![Tłumaczenie](./media/translation.png)
 
 * Dzieli wyrazy na sylaby
 
@@ -53,9 +53,9 @@ Czytnik immersyjny został zaprojektowany w celu ułatwienia dostępu do odczytu
 
 ## <a name="how-does-immersive-reader-work"></a>Jak działa czytnik immersyjny?
 
-Czytnik immersyjny to autonomiczna aplikacja internetowa, która jest wywoływana przy użyciu zestawu SDK języka JavaScript czytnika immersyjny, która jest wyświetlana na górze istniejącej aplikacji sieci Web `iframe`za pośrednictwem. Po wywołaniu interfejsu API w celu uruchomienia czytnika immersyjny należy określić zawartość, która ma być wyświetlana w czytniku immersyjny. Nasz zestaw SDK obsługuje tworzenie i określanie stylów `iframe` i komunikacji z usługą zaplecza czytnika immersyjny, która przetwarza zawartość dla części mowy, zamiany tekstu na mowę, tłumaczenie i tak dalej.
+Czytnik immersyjny to autonomiczna aplikacja internetowa, która po wywołaniu przy użyciu zestawu SDK języka JavaScript czytnika immersyjny jest wyświetlana na podstawie istniejącej aplikacji sieci Web za pośrednictwem `iframe`. Po wywołaniu interfejsu API w celu uruchomienia czytnika immersyjny należy określić zawartość, która ma być wyświetlana w czytniku immersyjny. Nasz zestaw SDK obsługuje tworzenie i określanie stylów `iframe` i komunikacji z usługą wewnętrznej bazy danych czytnika immersyjny, która przetwarza zawartość dla części mowy, zamiany tekstu na mowę, tłumaczenie i tak dalej.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 Rozpoczynanie pracy z czytnikiem immersyjnym:
 

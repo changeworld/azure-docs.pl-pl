@@ -9,58 +9,58 @@ ms.service: azure-functions
 ms.topic: overview
 ms.date: 11/02/2019
 ms.author: azfuncdf
-ms.openlocfilehash: 62ca71e1b42e000f7528a2963793f9bf40663bf3
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: d62281b4ccb522b3a784428bcf0284730f120628
+ms.sourcegitcommit: bc193bc4df4b85d3f05538b5e7274df2138a4574
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73818516"
+ms.lasthandoff: 11/10/2019
+ms.locfileid: "73904023"
 ---
 # <a name="entity-functions"></a>Funkcje jednostki
 
 Funkcje Entity definiują operacje umożliwiające odczytywanie i aktualizowanie małych fragmentów stanu, znanych jako *jednostek trwałych*. Podobnie jak funkcje programu Orchestrator, funkcje jednostki są funkcjami o specjalnym typie wyzwalacza, *wyzwalaczem jednostki*. W przeciwieństwie do funkcji programu Orchestrator, funkcja Entity Functions zarządza stanem jednostki jawnie, a nie niejawnie reprezentującą stan za pośrednictwem przepływu sterowania.
-Jednostki zapewniają metodę skalowania aplikacji przez dystrybucję pracy w wielu jednostkach, z których każdy ma stanowy rozmiar.
+Jednostki zapewniają metodę skalowania aplikacji przez dystrybuowanie pracy między wieloma jednostkami, z których każdy ma stan o nieokreślonym rozmiarze.
 
 > [!NOTE]
 > Funkcje jednostki i powiązane funkcje są dostępne tylko w Durable Functions 2,0 i nowszych.
 
 ## <a name="general-concepts"></a>Pojęcia ogólne
 
-Jednostki zachowują się jak małe usługi, które komunikują się za pośrednictwem komunikatów. Każda jednostka ma unikatową tożsamość i stan wewnętrzny (jeśli istnieje). Podobnie jak w przypadku usług lub obiektów, jednostki wykonują operacje po wyświetleniu monitu. Gdy jest wykonywana, operacja może zaktualizować stan wewnętrzny jednostki. Może również wywołać usługi zewnętrzne i poczekać na odpowiedź. Jednostki komunikują się z innymi jednostkami, aranżacjami i klientami przy użyciu komunikatów, które są niejawnie wysyłane przez niezawodne kolejki. 
+Jednostki zachowują się jak małe usługi, które komunikują się za pośrednictwem komunikatów. Każda jednostka ma unikatową tożsamość i stan wewnętrzny (jeśli istnieje). Podobnie jak w przypadku usług lub obiektów, jednostki wykonują operacje po wyświetleniu monitu. Gdy operacja jest wykonywana, może ona zaktualizować stan wewnętrzny jednostki. Może również wywołać usługi zewnętrzne i poczekać na odpowiedź. Jednostki komunikują się z innymi jednostkami, aranżacjami i klientami przy użyciu komunikatów, które są niejawnie wysyłane przez niezawodne kolejki. 
 
 Aby zapobiec konfliktom, wszystkie operacje na pojedynczej jednostce są gwarantowane do wykonania szeregowego, czyli jeden po drugim. 
 
 ### <a name="entity-id"></a>Identyfikator jednostki
 Do jednostek uzyskuje się dostęp za pośrednictwem unikatowego identyfikatora, *identyfikatora jednostki*. Identyfikator jednostki to po prostu para ciągów, które jednoznacznie identyfikują wystąpienie jednostki. Składa się z:
 
-* **Nazwa jednostki**: Nazwa identyfikująca typ jednostki (na przykład "licznik"). Ta nazwa musi być zgodna z nazwą funkcji jednostki implementującej jednostkę. Wielkość liter nie jest uwzględniana.
-* **Klucz jednostki**: ciąg, który jednoznacznie identyfikuje jednostkę między wszystkimi innymi jednostkami o tej samej nazwie (na przykład identyfikator GUID).
+* **Nazwa jednostki**, która jest nazwą identyfikującą typ jednostki. Przykładem jest "licznik". Ta nazwa musi być zgodna z nazwą funkcji jednostki implementującej jednostkę. Wielkość liter nie jest uwzględniana.
+* **Klucz jednostki**, który jest ciągiem, który jednoznacznie identyfikuje jednostkę między wszystkimi innymi jednostkami o tej samej nazwie. Przykładem jest identyfikator GUID.
 
-Na przykład funkcja jednostki *licznika* może być używana do przechowywania wyników w grze online. Każde wystąpienie gry będzie miało unikatowy identyfikator jednostki, taki jak `@Counter@Game1`, `@Counter@Game2`i tak dalej. Wszystkie operacje przeznaczone dla określonej jednostki wymagają określenia identyfikatora jednostki jako parametru.
+Na przykład funkcja jednostki `Counter` może być używana do przechowywania wyników w grze online. Każde wystąpienie gry ma unikatowy identyfikator jednostki, taki jak `@Counter@Game1` i `@Counter@Game2`. Wszystkie operacje przeznaczone dla określonej jednostki wymagają określenia identyfikatora jednostki jako parametru.
 
 ### <a name="entity-operations"></a>Operacje jednostki ###
 
-Aby wywołać operację dla jednostki, jeden określa
+Aby wywołać operację na jednostce, określ:
 
-* *Identyfikator jednostki* docelowej
-* *Nazwa operacji*, ciąg określający operację do wykonania. Na przykład jednostka licznika może obsługiwać operacje "Add", "Get" lub "reset".
-* *Dane wejściowe operacji*, które są opcjonalnym parametrem wejściowym dla operacji. Na przykład operacja "Add" może przyjmować liczbę całkowitą jako dane wejściowe.
+* **Identyfikator jednostki** docelowej.
+* **Nazwa operacji**, która jest ciągiem, który określa operację do wykonania. Na przykład jednostka `Counter` może obsługiwać operacje `add`, `get`lub `reset`.
+* **Wejście operacji**, który jest opcjonalnym parametrem wejściowym dla operacji. Na przykład operacja dodawania może przyjmować liczbę całkowitą jako dane wejściowe.
 
-Operacje mogą zwracać wartość wyniku lub wynik błędu (na przykład błąd JavaScript lub wyjątek .NET). Ten wynik lub błąd może być zauważalny przez aranżacje, które wywołały operację.
+Operacje mogą zwracać wartość wyniku lub wynik błędu, takie jak błąd JavaScript lub wyjątek programu .NET. Ten wynik lub błąd może być zauważalny przez aranżacje, które wywołały operację.
 
 Operacja jednostki może również tworzyć, odczytywać, aktualizować i usuwać stan jednostki. Stan jednostki jest zawsze trwale trwały w magazynie.
 
-## <a name="defining-entities"></a>Definiowanie jednostek
+## <a name="define-entities"></a>Definiowanie jednostek
 
-Obecnie oferujemy dwa oddzielne interfejsy API do definiowania jednostek.
+Obecnie dwa różne interfejsy API służące do definiowania jednostek to:
 
-**Składnia oparta na funkcjach** , w której jednostki są reprezentowane jako funkcje, a operacje są jawnie wysyłane przez aplikację. Ta składnia działa dobrze w przypadku jednostek z prostym stanem, kilkoma operacjami lub dynamicznym zestawem operacji (na przykład w strukturach aplikacji). Jednak może być żmudnym, ponieważ nie przechwytuje błędów typu w czasie kompilacji.
+**Składnia oparta na funkcjach**, gdzie jednostki są reprezentowane jako funkcje i operacje są jawnie wysyłane przez aplikację. Ta składnia działa dobrze w przypadku jednostek z prostym stanem, kilkoma operacjami lub dynamicznym zestawem operacji takich jak w strukturach aplikacji. Ta składnia może być żmudnym, ponieważ nie przechwytuje błędów typu w czasie kompilacji.
 
-**Składnia oparta na klasie** , w której jednostki i operacje są reprezentowane przez klasy i metody. Ta składnia daje łatwiejszy do odczytu kod i umożliwia wywoływanie operacji w sposób bezpieczny dla typu. Składnia oparta na klasie jest tylko cienką warstwą na podstawie składni opartej na funkcjach, tak aby obie warianty mogły być używane zamiennie w tej samej aplikacji.
+**Składnia oparta na klasie**, gdzie jednostki i operacje są reprezentowane przez klasy i metody. Ta składnia daje łatwiejszy do odczytu kod i umożliwia wywoływanie operacji w sposób bezpieczny dla typu. Składnia oparta na klasie jest cienką warstwą na podstawie składni opartej na funkcjach, dlatego można używać obu wariantów zamiennie w tej samej aplikacji.
 
 ### <a name="example-function-based-syntax---c"></a>Przykład: Składnia oparta na funkcjach-C#
 
-Poniższy kod jest przykładem prostej jednostki *licznika* wdrożonej jako funkcja trwała. Ta funkcja definiuje trzy operacje, `add`, `reset`i `get`, z których każda działa na stanie liczby całkowitej.
+Poniższy kod jest przykładem prostej jednostki `Counter` zaimplementowaną jako funkcja trwała. Ta funkcja definiuje trzy operacje, `add`, `reset`i `get`, z których każda działa na stanie liczby całkowitej.
 
 ```csharp
 [FunctionName("Counter")]
@@ -112,7 +112,7 @@ Aby uzyskać więcej informacji na temat składni opartej na klasie i korzystani
 
 ### <a name="example-javascript-entity"></a>Przykład: obiekt JavaScript
 
-Trwałe jednostki są dostępne w języku JavaScript, począwszy od wersji **1.3.0** pakietu `durable-functions` npm. Poniższy kod jest obiektem *licznika* zaimplementowanym jako funkcja trwała zapisywana w języku JavaScript.
+Trwałe jednostki są dostępne w języku JavaScript, począwszy od wersji **1.3.0** pakietu `durable-functions` npm. Poniższy kod jest obiektem `Counter` zaimplementowany jako funkcja trwała zapisywana w języku JavaScript.
 
 **Function. JSON**
 ```json
@@ -149,27 +149,27 @@ module.exports = df.entity(function(context) {
 });
 ```
 
-## <a name="accessing-entities"></a>Uzyskiwanie dostępu do jednostek
+## <a name="access-entities"></a>Jednostki dostępu
 
-Dostęp do jednostek można uzyskać przy użyciu jednej lub dwukierunkowej komunikacji. Używamy następującej terminologii w celu odróżnienia: 
+Dostęp do jednostek można uzyskać przy użyciu jednej lub dwukierunkowej komunikacji. Poniższe terminologia odróżnia dwie formy komunikacji: 
 
-* **Wywołanie** jednostki oznacza, że używamy komunikacji dwukierunkowej (rundy): wysyłamy komunikat operacji do jednostki, a następnie poczekaj na komunikat odpowiedzi przed kontynuowaniem. Komunikat odpowiedzi może podawać wartość wyniku lub wynik błędu (na przykład błąd JavaScript lub wyjątek .NET). Ten wynik lub błąd jest następnie zauważalny przez obiekt wywołujący.
-* **Sygnalizowanie** jednostki oznacza, że używamy komunikacji jednokierunkowej (Fire i zapomnij): wysyłamy komunikat operacji, ale nie czekaj na odpowiedź. Gdy komunikat jest gwarantowany w końcu, nadawca nie wie, kiedy i nie może obserwować żadnej wartości wyniku ani błędów.
+* **Wywołanie** jednostki używa komunikacji dwukierunkowej (rundy). Wysyłasz komunikat operacji do jednostki, a następnie poczekaj na komunikat odpowiedzi przed kontynuowaniem. Komunikat odpowiedzi może podawać wartość wyniku lub wynik błędu, taki jak błąd JavaScript lub wyjątek programu .NET. Ten wynik lub błąd jest następnie zauważalny przez obiekt wywołujący.
+* **Sygnalizowanie** jednostki używa komunikacji jednokierunkowej (Fire i zapomnij). Wysyłasz komunikat operacji, ale nie czekaj na odpowiedź. Gdy komunikat jest gwarantowany w końcu, nadawca nie wie, kiedy i nie może obserwować żadnej wartości wyniku ani błędów.
 
 Dostęp do jednostek można uzyskać z poziomu funkcji klienta, z poziomu funkcji programu Orchestrator lub z poziomu funkcji Entity. Nie wszystkie formy komunikacji są obsługiwane przez wszystkie konteksty:
 
-* W ramach klientów można *sygnalizować* jednostki i można *odczytać* stan jednostki.
-* Z poziomu aranżacji można *sygnalizować* jednostki i można *wywoływać* jednostki.
-* Z poziomu jednostek można *sygnalizować* jednostki.
+* Z poziomu klientów można sygnalizować jednostki i odczytać stan jednostki.
+* Z poziomu aranżacji można sygnalizować jednostki i można wywoływać jednostki.
+* Z poziomu jednostek można sygnalizować jednostki.
 
-Poniżej przedstawiono przykłady ilustrujące różne sposoby uzyskiwania dostępu do jednostek.
+W poniższych przykładach przedstawiono różne sposoby uzyskiwania dostępu do jednostek.
 
 > [!NOTE]
-> Dla uproszczenia w poniższych przykładach przedstawiono składnię o jednoznacznie określonym typie w celu uzyskania dostępu do jednostek. Ogólnie rzecz biorąc, zalecamy [Uzyskiwanie dostępu do jednostek za poorednictwem interfejsów](durable-functions-dotnet-entities.md#accessing-entities-through-interfaces) , ponieważ zapewnia to większą kontrolę typów.
+> Dla uproszczenia w poniższych przykładach przedstawiono składnię o jednoznacznie określonym typie na potrzeby uzyskiwania dostępu do jednostek. Ogólnie rzecz biorąc, zalecamy [dostęp do jednostek za za poorednictwem interfejsów](durable-functions-dotnet-entities.md#accessing-entities-through-interfaces) , ponieważ zapewnia ona większą kontrolę typów.
 
 ### <a name="example-client-signals-an-entity"></a>Przykład: klient sygnalizuje jednostkę
 
-Aby uzyskać dostęp do jednostek z zwykłej funkcji platformy Azure, znanej również jako *Funkcja kliencka* , należy użyć [powiązania danych wyjściowych klienta jednostki](durable-functions-bindings.md#entity-client). Poniższy przykład *pokazuje funkcję wyzwalaną przez* kolejkę przy użyciu tego powiązania.
+Aby uzyskać dostęp do jednostek z zwykłej funkcji platformy Azure, która jest również znana jako funkcja klienta, należy użyć [powiązania danych wyjściowych klienta jednostki](durable-functions-bindings.md#entity-client). Poniższy przykład pokazuje funkcję wyzwalaną przez kolejkę przy użyciu tego powiązania.
 
 ```csharp
 [FunctionName("AddFromQueue")]
@@ -194,7 +194,7 @@ module.exports = async function (context) {
 };
 ```
 
-Termin " *sygnał* " oznacza, że wywołanie interfejsu API jednostki jest jednokierunkowe i asynchroniczne. Nie jest możliwe, aby *Funkcja klienta* wiedziała, kiedy jednostka przetworzyła operację. Ponadto funkcja klienta nie może obserwować żadnych wartości wyników ani wyjątków. 
+Termin " *sygnał* " oznacza, że wywołanie interfejsu API jednostki jest jednokierunkowe i asynchroniczne. Nie jest możliwe, aby funkcja klienta wiedziała, kiedy jednostka przetworzyła operację. Ponadto funkcja klienta nie może obserwować żadnych wartości wyników ani wyjątków. 
 
 ### <a name="example-client-reads-an-entity-state"></a>Przykład: klient odczytuje stan jednostki
 
@@ -222,11 +222,11 @@ module.exports = async function (context) {
 };
 ```
 
-Zapytania o stan jednostki są wysyłane do magazynu trwałego śledzenia i zwracają ostatnio *utrwalony* stan jednostki. Ten stan jest zawsze "przydzielony", oznacza to, że nigdy nie jest tymczasowy stan pośredni przyjęty w trakcie wykonywania operacji. Jednak jest możliwe, że ten stan jest nieodświeżony w porównaniu do stanu w pamięci obiektu. Tylko aranżacje mogą odczytywać stan w pamięci jednostki, zgodnie z opisem w następnej sekcji.
+Zapytania o stan jednostki są wysyłane do magazynu trwałego śledzenia i zwracają ostatnio utrwalony stan jednostki. Ten stan jest zawsze "przydzielony", oznacza to, że nigdy nie jest tymczasowy stan pośredni przyjęty w trakcie wykonywania operacji. Jednak jest możliwe, że ten stan jest nieodświeżony w porównaniu do stanu w pamięci jednostki. Tylko aranżacje mogą odczytywać stan w pamięci jednostki, zgodnie z opisem w następnej sekcji.
 
 ### <a name="example-orchestration-signals-and-calls-an-entity"></a>Przykład: sygnały aranżacji i wywołania jednostki
 
-Funkcje programu Orchestrator mogą uzyskiwać dostęp do jednostek przy użyciu interfejsów API w ramach [powiązania wyzwalacza aranżacji](durable-functions-bindings.md#orchestration-trigger). Poniższy przykładowy kod pokazuje funkcję programu Orchestrator *wywołującą* i *sygnalizującą* jednostkę *licznika* .
+Funkcje programu Orchestrator mogą uzyskiwać dostęp do jednostek przy użyciu interfejsów API w ramach [powiązania wyzwalacza aranżacji](durable-functions-bindings.md#orchestration-trigger). Poniższy przykładowy kod przedstawia funkcję programu Orchestrator wywołującą i sygnalizującą jednostkę `Counter`.
 
 ```csharp
 [FunctionName("CounterOrchestration")]
@@ -260,15 +260,15 @@ module.exports = df.orchestrator(function*(context){
 });
 ```
 
-Tylko aranżacje mogą wywołać jednostki i uzyskać odpowiedź, co może być wartością zwracaną lub wyjątkiem. Funkcje klienta korzystające z [powiązania klienta](durable-functions-bindings.md#entity-client) mogą jedynie *sygnalizować* jednostki.
+Tylko aranżacje mogą wywołać jednostki i uzyskać odpowiedź, co może być wartością zwracaną lub wyjątkiem. Funkcje klienta, które używają [powiązania klienta](durable-functions-bindings.md#entity-client) , mogą jedynie sygnalizować jednostki.
 
 > [!NOTE]
-> Wywołanie jednostki z funkcji programu Orchestrator jest podobne do wywołania [funkcji działania](durable-functions-types-features-overview.md#activity-functions) z funkcji programu Orchestrator. Główną różnicą jest to, że funkcje jednostki są trwałymi obiektami z adresem ( *identyfikatorem jednostki*) i obsługują Określanie nazwy operacji. Funkcje działania, z drugiej strony, są bezstanowe i nie mają koncepcji operacji.
+> Wywołanie jednostki z funkcji programu Orchestrator jest podobne do wywołania [funkcji działania](durable-functions-types-features-overview.md#activity-functions) z funkcji programu Orchestrator. Główną różnicą jest to, że funkcje jednostki są trwałymi obiektami o adresie, który jest IDENTYFIKATORem jednostki. Funkcja Entity Functions obsługuje określanie nazwy operacji. Funkcje działania, z drugiej strony, są bezstanowe i nie mają koncepcji operacji.
 
 ### <a name="example-entity-signals-an-entity"></a>Przykład: jednostka sygnalizuje jednostkę
 
-Funkcja Entity może wysyłać sygnały do innych jednostek (lub nawet siebie!) podczas wykonywania operacji.
-Na przykład można zmodyfikować powyższy przykład jednostki licznika, aby wysyłał sygnał "punkt kontrolny" do pewnej jednostki monitora, gdy licznik osiągnie wartość 100:
+Funkcja Entity może wysyłać sygnały do innych jednostek, a nawet do siebie, podczas gdy wykonuje operację.
+Na przykład można zmodyfikować poprzedni przykład jednostki `Counter`, tak aby wysyłał sygnał "punkt kontrolny" do pewnej jednostki monitora, gdy licznik osiągnie wartość 100.
 
 ```csharp
    case "add":
@@ -296,14 +296,14 @@ Na przykład można zmodyfikować powyższy przykład jednostki licznika, aby wy
 
 ## <a name="entity-coordination"></a>Koordynacja jednostek
 
-Mogą wystąpić sytuacje, w których trzeba skoordynować operacje w wielu jednostkach. Na przykład w aplikacji bankowej mogą istnieć jednostki reprezentujące poszczególne konta bankowe. W przypadku przenoszenia funduszy z jednego konta do innego należy upewnić się, że konto _źródłowe_ ma wystarczające środki i że aktualizacje zarówno dla konta _źródłowego_ , jak i _docelowego_ są wykonywane w sposób spójny.
+Mogą wystąpić sytuacje, w których trzeba skoordynować operacje w wielu jednostkach. Na przykład w aplikacji bankowej mogą istnieć jednostki reprezentujące poszczególne konta bankowe. W przypadku przenoszenia funduszy z jednego konta do innego należy upewnić się, że konto źródłowe ma wystarczające środki. Należy również upewnić się, że aktualizacje zarówno dla konta źródłowego, jak i docelowego są wykonywane w sposób spójny transakcyjnie.
 
 ### <a name="example-transfer-funds-c"></a>Przykład: transfer funduszy (C#)
 
-Poniższy przykładowy kod transferuje fundusze między dwiema jednostkami _kont_ przy użyciu funkcji programu Orchestrator. Koordynacja aktualizacji jednostek wymaga użycia metody `LockAsync`, aby utworzyć _sekcję krytyczną_ w aranżacji:
+Poniższy przykładowy kod transferuje fundusze między dwiema jednostkami kont przy użyciu funkcji programu Orchestrator. Koordynacja aktualizacji jednostek wymaga użycia metody `LockAsync`, aby utworzyć _sekcję krytyczną_ w aranżacji.
 
 > [!NOTE]
-> Dla uproszczenia w tym przykładzie użyto wcześniej zdefiniowanej jednostki `Counter`. Jednak w rzeczywistej aplikacji lepiej jest zdefiniować bardziej szczegółową jednostkę `BankAccount`.
+> Dla uproszczenia w tym przykładzie użyto wcześniej zdefiniowanej jednostki `Counter`. W rzeczywistej aplikacji lepiej jest zdefiniować bardziej szczegółową jednostkę `BankAccount`.
 
 ```csharp
 // This is a method called by an orchestrator function
@@ -345,29 +345,29 @@ public static async Task<bool> TransferFundsAsync(
 }
 ```
 
-W programie .NET `LockAsync` zwraca `IDisposable`, który powoduje zakończenie sekcji krytycznej po usunięciu. Ten `IDisposable` wynik może być używany razem z blokiem `using`, aby uzyskać składniową reprezentację sekcji krytycznej.
+W programie .NET `LockAsync` zwraca `IDisposable`, co spowoduje zakończenie sekcji krytycznej po jej usunięciu. Ten `IDisposable` wynik może być używany razem z blokiem `using`, aby uzyskać składniową reprezentację sekcji krytycznej.
 
-W poprzednim przykładzie funkcja programu Orchestrator przesłała fundusze z jednostki _źródłowej_ do jednostki _docelowej_ . Metoda `LockAsync` zablokowana zarówno dla jednostki konta _źródłowego_ , jak i _docelowego_ . To blokowanie zapewnia, że żaden inny klient nie może wykonać zapytania lub zmodyfikować stanu jednego z kont, dopóki logika aranżacji nie zakończyła _sekcji krytycznej_ na końcu instrukcji `using`. Takie zachowanie zapobiega możliwości przekroczenia liczby projektów z konta _źródłowego_ .
+W poprzednim przykładzie funkcja programu Orchestrator przesłała fundusze z jednostki źródłowej do jednostki docelowej. Metoda `LockAsync` zablokowana zarówno dla jednostki konta źródłowego, jak i docelowego. To blokowanie zapewnia, że żaden inny klient nie może wykonać zapytania lub zmodyfikować stanu jednego z kont, dopóki logika aranżacji nie zakończyła sekcji krytycznej na końcu instrukcji `using`. Takie zachowanie zapobiega możliwości przekroczenia liczby projektów z konta źródłowego.
 
 > [!NOTE] 
-> Gdy aranżacja kończy się (zwykle lub z powodu błędu), wszelkie krytyczne sekcje w toku są niejawnie zakończone i wszystkie blokady są zwalniane.
+> Gdy aranżacja kończy się, zwykle lub z powodu błędu, wszelkie krytyczne sekcje w toku są niejawnie zakończone i wszystkie blokady są zwalniane.
 
 ### <a name="critical-section-behavior"></a>Zachowanie sekcji krytycznej
 
-Metoda `LockAsync` tworzy _sekcję krytyczną_ w aranżacji. Te _krytyczne sekcje_ uniemożliwiają innym aranżacjom wprowadzanie nakładających się zmian do określonego zestawu jednostek. Wewnętrznie interfejs API `LockAsync` wysyła do jednostek operacje "Lock" i zwraca, gdy odbierze komunikat odpowiedzi "lockd" z każdej z tych samych jednostek. *Blokady* i *odblokowywanie* to wbudowane operacje obsługiwane przez wszystkie jednostki.
+Metoda `LockAsync` tworzy sekcję krytyczną w aranżacji. Te krytyczne sekcje uniemożliwiają innym aranżacjom wprowadzanie nakładających się zmian do określonego zestawu jednostek. Wewnętrznie interfejs API `LockAsync` wysyła do jednostek operacje "Lock" i zwraca, gdy odbierze komunikat odpowiedzi "lockd" z każdej z tych samych jednostek. Blokady i odblokowywanie to wbudowane operacje obsługiwane przez wszystkie jednostki.
 
-Nie można wykonywać operacji z innych klientów w jednostce, gdy jest ona w stanie zablokowanym. Takie zachowanie zapewnia, że tylko jedno wystąpienie aranżacji może blokować jednostkę jednocześnie. Jeśli obiekt wywołujący podejmie próbę wywołania operacji na jednostce, gdy jest ona zablokowana przez aranżację, ta operacja zostanie umieszczona w *kolejce oczekujących operacji*. Żadne oczekujące operacje nie zostaną przetworzone do momentu, gdy organizacja holdingowa zwolni blokadę.
+Żadna operacja z innych klientów nie jest dozwolona w jednostce, gdy jest w stanie zablokowanym. Takie zachowanie zapewnia, że tylko jedno wystąpienie aranżacji może blokować jednostkę jednocześnie. Jeśli obiekt wywołujący podejmie próbę wywołania operacji na jednostce, gdy jest ona zablokowana przez aranżację, ta operacja zostanie umieszczona w kolejce oczekujących operacji. Żadne oczekujące operacje nie są przetwarzane do momentu, gdy organizacja holdingowa zwolni blokadę.
 
 > [!NOTE] 
-> Różni się to nieco od elementów pierwotnych synchronizacji używanych w większości języków programowania, takich jak instrukcja `lock` w C#. Na przykład w C#, instrukcja `lock` musi być używana przez wszystkie wątki, aby zapewnić poprawne synchronizację w wielu wątkach. Jednostki nie wymagają jednak, aby wszyscy wywołujący jawnie _blokowały_ jednostkę. Jeśli jakikolwiek obiekt wywołujący zablokuje jednostkę, wszystkie pozostałe operacje na tej jednostce zostaną zablokowane i umieszczone w kolejce za tę blokadę.
+> To zachowanie różni się nieco od elementów pierwotnych synchronizacji używanych w większości języków programowania, takich jak instrukcja `lock` w C#. Na przykład w C#, instrukcja `lock` musi być używana przez wszystkie wątki, aby zapewnić poprawną synchronizację w wielu wątkach. Jednostki nie wymagają jednak, aby wszyscy wywołujący jawnie blokowały jednostkę. Jeśli jakikolwiek obiekt wywołujący blokuje jednostkę, wszystkie pozostałe operacje na tej jednostce są blokowane i umieszczane w kolejce w tle.
 
-Blokady na jednostkach są trwałe, więc będą zachowywane nawet wtedy, gdy proces wykonywany zostanie odtworzony. Blokady są wewnętrznie utrwalane jako część trwałego stanu jednostki.
+Blokady jednostek są trwałe, więc zachowują się nawet wtedy, gdy proces wykonywany jest odtwarzany. Blokady są wewnętrznie utrwalane jako część trwałego stanu jednostki.
 
-W przeciwieństwie do transakcji sekcje krytyczne nie są automatycznie wycofywane w przypadku błędów. Zamiast tego, każda obsługa błędów (wycofywanie, ponawianie lub inne) musi być jawnie zakodowana; na przykład przez przechwytywanie błędów lub wyjątków. Ten wybór projektu jest zamierzony. Automatyczne wycofywanie wszystkich efektów aranżacji jest trudne lub niemożliwe, ponieważ aranżacje mogą uruchamiać działania i wykonywać wywołania do zewnętrznych usług, których nie można cofnąć. Ponadto próby wycofania mogą się nie powieść i wymagają dalszej obsługi błędów.
+W przeciwieństwie do transakcji sekcje krytyczne nie są automatycznie wycofywane w przypadku błędów. Zamiast tego, wszelkie obsłudze błędów, takie jak wycofywanie lub ponawianie próby, muszą być jawnie kodowane, na przykład przez przechwytywanie błędów lub wyjątków. Ten wybór projektu jest zamierzony. Automatyczne wycofywanie wszystkich efektów aranżacji jest trudne lub niemożliwe, ponieważ aranżacje mogą uruchamiać działania i wykonywać wywołania do zewnętrznych usług, których nie można cofnąć. Ponadto próby wycofania mogą zakończyć się niepowodzeniem i wymagać dalszej obsługi błędów.
 
 ### <a name="critical-section-rules"></a>Reguły sekcji krytycznej
 
-W przeciwieństwie do elementów podstawowych blokowania niskiego poziomu w większości języków programowania, sekcje krytyczne **nie są zagwarantowane**. Aby zapobiec zakleszczeniom, Wymuś następujące ograniczenia: 
+W przeciwieństwie do elementów podstawowych blokowania niskiego poziomu w większości języków programowania, sekcje krytyczne *nie są zagwarantowane*. Aby zapobiec zakleszczeniom, Wymuś następujące ograniczenia: 
 
 * Sekcje krytyczne nie mogą być zagnieżdżane.
 * Sekcje krytyczne nie mogą tworzyć podaranżacji.
@@ -375,25 +375,25 @@ W przeciwieństwie do elementów podstawowych blokowania niskiego poziomu w wię
 * Sekcje krytyczne nie mogą wywoływać tej samej jednostki przy użyciu wielu wywołań równoległych.
 * Sekcje krytyczne mogą sygnalizować tylko jednostki, które nie zostały zablokowane.
 
-Wszelkie naruszenia tych reguł powodują wystąpienie błędu czasu wykonywania (na przykład `LockingRulesViolationException` w programie .NET), które zawiera komunikat z wyjaśnieniem, jaka reguła została przerwana.
+Wszelkie naruszenia tych reguł powodują wystąpienie błędu czasu wykonywania, takie jak `LockingRulesViolationException` w programie .NET, w tym komunikat objaśniający, która reguła została przerwana.
 
 ## <a name="comparison-with-virtual-actors"></a>Porównanie z aktorami wirtualnymi
 
-Wiele funkcji jednostek trwałych jest inspirowany [modelem aktora](https://en.wikipedia.org/wiki/Actor_model). Jeśli znasz już uczestników, możesz rozpoznać wiele pojęć opisanych w tym artykule. Trwałe jednostki są szczególnie podobne do [aktorów wirtualnych](https://research.microsoft.com/projects/orleans/)lub *ziaren*, które są popularne przez [projekt Orleans](http://dotnet.github.io/orleans/). Na przykład:
+Wiele funkcji jednostek trwałych jest inspirowany [modelem aktora](https://en.wikipedia.org/wiki/Actor_model). Jeśli znasz już uczestników, możesz rozpoznać wiele pojęć opisanych w tym artykule. Trwałe jednostki są szczególnie podobne do [aktorów wirtualnych](https://research.microsoft.com/projects/orleans/)lub ziaren, które są popularne przez [projekt Orleans](http://dotnet.github.io/orleans/). Na przykład:
 
-* Jednostki trwałe są adresowane za pośrednictwem *identyfikatora jednostki*.
+* Jednostki trwałe są adresowane za pośrednictwem identyfikatora jednostki.
 * Trwałe operacje jednostki wykonują szeregowo, pojedynczo, aby uniknąć sytuacji wyścigu.
-* Trwałe jednostki są tworzone niejawnie, gdy są wywoływane lub sygnalizowane.
+* Trwałe jednostki są tworzone niejawnie po wywołaniu lub zasygnalizowaniu.
 * W przypadku braku wykonywania operacji trwałe jednostki są dyskretnie zwalniane z pamięci.
 
-Istnieją jednak pewne istotne różnice, które warto wziąć pod uwagę:
+Istnieją pewne istotne różnice, które warto zwrócić uwagę:
 
-* Trwałe jednostki ustalają priorytety *trwałości* przed *opóźnieniami*i w ten sposób mogą nie być odpowiednie dla aplikacji z rygorystycznymi wymaganiami opóźnienia.
-* Jednostki trwałe nie mają wbudowanych limitów czasu dla komunikatów. W Orleans, wszystkie komunikaty przekroczą limit czasu po skonfigurowaniu czasu (domyślnie 30 sekund).
+* Trwałe jednostki ustalają priorytety trwałości przed opóźnieniami i dlatego mogą nie być odpowiednie dla aplikacji z rygorystycznymi wymaganiami opóźnienia.
+* Jednostki trwałe nie mają wbudowanych limitów czasu dla komunikatów. W programie Orleans wszystkie komunikaty przekroczyły limit czasu, gdy zostanie skonfigurowany czas. Wartość domyślna to 30 sekund.
 * Komunikaty wysyłane między jednostkami są dostarczane w sposób niezawodny i w kolejności. W Orleans, niezawodne lub uporządkowane dostarczanie jest obsługiwane w przypadku zawartości wysyłanej za poorednictwem strumieni, ale nie jest gwarantowane dla wszystkich komunikatów między ziarnami.
-* Wzorce żądania/odpowiedzi w jednostkach są ograniczone do aranżacji. W obrębie jednostek dozwolony jest tylko jednokierunkowa obsługa komunikatów (nazywanych także "sygnalizacją"), jak w oryginalnym modelu aktora i w przeciwieństwie do ziaren w Orleans. 
-* Trwałe jednostki nie są zakleszczony. W Orleans mogą wystąpić zakleszczenia (i nie należy rozwiązywać problemów przed upływem limitu czasu komunikatów).
-* Trwałe jednostki mogą być używane w połączeniu z trwałymi aranżacjami i obsługują mechanizmy blokowania rozproszonego. 
+* Wzorce żądania-odpowiedzi w jednostkach są ograniczone do aranżacji. W obrębie jednostek dozwolony jest tylko jednokierunkowa obsługa komunikatów (nazywanych również sygnalizowaniem), jak w oryginalnym modelu aktora i w przeciwieństwie do ziaren w Orleans. 
+* Niezakleszczenie jednostek trwałych. W Orleans, zakleszczenie mogą wystąpić i nie są rozwiązywane, dopóki komunikaty przekroczą limit czasu.
+* Jednostki trwałe mogą być używane w połączeniu z trwałymi aranżacjami i obsługują mechanizmy blokowania rozproszonego. 
 
 
 ## <a name="next-steps"></a>Następne kroki

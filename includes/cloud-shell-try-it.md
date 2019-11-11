@@ -4,18 +4,18 @@ ms.service: azure
 ms.topic: include
 ms.date: 06/13/2019
 ms.author: sttramer
-ms.openlocfilehash: fdb4ddc43c1fcde55da8186bd2c09b709eb41374
-ms.sourcegitcommit: 92d42c04e0585a353668067910b1a6afaf07c709
+ms.openlocfilehash: 47873016a8e355127df36928f2c26439cf3f28c4
+ms.sourcegitcommit: bc193bc4df4b85d3f05538b5e7274df2138a4574
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/28/2019
-ms.locfileid: "71055241"
+ms.lasthandoff: 11/10/2019
+ms.locfileid: "73901441"
 ---
 ## <a name="use-azure-cloud-shell"></a>Używanie usługi Azure Cloud Shell
 
-Platforma Azure obsługuje Azure Cloud Shell, interaktywne środowisko powłoki, z którego można korzystać w przeglądarce. Cloud Shell pozwala używać `bash` lub `PowerShell` do pracy z usługami platformy Azure. Możesz użyć wstępnie zainstalowanych poleceń Cloud Shell, aby uruchomić kod w tym artykule bez konieczności instalowania niczego w środowisku lokalnym.
+Platforma Azure obsługuje Azure Cloud Shell, interaktywne środowisko powłoki, z którego można korzystać w przeglądarce. Do pracy z usługami platformy Azure można używać bash lub PowerShell z Cloud Shell. Możesz użyć wstępnie zainstalowanych poleceń Cloud Shell, aby uruchomić kod w tym artykule bez konieczności instalowania niczego w środowisku lokalnym.
 
-Aby uruchomić Azure Cloud Shell:
+Aby rozpocząć Azure Cloud Shell:
 
 | Opcja | Przykład/link |
 |-----------------------------------------------|---|
@@ -25,10 +25,10 @@ Aby uruchomić Azure Cloud Shell:
 
 Aby uruchomić kod w tym artykule w Azure Cloud Shell:
 
-1. Uruchom Cloud Shell.
+1. Rozpocznij Cloud Shell.
 
 1. Aby skopiować kod, wybierz przycisk **Kopiuj** w bloku kodu.
 
-1. Wklej kod do sesji Cloud Shell przy użyciu **kombinacji klawiszy Ctrl**+**SHIFT**+**v** w systemach Windows i Linux lub **cmd**+**SHIFT**+**V** w macOS.
+1. Wklej kod do sesji Cloud Shell, wybierając kolejno pozycje **Ctrl**+**SHIFT**+**v** w systemach Windows i Linux lub wybierając **polecenie cmd**+**SHIFT**+**v** w macOS.
 
-1. Naciśnij klawisz **Enter** , aby uruchomić kod.
+1. Wybierz **klawisz ENTER** , aby uruchomić kod.

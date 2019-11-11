@@ -11,12 +11,12 @@ author: j-martens
 ms.author: jmartens
 ms.date: 11/05/2019
 ms.custom: seodec18
-ms.openlocfilehash: 835024f7c8d77d67a2f6321df658c2f5c2007e62
-ms.sourcegitcommit: 359930a9387dd3d15d39abd97ad2b8cb69b8c18b
+ms.openlocfilehash: 1ff70a8a794cbc4c201512a0cf578eb0a890a5e4
+ms.sourcegitcommit: bc193bc4df4b85d3f05538b5e7274df2138a4574
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73647116"
+ms.lasthandoff: 11/10/2019
+ms.locfileid: "73904419"
 ---
 # <a name="what-happened-to-azure-machine-learning-workbench"></a>Co się stało z aplikacją Azure Machine Learning Workbench?
 
@@ -99,8 +99,8 @@ Poznaj [najnowszą architekturę Azure Machine Learning](concept-azure-machine-l
 Aby zapoznać się z omówieniem usługi, przeczytaj artykuł [co to jest Azure Machine Learning?](overview-what-is-azure-ml.md).
 
 Utwórz pierwszy eksperyment przy użyciu preferowanej metody:
-  + [Korzystanie z notesów Python do uczenia & Wdrażanie modeli ML](tutorial-1st-experiment-sdk-setup.md)
-  + [Używanie R Markdown do uczenia & wdrażania modeli ML]( tutorial-1st-r-experiment.md) 
-  + [Używanie automatycznej uczenia maszynowego do uczenia & Wdrażanie modeli ML](ui-tutorial-automobile-price-train-score.md) 
-  + [Korzystanie z funkcji upuszczania & przez projektanta w celu uczenia & wdrożenia](tutorial-first-experiment-automated-ml.md) 
-  + [Korzystanie z interfejsu wiersza polecenia Machine Learning w celu uczenia i wdrożenia modelu](tutorial-train-deploy-model-cli.md)
+  + [Korzystanie z notesów języka Python](tutorial-1st-experiment-sdk-setup.md)
+  + [Użyj R Markdown]( tutorial-1st-r-experiment.md) 
+  + [Korzystanie z automatycznej uczenia maszynowego](ui-tutorial-automobile-price-train-score.md) 
+  + [Korzystanie z funkcji przeciągania & w projektancie](tutorial-first-experiment-automated-ml.md) 
+  + [Użyj rozszerzenia ML do interfejsu wiersza polecenia](tutorial-train-deploy-model-cli.md)

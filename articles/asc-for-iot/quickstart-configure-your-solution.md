@@ -1,6 +1,6 @@
 ---
-title: Skonfiguruj Azure Security Center rozwiązania IoT | Microsoft Docs
-description: Dowiedz się, jak skonfigurować kompleksowe rozwiązanie IoT przy użyciu Azure Security Center dla IoT.
+title: 'Szybki Start: Konfigurowanie Azure Security Center na potrzeby rozwiązania IoT'
+description: W tym przewodniku szybki start dowiesz się, jak skonfigurować kompleksowe rozwiązanie IoT przy użyciu Azure Security Center dla IoT.
 services: asc-for-iot
 ms.service: asc-for-iot
 documentationcenter: na
@@ -13,16 +13,16 @@ ms.devlang: na
 ms.topic: quickstart
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 09/25/2019
+ms.date: 11/08/2019
 ms.author: mlottner
-ms.openlocfilehash: a546d153c6fe4f14ccc8c21308bd4a33385870c3
-ms.sourcegitcommit: 29880cf2e4ba9e441f7334c67c7e6a994df21cfe
+ms.openlocfilehash: e670df359cc33c9eaca089d0ed8f9614ef8c0468
+ms.sourcegitcommit: bc193bc4df4b85d3f05538b5e7274df2138a4574
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/26/2019
-ms.locfileid: "71299687"
+ms.lasthandoff: 11/10/2019
+ms.locfileid: "73904151"
 ---
-# <a name="quickstart-configure-your-iot-solution"></a>Szybki start: Skonfiguruj rozwiązanie IoT
+# <a name="quickstart-configure-your-iot-solution"></a>Szybki Start: Konfigurowanie rozwiązania IoT
 
 Ten artykuł zawiera informacje na temat przeprowadzania początkowej konfiguracji rozwiązania do ochrony IoT przy użyciu Azure Security Center dla IoT. 
 
@@ -47,7 +47,7 @@ Aby dodać nowy zasób do rozwiązania IoT, wykonaj następujące czynności:
 1. Otwórz **IoT Hub** w Azure Portal. 
 1. Wybierz i Otwórz **zasoby** z opcji **zabezpieczenia** w menu po lewej stronie. 
 1. Wybierz pozycję **Edytuj** i wybierz grupy zasobów należące do rozwiązania IoT.
-1. Kliknij pozycję **Dodaj**. 
+1. Kliknij pozycję **Add** (Dodaj). 
 
 Gratulacje! Dodano nową grupę zasobów do rozwiązania IoT.
 

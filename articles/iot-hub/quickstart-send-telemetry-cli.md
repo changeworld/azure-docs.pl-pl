@@ -9,12 +9,12 @@ ms.custom:
 ms.author: timlt
 author: timlt
 ms.date: 11/06/2019
-ms.openlocfilehash: d926f1c286c4288784d429f13b22436d7c8ae7e5
-ms.sourcegitcommit: 16c5374d7bcb086e417802b72d9383f8e65b24a7
+ms.openlocfilehash: 8ebcc863c1812081e6198ff9c684934642e1dc41
+ms.sourcegitcommit: bc193bc4df4b85d3f05538b5e7274df2138a4574
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73849276"
+ms.lasthandoff: 11/10/2019
+ms.locfileid: "73904552"
 ---
 # <a name="quickstart-send-telemetry-from-a-device-to-an-iot-hub-and-monitor-it-with-the-azure-cli"></a>Szybki Start: wysyłanie danych telemetrycznych z urządzenia do centrum IoT Hub i monitorowanie go za pomocą interfejsu wiersza polecenia platformy Azure
 
@@ -74,7 +74,7 @@ W tej sekcji utworzysz grupę zasobów i IoT Hub przy użyciu interfejsu wiersza
     az group create --name MyResourceGroup --location eastus
     ```
 
-1. Uruchom polecenie [AZ IoT Hub Create](https://docs.microsoft.com/cli/azure/iot/hub?view=azure-cli-latest#az-iot-hub-create) , aby utworzyć Centrum IoT Hub.
+1. Uruchom polecenie [AZ IoT Hub Create](https://docs.microsoft.com/cli/azure/iot/hub?view=azure-cli-latest#az-iot-hub-create) , aby utworzyć Centrum IoT Hub. Utworzenie centrum IoT Hub może potrwać kilka minut. 
 
     *YourIotHubName*. zamień ten symbol zastępczy poniżej na wybraną nazwę centrum IoT Hub. Nazwa Centrum IoT musi być globalnie unikatowa na platformie Azure. Ten symbol zastępczy jest używany w pozostałej części tego przewodnika Szybki Start do reprezentowania nazwy Centrum IoT.
 
@@ -141,15 +141,15 @@ W tej sekcji zostanie użyta druga sesja interfejsu wiersza polecenia w celu wys
 
     ![Cloud Shell komunikat z chmury do urządzenia](media/quickstart-send-telemetry-cli/cloud-shell-receive-message.png)
 
-1. Po wyświetleniu komunikatu zamknij oba sesje interfejsu wiersza polecenia. 
+1. Po wyświetleniu komunikatu Zamknij drugą sesję interfejsu wiersza polecenia. Pozostaw pierwszą otwartą sesję interfejsu wiersza polecenia. Służy do czyszczenia zasobów w późniejszym kroku.
 
 ## <a name="view-messaging-metrics-in-the-portal"></a>Wyświetlanie metryk komunikatów w portalu
 Azure Portal pozwala zarządzać wszystkimi aspektami IoT Hub i urządzeń. W typowej aplikacji IoT Hub, która pozyskuje dane telemetryczne z urządzeń, warto monitorować urządzenia lub wyświetlać metryki na potrzeby telemetrii urządzeń. 
 
 Aby wizualizować metryki komunikatów w Azure Portal:
-1. Na stronie **głównej** portalu wybierz pozycję **wszystkie zasoby**. 
+1. W menu nawigacji po lewej stronie portalu wybierz pozycję **wszystkie zasoby**. Spowoduje to wyświetlenie listy wszystkich zasobów w ramach subskrypcji, w tym utworzonego Centrum IoT. 
 
-1. Z listy grup zasobów wybierz utworzone Centrum IoT. 
+1. Kliknij link w utworzonym Centrum IoT. W portalu zostanie wyświetlona strona przegląd dla centrum.
 
 1. W lewym okienku IoT Hub wybierz pozycję **metryki** . 
 

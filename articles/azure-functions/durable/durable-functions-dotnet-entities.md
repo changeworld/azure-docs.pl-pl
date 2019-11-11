@@ -9,12 +9,12 @@ ms.service: azure-functions
 ms.topic: conceptual
 ms.date: 10/06/2019
 ms.author: azfuncdf
-ms.openlocfilehash: a59e5443c80c9372f646edfdae2261157a41acc9
-ms.sourcegitcommit: b2fb32ae73b12cf2d180e6e4ffffa13a31aa4c6f
+ms.openlocfilehash: d854f41ffc883b40f9159a7dacdde0fb3bb7240f
+ms.sourcegitcommit: bc193bc4df4b85d3f05538b5e7274df2138a4574
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73614887"
+ms.lasthandoff: 11/10/2019
+ms.locfileid: "73904064"
 ---
 # <a name="developers-guide-to-durable-entities-in-net"></a>Przewodnik dewelopera dotyczący trwałych jednostek w programie .NET
 
@@ -117,7 +117,7 @@ Można na przykład zmodyfikować jednostkę licznika, aby rozpocząć aranżacj
 
 ## <a name="accessing-entities-directly"></a>Bezpośredni dostęp do jednostek
 
-Dostęp do jednostek opartych na klasie można uzyskać bezpośrednio przy użyciu jawnych nazw ciągów dla jednostki i jej operacji. Udostępniamy kilka przykładów poniżej. Aby uzyskać dokładniejsze objaśnienie podstawowych koncepcji (takich jak sygnały i wywołania), zobacz Omówienie [uzyskiwania dostępu do jednostek](durable-functions-entities.md#accessing-entities). 
+Dostęp do jednostek opartych na klasie można uzyskać bezpośrednio przy użyciu jawnych nazw ciągów dla jednostki i jej operacji. Udostępniamy kilka przykładów poniżej. Aby uzyskać dokładniejsze wyjaśnienie podstawowych koncepcji (takich jak sygnały i wywołania), zobacz dyskusje w [jednostkach dostępu](durable-functions-entities.md#access-entities). 
 
 > [!NOTE]
 > Tam, gdzie to możliwe, zalecamy [dostęp do jednostek za poorednictwem interfejsów](#accessing-entities-through-interfaces), ponieważ zapewnia ona większą kontrolę typów.

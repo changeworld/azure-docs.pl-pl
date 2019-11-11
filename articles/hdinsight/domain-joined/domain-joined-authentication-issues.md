@@ -1,18 +1,18 @@
 ---
 title: Problemy z uwierzytelnianiem w usłudze Azure HDInsight
 description: Problemy z uwierzytelnianiem w usłudze Azure HDInsight
-ms.service: hdinsight
-ms.topic: troubleshooting
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
-ms.date: 08/09/2019
-ms.openlocfilehash: 3d2ba5965fef19a36faa8b9bbef235fd4117c20f
-ms.sourcegitcommit: 8ef0a2ddaece5e7b2ac678a73b605b2073b76e88
+ms.service: hdinsight
+ms.topic: troubleshooting
+ms.date: 11/08/2019
+ms.openlocfilehash: 17bc9f1ea93b0afa4f53443a53d294acb9e94b2e
+ms.sourcegitcommit: bc193bc4df4b85d3f05538b5e7274df2138a4574
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71071955"
+ms.lasthandoff: 11/10/2019
+ms.locfileid: "73901399"
 ---
 # <a name="authentication-issues-in-azure-hdinsight"></a>Problemy z uwierzytelnianiem w usłudze Azure HDInsight
 
@@ -34,11 +34,11 @@ Reason: Bad Request, Detailed Response: {"error":"invalid_grant","error_descript
 
 ### <a name="cause"></a>Przyczyna
 
-Kod błędu usługi Azure AD 50126 oznacza `AllowCloudPasswordValidation` , że zasady nie zostały ustawione przez dzierżawcę.
+Kod błędu usługi Azure AD 50126 oznacza, że zasady `AllowCloudPasswordValidation` nie zostały ustawione przez dzierżawcę.
 
 ### <a name="resolution"></a>Rozwiązanie
 
-Administrator firmy w dzierżawie usługi Azure AD powinien zezwolić usłudze Azure AD na używanie skrótów haseł dla użytkowników z kopiami zapasowymi usług ADFS.  Zastosuj, `AllowCloudPasswordValidationPolicy` jak pokazano w artykule, [Użyj pakiet Enterprise Security w usłudze HDInsight](../domain-joined/apache-domain-joined-architecture.md).
+Administrator firmy w dzierżawie usługi Azure AD powinien zezwolić usłudze Azure AD na używanie skrótów haseł dla użytkowników z kopiami zapasowymi usług ADFS.  Zastosuj `AllowCloudPasswordValidationPolicy`, jak pokazano w artykule [użycie pakiet Enterprise Security w usłudze HDInsight](../domain-joined/apache-domain-joined-architecture.md).
 
 ---
 
@@ -106,11 +106,11 @@ Zmień hasło w Azure Portal (w systemie lokalnym), a następnie poczekaj 30 min
 
 ### <a name="issue"></a>Problem
 
-Odbieranie komunikatu `interaction_required`o błędzie.
+Odbierz komunikat o błędzie `interaction_required`.
 
 ### <a name="cause"></a>Przyczyna
 
-Zasady dostępu warunkowego lub uwierzytelnianie wieloskładnikowe są stosowane do użytkownika. Ponieważ uwierzytelnianie interaktywne nie jest jeszcze obsługiwane, użytkownik lub klaster muszą zostać wykluczone z usługi MFA/dostępu warunkowego. Jeśli zdecydujesz się na wykluczenie klastra (Zasady wykluczania oparte na adresach IP), upewnij `ServiceEndpoints` się, że Usługa AD jest włączona dla tej sieci wirtualnej.
+Zasady dostępu warunkowego lub uwierzytelniania wieloskładnikowego są stosowane do użytkownika. Ponieważ uwierzytelnianie interakcyjne nie jest jeszcze obsługiwane, użytkownika lub klaster należy wykluczyć z uwierzytelniania wieloskładnikowego lub dostępu warunkowego. Jeśli zdecydujesz się na wykluczenie klastra (Zasady wykluczania oparte na adresach IP), upewnij się, że `ServiceEndpoints` usługi AD są włączone dla tej sieci wirtualnej.
 
 ### <a name="resolution"></a>Rozwiązanie
 
@@ -148,7 +148,7 @@ Różni się.
 
 ### <a name="resolution"></a>Rozwiązanie
 
-Aby narzędzie kinit się powieść, musisz znać `sAMAccountName` (to jest krótka nazwa konta bez obszaru). `sAMAccountName`jest zazwyczaj prefiksem konta (na przykład Roberta `bob@contoso.com`in). W przypadku niektórych użytkowników może się to różnić. Będziesz potrzebować możliwości przeglądania i przeszukiwania katalogu w celu uzyskania informacji `sAMAccountName`.
+Aby narzędzie kinit się powieść, musisz znać `sAMAccountName` (to jest krótka nazwa konta bez obszaru). `sAMAccountName` jest zazwyczaj prefiksem konta (na przykład Roberta w `bob@contoso.com`). W przypadku niektórych użytkowników może się to różnić. Aby poznać `sAMAccountName`, będziesz potrzebować możliwości przeglądania i przeszukiwania katalogu.
 
 Sposoby znajdowania `sAMAccountName`:
 
@@ -158,7 +158,7 @@ Sposoby znajdowania `sAMAccountName`:
 
 * W węźle głównym można wyszukiwać za pomocą poleceń SAMBA. Wymaga to prawidłowej sesji protokołu Kerberos (pomyślne narzędzie kinit). Wyszukiwanie w usłudze net AD "(userPrincipalName = Robert *)"
 
-    W wynikach wyszukiwania/przeglądania powinna być wyświetlana wartość `sAMAccountName` atrybutu. Ponadto można przeglądać inne atrybuty `pwdLastSet` `userPrincipalName` , takie jak, itp `badPasswordTime`., aby sprawdzić, czy te właściwości są zgodne z oczekiwaniami.
+    W wynikach wyszukiwania/przeglądania powinien zostać wyświetlony atrybut `sAMAccountName`. Ponadto można przeglądać inne atrybuty, takie jak `pwdLastSet`, `badPasswordTime`, `userPrincipalName` itd., aby sprawdzić, czy te właściwości są zgodne z oczekiwaniami.
 
 ---
 
@@ -166,7 +166,7 @@ Sposoby znajdowania `sAMAccountName`:
 
 ### <a name="issue"></a>Problem
 
-Narzędzie kinit kończy się `Preauthentication` niepowodzeniem z powodu błędu.
+Narzędzie kinit kończy się niepowodzeniem z powodu niepowodzenia `Preauthentication`.
 
 ### <a name="cause"></a>Przyczyna
 
@@ -174,7 +174,7 @@ Nieprawidłowa nazwa użytkownika lub hasło.
 
 ### <a name="resolution"></a>Rozwiązanie
 
-Sprawdź nazwę użytkownika i hasło. Sprawdź również inne opisane powyżej właściwości. Aby włączyć pełne debugowanie, uruchom `export KRB5_TRACE=/tmp/krb.log` polecenie z sesji przed podjęciem próby narzędzie kinit.
+Sprawdź nazwę użytkownika i hasło. Sprawdź również inne opisane powyżej właściwości. Aby włączyć pełne debugowanie, uruchom `export KRB5_TRACE=/tmp/krb.log` z sesji przed podjęciem próby narzędzie kinit.
 
 ---
 
@@ -182,7 +182,7 @@ Sprawdź nazwę użytkownika i hasło. Sprawdź również inne opisane powyżej 
 
 ### <a name="issue"></a>Problem
 
-Polecenie Job/HDFS nie powiodło `TokenNotFoundException`się z powodu błędu.
+Polecenie Job/HDFS nie powiodło się z powodu `TokenNotFoundException`.
 
 ### <a name="cause"></a>Przyczyna
 
@@ -194,12 +194,30 @@ Upewnij się, że po pomyślnym zalogowaniu się do portalu Ambari za pomocą na
 
 ---
 
+## <a name="error-fetching-access-token"></a>Błąd podczas pobierania tokenu dostępu
+
+### <a name="issue"></a>Problem
+
+Użytkownik otrzymuje komunikat o błędzie `Error fetching access token`.
+
+### <a name="cause"></a>Przyczyna
+
+Ten błąd występuje sporadycznie, gdy użytkownicy próbują uzyskać dostęp do ADLS Gen2 przy użyciu list kontroli dostępu, a token Kerberos wygasł.
+
+### <a name="resolution"></a>Rozwiązanie
+
+* W przypadku Azure Data Lake Storage Gen1, wyczyść pamięć podręczną przeglądarki i ponownie zaloguj się do Ambari.
+
+* W przypadku Azure Data Lake Storage Gen2 Uruchom `/usr/lib/hdinsight-common/scripts/RegisterKerbWithOauth.sh <upn>` dla użytkownika, w którym użytkownik próbuje się zalogować
+
+---
+
 ## <a name="next-steps"></a>Następne kroki
 
 Jeśli problem nie został wyświetlony lub nie można rozwiązać problemu, odwiedź jeden z następujących kanałów, aby uzyskać więcej pomocy:
 
 * Uzyskaj odpowiedzi od ekspertów platformy Azure za pośrednictwem [pomocy technicznej dla społeczności platformy Azure](https://azure.microsoft.com/support/community/).
 
-* Połącz się [@AzureSupport](https://twitter.com/azuresupport) z programem — oficjalnego konta Microsoft Azure, aby zwiększyć komfort obsługi klienta. Połączenie społeczności platformy Azure z właściwymi zasobami: odpowiedziami, wsparciem i ekspertami.
+* Połącz się z [@AzureSupport](https://twitter.com/azuresupport) — oficjalnego Microsoft Azure konta, aby zwiększyć komfort obsługi klienta. Połączenie społeczności platformy Azure z właściwymi zasobami: odpowiedziami, wsparciem i ekspertami.
 
-* Jeśli potrzebujesz więcej pomocy, możesz przesłać żądanie pomocy technicznej z [Azure Portal](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade/). Na pasku menu wybierz pozycję **Obsługa** , a następnie otwórz Centrum **pomocy i obsługi technicznej** . Aby uzyskać szczegółowe informacje, zapoznaj [się z tematem jak utworzyć żądanie pomocy technicznej platformy Azure](https://docs.microsoft.com/azure/azure-supportability/how-to-create-azure-support-request). Dostęp do pomocy w zakresie zarządzania subskrypcjami i rozliczeń jest dostępny w ramach subskrypcji Microsoft Azure, a pomoc techniczna jest świadczona za pomocą jednego z [planów pomocy technicznej systemu Azure](https://azure.microsoft.com/support/plans/).
+* Jeśli potrzebujesz więcej pomocy, możesz przesłać żądanie pomocy technicznej z [Azure Portal](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade/). Na pasku menu wybierz pozycję **Obsługa** , a następnie otwórz Centrum **pomocy i obsługi technicznej** . Aby uzyskać szczegółowe informacje, zapoznaj [się z tematem jak utworzyć żądanie pomocy technicznej platformy Azure](https://docs.microsoft.com/azure/azure-supportability/how-to-create-azure-support-request). Dostęp do pomocy technicznej dotyczącej zarządzania subskrypcjami i rozliczeniami jest oferowany w ramach subskrypcji platformy Microsoft Azure, a pomoc techniczna jest świadczona w ramach jednego z [planów pomocy technicznej platformy Azure](https://azure.microsoft.com/support/plans/).

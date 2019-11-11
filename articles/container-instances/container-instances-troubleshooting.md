@@ -9,12 +9,12 @@ ms.topic: article
 ms.date: 09/25/2019
 ms.author: danlep
 ms.custom: mvc
-ms.openlocfilehash: 1fda05ffcac8952ee5a12c23383aad1a04d36b97
-ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
+ms.openlocfilehash: 14745f79955a98727d6f55da4189212f2f18d9c0
+ms.sourcegitcommit: bc193bc4df4b85d3f05538b5e7274df2138a4574
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73601314"
+ms.lasthandoff: 11/10/2019
+ms.locfileid: "73904397"
 ---
 # <a name="troubleshoot-common-issues-in-azure-container-instances"></a>Rozwiązywanie typowych problemów w Azure Container Instances
 
@@ -22,7 +22,8 @@ W tym artykule pokazano, jak rozwiązywać typowe problemy związane z zarządza
 
 Jeśli potrzebujesz dodatkowej pomocy technicznej, zobacz dostępne opcje **pomocy i obsługi** w [Azure Portal](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade).
 
-## <a name="naming-conventions"></a>Konwencje nazewnictwa
+## <a name="issues-during-container-group-deployment"></a>Problemy podczas wdrażania grupy kontenerów
+### <a name="naming-conventions"></a>Konwencje nazewnictwa
 
 Podczas definiowania specyfikacji kontenera niektóre parametry wymagają przestrzegania ograniczeń nazewnictwa. Poniżej znajduje się tabela z określonymi wymaganiami dotyczącymi właściwości grupy kontenerów. Aby uzyskać więcej informacji na temat konwencji nazewnictwa platformy Azure, zobacz [konwencje nazewnictwa][azure-name-restrictions] w centrum architektury platformy Azure.
 
@@ -35,7 +36,7 @@ Podczas definiowania specyfikacji kontenera niektóre parametry wymagają przest
 | Zmienna środowiskowa | 1-63 |Bez uwzględniania wielkości liter |Znaki alfanumeryczne i znaki podkreślenia (_) wszędzie z wyjątkiem pierwszego lub ostatniego znaku |`<name>` |`MY_VARIABLE` |
 | Nazwa woluminu | 5-63 |Bez uwzględniania wielkości liter |Małe litery i cyfry oraz łączniki wszędzie z wyjątkiem pierwszego lub ostatniego znaku. Nie może zawierać dwóch kolejnych łączników. |`<name>` |`batch-output-volume` |
 
-## <a name="os-version-of-image-not-supported"></a>Wersja systemu operacyjnego obrazu nie jest obsługiwana
+### <a name="os-version-of-image-not-supported"></a>Wersja systemu operacyjnego obrazu nie jest obsługiwana
 
 Jeśli określisz obraz, który Azure Container Instances nie obsługuje, zostanie zwrócony błąd `OsVersionNotSupported`. Ten błąd jest podobny do poniższego, gdzie `{0}` jest nazwą obrazu, który próbujesz wdrożyć:
 
@@ -50,7 +51,7 @@ Jeśli określisz obraz, który Azure Container Instances nie obsługuje, zostan
 
 Ten błąd jest najczęściej spotykany podczas wdrażania obrazów systemu Windows opartych na półrocze w wersji 1709 lub 1803, które nie są obsługiwane. Aby uzyskać obsługiwane obrazy systemu Windows w Azure Container Instances, zobacz [często zadawane pytania](container-instances-faq.md#what-windows-base-os-images-are-supported).
 
-## <a name="unable-to-pull-image"></a>Nie można ściągnąć obrazu
+### <a name="unable-to-pull-image"></a>Nie można ściągnąć obrazu
 
 Jeśli Azure Container Instances początkowo nie można ściągnąć obrazu, ponawia próbę przez pewien czas. Jeśli operacja ściągania obrazu nie powiedzie się, ACI ostatecznie kończy się niepowodzeniem wdrożenia i może zostać wyświetlony błąd `Failed to pull image`.
 
@@ -86,8 +87,21 @@ Jeśli nie można ściągnąć obrazu, zdarzenia takie jak następujące są wy�
   }
 ],
 ```
+### <a name="resource-not-available-error"></a>Błąd niedostępnego zasobu
 
-## <a name="container-continually-exits-and-restarts-no-long-running-process"></a>Kontener ciągle opuszcza i uruchamia ponownie (bez długotrwałego procesu)
+Ze względu na zróżnicowane obciążenie zasobów regionalnych na platformie Azure podczas próby wdrożenia wystąpienia kontenera może zostać wyświetlony następujący błąd:
+
+`The requested resource with 'x' CPU and 'y.z' GB memory is not available in the location 'example region' at this moment. Please retry with a different resource request or in another location.`
+
+Ten błąd wskazuje, że ze względu na duże obciążenie w regionie, w którym próbujesz wdrożyć, zasoby określone dla danego kontenera nie mogą być przyłączone w tym czasie. Aby rozwiązać problem, należy użyć co najmniej jednego z następujących kroków zaradczych.
+
+* Sprawdź, czy ustawienia wdrożenia kontenera mieszczą się w parametrach zdefiniowanych w [obszarze dostępność w regionie dla Azure Container Instances](container-instances-region-availability.md)
+* Określ mniejsze ustawienia procesora i pamięci dla kontenera
+* Wdrażanie w innym regionie platformy Azure
+* Wdróż w późniejszym czasie
+
+## <a name="issues-during-container-group-runtime"></a>Problemy podczas środowiska uruchomieniowego grupy kontenerów
+### <a name="container-continually-exits-and-restarts-no-long-running-process"></a>Kontener ciągle opuszcza i uruchamia ponownie (bez długotrwałego procesu)
 
 Grupy kontenerów domyślnie mają [zasady ponownego uruchamiania](container-instances-restart-policy.md) **zawsze**, dlatego kontenery w grupie kontenerów zawsze są ponownie uruchamiane po ich zakończeniu. Może być konieczne jej zmianę na **OnFailure** lub **nigdy** , jeśli zamierzasz uruchomić kontenery oparte na zadaniach. Jeśli określisz wartość **OnFailure** i nadal widzisz ciągłe ponowne uruchomienia, może wystąpić problem z aplikacją lub skryptem wykonywanym w kontenerze.
 
@@ -147,16 +161,17 @@ Interfejs Container Instances API i Azure Portal zawiera właściwość `restart
 > [!NOTE]
 > Większość obrazów kontenerów dla dystrybucji systemu Linux ustawia powłokę, taką jak bash, jako polecenie domyślne. Ponieważ sama powłoka nie jest długotrwałą usługą, te kontenery są natychmiast zamykane i przepadają w pętli ponownego uruchomienia po skonfigurowaniu domyślnych zasad **zawsze** uruchamiaj ponownie.
 
-## <a name="container-takes-a-long-time-to-start"></a>Rozpoczęcie pracy kontenera trwa długo
+### <a name="container-takes-a-long-time-to-start"></a>Rozpoczęcie pracy kontenera trwa długo
 
-Dwa podstawowe czynniki, które przyczyniają się do czasu uruchamiania kontenera w Azure Container Instances są następujące:
+Trzy podstawowe czynniki, które przyczyniają się do czasu uruchamiania kontenera w Azure Container Instances są następujące:
 
 * [Rozmiar obrazu](#image-size)
 * [Lokalizacja obrazu](#image-location)
+* [Obrazy w pamięci podręcznej](#cached-images)
 
 Obrazy systemu Windows mają [dodatkowe uwagi](#cached-images).
 
-### <a name="image-size"></a>Rozmiar obrazu
+#### <a name="image-size"></a>Rozmiar obrazu
 
 Jeśli uruchamianie kontenera trwa zbyt długo, ale ostatecznie zakończy się powodzeniem, Zacznij od przejrzenia rozmiaru obrazu kontenera. Ponieważ Azure Container Instances pobiera obraz kontenera na żądanie, wyświetlany czas uruchamiania jest bezpośrednio związany z jego rozmiarem.
 
@@ -170,39 +185,26 @@ mcr.microsoft.com/azuredocs/aci-helloworld    latest    7367f3256b41    15 month
 
 Klucz służący do zachowywania rozmiaru obrazów jest zapewniany, że końcowy obraz nie zawiera żadnych elementów, które nie są wymagane w czasie wykonywania. Jednym ze sposobów wykonania tej czynności są [kompilacje wieloetapowe][docker-multi-stage-builds]. Kompilacje wieloetapowe ułatwiają zapewnienie, że obraz końcowy zawiera tylko te artefakty, które są potrzebne dla aplikacji, a nie do żadnej dodatkowej zawartości, która była wymagana w czasie kompilacji.
 
-### <a name="image-location"></a>Lokalizacja obrazu
+#### <a name="image-location"></a>Lokalizacja obrazu
 
 Innym sposobem zmniejszenia wpływu pobierania obrazu na czas uruchamiania kontenera jest hostowanie obrazu kontenera w [Azure Container Registry](/azure/container-registry/) w tym samym regionie, w którym zamierzasz wdrożyć wystąpienia kontenerów. Skraca to ścieżkę sieciową wymaganą przez obraz kontenera, co znacznie skraca czas pobierania.
 
-### <a name="cached-images"></a>Obrazy w pamięci podręcznej
+#### <a name="cached-images"></a>Obrazy w pamięci podręcznej
 
 Azure Container Instances używa mechanizmu buforowania w celu skrócenia czasu uruchamiania kontenera dla obrazów opartych na typowych [obrazach podstawowych systemu Windows](container-instances-faq.md#what-windows-base-os-images-are-supported), w tym `nanoserver:1809`, `servercore:ltsc2019`i `servercore:1809`. Często używane obrazy systemu Linux, takie jak `ubuntu:1604` i `alpine:3.6`, są również buforowane. Aby uzyskać aktualną listę buforowanych obrazów i tagów, użyj interfejsu API [listy buforowanych obrazów][list-cached-images] .
 
 > [!NOTE]
 > Korzystanie z obrazów opartych na systemie Windows Server 2019 w Azure Container Instances jest w wersji zapoznawczej.
 
-### <a name="windows-containers-slow-network-readiness"></a>Niewolne gotowość sieci w kontenerach systemu Windows
+#### <a name="windows-containers-slow-network-readiness"></a>Niewolne gotowość sieci w kontenerach systemu Windows
 
 Podczas tworzenia początkowego kontenery systemu Windows mogą nie mieć łączności przychodzącej ani wychodzącej przez maksymalnie 30 sekund (lub dłużej w rzadkich przypadkach). Jeśli aplikacja kontenera wymaga połączenia z Internetem, Dodaj opóźnienie i logikę ponowień, aby zezwolić na 30 sekund na nawiązanie połączenia z Internetem. Po początkowej instalacji należy odpowiednio wznowić działanie sieci kontenera.
 
-## <a name="resource-not-available-error"></a>Błąd niedostępnego zasobu
-
-Ze względu na zróżnicowane obciążenie zasobów regionalnych na platformie Azure podczas próby wdrożenia wystąpienia kontenera może zostać wyświetlony następujący błąd:
-
-`The requested resource with 'x' CPU and 'y.z' GB memory is not available in the location 'example region' at this moment. Please retry with a different resource request or in another location.`
-
-Ten błąd wskazuje, że ze względu na duże obciążenie w regionie, w którym próbujesz wdrożyć, zasoby określone dla danego kontenera nie mogą być przyłączone w tym czasie. Aby rozwiązać problem, należy użyć co najmniej jednego z następujących kroków zaradczych.
-
-* Sprawdź, czy ustawienia wdrożenia kontenera mieszczą się w parametrach zdefiniowanych w [obszarze dostępność w regionie dla Azure Container Instances](container-instances-region-availability.md)
-* Określ mniejsze ustawienia procesora i pamięci dla kontenera
-* Wdrażanie w innym regionie platformy Azure
-* Wdróż w późniejszym czasie
-
-## <a name="cannot-connect-to-underlying-docker-api-or-run-privileged-containers"></a>Nie można nawiązać połączenia z bazowym interfejsem API platformy Docker lub uruchamiać kontenery uprzywilejowane
+### <a name="cannot-connect-to-underlying-docker-api-or-run-privileged-containers"></a>Nie można nawiązać połączenia z bazowym interfejsem API platformy Docker lub uruchamiać kontenery uprzywilejowane
 
 Azure Container Instances nie ujawnia bezpośredniego dostępu do podstawowej infrastruktury, która hostuje grupy kontenerów. Obejmuje to dostęp do interfejsu API platformy Docker uruchomionego na hoście kontenera i uruchomionych kontenerów uprzywilejowanych. Jeśli wymagasz interakcji z platformą Docker, zapoznaj się z [dokumentacją usługi REST](https://aka.ms/aci/rest) , aby zobaczyć, co obsługuje interfejs API usługi ACI. Jeśli brakuje czegoś, Prześlij żądanie na [forach opinii ACI](https://aka.ms/aci/feedback).
 
-## <a name="container-group-ip-address-may-not-be-accessible-due-to-mismatched-ports"></a>Adres IP grupy kontenerów może nie być dostępny ze względu na niezgodne porty
+### <a name="container-group-ip-address-may-not-be-accessible-due-to-mismatched-ports"></a>Adres IP grupy kontenerów może nie być dostępny ze względu na niezgodne porty
 
 Azure Container Instances nie obsługuje jeszcze mapowania portów, takiego jak zwykła konfiguracja platformy Docker. Jeśli okaże się, że adres IP grupy kontenerów nie jest dostępny, gdy sądzisz, że jest to konieczne, upewnij się, że skonfigurowano obraz kontenera do nasłuchiwania na tych samych portach, które zostały ujawnione w grupie kontenerów za pomocą właściwości `ports`.
 

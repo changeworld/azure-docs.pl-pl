@@ -1,6 +1,6 @@
 ---
-title: Dodawanie artefaktu do maszyny Wirtualnej w usłudze Azure DevTest Labs | Dokumentacja firmy Microsoft
-description: Dowiedz się, jak dodawanie artefaktu do maszyny wirtualnej w laboratorium Azure DevTest Labs
+title: Dodawanie artefaktu do maszyny wirtualnej w Azure DevTest Labs | Microsoft Docs
+description: Dowiedz się, jak dodać artefakt do maszyny wirtualnej w laboratorium w Azure DevTest Labs
 services: devtest-lab,virtual-machines
 documentationcenter: na
 author: spelluru
@@ -14,58 +14,58 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/25/2019
 ms.author: spelluru
-ms.openlocfilehash: 19a7d6052091f8889a88c61793186b7bf7d9d869
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 27fec279582d845972b87ac635c87c16c239924e
+ms.sourcegitcommit: bc193bc4df4b85d3f05538b5e7274df2138a4574
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60304293"
+ms.lasthandoff: 11/10/2019
+ms.locfileid: "73901325"
 ---
-# <a name="add-an-artifact-to-a-vm"></a>Dodawanie artefaktu do maszyny Wirtualnej
-Podczas tworzenia maszyny Wirtualnej, możesz dodać do niego artefaktami. Te artefakty mogą być albo [publicznego repozytorium Git laboratoria DevTest](https://github.com/Azure/azure-devtestlab/tree/master/Artifacts) lub z własnym repozytorium Git. W tym artykule przedstawiono sposób dodawania artefaktów w witrynie Azure portal i za pomocą programu Azure PowerShell. 
+# <a name="add-an-artifact-to-a-vm"></a>Dodawanie artefaktu do maszyny wirtualnej
+Podczas tworzenia maszyny wirtualnej można dodać do niej istniejące artefakty. Te artefakty mogą pochodzić z [publicznego repozytorium git usługi DevTest Labs](https://github.com/Azure/azure-devtestlab/tree/master/Artifacts) lub z własnego repozytorium git. W tym artykule pokazano, jak dodać artefakty w Azure Portal i przy użyciu Azure PowerShell. 
 
-Usługa Azure DevTest Labs *artefaktów* umożliwiają określenie *akcje* które są wykonywane, gdy maszyna wirtualna jest aprowizowana, takie jak uruchamianie skryptów środowiska Windows PowerShell, uruchamianie poleceń powłoki Bash i instalowania oprogramowania. Artefakt *parametry* można dostosować artefaktu dla konkretnego scenariusza.
+Azure DevTest Labs *artefakty* umożliwiają określanie *akcji* wykonywanych podczas aprowizacji maszyny wirtualnej, takich jak uruchamianie skryptów programu Windows PowerShell, uruchamianie poleceń bash i instalowanie oprogramowania. *Parametry* artefaktów umożliwiają dostosowanie artefaktu dla konkretnego scenariusza.
 
-Aby dowiedzieć się więcej o tym, jak utworzyć niestandardowe artefakty, zapoznaj się z artykułem: [Tworzenie niestandardowych artefaktów](devtest-lab-artifact-author.md).
+Aby dowiedzieć się więcej o sposobach tworzenia niestandardowych artefaktów, zobacz artykuł: [Tworzenie niestandardowych artefaktów](devtest-lab-artifact-author.md).
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ## <a name="use-azure-portal"></a>Korzystanie z witryny Azure Portal 
 1. Zaloguj się w witrynie [Azure Portal](https://go.microsoft.com/fwlink/p/?LinkID=525040).
-1. Wybierz **wszystkich usług**, a następnie wybierz pozycję **DevTest Labs** z listy.
-1. Zaznacz na liście laboratoriów laboratorium zawierającej maszynę Wirtualną, z którym chcesz pracować.  
-1. Wybierz **Moje maszyny wirtualne**.
-1. Wybierz odpowiednią maszynę Wirtualną.
-1. Wybierz **Zarządzanie artefaktami**. 
-1. Wybierz **artefakty stosowanie**.
-1. Na **artefakty stosowanie** okienku zaznacz artefaktów, które chcesz dodać do maszyny Wirtualnej.
-1. Na **Dodawanie artefaktu** okienku, wprowadź wymagane wartości parametrów i wszystkie parametry opcjonalne, które są potrzebne.  
-1. Wybierz **Dodaj** Dodawanie artefaktu, a następnie wróć do **artefakty stosowanie** okienka.
-1. Kontynuuj, dodawania artefaktów, zgodnie z potrzebami dla maszyny Wirtualnej.
-1. Po dodaniu artefaktów można [zmienić kolejność, w którym są uruchamiane artefakty](#change-the-order-in-which-artifacts-are-run). Możesz również przejść z powrotem do [wyświetlić lub zmodyfikować artefakt](#view-or-modify-an-artifact).
-1. Po zakończeniu dodawania artefaktów wybierz **Zastosuj**
+1. Wybierz pozycję **wszystkie usługi**, a następnie z listy wybierz pozycję **DevTest Labs** .
+1. Z listy laboratoriów wybierz laboratorium zawierające maszynę wirtualną, której chcesz użyć.  
+1. Wybierz pozycję **moje maszyny wirtualne**.
+1. Wybierz odpowiednią maszynę wirtualną.
+1. Wybierz pozycję **Zarządzaj artefaktami**. 
+1. Wybierz pozycję **Zastosuj artefakty**.
+1. W okienku **Zastosuj artefakty** wybierz artefakt, który chcesz dodać do maszyny wirtualnej.
+1. W okienku **Dodawanie artefaktu** wprowadź wymagane wartości parametrów i wszelkie parametry opcjonalne, które są potrzebne.  
+1. Wybierz pozycję **Dodaj** , aby dodać artefakt i wrócić do okienka **stosowanie artefaktów** .
+1. Kontynuuj dodawanie artefaktów zgodnie z potrzebami dla maszyny wirtualnej.
+1. Po dodaniu artefaktów możesz [zmienić kolejność, w której są uruchamiane artefakty](#change-the-order-in-which-artifacts-are-run). Możesz również wrócić do [wyświetlania lub modyfikowania artefaktu](#view-or-modify-an-artifact).
+1. Po zakończeniu dodawania artefaktów wybierz pozycję **Zastosuj** .
 
-### <a name="change-the-order-in-which-artifacts-are-run"></a>Zmień kolejność uruchamiania artefaktów
-Domyślnie akcje artefakty są wykonywane w kolejności, w której są dodawane do maszyny Wirtualnej. Następujące kroki pokazują jak zmienić kolejność, w którym są uruchamiane artefaktów.
+### <a name="change-the-order-in-which-artifacts-are-run"></a>Zmień kolejność, w której są uruchamiane artefakty
+Domyślnie działania artefaktów są wykonywane w kolejności, w jakiej są dodawane do maszyny wirtualnej. Poniższe kroki ilustrują sposób zmiany kolejności, w której są uruchamiane artefakty.
 
-1. W górnej części **artefakty stosowanie** okienku zaznacz łącze określającą liczbę artefaktów, które zostały dodane do maszyny Wirtualnej.
+1. W górnej części okienka **Zastosuj artefakty** wybierz łącze wskazujące liczbę artefaktów, które zostały dodane do maszyny wirtualnej.
    
-    ![Liczbę artefaktów, które dodano do maszyny Wirtualnej](./media/devtest-lab-add-vm-with-artifacts/devtestlab-add-artifacts-blade-selected-artifacts.png)
-1. Na **wybrane artefaktów** okienku przeciągnij i upuść artefaktów w odpowiedni sposób. Jeśli masz problemy z przeciąganiem artefaktu, upewnij się, przeciągasz z lewej strony artefaktu. 
+    ![Liczba artefaktów dodanych do maszyny wirtualnej](./media/devtest-lab-add-vm-with-artifacts/devtestlab-add-artifacts-blade-selected-artifacts.png)
+1. W okienku **wybrane artefakty** przeciągnij i upuść artefakty do żądanej kolejności. Jeśli masz problem z przeciąganiem artefaktu, upewnij się, że przeciągniesz od lewej strony artefaktu. 
 1. Po zakończeniu wybierz przycisk **OK**.  
 
-### <a name="view-or-modify-an-artifact"></a>Wyświetlanie lub modyfikowanie artefakt
-Poniższe kroki ilustrują wyświetlanie lub modyfikowanie parametrów artefaktu:
+### <a name="view-or-modify-an-artifact"></a>Wyświetlanie lub modyfikowanie artefaktu
+Poniższe kroki ilustrują sposób wyświetlania lub modyfikowania parametrów artefaktu:
 
-1. W górnej części **artefakty stosowanie** okienku zaznacz łącze określającą liczbę artefaktów, które zostały dodane do maszyny Wirtualnej.
+1. W górnej części okienka **Zastosuj artefakty** wybierz łącze wskazujące liczbę artefaktów, które zostały dodane do maszyny wirtualnej.
    
-    ![Liczbę artefaktów, które dodano do maszyny Wirtualnej](./media/devtest-lab-add-vm-with-artifacts/devtestlab-add-artifacts-blade-selected-artifacts.png)
-1. Na **wybrane artefaktów** okienku wybierz artefakt, który chcesz wyświetlić lub edytować.  
-1. Na **Dodawanie artefaktu** okienka, upewnij dowolne wymagane zmiany, a następnie wybierz **OK** zamknąć **Dodawanie artefaktu** okienka.
-1. Wybierz **OK** zamknąć **wybrane artefaktów** okienka.
+    ![Liczba artefaktów dodanych do maszyny wirtualnej](./media/devtest-lab-add-vm-with-artifacts/devtestlab-add-artifacts-blade-selected-artifacts.png)
+1. W okienku **wybrane artefakty** wybierz artefakt, który chcesz wyświetlić lub edytować.  
+1. W okienku **Dodaj artefakt** Wprowadź wszelkie potrzebne zmiany, a następnie wybierz **przycisk OK** , aby zamknąć okienko **Dodawanie artefaktu** .
+1. Wybierz **przycisk OK** , aby zamknąć **wybrane okienko artefaktów** .
 
 ## <a name="use-powershell"></a>Korzystanie z programu PowerShell
-Poniższy skrypt dotyczy określonego artefaktu określoną maszynę Wirtualną. [Invoke AzResourceAction](/powershell/module/az.resources/invoke-azresourceaction) polecenia jest tą, która wykonuje operację.  
+Poniższy skrypt stosuje określony artefakt do określonej maszyny wirtualnej. Polecenie [Invoke-AzResourceAction](/powershell/module/az.resources/invoke-azresourceaction) jest tym, który wykonuje operację.  
 
 ```powershell
 #Requires -Module Az.Resources
@@ -90,7 +90,7 @@ param
 Set-AzContext -SubscriptionId $SubscriptionId | Out-Null
  
 # Get the lab resource group name
-$resourceGroupName = (Find-AzResource -ResourceType 'Microsoft.DevTestLab/labs' | Where-Object { $_.Name -eq $DevTestLabName}).ResourceGroupName
+$resourceGroupName = (Get-AzResource -ResourceType 'Microsoft.DevTestLab/labs' | Where-Object { $_.Name -eq $DevTestLabName}).ResourceGroupName
 if ($resourceGroupName -eq $null) { throw "Unable to find lab $DevTestLabName in subscription $SubscriptionId." }
 
 # Get the internal repo name
@@ -163,10 +163,10 @@ if ($virtualMachine -ne $null) {
 
 ```
 
-## <a name="next-steps"></a>Kolejne kroki
-Na artefaktów, zobacz następujące artykuły:
+## <a name="next-steps"></a>Następne kroki
+Zapoznaj się z następującymi artykułami dotyczącymi artefaktów:
 
-- [Określ obowiązkowe artefaktów dla swojego laboratorium](devtest-lab-mandatory-artifacts.md)
+- [Określ obowiązkowe artefakty dla laboratorium](devtest-lab-mandatory-artifacts.md)
 - [Tworzenie niestandardowych artefaktów](devtest-lab-artifact-author.md)
 - [Dodawanie repozytorium artefaktów do laboratorium](devtest-lab-artifact-author.md)
 - [Diagnozowanie błędów artefaktów](devtest-lab-troubleshoot-artifact-failure.md)

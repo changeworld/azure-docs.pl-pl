@@ -1,7 +1,7 @@
 ---
 title: Dokumentacja zestawu SDK systemu iOS dla czytnika immersyjny
 titleSuffix: Azure Cognitive Services
-description: Dokumentacja zestawu SDK programu immersyjny dla systemu iOS
+description: Zestaw immersyjny Reader iOS SDK to SWIFT CocoaPod, który umożliwia integrację czytnika immersyjny z aplikacją systemu iOS.
 services: cognitive-services
 author: metanMSFT
 ms.service: cognitive-services
@@ -9,18 +9,18 @@ ms.subservice: immersive-reader
 ms.topic: reference
 ms.date: 08/01/2019
 ms.author: metan
-ms.openlocfilehash: 1f85740c358bd0949fed9c954537f0926538995d
-ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
+ms.openlocfilehash: 67d6b8c22c5635bd789078a7f91b02f8b07e5e70
+ms.sourcegitcommit: bc193bc4df4b85d3f05538b5e7274df2138a4574
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72388116"
+ms.lasthandoff: 11/10/2019
+ms.locfileid: "73903125"
 ---
 # <a name="immersive-reader-sdk-reference-for-ios"></a>Dokumentacja zestawu SDK czytnika immersyjny dla systemu iOS
 
 Zestaw immersyjny Reader iOS SDK to SWIFT CocoaPod, który umożliwia integrację czytnika immersyjny z aplikacją systemu iOS.
 
-## <a name="functions"></a>Functions
+## <a name="functions"></a>Funkcje
 
 Zestaw SDK uwidacznia pojedynczą funkcję, `launchImmersiveReader(navController, token, subdomain, content, options, onSuccess, onFailure)`.
 
@@ -44,7 +44,7 @@ public func launchImmersiveReader(navController: UINavigationController, token: 
 | `onSuccess` | () — > void | Zamknięcie, które jest wywoływane, gdy czytnik immersyjny został pomyślnie uruchomiony. |
 | `onFailure` | (_ błąd: [błąd](#error)) — > void | Zamknięcie, które jest wywoływane, gdy czytnik immersyjny nie zostanie załadowany. To zamknięcie zwraca obiekt [`Error`](#error) , który reprezentuje kod błędu i komunikat o błędzie skojarzony z błędem. Aby uzyskać więcej informacji, zobacz [kody błędów](#error-codes). |
 
-## <a name="types"></a>Typ
+## <a name="types"></a>Typy
 
 ### <a name="content"></a>Zawartość
 
@@ -91,7 +91,7 @@ struct Error {
 | Kod | Opis |
 | ---- | ----------- |
 | BadArgument | Podany argument jest nieprawidłowy. Aby uzyskać szczegółowe informacje, zobacz `message`. |
-| limit czasu | Nie można załadować czytnika immersyjny w określonym limicie czasu. |
+| Limit czasu | Nie można załadować czytnika immersyjny w określonym limicie czasu. |
 | TokenExpired | Podany token wygasł. |
 | Ograniczone | Przekroczono limit liczby wywołań. |
 | InternalError | Wystąpił błąd wewnętrzny w kontrolerze widoku czytnika immersyjny. Aby uzyskać szczegółowe informacje, zobacz `message`.|

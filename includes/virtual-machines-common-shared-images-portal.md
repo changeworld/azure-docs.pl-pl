@@ -5,89 +5,108 @@ services: virtual-machines
 author: cynthn
 ms.service: virtual-machines
 ms.topic: include
-ms.date: 06/27/2019
+ms.date: 11/06/2019
 ms.author: cynthn
 ms.custom: include file
-ms.openlocfilehash: cae108a1d4226e8c0fe39f9cd1cedc1e6a024ffc
-ms.sourcegitcommit: c63e5031aed4992d5adf45639addcef07c166224
+ms.openlocfilehash: 729e757c69887bbdce324e2d8383c970995dc94a
+ms.sourcegitcommit: bc193bc4df4b85d3f05538b5e7274df2138a4574
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67465443"
+ms.lasthandoff: 11/10/2019
+ms.locfileid: "73903669"
 ---
-## <a name="sign-in-to-azure"></a>Logowanie do platformy Azure 
+## <a name="sign-in-to-azure"></a>Zaloguj się w usłudze Azure 
 
 Zaloguj się do witryny Azure Portal pod adresem https://portal.azure.com.
 
 > [!NOTE]
-> Jeśli zostanie zarejestrowana w celu używania udostępnione, galerie obrazów w trakcie okresu zapoznawczego, może być konieczne ponowne zarejestrowanie `Microsoft.Compute` dostawcy. Otwórz [Cloud Shell](https://shell.azure.com/bash) i wpisz: `az provider register -n Microsoft.Compute`
+> Jeśli zarejestrowano się w celu korzystania z udostępnionych galerii obrazów w wersji zapoznawczej, może być konieczne ponowne zarejestrowanie dostawcy `Microsoft.Compute`. Otwórz [Cloud Shell](https://shell.azure.com/bash) i wpisz: `az provider register -n Microsoft.Compute`
 
 ## <a name="create-an-image-gallery"></a>Tworzenie galerii obrazów
 
-Galeria obrazów jest podstawowy zasób umożliwiający włączenie udostępniania obrazów. Dozwolone znaki dla nazwy galerii są wielkie i małe litery, cyfry, kropki i okresów. Nazwa galerii nie może zawierać łączników.  Galeria nazwy muszą być unikatowe w ramach Twojej subskrypcji. 
+Galeria obrazów jest podstawowym zasobem używanym do włączania udostępniania obrazu. Dozwolone znaki w nazwie galerii to wielkie lub małe litery, cyfry, kropki i kropki. Nazwa galerii nie może zawierać kresek.  Nazwy galerii muszą być unikatowe w ramach subskrypcji. 
 
-Poniższy przykład tworzy Galeria o nazwie *myGallery* w *myGalleryRG* grupy zasobów.
+Poniższy przykład tworzy galerię o nazwie Moja *Gallery* w grupie zasobów *myGalleryRG* .
 
 1. W lewym górnym rogu witryny Azure Portal wybierz pozycję **Utwórz zasób**.
-1. Użyj typu **galerii obrazów współdzielona** w polu wyszukiwania i wybierz pozycję **galerii obrazów usługi Shared** w wynikach.
-1. W **galerii obrazów współdzielona** kliknij **Utwórz**.
-1. Wybierz poprawną subskrypcję.
-1. W **grupy zasobów**, wybierz opcję **Utwórz nową** i typ *myGalleryRG* dla nazwy.
-1. W **nazwa**, typ *myGallery* nazwę galerii.
-1. Pozostaw wartość domyślną dla **Region**.
-1. Można wpisać krótki opis galerii, takie jak *Moja galeria obrazów do testowania.* a następnie kliknij przycisk **przeglądu + Utwórz**.
-1. Po pomyślnej weryfikacji, wybierz **Utwórz**.
-1. Po zakończeniu wdrożenia wybierz **przejdź do zasobu**.
+1. Użyj **galerii obrazów udostępnionych** w polu wyszukiwania i wybierz pozycję **Galeria obrazów udostępnionych** w wynikach.
+1. Na stronie **galerii obrazów udostępnionych** kliknij przycisk **Utwórz**.
+1. Wybierz prawidłową subskrypcję.
+1. W obszarze **Grupa zasobów**wybierz pozycję **Utwórz nową** i wpisz *myGalleryRG* w polu Nazwa.
+1. W polu **Nazwa**wpisz *webgallery* jako nazwę galerii.
+1. Pozostaw wartość domyślną dla **regionu**.
+1. Możesz wpisać Krótki opis galerii, *na przykład moją galerię obrazów do testowania.* a następnie kliknij pozycję **Przegląd + Utwórz**.
+1. Po zakończeniu walidacji wybierz pozycję **Utwórz**.
+1. Po zakończeniu wdrażania wybierz pozycję **Przejdź do zasobu**.
    
-## <a name="create-an-image-definition"></a>Utwórz definicję obrazu 
+## <a name="create-an-image-definition"></a>Tworzenie definicji obrazu 
 
-Definicje obraz Utwórz logiczne grupowanie obrazów. Są one używane do zarządzania informacjami o wersji obrazu, które są tworzone w ramach ich. Obraz nazwy definicji może składać się z małe i wielkie litery, cyfry, kropki, łączniki i kropki. Aby uzyskać więcej informacji na temat wartości można określić definicję obrazu, zobacz [obrazu definicje](https://docs.microsoft.com/azure/virtual-machines/windows/shared-image-galleries#image-definitions).
+Definicje obrazów tworzą logiczne grupowanie dla obrazów. Są one używane do zarządzania informacjami o wersjach obrazu, które są w nich tworzone. Nazwy definicji obrazów mogą składać się z wielkich lub małych liter, cyfr, kropek, kresek i kropek. Aby uzyskać więcej informacji na temat wartości, które można określić dla definicji obrazu, zobacz [definicje obrazu](https://docs.microsoft.com/azure/virtual-machines/windows/shared-image-galleries#image-definitions).
 
-Utwórz definicję Galeria obrazów w galerii. W tym przykładzie nosi nazwę obrazu z galerii *myImageDefinition*.
+Utwórz definicję obrazu galerii w galerii. W tym przykładzie obraz galerii ma nazwę *myImageDefinition*.
 
-1. Na stronie galerii obrazów nowe wybierz **dodać nową definicję obrazu** w górnej części strony. 
-1. Aby uzyskać **nazwę definicji obrazu**, typ *myImageDefinition*.
-1. Aby uzyskać **systemu operacyjnego**, wybierz opcję odpowiednią oparta na obrazie źródło.
-1. Aby uzyskać **wydawcy**, typ *myPublisher*. 
-1. Aby uzyskać **oferują**, typ *myOffer*.
-1. Aby uzyskać **jednostki SKU**, typ *mySKU*.
-1. Po zakończeniu wybierz pozycję **przeglądu + Utwórz**.
-1. Po definicję obrazu pozytywnie przejdą weryfikację, wybierz **Utwórz**.
-1. Po zakończeniu wdrożenia wybierz **przejdź do zasobu**.
+1. Na stronie nowej galerii obrazów wybierz pozycję **Dodaj nową definicję obrazu** w górnej części strony. 
+1. W obszarze **Nazwa definicji obrazu**wpisz *myImageDefinition*.
+1. W obszarze **system operacyjny**Wybierz poprawną opcję w oparciu o ŹRÓDŁową maszynę wirtualną.
+1. W przypadku **generacji maszyny wirtualnej**wybierz opcję opartą na ŹRÓDŁOWEJ maszynie wirtualnej. W większości przypadków jest to *generacji 1*. Aby uzyskać więcej informacji, zobacz [Obsługa maszyn wirtualnych 2. generacji](https://docs.microsoft.com/azure/virtual-machines/windows/generation-2).
+1. W przypadku **stanu systemu operacyjnego**wybierz opcję w oparciu o ŹRÓDŁową maszynę wirtualną. Aby uzyskać więcej informacji, zobacz [uogólnione i wyspecjalizowane](../articles/virtual-machines/linux/shared-image-galleries.md#generalized-and-specialized-images).
+1. W przypadku **wydawcy**wpisz *polecenie*. 
+1. W obszarze **Oferta**wpisz *ofertę*.
+1. W przypadku **jednostki SKU**wpisz *mySKU*.
+1. Po zakończeniu wybierz pozycję **Przegląd + Utwórz**.
+1. Po przejściu definicji obrazu do walidacji wybierz pozycję **Utwórz**.
+1. Po zakończeniu wdrażania wybierz pozycję **Przejdź do zasobu**.
 
 
 ## <a name="create-an-image-version"></a>Utwórz wersję obrazu
 
-Utwórz wersję obrazu na podstawie obrazu zarządzanego. W tym przykładzie jest wersja obrazu *1.0.0* i są replikowane do obu *zachodnio-środkowe stany USA* i *południowo-środkowe stany USA* centrów danych. Wybierając regiony docelowe dla replikacji, należy pamiętać, że również należy dołączyć *źródła* regionie co miejsce docelowe dla replikacji.
+Utwórz wersję obrazu z zarządzanego obrazu. W tym przykładzie wersja obrazu to *1.0.0* i jest replikowana do centrów danych *zachodnio-środkowe stany USA* i południowo- *środkowe stany USA* . Podczas wybierania regionów docelowych na potrzeby replikacji należy pamiętać, że należy również uwzględnić region *źródłowy* jako element docelowy dla replikacji.
 
-Dozwolone znaki wersję obrazu są liczby i kropki. Numery muszą należeć do zakresu 32-bitową liczbę całkowitą. Format: *Brak elementu MajorVersion*. *MinorVersion*. *Poprawka*.
+Dozwolone znaki wersji obrazu to liczby i kropki. Liczba musi należeć do zakresu 32-bitowej liczby całkowitej. Format: *MajorVersion*. *MinorVersion*. *Poprawka*.
 
-1. Na stronie dla swojej definicji obrazu, wybierz **wersji Dodaj** w górnej części strony.
-1. W **Region**, wybierz region, w miejsce przechowywania obrazu zarządzanego. Wersje obrazów muszą być utworzone w tym samym regionie jako obrazu zarządzanego, są tworzone na podstawie.
-1. Aby uzyskać **nazwa**, typ *1.0.0*. Nazwa wersji obrazów należy stosować *głównych*. *drobne*. *poprawka* formatowanie przy użyciu liczb całkowitych. 
-1. W **obrazu źródłowego**, wybierz źródło obrazu zarządzanego z listy rozwijanej.
-1. W **wykluczania z najnowszą**, pozostaw wartość domyślną *nie*.
-1. Aby uzyskać **data**, wybierz datę z kalendarza, który jest kilka miesięcy w przyszłości.
-1. W **replikacji**, pozostaw **domyślna liczba replik** jako 1. Muszą być replikowane do regionu źródłowego, więc Pozostaw pierwszą replikę jako domyślne, a następnie wybierz drugi region repliki, który będzie *wschodnie stany USA*.
-1. Gdy wszystko będzie gotowe, wybierz pozycję **przeglądu + Utwórz**. Azure sprawdzi poprawność konfiguracji.
-1. Gdy wersja obrazu pozytywnie przejdą weryfikację, wybierz pozycję **Utwórz**.
-1. Po zakończeniu wdrożenia wybierz **przejdź do zasobu**.
+Kroki tworzenia wersji obrazu są nieco inne, w zależności od tego, czy źródłem jest obraz uogólniony, czy też migawką wyspecjalizowanej maszyny wirtualnej. 
 
-Replikować obraz do wszystkich regionów docelowych może potrwać.
+### <a name="option-generalized"></a>Opcja: uogólnione
+
+1. Na stronie definicji obrazu wybierz pozycję **Dodaj wersję** w górnej części strony.
+1. W **obszarze region**wybierz region, w którym przechowywany jest obraz zarządzany. Wersje obrazów muszą zostać utworzone w tym samym regionie, w którym utworzono obraz zarządzany.
+1. W obszarze **Nazwa**wpisz *1.0.0*. Nazwa wersji obrazu powinna być zgodna z wersją *główną*. *pomocnicze*. Format *poprawki* przy użyciu liczb całkowitych. 
+1. W obszarze **obraz źródłowy**wybierz z listy rozwijanej źródłowy obraz zarządzany.
+1. W polu **Wyklucz z najnowszych**pozostaw wartość domyślną *nie*.
+1. W polu **Data zakończenia okresu istnienia**wybierz datę z kalendarza, który jest kilka miesięcy w przyszłości.
+1. W obszarze **replikacja**pozostaw **domyślną liczbę replik** jako 1. Należy przeprowadzić replikację do regionu źródłowego, więc Pozostaw pierwszą replikę jako domyślną, a następnie wybierz drugi region repliki jako *Wschodnie stany USA*.
+1. Gdy skończysz, wybierz pozycję **Przegląd + Utwórz**. Platforma Azure sprawdzi poprawność konfiguracji.
+1. Gdy wersja obrazu kończy się walidacją, wybierz pozycję **Utwórz**.
+1. Po zakończeniu wdrażania wybierz pozycję **Przejdź do zasobu**.
+
+Replikowanie obrazu do wszystkich regionów docelowych może chwilę potrwać.
+
+### <a name="option-specialized"></a>Opcja: wyspecjalizowane
+
+1. Na stronie definicji obrazu wybierz pozycję **Dodaj wersję** w górnej części strony.
+1. W **obszarze region**wybierz region, w którym jest przechowywana dana migawka. Wersje obrazów muszą zostać utworzone w tym samym regionie, w którym utworzono źródło.
+1. W obszarze **Nazwa**wpisz *1.0.0*. Nazwa wersji obrazu powinna być zgodna z wersją *główną*. *pomocnicze*. Format *poprawki* przy użyciu liczb całkowitych. 
+1. W obszarze **migawka dysku systemu operacyjnego**wybierz migawkę ze ŹRÓDŁOWEJ maszyny wirtualnej z listy rozwijanej. Jeśli źródłowa maszyna wirtualna ma dysk danych, który chcesz dołączyć, wybierz z listy rozwijanej odpowiedni numer **LUN** , a następnie wybierz migawkę dysku danych dla **migawki dysku danych**. 
+1. W polu **Wyklucz z najnowszych**pozostaw wartość domyślną *nie*.
+1. W polu **Data zakończenia okresu istnienia**wybierz datę z kalendarza, który jest kilka miesięcy w przyszłości.
+1. W obszarze **replikacja**pozostaw **domyślną liczbę replik** jako 1. Należy przeprowadzić replikację do regionu źródłowego, więc Pozostaw pierwszą replikę jako domyślną, a następnie wybierz drugi region repliki jako *Wschodnie stany USA*.
+1. Gdy skończysz, wybierz pozycję **Przegląd + Utwórz**. Platforma Azure sprawdzi poprawność konfiguracji.
+1. Gdy wersja obrazu kończy się walidacją, wybierz pozycję **Utwórz**.
+1. Po zakończeniu wdrażania wybierz pozycję **Przejdź do zasobu**.
 
 ## <a name="share-the-gallery"></a>Udostępnianie galerii
 
-Firma Microsoft zaleca udostępnieniu dostęp na poziomie galerii obrazów. Poniżej przedstawiono udostępnianie galerii, który został utworzony.
+Zalecamy Udostępnianie dostępu na poziomie galerii obrazów. Poniżej przedstawiono udostępnianie galerii, która została właśnie utworzona.
 
 1. Otwórz [portal Azure](https://portal.azure.com).
-1. W menu po lewej stronie wybierz **grup zasobów**. 
-1. Z listy grup zasobów wybierz **myGalleryRG**. Zostanie otwarty blok grupy zasobów.
-1. W menu po lewej stronie **myGalleryRG** wybierz opcję **kontrola dostępu (IAM)** . 
-1. W obszarze **Dodaj przypisanie roli**, wybierz opcję **Dodaj**. **Dodaj przypisanie roli** spowoduje to otwarcie okienka. 
-1. W obszarze **roli**, wybierz opcję **czytnika**.
-1. W obszarze **Przypisz dostęp do**, pozostaw wartość domyślną **użytkownika, grupy lub jednostki usługi Azure AD**.
-1. W obszarze **wybierz**, wpisz adres e-mail osoby, które chcesz zaprosić.
-1. Jeśli użytkownik znajduje się poza organizacją, zostanie wyświetlony komunikat **tego użytkownika zostanie wysłana wiadomość e-mail, który pozwala na współpracę z firmą Microsoft.** Wybierz użytkownika, za pomocą adresu e-mail, a następnie kliknij przycisk **Zapisz**.
+1. W menu po lewej stronie wybierz pozycję **grupy zasobów**. 
+1. Na liście grup zasobów wybierz pozycję **myGalleryRG**. Zostanie otwarty blok dla grupy zasobów.
+1. W menu po lewej stronie **myGalleryRG** wybierz pozycję **Kontrola dostępu (IAM)** . 
+1. W obszarze **Dodaj przypisanie roli**wybierz pozycję **Dodaj**. Zostanie otwarte okienko **Dodawanie przypisania roli** . 
+1. W obszarze **rola**wybierz pozycję **czytelnik**.
+1. W obszarze **Przypisz dostęp do**, Pozostaw domyślną pozycję **użytkownik, Grupa lub nazwa główna usługi Azure AD**.
+1. W obszarze **Wybierz**wpisz adres e-mail osoby, którą chcesz zaprosić.
+1. Jeśli użytkownik znajduje się poza organizacją, zobaczysz komunikat, **że użytkownik otrzyma wiadomość e-mail, która umożliwi im współpracę z firmą Microsoft.** Wybierz użytkownika z adresem e-mail, a następnie kliknij przycisk **Zapisz**.
 
-Jeśli użytkownik jest spoza organizacji, otrzymają one wiadomość e-mail z zaproszeniem do dołączenia do organizacji. Użytkownik musi zaakceptować zaproszenie, a następnie będą mogli zobaczyć galerii i wszystkie definicje obrazu i wersji na liście zasobów.
+Jeśli użytkownik jest spoza organizacji, otrzyma wiadomość e-mail z zaproszeniem do dołączenia do organizacji. Użytkownik musi zaakceptować zaproszenie, a następnie będzie mógł zobaczyć galerię oraz wszystkie definicje i wersje obrazu na liście zasobów.
 

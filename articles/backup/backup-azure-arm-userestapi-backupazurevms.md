@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 08/03/2018
 ms.author: dacurwin
 ms.assetid: b80b3a41-87bf-49ca-8ef2-68e43c04c1a3
-ms.openlocfilehash: 901ae66281e1d68474304a4f5456a0163fcb6f2a
-ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
+ms.openlocfilehash: 39ab0caa31f79aca41f2c40a3220412e0683ee22
+ms.sourcegitcommit: bc193bc4df4b85d3f05538b5e7274df2138a4574
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73747615"
+ms.lasthandoff: 11/10/2019
+ms.locfileid: "73903160"
 ---
 # <a name="back-up-an-azure-vm-using-azure-backup-via-rest-api"></a>Tworzenie kopii zapasowej maszyny wirtualnej platformy Azure przy użyciu Azure Backup za pośrednictwem interfejsu API REST
 
@@ -168,7 +168,7 @@ W tym przykładzie powyższe wartości przekładają się na:
 
 ### <a name="enabling-protection-for-the-azure-vm"></a>Włączanie ochrony maszyny wirtualnej platformy Azure
 
-Gdy odpowiednia maszyna wirtualna jest "buforowana" i "zidentyfikowana", wybierz zasady do ochrony. Aby dowiedzieć się więcej na temat istniejących zasad w magazynie, zapoznaj się z tematem [interfejs API zasad listy](https://docs.microsoft.com/rest/api/backup/backuppolicies/list). Następnie wybierz [odpowiednie zasady](https://docs.microsoft.com/rest/api/backup/protectionpolicies/get) , odwołując się do nazwy zasad. Aby utworzyć zasady, zobacz [samouczek Tworzenie zasad](backup-azure-arm-userestapi-createorupdatepolicy.md). W poniższym przykładzie wybrano wartość "DefaultPolicy".
+Gdy odpowiednia maszyna wirtualna jest "buforowana" i "zidentyfikowana", wybierz zasady do ochrony. Aby dowiedzieć się więcej na temat istniejących zasad w magazynie, zapoznaj się z tematem [interfejs API zasad listy](https://docs.microsoft.com/rest/api/backup/backuppolicies/list). Następnie wybierz [odpowiednie zasady](https://docs.microsoft.com/rest/api/backup/protectionpolicies(2019-05-13)/get) , odwołując się do nazwy zasad. Aby utworzyć zasady, zobacz [samouczek Tworzenie zasad](backup-azure-arm-userestapi-createorupdatepolicy.md). W poniższym przykładzie wybrano wartość "DefaultPolicy".
 
 Włączenie ochrony jest asynchroniczną operacją *Put* , która tworzy "chroniony element".
 
