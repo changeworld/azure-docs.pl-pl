@@ -5,14 +5,14 @@ services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
 ms.topic: tutorial
-ms.date: 06/04/2019
+ms.date: 11/09/2019
 ms.author: helohr
-ms.openlocfilehash: 175c5173091bee85a5c9fc4a50e9df5d3f73da13
-ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
+ms.openlocfilehash: c7ef648dd2610c337bc9146e7a52c04d91907c8e
+ms.sourcegitcommit: bc193bc4df4b85d3f05538b5e7274df2138a4574
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/13/2019
-ms.locfileid: "72300902"
+ms.lasthandoff: 11/10/2019
+ms.locfileid: "73904910"
 ---
 # <a name="tutorial-deploy-a-management-tool"></a>Samouczek: wdrażanie narzędzia do zarządzania
 
@@ -56,15 +56,15 @@ Postępuj zgodnie z poniższymi instrukcjami, aby wdrożyć szablon usługi Azur
     - Jeśli wdrażasz w ramach subskrypcji dostawcy rozwiązań w chmurze, postępuj zgodnie z poniższymi instrukcjami, aby wdrożyć platformę Azure:
         1. Przewiń w dół i kliknij prawym przyciskiem myszy pozycję **Wdróż na platformie Azure**, a następnie wybierz pozycję **Kopiuj lokalizację linku**.
         2. Otwórz Edytor tekstu, taki jak Notatnik, i Wklej tam link.
-        3. Bezpośrednio po <https://portal.azure.com/> i przed wystąpieniem wiersza (#) wprowadź znak (@), a po nim nazwę domeny dzierżawy. Oto przykład formatu: <https://portal.azure.com/@Contoso.onmicrosoft.com#create/>.
+        3. Bezpośrednio po <https://portal.azure.com/> i przed wystąpieniem (#), wprowadź znak (@), a po nim nazwę domeny dzierżawy. Oto przykład formatu: <https://portal.azure.com/@Contoso.onmicrosoft.com#create/>.
         4. Zaloguj się do Azure Portal jako użytkownik z uprawnieniami administratora/współautora do subskrypcji dostawcy rozwiązań w chmurze.
         5. Wklej skopiowany link do edytora tekstu na pasku adresu.
 
 ### <a name="guidance-for-template-parameters"></a>Wskazówki dotyczące parametrów szablonu
 Oto jak wprowadzić parametry konfigurowania narzędzia:
 
-- Jest to adres URL brokera usług pulpitu zdalnego: https: \//rdbroker. WVD. Microsoft. com/
-- Jest to adres URL zasobu: https: \//Mrs-prod. azwa. GBL/Pani-RDInfra-prod
+- Jest to adres URL brokera usług pulpitu zdalnego: https:\//rdbroker.wvd.microsoft.com/
+- Jest to adres URL zasobu: https:\//mrs-prod.ame.gbl/mrs-RDInfra-prod
 - Zalogować się do platformy Azure przy użyciu poświadczeń usługi AAD z wyłączonym uwierzytelnianiem wieloskładnikowym. Zobacz [, co jest potrzebne do uruchomienia szablonu Azure Resource Manager](#what-you-need-to-run-the-azure-resource-manager-template).
 - Użyj unikatowej nazwy dla aplikacji, która zostanie zarejestrowana w Azure Active Directory dla narzędzia do zarządzania; na przykład Apr3UX.
 
@@ -103,9 +103,14 @@ Postępuj zgodnie z poniższymi instrukcjami, aby uruchomić narzędzie:
 1. Wybierz zasób App Services platformy Azure o nazwie podanej w szablonie (na przykład Apr3UX) i przejdź do adresu URL skojarzonego z nim. na przykład <https://rdmimgmtweb-210520190304.azurewebsites.net>.
 2. Zaloguj się przy użyciu poświadczeń pulpitu wirtualnego systemu Windows.
 3. Po wyświetleniu monitu o wybranie grupy dzierżawców wybierz z listy rozwijanej pozycję **Domyślna grupa dzierżawców** .
+4. Po wybraniu domyślnej grupy dzierżawców menu powinno pojawić się po prawej stronie okna. W tym menu Znajdź nazwę grupy dzierżawców i wybierz ją.
 
 > [!NOTE]
 > Jeśli masz niestandardową grupę dzierżawców, wprowadź nazwę ręcznie zamiast wybierać ją z listy rozwijanej.
+
+## <a name="report-issues"></a>Zgłoś problemy
+
+Jeśli występują problemy z narzędziem do zarządzania lub innymi narzędziami pulpitu wirtualnego systemu Windows, postępuj zgodnie z instrukcjami w temacie [Szablony usługi ARM, aby uzyskać usługi pulpitu zdalnego](https://github.com/Azure/RDS-Templates/blob/master/README.md) , aby zgłosić je w serwisie GitHub.
 
 ## <a name="next-steps"></a>Następne kroki
 
