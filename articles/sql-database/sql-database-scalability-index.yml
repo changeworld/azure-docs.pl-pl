@@ -1,9 +1,9 @@
 ### YamlMime:YamlDocument
 documentType: LandingData
-title: Usługa Azure SQL Database — skalowalności
+title: Skalowalność
 metadata:
   document_id: 36d89c48-3646-380e-34a0-ae3ac62e2641
-  title: Usługa Azure SQL Database — skalowalności
+  title: Azure SQL Database — skalowalność
   meta.description: Learn how to scale your Azure SQL Database.
   services: sql-database
   ms.subservice: scale-out
@@ -19,7 +19,7 @@ metadata:
 sections:
   - items:
       - type: paragraph
-        text: Usługa Azure SQL Database pozwala na łatwe skalowanie bazy danych możesz przez dodanie większej mocy obliczeniowej zasilania (skalowanie w górę) lub dodanie większej liczby jednostek bazy danych (skalowalnego w poziomie).
+        text: Usługa Azure SQL Database pozwala łatwo skalować bazę danych przez dodanie większej mocy obliczeniowej (skalowanie w górę) lub dodanie większej liczby jednostek bazy danych (zwiększanie skali w poziomie).
       - type: list
         style: cards
         className: cardsM
@@ -27,28 +27,28 @@ sections:
         items:
           - title: Skalowanie w górę
             href: /azure/sql-database/sql-database-scale-resources
-            html: '<p>Łatwe dodawanie lub usuwanie zasobów w usłudze SQL Database, aby można było znaleźć najlepszą stosunek ceny do wydajności lub rozwiązać problemy z wydajnością.</p>'
-          - title: Przeczytaj skalowalnego w poziomie
+            html: '<p>Łatwo dodawaj lub usuwaj zasoby w usłudze SQL Database, aby znaleźć najlepszy współczynnik ceny do wydajności lub eliminować problemy z wydajnością.</p>'
+          - title: Skalowanie w górę odczytu
             href: /azure/sql-database/sql-database-read-scale-out
-            html: '<p>Warstwie krytyczne dla działania firmy udostępnia wolnego od opłat repliki bazy danych, gdzie można uruchomić raporty, analizy i inne zapytania tylko do odczytu na kopiowanie danych.</p>'
+            html: '<p>Warstwa Krytyczne dla działania udostępnia bezpłatną replikę bazy danych, w której można uruchamiać raporty, analizy i inne zapytania tylko do odczytu na kopii danych.</p>'
           - title: Dzielenie bazy danych na fragmenty
             href: /azure/sql-database/sql-database-elastic-scale-introduction
-            html: '<p>Do skalowania w poziomie bazy danych poza maksymalny obliczeń i limity przestrzeni dyskowej dla pojedynczych baz danych, można użyć wielu baz danych fragmentów.</p>'
+            html: '<p>Korzystając z wielu fragmentów baz danych, możesz skalować pojedyncze bazy danych poza górne limity zasobów obliczeniowych i magazynowych.</p>'
           - title: Zapytania elastyczne
             href: /azure/sql-database/sql-database-elastic-query-overview
-            html: <p>Zapytania elastyczne umożliwiają uruchomienie standardowego zapytania Transact-SQL na zestaw fragmentów globalnie rozproszonej bazy danych.</p>
+            html: <p>Zapytania elastyczne umożliwiają uruchamianie standardowych zapytań Transact-SQL na zestawie globalnie rozproszonych fragmentów baz danych.</p>
           - title: Transakcje elastyczne
             href: /azure/sql-database/sql-database-elastic-transactions-overview
-            html: '<p>Używają transakcji rozproszonych globalnie, aby zapewnić spójny transakcyjnie dostęp do danych rozproszonych.</p>'
+            html: '<p>Używaj globalnie rozproszonych transakcji, aby zapewnić spójny na poziomie transakcji dostęp do danych rozproszonych.</p>'
           - title: Zadania obejmujące wiele baz danych
             href: /azure/sql-database/elastic-jobs-overview
-            html: <p>Obsługa zestawu baz danych przy użyciu zadań elastycznych obejmujące wiele baz danych.</p>
+            html: <p>Obsługuj zestaw baz danych za pomocą zadań elastycznych obejmujących wiele baz danych.</p>
   - title: Więcej zasobów
     items:
       - type: paragraph
-        text: 'Więcej informacji na temat dodatkowych funkcji, które mogą pomóc w Skaluj swoje dane.'
+        text: 'Dowiedz się więcej na temat dodatkowych funkcji, które mogą ułatwić skalowanie danych.'
       - type: list
         style: ordered
         items:
-          - html: '<a href="https://docs.microsoft.com/sql/relational-databases/linked-servers/linked-servers-database-engine">Połączony serwer</a> są funkcją aparatu bazy danych programu SQL Server core, która pozwala na wykonywanie zapytań rozproszonych w kodzie języka Transact-SQL do innego aparatów bazy danych.'
-          - html: <a href="sql-database-geo-replication-overview.md">Replikacja geograficzna</a> pozwala umieścić dowolną liczbę replik z możliwością odczytu w różnych regionach.
+          - html: '<a href="https://docs.microsoft.com/sql/relational-databases/linked-servers/linked-servers-database-engine">Połączony serwer</a> to główna funkcja aparatu bazy danych serwera SQL Server, która umożliwia wykonywanie zapytań rozproszonych z kodu w języku Transact-SQL w innych aparatach baz danych.'
+          - html: <a href="sql-database-geo-replication-overview.md">Replikacja geograficzna</a> pozwala umieszczać dowolną liczbę odczytywalnych replik w różnych regionach.

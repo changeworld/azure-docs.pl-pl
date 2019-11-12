@@ -326,7 +326,7 @@
               href: shared-images.md
             - name: Portal
               href: shared-images-portal.md
-            - name: Udostępnianie obrazów między dzierżawami
+            - name: Rejestracja aplikacji na potrzeby udostępniania
               href: share-images-across-tenants.md
             - name: Rozwiązywanie problemów z obrazami udostępnionymi
               href: troubleshooting-shared-images.md

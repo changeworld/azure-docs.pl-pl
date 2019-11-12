@@ -45,10 +45,12 @@
       href: azure-netapp-files-set-up-capacity-pool.md
     - name: Delegowanie podsieci do usługi Azure NetApp Files
       href: azure-netapp-files-delegate-subnet.md
-    - name: Tworzenie woluminu NFS dla usługi Azure NetApp Files
-      href: azure-netapp-files-create-volumes.md
     - name: Tworzenie woluminu SMB dla usługi Azure NetApp Files
       href: azure-netapp-files-create-volumes-smb.md
+    - name: Tworzenie woluminu NFS dla usługi Azure NetApp Files
+      href: azure-netapp-files-create-volumes.md
+    - name: Konfigurowanie domyślnej domeny NFSv4.1 dla usługi Azure NetApp Files
+      href: azure-netapp-files-configure-nfsv41-domain.md
     - name: Konfigurowanie zasad eksportu dla woluminu NFS
       href: azure-netapp-files-configure-export-policy.md
     - name: Zarządzanie woluminami

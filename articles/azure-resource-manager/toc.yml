@@ -138,6 +138,8 @@
           href: resource-group-create-multiple.md
         - name: Zasoby na poziomie subskrypcji
           href: deploy-to-subscription.md
+        - name: Zasoby na poziomie grupy zarządzania
+          href: deploy-to-management-group.md
     - name: Wdrażanie szablonów
       items:
         - name: Wdrażanie — portal

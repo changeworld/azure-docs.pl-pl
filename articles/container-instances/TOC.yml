@@ -91,6 +91,8 @@
       items:
         - name: Konfigurowanie sond żywotności
           href: container-instances-liveness-probe.md
+        - name: Konfigurowanie sond gotowości
+          href: container-instances-readiness-probe.md
         - name: Zatrzymywanie i uruchamianie kontenerów
           href: container-instances-stop-start.md
         - name: Aktualizowanie uruchomionych kontenerów

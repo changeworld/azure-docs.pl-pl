@@ -150,6 +150,8 @@
               href: check-cluster-health.md
         - name: Database (Baza danych)
           items:
+            - name: Bazy danych obserwujących
+              href: follower.md
             - name: Zarządzanie uprawnieniami dotyczącymi bazy danych
               href: manage-database-permissions.md
             - name: Zasady

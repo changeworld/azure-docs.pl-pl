@@ -39,12 +39,15 @@
           href: get-started-get-model-rest-apis.md
 - name: Samouczki
   items:
+    - name: Tworzenie aplikacji z możliwością rozkładania
+      items:
+        - name: 1. Ustalanie intencji użytkownika
+          href: tutorial-intents-only.md
+        - name: 2. Wyodrębnianie danych użytkowników
+          href: tutorial-machine-learned-entity.md
+          displayName: 'n-depth, constraint, descriptor, phrase list, entity'
     - name: Kompilowanie aplikacji
       items:
-        - name: Ustalanie intencji użytkownika
-          href: tutorial-intents-only.md
-        - name: Identyfikowanie typowych danych użytkownika za pomocą wstępnie utworzonych modeli
-          href: luis-tutorial-prebuilt-intents-entities.md
         - name: Uzyskiwanie tonacji z wypowiedzi użytkowników
           href: luis-quickstart-intent-and-sentiment-analysis.md
         - name: Uzyskiwanie dobrze sformatowanych danych za pomocą wyrażeń regularnych

@@ -241,6 +241,8 @@
                   href: migrate-android-adal-msal.md
                 - name: Migrowanie do biblioteki MSAL.iOS i systemu MacOS
                   href: migrate-objc-adal-msal.md
+                - name: Migrowanie do platformy MSAL Java
+                  href: migrate-adal-msal-java.md
                 - name: Migrowanie aplikacji platformy Xamarin przy użyciu brokerów z biblioteki ADAL.NET do MSAL.NET
                   href: msal-net-migration-ios-broker.md
             - name: Obsługiwane przepływy uwierzytelniania
@@ -390,6 +392,10 @@
               href: active-directory-configurable-token-lifetimes.md
         - name: Konfiguracja aplikacji
           items:
+            - name: Przewodnik szkoleniowy na temat rejestracji aplikacji w witrynie Azure Portal (starsza wersja)
+              href: app-registrations-training-guide-for-app-registrations-legacy-users.md
+            - name: Przewodnik po rejestracji aplikacji w portalu rejestracji aplikacji
+              href: app-registration-portal-training-guide.md
             - name: Konwertowanie aplikacji z jedną dzierżawą na aplikację z wieloma dzierżawami
               href: howto-convert-app-to-be-multi-tenant.md
             - name: Tworzenie jednostki usługi
@@ -446,6 +452,12 @@
                   href: request-custom-claims.md
                 - name: Konfiguracja identyfikatora URI przekierowania
                   href: redirect-uris-ios.md
+            - name: MSAL Java
+              items:
+                - name: Serializacja pamięci podręcznej tokenu
+                  href: msal-java-token-cache-serialization.md
+                - name: Dodawanie kont do pamięci podręcznej tokenów i usuwanie ich z niej
+                  href: msal-java-get-remove-accounts-token-cache.md
         - name: Praca z programem Visual Studio
           items:
             - name: Korzystanie z usługi połączonej Active Directory
@@ -594,8 +606,6 @@
               href: reference-saml-tokens.md
         - name: Konfiguracja aplikacji
           items:
-            - name: Przewodnik szkoleniowy na temat rejestracji aplikacji
-              href: app-registrations-training-guide.md
             - name: Aplikacje i jednostki usługi
               href: app-objects-and-service-principals.md
             - name: Jak i dlaczego aplikacje są dodawane do usługi Azure AD

@@ -12,12 +12,12 @@ metadata:
   author: msmimart
   ms.author: mimart
   manager: celested
-  ms.openlocfilehash: db10b91f0e407be048cc2a646c2eef905ac81c54
-  ms.sourcegitcommit: fa5ce8924930f56bcac17f6c2a359c1a5b9660c9
+  ms.openlocfilehash: 2b83d09932aaa39e31d04f30bc660541efcbb50b
+  ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
   ms.translationtype: HT
   ms.contentlocale: pl-PL
-  ms.lasthandoff: 10/31/2019
-  ms.locfileid: "73199748"
+  ms.lasthandoff: 11/09/2019
+  ms.locfileid: "73882803"
 landingContent:
 - title: Informacje o zarządzaniu aplikacjami
   linkLists:
@@ -95,3 +95,15 @@ landingContent:
       url: application-proxy-integrate-with-remote-desktop-services.md
     - text: Włączanie dostępu zdalnego do programu SharePoint przy użyciu serwera proxy aplikacji usługi Azure AD
       url: application-proxy-integrate-with-sharepoint-server.md
+- title: Bezpieczne starsze aplikacje dzięki kontrolerom dostarczania aplikacji i sieciom
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Bezpieczny dostęp hybrydowy dla starszych aplikacji (w chmurze i lokalnie)
+      url: secure-hybrid-access.md
+  - linkListType: how-to-guide
+    links:
+    - text: Ochrona aplikacji przy użyciu usługi F5 Big-IP APM
+      url: https://aka.ms/f5-hybridaccessguide
+    - text: Ochrona aplikacji przy użyciu usługi Zscaler ZPA
+      url: https://aka.ms/zscaler-hybridaccessguide

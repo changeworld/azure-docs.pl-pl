@@ -407,8 +407,8 @@
             - name: Portal
               href: shared-images-portal.md
             - name: Interfejs wiersza polecenia
-              href: ../linux/shared-images.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
-            - name: Udostępnianie obrazów między dzierżawami
+              href: ../linux/shared-images.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
+            - name: Rejestracja aplikacji na potrzeby udostępniania
               href: share-images-across-tenants.md
             - name: Rozwiązywanie problemów z obrazami udostępnionymi
               href: troubleshooting-shared-images.md

@@ -16,7 +16,7 @@ metadata:
   ms.date: 03/11/2019
   ms.author: juliako
 abstract:
-  description: 'Usługa Azure Media Services Video Indexer to aplikacja w chmurze utworzona za pomocą usług Azure Media Analytics, Azure Search oraz Cognitive Services (takich jak interfejs API rozpoznawania twarzy, Microsoft Translator, interfejs API przetwarzania obrazów i Custom Speech Service). Umożliwia wyodrębnianie szczegółowych informacji z plików wideo przy użyciu modeli wideo i audio usługi Video Indexer.<br/>Aby ustalić, kiedy należy używać usługi Video Indexer zamiast ustawień wstępnych analizatora usługi Media Services, zapoznaj się z <a href="/azure/media-services/video-indexer/compare-video-indexer-with-media-services-presets">dokumentem z porównaniem</a>.'
+  description: 'Usługa Azure Media Services Video Indexer to aplikacja w chmurze utworzona za pomocą usług Azure Media Analytics, Azure Cognitive Search oraz Cognitive Services (takich jak interfejs API rozpoznawania twarzy, Microsoft Translator, interfejs API przetwarzania obrazów i Custom Speech Service). Umożliwia wyodrębnianie szczegółowych informacji z plików wideo przy użyciu modeli wideo i audio usługi Video Indexer.<br/>Aby ustalić, kiedy należy używać usługi Video Indexer zamiast ustawień wstępnych analizatora usługi Media Services, zapoznaj się z <a href="/azure/media-services/video-indexer/compare-video-indexer-with-media-services-presets">dokumentem z porównaniem</a>.'
 sections:
   - items:
       - type: list

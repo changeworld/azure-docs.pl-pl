@@ -13,10 +13,10 @@
 - name: Pojęcia
   items:
     - name: Zarządzanie zasobami delegowanymi na platformie Azure
-      displayName: delegation
+      displayName: 'delegation, projection'
       href: ./concepts/azure-delegated-resource-management.md
     - name: Środowiska zarządzania wieloma dzierżawami
-      displayName: scenarios
+      displayName: 'scenarios, supported, enhanced, services, limitations, current'
       href: ./concepts/cross-tenant-management-experience.md
     - name: 'Dzierżawy, role i użytkownicy'
       displayName: 'Azure AD, Azure Active Directory'
@@ -39,16 +39,22 @@
       displayName: resource management
       href: ./how-to/onboard-customer.md
     - name: Publikowanie ofert usług zarządzanych w witrynie Azure Marketplace
-      displayName: 'managed services offer, azure marketplace, publish'
+      displayName: 'managed services offer, azure marketplace, publish, marketplace'
       href: ./how-to/publish-managed-services-offers.md
     - name: Wyświetlanie klientów i zarządzanie nimi
-      displayName: 'managed services offer, azure marketplace, publish'
+      displayName: my customers
       href: ./how-to/view-manage-customers.md
     - name: Wyświetlanie dostawców usług i zarządzanie nimi
-      displayName: 'managed services offer, azure marketplace, publish'
+      displayName: 'customer, update'
       href: ./how-to/view-manage-service-providers.md
-    - name: 'Wdrażanie zasad, które można skorygować'
-      href: ./how-to/deploy-policy-remediation.md
+    - name: Integracja z usługą Azure Policy
+      items:
+        - name: Wdrażanie zasad w dużej skali
+          displayName: storage
+          href: ./how-to/policy-at-scale.md
+        - name: 'Wdrażanie zasad, które można skorygować'
+          displayName: 'deployIfNotExists, modify, managed identities, managed identity'
+          href: ./how-to/deploy-policy-remediation.md
 - name: Dokumentacja
   items:
     - name: Interfejs wiersza polecenia platformy Azure
