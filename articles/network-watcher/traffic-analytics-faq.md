@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/08/2018
 ms.author: kumud
-ms.openlocfilehash: b232df010190a95d12d5a57f076a4c1bf336cea4
-ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
+ms.openlocfilehash: 991bb91c5bc1f6d695d5b363cdb08268f1ee83df
+ms.sourcegitcommit: 6dec090a6820fb68ac7648cf5fa4a70f45f87e1a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/08/2019
-ms.locfileid: "72026581"
+ms.lasthandoff: 11/11/2019
+ms.locfileid: "73907100"
 ---
 # <a name="traffic-analytics-frequently-asked-questions"></a>Analiza ruchu często zadawane pytania
 
@@ -67,11 +67,11 @@ Jeśli nie widzisz żadnych danych wyjściowych, skontaktuj się z administrator
 
 Analizy ruchu można użyć dla sieciowych grup zabezpieczeń w jednym z następujących obsługiwanych regionów:
 - Kanada Środkowa
-- Zachodnio-środkowe stany USA
+- Środkowo-zachodnie stany USA
 - Wschodnie stany USA
 - Wschodnie stany USA 2
-- Północno-środkowe stany USA
-- Południowo-środkowe stany USA
+- Środkowo-północne stany USA
+- Środkowo-południowe stany USA
 - Środkowe stany USA
 - Zachodnie stany USA
 - Zachodnie stany USA 2
@@ -84,35 +84,39 @@ Analizy ruchu można użyć dla sieciowych grup zabezpieczeń w jednym z następ
 - Australia Wschodnia
 - Australia Południowo-Wschodnia 
 - Azja Wschodnia
-- Azja Południowo-wschodnia
+- Azja Południowo-Wschodnia
 - Korea Środkowa
 - Indie Środkowe
 - Indie Południowe
 - Japonia Wschodnia
 - Japonia Zachodnia
 - Administracja USA — Wirginia
+- Chiny Wschodnie 2
 
 Obszar roboczy Log Analytics musi istnieć w następujących regionach:
 - Kanada Środkowa
-- Zachodnio-środkowe stany USA
-- Zachodnie stany USA
-- Zachodnie stany USA 2
-- Południowo-środkowe stany USA
-- Środkowe stany USA
+- Środkowo-zachodnie stany USA
 - Wschodnie stany USA
 - Wschodnie stany USA 2
+- Środkowo-północne stany USA
+- Środkowo-południowe stany USA
+- Środkowe stany USA
+- Zachodnie stany USA
+- Zachodnie stany USA 2
 - Francja Środkowa
 - Europa Zachodnia
 - Europa Północna
+- Zachodnie Zjednoczone Królestwo
 - Południowe Zjednoczone Królestwo
 - Australia Wschodnia
 - Australia Południowo-Wschodnia
 - Azja Wschodnia
-- Azja Południowo-wschodnia 
+- Azja Południowo-Wschodnia 
 - Korea Środkowa
 - Indie Środkowe
 - Japonia Wschodnia
 - Administracja USA — Wirginia
+- Chiny Wschodnie 2
 
 ## <a name="can-the-nsgs-i-enable-flow-logs-for-be-in-different-regions-than-my-workspace"></a>Czy sieciowych grup zabezpieczeń mogę włączyć dzienniki przepływów w różnych regionach niż mój obszar roboczy?
 
@@ -244,7 +248,7 @@ armclient post "https://management.azure.com/subscriptions/<NSG subscription id>
 
 Analiza ruchu jest naliczana. Pomiary opierają się na przetwarzaniu danych dzienników przepływów przez usługę i przechowywaniu powstałych ulepszonych dzienników w obszarze roboczym Log Analytics. 
 
-Na przykład zgodnie z [planem cenowym](https://azure.microsoft.com/pricing/details/network-watcher/), uwzględniając Region Zachodni środkowe stany USA, jeśli usługa Flow rejestruje dane przechowywane na koncie magazynu przetworzonym przez Analiza ruchu wynosi 10 GB, a ulepszone dzienniki pozyskane w log Analytics obszarze roboczym to 1 GB, odpowiednie opłaty są następujące: 10 x $2,3 + 1 x $2,76 = $25,76
+Na przykład zgodnie z [planem cenowym](https://azure.microsoft.com/pricing/details/network-watcher/), uwzględniając Region Zachodni środkowe stany USA, jeśli dane dzienników przepływów przechowywane na koncie magazynu przetworzonym przez Analiza ruchu to 10 GB, a ulepszone dzienniki pozyskane w log Analytics obszarze roboczym to 1 GB, odpowiednie opłaty są następujące: 10 x $2,3 + 1 x $2,76 = $25,76
 
 ## <a name="how-frequently-does-traffic-analytics-process-data"></a>Jak często Analiza ruchu są przetwarzane dane?
 
@@ -272,19 +276,19 @@ Strona mapy geograficznej zawiera dwie główne sekcje:
 ### <a name="keyboard-navigation-on-the-banner"></a>Nawigacja przy użyciu klawiatury na banerze
     
 - Domyślnie wybór na stronie mapy geograficznej transparentu to filtr "Kontrolery domeny" platformy Azure.
-- Aby przejść do innego filtru, użyj `Tab` lub klucza `Right arrow`. Aby przejść do tyłu, użyj `Shift+Tab` lub klucza `Left arrow`. Nawigacja do przodu jest od lewej do prawej, a następnie od góry do dołu.
+- Aby przejść do innego filtru, użyj `Tab` lub `Right arrow` klucza. Aby przejść do tyłu, użyj `Shift+Tab` lub klucza `Left arrow`. Nawigacja do przodu jest od lewej do prawej, a następnie od góry do dołu.
 - Naciśnij klawisz `Enter` lub klawisz Strzałka `Down`, aby zastosować wybrany filtr. W oparciu o wybór i wdrożenie filtru są wyróżniane co najmniej jeden węzeł w sekcji map.
 - Aby przełączać się między transparentem i mapą, naciśnij `Ctrl+F6`.
         
 ### <a name="keyboard-navigation-on-the-map"></a>Nawigacja przy użyciu klawiatury na mapie
     
-- Po wybraniu dowolnego filtra transparentu i naciśnięciu `Ctrl+F6` fokus jest przenoszony do jednego z wyróżnionych węzłów (**centrum danych platformy Azure** lub **kraju/regionu**) w widoku mapy.
-- Aby przejść do innych wyróżnionych węzłów na mapie, użyj `Tab` lub klucza `Right arrow` do przenoszenia dalej. Użyj `Shift+Tab` lub klucza `Left arrow` do przenoszenia z tyłu.
+- Po wybraniu filtru na banerze i naciśnięciu `Ctrl+F6`, fokus jest przenoszony do jednego z wyróżnionych węzłów (**centrum danych platformy Azure** lub **kraju/regionu**) w widoku mapy.
+- Aby przejść do innych wyróżnionych węzłów na mapie, użyj `Tab` lub klucza `Right arrow` do przesyłania dalej. Użyj `Shift+Tab` lub klucza `Left arrow` do przemieszczania wstecznego.
 - Aby wybrać dowolny wyróżniony węzeł w mapie, użyj klucza `Enter` lub `Down arrow`.
 - Po wybraniu takich węzłów fokus jest przenoszony do **pola narzędzia informacji** dla węzła. Domyślnie fokus jest przenoszony do przycisku zamknięty w **polu narzędzie informacji**. Aby dalej poruszać się wewnątrz widoku **pola** , użyj klawiszy `Right arrow` i `Left arrow` do przenoszenia odpowiednio do przodu i do tyłu. Naciśnięcie `Enter` ma ten sam efekt, co wybranie priorytetowego przycisku w **polu narzędzie informacji**.
-- Po naciśnięciu `Tab`, gdy fokus znajduje się w **polu narzędzia informacji**, fokus jest przenoszony do punktów końcowych w tym samym kontynentie co wybrany węzeł. Aby poruszać się za pomocą tych punktów końcowych, użyj klawiszy `Right arrow` i `Left arrow`.
+- Po naciśnięciu `Tab`, gdy fokus znajduje się w **polu narzędzia informacji**, fokus jest przenoszony do punktów końcowych w tym samym kontynentie co wybrany węzeł. Użyj `Right arrow` i `Left arrow` klawiszy, aby poruszać się po tych punktach końcowych.
 - Aby przejść do innych punktów końcowych przepływów lub klastrów kontynentu, użyj `Tab` do przenoszenia do przodu i `Shift+Tab` do przenoszenia wstecz.
-- Gdy fokus jest skierowany do **klastrów kontynentu**, użyj klawiszy strzałek `Enter` lub `Down`, aby wyróżnić punkty końcowe wewnątrz klastra kontynentu. Aby poruszać się przez punkty końcowe i przycisk Zamknij w polu informacje w klastrze kontynentu, należy odpowiednio użyć klucza `Right arrow` lub `Left arrow`. W dowolnym punkcie końcowym można użyć `Shift+L`, aby przełączyć się do linii połączenia z wybranego węzła do punktu końcowego. Możesz ponownie nacisnąć `Shift+L`, aby przejść do wybranego punktu końcowego.
+- Gdy fokus jest skierowany do **klastrów kontynentu**, użyj klawiszy strzałek `Enter` lub `Down`, aby podświetlić punkty końcowe w ramach klastra kontynentu. Aby poruszać się przez punkty końcowe i przycisk Zamknij w polu informacje w klastrze kontynentu, należy odpowiednio użyć klucza `Right arrow` lub `Left arrow` w celu przesunięcia do przodu i do tyłu. W dowolnym punkcie końcowym można użyć `Shift+L`, aby przełączyć się do linii połączenia z wybranego węzła do punktu końcowego. Możesz ponownie nacisnąć `Shift+L`, aby przejść do wybranego punktu końcowego.
         
 ### <a name="keyboard-navigation-at-any-stage"></a>Nawigacja przy użyciu klawiatury na dowolnym etapie
     
@@ -302,16 +306,16 @@ Na stronie topologia sieci wirtualnych znajdują się dwie główne sekcje:
 ### <a name="keyboard-navigation-on-the-banner"></a>Nawigacja przy użyciu klawiatury na banerze
     
 - Domyślnie wybór na stronie topologii sieci wirtualnych dla transparentu to filtr "Connected sieci wirtualnych".
-- Aby przejść do innego filtru, użyj klucza `Tab`, aby przejść do przodu. Aby przejść do tyłu, użyj klucza `Shift+Tab`. Nawigacja do przodu jest od lewej do prawej, a następnie od góry do dołu.
+- Aby przejść do innego filtru, użyj klawisza `Tab`, aby przejść do przodu. Aby przejść do tyłu, użyj klucza `Shift+Tab`. Nawigacja do przodu jest od lewej do prawej, a następnie od góry do dołu.
 - Naciśnij `Enter`, aby zastosować wybrany filtr. W zależności od wyboru filtru i wdrożenia w sekcji topologia zostaną wyróżnione jeden lub wiele węzłów (Sieć wirtualna).
 - Aby przełączać się między transparentem a topologią, naciśnij `Ctrl+F6`.
         
 ### <a name="keyboard-navigation-on-the-topology"></a>Nawigacja przy użyciu klawiatury w topologii
     
-- Po wybraniu dowolnego filtra transparentu i naciśnięciu `Ctrl+F6` fokus jest przenoszony do jednego z wyróżnionych węzłów (**VNET**) w widoku topologii.
+- Po wybraniu dowolnego filtru na transparencie i naciśnięciu `Ctrl+F6`, fokus jest przenoszony do jednego z wyróżnionych węzłów (**VNET**) w widoku topologii.
 - Aby przejść do innych wyróżnionych węzłów w widoku topologii, użyj klawisza `Shift+Right arrow` do przenoszenia dalej. 
 - W zaznaczonych węzłach fokus jest przenoszony do **pola narzędzia informacji** dla węzła. Domyślnie fokus jest przenoszony do przycisku **więcej szczegółów** w **polu narzędzie informacji**. Aby dalej poruszać się wewnątrz widoku **pola** , użyj klawiszy `Right arrow` i `Left arrow` do przenoszenia odpowiednio do przodu i do tyłu. Naciśnięcie `Enter` ma ten sam efekt, co wybranie priorytetowego przycisku w **polu narzędzie informacji**.
-- Po wybraniu takich węzłów można odwiedzać wszystkie połączenia, po jednym według jednego, naciskając klawisz `Shift+Left arrow`. Fokus jest przenoszony do **pola narzędzia informacji** tego połączenia. W dowolnym momencie fokus można przesunąć z powrotem do węzła, naciskając `Shift+Right arrow` ponownie.
+- Po wybraniu takich węzłów można odwiedzać wszystkie jego połączenia, po jednym przez naciśnięcie klawisza `Shift+Left arrow`. Fokus jest przenoszony do **pola narzędzia informacji** tego połączenia. W dowolnym momencie fokus można przesunąć z powrotem do węzła, naciskając `Shift+Right arrow` ponownie.
     
 
 ## <a name="how-can-i-navigate-by-using-the-keyboard-in-the-subnet-topology-view"></a>Jak nawigować przy użyciu klawiatury w widoku topologia podsieci?
@@ -324,13 +328,13 @@ Na stronie topologia podsieci wirtualnych znajdują się dwie główne sekcje:
 ### <a name="keyboard-navigation-on-the-banner"></a>Nawigacja przy użyciu klawiatury na banerze
     
 - Domyślnie wybór na stronie topologii sieci wirtualnych dla transparentu to filtr "podsieci".
-- Aby przejść do innego filtru, użyj klucza `Tab`, aby przejść do przodu. Aby przejść do tyłu, użyj klucza `Shift+Tab`. Nawigacja do przodu jest od lewej do prawej, a następnie od góry do dołu.
+- Aby przejść do innego filtru, użyj klawisza `Tab`, aby przejść do przodu. Aby przejść do tyłu, użyj klucza `Shift+Tab`. Nawigacja do przodu jest od lewej do prawej, a następnie od góry do dołu.
 - Naciśnij `Enter`, aby zastosować wybrany filtr. W oparciu o wybór i wdrożenie filtru, wyróżniono jeden lub wiele węzłów (podsieć) w sekcji topologia.
 - Aby przełączać się między transparentem a topologią, naciśnij `Ctrl+F6`.
         
 ### <a name="keyboard-navigation-on-the-topology"></a>Nawigacja przy użyciu klawiatury w topologii
     
-- Po wybraniu dowolnego filtra transparentu i naciśnięciu `Ctrl+F6` fokus jest przenoszony do jednego z wyróżnionych węzłów (**podsieci**) w widoku topologii.
+- Po wybraniu dowolnego filtru na transparencie i naciśnięciu `Ctrl+F6`, fokus jest przenoszony do jednego z wyróżnionych węzłów (**podsieci**) w widoku topologii.
 - Aby przejść do innych wyróżnionych węzłów w widoku topologii, użyj klawisza `Shift+Right arrow` do przenoszenia dalej. 
 - W zaznaczonych węzłach fokus jest przenoszony do **pola narzędzia informacji** dla węzła. Domyślnie fokus jest przenoszony do przycisku **więcej szczegółów** w **polu narzędzie informacji**. Aby dalej poruszać się wewnątrz widoku **pola** , użyj klawiszy `Right arrow` i `Left arrow` do przenoszenia odpowiednio do przodu i do tyłu. Naciśnięcie `Enter` ma ten sam efekt, co wybranie priorytetowego przycisku w **polu narzędzie informacji**.
 - Po wybraniu takich węzłów można odwiedzać wszystkie jego połączenia, po jednym przez naciśnięcie klawisza `Shift+Left arrow`. Fokus jest przenoszony do **pola narzędzia informacji** tego połączenia. W dowolnym momencie fokus można przesunąć z powrotem do węzła, naciskając `Shift+Right arrow` ponownie.    

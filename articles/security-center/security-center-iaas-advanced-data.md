@@ -11,14 +11,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 11/04/2019
+ms.date: 11/11/2019
 ms.author: memildin
-ms.openlocfilehash: 93e52b393db288f5b19afde4a31e08d0bb91b471
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: 068fb9f61b7dcb3948e4f03c284ddfa680522c85
+ms.sourcegitcommit: 6dec090a6820fb68ac7648cf5fa4a70f45f87e1a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73571558"
+ms.lasthandoff: 11/11/2019
+ms.locfileid: "73907062"
 ---
 # <a name="advanced-data-security-for-sql-servers-on-azure-virtual-machines-preview"></a>Zaawansowane zabezpieczenia danych dla serwerów SQL w systemie Azure Virtual Machines (wersja zapoznawcza)
 Zaawansowane zabezpieczenia danych dla serwerów SQL w systemie Azure Virtual Machines to ujednolicony pakiet dla zaawansowanych funkcji zabezpieczeń SQL. Ta funkcja w wersji zapoznawczej obejmuje funkcje identyfikacji i łagodzenia potencjalnych luk w zabezpieczeniach bazy danych oraz wykrywania nietypowych działań, które mogą wskazywać na zagrożenia dla bazy danych. 
@@ -54,7 +54,7 @@ Włącz zaawansowane zabezpieczenia danych dla serwerów SQL w Virtual Machines 
     Zaawansowane zabezpieczenia danych dla serwerów SQL zostaną włączone na wszystkich serwerach SQL połączonych z wybranym obszarem roboczym lub domyślnym obszarze roboczym wybranej subskrypcji.
 
     >[!NOTE]
-    > Rozwiązanie będzie aktywne po pierwszym ponownym uruchomieniu SQL Server. 
+    > Rozwiązanie będzie w pełni aktywne po pierwszym ponownym uruchomieniu SQL Server. 
 
 Aby utworzyć nowy obszar roboczy, postępuj zgodnie z instrukcjami w temacie [tworzenie log Analytics obszaru roboczego](https://docs.microsoft.com/azure/azure-monitor/learn/quick-create-workspace).
 
@@ -72,7 +72,7 @@ Po wygenerowaniu alertów Security Center można ustawić listę adresatów, kt�
 1. W menu Ustawienia kliknij pozycję **powiadomienia e-mail**. 
 1. W polu tekstowym **adres e-mail** wprowadź adresy e-mail, na które mają być wysyłane powiadomienia. Można wprowadzić więcej niż jeden adres e-mail, oddzielając adresy e-mail przecinkami (,).  Na przykład admin1@mycompany.com,admin2@mycompany.com,admin3@mycompany.com
 
-      ![Ustawienia poczty e-mail](./media/security-center-advanced-iaas-data/email-settings.png)
+    ![Ustawienia poczty e-mail](./media/security-center-advanced-iaas-data/email-settings.png)
 
 1. W ustawieniach **powiadomień e-mail** ustaw następujące opcje:
   
@@ -88,29 +88,27 @@ Po wygenerowaniu alertów Security Center można ustawić listę adresatów, kt�
 
 Pulpit nawigacyjny oceny luk w zabezpieczeniach zawiera przegląd wyników oceny dla wszystkich baz danych. Można wyświetlić dystrybucję baz danych zgodnie z wersją SQL Server, wraz z podsumowaniem niepowodzenia i przekazywania baz danych oraz ogólnym podsumowaniem niepowodzenia kontroli w zależności od dystrybucji ryzyka.
 
-Wyniki oceny luk w zabezpieczeniach i raporty można wyświetlić bezpośrednio z Log Analytics.
+Wyniki oceny luk w zabezpieczeniach można wyświetlić bezpośrednio w Security Center.
 
-1. Przejdź do obszaru roboczego Log Analytics przy użyciu zaawansowanego rozwiązania do zabezpieczania danych.
-1. Przejdź do **rozwiązań** i wybierz rozwiązanie do **oceny luk w zabezpieczeniach SQL** .
-1. W okienku **Podsumowanie** kliknij pozycję **Wyświetl podsumowanie** i wybierz **raport oceny luk w zabezpieczeniach SQL**.
+1. Na pasku bocznym Security Center w obszarze HIGIENa zabezpieczeń zasobów wybierz pozycję **dane & Storage**.
 
-    ![Raport SQL Assessment](./media/security-center-advanced-iaas-data/ads-sql-server-1.png)
+1. Wybierz luki w **zabezpieczeniach dotyczące baz danych SQL w maszynach wirtualnych, które powinny zostać skorygowane (wersja zapoznawcza)** . Aby uzyskać więcej informacji, zobacz [Security Center zalecenia](security-center-recommendations.md). 
 
-    Pulpit nawigacyjny raport ładuje. Upewnij się, że przedział czasu jest ustawiony na co najmniej **7 ostatnich dni** od czasu, gdy skany oceny luk w zabezpieczeniach są uruchamiane w bazach danych zgodnie z ustalonym harmonogramem raz na siedem dni.
+    [![* * luki w zabezpieczeniach baz danych SQL w maszynach wirtualnych należy skorygować (wersja zapoznawcza) * * zalecenie](media/security-center-advanced-iaas-data/data-and-storage-sqldb-vulns-on-vm.png)](media/security-center-advanced-iaas-data/data-and-storage-sqldb-vulns-on-vm.png#lightbox)
 
-    ![Ustaw ostatnie 7 dni](./media/security-center-advanced-iaas-data/ads-sql-server-2.png)
+    Zostanie wyświetlony szczegółowy widok tego zalecenia.
 
-1. Aby przejść do szczegółów, kliknij dowolny z elementów pulpitu nawigacyjnego. Na przykład:
+    [![szczegółowy widok dla * * luk w zabezpieczeniach baz danych SQL na maszynach wirtualnych należy skorygować (wersja zapoznawcza) * * zalecenie](media/security-center-advanced-iaas-data/all-servers-view.png)](media/security-center-advanced-iaas-data/all-servers-view.png#lightbox)
 
-   1. Kliknij pozycję Sprawdzanie luk w zabezpieczeniach w sekcji **Podsumowanie testów zakończonych niepowodzeniem** , aby wyświetlić tabelę log Analytics z wynikami tego sprawdzania we wszystkich bazach danych. Te, które mają wyniki, są wyświetlane jako pierwsze.
+1. Aby przejść do szczegółów, aby uzyskać więcej szczegółów:
 
-   1. Następnie kliknij pozycję przez, aby wyświetlić szczegóły każdej luki w zabezpieczeniach, w tym opis luki w zabezpieczeniach, stan, powiązane ryzyko i rzeczywiste wyniki w tej bazie danych. Możesz również wyświetlić rzeczywiste zapytanie, które zostało uruchomione, aby wykonać to sprawdzenie, oraz informacje korygujące dotyczące rozwiązania tych luk w zabezpieczeniach.
+    * Aby zapoznać się z omówieniem skanowanych zasobów (bazy danych) i listę testowanych testów zabezpieczeń, kliknij odpowiedni serwer.
+    [Luki w zabezpieczeniach ![pogrupowane według programu SQL Server](media/security-center-advanced-iaas-data/single-server-view.png)](media/security-center-advanced-iaas-data/single-server-view.png#lightbox)
 
-    ![Wybór obszaru roboczego](./media/security-center-advanced-iaas-data/ads-sql-server-3.png)
+    * Aby zapoznać się z omówieniem luk w zabezpieczeniach pogrupowanych według konkretnej bazy danych SQL, kliknij interesującą bazę danych.
+    [Luki w zabezpieczeniach ![pogrupowane według programu SQL Server](media/security-center-advanced-iaas-data/single-database-view.png)](media/security-center-advanced-iaas-data/single-database-view.png#lightbox)
 
-    ![Wybór obszaru roboczego](./media/security-center-advanced-iaas-data/ads-sql-server-4.png)
-
-1. Możesz uruchomić dowolne Log Analytics zapytań dotyczących danych wyników oceny luk w zabezpieczeniach, aby wydzielić dane i zaindeksować je zgodnie z potrzebami.
+    W każdym widoku sprawdzanie zabezpieczeń jest sortowane według **ważności**. Kliknij określone sprawdzanie zabezpieczeń, aby wyświetlić okienko szczegółów z **opisem**, jak **rozwiązać ten** problem, oraz inne powiązane informacje, takie jak **wpływ** lub **test porównawczy**.
 
 ## <a name="advanced-threat-protection-for-sql-servers-on-azure-vms-alerts"></a>Zaawansowana ochrona przed zagrożeniami dla serwerów SQL na maszynach wirtualnych platformy Azure
 Alerty są generowane przez nietypowe i potencjalnie szkodliwe próby uzyskania dostępu do serwerów SQL lub korzystania z nich. Zdarzenia te mogą wyzwalać następujące alerty:

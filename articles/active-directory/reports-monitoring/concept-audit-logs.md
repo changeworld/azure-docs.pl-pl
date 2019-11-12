@@ -17,12 +17,12 @@ ms.date: 07/17/2019
 ms.author: chadam
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b2b30b6463ed3d58ec1565f3c49f98388ad09ed4
-ms.sourcegitcommit: 7a6d8e841a12052f1ddfe483d1c9b313f21ae9e6
+ms.openlocfilehash: a43c5849dcd037915a46de182064b3e630a663ec
+ms.sourcegitcommit: 6dec090a6820fb68ac7648cf5fa4a70f45f87e1a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70186294"
+ms.lasthandoff: 11/11/2019
+ms.locfileid: "73907189"
 ---
 # <a name="audit-activity-reports-in-the-azure-active-directory-portal"></a>Raporty dotyczące inspekcji w portalu usługi Azure Active Directory 
 
@@ -30,10 +30,10 @@ Za pomocą raportów usługi Azure Active Directory (Azure AD) możesz uzyskać 
 
 Architektura raportowania składa się z następujących składników:
 
-- **Aktywność** 
+- **Działanie** 
     - **Logowania** — [raport logowania](concept-sign-ins.md) zawiera informacje na temat użycia zarządzanych aplikacji i działań związanych z logowaniem użytkowników.
     - **Dzienniki inspekcji** — udostępnia możliwość śledzenia wszystkich zmian wprowadzanych przez różne funkcje usługi Azure AD za pomocą dzienników. Przykłady dzienników inspekcji obejmują zmiany wprowadzone w zasobach w usłudze Azure AD, takie jak dodawanie lub usuwanie użytkowników, aplikacji, grup, ról i zasad.
-- **Zabezpieczenia** 
+- **Bezpieczeństwo** 
     - **Ryzykowne logowania** — [ryzykowne logowanie](concept-risky-sign-ins.md) jest wskaźnikiem próby logowania, które mogło zostać wykonane przez kogoś, kto nie jest uprawnionym właścicielem konta użytkownika. 
     - **Użytkownicy oflagowani do ryzyka** — [ryzykowny użytkownik](concept-user-at-risk.md) jest wskaźnikiem konta użytkownika, które mogło zostać naruszone.
 
@@ -42,7 +42,7 @@ Ten artykuł zawiera omówienie raportu inspekcji.
 ## <a name="who-can-access-the-data"></a>Kto ma dostęp do danych?
 
 * Użytkownicy w rolach **administrator zabezpieczeń**, **czytelnik zabezpieczeń**, **czytelnik raportu** lub **administrator globalny**
-* Ponadto wszyscy użytkownicy (inni niż administratorzy) mogą zobaczyć własne działania inspekcji
+* Ponadto wszyscy użytkownicy (inni niż administratorzy) mogą zobaczyć własne działania związane z logowaniem
 
 ## <a name="audit-logs"></a>Dzienniki inspekcji
 
@@ -81,8 +81,8 @@ Dane inspekcji można filtrować w następujących polach:
 - Usługa
 - Kategoria
 - Działanie
-- State
-- Cel
+- Stan
+- Środowisko docelowe
 - Zainicjowane przez (aktor)
 - Zakres dat
 
@@ -90,8 +90,8 @@ Dane inspekcji można filtrować w następujących polach:
 
 Filtr **usługi** umożliwia wybranie z listy rozwijanej następujących usług:
 
-- Wszyscy
-- Kontrole uprawnień dostępu
+- Wszystkie
+- Przeglądy dostępu
 - Aprowizacja kont 
 - Logowanie jednokrotne aplikacji
 - Metody uwierzytelniania
@@ -101,19 +101,19 @@ Filtr **usługi** umożliwia wybranie z listy rozwijanej następujących usług:
 - Zarządzanie upoważnieniami
 - Identity Protection
 - Zaproszeni użytkownicy
-- PIM
+- PROGRAMÓW
 - Samoobsługowe zarządzanie grupami
 - Samoobsługowe zarządzanie hasłami
 - Warunki użytkowania
 
 Filtr **Kategoria** umożliwia wybranie jednego z następujących filtrów:
 
-- Wszyscy
+- Wszystkie
 - AdministrativeUnit
 - ApplicationManagement
 - Authentication
-- Authorization
-- Skontaktuj się z
+- Autoryzacja
+- Kontakt
 - Urządzenie
 - DeviceConfiguration
 - DirectoryManagement
@@ -127,11 +127,11 @@ Filtr **Kategoria** umożliwia wybranie jednego z następujących filtrów:
 
 Filtr **działania** jest oparty na wybranej kategorii i typie zasobu działania. Możesz wybrać konkretne działanie, które chcesz zobaczyć, lub wybrać wszystkie działania. 
 
-Listę wszystkich działań związanych z inspekcją można uzyskać przy użyciu interfejs API programu Graph:`https://graph.windows.net/<tenantdomain>/activities/auditActivityTypesV2?api-version=beta`
+Listę wszystkich działań związanych z inspekcją można uzyskać przy użyciu interfejs API programu Graph: `https://graph.windows.net/<tenantdomain>/activities/auditActivityTypesV2?api-version=beta`
 
 Filtr **stanu** umożliwia filtrowanie na podstawie stanu operacji inspekcji. Może to być jeden z następujących stanów:
 
-- Wszyscy
+- Wszystkie
 - Powodzenie
 - Niepowodzenie
 
@@ -140,12 +140,12 @@ Filtr **docelowy** umożliwia wyszukiwanie określonego elementu docelowego wed�
 Filtr **zainicjowane przez** umożliwia zdefiniowanie nazwy aktora lub uniwersalnej nazwy głównej (UPN). Nazwa i nazwy UPN są rozróżniane wielkości liter.
 
 Filtr **zakresu dat** umożliwia zdefiniowanie przedziału czasu dla zwracanych danych.  
-Możliwe wartości to:
+Możliwe wartości:
 
 - 1 miesiąc
 - 7 dni
 - 24 godziny
-- Niestandardowa
+- Niestandardowy
 
 Po wybraniu niestandardowego przedziału czasu możesz skonfigurować godzinę rozpoczęcia i zakończenia.
 

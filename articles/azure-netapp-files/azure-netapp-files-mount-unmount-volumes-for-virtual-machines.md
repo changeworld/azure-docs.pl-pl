@@ -12,14 +12,14 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 03/07/2019
+ms.date: 11/08/2019
 ms.author: b-juche
-ms.openlocfilehash: 76e01055043932f2c7e7d57bd7eed6265d666a8c
-ms.sourcegitcommit: bd4198a3f2a028f0ce0a63e5f479242f6a98cc04
+ms.openlocfilehash: 49c5fc4a9d4fed2176baf220e3fcc8f887757a36
+ms.sourcegitcommit: f226cdd6406372b5693d46b6d04900f2f0cda4e6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/14/2019
-ms.locfileid: "72302771"
+ms.lasthandoff: 11/11/2019
+ms.locfileid: "73906229"
 ---
 # <a name="mount-or-unmount-a-volume-for-windows-or-linux-virtual-machines"></a>Instalowanie lub odinstalowywanie woluminu dla maszyn wirtualnych z systemem Windows lub Linux 
 
@@ -32,4 +32,8 @@ W razie potrzeby można zainstalować lub odinstalować wolumin dla maszyn wirtu
 
     ![Instrukcje dotyczące instalacji SMB](../media/azure-netapp-files/azure-netapp-files-mount-instructions-smb.png)
     
-Jeśli używasz NFSv 4.1, użyj następującego polecenia, aby zainstalować system plików: `sudo mount -t nfs -o rw,hard,rsize=65536,wsize=65536,vers=4.1,tcp,sec=sys $MOUNTTARGETIPADDRESS:/$VOLUMENAME $MOUNTPOINT`
+Jeśli używasz NFSv 4.1, użyj następującego polecenia, aby zainstalować system plików:  
+
+`sudo mount -t nfs -o rw,hard,rsize=65536,wsize=65536,vers=4.1,tcp,sec=sys $MOUNTTARGETIPADDRESS:/$VOLUMENAME $MOUNTPOINT`  
+
+Zobacz [Konfigurowanie domyślnej domeny nfsv 4.1 dla Azure NetApp Files](azure-netapp-files-configure-nfsv41-domain.md).

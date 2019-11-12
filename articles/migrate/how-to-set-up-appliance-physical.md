@@ -4,18 +4,21 @@ description: Opisuje sposób konfigurowania urządzenia do oceny serwerów fizyc
 author: rayne-wiselman
 ms.service: azure-migrate
 ms.topic: article
-ms.date: 10/21/2019
+ms.date: 11/11/2019
 ms.author: raynew
-ms.openlocfilehash: ddd659e8cbcb54a36868848d0c6327f294d531b1
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: a3212e4dac6856a5fd032c731d877453965584ae
+ms.sourcegitcommit: 6dec090a6820fb68ac7648cf5fa4a70f45f87e1a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73512628"
+ms.lasthandoff: 11/11/2019
+ms.locfileid: "73907167"
 ---
 # <a name="set-up-an-appliance-for-physical-servers"></a>Konfigurowanie urządzenia dla serwerów fizycznych
 
 W tym artykule opisano sposób konfigurowania urządzenia Azure Migrate w przypadku oceniania serwerów fizycznych za pomocą narzędzia do oceny serwera Azure Migrate:.
+
+> [!NOTE]
+> Jeśli w tym miejscu wymieniono funkcje, które nie są jeszcze widoczne w portalu Azure Migrate, zaczekaj na. Pojawią się one w ciągu następnego tygodnia lub.
 
 Urządzenie Azure Migrate jest lekkim urządzeniem używanym do oceny Azure Migrate Server, aby wykonać następujące czynności:
 

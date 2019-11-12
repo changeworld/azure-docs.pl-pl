@@ -8,12 +8,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 02/20/2019
 ms.author: kgremban
-ms.openlocfilehash: 7d5a232d92c37a94ff427a3bf203f6f20764060e
-ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
+ms.openlocfilehash: a2bb961989d5bb1cc879b197e45d25b566c56e83
+ms.sourcegitcommit: 6dec090a6820fb68ac7648cf5fa4a70f45f87e1a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73748582"
+ms.lasthandoff: 11/11/2019
+ms.locfileid: "73906780"
 ---
 # <a name="react-to-iot-hub-events-by-using-event-grid-to-trigger-actions"></a>Reagowanie na zdarzenia IoT Hub przy użyciu Event Grid do wyzwalania akcji
 
@@ -25,7 +25,7 @@ Platforma Azure IoT Hub integruje się z usługą Azure Event Grid, dzięki czem
 
 ## <a name="regional-availability"></a>Dostępność regionalna
 
-Integracja Event Grid jest dostępna dla centrów IoT znajdujących się w regionach, w których Event Grid jest obsługiwana. Wszystkie zdarzenia urządzeń z wyjątkiem zdarzeń telemetrii urządzenia są ogólnie dostępne. Wydarzenie telemetryczne urządzenia jest w publicznej wersji zapoznawczej i jest dostępne we wszystkich regionach z wyjątkiem Wschodnie stany USA, zachodnie stany USA, Europa Zachodnia, [Azure Government](/azure/azure-government/documentation-government-welcome), [Chiny z Chin](/azure/china)i [Azure (Niemcy](https://azure.microsoft.com/global-infrastructure/germany/)). Aby uzyskać najnowszą listę regionów, zapoznaj [się z wprowadzeniem do Azure Event Grid](../event-grid/overview.md).
+Integracja Event Grid jest dostępna dla centrów IoT znajdujących się w regionach, w których Event Grid jest obsługiwana. Aby uzyskać najnowszą listę regionów, zapoznaj [się z wprowadzeniem do Azure Event Grid](../event-grid/overview.md).
 
 ## <a name="event-types"></a>Typy zdarzeń
 

@@ -12,14 +12,14 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 10/12/2019
+ms.date: 11/08/2019
 ms.author: b-juche
-ms.openlocfilehash: 1a479b4928631f27d5453d462a59fe7fed09a88c
-ms.sourcegitcommit: bd4198a3f2a028f0ce0a63e5f479242f6a98cc04
+ms.openlocfilehash: 1f312e8a5034d238e4802e9323bc1b5ac5cdae21
+ms.sourcegitcommit: f226cdd6406372b5693d46b6d04900f2f0cda4e6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/14/2019
-ms.locfileid: "72302765"
+ms.lasthandoff: 11/11/2019
+ms.locfileid: "73906239"
 ---
 # <a name="create-an-nfs-volume-for-azure-netapp-files"></a>Tworzenie woluminu NFS dla usługi Azure NetApp Files
 
@@ -43,7 +43,7 @@ Podsieć musi być delegowana do usługi Azure NetApp Files.
   Obsługa bitów trybu systemu UNIX (odczyt, zapis i wykonywanie) jest dostępna dla NFSv3 i NFSv 4.1. Aby można było zainstalować woluminy NFS, na kliencie NFS jest wymagany dostęp na poziomie głównym.
 
 * Lokalna użytkownicy/Grupa i obsługa protokołu LDAP dla NFSv 4.1  
-  Obecnie NFSv 4.1 obsługuje tylko dostęp do woluminów głównych. 
+  Obecnie NFSv 4.1 obsługuje tylko dostęp do woluminów głównych. Zobacz [Konfigurowanie domyślnej domeny nfsv 4.1 dla Azure NetApp Files](azure-netapp-files-configure-nfsv41-domain.md). 
 
 ## <a name="best-practice"></a>Najlepsze rozwiązania
 
@@ -115,6 +115,7 @@ Podsieć musi być delegowana do usługi Azure NetApp Files.
 
 ## <a name="next-steps"></a>Następne kroki  
 
+* [Skonfiguruj domyślną domenę NFSv 4.1 dla Azure NetApp Files](azure-netapp-files-configure-nfsv41-domain.md)
 * [Instalowanie lub odinstalowywanie woluminu dla maszyn wirtualnych z systemem Windows lub Linux](azure-netapp-files-mount-unmount-volumes-for-virtual-machines.md)
 * [Konfigurowanie zasad eksportu dla woluminu NFS](azure-netapp-files-configure-export-policy.md)
 * [Limity zasobów dla usługi Azure NetApp Files](azure-netapp-files-resource-limits.md)
