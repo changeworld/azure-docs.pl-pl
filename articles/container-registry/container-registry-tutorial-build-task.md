@@ -1,5 +1,5 @@
 ---
-title: Samouczek — Automatyzowanie kompilacji obrazu kontenera — Azure Container Registry Tasks
+title: Samouczek — Kompilowanie obrazu przy zatwierdzaniu kodu — zadania Azure Container Registry
 description: Z tego samouczka dowiesz się, jak skonfigurować usługę Azure Container Registry Task w celu automatycznego wyzwalania kompilacji obrazu kontenera w chmurze, gdy zatwierdzasz kod źródłowy do repozytorium Git.
 services: container-registry
 author: dlepow
@@ -9,23 +9,23 @@ ms.topic: tutorial
 ms.date: 05/04/2019
 ms.author: danlep
 ms.custom: seodec18, mvc
-ms.openlocfilehash: 25a0ef528d67deb5ea71720d2ff8e4d62b3b98a5
-ms.sourcegitcommit: 86d49daccdab383331fc4072b2b761876b73510e
+ms.openlocfilehash: d01863979f4cf74d544ef2b1ff121022abb8d4f6
+ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70744566"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73931428"
 ---
-# <a name="tutorial-automate-container-image-builds-in-the-cloud-when-you-commit-source-code"></a>Samouczek: Automatyzowanie kompilacji obrazu kontenera w chmurze po zatwierdzeniu kodu źródłowego
+# <a name="tutorial-automate-container-image-builds-in-the-cloud-when-you-commit-source-code"></a>Samouczek: Automatyzowanie kompilacji obrazów kontenerów w chmurze podczas zatwierdzania kodu źródłowego
 
 Oprócz [szybkiego zadania](container-registry-tutorial-quick-task.md)zadania ACR obsługują zautomatyzowane kompilacje obrazów kontenerów platformy Docker w chmurze podczas zatwierdzania kodu źródłowego w repozytorium git.
 
-W tym samouczku zadanie ACR kompiluje i wypycha pojedynczy obraz kontenera określony w pliku dockerfile podczas zatwierdzania kodu źródłowego w repozytorium git. Aby utworzyć [zadanie wieloetapowe](container-registry-tasks-multi-step.md) używające pliku YAML do definiowania kroków do kompilowania, wypychania i opcjonalnego testowania wielu kontenerów przy przekazywaniu kodu [, zobacz Samouczek: Uruchamianie wieloetapowego przepływu pracy kontenera w chmurze podczas zatwierdzania kodu](container-registry-tutorial-multistep-task.md)źródłowego. Aby zapoznać się z omówieniem zadań ACR, zobacz [Automatyzowanie poprawek systemu operacyjnego i platformy przy użyciu zadań ACR](container-registry-tasks-overview.md)
+W tym samouczku zadanie ACR kompiluje i wypycha pojedynczy obraz kontenera określony w pliku dockerfile podczas zatwierdzania kodu źródłowego w repozytorium git. Aby utworzyć [zadanie wieloetapowe](container-registry-tasks-multi-step.md) używające pliku YAML do definiowania kroków do kompilowania, wypychania i opcjonalnego testowania wielu kontenerów przy przekazywaniu kodu, zobacz [Samouczek: uruchamianie wieloetapowego przepływu pracy kontenera w chmurze podczas zatwierdzania kodu źródłowego](container-registry-tutorial-multistep-task.md). Aby zapoznać się z omówieniem zadań ACR, zobacz [Automatyzowanie poprawek systemu operacyjnego i platformy przy użyciu zadań ACR](container-registry-tasks-overview.md)
 
 W tym samouczku:
 
 > [!div class="checklist"]
-> * Utwórz zadanie
+> * Tworzenie zadania podrzędnego
 > * Testowanie zadania
 > * Wyświetlanie stanu zadania podrzędnego
 > * Wyzwalanie zadania po zatwierdzeniu kodu
@@ -63,7 +63,7 @@ az acr task create \
 ```
 
 > [!IMPORTANT]
-> Jeśli wcześniej utworzono zadania w wersji zapoznawczej przy `az acr build-task` użyciu polecenia, należy ponownie utworzyć te zadania za pomocą polecenia [AZ ACR Task][az-acr-task] .
+> Jeśli wcześniej utworzono zadania w wersji zapoznawczej za pomocą polecenia `az acr build-task`, te zadania muszą zostać ponownie utworzone przy użyciu polecenia [AZ ACR Task][az-acr-task] .
 
 To zadanie określa, że za każdym razem, gdy kod jest zatwierdzany do *głównej* gałęzi w repozytorium określonym przez element `--context`, usługa ACR Tasks skompiluje obraz kontenera z kodu w tej gałęzi. Do kompilowania obrazu jest używany plik Dockerfile określony przez parametr `--file` z katalogu głównego repozytorium. Argument `--image` określa wartość sparametryzowaną elementu `{{.Run.ID}}` dla części wersji tagu obrazu, zapewniając, że skompilowany obraz jest powiązany z określoną kompilacją i jest jednoznacznie oznakowany.
 

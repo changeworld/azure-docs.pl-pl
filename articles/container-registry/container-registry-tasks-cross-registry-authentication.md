@@ -1,18 +1,18 @@
 ---
-title: Uwierzytelnianie między rejestrami w Azure Container Registry zadania
-description: Włącz zarządzaną tożsamość zasobów platformy Azure w ramach zadania Azure Container Registry (ACR), aby umożliwić zadanie dostępu do innego prywatnego rejestru kontenerów.
+title: Uwierzytelnianie między rejestrami z zadania Azure Container Registry
+description: Skonfiguruj zadanie Azure Container Registry (zadanie ACR), aby uzyskać dostęp do innego prywatnego rejestru kontenerów platformy Azure przy użyciu tożsamości zarządzanej dla zasobów platformy Azure
 services: container-registry
 author: dlepow
 ms.service: container-registry
 ms.topic: article
 ms.date: 07/12/2019
 ms.author: danlep
-ms.openlocfilehash: 07fa7f3df5274ae88c93deac75093ead3f32f036
-ms.sourcegitcommit: 0e59368513a495af0a93a5b8855fd65ef1c44aac
+ms.openlocfilehash: f2ffb42ce109f5e6f7186461f931b7f8da57ff32
+ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/15/2019
-ms.locfileid: "69509093"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73931512"
 ---
 # <a name="cross-registry-authentication-in-an-acr-task-using-an-azure-managed-identity"></a>Uwierzytelnianie między rejestrami w ACR zadania przy użyciu tożsamości zarządzanej przez platformę Azure 
 
@@ -34,12 +34,12 @@ W rzeczywistym scenariuszu Organizacja może zachować zestaw obrazów podstawow
 
 W tym artykule potrzebne są dwa rejestry kontenerów platformy Azure:
 
-* Pierwszy rejestr służy do tworzenia i wykonywania zadań ACR. W tym artykule rejestr nazywa się rejestrem. 
+* Pierwszy rejestr służy do tworzenia i wykonywania zadań ACR. W tym artykule rejestr nazywa się *rejestrem*. 
 * Drugi rejestr hostuje obraz podstawowy używany do zadania tworzenia obrazu. W tym artykule drugi rejestr nosi nazwę *mybaseregistry*. 
 
 Zastąp ciąg własnymi nazwami rejestru w dalszych krokach.
 
-Jeśli nie masz jeszcze wymaganych rejestrów kontenerów platformy Azure, [zobacz Szybki Start: Utwórz prywatny rejestr kontenerów za pomocą interfejsu wiersza](container-registry-get-started-azure-cli.md)polecenia platformy Azure. Nie jest jeszcze konieczne wypychanie obrazów do rejestru.
+Jeśli nie masz jeszcze wymaganych rejestrów kontenerów platformy Azure, zobacz [Szybki Start: Tworzenie prywatnego rejestru kontenerów za pomocą interfejsu wiersza polecenia platformy Azure](container-registry-get-started-azure-cli.md). Nie jest jeszcze konieczne wypychanie obrazów do rejestru.
 
 ## <a name="prepare-base-registry"></a>Przygotuj rejestr podstawowy
 
@@ -56,7 +56,7 @@ az acr build --image baseimages/node:9-alpine --registry mybaseregistry --file D
 
 ## <a name="define-task-steps-in-yaml-file"></a>Zdefiniuj kroki zadania w pliku YAML
 
-Kroki tego przykładowego [zadania](container-registry-tasks-multi-step.md) wieloetapowego są zdefiniowane w [pliku YAML](container-registry-tasks-reference-yaml.md). Utwórz plik o nazwie `helloworldtask.yaml` w lokalnym katalogu roboczym i wklej go w następującej zawartości. Zaktualizuj wartość `REGISTRY_NAME` w kroku kompilacji z nazwą serwera podstawowego rejestru.
+Kroki tego przykładowego [zadania wieloetapowego](container-registry-tasks-multi-step.md) są zdefiniowane w [pliku YAML](container-registry-tasks-reference-yaml.md). Utwórz plik o nazwie `helloworldtask.yaml` w lokalnym katalogu roboczym i wklej go w następującej zawartości. Zaktualizuj wartość `REGISTRY_NAME` w kroku kompilacji z nazwą serwera podstawowego rejestru.
 
 ```yml
 version: v1.0.0
@@ -66,17 +66,17 @@ steps:
   - push: ["{{.Run.Registry}}/hello-world:{{.Run.ID}}"]
 ```
 
-Krok kompilacji używa `Dockerfile-app` pliku w repozytorium [Azure-Samples/ACR-Build-HelloWorld-Node](https://github.com/Azure-Samples/acr-build-helloworld-node.git) do tworzenia obrazu. `--build-arg` Odwołuje się do rejestru podstawowego w celu ściągnięcia obrazu podstawowego. Po pomyślnym skompilowaniu obraz jest wypychany do rejestru używanego do uruchomienia zadania.
+Krok kompilacji używa pliku `Dockerfile-app` w repozytorium [Azure-Samples/ACR-Build-HelloWorld-Node](https://github.com/Azure-Samples/acr-build-helloworld-node.git) do tworzenia obrazu. `--build-arg` odwołuje się do rejestru podstawowego w celu ściągnięcia obrazu podstawowego. Po pomyślnym skompilowaniu obraz jest wypychany do rejestru używanego do uruchomienia zadania.
 
-## <a name="option-1-create-task-with-user-assigned-identity"></a>Option 1: Tworzenie zadania z tożsamością przypisaną przez użytkownika
+## <a name="option-1-create-task-with-user-assigned-identity"></a>Opcja 1. Tworzenie zadania z tożsamością przypisaną przez użytkownika
 
-Kroki opisane w tej sekcji umożliwiają utworzenie zadania i włączenie tożsamości przypisanej do użytkownika. Jeśli zamiast tego chcesz włączyć tożsamość przypisaną do systemu, zobacz [opcję 2: Utwórz zadanie przy użyciu tożsamości](#option-2-create-task-with-system-assigned-identity)przypisanej do systemu. 
+Kroki opisane w tej sekcji umożliwiają utworzenie zadania i włączenie tożsamości przypisanej do użytkownika. Jeśli zamiast tego chcesz włączyć tożsamość przypisaną do systemu, zobacz [opcję 2. Tworzenie zadania z tożsamością przypisaną do systemu](#option-2-create-task-with-system-assigned-identity). 
 
 [!INCLUDE [container-registry-tasks-user-assigned-id](../../includes/container-registry-tasks-user-assigned-id.md)]
 
 ### <a name="create-task"></a>Tworzenie zadania
 
-Utwórz zadanie *helloworldtask* , wykonując następujące polecenie [AZ ACR Task Create][az-acr-task-create] . Zadanie jest uruchamiane bez kontekstu kodu źródłowego, a polecenie odwołuje się do pliku `helloworldtask.yaml` w katalogu roboczym. `--assign-identity` Parametr przekazuje identyfikator zasobu tożsamości przypisanej do użytkownika. 
+Utwórz zadanie *helloworldtask* , wykonując następujące polecenie [AZ ACR Task Create][az-acr-task-create] . Zadanie jest uruchamiane bez kontekstu kodu źródłowego, a polecenie odwołuje się do pliku `helloworldtask.yaml` w katalogu roboczym. Parametr `--assign-identity` przekazuje identyfikator zasobu tożsamości przypisanej do użytkownika. 
 
 ```azurecli
 az acr task create \
@@ -89,13 +89,13 @@ az acr task create \
 
 [!INCLUDE [container-registry-tasks-user-id-properties](../../includes/container-registry-tasks-user-id-properties.md)]
 
-## <a name="option-2-create-task-with-system-assigned-identity"></a>Opcja 2: Tworzenie zadania z tożsamością przypisaną do systemu
+## <a name="option-2-create-task-with-system-assigned-identity"></a>Opcja 2: Tworzenie zadania przy użyciu tożsamości przypisanej do systemu
 
-Kroki opisane w tej sekcji umożliwiają utworzenie zadania i włączenie tożsamości przypisanej do systemu. Jeśli chcesz zamiast tego włączyć tożsamość przypisaną przez użytkownika, zobacz [opcję 1: Utwórz zadanie z tożsamością](#option-1-create-task-with-user-assigned-identity)przypisaną przez użytkownika. 
+Kroki opisane w tej sekcji umożliwiają utworzenie zadania i włączenie tożsamości przypisanej do systemu. Jeśli zamiast tego chcesz włączyć tożsamość przypisaną przez użytkownika, zobacz [Opcja 1. Tworzenie zadania z tożsamością przypisaną przez użytkownika](#option-1-create-task-with-user-assigned-identity). 
 
 ### <a name="create-task"></a>Tworzenie zadania
 
-Utwórz zadanie *helloworldtask* , wykonując następujące polecenie [AZ ACR Task Create][az-acr-task-create] . Zadanie jest uruchamiane bez kontekstu kodu źródłowego, a polecenie odwołuje się do pliku `helloworldtask.yaml` w katalogu roboczym. `--assign-identity` Parametr bez wartości umożliwia włączenie do zadania tożsamości przypisanej do systemu. 
+Utwórz zadanie *helloworldtask* , wykonując następujące polecenie [AZ ACR Task Create][az-acr-task-create] . Zadanie jest uruchamiane bez kontekstu kodu źródłowego, a polecenie odwołuje się do pliku `helloworldtask.yaml` w katalogu roboczym. Parametr `--assign-identity` bez wartości umożliwia włączenie do zadania tożsamości przypisanej do systemu. 
 
 ```azurecli
 az acr task create \
@@ -117,7 +117,7 @@ Użyj polecenia [AZ ACR show][az-acr-show] , aby uzyskać identyfikator zasobu p
 baseregID=$(az acr show --name mybaseregistry --query id --output tsv)
 ```
 
-Użyj polecenia [AZ role Assign Create][az-role-assignment-create] , aby przypisać tożsamości `acrpull` rolę do rejestru podstawowego. Ta rola ma uprawnienia tylko do ściągania obrazów z rejestru.
+Użyj polecenia [AZ role Assign Create][az-role-assignment-create] , aby przypisać tożsamości rolę `acrpull` do rejestru podstawowego. Ta rola ma uprawnienia tylko do ściągania obrazów z rejestru.
 
 ```azurecli
 az role assignment create --assignee $principalID --scope $baseregID --role acrpull
@@ -125,7 +125,7 @@ az role assignment create --assignee $principalID --scope $baseregID --role acrp
 
 ## <a name="add-target-registry-credentials-to-task"></a>Dodaj docelowe poświadczenia rejestru do zadania
 
-Teraz za pomocą polecenia [AZ ACR Task Credential Add][az-acr-task-credential-add] Dodaj poświadczenia tożsamości do zadania, aby można było uwierzytelnić się w rejestrze podstawowym. Uruchom polecenie odpowiadające typowi tożsamości zarządzanej włączonej w zadaniu. Jeśli włączono tożsamość przypisaną przez użytkownika, Przekaż `--use-identity` jej identyfikator klienta. W przypadku włączenia tożsamości przypisanej do systemu należy przekazać `--use-identity [system]`polecenie.
+Teraz za pomocą polecenia [AZ ACR Task Credential Add][az-acr-task-credential-add] Dodaj poświadczenia tożsamości do zadania, aby można było uwierzytelnić się w rejestrze podstawowym. Uruchom polecenie odpowiadające typowi tożsamości zarządzanej włączonej w zadaniu. Jeśli włączono tożsamość przypisaną przez użytkownika, Przekaż `--use-identity` IDENTYFIKATORem klienta tożsamości. Jeśli włączono tożsamość przypisaną przez system, Przekaż `--use-identity [system]`.
 
 ```azurecli
 # Add credentials for user-assigned identity to the task

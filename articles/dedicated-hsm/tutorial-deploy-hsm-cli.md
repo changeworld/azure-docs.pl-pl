@@ -11,16 +11,16 @@ ms.topic: tutorial
 ms.custom: mvc, seodec18
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 12/07/2018
+ms.date: 11/11/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 1d8649fc271801748723f484515f5fd2f708f95e
-ms.sourcegitcommit: 7c5a2a3068e5330b77f3c6738d6de1e03d3c3b7d
+ms.openlocfilehash: 51e3bddef75bcf41b8c7a4d9693b622429130217
+ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70881048"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73930471"
 ---
-# <a name="tutorial-deploying-hsms-into-an-existing-virtual-network-using-cli"></a>Samouczek: Wdrażanie modułów HSM w istniejącej sieci wirtualnej przy użyciu interfejsu wiersza polecenia
+# <a name="tutorial-deploying-hsms-into-an-existing-virtual-network-using-cli"></a>Samouczek: wdrażanie sprzętowych modułów zabezpieczeń w istniejącej sieci wirtualnej przy użyciu interfejsu wiersza polecenia
 
 Dedykowany moduł HSM platformy Azure udostępnia urządzenie fizyczne do wyłącznego użytku przez klienta. Daje on pełną kontrolę administracyjną, ale przenosi na klienta pełną odpowiedzialność za zarządzanie. Używanie urządzeń fizycznych powoduje konieczność kontrolowania przez firmę Microsoft przydzielania urządzeń w celu zapewnienia efektywnego zarządzania pojemnością. W związku z tym w ramach subskrypcji platformy Azure usługa dedykowanego modułu HSM nie będzie normalnie widoczna na potrzeby aprowizowania zasobów. Każdy klient platformy Azure, który potrzebuje dostępu do usługi dedykowanego modułu HSM, musi najpierw skontaktować się z pracownikiem odpowiedzialnym za kontakty z klientami w firmie Microsoft w celu zażądania rejestracji w ramach usługi dedykowanego modułu HSM. Aprowizacja będzie możliwa tylko po pomyślnym zakończeniu tego procesu. 
 
@@ -177,7 +177,7 @@ Wykonanie tego wdrożenia powinno zająć od 25 do 30 minut, przy czym większo�
 
 ![stan aprowizacji](media/tutorial-deploy-hsm-cli/progress-status.png)
 
-Po pomyślnym zakończeniu wdrożenia zostanie wyświetlony komunikat "provisioningState": “Succeeded” (Powodzenie). Możesz nawiązać połączenie z istniejącą maszyną wirtualną i skorzystać z narzędzia SSH w celu zapewnienia dostępności urządzenia HSM.
+Po pomyślnym zakończeniu wdrożenia zostanie wyświetlony komunikat "provisioningState": "Succeeded". Możesz nawiązać połączenie z istniejącą maszyną wirtualną i skorzystać z narzędzia SSH w celu zapewnienia dostępności urządzenia HSM.
 
 ## <a name="verifying-the-deployment"></a>Weryfikowanie wdrożenia
 
@@ -236,13 +236,9 @@ Jeśli zakończono pracę z urządzeniem HSM, to można je usunąć jako zasób 
 
 1. `hsm factoryReset -f`
 2. `sysconf config factoryReset -f -service all`
-3. `network interface delete -device eth0`
-4. `network interface delete -device eth1`
-5. `network interface delete -device eth2`
-6. `network interface delete -device eth3`
-7. `my file clear -f`
-8. `my public-key clear -f`
-9. `syslog rotate`
+3. `my file clear -f`
+4. `my public-key clear -f`
+5. `syslog rotate`
 
 
 > [!NOTE]

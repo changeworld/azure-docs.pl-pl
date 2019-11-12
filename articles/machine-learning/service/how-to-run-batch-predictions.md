@@ -6,17 +6,17 @@ services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: tutorial
-ms.reviewer: trbye, jmartens, larryfr
-ms.author: tracych
-author: tracych
+ms.reviewer: trbye, jmartens, larryfr, vaidyas
+ms.author: vaidyas
+author: vaidya-s
 ms.date: 11/04/2019
 ms.custom: Ignite2019
-ms.openlocfilehash: 615536fbba38279a23516352c69461c19f9972ed
-ms.sourcegitcommit: 018e3b40e212915ed7a77258ac2a8e3a660aaef8
+ms.openlocfilehash: 4e7ddf7fc7b18d57b8251d4fb8293ed2f6e83d17
+ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73796709"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73929560"
 ---
 # <a name="run-batch-inference-on-large-amounts-of-data-by-using-azure-machine-learning"></a>Uruchamiaj wnioskowanie wsadowe dla dużych ilości danych za pomocą Azure Machine Learning
 [!INCLUDE [applies-to-skus](../../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -189,13 +189,13 @@ model = Model.register(model_path="models/",
 Skrypt *musi zawierać* dwie funkcje:
 - `init()`: Użyj tej funkcji do dowolnego kosztu lub wspólnego przygotowania do późniejszego wnioskowania. Na przykład użyj go do załadowania modelu do obiektu globalnego.
 -  `run(mini_batch)`: funkcja będzie uruchamiana dla każdego wystąpienia `mini_batch`.
-    -  `mini_batch`: wnioskowanie wsadowe wywoła metodę Run i przekaże element list lub Pandas Frame jako argument do metody. Każdy wpis w min_batch będzie parametrem FilePath, jeśli dane wejściowe są FileDataset, Pandas Dataframe, jeśli Input jest TabularDataset.
+    -  `mini_batch`: wnioskowanie wsadowe wywoła metodę Run i przekaże element list lub Pandas Frame jako argument do metody. Każdy wpis w min_batch będzie parametrem FilePath, jeśli dane wejściowe to FileDataset, Pandas Dataframe, jeśli Input jest TabularDataset.
     -  `response`: Metoda Run () powinna zwracać element Pandas Dataframe lub tablicę. W przypadku append_row output_action te zwrócone elementy są dołączane do wspólnego pliku wyjściowego. W przypadku summary_only zawartość elementów jest ignorowana. Dla wszystkich akcji wyjściowych każdy zwrócony element wyjściowy wskazuje jeden pomyślne wnioskowanie elementu wejściowego w danych wejściowych. Użytkownik powinien upewnić się, że wystarczająca ilość danych jest uwzględniona w wyniku wnioskowania o zamapowanie danych wejściowych na wnioskowanie. Dane wyjściowe wnioskowania będą zapisywane w pliku wyjściowym i nie będą gwarantowane w kolejności, użytkownik powinien użyć pewnego klucza w danych wyjściowych, aby zmapować go na dane wejściowe.
 
 ```python
 # Snippets from a sample script.
 # Refer to the accompanying digit_identification.py
-# (https://github.com/Azure/MachineLearningNotebooks/blob/master/pipeline/digit_identification.py)
+# (https://aka.ms/batch-inference-notebooks)
 # for the implementation script.
 
 import os

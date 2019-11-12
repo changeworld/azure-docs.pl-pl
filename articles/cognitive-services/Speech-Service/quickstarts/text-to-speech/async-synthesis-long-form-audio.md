@@ -10,16 +10,19 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.author: erhopf
-ms.openlocfilehash: 2c1e6ef84a472ccec5116b12e18ad80c92b68960
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: d308623a323fecd39efa90639da71fb981936fe5
+ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73681885"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73930578"
 ---
 # <a name="quickstart-asynchronous-synthesis-for-long-form-audio-in-python-preview"></a>Szybki Start: synteza asynchroniczna dla długich form audio w języku Python (wersja zapoznawcza)
 
 W tym przewodniku szybki start użyjesz długiego interfejsu API audio do asynchronicznego konwertowania tekstu na mowę i pobrania danych wyjściowych audio z identyfikatora URI dostarczonego przez usługę. Ten interfejs API REST jest idealnym rozwiązaniem dla dostawców zawartości, którzy muszą konwertować pliki tekstowe o więcej niż 10 000 znaków lub 50 akapitów na mowę. Aby uzyskać więcej informacji, zobacz [Long audio API](../../long-audio-api.md).
+
+> [!NOTE]
+> Asynchronicznej syntezy audio o długim formacie można używać tylko z [niestandardowymi głosymi neuronowych](../../how-to-custom-voice.md#custom-neural-voices).
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 

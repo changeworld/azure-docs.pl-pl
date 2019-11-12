@@ -1,5 +1,5 @@
 ---
-title: Samouczek — tworzenie rejestru platformy Docker z replikacją geograficzną na platformie Azure
+title: Samouczek — Tworzenie Azure Container Registry z replikacją geograficzną
 description: Tworzenie rejestru kontenerów platformy Azure, konfigurowanie replikacji geograficznej, przygotowanie obrazu platformy Docker i wdrożenie go w rejestrze. Pierwsza część trzyczęściowej serii.
 services: container-registry
 author: dlepow
@@ -9,14 +9,14 @@ ms.topic: tutorial
 ms.date: 04/30/2017
 ms.author: danlep
 ms.custom: seodec18, mvc
-ms.openlocfilehash: 87746bd39e624699612bf5221258ad757cd462b3
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 5a2aedfe93aa27f839c416c27ac028db1e650295
+ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68309581"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73931354"
 ---
-# <a name="tutorial-prepare-a-geo-replicated-azure-container-registry"></a>Samouczek: Przygotowanie rejestru kontenerów platformy Azure z replikacją geograficzną
+# <a name="tutorial-prepare-a-geo-replicated-azure-container-registry"></a>Samouczek: przygotowywanie rejestru kontenerów platformy Azure z replikacją geograficzną
 
 Rejestr kontenerów platformy Azure to prywatny rejestr platformy Docker wdrożony na platformie Azure, który można zlokalizować w sieci w pobliżu własnych wdrożeń. Ten zestaw trzech samouczków przedstawia metodę użycia replikacji geograficznej do wdrożenia aplikacji internetowej platformy ASP.NET Core uruchomionej w kontenerze systemu Linux do dwóch wystąpień funkcji [Web Apps for Containers](../app-service/containers/index.yml). Dowiesz się, jak platforma Azure automatycznie wdraża obraz do każdego wystąpienia aplikacji internetowej z najbliższego repozytorium z replikacją geograficzną.
 
@@ -51,7 +51,7 @@ Wybierz pozycję **Utwórz zasób** > **Kontenery** > **Azure Container Registry
 Skonfiguruj nowy rejestr za pomocą następujących ustawień:
 
 * **Nazwa rejestru**: utwórz nazwę rejestru, która jest globalnie unikatowa w obrębie platformy Azure i składa się z od 5 do 50 znaków alfanumerycznych
-* **Grupa zasobów**: **Utwórz nową** > `myResourceGroup`
+* **Grupa zasobów**: **utwórz nową** > `myResourceGroup`
 * **Lokalizacja**: `West US`
 * **Administrator**: `Enable` (wymagane dla funkcji Web App for Containers na potrzeby ściągania obrazów)
 * **Jednostka SKU**: `Premium` (wymagana dla replikacji geograficznej)
@@ -111,13 +111,13 @@ git clone https://github.com/Azure-Samples/acr-helloworld.git
 cd acr-helloworld
 ```
 
-Jeśli nie masz `git` zainstalowanego programu, możesz [pobrać archiwum zip][acr-helloworld-zip] bezpośrednio z witryny GitHub.
+Jeśli nie masz zainstalowanego `git`, możesz [pobrać archiwum zip][acr-helloworld-zip] bezpośrednio z witryny GitHub.
 
 ## <a name="update-dockerfile"></a>Aktualizacja pliku Dockerfile
 
 Plik Dockerfile dołączony do przykładu przedstawia sposób tworzenia kontenera. Rozpoczyna się ono od oficjalnego obrazu [aspnetcore][dockerhub-aspnetcore], następnie pliki aplikacji są kopiowane do kontenera, instalowane są zależności, dane wyjściowe są kompilowane za pomocą oficjalnego obrazu [aspnetcore-build][dockerhub-aspnetcore-build] i w końcu jest kompilowany zoptymalizowany obraz aspnetcore.
 
-[Pliku dockerfile][dockerfile] znajduje się na `./AcrHelloworld/Dockerfile` sklonowanym źródle.
+[Pliku dockerfile][dockerfile] znajduje się w `./AcrHelloworld/Dockerfile` w sklonowanym źródle.
 
 ```Dockerfile
 FROM microsoft/aspnetcore:2.0 AS base

@@ -18,12 +18,12 @@ ms.author: ryanwi
 ms.reviewer: hirsin, jesakowi, jmprieur
 ms.custom: fasttrack-edit
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: edb6d96dfdca63f1bacf45ab0af01d18aafcf302
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 0b4aa4fbff4e1b89b87dd05e0547db8e14ae5835
+ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73667873"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73927151"
 ---
 # <a name="permissions-and-consent-in-the-microsoft-identity-platform-endpoint"></a>Uprawnienia i zgoda w punkcie końcowym platformy tożsamości firmy Microsoft
 
@@ -89,9 +89,9 @@ Jeśli aplikacja wykonuje Logowanie przy użyciu programu [OpenID Connect Connec
 
 Zakres `email` może być używany z zakresem `openid` i innymi. Daje ona aplikacji dostęp do podstawowego adresu e-mail użytkownika w formie `email`go. `email` oświadczenia jest dołączany do tokenu tylko wtedy, gdy adres e-mail jest skojarzony z kontem użytkownika, które nie zawsze jest przypadkiem. Jeśli używa zakresu `email`, aplikacja powinna zostać przygotowana do obsługi przypadku, w którym `email` nie istnieje w tokenie.
 
-### <a name="profile"></a>Profilu
+### <a name="profile"></a>profilu
 
-Zakres `profile` może być używany z zakresem `openid` i innymi. Zapewnia ona aplikacji dostęp do znacznej ilości informacji o użytkowniku. Informacje, do których może uzyskać dostęp, obejmują, ale nie są ograniczone do, podanej nazwy, imienia, preferowanej nazwy użytkownika i identyfikatora obiektu. Aby uzyskać pełną listę oświadczeń profilu dostępnych w parametrze id_tokens dla określonego użytkownika, zobacz [odwołanie`id_tokens`](id-tokens.md).
+Zakres `profile` może być używany z zakresem `openid` i innymi. Zapewnia ona aplikacji dostęp do znacznej ilości informacji o użytkowniku. Informacje, do których może uzyskać dostęp, obejmują, ale nie są ograniczone do, podanej nazwy, imienia, preferowanej nazwy użytkownika i identyfikatora obiektu. Aby uzyskać pełną listę oświadczeń profilu dostępnych w parametrze id_tokens określonego użytkownika, zobacz [informacje dotyczące`id_tokens`](id-tokens.md).
 
 ### <a name="offline_access"></a>offline_access
 
@@ -186,23 +186,23 @@ Gdy wszystko będzie gotowe do zażądania uprawnień od administratora organiza
 
 ```
 // Line breaks are for legibility only.
-    GET https://login.microsoftonline.com/{tenant}/v2.0/adminconsent?
+  GET https://login.microsoftonline.com/{tenant}/v2.0/adminconsent?
   client_id=6731de76-14a6-49ae-97bc-6eba6914391e
   &state=12345
   &redirect_uri=http://localhost/myapp/permissions
-    &scope=
-    https://graph.microsoft.com/calendars.read 
-    https://graph.microsoft.com/mail.send
+  &scope=
+  https://graph.microsoft.com/calendars.read 
+  https://graph.microsoft.com/mail.send
 ```
 
 
 | Parametr     | Warunek     | Opis                                                                               |
-|--------------:|--------------:|:-----------------------------------------------------------------------------------------:|
-| `tenant` | Wymagany | Dzierżawa katalogu, z której chcesz zażądać uprawnień. Można podać w formacie identyfikatora GUID lub przyjaznej nazwy lub ogólnie odwołuje się do `common`, jak pokazano w przykładzie. |
-| `client_id` | Wymagany | **Identyfikator aplikacji (klienta)** , który [Azure Portal — rejestracje aplikacji](https://go.microsoft.com/fwlink/?linkid=2083908) środowisko przypisane do aplikacji. |
-| `redirect_uri` | Wymagany |Identyfikator URI przekierowania, w którym odpowiedź ma być wysyłana przez aplikację do obsługi. Musi dokładnie pasować do jednego z identyfikatorów URI przekierowania zarejestrowanych w portalu rejestracji aplikacji. |
+|:--------------|:--------------|:-----------------------------------------------------------------------------------------|
+| `tenant` | Wymagane | Dzierżawa katalogu, z której chcesz zażądać uprawnień. Można podać w formacie identyfikatora GUID lub przyjaznej nazwy lub ogólnie odwołuje się do `common`, jak pokazano w przykładzie. |
+| `client_id` | Wymagane | **Identyfikator aplikacji (klienta)** , który [Azure Portal — rejestracje aplikacji](https://go.microsoft.com/fwlink/?linkid=2083908) środowisko przypisane do aplikacji. |
+| `redirect_uri` | Wymagane |Identyfikator URI przekierowania, w którym odpowiedź ma być wysyłana przez aplikację do obsługi. Musi dokładnie pasować do jednego z identyfikatorów URI przekierowania zarejestrowanych w portalu rejestracji aplikacji. |
 | `state` | Zalecane | Wartość uwzględniona w żądaniu, która również zostanie zwrócona w odpowiedzi tokenu. Może to być ciąg dowolnej zawartości. Użyj stanu, aby kodować informacje o stanie użytkownika w aplikacji przed wystąpieniem żądania uwierzytelniania, takie jak strona lub widok. |
-|`scope`        | Wymagany      | Definiuje zestaw uprawnień wymaganych przez aplikację. Może to być statyczne (przy użyciu/.default) lub zakresy dynamiczne.  Może to obejmować zakresy OIDC (`openid`, `profile`, `email`). | 
+|`scope`        | Wymagane      | Definiuje zestaw uprawnień wymaganych przez aplikację. Może to być statyczne (przy użyciu/.default) lub zakresy dynamiczne.  Może to obejmować zakresy OIDC (`openid`, `profile`, `email`). | 
 
 
 W tym momencie usługa Azure AD wymaga od administratora dzierżawy zalogowania się w celu ukończenia żądania. Administrator jest proszony o zatwierdzenie wszystkich uprawnień żądanych w parametrze `scope`.  Jeśli użyto wartości statycznej (`/.default`), będzie ona działać podobnie jak punkt końcowy zgody administratora w wersji 1.0 i poprosić o zgodę na wszystkie zakresy, które znajdują się w wymaganych uprawnieniach do aplikacji.
@@ -303,7 +303,7 @@ response_type=token            //code or a hybrid flow is also possible here
 &state=1234
 ```
 
-Spowoduje to wyświetlenie ekranu zgody na wszystkie zarejestrowane uprawnienia (jeśli dotyczy to na podstawie powyższych opisów zgody i `/.default`), a następnie zwraca wartość id_token, a nie token dostępu.  Takie zachowanie istnieje w przypadku niektórych starszych klientów przechodzących z biblioteki ADAL do MSAL i nie powinny być używane przez nowych klientów przeznaczonych dla punktu końcowego platformy tożsamości firmy Microsoft.  
+Spowoduje to wyświetlenie ekranu zgody na wszystkie zarejestrowane uprawnienia (jeśli dotyczy to na podstawie powyższych opisów zgody i `/.default`), a następnie zwraca id_token, a nie token dostępu.  Takie zachowanie istnieje w przypadku niektórych starszych klientów przechodzących z biblioteki ADAL do MSAL i nie powinny być używane przez nowych klientów przeznaczonych dla punktu końcowego platformy tożsamości firmy Microsoft.  
 
 ## <a name="troubleshooting-permissions-and-consent"></a>Rozwiązywanie problemów z uprawnieniami i zgodą
 

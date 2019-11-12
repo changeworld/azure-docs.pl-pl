@@ -5,12 +5,12 @@ author: uhabiba04
 ms.topic: article
 ms.date: 11/04/2019
 ms.author: v-umha
-ms.openlocfilehash: 057037807a75e50eb2305bfab19d1fcff7fe77ce
-ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
+ms.openlocfilehash: efd294910531509d736dbda274406bd7c801c124
+ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/09/2019
-ms.locfileid: "73889592"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73931199"
 ---
 # <a name="references"></a>Dokumentacja
 
@@ -36,7 +36,7 @@ To jest podsumowanie wszystkich obiektów/zasobów w FarmBeats Data Hub:
 Hodowli | Farma odpowiada fizycznej lokalizacji interesu w systemie FarmBeats. Każda Farma ma nazwę farmy i unikatowy identyfikator farmy.
 --- | ---|
 Urządzenie  | Urządzenie odpowiada urządzeniu fizycznemu znajdującemu się w farmie. Każde urządzenie ma unikatowy identyfikator urządzenia. Urządzenie jest zazwyczaj inicjowane w farmie z IDENTYFIKATORem farmy.
-deviceModel  | DeviceModel odnosi się do meta danych urządzenia, takiego jak producent, typ urządzenia albo brama lub węzeł.
+DeviceModel  | DeviceModel odnosi się do meta danych urządzenia, takiego jak producent, typ urządzenia albo brama lub węzeł.
 Czujnik  | Czujnik odnosi się do czujnika fizycznego, który rejestruje wartości. Czujnik jest zwykle podłączony do urządzenia z IDENTYFIKATORem urządzenia.
 SensorModel  | SensorModel odnosi się do meta danych czujnika, takiego jak producent, typ czujnika albo analogowe lub cyfrowe, pomiar czujnika, taki jak temperatura otoczenia, ciśnienie itp.
 Telemetria  | Funkcja telemetrii umożliwia odczytywanie komunikatów telemetrycznych dla określonego czujnika i zakresu czasu.
@@ -47,7 +47,7 @@ Partner  | Partner odpowiada partnerowi integracji czujników/obrazów dla FarmB
 Miejscu  | Scena odnosi się do wszystkich wygenerowanych danych wyjściowych w kontekście farmy. Każda scena ma identyfikator sceny, źródło sceny, typ sceny i skojarzony z nią identyfikator farmy. Każdemu IDENTYFIKATORowi sceny może być skojarzonych wiele plików sceny.
 SceneFile |SceneFile odnosi się do wszystkich plików, które są generowane dla pojedynczej sceny. Z pojedynczym IDENTYFIKATORem sceny może być skojarzonych wiele identyfikatorów SceneFile.
 Reguła  |Reguła odnosi się do warunku dla danych związanych z farmą w celu wyzwolenia alertu. Każda reguła będzie w kontekście danych farmy.
-Alerty  | Alert odpowiada powiadomienia, które jest generowane po spełnieniu warunku reguły. Każdy alert będzie w kontekście reguły.
+Alert  | Alert odpowiada powiadomienia, które jest generowane po spełnieniu warunku reguły. Każdy alert będzie w kontekście reguły.
 Definicji  | Definicji definiuje dozwolone i niedozwolone akcje dla roli.
 RoleAssignment  |RoleAssignment odpowiada przypisaniu roli do użytkownika lub nazwy głównej usługi.
 
@@ -85,7 +85,7 @@ Adres URL usługi API Service to adres URL centrum danych https://\<yourdatahub-
 
 Poniżej przykładowego żądania jest uzyskanie listy urządzeń:
 
-```azurepowershell-interactive
+```bash
 curl -X GET "https://microsoft-farmbeats.azurewebsites.net/Device" -H "Content-Type: application/json" -H "Authorization: Bearer <Access-Token>”
 ```
 
@@ -93,7 +93,7 @@ Większość wywołań GET, POST i PUT wymaga treści żądania JSON.
 
 Poniżej przykładowego żądania jest utworzenie urządzenia (zawiera on wejściowy kod JSON z treścią żądania).
 
-```json
+```bash
 curl -X POST "https://microsoft-farmbeats.azurewebsites.net/Device" -H  "accept: application/json" -H  "Content-Type: application/json" -H "Authorization: Bearer <Access-Token>" -d "{  \"deviceModelId\": \"ID123\",  \"hardwareId\": \"MHDN123\",  \"reportingInterval\": 900,  \"name\": \"Device123\",  \"description\": \"Test Device 123\",}"
 ```
 
@@ -120,25 +120,25 @@ Interfejs API usługi Azure FarmBeats Data Hub zwraca standardowe błędy HTTP. 
 
 Oprócz standardowych błędów HTTP interfejsy API usługi Azure FarmBeats Data Hub zwracają również błędy wewnętrzne w następującym formacie:
 
-    ```
+```json
     {
       "message": "<More information on the error>",
       "status": "<error code>”,
       "code": "<InternalErrorCode>",
       "moreInfo": "<Details of the error>"
     }
-    ```
+```
 
 Przykład: podczas tworzenia farmy nie określono obowiązkowego pola "name" w ładunku wejściowym. Następujący komunikat o błędzie:
 
-    ```json
+ ```json    
     {
       "message": "Model validation failed",
       "status": 400,
       "code": "ModelValidationFailed",
       "moreInfo": "[\"The Name field is required.\"]"
     }
-    ```
+  ```
 
 ## <a name="adding-users-or-app-registrations-to-azure-active-directory"></a>Dodawanie użytkowników lub rejestracji aplikacji do Azure Active Directory
 

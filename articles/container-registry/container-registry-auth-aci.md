@@ -1,5 +1,5 @@
 ---
-title: Uwierzytelnianie za pomocą Azure Container Registry z Azure Container Instances
+title: Dostęp do Azure Container Registry z Container Instances
 description: Dowiedz się, jak zapewnić dostęp do obrazów w rejestrze kontenerów prywatnych z Azure Container Instances przy użyciu jednostki usługi Azure Active Directory.
 services: container-registry
 author: dlepow
@@ -8,12 +8,12 @@ ms.service: container-registry
 ms.topic: article
 ms.date: 04/23/2018
 ms.author: danlep
-ms.openlocfilehash: b11f88cbb29016032cbf536a2c970573eda82152
-ms.sourcegitcommit: b4665f444dcafccd74415fb6cc3d3b65746a1a31
+ms.openlocfilehash: 53cdca72587dafd39abd3f13ad488dcb460bf622
+ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/11/2019
-ms.locfileid: "72262865"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73931674"
 ---
 # <a name="authenticate-with-azure-container-registry-from-azure-container-instances"></a>Uwierzytelnianie za pomocą Azure Container Registry z Azure Container Instances
 
@@ -33,7 +33,7 @@ Nazwy główne usług należy również stosować, gdy [użytkownik administrato
 
 ## <a name="authenticate-using-the-service-principal"></a>Uwierzytelnianie przy użyciu nazwy głównej usługi
 
-Aby uruchomić kontener w Azure Container Instances przy użyciu nazwy głównej usługi, określ jej identyfikator dla `--registry-username` i jego hasło dla `--registry-password`.
+Aby uruchomić kontener w Azure Container Instances przy użyciu nazwy głównej usługi, określ jej identyfikator dla `--registry-username`i jego hasło dla `--registry-password`.
 
 ```azurecli-interactive
 az container create \

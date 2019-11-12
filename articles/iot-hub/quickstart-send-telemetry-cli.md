@@ -9,12 +9,12 @@ ms.custom:
 ms.author: timlt
 author: timlt
 ms.date: 11/06/2019
-ms.openlocfilehash: 8ebcc863c1812081e6198ff9c684934642e1dc41
-ms.sourcegitcommit: bc193bc4df4b85d3f05538b5e7274df2138a4574
+ms.openlocfilehash: 948dfd25881a6a90dd441ad640091d88812cc298
+ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/10/2019
-ms.locfileid: "73904552"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73931829"
 ---
 # <a name="quickstart-send-telemetry-from-a-device-to-an-iot-hub-and-monitor-it-with-the-azure-cli"></a>Szybki Start: wysyłanie danych telemetrycznych z urządzenia do centrum IoT Hub i monitorowanie go za pomocą interfejsu wiersza polecenia platformy Azure
 
@@ -47,7 +47,7 @@ Aby uruchomić Cloud Shell:
     ![Wybierz środowisko interfejsu wiersza polecenia](media/quickstart-send-telemetry-cli/cloud-shell-environment.png)
 
 ## <a name="prepare-two-cli-sessions"></a>Przygotuj dwie sesje interfejsu wiersza polecenia
-W tej sekcji przygotowasz dwie sesje interfejsu wiersza polecenia platformy Azure. W Cloud Shell zostaną uruchomione dwie sesje w osobnych kartach przeglądarki. W lokalnym kliencie interfejsu wiersza polecenia uruchamiane są dwa oddzielne wystąpienia interfejsu wiersza polecenia. Będziesz używać pierwszej sesji jako symulowanego urządzenia, a druga sesja do monitorowania i wysyłania komunikatów. Aby uruchomić polecenie, wybierz opcję **Kopiuj** w celu skopiowania bloku kodu w tym przewodniku Szybki Start, wklej go do sesji powłoki i uruchom go.
+W tej sekcji przygotowasz dwie sesje interfejsu wiersza polecenia platformy Azure. Jeśli używasz Cloud Shell, zostaną uruchomione dwie sesje na osobnych kartach przeglądarki. W przypadku korzystania z lokalnego klienta interfejsu wiersza polecenia uruchamiane są dwa oddzielne wystąpienia interfejsu wiersza polecenia. Będziesz używać pierwszej sesji jako symulowanego urządzenia, a druga sesja do monitorowania i wysyłania komunikatów. Aby uruchomić polecenie, wybierz opcję **Kopiuj** w celu skopiowania bloku kodu w tym przewodniku Szybki Start, wklej go do sesji powłoki i uruchom go.
 
 Interfejs wiersza polecenia platformy Azure wymaga zalogowania się do konta platformy Azure. Cała komunikacja między sesją powłoki interfejsu wiersza polecenia platformy Azure i centrum IoT Hub jest uwierzytelniana i szyfrowana. W związku z tym ten przewodnik Szybki Start nie wymaga dodatkowego uwierzytelniania, którego można używać z rzeczywistym urządzeniem, na przykład z parametrami połączenia.
 
@@ -149,7 +149,7 @@ Azure Portal pozwala zarządzać wszystkimi aspektami IoT Hub i urządzeń. W ty
 Aby wizualizować metryki komunikatów w Azure Portal:
 1. W menu nawigacji po lewej stronie portalu wybierz pozycję **wszystkie zasoby**. Spowoduje to wyświetlenie listy wszystkich zasobów w ramach subskrypcji, w tym utworzonego Centrum IoT. 
 
-1. Kliknij link w utworzonym Centrum IoT. W portalu zostanie wyświetlona strona przegląd dla centrum.
+1. Wybierz link w utworzonym Centrum IoT. W portalu zostanie wyświetlona strona przegląd dla centrum.
 
 1. W lewym okienku IoT Hub wybierz pozycję **metryki** . 
 

@@ -1,6 +1,6 @@
 ---
 title: Azure Container Registry formatów zawartości
-description: Dowiedz się więcej na temat obsługiwanych formatów zawartości w Azure Container Registry.
+description: Dowiedz się więcej na temat formatów zawartości obsługiwanych przez Azure Container Registry, w tym obrazów kontenerów zgodnych z platformą Docker, wykresów Helm, obrazów OCI i artefaktów OCI.
 services: container-registry
 author: dlepow
 manager: gwallace
@@ -8,12 +8,12 @@ ms.service: container-registry
 ms.topic: article
 ms.date: 08/30/2019
 ms.author: danlep
-ms.openlocfilehash: d49aab89c9568f168808c40508b4fe7d3175e902
-ms.sourcegitcommit: 19a821fc95da830437873d9d8e6626ffc5e0e9d6
+ms.openlocfilehash: 98bab18f9a8250b99410941a8f865fd7ec1c5fe0
+ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70164520"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73931582"
 ---
 # <a name="content-formats-supported-in-azure-container-registry"></a>Formaty zawartości obsługiwane w Azure Container Registry
 

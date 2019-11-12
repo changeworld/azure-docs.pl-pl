@@ -9,12 +9,12 @@ author: vijetajo
 ms.author: vijetaj
 ms.topic: conceptual
 ms.date: 07/16/2018
-ms.openlocfilehash: 59f2db8ec4dd8affe1c87ca2bb85a7ff7b8a4d7c
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: b073c4244d2a7abc7c2c066c3fad036f0caa5faa
+ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73485383"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73929542"
 ---
 # <a name="data-science-with-a-linux-data-science-virtual-machine-in-azure"></a>Nauka danych przy użyciu Data Science Virtual Machine systemu Linux na platformie Azure
 
@@ -58,8 +58,8 @@ Następnie połącz dwa pliki razem:
 
 Zestaw danych zawiera kilka typów statystyk dla każdej wiadomości e-mail:
 
-* Kolumny, takie jak **word\_freq\_* Word*** wskazują procent słów w wiadomości e-mail pasującej do *wyrazu*. Na przykład jeśli **słowo\_freq\_** wartość **1**, to 1% wszystkich wyrazów w wiadomości *e-mail.*
-* Kolumny, takie jak **char\_freq\_* char*** wskazują procent wszystkich znaków w wiadomości e-mail, które są *znakami*.
+* Kolumny, takie jak **word\_freq\__Word_**  , wskazują procent słów w wiadomości E-mail pasującej do *wyrazu*. Na przykład jeśli **słowo\_freq\_** wartość **1**, to 1% wszystkich wyrazów w wiadomości *e-mail.*
+* Kolumny takie jak **char\_freq\__char_**  wskazują procent wszystkich znaków w wiadomości E-mail, która jest *znakiem*.
 * **wielka\_\_długość\_najdłuższej** jest najdłuższym długością sekwencji wielkich liter.
 * **wielka\_\_długość\_średnia** to średnia długość wszystkich sekwencji wielkich liter.
 * **wielka\_\_długość\_suma** to łączna długość wszystkich sekwencji wielkich liter.
@@ -381,7 +381,7 @@ Aby eksplorować dane:
 Karta **Eksplorowanie** umożliwia również generowanie szczegółowych wykresów. Aby wykreślić histogram dotyczący danych:
 
 1. Wybierz opcję **dystrybucje**.
-1. W przypadku **word_freq_remove** i **Word_freq_you**wybierz pozycję **histogram**.
+1. W obszarze **word_freq_remove** i **Word_freq_you**wybierz pozycję **histogram**.
 1. Wybierz pozycję **Wykonaj**. W jednym oknie wykresu powinny być widoczne oba wykresy gęstości, w _których jest jasne, że słowo pojawia_ się częściej _niż w_wiadomościach e-mail.
 
 Wykresy **korelacji** są również interesujące. Aby utworzyć wykres:

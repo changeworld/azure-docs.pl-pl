@@ -9,12 +9,12 @@ services: digital-twins
 ms.topic: conceptual
 ms.date: 10/03/2019
 ms.custom: seodec18
-ms.openlocfilehash: 06cbdf6fbba89b6666e6fe3162fd591e93dffecd
-ms.sourcegitcommit: 7868d1c40f6feb1abcafbffcddca952438a3472d
+ms.openlocfilehash: 6a99693c3f88e94c093910da6ba4a305c26fe39d
+ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/04/2019
-ms.locfileid: "71958870"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73931344"
 ---
 # <a name="azure-digital-twins-swagger-reference-documentation"></a>Dokumentacja usługi Azure Digital bliźniaczych reprezentacji Swagger
 
@@ -42,15 +42,15 @@ Automatycznie wygenerowany materiał referencyjny struktury Swagger zawiera kró
 
 Zwięzłe podsumowanie zawiera opis interfejsu API.
 
-[@no__t — 1Swagger góry](media/how-to-use-swagger/swagger-management-top-img.png)](media/how-to-use-swagger/swagger-management-top-img.png#lightbox)
+[![Swagger — Góra](media/how-to-use-swagger/swagger-management-top-img.png)](media/how-to-use-swagger/swagger-management-top-img.png#lightbox)
 
 Są również wyświetlane modele obiektów interfejsu API zarządzania.
 
-[@no__t — modele 1Swagger](media/how-to-use-swagger/swagger-management-models-img.png)](media/how-to-use-swagger/swagger-management-models-img.png#lightbox)
+[![modele Swagger](media/how-to-use-swagger/swagger-management-models-img.png)](media/how-to-use-swagger/swagger-management-models-img.png#lightbox)
 
 Możesz wybrać każdy z wymienionych modeli obiektów, aby uzyskać bardziej szczegółowy opis atrybutów klucza.
 
-[@no__t — model 1Swagger](media/how-to-use-swagger/swagger-management-model-img.png)](media/how-to-use-swagger/swagger-management-model-img.png#lightbox)
+[model struktury Swagger ![](media/how-to-use-swagger/swagger-management-model-img.png)](media/how-to-use-swagger/swagger-management-model-img.png#lightbox)
 
 Wygenerowane modele obiektów Swagger są wygodne do wyświetlania wszystkich dostępnych [obiektów i interfejsów API](./concepts-objectmodel-spatialgraph.md)usługi Azure Digital bliźniaczych reprezentacji. Deweloperzy mogą korzystać z tego zasobu podczas tworzenia rozwiązań na platformie Azure Digital bliźniaczych reprezentacji.
 
@@ -64,7 +64,7 @@ Każdy z wymienionych punktów końcowych zawiera również wymagane informacje 
 * Wymagany typ danych parametru.
 * Metoda HTTP uzyskiwania dostępu do zasobu.
 
-[@no__t — punkty końcowe 1Swagger](media/how-to-use-swagger/swagger-management-endpoints-img.png)](media/how-to-use-swagger/swagger-management-endpoints-img.png#lightbox)
+[![punkty końcowe struktury Swagger](media/how-to-use-swagger/swagger-management-endpoints-img.png)](media/how-to-use-swagger/swagger-management-endpoints-img.png#lightbox)
 
 Aby zapoznać się z bardziej szczegółowym omówieniem, wybierz każdy zasób.
 
@@ -74,11 +74,11 @@ Jedną z zaawansowanych funkcji struktury Swagger zapewnia możliwość przetest
 
 Po wybraniu określonego punktu końcowego zobaczysz **go**.
 
-[![Swagger try](media/how-to-use-swagger/swagger-management-try-img.png)](media/how-to-use-swagger/swagger-management-try-img.png#lightbox)
+[![strukturę Swagger](media/how-to-use-swagger/swagger-management-try-img.png)](media/how-to-use-swagger/swagger-management-try-img.png#lightbox)
 
 Rozwiń tę sekcję, aby wyświetlić pola wejściowe dla każdego wymaganego i opcjonalnego parametru. Wprowadź prawidłowe wartości, a następnie wybierz pozycję **Wykonaj**.
 
-[@no__t — próba 1Swagger](media/how-to-use-swagger/swagger-management-tried-img.png)](media/how-to-use-swagger/swagger-management-tried-img.png#lightbox)
+[próba ![struktury Swagger](media/how-to-use-swagger/swagger-management-tried-img.png)](media/how-to-use-swagger/swagger-management-tried-img.png#lightbox)
 
 Po wykonaniu testu można sprawdzić poprawność danych odpowiedzi.
 
@@ -86,7 +86,7 @@ Po wykonaniu testu można sprawdzić poprawność danych odpowiedzi.
 
 Każdy z wymienionych punktów końcowych zawiera również dane treści odpowiedzi w celu zweryfikowania rozwoju i testów. Te przykłady obejmują kody stanu i kod JSON, które mają być wyświetlane w przypadku pomyślnych żądań HTTP.
 
-[@no__t — odpowiedź 1Swagger](media/how-to-use-swagger/swagger-management-response-img.png)](media/how-to-use-swagger/swagger-management-response-img.png#lightbox)
+[![odpowiedzi struktury Swagger](media/how-to-use-swagger/swagger-management-response-img.png)](media/how-to-use-swagger/swagger-management-response-img.png#lightbox)
 
 Przykłady zawierają również kody błędów ułatwiające debugowanie lub usprawnienie testów zakończonych niepowodzeniem.
 
@@ -95,7 +95,7 @@ Przykłady zawierają również kody błędów ułatwiające debugowanie lub usp
 > [!NOTE]
 > * Podmiot zabezpieczeń, który utworzył zasób usługi Azure Digital bliźniaczych reprezentacji, będzie miał przypisanie roli administratora miejsca i będzie mógł tworzyć dodatkowe przypisania ról dla innych użytkowników. Takie Użytkownicy i ich role mogą być autoryzowane do wywoływania interfejsów API.
 
-1. Wykonaj kroki opisane w [tym przewodniku szybki start](https://docs.microsoft.com/azure/active-directory/develop/quickstart-v1-integrate-apps-with-azure-ad) lub [zarejestruj swoją aplikację usługi azure Digital bliźniaczych reprezentacji Azure Active Directory w starszej wersji](./how-to-use-legacy-aad.md) , aby utworzyć i skonfigurować aplikację usługi Azure AD. Alternatywnie możesz ponownie użyć istniejącej rejestracji aplikacji.
+1. Wykonaj kroki opisane w [tym przewodniku szybki start](https://docs.microsoft.com/azure/active-directory/develop/quickstart-v1-integrate-apps-with-azure-ad) , aby utworzyć i skonfigurować aplikację usługi Azure AD. Alternatywnie możesz ponownie użyć istniejącej rejestracji aplikacji.
 
 1. Dodaj następujący adres URL odpowiedzi do rejestracji aplikacji:
 
@@ -112,15 +112,15 @@ Po zakończeniu rejestracji Azure Active Directory:
 
 1. Wybierz przycisk **Autoryzuj** na stronie struktury Swagger.
 
-    [![Select przycisk autoryzacji struktury Swagger](media/how-to-use-swagger/swagger-select-authorize-btn.png)](media/how-to-use-swagger/swagger-select-authorize-btn.png#lightbox)
+    [![wybierz przycisk Autoryzuj autoryzację](media/how-to-use-swagger/swagger-select-authorize-btn.png)](media/how-to-use-swagger/swagger-select-authorize-btn.png#lightbox)
 
 1. Wklej identyfikator aplikacji do pola **client_id** .
 
-    [@no__t — 1Swagger client_id pole](media/how-to-use-swagger/swagger-auth-form.png)](media/how-to-use-swagger/swagger-auth-form.png#lightbox)
+    [![Swagger client_id pole](media/how-to-use-swagger/swagger-auth-form.png)](media/how-to-use-swagger/swagger-auth-form.png#lightbox)
 
 1. Następnie nastąpi przekierowanie do poniższego modalnego sukcesu.
 
-    [@no__t — modalne przekierowanie 1Swagger](media/how-to-use-swagger/swagger-auth-redirect-img.png)](media/how-to-use-swagger/swagger-auth-redirect-img.png#lightbox)
+    [modalne przekierowanie ![Swagger](media/how-to-use-swagger/swagger-auth-redirect-img.png)](media/how-to-use-swagger/swagger-auth-redirect-img.png#lightbox)
 
 Aby dowiedzieć się więcej na temat interakcyjnych żądań testowania chronionych przez uwierzytelnianie OAuth 2,0, zobacz [oficjalną dokumentację](https://swagger.io/docs/specification/authentication/oauth2/).
 

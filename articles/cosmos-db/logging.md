@@ -1,5 +1,5 @@
 ---
-title: Rejestrowanie diagnostyczne w Azure Cosmos DB
+title: Rejestrowanie diagnostyczne w usłudze Azure Cosmos DB
 description: Poznaj różne sposoby rejestrowania i monitorowania danych przechowywanych w Azure Cosmos DB.
 author: SnehaGunda
 ms.service: cosmos-db
@@ -7,14 +7,14 @@ ms.topic: conceptual
 ms.date: 05/23/2019
 ms.author: sngun
 ms.custom: seodec18
-ms.openlocfilehash: 1e9f852d01d60ead9979b6b1190e285b35d5c312
-ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
+ms.openlocfilehash: bdbc50983708327cf5d3857282c92fcab1c28b09
+ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/13/2019
-ms.locfileid: "72294044"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73930547"
 ---
-# <a name="diagnostic-logging-in-azure-cosmos-db"></a>Rejestrowanie diagnostyczne w Azure Cosmos DB 
+# <a name="diagnostic-logging-in-azure-cosmos-db"></a>Rejestrowanie diagnostyczne w usłudze Azure Cosmos DB 
 
 Po rozpoczęciu korzystania z co najmniej jednej bazy danych usługi Azure Cosmos można monitorować sposób i czas uzyskiwania dostępu do baz danych. Ten artykuł zawiera omówienie dzienników dostępnych na platformie Azure. Dowiesz się, jak włączyć rejestrowanie diagnostyczne na potrzeby monitorowania w celu wysyłania dzienników do [usługi Azure Storage](https://azure.microsoft.com/services/storage/), przesyłania strumieniowego dzienników do [usługi Azure Event Hubs](https://azure.microsoft.com/services/event-hubs/)i eksportowania dzienników do [dzienników Azure monitor](https://azure.microsoft.com/services/log-analytics/).
 
@@ -118,7 +118,7 @@ Wykonaj następujące kroki, aby włączyć rejestrowanie diagnostyczne w Azure 
 
 3. Wybierz pozycję **Zapisz**.
 
-    Jeśli zostanie wyświetlony komunikat o błędzie "nie można zaktualizować diagnostyki \<workspace Name >. Subskrypcja \<subscription ID > nie jest zarejestrowana w celu korzystania z usługi Microsoft. Insights, "postępuj zgodnie z instrukcjami [Diagnostyka Azure](https://docs.microsoft.com/azure/log-analytics/log-analytics-azure-storage) , aby zarejestrować konto, a następnie ponów próbę wykonania tej procedury.
+    Jeśli zostanie wyświetlony komunikat o błędzie "nie można zaktualizować diagnostyki dla nazwy obszaru roboczego \<>. Identyfikator subskrypcji \<subskrypcji > nie jest zarejestrowany do korzystania z usługi Microsoft. Insights, "postępuj zgodnie z instrukcjami [Diagnostyka Azure](https://docs.microsoft.com/azure/log-analytics/log-analytics-azure-storage) , aby zarejestrować konto, a następnie ponów próbę wykonania tej procedury.
 
     Jeśli chcesz zmienić sposób zapisywania dzienników diagnostycznych w dowolnym momencie w przyszłości, Wróć do tej strony, aby zmodyfikować ustawienia dziennika diagnostycznego dla Twojego konta.
 
@@ -132,7 +132,7 @@ Aby włączyć funkcję rejestrowania metryk i diagnostyki przy użyciu interfej
    az monitor diagnostic-settings create --name DiagStorage --resource <resourceId> --storage-account <storageAccountName> --logs '[{"category": "QueryRuntimeStatistics", "enabled": true, "retentionPolicy": {"enabled": true, "days": 0}}]'
    ```
 
-   @No__t-0 jest nazwą konta Azure Cosmos DB. Zasób ma format "/subscriptions/`<subscriptionId>`/resourceGroups/`<resource_group_name>`/Providers/Microsoft. DocumentDB/databaseAccounts/< Azure_Cosmos_account_name >" `storage-account` jest nazwą konta magazynu, do którego mają być wysyłane dzienniki. Można rejestrować inne dzienniki, aktualizując wartości parametrów kategorii do "MongoRequests" lub "DataPlaneRequests". 
+   `resource` jest nazwą konta Azure Cosmos DB. Zasób ma format "/subscriptions/`<subscriptionId>`/resourceGroups/`<resource_group_name>`/providers/Microsoft.DocumentDB/databaseAccounts/< Azure_Cosmos_account_name >" `storage-account` jest nazwą konta magazynu, do którego chcesz wysłać dzienniki. Można rejestrować inne dzienniki, aktualizując wartości parametrów kategorii do "MongoRequests" lub "DataPlaneRequests". 
 
 - Aby włączyć przesyłanie strumieniowe dzienników diagnostycznych do centrum zdarzeń, użyj tego polecenia:
 
@@ -140,7 +140,7 @@ Aby włączyć funkcję rejestrowania metryk i diagnostyki przy użyciu interfej
    az monitor diagnostic-settings create --name cdbdiagsett --resourceId <resourceId> --event-hub-rule <eventHubRuleID> --logs '[{"category":"QueryRuntimeStatistics","enabled":true,"retentionPolicy":{"days":6,"enabled":true}}]'
    ```
 
-   @No__t-0 jest nazwą konta Azure Cosmos DB. @No__t-0 to identyfikator reguły centrum zdarzeń. 
+   `resource` jest nazwą konta Azure Cosmos DB. `event-hub-rule` to identyfikator reguły centrum zdarzeń. 
 
 - Aby włączyć wysyłanie dzienników diagnostycznych do obszaru roboczego Log Analytics, użyj tego polecenia:
 
@@ -156,7 +156,7 @@ Aby włączyć rejestrowanie diagnostyczne przy użyciu programu PowerShell, wym
 
 Aby zainstalować program Azure PowerShell i skojarzyć go z subskrypcją platformy Azure, zobacz [Sposób instalowania i konfigurowania programu Azure PowerShell](/powershell/azure/overview).
 
-Jeśli zainstalowano już Azure PowerShell i nie znasz wersji, w konsoli programu PowerShell wpisz `(Get-Module azure -ListAvailable).Version`.  
+Jeśli zainstalowano już Azure PowerShell i nie znasz wersji, w `(Get-Module azure -ListAvailable).Version`konsoli programu PowerShell.  
 
 ### <a id="connect"></a>Nawiązywanie połączenia z subskrypcjami
 Uruchom sesję programu PowerShell Azure i zaloguj się na konto platformy Azure przy użyciu następującego polecenia:  
@@ -210,7 +210,7 @@ $account = Get-AzResource -ResourceGroupName ContosoResourceGroup `
 ```
 
 ### <a id="enable"></a>Włączanie rejestrowania
-Aby włączyć rejestrowanie dla Azure Cosmos DB, należy użyć polecenia cmdlet `Set-AzDiagnosticSetting` z zmiennymi dla nowego konta magazynu, konta Azure Cosmos DB i kategorii, aby włączyć rejestrowanie. Uruchom następujące polecenie i Ustaw flagę **-Enabled** na **$true**:
+Aby włączyć rejestrowanie dla Azure Cosmos DB, użyj polecenia cmdlet `Set-AzDiagnosticSetting` z zmiennymi dla nowego konta magazynu, konta Azure Cosmos DB i kategorii, aby włączyć rejestrowanie. Uruchom następujące polecenie i Ustaw flagę **-Enabled** na **$true**:
 
 ```powershell
 Set-AzDiagnosticSetting  -ResourceId $account.ResourceId -StorageAccountId $sa.Id -Enabled $true -Categories DataPlaneRequests
@@ -306,7 +306,7 @@ Następnie Pobierz listę wszystkich obiektów blob:
 $blobs = Get-AzStorageBlob -Container $container -Context $sa.Context
 ```
 
-Potoku tej listy za pomocą polecenia `Get-AzStorageBlobContent` pobieranie obiektów BLOB do folderu docelowego:
+Potoku tej listy za pomocą polecenia `Get-AzStorageBlobContent`, aby pobrać obiekty blob do folderu docelowego:
 
 ```powershell
 $blobs | Get-AzStorageBlobContent `
@@ -396,66 +396,110 @@ Aby wyświetlić dane diagnostyczne w dziennikach Azure Monitor, Otwórz stronę
 
 ![Opcje przeszukiwania dzienników w Azure Portal](./media/logging/log-analytics-open-log-search.png)
 
-Teraz, gdy już włączono funkcję zbierania danych, uruchom następujące przykładowe polecenie przeszukiwania dzienników przy użyciu nowego języka zapytań, aby wyświetlić 10 najnowszych dzienników `AzureDiagnostics | take 10`.
+Teraz, gdy już włączono funkcję zbierania danych, uruchom następujące przykładowe polecenie przeszukiwania dzienników przy użyciu nowego języka zapytań, aby zobaczyć 10 najnowszych dzienników `AzureDiagnostics | take 10`.
 
 ![Przykładowe wyszukiwanie w dzienniku dla 10 najnowszych dzienników](./media/logging/log-analytics-query.png)
 
 <a id="#queries"></a>
-### <a name="queries"></a>Zapytania
+### <a name="cosmosdb-log-analytics-queries-in-azure-monitor"></a>CosmosDB Log Analytics zapytań w Azure Monitor
 
-Poniżej znajdują się dodatkowe zapytania, które można wprowadzić w polu **wyszukiwania w dzienniku** , aby ułatwić monitorowanie kontenerów usługi Azure Cosmos. Te zapytania działają w [nowym języku](../log-analytics/log-analytics-log-search-upgrade.md). 
+Poniżej znajdują się dodatkowe zapytania, które można wprowadzić w polu **wyszukiwania w dzienniku** , aby ułatwić monitorowanie kontenerów usługi Azure Cosmos. Te zapytania działają w [nowym języku](../log-analytics/log-analytics-log-search-upgrade.md).  
 
 Aby dowiedzieć się o znaczeniu danych zwracanych przez każde wyszukiwanie w dzienniku, zobacz [interpretowanie dzienników Azure Cosmos DB](#interpret).
 
 * Aby wykonać zapytanie dotyczące wszystkich dzienników diagnostycznych z Azure Cosmos DB przez określony czas:
 
     ```
-    AzureDiagnostics | where ResourceProvider=="MICROSOFT.DOCUMENTDB" and Category=="DataPlaneRequests"
+    AzureDiagnostics 
+    | where ResourceProvider=="MICROSOFT.DOCUMENTDB" and Category=="DataPlaneRequests"
     ```
 
 * Aby wykonać zapytanie o 10 ostatnio zarejestrowanych zdarzeń:
 
     ```
-    AzureDiagnostics | where ResourceProvider=="MICROSOFT.DOCUMENTDB" and Category=="DataPlaneRequests" | take 10
+    AzureDiagnostics 
+    | where ResourceProvider=="MICROSOFT.DOCUMENTDB" and Category=="DataPlaneRequests" 
+    | limit 10
     ```
 
 * Aby wykonać zapytanie o wszystkie operacje, pogrupowane według typu operacji:
 
     ```
-    AzureDiagnostics | where ResourceProvider=="MICROSOFT.DOCUMENTDB" and Category=="DataPlaneRequests" | summarize count() by OperationName
+    AzureDiagnostics 
+    | where ResourceProvider=="MICROSOFT.DOCUMENTDB" and Category=="DataPlaneRequests" 
+    | summarize count() by OperationName
     ```
 
 * Aby wykonać zapytanie o wszystkie operacje, pogrupowane według **zasobu**:
 
     ```
-    AzureActivity | where ResourceProvider=="MICROSOFT.DOCUMENTDB" and Category=="DataPlaneRequests" | summarize count() by Resource
+    AzureActivity 
+    | where ResourceProvider=="MICROSOFT.DOCUMENTDB" and Category=="DataPlaneRequests" 
+    | summarize count() by Resource
     ```
 
 * Aby wyszukać wszystkie działania użytkownika pogrupowane według zasobu:
 
     ```
-    AzureActivity | where Caller == "test@company.com" and ResourceProvider=="MICROSOFT.DOCUMENTDB" and Category=="DataPlaneRequests" | summarize count() by Resource
+    AzureActivity 
+    | where Caller == "test@company.com" and ResourceProvider=="MICROSOFT.DOCUMENTDB" and Category=="DataPlaneRequests" 
+    | summarize count() by Resource
     ```
     > [!NOTE]
     > To polecenie dotyczy dziennika aktywności, a nie dziennika diagnostycznego.
 
+* Aby uzyskać wszystkie zapytania większe niż 100 jednostek ru dołączone do danych z DataPlaneRequests i QueryRunTimeStatistics
+
+    ```
+    AzureDiagnostics
+    | where ResourceProvider=="MICROSOFT.DOCUMENTDB" and Category=="DataPlaneRequests" and todouble(requestCharge_s) > 100.0
+    | project activityId_g, requestCharge_s
+    | join kind= inner (
+           AzureDiagnostics
+           | where ResourceProvider =="MICROSOFT.DOCUMENTDB" and Category == "QueryRuntimeStatistics"
+           | project activityId_g, querytext_s
+    ) on $left.activityId_g == $right.activityId_g
+    | order by requestCharge_s desc
+    | limit 100
+    ```
+    
+      
+
 * Aby wykonać zapytanie, dla którego operacje trwają dłużej niż 3 ms:
 
     ```
-    AzureDiagnostics | where toint(duration_s) > 3 and ResourceProvider=="MICROSOFT.DOCUMENTDB" and Category=="DataPlaneRequests" | summarize count() by clientIpAddress_s, TimeGenerated
+    AzureDiagnostics 
+    | where toint(duration_s) > 3 and ResourceProvider=="MICROSOFT.DOCUMENTDB" and Category=="DataPlaneRequests" 
+    | summarize count() by clientIpAddress_s, TimeGenerated
     ```
 
 * Aby wyszukać agenta, dla którego Agent wykonuje operacje:
 
     ```
-    AzureDiagnostics | where ResourceProvider=="MICROSOFT.DOCUMENTDB" and Category=="DataPlaneRequests" | summarize count() by OperationName, userAgent_s
+    AzureDiagnostics 
+    | where ResourceProvider=="MICROSOFT.DOCUMENTDB" and Category=="DataPlaneRequests" 
+    | summarize count() by OperationName, userAgent_s
     ```
 
 * Aby wykonać zapytanie o czas wykonywania długotrwałych operacji:
 
     ```
-    AzureDiagnostics | where ResourceProvider=="MICROSOFT.DOCUMENTDB" and Category=="DataPlaneRequests" | project TimeGenerated , duration_s | render timechart
+    AzureDiagnostics 
+    | where ResourceProvider=="MICROSOFT.DOCUMENTDB" and Category=="DataPlaneRequests" 
+    | project TimeGenerated , duration_s 
+    | render timechart
     ```
+    
+* Aby uzyskać statystykę klucza partycji umożliwiającą ocenę pochylenia w pierwszych 3 partycjach dla konta bazy danych:
+
+    ```
+    AzureDiagnostics 
+    | where ResourceProvider=="MICROSOFT.DOCUMENTDB" and Category=="PartitionKeyStatistics" 
+    | project SubscriptionId, regionName_s, databaseName_s, collectionname_s, partitionkey_s, sizeKb_s, ResourceId 
+    
+   
+    ```
+    
 
 Aby uzyskać więcej informacji o sposobach korzystania z nowego języka wyszukiwania w dziennikach, zobacz [Omówienie wyszukiwania w dzienniku w](../log-analytics/log-analytics-log-search-new.md)dziennikach Azure monitor. 
 
@@ -471,7 +515,7 @@ W poniższej tabeli opisano zawartość każdego wpisu dziennika.
 | **Identyfikator** | **Zasób** | Konto Azure Cosmos DB, dla którego są włączone dzienniki.|
 | **kategorii** | **Kategoria** | W przypadku dzienników Azure Cosmos DB **DataPlaneRequests** jest jedyną dostępną wartością. |
 | **operationName** | **OperationName** | Nazwa operacji. Ta wartość może być dowolną z następujących operacji: Tworzenie, aktualizowanie, Odczyt, ReadFeed, usuwanie, zastępowanie, wykonywanie, SQLQuery, Query, JSQuery, kierownik, HeadFeed lub upsert.   |
-| **aœciwoœci** | nd. | Zawartość tego pola jest opisana w następujących wierszach. |
+| **aœciwoœci** | Nie dotyczy | Zawartość tego pola jest opisana w następujących wierszach. |
 | **activityId** | **activityId_g** | Unikatowy identyfikator GUID dla zarejestrowanej operacji. |
 | **userAgent** | **userAgent_s** | Ciąg określający agenta użytkownika klienta wykonującego żądanie. Format to {User Agent Name}/{Version}.|
 | **requestResourceType** | **requestResourceType_s** | Typ zasobu, do którego uzyskuje się dostęp. Może to być dowolny z następujących typów zasobów: baza danych, kontener, dokument, załącznik, użytkownik, uprawnienie, StoredProcedure, wyzwalacz, UserDefinedFunction lub oferta. |

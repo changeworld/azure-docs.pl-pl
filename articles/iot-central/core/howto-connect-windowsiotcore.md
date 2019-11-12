@@ -1,5 +1,5 @@
 ---
-title: Połącz urządzenie z systemem Windows IoT Core z aplikacją usługi Azure IoT Central | Microsoft Docs
+title: Łączenie systemu Windows IoT Core z aplikacją IoT Central platformy Azure | Microsoft Docs
 description: Jako deweloper urządzenia dowiesz się, jak połączyć urządzenie zestawu deweloperskiego IoT DevKit z aplikacją IoT Central platformy Azure.
 author: miriambrus
 ms.author: miriamb
@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: peterpr
-ms.openlocfilehash: d880130e114b2bd3e4f978c2ae3fc7bacf0648c4
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: 43e99c54249738436f24369ed3525e78ff971a12
+ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72953904"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73930210"
 ---
 # <a name="connect-a-windows-iot-core-device-to-your-azure-iot-central-application"></a>Podłączanie urządzenia Windows IoT Core do aplikacji IoT Central platformy Azure
 
@@ -29,7 +29,7 @@ Do wykonania kroków opisanych w tym artykule potrzebne są:
 
 - Urządzenie z systemem operacyjnym Windows 10 IoT Core. Aby uzyskać więcej informacji, zobacz [Konfigurowanie urządzenia Windows 10 IoT Core](https://docs.microsoft.com/windows/iot-core/tutorials/quickstarter/devicesetup).
 
-- Komputer deweloperski z zainstalowanym środowiskiem [Node. js](https://nodejs.org/) w wersji 8.0.0 lub nowszej. Aby sprawdzić swoją wersję, można uruchomić `node --version` w wierszu polecenia. Oprogramowanie Node.js jest dostępne dla różnych systemów operacyjnych.
+- Komputer deweloperski z zainstalowanym środowiskiem [Node. js](https://nodejs.org/) w wersji 8.0.0 lub nowszej. Aby sprawdzić swoją wersję, możesz uruchomić `node --version` w wierszu polecenia. Oprogramowanie Node.js jest dostępne dla różnych systemów operacyjnych.
 
 ## <a name="the-sample-devkits-application"></a>Przykładowa aplikacja Devkits
 
@@ -123,7 +123,7 @@ Ustawienia liczbowe
 | Typ            | Nazwa wyświetlana | Nazwa pola | Typ danych |
 | --------------- | ------------ | ---------- | --------- |
 | Właściwość urządzenia | Numer struktury   | dieNumber  | numer    |
-| Tekst            | Lokalizacja     | location   | ND       |
+| Tekst            | Lokalizacja     | location   | Nie dotyczy       |
 
 ## <a name="next-steps"></a>Następne kroki
 

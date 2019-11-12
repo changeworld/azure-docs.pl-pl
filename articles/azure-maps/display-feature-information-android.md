@@ -1,5 +1,5 @@
 ---
-title: Jak wyświetlić informacje o funkcji w Azure Maps Android SDK | Microsoft Docs
+title: Wyświetl informacje o funkcji w Android SDK Azure Maps | Microsoft Docs
 description: Dowiedz się, jak wyświetlać informacje o funkcji w Android SDK Azure Maps.
 author: rbrundritt
 ms.author: richbrun
@@ -8,16 +8,16 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: ''
-ms.openlocfilehash: dc72bb43752323576bed6e7991f33c4096ccabd4
-ms.sourcegitcommit: 62bd5acd62418518d5991b73a16dca61d7430634
+ms.openlocfilehash: 0dcabb0e5141a92394f2be38cbe7e71fa6e03d58
+ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68977289"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73928535"
 ---
 # <a name="display-feature-information"></a>Wyświetlanie informacji o funkcjach
 
-Dane przestrzenne są często reprezentowane przy użyciu punktów, linii i wielokątów. Z tymi danymi często są skojarzone informacje o metadanych. Na przykład punkt może reprezentować lokalizację magazynu i metadane dotyczące tej restauracji może być nazwą, adresem i typem żywności, którą obsługuje. Te metadane można dodać jako właściwości tych funkcji przy użyciu `JsonObject`. Poniższy kod tworzy prostą funkcję punktu z `title` właściwością o wartości "Hello World!"
+Dane przestrzenne są często reprezentowane przy użyciu punktów, linii i wielokątów. Z tymi danymi często są skojarzone informacje o metadanych. Na przykład punkt może reprezentować lokalizację magazynu i metadane dotyczące tej restauracji może być nazwą, adresem i typem żywności, którą obsługuje. Te metadane można dodać jako właściwości tych funkcji przy użyciu `JsonObject`. Poniższy kod tworzy prostą funkcję punktu z właściwością `title`, która ma wartość "Hello world!".
 
 ```java
 //Create a data source and add it to the map.
@@ -32,7 +32,7 @@ properties.addProperty("title", "Hello World!");
 dataSource.add(Feature.fromGeometry(Point.fromLngLat(-122.33, 47.64), properties));
 ```
 
-Gdy użytkownik współdziała z funkcją na mapie, zdarzenia mogą być używane do reagowania na te akcje. Typowym scenariuszem jest wyświetlenie komunikatu o właściwościach metadanych funkcji, z którą korzysta użytkownik. `OnFeatureClick` Zdarzenie jest głównym zdarzeniem używanym do wykrywania, kiedy użytkownik wykorzystał funkcję na mapie. Istnieje również `OnLongFeatureClick` zdarzenie. Podczas dodawania `OnFeatureClick` zdarzenia do mapy może być ograniczone do pojedynczej warstwy przez przekazanie identyfikatora warstwy w celu ograniczenia. Jeśli żaden identyfikator warstwy nie zostanie przekazana, naciśnięcie dowolnej funkcji na mapie, niezależnie od używanej warstwy, spowoduje uruchomienie tego zdarzenia. Poniższy kod tworzy warstwę symboli w celu renderowania danych punktu na mapie, a następnie dodaje `OnFeatureClick` zdarzenie i ogranicza go do tej warstwy symboli.
+Gdy użytkownik współdziała z funkcją na mapie, zdarzenia mogą być używane do reagowania na te akcje. Typowym scenariuszem jest wyświetlenie komunikatu o właściwościach metadanych funkcji, z którą korzysta użytkownik. Zdarzenie `OnFeatureClick` jest głównym zdarzeniem używanym do wykrywania, kiedy użytkownik wykorzystał funkcję na mapie. Istnieje również zdarzenie `OnLongFeatureClick`. Podczas dodawania zdarzenia `OnFeatureClick` do mapy można je ograniczyć do pojedynczej warstwy przez przekazanie identyfikatora warstwy do ograniczenia. Jeśli żaden identyfikator warstwy nie zostanie przekazana, naciśnięcie dowolnej funkcji na mapie, niezależnie od używanej warstwy, spowoduje uruchomienie tego zdarzenia. Poniższy kod tworzy warstwę symboli w celu renderowania danych punktu na mapie, a następnie dodaje zdarzenie `OnFeatureClick` i ogranicza je do tej warstwy symboli.
 
 ```java
 //Create a symbol and add it to the map.
@@ -50,7 +50,7 @@ map.events.add((OnFeatureClick) (features) -> {
 
 ## <a name="display-a-toast-message"></a>Wyświetl wyskakujący komunikat
 
-Komunikat wyskakujący to jeden z najprostszych sposobów wyświetlania informacji dla użytkownika i jest dostępny we wszystkich wersjach systemu Android. Nie obsługuje żadnego typu danych wejściowych użytkownika i jest wyświetlana tylko przez krótki czas. Jeśli chcesz szybko poinformować użytkownika o tym, co Ci się podoba, komunikat wyskakujący może być dobrą opcją. Poniższy kod pokazuje, `OnFeatureClick` jak można użyć wyskakującego komunikatu ze zdarzeniem.
+Komunikat wyskakujący to jeden z najprostszych sposobów wyświetlania informacji dla użytkownika i jest dostępny we wszystkich wersjach systemu Android. Nie obsługuje żadnego typu danych wejściowych użytkownika i jest wyświetlana tylko przez krótki czas. Jeśli chcesz szybko poinformować użytkownika o tym, co Ci się podoba, komunikat wyskakujący może być dobrą opcją. Poniższy kod pokazuje, jak może być używany wyskakujący komunikat z zdarzeniem `OnFeatureClick`.
 
 ```java
 //Add a feature click event to the map.
@@ -65,7 +65,7 @@ map.events.add((OnFeatureClick) (features) -> {
 
 <center>
 
-![Animacja wybieranej funkcji i wyświetlany wyskakujący komunikat](./media/display-feature-information-android/symbol-layer-click-toast-message.gif)</center>
+![animacji wybieranej funkcji i wyświetlanej wiadomości wyskakującej](./media/display-feature-information-android/symbol-layer-click-toast-message.gif)</center>
 
 Oprócz wyskakujących komunikatów istnieje wiele innych sposobów prezentowania właściwości metadanych funkcji, takich jak:
 

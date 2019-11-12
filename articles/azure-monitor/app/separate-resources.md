@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: mrbullwinkle
 ms.author: mbullwin
 ms.date: 05/15/2017
-ms.openlocfilehash: bcf741e82e247a5b79a478ef1015a70cccb4d274
-ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
+ms.openlocfilehash: c4d029de782ae408b83c265322a865db7b166c1e
+ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72899910"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73928304"
 ---
 # <a name="separating-telemetry-from-development-test-and-production"></a>Oddzielanie danych telemetrycznych od opracowywania, testowania i produkcji
 
@@ -27,7 +27,7 @@ Po skonfigurowaniu monitorowania Application Insights dla aplikacji sieci Web na
 Zazwyczaj wybiera się użycie oddzielnych zasobów lub pojedynczego zasobu udostępnionego w różnych scenariuszach:
 
 * Różne aplikacje niezależne — Użyj oddzielnego zasobu i iKey dla każdej aplikacji.
-* Wiele składników lub ról jednej aplikacji biznesowej — Użyj [jednego udostępnionego zasobu](../../azure-monitor/app/app-map.md) dla wszystkich aplikacji składników. Dane telemetryczne mogą być filtrowane lub segmentacjne przez właściwość cloud_RoleName.
+* Wiele składników lub ról jednej aplikacji biznesowej — Użyj [jednego udostępnionego zasobu](../../azure-monitor/app/app-map.md) dla wszystkich aplikacji składników. Dane telemetryczne mogą być filtrowane lub segmentować według właściwości cloud_RoleName.
 * Programowanie, testowanie i wydanie — Użyj oddzielnego zasobu i iKey dla wersji systemu w "sygnaturze" lub etapie produkcji.
 * A | Testowanie B — Użyj jednego zasobu. Utwórz TelemetryInitializer, aby dodać właściwość do telemetrii, która identyfikuje warianty.
 
@@ -81,7 +81,7 @@ W [Portal.Azure.com](https://portal.azure.com)dodaj zasób Application Insights:
 
 Tworzenie zasobu trwa kilka sekund. Po zakończeniu zostanie wyświetlony alert.
 
-(Można napisać [skrypt programu PowerShell](../../azure-monitor/app/powershell-script-create-resource.md) , aby automatycznie utworzyć zasób).
+(Można napisać [skrypt programu PowerShell](https://docs.microsoft.com/azure/azure-monitor/app/create-new-resource#creating-a-resource-automatically) , aby automatycznie utworzyć zasób).
 
 ### <a name="getting-the-instrumentation-key"></a>Pobieranie klucza Instrumentacji
 Klucz Instrumentacji identyfikuje utworzony zasób. 
@@ -134,7 +134,7 @@ Istnieje kilka różnych metod ustawiania właściwości wersji aplikacji.
     Aby umożliwić programowi MSBuild generowanie numerów wersji, ustaw wersję taką jak `1.0.*` w AssemblyReference.cs
 
 ## <a name="version-and-release-tracking"></a>Śledzenie wersji i wydania
-Aby śledzić wersje aplikacji, upewnij się, że plik `buildinfo.config` jest generowany przez proces aparatu Microsoft Build Engine. W pliku .csproj dodaj ten kod:  
+Aby śledzić wersje aplikacji, upewnij się, że plik `buildinfo.config` jest generowany przez proces aparatu Microsoft Build Engine. W pliku `.csproj` Dodaj następujące polecenie:  
 
 ```XML
 
@@ -145,7 +145,7 @@ Aby śledzić wersje aplikacji, upewnij się, że plik `buildinfo.config` jest g
 
 Jeśli plik zawiera informację o kompilacji, moduł sieci Web usługi Application Insights automatycznie dodaje **wersję aplikacji** jako właściwość do każdego elementu telemetrii. Pozwala to na filtrowanie według wersji podczas przeprowadzania [wyszukiwania diagnostycznego](../../azure-monitor/app/diagnostic-search.md) lub [eksplorowania metryk](../../azure-monitor/app/metrics-explorer.md).
 
-Numer wersji kompilacji jest jednak generowany tylko przez aparat Microsoft Build Engine, a nie podczas kompilowania przez deweloperów w programie Visual Studio.
+Należy jednak zauważyć, że numer wersji kompilacji jest generowany tylko przez Microsoft Build Engine, a nie przez kompilację dewelopera z programu Visual Studio.
 
 ### <a name="release-annotations"></a>Adnotacje dotyczące wersji
 Jeśli używasz usługi Azure DevOps, możesz [uzyskać znacznik adnotacji](../../azure-monitor/app/annotations.md) dodany do wykresów po każdym wydaniu nowej wersji. Na następującej ilustracji pokazano sposób wyświetlania tego znacznika.

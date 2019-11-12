@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 08/9/2019
 ms.author: mlearned
-ms.openlocfilehash: 3495d62c7447ba50d9ffe48e68b15dbe36867ac9
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 9c8bae879c5e28914981eec34afb0759dd963004
+ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73662594"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73928975"
 ---
 # <a name="create-and-manage-multiple-node-pools-for-a-cluster-in-azure-kubernetes-service-aks"></a>Tworzenie i zarządzanie wieloma pulami węzłów dla klastra w usłudze Azure Kubernetes Service (AKS)
 
@@ -36,7 +36,7 @@ Następujące ograniczenia są stosowane podczas tworzenia klastrów AKS i zarz�
 * Klaster AKS musi używać usługi równoważenia obciążenia standardowej jednostki SKU do korzystania z wielu pul węzłów, ale ta funkcja nie jest obsługiwana w przypadku podstawowych modułów równoważenia obciążenia SKU.
 * Klaster AKS musi używać zestawów skalowania maszyn wirtualnych dla węzłów.
 * Nie można dodać ani usunąć pul węzłów przy użyciu istniejącego szablonu Menedżer zasobów, tak jak w przypadku większości operacji. Zamiast tego należy [użyć oddzielnego szablonu Menedżer zasobów](#manage-node-pools-using-a-resource-manager-template) , aby wprowadzić zmiany pul węzłów w klastrze AKS.
-* Nazwa puli węzłów musi rozpoczynać się od małej litery i może zawierać tylko znaki alfanumeryczne. W przypadku pul węzłów systemu Linux długość musi należeć do zakresu od 1 do 12 znaków, długość musi mieć od 1 do 6 znaków.
+* Nazwa puli węzłów może zawierać tylko małe znaki alfanumeryczne i musi zaczynać się małą literą. W przypadku pul węzłów systemu Linux długość musi należeć do zakresu od 1 do 12 znaków, długość musi mieć od 1 do 6 znaków.
 * Klaster AKS może mieć maksymalnie osiem pul węzłów.
 * Klaster AKS może mieć maksymalnie 400 węzłów w ramach tych ośmiu pul węzłów.
 * Wszystkie pule węzłów muszą znajdować się w tej samej podsieci.
@@ -46,7 +46,7 @@ Następujące ograniczenia są stosowane podczas tworzenia klastrów AKS i zarz�
 Aby rozpocząć, Utwórz klaster AKS z pulą jednego węzła. W poniższym przykładzie za pomocą polecenia [AZ Group Create][az-group-create] można utworzyć grupę zasobów o nazwie Moja *zasobów* w regionie *wschodnim* . Klaster AKS o nazwie *myAKSCluster* jest tworzony przy użyciu polecenia [AZ AKS Create][az-aks-create] . A *--Kubernetes-Version* of *1.13.10* służy do pokazywania sposobu aktualizowania puli węzłów w następnym kroku. Można określić dowolną [obsługiwaną wersję Kubernetes][supported-versions].
 
 > [!NOTE]
-> Jednostka SKU usługi Load balanacer w warstwie *podstawowa* nie jest obsługiwana w przypadku używania wielu pul węzłów. Domyślnie klastry AKS są tworzone z użyciem jednostki SKU modułu *równoważenia obciążenia z poziomu interfejsu* wiersza polecenia platformy Azure i Azure Portal.
+> Jednostka SKU usługi równoważenia obciążenia w warstwie *podstawowa* **nie jest obsługiwana** w przypadku używania wielu pul węzłów. Domyślnie klastry AKS są tworzone z użyciem jednostki SKU modułu *równoważenia obciążenia z poziomu interfejsu* wiersza polecenia platformy Azure i Azure Portal.
 
 ```azurecli-interactive
 # Create a resource group in East US
@@ -126,7 +126,7 @@ $ az aks nodepool list --resource-group myResourceGroup --cluster-name myAKSClus
 ```
 
 > [!TIP]
-> Jeśli podczas dodawania puli węzłów nie określono *OrchestratorVersion* ani *VmSize* , węzły są tworzone na podstawie ustawień domyślnych klastra AKS. W tym przykładzie Kubernetes w wersji *1.13.10* i rozmiarze węzła *Standard_DS2_v2*.
+> Jeśli podczas dodawania puli węzłów nie określono *OrchestratorVersion* ani *VmSize* , węzły są tworzone na podstawie ustawień domyślnych klastra AKS. W tym przykładzie Kubernetes w wersji *1.13.10* i rozmiar węzła *Standard_DS2_v2*.
 
 ## <a name="upgrade-a-node-pool"></a>Uaktualnianie puli węzłów
  
@@ -191,28 +191,34 @@ Najlepszym rozwiązaniem jest uaktualnienie wszystkich pul węzłów w klastrze 
 ## <a name="upgrade-a-cluster-control-plane-with-multiple-node-pools"></a>Uaktualnianie płaszczyzny kontroli klastra z wieloma pulami węzłów
 
 > [!NOTE]
-> Kubernetes używa standardowego schematu obsługi wersji [semantycznej](https://semver.org/) . Numer wersji jest wyrażony jako *x. y. z*, gdzie *x* jest wersją główną, *y* jest wersją pomocniczą, a *z* to wersja poprawki. Na przykład w wersji *1.12.6*1 jest wersją główną, 12 jest wersją pomocniczą, a 6 to wersja poprawki. Wersja Kubernetes płaszczyzny kontroli oraz początkowa Pula węzłów są ustawiane podczas tworzenia klastra. Wszystkie dodatkowe pule węzłów mają ustawioną wersję Kubernetes po dodaniu ich do klastra. Wersje Kubernetes mogą się różnić między pulami węzłów, a także między pulą węzłów i płaszczyzną kontroli, ale obowiązują następujące ograniczenia:
-> 
-> * Wersja puli węzłów musi mieć taką samą wersję główną jak płaszczyzna kontroli.
-> * Wersja puli węzłów może być jedną wersją pomocniczą mniejszą niż wersja płaszczyzny kontroli.
-> * Wersja puli węzłów może być dowolną wersją poprawki, o ile są spełnione inne dwa ograniczenia.
+> Kubernetes używa standardowego schematu obsługi wersji [semantycznej](https://semver.org/) . Numer wersji jest wyrażony jako *x. y. z*, gdzie *x* jest wersją główną, *y* jest wersją pomocniczą, a *z* to wersja poprawki. Na przykład w wersji *1.12.6*1 jest wersją główną, 12 jest wersją pomocniczą, a 6 to wersja poprawki. Wersja Kubernetes płaszczyzny kontroli i początkowa Pula węzłów są ustawiane podczas tworzenia klastra. Wszystkie dodatkowe pule węzłów mają ustawioną wersję Kubernetes po dodaniu ich do klastra. Wersje Kubernetes mogą się różnić między pulami węzłów, a także między pulą węzłów a płaszczyzną kontroli.
 
-Klaster AKS ma dwa obiekty zasobów klastra z skojarzonymi wersjami Kubernetes. Pierwszy jest płaszczyzną kontrolną Kubernetes wersja. Druga to pula agentów z wersją Kubernetes. Płaszczyzna kontrolna jest mapowana na jedną lub wiele pul węzłów. Zachowanie operacji uaktualniania zależy od tego, które polecenie interfejsu wiersza polecenia platformy Azure jest używane.
+Klaster AKS ma dwa obiekty zasobów klastra z skojarzonymi wersjami Kubernetes.
 
-* Uaktualnianie płaszczyzny kontroli wymaga użycia `az aks upgrade`
-   * Spowoduje to uaktualnienie wersji płaszczyzny kontroli i wszystkich pul węzłów w klastrze.
-   * Przekazując `az aks upgrade` z flagą `--control-plane-only`, tylko płaszczyzna kontroli klastra zostanie uaktualniona i żadna ze skojarzonych pul węzłów nie zostanie zmieniona.
-* Uaktualnianie poszczególnych pul węzłów wymaga użycia `az aks nodepool upgrade`
-   * Spowoduje to uaktualnienie tylko puli węzłów docelowych z określoną wersją Kubernetes
+1. Kubernetes wersja płaszczyzny kontroli klastra.
+2. Pula węzłów z wersją Kubernetes.
 
-Relacja między wersjami Kubernetes przechowywanymi przez pule węzłów musi również być zgodna z zestawem reguł.
+Płaszczyzna kontrolna jest mapowana na jedną lub wiele pul węzłów. Zachowanie operacji uaktualniania zależy od tego, które polecenie interfejsu wiersza polecenia platformy Azure jest używane.
 
-* Nie można obniżyć poziomu płaszczyzny kontroli ani wersji Kubernetes puli węzłów.
-* Jeśli nie określono wersji Kubernetes puli węzłów, zachowanie zależy od używanego klienta. W przypadku deklaracji w Menedżer zasobów szablonie jest używana istniejąca wersja zdefiniowana dla puli węzłów, jeśli żadna z nich nie jest ustawiona, zostanie użyta wersja płaszczyzny kontroli.
-* W danym momencie można uaktualnić lub skalować płaszczyznę kontroli lub pulę węzłów, nie można jednocześnie przesłać obu operacji.
-* Wersja Kubernetes puli węzłów musi być tą samą wersją główną jak płaszczyzną kontroli.
-* Wersja Kubernetes puli węzłów może mieć co najwyżej dwie wersje pomocnicze (2) mniejsze od płaszczyzny kontroli, nigdy nie większa.
-* Pulą węzłów może być dowolna wersja poprawki Kubernetes mniejsza lub równa płaszczyźnie kontroli, nigdy nie większa.
+Uaktualnianie płaszczyzny kontroli AKS wymaga użycia `az aks upgrade`. Spowoduje to uaktualnienie wersji płaszczyzny kontroli i wszystkich pul węzłów w klastrze. 
+
+Wydawanie `az aks upgrade` polecenie z flagą `--control-plane-only` uaktualnia tylko płaszczyznę kontroli klastra. Żadna ze skojarzonych pul węzłów w klastrze nie zostanie zmieniona.
+
+Uaktualnianie poszczególnych pul węzłów wymaga użycia `az aks nodepool upgrade`. Spowoduje to uaktualnienie tylko puli węzłów docelowych z określoną wersją Kubernetes
+
+### <a name="validation-rules-for-upgrades"></a>Reguły walidacji dla uaktualnień
+
+Prawidłowe uaktualnienia wersji Kubernetes przechowywanych w ramach płaszczyzny kontroli lub pul węzłów klastra są weryfikowane przez następujące zestawy reguł.
+
+* Reguły dotyczące prawidłowych wersji do uaktualnienia do programu:
+   * Wersja puli węzłów musi mieć taką samą wersję *główną* jak płaszczyzna kontroli.
+   * Wersja puli węzłów może być dwie wersje *pomocnicze* mniejsze niż wersja płaszczyzny kontroli.
+   * Wersja puli węzłów może być dwie wersje *poprawek* mniejsze niż wersja płaszczyzny kontroli.
+
+* Reguły przesyłania operacji uaktualniania:
+   * Nie można zmienić wersji Kubernetes płaszczyzny kontroli ani puli węzłów.
+   * Jeśli nie określono wersji Kubernetes puli węzłów, zachowanie zależy od używanego klienta. Deklaracja w szablonach Menedżer zasobów powraca do istniejącej wersji zdefiniowanej dla puli węzłów, jeśli ta opcja jest używana, jeśli żadna z nich nie jest ustawiona, zostanie użyta wersja płaszczyzny kontroli.
+   * Można uaktualnić lub skalować płaszczyznę kontroli lub pulę węzłów w danym momencie, nie można jednocześnie przesłać wielu operacji na pojedynczej płaszczyźnie kontroli lub w puli węzłów.
 
 ## <a name="scale-a-node-pool-manually"></a>Ręczne skalowanie puli węzłów
 
@@ -320,7 +326,7 @@ Usunięcie węzłów i puli węzłów może potrwać kilka minut.
 
 W poprzednich przykładach w celu utworzenia puli węzłów dla węzłów utworzonych w klastrze użyto domyślnego rozmiaru maszyny wirtualnej. Bardziej typowy scenariusz polega na tworzeniu pul węzłów o różnych rozmiarach i możliwościach maszyn wirtualnych. Można na przykład utworzyć pulę węzłów zawierającą węzły z dużą ilością procesora lub pamięci albo pulę węzłów, która zapewnia obsługę procesora GPU. W następnym kroku należy użyć przystawek [i tolerowania](#schedule-pods-using-taints-and-tolerations) , aby poinformować usługę Kubernetes Scheduler, jak ograniczyć dostęp do zasobników, które mogą być uruchamiane w tych węzłach.
 
-W poniższym przykładzie Utwórz pulę węzłów opartą na procesorze GPU, która używa rozmiaru maszyny wirtualnej *Standard_NC6* . Te maszyny wirtualne są obsługiwane przez kartę NVIDIA Tesla K80. Aby uzyskać informacje na temat dostępnych rozmiarów maszyn wirtualnych, zobacz [rozmiary maszyn wirtualnych z systemem Linux na platformie Azure][vm-sizes].
+W poniższym przykładzie Utwórz pulę węzłów opartą na procesorze GPU, która używa *Standard_NC6* rozmiaru maszyny wirtualnej. Te maszyny wirtualne są obsługiwane przez kartę NVIDIA Tesla K80. Aby uzyskać informacje na temat dostępnych rozmiarów maszyn wirtualnych, zobacz [rozmiary maszyn wirtualnych z systemem Linux na platformie Azure][vm-sizes].
 
 Utwórz pulę węzłów za pomocą polecenia [AZ AKS Node Pool Add][az-aks-nodepool-add] . Tym razem Określ nazwę *gpunodepool*i użyj parametru `--node-vm-size`, aby określić rozmiar *Standard_NC6* :
 
@@ -450,13 +456,13 @@ Na węzłach w *gpunodepool*można zaplanować tylko te zasobniki, do których z
 
 ## <a name="manage-node-pools-using-a-resource-manager-template"></a>Zarządzanie pulami węzłów przy użyciu szablonu Menedżer zasobów
 
-W przypadku tworzenia i zarządzania zasobami przy użyciu szablonu Azure Resource Manager można zwykle zaktualizować ustawienia w szablonie i wdrożyć je ponownie w celu zaktualizowania zasobu. W przypadku pul węzłów w AKS nie można zaktualizować profilu początkowej puli węzłów po utworzeniu klastra AKS. To zachowanie oznacza, że nie można zaktualizować istniejącego szablonu Menedżer zasobów, wprowadzić zmiany w pulach węzłów i ponownie wdrożyć. Zamiast tego należy utworzyć oddzielny szablon Menedżer zasobów, który aktualizuje tylko pule agentów dla istniejącego klastra AKS.
+W przypadku tworzenia i zarządzania zasobami przy użyciu szablonu Azure Resource Manager można zwykle zaktualizować ustawienia w szablonie i wdrożyć je ponownie w celu zaktualizowania zasobu. W przypadku pul węzłów w AKS nie można zaktualizować profilu początkowej puli węzłów po utworzeniu klastra AKS. To zachowanie oznacza, że nie można zaktualizować istniejącego szablonu Menedżer zasobów, wprowadzić zmiany w pulach węzłów i ponownie wdrożyć. Zamiast tego należy utworzyć oddzielny szablon Menedżer zasobów, który aktualizuje tylko pule węzłów dla istniejącego klastra AKS.
 
 Utwórz szablon, taki jak `aks-agentpools.json`, i wklej następujący przykładowy manifest. Ten przykładowy szablon służy do konfigurowania następujących ustawień:
 
-* Aktualizuje pulę agentów systemu *Linux* o nazwie *myagentpool* , aby uruchamiać trzy węzły.
+* Aktualizuje pulę węzłów systemu *Linux* o nazwie *myagentpool* , aby uruchamiać trzy węzły.
 * Ustawia węzły w puli węzłów do uruchomienia Kubernetes w wersji *1.13.10*.
-* Definiuje rozmiar węzła jako *Standard_DS2_v2*.
+* Określa rozmiar węzła jako *Standard_DS2_v2*.
 
 W razie potrzeby należy edytować te wartości jako wymagające aktualizacji, dodania lub usunięcia pul węzłów:
 

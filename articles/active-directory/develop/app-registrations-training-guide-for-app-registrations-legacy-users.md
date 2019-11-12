@@ -1,6 +1,6 @@
 ---
-title: Przewodnik treningowy rejestracji aplikacji Azure Portal (starsza wersja) — Azure
-description: Wprowadzenie do nowego środowiska rejestracji aplikacji na platformie tożsamości firmy Microsoft.
+title: Przewodnik szkoleniowy dotyczący przejścia z Rejestracje aplikacji (starsza wersja) do nowego Rejestracje aplikacji środowiska w Azure Portal
+description: Wprowadzenie do nowego środowiska rejestracji aplikacji w Azure Portal
 services: active-directory
 documentationcenter: ''
 author: archieag
@@ -12,92 +12,120 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 04/26/2019
+ms.date: 10/25/2019
 ms.author: aragra
 ms.reviewer: lenalepa, keyam
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: bbdb6a2e17ab867b4938e94ae5a20a95cc352daa
-ms.sourcegitcommit: bc193bc4df4b85d3f05538b5e7274df2138a4574
+ms.openlocfilehash: 01d543262a9eb358643c0860b24ac4306d2c5edf
+ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/10/2019
-ms.locfileid: "73905396"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73927093"
 ---
-# <a name="training-guide-app-registrations-in-the-azure-portal-legacy"></a>Przewodnik szkoleniowy: Rejestracje aplikacji w Azure Portal (starsza wersja)
+# <a name="transitioning-from-app-registrations-legacy-to-the-new-app-registrations-experience-in-the-azure-portal"></a>Przejście z Rejestracje aplikacji (starsza wersja) do nowego Rejestracje aplikacji środowiska w Azure Portal
 
-W Azure Portal można znaleźć liczne ulepszenia środowiska [rejestracje aplikacji](https://go.microsoft.com/fwlink/?linkid=2083908) . Jeśli znasz już starsze środowisko, Skorzystaj z tego przewodnika szkoleniowego, aby rozpocząć korzystanie z nowego środowiska.
+Wiele ulepszeń można znaleźć w [Rejestracje aplikacji](https://go.microsoft.com/fwlink/?linkid=2083908) Azure Portal. Jeśli znasz już środowisko Rejestracje aplikacji (starsze) w Azure Portal, Skorzystaj z tego przewodnika szkoleniowego, aby rozpocząć korzystanie z nowego środowiska.
 
 W Azure Active Directory nowe środowisko rejestracji aplikacji opisane w tym miejscu jest ogólnie dostępne (GA). W Azure Active Directory B2C (Azure AD B2C) to środowisko jest w wersji zapoznawczej.
 
 ## <a name="key-changes"></a>Zmiany kluczy
 
-- Rejestracje aplikacji nie są ograniczone do **aplikacji sieci Web ani interfejsu API** ani aplikacji **natywnych** . Możesz użyć tej samej rejestracji aplikacji dla wszystkich tych elementów, rejestrując odpowiednie identyfikatory URI przekierowania.
-- Starsze wersje obsługują aplikacje, które logują się tylko na kontach w organizacji (Azure AD). Aplikacje zostały zarejestrowane jako pojedyncze dzierżawy (obsługujące tylko konta organizacji z katalogu, w którym zarejestrowano aplikację) i mogą być modyfikowane jako wielodostępne (obsługujące wszystkie konta organizacji). Nowe środowisko pozwala zarejestrować aplikacje, które mogą obsługiwać obie te opcje, a także trzecią opcję: wszystkie konta organizacji, a także osobiste konta Microsoft.
+- Rejestracje aplikacji nie są ograniczone do *aplikacji sieci Web ani interfejsu API* ani aplikacji *natywnych* . Możesz użyć tej samej rejestracji aplikacji dla wszystkich tych aplikacji, rejestrując odpowiednie identyfikatory URI przekierowania.
+
+- W starszych wersjach obsługiwane aplikacje, które logują się przy użyciu konta organizacji (Azure AD). Aplikacje zostały zarejestrowane jako pojedyncze dzierżawy. Aplikacje obsługują tylko konta organizacji z katalogu, w którym zarejestrowano aplikację. Aplikacje można modyfikować w taki sposób, aby obsługiwały wiele dzierżawców i obsługiwać wszystkie konta organizacji. Nowe środowisko pozwala zarejestrować aplikacje, które mogą obsługiwać obie te opcje, a także trzecią opcję: wszystkie konta organizacji, a także osobiste konta Microsoft.
+
 - Starsze środowisko było dostępne tylko po zalogowaniu się do Azure Portal przy użyciu konta organizacyjnego. Korzystając z nowego środowiska, możesz używać osobistych kont Microsoft, które nie są skojarzone z katalogiem.
 
 ## <a name="list-of-applications"></a>Lista aplikacji
 
-- Nowa lista aplikacji zawiera aplikacje, które zostały zarejestrowane za pośrednictwem środowiska rejestracji starszej aplikacji w Azure Portal (aplikacje, które logują konta usługi Azure AD), a także aplikacje zarejestrowane przy użyciu [portalu rejestracji aplikacji](https://apps.dev.microsoft.com/) (aplikacje, które logują się Azure AD i osobiste konta Microsoft).
-- Nowa lista aplikacji nie ma kolumny **typu aplikacji** (ponieważ Rejestracja jednokrotna może mieć kilka typów) i ma dwie dodatkowe kolumny: kolumna **utworzona w** kolumnie i **Certyfikaty &** Secret, która wyświetla stan (bieżące, wygasa wkrótce lub wygasło) poświadczeń, które zostały zarejestrowane w aplikacji.
+Nowa lista aplikacji zawiera aplikacje, które zostały zarejestrowane za pomocą środowiska rejestracji starszej aplikacji w Azure Portal. Te aplikacje logują się przy użyciu kont usługi Azure AD. Nowa lista aplikacji zawiera również aplikacje zarejestrowane za pośrednictwem portalu rejestracji aplikacji. Te aplikacje logują się przy użyciu usługi Azure AD i osobistych kont Microsoft.
+
+>[!NOTE]
+>Portal rejestracji aplikacji został uznany za przestarzały.
+
+Nowa lista aplikacji nie ma kolumny **typu aplikacji** , ponieważ rejestracja pojedynczej aplikacji może być kilku typów. Lista zawiera dwie dodatkowe kolumny: **utworzone** i **Certyfikaty & wpisy tajne**. **Certyfikaty & wpisy tajne** pokazują stan poświadczeń, które zostały zarejestrowane w aplikacji. Stany obejmują **bieżące**, **wygasają wkrótce**i **utraciły ważność**.
 
 ## <a name="new-app-registration"></a>Rejestracja nowej aplikacji
 
-W starszej wersji, aby zarejestrować aplikację, należy podać: **nazwę**, **Typ aplikacji**i **adres URL logowania/identyfikator URI przekierowania**. Utworzone aplikacje były przeznaczone tylko dla aplikacji z jedną dzierżawą usługi Azure AD, co oznacza, że tylko obsługiwane konta organizacji z katalogu, w którym zarejestrowano aplikację.
+W starszej wersji, aby zarejestrować aplikację, należy podać: **nazwę**, **Typ aplikacji**i **adres URL logowania/identyfikator URI przekierowania**. Utworzone aplikacje dotyczyły tylko aplikacji z jedną dzierżawą. Są one obsługiwane tylko przez konta organizacji z katalogu, w którym zarejestrowano aplikację.
 
-W nowym środowisku należy podać **nazwę** aplikacji i wybrać **obsługiwane typy kont**. Opcjonalnie możesz podać **Identyfikator URI przekierowania**. Jeśli podasz identyfikator URI przekierowania, musisz określić, czy jest on w sieci Web, czy publicznej (Mobile and Desktop). Aby uzyskać więcej informacji na temat sposobu rejestrowania aplikacji przy użyciu nowego środowiska rejestracji aplikacji, zobacz [Rejestrowanie aplikacji na platformie tożsamości firmy Microsoft](quickstart-register-app.md). Aby uzyskać Azure AD B2C, zobacz [Rejestrowanie aplikacji w programie Azure Active Directory B2C](../../active-directory-b2c/tutorial-register-applications.md).
+W nowym środowisku należy podać **nazwę** aplikacji i wybrać **obsługiwane typy kont**. Opcjonalnie możesz podać **Identyfikator URI przekierowania**. Jeśli podasz identyfikator URI przekierowania, musisz określić, czy jest on w sieci Web, czy publicznej (Mobile and Desktop). Aby uzyskać więcej informacji, zobacz [Szybki Start: rejestrowanie aplikacji na platformie tożsamości firmy Microsoft](quickstart-register-app.md). Aby uzyskać Azure AD B2C, zobacz [Rejestrowanie aplikacji w programie Azure Active Directory B2C](../../active-directory-b2c/tutorial-register-applications.md).
 
-## <a name="the-legacy-properties-page"></a>Strona właściwości starszej wersji
+## <a name="differences-between-the-application-registration-portal-and-app-registrations-page"></a>Różnice między portalem rejestracji aplikacji a stroną Rejestracje aplikacji
 
-Starsze środowisko miało stronę **Właściwości** , która nie ma nowego środowiska. Blok **Właściwości** ma następujące pola: **Nazwa**, **Identyfikator obiektu**, **Identyfikator aplikacji**, identyfikator **URI aplikacji**, **logo**, **adres URL strony głównej**, **adres URL wylogowania**, **adres URL warunków świadczenia usługi**, **zasady zachowania poufności informacji Adres URL**, **Typ aplikacji**i **wiele dzierżawców.**
+### <a name="the-legacy-properties-page"></a>Strona właściwości starszej wersji
 
-Tutaj można znaleźć odpowiednie funkcje w nowym środowisku:
+Starsze środowisko miało stronę **Właściwości** . **Właściwości** miały następujące pola:
 
-- **Nazwa**, **logo**, **adres URL strony głównej**, **adres URL warunków**użytkowania i **adres URL zasady zachowania poufności informacji** znajduje się teraz na stronie **znakowania** aplikacji.
-- Identyfikator **obiektu** i **Identyfikator aplikacji (klienta)** znajduje się na stronie **Przegląd** .
-- Funkcje kontrolowane przez przełącznik z **wieloma dzierżawcami** w starszym środowisku zostały zastąpione przez **obsługiwane typy kont** na stronie **uwierzytelnianie** . Aby uzyskać więcej informacji o tym, jak wiele dzierżawców jest mapowanych na obsługiwane opcje typu konta, zobacz [ten przewodnik Szybki Start](quickstart-modify-supported-accounts.md).
+- **Nazwa**
+- **Identyfikator obiektu**
+- **Identyfikator aplikacji**
+- **Identyfikator URI identyfikatora aplikacji**
+- **Znaku**
+- **Adres URL strony głównej**
+- **Adres URL wylogowywania**
+- **Adres URL warunków użytkowania**
+- **Adres URL zasad zachowania poufności informacji**
+- **Typ aplikacji**
+- **Wiele dzierżawców**
+
+Nowe środowisko nie ma tej strony. Tutaj można znaleźć funkcje równoważne:
+
+- **Nazwa**, **logo**, **adres URL strony głównej**, **adres URL warunków**użytkowania i **adres URL zasad zachowania poufności informacji** znajdują się teraz na stronie **znakowania** aplikacji.
+- Identyfikator **obiektu** i **Identyfikator aplikacji (klienta)** znajdują się na stronie **Przegląd** .
+- Funkcje kontrolowane przez przełącznik z **wieloma dzierżawcami** w starszym środowisku zostały zastąpione przez **obsługiwane typy kont** na stronie **uwierzytelnianie** . Aby uzyskać więcej informacji, zobacz [Szybki Start: modyfikowanie kont obsługiwanych przez aplikację](quickstart-modify-supported-accounts.md).
 - **Adres URL wylogowywania** znajduje się teraz na stronie **uwierzytelnianie** .
-- **Typ aplikacji** nie jest już prawidłowym polem. Zamiast tego identyfikatory URI przekierowania (które można znaleźć na stronie **uwierzytelniania** ) określają, które typy aplikacji są obsługiwane.
-- **Identyfikator URI aplikacji** jest teraz nazywany identyfikatorem **URI aplikacji** i można go znaleźć w bloku **Uwidacznianie interfejsu API** . W starszej wersji ta właściwość została zarejestrowana w sposób autorejestrowania przy użyciu następującego formatu: `https://{tenantdomain}/{appID}` (na przykład `https://microsoft.onmicrosoft.com/aeb4be67-a634-4f20-9a46-e0d4d4f1f96d`). W nowym środowisku jest automatycznie generowana jako `api://{appID}`, ale musi być jawnie zapisana. W Azure AD B2C dzierżawy format `https://{tenantdomain}/{appID}` nadal jest używany.
+- **Typ aplikacji** nie jest już prawidłowym polem. Zamiast tego identyfikatory URI przekierowania, które można znaleźć na stronie **uwierzytelnianie** , określają, które typy aplikacji są obsługiwane.
+- **Identyfikator URI aplikacji** jest teraz nazywany identyfikatorem **URI identyfikatora aplikacji** i można go znaleźć na **uwidocznieniu interfejsu API**. W starszej wersji, ta właściwość została zarejestrowana autorejestrowanie przy użyciu następującego formatu: `https://{tenantdomain}/{appID}`, na przykład, `https://microsoft.onmicrosoft.com/492439af-3282-44c3-b297-45463339544b`. W nowym środowisku jest automatycznie generowane jako `api://{appID}`, ale należy je jawnie zapisać. W Azure AD B2C dzierżawy format `https://{tenantdomain}/{appID}` nadal jest używany.
 
-## <a name="reply-urlsredirect-urls"></a>Adresy URL odpowiedzi/adresy URL przekierowań
+### <a name="reply-urlsredirect-urls"></a>Adresy URL odpowiedzi/adresy URL przekierowań
 
-W starszej wersji aplikacja zawierała **adres URL odpowiedzi** . W nowym środowisku adresy URL odpowiedzi można znaleźć w sekcji **uwierzytelniania** aplikacji. Ponadto są one określane jako **identyfikatory URI przekierowania**. Ponadto format identyfikatorów URI przekierowania został zmieniony. Muszą być skojarzone z typem aplikacji (sieć Web lub publiczna). Ponadto ze względów bezpieczeństwa nie są obsługiwane symbole wieloznaczne i schematy http://(z wyjątkiem http://localhost).
+W starszej wersji aplikacja zawierała **adres URL odpowiedzi** . W nowym środowisku adresy URL odpowiedzi można znaleźć na stronie **uwierzytelniania** aplikacji. Są teraz nazywane identyfikatorami **URI przekierowania**.
 
-## <a name="keyscertificates--secrets"></a>Klucze/certyfikaty & wpisy tajne
+Format identyfikatorów URI przekierowania został zmieniony. Są one wymagane do skojarzenia z typem aplikacji, Internet lub public. Ze względów bezpieczeństwa nie są obsługiwane symbole wieloznaczne i schematy `http://`, z wyjątkiem *http://localhost* .
 
-W starszym środowisku aplikacja zawierała **klucze** na stronie. W nowym środowisku została zmieniona nazwa na **certificates &** Secret. Ponadto **klucze publiczne** nazywa się **certyfikatami** i **hasłami** są określane jako wpisy **tajne klienta**.
+### <a name="keyscertificates--secrets"></a>Klucze/certyfikaty & wpisy tajne
 
-## <a name="required-permissionsapi-permissions"></a>Wymagane uprawnienia/uprawnienia interfejsu API
+W starszym środowisku aplikacja zawierała **klucze** na stronie. W nowym środowisku została zmieniona nazwa na **certificates &** Secret.
 
-- W starszym środowisku aplikacja miała **wymaganą stronę uprawnień** . W nowym środowisku zmieniono nazwę na **uprawnienia interfejsu API**.
-- W przypadku wybrania interfejsu API w starszym środowisku można wybrać jedną z małych list interfejsów API firmy Microsoft lub przeszukać nazwy główne usług w dzierżawie. W nowym środowisku można wybierać spośród wielu kart: **interfejsów API firmy Microsoft**, **interfejsów API używanych przez moją organizację**lub **moich interfejsów API**. Pasek wyszukiwania w obszarze **interfejsy API Moja organizacja** używa wyszukiwania na kartach za pośrednictwem jednostek usługi w dzierżawie.
+**Klucze publiczne** są teraz nazywane **certyfikatami**. **Hasła** są teraz określane jako wpisy **tajne klienta**.
 
-   > [!NOTE]
-   > Ta karta nie zostanie wyświetlona, jeśli aplikacja nie jest skojarzona z dzierżawcą. Aby uzyskać więcej informacji na temat żądania uprawnień przy użyciu nowego środowiska, zobacz [ten przewodnik Szybki Start](quickstart-configure-app-access-web-apis.md).
+### <a name="required-permissionsapi-permissions"></a>Wymagane uprawnienia/uprawnienia interfejsu API
 
-- Starsze środowisko ma przycisk **Udziel uprawnień** w górnej części strony **żądane uprawnienia** . W nowym doświadczeniu znajduje się sekcja **zgody na przyznanie** uprawnień **administratora** w sekcji **uprawnienia do interfejsu API** aplikacji. Ponadto istnieją pewne różnice w sposobach działania funkcji Button:
-   - W starszym środowisku logika jest zróżnicowana w zależności od zalogowanego użytkownika i żądanych uprawnień. Logika:
-      - Jeśli zażądano tylko uprawnień użytkownika, a zalogowany użytkownik nie jest administratorem, użytkownik był w stanie udzielić zgody użytkownika na wymagane uprawnienia.
-      - Jeśli wymagane jest co najmniej jedno uprawnienie, które wymaga zgody administratora, a zalogowany użytkownik nie jest administratorem, podczas próby udzielenia zgody Wystąpił błąd.
-      - Jeśli zalogowany użytkownik był administratorem, przyznano zgodę administratora na wszystkie żądane uprawnienia.
-   - W nowym środowisku tylko administrator może udzielić zgody. Gdy administrator wybierze przycisk **Udziel zgody administratora** , zgoda administratora zostanie udzielona na wszystkie żądane uprawnienia.
+W starszym środowisku aplikacja miała **wymaganą stronę uprawnień** . W nowym środowisku zmieniono nazwę na **uprawnienia interfejsu API**.
+
+Po wybraniu interfejsu API w starszym środowisku można wybrać jedną z małych list interfejsów API firmy Microsoft. Można również przeszukiwać nazwy główne usług w dzierżawie. W nowym środowisku można wybierać spośród wielu kart: **interfejsów API firmy Microsoft**, **interfejsów API używanych przez moją organizację**lub **moich interfejsów API**. Pasek wyszukiwania w obszarze **interfejsy API Moja organizacja** używa wyszukiwania na kartach za pośrednictwem jednostek usługi w dzierżawie.
+
+> [!NOTE]
+> Ta karta nie zostanie wyświetlona, jeśli aplikacja nie jest skojarzona z dzierżawcą. Aby uzyskać więcej informacji na temat żądania uprawnień, zobacz [Szybki Start: Konfigurowanie aplikacji klienckiej w celu uzyskiwania dostępu do interfejsów API sieci Web](quickstart-configure-app-access-web-apis.md).
+
+Starsze środowisko ma przycisk **Udziel uprawnień** w górnej części strony **żądane uprawnienia** . W nowym środowisku Strona zgody na **udzielanie** uprawnień ma przycisk **Udziel zgody administratora** w sekcji **uprawnienia interfejsu API** aplikacji. Istnieją także pewne różnice w sposobach funkcji przycisków.
+
+W starszym środowisku logika jest zróżnicowana w zależności od zalogowanego użytkownika i żądanych uprawnień. Logika:
+
+- Jeśli zażądano tylko uprawnień użytkownika, a zalogowany użytkownik nie jest administratorem, użytkownik może udzielić zgody użytkownika na wymagane uprawnienia.
+- Jeśli zażądano co najmniej jednego uprawnienia, które wymaga zgody administratora, a zalogowany użytkownik nie jest administratorem, wystąpił błąd podczas próby udzielenia zgody.
+- Jeśli zalogowany użytkownik był administratorem, przyznano zgodę administratora na wszystkie żądane uprawnienia.
+
+W nowym środowisku tylko administrator może udzielić zgody. Gdy administrator wybierze pozycję **Udziel zgody administratora**, zgoda administratora zostanie udzielona na wszystkie żądane uprawnienia.
 
 ## <a name="deleting-an-app-registration"></a>Usuwanie rejestracji aplikacji
 
-W starszym środowisku aplikacja musiała zostać usunięta z jednej dzierżawy. Przycisk Usuń został wyłączony dla aplikacji wielodostępnych. W nowym środowisku aplikacje można usuwać w dowolnym stanie, ale należy potwierdzić akcję. Więcej informacji o usuwaniu rejestracji aplikacji można znaleźć w [tym przewodniku szybki start](quickstart-remove-app.md).
+W starszym środowisku można usunąć tylko aplikacje z jedną dzierżawą. Przycisk Usuń został wyłączony dla aplikacji wielodostępnych. W nowym środowisku można usuwać aplikacje w dowolnym stanie, ale należy potwierdzić akcję. Aby uzyskać więcej informacji, zobacz [Szybki Start: Usuwanie aplikacji zarejestrowanej za pomocą platformy tożsamości firmy Microsoft](quickstart-remove-app.md).
 
 ## <a name="application-manifest"></a>Manifest aplikacji
 
-Starsze i nowe środowiska używają różne wersje formatu JSON w edytorze manifestu. Aby uzyskać więcej informacji, zobacz [manifest aplikacji](reference-app-manifest.md).
+Starsze i nowe środowiska używają różne wersje formatu JSON w edytorze manifestu. Aby uzyskać więcej informacji, zobacz [Azure Active Directory manifest aplikacji](reference-app-manifest.md).
 
 ## <a name="new-ui"></a>Nowy interfejs użytkownika
 
-Istnieje nowy interfejs użytkownika dla właściwości, które wcześniej mogły być ustawiane tylko przy użyciu edytora manifestu lub interfejsu API lub nie istnieją.
+Nowe środowisko dodaje kontrolki interfejsu użytkownika dla następujących właściwości:
 
-- **Niejawny przepływ grantu** (oauth2AllowImplicitFlow) można znaleźć na stronie **uwierzytelniania** . W przeciwieństwie do starszych wersji środowiska, można włączyć **tokeny dostępu** lub **tokeny identyfikatora**lub oba te elementy.
-- **Zakresy zdefiniowane przez ten interfejs API** (oauth2Permissions) i **autoryzowane aplikacje klienckie** (preAuthorizedApplications) można skonfigurować za pomocą strony **Uwidacznianie interfejsu API** . Aby uzyskać więcej informacji na temat konfigurowania aplikacji jako interfejsu API sieci Web i uwidaczniania uprawnień/zakresów, zobacz [ten przewodnik Szybki Start](quickstart-configure-app-expose-web-apis.md).
-- **Domenę wydawcy** (wyświetlaną dla użytkowników z [monitem o zgodę aplikacji](application-consent-experience.md)) można znaleźć na stronie **bloku znakowania** . Aby uzyskać więcej informacji na temat konfigurowania domeny wydawcy, zobacz [ten sposób](howto-configure-publisher-domain.md).
+- Na stronie **uwierzytelnianie** występuje **niejawny przepływ** (`oauth2AllowImplicitFlow`). W przeciwieństwie do starszych wersji środowiska, można włączyć **tokeny dostępu** lub **tokeny identyfikatora**lub oba te elementy.
+- Strona **Uwidacznianie interfejsu API** zawiera **zakresy zdefiniowane przez ten interfejs API** (`oauth2Permissions`) i **autoryzowane aplikacje klienckie** (`preAuthorizedApplications`). Aby uzyskać więcej informacji na temat konfigurowania aplikacji jako interfejsu API sieci Web i uwidaczniania uprawnień/zakresów, zobacz [Szybki Start: Konfigurowanie aplikacji do udostępniania interfejsów API sieci Web](quickstart-configure-app-expose-web-apis.md).
+- Strona **znakowania** zawiera **domenę wydawcy**. Domena wydawcy jest wyświetlana użytkownikom z [monitem o zgodę aplikacji](application-consent-experience.md). Aby uzyskać więcej informacji, zobacz [How to: Configure a Application Publisher Domain](howto-configure-publisher-domain.md).
 
 ## <a name="limitations"></a>Ograniczenia
 

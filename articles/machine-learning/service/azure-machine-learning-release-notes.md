@@ -10,12 +10,12 @@ ms.author: jmartens
 author: j-martens
 ms.date: 11/04/2019
 ms.custom: seodec18
-ms.openlocfilehash: e0709143f1beb9726fc79eb837d59d7db7cf00d7
-ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
+ms.openlocfilehash: 986e146e2129d26aa6accd747c89e12462d46667
+ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/09/2019
-ms.locfileid: "73888578"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73931137"
 ---
 # <a name="azure-machine-learning-release-notes"></a>Informacje o wersji Azure Machine Learning
 
@@ -23,7 +23,54 @@ W tym artykule dowiesz się więcej na temat wydań Azure Machine Learning.  Aby
 
 Zapoznaj się z [listą znanych problemów](resource-known-issues.md) , aby dowiedzieć się więcej o znanych usterkach i obejść.
 
+## <a name="2019-11-11"></a>2019-11-11
 
+### <a name="azure-machine-learning-sdk-for-python-v1074"></a>Zestaw Azure Machine Learning SDK dla języka Python v 1.0.74
+ 
+  + **Funkcje w wersji zapoznawczej**
+    + **Azure contrib — zestaw danych**
+      + Po zaimportowaniu programu Azure-contrib-DataSet można wywołać `Dataset.Labeled.from_json_lines` zamiast `._Labeled`, aby utworzyć zestaw danych z etykietą.
+      + Podczas wywoływania `to_pandas_dataframe` na oznaczonym zestawie danych z opcją pobierania można teraz określić, czy zastąpić istniejące pliki, czy nie.
+      + Podczas wywoływania `keep_columns` lub `drop_columns`, w wyniku których zostanie porzucona szeregów czasowych, etykieta lub kolumna obrazu, odpowiednie możliwości zostaną również porzucone dla zestawu danych.
+      + Rozwiązano problemy z modułem ładującym PyTorch podczas wywoływania `dataset.to_torchvision()`.
+
++ **Poprawki i ulepszenia błędów**
+  + **Azure — interfejs wiersza polecenia**
+    + Dodano profilowanie modelu do interfejsu wiersza polecenia w wersji zapoznawczej.
+    + Naprawia istotną zmianę w usłudze Azure Storage powodującą awarię interfejsu wiersza polecenia platformy Azure.
+    + Dodano typ Load Balancer do MLC dla typów AKS
+  + **Azure-automl-Core**
+    + Rozwiązano problem z wykrywaniem maksymalnego poziomu w szeregach czasowych, mających brakujące wartości i wiele ziaren.
+    + Rozwiązano problem z generowaniem rozbicie wzajemnego sprawdzania poprawności.
+    + Zastąp tę sekcję komunikatem w formacie promocji, aby pojawić się w informacjach o wersji:-Ulepszona obsługa krótkich ziaren w zestawach danych prognozowanie.
+    + Rozwiązano problem związany z maską niektórych informacji o użytkowniku podczas rejestrowania. -Ulepszone rejestrowanie błędów podczas prognozowania przebiegów.
+    + Dodawanie psutil jako zależności Conda do automatycznie generowanego pliku wdrożenia YML.
+  + **Azure-contrib-Mir**
+    + Naprawia istotną zmianę w usłudze Azure Storage powodującą awarię interfejsu wiersza polecenia platformy Azure.
+  + **azureml-core**
+    + Naprawia usterkę, która spowodowała, że modele wdrożone w Azure Functions w celu utworzenia rozwiązania 500S.
+    + Rozwiązano problem polegający na tym, że plik amlignore nie został zastosowany do migawek.
+    + Dodano nowy interfejs API amlcompute. get_active_runs, który zwraca generator dla uruchomionych i umieszczonych w kolejce przebiegów w danym amlcompute.
+    + Dodano Load Balancer typ do MLC dla typów AKS.
+    + Dodano append_prefix parametru bool do download_files w run.py i download_artifacts_from_prefix w artifacts_client. Ta flaga służy do selektywnego spłaszczania ścieżki źródła, więc do output_directory dodawany jest tylko nazwa pliku lub folderu.
+    + Rozwiąż problem z deserializacji `run_config.yml` przy użyciu zestawu danych.
+    + Podczas wywoływania `keep_columns` lub `drop_columns`, w wyniku których zostanie usunięta kolumna szeregów czasowych, odpowiednie możliwości zostaną również porzucone dla zestawu danych.
+  + **Azure — interpretowanie**
+    + Zaktualizowano interpreter — wersja społecznościowa do 0.1.0.3
+  + **azureml-train-automl**
+    + Rozwiązano problem polegający na tym, że automl_step mogą nie drukować problemów z walidacją.
+    + Naprawiono pomyślne register_model, nawet jeśli w środowisku modelu brakuje lokalnie zależności.
+    + Rozwiązano problem polegający na tym, że niektóre zdalne uruchomienia nie zostały włączone.
+    + Dodanie rejestrowania wyjątku powodującego przedwczesne uruchomienie lokalnego uruchomienia.
+  + **azureml-train-core**
+    + Należy wziąć pod uwagę resume_from uruchomienia w obliczu zautomatyzowanego przebiegu strojenia najlepszych parametrów.
+  + **azureml-pipeline-core**
+    + Obsługa stałych parametrów w konstrukcji argumentu potoku.
+    + Dodano parametr YAML potoku i typ kroku.
+    + Nowy format YAML dla kroku potoku i dodano ostrzeżenie o zaniechaniu dla starego formatu.
+    
+    
+  
 ## <a name="2019-11-04"></a>2019-11-04
 
 ### <a name="web-experience"></a>Środowisko sieci Web 
@@ -46,7 +93,7 @@ Uzyskaj dostęp do następujących narzędzi autorskich opartych na sieci Web z 
 + Dawniej znany jako interfejs wizualizacji 
 +   11 nowe [moduły](../algorithm-module-reference/module-reference.md) , w tym zalecenia, klasyfikatory i narzędzia szkoleniowe, w tym Inżynieria funkcji, wzajemne sprawdzanie poprawności i Przekształcanie danych.
 
-### <a name="r-sdk"></a>ZESTAW SDK JĘZYKA R 
+### <a name="r-sdk"></a>Zestaw SDK języka R 
  
 Analitycy danych i deweloperzy AI używają [zestawu SDK Azure Machine Learning dla języka R](tutorial-1st-r-experiment.md) do kompilowania i uruchamiania przepływów pracy uczenia maszynowego przy użyciu Azure Machine Learning.
 

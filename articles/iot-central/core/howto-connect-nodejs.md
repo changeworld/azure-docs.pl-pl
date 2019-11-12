@@ -1,5 +1,5 @@
 ---
-title: Łączenie ogólnej aplikacji klienckiej Node. js z platformą Azure IoT Central | Microsoft Docs
+title: Łączenie ogólnej aplikacji klienckiej Node. js z usługą Azure IoT Central | Microsoft Docs
 description: Jako deweloper urządzenia dołączają ogólne urządzenie Node. js do aplikacji IoT Central platformy Azure.
 author: dominicbetts
 ms.author: dobett
@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: philmea
-ms.openlocfilehash: 76ab6a229de14af1e3808326c62a7bdbbd188e81
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: 87dbd7ab4d75150d09a8c26db50ce2e3b1a085db
+ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72951369"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73930243"
 ---
 # <a name="connect-a-generic-client-application-to-your-azure-iot-central-application-nodejs"></a>Łączenie ogólnej aplikacji klienckiej z aplikacją usługi Azure IoT Central (Node. js)
 
@@ -26,7 +26,7 @@ W tym artykule opisano sposób, w jaki deweloper urządzenia nawiązuje połącz
 Do wykonania kroków opisanych w tym artykule potrzebne są:
 
 - Aplikacja IoT Central platformy Azure. Aby uzyskać więcej informacji, zapoznaj się z [przewodnikiem Szybki start dotyczącym tworzenia aplikacji](quick-deploy-iot-central.md).
-- Komputer deweloperski z zainstalowanym środowiskiem [Node. js](https://nodejs.org/) w wersji 4.0.0 lub nowszej. Aby sprawdzić swoją wersję, można uruchomić `node --version` w wierszu polecenia. Oprogramowanie Node.js jest dostępne dla różnych systemów operacyjnych.
+- Komputer deweloperski z zainstalowanym środowiskiem [Node. js](https://nodejs.org/) w wersji 4.0.0 lub nowszej. Aby sprawdzić swoją wersję, możesz uruchomić `node --version` w wierszu polecenia. Oprogramowanie Node.js jest dostępne dla różnych systemów operacyjnych.
 
 ## <a name="create-a-device-template"></a>Tworzenie szablonu urządzenia
 
@@ -53,7 +53,7 @@ Na stronie **pomiary** należy dodać następujący stan:
 
 | Nazwa wyświetlana | Nazwa pola  | Wartość 1 | Nazwa wyświetlana | Wartość 2 | Nazwa wyświetlana |
 | ------------ | ----------- | --------| ------------ | ------- | ------------ | 
-| Tryb wentylatora     | fanmode     | 1       | Działanie      | 0       | Zatrzymane      |
+| Tryb wentylatora     | fanmode     | 1       | Działanie      | 0       | Zatrzymano      |
 
 > [!NOTE]
 > Typ danych pomiaru stanu to ciąg.

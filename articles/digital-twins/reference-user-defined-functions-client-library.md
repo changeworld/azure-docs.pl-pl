@@ -1,5 +1,5 @@
 ---
-title: Informacje o bibliotece klienta funkcji zdefiniowanych przez użytkownika w usłudze Azure Digital bliźniaczych reprezentacji | Microsoft Docs
+title: Informacje o funkcjach zdefiniowanych przez użytkownika w usłudze Azure Digital bliźniaczych reprezentacji | Microsoft Docs
 description: Informacje o bibliotece klienta funkcji zdefiniowanych przez użytkownika w usłudze Azure Digital bliźniaczych reprezentacji.
 ms.author: alinast
 author: alinamstanciu
@@ -9,12 +9,12 @@ services: digital-twins
 ms.topic: article
 ms.date: 08/12/2019
 ms.custom: seodec18
-ms.openlocfilehash: 36fb8a5588321426ccae7d6c6577fb4b48f3a4db
-ms.sourcegitcommit: 4f7dce56b6e3e3c901ce91115e0c8b7aab26fb72
+ms.openlocfilehash: daab63067087267c12cef75178b5f974043e0fd9
+ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/04/2019
-ms.locfileid: "71948904"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73931242"
 ---
 # <a name="user-defined-functions-client-library-reference"></a>Dokumentacja biblioteki klienta funkcji zdefiniowanych przez użytkownika
 
@@ -32,7 +32,7 @@ Po otrzymaniu identyfikatora przestrzeni funkcja ta pobiera miejsce z grafu.
 
 | Parametr  | Typ                | Opis  |
 | ---------- | ------------------- | ------------ |
-| *#c1*  | `guid` | Identyfikator przestrzeni |
+| *#*  | `guid` | Identyfikator przestrzeni |
 
 ### <a name="getsensormetadataid--sensor"></a>getSensorMetadata (ID) ⇒ `sensor`
 
@@ -42,7 +42,7 @@ Podanym identyfikatorem czujnika, ta funkcja pobiera czujnik z grafu.
 
 | Parametr  | Typ                | Opis  |
 | ---------- | ------------------- | ------------ |
-| *#c1*  | `guid` | Identyfikator czujnika |
+| *#*  | `guid` | Identyfikator czujnika |
 
 ### <a name="getdevicemetadataid--device"></a>getDeviceMetadata (ID) ⇒ `device`
 
@@ -52,7 +52,7 @@ Po otrzymaniu identyfikatora urządzenia ta funkcja pobiera urządzenie z grafu.
 
 | Parametr  | Typ                | Opis  |
 | ------ | ------------------- | ------------ |
-| *#c1* | `guid` | Identyfikator urządzenia |
+| *#* | `guid` | Identyfikator urządzenia |
 
 ### <a name="getsensorvaluesensorid-datatype--value"></a>getSensorValue (sensorId, dataType) ⇒ `value`
 
@@ -296,7 +296,7 @@ Ta funkcja zwraca właściwość rozszerzoną i jej wartość dla bieżącego ob
 | ------ | ------------------- | ------------ |
 | *Funkcja* | `string` | Nazwa właściwości rozszerzonej |
 
-#### <a name="valuevaluename--value"></a>Value (Value) ⇒ `value`
+#### <a name="valuevaluename--value"></a>Wartość (Value) ⇒ `value`
 
 Ta funkcja zwraca wartość bieżącego obszaru.
 

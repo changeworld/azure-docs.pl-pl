@@ -10,12 +10,12 @@ ms.reviewer: larryfr
 ms.author: aashishb
 author: aashishb
 ms.date: 11/06/2019
-ms.openlocfilehash: 178c60d82c8337987e9858a409fcdef7063c9559
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 743007d3636516a39dd36caf3d44d3edb650c030
+ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73684915"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73929522"
 ---
 # <a name="azure-machine-learning-monitoring-data-reference"></a>Informacje o monitorowaniu usługi Azure Machine Learning
 
@@ -37,7 +37,7 @@ W poniższej tabeli wymieniono właściwości dzienników zasobów Azure Machine
 | eksperymentname | Nazwa eksperymentu |
 | customerSubscriptionId | Identyfikator subskrypcji, w której eksperyment i zadanie zostały przesłane |
 | workspaceName | Nazwa obszaru roboczego uczenia maszynowego |
-| clusterName | Nazwa klastra |
+| ClusterName | Nazwa klastra |
 | ProvisioningState | Stan przesłania zadania |
 | ResourceGroupName | Nazwa grupy zasobów |
 | JobName | Nazwa zadania |
@@ -62,20 +62,20 @@ W poniższej tabeli wymieniono właściwości dzienników zasobów Azure Machine
 | OperationName | Nazwa operacji skojarzonej ze zdarzeniem dziennika |
 | Kategoria | Nazwa zdarzenia dziennika, AmlComputeClusterNodeEvent |
 | ProvisioningState | Stan aprowizacji klastra |
-| clusterName | Nazwa klastra |
-| clustertype | Typ klastra |
+| ClusterName | Nazwa klastra |
+| Clustertype | Typ klastra |
 | CreatedBy | Użytkownik, który utworzył klaster |
 | CoreCount | Liczba rdzeni w klastrze |
-| vmSize | Rozmiar maszyny wirtualnej klastra |
+| VmSize | Rozmiar maszyny wirtualnej klastra |
 | VmPriority | Priorytet węzłów utworzonych w klastrze dedykowanym/LowPriority |
 | Skalowanie | Typ ręcznego skalowania klastra/automatycznego |
 | InitialNodeCount | Początkowa liczba węzłów klastra |
 | MinimumNodeCount | Minimalna liczba węzłów klastra |
 | MaximumNodeCount | Maksymalna liczba węzłów klastra |
 | NodeDeallocationOption | Jak ma zostać cofnięty przydział węzła |
-| Publisher | Wydawca typu klastra |
+| Wydawca | Wydawca typu klastra |
 | Oferta | Oferta, w której tworzony jest klaster |
-| Jednostka SKU | Jednostka SKU utworzonego węzła/maszyny wirtualnej w klastrze |
+| SKU | Jednostka SKU utworzonego węzła/maszyny wirtualnej w klastrze |
 | Wersja | Wersja obrazu używana podczas tworzenia węzła/maszyny wirtualnej |
 | SubnetId | SubnetId klastra |
 | AllocationState | Stan alokacji klastra |
@@ -104,14 +104,14 @@ W poniższej tabeli wymieniono właściwości dzienników zasobów Azure Machine
 | TimeGenerated | Godzina wygenerowania wpisu dziennika |
 | OperationName | Nazwa operacji skojarzonej ze zdarzeniem dziennika |
 | Kategoria | Nazwa zdarzenia dziennika, AmlComputeClusterNodeEvent |
-| clusterName | Nazwa klastra |
+| ClusterName | Nazwa klastra |
 | NodeId | Identyfikator utworzonego węzła klastra |
-| vmSize | Rozmiar maszyny wirtualnej węzła |
+| VmSize | Rozmiar maszyny wirtualnej węzła |
 | VmFamilyName | Rodzina maszyn wirtualnych, do której należy węzeł |
 | VmPriority | Priorytet utworzonego węzła/LowPriority |
-| Publisher | Wydawca obrazu maszyny wirtualnej, np. Microsoft-dsvm |
+| Wydawca | Wydawca obrazu maszyny wirtualnej, np. Microsoft-dsvm |
 | Oferta | Oferta skojarzona z tworzeniem maszyny wirtualnej |
-| Jednostka SKU | Utworzono jednostkę SKU węzła/maszyny wirtualnej |
+| SKU | Utworzono jednostkę SKU węzła/maszyny wirtualnej |
 | Wersja | Wersja obrazu używana podczas tworzenia węzła/maszyny wirtualnej |
 | ClusterCreationTime | Czas utworzenia klastra |
 | ResizeStartTime | Czas rozpoczęcia skalowania klastra w górę/w dół |
@@ -128,13 +128,13 @@ W poniższych tabelach przedstawiono metryki platformy zebrane dla Azure Machine
 
 **Wzorów**
 
-| Modelowanie | Jednostka | Opis |
+| Metryka | Jednostka | Opis |
 | ----- | ----- | ----- |
-| Nie można wdrożyć modelu | Licznik | Liczba wdrożeń modelu zakończonych niepowodzeniem. |
-| Rozpoczęto Wdrażanie modelu | Licznik | Liczba uruchomionych wdrożeń modelu. |
-| Wdrażanie modelu powiodło się | Licznik | Liczba wdrożeń modelu, które zakończyły się powodzeniem. |
-| Nie można zarejestrować modelu | Licznik | Liczba rejestracji modelu zakończonych niepowodzeniem. |
-| Rejestrowanie modelu powiodło się | Licznik | Liczba rejestracji modelu zakończonych powodzeniem. |
+| Nie można wdrożyć modelu | Liczba | Liczba wdrożeń modelu zakończonych niepowodzeniem. |
+| Rozpoczęto Wdrażanie modelu | Liczba | Liczba uruchomionych wdrożeń modelu. |
+| Wdrażanie modelu powiodło się | Liczba | Liczba wdrożeń modelu, które zakończyły się powodzeniem. |
+| Nie można zarejestrować modelu | Liczba | Liczba rejestracji modelu zakończonych niepowodzeniem. |
+| Rejestrowanie modelu powiodło się | Liczba | Liczba rejestracji modelu zakończonych powodzeniem. |
 
 **Limit przydziału**
 
@@ -142,19 +142,19 @@ Informacje o limicie przydziału są przeznaczone tylko dla Azure Machine Learni
 
 | Metryka | Jednostka | Opis |
 | ----- | ----- | ----- |
-| Aktywne rdzenie | Licznik | Liczba aktywnych rdzeni obliczeniowych. |
-| Aktywne węzły | Licznik | Liczba aktywnych węzłów. |
-| Rdzenie bezczynne | Licznik | Liczba rdzeni obliczeniowych w bezczynnym stanie. |
-| Węzły bezczynne | Licznik | Liczba bezczynnych węzłów obliczeniowych. |
-| Opuszczanie rdzeni | Licznik | Liczba rdzeni opuszczających. |
-| Opuszczanie węzłów | Licznik | Liczba pozostałych węzłów. |
-| Występujące rdzenie | Licznik | Liczba przeniesiona rdzeni. |
-| Zastępujące węzły | Licznik | Liczba przeniesiona węzłów. |
+| Aktywne rdzenie | Liczba | Liczba aktywnych rdzeni obliczeniowych. |
+| Aktywne węzły | Liczba | Liczba aktywnych węzłów. |
+| Rdzenie bezczynne | Liczba | Liczba rdzeni obliczeniowych w bezczynnym stanie. |
+| Węzły bezczynne | Liczba | Liczba bezczynnych węzłów obliczeniowych. |
+| Opuszczanie rdzeni | Liczba | Liczba rdzeni opuszczających. |
+| Opuszczanie węzłów | Liczba | Liczba pozostałych węzłów. |
+| Występujące rdzenie | Liczba | Liczba przeniesiona rdzeni. |
+| Zastępujące węzły | Liczba | Liczba przeniesiona węzłów. |
 | Procent wykorzystania przydziałów | Procent | Procent użytego przydziału. |
-| Całkowita liczba rdzeni | Licznik | Łączna liczba rdzeni. |
-| Łączna liczba węzłów | Licznik | Łączna liczba węzłów. |
-| Rdzenie, których nie można używać | Licznik | Liczba rdzeni, których nie można używać. |
-| Węzły niezdatne do użytku | Licznik | Liczba węzłów, które nie są używane. |
+| Całkowita liczba rdzeni | Liczba | Łączna liczba rdzeni. |
+| Łączna liczba węzłów | Liczba | Łączna liczba węzłów. |
+| Rdzenie, których nie można używać | Liczba | Liczba rdzeni, których nie można używać. |
+| Węzły niezdatne do użytku | Liczba | Liczba węzłów, które nie są używane. |
 
 Poniżej znajdują się wymiary, których można użyć do filtrowania metryk przydziału:
 
@@ -170,9 +170,9 @@ Informacje o przebiegach szkoleniowych.
 
 | Metryka | Jednostka | Opis |
 | ----- | ----- | ----- |
-| Ukończone uruchomienia | Licznik | Liczba ukończonych uruchomień. |
-| Nieudane uruchomienia | Licznik | Liczba nieudanych uruchomień. |
-| Uruchomione uruchomienia | Licznik | Liczba rozpoczętych uruchomień. |
+| Ukończone uruchomienia | Liczba | Liczba ukończonych uruchomień. |
+| Nieudane uruchomienia | Liczba | Liczba nieudanych uruchomień. |
+| Uruchomione uruchomienia | Liczba | Liczba rozpoczętych uruchomień. |
 
 Poniżej znajdują się wymiary, których można użyć do filtrowania metryk przebiegu:
 

@@ -11,12 +11,12 @@ ms.subservice: core
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 4276a713e62f96cc5340fc7be0e8391939d32342
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 5104e6e037341c41a032f80287c6d56d17361d4c
+ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73497317"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73932195"
 ---
 # <a name="train-models-with-automated-machine-learning-in-the-cloud"></a>Uczenie modeli przy użyciu zautomatyzowanej uczenia maszynowego w chmurze
 
@@ -103,7 +103,7 @@ y = Dataset.Tabular.from_delimited_files(path=ds.path('digitsdata/y_train.csv'))
 
 ## <a name="create-run-configuration"></a>Utwórz konfigurację uruchamiania
 
-Aby udostępnić zależności dla skryptu get_data. PR, zdefiniuj obiekt `RunConfiguration` ze zdefiniowanymi `CondaDependencies`. Użyj tego obiektu dla parametru `run_configuration` w `AutoMLConfig`.
+Aby udostępnić zależności dla skryptu get_data. PR, zdefiniuj obiekt `RunConfiguration` ze zdefiniowanym `CondaDependencies`. Użyj tego obiektu dla parametru `run_configuration` w `AutoMLConfig`.
 
 ```python
 from azureml.core.runconfig import RunConfiguration
@@ -148,24 +148,6 @@ automl_config = AutoMLConfig(task='classification',
                              X = X,
                              y = y,
                              **automl_settings,
-                             )
-```
-
-### <a name="enable-model-explanations"></a>Włączanie wyjaśnień modelu
-
-Ustaw opcjonalny parametr `model_explainability` w konstruktorze `AutoMLConfig`. Ponadto, aby można było użyć funkcji sprawdzającej model, należy przesłać obiekt walidacji elementu danych jako parametr `X_valid`.
-
-```python
-automl_config = AutoMLConfig(task='classification',
-                             debug_log='automl_errors.log',
-                             path=project_folder,
-                             compute_target=compute_target,
-                             run_configuration=run_config,
-                             X = X,
-                             y = y,
-                             **automl_settings,
-                             model_explainability=True,
-                             X_valid=X_test
                              )
 ```
 
@@ -237,59 +219,13 @@ remote_run.get_portal_url()
 
 Te same informacje są dostępne w obszarze roboczym.  Aby dowiedzieć się więcej na temat tych wyników, zobacz [Opis zautomatyzowanych wyników uczenia maszynowego](how-to-understand-automated-ml.md).
 
-### <a name="view-logs"></a>Wyświetlanie dzienników
-
-Znajdź dzienniki na DSVM w obszarze `/tmp/azureml_run/{iterationid}/azureml-logs`.
-
-## <a name="explain"></a>Najlepsze wyjaśnienie modelu
-
-Pobranie danych dotyczących wyjaśnień modelu umożliwia wyświetlenie szczegółowych informacji o modelach w celu zwiększenia przejrzystości w zakresie działania w zapleczu. W tym przykładzie należy uruchomić objaśnienia modelu tylko dla najlepiej dopasowanego modelu. Jeśli uruchomisz wszystkie modele w potoku, spowoduje to znaczny czas wykonania. Informacje o modelu obejmują:
-
-* shap_values: informacje o wyjaśnieniu wygenerowane przez lib kształtu.
-* expected_values: oczekiwana wartość modelu zastosowana do zestawu danych X_train.
-* overall_summary: wartości znaczenia funkcji na poziomie modelu są sortowane w kolejności malejącej.
-* overall_imp: nazwy funkcji posortowane w tej samej kolejności jak w overall_summary.
-* per_class_summary: wartości ważności funkcji na poziomie klasy posortowane w kolejności malejącej. Dostępne tylko dla przypadku klasyfikacji.
-* per_class_imp: nazwy funkcji posortowane w tej samej kolejności jak w per_class_summary. Dostępne tylko dla przypadku klasyfikacji.
-
-Użyj poniższego kodu, aby wybrać najlepszy potok z iteracji. Metoda `get_output` zwraca najlepszy przebieg i zamontowany model dla ostatniego dopasowania wywołania.
-
-```python
-best_run, fitted_model = remote_run.get_output()
-```
-
-Zaimportuj funkcję `retrieve_model_explanation` i uruchom ją na najlepszym modelu.
-
-```python
-from azureml.train.automl.automlexplainer import retrieve_model_explanation
-
-shap_values, expected_values, overall_summary, overall_imp, per_class_summary, per_class_imp = \
-    retrieve_model_explanation(best_run)
-```
-
-Drukuj wyniki dla `best_run`ych zmiennych wyjaśnień, które chcesz wyświetlić.
-
-```python
-print(overall_summary)
-print(overall_imp)
-print(per_class_summary)
-print(per_class_imp)
-```
-
-Drukowanie zmiennych podsumowania objaśnień `best_run` powoduje następujące dane wyjściowe.
-
-![Dane wyjściowe konsoli objaśniające model](./media/how-to-auto-train-remote/expl-print.png)
-
-Możesz również wizualizować ważność funkcji za pomocą interfejsu użytkownika widżetu lub w obszarze roboczym w programie [Azure Machine Learning Studio](https://ml.azure.com). 
-
-![Interfejs użytkownika objaśniający model](./media/how-to-auto-train-remote/model-exp.png)
-
 ## <a name="example"></a>Przykład
 
-W notesie [How-to-use-azureml/Automated-Machine-Learning/Remote-amlcompute/Auto-ml-Remote-amlcompute. ipynb](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/remote-amlcompute/auto-ml-remote-amlcompute.ipynb) przedstawiono Koncepcje opisane w tym artykule.
+W poniższym [notesie](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/regression/auto-ml-regression.ipynb) przedstawiono Koncepcje opisane w tym artykule.
 
 [!INCLUDE [aml-clone-in-azure-notebook](../../../includes/aml-clone-for-examples.md)]
 
 ## <a name="next-steps"></a>Następne kroki
 
-Dowiedz się [, jak skonfigurować ustawienia automatycznego szkolenia](how-to-configure-auto-train.md).
+* Dowiedz się [, jak skonfigurować ustawienia automatycznego szkolenia](how-to-configure-auto-train.md).
+* Zapoznaj się z artykułem [jak](how-to-machine-learning-interpretability-automl.md) włączyć funkcję interpretacji modelu w zautomatyzowanych eksperymentach ml.

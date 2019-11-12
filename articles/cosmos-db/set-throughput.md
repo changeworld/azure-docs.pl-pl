@@ -6,12 +6,12 @@ ms.author: mjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 08/12/2019
-ms.openlocfilehash: dcdc9c6a22f5d291b3773da02a79cc5ceebc3db1
-ms.sourcegitcommit: b45ee7acf4f26ef2c09300ff2dba2eaa90e09bc7
+ms.openlocfilehash: 9ac22461e04b447fe34d5647eb5ec7847d25a09d
+ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73101459"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73931270"
 ---
 # <a name="provision-throughput-on-containers-and-databases"></a>Aprowizacja przepływności kontenerów i baz danych
 
@@ -28,7 +28,7 @@ Przepływność obsługiwana w kontenerze usługi Azure Cosmos jest zarezerwowan
 
 Ustawienie przedziału czasu obsługi administracyjnej w kontenerze to najczęściej używana opcja. Można elastycznie skalować przepływność dla kontenera przez zainicjowanie dowolnej ilości przepływności przy użyciu [jednostek żądań (jednostek ru)](request-units.md). 
 
-Przy założeniu, że dobrym kluczem partycji, który dystrybuuje partycje logiczne równomiernie między partycjami fizycznymi, przepływność jest również dystrybuowana równomiernie między wszystkimi partycjami logicznymi kontenera. Nie można selektywnie określić przepływności dla partycji logicznych. Ponieważ co najmniej jedna partycja logiczna kontenera jest hostowana przez partycję fizyczną, partycje fizyczne należą wyłącznie do kontenera i obsługują przepływność zainicjowaną na tym kontenerze. 
+Przepływność obsługiwana dla kontenera jest równomiernie dystrybuowana między partycjami fizycznymi, przy założeniu, że dobrym kluczem partycji, który rozdziela partycje logiczne równomiernie między partycjami fizycznymi, przepływność jest również dystrybuowana równomiernie we wszystkich logiczne partycje kontenera. Nie można selektywnie określić przepływności dla partycji logicznych. Ponieważ co najmniej jedna partycja logiczna kontenera jest hostowana przez partycję fizyczną, partycje fizyczne należą wyłącznie do kontenera i obsługują przepływność zainicjowaną na tym kontenerze. 
 
 Jeśli obciążenie uruchomione na partycji logicznej zużywa więcej niż przepływność, która została przypisana do tej partycji logicznej, liczba operacji jest ograniczona. Po wystąpieniu ograniczenia szybkości można zwiększyć zainicjowaną przepływność dla całego kontenera lub wykonać operację ponownie. Aby uzyskać więcej informacji na temat partycjonowania, zobacz [partycje logiczne](partition-data.md).
 
@@ -122,7 +122,7 @@ W dowolnym momencie można skalować zainicjowaną przepływność kontenera lub
 |Jednostek ru przypisane lub dostępne dla określonego kontenera|Brak gwarancji. Jednostek ru przypisane do danego kontenera zależą od właściwości. Właściwościami mogą być wybór kluczy partycji kontenerów, które współdzielą przepływność, rozkład obciążenia oraz liczbę kontenerów. |Wszystkie jednostek ru skonfigurowane w kontenerze są zarezerwowane wyłącznie dla kontenera.|
 |Maksymalna ilość miejsca w magazynie dla kontenera|Ograniczona.|Ograniczona.|
 |Maksymalna przepływność na partycję logiczną kontenera|10 000 jednostek ru|10 000 jednostek ru|
-|Maksymalna ilość miejsca (Data + indeks) na partycję logiczną kontenera|10 GB|10 GB|
+|Maksymalna ilość miejsca (Data + indeks) na partycję logiczną kontenera|10 GB|10 GB|
 
 ## <a name="next-steps"></a>Następne kroki
 

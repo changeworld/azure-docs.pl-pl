@@ -16,12 +16,12 @@ ms.date: 10/7/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 38235e90ccf79cf1322ce0f26ed426d8c3a693cc
-ms.sourcegitcommit: 16c5374d7bcb086e417802b72d9383f8e65b24a7
+ms.openlocfilehash: 52e15aa62043ba394ae6e8cfe2cc7f27709c7d33
+ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73847176"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73927457"
 ---
 # <a name="azure-ad-connect-version-release-history"></a>Azure AD Connect: historia wersji
 Zespół Azure Active Directory (Azure AD) regularnie aktualizuje Azure AD Connect za pomocą nowych funkcji i funkcji. Nie wszystkie dodatki są stosowane dla wszystkich odbiorców.
@@ -43,9 +43,18 @@ Pobierz | [Pobierz Azure AD Connect](https://go.microsoft.com/fwlink/?LinkId=615
 W trakcie tego procesu numer wersji wersji będzie wyświetlany jako "X" w pozycji pomocniczej numer wersji, jak w "1.3. X. 0" — oznacza to, że informacje o wersji w tym dokumencie są prawidłowe dla wszystkich wersji zaczynających się od "1,3". Po sfinalizowaniu procesu wydania numer wersji zostanie zaktualizowany do ostatnio wydanej wersji, a stan wydania zostanie zaktualizowany na "zwolnione do pobrania i Autouaktualnianie".
 Nie wszystkie wersje Azure AD Connect będą udostępniane do autouaktualniania. Stan wersji wskazuje, czy wersja jest udostępniona do autouaktualnienia, czy tylko do pobrania. Jeśli automatyczne uaktualnianie zostało włączone na serwerze Azure AD Connect, serwer zostanie automatycznie uaktualniony do najnowszej wersji Azure AD Connect wydanej na potrzeby automatycznego uaktualniania. Należy pamiętać, że nie wszystkie konfiguracje Azure AD Connect mogą być stosowane do autouaktualnienia. Skorzystaj z tego linku, aby dowiedzieć się więcej na temat [autouaktualniania](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-install-automatic-upgrade)
 
+## <a name="14320"></a>1.4.32.0
+### <a name="release-status"></a>Stan wydania
+08/11/2019: wydano do pobrania. Niedostępne do autouaktualnienia
+
+>[!IMPORTANT]
+>Ze względu na wewnętrzną zmianę schematu w tej wersji Azure AD Connect, jeśli ustawienia konfiguracji relacji zaufania usług AD FS są zarządzane za pomocą programu MSOnline PowerShell, należy zaktualizować moduł MSOnline PowerShell do wersji 1.1.183.57 lub nowszej
+### <a name="fixed-issues"></a>Rozwiązane problemy
+
+Ta wersja rozwiązuje problem z istniejącymi urządzeniami hybrydowymi z usługą Azure AD. Ta wersja zawiera nową regułę synchronizacji urządzeń, która rozwiązuje ten problem.
+Ta zmiana reguły może spowodować usunięcie przestarzałych urządzeń z usługi Azure AD. Nie jest to przyczyną problemu, ponieważ te obiekty urządzeń nie są używane przez usługę Azure AD podczas autoryzacji dostępu warunkowego. W przypadku niektórych klientów liczba urządzeń, które zostaną usunięte przez tę zmianę reguły, może przekroczyć próg usuwania. Jeśli w usłudze Azure AD jest widoczne usuwanie obiektów urządzeń przekraczających próg usuwania eksportu, zaleca się zezwolenie na przechodzenie przez operacje usuwania. [Jak zezwolić na usuwanie przepływów po przekroczeniu progu usuwania](https://docs.microsoft.com/en-us/azure/active-directory/hybrid/how-to-connect-sync-feature-prevent-accidental-deletes)
+
 ## <a name="14250"></a>1.4.25.0
-
-
 
 ### <a name="release-status"></a>Stan wydania
 9/28/2019: wydano do autouaktualnienia, aby wybrać dzierżawców. Niedostępne do pobrania.
@@ -465,7 +474,7 @@ Zablokuj dostęp do konta AD DS, implementując następujące zmiany uprawnień 
 *   Usuń wszystkie wpisy kontroli dostępu do określonego obiektu, z wyjątkiem ACE określonych dla siebie. Chcemy zachować domyślne uprawnienia, które są niezmienione, gdy nastąpi samodzielne.
 *   Przypisz te określone uprawnienia:
 
-Typ     | Nazwa                          | Dostęp               | Dotyczy
+Typ     | Nazwa                          | Access               | Dotyczy
 ---------|-------------------------------|----------------------|--------------|
 Zezwalaj    | SYSTEMAMI                        | Pełna kontrola         | Ten obiekt  |
 Zezwalaj    | Administratorzy przedsiębiorstwa             | Pełna kontrola         | Ten obiekt  |

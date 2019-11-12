@@ -18,12 +18,12 @@ ms.author: ryanwi
 ms.reviewer: jmprieur, saeeda, sureshja, hirsin
 ms.custom: aaddev, identityplatformtop40, scenarios:getting-started
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1ab2180c54f07ff5009e2c57d8522f2eb0b81aad
-ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
+ms.openlocfilehash: c0a73f5257bf763633052aab89f92ea0e5d5c000
+ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73718370"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73927112"
 ---
 # <a name="authentication-basics"></a>Podstawowe informacje o uwierzytelnianiu
 
@@ -74,7 +74,7 @@ Jest to aplikacja, dla której Wygenerowano token, aplikację sieci Web, która 
 
 Tokeny są prawidłowe tylko przez ograniczony czas. Zazwyczaj usługa STS oferuje parę tokenów: token dostępu do uzyskiwania dostępu do aplikacji lub zasobów chronionych oraz token odświeżania używany do odświeżania tokenu dostępu, gdy token dostępu zbliża się do wygaśnięcia. 
 
-Tokeny dostępu są przesyłane do internetowego interfejsu API jako token okaziciela w nagłówku `Authenticate`. Aplikacja może dostarczyć token odświeżania do usługi STS, a jeśli użytkownik nie ma dostępu do aplikacji, zostanie przywrócony nowy token dostępu i nowy token odświeżania. Jest to sposób obsługi scenariusza, w którym ktoś opuszcza przedsiębiorstwo. Gdy usługa STS odbierze token odświeżenia, nie będzie wydawać innego prawidłowego tokenu dostępu, jeśli użytkownik nie jest już autoryzowany.
+Tokeny dostępu są przesyłane do internetowego interfejsu API jako token okaziciela w nagłówku `Authorization`. Aplikacja może dostarczyć token odświeżania do usługi STS, a jeśli użytkownik nie ma dostępu do aplikacji, zostanie przywrócony nowy token dostępu i nowy token odświeżania. Jest to sposób obsługi scenariusza, w którym ktoś opuszcza przedsiębiorstwo. Gdy usługa STS odbierze token odświeżenia, nie będzie wydawać innego prawidłowego tokenu dostępu, jeśli użytkownik nie jest już autoryzowany.
 
 ## <a name="application-model"></a>Model aplikacji
 

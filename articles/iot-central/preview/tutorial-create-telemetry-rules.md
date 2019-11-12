@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.service: iot-central
 services: iot-central
 manager: philmea
-ms.openlocfilehash: ddf5b81f7269b02ebdc6777fd1bee126157141ff
-ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
+ms.openlocfilehash: df6c4afc0da50c5b4b32923f24370b9c959b1af7
+ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/09/2019
-ms.locfileid: "73893431"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73929593"
 ---
 # <a name="tutorial-create-a-rule-and-set-up-notifications-in-your-azure-iot-central-application-preview-features"></a>Samouczek: Tworzenie reguły i Konfigurowanie powiadomień w aplikacji Azure IoT Central (funkcje w wersji zapoznawczej)
 
@@ -113,7 +113,7 @@ Teraz, gdy wiesz już, jak tworzyć reguły w aplikacji IoT Central platformy Az
 
 ## <a name="next-steps"></a>Następne kroki
 
->>>>>>> fa07415cf19e8cdb02d570edb3785780bfa97a7c:articles/IoT-Central/Preview/samouczek — Create-Telemetria-rules. MD w tym samouczku przedstawiono następujące informacje:
+W niniejszym samouczku zawarto informacje na temat wykonywania następujących czynności:
 
 * Tworzenie reguły opartej na danych telemetrycznych
 * Dodawanie akcji
@@ -121,5 +121,4 @@ Teraz, gdy wiesz już, jak tworzyć reguły w aplikacji IoT Central platformy Az
 Po zdefiniowaniu reguły opartej na progach zalecanym następnym krokiem jest zapoznanie się z tematem:
 
 > [!div class="nextstepaction"]
-
 > [Skonfiguruj ciągły eksport danych](./howto-export-data.md).

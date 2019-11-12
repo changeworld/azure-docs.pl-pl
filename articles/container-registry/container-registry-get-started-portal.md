@@ -1,6 +1,6 @@
 ---
-title: Szybki start — tworzenie rejestru prywatnego platformy Docker na platformie Azure przy użyciu witryny Azure Portal
-description: Szybka nauka tworzenia rejestru prywatnego platformy Docker przy użyciu witryny Azure Portal.
+title: Szybki Start — tworzenie rejestru w portalu — Azure Container Registry
+description: Szybka nauka tworzenia rejestru prywatnego platformy Docker w Azure Container Registry z Azure Portal.
 services: container-registry
 author: dlepow
 manager: gwallace
@@ -9,14 +9,14 @@ ms.topic: quickstart
 ms.date: 01/22/2019
 ms.author: danlep
 ms.custom: seodec18, mvc
-ms.openlocfilehash: c9e8c7fe4d32a44e8c0831154f02eda1f82aaff3
-ms.sourcegitcommit: 0f54f1b067f588d50f787fbfac50854a3a64fff7
+ms.openlocfilehash: bcf0874266aa83a4b4b932670557854c4688d400
+ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/12/2019
-ms.locfileid: "68309485"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73931627"
 ---
-# <a name="quickstart-create-a-private-container-registry-using-the-azure-portal"></a>Szybki start: Tworzenie prywatnego rejestru kontenerów za pomocą witryny Azure Portal
+# <a name="quickstart-create-a-private-container-registry-using-the-azure-portal"></a>Szybki Start: Tworzenie prywatnego rejestru kontenerów przy użyciu Azure Portal
 
 Usługa Azure Container Registry to rejestr prywatny platformy Docker na platformie Azure, w którym można przechowywać prywatne obrazy kontenerów Docker i zarządzać nimi. W tym przewodniku Szybki start utworzysz rejestr kontenerów za pomocą witryny Azure Portal. Następnie za pomocą poleceń platformy Docker wypchniesz obraz kontenera do rejestru, a na koniec ściągniesz i uruchomisz obraz z rejestru.
 
@@ -62,7 +62,7 @@ Po ukończeniu polecenie zwraca ciąg `Login Succeeded`.
 
 Aby wyświetlić listę obrazów w rejestrze, przejdź do rejestru w portalu i wybierz pozycję **Repozytoria**, a następnie wybierz repozytorium utworzone za pomocą polecenia `docker push`.
 
-W tym przykładzie wybieramy repozytorium **Hello-World** i w obszarze **Tagi**będzie widoczny obraz z `v1`tagami.
+W tym przykładzie wybieramy repozytorium **Hello-World** i w obszarze **tagów**zobaczymy obraz z tagami `v1`.
 
 ![Wyświetlanie listy obrazów kontenerów w witrynie Azure Portal][qs-portal-09]
 

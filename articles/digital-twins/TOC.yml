@@ -67,8 +67,6 @@
           href: how-to-navigate-apis.md
         - name: Typowe wzorce zapytań
           href: how-to-query-common-apis.md
-    - name: Rejestrowanie aplikacji w starszej usłudze AAD
-      href: how-to-use-legacy-aad.md
 - name: Dokumentacja
   items:
     - name: Biblioteka kliencka funkcji zdefiniowanych przez użytkownika

@@ -5,12 +5,12 @@ author: uhabiba04
 ms.topic: article
 ms.date: 11/04/2019
 ms.author: v-umha
-ms.openlocfilehash: e6bd9b5c09e1af5ec587e1f0e52ab25d21d2293b
-ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
+ms.openlocfilehash: e721a7818c5f2fcea23263b296912edf164036b2
+ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/09/2019
-ms.locfileid: "73889609"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73927813"
 ---
 # <a name="ingest-historical-telemetry-data"></a>Pozyskiwanie historycznych danych telemetrycznych
 
@@ -245,17 +245,15 @@ Czujnik
     "additionalProp3": {}
   }
 }
-
 ```
 Poniżej przykładowego żądania jest utworzenie urządzenia (ma on wejściowy kod JSON jako ładunek z treścią żądania).  
 
-```azurepowershell-interactive
+```bash
 curl -X POST "https://<datahub>.azurewebsites.net/Device" -H  
 "accept: application/json" -H  "Content-Type: application/json" -H
-"Authorization: Bearer <Access-Token>" -d "
-{  \"deviceModelId\": \"ID123\",  \"hardwareId\": \"MHDN123\",  
+"Authorization: Bearer <Access-Token>" -d "{  \"deviceModelId\": \"ID123\",  \"hardwareId\": \"MHDN123\",  
 \"reportingInterval\": 900,  \"name\": \"Device123\",  
-\"description\": \"Test Device 123\",}"*
+\"description\": \"Test Device 123\"}" *
 ```
 
 > [!NOTE]
@@ -274,31 +272,28 @@ Musisz wysłać dane telemetryczne do centrum zdarzeń platformy Azure w celu pr
 Po ustanowieniu połączenia jako klient usługi EventHub można wysyłać komunikaty do centrum zdarzeń jako dane JSON.  
 Przekonwertuj historyczny format danych z czujnika na format kanoniczny, który jest rozpoznawany przez platformę Azure FarmBeats. Format komunikatu kanonicznego jest następujący:  
 
-
-
- ```
-  {   
-      “deviceid”: “<id of the Device created>”,   
-      "timestamp": "<timestamp in ISO 8601 format>",     
-      "version" : "1",   
-      "sensors":
-      [     
-      {        
-          "id": "<id of the sensor created>”       
-          "sensordata": [         
-          {            
-              "timestamp": "< timestamp in ISO 8601 format >",           
-              "<sensor measure name (as defined in the Sensor Model)>": value          
-    },          
-    {            
-    "timestamp": "<timestamp in ISO 8601 format>",           
-     "<sensor measure name (as defined in the Sensor Model)>": value          
-    }        
-    ]      
-    }  
+```json
+{
+"deviceid": "<id of the Device created>",
+"timestamp": "<timestamp in ISO 8601 format>",
+"version" : "1",
+"sensors": [
+    {
+      "id": "<id of the sensor created>",
+      "sensordata": [
+        {
+          "timestamp": "< timestamp in ISO 8601 format >",
+          "<sensor measure name (as defined in the Sensor Model)>": "<value>"
+        },
+        {
+          "timestamp": "<timestamp in ISO 8601 format>",
+          "<sensor measure name (as defined in the Sensor Model)>": "<value>"
+        }
+      ]
     }
+ ]
+}
 ```
-
 
 Po dodaniu odpowiednich urządzeń i czujników Uzyskaj identyfikator DeviceID i sensorid w komunikacie telemetrii, zgodnie z opisem w poprzedniej sekcji.
 

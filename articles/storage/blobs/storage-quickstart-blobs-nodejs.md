@@ -7,12 +7,12 @@ ms.date: 11/05/2019
 ms.service: storage
 ms.subservice: blobs
 ms.topic: quickstart
-ms.openlocfilehash: 28a75158b161e680f857b986bcb754f1f99e8fab
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: 90ef1be4366205b1f655a0b93619a897d6d1f25d
+ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73825302"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73929498"
 ---
 # <a name="quickstart-azure-blob-storage-client-library-v12-for-javascript"></a>Szybki Start: Biblioteka kliencka usługi Azure Blob Storage V12 dla języka JavaScript
 
@@ -351,7 +351,7 @@ W tym przewodniku szybki start przedstawiono sposób przekazywania, pobierania i
 Aby wyświetlić przykładowe aplikacje dla magazynu obiektów blob, przejdź do:
 
 > [!div class="nextstepaction"]
-> [Przykłady kodu JavaScript V12 zestawu SDK usługi Azure Blob Storage](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/storage/azure-storage-blob/samples)
+> [Przykłady kodu JavaScript V12 zestawu SDK usługi Azure Blob Storage](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/storage/storage-blob/samples)
 
 * Aby dowiedzieć się więcej, zobacz [zestaw Azure SDK dla języka JavaScript](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/storage/storage-blob/README.md).
 * Samouczki, przykłady, Przewodniki Szybki Start i inne dokumenty można znaleźć [w dokumentacji języka JavaScript zestawu Azure SDK](/azure/javascript/).

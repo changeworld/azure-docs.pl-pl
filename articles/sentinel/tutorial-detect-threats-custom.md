@@ -14,16 +14,16 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/23/2019
 ms.author: rkarlin
-ms.openlocfilehash: 5d4c549eaded78c69d3e7fa7173b5ad9b1d82f2f
-ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
+ms.openlocfilehash: 9c4ba09c7e3eca4482ed56b0b337124aeec5b838
+ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72333145"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73928249"
 ---
 # <a name="tutorial-create-custom-analytic-rules-to-detect-suspicious-threats"></a>Samouczek: Tworzenie niestandardowych reguł analitycznych w celu wykrywania podejrzanych zagrożeń
 
-Po [nawiązaniu połączenia ze źródłami danych](quickstart-onboard.md)@no__t 1To platformy Azure, możesz utworzyć reguły niestandardowe, które mogą wyszukiwać określone kryteria w środowisku i generować zdarzenia, gdy kryteria są dopasowane, aby można było je zbadać. Ten samouczek ułatwia tworzenie reguł niestandardowych w celu wykrywania zagrożeń przy użyciu platformy Azure.
+Po [nawiązaniu połączenia ze źródłami danych](quickstart-onboard.md) do badania wskaźnikowego platformy Azure można utworzyć niestandardowe reguły, które mogą wyszukiwać określone kryteria w środowisku i generować zdarzenia, gdy kryteria są dopasowane, aby można było je zbadać. Ten samouczek ułatwia tworzenie reguł niestandardowych w celu wykrywania zagrożeń przy użyciu platformy Azure.
 
 Ten samouczek pomaga wykrywać zagrożenia przy użyciu platformy Azure.
 > [!div class="checklist"]
@@ -56,7 +56,7 @@ Można utworzyć niestandardowe reguły analityczne ułatwiające wyszukiwanie t
     \| make-series dcount(ResourceId)  default=0 on EventSubmissionTimestamp in range(ago(7d), now(), 1d) by Caller`
 
    > [!NOTE]
-   > Długość zapytania powinna wynosić od 1 do 1 000 znaków i nie może zawierać znaku "Search \*" ani "Union \*".
+   > Długość zapytania powinna wynosić od 1 do 10 000 znaków i nie może zawierać znaku "Search \*" ani "Union \*".
 
     1. W obszarze **planowanie zapytań**ustaw następujące parametry:
 

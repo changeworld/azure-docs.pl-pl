@@ -1,5 +1,5 @@
 ---
-title: Samouczek — wdrażanie aplikacji z rejestru platformy Docker z replikacją geograficzną na platformie Azure
+title: Samouczek — wdrażanie aplikacji z poziomu Azure Container Registry z replikacją geograficzną
 description: Wdrażanie aplikacji internetowej opartej na systemie Linux w dwóch różnych regionach platformy Azure przy użyciu obrazu kontenera z rejestru kontenerów platformy Azure z replikacją geograficzną. Druga część trzyczęściowej serii.
 services: container-registry
 author: dlepow
@@ -9,14 +9,14 @@ ms.topic: tutorial
 ms.date: 08/20/2018
 ms.author: danlep
 ms.custom: seodec18, mvc
-ms.openlocfilehash: ac4d78147820c2cf56549abbec7e1fbc873ea260
-ms.sourcegitcommit: b03516d245c90bca8ffac59eb1db522a098fb5e4
+ms.openlocfilehash: 0aebc31e1b8e6849d4cc0aeccc0e0a79edf0e65d
+ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/19/2019
-ms.locfileid: "71146942"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73931414"
 ---
-# <a name="tutorial-deploy-a-web-app-from-a-geo-replicated-azure-container-registry"></a>Samouczek: Wdrażanie aplikacji internetowej z rejestru kontenerów platformy Azure z replikacją geograficzną
+# <a name="tutorial-deploy-a-web-app-from-a-geo-replicated-azure-container-registry"></a>Samouczek: wdrażanie aplikacji sieci Web z rejestru kontenerów platformy Azure z replikacją geograficzną
 
 Niniejszy samouczek jest drugą częścią trzyczęściowej serii. W [pierwszej części](container-registry-tutorial-prepare-registry.md) został utworzony prywatny rejestr kontenerów z replikacją geograficzną, a na podstawie źródła został utworzony i wypchnięty do rejestru obraz kontenera. W tym artykule wykorzystasz aspekt bliskości sieci rejestru z replikacją geograficzną przez wdrożenie kontenera w wystąpieniach aplikacji internetowej w dwóch różnych regionach platformy Azure. Następnie każde wystąpienie pobiera obraz kontenera z najbliższego rejestru.
 
@@ -50,7 +50,7 @@ Jeśli polecenie „Wdróż do aplikacji internetowej” jest wyłączone, może
 
 W oknie usługi **Web App for Containers** wyświetlonym po wybraniu polecenia „Wdróż do aplikacji internetowej” podaj następujące wartości dla każdego ustawienia:
 
-| Ustawienie | Value |
+| Ustawienie | Wartość |
 |---|---|
 | **Nazwa witryny** | Globalnie unikatowa nazwa aplikacji internetowej. W tym przykładzie używamy formatu `<acrName>-westus`, aby łatwo zidentyfikować rejestr i region, z których jest wdrażana aplikacja internetowa. |
 | **Grupa zasobów** | **Użyj istniejącej** > `myResourceGroup` |
@@ -83,7 +83,7 @@ Po wdrożeniu obrazu platformy Docker z rejestru kontenerów z replikacją geogr
 
 Wdróż drugą aplikację internetową w regionie *Wschodnie stany USA*, używając procedury opisanej w poprzedniej sekcji. W usłudze **Web App for Containers** określ następujące wartości:
 
-| Ustawienie | Value |
+| Ustawienie | Wartość |
 |---|---|
 | **Nazwa witryny** | Globalnie unikatowa nazwa aplikacji internetowej. W tym przykładzie używamy formatu `<acrName>-eastus`, aby łatwo zidentyfikować rejestr i region, z których jest wdrażana aplikacja internetowa. |
 | **Grupa zasobów** | **Użyj istniejącej** > `myResourceGroup` |

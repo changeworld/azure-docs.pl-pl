@@ -14,12 +14,12 @@ ms.topic: article
 ms.date: 05/28/2019
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: 102f3e131b20534dc2f192b6485a3fdc95070315
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 801692c53ef268f15edc60d31743aefa6a247a78
+ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73470264"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73928503"
 ---
 # <a name="app-service-networking-features"></a>App Service funkcje sieciowe
 
@@ -33,7 +33,7 @@ Azure App Service jest systemem rozproszonym. Role obsługujące przychodzące �
 
 | Funkcje przychodzące | Funkcje wychodzące |
 |---------------------|-------------------|
-| Adres przypisany do aplikacji | Hybrydowe |
+| Adres przypisany do aplikacji | Połączenia hybrydowe |
 | Ograniczenia dostępu | Integracja sieci wirtualnej wymagana przez bramę |
 | Punkty końcowe usługi | Integracja z siecią wirtualną (wersja zapoznawcza) |
 
@@ -62,7 +62,7 @@ Następujące wychodzące przypadki użycia sugerują, jak używać funkcji siec
 | Dostęp do zasobów w Virtual Network platformy Azure w tym samym regionie | Integracja z siecią wirtualną </br> ASE |
 | Dostęp do zasobów w usłudze Azure Virtual Network w innym regionie | Integracja sieci wirtualnej wymagana przez bramę </br> Środowisko ASE i Komunikacja równorzędna sieci wirtualnych |
 | Dostęp do zasobów zabezpieczonych za pomocą punktów końcowych usługi | Integracja z siecią wirtualną </br> ASE |
-| Dostęp do zasobów w sieci prywatnej, które nie są połączone z platformą Azure | Hybrydowe |
+| Dostęp do zasobów w sieci prywatnej, które nie są połączone z platformą Azure | Połączenia hybrydowe |
 | Dostęp do zasobów między obwodymi usługi ExpressRoute | Integracja sieci wirtualnej (w przypadku ograniczonej do adresów RFC 1918) </br> ASE | 
 
 
@@ -91,7 +91,7 @@ Możesz dowiedzieć się, jak ustawić adres w aplikacji za pomocą samouczka do
 
 ### <a name="access-restrictions"></a>Ograniczenia dostępu 
 
-Funkcja ograniczenia dostępu umożliwia filtrowanie żądań **przychodzących** na podstawie adresu IP pochodzenia. Akcja filtrowania odbywa się w rolach frontonu, które są nadrzędne od punktów roboczych, w których są uruchomione aplikacje. Ponieważ role frontonu są nadrzędne dla procesów roboczych, możliwość ograniczenia dostępu może być traktowana jako ochrona na poziomie sieci dla aplikacji. Funkcja ta umożliwia tworzenie listy bloków dozwolonych i zablokowanych adresów, które są oceniane w kolejności priorytetów. Jest podobna do sieciowej grupy zabezpieczeń (sieciowej grupy zabezpieczeń), która istnieje w sieci platformy Azure.  Tej funkcji można użyć w środowisku ASE lub w usłudze wielu dzierżawców. Gdy jest używany z ILB ASE, można ograniczyć dostęp z bloków adresów prywatnych.
+Funkcja ograniczenia dostępu umożliwia filtrowanie żądań **przychodzących** na podstawie adresu IP pochodzenia. Akcja filtrowania odbywa się w rolach frontonu, które są nadrzędne od ról procesu roboczego, w których są uruchomione aplikacje. Ponieważ role frontonu są nadrzędne dla procesów roboczych, możliwość ograniczenia dostępu może być traktowana jako ochrona na poziomie sieci dla aplikacji. Funkcja ta umożliwia tworzenie listy bloków dozwolonych i zablokowanych adresów, które są oceniane w kolejności priorytetów. Jest podobna do sieciowej grupy zabezpieczeń (sieciowej grupy zabezpieczeń), która istnieje w sieci platformy Azure.  Tej funkcji można użyć w środowisku ASE lub w usłudze wielu dzierżawców. Gdy jest używany z ILB ASE, można ograniczyć dostęp z bloków adresów prywatnych.
 
 ![Ograniczenia dostępu](media/networking-features/access-restrictions.png)
 
@@ -117,7 +117,7 @@ Punkty końcowe usługi umożliwiają zablokowanie dostępu **przychodzącego** 
 
 Więcej informacji na temat konfigurowania punktów końcowych usługi przy użyciu aplikacji można znaleźć w samouczku dotyczącym [konfigurowania ograniczeń dostępu do punktu końcowego usługi][serviceendpoints]
  
-### <a name="hybrid-connections"></a>Hybrydowe
+### <a name="hybrid-connections"></a>Połączenia hybrydowe
 
 App Service Połączenia hybrydowe umożliwia aplikacjom wykonywanie wywołań **wychodzących** do określonych punktów końcowych TCP. Punkt końcowy może być lokalny w sieci wirtualnej lub w dowolnym miejscu, który zezwala na ruch wychodzący do platformy Azure na porcie 443. Ta funkcja wymaga zainstalowania agenta przekazywania o nazwie Menedżer połączeń hybrydowych (HCM) na hoście z systemem Windows Server 2012 lub nowszym. HCM musi mieć możliwość uzyskania dostępu Azure Relay na porcie 443. HCM można pobrać z poziomu interfejsu użytkownika Połączenia hybrydowe App Service w portalu. 
 

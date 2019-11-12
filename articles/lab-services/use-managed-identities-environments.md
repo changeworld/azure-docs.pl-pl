@@ -11,12 +11,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/01/2019
 ms.author: spelluru
-ms.openlocfilehash: d1dd059f1a6f9ce96b27d4fe1f214978dfc06a8f
-ms.sourcegitcommit: 80da36d4df7991628fd5a3df4b3aa92d55cc5ade
+ms.openlocfilehash: a4ba4206c01e492f2ae980c5806de1e72c7051c3
+ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71815999"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73931155"
 ---
 # <a name="use-azure-managed-identities-to-deploy-environments-in-a-lab"></a>Używanie tożsamości zarządzanych przez platformę Azure do wdrażania środowisk w laboratorium 
 Jako właściciel laboratorium możesz użyć tożsamości zarządzanej, aby wdrażać środowiska w laboratorium. Ta funkcja jest przydatna w scenariuszach, w których środowisko zawiera lub ma odwołania do zasobów platformy Azure, takich jak magazyny kluczy, udostępnione Galerie obrazów i sieci spoza grupy zasobów środowiska. Umożliwia tworzenie środowisk piaskownicy, które nie są ograniczone do grupy zasobów tego środowiska.
@@ -27,14 +27,14 @@ Jako właściciel laboratorium możesz użyć tożsamości zarządzanej, aby wdr
 ## <a name="prerequisites"></a>Wymagania wstępne
 - [Utwórz, Wyświetl, Usuń lub Przypisz rolę do zarządzanej tożsamości przypisanej przez użytkownika przy użyciu Azure Portal](../active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-portal.md). 
 
-## <a name="use-azure-portal"></a>Użyj Azure Portal
+## <a name="use-azure-portal"></a>Korzystanie z witryny Azure Portal
 W tej sekcji jako właściciel laboratorium Użyj Azure Portal, aby dodać tożsamość zarządzaną przez użytkownika do laboratorium. 
 
 1. Na stronie laboratorium wybierz pozycję **Konfiguracja i zasady**. 
 1. W sekcji **Ustawienia** wybierz pozycję **tożsamość** .
 1. Aby dodać tożsamość przypisaną do użytkownika, wybierz pozycję **Dodaj** na pasku narzędzi. 
 1. Wybierz **tożsamość** z wstępnie wypełnionej listy rozwijanej.
-1. Wybierz **przycisk OK**.
+1. Kliknij przycisk **OK**.
 
     ![Dodawanie tożsamości zarządzanej przez użytkownika](./media/use-managed-identities-environments/add-user-managed-identity.png)
 2. Na liście zostanie wyświetlona dodana tożsamość zarządzana przez użytkownika. 
@@ -53,7 +53,7 @@ Aby zmienić tożsamość zarządzaną przez użytkownika, która została przyp
 
 1. Po utworzeniu tożsamości Zanotuj identyfikator zasobu tej tożsamości. Powinien wyglądać podobnie do poniższego przykładu: 
 
-    `/subscriptions/0000000000-0000-0000-0000-00000000000000/resourceGroups/<RESOURCE GROUP NAME> /providers/Microsoft.ManagedIdentity/userAssignedIdentities/<NAME of USER IDENTITY>`.,
+    `/subscriptions/0000000000-0000-0000-0000-00000000000000/resourceGroups/<RESOURCE GROUP NAME> /providers/Microsoft.ManagedIdentity/userAssignedIdentities/<NAME of USER IDENTITY>`.
 1. Wykonaj metodę PUT https, aby dodać nowy zasób `ServiceRunner` do laboratorium podobnego do poniższego przykładu. Zasób modułu uruchamiającego usługi jest zasobem serwera proxy, który służy do zarządzania tożsamościami zarządzanymi w DevTest Labs i ich kontrolowania. Nazwa modułu uruchamiającego usługi może być dowolną prawidłową nazwą, ale zalecamy użycie nazwy zarządzanego zasobu tożsamości. 
  
     ```json
@@ -67,6 +67,10 @@ Aby zmienić tożsamość zarządzaną przez użytkownika, która została przyp
                 "[userAssignedIdentityResourceId]":{}
             }
         }
+        "properties":{
+            "identityUsageType":"Environment"
+                     }
+          
     }
     ```
  
@@ -83,6 +87,9 @@ Aby zmienić tożsamość zarządzaną przez użytkownika, która została przyp
                 "/subscriptions/0000000000-0000-0000-0000-000000000000000/resourceGroups/exampleRG/providers/Microsoft.ManagedIdentity/userAssignedIdentities/sampleuseridentity":{}
             }
         }
+        "properties":{
+            "identityUsageType":"Environment"
+                     }
     }
     ```
  

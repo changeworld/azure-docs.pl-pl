@@ -10,12 +10,12 @@ ms.author: maxluk
 author: maxluk
 ms.date: 08/20/2019
 ms.custom: seodec18
-ms.openlocfilehash: b3d5a61b93175559bce92a17e27602a4f79d88ad
-ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
+ms.openlocfilehash: 4a055e039e8d7629f3ff1c20c6ce9e4f1533b6b9
+ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73603973"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73931030"
 ---
 # <a name="build-a-tensorflow-deep-learning-model-at-scale-with-azure-machine-learning"></a>Twórz TensorFlow model uczenia głębokiego na dużą skalę dzięki Azure Machine Learning
 [!INCLUDE [applies-to-skus](../../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -183,10 +183,17 @@ Gdy przebieg jest wykonywany, przechodzi przez następujące etapy:
 
 ## <a name="register-or-download-a-model"></a>Rejestrowanie lub pobieranie modelu
 
-Po przeszkoleniu modelu możesz zarejestrować go w obszarze roboczym. Rejestracja modelu umożliwia przechowywanie modeli i ich wersji w obszarze roboczym w celu uproszczenia [zarządzania modelami i ich wdrażania](concept-model-management-and-deployment.md).
+Po przeszkoleniu modelu możesz zarejestrować go w obszarze roboczym. Rejestracja modelu umożliwia przechowywanie modeli i ich wersji w obszarze roboczym w celu uproszczenia [zarządzania modelami i ich wdrażania](concept-model-management-and-deployment.md). Określając parametry `model_framework`, `model_framework_version`i `resource_configuration`, wdrożenie modelu No-Code nie zostanie udostępnione. Dzięki temu można bezpośrednio wdrożyć model jako usługę sieci Web z zarejestrowanego modelu, a obiekt `ResourceConfiguration` definiuje zasób obliczeniowy dla usługi sieci Web.
 
 ```Python
-model = run.register_model(model_name='tf-dnn-mnist', model_path='outputs/model')
+from azureml.core import Model
+from azureml.core.resource_configuration import ResourceConfiguration
+
+model = run.register_model(model_name='tf-dnn-mnist', 
+                           model_path='outputs/model',
+                           model_framework=Model.Framework.TENSORFLOW,
+                           model_framework_version='1.13.0',
+                           resource_configuration=ResourceConfiguration(cpu=1, memory_in_gb=0.5))
 ```
 
 Możesz również pobrać lokalną kopię modelu przy użyciu obiektu Run. W `mnist-tf.py`skrypcie szkoleniowym obiekt wygaszacza TensorFlow utrzymuje model do folderu lokalnego (lokalnie dla elementu docelowego obliczeń). Aby pobrać kopię, można użyć obiektu Run.
@@ -292,13 +299,24 @@ cluster_spec = tf.train.ClusterSpec(cluster)
 
 ```
 
+## <a name="deployment"></a>Wdrożenie
+
+Właśnie zarejestrowany model można wdrożyć w taki sam sposób jak każdy inny zarejestrowany model w Azure Machine Learning, niezależnie od tego, który szacowania używany do uczenia się. Wdrożenie How-to zawiera sekcję dotyczącą rejestrowania modeli, ale możesz przejść bezpośrednio do tworzenia celu [obliczeń](how-to-deploy-and-where.md#choose-a-compute-target) dla wdrożenia, ponieważ istnieje już zarejestrowany model.
+
+### <a name="preview-no-code-model-deployment"></a>Przeglądania Wdrożenie modelu bez kodu
+
+Zamiast tradycyjnej trasy wdrożenia można również użyć funkcji wdrażania bez kodu (wersja zapoznawcza) dla Tensorflow. Rejestrując model, jak pokazano powyżej, za pomocą parametrów `model_framework`, `model_framework_version`i `resource_configuration`, można po prostu użyć funkcji statycznej `deploy()` do wdrożenia modelu.
+
+```python
+service = Model.deploy(ws, "tensorflow-web-service", [model])
+```
+
+Pełne [Omówienie](how-to-deploy-and-where.md) wdrażania w Azure Machine Learning.
+
 ## <a name="next-steps"></a>Następne kroki
 
-W tym artykule został przeszkolony i zarejestrowany model TensorFlow. Aby dowiedzieć się, jak wdrożyć model w klastrze z obsługą procesora GPU, przejdź do artykułu Wdrażanie modelu procesora GPU.
+W tym artykule został przeszkolony i zarejestrowany model TensorFlow oraz zapoznaj się z opcjami wdrażania. Zapoznaj się z innymi artykułami, aby dowiedzieć się więcej na temat Azure Machine Learning.
 
-> [!div class="nextstepaction"]
-> [Jak i gdzie wdrażać modele](how-to-deploy-and-where.md)
 * [Śledzenie metryk uruchamiania podczas szkolenia](how-to-track-experiments.md)
 * [Dostrajanie parametrów](how-to-tune-hyperparameters.md)
-* [Wdróż przeszkolony model](how-to-deploy-and-where.md)
 * [Architektura referencyjna na potrzeby rozproszonego szkolenia uczenia głębokiego na platformie Azure](/azure/architecture/reference-architectures/ai/training-deep-learning)

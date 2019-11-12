@@ -1,53 +1,53 @@
 ---
-title: Monitorowanie kondycji usługi Azure IoT Hub | Dokumentacja firmy Microsoft
-description: Użyj usługi Azure Monitor i Azure Resource Health monitorowanie Centrum IoT Hub i szybkie diagnozowanie problemów
+title: Monitoruj kondycję IoT Hub platformy Azure | Microsoft Docs
+description: Używanie Azure Monitor i Azure Resource Health do monitorowania IoT Hub i szybkiego diagnozowania problemów
 author: kgremban
 manager: philmea
 ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
-ms.date: 02/27/2019
+ms.date: 11/11/2019
 ms.author: kgremban
-ms.openlocfilehash: 6dea1add1e329cfc894068732898a856a69c9b4c
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: f801abc40caf273c28a0c01dedf9735f5198c2af
+ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66166203"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73929688"
 ---
-# <a name="monitor-the-health-of-azure-iot-hub-and-diagnose-problems-quickly"></a>Monitorowanie kondycji usługi Azure IoT Hub i szybkie diagnozowanie problemów
+# <a name="monitor-the-health-of-azure-iot-hub-and-diagnose-problems-quickly"></a>Monitoruj kondycję usługi Azure IoT Hub i szybko Diagnozuj problemy
 
-Firmy, które implementują usługi Azure IoT Hub oczekiwane niezawodność, wydajność z zasobami. Aby ułatwić utrzymania Zamknij wyrażenia kontrolnego na operacje usługi IoT Hub to w pełni zintegrowana z [usługi Azure Monitor](../azure-monitor/index.yml) i [usługi Azure Resource Health](../service-health/resource-health-overview.md). Te dwie usługi współpracują, aby udostępniać dane, należy zachować rozwiązania IoT w górę i uruchamiania w dobrej kondycji.
+Firmy, które implementują platformę Azure IoT Hub, oczekują niezawodnej wydajności z zasobów. Aby ułatwić zachowanie ścisłej czujki na potrzeby operacji, IoT Hub jest w pełni zintegrowana z [Azure monitor](../azure-monitor/index.yml) i [Azure Resource Health](../service-health/resource-health-overview.md). Te dwie usługi współpracują z danymi, które są potrzebne w celu zapewnienia prawidłowego działania rozwiązań IoT.
 
-Usługa Azure Monitor to pojedyncze źródło monitorowania i rejestrowania dla wszystkich usług platformy Azure. Możesz wysłać dzienniki diagnostyczne, które usługi Azure Monitor generuje dzienników usługi Azure Monitor, usługa Event Hubs lub usługi Azure Storage do niestandardowego przetwarzania. Usługa Azure Monitor ustawienia metryki i Diagnostyka zapewniają wgląd w wydajność zasobów. Przeczytaj ten artykuł, aby dowiedzieć się, jak [użycia usługi Azure Monitor](#use-azure-monitor) za pomocą usługi IoT hub. 
+Azure Monitor to pojedyncze Źródło monitorowania i rejestrowania dla wszystkich usług platformy Azure. Można wysłać dzienniki diagnostyczne, które Azure Monitor generuje do Azure Monitor dzienników, Event Hubs lub Azure Storage na potrzeby przetwarzania niestandardowego. Metryki i ustawienia diagnostyki Azure Monitor zapewniają wgląd w wydajność zasobów. Przejdź do tego artykułu, aby dowiedzieć się, jak [korzystać z Azure monitor](#use-azure-monitor) w usłudze IoT Hub. 
 
 > [!IMPORTANT]
-> Zdarzenia wyemitowane przez usługę IoT Hub przy użyciu dzienników diagnostycznych usługi Azure Monitor nie musi być niezawodne lub są uporządkowane. Niektóre zdarzenia mogły zostać utracone albo dostarczony poza kolejnością. Dzienniki diagnostyczne również nie należy traktować jako w czasie rzeczywistym i może potrwać kilka minut, zanim zdarzenia do zarejestrowania się w wybranej lokalizacji docelowej.
+> Zdarzenia emitowane przez usługę IoT Hub przy użyciu dzienników diagnostycznych Azure Monitor nie są gwarantowane lub uporządkowane. Niektóre zdarzenia mogą zostać utracone lub dostarczone poza kolejnością. Dzienniki diagnostyczne nie są również przeznaczone do pracy w czasie rzeczywistym i może upłynąć kilka minut, zanim zdarzenia mają być rejestrowane w wybranym miejscu docelowym.
 
-Usługa Azure Resource Health pomaga diagnozować i uzyskać pomoc techniczną, gdy na Twoje zasoby wpływa jakiś problem z platformą Azure. Pulpit nawigacyjny zawiera stan bieżącej i przeszłej kondycji dla każdego z usługi IoT Hub. Przejdź do sekcji w dolnej części tego artykułu dowiesz się, jak [użycia usługi Azure Resource Health](#use-azure-resource-health) za pomocą usługi IoT hub. 
+Azure Resource Health pomaga zdiagnozować i uzyskać pomoc techniczną, gdy problem z platformą Azure ma wpływ na zasoby. Pulpit nawigacyjny zawiera bieżący i poprzedni stan kondycji dla każdego z centrów IoT. Przejdź do sekcji w dolnej części tego artykułu, aby dowiedzieć się, jak [korzystać z Azure Resource Health](#use-azure-resource-health) w usłudze IoT Hub. 
 
-IoT Hub udostępnia również własne metryki, które można użyć, aby poznać stan zasobów IoT. Aby dowiedzieć się więcej, zobacz [metryki zrozumieć usługi IoT Hub](iot-hub-metrics.md).
+IoT Hub również zawiera własne metryki, których można użyć do zrozumienia stanu zasobów IoT. Aby dowiedzieć się więcej, zobacz [Opis metryk IoT Hub](iot-hub-metrics.md).
 
 ## <a name="use-azure-monitor"></a>Korzystanie z usługi Azure Monitor
 
-Usługa Azure Monitor udostępnia informacje diagnostyczne dla zasobów platformy Azure, co oznacza, monitorować operacje, które odbywają się w Centrum IoT hub.
+Azure Monitor udostępnia informacje diagnostyczne dotyczące zasobów platformy Azure, co oznacza, że można monitorować operacje, które mają miejsce w usłudze IoT Hub.
 
-Zastępuje ustawienia diagnostyki usługi Azure Monitor. monitorowanie operacji usługi IoT Hub. Jeśli obecnie używasz monitorowanie operacji, można dokonać migracji przepływów pracy. Aby uzyskać więcej informacji, zobacz [migracja z usługi operations ustawienia monitorowania do diagnostyki](iot-hub-migrate-to-diagnostics-settings.md).
+Azure Monitor ustawień diagnostycznych zastępuje monitor operacji IoT Hub. Jeśli obecnie używasz monitorowania operacji, należy migrować przepływy pracy. Aby uzyskać więcej informacji, zobacz [Migrowanie z monitorowania operacji do ustawień diagnostycznych](iot-hub-migrate-to-diagnostics-settings.md).
 
-Aby dowiedzieć się więcej na temat określonych metryk i zdarzeń usługi Azure Monitor obserwuje, zobacz [metryki obsługiwane z usługą Azure Monitor](../azure-monitor/platform/metrics-supported.md) i [obsługiwane usługi, schematów i kategorie dla dzienników diagnostycznych usługi Azure](../azure-monitor/platform/diagnostic-logs-schema.md).
+Aby dowiedzieć się więcej o określonych metrykach i zdarzeniach, które Azure Monitor zegarki, zobacz temat [obsługiwane metryki z Azure monitor](../azure-monitor/platform/metrics-supported.md) i [obsługiwanymi usługami, schematami i kategoriami dla dzienników diagnostycznych platformy Azure](../azure-monitor/platform/diagnostic-logs-schema.md).
 
 [!INCLUDE [iot-hub-diagnostics-settings](../../includes/iot-hub-diagnostics-settings.md)]
 
-### <a name="understand-the-logs"></a>Objaśnienie dzienników
+### <a name="understand-the-logs"></a>Omówienie dzienników
 
-Usługa Azure Monitor śledzi różnych operacji występujących w usłudze IoT Hub. Każda kategoria ma schemat, który definiuje sposób zgłaszania zdarzeń w danej kategorii.
+Azure Monitor śledzi różne operacje wykonywane w IoT Hub. Każda kategoria zawiera schemat, który definiuje sposób zgłaszania zdarzeń w tej kategorii.
 
 #### <a name="connections"></a>Połączenia
 
-Urządzenia śledzi kategorii połączenia Połącz i odłączanie zdarzeń usługi IoT hub, jak również błędy. Ta kategoria jest przydatna do zidentyfikowanie próby nawiązania połączenia nieautoryzowanych i/lub alerty po utracie połączenia z urządzeniami.
+Kategoria połączenia śledzi zdarzenia łączenia i rozłączania urządzeń z Centrum IoT Hub, a także błędy. Ta kategoria jest przydatna do identyfikowania nieautoryzowanych prób połączeń i alertów w przypadku utraty połączenia z urządzeniami.
 
 > [!NOTE]
-> Stan niezawodnego połączenia urządzeń można znaleźć [pulsu urządzenia](iot-hub-devguide-identity-registry.md#device-heartbeat).
+> W przypadku stanu niezawodnego połączenia urządzenia sprawdź [puls urządzenia](iot-hub-devguide-identity-registry.md#device-heartbeat).
 
 ```json
 {
@@ -66,15 +66,15 @@ Urządzenia śledzi kategorii połączenia Połącz i odłączanie zdarzeń usł
 }
 ```
 
-#### <a name="cloud-to-device-commands"></a>Poleceń z chmury do urządzenia
+#### <a name="cloud-to-device-commands"></a>Polecenia z chmury do urządzenia
 
-Kategorii poleceń chmura urządzenie do śledzenia błędów, które występują w Centrum IoT hub i są powiązane z potok komunikatów z chmury do urządzenia. Ta kategoria zawiera błędy, które występują ze:
+Kategoria poleceń z chmury do urządzenia śledzi błędy występujące w centrum IoT Hub i powiązane z potokiem komunikatów z chmury do urządzenia. Ta kategoria zawiera błędy występujące w programie:
 
-* Wysyłanie komunikatów z chmury do urządzeń (np. błędy nieautoryzowanego nadawcę)
-* Odbieranie komunikatów z chmury do urządzeń (np. błędy Przekroczono licznik dostaw), a
-* Odbieranie opinii komunikatów z chmury do urządzeń (takich jak opinii wygasłe błędów).
+* Wysyłanie komunikatów z chmury do urządzeń (takich jak błędy nieautoryzowanego nadawcy),
+* Otrzymywanie komunikatów z chmury do urządzeń (takich jak liczba błędów przekraczania liczby dostaw) i
+* Otrzymywanie informacji zwrotnych z chmury do urządzenia (na przykład błędów ważności opinii).
 
-Ta kategoria nie przechwytuje błędy, gdy komunikatu chmura urządzenie została pomyślnie dostarczone, ale nieprawidłowo obsługiwane przez urządzenie.
+Ta kategoria nie przechwytuje błędów, gdy komunikat z chmury do urządzenia jest dostarczany pomyślnie, ale nieprawidłowo obsłużony przez urządzenie.
 
 ```json
 {
@@ -95,9 +95,9 @@ Ta kategoria nie przechwytuje błędy, gdy komunikatu chmura urządzenie został
 }
 ```
 
-#### <a name="device-identity-operations"></a>Operacje dotyczące tożsamości urządzenia
+#### <a name="device-identity-operations"></a>Operacje tożsamości urządzeń
 
-Kategoria operacje tożsamości urządzenia do śledzenia błędów występujących podczas próby utworzenia, aktualizacji lub usuń wpis w rejestrze tożsamości usługi IoT hub. Śledzenie tej kategorii jest przydatne w przypadku inicjowania obsługi scenariuszy.
+Kategoria operacje tożsamości urządzenia śledzi błędy występujące podczas próby utworzenia, zaktualizowania lub usunięcia wpisu w rejestrze tożsamości Centrum IoT. Śledzenie tej kategorii jest przydatne w scenariuszach aprowizacji.
 
 ```json
 {
@@ -120,13 +120,13 @@ Kategoria operacje tożsamości urządzenia do śledzenia błędów występując
 
 #### <a name="routes"></a>Trasy
 
-Kategoria routingu wiadomości do śledzenia błędów występujących podczas oceny trasy wiadomości i punktu końcowego kondycji postrzeganiu przez usługę IoT Hub. Ta kategoria obejmuje zdarzenia, takie jak:
+Kategoria routingu wiadomości śledzi błędy występujące podczas oceny trasy komunikatów i kondycji punktu końcowego, jak zostało to postrzegane przez IoT Hub. Ta kategoria obejmuje następujące zdarzenia:
 
-* Reguła daje w wyniku "undefined"
-* Usługa IoT Hub oznacza punkt końcowy jako utraconego, lub
-* Błędy otrzymane od punktu końcowego. 
+* Reguła ma wartość "undefined".
+* IoT Hub oznacza punkt końcowy jako martwy lub
+* Wszystkie błędy odebrane z punktu końcowego. 
 
-Ta kategoria nie obejmuje określone błędy dotyczące komunikatów samodzielnie (na przykład urządzenie błędy ograniczania przepływności), które zostały zgłoszone w kategorii "danych telemetrycznych z urządzenia".
+Ta kategoria nie zawiera określonych błędów dotyczących samych komunikatów (takich jak błędy ograniczania urządzeń), które są raportowane w kategorii "dane telemetryczne urządzenia".
 
 ```json
 {
@@ -145,9 +145,9 @@ Ta kategoria nie obejmuje określone błędy dotyczące komunikatów samodzielni
 }
 ```
 
-#### <a name="device-telemetry"></a>Danych telemetrycznych z urządzenia
+#### <a name="device-telemetry"></a>Dane telemetryczne urządzenia
 
-Kategorię danych telemetrycznych urządzenia do śledzenia błędów, które występują w Centrum IoT hub i są powiązane z potoku danych telemetrycznych. Ta kategoria zawiera błędy, które występują podczas wysyłania danych telemetrycznych zdarzeń (takie jak ograniczanie przepustowości) i odbieranie danych telemetrycznych zdarzeń (np. czytnik nieautoryzowany). Ta kategoria nie umożliwia przechwytywania błędów spowodowanych przez kod działający na samym urządzeniu.
+Kategoria telemetrii urządzenia śledzi błędy występujące w centrum IoT i są powiązane z potokiem telemetrii. Ta kategoria zawiera błędy występujące podczas wysyłania zdarzeń telemetrii (takich jak ograniczenie przepustowości) i otrzymywanie zdarzeń telemetrii (na przykład nieautoryzowanego czytnika). Ta kategoria nie może przechwytywać błędów spowodowanych przez kod uruchomiony na urządzeniu.
 
 ```json
 {
@@ -170,15 +170,15 @@ Kategorię danych telemetrycznych urządzenia do śledzenia błędów, które wy
 
 #### <a name="file-upload-operations"></a>Operacje przekazywania plików
 
-Kategoria przekazywania pliku do śledzenia błędów, które występują w Centrum IoT hub i są związane z funkcjonalnością przekazywania plików. Ta kategoria obejmuje:
+Kategoria przekazywanie plików śledzi błędy występujące w centrum IoT Hub i są powiązane z funkcją przekazywania plików. Ta kategoria obejmuje:
 
-* Błędy występujące z identyfikatora URI połączenia SAS, takie jak kiedy wygasa przed urządzenia powiadamia Centrum przekazywanie zostało ukończone.
+* Błędy występujące przy użyciu identyfikatora URI sygnatury dostępu współdzielonego, na przykład kiedy wygasa przed powiadomieniem centrum o ukończonym przekazywaniu przez urządzenie.
 
-* Nie powiodło się przekazywania zgłoszona przez urządzenie.
+* Przekazywanie zgłoszone przez urządzenie nie powiodło się.
 
-* Błędy, które występują, gdy nie można odnaleźć pliku w magazynie podczas tworzenia komunikatu powiadomienia usługi IoT Hub.
+* Błędy występujące, gdy podczas tworzenia komunikatu powiadomienia IoT Hub nie znaleziono pliku w magazynie.
 
-Ta kategoria nie umożliwia przechwytywania błędów występujących bezpośrednio podczas przekazywania pliku z urządzenia do usługi storage.
+Ta kategoria nie może przechwytywać błędów, które są bezpośrednio wykonywane, gdy urządzenie przekazuje plik do magazynu.
 
 ```json
 {
@@ -200,9 +200,9 @@ Ta kategoria nie umożliwia przechwytywania błędów występujących bezpośred
 }
 ```
 
-#### <a name="cloud-to-device-twin-operations"></a>Operacje bliźniaczej reprezentacji chmury do urządzenia
+#### <a name="cloud-to-device-twin-operations"></a>Operacje na sznurze z chmury do urządzenia
 
-Kategoria operacje chmury do urządzeń, bliźniacza reprezentacja śledzi zdarzenia zainicjowanych przez usługę na bliźniaczych reprezentacji urządzeń. Te operacje można obejmują bliźniaczej reprezentacji get, zaktualizować lub tagów, Zastąp i aktualizacji lub zastąpić żądane właściwości.
+Kategoria operacji dla sznurów z chmury do urządzenia śledzi zdarzenia zainicjowane przez usługę na urządzeniu bliźniaczych reprezentacji. Operacje te mogą obejmować pobieranie, aktualizowanie i zastępowanie tagów oraz aktualizowanie lub zastępowanie żądanych właściwości.
 
 ```json
 {
@@ -222,9 +222,9 @@ Kategoria operacje chmury do urządzeń, bliźniacza reprezentacja śledzi zdarz
 }
 ```
 
-#### <a name="device-to-cloud-twin-operations"></a>Operacje bliźniaczej reprezentacji urządzenia do chmury
+#### <a name="device-to-cloud-twin-operations"></a>Operacje wieloosiowe między urządzeniami a chmurą
 
-Kategoria operacje bliźniaczej reprezentacji urządzenia do chmury śledzi zdarzenia zainicjowane przez urządzenie na bliźniaczych reprezentacji urządzeń. Te operacje można obejmują bliźniaczej reprezentacji get, aktualizowania zgłoszonych właściwości i subskrybować żądane właściwości.
+Kategoria operacji ze osiową między urządzeniami a chmurą śledzi zdarzenia zainicjowane przez urządzenie w usłudze Device bliźniaczych reprezentacji. Te operacje mogą obejmować pobieranie sznurka, aktualizowanie raportowanych właściwości i subskrybowanie żądanych właściwości.
 
 ```json
 {
@@ -244,9 +244,9 @@ Kategoria operacje bliźniaczej reprezentacji urządzenia do chmury śledzi zdar
 }
 ```
 
-#### <a name="twin-queries"></a>Zapytania dotyczące bliźniaczych reprezentacji
+#### <a name="twin-queries"></a>Zapytania bliźniaczye
 
-Kategoria zapytań bliźniaczych reprezentacji raporty dotyczące żądań zapytań dla bliźniaczych reprezentacji urządzeń, które są inicjowane w chmurze.
+Kategoria zapytania dwuosiowe raportuje żądania zapytań dotyczące bliźniaczych reprezentacji urządzeń, które są inicjowane w chmurze.
 
 ```json
 {
@@ -268,7 +268,7 @@ Kategoria zapytań bliźniaczych reprezentacji raporty dotyczące żądań zapyt
 
 #### <a name="jobs-operations"></a>Operacje zadań
 
-Kategoria operacje zadań zgłasza żądania dotyczące zadań zaktualizować bliźniaczych reprezentacji urządzeń lub wywoływanie metod bezpośrednich na wielu urządzeniach. Te żądania są inicjowane w chmurze.
+Kategoria operacje zadań raportuje żądania zadań, aby zaktualizować bliźniaczych reprezentacji urządzeń lub wywołać metody bezpośrednie na wielu urządzeniach. Te żądania są inicjowane w chmurze.
 
 ```json
 {
@@ -290,7 +290,7 @@ Kategoria operacje zadań zgłasza żądania dotyczące zadań zaktualizować bl
 
 #### <a name="direct-methods"></a>Metody bezpośrednie
 
-Kategoria metod bezpośrednich śledzi interakcje odpowiedź na żądanie wysłane do poszczególnych urządzeń. Te żądania są inicjowane w chmurze.
+Kategoria metody bezpośrednie śledzi interakcje z żądaniem odpowiedzi wysyłane do poszczególnych urządzeń. Te żądania są inicjowane w chmurze.
 
 ```json
 {
@@ -310,15 +310,15 @@ Kategoria metod bezpośrednich śledzi interakcje odpowiedź na żądanie wysła
 }
 ```
 
-#### <a name="distributed-tracing-preview"></a>Rozproszone śledzenie (wersja zapoznawcza)
+#### <a name="distributed-tracing-preview"></a>Śledzenie rozproszone (wersja zapoznawcza)
 
-Kategoria rozproszonego śledzenia śledzi identyfikatorów korelacji dla wiadomości, wykonujących nagłówka kontekstu śledzenia. Aby w pełni włączyć te dzienniki, należy zaktualizować kod po stronie klienta, postępując zgodnie z [analizy i diagnozowania IoT aplikacje end-to-end z rozproszonego śledzenia usługi IoT Hub (wersja zapoznawcza)](iot-hub-distributed-tracing.md).
+Kategoria śledzenie rozproszone śledzi identyfikatory korelacji dla komunikatów, które zawierają nagłówek kontekstu śledzenia. Aby w pełni włączyć te dzienniki, kod po stronie klienta należy zaktualizować, wykonując następujące czynności: [analizowanie i diagnozowanie aplikacji IoT w ramach kompleksowego śledzenia IoT Hub (wersja zapoznawcza)](iot-hub-distributed-tracing.md).
 
-Należy pamiętać, że `correlationId` odpowiada [kontekst śledzenia W3C](https://github.com/w3c/trace-context) propozycji, gdy zawiera `trace-id` , a także `span-id`.
+Należy pamiętać, że `correlationId` jest zgodna z propozycją [kontekstu śledzenia W3C](https://github.com/w3c/trace-context) , gdzie zawiera `trace-id`, a także `span-id`.
 
-##### <a name="iot-hub-d2c-device-to-cloud-logs"></a>Dzienniki (z urządzenia do chmury) D2C Centrum IoT
+##### <a name="iot-hub-d2c-device-to-cloud-logs"></a>Dzienniki IoT Hub D2C (urządzenie-chmura)
 
-Usługa IoT Hub rejestruje tego dziennika po umieszczeniu komunikatu zawierającego właściwości prawidłowe śledzenia w usłudze IoT Hub.
+IoT Hub rejestruje ten dziennik, gdy komunikat zawierający prawidłowe właściwości śledzenia dociera do IoT Hub.
 
 ```json
 {
@@ -341,18 +341,18 @@ Usługa IoT Hub rejestruje tego dziennika po umieszczeniu komunikatu zawierając
 }
 ```
 
-W tym miejscu `durationMs` nie jest obliczana jako zegara usługi IoT Hub może nie być zsynchronizowany z zegara urządzenia, a więc czas trwania obliczeń może być mylące. Firma Microsoft zaleca logikę, za pomocą sygnatury czasowe w `properties` sekcji, aby przechwycić wzrostów opóźnienia urządzenia do chmury.
+W tym miejscu `durationMs` nie jest obliczany, ponieważ zegar IoT Hub może nie być zsynchronizowany z zegarem urządzenia i w ten sposób Obliczanie czasu trwania może być mylące. Zalecamy zapisanie logiki przy użyciu sygnatur czasowych w sekcji `properties`, aby przechwytywać wartości opóźnienia z urządzenia do chmury.
 
 | Właściwość | Typ | Opis |
 |--------------------|-----------------------------------------------|------------------------------------------------------------------------------------------------|
-| **messageSize** | Integer | Rozmiar komunikatu urządzenia do chmury, w bajtach |
-| **deviceId** | Ciąg znaków alfanumerycznych ASCII 7-bitowego | Tożsamość urządzenia |
-| **callerLocalTimeUtc** | Sygnatura czasowa UTC | Godzina utworzenia komunikatu zgłoszonej zegara lokalnego urządzenia |
-| **calleeLocalTimeUtc** | Sygnatura czasowa UTC | Godzina nadejścia wiadomości w usłudze IoT Hub gateway zgłoszonej przez zegar po stronie usługi IoT Hub |
+| **messageSize** | Liczba całkowita | Rozmiar komunikatu z urządzenia do chmury w bajtach |
+| **Identyfikator** | Ciąg znaków alfanumerycznych ASCII 7-bitowych | Tożsamość urządzenia |
+| **callerLocalTimeUtc** | Sygnatura czasowa UTC | Godzina utworzenia komunikatu zgłoszonego przez zegar lokalny urządzenia |
+| **calleeLocalTimeUtc** | Sygnatura czasowa UTC | Godzina przybycia wiadomości w bramie IoT Hubej zgłoszonej przez IoT Hub zegar po stronie usługi |
 
-##### <a name="iot-hub-ingress-logs"></a>Dzienniki transferu danych przychodzących usługi IoT Hub
+##### <a name="iot-hub-ingress-logs"></a>IoT Hub dzienniki danych wejściowych
 
-Usługi IoT Hub rejestruje tego dziennika, gdy komunikat zawierający właściwości śledzenia prawidłowe zapisuje do Centrum zdarzeń w wewnętrznych lub wbudowane.
+IoT Hub rejestruje ten dziennik, gdy komunikat zawierający prawidłowe właściwości śledzenia jest zapisywany w wewnętrznym lub wbudowanym centrum zdarzeń.
 
 ```json
 {
@@ -375,16 +375,16 @@ Usługi IoT Hub rejestruje tego dziennika, gdy komunikat zawierający właściwo
 }
 ```
 
-W `properties` sekcja, ten dziennik zawiera dodatkowe informacje na temat wiadomości przychodzących.
+W sekcji `properties` ten dziennik zawiera dodatkowe informacje na temat przychodzących komunikatów.
 
 | Właściwość | Typ | Opis |
 |--------------------|-----------------------------------------------|------------------------------------------------------------------------------------------------|
-| **isRoutingEnabled** | String | Wartość true lub false, wskazuje, czy routing komunikatów jest włączona w usłudze IoT Hub |
-| **parentSpanId** | String | [Identyfikator zakresu](https://w3c.github.io/trace-context/#parent-id) wiadomości nadrzędnego, który w tym przypadku będzie śledzenia komunikatu D2C |
+| **isRoutingEnabled** | Ciąg | Wartość true lub false wskazuje, czy w IoT Hub jest włączona funkcja routingu komunikatów |
+| **parentSpanId** | Ciąg | [Identyfikator zakresu](https://w3c.github.io/trace-context/#parent-id) komunikatu nadrzędnego, który będzie w tym przypadku D2C śledzenia komunikatów |
 
-##### <a name="iot-hub-egress-logs"></a>Dzienniki ruchu wychodzącego usługi IoT Hub
+##### <a name="iot-hub-egress-logs"></a>Dzienniki wychodzące IoT Hub
 
-Rekordy Centrum IoT, to podczas logowania [routingu](iot-hub-devguide-messages-d2c.md) jest włączony i jest zapisywany komunikat [punktu końcowego](iot-hub-devguide-endpoints.md). Jeśli routingu nie jest włączona, Centrum IoT Hub nie zapisuje ten dziennik.
+IoT Hub rejestruje ten dziennik, gdy [Routing](iot-hub-devguide-messages-d2c.md) jest włączony, a komunikat jest zapisywana w [punkcie końcowym](iot-hub-devguide-endpoints.md). Jeśli Routing nie jest włączony, IoT Hub nie rejestruje tego dziennika.
 
 ```json
 {
@@ -407,17 +407,65 @@ Rekordy Centrum IoT, to podczas logowania [routingu](iot-hub-devguide-messages-d
 }
 ```
 
-W `properties` sekcja, ten dziennik zawiera dodatkowe informacje na temat wiadomości przychodzących.
+W sekcji `properties` ten dziennik zawiera dodatkowe informacje na temat przychodzących komunikatów.
 
 | Właściwość | Typ | Opis |
 |--------------------|-----------------------------------------------|------------------------------------------------------------------------------------------------|
-| **endpointName** | String | Nazwa punktu końcowego routingu |
-| **endpointType** | String | Typ routingu punkt końcowy |
-| **parentSpanId** | String | [Identyfikator zakresu](https://w3c.github.io/trace-context/#parent-id) wiadomości nadrzędnego, który w tym przypadku będzie śledzenie komunikatów przychodzących Centrum IoT Hub |
+| **Nazwapunktukoncowego** | Ciąg | Nazwa punktu końcowego routingu |
+| **punkt końcowy** | Ciąg | Typ punktu końcowego routingu |
+| **parentSpanId** | Ciąg | [Identyfikator zakresu](https://w3c.github.io/trace-context/#parent-id) komunikatu nadrzędnego, który będzie IoT Hub śledzenia komunikatów przychodzących w tym przypadku |
 
-### <a name="read-logs-from-azure-event-hubs"></a>Czytelne dzienniki z usługi Azure Event Hubs
+#### <a name="configurations"></a>Konfiguracje
 
-Po skonfigurowaniu rejestrowania za pomocą ustawień diagnostycznych zdarzeń możesz tworzyć aplikacje, które odczytywane dzienniki, aby można podjąć odpowiednie działania, w oparciu o informacje zawarte w nich. Ten przykładowy kod pobiera dzienniki z Centrum zdarzeń:
+Dzienniki konfiguracji IoT Hub śledzą zdarzenia i błędy dla zestawu funkcji automatycznego zarządzania urządzeniami.
+
+```json
+{
+    "records":
+    [
+         {
+             "time": "2019-09-24T17:21:52Z",
+             "resourceId": "Resource Id",
+             "operationName": "ReadManyConfigurations",
+             "category": "Configurations",
+             "resultType": "",
+             "resultDescription": "",
+             "level": "Information",
+             "durationMs": "17",
+             "properties": "{\"configurationId\":\"\",\"sdkVersion\":\"2018-06-30\",\"messageSize\":\"0\",\"statusCode\":null}",
+             "location": "southcentralus"
+         }
+    ]
+}
+```
+
+### <a name="device-streams-preview"></a>Strumienie urządzeń (wersja zapoznawcza)
+
+Kategoria strumienie urządzenia śledzi interakcje z żądaniem odpowiedzi wysyłane do poszczególnych urządzeń.
+
+```json
+{
+    "records":
+    [
+         {
+             "time": "2019-09-19T11:12:04Z",
+             "resourceId": "Resource Id",
+             "operationName": "invoke",
+             "category": "DeviceStreams",
+             "resultType": "",
+             "resultDescription": "",    
+             "level": "Information",
+             "durationMs": "74",
+             "properties": "{\"deviceId\":\"myDevice\",\"moduleId\":\"myModule\",\"sdkVersion\":\"2019-05-01-preview\",\"requestSize\":\"3\",\"responseSize\":\"5\",\"statusCode\":null,\"requestName\":\"myRequest\",\"direction\":\"c2d\"}",
+             "location": "Central US"
+         }
+    ]
+}
+```
+
+### <a name="read-logs-from-azure-event-hubs"></a>Odczytuj dzienniki z usługi Azure Event Hubs
+
+Po skonfigurowaniu rejestrowania zdarzeń za pomocą ustawień diagnostycznych można utworzyć aplikacje, które odczytują dzienniki, aby można było wykonać akcję na podstawie zawartych w nich informacji. Ten przykładowy kod pobiera dzienniki z centrum zdarzeń:
 
 ```csharp
 class Program
@@ -484,23 +532,23 @@ class Program
 }
 ```
 
-## <a name="use-azure-resource-health"></a>Korzystać z usługi Azure Resource Health
+## <a name="use-azure-resource-health"></a>Użyj Azure Resource Health
 
-Użyj usługi Azure Resource Health, aby monitorować, czy Centrum IoT hub jest uruchomiona. Możesz także dowiedzieć się czy awaria regionalna ma wpływ na kondycję usługi IoT hub. Aby poznać szczegółowe informacje o stanie kondycji usługi Azure IoT Hub, zaleca się, że możesz [użycia usługi Azure Monitor](#use-azure-monitor).
+Użyj Azure Resource Health, aby monitorować, czy Centrum IoT jest uruchomione. Można również dowiedzieć się, czy regionalna awaria ma wpływ na kondycję Centrum IoT. Aby poznać szczegółowe informacje o stanie kondycji IoT Hub platformy Azure, zalecamy [użycie Azure monitor](#use-azure-monitor).
 
-Usługa Azure IoT Hub wskazuje kondycji na poziomie regionalnym. Jeśli awaria regionalna ma wpływ na usługi IoT hub, stan kondycji jest wyświetlany jako **nieznany**. Aby dowiedzieć się więcej, zobacz [typów zasobów i kontrole kondycji w usłudze Azure resource health](../service-health/resource-health-checks-resource-types.md).
+Usługa Azure IoT Hub wskazuje na poziom regionalny kondycję. Jeśli regionalna awaria ma wpływ na centrum IoT Hub, stan kondycji jest wyświetlany jako **nieznany**. Aby dowiedzieć się więcej, zobacz [typy zasobów i kontrole kondycji w usłudze Azure Resource Health](../service-health/resource-health-checks-resource-types.md).
 
-Aby sprawdzić kondycję usługi IoT Hub, wykonaj następujące kroki:
+Aby sprawdzić kondycję centrów IoT, wykonaj następujące kroki:
 
 1. Zaloguj się w witrynie [Azure Portal](https://portal.azure.com).
 
-2. Przejdź do **Service Health** > **Resource health**.
+2. Przejdź do > Service Health **kondycji zasobów**.
 
-3. Z pola listy rozwijanej wybierz swoją subskrypcję, a następnie wybierz pozycję **usługi IoT Hub** jako typ zasobu.
+3. Z listy rozwijanej wybierz subskrypcję, a następnie wybierz **IoT Hub** jako typ zasobu.
 
-Aby dowiedzieć się więcej o tym, jak interpretować dane dotyczące kondycji, zobacz [Przegląd kondycji zasobów platformy Azure](../service-health/resource-health-overview.md).
+Aby dowiedzieć się więcej na temat sposobu interpretacji danych dotyczących kondycji, zobacz [Omówienie usługi Azure Resource Health](../service-health/resource-health-overview.md).
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
-* [Omówienie usługi IoT Hub metryki](iot-hub-metrics.md)
-* [Zdalne monitorowanie IoT i powiadomień za pomocą usługi Azure Logic Apps, łącząc usługę IoT hub i skrzynki pocztowej](iot-hub-monitoring-notifications-with-azure-logic-apps.md)
+* [Informacje o metrykach IoT Hub](iot-hub-metrics.md)
+* [Zdalne monitorowanie i powiadomienia w usłudze IoT przy użyciu Azure Logic Apps łączenia Centrum IoT i skrzynki pocztowej](iot-hub-monitoring-notifications-with-azure-logic-apps.md)

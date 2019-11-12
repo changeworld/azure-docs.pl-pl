@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: mrbullwinkle
 ms.author: mbullwin
 ms.date: 04/04/2017
-ms.openlocfilehash: 28881403e4938376cc1912227bdff51aa5f069cf
-ms.sourcegitcommit: 8e271271cd8c1434b4254862ef96f52a5a9567fb
+ms.openlocfilehash: 61bd5898c494018a2bacbd894d4dc2aac97f53b4
+ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72817366"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73928418"
 ---
 # <a name="how-do-i--in-application-insights"></a>Jak mogę (...) w usłudze Application Insights?
 ## <a name="get-an-email-when-"></a>Otrzymuj wiadomość e-mail, gdy...
@@ -39,7 +39,7 @@ Alerty można ustawiać w [niestandardowych metrykach](../../azure-monitor/app/a
 
     telemetry.TrackMetric("Alarm", 10);
 
-oraz
+Oraz
 
     var measurements = new Dictionary<string,double>();
     measurements ["Alarm"] = 10;
@@ -72,12 +72,12 @@ Oto niektóre ważne kwestie:
 [Tworzenie nowych alertów za pomocą programu PowerShell](../../azure-monitor/app/alerts.md#automation)
 
 ## <a name="use-powershell-to-manage-application-insights"></a>Zarządzanie Application Insights przy użyciu programu PowerShell
-* [Tworzenie nowych zasobów](../../azure-monitor/app/powershell-script-create-resource.md)
+* [Tworzenie nowych zasobów](https://docs.microsoft.com/azure/azure-monitor/app/create-new-resource#creating-a-resource-automatically)
 * [Utwórz nowe alerty](../../azure-monitor/app/alerts.md#automation)
 
 ## <a name="separate-telemetry-from-different-versions"></a>Oddzielna Telemetria od różnych wersji
 
-* Wiele ról w aplikacji: Użyj jednego zasobu Application Insights i przefiltruj w [cloud_Rolename](../../azure-monitor/app/app-map.md).
+* Wiele ról w aplikacji: Użyj pojedynczego zasobu Application Insights i odfiltruj [cloud_Rolename](../../azure-monitor/app/app-map.md).
 * Rozdzielenie wersji deweloperskich, testowych i wydań: Użyj różnych zasobów Application Insights. Pobierz klucze Instrumentacji z pliku Web. config. [Dowiedz się więcej](../../azure-monitor/app/separate-resources.md)
 * Wersje kompilacji raportowania: Dodaj właściwość przy użyciu inicjatora telemetrii. [Dowiedz się więcej](../../azure-monitor/app/separate-resources.md)
 

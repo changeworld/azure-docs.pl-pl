@@ -11,14 +11,14 @@ ms.topic: tutorial
 ms.custom: mvc, seodec18
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 12/07/2018
+ms.date: 11/11/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 53fb4fa344839957a3f98275d174bbb787fa5e38
-ms.sourcegitcommit: 7c5a2a3068e5330b77f3c6738d6de1e03d3c3b7d
+ms.openlocfilehash: 2f605d5adda913fa465b43a85bd027458959c122
+ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70880990"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73928094"
 ---
 # <a name="tutorial--deploying-hsms-into-an-existing-virtual-network-using-powershell"></a>Samouczek: wdrażanie modułów HSM w istniejącej sieci wirtualnej przy użyciu programu PowerShell
 
@@ -40,7 +40,7 @@ Ten samouczek koncentruje się na dwóch modułach HSM i wymaganej bramie usług
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-Dedykowany moduł HSM platformy Azure nie jest obecnie dostępny w witrynie Azure Portal, w związku z tym wszystkie interakcje z usługą będą przeprowadzane za pośrednictwem wiersza polecenia lub przy użyciu programu PowerShell. W tym samouczku zostanie użyty program PowerShell w ramach usługi Azure Cloud Shell. Jeśli jesteś nowym użytkownikiem programu PowerShell, wykonaj instrukcje wprowadzające znajdujące się w artykule [Rozpoczynanie pracy z programem Azure PowerShell](https://docs.microsoft.com/powershell/azure/get-started-azureps).
+Dedykowany moduł HSM platformy Azure nie jest obecnie dostępny w witrynie Azure Portal, w związku z tym wszystkie interakcje z usługą będą przeprowadzane za pośrednictwem wiersza polecenia lub przy użyciu programu PowerShell. W tym samouczku zostanie użyty program PowerShell w ramach usługi Azure Cloud Shell. Jeśli jesteś nowym użytkownikiem programu PowerShell, wykonaj instrukcje wprowadzającego znajdujące się w sekcji dotyczącej [rozpoczynania pracy z programem Azure PowerShell](https://docs.microsoft.com/powershell/azure/get-started-azureps).
 
 Założenia:
 
@@ -190,7 +190,7 @@ Wykonywanie tego polecenia powinno zająć około 20 minut. Opcja „-Verbose”
 
 ![stan aprowizacji](media/tutorial-deploy-hsm-powershell/progress-status.png)
 
-Po pomyślnym zakończeniu wyświetlany jest odpowiedni stan „provisioningState”: „Powodzenie” — możesz zalogować się do swojej istniejącej maszyny wirtualnej i skorzystać z narzędzia SSH w celu zapewnienia dostępności urządzenia HSM.
+Po pomyślnym wykonaniu tego polecenia, na co wskazywać będzie wyświetlenie komunikatu "provisioningState": "Succeeded", możesz zalogować się do istniejącej maszyny wirtualnej i użyć narzędzia SSH w celu zapewnienia dostępności urządzenia HSM.
 
 ## <a name="verifying-the-deployment"></a>Weryfikowanie wdrożenia
 
@@ -217,7 +217,7 @@ Narzędzie SSH jest używane do nawiązywania połączenia z maszyną wirtualną
 `ssh adminuser@hsmlinuxvm.westus.cloudapp.azure.com`
 
 Używane hasło to hasło z pliku parametrów.
-Po zalogowaniu się do maszyny wirtualnej z systemem Linux możesz zalogować się do modułu HSM przy użyciu prywatnego adresu IP znalezionego w portalu \<dla prefiksu zasobu > hsm_vnic.
+Po zalogowaniu się do maszyny wirtualnej z systemem Linux możesz zalogować się do modułu HSM przy użyciu prywatnego adresu IP znalezionego w portalu dla prefiksu \<zasobu > hsm_vnic.
 
 ```powershell
 
@@ -249,13 +249,9 @@ Jeśli zakończono pracę z urządzeniem HSM, to można je usunąć jako zasób 
 
 1. `hsm factoryReset -f`
 2. `sysconf config factoryReset -f -service all`
-3. `network interface delete -device eth0`
-4. `network interface delete -device eth1`
-5. `network interface delete -device eth2`
-6. `network interface delete -device eth3`
-7. `my file clear -f`
-8. `my public-key clear -f`
-9. `syslog rotate`
+3. `my file clear -f`
+4. `my public-key clear -f`
+5. `syslog rotate`
 
 
 > [!NOTE]

@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 09/27/2019
 ms.author: zarhoads
-ms.openlocfilehash: 8ebd91f8f02ad7eacd8440b34a31b78f5cac5741
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: c2d652b31c264d7b17fcf303564c327d09d416f9
+ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73472631"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73929134"
 ---
 # <a name="use-a-standard-sku-load-balancer-in-azure-kubernetes-service-aks"></a>Korzystanie ze standardowego modułu równoważenia obciążenia jednostki SKU w usłudze Azure Kubernetes Service (AKS)
 
@@ -148,6 +148,25 @@ az aks create \
     --load-balancer-outbound-ip-prefixes <publicIpPrefixId1>,<publicIpPrefixId2>
 ```
 
+## <a name="show-the-outbound-rule-for-your-load-balancer"></a>Wyświetlanie reguły ruchu wychodzącego dla modułu równoważenia obciążenia
+
+Aby wyświetlić regułę wychodzącą utworzoną w module równoważenia obciążenia, użyj polecenie [AZ Network lb wychodzące-Rule list][az-network-lb-outbound-rule-list] i określ grupę zasobów węzła klastra AKS:
+
+```azurecli-interactive
+NODE_RG=$(az aks show --resource-group myResourceGroup --name myAKSCluster --query nodeResourceGroup -o tsv)
+az network lb outbound-rule list --resource-group $NODE_RG --lb-name kubernetes -o table
+```
+
+W poprzednich poleceniach zostanie wystawiona Reguła ruchu wychodzącego dla modułu równoważenia obciążenia, na przykład:
+
+```console
+AllocatedOutboundPorts    EnableTcpReset    IdleTimeoutInMinutes    Name             Protocol    ProvisioningState    ResourceGroup
+------------------------  ----------------  ----------------------  ---------------  ----------  -------------------  -------------
+0                         True              30                      aksOutboundRule  All         Succeeded            MC_myResourceGroup_myAKSCluster_eastus  
+```
+
+W przykładowym wyjściu *AllocatedOutboundPorts* jest 0. Wartość dla *AllocatedOutboundPorts* oznacza, że alokacja portów podzestawu adresów sieciowych zostanie przywrócona do automatycznego przypisywania na podstawie rozmiaru puli zaplecza. Aby uzyskać więcej informacji, zobacz [Load Balancer reguł ruchu wychodzącego][azure-lb-outbound-rules] i [połączeń wychodzących na platformie Azure][azure-lb-outbound-connections] .
+
 ## <a name="next-steps"></a>Następne kroki
 
 Dowiedz się więcej o usługach Kubernetes Services w [dokumentacji usług Kubernetes Services][kubernetes-services].
@@ -176,11 +195,14 @@ Dowiedz się więcej o usługach Kubernetes Services w [dokumentacji usług Kube
 [az-feature-register]: /cli/azure/feature#az-feature-register
 [az-group-create]: /cli/azure/group#az-group-create
 [az-provider-register]: /cli/azure/provider#az-provider-register
+[az-network-lb-outbound-rule-list]: /cli/azure/network/lb/outbound-rule?view=azure-cli-latest#az-network-lb-outbound-rule-list
 [az-network-public-ip-show]: /cli/azure/network/public-ip?view=azure-cli-latest#az-network-public-ip-show
 [az-network-public-ip-prefix-show]: /cli/azure/network/public-ip/prefix?view=azure-cli-latest#az-network-public-ip-prefix-show
 [az-role-assignment-create]: /cli/azure/role/assignment#az-role-assignment-create
 [azure-lb]: ../load-balancer/load-balancer-overview.md
 [azure-lb-comparison]: ../load-balancer/load-balancer-overview.md#skus
+[azure-lb-outbound-rules]: ../load-balancer/load-balancer-outbound-rules-overview.md#snatports
+[azure-lb-outbound-connections]: ../load-balancer/load-balancer-outbound-connections.md#snat
 [install-azure-cli]: /cli/azure/install-azure-cli
 [internal-lb-yaml]: internal-lb.md#create-an-internal-load-balancer
 [kubernetes-concepts]: concepts-clusters-workloads.md

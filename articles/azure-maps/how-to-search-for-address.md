@@ -1,5 +1,5 @@
 ---
-title: Jak wyszukać adres przy użyciu usługi wyszukiwania Azure Maps | Microsoft Docs
+title: Znajdź adres przy użyciu usługi wyszukiwania Azure Maps | Microsoft Docs
 description: Dowiedz się, jak wyszukiwać adresy przy użyciu usługi wyszukiwania Azure Maps
 author: walsehgal
 ms.author: v-musehg
@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: a41a811e9313f79c9c3165e02cb5eaa4353b65ab
-ms.sourcegitcommit: 083aa7cc8fc958fc75365462aed542f1b5409623
+ms.openlocfilehash: 9ce6459dd65c75c6fcff5591d4e4667e4b0c75fa
+ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70914473"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73928490"
 ---
 # <a name="find-an-address-using-the-azure-maps-search-service"></a>Znajdź adres przy użyciu usługi wyszukiwania Azure Maps
 
@@ -36,7 +36,7 @@ W tym artykule jest wykorzystywana [aplikacja Poster](https://www.getpostman.com
 
 Domyślnym interfejsem API usługi wyszukiwania jest [Wyszukiwanie rozmyte](https://docs.microsoft.com/rest/api/maps/search/getsearchfuzzy) i przydatne, gdy nie wiesz, jakie dane wejściowe użytkownika dotyczą zapytania wyszukiwania. Interfejs API łączy punkt POI wyszukiwanie i geokodowanie do kanonicznego wyszukiwania jednowierszowego. Interfejs API może na przykład obsłużyć dane wejściowe dowolnej kombinacji adresów lub tokenów punkt POI. Może być również ważona z pozycją kontekstową (/Lon. para), w pełni ograniczone przez współrzędne i promień, lub wykonywane bardziej ogólnie bez żadnego punktu zakotwiczenia geograficznego.
 
-Większość zapytań wyszukiwania domyślnie pozwala `maxFuzzyLevel=1` uzyskać wydajność i zmniejszyć nietypowe wyniki. Ta wartość domyślna może zostać przesłonięta w razie konieczności na żądanie, przekazując `maxFuzzyLevel=2` parametr `3`zapytania lub.
+Większość zapytań wyszukiwania jest domyślnie `maxFuzzyLevel=1`, aby uzyskać wydajność i zmniejszyć nietypowe wyniki. Ta wartość domyślna może zostać przesłonięta w razie konieczności na żądanie, przekazując parametr zapytania `maxFuzzyLevel=2` lub `3`.
 
 ### <a name="search-for-an-address-using-fuzzy-search"></a>Wyszukaj adres przy użyciu wyszukiwania rozmytego
 
@@ -44,25 +44,25 @@ Większość zapytań wyszukiwania domyślnie pozwala `maxFuzzyLevel=1` uzyskać
 
 2. Na karcie Konstruktor wybierz metodę **Get** http i wprowadź adres URL żądania dla punktu końcowego interfejsu API.
 
-    ![Fuzzy Search](./media/how-to-search-for-address/fuzzy_search_url.png)
+    ![Wyszukiwanie rozmyte](./media/how-to-search-for-address/fuzzy_search_url.png)
 
     | Parametr | Sugerowana wartość |
     |---------------|------------------------------------------------|
     | Metoda HTTP | GET |
     | Adres URL żądania | [https://atlas.microsoft.com/search/fuzzy/json?](https://atlas.microsoft.com/search/fuzzy/json?) |
-    | Authorization | Brak uwierzytelniania |
+    | Autoryzacja | Brak uwierzytelniania |
 
     Atrybut **JSON** w ścieżce URL określa format odpowiedzi. Używasz formatu JSON w tym artykule, aby ułatwić ich użycie i czytelność. Dostępne formaty odpowiedzi można znaleźć w definicji **rozmytego wyszukiwania** w usłudze [Maps](https://docs.microsoft.com/rest/api/maps/search/getsearchfuzzy).
 
 3. Kliknij pozycję **params**i wprowadź następujące pary klucz/wartość, które mają być używane jako parametry zapytania lub ścieżki w adresie URL żądania:
 
-    ![Fuzzy Search](./media/how-to-search-for-address/fuzzy_search_params.png)
+    ![Wyszukiwanie rozmyte](./media/how-to-search-for-address/fuzzy_search_params.png)
 
-    | Klucz | Value |
+    | Klucz | Wartość |
     |------------------|-------------------------|
-    | api-version | 1.0 |
-    | klucz subskrypcji | \<Twój klucz Azure Maps\> |
-    | query | pizza |
+    | wersja interfejsu API | 1.0 |
+    | klucz subskrypcji | \<klucz Azure Maps\> |
+    | query | Pizza |
 
 4. Kliknij pozycję **Wyślij** i sprawdź treść odpowiedzi.
 
@@ -72,7 +72,7 @@ Większość zapytań wyszukiwania domyślnie pozwala `maxFuzzyLevel=1` uzyskać
 
 5. Dodaj następującą parę klucz/wartość do sekcji **params** i kliknij pozycję **Wyślij**:
 
-    | Klucz | Value |
+    | Klucz | Wartość |
     |------------------|-------------------------|
     | countrySet | USA |
   
@@ -82,18 +82,18 @@ Większość zapytań wyszukiwania domyślnie pozwala `maxFuzzyLevel=1` uzyskać
   
 6. W polu Parametry wprowadź następujące pary klucz/wartość, a następnie kliknij pozycję **Wyślij**:
 
-    ![Fuzzy Search](./media/how-to-search-for-address/fuzzy_search_latlon.png)
+    ![Wyszukiwanie rozmyte](./media/how-to-search-for-address/fuzzy_search_latlon.png)
   
-    | Klucz | Value |
+    | Klucz | Wartość |
     |-----|------------|
     | usługę | 47,620525 |
-    | Długość | -122.349274 |
+    | Długość | -122,349274 |
 
 ## <a name="search-for-address-properties-and-coordinates"></a>Wyszukaj właściwości adresu i współrzędne
 
 Można przekazać pełny lub częściowo ulica adresu do interfejsu API adresu wyszukiwania i odebrać odpowiedź, która zawiera szczegółowe właściwości adresu, takie jak gmina lub podział, a także wartości pozycyjne w postaci szerokości i długości geograficznej.
 
-1. W programie Poster kliknij pozycję **nowe żądanie** | **Pobierz żądanie** i nadaj jej nazwę **Wyszukaj**.
+1. W programie Poster kliknij pozycję **nowe żądanie** , | **Pobierz żądanie** i nadaj nazwę **wyszukiwanemu adresowi**.
 2. Na karcie Konstruktor wybierz metodę **Get** http, wprowadź adres URL żądania dla punktu końcowego interfejsu API i wybierz protokół autoryzacji (jeśli istnieje).
 
     ![Wyszukiwanie adresów](./media/how-to-search-for-address/address_search_url.png)
@@ -102,17 +102,17 @@ Można przekazać pełny lub częściowo ulica adresu do interfejsu API adresu w
     |---------------|------------------------------------------------|
     | Metoda HTTP | GET |
     | Adres URL żądania | [https://atlas.microsoft.com/search/address/json?](https://atlas.microsoft.com/search/address/json?) |
-    | Authorization | Brak uwierzytelniania |
+    | Autoryzacja | Brak uwierzytelniania |
 
 3. Kliknij pozycję **params**i wprowadź następujące pary klucz/wartość, które mają być używane jako parametry zapytania lub ścieżki w adresie URL żądania:
   
     ![Wyszukiwanie adresów](./media/how-to-search-for-address/address_search_params.png)
   
-    | Klucz | Value |
+    | Klucz | Wartość |
     |------------------|-------------------------|
-    | api-version | 1.0 |
-    | klucz subskrypcji | \<Twój klucz Azure Maps\> |
-    | query | 400 Broad St, Seattle, WA 98109 |
+    | wersja interfejsu API | 1.0 |
+    | klucz subskrypcji | \<klucz Azure Maps\> |
+    | query | 400 szerokie St, Seattle, WA 98109 |
   
 4. Kliknij pozycję **Wyślij** i sprawdź treść odpowiedzi.
   
@@ -125,15 +125,15 @@ Można przekazać pełny lub częściowo ulica adresu do interfejsu API adresu w
 
 6. Dodaj następującą parę klucz/wartość do sekcji **params** i kliknij pozycję **Wyślij**:
 
-    | Klucz | Value |
+    | Klucz | Wartość |
     |-----|------------|
-    | Typeahead | true |
+    | typeahead | true |
 
     Flaga **typeahead** INSTRUUJE interfejs API wyszukiwania adresów, aby traktować zapytanie jako częściowe dane wejściowe i zwracało tablicę wartości predykcyjnych.
 
 ## <a name="search-for-a-street-address-using-reverse-address-search"></a>Wyszukaj adres ulicy przy użyciu wyszukiwania odwrotnego adresu
 
-1. W programie Poster kliknij pozycję **nowe żądanie** | **Pobierz żądanie** i nadaj jej nazwę **Reverse Address Search**.
+1. W programie Poster kliknij pozycję **nowe żądanie** , | **Pobierz żądanie** i nadaj nazwę **Reverse Address Research**.
 
 2. Na karcie Konstruktor wybierz metodę **Get** http i wprowadź adres URL żądania dla punktu końcowego interfejsu API.
   
@@ -143,16 +143,16 @@ Można przekazać pełny lub częściowo ulica adresu do interfejsu API adresu w
     |---------------|------------------------------------------------|
     | Metoda HTTP | GET |
     | Adres URL żądania | [https://atlas.microsoft.com/search/address/reverse/json?](https://atlas.microsoft.com/search/address/reverse/json?) |
-    | Authorization | Brak uwierzytelniania |
+    | Autoryzacja | Brak uwierzytelniania |
   
 3. Kliknij pozycję **params**i wprowadź następujące pary klucz/wartość, które mają być używane jako parametry zapytania lub ścieżki w adresie URL żądania:
   
     ![Parametry wyszukiwania wstecznego adresu](./media/how-to-search-for-address/reverse_address_search_params.png)
   
-    | Klucz | Value |
+    | Klucz | Wartość |
     |------------------|-------------------------|
-    | api-version | 1.0 |
-    | klucz subskrypcji | \<Twój klucz Azure Maps\> |
+    | wersja interfejsu API | 1.0 |
+    | klucz subskrypcji | \<klucz Azure Maps\> |
     | query | 47.591180,-122,332700 |
   
 4. Kliknij pozycję **Wyślij** i sprawdź treść odpowiedzi.
@@ -161,15 +161,15 @@ Można przekazać pełny lub częściowo ulica adresu do interfejsu API adresu w
   
 5. Dodaj następującą parę klucz/wartość do sekcji **params** i kliknij pozycję **Wyślij**:
 
-    | Klucz | Value |
+    | Klucz | Wartość |
     |-----|------------|
-    | number | true |
+    | numer | true |
 
     Jeśli parametr [Number](https://docs.microsoft.com/rest/api/maps/search/getsearchaddressreverse) jest wysyłany wraz z żądaniem, odpowiedź może zawierać stronę ulicy (lewą/prawą), a także pozycję przesunięcia dla tego numeru.
   
 6. Dodaj następującą parę klucz/wartość do sekcji **params** i kliknij pozycję **Wyślij**:
 
-    | Klucz | Value |
+    | Klucz | Wartość |
     |-----|------------|
     | returnSpeedLimit | true |
   
@@ -177,7 +177,7 @@ Można przekazać pełny lub częściowo ulica adresu do interfejsu API adresu w
 
 7. Dodaj następującą parę klucz/wartość do sekcji **params** i kliknij pozycję **Wyślij**:
 
-    | Klucz | Value |
+    | Klucz | Wartość |
     |-----|------------|
     | returnRoadUse | true |
 
@@ -185,7 +185,7 @@ Można przekazać pełny lub częściowo ulica adresu do interfejsu API adresu w
 
 8. Dodaj następującą parę klucz/wartość do sekcji **params** i kliknij pozycję **Wyślij**:
 
-    | Klucz | Value |
+    | Klucz | Wartość |
     |-----|------------|
     | roadUse | true |
 
@@ -193,7 +193,7 @@ Można przekazać pełny lub częściowo ulica adresu do interfejsu API adresu w
   
 ## <a name="search-for-the-cross-street-using-reverse-address-cross-street-search"></a>Wyszukaj wartość Cross-ulica przy użyciu wyszukiwania odwrotnego adresu
 
-1. W programie Poster kliknij pozycję **nowe żądanie** | **Pobierz żądanie** i nadaj jej nazwę **odwrotne wyszukiwanie**.
+1. W programie Poster kliknij pozycję **nowe żądanie** | **Pobierz żądanie** i nadaj jej nazwę **odwrotne wyszukiwanie w adresie**.
 
 2. Na karcie Konstruktor wybierz metodę **Get** http i wprowadź adres URL żądania dla punktu końcowego interfejsu API.
   
@@ -203,14 +203,14 @@ Można przekazać pełny lub częściowo ulica adresu do interfejsu API adresu w
     |---------------|------------------------------------------------|
     | Metoda HTTP | GET |
     | Adres URL żądania | [https://atlas.microsoft.com/search/address/reverse/crossstreet/json?](https://atlas.microsoft.com/search/address/reverse/crossstreet/json?) |
-    | Authorization | Brak uwierzytelniania |
+    | Autoryzacja | Brak uwierzytelniania |
   
 3. Kliknij pozycję **params**i wprowadź następujące pary klucz/wartość, które mają być używane jako parametry zapytania lub ścieżki w adresie URL żądania:
   
-    | Klucz | Value |
+    | Klucz | Wartość |
     |------------------|-------------------------|
-    | api-version | 1.0 |
-    | klucz subskrypcji | \<Twój klucz Azure Maps\> |
+    | wersja interfejsu API | 1.0 |
+    | klucz subskrypcji | \<klucz Azure Maps\> |
     | query | 47.591180,-122,332700 |
   
 4. Kliknij pozycję **Wyślij** i sprawdź treść odpowiedzi.

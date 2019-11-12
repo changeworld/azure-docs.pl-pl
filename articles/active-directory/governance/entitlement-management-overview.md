@@ -16,16 +16,16 @@ ms.date: 10/24/2019
 ms.author: ajburnle
 ms.reviewer: markwahl-msft
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b1c054bf354b5cdc5e0803ba6849af19fab40f3c
-ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
+ms.openlocfilehash: 1fd72bba6e8c01644adebaa333c8fe588c35b8c7
+ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73174161"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73927315"
 ---
 # <a name="what-is-azure-ad-entitlement-management"></a>Co to jest zarządzanie upoważnieniami w usłudze Azure AD?
 
-Zarządzanie prawami w usłudze Azure Active Directory (Azure AD) to funkcja zarządzania [tożsamościami](identity-governance-overview.md) , która umożliwia organizacjom Zarządzanie cyklem życia tożsamości i dostępu na dużą skalę przez Automatyzowanie przepływów pracy żądania dostępu, dostęp do przypisań, przeglądów i datę.
+Zarządzanie prawami Azure Active Directory (Azure AD) to funkcja zarządzania [tożsamościami](identity-governance-overview.md) , która umożliwia organizacjom Zarządzanie cyklem życia tożsamości i dostępu na dużą skalę przez Automatyzowanie przepływów pracy żądania dostępu, dostęp do przypisań, przeglądów i wygasanie.
 
 Pracownicy w organizacjach potrzebują dostępu do różnych grup, aplikacji i witryn w celu wykonywania ich zadań. Zarządzanie tym dostępem jest trudne, ponieważ zmiany wymagań — nowe aplikacje są dodawane lub użytkownicy potrzebują dodatkowych praw dostępu.  Ten scenariusz jest bardziej skomplikowany podczas współpracy z organizacjami zewnętrznymi — użytkownik może nie wiedzieć, kto w innej organizacji potrzebuje dostępu do zasobów organizacji i nie wie, jakie aplikacje, grupy lub witryny są używane w organizacji.
 
@@ -114,7 +114,7 @@ Pakiety dostępu nie zastępują innych mechanizmów do przypisywania dostępu. 
 
 Aby lepiej zrozumieć Zarządzanie uprawnieniami i jej dokumentację, można odwołać się z powrotem do poniższej listy warunków.
 
-| Okres obowiązywania Umowy | Opis |
+| Termin | Opis |
 | --- | --- |
 | pakiet dostępu | Zbiór zasobów wymaganych przez zespół lub projekt i podlega zasadom. Pakiet dostępu jest zawsze zawarty w wykazie. Należy utworzyć nowy pakiet dostępu dla scenariusza, w którym użytkownicy muszą zażądać dostępu.  |
 | żądanie dostępu | Żądanie dostępu do zasobów w pakiecie dostępu. Żądanie jest zwykle wykonywane przez przepływ pracy zatwierdzania.  W przypadku zatwierdzenia użytkownik żądający otrzymuje przypisanie do pakietu. |
@@ -123,7 +123,7 @@ Aby lepiej zrozumieć Zarządzanie uprawnieniami i jej dokumentację, można odw
 | Twórca katalogu | Kolekcja użytkowników, którzy mają uprawnienia do tworzenia nowych wykazów.  Gdy użytkownik niebędący administratorem, który jest autoryzowany jako twórca katalogu tworzy nowy wykaz, automatycznie staje się właścicielem tego katalogu. |
 | połączona organizacja | Zewnętrzny katalog lub domena usługi Azure AD, z którą istnieje relacja. Użytkownicy z połączonej organizacji mogą być określeni w zasadach jako mogą żądać dostępu. |
 | policy | Zestaw reguł definiujących cykl życia dostępu, na przykład informacje o tym, jak użytkownicy uzyskują dostęp, kto może zatwierdzić i jak długo użytkownicy mają dostęp przez przypisanie. Zasady są połączone z pakietem dostępu. Na przykład pakiet dostępu może mieć dwie zasady — jeden dla pracowników do żądania dostępu, a drugi do żądania dostępu przez użytkowników zewnętrznych. |
-| Zasoby | Element zawartości, taki jak grupa pakietu Office, Grupa zabezpieczeń, aplikacja lub witryna usługi SharePoint Online, z rolą, do której użytkownik może uzyskać uprawnienia. |
+| zasoby | Element zawartości, taki jak grupa pakietu Office, Grupa zabezpieczeń, aplikacja lub witryna usługi SharePoint Online, z rolą, do której użytkownik może uzyskać uprawnienia. |
 | Katalog zasobów | Katalog, który ma co najmniej jeden zasób do udostępnienia. |
 | Rola zasobu | Kolekcja uprawnień skojarzonych z i zdefiniowanych przez zasób. Grupa ma dwie role — element członkowski i właściciel. Witryny programu SharePoint zazwyczaj mają 3 role, ale mogą mieć dodatkowe role niestandardowe. Aplikacje mogą mieć role niestandardowe. |
 

@@ -449,7 +449,7 @@
             - name: Dostawca zasobów magazynu
               href: /java/api/overview/azure/storage/management
         - name: JavaScript (wersja 12.x)
-          href: /javascript/api/@azure/storage-blob/?view=azure-node-preview
+          href: /javascript/api/@azure/storage-blob/
         - name: Python (wersja 12.x)
           href: /python/api/azure-storage-blob/
         - name: REST

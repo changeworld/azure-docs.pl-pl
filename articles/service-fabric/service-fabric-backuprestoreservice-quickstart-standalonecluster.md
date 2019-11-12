@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 5/24/2019
 ms.author: hrushib
-ms.openlocfilehash: efdb2f51058eca456d622afda390dee17fffea0b
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: b949a0edff7ed6341d10518bc1c38afe2f7efad0
+ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73819427"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73929178"
 ---
 # <a name="periodic-backup-and-restore-in-azure-service-fabric"></a>Okresowe tworzenie kopii zapasowych i przywracanie na platformie Azure Service Fabric
 > [!div class="op_single_selector"]
@@ -117,19 +117,7 @@ Najpierw należy włączyć _usługę tworzenia kopii zapasowych i przywracania_
 
 4. Po zaktualizowaniu pliku konfiguracji klastra przy użyciu powyższych zmian należy je zastosować i umożliwić ukończenie wdrożenia/uaktualnienia. Po zakończeniu _usługa tworzenia kopii zapasowych i przywracania_ jest uruchamiana w klastrze. Identyfikator URI tej usługi jest `fabric:/System/BackupRestoreService`, a usługa może znajdować się w sekcji usługi systemowej w Eksploratorze Service Fabric. 
 
-### <a name="using-service-fabric-explorer"></a>Używanie Service Fabric Explorer
 
-1. Upewnij się, że tryb zaawansowany jest włączony.
-
-    ![Włącz tryb zaawansowany][2]
-
-2. Wybierz aplikację i przejdź do akcji. Kliknij pozycję Włącz/zaktualizuj kopię zapasową aplikacji.
-
-    ![Włącz tworzenie kopii zapasowej aplikacji][3] 
-
-3. Na koniec wybierz odpowiednie zasady i kliknij pozycję Włącz kopię zapasową.
-
-    ![Wybieranie zasad][4]
 
 ## <a name="enabling-periodic-backup-for-reliable-stateful-service-and-reliable-actors"></a>Włączanie okresowej kopii zapasowej dla niezawodnej usługi stanowej i Reliable Actors
 Wykonajmy kroki, aby włączyć okresowe tworzenie kopii zapasowej dla niezawodnej usługi stanowej i Reliable Actors. W tych krokach przyjęto założenie
@@ -207,6 +195,16 @@ $url = "http://localhost:19080/Applications/SampleApp/$/EnableBackup?api-version
 
 Invoke-WebRequest -Uri $url -Method Post -Body $body -ContentType 'application/json'
 ``` 
+
+#### <a name="using-service-fabric-explorer"></a>Używanie Service Fabric Explorer
+
+1. Wybierz aplikację i przejdź do akcji. Kliknij pozycję Włącz/zaktualizuj kopię zapasową aplikacji.
+
+    ![Włącz tworzenie kopii zapasowej aplikacji][3] 
+
+2. Na koniec wybierz odpowiednie zasady i kliknij pozycję Włącz kopię zapasową.
+
+    ![Wybieranie zasad][4]
 
 ### <a name="verify-that-periodic-backups-are-working"></a>Sprawdź, czy okresowe kopie zapasowe działają
 
@@ -292,8 +290,6 @@ Aby wyświetlić kopie zapasowe w Service Fabric Explorer, przejdź do partycji 
 - [Dokumentacja interfejsu API REST przywracania kopii zapasowych](https://docs.microsoft.com/rest/api/servicefabric/sfclient-index-backuprestore)
 
 [0]: ./media/service-fabric-backuprestoreservice/partition-backedup-health-event.png
-[2]: ./media/service-fabric-backuprestoreservice/advanced-mode.png
 [3]: ./media/service-fabric-backuprestoreservice/enable-app-backup.png
 [4]: ./media/service-fabric-backuprestoreservice/enable-application-backup.png
 [5]: ./media/service-fabric-backuprestoreservice/backup-enumeration.png
-

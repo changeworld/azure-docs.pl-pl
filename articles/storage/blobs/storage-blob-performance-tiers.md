@@ -1,65 +1,81 @@
 ---
-title: Warstwy wydajności usługi Azure Block BLOB Storage — Azure Storage
-description: Warstwy wydajności dla usługi Azure Blob Storage.
+title: Blokuj warstwy wydajności magazynu obiektów BLOB (Azure Storage)
+description: W tym artykule omówiono różnice między warstwami wydajności warstwy Premium i standardowa dla magazynu blokowych obiektów blob platformy Azure.
 author: mhopkins-msft
 ms.author: mhopkins
-ms.date: 10/02/2019
+ms.date: 11/12/2019
 ms.service: storage
 ms.subservice: blobs
 ms.topic: conceptual
 ms.reviewer: clausjor
-ms.openlocfilehash: e0d746f1b01784bc383c12543936f06dae66ca09
-ms.sourcegitcommit: f7f70c9bd6c2253860e346245d6e2d8a85e8a91b
+ms.openlocfilehash: 64efd1a02b903ec3874066f6c663b86a8080f746
+ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73063259"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73932267"
 ---
-# <a name="azure-block-blob-storage-performance-tiers"></a>Warstwy wydajności bloku blokowych obiektów blob platformy Azure
+# <a name="performance-tiers-for-block-blob-storage"></a>Warstwy wydajności dla magazynu blokowych obiektów BLOB
 
 W miarę jak przedsiębiorstwa wdrażają aplikacje natywne w chmurze, ważne jest, aby dysponować opcjami oszczędnego magazynowania danych na różnych poziomach wydajności.
 
 Magazyn blokowych obiektów blob platformy Azure oferuje dwie różne warstwy wydajności:
 
-- Premium: zoptymalizowane pod kątem wysokich stawek transakcji i jednocyfrowe opóźnienie magazynu
-- Standard: zoptymalizowane pod kątem wysokiej wydajności i wysokiej przepływności
+- **Premium**: zoptymalizowane pod kątem wysokich stawek transakcji i jednocyfrowe opóźnienie magazynu
+- **Standard**: zoptymalizowane pod kątem wysokiej wydajności i wysokiej przepływności
 
 Poniższe uwagi dotyczą różnych warstw wydajności:
 
-- Standardowa wydajność jest dostępna we wszystkich [regionach świadczenia usługi Azure](https://azure.microsoft.com/global-infrastructure/services/?products=storage). Wydajność warstwy Premium jest dostępna w [wybranych regionach](https://azure.microsoft.com/global-infrastructure/services/?products=storage).
-- Wydajność Premium zapewnia zoptymalizowane ceny dla aplikacji o wysokich stawkach transakcji, aby [zmniejszyć łączny koszt magazynu](https://azure.microsoft.com/blog/reducing-overall-storage-costs-with-azure-premium-blob-storage/) dla tych obciążeń.
-- Aby uzyskać wydajność warstwy Premium dla blokowych obiektów blob, należy użyć typu konta BlockBlobStorage.
-- Standardowa wydajność jest dostępna w przypadku kont Ogólnego przeznaczenia V1, Ogólnego przeznaczenia v2 i BLOB Storage.
-- Wydajność warstwy Premium i standardowa obsługuje [wysoką przepływność blokowych obiektów BLOB](https://azure.microsoft.com/blog/high-throughput-with-azure-blob-storage/). Blokowe obiekty blob o wysokiej przepływności są dostępne dla wydajności Premium o wartości większej niż 256 KiB. Blokowe obiekty blob o wysokiej przepływności są dostępne dla wydajności standardowej o rozmiarze większym niż 4.
-- Wydajność warstwy Premium jest obecnie dostępna tylko w przypadku magazynu lokalnie nadmiarowego (LRS).
+| Obszar |Wydajność standardowa  |Wydajność warstwy Premium  |
+|---------|---------|---------|
+|Dostępność w danym regionie     |   Wszystkie regiony      | W obszarze [Wybieranie regionów](https://azure.microsoft.com/global-infrastructure/services/?products=storage)       |
+|Obsługiwane [typy kont magazynu](../common/storage-account-overview.md#types-of-storage-accounts)     |     Ogólnego przeznaczenia w wersji 2, BlobStorage, ogólnego przeznaczenia w wersji 1    |    BlockBlobStorage     |
+|Obsługuje [blokowe obiekty blob o wysokiej przepływności](https://azure.microsoft.com/blog/high-throughput-with-azure-blob-storage/)     |    Tak, co więcej niż 4 PutBlock MiB lub rozmiary PutBlob     |    Tak, o rozmiarze większym niż 256 KiB PutBlock lub PutBlob    |
+|Nadmiarowość     |     Zobacz [typy kont magazynu](../common/storage-account-overview.md#types-of-storage-accounts)   |  Obecnie obsługuje tylko Magazyn lokalnie nadmiarowy (LRS) i magazyn stref-redudant (ZRS)<div role="complementary" aria-labelledby="zone-redundant-storage"><sup>1</sup></div>     |
+
+<div id="zone-redundant-storage"><sup>1</sup> Magazyn strefowo nadmiarowy (ZRS) jest dostępny w wybranych regionach dla kont magazynu blokowych obiektów BLOB wydajności w warstwie Premium.</div>
+
+W odniesieniu do kosztów wydajność Premium zapewnia zoptymalizowane ceny dla aplikacji z wysoką stawką transakcji, aby [zmniejszyć łączny koszt magazynu](https://azure.microsoft.com/blog/reducing-overall-storage-costs-with-azure-premium-blob-storage/) dla tych obciążeń.
 
 ## <a name="premium-performance"></a>Wydajność warstwy Premium
 
 Blok wydajności w warstwie Premium magazynu obiektów BLOB udostępnia dane za pośrednictwem sprzętu o wysokiej wydajności. Dane są przechowywane na dyskach półprzewodnikowych (dysków SSD), które są zoptymalizowane pod kątem małych opóźnień. Dysków SSD zapewniają wyższą przepływność w porównaniu z tradycyjnymi dyskami twardymi.
 
-Magazyn obiektów BLOB w warstwie Premium jest idealnym rozwiązaniem w przypadku obciążeń wymagających szybkiego i spójnego czasu odpowiedzi. Jest to najlepsze rozwiązanie w przypadku obciążeń, które wykonują wiele małych transakcji.
+Magazyn wydajności w warstwie Premium jest idealnym rozwiązaniem w przypadku obciążeń wymagających szybkiego i spójnego czasu odpowiedzi. Jest to najlepsze rozwiązanie w przypadku obciążeń, które wykonują wiele małych transakcji. Przykładowe obciążenia obejmują:
+
+- **Interaktywne obciążenia**. Te obciążenia wymagają natychmiastowej aktualizacji i opinii użytkowników, takich jak handel elektroniczny i aplikacje do mapowania. Na przykład w aplikacji handlu elektronicznego mniej często oglądane elementy mogą nie być buforowane. Jednak muszą być natychmiast wyświetlane na żądanie klienta.
+
+- **Analiza**. W scenariuszu IoT wiele mniejszych operacji zapisu może być wypychanych do chmury co sekundę. Duże ilości danych mogą być pobierane, zagregowane na potrzeby analizy, a następnie usuwane prawie natychmiast. Możliwości dużego pozyskiwania magazynu blokowych obiektów BLOB w warstwie Premium sprawiają, że jest to wydajne dla tego typu obciążenia.
+
+- **Sztuczna inteligencja/Uczenie maszynowe (AI/ml)** . AI/ML zajmuje się zużyciem i przetwarzaniem różnych typów danych, na przykład wizualizacji, mowy i tekstu. Ten typ obciążeń obliczeniowych o wysokiej wydajności zajmuje się dużymi ilościami danych, które wymagają szybkiej reakcji i wydajnego czasu pozyskiwania danych.
+
+- **Przekształcanie danych**. Procesy wymagające stałej edycji, modyfikacji i konwersji danych wymagają natychmiastowego aktualizowania. Dla dokładnej reprezentacji danych konsumenci tych danych muszą zobaczyć te zmiany bezpośrednio.
 
 ## <a name="standard-performance"></a>Wydajność standardowa
 
 Standardowa wydajność obsługuje różne [warstwy dostępu](storage-blob-storage-tiers.md) do przechowywania danych w najbardziej opłacalny sposób. Jest ona zoptymalizowana pod kątem wysokiej wydajności i wysokiej przepływności w przypadku dużych zestawów danych.
 
+## <a name="migrate-from-standard-to-premium"></a>Migrowanie z wersji Standard do Premium
+
+Nie można przekonwertować istniejącego konta magazynu wydajności standardowej na konto magazynu blokowych obiektów BLOB o wydajności Premium. Aby przeprowadzić migrację do konta magazynu wydajności w warstwie Premium, należy utworzyć konto BlockBlobStorage i przeprowadzić migrację danych do nowego konta. Aby uzyskać więcej informacji, zobacz [Tworzenie konta BlockBlobStorage](storage-blob-create-account-block-blob.md).
+
+Aby skopiować obiekty blob między kontami magazynu, można użyć najnowszej wersji narzędzia wiersza polecenia [AzCopy](../common/storage-use-azcopy-blobs.md) . Inne narzędzia, takie jak Azure Data Factory, są również dostępne do przenoszenia i przekształcania danych.
+
 ## <a name="blob-lifecycle-management"></a>Zarządzanie cyklem życia obiektów BLOB
 
-Blob Storage Zarządzanie cyklem życia obejmuje zaawansowane zasady oparte na regułach:
+Zarządzanie cyklem życia magazynu obiektów BLOB zawiera rozbudowane zasady oparte na regułach:
 
-- Wersja Premium — wygasłe dane po zakończeniu cyklu życia
-- Standardowe przechodzenie danych do najlepszej warstwy dostępu i wygasanie danych na końcu cyklu życia
+- **Premium**: wygasa dane po zakończeniu cyklu życia.
+- **Standard**: przechodzenie danych do najlepszej warstwy dostępu i wygasają dane na koniec cyklu życia.
 
 Aby dowiedzieć się więcej, zobacz [Zarządzanie cyklem życia usługi Azure Blob Storage](storage-lifecycle-management-concepts.md).
 
-Dane przechowywane na koncie magazynu blokowych obiektów BLOB w warstwie Premium nie mogą być przenoszone między warstwami gorąca, chłodna i archiwalna. Można jednak kopiować obiekty blob z konta blokowego usługi BLOB Storage do warstwy dostępu gorąca na *innym* koncie. Użyj [bloku Put z adresu URL](/rest/api/storageservices/put-block-from-url) API lub [AzCopy v10](../common/storage-use-azcopy-v10.md) , aby skopiować dane na inne konto. Interfejs **Put bloku z adresu URL** synchronicznie kopiuje dane na serwerze. Wywołanie kończy się tylko po przeniesieniu wszystkich danych z oryginalnej lokalizacji serwera do lokalizacji docelowej.
+Nie można przenieść danych przechowywanych na koncie magazynu blokowych obiektów BLOB w warstwie Premium między warstwami gorąca, chłodna i archiwalna. Można jednak kopiować obiekty blob z konta blokowego usługi BLOB Storage do warstwy dostępu gorąca na *innym* koncie. Aby skopiować dane na inne konto, użyj [bloku Put z adresu URL](/rest/api/storageservices/put-block-from-url) API lub [AzCopy v10](../common/storage-use-azcopy-v10.md). Interfejs **Put bloku z adresu URL** synchronicznie kopiuje dane na serwerze. Wywołanie kończy się tylko po przeniesieniu wszystkich danych z oryginalnej lokalizacji serwera do lokalizacji docelowej.
 
 ## <a name="next-steps"></a>Następne kroki
 
-Oceń gorące, chłodne i archiwalne na kontach GPv2 i BLOB Storage
+Oceń gorące, chłodne i archiwalne na kontach GPv2 i BLOB Storage.
 
-- [Sprawdzanie dostępności warstw Gorąca, Chłodna i Archiwum według regionu](https://azure.microsoft.com/regions/#services)
-- [Zarządzanie cyklem życia magazynu usługi Azure Blob Storage](storage-lifecycle-management-concepts.md)
 - [Dowiedz się więcej na temat ponownego wypełniania danych obiektów BLOB w warstwie Archiwum](storage-blob-rehydration.md)
 - [Ocena użycia bieżących kont magazynu przez włączenie metryk usługi Azure Storage](../common/storage-enable-and-view-metrics.md)
 - [Sprawdzanie cen warstw Gorąca, Chłodna i Archiwum na kontach usługi Blob Storage i GPv2 według regionu](https://azure.microsoft.com/pricing/details/storage/)

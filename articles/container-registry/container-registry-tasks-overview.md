@@ -1,5 +1,5 @@
 ---
-title: Automatyzowanie kompilowania i poprawiania obrazów kontenerów za pomocą zadań Azure Container Registry (zadania ACR)
+title: Azure Container Registry zadania — Omówienie
 description: Wprowadzenie do ACR zadań, zestaw funkcji w Azure Container Registry, który zapewnia bezpieczną, zautomatyzowaną kompilację, zarządzanie i stosowanie poprawek w chmurze.
 services: container-registry
 author: dlepow
@@ -8,12 +8,12 @@ ms.service: container-registry
 ms.topic: article
 ms.date: 09/05/2019
 ms.author: danlep
-ms.openlocfilehash: e2686dcd5615c42abf78cbf4575bab6008024718
-ms.sourcegitcommit: be344deef6b37661e2c496f75a6cf14f805d7381
+ms.openlocfilehash: 45fdd68273ed2cd5cfccf37765935ce9f7bfdc13
+ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/07/2019
-ms.locfileid: "72001407"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73931476"
 ---
 # <a name="automate-container-image-builds-and-maintenance-with-acr-tasks"></a>Automatyzowanie kompilacji i konserwacji obrazów kontenerów za pomocą zadań ACR
 
@@ -27,7 +27,7 @@ Kontenery zapewniają nowe poziomy wirtualizacji, izolowanie zależności aplika
 
 Zadania ACR obsługują kilka scenariuszy, które umożliwiają kompilowanie i konserwowanie obrazów kontenerów i innych artefaktów. Aby uzyskać szczegółowe informacje, zobacz następujące sekcje w tym artykule.
 
-* **[Szybkie zadanie](#quick-task)** — Kompilowanie i wypychanie pojedynczego obrazu kontenera do rejestru kontenerów na żądanie, na platformie Azure bez konieczności instalacji lokalnego aparatu platformy Docker. Pomyśl, `docker build`, `docker push` w chmurze.
+* **[Szybkie zadanie](#quick-task)** — Kompilowanie i wypychanie pojedynczego obrazu kontenera do rejestru kontenerów na żądanie, na platformie Azure bez konieczności instalacji lokalnego aparatu platformy Docker. `docker build`, `docker push` w chmurze.
 * **Automatycznie wyzwolone zadania** — włączenie co najmniej jednego *wyzwalacza* w celu skompilowania obrazu:
   * **[Wyzwalanie aktualizacji kodu źródłowego](#trigger-task-on-source-code-update)** 
   * **[Wyzwól aktualizację obrazu podstawowego](#automate-os-and-framework-patching)** 
@@ -44,7 +44,7 @@ Cykl programowania w pętli wewnętrznej, proces iteracyjny pisania kodu, kompil
 
 Przed zatwierdzeniem pierwszego wiersza kodu funkcja [zadanie szybkiego zadania](container-registry-tutorial-quick-task.md) ACR zadania może zapewnić zintegrowane środowisko programistyczne, odciążając kompilacje obrazu kontenera na platformie Azure. Za pomocą szybkich zadań można zweryfikować zautomatyzowane definicje kompilacji i wychwycić potencjalne problemy przed zatwierdzeniem kodu.
 
-Przy użyciu znanego formatu `docker build` polecenie [AZ ACR Build][az-acr-build] w interfejsie wiersza polecenia platformy Azure przyjmuje [kontekst](#context-locations) (zestaw plików do skompilowania), wysyła do niego ACR zadania i domyślnie wypychanie skompilowanego obrazu do rejestru po zakończeniu.
+Przy użyciu znanego formatu `docker build`, polecenie [AZ ACR Build][az-acr-build] w interfejsie wiersza polecenia platformy Azure przyjmuje [kontekst](#context-locations) (zestaw plików do skompilowania), wysyła do niego zadania ACR i domyślnie wypchnięcie skompilowanego obrazu do rejestru po zakończeniu.
 
 Aby zapoznać się z wprowadzeniem, zobacz Przewodnik Szybki Start dotyczący [kompilowania i uruchamiania obrazu kontenera](container-registry-quickstart-task-cli.md) w Azure Container Registry.  
 
@@ -61,9 +61,9 @@ Wyzwalanie kompilacji obrazu kontenera lub zadania wieloetapowego podczas zatwie
 
 Zadania ACR obsługują następujące wyzwalacze podczas ustawiania repozytorium git jako kontekstu zadania:
 
-| Uruchamiać | Włączona domyślnie |
+| Wyzwalacz | Włączona domyślnie |
 | ------- | ------------------ |
-| Zleca | Tak |
+| Zatwierdzenie | Yes |
 | Żądanie ściągnięcia | Nie |
 
 Aby skonfigurować wyzwalacz, należy podać osobisty token dostępu (DevOps) w celu ustawienia elementu webhook w repozytorium GitHub lub Azure.
@@ -99,7 +99,7 @@ Opcjonalnie można zaplanować zadanie przez skonfigurowanie co najmniej jednego
 
 ## <a name="multi-step-tasks"></a>Zadania wieloetapowe
 
-Wieloetapowe zadania zapewniają definicje zadań oparte na krokach i wykonywanie w celu tworzenia, testowania i poprawiania obrazów kontenerów w chmurze. Kroki zadania zdefiniowane w [pliku YAML](container-registry-tasks-reference-yaml.md) określają poszczególne operacje kompilacji i wypychania dla obrazów kontenerów lub innych artefaktów. Mogą także definiować wykonywanie jednego lub większej liczby kontenerów, przy czym każdy krok używa kontenera jako środowiska wykonawczego.
+Wieloetapowe zadania zapewniają definicje zadań oparte na krokach i wykonywanie w celu tworzenia, testowania i poprawiania obrazów kontenerów w chmurze. Kroki zadania zdefiniowane w [pliku YAML](container-registry-tasks-reference-yaml.md) określają poszczególne operacje kompilacji i wypychania dla obrazów kontenerów lub innych artefaktów. Mogą one również definiować wykonanie jednego lub kilku kontenerów, z każdym krokiem używającym kontenera jako jego środowiska wykonawczego.
 
 Można na przykład utworzyć zadanie wieloetapowe, które automatyzuje następujące czynności:
 
@@ -129,12 +129,12 @@ W poniższej tabeli przedstawiono kilka przykładów obsługiwanych lokalizacji 
 
 ## <a name="image-platforms"></a>Platformy obrazów
 
-Domyślnie zadania ACR kompilują obrazy dla systemu operacyjnego Linux i architektury amd64. Określ tag `--platform` do kompilowania obrazów systemu Windows lub obrazów Linux dla innych architektur. Określ system operacyjny i opcjonalnie obsługiwaną architekturę w formacie systemu operacyjnego/architektury (na przykład `--platform Linux/arm`). W przypadku architektur ARM Opcjonalnie określ wariant w formacie OS/Architecture/Variant (na przykład `--platform Linux/arm64/v8`):
+Domyślnie zadania ACR kompilują obrazy dla systemu operacyjnego Linux i architektury amd64. Określ tag `--platform`, aby tworzyć obrazy systemu Windows lub obrazy Linux dla innych architektur. Określ system operacyjny i opcjonalnie obsługiwaną architekturę w formacie systemu operacyjnego/architektury (na przykład `--platform Linux/arm`). W przypadku architektur ARM Opcjonalnie określ wariant w formacie OS/Architecture/Variant (na przykład `--platform Linux/arm64/v8`):
 
-| Macintosh | Architektura|
+| System operacyjny | Architektura|
 | --- | ------- | 
-| Linux | amd64<br/>ARM<br/>arm64<br/>386 |
-| Windows | amd64 |
+| Linux | Procesor<br/>ARM<br/>arm64<br/>386 |
+| Windows | Procesor |
 
 ## <a name="view-task-logs"></a>Wyświetlanie dzienników zadań
 

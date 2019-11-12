@@ -1,5 +1,5 @@
 ---
-title: Ograniczanie dostępu do usługi Azure Container Registry z sieci wirtualnej
+title: Ograniczanie dostępu do Azure Container Registry przy użyciu sieci wirtualnej
 description: Zezwalaj na dostęp do usługi Azure Container Registry tylko z zasobów w sieci wirtualnej platformy Azure lub z zakresów publicznych adresów IP.
 services: container-registry
 author: dlepow
@@ -8,12 +8,12 @@ ms.service: container-registry
 ms.topic: article
 ms.date: 07/01/2019
 ms.author: danlep
-ms.openlocfilehash: 3050a52da4d39657bd7b2fb38e235b9bd418faf4
-ms.sourcegitcommit: 08d3a5827065d04a2dc62371e605d4d89cf6564f
+ms.openlocfilehash: 5ba5c180def9539c486fb8727a0a78b4f98fa185
+ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68619884"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73931333"
 ---
 # <a name="restrict-access-to-an-azure-container-registry-using-an-azure-virtual-network-or-firewall-rules"></a>Ograniczanie dostępu do usługi Azure Container Registry przy użyciu sieci wirtualnej platformy Azure lub reguł zapory
 
@@ -42,9 +42,9 @@ Jeśli zamiast tego musisz skonfigurować reguły dostępu dla zasobów, aby uzy
 
 * Aby skorzystać z kroków interfejsu wiersza polecenia platformy Azure w tym artykule, wymagany jest interfejs wiersza polecenia platformy Azure w wersji 2.0.58 lub nowszej. Jeśli konieczna będzie instalacja lub uaktualnienie, zobacz [Instalowanie interfejsu wiersza polecenia platformy Azure][azure-cli].
 
-* Jeśli nie masz jeszcze rejestru kontenerów, utwórz go (wymagana jednostka SKU Premium) i wypchnij przykładowy obraz, taki `hello-world` jak z usługi Docker Hub. Na przykład użyj [Azure Portal][quickstart-portal] lub [interfejsu wiersza polecenia platformy Azure][quickstart-cli] , aby utworzyć rejestr. 
+* Jeśli nie masz jeszcze rejestru kontenerów, utwórz go (wymagana jednostka SKU Premium) i wypchnij przykładowy obraz, taki jak `hello-world` z usługi Docker Hub. Na przykład użyj [Azure Portal][quickstart-portal] lub [interfejsu wiersza polecenia platformy Azure][quickstart-cli] , aby utworzyć rejestr. 
 
-* Jeśli chcesz ograniczyć dostęp do rejestru przy użyciu sieci wirtualnej w innej subskrypcji platformy Azure, musisz zarejestrować dostawcę zasobów dla Azure Container Registry w tej subskrypcji. Przykład:
+* Jeśli chcesz ograniczyć dostęp do rejestru przy użyciu sieci wirtualnej w innej subskrypcji platformy Azure, musisz zarejestrować dostawcę zasobów dla Azure Container Registry w tej subskrypcji. Na przykład:
 
   ```azurecli
   az account set --subscription <Name or ID of subscription of virtual network>
@@ -54,7 +54,7 @@ Jeśli zamiast tego musisz skonfigurować reguły dostępu dla zasobów, aby uzy
 
 ## <a name="about-network-rules-for-a-container-registry"></a>Informacje o regułach sieci dla rejestru kontenerów
 
-Usługa Azure Container Registry domyślnie akceptuje połączenia przez Internet z hostów w dowolnej sieci. Za pomocą sieci wirtualnej możesz zezwolić na dostęp do rejestru tylko zasobom platformy Azure, takim jak klaster AKS lub maszyna wirtualna platformy Azure, bez przekraczania granicy sieci. Możesz również skonfigurować reguły zapory sieciowej, aby dozwolonych określone publiczne zakresy adresów IP. 
+Usługa Azure Container Registry domyślnie akceptuje połączenia przez Internet z hostów w dowolnej sieci. Za pomocą sieci wirtualnej możesz zezwolić na dostęp do rejestru tylko zasobom platformy Azure, takim jak klaster AKS lub maszyna wirtualna platformy Azure, bez przekraczania granicy sieci. Możesz również skonfigurować reguły zapory sieciowej, aby zezwalać tylko na określone zakresy publicznych adresów IP. 
 
 Aby ograniczyć dostęp do rejestru, najpierw Zmień domyślną akcję rejestru, aby odmówić wszystkich połączeń sieciowych. Następnie Dodaj reguły dostępu do sieci. Klienci, którym udzielono dostępu za pośrednictwem reguł sieci, muszą nadal [uwierzytelniać się w rejestrze kontenerów](https://docs.microsoft.com/azure/container-registry/container-registry-authentication) i uzyskiwać dostęp do danych.
 
@@ -62,7 +62,7 @@ Aby ograniczyć dostęp do rejestru, najpierw Zmień domyślną akcję rejestru,
 
 Aby zezwolić na dostęp z podsieci w sieci wirtualnej, należy dodać [punkt końcowy usługi](../virtual-network/virtual-network-service-endpoints-overview.md) dla usługi Azure Container Registry. 
 
-Usługi wielodostępne, takie jak Azure Container Registry, używają jednego zestawu adresów IP dla wszystkich klientów. Punkt końcowy usługi przypisuje punkt końcowy, aby uzyskać dostęp do rejestru. Ten punkt końcowy zapewnia ruch optymalnie kierowany do zasobu za pośrednictwem sieci szkieletowej platformy Azure. Tożsamości w sieci wirtualnej i podsieci również są przesyłane z każdym żądaniem.
+Usługi wielodostępne, takie jak Azure Container Registry, używają jednego zestawu adresów IP dla wszystkich klientów. Punkt końcowy usługi przypisuje punkt końcowy, aby uzyskać dostęp do rejestru. Ten punkt końcowy zapewnia ruch optymalnie kierowany do zasobu za pośrednictwem sieci szkieletowej platformy Azure. Tożsamości sieci wirtualnej i podsieci są również przesyłane z każdym żądaniem.
 
 ### <a name="firewall-rules"></a>Reguły zapory
 
@@ -89,7 +89,7 @@ az vm create \
     --generate-ssh-keys
 ```
 
-Utworzenie maszyny wirtualnej może potrwać kilka minut. Po zakończeniu wykonywania polecenia Zanotuj `publicIpAddress` wyświetlane wartości w wierszu polecenia platformy Azure. Użyj tego adresu, aby nawiązać połączenia SSH z maszyną wirtualną i opcjonalnie skonfigurować reguły zapory.
+Utworzenie maszyny wirtualnej może potrwać kilka minut. Po zakończeniu wykonywania polecenia Zanotuj `publicIpAddress` wyświetlane przez interfejs wiersza polecenia platformy Azure. Użyj tego adresu, aby nawiązać połączenia SSH z maszyną wirtualną i opcjonalnie skonfigurować reguły zapory.
 
 ### <a name="install-docker-on-the-vm"></a>Zainstaluj platformę Docker na maszynie wirtualnej
 
@@ -218,7 +218,7 @@ Domyślnie usługa Azure Container Registry umożliwia nawiązywanie połączeń
 
 1. W portalu przejdź do rejestru kontenerów.
 1. W obszarze **Ustawienia**wybierz pozycję **Zapora i sieci wirtualne**.
-1. Aby odmówić dostępu domyślnie, chce zezwolić na dostęp z **wybrane sieci**. 
+1. Aby domyślnie zablokować dostęp, wybierz opcję zezwolenia na dostęp z **wybranych sieci**. 
 1. Wybierz pozycję **Dodaj istniejącą sieć wirtualną**, a następnie wybierz sieć wirtualną i podsieć skonfigurowaną z punktem końcowym usługi. Wybierz pozycję **Dodaj**.
 1. Wybierz pozycję **Zapisz**.
 
@@ -310,7 +310,7 @@ Po odczekaniu kilku minut na aktualizację konfiguracji Sprawdź, czy maszyna wi
 az acr login --name mycontainerregistry
 ```
 
-Można wykonać operacje rejestru, takie jak Uruchom `docker pull` , aby ściągnąć przykładowy obraz z rejestru. Zastąp wartość obrazu i tagu odpowiednią dla rejestru poprzedzoną prefiksem nazwy serwera logowania rejestru (wszystkie małe litery):
+W celu ściągnięcia przykładowego obrazu z rejestru można wykonać operacje rejestru, takie jak uruchomienie `docker pull`. Zastąp wartość obrazu i tagu odpowiednią dla rejestru poprzedzoną prefiksem nazwy serwera logowania rejestru (wszystkie małe litery):
 
 ```bash
 docker pull mycontainerregistry.azurecr.io/hello-world:v1
@@ -318,7 +318,7 @@ docker pull mycontainerregistry.azurecr.io/hello-world:v1
 
 Platforma Docker pomyślnie ściąga obraz do maszyny wirtualnej.
 
-Ten przykład pokazuje, że można uzyskać dostęp do prywatnego rejestru kontenerów za pomocą reguły dostępu do sieci. Nie można jednak uzyskać dostępu do rejestru z innego hosta logowania, który nie ma skonfigurowanej reguły dostępu do sieci. W przypadku próby zalogowania się z innego hosta za `az acr login` pomocą polecenia `docker login` lub polecenia dane wyjściowe są podobne do następujących:
+Ten przykład pokazuje, że można uzyskać dostęp do prywatnego rejestru kontenerów za pomocą reguły dostępu do sieci. Nie można jednak uzyskać dostępu do rejestru z innego hosta logowania, który nie ma skonfigurowanej reguły dostępu do sieci. Jeśli spróbujesz zalogować się z innego hosta za pomocą polecenia `az acr login` lub `docker login` polecenie, dane wyjściowe są podobne do następujących:
 
 ```Console
 Error response from daemon: login attempt to https://xxxxxxx.azurecr.io/v2/ failed with status: 403 Forbidden
@@ -355,7 +355,7 @@ az acr network-rule remove \
   --ip-address 23.45.1.0/24
 ```
 
-#### <a name="allow-access"></a>Zezwól na dostęp
+#### <a name="allow-access"></a>Zezwalaj na dostęp
 
 Zastąp nazwę rejestru następującym poleceniem [AZ ACR Update][az-acr-update] :
 ```azurecli

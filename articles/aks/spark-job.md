@@ -9,12 +9,12 @@ ms.topic: article
 ms.date: 10/18/2019
 ms.author: alehall
 ms.custom: mvc
-ms.openlocfilehash: c4fca9b8f4c8a01124074396985b1ec3f1c896c6
-ms.sourcegitcommit: 9a4296c56beca63430fcc8f92e453b2ab068cc62
+ms.openlocfilehash: 5ecfa1853479c1cdc705a1a465a1de6318917a72
+ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/20/2019
-ms.locfileid: "72675145"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73928993"
 ---
 # <a name="running-apache-spark-jobs-on-aks"></a>Uruchamianie Apache Spark zadań w AKS
 
@@ -49,7 +49,7 @@ Utwórz nazwę główną usługi dla klastra. Po jego utworzeniu do następnego 
 az ad sp create-for-rbac --name SparkSP
 ```
 
-Utwórz klaster AKS z węzłami o rozmiarze `Standard_D3_v2` i wartościami identyfikatora appId i hasła przekazaną jako parametry podmiotu zabezpieczeń i klucza klienta.
+Utwórz klaster AKS z węzłami o rozmiarze `Standard_D3_v2`i wartościami identyfikatora appId i hasła przekazaną jako parametry podmiotu zabezpieczeń i klucza klienta.
 
 ```azurecli
 az aks create --resource-group mySparkCluster --name mySparkCluster --node-vm-size Standard_D3_v2 --generate-ssh-keys --service-principal <APPID> --client-secret <PASSWORD>
@@ -92,7 +92,7 @@ Uruchom następujące polecenie, aby skompilować kod źródłowy Spark z obsłu
 ./build/mvn -Pkubernetes -DskipTests clean package
 ```
 
-Poniższe polecenia umożliwiają utworzenie obrazu kontenera platformy Spark i wypchnięcie go do rejestru obrazów kontenerów. Zastąp `registry.example.com` nazwą rejestru kontenerów i `v1` znacznikiem, którego wolisz używać. W przypadku korzystania z usługi Docker Hub ta wartość jest nazwą rejestru. Jeśli jest używany Azure Container Registry (ACR), ta wartość jest nazwą serwera logowania ACR.
+Poniższe polecenia umożliwiają utworzenie obrazu kontenera platformy Spark i wypchnięcie go do rejestru obrazów kontenerów. Zastąp `registry.example.com` nazwą rejestru kontenerów i `v1` z tagiem, którego wolisz używać. W przypadku korzystania z usługi Docker Hub ta wartość jest nazwą rejestru. Jeśli jest używany Azure Container Registry (ACR), ta wartość jest nazwą serwera logowania ACR.
 
 ```bash
 REGISTRY_NAME=registry.example.com
@@ -111,7 +111,7 @@ Wypchnij obraz kontenera do rejestru obrazu kontenera.
 
 ## <a name="prepare-a-spark-job"></a>Przygotowywanie zadania platformy Spark
 
-Następnie przygotuj zadanie Spark. Plik JAR jest używany do przechowywania zadania platformy Spark i jest niezbędny podczas uruchamiania polecenia `spark-submit`. Plik JAR można udostępnić za pomocą publicznego adresu URL lub wstępnie spakowanego w ramach obrazu kontenera. W tym przykładzie jest tworzony przykładowy plik JAR służący do obliczania wartości pi. Ten plik JAR jest następnie przekazywany do usługi Azure Storage. Jeśli masz już istniejący plik JAR, możesz go zastąpić
+Następnie przygotuj zadanie Spark. Plik JAR jest używany do przechowywania zadania platformy Spark i jest wymagany w przypadku uruchamiania polecenia `spark-submit`. Plik JAR można udostępnić za pomocą publicznego adresu URL lub wstępnie spakowanego w ramach obrazu kontenera. W tym przykładzie jest tworzony przykładowy plik JAR służący do obliczania wartości pi. Ten plik JAR jest następnie przekazywany do usługi Azure Storage. Jeśli masz już istniejący plik JAR, możesz go zastąpić
 
 Utwórz katalog, w którym chcesz utworzyć projekt dla zadania platformy Spark.
 
@@ -126,7 +126,7 @@ Utwórz nowy projekt Scala na podstawie szablonu.
 sbt new sbt/scala-seed.g8
 ```
 
-Po wyświetleniu monitu wprowadź `SparkPi` dla nazwy projektu.
+Po wyświetleniu monitu wprowadź `SparkPi` nazwy projektu.
 
 ```bash
 name [Scala Seed Project]: SparkPi
@@ -204,7 +204,7 @@ az storage blob upload --container-name $CONTAINER_NAME --file $FILE_TO_UPLOAD -
 jarUrl=$(az storage blob url --container-name $CONTAINER_NAME --name $BLOB_NAME | tr -d '"')
 ```
 
-Zmienna `jarUrl` zawiera teraz publicznie dostępną ścieżkę do pliku JAR.
+Zmienna `jarUrl` teraz zawiera publicznie dostępną ścieżkę do pliku JAR.
 
 ## <a name="submit-a-spark-job"></a>Przesyłanie zadania platformy Spark
 
@@ -253,13 +253,13 @@ spark-pi-2232778d0f663768ab27edc35cb73040-exec-2   0/1       Init:0/1   0       
 spark-pi-2232778d0f663768ab27edc35cb73040-exec-3   0/1       Init:0/1   0          4s
 ```
 
-Gdy zadanie jest uruchomione, można także uzyskać dostęp do interfejsu użytkownika Spark. W drugiej sesji terminalu Użyj polecenia `kubectl port-forward`, aby zapewnić dostęp do interfejsu użytkownika platformy Spark.
+Gdy zadanie jest uruchomione, można także uzyskać dostęp do interfejsu użytkownika Spark. W drugiej sesji terminalu Użyj polecenia `kubectl port-forward` zapewnić dostęp do interfejsu użytkownika platformy Spark.
 
 ```bash
 kubectl port-forward spark-pi-2232778d0f663768ab27edc35cb73040-driver 4040:4040
 ```
 
-Aby uzyskać dostęp do interfejsu użytkownika platformy Spark, Otwórz adres `127.0.0.1:4040` w przeglądarce.
+Aby uzyskać dostęp do interfejsu użytkownika platformy Spark, Otwórz `127.0.0.1:4040` adresu w przeglądarce.
 
 ![Interfejs użytkownika Spark](media/aks-spark-job/spark-ui.png)
 
@@ -278,7 +278,7 @@ NAME                                               READY     STATUS      RESTART
 spark-pi-2232778d0f663768ab27edc35cb73040-driver   0/1       Completed   0          1m
 ```
 
-Użyj polecenia `kubectl logs`, aby pobrać dzienniki ze sterownika Spark pod. Zastąp nazwę pod nazwą sterownika.
+Użyj `kubectl logs` polecenie, aby pobrać dzienniki ze sterownika Spark pod. Zastąp nazwę pod nazwą sterownika.
 
 ```bash
 kubectl logs spark-pi-2232778d0f663768ab27edc35cb73040-driver
@@ -294,7 +294,7 @@ Pi is roughly 3.152155760778804
 
 W powyższym przykładzie plik JAR magazynu Spark został przekazany do usługi Azure Storage. Innym rozwiązaniem jest spakowanie pliku JAR do obrazów platformy Docker utworzonych niestandardowo.
 
-Aby to zrobić, Znajdź `dockerfile` dla obrazu platformy Spark znajdującego się w katalogu `$sparkdir/resource-managers/kubernetes/docker/src/main/dockerfiles/spark/`. Dodaj instrukcję am `ADD` dla zadania Spark `jar` gdzieś między deklaracjami `WORKDIR` i `ENTRYPOINT`.
+Aby to zrobić, Znajdź `dockerfile` obrazu platformy Spark znajdującego się w katalogu `$sparkdir/resource-managers/kubernetes/docker/src/main/dockerfiles/spark/`. Dodaj instrukcję am `ADD` dla zadania Spark `jar` gdzieś między `WORKDIR` i `ENTRYPOINT` deklaracjami.
 
 Zaktualizuj ścieżkę jar do lokalizacji pliku `SparkPi-assembly-0.1.0-SNAPSHOT.jar` w systemie deweloperskim. Możesz również użyć własnego pliku JAR.
 
@@ -322,6 +322,7 @@ Podczas uruchamiania zadania, zamiast wskazywać zdalny adres URL jar, schemat `
     --name spark-pi \
     --class org.apache.spark.examples.SparkPi \
     --conf spark.executor.instances=3 \
+    --conf spark.kubernetes.authenticate.driver.serviceAccountName=spark \
     --conf spark.kubernetes.container.image=<spark-image> \
     local:///opt/spark/work-dir/<your-jar-name>.jar
 ```

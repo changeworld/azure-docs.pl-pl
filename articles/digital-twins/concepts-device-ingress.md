@@ -8,12 +8,12 @@ ms.service: digital-twins
 services: digital-twins
 ms.topic: conceptual
 ms.date: 11/07/2019
-ms.openlocfilehash: 723fe14db9089e1127f39eae3ed7b10bbddf70bf
-ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
+ms.openlocfilehash: 4e7a179980abb164754941f345d2ee9ae7f5c9de
+ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/09/2019
-ms.locfileid: "73889709"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73930390"
 ---
 # <a name="device-connectivity-and-telemetry-ingress"></a>Ruch przychodzący danych telemetrycznych i łączność urządzeń
 
@@ -67,10 +67,10 @@ Można dostosować Format komunikatów i ładunek urządzenia, aby odpowiadały 
 
  Zawartość ładunku **komunikatu** może zawierać dowolne dane o rozmiarze do 256 KB. Dla właściwości typu [`Message.Properties`](https://docs.microsoft.com/dotnet/api/microsoft.azure.devices.client.message.properties?view=azure-dotnet) oczekiwano kilku wymagań. W tabeli przedstawiono właściwości wymagane i opcjonalne obsługiwane przez system.
 
-| Nazwa właściwości | Wartość | Wymagany | Opis |
+| Nazwa właściwości | Wartość | Wymagane | Opis |
 |---|---|---|---|
-| **DigitalTwins — Telemetria** | 1.0 | Tak | Stała wartość, która identyfikuje komunikat w systemie. |
-| **DigitalTwins-SensorHardwareId** | `string(72)` | Tak | Unikatowy identyfikator czujnika, który wysyła **komunikat**. Ta wartość musi być zgodna z właściwością **HardwareId** obiektu dla systemu, aby przetworzyć go. Na przykład `00FF0643BE88-CO2`. |
+| **DigitalTwins — Telemetria** | 1.0 | Yes | Stała wartość, która identyfikuje komunikat w systemie. |
+| **DigitalTwins-SensorHardwareId** | `string(72)` | Yes | Unikatowy identyfikator czujnika, który wysyła **komunikat**. Ta wartość musi być zgodna z właściwością **HardwareId** obiektu dla systemu, aby przetworzyć go. Na przykład `00FF0643BE88-CO2`. |
 | **CreationTimeUtc** | `string` | Nie | Ciąg daty w formacie [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) , który identyfikuje czas próbkowania ładunku. Na przykład `2018-09-20T07:35:00.8587882-07:00`. |
 | **Korelacj** | `string` | Nie | Identyfikator UUID używany do śledzenia zdarzeń w systemie. Na przykład `cec16751-ab27-405d-8fe6-c68e1412ce1f`.
 

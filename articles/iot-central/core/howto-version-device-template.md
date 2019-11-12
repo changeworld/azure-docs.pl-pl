@@ -1,5 +1,5 @@
 ---
-title: Informacje o wersji szablonów urządzeń dla aplikacji IoT Central platformy Azure | Microsoft Docs
+title: Przechowywanie wersji szablonów urządzeń dla aplikacji platformy Azure IoT Central | Microsoft Docs
 description: Wykonaj iterację szablonów urządzeń, tworząc nowe wersje i bez wpływu na urządzenia połączone na żywo
 author: sandeeppujar
 ms.author: sandeepu
@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: peterpr
-ms.openlocfilehash: 8d4e3b304000113e7ecbf748767780a3fcf17bb3
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: feaa8abcb6635573b3680b77befa5ccb462ec73a
+ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72952604"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73930120"
 ---
 # <a name="create-a-new-device-template-version"></a>Utwórz nową wersję szablonu urządzenia
 

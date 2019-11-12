@@ -1,5 +1,5 @@
 ---
-title: Utwórz klienta, aby korzystał z wdrożonej usługi sieci Web
+title: Utwórz klienta dla modelu wdrożonego jako usługa sieci Web
 titleSuffix: Azure Machine Learning
 description: Dowiedz się, jak korzystać z usługi sieci Web, która została wygenerowana, gdy model został wdrożony z modelem Azure Machine Learning. Usługa sieci Web uwidacznia interfejs API REST. Tworzenie klientów dla tego interfejsu API przy użyciu wybranego języka programowania.
 services: machine-learning
@@ -11,12 +11,12 @@ author: aashishb
 ms.reviewer: larryfr
 ms.date: 11/06/2019
 ms.custom: seodec18
-ms.openlocfilehash: 387ba970aed68a5f4e682f932a362d3b04b35b8d
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 608f343166b528cacf3b1479d993466f6df7cb7e
+ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73671469"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73932157"
 ---
 # <a name="consume-an-azure-machine-learning-model-deployed-as-a-web-service"></a>Korzystanie z modelu Azure Machine Learning wdrożonego jako usługa sieci Web
 [!INCLUDE [applies-to-skus](../../../includes/aml-applies-to-basic-enterprise-sku.md)]

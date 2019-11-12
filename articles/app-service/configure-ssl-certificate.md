@@ -13,12 +13,12 @@ ms.date: 10/25/2019
 ms.author: cephalin
 ms.reviewer: yutlin
 ms.custom: seodec18
-ms.openlocfilehash: 4f0c8078a502d0332b02d95c0c46d9dbcc53a884
-ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
+ms.openlocfilehash: 48c8390eff52466d11f781447c448d04ba567f31
+ms.sourcegitcommit: 6dec090a6820fb68ac7648cf5fa4a70f45f87e1a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/09/2019
-ms.locfileid: "73886862"
+ms.lasthandoff: 11/11/2019
+ms.locfileid: "73907126"
 ---
 # <a name="add-an-ssl-certificate-in-azure-app-service"></a>Dodawanie certyfikatu SSL w Azure App Service
 
@@ -68,6 +68,10 @@ Bezpłatny App Service certyfikat zarządzany to rozwiązanie, które umożliwia
 - Nie obsługuje certyfikatów symboli wieloznacznych.
 - Nie obsługuje domen niedozwolonych.
 - Nie jest możliwy do eksportu.
+
+> [!NOTE]
+> Bezpłatny certyfikat jest wystawiany przez DigiCert. W przypadku niektórych domen najwyższego poziomu należy jawnie zezwolić DigiCert jako wystawcy certyfikatu przez utworzenie [rekordu domeny CAA](https://wikipedia.org/wiki/DNS_Certification_Authority_Authorization) z wartością: `0 issue digicert.com`.
+> 
 
 Aby utworzyć bezpłatny App Service certyfikat zarządzany:
 

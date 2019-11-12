@@ -6,38 +6,35 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 05/14/2019
+ms.date: 11/06/2019
 ms.author: hrasheed
-ms.openlocfilehash: 37652a8ca9750e6b33bd2744bda386eaba92b025
-ms.sourcegitcommit: 38251963cf3b8c9373929e071b50fd9049942b37
+ms.openlocfilehash: 5b10cc5a8b7468b222fec3f2e66a8258470047ae
+ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/29/2019
-ms.locfileid: "73044531"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73931891"
 ---
 # <a name="run-apache-hive-queries-using-the-data-lake-tools-for-visual-studio"></a>Uruchamianie zapytań Apache Hive przy użyciu narzędzi Data Lake Tools for Visual Studio
 
 Dowiedz się, jak Apache Hive wykonywać zapytania za pomocą narzędzi Data Lake Tools for Visual Studio. Narzędzia Data Lake umożliwiają łatwe tworzenie, przesyłanie i monitorowanie zapytań Hive w celu Apache Hadoop w usłudze Azure HDInsight.
 
-## <a id="prereq"></a>Wymagania wstępne
+## <a name="prerequisites"></a>Wymagania wstępne
 
-* Klaster Apache Hadoop w usłudze HDInsight. Zobacz Rozpoczynanie [pracy z usługą HDInsight w systemie Linux](./apache-hadoop-linux-tutorial-get-started.md).
+* Klaster Apache Hadoop w usłudze HDInsight. Aby uzyskać informacje na temat tworzenia tego elementu, zobacz [Tworzenie klastra Apache Hadoop w usłudze Azure HDInsight przy użyciu szablonu Menedżer zasobów](./apache-hadoop-linux-tutorial-get-started.md).
 
-* Visual Studio (jedna z następujących wersji):
+* Program [Visual Studio](https://visualstudio.microsoft.com/vs/). Kroki opisane w tym artykule korzystają z programu Visual Studio 2019.
 
-    * Visual Studio 2015, 2017 (dowolna wersja)
-    * Visual Studio 2013 Community/Professional/Premium/Ultimate z aktualizacją Update 4
+* Narzędzia HDInsight Tools for Visual Studio lub Azure Data Lake Tools for Visual Studio. Aby uzyskać informacje na temat instalowania i konfigurowania narzędzi, zobacz [Install Data Lake Tools for Visual Studio](apache-hadoop-visual-studio-tools-get-started.md#install-data-lake-tools-for-visual-studio).
 
-* Narzędzia HDInsight Tools for Visual Studio lub Azure Data Lake Tools for Visual Studio. Aby uzyskać informacje na temat instalowania i konfigurowania narzędzi, zobacz Wprowadzenie do [narzędzia Visual Studio Hadoop Tools for HDInsight](apache-hadoop-visual-studio-tools-get-started.md) .
-
-## <a id="run"></a>Uruchamianie zapytań Apache Hive przy użyciu programu Visual Studio
+## <a name="run-apache-hive-queries-using-the-visual-studio"></a>Uruchamianie zapytań Apache Hive przy użyciu programu Visual Studio
 
 Masz dwie opcje umożliwiające utworzenie i uruchomienie zapytań Hive:
 
-* Tworzenie zapytań ad hoc
-* Tworzenie aplikacji Hive
+* Utwórz zapytania ad hoc.
+* Tworzenie aplikacji Hive.
 
-### <a name="ad-hoc"></a>Ad hoc
+### <a name="create-an-ad-hoc-hive-query"></a>Tworzenie zapytania Hive ad hoc
 
 Zapytania ad hoc mogą być wykonywane w trybie **wsadowym** lub **interaktywnym** .
 
@@ -45,7 +42,7 @@ Zapytania ad hoc mogą być wykonywane w trybie **wsadowym** lub **interaktywnym
 
 2. W obszarze **Eksplorator serwera**przejdź do **usługi Azure** > **HDInsight**.
 
-3. Rozwiń węzeł **HDInsight**i kliknij prawym przyciskiem myszy klaster, w którym chcesz uruchomić zapytanie, a następnie wybierz polecenie **Napisz zapytanie Hive**.
+3. Rozwiń węzeł **HDInsight**, kliknij prawym przyciskiem myszy klaster, w którym chcesz uruchomić zapytanie, a następnie wybierz polecenie **Napisz zapytanie Hive**.
 
 4. Wprowadź następujące zapytanie programu Hive:
 
@@ -53,39 +50,37 @@ Zapytania ad hoc mogą być wykonywane w trybie **wsadowym** lub **interaktywnym
     SELECT * FROM hivesampletable;
     ```
 
-5. Wybierz pozycję **Wykonaj**. Należy pamiętać, że tryb wykonywania jest domyślnie **interaktywny**.
+5. Wybierz pozycję **Wykonaj**. Tryb wykonywania jest domyślnie **interaktywny**.
 
-    ![Zrzut ekranu przedstawiający wykonywanie zapytań interaktywnych Hive](./media/apache-hadoop-use-hive-visual-studio/vs-execute-hive-query.png)
+    ![Wykonywanie interakcyjnego zapytania Hive, Visual Studio](./media/apache-hadoop-use-hive-visual-studio/vs-execute-hive-query.png)
 
-6. Aby uruchomić to samo zapytanie w trybie **wsadowym** , przełącz listę rozwijaną **interaktywnie** do **Batch**. Należy zauważyć, że przycisk wykonywania zmienia się z **Execute** na **Submit**.
+6. Aby uruchomić to samo zapytanie w trybie **wsadowym** , przełącz listę rozwijaną **interaktywnie** do **Batch**. Przycisk wykonywania zmienia się z **Execute** na **Submit**.
 
-    ![Zrzut ekranu przedstawiający przesyłanie zapytania Hive](./media/apache-hadoop-use-hive-visual-studio/visual-studio-batch-query.png)
+    ![Przesyłanie zapytania programu Hive w usłudze Batch, Visual Studio](./media/apache-hadoop-use-hive-visual-studio/visual-studio-batch-query.png)
 
     Edytor Hive obsługuje funkcję IntelliSense. Narzędzia Data Lake Tools for Visual Studio obsługują ładowanie zdalnych metadanych podczas edycji skryptu Hive. Na przykład, jeśli wpiszesz `SELECT * FROM`, IntelliSense wyświetla wszystkie sugerowane nazwy tabel. Po określeniu nazwy tabeli funkcja IntelliSense wyświetla nazwy kolumn. Narzędzia obsługują większość instrukcji DML programu Hive, podzapytań i wbudowanych sterowników UDF. Funkcja IntelliSense zasugeruje tylko metadane klastra zaznaczonego na pasku narzędzi usługi HDInsight.
 
-    ![Zrzut ekranu przykładu funkcji IntelliSense Visual Studio Tools usługi HDInsight 1](./media/apache-hadoop-use-hive-visual-studio/vs-intellisense-table-name.png "Funkcja IntelliSense języka U-SQL")
-   
-    ![Zrzut ekranu przykładu funkcji IntelliSense Visual Studio Tools usługi HDInsight](./media/apache-hadoop-use-hive-visual-studio/vs-intellisense-column-name.png "Funkcja IntelliSense języka U-SQL")
+7. Na pasku narzędzi zapytania (obszar poniżej karty zapytania i powyżej tekstu zapytania) wybierz pozycję **Prześlij**lub wybierz rozwijaną strzałkę obok pola **Prześlij** i wybierz pozycję **Zaawansowane** z listy rozwijanej. Jeśli wybierzesz ostatnią opcję,
 
-7. Wybierz pozycję **Prześlij** lub **Prześlij (zaawansowane)** .
+8. W przypadku wybrania opcji przesyłania zaawansowanego Skonfiguruj **nazwę zadania**, **argumenty**, **dodatkowe konfiguracje**i **katalog stanu** w oknie dialogowym **Prześlij skrypt** . Następnie wybierz pozycję **Prześlij**.
 
-   W przypadku wybrania zaawansowanych opcji przesyłania należy skonfigurować dla skryptu wartości takie jak **Nazwa zadania**, **Argumenty**, **Dodatkowe konfiguracje** i **Katalog stanu**:
+    ![Okno dialogowe przesyłania skryptu, zapytanie Hive usługi HDInsight Hadoop](./media/apache-hadoop-use-hive-visual-studio/vs-tools-submit-jobs-advanced.png)
 
-    ![Zrzut ekranu zapytania programu Hive usługi HDInsight Hadoop](./media/apache-hadoop-use-hive-visual-studio/vs-tools-submit-jobs-advanced.png "Prześlij zapytania")
+### <a name="create-a-hive-application"></a>Tworzenie aplikacji Hive
 
-### <a name="hive-application"></a>Aplikacja Hive
+Aby uruchomić zapytanie programu Hive przez utworzenie aplikacji Hive, wykonaj następujące kroki:
 
 1. Otwórz **program Visual Studio**.
 
-2. Na pasku menu Przejdź do **pliku** > **Nowy** > **projekt**.
+2. W oknie **uruchamiania** wybierz pozycję **Utwórz nowy projekt**.
 
-3. W oknie **Nowy projekt** przejdź do **szablonów** > **Azure Data Lake** > **Hive (HDInsight)**  > **aplikacji Hive**. 
+3. W oknie **Tworzenie nowego projektu** w polu **Wyszukaj szablony** wprowadź wartość *Hive*. Następnie wybierz pozycję **aplikacja Hive** i wybierz pozycję **dalej**.
 
-4. Podaj nazwę dla tego projektu, a następnie wybierz przycisk **OK**.
+4. W oknie **Konfigurowanie nowego projektu** wprowadź **nazwę projektu**, wybierz lub Utwórz **lokalizację** dla nowego projektu, a następnie wybierz pozycję **Utwórz**.
 
 5. Otwórz plik **Script. HQL** , który jest tworzony przy użyciu tego projektu, i wklej go w następujących instrukcjach HiveQL:
 
-    ```hiveql
+    ```hql
     set hive.execution.engine=tez;
     DROP TABLE log4jLogs;
     CREATE EXTERNAL TABLE log4jLogs (t1 string, t2 string, t3 string, t4 string, t5 string, t6 string, t7 string)
@@ -96,36 +91,34 @@ Zapytania ad hoc mogą być wykonywane w trybie **wsadowym** lub **interaktywnym
 
     Te instrukcje wykonują następujące czynności:
 
-   * `DROP TABLE`: Jeśli tabela istnieje, ta instrukcja usunie ją.
+    * `DROP TABLE`: usuwa tabelę, jeśli istnieje.
 
-   * `CREATE EXTERNAL TABLE`: tworzy nową tabelę "External" w gałęzi. Tabele zewnętrzne przechowują definicję tabeli w gałęzi Hive (dane są pozostawione w oryginalnej lokalizacji).
+    * `CREATE EXTERNAL TABLE`: tworzy nową tabelę "External" w gałęzi. Tabele zewnętrzne przechowują wyłącznie definicję tabeli w programie Hive. (Dane pozostaną w oryginalnej lokalizacji).
 
-     > [!NOTE]  
-     > Tabele zewnętrzne powinny być używane, gdy oczekuje się, że dane podstawowe mają być aktualizowane przez zewnętrzne źródło. Na przykład zadanie MapReduce lub usługa platformy Azure.
-     >
-     > Porzucenie tabeli **zewnętrznej nie powoduje usunięcia danych** , tylko definicji tabeli.
+        > [!NOTE]  
+        > Tabele zewnętrzne powinny być używane, gdy oczekuje się, że dane podstawowe mają być aktualizowane przez zewnętrzne źródło, takie jak zadanie MapReduce lub usługa platformy Azure.
+        >
+        > Porzucenie tabeli **zewnętrznej nie powoduje usunięcia danych** , tylko definicji tabeli.
+    
+    * `ROW FORMAT`: informuje Hive o sposobie formatowania danych. W takim przypadku pola w każdym dzienniku są oddzielone spacją.
 
-   * `ROW FORMAT`: informuje Hive, jak dane są formatowane. W takim przypadku pola w każdym dzienniku są oddzielone spacją.
+    * `STORED AS TEXTFILE LOCATION`: instruuje gałąź, że dane są przechowywane w *przykładowym katalogu danych* i są przechowywane jako tekst.
 
-   * `STORED AS TEXTFILE LOCATION`: instruuje gałąź, że dane są przechowywane w przykładowym katalogu danych i są przechowywane jako tekst.
+    * `SELECT`: wybiera liczbę wszystkich wierszy, w których `t4` kolumna zawiera wartość `[ERROR]`. Ta instrukcja zwraca wartość `3`, ponieważ trzy wiersze zawierają tę wartość.
 
-   * `SELECT`: Wybierz liczbę wszystkich wierszy, w których `t4` kolumna zawiera wartość `[ERROR]`. Ta instrukcja zwraca wartość `3`, ponieważ istnieją trzy wiersze, które zawierają tę wartość.
+    * `INPUT__FILE__NAME LIKE '%.log'`: instruuje gałąź, aby zwracała tylko dane z plików kończących się na. log. Ta klauzula ogranicza wyszukiwanie do pliku *Sample. log* , który zawiera dane.
 
-   * `INPUT__FILE__NAME LIKE '%.log'` — informuje gałąź, że będziemy zwracać tylko dane z plików kończących się na. log. Ta klauzula ogranicza wyszukiwanie do pliku Sample. log, który zawiera dane.
+6. Na pasku narzędzi pliku zapytania (który ma podobny wygląd do paska narzędzi zapytania ad hoc) wybierz klaster usługi HDInsight, który ma być używany dla tego zapytania. Następnie zmień **interaktywnie** na **Batch** (w razie potrzeby) i wybierz pozycję **Prześlij** , aby uruchomić instrukcje jako zadanie Hive.
 
-6. Na pasku narzędzi wybierz klaster usługi **HDInsight** , który ma być używany dla tego zapytania. Wybierz pozycję **Prześlij** , aby uruchomić instrukcje jako zadanie Hive.
+   Zostanie wyświetlone **Podsumowanie zadania programu Hive** zawierające informacje o uruchomionym zadaniu. Użyj linku **Odśwież** , aby odświeżyć informacje o zadaniu do momentu, aż **stan zadania** zmieni się na **zakończone**.
 
-   ![Przesyłanie paska narzędzi usługi Azure HDInsight](./media/apache-hadoop-use-hive-visual-studio/hdinsight-toolbar-submit.png)
+   ![Ukończono podsumowanie zadania Hive, aplikacja Hive, program Visual Studio](./media/apache-hadoop-use-hive-visual-studio/hdinsight-job-summary.png)
 
-7. Zostanie wyświetlone **Podsumowanie zadania programu Hive** zawierające informacje o uruchomionym zadaniu. Użyj linku **Odśwież** , aby odświeżyć informacje o zadaniu do momentu, aż **stan zadania** zmieni się na **zakończone**.
-
-   ![Podsumowanie zadania zawierające ukończone zadanie](./media/apache-hadoop-use-hive-visual-studio/hdinsight-job-summary.png)
-
-8. Użyj linku **dane wyjściowe zadania** , aby wyświetlić dane wyjściowe tego zadania. Wyświetla `[ERROR] 3`, która jest wartością zwracaną przez to zapytanie.
+7. Wybierz pozycję **dane wyjściowe zadania** , aby wyświetlić dane wyjściowe tego zadania. Wyświetla `[ERROR] 3`, która jest wartością zwracaną przez to zapytanie.
 
 ### <a name="additional-example"></a>Dodatkowy przykład
 
-Ten przykład opiera się na tabeli `log4jLogs` utworzonej w poprzednim kroku.
+Poniższy przykład opiera się na tabeli `log4jLogs` utworzonej w poprzedniej procedurze, [Tworzenie aplikacji Hive](#create-a-hive-application).
 
 1. W **Eksplorator serwera**kliknij prawym przyciskiem myszy klaster i wybierz polecenie **Napisz zapytanie Hive**.
 
@@ -140,32 +133,30 @@ Ten przykład opiera się na tabeli `log4jLogs` utworzonej w poprzednim kroku.
     Te instrukcje wykonują następujące czynności:
 
     * `CREATE TABLE IF NOT EXISTS`: tworzy tabelę, jeśli jeszcze nie istnieje. Ponieważ słowo kluczowe `EXTERNAL` nie jest używane, ta instrukcja tworzy tabelę wewnętrzną. Tabele wewnętrzne są przechowywane w magazynie danych programu Hive i są zarządzane przez program Hive.
-    
-    > [!NOTE]  
-    > W przeciwieństwie do tabel `EXTERNAL`, upuszczenie wewnętrznej tabeli spowoduje również usunięcie danych źródłowych.
 
-    * `STORED AS ORC`: przechowuje dane w formacie ORC (zoptymalizowany wiersz kolumnowy). ORC to wysoce zoptymalizowany i wydajny format służący do przechowywania danych programu Hive.
+        > [!NOTE]  
+        > W przeciwieństwie do tabel `EXTERNAL`, upuszczenie wewnętrznej tabeli spowoduje również usunięcie danych źródłowych.
+
+    * `STORED AS ORC`: przechowuje dane w formacie Orc ( *zoptymalizowany wiersz kolumnowy* ). ORC to wysoce zoptymalizowany i wydajny format służący do przechowywania danych programu Hive.
     
     * `INSERT OVERWRITE ... SELECT`: wybiera wiersze z tabeli `log4jLogs` zawierającej `[ERROR]`, a następnie wstawia dane do tabeli `errorLogs`.
 
-3. Wykonaj zapytanie w trybie **wsadowym** .
+3. W razie potrzeby zmień **interaktywną** pozycję **Batch** , a następnie wybierz pozycję **Prześlij**.
 
-4. Aby sprawdzić, czy zadanie utworzyło tabelę, użyj **Eksplorator serwera** i rozwiń węzeł **Azure** > **HDInsight** > klastrze usługi hdinsight > **bazach danych programu Hive** > **domyślnego**. Zostanie wyświetlona tabela **errorLogs** i tabela **log4jLogs** .
+4. Aby sprawdzić, czy zadanie utworzyło tabelę, przejdź do **Eksplorator serwera** i rozwiń węzeł **Azure** > **HDInsight**. Rozwiń klaster usługi HDInsight, a następnie rozwiń węzeł **bazy danych programu Hive** > **Domyślnie**. Zostanie wyświetlona tabela **errorLogs** i tabela **log4jLogs** .
 
-## <a id="nextsteps"></a>Następne kroki
+## <a name="next-steps"></a>Następne kroki
 
 Jak widać, narzędzia HDInsight Tools for Visual Studio zapewniają łatwy sposób pracy z zapytaniami programu Hive w usłudze HDInsight.
 
 Aby uzyskać ogólne informacje na temat usługi Hive w usłudze HDInsight:
 
-* [Używanie Apache Hive z Apache Hadoop w usłudze HDInsight](hdinsight-use-hive.md)
+* [Co to jest Apache Hive i HiveQL w usłudze Azure HDInsight?](hdinsight-use-hive.md)
 
 Aby uzyskać informacje o innych sposobach pracy z usługą Hadoop w usłudze HDInsight:
 
-* [Korzystanie z usługi Apache świni z usługą Apache Hadoop w usłudze HDInsight](hdinsight-use-pig.md)
-
-* [Używanie MapReduce z usługą Apache Hadoop w usłudze HDInsight](hdinsight-use-mapreduce.md)
+* [Korzystanie z technologii MapReduce na platformie Apache Hadoop w usłudze HDInsight](hdinsight-use-mapreduce.md)
 
 Aby uzyskać więcej informacji na temat narzędzi HDInsight Tools for Visual Studio:
 
-* [Wprowadzenie do narzędzi HDInsight Tools for Visual Studio](apache-hadoop-visual-studio-tools-get-started.md)
+* [Używanie Data Lake narzędzi dla programu Visual Studio do nawiązywania połączenia z usługą Azure HDInsight i uruchamiania zapytań Apache Hive](apache-hadoop-visual-studio-tools-get-started.md)

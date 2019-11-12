@@ -1,6 +1,6 @@
 ---
-title: Szybki start — tworzenie rejestru prywatnego platformy Docker na platformie Azure — PowerShell
-description: Szybko naucz się tworzyć prywatny rejestr kontenerów platformy Docker na platformie Azure przy użyciu programu PowerShell.
+title: Szybki Start — tworzenie rejestru-Azure Container Registry programu PowerShell
+description: Szybka nauka tworzenia rejestru prywatnego platformy Docker w Azure Container Registry przy użyciu programu PowerShell
 services: container-registry
 author: dlepow
 manager: gwallace
@@ -9,14 +9,14 @@ ms.topic: quickstart
 ms.date: 01/22/2019
 ms.author: danlep
 ms.custom: seodec18, mvc
-ms.openlocfilehash: f99b4ee6dd11a109d1c563c84debc2157cb03337
-ms.sourcegitcommit: 0f54f1b067f588d50f787fbfac50854a3a64fff7
+ms.openlocfilehash: b337c28efc3db7d4bec4408b5da1f8a5e1d87094
+ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/12/2019
-ms.locfileid: "68309491"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73931623"
 ---
-# <a name="quickstart-create-a-private-container-registry-using-azure-powershell"></a>Szybki start: tworzenie prywatnego rejestru kontenerów za pomocą programu Azure PowerShell
+# <a name="quickstart-create-a-private-container-registry-using-azure-powershell"></a>Szybki Start: Tworzenie prywatnego rejestru kontenerów za pomocą Azure PowerShell
 
 Usługa Azure Container Registry to zarządzana, prywatna usługa rejestru kontenerów platformy Docker używana do kompilowania, przechowywania i obsługi obrazów kontenerów Docker. Z tego przewodnika Szybki start dowiesz się, jak utworzyć rejestr kontenerów platformy Azure przy użyciu programu PowerShell. Następnie za pomocą poleceń platformy Docker wypchniesz obraz kontenera do rejestru, a na koniec ściągniesz i uruchomisz obraz z rejestru.
 
@@ -46,7 +46,7 @@ Po uwierzytelnieniu na platformie Azure Utwórz grupę zasobów przy użyciu pol
 New-AzResourceGroup -Name myResourceGroup -Location EastUS
 ```
 
-## <a name="create-container-registry"></a>Utwórz rejestr kontenerów
+## <a name="create-container-registry"></a>Tworzenie rejestru kontenerów
 
 Następnie utwórz rejestr kontenerów w nowej grupie zasobów za pomocą polecenia [New-AzContainerRegistry][New-AzContainerRegistry] .
 

@@ -18,12 +18,12 @@ ms.author: ryanwi
 ms.reviewer: saeeda, jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e07136eed9c14eb4b6eda49ef635171aaf543445
-ms.sourcegitcommit: ec2b75b1fc667c4e893686dbd8e119e7c757333a
+ms.openlocfilehash: 21f1da8738946078cb625c76e11ce1bfd62d97ac
+ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72809274"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73927155"
 ---
 # <a name="application-types-for-microsoft-identity-platform"></a>Typy aplikacji dla platformy tożsamości firmy Microsoft
 
@@ -76,7 +76,7 @@ eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsIng1dCI6ImtyaU1QZG1Cd...
 }
 ```
 
-Dodatkowe szczegóły dotyczące różnych typów tokenów używanych w punkcie końcowym platformy tożsamości firmy Microsoft są dostępne w odwołaniach do [tokenów dostępu](access-tokens.md) i [id_token](id-tokens.md)
+Dodatkowe szczegóły dotyczące różnych typów tokenów używanych w punkcie końcowym platformy tożsamości firmy Microsoft są dostępne w dokumentacji [tokenu dostępu](access-tokens.md) i [id_token](id-tokens.md)
 
 W aplikacjach serwera sieci Web przepływ uwierzytelniania logowania wykonuje następujące czynności wysokiego poziomu:
 
@@ -90,7 +90,7 @@ Oprócz prostej logowania aplikacja serwera sieci Web może potrzebować dostęp
 
 ## <a name="web-apis"></a>Interfejsy API sieci Web
 
-Możesz użyć punktu końcowego platformy tożsamości firmy Microsoft do zabezpieczenia usług sieci Web, takich jak internetowy interfejs API aplikacji RESTful. Zamiast tokenów identyfikatorów i plików cookie sesji, internetowy interfejs API używa tokenu dostępu OAuth 2,0 do zabezpieczania danych i uwierzytelniania żądań przychodzących. Obiekt wywołujący interfejs API sieci Web dołącza token dostępu w nagłówku autoryzacji żądania HTTP, tak jak to:
+Możesz użyć punktu końcowego platformy tożsamości firmy Microsoft do zabezpieczenia usług sieci Web, takich jak internetowy interfejs API aplikacji RESTful. Interfejsy API sieci Web można zaimplementować na wielu platformach i w różnych językach. Można je również zaimplementować przy użyciu wyzwalaczy HTTP w Azure Functions. Zamiast tokenów identyfikatorów i plików cookie sesji, internetowy interfejs API używa tokenu dostępu OAuth 2,0 do zabezpieczania danych i uwierzytelniania żądań przychodzących. Obiekt wywołujący interfejs API sieci Web dołącza token dostępu w nagłówku autoryzacji żądania HTTP, tak jak to:
 
 ```
 GET /api/items HTTP/1.1
@@ -100,7 +100,7 @@ Accept: application/json
 ...
 ```
 
-Internetowy interfejs API używa tokenu dostępu do weryfikowania tożsamości obiektu wywołującego interfejsu API i wyodrębniania informacji o wywołującym z oświadczeń, które są zakodowane w tokenie dostępu. Dodatkowe szczegóły dotyczące różnych typów tokenów używanych w punkcie końcowym platformy tożsamości firmy Microsoft są dostępne w odwołaniach do [tokenów dostępu](access-tokens.md) i [id_token](id-tokens.md)
+Internetowy interfejs API używa tokenu dostępu do weryfikowania tożsamości obiektu wywołującego interfejsu API i wyodrębniania informacji o wywołującym z oświadczeń, które są zakodowane w tokenie dostępu. Dodatkowe szczegóły dotyczące różnych typów tokenów używanych w punkcie końcowym platformy tożsamości firmy Microsoft są dostępne w dokumentacji [tokenu dostępu](access-tokens.md) i [id_token](id-tokens.md)
 
 Internetowy interfejs API może zapewnić użytkownikom możliwość wyboru lub rezygnacji z określonych funkcji lub danych przez ujawnienie uprawnień, nazywanych również [zakresami](v2-permissions-and-consent.md). Aby aplikacja wywołująca uzyskała uprawnienie do zakresu, użytkownik musi wyrazić zgodę na zakres w przepływie. Punkt końcowy platformy tożsamości firmy Microsoft prosi użytkownika o zgodę, a następnie rejestruje uprawnienia we wszystkich tokenach dostępu odbieranych przez internetowy interfejs API. Internetowy interfejs API sprawdza poprawność tokenów dostępu odbieranych na każdym wywołaniu i wykonuje sprawdzanie autoryzacji.
 

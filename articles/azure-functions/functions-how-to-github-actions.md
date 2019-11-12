@@ -7,12 +7,12 @@ ms.service: azure-functions
 ms.topic: conceptual
 ms.date: 09/16/2019
 ms.author: aelnably
-ms.openlocfilehash: 483ac9380fa8d58f294112cb6c80e0393fa01589
-ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
+ms.openlocfilehash: 486033ef4120d721458add7f23cdf9b78a44a388
+ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/08/2019
-ms.locfileid: "72028967"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73928351"
 ---
 # <a name="continuous-delivery-by-using-github-action"></a>Ciągłe dostarczanie za pomocą akcji GitHub
 
@@ -33,7 +33,10 @@ W przypadku przepływu pracy Azure Functions plik ma trzy sekcje:
 | **Utworzenia** | <ol><li>Skonfiguruj środowisko.</li><li>Kompiluj aplikację funkcji.</li></ol> |
 | **Wdrażanie** | <ol><li>Wdróż aplikację funkcji.</li></ol>|
 
-## <a name="create-a-service-principal"></a>Tworzenie jednostki usługi
+> [!NOTE]
+> Nie trzeba tworzyć jednostki usługi, jeśli zdecydujesz się na użycie profilu publikowania na potrzeby uwierzytelniania.
+
+## <a name="create-a-service-principal"></a>Tworzenie nazwy głównej usługi
 
 [Nazwę główną usługi](../active-directory/develop/app-objects-and-service-principals.md#service-principal-object) można utworzyć przy użyciu polecenia [AZ AD Sp Create-for-RBAC](/cli/azure/ad/sp?view=azure-cli-latest#az-ad-sp-create-for-rbac) w [interfejsie użytkownika platformy Azure](/cli/azure/). Można uruchomić to polecenie przy użyciu [Azure Cloud Shell](https://shell.azure.com) w Azure Portal lub wybierając przycisk **Wypróbuj** .
 
@@ -42,9 +45,6 @@ az ad sp create-for-rbac --name "myApp" --role contributor --scopes /subscriptio
 ```
 
 W tym przykładzie Zastąp symbole zastępcze w zasobie IDENTYFIKATORem subskrypcji, grupą zasobów i nazwą aplikacji funkcji. Dane wyjściowe to poświadczenia przypisania roli, które zapewniają dostęp do aplikacji funkcji. Skopiuj ten obiekt JSON, którego możesz użyć do uwierzytelniania z usługi GitHub.
-
-> [!NOTE]
-> Nie trzeba tworzyć jednostki usługi, jeśli zdecydujesz się na użycie profilu publikowania na potrzeby uwierzytelniania.
 
 > [!IMPORTANT]
 > Zawsze dobrym sposobem jest przyznanie minimalnego dostępu. Dlatego zakres w poprzednim przykładzie jest ograniczony do określonej aplikacji funkcji, a nie całej grupy zasobów.
@@ -59,11 +59,11 @@ Skopiuj zawartość pliku.
 
 ## <a name="configure-the-github-secret"></a>Konfigurowanie wpisu tajnego usługi GitHub
 
-1. W witrynie [GitHub](https://github.com)Przejrzyj repozytorium, wybierz pozycję **Ustawienia** >  wpisy**tajne** > **Dodaj nowy wpis tajny**.
+1. W witrynie [GitHub](https://github.com)Przejrzyj repozytorium, wybierz pozycję **Ustawienia** > wpisy **tajne** > **Dodaj nowe hasło**.
 
    ![Dodaj klucz tajny](media/functions-how-to-github-actions/add-secret.png)
 
-1. Użyj `AZURE_CREDENTIALS` jako **nazwy** i skopiowanych danych wyjściowych polecenia dla **wartości**, jeśli następnie wybierz pozycję **Dodaj klucz tajny**. Jeśli używasz profilu publikowania, użyj `SCM_CREDENTIALS` jako **nazwy** i zawartości pliku dla **wartości**.
+1. Użyj `AZURE_CREDENTIALS` dla **nazwy** i skopiowanych danych wyjściowych polecenia dla **wartości**, jeśli następnie wybierz pozycję **Dodaj klucz tajny**. Jeśli używasz profilu publikowania, użyj `SCM_CREDENTIALS` dla **nazwy** i zawartości pliku dla **wartości**.
 
 Usługa GitHub umożliwia teraz uwierzytelnianie w aplikacji funkcji na platformie Azure.
 
@@ -218,7 +218,7 @@ W poniższym przykładzie użyta zostanie wersja 1 `functions-action`:
 
 ## <a name="next-steps"></a>Następne kroki
 
-Aby wyświetlić kompletny przepływ pracy. YAML, zobacz jeden z plików w [repozytorium przykładów przepływu pracy akcji usługi Azure GitHub](https://github.com/Azure/actions-workflow-samples) , w którym znajduje się `functionapp`. Możesz użyć tych przykładów jako punktu wyjścia dla przepływu pracy.
+Aby wyświetlić kompletny przepływ pracy. YAML, zobacz jeden z plików w [repozytorium przykładów przepływu pracy akcji usługi Azure GitHub](https://github.com/Azure/actions-workflow-samples) , który ma `functionapp` w nazwie. Możesz użyć tych przykładów jako punktu wyjścia dla przepływu pracy.
 
 > [!div class="nextstepaction"]
 > [Dowiedz się więcej o akcjach usługi GitHub](https://help.github.com/en/articles/about-github-actions)

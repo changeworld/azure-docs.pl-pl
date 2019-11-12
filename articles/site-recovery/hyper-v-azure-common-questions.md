@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.date: 08/07/2019
 ms.topic: conceptual
 ms.author: raynew
-ms.openlocfilehash: a6d38a9196d640ebc823b4f25e089cc04193212b
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: f9e5b5a70f7398483d5359a0489d5a6e6b241c6d
+ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68845752"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73928206"
 ---
 # <a name="common-questions---hyper-v-to-azure-disaster-recovery"></a>Często zadawane pytania — funkcja Hyper-V do odzyskiwania po awarii platformy Azure
 
@@ -83,11 +83,11 @@ Tak, obsługiwane są zarówno szyfrowanie podczas przesyłania, jak i [szyfrowa
 
 ### <a name="what-can-i-do-with-hyper-v-to-azure-replication"></a>Co mogę zrobić z replikacją funkcji Hyper-V do platformy Azure?
 
-- **Odzyskiwanie po awarii**: Można skonfigurować pełne odzyskiwanie po awarii. W tym scenariuszu lokalne maszyny wirtualne funkcji Hyper-V są replikowane do usługi Azure Storage:
+- **Odzyskiwanie po awarii**: można skonfigurować pełne odzyskiwanie po awarii. W tym scenariuszu lokalne maszyny wirtualne funkcji Hyper-V są replikowane do usługi Azure Storage:
     - Maszyny wirtualne można replikować na platformę Azure. Jeśli infrastruktura lokalna jest niedostępna, Pracujesz w trybie failover na platformie Azure.
     - Po przełączeniu w tryb failover maszyny wirtualne platformy Azure są tworzone przy użyciu replikowanych danych. Możesz uzyskiwać dostęp do aplikacji i obciążeń na maszynach wirtualnych platformy Azure.
     - Po ponownym udostępnieniu lokalnego centrum danych można wrócić po awarii z platformy Azure do lokacji lokalnej.
-- **Migracja**: Za pomocą Site Recovery można migrować lokalne maszyny wirtualne funkcji Hyper-V do usługi Azure Storage. Następnie Pracujesz w trybie failover z poziomu lokalnego na platformie Azure. Po przejściu w tryb failover aplikacje i obciążenia są dostępne i uruchamiane na maszynach wirtualnych platformy Azure.
+- **Migracja**: można użyć Site Recovery do migrowania lokalnych maszyn wirtualnych funkcji Hyper-V do usługi Azure Storage. Następnie Pracujesz w trybie failover z poziomu lokalnego na platformie Azure. Po przejściu w tryb failover aplikacje i obciążenia są dostępne i uruchamiane na maszynach wirtualnych platformy Azure.
 
 
 ### <a name="what-do-i-need-on-premises"></a>Co jest potrzebne w środowisku lokalnym?
@@ -99,7 +99,7 @@ Potrzebna jest co najmniej jedna maszyna wirtualna działająca na jednym lub wi
 
 ### <a name="can-i-replicate-vms-located-on-a-hyper-v-cluster"></a>Czy można replikować maszyny wirtualne znajdujące się w klastrze funkcji Hyper-V?
 
-Tak, Site Recovery obsługuje klastrowane hosty funkcji Hyper-V. Należy pamiętać o następujących kwestiach:
+Tak, Site Recovery obsługuje klastrowane hosty funkcji Hyper-V. Należy pamiętać, że:
 
 - Wszystkie węzły klastra powinny być zarejestrowane w tym samym magazynie.
 - Jeśli nie korzystasz z programu VMM, wszystkie hosty funkcji Hyper-V w klastrze powinny zostać dodane do tej samej lokacji funkcji Hyper-V.
@@ -147,16 +147,16 @@ Można replikować dowolne aplikacje lub obciążenia z uruchomioną maszyną wi
 
 ### <a name="can-i-replicate-to-azure-with-a-site-to-site-vpn"></a>Czy można replikować na platformę Azure przy użyciu sieci VPN typu lokacja-lokacja?
 
-Site Recovery replikuje dane ze źródła lokalnego do usługi Azure Storage za pośrednictwem publicznego punktu końcowego lub korzystając z publicznej komunikacji równorzędnej ExpressRoute. Replikacja za pośrednictwem sieci VPN typu lokacja-lokacja nie jest obsługiwana.
+Site Recovery replikuje dane ze źródła lokalnego do usługi Azure Storage za pośrednictwem publicznego punktu końcowego lub korzystając z ExpressRoute komunikacji równorzędnej firmy Microsoft. Replikacja za pośrednictwem sieci VPN typu lokacja-lokacja nie jest obsługiwana.
 
 ### <a name="can-i-replicate-to-azure-with-expressroute"></a>Czy można replikować na platformę Azure za pomocą ExpressRoute?
 
-Tak, ExpressRoute może służyć do replikowania maszyn wirtualnych na platformę Azure. Site Recovery replikuje dane do konta usługi Azure Storage za pośrednictwem publicznego punktu końcowego i należy skonfigurować [publiczną komunikację równorzędną](../expressroute/expressroute-circuit-peerings.md#publicpeering) na potrzeby replikacji Site Recovery. Gdy maszyny wirtualne zostaną przełączone w tryb failover do sieci wirtualnej platformy Azure, możesz uzyskać do nich dostęp przy użyciu [prywatnej komunikacji równorzędnej](../expressroute/expressroute-circuit-peerings.md#privatepeering).
+Tak, ExpressRoute może służyć do replikowania maszyn wirtualnych na platformę Azure. Site Recovery replikuje dane do konta usługi Azure Storage za pośrednictwem publicznego punktu końcowego i należy skonfigurować [komunikację równorzędną firmy Microsoft](../expressroute/expressroute-circuit-peerings.md#microsoftpeering) na potrzeby replikacji Site Recovery. Gdy maszyny wirtualne zostaną przełączone w tryb failover do sieci wirtualnej platformy Azure, możesz uzyskać do nich dostęp przy użyciu [prywatnej komunikacji równorzędnej](../expressroute/expressroute-circuit-peerings.md#privatepeering).
 
 
 ### <a name="why-cant-i-replicate-over-vpn"></a>Dlaczego nie można replikować za pośrednictwem sieci VPN?
 
-W przypadku replikacji na platformę Azure ruch związany z replikacją dociera do publicznych punktów końcowych konta usługi Azure Storage. W ten sposób można replikować tylko za pośrednictwem publicznej sieci Internet za pomocą ExpressRoute (publiczna Komunikacja równorzędna), a sieć VPN nie działa. 
+W przypadku replikacji na platformę Azure ruch związany z replikacją dociera do publicznych punktów końcowych konta usługi Azure Storage. W ten sposób można replikować tylko za pośrednictwem publicznego Internetu za pomocą ExpressRoute (Komunikacja równorzędna firmy Microsoft), a sieć VPN nie działa. 
 
 ### <a name="what-are-the-replicated-vm-requirements"></a>Jakie są wymagania dotyczące replikowanych maszyn wirtualnych?
 
@@ -224,8 +224,8 @@ Po ponownym uruchomieniu infrastruktury lokalnej można wrócić do trybu powrot
 
 1. Planowane przejście w tryb failover z platformy Azure do lokacji lokalnej przy użyciu kilku różnych opcji:
 
-    - Minimalizacja przestojów: Jeśli używasz tej opcji, Site Recovery synchronizuje dane przed przełączeniem w tryb failover. Sprawdza on zmiany bloków danych i pobiera je do lokacji lokalnej, podczas gdy maszyna wirtualna platformy Azure działa, co minimalizuje przestoje. Gdy ręcznie określisz, że praca w trybie failover powinna zakończyć działanie, maszyna wirtualna platformy Azure zostanie wyłączona, zostaną skopiowane wszystkie końcowe zmiany różnicowe i rozpocznie się przełączanie do trybu failover.
-    - Pełne pobieranie: W przypadku tej opcji dane są synchronizowane podczas pracy w trybie failover. Ta opcja powoduje pobranie całego dysku. Jest to szybsze, ponieważ nie są obliczane sumy kontrolne, ale występuje więcej przestojów. Użyj tej opcji, jeśli korzystasz z maszyn wirtualnych platformy Azure z repliką przez jakiś czas lub jeśli lokalna maszyna wirtualna została usunięta.
+    - Minimalizuj czas przestoju: Jeśli używasz tej opcji, Site Recovery synchronizuje dane przed przełączeniem w tryb failover. Sprawdza on zmiany bloków danych i pobiera je do lokacji lokalnej, podczas gdy maszyna wirtualna platformy Azure działa, co minimalizuje przestoje. Gdy ręcznie określisz, że praca w trybie failover powinna zakończyć działanie, maszyna wirtualna platformy Azure zostanie wyłączona, zostaną skopiowane wszystkie końcowe zmiany różnicowe i rozpocznie się przełączanie do trybu failover.
+    - Pełne pobieranie: w przypadku tej opcji dane są synchronizowane podczas pracy w trybie failover. Ta opcja powoduje pobranie całego dysku. Jest to szybsze, ponieważ nie są obliczane sumy kontrolne, ale występuje więcej przestojów. Użyj tej opcji, jeśli korzystasz z maszyn wirtualnych platformy Azure z repliką przez jakiś czas lub jeśli lokalna maszyna wirtualna została usunięta.
 
 2. Możesz wybrać opcję powrotu po awarii do tej samej maszyny wirtualnej lub do alternatywnej maszyny wirtualnej. Możesz określić, że Site Recovery powinna utworzyć maszynę wirtualną, jeśli jeszcze nie istnieje.
 3. Po zakończeniu synchronizacji początkowej należy wybrać opcję ukończenia pracy w trybie failover. Po zakończeniu możesz zalogować się do lokalnej maszyny wirtualnej, aby sprawdzić, czy wszystko działa zgodnie z oczekiwaniami. W Azure Portal można zobaczyć, że maszyny wirtualne platformy Azure zostały zatrzymane.

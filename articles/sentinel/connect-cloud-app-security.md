@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/23/2019
 ms.author: rkarlin
-ms.openlocfilehash: 95e38cee8f6995e09dbbb2194cd5a9d0ebc301c1
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 32e7e79465b68caca9a636019f65b9f08284fc72
+ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73498668"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73928215"
 ---
 # <a name="connect-data-from-microsoft-cloud-app-security"></a>Łączenie danych z Microsoft Cloud App Security 
 
@@ -30,7 +30,7 @@ Można przesyłać strumieniowo dzienniki z [Cloud App Security](https://docs.mi
 ## <a name="prerequisites"></a>Wymagania wstępne
 
 - Użytkownik z uprawnieniami administratora globalnego lub administratora zabezpieczeń
-- Aby przesłać strumieniowo Cloud Discovery dzienniki do usługi Azure wskaźnikowej, [Włącz platformę Azure jako Siem w Microsoft Cloud App Security](aka.ms. https://aka.ms/AzureSentinelMCAS).
+- Aby przesłać strumieniowo Cloud Discovery dzienniki do usługi Azure wskaźnikowej, [Włącz platformę Azure jako Siem w Microsoft Cloud App Security](https://aka.ms/AzureSentinelMCAS).
 
 > [!IMPORTANT]
 > Pozyskiwanie dzienników Cloud Discovery jest obecnie w publicznej wersji zapoznawczej.

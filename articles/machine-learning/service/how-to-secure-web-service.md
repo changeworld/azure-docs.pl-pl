@@ -1,5 +1,5 @@
 ---
-title: Zabezpiecz s przy użyciu protokołu SSL
+title: Zabezpieczanie usług sieci Web przy użyciu protokołu SSL
 titleSuffix: Azure Machine Learning
 description: Dowiedz się, jak włączyć protokół HTTPS w celu zbyt bezpiecznej usługi sieci Web, która jest wdrażana za pośrednictwem Azure Machine Learning.
 services: machine-learning
@@ -11,12 +11,12 @@ ms.author: aashishb
 author: aashishb
 ms.date: 08/12/2019
 ms.custom: seodec18
-ms.openlocfilehash: 1455ec17898e82ed0f39fea66c44d2e9b4f57280
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: f1021ad1983f78252d924a5d3cb674419732d66e
+ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73489547"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73932055"
 ---
 # <a name="use-ssl-to-secure-a--through-azure-machine-learning"></a>Użyj protokołu SSL do zabezpieczenia za pośrednictwem Azure Machine Learning
 [!INCLUDE [applies-to-skus](../../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -83,9 +83,9 @@ Podczas wdrażania programu do AKS można utworzyć nowy klaster AKS lub dołąc
 -  W przypadku tworzenia nowego klastra należy użyć **[AksCompute. provisionining_configuration ()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.compute.akscompute#provisioning-configuration-agent-count-none--vm-size-none--ssl-cname-none--ssl-cert-pem-file-none--ssl-key-pem-file-none--location-none--vnet-resourcegroup-name-none--vnet-name-none--subnet-name-none--service-cidr-none--dns-service-ip-none--docker-bridge-cidr-none--cluster-purpose-none-)** .
 - Jeśli dołączysz istniejący klaster, użyj **[AksCompute. attach_configuration ()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.compute.akscompute#attach-configuration-resource-group-none--cluster-name-none--resource-id-none--cluster-purpose-none-)** . Oba zwracają obiekt konfiguracji, który ma metodę **enable_ssl** .
 
-Metoda **enable_ssl** może używać certyfikatu dostarczonego przez firmę Microsoft lub zakupionego certyfikatu.
+Metoda **enable_ssl** może korzystać z certyfikatu dostarczonego przez firmę Microsoft lub zakupionego certyfikatu.
 
-  * W przypadku korzystania z certyfikatu firmy Microsoft należy użyć parametru *leaf_domain_label* . Ten parametr generuje nazwę DNS usługi. Na przykład wartość "Moja usługa" tworzy nazwę domeny "WebService\<sześć znaków losowych >.\<azureregion >. cloudapp. Azure. com ", gdzie \<azureregion > to region, w którym znajduje się usługa. Opcjonalnie można użyć parametru *overwrite_existing_domain* , aby zastąpić istniejący *leaf_domain_label*.
+  * Korzystając z certyfikatu firmy Microsoft, należy użyć parametru *leaf_domain_label* . Ten parametr generuje nazwę DNS usługi. Na przykład wartość "Moja usługa" tworzy nazwę domeny "WebService\<sześć znaków losowych >.\<azureregion >. cloudapp. Azure. com ", gdzie \<azureregion > to region, w którym znajduje się usługa. Opcjonalnie można użyć parametru *overwrite_existing_domain* , aby zastąpić istniejące *leaf_domain_label*.
 
     Aby wdrożyć (lub ponownie wdrożyć) usługę z włączonym protokołem SSL, należy ustawić parametr *ssl_enabled* na wartość "true" wszędzie tam, gdzie ma to zastosowanie. Dla parametru *ssl_certificate* ustaw wartość pliku *certyfikatu* . Ustaw *ssl_key* na wartość pliku *klucza* .
 
@@ -160,7 +160,7 @@ Certyfikaty SSL wygasną i należy je odnowić. Zwykle odbywa się to co rok. Sk
 
 ### <a name="update-a-microsoft-generated-certificate"></a>Aktualizowanie certyfikatu wygenerowanego przez firmę Microsoft
 
-Jeśli certyfikat został pierwotnie wygenerowany przez firmę Microsoft (w przypadku korzystania z *leaf_domain_label* w celu utworzenia usługi), użyj jednego z poniższych przykładów, aby zaktualizować certyfikat:
+Jeśli certyfikat został pierwotnie wygenerowany przez firmę Microsoft (w przypadku korzystania z *leaf_domain_label* do tworzenia usługi), użyj jednego z poniższych przykładów, aby zaktualizować certyfikat:
 
 **Korzystanie z zestawu SDK**
 
@@ -248,6 +248,6 @@ aks_target.update(update_config)
 ```
 
 ## <a name="next-steps"></a>Następne kroki
-Omawiane kwestie:
+Instrukcje:
 + [Korzystanie z modelu uczenia maszynowego wdrożonego jako](how-to-consume-web-service.md)
 + [Bezpieczne uruchamianie eksperymentów i wnioskowania wewnątrz sieci wirtualnej platformy Azure](how-to-enable-virtual-network.md)

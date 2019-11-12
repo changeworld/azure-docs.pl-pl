@@ -18,12 +18,12 @@ ms.author: twhitney
 ms.reviewer: saeeda
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f15f6480c2dc77fb1f6e229b62a0114f0f6fb735
-ms.sourcegitcommit: be8e2e0a3eb2ad49ed5b996461d4bff7cba8a837
+ms.openlocfilehash: a8cf7b7004097ef5a4d915d8fdff60cc9606c5be
+ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72802838"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73927077"
 ---
 # <a name="initialize-client-applications-using-msalnet"></a>Inicjuj aplikacje klienckie przy użyciu MSAL.NET
 W tym artykule opisano sposób inicjowania publicznego klienta i poufnych aplikacji klienckich przy użyciu biblioteki uwierzytelniania firmy Microsoft dla platformy .NET (MSAL.NET).  Aby dowiedzieć się więcej na temat typów aplikacji klienta i opcji konfiguracji aplikacji, zapoznaj się z [omówieniem](msal-client-applications.md).
@@ -101,7 +101,7 @@ W fragmentach kodu przy użyciu konstruktorów aplikacji, wiele metod `.With` mo
 
 Modyfikatory, które można ustawić dla klienta publicznego lub poufnego konstruktora aplikacji klienta, to:
 
-|Parametr | Opis|
+|Modyfikator | Opis|
 |--------- | --------- |
 |Zastępowanie `.WithAuthority()` 7 | Ustawia domyślny urząd certyfikacji usługi Azure AD, z możliwością wyboru chmury platformy Azure, odbiorców, dzierżawy (identyfikatora dzierżawy lub nazwy domeny) lub bezpośredniego przekazywania identyfikatora URI urzędu certyfikacji.|
 |`.WithAdfsAuthority(string)` | Ustawia domyślny urząd aplikacji jako urząd usług ADFS.|
@@ -120,7 +120,7 @@ Modyfikatory, które można ustawić dla klienta publicznego lub poufnego konstr
 
 Modyfikatory, które można ustawić w publicznym konstruktorze aplikacji klienta na platformie Xamarin. iOS, to:
 
-|Parametr | Opis|
+|Modyfikator | Opis|
 |--------- | --------- |
 |`.WithIosKeychainSecurityGroup()` | **Tylko Xamarin. iOS**: ustawia grupę zabezpieczeń łańcuch kluczy systemu iOS (dla trwałości pamięci podręcznej).|
 
@@ -128,7 +128,7 @@ Modyfikatory, które można ustawić w publicznym konstruktorze aplikacji klient
 
 Modyfikatory, które można ustawić dla poufnego konstruktora aplikacji klienta, to:
 
-|Parametr | Opis|
+|Modyfikator | Opis|
 |--------- | --------- |
 |`.WithCertificate(X509Certificate2 certificate)` | Ustawia certyfikat identyfikujący aplikację w usłudze Azure AD.|
 |`.WithClientSecret(string clientSecret)` | Ustawia klucz tajny klienta (hasło aplikacji) identyfikujący aplikację w usłudze Azure AD.|

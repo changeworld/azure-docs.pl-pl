@@ -1,7 +1,7 @@
 ---
-title: Rozszerzenie interfejsu wiersza polecenia uczenia maszynowego
+title: Rozszerzenie interfejsu wiersza polecenia
 titleSuffix: Azure Machine Learning
-description: Dowiedz się więcej o rozszerzeniu interfejsu wiersza polecenia Azure Machine Learning dla interfejsu wiersza polecenia platformy Azure. Interfejs wiersza polecenia platformy Azure to międzyplatformowy program narzędziowy, który umożliwia korzystanie z zasobów w chmurze platformy Azure. Rozszerzenie Machine Learning umożliwia korzystanie z Azure Machine Learning.
+description: Dowiedz się więcej o rozszerzeniu interfejsu wiersza polecenia Azure Machine Learning dla interfejsu wiersza polecenia platformy Azure. Interfejs wiersza polecenia platformy Azure to międzyplatformowy program narzędziowy, który umożliwia korzystanie z zasobów w chmurze platformy Azure. Rozszerzenie Machine Learning umożliwia korzystanie z Azure Machine Learning. Interfejs wiersza polecenia ML tworzy i zarządza zasobami, takimi jak obszar roboczy, magazyny danych, zbiory obiektów, potoki, modele i wdrożenia.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -11,12 +11,12 @@ ms.author: jordane
 author: jpe316
 ms.date: 11/05/2019
 ms.custom: seodec18
-ms.openlocfilehash: 20ff7d2cb6c185f574494871a986e1bce63536ba
-ms.sourcegitcommit: 6c2c97445f5d44c5b5974a5beb51a8733b0c2be7
+ms.openlocfilehash: e775689da93b5197d1c2f7d130466c2afc8391e4
+ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73619954"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73932076"
 ---
 # <a name="use-the-cli-extension-for-azure-machine-learning"></a>Użyj rozszerzenia interfejsu wiersza polecenia dla Azure Machine Learning
 [!INCLUDE [applies-to-skus](../../../includes/aml-applies-to-basic-enterprise-sku.md)]

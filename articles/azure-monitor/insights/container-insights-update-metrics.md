@@ -6,15 +6,16 @@ ms.subservice: ''
 ms.topic: conceptual
 author: mgoedtel
 ms.author: magoedte
-ms.date: 05/06/2019
-ms.openlocfilehash: dd1618151b97ab4f958bfd5d50333b9551014f0f
-ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
+ms.date: 11/11/2019
+ms.openlocfilehash: b513408f551a255facc897b7ba83c68e2befe282
+ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72554069"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73928269"
 ---
 # <a name="how-to-update-azure-monitor-for-containers-to-enable-metrics"></a>Jak zaktualizować Azure Monitor dla kontenerów w celu włączenia metryk
+
 Azure Monitor dla kontenerów wprowadza obsługę zbierania metryk z węzłów klastrów usługi Azure Kubernetes Services (AKS) i ich tworzenia do magazynu metryk Azure Monitor. Ta zmiana ma na celu dostarczenie ulepszonej osi czasu podczas prezentowania obliczeń agregacji (średni, Count, Max, min, sum) na wykresach wydajności, obsługę przypinania wykresów wydajności w Azure Portal pulpitów nawigacyjnych i obsługę alertów dotyczących metryk.
 
 Następujące metryki są włączone w ramach tej funkcji:
@@ -28,20 +29,25 @@ Aktualizowanie klastra w celu obsługi tych nowych funkcji można wykonać z poz
 
 Każdy proces przypisuje rolę **wydawcy metryk monitorowania** do jednostki usługi klastra, aby dane zbierane przez agenta mogły być publikowane w zasobach klastrów. Wydawca metryk monitorowania ma uprawnienia tylko do wypychania metryk do zasobu, nie może zmienić stanu, zaktualizować zasobu ani odczytać jakichkolwiek danych. Aby uzyskać więcej informacji na temat roli, zobacz [monitorowanie metryk rola wydawcy](../../role-based-access-control/built-in-roles.md#monitoring-metrics-publisher).
 
-## <a name="prerequisites"></a>Wymagania wstępne 
-Przed rozpoczęciem upewnij się, że jesteś członkiem roli **[właściciela](../../role-based-access-control/built-in-roles.md#owner)** w zasobie klastra AKS, aby włączyć kolekcję metryk wydajności niestandardowych węzła i pod. 
+## <a name="prerequisites"></a>Wymagania wstępne
+
+Przed rozpoczęciem Potwierdź następujące kwestie:
+
+* Metryki niestandardowe są dostępne tylko w ramach podzestawów regionów świadczenia usługi Azure. Lista obsługiwanych regionów jest udokumentowana [tutaj](../platform/metrics-custom-overview.md#supported-regions).
+* Musisz być członkiem roli **[właściciela](../../role-based-access-control/built-in-roles.md#owner)** w zasobie klastra AKS, aby włączyć kolekcję metryk wydajności niestandardowych węzła i pod. 
 
 Jeśli zdecydujesz się na korzystanie z interfejsu wiersza polecenia platformy Azure, musisz najpierw zainstalować interfejs wiersza polecenia i korzystać z niego lokalnie. Wymagany jest interfejs wiersza polecenia platformy Azure w wersji 2.0.59 lub nowszej. Aby zidentyfikować swoją wersję, uruchom `az --version`. Jeśli konieczne jest zainstalowanie lub uaktualnienie interfejsu wiersza polecenia platformy Azure, zobacz [Instalowanie interfejsu wiersza polecenia platformy Azure](https://docs.microsoft.com/cli/azure/install-azure-cli). 
 
 ## <a name="upgrade-a-cluster-from-the-azure-portal"></a>Uaktualnianie klastra z Azure Portal
 
-W przypadku istniejących klastrów AKS, które są monitorowane przez Azure Monitor kontenerów, po wybraniu klastra w celu wyświetlenia jego kondycji z widoku wiele klastrów w Azure Monitor lub bezpośrednio z klastra przez wybranie **szczegółowych** informacji z okienka po lewej stronie powinna zostać wyświetlona wartość transparent w górnej części portalu.
+W przypadku istniejących klastrów AKS monitorowanych przez Azure Monitor kontenerów, po wybraniu klastra w celu wyświetlenia jego kondycji z widoku wiele klastrów w Azure Monitor lub bezpośrednio z klastra przez wybranie **szczegółowych** informacji z okienka po lewej stronie, w górnej części portalu powinien zostać wyświetlony transparent.
 
 ![Transparent uaktualniania klastra AKS w Azure Portal](./media/container-insights-update-metrics/portal-banner-enable-01.png)
 
 Kliknięcie pozycji **Włącz** spowoduje zainicjowanie procesu uaktualniania klastra. Ten proces może potrwać kilka sekund, a postęp można śledzić w obszarze powiadomienia z menu.
 
 ## <a name="upgrade-all-clusters-using-bash-in-azure-command-shell"></a>Uaktualnianie wszystkich klastrów przy użyciu bash w powłoce poleceń platformy Azure
+
 Wykonaj następujące kroki, aby zaktualizować wszystkie klastry w ramach subskrypcji przy użyciu usługi Bash w usłudze Azure Command Shell.
 
 1. Uruchom następujące polecenie przy użyciu interfejsu wiersza polecenia platformy Azure.  Edytuj wartość identyfikatora **subskrypcji** przy użyciu wartości ze strony **Przegląd AKS** dla klastra AKS.
@@ -59,6 +65,7 @@ Wykonaj następujące kroki, aby zaktualizować wszystkie klastry w ramach subsk
     ```
 
 ## <a name="upgrade-per-cluster-using-azure-cli"></a>Uaktualnianie na klaster przy użyciu interfejsu wiersza polecenia platformy Azure
+
 Wykonaj następujące kroki, aby zaktualizować konkretny klaster w ramach subskrypcji przy użyciu interfejsu wiersza polecenia platformy Azure.
 
 1. Uruchom następujące polecenie przy użyciu interfejsu wiersza polecenia platformy Azure. Edytuj wartości identyfikatora **subskrypcji**, **resourceGroupName**i **ClusterName** przy użyciu wartości na stronie **Przegląd AKS** dla klastra AKS.  Aby uzyskać wartość **clientIdOfSPN**, jest zwracana po uruchomieniu polecenia `az aks show` jak pokazano w poniższym przykładzie.
@@ -71,6 +78,7 @@ Wykonaj następujące kroki, aby zaktualizować konkretny klaster w ramach subsk
     ``` 
 
 ## <a name="upgrade-all-clusters-using-azure-powershell"></a>Uaktualnij wszystkie klastry przy użyciu Azure PowerShell
+
 Wykonaj następujące kroki, aby zaktualizować wszystkie klastry w subskrypcji przy użyciu Azure PowerShell.
 
 1. Skopiuj i wklej następujący skrypt do pliku:
@@ -313,7 +321,7 @@ Wykonaj następujące kroki, aby zaktualizować wszystkie klastry w subskrypcji 
     Write-Host("Completed adding role assignment for the aks clusters in subscriptionId :$SubscriptionId")   
     ```
 
-2. Zapisz ten plik jako **onboard_metrics_atscale. ps1** w folderze lokalnym.
+2. Zapisz ten plik jako **onboard_metrics_atscale. ps1** do folderu lokalnego.
 3. Uruchom następujące polecenie, używając Azure PowerShell.  Edytuj wartość identyfikatora **subskrypcji** przy użyciu wartości ze strony **Przegląd AKS** dla klastra AKS.
 
     ```powershell
@@ -326,6 +334,7 @@ Wykonaj następujące kroki, aby zaktualizować wszystkie klastry w subskrypcji 
     ```
 
 ## <a name="upgrade-per-cluster-using-azure-powershell"></a>Uaktualnianie na klaster przy użyciu Azure PowerShell
+
 Wykonaj następujące kroki, aby zaktualizować konkretny klaster przy użyciu Azure PowerShell.
 
 1. Skopiuj i wklej następujący skrypt do pliku:
@@ -562,7 +571,7 @@ Wykonaj następujące kroki, aby zaktualizować konkretny klaster przy użyciu A
     }
     ```
 
-2. Zapisz ten plik jako **onboard_metrics. ps1** w folderze lokalnym.
+2. Zapisz ten plik jako **onboard_metrics. ps1** do folderu lokalnego.
 3. Uruchom następujące polecenie, używając Azure PowerShell. Edytuj wartości identyfikatora **subskrypcji**, **resourceGroupName**i **ClusterName** przy użyciu wartości na stronie **Przegląd AKS** dla klastra AKS.
 
     ```powershell
@@ -576,4 +585,5 @@ Wykonaj następujące kroki, aby zaktualizować konkretny klaster przy użyciu A
     ```
 
 ## <a name="verify-update"></a>Weryfikuj aktualizację 
+
 Po zainicjowaniu aktualizacji przy użyciu jednej z opisanych wcześniej metod można użyć Eksploratora metryk Azure Monitor i sprawdzić, czy w **przestrzeni nazw metryk** są wyświetlane **szczegółowe informacje** . Jeśli tak jest, oznacza to, że można rozpocząć konfigurowanie [alertów dotyczących metryk](../platform/alerts-metric.md) lub Przypinanie wykresów do [pulpitów nawigacyjnych](../../azure-portal/azure-portal-dashboards.md).  

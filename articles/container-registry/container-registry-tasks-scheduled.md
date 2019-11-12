@@ -1,6 +1,6 @@
 ---
 title: Zaplanuj zadania Azure Container Registry
-description: Ustawianie czasomierzy do uruchamiania zadania Azure Container Registry zgodnie ze zdefiniowanym harmonogramem.
+description: Dowiedz się, jak uruchomić zadanie Azure Container Registry zgodnie ze zdefiniowanym harmonogramem, ustawiając jeden lub więcej wyzwalaczy czasomierza
 services: container-registry
 author: dlepow
 manager: gwallace
@@ -8,12 +8,12 @@ ms.service: container-registry
 ms.topic: article
 ms.date: 06/27/2019
 ms.author: danlep
-ms.openlocfilehash: a4a1099d90b619be383d440067a692c51a2430ac
-ms.sourcegitcommit: 0e59368513a495af0a93a5b8855fd65ef1c44aac
+ms.openlocfilehash: 6272b5467aff10171814152eb4188554a22c7a51
+ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/15/2019
-ms.locfileid: "69509071"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73931464"
 ---
 # <a name="run-an-acr-task-on-a-defined-schedule"></a>Uruchamianie zadania ACR zgodnie ze zdefiniowanym harmonogramem
 
@@ -36,11 +36,11 @@ Możesz użyć Azure Cloud Shell lub lokalnej instalacji interfejsu wiersza pole
     * Określ wyzwalacze wielu czasomierzy podczas tworzenia zadania lub Dodaj je później.
     * Opcjonalnie Nazwij wyzwalacze, aby ułatwić zarządzanie, lub ACR zadania będą podawać domyślne nazwy wyzwalaczy.
     * Jeśli harmonogramy czasomierze nakładają się na siebie, ACR zadania wyzwalają zadanie w zaplanowanym czasie dla każdego czasomierza.
-* **Inne Wyzwalacze zadań** — w zadaniu wyzwalanym czasomierzem można również włączyć wyzwalacze na podstawie zatwierdzeń [kodu źródłowego](container-registry-tutorial-build-task.md) lub [aktualizacji obrazu podstawowego](container-registry-tutorial-base-image-update.md). Podobnie jak w przypadku innych zadań ACR, można także [ręcznie wyzwolić][az-acr-task-run] zaplanowane zadanie.
+* **Inne Wyzwalacze zadań** — w zadaniu wyzwalanym czasomierzem można również włączyć wyzwalacze na podstawie [zatwierdzeń kodu źródłowego](container-registry-tutorial-build-task.md) lub [aktualizacji obrazu podstawowego](container-registry-tutorial-base-image-update.md). Podobnie jak w przypadku innych zadań ACR, można także [ręcznie wyzwolić][az-acr-task-run] zaplanowane zadanie.
 
 ## <a name="create-a-task-with-a-timer-trigger"></a>Tworzenie zadania z wyzwalaczem czasomierza
 
-Podczas tworzenia zadania za pomocą polecenia [AZ ACR Task Create][az-acr-task-create] można opcjonalnie dodać wyzwalacz czasomierza. `--schedule` Dodaj parametr i przekaż wyrażenie firmy CRONUS dla czasomierza.
+Podczas tworzenia zadania za pomocą polecenia [AZ ACR Task Create][az-acr-task-create] można opcjonalnie dodać wyzwalacz czasomierza. Dodaj parametr `--schedule` i przekaż wyrażenie firmy CRONUS dla czasomierza.
 
 W prostym przykładzie następujące polecenie wyzwala uruchamianie `hello-world` obrazu z usługi Docker Hub codziennie o godzinie 21:00 czasu UTC. Zadanie jest uruchamiane bez kontekstu kodu źródłowego.
 
@@ -170,16 +170,16 @@ Zadania ACR używają biblioteki [NCronTab](https://github.com/atifaziz/NCrontab
 Strefa czasowa używana z wyrażeniami firmy CRONUS jest uniwersalnym czasem koordynowanym (UTC). Godziny są w formacie 24-godzinnym.
 
 > [!NOTE]
-> Zadania ACR nie obsługują `{second}` pola lub `{year}` w wyrażeniach firmy cronus. Jeśli skopiujesz wyrażenie firmy CRONUS używane w innym systemie, pamiętaj, aby usunąć te pola, jeśli są używane.
+> ACR zadania nie obsługują pola `{second}` ani `{year}` w wyrażeniach firmy cronus. Jeśli skopiujesz wyrażenie firmy CRONUS używane w innym systemie, pamiętaj, aby usunąć te pola, jeśli są używane.
 
 Każde pole może mieć jeden z następujących typów wartości:
 
-|Type  |Przykład  |Po wyzwoleniu  |
+|Typ  |Przykład  |Po wyzwoleniu  |
 |---------|---------|---------|
 |Określona wartość |<nobr>`"5 * * * *"`</nobr>|co godzinę w ciągu 5 minut od godziny|
 |Wszystkie wartości (`*`)|<nobr>`"* 5 * * *"`</nobr>|co minutę godziny od 5:00 czasu UTC (60 razy dziennie)|
-|Zakres (`-` operator)|<nobr>`"0 1-3 * * *"`</nobr>|3 razy dziennie, o godzinie 1:00, 2:00 i 3:00 UTC|
-|Zestaw wartości (`,` operator)|<nobr>`"20,30,40 * * * *"`</nobr>|3 razy na godzinę, co 20 minut, 30 minut i 40 minut po godzinie|
+|Zakres (operator`-`)|<nobr>`"0 1-3 * * *"`</nobr>|3 razy dziennie, o godzinie 1:00, 2:00 i 3:00 UTC|
+|Zestaw wartości (operator`,`)|<nobr>`"20,30,40 * * * *"`</nobr>|3 razy na godzinę, co 20 minut, 30 minut i 40 minut po godzinie|
 |Wartość interwału (`/` operator)|<nobr>`"*/10 * * * *"`</nobr>|6 razy na godzinę, przy 10 minutach, 20 minutach itd., Ostatnia godzina
 
 [!INCLUDE [functions-cron-expressions-months-days](../../includes/functions-cron-expressions-months-days.md)]

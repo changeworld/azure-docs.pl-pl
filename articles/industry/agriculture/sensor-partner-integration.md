@@ -1,18 +1,18 @@
 ---
-title: Integracja z partnerem czujnika
+title: Integracja z partnerami obsługującymi czujniki
 description: Opisuje integrację z partnerem czujnika
 author: uhabiba04
 ms.topic: article
 ms.date: 11/04/2019
 ms.author: v-umha
-ms.openlocfilehash: e90284ce2f8ea37eb9249822e38cef04e1356f59
-ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
+ms.openlocfilehash: 1e819c94732e1cbc2de39e6400f8305b7df5aca1
+ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/09/2019
-ms.locfileid: "73889576"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73927652"
 ---
-# <a name="sensor-partner-integration"></a>Integracja z partnerem czujnika
+# <a name="sensor-partner-integration"></a>Integracja z partnerami obsługującymi czujniki
 
 Ten artykuł zawiera informacje na temat składnika usługi Azure FarmBeats **translator** , który umożliwia integrację z partnerem czujnika.
 
@@ -79,7 +79,7 @@ FarmBeats centrum danych używa uwierzytelniania okaziciela, który wymaga nast�
 
 Korzystając z powyższych poświadczeń, obiekt wywołujący może zażądać tokenu dostępu, który musi zostać wysłany w kolejnych żądaniach interfejsu API w sekcji nagłówka w następujący sposób:
 
-```json
+```
 headers = {"Authorization": "Bearer " + access_token, …} 
 ```
 
@@ -124,14 +124,14 @@ Opcjonalnie można uwzględnić parametry zapytania dla wywołań GET do filtrow
 
 Poniżej przykładowego żądania jest uzyskanie listy urządzeń:
 
-```azurepowershell-interactive
-curl -X GET "https://microsoft-farmbeats.azurewebsites.net/Device" -H "Content-Type: application/json" -H "Authorization: Bearer <Access-Token>”
+```bash
+curl -X GET "https://microsoft-farmbeats.azurewebsites.net/Device" -H "Content-Type: application/json" -H "Authorization: Bearer <Access-Token>"
 ```
 Większość wywołań GET, POST i PUT wymaga treści żądania JSON.
 
 Poniżej przykładowego żądania jest utworzenie urządzenia (ten przykład zawiera wejściowy kod JSON z treścią żądania).
 
-```azurepowershell-interactive
+```bash
 curl -X POST "https://microsoft-farmbeats.azurewebsites.net/Device" -H  "accept: application/json" -H  "Content-Type: application/json" -H "Authorization: Bearer <Access-Token>" -d "{  \"deviceModelId\": \"ID123\",  \"hardwareId\": \"MHDN123\",  \"reportingInterval\": 900,  \"name\": \"Device123\",  \"description\": \"Test Device 123\",}"
 ```
 
@@ -243,27 +243,26 @@ Format komunikatu kanonicznego jest następujący:
 
 ```json
 {
-“deviceid”: “<id of the Device created>”,
- "timestamp": "<timestamp in ISO 8601 format>",
+"deviceid": "<id of the Device created>",
+"timestamp": "<timestamp in ISO 8601 format>",
 "version" : "1",
 "sensors": [
     {
-      "id": "<id of the sensor created>”
+      "id": "<id of the sensor created>",
       "sensordata": [
         {
           "timestamp": "< timestamp in ISO 8601 format >",
-          "<sensor measure name (as defined in the Sensor Model)>": value
+          "<sensor measure name (as defined in the Sensor Model)>": "<value>"
         },
         {
           "timestamp": "<timestamp in ISO 8601 format>",
-          "<sensor measure name (as defined in the Sensor Model)>": value
+          "<sensor measure name (as defined in the Sensor Model)>": "<value>"
         }
       ]
     }
+ ]
 }
-
 ```
-
 Wszystkie nazwy kluczy w formacie JSON danych telemetrycznych powinny być małymi literami, na przykład DeviceID, sensordata itp.
 
 Na przykład komunikat telemetrii:

@@ -7,12 +7,12 @@ ms.service: virtual-desktop
 ms.topic: conceptual
 ms.date: 11/05/2019
 ms.author: helohr
-ms.openlocfilehash: cf344d6c551ecd3d301d79c29efe9e7adb7f8d83
-ms.sourcegitcommit: 359930a9387dd3d15d39abd97ad2b8cb69b8c18b
+ms.openlocfilehash: dc93480807f34a79ee02f628f7b6f090c7efa428
+ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73646890"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73931701"
 ---
 # <a name="windows-virtual-desktop-partner-integrations"></a>Integracja z partnerem pulpitu wirtualnego systemu Windows
 
@@ -59,7 +59,7 @@ ControlUp to dostawca usług dodanego pulpitu wirtualnego systemu Windows, któr
 
 Gdy jest używany z pulpitem wirtualnym systemu Windows, ControlUp zapewnia dodatkowe możliwości optymalizacji środowisk pulpitu wirtualnego systemu Windows i środowiska użytkownika końcowego. W konsoli programu ControlUp są pobierane środowiska użytkownika końcowego w celu efektywnego monitorowania i rozwiązywania problemów z wydajnością. Intuicyjny pulpit nawigacyjny zawiera szczegółowe informacje i analizy dla wdrożeń pulpitów wirtualnych, a także opcje zautomatyzowanego raportowania wzbogacone o testy porównawcze społeczności. ControlUp może zarządzać wieloma źródłami danych i typami, organizując je w zestawach danych o wysokiej wydajności zagregowanych w infrastrukturze pulpitów wirtualnych w ramach obliczeń, magazynu i systemu Windows, co zapewnia szczegółową widoczność z poziomu pojedynczego okienka szkła.
 
-- [Zobacz krótkie rozwiązanie do przyłączania](https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RE3PUit).
+- [Zobacz Krótki opis wspólnego rozwiązania](https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RE3PUit).
 - [Przejdź do witryny sieci Web partnera](https://www.controlup.com/solutions/ms_wvd/).
 
 ## <a name="devicetrust"></a>deviceTRUST

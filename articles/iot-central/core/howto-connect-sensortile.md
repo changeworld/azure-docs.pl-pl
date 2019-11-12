@@ -1,5 +1,5 @@
 ---
-title: Połącz urządzenie SensorTile. Box z aplikacją IoT Central platformy Azure | Microsoft Docs
+title: Połącz urządzenie SensorTile. Box z aplikacją usługi Azure IoT Central | Microsoft Docs
 description: Jako deweloper urządzenia dowiesz się, jak połączyć urządzenie SensorTile. Box z aplikacją IoT Central platformy Azure.
 author: sarahhubbard
 ms.author: sahubbar
@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: sandeep.pujar
-ms.openlocfilehash: 0969ee6dbc035ffa105dd54d34f3b4711d4915cf
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: e46d4f99075a0d3fa326c84e17792b8959e23517
+ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72951213"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73930215"
 ---
 # <a name="connect-sensortilebox-device-to-your-azure-iot-central-application"></a>Połącz urządzenie SensorTile. Box z aplikacją IoT Central platformy Azure
 

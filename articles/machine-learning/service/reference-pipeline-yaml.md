@@ -9,13 +9,13 @@ ms.topic: conceptual
 ms.reviewer: larryfr
 ms.author: sanpil
 author: sanpil
-ms.date: 10/15/2019
-ms.openlocfilehash: a98a0e75c7a03baa663ccb4215e918a87bcc5df7
-ms.sourcegitcommit: 8e271271cd8c1434b4254862ef96f52a5a9567fb
+ms.date: 11/11/2019
+ms.openlocfilehash: 474a184b24ca3318a33adb89b25640939a814474
+ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72821777"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73929508"
 ---
 # <a name="define-machine-learning-pipelines-in-yaml"></a>Definiowanie potoków uczenia maszynowego w YAML
 
@@ -25,11 +25,11 @@ W poniższej tabeli przedstawiono, co jest i nie jest obecnie obsługiwane podcz
 
 | Typ kroku | Obsługiwane? |
 | ----- | :-----: |
-| PythonScriptStep | Tak |
-| AdlaStep | Tak |
-| AzureBatchStep | Tak |
-| DatabricksStep | Tak |
-| DataTransferStep | Tak |
+| PythonScriptStep | Yes |
+| AdlaStep | Yes |
+| AzureBatchStep | Yes |
+| DatabricksStep | Yes |
+| DataTransferStep | Yes |
 | AutoMLStep | Nie |
 | HyperDriveStep | Nie |
 | ModuleStep | Nie |
@@ -47,8 +47,6 @@ Definicja potoku używa następujących kluczy, które odpowiadają klasie [poto
 | `data_reference` | Definiuje sposób i miejsce, w którym dane powinny być dostępne w przebiegu. |
 | `default_compute` | Domyślny element docelowy obliczeń, w którym wykonywane są wszystkie kroki w potoku. |
 | `steps` | Kroki używane w potoku. |
-
-Następujący YAML jest przykładową definicją potoku:
 
 ## <a name="parameters"></a>Parametry
 
@@ -104,15 +102,15 @@ pipeline:
 
 ## <a name="steps"></a>Kroki
 
-Kroki definiują środowisko obliczeniowe, a także pliki do uruchomienia w środowisku. Definicja YAML reprezentuje następujące kroki:
+Kroki definiują środowisko obliczeniowe, a także pliki do uruchomienia w środowisku. Aby zdefiniować typ kroku, użyj klucza `type`:
 
-| Klucz YAML | Opis |
+| Typ kroku | Opis |
 | ----- | ----- |
-| `adla_step` | Uruchamia skrypt U-SQL z Azure Data Lake Analytics. Odpowiada klasie [AdlaStep](https://docs.microsoft.com/python/api/azureml-pipeline-steps/azureml.pipeline.steps.adlastep?view=azure-ml-py) . |
-| `azurebatch_step` | Uruchamia zadania przy użyciu Azure Batch. Odpowiada klasie [AzureBatchStep](https://docs.microsoft.com/python/api/azureml-pipeline-steps/azureml.pipeline.steps.azurebatchstep?view=azure-ml-py) . |
-| `databricks_step` | Dodaje Notes, skrypt w języku Python lub JAR. Odpowiada klasie [DatabricksStep](https://docs.microsoft.com/python/api/azureml-pipeline-steps/azureml.pipeline.steps.databricksstep?view=azure-ml-py) . |
-| `data_transfer_step` | Przesyła dane między opcjami magazynu. Odpowiada klasie [DataTransferStep](https://docs.microsoft.com/python/api/azureml-pipeline-steps/azureml.pipeline.steps.datatransferstep?view=azure-ml-py) . |
-| `python_script_step` | Uruchamia skrypt języka Python. Odpowiada klasie [PythonScriptStep](https://docs.microsoft.com/python/api/azureml-pipeline-steps/azureml.pipeline.steps.python_script_step.pythonscriptstep?view=azure-ml-py) . |
+| `AdlaStep` | Uruchamia skrypt U-SQL z Azure Data Lake Analytics. Odpowiada klasie [AdlaStep](https://docs.microsoft.com/python/api/azureml-pipeline-steps/azureml.pipeline.steps.adlastep?view=azure-ml-py) . |
+| `AzureBatchStep` | Uruchamia zadania przy użyciu Azure Batch. Odpowiada klasie [AzureBatchStep](https://docs.microsoft.com/python/api/azureml-pipeline-steps/azureml.pipeline.steps.azurebatchstep?view=azure-ml-py) . |
+| `DatabricsStep` | Dodaje Notes, skrypt w języku Python lub JAR. Odpowiada klasie [DatabricksStep](https://docs.microsoft.com/python/api/azureml-pipeline-steps/azureml.pipeline.steps.databricksstep?view=azure-ml-py) . |
+| `DataTransferStep` | Przesyła dane między opcjami magazynu. Odpowiada klasie [DataTransferStep](https://docs.microsoft.com/python/api/azureml-pipeline-steps/azureml.pipeline.steps.datatransferstep?view=azure-ml-py) . |
+| `PythonScriptStep` | Uruchamia skrypt języka Python. Odpowiada klasie [PythonScriptStep](https://docs.microsoft.com/python/api/azureml-pipeline-steps/azureml.pipeline.steps.python_script_step.pythonscriptstep?view=azure-ml-py) . |
 
 ### <a name="adla-step"></a>ADLA — krok
 
@@ -146,15 +144,15 @@ pipeline:
     default_compute: adlacomp
     steps:
         Step1:
-            runconfig: "yaml/default_runconfig.yml"
+            runconfig: "D:\\Yaml\\default_runconfig.yml"
             parameters:
                 NUM_ITERATIONS_2:
                     source: PipelineParam1
                 NUM_ITERATIONS_1: 7
-            adla_step:
-                name: "AdlaStep"
-                script_name: "sample_script.usql"
-                source_directory: "helloworld"
+            type: "AdlaStep"
+            name: "MyAdlaStep"
+            script_name: "sample_script.usql"
+            source_directory: "D:\\scripts\\Adla"
             inputs:
                 employee_data:
                     source: employee_data
@@ -198,18 +196,18 @@ pipeline:
     default_compute: testbatch
     steps:
         Step1:
-            runconfig: "D:\\AzureMlCli\\cli_testing\\default_runconfig.yml"
+            runconfig: "D:\\Yaml\\default_runconfig.yml"
             parameters:
                 NUM_ITERATIONS_2:
                     source: PipelineParam1
                 NUM_ITERATIONS_1: 7
-            azurebatch_step:
-                name: "AzureBatchStep"
-                pool_id: "MyPoolName"
-                create_pool: true
-                executable: "azurebatch.cmd"
-                source_directory: "D:\\AzureMlCli\\cli_testing"
-                allow_reuse: false
+            type: "AzureBatchStep"
+            name: "MyAzureBatchStep"
+            pool_id: "MyPoolName"
+            create_pool: true
+            executable: "azurebatch.cmd"
+            source_directory: "D:\\scripts\\AureBatch"
+            allow_reuse: false
             inputs:
                 input:
                     source: input
@@ -251,18 +249,18 @@ pipeline:
     default_compute: mydatabricks
     steps:
         Step1:
-            runconfig: "D:\\AzureMlCli\\cli_testing\\default_runconfig.yml"
+            runconfig: "D:\\Yaml\\default_runconfig.yml"
             parameters:
                 NUM_ITERATIONS_2:
                     source: PipelineParam1
                 NUM_ITERATIONS_1: 7
-            databricks_step:
-                name: "Databrickstep"
-                run_name: "DatabrickRun"
-                python_script_name: "train-db-local.py"
-                source_directory: "D:\\AzureMlCli\\cli_testing\\databricks_train"
-                num_workers: 1
-                allow_reuse: true
+            type: "DatabricksStep"
+            name: "MyDatabrickStep"
+            run_name: "DatabricksRun"
+            python_script_name: "train-db-local.py"
+            source_directory: "D:\\scripts\\Databricks"
+            num_workers: 1
+            allow_reuse: true
             inputs:
                 blob_test_data:
                     source: blob_test_data
@@ -301,14 +299,14 @@ pipeline:
     default_compute: adftest
     steps:
         Step1:
-            runconfig: "yaml/default_runconfig.yml"
+            runconfig: "D:\\Yaml\\default_runconfig.yml"
             parameters:
                 NUM_ITERATIONS_2:
                     source: PipelineParam1
                 NUM_ITERATIONS_1: 7
-            data_transfer_step:
-                name: "DataTransferStep"
-                adla_compute_name: adftest
+            type: "DataTransferStep"
+            name: "MyDataTransferStep"
+            adla_compute_name: adftest
             source_data_reference:
                 adls_test_data:
                     source: adls_test_data
@@ -345,16 +343,16 @@ pipeline:
     default_compute: cpu-cluster
     steps:
         Step1:
-            runconfig: "yaml/default_runconfig.yml"
+            runconfig: "D:\\Yaml\\default_runconfig.yml"
             parameters:
                 NUM_ITERATIONS_2:
                     source: PipelineParam1
                 NUM_ITERATIONS_1: 7
-            python_script_step:
-                name: "PythonScriptStep"
-                script_name: "train.py"
-                allow_reuse: True
-                source_directory: "helloworld"
+            type: "PythonScriptStep"
+            name: "MyPythonScriptStep"
+            script_name: "train.py"
+            allow_reuse: True
+            source_directory: "D:\\scripts\\PythonScript"
             inputs:
                 InputData:
                     source: DataReference1
@@ -408,7 +406,7 @@ Podczas definiowania **harmonogramu cyklicznego**Użyj następujących kluczy w 
 | `time_zone` | Strefa czasowa godziny rozpoczęcia. Jeśli nie podano strefy czasowej, używany jest czas UTC. |
 | `hours` | Jeśli `frequency` jest `"Day"` lub `"Week"`, można określić co najmniej jedną liczbę całkowitą z przedziału od 0 do 23, rozdzieloną przecinkami, jako godziny dnia, w którym potok powinien zostać uruchomiony. Można używać tylko `time_of_day` lub `hours` i `minutes`. |
 | `minutes` | Jeśli `frequency` jest `"Day"` lub `"Week"`, można określić co najmniej jedną liczbę całkowitą z przedziału od 0 do 59, oddzieloną przecinkami, jako minuty godziny, kiedy potok powinien zostać uruchomiony. Można używać tylko `time_of_day` lub `hours` i `minutes`. |
-| `time_of_day` | Jeśli `frequency` jest `"Day"` lub `"Week"`, możesz określić godzinę, o której ma być uruchamiany harmonogram. Format ciągu wartości jest `hh:mm`. Można używać tylko `time_of_day` lub `hours` i `minutes`. |zzs
+| `time_of_day` | Jeśli `frequency` jest `"Day"` lub `"Week"`, możesz określić godzinę, o której ma być uruchamiany harmonogram. Format ciągu wartości jest `hh:mm`. Można używać tylko `time_of_day` lub `hours` i `minutes`. |
 | `week_days` | Jeśli `frequency` jest `"Week"`, możesz określić jeden lub więcej dni rozdzielonych przecinkami, gdy harmonogram powinien zostać uruchomiony. Prawidłowe wartości to `"Monday"`, `"Tuesday"`, `"Wednesday"`, `"Thursday"`, `"Friday"`, `"Saturday"`i `"Sunday"`. |
 
 Poniższy przykład zawiera definicję harmonogramu cyklicznego:

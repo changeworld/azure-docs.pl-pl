@@ -7,14 +7,14 @@ ms.service: firewall-manager
 ms.topic: conceptual
 ms.date: 10/25/2019
 ms.author: victorh
-ms.openlocfilehash: fe733b686f2b56beee26a6c33c4d6264d621e627
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: bcea9a8674e4b1979698b7d28eb4192172b0dc11
+ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73516346"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73931304"
 ---
-# <a name="deploy-a-trusted-security-partner-preview"></a>Wdrażanie zaufanego partnera zabezpieczeń (wersja zapoznawcza)
+# <a name="deploy-a-trusted-security-partner-preview"></a>Wdrażanie zaufanego partnera w zakresie zabezpieczeń (wersja zapoznawcza)
 
 [!INCLUDE [Preview](../../includes/firewall-manager-preview-notice.md)]
 
@@ -83,12 +83,11 @@ Aby skonfigurować tunele do VPN Gateway koncentratora wirtualnego, dostawcy inn
 
    > [!NOTE]
    > Możesz ograniczyć dostęp tylko do grupy zasobów, aby uzyskać bardziej szczegółową kontrolę.
-3. Postępuj zgodnie z instrukcjami podanymi w poniższym łączu.
+3. Postępuj zgodnie z [rozwiązania Zscaler: konfigurowanie Microsoft Azure wirtualnej integracji sieci WAN](https://help.zscaler.com/zia/configuring-microsoft-azure-virtual-wan-integration) , aby:
 
-   - Aby zalogować się do portalu dla partnerów i dodać swoje poświadczenia, aby zapewnić zaufanemu partnerowi dostęp do bezpiecznego centrum.
-   - Po sprawdzeniu poprawności poświadczeń uwierzytelniania usługi Azure AD wykonaj poniższe instrukcje, aby zsynchronizować centra wirtualne w portalu dla partnerów i skonfigurować tunel do koncentratora wirtualnego.
-
-   [Rozwiązania Zscaler: Konfigurowanie integracji wirtualnej sieci WAN Microsoft Azure](https://help.zscaler.com/zia/configuring-microsoft-azure-virtual-wan-integration)
+   - Zaloguj się do portalu dla partnerów i Dodaj swoje poświadczenia, aby zapewnić zaufanemu partnerowi dostęp do bezpiecznego centrum.
+   - Zsynchronizuj koncentratory wirtualne w portalu partnerskim i skonfiguruj tunel do koncentratora wirtualnego. Możesz to zrobić po sprawdzeniu poprawności poświadczeń uwierzytelniania usługi Azure AD.
+   
 4. Stan tworzenia tunelu można sprawdzić w portalu Azure Virtual WAN na platformie Azure. Po pobraniu przez tunele **połączenia** na platformie Azure i w portalu dla partnerów przejdź do następnych kroków, aby skonfigurować trasy do wybierania gałęzi i sieci wirtualnych powinny wysyłać ruch internetowy do partnera.
 
 ## <a name="configure-route-settings"></a>Konfigurowanie ustawień trasy

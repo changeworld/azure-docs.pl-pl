@@ -1,5 +1,5 @@
 ---
-title: Szybki Start — Kompilowanie i uruchamianie obrazu kontenera w Azure Container Registry
+title: Szybki Start — Kompilowanie & uruchamianie obrazu kontenera w Azure Container Registry
 description: Szybko uruchamiaj zadania z Azure Container Registry, aby kompilować i uruchamiać obraz kontenera na żądanie w chmurze.
 services: container-registry
 author: dlepow
@@ -9,14 +9,14 @@ ms.topic: quickstart
 ms.date: 04/02/2019
 ms.author: danlep
 ms.custom: ''
-ms.openlocfilehash: e5e02d8194f9164a03bb27d932df45d91486c518
-ms.sourcegitcommit: f5075cffb60128360a9e2e0a538a29652b409af9
+ms.openlocfilehash: b97249aa61916975fa641d4620179be33e1d5276
+ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68310625"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73931554"
 ---
-# <a name="quickstart-build-and-run-a-container-image-using-azure-container-registry-tasks"></a>Szybki start: Kompilowanie i uruchamianie obrazu kontenera przy użyciu Azure Container Registry zadań
+# <a name="quickstart-build-and-run-a-container-image-using-azure-container-registry-tasks"></a>Szybki Start: kompilowanie i uruchamianie obrazu kontenera za pomocą zadań Azure Container Registry
 
 W tym przewodniku szybki start użyjesz poleceń Azure Container Registry zadania, aby szybko kompilować, wypchnięciować i uruchamiać obraz kontenera platformy Docker w systemie Azure, pokazując, jak odciążać cykl programowania "pętla wewnętrzna" do chmury. [ACR Tasks][container-registry-tasks-overview] to zestaw funkcji w ramach Azure Container Registry, które ułatwiają zarządzanie obrazami kontenerów w ramach cyklu życia kontenera i ich modyfikowanie. 
 
@@ -56,7 +56,7 @@ Teraz Użyj Azure Container Registry do skompilowania obrazu. Najpierw Utwórz k
 echo FROM hello-world > Dockerfile
 ```
 
-Uruchom polecenie [AZ ACR Build][az-acr-build] , aby skompilować obraz. Po pomyślnym skompilowaniu obraz jest wypychany do rejestru. Poniższy przykład wypchnięcie `sample/hello-world:v1` obrazu. `.` Na końcu polecenia ustawia lokalizację pliku dockerfile, w tym przypadku bieżący katalog.
+Uruchom polecenie [AZ ACR Build][az-acr-build] , aby skompilować obraz. Po pomyślnym skompilowaniu obraz jest wypychany do rejestru. Poniższy przykład wypycha obraz `sample/hello-world:v1`. `.` na końcu polecenia ustawia lokalizację pliku dockerfile, w tym przypadku bieżący katalog.
 
 ```azurecli-interactive
 az acr build --image sample/hello-world:v1 --registry myContainerRegistry008 --file Dockerfile . 
@@ -118,14 +118,14 @@ Run ID: ca8 was successful after 10s
 
 Teraz możesz szybko uruchomić utworzony wcześniej obraz i wypchnąć go do rejestru. W przepływie pracy tworzenia kontenera może to być etap walidacji przed wdrożeniem obrazu.
 
-Utwórz plik *quickrun. YAML* w lokalnym katalogu roboczym z następującą zawartością dla pojedynczego kroku. Zastąp nazwę serwera logowania w rejestrze dla  *\<acrLoginServer\>* . Nazwa serwera logowania ma format  *\<Registry-Name\>. azurecr.IO* (wszystkie małe litery), na przykład *mycontainerregistry008.azurecr.IO*. W tym przykładzie przyjęto założenie, że `sample/hello-world:v1` obraz został skompilowany i wypchnięci w poprzedniej sekcji:
+Utwórz plik *quickrun. YAML* w lokalnym katalogu roboczym z następującą zawartością dla pojedynczego kroku. Zastąp nazwę serwera logowania w rejestrze dla *\<acrLoginServer\>* . Nazwa serwera logowania ma format *\<Registry-name\>. azurecr.IO* (wszystkie małe litery), na przykład *mycontainerregistry008.azurecr.IO*. W tym przykładzie założono, że utworzono i wypychasz obraz `sample/hello-world:v1` w poprzedniej sekcji:
 
 ```yml
 steps:
   - cmd: <acrLoginServer>/sample/hello-world:v1
 ```
 
-Krok w tym przykładzie powoduje uruchomienie kontenera w konfiguracji domyślnej, ale obsługuje dodatkowe `cmd` `docker run` parametry, a nawet inne `docker` polecenia. `cmd`
+W `cmd` kroku w tym przykładzie jest uruchamiany kontener w konfiguracji domyślnej, ale `cmd` obsługuje dodatkowe parametry `docker run` lub nawet inne polecenia `docker`.
 
 Uruchom kontener za pomocą następującego polecenia:
 

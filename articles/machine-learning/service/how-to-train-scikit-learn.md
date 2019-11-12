@@ -10,12 +10,12 @@ ms.author: maxluk
 author: maxluk
 ms.date: 08/02/2019
 ms.custom: seodec18
-ms.openlocfilehash: ea466486509c4b5dadc48ef830c9f05ec42ab5b3
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: 6d71ea59b7094134cc70b9eeea6da89feacb3a14
+ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73814856"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73931052"
 ---
 # <a name="build-scikit-learn-models-at-scale-with-azure-machine-learning"></a>Kompiluj scikit — Poznaj modele na dużą skalę dzięki Azure Machine Learning
 [!INCLUDE [applies-to-skus](../../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -177,20 +177,47 @@ import joblib
 joblib.dump(svm_model_linear, 'model.joblib')
 ```
 
-Zarejestruj model w obszarze roboczym przy użyciu następującego kodu.
+Zarejestruj model w obszarze roboczym przy użyciu następującego kodu. Określając parametry `model_framework`, `model_framework_version`i `resource_configuration`, wdrożenie modelu No-Code nie zostanie udostępnione. Dzięki temu można bezpośrednio wdrożyć model jako usługę sieci Web z zarejestrowanego modelu, a obiekt `ResourceConfiguration` definiuje zasób obliczeniowy dla usługi sieci Web.
 
 ```Python
-model = run.register_model(model_name='sklearn-iris', model_path='model.joblib')
+from azureml.core import Model
+from azureml.core.resource_configuration import ResourceConfiguration
+
+model = run.register_model(model_name='sklearn-iris', 
+                           model_path='model.joblib',
+                           model_framework=Model.Framework.SCIKITLEARN,
+                           model_framework_version='0.19.1',
+                           resource_configuration=ResourceConfiguration(cpu=1, memory_in_gb=0.5))
 ```
+
+## <a name="deployment"></a>Wdrożenie
+
+Właśnie zarejestrowany model można wdrożyć w taki sam sposób jak każdy inny zarejestrowany model w Azure Machine Learning, niezależnie od tego, który szacowania używany do uczenia się. Wdrożenie How-to zawiera sekcję dotyczącą rejestrowania modeli, ale możesz przejść bezpośrednio do tworzenia celu [obliczeń](how-to-deploy-and-where.md#choose-a-compute-target) dla wdrożenia, ponieważ istnieje już zarejestrowany model.
+
+### <a name="preview-no-code-model-deployment"></a>Przeglądania Wdrożenie modelu bez kodu
+
+Zamiast tradycyjnej trasy wdrożenia można również użyć funkcji wdrażania bez kodu (wersja zapoznawcza) dla scikit — uczenie się. Nie jest obsługiwane wdrożenie modelu bez kodu dla wszystkich wbudowanych typów modeli scikit. Rejestrując model, jak pokazano powyżej, za pomocą parametrów `model_framework`, `model_framework_version`i `resource_configuration`, można po prostu użyć funkcji statycznej `deploy()` do wdrożenia modelu.
+
+```python
+web_service = Model.deploy(ws, "scikit-learn-service", [model])
+```
+
+Uwaga: te zależności są zawarte we wstępnie skompilowanym kontenerze wnioskowania scikit.
+
+```yaml
+    - azureml-defaults
+    - inference-schema[numpy-support]
+    - scikit-learn
+    - numpy
+```
+
+Pełne [Omówienie](how-to-deploy-and-where.md) wdrażania w Azure Machine Learning.
+
 
 ## <a name="next-steps"></a>Następne kroki
 
+W tym artykule przedstawiono przeszkolony i zarejestrowany model uczenia scikit oraz informacje o opcjach wdrażania. Zapoznaj się z innymi artykułami, aby dowiedzieć się więcej na temat Azure Machine Learning.
 
-W tym artykule został przeszkolony i zarejestrowany model Keras na Azure Machine Learning. Aby dowiedzieć się, jak wdrożyć model, przejdź do naszego artykułu wdrożenia modelu.
-
-> [!div class="nextstepaction"]
-> [Jak i gdzie wdrażać modele](how-to-deploy-and-where.md)
 * [Śledzenie metryk uruchamiania podczas szkolenia](how-to-track-experiments.md)
 * [Dostrajanie parametrów](how-to-tune-hyperparameters.md)
-* [Wdróż przeszkolony model](how-to-deploy-and-where.md)
 * [Architektura referencyjna na potrzeby rozproszonego szkolenia uczenia głębokiego na platformie Azure](/azure/architecture/reference-architectures/ai/training-deep-learning)

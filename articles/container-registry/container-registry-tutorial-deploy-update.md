@@ -1,6 +1,6 @@
 ---
-title: Samouczek — wypychanie zaktualizowanego obrazu kontenera do wdrożeń regionalnych aplikacji platformy Azure
-description: Wypchnij zmodyfikowany obraz Docker do usługi Azure Container Registry z replikacją geograficzną, a następnie zobacz zmiany automatycznie wdrażane w aplikacjach internetowych działających w wielu regionach. Trzecia część trzyczęściowej serii.
+title: Samouczek — wypychanie aktualizacji do Azure Container Registry z replikacją geograficzną
+description: Wypchnij zaktualizowany obraz Docker do rejestru kontenerów platformy Azure z replikacją geograficzną, a następnie zobacz zmiany automatycznie wdrożone w aplikacjach sieci Web działających w wielu regionach. Trzecia część trzyczęściowej serii.
 services: container-registry
 author: dlepow
 manager: gwallace
@@ -9,14 +9,14 @@ ms.topic: tutorial
 ms.date: 04/30/2018
 ms.author: danlep
 ms.custom: seodec18, mvc
-ms.openlocfilehash: e01fdc41d0cc2e65951bd92378eb59f0fd35816a
-ms.sourcegitcommit: f5075cffb60128360a9e2e0a538a29652b409af9
+ms.openlocfilehash: adf6348e3b4c5fa728a0289ccd5bd3f289872108
+ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68310427"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73931372"
 ---
-# <a name="tutorial-push-an-updated-container-image-to-a-geo-replicated-container-registry-for-regional-web-app-deployments"></a>Samouczek: Wypychanie zaktualizowanego obrazu kontenera do rejestru kontenerów z replikacją geograficzną dla wdrożeń regionalnych aplikacji internetowych
+# <a name="tutorial-push-an-updated-container-image-to-a-geo-replicated-container-registry-for-regional-web-app-deployments"></a>Samouczek: wypychanie zaktualizowanego obrazu kontenera do rejestru kontenerów z replikacją geograficzną na potrzeby wdrożeń regionalnych aplikacji sieci Web
 
 Niniejszy samouczek jest trzecią częścią trzyczęściowej serii. W [poprzednim samouczku](container-registry-tutorial-deploy-app.md) skonfigurowano replikację geograficzną dla dwóch różnych regionalnych wdrożeń aplikacji internetowej. W tym samouczku najpierw zmodyfikujesz aplikację, a następnie utworzysz nowy obraz kontenera i wypchniesz go do rejestru replikowanego geograficznie. Na koniec wyświetlisz zmianę, wdrożoną automatycznie przez elementy webhook usługi Azure Container Registry w obu wystąpieniach aplikacji internetowej.
 
@@ -130,7 +130,7 @@ Sprawdź, czy zaktualizowany obraz kontenera został również wdrożony we wdro
 
 Za pomocą jednej aplikacji `docker push` została automatycznie zaktualizowana aplikacja internetowa działająca w obu regionalnych wdrożeniach aplikacji internetowej. Usługa Azure Container Registry przesłała do kontenera obrazy z repozytoriów znajdujących się najbliżej poszczególnych wdrożeń.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 Podczas pracy z samouczkiem utworzono i wypchnięto nową wersję kontenera aplikacji internetowej do rejestru replikowanego geograficznie. Elementy webhook w usłudze Azure Container Registry powiadomiły o aktualizacji usługę Web Apps for Containers, która wyzwoliła lokalne ściągnięcie z najbliższej repliki rejestru.
 

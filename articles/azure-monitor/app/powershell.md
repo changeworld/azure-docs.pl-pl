@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: mrbullwinkle
 ms.author: mbullwin
 ms.date: 10/17/2019
-ms.openlocfilehash: 5ae043c356559b2e675f05af3eb7eb61973eb170
-ms.sourcegitcommit: 6c2c97445f5d44c5b5974a5beb51a8733b0c2be7
+ms.openlocfilehash: 2f59b66bacbd0105e5a543b019a5c6646e010c48
+ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73621937"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73928516"
 ---
 #  <a name="manage-application-insights-resources-using-powershell"></a>Zarządzanie zasobami Application Insights przy użyciu programu PowerShell
 
@@ -595,7 +595,7 @@ Platforma Azure powinna skonfigurować zasoby w ścisłej kolejności. Aby upewn
 ## <a name="next-steps"></a>Następne kroki
 Inne artykuły dotyczące usługi Automation:
 
-* Utwórz szybką metodę [Application Insights zasobów](powershell-script-create-resource.md) bez użycia szablonu.
+* Utwórz szybką metodę [Application Insights zasobów](https://docs.microsoft.com/azure/azure-monitor/app/create-new-resource#creating-a-resource-automatically) bez użycia szablonu.
 * [Konfigurowanie alertów](powershell-alerts.md)
 * [Tworzenie testów sieci Web](https://azure.microsoft.com/blog/creating-a-web-test-alert-programmatically-with-application-insights/)
 * [Wysyłanie Diagnostyki Azure do usługi Application Insights](powershell-azure-diagnostics.md)

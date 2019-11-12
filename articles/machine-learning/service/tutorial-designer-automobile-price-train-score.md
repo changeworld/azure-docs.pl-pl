@@ -1,7 +1,7 @@
 ---
 title: 'Samouczek: przewidywanie ceny za samochód przy użyciu narzędzia Projektant'
 titleSuffix: Azure Machine Learning
-description: Dowiedz się, jak uczenie, ocenę i wdrożenie modelu uczenia maszynowego przy użyciu interfejsu przeciągania i upuszczania. Ten samouczek jest częścią jednej z serii dwóch części na przewidywanie cen samochodów, przy użyciu regresji liniowej.
+description: Dowiedz się, jak uczenie, ocenę i wdrożenie modelu uczenia maszynowego przy użyciu interfejsu typu "przeciągnij i upuść". Ten samouczek jest częścią jednej z serii dwóch części na przewidywania cen samochodów, przy użyciu regresji liniowej.
 author: peterclu
 ms.author: peterlu
 services: machine-learning
@@ -9,35 +9,35 @@ ms.service: machine-learning
 ms.subservice: core
 ms.topic: tutorial
 ms.date: 11/04/2019
-ms.openlocfilehash: 3df1a0430983b52d8a791acabbd03efe19055697
-ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
+ms.openlocfilehash: 0ffe85b6e005d2dc8fe077a5a08d8b0f11c73589
+ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73721771"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73929666"
 ---
 # <a name="tutorial-predict-automobile-price-with-the-designer-preview"></a>Samouczek: przewidywanie ceny za samochód przy użyciu projektanta (wersja zapoznawcza)
 [!INCLUDE [applies-to-skus](../../../includes/aml-applies-to-enterprise-sku.md)]
 
 W tym dwuczęściowym samouczku dowiesz się, jak za pomocą projektanta Azure Machine Learning utworzyć i wdrożyć rozwiązanie do analizy predykcyjnej, które przewiduje cenę dowolnego samochodu. 
 
-W części pierwszej należy skonfigurować środowisko, przeciągać i upuszczać moduły na interaktywną kanwę, a następnie połączyć je ze sobą w celu utworzenia potoku Azure Machine Learning.
+W części pierwszej należy skonfigurować środowisko, przeciągnąć moduły na interaktywną kanwę, a następnie połączyć je ze sobą w celu utworzenia potoku Azure Machine Learning.
 
 W pierwszej części samouczka dowiesz się, jak:
 
 > [!div class="checklist"]
-> * Tworzenie nowego potoku
-> * Importowanie danych
-> * Przygotowywanie danych
-> * Uczenie modelu uczenia maszynowego
-> * Oceń model uczenia maszynowego
+> * Utwórz nowy potok.
+> * Importuj dane.
+> * Przygotuj dane.
+> * Uczenie modelu uczenia maszynowego.
+> * Oceń model uczenia maszynowego.
 
 W [drugiej części](tutorial-designer-automobile-price-deploy.md) samouczka dowiesz się, jak wdrożyć model predykcyjny jako punkt końcowy inferencing w czasie rzeczywistym, aby przewidzieć cenę dowolnego samochodu w oparciu o specyfikacje techniczne, które wysyłasz. 
 
-> [!Note]
+> [!NOTE]
 >Kompletna wersja tego samouczka jest dostępna jako potoku przykładowe.
 >
->Aby go znaleźć, przejdź do **projektanta w obszarze roboczym**. W sekcji **nowe potoku** wybierz pozycję **przykład 1-regresja: Automobile — Prognoza cenowa (podstawowa)** .
+>Aby go znaleźć, przejdź do projektanta w obszarze roboczym. W sekcji **nowe potoku** wybierz pozycję **przykład 1-regresja: Automobile — Prognoza cenowa (podstawowa)** .
 
 ## <a name="create-a-new-pipeline"></a>Tworzenie nowego potoku
 
@@ -45,13 +45,13 @@ Potoki Azure Machine Learning organizują wiele zależnych etapów uczenia maszy
 
 ### <a name="create-a-new-workspace"></a>Utwórz nowy obszar roboczy
 
-Jeśli masz obszar roboczy Azure Machine Learning z **wersją Enterprise**, [Przejdź do następnej sekcji](#create-the-pipeline).
+Jeśli masz obszar roboczy Azure Machine Learning z wersją Enterprise, [Przejdź do następnej sekcji](#create-the-pipeline).
 
 [!INCLUDE [aml-create-portal](../../../includes/aml-create-in-portal-enterprise.md)]
 
 ### <a name="create-the-pipeline"></a>Tworzenie potoku
 
-1. Zaloguj się do [ml.Azure.com](https://ml.azure.com) i wybierz obszar roboczy, z którym chcesz współpracować.
+1. Zaloguj się do [ml.Azure.com](https://ml.azure.com)i wybierz obszar roboczy, z którym chcesz współpracować.
 
 1. Wybierz pozycję **Projektant**.
 
@@ -59,15 +59,15 @@ Jeśli masz obszar roboczy Azure Machine Learning z **wersją Enterprise**, [Prz
 
 1. Wybierz **łatwe w użyciu wstępnie skompilowane moduły**.
 
-1. Wybierz domyślną nazwę potoku **"potok-utworzony-on..."** w górnej części kanwy i nadaj jej znaczenie. Na przykład **"Funkcja prognozowania cen dla samochodów"** . Nazwa nie musi być unikatowa.
+1. Wybierz domyślny potok Nazwa potoku **— utworzony** w górnej części kanwy. Zmień jej nazwę na zrozumiałą. Przykładem jest *Prognoza cen na urządzeniu przenośnym*. Nazwa nie musi być unikatowa.
 
 ## <a name="import-data"></a>Importowanie danych
 
 Projektant zawiera kilka przykładowych zestawów danych, z którymi można eksperymentować. Na potrzeby tego samouczka Użyj **danych cen samochodów (RAW)** . 
 
-1. Na lewo od kanwy potoku jest paletą zestawów danych i modułów. Wybierz pozycję **zestawy danych** , a następnie Wyświetl sekcję **Samples (przykłady** ), aby wyświetlić dostępne przykładowe zestawy danych.
+1. Na lewo od kanwy potoku jest paletą zestawów danych i modułów. Wybierz pozycję **zestawy danych**, a następnie Wyświetl sekcję **przykłady** , aby wyświetlić dostępne przykładowe zestawy danych.
 
-1. Wybierz zestaw danych, **dane cen samochodów (RAW)** i przeciągnij je na kanwę.
+1. Wybierz pozycję zestaw **danych cena samochodów (RAW)** i przeciągnij ją na kanwę.
 
    ![Przeciągnij dane do kanwy](./media/ui-tutorial-automobile-price-train-score/drag-data.gif)
 
@@ -77,7 +77,7 @@ Możesz wizualizować dane, aby zrozumieć zestaw danych, który będzie używan
 
 1. Wybierz moduł **dane cen samochodów (RAW)** .
 
-1. W okienku **Właściwości** z prawej strony kanwy wybierz pozycję dane **wyjściowe**.
+1. W okienku właściwości z prawej strony kanwy wybierz pozycję dane **wyjściowe**.
 
 1. Wybierz ikonę grafu, aby wizualizować dane.
 
@@ -89,17 +89,17 @@ Możesz wizualizować dane, aby zrozumieć zestaw danych, który będzie używan
 
 ## <a name="prepare-data"></a>Przygotowywanie danych
 
-Zestawy danych zwykle wymagają pewnego przetworzenia przed analizą. Podczas inspekcji zestawu danych mogą znajdować się pewne brakujące wartości. Te brakujące wartości muszą zostać wyczyszczone, aby model mógł prawidłowo analizować dane.
+Zestawy danych zwykle wymagają pewnego przetworzenia przed analizą. Podczas inspekcji zestawu danych mogą znajdować się pewne brakujące wartości. Te brakujące wartości muszą zostać oczyszczone, aby model mógł prawidłowo analizować dane.
 
 ### <a name="remove-a-column"></a>Usuwanie kolumny
 
-Podczas uczenia modelu trzeba wykonać coś dotyczące brakujących danych. W tym zestawie danych w kolumnie **znormalizowana strata** brakuje wielu wartości, więc ta kolumna nie zostanie całkowicie wykluczona z modelu.
+Podczas uczenia modelu trzeba wykonać coś dotyczące brakujących danych. W tym zestawie danych w kolumnie **znormalizowanych strat** brakuje wielu wartości, dlatego ta kolumna jest wykluczana z modelu całkowicie.
 
 1. Wprowadź wartość **SELECT** w polu wyszukiwania w górnej części palety, aby znaleźć moduł **SELECT Columns in DataSet** .
 
-1. Kliknij i przeciągnij moduł **Wybieranie kolumn w zestawie danych** na kanwę. Upuść moduł poniżej modułu DataSet.
+1. Przeciągnij moduł **Wybierz kolumny w zestawie danych** na kanwę. Upuść moduł poniżej modułu DataSet.
 
-1. Połącz zestaw **danych cen samochodów (RAW)** z **wybieraniem kolumn w zestawie danych**. Przeciągnij z portu wyjściowego zestawu danych, czyli małego okręgu w dolnej części zestawu danych na kanwie, do portu wejściowego **SELECT kolumn w zestawie danych**, czyli małego okręgu w górnej części modułu.
+1. Połącz zestaw danych **cen samochodów (RAW)** z modułem **Wybieranie kolumn w zestawie danych** . Przeciągnij z portu wyjściowego zestawu danych, czyli małego okręgu w dolnej części zestawu danych na kanwie, do portu wejściowego **SELECT kolumn w zestawie danych**, czyli małego okręgu w górnej części modułu.
 
     > [!TIP]
     > Przepływ danych można utworzyć za pomocą potoku po podłączeniu portu wyjściowego jednego modułu do portu wejściowego innego.
@@ -109,13 +109,13 @@ Podczas uczenia modelu trzeba wykonać coś dotyczące brakujących danych. W ty
 
 1. Wybierz pozycję **Wybierz kolumny w zestawie danych** .
 
-1. W okienku **Właściwości** po prawej stronie kanwy wybierz pozycję **Parametry** > **Edytuj kolumnę**.
+1. W okienku właściwości po prawej stronie kanwy wybierz pozycję **parametry** > **Edytuj kolumnę**.
 
 1. Wybierz **+** , aby dodać nową regułę.
 
 1. Z menu rozwijanego wybierz opcję **Wyklucz** i **nazwy kolumn**.
     
-1. Wprowadź **znormalizowane straty** do pola tekstowego.
+1. Wprowadź *znormalizowane straty* w polu tekstowym.
 
 1. W prawym dolnym rogu wybierz pozycję **Zapisz** , aby zamknąć selektor kolumny.
 
@@ -125,7 +125,7 @@ Podczas uczenia modelu trzeba wykonać coś dotyczące brakujących danych. W ty
 
 1. Wybierz pozycję **Wybierz kolumny w zestawie danych** . 
 
-1. W okienku **Właściwości** wybierz pozycję **Parametry** > **komentarz** i wprowadź "Wykluczanie znormalizowanych strat".
+1. W okienku właściwości wybierz pozycję **parametry** > **komentarz** i wprowadź *wykluczanie znormalizowanych strat*.
 
 ### <a name="clean-missing-data"></a>Wyczyść brakujące dane
 
@@ -136,11 +136,11 @@ Zestaw danych nadal ma brakujące wartości po usunięciu kolumny **znormalizowa
 
 1. Wprowadź **Wyczyść** w polu wyszukiwania, aby znaleźć **nieczysty moduł danych** .
 
-1. Przeciągnij **czysty moduł brakujących danych** do kanwy potoku i połącz go z modułem **Wybierz kolumny w zestawie danych** . 
+1. Przeciągnij **nieczysty moduł danych** do kanwy potoku. Połącz go z modułem **Wybieranie kolumn w zestawie danych** . 
 
 1. W okienku właściwości wybierz pozycję **Usuń cały wiersz** w obszarze **Tryb czyszczenia**.
 
-1. W okienku właściwości w polu **komentarz** wprowadź "Usuń brakujące wiersze wartości".  
+1. W okienku właściwości w polu **komentarz** wprowadź *Usuń brakujące wiersze wartości*. 
 
     Potok powinien teraz wyglądać następująco:
     
@@ -152,23 +152,23 @@ Teraz, gdy dane są przetwarzane, można przeprowadzić uczenie modelu predykcyj
 
 ### <a name="select-an-algorithm"></a>Wybieranie algorytmu
 
-Algorytmy **klasyfikacji** i **regresji** to dwa typy nadzorowanego uczenia maszynowego. **Klasyfikacja** przewiduje odpowiedź ze zdefiniowanego zestawu kategorii, takich jak kolor (czerwony, niebieski lub zielony). **Regresja** służy do przewidywania liczby.
+Algorytmy *klasyfikacji* i *regresji* to dwa typy nadzorowanego uczenia maszynowego. Klasyfikacja przewiduje odpowiedź ze zdefiniowanego zestawu kategorii, takich jak kolor czerwony, niebieski lub zielony. Regresja służy do prognozowania liczby.
 
-Ponieważ chcesz przewidzieć cenę, która jest liczbą, możesz użyć algorytmu regresji. W tym przykładzie zostanie użyty model regresji liniowej.
+Ponieważ chcesz przewidzieć cenę, która jest liczbą, możesz użyć algorytmu regresji. W tym przykładzie używany jest model regresji liniowej.
 
 ### <a name="split-the-data"></a>Podziel dane
 
 Podziel dane na dwa osobne zestawy danych, aby przeanalizować model i przetestować go.
 
-1. Wprowadź **Podziel dane** w polu wyszukiwania, aby znaleźć moduł **Split Data** i połączyć go z lewym portem **czystego nieistniejącego modułu danych** .
+1. Wprowadź **Podziel dane** w polu wyszukiwania, aby znaleźć moduł **Split Data** . Połącz go z lewym portem **czystego brakujących danych** .
 
 1. Wybierz moduł **Split Data** .
 
 1. W okienku właściwości ustaw **ułamek wierszy w pierwszym zestawie danych wyjściowych** na 0,7.
 
-    Spowoduje to poddzielenie 70 procent danych, aby szkolić model i 30 procent na potrzeby testowania.
+    Ta opcja dzieli na 70 procent danych, aby szkolić model i 30 procent na potrzeby testowania.
 
-1. W polu **komentarz** właściwości wprowadź "Podziel zestaw danych na zestaw szkoleniowy (0,7) i zestaw testów (0,3)".
+1. W **okienku właściwości wpisz polecenie** *Podziel zestaw danych na zestaw szkoleniowy (0,7) i zestaw testów (0,3)* .
 
 ### <a name="train-the-model"></a>Uczenie modelu
 
@@ -178,9 +178,9 @@ Uczenie modelu przez nadanie mu zestawu danych, który zawiera cenę. Model skan
 
 1. Rozwiń **algorytmy Machine Learning**.
     
-    Spowoduje to wyświetlenie kilku kategorii modułów, których można użyć do zainicjowania algorytmów uczenia.
+    Ta opcja umożliwia wyświetlenie kilku kategorii modułów, których można użyć do zainicjowania algorytmów uczenia.
 
-1. Wybierz **regresję** > **regresji liniowej** i przeciągnij ją na kanwę potoku.
+1. Wybierz **regresję** > **regresji liniowej**i przeciągnij ją na kanwę potoku.
 
 1. Znajdź i przeciągnij moduł **uczenie modelu** na kanwę potoku. 
 
@@ -196,7 +196,7 @@ Uczenie modelu przez nadanie mu zestawu danych, który zawiera cenę. Model skan
 
 1. W oknie dialogowym **etykieta kolumny** rozwiń menu rozwijane i wybierz pozycję **nazwy kolumn**. 
 
-1. W polu tekstowym wprowadź **Price**. Cena to wartość, która jest przewidywana przez model.
+1. W polu tekstowym wprowadź *Price*. Cena to wartość, która jest przewidywana przez model.
 
     Potok powinien wyglądać następująco:
 
@@ -204,13 +204,13 @@ Uczenie modelu przez nadanie mu zestawu danych, który zawiera cenę. Model skan
 
 ## <a name="evaluate-a-machine-learning-model"></a>Oceń model uczenia maszynowego
 
-Po przekształceniu modelu przy użyciu 70% danych można użyć go do oceny pozostałych 30 procent, aby zobaczyć, jak dobrze działa model.
+Po nauczeniu modelu przy użyciu 70 procent danych, można użyć go do oceny pozostałych 30 procent, aby zobaczyć, jak dobrze działa model.
 
-1. W polu wyszukiwania wprowadź ciąg **model oceny** , aby znaleźć moduł **model oceny** i przeciągnąć moduł na kanwę potoku. 
+1. Wprowadź ciąg " *model oceny* " w polu wyszukiwania, aby znaleźć moduł **modelu oceny** . Przeciągnij moduł do kanwy potoku. 
 
 1. Połącz dane wyjściowe modułu **uczenie modelu** z lewym portem wejściowym **modelu wynikowego**. Połącz dane wyjściowe testu (prawy port) modułu **Split Data (dane** wejściowe) z odpowiednim portem wejściowym **modelu wynikowego**.
 
-1. Wprowadź **wartość Oceń** w polu wyszukiwania, aby znaleźć **model oszacowania** i przeciągnąć moduł na kanwę potoku. 
+1. Wprowadź *wartość Oceń* w polu wyszukiwania, aby znaleźć moduł **Oceń model** . Przeciągnij moduł do kanwy potoku. 
 
 1. Połącz dane wyjściowe modułu z **modelem wynikowym** z lewym wejściem do **oceny modelu**. 
 
@@ -228,23 +228,23 @@ Po zakończeniu przebiegu można wyświetlić wyniki uruchomienia potoku.
 
 1. Wybierz moduł **model oceny** , aby wyświetlić jego dane wyjściowe.
 
-1. W okienku **Właściwości** wybierz pozycję **wyjściowe** > **Wizualizacja**.
+1. W okienku właściwości wybierz pozycję **wyjściowe** > **Wizualizacja**.
 
     W tym miejscu możesz zobaczyć przewidywane ceny i rzeczywiste ceny z danych testowych.
 
-    ![Zrzut ekranu przedstawiający wizualizację danych wyjściowych z wyróżnioną kolumną "z oceną"](./media/ui-tutorial-automobile-price-train-score/score-result.png)
+    ![Zrzut ekranu przedstawiający wizualizację danych wyjściowych z wyróżnioną kolumną etykieta z wynikami](./media/ui-tutorial-automobile-price-train-score/score-result.png)
 
 1. Wybierz moduł **Oceń model** , aby wyświetlić jego dane wyjściowe.
 
-1. W okienku **Właściwości** wybierz pozycję **Output** > **wizualizator**.
+1. W okienku właściwości wybierz pozycję **Output** > **wizualizator**.
 
 Następujące statystyki są wyświetlane dla modelu:
 
-* **Średni błąd bezwzględny (Mae)** : Średnia liczba błędów bezwzględnych (błąd to różnica między wartością przewidywaną a wartością rzeczywistą).
+* **Średni błąd bezwzględny (Mae)** : Średnia liczba błędów bezwzględnych. Jest to różnica między wartością przewidywaną a wartością rzeczywistą.
 * **Błąd średnika "pierwiastek" z wartości głównej (RMSE)** : pierwiastek kwadratowy średniej wartości kwadratowych błędów prognoz wykonanych na testowym zestawie danych.
 * **Względny błąd absolutny**: iloraz średniej błędów absolutnych i bezwzględnej wartości różnicy między wartościami rzeczywistymi a średnią wszystkich wartości rzeczywistych.
 * **Błąd względny średniokwadratowy**: iloraz średniej kwadratów błędów i kwadratu różnicy między wartościami rzeczywistymi a średnią wszystkich wartości rzeczywistych.
-* **Współczynnik wyznaczania**: znany również jako wartość R kwadratowa, jest to metryka statystyczna wskazująca, jak dobrze model dopasowuje dane.
+* **Współczynnik wyznaczania**: znany również jako wartość R kwadratowa, ta Metryka statystyczna wskazuje, jak dobrze model dopasowuje dane.
 
 W przypadku wszystkich powyższych statystyk mniejsze wartości oznaczają lepszą jakość modelu. Mniejsza wartość wskazuje, że przewidywania są bliżej rzeczywistych wartości. Dla współczynnika wyznaczania wartość bliższej wartości to 1 (1,0), tym lepsze przewidywania.
 

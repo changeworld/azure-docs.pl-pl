@@ -1,5 +1,5 @@
 ---
-title: Twórz przepływy pracy za pomocą łącznika usługi Azure IoT Central w Microsoft Flow | Microsoft Docs
+title: Użyj łącznika usługi Azure IoT Central w Microsoft Flow | Microsoft Docs
 description: Korzystając z IoT Central łącznika w Microsoft Flow, można wyzwalać przepływy pracy oraz tworzyć, aktualizować, usuwać i uruchamiać polecenia w przepływach pracy.
 services: iot-central
 author: viv-liu
@@ -8,12 +8,12 @@ ms.date: 08/26/2019
 ms.topic: conceptual
 ms.service: iot-central
 manager: hegate
-ms.openlocfilehash: 258020c8ccd690c524460873387293e73fc89125
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: f1912b90df75f3d85f6ba5d730c723cf42803237
+ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72951733"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73930373"
 ---
 # <a name="build-workflows-with-the-iot-central-connector-in-microsoft-flow"></a>Tworzenie przepływów pracy za pomocą łącznika IoT Central w programie Microsoft Flow
 
