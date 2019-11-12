@@ -11,12 +11,12 @@ metadata:
   author: hrasheed-msft
   ms.author: hrasheed
   ms.date: 08/30/2019
-  ms.openlocfilehash: 8227f36ecaeb868f022ad036cf727fee8448da75
-  ms.sourcegitcommit: f7f70c9bd6c2253860e346245d6e2d8a85e8a91b
+  ms.openlocfilehash: 277036368f9bd5f7b0afb8131cfc61c8a7d8f233
+  ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
   ms.translationtype: HT
   ms.contentlocale: pl-PL
-  ms.lasthandoff: 10/30/2019
-  ms.locfileid: "73063167"
+  ms.lasthandoff: 11/12/2019
+  ms.locfileid: "73931186"
 landingContent:
 - title: HDInsight — informacje
   linkLists:
@@ -28,6 +28,8 @@ landingContent:
     links:
     - text: Składniki i wersje usługi HDInsight
       url: ./hdinsight-component-versioning.md
+    - text: Wybieranie odpowiedniego rozmiaru maszyny wirtualnej
+      url: ./hdinsight-selecting-vm-size.md
     - text: Obsługiwane typy maszyn wirtualnych usługi HDInsight
       url: ./hdinsight-supported-node-configuration.md
     - text: Porównanie opcji magazynu

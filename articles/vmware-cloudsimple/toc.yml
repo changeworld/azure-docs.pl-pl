@@ -134,6 +134,8 @@
               href: azure-expressroute-connection.md
             - name: Konfigurowanie rozpoznawania nazw DNS
               href: on-premises-dns-setup.md
+            - name: Konfigurowanie połączeń sieci VPN typu lokacja-lokacja o wysokiej dostępności
+              href: high-availability-vpn-connection.md
         - name: Platforma VMware
           items:
             - name: Informacje o modelu uprawnień chmury prywatnej
