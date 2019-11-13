@@ -1,17 +1,14 @@
 ---
 title: Omówienie usługi Azure Blueprints
 description: Dowiedz się, w jaki sposób usługa Azure Plans umożliwia tworzenie, Definiowanie i wdrażanie artefaktów w środowisku platformy Azure.
-author: DCtheGeek
-ms.author: dacoulte
 ms.date: 08/26/2019
 ms.topic: overview
-ms.service: blueprints
-ms.openlocfilehash: 86f58594ce1af91b19f70cbdb1114a90180e3b4f
-ms.sourcegitcommit: d7689ff43ef1395e61101b718501bab181aca1fa
+ms.openlocfilehash: 3005bf171c5297048978d090d0f253a8690242cd
+ms.sourcegitcommit: 39da2d9675c3a2ac54ddc164da4568cf341ddecf
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/06/2019
-ms.locfileid: "71981710"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73960323"
 ---
 # <a name="overview-of-the-azure-blueprints-service"></a>Omówienie usługi Azure Plans
 

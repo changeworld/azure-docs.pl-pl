@@ -1,6 +1,6 @@
 ---
-title: Limity usługi Azure Digital bliźniaczych reprezentacji w publicznej wersji zapoznawczej | Microsoft Docs
-description: Informacje o limitach usługi Digital bliźniaczych reprezentacji Public Preview.
+title: Limity usługi publicznej wersji zapoznawczej — usługa Azure Digital bliźniaczych reprezentacji | Microsoft Docs
+description: Dowiedz się więcej na temat limitów usługi Public Preview bliźniaczych reprezentacji dla platformy Azure.
 ms.author: alinast
 author: alinamstanciu
 manager: bertvanhoof
@@ -8,12 +8,12 @@ ms.service: digital-twins
 services: digital-twins
 ms.topic: conceptual
 ms.date: 10/22/2019
-ms.openlocfilehash: 97bcb4e6fad9c766f2ad059469e75ffd5ab8ec8c
-ms.sourcegitcommit: be8e2e0a3eb2ad49ed5b996461d4bff7cba8a837
+ms.openlocfilehash: 3cea4fe65e49bfa2d49822d443103ae6cc6ce69f
+ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72800237"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74014165"
 ---
 # <a name="public-preview-service-limits"></a>Limity usługi w publicznej wersji zapoznawczej
 

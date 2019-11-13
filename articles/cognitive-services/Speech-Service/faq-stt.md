@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 10/17/2019
 ms.author: panosper
-ms.openlocfilehash: 3b957181015cba06eb361272ca1004ba3e7a7008
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: 2d0a05c763b21b0cf22a724f9a5faa9d70b5b557
+ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73579678"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74010658"
 ---
 # <a name="speech-to-text-frequently-asked-questions"></a>Zamiana mowy na tekst często zadawanych pytań
 
@@ -59,7 +59,7 @@ Odp **.: nie**można zaktualizować istniejącego modelu. Jako rozwiązanie Poł
 
 Stary zestaw danych i nowy zestaw danych muszą być połączone w pojedynczym pliku zip (dla danych akustycznych) lub w pliku txt (dla danych języka). Po zakończeniu adaptacji nowy, zaktualizowany model musi zostać ponownie wdrożony w celu uzyskania nowego punktu końcowego
 
-**P: gdy dostępna jest nowa wersja planu bazowego, wdrożenie jest automatycznie aktualizowane?**
+**P: gdy dostępna jest nowa wersja linii bazowej, czy moje wdrożenie jest automatycznie aktualizowane?**
 
 Odp **.: wdrożenia**nie będą automatycznie aktualizowane.
 
@@ -71,26 +71,31 @@ Odp **.: można**skalować w górę modelu w przyrostach 20 współbieżnych ż�
 
 Skontaktuj się z [pomocą techniczną mowy](mailto:speechsupport@microsoft.com?subject=Request%20for%20higher%20concurrency%20for%20Speech-to-text) , jeśli potrzebujesz wyższej skali.
 
-Aby zwiększyć współbieżność modelu niestandardowego, potrzebne są następujące informacje:
+Aby zwiększyć współbieżność ***modelu niestandardowego***, potrzebne są następujące informacje:
 
-- Region, w którym został wdrożony model.
-- Identyfikator punktu końcowego wdrożonego modelu.
+- Region, w którym jest wdrożony model,
+- Identyfikator punktu końcowego wdrożonego modelu:
+  - Czy masz do [portalu Custom Speech](https://aka.ms/customspeech),
+  - Zaloguj się (w razie potrzeby),
+  - Wybierz projekt i wdrożenie,
+  - Wybierz punkt końcowy, dla którego chcesz zwiększyć współbieżność,
+  - Skopiuj `Endpoint ID`.
 
-Aby zwiększyć współbieżność dla modeli podstawowych, potrzebne są następujące informacje:
+Aby zwiększyć współbieżność ***modelu podstawowego***, potrzebne są następujące informacje:
 
 - Region usługi,
 
 i albo
 
-- token dostępu dla Ciebie subrscription (zobacz [tutaj](https://docs.microsoft.com/azure/cognitive-services/speech-service/rest-speech-to-text#how-to-get-an-access-token)),
+- token dostępu do subskrypcji (patrz [tutaj](https://docs.microsoft.com/azure/cognitive-services/speech-service/rest-speech-to-text#how-to-get-an-access-token)),
 
 lub
 
 - Identyfikator zasobu dla subskrypcji:
-  - Przejdź do https://portal.azure.com,
+  - Przejdź do [Azure Portal](https://portal.azure.com),
   - Wybierz `Cognitive Services` w polu wyszukiwania
   - z wyświetlanych usług wybierz usługę mowy, dla której chcesz zwiększyć współbieżność,
-  - Wyświetl właściwości tej usługi,
+  - Wyświetl `Properties` dla tej usługi,
   - Skopiuj kompletną `Resource ID`.
 
 **P: Czy można pobrać model i uruchomić go lokalnie?**
@@ -107,7 +112,7 @@ Odp **.: interfejs**API REST ogranicza liczbę żądań do 25 na 5 sekund. Szcze
 
 **P: jak opłaty są naliczane za dwa kanały audio?**
 
-Odp.: **w**przypadku przesłania każdego kanału osobno (każdego kanału w osobnym pliku) opłata zostanie naliczona według czasu trwania każdego pliku. Jeśli przesyłasz pojedynczy plik z każdym kanałem, który zostanie przyładowany, zostanie naliczona opłata za czas trwania pojedynczego pliku.
+Odp.: **w**przypadku przesłania każdego kanału osobno (każdego kanału w osobnym pliku) opłata zostanie naliczona za okres istnienia pliku. Jeśli przesyłasz pojedynczy plik z każdym kanałem, który zostanie przyładowany, zostanie naliczona opłata za czas trwania pojedynczego pliku.
 
 > [!IMPORTANT]
 > Jeśli masz jeszcze inne problemy z ochroną prywatności, które uniemożliwiają korzystanie z usługi Custom Speech Service, skontaktuj się z jednym z kanałów pomocy technicznej.
@@ -184,8 +189,8 @@ Odp **.:** Model dzierżawy jest tworzony przy użyciu [publicznych grup](https:
  
 **P: jakie środowiska mowy zostały ulepszone przez model dzierżawców?**
 
-Odp **.:** Gdy model dzierżawy jest włączony, tworzony i publikowany, jest używany do ulepszania rozpoznawania dla dowolnych aplikacji przedsiębiorstwa utworzonych przy użyciu usługi Speech. to również przekazanie tokenu usługi AAD użytkownika wskazującego na członkostwo w przedsiębiorstwie. 
- 
+Odp **.:** Gdy model dzierżawy jest włączony, tworzony i publikowany, jest używany do ulepszania rozpoznawania dla dowolnych aplikacji przedsiębiorstwa utworzonych przy użyciu usługi Speech. spowoduje to również przekazanie tokenu usługi AAD użytkownika wskazującego na członkostwo w przedsiębiorstwie.
+
 Funkcje mowy wbudowane w pakiet Office 365, takie jak dyktowanie i podpisy programu PowerPoint, nie ulegają zmianie podczas tworzenia modelu dzierżawców dla aplikacji usługi Speech.
 
 ## <a name="next-steps"></a>Następne kroki

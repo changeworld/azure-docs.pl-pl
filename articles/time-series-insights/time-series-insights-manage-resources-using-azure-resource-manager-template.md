@@ -1,6 +1,6 @@
 ---
-title: Jak zarządzać środowiskiem Azure Time Series Insights przy użyciu szablonów Azure Resource Manager | Microsoft Docs
-description: W tym artykule opisano sposób programowego zarządzania środowiskiem Azure Time Series Insights przy użyciu Azure Resource Manager.
+title: Zarządzanie środowiskiem za pomocą szablonów Azure Resource Manager — Azure Time Series Insights | Microsoft Docs
+description: Dowiedz się, jak programowo zarządzać środowiskiem Azure Time Series Insights przy użyciu Azure Resource Manager.
 ms.service: time-series-insights
 services: time-series-insights
 author: deepakpalled
@@ -11,12 +11,12 @@ ms.workload: big-data
 ms.topic: conceptual
 ms.date: 10/10/2019
 ms.custom: seodec18
-ms.openlocfilehash: f7a88dafb9662e404cedf10334b22af149a3cd16
-ms.sourcegitcommit: 92d42c04e0585a353668067910b1a6afaf07c709
+ms.openlocfilehash: acafb9aab756507bb073b3e883ee190c72b4f9f8
+ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/28/2019
-ms.locfileid: "72991213"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74006766"
 ---
 # <a name="create-time-series-insights-resources-using-azure-resource-manager-templates"></a>Tworzenie zasobów Time Series Insights przy użyciu szablonów Azure Resource Manager
 
@@ -64,8 +64,8 @@ Poniższa procedura opisuje sposób użycia programu PowerShell do wdrożenia sz
      | eventHubNamespaceName | Przestrzeń nazw źródłowego centrum zdarzeń. |
      | eventHubName | Nazwa źródłowego centrum zdarzeń. |
      | consumerGroupName | Nazwa grupy odbiorców, która będzie używana przez usługę Time Series Insights do odczytywania danych z centrum zdarzeń. **Uwaga:** Aby uniknąć rywalizacji o zasoby, ta grupa odbiorców musi być przeznaczona dla usługi Time Series Insights i nie może być udostępniana innym czytelnikom. |
-     | EnvironmentName | Nazwa środowiska. Nazwa nie może zawierać takich znaków: `<`, `>`, `%`, `&`, `:`, `\\`, `?`, `/`i żadnych kontrolek. Wszystkie inne znaki są dozwolone.|
-     | eventSourcename | Nazwa zasobu podrzędnego źródła zdarzeń. Nazwa nie może zawierać takich znaków: `<`, `>`, `%`, `&`, `:`, `\\`, `?`, `/`i żadnych kontrolek. Wszystkie inne znaki są dozwolone. |
+     | environmentName | Nazwa środowiska. Nazwa nie może zawierać takich znaków: `<`, `>`, `%`, `&`, `:`, `\\`, `?`, `/`i żadnych kontrolek. Wszystkie inne znaki są dozwolone.|
+     | eventSourceName | Nazwa zasobu podrzędnego źródła zdarzeń. Nazwa nie może zawierać takich znaków: `<`, `>`, `%`, `&`, `:`, `\\`, `?`, `/`i żadnych kontrolek. Wszystkie inne znaki są dozwolone. |
 
     <div id="optional-parameters"></div>
 

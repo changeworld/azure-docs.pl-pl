@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: B2B
 ms.topic: conceptual
-ms.date: 04/11/2019
+ms.date: 11/12/2019
 ms.author: mimart
 author: msmimart
 manager: celestedg
 ms.reviewer: mal
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 21117e551642571d5b974e66d0769ed9906b9d50
-ms.sourcegitcommit: 71db032bd5680c9287a7867b923bf6471ba8f6be
+ms.openlocfilehash: 85905e31b9375bac7f813782cbc224a6e770b7ce
+ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/16/2019
-ms.locfileid: "71018211"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74013130"
 ---
 # <a name="add-azure-active-directory-b2b-collaboration-users-in-the-azure-portal"></a>Dodawanie Azure Active Directory użytkowników współpracy B2B w Azure Portal
 
@@ -25,7 +25,7 @@ Jako użytkownik, któremu przypisano dowolne role katalogu administratora z ogr
 Po dodaniu użytkownika-gościa do katalogu można wysłać użytkownikowi gość bezpośredni link do udostępnionej aplikacji lub kliknąć adres URL wykupu w wiadomości e-mail z zaproszeniem. Aby uzyskać więcej informacji na temat procesu wykupu, zobacz Tworzenie [zaproszeń do współpracy B2B](redemption-experience.md).
 
 > [!IMPORTANT]
-> Należy postępować zgodnie z instrukcjami [w temacie How to: Dodaj informacje o ochronie prywatności organizacji w](https://aka.ms/adprivacystatement) Azure Active Directory, aby dodać adres URL zasad zachowania poufności informacji organizacji. W ramach procesu wykupu po raz pierwszy zaproszony użytkownik musi wyrazić zgodę na warunki zachowania poufności, aby kontynuować. 
+> Należy postępować zgodnie z instrukcjami w temacie [: Dodawanie informacji o ochronie prywatności organizacji w Azure Active Directory](https://aka.ms/adprivacystatement) , aby dodać adres URL zasad zachowania poufności informacji organizacji. W ramach procesu wykupu po raz pierwszy zaproszony użytkownik musi wyrazić zgodę na warunki zachowania poufności, aby kontynuować. 
 
 ## <a name="before-you-begin"></a>Przed rozpoczęciem
 
@@ -45,14 +45,18 @@ Aby dodać użytkowników współpracy B2B do katalogu, wykonaj następujące kr
    > [!NOTE]
    > Opcja **nowy użytkownik-Gość** jest również dostępna na stronie **relacje organizacyjne** . W **Azure Active Directory**w obszarze **Zarządzaj**wybierz pozycję **relacje organizacyjne**.
 
-5. W obszarze **Nazwa użytkownika** wprowadź adres e-mail użytkownika zewnętrznego. Opcjonalnie możesz dodać komunikat powitalny. Przykład:
-
-   ![Pokazuje, gdzie nowy użytkownik-Gość znajduje się w interfejsie użytkownika](./media/add-users-administrator/InviteGuest.png) 
+5. Na stronie **nowy użytkownik** wybierz pozycję **Zaproś użytkownika** , a następnie Dodaj informacje o użytkowniku gościa. 
 
     > [!NOTE]
     > Adresy e-mail grup nie są obsługiwane; Wprowadź adres e-mail osoby. Niektórzy dostawcy poczty e-mail umożliwiają użytkownikom dodawanie znaku plus (+) i dodatkowego tekstu do adresów e-mail, aby pomóc w filtrowaniu skrzynek odbiorczych. Jednak usługa Azure AD nie obsługuje obecnie symboli Plus w adresach e-mail. Aby uniknąć problemów z dostarczaniem, Pomiń symbol Plus i wszelkie znaki, które są następujące po nim do znaku @.
 
-6. Wybierz pozycję **Zaproś**, aby automatycznie wysłać zaproszenie do użytkownika-gościa. 
+   - **Nazwij.** Imię i nazwisko użytkownika-gościa.
+   - **Adres e-mail (wymagany)** . Adres e-mail użytkownika-gościa.
+   - **Wiadomość osobista (opcjonalnie)** Dołącz do użytkownika-gościa osobistą wiadomość powitalną.
+   - **Grupy**: można dodać użytkownika-gościa do jednej lub kilku istniejących grup lub później.
+   - **Rola katalogu**: Jeśli wymagane są uprawnienia administracyjne usługi Azure AD dla użytkownika, można je dodać do roli usługi Azure AD. 
+
+7. Wybierz pozycję **Zaproś**, aby automatycznie wysłać zaproszenie do użytkownika-gościa. 
  
 Po wysłaniu zaproszenia konto użytkownika zostanie automatycznie dodane do katalogu jako gość.
 
@@ -81,7 +85,7 @@ Aby dodać użytkowników współpracy B2B do aplikacji, wykonaj następujące k
 
 1. Zaloguj się do witryny [Azure Portal](https://portal.azure.com) jako administrator usługi Azure AD.
 2. W okienku nawigacji wybierz pozycję **Azure Active Directory**.
-3. W obszarze **Zarządzaj**wybierz pozycję **aplikacje** > dla przedsiębiorstw**wszystkie aplikacje**.
+3. W obszarze **Zarządzaj**wybierz pozycję **aplikacje dla przedsiębiorstw** > **wszystkie aplikacje**.
 4. Wybierz aplikację, do której chcesz dodać użytkowników-Gości.
 5. Na pulpicie nawigacyjnym aplikacji wybierz pozycję **łączna liczba użytkowników** , aby otworzyć okienko **Użytkownicy i grupy** .
 
@@ -100,7 +104,7 @@ Aby dodać użytkowników współpracy B2B do aplikacji, wykonaj następujące k
 9. Użytkownik-Gość zostanie wyświetlony na liście **Użytkownicy i grupy** aplikacji z przypisaną rolą **domyślnego dostępu**. Jeśli chcesz zmienić rolę, wykonaj następujące czynności:
    - Wybierz użytkownika-gościa, a następnie wybierz pozycję **Edytuj**. 
    - W obszarze **Edytuj przypisanie**kliknij pozycję **Wybierz rolę**, a następnie wybierz rolę, którą chcesz przypisać do wybranego użytkownika.
-   - Kliknij przycisk **wybierz**.
+   - Kliknij pozycję **Wybierz**.
    - Kliknij przycisk **Przypisz**.
  
 ## <a name="resend-invitations-to-guest-users"></a>Wyślij ponownie zaproszenia do użytkowników-Gości

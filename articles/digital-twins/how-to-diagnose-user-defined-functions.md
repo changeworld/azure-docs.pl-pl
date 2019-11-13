@@ -1,6 +1,6 @@
 ---
-title: Jak debugować UDF w usłudze Azure Digital bliźniaczych reprezentacji | Microsoft Docs
-description: Wskazówki dotyczące debugowania UDF w usłudze Azure Digital bliźniaczych reprezentacji.
+title: Jak debugować usługę UDF — bliźniaczych reprezentacji Digital | Microsoft Docs
+description: Dowiedz się więcej na temat zalecanych metod debugowania funkcji zdefiniowanych przez użytkownika w usłudze Azure Digital bliźniaczych reprezentacji.
 ms.author: alinast
 author: alinamstanciu
 manager: bertvanhoof
@@ -9,12 +9,12 @@ services: digital-twins
 ms.topic: conceptual
 ms.date: 10/01/2019
 ms.custom: seodec18
-ms.openlocfilehash: 7b122df279ecde8ed9ed49b5a89251073f3feda7
-ms.sourcegitcommit: 4f7dce56b6e3e3c901ce91115e0c8b7aab26fb72
+ms.openlocfilehash: 130250156f0fae3e6c40742278479b5d4612657b
+ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/04/2019
-ms.locfileid: "71949886"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74005934"
 ---
 # <a name="how-to-debug-user-defined-functions-in-azure-digital-twins"></a>Jak debugować funkcje zdefiniowane przez użytkownika w usłudze Azure Digital bliźniaczych reprezentacji
 
@@ -35,7 +35,7 @@ Usługa Azure Digital bliźniaczych reprezentacji obsługuje niezawodne rejestro
 
 * Aby uzyskać konfigurację rejestrowania specyficzną dla usługi Azure Digital bliźniaczych reprezentacji, przeczytaj artykuł [jak skonfigurować monitorowanie i rejestrowanie](./how-to-configure-monitoring.md).
 * Zapoznaj się z omówieniem [Azure monitor](../azure-monitor/overview.md) , aby dowiedzieć się więcej o zaawansowanych ustawieniach rejestrowania włączonych za pomocą Azure monitor.
-* Zapoznaj się z artykułem [zbieranie danych dzienników z zasobów platformy Azure i korzystanie z nich](../azure-monitor/platform/resource-logs-overview.md) w celu konfigurowania ustawień dziennika diagnostycznego w usłudze Azure Digital bliźniaczych reprezentacji za pomocą witryny Azure Portal, interfejsu wiersza polecenia platformy Azure lub programu PowerShell.
+* Zapoznaj się z artykułem [gromadzenie i używanie danych dziennika z zasobów platformy Azure](../azure-monitor/platform/resource-logs-overview.md) w celu skonfigurowania ustawień dzienników diagnostycznych w usłudze Azure Digital bliźniaczych reprezentacji za pośrednictwem Azure Portal, interfejsu wiersza polecenia platformy Azure lub programu PowerShell.
 
 Po skonfigurowaniu można wybrać wszystkie kategorie i metryki dzienników oraz zaawansowane Azure Monitor obszary robocze usługi log Analytics do obsługi działań związanych z debugowaniem.
 
@@ -43,7 +43,7 @@ Po skonfigurowaniu można wybrać wszystkie kategorie i metryki dzienników oraz
 
 Aby śledzić dane telemetryczne czujnika, sprawdź, czy ustawienia diagnostyczne są włączone dla Twojego wystąpienia usługi Azure Digital bliźniaczych reprezentacji. Następnie upewnij się, że wybrano wszystkie żądane kategorie dzienników. Na koniec upewnij się, że żądane dzienniki są wysyłane do dzienników Azure Monitor.
 
-Aby dopasować komunikat telemetrii czujnika do odpowiednich dzienników, można określić identyfikator korelacji dla wysyłanych danych zdarzenia. Aby to zrobić, należy ustawić właściwość `x-ms-client-request-id` na identyfikator GUID.
+Aby dopasować komunikat telemetrii czujnika do odpowiednich dzienników, można określić identyfikator korelacji dla wysyłanych danych zdarzenia. Aby to zrobić, ustaw właściwość `x-ms-client-request-id` na identyfikator GUID.
 
 Po wysłaniu telemetrii Otwórz Azure Monitor Log Analytics, aby wykonać zapytanie dotyczące dzienników przy użyciu zestawu identyfikator korelacji:
 
@@ -63,7 +63,7 @@ AzureDiagnostics
 | order by CorrelationId desc
 ```
 
-W przypadku włączenia rejestrowania dla funkcji zdefiniowanej przez użytkownika dzienniki te są wyświetlane w wystąpieniu usługi log Analytics z kategorią `UserDefinedFunction`. Aby je pobrać, wprowadź następujący warunek zapytania w usłudze log Analytics:
+Jeśli włączysz rejestrowanie dla funkcji zdefiniowanej przez użytkownika, te dzienniki będą widoczne w wystąpieniu usługi log Analytics z kategorią `UserDefinedFunction`. Aby je pobrać, wprowadź następujący warunek zapytania w usłudze log Analytics:
 
 ```Kusto
 AzureDiagnostics
@@ -107,7 +107,7 @@ GET YOUR_MANAGEMENT_API_URL/matchers/YOUR_MATCHER_IDENTIFIER/evaluate/YOUR_SENSO
 | *YOUR_MATCHER_IDENTIFIER* | Identyfikator dopasowań, który chcesz oszacować |
 | *YOUR_SENSOR_IDENTIFIER* | Identyfikator czujnika, który chcesz oszacować |
 
-Reakcji
+Odpowiedź:
 
 ```JavaScript
 {
@@ -130,7 +130,7 @@ GET YOUR_MANAGEMENT_API_URL/sensors/YOUR_SENSOR_IDENTIFIER/matchers?includes=Use
 | --- | --- |
 | *YOUR_SENSOR_IDENTIFIER* | Identyfikator czujnika do wysyłania telemetrii |
 
-Reakcji
+Odpowiedź:
 
 ```JavaScript
 [
@@ -173,7 +173,7 @@ var customNotification = {
 sendNotification(telemetry.SensorId, "Space", JSON.stringify(customNotification));
 ```
 
-Ten scenariusz występuje, ponieważ użyty identyfikator odwołuje się do czujnika, podczas gdy określony typ obiektu topologii to `Space`.
+Ten scenariusz występuje, ponieważ użyty identyfikator odwołuje się do czujnika, podczas gdy określony typ obiektu topologii jest `Space`.
 
 **Poprawne** Przyklad
 

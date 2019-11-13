@@ -11,12 +11,12 @@ author: juliemsft
 ms.author: jrasnick
 ms.reviewer: carlrab
 ms.date: 01/25/2019
-ms.openlocfilehash: 6e42911d05f387ea47b56b913e9a1868100c1b3c
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: 0dc3a121b30f33d533b1079d9c81501130487017
+ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73821364"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74009098"
 ---
 # <a name="manual-tune-query-performance-in-azure-sql-database"></a>Ręczne dostrajanie wydajności zapytań w Azure SQL Database
 
@@ -253,7 +253,7 @@ W przypadku używania architektury skalowalnego w poziomie w Azure SQL Database 
 
 W przypadku aplikacji, które uzyskują dostęp do danych przy użyciu dużych, częstych zapytań ad hoc, dużo czasu odpowiedzi poświęca się na komunikację sieciową między warstwą aplikacji a warstwą Azure SQL Database. Nawet wtedy, gdy zarówno aplikacja, jak i Azure SQL Database znajdują się w tym samym centrum danych, opóźnienie sieci między tymi dwoma może być powiększone przez dużą liczbę operacji dostępu do danych. Aby zmniejszyć liczbę podróży sieci dla operacji dostępu do danych, należy rozważyć użycie opcji do wsadowych zapytań ad hoc lub skompilować je jako procedury składowane. W przypadku wsadowych zapytań ad hoc można wysłać wiele zapytań jako jedną dużą partię w jednej podróży do Azure SQL Database. W przypadku kompilowania zapytań ad hoc w procedurze składowanej można osiągnąć ten sam wynik, jak w przypadku przetwarzania wsadowego. Użycie procedury składowanej pozwala także zwiększyć szanse buforowania planów zapytań w Azure SQL Database, aby można było ponownie użyć procedury składowanej.
 
-Niektóre aplikacje są czasochłonne. Czasami można zmniejszyć łączne obciążenie we/wy w bazie danych, biorąc pod uwagę sposób tworzenia wsadowych zapisów. Często jest to proste użycie jawnych transakcji zamiast transakcji automatycznego zatwierdzania w procedurach składowanych i partiach ad hoc. Aby uzyskać ocenę różnych technik, których można użyć, zobacz [Przetwarzanie wsadowe dla aplikacji SQL Database na platformie Azure](https://msdn.microsoft.com/library/windowsazure/dn132615.aspx). Eksperymentuj z własnym obciążeniem, aby znaleźć odpowiedni model na potrzeby tworzenia pakietów wsadowych. Należy pamiętać, że model może mieć nieco inne gwarancje spójności transakcyjnej. Znalezienie odpowiedniego obciążenia, które minimalizuje użycie zasobów, wymaga znalezienia odpowiedniej kombinacji niespójności i wydajności.
+Niektóre aplikacje są czasochłonne. Czasami można zmniejszyć łączne obciążenie we/wy w bazie danych, biorąc pod uwagę sposób tworzenia wsadowych zapisów. Często jest to proste użycie jawnych transakcji zamiast transakcji automatycznego zatwierdzania w procedurach składowanych i partiach ad hoc. Aby uzyskać ocenę różnych technik, których można użyć, zobacz [Przetwarzanie wsadowe dla aplikacji SQL Database na platformie Azure](sql-database-use-batching-to-improve-performance.md). Eksperymentuj z własnym obciążeniem, aby znaleźć odpowiedni model na potrzeby tworzenia pakietów wsadowych. Należy pamiętać, że model może mieć nieco inne gwarancje spójności transakcyjnej. Znalezienie odpowiedniego obciążenia, które minimalizuje użycie zasobów, wymaga znalezienia odpowiedniej kombinacji niespójności i wydajności.
 
 ### <a name="application-tier-caching"></a>Buforowanie w warstwie aplikacji
 

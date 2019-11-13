@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 10/31/2019
 ms.author: raynew
-ms.openlocfilehash: 54416faa9140cf6e7c7c471e4b4c62db5f6f079b
-ms.sourcegitcommit: 3486e2d4eb02d06475f26fbdc321e8f5090a7fac
+ms.openlocfilehash: 19bf79cdb6bcdc0c20d47c698647383b758338db
+ms.sourcegitcommit: 39da2d9675c3a2ac54ddc164da4568cf341ddecf
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/31/2019
-ms.locfileid: "73242940"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73961330"
 ---
 # <a name="whats-new-in-site-recovery"></a>Co nowego w usłudze Site Recovery
 
@@ -20,19 +20,6 @@ Usługa [Azure Site Recovery](site-recovery-overview.md) jest regularnie aktuali
 
 Możesz postępować zgodnie z Site Recovery powiadomieniami o aktualizacji w kanale [aktualizacji platformy Azure](https://azure.microsoft.com/updates/?product=site-recovery) .
 
-## <a name="update-to-servicing-stack-updatesha-2"></a>Aktualizacja do obsługi aktualizacji stosu/SHA-2
-
-W przypadku odzyskiwania po awarii maszyn wirtualnych platformy Azure do regionu pomocniczego lub lokalnych maszyn wirtualnych VMware lub serwerów fizycznych na platformie Azure należy pamiętać o następujących kwestiach:
-
-- Z wersji 9.30. x. x (oczekiwana wersja: od listopada 2019) rozszerzenia usługi mobilności (dla maszyn wirtualnych platformy Azure) i agenta usługi mobilności (dla komputerów VMware/fizycznych) Niektóre systemy operacyjne maszyn muszą mieć uruchomioną aktualizację stosu obsługi i algorytm SHA-2. Szczegóły przedstawiono w poniższej tabeli.
-- Zainstaluj aktualizację i algorytm SHA-2 zgodnie z połączoną bazą wiedzy. Algorytm SHA-1 nie jest obsługiwany z września 2019 i jeśli podpisywanie kodu SHA-2 nie jest włączone, rozszerzenie agenta nie zostanie zainstalowane/uaktualnione zgodnie z oczekiwaniami.
-- Dowiedz się więcej o [uaktualnieniu i wymaganiach algorytmu SHA-2](https://aka.ms/SHA-2KB).
-
-**System operacyjny** | **Maszyna wirtualna platformy Azure** | **Maszyna wirtualna VMware/komputer fizyczny**
---- | --- | ---
-**Windows 2008 R2 z dodatkiem SP1** | [Obsługa aktualizacji stosu](https://support.microsoft.com/help/4490628)<br/> [SHA-2](https://support.microsoft.com/help/4474419)| [Obsługa aktualizacji stosu](https://support.microsoft.com/help/4490628)<br/> [SHA-2](https://support.microsoft.com/help/4474419)
-**Windows 2008 z dodatkiem SP2** | [Obsługa aktualizacji stosu](https://support.microsoft.com/help/4493730)<br/> [SHA-2](https://support.microsoft.com/help/4474419)| [Obsługa aktualizacji stosu](https://support.microsoft.com/help/4493730)<br/> [SHA-2](https://support.microsoft.com/help/4474419)
-**Windows 7 z dodatkiem SP1** | [Obsługa aktualizacji stosu](https://support.microsoft.com/help/4490628)<br/> [SHA-2](https://support.microsoft.com/help/4474419)| [Obsługa aktualizacji stosu](https://support.microsoft.com/help/4490628)<br/> [SHA-2](https://support.microsoft.com/help/4474419).
 
 
 ## <a name="supported-updates"></a>Obsługiwane aktualizacje
@@ -41,14 +28,61 @@ W przypadku składników Site Recovery obsługiwane są wersje N-4, gdzie N to n
 
 **Aktualizacja** |  **Ujednolicona konfiguracja** | **Komórki jajowe serwera konfiguracji** | **Agent usługi mobilności** | **Dostawca Site Recovery** | **Agent Recovery Services**
 --- | --- | --- | --- | --- | ---
-[Pakiet zbiorczy 41](https://support.microsoft.com/help/4528026/update-rollup-41-for-azure-site-recovery) | 9.29.5367.1 | 5.15000.0 | 9.29.5367.1 | 5.15000.0 | 2.0.9165.0
+[Pakiet zbiorczy 42](https://support.microsoft.com/help/4531426/) | 9.30.5407.1 | 5.1.5200.0 | 9.30.5407.1 | 5.1.5200.0 | 2.0.9165.0
+[Pakiet zbiorczy 41](https://support.microsoft.com/help/4528026/) | 9.29.5367.1 | 5.1.5000.0 | 9.29.5367.1 | 5.1.5000.0 | 2.0.9165.0
 [Pakiet zbiorczy 40](https://support.microsoft.com/help/4521530/) | 9.28.5345.1 | 5.1.4800.0 | 9.28.5345.1 | 5.1.4800.0 | 2.0.9165.0
 [Pakiet zbiorczy 39](https://support.microsoft.com/help/4517283/) | 9.27.5308.1 | 5.1.4600.0 | 9.27.5308.1 | 5.1.4600.0 | 2.0.9165.0
 [Pakiet zbiorczy 38](https://support.microsoft.com/help/4513507/) | 9.26.5269.1 | 5.1.4500.0 | 9.26.5269.1 | 5.1.4500.0 | 2.0.9165.0
-[Pakiet zbiorczy 37](https://support.microsoft.com/help/4508614/) | 9.25.5241.1 | 5.1.4300.0 | 9.25.5241.1 | 5.1.4300.0 | 2.0.9163.0
         
 
 [Dowiedz się więcej](service-updates-how-to.md) na temat instalacji i obsługi aktualizacji.
+
+
+## <a name="updates-november-2019"></a>Aktualizacje (listopad 2019)
+
+### <a name="update-rollup-42"></a>Pakiet zbiorczy aktualizacji 42
+
+[Pakiet zbiorczy aktualizacji 42](https://support.microsoft.com/help/4531426/update-rollup-42-for-azure-site-recovery) udostępnia następujące aktualizacje.
+
+**Aktualizacja** | **Szczegóły**
+--- | ---
+**Dostawcy i agenci** | Aktualizacje Site Recovery agentów i dostawców (zgodnie z opisem w pakiecie zbiorczym)
+**Rozwiązywanie poprawek/ulepszeń** | Szereg poprawek i ulepszeń (zgodnie z opisem w pakiecie zbiorczym)
+
+
+## <a name="azure-vm-disaster-recovery"></a>Odzyskiwanie po awarii maszyny wirtualnej platformy Azure
+
+W tabeli zestawiono nowe funkcje odzyskiwania po awarii maszyny wirtualnej platformy Azure.
+
+**Funkcja** | **Szczegóły**
+--- | ---
+**UEFI** | Site Recovery teraz obsługuje odzyskiwanie po awarii dla maszyn wirtualnych platformy Azure z architekturą rozruchową opartą na interfejsie UEFI.
+**Linux** | Site Recovery teraz obsługuje maszyny wirtualne platformy Azure z systemem Linux z Azure Disk Encryption (ADE).
+**Generacja 2** | Wszystkie maszyny wirtualne platformy Azure generacji 2 są teraz obsługiwane na potrzeby odzyskiwania po awarii.
+**Regiony** | Teraz można włączyć odzyskiwanie po awarii dla maszyn wirtualnych platformy Azure w geograficznie.
+
+### <a name="vmware-to-azure-disaster-recovery"></a>Odzyskiwanie po awarii VMware–Azure
+
+Nowe funkcje odzyskiwania po awarii oprogramowania VMware na platformę Azure zostały podsumowane w tabeli.
+
+**Funkcja** | **Szczegóły**
+--- | ---
+**UEFI** | Site Recovery teraz obsługuje odzyskiwanie po awarii dla maszyn wirtualnych VMware z architekturą rozruchową opartą na interfejsie UEFI.<br/><br/> Obsługiwane systemy operacyjne obejmują Windows Server 2019, Windows Server 2016, Windows Server 2012 R2, Windows Server 2012, SLES 12 SP4, RHEL 8.
+
+## <a name="update-to-servicing-stack-updatesha-2"></a>Aktualizacja do obsługi aktualizacji stosu/SHA-2
+
+W przypadku odzyskiwania po awarii maszyn wirtualnych platformy Azure do regionu pomocniczego lub lokalnych maszyn wirtualnych VMware lub serwerów fizycznych na platformie Azure należy pamiętać o następujących kwestiach:
+
+- Z wersji 9.30.5407.1 rozszerzenia usługi mobilności (dla maszyn wirtualnych platformy Azure) i agenta usługi mobilności (dla komputerów z oprogramowaniem VMware/Physical) w niektórych systemach operacyjnych maszyny musi być uruchomiona aktualizacja stosu obsługi i algorytm SHA-2. Szczegóły przedstawiono w poniższej tabeli.
+- Zainstaluj aktualizację i algorytm SHA-2 zgodnie z połączoną bazą wiedzy. Algorytm SHA-1 nie jest obsługiwany z września 2019 i jeśli podpisywanie kodu SHA-2 nie jest włączone, rozszerzenie agenta nie zostanie zainstalowane/uaktualnione zgodnie z oczekiwaniami.
+- Dowiedz się więcej o [uaktualnieniu algorytmu SHA-2 i wymaganiach](https://aka.ms/SHA-2KB).
+
+**System operacyjny** | **Maszyna wirtualna platformy Azure** | **Maszyna wirtualna VMware/komputer fizyczny**
+--- | --- | ---
+**Windows 2008 R2 z dodatkiem SP1** | [Obsługa aktualizacji stosu](https://support.microsoft.com/help/4490628)<br/> [SHA-2](https://support.microsoft.com/help/4474419)| [Obsługa aktualizacji stosu](https://support.microsoft.com/help/4490628)<br/> [SHA-2](https://support.microsoft.com/help/4474419)
+**Windows 2008 z dodatkiem SP2** | [Obsługa aktualizacji stosu](https://support.microsoft.com/help/4493730)<br/> [SHA-2](https://support.microsoft.com/help/4474419)| [Obsługa aktualizacji stosu](https://support.microsoft.com/help/4493730)<br/> [SHA-2](https://support.microsoft.com/help/4474419)
+**Windows 7 z dodatkiem SP1** | [Obsługa aktualizacji stosu](https://support.microsoft.com/help/4490628)<br/> [SHA-2](https://support.microsoft.com/help/4474419)| [Obsługa aktualizacji stosu](https://support.microsoft.com/help/4490628)<br/> [SHA-2](https://support.microsoft.com/help/4474419).
+
 
 
 ## <a name="updates-october-2019"></a>Aktualizacje (październik 2019)
@@ -278,7 +312,7 @@ Funkcje dodane w tym miesiącu zostały podsumowane w tabeli.
 **Funkcja** | **Szczegóły**
 --- | ---
 **System plików BRTFS systemu Linux** | Site Recovery teraz obsługuje replikację maszyn wirtualnych VMware przy użyciu systemu plików BRTFS. Replikacja nie jest obsługiwana, jeśli:<br/><br/>-Wolumin systemu plików BTRFS jest zmieniany po włączeniu replikacji.<br/><br/>— System plików jest rozłożony na wiele dysków.<br/><br/>— System plików BTRFS obsługuje macierz RAID.
-**System Windows Server 2019** | Dodano obsługę dla maszyn z systemem Windows Server 2019.
+**Windows Server 2019** | Dodano obsługę dla maszyn z systemem Windows Server 2019.
 
 
 ## <a name="updates-january-2019"></a>Aktualizacje (styczeń 2019)
@@ -333,7 +367,7 @@ Funkcje dodane w tym miesiącu zostały podsumowane w tabeli.
 **Obsługa systemu Linux** | Dodano obsługę dla Oracle Linux 6,8 i 6,9/7.0 oraz dla jądra UEK5.
 **LVM** | Dodano obsługę dla woluminów LVM i LVM2.<br/><br/> Katalog/Boot na partycji dysku i na woluminach LVM jest teraz obsługiwany.
 **Katalogi** | Dodano obsługę tych katalogów jako osobne partycje lub systemy plików, które nie znajdują się na tym samym dysku systemowym:<br/><br/> /(root),/Boot,/usr,/usr/local,/var,/etc.
-**System Windows Server 2008** | Dodano obsługę dla dysków dynamicznych.
+**Windows Server 2008** | Dodano obsługę dla dysków dynamicznych.
 **Tryb failover** | Ulepszony czas pracy w trybie failover dla maszyn wirtualnych VMware, gdzie storvsc i vsbus nie są sterownikami rozruchowymi
 **Obsługa interfejsu UEFI** | Maszyny wirtualne platformy Azure nie obsługują typu rozruchu UEFI. Teraz można migrować lokalne serwery fizyczne z interfejsem UEFI do platformy Azure za pomocą Site Recovery. Site Recovery migruje serwer, konwertując typ rozruchu na system BIOS przed migracją. Site Recovery poprzednio obsługiwać tę konwersję tylko dla maszyn wirtualnych. Pomoc techniczna jest dostępna dla serwerów fizycznych z systemem Windows Server 2012 lub nowszym.
 
@@ -426,7 +460,7 @@ Funkcje dodane w tym miesiącu zostały podsumowane w tabeli.
 --- | ---
 **Obsługa systemu Linux** | Dodano obsługę do RedHat Enterprise Linux 6,10, CentOS 6,10.<br/><br/> Maszyny wirtualne oparte na systemie Linux, które używają stylu partycji tabeli partycji GUID (GPT) w trybie zgodności ze starszymi wersjami systemu BIOS, są teraz obsługiwane. Aby uzyskać więcej informacji, przejrzyj [często zadawane pytania dotyczące maszyn wirtualnych platformy Azure](https://docs.microsoft.com/azure/virtual-machines/linux/faq-for-disks) . 
 **Odzyskiwanie po awarii dla maszyn wirtualnych po migracji** | Obsługa włączenia odzyskiwania po awarii do regionu pomocniczego dla lokalnej maszyny wirtualnej VMware migrowanej do platformy Azure bez konieczności odinstalowywania usługi mobilności na maszynie wirtualnej przed włączeniem replikacji.
-**System Windows Server 2008** | Obsługa migracji maszyn z systemem Windows Server 2008 R2/2008 64-bit i 32-bit.<br/><br/> Tylko migracja (replikacja i tryb failover). Powrót po awarii nie jest obsługiwany.
+**Windows Server 2008** | Obsługa migracji maszyn z systemem Windows Server 2008 R2/2008 64-bit i 32-bit.<br/><br/> Tylko migracja (replikacja i tryb failover). Powrót po awarii nie jest obsługiwany.
 
 ## <a name="updates-july-2018"></a>Aktualizacje (lipiec 2018)
 

@@ -1,6 +1,6 @@
 ---
-title: Tworzenie środowiska usługi Azure Time Series Insights | Microsoft Docs
-description: W tym artykule opisano sposób tworzenia nowego środowiska Time Series Insights przy użyciu Azure Portal.
+title: Tworzenie środowiska Azure Time Series Insights | Microsoft Docs
+description: Dowiedz się, jak utworzyć nowe środowisko Time Series Insights przy użyciu Azure Portal.
 ms.service: time-series-insights
 services: time-series-insights
 author: deepakpalled
@@ -11,12 +11,12 @@ ms.workload: big-data
 ms.topic: conceptual
 ms.date: 10/10/2019
 ms.custom: seodec18
-ms.openlocfilehash: 1b51931385eb7e2e0bf2a1baf5cc4c3379eab2df
-ms.sourcegitcommit: 92d42c04e0585a353668067910b1a6afaf07c709
+ms.openlocfilehash: fc3f21c95ad6f4bb033336018dddb9e966e9cc9a
+ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/28/2019
-ms.locfileid: "72991231"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74006897"
 ---
 # <a name="create-a-new-time-series-insights-environment-in-the-azure-portal"></a>Tworzenie nowego środowiska usługi Time Series Insights w witrynie Azure Portal
 
@@ -28,7 +28,7 @@ Time Series Insights umożliwia rozpoczęcie wizualizacji i wykonywania zapytań
 
 Wykonaj następujące kroki, aby utworzyć środowisko:
 
-1. Zaloguj się do [portalu Azure](https://portal.azure.com).
+1. Zaloguj się w witrynie [Azure Portal](https://portal.azure.com).
 
 1. Wybierz przycisk **+ Utwórz zasób** .
 
@@ -69,6 +69,6 @@ Wykonaj następujące kroki, aby utworzyć środowisko:
 
 * [Dodaj źródło zdarzeń centrum zdarzeń](time-series-insights-how-to-add-an-event-source-eventhub.md) do środowiska Azure Time Series Insightsowego.
 
-* [Wyślij zdarzenia](time-series-insights-send-events.md) do źródła zdarzeń.
+* [Wysyłanie zdarzeń](time-series-insights-send-events.md) do źródła zdarzenia.
 
 * Wyświetl swoje środowisko w [eksploratorze Time Series Insights](https://insights.timeseries.azure.com).

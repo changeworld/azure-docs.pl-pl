@@ -14,12 +14,12 @@ ms.author: curtand
 ms.reviewer: addimitu
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b7993810343f6bd925afd54cc38a8302420d6aec
-ms.sourcegitcommit: 77bfc067c8cdc856f0ee4bfde9f84437c73a6141
+ms.openlocfilehash: 47a60ed44ddf057ef983f8f76f23fd784bc3efd5
+ms.sourcegitcommit: 39da2d9675c3a2ac54ddc164da4568cf341ddecf
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72439353"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73961820"
 ---
 # <a name="delete-a-directory-in-azure-active-directory"></a>Usuwanie katalogu w Azure Active Directory
 
@@ -97,7 +97,7 @@ Aby można było usunąć subskrypcję w stanie **anulowania** aprowizacji w ci�
 
 ## <a name="i-have-a-trial-subscription-that-blocks-deletion"></a>Mam subskrypcję wersji próbnej, która blokuje usuwanie
 
-Istnieją produkty do samodzielnej [rejestracji](https://docs.microsoft.com/office365/admin/misc/self-service-sign-up?view=o365-worldwide) , takie jak Microsoft Power BI, Rights Management Services, Microsoft PowerShell Apps lub Dynamics 365, indywidualni użytkownicy mogą zarejestrować się za pośrednictwem pakietu Office 365, co spowoduje również utworzenie użytkownika-gościa na potrzeby uwierzytelniania w katalogu usługi Azure AD. . Te produkty samoobsługi blokują operacje usuwania katalogów, dopóki nie zostaną całkowicie usunięte z katalogu, aby uniknąć utraty danych. Mogą zostać usunięte tylko przez administratora usługi Azure AD, niezależnie od tego, czy użytkownik zarejestrował się indywidualnie, czy też został przypisany do produktu.
+Istnieją produkty do samodzielnej [rejestracji](https://docs.microsoft.com/office365/admin/misc/self-service-sign-up?view=o365-worldwide) , takie jak Microsoft Power BI, Rights Management Services, Microsoft PowerShell Apps lub Dynamics 365, indywidualni użytkownicy mogą zarejestrować się za pośrednictwem pakietu Office 365, co spowoduje również utworzenie użytkownika-gościa na potrzeby uwierzytelniania w katalogu usługi Azure AD. Te produkty samoobsługi blokują operacje usuwania katalogów, dopóki nie zostaną całkowicie usunięte z katalogu, aby uniknąć utraty danych. Mogą zostać usunięte tylko przez administratora usługi Azure AD, niezależnie od tego, czy użytkownik zarejestrował się indywidualnie, czy też został przypisany do produktu.
 
 W sposobie ich przypisywania istnieją dwa typy produktów do samodzielnej rejestracji: 
 
@@ -108,7 +108,7 @@ Po rozpoczęciu usuwania produktu samoobsługowego rejestracji, akcja spowoduje 
 
 Aby uzyskać więcej informacji na temat aktualnie dostępnych produktów i usług do samoobsługowego rejestrowania, zobacz [dostępne programy](https://docs.microsoft.com/office365/admin/misc/self-service-sign-up?view=o365-worldwide#available-self-service-programs)samoobsługowe.
 
-Informacje o tym, czego można oczekiwać po wygaśnięciu wersji próbnej subskrypcji pakietu Office 365 (bez uwzględnienia płatnego partnera/dostawcy CSP, Umowa Enterprise lub licencjonowania zbiorowego), zobacz poniższą tabelę. Aby uzyskać więcej informacji na temat przechowywania danych i cyklu życia subskrypcji pakietu Office 365, zobacz [co się stanie z danymi i dostępem po zakończeniu subskrypcji pakietu Office 365 dla firm?](https://docs.microsoft.com/office365/admin/subscriptions-and-billing/what-if-my-subscription-expires?view=o365-worldwide).
+Informacje o tym, czego można oczekiwać po wygaśnięciu wersji próbnej subskrypcji pakietu Office 365 (bez uwzględnienia płatnego partnera/dostawcy CSP, Umowa Enterprise lub licencjonowania zbiorowego), zobacz poniższą tabelę. Aby uzyskać więcej informacji na temat przechowywania danych i cyklu życia subskrypcji pakietu Office 365, zobacz [co się stanie z danymi i dostępem po zakończeniu subskrypcji pakietu Office 365 dla firm?](https://docs.microsoft.com/office365/admin/subscriptions-and-billing/what-if-my-subscription-expires?view=o365-worldwide).
 
 Stan produktu | Dane | Dostęp do danych
 ------------- | ---- | --------------
@@ -119,13 +119,13 @@ Usunięte | Usunięte dane | Użytkownicy nie mogą uzyskać dostępu do samoobs
 
 Możesz utworzyć samoobsługowe produkty do rejestracji, takie jak Microsoft Power BI lub Azure Rights Management Services w stanie **usuwania** , aby natychmiast usunąć je w portalu usługi Azure AD.
 
-1. Zaloguj się do [Centrum administracyjnego usługi Azure AD](https://aad.portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/Overview)@no__t — 1with konto, które jest administratorem globalnym w organizacji. Jeśli próbujesz usunąć katalog "contoso", który ma początkową domyślną domenę contoso.onmicrosoft.com, zaloguj się przy użyciu nazwy UPN, takiej jak admin@contoso.onmicrosoft.com.
+1. Zaloguj się do [Centrum administracyjnego usługi Azure AD](https://aad.portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/Overview) przy użyciu konta, które jest administratorem globalnym w organizacji. Jeśli próbujesz usunąć katalog "contoso", który ma początkową domyślną domenę contoso.onmicrosoft.com, zaloguj się przy użyciu nazwy UPN, takiej jak admin@contoso.onmicrosoft.com.
 
-2. Wybierz pozycję **licencje**, a następnie wybierz pozycję **produkty do rejestracji**samoobsługowej. Wszystkie produkty do samodzielnej rejestracji można zobaczyć niezależnie od subskrypcji opartych na miejscu. Wybierz produkt, który chcesz trwale usunąć. Oto przykład w programie Microsoft Power BI:
+2. Wybierz pozycję **licencje**, a następnie wybierz pozycję **produkty do rejestracji**samoobsługowej. Wszystkie produkty do samodzielnej rejestracji można zobaczyć niezależnie od subskrypcji opartych na miejscu. Wybierz produkt, który chcesz trwale usunąć. Oto przykład w programie Microsoft Power BI:
 
     ![Nazwa użytkownika jest nieprawidłowa lub nie została znaleziona](./media/directory-delete-howto/licenses-page.png)
 
-3. Wybierz pozycję **usuń** To Usuń produkt i zaakceptuj warunki, że dane są usuwane natychmiast i nieodwołalnie. Spowoduje to usunięcie wszystkich użytkowników i usunięcie dostępu organizacji do produktu. Kliknij przycisk tak, aby przejść do przodu z usunięciem.  
+3. Wybierz pozycję **Usuń** , aby usunąć produkt i zaakceptować warunki, że dane są usuwane natychmiast i nieodwołalnie. Spowoduje to usunięcie wszystkich użytkowników i usunięcie dostępu organizacji do produktu. Kliknij przycisk tak, aby przejść do przodu z usunięciem.  
 
     ![Nazwa użytkownika jest nieprawidłowa lub nie została znaleziona](./media/directory-delete-howto/delete-product.png)
 

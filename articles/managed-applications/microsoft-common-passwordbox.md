@@ -13,18 +13,18 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/27/2018
 ms.author: tomfitz
-ms.openlocfilehash: 4a8b760d113e29efb0efacbd41dcaa7432ecdcfd
-ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
+ms.openlocfilehash: 083b0be20d4e9ad7769a9c673139a361fb7b70d4
+ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72332800"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74009172"
 ---
-# <a name="microsoftcommonpasswordbox-ui-element"></a>Microsoft. Common. PasswordBox — element interfejsu użytkownika
+# <a name="microsoftcommonpasswordbox-ui-element"></a>Microsoft.Common.PasswordBox UI element
 Kontrolka, która może służyć do udostępniania i potwierdzania hasła.
 
 ## <a name="ui-sample"></a>Przykładowy interfejs użytkownika
-![Microsoft. Common. PasswordBox](./media/managed-application-elements/microsoft.common.passwordbox.png)
+![Microsoft.Common.PasswordBox](./media/managed-application-elements/microsoft.common.passwordbox.png)
 
 ## <a name="schema"></a>Schemat
 ```json
@@ -38,8 +38,8 @@ Kontrolka, która może służyć do udostępniania i potwierdzania hasła.
   "toolTip": "",
   "constraints": {
     "required": true,
-    "regex": "",
-    "validationMessage": ""
+    "regex": "^[a-zA-Z0-9]{8,}$",
+    "validationMessage": "Password must be at least 8 characters long, contain only numbers and letters"
   },
   "options": {
     "hideConfirmation": false
@@ -50,7 +50,7 @@ Kontrolka, która może służyć do udostępniania i potwierdzania hasła.
 
 ## <a name="remarks"></a>Uwagi
 - Ten element nie obsługuje właściwości `defaultValue`.
-- Szczegóły implementacji `constraints` można znaleźć w temacie [Microsoft. Common. TextBox](microsoft-common-textbox.md).
+- Aby uzyskać szczegółowe informacje dotyczące implementacji `constraints`, zobacz [Microsoft. Common. TextBox](microsoft-common-textbox.md).
 - Jeśli `options.hideConfirmation` ma **wartość true**, drugie pole tekstowe potwierdzające hasło użytkownika jest ukryte. Wartość domyślna to **false**.
 
 ## <a name="sample-output"></a>Przykładowe dane wyjściowe
