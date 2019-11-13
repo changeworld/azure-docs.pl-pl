@@ -128,8 +128,6 @@
               href: virtual-nodes-cli.md
             - name: Korzystanie z witryny Azure Portal
               href: virtual-nodes-portal.md
-        - name: Korzystanie z wirtualnych elementów Kubelet
-          href: virtual-kubelet.md
         - name: Korzystanie ze skalowania automatycznego klastrów
           href: cluster-autoscaler.md
         - name: Korzystanie ze stref dostępności
